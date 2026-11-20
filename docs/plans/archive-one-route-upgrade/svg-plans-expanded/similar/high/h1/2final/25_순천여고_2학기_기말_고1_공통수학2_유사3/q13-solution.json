@@ -1,0 +1,95 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -2,
+   6,
+   -4,
+   4
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "RATIONAL",
+    "numerator": [
+     "-4",
+     "3"
+    ],
+    "denominator": [
+     "-2",
+     "1"
+    ],
+    "domain": [
+     "-2",
+     "6"
+    ],
+    "color": "BLUE",
+    "label": "f",
+    "hideLabels": [
+     "asymptotes"
+    ]
+   },
+   {
+    "id": "g",
+    "kind": "RATIONAL",
+    "numerator": [
+     "4",
+     "-3"
+    ],
+    "denominator": [
+     "-2",
+     "1"
+    ],
+    "domain": [
+     "-2",
+     "6"
+    ],
+    "color": "WARM",
+    "label": "g",
+    "hideLabels": [
+     "asymptotes"
+    ]
+   },
+   {
+    "id": "a",
+    "kind": "RATIONAL",
+    "numerator": [
+     "-4",
+     "1"
+    ],
+    "denominator": [
+     "-2",
+     "1"
+    ],
+    "domain": [
+     "-2",
+     "6"
+    ],
+    "color": "GREEN",
+    "style": "DASHED",
+    "label": "h",
+    "hideLabels": [
+     "asymptotes"
+    ]
+   }
+  ]
+ },
+ "caption": "세 곡선의 점근선은 모두 x=2이고, f는 y=3, g는 y=-3, h는 y=1이다. 파란 곡선 f는 y=(3x-4)/(x-2)=3+2/(x-2)이고, 이를 x축에 대하여 대칭이동하면 y=-3-2/(x-2)이다. 이 곡선 g를 y축 방향으로 4만큼 평행이동하면 ㄱ의 y=1-2/(x-2)(곡선 h, 초록 점선)와 겹치고, ㄴ도 분수식의 분자가 -2이어서 겹친다. ㄷ, ㄹ은 분자가 2여서 겹치지 않으므로 답은 ②이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "y=(3x-4)/(x-2)를 x축 대칭 후 평행이동하여 겹치는 보기",
+   "mappedTo": [
+    "graphPlan.curves"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "원래 곡선, x축 대칭 곡선, 평행이동하여 겹치는 ㄱ의 곡선을 한 그림에서 비교한다."
+ ]
+}

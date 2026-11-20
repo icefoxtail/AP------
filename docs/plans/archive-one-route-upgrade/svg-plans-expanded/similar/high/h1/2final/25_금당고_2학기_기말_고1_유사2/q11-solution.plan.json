@@ -1,0 +1,96 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "VENN",
+  "sets": [
+   {
+    "id": "A",
+    "name": "A_{24}"
+   },
+   {
+    "id": "B",
+    "name": "A_n"
+   },
+   {
+    "id": "C",
+    "name": "A_{6}"
+   }
+  ],
+  "elements": [
+   {
+    "text": "1",
+    "in": [
+     "A",
+     "B",
+     "C"
+    ]
+   },
+   {
+    "text": "2",
+    "in": [
+     "A",
+     "B",
+     "C"
+    ]
+   },
+   {
+    "text": "3",
+    "in": [
+     "A",
+     "B",
+     "C"
+    ]
+   },
+   {
+    "text": "6",
+    "in": [
+     "A",
+     "B",
+     "C"
+    ]
+   },
+   {
+    "text": "4",
+    "in": [
+     "A",
+     "B"
+    ]
+   },
+   {
+    "text": "12",
+    "in": [
+     "A",
+     "B"
+    ]
+   },
+   {
+    "text": "8",
+    "in": [
+     "A"
+    ]
+   },
+   {
+    "text": "24",
+    "in": [
+     "A"
+    ]
+   }
+  ],
+  "subset": [
+   "C",
+   "B",
+   "A"
+  ]
+ },
+ "caption": "A₃∪A₆=A₆이고 A₄₈∩A₇₂=A₂₄이므로 A₆⊆Aₙ⊆A₂₄이다. 따라서 n은 6의 배수이면서 24의 약수이므로 n=6, 12, 24이고 합은 42이다. 그림의 가운데 원은 예로 n=12일 때의 Aₙ이다. 답은 ④이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "A_6 ⊆ A_n ⊆ A_24 (예: n=12)",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "세 약수 집합이 차례로 포함되는 모양(가운데 원은 n=12의 예)"
+ ]
+}

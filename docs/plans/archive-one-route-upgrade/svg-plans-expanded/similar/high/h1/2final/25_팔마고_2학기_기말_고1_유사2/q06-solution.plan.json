@@ -1,0 +1,97 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "10",
+   "3"
+  ],
+  "denominator": [
+   "2",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -9,
+   5
+  ],
+  "viewport": [
+   -9,
+   5,
+   -4,
+   9
+  ],
+  "hideLabels": [
+   "formula"
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "lines": [
+    {
+     "id": "l1",
+     "slope": "0",
+     "intercept": "1",
+     "label": "y=1",
+     "style": "DASHED"
+    }
+   ],
+   "points": [
+    {
+     "id": "T",
+     "curveX": "-4",
+     "unnamed": true
+    },
+    {
+     "id": "C",
+     "x": "-2",
+     "y": "3",
+     "unnamed": true
+    },
+    {
+     "id": "F0",
+     "curveX": "2",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cT",
+     "point": "T",
+     "text": "(-4,1)",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "cC",
+     "point": "C",
+     "text": "(-2,3)",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "cf",
+     "point": "F0",
+     "text": "y=(3x+10)/(x+2)",
+     "labelKind": "MATH",
+     "direction": "NE"
+    }
+   ]
+  }
+ },
+ "caption": "두 점근선이 x=-b, y=a이고 교점이 (-2,3)이므로 a=3, b=2이다. f(x)=(3x+10)/(x+2)이다. f⁻¹(1)=t이면 f(t)=1이므로 3t+10=t+2에서 t=-4이다. 그래프에서 직선 y=1과 만나는 점 T(-4,1)로 확인된다. 따라서 답은 ②이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "유리함수 f(x)=(3x+10)/(x+2)의 그래프와 직선 y=1",
+   "mappedTo": [
+    "graphPlan"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "점근선의 교점 C(-2,3)과 y=1이 그래프와 만나는 점"
+ ]
+}

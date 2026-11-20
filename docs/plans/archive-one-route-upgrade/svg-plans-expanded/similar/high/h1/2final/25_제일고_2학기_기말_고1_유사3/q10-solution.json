@@ -1,0 +1,114 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "MAPPING",
+  "columns": [
+   {
+    "id": "X",
+    "name": "X",
+    "elements": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ]
+   },
+   {
+    "id": "Y",
+    "name": "X",
+    "elements": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ]
+   }
+  ],
+  "arrows": [
+   {
+    "from": {
+     "column": 0,
+     "element": 0
+    },
+    "to": {
+     "column": 1,
+     "element": 3
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 1
+    },
+    "to": {
+     "column": 1,
+     "element": 4
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 2
+    },
+    "to": {
+     "column": 1,
+     "element": 0
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 3
+    },
+    "to": {
+     "column": 1,
+     "element": 1
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 4
+    },
+    "to": {
+     "column": 1,
+     "element": 2
+    }
+   }
+  ],
+  "arrowGroups": [
+   {
+    "name": "f",
+    "from": "X",
+    "to": "Y"
+   }
+  ],
+  "highlightPaths": [
+   {
+    "path": [
+     "1",
+     "4"
+    ],
+    "startColumn": 0,
+    "color": "BLUE"
+   },
+   {
+    "path": [
+     "4",
+     "2"
+    ],
+    "startColumn": 0,
+    "color": "WARM"
+   }
+  ]
+ },
+ "caption": "f는 일대일대응이므로 역함수 f⁻¹이 존재한다. f(4)=2(주황)이므로 f⁻¹(2)=4이고, f(1)=4(파랑)이므로 f⁻¹(4)=1이다. 따라서 (f⁻¹∘f⁻¹)(2)=f⁻¹(f⁻¹(2))=f⁻¹(4)=1이고 답은 ①이다.",
+ "sourceConditions": [
+  "f(1)=4, f(2)=5, f(3)=1, f(4)=2, f(5)=3"
+ ],
+ "newVisualInformation": [
+  "화살표 1→4(파랑)와 4→2(주황)를 거꾸로 따라가면 2에서 4, 1로 되돌아가 f⁻¹을 두 번 쓴 값이 1임을 보인다."
+ ]
+}

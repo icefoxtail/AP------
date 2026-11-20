@@ -1,0 +1,62 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "MEMBERSHIP_TABLE",
+  "sets": [
+   {
+    "id": "P"
+   },
+   {
+    "id": "Q"
+   },
+   {
+    "id": "R"
+   }
+  ],
+  "elements": [
+   {
+    "text": "1",
+    "in": [
+     "P",
+     "Q"
+    ]
+   },
+   {
+    "text": "2",
+    "in": [
+     "R",
+     "Q"
+    ]
+   },
+   {
+    "text": "3",
+    "in": [
+     "P",
+     "R",
+     "Q"
+    ]
+   },
+   {
+    "text": "4",
+    "in": [
+     "Q"
+    ]
+   },
+   {
+    "text": "5",
+    "in": []
+   }
+  ]
+ },
+ "caption": "예: 전체집합의 원소 1부터 5까지가 P, Q, R에 속하는 경우를 표로 나타냈다. P∪Q=Q에서 P⊆Q이고, Q∩R=R에서 R⊆Q이므로 P와 R에 속하는 원소는 모두 Q에도 속한다. R⊆Q이므로 r→q가 항상 참이고, 그 대우인 ∼q→∼r도 항상 참이다. 따라서 답은 ④이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "P∪Q=Q, Q∩R=R이므로 P⊆Q, R⊆Q",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "P와 R에 속하는 원소가 모두 Q에 속하는 예"
+ ]
+}

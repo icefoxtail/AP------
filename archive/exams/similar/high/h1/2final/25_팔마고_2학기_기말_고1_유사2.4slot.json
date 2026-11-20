@@ -1,0 +1,1020 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/high/h1/2final/25_팔마고_2학기_기말_고1_유사2.js",
+  "sourceGitBlobSha": "76b48b16bd4bb2e9888827ce0946eb519f430450",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "Claude Sonnet 5.5 (DRAFT_SINGLE_MODEL)",
+    "at": "2026-11-20"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "단일 모델 초안(UNREVIEWED). 인용은 check-judgment 로 원문 포함을 확인했다."
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "다섯 개의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "함수의 그래프인 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직선판정법",
+            "src": "solution",
+            "quote": "$y$축에 평행한 직선을 그었을 때",
+            "evidenceType": "IMPLIED",
+            "justification": "y축에 평행한 직선을 그어 만나는 점의 개수를 세는 방법이 수직선 판정법이다"
+          }
+        ],
+        "condition": [
+          {
+            "term": "유일성",
+            "src": "solution",
+            "quote": "오직 하나의 $y$값만 대응해야"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "아래 그림과 같은 두 함수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "$(f\\circ g)(a)=f(g(a))=5$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "아래 그림과 같은 두 함수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$(g\\circ f)^{-1}(4)+f^{-1}(3)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "$(g\\circ f)^{-1}=f^{-1}\\circ g^{-1}$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "유리함수 $y=\\dfrac{-x-1}{x+2}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "그래프가 지나는 사분면은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "표준형",
+            "src": "solution",
+            "quote": "표준형으로 변형하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "점근선은 $x=-2$, $y=-1$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "solution",
+            "quote": "$-2<x<-1$에서는"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "무리함수 $f(x)=\\sqrt{ax+b}+c$"
+          },
+          {
+            "term": "끝점",
+            "src": "solution",
+            "quote": "그래프의 끝점이 $(-3,-2)$이므로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "실수 $k$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "미정계수",
+            "src": "solution",
+            "quote": "$-3a+b=0$",
+            "evidenceType": "IMPLIED",
+            "justification": "끝점 (-3,-2) 와 점 (1,0) 을 대입해 a, b, c 를 결정하는 미정계수 결정 단계다"
+          }
+        ],
+        "condition": [
+          {
+            "term": "통과",
+            "src": "solution",
+            "quote": "그래프가 점 $(k,2)$를 지나므로"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "점근선",
+            "src": "stem",
+            "quote": "두 점근선의 교점이 $(-2,3)$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$f^{-1}(1)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "$f^{-1}(1)=t$라 하면 $f(t)=1$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "f^{-1}(1)=t 로 놓고 f(t)=1 을 푸는 역함숫값 구하기 방법이다"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값이 $1$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "이 함수의 최댓값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "함수는 정의역에서 증가한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정의역제한",
+            "src": "stem",
+            "quote": "정의역이 $\\{x\\mid 1\\le x\\le 5\\}$인 유리함수"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "반복합성",
+            "src": "stem",
+            "quote": "$f^{n+1}=f\\circ f^n$으로 정의할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$f^3(5)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "규칙",
+            "src": "solution",
+            "quote": "같은 규칙이 반복되므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "함수방정식",
+            "src": "stem",
+            "quote": "$f(x+y)=f(x)+f(y)+1$을 만족시키고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$f(5)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=1$, $y=1$을 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "항상성립",
+            "src": "stem",
+            "quote": "임의의 실수 $x$, $y$에 대하여"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "두 함수 $f(x)=2x+k$, $g(x)=kx+6$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$k$의 값의 곱은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "두 합성함수를 각각 구하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "$2kx+k^2+6=2kx+k+12$",
+            "evidenceType": "IMPLIED",
+            "justification": "양변의 x 의 계수 2k 가 같으므로 상수항 k^2+6, k+12 를 비교해 k^2-k-6=0 을 얻는다"
+          }
+        ],
+        "condition": [
+          {
+            "term": "항상성립",
+            "src": "solution",
+            "quote": "모든 실수 $x$에 대하여 성립하므로"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "그 역함수 $y=f^{-1}(x)$의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "실수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "이 이차방정식의 판별식을 $D$라 하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "그래프가 접하도록"
+          },
+          {
+            "term": "정의역제한",
+            "src": "solution",
+            "quote": "정의역 조건 $x\\ge 3$을 만족시킨다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "부등식 $\\sqrt{2(a+b)}\\ge \\sqrt{a}+\\sqrt{b}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "증명",
+            "src": "stem",
+            "quote": "성립함을 증명하는 과정이다"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "$=(\\sqrt{a}-\\sqrt{b})^2\\ge 0$",
+            "evidenceType": "IMPLIED",
+            "justification": "a+b-2√(ab) 를 (√a-√b)^2 꼴로 바꿔 0 이상임을 보인다"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$a\\gt 0$, $b\\gt 0$일 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "의 최솟값이 $49$가 되도록"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "양수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "산술기하평균",
+            "src": "solution",
+            "quote": "산술평균과 기하평균의 관계에 의해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "주어진 식을 전개하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$x\\gt 0$, $y\\gt 0$일 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=\\dfrac{1}{x-2}+2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳은 것만을 있는 대로 고른 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "두 점근선의 교점은 $(2,2)$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "합성함수",
+            "src": "stem",
+            "quote": "$(f\\circ f)(x)=x$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "ㄴ 에서 f(f(x)) 를 직접 합성해 x 가 되는지 계산한다"
+          }
+        ],
+        "condition": [
+          {
+            "term": "대칭성",
+            "src": "stem",
+            "quote": "직선 $y=-x+4$에 대하여 대칭이다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "합성함수",
+            "src": "stem",
+            "quote": "$(f\\circ f)(x)=x$를 만족시키고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$f^{-1}(6)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "즉 $f^{-1}=f$이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "점근선",
+            "src": "solution",
+            "quote": "점근선의 교점 $(4,a)$는 직선 $y=x$ 위에",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "통과",
+            "src": "stem",
+            "quote": "그 그래프가 점 $(2,1)$을 지날 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "집합 $X=\\{1,2,3,4,5\\}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "$f:X\\to X$의 개수는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "일대일대응",
+            "src": "solution",
+            "quote": "일대일대응이어야 한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "${}_{5}C_{2}=\\dfrac{5\\times 4}{2\\times 1}=10$",
+            "evidenceType": "IMPLIED",
+            "justification": "5개 중 2개를 고르는 5C2=10 으로 f(1), f(2) 의 값 쌍을 센다"
+          }
+        ],
+        "condition": [
+          {
+            "term": "순서",
+            "src": "stem",
+            "quote": "$f(1)\\lt f(2)$이고 $f(3)\\gt f(4)$이다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "역함수가 존재하도록"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$4a+c$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "일대일대응",
+            "src": "solution",
+            "quote": "일대일대응이어야 한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "치역",
+            "src": "solution",
+            "quote": "첫째 조각의 치역은",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정의역제한",
+            "src": "solution",
+            "quote": "$b\\ge -2$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "두 무리함수 $f(x)=\\sqrt{x}+3$, $g(x)=\\sqrt{x-2}$의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "둘러싸인 부분의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "평행이동한 것이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "평행사변형 $PABQ$의 넓이와 같다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=f(x)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "서로 다른 모든 실근의 곱은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합성함수",
+            "src": "solution",
+            "quote": "$f(f(x))=0$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "f(f(x))=0 을 f(x)=-1 또는 f(x)=2 로 나누어 푸는 합성함수 방정식 풀이다"
+          },
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의해",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "집합 $X=\\{x\\mid x\\ge k\\}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "실수 $k$의 값을 구하는"
+          }
+        ],
+        "method": [
+          {
+            "term": "일대일대응",
+            "src": "solution",
+            "quote": "일대일대응이어야 한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "치역",
+            "src": "solution",
+            "quote": "치역이 같아야 하므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정의역제한",
+            "src": "solution",
+            "quote": "조건 $k\\ge 3$을 만족시키는 값은"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "속력",
+            "src": "stem",
+            "quote": "평균 $80\\text{ km/h}$의 속력으로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "평균 속력 $y$의 최댓값"
+          },
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "변환",
+            "src": "solution",
+            "quote": "(1)의 식을 변형하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "따라서 $y$는 증가한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "구간",
+            "src": "stem",
+            "quote": "$0.5\\le x\\le 2.5$일 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "두 함수 $f(x)=\\dfrac{1}{3}x+1$, $g(x)=6x-1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $h(x)$를 구하는"
+          }
+        ],
+        "method": [
+          {
+            "term": "역함수",
+            "src": "solution",
+            "quote": "$x$와 $y$를 서로 바꾸면",
+            "evidenceType": "IMPLIED",
+            "justification": "y=x/3+1 에서 x 와 y 를 바꿔 역함수 3x-3 을 구하는 방법이다"
+          },
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "계수를 비교하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "함수 $y=\\sqrt{2x-4}$의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$k$의 값의 범위를 구하는"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "이를 직선 $y=\\dfrac{1}{2}x+k$에 대입하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $D>0$에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "두 근의 곱이 $0$ 이상이어야 한다",
+            "evidenceType": "IMPLIED",
+            "justification": "두 근의 합 4>0 이므로 두 근이 모두 0 이상이려면 곱이 0 이상이면 된다는 근과 계수의 관계 활용이다"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ]
+}

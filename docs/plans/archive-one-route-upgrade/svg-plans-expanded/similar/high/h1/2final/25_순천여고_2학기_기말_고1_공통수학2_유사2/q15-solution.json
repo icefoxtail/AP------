@@ -1,0 +1,87 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "9",
+   "0"
+  ],
+  "denominator": [
+   "0",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -1,
+   13
+  ],
+  "viewport": [
+   -1,
+   13,
+   -1,
+   10.5
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "formulaLabel": "y=9/x",
+  "overlays": {
+   "lines": [
+    {
+     "id": "L",
+     "slope": "-1",
+     "intercept": "10",
+     "label": "y=-x+10"
+    }
+   ],
+   "points": [
+    {
+     "id": "P",
+     "curveX": "1",
+     "coordinates": true
+    },
+    {
+     "id": "Q",
+     "curveX": "9",
+     "coordinates": true
+    },
+    {
+     "id": "O",
+     "x": "0",
+     "y": "0"
+    }
+   ],
+   "polygons": [
+    {
+     "id": "T",
+     "points": [
+      "O",
+      "P",
+      "Q"
+     ],
+     "fill": "LIGHT"
+    }
+   ]
+  },
+  "displayWindow": [
+   -1,
+   13,
+   -1,
+   10.5
+  ]
+ },
+ "pointNames": {
+  "P": "P",
+  "Q": "Q",
+  "O": "O"
+ },
+ "coordinatePlacement": "PANEL",
+ "caption": "교점의 x좌표 u, v는 x²-mx+9=0의 두 근이므로 u+v=m, uv=9이고 삼각형 OPQ의 넓이는 (1/2)m|u-v|이다. 넓이가 40이므로 m²(m²-36)=6400에서 m²=100, m=10이다. 이때 교점은 P(1,9), Q(9,1)이다. 따라서 답은 ④이다.",
+ "accessibilityDescription": "제1사분면에서 반비례 곡선과 오른쪽 아래로 내려가는 직선이 두 점 P, Q에서 만나고, 원점 O와 P, Q를 꼭짓점으로 하는 삼각형이 색칠되어 있다.",
+ "newVisualInformation": [
+  "m=10일 때의 두 교점 P(1,9), Q(9,1)과 삼각형 OPQ"
+ ]
+}

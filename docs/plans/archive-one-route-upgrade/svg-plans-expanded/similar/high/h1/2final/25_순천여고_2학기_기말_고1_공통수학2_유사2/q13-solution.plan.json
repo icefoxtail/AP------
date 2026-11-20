@@ -1,0 +1,166 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -5,
+   6,
+   -4,
+   6
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "RATIONAL",
+    "numerator": [
+     "1",
+     "2"
+    ],
+    "denominator": [
+     "-1",
+     "1"
+    ],
+    "domain": [
+     "-4",
+     "4"
+    ],
+    "color": "BLUE",
+    "hideLabels": [
+     "asymptotes"
+    ],
+    "hideLabel": true
+   },
+   {
+    "id": "g",
+    "kind": "RATIONAL",
+    "numerator": [
+     "5",
+     "1"
+    ],
+    "denominator": [
+     "2",
+     "1"
+    ],
+    "domain": [
+     "-4",
+     "4"
+    ],
+    "color": "WARM",
+    "hideLabels": [
+     "asymptotes"
+    ],
+    "hideLabel": true
+   },
+   {
+    "id": "h",
+    "kind": "RATIONAL",
+    "numerator": [
+     "-1",
+     "-1"
+    ],
+    "denominator": [
+     "-2",
+     "1"
+    ],
+    "domain": [
+     "-4",
+     "4"
+    ],
+    "color": "GREEN",
+    "label": "h"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "pf",
+     "x": "4",
+     "y": "3",
+     "unnamed": true
+    },
+    {
+     "id": "pg",
+     "x": "4",
+     "y": "3/2",
+     "unnamed": true
+    },
+    {
+     "id": "vg",
+     "x": "-2",
+     "y": "5",
+     "unnamed": true
+    },
+    {
+     "id": "vf",
+     "x": "1",
+     "y": "9/2",
+     "unnamed": true
+    },
+    {
+     "id": "hf",
+     "x": "5",
+     "y": "2",
+     "unnamed": true
+    },
+    {
+     "id": "hg",
+     "x": "5",
+     "y": "1",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "n1",
+     "point": "pf",
+     "text": "f",
+     "labelKind": "MATH",
+     "direction": "NE"
+    },
+    {
+     "id": "n2",
+     "point": "pg",
+     "text": "g",
+     "labelKind": "MATH",
+     "direction": "E"
+    },
+    {
+     "id": "a1",
+     "point": "vg",
+     "text": "x=-2",
+     "labelKind": "MATH",
+     "direction": "W"
+    },
+    {
+     "id": "a2",
+     "point": "vf",
+     "text": "x=1",
+     "labelKind": "MATH",
+     "direction": "N"
+    },
+    {
+     "id": "a4",
+     "point": "hf",
+     "text": "y=2",
+     "labelKind": "MATH",
+     "direction": "N"
+    },
+    {
+     "id": "a5",
+     "point": "hg",
+     "text": "y=1",
+     "labelKind": "MATH",
+     "direction": "S"
+    }
+   ]
+  }
+ },
+ "caption": "기준 f(파란색)는 y=(2x+1)/(x-1)=2+3/(x-1)이다. 보기 ㄱ을 g(주황색)로 두면 g=1+3/(x+2)로 분수 부분의 계수가 3이어서 평행이동하면 겹치고, 보기 ㄷ을 h(초록색)로 두면 h=-1-3/(x-2)로 계수가 -3이어서 대칭이동과 평행이동으로 겹친다. ㄴ(계수 1)과 ㄹ(계수 -2)은 계수의 절댓값이 3이 아니어서 겹치지 않는다. 따라서 답은 ③이다.",
+ "newVisualInformation": [
+  "기준 그래프와 ㄱ, ㄷ을 함께 그려 점근선의 이동과 모양이 같음을 보인다."
+ ]
+}
