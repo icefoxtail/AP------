@@ -1,0 +1,214 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sOA",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sOB",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sOP",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sPA",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "P",
+          "A"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sPB",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "P",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sPA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sPB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "P"
+  ],
+  "coordinateLabels": [
+    "O",
+    "A",
+    "B",
+    "P"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "각의 이등분선 위의 점 P (POA, POB, OP, 90)",
+      "mappedTo": [
+        "O",
+        "A",
+        "B",
+        "P",
+        "sOA",
+        "sOB",
+        "sOP",
+        "sPA",
+        "sPB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 직각삼각형 $POA$와 $POB$는 빗변의 길이와 OP 90"
+  ],
+  "caption": "두 직각삼각형 $POA$와 $POB$는 빗변의 길이와 OP 90"
+}

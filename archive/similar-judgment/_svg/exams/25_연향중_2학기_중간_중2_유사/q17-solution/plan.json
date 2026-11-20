@@ -1,0 +1,195 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sAB",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sBC",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sCA",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sAP",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "P"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sAP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C",
+    "P"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "삼각형 넓이비와 밑변비 (ABP, APC, BP, PC, 2, 3)",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "P",
+        "sAB",
+        "sBC",
+        "sCA",
+        "sAP"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "$\\triangle ABP$와 $\\triangle APC$는 높이가 같으므로 넓이의 비는 BP PC 2 3"
+  ],
+  "caption": "$\\triangle ABP$와 $\\triangle APC$는 높이가 같으므로 넓이의 비는 BP PC 2 3"
+}

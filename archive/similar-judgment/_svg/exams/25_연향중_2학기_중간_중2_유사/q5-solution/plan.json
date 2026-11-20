@@ -1,0 +1,94 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sAB",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직선의 사분면 통과 (a, b, 0)",
+      "mappedTo": [
+        "A",
+        "B",
+        "sAB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "기울기 -1/a > 0, y절편 a b 0"
+  ],
+  "caption": "기울기 -1/a > 0, y절편 a b 0"
+}

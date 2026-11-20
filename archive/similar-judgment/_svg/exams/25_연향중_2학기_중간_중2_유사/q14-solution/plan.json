@@ -1,0 +1,255 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sAB",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sBC",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sCD",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sDA",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "D",
+          "A"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sDE",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "D",
+          "E"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sAE",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "E"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sAE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평행사변형과 수선 AE (ADC, 180, 116, 64)",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "sAB",
+        "sBC",
+        "sCD",
+        "sDA",
+        "sDE",
+        "sAE"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평행사변형에서 이웃한 두 각의 합은 $180^\\circ$이므로 ADC 116 64"
+  ],
+  "caption": "평행사변형에서 이웃한 두 각의 합은 $180^\\circ$이므로 ADC 116 64"
+}

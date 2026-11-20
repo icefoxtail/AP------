@@ -1,0 +1,255 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sAB",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sBC",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sCA",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sBD",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sCE",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "C",
+          "E"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sDE",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "D",
+          "E"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sCE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직각이등변삼각형 ABC와 수선 BD, CE (ADB, CEA, AB, AC, 90)",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "sAB",
+        "sBC",
+        "sCA",
+        "sBD",
+        "sCE",
+        "sDE"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "$\\angle ADB = \\angle CEA = 90^\\circ$ AB AC"
+  ],
+  "caption": "$\\angle ADB = \\angle CEA = 90^\\circ$ AB AC"
+}
