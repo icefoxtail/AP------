@@ -1,0 +1,57 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "3",
+          "-12",
+          "2"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ],
+        "label": "y=2(x-3)^2-15"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "5",
+          "-18",
+          "3"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ],
+        "label": "y=3(x-3)^2-22"
+      }
+    ],
+    "viewport": [
+      0,
+      6,
+      -25,
+      5
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점의 x좌표 b=3a=3으로 일치하는 두 포물선",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "b=3a로 꼭짓점의 x좌표가 3으로 일치",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "대칭축이 일치하는 두 포물선"
+  ]
+}

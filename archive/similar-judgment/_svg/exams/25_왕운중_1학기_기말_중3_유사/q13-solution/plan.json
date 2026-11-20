@@ -1,0 +1,85 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-5"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ],
+        "label": "y=-5x^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "5/2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=5/2x^2"
+      },
+      {
+        "id": "c3",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=-2x^2"
+      },
+      {
+        "id": "c4",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1/4"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=1/4x^2"
+      }
+    ],
+    "viewport": [
+      -4,
+      4,
+      -8,
+      8
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "절댓값 5, 2.5, 2, 0.25에 따른 포물선의 폭 비교",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "절댓값 5, 2.5, 2 순으로 폭이 좁아짐",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "계수의 절댓값에 따른 포물선의 폭"
+  ]
+}

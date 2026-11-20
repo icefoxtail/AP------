@@ -1,0 +1,56 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "1",
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "label": "y=(x-2)^2-3"
+      },
+      {
+        "id": "c2",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "label": "y=x-2"
+      }
+    ],
+    "viewport": [
+      -2,
+      6,
+      -5,
+      6
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "a > 0, b < 0 일 때 포물선과 일차함수 y=ax+b의 개형",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a > 0, b < 0 인 포물선과 직선",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "기울기 양수, y절편 음수인 직선"
+  ]
+}

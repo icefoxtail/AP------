@@ -1,0 +1,61 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-5",
+      "-4",
+      "1"
+    ],
+    "domain": [
+      -3,
+      7
+    ],
+    "viewport": [
+      -4,
+      8,
+      -11,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 5,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 2,
+        "y": -9
+      },
+      {
+        "id": "D",
+        "x": 0,
+        "y": -5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "포물선 위의 점 A, B, C, D와 y축 위의 점 E",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=x^2-4x-5 위의 점 A, B, C, D 및 E(0, 5)",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "포물선과 삼각형을 이루는 주요 점들"
+  ]
+}

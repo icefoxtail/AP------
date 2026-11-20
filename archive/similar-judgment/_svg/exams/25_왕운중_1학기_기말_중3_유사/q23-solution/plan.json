@@ -1,0 +1,51 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "9",
+      "-12",
+      "3"
+    ],
+    "domain": [
+      0,
+      5
+    ],
+    "viewport": [
+      -1,
+      6,
+      -5,
+      12
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": -3
+      },
+      {
+        "id": "P",
+        "x": 4,
+        "y": 9
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점 (2, -3)이고 점 (4, 9)를 지나는 a=3인 포물선",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "꼭짓점 (2, -3), 점 (4, 9), 최고차항 계수 3",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점과 지나는 점이 주어진 포물선"
+  ]
+}

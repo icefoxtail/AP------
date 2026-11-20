@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "3",
+      "0",
+      "-2"
+    ],
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -5,
+      5,
+      -18,
+      5
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "id": "P",
+        "x": 3,
+        "y": -15
+      },
+      {
+        "id": "Q",
+        "x": -3,
+        "y": -15
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "y=-2x^2+3의 그래프 위의 점 (3, -15), (-3, -15), 두 k값의 곱은 -9",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=-2x^2+3 위의 두 점 x=3, -3에서 y=-15, k의 곱은 -9",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "y축 방향 평행이동과 대칭적인 두 점"
+  ]
+}

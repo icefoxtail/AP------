@@ -1,0 +1,61 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-5",
+      "-4",
+      "1"
+    ],
+    "domain": [
+      -3,
+      7
+    ],
+    "viewport": [
+      -4,
+      8,
+      -11,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 5,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 2,
+        "y": -9
+      },
+      {
+        "id": "D",
+        "x": 0,
+        "y": -5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "공통 밑변 AB에 대해 높이의 비가 9 : 5 임을 나타냄",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑변 AB 공유, 높이 9와 5의 비 9 : 5",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "두 삼각형의 높이 비교"
+  ]
+}

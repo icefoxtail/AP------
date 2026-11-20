@@ -1,0 +1,57 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-2",
+          "0",
+          "4"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=4x^2-2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "34",
+          "-24",
+          "4"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ],
+        "label": "y=4(x-3)^2-2"
+      }
+    ],
+    "viewport": [
+      -3,
+      6,
+      -4,
+      15
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "a=4일 때 y=4x^2-2를 x축 방향으로 3만큼 평행이동, b=-3, a+b=1",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=4, b=-3, a+b=1 평행이동 포물선",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "x축 방향으로 3만큼 평행이동한 포물선"
+  ]
+}

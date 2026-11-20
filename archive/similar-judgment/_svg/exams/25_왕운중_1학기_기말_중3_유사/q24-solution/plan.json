@@ -1,0 +1,51 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "9",
+      "-18",
+      "3"
+    ],
+    "domain": [
+      -1,
+      7
+    ],
+    "viewport": [
+      -2,
+      8,
+      -20,
+      12
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": -18
+      },
+      {
+        "id": "P",
+        "x": 0,
+        "y": 9
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "y절편 9, 대칭축 3, 꼭짓점 y좌표 -18인 포물선 f(x)=3x^2-18x+9",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(0)=9, 축 x=3, k=-18",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "조건을 만족하는 이차함수의 그래프"
+  ]
+}
