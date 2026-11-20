@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=x^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1/3"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "label": "y=ax^2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "점 H(t, 0)에서 AH=t^2, BH=at^2의 비율을 이용한 a 결정",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AH=t^2, BH=at^2",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "선분 AH와 BH의 길이비"
+  ]
+}

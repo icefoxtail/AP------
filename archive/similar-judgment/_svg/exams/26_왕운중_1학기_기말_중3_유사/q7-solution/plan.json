@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "15",
+      "20",
+      "5"
+    ],
+    "domain": [
+      -4,
+      0
+    ],
+    "viewport": [
+      -5,
+      1,
+      -6,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -2,
+        "y": -5
+      },
+      {
+        "id": "X1",
+        "x": -3,
+        "y": 0
+      },
+      {
+        "id": "X2",
+        "x": -1,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "a=5일 때 y=5(x+2)^2-5의 두 근 x=-3, x=-1 사이의 차 2와 꼭짓점 (-2, -5)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "5(x+2)^2=a, a=5",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "두 근의 차 2와 대칭축 x=-2"
+  ]
+}

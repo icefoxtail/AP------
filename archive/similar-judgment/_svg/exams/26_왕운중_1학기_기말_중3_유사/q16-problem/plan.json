@@ -1,0 +1,60 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "3",
+          "-2",
+          "-1"
+        ],
+        "domain": [
+          "-3",
+          "1"
+        ],
+        "label": "y=-x^2-2x+3"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-5",
+          "6",
+          "-1"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ],
+        "label": "y=-x^2+6x-5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "l1",
+          "slope": "0",
+          "intercept": "1/2"
+        }
+      ]
+    }
+  },
+  "caption": "직선 y=1/2과 만나는 점 A, B, C, D 및 두 포물선",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 포물선과 직선 y=1/2",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "두 포물선의 네 교점 A, B, C, D"
+  ]
+}

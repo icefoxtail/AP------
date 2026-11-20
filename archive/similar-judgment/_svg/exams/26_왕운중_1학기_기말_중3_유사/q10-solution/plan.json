@@ -1,0 +1,46 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "18",
+      "-20",
+      "2"
+    ],
+    "domain": [
+      2,
+      8
+    ],
+    "viewport": [
+      1,
+      9,
+      -35,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 5,
+        "y": -32
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "두 자연수 해를 갖는 정수 k의 값 1, 7, 17, 31과 합 56",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "2(x-5)^2=k+1, k=1,7,17,31",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "자연수 해와 꼭짓점 x=5 대칭성"
+  ]
+}

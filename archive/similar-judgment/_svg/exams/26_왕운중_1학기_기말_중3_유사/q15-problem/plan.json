@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-9",
+      "0",
+      "1"
+    ],
+    "domain": [
+      -4,
+      5
+    ],
+    "viewport": [
+      -5,
+      6,
+      -11,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "X1",
+        "x": -3,
+        "y": 0
+      },
+      {
+        "id": "X2",
+        "x": 3,
+        "y": 0
+      },
+      {
+        "id": "Y",
+        "x": 0,
+        "y": -9
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "x축과의 교점 (-3, 0), (3, 0)과 y축 교점 (0, -9)를 지나는 포물선 y=f(x)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x절편 ±3, y절편 -9",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "두 x절편과 꼭짓점 (0, -9)"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "2",
+      "-4/3",
+      "-2/9"
+    ],
+    "domain": [
+      -6,
+      1
+    ],
+    "viewport": [
+      -7,
+      2,
+      -6,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -3,
+        "y": 4
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점 (-3, 4)를 갖고 9a+4>0으로 모든 사분면을 지나는 위로 볼록한 포물선",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "꼭짓점 (-3, 4), 모든 사분면 통과",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "모든 사분면을 지나는 개형"
+  ]
+}

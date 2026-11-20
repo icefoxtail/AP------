@@ -1,0 +1,51 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-3",
+      "3",
+      "-3/4"
+    ],
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -2,
+      6,
+      -8,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "id": "Y",
+        "x": 0,
+        "y": -3
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점이 (2, 0)이고 y절편이 -3인 포물선 y=a(x-2)^2의 상수 a",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "꼭짓점 (2, 0), y절편 (0, -3)",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점과 y절편의 위치"
+  ]
+}

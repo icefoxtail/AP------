@@ -1,0 +1,49 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "3",
+          "2",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ]
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-21",
+          "10",
+          "-1"
+        ],
+        "domain": [
+          "3",
+          "7"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점 P(1, 4), Q(5, 4)에서 밑변 4, 높이 4 직사각형 분할에 의한 넓이 계산",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P(1, 4), Q(5, 4)",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "등적변형에 의한 직사각형 넓이"
+  ]
+}

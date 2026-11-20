@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=x^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1/3"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "label": "y=ax^2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "두 포물선 y=x^2, y=ax^2 위의 점 A, B와 수선의 발 H",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=x^2, y=ax^2",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "동일한 x좌표를 갖는 점 A, B와 H"
+  ]
+}

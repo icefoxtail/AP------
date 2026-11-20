@@ -1,0 +1,49 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "3",
+          "2",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ]
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-21",
+          "10",
+          "-1"
+        ],
+        "domain": [
+          "3",
+          "7"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점 P, Q를 갖는 그림 1과 R을 꼭짓점으로 하는 그림 2의 평행이동 영역",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "그림 1, 2 꼭짓점 P, Q, R",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "두 꼭짓점 P, Q 사이의 간격"
+  ]
+}

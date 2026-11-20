@@ -1,0 +1,60 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "3",
+          "-2",
+          "-1"
+        ],
+        "domain": [
+          "-3",
+          "1"
+        ],
+        "label": "y=-x^2-2x+3"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-5",
+          "6",
+          "-1"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ],
+        "label": "y=-x^2+6x-5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "l1",
+          "slope": "0",
+          "intercept": "1/2"
+        }
+      ]
+    }
+  },
+  "caption": "x축 방향 4만큼 평행이동한 두 포물선의 같은 높이 점 A, B 및 길이",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평행이동 거리 4",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "평행이동에 의한 수평 변위 4"
+  ]
+}

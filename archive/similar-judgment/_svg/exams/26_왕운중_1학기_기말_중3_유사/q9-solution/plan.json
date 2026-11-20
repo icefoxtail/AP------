@@ -1,0 +1,46 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-7",
+      "4",
+      "2"
+    ],
+    "domain": [
+      -4,
+      2
+    ],
+    "viewport": [
+      -5,
+      3,
+      -10,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -1,
+        "y": -9
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "포물선 y=2x^2+4x-7과 x축 교점 사이의 정수 -3, -2, -1, 0, 1의 5개",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "2x^2+4x-7=0",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "두 근 사이 정수해 5개의 위치"
+  ]
+}

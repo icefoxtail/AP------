@@ -1,0 +1,51 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "21",
+      "-4",
+      "-1"
+    ],
+    "domain": [
+      -5,
+      3
+    ],
+    "viewport": [
+      -6,
+      4,
+      -5,
+      30
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -2,
+        "y": 25
+      },
+      {
+        "id": "B",
+        "x": 0,
+        "y": 21
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점 A(-2, 25), y절편 B(0, 21), 원점 O에 의한 삼각형 ABO 넓이 21",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A(-2, 25), B(0, 21), 넓이 21",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 ABO의 형상"
+  ]
+}
