@@ -1,0 +1,74 @@
+{
+  "qid": 18,
+  "itemFingerprint": "2f23a4af4d85a37f",
+  "solveSteps": [
+    "∠APB=90° 인 점 P 는 선분 AB 를 지름으로 하는 원 위(A,B 제외)에 있다. 중점 (1,2), AB=sqrt40 이므로 중심 (1,2), 반지름 sqrt10.",
+    "직선 x-2y-k=0 이 이 원과 만나려면 중심 (1,2) 에서 거리 |1-4-k|/sqrt5 ≤ sqrt10, 즉 |k+3|≤5sqrt2≈7.07.",
+    "정수 k+3 은 -7~7 이므로 -10≤k≤4, 15개. 합은 15·(-10+4)/2=-45, 보기 ⑤."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-03",
+  "subUnitKey": "H22-C2-03-INTERSECTION",
+  "unitEvidence": "원 위의 점이 직선 $l:x-2y-k=0$ 위에도 존재하려면",
+  "rpmRecordId": "H1-RPM-219",
+  "rpmReason": "∠APB=90° 인 원(지름 AB)의 중심 (1,2) 에서 직선 x-2y-k=0 까지의 거리 |k+3|/sqrt5 와 반지름 sqrt10 을 비교해 교점이 있을 조건 |k+3|≤5sqrt2 를 얻는 단계라 원과 직선의 교점 개수 행이다.",
+  "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+  "templateKey": "TM_CIRCLE_LINE_POSITION",
+  "typeReason": "지름이 AB 인 원 (중심 (1,2), 반지름 sqrt10) 과 직선 x-2y=k 가 만나려면 거리 |k+3|/sqrt5 가 반지름 이하여야 한다는 위치 관계로 -10≤k≤4 를 얻는 단계가 원과 직선의 위치 관계 템플릿과 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "90° 조건을 지름 AB 의 원으로 바꾸고, 점과 직선 사이 거리 |k+3|/sqrt5≤sqrt10 으로 -10≤k≤4 를 얻어 15개의 합 -45 를 구하는 네 단계이나 각 단계는 표준적이어서 3단계로 보며 4단계와의 경계다.",
+  "difficultyBoundaryFlag": "B34",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "점",
+        "src": "stem",
+        "quote": "두 점 $A(-2,1)$, $B(4,3)$과"
+      },
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직선 $l:x-2y=k$가 있다"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "모든 정수 $k$의 값의 합은"
+      }
+    ],
+    "method": [
+      {
+        "term": "점과직선사이의거리",
+        "src": "solution",
+        "quote": "중심 $(1,2)$에서 직선 $l$까지의 거리가 반지름 이하이어야 한다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양화",
+        "src": "stem",
+        "quote": "어떤 점 $P$에 대하여"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "직각 조건을 지름 AB 인 원으로 바꾸고 거리 조건으로 k 의 범위와 합 -45 를 구해 ⑤ 를 확인했다. 해설과 같고 명제 형태이지만 풀이의 결정 단계는 원과 직선의 위치 관계다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

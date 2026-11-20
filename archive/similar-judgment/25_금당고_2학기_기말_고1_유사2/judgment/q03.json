@@ -1,0 +1,69 @@
+{
+  "qid": 3,
+  "itemFingerprint": "1d8c693c8b76e347",
+  "solveSteps": [
+    "A=B 이므로 두 집합의 원소가 같다. A={2,a-1,7}, B={2,5,b+3} 에서 공통인 2 를 빼면 {a-1,7} 과 {5,b+3} 이 같다.",
+    "7 은 5 와 다르므로 b+3=7, 따라서 a-1=5.",
+    "a=6, b=4 이므로 a+b=10, 보기 ⑤."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-05",
+  "subUnitKey": "H22-C2-05-CORE",
+  "unitEvidence": "$A=B$이므로 두 집합의 원소가 모두 같아야 한다.",
+  "rpmRecordId": "H1-RPM-236",
+  "rpmReason": "A=B 에서 a-1=5, b+3=7 을 세워 상수 a=6, b=4 를 정해 a+b=10 을 얻는 단계라 매개변수 조건 행이다.",
+  "problemTypeKey": "PT_SET_EQUALITY",
+  "templateKey": "TPL_EQUAL_SET_PARAMETER",
+  "typeReason": "공통 원소 2 를 제외하고 남은 원소끼리 a-1=5, b+3=7 로 대응시켜 a=6, b=4, a+b=10 을 구하는 단계가 서로 같은 집합에서 미지수 구하기와 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "집합이 같다는 정의로 a-1=5, b+3=7 두 일차식만 풀어 a+b=10 을 얻는 두 줄 풀이라 1단계다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "집합",
+        "src": "stem",
+        "quote": "두 집합 $A="
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$a+b$의 값은"
+      }
+    ],
+    "method": [
+      {
+        "term": "대응",
+        "src": "solution",
+        "quote": "남은 원소끼리 대응하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "는 상수이다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "남은 원소끼리 짝지어 a=6, b=4 를 구해 a+b=10 으로 ⑤를 확인했다. 해설과 같고 서로 같은 집합에서 미지수를 구하는 유형이다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

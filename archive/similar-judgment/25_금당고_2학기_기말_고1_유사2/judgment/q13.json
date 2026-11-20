@@ -1,0 +1,76 @@
+{
+  "qid": 13,
+  "itemFingerprint": "9ef043c03440d6ff",
+  "solveSteps": [
+    "3x>0, 4y>0 이므로 3x+4y≥2sqrt(3x·4y)=2sqrt(12xy).",
+    "xy=12 이므로 2sqrt(144)=24, 최솟값 m=24.",
+    "등호는 3x=4y 일 때이고 3x+4y=24 이므로 3x=4y=12, x=4, y=3.",
+    "m+a+b=24+4+3=31, 보기 ①."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "산술평균과 기하평균의 관계에 의해",
+  "rpmRecordId": "H1-RPM-250",
+  "rpmReason": "xy=12 일 때 3x+4y≥2sqrt(12·12)=24 로 산술평균·기하평균 부등식을 쓰는 단계라 절대부등식 행에 가장 가깝다(최솟값 활용 전용 행은 없다).",
+  "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+  "templateKey": "TPL_AMGM_MINIMUM",
+  "typeReason": "3x+4y≥2sqrt(12xy)=24 로 산술평균과 기하평균의 관계에서 최솟값 24 를 얻고 등호 조건 3x=4y 에서 x=4, y=3 을 찾는 단계가 산술평균과 기하평균을 이용한 최솟값 템플릿과 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "xy=12 가 곱이 일정한 꼴이라 산술·기하평균 부등식을 바로 쓰고, 등호 조건 3x=4y 에서 x=4, y=3 을 구하는 두 단계라 2단계다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "양수",
+        "src": "stem",
+        "quote": "두 양수 $x,y$에 대하여 $xy=12$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "$3x+4y$의 최솟값을 $m$"
+      }
+    ],
+    "method": [
+      {
+        "term": "산술기하평균",
+        "src": "solution",
+        "quote": "산술평균과 기하평균의 관계에 의해",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$xy=12$를 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "등호조건",
+        "src": "solution",
+        "quote": "등호는 $3x=4y$일 때 성립한다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "산술·기하평균으로 m=24, 등호 조건에서 x=4, y=3 을 얻어 31 로 ① 을 확인했다. 해설과 같다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

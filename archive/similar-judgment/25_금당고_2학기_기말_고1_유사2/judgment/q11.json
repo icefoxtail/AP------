@@ -1,0 +1,71 @@
+{
+  "qid": 11,
+  "itemFingerprint": "1b046d2aa94925a7",
+  "solveSteps": [
+    "3의 약수 {1,3} 은 6의 약수에 모두 속하므로 A_3∪A_6=A_6.",
+    "A_48∩A_72 는 48과 72의 공약수 집합이고 최대공약수가 24 이므로 A_24.",
+    "A_6⊆A_n⊆A_24 이므로 n 은 6의 배수이면서 24의 약수여서 n=6,12,24.",
+    "합은 6+12+24=42, 보기 ④."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-05",
+  "subUnitKey": "H22-C2-05-CORE",
+  "unitEvidence": "$3$의 양의 약수는 모두 $6$의 양의 약수이므로",
+  "rpmRecordId": "H1-RPM-235",
+  "rpmReason": "A_6⊆A_n⊆A_24 로 약수 집합 사이의 포함 관계를 n 의 배수·약수 조건 n=6,12,24 로 바꾸는 단계라 두 집합의 포함 행이다.",
+  "problemTypeKey": "PT_SET_INCLUSION",
+  "templateKey": "TPL_INCLUSION_DIVISOR_MULTIPLE",
+  "typeReason": "A_6⊆A_n 에서 n 은 6의 배수, A_n⊆A_24 에서 n 은 24의 약수로 바꿔 n=6,12,24 를 얻는 단계가 약수·배수의 집합 사이의 포함 관계 템플릿과 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "A_3∪A_6=A_6 과 A_48∩A_72=A_24 로 먼저 정리하고, 포함 관계를 6의 배수·24의 약수로 해석해 n=6,12,24 를 찾아야 하는 세 단계 풀이다.",
+  "difficultyBoundaryFlag": "B23",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "약수",
+        "src": "stem",
+        "quote": "양의 약수를 원소로 하는 집합"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "모든 자연수 $n$의 값의 합은"
+      }
+    ],
+    "method": [
+      {
+        "term": "열거",
+        "src": "solution",
+        "quote": "$6,12,24$이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "24의 약수 가운데 6의 배수를 나열해 합을 구한다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "포함관계",
+        "src": "solution",
+        "quote": "주어진 포함 관계는"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "합집합·교집합을 A_6, A_24 로 줄이고 n=6,12,24 의 합 42 로 ④ 를 확인했다. 해설과 같다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "qid": 16,
+  "itemFingerprint": "72d1654470a89c14",
+  "solveSteps": [
+    "그림에서 sqrt(ax+b)+c 의 시작점 (-3,2) 이므로 c=2, b=3a. 그래프가 (0,5) 를 지나므로 5=sqrt(b)+2, b=9, a=3.",
+    "유리함수는 y=(3x+9)/(x+2)=3/(x+2)+3, 점근선 x=-2, y=3.",
+    "x=0 일 때 y=9/2>0, x=-3 일 때 y=0 이므로 그래프는 제1,2,3사분면을 지나고 제4사분면은 지나지 않는다. 보기 ④."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "의 그래프가 그림과 같을 때",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-08",
+  "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+  "unitEvidence": "두 점근선은 $x=-2$, $y=3$이고 비례상수가 $3>0$이다.",
+  "rpmRecordId": "H1-RPM-262",
+  "rpmReason": "sqrt(ax+b) 에서 얻은 y=3/(x+2)+3 의 점근선 x=-2, y=3 과 y절편 9/2, x절편 -3 으로 지나는 사분면을 정하는 그래프의 사분면 행이다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+  "templateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
+  "typeReason": "y=sqrt(ax+b)+c 그래프에서 읽은 A(-3,2), B(0,5) 로 a=3, b=9, c=2 를 정한 뒤 유리함수 y=(3x+9)/(x+2) 가 지나는 사분면을 구하는 단계가 다른 함수와 비교한 사분면 관계 템플릿과 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "sqrt(ax+b)+c 의 그림에서 A(-3,2), B(0,5) 로 a=3, b=9, c=2 를 정하고, 유리함수를 y=3/(x+2)+3 으로 고쳐 점근선과 절편으로 사분면을 판정하는 세 단계이나 두 함수를 오가는 점이 있어 4단계와의 경계다.",
+  "difficultyBoundaryFlag": "B34",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "의 그래프가 그림과 같을 때"
+      },
+      {
+        "term": "유리함수",
+        "src": "stem",
+        "quote": "유리함수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사분면",
+        "src": "stem",
+        "quote": "지나지 않는 사분면은"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "그래프가 점 $(0,5)$를 지나므로",
+        "evidenceType": "IMPLIED",
+        "justification": "점 (0,5) 의 좌표를 5=sqrt(b)+2 에 넣어 b 를 구한다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "통과",
+        "src": "solution",
+        "quote": "그래프가 점 $(0,5)$를 지나므로"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "그림의 두 점 (-3,2), (0,5) 로 sqrt(ax+b)+c 의 a=3, b=9, c=2 를 구하고 유리함수 y=(3x+9)/(x+2) 의 사분면을 직접 확인해 ④ 를 얻었다. 해설과 같다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

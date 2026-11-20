@@ -1,0 +1,69 @@
+{
+  "qid": 1,
+  "itemFingerprint": "6a1065aafebf77e8",
+  "solveSteps": [
+    "ㄱ 의 \"10에 가까운\"은 기준이 사람마다 달라 대상이 분명하지 않으므로 집합이 아니다.",
+    "ㄴ 은 x^2-4=0 의 실근 -2, 2 로 정해지고 ㄹ 은 12의 양의 약수 1,2,3,4,6,12 로 정해져 집합이다. ㄷ 은 \"많은\"이 모호해 집합이 아니다.",
+    "집합인 것은 ㄴ, ㄹ 이므로 보기 ③."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-05",
+  "subUnitKey": "H22-C2-05-CORE",
+  "unitEvidence": "집합은 그 모임에 속하는 대상을 분명하게 정할 수 있어야 한다.",
+  "rpmRecordId": "H1-RPM-231",
+  "rpmReason": "ㄴ 의 x^2-4=0 실근 {-2,2}, ㄹ 의 12의 약수 {1,2,3,4,6,12} 처럼 모임의 원소가 분명한지 따지는 집합과 원소의 단계라 집합과 원소 행이다.",
+  "problemTypeKey": "PT_SET_DEFINITION",
+  "templateKey": "TPL_SET_IDENTIFY",
+  "typeReason": "보기 ㄱ~ㄹ 네 모임 가운데 ㄱ 의 10에 가까운 자연수와 ㄹ 의 12의 약수 중 \"가까운\", \"많은\" 처럼 기준이 모호한 ㄱ, ㄷ 을 가려 내고 ㄴ, ㄹ 을 집합으로 고르는 단계가 집합인지 판정하기 정의와 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "집합의 조건 \"대상을 분명하게 정할 수 있다\"를 ㄱ 의 10에 가까운 자연수, ㄹ 의 12의 약수 등 네 모임에 바로 적용하면 끝이라 1단계다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "가까운 자연수의 모임"
+      },
+      {
+        "term": "약수",
+        "src": "stem",
+        "quote": "의 양의 약수의 모임"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "집합인 것을 모두 고른 것은"
+      }
+    ],
+    "method": [
+      {
+        "term": "경우분류",
+        "src": "solution",
+        "quote": "기준이 사람마다 다르므로",
+        "evidenceType": "IMPLIED",
+        "justification": "ㄱ~ㄹ 모임을 하나씩 집합인지 아닌지로 나누어 따진다"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "발문의 네 모임 ㄱ(10에 가까운 자연수)~ㄹ(12의 약수)을 직접 읽고 ㄴ, ㄹ 만 집합임을 확인해 ③과 맞췄다. 해설도 같은 기준이라 집합의 뜻 유형으로 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

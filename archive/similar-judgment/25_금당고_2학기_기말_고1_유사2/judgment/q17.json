@@ -1,0 +1,76 @@
+{
+  "qid": 17,
+  "itemFingerprint": "5574f1d3e036f98c",
+  "solveSteps": [
+    "A={2,3,5,7}. A∩B 의 원소의 합이 12 인 경우는 {5,7} 또는 {2,3,7}.",
+    "C 는 4의 배수라 소수가 없어 A∩C=∅ 이므로 n(A∪C)=4+n(C). 12≤4+n(C)≤15 에서 8≤n(C)≤11, 즉 32≤k≤47.",
+    "{5,7} 이면 k 는 35 의 배수이고 2,3 의 배수 아님 → 35. {2,3,7} 이면 k 는 42 의 배수이고 5 의 배수 아님 → 42.",
+    "35+42=77, 보기 ⑤."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-05",
+  "subUnitKey": "H22-C2-05-CORE",
+  "unitEvidence": "n(A)+n(C)=4+n(C)",
+  "rpmRecordId": "H1-RPM-238",
+  "rpmReason": "A∩C=∅ 이므로 n(A∪C)=n(A)+n(C)=4+n(C) 로 합집합의 원소 개수를 구해 32≤k≤47 을 얻는 단계라 교집합과 합집합의 원소 개수 행이다.",
+  "problemTypeKey": "PT_SET_CARDINALITY",
+  "templateKey": "TPL_TWO_SET_INCLUSION_EXCLUSION",
+  "typeReason": "A∩C=∅ 일 때 n(A∪C)=n(A)+n(C)=4+n(C) 로 두 집합의 합집합 원소 개수를 구해 8≤n(C)≤11 로 k 의 범위를 얻는 단계가 두 집합의 원소의 개수 템플릿과 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "합이 12 인 A∩B 두 경우 {5,7}, {2,3,7} 를 찾고, n(A∪C)=4+n(C) 로 32≤k≤47 을 얻은 뒤 두 경우의 배수 조건 35, 42 를 가리는 여러 단계라 4단계이나 계산은 단순해 3단계와의 경계다.",
+  "difficultyBoundaryFlag": "B34",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "소수",
+        "src": "stem",
+        "quote": "한 자리의 소수"
+      },
+      {
+        "term": "배수",
+        "src": "stem",
+        "quote": "의 양의 배수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "모든 자연수 $k$의 값의 합은"
+      }
+    ],
+    "method": [
+      {
+        "term": "경우분류",
+        "src": "solution",
+        "quote": "첫째 경우는",
+        "evidenceType": "IMPLIED",
+        "justification": "합이 12 인 A∩B 가 {5,7} 인 경우와 {2,3,7} 인 경우로 나누어 k 를 구한다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "성립조건",
+        "src": "stem",
+        "quote": "가 성립하도록"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "합이 12 인 A∩B 두 경우와 n(C) 범위 32≤k≤47 로 k=35, 42 를 구해 77 로 ⑤ 를 확인했다. 해설과 같다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "qid": 2,
+  "itemFingerprint": "df522a803c7fcfc6",
+  "solveSteps": [
+    "A 는 12의 양의 약수의 집합이므로 A={1,2,3,4,6,12}.",
+    "부분집합은 모든 원소가 A 에 속해야 한다.",
+    "② 의 5, ③ 의 8, ④ 의 9, ⑤ 의 8 은 A 에 없고 ① {1,4,6} 만 모두 A 의 원소이므로 정답 ①."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-05",
+  "subUnitKey": "H22-C2-05-CORE",
+  "unitEvidence": "부분집합이 되려면 그 집합의 모든 원소가 $A$에 속해야 한다.",
+  "rpmRecordId": "H1-RPM-233",
+  "rpmReason": "A={1,2,3,4,6,12} 에 대해 보기 {1,4,6} 의 모든 원소가 A 에 속하는지 확인하는 단계라 부분집합 판정 행이다.",
+  "problemTypeKey": "PT_SUBSET_JUDGMENT",
+  "templateKey": "TPL_SUBSET_DIRECT",
+  "typeReason": "보기마다 원소 5, 8, 9 가 A={1,2,3,4,6,12} 에 속하는지 직접 확인해 부분집합인지 판정하는 단계가 부분집합인지 판정하기와 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "12의 약수 여섯 개를 나열한 뒤 보기 다섯 개의 원소가 속하는지만 보면 되는 한 단계 풀이라 1단계다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "집합",
+        "src": "stem",
+        "quote": "집합 $A="
+      },
+      {
+        "term": "약수",
+        "src": "stem",
+        "quote": "양의 약수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "부분집합인 것은"
+      }
+    ],
+    "method": [
+      {
+        "term": "원소나열법",
+        "src": "solution",
+        "quote": "원소를 모두 구하면",
+        "evidenceType": "IMPLIED",
+        "justification": "12의 양의 약수를 {1,2,3,4,6,12} 로 나열해 놓고 보기 원소와 비교한다"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "12의 약수 A 의 원소를 나열해 보기 ①~⑤ 를 직접 대조해 ①을 얻었고 해설과 같다. 부분집합 정의를 바로 쓰는 문항이라 부분집합 판정 유형이다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

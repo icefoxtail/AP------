@@ -1,0 +1,69 @@
+{
+  "qid": 4,
+  "itemFingerprint": "ad5e68599842b99e",
+  "solveSteps": [
+    "주어진 명제 p→~q 의 대우는 ~(~q)→~p, 즉 q→~p 이다.",
+    "명제와 대우는 참, 거짓이 항상 같으므로 p→~q 가 참이면 q→~p 도 참이다.",
+    "보기 중 q→~p 는 ① 이므로 정답 ①."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "명제와 그 대우는 참, 거짓이 항상 같다.",
+  "rpmRecordId": "H1-RPM-246",
+  "rpmReason": "p→~q 의 대우 q→~p 를 만들어 참 거짓을 옮기는 단계라 명제 변환 행이다.",
+  "problemTypeKey": "PT_PROPOSITION_TRANSFORM",
+  "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_TRUTH_JUDGMENT",
+  "typeReason": "p→~q 가 참이면 대우 q→~p 도 참이라는 대우의 참 거짓 관계로 ① 을 고르는 단계가 역·대우의 참·거짓 템플릿과 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "p→~q 의 대우 q→~p 를 바로 쓰면 되는 정의 적용 한 단계라 1단계다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "명제",
+        "src": "stem",
+        "quote": "가 참일 때, 다음 중 반드시 참인 명제는"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "반드시 참인 명제는"
+      }
+    ],
+    "method": [
+      {
+        "term": "대우",
+        "src": "solution",
+        "quote": "대우를 구하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "항상성립",
+        "src": "solution",
+        "quote": "참, 거짓이 항상 같다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "대우 q→~p 를 직접 만들어 보기 ① 과 같음을 확인했다. 해설과 같은 풀이이며 대우의 참 거짓 관계만 쓰는 문항이다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
