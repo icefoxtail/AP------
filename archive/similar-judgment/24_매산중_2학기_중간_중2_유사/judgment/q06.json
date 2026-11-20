@@ -1,0 +1,55 @@
+{
+  "qid": "q06",
+  "itemFingerprint": "fed4630f70a2a282",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "내심은 각의 이등분선의 교점이므로 $\\angle ICB = \\angle ACI = 28^\\circ$이다. (ABC)",
+    "$\\triangle BIC$에서 세 내각의 합은 $180^\\circ$이므로 $\\angle IBC + 118^\\circ + 28^\\circ = 180^\\circ$이다. (ABC)",
+    "따라서 $\\angle IBC = 180^\\circ - 146^\\circ = 34^\\circ$이다. (ABC)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "점 $I$가 $\\triang",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "삼각형의 내심과 각의 크기 계산 유형이다. (ABC)",
+  "rpmRecordId": "M2-RPM-066",
+  "rpmReason": "삼각형의 성질 단원의 각의 이등분선과 내심 유형이다. (ABC)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "내심의 정의와 삼각형 내부 삼각형의 각의 합을 연계하는 난이도 2 문항이다. (ABC)",
+  "how": "내심의 각 이등분 성질과 삼각형 BIC의 내각 합 180도를 이용해 각 IBC=34도를 계산했다. (ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "내심",
+        "src": "stem",
+        "quote": "점 $I$가 $\\triangle ABC$의 내심이고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "내심",
+        "src": "solution",
+        "quote": "내심 $I$는 세 내각의 이등분선의 교점이므로"
+      }
+    ],
+    "method": [
+      {
+        "term": "이등분선",
+        "src": "solution",
+        "quote": "세 내각의 이등분선의 교점이므로 $\\angle ICB=\\angle ACI=28^\\circ$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

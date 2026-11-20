@@ -1,0 +1,55 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "7b1392843f710a8c",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "정삼각형의 한 내각 $60^\\circ$와 $\\angle ADE = 60^\\circ$를 이용한다. (ABC)",
+    "외각 성질로부터 $\\angle BDE + \\angle CDE = \\angle BDE + \\angle BED$ 관계를 유도한다. (ABC)",
+    "$\\triangle EBD \\sim \\triangle DCA$ (AA 닮음)을 밝히고 비례식으로 선분 길이를 계산한다. (ABC)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "정삼각형 $ABC$의 변 $",
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-SIMILAR_FIGURE",
+  "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "정삼각형과 외각 성질을 이용한 삼각형의 AA 닮음 유형이다. (ABC)",
+  "rpmRecordId": "M2-RPM-086",
+  "rpmReason": "도형의 닮음 단원의 삼각형의 닮음 AA 정삼각형 응용 유형이다. (ABC)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "정삼각형 내부에서 60도 각을 매개로 한 회전형 AA 닮음을 증명하는 난이도 3 문항이다. (ABC)",
+  "how": "정삼각형 내각 60도와 외각 성질로 각의 일치를 증명하고 AA 닮음 비례식을 세웠다. (ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "정삼각형",
+        "src": "stem",
+        "quote": "정삼각형 $ABC$의 변 $BC$ 위의 점 $D$와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각형",
+        "src": "solution",
+        "quote": "정삼각형 $ABC$에서 $\\angle B=\\angle C=60^\\circ$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "외각",
+        "src": "solution",
+        "quote": "외각 성질에 의해",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

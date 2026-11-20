@@ -1,0 +1,55 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "9df958b40e3c6ba2",
+  "solvedAnswer": "(1) $78^\\circ$ (2) $46^\\circ$",
+  "solveSteps": [
+    "(1) $\\overline{AB}=\\overline{AC}$에서 $\\angle BCA = \\angle ABC = 26^\\circ$이고 꼭짓각 $\\angle A = 180^\\circ - 52^\\circ = 128^\\circ$이다.",
+    "$\\overline{BD}=\\overline{BC}$인 이등변삼각형의 밑각을 계산하여 $\\angle BDC = 78^\\circ$를 도출한다. (26)",
+    "(2) 삼각형의 외각 성질을 연속 적용하여 $\\angle DAC = 46^\\circ$를 구한다. (26)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서답형 1] [서술형][수",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이등변삼각형의 밑각과 외각 성질 복합 서술형 유형이다. (26)",
+  "rpmRecordId": "M2-RPM-060",
+  "rpmReason": "삼각형의 성질 단원의 이등변삼각형 밑각 다단계 추론 유형이다. (26)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이등변삼각형 성질을 2단계로 연계 적용하는 난이도 3 서술형 문항이다. (26)",
+  "how": "이등변삼각형 밑각 공식과 연속된 외각 성질을 단계별로 전개해 두 각의 크기를 계산했다. (26)",
+  "slots": {
+    "given": [
+      {
+        "term": "이등변삼각형",
+        "src": "stem",
+        "quote": "$\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "$\\overline{AC}=\\overline{CD}$가 되도록"
+      }
+    ],
+    "method": [
+      {
+        "term": "외각",
+        "src": "solution",
+        "quote": "외각 성질에 의해",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

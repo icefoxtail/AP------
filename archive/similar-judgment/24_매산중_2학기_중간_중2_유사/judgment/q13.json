@@ -1,0 +1,61 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "bae9578ea234aa86",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$\\triangle ABE$와 $\\triangle CDF$에서 $\\overline{AB}=\\overline{CD}, \\angle BAE=\\angle DCF=90^\\circ, \\overline{AE}=\\overline{CF}$. (ABCD)",
+    "두 삼각형은 SAS 합동이므로 $\\overline{BE}=\\overline{DF}$이다. (ABCD)",
+    "대각선과 이루는 각의 대칭성을 점검하여 참인 명제를 확인한다. (ABCD)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "정사각형 $ABCD$에서 변",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "정사각형 내부 삼각형의 합동과 대각선 성질 유형이다. (ABCD)",
+  "rpmRecordId": "M2-RPM-078",
+  "rpmReason": "사각형의 성질 단원의 직사각형·마름모·정사각형 각 사각형의 성질 유형이다. (ABCD)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "정사각형 내부의 합동 도형 성질을 종합 검토하는 난이도 2 문항이다. (ABCD)",
+  "how": "정사각형 내부 선분의 합동 증명(SAS)을 통해 변의 길이와 각의 일치성을 확인했다. (ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "정사각형",
+        "src": "stem",
+        "quote": "정사각형 $ABCD$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대각선",
+        "src": "stem",
+        "quote": "대각선 $AC$와 두 선분 $BE$, $DF$의 교점"
+      }
+    ],
+    "method": [
+      {
+        "term": "합동",
+        "src": "solution",
+        "quote": "SAS 합동",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "두 선분 $BE$, $DF$"
+      }
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "e090c534488ff13a",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "마름모의 두 대각선은 서로를 수직이등분한다. (ABCD)",
+    "$\\overline{OD} = \\overline{OB} = 13$이므로 $2x + 5 = 13 \\implies 2x = 8 \\implies x = 4$이다. (ABCD)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "마름모 $ABCD$에서 두",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "problemTypeKey": "PT_MG_RHOMBUS_DIAGONAL_AND_ANGLES",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "마름모의 대각선 성질과 미지수 계산 유형이다. (ABCD)",
+  "rpmRecordId": "M2-RPM-079",
+  "rpmReason": "사각형의 성질 단원의 특수 사각형의 대각선 성질 마름모 유형이다. (ABCD)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "마름모의 대각선 이등분 성질을 이용해 미지수를 구하는 난이도 2 문항이다. (ABCD)",
+  "how": "마름모의 대각선 서로 이등분 성질로 일차방정식 2x+5=13을 풀어 x=4를 구했다. (ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "마름모",
+        "src": "stem",
+        "quote": "마름모 $ABCD$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "교점",
+        "src": "stem",
+        "quote": "두 대각선 $AC$, $BD$의 교점을 $O$라 하자."
+      }
+    ],
+    "method": [
+      {
+        "term": "대각선",
+        "src": "solution",
+        "quote": "마름모의 두 대각선은 서로를 이등분하므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "대각선",
+        "src": "stem",
+        "quote": "두 대각선 $AC$, $BD$"
+      }
+    ]
+  }
+}

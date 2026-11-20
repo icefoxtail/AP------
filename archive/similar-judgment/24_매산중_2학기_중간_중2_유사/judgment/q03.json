@@ -1,0 +1,61 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "dc2037124b54bd6a",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$\\angle ADM = \\angle BCM = 90^\\circ$, $\\overline{AM} = \\overline{BM}$ (중점), $\\angle AMD = \\angle BMC$ (맞꼭지각). (AB)",
+    "빗변의 길이와 한 예각의 크기가 같으므로 두 직각삼각형은 RHA 합동이다. (AB)",
+    "따라서 $\\triangle AMD \\equiv \\triangle BMC$이다. (AB)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\overline{AB}$",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "직각삼각형의 합동 조건 RHA 판정 유형이다. (AB)",
+  "rpmRecordId": "M2-RPM-071",
+  "rpmReason": "삼각형의 성질 단원의 직각삼각형의 합동 RHA 유형이다. (AB)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "직각삼각형의 합동 조건(RHA)을 기하 그림에서 판정하는 난이도 2 문항이다. (AB)",
+  "how": "빗변과 한 예각의 크기가 같음을 확인하여 RHA 직각삼각형 합동을 판정했다. (AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "중점",
+        "src": "stem",
+        "quote": "$\\overline{AB}$의 중점 $M$을"
+      }
+    ],
+    "goal": [
+      {
+        "term": "수선",
+        "src": "stem",
+        "quote": "수선의 발을 각각 $D$, $C$라 하자."
+      }
+    ],
+    "method": [
+      {
+        "term": "합동",
+        "src": "solution",
+        "quote": "RHA 합동",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "지나는 직선 $l$에 내린"
+      }
+    ]
+  }
+}

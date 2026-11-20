@@ -1,0 +1,62 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "ce76aa461e78d758",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "이등변삼각형에서 밑각 $\\angle ABC = (180^\\circ - 84^\\circ)/2 = 48^\\circ$이다.",
+    "내심 선분 $BI$는 각의 이등분선이므로 $\\angle IBC = 24^\\circ$이다. (AB)",
+    "외심 $\\triangle OBC$에서 $\\angle BOC = 2 \\times 84^\\circ = 168^\\circ$이므로 $\\angle OBC = (180^\\circ - 168^\\circ)/2 = 6^\\circ$이다. (AB)",
+    "따라서 $\\angle IBO = 24^\\circ - 6^\\circ = 18^\\circ$이다. (AB)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\overline{AB}=",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이등변삼각형의 외심과 내심이 이루는 각 복합 계산 유형이다. (AB)",
+  "rpmRecordId": "M2-RPM-069",
+  "rpmReason": "삼각형의 성질 단원의 외심·내심을 이용한 복합도형 유형이다. (AB)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "외심과 내심이 한 도형에 공존할 때 두 중심이 이루는 각을 추론하는 난이도 2 문항이다. (AB)",
+  "how": "이등변삼각형의 밑각에서 내심 각과 외심 각을 각각 구해 차 각 IBO를 계산했다. (AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "이등변삼각형",
+        "src": "stem",
+        "quote": "$\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "내심",
+        "src": "stem",
+        "quote": "점 $I$는 내심이고"
+      }
+    ],
+    "method": [
+      {
+        "term": "이등분선",
+        "src": "solution",
+        "quote": "이등분선이므로 $\\angle IBC=\\dfrac{1}{2}\\angle ABC=24^\\circ$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "외심",
+        "src": "stem",
+        "quote": "점 $O$는 외심이다."
+      }
+    ]
+  }
+}

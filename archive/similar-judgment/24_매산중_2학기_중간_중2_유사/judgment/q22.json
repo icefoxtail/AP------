@@ -1,0 +1,61 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "76c844aa52b89d38",
+  "solvedAnswer": "(1) $28$ (2) $(9\\pi-18)\\text{ cm}^2$",
+  "solveSteps": [
+    "(1) 내심은 각의 이등분선이므로 $\\angle A = 2x, \\angle B = 56^\\circ, \\angle C = 68^\\circ$이다. (ABC)",
+    "$2x + 56 + 68 = 180 \\implies 2x = 56 \\implies x = 28$이다. (ABC)",
+    "(2) 중심각 $90^\\circ$인 부채꼴의 넓이에서 직각이등변삼각형의 넓이를 빼서 $(9\\pi-18)\\text{ cm}^2$를 구한다. (ABC)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서답형 2] [서술형][수",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "삼각형의 내심 각도 계산 및 부채꼴 넓이 복합 서술형 유형이다. (ABC)",
+  "rpmRecordId": "M2-RPM-066",
+  "rpmReason": "삼각형의 성질 단원의 내심과 각의 이등분선 및 넓이 활용 유형이다. (ABC)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "내심의 각도 성질과 내접 부채꼴의 넓이 계산을 융합한 난이도 3 서술형 문항이다. (ABC)",
+  "how": "내심의 각 이등분으로 미지각 x=28을 구하고 부채꼴과 삼각형의 넓이 차로 도형 넓이를 구했다. (ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "내심",
+        "src": "stem",
+        "quote": "점 $I$가 $\\triangle ABC$의 내심이고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "부채꼴",
+        "src": "stem",
+        "quote": "부채꼴 $OAC$에서 $\\triangle OAC$를 제외한 부분"
+      }
+    ],
+    "method": [
+      {
+        "term": "이등분선",
+        "src": "solution",
+        "quote": "내심 $I$는 세 내각의 이등분선의 교점이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "부분)의 넓이를 구하는 풀이과정과 답을 쓰시오."
+      }
+    ]
+  }
+}

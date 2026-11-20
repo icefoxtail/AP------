@@ -1,0 +1,54 @@
+{
+  "qid": "q01",
+  "itemFingerprint": "198d15c42b7e5abb",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$\\triangle ABD$와 $\\triangle ACD$에서 $\\overline{AB}=\\overline{AC}$, $\\angle BAD=\\angle CAD$, $\\overline{AD}$는 공통이다. (ABC)",
+    "두 삼각형은 SAS 합동이므로 $\\overline{BD}=\\overline{CD}$, $\\angle ADB=\\angle ADC=90^\\circ$이다. (ABC)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\triangle ABC$",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이등변삼각형의 꼭짓각 이등분선과 밑변 수직이등분 기본 유형이다. (ABC)",
+  "rpmRecordId": "M2-RPM-061",
+  "rpmReason": "삼각형의 성질 단원의 이등변삼각형의 꼭짓각의 이등분선 유형이다. (ABC)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이등변삼각형의 꼭짓각의 이등분선 성질을 확인하는 난이도 1 문항이다. (ABC)",
+  "how": "이등변삼각형의 꼭짓각 이등분선에 의해 생기는 두 삼각형의 SAS 합동을 확인했다. (ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "이등분선",
+        "src": "stem",
+        "quote": "angle A$의 이등분선이 변 $BC$와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합동",
+        "src": "solution",
+        "quote": "triangle ABD \\equiv \\triangle ACD"
+      }
+    ],
+    "method": [
+      {
+        "term": "합동조건",
+        "src": "solution",
+        "quote": "SAS 합동",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

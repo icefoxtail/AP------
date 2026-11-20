@@ -1,0 +1,61 @@
+{
+  "qid": "q24",
+  "itemFingerprint": "b923e72121dc3a8d",
+  "solvedAnswer": "$9\\text{ cm}$",
+  "solveSteps": [
+    "$\\triangle ABH \\sim \\triangle CBA$ (AA 닮음)이다. (90)",
+    "대응변의 길이의 비 $\\overline{AB} : \\overline{CB} = \\overline{BH} : \\overline{BA}$를 세운다. (90)",
+    "$\\overline{AB}^2 = \\overline{BH} \\times \\overline{BC}$에서 $12^2 = \\overline{BH} \\times 16 \\implies 144 = 16\\overline{BH} \\implies \\overline{BH} = 9\\text{ cm}$이다. (90)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서답형 4][서술형] $\\",
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-SIMILAR_FIGURE",
+  "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "직각삼각형의 닮음과 선분의 길이 공식(사영정리) 서술형 유형이다. (90)",
+  "rpmRecordId": "M2-RPM-089",
+  "rpmReason": "도형의 닮음 단원의 직각삼각형 수선 닮음의 활용 길이 유형이다. (90)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "직각삼각형의 수선 닮음 공식(사영정리)을 유도하고 변의 길이를 구하는 난이도 3 서술형 문항이다. (90)",
+  "how": "직각삼각형의 꼭짓점에서 내린 수선의 닮음 공식 AB^2=BH*BC를 적용해 BH=9를 구했다. (90)",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "$\\angle A=90^\\circ$인 직각삼각형 $ABC$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "수선",
+        "src": "stem",
+        "quote": "빗변 $BC$에 내린 수선의 발을 $H$라 하자."
+      }
+    ],
+    "method": [
+      {
+        "term": "닮음",
+        "src": "solution",
+        "quote": "triangle ABH \\sim \\triangle CBA",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "$\\overline{AB}=20\\text{ cm}$"
+      }
+    ]
+  }
+}

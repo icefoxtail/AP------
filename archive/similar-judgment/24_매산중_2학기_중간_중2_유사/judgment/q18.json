@@ -1,0 +1,61 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "9d7795ad456e9e46",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$\\overline{AD} \\parallel \\overline{BC}$이므로 $\\angle FAE = \\angle FCB$ (엇각), $\\angle AFE = \\angle CFB$ (맞꼭지각). (ABCD)",
+    "두 각이 같으므로 $\\triangle AFE \\sim \\triangle CFB$ (AA 닮음)이다. (ABCD)",
+    "닮음비 $\\overline{AF} : \\overline{CF} = 8 : 12 = 2 : 3$을 이용해 선분 길이를 계산한다. (ABCD)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "평행사변형 $ABCD$에서",
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-SIMILAR_FIGURE",
+  "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "평행선과 삼각형의 AA 닮음비 활용 유형이다. (ABCD)",
+  "rpmRecordId": "M2-RPM-086",
+  "rpmReason": "도형의 닮음 단원의 삼각형의 닮음 AA 닮음 유형이다. (ABCD)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "평행선이 있는 평면도형에서 모래시계형 AA 닮음비를 유도하는 난이도 2 문항이다. (ABCD)",
+  "how": "평행선의 엇각과 맞꼭지각으로 AA 닮음을 밝히고 선분비 2:3을 적용했다. (ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "평행사변형 $ABCD$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대각선",
+        "src": "stem",
+        "quote": "대각선 $AC$의 교점을 $F$라 하자."
+      }
+    ],
+    "method": [
+      {
+        "term": "엇각",
+        "src": "solution",
+        "quote": "angle FAE=\\angle FCB$ (엇각), $\\angle AFE=\\angle CFB$ (맞꼭지각)",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "평행",
+        "src": "solution",
+        "quote": "\\overline{AD}\\parallel\\overline{BC}$이므로"
+      }
+    ]
+  }
+}

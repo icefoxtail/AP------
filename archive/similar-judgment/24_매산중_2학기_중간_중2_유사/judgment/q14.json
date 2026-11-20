@@ -1,0 +1,55 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "4c1f5f79f81472b8",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$\\overline{AD} \\parallel \\overline{EB}$이고 $\\overline{AE} \\parallel \\overline{DB}$이므로 사각형 $ADBE$는 평행사변형이다.",
+    "등변사다리꼴의 대각선 $\\overline{AC}=\\overline{BD}$이고 평행사변형에서 $\\overline{AE}=\\overline{BD}$이다. (AD)",
+    "따라서 $\\overline{AE}=\\overline{AC}$이므로 $\\triangle AEC$는 이등변삼각형이다. (AD)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\overline{AD}\\",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "등변사다리꼴의 성질과 평행사변형 연계 기하 추론 유형이다. (AD)",
+  "rpmRecordId": "M2-RPM-080",
+  "rpmReason": "사각형의 성질 단원의 사다리꼴 등변사다리꼴 성질 유형이다. (AD)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "등변사다리꼴과 보조 평행선으로 생기는 평행사변형의 대각선 길이를 연계하는 난이도 2 문항이다. (AD)",
+  "how": "평행사변형 정의로 AE=BD를 유도하고 등변사다리꼴 대각선 AC=BD와 연계해 이등변삼각형을 도출했다. (AD)",
+  "slots": {
+    "given": [
+      {
+        "term": "등변사다리꼴",
+        "src": "stem",
+        "quote": "등변사다리꼴 $ABCD$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사다리꼴",
+        "src": "solution",
+        "quote": "등변사다리꼴에서 두 대각선의 길이는 같으므로"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행사변형",
+        "src": "solution",
+        "quote": "$\\square ADBE$는 평행사변형이고",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
