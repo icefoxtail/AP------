@@ -1,0 +1,57 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "bca09c2307f8a750",
+  "solvedAnswer": "①, ⑤",
+  "solveSteps": [
+    "$(4x+b)(4x-b) = 16x^2 - b^2$이므로 $a = -b^2$이다.",
+    "* ① $b \\ne 0$이므로 $b^2 > 0$, 따라서 $a = -b^2 < 0$이다.",
+    "(참) * ②$a = -b^2$이므로 거짓이다.",
+    "* ③, ④ 예를 들어$b=-2$이면 $a=-4<b$, $b=-\\frac{1}{2}$이면 $a=-\\frac{1}{4}>b$이므로 대소 관계는 일정하지 않다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다항식 $16x^2+a$를 인수분해하면 $(4x+b)(4x-b)$ (단, $b<0$이고 $a, b$는 $0$이 아닌 유리수)일 때, 다음 중 옳은 것을 모두 고르면?",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "rpmRecordId": "M3-RPM-023",
+  "rpmEvidence": "$(4x+b)(4x-b) = 16x^2 - b^2$이므로 $a = -b^2$이다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+  "newKeyProposal": null,
+  "typeReason": "Q7번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 16)",
+  "rpmReason": "Q7번 문항은 M3-RPM-023에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 16)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q7번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 16)",
+  "how": "Q7번 문항으로 M3-02 단원의 기본 개념과 성질을 적용하여 ①, ⑤을(를) 바르게 구하였다. (문항 토큰 16)",
+  "slots": {
+    "given": [
+      {
+        "term": "유리수",
+        "src": "stem",
+        "quote": "다항식 $16x^2+a$를 인수분해하면 $(4x+b)(4x-b)$ (단, $b<0$이고 $a, b$는 $0$이 아닌 유리수)일 때, 다음 중 옳은 것을 모두 고르면?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $16x^2+a$를 인수분해하면 $(4x+b)(4x-b)$ (단, $b<0$이고 $a, b$는 $0$이 아닌 유리수)일 때, 다음 중 옳은 것을 모두 고르면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "거짓",
+        "src": "solution",
+        "quote": "(참) * ②$a = -b^2$이므로 거짓이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "2af23b8e3366a939",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "문항의 조건과 식을 분석하여 단계를 전개한다. (문항 토큰 17)",
+    "주어진 조건을 계산하여 정답 ③을(를) 도출한다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차방정식 $2x^2-x+A=0$의 해가 $x=\\dfrac{B\\pm\\sqrt{17}}{4}$일 때, $A+B$의 값을 구하면?",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "rpmRecordId": "M3-RPM-035",
+  "rpmEvidence": "근의 공식을 적용하면 $\\begin{aligned} x &= \\frac{-(-1) \\pm \\sqrt{(-1)^2 - 4(2)(A)}}{2(2)} = \\frac{1 \\pm \\sqrt{1 - 8A}}{4} \\ B &= 1, \\quad 1 - 8A = 17 \\implies 8A = -16 \\implies A = -2 \\ A + B &= -2 + 1 = -1 \\end{aligned}$",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
+  "templateKey": "TPL_M3_SOLVE_QUADRATIC_VIA_COMPLETED_SQUARE_ROOT",
+  "newKeyProposal": null,
+  "typeReason": "Q20번 문항은 PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 17)",
+  "rpmReason": "Q20번 문항은 M3-RPM-035에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 17)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q20번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 17)",
+  "how": "Q20번 문항으로 M3-03 단원의 기본 개념과 성질을 적용하여 ③을(를) 바르게 구하였다. (문항 토큰 17)",
+  "slots": {
+    "given": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "이차방정식 $2x^2-x+A=0$의 해가 $x=\\dfrac{B\\pm\\sqrt{17}}{4}$일 때, $A+B$의 값을 구하면?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $2x^2-x+A=0$의 해가 $x=\\dfrac{B\\pm\\sqrt{17}}{4}$일 때, $A+B$의 값을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "근의",
+        "src": "solution",
+        "quote": "근의 공식을 적용하면 $\\begin{aligned} x &= \\frac{-(-1) \\pm \\sqrt{(-1)^2 - 4(2)(A)}}{2(2)} = \\frac{1 \\pm \\sqrt{1 - 8A}}{4} \\ B &= 1, \\quad 1 - 8A = 17 \\implies 8A = -16 \\implies A = -2 \\ A + B &= -2 + 1 = -1 \\end{aligned}$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "qid": "q01",
+  "itemFingerprint": "a5223a16fe771ea7",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$x^2y^3 + x^3y^2 = x^2y^2(x+y)$ ⑤ $xy^2+x^2y = xy(x+y)$이므로 인수이다.",
+    "반면 $x^3y$는 $x$의 지수가 $3$으로 $x^2y^2(x+y)$을 나눌 수 없으므로 인수가 아니다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 다항식의 인수가 아닌 것은?",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "rpmRecordId": "M3-RPM-021",
+  "rpmEvidence": "$x^2y^3 + x^3y^2 = x^2y^2(x+y)$ ⑤ $xy^2+x^2y = xy(x+y)$이므로 인수이다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+  "newKeyProposal": null,
+  "typeReason": "Q1번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 xy)",
+  "rpmReason": "Q1번 문항은 M3-RPM-021에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 xy)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q1번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 xy)",
+  "how": "Q1번 문항으로 M3-02 단원의 기본 개념과 성질을 적용하여 ②을(를) 바르게 구하였다. (문항 토큰 xy)",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다음 다항식의 인수가 아닌 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수",
+        "src": "stem",
+        "quote": "다음 다항식의 인수가 아닌 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "지수",
+        "src": "solution",
+        "quote": "반면 $x^3y$는 $x$의 지수가 $3$으로 $x^2y^2(x+y)$을 나눌 수 없으므로 인수가 아니다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

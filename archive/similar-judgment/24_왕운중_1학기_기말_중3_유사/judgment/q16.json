@@ -1,0 +1,56 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "3b8c059e9dc0aa34",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$x^2+ax+3b=0$이 중근을 가지므로 판별식 $a^2 - 4(1)(3b) = 0$, 즉 $a^2 = 12b$이다.",
+    "$a, b \\in {1, 2, 3, 4, 5, 6}$이므로 $12b$가 제곱수가 되는 경우는 $b=3$일 때 $a^2=36$, 즉 $a=6$뿐이다.",
+    "따라서 순서쌍은 $(6, 3)$의 $1$가지이고, 확률은 $\\frac{1}{36}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "정육면체 주사위를 두 번 던져서 처음 나온 눈의 수를 $a$, 두 번째 나온 눈의 수를 $b$라 할 때, 이차방정식 $x^2+ax+3b=0$의 해가 중근일 확률을 구하면?",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "rpmRecordId": "M3-RPM-035",
+  "rpmEvidence": "$x^2+ax+3b=0$이 중근을 가지므로 판별식 $a^2 - 4(1)(3b) = 0$, 즉 $a^2 = 12b$이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
+  "templateKey": "TPL_M3_CALCULATE_PARAMETER_DIFFERENCE_FROM_DOUBLE_ROOT",
+  "newKeyProposal": null,
+  "typeReason": "Q16번 문항은 PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)",
+  "rpmReason": "Q16번 문항은 M3-RPM-035에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ax)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q16번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ax)",
+  "how": "Q16번 문항으로 M3-03 단원의 기본 개념과 성질을 적용하여 ④을(를) 바르게 구하였다. (문항 토큰 ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "정육면체 주사위를 두 번 던져서 처음 나온 눈의 수를 $a$, 두 번째 나온 눈의 수를 $b$라 할 때, 이차방정식 $x^2+ax+3b=0$의 해가 중근일 확률을 구하면?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "정육면체 주사위를 두 번 던져서 처음 나온 눈의 수를 $a$, 두 번째 나온 눈의 수를 $b$라 할 때, 이차방정식 $x^2+ax+3b=0$의 해가 중근일 확률을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "$x^2+ax+3b=0$이 중근을 가지므로 판별식 $a^2 - 4(1)(3b) = 0$, 즉 $a^2 = 12b$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

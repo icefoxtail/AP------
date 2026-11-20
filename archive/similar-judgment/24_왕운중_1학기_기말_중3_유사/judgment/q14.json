@@ -1,0 +1,55 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "44394846ab711c83",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "문항의 조건과 식을 분석하여 단계를 전개한다. (문항 토큰 ax)",
+    "주어진 조건을 계산하여 정답 ①을(를) 도출한다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$x$에 대한 이차방정식 $x^2+ax-8=0$의 한 근이 $x=4$일 때, 상수 $a$의 값을 구하면?",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "rpmRecordId": "M3-RPM-029",
+  "rpmEvidence": "$x=4$를 $x^2+ax-8=0$에 대입하면 $\\begin{aligned} 4^2 + 4a - 8 &= 0 \\ 8 + 4a &= 0 \\implies a = -2 \\end{aligned}$",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
+  "templateKey": "TPL_M3_EVALUATE_FRACTIONAL_EXPRESSION_USING_QUADRATIC_ROOT_DESCRIPTIVE",
+  "newKeyProposal": null,
+  "typeReason": "Q14번 문항은 PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)",
+  "rpmReason": "Q14번 문항은 M3-RPM-029에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ax)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q14번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ax)",
+  "how": "Q14번 문항으로 M3-03 단원의 기본 개념과 성질을 적용하여 ①을(를) 바르게 구하였다. (문항 토큰 ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "$x$에 대한 이차방정식 $x^2+ax-8=0$의 한 근이 $x=4$일 때, 상수 $a$의 값을 구하면?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "$x$에 대한 이차방정식 $x^2+ax-8=0$의 한 근이 $x=4$일 때, 상수 $a$의 값을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$x=4$를 $x^2+ax-8=0$에 대입하면 $\\begin{aligned} 4^2 + 4a - 8 &= 0 \\ 8 + 4a &= 0 \\implies a = -2 \\end{aligned}$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

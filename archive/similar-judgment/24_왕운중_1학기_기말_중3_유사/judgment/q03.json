@@ -1,0 +1,55 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "6499d8da5a956b40",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "문항의 조건과 식을 분석하여 단계를 전개한다. (문항 토큰 24)",
+    "주어진 조건을 계산하여 정답 ①을(를) 도출한다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다항식 $3x^2-24xy+48y^2$을 인수분해하면 $3(x+\\square)^2$일 때, $\\square$ 안에 들어갈 식을 구하면?",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "rpmRecordId": "M3-RPM-021",
+  "rpmEvidence": "$\\begin{aligned} 3x^2 - 24xy + 48y^2 &= 3(x^2 - 8xy + 16y^2) \\ &= 3(x - 4y)^2 \\end{aligned}$ 따라서 $\\square$ 안에 들어갈 식은 $-4y$이다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+  "newKeyProposal": null,
+  "typeReason": "Q3번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 24)",
+  "rpmReason": "Q3번 문항은 M3-RPM-021에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 24)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q3번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 24)",
+  "how": "Q3번 문항으로 M3-02 단원의 기본 개념과 성질을 적용하여 ①을(를) 바르게 구하였다. (문항 토큰 24)",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $3x^2-24xy+48y^2$을 인수분해하면 $3(x+\\square)^2$일 때, $\\square$ 안에 들어갈 식을 구하면?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수분해",
+        "src": "stem",
+        "quote": "다항식 $3x^2-24xy+48y^2$을 인수분해하면 $3(x+\\square)^2$일 때, $\\square$ 안에 들어갈 식을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $3x^2-24xy+48y^2$을 인수분해하면 $3(x+\\square)^2$일 때, $\\square$ 안에 들어갈 식을 구하면?",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "b62dfc0ffc265db0",
+  "solvedAnswer": "②, ④",
+  "solveSteps": [
+    "$(bx+c)(dx+e) = bdx^2 + (be+cd)x + ce$이므로 $bd=5$, $be+cd=a$, $ce=-2$이다.",
+    "* ① $(b, d)=(1, 5)$라 할 때 $(c, e) \\in {(1, -2), (-1, 2), (2, -1), (-2, 1)}$이므로 $a = be+cd \\in {3, -3, 9, -9}$로 $4$개이다.",
+    "(참) * ②$bd = 5$이므로 거짓이다.",
+    "* ③$a=9$이면 $5x^2+9x-2=(5x-1)(x+2)$이므로 $x+2$를 인수로 갖는다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다항식 $5x^2+ax-2$를 인수분해하면 $(bx+c)(dx+e)$ (단, $b, d>0$이고 $a, b, c, d, e$는 정수)일 때, 다음 중에서 옳지 않은 것을 모두 고르면?",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "rpmRecordId": "M3-RPM-023",
+  "rpmEvidence": "$(bx+c)(dx+e) = bdx^2 + (be+cd)x + ce$이므로 $bd=5$, $be+cd=a$, $ce=-2$이다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+  "newKeyProposal": null,
+  "typeReason": "Q9번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)",
+  "rpmReason": "Q9번 문항은 M3-RPM-023에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ax)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q9번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ax)",
+  "how": "Q9번 문항으로 M3-02 단원의 기본 개념과 성질을 적용하여 ②, ④을(를) 바르게 구하였다. (문항 토큰 ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "다항식 $5x^2+ax-2$를 인수분해하면 $(bx+c)(dx+e)$ (단, $b, d>0$이고 $a, b, c, d, e$는 정수)일 때, 다음 중에서 옳지 않은 것을 모두 고르면?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $5x^2+ax-2$를 인수분해하면 $(bx+c)(dx+e)$ (단, $b, d>0$이고 $a, b, c, d, e$는 정수)일 때, 다음 중에서 옳지 않은 것을 모두 고르면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "거짓",
+        "src": "solution",
+        "quote": "(참) * ②$bd = 5$이므로 거짓이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
