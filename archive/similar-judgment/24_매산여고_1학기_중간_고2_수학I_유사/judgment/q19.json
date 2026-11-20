@@ -1,0 +1,57 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "b609a12480f540ec",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$1 < x < 5$에서 $f(x) = \\log_2(4x - 4)$는 증가하고 $\\lim_{x \\to 5-} f(x) = \\log_2 16 = 4$이다.",
+    "$x \\ge 5$에서 $f(x) = (\\sqrt{2})^{9 - x}$는 감소하고 $f(5) = (\\sqrt{2})^4 = 4$이다.",
+    "따라서 $f(x)$는 $x = 5$에서 최댓값 $4$를 가진다.",
+    "(1) $t \\le x \\le t + 2$에서 $f(x)$의 최댓값이 $4$가 되려면 $t \\le 5 \\le t + 2$, 즉 $3 \\le t \\le 5$이어야 한다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "함수 $f(x)$를",
+  "standardUnitKey": "H15-M1-01",
+  "subUnitKey": "H15-M1-01-EXPONENT",
+  "rpmRecordId": "H2-M1-RPM-001",
+  "rpmEvidence": "$1 < x < 5$에서 $f(x) = \\log_2(4x - 4)$는 증가하고 $\\lim_{x \\to 5-} f(x) = \\log_2 16 = 4$이다.",
+  "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+  "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+  "newKeyProposal": null,
+  "typeReason": "Q19번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 cases)",
+  "rpmReason": "Q19번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 cases)",
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q19번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 4 수준의 문항이다. (문항 토큰 cases)",
+  "how": "Q19번 문항으로 H15-M1-01 단원의 기본 개념과 성질을 적용하여 ④을(를) 바르게 구하였다. (문항 토큰 cases)",
+  "slots": {
+    "given": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "함수 $f(x)$를"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$t \\le x \\le t + 2$에서 함수 $f(x)$의 최댓값이 $4$가 되도록 하는 모든 자연수 $t$의 개수를 $a$, $s \\le x \\le s + 1$에서 함수 $f(x)$의 최솟값이 $1$이 되도록 하는 모든 실수 $s$의 값의 합을 $b$라 할 때, $a + 2b$의 값을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "증가",
+        "src": "solution",
+        "quote": "$1 < x < 5$에서 $f(x) = \\log_2(4x - 4)$는 증가하고 $\\lim_{x \\to 5-} f(x) = \\log_2 16 = 4$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

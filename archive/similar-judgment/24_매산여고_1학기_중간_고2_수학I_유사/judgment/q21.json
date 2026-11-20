@@ -1,0 +1,57 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "15c3f0a63a95451d",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$3 \\le x \\le 7$에서 $u = \\dfrac{\\pi}{2}(x - 2)$라 하면 $\\dfrac{\\pi}{2} \\le u \\le \\dfrac{5}{2}\\pi$이다. (문항 토큰 ad)",
+    "구간 $\\left[\\dfrac{\\pi}{2}, \\dfrac{5}{2}\\pi\\right]$에서 $\\cos u$는",
+    "- $u = 2\\pi$일 때 최댓값 $1$ $\\implies \\dfrac{\\pi}{2}(x - 2) = 2\\pi \\implies x = 6$ ($a = 6$, $b = 4 + 3 = 7$)",
+    "- $u = \\pi$일 때 최솟값 $-1$ $\\implies \\dfrac{\\pi}{2}(x - 2) = \\pi \\implies x = 4$ ($c = 4$, $d = 4 - 3 = 1$)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "함수 $h(x) = 4 + 3\\cos\\left(\\dfrac{\\pi}{2}(x - 2)\\right)$에 대하여 $3 \\le x \\le 7$일 때, $h(x)$는 $x = a$에서 최댓값 $b$, $x = c$에서 최솟값 $d$를 갖는다.",
+  "standardUnitKey": "H15-M1-01",
+  "subUnitKey": "H15-M1-01-EXPONENT",
+  "rpmRecordId": "H2-M1-RPM-001",
+  "rpmEvidence": "$3 \\le x \\le 7$에서 $u = \\dfrac{\\pi}{2}(x - 2)$라 하면 $\\dfrac{\\pi}{2} \\le u \\le \\dfrac{5}{2}\\pi$이다.",
+  "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+  "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+  "newKeyProposal": null,
+  "typeReason": "Q21번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ad)",
+  "rpmReason": "Q21번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ad)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q21번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ad)",
+  "how": "Q21번 문항으로 H15-M1-01 단원의 기본 개념과 성질을 적용하여 ①을(를) 바르게 구하였다. (문항 토큰 ad)",
+  "slots": {
+    "given": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "함수 $h(x) = 4 + 3\\cos\\left(\\dfrac{\\pi}{2}(x - 2)\\right)$에 대하여 $3 \\le x \\le 7$일 때, $h(x)$는 $x = a$에서 최댓값 $b$, $x = c$에서 최솟값 $d$를 갖는다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "함수 $h(x) = 4 + 3\\cos\\left(\\dfrac{\\pi}{2}(x - 2)\\right)$에 대하여 $3 \\le x \\le 7$일 때, $h(x)$는 $x = a$에서 최댓값 $b$, $x = c$에서 최솟값 $d$를 갖는다."
+      }
+    ],
+    "method": [
+      {
+        "term": "구간",
+        "src": "solution",
+        "quote": "구간 $\\left[\\dfrac{\\pi}{2}, \\dfrac{5}{2}\\pi\\right]$에서 $\\cos u$는",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

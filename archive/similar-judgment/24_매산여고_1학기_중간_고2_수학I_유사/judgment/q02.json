@@ -1,0 +1,57 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "b1751752861c1284",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "로그가 정의되려면 밑 조건과 진수 조건을 모두 만족해야 한다.",
+    "(1) 밑 조건: $a - 2 > 0$이고 $a - 2 \\neq 1$이므로 $a > 2$, $a \\neq 3$",
+    "(2) 진수 조건: $a^2 - 7a - 18 > 0$",
+    "$(a - 9)(a + 2) > 0$"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\log_{(a - 2)}(a^2 - 7a - 18)$이 정의되기 위한 실수 $a$의 값의 범위를 구하면?",
+  "standardUnitKey": "H15-M1-01",
+  "subUnitKey": "H15-M1-01-EXPONENT",
+  "rpmRecordId": "H2-M1-RPM-001",
+  "rpmEvidence": "로그가 정의되려면 밑 조건과 진수 조건을 모두 만족해야 한다.",
+  "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+  "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+  "newKeyProposal": null,
+  "typeReason": "Q2번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 18)",
+  "rpmReason": "Q2번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 18)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q2번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 18)",
+  "how": "Q2번 문항으로 H15-M1-01 단원의 기본 개념과 성질을 적용하여 ④을(를) 바르게 구하였다. (문항 토큰 18)",
+  "slots": {
+    "given": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "$\\log_{(a - 2)}(a^2 - 7a - 18)$이 정의되기 위한 실수 $a$의 값의 범위를 구하면?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "범위",
+        "src": "stem",
+        "quote": "$\\log_{(a - 2)}(a^2 - 7a - 18)$이 정의되기 위한 실수 $a$의 값의 범위를 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "로그",
+        "src": "solution",
+        "quote": "로그가 정의되려면 밑 조건과 진수 조건을 모두 만족해야 한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

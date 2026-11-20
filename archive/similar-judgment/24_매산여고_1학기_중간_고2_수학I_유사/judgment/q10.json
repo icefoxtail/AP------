@@ -1,0 +1,57 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "cb4f64bdd96de50d",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$\\log_a x + \\log_a y = \\log_a(xy)$이므로 거짓이다.",
+    "$\\log_a x - \\log_a y = \\log_a \\dfrac{x}{y}$이므로 거짓이다.",
+    "밑변환 공식에 의하여 $\\dfrac{\\log_a x}{\\log_a y} = \\log_y x$ ($y \\neq 1$)이므로 참이다.",
+    "$\\log_a x^n = n\\log_a x$이며 $(\\log_a x)^n$과 다르므로 거짓이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$x, y$가 양수이고, $a$가 $1$이 아닌 양수일 때, 다음 <보기>에서 옳은 것만을 있는 대로 모두 고른 것은?",
+  "standardUnitKey": "H15-M1-01",
+  "subUnitKey": "H15-M1-01-EXPONENT",
+  "rpmRecordId": "H2-M1-RPM-001",
+  "rpmEvidence": "$\\log_a x + \\log_a y = \\log_a(xy)$이므로 거짓이다.",
+  "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+  "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+  "newKeyProposal": null,
+  "typeReason": "Q10번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 3.8)",
+  "rpmReason": "Q10번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 3.8)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q10번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 3.8)",
+  "how": "Q10번 문항으로 H15-M1-01 단원의 기본 개념과 성질을 적용하여 ②을(를) 바르게 구하였다. (문항 토큰 3.8)",
+  "slots": {
+    "given": [
+      {
+        "term": "양수",
+        "src": "stem",
+        "quote": "$x, y$가 양수이고, $a$가 $1$이 아닌 양수일 때, 다음 <보기>에서 옳은 것만을 있는 대로 모두 고른 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "$(\\log_a x)^n = n\\log_a x$ (단, $n$은 실수이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "거짓",
+        "src": "solution",
+        "quote": "$\\log_a x + \\log_a y = \\log_a(xy)$이므로 거짓이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

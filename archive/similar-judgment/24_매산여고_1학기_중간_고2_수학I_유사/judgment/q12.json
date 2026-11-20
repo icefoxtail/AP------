@@ -1,0 +1,57 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "2cdd06877681dc71",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "현재 미세 먼지 농도를 $A$라 하면 $n$년 후의 농도는 $A(1 + 0.1)^n = A(1.1)^n$이다.",
+    "$A(1.1)^n \\ge 3A \\implies (1.1)^n \\ge 3$",
+    "양변에 상용로그를 취하면",
+    "$n \\log 1.1 \\ge \\log 3$"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "어느 도시의 미세 먼지 농도는 매년 $10\\%$씩 증가한다고 한다.",
+  "standardUnitKey": "H15-M1-01",
+  "subUnitKey": "H15-M1-01-EXPONENT",
+  "rpmRecordId": "H2-M1-RPM-001",
+  "rpmEvidence": "현재 미세 먼지 농도를 $A$라 하면 $n$년 후의 농도는 $A(1 + 0.1)^n = A(1.1)^n$이다.",
+  "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+  "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+  "newKeyProposal": null,
+  "typeReason": "Q12번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)",
+  "rpmReason": "Q12번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 10)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q12번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 10)",
+  "how": "Q12번 문항으로 H15-M1-01 단원의 기본 개념과 성질을 적용하여 ③을(를) 바르게 구하였다. (문항 토큰 10)",
+  "slots": {
+    "given": [
+      {
+        "term": "증가",
+        "src": "stem",
+        "quote": "어느 도시의 미세 먼지 농도는 매년 $10\\%$씩 증가한다고 한다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "최소",
+        "src": "stem",
+        "quote": "이와 같은 비율로 미세 먼지 농도가 계속 증가한다고 할 때, 미세 먼지 농도가 현재의 $3$배 이상이 되는 것은 최소 몇 년 후인지 고르면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "로그",
+        "src": "solution",
+        "quote": "양변에 상용로그를 취하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

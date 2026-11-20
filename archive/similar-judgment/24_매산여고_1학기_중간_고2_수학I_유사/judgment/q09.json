@@ -1,0 +1,56 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "0e71e46926601349",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$0 \\le x < \\pi$에서 함수 $y = \\cos x$는 감소함수이다. (문항 토큰 3.7)",
+    "$\\cos \\dfrac{\\pi}{3} = \\dfrac{1}{2}$, $\\cos \\dfrac{3}{4}\\pi = -\\dfrac{\\sqrt{2}}{2}$이므로",
+    "$-\\dfrac{\\sqrt{2}}{2} \\le \\cos x < \\dfrac{1}{2}$의 해는 $\\dfrac{\\pi}{3} < x \\le \\dfrac{3}{4}\\pi$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$0 \\le x < \\pi$일 때, 부등식 $-\\dfrac{\\sqrt{2}}{2} \\le \\cos x < \\dfrac{1}{2}$의 해를 구하면?",
+  "standardUnitKey": "H15-M1-01",
+  "subUnitKey": "H15-M1-01-EXPONENT",
+  "rpmRecordId": "H2-M1-RPM-001",
+  "rpmEvidence": "$0 \\le x < \\pi$에서 함수 $y = \\cos x$는 감소함수이다.",
+  "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+  "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+  "newKeyProposal": null,
+  "typeReason": "Q9번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 3.7)",
+  "rpmReason": "Q9번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 3.7)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q9번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 3.7)",
+  "how": "Q9번 문항으로 H15-M1-01 단원의 기본 개념과 성질을 적용하여 ⑤을(를) 바르게 구하였다. (문항 토큰 3.7)",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "src": "stem",
+        "quote": "$0 \\le x < \\pi$일 때, 부등식 $-\\dfrac{\\sqrt{2}}{2} \\le \\cos x < \\dfrac{1}{2}$의 해를 구하면?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "등식",
+        "src": "stem",
+        "quote": "$0 \\le x < \\pi$일 때, 부등식 $-\\dfrac{\\sqrt{2}}{2} \\le \\cos x < \\dfrac{1}{2}$의 해를 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "함수",
+        "src": "solution",
+        "quote": "$0 \\le x < \\pi$에서 함수 $y = \\cos x$는 감소함수이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
