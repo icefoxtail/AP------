@@ -1,0 +1,55 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "ee0b2ba684b031d6",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$f(x) = (x-\\alpha)(x-\\beta), g(x) = (x-\\alpha)(x-\\gamma)$이다. (aligned)",
+    "방정식에 대입하여 $(x-\\alpha)$로 묶으면 $(x-\\alpha)(5x-2\\beta-3\\gamma)=0$이다. (aligned)",
+    "따라서 다른 한 근은 $x = (2\\beta+3\\gamma)/5$이다. (aligned)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "최고차항의 계수가 $1$인",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차함수의 x축 교점과 방정식의 공통근 인수분해 유형이다. (aligned)",
+  "rpmRecordId": "H1-RPM-034",
+  "rpmReason": "이차방정식 단원의 이차함수 그래프와 x축 교점 사이의 거리 유형이다. (aligned)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차함수의 x절편 인수분해형을 세우고 일차결합 방정식의 근을 구하는 난이도 2 문항이다. (aligned)",
+  "how": "인수분해형으로 식을 세우고 공통인수 (x-alpha)를 묶어 다른 한 근을 도출했다. (aligned)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "최고차항의 계수가 $1$인 두 이차함수 $y=f(x)$, $y=g(x)$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "해",
+        "src": "stem",
+        "quote": "다른 한 근을 $\\alpha, \\beta, \\gamma$를 이용하여 나타낸 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "대입하여 $(x-\\alpha)$로 묶으면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

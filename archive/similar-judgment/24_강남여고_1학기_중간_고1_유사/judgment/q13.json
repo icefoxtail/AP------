@@ -1,0 +1,61 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "ef5a9493ecb19fb9",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$a^2(a-b) + b^2(a-b) - c^2(a-b) = (a-b)(a^2+b^2-c^2) = 0$이다. (ABC)",
+    "$a=b$인 이등변삼각형이거나 $a^2+b^2=c^2$인 직각삼각형이다. (ABC)",
+    "보기에 맞는 조건은 $a=b$인 이등변삼각형이다. (ABC)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "삼각형 $\\mathrm{AB",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "인수분해를 이용한 삼각형의 모양 판별 유형이다. (ABC)",
+  "rpmRecordId": "H1-RPM-017",
+  "rpmReason": "인수분해 단원의 여러 문자를 포함한 식의 인수분해와 삼각형 모양 판정 유형이다. (ABC)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다변수 삼차식을 공통인수 묶기로 인수분해하여 삼각형 모양을 판별하는 난이도 2 문항이다. (ABC)",
+  "how": "공통인수 (a-b)를 묶어 인수분해하여 삼각형의 기하학적 형태를 판정했다. (ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "삼각형 $\\mathrm{ABC}$의 세 변의 길이 $a, b, c$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "삼각형 $\\mathrm{ABC}$는 어떤 삼각형인가?"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "주어진 식의 좌변을 공통인수가 나타나도록 인수분해하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "이등변삼각형",
+        "src": "solution",
+        "quote": "삼각형 $\\mathrm{ABC}$는 $a=b$인 이등변삼각형"
+      }
+    ]
+  }
+}

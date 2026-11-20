@@ -1,0 +1,61 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "87483543f23851f0",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$2x-1 = \\sqrt{5}i \\implies (2x-1)^2 = -5 \\implies 4x^2-4x+6 = 0$이다.",
+    "양변을 2로 나누면 $2x^2-2x+3 = 0 \\implies 2x^2-2x = -3$이다.",
+    "따라서 $2x^2-2x+7 = -3+7 = 4$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$x=\\frac{1+\\sqr",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "복소수 조건식 변형과 다항식의 값 계산 유형이다. (x)",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "복소수 단원의 허수부 분리 제곱을 이용한 식의 값 계산 유형이다. (x)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "복소수의 일차식에서 이차방정식을 유도하여 고차 다항식의 차수를 낮추는 난이도 1 문항이다. (x)",
+  "how": "허수부를 분리하여 제곱함으로써 이차식을 유도하고 식의 값을 4로 계산했다. (x)",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "$x=\\frac{1+\\sqrt{5}i}{2}$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "solution",
+        "quote": "따라서 구하는 식의 값은"
+      }
+    ],
+    "method": [
+      {
+        "term": "이항",
+        "src": "solution",
+        "quote": "양변에 $2$를 곱하고 $1$을 이항하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "허수단위",
+        "src": "stem",
+        "quote": "단, $i=\\sqrt{-1}$이다."
+      }
+    ]
+  }
+}

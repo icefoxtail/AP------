@@ -1,0 +1,61 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "d4d8b26541c61e33",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "두 근을 $\\alpha, 2\\alpha$라 하면 $\\alpha+2\\alpha = 3\\alpha = 3(k+1) \\implies \\alpha = k+1$이다. (10)",
+    "두 근의 곱 $\\alpha(2\\alpha) = 2(k+1)^2 = 10k \\implies 2k^2-6k+2 = 0 \\implies k^2-3k+1 = 0$이다.",
+    "근과 계수의 관계에 의해 모든 실수 $k$의 합은 3이다. (10)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$x$에 대한 이차방정식 $",
+  "standardUnitKey": "H15-SA-06",
+  "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "두 근의 비 조건과 근과 계수의 관계 유형이다. (10)",
+  "rpmRecordId": "H1-RPM-030",
+  "rpmReason": "이차방정식의 근과 계수 단원의 두 근의 비가 주어졌을 때 미정계수 결정 유형이다. (10)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 근의 비가 주어진 이차방정식에서 근과 계수의 관계를 적용하는 난이도 2 문항이다. (10)",
+  "how": "두 근의 비를 매개변수 alpha로 나타내고 근과 계수의 관계를 연립하여 k의 합 3을 구했다. (10)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "$x$에 대한 이차방정식 $x^2-3(k+1)x+10k=0$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "모든 실수 $k$의 값의 합은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "해",
+        "src": "stem",
+        "quote": "두 근의 비가 $1:2$일 때"
+      }
+    ]
+  }
+}

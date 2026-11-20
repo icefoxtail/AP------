@@ -1,0 +1,61 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "17321ce4fbcdf6c6",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$P(x) - (4x-2) = 2x^4+3x^3-x^2+7x-3 = f(x)(x^2+2x-1)$이다. (11)",
+    "직접 나눗셈을 수행하면 $f(x) = 2x^2-x+3$이다. (11)",
+    "따라서 $a=2, b=-1, c=3$이므로 $a+b+c = 4$이다. (11)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다항식 $2x^4+3x^3-",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+  "problemTypeKey": "PT_H1_POLY_DIVISION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "다항식의 나눗셈 관계식과 제수 다항식 결정 유형이다. (11)",
+  "rpmRecordId": "H1-RPM-005",
+  "rpmReason": "다항식의 나눗셈 단원의 나머지 이항 후 몫으로 나누어 제수 다항식을 구하는 유형이다. (11)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "나눗셈 항등식에서 나머지를 이항한 후 사차식을 이차식으로 나누어 제수를 구하는 난이도 2 문항이다. (11)",
+  "how": "나머지를 이항한 식을 몫으로 직접 나누어 이차식 f(x)=2x^2-x+3을 구하고 합을 계산했다. (11)",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $2x^4+3x^3-x^2+11x-5$를"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $a, b, c$에 대하여 $a+b+c$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지",
+        "src": "solution",
+        "quote": "나머지 $4x-2$를 좌변으로 이항하여 정리하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "몫",
+        "src": "stem",
+        "quote": "몫은 $x^2+2x-1$이고 나머지는 $4x-2$이다."
+      }
+    ]
+  }
+}

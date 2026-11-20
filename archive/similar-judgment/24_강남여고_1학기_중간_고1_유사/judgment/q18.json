@@ -1,0 +1,62 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "0aa18172a14437fd",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "나머지정리에 의해 $f(-2) = -5, f(3) = 5$이다. (ax)",
+    "이차식 $(x+2)(x-3)$으로 나눈 나머지를 $R(x) = ax+b$라 하면 $-2a+b = -5, 3a+b = 5$이다.",
+    "연립하면 $a = 2, b = -1$이므로 $R(x) = 2x-1$이다. (ax)",
+    "따라서 $R(1) = 1$이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다항식 $f(x)$를 $x+",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차식으로 나눈 다항식의 나머지정리 연립 유형이다. (ax)",
+  "rpmRecordId": "H1-RPM-010",
+  "rpmReason": "항등식과 나머지정리 단원의 일차식 나머지 조건들을 연립하여 이차식으로 나눈 일차식 나머지 구하기 유형이다. (ax)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차식으로 나눈 일차식 나머지를 나머지정리 연립방정식으로 구하는 난이도 2 문항이다. (ax)",
+  "how": "나머지정리로 f(-2)=-5, f(3)=5를 구하고 일차식 나머지 ax+b를 연립하여 R(1)=1을 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $f(x)$를 $x+2$로 나누었을 때의 나머지는 $-5$이고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나머지를 $R(x)$라 할 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지정리",
+        "src": "solution",
+        "quote": "나머지정리에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "나머지",
+        "src": "solution",
+        "quote": "나머지 $R(x)$를 $ax+b$"
+      }
+    ]
+  }
+}

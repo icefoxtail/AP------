@@ -1,0 +1,61 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "16ea68ea2e67f553",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$y = (x-1)^2 + 2$이므로 꼭짓점 $x=1$이 구간 $[-2, 1]$에 속한다. (10)",
+    "최솟값 $m = f(1) = 2$, 최댓값 $M = f(-2) = 11$이다. (10)",
+    "따라서 $M+m = 11+2 = 13$이다. (10)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$-2 \\le x \\le 1",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "제한 구간에서의 이차함수의 최대·최소 기본 유형이다. (10)",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "이차함수 단원의 제한 구간에서 꼭짓점을 포함하는 최대·최소 유형이다. (10)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "제한된 구간에서 이차함수의 최대·최소를 구하는 난이도 1 문항이다. (10)",
+  "how": "표준형으로 꼭짓점을 찾고 구간 경계값과의 거리를 비교하여 최대·최소의 합 13을 계산했다. (10)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=x^2-2x+3$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값을 $M$, 최솟값을 $m$이라 할 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "표준형",
+        "src": "solution",
+        "quote": "이차함수 $y=x^2-2x+3$을 표준형으로 변형하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "범위",
+        "src": "solution",
+        "quote": "주어진 범위 $-2 \\le x \\le 1$에서"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "61e55e0f2d8d7604",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "실근을 가져야 하므로 판별식 $D = (a-2)^2 - 4(a^2-6a+8) = -3a^2+20a-28 \\ge 0$이다. (aligned)",
+    "$(3a-14)(a-2) \\le 0 \\implies 2 \\le a \\le 14/3$이다. (aligned)",
+    "정수 a의 후보 2, 3, 4를 대입하여 정수근을 갖는 a=2, 4를 찾는다. (aligned)",
+    "모든 실수 $a$의 값의 합은 $2+4=6$이다. (aligned)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$x$에 대한 이차방정식 $",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-DISCRIMINANT",
+  "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차방정식의 정수근 조건과 판별식 제곱수 유형이다. (aligned)",
+  "rpmRecordId": "H1-RPM-028",
+  "rpmReason": "이차방정식 단원의 이차방정식의 정수근 조건과 판별식 유형이다. (aligned)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차방정식의 정수근 조건에서 판별식의 제곱수 조건을 정수론적으로 해석하는 난이도 3 문항이다. (aligned)",
+  "how": "판별식의 실근 범위와 정수근 검증을 적용하여 a=2, 4를 찾아 합 6을 구했다. (aligned)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "$x$에 대한 이차방정식 $x^2+(a-2)x+a^2-6a+8=0$이"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "모든 실수 $a$의 값의 합은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D \\ge 0$이어야 한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "두 정수근을 갖도록 하는"
+      }
+    ]
+  }
+}

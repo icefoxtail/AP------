@@ -1,0 +1,62 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "40ad2056db5e4f79",
+  "solvedAnswer": "$\\frac{1}{5}$",
+  "solveSteps": [
+    "$1/(x+yi) = (x-yi)/(x^2+y^2) = a+bi$이다.",
+    "$a = x/(x^2+y^2), b = -y/(x^2+y^2)$이다. (yi)",
+    "$a^2+b^2 = (x^2+y^2)/(x^2+y^2)^2 = 1/(x^2+y^2) = 5$이다. (yi)",
+    "따라서 $x^2+y^2 = 1/5$이다. (yi)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$0$이 아닌 복소수 $x+",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "복소수의 실수화와 절댓값 제곱 관계 서술형 유형이다. (yi)",
+  "rpmRecordId": "H1-RPM-024",
+  "rpmReason": "복소수 단원의 복소수의 역수와 분모의 실수화를 이용한 제곱의 합 계산 서술형 유형이다. (yi)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "복소수의 나눗셈과 크기 공식의 역수 관계를 유도하는 난이도 2 서술형 문항이다. (yi)",
+  "how": "분모의 실수화와 복소수 상등으로 a^2+b^2=1/(x^2+y^2)임을 유도하여 1/5을 계산했다. (yi)",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "$0$이 아닌 복소수 $x+yi$와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$x^2+y^2$의 값을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "복소수",
+        "src": "solution",
+        "quote": "복소수가 서로 같을 조건에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "단, $x, y$는 실수이고 $i=\\sqrt{-1}$이다."
+      }
+    ]
+  }
+}

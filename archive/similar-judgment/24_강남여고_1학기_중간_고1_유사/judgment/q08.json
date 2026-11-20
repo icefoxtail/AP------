@@ -1,0 +1,61 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "fdf413396656024f",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$D_1/4 = a^2+b+4 = 0 \\implies a^2 = -b-4$이다. (ax)",
+    "두 번째 방정식의 판별식 $D_2/4 = a^2 - b^2-4b-5 = (-b-4) - b^2-4b-5 = -(b+5/2)^2 - 11/4 < 0$이다. (ax)",
+    "따라서 항상 서로 다른 두 허근을 갖는다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$x$에 대한 이차방정식 $",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-DISCRIMINANT",
+  "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차방정식의 판별식 조건 대입과 근의 판별 유형이다. (ax)",
+  "rpmRecordId": "H1-RPM-027",
+  "rpmReason": "이차방정식 단원의 중근 조건 대입을 통한 이차방정식 근의 판별 유형이다. (ax)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "한 방정식의 판별식 조건을 다른 방정식의 판별식에 대입하여 부호를 판정하는 난이도 2 문항이다. (ax)",
+  "how": "첫 방정식의 중근 조건 a^2=-b-4를 두 번째 방정식 판별식에 대입해 음수임을 증명했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "$x$에 대한 이차방정식 $x^2+2ax-b-4=0$이"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "$x$에 대한 이차방정식 $x^2-2ax+b^2+4b+5=0$의"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "이차방정식 $x^2+2ax-b-4=0$이 중근을 가지므로 판별식을 $D_1$이라 하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "중근",
+        "src": "stem",
+        "quote": "중근을 가질 때"
+      }
+    ]
+  }
+}

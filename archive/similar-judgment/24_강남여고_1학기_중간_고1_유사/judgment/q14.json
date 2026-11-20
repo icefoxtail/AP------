@@ -1,0 +1,61 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "212a859d0474bdb3",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$z = a+bi$에 대해 $z+\\bar{z}=2a$ (실수), $z\\bar{z}=a^2+b^2$ (양의 실수)이다.",
+    "$z = -\\bar{z} \\implies a=0$이므로 순허수이다. (bi)",
+    "④ $z = 1+i$이면 $z^2 = 2i$ (허수)이므로 $z^2$이 항상 실수라는 것은 거짓이다. (bi)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$0$이 아닌 복소수 $z$",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "복소수와 켤레복소수의 성질 참거짓 판정 유형이다. (bi)",
+  "rpmRecordId": "H1-RPM-021",
+  "rpmReason": "복소수 단원의 켤레복소수의 연산 성질과 반례를 통한 판별 유형이다. (bi)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "복소수와 켤레복소수의 대수적 성질의 참거짓을 논리적으로 판정하는 난이도 2 문항이다. (bi)",
+  "how": "복소수 z=a+bi 표현과 반례 z=1+i를 적용하여 복소수 성질들의 참거짓을 판별했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "$0$이 아닌 복소수 $z$와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "켤레복소수",
+        "src": "solution",
+        "quote": "그러므로 옳지 않은 것은 ④이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "켤레복소수",
+        "src": "stem",
+        "quote": "그 켤레복소수 $\\bar{z}$에 대하여 다음 중 옳지 않은 것은?",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "허수단위",
+        "src": "stem",
+        "quote": "단, $i=\\sqrt{-1}$이다."
+      }
+    ]
+  }
+}

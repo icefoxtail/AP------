@@ -1,0 +1,62 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "31b2f1ff80e6aafb",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$2x^2+px+q - g(x) = 2(x-\\alpha)(x-\\beta)$이다.",
+    "중점 $x=(\\alpha+\\beta)/2$에서의 세로 선분 길이는 $\\overline{PQ} = 1/2 (\\beta-\\alpha)^2 = 8$이다. (px)",
+    "$(\\beta-\\alpha)^2 = 16 \\implies \\beta-\\alpha = 4$이다. (px)",
+    "따라서 $\\overline{CD} = \\beta-\\alpha = 4$이다. (px)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $y=2x^2+px",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차함수와 직선의 위치 관계 차함수 모델링 유형이다. (px)",
+  "rpmRecordId": "H1-RPM-035",
+  "rpmReason": "이차방정식 단원의 포물선과 직선의 교점 방정식과 수직 선분의 길이 계산 유형이다. (px)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차함수와 직선의 차함수 모델링을 통해 꼭짓점/중점 위치의 선분 길이를 계산하는 난이도 3 문항이다. (px)",
+  "how": "포물선과 직선의 교점 방정식 인수형을 세우고 축에서의 세로 길이 공식으로 beta-alpha=4를 구했다. (px)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=2x^2+px+q$의 그래프와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "선분 $\\mathrm{CD}$의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "실근",
+        "src": "solution",
+        "quote": "두 실근이 $\\alpha, \\beta$이고 최고차항의 계수가 $2$이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $y=g(x)$의 그래프가 서로 다른 두 점"
+      }
+    ]
+  }
+}

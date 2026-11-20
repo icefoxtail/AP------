@@ -1,0 +1,62 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "0dc6113448640e69",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$z^2 = (a^2-b^2) + 2abi = 21 + 20i$에서 $a^2-b^2 = 21, ab = 10$이다.",
+    "$(a^2+b^2)^2 = 21^2 + 20^2 = 841 = 29^2 \\implies a^2+b^2 = 29$이다. (bi)",
+    "$2a^2 = 50 \\implies a=5$ ($a>0$)이고 $b=2$이다. (bi)",
+    "따라서 $a-b = 5-2 = 3$이다. (bi)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 실수 $a, b$ ($a",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "복소수의 제곱과 복소수 상등 연립 유형이다. (bi)",
+  "rpmRecordId": "H1-RPM-024",
+  "rpmReason": "복소수 단원의 복소수의 제곱과 복소수 상등을 이용한 실수 미정계수 결정 유형이다. (bi)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "복소수 제곱 등식에서 실수부와 허수부를 비교해 연립이차방정식을 푸는 난이도 2 문항이다. (bi)",
+  "how": "복소수의 제곱과 상등으로 a^2-b^2=21, ab=10을 세우고 연립하여 a=5, b=2를 구했다. (bi)",
+  "slots": {
+    "given": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "두 실수 $a, b$ ($a>0$)에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$a-b$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "복소수",
+        "src": "solution",
+        "quote": "복소수가 서로 같을 조건에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "허수단위",
+        "src": "stem",
+        "quote": "단, $i=\\sqrt{-1}$이다."
+      }
+    ]
+  }
+}

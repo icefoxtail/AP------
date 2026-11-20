@@ -1,0 +1,62 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "4bac3541d6b4906b",
+  "solvedAnswer": "$165$",
+  "solveSteps": [
+    "연립방정식의 판별식 $D = 4(m-5)a + (m^2-4n+8) = 0$이다. (ax)",
+    "실수 a에 대한 항등식이므로 $m-5 = 0 \\implies m = 5$이다. (ax)",
+    "$m^2-4n+8 = 33-4n = 0 \\implies n = 33/4$이다. (ax)",
+    "따라서 $4mn = 4 \\times 5 \\times 33/4 = 165$이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "실수 $a$의 값에 관계없이",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차함수와 직선의 접선 조건 판별식과 항등식 서술형 유형이다. (ax)",
+  "rpmRecordId": "H1-RPM-035",
+  "rpmReason": "이차방정식 단원의 포물선과 직선이 매개변수에 관계없이 접할 항등식과 판별식 서술형 유형이다. (ax)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "포물선과 직선의 접점 조건 판별식을 항등식과 연립하는 난이도 3 서술형 문항이다. (ax)",
+  "how": "접선 조건 D=0을 매개변수 a에 대한 항등식으로 정리하여 m=5, n=33/4를 구하고 4mn=165를 계산했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=x^2-2ax+a^2+5a-2$의 그래프가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "단, $m, n$은 상수이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "이 이차방정식의 판별식을 $D$라 하면 $D=0$이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직선 $y=mx-n$에 항상 접할 때"
+      }
+    ]
+  }
+}

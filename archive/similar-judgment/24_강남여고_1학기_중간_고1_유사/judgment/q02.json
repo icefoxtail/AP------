@@ -1,0 +1,61 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "a04857dc385a51c2",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "우변을 전개하면 $bx^2 + (bc+3)x + 3c$이다. (ax)",
+    "계수비교에 의해 $b=2, 3c=12 \\implies c=4, a=bc+3=11$이다. (ax)",
+    "따라서 $a+b+c = 11+2+4 = 17$이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "등식 $2x^2+ax+12=",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-IDENTITY",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "항등식과 미정계수 계수비교법 기본 유형이다. (ax)",
+  "rpmRecordId": "H1-RPM-007",
+  "rpmReason": "항등식과 나머지정리 단원의 전개식을 이용한 동류항 계수비교법 유형이다. (ax)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "항등식의 계수비교법으로 미정계수를 결정하는 난이도 1 문항이다. (ax)",
+  "how": "우변을 전개하여 좌변과 계수를 비교해 a=11, b=2, c=4를 구하고 합을 계산했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "등식",
+        "src": "stem",
+        "quote": "등식 $2x^2+ax+12=(bx+3)(x+c)$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $a, b, c$에 대하여 $a+b+c$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "동류항",
+        "src": "solution",
+        "quote": "양변의 동류항의 계수를 비교하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "항등식",
+        "src": "stem",
+        "quote": "$x$에 대한 항등식일 때"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "qid": "q24",
+  "itemFingerprint": "e5b452680fcec421",
+  "solvedAnswer": "$2\\sqrt{7}$",
+  "solveSteps": [
+    "세 근의 관계에 의해 $a+b+c = 6\\sqrt{2}, ab+bc+ca = 22$이다.",
+    "대각선의 길이는 $\\sqrt{a^2+b^2+c^2}$이다. (22)",
+    "$a^2+b^2+c^2 = (a+b+c)^2 - 2(ab+bc+ca) = 72 - 44 = 28$이다. (22)",
+    "따라서 최댓값은 $\\sqrt{28} = 2\\sqrt{7}$이다. (22)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "직육면체의 가로의 길이, 세",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-MULTIPLICATION_FORMULA",
+  "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "곱셈공식 변형과 직육면체 대각선 길이 모델링 서술형 유형이다. (22)",
+  "rpmRecordId": "H1-RPM-003",
+  "rpmReason": "다항식의 연산 단원의 3변수 제곱의 합 곱셈공식 변형과 기하 모델링 유형이다. (22)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "삼차방정식의 근과 계수의 관계와 3변수 곱셈공식 변형을 공간도형 대각선 길이에 적용하는 난이도 3 서술형 문항이다. (22)",
+  "how": "근과 계수의 관계로 변의 합과 둘씩 곱의 합을 얻고 곱셈공식 변형으로 대각선 길이 2루트7을 구했다. (22)",
+  "slots": {
+    "given": [
+      {
+        "term": "직육면체",
+        "src": "stem",
+        "quote": "직육면체의 가로의 길이, 세로의 길이, 높이가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대각선",
+        "src": "solution",
+        "quote": "직육면체의 대각선의 길이 $\\sqrt{a^2+b^2+c^2}$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "곱셈공식",
+        "src": "solution",
+        "quote": "곱셈 공식의 변형을 이용하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "거리",
+        "src": "stem",
+        "quote": "두 꼭짓점 사이의 거리의 최댓값을 구하시오."
+      }
+    ]
+  }
+}

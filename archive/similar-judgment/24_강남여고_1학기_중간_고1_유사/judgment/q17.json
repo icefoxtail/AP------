@@ -1,0 +1,60 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "e206e3ef1e357bbe",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$P(1) = 1+a+b = 0, P(-3) = 81+9a+b = 0$을 연립하면 $a = -10, b = 9$이다. (ax)",
+    "방정식 $x^4-10x^2+9 = 0$에서 네 근의 곱은 상수항 $b = 9$이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "사차다항식 $x^4+ax^2",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "인수정리와 복이차방정식의 근과 계수의 관계 유형이다. (ax)",
+  "rpmRecordId": "H1-RPM-016",
+  "rpmReason": "인수분해 단원의 인수정리를 이용한 사차식 미정계수 결정 및 근과 계수 유형이다. (ax)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "인수정리로 복이차식 미정계수를 구하고 고차방정식의 근과 계수의 관계를 적용하는 난이도 2 문항이다. (ax)",
+  "how": "인수정리로 a=-10, b=9를 구하고 사차방정식 근과 계수의 관계(상수항)로 네 근의 곱 9를 구했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "사차다항식 $x^4+ax^2+b$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "해",
+        "src": "stem",
+        "quote": "사차방정식 $x^4+ax^2+b=0$의 네 근의 곱은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수정리",
+        "src": "solution",
+        "quote": "인수정리에 의하여 $P(1)=0$, $P(-3)=0$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "으로 나누어떨어질 때"
+      }
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "a78154da7d33d6a6",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$(x-1)(x+8)(x+2)(x+5)+k = (x^2+7x-8)(x^2+7x+10)+k$이다. (64)",
+    "$x^2+7x = t$로 치환하면 $(t-8)(t+10)+k = t^2+2t-80+k$이다. (64)",
+    "완전제곱식이 되려면 $-81+k = 0 \\implies k = 81$이다. (64)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다항식 $(x-1)(x+2)",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "공통부분 치환과 다항식의 완전제곱식 조건 유형이다. (64)",
+  "rpmRecordId": "H1-RPM-015",
+  "rpmReason": "인수분해 단원의 일차식의 곱과 치환을 이용한 완전제곱식 조건 유형이다. (64)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "일차식 4개의 곱에서 공통부분을 치환하여 이차식 완전제곱식 조건을 푸는 난이도 2 문항이다. (64)",
+  "how": "공통부분 x^2+7x를 만들어 치환하고 상수항이 1이 되도록 k=81을 구했다. (64)",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $(x-1)(x+2)(x+5)(x+8)+k$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $k$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "치환",
+        "src": "solution",
+        "quote": "$x^2+7x = t$로 치환하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "완전제곱식",
+        "src": "stem",
+        "quote": "이차식의 완전제곱식이 되도록 하는"
+      }
+    ]
+  }
+}

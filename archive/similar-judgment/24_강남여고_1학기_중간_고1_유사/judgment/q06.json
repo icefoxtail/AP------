@@ -1,0 +1,60 @@
+{
+  "qid": "q06",
+  "itemFingerprint": "0b54b756318839ea",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "나머지정리에 의해 $P(1/3) = (a+1)/9 + 1 = 2$이다. (ax)",
+    "$(a+1)/9 = 1 \\implies a+1 = 9 \\implies a = 8$이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다항식 $P(x)=3x^3+",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "나머지정리와 일차방정식 미정계수 결정 기본 유형이다. (ax)",
+  "rpmRecordId": "H1-RPM-009",
+  "rpmReason": "항등식과 나머지정리 단원의 나머지정리를 이용한 일차식 나눗셈 미정계수 유형이다. (ax)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "일차식으로 나눈 나머지를 나머지정리로 표현해 미정계수를 구하는 난이도 1 문항이다. (ax)",
+  "how": "나머지정리로 P(1/3)=2 방정식을 세워 일차방정식을 풀고 a=8을 도출했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $P(x)=3x^3+ax^2-3x+2$를"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $a$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지정리",
+        "src": "solution",
+        "quote": "나머지정리에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나누었을 때의 나머지가 $2$일 때"
+      }
+    ]
+  }
+}
