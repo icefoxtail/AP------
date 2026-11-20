@@ -1,0 +1,73 @@
+{
+  "qid": 20,
+  "itemFingerprint": "06be6be0b76f18b4",
+  "solveSteps": [
+    "그림에서 y절편이 5이므로 b = 5이다.",
+    "x축과의 교점 B(5, 0)을 대입하면 0 = -25 + 5a + 5이므로 5a = 20에서 a = 4이다.",
+    "이차함수 식은 y = -x^2 + 4x + 5 = -(x - 5)(x + 1) = -(x - 2)^2 + 9이다.",
+    "x축과의 교점은 A(-1, 0), B(5, 0)이므로 밑변 AB = 5 - (-1) = 6이다.",
+    "꼭짓점 C의 좌표는 (2, 9)이므로 높이는 9이다.",
+    "따라서 삼각형 ABC의 넓이는 (1/2) * 6 * 9 = 27이므로 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "그래프가 다음 그림과 같고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "이차함수 $y = -x^2 + ax + b$의 그래프가",
+  "rpmRecordId": "M3-RPM-054",
+  "rpmReason": "그림의 절편들로부터 y = -x^2 + 4x + 5를 구하고 밑변 6, 높이 9인 삼각형 ABC의 넓이 27을 구하는 문항이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+  "templateKey": "TPL_M3_GRAPH_GEOMETRY_TRIANGLE_AREA",
+  "typeReason": "x축과의 두 교점과 꼭짓점으로 이루어진 삼각형 ABC의 밑변 6과 높이 9로부터 넓이 27을 계산하는 포물선 삼각형 넓이 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "그림의 점들로부터 식의 계수를 정하고 꼭짓점과 x절편으로 삼각형 넓이 27을 계산하므로 난이도 3이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = -x^2 + ax + b$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "$\\triangle\\mathrm{ABC}$의 넓이는? (단, $a, b$는 상수이다.) [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각형",
+        "src": "solution",
+        "quote": "따라서 $\\overline{\\mathrm{AB}} = 6$, 높이 $9$이므로 $\\triangle\\mathrm{ABC} = \\frac{1}{2} \\times 6 \\times 9 = 27$이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "x절편 간 거리와 꼭짓점의 y좌표로 삼각형 넓이 공식 적용"
+      }
+    ],
+    "condition": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "꼭짓점을 $\\mathrm{C}$라 할 때,"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "y = -x^2 + 4x + 5로부터 두 절편 A(-1, 0), B(5, 0)과 꼭짓점 C(2, 9)를 구해 밑변 6, 높이 9인 삼각형 넓이가 27임을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

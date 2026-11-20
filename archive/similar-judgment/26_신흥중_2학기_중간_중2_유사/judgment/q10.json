@@ -1,0 +1,66 @@
+{
+  "qid": 10,
+  "itemFingerprint": "2c0ac2f16330ea84",
+  "solveSteps": [
+    "평행사변형에서 AD 와 BC 가 평행하므로 엇각에 의해 각 AFB = 각 FBC 이다.",
+    "선분 BF 가 각 B의 이등분선이므로 각 ABF = 각 FBC = 각 AFB 이다.",
+    "삼각형 ABF 는 이등변삼각형이므로 AF = AB = 10 cm 이다.",
+    "AD = 15 cm 이므로 FD = 15 - 10 = 5 cm 이다.",
+    "삼각형 DEF 또한 이등변삼각형(또는 삼각형 ABF 와 DEF 가 닮음)이므로 DE = FD = 5 cm 이다.",
+    "따라서 선분 DE의 길이는 5 cm 이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "평행사변형 $ABCD$에",
+  "rpmRecordId": "M2-RPM-190",
+  "rpmReason": "평행사변형의 각 이등분선과 엇각으로 AF = 10 cm 임을 확인하고 FD 로부터 DE = 5 cm 를 구하는 단계이다.",
+  "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+  "templateKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
+  "typeReason": "평행사변형 ABCD 에서 각의 이등분선이 만드는 이등변삼각형의 변의 길이 10 cm 와 15 cm 로 선분 DE = 5 cm 를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "엇각과 각 이등분선으로 AF = 10 cm 를 찾고 AD = 15 cm 의 차 5 cm 를 구하는 난이도 2 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "평행사변형 $ABCD$에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "분 $DE$의 길이는? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "엇각",
+        "src": "solution",
+        "quote": "BC}$이므로 엇각의 크기는 같다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "엇각과 각 이등분선으로 AF = 10 cm 를 구한 뒤 15 - 10 = 5 cm 로 선분 DE = 5 cm 임을 확인하여 ⑤로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

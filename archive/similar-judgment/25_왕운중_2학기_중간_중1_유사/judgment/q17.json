@@ -1,0 +1,56 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "01d9b7b43831063a",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "M'M = 12 cm 이고 M'M : MB = 4 : 3 이므로 MB = 12 * 3/4 = 9 cm 이다.",
+    "M'B = 12 + 9 = 21 cm 이고 점 M'은 AB의 중점이므로 AM' = 21 cm, AB = 42 cm 이다.",
+    "점 M은 AC의 중점이고 AM = AM' + M'M = 21 + 12 = 33 cm 이다.",
+    "AC = 2 * 33 = 66 cm 이므로 BC = AC - AB = 66 - 42 = 24 cm 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "직선 위의 네 점 $A, B",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+  "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
+  "newKeyProposal": null,
+  "typeReason": "선분의 중점 조건과 12 cm 및 4:3 비를 이용하여 선분 BC의 길이를 계산하는 유형이다.",
+  "rpmRecordId": "M1-RPM-174",
+  "rpmReason": "비례식과 중점 성질을 단계적으로 적용하여 12 cm 로부터 BC의 길이를 구한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "선분의 비례 배분과 두 번의 중점 조건을 적용하여 24 cm 를 계산한다. 12",
+  "how": "M'M=12에서 MB=9를 얻고 중점 조건으로 AC=66, AB=42에서 BC=24cm를 구하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "중점",
+        "src": "stem",
+        "quote": "점 $M$은 선분 $AC$의 중점이고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "선분 $BC$의 길이는? [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "길이",
+        "src": "solution",
+        "quote": "선분의 중점 성질과 주어진 길이의 비를",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

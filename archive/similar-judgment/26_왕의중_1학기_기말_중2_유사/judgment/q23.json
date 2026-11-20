@@ -1,0 +1,65 @@
+{
+  "qid": 23,
+  "itemFingerprint": "7af7ea2ab757796c",
+  "solveSteps": [
+    "1. 감자 100 g 당 500 원이므로 1 g 당 가격은 500 / 100 = 5 원이다.",
+    "2. 튀김가루 500 g 의 가격은 4000 원이므로 감자 x g 과 튀김가루 500 g 을 살 때의 총금액은 y = 5x + 4000 이다.",
+    "3. 감자 1.2 kg = 1200 g 이므로 x = 1200 을 대입하면 y = 5(1200) + 4000 = 6000 + 4000 = 10000(원) 이다."
+  ],
+  "solvedAnswer": "(1) $y = 5x + 4000$, (2) $10000$원",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "마트에서 감자 $100\\text{ g}$당 가격이 $500$원, 튀김가루는 $500\\text{ g}$에 $4000$원이었다.",
+  "rpmRecordId": "M2-RPM-164",
+  "rpmReason": "감자 무게 x 에 따른 일차함수 식 y = 5x + 4000 을 세우고 x = 1200 을 대입해 10000 원을 계산하는 함숫값 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
+  "templateKey": "NONE",
+  "typeReason": "단가 5원과 고정금액 4000원으로 일차함수 y = 5x + 4000 을 모델링하고 1200 g 일 때 함숫값 10000 을 구하는 일차함수 문제이므로 PT_M2_LINEAR_FUNCTION을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "1 g당 5원을 구해 y = 5x + 4000 을 세우고 1200 을 대입해 10000 을 구하는 2단계 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "x = 1200$을 대입하면 $y =",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "solution",
+        "quote": "따라서 총금액은 $10000$원이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "일차함수",
+        "src": "solution",
+        "quote": "따라서 $y = 5x + 4000$",
+        "evidenceType": "IMPLIED",
+        "justification": "감자 무게와 튀김가루 고정 가격을 일차함수로 모델링하여 계산함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "100 g당 500원에서 1 g당 5원이므로 y = 5x + 4000 을 세우고 1.2 kg = 1200 g 대입해 10000원을 구해 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

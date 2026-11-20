@@ -1,0 +1,67 @@
+{
+  "qid": 16,
+  "itemFingerprint": "b39d3f3f4ec982ea",
+  "solveSteps": [
+    "닮음비는 대응 모서리의 비 AB : A'B' = 8 : 12 = 2 : 3 이다.",
+    "VC : V'C' = x : 18 = 2 : 3 에서 3x = 36 이므로 x = 12 이다.",
+    "BC : B'C' = z : 9 = 2 : 3 에서 3z = 18 이므로 z = 6 이다.",
+    "대응각의 크기는 서로 같으므로 y = 62 이다.",
+    "따라서 x + y - 5z = 12 + 62 - 5 * 6 = 74 - 30 = 44 이므로 답은 44(③)이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-SIMILAR_FIGURES",
+  "unitEvidence": "두 삼각뿔 $V\\text{-}ABC$와 $V'\\text{-}A'B'C'$는 서로 닮은 도형이고",
+  "rpmRecordId": "M2-RPM-203",
+  "rpmReason": "삼각뿔 ABC와 A'B'C'에서 닮음비로 미지수 길이를 구하고 대응각 크기를 구하므로 대응변·대응각(M2-RPM-203)이다.",
+  "problemTypeKey": "PT_SIMILAR_FIGURES",
+  "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+  "typeReason": "입체도형 삼각뿔 ABC 에서 대응하는 모서리 AB 와 12 의 닮음비와 대응각 성질을 이용하므로 도형의 닮음비(TPL_SIMILAR_FIGURES_RATIO)이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "닮음비 2:3 으로 모서리 x = 12, z = 6 과 대응각 y = 62 를 구하고 식의 값 44 를 계산하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "닮음",
+        "src": "stem",
+        "quote": "서로 닮은 도형이고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$x + y - 5z$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "닮음비",
+        "src": "solution",
+        "quote": "닮음비는 $\\overline{AB} : \\overline{A'B'} = 8 : 12 = 2 : 3$이다.",
+        "evidenceType": "NAMED",
+        "justification": ""
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "대응변 AB:A'B' = 8:12 에서 x = 12, z = 6 과 각 y = 62 를 찾아 x + y - 5z = 44 로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundary": "NONE"
+}

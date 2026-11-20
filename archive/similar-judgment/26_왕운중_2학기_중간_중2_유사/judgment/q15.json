@@ -1,0 +1,57 @@
+{
+  "qid": 15,
+  "itemFingerprint": "4f8126fb3fff35d5",
+  "solveSteps": [
+    "두 대각선의 길이가 같은 사각형은 직사각형, 정사각형, 등변사다리꼴로 a = 3개이다.",
+    "두 대각선이 서로 수직인 사각형은 마름모, 정사각형으로 b = 2개이다.",
+    "두 대각선이 서로 다른 것을 이등분하는 사각형은 평행사변형, 직사각형, 마름모, 정사각형으로 c = 4개이다.",
+    "따라서 a + b + c = 3 + 2 + 4 = 9이며 보기 10 미만의 값이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "다음 <보기>의 사각형 중에서 두 대각선의 길이가 같은 것의 개수를 $a$",
+  "rpmRecordId": "M2-RPM-197",
+  "rpmReason": "보기 5개 사각형 중 대각선 길이, 수직, 이등분 성질을 분류하여 보기 10 미만의 합 a + b + c = 9를 산출하는 특수 사각형 대각선 성질 유형이다.",
+  "problemTypeKey": "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH",
+  "templateKey": "TPL_MG_COUNT_QUADRILATERALS_WITH_EQUAL_DIAGONALS",
+  "typeReason": "평행사변형, 직사각형, 마름모, 정사각형, 등변사다리꼴에서 대각선 성질별 개수를 세어 합 9(보기 10 이하)를 계산하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "각 사각형의 대각선 성질을 각각 분류하여 합 9(보기 10 이하)를 구하는 3단계 분류이므로 난이도 2이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "사다리꼴",
+        "src": "stem",
+        "quote": "ㄱ. 평행사변형　ㄴ. 직사각형　ㄷ. 마름모　ㄹ. 정사각형　ㅁ. 등변사다리꼴"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대각선",
+        "src": "stem",
+        "quote": "$a + b + c$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "마름모",
+        "src": "solution",
+        "quote": "두 대각선이 서로 수직인 사각형: ㄷ(마름모), ㄹ(정사각형) $\\implies b = 2$",
+        "evidenceType": "IMPLIED",
+        "justification": "특수 사각형별 대각선 성질 분류 및 개수 합산"
+      }
+    ],
+    "condition": []
+  },
+  "how": "대각선 길이가 같은 사각형 3개, 수직인 사각형 2개, 이등분하는 사각형 4개를 분류하여 합 9(10 미만)임을 판정하였다."
+}

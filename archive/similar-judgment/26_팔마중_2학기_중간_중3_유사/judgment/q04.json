@@ -1,0 +1,66 @@
+{
+  "qid": 4,
+  "itemFingerprint": "8347db615cef287f",
+  "solveSteps": [
+    "0도 <= x, y <= 90도 범위에서 tan x = sqrt(3)/3 이므로 x = 30도이다.",
+    "sin y = sqrt(3)/2 이므로 y = 60도이다.",
+    "따라서 x + y = 30 + 60 = 90도이다.",
+    "sin(x + y) = sin 90도 = 1 이므로 답은 1(⑤)이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "unitEvidence": "$\\tan x = \\frac{\\sqrt{3}}{3}$이고 $\\sin y = \\frac{\\sqrt{3}}{2}$일 때",
+  "rpmRecordId": "M3-RPM-058",
+  "rpmReason": "특수각 30도와 60도의 삼각비 값을 이용해 연산하므로 특수각 계산(M3-RPM-058)에 해당한다.",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+  "typeReason": "특수각의 삼각비 값으로부터 각도 x = 30도, y = 60도를 구하고 sin(x+y)를 계산하므로 특수각의 삼각비(TPL_TRIG_RATIO_SPECIAL_ANGLE)이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "특수각 x = 30도, y = 60도를 각각 찾고 sin 90도 = 1 을 계산하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "tan",
+        "src": "stem",
+        "quote": "$\\tan x = \\frac{\\sqrt{3}}{3}$이고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$\\sin(x + y)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "따라서 $\\sin(x + y) = \\sin(30^\\circ + 60^\\circ) = \\sin 90^\\circ = 1$이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "특수각 x=30도, y=60도를 구하여 식에 대입해 계산한다."
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "tan x = sqrt(3)/3 에서 x = 30도, sin y = sqrt(3)/2 에서 y = 60도를 얻어 sin 90도 = 1 로 ⑤를 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundary": "NONE"
+}

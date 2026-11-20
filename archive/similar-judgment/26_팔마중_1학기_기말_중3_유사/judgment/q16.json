@@ -1,0 +1,66 @@
+{
+  "qid": 16,
+  "itemFingerprint": "da2dc10a25245d02",
+  "solveSteps": [
+    "그림에서 포물선의 꼭짓점이 (1, -2)이므로 식을 y = a(x - 1)^2 - 2라 둔다.",
+    "그래프가 점 (0, 1)을 지나므로 대입하면 1 = a(0 - 1)^2 - 2에서 a = 3이다.",
+    "식을 전개하면 y = 3(x - 1)^2 - 2 = 3x^2 - 6x + 1이다.",
+    "따라서 a = 3, b = -6, c = 1이므로 abc = 3 * (-6) * 1 = -18이다.",
+    "따라서 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "다음 그림과 같은 그래프를 나타내는",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "이차함수의 식을 $y = ax^2 + bx + c$의 꼴로",
+  "rpmRecordId": "M3-RPM-054",
+  "rpmReason": "그림의 꼭짓점과 지나는 점으로부터 식 y = 3(x-1)^2 - 2를 유도해 abc = -18을 계산하는 조건으로 식 구하기 문항이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION",
+  "templateKey": "NONE",
+  "typeReason": "그림에서 꼭짓점과 한 점을 읽어 y = ax^2 + bx + c의 계수들을 복원하고 abc = -18을 산출하는 이차함수 식 결정 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "꼭짓점과 지나는 점으로부터 3(x-1)^2 - 2를 전개해 abc = -18을 구하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수의 식을 $y = ax^2 + bx + c$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "$abc$의 값은? (단, $a, b, c$는 상수이다.) [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "꼭짓점",
+        "src": "solution",
+        "quote": "그림에서 꼭짓점이 $(1, -2)$이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "꼭짓점 좌표를 이용해 표준형 식을 세운 후 전개"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "그림에서 꼭짓점 (1, -2)와 y절편 1을 읽어 식 y = 3x^2 - 6x + 1을 구하고 abc = -18임을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

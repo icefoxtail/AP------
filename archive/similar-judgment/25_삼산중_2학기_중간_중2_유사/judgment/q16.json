@@ -1,0 +1,76 @@
+{
+  "qid": 16,
+  "itemFingerprint": "ac13399d3e87de6b",
+  "solveSteps": [
+    "1) 0, 1, 2, 3, 4, 5, 6의 카드 7장으로 두 자리 자연수를 만들 때 2의 배수가 되려면 일의 자리가 0, 2, 4, 6이어야 한다.",
+    "2) 일의 자리가 0인 경우: 십의 자리는 1, 2, 3, 4, 5, 6의 6가지이다.",
+    "3) 일의 자리가 2, 4, 6인 경우: 각각에 대해 십의 자리는 0과 일의 자리 숫자를 제외한 5가지씩이므로 3 * 5 = 15가지이다.",
+    "4) 따라서 만들 수 있는 2의 배수의 개수는 6 + 15 = 21개이다.",
+    "5) 따라서 정답은 21개인 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-08",
+  "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+  "unitEvidence": "$0$, $1$, $2$, $3$, $4$, $5$, $6$이 각각 하나씩 적힌 카드 $7$장이 있다. 이 중에서 두 장을 뽑아 두 자리 자연수를 만들 때, 만들 수 있는 두 자리 자연수 중에서 $2$의 배수의 개수는?",
+  "rpmRecordId": "M2-RPM-109",
+  "rpmReason": "0을 포함한 숫자 카드 7장으로 2의 배수인 두 자리 자연수 21개를 십의 자리 0 제외 조건과 일의 자리 짝수 조건으로 세는 M2-RPM-109 문제이다.",
+  "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+  "templateKey": "NONE",
+  "typeReason": "일의 자리가 0인 경우 6가지와 2, 4, 6인 경우 15가지를 합의 법칙으로 분류하여 21개를 구하는 PT_M2_BASIC_COUNTING_CASE_SPLIT 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "십의 자리에 0이 올 수 없는 조건과 2의 배수 조건으로 케이스를 나누어 6 + 15 = 21을 구하는 표준 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "뽑아 두 자리 자연수를 만들 때,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "2$의 배수의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "배수",
+        "src": "solution",
+        "quote": "$2$의 배수가 되려면 일의",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "제외",
+        "src": "solution",
+        "quote": "자리 숫자를 제외한 $5$가지"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "0부터 6까지 7장의 카드로 두 자리 자연수를 만드는 조건이다.",
+    "goal": "2의 배수가 되는 자연수의 개수를 구하는 목표이다.",
+    "method": "2의 배수 조건을 일의 자리 숫자로 판별하는 방법이다.",
+    "condition": "0과 사용한 숫자를 십의 자리에서 제외하는 조건이다."
+  },
+  "how": "일의 자리가 0일 때 6가지, 일의 자리가 2, 4, 6일 때 15가지이므로 총 21개임을 확인하여 정답 ②로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

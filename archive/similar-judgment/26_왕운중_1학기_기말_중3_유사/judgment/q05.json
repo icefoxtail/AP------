@@ -1,0 +1,70 @@
+{
+  "qid": 5,
+  "itemFingerprint": "4a92ba0bc75820bf",
+  "solveSteps": [
+    "근의 공식에 의해 x = (-5 +- sqrt(5^2 - 4*3*k)) / 6 = (-5 +- sqrt(25 - 12k)) / 6 이다.",
+    "주어진 해와 비교하면 25 - 12k = 73 이다.",
+    "-12k = 73 - 25 = 48 이다.",
+    "k = -4 이다.",
+    "선지 중 -6, -5, -4, 4, 6 에서 답은 ③ -4이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "unitEvidence": "근의 공식에 의해 $x",
+  "rpmRecordId": "M3-RPM-035",
+  "rpmReason": "근의 공식에서 25 - 12k = 73을 세우고 -12k = 48에서 k를 구한다.",
+  "problemTypeKey": "PT_M3_ROOT_FORMULA",
+  "templateKey": "NONE",
+  "typeReason": "근의 공식을 적용하여 근호 안의 식 25 - 12k = 73을 비교하여 미지수 k를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "근의 공식을 적용해 25 - 12k = 73에서 -12k = 48, k = -4를 구하는 2단계 계산이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "quote": "이차방정식 $3x^2 +",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "해",
+        "quote": "근의 공식에 의해",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "공식",
+        "quote": "근의 공식에 의해 $x",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "근의 공식에서 25 - 12k = 73이므로 -12k = 48에서 k = -4를 도출하여 ③으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": [],
+  "course": [
+    "MIDDLE3"
+  ],
+  "curriculum": "2015"
+}

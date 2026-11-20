@@ -1,0 +1,72 @@
+{
+  "qid": 18,
+  "itemFingerprint": "d10b3bd39889302a",
+  "solveSteps": [
+    "1) 5명의 학생이 서로 한 번씩 악수를 하는 것은 5명 중에서 순서 없이 2명을 뽑는 경우의 수와 같다.",
+    "2) 5명 중 2명을 택하는 조합의 수는 (5 * 4) / 2 = 10이다.",
+    "3) 따라서 악수의 총 횟수는 10회이다.",
+    "4) 그러므로 정답은 10회인 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-08",
+  "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+  "unitEvidence": "처음 만난 다섯 명의 학생이 서로 한 번씩 악수를 할 때, 악수의 총 횟수는?",
+  "rpmRecordId": "M2-RPM-110",
+  "rpmReason": "5명의 학생 중 악수할 2명을 순서 없이 뽑는 조합 계산 (5 * 4) / 2 = 10으로 악수 횟수를 구하는 M2-RPM-110 문제이다.",
+  "problemTypeKey": "PT_M2_COUNTING",
+  "templateKey": "NONE",
+  "typeReason": "서로 다른 5명 중 대표 2명을 뽑는 순서 없는 경우의 수로 악수 횟수 10회를 계산하는 PT_M2_COUNTING 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "5명 중 2명을 순서 없이 택하는 기본 공식 (5 * 4) / 2 = 10을 바로 적용하는 1단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": ", 악수의 총 횟수는?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "조합",
+        "candidate": true,
+        "parent": "개수",
+        "note": "2명을 순서 없이 뽑는 조합의 수",
+        "src": "solution",
+        "quote": "순서 없이 뽑는 경우의 수와"
+      }
+    ],
+    "method": [
+      {
+        "term": "순서",
+        "src": "solution",
+        "quote": "할 $2$명을 순서 없이 뽑는 경",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {
+    "given": "5명의 학생이 서로 한 번씩 악수하는 상황 조건이다.",
+    "goal": "악수의 총 횟수를 조합으로 구하는 목표이다.",
+    "method": "순서 없이 2명을 뽑아 중복을 나누는 방법이다.",
+    "condition": "추가 조건 없음."
+  },
+  "how": "5명 중 악수할 2명을 뽑는 경우 (5 * 4) / 2 = 10회임을 확인하여 정답 ④로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

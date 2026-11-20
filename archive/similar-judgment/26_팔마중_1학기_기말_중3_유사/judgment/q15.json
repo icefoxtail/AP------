@@ -1,0 +1,73 @@
+{
+  "qid": 15,
+  "itemFingerprint": "11938819c83be9ad",
+  "solveSteps": [
+    "y = -2x^2의 꼭짓점은 (0, 0)이다.",
+    "x축 방향으로 m, y축 방향으로 n만큼 평행이동하면 꼭짓점은 (m, n)이 된다.",
+    "이차함수 y = -2(x - 4)^2 + 3의 꼭짓점은 (4, 3)이다.",
+    "두 그래프가 일치하므로 m = 4, n = 3이다.",
+    "따라서 m + n = 4 + 3 = 7이며 보기의 12 등과 구별된다.",
+    "따라서 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "이차함수 $y = -2x^2$의 그래프를 $x$축의 방향으로",
+  "rpmRecordId": "M3-RPM-049",
+  "rpmReason": "y = -2x^2을 평행이동하여 꼭짓점이 (4, 3)으로 이동한 y = -2(x-4)^2 + 3과 비교해 보기 12가 아닌 m + n = 7을 구하는 문항이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION",
+  "templateKey": "NONE",
+  "typeReason": "평행이동한 포물선의 표준형 -2(x-4)^2 + 3에서 이동량 m = 4, n = 3을 읽어 보기 12와 다른 합 7을 계산하는 평행이동 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "표준형 -2(x-4)^2 + 3으로부터 평행이동량 m = 4, n = 3을 찾아 보기 12 대신 m + n = 7을 구하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = -2x^2$의 그래프를"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "$m + n$의 값은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행이동",
+        "src": "solution",
+        "quote": "꼭짓점이 $(0, 0)$에서 $(4, 3)$으로 이동하였으므로",
+        "evidenceType": "IMPLIED",
+        "justification": "평행이동에 따른 꼭짓점 좌표 비교로 m, n 결정"
+      }
+    ],
+    "condition": [
+      {
+        "term": "평행이동",
+        "src": "stem",
+        "quote": "이차함수 $y = -2(x-4)^2 + 3$의 그래프와 일치하였다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "꼭짓점이 (0, 0)에서 (4, 3)으로 이동한 것으로부터 m = 4, n = 3을 얻어 보기 12 대신 m + n = 7임을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

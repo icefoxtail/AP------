@@ -1,0 +1,66 @@
+{
+  "qid": 20,
+  "itemFingerprint": "741bb578953dd11c",
+  "solveSteps": [
+    "첫째 식에 -2를 곱하면 -6ax + 2y = 6a - 4 이다.",
+    "해가 무수히 많으려면 둘째 식 (10 - 2b)x + 2y = b 와 완전히 일치해야 한다.",
+    "-6a = 10 - 2b 에서 3a - b = -5 ... ㉠ 이다.",
+    "6a - 4 = b 에서 6a - b = 4 ... ㉡ 이다.",
+    "㉡에서 ㉠을 빼면 3a = 9 이므로 a = 3 이고, b = 18 - 4 = 14 이다.",
+    "따라서 a + b = 3 + 14 = 17 이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "unitEvidence": "b$에 대하여 연립방정식 $\\begin",
+  "rpmRecordId": "M2-RPM-154",
+  "rpmReason": "3ax - y 식과 (10 - 2b)x 식의 계수가 일치할 조건을 세워 a = 3, b = 14, 합 17 을 구하는 단계이다.",
+  "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+  "templateKey": "NONE",
+  "typeReason": "ax 항과 b 항을 포함한 연립방정식의 해가 무수히 많을 때 미정계수 합 17 을 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "ax 식을 일치시켜 a와 b에 관한 연립방정식을 다시 풀어 17 을 얻는 난이도 3 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "b$에 대하여 연립방정식 $\\begin"
+      }
+    ],
+    "goal": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "에 대하여 연립방정식 $\\begin"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "3$을 ㉡에 대입하면 $b =",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "3ax - y 와 일치 조건으로 a = 3, b = 14 를 연립해 풀어 a + b = 17 로 ⑤를 선택했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

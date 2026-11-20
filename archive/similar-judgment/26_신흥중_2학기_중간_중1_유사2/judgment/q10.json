@@ -1,0 +1,58 @@
+{
+  "qid": 10,
+  "itemFingerprint": "04fcd65bfe988db1",
+  "solveSteps": [
+    "ㄱ: 4 + 5 = 9 < 10이므로 삼각부등식을 위배하여 삼각형이 만들어지지 않는다.",
+    "ㄴ: AB=6 cm, BC=8 cm와 그 끼인각 B=45도가 주어졌으므로 SAS 조건으로 삼각형이 유일하게 결정된다.",
+    "ㄷ: 세 각만 주어지면 크기가 다른 삼각형이 무수히 많으므로 하나로 정해지지 않는다.",
+    "ㄹ: BC=7 cm와 양 끝 각 B=50도, C=65도가 주어졌으므로 ASA 조건으로 삼각형이 유일하게 결정된다.",
+    "따라서 오직 하나로 정해지는 것은 ㄴ, ㄹ이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "unitEvidence": "다음 보기 중 $\\triangle ABC$가 오직 하나로 정해지는 것만을 있는 대로 고른 것은?",
+  "rpmRecordId": "M1-RPM-189",
+  "rpmReason": "두 변 AB, BC와 끼인각 45도 조건 등 삼각형 ABC의 작도 유일성을 판단하는 삼각형의 작도 유형이다.",
+  "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+  "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+  "typeReason": "삼각부등식 위배 조건과 SAS, ASA 작도 조건을 대조하여 삼각형 ABC가 유일 결정되는 보기를 찾는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "삼각형의 결정조건 4가지 보기(삼각부등식, SAS, 세 각, ASA)를 각각 판정하므로 난이도 2이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "다음 보기 중 $\\triangle ABC$가 오직 하나로 정해지는 것만을 있는 대로 고른 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "오직 하나로 정해지는 것만을 있는 대로 고른 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "합동",
+        "src": "solution",
+        "quote": "삼각형의 유일 결정 조건을 검토한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "삼각형의 결정조건 및 합동조건 SAS, ASA 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "삼각형 ABC 결정조건에서 삼각부등식 불성립인 ㄱ과 크기 미정인 ㄷ을 제외하고 SAS 조건의 ㄴ과 ASA 조건의 ㄹ을 골라 판정하였다."
+}

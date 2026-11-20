@@ -1,0 +1,57 @@
+{
+  "qid": 14,
+  "itemFingerprint": "cdbc8bb4499350da",
+  "solveSteps": [
+    "평행사변형 ABCD의 이웃한 두 내각의 합은 180^\\circ이므로 각 이등분선이 이루는 각은 180/2 = 90^\\circ이다.",
+    "따라서 사각형 EFGH의 네 내각은 모두 90^\\circ이므로 사각형 EFGH는 직사각형이다.",
+    "직사각형은 두 대각선의 길이가 서로 같지만, 정사각형이 아닌 이상 두 대각선이 서로 수직으로 만나지 않는다.",
+    "따라서 옳지 않은 것은 3번 두 대각선이 서로 수직으로 만난다이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "평행사변형 $ABCD$의 네 내각의 이등분선이 서로 만나 이루는 사각형 $EFGH$에 대한 설명으로 옳지 않은 것은?",
+  "rpmRecordId": "M2-RPM-196",
+  "rpmReason": "평행사변형 ABCD의 네 내각 이등분선이 만드는 직사각형 EFGH의 성질(각 90도, 대각선)을 판별하는 사각형의 성질 유형이다.",
+  "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE",
+  "templateKey": "TPL_MG_EVALUATE_RECTANGLE_FORMED_BY_PARALLELOGRAM_BISECTORS",
+  "typeReason": "평행사변형 ABCD의 내각 이등분선 교각이 90도임을 유도하여 사각형 EFGH가 직사각형임을 밝히고 대각선 수직 여부를 판정하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이웃한 각의 합 180도의 반인 90도로 직사각형임을 추론하고 직사각형의 대각선 성질을 점검하므로 난이도 2이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "평행사변형 $ABCD$의 네 내각의 이등분선이 서로 만나 이루는 사각형 $EFGH$에 대한 설명으로 옳지 않은 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "직사각형",
+        "src": "solution",
+        "quote": "따라서 $\\square EFGH$의 네 내각이 모두 $90^\\circ$이므로 $\\square EFGH$는 직사각형이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "대각선",
+        "src": "solution",
+        "quote": "직사각형은 두 대각선의 길이가 같지만, 정사각형이 아닌 이상 두 대각선이 서로 수직으로 만나지 않는다.",
+        "evidenceType": "IMPLIED",
+        "justification": "직사각형의 대각선 성질 대조"
+      }
+    ],
+    "condition": []
+  },
+  "how": "평행사변형 ABCD의 각 이등분선 교점 사각형 EFGH가 네 각이 90도인 직사각형임을 밝히고 대각선이 수직이라는 3번이 거짓임을 판정하였다."
+}

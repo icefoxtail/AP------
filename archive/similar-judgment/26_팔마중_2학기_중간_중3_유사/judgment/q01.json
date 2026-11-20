@@ -1,0 +1,67 @@
+{
+  "qid": 1,
+  "itemFingerprint": "fa349151987ffac1",
+  "solveSteps": [
+    "직각삼각형 ABC에서 각 C = 90도이고 AB = 6, BC = 3*sqrt(3) 이다.",
+    "피타고라스 정리에 의해 AC = sqrt(6^2 - (3*sqrt(3))^2) = sqrt(36 - 27) = 3 이다.",
+    "sin A = BC / AB = 3*sqrt(3) / 6 = sqrt(3) / 2 이다.",
+    "tan B = AC / BC = 3 / (3*sqrt(3)) = 1 / sqrt(3) 이다.",
+    "따라서 sin A * tan B = (sqrt(3)/2) * (1/sqrt(3)) = 1/2 이므로 답은 1/2(①)이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "다음 직각삼각형 $\\text{ABC}$에서",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "unitEvidence": "다음 직각삼각형 $\\text{ABC}$에서 $\\sin A \\times \\tan B$의 값은?",
+  "rpmRecordId": "M3-RPM-055",
+  "rpmReason": "직각삼각형 ABC에서 삼각비 sin과 tan의 정의를 이용해 계산하므로 sin·cos·tan(M3-RPM-055)에 해당한다.",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+  "typeReason": "직각삼각형 ABC의 세 변의 길이 관계로부터 삼각비 sin A와 tan B의 값을 유도하므로 도형에서 삼각비 값 유도(TPL_TRIG_RATIO_GEOMETRIC_DERIVATION)이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "그림의 직각삼각형 ABC에서 피타고라스 정리로 AC = 3을 구하고 sin A 와 tan B 를 곱해 1/2을 얻는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "다음 직각삼각형 $\\text{ABC}$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각비",
+        "src": "solution",
+        "quote": "따라서 $\\sin A = \\frac{3\\sqrt{3}}{6} = \\frac{\\sqrt{3}}{2}$"
+      }
+    ],
+    "method": [
+      {
+        "term": "피타고라스 정리",
+        "src": "solution",
+        "quote": "피타고라스 정리에 의해",
+        "evidenceType": "NAMED",
+        "justification": ""
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "직각삼각형 ABC에서 AC = 3 을 구하고 sin A = sqrt(3)/2 와 tan B = 1/sqrt(3) 을 곱해 1/2 로 ①을 확정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundary": "NONE"
+}

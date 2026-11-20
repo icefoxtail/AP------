@@ -1,0 +1,57 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "b275354dd1e82157",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "직선 p와 직선 l의 교점에서 왼쪽 아래 각은 88도이다.",
+    "직선 p와 직선 n의 교점에서 오른쪽 위 각이 88도이므로 맞꼭지각인 왼쪽 아래 각도 88도이다.",
+    "직선 l과 n에서 직선 p에 대한 동위각의 크기가 88도로 같으므로 l // n 이다.",
+    "직선 m과의 교각은 85도로 88도와 다르므로 평행하지 않다.",
+    "따라서 서로 평행한 두 직선은 l // n 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "세 직선 $l, m, n$과",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "problemTypeKey": "PT_M1_PARALLELISM_CONVERSE",
+  "templateKey": "TPL_M1_PARALLELISM_CONVERSE_CORE",
+  "newKeyProposal": null,
+  "typeReason": "88도 교각의 동위각과 맞꼭지각 크기가 일치함을 통해 평행선을 판정하는 유형이다.",
+  "rpmRecordId": "M1-RPM-178",
+  "rpmReason": "88도 각의 동위각 크기가 같음을 확인하여 평행선 l // n 을 결정한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "88도 맞꼭지각을 구하고 동위각이 같은 두 직선을 선택해야 한다.",
+  "how": "직선 p에 대해 88도로 동위각이 일치하는 두 직선 l과 n의 평행을 확인하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "맞꼭지각",
+        "src": "stem",
+        "quote": "오른쪽 위 맞꼭지각이 $88^\\circ$이다"
+      }
+    ],
+    "goal": [
+      {
+        "term": "평행",
+        "src": "stem",
+        "quote": "서로 평행한 두 직선을 기호로 바르게 나타낸 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "동위각",
+        "src": "solution",
+        "quote": "동위각 또는 엇각의 크기가 같으면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

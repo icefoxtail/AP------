@@ -1,0 +1,57 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "b8446322179e232c",
+  "solvedAnswer": "$y = \\dfrac{1}{2}x + 2$, $y = 3x - 2$, 교점 $\\left(\\dfrac{8}{5}, \\dfrac{14}{5}\\right)$",
+  "solveSteps": [
+    "직선 l은 (-2, 1)과 (2, 3)을 지나므로 기울기 1/2, y = 1/2 x + 2 이다.",
+    "직선 m은 (0, -2)와 (1, 1)을 지나므로 기울기 3, y = 3x - 2 이다.",
+    "1/2 x + 2 = 3x - 2 에서 5/2 x = 4, x = 8/5 이다.",
+    "y = 3*(8/5) - 2 = 14/5 이다.",
+    "따라서 두 직선의 식과 교점은 (8/5, 14/5) 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "좌표평면 위의 직선 $l$은",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+  "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+  "newKeyProposal": null,
+  "typeReason": "두 점을 지나는 두 직선의 방정식을 각각 구하고 연립하여 교점 y좌표 14/5 를 구하는 서술형 유형이다.",
+  "rpmRecordId": "M2-RPM-056",
+  "rpmReason": "두 직선의 방정식을 세우고 연립하여 교점 좌표 (8/5, 14/5) 를 구한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 점으로 기울기와 절편을 구하고 연립일차방정식을 풀어 교점을 서술해야 한다. 14",
+  "how": "각각의 직선식을 구한 뒤 연립하여 교점 (8/5, 14/5)를 도출하였다. 14",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "좌표평면 위의 직선 $l$은 두 점 $(-2, 1)$, $(2, 3)$을 지나고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "두 직선의 교점의 좌표를 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "직선 $l$의 기울기는",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "7783b9d6e790ccce",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "BP perp AC 이므로 직각삼각형 BPQ에서 각 BQP = 90 - 32 = 58도이다.",
+    "A, P, Q, C가 일직선 위에 있으므로 각 BQC = 180 - 58 = 122도이다.",
+    "AD // BC 이므로 엇각에 의해 각 DAP = 각 QCB 이다.",
+    "삼각형 BQC에서 각 QCB + 각 QBC = 180 - 122 = 58도이다.",
+    "따라서 각 DAP + 각 QBC = 58도이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "평행사변형 $ABCD$의 두",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+  "newKeyProposal": null,
+  "typeReason": "대각선에 내린 수선과 32도 각으로부터 엇각과 삼각형 외각 관계를 이용하는 유형이다.",
+  "rpmRecordId": "M2-RPM-072",
+  "rpmReason": "평행사변형의 평행선 엇각과 32도 직각삼각형의 내각을 연계한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "각 BQP=58도를 구하고 평행선 엇각을 치환하여 각의 합 58도를 유도한다. 32",
+  "how": "직각삼각형에서 58도를 구하고 평행선 엇각을 치환하여 합 58도를 도출하였다. 32",
+  "slots": {
+    "given": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "평행사변형 $ABCD$의 두 꼭짓점 $B$, $D$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "수선",
+        "src": "stem",
+        "quote": "$\\angle DAP + \\angle QBC$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "엇각",
+        "src": "solution",
+        "quote": "엇각으로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

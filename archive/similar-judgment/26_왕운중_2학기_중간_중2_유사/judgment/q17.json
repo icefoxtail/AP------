@@ -1,0 +1,57 @@
+{
+  "qid": 17,
+  "itemFingerprint": "27ffc413670f5f9e",
+  "solveSteps": [
+    "정사각형 ABCD에서 BC = CD이고 조건에서 CD = CE이므로 BC = CE이다.",
+    "삼각형 CDE는 CD = CE인 이등변삼각형이므로 각 DEC = (180도 - 26도) / 2 = 77도이다.",
+    "삼각형 BCE는 BC = CE인 이등변삼각형이고 각 BCE = 116도이므로 각 BEC = (180도 - 116도) / 2 = 32도이다.",
+    "따라서 각 BED = 각 DEC - 각 BEC = 77도 - 32도 = 45도이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "정사각형 $ABCD$에서 점 $E$가 정사각형의 외부에 있고",
+  "rpmRecordId": "M2-RPM-196",
+  "rpmReason": "정사각형 ABCD와 선분 CD = CE 조건에서 각 DCE = 26도, BCE = 116도를 이용해 각 BED = 45도를 구하는 정사각형 성질 유형이다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+  "typeReason": "정사각형 ABCD의 변의 길이와 이등변삼각형 CDE, BCE의 밑각 성질을 연계하여 각 BED의 크기를 산출하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "정사각형에서 변의 일치로 두 이등변삼각형 CDE, BCE를 찾고 각 DCE, BCE로부터 각의 차 45도를 계산하므로 난이도 3이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "정사각형",
+        "src": "stem",
+        "quote": "정사각형 $ABCD$에서 점 $E$가 정사각형의 외부에 있고 $\\overline{CD} = \\overline{CE}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle BED$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정사각형",
+        "src": "solution",
+        "quote": "정사각형이므로 $\\overline{BC} = \\overline{CD}$이고 조건에서 $\\overline{CD} = \\overline{CE}$이므로 $\\overline{BC} = \\overline{CE}$이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "정사각형의 변의 길이와 이등변삼각형 밑각 성질 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "정사각형 ABCD의 변의 길이로 이등변삼각형 CDE(밑각 77도)와 BCE(밑각 32도)를 찾아 각 BED = 77 - 32 = 45도임을 판정하였다."
+}

@@ -1,0 +1,66 @@
+{
+  "qid": 18,
+  "itemFingerprint": "80a829f5d6bde0ff",
+  "solveSteps": [
+    "1. 점 B 는 y = 3 과 y축의 교점이므로 B(0, 3) 이다.",
+    "2. 점 C 는 y = -2x + 11 과 y = 3 의 교점이므로 3 = -2x + 11 에서 2x = 8 이므로 C(4, 3) 이다.",
+    "3. 밑변 BC = 4 - 0 = 4 이고, 점 A 의 y좌표 y_A > 3 에 대해 삼각형 ABC 의 넓이가 8 이므로 (1/2) * 4 * (y_A - 3) = 8 에서 y_A - 3 = 4 이므로 y_A = 7 이다.",
+    "4. 점 A(k, 7) 은 y = -2x + 11 위의 점이므로 7 = -2k + 11 에서 2k = 4 이므로 k = 2 이다. 따라서 A(2, 7) 이다.",
+    "5. 직선 ax + y + b = 0 이 B(0, 3) 과 A(2, 7) 을 지나므로 3 + b = 0 에서 b = -3 이고, 2a + 7 - 3 = 0 에서 2a = -4 이므로 a = -2 이다.",
+    "6. 따라서 a + b + k = (-2) + (-3) + 2 = -3 이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "unitEvidence": "세 직선 $y = -2x + 11$, $ax + y + b = 0$, $y = 3$으로 둘러싸인 삼각형 $ABC$에 대하여",
+  "rpmRecordId": "M2-RPM-176",
+  "rpmReason": "세 직선 y = -2x + 11, ax + y + b = 0, y = 3 이 둘러싼 삼각형 ABC 의 넓이 8 을 이용해 a, b, k 를 결정하는 넓이 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
+  "templateKey": "TPL_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA_INTERSECTION",
+  "typeReason": "직선 y = -2x + 11 과 y = 3 의 교점과 넓이 8 로부터 점 A(k, 7) 과 직선 ax + y + b = 0 을 결정하는 직선과 둘러싸인 넓이 유형이므로 PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA를 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "y = -2x + 11 과 교점 C(4, 3) 및 삼각형 넓이 8 로부터 y_A = 7, k = 2 를 구해 a+b+k = -3 을 도출하는 3단계 발전 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "둘러싸인 삼각형 $ABC$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "단, $a, b$는 상수)"
+      }
+    ],
+    "method": [
+      {
+        "term": "교점",
+        "src": "solution",
+        "quote": "점 $B$는 $y = 3$과 $y$축 위의 교점이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "B(0, 3), C(4, 3) 에서 밑변 4 와 넓이 8 로 y_A = 7 을 얻어 A(2, 7) 과 ax+y+b=0 에서 a=-2, b=-3 을 구해 a+b+k = -3 으로 ①로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "qid": "20",
+  "itemFingerprint": "b9e637d57442b87a",
+  "solveSteps": [
+    "15분 동안 물의 온도가 100 - 55 = 45도 내려갔다.",
+    "물의 온도가 내려가는 속도가 일정하므로 1분에 45 / 15 = 3도씩 내려간다.",
+    "x분 후 물의 온도를 y도라 하면 y = 100 - 3x이다.",
+    "물의 온도가 25도가 되는 것은 25 = 100 - 3x에서 3x = 75이므로 x = 25이다.",
+    "따라서 실온에 둔 지 25분 후이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "unitEvidence": "냄비에 담긴 $100^{\\circ}\\text{",
+  "rpmRecordId": "M2-RPM-059",
+  "rpmReason": "초기온도 100도에서 분당 3도씩 내려가는 일차함수를 세워 25도가 되는 시간 25분을 구하는 문제이다.",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE",
+  "templateKey": "TPL_M2_SOLVE_TEMPERATURE_ALTITUDE_WORD_PROBLEM_DESCRIPTIVE",
+  "typeReason": "초기온도 100도에서 일정한 비율로 냉각되는 현상을 일차함수로 나타내어 25도 도달 시간을 구하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "초기 100도에서 15분 후 55도로 변하는 일차함수 모델을 세워 시간을 계산하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "일정",
+        "src": "stem",
+        "quote": "내려가는 속도는 일정하다.)"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$y = 25$를 대입하면"
+      }
+    ],
+    "method": [
+      {
+        "term": "속도",
+        "src": "stem",
+        "quote": "물의 온도가 내려가는 속도는 일정하다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "일정",
+        "src": "stem",
+        "quote": "내려가는 속도는 일정하다.)"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "온도 변화량과 시간 조건을 파악한다.",
+    "goal": "특정 온도에 도달하는 경과 시간을 구한다.",
+    "method": "단위 시간당 온도 변화율을 구해 일차함수 식을 세운다.",
+    "condition": "온도 변화 속도가 일정하다는 조건을 쓴다."
+  },
+  "how": "초기 100도에서 분당 3도씩 내려가므로 $y = 100 - 3x = 25$에서 $x = 25$분을 얻어 정답 ④로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

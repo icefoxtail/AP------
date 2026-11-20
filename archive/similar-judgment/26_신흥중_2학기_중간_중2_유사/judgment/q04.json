@@ -1,0 +1,64 @@
+{
+  "qid": 4,
+  "itemFingerprint": "2ac4734788d28dce",
+  "solveSteps": [
+    "직사각형 ABCD 의 두 대각선의 길이는 서로 같고 이등분하므로 AC = BD = 16 cm 이다.",
+    "대각선의 교점 O에 대하여 OA = OB = 1/2 * 16 = 8 cm 이다.",
+    "변 AB = 10 cm 이므로 삼각형 OAB의 둘레는 OA + OB + AB = 8 + 8 + 10 = 26 cm 이다.",
+    "따라서 삼각형 OAB의 둘레의 길이는 26 cm 이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "직사각형 $ABCD$에",
+  "rpmRecordId": "M2-RPM-197",
+  "rpmReason": "직사각형 대각선 16 cm 의 반 8 cm 와 AB = 10 cm 로 둘레 26 cm 를 계산하는 단계이다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+  "typeReason": "직사각형의 대각선 성질(길이가 같고 서로 이등분)을 이용하여 삼각형 OAB 둘레 26 cm 를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "대각선 16 의 절반인 8 과 10 을 더해 26 을 바로 구하는 기본 난이도 1 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 $ABCD$에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "둘레",
+        "src": "stem",
+        "quote": "e OAB$의 둘레의 길이는? ["
+      }
+    ],
+    "method": [
+      {
+        "term": "이등분선",
+        "src": "solution",
+        "quote": "로 다른 것을 이등분한다. $$ \\",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "대각선 BD = 16 에서 OA = OB = 8 cm, AB = 10 cm 로 둘레 26 cm 임을 확인하고 ③으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

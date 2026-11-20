@@ -1,0 +1,66 @@
+{
+  "qid": 22,
+  "itemFingerprint": "f3e14d55181842b8",
+  "solveSteps": [
+    "1. 태호가 이긴 횟수를 x회, 진 횟수를 y회라 하면 비기는 경우가 없으므로 지민이는 y회 이기고 x회 진 것이다.",
+    "2. 태호의 이동 계단: 4x - 2y = 24 에서 2x - y = 12 이다.",
+    "3. 지민의 이동 계단: 4y - 2x = 12 에서 -x + 2y = 6 이다.",
+    "4. 첫 식과 둘째 식의 2배를 더하면 (2x - y) + 2(-x + 2y) = 12 + 12 에서 3y = 24 이므로 y = 8 이다.",
+    "5. 따라서 태호가 진 횟수는 8회이다."
+  ],
+  "solvedAnswer": "$8$회",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+  "unitEvidence": "지민이와 태호가 계단에서 가위바위보를 하여 이기면 $4$계단을 올라가고",
+  "rpmRecordId": "M2-RPM-156",
+  "rpmReason": "가위바위보 계단 게임에서 4x - 2y = 24 와 4y - 2x = 12 연립방정식을 세워 태호가 진 횟수 8회를 구하는 문항이다.",
+  "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
+  "templateKey": "TPL_M2_SOLVE_ROCK_PAPER_SCISSORS_STAIR_PROBLEM",
+  "typeReason": "가위바위보 계단 이동 관계를 태호 24계단, 지민 12계단으로 연립방정식을 모델링하여 횟수를 구하는 문제이므로 PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "이긴 횟수와 진 횟수가 상대방과 반대임을 파악해 4x - 2y = 24 와 4y - 2x = 12 를 연립하는 3단계 활용 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이동",
+        "src": "solution",
+        "quote": "태호의 이동 계단: $4x"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "태호가 진 횟수를 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "연립방정식",
+        "src": "solution",
+        "quote": "2x - y = 12",
+        "evidenceType": "IMPLIED",
+        "justification": "두 사람의 계단 이동량을 연립방정식으로 세워 가감법으로 푼다"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "태호 이긴 횟수 x, 진 횟수 y 로 두어 2x - y = 12 와 -x + 2y = 6 을 연립해 3y = 24 로부터 태호가 진 횟수 y = 8회를 구해 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "qid": 7,
+  "itemFingerprint": "9ac2f55588ea4360",
+  "solveSteps": [
+    "무게중심 G는 중선 AD를 2:1로 나누므로 AG = 2*GD = 10 이고 AD = 15 이다.",
+    "직각삼각형 ABC의 빗변 BC의 중점 D는 외심이므로 BD = CD = AD = 15 이다.",
+    "따라서 BC = 30 이다.",
+    "AC = 12 이므로 sin B = AC / BC = 12/30 = 2/5 이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "오른쪽 그림과 같이 $\\angle\\text{A} = 90^\\circ$인 직각삼각형 $\\text{ABC}$에서 점 $\\text{G}$는",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "unitEvidence": "\\circ$인 직각삼각형 $\\text{",
+  "rpmRecordId": "M3-RPM-055",
+  "rpmReason": "직각삼각형 ABC에서 AC=12와 빗변 BC=30의 비로 sin B를 구하는 삼각비의 뜻이다.",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+  "typeReason": "직각삼각형 ABC의 기하적 성질과 무게중심 GD로부터 삼각비 sin B를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "직각삼각형 ABC의 외심과 무게중심 15, 30 길이를 결합하여 삼각비를 구하는 중급 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "quote": "\\circ$인 직각삼각형 $\\text{",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각형",
+        "quote": "irc$인 직각삼각형 $\\text{",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "무게중심",
+        "quote": "{ABC}$의 무게중심이고 점 $\\t",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "중점",
+        "quote": "t{BC}$의 중점이다. $\\ov",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "무게중심 GD=5에서 중선 AD=15, 빗변 BC=30을 구하고 AC=12를 이용하여 sin B = 2/5를 계산했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

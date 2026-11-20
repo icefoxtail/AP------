@@ -1,0 +1,64 @@
+{
+  "qid": 8,
+  "itemFingerprint": "d2af424a51eeb446",
+  "solveSteps": [
+    "1. 함수 f(x) = -4x 에서 f(2) = -4(2) = -8 이다.",
+    "2. f(-1) = -4(-1) = 4 이다.",
+    "3. 따라서 f(2) + 3f(-1) = -8 + 3(4) = -8 + 12 = 4 이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "함수 $f(x) = -4x$에 대하여 $f(2) + 3f(-1)$의 값은?",
+  "rpmRecordId": "M2-RPM-164",
+  "rpmReason": "함수 f(x) = -4x 에서 f(2) = -8 과 3f(-1) = 12 의 함숫값을 구해 합산하는 함숫값 계산 문항이다.",
+  "problemTypeKey": "PT_FUNCTION_VALUE",
+  "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+  "typeReason": "일차함수 f(x) = -4x 에 2 와 -1 을 대입해 -8 + 12 = 4 로 함숫값을 직접 계산하는 문제이므로 PT_FUNCTION_VALUE를 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "f(x) = -4x 에 x=2, -1 을 대입해 -8 + 12 = 4 를 바로 구하는 1단계 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "함수 $f(x) = -4x$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "3f(-1)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "f(2) = -4 \\times 2 = -8",
+        "evidenceType": "IMPLIED",
+        "justification": "x=2와 x=-1을 함수식에 대입하여 계산함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "f(x) = -4x 에서 f(2) = -8, f(-1) = 4 로부터 f(2) + 3f(-1) = -8 + 12 = 4 를 구해 ④로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

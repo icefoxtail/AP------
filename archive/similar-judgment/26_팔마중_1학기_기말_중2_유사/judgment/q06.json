@@ -1,0 +1,73 @@
+{
+  "qid": 6,
+  "itemFingerprint": "b0c4dd86fdf380d1",
+  "solveSteps": [
+    "A구간 거리를 x m, B구간 거리를 y m라 하면 총 거리 6.5 km = 6500 m이므로 x + y = 6500이다.",
+    "걸린 시간의 합은 50분이므로 x / 150 + y / 100 = 50이다.",
+    "양변에 300을 곱하면 2x + 3y = 15000이다.",
+    "y = 6500 - x를 대입하면 2x + 3(6500 - x) = 15000에서 -x + 19500 = 15000이므로 x = 4500이다.",
+    "y = 6500 - 4500 = 2000이다.",
+    "따라서 A구간은 4.5 km, B구간은 2 km이므로 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+  "unitEvidence": "현수는 $50$분 동안 러닝 코스를 달렸다.",
+  "rpmRecordId": "M2-RPM-158",
+  "rpmReason": "분속 150 m와 100 m로 달린 구간의 거리를 연립방정식으로 세워 6.5 km 이동 거리를 구하는 속력·시간·거리 활용 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "typeReason": "속력 150 m/min, 100 m/min과 총 이동 거리 6500 m를 연립일차방정식으로 모델링하여 해결하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "km 단위를 m로 환산하여 2x + 3y = 15000과 x + y = 6500을 연립해 푸는 활용 문제로 난이도 3이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "속력",
+        "src": "stem",
+        "quote": "분속 $150\\text{ m}$로"
+      }
+    ],
+    "goal": [
+      {
+        "term": "거리",
+        "src": "stem",
+        "quote": "구간의 거리를 각각 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입법",
+        "src": "solution",
+        "quote": "$y = 6500 - x$를 대입하면",
+        "evidenceType": "IMPLIED",
+        "justification": "거리와 시간에 대한 식을 대입하여 계산"
+      }
+    ],
+    "condition": [
+      {
+        "term": "거리",
+        "src": "stem",
+        "quote": "총 거리가 $6.5\\text{ km}$일 때,"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "A, B구간의 거리를 x, y로 두고 x + y = 6500과 2x + 3y = 15000을 풀어 x = 4500, y = 2000을 구해 A=4.5 km, B=2 km임을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

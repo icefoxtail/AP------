@@ -1,0 +1,75 @@
+{
+  "qid": 2,
+  "itemFingerprint": "4ce9d526e1861a39",
+  "solveSteps": [
+    "1\\le a\\le b<c\\le 6에서 c'=c-1로 두면 1\\le a\\le b\\le c'\\le 5이다.",
+    "1부터 5까지 5개에서 중복을 허용해 3개를 택하는 중복조합 {}_{5}H_{3}={}_{7}C_{3}=35가지이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "$a\\le b<c$를 만족시키는 순서쌍 $(a, b, c)$의 개수는?",
+  "rpmRecordId": "H2-PS-RPM-036",
+  "rpmReason": "1\\le a\\le b\\le c'\\le 5를 만족하는 순서쌍 개수를 {}_{5}H_{3}=35로 세는 중복을 허용한 선택 행이다.",
+  "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+  "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+  "typeReason": "부등식 a\\le b<c를 c'=c-1 치환으로 비감소 조건으로 바꾸어 {}_{5}H_{3}=35를 계산하는 중복조합 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "등호가 없는 b<c를 c'=c-1로 변환한 뒤 {}_{5}H_{3}={}_{7}C_{3}=35를 계산하는 2단계 풀이라 2단계이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "순서쌍",
+        "src": "stem",
+        "quote": "순서쌍 $(a, b, c)$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "$(a, b, c)$의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "중복조합",
+        "src": "solution",
+        "quote": "중복조합의 수와 같으므로",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "치환",
+        "src": "solution",
+        "quote": "$c'=c-1$로 놓으면",
+        "evidenceType": "IMPLIED",
+        "justification": "$b<c$를 $b\\le c-1$로 고쳐 $c'=c-1$로 치환해 중복조합에 적용함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "순서",
+        "src": "stem",
+        "quote": "$a\\le b<c$를 만족시키는"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "a\\le b<c 조건을 c'=c-1로 바꾸어 {}_{5}H_{3}=35(⑤)를 구하고 저장 정답과 대조했다. 해설과 동일하게 중복조합으로 분류했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

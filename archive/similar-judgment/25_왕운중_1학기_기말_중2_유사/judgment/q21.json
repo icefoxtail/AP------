@@ -1,0 +1,56 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "975475720c0ac120",
+  "solvedAnswer": "$x = 4,\\ y = 7$",
+  "solveSteps": [
+    "연립방정식 cases 구조에서 두 식을 변끼리 더한다.",
+    "(4x - y) + (x + y) = 9 + 11 이므로 5x = 20 에서 x = 4 이다.",
+    "x = 4 를 대입하면 4 + y = 11 이므로 y = 7 이다.",
+    "따라서 x = 4, y = 7 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 1] 다음 두 방정",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
+  "templateKey": "TPL_M2_SELECT_REQUIRED_OPERATION_FOR_VARIABLE_ELIMINATION",
+  "newKeyProposal": null,
+  "typeReason": "가감법으로 y를 소거하여 연립방정식 cases 를 푸는 서술형 유형이다.",
+  "rpmRecordId": "M2-RPM-030",
+  "rpmReason": "cases 로 주어진 연립방정식을 변끼리 더하여 해를 구한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "cases 형태의 두 식을 더해 미지수를 소거하는 풀이 과정을 기술한다.",
+  "how": "cases 연립방정식의 두 식을 변끼리 더해 y를 소거하고 x=4, y=7을 구하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin{cases} 4x - y = 9"
+      }
+    ],
+    "goal": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "푸는 과정을 서술하여라."
+      }
+    ],
+    "method": [
+      {
+        "term": "소거",
+        "src": "solution",
+        "quote": "변끼리 더하여 $y$를 소거하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

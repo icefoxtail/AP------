@@ -1,0 +1,75 @@
+{
+  "qid": 7,
+  "itemFingerprint": "da52fc8ef4bae845",
+  "solveSteps": [
+    "1) ㄱ: 이등변삼각형 ABC에서 꼭짓각 A의 이등분선 AD는 밑변 BC를 수직이등분하므로 각 PDC = 90도이다. (참)",
+    "2) ㄴ: AD가 선분 BC의 수직이등분선이므로 선분 AD 위의 점 P에 대해 PB = PC가 성립하여 삼각형 BPC는 이등변삼각형이다. (참)",
+    "3) ㄷ: AP가 각 A를 이등분하고 CP가 각 C를 이등분하므로 점 P는 두 내각의 이등분선의 교점이 되어 내심이다. (참)",
+    "4) 따라서 옳은 것은 ㄱ, ㄴ, ㄷ인 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "$\\overline{AB} = \\overline{AC}$인 이등변삼각형 $ABC$에서 $\\angle A$의 이등분선과 변 $BC$의 교점을 $D$라 하고, 선분 $AD$ 위의 점 $P$를 잡을 때, 다음 <보기> 중 옳은 것만을 있는 대로 고른 것은? 〈보기〉 ㄱ. $\\angle PDC = 90^\\circ$ ㄴ. $\\triangle BPC$는 이등변삼각형이다. ㄷ. $\\angle ACP = \\angle PCD$이면 점 $P$는 $\\triangle ABC$의 내심이다.",
+  "rpmRecordId": "M2-RPM-061",
+  "rpmReason": "이등변삼각형 ABC의 꼭짓각 A의 이등분선이 밑변 BC를 수직이등분하여 각 PDC = 90도와 삼각형 BPC 이등변삼각형 성질을 유도하는 M2-RPM-061 문제이다.",
+  "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+  "templateKey": "NONE",
+  "typeReason": "AB = AC인 이등변삼각형 ABC의 꼭짓각 이등분선 성질과 내각 이등분선 교점을 통한 내심 판정을 복합 검증하는 PT_ISOSCELES_TRIANGLE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "AB = AC인 이등변삼각형 ABC에서 꼭짓각 이등분선이 밑변 BC를 수직이등분하는 성질을 단계별로 검증하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이등변삼각형",
+        "src": "stem",
+        "quote": "e{AC}$인 이등변삼각형 $ABC$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "내심",
+        "src": "stem",
+        "quote": "e ABC$의 내심이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "이등분선",
+        "src": "stem",
+        "quote": "gle A$의 이등분선과 변 $BC$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "교점",
+        "src": "stem",
+        "quote": "변 $BC$의 교점을 $D$라 하"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "AB = AC인 이등변삼각형 ABC 조건이다.",
+    "goal": "점 P가 내심이 되는지 등의 보기를 판단하는 목표이다.",
+    "method": "꼭짓각의 이등분선 성질을 적용하는 방법이다.",
+    "condition": "변 BC와의 교점 D와 점 P의 위치 조건이다."
+  },
+  "how": "이등변삼각형 ABC에서 꼭짓각 이등분선이 밑변을 수직이등분하여 각 PDC = 90도, PB = PC, 내각 이등분선 교점 내심이 모두 성립함을 확인하여 정답 ③으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

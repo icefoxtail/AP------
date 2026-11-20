@@ -1,0 +1,57 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "3d75816775fbaddc",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "세 변의 길이를 a <= b <= c 라 하면 a + b + c = 18 이다.",
+    "각 변의 길이가 2 cm 보다 큰 자연수이므로 a >= 3 이다.",
+    "가장 긴 변 c에 대해 c < a + b = 18 - c 에서 2c < 18 이므로 c < 9 이다.",
+    "3c >= a + b + c = 18 에서 c >= 6 이므로 c는 6, 7, 8 이 될 수 있다.",
+    "c=6: (6, 6) 1개; c=7: (4, 7), (5, 6) 2개; c=8: (3, 7), (4, 6), (5, 5) 3개로 총 6개이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "길이가 $18,\\mathrm",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
+  "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_INTEGER_PERIMETER_CASES",
+  "newKeyProposal": null,
+  "typeReason": "둘레가 18 cm 인 삼각형의 세 변 조건과 삼각부등식을 만족하는 자연수 해의 개수를 세는 유형이다.",
+  "rpmRecordId": "M1-RPM-188",
+  "rpmReason": "둘레 18 과 가장 긴 변 c < 9 조건을 통해 가능한 삼각형 조합을 분류한다.",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "세 변의 합 18 과 각 변이 3 이상인 조건을 이용해 c의 범위를 구하고 순서쌍을 센다.",
+  "how": "가장 긴 변 c가 6, 7, 8일 때의 경우를 나누어 합 18이 되는 순서쌍 6개를 구하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "길이가 $18,\\mathrm{cm}$인 철사를 구부려"
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "만들 수 있는 서로 다른 모양의 삼각형은 모두 몇 개인가?"
+      }
+    ],
+    "method": [
+      {
+        "term": "길이",
+        "src": "solution",
+        "quote": "가장 긴 변의 길이는 나머지 두 변의 길이의 합보다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

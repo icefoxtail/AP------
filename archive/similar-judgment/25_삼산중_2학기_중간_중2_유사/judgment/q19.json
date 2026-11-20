@@ -1,0 +1,75 @@
+{
+  "qid": 19,
+  "itemFingerprint": "1adb086da0ba7704",
+  "solveSteps": [
+    "1) 남학생 5명 또는 여학생 3명 중에서 1명을 대표로 뽑는 경우: 합의 법칙에 의해 5 + 3 = 8가지이다.",
+    "2) 남학생 대표 1명, 여학생 대표 1명을 뽑는 경우: 곱의 법칙에 의해 5 * 3 = 15가지이다.",
+    "3) 두 경우의 수의 합은 8 + 15 = 23이다.",
+    "4) 따라서 정답은 23인 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-08",
+  "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+  "unitEvidence": "어느 반에서 남학생 후보 $5$명과 여학생 후보 $3$명 중에서 대표를 뽑으려 한다. 다음 두 상황의 경우의 수를 각각 구하여 합한 값은? (1) 남학생 후보 또는 여학생 후보 중에서 $1$명을 대표로 뽑는 경우의 수 (2) 후보들 중에서 남학생 대표 $1$명, 여학생 대표 $1$명을 뽑는 경우의 수",
+  "rpmRecordId": "M2-RPM-107",
+  "rpmReason": "남학생 5명, 여학생 3명에서 합의 법칙 5 + 3 = 8과 곱의 법칙 5 * 3 = 15를 구하고 합산하여 23을 구하는 M2-RPM-107 문제이다.",
+  "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+  "templateKey": "NONE",
+  "typeReason": "합의 법칙 8가지와 곱의 법칙 15가지의 뜻을 각각 구하여 합산 23을 완성하는 PT_M2_BASIC_COUNTING_CASE_SPLIT 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "기본적인 합의 법칙 8과 곱의 법칙 15를 각각 구하고 단순 덧셈 23을 수행하는 1단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "논리합",
+        "src": "stem",
+        "quote": "남학생 후보 또는 여학생 후보"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "각각 구하여 합한 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "법칙",
+        "src": "solution",
+        "quote": "(1) 합의 법칙에 의하여 $5",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "합",
+        "src": "solution",
+        "quote": "두 경우의 수의 합은 $8 +"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "남학생 후보 5명, 여학생 후보 3명 조건이다.",
+    "goal": "두 상황의 경우의 수를 각각 구해 합한 값을 구하는 목표이다.",
+    "method": "합의 법칙과 곱의 법칙을 적용하는 방법이다.",
+    "condition": "두 결과의 합을 구하는 조건이다."
+  },
+  "how": "상황 (1)은 5 + 3 = 8, 상황 (2)는 5 * 3 = 15이므로 합은 8 + 15 = 23임을 확인하여 정답 ③으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "qid": 19,
+  "itemFingerprint": "fc0a40b12dd6d74f",
+  "solveSteps": [
+    "접선의 성질에 의해 AE = AB = 4 cm, DE = CD = 9 cm 이므로 AD = 4 + 9 = 13 cm 이다.",
+    "A에서 CD에 내린 수선의 발을 H라 하면 DH = 9 - 4 = 5 cm 이다.",
+    "직각삼각형 AHD에서 피타고라스 정리에 의해 BC = AH = sqrt(13^2 - 5^2) = 12 cm 이다.",
+    "반원 O의 반지름은 6 cm 이다.",
+    "따라서 반원 O의 넓이 = (1/2) * pi * 6^2 = 18*pi cm^2 이므로 답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 $\\overline{\\text{BC}}$는 반원 $\\text{O}$의",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "unitEvidence": "다음 그림에서 $\\overline{\\text{BC}}$는 반원 $\\text{O}$의 지름이고 $\\overline{\\text{AB}}, \\overline{\\text{AD}}, \\overline{\\text{CD}}$는 반원 $\\text{O}$의 접선이다.",
+  "rpmRecordId": "M3-RPM-072",
+  "rpmReason": "접선 조건을 결합해 반원의 지름 BC = 12 와 넓이를 계산하므로 접선 조건으로 길이 구하기(M3-RPM-072)에 해당한다.",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TPL_CIRCLE_TANGENT_EQUAL_LENGTH",
+  "typeReason": "접선 길이 AE = AB = 4, DE = CD = 9 가 같음을 핵심으로 이용해 사다리꼴 변을 구하므로 등접선(TPL_CIRCLE_TANGENT_EQUAL_LENGTH)이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "접선 성질로 AD = 13을 찾고 수선 AH로 지름 BC = 12를 구해 반원 넓이 18*pi를 계산하는 3단계 발전 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "반원",
+        "src": "stem",
+        "quote": "반원 $\\text{O}$의 지름이고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "반원 $\\text{O}$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "수선",
+        "src": "solution",
+        "quote": "내린 수선의 발을 $\\text{H}$라 하면",
+        "evidenceType": "NAMED",
+        "justification": ""
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "AD = 13 과 DH = 5 에서 피타고라스로 지름 BC = 12, 반지름 6을 얻어 반원 넓이 18*pi 로 ③을 확정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundary": "NONE"
+}

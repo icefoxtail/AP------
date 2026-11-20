@@ -1,0 +1,55 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "a94baab9adafe7c8",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "y = ax + b 가 제1, 2, 4사분면을 지나므로 a < 0, b > 0 이다.",
+    "새 함수 y = -ax - b 에서 기울기는 -a > 0, y절편은 -b < 0 이다.",
+    "따라서 제1, 3, 4사분면을 지나므로 지나지 않는 사분면은 제2사분면이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "일차함수 $y = ax +",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+  "templateKey": "TPL_M2_LINEAR_FUNCTION_QUADRANT_CONDITION_SIGNS",
+  "newKeyProposal": null,
+  "typeReason": "함수 y = ax + b 의 사분면으로 부호를 정하고 다른 함수의 사분면을 찾는 유형이다.",
+  "rpmRecordId": "M2-RPM-051",
+  "rpmReason": "ax 항의 계수 부호와 상수항 부호를 통해 지나지 않는 사분면을 결정한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "ax 식의 계수 a의 부호를 추론하고 대칭된 식의 사분면을 파악해야 한다.",
+  "how": "y = ax + b 의 부호 조건을 통해 새 함수의 그래프 개형을 그려 제2사분면을 도출하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $y = ax + b$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사분면",
+        "src": "stem",
+        "quote": "지나지 않는 사분면을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "그래프가 제$1, 2, 4$사분면을 지날 때",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

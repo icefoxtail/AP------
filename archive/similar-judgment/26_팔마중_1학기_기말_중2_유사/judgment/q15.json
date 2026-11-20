@@ -1,0 +1,65 @@
+{
+  "qid": 15,
+  "itemFingerprint": "1b59b21e40069620",
+  "solveSteps": [
+    "두 점 (-2, 11), (2, -9)를 지나는 직선의 기울기 a = (-9 - 11) / (2 - (-2)) = -20 / 4 = -5이다.",
+    "직선의 식 y = -5x + b에 (-2, 11)을 대입하면 11 = 10 + b이므로 b = 1이다.",
+    "일차함수의 식은 y = -5x + 1이다.",
+    "따라서 a + b = -5 + 1 = -4이므로 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "두 점 $(-2, 11)$, $(2, -9)$를 지나는 직선을",
+  "rpmRecordId": "M2-RPM-170",
+  "rpmReason": "두 점 (-2, 11)과 (2, -9)로부터 일차함수 y = ax + b의 식을 구하고 a + b = -4를 계산하는 식 구하기 문항이다.",
+  "problemTypeKey": "PT_LINE_EQUATION",
+  "templateKey": "TPL_LINE_TWO_POINTS",
+  "typeReason": "두 점 (-2, 11), (2, -9)를 지나는 직선의 기울기와 y절편을 구해 ax + b를 완성하는 두 점 직선 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "두 점 (-2, 11), (2, -9)로부터 기울기와 절편을 구하는 정형화된 풀이로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "지나는 직선을 그래프로 하는"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "$a + b$의 값을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "$a = \\frac{-9 - 11}{2 - (-2)} = \\frac{-20}{4} = -5$",
+        "evidenceType": "IMPLIED",
+        "justification": "두 점의 좌표 변화량으로 기울기 a 결정 후 한 점 대입"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "두 점 (-2, 11)과 (2, -9)에서 기울기 a = -5, y절편 b = 1을 구하고 a + b = -4임을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

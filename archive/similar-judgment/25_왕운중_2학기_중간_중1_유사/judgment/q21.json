@@ -1,0 +1,57 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "78dbe81fc0fe27db",
+  "solvedAnswer": "$x = 16$, $y = 40$",
+  "solveSteps": [
+    "맞꼭지각의 크기는 서로 같으므로 2x + 15 = 4x - 17 이다.",
+    "2x = 32 이므로 x = 16 이다.",
+    "이 각의 크기는 2*16 + 15 = 47도이다.",
+    "한 직선 위에서 이웃한 두 각의 합은 180도이므로 (3y + 13) + 47 = 180 이다.",
+    "3y = 120 이므로 y = 40 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 직선이 한 점에서 만날",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+  "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+  "newKeyProposal": null,
+  "typeReason": "맞꼭지각과 편각 180도 방정식을 세워 미지수 x, y 를 각각 구하는 서술형 유형이다.",
+  "rpmRecordId": "M1-RPM-176",
+  "rpmReason": "맞꼭지각이 같음을 이용해 x를 구하고 180도 보각으로 y를 구한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "맞꼭지각 일치 식과 편각의 합 180도 식을 순차적으로 세워 x=16, y=40을 도출한다.",
+  "how": "맞꼭지각에서 x=16을 구하고 47도의 보각 133도에서 y=40을 도출하였다. 180",
+  "slots": {
+    "given": [
+      {
+        "term": "맞꼭지각",
+        "src": "stem",
+        "quote": "맞꼭지각의 크기가 각각 $(2x + 15)^\\circ$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "$x$의 값과 $y$의 값을 각각 구하고, 그 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "이웃",
+        "src": "solution",
+        "quote": "한 직선 위에서 이웃한 두 각의 크기의 합은",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "qid": 24,
+  "itemFingerprint": "c9a26763cac0fc4c",
+  "solveSteps": [
+    "1. 연립방정식 cases 6x + 3ay = 9, 2bx + 6y = 9 에서 해가 무수히 많으려면 6/(2b) = (3a)/6 = 9/9 = 1 이어야 한다.",
+    "2. 3/b = 1 에서 b = 3 이고, a/2 = 1 에서 a = 2 이므로 A = ab = 2 * 3 = 6 이다.",
+    "3. 해가 없으려면 6/(2b) = (3a)/6 != 9/9 이어야 하므로 3/b = a/2 != 1 이어야 한다.",
+    "4. 즉 ab = 6 이면서 a != 2, b != 3 이어야 한다.",
+    "5. ab = 6 을 만족하는 정수 순서쌍 (a, b) 는 (1, 6), (2, 3), (3, 2), (6, 1), (-1, -6), (-2, -3), (-3, -2), (-6, -1) 의 8개이다.",
+    "6. 이 중 (2, 3) 을 제외하면 순서쌍의 개수는 B = 8 - 1 = 7 이다.",
+    "7. 따라서 A = 6, B = 7 이다."
+  ],
+  "solvedAnswer": "$A = 6,\\ B = 7$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "unitEvidence": "연립방정식 $\\begin{cases} 6x + 3ay = 9 \\\\ 2bx + 6y = 9 \\end{cases}$의 해가 무수히 많을 때",
+  "rpmRecordId": "M2-RPM-154",
+  "rpmReason": "연립방정식 계수비 조건으로 해가 무수히 많을 때 A=ab=6 과 해가 없을 때 정수 순서쌍 개수 B=7 을 구하는 특수한 해 문항이다.",
+  "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+  "templateKey": "NONE",
+  "typeReason": "연립방정식 cases 6x + 3ay = 9, 2bx + 6y = 9 의 계수비 관계로부터 해가 무수히 많을 때 A = 6 과 해가 없을 때 순서쌍 B = 7 을 결정하는 문제이므로 PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "계수비가 1이 되는 조건 a=2, b=3 에서 A=6 을 구하고, ab=6 인 8개 순서쌍 중 (2, 3) 을 제외해 B=7 을 구하는 3단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "단, $a, b$는 정수이다.)"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "순서쌍 $(a, b)$의 개수를 $B$라 하자."
+      }
+    ],
+    "method": [
+      {
+        "term": "제외",
+        "src": "solution",
+        "quote": "중 $(2, 3)$을 제외하면 $B = 7$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "계수비 조건 3/b = a/2 = 1 에서 A=ab=6 을 구하고, ab=6 인 정수 순서쌍 8개 중 (2, 3) 을 제외하여 B=7 임을 얻어 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

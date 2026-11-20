@@ -1,0 +1,70 @@
+{
+  "qid": 20,
+  "itemFingerprint": "42fc4154ab3017d5",
+  "solveSteps": [
+    "직사각형 ABCD에서 원 O의 반지름은 8/2 = 4 cm 이다.",
+    "D에서 원 O에 그은 접선의 길이는 DT = 12 - 4 = 8 cm 이다.",
+    "EC = x 라 두면 ET = EV = (12 - 4) - x = 8 - x 이므로 DE = 8 + (8 - x) = 16 - x 이다.",
+    "직각삼각형 ECD에서 8^2 + x^2 = (16 - x)^2 이므로 64 + x^2 = 256 - 32x + x^2 에서 32x = 192, x = 6 이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "그림과 같이 가로의 길이가 $12\\text{ cm}$, 세로의 길이가 $8\\text{ cm}$인 직사각형 $\\text{ABCD}$의 $3$개의 변에 원 $\\text{O}$가 내접하고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "unitEvidence": "{ cm}$인 직사각형 $\\text{",
+  "rpmRecordId": "M3-RPM-072",
+  "rpmReason": "직사각형 ABCD에 내접하는 원과 접선 DE에서 접선 길이 성질 16-x와 피타고라스 정리를 결합한다.",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TM_TANGENT_LENGTH",
+  "typeReason": "직사각형과 원의 접선 성질을 이용해 DE=16-x를 세우고 직각삼각형 ECD에서 EC=6을 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "직사각형의 세 변에 접하는 원의 접선 성질과 직각삼각형 피타고라스 정리 256, 192를 결합하는 응용 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "quote": "{ cm}$인 직사각형 $\\text{",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "quote": "같이 가로의 길이가 $12\\te",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "접선",
+        "quote": "xt{O}$의 접선일 때, $\\o",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "내접",
+        "quote": "xt{O}$가 내접하고 $\\ove",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "접선 DT=8, ET=8-x로 DE=16-x를 세운 뒤 직각삼각형 ECD에서 피타고라스 정리로 EC=6을 도출했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

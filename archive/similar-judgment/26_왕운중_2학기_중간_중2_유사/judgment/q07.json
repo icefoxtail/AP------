@@ -1,0 +1,58 @@
+{
+  "qid": 7,
+  "itemFingerprint": "9ed4b4f736bcd876",
+  "solveSteps": [
+    "BD와 CE는 각각 각 B와 각 C의 이등분선이다.",
+    "삼각형 BDC에서 각 B / 2 + 각 C = 180도 - 102도 = 78도이다.",
+    "삼각형 BEC에서 각 B + 각 C / 2 = 180도 - 105도 = 75도이다.",
+    "두 식을 더하면 (3/2)(각 B + 각 C) = 153도에서 각 B + 각 C = 102도이다.",
+    "따라서 각 A = 180도 - 102도 = 78도이고, 각 BIC = 90도 + 78도 / 2 = 129도이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "점 $I$는 $\\triangle ABC$의 내심이다.",
+  "rpmRecordId": "M2-RPM-186",
+  "rpmReason": "내심 I에서 나온 각의 이등분선과 각 BDC = 102도, 각 BEC = 105도를 연립하여 각 BIC = 129도를 구하는 내심 유형이다.",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "TPL_TRIANGLE_INCENTER",
+  "typeReason": "내심 I의 각 이등분선 성질로 삼각형 BDC와 BEC에서 식을 세워 각 A를 찾고 각 BIC를 계산하는 내심 각 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 각의 이등분선이 만드는 교각 102도와 105도로부터 연립방정식을 세워 각 A와 각 BIC를 산출하므로 난이도 3이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "내심",
+        "src": "stem",
+        "quote": "점 $I$는 $\\triangle ABC$의 내심이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle BIC$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "내심",
+        "src": "solution",
+        "quote": "$\\overline{BD}$와 $\\overline{CE}$는 각각 $\\angle B$, $\\angle C$의 이등분선이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "내심의 정의와 각의 이등분선 연립방정식 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "각의 이등분선과 각 BDC = 102도, BEC = 105도로부터 각 B + 각 C = 102도를 구하고 각 BIC = 90 + 39 = 129도로 판정하였다."
+}

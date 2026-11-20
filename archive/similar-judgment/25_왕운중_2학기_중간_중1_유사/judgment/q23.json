@@ -1,0 +1,55 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "063f290474a3e2dc",
+  "solvedAnswer": "$15,\\mathrm{km}$",
+  "solveSteps": [
+    "삼각형 OAB와 ODC에서 AO = DO (조건), BO = CO (조건) 이다.",
+    "각 AOB = 각 DOC (맞꼭지각) 이므로 두 삼각형은 SAS 합동이다.",
+    "합동인 두 삼각형에서 대응변의 길이는 같으므로 AB = DC = 15 km 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "지점 $A$에서 강 건너에",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+  "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_DISTANCE_MEASUREMENT_SAS",
+  "newKeyProposal": null,
+  "typeReason": "측량 상황에서 SAS 합동을 증명하고 15 km 대응변 길이를 전달하는 서술형 유형이다.",
+  "rpmRecordId": "M1-RPM-192",
+  "rpmReason": "맞꼭지각과 두 변 조건을 결합하여 SAS 합동을 서술하고 거리를 구한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "AO=DO, BO=CO와 맞꼭지각으로 SAS 합동을 보이고 AB=15km를 결론짓는다.",
+  "how": "맞꼭지각과 두 변의 길이가 같아 SAS 합동임을 서술하고 대응변 AB=15km를 구하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "교점",
+        "src": "stem",
+        "quote": "선분 $AD$와 선분 $BC$의 교점을 $O$라 할 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합동",
+        "src": "stem",
+        "quote": "이용된 삼각형의 합동 조건을 포함하여 서술하시오. [6점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "대응변",
+        "src": "solution",
+        "quote": "두 삼각형의 합동 조건을 밝혀 대응변의 길이가 같음을 보인다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

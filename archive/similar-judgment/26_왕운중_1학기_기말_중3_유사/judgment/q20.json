@@ -1,0 +1,72 @@
+{
+  "qid": 20,
+  "itemFingerprint": "02fa5463f2067f87",
+  "solveSteps": [
+    "y = -x^2 + 2x + 3 = -(x-1)^2 + 4 이므로 꼭짓점 P는 (1, 4)이다.",
+    "y = -x^2 + 10x - 21 = -(x-5)^2 + 4 이므로 꼭짓점 Q는 (5, 4)이다.",
+    "두 꼭짓점 사이의 거리는 5 - 1 = 4이고 높이는 4이므로 그림 (1)의 색칠한 부분의 넓이는 4 * 4 = 16이다.",
+    "그림 (2)의 점 R은 (5+p, 4)이므로 색칠한 부분의 넓이는 4(4 + p)이다.",
+    "4(4 + p) = 3 * 16 = 48 에서 4 + p = 12 이므로 p = 8이다. 답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "그림 (1)과 같이 점 $",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "으로 하는 두 이차함수의 그래프를 각",
+  "rpmRecordId": "M3-RPM-049",
+  "rpmReason": "y = -x^2 + 10x - 21의 평행이동에서 넓이 16과 4(4+p)=48을 비교하여 4+p=12, p=8을 구한다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+  "templateKey": "NONE",
+  "typeReason": "평행이동한 포물선 사이의 넓이 16과 p만큼 추가 이동한 넓이 48의 비를 이용해 p = 8을 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "포물선 -x^2+10x-21의 꼭짓점과 평행이동에 따른 등적변형 넓이 공식을 세워 p = 8을 푸는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "quote": "으로 하는 두 이차함수의 그래프를 각",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "꼭짓점",
+        "quote": "rm{Q}$를 꼭짓점으로 하는 두",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행이동",
+        "quote": "로 $p$만큼 평행이동한 그래프이다.",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "넓이",
+        "quote": "색칠한 부분의 넓이가 그림 (1)",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "꼭짓점 P(1, 4), Q(5, 4)에서 그림 (1)의 넓이 16을 구하고, 3배인 48 = 4(4+p)에서 p = 8을 도출하여 ④로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

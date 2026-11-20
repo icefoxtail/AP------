@@ -1,0 +1,57 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "df23283903b27ea2",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "삼각형 BDC에서 각 DBC = 각 BCD = 30도이므로 이등변삼각형이다.",
+    "따라서 DC = DB = 11 cm 이다.",
+    "삼각형 외각 성질에 의해 각 ADC = 30 + 30 = 60도이다.",
+    "삼각형 ADC에서 각 DAC = 60도, 각 ADC = 60도이므로 각 ACD = 60도인 정삼각형이다.",
+    "따라서 AC = DC = 11 cm 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\triangle ABC$",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+  "templateKey": "TPL_ISOSCELES_CONVERSE",
+  "newKeyProposal": null,
+  "typeReason": "이등변삼각형의 밑각 30도로 변 11 cm 를 옮기고 정삼각형을 판정하는 유형이다.",
+  "rpmRecordId": "M2-RPM-060",
+  "rpmReason": "두 밑각이 같은 이등변삼각형의 성질로 선분 길이 11 을 전파한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이등변삼각형과 외각 60도로 정삼각형을 식별하여 11 cm 를 즉시 도출한다.",
+  "how": "밑각 30도로 DC=11을 얻고 외각 60도로 정삼각형이 됨을 보여 AC=11cm를 구하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "$\\overline{DB} = 11\\text{ cm}$이고 $\\angle DAC = 60^\\circ$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "$\\overline{AC}$의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정삼각형",
+        "src": "solution",
+        "quote": "즉 정삼각형이다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "e23037a46d510965",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "y = -3x + 4 와 평행하므로 기울기 a = -3 이다.",
+    "x절편이 2 이므로 (2, 0)을 y = ax + b 에 대입하면 0 = -6 + b -> b = 6 이다.",
+    "따라서 y = -3x + 6 이다.",
+    "기울기 음수, y절편 양수이므로 제1, 2, 4사분면을 지나고 제3사분면을 지나지 않는다.",
+    "따라서 지나지 않는 사분면은 ③번 제3사분면이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "일차함수 $y = ax +",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "평행 조건과 절편으로 일차함수 y = ax + b 식을 완성하고 지나지 않는 사분면을 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-050",
+  "rpmReason": "평행 조건과 x절편으로 일차함수 y = ax + b 를 완성하여 사분면 통과를 판별한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "평행 조건과 x절편 2 로 y = ax + b 에서 b = 6 을 구한 뒤 사분면을 판정한다.",
+  "how": "y = ax + b 에서 a = -3, b = 6 이므로 제3사분면을 지나지 않음을 판정했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $y = ax + b$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사분면",
+        "src": "stem",
+        "quote": "그래프가 지나지 않는 사분면은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "기울기가 음수이고 $y$절편이",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "절편",
+        "src": "stem",
+        "quote": "$x$절편이 $2$이다"
+      }
+    ]
+  }
+}

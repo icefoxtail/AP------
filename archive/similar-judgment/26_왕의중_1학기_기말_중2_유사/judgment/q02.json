@@ -1,0 +1,66 @@
+{
+  "qid": 2,
+  "itemFingerprint": "c50bccc9e3559039",
+  "solveSteps": [
+    "1. 순서쌍 (1, -2) 를 보기의 각 연립방정식 cases 에 대입한다.",
+    "2. ㄱ: 1 + (-2) = -1 참, 2(1) + (-2) = 0 참이므로 해가 된다.",
+    "3. ㄴ: 3(1) + (-2) = 1 참, 1 + 2(-2) = -3 != 3 거짓이므로 해가 아니다.",
+    "4. ㄷ: 4(1) + (-2) = 2 참, 1 - 2(-2) = 5 참이므로 해가 된다.",
+    "5. ㄹ: 2(1) - (-2) = 4 != 0 거짓이므로 해가 아니다.",
+    "6. 따라서 (1, -2) 를 해로 갖는 것은 ㄱ, ㄷ 이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "unitEvidence": "다음 보기의 연립방정식 중 $x, y$의 순서쌍 $(1, -2)$를 해로 갖는 것을 있는 대로 고른 것은?",
+  "rpmRecordId": "M2-RPM-150",
+  "rpmReason": "순서쌍 (1, -2) 를 대입하여 만족하는 연립방정식 cases 를 판별하는 해가 주어진 연립방정식 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "typeReason": "주어진 해 (1, -2) 를 보기의 연립방정식 cases 에 대입하여 성립 여부를 확인하는 문제이므로 PT_M2_LINEAR_SYSTEM을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "순서쌍 (1, -2) 를 보기의 연립방정식 cases 에 직접 대입해 확인하는 1단계 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "순서쌍",
+        "src": "stem",
+        "quote": "순서쌍 $(1, -2)$를 해로 갖는"
+      }
+    ],
+    "goal": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "보기의 연립방정식 중 $x, y$의"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "연립방정식에 $x = 1, y = -2$를 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "(1, -2) 를 대입해 cases x+y=-1 및 cases 4x+y=2 가 성립함을 확인하여 ㄱ, ㄷ 인 ②로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

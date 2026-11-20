@@ -1,0 +1,56 @@
+{
+  "qid": "q25",
+  "itemFingerprint": "e6f9ca06c0b6ef42",
+  "solvedAnswer": "$\\square ABCD$는 평행사변형이다.",
+  "solveSteps": [
+    "대각선 AC를 그으면 삼각형 DAC 와 BCA 에서 AD // BC 이므로 각 DAC = 각 BCA (엇각)이다.",
+    "AD = BC 이고 AC는 공통이므로 삼각형 DAC 와 BCA 는 SAS 합동이다.",
+    "대응각 DCA = BAC 이고 엇각이므로 AB // DC 이다.",
+    "두 쌍의 대변이 각각 평행하므로 사각형 ABCD는 평행사변형이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "사각형 $ABCD$에서 $\\",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+  "newKeyProposal": null,
+  "typeReason": "한 쌍의 대변이 평행하고 길이가 같을 때 삼각형 DAC 합동을 통해 평행사변형임을 증명하는 서술형 유형이다.",
+  "rpmRecordId": "M2-RPM-074",
+  "rpmReason": "한 쌍 대변의 평행과 상등 조건에서 SAS 합동으로 두 쌍 평행을 증명한다. DAC",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "대각선 AC를 긋고 SAS 합동으로 다른 대변의 평행을 보여 평행사변형임을 서술한다. DAC",
+  "how": "대각선 AC에 의해 생긴 삼각형들의 SAS 합동으로 AB // DC를 보여 평행사변형임을 증명하였다. DAC",
+  "slots": {
+    "given": [
+      {
+        "term": "평행",
+        "src": "stem",
+        "quote": "사각형 $ABCD$에서 $\\overline{AD} \\parallel \\overline{BC}$, $\\overline{AD} = \\overline{BC}$이면"
+      }
+    ],
+    "goal": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "사각형 $ABCD$는 평행사변형임을 설명하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "대응각",
+        "src": "solution",
+        "quote": "따라서 대응각",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

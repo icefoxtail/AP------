@@ -1,0 +1,75 @@
+{
+  "qid": 11,
+  "itemFingerprint": "250787d8efe7abfc",
+  "solveSteps": [
+    "1) 점 B는 반지름이 7 cm인 원 O 위의 점이므로 선분 OB = 7 cm이다.",
+    "2) 사각형 OABC는 직사각형이므로 두 대각선 AC와 OB의 길이는 서로 같다.",
+    "3) 따라서 대각선 AC = OB = 7 cm이다.",
+    "4) 그러므로 정답은 7 cm인 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "반지름의 길이가 $7\\text{ cm}$인 원 $O$의 중심 $O$를 한 꼭짓점으로 하고, 꼭짓점 $B$가 원 $O$ 위에 있는 직사각형 $OABC$에서 대각선 $\\overline{AC}$의 길이는?",
+  "rpmRecordId": "M2-RPM-078",
+  "rpmReason": "원 O의 반지름 7 cm인 선분 OB와 직사각형 OABC의 두 대각선 길이가 같음을 이용해 AC = 7 cm를 구하는 M2-RPM-078 문제이다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "NONE",
+  "typeReason": "직사각형 OABC에서 원의 반지름 OB = 7 cm와 대각선 상등 성질로 AC = 7 cm를 확인하는 PT_QUADRILATERAL_PROPERTIES 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "직사각형 OABC의 대각선 성질 AC = OB = 7 cm를 정의로부터 바로 확인하는 1단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "$ 위에 있는 직사각형 $OABC$에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대각선",
+        "src": "stem",
+        "quote": "OABC$에서 대각선 $\\overl"
+      }
+    ],
+    "method": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "반지름의 길이가 $7",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "$O$를 한 꼭짓점으로 하고, 꼭"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "원 O에 내접하는 직사각형 OABC 조건이다.",
+    "goal": "대각선 AC의 길이를 구하는 목표이다.",
+    "method": "원의 반지름 성질을 이용하는 방법이다.",
+    "condition": "꼭짓점 B가 원 위에 있다는 조건이다."
+  },
+  "how": "직사각형 OABC의 두 대각선 길이가 같으므로 AC = OB = 7 cm임을 확인하여 정답 ①로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

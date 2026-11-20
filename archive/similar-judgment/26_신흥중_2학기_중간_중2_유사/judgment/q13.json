@@ -1,0 +1,65 @@
+{
+  "qid": 13,
+  "itemFingerprint": "a60472d09d4def1e",
+  "solveSteps": [
+    "평행사변형 ABCD 에서 대변 BC = AD = 22 cm, CD = AB = 15 cm 이다.",
+    "각 A의 이등분선과 엇각에 의해 삼각형 ABE 는 이등변삼각형이므로 BE = AB = 15 cm 이다.",
+    "각 D의 이등분선과 엇각에 의해 삼각형 DCF 는 이등변삼각형이므로 CF = CD = 15 cm 이다.",
+    "BF = BC - CF = 22 - 15 = 7 cm 이다.",
+    "따라서 FE = BE - BF = 15 - 7 = 8 cm 이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "평행사변형 $ABCD$에",
+  "rpmRecordId": "M2-RPM-190",
+  "rpmReason": "평행사변형의 두 각 이등분선으로 BE = 15 cm, CF = 15 cm 를 얻고 22 cm 로부터 FE = 8 cm 를 구하는 단계이다.",
+  "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+  "templateKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
+  "typeReason": "평행사변형 ABCD 에서 두 각의 이등분선이 만드는 이등변삼각형들의 겹치는 선분 FE = 8 cm 를 계산하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "15 cm 와 22 cm 로부터 22 - 15 = 7 cm, 15 - 7 = 8 cm 를 순차적으로 도출하는 난이도 2 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "평행사변형 $ABCD$에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "분 $FE$의 길이는? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "엇각",
+        "src": "solution",
+        "quote": "이등분선이므로 엇각에 의해 $$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "BE = 15 cm, CF = 15 cm, BC = 22 cm 에서 BF = 7 cm, FE = 8 cm 임을 확인하고 ①로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

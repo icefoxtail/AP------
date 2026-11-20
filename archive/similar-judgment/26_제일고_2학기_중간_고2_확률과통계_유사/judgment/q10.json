@@ -1,0 +1,76 @@
+{
+  "qid": 10,
+  "itemFingerprint": "f88bbba5a35ba9a7",
+  "solveSteps": [
+    "불량품(0.2)을 정상으로 판정할 확률은 0.2\\times(1-0.9)=0.02이다.",
+    "정상품(0.8)을 불량으로 판정할 확률은 0.8\\times(1-0.85)=0.12이므로 구하는 확률은 0.02+0.12=0.14이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-04",
+  "subUnitKey": "H22-PS-04-CONDITIONAL_PROBABILITY",
+  "unitEvidence": "검사 기계가 잘못 판정할 확률은?",
+  "rpmRecordId": "H2-PS-RPM-046",
+  "rpmReason": "불량품과 정상품 각 조건하의 오판정 확률 0.02와 0.12를 곱셈정리로 구해 더하는 조건부확률 계산 행이다.",
+  "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+  "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+  "typeReason": "제품 상태별 조건부 오판정 확률 0.2\\times 0.1과 0.8\\times 0.15를 곱해 합산하는 직접 계산 구조이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "불량품 오판 0.02와 정상품 오판 0.12를 각각 여사건과 곱셈정리로 구해 더하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "확률",
+        "src": "stem",
+        "quote": "판정할 확률은 $0.9$이고,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "확률",
+        "src": "stem",
+        "quote": "잘못 판정할 확률은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "확률의곱셈정리",
+        "src": "solution",
+        "quote": "$0.2\\times(1-0.9)=0.2\\times 0.1=0.02$",
+        "evidenceType": "IMPLIED",
+        "justification": "불량·정상 비율에 각 오판정 조건부확률을 곱하여 사건의 확률을 구함"
+      },
+      {
+        "term": "전확률",
+        "src": "solution",
+        "quote": "$0.02+0.12=0.14$",
+        "evidenceType": "IMPLIED",
+        "justification": "두 배반인 오판정 경로의 확률을 합하여 전체 오판정 확률을 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "배반사건",
+        "src": "solution",
+        "quote": "두 경우는 서로 배반이므로"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "0.2\\times 0.1+0.8\\times 0.15=0.14(④)를 계산해 저장 정답과 일치함을 확인했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

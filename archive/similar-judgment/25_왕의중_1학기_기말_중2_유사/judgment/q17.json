@@ -1,0 +1,63 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "7efb0986ed424c99",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "직선 y = ax + 1 이 선분 AB 와 만나야 한다.",
+    "점 A(2, 9)를 지날 때: 9 = 2a + 1 -> 2a = 8 -> a = 4 이다.",
+    "점 B(4, 5)를 지날 때: 5 = 4a + 1 -> 4a = 4 -> a = 1 이다.",
+    "선분 AB 와 만나기 위한 a의 범위는 1 <= a <= 4 이다.",
+    "따라서 정수 a는 1, 2, 3, 4 로 4개이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 점 $A(2, 9), B",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+  "templateKey": "TPL_INTERSECTION_SEGMENT_RANGE",
+  "newKeyProposal": null,
+  "typeReason": "직선 y = ax + 1 이 선분 AB 와 만날 기울기 a의 범위를 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-053",
+  "rpmReason": "선분 AB 의 양 끝점을 지날 때의 기울기 a 의 범위를 결정한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "선분 AB 의 양 끝점을 대입하여 기울기 경계 1 <= a <= 4 를 구하고 정수 개수를 센다.",
+  "how": "선분 AB 의 점 A 대입 시 a = 4, 점 B 대입 시 a = 1 이므로 1 <= a <= 4 에서 4 개를 구했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "선분 $AB$와 일차함수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "정수 $a$의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "범위",
+        "src": "solution",
+        "quote": "$a$의 범위는 $1 \\le",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "만족하는 정수 $a$의 개수는?"
+      }
+    ]
+  }
+}

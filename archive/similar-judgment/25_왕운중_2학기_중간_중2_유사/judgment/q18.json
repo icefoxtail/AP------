@@ -1,0 +1,56 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "4f913d28fe55498e",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "AD // BC 이므로 엇각에 의해 각 AFB = 각 FAD = 각 BAF 이다.",
+    "따라서 삼각형 ABF는 이등변삼각형이므로 BF = AB = 10 cm 이다.",
+    "AB // CD 이므로 각 AED = 각 EAD 에서 DE = AD = BC = 10 + x 이다 (y = 10 + x).",
+    "x + y = 26 에 대입하면 x + (10 + x) = 26 에서 2x = 16, x = 8 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "평행사변형 $ABCD$에서",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+  "templateKey": "TPL_ISOSCELES_CONVERSE",
+  "newKeyProposal": null,
+  "typeReason": "평행사변형의 각 이등분선으로 이등변삼각형을 유도하고 x + y = 26 연립으로 x를 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-060",
+  "rpmReason": "평행선과 각 이등분선이 만드는 이등변삼각형을 이용해 26 식에 대입한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "BF=10, DE=10+x 관계를 이등변삼각형으로 찾고 x + y = 26 을 풀어야 한다.",
+  "how": "이등변삼각형으로 y = 10 + x를 얻어 x + (10 + x) = 26에서 x = 8을 도출하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "평행사변형 $ABCD$에서 $\\angle A$의 이등분선이"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이등분선",
+        "src": "stem",
+        "quote": "$x + y = 26$일 때, $x$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

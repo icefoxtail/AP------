@@ -1,0 +1,56 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "96295f102d58a468",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "삼각형 ACD와 CBE는 정삼각형이므로 CA=CD, CE=CB, 각 ACD=각 BCE=60도이다.",
+    "평각에서 각 DCE = 180 - 60 - 60 = 60도이다.",
+    "각 ACE = 60 + 60 = 120도이므로 각 ACE = 100 도는 옳지 않다.",
+    "삼각형 ACE와 DCB는 SAS 합동이고 대응변 AE=BD, 각 BDC=35도이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "선분 $AB$ 위의 한 점",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+  "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
+  "newKeyProposal": null,
+  "typeReason": "한 직선 위의 두 정삼각형에서 SAS 합동을 유도하고 각 100도 선지의 거짓을 판별하는 유형이다.",
+  "rpmRecordId": "M1-RPM-192",
+  "rpmReason": "정삼각형의 60도 각을 이용해 120도 끼인각과 SAS 합동을 적용한다.",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "정삼각형의 성질로부터 각 ACE=120도를 구하고 보기의 100도 오류를 식별해야 한다.",
+  "how": "각 ACE가 60+60=120도인데 100도로 제시된 2번이 거짓임을 확인하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "정삼각형",
+        "src": "stem",
+        "quote": "두 정삼각형 $ACD$와 $CBE$를 같은 쪽에 만들었다"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "다음 중 옳지 않은 것은? [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "합동",
+        "src": "solution",
+        "quote": "삼각형의 합동을 증명한다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

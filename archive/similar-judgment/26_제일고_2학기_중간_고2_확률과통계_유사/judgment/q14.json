@@ -1,0 +1,70 @@
+{
+  "qid": 14,
+  "itemFingerprint": "e9eda5eac975cbb4",
+  "solveSteps": [
+    "x^{4}의 계수는 {}_{4}C_{4}+{}_{5}C_{4}+\\cdots+{}_{11}C_{4}={}_{12}C_{5}이고, x^{5}의 계수는 {}_{5}C_{5}+\\cdots+{}_{11}C_{5}={}_{12}C_{6}이다.",
+    "파스칼의 항등식에 의해 두 계수의 합은 {}_{12}C_{5}+{}_{12}C_{6}={}_{13}C_{6}이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-02",
+  "subUnitKey": "H22-PS-02-CORE",
+  "unitEvidence": "$(1+x)^{4}+(1+x)^{5}+(1+x)^{6}+\\cdots+(1+x)^{11}$의 전개식에서",
+  "rpmRecordId": "H2-PS-RPM-040",
+  "rpmReason": "파스칼의 항등식 {}_{n}C_{r-1}+{}_{n}C_{r}={}_{n+1}C_{r}을 연속 적용해 {}_{12}C_{5}+{}_{12}C_{6}={}_{13}C_{6}을 얻는 이항계수의 성질 행이다.",
+  "problemTypeKey": "PT_BINOMIAL_THEOREM",
+  "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+  "typeReason": "각 이항식의 x^{4}, x^{5} 계수를 파스칼의 항등식으로 연쇄 축약해 {}_{13}C_{6}으로 정리하는 이항계수 성질 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "파스칼의 항등식을 x^{4} 계수와 x^{5} 계수 합에 두 번 적용하여 {}_{13}C_{6}을 얻는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "계수",
+        "src": "stem",
+        "quote": "$x^{4}$의 계수와 $x^{5}$의 계수의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "계수의 합과 같은 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "이항정리",
+        "src": "solution",
+        "quote": "$(1+x)^{k}$의 전개식에서 $x^{r}$의 계수는 ${}_{k}C_{r}$이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "이항정리를 이용해 각 항 $(1+x)^{k}$의 $x^{4}, x^{5}$ 계수를 ${}_{k}C_{4}, {}_{k}C_{5}$로 구함"
+      },
+      {
+        "term": "하키스틱항등식",
+        "src": "solution",
+        "quote": "파스칼의 항등식",
+        "evidenceType": "IMPLIED",
+        "justification": "${}_{n}C_{r-1}+{}_{n}C_{r}={}_{n+1}C_{r}$을 연쇄 적용해 조합의 합을 ${}_{12}C_{5}, {}_{12}C_{6}$으로 축약함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "하키스틱 항등식으로 {}_{12}C_{5}+{}_{12}C_{6}={}_{13}C_{6}(⑤)을 구해 저장 정답과 일치함을 확인했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

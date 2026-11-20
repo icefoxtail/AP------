@@ -1,0 +1,64 @@
+{
+  "qid": 2,
+  "itemFingerprint": "38b694461047f3ae",
+  "solveSteps": [
+    "닮은 두 사각형 ABCD 와 EFGH 에서 대응변의 길이의 비는 3 : 4 로 일정하다.",
+    "선분 AB : EF = BC : FG 이므로 3 : 4 = 15 : FG 이 성립한다.",
+    "3 * FG = 4 * 15 = 60 이므로 FG = 20 cm 이다.",
+    "따라서 변 FG의 길이는 20 cm 이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-SIMILAR_FIGURE",
+  "unitEvidence": "GH$가 서로 닮은 도형이고, 대",
+  "rpmRecordId": "M2-RPM-202",
+  "rpmReason": "닮음비 3:4 와 BC = 15 cm 로부터 60 을 이용해 대응변 FG = 20 cm 를 구하는 단계이다.",
+  "problemTypeKey": "PT_SIMILAR_FIGURES",
+  "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+  "typeReason": "두 닮은 사각형의 닮음비 3:4 를 적용하여 대응변 15 cm 로부터 20 cm 를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "비례식 3 : 4 = 15 : FG 에서 FG = 20 cm 를 직접 계산하는 기본 난이도 1 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "도형",
+        "src": "stem",
+        "quote": "가 서로 닮은 도형이고, 대응하는"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "대응하는 변의 길이의 비는 $\\o"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "주어진 값을 대입하면 $$ 3",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "닮음비 3 : 4 = 15 : FG 에서 3 * FG = 60 이므로 FG = 20 cm 로 ④를 선택했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

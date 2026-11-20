@@ -1,0 +1,66 @@
+{
+  "qid": 14,
+  "itemFingerprint": "836cb42ff03d6722",
+  "solveSteps": [
+    "① 평행사변형의 두 대각선이 서로 수직이면 마름모가 된다 (직사각형 아님).",
+    "② 평행사변형의 한 내각이 90도이면 직사각형이 된다 (마름모 아님).",
+    "③ 마름모에 '두 대각선의 길이가 같다'는 직사각형 성질이 추가되면 정사각형이 된다 (옳음).",
+    "④ 사다리꼴에서 평행하지 않은 대변 길이가 같으면 등변사다리꼴이 된다 (평행사변형 아님).",
+    "⑤ 직사각형은 이미 대각선이 서로 이등분하므로 이것만으로 정사각형이 되지 않는다.",
+    "따라서 옳은 것은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "마름모가 정사각형이 되려면 두 대각선의",
+  "rpmRecordId": "M2-RPM-200",
+  "rpmReason": "90도 각 조건이나 대각선 길이 조건 등 여러 사각형의 포함 관계와 변환 조건을 판정하는 단계이다.",
+  "problemTypeKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+  "templateKey": "TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE",
+  "typeReason": "90도 및 대각선 성질을 비교하여 마름모에서 정사각형이 되는 조건을 바르게 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "90도 내각 및 대각선의 성질을 파악하여 보기 ③의 참 거짓을 바로 판별하는 기본 난이도 1 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "사각형",
+        "src": "stem",
+        "quote": "여러 가지 사각형 사이의 관계에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "조건",
+        "src": "stem",
+        "quote": "기 위한 추가 조건으로 옳은 것은"
+      }
+    ],
+    "method": [
+      {
+        "term": "대각선",
+        "src": "solution",
+        "quote": "각형의 정의와 대각선의 성질을 비교",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "마름모에 두 대각선의 길이가 같다는 조건이 추가되면 정사각형이 됨을 확인하여 90도 관계와 함께 ③으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

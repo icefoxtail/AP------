@@ -1,0 +1,2521 @@
+{
+  "qid": 18,
+  "questionType": "객관식",
+  "course": [
+    "MIDDLE2"
+  ],
+  "curriculum": "2022",
+  "problem": {
+    "content": "$\\triangle ABC$에서 $\\angle A = 70^\\circ$이고, 점 $O$가 $\\triangle ABC$의 외심일 때, $\\angle BOC$의 크기는? [5점]",
+    "choices": [
+      "$110^\\circ$",
+      "$120^\\circ$",
+      "$130^\\circ$",
+      "$140^\\circ$",
+      "$150^\\circ$"
+    ],
+    "points": 5
+  },
+  "reference": {
+    "answer": "④",
+    "solution": "삼각형의 외심 $O$에서 두 꼭짓점 $B, C$를 잇는 중심각 $\\angle BOC$의 크기는 꼭지각 $\\angle A$의 크기의 $2$배이다.\n$$\n\\angle BOC = 2\\angle A\n$$\n주어진 조건에서 $\\angle A = 70^\\circ$이므로\n$$\n\\angle BOC = 2 \\times 70^\\circ = 140^\\circ\n$$\n따라서 정답은 ④이다.",
+    "sourcePrimaryMethod": "외심의 성질인 각BOC = 2각A 공식을 적용하여 각의 크기를 구한다.",
+    "sourceDecisiveStep": "각BOC = 2 * 70 = 140도 산출"
+  },
+  "source": {
+    "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
+    "standardUnitKey": "M2-05",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "rpmPath": {
+      "majorUnit": "도형의 성질",
+      "midUnit": "삼각형의 성질",
+      "l3": "삼각형의 내심과 외심",
+      "l4": "삼각형의 외심의 응용"
+    },
+    "problemTypeKey": "PT_M2_CIRCUMCENTER_BOC_ANGLE",
+    "templateKey": "TPL_CIRCUMCENTER_DOUBLE_ANGLE",
+    "difficultyBucket": 2,
+    "newKeyProposal": null,
+    "item4slot": {
+      "given": [
+        "삼각형",
+        "외심"
+      ],
+      "goal": [
+        "각"
+      ],
+      "method": [
+        "사칙연산"
+      ],
+      "condition": [
+        "자연수"
+      ]
+    },
+    "boundary": "NONE"
+  },
+  "units": [
+    {
+      "standardUnitKey": "M2-01",
+      "label": "수와 식",
+      "order": 1,
+      "subUnits": [
+        {
+          "subUnitKey": "M2-01-EXPONENT_LAW",
+          "label": "지수법칙"
+        },
+        {
+          "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+          "label": "다항식의 계산"
+        },
+        {
+          "subUnitKey": "M2-01-REPEATING_DECIMAL",
+          "label": "유리수와 순환소수"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M2-RPM-119",
+          "path": "유리수와 순환소수 > 유리수와 순환소수 > 유한소수와 무한소수 > 유한소수 판별",
+          "subUnitKey": "M2-01-REPEATING_DECIMAL",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-120",
+          "path": "유리수와 순환소수 > 유리수와 순환소수 > 유한소수와 무한소수 > 분모의 소인수 조건",
+          "subUnitKey": "M2-01-REPEATING_DECIMAL",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-121",
+          "path": "유리수와 순환소수 > 유리수와 순환소수 > 순환소수 > 순환마디와 표현",
+          "subUnitKey": "M2-01-REPEATING_DECIMAL",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-122",
+          "path": "유리수와 순환소수 > 유리수와 순환소수 > 순환소수 > 순환소수를 분수로",
+          "subUnitKey": "M2-01-REPEATING_DECIMAL",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-123",
+          "path": "유리수와 순환소수 > 유리수와 순환소수 > 유리수와 소수 표현 > 분수를 소수로",
+          "subUnitKey": "M2-01-REPEATING_DECIMAL",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-124",
+          "path": "유리수와 순환소수 > 유리수와 순환소수 > 유리수와 소수 표현 > 조건을 만족하는 유리수",
+          "subUnitKey": "M2-01-REPEATING_DECIMAL",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-125",
+          "path": "식의 계산 > 단항식의 계산 > 지수법칙 > 거듭제곱의 곱·몫",
+          "subUnitKey": "M2-01-EXPONENT_LAW",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-126",
+          "path": "식의 계산 > 단항식의 계산 > 지수법칙 > 거듭제곱의 거듭제곱",
+          "subUnitKey": "M2-01-EXPONENT_LAW",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-127",
+          "path": "식의 계산 > 단항식의 계산 > 단항식의 곱셈과 나눗셈 > 단항식의 곱셈",
+          "subUnitKey": "M2-01-EXPONENT_LAW",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-128",
+          "path": "식의 계산 > 단항식의 계산 > 단항식의 곱셈과 나눗셈 > 단항식의 나눗셈",
+          "subUnitKey": "M2-01-EXPONENT_LAW",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-129",
+          "path": "식의 계산 > 단항식의 계산 > 단항식의 곱셈과 나눗셈 > 혼합 계산",
+          "subUnitKey": "M2-01-EXPONENT_LAW",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-130",
+          "path": "식의 계산 > 다항식의 계산 > 다항식의 덧셈과 뺄셈 > 동류항 정리",
+          "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-131",
+          "path": "식의 계산 > 다항식의 계산 > 다항식의 덧셈과 뺄셈 > 괄호가 있는 계산",
+          "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-132",
+          "path": "식의 계산 > 다항식의 계산 > 단항식과 다항식의 곱셈·나눗셈 > 분배법칙",
+          "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-133",
+          "path": "식의 계산 > 다항식의 계산 > 단항식과 다항식의 곱셈·나눗셈 > 다항식을 단항식으로 나누기",
+          "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-134",
+          "path": "식의 계산 > 다항식의 계산 > 식의 값과 활용 > 식의 값",
+          "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-135",
+          "path": "식의 계산 > 다항식의 계산 > 식의 값과 활용 > 조건식 활용",
+          "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+          "label": "단항식 곱셈·나눗셈의 옳고 그름 판별",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+              "label": "지수법칙 적용 단항식 계산 검증 절차"
+            },
+            {
+              "templateKey": "TPL_M2_MONOMIAL_MULTIPLICATION_DIVISION_CALCULATE",
+              "label": "지수 계산"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_POLYNOMIAL_CYLINDER_VOLUME_RATIO",
+          "label": "직사각형 회전체 두 부피의 비",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_CALCULATE_VOLUME_RATIO_OF_TWO_REVOLVED_CYLINDERS_DESCRIPTIVE",
+              "label": "회전축에 따른 원기둥 부피비 계산 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+          "label": "잘못 더한 다항식의 바른 계산 복원",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+              "label": "오연산 되돌림 다항식 복원 절차"
+            },
+            {
+              "templateKey": "TPL_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION_REVERSE",
+              "label": "오독 복원"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA",
+          "label": "다항식 넓이에서 삼각형 높이 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_FIND_TRIANGLE_HEIGHT_FROM_POLYNOMIAL_AREA",
+              "label": "다항식 나눗셈으로 높이 결정 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_POLYNOMIAL_GEOMETRIC_FOLDING_AREA",
+          "label": "접힌 삼각형의 넓이 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_CALCULATE_FOLDED_TRIANGLE_AREA_WITH_VARIABLES",
+              "label": "접기 합동을 이용한 삼각형 넓이 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+          "label": "지수법칙",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+          "label": "유한소수",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_MONOMIAL",
+          "label": "단항식",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_POLYNOMIAL",
+          "label": "다항식",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+          "label": "순환소수",
+          "templates": []
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "M2-02",
+      "label": "일차부등식",
+      "order": 2,
+      "subUnits": [
+        {
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "label": "일차부등식"
+        },
+        {
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+          "label": "일차부등식의 활용"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M2-RPM-136",
+          "path": "일차부등식 > 일차부등식 > 부등식의 성질 > 부등식의 성질",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-137",
+          "path": "일차부등식 > 일차부등식 > 부등식의 성질 > 수직선으로 해 표현",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-138",
+          "path": "일차부등식 > 일차부등식 > 일차부등식의 풀이 > 기본형",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-139",
+          "path": "일차부등식 > 일차부등식 > 일차부등식의 풀이 > 괄호·분수·소수가 있는 부등식",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-140",
+          "path": "일차부등식 > 일차부등식 > 해의 조건 > 정수해 개수",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-141",
+          "path": "일차부등식 > 일차부등식 > 해의 조건 > 계수 조건",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-142",
+          "path": "일차부등식 > 일차부등식의 활용 > 수량 관계 > 이상·이하 조건",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-143",
+          "path": "일차부등식 > 일차부등식의 활용 > 수량 관계 > 최소·최대 정수",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-144",
+          "path": "일차부등식 > 일차부등식의 활용 > 거리·속력·시간 > 시간 제한",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-145",
+          "path": "일차부등식 > 일차부등식의 활용 > 거리·속력·시간 > 거리 조건",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-146",
+          "path": "일차부등식 > 일차부등식의 활용 > 비율·가격·도형 > 할인·이익",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-147",
+          "path": "일차부등식 > 일차부등식의 활용 > 비율·가격·도형 > 도형의 길이·넓이 조건",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-136-INEQUALITY-PROPERTIES-34C2",
+          "path": "일차부등식 > 일차부등식 > 부등식의 성질 > 부등식의 성질",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M2-RPM-141-ALL-SOLUTIONS-SIGN-34C2",
+          "path": "일차부등식 > 일차부등식 > 해의 조건 > 계수 조건",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+          "label": "왕복 이동 시간 제한 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+              "label": "왕복 시간 합 부등식 모델링 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_WATER_TANK",
+          "label": "물탱크 용량 부등식 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_SOLVE_WATER_TANK_CAPACITY_INEQUALITY_DESCRIPTIVE",
+              "label": "사용 후 잔량 부등식 모델링 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+          "label": "부등식 성질 적용의 옳고 그름 판별",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+              "label": "부등식 변형 성질 검증 절차"
+            },
+            {
+              "templateKey": "TPL_M2_INEQUALITY_PROPERTIES_TRUE_FALSE_RULE",
+              "label": "부등식 변형 성질"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+          "label": "일차부등식 판별",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+              "label": "일차부등식 여부 선별 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM",
+          "label": "부등식의 자연수 해 합 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_CALCULATE_SUM_OF_NATURAL_SOLUTIONS_TO_INEQUALITY",
+              "label": "자연수 해 나열 후 합산 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_NO_NATURAL_ROOTS",
+          "label": "자연수 해가 없을 조건의 매개변수 범위",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_FIND_PARAMETER_RANGE_FOR_NO_NATURAL_SOLUTIONS",
+              "label": "경계값 비교로 자연수 해 없음 판정 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+          "label": "일차부등식 풀이 결과 검증",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK",
+              "label": "분수·소수 계수 일차부등식 검증 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+          "label": "일차·연립부등식",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+              "label": "연립부등식의 공통 구간"
+            },
+            {
+              "templateKey": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
+              "label": "정수 개수·매개변수 조건"
+            },
+            {
+              "templateKey": "TPL_H1_LINEAR_INEQUALITY_ALL_SOLUTIONS_SIGN",
+              "label": "일차부등식의 전체 해 부호 조건"
+            },
+            {
+              "templateKey": "TPL_H1_LINEAR_INEQUALITY_LEAST_INTEGER_SOLUTION",
+              "label": "일차부등식의 가장 작은 정수해"
+            },
+            {
+              "templateKey": "TPL_H1_INDEPENDENT_INEQUALITIES_LEAST_INTEGER_SUM",
+              "label": "독립된 부등식의 최소 정수해 합"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+          "label": "지수법칙",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+          "label": "일차부등식",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_MONOMIAL",
+          "label": "단항식",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_POLYNOMIAL",
+          "label": "다항식",
+          "templates": []
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "M2-03",
+      "label": "연립일차방정식",
+      "order": 3,
+      "subUnits": [
+        {
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "label": "연립일차방정식"
+        },
+        {
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "label": "연립일차방정식의 활용"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M2-RPM-148",
+          "path": "연립일차방정식 > 연립일차방정식 > 연립방정식의 풀이 > 가감법",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-149",
+          "path": "연립일차방정식 > 연립일차방정식 > 연립방정식의 풀이 > 대입법",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-150",
+          "path": "연립일차방정식 > 연립일차방정식 > 해와 계수 > 해가 주어진 연립방정식",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-151",
+          "path": "연립일차방정식 > 연립일차방정식 > 해와 계수 > 계수 결정",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-152",
+          "path": "연립일차방정식 > 연립일차방정식 > 복잡한 꼴의 연립방정식 > 괄호가 있는 연립방정식",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-153",
+          "path": "연립일차방정식 > 연립일차방정식 > 복잡한 꼴의 연립방정식 > 분수·소수가 있는 연립방정식",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-154",
+          "path": "연립일차방정식 > 연립일차방정식 > 해가 특수한 연립방정식 > 해가 없거나 무수히 많은 경우",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-155",
+          "path": "연립일차방정식 > 연립일차방정식 > 해가 특수한 연립방정식 > 계수 조건으로 해의 상태 판단",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-156",
+          "path": "연립일차방정식 > 연립일차방정식의 활용 > 수와 개수 > 두 수 관계",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-157",
+          "path": "연립일차방정식 > 연립일차방정식의 활용 > 수와 개수 > 개수·가격",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-158",
+          "path": "연립일차방정식 > 연립일차방정식의 활용 > 속력·시간·거리 > 마주가기·따라가기",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-159",
+          "path": "연립일차방정식 > 연립일차방정식의 활용 > 속력·시간·거리 > 강물·기차",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-160",
+          "path": "연립일차방정식 > 연립일차방정식의 활용 > 농도·비율 > 농도 혼합",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-161",
+          "path": "연립일차방정식 > 연립일차방정식의 활용 > 농도·비율 > 증감률",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-162",
+          "path": "연립일차방정식 > 연립일차방정식의 활용 > 도형 활용 > 도형 조건을 이용한 연립방정식",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-163",
+          "path": "연립일차방정식 > 연립일차방정식의 활용 > 일의 양 > 일의 양과 작업률",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-157-SWAPPED-QUANTITIES-34C2",
+          "path": "연립일차방정식 > 연립일차방정식의 활용 > 수와 개수 > 개수·가격",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_M2_PROBABILITY",
+          "label": "확률",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
+          "label": "가감법 소거식 선택",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_SELECT_REQUIRED_OPERATION_FOR_VARIABLE_ELIMINATION",
+              "label": "미지수 소거용 식 선택 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+          "label": "해가 없을 조건으로 계수 결정",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_FIND_PARAMETER_FOR_NO_SOLUTION_SYSTEM",
+              "label": "해 없음 조건으로 계수 찾기 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+          "label": "소수 계수 연립방정식 풀이",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_SOLVE_DECIMAL_SYSTEM_AND_LINEAR_COMBINATION",
+              "label": "소수 계수 정수화 후 일차결합 계산 절차"
+            },
+            {
+              "templateKey": "TPL_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS_CLEAR",
+              "label": "분모와 소수 제거"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+          "label": "공통해를 이용한 미정계수 결정",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+              "label": "공통해 선계산 후 미정계수 결정 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
+          "label": "가위바위보 계단 문제",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_SOLVE_ROCK_PAPER_SCISSORS_STAIR_PROBLEM",
+              "label": "승패 역관계 연립방정식 절차"
+            },
+            {
+              "templateKey": "TPL_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME_WIN_COUNT",
+              "label": "승패 횟수"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_DIGITS",
+          "label": "자릿수 관계로 세 자리 수 복원",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_FIND_THREE_DIGIT_NUMBER_FROM_DIGIT_RELATIONS",
+              "label": "자릿값 연립방정식으로 세 자리 수 복원 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COEFFICIENT_SWAP",
+          "label": "계수를 바꾼 연립방정식의 해 복원",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_SOLVE_ORIGINAL_SYSTEM_AFTER_COEFFICIENT_SWAP_DESCRIPTIVE",
+              "label": "계수 교환 연립방정식 복원 서술 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
+          "label": "물건 수량과 총액으로 단가 결정",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_SOLVE_UNIT_PRICE_SYSTEM_WORD_PROBLEM_DESCRIPTIVE",
+              "label": "수량·총액 연립방정식 단가 서술 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+          "label": "연립방정식과 공통근",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_SYSTEM_BRANCH_COMMON_ROOT",
+              "label": "인수 분기·공통근 연립"
+            },
+            {
+              "templateKey": "TPL_H1_SYSTEM_DIRECT",
+              "label": "연립방정식의 직접 해결"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_EQUATION_APPLICATION",
+          "label": "방정식의 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_EQUATION_KNOWN_WEIGHTS_SWAPPED_QUANTITIES",
+              "label": "알려진 단위량과 수량 교환 차이의 연립식"
+            },
+            {
+              "templateKey": "TPL_H1_EQUATION_APPLICATION_SUM_SQUARE",
+              "label": "도형 연립방정식"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+          "label": "상황을 일차방정식으로 나타내기",
+          "templates": [
+            {
+              "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
+              "label": "수량·가격 관계식"
+            },
+            {
+              "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_RATE",
+              "label": "속력·시간·거리 관계식"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_EQUATION",
+          "label": "일차방정식",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+          "label": "일차부등식",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+          "label": "연립일차방정식",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_SYSTEM_INEQUALITY",
+          "label": "연립부등식",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
+          "label": "미지수가 두 개인 일차방정식",
+          "templates": []
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "M2-04",
+      "label": "일차함수와 그래프",
+      "order": 4,
+      "subUnits": [
+        {
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "label": "일차함수의 뜻과 그래프"
+        },
+        {
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "label": "일차함수와 일차방정식의 관계"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M2-RPM-164",
+          "path": "일차함수 > 일차함수와 그 그래프 > 일차함수의 뜻 > 함숫값",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-165",
+          "path": "일차함수 > 일차함수와 그 그래프 > 일차함수의 뜻 > 일차함수 판별",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-166",
+          "path": "일차함수 > 일차함수와 그 그래프 > 일차함수의 그래프 > 기울기·절편",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-167",
+          "path": "일차함수 > 일차함수와 그 그래프 > 일차함수의 그래프 > 그래프 그리기",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-168",
+          "path": "일차함수 > 일차함수와 그 그래프 > 그래프의 성질 > 일차함수 그래프의 평행·일치",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-169",
+          "path": "일차함수 > 일차함수와 그 그래프 > 그래프의 성질 > 증가·감소",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-170",
+          "path": "일차함수 > 일차함수와 그 그래프 > 식 구하기 > 두 점으로 식 구하기",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-171",
+          "path": "일차함수 > 일차함수와 그 그래프 > 식 구하기 > 기울기와 한 점으로 식 구하기",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-172",
+          "path": "일차함수 > 일차함수와 일차방정식의 관계 > 방정식과 그래프 > 일차방정식의 그래프",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-173",
+          "path": "일차함수 > 일차함수와 일차방정식의 관계 > 방정식과 그래프 > x축·y축에 평행한 직선",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-174",
+          "path": "일차함수 > 일차함수와 일차방정식의 관계 > 두 직선의 관계 > 교점과 연립방정식",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-175",
+          "path": "일차함수 > 일차함수와 일차방정식의 관계 > 두 직선의 관계 > 두 직선의 평행·일치",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-176",
+          "path": "일차함수 > 일차함수와 일차방정식의 관계 > 그래프 활용 > 넓이",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-177",
+          "path": "일차함수 > 일차함수와 일차방정식의 관계 > 그래프 활용 > 조건에 따른 식 결정",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+          "label": "소수 개수 함숫값 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
+              "label": "소수 나열 후 함숫값 계산 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+          "label": "함수와 일차함수 판별",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_COUNT_VALID_FUNCTIONS_AND_LINEAR_FUNCTIONS",
+              "label": "함수·일차함수 개수 합산 절차"
+            },
+            {
+              "templateKey": "TPL_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION_FUNCTION",
+              "label": "함수 판별"
+            },
+            {
+              "templateKey": "TPL_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION_LINEAR",
+              "label": "일차함수 판별"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+          "label": "평행이동한 일차함수 결정",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT",
+              "label": "y축 평행이동량 결정 절차"
+            },
+            {
+              "templateKey": "TPL_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION_DISPLACEMENT",
+              "label": "이동량"
+            },
+            {
+              "templateKey": "TPL_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION_FORMULA",
+              "label": "이동식"
+            },
+            {
+              "templateKey": "TPL_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION_POINT",
+              "label": "점 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_FUNCTION_CONDITIONS_MATCHING",
+          "label": "기울기·절편 조건에 맞는 일차함수 선택",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_SELECT_FUNCTION_MATCHING_SLOPE_AND_INTERCEPT_CONDITIONS",
+              "label": "기울기 부호·x절편 부호 조건 선별 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_FUNCTION_SOLID_OF_REVOLUTION",
+          "label": "절편 삼각형을 회전한 원뿔 부피",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_CALCULATE_CONE_VOLUME_FROM_INTERCEPT_TRIANGLE",
+              "label": "절편 삼각형 회전 원뿔 부피 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
+          "label": "두 일차함수와 좌표축이 둘러싼 넓이",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_CALCULATE_AREA_BOUNDED_BY_TWO_LINES_AND_AXES",
+              "label": "두 직선·좌표축 둘러싼 넓이 차감 절차"
+            },
+            {
+              "templateKey": "TPL_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA_INTERSECTION",
+              "label": "직선과 축 넓이"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+          "label": "제1사분면을 지나지 않을 매개변수 범위",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_FIND_PARAMETER_RANGE_AVOIDING_FIRST_QUADRANT",
+              "label": "사분면 회피 매개변수 범위 절차"
+            },
+            {
+              "templateKey": "TPL_M2_LINEAR_FUNCTION_QUADRANT_CONDITION_AVOID",
+              "label": "사분면 회피"
+            },
+            {
+              "templateKey": "TPL_M2_LINEAR_FUNCTION_QUADRANT_CONDITION_SIGNS",
+              "label": "사분면과 부호"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
+          "label": "평행 조건으로 미지의 좌표 결정",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_FIND_UNKNOWN_COORDINATE_FROM_PARALLEL_SLOPE",
+              "label": "평행 기울기로 좌표 결정 절차"
+            },
+            {
+              "templateKey": "TPL_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION_SLOPE",
+              "label": "평행 기울기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM",
+          "label": "일차방정식의 그래프 찾기",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_MATCH_LINEAR_EQUATION_GRAPH_FROM_INTERCEPTS",
+              "label": "일차방정식 절편으로 그래프 선택 절차"
+            },
+            {
+              "templateKey": "TPL_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM_ISOLATE",
+              "label": "일차함수 꼴 변환"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+          "label": "일차방정식 그래프 설명 판정",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+              "label": "일차방정식 그래프 설명 검증 절차"
+            },
+            {
+              "templateKey": "TPL_M2_LINEAR_EQUATION_GRAPH_PROPERTIES_SIGNS",
+              "label": "계수 부호"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_EQUATION_POINT_SUBSTITUTION",
+          "label": "그래프 위의 점을 이용한 미지수 결정",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_FIND_UNKNOWN_COEFFICIENT_AND_COORDINATE_FROM_LINE",
+              "label": "두 점 대입으로 계수·좌표 결정 절차"
+            },
+            {
+              "templateKey": "TPL_M2_LINEAR_EQUATION_POINT_SUBSTITUTION_POINT",
+              "label": "점 대입"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
+          "label": "y축에 평행한 직선의 방정식",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_FIND_VERTICAL_LINE_EQUATION_FROM_POINT",
+              "label": "y축 평행 직선의 방정식 구성 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+          "label": "연립방정식의 해와 그래프 교점",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_FIND_INTERSECTION_COORDINATE_SUM_FROM_SYSTEM",
+              "label": "연립 풀이로 교점 좌표 합 계산 절차"
+            },
+            {
+              "templateKey": "TPL_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION_COEFFICIENT",
+              "label": "교점 조건"
+            },
+            {
+              "templateKey": "TPL_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION_READ",
+              "label": "교점 판독"
+            },
+            {
+              "templateKey": "TPL_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION_SOLVE",
+              "label": "교점 계산"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_INTERSECTION_QUADRANT",
+          "label": "교점의 사분면 조건으로 매개변수 범위",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_FIND_PARAMETER_RANGE_FOR_INTERSECTION_IN_QUADRANT",
+              "label": "교점 사분면 조건 매개변수 범위 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE",
+          "label": "고도에 따른 기온 변화 일차함수",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_SOLVE_TEMPERATURE_ALTITUDE_WORD_PROBLEM_DESCRIPTIVE",
+              "label": "기온·고도 일차함수 서술 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_GRAPH_INTERSECTION_APPLICATION",
+          "label": "두 운동 그래프의 교점으로 만나는 시각",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_SOLVE_MOTION_GRAPH_INTERSECTION_WORD_PROBLEM_DESCRIPTIVE",
+              "label": "운동 그래프 교점 서술 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_LINE_EQUATION",
+          "label": "직선의 방정식 구하기",
+          "templates": [
+            {
+              "templateKey": "TPL_LINE_POINT_SLOPE",
+              "label": "한 점과 기울기가 주어진 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_TWO_POINTS",
+              "label": "두 점을 지나는 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_PARALLEL",
+              "label": "평행한 직선의 방정식"
+            },
+            {
+              "templateKey": "TPL_LINE_PERPENDICULAR",
+              "label": "수직인 직선의 방정식"
+            },
+            {
+              "templateKey": "TPL_LINE_PERP_BISECTOR",
+              "label": "수직이등분선의 방정식"
+            },
+            {
+              "templateKey": "TPL_LINE_MULTI_CONDITION",
+              "label": "조건이 주어진 직선의 방정식"
+            },
+            {
+              "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+              "label": "직선의 계수와 그래프"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_SLOPE",
+              "label": "평행·수직 직선"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "label": "함수 그래프의 성질",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+              "label": "함수 그래프의 성질 판정"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_SYMMETRY",
+              "label": "함수 그래프의 대칭성"
+            },
+            {
+              "templateKey": "TPL_GRAPH_ORDER_INTERVAL",
+              "label": "그래프의 대소 관계"
+            },
+            {
+              "templateKey": "TPL_TRIG_ABSOLUTE_PERIOD_COMBINATION",
+              "label": "절댓값 및 합성 삼각함수의 최소주기 합"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_VALUE",
+          "label": "함숫값 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+              "label": "함숫값 직접 계산"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_LINE_RELATION",
+          "label": "두 직선의 위치 관계",
+          "templates": [
+            {
+              "templateKey": "TPL_RELATION_PARALLEL_PARAMETER",
+              "label": "두 직선의 평행 조건"
+            },
+            {
+              "templateKey": "TPL_RELATION_PERPENDICULAR_PARAMETER",
+              "label": "두 직선의 수직 조건"
+            },
+            {
+              "templateKey": "TPL_RELATION_PARALLEL_PERP_COMBINED",
+              "label": "평행과 수직 조건"
+            },
+            {
+              "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+              "label": "두 직선의 위치 관계 종합"
+            },
+            {
+              "templateKey": "TPL_LINE_RELATION_COLLINEAR",
+              "label": "세 점 공선 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "label": "함수 그래프의 교점",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+              "label": "절댓값·조각함수 그래프의 교점"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_DISTANCE_RATIO",
+              "label": "교점의 거리·비 조건"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_TANGENCY_SINGLE",
+              "label": "접함 조건으로 교점 하나 만들기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+              "label": "두 함수 그래프의 교점"
+            },
+            {
+              "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+              "label": "그래프의 교점 개수"
+            },
+            {
+              "templateKey": "TPL_PERIODIC_SYMMETRY_INTERSECTION",
+              "label": "대칭·주기 그래프의 교점 개수"
+            },
+            {
+              "templateKey": "TPL_SINE_HORIZONTAL_PHASE_INTERSECTION",
+              "label": "사인곡선 수평 교점의 위상 합 제약"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+          "label": "함수 그래프와 도형",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+              "label": "그래프의 도형 관계에서 식 유도하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DISTANCE_LENGTH",
+              "label": "그래프 위 점의 거리·길이 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_LATTICE",
+              "label": "그래프와 격자점 관계"
+            },
+            {
+              "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+              "label": "그래프와 직선으로 둘러싸인 넓이"
+            },
+            {
+              "templateKey": "TPL_SINE_INSCRIBED_RECTANGLE_AREA",
+              "label": "사인함수의 대칭성과 내접 직사각형 면적"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_PARALLELOGRAM",
+              "label": "함수 그래프 평행사변형"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_STRIP",
+              "label": "함수 간격 일정 넓이"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_TRACE",
+              "label": "그래프 좌표 추적"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_TRIANGLE_AREA",
+              "label": "교점 삼각형 넓이"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+          "label": "함수 그래프와 사분면",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+              "label": "함수 그래프가 지나는 사분면"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
+              "label": "다른 함수와 비교한 사분면 관계"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
+              "label": "매개변수에 따른 사분면 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+          "label": "직선의 교점과 위치 조건",
+          "templates": [
+            {
+              "templateKey": "TPL_INTERSECTION_SEGMENT_RANGE",
+              "label": "직선이 선분과 만나는 조건"
+            },
+            {
+              "templateKey": "TPL_INTERSECTION_GRAPH_COUNT",
+              "label": "직선과 그래프의 교점 개수 조건"
+            },
+            {
+              "templateKey": "TPL_INTERSECTION_QUADRANT_AVOID",
+              "label": "직선의 사분면 통과 조건"
+            },
+            {
+              "templateKey": "TPL_INTERSECTION_TRIANGLE_FORMATION",
+              "label": "세 직선이 삼각형을 이루는 조건"
+            },
+            {
+              "templateKey": "TPL_LINE_INTERSECTION_CONDITION_QUADRANT",
+              "label": "교점 사분면"
+            },
+            {
+              "templateKey": "TPL_LINE_INTERSECTION_CONDITION_TRIANGLE_AVOID",
+              "label": "직선과 삼각형 비접촉"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_FUNCTION",
+          "label": "함수",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_INVERSE_PROPORTION",
+          "label": "반비례",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH",
+          "label": "일차방정식의 그래프",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
+          "label": "일차함수",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+          "label": "연립일차방정식",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_RATIO_DISTRIBUTION",
+          "label": "비와 비례배분",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
+          "label": "미지수가 두 개인 일차방정식",
+          "templates": []
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "M2-05",
+      "label": "도형의 성질",
+      "order": 5,
+      "subUnits": [
+        {
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "label": "사각형의 성질"
+        },
+        {
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "label": "삼각형의 성질"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M2-RPM-178",
+          "path": "삼각형의 성질 > 삼각형의 성질 > 이등변삼각형 > 밑각과 꼭짓각",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-179",
+          "path": "삼각형의 성질 > 삼각형의 성질 > 이등변삼각형 > 이등변삼각형 판정",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-180",
+          "path": "삼각형의 성질 > 삼각형의 성질 > 직각삼각형의 합동 > RHS",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-181",
+          "path": "삼각형의 성질 > 삼각형의 성질 > 직각삼각형의 합동 > RHA",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-182",
+          "path": "삼각형의 성질 > 삼각형의 성질 > 각의 이등분선 > 각의 이등분선 성질",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-183",
+          "path": "삼각형의 성질 > 삼각형의 성질 > 각의 이등분선 > 거리 관계",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-184",
+          "path": "삼각형의 성질 > 삼각형의 외심과 내심 > 외심 > 수직이등분선과 외심",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-185",
+          "path": "삼각형의 성질 > 삼각형의 외심과 내심 > 외심 > 외심의 위치·각",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-186",
+          "path": "삼각형의 성질 > 삼각형의 외심과 내심 > 내심 > 각의 이등분선과 내심",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-187",
+          "path": "삼각형의 성질 > 삼각형의 외심과 내심 > 내심 > 내심과 거리",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-188",
+          "path": "삼각형의 성질 > 삼각형의 외심과 내심 > 외접원·내접원 활용 > 반지름·각 계산",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-189",
+          "path": "삼각형의 성질 > 삼각형의 외심과 내심 > 외접원·내접원 활용 > 외심·내심을 이용한 복합도형",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-190",
+          "path": "사각형의 성질 > 평행사변형 > 평행사변형의 성질 > 변·각의 성질",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-191",
+          "path": "사각형의 성질 > 평행사변형 > 평행사변형의 성질 > 평행사변형의 대각선 성질",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-192",
+          "path": "사각형의 성질 > 평행사변형 > 평행사변형의 판정 > 변·각 조건",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-193",
+          "path": "사각형의 성질 > 평행사변형 > 평행사변형의 판정 > 대각선 조건",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-194",
+          "path": "사각형의 성질 > 평행사변형 > 넓이와 활용 > 평행선과 넓이",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-195",
+          "path": "사각형의 성질 > 평행사변형 > 넓이와 활용 > 분할도형",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-196",
+          "path": "사각형의 성질 > 여러 가지 사각형 > 직사각형·마름모·정사각형 > 각 사각형의 성질",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-197",
+          "path": "사각형의 성질 > 여러 가지 사각형 > 직사각형·마름모·정사각형 > 특수 사각형의 대각선 성질",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-198",
+          "path": "사각형의 성질 > 여러 가지 사각형 > 사다리꼴 > 등변사다리꼴",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-199",
+          "path": "사각형의 성질 > 여러 가지 사각형 > 사다리꼴 > 중점 연결",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-200",
+          "path": "사각형의 성질 > 여러 가지 사각형 > 사각형의 포함 관계 > 조건으로 사각형 판정",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-201",
+          "path": "사각형의 성질 > 여러 가지 사각형 > 사각형의 포함 관계 > 성질 비교",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "label": "사각형의 성질과 판정",
+          "templates": [
+            {
+              "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+              "label": "평행사변형의 판정"
+            },
+            {
+              "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+              "label": "평행사변형의 성질"
+            },
+            {
+              "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+              "label": "특수한 사각형의 성질"
+            },
+            {
+              "templateKey": "TPL_QUADRILATERAL_PROPERTIES_PROOF",
+              "label": "대변 증명"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "label": "원과 직선",
+          "templates": [
+            {
+              "templateKey": "TM_CIRCLE_LINE_POSITION",
+              "label": "원과 직선의 위치 관계"
+            },
+            {
+              "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+              "label": "현의 길이"
+            },
+            {
+              "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+              "label": "현의 수직이등분선"
+            },
+            {
+              "templateKey": "TM_CIRCLE_CHORD_DIVISION",
+              "label": "현의 내분점"
+            },
+            {
+              "templateKey": "TM_CIRCLE_POINT_LINE_DISTANCE",
+              "label": "원 위의 점과 직선 사이의 거리"
+            },
+            {
+              "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+              "label": "교점의 개수"
+            },
+            {
+              "templateKey": "TM_CIRCLE_INTERSECTION_RELATION",
+              "label": "원과 직선의 두 교점"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD",
+              "label": "등거리 현"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_COORD_CENTROID",
+          "label": "삼각형의 무게중심",
+          "templates": [
+            {
+              "templateKey": "TPL_CENTROID_DIRECT",
+              "label": "세 꼭짓점으로 무게중심 구하기"
+            },
+            {
+              "templateKey": "TPL_CENTROID_REVERSE",
+              "label": "무게중심으로 꼭짓점 구하기"
+            },
+            {
+              "templateKey": "TPL_CENTROID_APPLICATION",
+              "label": "무게중심의 활용"
+            },
+            {
+              "templateKey": "TPL_CENTROID_DISTANCE_RELATION",
+              "label": "무게중심과 거리의 관계"
+            },
+            {
+              "templateKey": "TPL_CENTROID_NESTED_MEDIAN_AREA_PARTITION",
+              "label": "중첩 무게중심의 중선과 높이비에 의한 넓이 분할"
+            },
+            {
+              "templateKey": "TPL_COORD_CENTROID_MEDIAN",
+              "label": "중선 분할"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+          "label": "이등변삼각형의 성질",
+          "templates": [
+            {
+              "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+              "label": "이등변삼각형의 밑각"
+            },
+            {
+              "templateKey": "TPL_ISOSCELES_CONVERSE",
+              "label": "이등변삼각형의 판정"
+            },
+            {
+              "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
+              "label": "이등변삼각형의 꼭지각 이등분선"
+            },
+            {
+              "templateKey": "TPL_ISOSCELES_PROPERTY_STATEMENT_JUDGMENT",
+              "label": "이등변삼각형 성질의 적용 대상 진술 판정"
+            },
+            {
+              "templateKey": "TPL_ISOSCELES_TRIANGLE_CLAIMS",
+              "label": "이등변삼각형 성질 판정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+          "label": "직각삼각형의 합동",
+          "templates": [
+            {
+              "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+              "label": "빗변과 한 예각이 같은 직각삼각형의 합동"
+            },
+            {
+              "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+              "label": "빗변과 한 변이 같은 직각삼각형의 합동"
+            },
+            {
+              "templateKey": "TPL_RIGHT_TRIANGLE_CONGRUENCE_CRITERIA",
+              "label": "합동 조건 판별"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+          "label": "삼각형의 각의 이등분선",
+          "templates": [
+            {
+              "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_EQUIDISTANCE",
+              "label": "각의 이등분선 위 점의 거리"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO",
+              "label": "삼각형의 각의 이등분선 정리"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_TRIANGLE_CENTERS",
+          "label": "삼각형의 외심·내심",
+          "templates": [
+            {
+              "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+              "label": "외심과 내심의 관계"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+              "label": "삼각형 중심의 성질"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+              "label": "삼각형의 외심"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_INCENTER",
+              "label": "삼각형의 내심"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_CENTERS_INCIRCLE",
+              "label": "내접원"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION",
+          "label": "평행선 조건으로 넓이가 같은 삼각형 찾기",
+          "templates": [
+            {
+              "templateKey": "TPL_MG_FIND_PARALLEL_CONDITION_FOR_EQUAL_AREA_QUADRILATERAL",
+              "label": "공통 밑변 삼각형의 등적변형 조건 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+          "label": "평행사변형의 각 이등분선이 만드는 선분 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
+              "label": "각 이등분선과 이등변삼각형을 이용한 선분 계산 절차"
+            },
+            {
+              "templateKey": "TPL_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT_BISECTOR",
+              "label": "각이등분선 길이"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE",
+          "label": "평행사변형 내각 이등분선이 만드는 사각형의 성질 판정",
+          "templates": [
+            {
+              "templateKey": "TPL_MG_EVALUATE_RECTANGLE_FORMED_BY_PARALLELOGRAM_BISECTORS",
+              "label": "이등분선 교각으로 직사각형 성질 검증 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+          "label": "평행사변형이 되지 않는 조건 판별",
+          "templates": [
+            {
+              "templateKey": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
+              "label": "평행사변형 판정 조건의 반례 검토 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC",
+          "label": "평행사변형이 되는 다섯 조건의 기호 표현",
+          "templates": [
+            {
+              "templateKey": "TPL_MG_WRITE_FIVE_PARALLELOGRAM_CONDITIONS_IN_SYMBOLS_DESCRIPTIVE",
+              "label": "평행사변형 판정 조건 기호화 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
+          "label": "평행사변형 내부 점과 반대 삼각형 넓이",
+          "templates": [
+            {
+              "templateKey": "TPL_MG_CALCULATE_OPPOSITE_TRIANGLE_AREA_FROM_INTERNAL_POINT",
+              "label": "내부 점 삼각형 넓이 합 반분 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MG_PARALLELOGRAM_SIDES_RATIO_PERIMETER",
+          "label": "평행사변형 둘레와 변의 비로 한 변 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_MG_CALCULATE_PARALLELOGRAM_SIDE_FROM_RATIO_AND_PERIMETER",
+              "label": "둘레 절반을 비례배분하는 변 계산 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MG_PARALLELOGRAM_TO_RECTANGLE_CONDITIONS",
+          "label": "평행사변형이 직사각형이 되는 조건 선별",
+          "templates": [
+            {
+              "templateKey": "TPL_MG_SELECT_NON_RECTANGLE_CONDITIONS_FOR_PARALLELOGRAM",
+              "label": "직사각형 조건과 마름모 조건 구별 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MG_PARALLELOGRAM_TO_SQUARE_CLASSIFICATION",
+          "label": "평행사변형에서 정사각형 판별",
+          "templates": [
+            {
+              "templateKey": "TPL_MG_CLASSIFY_SQUARE_FROM_PARALLELOGRAM_ANGLE_EQUALITIES",
+              "label": "마름모와 직사각형 조건을 결합한 정사각형 판별 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+          "label": "사각형 계통도에서 단계별 추가 조건 완성",
+          "templates": [
+            {
+              "templateKey": "TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE",
+              "label": "사각형 포함 관계 계통도 조건 완성 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MG_QUADRILATERALS_DIAGONAL_EQUAL_LENGTH",
+          "label": "대각선의 길이가 같은 사각형 개수 세기",
+          "templates": [
+            {
+              "templateKey": "TPL_MG_COUNT_QUADRILATERALS_WITH_EQUAL_DIAGONALS",
+              "label": "사각형별 대각선 성질 분류 후 개수 합산 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MG_RHOMBUS_DIAGONAL_AND_ANGLES",
+          "label": "마름모 대각선과 두 각의 합 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_MG_CALCULATE_SUM_OF_ANGLES_IN_RHOMBUS",
+              "label": "마름모 대각선의 수직 성질로 각 합 계산 절차"
+            },
+            {
+              "templateKey": "TPL_MG_RHOMBUS_DIAGONAL_AND_ANGLES_DIAGONAL_ANGLE",
+              "label": "마름모 대각선과 각"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MG_TRAPEZOID_TRIANGLES_AREA_RATIO",
+          "label": "사다리꼴 대각선 비로 삼각형 넓이 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_MG_CALCULATE_SIDE_TRIANGLE_AREA_IN_TRAPEZOID",
+              "label": "사다리꼴 평행선 비와 삼각형 넓이비 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_PARALLELOGRAM_OPPOSITE_SIDES_PROOF",
+          "label": "평행사변형의 대변 성질 증명",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_PARALLELOGRAM_OPPOSITE_SIDES_DIAGONAL_ASA",
+              "label": "두 평행쌍과 공통 대각선의 ASA 합동 증명"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_CENTROID",
+          "label": "삼각형의 무게중심",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_FIGURE_AREA",
+          "label": "도형의 넓이",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_TRIANGLE_ANGLE",
+          "label": "삼각형의 각",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_TRIANGLE_CONGRUENCE",
+          "label": "삼각형의 합동",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
+          "label": "일차함수",
+          "templates": []
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "M2-06",
+      "label": "도형의 닮음",
+      "order": 6,
+      "subUnits": [
+        {
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+          "label": "평행선 사이의 선분의 길이의 비"
+        },
+        {
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "label": "도형의 닮음"
+        },
+        {
+          "subUnitKey": "M2-06-PARALLEL_SEGMENT_RATIO",
+          "label": "평행선 사이의 선분의 길이의 비"
+        },
+        {
+          "subUnitKey": "M2-06-SIMILAR_FIGURES",
+          "label": "닮은 도형의 성질과 겉넓이·부피의 비"
+        },
+        {
+          "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+          "label": "삼각형의 닮음 조건과 대응변의 길이"
+        },
+        {
+          "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+          "label": "삼각형의 무게중심의 성질"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M2-RPM-202",
+          "path": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 닮은 도형 > 닮음비",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-203",
+          "path": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 닮은 도형 > 대응변·대응각",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-204",
+          "path": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 삼각형의 닮음 > AA",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-205",
+          "path": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 삼각형의 닮음 > SAS",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-206",
+          "path": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 삼각형의 닮음 > SSS",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-207",
+          "path": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 닮음의 활용 > 길이",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-208",
+          "path": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 닮음의 활용 > 넓이·부피 비",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-209",
+          "path": "도형의 닮음과 피타고라스 정리 > 평행선 사이의 선분의 길이의 비 > 삼각형과 평행선 > 기본 비례",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-210",
+          "path": "도형의 닮음과 피타고라스 정리 > 평행선 사이의 선분의 길이의 비 > 삼각형과 평행선 > 평행선 판정",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-211",
+          "path": "도형의 닮음과 피타고라스 정리 > 평행선 사이의 선분의 길이의 비 > 평행선 사이 선분비 > 여러 평행선",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-212",
+          "path": "도형의 닮음과 피타고라스 정리 > 평행선 사이의 선분의 길이의 비 > 평행선 사이 선분비 > 사다리꼴",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-213",
+          "path": "도형의 닮음과 피타고라스 정리 > 평행선 사이의 선분의 길이의 비 > 비례 활용 > 미지 길이",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-214",
+          "path": "도형의 닮음과 피타고라스 정리 > 평행선 사이의 선분의 길이의 비 > 비례 활용 > 선분비를 이용한 복합도형",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-215",
+          "path": "도형의 닮음과 피타고라스 정리 > 삼각형의 무게중심 > 중선과 무게중심 > 2:1 비",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-216",
+          "path": "도형의 닮음과 피타고라스 정리 > 삼각형의 무게중심 > 중선과 무게중심 > 좌표·길이",
+          "subUnitKey": "",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-217",
+          "path": "도형의 닮음과 피타고라스 정리 > 삼각형의 무게중심 > 넓이와 무게중심 > 넓이 분할",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-218",
+          "path": "도형의 닮음과 피타고라스 정리 > 삼각형의 무게중심 > 넓이와 무게중심 > 무게중심을 이용한 복합도형",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_COORD_CENTROID",
+          "label": "삼각형의 무게중심",
+          "templates": [
+            {
+              "templateKey": "TPL_CENTROID_DIRECT",
+              "label": "세 꼭짓점으로 무게중심 구하기"
+            },
+            {
+              "templateKey": "TPL_CENTROID_REVERSE",
+              "label": "무게중심으로 꼭짓점 구하기"
+            },
+            {
+              "templateKey": "TPL_CENTROID_APPLICATION",
+              "label": "무게중심의 활용"
+            },
+            {
+              "templateKey": "TPL_CENTROID_DISTANCE_RELATION",
+              "label": "무게중심과 거리의 관계"
+            },
+            {
+              "templateKey": "TPL_CENTROID_NESTED_MEDIAN_AREA_PARTITION",
+              "label": "중첩 무게중심의 중선과 높이비에 의한 넓이 분할"
+            },
+            {
+              "templateKey": "TPL_COORD_CENTROID_MEDIAN",
+              "label": "중선 분할"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+          "label": "평행선과 선분의 길이의 비",
+          "templates": [
+            {
+              "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+              "label": "일반 도형의 평행선과 선분의 비"
+            },
+            {
+              "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+              "label": "삼각형에서 평행선과 선분의 비"
+            },
+            {
+              "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_MIDPOINT",
+              "label": "중점연결 삼각형 성질"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+          "label": "삼각형의 각의 이등분선",
+          "templates": [
+            {
+              "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_EQUIDISTANCE",
+              "label": "각의 이등분선 위 점의 거리"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO",
+              "label": "삼각형의 각의 이등분선 정리"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_SIMILAR_FIGURES",
+          "label": "닮은 도형",
+          "templates": [
+            {
+              "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+              "label": "닮은 도형의 넓이·부피비"
+            },
+            {
+              "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+              "label": "도형의 닮음비"
+            },
+            {
+              "templateKey": "TPL_SIMILAR_FIGURES_CORRESPONDENCE_STATEMENT_JUDGMENT",
+              "label": "닮은 도형의 대응변·대응각 진술 판정"
+            },
+            {
+              "templateKey": "TPL_SIMILAR_FIGURES_EXISTENCE",
+              "label": "닮음 판별"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+          "label": "삼각형의 닮음",
+          "templates": [
+            {
+              "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+              "label": "삼각형 닮음의 활용"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+              "label": "삼각형의 닮음 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_TRIANGLE_CENTERS",
+          "label": "삼각형의 외심·내심",
+          "templates": [
+            {
+              "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+              "label": "외심과 내심의 관계"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+              "label": "삼각형 중심의 성질"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+              "label": "삼각형의 외심"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_INCENTER",
+              "label": "삼각형의 내심"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_CENTERS_INCIRCLE",
+              "label": "내접원"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "label": "사각형의 성질과 판정",
+          "templates": [
+            {
+              "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+              "label": "평행사변형의 판정"
+            },
+            {
+              "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+              "label": "평행사변형의 성질"
+            },
+            {
+              "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+              "label": "특수한 사각형의 성질"
+            },
+            {
+              "templateKey": "TPL_QUADRILATERAL_PROPERTIES_PROOF",
+              "label": "대변 증명"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_CENTROID",
+          "label": "삼각형의 무게중심",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_FIGURE_AREA",
+          "label": "도형의 넓이",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH",
+          "label": "일차방정식의 그래프",
+          "templates": []
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "M2-07",
+      "label": "피타고라스 정리",
+      "order": 7,
+      "subUnits": [
+        {
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+          "label": "피타고라스 정리의 활용"
+        },
+        {
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "label": "피타고라스 정리"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M2-RPM-219",
+          "path": "도형의 닮음과 피타고라스 정리 > 피타고라스 정리 > 피타고라스 정리 > 직각삼각형의 변 길이",
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-220",
+          "path": "도형의 닮음과 피타고라스 정리 > 피타고라스 정리 > 피타고라스 정리 > 피타고라스 수",
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-221",
+          "path": "도형의 닮음과 피타고라스 정리 > 피타고라스 정리 > 피타고라스 정리의 역 > 직각삼각형 판정",
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-222",
+          "path": "도형의 닮음과 피타고라스 정리 > 피타고라스 정리 > 피타고라스 정리의 역 > 삼각형의 각 판정",
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-223",
+          "path": "도형의 닮음과 피타고라스 정리 > 피타고라스 정리 > 도형에의 활용 > 평면도형 길이",
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-224",
+          "path": "도형의 닮음과 피타고라스 정리 > 피타고라스 정리 > 도형에의 활용 > 입체도형 거리",
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+          "label": "피타고라스 정리·역 및 도형 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+              "label": "피타고라스 정리로 변 길이"
+            },
+            {
+              "templateKey": "TPL_M2_PYTHAGOREAN_CONVERSE",
+              "label": "피타고라스 정리의 역으로 직각 판정"
+            },
+            {
+              "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+              "label": "피타고라스 넓이 관계의 활용"
+            },
+            {
+              "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+              "label": "접기·입체도형과 피타고라스"
+            },
+            {
+              "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_ANGLE_TYPE",
+              "label": "삼각형 판별"
+            },
+            {
+              "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_AREA_LENGTH",
+              "label": "넓이와 높이"
+            },
+            {
+              "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_ELIMINATION",
+              "label": "제곱식 소거"
+            },
+            {
+              "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_PROOF",
+              "label": "넓이 증명"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_TRIANGLE_CONGRUENCE",
+          "label": "삼각형의 합동",
+          "templates": []
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "M2-08",
+      "label": "확률",
+      "order": 8,
+      "subUnits": [
+        {
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "label": "확률의 뜻과 성질"
+        },
+        {
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "label": "경우의 수와 확률"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M2-RPM-225",
+          "path": "확률 > 경우의 수 > 합의 법칙과 곱의 법칙 > 단계별 선택",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-226",
+          "path": "확률 > 경우의 수 > 합의 법칙과 곱의 법칙 > 중복 없이 세기",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-227",
+          "path": "확률 > 경우의 수 > 배열과 선택 > 순서가 있는 경우",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-228",
+          "path": "확률 > 경우의 수 > 배열과 선택 > 순서가 없는 경우",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-229",
+          "path": "확률 > 경우의 수 > 도형·경로 > 최단경로",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-230",
+          "path": "확률 > 경우의 수 > 도형·경로 > 도형의 개수",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-231",
+          "path": "확률 > 확률 > 확률의 뜻 > 동등가능한 경우",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-232",
+          "path": "확률 > 확률 > 확률의 뜻 > 확률 계산",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-233",
+          "path": "확률 > 확률 > 확률의 성질 > 여사건",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-234",
+          "path": "확률 > 확률 > 확률의 성질 > 사건의 합",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-235",
+          "path": "확률 > 확률 > 확률의 활용 > 경우를 나누어 구하는 확률",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-236",
+          "path": "확률 > 확률 > 확률의 활용 > 연속 시행",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+          "label": "합의 법칙으로 경우의 수 나누어 세기",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_BASIC_COUNTING_ADD_CASES",
+              "label": "서로 배타적인 경우를 나누어 합산"
+            },
+            {
+              "templateKey": "TPL_M2_BASIC_COUNTING_CASE_SPLIT_SUM_PRODUCT",
+              "label": "합과 곱의 법칙 결합"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+          "label": "순열",
+          "templates": [
+            {
+              "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+              "label": "일반 순열·조건 배열"
+            },
+            {
+              "templateKey": "TPL_CIRCULAR_PERMUTATION",
+              "label": "원순열"
+            },
+            {
+              "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+              "label": "같은 것이 있는 순열"
+            },
+            {
+              "templateKey": "TPL_COUNTING_ARRANGEMENT_PATH",
+              "label": "격자 경로"
+            },
+            {
+              "templateKey": "TPL_COUNTING_ARRANGEMENT_ROTATION",
+              "label": "회전 중복"
+            },
+            {
+              "templateKey": "TPL_H1_ARRANGEMENT_LEXICOGRAPHIC_RANK",
+              "label": "사전식 순열 순위·역순위"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+          "label": "확률의 기본 성질과 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+              "label": "확률의 뜻·기본 계산"
+            },
+            {
+              "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+              "label": "사건의 관계·덧셈정리·여사건"
+            },
+            {
+              "templateKey": "TPL_PROBABILITY_PROPERTIES_APPLICATION_DEFINITION",
+              "label": "확률 정의"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+          "label": "독립시행의 확률",
+          "templates": [
+            {
+              "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+              "label": "독립시행의 확률"
+            },
+            {
+              "templateKey": "TPL_INDEPENDENT_TRIAL_STATE_PARITY",
+              "label": "독립시행의 출현 횟수 홀짝 상태 분석"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_COUNTING",
+          "label": "경우의 수",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_LOGICAL_CONSTRAINT",
+          "label": "조건 추론",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_PROBABILITY",
+          "label": "확률",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_CENTROID",
+          "label": "삼각형의 무게중심",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M2_FIGURE_AREA",
+          "label": "도형의 넓이",
+          "templates": []
+        }
+      ]
+    }
+  ],
+  "termCandidates": [
+    {
+      "term": "외심",
+      "matchedAs": "외심",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "e ABC$의 외심일 때, $\\a"
+    },
+    {
+      "term": "꼭짓점",
+      "matchedAs": "꼭짓점",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "$O$에서 두 꼭짓점 $B, C$를"
+    },
+    {
+      "term": "삼각형",
+      "matchedAs": "삼각형",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "삼각형의 외심 $O$"
+    },
+    {
+      "term": "이등변삼각형",
+      "matchedAs": "꼭지각",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "C$의 크기는 꼭지각 $\\angle"
+    },
+    {
+      "term": "중심각",
+      "matchedAs": "중심각",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "C$를 잇는 중심각 $\\angle"
+    },
+    {
+      "term": "외심",
+      "matchedAs": "외심",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "삼각형의 외심 $O$에서 두"
+    },
+    {
+      "term": "조건",
+      "matchedAs": "조건",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "$$ 주어진 조건에서 $\\ang"
+    },
+    {
+      "term": "중심",
+      "matchedAs": "중심",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "C$를 잇는 중심각 $\\angl"
+    }
+  ],
+  "figure": {
+    "cueWords": [],
+    "hasPlan": false,
+    "problemPlanRef": null,
+    "hasImage": false,
+    "sourcePlan": {
+      "exempt": "STRICT_VARIANT"
+    },
+    "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
+  },
+  "sourceExamHint": {
+    "exam": "archive/exams/original/middle/m2/2mid/26_신흥중_2학기_중간_중2_기출.js",
+    "sourceQid": 18,
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "templateKey": "TPL_TRIANGLE_CIRCUMCENTER"
+  },
+  "guide": "JUDGMENT_GUIDE.md 를 먼저 읽는다. 후보 밖 키는 쓸 수 없다. 모든 이유 문장에는 이 문항의 숫자·식을 넣는다."
+}

@@ -1,0 +1,58 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "0574464d015bd094",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "aligned 모델 검토에 따라 공간에서 직선과 평면의 위치 관계를 점검한다.",
+    "① m perp P, l perp m 이면 l은 P에 평행할 수 있다 (거짓).",
+    "② m // P, l perp m 이면 l은 P에 평행할 수 있다 (거짓).",
+    "③ m // P, l // m 이면 l은 P에 평행하다 (거짓).",
+    "④ P perp Q, l // Q 이면 l은 P와 평행할 수 있다 (거짓).",
+    "⑤ 평행한 두 평면 중 한 평면에 수직인 직선 l은 다른 평면과도 항상 수직이다 (참)."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "공간에서 서로 다른 두 직선",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-POSITION_RELATION",
+  "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+  "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_LINE_PLANE_NORMAL_TRANSFER",
+  "newKeyProposal": null,
+  "typeReason": "aligned 수직 전달 원리에 따라 공간에서 직선과 평면의 위치 관계를 판별하는 유형이다.",
+  "rpmRecordId": "M1-RPM-181",
+  "rpmReason": "aligned 직육면체 모델을 이용하여 직선과 평면의 수직 전달 성질을 검증한다.",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "aligned 공간에서 직선과 평면의 다양한 위치 관계의 반례를 점검해야 한다.",
+  "how": "aligned 검토를 통해 한 평면에 수직인 직선은 평행한 다른 평면에도 수직임을 확인하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "공간에서 서로 다른 두 직선 $l, m$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "조건",
+        "src": "stem",
+        "quote": "참이 되도록 하는 조건 ㉠으로 올바른 것은? [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "평면",
+        "src": "solution",
+        "quote": "공간에서 직선과 평면의 위치 관계의 참·거짓은",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

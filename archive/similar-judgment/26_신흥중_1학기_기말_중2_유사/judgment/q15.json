@@ -1,0 +1,64 @@
+{
+  "qid": 15,
+  "itemFingerprint": "d1f126cded58e458",
+  "solveSteps": [
+    "높이가 x km 일 때 기온을 y 도라 하면 y = 20 - 6x 이다.",
+    "높이 1.8 km 인 산 정상의 기온은 x = 1.8 을 대입하여 구한다.",
+    "y = 20 - 6 * 1.8 = 20 - 10.8 = 9.2 이다.",
+    "따라서 산 정상의 기온은 9.2 도이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "높이가 $1\\tex",
+  "rpmRecordId": "M2-RPM-177",
+  "rpmReason": "지면 기온 20 과 1 km 당 기온 하강 규칙으로 일차함수 y = 20 - 6x 를 세워 9.2 도를 구하는 단계이다.",
+  "problemTypeKey": "PT_M2_FUNCTION",
+  "templateKey": "NONE",
+  "typeReason": "높이에 따른 기온 변화 관계식을 세우고 1.8 km 에서의 기온 9.2 도를 구하는 일차함수 활용 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "20 - 6x 식을 세우고 1.8 을 대입해 20 - 10.8 = 9.2 를 계산하는 전형적인 난이도 2 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "높이",
+        "src": "stem",
+        "quote": "km}$까지는 높이가 $1\\tex"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일정",
+        "src": "stem",
+        "quote": "xt{C}$씩 일정하게 낮아진다고"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "= 1.8$을 대입하면 $y =",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "y = 20 - 6x 에 1.8 km 를 대입하여 20 - 10.8 = 9.2 도임을 확인하고 ②로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

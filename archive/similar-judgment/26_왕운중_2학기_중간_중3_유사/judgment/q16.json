@@ -1,0 +1,68 @@
+{
+  "qid": 16,
+  "itemFingerprint": "ae9428470ccc82cf",
+  "solveSteps": [
+    "원의 중심 O에서 현에 내린 수선은 현을 이등분하므로 반현의 길이는 16/2 = 8 cm 이다.",
+    "반지름이 10 cm 이므로 피타고라스 정리에 의해 x = sqrt(10^2 - 8^2) = sqrt(36) = 6 이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 두 현의 길이가 모두 $16\\text{ cm}$이고 원의 반지름의 길이가 $10\\text{ cm}$일 때",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "unitEvidence": "에서 현까지의 거리 $x$의 값을",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmReason": "반지름 10과 현의 길이 16에서 중심에서 현에 내린 수선과 반현의 직각삼각형 36, 64를 적용한다.",
+  "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+  "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+  "typeReason": "원의 중심에서 현에 내린 수선과 반지름 10을 이용해 현까지의 거리 6을 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "반지름 10과 현 16에서 반현 8을 이용해 피타고라스 정리로 바로 x=6을 구하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "반지름",
+        "quote": "}$이고 원의 반지름의 길이가 $1",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "거리",
+        "quote": "에서 현까지의 거리 $x$의 값을",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "중심",
+        "quote": "일 때, 원의 중심에서 현까지의",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "길이",
+        "quote": "에서 두 현의 길이가 모두 $16",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "현의 길이 16의 절반 8과 반지름 10으로부터 피타고라스 정리 sqrt(100-64)=6을 도출했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "qid": 16,
+  "itemFingerprint": "006fd1c4ea08746b",
+  "solveSteps": [
+    "x와 y의 비가 3 : 2 이므로 x = 3k, y = 2k (k != 0)로 놓는다.",
+    "4x - 3y = 18 에 대입하면 12k - 6k = 18 에서 6k = 18 이므로 k = 3 이다.",
+    "따라서 x = 9, y = 6 이다.",
+    "x = 9, y = 6 을 둘째 식 x + 2y = a 에 대입하면 a = 9 + 2 * 6 = 21 이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "unitEvidence": "연립방정식 $\\begin",
+  "rpmRecordId": "M2-RPM-151",
+  "rpmReason": "비례 조건 x:y = 3:2 와 4x - 3y = 18 에서 x, y를 구한 뒤 a = 21 을 결정하는 단계이다.",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "typeReason": "두 미지수의 비가 주어진 연립방정식에서 미지수 값을 구하고 계수 a = 21 을 결정하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "x = 3k, y = 2k 대입으로 18 로부터 k = 3 을 구해 a = 21 을 얻는 난이도 2 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin"
+      }
+    ],
+    "goal": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "= 18$에 대입하면 $12k",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "비례식에서 x = 9, y = 6 을 18 로부터 구한 뒤 a = 9 + 12 = 21 로 ①을 선택했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

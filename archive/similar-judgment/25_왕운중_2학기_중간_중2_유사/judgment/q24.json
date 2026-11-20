@@ -1,0 +1,57 @@
+{
+  "qid": "q24",
+  "itemFingerprint": "91128a2fc2288e0e",
+  "solvedAnswer": "$12\\text{ cm}$",
+  "solveSteps": [
+    "직각삼각형 BDM과 CEM에서 각 BDM = 각 CEM = 90도이다.",
+    "M은 BC의 중점이므로 BM = CM (빗변 상등)이다.",
+    "MD = ME 이므로 RHS 합동이다.",
+    "따라서 BD = CE = 4.7 cm 이다.",
+    "AB = AD + BD = 7.3 + 4.7 = 12 cm 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\triangle ABC$",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+  "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+  "newKeyProposal": null,
+  "typeReason": "빗변과 한 변이 같은 RHS 합동을 증명하고 선분 4.7 cm 를 전달하여 길이를 구하는 서술형 유형이다.",
+  "rpmRecordId": "M2-RPM-070",
+  "rpmReason": "중점 조건과 직각, 변 상등을 통해 RHS 합동을 밝히고 4.7 cm 를 더한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "BM=CM, MD=ME로 RHS 합동을 보이고 AD+BD=12cm를 계산하여 서술한다. 4.7",
+  "how": "RHS 합동임을 서술하여 BD=4.7cm를 얻고 AB=7.3+4.7=12cm를 구하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "중점",
+        "src": "stem",
+        "quote": "$\\triangle ABC$에서 변 $BC$의 중점을 $M$이라 하고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합동",
+        "src": "stem",
+        "quote": "$\\triangle BDM$과 $\\triangle CEM$이 합동임을 보이고"
+      }
+    ],
+    "method": [
+      {
+        "term": "수선",
+        "src": "solution",
+        "quote": "직각삼각형 $BDM$과 직각삼각형 $CEM$에서",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

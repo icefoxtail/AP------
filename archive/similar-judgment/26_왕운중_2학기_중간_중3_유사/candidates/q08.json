@@ -1,0 +1,2590 @@
+{
+  "qid": 8,
+  "questionType": "객관식",
+  "course": [
+    "MIDDLE3"
+  ],
+  "curriculum": "2015",
+  "problem": {
+    "content": "반지름의 길이가 $1$인 사분원을 좌표평면 위에 나타낼 때, $\\angle\\text{AOB} = a^\\circ$, $\\angle\\text{OBC} = b^\\circ$에 대하여 다음 중에서 점 $\\text{B}$의 좌표를 나타내는 것은? (4점)",
+    "choices": [
+      "$(\\sin a^\\circ, \\cos b^\\circ)$",
+      "$(\\sin b^\\circ, \\cos b^\\circ)$",
+      "$(\\cos a^\\circ, \\tan a^\\circ)$",
+      "$(\\cos b^\\circ, \\sin b^\\circ)$",
+      "$(\\sin b^\\circ, \\cos a^\\circ)$"
+    ],
+    "points": 4
+  },
+  "reference": {
+    "answer": "②",
+    "solution": "점 $\\text{B}$에서 $x$축에 내린 수선의 발을 $\\text{C}$라 하면 $\\overline{\\text{OB}} = 1$이므로 $\\text{B}(\\cos a^\\circ, \\sin a^\\circ)$이다. 직각삼각형 $\\text{OBC}$에서 $a + b = 90^\\circ$이므로 $\\cos a^\\circ = \\sin b^\\circ$, $\\sin a^\\circ = \\cos b^\\circ$이다. 따라서 $\\text{B}(\\sin b^\\circ, \\cos b^\\circ)$이다. 정답은 ②이다.",
+    "sourcePrimaryMethod": "$\\text{B}(\\cos a^\\circ, \\sin a^\\circ)$를 여각 $a+b=90^\\circ$를 이용해 $(\\sin b^\\circ, \\cos b^\\circ)$로 바꾼다.",
+    "sourceDecisiveStep": "$\\cos a^\\circ = \\sin(90^\\circ - a^\\circ) = \\sin b^\\circ$로 좌표를 변환하는 단계"
+  },
+  "source": {
+    "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
+    "standardUnitKey": "M3-05",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "rpmPath": {
+      "majorUnit": "삼각비",
+      "midUnit": "삼각비",
+      "l3": "삼각비의 뜻",
+      "l4": "sin·cos·tan"
+    },
+    "problemTypeKey": null,
+    "templateKey": null,
+    "difficultyBucket": 2,
+    "newKeyProposal": null,
+    "item4slot": {
+      "given": [
+        {
+          "term": "사분원",
+          "src": "stem",
+          "quote": "반지름의 길이가 $1$인 사분원"
+        }
+      ],
+      "condition": [],
+      "goal": [
+        {
+          "term": "좌표",
+          "src": "stem",
+          "quote": "점 $\\text{B}$의 좌표"
+        }
+      ],
+      "method": [
+        {
+          "term": "직각삼각형",
+          "src": "solution",
+          "quote": "직각삼각형 $\\text{OBC}$"
+        }
+      ],
+      "reasons": {
+        "method": "$\\triangle OBC$에서 $\\text{B}$의 좌표를 구한 뒤 $a+b=90^\\circ$를 이용해 $b^\\circ$로 나타낸다."
+      }
+    },
+    "boundary": "NONE"
+  },
+  "units": [
+    {
+      "standardUnitKey": "M3-01",
+      "label": "실수와 그 계산",
+      "order": 1,
+      "subUnits": [
+        {
+          "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+          "label": "근호를 포함한 식의 계산"
+        },
+        {
+          "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+          "label": "제곱근과 실수"
+        },
+        {
+          "subUnitKey": "M3-01-SQUARE_ROOT",
+          "label": "제곱근과 그 활용"
+        },
+        {
+          "subUnitKey": "M3-01-RADICAL_OPERATION",
+          "label": "근호를 포함한 식의 계산"
+        },
+        {
+          "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
+          "label": "실수와 무리수의 대소 비교"
+        },
+        {
+          "subUnitKey": "M3-01-REAL_NUMBER",
+          "label": "유리수와 무리수"
+        },
+        {
+          "subUnitKey": "M3-01-REAL_NUMBER_LINE",
+          "label": "수직선 위의 실수 표현"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M3-RPM-001",
+          "path": "실수와 그 연산 > 제곱근과 실수 > 제곱근 > 제곱근의 뜻",
+          "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-002",
+          "path": "실수와 그 연산 > 제곱근과 실수 > 제곱근 > 제곱근의 성질",
+          "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-003",
+          "path": "실수와 그 연산 > 제곱근과 실수 > 무리수와 실수 > 무리수 판별",
+          "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-004",
+          "path": "실수와 그 연산 > 제곱근과 실수 > 무리수와 실수 > 실수의 대소",
+          "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-005",
+          "path": "실수와 그 연산 > 제곱근과 실수 > 수직선과 제곱근 > 무리수의 위치",
+          "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-006",
+          "path": "실수와 그 연산 > 제곱근과 실수 > 수직선과 제곱근 > 근삿값",
+          "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-007",
+          "path": "실수와 그 연산 > 근호를 포함한 식의 계산 > 근호의 곱셈과 나눗셈 > 근호의 곱",
+          "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M3-RPM-008",
+          "path": "실수와 그 연산 > 근호를 포함한 식의 계산 > 근호의 곱셈과 나눗셈 > 근호의 몫",
+          "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M3-RPM-009",
+          "path": "실수와 그 연산 > 근호를 포함한 식의 계산 > 근호의 덧셈과 뺄셈 > 동류근호",
+          "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M3-RPM-010",
+          "path": "실수와 그 연산 > 근호를 포함한 식의 계산 > 근호의 덧셈과 뺄셈 > 분배법칙",
+          "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M3-RPM-011",
+          "path": "실수와 그 연산 > 근호를 포함한 식의 계산 > 분모의 유리화 > 한 항의 유리화",
+          "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M3-RPM-012",
+          "path": "실수와 그 연산 > 근호를 포함한 식의 계산 > 분모의 유리화 > 합·차 꼴의 유리화",
+          "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M3-RPM-013",
+          "path": "실수와 그 연산 > 근호를 포함한 식의 계산 > 혼합 계산 > 곱셈공식 활용",
+          "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-014",
+          "path": "실수와 그 연산 > 근호를 포함한 식의 계산 > 혼합 계산 > 식의 값",
+          "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+          "label": "제곱근의 성질 판별",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
+              "label": "제곱근 명제의 참·거짓 판별"
+            },
+            {
+              "templateKey": "TPL_M3_RADICAL_VARIABLE_SIMPLIFY",
+              "label": "부호 조건을 이용한 근호식 정리"
+            },
+            {
+              "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
+              "label": "근호값이 자연수가 되는 조건"
+            },
+            {
+              "templateKey": "TPL_M3_ROOT_PROPERTY_ABSOLUTE",
+              "label": "절댓값 변환"
+            },
+            {
+              "templateKey": "TPL_M3_ROOT_PROPERTY_DEFINITION",
+              "label": "정의와 성질"
+            },
+            {
+              "templateKey": "TPL_M3_ROOT_PROPERTY_EQUATION",
+              "label": "근호 등식"
+            },
+            {
+              "templateKey": "TPL_M3_ROOT_PROPERTY_ROOT_VALUE",
+              "label": "제곱근 계산"
+            },
+            {
+              "templateKey": "TPL_M3_ROOT_PROPERTY_SQUARE_CONDITION",
+              "label": "완전제곱 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+          "label": "제곱근의 기하 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_SQUARE_AREA_SIDE_RATIO",
+              "label": "넓이에서 변을 구하고 닮음비 적용"
+            },
+            {
+              "templateKey": "TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION",
+              "label": "도형 재배열 및 둘레의 무리수 계산 응용"
+            },
+            {
+              "templateKey": "TPL_M3_SQUARE_ROOT_APPLICATION_LENGTH",
+              "label": "넓이에서 길이"
+            },
+            {
+              "templateKey": "TPL_M3_SQUARE_ROOT_APPLICATION_PERIMETER_EXISTING",
+              "label": "합성 둘레"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+          "label": "근호를 포함한 식의 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_RADICAL_POWER_DIVISION",
+              "label": "제곱근의 제곱과 분수 나눗셈"
+            },
+            {
+              "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+              "label": "근호가 포함된 식의 혼합 계산"
+            },
+            {
+              "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
+              "label": "분모 유리화 후 근호식 비교"
+            },
+            {
+              "templateKey": "TPL_M3_RADICAL_LETTER_REPRESENTATION",
+              "label": "근호식을 문자 곱으로 나타내기"
+            },
+            {
+              "templateKey": "TPL_M3_RADICAL_APPROXIMATION",
+              "label": "근삿값"
+            },
+            {
+              "templateKey": "TPL_M3_RADICAL_GEOMETRY",
+              "label": "길이와 넓이"
+            },
+            {
+              "templateKey": "TPL_M3_RADICAL_RATIONAL_CONDITION",
+              "label": "유리수 조건"
+            },
+            {
+              "templateKey": "TPL_M3_RADICAL_REPRESENTATION",
+              "label": "근호 표현"
+            },
+            {
+              "templateKey": "TPL_M3_RADICAL_TELESCOPING",
+              "label": "연속 합과 곱"
+            },
+            {
+              "templateKey": "TPL_M3_RADICAL_VALUE",
+              "label": "식의 값"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+          "label": "실수의 대소와 범위 판단",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_POWER_ROOT_INEQUALITY_ORDER",
+              "label": "거듭제곱·제곱근·역수의 순서 비교"
+            },
+            {
+              "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
+              "label": "양수 근호의 대소 비교"
+            },
+            {
+              "templateKey": "TPL_M3_INTEGER_DECIMAL_PART_EVALUATION",
+              "label": "정수부분·소수부분으로 식 계산"
+            },
+            {
+              "templateKey": "TPL_M3_REAL_COMPARISON_BETWEEN",
+              "label": "사이의 수"
+            },
+            {
+              "templateKey": "TPL_M3_REAL_COMPARISON_DECIMAL",
+              "label": "반올림과 자릿수"
+            },
+            {
+              "templateKey": "TPL_M3_REAL_COMPARISON_INTEGER_RANGE",
+              "label": "정수 범위"
+            },
+            {
+              "templateKey": "TPL_M3_REAL_COMPARISON_ORDER",
+              "label": "대소 비교"
+            },
+            {
+              "templateKey": "TPL_M3_REAL_COMPARISON_POWER_ORDER",
+              "label": "거듭제곱 순서"
+            },
+            {
+              "templateKey": "TPL_M3_REAL_COMPARISON_STEP_FUNCTION",
+              "label": "구간별 개수"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+          "label": "유리수와 무리수의 판별",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
+              "label": "여러 수의 유리수·무리수 분류"
+            },
+            {
+              "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_CLOSURE",
+              "label": "연산 성질"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+          "label": "수직선 위 실수의 위치 결정",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_NUMBER_LINE_IRRATIONAL_MAPPING",
+              "label": "피타고라스 길이로 수직선 점 찾기"
+            },
+            {
+              "templateKey": "TPL_M3_NUMBER_LINE_SQUARE_ROTATION",
+              "label": "정사각형 변·대각선 길이의 수직선 표현"
+            },
+            {
+              "templateKey": "TPL_M3_REAL_NUMBER_LINE_TRANSFER",
+              "label": "수직선 길이 이동"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+          "label": "다항식의 인수분해와 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+              "label": "공통인수로 인수분해 후 인수 판별"
+            },
+            {
+              "templateKey": "TPL_M3_PERFECT_SQUARE_CONDITION",
+              "label": "완전제곱식의 중간항 계수 결정"
+            },
+            {
+              "templateKey": "TPL_M3_DIFFERENCE_OF_SQUARES_CHAIN",
+              "label": "합차 공식을 연속 적용"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_FACTORIZATION_SUM",
+              "label": "이차식 인수분해 후 일차식 합 계산"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_FORMULA_APPLICATION",
+              "label": "인수분해 공식의 빈칸 비교"
+            },
+            {
+              "templateKey": "TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION",
+              "label": "공통인수 조건으로 미정계수 결정"
+            },
+            {
+              "templateKey": "TPL_M3_SUBSTITUTION_FACTORIZATION",
+              "label": "공통부분 치환 후 완전제곱식 인수분해"
+            },
+            {
+              "templateKey": "TPL_M3_GROUPING_FACTORIZATION",
+              "label": "항 묶기와 공통인수 추출"
+            },
+            {
+              "templateKey": "TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION",
+              "label": "인수분해 공식으로 수의 약수·계산 처리"
+            },
+            {
+              "templateKey": "TPL_M3_COMMON_FACTOR_BY_FACTORIZATION",
+              "label": "각 식을 인수분해해 공통인수 찾기"
+            },
+            {
+              "templateKey": "TPL_M3_FIND_OTHER_FACTOR_BY_FACTORIZATION",
+              "label": "인수분해해 나머지 인수 구하기"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_COEFFICIENT",
+              "label": "계수 결정"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_FACTOR_FORM",
+              "label": "곱으로 변환"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_FACTOR_IDENTIFY",
+              "label": "인수 판별"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_GEOMETRY",
+              "label": "길이와 넓이"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_IDENTITY_CHECK",
+              "label": "등식 판별"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_INTEGER_CONSTRAINT",
+              "label": "정수 인수쌍"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_NUMERIC",
+              "label": "수치 계산"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_SQUARE_CONDITION",
+              "label": "완전제곱 조건"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_SUBSTITUTION",
+              "label": "치환 인수분해"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_TELESCOPING",
+              "label": "연속 곱"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_VALUE",
+              "label": "식의 값"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+          "label": "다항식의 곱셈과 곱셈공식",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT",
+              "label": "다항식 전개식에서 특정 항의 계수 구하기"
+            },
+            {
+              "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT",
+              "label": "곱셈공식 계산의 수치적 참·거짓 판별"
+            },
+            {
+              "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING",
+              "label": "도형의 넓이를 이용한 곱셈공식의 기하적 모델링"
+            },
+            {
+              "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT_DETERMINATION",
+              "label": "전개식 계수 조건에서 미정계수 결정"
+            },
+            {
+              "templateKey": "TPL_M3_MULTIPLICATION_CHAIN",
+              "label": "연속 곱"
+            },
+            {
+              "templateKey": "TPL_M3_MULTIPLICATION_COEFFICIENT",
+              "label": "계수 관계"
+            },
+            {
+              "templateKey": "TPL_M3_MULTIPLICATION_EXPANSION",
+              "label": "전개"
+            },
+            {
+              "templateKey": "TPL_M3_MULTIPLICATION_NUMERIC",
+              "label": "수치 계산"
+            },
+            {
+              "templateKey": "TPL_M3_MULTIPLICATION_SUM_PRODUCT",
+              "label": "합과 곱"
+            },
+            {
+              "templateKey": "TPL_M3_MULTIPLICATION_VALUE",
+              "label": "식의 값"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_INTEGER_POINTS",
+          "label": "격자점",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M3_IRRATIONAL",
+          "label": "무리수",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M3_REAL_NUMBERS",
+          "label": "실수",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M3_SQUARE_ROOT_TABLE",
+          "label": "제곱근표",
+          "templates": []
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "M3-02",
+      "label": "다항식의 곱셈과 인수분해",
+      "order": 2,
+      "subUnits": [
+        {
+          "subUnitKey": "M3-02-FACTORIZATION",
+          "label": "인수분해"
+        },
+        {
+          "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+          "label": "다항식의 곱셈"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M3-RPM-015",
+          "path": "다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈공식 > 합·차의 제곱",
+          "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-016",
+          "path": "다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈공식 > 합과 차의 곱",
+          "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-017",
+          "path": "다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈공식 > 두 일차식의 곱",
+          "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-018",
+          "path": "다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈공식의 활용 > 곱셈공식을 이용한 수의 계산",
+          "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-019",
+          "path": "다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈공식의 활용 > 곱셈공식을 이용한 식의 값",
+          "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-020",
+          "path": "다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈공식의 활용 > 도형 활용",
+          "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-021",
+          "path": "다항식의 곱셈과 인수분해 > 인수분해 > 공통인수 > 공통인수 묶기",
+          "subUnitKey": "M3-02-FACTORIZATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-022",
+          "path": "다항식의 곱셈과 인수분해 > 인수분해 > 공통인수 > 단계적 인수분해",
+          "subUnitKey": "M3-02-FACTORIZATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-023",
+          "path": "다항식의 곱셈과 인수분해 > 인수분해 > 인수분해 공식 > 제곱식",
+          "subUnitKey": "M3-02-FACTORIZATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-024",
+          "path": "다항식의 곱셈과 인수분해 > 인수분해 > 인수분해 공식 > 합과 차",
+          "subUnitKey": "M3-02-FACTORIZATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-025",
+          "path": "다항식의 곱셈과 인수분해 > 인수분해 > 인수분해 공식 > 이차식",
+          "subUnitKey": "M3-02-FACTORIZATION",
+          "mappingStatus": "FAMILY_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-026",
+          "path": "다항식의 곱셈과 인수분해 > 인수분해 > 인수분해의 활용 > 인수분해를 이용한 수의 계산",
+          "subUnitKey": "M3-02-FACTORIZATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-027",
+          "path": "다항식의 곱셈과 인수분해 > 인수분해 > 인수분해의 활용 > 인수분해를 이용한 식의 값",
+          "subUnitKey": "M3-02-FACTORIZATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-028",
+          "path": "다항식의 곱셈과 인수분해 > 인수분해 > 인수분해의 활용 > 조건식",
+          "subUnitKey": "M3-02-FACTORIZATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-182",
+          "path": "다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈공식 > 여러 곱셈공식 비교·판별",
+          "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+          "label": "다항식의 인수분해와 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+              "label": "공통인수로 인수분해 후 인수 판별"
+            },
+            {
+              "templateKey": "TPL_M3_PERFECT_SQUARE_CONDITION",
+              "label": "완전제곱식의 중간항 계수 결정"
+            },
+            {
+              "templateKey": "TPL_M3_DIFFERENCE_OF_SQUARES_CHAIN",
+              "label": "합차 공식을 연속 적용"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_FACTORIZATION_SUM",
+              "label": "이차식 인수분해 후 일차식 합 계산"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_FORMULA_APPLICATION",
+              "label": "인수분해 공식의 빈칸 비교"
+            },
+            {
+              "templateKey": "TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION",
+              "label": "공통인수 조건으로 미정계수 결정"
+            },
+            {
+              "templateKey": "TPL_M3_SUBSTITUTION_FACTORIZATION",
+              "label": "공통부분 치환 후 완전제곱식 인수분해"
+            },
+            {
+              "templateKey": "TPL_M3_GROUPING_FACTORIZATION",
+              "label": "항 묶기와 공통인수 추출"
+            },
+            {
+              "templateKey": "TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION",
+              "label": "인수분해 공식으로 수의 약수·계산 처리"
+            },
+            {
+              "templateKey": "TPL_M3_COMMON_FACTOR_BY_FACTORIZATION",
+              "label": "각 식을 인수분해해 공통인수 찾기"
+            },
+            {
+              "templateKey": "TPL_M3_FIND_OTHER_FACTOR_BY_FACTORIZATION",
+              "label": "인수분해해 나머지 인수 구하기"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_COEFFICIENT",
+              "label": "계수 결정"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_FACTOR_FORM",
+              "label": "곱으로 변환"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_FACTOR_IDENTIFY",
+              "label": "인수 판별"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_GEOMETRY",
+              "label": "길이와 넓이"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_IDENTITY_CHECK",
+              "label": "등식 판별"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_INTEGER_CONSTRAINT",
+              "label": "정수 인수쌍"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_NUMERIC",
+              "label": "수치 계산"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_SQUARE_CONDITION",
+              "label": "완전제곱 조건"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_SUBSTITUTION",
+              "label": "치환 인수분해"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_TELESCOPING",
+              "label": "연속 곱"
+            },
+            {
+              "templateKey": "TPL_M3_FACTORIZATION_VALUE",
+              "label": "식의 값"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+          "label": "다항식의 곱셈과 곱셈공식",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT",
+              "label": "다항식 전개식에서 특정 항의 계수 구하기"
+            },
+            {
+              "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT",
+              "label": "곱셈공식 계산의 수치적 참·거짓 판별"
+            },
+            {
+              "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING",
+              "label": "도형의 넓이를 이용한 곱셈공식의 기하적 모델링"
+            },
+            {
+              "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT_DETERMINATION",
+              "label": "전개식 계수 조건에서 미정계수 결정"
+            },
+            {
+              "templateKey": "TPL_M3_MULTIPLICATION_CHAIN",
+              "label": "연속 곱"
+            },
+            {
+              "templateKey": "TPL_M3_MULTIPLICATION_COEFFICIENT",
+              "label": "계수 관계"
+            },
+            {
+              "templateKey": "TPL_M3_MULTIPLICATION_EXPANSION",
+              "label": "전개"
+            },
+            {
+              "templateKey": "TPL_M3_MULTIPLICATION_NUMERIC",
+              "label": "수치 계산"
+            },
+            {
+              "templateKey": "TPL_M3_MULTIPLICATION_SUM_PRODUCT",
+              "label": "합과 곱"
+            },
+            {
+              "templateKey": "TPL_M3_MULTIPLICATION_VALUE",
+              "label": "식의 값"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_PERFECT_POWER",
+          "label": "완전거듭제곱",
+          "templates": []
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "M3-03",
+      "label": "이차방정식",
+      "order": 3,
+      "subUnits": [
+        {
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "label": "이차방정식"
+        },
+        {
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+          "label": "이차방정식의 활용"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M3-RPM-029",
+          "path": "이차방정식 > 이차방정식의 풀이 > 이차방정식과 해 > 이차방정식 판별",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-030",
+          "path": "이차방정식 > 이차방정식의 풀이 > 이차방정식과 해 > 해의 확인",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-031",
+          "path": "이차방정식 > 이차방정식의 풀이 > 이차방정식과 해 > 해가 주어진 이차방정식의 계수 결정",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-032",
+          "path": "이차방정식 > 이차방정식의 풀이 > 인수분해를 이용한 풀이 > 기본 인수분해",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-033",
+          "path": "이차방정식 > 이차방정식의 풀이 > 제곱근·완전제곱식을 이용한 풀이 > 제곱근 이용",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-034",
+          "path": "이차방정식 > 이차방정식의 풀이 > 제곱근·완전제곱식을 이용한 풀이 > 완전제곱식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-035",
+          "path": "이차방정식 > 이차방정식의 풀이 > 근의 공식 > 근의 공식",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-036",
+          "path": "이차방정식 > 이차방정식의 풀이 > 근의 공식 > 근의 개수·판별",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-037",
+          "path": "이차방정식 > 이차방정식의 활용 > 수와 식 > 연속된 수",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-038",
+          "path": "이차방정식 > 이차방정식의 활용 > 수와 식 > 자리수·식의 값",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-039",
+          "path": "이차방정식 > 이차방정식의 활용 > 도형 > 길이·넓이",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-040",
+          "path": "이차방정식 > 이차방정식의 활용 > 도형 > 피타고라스와 결합",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-041",
+          "path": "이차방정식 > 이차방정식의 활용 > 거리·속력·기타 > 운동 문제",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-042",
+          "path": "이차방정식 > 이차방정식의 활용 > 거리·속력·기타 > 증감·개수",
+          "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DISCRIMINANT",
+          "label": "판별식으로 근의 유리수 여부 판정",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_IDENTIFY_EQUATION_WITHOUT_RATIONAL_ROOTS",
+              "label": "유리수 근이 없는 방정식 선별"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_EQUATION_DISCRIMINANT_RATIONAL_ROOT",
+              "label": "유리근 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
+          "label": "중근 조건 판정",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_CALCULATE_PARAMETER_DIFFERENCE_FROM_DOUBLE_ROOT",
+              "label": "중근에서 상수·근을 구해 차 계산"
+            },
+            {
+              "templateKey": "TPL_M3_FIND_CONDITION_FOR_SQUARE_EQUATION_DOUBLE_ROOT",
+              "label": "제곱꼴 방정식의 중근 조건 선택"
+            },
+            {
+              "templateKey": "TPL_M3_SOLVE_PARAMETER_FROM_PERFECT_SQUARE_CONSTANT",
+              "label": "완전제곱 상수 조건으로 매개변수 결정"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_EQUATION_DOUBLE_ROOT_COEFFICIENT",
+              "label": "중근과 계수"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_EQUATION_DOUBLE_ROOT_COUNT",
+              "label": "중근 조건 개수"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_EQUATION_DOUBLE_ROOT_IDENTIFY",
+              "label": "중근 판별"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_HOMOGENEOUS_RATIO",
+          "label": "동차 이차식에서 변수 비 결정",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_SOLVE_VARIABLE_RATIO_FROM_HOMOGENEOUS_QUADRATIC",
+              "label": "동차식 나눗셈 후 비의 근 선택"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_COUNT",
+          "label": "서로 다른 실근의 개수 판정",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_SELECT_EQUATIONS_WITH_TWO_DISTINCT_ROOTS",
+              "label": "두 근을 갖는 방정식 묶음 선별"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_EQUATION_ROOT_COUNT_AUDIT",
+              "label": "근의 개수 판별"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_EQUATION_ROOT_COUNT_DISCRIMINANT",
+              "label": "근의 개수 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION",
+          "label": "이차방정식의 해 판별",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_VERIFY_ROOT_OF_QUADRATIC_EQUATION",
+              "label": "대입으로 이차방정식의 해 확인"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION_TABLE",
+              "label": "표에서 해 찾기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_ISOLATION",
+          "label": "근의 분리(두 근 사이 조건)",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_FIND_PARAMETER_RANGE_FOR_ROOTS_BETWEEN_GIVEN_ROOTS_DESCRIPTIVE",
+              "label": "서술형: 두 근 사이 조건으로 매개변수 범위"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
+          "label": "근의 관계식 대입으로 식의 값 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_EVALUATE_FRACTIONAL_EXPRESSION_USING_QUADRATIC_ROOT_DESCRIPTIVE",
+              "label": "서술형: 근의 관계식으로 분수식 값 구하기"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION_RECIPROCAL",
+              "label": "근의 관계식"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
+          "label": "제곱근을 이용한 이차방정식 풀이",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_SOLVE_QUADRATIC_VIA_COMPLETED_SQUARE_ROOT",
+              "label": "완전제곱꼴 이항 후 제곱근 풀이"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD_AUDIT",
+              "label": "풀이 검토"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD_COMPLETION",
+              "label": "완전제곱 변환"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD_FORMULA",
+              "label": "근의 공식 유도"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD_ROOT_PARAMETER",
+              "label": "근의 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
+          "label": "이차방정식의 실생활 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_FIND_TIME_FOR_GIVEN_PROJECTILE_HEIGHT",
+              "label": "주어진 높이가 되는 시간 구하기"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_EQUATION_WORD_PROBLEM_GEOMETRY",
+              "label": "도형의 길이"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_EQUATION_WORD_PROBLEM_MOTION",
+              "label": "움직이는 도형"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_EQUATION_WORD_PROBLEM_QUANTITY",
+              "label": "수량 관계"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_EQUATION_WORD_PROBLEM_RATE",
+              "label": "속력과 일률"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT",
+          "label": "영인자 성질의 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_COUNT_ORDERED_PAIRS_SATISFYING_ZERO_PRODUCT",
+              "label": "영인자 조건 순서쌍 개수 세기"
+            },
+            {
+              "templateKey": "TPL_M3_ZERO_PRODUCT_COMMON_ROOT",
+              "label": "공통근"
+            },
+            {
+              "templateKey": "TPL_M3_ZERO_PRODUCT_ROOT_VALUE",
+              "label": "근의 계산"
+            },
+            {
+              "templateKey": "TPL_M3_ZERO_PRODUCT_SOLVE",
+              "label": "방정식 풀이"
+            },
+            {
+              "templateKey": "TPL_M3_ZERO_PRODUCT_SUBSTITUTION",
+              "label": "치환 풀이"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_EQUATION",
+          "label": "이차방정식",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_ROOT",
+          "label": "이차방정식의 해",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M3_ROOT_COEFFICIENT",
+          "label": "근과 계수의 관계",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M3_ROOT_FORMULA",
+          "label": "근의 공식",
+          "templates": []
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "M3-04",
+      "label": "이차함수와 그래프",
+      "order": 4,
+      "subUnits": [
+        {
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
+          "label": "이차함수의 활용"
+        },
+        {
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "label": "이차함수의 그래프"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M3-RPM-043",
+          "path": "이차함수 > 이차함수와 그 그래프 > 이차함수의 뜻 > 이차함수 판별",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-044",
+          "path": "이차함수 > 이차함수와 그 그래프 > 이차함수의 뜻 > 함숫값",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M3-RPM-045",
+          "path": "이차함수 > 이차함수와 그 그래프 > y=ax²의 그래프 > 그래프의 모양",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-046",
+          "path": "이차함수 > 이차함수와 그 그래프 > y=ax²의 그래프 > 대칭축·증감",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-047",
+          "path": "이차함수 > 이차함수와 그 그래프 > 그래프와 식 > 점의 좌표",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-048",
+          "path": "이차함수 > 이차함수와 그 그래프 > 그래프와 식 > 계수 결정",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "M3-RPM-049",
+          "path": "이차함수 > 이차함수 y=ax²+bx+c의 그래프 > 꼭짓점형 > 평행이동",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M3-RPM-050",
+          "path": "이차함수 > 이차함수 y=ax²+bx+c의 그래프 > 꼭짓점형 > 꼭짓점·축",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-051",
+          "path": "이차함수 > 이차함수 y=ax²+bx+c의 그래프 > 일반형 > 완전제곱식 변형",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-052",
+          "path": "이차함수 > 이차함수 y=ax²+bx+c의 그래프 > 일반형 > 최대·최소",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-053",
+          "path": "이차함수 > 이차함수 y=ax²+bx+c의 그래프 > 그래프와 계수 > 그래프 위치",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-054",
+          "path": "이차함수 > 이차함수 y=ax²+bx+c의 그래프 > 그래프와 계수 > 조건으로 식 구하기",
+          "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_AXIS_AND_MONOTONICITY",
+          "label": "증가·감소 구간으로 대칭축 결정",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_FIND_VERTEX_FROM_DECREASING_INTERVAL_OF_PARABOLA",
+              "label": "감소 구간으로 축·꼭짓점 계산"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+          "label": "그래프 개형에서 계수·상수 부호 판정",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_IDENTIFY_FALSE_PROPERTY_FROM_PARABOLA_GRAPH",
+              "label": "그래프 개형으로 옳지 않은 설명 찾기"
+            },
+            {
+              "templateKey": "TPL_M3_EVALUATE_EXPRESSIONS_FROM_PARABOLA_GRAPH_AND_INTERCEPTS",
+              "label": "절편·개형으로 함숫값 식 판정"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS_CONDITION",
+              "label": "위치 조건"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS_READ",
+              "label": "계수 부호"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS_TRANSFER",
+              "label": "개형 이전"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SUM",
+          "label": "이차함수의 계수 합 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_EVALUATE_COEFFICIENT_SUM_FROM_PARABOLA_POINT",
+              "label": "그래프 위의 점으로 계수 합 읽기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_EXTREMA",
+          "label": "이차함수의 최댓값·최솟값",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_EQUATE_MAXIMUM_AND_MINIMUM_OF_TWO_PARABOLAS",
+              "label": "두 포물선의 최댓값·최솟값 연립"
+            },
+            {
+              "templateKey": "TPL_M3_FIND_INTEGERS_MAKING_MAXIMUM_VALUE_NEGATIVE_DESCRIPTIVE",
+              "label": "서술형: 최댓값이 음수인 정수 매개변수"
+            },
+            {
+              "templateKey": "TPL_M3_FIND_COEFFICIENT_SUM_FROM_EXTREMUM_AND_POINT",
+              "label": "극값·지나는 점으로 계수 합 계산"
+            },
+            {
+              "templateKey": "TPL_M3_IDENTIFY_MAX_OR_MIN_VALUE_OF_PARABOLA",
+              "label": "표준형에서 최댓값·최솟값 판별"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_FUNCTION_EXTREMA_DIRECT",
+              "label": "극값 계산"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_FUNCTION_EXTREMA_MODEL",
+              "label": "넓이와 거리"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_FUNCTION_EXTREMA_NESTED",
+              "label": "극값의 극값"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_FUNCTION_EXTREMA_PARAMETER",
+              "label": "극값 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+          "label": "포물선과 도형의 융합",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_FIND_COEFFICIENT_FROM_TRIANGLE_AREA_WITH_VERTEX",
+              "label": "꼭짓점과 두 교점 삼각형 넓이로 계수 결정"
+            },
+            {
+              "templateKey": "TPL_M3_CALCULATE_TRIANGLE_AREA_FROM_VERTEX_AND_Y_INTERCEPT",
+              "label": "꼭짓점·y절편·원점 삼각형 넓이"
+            },
+            {
+              "templateKey": "TPL_M3_GRAPH_GEOMETRY_AREA_CONDITION",
+              "label": "넓이 조건"
+            },
+            {
+              "templateKey": "TPL_M3_GRAPH_GEOMETRY_POLYGON_AREA",
+              "label": "다각형 넓이"
+            },
+            {
+              "templateKey": "TPL_M3_GRAPH_GEOMETRY_RATIO",
+              "label": "길이와 넓이비"
+            },
+            {
+              "templateKey": "TPL_M3_GRAPH_GEOMETRY_RECTANGLE",
+              "label": "직사각형 조건"
+            },
+            {
+              "templateKey": "TPL_M3_GRAPH_GEOMETRY_TRIANGLE_AREA",
+              "label": "삼각형 넓이"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+          "label": "이차함수 그래프의 성질 비교",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_IDENTIFY_COMMON_PROPERTY_OF_TWO_PARABOLAS",
+              "label": "두 포물선의 공통 성질 찾기"
+            },
+            {
+              "templateKey": "TPL_M3_EVALUATE_PARABOLA_PROPERTIES_STATEMENTS",
+              "label": "포물선 성질 진술의 참·거짓 판별"
+            },
+            {
+              "templateKey": "TPL_M3_IDENTIFY_FALSE_PROPERTY_OF_TRANSLATED_PARABOLA",
+              "label": "평행이동 포물선의 옳지 않은 설명 찾기"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_PROPERTIES_AXIS",
+              "label": "대칭축"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_PROPERTIES_GRAPH_MATCH",
+              "label": "그래프 대응"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_PROPERTIES_INTERCEPT",
+              "label": "절편 조건"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_PROPERTIES_REFLECTION",
+              "label": "축대칭"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_PROPERTIES_STATEMENTS",
+              "label": "성질 판별"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_PROPERTIES_WIDTH",
+              "label": "폭과 방향"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION",
+          "label": "이차함수 그래프의 사분면 통과 판정",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_IDENTIFY_PARABOLA_PASSING_THROUGH_THIRD_QUADRANT",
+              "label": "제3사분면을 지나는 포물선 선별"
+            },
+            {
+              "templateKey": "TPL_M3_FIND_PARAMETER_RANGE_AVOIDING_SPECIFIC_QUADRANT",
+              "label": "특정 사분면을 지나지 않을 조건"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION_ALL_QUADRANTS",
+              "label": "모든 사분면"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION_AVOID_EXISTING",
+              "label": "사분면 회피"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION_PASSAGE",
+              "label": "통과 사분면"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_RANGE",
+          "label": "이차함수의 치역 결정",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_DETERMINE_RANGE_OF_QUADRATIC_FUNCTION",
+              "label": "표준형에서 치역 부등식 세우기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+          "label": "이차함수 그래프의 평행이동",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_DETERMINE_TRANSLATION_AMOUNTS_FROM_GENERAL_FORM_DESCRIPTIVE",
+              "label": "서술형: 일반형에서 평행이동량 결정"
+            },
+            {
+              "templateKey": "TPL_M3_FIND_VERTICAL_DISTANCE_BETWEEN_PARALLEL_PARABOLAS",
+              "label": "평행이동한 두 포물선 사이 수직 거리"
+            },
+            {
+              "templateKey": "TPL_M3_CALCULATE_SUM_OF_TRANSLATION_PARAMETERS",
+              "label": "평행이동 계수 합 계산"
+            },
+            {
+              "templateKey": "TPL_M3_FIND_TRANSLATED_PARABOLA_COEFFICIENT_SUM",
+              "label": "평행이동 후 꼭짓점으로 계수 합 계산"
+            },
+            {
+              "templateKey": "TPL_M3_TRANSLATION_AREA",
+              "label": "넓이"
+            },
+            {
+              "templateKey": "TPL_M3_TRANSLATION_DISPLACEMENT",
+              "label": "이동량"
+            },
+            {
+              "templateKey": "TPL_M3_TRANSLATION_DISTANCE",
+              "label": "대응점 간격"
+            },
+            {
+              "templateKey": "TPL_M3_TRANSLATION_FORMULA",
+              "label": "이동식"
+            },
+            {
+              "templateKey": "TPL_M3_TRANSLATION_POINT",
+              "label": "점 조건"
+            },
+            {
+              "templateKey": "TPL_M3_TRANSLATION_REFLECTION",
+              "label": "대칭과 이동"
+            },
+            {
+              "templateKey": "TPL_M3_TRANSLATION_SAME_SHAPE",
+              "label": "포개짐"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_WORD_PROBLEM",
+          "label": "이차함수의 실생활 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_CALCULATE_MAXIMUM_BOUNCE_HEIGHT_OF_BALL_DESCRIPTIVE",
+              "label": "서술형: 두 지면 교점과 한 점으로 최고 높이"
+            },
+            {
+              "templateKey": "TPL_M3_FIND_TIME_FOR_MAXIMUM_PROJECTILE_HEIGHT",
+              "label": "완전제곱꼴로 최고점 도달 시간"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_FUNCTION_WORD_PROBLEM_EXTREMA",
+              "label": "최대최소"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_FUNCTION_WORD_PROBLEM_INTERVAL",
+              "label": "조건 구간"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_FUNCTION_WORD_PROBLEM_LEVEL",
+              "label": "목표값 시점"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_FUNCTION_WORD_PROBLEM_VALUE",
+              "label": "함숫값"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_X_INTERCEPTS_DISTANCE",
+          "label": "x축 두 교점 사이의 거리",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_FIND_CONSTANT_FROM_CHORD_LENGTH_ON_X_AXIS",
+              "label": "x축 교점 거리로 상수 결정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_BASIC_FORM",
+          "label": "y=ax^2 꼴 이차함수 식의 결정",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_DETERMINE_EQUATION_FROM_GRAPH_POINT",
+              "label": "그래프 위의 점으로 y=ax^2 결정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
+          "label": "이차함수의 판별",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_SELECT_QUADRATIC_FUNCTION_WORD_PROBLEM",
+              "label": "관계식 중 이차함수 고르기"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_FUNCTION_DEFINITION_COEFFICIENT",
+              "label": "이차항 조건"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_FUNCTION_DEFINITION_POLYNOMIAL",
+              "label": "이차함수 판별"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_INSCRIBED_RECTANGLE",
+          "label": "포물선에 내접하는 사각형의 최적화",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_OPTIMIZE_INSCRIBED_RECTANGLE_PERIMETER_DESCRIPTIVE",
+              "label": "서술형: 내접 직사각형 둘레 최댓값"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_MONOTONICITY",
+          "label": "이차함수의 증가·감소 구간",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_FIND_INTERVAL_OF_INCREASING_FUNCTION_VALUE",
+              "label": "증가 구간 판정"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_FUNCTION_MONOTONICITY_INTERVAL",
+              "label": "증감 구간"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_THREE_POINTS",
+          "label": "세 점으로 이차함수 식 결정",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_DETERMINE_EQUATION_FROM_THREE_GIVEN_POINTS",
+              "label": "세 점 대입 연립으로 계수 결정"
+            },
+            {
+              "templateKey": "TPL_M3_QUADRATIC_FUNCTION_THREE_POINTS_INTERCEPT",
+              "label": "절편 인수형"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+          "label": "꼭짓점·일반형 상호 변환으로 식 결정",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE",
+              "label": "서술형: 일반형을 표준형으로 변형"
+            },
+            {
+              "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+              "label": "꼭짓점·y절편으로 계수 결정"
+            },
+            {
+              "templateKey": "TPL_M3_VERTEX_FORM_COEFFICIENT",
+              "label": "계수 결정"
+            },
+            {
+              "templateKey": "TPL_M3_VERTEX_FORM_COMMON_VERTEX",
+              "label": "꼭짓점 일치"
+            },
+            {
+              "templateKey": "TPL_M3_VERTEX_FORM_INTERSECTION",
+              "label": "교점 조건"
+            },
+            {
+              "templateKey": "TPL_M3_VERTEX_FORM_READ_VERTEX",
+              "label": "축과 꼭짓점"
+            },
+            {
+              "templateKey": "TPL_M3_VERTEX_FORM_VERTEX_LOCUS",
+              "label": "꼭짓점 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTICAL_SEGMENT_MINIMUM",
+          "label": "포물선과 직선 사이 수직 선분의 최솟값",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_MINIMIZE_VERTICAL_SEGMENT_BETWEEN_PARABOLA_AND_LINE",
+              "label": "두 그래프 y좌표 차의 최솟값"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_EQUATION",
+          "label": "이차방정식",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION",
+          "label": "이차함수",
+          "templates": []
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "M3-05",
+      "label": "삼각비",
+      "order": 5,
+      "subUnits": [
+        {
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "label": "삼각비"
+        },
+        {
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+          "label": "삼각비의 활용"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M3-RPM-055",
+          "path": "삼각비 > 삼각비 > 삼각비의 뜻 > sin·cos·tan",
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-056",
+          "path": "삼각비 > 삼각비 > 삼각비의 뜻 > 삼각비의 관계",
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-057",
+          "path": "삼각비 > 삼각비 > 특수각의 삼각비 > 30°·45°·60°",
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-058",
+          "path": "삼각비 > 삼각비 > 특수각의 삼각비 > 특수각 계산",
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-059",
+          "path": "삼각비 > 삼각비 > 삼각비와 길이 > 직각삼각형의 변",
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-060",
+          "path": "삼각비 > 삼각비 > 삼각비와 길이 > 각을 이용한 길이",
+          "subUnitKey": "M3-05-TRIG_RATIO",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-061",
+          "path": "삼각비 > 삼각비의 활용 > 평면도형 > 삼각형의 높이·넓이",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+          "mappingStatus": "FAMILY_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-062",
+          "path": "삼각비 > 삼각비의 활용 > 평면도형 > 다각형의 길이·넓이",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+          "mappingStatus": "FAMILY_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-063",
+          "path": "삼각비 > 삼각비의 활용 > 측정 문제 > 높이·거리",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+          "mappingStatus": "FAMILY_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-064",
+          "path": "삼각비 > 삼각비의 활용 > 측정 문제 > 앙각·부각",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+          "mappingStatus": "FAMILY_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-065",
+          "path": "삼각비 > 삼각비의 활용 > 복합도형 > 보조선 활용",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-066",
+          "path": "삼각비 > 삼각비의 활용 > 복합도형 > 피타고라스 결합",
+          "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "label": "삼각비의 값과 관계",
+          "templates": [
+            {
+              "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+              "label": "삼각비 식의 대수적 정리"
+            },
+            {
+              "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+              "label": "삼각비의 기본 관계"
+            },
+            {
+              "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+              "label": "도형에서 삼각비 값 유도"
+            },
+            {
+              "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+              "label": "특수각의 삼각비"
+            },
+            {
+              "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+              "label": "삼각비표의 조회"
+            },
+            {
+              "templateKey": "TPL_TRIG_RATIO_MONOTONIC",
+              "label": "예각 삼각비 대소관계"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "label": "삼각비의 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+              "label": "삼각비 연쇄 측정"
+            },
+            {
+              "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+              "label": "삼각비로 직접 길이·높이·거리 구하기"
+            },
+            {
+              "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+              "label": "공통 높이·거리 측량"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+          "label": "삼각형의 닮음",
+          "templates": [
+            {
+              "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+              "label": "삼각형 닮음의 활용"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+              "label": "삼각형의 닮음 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+          "label": "삼각형의 각의 이등분선",
+          "templates": [
+            {
+              "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_EQUIDISTANCE",
+              "label": "각의 이등분선 위 점의 거리"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO",
+              "label": "삼각형의 각의 이등분선 정리"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_FIGURE_AREA",
+          "label": "도형의 넓이",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION",
+          "label": "이차함수",
+          "templates": []
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "M3-06",
+      "label": "원의 성질",
+      "order": 6,
+      "subUnits": [
+        {
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "label": "원주각"
+        },
+        {
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "label": "원과 직선"
+        },
+        {
+          "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+          "label": "원과 직선"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M3-RPM-067",
+          "path": "원의 성질 > 원과 직선 > 원의 중심과 현 > 중심에서 현에 내린 수선",
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M3-RPM-068",
+          "path": "원의 성질 > 원과 직선 > 원의 중심과 현 > 현의 수직이등분선과 중심",
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M3-RPM-069",
+          "path": "원의 성질 > 원과 직선 > 원의 중심과 현 > 중심거리와 현의 길이",
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M3-RPM-070",
+          "path": "원의 성질 > 원과 직선 > 원의 접선 > 접점의 반지름과 접선",
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M3-RPM-071",
+          "path": "원의 성질 > 원과 직선 > 원의 접선 > 한 점에서 그은 두 접선",
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M3-RPM-072",
+          "path": "원의 성질 > 원과 직선 > 원의 접선 > 접선 조건으로 길이 구하기",
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M3-RPM-073",
+          "path": "원의 성질 > 원과 직선 > 원의 접선 > 접선 조건으로 각 구하기",
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-074",
+          "path": "원의 성질 > 원주각 > 원주각과 중심각 > 같은 호에 대한 원주각",
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-075",
+          "path": "원의 성질 > 원주각 > 원주각과 중심각 > 중심각과 원주각",
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-076",
+          "path": "원의 성질 > 원주각 > 원주각과 중심각 > 반원에 대한 원주각",
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-077",
+          "path": "원의 성질 > 원주각 > 원주각의 활용 > 내접사각형의 각",
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-078",
+          "path": "원의 성질 > 원주각 > 원주각의 활용 > 네 점이 한 원 위에 있을 조건",
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-079",
+          "path": "원의 성질 > 원주각 > 원주각의 활용 > 접선과 현이 이루는 각",
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-080",
+          "path": "원의 성질 > 원주각 > 원주각의 활용 > 복합 각 추론",
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-075-S2P-B4CD",
+          "path": "원의 성질 > 원주각 > 원주각과 중심각 > 중심각과 원주각",
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-069-S2P-9483",
+          "path": "원의 성질 > 원과 직선 > 원의 중심과 현 > 중심거리와 현의 길이",
+          "subUnitKey": "M3-06-CIRCLE_LINE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-078-S2P-68F6",
+          "path": "원의 성질 > 원주각 > 원주각의 활용 > 네 점이 한 원 위에 있을 조건",
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-077-S2P-E468",
+          "path": "원의 성질 > 원주각 > 원주각의 활용 > 내접사각형의 각",
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-079-S2P-5150",
+          "path": "원의 성질 > 원주각 > 원주각의 활용 > 접선과 현이 이루는 각",
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-075-S2P-03BC",
+          "path": "원의 성질 > 원주각 > 원주각과 중심각 > 중심각과 원주각",
+          "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+          "label": "원주각·중심각과 원의 각 관계",
+          "templates": [
+            {
+              "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+              "label": "원주각과 중심각"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+              "label": "복합 원의 각 관계"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+              "label": "부채꼴과 원이 포함된 도형의 길이·넓이"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+              "label": "접선과 현이 이루는 각"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
+              "label": "원·호·현·부채꼴의 정의 판정"
+            },
+            {
+              "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
+              "label": "호와 선분으로 이루어진 복합 둘레"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+              "label": "원에 내접하는 사각형의 대각 관계"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_ANGLE_INSCRIBED_POLYGON_ARC_SUM",
+              "label": "내접다각형의 교대 내각과 호의 합"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_ANGLE_RELATIONS_CLAIMS",
+              "label": "성질 판별"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_ANGLE_RELATIONS_CONCYCLIC",
+              "label": "공원점 판별"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_ANGLE_RELATIONS_POSITION",
+              "label": "원 안팎"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "label": "원의 접선",
+          "templates": [
+            {
+              "templateKey": "TM_TANGENT_AT_POINT",
+              "label": "원 위의 점에서의 접선의 방정식"
+            },
+            {
+              "templateKey": "TM_TANGENT_GIVEN_SLOPE",
+              "label": "기울기가 주어진 원의 접선의 방정식"
+            },
+            {
+              "templateKey": "TM_TANGENT_FROM_EXTERNAL_POINT",
+              "label": "원 밖의 한 점에서 그은 접선의 방정식"
+            },
+            {
+              "templateKey": "TM_TANGENT_LENGTH",
+              "label": "접선의 길이"
+            },
+            {
+              "templateKey": "TM_TANGENT_CONTACT_CHORD_LINE",
+              "label": "두 접점을 지나는 직선"
+            },
+            {
+              "templateKey": "TM_TANGENT_CONTACT_CHORD_LENGTH",
+              "label": "두 접점을 잇는 현의 길이"
+            },
+            {
+              "templateKey": "TM_TANGENT_TWO_SLOPES",
+              "label": "두 접선의 기울기"
+            },
+            {
+              "templateKey": "TM_TANGENCY_CONDITION",
+              "label": "원과 직선이 접할 조건"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_TANGENT_APOLLONIUS",
+              "label": "거리비와 시야각"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_TANGENT_ARC_AREA",
+              "label": "호와 넓이"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_TANGENT_EQUAL_LENGTH",
+              "label": "등접선"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_TANGENT_HALF_ANGLE",
+              "label": "두 접선 사잇각 반각"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_TANGENT_POWER",
+              "label": "접선 할선 방멱"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_TANGENT_RIGHT_TRIANGLE",
+              "label": "접점 직각"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_TANGENT_TANGENT_FORMULA",
+              "label": "원의 접선 방정식"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_TANGENT_TANGENT_RATIO",
+              "label": "접선 길이비와 내분"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_TRIANGLE_CENTERS",
+          "label": "삼각형의 외심·내심",
+          "templates": [
+            {
+              "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+              "label": "외심과 내심의 관계"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+              "label": "삼각형 중심의 성질"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+              "label": "삼각형의 외심"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_INCENTER",
+              "label": "삼각형의 내심"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_CENTERS_INCIRCLE",
+              "label": "내접원"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+          "label": "삼각형의 닮음",
+          "templates": [
+            {
+              "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+              "label": "삼각형 닮음의 활용"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+              "label": "삼각형의 닮음 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_TWO_CIRCLES",
+          "label": "두 원",
+          "templates": [
+            {
+              "templateKey": "TM_TWO_CIRCLES_COMMON_CHORD_LINE",
+              "label": "두 원의 교점을 지나는 직선의 방정식"
+            },
+            {
+              "templateKey": "TM_TWO_CIRCLES_COMMON_CHORD_LENGTH",
+              "label": "두 원의 공통현의 길이"
+            },
+            {
+              "templateKey": "TM_TWO_CIRCLES_THROUGH_INTERSECTIONS",
+              "label": "두 원의 교점을 지나는 원의 방정식"
+            },
+            {
+              "templateKey": "TM_TWO_CIRCLES_COMMON_TANGENT",
+              "label": "공통접선"
+            },
+            {
+              "templateKey": "TM_TWO_CIRCLES_TANGENT_CIRCLE",
+              "label": "두 원에 접하는 원"
+            },
+            {
+              "templateKey": "TM_TWO_CIRCLES_CENTER_LINE",
+              "label": "두 원의 중심을 지나는 직선"
+            },
+            {
+              "templateKey": "TPL_TWO_CIRCLES_CENTER_TRIANGLE",
+              "label": "접하는 원 중심삼각형"
+            },
+            {
+              "templateKey": "TPL_TWO_CIRCLES_COMMON_TANGENT",
+              "label": "공통접선 길이"
+            },
+            {
+              "templateKey": "TPL_TWO_CIRCLES_POSITION",
+              "label": "두 원 위치"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "label": "원과 직선",
+          "templates": [
+            {
+              "templateKey": "TM_CIRCLE_LINE_POSITION",
+              "label": "원과 직선의 위치 관계"
+            },
+            {
+              "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+              "label": "현의 길이"
+            },
+            {
+              "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+              "label": "현의 수직이등분선"
+            },
+            {
+              "templateKey": "TM_CIRCLE_CHORD_DIVISION",
+              "label": "현의 내분점"
+            },
+            {
+              "templateKey": "TM_CIRCLE_POINT_LINE_DISTANCE",
+              "label": "원 위의 점과 직선 사이의 거리"
+            },
+            {
+              "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+              "label": "교점의 개수"
+            },
+            {
+              "templateKey": "TM_CIRCLE_INTERSECTION_RELATION",
+              "label": "원과 직선의 두 교점"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD",
+              "label": "등거리 현"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_CIRCLE_CHORD",
+          "label": "원의 현",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M3_CIRCLE_POWER",
+          "label": "원의 방멱",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M3_CIRCLE_TANGENT",
+          "label": "원의 접선",
+          "templates": []
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "M3-07",
+      "label": "통계",
+      "order": 7,
+      "subUnits": [
+        {
+          "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+          "label": "통계 자료 해석"
+        },
+        {
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "label": "대푯값과 산포도"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M3-RPM-081",
+          "path": "통계 > 대푯값과 산포도 > 대푯값 > 평균·중앙값·최빈값",
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-082",
+          "path": "통계 > 대푯값과 산포도 > 대푯값 > 대푯값 비교",
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-083",
+          "path": "통계 > 대푯값과 산포도 > 산포도 > 편차",
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-084",
+          "path": "통계 > 대푯값과 산포도 > 산포도 > 분산",
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-085",
+          "path": "통계 > 대푯값과 산포도 > 산포도 > 표준편차",
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-086",
+          "path": "통계 > 대푯값과 산포도 > 자료 비교 > 평균과 산포도 비교",
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-087",
+          "path": "통계 > 대푯값과 산포도 > 자료 비교 > 조건으로 자료 추론",
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-088",
+          "path": "통계 > 상관관계 > 산점도 > 산점도 읽기",
+          "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-089",
+          "path": "통계 > 상관관계 > 산점도 > 자료를 산점도로",
+          "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-090",
+          "path": "통계 > 상관관계 > 상관관계 > 양의 상관관계",
+          "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-091",
+          "path": "통계 > 상관관계 > 상관관계 > 음의 상관관계",
+          "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-092",
+          "path": "통계 > 상관관계 > 상관관계 > 상관관계가 약한 경우",
+          "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M3-RPM-081-S2P-76AF",
+          "path": "통계 > 대푯값과 산포도 > 대푯값 > 평균·중앙값·최빈값",
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-087-S2P-8E9F",
+          "path": "통계 > 대푯값과 산포도 > 자료 비교 > 조건으로 자료 추론",
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-083-S2P-3541",
+          "path": "통계 > 대푯값과 산포도 > 산포도 > 편차",
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-083-S2P-BC69",
+          "path": "통계 > 대푯값과 산포도 > 산포도 > 편차",
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-084-S2P-9DFD",
+          "path": "통계 > 대푯값과 산포도 > 산포도 > 분산",
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-088-S2P-FC25",
+          "path": "통계 > 상관관계 > 산점도 > 산점도 읽기",
+          "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-091-S2P-46A0",
+          "path": "통계 > 상관관계 > 상관관계 > 음의 상관관계",
+          "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-086-S2P-6754",
+          "path": "통계 > 대푯값과 산포도 > 자료 비교 > 평균과 산포도 비교",
+          "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M3-RPM-090-S2P-8569",
+          "path": "통계 > 상관관계 > 상관관계 > 양의 상관관계",
+          "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+          "label": "중앙값과 최빈값 결정",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
+              "label": "이산 자료의 중앙값·최빈값 계산"
+            },
+            {
+              "templateKey": "TPL_M3_DETERMINE_UNKNOWN_FROM_MEAN_AND_MEDIAN_CONDITIONS",
+              "label": "평균·중앙값 조건으로 미지 변량 결정"
+            },
+            {
+              "templateKey": "TPL_M3_CENTRAL_TENDENCY_MEDIAN_MODE_DIRECT",
+              "label": "대푯값 계산"
+            },
+            {
+              "templateKey": "TPL_M3_CENTRAL_TENDENCY_MEDIAN_MODE_MODE",
+              "label": "최빈값"
+            },
+            {
+              "templateKey": "TPL_M3_CENTRAL_TENDENCY_MEDIAN_MODE_ORDER_POSITION",
+              "label": "중앙 위치"
+            },
+            {
+              "templateKey": "TPL_M3_CENTRAL_TENDENCY_MEDIAN_MODE_PARAMETER",
+              "label": "미지 자료"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON",
+          "label": "막대그래프로 산포도 비교",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_COMPARE_DISPERSION_FROM_BAR_GRAPHS",
+              "label": "막대그래프 분포의 산포 비교"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+          "label": "편차의 성질 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+              "label": "서술형: 미지 편차와 표준편차"
+            },
+            {
+              "templateKey": "TPL_M3_FIND_MEAN_AND_UNKNOWN_FROM_DEVIATIONS",
+              "label": "편차로 평균과 미지 변량 구하기"
+            },
+            {
+              "templateKey": "TPL_M3_VARIANCE_OF_MODIFIED_DATA_FROM_SUM_OF_SQUARED_DEVIATIONS",
+              "label": "편차 제곱합을 이용한 바뀐 자료의 분산"
+            },
+            {
+              "templateKey": "TPL_M3_COMPARE_VARIANCE_OF_TWO_DATA_SETS",
+              "label": "두 자료의 분산 비교"
+            },
+            {
+              "templateKey": "TPL_M3_DISPERSION_DEVIATION_PROPERTIES_COMPARE",
+              "label": "산포 비교"
+            },
+            {
+              "templateKey": "TPL_M3_DISPERSION_DEVIATION_PROPERTIES_DISPERSION",
+              "label": "분산과 표준편차"
+            },
+            {
+              "templateKey": "TPL_M3_DISPERSION_DEVIATION_PROPERTIES_PARAMETER",
+              "label": "자료 조건"
+            },
+            {
+              "templateKey": "TPL_M3_DISPERSION_DEVIATION_PROPERTIES_RESTORE",
+              "label": "편차와 자료"
+            },
+            {
+              "templateKey": "TPL_M3_DISPERSION_DEVIATION_PROPERTIES_STATEMENTS",
+              "label": "통계량 비교"
+            },
+            {
+              "templateKey": "TPL_M3_DISPERSION_DEVIATION_PROPERTIES_ZERO_SUM",
+              "label": "편차합"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_DISPERSION_FREQUENCY_TABLE",
+          "label": "도수분포표에서 분산 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE",
+              "label": "도수분포표 분산 계산 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+          "label": "변량의 선형변환과 평균·분산",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_FIND_MEAN_AND_VARIANCE_OF_SCALED_DATA",
+              "label": "k배 변량의 평균·분산 계산"
+            },
+            {
+              "templateKey": "TPL_M3_LINEAR_TRANSFORMATION_STATISTICS_AFFINE",
+              "label": "일차변환"
+            },
+            {
+              "templateKey": "TPL_M3_LINEAR_TRANSFORMATION_STATISTICS_TRANSLATION",
+              "label": "평행이동"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+          "label": "편차·분산·표준편차 개념 판정",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_IDENTIFY_FALSE_STATEMENTS_ON_DEVIATION_AND_VARIANCE",
+              "label": "편차·분산 진술 중 옳지 않은 것"
+            },
+            {
+              "templateKey": "TPL_M3_COUNT_TRUE_STATEMENTS_ON_STATISTICS_CONCEPTS",
+              "label": "대푯값·산포도 진술의 참 개수 판정"
+            },
+            {
+              "templateKey": "TPL_M3_STATISTICS_CONCEPTS_TRUE_FALSE_CALCULATE",
+              "label": "통계량 검산"
+            },
+            {
+              "templateKey": "TPL_M3_STATISTICS_CONCEPTS_TRUE_FALSE_COMPARE",
+              "label": "집단 비교"
+            },
+            {
+              "templateKey": "TPL_M3_STATISTICS_CONCEPTS_TRUE_FALSE_DEFINITION",
+              "label": "정의 판별"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS",
+          "label": "꺾은선그래프로 대푯값 비교",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_EVALUATE_CENTRAL_TENDENCY_FROM_LINE_GRAPHS",
+              "label": "꺾은선그래프 대푯값 진술 판정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+          "label": "산점도와 상관관계",
+          "templates": [
+            {
+              "templateKey": "TPL_M3_SCATTER_PLOT_READ_POINT_RATIO",
+              "label": "산점도에서 조건을 만족하는 점의 비율"
+            },
+            {
+              "templateKey": "TPL_M3_CORRELATION_TYPE_JUDGMENT",
+              "label": "상관관계의 종류 판정과 근거 설명"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M3_REPRESENTATIVE",
+          "label": "대푯값",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_M3_VARIANCE",
+          "label": "분산과 표준편차",
+          "templates": []
+        }
+      ]
+    }
+  ],
+  "termCandidates": [
+    {
+      "term": "반지름",
+      "matchedAs": "반지름",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "반지름의 길이가 $1"
+    },
+    {
+      "term": "사분원",
+      "matchedAs": "사분원",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "이가 $1$인 사분원을 좌표평면 위"
+    },
+    {
+      "term": "길이",
+      "matchedAs": "길이",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "반지름의 길이가 $1$인 사"
+    },
+    {
+      "term": "좌표",
+      "matchedAs": "좌표",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "$인 사분원을 좌표평면 위에 나타"
+    },
+    {
+      "term": "지름",
+      "matchedAs": "지름",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "반지름의 길이가 $1"
+    },
+    {
+      "term": "평면",
+      "matchedAs": "평면",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "사분원을 좌표평면 위에 나타낼"
+    },
+    {
+      "term": "직각삼각형",
+      "matchedAs": "직각삼각형",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "rc)$이다. 직각삼각형 $\\text{"
+    },
+    {
+      "term": "삼각형",
+      "matchedAs": "삼각형",
+      "kind": "대상",
+      "src": "solution",
+      "quote": ")$이다. 직각삼각형 $\\text{"
+    },
+    {
+      "term": "수선",
+      "matchedAs": "수선",
+      "kind": "조건",
+      "src": "solution",
+      "quote": "x$축에 내린 수선의 발을 $\\t"
+    },
+    {
+      "term": "직각",
+      "matchedAs": "직각",
+      "kind": "조건",
+      "src": "solution",
+      "quote": "rc)$이다. 직각삼각형 $\\te"
+    },
+    {
+      "term": "탄젠트",
+      "matchedAs": "tan",
+      "kind": "대상",
+      "src": "choices",
+      "quote": "\\circ, \\tan a^\\circ"
+    }
+  ],
+  "figure": {
+    "cueWords": [
+      {
+        "word": "좌표평면",
+        "quote": "가 $1$인 사분원을 좌표평면 위에 나타낼 때, $"
+      }
+    ],
+    "hasPlan": true,
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_왕운중_2학기_중간_중3_유사_plans/q08-problem.plan.json",
+    "hasImage": false,
+    "sourcePlan": {
+      "plan": true
+    },
+    "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
+  },
+  "sourceExamHint": {
+    "exam": "archive/exams/original/middle/m3/2mid/26_왕운중_2학기_중간_중3_기출.js",
+    "sourceQid": 8,
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+  },
+  "guide": "JUDGMENT_GUIDE.md 를 먼저 읽는다. 후보 밖 키는 쓸 수 없다. 모든 이유 문장에는 이 문항의 숫자·식을 넣는다."
+}

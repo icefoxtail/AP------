@@ -1,0 +1,64 @@
+{
+  "qid": 24,
+  "itemFingerprint": "9043d2883c9fb39f",
+  "solveSteps": [
+    "두 직선의 x절편은 y=0 일 때 각각 x = -6, x = 4 이므로 밑변의 길이는 4 - (-6) = 10 이다.",
+    "cases 연립방정식을 풀면 5x = 10 에서 x = 2, y = 4 이므로 교점은 (2, 4)이고 높이는 4 이다.",
+    "삼각형의 넓이는 (1/2) * 10 * 4 = 20 이다.",
+    "따라서 답은 20 이다."
+  ],
+  "solvedAnswer": "20",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "unitEvidence": "두 직선 $x - 2y + 6 = 0$, $2x + y - 8 = 0$과 $x$축으로 둘러싸인 삼각형의 넓이를 구하고",
+  "rpmRecordId": "M2-RPM-176",
+  "rpmReason": "두 직선과 x축으로 둘러싸인 삼각형의 밑변 10 과 높이 4 로 넓이 20 을 구하는 넓이 활용 행이다.",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
+  "templateKey": "TPL_M2_CALCULATE_AREA_BOUNDED_BY_TWO_LINES_AND_AXES",
+  "typeReason": "두 직선의 x절편으로 밑변 10 을 구하고 cases 교점으로 높이 4 를 구해 넓이 20 을 계산하는 둘러싼 넓이 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "x절편으로 밑변 10 을 구하고 연립방정식으로 교점 (2, 4)를 구해 넓이 20 을 계산하는 7점 배점의 3단계 서술형 문항이다.",
+  "format": "서술",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "두 직선 $x - 2y + 6 = 0$, $2x + y - 8 = 0$과"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "삼각형의 넓이를 구하고"
+      }
+    ],
+    "method": [
+      {
+        "term": "교점",
+        "src": "solution",
+        "quote": "두 직선의 교점의 좌표 구하기",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "두 직선의 x절편 차 10 과 cases 연립방정식 교점의 y좌표 4 를 이용해 넓이 20 을 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

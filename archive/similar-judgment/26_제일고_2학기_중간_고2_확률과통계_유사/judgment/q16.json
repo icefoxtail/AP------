@@ -1,0 +1,75 @@
+{
+  "qid": 16,
+  "itemFingerprint": "189b6033efbf0fbd",
+  "solveSteps": [
+    "전체 8개 중 4개를 택해 일렬로 진열하는 경우의 수는 {}_{8}P_{4}=1680이다.",
+    "모자-양말 교대 형태 2가지, 모자 배열 2!, 양말 색 배열 2가지, 각 색 3켤레 중 1켤레 선택 3\\times 3=9가지이므로 확률은 72/1680=3/70이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-03",
+  "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+  "unitEvidence": "다음 조건을 모두 만족시킬 확률은?",
+  "rpmRecordId": "H2-PS-RPM-043",
+  "rpmReason": "8개를 구별되는 근원사건 {}_{8}P_{4}=1680으로 보고 조건을 만족하는 72가지의 비 3/70을 구하는 확률 계산 행이다.",
+  "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+  "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+  "typeReason": "똑같은 양말도 확률 계산을 위해 구별되는 근원사건으로 두어 {}_{8}P_{4}=1680 중 조건 (가), (나)를 만족하는 72가지의 확률 3/70을 구한다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "똑같은 양말을 서로 다른 것으로 취급하는 근원사건 설정과 교대·적어도 1켤레 조건을 결합해 72/1680을 구하는 3단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "확률",
+        "src": "stem",
+        "quote": "만족시킬 확률은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "순열",
+        "src": "solution",
+        "quote": "${}_{8}P_{4}=8\\times 7\\times 6\\times 5=1680$",
+        "evidenceType": "IMPLIED",
+        "justification": "전체 근원사건의 수를 $8$개에서 $4$개를 택하는 순열로 구함"
+      },
+      {
+        "term": "곱의법칙",
+        "src": "solution",
+        "quote": "$2\\times 2\\times 2\\times 9=72$",
+        "evidenceType": "IMPLIED",
+        "justification": "교대 패턴, 모자 순서, 양말 색 순서, 양말 선택 수를 곱해 사건의 경우의 수를 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "교대",
+        "src": "stem",
+        "quote": "모자와 양말은 서로 번갈아 가며 진열한다."
+      },
+      {
+        "term": "적어도",
+        "src": "stem",
+        "quote": "적어도 $1$켤레씩 진열한다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "똑같은 양말을 구별해 분모 {}_{8}P_{4}=1680, 분자 72를 구해 3/70(⑤)을 얻었고 저장 정답과 일치함을 확인했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

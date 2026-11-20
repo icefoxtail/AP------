@@ -1,0 +1,81 @@
+{
+  "qid": 17,
+  "itemFingerprint": "44206eb4c5d960b3",
+  "solveSteps": [
+    "a+b+c+d=11 (1\\le a\\le 9, 0\\le b,c,d\\le 9)에서 a'=a-1로 놓으면 a'+b+c+d=10이다.",
+    "음이 아닌 정수해 {}_{4}H_{10}={}_{13}C_{3}=286에서 a'\\ge 9인 4가지와 b,c,d\\ge 10인 3가지를 빼면 286-7=279개이다."
+  ],
+  "solvedAnswer": "279",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "각 자리의 수의 합이 $11$인 모든 자연수의 개수를",
+  "rpmRecordId": "H2-PS-RPM-037",
+  "rpmReason": "a'+b+c+d=10의 음이 아닌 정수해 286개에서 상한 초과 7가지를 제외해 279를 구하는 정수해 개수 행이다.",
+  "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+  "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+  "typeReason": "자릿수 합 방정식 a+b+c+d=11을 치환 후 중복조합 {}_{4}H_{10}=286으로 구하고 자릿수 상한(9 이하) 위반 7가지를 제외한다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "합이 11인 조건을 a'=a-1로 치환해 286개를 구하고 각 자릿수의 상한(9 이하) 초과 경우 7가지를 제외해야 하는 3단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "네 자리의 자연수 중에서"
+      },
+      {
+        "term": "자릿수",
+        "src": "stem",
+        "quote": "각 자리의 수의 합이"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "모든 자연수의 개수를"
+      }
+    ],
+    "method": [
+      {
+        "term": "중복조합",
+        "src": "solution",
+        "quote": "${}_{4}H_{10}={}_{13}C_{3}=\\dfrac{13\\times 12\\times 11}{3\\times 2\\times 1}=286$",
+        "evidenceType": "IMPLIED",
+        "justification": "음이 아닌 정수해의 총 개수를 중복조합 ${}_{4}H_{10}$으로 계산함"
+      },
+      {
+        "term": "여사건",
+        "src": "solution",
+        "quote": "한 자리 숫자 조건을 위반하는 경우는",
+        "evidenceType": "IMPLIED",
+        "justification": "전체 $286$가지에서 $a'\\ge 9$ 또는 $b, c, d\\ge 10$인 $7$가지를 제외함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "범위",
+        "src": "solution",
+        "quote": "$1\\le a\\le 9$, $0\\le b, c, d\\le 9$이다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "a'=a-1 치환으로 {}_{4}H_{10}=286을 구하고 상한 위반 7가지를 빼서 279를 얻었으며 저장 정답과 일치함을 확인했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

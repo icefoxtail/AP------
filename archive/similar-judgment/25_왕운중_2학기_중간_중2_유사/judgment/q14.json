@@ -1,0 +1,55 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "43dc235be62f8e26",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "평행사변형에서 대변의 길이는 같으므로 x = CD = 12 이다.",
+    "이웃한 두 내각의 합은 180도이므로 y + 118 = 180 에서 y = 62 이다.",
+    "따라서 x + y = 12 + 62 = 74 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "평행사변형 $ABCD$에서",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+  "newKeyProposal": null,
+  "typeReason": "평행사변형의 대변 길이와 118도 이웃각의 합 180도 성질을 이용하는 유형이다.",
+  "rpmRecordId": "M2-RPM-072",
+  "rpmReason": "평행사변형의 대변 상등 x=12와 이웃 내각 합 118+y=180 을 적용한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "대변 x=12와 180-118=62를 구하여 합 74를 즉시 계산할 수 있다.",
+  "how": "대변 x=12와 이웃각 합으로 y=62를 얻어 x+y=74를 계산하였다. 118",
+  "slots": {
+    "given": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "평행사변형 $ABCD$에서 $\\overline{AB} = x\\text{ cm}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "$x + y$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "내각",
+        "src": "solution",
+        "quote": "이웃한 두 내각의 합은 $180^\\circ$이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

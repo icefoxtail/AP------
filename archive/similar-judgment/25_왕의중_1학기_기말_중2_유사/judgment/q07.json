@@ -1,0 +1,56 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "7b4ebc61e811f6d9",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "지수의 나이를 x살, 어머니의 나이를 y살이라 하자.",
+    "x + y = 45 이고, 18년 후에는 y + 18 = 2(x + 18) 이다.",
+    "y = 2x + 18 을 x + y = 45 에 대입하면 x + 2x + 18 = 45 -> 3x = 27 -> x = 9 이다.",
+    "따라서 현재 어머니의 나이는 y = 45 - 9 = 36살이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "현재 지수와 어머니의 나이의",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "현재 나이의 합 45 와 18년 후 나이 관계를 연립방정식으로 세워 어머니의 나이 36 을 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-038",
+  "rpmReason": "나이의 합 45 에 관한 두 수 관계를 연립일차방정식으로 모델링하여 해결한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "나이의 합 45살과 18년 후 배수 관계 y + 18 = 2(x + 18) 로 연립방정식을 푼다.",
+  "how": "x + y = 45 와 y + 18 = 2(x + 18) 을 세워 x = 9, 어머니 나이 y = 36 살을 구했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "지수",
+        "src": "stem",
+        "quote": "현재 지수와 어머니의 나"
+      }
+    ],
+    "goal": [
+      {
+        "term": "지수",
+        "src": "solution",
+        "quote": "현재 지수의 나이를 $x"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "을 첫째 식에 대입하면 $x +",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

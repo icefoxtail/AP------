@@ -1,0 +1,62 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "954653d6fd301781",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "y = -3x 를 y축 방향으로 a만큼 평행이동하면 y = -3x + a 이다.",
+    "x절편이 2/3 이므로 (2/3, 0)을 대입한다.",
+    "0 = -3(2/3) + a -> 0 = -2 + a -> a = 2 이다.",
+    "따라서 a의 값은 ①번 2 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "일차함수 $y = -3x$의",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+  "templateKey": "TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT",
+  "newKeyProposal": null,
+  "typeReason": "일차함수 y = -3x 를 평행이동한 식에 x절편 2/3 조건을 대입하여 a = 2 를 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-050",
+  "rpmReason": "일차함수 y = -3x 그래프의 y축 평행이동과 절편 조건을 결합하여 a = 2 를 구한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "평행이동식 y = -3x + a 에 x절편 좌표 (2/3, 0)을 대입해 바로 a = 2 를 얻는다.",
+  "how": "y = -3x + a 에 (2/3, 0)을 대입하여 a = 2 임을 확인했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $y = -3x$의 그래프를"
+      }
+    ],
+    "goal": [
+      {
+        "term": "평행이동",
+        "src": "stem",
+        "quote": "방향으로 $a$만큼 평행이동한"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "대입하면   $0 = -3 \\times",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "절편",
+        "src": "stem",
+        "quote": "그래프의 $x$절편이 $\\frac{2}{3}$일"
+      }
+    ]
+  }
+}

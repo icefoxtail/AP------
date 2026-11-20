@@ -1,0 +1,73 @@
+{
+  "qid": 19,
+  "itemFingerprint": "653b02a05bc9da4d",
+  "solveSteps": [
+    "세 직선 x + 3y = 7과 2x - y = 0의 교점을 먼저 구한다.",
+    "2x - y = 0에서 y = 2x를 x + 3y = 7에 대입하면 x + 6x = 7이므로 7x = 7에서 x = 1, y = 2이다.",
+    "두 직선의 교점의 좌표는 (1, 2)이다.",
+    "세 직선이 한 점에서 만나므로 점 (1, 2)를 3x + ay = 11에 대입한다.",
+    "3(1) + 2a = 11에서 2a = 8이므로 a = 4이다.",
+    "따라서 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "unitEvidence": "세 직선 $x + 3y = 7$, $2x - y = 0$, $3x + ay = 11$이",
+  "rpmRecordId": "M2-RPM-174",
+  "rpmReason": "x + 3y = 7과 2x - y = 0의 교점 (1, 2)를 3x + ay = 11에 대입하여 상수 a = 4를 구하는 교점과 연립방정식 문항이다.",
+  "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+  "templateKey": "TPL_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION_COEFFICIENT",
+  "typeReason": "세 직선이 한 점 (1, 2)에서 만난다는 조건으로부터 3x + ay = 11의 계수 a = 4를 결정하는 교점 조건 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "두 직선의 교점 (1, 2)를 구한 뒤 3x + ay = 11에 대입해 a = 4를 산출하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "세 직선 $x + 3y = 7$,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $a$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "세 직선이 한 점 $(1, 2)$에서 만나므로 $3x + ay = 11$에 대입하면",
+        "evidenceType": "IMPLIED",
+        "justification": "교점 좌표를 제3의 직선에 대입"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직선",
+        "src": "solution",
+        "quote": "세 직선이 한 점 $(1, 2)$에서 만나므로 $3x + ay = 11$에 대입하면"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "x + 3y = 7과 2x - y = 0의 교점 (1, 2)를 3x + ay = 11에 대입하여 2a = 8에서 a = 4임을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

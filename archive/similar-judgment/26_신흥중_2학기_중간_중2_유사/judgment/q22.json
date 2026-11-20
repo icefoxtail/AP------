@@ -1,0 +1,65 @@
+{
+  "qid": 22,
+  "itemFingerprint": "525b16683670f13f",
+  "solveSteps": [
+    "(1) AE // CF, AO = CO, 엇각과 맞꼭지각에 의해 삼각형 AOE 와 COF 는 ASA 합동이다.",
+    "따라서 OE = OF 이므로 두 대각선 AC, EF 가 서로를 이등분하여 사각형 AECF 는 평행사변형이다.",
+    "여기에 두 대각선 길이 AC = EF 가 같으므로 사각형 AECF 는 직사각형이다.",
+    "(2) 직사각형이므로 각 AEC = 90도이고, OA = OE 에서 각 AEF = 각 EAO = 50도이다.",
+    "따라서 각 CEF = 90도 - 50도 = 40도이다."
+  ],
+  "solvedAnswer": "(1) 풀이 참조 / (2) $40^\\circ$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "ABCD$에서 대각선 $AC$의 중",
+  "rpmRecordId": "M2-RPM-196",
+  "rpmReason": "대각선 이등분과 길이 같음으로 직사각형임을 증명하고 90도 - 50도 = 40도를 구하는 서술 단계이다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+  "typeReason": "평행사변형에서 대각선 길이가 같아 직사각형이 되는 조건을 서술하고 50도 각을 이용해 40도를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "ASA 합동과 대각선 조건으로 직사각형을 증명하고 90도에서 50도를 빼 40도를 얻는 난이도 3 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "마름모",
+        "src": "stem",
+        "quote": "[서술형 2] 마름모 $ABCD$에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "$AECF$가 직사각형인 이유를 서술"
+      }
+    ],
+    "method": [
+      {
+        "term": "합동",
+        "src": "solution",
+        "quote": "ext{ASA 합동}) $$ 합동",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "ASA 합동과 대각선 성질로 직사각형을 증명한 뒤 90도 - 50도 = 40도로 각 CEF = 40도임을 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

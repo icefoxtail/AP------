@@ -1,0 +1,57 @@
+{
+  "qid": 22,
+  "itemFingerprint": "2c28dcf7e6aefe6a",
+  "solveSteps": [
+    "각 COD = x, 각 DOE = y라 두면 각 AOD = 4x, 각 BOD = 4y이다.",
+    "각 AOC = 4x - x = 3x이고 각 EOB = 4y - y = 3y이다.",
+    "평각 AOB = 180도이므로 3x + x + y + 3y = 4(x + y) = 180도에서 x + y = 45도이다.",
+    "따라서 각 COE = 각 COD + 각 DOE = x + y = 45도이다."
+  ],
+  "solvedAnswer": "$45^\\circ$",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "unitEvidence": "평각 $\\angle AOB = 180^\\circ$ 위의 한 점 $O$에 대하여 두 반직선 $OC, OE$가 있다.",
+  "rpmRecordId": "M1-RPM-175",
+  "rpmReason": "평각 AOB = 180도 위의 반직선 OC, OE와 각 비율로부터 각 COE = 45도를 구하는 각의 크기 유형이다.",
+  "problemTypeKey": "PT_M1_STRAIGHT_ANGLE_PARTITION",
+  "templateKey": "TPL_M1_STRAIGHT_ANGLE_PARTITION_ADJACENT_RATIO_SUM",
+  "typeReason": "평각 180도를 나누는 인접각들의 비례 조건을 x, y로 치환하여 각 COE = x + y = 45도를 도출하는 평각 분할 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "평각 180도 위에 4(x+y) = 180도 방정식을 세워 원하는 각 COE = 45도를 산출하므로 난이도 2이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "평각",
+        "src": "stem",
+        "quote": "평각 $\\angle AOB = 180^\\circ$ 위의 한 점 $O$에 대하여 두 반직선 $OC, OE$가 있다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle COE$의 크기를 구하고 그 풀이과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "반직선",
+        "src": "solution",
+        "quote": "세 점 $A, O, B$는 한 직선 위에 있으므로 평각의 크기는 $180^\\circ$이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "평각 180도의 인접각 분할 방정식 풀이"
+      }
+    ],
+    "condition": []
+  },
+  "how": "각 COD와 DOE를 미지수로 두고 평각 AOB = 180도 조건에서 4(x + y) = 180도를 풀어 각 COE = 45도임을 서술형으로 판정하였다."
+}

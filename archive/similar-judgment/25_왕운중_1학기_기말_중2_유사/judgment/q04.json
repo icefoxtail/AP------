@@ -1,0 +1,57 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "e2acd64fa500d0f8",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "해 (1, -2)를 두 방정식에 대입한다.",
+    "a(1) - b(-2) = 10 에서 a + 2b = 10 이다.",
+    "a(1) + b(-2) = 2 에서 a - 2b = 2 이다.",
+    "변끼리 더하면 2a = 12 이므로 a = 6, 2b = 4 이므로 b = 2 이다.",
+    "따라서 a + b = 6 + 2 = 8 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "연립방정식 $\\begin{c",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "해가 주어졌을 때 ax - by = 10 의 미정계수를 연립하여 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-032",
+  "rpmReason": "해 (1, -2)를 대입하여 a + 2b = 10 을 얻고 연립방정식을 푼다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "해 대입 후 합이 10 인 식과 차가 2인 식을 가감법으로 푼다.",
+  "how": "해를 대입해 a + 2b = 10 과 a - 2b = 2 를 풀어 a+b=8을 구하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin{cases} ax - by = 10"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "단, $a, b$는 상수"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "두 식에 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

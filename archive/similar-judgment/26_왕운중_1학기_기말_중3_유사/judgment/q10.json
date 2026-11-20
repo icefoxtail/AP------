@@ -1,0 +1,71 @@
+{
+  "qid": 10,
+  "itemFingerprint": "b756522dfec7af64",
+  "solveSteps": [
+    "2(x-5)^2 = k + 1에서 (x-5)^2 = (k+1)/2이므로 x = 5 +- sqrt((k+1)/2)이다.",
+    "두 해가 서로 다른 자연수가 되려면 sqrt((k+1)/2)가 자연수 t이어야 하고, 5 - t >= 1이어야 하므로 t는 1, 2, 3, 4 중 하나이다.",
+    "k = 2*t^2 - 1이므로 t=1일 때 k=1, t=2일 때 k=7, t=3일 때 k=17, t=4일 때 k=31이다.",
+    "모든 정수 k의 값의 합은 1 + 7 + 17 + 31 = 56이다. 답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "unitEvidence": "이차방정식 $2(x-5)",
+  "rpmRecordId": "M3-RPM-031",
+  "rpmReason": "2(x-5)^2 = k+1에서 제곱근을 취해 자연수 해 조건 t=4일 때 k=31 등을 구한다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION",
+  "templateKey": "NONE",
+  "typeReason": "식 2(x-5)^2 = k+1의 해가 서로 다른 두 자연수가 되도록 k의 합 56을 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "자연수 해 조건 및 5-t >= 1 범위를 고려해 k = 1, 7, 17, 31의 합 56을 구하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "quote": "이차방정식 $2(x-5)",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "quote": "서로 다른 두 자연수를 해로 갖도록",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "양화",
+        "quote": "갖도록 하는 모든 정수 $k$의",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정수",
+        "quote": "록 하는 모든 정수 $k$의 값의",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "x = 5 +- sqrt((k+1)/2)에서 sqrt((k+1)/2)가 1, 2, 3, 4가 됨을 확인하여 k = 1, 7, 17, 31의 합 56을 구하고 ⑤로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

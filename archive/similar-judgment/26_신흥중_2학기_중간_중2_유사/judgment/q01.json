@@ -1,0 +1,64 @@
+{
+  "qid": 1,
+  "itemFingerprint": "cf62731e996973f2",
+  "solveSteps": [
+    "선분 AD가 각 A의 이등분선이고 각 BAD = 35도이므로 각 A = 2 * 35도 = 70도이다.",
+    "삼각형 ABC는 AB = AC 인 이등변삼각형이므로 두 밑각의 크기는 서로 같다 (각 B = 각 C).",
+    "삼각형의 세 내각의 합은 180도이므로 각 C = (180도 - 70도) / 2 = 110도 / 2 = 55도이다.",
+    "따라서 각 C의 크기는 55도이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "e{AC}$인 이등변삼각형 $ABC$에서",
+  "rpmRecordId": "M2-RPM-178",
+  "rpmReason": "이등변삼각형에서 꼭지각 70도와 내각 합 180도를 이용하여 밑각 55도를 구하는 풀이 단계이다.",
+  "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+  "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
+  "typeReason": "이등분선 각 35도에서 꼭지각 70도를 구하고 밑각 크기 55도를 도출하는 이등변삼각형 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "꼭지각 35도의 2배인 70도와 180도 내각 합 공식을 직접 적용하는 기본 난이도 1 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이등변삼각형",
+        "src": "stem",
+        "quote": "e{AC}$인 이등변삼각형 $ABC$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이등분선",
+        "src": "stem",
+        "quote": "gle A$의 이등분선과 $\\over"
+      }
+    ],
+    "method": [
+      {
+        "term": "내각",
+        "src": "solution",
+        "quote": "삼각형의 세 내각의 크기의 합은",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "각 BAD = 35도에서 각 A = 70도, 이등변삼각형 밑각 공식으로 각 C = 55도임을 구해 ②로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

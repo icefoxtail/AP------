@@ -1,0 +1,55 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "a34f3861ed32fdd3",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "AB = DE, BC = EF 로 두 쌍의 대응변의 길이가 같다.",
+    "두 변의 끼인각은 각각 각 B와 각 E이다.",
+    "따라서 각 B = 각 E 일 때 SAS 합동이 성립한다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 삼각형 $ABC$와 $D",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+  "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+  "newKeyProposal": null,
+  "typeReason": "두 변이 같을 때 끼인각 조건에 따른 SAS 합동 판정을 묻는 유형이다.",
+  "rpmRecordId": "M1-RPM-192",
+  "rpmReason": "두 대응변 사이의 끼인각이 같아야 SAS 합동이 됨을 확인한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 변 AB, BC의 끼인각이 각 B임을 확인하여 SAS 합동 조건을 선택한다.",
+  "how": "AB와 BC 사이 끼인각이 B이므로 각 B = 각 E 와 SAS합동이 짝지어진 3번을 선택하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "두 삼각형 $ABC$와 $DEF$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합동",
+        "src": "stem",
+        "quote": "합동 조건의 짝으로 올바른 것은? [3점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "끼인각",
+        "src": "solution",
+        "quote": "두 쌍의 대응변의 길이가 같을 때, 그 끼인각의 크기가",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

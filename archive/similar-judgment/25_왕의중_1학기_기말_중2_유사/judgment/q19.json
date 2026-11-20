@@ -1,0 +1,63 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "204b3d729504f01a",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "ax + by + c = 0 을 정리하면 y = -(a/b)x - c/b 이다.",
+    "제1, 3, 4사분면을 지나므로 기울기 -(a/b) > 0 -> a/b < 0 -> ab < 0 (ㄱ 참).",
+    "y절편 -(c/b) < 0 -> c/b > 0 -> bc > 0 (ㄴ 참).",
+    "ab < 0 이고 bc > 0 이면 a와 b는 다른 부호, b와 c는 같은 부호이므로 a와 c는 다른 부호, 즉 ac < 0 이다 (ㄷ 거짓).",
+    "따라서 옳은 것은 ④번 ㄱ, ㄴ이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "일차방정식 $ax + by",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "일차방정식 ax + by + c = 0 의 그래프가 지나는 사분면으로 계수의 곱 ab, bc 의 부호를 판정하는 유형이다.",
+  "rpmRecordId": "M2-RPM-054",
+  "rpmReason": "방정식 ax + by + c = 0 의 사분면 조건을 일차함수 기울기와 절편 부호로 변환하여 판정한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "방정식 ax + by + c = 0 의 기울기와 y절편의 부호로부터 ab < 0, bc > 0 관계를 도출한다.",
+  "how": "방정식 ax + by + c = 0 의 사분면 조건으로 ab<0, bc>0, ac<0 을 도출해 ㄱ, ㄴ이 참임을 확인했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "일차방정식 $ax + by + c = 0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사분면",
+        "src": "stem",
+        "quote": "제$1, 3, 4$사분면을 지날 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "부호",
+        "src": "solution",
+        "quote": "부호가 반대이고",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "기울기 $-\\frac{a}{b} > 0$"
+      }
+    ]
+  }
+}

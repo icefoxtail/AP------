@@ -1,0 +1,81 @@
+{
+  "qid": 19,
+  "itemFingerprint": "320c514fe09666df",
+  "solveSteps": [
+    "전체 최단 경로 쌍은 ({}_{10}C_{4})^{2}=210^{2}=44100가지이다.",
+    "5칸 이동한 교점 P_{k}(k=0,1,2,3,4)에서 만나는 쌍은 \\sum ({}_{5}C_{k}\\cdot {}_{5}C_{k+1})^{2}=25+2500+10000+2500+25=15050이므로 답은 44100-15050=29050이다."
+  ],
+  "solvedAnswer": "29050",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 가로 $4$칸, 세로 $6$칸으로 이루어진 도로망이 있다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "도로를 따라 최단 경로로 이동하려고 할 때,",
+  "rpmRecordId": "H2-PS-RPM-033",
+  "rpmReason": "가로 4칸, 세로 6칸 격자 최단경로 쌍 44100에서 중간 지점 P_{k}를 거치는 만나는 쌍 15050을 빼는 중복·원순열 행이다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "전체 최단경로 쌍 210^{2}=44100에서 5칸 이동 지점 P_{k}에서 만나는 경로 쌍 15050을 여사건으로 제외한다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "전체 경로 쌍 44100에서 만나는 지점 P_{k} (k=0~4) 5개별 경로 수 합 15050을 빼야 하는 3단계 문항이다.",
+  "difficultyBoundaryFlag": "B34",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "최단경로",
+        "src": "stem",
+        "quote": "최단 경로로 이동하려고 할 때,"
+      },
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 도로망의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "만나지 않는 경우의 수를"
+      }
+    ],
+    "method": [
+      {
+        "term": "여사건",
+        "src": "solution",
+        "quote": "$44100-15050=29050$",
+        "evidenceType": "IMPLIED",
+        "justification": "전체 경로 쌍 $44100$에서 두 사람이 만나는 경우의 수 $15050$을 빼서 구함"
+      },
+      {
+        "term": "조합",
+        "src": "solution",
+        "quote": "${}_{10}C_{4}=\\dfrac{10\\times 9\\times 8\\times 7}{4\\times 3\\times 2\\times 1}=210$",
+        "evidenceType": "IMPLIED",
+        "justification": "격자의 최단 경로 수를 조합으로 계산함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "일정",
+        "src": "stem",
+        "quote": "같은 속력으로 이동한다.)"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "발문 그림 설명만으로 격자 크기(4x6)와 A, B 위치가 명확하므로 SELF_CONTAINED로 판정했고, 44100-15050=29050을 구해 저장 정답과 일치함을 확인했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

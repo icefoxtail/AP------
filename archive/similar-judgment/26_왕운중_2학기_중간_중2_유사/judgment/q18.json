@@ -1,0 +1,58 @@
+{
+  "qid": 18,
+  "itemFingerprint": "bb4b92fd83279bf6",
+  "solveSteps": [
+    "각 AFD = 118도이므로 각 DFE = 180도 - 118도 = 62도이다.",
+    "직각삼각형 DEF에서 각 FDE = 90도 - 62도 = 28도이다.",
+    "마름모의 대각선 BD는 각 ADC를 이등분하므로 각 ADC = 2 * 28도 = 56도이다.",
+    "이웃한 각의 합이 180도이므로 각 BCD = 180도 - 56도 = 124도이고, 대각선 AC가 이를 이등분하므로 각 ACB = 124/2 = 62도이다.",
+    "따라서 정답은 ① 62도이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "마름모 $ABCD$의 꼭짓점 $A$에서 변 $CD$에 내린 수선의 발을 $E$라고 하고",
+  "rpmRecordId": "M2-RPM-196",
+  "rpmReason": "마름모 ABCD의 수선의 발 E와 대각선 BD의 교각 AFD = 118도로부터 각 ACB = 62도를 구하는 마름모의 성질 유형이다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+  "typeReason": "마름모 ABCD에서 수선의 발과 대각선 BD가 이루는 각 AFD = 118도를 추적하여 각 ACB를 도출하는 특수 사각형 성질 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "직각삼각형 DEF의 각과 마름모 대각선의 각 이등분 성질을 연쇄적으로 거쳐 각 ACB = 62도를 구하므로 난이도 3이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "마름모",
+        "src": "stem",
+        "quote": "마름모 $ABCD$의 꼭짓점 $A$에서 변 $CD$에 내린 수선의 발을 $E$라고 하고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle ACB$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "마름모",
+        "src": "solution",
+        "quote": "마름모의 대각선 $BD$는 $\\angle ADC$를 이등분하므로",
+        "evidenceType": "IMPLIED",
+        "justification": "마름모 대각선의 내각 이등분 성질 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "마름모 ABCD에서 각 AFD = 118도로부터 각 FDE = 28도를 구하고 대각선 이등분 성질로 각 BCD = 124도에서 각 ACB = 62도임을 판정하였다."
+}

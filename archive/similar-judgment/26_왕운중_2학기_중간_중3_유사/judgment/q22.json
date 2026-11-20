@@ -1,0 +1,70 @@
+{
+  "qid": 22,
+  "itemFingerprint": "6f2d6a00a160a959",
+  "solveSteps": [
+    "직각삼각형 ABD에서 AD=12, 60도이므로 AB = 12*cos(60도) = 6, BD = 12*sin(60도) = 6*sqrt(3) 이다.",
+    "삼각형 ABD의 넓이는 (1/2)*6*6*sqrt(3) = 18*sqrt(3) 이다.",
+    "삼각형 DBC에서 DC=10, 30도이므로 넓이는 (1/2)*6*sqrt(3)*10*sin(30도) = 15*sqrt(3) 이다.",
+    "사각형 ABCD의 넓이는 18*sqrt(3) + 15*sqrt(3) = 33*sqrt(3) cm^2 이다."
+  ],
+  "solvedAnswer": "$33\\sqrt{3}\\text{ cm}^2$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 $\\angle\\text{ABD} = 90^\\circ$, $\\overline{\\text{AD}} = 12\\text{ cm}$, $\\angle\\text{DAB} = 60^\\circ$, $\\overline{\\text{DC}} = 10\\text{ cm}$, $\\angle\\text{BDC} = 30^\\circ$인 $\\square\\text{ABCD}$의 넓이를 구하시오.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "unitEvidence": "ABCD}$의 넓이를 구하시오.",
+  "rpmRecordId": "M3-RPM-062",
+  "rpmReason": "직각삼각형 ABD와 삼각형 DBC의 넓이 18*sqrt(3), 15*sqrt(3)을 합하여 사각형 ABCD의 넓이를 구한다.",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "typeReason": "특수각 60도, 30도와 두 변의 길이를 이용해 다각형 ABCD의 넓이 33*sqrt(3)을 구하는 활용 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "AD=12와 DC=10에서 BD=6*sqrt(3)을 구하고 두 삼각형의 넓이 합을 구하는 기본 서술형 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "quote": "직각삼각형 $\\text{",
+        "src": "solution"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "quote": "ABCD}$의 넓이를 구하시오.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "직각삼각형",
+        "quote": "직각삼각형 $\\text{",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "길이",
+        "quote": "{BD}}$의 길이를 구한 경우",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "삼각형 ABD 넓이 18*sqrt(3)과 DBC 넓이 15*sqrt(3)을 각각 구하여 사각형 ABCD의 넓이 33*sqrt(3)을 도출했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

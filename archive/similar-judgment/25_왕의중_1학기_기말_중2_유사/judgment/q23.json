@@ -1,0 +1,63 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "6057ce0ecc497e08",
+  "solvedAnswer": "$9$개",
+  "solveSteps": [
+    "(a + 1)x + y - a + 7 = 0 을 y에 대해 풀면 y = -(a + 1)x + a - 7 이다.",
+    "제1사분면을 지나지 않으려면 기울기 <= 0 이어야 하므로 -(a + 1) <= 0 -> a >= -1 이다.",
+    "y절편 <= 0 이어야 하므로 a - 7 <= 0 -> a <= 7 이다.",
+    "따라서 -1 <= a <= 7 이다.",
+    "만족하는 정수 a는 -1, 0, 1, 2, 3, 4, 5, 6, 7 의 9개이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서답형 3] $x, y$에",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "일차방정식에서 a - 7 <= 0 등 조건을 통해 제1사분면을 지나지 않는 정수 9개를 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-054",
+  "rpmReason": "직선 y = -(a+1)x + a - 7 이 제1사분면을 지나지 않도록 a <= 7 범위를 결정한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기울기 -(a+1) <= 0 과 y절편 a - 7 <= 0 의 연립부등식에서 정수 9개를 구한다.",
+  "how": "y = -(a+1)x + a-7 에서 기울기 및 y절편 조건으로부터 -1 <= a <= 7 의 9개를 구했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "일차방정식 $(a + 1)x + y - a + 7 = 0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "정수 $a$의 개수를 구하시오"
+      }
+    ],
+    "method": [
+      {
+        "term": "사분면",
+        "src": "solution",
+        "quote": "제$1$사분면을 지나지 않으려면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "정수 $a$의 개수를 구하시오"
+      }
+    ]
+  }
+}

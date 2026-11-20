@@ -1,0 +1,63 @@
+{
+  "qid": 5,
+  "itemFingerprint": "2e4eb0d97fda6e42",
+  "solveSteps": [
+    "일차방정식 x + ay - b = 0에서 y = (-1/a)x + (b/a)이다.",
+    "a < 0, b > 0이므로 기울기 -1/a > 0이고 y절편 b/a < 0이다.",
+    "따라서 그래프는 제1, 3, 4사분면을 지나고 제2사분면을 지나지 않는다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "$x + ay - b = 0$을 $y$에 대하여 정리하",
+  "rpmRecordId": "M2-RPM-054",
+  "rpmReason": "방정식 x + ay - b = 0에서 계수 a, b의 부호로 사분면을 판정한다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+  "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+  "typeReason": "항 ay가 포함된 일차방정식의 기울기와 절편 부호로 지나지 않는 사분면을 결정하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "항 ay에서 유도된 기울기 양수와 절편 음수로 사분면을 즉시 판별하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "0$일 때, 일차방정식 $x + ay"
+      }
+    ],
+    "goal": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "b = 0$의 그래프가 지나지 않는"
+      }
+    ],
+    "method": [
+      {
+        "term": "사분면",
+        "src": "stem",
+        "quote": "지나지 않는 사분면은?",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "항 ay를 정리해 기울기 양수, y절편 음수임을 파악하여 제2사분면을 지나지 않음을 확인해 ③으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

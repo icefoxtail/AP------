@@ -1,0 +1,65 @@
+{
+  "qid": 19,
+  "itemFingerprint": "3324da81aa5df99a",
+  "solveSteps": [
+    "일차함수 y = ax + 2 는 y절편이 (0, 2)인 직선이다.",
+    "점 A(2, 18)을 지날 때: 18 = 2a + 2 에서 2a = 16 이므로 a = 8 이다.",
+    "점 B(4, 10)을 지날 때: 10 = 4a + 2 에서 4a = 8 이므로 a = 2 이다.",
+    "선분 AB와 만나려면 기울기 a의 범위는 2 <= a <= 8 이어야 한다.",
+    "따라서 가능한 자연수 a는 2, 3, 4, 5, 6, 7, 8 의 7개이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "일차함수 $y = ax",
+  "rpmRecordId": "M2-RPM-171",
+  "rpmReason": "ax + 2 그래프가 A(2, 18)과 B(4, 10)을 지나는 경계 기울기를 구해 2 <= a <= 8 을 찾는 단계이다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+  "templateKey": "NONE",
+  "typeReason": "ax + 2 가 두 점을 이은 선분 AB와 만날 때 기울기 a의 범위를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "ax + 2 식에 두 끝점 A(2, 18)과 B를 대입하여 기울기 범위를 구하고 개수를 세는 난이도 3 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "0)$을 이은 선분 $AB$와 만"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "연수 $a$의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "$와 만나려면 기울기 $a$가 두",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "ax + 2 가 A(2, 18)과 B(4, 10)을 지날 때 a = 8, a = 2 이므로 자연수 개수 7개로 ③으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

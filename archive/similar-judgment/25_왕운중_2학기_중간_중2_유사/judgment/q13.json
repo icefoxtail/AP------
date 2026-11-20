@@ -1,0 +1,58 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "d3c5e4f10209de23",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "각 A, B의 이등분선의 교점 I는 내심이다.",
+    "ㄱ. AI = BI 는 외심의 성질이므로 거짓이다.",
+    "ㄴ. BI는 각의 이등분선이므로 각 ABI = 각 CBI 이다 (참).",
+    "ㄷ. BI는 외접원 반지름이 아니므로 넓이가 36 pi 가 아니다 (거짓).",
+    "ㄹ. ID는 내접원 반지름이므로 내접원 넓이는 pi * 3^2 = 9 pi 이다 (참).",
+    "따라서 옳은 것은 ㄴ, ㄹ이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 과정을 읽고 <보기>",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+  "newKeyProposal": null,
+  "typeReason": "각의 이등분선으로 작도된 내심의 성질과 36 등 선지의 참·거짓을 판별하는 유형이다.",
+  "rpmRecordId": "M2-RPM-066",
+  "rpmReason": "각의 이등분선의 교점인 내심의 성질과 내접원의 반지름 성질을 확인한다. 36",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "내심과 외심의 성질을 구분하고 외접원 36pi 와 내접원 9pi 의 참·거짓을 가려야 한다.",
+  "how": "내심의 성질에 따라 각의 이등분선 성질 ㄴ과 내접원 반지름 성질 ㄹ을 골랐다. 36",
+  "slots": {
+    "given": [
+      {
+        "term": "이등분선",
+        "src": "stem",
+        "quote": "접었다 펼쳐서 $\\angle A$의 이등분선을 만든다"
+      }
+    ],
+    "goal": [
+      {
+        "term": "내접",
+        "src": "stem",
+        "quote": "<보기> 중 옳은 것만을 있는 대로 고른 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "교점",
+        "src": "solution",
+        "quote": "두 내각의 이등분선의 교점 $I$는",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

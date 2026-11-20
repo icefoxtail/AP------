@@ -1,0 +1,57 @@
+{
+  "qid": 19,
+  "itemFingerprint": "11a5e370e4950406",
+  "solveSteps": [
+    "삼각형 ABC와 DEF가 닮음이므로 대응점은 A와 D, B와 E, C와 F이다.",
+    "각 D = 각 A = 42도, 각 C = 각 F = 105도이므로 각 E = 180도 - (42도 + 105도) = 33도이다.",
+    "대응변 BC와 EF의 길이의 비는 9 : 12 = 3 : 4이므로 닮음비는 3 : 4이다.",
+    "따라서 옳은 것은 4번 닮음비는 3 : 4이다이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-SIMILAR_FIGURES",
+  "unitEvidence": "$\\triangle ABC \\sim \\triangle DEF$이고 $\\angle A = 42^\\circ$, $\\angle F = 105^\\circ$",
+  "rpmRecordId": "M2-RPM-203",
+  "rpmReason": "닮은 삼각형 ABC, DEF에서 각 42도, 105도와 대응변 BC, EF의 길이로부터 닮음비 3:4를 판정하는 대응변·대응각 유형이다.",
+  "problemTypeKey": "PT_SIMILAR_FIGURES",
+  "templateKey": "TPL_SIMILAR_FIGURES_CORRESPONDENCE_STATEMENT_JUDGMENT",
+  "typeReason": "삼각형 ABC와 DEF의 닮음 관계에서 대응각과 대응변의 비를 각각 점검하여 옳은 진술을 가려내는 닮은 도형 진술 판정 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "삼각형 ABC와 DEF의 대응변 9:12 = 3:4 약분으로 닮음비를 바로 구하는 기본 문항이므로 난이도 1이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "닮음",
+        "src": "stem",
+        "quote": "$\\triangle ABC \\sim \\triangle DEF$이고 $\\angle A = 42^\\circ$, $\\angle F = 105^\\circ$, $\\overline{BC} = 9\\text{ cm}$, $\\overline{EF} = 12\\text{ cm}$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "닮음비",
+        "src": "choices",
+        "quote": "$\\triangle ABC$와 $\\triangle DEF$의 닮음비는 $3 : 4$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "대응변",
+        "src": "solution",
+        "quote": "대응변 $\\overline{BC}$와 $\\overline{EF}$의 길이의 비는 $9 : 12 = 3 : 4$이므로 닮음비는 $3 : 4$이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "대응변의 길이비로부터 닮음비 도출"
+      }
+    ],
+    "condition": []
+  },
+  "how": "삼각형 ABC와 DEF의 대응변 BC와 EF의 비 9:12 = 3:4로부터 닮음비가 3:4임을 기본 정의로 판정하였다."
+}

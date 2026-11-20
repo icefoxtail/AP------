@@ -1,0 +1,70 @@
+{
+  "qid": 10,
+  "itemFingerprint": "e287d3a014d18671",
+  "solveSteps": [
+    "직선 mx+n의 x절편은 -n/m, y절편은 n이다. tan(BAO) = n / (n/m) = m = 3/4 이다.",
+    "OA = 4k, OB = 3k 라 두면 AB = 5k 이다.",
+    "삼각형 OAB의 넓이에서 (1/2)*4k*3k = (1/2)*5k*3 이므로 12k^2 = 15k, k = 5/4 이다.",
+    "n = OB = 15/4 이고 m = 3/4 이므로 m + n = 18/4 = 9/2 이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "그림에서 두 점 $\\text{A}, \\text{B}$는 각각 직선 $y = mx + n$과 $x$축, $y$축의 교점이고 $\\overline{\\text{AB}} \\perp \\overline{\\text{OH}}$, $\\overline{\\text{OH}} = 3$이다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "unitEvidence": "$라 하면 $\\tan\\alpha =",
+  "rpmRecordId": "M3-RPM-059",
+  "rpmReason": "직선 mx+n과 OH=3에서 삼각형 OAB의 넓이와 변의 비 12, 15를 결합해 변의 길이를 구한다.",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+  "typeReason": "직선의 기울기 mx+n과 삼각비 tan(BAO)로부터 변의 길이와 절편을 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "직선의 절편과 직각삼각형 OAB의 넓이 공식 12, 15를 결합하는 중급 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "원점",
+        "quote": "xt{O}$는 원점이고, 직선은",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "탄젠트",
+        "quote": "$라 하면 $\\tan\\alpha =",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "교점",
+        "quote": ", $y$축의 교점이고 $\\ove",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양수",
+        "quote": "4}$일 때, 양수 $m, n$에",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "직선 y=mx+n의 절편에서 m=3/4을 찾고 OH=3과 삼각형 OAB의 넓이로부터 n=15/4를 구해 m+n=9/2를 얻었다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
