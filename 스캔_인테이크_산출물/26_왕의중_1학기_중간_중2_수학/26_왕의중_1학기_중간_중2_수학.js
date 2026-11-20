@@ -1,5 +1,5 @@
 window.examData = {
-  title: "26_왕지중_1학기_중간_중2_수학",
+  title: "26_왕의중_1학기_중간_중2_수학",
   totalScore: 100,
   questions: [
     {
@@ -309,7 +309,7 @@ window.examData = {
     {
         "id": 24,
         "score": 5,
-        "question": "[서답형 4] 다음 그림과 같은 정사각형에서 점 $F$는 점 $D$에서 점 $C$까지 움직인다고 한다. $\\overline{DF}=x\\,\\text{cm}$이고 사각형 $AECF$의 넓이는 정사각형 $ABCD$의 넓이의 $\\dfrac{5}{9}$ 이하가 된다고 할 때, 가능한 $x$의 값 중 가장 작은 자연수를 풀이과정과 함께 구하시오.<br><center><img src=\"assets/images/26_왕지중_1학기_중간_중2_수학/q24.png\" width=\"300\"></center>",
+        "question": "[서답형 4] 다음 그림과 같은 정사각형에서 점 $F$는 점 $D$에서 점 $C$까지 움직인다고 한다. $\\overline{DF}=x\\,\\text{cm}$이고 사각형 $AECF$의 넓이는 정사각형 $ABCD$의 넓이의 $\\dfrac{5}{9}$ 이하가 된다고 할 때, 가능한 $x$의 값 중 가장 작은 자연수를 풀이과정과 함께 구하시오.<br><center><img src=\"assets/images/26_왕의중_1학기_중간_중2_수학/q24.png\" width=\"300\"></center>",
         "choices": [],
         "answer": "",
         "solution": ""
