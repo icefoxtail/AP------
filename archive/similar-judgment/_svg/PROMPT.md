@@ -80,7 +80,7 @@ node .tmp/work/render.mjs                                               # "usage
 **c. plan.** `item.json`({"sourcePath": stagePath, "ordinal": 문항 번호})과 `plan.json`을 쓴다.
 - plan은 `basedOn`의 구조를 본떠 **이 문항의 숫자·조건으로 바꾼다.** 그대로 복사한 plan은 검사기가 막는다(`PLAN_UNCHANGED_COPY`).
 - `mustShow`의 값이 모두 plan에 들어가야 한다.
-- `node archive/tools/geometry-equation/ops/claude-batch/plan-lint.cjs <plan.json>`가 OK가 될 때까지 고친다.
+- `node archive/tools/geometry-equation/ops/claude-batch/plan-lint.cjs --shallow <plan.json>`가 OK가 될 때까지 고친다.
 
 **d. 엔진 렌더.**
 ```bash

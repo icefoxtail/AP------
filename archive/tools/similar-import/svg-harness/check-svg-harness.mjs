@@ -1,5 +1,6 @@
 // SVG harness checker for one similar exam: design -> plan -> engine render -> look -> publish draft.
-// usage: node archive/tools/similar-import/svg-harness/check-svg-harness.mjs <exam harness.json> [--repo <root>] [--no-lint]
+// usage: node archive/tools/similar-import/svg-harness/check-svg-harness.mjs <exam harness.json> [--stage plan] [--repo <root>] [--no-lint]
+// --stage plan: plan-only pass (status PLANNED = design + item.json + plan.json + plan-lint OK; no render yet, no SVG allowed).
 //
 // What it enforces (the worker cannot hand-make or loosely make a figure):
 //  1. DESIGN before plan: kind, basedOn (an existing plan in the repo), solutionUses (exact quote of the item's
@@ -22,6 +23,7 @@ const args = process.argv.slice(2);
 const file = args[0];
 const repo = path.resolve(args.includes("--repo") ? args[args.indexOf("--repo") + 1] : process.cwd());
 const lint = !args.includes("--no-lint");
+const planStage = args.includes("--stage") && args[args.indexOf("--stage") + 1] === "plan";
 if (!file) { console.error("usage: node check-svg-harness.mjs <exam harness.json> [--repo <root>] [--no-lint]"); process.exit(2); }
 const H = JSON.parse(fs.readFileSync(file, "utf8"));
 const workDir = path.dirname(path.resolve(file));
@@ -52,7 +54,8 @@ for (const it of H.items) {
     const s = it[side];
     if (s.need === "NO") continue;
     const st = s.status, note = str(s.note);
-    if (!["DONE", "NOT_NEEDED", "UNSUPPORTED", "CONTENT"].includes(st)) { err(it.qid, side, "STATUS", `need=${s.need} but status=${st}`); continue; }
+    const finals_ = planStage ? ["PLANNED", "NOT_NEEDED", "CONTENT"] : ["DONE", "NOT_NEEDED", "UNSUPPORTED", "CONTENT"];
+    if (!finals_.includes(st)) { err(it.qid, side, "STATUS", `need=${s.need} but status=${st} (allowed: ${finals_.join("/")})`); continue; }
     if (st === "NOT_NEEDED") {
       if (s.need === "YES") { err(it.qid, side, "NOT_NEEDED_ON_YES", "need=YES (original or stage has this figure): draw it, or UNSUPPORTED/CONTENT"); continue; }
       const quote = (note.match(/「([^」]{4,})」/) || [])[1];
@@ -84,6 +87,11 @@ for (const it of H.items) {
       if (!fs.existsSync(linter)) err(it.qid, side, "LINT_TOOL_MISSING", "merge origin/main first (plan-lint.cjs)");
       else { try { execFileSync("node", [linter, "--shallow", "--quiet", abs(s.planPath)], { cwd: repo, stdio: "pipe" }); } catch (e) { err(it.qid, side, "PLAN_LINT", str(e.stdout).trim().split("\n").slice(-2).join(" | ")); } }
     }
+
+    const itemFile = path.join(path.dirname(abs(s.planPath)), "item.json");
+    if (!fs.existsSync(itemFile)) err(it.qid, side, "ITEM_MISSING", "item.json next to plan.json: {\"sourcePath\": stagePath, \"ordinal\": n}");
+    else { const im = JSON.parse(fs.readFileSync(itemFile, "utf8")); if (im.sourcePath !== H.stagePath || Number(im.ordinal) !== it.ordinal) err(it.qid, side, "ITEM_MISMATCH", `item.json must be {sourcePath: ${H.stagePath}, ordinal: ${it.ordinal}}`); }
+    if (st === "PLANNED") continue;
 
     // 3. ENGINE RENDER of this exact plan
     const outDir = path.join(path.dirname(abs(s.planPath)), "out");

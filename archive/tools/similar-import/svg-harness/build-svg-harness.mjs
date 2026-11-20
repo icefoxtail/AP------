@@ -84,7 +84,10 @@ for (const [name, stagePath] of [...stages].sort()) {
   const need = items.reduce((n, it) => n + (it.problem.need === "YES") + (it.solution.need === "YES"), 0);
   exams.push({ exam: name, stagePath, releasedPath, originalPath: origPath, items: items.length, figuresNeeded: need, status: "TODO", items_detail: items });
 }
-exams.sort((a, b) => b.exam.localeCompare(a.exam));
+// Work order (user 2026-11-20): 중3 -> 중2 -> 중1 -> 고3 -> 고2 -> 고1; inside a grade 2학기 기말 -> 2학기 중간 -> 1학기 기말 -> 1학기 중간; then newer year first.
+const gradeRank = n => { const g = (n.match(/_(중|고)([123])_/) || []); return g[1] === "중" ? 3 - Number(g[2]) : g[1] === "고" ? 6 - Number(g[2]) : 9; };
+const termRank = n => /2학기_기말/.test(n) ? 0 : /2학기_중간/.test(n) ? 1 : /1학기_기말/.test(n) ? 2 : /1학기_중간/.test(n) ? 3 : 4;
+exams.sort((a, b) => gradeRank(a.exam) - gradeRank(b.exam) || termRank(a.exam) - termRank(b.exam) || b.exam.slice(0, 2).localeCompare(a.exam.slice(0, 2)) || a.exam.localeCompare(b.exam));
 fs.mkdirSync(path.join(outDir, "exams"), { recursive: true });
 const summary = exams.map(e => ({ exam: e.exam, stagePath: e.stagePath, releasedPath: e.releasedPath, originalPath: e.originalPath, items: e.items, figuresNeeded: e.figuresNeeded, status: e.status }));
 for (const e of exams) fs.mkdirSync(path.join(outDir, "exams", e.exam), { recursive: true }), fs.writeFileSync(path.join(outDir, "exams", e.exam, "harness.json"), JSON.stringify({ ...e, items: e.items_detail, items_detail: undefined }, null, 2) + "\n");
