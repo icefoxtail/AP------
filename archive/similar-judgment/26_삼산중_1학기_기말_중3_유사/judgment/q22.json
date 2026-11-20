@@ -1,0 +1,65 @@
+{
+  "qid": 22,
+  "itemFingerprint": "72303c4fbcdbf4b6",
+  "solveSteps": [
+    "처음 가로를 x 라 하면 세로는 x + 4 이다.",
+    "네 귀퉁이를 3만큼 잘라낸 상자 밑면 가로는 x - 6, 세로는 x - 2, 높이는 3 이다.",
+    "부피는 3(x - 6)(x - 2) = 420 이다.",
+    "(x - 6)(x - 2) = 140 에서 x^2 - 8x - 128 = 0 이고 (x - 16)(x + 8) = 0 이다.",
+    "x > 6 이므로 x = 16 이고 처음 세로 길이는 16 + 4 = 20 이다."
+  ],
+  "solvedAnswer": "$20$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+  "unitEvidence": "직사각형 모양의 종이에서 네",
+  "rpmRecordId": "M3-RPM-039",
+  "rpmReason": "잘라낸 상자의 부피 420 에 관한 이차방정식을 세워 처음 세로 길이 20 을 구하는 문항이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
+  "templateKey": "NONE",
+  "typeReason": "상자 부피 420 으로부터 이차방정식을 세워 직사각형 종이 길이를 구하는 유형으로 후보에 적합한 PT가 없다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "부피 420 식을 세우고 128 인수분해 후 처음 세로 길이 20 을 구하는 3단계 서술형 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 모양의 종"
+      }
+    ],
+    "goal": [
+      {
+        "term": "부피",
+        "src": "stem",
+        "quote": "부피가 $420"
+      }
+    ],
+    "method": [
+      {
+        "term": "길이",
+        "src": "solution",
+        "quote": "가로의 길이를 $x",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "부피 3(x-6)(x-2) = 420 에서 x=16 을 구하고 처음 세로 길이 x+4 = 20 으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

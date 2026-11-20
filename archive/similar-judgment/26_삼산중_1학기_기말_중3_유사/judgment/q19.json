@@ -1,0 +1,65 @@
+{
+  "qid": 19,
+  "itemFingerprint": "64a5491a8400219a",
+  "solveSteps": [
+    "B 의 x좌표가 1 이므로 B(1, a) 이고 대칭성에 의해 A(-1, a) 이다.",
+    "삼각형 ABO 의 밑변 AB = 2, 높이는 a 이므로 넓이 1/2 * 2 * a = 3 에서 a = 3 이다.",
+    "점 D 는 x축 교점이므로 BD = 3 이고 BD : CD = 3 : 4 에서 CD = 4 이다.",
+    "점 C 가 x축 아래에 있으므로 C(1, -4) 이고 b = -4 이다.",
+    "따라서 a + b = 3 + (-4) = -1 이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림은 이차함수 ",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "이차함수 $y = ax^2$",
+  "rpmRecordId": "M3-RPM-047",
+  "rpmReason": "y = ax^2 과 bx^2 그래프 위의 점 A, B, C 좌표를 구하고 비를 활용해 합을 구하는 문항이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+  "templateKey": "NONE",
+  "typeReason": "포물선 대칭성과 선분 BD, CD 비로 y = ax^2 계수를 구하는 유형으로 후보에 적합한 PT가 없다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "대칭성으로 밑변 AB = 2 와 a = 3 을 구하고 선분 비 BD:CD 로 b = -4 를 도출하는 3단계 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = "
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "넓이가 $3$이"
+      }
+    ],
+    "method": [
+      {
+        "term": "좌표",
+        "src": "stem",
+        "quote": "2$의 그래프이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "대칭성으로 밑변 AB=2, a=3 을 얻고 BD:CD=3:4 로부터 b=-4 를 구하여 a+b = -1 로 ⑤로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "qid": 7,
+  "itemFingerprint": "02211cd9656e61c5",
+  "solveSteps": [
+    "5x^2 + 3x + k = 0 에 근의 공식을 적용한다.",
+    "x = (-3 +- sqrt(3^2 - 4 * 5 * k)) / (2 * 5) = (-3 +- sqrt(9 - 20k)) / 10 이다.",
+    "주어진 해 (-3 +- sqrt(89)) / 10 과 비교하면 9 - 20k = 89 이다.",
+    "-20k = 80 로부터 k = -4 이다.",
+    "따라서 상수 k 의 값은 -4 이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "unitEvidence": "이차방정식 $5x^2 + 3",
+  "rpmRecordId": "M3-RPM-035",
+  "rpmReason": "근의 공식으로 근호 안의 식 9 - 20k = 89 를 비교하여 상수 k 를 구하는 문항이다.",
+  "problemTypeKey": "PT_M3_ROOT_FORMULA",
+  "templateKey": "NONE",
+  "typeReason": "근의 공식으로 유도된 식과 89 를 비교해 미지수 k 를 구하는 유형으로 후보에 적합한 PT가 없다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "근의 공식을 적용해 9 - 20k = 89 일차방정식을 세우고 푸는 2단계 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $5x^"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $k$의 값은"
+      }
+    ],
+    "method": [
+      {
+        "term": "공식",
+        "src": "solution",
+        "quote": "근의 공식에 의",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "근의 공식을 통해 9 - 20k = 89 로부터 k = -4 임을 도출하여 ③으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

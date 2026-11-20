@@ -1,0 +1,65 @@
+{
+  "qid": 13,
+  "itemFingerprint": "554b54e9206db0be",
+  "solveSteps": [
+    "y = 3x^2 - 12x + k 를 표준형으로 변형한다.",
+    "y = 3(x^2 - 4x + 4 - 4) + k = 3(x - 2)^2 + k - 12 이다.",
+    "꼭짓점의 좌표는 (2, k - 12) 이다.",
+    "꼭짓점이 x축 위에 있으므로 y좌표가 0 이어야 한다.",
+    "k - 12 = 0 로부터 k = 12 이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "이차함수 $y = 3x^2 ",
+  "rpmRecordId": "M3-RPM-050",
+  "rpmReason": "식 3(x - 2)^2 + k - 12 의 꼭짓점이 x축 위에 있는 조건 k - 12 = 0 으로 k = 12 를 구하는 문항이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+  "templateKey": "NONE",
+  "typeReason": "꼭짓점이 x축 위에 있을 조건 k - 12 = 0 을 적용하는 유형으로 후보에 적합한 PT가 없다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "일반형 3x^2 - 12x + k 를 표준형으로 변형하고 k - 12 = 0 을 푸는 2단계 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = "
+      }
+    ],
+    "goal": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "꼭짓점이 $x$축 "
+      }
+    ],
+    "method": [
+      {
+        "term": "표준형",
+        "src": "solution",
+        "quote": "형을 표준형으로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "3(x-2)^2 + k-12 의 꼭짓점 y좌표가 0이므로 k-12=0 에서 k=12 임을 확인하여 ④로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

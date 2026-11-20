@@ -1,0 +1,65 @@
+{
+  "qid": 20,
+  "itemFingerprint": "3bb233bdef600c56",
+  "solveSteps": [
+    "그래프가 위로 볼록하므로 a < 0 이다.",
+    "대칭축이 x = 1 이고 x절편이 -2 이므로 다른 절편은 4 이다.",
+    "y = a(x + 2)(x - 4) = ax^2 - 2ax - 8a 이므로 b = -2a > 0, c = -8a > 0 이다.",
+    "x = 1 일 때 함숫값은 a + b + c = -9a > 0 (참) 이다.",
+    "따라서 3번 a + b + c > 0 이 옳다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "오른쪽 그림과 같은",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "이차함수 $y = ax^2 ",
+  "rpmRecordId": "M3-RPM-053",
+  "rpmReason": "y = ax^2 + bx + c 그래프의 위치와 대칭축으로 식의 부호를 판별하는 문항이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+  "templateKey": "TPL_M3_EVALUATE_EXPRESSIONS_FROM_PARABOLA_GRAPH_AND_INTERCEPTS",
+  "typeReason": "절편과 대칭축 개형으로 ax 항과 함숫값 a+b+c 의 부호를 판정하는 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "위로 볼록과 대칭축에서 ax 식과 bx 항의 관계를 파악하여 a+b+c 부호를 판정하는 3단계 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = "
+      }
+    ],
+    "goal": [
+      {
+        "term": "함숫값",
+        "src": "solution",
+        "quote": "함숫값 $a + b"
+      }
+    ],
+    "method": [
+      {
+        "term": "축",
+        "src": "solution",
+        "quote": "대칭축이 $x = ",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "대칭축 x=1 과 절편으로 y = ax^2 - 2ax - 8a 를 세워 x=1 에서 a+b+c = -9a > 0 임을 확인하고 ③으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
