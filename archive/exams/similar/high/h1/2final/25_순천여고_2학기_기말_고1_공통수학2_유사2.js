@@ -166,8 +166,8 @@ window.questionBank = [
     "sourceQid": 4,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사2/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: 세 조건의 진리집합은 P={(0,0)}, R={(x,y)|x+y=0}, Q={(x,y)|x+y=0 또는 x-y=0}이고 P⊂R⊂Q이다. P⊂R이므로 ㄱ은 참, R⊂Q이므로 역 r→q가 참이어서 ㄴ은 거짓, P⊂Q이므로 ㄷ은 참, (1,1)은 Q에만 속하므로 R은 Q의 필요조건이 아니어서 ㄹ은 참이다. 따라서 답은 ⑤이다.",
-    "solutionImageCaption": "세 조건의 진리집합은 P={(0,0)}, R={(x,y)|x+y=0}, Q={(x,y)|x+y=0 또는 x-y=0}이고 P⊂R⊂Q이다. P⊂R이므로 ㄱ은 참, R⊂Q이므로 역 r→q가 참이어서 ㄴ은 거짓, P⊂Q이므로 ㄷ은 참, (1,1)은 Q에만 속하므로 R은 Q의 필요조건이 아니어서 ㄹ은 참이다. 따라서 답은 ⑤이다.",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
     "solutionImageSize": "full"
   },
   {
@@ -211,8 +211,8 @@ window.questionBank = [
     "sourceQid": 5,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사2/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: (가)에서 Q⊂P, (나)에서 P⊂R이므로 Q⊂P⊂R이다. 예: U={1,2,3,4}, Q={1}, P={1,2}, R={1,2,3}으로 두면 Q⊂R이므로 R의 여집합이 Q의 여집합에 포함되어 ~r→~q만 항상 참이고, 나머지 보기는 이 예에서 거짓이다. 따라서 답은 ①이다.",
-    "solutionImageCaption": "(가)에서 Q⊂P, (나)에서 P⊂R이므로 Q⊂P⊂R이다. 예: U={1,2,3,4}, Q={1}, P={1,2}, R={1,2,3}으로 두면 Q⊂R이므로 R의 여집합이 Q의 여집합에 포함되어 ~r→~q만 항상 참이고, 나머지 보기는 이 예에서 거짓이다. 따라서 답은 ①이다.",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
     "solutionImageSize": "full"
   },
   {
@@ -383,8 +383,8 @@ window.questionBank = [
     "image": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사2/q9.svg",
     "imageSize": "full",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사2/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: f(2)=1이고 g(3)=1이므로 g의 역함수로 g^{-1}(1)=3이다. 또 g(2)=4이므로 g^{-1}(4)=2이다. 따라서 (f^{-1}∘g)^{-1}(2)=g^{-1}(1)=3, (f∘(g∘f)^{-1})(4)=g^{-1}(4)=2이므로 합은 5이다. 따라서 답은 ③이다.",
-    "solutionImageCaption": "f(2)=1이고 g(3)=1이므로 g의 역함수로 g^{-1}(1)=3이다. 또 g(2)=4이므로 g^{-1}(4)=2이다. 따라서 (f^{-1}∘g)^{-1}(2)=g^{-1}(1)=3, (f∘(g∘f)^{-1})(4)=g^{-1}(4)=2이므로 합은 5이다. 따라서 답은 ③이다.",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
     "solutionImageSize": "full"
   },
   {
@@ -469,8 +469,8 @@ window.questionBank = [
     "sourceQid": 11,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사2/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선과 오른쪽 위로 올라가는 직선이 두 점 A, B에서 만나고, 포물선의 꼭짓점 V가 표시되어 있다.",
-    "solutionImageCaption": "f(x)=-x²+6x=-(x-3)²+9이므로 꼭짓점은 (3,9)이고, 역함수가 존재하려면 a≤3이어야 한다. 치역 {y|y≤f(a)}가 공역 {y|y≤3a+2}와 같아야 하므로 곡선 y=f(x)와 직선 y=3x+2가 만나는 점의 x좌표가 a이다. 교점은 x=1, x=2이므로 a의 합은 3이다. 따라서 답은 ⑤이다.",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
     "solutionImageSize": "full"
   },
   {
@@ -557,11 +557,7 @@ window.questionBank = [
     "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION_REFLECTION",
     "rpmPrimaryRecordId": "H1-RPM-260",
     "sourceQid": 13,
-    "variationType": "STRICT_VARIANT",
-    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사2/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: 기준 f(파란색)는 y=(2x+1)/(x-1)=2+3/(x-1)이다. 보기 ㄱ을 g(주황색)로 두면 g=1+3/(x+2)로 분수 부분의 계수가 3이어서 평행이동하면 겹치고, 보기 ㄷ을 h(초록색)로 두면 h=-1-3/(x-2)로 계수가 -3이어서 대칭이동과 평행이동으로 겹친다. ㄴ(계수 1)과 ㄹ(계수 -2)은 계수의 절댓값이 3이 아니어서 겹치지 않는다. 따라서 답은 ③이다.",
-    "solutionImageCaption": "기준 f(파란색)는 y=(2x+1)/(x-1)=2+3/(x-1)이다. 보기 ㄱ을 g(주황색)로 두면 g=1+3/(x+2)로 분수 부분의 계수가 3이어서 평행이동하면 겹치고, 보기 ㄷ을 h(초록색)로 두면 h=-1-3/(x-2)로 계수가 -3이어서 대칭이동과 평행이동으로 겹친다. ㄴ(계수 1)과 ㄹ(계수 -2)은 계수의 절댓값이 3이 아니어서 겹치지 않는다. 따라서 답은 ③이다.",
-    "solutionImageSize": "full"
+    "variationType": "STRICT_VARIANT"
   },
   {
     "id": 14,
@@ -651,8 +647,8 @@ window.questionBank = [
     "image": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사2/q15.svg",
     "imageSize": "full",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사2/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: 제1사분면에서 반비례 곡선과 오른쪽 아래로 내려가는 직선이 두 점 P, Q에서 만나고, 원점 O와 P, Q를 꼭짓점으로 하는 삼각형이 색칠되어 있다.",
-    "solutionImageCaption": "교점의 x좌표 u, v는 x²-mx+9=0의 두 근이므로 u+v=m, uv=9이고 삼각형 OPQ의 넓이는 (1/2)m|u-v|이다. 넓이가 40이므로 m²(m²-36)=6400에서 m²=100, m=10이다. 이때 교점은 P(1,9), Q(9,1)이다. 따라서 답은 ④이다.",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
     "solutionImageSize": "full"
   },
   {
@@ -737,8 +733,8 @@ window.questionBank = [
     "sourceQid": 17,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사2/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: t=√(4-x)로 놓으면 t²-t+k-4=0이 t≥0인 서로 다른 두 근을 가져야 한다. k=4이면 직선이 곡선의 끝점 (4,0)과 점 (3,1)에서 만나 두 점이고, k=17/4이면 점 (15/4,1/2)에서 접해 한 점이다. 따라서 4≤k<17/4이다. 따라서 답은 ②이다.",
-    "solutionImageCaption": "t=√(4-x)로 놓으면 t²-t+k-4=0이 t≥0인 서로 다른 두 근을 가져야 한다. k=4이면 직선이 곡선의 끝점 (4,0)과 점 (3,1)에서 만나 두 점이고, k=17/4이면 점 (15/4,1/2)에서 접해 한 점이다. 따라서 4≤k<17/4이다. 따라서 답은 ②이다.",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
     "solutionImageSize": "full"
   },
   {
@@ -784,8 +780,8 @@ window.questionBank = [
     "image": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사2/q18.svg",
     "imageSize": "full",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사2/q18-solution.svg",
-    "solutionImageAlt": "해설 그림: u=f(x)로 놓으면 2f(u)=-u+2이고, f(u)와 초록색 직선 y=(-u+2)/2의 교점에서 u=2/3, 4/3이다. 점선 y=2/3, y=4/3과 꺾은선의 교점에서 f(x)=2/3인 x는 2/3, 5/3이고 f(x)=4/3인 x는 1/3뿐이다. 모든 실근의 합은 2/3+5/3+1/3=8/3이다. 따라서 답은 ③이다.",
-    "solutionImageCaption": "u=f(x)로 놓으면 2f(u)=-u+2이고, f(u)와 초록색 직선 y=(-u+2)/2의 교점에서 u=2/3, 4/3이다. 점선 y=2/3, y=4/3과 꺾은선의 교점에서 f(x)=2/3인 x는 2/3, 5/3이고 f(x)=4/3인 x는 1/3뿐이다. 모든 실근의 합은 2/3+5/3+1/3=8/3이다. 따라서 답은 ③이다.",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
     "solutionImageSize": "full"
   },
   {
@@ -862,8 +858,8 @@ window.questionBank = [
     "sourceQid": 20,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사2/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: 예: (a,b,c)=(1,3,2)이면 f(x)=-√(x+3)+2의 그래프는 시작점 (-3,2)에서 출발하여 y축의 양수 부분에서 만나고 x축을 (1,0)에서 지나 제1, 2, 4사분면만 지난다. 점선 x=-3의 오른쪽이 정의역이고 점선 y=2의 아래쪽이 공역이다. 조건을 만족하는 순서쌍은 모두 13개이다.",
-    "solutionImageCaption": "예: (a,b,c)=(1,3,2)이면 f(x)=-√(x+3)+2의 그래프는 시작점 (-3,2)에서 출발하여 y축의 양수 부분에서 만나고 x축을 (1,0)에서 지나 제1, 2, 4사분면만 지난다. 점선 x=-3의 오른쪽이 정의역이고 점선 y=2의 아래쪽이 공역이다. 조건을 만족하는 순서쌍은 모두 13개이다.",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
     "solutionImageSize": "full"
   },
   {
@@ -901,8 +897,8 @@ window.questionBank = [
     "sourceQid": 21,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사2/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: 역함수는 f^{-1}(x)=2-√(x-1) (x≥1)이다. 이를 4-x와 같다고 하면 √(x-1)=x-2이고, 제곱하면 x²-5x+5=0이다. x≥2를 만족하는 x=(5+√5)/2만 가능하므로 그래프에서도 곡선 y=2-√(x-1)과 직선 y=-x+4가 한 점에서 만난다. 구하는 값은 (5+√5)/2이다.",
-    "solutionImageCaption": "역함수는 f^{-1}(x)=2-√(x-1) (x≥1)이다. 이를 4-x와 같다고 하면 √(x-1)=x-2이고, 제곱하면 x²-5x+5=0이다. x≥2를 만족하는 x=(5+√5)/2만 가능하므로 그래프에서도 곡선 y=2-√(x-1)과 직선 y=-x+4가 한 점에서 만난다. 구하는 값은 (5+√5)/2이다.",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
     "solutionImageSize": "full"
   }
 ];

@@ -166,8 +166,8 @@ window.questionBank = [
     "sourceQid": 4,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사3/q4-solution.svg",
-    "solutionImageAlt": "해설 그림: q에서 x와 y는 같은 부호이고 x+y>0이므로 P=Q이다. p이면 r이므로 P⊂R이지만 (2,-1)은 R의 원소이면서 P의 원소가 아니므로 P=Q⊊R이다. 따라서 ㄱ, ㄷ, ㄹ이 옳고 답은 ⑤이다.",
-    "solutionImageCaption": "q에서 x와 y는 같은 부호이고 x+y>0이므로 P=Q이다. p이면 r이므로 P⊂R이지만 (2,-1)은 R의 원소이면서 P의 원소가 아니므로 P=Q⊊R이다. 따라서 ㄱ, ㄷ, ㄹ이 옳고 답은 ⑤이다.",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
     "solutionImageSize": "full"
   },
   {
@@ -211,8 +211,8 @@ window.questionBank = [
     "sourceQid": 5,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사3/q5-solution.svg",
-    "solutionImageAlt": "해설 그림: (가)에서 P⊂Q, (나)에서 Q⊂R의 여집합이므로 P⊂Q⊂R의 여집합이고, 따라서 P와 R는 공통 원소가 없다. 예: U={1,2,3,4}, P={1}, Q={1,2}, R={3}이면 P와 R는 서로 떨어져 있고 P는 R의 여집합에 포함되므로 p→∼r가 항상 참이다. 따라서 답은 ⑤이다.",
-    "solutionImageCaption": "(가)에서 P⊂Q, (나)에서 Q⊂R의 여집합이므로 P⊂Q⊂R의 여집합이고, 따라서 P와 R는 공통 원소가 없다. 예: U={1,2,3,4}, P={1}, Q={1,2}, R={3}이면 P와 R는 서로 떨어져 있고 P는 R의 여집합에 포함되므로 p→∼r가 항상 참이다. 따라서 답은 ⑤이다.",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
     "solutionImageSize": "full"
   },
   {
@@ -383,8 +383,8 @@ window.questionBank = [
     "image": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사3/q9.svg",
     "imageSize": "full",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사3/q9-solution.svg",
-    "solutionImageAlt": "해설 그림: f의 대응(1→4, 2→1, 3→2, 4→3)과 h∘f=g, 즉 h(f(x))=g(x)에서 h(4)=3, h(1)=4, h(2)=1, h(3)=2를 얻는다. h(2)=1이고 h(3)=2이므로 h의 역함수에서 2에 대응하는 값은 3이다. 따라서 h(2)+h⁻¹(2)=1+3=4이고 답은 ②이다.",
-    "solutionImageCaption": "f의 대응(1→4, 2→1, 3→2, 4→3)과 h∘f=g, 즉 h(f(x))=g(x)에서 h(4)=3, h(1)=4, h(2)=1, h(3)=2를 얻는다. h(2)=1이고 h(3)=2이므로 h의 역함수에서 2에 대응하는 값은 3이다. 따라서 h(2)+h⁻¹(2)=1+3=4이고 답은 ②이다.",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
     "solutionImageSize": "full"
   },
   {
@@ -469,8 +469,8 @@ window.questionBank = [
     "sourceQid": 11,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사3/q11-solution.svg",
-    "solutionImageAlt": "해설 그림: y=x²-6x+12=(x-3)²+3의 꼭짓점은 V(3,3)이므로 역함수가 있으려면 a≥3이다. 역함수의 정의역이 f의 치역이므로 f(a)=a+2이고, 곡선과 직선 y=x+2는 B(2,4)와 A(5,7)에서 만난다. a≥3이므로 a=5이고 답은 ②이다.",
-    "solutionImageCaption": "y=x²-6x+12=(x-3)²+3의 꼭짓점은 V(3,3)이므로 역함수가 있으려면 a≥3이다. 역함수의 정의역이 f의 치역이므로 f(a)=a+2이고, 곡선과 직선 y=x+2는 B(2,4)와 A(5,7)에서 만난다. a≥3이므로 a=5이고 답은 ②이다.",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
     "solutionImageSize": "full"
   },
   {
@@ -557,11 +557,7 @@ window.questionBank = [
     "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION_REFLECTION",
     "rpmPrimaryRecordId": "H1-RPM-260",
     "sourceQid": 13,
-    "variationType": "STRICT_VARIANT",
-    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사3/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: 세 곡선의 점근선은 모두 x=2이고, f는 y=3, g는 y=-3, h는 y=1이다. 파란 곡선 f는 y=(3x-4)/(x-2)=3+2/(x-2)이고, 이를 x축에 대하여 대칭이동하면 y=-3-2/(x-2)이다. 이 곡선 g를 y축 방향으로 4만큼 평행이동하면 ㄱ의 y=1-2/(x-2)(곡선 h, 초록 점선)와 겹치고, ㄴ도 분수식의 분자가 -2이어서 겹친다. ㄷ, ㄹ은 분자가 2여서 겹치지 않으므로 답은 ②이다.",
-    "solutionImageCaption": "세 곡선의 점근선은 모두 x=2이고, f는 y=3, g는 y=-3, h는 y=1이다. 파란 곡선 f는 y=(3x-4)/(x-2)=3+2/(x-2)이고, 이를 x축에 대하여 대칭이동하면 y=-3-2/(x-2)이다. 이 곡선 g를 y축 방향으로 4만큼 평행이동하면 ㄱ의 y=1-2/(x-2)(곡선 h, 초록 점선)와 겹치고, ㄴ도 분수식의 분자가 -2이어서 겹친다. ㄷ, ㄹ은 분자가 2여서 겹치지 않으므로 답은 ②이다.",
-    "solutionImageSize": "full"
+    "variationType": "STRICT_VARIANT"
   },
   {
     "id": 14,
@@ -651,8 +647,8 @@ window.questionBank = [
     "image": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사3/q15.svg",
     "imageSize": "full",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사3/q15-solution.svg",
-    "solutionImageAlt": "해설 그림: 두 교점의 x좌표 u, v는 x²-6x+k=0의 두 근이므로 u+v=6, uv=k이다. 점 R을 직각의 꼭짓점으로 하는 직각삼각형 PRQ에서 PQ=√2·|u-v|=2√5이므로 (u-v)²=10이고, 36-4k=10에서 k=13/2이다. 따라서 답은 ④이다.",
-    "solutionImageCaption": "두 교점의 x좌표 u, v는 x²-6x+k=0의 두 근이므로 u+v=6, uv=k이다. 점 R을 직각의 꼭짓점으로 하는 직각삼각형 PRQ에서 PQ=√2·|u-v|=2√5이므로 (u-v)²=10이고, 36-4k=10에서 k=13/2이다. 따라서 답은 ④이다.",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
     "solutionImageSize": "full"
   },
   {
@@ -737,8 +733,8 @@ window.questionBank = [
     "sourceQid": 17,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사3/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: 직선 l은 y=-x+1(k=1), 점선 m은 y=-x+1/2(k=1/2)이다. t=√(2x+4)로 놓으면 t²-2t+2-2k=0이 t≥0인 서로 다른 두 실근을 가져야 한다. k=1/2이면 직선이 점 T(-3/2,2)에서 접하고, k=1이면 곡선의 시작점 A(-2,3)과 점 B(0,1)을 지난다. 따라서 1/2<k≤1이고 답은 ⑤이다.",
-    "solutionImageCaption": "직선 l은 y=-x+1(k=1), 점선 m은 y=-x+1/2(k=1/2)이다. t=√(2x+4)로 놓으면 t²-2t+2-2k=0이 t≥0인 서로 다른 두 실근을 가져야 한다. k=1/2이면 직선이 점 T(-3/2,2)에서 접하고, k=1이면 곡선의 시작점 A(-2,3)과 점 B(0,1)을 지난다. 따라서 1/2<k≤1이고 답은 ⑤이다.",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
     "solutionImageSize": "full"
   },
   {
@@ -784,8 +780,8 @@ window.questionBank = [
     "image": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사3/q18.svg",
     "imageSize": "full",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사3/q18-solution.svg",
-    "solutionImageAlt": "해설 그림: u=f(x)로 놓으면 f(u)=(u+1)/2이고 직선 y=(u+1)/2와 f의 교점 P(1/3,2/3), Q(5/3,4/3)에서 u=1/3, 5/3이다. f(x)=1/3에서 x=1/6, f(x)=5/3에서 x=5/6, 4/3이므로 근의 합은 1/6+5/6+4/3=7/3이다. 따라서 답은 ④이다.",
-    "solutionImageCaption": "u=f(x)로 놓으면 f(u)=(u+1)/2이고 직선 y=(u+1)/2와 f의 교점 P(1/3,2/3), Q(5/3,4/3)에서 u=1/3, 5/3이다. f(x)=1/3에서 x=1/6, f(x)=5/3에서 x=5/6, 4/3이므로 근의 합은 1/6+5/6+4/3=7/3이다. 따라서 답은 ④이다.",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
     "solutionImageSize": "full"
   },
   {
@@ -862,8 +858,8 @@ window.questionBank = [
     "sourceQid": 20,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사3/q20-solution.svg",
-    "solutionImageAlt": "해설 그림: 예: (a,b,c)=(1,3,1)이면 y=-√(x+3)+1은 시작점 S(-3,1)에서 출발해 x절편 Z(-2,0)을 지나고 y절편 Y(0,1-√3)이 음수이다. 따라서 제2, 3, 4사분면만 지난다. 조건을 만족하는 순서쌍은 (1,3,1), (1,5,2), (1,6,2), (1,10,3), (2,6,1), (2,6,2), (2,7,2), (2,8,2), (2,9,2), (2,10,3), (3,9,1), (3,9,2), (3,10,2), (3,10,3)이다.",
-    "solutionImageCaption": "예: (a,b,c)=(1,3,1)이면 y=-√(x+3)+1은 시작점 S(-3,1)에서 출발해 x절편 Z(-2,0)을 지나고 y절편 Y(0,1-√3)이 음수이다. 따라서 제2, 3, 4사분면만 지난다. 조건을 만족하는 순서쌍은 (1,3,1), (1,5,2), (1,6,2), (1,10,3), (2,6,1), (2,6,2), (2,7,2), (2,8,2), (2,9,2), (2,10,3), (3,9,1), (3,9,2), (3,10,2), (3,10,3)이다.",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
     "solutionImageSize": "full"
   },
   {
@@ -901,8 +897,8 @@ window.questionBank = [
     "sourceQid": 21,
     "variationType": "STRICT_VARIANT",
     "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사3/q21-solution.svg",
-    "solutionImageAlt": "해설 그림: f(x)=(x-3)²-1 (x≤3)의 역함수는 y=3-√(x+1) (x≥-1)이다. 이 곡선과 직선 y=-x+5의 교점을 구하면 x²-5x+3=0에서 x=(5±√13)/2이고, 제곱 전 조건 x≥2를 만족하는 것은 (5+√13)/2뿐이다. 교점은 P((5+√13)/2, (5-√13)/2)이다. 따라서 답은 (5+√13)/2이다.",
-    "solutionImageCaption": "f(x)=(x-3)²-1 (x≤3)의 역함수는 y=3-√(x+1) (x≥-1)이다. 이 곡선과 직선 y=-x+5의 교점을 구하면 x²-5x+3=0에서 x=(5±√13)/2이고, 제곱 전 조건 x≥2를 만족하는 것은 (5+√13)/2뿐이다. 교점은 P((5+√13)/2, (5-√13)/2)이다. 따라서 답은 (5+√13)/2이다.",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
     "solutionImageSize": "full"
   }
 ];
