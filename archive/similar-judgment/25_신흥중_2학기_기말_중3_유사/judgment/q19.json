@@ -1,0 +1,77 @@
+{
+  "qid": 19,
+  "itemFingerprint": "d25432b7875badc3",
+  "solveSteps": [
+    "1) 수학 점수 x의 빈도는 50점 1명, 60점 2명, 70점 3명, 80점 2명, 90점 1명, 100점 1명이므로 최빈값은 70점이다. (① 참)",
+    "2) x가 증가함에 따라 y도 전반적으로 증가하므로 양의 상관관계가 있다. (② 참)",
+    "3) x > y인 순서쌍은 (60,50), (70,60), (80,70), (90,80), (100,90)의 5명이므로 비율은 5/10 = 1/2이다. (③ 참)",
+    "4) x >= 70이고 y >= 70인 순서쌍은 (70,70), (70,80), (80,70), (80,90), (90,80), (100,90)의 6명이다. 8명이 아니므로 옳지 않다. (④ 거짓)",
+    "5) x >= 90인 학생은 (90,80), (100,90)의 2명이다. (⑤ 참)",
+    "6) 따라서 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+  "unitEvidence": "다음 자료는 학생 $10$명의 수학 점수($x$점)와 과학 점수($y$점)를 조사하여 나타낸 $(x, y)$의 순서쌍이다. $$(50, 60), \\ (60, 50), \\ (60, 70), \\ (70, 60), \\ (70, 70), \\ (70, 80), \\ (80, 70), \\ (80, 90), \\ (90, 80), \\ (100, 90)$$ 이에 대한 설명으로 옳지 않은 것은? [4점]",
+  "rpmRecordId": "M3-RPM-088-S2P-FC25",
+  "rpmReason": "10명의 수학 및 과학 점수 순서쌍 자료에서 x >= 70, y >= 70인 인원이 6명임을 계산하여 8명이라 한 보기 ④의 오류를 판별하는 M3-RPM-088-S2P-FC25 문제이다.",
+  "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+  "templateKey": "TPL_M3_SCATTER_PLOT_READ_POINT_RATIO",
+  "typeReason": "이변량 순서쌍 데이터 10개에 대해 조건 영역에 속하는 점의 개수 6명과 최빈값 70점을 분석 판정하는 TPL_M3_SCATTER_PLOT_READ_POINT_RATIO 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자료",
+        "src": "stem",
+        "quote": "다음 자료는 학생 $10$명의 수학 점수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "진술",
+        "src": "stem",
+        "quote": "이에 대한 설명으로 옳지 않은 것은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "개수",
+        "src": "choices",
+        "quote": "과학 점수가 모두 $70$점 이상인 학생은 $8$명이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "순서쌍",
+        "src": "stem",
+        "quote": "조사하여 나타낸 $(x, y)$의 순서쌍이다."
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "학생 10명의 (수학, 과학) 점수 순서쌍 자료 조건이다.",
+    "goal": "옳지 않은 설명을 찾는 목표이다.",
+    "method": "조건 x >= 70, y >= 70을 만족하는 학생 수를 직접 세는 방법이다.",
+    "condition": "이변량 순서쌍 데이터 조건이다."
+  },
+  "how": "수학 점수와 과학 점수가 모두 70점 이상인 학생은 6명이므로 8명이라고 진술한 보기 ④가 거짓임을 확인하여 정답 ④로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "10개의 순서쌍에서 x >= 70 및 y >= 70 조건을 세어 6명을 확인하고 보기를 검증하는 2단계 문항이다."
+}

@@ -1,0 +1,77 @@
+{
+  "qid": 8,
+  "itemFingerprint": "bb36f002b350b122",
+  "solveSteps": [
+    "1) 호 AB를 바라보는 원주각이 35도이므로 호 AB의 중심각 크기는 2 * 35도 = 70도이다.",
+    "2) 호 AB = 호 BC이므로 호 BC의 크기도 70도이다.",
+    "3) 호 DC를 바라보는 원주각 각 DAC = 65도이므로 호 DC의 크기는 2 * 65도 = 130도이다.",
+    "4) 남은 호 AD의 크기는 360도 - (70도 + 70도 + 130도) = 360도 - 270도 = 90도이다.",
+    "5) 따라서 각 ABD는 호 AD를 바라보는 원주각이므로 각 ABD = 90도 / 2 = 45도이다.",
+    "6) 따라서 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "unitEvidence": "다음 그림에서 $\\angle ADB = 35^\\circ$, $\\angle DAC = 65^\\circ$이고, $\\wideparen{AB} = \\wideparen{BC}$일 때, $\\angle ABD$의 크기는? [4점]",
+  "rpmRecordId": "M3-RPM-074",
+  "rpmReason": "원주각 35도와 65도로부터 호의 중심각 70도, 130도를 구하고 전체 360도에서 호 AD = 90도를 구해 각 ABD = 45도를 도출하는 M3-RPM-074 문제이다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+  "typeReason": "원주각과 호의 중심각 비례 관계 및 호의 덧셈 성질을 이용해 미지 원주각 ABD = 45도를 구하는 TPL_CIRCLE_ANGLE_COMPOSITE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "호",
+        "src": "stem",
+        "quote": "$\\wideparen{AB} = \\wideparen{BC}$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle ABD$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "원주각",
+        "src": "solution",
+        "quote": "$\\angle ADB = 35^\\circ$는 호 $AB$를 바라보는 원주각이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "원",
+        "src": "solution",
+        "quote": "원 전체의 호의 둘레는 $360^\\circ$이므로"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "각 ADB = 35도, 각 DAC = 65도, 호 AB = 호 BC 조건이다.",
+    "goal": "각 ABD의 크기를 구하는 목표이다.",
+    "method": "원주각으로부터 각 호의 중심각을 환산하는 방법이다.",
+    "condition": "원 전체 둘레 360도 조건이다."
+  },
+  "how": "호 AB = 호 BC = 70도, 호 DC = 130도에서 남은 호 AD = 90도를 얻어 원주각 각 ABD = 45도임을 도출하여 정답 ③으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "원주각 35도, 65도로부터 호의 크기를 각각 환산하고 남은 호 90도로 각 ABD = 45도를 구하는 2단계 문항이다."
+}

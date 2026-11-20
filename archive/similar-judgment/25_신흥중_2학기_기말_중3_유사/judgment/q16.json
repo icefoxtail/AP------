@@ -1,0 +1,78 @@
+{
+  "qid": 16,
+  "itemFingerprint": "26ddb04d6265ae01",
+  "solveSteps": [
+    "1) x, y, 7, 3의 평균이 5이므로 x + y + 7 + 3 = 20에서 x + y = 10이다.",
+    "2) 분산이 4이므로 편차제곱합 (x-5)^2 + (y-5)^2 + (7-5)^2 + (3-5)^2 = 16에서 (x-5)^2 + (y-5)^2 = 8이다.",
+    "3) 전개하여 x^2 + y^2 - 10(x+y) + 50 = 8에 x+y = 10을 대입하면 x^2 + y^2 = 58이다.",
+    "4) 새 자료 x, y, 6, 8의 평균은 (10 + 14)/4 = 6이다.",
+    "5) 새 자료의 편차제곱합은 (x-6)^2 + (y-6)^2 + 0 + (8-6)^2 = x^2 + y^2 - 12(x+y) + 76 = 58 - 120 + 76 = 14이다.",
+    "6) 따라서 새 분산은 14 / 4 = 7/2이다.",
+    "7) 따라서 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+  "unitEvidence": "$4$개의 자료 $x, y, 7, 3$의 평균이 $5$이고, 분산이 $4$일 때, 새로운 $4$개의 자료 $x, y, 6, 8$의 분산은? [4점]",
+  "rpmRecordId": "M3-RPM-084-S2P-9DFD",
+  "rpmReason": "자료 x, y, 7, 3의 평균 5와 분산 4에서 x + y = 10과 제곱합 x^2 + y^2 = 58을 구하고 새 자료 x, y, 6, 8의 분산 7/2을 산출하는 M3-RPM-084-S2P-9DFD 문제이다.",
+  "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+  "templateKey": "TPL_M3_VARIANCE_OF_MODIFIED_DATA_FROM_SUM_OF_SQUARED_DEVIATIONS",
+  "typeReason": "평균 5와 분산 4로부터 미지수 합 10 및 제곱합 58을 유도하고 변량이 바뀐 새 자료의 분산 7/2을 계산하는 TPL_M3_VARIANCE_OF_MODIFIED_DATA_FROM_SUM_OF_SQUARED_DEVIATIONS 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "분산",
+        "src": "stem",
+        "quote": "평균이 $5$이고, 분산이 $4$일 때,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "분산",
+        "src": "stem",
+        "quote": "새로운 $4$개의 자료 $x, y, 6, 8$의 분산은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "평균",
+        "src": "stem",
+        "quote": "$4$개의 자료 $x, y, 7, 3$의 평균이 $5$이고,",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자료",
+        "src": "stem",
+        "quote": "$4$개의 자료 $x, y, 7, 3$의"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "자료 x, y, 7, 3의 평균 5와 분산 4 조건이다.",
+    "goal": "새 자료 x, y, 6, 8의 분산을 구하는 목표이다.",
+    "method": "평균과 분산의 정의를 통해 x^2 + y^2을 복원하는 방법이다.",
+    "condition": "4개의 자료 조건이다."
+  },
+  "how": "x + y = 10과 x^2 + y^2 = 58을 구하여 새 자료 x, y, 6, 8의 편차제곱합 14로부터 분산 14/4 = 7/2임을 확인해 정답 ①로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "미지수 x, y의 합 10과 제곱의 합 58을 도출한 후 새 평균 6에 대한 편차제곱합 14를 계산하여 분산 7/2을 구하는 3단계 심화 문항이다."
+}

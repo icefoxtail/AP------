@@ -1,0 +1,77 @@
+{
+  "qid": 6,
+  "itemFingerprint": "8c2b026f0dbc057f",
+  "solveSteps": [
+    "1) 접선과 현이 이루는 각의 성질로 각 BCD = 각 BDE = 60도이고, 반원 원주각 각 BDC = 90도이므로 삼각형 BCD에서 각 DBC = 30도이다.",
+    "2) 세 점 A, D, E가 일직선이므로 각 BDA = 180도 - 60도 = 120도이고, 삼각형 ABD에서 각 BAE = 180도 - 120도 - 30도 = 30도이다.",
+    "3) 큰 반원에서 호 BE의 원주각이 30도이므로 중심각은 60도이고, 호 AE의 중심각은 180도 - 60도 = 120도이다.",
+    "4) 호의 길이는 중심각에 비례하므로 호 BE : 호 AE = 60도 : 120도 = 1 : 2이다.",
+    "5) 호 AE = 24 cm이므로 호 BE = 24 * (1/2) = 12 cm이다.",
+    "6) 따라서 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "unitEvidence": "다음 그림과 같이 $\\overline{AB}$를 지름으로 하는 큰 반원과 $\\overline{AB}$ 위의 한 점 $C$에 대하여 $\\overline{BC}$를 지름으로 하는 작은 반원이 있다. 점 $A$에서 작은 반원에 그은 접선이 작은 반원과 만나는 접점을 $D$라 하고, 큰 반원과 만나는 점을 $E$라고 하자. $\\wideparen{AE}=24,\\mathrm{cm}$, $\\angle BDE=60^\\circ$일 때, 호 $\\wideparen{BE}$의 길이는? [5점]",
+  "rpmRecordId": "M3-RPM-079",
+  "rpmReason": "접선과 현이 이루는 각 60도와 반원 원주각 성질을 결합해 각 BAE = 30도를 유도하고 호 AE = 24 cm에 비례해 호 BE = 12 cm를 구하는 M3-RPM-079 문제이다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+  "typeReason": "접선과 현이 이루는 각 60도 성질 및 원주각-중심각 비례를 이용해 호 BE의 길이 12 cm를 도출하는 TPL_CIRCLE_ANGLE_TANGENT_CHORD 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "접선",
+        "src": "stem",
+        "quote": "작은 반원에 그은 접선이 작은 반원과 만나는 접점을 $D$라"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "호 $\\wideparen{BE}$의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "원주각",
+        "src": "solution",
+        "quote": "반원에 대한 원주각은 직각이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "지름",
+        "src": "stem",
+        "quote": "$\\overline{AB}$를 지름으로 하는 큰 반원과"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "지름 AB와 BC인 두 반원 및 점 A에서의 접선 조건이다.",
+    "goal": "호 BE의 길이를 구하는 목표이다.",
+    "method": "접선과 현이 이루는 각 및 반원 원주각 성질을 적용하는 방법이다.",
+    "condition": "호 AE = 24 cm, 각 BDE = 60도 조건이다."
+  },
+  "how": "접선과 현의 성질 각 BCD = 60도와 반원 원주각 각 BDC = 90도에서 각 BAE = 30도를 구하고 중심각 비 60:120 = 1:2로 호 BE = 12 cm임을 도출하여 정답 ①로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "작은 반원의 접선과 현이 이루는 각 60도와 큰 반원의 원주각 30도를 연결하여 호의 길이 12 cm를 비례식으로 구하는 3단계 심화 문항이다."
+}

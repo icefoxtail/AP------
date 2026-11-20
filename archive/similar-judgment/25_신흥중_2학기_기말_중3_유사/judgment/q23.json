@@ -1,0 +1,78 @@
+{
+  "qid": 23,
+  "itemFingerprint": "6428bfcdddfa5c29",
+  "solveSteps": [
+    "1) a < b < c이고 중앙값이 5이므로 b = 5이다.",
+    "2) 세 수의 평균이 7이므로 a + 5 + c = 21에서 a + c = 16, 즉 c = 16 - a이다.",
+    "3) 분산이 26이므로 편차제곱합 (a - 7)^2 + (-2)^2 + (c - 7)^2 = 78에서 (a - 7)^2 + (c - 7)^2 = 74이다.",
+    "4) c = 16 - a를 대입하면 (a - 7)^2 + (9 - a)^2 = 74에서 2a^2 - 32a + 130 = 74이다.",
+    "5) 2a^2 - 32a + 56 = 0, 즉 a^2 - 16a + 28 = (a - 2)(a - 14) = 0이다.",
+    "6) a < 5이므로 a = 2이고, c = 16 - 2 = 14이다.",
+    "7) 따라서 세 수는 a = 2, b = 5, c = 14이다."
+  ],
+  "solvedAnswer": "$a=2, \\ b=5, \\ c=14$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+  "unitEvidence": "세 수 $a, b, c$의 중앙값은 $5$, 평균은 $7$, 분산은 $26$일 때, $a, b, c$의 값을 각각 구하고, 그 과정을 서술하시오. (단, $a < b < c$) [6점]",
+  "rpmRecordId": "M3-RPM-087-S2P-8E9F",
+  "rpmReason": "중앙값 b = 5, 평균 7(합 21), 분산 26의 연립이차방정식 a^2 - 16a + 28 = 0을 풀어 a = 2, b = 5, c = 14를 구하는 M3-RPM-087-S2P-8E9F 문제이다.",
+  "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+  "templateKey": "NONE",
+  "typeReason": "평균 7과 분산 26의 편차 제곱합 관계로부터 이차방정식을 세워 세 수 a=2, b=5, c=14를 복원하는 PT_M3_DISPERSION_DEVIATION_PROPERTIES 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자료",
+        "src": "solution",
+        "quote": "세 수 $a, b, c$에서 $a < b < c$이고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "방정식",
+        "src": "solution",
+        "quote": "a^2 - 16a + 28 &= 0"
+      }
+    ],
+    "method": [
+      {
+        "term": "분산",
+        "src": "stem",
+        "quote": "평균은 $7$, 분산은 $26$일 때,",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "중앙값",
+        "src": "stem",
+        "quote": "세 수 $a, b, c$의 중앙값은 $5$,"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "세 수 a < b < c 조건이다.",
+    "goal": "편차제곱합 이차방정식을 풀어 미지수를 구하는 목표이다.",
+    "method": "평균과 분산의 편차 공식으로 이차방정식을 수립하는 방법이다.",
+    "condition": "중앙값이 5라는 조건이다."
+  },
+  "how": "중앙값 b = 5와 평균 7에서 a + c = 16을 얻고 분산 26의 편차제곱합 식 a^2 - 16a + 28 = 0에서 a = 2, c = 14임을 서술하여 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "중앙값 5와 평균 7로 b=5, c=16-a를 세우고 분산 26의 편차제곱합 식을 정리하여 인수분해로 a=2, c=14를 도출하는 3단계 서술형 문항이다."
+}

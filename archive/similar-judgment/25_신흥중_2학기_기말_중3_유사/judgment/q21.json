@@ -1,0 +1,75 @@
+{
+  "qid": 21,
+  "itemFingerprint": "39b2e8231036e7c3",
+  "solveSteps": [
+    "1) 원 O에 내접하는 정팔각형 ABCDEFGH의 한 변 CD의 중심각은 각 COD = 360도 / 8 = 45도이다.",
+    "2) 각 CAD는 같은 호 CD를 바라보는 원주각이다.",
+    "3) 원주각의 크기는 중심각의 절반이므로 각 CAD = 45도 / 2 = 22.5도이다.",
+    "4) 따라서 구하는 각의 크기는 22.5도이다."
+  ],
+  "solvedAnswer": "$22.5^\\circ$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "unitEvidence": "다음 그림과 같이 원 $O$에 내접하는 정팔각형 $ABCDEFGH$에서 두 대각선 $\\overline{AC}$와 $\\overline{AD}$가 이루는 각 $\\angle CAD$의 크기를 구하고, 그 과정을 서술하시오. [4점]",
+  "rpmRecordId": "M3-RPM-075",
+  "rpmReason": "정팔각형의 한 변 CD에 대한 중심각 360/8 = 45도와 원주각 각 CAD = 22.5도의 절반 관계를 서술하는 M3-RPM-075 문제이다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+  "typeReason": "원 둘레 360도를 정팔각형 8등분한 중심각 45도로부터 원주각 각 CAD = 22.5도를 도출하는 TPL_CIRCLE_ANGLE_CENTER_ARC 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "정다각형",
+        "src": "solution",
+        "quote": "정팔각형 $ABCDEFGH$가 원 $O$에 내접하므로"
+      }
+    ],
+    "goal": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle CAD$의 크기를 구하고, 그 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "원주각",
+        "src": "solution",
+        "quote": "$\\angle CAD$는 호 $CD$를 바라보는 원주각이고,",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "대각선",
+        "src": "stem",
+        "quote": "두 대각선 $\\overline{AC}$와 $\\overline{AD}$가 이루는 각"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "원 O에 내접하는 정팔각형 ABCDEFGH 조건이다.",
+    "goal": "각 CAD의 크기를 구하는 목표이다.",
+    "method": "호 CD의 중심각 45도로부터 원주각 절반 공식을 적용하는 방법이다.",
+    "condition": "두 대각선 AC, AD가 이루는 각 조건이다."
+  },
+  "how": "정팔각형 한 호 CD의 중심각 45도에서 원주각 각 CAD = 22.5도임을 유도하여 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "정팔각형 8변의 대칭성으로 중심각 45도를 구하고 원주각 공식으로 22.5도를 도출하는 2단계 서술형 문항이다."
+}

@@ -1,0 +1,77 @@
+{
+  "qid": 9,
+  "itemFingerprint": "950284072c341369",
+  "solveSteps": [
+    "1) 두 접선 PA, PD가 이루는 각이 60도이므로 작은 호 AD의 중심각은 180도 - 60도 = 120도이다.",
+    "2) 나머지 큰 호 ABCD의 크기는 360도 - 120도 = 240도이다.",
+    "3) 호 AB = 호 BC = 호 CD이므로 세 호는 각각 240도 / 3 = 80도이다.",
+    "4) 원주각 각 QBC = 80도 / 2 = 40도이고, 각 QCB = 80도 / 2 = 40도이다.",
+    "5) 삼각형 BQC의 내각의 합은 180도이므로 각 BQC = 180도 - 40도 - 40도 = 100도이다.",
+    "6) 따라서 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "unitEvidence": "다음 그림에서 두 반직선 $\\overrightarrow{PA}, \\overrightarrow{PD}$는 원 $O$의 접선이고, 점 $Q$는 선분 $\\overline{AC}$와 $\\overline{BD}$의 교점이다. $\\wideparen{AB} = \\wideparen{BC} = \\wideparen{CD}$이고 $\\angle APD = 60^\\circ$일 때, $\\angle BQC$의 크기는? [5점]",
+  "rpmRecordId": "M3-RPM-080",
+  "rpmReason": "접선 사이 각 60도로부터 큰 호 ABCD = 240도를 구하고 3등분 호 80도의 원주각 40도를 결합해 각 BQC = 100도를 구하는 M3-RPM-080 문제이다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+  "typeReason": "접선 각 60도와 등분된 세 호의 크기 80도로부터 삼각형 BQC의 두 밑각 40도와 꼭지각 100도를 도출하는 TPL_CIRCLE_ANGLE_COMPOSITE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "접선",
+        "src": "stem",
+        "quote": "두 반직선 $\\overrightarrow{PA}, \\overrightarrow{PD}$는 원 $O$의 접선이고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle BQC$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "원주각",
+        "src": "solution",
+        "quote": "호 $CD$를 바라보는 원주각이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "호",
+        "src": "stem",
+        "quote": "$\\wideparen{AB} = \\wideparen{BC} = \\wideparen{CD}$이고"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "접선 PA, PD와 현 AC, BD의 교점 Q 조건이다.",
+    "goal": "각 BQC의 크기를 구하는 목표이다.",
+    "method": "접선 각과 원주각 성질로 삼각형 내각을 구하는 방법이다.",
+    "condition": "호 AB = 호 BC = 호 CD 및 각 APD = 60도 조건이다."
+  },
+  "how": "접선 각 60도에서 호 AD = 120도, 큰 호 240도의 3등분 호 80도를 얻어 밑각 각 QBC = 각 QCB = 40도에서 각 BQC = 100도임을 도출하여 정답 ④로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "접선 각 60도로부터 호의 크기 240도 및 3등분 80도를 구하고 삼각형 내각합으로 각 BQC = 100도를 유도하는 3단계 복합 문항이다."
+}
