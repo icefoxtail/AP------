@@ -1,0 +1,57 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "12ba8cf0f8ca4ea3",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "직사각형 $ABCD$에서 $BC = AD = 10        ext{ cm}$, $AB = CD = 6        ext{ cm}$이다.",
+    "$PC = x        ext{ cm}$이므로 $BP = (10 - x)        ext{ cm}$이다.",
+    "삼각형 $ABP$의 넓이 $y$는",
+    "$y = \\dfrac{1}{2} \\times BP \\times AB = \\dfrac{1}{2}(10-x) \\times 6 = 3(10-x) = -3x+30$"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "직사각형 $ABCD$에서 점 $P$는 점 $B$를 출발하여 변 $BC$를 따라 점 $C$까지 움직인다.",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "rpmRecordId": "M2-RPM-046",
+  "rpmEvidence": "직사각형 $ABCD$에서 $BC = AD = 10        ext{ cm}$, $AB = CD = 6        ext{ cm}$이다.",
+  "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+  "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
+  "newKeyProposal": null,
+  "typeReason": "Q19번 문항은 PT_M2_FUNCTION_VALUE_PRIME_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)",
+  "rpmReason": "Q19번 문항은 M2-RPM-046에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABCD)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q19번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ABCD)",
+  "how": "Q19번 문항으로 M2-04 단원의 기본 개념과 성질을 적용하여 ①을(를) 바르게 구하였다. (문항 토큰 ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "사각형",
+        "src": "stem",
+        "quote": "직사각형 $ABCD$에서 점 $P$는 점 $B$를 출발하여 변 $BC$를 따라 점 $C$까지 움직인다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 $ABCD$에서 점 $P$는 점 $B$를 출발하여 변 $BC$를 따라 점 $C$까지 움직인다."
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각형",
+        "src": "solution",
+        "quote": "삼각형 $ABP$의 넓이 $y$는",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
