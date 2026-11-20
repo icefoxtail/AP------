@@ -1,0 +1,113 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "선분 AD의 각 구간별 길이 비와 실제 길이를 나타낸 다이어그램이다.",
+  "accessibilityDescription": "비례식과 중점 관계를 통한 선분 AD의 길이 계산 해설 그림.",
+  "sourceQuote": "점 $C$는 선분 $\\overline",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "assetPath": "assets/images/24_연향중_2학기_중간_중1_유사/q20-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/24_연향중_2학기_중간_중1_유사/q20-solution-result.json",
+    "statePath": "archive/assets/images/24_연향중_2학기_중간_중1_유사/q20-solution-state.json",
+    "svgPath": "archive/assets/images/24_연향중_2학기_중간_중1_유사/q20-solution-solution.svg"
+  }
+}

@@ -1,0 +1,211 @@
+{
+ "meta": {
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/24_연향중_2학기_중간_중1_유사.js",
+  "ordinal": 19,
+  "tag": "q19-solution"
+ },
+ "identity": {
+  "questionUid": "24_연향중_2학기_중간_중1_유사|19",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:5a1c1e3640ca97b4dd7a3dc657511bc868fb4f2b4dc3c13785414f851133b86c",
+  "assetId": "va-7137c1d88df88b67f7ad1a831ff7327cc9c8b3962f58abd03cc0554b96e2db48"
+ },
+ "plan": {
+  "capability": "construction-spike-v1",
+  "caption": "완성된 독서 시간 도수분포표와 4시간 미만 구간 다이어그램이다.",
+  "accessibilityDescription": "도수분포표에서 4시간 미만 구간을 합산하는 해설 그림.",
+  "sourceQuote": "4시간 미만인 학생 수는 3+9=12명",
+  "mathPlan": {
+   "schemaVersion": "construction-spike-v1",
+   "realization": {
+    "recipeId": "PLANE_FIGURE_v1",
+    "unit": "source-length",
+    "reflectionEquivalent": false
+   },
+   "nodes": [
+    {
+     "id": "O",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "0"
+       },
+       {
+        "kind": "integer",
+        "value": "0"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    }
+   ]
+  },
+  "displayPoints": [
+   "O"
+  ],
+  "displaySegments": []
+ },
+ "model": {
+  "engine": "SymPy",
+  "version": "1.14.0",
+  "points": {
+   "O": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "0"
+     },
+     {
+      "kind": "integer",
+      "value": "0"
+     }
+    ],
+    "approximation": [
+     0,
+     0
+    ],
+    "precisionDigits": 17
+   }
+  },
+  "scalars": {},
+  "lines": {},
+  "circles": {},
+  "pointSets": {},
+  "conditionAudits": [],
+  "transcript": [
+   {
+    "nodeId": "O",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   }
+  ],
+  "order": [
+   "O"
+  ],
+  "coordinateMode": "CONSTRUCTED_REALIZATION"
+ },
+ "composed": {
+  "schemaVersion": "construction-candidate-svg-v1",
+  "status": "COMPOSED",
+  "detail": null,
+  "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 384 320\" width=\"384\" height=\"320\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-labelledby=\"visual-title visual-desc\" data-engine-version=\"geometry-visual-v1\" data-geometry-style-version=\"AP_GEOMETRY_PRINT_V1_0_DRAFT\" data-geometry-preset=\"GEOMETRY_STANDARD\" data-graph-style-version=\"AP_GRAPH_PRINT_V1_1_DRAFT\" data-geometry-mode=\"COORDINATE_GEOMETRY_HYBRID\" data-axis-scale-mode=\"EQUAL_UNIT\" data-geometry-fact-hash=\"44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a\" data-visual-provenance=\"independent-facts-python\" style=\"max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round\" data-publication-profile=\"fragment-publication-spike-v1\" data-safe-margin=\"12\"><title id=\"visual-title\">완성된 독서 시간 도수분포표와 4시간 미만 구간 다이어그램이다.</title><desc id=\"visual-desc\">도수분포표에서 4시간 미만 구간을 합산하는 해설 그림.</desc><rect width=\"384\" height=\"320\" fill=\"#fff\"/><g data-layer=\"70\"><circle id=\"O\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"192\" cy=\"160\" r=\"3.2\"/></g><g data-layer=\"90\"><g id=\"O-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"22.8\" data-owner=\"O\" data-fragment-sha=\"sha256:6ed74f425bfab7373e817f0bf290fc958201ddae339c0b5ff7c857ec1ad98bf4\" transform=\"translate(183.3018 131.4472)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.3964\" height=\"16.552799999999998\" viewBox=\"0 0 17.3964 16.552799999999998\" data-outline-width=\"17.3964\" data-outline-height=\"16.552799999999998\" id=\"lb-52389fc011b18233c7362f5522d6db082f0443394eaa6283a8088333b5e3b682\" data-owner=\"O\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 16.0512) scale(0.0228)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D442\" d=\"M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z\"></path></g></g></g></g></svg></g></g></svg>\n",
+  "lineage": {
+   "planSha256": "sha256:b56bc76dcec5639b800bb45ddcd3e6ae72b7f4e73ecf090de1cb332238d49cea",
+   "modelSha256": "sha256:3fc3b57a17ff8ea94ececfcb382e104357489171dc1484dcf57d514ac11b8ba1",
+   "typographyPolicySha256": "sha256:824b66bd1d2434306b93764afc4c7c5ded7355fcef4706e03ecc994c4b6bf259",
+   "specSha256": "sha256:89990264e4724cdd7ada08fe45b272c0e055b8003f16920385c6ce0e719eed80",
+   "fragmentSha256s": {
+    "O-name": "sha256:6ed74f425bfab7373e817f0bf290fc958201ddae339c0b5ff7c857ec1ad98bf4"
+   },
+   "measurementsSha256": "sha256:f064e708c97c15d809ffe49e58be4934b1f156a63aa7702f00cafbbe63770cd0",
+   "svgSha256": "sha256:df4089cccee1bd0bc0e10d1f2460e907972b114766b7fdda560b339e69fedab0",
+   "witnessSha256": "sha256:6dc2b1a673ef5c0e4437bbc2495fc1fa0af7e5f1abefeeabdc225a71f3cbe025",
+   "staticAuditSha256": "sha256:42a81cffa4dd67e1b59df8b66ee864fec1d93297f4a8e10a90b9fc8e015e2514",
+   "renderedLayoutSha256": "sha256:cbfd891631ee23b12d8b88b829d30273ba60fc56bc84fd9a1550eede3f9020cf"
+  },
+  "staticAudit": {
+   "status": "PASS",
+   "errors": []
+  },
+  "renderedLayout": {
+   "status": "PASS",
+   "display": {
+    "width": 189.671875,
+    "height": 158.05989583333334
+   },
+   "errors": []
+  },
+  "layoutRepairs": [],
+  "typographyPolicyProvenance": "CALLER_SUPPLIED_UNVERIFIED",
+  "sizeSelection": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "independentVisualReview": "NOT_RUN",
+  "productionAuthorized": false,
+  "qualification": "NOT_RUN"
+ },
+ "capture": {
+  "schemaVersion": "construction-archive-capture-v1",
+  "status": "ARCHIVE_BOUND",
+  "detail": null,
+  "lineage": {
+   "l1SvgSha256": "sha256:df4089cccee1bd0bc0e10d1f2460e907972b114766b7fdda560b339e69fedab0",
+   "policySha256": "sha256:824b66bd1d2434306b93764afc4c7c5ded7355fcef4706e03ecc994c4b6bf259",
+   "candidateBankSha256": "sha256:577c332dd78274bb43ee2c43dcd05a89d780ebe9098b33354c2ab2d055cc49cd",
+   "assetPath": ".tmp/archive/pilot-capture-e1a4fd1b/24_연향중_2학기_중간_중1_유사/assets/images/24_연향중_2학기_중간_중1_유사/q19-solution.svg",
+   "assetResponseSha256": "sha256:df4089cccee1bd0bc0e10d1f2460e907972b114766b7fdda560b339e69fedab0",
+   "archiveRowSha256": "sha256:ca7da7c10fca389e3f80d4d57fdc2a99eb896ff1f8d0b813f1dae2f3b6396c5e",
+   "screenshotSha256s": {
+    "image": "sha256:5e116edf3794d275d11f7f0331943b9cc6b9a2a0f3db305d2ab40a5a33a8c802",
+    "context": "sha256:52bcdaa64662413e788acfa14fe44c8d97bddf63afc86905b534fce4127fc984",
+    "page": "sha256:87d5299df6a13b1d899ebe2a0d2551dee06d856aeac36a06f180fd6f55a736a1"
+   },
+   "matrixSha256": "sha256:e02fa9a720159657ce3393922a64ad185645b1f6bbd7253be34d4d9e56a4c3c5",
+   "engineSha256": "sha256:08744d4ea9046c1de0b4d815147e7f350d745a9aceb6eff8df3d19fd3e80aac8"
+  },
+  "paths": {
+   "runRoot": ".tmp/archive/pilot-capture-e1a4fd1b",
+   "asset": ".tmp/archive/pilot-capture-e1a4fd1b/24_연향중_2학기_중간_중1_유사/assets/images/24_연향중_2학기_중간_중1_유사/q19-solution.svg",
+   "candidateBank": ".tmp/archive/pilot-capture-e1a4fd1b/24_연향중_2학기_중간_중1_유사/candidates/24_연향중_2학기_중간_중1_유사.js",
+   "matrix": ".tmp/archive/pilot-capture-e1a4fd1b/24_연향중_2학기_중간_중1_유사/visual-engine/production/archive-capture/archive-render-matrix.json",
+   "archiveRow": ".tmp/archive/pilot-capture-e1a4fd1b/24_연향중_2학기_중간_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-7137c1d88df88b67f7ad1a831ff7327cc9c8b3962f58abd03cc0554b96e2db48-sol-desktop.json",
+   "screenshots": {
+    "image": ".tmp/archive/pilot-capture-e1a4fd1b/24_연향중_2학기_중간_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-7137c1d88df88b67f7ad1a831ff7327cc9c8b3962f58abd03cc0554b96e2db48-sol-desktop-va-7137c1d88df88b67f7ad1a831ff7327cc9c8b3962f58abd03cc0554b96e2db48.png",
+    "context": ".tmp/archive/pilot-capture-e1a4fd1b/24_연향중_2학기_중간_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-7137c1d88df88b67f7ad1a831ff7327cc9c8b3962f58abd03cc0554b96e2db48-sol-desktop-va-7137c1d88df88b67f7ad1a831ff7327cc9c8b3962f58abd03cc0554b96e2db48-context.png",
+    "page": ".tmp/archive/pilot-capture-e1a4fd1b/24_연향중_2학기_중간_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-7137c1d88df88b67f7ad1a831ff7327cc9c8b3962f58abd03cc0554b96e2db48-sol-desktop.png"
+   }
+  },
+  "protectedParity": {
+   "status": "PASS",
+   "sourceRef": {
+    "path": "archive/exams/similar/middle/m1/2mid/24_연향중_2학기_중간_중1_유사.js",
+    "bytes": 48856,
+    "sha256": "sha256:ad26492c92acecc9fc25d4f0bcbb30e077e0740ba26b12bffedf594bf18b54b6"
+   },
+   "originalQuestionSha256": "sha256:ef32ff8b5959ef3e4b8ee765e9209ad4945ee46b1f938ed7cbe18d399b01470e",
+   "questionCount": 22,
+   "protectedFields": [
+    "content",
+    "choices",
+    "answer",
+    "solution",
+    "image"
+   ],
+   "changedFields": [
+    "solutionImage",
+    "solutionImageSize",
+    "solutionImageAlt"
+   ],
+   "targetOrdinal": 19
+  },
+  "sizeClass": "full",
+  "observedDisplayScale": 0.4939371744791667,
+  "expectedDisplayScale": 0.4939371744791667,
+  "displayScaleDeltaCssPx": 0,
+  "layout": {
+   "source": "ARCHIVE_ROW_ISOLATED_REPLAY",
+   "status": "PASS",
+   "errors": []
+  },
+  "checks": {
+   "network": "PASS",
+   "assetResponse": "PASS",
+   "bankResponse": "PASS",
+   "naturalSize": "PASS",
+   "sizeClass": "PASS",
+   "displayScale": "PASS",
+   "layout": "PASS"
+  },
+  "fixtureClassification": "PILOT_AUTHOR_PLAN_CANDIDATE",
+  "evidenceIntegrity": "NO_CALLER_HOOK",
+  "uidAuthority": "STRUCTURAL_ONLY",
+  "independentInverseObservation": "NOT_RUN",
+  "qualification": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false
+ }
+}
