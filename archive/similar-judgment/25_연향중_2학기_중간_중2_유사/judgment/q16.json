@@ -1,0 +1,63 @@
+{
+  "qid": 16,
+  "itemFingerprint": "2f20ae3d72d1eb60",
+  "solveSteps": [
+    "접은 각과 엇각의 성질에 의해 triangle AEF는 AE = AF인 이등변삼각형이다.",
+    "angle EAF = 68도이므로 밑각 angle AFE = (180도 - 68도)/2 = 56도이다.",
+    "동위각 또는 평각 조건에서 접힌 각 angle GFE = angle DFE = 180도 - 56도 = 124도이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "직사각형 $ABCD$를 변 $BC$ 위의 점 $E$와 ",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "$\\overline{AF} \\parallel \\over",
+  "rpmRecordId": "M2-RPM-078",
+  "rpmReason": "직사각형 ABCD의 종이접기에서 이등변삼각형 밑각과 접은 각의 성질로 124도를 계산한다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+  "typeReason": "직사각형 ABCD를 접었을 때 각 EAF = 68도로부터 각 GFE = 124도를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "접은 각으로 이등변삼각형 밑각 56도를 구하고 평각에서 124도를 계산하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 $ABCD$를"
+      }
+    ],
+    "goal": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "선으로 하여 꼭짓점 $C$가 꼭짓"
+      }
+    ],
+    "method": [
+      {
+        "term": "사각형",
+        "src": "stem",
+        "quote": "직사각형 $ABCD$를",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "triangle AEF의 밑각 angle AFE = 56도에서 접힌 각 angle GFE = 180 - 56 = 124도로 계산하여 ④로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

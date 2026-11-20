@@ -1,0 +1,63 @@
+{
+  "qid": 8,
+  "itemFingerprint": "1afc254442419878",
+  "solveSteps": [
+    "점 O는 삼각형 ABC의 외심이므로 OA = OB = OC이다.",
+    "따라서 triangle AOB는 OA = OB인 이등변삼각형이므로 ①은 항상 옳다.",
+    "외심은 세 변의 수직이등분선의 교점이므로 변 AB의 수직이등분선은 점 O를 지나 ⑤도 항상 옳다."
+  ],
+  "solvedAnswer": "①, ⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "점 $O$는 $\\triangle ABC$의 외심이므로 ",
+  "rpmRecordId": "M2-RPM-064",
+  "rpmReason": "외심 O의 성질인 OA = OB = OC 및 세 변의 수직이등분선 교점 성질을 확인한다.",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+  "typeReason": "삼각형 ABC의 외심 성질로부터 triangle AOB의 이등변삼각형 판정 및 수직이등분선 진술을 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "외심 O에서 OA = OB와 수직이등분선 정의를 바로 적용하여 두 보기를 고르므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "수직이등분선",
+        "src": "stem",
+        "quote": ", $AC$의 수직이등분선의 교점을 $O"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이등변삼각형",
+        "src": "solution",
+        "quote": "e AOB$는 이등변삼각형이다. (참)"
+      }
+    ],
+    "method": [
+      {
+        "term": "교점",
+        "src": "stem",
+        "quote": "수직이등분선의 교점을 $O$라 하",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "외심 O의 성질 OA = OB에서 triangle AOB가 이등변삼각형임과 수직이등분선 성질을 확인해 ①, ⑤로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

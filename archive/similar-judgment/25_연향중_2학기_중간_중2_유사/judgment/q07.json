@@ -1,0 +1,62 @@
+{
+  "qid": 7,
+  "itemFingerprint": "fc3a5e88586c16a8",
+  "solveSteps": [
+    "각 XOY의 이등분선 위의 점 P에서 각 변에 내린 수선의 발 A, B에 대하여 직각삼각형 POA, POB는 빗변 OP가 공통이고 한 예각 POA = POB이다.",
+    "따라서 RHA 합동이므로 (라)에 들어갈 조건은 RHS가 아니라 RHA이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "$\\angle POA = \\angle POB$, 빗변 ",
+  "rpmRecordId": "M2-RPM-071",
+  "rpmReason": "직각삼각형 POA와 POB의 빗변 OP 공통과 한 예각 조건으로 RHA 합동을 판별한다.",
+  "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+  "templateKey": "TPL_RIGHT_TRIANGLE_CONGRUENCE_CRITERIA",
+  "typeReason": "삼각형 POA에서 각의 이등분선 정리의 RHA 합동 조건 빈칸을 검증하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "각 POA의 이등분 조건으로 RHA 합동임을 바로 파악하여 오류 선지 ②를 찾으므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "이등분선",
+        "src": "stem",
+        "quote": "다음은 각의 이등분선 위의 점에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합동",
+        "src": "stem",
+        "quote": "{(라)}}$ 합동) 따라서 $\\"
+      }
+    ],
+    "method": [
+      {
+        "term": "수선",
+        "src": "stem",
+        "quote": "Y}$에 내린 수선의 발을 각각",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "각 POA = POB와 빗변 OP 공통에서 RHA 합동이어야 하므로 RHS로 표기된 ②로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

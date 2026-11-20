@@ -1,0 +1,62 @@
+{
+  "qid": 12,
+  "itemFingerprint": "cd2d26e88afb8750",
+  "solveSteps": [
+    "각의 이등분선 위의 점 D에서 변 AB에 내린 수선의 길이는 CD = 7 cm와 같다.",
+    "밑변 AB = 20 cm이므로 triangle ABD의 넓이는 (1/2) * 20 * 7 = 70 cm^2이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "점 $D$에서 변 $AB$에 내린 수선의 발을 $H$라",
+  "rpmRecordId": "M2-RPM-066",
+  "rpmReason": "각의 이등분선 성질로 점 D에서 변 AB = 20에 이르는 거리 7을 파악해 넓이 70을 계산한다.",
+  "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+  "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_EQUIDISTANCE",
+  "typeReason": "직각삼각형 ABC에서 각의 이등분선과 변 AB = 20으로 삼각형 ABD의 넓이를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "각의 이등분선 성질로 높이 7을 확인하고 밑변 20과 곱해 70을 구하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "\\circ$인 직각삼각형 $ABC$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "e ABD$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "이등분선",
+        "src": "stem",
+        "quote": "gle A$의 이등분선과 변 $BC$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "점 D에서 변 AB에 이르는 거리가 CD = 7 cm이므로 넓이 (1/2)*20*7 = 70 cm^2를 도출하여 ②로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "qid": 19,
+  "itemFingerprint": "5b94ce800f17f02e",
+  "solveSteps": [
+    "직각삼각형 ABC의 외심 O는 빗변 AB의 중점이므로 외접원 반지름 R = 10/2 = 5 cm이고 둘레는 10*pi cm이다.",
+    "내접원 반지름 r = (6 + 8 - 10)/2 = 2 cm이므로 내접원의 둘레는 4*pi cm이다.",
+    "따라서 둘레의 길이의 합은 10*pi + 4*pi = 14*pi cm이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "직각삼각형의 외심 $O$는 빗변 $AB$의 중점이므로 ",
+  "rpmRecordId": "M2-RPM-068",
+  "rpmReason": "직각삼각형 ABC의 외접원 반지름 5와 내접원 반지름 2로부터 둘레의 합 14pi를 산출한다.",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+  "typeReason": "변 AB = 10, BC = 6, AC = 8인 직각삼각형의 외접원과 내접원의 둘레 합을 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "외접원 둘레 10pi와 내접원 둘레 4pi를 각각 구하여 합 14pi를 계산하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "외심",
+        "src": "stem",
+        "quote": "$ABC$의 외심과 내심을 각각"
+      }
+    ],
+    "goal": [
+      {
+        "term": "둘레",
+        "src": "stem",
+        "quote": "원과 내접원의 둘레의 길이의 합은"
+      }
+    ],
+    "method": [
+      {
+        "term": "내심",
+        "src": "stem",
+        "quote": "C$의 외심과 내심을 각각 $O$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "외접원 반지름 5와 내접원 반지름 2를 구하여 둘레의 합 10pi + 4pi = 14pi cm를 산출해 ②로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

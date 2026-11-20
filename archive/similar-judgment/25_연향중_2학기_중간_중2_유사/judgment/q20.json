@@ -1,0 +1,63 @@
+{
+  "qid": 20,
+  "itemFingerprint": "bb4ffd259cdecfd6",
+  "solveSteps": [
+    "BE = BF에서 angle BEF = angle BFE이고, 맞꼭지각 및 엇각에 의해 angle DFC = angle DCF이다.",
+    "따라서 triangle DCF는 DF = DC인 이등변삼각형이고 마름모 ABCD이므로 DC = BC = 15이다.",
+    "대각선 BD = BF + DF = 11 + 15 = 26이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "마름모 $ABCD$에서 변 $AB$ 위의 점 $E$와 ",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "$\\overline{BE} = \\overline{BF}",
+  "rpmRecordId": "M2-RPM-078",
+  "rpmReason": "마름모 ABCD의 변의 길이 15와 이등변삼각형 성질로 DF = 15를 얻어 대각선 BD = 26을 구한다.",
+  "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+  "templateKey": "TPL_ISOSCELES_CONVERSE",
+  "typeReason": "마름모 ABCD에서 BE = BF = 11과 BC = 15 조건으로 대각선 BD = 26을 계산하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "각의 추론으로 triangle DCF가 이등변삼각형임을 밝혀 DF = 15를 찾아 합산하므로 난이도 3이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "마름모",
+        "src": "stem",
+        "quote": "마름모 $ABCD$에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대각선",
+        "src": "stem",
+        "quote": "점 $E$와 대각선 $BD$ 위의"
+      }
+    ],
+    "method": [
+      {
+        "term": "이등변삼각형",
+        "src": "solution",
+        "quote": "e DFC$는 이등변삼각형이고 $\\ove",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "triangle DCF가 이등변삼각형임을 유도하여 DF = 15를 얻고 대각선 BD = 11 + 15 = 26으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

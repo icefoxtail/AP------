@@ -1,0 +1,62 @@
+{
+  "qid": 11,
+  "itemFingerprint": "da0a77f4d814bc4c",
+  "solveSteps": [
+    "원 밖의 꼭짓점에서 내접원에 그은 접선 길이는 같으므로 AF = AD = 5 cm, BE = DB = 6 cm이다.",
+    "FC = CE = x cm라 하면 둘레는 2(5 + 6 + x) = 28 cm에서 11 + x = 14이므로 x = 3 cm이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "$\\overline{FC} = x\\text{ cm}$라",
+  "rpmRecordId": "M2-RPM-068",
+  "rpmReason": "내접원의 접선 길이 대칭성과 삼각형 ABC의 둘레 28 cm를 이용해 x = 3 cm를 구한다.",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TM_TANGENT_LENGTH",
+  "typeReason": "삼각형 ABC의 둘레 28 cm와 접선 길이 조건으로부터 선분 FC의 길이를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "접선 길이 대칭성으로 둘레 절반 식 11 + x = 14에서 x = 3을 바로 구하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "내심",
+        "src": "stem",
+        "quote": "e ABC$의 내심이고 내접원이"
+      }
+    ],
+    "goal": [
+      {
+        "term": "둘레",
+        "src": "stem",
+        "quote": "e ABC$의 둘레의 길이가 $2"
+      }
+    ],
+    "method": [
+      {
+        "term": "접선",
+        "src": "solution",
+        "quote": "원에 그은 두 접선의 길이는 같으",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "접선 길이 AF = 5, BE = 6과 둘레 28 cm에서 2(11 + x) = 28을 풀어 FC = 3 cm를 산출해 ⑤로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
