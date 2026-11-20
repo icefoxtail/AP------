@@ -1,0 +1,76 @@
+{
+  "qid": 9,
+  "itemFingerprint": "b1b10b1469e91d02",
+  "solveSteps": [
+    "① sqrt(36) / 6 = 6 / 6 = 1 이므로 sqrt(6)이 아니다.",
+    "② -3*sqrt(5) 는 음수이고 sqrt(45) 는 양수이므로 같지 않다.",
+    "③ sqrt(12) + sqrt(5) != sqrt(17) 이다.",
+    "④ 7*sqrt(3) - 3*sqrt(3) = (7 - 3)*sqrt(3) = 4*sqrt(3) 으로 옳다.",
+    "⑤ sqrt(20) - sqrt(18) = 2*sqrt(5) - 3*sqrt(2) != sqrt(2) 이다. 옳은 것은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "unitEvidence": "제곱근의 사칙연산 법칙을 적용하",
+  "rpmRecordId": "M3-RPM-009",
+  "rpmReason": "36, 45, 12, 18, 20의 근호 계산을 확인하고 동류근호의 뺄셈 법칙을 적용한다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+  "typeReason": "36의 제곱근 등 여러 근호 연산 중 동류근호의 뺄셈 계산이 올바른지 검증하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "동류근호의 계수 7 - 3 = 4 계산을 36 등의 다른 선지와 함께 1단계로 판별하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "무리수",
+        "quote": "짓) ④ 같은 무리수 $\\sqrt{",
+        "src": "solution"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "quote": "선지의 계산을 검증한다. 1단계",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "사칙연산",
+        "quote": "제곱근의 사칙연산 법칙을 적용하",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "계수",
+        "quote": "동류근호이므로 계수끼리 계산하면",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "선지 4번에서 7sqrt(3) - 3sqrt(3) = 4sqrt(3)이 동류근호 계산으로 참임을 확인하고 36 등의 오답을 배제하여 ④로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": [],
+  "course": [
+    "MIDDLE3"
+  ],
+  "curriculum": "2015"
+}

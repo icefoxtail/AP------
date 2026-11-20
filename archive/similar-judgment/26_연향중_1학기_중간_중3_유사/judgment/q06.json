@@ -1,0 +1,76 @@
+{
+  "qid": 6,
+  "itemFingerprint": "976385aa60844d2d",
+  "solveSteps": [
+    "① 2 + sqrt(3) 은 실수이므로 수직선 위의 한 점에 대응시킬 수 있다. 참이다.",
+    "② 순환하지 않는 무한소수는 무리수의 정의이다.",
+    "③ sqrt(25) = 5 처럼 근호가 있어도 유리수인 수가 존재한다.",
+    "④ 실수는 유리수 또는 무리수 중 하나이며 둘 다일 수는 없다.",
+    "⑤ 순환소수는 무한소수이지만 유리수이다. 옳은 것은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_LINE",
+  "unitEvidence": "실수와 수직선의 관계 및",
+  "rpmRecordId": "M3-RPM-005",
+  "rpmReason": "실수의 수직선 대응 및 루트 25와 같은 유리수 반례를 들어 명제를 판정한다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBERS",
+  "templateKey": "NONE",
+  "typeReason": "실수의 수직선 대응과 루트 25와 같은 근호가 있는 유리수의 반례 등 명제의 참 거짓을 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "실수의 수직선 일대일 대응과 루트 25=5 반례를 이용해 1단계로 참 거짓을 판별하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "수직선",
+        "quote": "대응하는 점은 수직선 위에 나타낼",
+        "src": "choices"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "quote": "고 한 설명은 거짓이다. ③ $\\",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "정의",
+        "quote": "므로 무리수의 정의이다. 유리수라",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실수",
+        "quote": "실수와 수직선의 관",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "실수는 수직선 위에 항상 대응되며 루트 25=5처럼 근호가 있어도 유리수인 반례를 확인하여 1번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": [],
+  "course": [
+    "MIDDLE3"
+  ],
+  "curriculum": "2015"
+}
