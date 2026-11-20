@@ -1,0 +1,56 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "959082613d5729d7",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$\\angle A = 180^\\circ - 30^\\circ - 105^\\circ = 45^\\circ$이다.",
+    "$C$에서 $AB$에 내린 수선의 발을 $H$라 하면 $\\triangle BCH$에서 $CH = 16\\sin 30^\\circ = 8$이다.",
+    "$\\triangle ACH$는 $\\angle A=45^\\circ$인 직각이등변삼각형이므로 $AH=CH=8$이고, $$ AC = \\sqrt{8^2+8^2} = 8\\sqrt{2} $$ 따라서 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림의 $\\triangle ABC$에서 $\\overline{BC}=16$, $\\angle B=30^\\circ$, $\\angle C=105^\\circ$일 때, $\\overline{AC}$의 길이는",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림의 $\\triangle ABC$에서 $\\overline{BC}=16$, $\\angle B=30^\\circ$, $\\angle C=105^\\circ$일 때, $\\overline{AC}$의 길이는?",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "rpmRecordId": "M3-RPM-061",
+  "rpmEvidence": "$\\angle A = 180^\\circ - 30^\\circ - 105^\\circ = 45^\\circ$이다.",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+  "newKeyProposal": null,
+  "typeReason": "Q8번 문항은 PT_TRIG_RATIO 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABC)",
+  "rpmReason": "Q8번 문항은 M3-RPM-061에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABC)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q8번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ABC)",
+  "how": "Q8번 문항으로 M3-05 단원의 기본 개념과 성질을 적용하여 ③을(를) 바르게 구하였다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "다음 그림의 $\\triangle ABC$에서 $\\overline{BC}=16$, $\\angle B=30^\\circ$, $\\angle C=105^\\circ$일 때, $\\overline{AC}$의 길이는?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "수선",
+        "src": "solution",
+        "quote": "$C$에서 $AB$에 내린 수선의 발을 $H$라 하면 $\\triangle BCH$에서 $CH = 16\\sin 30^\\circ = 8$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "수선의발",
+        "src": "solution",
+        "quote": "$C$에서 $AB$에 내린 수선의 발을 $H$라 하면 $\\triangle BCH$에서 $CH = 16\\sin 30^\\circ = 8$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

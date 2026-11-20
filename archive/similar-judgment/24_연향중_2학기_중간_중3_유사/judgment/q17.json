@@ -1,0 +1,56 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "b6031ea066814182",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "반지름을 $r,\\mathrm{m}$라 하면 $AM=8,\\mathrm{m}$, $OM=r-4$이다.",
+    "직각삼각형 $OAM$에서 $r^2 = (r-4)^2 + 8^2 \\implies 8r = 80 \\implies r = 10,\\mathrm{m}$이다.",
+    "따라서 원의 둘레의 길이는 $2\\pi\\times 10 = 20\\pi,\\mathrm{m}$이므로 정답은 ①이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 다리의 아치에서 원의 일부분을 찾았다",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림과 같이 다리의 아치에서 원의 일부분을 찾았다.",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmEvidence": "반지름을 $r,\\mathrm{m}$라 하면 $AM=8,\\mathrm{m}$, $OM=r-4$이다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+  "newKeyProposal": null,
+  "typeReason": "Q17번 문항은 PT_CIRCLE_ANGLE_RELATIONS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AB)",
+  "rpmReason": "Q17번 문항은 M3-RPM-067에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AB)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q17번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 AB)",
+  "how": "Q17번 문항으로 M3-06 단원의 기본 개념과 성질을 적용하여 ①을(를) 바르게 구하였다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "부분",
+        "src": "stem",
+        "quote": "다음 그림과 같이 다리의 아치에서 원의 일부분을 찾았다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "중점",
+        "src": "stem",
+        "quote": "점 $M$은 $\\overline{AB}$의 중점이고 $CM \\perp AB$, $\\overline{AB}=16,\\mathrm{m}$, $\\overline{CM}=4,\\mathrm{m}$일 때, 이 원의 둘레의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "반지름",
+        "src": "solution",
+        "quote": "반지름을 $r,\\mathrm{m}$라 하면 $AM=8,\\mathrm{m}$, $OM=r-4$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

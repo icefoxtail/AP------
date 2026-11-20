@@ -1,0 +1,57 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "70b94fa1468eefe1",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$AB^2 = (-3)^2+2^2 = 13$, $AC^2 = 2^2+3^2 = 13$, $BC^2 = (2+3)^2+(3-2)^2 = 26$이다.",
+    "$AB=AC$이고 $AB^2+AC^2=BC^2$이므로 $\\triangle ABC$는 $\\angle A=90^\\circ$인 직각이등변삼각형이고, $\\angle B=45^\\circ$이다.",
+    "따라서 $\\sin B\\times\\cos B = \\sin 45^\\circ\\times\\cos 45^\\circ = \\dfrac{\\sqrt{2}}{2}\\times\\dfrac{\\sqrt{2}}{2} = \\dfrac{1}{2}$이다.",
+    "정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 좌표평면 위의 세 점 $A(0, 0)$, $B(-3, 2)$, $C(2, 3)$을 꼭짓점으로 하는 $\\triangle ABC$에서 $\\sin B \\times \\cos B$의 값은",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림과 같이 좌표평면 위의 세 점 $A(0, 0)$, $B(-3, 2)$, $C(2, 3)$을 꼭짓점으로 하는 $\\triangle ABC$에서 $\\sin B \\times \\cos B$의 값은?",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "rpmRecordId": "M3-RPM-061",
+  "rpmEvidence": "$AB^2 = (-3)^2+2^2 = 13$, $AC^2 = 2^2+3^2 = 13$, $BC^2 = (2+3)^2+(3-2)^2 = 26$이다.",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+  "newKeyProposal": null,
+  "typeReason": "Q13번 문항은 PT_TRIG_RATIO 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABC)",
+  "rpmReason": "Q13번 문항은 M3-RPM-061에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABC)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q13번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ABC)",
+  "how": "Q13번 문항으로 M3-05 단원의 기본 개념과 성질을 적용하여 ③을(를) 바르게 구하였다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "평면",
+        "src": "stem",
+        "quote": "다음 그림과 같이 좌표평면 위의 세 점 $A(0, 0)$, $B(-3, 2)$, $C(2, 3)$을 꼭짓점으로 하는 $\\triangle ABC$에서 $\\sin B \\times \\cos B$의 값은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "좌표",
+        "src": "stem",
+        "quote": "다음 그림과 같이 좌표평면 위의 세 점 $A(0, 0)$, $B(-3, 2)$, $C(2, 3)$을 꼭짓점으로 하는 $\\triangle ABC$에서 $\\sin B \\times \\cos B$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각형",
+        "src": "solution",
+        "quote": "$AB=AC$이고 $AB^2+AC^2=BC^2$이므로 $\\triangle ABC$는 $\\angle A=90^\\circ$인 직각이등변삼각형이고, $\\angle B=45^\\circ$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

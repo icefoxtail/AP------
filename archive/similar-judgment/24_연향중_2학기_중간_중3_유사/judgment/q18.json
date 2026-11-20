@@ -1,0 +1,56 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "c54c96df4d478c55",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "반지름을 $r,\\mathrm{cm}$라 하면 $AO=OT=r$, $PO=8+r$이다.",
+    "$OT \\perp PT$이므로 직각삼각형 $PTO$에서 $\\sin 30^\\circ = \\dfrac{r}{8+r} = \\dfrac{1}{2} \\implies r = 8,\\mathrm{cm}$, $PO = 16,\\mathrm{cm}$이다.",
+    "따라서 $\\overline{PT} = 16\\cos 30^\\circ = 8\\sqrt{3},\\mathrm{cm}$이므로 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 $PT$는 원 $O$의 접선이고 점 $T$는 접점이다",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림에서 $PT$는 원 $O$의 접선이고 점 $T$는 접점이다.",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmEvidence": "반지름을 $r,\\mathrm{cm}$라 하면 $AO=OT=r$, $PO=8+r$이다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+  "newKeyProposal": null,
+  "typeReason": "Q18번 문항은 PT_CIRCLE_ANGLE_RELATIONS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 PT)",
+  "rpmReason": "Q18번 문항은 M3-RPM-067에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 PT)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q18번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 PT)",
+  "how": "Q18번 문항으로 M3-06 단원의 기본 개념과 성질을 적용하여 ③을(를) 바르게 구하였다. (문항 토큰 PT)",
+  "slots": {
+    "given": [
+      {
+        "term": "접선",
+        "src": "stem",
+        "quote": "다음 그림에서 $PT$는 원 $O$의 접선이고 점 $T$는 접점이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "접점",
+        "src": "stem",
+        "quote": "다음 그림에서 $PT$는 원 $O$의 접선이고 점 $T$는 접점이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "반지름",
+        "src": "solution",
+        "quote": "반지름을 $r,\\mathrm{cm}$라 하면 $AO=OT=r$, $PO=8+r$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

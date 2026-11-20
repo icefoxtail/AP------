@@ -1,0 +1,56 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "2c320f565dc70369",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$BD=BE=8,\\mathrm{cm}$, $CF=CE=12,\\mathrm{cm}$이고 내접원의 반지름을 $r,\\mathrm{cm}$라 하면 $AD=AF=r$이다.",
+    "$AB=r+8$, $AC=r+12$, $BC=20$이므로 직각삼각형 $ABC$에서 $$ (r+8)^2 + (r+12)^2 = 20^2 \\implies 2r^2 + 40r - 192 = 0 \\implies r^2 + 20r - 96 = 0 $$ $(r-4)(r+24)=0$이고 $r>0$이므로 $r=4,\\mathrm{cm}$이다.",
+    "따라서 원 $O$의 넓이는 $\\pi\\times 4^2 = 16\\pi,\\mathrm{cm}^2$이므로 정답은 ⑤이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 원 $O$는 $\\angle A=90^\\circ$인 직각삼각형 $ABC$의 내접원이고 세 점 $D$, $E$, $F$는 접점이다",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림에서 원 $O$는 $\\angle A=90^\\circ$인 직각삼각형 $ABC$의 내접원이고 세 점 $D$, $E$, $F$는 접점이다.",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmEvidence": "$BD=BE=8,\\mathrm{cm}$, $CF=CE=12,\\mathrm{cm}$이고 내접원의 반지름을 $r,\\mathrm{cm}$라 하면 $AD=AF=r$이다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+  "newKeyProposal": null,
+  "typeReason": "Q20번 문항은 PT_CIRCLE_ANGLE_RELATIONS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 90)",
+  "rpmReason": "Q20번 문항은 M3-RPM-067에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 90)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q20번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 90)",
+  "how": "Q20번 문항으로 M3-06 단원의 기본 개념과 성질을 적용하여 ⑤을(를) 바르게 구하였다. (문항 토큰 90)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "다음 그림에서 원 $O$는 $\\angle A=90^\\circ$인 직각삼각형 $ABC$의 내접원이고 세 점 $D$, $E$, $F$는 접점이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "다음 그림에서 원 $O$는 $\\angle A=90^\\circ$인 직각삼각형 $ABC$의 내접원이고 세 점 $D$, $E$, $F$는 접점이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "반지름",
+        "src": "solution",
+        "quote": "$BD=BE=8,\\mathrm{cm}$, $CF=CE=12,\\mathrm{cm}$이고 내접원의 반지름을 $r,\\mathrm{cm}$라 하면 $AD=AF=r$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

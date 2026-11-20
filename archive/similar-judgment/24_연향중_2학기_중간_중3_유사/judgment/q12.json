@@ -1,0 +1,56 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "49572ba4383dd3c3",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$45^\\circ < x < 90^\\circ$이므로 $\\sin x > \\cos x > 0$이다.",
+    "따라서 $(\\sin x - \\cos x) + (\\sin x + \\cos x) = 2\\sin x = \\dfrac{24}{13}$이므로 $\\sin x = \\dfrac{12}{13}$이다.",
+    "$x$는 예각이므로 $\\cos x = \\sqrt{1 - \\left(\\dfrac{12}{13}\\right)^2} = \\dfrac{5}{13}$이고, $$ \\tan x = \\dfrac{\\sin x}{\\cos x} = \\dfrac{12/13}{5/13} = \\dfrac{12}{5} $$ 정답은 ①이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$45^\\circ < x < 90^\\circ$이고 $\\sqrt{(\\sin x-\\cos x)^2}+\\sqrt{(\\sin x+\\cos x)^2}=\\dfrac{24}{13}$일 때, $\\tan x$의 값은?",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "rpmRecordId": "M3-RPM-055",
+  "rpmEvidence": "$45^\\circ < x < 90^\\circ$이므로 $\\sin x > \\cos x > 0$이다.",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+  "newKeyProposal": null,
+  "typeReason": "Q12번 문항은 PT_TRIG_RATIO 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 45)",
+  "rpmReason": "Q12번 문항은 M3-RPM-055에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 45)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q12번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 45)",
+  "how": "Q12번 문항으로 M3-05 단원의 기본 개념과 성질을 적용하여 ①을(를) 바르게 구하였다. (문항 토큰 45)",
+  "slots": {
+    "given": [
+      {
+        "term": "tan",
+        "src": "stem",
+        "quote": "$45^\\circ < x < 90^\\circ$이고 $\\sqrt{(\\sin x-\\cos x)^2}+\\sqrt{(\\sin x+\\cos x)^2}=\\dfrac{24}{13}$일 때, $\\tan x$의 값은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "예각",
+        "src": "solution",
+        "quote": "$x$는 예각이므로 $\\cos x = \\sqrt{1 - \\left(\\dfrac{12}{13}\\right)^2} = \\dfrac{5}{13}$이고, $$ \\tan x = \\dfrac{\\sin x}{\\cos x} = \\dfrac{12/13}{5/13} = \\dfrac{12}{5} $$ 정답은 ①이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "예각",
+        "src": "solution",
+        "quote": "$x$는 예각이므로 $\\cos x = \\sqrt{1 - \\left(\\dfrac{12}{13}\\right)^2} = \\dfrac{5}{13}$이고, $$ \\tan x = \\dfrac{\\sin x}{\\cos x} = \\dfrac{12/13}{5/13} = \\dfrac{12}{5} $$ 정답은 ①이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

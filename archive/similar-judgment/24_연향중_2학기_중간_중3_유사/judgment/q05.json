@@ -1,0 +1,55 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "7292ab3de7affac2",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "문항의 조건과 식을 분석하여 단계를 전개한다. (문항 토큰 90)",
+    "주어진 조건을 계산하여 정답 ②을(를) 도출한다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\angle B=90^\\circ$인 직각삼각형 $ABC$에서 $\\sin A=\\dfrac{3}{4}$일 때, $\\tan A$의 값은?",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "rpmRecordId": "M3-RPM-055",
+  "rpmEvidence": "$\\sin A = \\dfrac{BC}{AC} = \\dfrac{3}{4}$이므로 $BC=3k$, $AC=4k$($k>0$)로 두면 $$ AB = \\sqrt{(4k)^2 - (3k)^2} = \\sqrt{7}k $$ 따라서 $\\tan A = \\dfrac{BC}{AB} = \\dfrac{3k}{\\sqrt{7}k} = \\dfrac{3\\sqrt{7}}{7}$이므로 정답은 ②이다.",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+  "newKeyProposal": null,
+  "typeReason": "Q5번 문항은 PT_TRIG_RATIO 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 90)",
+  "rpmReason": "Q5번 문항은 M3-RPM-055에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 90)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q5번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 90)",
+  "how": "Q5번 문항으로 M3-05 단원의 기본 개념과 성질을 적용하여 ②을(를) 바르게 구하였다. (문항 토큰 90)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "$\\angle B=90^\\circ$인 직각삼각형 $ABC$에서 $\\sin A=\\dfrac{3}{4}$일 때, $\\tan A$의 값은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "$\\angle B=90^\\circ$인 직각삼각형 $ABC$에서 $\\sin A=\\dfrac{3}{4}$일 때, $\\tan A$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "tan",
+        "src": "solution",
+        "quote": "$\\sin A = \\dfrac{BC}{AC} = \\dfrac{3}{4}$이므로 $BC=3k$, $AC=4k$($k>0$)로 두면 $$ AB = \\sqrt{(4k)^2 - (3k)^2} = \\sqrt{7}k $$ 따라서 $\\tan A = \\dfrac{BC}{AB} = \\dfrac{3k}{\\sqrt{7}k} = \\dfrac{3\\sqrt{7}}{7}$이므로 정답은 ②이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

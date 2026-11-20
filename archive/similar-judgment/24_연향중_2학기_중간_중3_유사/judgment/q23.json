@@ -1,0 +1,56 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "145e8a82aa1fac3d",
+  "solvedAnswer": "$\\sqrt{61},\\mathrm{cm}$",
+  "solveSteps": [
+    "$OM \\perp AB$이므로 $M$은 $AB$의 중점이다.",
+    "직각삼각형 $OMB$에서 $MB = \\sqrt{10^2 - 6^2} = 8,\\mathrm{cm}$이고, 점 $D$가 선분 $MB$ 위에 있으므로 $MD = 8 - 3 = 5,\\mathrm{cm}$이다.",
+    "따라서 직각삼각형 $OMD$에서 $OD = \\sqrt{6^2 + 5^2} = \\sqrt{61},\\mathrm{cm}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 중심 $O$가 같고 반지름의 길이가 서로 다른 두 원에서 $\\overline{AB}\\perp\\overline{OM}$, $\\overline{OA}=10,\\mathrm{cm}$, $\\overline{OM}=6,\\mathrm{cm}$, $\\overline{DB}=3,\\mathrm{cm}$일 때, $\\overline{OD}$의 길이를 구하시오",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서·논술형 3] 다음 그림과 같이 중심 $O$가 같고 반지름의 길이가 서로 다른 두 원에서 $\\overline{AB}\\perp\\overline{OM}$, $\\overline{OA}=10,\\mathrm{cm}$, $\\overline{OM}=6,\\mathrm{cm}$, $\\overline{DB}=3,\\mathrm{cm}$일 때, $\\overline{OD}$의 길이를 구하시오.",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmEvidence": "$OM \\perp AB$이므로 $M$은 $AB$의 중점이다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+  "newKeyProposal": null,
+  "typeReason": "Q23번 문항은 PT_CIRCLE_ANGLE_RELATIONS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AB)",
+  "rpmReason": "Q23번 문항은 M3-RPM-067에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AB)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q23번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 AB)",
+  "how": "Q23번 문항으로 M3-06 단원의 기본 개념과 성질을 적용하여 $\\sqrt{61},\\mathrm{cm}$을(를) 바르게 구하였다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "[서·논술형 3] 다음 그림과 같이 중심 $O$가 같고 반지름의 길이가 서로 다른 두 원에서 $\\overline{AB}\\perp\\overline{OM}$, $\\overline{OA}=10,\\mathrm{cm}$, $\\overline{OM}=6,\\mathrm{cm}$, $\\overline{DB}=3,\\mathrm{cm}$일 때, $\\overline{OD}$의 길이를 구하시오."
+      }
+    ],
+    "goal": [
+      {
+        "term": "중심",
+        "src": "stem",
+        "quote": "[서·논술형 3] 다음 그림과 같이 중심 $O$가 같고 반지름의 길이가 서로 다른 두 원에서 $\\overline{AB}\\perp\\overline{OM}$, $\\overline{OA}=10,\\mathrm{cm}$, $\\overline{OM}=6,\\mathrm{cm}$, $\\overline{DB}=3,\\mathrm{cm}$일 때, $\\overline{OD}$의 길이를 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "중점",
+        "src": "solution",
+        "quote": "$OM \\perp AB$이므로 $M$은 $AB$의 중점이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
