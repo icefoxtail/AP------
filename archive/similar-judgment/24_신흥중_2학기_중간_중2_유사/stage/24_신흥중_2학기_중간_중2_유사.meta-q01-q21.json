@@ -3,7 +3,7 @@
   "requestId": "24_신흥중_2학기_중간_중2_유사-candidate-v1",
   "examUid": "24_신흥중_2학기_중간_중2_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m2/2mid/24_신흥중_2학기_중간_중2_유사.js",
-  "expectedSourceBlobSha1": "8958be6e3ac601905818b3643f5fcc0f3149eca0",
+  "expectedSourceBlobSha1": "e54d3df61ff4b7ae0434e5236f9bd5eb19f9e440",
   "expectedQuestionCount": 21,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -29,9 +29,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-ISOSCELES_EXTERIOR_ANGLE",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
         "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-        "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+        "templateKey": "",
         "crossConceptKeys": [
           "CC_ISOSCELES_TRIANGLES",
           "CC_SUPPLEMENTARY_ANGLES"
@@ -51,20 +51,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-17",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-060"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "이등변삼각형",
+          "l3": "이등변삼각형의 성질",
+          "l4": "밑각",
+          "recordId": "M2-RPM-060"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "이등변삼각형",
+        "rpmPrimaryL3": "이등변삼각형의 성질",
+        "rpmPrimaryL4": "밑각",
+        "rpmPrimaryRecordId": "M2-RPM-060",
+        "difficultyBasis": "이등변삼각형의 밑각의 성질과 평각의 크기를 이용하는 난이도 1 문항이다. (AB)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: $\\overline{AB}=",
+          "curriculum": "M2-RPM-060: 이등변삼각형 단원의 외각 조건을 이용한 밑각과 꼭짓각 계산 유형이다. (AB)",
+          "problemType": "이등변삼각형의 두 밑각의 크기와 꼭짓각 계산 유형이다. (AB)",
+          "difficulty": "이등변삼각형의 밑각의 성질과 평각의 크기를 이용하는 난이도 1 문항이다. (AB)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 선분 이 있다).",
+          "crossConcept": "CC_ISOSCELES_TRIANGLES, CC_SUPPLEMENTARY_ANGLES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "외각 122도로 밑각 C = 58도를 구하고 이등변삼각형의 두 밑각이 같음을 이용해 꼭짓각 A를 구한다.",
       "decisiveStep": "180도 - 122도 = 58도로 밑각을 구한 뒤 180도에서 두 밑각의 합 116도를 빼는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "외각과 이웃한 내각의 합이 180도임을 이용해 이등변삼각형의 꼭짓각을 구하는 1단계 문항이다.",
+      "difficultyReason": "이등변삼각형의 밑각의 성질과 평각의 크기를 이용하는 난이도 1 문항이다. (AB)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-        "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
-        "why": "이등변삼각형 밑각과 외각 관계 적용"
+        "templateKey": null,
+        "why": "이등변삼각형의 두 밑각의 크기와 꼭짓각 계산 유형이다. (AB)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_d32315c0864491d61e6caef8cda758357f4a0dfde632713679b080c4b1ac0b68",
@@ -81,16 +113,16 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-ISOSCELES_CONVERSE_PROOF",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
         "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-        "templateKey": "TPL_ISOSCELES_CONVERSE",
+        "templateKey": "",
         "crossConceptKeys": [
           "CC_ISOSCELES_CONVERSE",
           "CC_TRIANGLE_ANGLE_SUM"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 2,
+        "difficultyBucket": 1,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 2,
@@ -103,20 +135,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-17",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-062"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "이등변삼각형",
+          "l3": "이등변삼각형의 판정",
+          "l4": "두 각 조건",
+          "recordId": "M2-RPM-062"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "이등변삼각형",
+        "rpmPrimaryL3": "이등변삼각형의 판정",
+        "rpmPrimaryL4": "두 각 조건",
+        "rpmPrimaryRecordId": "M2-RPM-062",
+        "difficultyBasis": "두 내각이 같은 삼각형이 이등변삼각형임을 보이는 증명 과정의 빈칸을 채우는 난이도 1 문항이다. (ABC)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: 다음은 두 내각의 크기가 같",
+          "curriculum": "M2-RPM-062: 이등변삼각형 단원의 두 내각의 크기가 같을 때 이등변삼각형 증명 빈칸 유형이다. (ABC)",
+          "problemType": "이등변삼각형의 판정 조건과 삼각형의 합동 증명 빈칸 유형이다. (ABC)",
+          "difficulty": "두 내각이 같은 삼각형이 이등변삼각형임을 보이는 증명 과정의 빈칸을 채우는 난이도 1 문항이다. (ABC)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 내각 이 있다).",
+          "crossConcept": "CC_ISOSCELES_CONVERSE, CC_TRIANGLE_ANGLE_SUM: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "두 내각이 같은 삼각형에서 꼭짓각 이등분선 AD를 그어 ASA 합동을 유도하는 증명 빈칸 5개를 검증한다.",
       "decisiveStep": "각 이등분 조건 ㉠ = 각 CAD와 합동 조건 ㉣ = ASA에서 틀린 보기 ①, ④를 가려내는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "이등변삼각형 판정 증명의 각 단계와 합동 조건을 추적해 오답 빈칸 두 개를 찾는 문항이다.",
+      "difficultyReason": "두 내각이 같은 삼각형이 이등변삼각형임을 보이는 증명 과정의 빈칸을 채우는 난이도 1 문항이다. (ABC)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-        "templateKey": "TPL_ISOSCELES_CONVERSE",
-        "why": "이등변삼각형 판정 증명 과정 빈칸 판별"
+        "templateKey": null,
+        "why": "이등변삼각형의 판정 조건과 삼각형의 합동 증명 빈칸 유형이다. (ABC)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_7542ef23ccdc58474551dbcfbdd603ba1f5310a31a29a32c66e11a146f344b86",
@@ -133,9 +197,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-ISOSCELES_AXIS_SYMMETRY",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
         "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-        "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
+        "templateKey": "",
         "crossConceptKeys": [
           "CC_ISOSCELES_TRIANGLES",
           "CC_TRIANGLE_CONGRUENCE_SAS"
@@ -155,20 +219,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-17",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-061"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "이등변삼각형",
+          "l3": "이등변삼각형의 성질",
+          "l4": "꼭짓각의 이등분선",
+          "recordId": "M2-RPM-061"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "이등변삼각형",
+        "rpmPrimaryL3": "이등변삼각형의 성질",
+        "rpmPrimaryL4": "꼭짓각의 이등분선",
+        "rpmPrimaryRecordId": "M2-RPM-061",
+        "difficultyBasis": "이등변삼각형 꼭짓각의 이등분선의 성질과 대칭축 위의 점의 기하학적 성질을 판별하는 난이도 2 문항이다. (AB)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: $\\overline{AB}=",
+          "curriculum": "M2-RPM-061: 이등변삼각형 단원의 꼭짓각의 이등분선 성질과 대칭축 위의 점 판정 유형이다. (AB)",
+          "problemType": "이등변삼각형의 꼭짓각의 이등분선의 성질 참거짓 판정 유형이다. (AB)",
+          "difficulty": "이등변삼각형 꼭짓각의 이등분선의 성질과 대칭축 위의 점의 기하학적 성질을 판별하는 난이도 2 문항이다. (AB)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 선분 이 있다).",
+          "crossConcept": "CC_ISOSCELES_TRIANGLES, CC_TRIANGLE_CONGRUENCE_SAS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "꼭짓각 이등분선 위 점 P에 대한 대칭 합동 성질과 거리가 같지 않은 선분 BP = AP를 구별한다.",
       "decisiveStep": "대칭축 위 점 P에서 양 끝점 B, C까지의 거리는 같지만 꼭짓점 A까지의 거리는 다름을 판별하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "꼭짓각 이등분선 위의 임의의 점에 대해 성립하는 합동 성질과 거짓 명제를 판별하는 문항이다.",
+      "difficultyReason": "이등변삼각형 꼭짓각의 이등분선의 성질과 대칭축 위의 점의 기하학적 성질을 판별하는 난이도 2 문항이다. (AB)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-        "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
-        "why": "이등변삼각형 대칭축 성질 판별"
+        "templateKey": null,
+        "why": "이등변삼각형의 꼭짓각의 이등분선의 성질 참거짓 판정 유형이다. (AB)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_29d4c5b205b9e7f255ebfe1fe1581ab71dbcbb6ecab089b36d2c2a7e77001af5",
@@ -185,9 +281,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-ISOSCELES_BASE_BISECTOR",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
         "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-        "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+        "templateKey": "",
         "crossConceptKeys": [
           "CC_ISOSCELES_TRIANGLES",
           "CC_ANGLE_BISECTOR_PROPERTY"
@@ -196,7 +292,7 @@
         "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 4,
         "variationType": "NUMERIC",
         "provenance": {
@@ -207,20 +303,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-17",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-060"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "이등변삼각형",
+          "l3": "이등변삼각형의 성질",
+          "l4": "밑각",
+          "recordId": "M2-RPM-060"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "이등변삼각형",
+        "rpmPrimaryL3": "이등변삼각형의 성질",
+        "rpmPrimaryL4": "밑각",
+        "rpmPrimaryRecordId": "M2-RPM-060",
+        "difficultyBasis": "이등변삼각형의 밑각과 밑각의 이등분선이 만드는 내부 삼각형의 각을 구하는 난이도 2 문항이다. (AB)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: $\\overline{AB}=",
+          "curriculum": "M2-RPM-060: 이등변삼각형 단원의 밑각의 이등분선에 의해 생기는 삼각형의 각 구하기 유형이다. (AB)",
+          "problemType": "이등변삼각형의 밑각의 이등분선과 각의 크기 계산 유형이다. (AB)",
+          "difficulty": "이등변삼각형의 밑각과 밑각의 이등분선이 만드는 내부 삼각형의 각을 구하는 난이도 2 문항이다. (AB)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 이등분선 이 있다).",
+          "crossConcept": "CC_ISOSCELES_TRIANGLES, CC_ANGLE_BISECTOR_PROPERTY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "꼭짓각 48도로 밑각 66도를 구한 뒤 각 C를 이등분해 삼각형 BDC의 내각의 합으로 각 BDC를 구한다.",
       "decisiveStep": "밑각 66도의 절반 33도를 구해 180도 - 66도 - 33도를 계산하는 단계",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "이등변삼각형의 밑각 계산과 각 이등분, 삼각형 내각의 합을 차례로 연결하는 2단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "이등변삼각형의 밑각과 밑각의 이등분선이 만드는 내부 삼각형의 각을 구하는 난이도 2 문항이다. (AB)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-        "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
-        "why": "이등변삼각형 밑각과 각의 이등분선 결합"
+        "templateKey": null,
+        "why": "이등변삼각형의 밑각의 이등분선과 각의 크기 계산 유형이다. (AB)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_d088108eb1da30d714235207129055303fbe83c14c788e9f17ed0b3857e5b73d",
@@ -237,16 +365,16 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-CHAIN_ISOSCELES_ANGLES",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
         "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-        "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+        "templateKey": "",
         "crossConceptKeys": [
           "CC_ISOSCELES_TRIANGLES",
           "CC_ANGLE_RELATIONS"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 3,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 5,
@@ -259,20 +387,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-17",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-060"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "이등변삼각형",
+          "l3": "이등변삼각형의 성질",
+          "l4": "밑각",
+          "recordId": "M2-RPM-060"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "이등변삼각형",
+        "rpmPrimaryL3": "이등변삼각형의 성질",
+        "rpmPrimaryL4": "밑각",
+        "rpmPrimaryRecordId": "M2-RPM-060",
+        "difficultyBasis": "여러 개의 이등변삼각형이 연결된 도형에서 외각 성질을 연속적으로 추적하는 난이도 2 문항이다. (BA)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: 선분 $BA$ 위에 점 $D",
+          "curriculum": "M2-RPM-060: 이등변삼각형 단원의 여러 이등변삼각형과 외각 성질의 연속 적용 유형이다. (BA)",
+          "problemType": "연속된 이등변삼각형과 외각 성질을 이용한 각의 크기 추적 유형이다. (BA)",
+          "difficulty": "여러 개의 이등변삼각형이 연결된 도형에서 외각 성질을 연속적으로 추적하는 난이도 2 문항이다. (BA)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 선분 이 있다).",
+          "crossConcept": "CC_ISOSCELES_TRIANGLES, CC_ANGLE_RELATIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "연속된 세 이등변삼각형에서 외각 성질을 이용해 22도 -> 44도 -> 66도 순으로 각을 전파해 각 EAC를 구한다.",
       "decisiveStep": "삼각형 BAE의 외각 각 AEC = 22도 + 44도 = 66도를 구해 삼각형 EAC의 꼭짓각을 계산하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "세 이등변삼각형을 거치며 외각 성질로 각을 연속 추적해야 하는 3단계 문항이다.",
+      "difficultyReason": "여러 개의 이등변삼각형이 연결된 도형에서 외각 성질을 연속적으로 추적하는 난이도 2 문항이다. (BA)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-        "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
-        "why": "연쇄 이등변삼각형과 외각 성질 반복 적용"
+        "templateKey": null,
+        "why": "연속된 이등변삼각형과 외각 성질을 이용한 각의 크기 추적 유형이다. (BA)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_45fd1fb52346ec6ed7fedbefc4efc7e3bfc85cd15206ada4c99ec8debea048e8",
@@ -289,18 +449,18 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-RIGHT_TRIANGLE_CONGRUENCE_MATCH",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
         "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
-        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+        "templateKey": "",
         "crossConceptKeys": [
           "CC_RIGHT_TRIANGLE_CONGRUENCE_RHS",
           "CC_RIGHT_TRIANGLE_CONGRUENCE_RHA"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 2,
+        "difficultyBucket": 1,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 6,
         "variationType": "NUMERIC",
         "provenance": {
@@ -311,20 +471,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-17",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-070"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "삼각형의 성질",
+          "l3": "직각삼각형의 합동",
+          "l4": "RHS",
+          "recordId": "M2-RPM-070"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "삼각형의 성질",
+        "rpmPrimaryL3": "직각삼각형의 합동",
+        "rpmPrimaryL4": "RHS",
+        "rpmPrimaryRecordId": "M2-RPM-070",
+        "difficultyBasis": "직각삼각형의 합동 조건(RHS, RHA)을 직접 비교하여 바른 쌍을 찾는 난이도 1 문항이다. (cm)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: 다음 직각삼각형 (ㄱ)~(ㅂ",
+          "curriculum": "M2-RPM-070: 직각삼각형의 합동 조건 단원의 빗변과 한 변 또는 한 예각을 통한 RHS 및 RHA 기본 판별 유형이다. (cm)",
+          "problemType": "직각삼각형의 합동 조건 RHS 판별 유형이다. (cm)",
+          "difficulty": "직각삼각형의 합동 조건(RHS, RHA)을 직접 비교하여 바른 쌍을 찾는 난이도 1 문항이다. (cm)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_RIGHT_TRIANGLE_CONGRUENCE_RHS, CC_RIGHT_TRIANGLE_CONGRUENCE_RHA: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "주어진 직각삼각형들의 빗변, 직각변, 예각 조건을 대조해 빗변과 한 변이 같은 (ㄱ)과 (ㅂ)의 RHS 합동을 찾는다.",
       "decisiveStep": "빗변 7cm와 한 직각변 4cm가 일치하는 (ㄱ)과 (ㅂ)을 RHS 합동으로 연결하는 단계",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "여러 직각삼각형 조건 중에서 빗변과 변·각 조건을 정확히 대조해 합동 쌍과 조건을 찾는 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "직각삼각형의 합동 조건(RHS, RHA)을 직접 비교하여 바른 쌍을 찾는 난이도 1 문항이다. (cm)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
-        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
-        "why": "직각삼각형 RHS 합동 조건 판별"
+        "templateKey": null,
+        "why": "직각삼각형의 합동 조건 RHS 판별 유형이다. (cm)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_8c326edd59a94414eb81e588cd78b8bc71dee754967794c7e050ae53513123f2",
@@ -341,9 +533,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-MIDPOINT_RHS_CONGRUENCE",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
         "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
-        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+        "templateKey": "",
         "crossConceptKeys": [
           "CC_RIGHT_TRIANGLE_CONGRUENCE_RHS"
         ],
@@ -362,20 +554,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-17",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-070"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "삼각형의 성질",
+          "l3": "직각삼각형의 합동",
+          "l4": "RHS",
+          "recordId": "M2-RPM-070"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "삼각형의 성질",
+        "rpmPrimaryL3": "직각삼각형의 합동",
+        "rpmPrimaryL4": "RHS",
+        "rpmPrimaryRecordId": "M2-RPM-070",
+        "difficultyBasis": "도형 조건에서 직각삼각형의 빗변과 다른 한 변의 일치를 찾아 RHS 합동을 증명하는 난이도 2 문항이다. (ABC)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: $\\triangle ABC$",
+          "curriculum": "M2-RPM-070: 직각삼각형의 합동 단원의 빗변 중점과 수선의 길이 조건에 따른 RHS 합동 유형이다. (ABC)",
+          "problemType": "도형에서의 직각삼각형의 합동 증명과 조건 판별 유형이다. (ABC)",
+          "difficulty": "도형 조건에서 직각삼각형의 빗변과 다른 한 변의 일치를 찾아 RHS 합동을 증명하는 난이도 2 문항이다. (ABC)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 수선의발 이 있다).",
+          "crossConcept": "CC_RIGHT_TRIANGLE_CONGRUENCE_RHS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "변 BC의 중점 조건 MB = MC와 수선 조건 MD = ME를 결합해 삼각형 BMD와 CME의 RHS 합동을 판별한다.",
       "decisiveStep": "빗변 MB = MC와 직각변 MD = ME로 RHS 합동을 확정하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "수선의 발로 직각을 확인하고 중점의 빗변 조건과 MD = ME를 연결해 RHS 합동을 판별하는 문항이다.",
+      "difficultyReason": "도형 조건에서 직각삼각형의 빗변과 다른 한 변의 일치를 찾아 RHS 합동을 증명하는 난이도 2 문항이다. (ABC)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
-        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
-        "why": "중점과 수선 조건을 이용한 RHS 합동 판정"
+        "templateKey": null,
+        "why": "도형에서의 직각삼각형의 합동 증명과 조건 판별 유형이다. (ABC)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_dbe1afec2f7b20c36faf29a0ceca2c0c11c0f8f0ec9434bd976920729f29c895",
@@ -392,9 +616,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-INCENTER_CIRCUMCENTER_CONCEPT",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
         "problemTypeKey": "PT_TRIANGLE_CENTERS",
-        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+        "templateKey": "",
         "crossConceptKeys": [
           "CC_TRIANGLE_CIRCUMCENTER",
           "CC_TRIANGLE_INCENTER",
@@ -415,20 +639,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-17",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-065"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "삼각형의 외심과 내심",
+          "l3": "외심",
+          "l4": "외심의 위치·각",
+          "recordId": "M2-RPM-065"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "삼각형의 외심과 내심",
+        "rpmPrimaryL3": "외심",
+        "rpmPrimaryL4": "외심의 위치·각",
+        "rpmPrimaryRecordId": "M2-RPM-065",
+        "difficultyBasis": "삼각형의 외심과 내심의 정의, 위치, 성질을 종합적으로 비교 판정하는 난이도 2 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: 삼각형의 외심과 내심에 대한",
+          "curriculum": "M2-RPM-065: 외심과 내심 단원의 삼각형의 외심과 내심 성질 참거짓 판별 유형이다. (2)",
+          "problemType": "삼각형의 외심과 내심의 정의 및 성질 종합 참거짓 유형이다. (2)",
+          "difficulty": "삼각형의 외심과 내심의 정의, 위치, 성질을 종합적으로 비교 판정하는 난이도 2 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_TRIANGLE_CIRCUMCENTER, CC_TRIANGLE_INCENTER, CC_COUNTEREXAMPLE_CONDITION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "외심과 내심의 정의, 위치, 응용 성질을 5개 선지에서 대조해 옳지 않은 명제 2개를 고른다.",
       "decisiveStep": "둔각이등변삼각형 외심의 외부 위치와 세 꼭짓점 등거리점이 외심임을 판별하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "외심의 삼각형 종류별 위치와 내심·외심의 거리 성질 차이를 모두 판별해야 하는 문항이다.",
+      "difficultyReason": "삼각형의 외심과 내심의 정의, 위치, 성질을 종합적으로 비교 판정하는 난이도 2 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_TRIANGLE_CENTERS",
-        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
-        "why": "외심과 내심의 성질·위치 비교 판별"
+        "templateKey": null,
+        "why": "삼각형의 외심과 내심의 정의 및 성질 종합 참거짓 유형이다. (2)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_5dd28a8d052b8606265e1d71a72098143bd18d2fb2d3854e7a5cc655e0261a6a",
@@ -445,9 +701,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-CIRCUMCENTER_PERPENDICULAR",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
         "problemTypeKey": "PT_TRIANGLE_CENTERS",
-        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "templateKey": "",
         "crossConceptKeys": [
           "CC_TRIANGLE_CIRCUMCENTER",
           "CC_RIGHT_TRIANGLE_CONGRUENCE_RHS"
@@ -467,20 +723,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-17",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-064"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "삼각형의 외심과 내심",
+          "l3": "외심",
+          "l4": "수직이등분선과 외심",
+          "recordId": "M2-RPM-064"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "삼각형의 외심과 내심",
+        "rpmPrimaryL3": "외심",
+        "rpmPrimaryL4": "수직이등분선과 외심",
+        "rpmPrimaryRecordId": "M2-RPM-064",
+        "difficultyBasis": "외심의 기본 정의와 성질을 내심의 성질과 구분하여 참거짓을 판별하는 난이도 2 문항이다. (ABC)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: 점 $O$가 $\\triang",
+          "curriculum": "M2-RPM-064: 외심 단원의 수직이등분선과 외심의 성질 판별 유형이다. (ABC)",
+          "problemType": "외심의 수직이등분선 성질과 기하학적 참거짓 판정 유형이다. (ABC)",
+          "difficulty": "외심의 기본 정의와 성질을 내심의 성질과 구분하여 참거짓을 판별하는 난이도 2 문항이다. (ABC)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 수선의발 이 있다).",
+          "crossConcept": "CC_TRIANGLE_CIRCUMCENTER, CC_RIGHT_TRIANGLE_CONGRUENCE_RHS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "외심에서 세 변에 내린 수선의 발 M, L, N에 대한 이등분·합동 성질을 확인하고 변까지의 거리 같음을 배제한다.",
       "decisiveStep": "외심에서 서로 다른 변까지의 거리 OM과 ON이 일반적으로 같지 않음을 판별하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "외심의 수직이등분선과 삼각형 합동 성질 중 내심 성질과 혼동되는 보기를 가려내는 문항이다.",
+      "difficultyReason": "외심의 기본 정의와 성질을 내심의 성질과 구분하여 참거짓을 판별하는 난이도 2 문항이다. (ABC)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_TRIANGLE_CENTERS",
-        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
-        "why": "외심의 수직이등분선과 RHS 합동 성질 판별"
+        "templateKey": null,
+        "why": "외심의 수직이등분선 성질과 기하학적 참거짓 판정 유형이다. (ABC)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_a106aa465cbf7c1ee4d4fe9df00990c853052fb0b1560f413a240f2366e12a5a",
@@ -497,9 +785,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-OBTUSE_CIRCUMCENTER_ANGLE",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
         "problemTypeKey": "PT_TRIANGLE_CENTERS",
-        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "templateKey": "",
         "crossConceptKeys": [
           "CC_TRIANGLE_CIRCUMCENTER",
           "CC_ISOSCELES_TRIANGLES",
@@ -520,20 +808,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-17",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-065"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "삼각형의 외심과 내심",
+          "l3": "외심",
+          "l4": "외심의 위치·각",
+          "recordId": "M2-RPM-065"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "삼각형의 외심과 내심",
+        "rpmPrimaryL3": "외심",
+        "rpmPrimaryL4": "외심의 위치·각",
+        "rpmPrimaryRecordId": "M2-RPM-065",
+        "difficultyBasis": "외심이 외부에 있는 둔각삼각형에서 꼭짓점과 외심이 이루는 복잡한 각 관계를 추론하는 난이도 3 문항이다. (ABC)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: 둔각삼각형 $ABC$의 외심",
+          "curriculum": "M2-RPM-065: 외심과 내심 단원의 둔각삼각형에서 외심의 위치와 각의 크기 관계 유형이다. (ABC)",
+          "problemType": "둔각삼각형의 외심의 위치와 각의 크기 계산 유형이다. (ABC)",
+          "difficulty": "외심이 외부에 있는 둔각삼각형에서 꼭짓점과 외심이 이루는 복잡한 각 관계를 추론하는 난이도 3 문항이다. (ABC)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 둔각 이 있다).",
+          "crossConcept": "CC_TRIANGLE_CIRCUMCENTER, CC_ISOSCELES_TRIANGLES, CC_ALGEBRAIC_MODELING: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "둔각삼각형 외부에 있는 외심 O에서 OA = OB = OC인 세 이등변삼각형과 미지수 c를 이용해 각 BAC를 구한다.",
       "decisiveStep": "각 BAO = 38도와 각 OAC = c + 14도를 합해 삼각형 내각의 합 방정식 2c + 76 = 180을 푸는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "외심이 삼각형 외부에 있을 때 각의 합·차 방향을 정확히 세우고 미지수로 연립해야 하는 3단계 문항이다.",
+      "difficultyReason": "외심이 외부에 있는 둔각삼각형에서 꼭짓점과 외심이 이루는 복잡한 각 관계를 추론하는 난이도 3 문항이다. (ABC)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_TRIANGLE_CENTERS",
-        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
-        "why": "둔각삼각형 외부 외심의 각 계산"
+        "templateKey": null,
+        "why": "둔각삼각형의 외심의 위치와 각의 크기 계산 유형이다. (ABC)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_985f7da54faa127d44aa2e6ae04b70a42230dd90335f4854f25a4173dcc84b34",
@@ -550,9 +870,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-ISOSCELES_CIRCUM_INCENTER",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
         "problemTypeKey": "PT_TRIANGLE_CENTERS",
-        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+        "templateKey": "",
         "crossConceptKeys": [
           "CC_ISOSCELES_TRIANGLES",
           "CC_TRIANGLE_INCENTER",
@@ -560,7 +880,7 @@
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 11,
@@ -573,20 +893,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-17",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-069"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "삼각형의 외심과 내심",
+          "l3": "외접원·내접원 활용",
+          "l4": "외심·내심을 이용한 복합도형",
+          "recordId": "M2-RPM-069"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "삼각형의 외심과 내심",
+        "rpmPrimaryL3": "외접원·내접원 활용",
+        "rpmPrimaryL4": "외심·내심을 이용한 복합도형",
+        "rpmPrimaryRecordId": "M2-RPM-069",
+        "difficultyBasis": "한 이등변삼각형에서 외심과 내심의 성질을 동시에 적용하여 세부 각들을 비교 분석하는 난이도 3 문항이다. (AC)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: $\\overline{AC}=",
+          "curriculum": "M2-RPM-069: 외심과 내심 단원의 외접원·내접원 활용 외심·내심 복합도형 유형이다. (AC)",
+          "problemType": "이등변삼각형에서의 외심과 내심 복합 각 계산 유형이다. (AC)",
+          "difficulty": "한 이등변삼각형에서 외심과 내심의 성질을 동시에 적용하여 세부 각들을 비교 분석하는 난이도 3 문항이다. (AC)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 외심 이 있다).",
+          "crossConcept": "CC_ISOSCELES_TRIANGLES, CC_TRIANGLE_INCENTER, CC_TRIANGLE_CIRCUMCENTER: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "이등변삼각형의 밑각 64도를 구한 뒤 내심의 각 이등분 성질로 각 IBC = 32도를 계산하고 나머지 선지를 검증한다.",
       "decisiveStep": "밑각 B = 64도의 절반으로 각 IBC = 32도를 확정하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "이등변삼각형의 밑각과 내심·외심 각 성질을 차례로 확인해 옳은 선지를 고르는 문항이다.",
+      "difficultyReason": "한 이등변삼각형에서 외심과 내심의 성질을 동시에 적용하여 세부 각들을 비교 분석하는 난이도 3 문항이다. (AC)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_TRIANGLE_CENTERS",
-        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
-        "why": "이등변삼각형에서 외심·내심 각 계산"
+        "templateKey": null,
+        "why": "이등변삼각형에서의 외심과 내심 복합 각 계산 유형이다. (AC)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_113f7e04f588faf85e44153c4be55adefe1ec590649ed8051dbc3fc75687ebbd",
@@ -603,9 +955,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-QUADRILATERAL_DEFINITIONS",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
         "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "templateKey": "",
         "crossConceptKeys": [
           "CC_QUADRILATERAL_CLASSIFICATION",
           "CC_PARALLELOGRAMS",
@@ -626,20 +978,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-17",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-078"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "각 사각형의 성질",
+          "recordId": "M2-RPM-078"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "여러 가지 사각형",
+        "rpmPrimaryL3": "직사각형·마름모·정사각형",
+        "rpmPrimaryL4": "각 사각형의 성질",
+        "rpmPrimaryRecordId": "M2-RPM-078",
+        "difficultyBasis": "여러 가지 사각형의 정의(뜻)와 성질을 정확히 변별하는 난이도 2 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: 다음 각 사각형의 뜻으로 옳",
+          "curriculum": "M2-RPM-078: 여러 가지 사각형 단원의 각 사각형의 정의와 성질 구분 유형이다. (2)",
+          "problemType": "여러 가지 사각형의 정의와 성질의 구별 유형이다. (2)",
+          "difficulty": "여러 가지 사각형의 정의(뜻)와 성질을 정확히 변별하는 난이도 2 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_QUADRILATERAL_CLASSIFICATION, CC_PARALLELOGRAMS, CC_ISOSCELES_TRAPEZOID: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "여러 사각형의 정의(뜻)와 성질·충분조건을 구분하여 정의가 아닌 진술 2개를 고른다.",
       "decisiveStep": "평행사변형의 평행 조건 누락과 등변사다리꼴의 사다리꼴 전제 누락을 판별하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "사각형의 정의와 성질의 차이를 정확히 구분해 두 개의 오답 정의를 가려내는 문항이다.",
+      "difficultyReason": "여러 가지 사각형의 정의(뜻)와 성질을 정확히 변별하는 난이도 2 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-        "why": "사각형의 정의와 성질 구별"
+        "templateKey": null,
+        "why": "여러 가지 사각형의 정의와 성질의 구별 유형이다. (2)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_41d3dcdfa068c35153be750f3cc8b10e81744f2ac3ced1f080e4cace86238f8a",
@@ -656,9 +1040,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-PARALLELOGRAM_DIAGONAL_RECTANGLE",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
         "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "templateKey": "",
         "crossConceptKeys": [
           "CC_PARALLELOGRAMS",
           "CC_DIAGONALS",
@@ -679,20 +1063,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-17",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-073"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "평행사변형의 대각선 성질",
+          "recordId": "M2-RPM-073"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "평행사변형",
+        "rpmPrimaryL3": "평행사변형의 성질",
+        "rpmPrimaryL4": "평행사변형의 대각선 성질",
+        "rpmPrimaryRecordId": "M2-RPM-073",
+        "difficultyBasis": "평행사변형의 대각선 성질에 추가 조건이 주어졌을 때 성립하는 대각선 관계를 추론하는 난이도 2 문항이다. (ABCD)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: 평행사변형 $ABCD$에서",
+          "curriculum": "M2-RPM-073: 평행사변형 단원의 대각선 교점에서의 이등변삼각형 조건과 대각선 길이 일치 유형이다. (ABCD)",
+          "problemType": "평행사변형의 대각선 성질과 추가 조건 분석 유형이다. (ABCD)",
+          "difficulty": "평행사변형의 대각선 성질에 추가 조건이 주어졌을 때 성립하는 대각선 관계를 추론하는 난이도 2 문항이다. (ABCD)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 대각선 이 있다).",
+          "crossConcept": "CC_PARALLELOGRAMS, CC_DIAGONALS, CC_ISOSCELES_CONVERSE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "밑각이 같은 삼각형 OAD에서 OA = OD를 얻고 평행사변형의 대각선 이등분 성질로 AC = BD를 유도한다.",
       "decisiveStep": "OA = OD와 AC = 2OA, BD = 2OD를 결합해 AC = BD를 도출하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "이등변삼각형 판정으로 OA = OD를 이끌어낸 뒤 평행사변형의 대각선 이등분 성질을 연결하는 문항이다.",
+      "difficultyReason": "평행사변형의 대각선 성질에 추가 조건이 주어졌을 때 성립하는 대각선 관계를 추론하는 난이도 2 문항이다. (ABCD)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
-        "why": "평행사변형 대각선 이등분과 이등변삼각형 판정 결합"
+        "templateKey": null,
+        "why": "평행사변형의 대각선 성질과 추가 조건 분석 유형이다. (ABCD)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_420867df7f16f24dfe4bb8f4572070a880e54edaaca5624bec15f5c83db037c9",
@@ -709,9 +1125,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-PARALLELOGRAM_DIAGONAL_PERIMETER",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
         "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "templateKey": "",
         "crossConceptKeys": [
           "CC_PARALLELOGRAMS",
           "CC_PERIMETER"
@@ -731,20 +1147,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-17",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-073"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "평행사변형의 대각선 성질",
+          "recordId": "M2-RPM-073"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "평행사변형",
+        "rpmPrimaryL3": "평행사변형의 성질",
+        "rpmPrimaryL4": "평행사변형의 대각선 성질",
+        "rpmPrimaryRecordId": "M2-RPM-073",
+        "difficultyBasis": "평행사변형의 대각선 이등분 성질을 이용해 분할된 삼각형의 둘레를 구하는 난이도 1 문항이다. (ABCD)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: 평행사변형 $ABCD$에서",
+          "curriculum": "M2-RPM-073: 평행사변형 단원의 대각선의 상호 이등분 성질을 이용한 내부 삼각형 둘레 계산 유형이다. (ABCD)",
+          "problemType": "평행사변형의 대각선 이등분 성질과 삼각형의 둘레 계산 유형이다. (ABCD)",
+          "difficulty": "평행사변형의 대각선 이등분 성질을 이용해 분할된 삼각형의 둘레를 구하는 난이도 1 문항이다. (ABCD)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 대각선 이 있다).",
+          "crossConcept": "CC_PARALLELOGRAMS, CC_PERIMETER: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "평행사변형의 대각선 이등분 성질로 AO = 5, BO = 8을 구해 AB = 7과 더해 둘레를 계산한다.",
       "decisiveStep": "두 대각선 길이 10과 16을 각각 반으로 나누어 삼각형 세 변의 합을 구하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "대각선의 중점 성질을 바로 적용해 삼각형 둘레를 계산하는 1단계 문항이다.",
+      "difficultyReason": "평행사변형의 대각선 이등분 성질을 이용해 분할된 삼각형의 둘레를 구하는 난이도 1 문항이다. (ABCD)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
-        "why": "평행사변형 대각선 이등분 성질로 둘레 계산"
+        "templateKey": null,
+        "why": "평행사변형의 대각선 이등분 성질과 삼각형의 둘레 계산 유형이다. (ABCD)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_7c057a997bb52fbb322f35ee1e06620673fc35839d3c5fc02fcd6920882366b6",
@@ -761,9 +1209,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-PARALLELOGRAM_ANGLE_BISECTOR",
-        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+        "templateKey": "",
         "crossConceptKeys": [
           "CC_PARALLELOGRAMS",
           "CC_ANGLE_BISECTOR_PARALLEL",
@@ -773,7 +1221,7 @@
         "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B23",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 15,
         "variationType": "NUMERIC",
         "provenance": {
@@ -784,20 +1232,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-17",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-072"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "변·각의 성질",
+          "recordId": "M2-RPM-072"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "평행사변형",
+        "rpmPrimaryL3": "평행사변형의 성질",
+        "rpmPrimaryL4": "변·각의 성질",
+        "rpmPrimaryRecordId": "M2-RPM-072",
+        "difficultyBasis": "평행사변형의 각 이등분선과 대변이 만나는 점이 만드는 이등변삼각형의 선분 길이를 연산하는 난이도 2 문항이다. (AB)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: $\\overline{AB}=",
+          "curriculum": "M2-RPM-072: 평행사변형 단원의 이웃한 두 각의 이등분선과 변이 이루는 선분의 길이 계산 유형이다. (AB)",
+          "problemType": "평행사변형의 각 이등분선이 만드는 선분의 길이 계산 유형이다. (AB)",
+          "difficulty": "평행사변형의 각 이등분선과 대변이 만나는 점이 만드는 이등변삼각형의 선분 길이를 연산하는 난이도 2 문항이다. (AB)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 이등분선 이 있다).",
+          "crossConcept": "CC_PARALLELOGRAMS, CC_ANGLE_BISECTOR_PARALLEL, CC_ISOSCELES_CONVERSE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "평행선 엇각과 각 이등분 조건으로 두 이등변삼각형 BF = 9, CE = 9를 찾고 선분 차로 CF와 EF를 구한다.",
       "decisiveStep": "BF = CE = 9에서 CF = 13 - 9 = 4, EF = 9 - 4 = 5를 순차 계산하는 단계",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B23",
-      "difficultyReason": "평행사변형에서 양쪽 각 이등분선으로 생기는 이등변삼각형 두 개와 겹치는 선분 길이를 구하는 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "평행사변형의 각 이등분선과 대변이 만나는 점이 만드는 이등변삼각형의 선분 길이를 연산하는 난이도 2 문항이다. (AB)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
-        "why": "평행사변형 각의 이등분선과 엇각 성질 결합"
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+        "templateKey": null,
+        "why": "평행사변형의 각 이등분선이 만드는 선분의 길이 계산 유형이다. (AB)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_89ecbabf88c2715cae88f4b3cd1cef4af8c03acf10fb112b5437807befa4012c",
@@ -814,9 +1294,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-PARALLELOGRAM_CRITERIA_PROOF",
-        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC",
+        "templateKey": "",
         "crossConceptKeys": [
           "CC_PARALLELOGRAM_CRITERIA",
           "CC_TRIANGLE_CONGRUENCE_SAS",
@@ -837,20 +1317,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-17",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-074"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "평행사변형",
+          "l3": "평행사변형의 판정",
+          "l4": "변·각 조건",
+          "recordId": "M2-RPM-074"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "평행사변형",
+        "rpmPrimaryL3": "평행사변형의 판정",
+        "rpmPrimaryL4": "변·각 조건",
+        "rpmPrimaryRecordId": "M2-RPM-074",
+        "difficultyBasis": "평행사변형 결정 조건 증명 과정의 빈칸 대응변과 대응각을 검증하는 난이도 2 문항이다. (ABCD)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: 다음은 $\\square AB",
+          "curriculum": "M2-RPM-074: 평행사변형 단원의 한 쌍의 대변이 평행하고 길이가 같을 때 평행사변형임의 증명 빈칸 유형이다. (ABCD)",
+          "problemType": "평행사변형이 되는 조건의 기호 표현 및 증명 빈칸 유형이다. (ABCD)",
+          "difficulty": "평행사변형 결정 조건 증명 과정의 빈칸 대응변과 대응각을 검증하는 난이도 2 문항이다. (ABCD)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 평행 이 있다).",
+          "crossConcept": "CC_PARALLELOGRAM_CRITERIA, CC_TRIANGLE_CONGRUENCE_SAS, CC_ALTERNATE_INTERIOR_ANGLES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "한 쌍의 대변이 평행하고 길이가 같을 때 평행사변형이 됨을 SAS 합동으로 증명하는 빈칸을 대조한다.",
       "decisiveStep": "가정 BC = AD로부터 ㉠에 AB가 아닌 AD가 들어가야 함을 판별하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "대응 꼭짓점 순서와 가정 조건을 따라 SAS 합동 증명 빈칸을 확인하는 문항이다.",
+      "difficultyReason": "평행사변형 결정 조건 증명 과정의 빈칸 대응변과 대응각을 검증하는 난이도 2 문항이다. (ABCD)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
-        "why": "평행사변형 판정 조건 증명 과정 판별"
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_SYMBOLIC",
+        "templateKey": null,
+        "why": "평행사변형이 되는 조건의 기호 표현 및 증명 빈칸 유형이다. (ABCD)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_80ccefb4bac326c1e915bd6e76157335b2d36f2672f388e2fb26126e131507e5",
@@ -867,9 +1379,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-PARALLELOGRAM_SUFFICIENT_CRITERIA",
-        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+        "templateKey": "",
         "crossConceptKeys": [
           "CC_PARALLELOGRAM_CRITERIA",
           "CC_SUFFICIENT_CONDITIONS",
@@ -877,7 +1389,7 @@
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 3,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 17,
@@ -890,20 +1402,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-17",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-074"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "평행사변형",
+          "l3": "평행사변형의 판정",
+          "l4": "변·각 조건",
+          "recordId": "M2-RPM-074"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "평행사변형",
+        "rpmPrimaryL3": "평행사변형의 판정",
+        "rpmPrimaryL4": "변·각 조건",
+        "rpmPrimaryRecordId": "M2-RPM-074",
+        "difficultyBasis": "사각형이 평행사변형이 되기 위한 여러 조건들을 종합적으로 판정하는 난이도 2 문항이다. (ABCD)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: 다음 중 $\\square A",
+          "curriculum": "M2-RPM-074: 평행사변형 단원의 평행사변형이 되는 5가지 조건의 만족 여부 종합 판별 유형이다. (ABCD)",
+          "problemType": "평행사변형이 되는 조건 판별 유형이다. (ABCD)",
+          "difficulty": "사각형이 평행사변형이 되기 위한 여러 조건들을 종합적으로 판정하는 난이도 2 문항이다. (ABCD)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_PARALLELOGRAM_CRITERIA, CC_SUFFICIENT_CONDITIONS, CC_COUNTEREXAMPLE_CONDITION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "다섯 조건 중 평행사변형을 보장하는 한 쌍 평행·길이 같음 조건과 두 쌍의 대각 같음 조건을 가려낸다.",
       "decisiveStep": "각 A + 각 B = 180도와 각 B + 각 C = 180도로부터 두 쌍의 대각이 같음을 추론하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "변·각·대각선 조건의 함정 보기를 거르고 각의 합 조건으로부터 대각 같음을 추론해야 하는 문항이다.",
+      "difficultyReason": "사각형이 평행사변형이 되기 위한 여러 조건들을 종합적으로 판정하는 난이도 2 문항이다. (ABCD)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
-        "why": "평행사변형 성립 조건 종합 판별"
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+        "templateKey": null,
+        "why": "평행사변형이 되는 조건 판별 유형이다. (ABCD)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_24c9434c0ac3662082c93aa8e5e2ed857b5e0fab547e93b4c423ec4e534922ca",
@@ -920,9 +1464,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-ISOSCELES_BASE_ANGLE_PROOF",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
         "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-        "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
+        "templateKey": "",
         "crossConceptKeys": [
           "CC_ISOSCELES_TRIANGLES",
           "CC_TRIANGLE_CONGRUENCE_SAS"
@@ -942,20 +1486,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-17",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-060"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "이등변삼각형",
+          "l3": "이등변삼각형의 성질",
+          "l4": "밑각",
+          "recordId": "M2-RPM-060"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "이등변삼각형",
+        "rpmPrimaryL3": "이등변삼각형의 성질",
+        "rpmPrimaryL4": "밑각",
+        "rpmPrimaryRecordId": "M2-RPM-060",
+        "difficultyBasis": "이등변삼각형의 두 밑각의 크기가 같음을 삼각형의 합동을 통해 단계별로 서술하는 난이도 2 서술형 문항이다. (AB)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: [서술형 1] $\\overl",
+          "curriculum": "M2-RPM-060: 이등변삼각형 단원의 꼭짓각의 이등분선을 이용한 두 밑각의 크기 증명 서술형 유형이다. (AB)",
+          "problemType": "이등변삼각형의 성질 증명 서술형 유형이다. (AB)",
+          "difficulty": "이등변삼각형의 두 밑각의 크기가 같음을 삼각형의 합동을 통해 단계별로 서술하는 난이도 2 서술형 문항이다. (AB)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 이등분선 이 있다).",
+          "crossConcept": "CC_ISOSCELES_TRIANGLES, CC_TRIANGLE_CONGRUENCE_SAS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "꼭짓각 이등분선 AD를 보조선으로 그어 삼각형 ABD와 ACD의 SAS 합동을 서술해 밑각 같음을 증명한다.",
       "decisiveStep": "AB = AC, 각 BAD = 각 CAD, AD 공통으로 SAS 합동을 확정하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "보조선을 설정하고 SAS 합동 조건 세 가지를 빠짐없이 서술해야 하는 표준 증명 문항이다.",
+      "difficultyReason": "이등변삼각형의 두 밑각의 크기가 같음을 삼각형의 합동을 통해 단계별로 서술하는 난이도 2 서술형 문항이다. (AB)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-        "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
-        "why": "이등변삼각형 두 밑각 같음의 SAS 합동 증명"
+        "templateKey": null,
+        "why": "이등변삼각형의 성질 증명 서술형 유형이다. (AB)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_e97aa22984a0b80cf68d2e6aca6f3a0439aa1c76ad8fccbee903e40988f01623",
@@ -972,9 +1548,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-CIRCUMCENTER_DOUBLE_ANGLE",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
         "problemTypeKey": "PT_TRIANGLE_CENTERS",
-        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "templateKey": "",
         "crossConceptKeys": [
           "CC_TRIANGLE_CIRCUMCENTER",
           "CC_ISOSCELES_TRIANGLES"
@@ -994,20 +1570,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-17",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-065"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "삼각형의 외심과 내심",
+          "l3": "외심",
+          "l4": "외심의 위치·각",
+          "recordId": "M2-RPM-065"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "삼각형의 외심과 내심",
+        "rpmPrimaryL3": "외심",
+        "rpmPrimaryL4": "외심의 위치·각",
+        "rpmPrimaryRecordId": "M2-RPM-065",
+        "difficultyBasis": "삼각형의 외심과 원주각-중심각 관계를 이등변삼각형의 성질로부터 서술형으로 유도하는 난이도 2 문항이다. (ABC)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: [서술형 2] 점 $O$가",
+          "curriculum": "M2-RPM-065: 외심과 내심 단원의 외심과 꼭짓점을 이은 이등변삼각형의 각의 합을 이용한 중심각 계산 서술형 유형이다. (ABC)",
+          "problemType": "삼각형의 외심과 중심각의 크기 계산 서술형 유형이다. (ABC)",
+          "difficulty": "삼각형의 외심과 원주각-중심각 관계를 이등변삼각형의 성질로부터 서술형으로 유도하는 난이도 2 문항이다. (ABC)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 삼각형 이 있다).",
+          "crossConcept": "CC_TRIANGLE_CIRCUMCENTER, CC_ISOSCELES_TRIANGLES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "외심 O에서 세 꼭짓점까지의 거리가 같음을 이용해 두 이등변삼각형의 꼭짓각을 x로 나타내고 360도에서 빼 각 AOC를 구한다.",
       "decisiveStep": "각 AOB = 180 - 2x와 각 BOC = 56 + 2x를 합해 x를 소거하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "미지수 x를 도입해 두 이등변삼각형의 꼭짓각을 표현하고 360도 관계로 각 AOC를 유도하는 서술형 문항이다.",
+      "difficultyReason": "삼각형의 외심과 원주각-중심각 관계를 이등변삼각형의 성질로부터 서술형으로 유도하는 난이도 2 문항이다. (ABC)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_TRIANGLE_CENTERS",
-        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
-        "why": "외심 중심각 2배 관계 유도 및 계산"
+        "templateKey": null,
+        "why": "삼각형의 외심과 중심각의 크기 계산 서술형 유형이다. (ABC)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_03b285de9aaffa2200f86c7676eb49c7bad622523d51a9df39ca142983c8a403",
@@ -1024,9 +1632,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-INCENTER_SYSTEM_ANGLES",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
         "problemTypeKey": "PT_TRIANGLE_CENTERS",
-        "templateKey": "TPL_TRIANGLE_INCENTER",
+        "templateKey": "",
         "crossConceptKeys": [
           "CC_TRIANGLE_INCENTER",
           "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
@@ -1047,20 +1655,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-17",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-066"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "삼각형의 외심과 내심",
+          "l3": "내심",
+          "l4": "각의 이등분선과 내심",
+          "recordId": "M2-RPM-066"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "삼각형의 외심과 내심",
+        "rpmPrimaryL3": "내심",
+        "rpmPrimaryL4": "각의 이등분선과 내심",
+        "rpmPrimaryRecordId": "M2-RPM-066",
+        "difficultyBasis": "내심에서 그은 선분이 대변과 만나는 점의 각 조건을 연립하여 꼭짓각을 구하는 난이도 3 서술형 문항이다. (ABC)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: [서술형 3] $\\trian",
+          "curriculum": "M2-RPM-066: 외심과 내심 단원의 내심과 각의 이등분선을 이용한 삼각형 내각 연립 계산 서술형 유형이다. (ABC)",
+          "problemType": "내심과 각의 이등분선 연립 각 계산 서술형 유형이다. (ABC)",
+          "difficulty": "내심에서 그은 선분이 대변과 만나는 점의 각 조건을 연립하여 꼭짓각을 구하는 난이도 3 서술형 문항이다. (ABC)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 선분 이 있다).",
+          "crossConcept": "CC_TRIANGLE_INCENTER, CC_SIMULTANEOUS_LINEAR_EQUATIONS, CC_TRIANGLE_ANGLE_SUM: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "내심의 각 이등분 성질로 반각 a, b를 두고 삼각형 ABD와 ABE의 내각의 합으로 연립일차방정식을 세워 각 C를 구한다.",
       "decisiveStep": "2a + b = 104도와 a + 2b = 97도를 더해 a + b = 67도를 구하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "내심의 반각을 두 미지수로 두고 두 삼각형에서 연립일차방정식을 세워야 하는 3단계 서술형 문항이다.",
+      "difficultyReason": "내심에서 그은 선분이 대변과 만나는 점의 각 조건을 연립하여 꼭짓각을 구하는 난이도 3 서술형 문항이다. (ABC)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_TRIANGLE_CENTERS",
-        "templateKey": "TPL_TRIANGLE_INCENTER",
-        "why": "내심 반각 문자 설정과 연립방정식 결합"
+        "templateKey": null,
+        "why": "내심과 각의 이등분선 연립 각 계산 서술형 유형이다. (ABC)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_e944ace72afd5570e708683cffd84ebc6f157724f0f427ec819f96437584c353",
@@ -1077,16 +1717,16 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-PARALLELOGRAM_OPPOSITE_SIDES_PROOF",
-        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_M2_PARALLELOGRAM_OPPOSITE_SIDES_PROOF",
+        "templateKey": "",
         "crossConceptKeys": [
           "CC_PARALLELOGRAMS",
           "CC_ALTERNATE_INTERIOR_ANGLES"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 21,
@@ -1099,20 +1739,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-17",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-072"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "변·각의 성질",
+          "recordId": "M2-RPM-072"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "평행사변형",
+        "rpmPrimaryL3": "평행사변형의 성질",
+        "rpmPrimaryL4": "변·각의 성질",
+        "rpmPrimaryRecordId": "M2-RPM-072",
+        "difficultyBasis": "평행사변형의 대변의 길이가 같음을 대각선 분할과 ASA 합동으로 증명하는 난이도 3 서술형 문항이다. (ABCD)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: [서술형 4] 평행사변형 $",
+          "curriculum": "M2-RPM-072: 평행사변형 단원의 대각선을 그어 생기는 삼각형의 합동을 통한 대변의 길이 증명 서술형 유형이다. (ABCD)",
+          "problemType": "평행사변형의 대변 성질 증명 서술형 유형이다. (ABCD)",
+          "difficulty": "평행사변형의 대변의 길이가 같음을 대각선 분할과 ASA 합동으로 증명하는 난이도 3 서술형 문항이다. (ABCD)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 합동 이 있다).",
+          "crossConcept": "CC_PARALLELOGRAMS, CC_ALTERNATE_INTERIOR_ANGLES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "평행사변형의 정의(두 쌍의 대변 평행)와 대각선 AC에 의한 엇각, 공통변을 이용해 ASA 합동을 서술한다.",
       "decisiveStep": "두 쌍의 엇각과 공통변 AC로 삼각형 ABC와 CDA의 ASA 합동을 보이는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "평행선의 엇각 두 쌍과 공통변을 근거로 ASA 합동을 서술하는 표준 증명 문항이다.",
+      "difficultyReason": "평행사변형의 대변의 길이가 같음을 대각선 분할과 ASA 합동으로 증명하는 난이도 3 서술형 문항이다. (ABCD)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
-        "why": "평행사변형 대변 같음의 ASA 합동 증명"
+        "problemTypeKey": "PT_M2_PARALLELOGRAM_OPPOSITE_SIDES_PROOF",
+        "templateKey": null,
+        "why": "평행사변형의 대변 성질 증명 서술형 유형이다. (ABCD)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     }
   ]
 }

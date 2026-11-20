@@ -1,0 +1,1121 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/middle/m3/2mid/25_신흥중_2학기_중간_중3_유사.js",
+  "sourceGitBlobSha": "13e7ad4c466fd86c8121aabbd158fe20c9011d84",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "similar-import-draft",
+    "at": "2026-11-20"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "단일 모델 초안(UNREVIEWED). 인용은 check-judgment 로 원문 포함을 확인했다."
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "다음 직각삼각형 $DEF$에서 옳지 않은 것은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "삼각비",
+            "src": "choices",
+            "quote": "$\\cos D=\\dfrac{r}{q}$"
+          }
+        ],
+        "method": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "꼭짓점 $F$에 있으므로 빗변은 $DE=r$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "변",
+            "src": "solution",
+            "quote": "이웃한 변은 $DF=q$이므로"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "직각삼각형 DEF 조건이다.",
+        "goal": "옳지 않은 삼각비 식을 찾는 목표이다.",
+        "method": "빗변 r과 대변, 이웃변의 비로 코사인을 확인하는 방법이다.",
+        "condition": "각 D에 대한 대변 p, 이웃변 q 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각비",
+            "src": "choices",
+            "quote": "$\\sin 30^\\circ \\div \\cos 60^\\circ$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "계산 결과가 가장 큰 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "solution",
+            "quote": "특수각의 삼각비 값을 각각 대입하여 계산한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "각",
+            "src": "choices",
+            "quote": "$\\tan 60^\\circ \\div \\sin 30^\\circ$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "특수각 삼각비 사칙연산 식 보기 조건이다.",
+        "goal": "계산 결과가 가장 큰 보기를 선별하는 목표이다.",
+        "method": "특수각의 삼각비 값을 대입하여 계산하는 방법이다.",
+        "condition": "30도, 45도, 60도 등의 각도 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$45^\\circ < x < 90^\\circ$일 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "무리식",
+            "src": "stem",
+            "quote": "다음 식을 간단히 하면? $$\\sqrt{(1-\\tan x)^2}+\\sqrt{(1+\\tan x)^2}$$"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "근호 안의 제곱을 절댓값으로 정리하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "근호",
+            "src": "stem",
+            "quote": "$$\\sqrt{(1-\\tan x)^2}+\\sqrt{(1+\\tan x)^2}$$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "45도 < x < 90도 각의 범위 조건이다.",
+        "goal": "주어진 근호 식을 간단히 정리하는 목표이다.",
+        "method": "tan x > 1에 따른 부호를 판단하여 절댓값을 벗기는 방법이다.",
+        "condition": "제곱근 근호 식 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사분원",
+            "src": "stem",
+            "quote": "반지름의 길이가 $1$인 사분원과"
+          }
+        ],
+        "goal": [
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "$\\cos y^\\circ$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각비",
+            "src": "stem",
+            "quote": "아래의 삼각비의 표를 이용하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$DE=1.3764$일 때,"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "반지름 1인 사분원과 삼각형 ADE 조건이다.",
+        "goal": "cos y도의 값을 구하는 목표이다.",
+        "method": "삼각비 표를 읽어 각도와 삼각비 값을 대응시키는 방법이다.",
+        "condition": "DE = 1.3764 길이 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사면체",
+            "src": "stem",
+            "quote": "한 모서리의 길이가 $6,\\mathrm{cm}$인 정사면체 $ABCD$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "$\\cos x^\\circ$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "내린 수선의 발 $H$는 $\\triangle BCD$의 무게중심이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "한 모서리의 길이가 $6,\\mathrm{cm}$인"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "한 모서리 6 cm인 정사면체 ABCD 조건이다.",
+        "goal": "cos x도의 값을 구하는 목표이다.",
+        "method": "밑면 무게중심 2:1 내분으로 선분 DH의 길이를 구하는 방법이다.",
+        "condition": "모서리 길이 6 cm 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "다음 그림과 같은 직각삼각형 $ABC$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$BE$의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "코사인",
+            "src": "solution",
+            "quote": "BC = AB\\cos 30^\\circ",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "$AB \\perp CD$, $BC \\perp DE$이고,"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "직각삼각형 ABC 및 수선 조건이다.",
+        "goal": "선분 BE의 길이를 구하는 목표이다.",
+        "method": "각각의 직각삼각형에서 코사인 30도를 연쇄 적용하는 방법이다.",
+        "condition": "AB perp CD, BC perp DE의 수직 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차방정식",
+            "src": "stem",
+            "quote": "일차방정식 $3x-4y+12=0$의"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "\\sin a^\\circ + \\cos a^\\circ = \\dfrac{3}{5} + \\dfrac{4}{5} = \\dfrac{7}{5}"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "직선의 기울기는 $\\dfrac{3}{4}$이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "예각",
+            "src": "stem",
+            "quote": "그래프가 $x$축과 이루는 예각의 크기를 $a^\\circ$라 할 때,"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "일차방정식 3x - 4y + 12 = 0 조건이다.",
+        "goal": "sin a + cos a의 합을 구하는 목표이다.",
+        "method": "직선의 기울기로부터 tan a = 3/4을 이용해 직각삼각형을 복원하는 방법이다.",
+        "condition": "x축의 양의 방향과 이루는 예각 a 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "다음 그림과 같이 $\\triangle ABC$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$BC$의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "꼭짓점 $A$에서 변 $BC$에 내린 수선의 발을 $H$라 하자.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle B=60^\\circ$일 때,"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "삼각형 ABC에서 AB = 6 cm, AC = 8 cm, 각 B = 60도 조건이다.",
+        "goal": "변 BC의 길이를 구하는 목표이다.",
+        "method": "수선 AH를 내려 특수각 삼각비와 피타고라스 정리를 적용하는 방법이다.",
+        "condition": "각 B = 60도 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "다음 $\\triangle ABC$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각형넓이공식",
+            "src": "solution",
+            "quote": "\\dfrac{1}{2}\\times AB\\times BC\\times\\sin B",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$AB=4\\sqrt{3}$, $BC=9$,"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "삼각형 ABC에서 두 변 AB = 4*sqrt(3), BC = 9와 각 B = 60도 조건이다.",
+        "goal": "삼각형 ABC의 넓이를 구하는 목표이다.",
+        "method": "삼각비를 이용한 삼각형 넓이 공식을 적용하는 방법이다.",
+        "condition": "두 변의 길이 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "다음 그림과 같이 정사각형 $ABCD$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사인",
+            "src": "stem",
+            "quote": "$\\sin x$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "두 점 $E$, $F$는 각각 변 $AD$, $CD$의 중점이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "변",
+            "src": "stem",
+            "quote": "각각 변 $AD$, $CD$의 중점이다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "정사각형 ABCD와 변의 중점 E, F 조건이다.",
+        "goal": "sin x의 값을 구하는 목표이다.",
+        "method": "중점을 이용한 피타고라스 정리와 여사건 넓이 공식을 결합하는 방법이다.",
+        "condition": "정사각형 변 위의 중점 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "이등변삼각형 $ABC$($AB=AC$)에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$AB$의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "꼭짓점 $A$에서 $BC$에 내린 수선의 발을 $D$라 하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle B=75^\\circ$이고,"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "이등변삼각형 ABC 조건이다.",
+        "goal": "변 AB의 길이를 구하는 목표이다.",
+        "method": "수선을 내려 30도, 45도 특수각 직각삼각형으로 분할하는 방법이다.",
+        "condition": "밑각 75도 및 밑변 6*sqrt(2) 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형 $ABC$의 꼭짓점 $A$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "옳지 않은 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "탄젠트",
+            "src": "solution",
+            "quote": "직각삼각형 $ACD$에서 $\\tan 60^\\circ = \\dfrac{AD}{CD}$이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "꼭짓점 $A$에서 $BC$에 내린 수선의 발을 $D$라 할 때,"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "각 A = 90도, 각 B = 30도, AC = 5 m인 직각삼각형 ABC 조건이다.",
+        "goal": "옳지 않은 삼각비 등식을 찾는 목표이다.",
+        "method": "직각삼각형 ACD에서 탄젠트의 정의를 적용하는 방법이다.",
+        "condition": "꼭짓점 A에서 내린 수선 AD 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림의 원 $O$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "반지름의 길이 $x$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "원의 중심 $O$에서 현에 내린 수선은 그 현을 이등분한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "원의 중심 $O$에서 현에 내린 수선은 그 현을 이등분한다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "원 O와 현의 기하 구조 조건이다.",
+        "goal": "반지름 x의 값을 구하는 목표이다.",
+        "method": "현의 수직이등분선과 피타고라스 정리를 적용하는 방법이다.",
+        "condition": "중심에서 현에 내린 수선 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음 그림의 원 $O$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "원 $O$의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정삼각형",
+            "src": "solution",
+            "quote": "$\\triangle ABC$는 정삼각형이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "$OD \\perp AB$, $OE \\perp BC$, $OF \\perp AC$이고"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "원 O와 중심거리 OD = OE = OF 및 변 BC = 6*sqrt(3) cm 조건이다.",
+        "goal": "원 O의 넓이를 구하는 목표이다.",
+        "method": "현의 길이가 같음을 통해 정삼각형의 외심을 구하는 방법이다.",
+        "condition": "수직 거리 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "직각삼각형 $OMA$에서 피타고라스 정리에 의해"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$OA$의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "직각삼각형 $OMA$에서 피타고라스 정리에 의해",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "$AB \\perp OC$이고 교점이 $M$일 때,"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "현 AB perp 반지름 OC, AM = 8 cm, CM = 4 cm 조건이다.",
+        "goal": "선분 OA(반지름)의 길이를 구하는 목표이다.",
+        "method": "직각삼각형 OMA에서 피타고라스 정리를 적용하는 방법이다.",
+        "condition": "현과 반지름의 수직 교차 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "점 $I$는 $\\triangle ABC$의 내심이며 원의 중심이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "그러므로 $FG + HJ = 8 + 8 = 16,\\mathrm{cm}$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "원의 중심에서 같은 거리에 있는 현의 길이는 같으므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$DE=8,\\mathrm{cm}$일 때,"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "삼각형 ABC의 내심 I이자 원의 중심 조건이다.",
+        "goal": "FG + HJ의 합을 구하는 목표이다.",
+        "method": "중심거리 일치에 따른 현의 길이 상등 성질을 적용하는 방법이다.",
+        "condition": "현 DE = 8 cm 길이 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "두 직선 $PA$, $PB$가 원 $O$의 접선이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle PAB$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "따라서 $\\triangle PAB$는 이등변삼각형이고,",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "접점",
+            "src": "stem",
+            "quote": "두 점 $A$, $B$가 접점일 때,"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "원 O 밖의 점 P에서 그은 접선 PA, PB 조건이다.",
+        "goal": "각 PAB의 크기를 구하는 목표이다.",
+        "method": "접선의 길이가 같아 생기는 이등변삼각형 밑각 공식을 적용하는 방법이다.",
+        "condition": "각 APB = 44도 및 접점 A, B 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "원 $O$는 직사각형 $ABCD$의 세 변"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle DEC$의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "직각삼각형 $DEC$에서 피타고라스 정리에 의해",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "$DE$가 원 $O$의 접선일 때,"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "변 6, 9인 직사각형 ABCD와 내접하는 원 O 조건이다.",
+        "goal": "삼각형 DEC의 넓이를 구하는 목표이다.",
+        "method": "접선 길이의 상등과 직각삼각형 피타고라스 방정식을 적용하는 방법이다.",
+        "condition": "선분 DE가 접선이라는 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "$\\angle C=90^\\circ$, $BC=8,\\mathrm{cm}$, $AC=6,\\mathrm{cm}$인 직각삼각형이고,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "원 $O$의 반지름의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "원 $O$는 $\\triangle ABC$의 내접원이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$BC=8,\\mathrm{cm}$, $AC=6,\\mathrm{cm}$인"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "두 변 6 cm, 8 cm인 직각삼각형 ABC 조건이다.",
+        "goal": "내접원 O의 반지름 길이를 구하는 목표이다.",
+        "method": "삼각형의 넓이와 둘레를 결합한 내접원 반지름 공식을 적용하는 방법이다.",
+        "condition": "밑변과 높이 길이 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "반원 $O$의 접선이고, $A$, $B$, $C$는 접점이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$CF$의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "닮음인 두 직각삼각형이 생긴다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "점 $C$에서 $AB$에 내린 수선의 발을 $F$라 하자."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "지름 AB인 반원의 접선 DA, EB, DE 조건이다.",
+        "goal": "선분 CF의 길이를 구하는 목표이다.",
+        "method": "접선 길이 상등과 사다리꼴 평행선 닮음비를 적용하는 방법이다.",
+        "condition": "점 C에서 내린 수선 CF 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "다음 직각삼각형 $ABC$($\\angle C=90^\\circ$)에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "코사인",
+            "src": "stem",
+            "quote": "$\\cos A$의 값을 구하는 과정과 답을 쓰시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "$AC=4,\\mathrm{cm}$, $\\tan A=2$일 때,",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$AC=4,\\mathrm{cm}$,"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "직각삼각형 ABC 조건이다.",
+        "goal": "cos A의 값을 구하는 목표이다.",
+        "method": "tan A = 2와 AC = 4 cm에서 BC = 8 cm를 구하고 피타고라스 정리를 적용하는 방법이다.",
+        "condition": "변 AC의 길이 4 cm 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "거리",
+            "src": "stem",
+            "quote": "두 지점 $A$와 $B$ 사이의 거리가 $60,\\mathrm{m}$일 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "높이",
+            "src": "stem",
+            "quote": "지면에서 열기구까지의 높이를 구하는 과정과 답을 쓰시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "올려본각",
+            "src": "solution",
+            "quote": "열기구의 위치 $C$에서 선분 $AB$에 내린 수선의 발을 $H$라 하고,",
+            "evidenceType": "IMPLIED",
+            "justification": "올려본 각(앙각) 45도와 60도를 이용해 수선의 발 H에 대한 삼각비 식을 세움"
+          }
+        ],
+        "condition": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "올려본 각의 크기가 각각 $45^\\circ$와 $60^\\circ$이다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "두 지점 사이의 거리 60 m 조건이다.",
+        "goal": "열기구까지의 높이를 구하는 목표이다.",
+        "method": "수선 CH를 높이 h로 두고 tan 45도, tan 60도의 분할 밑변 합을 이용하는 방법이다.",
+        "condition": "올려본 각 45도, 60도 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "원",
+            "src": "stem",
+            "quote": "다음은 원 모양의 도자기 접시가 세 조각으로 깨진 것이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "중심",
+            "src": "stem",
+            "quote": "원의 중심을 찾는 방법을 설명하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "원의 현의 수직이등분선은 항상 원의 중심을 지난다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "현",
+            "src": "solution",
+            "quote": "호 위에서 서로 다른 세 점 $A$, $B$, $C$를 잡고 두 현 $AB$, $BC$를 긋는다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "세 조각으로 깨진 원 모양 도자기 접시 조건이다.",
+        "goal": "옳게 말한 학생을 찾고 원의 중심 작도법을 설명하는 목표이다.",
+        "method": "현의 수직이등분선의 교점이 원의 중심임을 이용하는 작도 방법이다.",
+        "condition": "호 위의 세 점으로 만드는 두 현 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "접선",
+            "src": "stem",
+            "quote": "두 반직선 $PA$, $PB$는 원 $O$의 접선이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "어두운 부분(사각형 $PAOB$에서 부채꼴 $AOB$를 제외한 부분)의 넓이를 구하는 과정과 답을 쓰시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "부채꼴",
+            "src": "stem",
+            "quote": "부채꼴 $AOB$를 제외한 부분)의 넓이를 구하는",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "접점",
+            "src": "stem",
+            "quote": "두 점 $A$, $B$는 각각 그 접점이다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "원 O 밖의 점 P에서 그은 두 접선 PA, PB 조건이다.",
+        "goal": "사각형 PAOB에서 부채꼴 AOB를 제외한 어두운 부분 넓이를 구하는 목표이다.",
+        "method": "사각형 PAOB의 넓이에서 중심각 120도 부채꼴 넓이를 빼는 방법이다.",
+        "condition": "접점 A, B 및 각 APB = 60도 조건이다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1074 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/middle/m3/1mid/25_연향중_1학기_중간_중3_유사.js",
+  "sourceGitBlobSha": "1dac42ba8a9672d9f94a4b205ff18537fc4ea7a4",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "similar-import-draft",
+    "at": "2026-11-20"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "단일 모델 초안(UNREVIEWED). 인용은 check-judgment 로 원문 포함을 확인했다."
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "가 $11$의 제곱근일 때, 다음"
+          }
+        ],
+        "goal": [
+          {
+            "term": "관계",
+            "src": "solution",
+            "quote": "11$ 사이의 관계식을 판별한다."
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "제곱근의 정의를 적용하여 $",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "성립조건",
+            "src": "solution",
+            "quote": "$$ 이 항상 성립한다. 2단계"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "x가 11의 제곱근이라는 조건을 확인한다.",
+        "goal": "항상 성립하는 관계식을 구한다.",
+        "method": "제곱근의 정의를 적용한다.",
+        "condition": "항상 성립하는 등식을 선별한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "$81$의 두 제곱근을 각각 $a,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "$6$이 되는 양수는 $\\sqrt"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "$81$의 두 제곱근을 각각 $a",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "두 제곱근 $a, b$의"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "81의 두 제곱근과 대소 조건을 확인한다.",
+        "goal": "구한 식의 양의 제곱근을 계산한다.",
+        "method": "제곱근을 구하고 대입하여 계산한다.",
+        "condition": "a > b 조건을 반영한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "21+a}$가 자연수가 되도록 하는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "근호",
+            "src": "solution",
+            "quote": "연수가 되려면 근호 안의 식 $2"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱수",
+            "src": "solution",
+            "quote": "21$보다 큰 완전제곱수이어야 한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "21$보다 큰 완전제곱수이어야 한다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "근호식이 자연수가 되는 조건을 확인한다.",
+        "goal": "가장 작은 자연수 a를 구한다.",
+        "method": "21보다 큰 완전제곱수를 나열한다.",
+        "condition": "a가 자연수임을 고려한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "부분",
+            "src": "stem",
+            "quote": "a}$의 정수 부분을 $f(a)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "연수 $a$의 개수는? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "이라는 조건을 부등식으로 나타내고,",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "연수 $a$의 범위를 구한다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "정수 부분이 6이라는 조건을 확인한다.",
+        "goal": "만족하는 자연수 a의 개수를 구한다.",
+        "method": "부등식을 세우고 양변을 제곱한다.",
+        "condition": "연속한 두 정수 사이의 범위를 취한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "<보기> ㄱ. 순환소수는 유리수이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "의 모든 점은 실수에 일대일로 대"
+          }
+        ],
+        "method": [
+          {
+            "term": "무리수",
+            "src": "solution",
+            "quote": "유리수이다. 무리수라 한 것은 거",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수직선",
+            "src": "stem",
+            "quote": "수이다. ㄷ. 수직선 위의 모든 점"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "보기의 여러 실수 관련 명제를 확인한다.",
+        "goal": "옳은 보기를 모두 고른다.",
+        "method": "유리수·무리수의 정의와 0.8 값을 점검한다.",
+        "condition": "수직선의 완비성과 조밀성을 검토한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "수직선",
+            "src": "stem",
+            "quote": "수직선 위의 점 $A"
+          }
+        ],
+        "goal": [
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "점 $P$의 좌표를 구한다."
+          }
+        ],
+        "method": [
+          {
+            "term": "직각삼각형",
+            "src": "solution",
+            "quote": "이가 $1$인 직각삼각형의 빗변이 선분",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "분 $AB$를 반지름으로 하는 원호"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "기준점 A의 좌표와 이동 거리를 확인한다.",
+        "goal": "수직선과 만나는 점 P에 대응하는 수를 구한다.",
+        "method": "피타고라스 정리로 빗변 AB 길이를 계산한다.",
+        "condition": "오른쪽 방향이므로 중심 좌표에 길이를 더한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "src": "solution",
+            "quote": "근호 안의 수를 $"
+          }
+        ],
+        "goal": [
+          {
+            "term": "변환",
+            "src": "solution",
+            "quote": "거듭제곱으로 변형하여 $\\sqr"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "10000$의 거듭제곱으로 변형하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "지 않은 것을 선택한다. 따라서"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "주어진 두 제곱근의 근삿값을 확인한다.",
+        "goal": "계산 결과가 옳지 않은 선지를 찾는다.",
+        "method": "근호 안을 100의 거듭제곱 곱으로 변형한다.",
+        "condition": "50과 5 중 올바른 근호 값을 적용했는지 검토한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "관계",
+            "src": "stem",
+            "quote": "실수의 대소 관계가 옳은 것은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "중 두 실수의 대소 관계가 옳은"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "근의 성질 및 부등식의 성질을 적용",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "다음 중 두 실수의 대소 관계가"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "두 실수의 대소 비교 선지들을 확인한다.",
+        "goal": "대소 관계가 옳은 것을 고른다.",
+        "method": "근호 안으로 수를 넣거나 부등식을 이항하여 비교한다.",
+        "condition": "음수를 곱할 때 부등호 방향에 유의한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "5}$일 때, 유리수 $A$의 값은"
+          }
+        ],
+        "goal": [
+          {
+            "term": "정리",
+            "src": "solution",
+            "quote": "제곱 인수를 정리하여 $A$를"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "안의 수들을 소인수분해하여 곱한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "근호",
+            "src": "solution",
+            "quote": "곱을 하나의 근호로 묶거나 각"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "연속된 제곱근들의 곱셈식을 확인한다.",
+        "goal": "유리수 A의 값을 구한다.",
+        "method": "소인수분해로 제곱수를 묶어 근호 밖으로 꺼낸다.",
+        "condition": "근호 안에 35가 남도록 정리한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "6}$일 때, 자연수 $a$의 값은"
+          }
+        ],
+        "goal": [
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "}$$ 따라서 등식은 다음과 같다"
+          }
+        ],
+        "method": [
+          {
+            "term": "최소공배수",
+            "src": "solution",
+            "quote": "양변에 분모의 최소공배수인 $6$을 곱",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "분수식",
+            "src": "solution",
+            "quote": "단계: 좌변의 분수식을 간단히 한다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "근호가 포함된 비례 등식을 확인한다.",
+        "goal": "자연수 a의 값을 구한다.",
+        "method": "분모의 공배수를 곱해 근호 등식으로 변환한다.",
+        "condition": "a가 자연수임을 고려한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "계산한 결과가 유리수가 되도록 하는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "조건",
+            "src": "solution",
+            "quote": "가 되기 위한 조건을 세운다."
+          }
+        ],
+        "method": [
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "rt{2}$의 동류항으로 묶은 후,",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "무리수",
+            "src": "solution",
+            "quote": "리수가 되려면 무리수 $\\sqrt{"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "계산 결과가 유리수라는 조건을 확인한다.",
+        "goal": "유리수 a의 값을 구한다.",
+        "method": "근호 밖으로 수를 꺼내고 동류근호끼리 묶는다.",
+        "condition": "무리수 앞의 계수가 0이 되도록 한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "src": "solution",
+            "quote": "근호의 곱셈, 나눗"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "계산 결과를 검증한다. 1단계"
+          }
+        ],
+        "method": [
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "셈 및 분모의 유리화 규칙을 각 보",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "다항식의나눗셈",
+            "src": "solution",
+            "quote": "근호의 곱셈, 나눗셈 및 분모의 유"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "보기의 근호 계산식들을 확인한다.",
+        "goal": "계산 결과가 옳지 않은 것을 모두 고른다.",
+        "method": "곱셈과 나눗셈, 분모의 유리화를 적용한다.",
+        "condition": "역수를 곱하여 차례대로 계산한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "48ab}$가 자연수가 될 확률은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "자연수가 될 확률은? [5점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "b$의 조건을 소인수분해로 찾고, 주사",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "완전제곱수",
+            "src": "solution",
+            "quote": "$3ab$가 완전제곱수이어야 하므로"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "두 주사위 눈과 근호식을 확인한다.",
+        "goal": "자연수가 될 확률을 구한다.",
+        "method": "48을 소인수분해하여 3ab의 완전제곱 조건을 찾는다.",
+        "condition": "주사위 눈 순서쌍의 개수를 36으로 나눈다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "^2$일 때, 상수 $A, B,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "을 정리한 후 계수를 비교한다."
+          }
+        ],
+        "method": [
+          {
+            "term": "분배법칙",
+            "src": "solution",
+            "quote": "두 일차식을 분배법칙으로 전개하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "으로 전개하여 동류항을 정리한 후"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "두 일차식의 곱셈 등식을 확인한다.",
+        "goal": "ABC의 값을 계산한다.",
+        "method": "분배법칙으로 전개하고 동류항을 모은다.",
+        "condition": "양변의 동류항 계수를 각각 일치시킨다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "곱셈 공식을 적용하"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대소비교",
+            "src": "solution",
+            "quote": "구하여 크기를 비교한다. 1단계"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "선지의 좌변을 전개하고, $\\sq",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "안에 들어갈 양수 값을 각각 구"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "네모가 포함된 곱셈공식 식들을 확인한다.",
+        "goal": "네모 안에 알맞은 수 중 가장 작은 것을 찾는다.",
+        "method": "좌변을 전개하고 우변과 비교한다.",
+        "condition": "네모 앞의 부호에 유의하여 값을 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "완전제곱식",
+            "src": "stem",
+            "quote": "다음 중 완전제곱식으로 인수분해할"
+          }
+        ],
+        "goal": [
+          {
+            "term": "조합",
+            "src": "solution",
+            "quote": "수 없는 것을 선택한다. 따라서"
+          }
+        ],
+        "method": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "완전제곱식으로 판별한다. ① $9",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "와 각 선지의 계수 관계를 점검한"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "보기의 다항식들을 확인한다.",
+        "goal": "완전제곱식으로 인수분해할 수 없는 것을 찾는다.",
+        "method": "완전제곱식의 계수 관계를 검토한다.",
+        "condition": "가운데 일차항의 부호와 계수가 일치하는지 비교한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "분모",
+            "src": "solution",
+            "quote": "분모의 켤레식을 곱"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "(또는 직접 제곱의 합으로 계산"
+          }
+        ],
+        "method": [
+          {
+            "term": "유리화",
+            "src": "solution",
+            "quote": "레식을 곱하여 유리화한 후, 곱셈",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "유리화한 후, 곱셈 공식의 변형을"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "x와 y의 분수식을 확인한다.",
+        "goal": "x^2 + y^2의 값을 구한다.",
+        "method": "분모를 유리화한 후 곱셈공식 변형을 적용한다.",
+        "condition": "x+y와 xy의 값을 정확히 계산한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "전개",
+            "src": "stem",
+            "quote": "(x-2)$를 전개하면 $2x^2"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "c, d$는 상수) [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "stem",
+            "quote": "+cx+4$를 인수분해하면 $(x-d",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "과 인수분해의 계수 비교를 통해"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "전개식과 인수분해 항등식을 확인한다.",
+        "goal": "a+b+c+d의 값을 구한다.",
+        "method": "각 식의 동류항 계수를 일치시킨다.",
+        "condition": "최고차항과 상수항으로부터 미정계수를 순차적으로 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "분모",
+            "src": "solution",
+            "quote": "05$라 두면 분모는 다음과 같다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "계: 분수식에 대입하여 약분한다."
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "하여 이차식을 인수분해한 후 약분하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "이차식",
+            "src": "solution",
+            "quote": "자로 치환하여 이차식을 인수분해한"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "큰 수로 이루어진 복잡한 분수식을 확인한다.",
+        "goal": "주어진 식의 값을 구한다.",
+        "method": "20005를 치환하고 분자를 인수분해한다.",
+        "condition": "공통인수 x-1을 약분한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "근호",
+            "src": "solution",
+            "quote": "근호 안의 식을 완"
+          }
+        ],
+        "goal": [
+          {
+            "term": "정리",
+            "src": "solution",
+            "quote": "호를 판정하여 정리한다. 1단계"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "호 안의 식을 완전제곱식으로 인수분해한",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "인수분해한 후 절댓값 기호로 변환하"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "근호 안의 이차식들과 x의 범위를 확인한다.",
+        "goal": "주어진 식을 간단히 정리한다.",
+        "method": "완전제곱식 인수분해 후 절댓값으로 변환한다.",
+        "condition": "범위에 따른 각 항의 부호를 판정한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "DESCRIPTIVE",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "< 300$인 자연수 $n$에 대하"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "하는 $n$의 개수를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "소인수분해",
+            "src": "solution",
+            "quote": "이어야 한다. 소인수분해를 통해 $n$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "완전제곱수",
+            "src": "solution",
+            "quote": "$40n$이 완전제곱수이어야 한다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "n의 범위와 근호식을 확인한다.",
+        "goal": "자연수 n의 개수를 구한다.",
+        "method": "40을 소인수분해해 n의 형태를 결정한다.",
+        "condition": "20 <= 10k^2 < 300 부등식을 만족하는 k를 찾는다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "DESCRIPTIVE",
+      "slots": {
+        "given": [
+          {
+            "term": "높이",
+            "src": "solution",
+            "quote": "주어진 높이 $h = 30"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "삿값에 맞추어 거리를 계산한다."
+          }
+        ],
+        "method": [
+          {
+            "term": "근삿값",
+            "src": "solution",
+            "quote": "용하여 주어진 근삿값에 맞추어 거리",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "00$을 식에 대입한 후, 제곱근"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "해발 높이 300m와 거리 공식을 확인한다.",
+        "goal": "가장 먼 거리를 소수로 구한다.",
+        "method": "근호식을 100의 거듭제곱 곱으로 변형한다.",
+        "condition": "주어진 근삿값 중 37.8의 값을 선택해 대입한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "DESCRIPTIVE",
+      "slots": {
+        "given": [
+          {
+            "term": "일차식",
+            "src": "stem",
+            "quote": "-ax+b$가 일차식의 곱으로 인수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "확률",
+            "src": "stem",
+            "quote": "인수분해 될 확률을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "stem",
+            "quote": "차식의 곱으로 인수분해 될 확률을 구",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "제외",
+            "src": "stem",
+            "quote": "해되는 경우는 제외한다.) [7점"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "이차식이 일차식의 곱으로 인수분해되는 조건을 확인한다.",
+        "goal": "만족할 확률을 구한다.",
+        "method": "m+n=a, mn=b 형태로 두고 순서쌍을 분류한다.",
+        "condition": "완전제곱식이 되는 경우를 제외하고 주사위 눈 범위를 지킨다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ]
+}

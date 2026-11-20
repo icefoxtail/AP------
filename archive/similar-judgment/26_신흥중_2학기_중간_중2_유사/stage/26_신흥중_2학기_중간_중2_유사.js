@@ -17,7 +17,7 @@ window.questionBank = [
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "ISOSCELES_ANGLE_BISECTOR_CALCULATION",
+    "conceptClusterKey": "TRIANGLE_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -38,8 +38,8 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
     "crossConceptKeys": [
       "CC_TRIANGLE_ANGLE_SUM"
     ],
@@ -47,6 +47,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "삼각형의 성질",
+    "rpmPrimaryL2": "삼각형의 성질",
+    "rpmPrimaryL3": "이등변삼각형",
+    "rpmPrimaryL4": "밑각과 꼭짓각",
+    "rpmPrimaryRecordId": "M2-RPM-178",
     "sourceQid": 1,
     "variationType": "NUMERIC"
   },
@@ -61,15 +66,16 @@ window.questionBank = [
     "standardUnitKey": "M2-06",
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
-    "subUnitKey": "M2-06-SIMILARITY_BASIC",
-    "subUnit": "",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SIMILAR_POLYGON_CORRESPONDING_SIDES",
+    "conceptClusterKey": "SIMILAR_FIGURE",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "도형의 닮음"
     ],
     "wide": false,
     "content": "사각형 $ABCD$와 사각형 $EFGH$가 서로 닮은 도형이고, 대응하는 변의 길이의 비는 $\\overline{AB} : \\overline{EF} = 3 : 4$이다. $\\overline{BC} = 15\\text{ cm}$일 때, 변 $BC$에 대응하는 변 $FG$의 길이는? [3점]",
@@ -85,8 +91,8 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_SIMILAR_FIGURES",
+    "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
     "crossConceptKeys": [
       "CC_RATIO"
     ],
@@ -94,6 +100,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "도형의 닮음과 피타고라스 정리",
+    "rpmPrimaryL2": "도형의 닮음",
+    "rpmPrimaryL3": "닮은 도형",
+    "rpmPrimaryL4": "닮음비",
+    "rpmPrimaryRecordId": "M2-RPM-202",
     "sourceQid": 2,
     "variationType": "NUMERIC"
   },
@@ -112,7 +123,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "PARALLELOGRAM_ADJACENT_OPPOSITE_ANGLES",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -133,8 +144,8 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
     "crossConceptKeys": [
       "CC_RATIO"
     ],
@@ -142,6 +153,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "평행사변형",
+    "rpmPrimaryL3": "평행사변형의 성질",
+    "rpmPrimaryL4": "변·각의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-190",
     "sourceQid": 3,
     "variationType": "NUMERIC"
   },
@@ -160,7 +176,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "RECTANGLE_DIAGONAL_BISECTION_PERIMETER",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -181,8 +197,8 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_SPECIAL_QUADRILATERALS",
     "crossConceptKeys": [
       "CC_PERIMETER"
     ],
@@ -190,6 +206,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "여러 가지 사각형",
+    "rpmPrimaryL3": "직사각형·마름모·정사각형",
+    "rpmPrimaryL4": "특수 사각형의 대각선 성질",
+    "rpmPrimaryRecordId": "M2-RPM-197",
     "sourceQid": 4,
     "variationType": "NUMERIC"
   },
@@ -208,7 +229,7 @@ window.questionBank = [
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "ISOSCELES_TRIANGLE_CONVERSE_EQUAL_SIDES",
+    "conceptClusterKey": "TRIANGLE_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -228,9 +249,9 @@ window.questionBank = [
     "solution": "삼각형의 세 내각의 크기의 합은 $180^\\circ$이므로\n$$\n\\angle A = 180^\\circ - (40^\\circ + 70^\\circ) = 180^\\circ - 110^\\circ = 70^\\circ\n$$\n$\\angle A = \\angle C = 70^\\circ$이므로 $\\triangle ABC$는 두 내각의 크기가 같은 이등변삼각형이다.\n따라서 두 각의 대변의 길이가 서로 같다.\n$$\n\\overline{AB} = \\overline{BC}\n$$\n주어진 식을 대입하면\n$$\n2x + 1 = x + 6 \\implies x = 5\n$$\n따라서 정답은 ⑤이다.",
     "score": 3,
     "points": 3,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 1,
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "templateKey": "TPL_ISOSCELES_CONVERSE",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATION"
     ],
@@ -238,6 +259,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "삼각형의 성질",
+    "rpmPrimaryL2": "삼각형의 성질",
+    "rpmPrimaryL3": "이등변삼각형",
+    "rpmPrimaryL4": "이등변삼각형 판정",
+    "rpmPrimaryRecordId": "M2-RPM-179",
     "sourceQid": 5,
     "variationType": "NUMERIC"
   },
@@ -256,7 +282,7 @@ window.questionBank = [
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "INCENTER_ANGLE_BISECTORS_VERTEX_ANGLE",
+    "conceptClusterKey": "TRIANGLE_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -276,9 +302,9 @@ window.questionBank = [
     "solution": "내심 $I$는 삼각형의 세 내각의 이등분선이 만나는 점이다.\n따라서 선분 $BI, CI$는 각각 $\\angle B, \\angle C$를 이등분한다.\n$$\n\\angle B = 2 \\times \\angle ABI = 2 \\times 35^\\circ = 70^\\circ\n$$\n$$\n\\angle C = 2 \\times \\angle BCI = 2 \\times 20^\\circ = 40^\\circ\n$$\n삼각형의 세 내각의 크기의 합은 $180^\\circ$이므로\n$$\n\\angle BAC = 180^\\circ - (\\angle B + \\angle C) = 180^\\circ - (70^\\circ + 40^\\circ) = 70^\\circ\n$$\n따라서 정답은 ②이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 1,
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "templateKey": "TPL_TRIANGLE_INCENTER",
     "crossConceptKeys": [
       "CC_TRIANGLE_ANGLE_SUM"
     ],
@@ -286,6 +312,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "삼각형의 성질",
+    "rpmPrimaryL2": "삼각형의 외심과 내심",
+    "rpmPrimaryL3": "내심",
+    "rpmPrimaryL4": "각의 이등분선과 내심",
+    "rpmPrimaryRecordId": "M2-RPM-186",
     "sourceQid": 6,
     "variationType": "NUMERIC"
   },
@@ -304,7 +335,7 @@ window.questionBank = [
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "CIRCUMCENTER_RADIUS_ISOSCELES_ANGLES",
+    "conceptClusterKey": "TRIANGLE_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -324,9 +355,9 @@ window.questionBank = [
     "solution": "외심 $O$에서 삼각형의 세 꼭짓점에 이르는 거리는 모두 같다.\n$$\n\\overline{OA} = \\overline{OB} = \\overline{OC}\n$$\n1. $\\triangle AOC$에서 $\\overline{OA} = \\overline{OC}$이므로 이등변삼각형이다.\n$$\n\\angle OCA = \\angle OAC = 40^\\circ\n$$\n2. $\\triangle BOC$에서 $\\overline{OB} = \\overline{OC}$이므로 이등변삼각형이다.\n$$\n\\angle OCB = \\angle OBC = 25^\\circ\n$$\n3. 점 $O$가 $\\angle ACB$의 내부에 있으므로\n$$\n\\angle ACB = \\angle OCA + \\angle OCB = 40^\\circ + 25^\\circ = 65^\\circ\n$$\n따라서 정답은 ①이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 1,
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
     "crossConceptKeys": [
       "CC_ISOSCELES_TRIANGLE"
     ],
@@ -334,6 +365,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "삼각형의 성질",
+    "rpmPrimaryL2": "삼각형의 외심과 내심",
+    "rpmPrimaryL3": "외심",
+    "rpmPrimaryL4": "외심의 위치·각",
+    "rpmPrimaryRecordId": "M2-RPM-185",
     "sourceQid": 7,
     "variationType": "NUMERIC"
   },
@@ -352,7 +388,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -372,9 +408,9 @@ window.questionBank = [
     "solution": "$\\overline{AD} \\parallel \\overline{EC}$이므로 밑변 $\\overline{AD}$를 공유하는 두 삼각형 $\\triangle ADE$와 $\\triangle ADC$는 높이가 같아 넓이가 같다.\n$$\n\\triangle ADE = \\triangle ADC\n$$\n사각형 $ABDE$의 넓이는 두 삼각형의 넓이의 합으로 나눌 수 있으므로\n$$\n\\text{사각형 } ABDE = \\triangle ABD + \\triangle ADE = \\triangle ABD + \\triangle ADC = \\triangle ABC\n$$\n점 $B, D, C$가 한 직선 위에 있으므로\n$$\n\\overline{BC} = \\overline{BD} + \\overline{DC} = 8 + 12 = 20\\text{ (cm)}\n$$\n$\\angle B = 90^\\circ$이므로 직각삼각형 $ABC$의 넓이는\n$$\n\\triangle ABC = \\frac{1}{2} \\times \\overline{AB} \\times \\overline{BC} = \\frac{1}{2}         imes 14 \\times 20 = 140\\text{ (cm}^2\\text{)}\n$$\n따라서 사각형 $ABDE$의 넓이는 $140\\text{ cm}^2$이다.\n정답은 ④이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION",
+    "templateKey": "TPL_MG_FIND_PARALLEL_CONDITION_FOR_EQUAL_AREA_QUADRILATERAL",
     "crossConceptKeys": [
       "CC_TRIANGLE_AREA"
     ],
@@ -382,6 +418,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "평행사변형",
+    "rpmPrimaryL3": "넓이와 활용",
+    "rpmPrimaryL4": "평행선과 넓이",
+    "rpmPrimaryRecordId": "M2-RPM-194",
     "sourceQid": 8,
     "variationType": "NUMERIC"
   },
@@ -400,7 +441,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "RHOMBUS_DIAGONAL_AREA_SEGMENT_RATIO",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -421,8 +462,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_SPECIAL_QUADRILATERALS",
     "crossConceptKeys": [
       "CC_TRIANGLE_AREA"
     ],
@@ -430,6 +471,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "평행사변형",
+    "rpmPrimaryL3": "넓이와 활용",
+    "rpmPrimaryL4": "분할도형",
+    "rpmPrimaryRecordId": "M2-RPM-195",
     "sourceQid": 9,
     "variationType": "NUMERIC"
   },
@@ -448,7 +494,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "PARALLELOGRAM_ANGLE_BISECTOR_SIMILARITY",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -468,9 +514,9 @@ window.questionBank = [
     "solution": "1. 평행사변형에서 $\\overline{AD} \\parallel \\overline{BC}$이므로 엇각의 크기는 같다.\n$$\n\\angle AFB = \\angle FBC\n$$\n선분 $BF$가 $\\angle B$의 이등분선이므로 $\\angle ABF = \\angle FBC$이다.\n따라서 $\\angle ABF = \\angle AFB$이므로 $\\triangle ABF$는 이등변삼각형이다.\n$$\n\\overline{AF} = \\overline{AB} = 10\\text{ (cm)}\n$$\n2. $\\overline{AD} = 15\\text{ cm}$이므로\n$$\n\\overline{FD} = \\overline{AD} - \\overline{AF} = 15 - 10 = 5\\text{ (cm)}\n$$\n3. $\\overline{AB} \\parallel \\overline{DE}$이므로 두 삼각형 $\\triangle ABF$와 $\\triangle DEF$는 닮음이다 (AA 닮음).\n$$\n\\triangle ABF \\sim \\triangle DEF\n$$\n대응변의 길이의 비는 같으므로\n$$\n\\overline{AB} : \\overline{DE} = \\overline{AF} : \\overline{FD}\n$$\n$$\n10 : \\overline{DE} = 10 : 5 \\implies \\overline{DE} = 5\\text{ (cm)}\n$$\n따라서 정답은 ⑤이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+    "templateKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
     "crossConceptKeys": [
       "CC_ISOSCELES_TRIANGLE",
       "CC_SIMILAR_TRIANGLES"
@@ -479,6 +525,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "평행사변형",
+    "rpmPrimaryL3": "평행사변형의 성질",
+    "rpmPrimaryL4": "변·각의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-190",
     "sourceQid": 10,
     "variationType": "NUMERIC"
   },
@@ -493,15 +544,16 @@ window.questionBank = [
     "standardUnitKey": "M2-06",
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
-    "subUnitKey": "M2-06-SIMILARITY_BASIC",
-    "subUnit": "",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SIMILAR_FIGURES_AREA_RATIO",
+    "conceptClusterKey": "SIMILAR_FIGURE",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "도형의 닮음"
     ],
     "wide": false,
     "content": "두 삼각형 $ABC$와 $DEF$가 서로 닮은 도형이고, 대응하는 변의 길이의 비가 $\\overline{AB} : \\overline{DE} = 3 : 4$이다. $\\triangle ABC$의 넓이가 $36\\text{ cm}^2$일 때, $\\triangle DEF$의 넓이는? [4점]",
@@ -517,8 +569,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_SIMILAR_FIGURES",
+    "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
     "crossConceptKeys": [
       "CC_RATIO"
     ],
@@ -526,6 +578,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "도형의 닮음과 피타고라스 정리",
+    "rpmPrimaryL2": "도형의 닮음",
+    "rpmPrimaryL3": "닮음의 활용",
+    "rpmPrimaryL4": "넓이·부피 비",
+    "rpmPrimaryRecordId": "M2-RPM-208",
     "sourceQid": 11,
     "variationType": "NUMERIC"
   },
@@ -544,7 +601,7 @@ window.questionBank = [
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "CHAINED_ISOSCELES_EXTERIOR_ANGLE",
+    "conceptClusterKey": "TRIANGLE_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -564,9 +621,9 @@ window.questionBank = [
     "solution": "구하고자 하는 각의 크기를 $\\angle ACD = x$라 하자.\n1. $\\triangle BCD$에서 $\\overline{BC} = \\overline{BD}$이므로 이등변삼각형이다.\n$$\n\\angle BDC = \\angle BCD = x\n$$\n삼각형의 외각의 성질에 의하여\n$$\n\\angle ABD = \\angle BCD + \\angle BDC = x + x = 2x\n$$\n2. $\\triangle ADB$에서 $\\overline{AD} = \\overline{DB}$이므로 이등변삼각형이다.\n$$\n\\angle BAD = \\angle ABD = 2x\n$$\n3. $\\triangle ACD$에서 외각 $\\angle ADE$의 크기는 이웃하지 않는 두 내각의 크기의 합과 같다.\n$$\n\\angle ADE = \\angle CAD + \\angle ACD = 2x + x = 3x\n$$\n조건에서 $\\angle ADE = 84^\\circ$이므로\n$$\n3x = 84^\\circ \\implies x = 28^\\circ\n$$\n따라서 $\\angle ACD = 28^\\circ$이다.\n정답은 ④이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
     "crossConceptKeys": [
       "CC_EXTERIOR_ANGLE"
     ],
@@ -574,6 +631,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "삼각형의 성질",
+    "rpmPrimaryL2": "삼각형의 성질",
+    "rpmPrimaryL3": "이등변삼각형",
+    "rpmPrimaryL4": "밑각과 꼭짓각",
+    "rpmPrimaryRecordId": "M2-RPM-178",
     "sourceQid": 12,
     "variationType": "NUMERIC"
   },
@@ -592,7 +654,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "PARALLELOGRAM_DUAL_ANGLE_BISECTORS_OVERLAP",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -613,8 +675,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+    "templateKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
     "crossConceptKeys": [
       "CC_ISOSCELES_TRIANGLE"
     ],
@@ -622,6 +684,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "평행사변형",
+    "rpmPrimaryL3": "평행사변형의 성질",
+    "rpmPrimaryL4": "변·각의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-190",
     "sourceQid": 13,
     "variationType": "NUMERIC"
   },
@@ -640,7 +707,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SPECIAL_QUADRILATERAL_INCLUSION_CONDITIONS",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -660,9 +727,9 @@ window.questionBank = [
     "solution": "여러 가지 사각형의 정의와 대각선의 성질을 비교한다.\n① 평행사변형의 두 대각선이 서로 수직이면 직사각형이 아니라 마름모가 된다. (거짓)\n② 평행사변형의 한 내각의 크기가 $90^\\circ$이면 마름모가 아니라 직사각형이 된다. (거짓)\n③ 마름모는 네 변의 길이가 같고 대각선이 수직이등분한다. 여기에 '두 대각선의 길이가 같다'는 직사각형의 성질이 추가되면 네 각도 모두 같아져 정사각형이 된다. (참)\n④ 사다리꼴에서 평행하지 않은 한 쌍의 대변의 길이가 같으면 등변사다리꼴이 될 수 있으므로 평행사변형이 되지 않는다. (거짓)\n⑤ 직사각형은 이미 두 대각선이 서로 다른 것을 이등분하므로, 이 조건만으로 정사각형이 되지 않는다. (거짓)\n\n\n따라서 옳은 것은 ③이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 1,
+    "problemTypeKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+    "templateKey": "TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE",
     "crossConceptKeys": [
       "CC_RHOMBUS",
       "CC_SQUARE"
@@ -671,6 +738,11 @@ window.questionBank = [
       "COND_REAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "여러 가지 사각형",
+    "rpmPrimaryL3": "사각형의 포함 관계",
+    "rpmPrimaryL4": "조건으로 사각형 판정",
+    "rpmPrimaryRecordId": "M2-RPM-200",
     "sourceQid": 14,
     "variationType": "STRUCTURAL"
   },
@@ -689,7 +761,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "PARALLELOGRAM_DETERMINATION_COUNTEREXAMPLE",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -709,9 +781,9 @@ window.questionBank = [
     "solution": "평행사변형이 되기 위한 5가지 조건은 다음과 같다.\n1. 두 쌍의 대변이 각각 평행하다. (①)\n2. 두 쌍의 대각의 크기가 각각 같다. (②)\n3. 두 쌍의 대변의 길이가 각각 같다. (③)\n4. 두 대각선이 서로 다른 것을 이등분한다. (④)\n5. 한 쌍의 대변이 평행하고 그 길이가 같다.\n\n\n⑤의 경우 한 쌍의 대변($\\overline{AD}, \\overline{BC}$)이 평행하지만, 길이가 같은 변은 다른 한 쌍($\\overline{AB}, \\overline{DC}$)이다.\n이 조건은 평행하지 않은 두 변의 길이가 같은 등변사다리꼴도 만족하므로 항상 평행사변형이 되는 것은 아니다.\n\n\n따라서 정답은 ⑤이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 1,
+    "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+    "templateKey": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
     "crossConceptKeys": [
       "CC_TRAPEZOID"
     ],
@@ -719,6 +791,11 @@ window.questionBank = [
       "COND_REAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "평행사변형",
+    "rpmPrimaryL3": "평행사변형의 판정",
+    "rpmPrimaryL4": "변·각 조건",
+    "rpmPrimaryRecordId": "M2-RPM-192",
     "sourceQid": 15,
     "variationType": "STRUCTURAL"
   },
@@ -737,7 +814,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "QUADRILATERAL_PROPERTIES_TRUTH_VERIFICATION",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -757,9 +834,9 @@ window.questionBank = [
     "solution": "보기의 각 명제를 판별한다.\nㄱ. 평행사변형의 두 대각선이 서로 수직이면 네 변의 길이가 같아지므로 마름모가 된다. (참)\nㄴ. 평행사변형의 두 대각선의 길이가 같으면 네 내각의 크기가 모두 $90^\\circ$가 되므로 직사각형이다. (참)\nㄷ. 직사각형의 이웃하는 두 변의 길이가 같으면 네 변의 길이가 모두 같아지므로 정사각형이다. (참)\nㄹ. 두 대각선이 서로 수직이더라도 서로를 이등분하지 않으면 마름모가 아니다 (예: 연꼴 또는 대각선이 수직으로 교차하는 일반 사각형). 따라서 거짓이다.\n\n\n따라서 옳은 것은 ㄱ, ㄴ, ㄷ이다.\n정답은 ②이다.",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 1,
+    "problemTypeKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+    "templateKey": "TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE",
     "crossConceptKeys": [
       "CC_RHOMBUS",
       "CC_RECTANGLE",
@@ -769,6 +846,11 @@ window.questionBank = [
       "COND_REAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "여러 가지 사각형",
+    "rpmPrimaryL3": "사각형의 포함 관계",
+    "rpmPrimaryL4": "성질 비교",
+    "rpmPrimaryRecordId": "M2-RPM-201",
     "sourceQid": 16,
     "variationType": "STRUCTURAL"
   },
@@ -787,7 +869,7 @@ window.questionBank = [
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "INCENTER_ANGLE_FORMULA_FROM_ANGLE_RATIO",
+    "conceptClusterKey": "TRIANGLE_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -808,8 +890,8 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "templateKey": "TPL_TRIANGLE_INCENTER",
     "crossConceptKeys": [
       "CC_RATIO"
     ],
@@ -817,6 +899,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "삼각형의 성질",
+    "rpmPrimaryL2": "삼각형의 외심과 내심",
+    "rpmPrimaryL3": "외접원·내접원 활용",
+    "rpmPrimaryL4": "반지름·각 계산",
+    "rpmPrimaryRecordId": "M2-RPM-188",
     "sourceQid": 17,
     "variationType": "NUMERIC"
   },
@@ -835,7 +922,7 @@ window.questionBank = [
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "CIRCUMCENTER_CENTRAL_ANGLE_RELATION",
+    "conceptClusterKey": "TRIANGLE_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -855,9 +942,9 @@ window.questionBank = [
     "solution": "삼각형의 외심 $O$에서 두 꼭짓점 $B, C$를 잇는 중심각 $\\angle BOC$의 크기는 꼭지각 $\\angle A$의 크기의 $2$배이다.\n$$\n\\angle BOC = 2\\angle A\n$$\n주어진 조건에서 $\\angle A = 70^\\circ$이므로\n$$\n\\angle BOC = 2 \\times 70^\\circ = 140^\\circ\n$$\n따라서 정답은 ④이다.",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 1,
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
     "crossConceptKeys": [
       "CC_CIRCUMCENTER"
     ],
@@ -865,6 +952,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "삼각형의 성질",
+    "rpmPrimaryL2": "삼각형의 외심과 내심",
+    "rpmPrimaryL3": "외심",
+    "rpmPrimaryL4": "외심의 위치·각",
+    "rpmPrimaryRecordId": "M2-RPM-185",
     "sourceQid": 18,
     "variationType": "NUMERIC"
   },
@@ -879,15 +971,16 @@ window.questionBank = [
     "standardUnitKey": "M2-06",
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
-    "subUnitKey": "M2-06-SIMILARITY_BASIC",
-    "subUnit": "",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SIMILAR_SOLID_VOLUME_RATIO_WATER_TIME",
+    "conceptClusterKey": "SIMILAR_FIGURE",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "도형의 닮음"
     ],
     "wide": false,
     "content": "원뿔 모양의 그릇에 일정한 속력으로 물을 채우고 있다. 물의 높이가 전체 높이의 $\\dfrac{1}{2}$이 될 때까지 물을 채우는 데 $5$분이 걸렸다면, 이 그릇에 물을 가득 채울 때까지 앞으로 몇 분이 더 걸리겠는가? (단, 그릇의 두께는 생각하지 않는다.) [5점]",
@@ -902,9 +995,9 @@ window.questionBank = [
     "solution": "1. 물이 채워진 작은 원뿔과 전체 원뿔은 서로 닮은 입체도형이다.\n물의 높이가 전체 높이의 $\\dfrac{1}{2}$이므로 닮음비는\n$$\n1 : 2\n$$\n2. 닮은 입체도형에서 부피의 비는 닮음비의 세제곱의 비와 같다.\n$$\n1^3 : 2^3 = 1 : 8\n$$\n3. 현재 채워진 물의 부피는 전체 부피의 $\\dfrac{1}{8}$이므로, 앞으로 더 채워야 하는 물의 부피는 전체의\n$$\n8 - 1 = 7\\text{배}\n$$\n이다.\n4. 물을 채우는 속력이 일정하므로 걸리는 시간은 채우는 부피에 정비례한다.\n따라서 앞으로 더 걸리는 시간은\n$$\n5 \\times 7 = 35\\text{ (분)}\n$$\n정답은 ③이다.",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_SIMILAR_FIGURES",
+    "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
     "crossConceptKeys": [
       "CC_VOLUME_RATIO"
     ],
@@ -912,6 +1005,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "도형의 닮음과 피타고라스 정리",
+    "rpmPrimaryL2": "도형의 닮음",
+    "rpmPrimaryL3": "닮음의 활용",
+    "rpmPrimaryL4": "넓이·부피 비",
+    "rpmPrimaryRecordId": "M2-RPM-208",
     "sourceQid": 19,
     "variationType": "NUMERIC"
   },
@@ -930,7 +1028,7 @@ window.questionBank = [
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SQUARE_RIGHT_TRIANGLES_RHA_CONGRUENCE",
+    "conceptClusterKey": "TRIANGLE_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -951,8 +1049,8 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 3,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+    "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
     "crossConceptKeys": [
       "CC_RHA_CONGRUENCE",
       "CC_SQUARE"
@@ -961,6 +1059,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "삼각형의 성질",
+    "rpmPrimaryL2": "삼각형의 성질",
+    "rpmPrimaryL3": "직각삼각형의 합동",
+    "rpmPrimaryL4": "RHA",
+    "rpmPrimaryRecordId": "M2-RPM-181",
     "sourceQid": 20,
     "variationType": "NUMERIC"
   },
@@ -979,7 +1082,7 @@ window.questionBank = [
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "RHS_CONGRUENCE_ISOSCELES_ANGLE_PROOF",
+    "conceptClusterKey": "TRIANGLE_PROPERTIES",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -993,9 +1096,9 @@ window.questionBank = [
     "solution": "[풀이 과정]\n1단계: 직각삼각형의 합동 증명\n점 $M$이 선분 $BC$의 중점이므로\n$$\n\\overline{BM} = \\overline{CM}\n$$\n$\\overline{MD} \\perp \\overline{AB}$, $\\overline{ME} \\perp \\overline{AC}$이므로\n$$\n\\angle BDM = \\angle CEM = 90^\\circ\n$$\n조건에서 $\\overline{DM} = \\overline{EM}$이다.\n직각삼각형 $BDM$과 직각삼각형 $CEM$에서\n- 빗변의 길이가 같다: $\\overline{BM} = \\overline{CM}$\n- 한 직각변의 길이가 같다: $\\overline{DM} = \\overline{EM}$\n따라서 두 직각삼각형은 합동이다 (RHS 합동).\n$$\n\\triangle BDM \\cong \\triangle CEM \\quad (\\text{RHS 합동})\n$$\n\n\n2단계: 밑각 $\\angle B$의 크기 구하기\n합동인 두 삼각형에서 대응각의 크기는 서로 같으므로\n$$\n\\angle B = \\angle C\n$$\n따라서 $\\triangle ABC$는 $\\overline{AB} = \\overline{AC}$인 이등변삼각형이다.\n$\\angle A = 72^\\circ$이므로\n$$\n\\angle B = \\frac{180^\\circ - 72^\\circ}{2} = \\frac{108^\\circ}{2} = 54^\\circ\n$$\n\n\n3단계: $\\angle BMD$의 크기 구하기\n직각삼각형 $BDM$에서 세 내각의 합은 $180^\\circ$이므로\n$$\n\\angle BMD = 180^\\circ - \\angle BDM - \\angle B = 180^\\circ - 90^\\circ - 54^\\circ = 36^\\circ\n$$\n따라서 구하는 각의 크기는 $36^\\circ$이다.\n\n\n답: 36°",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+    "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
     "crossConceptKeys": [
       "CC_RHS_CONGRUENCE",
       "CC_ISOSCELES_TRIANGLE"
@@ -1004,6 +1107,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "삼각형의 성질",
+    "rpmPrimaryL2": "삼각형의 성질",
+    "rpmPrimaryL3": "직각삼각형의 합동",
+    "rpmPrimaryL4": "RHS",
+    "rpmPrimaryRecordId": "M2-RPM-180",
     "sourceQid": 21,
     "variationType": "NUMERIC"
   },
@@ -1022,7 +1130,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "PARALLELOGRAM_TO_RECTANGLE_DIAGONAL_PROOF",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1036,9 +1144,9 @@ window.questionBank = [
     "solution": "[풀이 과정]\n(1) 사각형 $AECF$가 직사각형인 이유:\n1. 마름모 $ABCD$에서 대변이 평행하므로 $\\overline{AB} \\parallel \\overline{CD}$이며, 따라서 $\\overline{AE} \\parallel \\overline{CF}$이다.\n2. 점 $O$는 선분 $AC$의 중점이므로 $\\overline{AO} = \\overline{CO}$이다.\n3. $\\overline{AE} \\parallel \\overline{CF}$에 의해 엇각의 크기가 같으므로 $\\angle OAE = \\angle OCF$이다.\n또한 맞꼭지각의 크기가 같으므로 $\\angle AOE = \\angle COF$이다.\n따라서 한 변의 길이와 그 양 끝 각의 크기가 각각 같으므로\n$$\n\\triangle AOE \\cong \\triangle COF \\quad (\\text{ASA 합동})\n$$\n합동이므로 대응변 $\\overline{OE} = \\overline{OF}$이다.\n4. 사각형 $AECF$에서 두 대각선 $AC, EF$가 점 $O$에서 서로 다른 것을 이등분하므로 사각형 $AECF$는 평행사변형이다.\n5. 문제의 조건에서 두 대각선의 길이가 $\\overline{AC} = \\overline{EF}$로 같으므로, 사각형 $AECF$는 두 대각선의 길이가 같은 평행사변형, 즉 직사각형이다.\n\n\n(2) $\\angle CEF$의 크기 구하기:\n사각형 $AECF$가 직사각형이므로\n$$\n\\angle AEC = 90^\\circ\n$$\n직사각형의 두 대각선은 길이가 같고 서로를 이등분하므로\n$$\n\\overline{OA} = \\overline{OE}\n$$\n따라서 $\\triangle AOE$는 이등변삼각형이므로\n$$\n\\angle AEF = \\angle EAO = 50^\\circ\n$$\n그러므로 구하는 각의 크기는\n$$\n\\angle CEF = \\angle AEC - \\angle AEF = 90^\\circ - 50^\\circ = 40^\\circ\n$$\n이다.\n\n\n답: (1) 풀이 참조, (2) 40°",
     "score": 7,
     "points": 7,
-    "difficultyBucket": 4,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 3,
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_SPECIAL_QUADRILATERALS",
     "crossConceptKeys": [
       "CC_PARALLELOGRAM",
       "CC_RECTANGLE"
@@ -1047,6 +1155,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "여러 가지 사각형",
+    "rpmPrimaryL3": "직사각형·마름모·정사각형",
+    "rpmPrimaryL4": "각 사각형의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-196",
     "sourceQid": 22,
     "variationType": "NUMERIC"
   },
@@ -1065,7 +1178,7 @@ window.questionBank = [
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "NESTED_CIRCUMCENTER_INCENTER_ANGLES",
+    "conceptClusterKey": "TRIANGLE_PROPERTIES",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1080,8 +1193,8 @@ window.questionBank = [
     "score": 8,
     "points": 8,
     "difficultyBucket": 4,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_TRIANGLE_CENTERS",
+    "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
     "crossConceptKeys": [
       "CC_CIRCUMCENTER",
       "CC_INCENTER"
@@ -1090,6 +1203,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "삼각형의 성질",
+    "rpmPrimaryL2": "삼각형의 외심과 내심",
+    "rpmPrimaryL3": "외접원·내접원 활용",
+    "rpmPrimaryL4": "외심·내심을 이용한 복합도형",
+    "rpmPrimaryRecordId": "M2-RPM-189",
     "sourceQid": 23,
     "variationType": "NUMERIC"
   }

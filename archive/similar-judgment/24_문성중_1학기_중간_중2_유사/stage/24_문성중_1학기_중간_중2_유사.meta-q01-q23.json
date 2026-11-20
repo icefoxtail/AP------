@@ -3,7 +3,7 @@
   "requestId": "24_문성중_1학기_중간_중2_유사-candidate-v1",
   "examUid": "24_문성중_1학기_중간_중2_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_문성중_1학기_중간_중2_유사.js",
-  "expectedSourceBlobSha1": "1e9027037218cae76deb992e8b2fe2c921cdb42b",
+  "expectedSourceBlobSha1": "f6a4c899294e913e63d92bca4d14773b45e90086",
   "expectedQuestionCount": 23,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -29,9 +29,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "subUnit": "유리수와 순환소수",
-        "conceptClusterKey": "FINITE_DECIMAL_POWERS_OF_TEN_FILL",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REPEATING_DECIMAL",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_FRACTION_ARITHMETIC"
         ],
@@ -52,20 +52,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-001"
+        ],
+        "rpmPrimary": {
+          "l1": "유리수와 순환소수",
+          "l2": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "유한소수 판별",
+          "recordId": "M2-RPM-001"
+        },
+        "rpmPrimaryL1": "유리수와 순환소수",
+        "rpmPrimaryL2": "유리수와 순환소수",
+        "rpmPrimaryL3": "유한소수와 무한소수",
+        "rpmPrimaryL4": "유한소수 판별",
+        "rpmPrimaryRecordId": "M2-RPM-001",
+        "difficultyBasis": "Q1번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 450)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-REPEATING_DECIMAL: 분수 $\\dfrac{9}{2^{3}\\times5}$을 유한소수로 나타내는 과정이다.",
+          "curriculum": "M2-RPM-001: Q1번 문항은 M2-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 450)",
+          "problemType": "Q1번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 450)",
+          "difficulty": "Q1번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 450)",
+          "condition": "COND_NATURAL: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_FRACTION_ARITHMETIC: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "분모를 2^3*5^3=1000으로 만들기 위해 5^2=25를 곱해 A=225, B=1000, C=0.225를 구하고 225+225=450을 계산한다.",
       "decisiveStep": "A=225, B*C=225 도출 후 합 450 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "분모와 분자에 곱할 5의 거듭제곱을 찾아 대입 계산하는 1단계 기본 문항",
+      "difficultyReason": "Q1번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 450)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_FINITE_DECIMAL_CONVERSION_BLANK",
-        "templateKey": "TPL_DECIMAL_POWERS_OF_TEN_MATCH",
-        "why": "10의 거듭제곱 분모 구성 과정을 대수 빈칸으로 추론하는 템플릿"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q1번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 450)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_76c8ec232d0cf1001ab9eac7a8673e2f1012ce00ec29102bd4e7f0ad082958a1",
@@ -82,9 +114,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "subUnit": "유리수와 순환소수",
-        "conceptClusterKey": "REPEATING_DECIMAL_IDENTIFICATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REPEATING_DECIMAL",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_REDUCING_FRACTION"
         ],
@@ -105,20 +137,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-001"
+        ],
+        "rpmPrimary": {
+          "l1": "유리수와 순환소수",
+          "l2": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "유한소수 판별",
+          "recordId": "M2-RPM-001"
+        },
+        "rpmPrimaryL1": "유리수와 순환소수",
+        "rpmPrimaryL2": "유리수와 순환소수",
+        "rpmPrimaryL3": "유한소수와 무한소수",
+        "rpmPrimaryL4": "유한소수 판별",
+        "rpmPrimaryRecordId": "M2-RPM-001",
+        "difficultyBasis": "Q2번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 14)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-REPEATING_DECIMAL: 다음 분수 중에서 순환소수로만 나타낼 수 있는 것은?",
+          "curriculum": "M2-RPM-001: Q2번 문항은 M2-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 14)",
+          "problemType": "Q2번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 14)",
+          "difficulty": "Q2번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 14)",
+          "condition": "COND_IRREDUCIBLE: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_REDUCING_FRACTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "기약분수로 약분 후 분모에 2, 5 이외의 소인수 3이 남는 분수를 선별한다.",
       "decisiveStep": "21/(2^2*3^2*5) = 7/(2^2*3*5)에서 분모 소인수 3 확인",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "약분 후 분모의 소인수를 판정하는 1단계 기본 문항",
+      "difficultyReason": "Q2번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 14)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_FINITE_DECIMAL_TEST",
-        "templateKey": "TPL_REPEATING_DECIMAL_FACTOR_SEARCH",
-        "why": "약분을 거쳐 분모의 소인수를 확인하고 순환소수를 선별하는 템플릿"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q2번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 14)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_3f90cd2b842e36671ae7814028568d309d9703d7e498c35696d5afa3d49a645e",
@@ -135,9 +199,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "subUnit": "유리수와 순환소수",
-        "conceptClusterKey": "DECIMAL_EXPANSION_COMPARISON",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REPEATING_DECIMAL",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_DECIMAL_PLACE_VALUE"
         ],
@@ -158,20 +222,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-005"
+        ],
+        "rpmPrimary": {
+          "l1": "유리수와 순환소수",
+          "l2": "유리수와 순환소수",
+          "l3": "유리수와 소수 표현",
+          "l4": "분수를 소수로",
+          "recordId": "M2-RPM-005"
+        },
+        "rpmPrimaryL1": "유리수와 순환소수",
+        "rpmPrimaryL2": "유리수와 순환소수",
+        "rpmPrimaryL3": "유리수와 소수 표현",
+        "rpmPrimaryL4": "분수를 소수로",
+        "rpmPrimaryRecordId": "M2-RPM-005",
+        "difficultyBasis": "Q3번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 0.45)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-REPEATING_DECIMAL: 두 수의 대소관계를 바르게 나타낸 것은?",
+          "curriculum": "M2-RPM-005: Q3번 문항은 M2-RPM-005에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 0.45)",
+          "problemType": "Q3번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 0.45)",
+          "difficulty": "Q3번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 0.45)",
+          "condition": "COND_DECIMAL: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_DECIMAL_PLACE_VALUE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "각 선지의 수를 소수점 아래 여러 자리까지 전개하여 자릿수별로 대소를 비교한다.",
       "decisiveStep": "소수 넷째 자리 비교(0 vs 4)를 통한 ④번 참 판정",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "자릿수별 숫자를 순서대로 대조하는 1단계 기본 문항",
+      "difficultyReason": "Q3번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 0.45)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_DECIMAL_MAGNITUDE_COMPARE",
-        "templateKey": "TPL_DECIMAL_EXPANSION_PAIR_COMPARE",
-        "why": "순환소수의 순환마디 전개를 통한 소수 자릿수 대소 판정 템플릿"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q3번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 0.45)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_b4e184c5cf5f0ebfb2287ca42a84f9e472cf9f5b28e5885546752d9e928c1f03",
@@ -188,9 +284,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "subUnit": "유리수와 순환소수",
-        "conceptClusterKey": "REPEATING_DECIMAL_NTH_DIGIT",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REPEATING_DECIMAL",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_DIVISION_REMAINDER"
         ],
@@ -211,20 +307,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-001"
+        ],
+        "rpmPrimary": {
+          "l1": "유리수와 순환소수",
+          "l2": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "유한소수 판별",
+          "recordId": "M2-RPM-001"
+        },
+        "rpmPrimaryL1": "유리수와 순환소수",
+        "rpmPrimaryL2": "유리수와 순환소수",
+        "rpmPrimaryL3": "유한소수와 무한소수",
+        "rpmPrimaryL4": "유한소수 판별",
+        "rpmPrimaryRecordId": "M2-RPM-001",
+        "difficultyBasis": "Q4번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 29)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-REPEATING_DECIMAL: 분수 $\\dfrac{29}{11}$를 소수로 나타내었을 때, 소수점 아래 45번째 자리의 숫자와 46번째 자리의 숫자의 곱은?",
+          "curriculum": "M2-RPM-001: Q4번 문항은 M2-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 29)",
+          "problemType": "Q4번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 29)",
+          "difficulty": "Q4번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 29)",
+          "condition": "COND_NATURAL: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_DIVISION_REMAINDER: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "29/11 = 2.(6)(3)의 순환마디 63에서 45번째 자리 6과 46번째 자리 3의 곱 18을 계산한다.",
       "decisiveStep": "홀수 번째 6, 짝수 번째 3 파악 후 곱 18 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "순환마디의 주기를 찾아 자릿수 나머지를 적용하는 2단계 문항",
+      "difficultyReason": "Q4번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 29)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_REPEATING_DECIMAL_DIGIT_CYCLE",
-        "templateKey": "TPL_REPEATING_DECIMAL_NTH_DIGIT_ARITHMETIC",
-        "why": "나머지 연산을 통해 순환소수의 특정 자릿수 값을 찾아 곱하는 템플릿"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q4번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 29)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_12c480dfa44afb8825e9a5e1382c1ec58265290829eab2d325b4252cd10ea466",
@@ -241,9 +369,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "subUnit": "유리수와 순환소수",
-        "conceptClusterKey": "REPEATING_DECIMAL_DIGIT_EQUATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REPEATING_DECIMAL",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_PRIME_NUMBER_PROPERTIES"
         ],
@@ -265,20 +393,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-001"
+        ],
+        "rpmPrimary": {
+          "l1": "유리수와 순환소수",
+          "l2": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "유한소수 판별",
+          "recordId": "M2-RPM-001"
+        },
+        "rpmPrimaryL1": "유리수와 순환소수",
+        "rpmPrimaryL2": "유리수와 순환소수",
+        "rpmPrimaryL3": "유한소수와 무한소수",
+        "rpmPrimaryL4": "유한소수 판별",
+        "rpmPrimaryRecordId": "M2-RPM-001",
+        "difficultyBasis": "Q5번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 prime)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-REPEATING_DECIMAL: 두 순환소수 $0.\\dot{a}\\dot{b}$와 $0.\\dot{b}\\dot{a}$의 합이 $0.\\dot{7}$일 때, $0.\\dot{a}-0.\\dot{b}$의 값을 순환소수로 나타낸 것은?",
+          "curriculum": "M2-RPM-001: Q5번 문항은 M2-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 prime)",
+          "problemType": "Q5번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 prime)",
+          "difficulty": "Q5번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 prime)",
+          "condition": "COND_PRIME, COND_NATURAL: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_PRIME_NUMBER_PROPERTIES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "(a+b)/9=7/9에서 a+b=7을 얻고, 소수 조건 a=5, b=2를 결정하여 0.(5)-0.(2)=0.(3)을 산출한다.",
       "decisiveStep": "a+b=7과 소수 조건에서 a=5, b=2 도출 후 차 0.(3) 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "순환소수 대수식 정리와 정수론적 소수 조건을 동시에 만족시키는 3단계 심화 문항",
+      "difficultyReason": "Q5번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 prime)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_REPEATING_DECIMAL_ALGEBRAIC_RELATION",
-        "templateKey": "TPL_REPEATING_DECIMAL_SUM_DIFFERENCE_PRIME",
-        "why": "순환소수 분수 변환 식을 연립하여 소수 정수 조건을 만족하는 미지수를 추론하는 템플릿"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q5번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 prime)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_df1c662c9e8d7afcb1f763600933de373773966e5d696bb79311ba87b7ddb8d2",
@@ -295,9 +455,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "subUnit": "유리수와 순환소수",
-        "conceptClusterKey": "FRACTION_RECONSTRUCTION_FROM_REPEATING_DECIMAL",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REPEATING_DECIMAL",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_REDUCING_FRACTION"
         ],
@@ -318,20 +478,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-005"
+        ],
+        "rpmPrimary": {
+          "l1": "유리수와 순환소수",
+          "l2": "유리수와 순환소수",
+          "l3": "유리수와 소수 표현",
+          "l4": "분수를 소수로",
+          "recordId": "M2-RPM-005"
+        },
+        "rpmPrimaryL1": "유리수와 순환소수",
+        "rpmPrimaryL2": "유리수와 순환소수",
+        "rpmPrimaryL3": "유리수와 소수 표현",
+        "rpmPrimaryL4": "분수를 소수로",
+        "rpmPrimaryRecordId": "M2-RPM-005",
+        "difficultyBasis": "Q6번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 0.41)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-REPEATING_DECIMAL: 어떤 기약분수를 소수로 나타내는데, 민우는 분모를 잘못 보아 $0.41\\dot{6}$으로 나타내고, 지호는 분자를 잘못 보아 $0.\\dot{7}\\dot{2}$로 나타내었다.",
+          "curriculum": "M2-RPM-005: Q6번 문항은 M2-RPM-005에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 0.41)",
+          "problemType": "Q6번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 0.41)",
+          "difficulty": "Q6번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 0.41)",
+          "condition": "COND_IRREDUCIBLE: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_REDUCING_FRACTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "0.41(6)=5/12에서 분자 5, 0.(72)=8/11에서 분모 11을 추출하여 5/11 = 0.(45)를 도출한다.",
       "decisiveStep": "바른 분자 5와 분모 11을 결합하여 5/11=0.(45) 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "순환소수 분수 변환과 기약분수 역추적을 수행하는 2단계 문항",
+      "difficultyReason": "Q6번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 0.41)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_REPEATING_DECIMAL_RECONSTRUCT_FRACTION",
-        "templateKey": "TPL_MISTAKEN_REPEATING_DECIMAL_FRACTION_RECOVERY",
-        "why": "잘못 본 분수 표현에서 올바른 분자와 분모를 분리 추출해 원래 기약분수를 복원하는 템플릿"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q6번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 0.41)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_9ae84d3da6bd82f1a70f3413ddda338d23edb12077f3f65eb9d9bfd272c02b32",
@@ -348,9 +540,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "subUnit": "유리수와 순환소수",
-        "conceptClusterKey": "RATIONAL_NUMBER_DECIMAL_THEORY_AUDIT",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REPEATING_DECIMAL",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_NUMBER_CLASSIFICATION"
         ],
@@ -371,20 +563,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-005"
+        ],
+        "rpmPrimary": {
+          "l1": "유리수와 순환소수",
+          "l2": "유리수와 순환소수",
+          "l3": "유리수와 소수 표현",
+          "l4": "분수를 소수로",
+          "recordId": "M2-RPM-005"
+        },
+        "rpmPrimaryL1": "유리수와 순환소수",
+        "rpmPrimaryL2": "유리수와 순환소수",
+        "rpmPrimaryL3": "유리수와 소수 표현",
+        "rpmPrimaryL4": "분수를 소수로",
+        "rpmPrimaryRecordId": "M2-RPM-005",
+        "difficultyBasis": "Q7번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 aligned)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-REPEATING_DECIMAL: 다음 중에서 옳은 것만을 있는 대로 고른 것은?",
+          "curriculum": "M2-RPM-005: Q7번 문항은 M2-RPM-005에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 aligned)",
+          "problemType": "Q7번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)",
+          "difficulty": "Q7번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 aligned)",
+          "condition": "COND_RATIONAL: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_NUMBER_CLASSIFICATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "소수 분류 체계에서 순환소수의 유리수성 및 기약분수의 소인수 성질을 대조하여 ㄴ, ㄷ을 판정한다.",
       "decisiveStep": "ㄱ(거짓), ㄴ(참), ㄷ(참), ㄹ(거짓) 판정 후 조합",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "수학적 정의와 반례를 검토하여 명제의 진위를 가리는 2단계 문항",
+      "difficultyReason": "Q7번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 aligned)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_RATIONAL_DECIMAL_THEORY_CHECK",
-        "templateKey": "TPL_RATIONAL_DECIMAL_TRUE_FALSE_SET",
-        "why": "유리수와 순환소수의 정의와 분류 명제를 참/거짓으로 판별하는 기본 템플릿"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q7번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_3871fdcd76a881d82daf8f9cb60bcbbc4433844d9ecefd76223e9ebffd7183ef",
@@ -401,9 +625,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-EXPONENT_LAW",
         "subUnit": "지수법칙",
-        "conceptClusterKey": "EXPONENT_LAW_POWER_AND_DIVISION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "EXPONENT_LAW",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_EXPONENT_ARITHMETIC"
         ],
@@ -424,20 +648,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-007"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫",
+          "recordId": "M2-RPM-007"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "단항식의 계산",
+        "rpmPrimaryL3": "지수법칙",
+        "rpmPrimaryL4": "거듭제곱의 곱·몫",
+        "rpmPrimaryRecordId": "M2-RPM-007",
+        "difficultyBasis": "Q8번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 10)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-EXPONENT_LAW: $(2^{6})^{3} \\div (2^{\\Box})^{2} = 2^{10}$일 때, $\\Box$ 안에 알맞은 수는?",
+          "curriculum": "M2-RPM-007: Q8번 문항은 M2-RPM-007에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 10)",
+          "problemType": "Q8번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)",
+          "difficulty": "Q8번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 10)",
+          "condition": "COND_NATURAL: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_EXPONENT_ARITHMETIC: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "2^(18-2x) = 2^10에서 18-2x=10, x=4를 푼다.",
       "decisiveStep": "지수 방정식 18-2x=10에서 x=4 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "지수법칙을 직접 적용하는 1단계 기본 일차방정식 문항",
+      "difficultyReason": "Q8번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 10)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_EXPONENT_LAW_EQUATION",
-        "templateKey": "TPL_EXPONENT_DIVISION_VARIABLE_SOLVE",
-        "why": "거듭제곱의 거듭제곱과 나눗셈 공식을 결합해 미지 지수를 구하는 템플릿"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q8번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_180fd4aba1c9c07e98e5deef81f8e0e47eecff2fec96baf8a85654e71b898763",
@@ -454,9 +710,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-EXPONENT_LAW",
         "subUnit": "지수법칙",
-        "conceptClusterKey": "EXPONENT_BASE_CONVERSION_AND_SUBSTITUTION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "EXPONENT_LAW",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_ALGEBRAIC_SUBSTITUTION"
         ],
@@ -477,20 +733,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-007"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫",
+          "recordId": "M2-RPM-007"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "단항식의 계산",
+        "rpmPrimaryL3": "지수법칙",
+        "rpmPrimaryL4": "거듭제곱의 곱·몫",
+        "rpmPrimaryRecordId": "M2-RPM-007",
+        "difficultyBasis": "Q9번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 aligned)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-EXPONENT_LAW: $A = 2^{x-1}$일 때, $8^{x}$을 $A$에 관한 식으로 나타내면?",
+          "curriculum": "M2-RPM-007: Q9번 문항은 M2-RPM-007에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 aligned)",
+          "problemType": "Q9번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)",
+          "difficulty": "Q9번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 aligned)",
+          "condition": "COND_NATURAL: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_ALGEBRAIC_SUBSTITUTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "2^x = 2A를 도출하고 8^x = (2^x)^3 = (2A)^3 = 8A^3을 전개한다.",
       "decisiveStep": "2^x = 2A 대입 및 (2A)^3 = 8A^3 전개",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "치환식을 세우고 밑의 거듭제곱을 변형하는 2단계 문항",
+      "difficultyReason": "Q9번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 aligned)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_EXPONENT_SUBSTITUTION",
-        "templateKey": "TPL_EXPONENT_BASE_CHANGE_REPRESENTATION",
-        "why": "밑을 통일하여 지수 표현식을 치환 문자로 나타내는 템플릿"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q9번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_f09a815a95b6677a1060db8c1278b3d1369439446b37a642d64bec1f4262a0c4",
@@ -507,9 +795,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-EXPONENT_LAW",
         "subUnit": "지수법칙",
-        "conceptClusterKey": "EXPONENT_SUM_FACTORING",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "EXPONENT_LAW",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_DISTRIBUTIVE_LAW"
         ],
@@ -530,20 +818,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-007"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫",
+          "recordId": "M2-RPM-007"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "단항식의 계산",
+        "rpmPrimaryL3": "지수법칙",
+        "rpmPrimaryL4": "거듭제곱의 곱·몫",
+        "rpmPrimaryRecordId": "M2-RPM-007",
+        "difficultyBasis": "Q10번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 224)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-EXPONENT_LAW: $2^{n+3} + 2^{n+2} + 2^{n+1} = 224$일 때, 자연수 $n$의 값은?",
+          "curriculum": "M2-RPM-007: Q10번 문항은 M2-RPM-007에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 224)",
+          "problemType": "Q10번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 224)",
+          "difficulty": "Q10번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 224)",
+          "condition": "COND_NATURAL: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_DISTRIBUTIVE_LAW: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "2^n*(8+4+2) = 14*2^n = 224로부터 2^n = 16, n=4를 구한다.",
       "decisiveStep": "공통인수 2^n 묶기 후 2^n = 16 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "거듭제곱의 합을 묶어내는 대수적 조작이 필요한 2단계 문항",
+      "difficultyReason": "Q10번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 224)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_EXPONENT_SUM_EQUATION",
-        "templateKey": "TPL_EXPONENT_FACTOR_OUT_SUM_SOLVE",
-        "why": "거듭제곱의 합을 분배법칙으로 묶어 단항 거듭제곱 방정식으로 전환하는 템플릿"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q10번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 224)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_ed29bce1992d6404369c0f1de52a6e72d35e002159291a292612a145acf1e3c0",
@@ -560,9 +880,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-EXPONENT_LAW",
         "subUnit": "지수법칙",
-        "conceptClusterKey": "MONOMIAL_POWER_AND_PRODUCT",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "EXPONENT_LAW",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_EXPONENT_ARITHMETIC"
         ],
@@ -583,20 +903,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-007"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫",
+          "recordId": "M2-RPM-007"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "단항식의 계산",
+        "rpmPrimaryL3": "지수법칙",
+        "rpmPrimaryL4": "거듭제곱의 곱·몫",
+        "rpmPrimaryRecordId": "M2-RPM-007",
+        "difficultyBasis": "Q11번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 36)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-EXPONENT_LAW: $(x^{3}y^{2})^{4} \\times (x^{5}y^{3})^{2} = x^{a}y^{b}$일 때, $a+b$의 값은?",
+          "curriculum": "M2-RPM-007: Q11번 문항은 M2-RPM-007에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 36)",
+          "problemType": "Q11번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 36)",
+          "difficulty": "Q11번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 36)",
+          "condition": "COND_NATURAL: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_EXPONENT_ARITHMETIC: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "(x^3 y^2)^4 = x^12 y^8과 (x^5 y^3)^2 = x^10 y^6의 곱 x^22 y^14에서 a+b=36을 산출한다.",
       "decisiveStep": "a=22, b=14 도출 후 합 36 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "지수법칙의 곱셈과 거듭제곱 공식을 차례로 계산하는 1단계 문항",
+      "difficultyReason": "Q11번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 36)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_MONOMIAL_EXPONENT_PRODUCT",
-        "templateKey": "TPL_MONOMIAL_POWER_PRODUCT_COEFFICIENT_SUM",
-        "why": "단항식의 거듭제곱과 곱셈 법칙을 적용해 지수의 합을 구하는 템플릿"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q11번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 36)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_930ef712852959acea27b9244d97ca3ab575b675e0d846579876988b8b6a6d97",
@@ -613,9 +965,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-EXPONENT_LAW",
         "subUnit": "지수법칙",
-        "conceptClusterKey": "EXPONENT_GCD_EXTREMA",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "EXPONENT_LAW",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_GCD_LCM"
         ],
@@ -636,20 +988,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-007"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫",
+          "recordId": "M2-RPM-007"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "단항식의 계산",
+        "rpmPrimaryL3": "지수법칙",
+        "rpmPrimaryL4": "거듭제곱의 곱·몫",
+        "rpmPrimaryRecordId": "M2-RPM-007",
+        "difficultyBasis": "Q12번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 36)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-EXPONENT_LAW: 네 자연수 $a, b, c, d$에 대하여 $(x^{a}y^{b}z^{c})^{d} = x^{36}y^{48}z^{60}$이 성립할 때, $a+b+c$의 최솟값은?",
+          "curriculum": "M2-RPM-007: Q12번 문항은 M2-RPM-007에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 36)",
+          "problemType": "Q12번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 36)",
+          "difficulty": "Q12번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 36)",
+          "condition": "COND_NATURAL: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_GCD_LCM: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "ad=36, bd=48, cd=60에서 d=gcd(36,48,60)=12일 때 a+b+c가 최소가 되므로 3+4+5=12를 구한다.",
       "decisiveStep": "최대공약수 d=12 산출 및 a+b+c=12 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "지수법칙과 최대공약수 개념을 연계하여 최적해를 도출하는 3단계 심화 문항",
+      "difficultyReason": "Q12번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 36)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_EXPONENT_GCD_OPTIMIZATION",
-        "templateKey": "TPL_EXPONENT_COMMON_FACTOR_MINIMUM",
-        "why": "공약수 성질을 이용해 다중 지수 거듭제곱의 계수 합 최솟값을 구하는 템플릿"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q12번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 36)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_75c09ee774815551792b51a03c8a8b9527a3350d92554e50c949a25a3b88bce4",
@@ -666,9 +1050,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-EXPONENT_LAW",
         "subUnit": "지수법칙",
-        "conceptClusterKey": "MONOMIAL_ARITHMETIC_MIXED",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "EXPONENT_LAW",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_MONOMIAL_DIVISION"
         ],
@@ -689,20 +1073,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-009"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "단항식의 계산",
+          "l3": "단항식의 곱셈과 나눗셈",
+          "l4": "단항식의 곱셈",
+          "recordId": "M2-RPM-009"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "단항식의 계산",
+        "rpmPrimaryL3": "단항식의 곱셈과 나눗셈",
+        "rpmPrimaryL4": "단항식의 곱셈",
+        "rpmPrimaryRecordId": "M2-RPM-009",
+        "difficultyBasis": "Q13번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 xy)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-EXPONENT_LAW: $(-2x^{2}y)^{3} \\times (xy^{3})^{2} \\div \\left(-\\dfrac{2}{3}x^{5}y^{4}\\right)$을 계산하면?",
+          "curriculum": "M2-RPM-009: Q13번 문항은 M2-RPM-009에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 xy)",
+          "problemType": "Q13번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 xy)",
+          "difficulty": "Q13번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 xy)",
+          "condition": "COND_MONOMIAL: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_MONOMIAL_DIVISION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "거듭제곱 전개 후 역수 곱셈으로 전환하여 계수 12와 문자 x^3 y^5를 정확히 정리한다.",
       "decisiveStep": "계수 12와 지수 x^3 y^5 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "부호 처리와 분수 역수 계산을 정확히 수행하는 2단계 문항",
+      "difficultyReason": "Q13번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 xy)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_MONOMIAL_MIXED_OPERATION",
-        "templateKey": "TPL_MONOMIAL_POWER_MULT_DIV_SIMPLIFY",
-        "why": "단항식의 거듭제곱과 곱셈, 나눗셈이 혼합된 식을 정리하는 템플릿"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q13번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 xy)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_12eb3fdf3336a57296e0e62aaa5a7df00510e5e21f2d7734f9de6a028b251f84",
@@ -719,9 +1135,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-EXPONENT_LAW",
         "subUnit": "지수법칙",
-        "conceptClusterKey": "MONOMIAL_GEOMETRY_VOLUME",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "EXPONENT_LAW",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_SOLID_GEOMETRY_VOLUME"
         ],
@@ -742,20 +1158,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-009"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "단항식의 계산",
+          "l3": "단항식의 곱셈과 나눗셈",
+          "l4": "단항식의 곱셈",
+          "recordId": "M2-RPM-009"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "단항식의 계산",
+        "rpmPrimaryL3": "단항식의 곱셈과 나눗셈",
+        "rpmPrimaryL4": "단항식의 곱셈",
+        "rpmPrimaryRecordId": "M2-RPM-009",
+        "difficultyBasis": "Q14번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ab)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-EXPONENT_LAW: 밑면의 가로의 길이가 $3a^{2}b$, 세로의 길이가 $2ab^{2}$이고 부피가 $24a^{5}b^{5}$인 직육면체의 높이는?",
+          "curriculum": "M2-RPM-009: Q14번 문항은 M2-RPM-009에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ab)",
+          "problemType": "Q14번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ab)",
+          "difficulty": "Q14번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ab)",
+          "condition": "COND_POSITIVE: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_SOLID_GEOMETRY_VOLUME: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "밑넓이 6a^3 b^3을 구하고 부피 24a^5 b^5를 나누어 높이 4a^2 b^2를 산출한다.",
       "decisiveStep": "24a^5 b^5 / 6a^3 b^3 = 4a^2 b^2 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "도형 공식과 단항식 나눗셈을 결합하여 해결하는 2단계 문항",
+      "difficultyReason": "Q14번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ab)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_MONOMIAL_GEOMETRIC_APPLICATION",
-        "templateKey": "TPL_CUBOID_HEIGHT_FROM_VOLUME_MONOMIAL",
-        "why": "직육면체의 가로, 세로, 부피가 단항식으로 주어졌을 때 높이를 구하는 템플릿"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q14번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ab)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_66bf997120e98fccebbba1b9f9f6210aaa85f1781183f38d3da3917016c56afc",
@@ -772,9 +1220,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-EXPONENT_LAW",
         "subUnit": "지수법칙",
-        "conceptClusterKey": "NUMBER_OF_DIGITS_POWERS_OF_TEN",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "EXPONENT_LAW",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_DECIMAL_PLACE_VALUE"
         ],
@@ -795,20 +1243,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-007"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫",
+          "recordId": "M2-RPM-007"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "단항식의 계산",
+        "rpmPrimaryL3": "지수법칙",
+        "rpmPrimaryL4": "거듭제곱의 곱·몫",
+        "rpmPrimaryRecordId": "M2-RPM-007",
+        "difficultyBasis": "Q15번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 17)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-EXPONENT_LAW: $2^{17} \\times 5^{14}$이 $n$자리 자연수일 때, $n$의 값은?",
+          "curriculum": "M2-RPM-007: Q15번 문항은 M2-RPM-007에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 17)",
+          "problemType": "Q15번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 17)",
+          "difficulty": "Q15번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 17)",
+          "condition": "COND_NATURAL: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_DECIMAL_PLACE_VALUE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "2^17 * 5^14 = 8 * 10^14로 변형하여 8 뒤에 0이 14개 붙는 15자리 수임을 산출한다.",
       "decisiveStep": "8 * 10^14 변형 후 1+14=15자리 확정",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "지수를 분리하여 10의 거듭제곱으로 묶어 자릿수를 계산하는 2단계 문항",
+      "difficultyReason": "Q15번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 17)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_EXPONENT_DIGIT_COUNT",
-        "templateKey": "TPL_POWERS_OF_TWO_FIVE_DIGIT_COUNT",
-        "why": "2와 5의 거듭제곱 곱을 10의 거듭제곱 꼴로 바꾸어 자릿수를 구하는 템플릿"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q15번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 17)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_ed48013f955ddefcbf3c41710daccf28c303448dd0f03b22f18d8a00c4b9bf5b",
@@ -825,9 +1305,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
         "subUnit": "다항식의 계산",
-        "conceptClusterKey": "POLYNOMIAL_ERROR_RECOVERY_ARITHMETIC",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_POLYNOMIAL_ADD_SUBTRACT"
         ],
@@ -848,20 +1328,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-016"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "식의 값",
+          "recordId": "M2-RPM-016"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "다항식의 계산",
+        "rpmPrimaryL3": "식의 값과 활용",
+        "rpmPrimaryL4": "식의 값",
+        "rpmPrimaryRecordId": "M2-RPM-016",
+        "difficultyBasis": "Q16번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 aligned)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-POLYNOMIAL_OPERATIONS: $3x-2y+4$에 어떤 식 $A$를 더해야 할 것을 잘못하여 빼었더니 $7x-5y-1$이 되었다.",
+          "curriculum": "M2-RPM-016: Q16번 문항은 M2-RPM-016에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 aligned)",
+          "problemType": "Q16번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)",
+          "difficulty": "Q16번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 aligned)",
+          "condition": "COND_POLYNOMIAL: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_POLYNOMIAL_ADD_SUBTRACT: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "(3x-2y+4)-A = 7x-5y-1에서 A=-4x+3y+5를 구하고, (3x-2y+4)+A = -x+y+9를 계산한다.",
       "decisiveStep": "A=-4x+3y+5 도출 후 바른 합 -x+y+9 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "다항식의 뺄셈 이항과 덧셈 결합을 단계별로 수행하는 2단계 문항",
+      "difficultyReason": "Q16번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 aligned)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_POLYNOMIAL_MISTAKE_CORRECTION",
-        "templateKey": "TPL_POLYNOMIAL_WRONG_OPERATION_RECOVER",
-        "why": "덧셈 대신 뺄셈을 한 식에서 미지 다항식을 찾아 올바른 연산을 수행하는 템플릿"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q16번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_a33eeb1a46244b2f560207a7310900ef35e54f85df2a239507bde10b4b62869d",
@@ -878,9 +1390,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
         "subUnit": "다항식의 계산",
-        "conceptClusterKey": "POLYNOMIAL_MONOMIAL_DIVISION_EXPANSION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_DISTRIBUTIVE_LAW"
         ],
@@ -901,20 +1413,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-014"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "분배법칙",
+          "recordId": "M2-RPM-014"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "다항식의 계산",
+        "rpmPrimaryL3": "단항식과 다항식의 곱셈·나눗셈",
+        "rpmPrimaryL4": "분배법칙",
+        "rpmPrimaryRecordId": "M2-RPM-014",
+        "difficultyBasis": "Q17번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 11)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-POLYNOMIAL_OPERATIONS: $(6x^{2}-3x^{3}) \\div \\dfrac{1}{3}x + \\left(\\dfrac{3}{4}x^{3}-\\dfrac{9}{4}x^{4}\\right) \\div \\left(-\\dfrac{3}{4}x^{2}\\right)$을 계산하였을 때, $x^2$의 계수를 $a$, $x$의 계수를 $b$라 하자.",
+          "curriculum": "M2-RPM-014: Q17번 문항은 M2-RPM-014에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 11)",
+          "problemType": "Q17번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 11)",
+          "difficulty": "Q17번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 11)",
+          "condition": "COND_POLYNOMIAL: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_DISTRIBUTIVE_LAW: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "각 괄호를 역수 곱셈으로 전개하여 -6x^2 + 17x를 얻고, b-a = 17-(-6)=23을 산출한다.",
       "decisiveStep": "전개식 -6x^2 + 17x 도출 및 b-a = 23 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "분수 계수 나눗셈의 부호와 지수 처리를 정확히 수행하는 2단계 문항",
+      "difficultyReason": "Q17번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 11)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_POLYNOMIAL_DIVISION_COEFFICIENT_DIFF",
-        "templateKey": "TPL_POLYNOMIAL_MONOMIAL_DIV_COEFF_EVAL",
-        "why": "다항식을 단항식으로 나누는 복합식을 계산해 특정 차수의 계수를 결합하는 템플릿"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q17번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 11)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_632c75b7aa81cc180881e50b8ea23efef9bdd21a83d1158d3ec54b0da24451c6",
@@ -931,9 +1475,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M2-02-LINEAR_INEQUALITY",
         "subUnit": "일차부등식",
-        "conceptClusterKey": "INEQUALITY_SOLUTION_TEST",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_INEQUALITY",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
         "crossConceptKeys": [
           "CC_INEQUALITY_BASIC"
         ],
@@ -954,20 +1498,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-020"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "일차부등식",
+          "l3": "일차부등식의 풀이",
+          "l4": "기본형",
+          "recordId": "M2-RPM-020"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "일차부등식",
+        "rpmPrimaryL3": "일차부등식의 풀이",
+        "rpmPrimaryL4": "기본형",
+        "rpmPrimaryRecordId": "M2-RPM-020",
+        "difficultyBasis": "Q18번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 aligned)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-02 / M2-02-LINEAR_INEQUALITY: 다음 부등식 중에서 $x=2$를 해로 갖는 것은?",
+          "curriculum": "M2-RPM-020: Q18번 문항은 M2-RPM-020에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 aligned)",
+          "problemType": "Q18번 문항은 PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)",
+          "difficulty": "Q18번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 aligned)",
+          "condition": "COND_INEQUALITY: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_INEQUALITY_BASIC: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "x=2를 선지 ④에 대입하여 6 < 9가 참임을 확인하고 오답 선지를 판정한다.",
       "decisiveStep": "x=2 대입 시 6 < 9 성립 판정",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "부등식의 해의 정의를 대입으로 판정하는 1단계 기본 문항",
+      "difficultyReason": "Q18번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 aligned)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_INEQUALITY_SOLUTION_CHECK",
-        "templateKey": "TPL_INEQUALITY_VALUE_MEMBERSHIP_TEST",
-        "why": "주어진 수의 부등식 해 여부를 대입하여 판별하는 기본 템플릿"
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+        "why": "Q18번 문항은 PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_41c7a1c5a54d402ae21520addd3f87de98289815281bc7e7fd4cb338777216e7",
@@ -984,9 +1560,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M2-02-LINEAR_INEQUALITY",
         "subUnit": "일차부등식",
-        "conceptClusterKey": "INEQUALITY_PROPERTIES_TRANSFORMATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_INEQUALITY",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
         "crossConceptKeys": [
           "CC_INEQUALITY_SIGN_FLIP"
         ],
@@ -1007,20 +1583,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-018"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질",
+          "recordId": "M2-RPM-018"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "일차부등식",
+        "rpmPrimaryL3": "부등식의 성질",
+        "rpmPrimaryL4": "부등식의 성질",
+        "rpmPrimaryRecordId": "M2-RPM-018",
+        "difficultyBasis": "Q19번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 aligned)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-02 / M2-02-LINEAR_INEQUALITY: $a+2 \\le b+2$일 때, $\\Box$ 안에 들어갈 부등호의 방향이 나머지 넷과 다른 하나는?",
+          "curriculum": "M2-RPM-018: Q19번 문항은 M2-RPM-018에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 aligned)",
+          "problemType": "Q19번 문항은 PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)",
+          "difficulty": "Q19번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 aligned)",
+          "condition": "COND_INEQUALITY: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_INEQUALITY_SIGN_FLIP: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "음수 -2를 곱하여 부등호 방향이 반대로 바뀌는 선지 ⑤를 선별한다.",
       "decisiveStep": "음수 계수 -2에 따른 부등호 방향 전환 확인",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "부등식의 기본 성질을 선지별로 점검하는 1단계 기본 문항",
+      "difficultyReason": "Q19번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 aligned)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_INEQUALITY_PROPERTY_DIRECTION",
-        "templateKey": "TPL_INEQUALITY_TRANSFORM_DIRECTION_AUDIT",
-        "why": "부등식의 양변 조작에 따른 부등호 방향 보존 및 반전 성질을 판정하는 템플릿"
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+        "why": "Q19번 문항은 PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_eccc614b2a693f9603fcb4ec7f72d560fb39f563628f0e9fb12957e3c87e10e6",
@@ -1037,9 +1645,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M2-02-LINEAR_INEQUALITY",
         "subUnit": "일차부등식",
-        "conceptClusterKey": "INEQUALITY_LINEAR_RANGE_EXTREMA",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_INEQUALITY",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
         "crossConceptKeys": [
           "CC_INEQUALITY_RANGE_OPERATION"
         ],
@@ -1060,20 +1668,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-022"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "정수해 개수",
+          "recordId": "M2-RPM-022"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "일차부등식",
+        "rpmPrimaryL3": "해의 조건",
+        "rpmPrimaryL4": "정수해 개수",
+        "rpmPrimaryRecordId": "M2-RPM-022",
+        "difficultyBasis": "Q20번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ax)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-02 / M2-02-LINEAR_INEQUALITY: $-7 \\le x \\le 3$일 때, $\\dfrac{1}{2} + ax$의 최댓값이 $4$, 최솟값이 $b$이다.",
+          "curriculum": "M2-RPM-022: Q20번 문항은 M2-RPM-022에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ax)",
+          "problemType": "Q20번 문항은 PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)",
+          "difficulty": "Q20번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ax)",
+          "condition": "COND_NEGATIVE: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_INEQUALITY_RANGE_OPERATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "a<0일 때 x=-7에서 최댓값 4를 적용해 a=-1/2를 얻고, x=3에서 최솟값 b=-1을 구해 a-b=1/2를 계산한다.",
       "decisiveStep": "a=-1/2, b=-1 도출 후 a-b=1/2 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "부등호 방향 반전과 구간 양 끝값의 대입 해석이 필요한 3단계 심화 문항",
+      "difficultyReason": "Q20번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ax)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_INEQUALITY_COEFFICIENT_CONDITION",
-        "templateKey": "TPL_LINEAR_EXPRESSION_BOUND_OPTIMIZATION",
-        "why": "변수의 제한 범위와 음수 계수 조건에서 일차식의 최댓값과 최솟값을 매칭하는 템플릿"
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+        "why": "Q20번 문항은 PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_ec35d743c670990a53408b49c7b4f635dd511fd7d907c4805bc4a4d38a6b352e",
@@ -1090,9 +1730,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "subUnit": "유리수와 순환소수",
-        "conceptClusterKey": "REPEATING_DECIMAL_FRACTION_MULTIPLE_CONDITION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REPEATING_DECIMAL",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_MULTIPLE_DIVISOR"
         ],
@@ -1114,20 +1754,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-005"
+        ],
+        "rpmPrimary": {
+          "l1": "유리수와 순환소수",
+          "l2": "유리수와 순환소수",
+          "l3": "유리수와 소수 표현",
+          "l4": "분수를 소수로",
+          "recordId": "M2-RPM-005"
+        },
+        "rpmPrimaryL1": "유리수와 순환소수",
+        "rpmPrimaryL2": "유리수와 순환소수",
+        "rpmPrimaryL3": "유리수와 소수 표현",
+        "rpmPrimaryL4": "분수를 소수로",
+        "rpmPrimaryRecordId": "M2-RPM-005",
+        "difficultyBasis": "Q21번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 1.8)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-REPEATING_DECIMAL: [서술형 1번] 순환소수 $1.8\\dot{6}$에 자연수 $A$를 곱하면 자연수가 된다.",
+          "curriculum": "M2-RPM-005: Q21번 문항은 M2-RPM-005에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 1.8)",
+          "problemType": "Q21번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 1.8)",
+          "difficulty": "Q21번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 1.8)",
+          "condition": "COND_NATURAL, COND_IRREDUCIBLE: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_MULTIPLE_DIVISOR: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "100x-10x=168로부터 x=28/15를 도출하고, 15의 배수 중 최소 세 자리 자연수 105를 구한다.",
       "decisiveStep": "기약분수 28/15 변환 및 15의 최소 3자리 배수 105 확정",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "방정식을 통한 분수 변환 서술과 약수/배수 조건을 결합하는 2단계 서술형 문항",
+      "difficultyReason": "Q21번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 1.8)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_REPEATING_TO_NATURAL_PRODUCT",
-        "templateKey": "TPL_REPEATING_FRACTION_MULTIPLIER_DIGIT_BOUND",
-        "why": "순환소수를 기약분수로 나타내고 자연수가 되도록 하는 최소 자릿수 배수를 구하는 서술형 템플릿"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q21번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 1.8)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_46f6d8c170954ef9c36957d3af882c226c90eddd1a9226c67a07feb83b7c3009",
@@ -1144,9 +1816,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-EXPONENT_LAW",
         "subUnit": "지수법칙",
-        "conceptClusterKey": "MONOMIAL_FRACTION_POWER_COMPARISON",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "EXPONENT_LAW",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_EXPONENT_ARITHMETIC"
         ],
@@ -1167,20 +1839,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-007"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫",
+          "recordId": "M2-RPM-007"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "단항식의 계산",
+        "rpmPrimaryL3": "지수법칙",
+        "rpmPrimaryL4": "거듭제곱의 곱·몫",
+        "rpmPrimaryRecordId": "M2-RPM-007",
+        "difficultyBasis": "Q22번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 12)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-EXPONENT_LAW: [서술형 2번] $\\left(\\dfrac{2x^{3}}{y^{a}}\\right)^{b} = \\dfrac{8x^{c}}{y^{12}}$일 때, 상수 $a, b, c$에 대하여 $a+b-c$의 값을 구하는 과정을 서술하시오.",
+          "curriculum": "M2-RPM-007: Q22번 문항은 M2-RPM-007에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 12)",
+          "problemType": "Q22번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 12)",
+          "difficulty": "Q22번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 12)",
+          "condition": "COND_NATURAL: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_EXPONENT_ARITHMETIC: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "2^b=8에서 b=3, 3b=c에서 c=9, ab=12에서 a=4를 구하여 a+b-c = 4+3-9 = -2를 산출한다.",
       "decisiveStep": "b=3, c=9, a=4 도출 후 a+b-c = -2 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "계수와 문자의 지수를 체계적으로 대응시키는 2단계 서술형 문항",
+      "difficultyReason": "Q22번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 12)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_MONOMIAL_EXPONENT_COMPARE_EQUATION",
-        "templateKey": "TPL_MONOMIAL_QUOTIENT_POWER_COEFFICIENT_MATCH",
-        "why": "분수 꼴 단항식의 거듭제곱을 전개해 각 항의 지수를 연립으로 비교하는 서술형 템플릿"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q22번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 12)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_8ac1e52b6c38b15929510117e5d5e2b0ed89f8554ceff2f86df71b1ce63c70f8",
@@ -1197,9 +1901,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M2-02-LINEAR_INEQUALITY",
         "subUnit": "일차부등식",
-        "conceptClusterKey": "INEQUALITY_LINEAR_TRANSFORMATION_RANGE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_INEQUALITY",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
         "crossConceptKeys": [
           "CC_INEQUALITY_SIGN_FLIP"
         ],
@@ -1220,20 +1924,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-018"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질",
+          "recordId": "M2-RPM-018"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "일차부등식",
+        "rpmPrimaryL3": "부등식의 성질",
+        "rpmPrimaryL4": "부등식의 성질",
+        "rpmPrimaryRecordId": "M2-RPM-018",
+        "difficultyBasis": "Q23번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ab)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-02 / M2-02-LINEAR_INEQUALITY: [서술형 3번] $-3 \\le x \\le 5$일 때, $a \\le 4 - \\dfrac{1}{2}x \\le b$이다.",
+          "curriculum": "M2-RPM-018: Q23번 문항은 M2-RPM-018에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ab)",
+          "problemType": "Q23번 문항은 PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ab)",
+          "difficulty": "Q23번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ab)",
+          "condition": "COND_INEQUALITY: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_INEQUALITY_SIGN_FLIP: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "-3 <= x <= 5에 -1/2를 곱하고 4를 더해 3/2 <= 4-x/2 <= 11/2를 얻고, 4ab = 4*(3/2)*(11/2) = 33을 계산한다.",
       "decisiveStep": "a=3/2, b=11/2 도출 후 4ab=33 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "부등호 방향 전환과 분수 통분 덧셈을 단계별로 전개하는 2단계 서술형 문항",
+      "difficultyReason": "Q23번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ab)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_INEQUALITY_INTERVAL_TRANSFORM",
-        "templateKey": "TPL_LINEAR_RANGE_PRODUCT_EVAL",
-        "why": "부등식의 기본 성질을 적용하여 범위 경곗값을 변환하고 곱셈을 계산하는 서술형 템플릿"
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+        "why": "Q23번 문항은 PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ab)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     }
   ]
 }

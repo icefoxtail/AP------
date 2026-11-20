@@ -17,7 +17,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_EQUATION_TWO_VARIABLES_DEFINITION",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -38,7 +38,7 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_EQUATION_DEFINITION"
@@ -47,6 +47,11 @@ window.questionBank = [
       "COND_NONE"
     ],
     "integrationPattern": "CASE_BRANCH",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "해와 계수",
+    "rpmPrimaryL4": "해가 주어진 연립방정식",
+    "rpmPrimaryRecordId": "M2-RPM-032",
     "sourceQid": 1,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q01-problem.plan.json"
@@ -66,7 +71,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SYSTEM_EQUATION_SOLUTION_SUBSTITUTION",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -87,7 +92,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_ALGEBRAIC_SUBSTITUTION"
@@ -96,6 +101,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "해와 계수",
+    "rpmPrimaryL4": "해가 주어진 연립방정식",
+    "rpmPrimaryRecordId": "M2-RPM-032",
     "sourceQid": 2,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q02-problem.plan.json"
@@ -115,7 +125,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SYSTEM_EQUATION_STRUCTURAL_EVALUATION",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -136,7 +146,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_FRACTION_ARITHMETIC"
@@ -145,6 +155,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "복잡한 꼴의 연립방정식",
+    "rpmPrimaryL4": "분수·소수가 있는 연립방정식",
+    "rpmPrimaryRecordId": "M2-RPM-035",
     "sourceQid": 3,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q03-problem.plan.json"
@@ -164,7 +179,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "INFINITE_SOLUTIONS_SYSTEM_LINEAR_EQUATIONS",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -185,7 +200,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_RATIO_PROPORTION"
@@ -194,6 +209,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "해가 특수한 연립방정식",
+    "rpmPrimaryL4": "해가 없거나 무수히 많은 경우",
+    "rpmPrimaryRecordId": "M2-RPM-036",
     "sourceQid": 4,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q04-problem.plan.json"
@@ -213,7 +233,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SYSTEM_EQUATION_VARIABLE_RATIO_CONDITION",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -234,7 +254,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_ALGEBRAIC_SUBSTITUTION"
@@ -243,6 +263,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "해와 계수",
+    "rpmPrimaryL4": "해가 주어진 연립방정식",
+    "rpmPrimaryRecordId": "M2-RPM-032",
     "sourceQid": 5,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q05-problem.plan.json"
@@ -262,7 +287,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "GEOMETRIC_TILE_SYSTEM_EQUATION",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION_WORD_PROBLEM",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -283,7 +308,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_PLANE_GEOMETRY_AREA"
@@ -292,6 +317,11 @@ window.questionBank = [
       "COND_POSITIVE"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식의 활용",
+    "rpmPrimaryL3": "수와 개수",
+    "rpmPrimaryL4": "두 수 관계",
+    "rpmPrimaryRecordId": "M2-RPM-038",
     "sourceQid": 6,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q06-problem.plan.json"
@@ -311,7 +341,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SPEED_DISTANCE_TIME_SYSTEM_EQUATION",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION_WORD_PROBLEM",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -332,7 +362,7 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_SPEED_DISTANCE_TIME"
@@ -341,6 +371,11 @@ window.questionBank = [
       "COND_POSITIVE"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식의 활용",
+    "rpmPrimaryL3": "농도·비율",
+    "rpmPrimaryL4": "농도 혼합",
+    "rpmPrimaryRecordId": "M2-RPM-042",
     "sourceQid": 7,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q07-problem.plan.json"
@@ -360,7 +395,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_FUNCTION_DEFINITION_AUDIT",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -381,7 +416,7 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_FUNCTION_DEFINITION"
@@ -390,6 +425,11 @@ window.questionBank = [
       "COND_NONE"
     ],
     "integrationPattern": "CASE_BRANCH",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "일차함수 판별",
+    "rpmPrimaryRecordId": "M2-RPM-047",
     "sourceQid": 8,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q08-problem.plan.json"
@@ -409,7 +449,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "FUNCTION_VALUE_ARITHMETIC_EVALUATION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -430,7 +470,7 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_FUNCTION_VALUE",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_ALGEBRAIC_SUBSTITUTION"
@@ -439,6 +479,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "함숫값",
+    "rpmPrimaryRecordId": "M2-RPM-046",
     "sourceQid": 9,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q09-problem.plan.json"
@@ -458,7 +503,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_FUNCTION_TRANSLATION_X_INTERCEPT",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -479,7 +524,7 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_COORDINATE_INTERCEPT"
@@ -488,6 +533,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "그래프의 성질",
+    "rpmPrimaryL4": "일차함수 그래프의 평행·일치",
+    "rpmPrimaryRecordId": "M2-RPM-050",
     "sourceQid": 10,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q10-problem.plan.json"
@@ -507,7 +557,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "PARALLEL_LINES_AND_X_INTERCEPT",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -528,7 +578,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_PARALLEL_CONDITION",
@@ -538,6 +588,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "그래프의 성질",
+    "rpmPrimaryL4": "일차함수 그래프의 평행·일치",
+    "rpmPrimaryRecordId": "M2-RPM-050",
     "sourceQid": 11,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q11-problem.plan.json"
@@ -557,7 +612,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SLOPE_DEFINITION_INCREMENT_RELATION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -578,7 +633,7 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_SLOPE_FORMULA"
@@ -587,6 +642,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 그래프",
+    "rpmPrimaryL4": "기울기·절편",
+    "rpmPrimaryRecordId": "M2-RPM-048",
     "sourceQid": 12,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q12-problem.plan.json"
@@ -606,7 +666,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "COLLINEAR_POINTS_SLOPE_EQUALITY",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -627,7 +687,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_LINE_RELATION",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_SLOPE_FORMULA"
@@ -636,6 +696,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "식 구하기",
+    "rpmPrimaryL4": "두 점으로 식 구하기",
+    "rpmPrimaryRecordId": "M2-RPM-052",
     "sourceQid": 13,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q13-problem.plan.json"
@@ -655,7 +720,7 @@ window.questionBank = [
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_EQUATION_POINT_SUBSTITUTION_INTERCEPT",
+    "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -676,7 +741,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_EQUATION_POINT_SUBSTITUTION",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_COORDINATE_INTERCEPT"
@@ -685,14 +750,19 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+    "rpmPrimaryL3": "방정식과 그래프",
+    "rpmPrimaryL4": "일차방정식의 그래프",
+    "rpmPrimaryRecordId": "M2-RPM-054",
     "sourceQid": 14,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q14-problem.plan.json"
   },
   {
     "id": 15,
-    "category": "일차함수와 일차방정식의 관계",
-    "originalCategory": "일차함수와 일차방정식의 관계",
+    "category": "일차함수의 뜻과 그래프",
+    "originalCategory": "일차함수의 뜻과 그래프",
     "standardCourse": "중2",
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -700,16 +770,16 @@ window.questionBank = [
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "MOVING_POINT_GEOMETRIC_AREA_FUNCTION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "일차함수와 일차방정식의 관계"
+      "일차함수의 뜻과 그래프"
     ],
     "wide": false,
     "content": "직사각형 $ABCD$에서 가로 $BC = 12\\,\\mathrm{cm}$, 세로 $AB = 8\\,\\mathrm{cm}$이다. 점 $P$가 점 $B$를 출발하여 점 $C$를 향해 변 $BC$ 위를 매초 $2\\,\\mathrm{cm}$의 속력으로 움직이고 있다. 점 $P$가 점 $B$를 출발한 지 $x$초 후에 사다리꼴 $APCD$의 넓이가 $64\\,\\mathrm{cm}^2$가 된다고 할 때, $x$의 값을 구하면? [5점]",
@@ -725,7 +795,7 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_PLANE_GEOMETRY_AREA"
@@ -734,6 +804,11 @@ window.questionBank = [
       "COND_POSITIVE"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "식 구하기",
+    "rpmPrimaryL4": "기울기와 한 점으로 식 구하기",
+    "rpmPrimaryRecordId": "M2-RPM-053",
     "sourceQid": 15,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q15-problem.plan.json"
@@ -753,7 +828,7 @@ window.questionBank = [
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_EQUATION_PROPERTIES_AUDIT",
+    "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -774,7 +849,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_COORDINATE_INTERCEPT"
@@ -783,6 +858,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "CASE_BRANCH",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+    "rpmPrimaryL3": "방정식과 그래프",
+    "rpmPrimaryL4": "일차방정식의 그래프",
+    "rpmPrimaryRecordId": "M2-RPM-054",
     "sourceQid": 16,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q16-problem.plan.json"
@@ -802,7 +882,7 @@ window.questionBank = [
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "PARALLEL_TO_AXIS_EQUATION",
+    "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -823,7 +903,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_PARALLEL_CONDITION"
@@ -832,14 +912,19 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+    "rpmPrimaryL3": "방정식과 그래프",
+    "rpmPrimaryL4": "일차방정식의 그래프",
+    "rpmPrimaryRecordId": "M2-RPM-054",
     "sourceQid": 17,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q17-problem.plan.json"
   },
   {
     "id": 18,
-    "category": "일차함수와 일차방정식의 관계",
-    "originalCategory": "일차함수와 일차방정식의 관계",
+    "category": "일차함수의 뜻과 그래프",
+    "originalCategory": "일차함수의 뜻과 그래프",
     "standardCourse": "중2",
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -847,16 +932,16 @@ window.questionBank = [
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "TWO_LINES_AXIS_ENCLOSED_AREA",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "일차함수와 일차방정식의 관계"
+      "일차함수의 뜻과 그래프"
     ],
     "wide": false,
     "content": "두 일차함수 $y = -x + 4$ 와 $y = \\dfrac{1}{2}x + 1$ 의 그래프와 $x$축으로 둘러싸인 삼각형의 넓이를 구하면? [5점]",
@@ -872,7 +957,7 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_COORDINATE_INTERCEPT",
@@ -882,6 +967,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 그래프",
+    "rpmPrimaryL4": "기울기·절편",
+    "rpmPrimaryRecordId": "M2-RPM-048",
     "sourceQid": 18,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q18-problem.plan.json"
@@ -901,7 +991,7 @@ window.questionBank = [
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "TWO_LINES_INTERSECTION_PARAMETERS",
+    "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -921,8 +1011,8 @@ window.questionBank = [
     "solution": "1단계: 교점 $(-1, b)$를 첫 번째 식 $x - y = -4$에 대입하여 $b$를 구한다.\n$$\n\\begin{aligned}\n-1 - b &= -4 \\\n-b &= -4 + 1 \\\n-b &= -3 \\\nb &= 3\n\\end{aligned}\n$$\n따라서 두 직선의 교점의 좌표는 $(-1, 3)$이다.\n\n\n2단계: 교점 $(-1, 3)$을 두 번째 식 $ax + 2y = 10$에 대입하여 $a$를 구한다.\n$$\n\\begin{aligned}\na(-1) + 2(3) &= 10 \\\n-a + 6 &= 10 \\\n-a &= 4 \\\na &= -4\n\\end{aligned}\n$$\n\n\n3단계: $a + b$의 값을 계산한다.\n$$\na + b = -4 + 3 = -1\n$$\n그러므로 정답은 ⑤이다.",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "difficultyBucket": 3,
+    "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_ALGEBRAIC_SUBSTITUTION"
@@ -931,6 +1021,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+    "rpmPrimaryL3": "방정식과 그래프",
+    "rpmPrimaryL4": "x축·y축에 평행한 직선",
+    "rpmPrimaryRecordId": "M2-RPM-055",
     "sourceQid": 19,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q19-problem.plan.json"
@@ -950,7 +1045,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_FUNCTION_QUADRANTS_SIGN_ANALYSIS",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -971,7 +1066,7 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_QUADRANT_SIGNS"
@@ -980,6 +1075,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "그래프의 성질",
+    "rpmPrimaryL4": "증가·감소",
+    "rpmPrimaryRecordId": "M2-RPM-051",
     "sourceQid": 20,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q20-problem.plan.json"
@@ -999,7 +1099,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "MISTAKEN_COEFFICIENT_RECOVERY_SYSTEM",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1014,7 +1114,7 @@ window.questionBank = [
     "score": 7,
     "points": 7,
     "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COEFFICIENT_SWAP",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_ALGEBRAIC_SUBSTITUTION"
@@ -1023,6 +1123,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "해와 계수",
+    "rpmPrimaryL4": "계수 결정",
+    "rpmPrimaryRecordId": "M2-RPM-033",
     "sourceQid": 21,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q21-problem.plan.json"
@@ -1042,7 +1147,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_FUNCTION_WATER_FLOW_MODELING",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1056,8 +1161,8 @@ window.questionBank = [
     "solution": "(1) $y$를 $x$에 대한 식으로 나타낸다.\n$15$분마다 $40\\,\\mathrm{t}$의 물을 방류하므로, $1$시간($60$분) 동안 방류하는 물의 양은\n$$\n40 \\times \\frac{60}{15} = 40 \\times 4 = 160\\,\\mathrm{t}\n$$\n따라서 오후 2시부터 $x$시간 동안 방류한 물의 양은 $160x\\,\\mathrm{t}$이다.\n오늘 정오에 이미 방류한 물 $600\\,\\mathrm{t}$이 있으므로, 오늘 정오부터 방류한 물의 전체 양 $y\\,\\mathrm{t}$는 다음과 같다.\n$$\ny = 160x + 600\n$$\n\n\n(2) 전체 방류량이 $1400\\,\\mathrm{t}$가 되는 시각을 구한다.\n$y = 1400$을 (1)의 식에 대입한다.\n$$\n\\begin{aligned}\n160x + 600 &= 1400 \\\n160x &= 800 \\\nx &= \\frac{800}{160} = 5\n\\end{aligned}\n$$\n따라서 오후 2시부터 $5$시간이 지난 시각이므로\n$$\n\\text{오후 } 2\\text{시} + 5\\text{시간} = \\text{오후 } 7\\text{시}\n$$\n그러므로 구하는 시각은 오후 7시이다.",
     "score": 6,
     "points": 6,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "difficultyBucket": 3,
+    "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_REAL_WORLD_MATH"
@@ -1066,14 +1171,19 @@ window.questionBank = [
       "COND_POSITIVE"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "식 구하기",
+    "rpmPrimaryL4": "기울기와 한 점으로 식 구하기",
+    "rpmPrimaryRecordId": "M2-RPM-053",
     "sourceQid": 22,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q22-problem.plan.json"
   },
   {
     "id": 23,
-    "category": "일차함수의 뜻과 그래프",
-    "originalCategory": "일차함수의 뜻과 그래프",
+    "category": "일차함수와 일차방정식의 관계",
+    "originalCategory": "일차함수와 일차방정식의 관계",
     "standardCourse": "중2",
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -1081,16 +1191,16 @@ window.questionBank = [
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "TWO_LINEAR_DRAINAGE_FUNCTIONS_INTERSECTION",
+    "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "일차함수의 뜻과 그래프"
+      "일차함수와 일차방정식의 관계"
     ],
     "wide": false,
     "content": "[서술형 3번]\n$48\\,\\mathrm{L}$, $30\\,\\mathrm{L}$의 물이 각각 들어 있는 두 물통 $A, B$에서 일정한 속력으로 동시에 물이 빠져나가고 있다. 물이 빠지기 시작한 지 $x$분 후에 물통에 남아 있는 물의 양을 $y\\,\\mathrm{L}$라 할 때, 물통 $A$는 $6$분 만에 물이 모두 빠졌고, 물통 $B$는 $15$분 만에 물이 모두 빠졌다. 다음 물음에 답하시오. [7점]\n(1) 물통 $A$에 대하여 $x$와 $y$ 사이의 관계식을 구하시오. [2점]\n(2) 물통 $B$에 대하여 $x$와 $y$ 사이의 관계식을 구하시오. [2점]\n(3) 물이 빠지기 시작한 지 몇 분 후에 두 물통 $A, B$에 남아 있는 물의 양이 같아지는지 구하시오. [3점]",
@@ -1099,8 +1209,8 @@ window.questionBank = [
     "solution": "(1) 물통 $A$의 관계식을 구한다.\n물이 빠지기 전($x = 0$) 물의 양은 $48\\,\\mathrm{L}$이므로 $y$절편은 $48$이고, $6$분 후 물이 모두 빠졌으므로 점 $(6, 0)$을 지난다.\n$$\n\\text{기울기} = \\frac{0 - 48}{6 - 0} = -8\n$$\n따라서 물통 $A$의 관계식은\n$$\ny = -8x + 48\n$$\n\n\n(2) 물통 $B$의 관계식을 구한다.\n물이 빠지기 전($x = 0$) 물의 양은 $30\\,\\mathrm{L}$이므로 $y$절편은 $30$이고, $15$분 후 물이 모두 빠졌으므로 점 $(15, 0)$을 지난다.\n$$\n\\text{기울기} = \\frac{0 - 30}{15 - 0} = -2\n$$\n따라서 물통 $B$의 관계식은\n$$\ny = -2x + 30\n$$\n\n\n(3) 두 물통에 남아 있는 물의 양이 같아지는 시간을 구한다.\n두 식의 $y$값이 같으므로 방정식을 세운다.\n$$\n\\begin{aligned}\n-8x + 48 &= -2x + 30 \\\n-8x + 2x &= 30 - 48 \\\n-6x &= -18 \\\nx &= 3\n\\end{aligned}\n$$\n따라서 물이 빠지기 시작한 지 $3$분 후에 두 물통에 남아 있는 물의 양이 같아진다.",
     "score": 7,
     "points": 7,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "difficultyBucket": 3,
+    "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_GRAPH_INTERSECTION_APPLICATION",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_COORDINATE_INTERCEPT"
@@ -1109,6 +1219,11 @@ window.questionBank = [
       "COND_POSITIVE"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+    "rpmPrimaryL3": "방정식과 그래프",
+    "rpmPrimaryL4": "x축·y축에 평행한 직선",
+    "rpmPrimaryRecordId": "M2-RPM-055",
     "sourceQid": 23,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1final/24_연향중_1학기_기말_중2_유사_plans/q23-problem.plan.json"

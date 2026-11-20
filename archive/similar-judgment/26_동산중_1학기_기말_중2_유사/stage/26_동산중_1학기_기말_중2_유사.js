@@ -17,7 +17,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "FUNCTION_DEFINITION_UNIQUENESS",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -38,8 +38,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_FUNCTION_DEFINITION_JUDGMENT",
+    "templateKey": "TPL_FUNCTION_JUDGMENT_MAPPING",
     "crossConceptKeys": [
       "CC_MULTIPLE"
     ],
@@ -47,6 +47,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "일차함수 판별",
+    "rpmPrimaryRecordId": "M2-RPM-165",
     "sourceQid": 1,
     "variationType": "STRUCTURAL"
   },
@@ -65,7 +70,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "FUNCTION_VALUE_EVALUATION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -86,8 +91,8 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_FUNCTION_VALUE",
+    "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATION"
     ],
@@ -95,6 +100,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "함숫값",
+    "rpmPrimaryRecordId": "M2-RPM-164",
     "sourceQid": 2,
     "variationType": "NUMERIC"
   },
@@ -113,7 +123,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_FUNCTION_IDENTIFICATION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -134,8 +144,8 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+    "templateKey": "TPL_M2_COUNT_VALID_FUNCTIONS_AND_LINEAR_FUNCTIONS",
     "crossConceptKeys": [
       "CC_POLYNOMIAL_EXPANSION"
     ],
@@ -143,6 +153,11 @@ window.questionBank = [
       "COND_REAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "일차함수 판별",
+    "rpmPrimaryRecordId": "M2-RPM-165",
     "sourceQid": 3,
     "variationType": "STRUCTURAL"
   },
@@ -161,7 +176,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_FUNCTION_Y_AXIS_TRANSLATION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -182,8 +197,8 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+    "templateKey": "TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATION"
     ],
@@ -191,6 +206,11 @@ window.questionBank = [
       "COND_INTEGER"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "그래프의 성질",
+    "rpmPrimaryL4": "일차함수 그래프의 평행·일치",
+    "rpmPrimaryRecordId": "M2-RPM-168",
     "sourceQid": 4,
     "variationType": "NUMERIC"
   },
@@ -209,7 +229,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_FUNCTION_SLOPE_Y_INTERCEPT_SUM",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -230,8 +250,8 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATION"
     ],
@@ -239,6 +259,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 그래프",
+    "rpmPrimaryL4": "기울기·절편",
+    "rpmPrimaryRecordId": "M2-RPM-166",
     "sourceQid": 5,
     "variationType": "NUMERIC"
   },
@@ -257,7 +282,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_FUNCTION_PROPERTIES_AUDIT",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -277,9 +302,9 @@ window.questionBank = [
     "solution": "일차함수 $y = -3x + 6$의 성질을 분석한다.\n- 기울기는 $-3$, $y$절편은 $6$이다.\n- $x$절편은 $y=0$일 때 $0 = -3x + 6 \\implies x = 2$이므로 $x$절편은 $2$이다. (①은 거짓)\n- 기울기가 $-3$으로 같고 $y$절편이 다르므로 $y = -3x$의 그래프와 평행하다. (②는 참)\n- $y$축과의 교점의 좌표는 $(0, 6)$이다. (③은 거짓)\n- 기울기가 음수이므로 $x$의 값이 증가할 때 $y$의 값은 감소한다. (④는 거짓)\n- $x$절편이 $2$ (양수), $y$절편이 $6$ (양수)이므로 제$1$, $2$, $4$사분면을 지나고 제$3$사분면은 지나지 않는다. (⑤는 거짓)\n\n\n따라서 옳은 것은 ②이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
     "crossConceptKeys": [
       "CC_COORDINATE_PLANE"
     ],
@@ -287,6 +312,11 @@ window.questionBank = [
       "COND_REAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "그래프의 성질",
+    "rpmPrimaryL4": "일차함수 그래프의 평행·일치",
+    "rpmPrimaryRecordId": "M2-RPM-168",
     "sourceQid": 6,
     "variationType": "NUMERIC"
   },
@@ -305,7 +335,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SLOPE_RATE_OF_CHANGE_CALCULATION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -326,8 +356,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
     "crossConceptKeys": [
       "CC_FRACTION_ARITHMETIC"
     ],
@@ -335,6 +365,11 @@ window.questionBank = [
       "COND_INTEGER"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 그래프",
+    "rpmPrimaryL4": "기울기·절편",
+    "rpmPrimaryRecordId": "M2-RPM-166",
     "sourceQid": 7,
     "variationType": "NUMERIC"
   },
@@ -353,7 +388,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "PARALLEL_AND_Y_INTERCEPT_CONCURRENCE",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -374,8 +409,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_LINE_RELATION",
+    "templateKey": "TPL_RELATION_PARALLEL_PARAMETER",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATION"
     ],
@@ -383,6 +418,11 @@ window.questionBank = [
       "COND_INTEGER"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "그래프의 성질",
+    "rpmPrimaryL4": "일차함수 그래프의 평행·일치",
+    "rpmPrimaryRecordId": "M2-RPM-168",
     "sourceQid": 8,
     "variationType": "NUMERIC"
   },
@@ -401,7 +441,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "TWO_INTERCEPTS_LINE_EQUATION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -421,9 +461,9 @@ window.questionBank = [
     "solution": "$x$절편이 $-3$, $y$절편이 $-6$이므로 그래프는 두 점 $(-3, 0)$과 $(0, -6)$을 지난다.\n기울기는\n$$\n\\text{기울기 } a = \\frac{-6 - 0}{0 - (-3)} = \\frac{-6}{3} = -2\n$$\n$y$절편이 $-6$이므로 구하는 일차함수의 식은\n$$\ny = -2x - 6\n$$\n이다.\n정답은 ③이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 1,
+    "problemTypeKey": "PT_LINE_EQUATION",
+    "templateKey": "TPL_LINE_TWO_POINTS",
     "crossConceptKeys": [
       "CC_COORDINATE_PLANE"
     ],
@@ -431,6 +471,11 @@ window.questionBank = [
       "COND_INTEGER"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "식 구하기",
+    "rpmPrimaryL4": "두 점으로 식 구하기",
+    "rpmPrimaryRecordId": "M2-RPM-170",
     "sourceQid": 9,
     "variationType": "NUMERIC"
   },
@@ -449,7 +494,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "QUADRANT_CONDITION_COEFFICIENT_SIGNS",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -469,9 +514,9 @@ window.questionBank = [
     "solution": "1. $y = ax + b$의 그래프가 제$4$사분면을 지나지 않으려면\n- 오른쪽 위로 향해야 하므로 기울기 $a > 0$이다.\n- $y$축의 양의 부분을 지나야 하므로 $y$절편 $b > 0$이다. (만약 $b \\le 0$이면 제$4$사분면을 지나게 된다.)\n따라서\n$$\na > 0, \\quad b > 0\n$$\n2. 이제 일차함수 $y = -\\dfrac{b}{a}x + b$의 그래프를 분석한다.\n- 기울기는 $-\\dfrac{b}{a}$이고, $a > 0, b > 0$이므로 $-\\dfrac{b}{a} < 0$ (음수)이다.\n- $y$절편은 $b > 0$ (양수)이다.\n3. 기울기가 음수이고 $y$절편이 양수인 직선은 오른쪽 아래로 향하며 $y$축의 양의 부분을 지나므로,\n제$1$사분면, 제$2$사분면, 제$4$사분면을 지나고 제$3$사분면은 지나지 않는다.\n\n\n따라서 정답은 ⑤이다.",
     "score": 4.5,
     "points": 4.5,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+    "templateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
     "crossConceptKeys": [
       "CC_COORDINATE_PLANE"
     ],
@@ -479,13 +524,18 @@ window.questionBank = [
       "COND_REAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 그래프",
+    "rpmPrimaryL4": "기울기·절편",
+    "rpmPrimaryRecordId": "M2-RPM-166",
     "sourceQid": 10,
     "variationType": "STRUCTURAL"
   },
   {
     "id": 11,
-    "category": "일차함수와 그래프",
-    "originalCategory": "일차함수와 그래프",
+    "category": "일차함수의 뜻과 그래프",
+    "originalCategory": "일차함수의 뜻과 그래프",
     "standardCourse": "중2",
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -493,15 +543,16 @@ window.questionBank = [
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_APPLICATION",
-    "subUnit": "",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "MOVING_POINT_GEOMETRIC_AREA_FUNCTION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "일차함수의 뜻과 그래프"
     ],
     "wide": false,
     "content": "가로의 길이가 $20\\text{ cm}$, 세로의 길이가 $8\\text{ cm}$인 직사각형 $ABCD$에서 점 $P$는 점 $B$를 출발하여 변 $BC$를 따라 점 $C$까지 매초 $2\\text{ cm}$의 속력으로 움직인다. 점 $P$가 출발한 지 $x$초 후의 사다리꼴 $APCD$의 넓이를 $y\\text{ cm}^2$라 할 때, 보기에서 옳은 것만을 있는 대로 고른 것은? [5점]\n\n\n$$\n\\begin{aligned}\n&\\text{ㄱ. } y = -8x + 160 \\\n&\\text{ㄴ. 사다리꼴의 넓이는 } 1\\text{초에 } 8\\text{ cm}^2\\text{씩 줄어든다.} \\\n&\\text{ㄷ. 사다리꼴 } APCD\\text{의 넓이가 } 100\\text{ cm}^2\\text{가 되는 것은 점 } P\\text{가 출발한 지 } 8\\text{초 후이다.}\n\\end{aligned}\n$$",
@@ -516,9 +567,9 @@ window.questionBank = [
     "solution": "1. $x$초 후 선분 $BP$의 길이는 $2x\\text{ cm}$이다.\n직사각형 $ABCD$의 전체 넓이는\n$$\n20 \\times 8 = 160\\text{ (cm}^2\\text{)}\n$$\n삼각형 $ABP$는 밑변이 $BP = 2x$, 높이가 $AB = 8$이므로 넓이는\n$$\n\\triangle ABP = \\frac{1}{2} \\times 2x \\times 8 = 8x\\text{ (cm}^2\\text{)}\n$$\n사다리꼴 $APCD$의 넓이 $y$는 직사각형의 넓이에서 $\\triangle ABP$의 넓이를 뺀 것이므로\n$$\ny = 160 - 8x = -8x + 160\n$$\n따라서 ㄱ은 옳다.\n\n\n2. 관계식 $y = -8x + 160$에서 $x$의 계수가 $-8$이므로 $x$가 $1$ 증가할 때 $y$는 $8$씩 감소한다.\n즉, 사다리꼴의 넓이는 $1$초에 $8\\text{ cm}^2$씩 줄어든다.\n따라서 ㄴ은 옳다.\n\n\n3. $y = 100$일 때의 시간을 구하면\n$$\n100 = -8x + 160 \\implies 8x = 60 \\implies x = \\frac{60}{8} = 7.5\\text{ (초)}\n$$\n따라서 $8$초 후가 아니라 $7.5$초 후이므로 ㄷ은 옳지 않다.\n\n\n그러므로 옳은 것은 ㄱ, ㄴ이다.\n정답은 ②이다.",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 3,
+    "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+    "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
     "crossConceptKeys": [
       "CC_TRAPEZOID_AREA"
     ],
@@ -526,6 +577,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+    "rpmPrimaryL3": "그래프 활용",
+    "rpmPrimaryL4": "넓이",
+    "rpmPrimaryRecordId": "M2-RPM-176",
     "sourceQid": 11,
     "variationType": "NUMERIC"
   },
@@ -540,15 +596,16 @@ window.questionBank = [
     "standardUnitKey": "M2-03",
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "M2-03-LINEAR_SYSTEM_BASIC",
-    "subUnit": "",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "TWO_VARIABLE_LINEAR_EQUATION_DEFINITION",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "연립일차방정식"
     ],
     "wide": false,
     "content": "다음 중 미지수가 $2$개인 일차방정식인 것은? [3점]",
@@ -564,7 +621,7 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_DEGREE_OF_POLYNOMIAL"
@@ -578,8 +635,8 @@ window.questionBank = [
   },
   {
     "id": 13,
-    "category": "일차함수와 그래프",
-    "originalCategory": "일차함수와 그래프",
+    "category": "일차함수와 일차방정식의 관계",
+    "originalCategory": "일차함수와 일차방정식의 관계",
     "standardCourse": "중2",
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -587,15 +644,16 @@ window.questionBank = [
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQ",
-    "subUnit": "",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_EQUATION_SOLUTION_SET_ANALYSIS",
+    "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "일차함수와 일차방정식의 관계"
     ],
     "wide": false,
     "content": "일차방정식 $2x + y - 6 = 0$의 해에 대한 설명으로 옳은 것만을 보기에서 있는 대로 고른 것은? [4점]\n\n\n$$\n\\begin{aligned}\n&\\text{ㄱ. } (1, 4)\\text{는 이 일차방정식의 해이다.} \\\n&\\text{ㄴ. } x, y\\text{가 자연수일 때, 해는 무수히 많다.} \\\n&\\text{ㄷ. } x, y\\text{의 값의 범위가 수 전체일 때, 해를 나타내는 그래프는 한 점이다.}\n\\end{aligned}\n$$",
@@ -611,8 +669,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
     "crossConceptKeys": [
       "CC_COORDINATE_PLANE"
     ],
@@ -620,13 +678,18 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+    "rpmPrimaryL3": "방정식과 그래프",
+    "rpmPrimaryL4": "일차방정식의 그래프",
+    "rpmPrimaryRecordId": "M2-RPM-172",
     "sourceQid": 13,
     "variationType": "NUMERIC"
   },
   {
     "id": 14,
-    "category": "일차함수와 그래프",
-    "originalCategory": "일차함수와 그래프",
+    "category": "일차함수와 일차방정식의 관계",
+    "originalCategory": "일차함수와 일차방정식의 관계",
     "standardCourse": "중2",
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -634,15 +697,16 @@ window.questionBank = [
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQ",
-    "subUnit": "",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_EQUATION_GRAPH_PROPERTIES",
+    "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "일차함수와 일차방정식의 관계"
     ],
     "wide": false,
     "content": "일차방정식 $2x + 3y - 6 = 0$의 그래프에 대한 설명으로 옳은 것은? [4점]",
@@ -658,8 +722,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
     "crossConceptKeys": [
       "CC_COORDINATE_PLANE"
     ],
@@ -667,13 +731,18 @@ window.questionBank = [
       "COND_REAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+    "rpmPrimaryL3": "방정식과 그래프",
+    "rpmPrimaryL4": "일차방정식의 그래프",
+    "rpmPrimaryRecordId": "M2-RPM-172",
     "sourceQid": 14,
     "variationType": "NUMERIC"
   },
   {
     "id": 15,
-    "category": "일차함수와 그래프",
-    "originalCategory": "일차함수와 그래프",
+    "category": "일차함수와 일차방정식의 관계",
+    "originalCategory": "일차함수와 일차방정식의 관계",
     "standardCourse": "중2",
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -681,15 +750,16 @@ window.questionBank = [
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQ",
-    "subUnit": "",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "HORIZONTAL_LINE_EQUATION",
+    "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "일차함수와 일차방정식의 관계"
     ],
     "wide": false,
     "content": "점 $(0, -3)$을 지나고 $x$축에 평행한 직선의 방정식은? [3점]",
@@ -705,8 +775,8 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_LINE_EQUATION",
+    "templateKey": "TPL_LINE_PARALLEL",
     "crossConceptKeys": [
       "CC_COORDINATE_PLANE"
     ],
@@ -714,6 +784,11 @@ window.questionBank = [
       "COND_INTEGER"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+    "rpmPrimaryL3": "방정식과 그래프",
+    "rpmPrimaryL4": "x축·y축에 평행한 직선",
+    "rpmPrimaryRecordId": "M2-RPM-173",
     "sourceQid": 15,
     "variationType": "NUMERIC"
   },
@@ -728,15 +803,16 @@ window.questionBank = [
     "standardUnitKey": "M2-03",
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "M2-03-LINEAR_SYSTEM_BASIC",
-    "subUnit": "",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SOLUTION_PAIR_EQUATION_MATCHING",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "연립일차방정식"
     ],
     "wide": false,
     "content": "다음 일차방정식 중 순서쌍 $(2, -1)$을 해로 갖는 두 일차방정식으로 짝지어진 것은? [3점]\n\n\n$$\n\\begin{aligned}\n&\\text{(가) } 2x + y = 3 \\\n&\\text{(나) } x - 3y = 5 \\\n&\\text{(다) } 3x + 2y = 8 \\\n&\\text{(라) } x + 2y = 4\n\\end{aligned}\n$$",
@@ -751,9 +827,9 @@ window.questionBank = [
     "solution": "순서쌍 $(x, y) = (2, -1)$을 각 방정식의 좌변에 대입하여 계산한다.\n- (가): $2(2) + (-1) = 4 - 1 = 3$ (참)\n- (나): $2 - 3(-1) = 2 + 3 = 5$ (참)\n- (다): $3(2) + 2(-1) = 6 - 2 = 4 \\ne 8$ (거짓)\n- (라): $2 + 2(-1) = 2 - 2 = 0 \\ne 4$ (거짓)\n\n\n따라서 $(2, -1)$을 해로 갖는 두 일차방정식은 (가)와 (나)이다.\n정답은 ②이다.",
     "score": 3,
     "points": 3,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 1,
+    "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+    "templateKey": "TPL_H1_SYSTEM_DIRECT",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATION"
     ],
@@ -761,6 +837,11 @@ window.questionBank = [
       "COND_INTEGER"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "해와 계수",
+    "rpmPrimaryL4": "해가 주어진 연립방정식",
+    "rpmPrimaryRecordId": "M2-RPM-150",
     "sourceQid": 16,
     "variationType": "NUMERIC"
   },
@@ -775,15 +856,16 @@ window.questionBank = [
     "standardUnitKey": "M2-03",
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "M2-03-LINEAR_SYSTEM_SOLVE",
-    "subUnit": "",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_SYSTEM_SUBSTITUTION_BASIC",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "연립일차방정식"
     ],
     "wide": false,
     "content": "연립방정식 $\\begin{cases} x - y = -4 \\ 2x + 3y = 7 \\end{cases}$의 해는? [4점]",
@@ -799,8 +881,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+    "templateKey": "TPL_H1_SYSTEM_DIRECT",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATION"
     ],
@@ -808,6 +890,11 @@ window.questionBank = [
       "COND_INTEGER"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "연립방정식의 풀이",
+    "rpmPrimaryL4": "대입법",
+    "rpmPrimaryRecordId": "M2-RPM-149",
     "sourceQid": 17,
     "variationType": "NUMERIC"
   },
@@ -822,15 +909,16 @@ window.questionBank = [
     "standardUnitKey": "M2-03",
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "M2-03-LINEAR_SYSTEM_SOLVE",
-    "subUnit": "",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "WRONGLY_VIEWED_COEFFICIENT_RESTORATION",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "연립일차방정식"
     ],
     "wide": false,
     "content": "민지와 수지가 연립방정식 $\\begin{cases} ax - y = 4 \\ x + by = -1 \\end{cases}$을 푸는데, 민지는 $a$를 잘못 보아 $x = 2, y = -3$을 얻었고, 수지는 $b$를 잘못 보아 $x = 3, y = 2$를 얻었다. 이 연립방정식을 바르게 푼 해는? [4.5점]",
@@ -845,9 +933,9 @@ window.questionBank = [
     "solution": "1. 민지는 $a$만 잘못 보았으므로 둘째 식 $x + by = -1$은 올바르게 성립한다.\n$x = 2, y = -3$을 둘째 식에 대입하면\n$$\n2 + b(-3) = -1 \\implies -3b = -3 \\implies b = 1\n$$\n2. 수지는 $b$만 잘못 보았으므로 첫째 식 $ax - y = 4$는 올바르게 성립한다.\n$x = 3, y = 2$를 첫째 식에 대입하면\n$$\na(3) - 2 = 4 \\implies 3a = 6 \\implies a = 2\n$$\n3. 바른 연립방정식은\n$$\n\\begin{cases}\n2x - y = 4 \\quad \\cdots\\text{㉠} \\\nx + y = -1 \\quad \\cdots\\text{㉡}\n\\end{cases}\n$$\n두 식을 변끼리 더하면\n$$\n3x = 3 \\implies x = 1\n$$\n$x = 1$을 ㉡에 대입하면\n$$\n1 + y = -1 \\implies y = -2\n$$\n따라서 바르게 푼 해는 $x = 1, y = -2$이다.\n정답은 ③이다.",
     "score": 4.5,
     "points": 4.5,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 3,
+    "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COEFFICIENT_SWAP",
+    "templateKey": "TPL_M2_SOLVE_ORIGINAL_SYSTEM_AFTER_COEFFICIENT_SWAP_DESCRIPTIVE",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATION"
     ],
@@ -855,6 +943,11 @@ window.questionBank = [
       "COND_INTEGER"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "해와 계수",
+    "rpmPrimaryL4": "계수 결정",
+    "rpmPrimaryRecordId": "M2-RPM-151",
     "sourceQid": 18,
     "variationType": "NUMERIC"
   },
@@ -869,15 +962,16 @@ window.questionBank = [
     "standardUnitKey": "M2-03",
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "M2-03-LINEAR_SYSTEM_SOLVE",
-    "subUnit": "",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "DECIMAL_FRACTION_COEFFICIENT_SYSTEM",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "연립일차방정식"
     ],
     "wide": false,
     "content": "연립방정식 $\\begin{cases} 0.4x - 0.2y = 0.8 \\ \\dfrac{x}{3} + \\dfrac{y}{2} = 2 \\end{cases}$의 해는? [4점]",
@@ -893,8 +987,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+    "templateKey": "TPL_M2_SOLVE_DECIMAL_SYSTEM_AND_LINEAR_COMBINATION",
     "crossConceptKeys": [
       "CC_FRACTION_ARITHMETIC",
       "CC_DECIMAL_ARITHMETIC"
@@ -903,13 +997,18 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "복잡한 꼴의 연립방정식",
+    "rpmPrimaryL4": "분수·소수가 있는 연립방정식",
+    "rpmPrimaryRecordId": "M2-RPM-153",
     "sourceQid": 19,
     "variationType": "NUMERIC"
   },
   {
     "id": 20,
-    "category": "일차함수와 그래프",
-    "originalCategory": "일차함수와 그래프",
+    "category": "일차함수와 일차방정식의 관계",
+    "originalCategory": "일차함수와 일차방정식의 관계",
     "standardCourse": "중2",
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -917,15 +1016,16 @@ window.questionBank = [
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQ",
-    "subUnit": "",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "INTERSECTION_POINT_SYSTEM_SOLUTION_SUM",
+    "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "일차함수와 일차방정식의 관계"
     ],
     "wide": false,
     "content": "연립방정식 $\\begin{cases} 2x - y = a \\ bx + y = 5 \\end{cases}$의 두 일차방정식의 그래프의 교점의 좌표가 $(1, 3)$일 때, 두 상수 $a, b$에 대하여 $a + b$의 값은? [4점]",
@@ -940,9 +1040,9 @@ window.questionBank = [
     "solution": "두 일차방정식의 그래프의 교점의 좌표 $(1, 3)$은 연립방정식의 해이다.\n1. 첫 번째 식 $2x - y = a$에 $x = 1, y = 3$을 대입하면\n$$\n2(1) - 3 = a \\implies a = -1\n$$\n2. 두 번째 식 $bx + y = 5$에 $x = 1, y = 3$을 대입하면\n$$\nb(1) + 3 = 5 \\implies b = 2\n$$\n3. 두 상수의 합은\n$$\na + b = -1 + 2 = 1\n$$\n따라서 정답은 ③이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 1,
+    "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+    "templateKey": "TPL_M2_FIND_INTERSECTION_COORDINATE_SUM_FROM_SYSTEM",
     "crossConceptKeys": [
       "CC_COORDINATE_PLANE"
     ],
@@ -950,13 +1050,18 @@ window.questionBank = [
       "COND_INTEGER"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+    "rpmPrimaryL3": "두 직선의 관계",
+    "rpmPrimaryL4": "교점과 연립방정식",
+    "rpmPrimaryRecordId": "M2-RPM-174",
     "sourceQid": 20,
     "variationType": "NUMERIC"
   },
   {
     "id": 21,
-    "category": "일차함수와 그래프",
-    "originalCategory": "일차함수와 그래프",
+    "category": "일차함수와 일차방정식의 관계",
+    "originalCategory": "일차함수와 일차방정식의 관계",
     "standardCourse": "중2",
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -964,15 +1069,16 @@ window.questionBank = [
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQ",
-    "subUnit": "",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "PARALLEL_AND_COINCIDENT_LINES_SIMULTANEOUS",
+    "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "일차함수와 일차방정식의 관계"
     ],
     "wide": false,
     "content": "일차방정식 $ax + 3y - 6 = 0$의 그래프가 다음 두 조건을 만족시킬 때, 상수 $a, b$의 순서쌍 $(a, b)$는? [5점]\n\n\n$$\n\\begin{aligned}\n&\\cdot \\text{직선 } (b + 1)x - 3y + 2 = 0\\text{과 만나지 않는다.} \\\n&\\cdot \\text{직선 } (-b + 5)x + 6y - 12 = 0\\text{과 무수히 많은 점에서 만난다.}\n\\end{aligned}\n$$",
@@ -988,8 +1094,8 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 3,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_LINE_RELATION",
+    "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATION"
     ],
@@ -997,13 +1103,18 @@ window.questionBank = [
       "COND_INTEGER"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+    "rpmPrimaryL3": "두 직선의 관계",
+    "rpmPrimaryL4": "두 직선의 평행·일치",
+    "rpmPrimaryRecordId": "M2-RPM-175",
     "sourceQid": 21,
     "variationType": "NUMERIC"
   },
   {
     "id": 22,
-    "category": "일차함수와 그래프",
-    "originalCategory": "일차함수와 그래프",
+    "category": "일차함수의 뜻과 그래프",
+    "originalCategory": "일차함수의 뜻과 그래프",
     "standardCourse": "중2",
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -1011,15 +1122,16 @@ window.questionBank = [
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_APPLICATION",
-    "subUnit": "",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "TEMPERATURE_INCREASE_LINEAR_FUNCTION_APPLICATION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "일차함수의 뜻과 그래프"
     ],
     "wide": false,
     "content": "[서술형 1] 주전자에 담긴 물을 가열하면서 $1$분마다 물의 온도를 측정하였더니 아래 표와 같이 온도가 일정하게 상승하였다. 물을 가열하기 시작한 지 $x$분 후의 물의 온도를 $y^\\circ\\text{C}$라 할 때, 다음 물음에 답하고 그 풀이 과정을 서술하시오. [총 6점]\n\n\n| $x$ (분) | 0 | 1 | 2 | 3 | 4 |\n| :--- | :---: | :---: | :---: | :---: | :---: |\n| $y$ ($^\\circ\\text{C}$) | 10 | 14 | 18 | 22 | 26 |\n\n\n(1) $x$와 $y$ 사이의 관계식을 구하시오. [3점]\n(2) 물의 온도가 $90^\\circ\\text{C}$가 되는 것은 가열하기 시작한 지 몇 분 후인지 구하시오. [3점]",
@@ -1029,8 +1141,8 @@ window.questionBank = [
     "score": 6,
     "points": 6,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE",
+    "templateKey": "TPL_M2_SOLVE_TEMPERATURE_ALTITUDE_WORD_PROBLEM_DESCRIPTIVE",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATION"
     ],
@@ -1038,13 +1150,18 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+    "rpmPrimaryL3": "그래프 활용",
+    "rpmPrimaryL4": "조건에 따른 식 결정",
+    "rpmPrimaryRecordId": "M2-RPM-177",
     "sourceQid": 22,
     "variationType": "NUMERIC"
   },
   {
     "id": 23,
-    "category": "연립일차방정식",
-    "originalCategory": "연립일차방정식",
+    "category": "연립일차방정식의 활용",
+    "originalCategory": "연립일차방정식의 활용",
     "standardCourse": "중2",
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -1052,15 +1169,16 @@ window.questionBank = [
     "standardUnitKey": "M2-03",
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "M2-03-LINEAR_SYSTEM_APPLICATION",
-    "subUnit": "",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+    "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "AGE_RELATION_LINEAR_SYSTEM",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION_WORD_PROBLEM",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "연립일차방정식의 활용"
     ],
     "wide": false,
     "content": "[서술형 2] 현재 형과 동생의 나이의 차는 $6$살이고, $4$년 후에는 형의 나이가 동생의 나이의 $2$배보다 $5$살 적어진다고 한다. 현재 형과 동생의 나이를 각각 구하고, 그 풀이 과정을 서술하시오. [7점]",
@@ -1070,7 +1188,7 @@ window.questionBank = [
     "score": 7,
     "points": 7,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATION"
@@ -1079,13 +1197,18 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식의 활용",
+    "rpmPrimaryL3": "수와 개수",
+    "rpmPrimaryL4": "두 수 관계",
+    "rpmPrimaryRecordId": "M2-RPM-156",
     "sourceQid": 23,
     "variationType": "NUMERIC"
   },
   {
     "id": 24,
-    "category": "일차함수와 그래프",
-    "originalCategory": "일차함수와 그래프",
+    "category": "일차함수와 일차방정식의 관계",
+    "originalCategory": "일차함수와 일차방정식의 관계",
     "standardCourse": "중2",
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -1093,15 +1216,16 @@ window.questionBank = [
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQ",
-    "subUnit": "",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "TWO_LINES_AND_AXIS_ENCLOSED_AREA",
+    "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "일차함수와 일차방정식의 관계"
     ],
     "wide": false,
     "content": "[서술형 3] 두 직선 $x - 2y + 6 = 0$, $2x + y - 8 = 0$과 $x$축으로 둘러싸인 삼각형의 넓이를 구하고, 그 풀이 과정을 상세히 서술하시오. [7점]",
@@ -1110,9 +1234,9 @@ window.questionBank = [
     "solution": "[풀이 과정]\n1단계: 두 직선의 $x$절편 구하기 (밑변의 길이)\n삼각형의 밑변은 $x$축 위에 있으므로 두 직선의 $x$축과의 교점($x$절편)을 구한다 ($y = 0$ 대입).\n- 첫 번째 직선 $x - 2y + 6 = 0$에 $y = 0$을 대입하면\n$$\nx + 6 = 0 \\implies x = -6\n$$\n따라서 교점의 좌표는 $(-6, 0)$이다.\n- 두 번째 직선 $2x + y - 8 = 0$에 $y = 0$을 대입하면\n$$\n2x - 8 = 0 \\implies 2x = 8 \\implies x = 4\n$$\n따라서 교점의 좌표는 $(4, 0)$이다.\n그러므로 삼각형의 밑변의 길이는\n$$\n4 - (-6) = 10\n$$\n이다.\n\n\n2단계: 두 직선의 교점의 좌표 구하기 (높이)\n두 직선의 교점의 $y$좌표의 절댓값이 삼각형의 높이가 된다.\n연립방정식을 세우면\n$$\n\\begin{cases}\nx - 2y = -6 \\quad \\cdots\\text{㉠} \\\n2x + y = 8 \\quad \\cdots\\text{㉡}\n\\end{cases}\n$$\n㉡의 양변에 $2$를 곱하면\n$$\n4x + 2y = 16 \\quad \\cdots\\text{㉢}\n$$\n㉠과 ㉢을 변끼리 더하면\n$$\n5x = 10 \\implies x = 2\n$$\n$x = 2$를 ㉡에 대입하면\n$$\n2(2) + y = 8 \\implies y = 4\n$$\n따라서 두 직선의 교점의 좌표는 $(2, 4)$이므로, 삼각형의 높이는 $4$이다.\n\n\n3단계: 삼각형의 넓이 계산\n밑변의 길이가 $10$이고 높이가 $4$이므로 삼각형의 넓이는\n$$\n\\text{넓이} = \\frac{1}{2} \\times 10 \\times 4 = 20\n$$\n이다.\n\n\n답: 20",
     "score": 7,
     "points": 7,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 3,
+    "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
+    "templateKey": "TPL_M2_CALCULATE_AREA_BOUNDED_BY_TWO_LINES_AND_AXES",
     "crossConceptKeys": [
       "CC_TRIANGLE_AREA",
       "CC_COORDINATE_PLANE"
@@ -1121,6 +1245,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+    "rpmPrimaryL3": "그래프 활용",
+    "rpmPrimaryL4": "넓이",
+    "rpmPrimaryRecordId": "M2-RPM-176",
     "sourceQid": 24,
     "variationType": "NUMERIC"
   }

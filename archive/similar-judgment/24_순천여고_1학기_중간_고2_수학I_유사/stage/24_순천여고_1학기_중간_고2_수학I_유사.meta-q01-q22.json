@@ -3,7 +3,7 @@
   "requestId": "24_순천여고_1학기_중간_고2_수학I_유사-candidate-v1",
   "examUid": "24_순천여고_1학기_중간_고2_수학I_유사",
   "sourceArchiveFile": "archive/exams/similar/high/h2/1mid/24_순천여고_1학기_중간_고2_수학I_유사.js",
-  "expectedSourceBlobSha1": "71646160493312852c8c6d35b29e8024cb1f1aa6",
+  "expectedSourceBlobSha1": "b2450f05513203fd2db86aac123e711cbda192b0",
   "expectedQuestionCount": 22,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -24,13 +24,13 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-03-EXP_EQUATION_RADICAL",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-03",
+        "standardUnit": "지수함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+        "subUnit": "지수함수의 활용",
+        "conceptClusterKey": "EXPONENTIAL_FUNCTION_APPLICATION",
+        "problemTypeKey": "PT_EXPONENTIAL_EQUATION",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
@@ -48,20 +48,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-015"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "지수함수",
+          "l3": "지수방정식",
+          "l4": "밑 통일",
+          "recordId": "H2-M1-RPM-015"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "지수함수",
+        "rpmPrimaryL3": "지수방정식",
+        "rpmPrimaryL4": "밑 통일",
+        "rpmPrimaryRecordId": "H2-M1-RPM-015",
+        "difficultyBasis": "밑이 5인 거듭제곱근으로 즉시 풀 수 있는 기본 난이도 1 문항이다. (125)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-03 / H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION: 방정식 $5^{x + 1}",
+          "curriculum": "H2-M1-RPM-015: 지수함수 단원의 지수방정식 밑 통일 풀이와 일치한다. (125)",
+          "problemType": "지수방정식에서 밑을 같게 할 수 있는 대표 유형이다. (125)",
+          "difficulty": "밑이 5인 거듭제곱근으로 즉시 풀 수 있는 기본 난이도 1 문항이다. (125)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "우변 √125를 5^(3/2)로 바꾸어 밑을 5로 통일한 뒤 지수를 비교한다.",
       "decisiveStep": "√125 = 5^(3/2)로 변환해 x+1=3/2를 얻는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "밑을 5로 통일해 지수를 비교하는 기본 1단계 문항이다.",
+      "difficultyReason": "밑이 5인 거듭제곱근으로 즉시 풀 수 있는 기본 난이도 1 문항이다. (125)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_EXPONENTIAL_EQUATION",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "지수방정식에서 밑을 같게 할 수 있는 대표 유형이다. (125)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_259feb738871a9963a38e5be7f2494371688445d501cfbc0abedc4167758a373",
@@ -73,13 +105,13 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-02-COMMON_LOG_TABLE_SCALE",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-02",
+        "standardUnit": "로그의 뜻과 성질",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-M1-02-LOGARITHM",
+        "subUnit": "로그의 뜻과 성질",
+        "conceptClusterKey": "H15-M1-02-LOGARITHM",
+        "problemTypeKey": "PT_LOG_APPLICATION",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
@@ -97,20 +129,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-011"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "로그",
+          "l3": "상용로그",
+          "l4": "상용로그표·자릿수",
+          "recordId": "H2-M1-RPM-011"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "로그",
+        "rpmPrimaryL3": "상용로그",
+        "rpmPrimaryL4": "상용로그표·자릿수",
+        "rpmPrimaryRecordId": "H2-M1-RPM-011",
+        "difficultyBasis": "표에서 수치를 찾아 자릿수를 더하는 기초 난이도 1 문항이다. (594)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-02 / H15-M1-02-LOGARITHM: 다음은 상용로그표의 일부이다",
+          "curriculum": "H2-M1-RPM-011: 로그 단원의 상용로그표와 자릿수 성질과 일치한다. (594)",
+          "problemType": "상용로그표를 이용하여 상용로그 값을 계산하는 기본 활용 유형이다. (594)",
+          "difficulty": "표에서 수치를 찾아 자릿수를 더하는 기초 난이도 1 문항이다. (594)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "표에서 log 5.94 = 0.7738을 읽고 594=5.94×10²의 정수 부분 2를 더한다.",
       "decisiveStep": "log 5.94 = 0.7738을 읽어 2를 더하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "상용로그표 값에 10²의 정수 부분 2를 더하는 기본 1단계 문항이다.",
+      "difficultyReason": "표에서 수치를 찾아 자릿수를 더하는 기초 난이도 1 문항이다. (594)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_LOG_APPLICATION",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "상용로그표를 이용하여 상용로그 값을 계산하는 기본 활용 유형이다. (594)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_7bff4e484c42ca18018003592c22af5041e99ffaf148f6325d5f41f69b2a9ad8",
@@ -122,13 +186,13 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-01-NESTED_RADICAL_TWO_VARS",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-01",
+        "standardUnit": "지수의 뜻과 성질",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H15-M1-01-EXPONENT",
+        "subUnit": "지수의 뜻과 성질",
+        "conceptClusterKey": "H15-M1-01-EXPONENT",
+        "problemTypeKey": "PT_EXPONENT_CALCULATION",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
@@ -146,20 +210,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-003"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "지수",
+          "l3": "지수의 확장",
+          "l4": "유리수 지수",
+          "recordId": "H2-M1-RPM-003"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "지수",
+        "rpmPrimaryL3": "지수의 확장",
+        "rpmPrimaryL4": "유리수 지수",
+        "rpmPrimaryRecordId": "H2-M1-RPM-003",
+        "difficultyBasis": "거듭제곱근의 유리수 지수 변환 공식을 적용하는 평이한 난이도 2 문항이다. (11)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: $\\sqrt[3]{\\sqrt",
+          "curriculum": "H2-M1-RPM-003: 지수 단원의 지수의 확장 유리수 지수 연산과 일치한다. (11)",
+          "problemType": "지수의 확장에서 유리수 지수 연산을 수행하는 유형이다. (11)",
+          "difficulty": "거듭제곱근의 유리수 지수 변환 공식을 적용하는 평이한 난이도 2 문항이다. (11)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "두 이중 근호를 각각 1/6제곱으로 바꾸어 밑이 같은 a, b의 지수를 더해 x, y를 구한다.",
       "decisiveStep": "두 식을 각각 a, b의 유리수 지수로 전개해 지수를 더하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "두 문자가 포함된 이중 거듭제곱근을 유리수 지수로 고쳐 지수법칙을 적용하는 2단계 문항이다.",
+      "difficultyReason": "거듭제곱근의 유리수 지수 변환 공식을 적용하는 평이한 난이도 2 문항이다. (11)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_EXPONENT_CALCULATION",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "지수의 확장에서 유리수 지수 연산을 수행하는 유형이다. (11)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_4d6a9cc578c1d3365ed452f161ea6cfb68e84a767213b0d0ba3f4e780ad7dd99",
@@ -171,18 +267,18 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-02-LOG_DEF_INT_SUM",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-02",
+        "standardUnit": "로그의 뜻과 성질",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-M1-02-LOGARITHM",
+        "subUnit": "로그의 뜻과 성질",
+        "conceptClusterKey": "H15-M1-02-LOGARITHM",
+        "problemTypeKey": "PT_LOG_DEFINITION_CONDITION",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 4,
@@ -195,20 +291,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-008"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "로그",
+          "l3": "로그의 뜻",
+          "l4": "밑과 진수 조건",
+          "recordId": "H2-M1-RPM-008"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "로그",
+        "rpmPrimaryL3": "로그의 뜻",
+        "rpmPrimaryL4": "밑과 진수 조건",
+        "rpmPrimaryRecordId": "H2-M1-RPM-008",
+        "difficultyBasis": "밑 조건 $x \\ne 1$과 진수 양수 조건을 확인하는 전형적 난이도 2 문항이다. (3.7)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-02 / H15-M1-02-LOGARITHM: $\\log_x(7 - x)$",
+          "curriculum": "H2-M1-RPM-008: 로그 단원의 밑과 진수 조건 성립 검토와 정확히 일치한다. (3.7)",
+          "problemType": "로그의 정의와 밑 진수 성립 조건에 관한 문제 유형이다. (3.7)",
+          "difficulty": "밑 조건 $x \\ne 1$과 진수 양수 조건을 확인하는 전형적 난이도 2 문항이다. (3.7)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "밑 조건(x>0, x≠1)과 진수 조건(x<7)을 모두 만족하는 정수 2~6을 더해 20을 구한다.",
       "decisiveStep": "밑 조건에서 x=1을 제외하고 2부터 6까지 더하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "로그의 밑 조건과 진수 조건을 동시에 만족하는 정수를 찾아 더하는 1단계 문항이다.",
+      "difficultyReason": "밑 조건 $x \\ne 1$과 진수 양수 조건을 확인하는 전형적 난이도 2 문항이다. (3.7)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_LOG_DEFINITION_CONDITION",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "로그의 정의와 밑 진수 성립 조건에 관한 문제 유형이다. (3.7)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_20ec3e43bbc4cd228174399418d27684c72fe6c4a020c71bd5c76a89015387b4",
@@ -220,18 +348,18 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-03-EXP_GRAPH_ASYMPTOTE_TRAP",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-03",
+        "standardUnit": "지수함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+        "subUnit": "지수함수의 그래프",
+        "conceptClusterKey": "EXPONENTIAL_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 5,
@@ -244,20 +372,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-014"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "지수함수",
+          "l3": "지수함수의 그래프",
+          "l4": "평행이동",
+          "recordId": "H2-M1-RPM-014"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "지수함수",
+        "rpmPrimaryL3": "지수함수의 그래프",
+        "rpmPrimaryL4": "평행이동",
+        "rpmPrimaryRecordId": "H2-M1-RPM-014",
+        "difficultyBasis": "지수함수의 기본 성질 5가지를 순차 검증하는 표준 난이도 2 문항이다. (3.9)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-03 / H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH: 다음 중 함수 $y = 4^",
+          "curriculum": "H2-M1-RPM-014: 지수함수의 그래프 성질 및 평행이동에 일치한다. (3.9)",
+          "problemType": "지수함수 그래프의 다양한 성질을 판정하는 유형이다. (3.9)",
+          "difficulty": "지수함수의 기본 성질 5가지를 순차 검증하는 표준 난이도 2 문항이다. (3.9)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "지수함수 y=4^(x-2)+2의 정점, 정의역, 증가성, 역함수, 수평 점근선을 선지별로 판별한다.",
       "decisiveStep": "점근선이 x=2가 아니라 y=2임을 확인해 ⑤를 거짓으로 잡는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "평행이동된 지수함수의 점근선 축 혼동 함정을 판별하는 1단계 문항이다.",
+      "difficultyReason": "지수함수의 기본 성질 5가지를 순차 검증하는 표준 난이도 2 문항이다. (3.9)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "지수함수 그래프의 다양한 성질을 판정하는 유형이다. (3.9)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_9fb02f3e6e9d7cb9c1dbca0262e898ea05b629f8b62ba25beea70f0559438268",
@@ -269,13 +429,13 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-05-TRIG_TAN_Q2_SUM",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-05",
+        "standardUnit": "삼각함수의 뜻과 값",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+        "subUnit": "삼각함수의 뜻과 값",
+        "conceptClusterKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+        "problemTypeKey": "PT_TRIG_QUADRANT_EVALUATION",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
@@ -293,20 +453,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-032"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각함수",
+          "l2": "삼각함수",
+          "l3": "삼각함수의 뜻",
+          "l4": "삼각함수 값",
+          "recordId": "H2-M1-RPM-032"
+        },
+        "rpmPrimaryL1": "삼각함수",
+        "rpmPrimaryL2": "삼각함수",
+        "rpmPrimaryL3": "삼각함수의 뜻",
+        "rpmPrimaryL4": "삼각함수 값",
+        "rpmPrimaryRecordId": "H2-M1-RPM-032",
+        "difficultyBasis": "사분면 부호와 삼각함수의 기본 정의를 이용하는 난이도 2 문항이다. (3.9)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-05 / H15-M1-05-TRIGONOMETRIC_DEFINITION: $\\theta$가 제$2$사",
+          "curriculum": "H2-M1-RPM-032: 삼각함수 단원의 삼각함수의 값 사분면의 각과 부호에 일치한다. (3.9)",
+          "problemType": "사분면 부호와 삼각함수의 값을 결정하는 기본 유형이다. (3.9)",
+          "difficulty": "사분면 부호와 삼각함수의 기본 정의를 이용하는 난이도 2 문항이다. (3.9)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "제2사분면 각과 tan θ=-1/3으로부터 동경 위 점 P(-3, 1)을 잡아 sin θ, cos θ를 구해 더한다.",
       "decisiveStep": "제2사분면 부호에 맞춰 P(-3, 1), r=√10을 설정하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "탄젠트 값과 사분면 조건으로 사인과 코사인을 구해 더하는 표준 2단계 문항이다.",
+      "difficultyReason": "사분면 부호와 삼각함수의 기본 정의를 이용하는 난이도 2 문항이다. (3.9)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_TRIG_QUADRANT_EVALUATION",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "사분면 부호와 삼각함수의 값을 결정하는 기본 유형이다. (3.9)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_627136ba80270be2851cfb90418b6cf994a07446e8632ece7926e265244e156b",
@@ -318,13 +510,13 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-04-LOG_ASYMPTOTE_Y_INTERCEPT",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-04",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+        "subUnit": "로그함수의 그래프",
+        "conceptClusterKey": "LOGARITHMIC_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
@@ -342,20 +534,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-022"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "로그함수",
+          "l3": "로그함수의 그래프",
+          "l4": "평행이동",
+          "recordId": "H2-M1-RPM-022"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "로그함수",
+        "rpmPrimaryL3": "로그함수의 그래프",
+        "rpmPrimaryL4": "평행이동",
+        "rpmPrimaryRecordId": "H2-M1-RPM-022",
+        "difficultyBasis": "로그함수 평행이동에 따른 점근선과 대입으로 풀 수 있는 평이한 난이도 2 문항이다. (10)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-04 / H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH: 함수 $y = \\log_2(",
+          "curriculum": "H2-M1-RPM-022: 로그함수의 그래프 평행이동과 점근선 성질에 부합한다. (10)",
+          "problemType": "로그함수 그래프의 특징으로부터 상수를 결정하는 유형이다. (10)",
+          "difficulty": "로그함수 평행이동에 따른 점근선과 대입으로 풀 수 있는 평이한 난이도 2 문항이다. (10)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "점근선 x=-a=-4에서 a=4를 구하고 y절편 (0,5) 대입으로 b=3을 구해 더한다.",
       "decisiveStep": "점근선 x=-a=-4와 x=0 대입식을 순서대로 푸는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "로그함수의 수직 점근선과 y절편 조건으로 미정계수 두 개를 구하는 2단계 문항이다.",
+      "difficultyReason": "로그함수 평행이동에 따른 점근선과 대입으로 풀 수 있는 평이한 난이도 2 문항이다. (10)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "로그함수 그래프의 특징으로부터 상수를 결정하는 유형이다. (10)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_249424017418df2ac3a818aee5abf5dd6e251e4014b57309cf34009a22de9fc0",
@@ -367,18 +591,18 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-01-NTH_ROOT_BOKI_TRUTH",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-01",
+        "standardUnit": "지수의 뜻과 성질",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H15-M1-01-EXPONENT",
+        "subUnit": "지수의 뜻과 성질",
+        "conceptClusterKey": "H15-M1-01-EXPONENT",
+        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 8,
@@ -391,20 +615,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-002"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "지수",
+          "l3": "거듭제곱근",
+          "l4": "실수 조건",
+          "recordId": "H2-M1-RPM-002"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "지수",
+        "rpmPrimaryL3": "거듭제곱근",
+        "rpmPrimaryL4": "실수 조건",
+        "rpmPrimaryRecordId": "H2-M1-RPM-002",
+        "difficultyBasis": "거듭제곱근의 정의상 실수 조건과 절댓값 개념 함정을 판정하는 난이도 3 문항이다. (81)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: 다음 중 <보기>에서 옳은",
+          "curriculum": "H2-M1-RPM-002: 지수 단원의 거듭제곱근 실수 조건 판정과 일치한다. (81)",
+          "problemType": "거듭제곱근의 실수 조건과 진술의 참 거짓을 판별하는 유형이다. (81)",
+          "difficulty": "거듭제곱근의 정의상 실수 조건과 절댓값 개념 함정을 판정하는 난이도 3 문항이다. (81)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "음수의 짝수·홀수 제곱근 실근 개수와 짝수 제곱근 기호의 양수 값을 보기별로 판별한다.",
       "decisiveStep": "ㄷ에서 ⁴√((-5)⁴)=5임을, ㄹ에서 음수의 짝수 제곱근이 0개임을 확인하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "거듭제곱근의 정의와 실수 개수 규칙을 합답형으로 점검하는 1단계 문항이다.",
+      "difficultyReason": "거듭제곱근의 정의상 실수 조건과 절댓값 개념 함정을 판정하는 난이도 3 문항이다. (81)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "거듭제곱근의 실수 조건과 진술의 참 거짓을 판별하는 유형이다. (81)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_45309b71ef8a7792c5b0b46750cf4dea7cbfec49c05033f442d4abc67dd520cf",
@@ -416,13 +672,13 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-02-LOG_POWER_BASE_EXPONENT",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-02",
+        "standardUnit": "로그의 뜻과 성질",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-M1-02-LOGARITHM",
+        "subUnit": "로그의 뜻과 성질",
+        "conceptClusterKey": "H15-M1-02-LOGARITHM",
+        "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
@@ -440,20 +696,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-010"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "로그",
+          "l3": "로그의 성질",
+          "l4": "밑의 변환",
+          "recordId": "H2-M1-RPM-010"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "로그",
+        "rpmPrimaryL3": "로그의 성질",
+        "rpmPrimaryL4": "밑의 변환",
+        "rpmPrimaryRecordId": "H2-M1-RPM-010",
+        "difficultyBasis": "로그의 기본 정의와 밑변환 계산을 적용하는 표준 난이도 2 문항이다. (27)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-02 / H15-M1-02-LOGARITHM: $1$이 아닌 두 양수 $a",
+          "curriculum": "H2-M1-RPM-010: 로그 단원의 밑의 변환 공식 및 기본 계산에 일치한다. (27)",
+          "problemType": "로그의 성질과 밑변환을 활용한 대수 식 계산 유형이다. (27)",
+          "difficulty": "로그의 기본 정의와 밑변환 계산을 적용하는 표준 난이도 2 문항이다. (27)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "로그의 정의로 a=27, b=3을 구한 뒤 밑의 지수 성질 log_(b^m) a^n = (n/m)log_b a로 계산한다.",
       "decisiveStep": "a=3³, b=3을 구해 log_(3²) 3³ + log_(3⁶) 3 = 3/2 + 1/6을 계산하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "로그 정의로 두 양수를 구하고 밑과 진수의 거듭제곱 성질을 적용하는 2단계 문항이다.",
+      "difficultyReason": "로그의 기본 정의와 밑변환 계산을 적용하는 표준 난이도 2 문항이다. (27)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "로그의 성질과 밑변환을 활용한 대수 식 계산 유형이다. (27)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_814f2496347ee34b1b4e0c18299b7851cd1ae1be3a61c2d36f64b508dda9204a",
@@ -465,18 +753,18 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-02-LOG_ORDERING_0_LT_A_LT_B_LT_1",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-04",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+        "subUnit": "로그함수의 활용",
+        "conceptClusterKey": "LOGARITHMIC_FUNCTION_APPLICATION",
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 10,
@@ -489,20 +777,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-021"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "로그함수",
+          "l3": "로그함수의 그래프",
+          "l4": "증가·감소",
+          "recordId": "H2-M1-RPM-021"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "로그함수",
+        "rpmPrimaryL3": "로그함수의 그래프",
+        "rpmPrimaryL4": "증가·감소",
+        "rpmPrimaryRecordId": "H2-M1-RPM-021",
+        "difficultyBasis": "문자로 주어진 조건에서 로그의 단조감소성을 이용해 대소를 판정하는 난이도 3 문항이다. (4.3)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-04 / H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION: $0 < a < b < 1$",
+          "curriculum": "H2-M1-RPM-021: 로그함수 단원의 수의 대소 비교 성질과 일치한다. (4.3)",
+          "problemType": "로그함수의 성질을 이용한 수의 대소 비교 유형이다. (4.3)",
+          "difficulty": "문자로 주어진 조건에서 로그의 단조감소성을 이용해 대소를 판정하는 난이도 3 문항이다. (4.3)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "0<a<b<1에서 C=log_a b ∈ (0,1)을 기준으로 B=C-1<0과 A=1/C>1의 부등식을 비교한다.",
       "decisiveStep": "0<C<1 범위로부터 B=C-1<0과 A=1/C>1의 경계를 0과 1로 분리하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "0과 1 사이의 두 밑·진수에 대해 로그값의 부호와 역수 대소를 0, 1 기준으로 비교하는 2단계 문항이다.",
+      "difficultyReason": "문자로 주어진 조건에서 로그의 단조감소성을 이용해 대소를 판정하는 난이도 3 문항이다. (4.3)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "로그함수의 성질을 이용한 수의 대소 비교 유형이다. (4.3)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c0ec671623d9a246422c6f88277821ce545e844f7243fccb161deaa1f77ce4ba",
@@ -514,18 +834,18 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-03-EXP_QUADRATIC_MAX_MIN_DIFF",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-03",
+        "standardUnit": "지수함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+        "subUnit": "지수함수의 활용",
+        "conceptClusterKey": "EXPONENTIAL_FUNCTION_APPLICATION",
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 11,
@@ -538,20 +858,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-019"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "지수함수",
+          "l3": "지수함수의 활용",
+          "l4": "최대·최소",
+          "recordId": "H2-M1-RPM-019"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "지수함수",
+        "rpmPrimaryL3": "지수함수의 활용",
+        "rpmPrimaryL4": "최대·최소",
+        "rpmPrimaryRecordId": "H2-M1-RPM-019",
+        "difficultyBasis": "이차함수의 최대 최소와 지수함수의 단조성을 결합한 복합 난이도 3 문항이다. (4.3)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-03 / H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION: 정의역이 ${x \\mid -",
+          "curriculum": "H2-M1-RPM-019: 지수함수 단원의 지수함수의 활용 최대 최소와 부합한다. (4.3)",
+          "problemType": "지수에 이차식이 포함된 지수함수의 최댓값과 최솟값 유형이다. (4.3)",
+          "difficulty": "이차함수의 최대 최소와 지수함수의 단조성을 결합한 복합 난이도 3 문항이다. (4.3)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "지수 g(x)=(x-1)²-2의 [-1, 2] 최댓값 2와 최솟값 -2를 구해 밑 3>1인 지수함수의 M-m을 계산한다.",
       "decisiveStep": "완전제곱식으로 구간 내 g(x)의 최솟값 -2와 최댓값 2를 구하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "이차함수를 지수로 갖는 지수함수의 닫힌구간 최댓값과 최솟값 차를 구하는 표준 2단계 문항이다.",
+      "difficultyReason": "이차함수의 최대 최소와 지수함수의 단조성을 결합한 복합 난이도 3 문항이다. (4.3)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "지수에 이차식이 포함된 지수함수의 최댓값과 최솟값 유형이다. (4.3)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c80f517c18edebe645f3b64f4f0469d85c28de08027409144740e8737d0bf6f7",
@@ -563,13 +915,13 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-02-LOG_EQUATION_INTEGER_PAIR",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-04",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+        "subUnit": "로그함수의 활용",
+        "conceptClusterKey": "LOGARITHMIC_FUNCTION_APPLICATION",
+        "problemTypeKey": "PT_LOG_EQUATION_DOMAIN",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
@@ -587,20 +939,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-023"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "로그함수",
+          "l3": "로그방정식",
+          "l4": "진수 조건",
+          "recordId": "H2-M1-RPM-023"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "로그함수",
+        "rpmPrimaryL3": "로그방정식",
+        "rpmPrimaryL4": "진수 조건",
+        "rpmPrimaryRecordId": "H2-M1-RPM-023",
+        "difficultyBasis": "로그방정식 변형과 정수 조건의 약수 배수 관계를 결합한 난이도 3 문항이다. (4.3)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-04 / H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION: 양의 정수 $x, y$가 $",
+          "curriculum": "H2-M1-RPM-023: 로그방정식의 진수 조건을 고려하여 정수해를 결정하는 풀이와 일치한다. (4.3)",
+          "problemType": "로그방정식과 진수 조건 및 정수해를 결정하는 유형이다. (4.3)",
+          "difficulty": "로그방정식 변형과 정수 조건의 약수 배수 관계를 결합한 난이도 3 문항이다. (4.3)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "로그 방정식을 부정방정식 (7x-2)y=10x로 변형한 뒤 서로소 성질과 약수로 유일한 양의 정수해 (1,2)를 구한다.",
       "decisiveStep": "x의 홀짝성에 따라 서로소 관계를 적용해 7x-2=5로부터 x=1, y=2를 확정하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "로그 방정식을 정수 부정방정식으로 바꾸어 약수·서로소 조건으로 해를 찾아야 하는 3단계 문항이다.",
+      "difficultyReason": "로그방정식 변형과 정수 조건의 약수 배수 관계를 결합한 난이도 3 문항이다. (4.3)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_LOG_EQUATION_DOMAIN",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "로그방정식과 진수 조건 및 정수해를 결정하는 유형이다. (4.3)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_0f570163ade0e6cb254f790594dc99a78bd4fd7cff005cbbfad7fec7a5800986",
@@ -612,18 +996,18 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-01-EXP_THREE_VAR_PROPORTION",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-01",
+        "standardUnit": "지수의 뜻과 성질",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H15-M1-01-EXPONENT",
+        "subUnit": "지수의 뜻과 성질",
+        "conceptClusterKey": "H15-M1-01-EXPONENT",
+        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 13,
@@ -636,20 +1020,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-006"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "지수",
+          "l3": "지수법칙",
+          "l4": "조건식",
+          "recordId": "H2-M1-RPM-006"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "지수",
+        "rpmPrimaryL3": "지수법칙",
+        "rpmPrimaryL4": "조건식",
+        "rpmPrimaryRecordId": "H2-M1-RPM-006",
+        "difficultyBasis": "연립 지수식 조건에서 ac의 곱을 찾아 k를 유도하는 난이도 3 문항이다. (abc)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: 세 양수 $a, b, c$에",
+          "curriculum": "H2-M1-RPM-006: 지수 단원의 지수법칙 조건식 활용과 일치한다. (abc)",
+          "problemType": "지수법칙과 연립 조건식을 이용한 미정계수 결정 유형이다. (abc)",
+          "difficulty": "연립 지수식 조건에서 ac의 곱을 찾아 k를 유도하는 난이도 3 문항이다. (abc)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "3^a=9^b에서 a=2b를 얻어 a+b=2abc에 대입해 ac=3/2을 구한 뒤 k=3^(ac)를 계산한다.",
       "decisiveStep": "a=2b를 대입해 bc=3/4, ac=3/2을 구하고 k=3^(ac)에 대입하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "지수 등식에서 문자 소거 후 관계식 양변을 나누어 ac 값을 직접 구하는 2단계 문항이다.",
+      "difficultyReason": "연립 지수식 조건에서 ac의 곱을 찾아 k를 유도하는 난이도 3 문항이다. (abc)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "지수법칙과 연립 조건식을 이용한 미정계수 결정 유형이다. (abc)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_76667615f01a1cd762179c02d10cada84da0b035688d80e79d41436c7b85d9a4",
@@ -661,13 +1077,13 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-02-EXP_LOG_POWER_IDENTITY",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-02",
+        "standardUnit": "로그의 뜻과 성질",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-M1-02-LOGARITHM",
+        "subUnit": "로그의 뜻과 성질",
+        "conceptClusterKey": "H15-M1-02-LOGARITHM",
+        "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
@@ -685,20 +1101,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-009"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "로그",
+          "l3": "로그의 성질",
+          "l4": "곱·몫·거듭제곱",
+          "recordId": "H2-M1-RPM-009"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "로그",
+        "rpmPrimaryL3": "로그의 성질",
+        "rpmPrimaryL4": "곱·몫·거듭제곱",
+        "rpmPrimaryRecordId": "H2-M1-RPM-009",
+        "difficultyBasis": "밑과 진수의 교환 공식과 기본 곱셈공식을 결합한 난이도 2 문항이다. (4.5)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-02 / H15-M1-02-LOGARITHM: $(5^{\\log_{\\sqr",
+          "curriculum": "H2-M1-RPM-009: 로그 단원의 로그의 성질 곱 몫 거듭제곱 계산에 부합한다. (4.5)",
+          "problemType": "로그의 성질과 거듭제곱의 결합 식 계산 유형이다. (4.5)",
+          "difficulty": "밑과 진수의 교환 공식과 기본 곱셈공식을 결합한 난이도 2 문항이다. (4.5)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "a^(log_a b)=b 성질로 각 항을 4와 5로 정리한 뒤 (A+B)²-(A-B)²=4AB에 대입한다.",
       "decisiveStep": "5^(log_(√5) 2) = 5^(2log_5 2) = 4로 정리하고 4AB를 계산하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "로그 항등식 a^(log_a b)=b와 곱셈 공식 (A+B)²-(A-B)²=4AB를 결합한 문항이다.",
+      "difficultyReason": "밑과 진수의 교환 공식과 기본 곱셈공식을 결합한 난이도 2 문항이다. (4.5)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "로그의 성질과 거듭제곱의 결합 식 계산 유형이다. (4.5)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_f2f638df23bac1ef21c19c15f4ba40518e9e7b30ef2c7d67b89b86c33ceed2b9",
@@ -710,13 +1158,13 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-04-LOG_INTERSECTION_GRAPH_COMPARE",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-04",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+        "subUnit": "로그함수의 그래프",
+        "conceptClusterKey": "LOGARITHMIC_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
@@ -734,20 +1182,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-021"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "로그함수",
+          "l3": "로그함수의 그래프",
+          "l4": "증가·감소",
+          "recordId": "H2-M1-RPM-021"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "로그함수",
+        "rpmPrimaryL3": "로그함수의 그래프",
+        "rpmPrimaryL4": "증가·감소",
+        "rpmPrimaryRecordId": "H2-M1-RPM-021",
+        "difficultyBasis": "교점을 기준으로 구간별 함수값의 대소 관계를 판정하는 난이도 3 문항이다. (4.5)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-04 / H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH: 두 함수 $y = \\log_",
+          "curriculum": "H2-M1-RPM-021: 로그함수 단원의 그래프 증가 감소 및 수의 대소 비교에 부합한다. (4.5)",
+          "problemType": "로그함수 그래프의 교점과 위치 관계를 분석하는 유형이다. (4.5)",
+          "difficulty": "교점을 기준으로 구간별 함수값의 대소 관계를 판정하는 난이도 3 문항이다. (4.5)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "두 로그함수의 교점 (2, 1)을 구하고 교점 좌우에서 x²과 x+2의 대소로 ㄴ, ㄷ 부등식을 판별한다.",
       "decisiveStep": "교점 x=2를 기준으로 0<x<2에서 log_2 x < log_4(x+2), x>2에서 부등호가 반대가 됨을 활용하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "교점 좌표를 구한 뒤 그 좌우 구간에서의 두 로그함수 대소 관계를 수치 부등식에 연결하는 3단계 문항이다.",
+      "difficultyReason": "교점을 기준으로 구간별 함수값의 대소 관계를 판정하는 난이도 3 문항이다. (4.5)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "로그함수 그래프의 교점과 위치 관계를 분석하는 유형이다. (4.5)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_233ec19041cde60378d1924bd9e6f9d9be96fe21dc0df176f8341072f4f33260",
@@ -759,13 +1239,13 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-05-TRIG_QUADRATIC_TAN_RECIP_EQ",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-05",
+        "standardUnit": "삼각함수의 뜻과 값",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+        "subUnit": "삼각함수의 관계",
+        "conceptClusterKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+        "problemTypeKey": "PT_TRIGONOMETRIC_RELATION",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
@@ -783,20 +1263,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-034"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각함수",
+          "l2": "삼각함수",
+          "l3": "삼각함수의 성질",
+          "l4": "삼각함수 관계",
+          "recordId": "H2-M1-RPM-034"
+        },
+        "rpmPrimaryL1": "삼각함수",
+        "rpmPrimaryL2": "삼각함수",
+        "rpmPrimaryL3": "삼각함수의 성질",
+        "rpmPrimaryL4": "삼각함수 관계",
+        "rpmPrimaryRecordId": "H2-M1-RPM-034",
+        "difficultyBasis": "이차방정식 근과 계수의 관계를 두 번 적용하는 전형적인 난이도 3 문항이다. (15)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-05 / H15-M1-05-TRIGONOMETRIC_RELATION: 이차방정식 $4x^2 - x",
+          "curriculum": "H2-M1-RPM-034: 삼각함수 단원의 삼각함수 사이의 관계식 계산과 일치한다. (15)",
+          "problemType": "삼각함수 사이의 관계와 이차방정식의 작성 융합 유형이다. (15)",
+          "difficulty": "이차방정식 근과 계수의 관계를 두 번 적용하는 전형적인 난이도 3 문항이다. (15)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "sin θ+cos θ=1/4에서 sin θ cos θ=-15/32를 구한 뒤 tan θ+1/tan θ=1/(sin θ cos θ)로 새 이차방정식을 세운다.",
       "decisiveStep": "tan θ+cot θ = 1/(sin θ cos θ) = -32/15를 구해 최고차항 계수 15의 방정식을 작성하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "이차방정식의 근과 계수의 관계를 두 번 연결하고 삼각함수 역수 합 공식을 적용하는 3단계 문항이다.",
+      "difficultyReason": "이차방정식 근과 계수의 관계를 두 번 적용하는 전형적인 난이도 3 문항이다. (15)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_TRIGONOMETRIC_RELATION",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "삼각함수 사이의 관계와 이차방정식의 작성 융합 유형이다. (15)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_4b68551c6e97cfc98ba66be8a963f58cd0081f8964508a10c05a993d46c67600",
@@ -808,18 +1320,18 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-01-FRACTIONAL_POWER_RATIO_WORD",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-01",
+        "standardUnit": "지수의 뜻과 성질",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H15-M1-01-EXPONENT",
+        "subUnit": "지수의 뜻과 성질",
+        "conceptClusterKey": "H15-M1-01-EXPONENT",
+        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 17,
@@ -832,20 +1344,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-006"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "지수",
+          "l3": "지수법칙",
+          "l4": "조건식",
+          "recordId": "H2-M1-RPM-006"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "지수",
+        "rpmPrimaryL3": "지수법칙",
+        "rpmPrimaryL4": "조건식",
+        "rpmPrimaryRecordId": "H2-M1-RPM-006",
+        "difficultyBasis": "실생활 수식에 거듭제곱 지수 성질을 대입하여 푸는 문장제 난이도 3 문항이다. (12)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: 어떤 원통형 펌프의 반지름을",
+          "curriculum": "H2-M1-RPM-006: 지수 단원의 지수법칙 조건식 및 활용과 일치한다. (12)",
+          "problemType": "지수법칙을 실생활 관계식에 적용하는 활용 유형이다. (12)",
+          "difficulty": "실생활 수식에 거듭제곱 지수 성질을 대입하여 푸는 문장제 난이도 3 문항이다. (12)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "Q_A=(9/4)Q_B, V_A=(1/12)V_B를 관계식에 대입해 R_A=3R_B를 도출한 뒤 차 조건으로 R_B를 구한다.",
       "decisiveStep": "(9/4)/(1/12)=27의 세제곱근으로 R_A=3R_B를 구하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "실생활 유리수 지수 관계식에서 두 대상의 비율을 대입해 선형 관계식을 이끌어내는 2단계 문항이다.",
+      "difficultyReason": "실생활 수식에 거듭제곱 지수 성질을 대입하여 푸는 문장제 난이도 3 문항이다. (12)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "지수법칙을 실생활 관계식에 적용하는 활용 유형이다. (12)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_66068c9284e517a3f173ca8f7c7693deda77b80f0cf1d53c86957a94413050c9",
@@ -857,13 +1401,13 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-03-INVERSE_EXP_LOG_INTERSECTION_BISECTOR",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-04",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+        "subUnit": "로그함수의 그래프",
+        "conceptClusterKey": "LOGARITHMIC_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_INVERSE_GRAPH",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
@@ -881,20 +1425,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-022"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "로그함수",
+          "l3": "로그함수의 그래프",
+          "l4": "평행이동",
+          "recordId": "H2-M1-RPM-022"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "로그함수",
+        "rpmPrimaryL3": "로그함수의 그래프",
+        "rpmPrimaryL4": "평행이동",
+        "rpmPrimaryRecordId": "H2-M1-RPM-022",
+        "difficultyBasis": "역함수의 대칭성과 기하적 거리, 수직이등분선을 모두 연계한 심화 난이도 4 문항이다. (AB)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-04 / H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH: $1$보다 큰 양수 $a$에",
+          "curriculum": "H2-M1-RPM-022: 로그함수 단원의 그래프 평행이동과 대칭이동에 일치한다. (AB)",
+          "problemType": "지수함수와 로그함수의 역함수 그래프 및 교점 기하 분석 유형이다. (AB)",
+          "difficulty": "역함수의 대칭성과 기하적 거리, 수직이등분선을 모두 연계한 심화 난이도 4 문항이다. (AB)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "증가 역함수 쌍의 교점이 y=x 위에 있음을 이용해 중점 (3,3)과 거리 2√2로 A(2,2), B(4,4)를 찾아 a, b를 연립한다.",
       "decisiveStep": "y=x와 수직이등분선 x+y-6=0의 교점 (3,3)에서 거리 √2만큼 떨어진 (2,2), (4,4)를 구하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "역함수 교점의 y=x 성질, 수직이등분선 중점, 거리 조건으로 두 교점 좌표를 복원해 지수연립을 푸는 고난도 4단계 문항이다.",
+      "difficultyReason": "역함수의 대칭성과 기하적 거리, 수직이등분선을 모두 연계한 심화 난이도 4 문항이다. (AB)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_INVERSE_GRAPH",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "지수함수와 로그함수의 역함수 그래프 및 교점 기하 분석 유형이다. (AB)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_e595673db880d3a875819a8ed0cde12f7e5ce81d99e970b39354683752a1ffcd",
@@ -906,13 +1482,13 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-01-NTH_ROOT_INTEGER_DIVISOR_COUNT",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-01",
+        "standardUnit": "지수의 뜻과 성질",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H15-M1-01-EXPONENT",
+        "subUnit": "지수의 뜻과 성질",
+        "conceptClusterKey": "H15-M1-01-EXPONENT",
+        "problemTypeKey": "PT_ROOT_INTEGER_FEASIBILITY",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
@@ -930,20 +1506,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-001"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "지수",
+          "l3": "거듭제곱근",
+          "l4": "n제곱근",
+          "recordId": "H2-M1-RPM-001"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "지수",
+        "rpmPrimaryL3": "거듭제곱근",
+        "rpmPrimaryL4": "n제곱근",
+        "rpmPrimaryRecordId": "H2-M1-RPM-001",
+        "difficultyBasis": "밑 m의 소인수 거듭제곱 꼴에 따른 지수의 약수 개수를 추론하는 심화 난이도 4 문항이다. (10)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: $10$보다 작은 자연수 $",
+          "curriculum": "H2-M1-RPM-001: 지수 단원의 거듭제곱근 n제곱근 정의 및 성질과 일치한다. (10)",
+          "problemType": "거듭제곱근의 정수 조건과 지수 배수 조건 만족 개수 유형이다. (10)",
+          "difficulty": "밑 m의 소인수 거듭제곱 꼴에 따른 지수의 약수 개수를 추론하는 심화 난이도 4 문항이다. (10)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "m을 소인수 거듭제곱 꼴 여부에 따라 2~9를 분류해 m^(12/n)이 정수가 되는 2 이상 약수 n의 개수가 5개인 m을 찾는다.",
       "decisiveStep": "제곱수(4,9)와 세제곱수(8)는 지수가 24, 36으로 늘어나 약수 개수가 5개를 초과함을 분류하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "밑 m의 거듭제곱수 여부에 따라 지수의 약수 개수가 달라짐을 정확히 분류해야 하는 고난도 4단계 문항이다.",
+      "difficultyReason": "밑 m의 소인수 거듭제곱 꼴에 따른 지수의 약수 개수를 추론하는 심화 난이도 4 문항이다. (10)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_ROOT_INTEGER_FEASIBILITY",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "거듭제곱근의 정수 조건과 지수 배수 조건 만족 개수 유형이다. (10)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_e0b6f2a9de3770b2ea386f2b347510b5a99c53849280b46f556a3c51d4e66f17",
@@ -955,18 +1563,18 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-04-EXP_LOG_SYSTEM_INEQUALITY",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-03",
+        "standardUnit": "지수함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+        "subUnit": "지수함수의 활용",
+        "conceptClusterKey": "EXPONENTIAL_FUNCTION_APPLICATION",
+        "problemTypeKey": "PT_MATH1_SYSTEM_INEQUALITY",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 20,
@@ -979,20 +1587,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-017"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "지수함수",
+          "l3": "지수부등식",
+          "l4": "밑의 범위에 따른 부등호",
+          "recordId": "H2-M1-RPM-017"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "지수함수",
+        "rpmPrimaryL3": "지수부등식",
+        "rpmPrimaryL4": "밑의 범위에 따른 부등호",
+        "rpmPrimaryRecordId": "H2-M1-RPM-017",
+        "difficultyBasis": "밑이 1보다 작은 지수부등식 부호 반전과 로그의 진수 조건을 종합하는 서술형 난이도 3 문항이다. (cases)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-03 / H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION: [서술형 1] 연립부등식\n$",
+          "curriculum": "H2-M1-RPM-017: 지수부등식 단원의 밑의 범위에 따른 부등호 방향 성질과 일치한다. (cases)",
+          "problemType": "지수와 로그가 결합된 연립부등식 풀이 유형이다. (cases)",
+          "difficulty": "밑이 1보다 작은 지수부등식 부호 반전과 로그의 진수 조건을 종합하는 서술형 난이도 3 문항이다. (cases)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "지수부등식과 진수 조건을 포함한 로그부등식을 각각 풀어 공통 범위를 구한다.",
       "decisiveStep": "로그부등식에서 진수 조건 x>0을 적용해 0<x≤1을 얻는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "지수부등식과 로그부등식의 연립에서 밑 크기별 부등호 방향과 진수 조건을 확인하는 표준 서술형 문항이다.",
+      "difficultyReason": "밑이 1보다 작은 지수부등식 부호 반전과 로그의 진수 조건을 종합하는 서술형 난이도 3 문항이다. (cases)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_MATH1_SYSTEM_INEQUALITY",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "지수와 로그가 결합된 연립부등식 풀이 유형이다. (cases)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_9851eb8d60c33d9ac22a370945ec9f6946aad8ebab504fb95262ca0ab19023e6",
@@ -1004,18 +1644,18 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-03-EXP_ANTISYMMETRIC_REAL_ROOT",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-03",
+        "standardUnit": "지수함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+        "subUnit": "지수함수의 활용",
+        "conceptClusterKey": "EXPONENTIAL_FUNCTION_APPLICATION",
+        "problemTypeKey": "PT_EXPONENTIAL_EQUATION",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 3,
+        "difficultyBucket": 4,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 21,
@@ -1028,20 +1668,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-016"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "지수함수",
+          "l3": "지수방정식",
+          "l4": "치환",
+          "recordId": "H2-M1-RPM-016"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "지수함수",
+        "rpmPrimaryL3": "지수방정식",
+        "rpmPrimaryL4": "치환",
+        "rpmPrimaryRecordId": "H2-M1-RPM-016",
+        "difficultyBasis": "대칭 형태의 지수식을 치환하여 치환 변수의 범위를 파악하고 판별식을 쓰는 고난도 4 문항이다. (14)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-03 / H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION: [서술형 2] 방정식 $4^",
+          "curriculum": "H2-M1-RPM-016: 지수함수 단원의 지수방정식 치환 풀이와 완벽히 일치한다. (14)",
+          "problemType": "지수방정식에서 치환을 이용하여 실근 조건을 판별하는 유형이다. (14)",
+          "difficulty": "대칭 형태의 지수식을 치환하여 치환 변수의 범위를 파악하고 판별식을 쓰는 고난도 4 문항이다. (14)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "t=2^x-2^-x의 치역이 실수 전체임을 파악해 t²-kt+3k+16=0의 판별식 D≥0을 푼다.",
       "decisiveStep": "2^x-2^-x=t의 치역이 실수 전체이므로 판별식 D≥0이 실근 존재 필요충분조건임을 적용하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "2^x-2^-x 치환 시 치역이 실수 전체임을 파악해 제한 범위 없이 판별식을 적용해야 하는 3단계 서술형 문항이다.",
+      "difficultyReason": "대칭 형태의 지수식을 치환하여 치환 변수의 범위를 파악하고 판별식을 쓰는 고난도 4 문항이다. (14)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_EXPONENTIAL_EQUATION",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "지수방정식에서 치환을 이용하여 실근 조건을 판별하는 유형이다. (14)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_06d432950eaf49ca64b2c2886f4ecf3ff6655366d3f05543bf196f04aa0896b2",
@@ -1053,13 +1725,13 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "H15-M1-04-LOG_EQ_EQUAL_ARG_OR_BASE",
-        "problemTypeKey": "",
+        "standardUnitKey": "H15-M1-04",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+        "subUnit": "로그함수의 활용",
+        "conceptClusterKey": "LOGARITHMIC_FUNCTION_APPLICATION",
+        "problemTypeKey": "PT_LOG_EQUATION_DOMAIN",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
@@ -1077,20 +1749,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-023"
+        ],
+        "rpmPrimary": {
+          "l1": "지수함수와 로그함수",
+          "l2": "로그함수",
+          "l3": "로그방정식",
+          "l4": "진수 조건",
+          "recordId": "H2-M1-RPM-023"
+        },
+        "rpmPrimaryL1": "지수함수와 로그함수",
+        "rpmPrimaryL2": "로그함수",
+        "rpmPrimaryL3": "로그방정식",
+        "rpmPrimaryL4": "진수 조건",
+        "rpmPrimaryRecordId": "H2-M1-RPM-023",
+        "difficultyBasis": "로그방정식에서 진수가 1이 되는 해를 놓치지 않고 밑 조건을 검증해야 하는 서술형 난이도 3 문항이다. (15)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H15-M1-04 / H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION: [서술형 3] 로그방정식 $",
+          "curriculum": "H2-M1-RPM-023: 로그함수 단원의 로그방정식 진수 조건과 일치한다. (15)",
+          "problemType": "로그방정식에서 진수 조건과 정의역 검토를 요구하는 유형이다. (15)",
+          "difficulty": "로그방정식에서 진수가 1이 되는 해를 놓치지 않고 밑 조건을 검증해야 하는 서술형 난이도 3 문항이다. (15)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "밑·진수 조건을 구한 뒤 진수가 1인 경우(x=1)와 밑이 같은 경우(x²+2x=15)를 모두 풀어 근을 선별한다.",
       "decisiveStep": "밑이 달라도 진수가 1이면 등식이 성립함(x=1)을 빠뜨리지 않고 진수 조건으로 x=-5를 제외하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "밑이 미지수인 로그방정식에서 밑·진수 조건과 진수=1 경우를 모두 챙겨야 하는 3단계 서술형 문항이다.",
+      "difficultyReason": "로그방정식에서 진수가 1이 되는 해를 놓치지 않고 밑 조건을 검증해야 하는 서술형 난이도 3 문항이다. (15)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_LOG_EQUATION_DOMAIN",
         "templateKey": null,
-        "why": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+        "why": "로그방정식에서 진수 조건과 정의역 검토를 요구하는 유형이다. (15)"
       },
       "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "HOLD: 정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     }
   ]
 }

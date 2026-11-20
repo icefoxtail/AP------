@@ -1,0 +1,895 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/middle/m2/2mid/26_왕운중_2학기_중간_중2_유사.js",
+  "sourceGitBlobSha": "dd86806da3094f64b0b146aa73432d6191e6b5cf",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "similar-import-draft",
+    "at": "2026-11-20"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "단일 모델 초안(UNREVIEWED). 인용은 check-judgment 로 원문 포함을 확인했다."
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "$\\overline{AB} = \\overline{AC}$인 이등변삼각형 $ABC$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle BAD$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "$\\overline{AB} = \\overline{AC}$이므로 $\\angle B = \\angle C$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "이등변삼각형의 밑각과 꼭지각의 합 성질 적용"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "$\\angle C = \\angle F = 90^\\circ$인 두 직각삼각형 $ABC$와 $DEF$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "$\\text{RHA}$ 합동이 되기 위한 조건인 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "$\\text{RHA}$ 합동이 되려면 빗변의 길이와 한 예각의 크기가 각각 같아야 하므로",
+            "evidenceType": "IMPLIED",
+            "justification": "RHA 직각삼각형 합동조건 정의 적용"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "점 $I$는 $\\triangle ABC$의 내심이고 $\\angle A = 64^\\circ$, $\\angle B = 52^\\circ$일 때"
+          },
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "또 점 $O$는 예각삼각형 $DEF$의 외심이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "이때 $x + y$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "점 $I$는 내심이므로 $x = \\angle AIB = 90^\\circ + \\dfrac{1}{2}\\angle C = 90^\\circ + 32^\\circ = 122^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "내심과 외심의 중심각 공식 적용"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "둔각삼각형 $ABC$의 외심 $O$가 변 $BC$에 대하여 꼭짓점 $A$의 반대쪽에 있고"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "꼭짓점 $A$에서 변 $BC$에 내린 수선의 발을 $D$, $\\triangle ADC$의 외심을 $O'$이라고 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "외심",
+            "src": "choices",
+            "quote": "점 $O'$은 $\\triangle AOC$의 외심이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "직각삼각형 $ADC$의 외심 $O'$은 빗변 $AC$의 중점이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형의 외심 위치(빗변의 중점)와 외심의 각 성질 적용"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 변 $AC$ 위의 점 $F$에서 변 $BC$에 내린 수선의 발을 $E$라고 하고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "따라서 $\\angle B = \\angle C = 52^\\circ$이므로 $\\triangle ABC$는 $\\overline{AB} = \\overline{AC}$인 이등변삼각형이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "$\\triangle BDE \\equiv \\triangle CEF$ ($\\text{RHS}$ 합동)",
+            "evidenceType": "IMPLIED",
+            "justification": "직각삼각형의 RHS 합동과 이등변삼각형 판정 적용"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "$\\overline{AB} = \\overline{AC}$인 이등변삼각형 $ABC$에서 $\\angle A$의 이등분선과 변 $BC$의 교점을 $D$라고 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "이등변삼각형",
+            "src": "choices",
+            "quote": "$\\overline{BC} \\perp \\overline{AD}$"
+          }
+        ],
+        "method": [
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "이등변삼각형 $ABC$에서 꼭짓각 $A$의 이등분선 $AD$는 밑변 $BC$의 수직이등분선이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "이등변삼각형 꼭지각의 이등분선 성질 적용"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "점 $I$는 $\\triangle ABC$의 내심이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle BIC$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "내심",
+            "src": "solution",
+            "quote": "$\\overline{BD}$와 $\\overline{CE}$는 각각 $\\angle B$, $\\angle C$의 이등분선이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "내심의 정의와 각의 이등분선 연립방정식 적용"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "$\\overline{AB} = \\overline{AC}$인 예각이등변삼각형 $ABC$의 외심을 $O$, 내심을 $I$라고 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle OBI$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "내심",
+            "src": "solution",
+            "quote": "점 $I$는 내심이므로 $112^\\circ = 90^\\circ + \\dfrac{1}{2}\\angle A \\implies \\dfrac{1}{2}\\angle A = 22^\\circ \\implies \\angle A = 44^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "내심 공식으로 꼭지각을 구하고 외심 이등변삼각형과의 차이 계산"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "수직이등분선",
+            "src": "stem",
+            "quote": "두 꼭짓점 $A$, $B$가 겹치도록 접었다가 펼쳐 변 $AB$의 수직이등분선을 만든다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "세 변의 수직이등분선의 교점 $O$는 $\\triangle ABC$의 외심이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "외심에서 세 꼭짓점까지의 거리는 같으므로 $\\overline{AO} = \\overline{BO} = \\overline{CO}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "외심의 정의와 성질 감사 적용"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 내심 $I$를 지나고 변 $BC$에 평행한 직선이 변 $AB$, 변 $AC$와 만나는 점을 각각 $D$, $E$라고 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "내심",
+            "src": "solution",
+            "quote": "$\\overline{DE} \\parallel \\overline{BC}$이고 $\\overline{BI}$가 $\\angle B$의 이등분선이므로"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "따라서 $\\triangle DBI$는 이등변삼각형이므로 $\\overline{DB} = \\overline{DI} = 5$",
+            "evidenceType": "IMPLIED",
+            "justification": "평행선과 각의 이등분선으로 만들어지는 이등변삼각형 성질 적용"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형 $ABCD$에서 $\\overline{AB} = 2x - 1$, $\\overline{CD} = 9$, $\\overline{BC} = y + 3$, $\\overline{AD} = 11$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "$x + y$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "선분",
+            "src": "solution",
+            "quote": "평행사변형의 두 쌍의 대변의 길이는 각각 같으므로",
+            "evidenceType": "IMPLIED",
+            "justification": "평행사변형 대변의 길이가 같다는 성질 적용"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "다음 중 $\\square ABCD$가 평행사변형인 것을 모두 고르면? (정답 2개, 단 점 $O$는 두 대각선의 교점)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "평행사변형",
+            "src": "choices",
+            "quote": "$\\overline{AB} = \\overline{DC} = 5\\text{ cm},\\ \\overline{AD} = \\overline{BC} = 7\\text{ cm}$"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "두 쌍의 대변의 길이가 각각 같으므로 평행사변형이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평행사변형이 되는 조건 감사 적용"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형 $ABCD$에서 $\\angle A$와 $\\angle B$의 크기의 비가 $5 : 7$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle A + \\angle C$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "평행사변형에서 이웃한 두 내각의 크기의 합은 $180^\\circ$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "평행사변형의 이웃한 내각의 합 180도 성질 적용"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형 $ABCD$의 네 내각의 이등분선이 서로 만나 이루는 사각형 $EFGH$에 대한 설명으로 옳지 않은 것은?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "직사각형",
+            "src": "solution",
+            "quote": "따라서 $\\square EFGH$의 네 내각이 모두 $90^\\circ$이므로 $\\square EFGH$는 직사각형이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "직사각형은 두 대각선의 길이가 같지만, 정사각형이 아닌 이상 두 대각선이 서로 수직으로 만나지 않는다.",
+            "evidenceType": "IMPLIED",
+            "justification": "직사각형의 대각선 성질 대조"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사다리꼴",
+            "src": "stem",
+            "quote": "ㄱ. 평행사변형　ㄴ. 직사각형　ㄷ. 마름모　ㄹ. 정사각형　ㅁ. 등변사다리꼴"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "$a + b + c$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "마름모",
+            "src": "solution",
+            "quote": "두 대각선이 서로 수직인 사각형: ㄷ(마름모), ㄹ(정사각형) $\\implies b = 2$",
+            "evidenceType": "IMPLIED",
+            "justification": "특수 사각형별 대각선 성질 분류 및 개수 합산"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형 $ABCD$의 두 대각선의 교점을 $O$라 할 때, $\\overline{AC} = 5x + 4$, $\\overline{BO} = 4x - 1$이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "이때 대각선 $\\overline{AC}$의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "직사각형의 두 대각선은 길이가 같고 서로 다른 것을 이등분하므로",
+            "evidenceType": "IMPLIED",
+            "justification": "직사각형 대각선의 성질과 길이 관계 적용"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형 $ABCD$에서 점 $E$가 정사각형의 외부에 있고 $\\overline{CD} = \\overline{CE}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle BED$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "정사각형",
+            "src": "solution",
+            "quote": "정사각형이므로 $\\overline{BC} = \\overline{CD}$이고 조건에서 $\\overline{CD} = \\overline{CE}$이므로 $\\overline{BC} = \\overline{CE}$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "정사각형의 변의 길이와 이등변삼각형 밑각 성질 적용"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "마름모",
+            "src": "stem",
+            "quote": "마름모 $ABCD$의 꼭짓점 $A$에서 변 $CD$에 내린 수선의 발을 $E$라고 하고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle ACB$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "마름모",
+            "src": "solution",
+            "quote": "마름모의 대각선 $BD$는 $\\angle ADC$를 이등분하므로",
+            "evidenceType": "IMPLIED",
+            "justification": "마름모 대각선의 내각 이등분 성질 적용"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "$\\triangle ABC \\sim \\triangle DEF$이고 $\\angle A = 42^\\circ$, $\\angle F = 105^\\circ$, $\\overline{BC} = 9\\text{ cm}$, $\\overline{EF} = 12\\text{ cm}$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "닮음비",
+            "src": "choices",
+            "quote": "$\\triangle ABC$와 $\\triangle DEF$의 닮음비는 $3 : 4$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "대응변",
+            "src": "solution",
+            "quote": "대응변 $\\overline{BC}$와 $\\overline{EF}$의 길이의 비는 $9 : 12 = 3 : 4$이므로 닮음비는 $3 : 4$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "대응변의 길이비로부터 닮음비 도출"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "$\\triangle ABC \\sim \\triangle DEF$이고 $\\overline{AB} = 6\\text{ cm}$, $\\overline{DE} = 10\\text{ cm}$이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle DEF$의 넓이가 $75\\text{ cm}^2$일 때, $\\triangle ABC$의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이의 비는 $3^2 : 5^2 = 9 : 25$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "닮은 도형의 넓이비는 닮음비의 제곱의 비임을 적용"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "$\\angle B = 90^\\circ$인 직각삼각형 $ABC$에서 $\\angle A$의 이등분선과 변 $BC$의 교점을 $D$"
+          },
+          {
+            "term": "수선의발",
+            "src": "stem",
+            "quote": "점 $D$에서 변 $AC$에 내린 수선의 발을 $E$라고 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "$\\triangle DEC$의 넓이를 구하시오. (단, 삼각형의 합동을 이용할 것)"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "$\\triangle ABD \\equiv \\triangle AED$ ($\\text{RHA}$ 합동)",
+            "evidenceType": "IMPLIED",
+            "justification": "RHA 직각삼각형 합동조건 적용"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "$\\overline{AB} = 10$, $\\overline{BC} = 17$, $\\overline{CA} = 9$이고 넓이가 $36$인 $\\triangle ABC$의 내심을 $I$라고 할 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 내접원의 넓이를 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "반지름",
+            "src": "solution",
+            "quote": "내접원의 반지름의 길이를 $r$이라 하면 내심 $I$에서 세 변까지의 거리는 모두 $r$이다.",
+            "evidenceType": "IMPLIED",
+            "justification": "내접원 반지름과 삼각형 둘레를 이용한 넓이 공식 적용"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형 $ABCD$의 대각선 $AC$ 위의 한 점 $P$에 대하여 $\\angle BPC = 62^\\circ$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "$\\angle PDC$의 크기를 구하시오. (단, 삼각형의 합동을 이용할 것)"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "$\\triangle ABP \\equiv \\triangle ADP$ ($\\text{SAS}$ 합동)",
+            "evidenceType": "IMPLIED",
+            "justification": "정사각형 대각선에 대칭인 두 삼각형의 SAS 합동 적용"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "밑변 $\\overline{BC}$의 길이가 $10\\text{ cm}$이고 높이가 $8\\text{ cm}$인 평행사변형 $ABCD$의 두 대각선의 교점을 $O$라 하자."
+          }
+        ],
+        "goal": [
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "$\\triangle ABM$과 $\\triangle CBN$의 넓이의 합을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "두 대각선은 서로 다른 것을 이등분하므로 네 삼각형 $AOB$, $BOC$, $COD$, $DOA$의 넓이는 모두 같다.",
+            "evidenceType": "IMPLIED",
+            "justification": "평행사변형 대각선에 의한 4등분 및 중점 넓이 반분 성질 적용"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ]
+}

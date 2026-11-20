@@ -3,7 +3,7 @@
   "requestId": "26_제일고_2학기_중간_고2_확률과통계_유사-candidate-v1",
   "examUid": "26_제일고_2학기_중간_고2_확률과통계_유사",
   "sourceArchiveFile": "archive/exams/similar/high/h2/2mid/26_제일고_2학기_중간_고2_확률과통계_유사.js",
-  "expectedSourceBlobSha1": "f7d31d7154356371c26a7811da9d581f05df0213",
+  "expectedSourceBlobSha1": "ab255d14806aa1220ea9a08ccd56e64857b032f3",
   "expectedQuestionCount": 21,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -24,20 +24,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "확률과 통계",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-PS-01",
+        "standardUnit": "순열과 조합",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-PS-01-CORE",
+        "subUnit": "순열과 조합 핵심 개념",
+        "conceptClusterKey": "H22-PS-01-CORE",
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 1,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -47,19 +47,50 @@
           "sourceQid": 1,
           "variationType": "STRICT_VARIANT",
           "variationNote": "밑에 미지수가 있는 단일 중복순열 방정식 → 지수에 미지수가 있는 두 중복순열의 합 방정식"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-033"
+        ],
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "순열과 조합",
+          "l3": "순열",
+          "l4": "중복·원순열",
+          "recordId": "H2-PS-RPM-033"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "순열과 조합",
+        "rpmPrimaryL3": "순열",
+        "rpmPrimaryL4": "중복·원순열",
+        "rpmPrimaryRecordId": "H2-PS-RPM-033",
+        "difficultyBasis": "중복순열 공식 {}_{m}\\Pi_{r}=m^{r}을 바로 대입해 3\\cdot 2^{n}=24에서 n=3을 구하는 2단계 풀이라 1단계이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-PS-01 / H22-PS-01-CORE: ${}_{2}\\Pi_{n}+{}_{2}\\Pi_{n+1}=24$",
+          "curriculum": "H2-PS-RPM-033: {}_{2}\\Pi_{n}=2^{n}으로 바꾸어 2^{n}+2^{n+1}=24를 푸는 중복순열 문제이므로 중복·원순열 행이다.",
+          "problemType": "{}_{2}\\Pi_{n}+{}_{2}\\Pi_{n+1}=24에서 중복순열의 공식을 적용해 2^{n}에 대한 지수방정식을 푸는 구조이다.",
+          "difficulty": "중복순열 공식 {}_{m}\\Pi_{r}=m^{r}을 바로 대입해 3\\cdot 2^{n}=24에서 n=3을 구하는 2단계 풀이라 1단계이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "중복순열 공식 {}_{m}\\Pi_{r}=m^{r}을 바로 대입해 3\\cdot 2^{n}=24에서 n=3을 구하는 2단계 풀이라 1단계이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+        "why": "{}_{2}\\Pi_{n}+{}_{2}\\Pi_{n+1}=24에서 중복순열의 공식을 적용해 2^{n}에 대한 지수방정식을 푸는 구조이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_ee6fa1b99bed98b9244411fb4513ddae7770392f05fa3899af230950c0b1476e",
@@ -71,20 +102,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "확률과 통계",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-PS-01",
+        "standardUnit": "순열과 조합",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-PS-01-CORE",
+        "subUnit": "순열과 조합 핵심 개념",
+        "conceptClusterKey": "H22-PS-01-CORE",
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 2,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -94,19 +125,50 @@
           "sourceQid": 2,
           "variationType": "STRICT_VARIANT",
           "variationNote": "모두 등호가 있는 부등식 $a\\le b\\le c$ → 엄격한 부등호가 포함된 $a\\le b<c$ 조건으로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-036"
+        ],
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "순열과 조합",
+          "l3": "중복조합",
+          "l4": "중복을 허용한 선택",
+          "recordId": "H2-PS-RPM-036"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "순열과 조합",
+        "rpmPrimaryL3": "중복조합",
+        "rpmPrimaryL4": "중복을 허용한 선택",
+        "rpmPrimaryRecordId": "H2-PS-RPM-036",
+        "difficultyBasis": "등호가 없는 b<c를 c'=c-1로 변환한 뒤 {}_{5}H_{3}={}_{7}C_{3}=35를 계산하는 2단계 풀이라 2단계이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-PS-01 / H22-PS-01-CORE: $a\\le b<c$를 만족시키는 순서쌍 $(a, b, c)$의 개수는?",
+          "curriculum": "H2-PS-RPM-036: 1\\le a\\le b\\le c'\\le 5를 만족하는 순서쌍 개수를 {}_{5}H_{3}=35로 세는 중복을 허용한 선택 행이다.",
+          "problemType": "부등식 a\\le b<c를 c'=c-1 치환으로 비감소 조건으로 바꾸어 {}_{5}H_{3}=35를 계산하는 중복조합 템플릿이다.",
+          "difficulty": "등호가 없는 b<c를 c'=c-1로 변환한 뒤 {}_{5}H_{3}={}_{7}C_{3}=35를 계산하는 2단계 풀이라 2단계이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 순서 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "등호가 없는 b<c를 c'=c-1로 변환한 뒤 {}_{5}H_{3}={}_{7}C_{3}=35를 계산하는 2단계 풀이라 2단계이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "why": "부등식 a\\le b<c를 c'=c-1 치환으로 비감소 조건으로 바꾸어 {}_{5}H_{3}=35를 계산하는 중복조합 템플릿이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_d4575bdca0831158bdea9b8db8b305585a9301162c9d2b78ad6705271f23c979",
@@ -118,20 +180,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "확률과 통계",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-PS-02",
+        "standardUnit": "이항정리",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H22-PS-02-CORE",
+        "subUnit": "이항정리 핵심 개념",
+        "conceptClusterKey": "H22-PS-02-CORE",
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 3,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -141,19 +203,50 @@
           "sourceQid": 3,
           "variationType": "STRICT_VARIANT",
           "variationNote": "특정 항의 계수를 구하는 문제 → 특정 항의 계수를 주고 미정계수 $a$를 구하는 문제"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-039"
+        ],
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "이항정리",
+          "l3": "이항정리",
+          "l4": "특정 항의 계수",
+          "recordId": "H2-PS-RPM-039"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "이항정리",
+        "rpmPrimaryL3": "이항정리",
+        "rpmPrimaryL4": "특정 항의 계수",
+        "rpmPrimaryRecordId": "H2-PS-RPM-039",
+        "difficultyBasis": "이항정리 일반항 공식을 바로 적용해 r=3과 a^{3}=27을 구하는 기본 문항이라 1단계이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-PS-02 / H22-PS-02-CORE: $\\left(x^{2}+\\dfrac{a}{x}\\right)^{6}$의 전개식에서 $x^{3}$의 계수가",
+          "curriculum": "H2-PS-RPM-039: 이항전개 일반항에서 x^{3} 항의 계수 20a^{3}=540을 구해 a=3을 찾는 특정 항의 계수 행이다.",
+          "problemType": "일반항 {}_{6}C_{r}a^{r}x^{12-3r}에서 지수 12-3r=3인 r=3을 찾고 계수 20a^{3}=540을 푸는 전개식의 항·계수 유형이다.",
+          "difficulty": "이항정리 일반항 공식을 바로 적용해 r=3과 a^{3}=27을 구하는 기본 문항이라 1단계이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 양수 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "이항정리 일반항 공식을 바로 적용해 r=3과 a^{3}=27을 구하는 기본 문항이라 1단계이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+        "why": "일반항 {}_{6}C_{r}a^{r}x^{12-3r}에서 지수 12-3r=3인 r=3을 찾고 계수 20a^{3}=540을 푸는 전개식의 항·계수 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_d50d64e8f1b7e59eafa53ca0d41cd3dfabd3d7ba424ed7ec23ea795e0f65f4be",
@@ -165,20 +258,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "확률과 통계",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 계산",
+        "conceptClusterKey": "H22-PS-03-PROBABILITY_BASIC",
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 4,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -188,19 +281,50 @@
           "sourceQid": 4,
           "variationType": "STRICT_VARIANT",
           "variationNote": "주사위 눈에서 약수일 확률 → $12$장의 카드에서 소수일 확률로 시행과 사건 조건 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-043"
+        ],
+        "rpmPrimary": {
+          "l1": "확률",
+          "l2": "확률의 뜻과 활용",
+          "l3": "확률의 기본",
+          "l4": "확률 계산",
+          "recordId": "H2-PS-RPM-043"
+        },
+        "rpmPrimaryL1": "확률",
+        "rpmPrimaryL2": "확률의 뜻과 활용",
+        "rpmPrimaryL3": "확률의 기본",
+        "rpmPrimaryL4": "확률 계산",
+        "rpmPrimaryRecordId": "H2-PS-RPM-043",
+        "difficultyBasis": "12 이하의 소수 5개를 세어 확률의 정의 5/12를 바로 적용하는 1단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-PS-03 / H22-PS-03-PROBABILITY_BASIC: 카드에 적힌 수가 소수일 확률은?",
+          "curriculum": "H2-PS-RPM-043: 전체 12가지 경우 중 소수 5가지의 비율 5/12를 구하는 확률 계산 행이다.",
+          "problemType": "전체 경우의 수 12와 소수인 경우의 수 5의 비 5/12로 수학적 확률을 구하는 기본 계산 템플릿이다.",
+          "difficulty": "12 이하의 소수 5개를 세어 확률의 정의 5/12를 바로 적용하는 1단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 소수 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "12 이하의 소수 5개를 세어 확률의 정의 5/12를 바로 적용하는 1단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "why": "전체 경우의 수 12와 소수인 경우의 수 5의 비 5/12로 수학적 확률을 구하는 기본 계산 템플릿이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_84ca63fba2c7bca9d53bd8b5d1e129c82c6b77c21ff74912ad4cba6b90c425db",
@@ -212,20 +336,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "확률과 통계",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 계산",
+        "conceptClusterKey": "H22-PS-03-PROBABILITY_BASIC",
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 5,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -235,19 +359,50 @@
           "sourceQid": 5,
           "variationType": "STRICT_VARIANT",
           "variationNote": "연령별 표에서 단일 항목 확률 → 동아리별 표에서 두 배반 항목의 합집합 확률로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-043"
+        ],
+        "rpmPrimary": {
+          "l1": "확률",
+          "l2": "확률의 뜻과 활용",
+          "l3": "확률의 기본",
+          "l4": "확률 계산",
+          "recordId": "H2-PS-RPM-043"
+        },
+        "rpmPrimaryL1": "확률",
+        "rpmPrimaryL2": "확률의 뜻과 활용",
+        "rpmPrimaryL3": "확률의 기본",
+        "rpmPrimaryL4": "확률 계산",
+        "rpmPrimaryRecordId": "H2-PS-RPM-043",
+        "difficultyBasis": "표에서 두 수 65, 75를 더해 400으로 나누기만 하면 되는 1단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-PS-03 / H22-PS-03-PROBABILITY_BASIC: 그 학생이 수학 동아리 또는 과학 동아리에 속할 확률은?",
+          "curriculum": "H2-PS-RPM-043: 표에서 읽은 학생 수 65+75=140을 전체 400으로 나누어 7/20을 구하는 확률 계산 행이다.",
+          "problemType": "표의 65명과 75명을 더해 전체 400명과의 비 140/400=7/20을 구하는 기본 확률 계산 유형이다.",
+          "difficulty": "표에서 두 수 65, 75를 더해 400으로 나누기만 하면 되는 1단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 배반사건 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 표는 어느 고등학교 학생 $400$명의 동아리별 학생 수를 나타낸 것이다.」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "표에서 두 수 65, 75를 더해 400으로 나누기만 하면 되는 1단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "why": "표의 65명과 75명을 더해 전체 400명과의 비 140/400=7/20을 구하는 기본 확률 계산 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_88155dcbb692fc0bbfe46cb144d2550f0042bbb5b65f0f634e38c319f23a73f2",
@@ -259,20 +414,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "확률과 통계",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-PS-03-PROBABILITY_APPLICATION",
+        "subUnit": "확률의 활용",
+        "conceptClusterKey": "H22-PS-03-PROBABILITY_APPLICATION",
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 6,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -282,19 +437,50 @@
           "sourceQid": 6,
           "variationType": "STRICT_VARIANT",
           "variationNote": "$P(A), P(B)$를 주고 $P(A\\cup B)$ 구하기 → $P(A), P(A\\cup B)$를 주고 $P(B^c)$ 구하기"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-044"
+        ],
+        "rpmPrimary": {
+          "l1": "확률",
+          "l2": "확률의 뜻과 활용",
+          "l3": "확률의 덧셈정리",
+          "l4": "배반사건",
+          "recordId": "H2-PS-RPM-044"
+        },
+        "rpmPrimaryL1": "확률",
+        "rpmPrimaryL2": "확률의 뜻과 활용",
+        "rpmPrimaryL3": "확률의 덧셈정리",
+        "rpmPrimaryL4": "배반사건",
+        "rpmPrimaryRecordId": "H2-PS-RPM-044",
+        "difficultyBasis": "배반사건의 덧셈정리로 P(B)=7/12를 구하고 여사건 공식으로 5/12를 바로 얻는 2줄 풀이라 1단계이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-PS-03 / H22-PS-03-PROBABILITY_APPLICATION: 서로 배반사건인 두 사건 $A, B$에 대하여",
+          "curriculum": "H2-PS-RPM-044: 배반사건 조건으로 P(B)=5/6-1/4=7/12를 구한 뒤 여사건 확률 5/12를 구하는 배반사건 행이다.",
+          "problemType": "배반사건의 덧셈정리 P(A\\cup B)=P(A)+P(B)와 여사건 P(B^{c})=1-P(B)를 결합해 5/12를 구하는 구조이다.",
+          "difficulty": "배반사건의 덧셈정리로 P(B)=7/12를 구하고 여사건 공식으로 5/12를 바로 얻는 2줄 풀이라 1단계이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 배반사건 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "배반사건의 덧셈정리로 P(B)=7/12를 구하고 여사건 공식으로 5/12를 바로 얻는 2줄 풀이라 1단계이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+        "why": "배반사건의 덧셈정리 P(A\\cup B)=P(A)+P(B)와 여사건 P(B^{c})=1-P(B)를 결합해 5/12를 구하는 구조이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_965a136652fd9a7c6e1e97633c5b08c079630c37c89094262db88d26a7015e82",
@@ -306,20 +492,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "확률과 통계",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-PS-01",
+        "standardUnit": "순열과 조합",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-PS-01-CORE",
+        "subUnit": "순열과 조합 핵심 개념",
+        "conceptClusterKey": "H22-PS-01-CORE",
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 7,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -329,19 +515,50 @@
           "sourceQid": 7,
           "variationType": "STRICT_VARIANT",
           "variationNote": "두 그룹 사이의 순서 조건 → 세 문자 $a, b, c$의 상대적 순서가 하나로 고정되는 조건으로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-032"
+        ],
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "순열과 조합",
+          "l3": "순열",
+          "l4": "일렬 배열",
+          "recordId": "H2-PS-RPM-032"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "순열과 조합",
+        "rpmPrimaryL3": "순열",
+        "rpmPrimaryL4": "일렬 배열",
+        "rpmPrimaryRecordId": "H2-PS-RPM-032",
+        "difficultyBasis": "상대적 순서 고정을 같은 문자로 치환하여 같은 것이 있는 순열 40320/24=1680을 적용하는 2단계 풀이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-PS-01 / H22-PS-01-CORE: $8$장의 카드를 일렬로 나열할 때,",
+          "curriculum": "H2-PS-RPM-032: 8장의 카드를 일렬로 나열하되 a, b, c의 순서를 고정해 40320/24=1680을 계산하는 일렬 배열 행이다.",
+          "problemType": "순서가 정해진 a, b, c를 같은 문자로 취급해 같은 것이 있는 순열 8!/(3!2!2!)=1680을 계산하는 구조이다.",
+          "difficulty": "상대적 순서 고정을 같은 문자로 치환하여 같은 것이 있는 순열 40320/24=1680을 적용하는 2단계 풀이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 순서, 구별불가 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "상대적 순서 고정을 같은 문자로 치환하여 같은 것이 있는 순열 40320/24=1680을 적용하는 2단계 풀이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+        "why": "순서가 정해진 a, b, c를 같은 문자로 취급해 같은 것이 있는 순열 8!/(3!2!2!)=1680을 계산하는 구조이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_b31bd146eefd3b4d2f17c67e45fe1c6da69f9dec7362e7e905c2ccb3627c03e0",
@@ -353,20 +570,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "확률과 통계",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 계산",
+        "conceptClusterKey": "H22-PS-03-PROBABILITY_BASIC",
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 8,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -376,19 +593,50 @@
           "sourceQid": 8,
           "variationType": "STRICT_VARIANT",
           "variationNote": "정의역 원소 $6$개, $3$의 배수, $f(2)\\le f(3)\\le f(4)$ → 원소 $5$개, 짝수, $f(1)<f(3)\\le f(5)$로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-043"
+        ],
+        "rpmPrimary": {
+          "l1": "확률",
+          "l2": "확률의 뜻과 활용",
+          "l3": "확률의 기본",
+          "l4": "확률 계산",
+          "recordId": "H2-PS-RPM-043"
+        },
+        "rpmPrimaryL1": "확률",
+        "rpmPrimaryL2": "확률의 뜻과 활용",
+        "rpmPrimaryL3": "확률의 기본",
+        "rpmPrimaryL4": "확률 계산",
+        "rpmPrimaryRecordId": "H2-PS-RPM-043",
+        "difficultyBasis": "f(3)의 짝수 조건으로 2, 4 두 경우를 나누고 f(1), f(5), f(2), f(4)의 경우의 수를 곱해 2/25를 구하는 2단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-PS-03 / H22-PS-03-PROBABILITY_BASIC: 다음 조건을 모두 만족시킬 확률은?",
+          "curriculum": "H2-PS-RPM-043: 전체 함수 개수 5^{5}에 대해 f(3)=2, 4일 때의 함수 개수 10\\cdot 5^{2}의 비를 구하는 확률 계산 행이다.",
+          "problemType": "f(3)을 2와 4로 나누어 조건을 만족하는 함수 개수 (4+6)\\cdot 5^{2}을 구하고 전체 5^{5}으로 나누어 확률 2/25를 계산한다.",
+          "difficulty": "f(3)의 짝수 조건으로 2, 4 두 경우를 나누고 f(1), f(5), f(2), f(4)의 경우의 수를 곱해 2/25를 구하는 2단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 짝수, 순서 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "f(3)의 짝수 조건으로 2, 4 두 경우를 나누고 f(1), f(5), f(2), f(4)의 경우의 수를 곱해 2/25를 구하는 2단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "why": "f(3)을 2와 4로 나누어 조건을 만족하는 함수 개수 (4+6)\\cdot 5^{2}을 구하고 전체 5^{5}으로 나누어 확률 2/25를 계산한다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_13405fcc6ae9e181449e6e76787e3069d229b4c193502fe037b00ef70bd6cd8f",
@@ -400,20 +648,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "확률과 통계",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 계산",
+        "conceptClusterKey": "H22-PS-03-PROBABILITY_BASIC",
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 9,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -423,19 +671,50 @@
           "sourceQid": 9,
           "variationType": "STRICT_VARIANT",
           "variationNote": "공의 개수를 늘리고 묻는 값을 $p-q$에서 $p+q$로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-043"
+        ],
+        "rpmPrimary": {
+          "l1": "확률",
+          "l2": "확률의 뜻과 활용",
+          "l3": "확률의 기본",
+          "l4": "확률 계산",
+          "recordId": "H2-PS-RPM-043"
+        },
+        "rpmPrimaryL1": "확률",
+        "rpmPrimaryL2": "확률의 뜻과 활용",
+        "rpmPrimaryL3": "확률의 기본",
+        "rpmPrimaryL4": "확률 계산",
+        "rpmPrimaryRecordId": "H2-PS-RPM-043",
+        "difficultyBasis": "꺼낸 공 4개 중 검은 공이 0, 1, 2개인 3가지 경우를 조합으로 세어 전체 126으로 나누어 p+q=23을 구하는 2단계 풀이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-PS-03 / H22-PS-03-PROBABILITY_BASIC: 검은 공의 개수가 흰 공의 개수보다 많을 확률은",
+          "curriculum": "H2-PS-RPM-043: 전체 9개에서 4개를 뽑는 126가지 중 조건에 맞는 81가지의 확률 9/14를 구하는 확률 계산 행이다.",
+          "problemType": "남은 공 조건을 꺼낸 검은 공 0, 1, 2개 조건으로 바꾸어 조합으로 경우의 수 81을 세고 126으로 나누어 9/14를 구한다.",
+          "difficulty": "꺼낸 공 4개 중 검은 공이 0, 1, 2개인 3가지 경우를 조합으로 세어 전체 126으로 나누어 p+q=23을 구하는 2단계 풀이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 서로소 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "꺼낸 공 4개 중 검은 공이 0, 1, 2개인 3가지 경우를 조합으로 세어 전체 126으로 나누어 p+q=23을 구하는 2단계 풀이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "why": "남은 공 조건을 꺼낸 검은 공 0, 1, 2개 조건으로 바꾸어 조합으로 경우의 수 81을 세고 126으로 나누어 9/14를 구한다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_09af41ffc7a07b34409914324bb9f4c790218affc721cc56c76195847da19a5f",
@@ -447,20 +726,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "확률과 통계",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-PS-04",
+        "standardUnit": "조건부확률",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-PS-04-CONDITIONAL_PROBABILITY",
+        "subUnit": "조건부확률의 계산과 활용",
+        "conceptClusterKey": "H22-PS-04-CONDITIONAL_PROBABILITY",
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 10,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -470,19 +749,50 @@
           "sourceQid": 10,
           "variationType": "STRICT_VARIANT",
           "variationNote": "질병 진단에서 정확하게 진단할 확률 → 제품 검사에서 잘못 판정할 확률로 상황과 여사건 방향 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-046"
+        ],
+        "rpmPrimary": {
+          "l1": "확률",
+          "l2": "조건부확률",
+          "l3": "조건부확률",
+          "l4": "조건부확률 계산",
+          "recordId": "H2-PS-RPM-046"
+        },
+        "rpmPrimaryL1": "확률",
+        "rpmPrimaryL2": "조건부확률",
+        "rpmPrimaryL3": "조건부확률",
+        "rpmPrimaryL4": "조건부확률 계산",
+        "rpmPrimaryRecordId": "H2-PS-RPM-046",
+        "difficultyBasis": "불량품 오판 0.02와 정상품 오판 0.12를 각각 여사건과 곱셈정리로 구해 더하는 2단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-PS-04 / H22-PS-04-CONDITIONAL_PROBABILITY: 검사 기계가 잘못 판정할 확률은?",
+          "curriculum": "H2-PS-RPM-046: 불량품과 정상품 각 조건하의 오판정 확률 0.02와 0.12를 곱셈정리로 구해 더하는 조건부확률 계산 행이다.",
+          "problemType": "제품 상태별 조건부 오판정 확률 0.2\\times 0.1과 0.8\\times 0.15를 곱해 합산하는 직접 계산 구조이다.",
+          "difficulty": "불량품 오판 0.02와 정상품 오판 0.12를 각각 여사건과 곱셈정리로 구해 더하는 2단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 배반사건 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "불량품 오판 0.02와 정상품 오판 0.12를 각각 여사건과 곱셈정리로 구해 더하는 2단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+        "why": "제품 상태별 조건부 오판정 확률 0.2\\times 0.1과 0.8\\times 0.15를 곱해 합산하는 직접 계산 구조이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_6d3dac810e9e6f26b8f81260c5df596545a6060e72fae2e4d4168c970b4ca78c",
@@ -494,20 +804,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "확률과 통계",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-PS-03-PROBABILITY_APPLICATION",
+        "subUnit": "확률의 활용",
+        "conceptClusterKey": "H22-PS-03-PROBABILITY_APPLICATION",
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
         "sourceQid": 11,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -517,19 +827,50 @@
           "sourceQid": 11,
           "variationType": "STRICT_VARIANT",
           "variationNote": "전체 공 $8$개에서 $1$이 적어도 $1$개인 사건 → 전체 공 $9$개에서 두 수의 곱이 짝수인 사건 및 대소 조건 반전"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-045"
+        ],
+        "rpmPrimary": {
+          "l1": "확률",
+          "l2": "확률의 뜻과 활용",
+          "l3": "확률의 덧셈정리",
+          "l4": "여사건",
+          "recordId": "H2-PS-RPM-045"
+        },
+        "rpmPrimaryL1": "확률",
+        "rpmPrimaryL2": "확률의 뜻과 활용",
+        "rpmPrimaryL3": "확률의 덧셈정리",
+        "rpmPrimaryL4": "여사건",
+        "rpmPrimaryRecordId": "H2-PS-RPM-045",
+        "difficultyBasis": "P(A)=7/18로 미지수 n=7을 구하는 이차방정식 풀이와 여사건을 이용한 P(B)=5/12 계산이 결합된 2단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-PS-03 / H22-PS-03-PROBABILITY_APPLICATION: 사건을 $A$, 두 수의 곱이 짝수인 사건을 $B$라 하자.",
+          "curriculum": "H2-PS-RPM-045: n=7을 구한 뒤 곱이 짝수인 사건 B의 확률을 여사건(모두 1인 경우) 1-21/36=5/12로 구하는 여사건 행이다.",
+          "problemType": "P(A)=7/18로 1이 적힌 공 개수 n=7을 결정한 뒤, 사건 B를 여사건으로 바꾸어 1-21/36=5/12를 계산한다.",
+          "difficulty": "P(A)=7/18로 미지수 n=7을 구하는 이차방정식 풀이와 여사건을 이용한 P(B)=5/12 계산이 결합된 2단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 배수, 짝수 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B23",
+      "difficultyReason": "P(A)=7/18로 미지수 n=7을 구하는 이차방정식 풀이와 여사건을 이용한 P(B)=5/12 계산이 결합된 2단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+        "why": "P(A)=7/18로 1이 적힌 공 개수 n=7을 결정한 뒤, 사건 B를 여사건으로 바꾸어 1-21/36=5/12를 계산한다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_1bb641ba94640f2c2c6cd19cf599c4965b30f6f7e99ef41c0fc420dfae89a852",
@@ -541,20 +882,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "확률과 통계",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 계산",
+        "conceptClusterKey": "H22-PS-03-PROBABILITY_BASIC",
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 12,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -564,19 +905,50 @@
           "sourceQid": 12,
           "variationType": "STRICT_VARIANT",
           "variationNote": "넓이가 최댓값보다 작을 확률 → 한 변의 길이를 $4$로 바꾸고 넓이가 $4$보다 클(넓이 $6$ 또는 $8$) 확률로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-043"
+        ],
+        "rpmPrimary": {
+          "l1": "확률",
+          "l2": "확률의 뜻과 활용",
+          "l3": "확률의 기본",
+          "l4": "확률 계산",
+          "recordId": "H2-PS-RPM-043"
+        },
+        "rpmPrimaryL1": "확률",
+        "rpmPrimaryL2": "확률의 뜻과 활용",
+        "rpmPrimaryL3": "확률의 기본",
+        "rpmPrimaryL4": "확률 계산",
+        "rpmPrimaryRecordId": "H2-PS-RPM-043",
+        "difficultyBasis": "정사각형 ABCD의 꼭짓점과 중점 선택에 따라 4가지 경우로 나누어 각각의 삼각형 넓이를 4와 비교해야 하는 3단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-PS-03 / H22-PS-03-PROBABILITY_BASIC: 이 삼각형의 넓이가 $4$보다 클 확률은?",
+          "curriculum": "H2-PS-RPM-043: 삼각형 총 개수 52개 중 넓이가 4보다 큰 삼각형 12개의 비율 12/52=3/13을 구하는 확률 계산 행이다.",
+          "problemType": "공선 4가지를 제외한 52개의 삼각형 중 넓이 6 또는 8인 12개를 세어 확률 3/13을 계산하는 구조이다.",
+          "difficulty": "정사각형 ABCD의 꼭짓점과 중점 선택에 따라 4가지 경우로 나누어 각각의 삼각형 넓이를 4와 비교해야 하는 3단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 범위 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「오른쪽 그림과 같이 한 변의 길이가 $4$인 정사각형 $ABCD$의 각 변의 중점을 $E, F, G, H$라 하자.」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "정사각형 ABCD의 꼭짓점과 중점 선택에 따라 4가지 경우로 나누어 각각의 삼각형 넓이를 4와 비교해야 하는 3단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "why": "공선 4가지를 제외한 52개의 삼각형 중 넓이 6 또는 8인 12개를 세어 확률 3/13을 계산하는 구조이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_327cf9c78ba28b4989411aef79790d924ec006fa7bbb8c4ca892c277502a4044",
@@ -588,20 +960,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "확률과 통계",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-PS-01",
+        "standardUnit": "순열과 조합",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-PS-01-CORE",
+        "subUnit": "순열과 조합 핵심 개념",
+        "conceptClusterKey": "H22-PS-01-CORE",
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 13,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -611,19 +983,50 @@
           "sourceQid": 13,
           "variationType": "STRICT_VARIANT",
           "variationNote": "$4$문자 $4$자리 배열 → $3$문자 $5$자리 배열로 문자 수와 길이를 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-033"
+        ],
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "순열과 조합",
+          "l3": "순열",
+          "l4": "중복·원순열",
+          "recordId": "H2-PS-RPM-033"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "순열과 조합",
+        "rpmPrimaryL3": "순열",
+        "rpmPrimaryL4": "중복·원순열",
+        "rpmPrimaryRecordId": "H2-PS-RPM-033",
+        "difficultyBasis": "여사건으로 전환한 뒤 a가 0, 1, 2, 3개인 4가지 경우를 모두 세어 243-164=79를 구하는 3단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-PS-01 / H22-PS-01-CORE: 세 문자 $a, b, c$에서 중복을 허락하여 $5$개를 택해 일렬로 나열할 때,",
+          "curriculum": "H2-PS-RPM-033: 중복을 허용해 5개를 나열하는 전체 3^{5}=243가지에서 여사건 164가지를 빼는 중복·원순열 행이다.",
+          "problemType": "중복순열 전체 3^{5}=243에서 여사건인 a 비이웃 배열을 a의 개수(0~3개)별로 세어 빼는 풀이 구조이다.",
+          "difficulty": "여사건으로 전환한 뒤 a가 0, 1, 2, 3개인 4가지 경우를 모두 세어 243-164=79를 구하는 3단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 적어도, 이웃 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "여사건으로 전환한 뒤 a가 0, 1, 2, 3개인 4가지 경우를 모두 세어 243-164=79를 구하는 3단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+        "why": "중복순열 전체 3^{5}=243에서 여사건인 a 비이웃 배열을 a의 개수(0~3개)별로 세어 빼는 풀이 구조이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_66e778881ad30d8b6d8fde4eb5ab4f6949974df693378a8d51bb11b714ff16a7",
@@ -635,20 +1038,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "확률과 통계",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-PS-02",
+        "standardUnit": "이항정리",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H22-PS-02-CORE",
+        "subUnit": "이항정리 핵심 개념",
+        "conceptClusterKey": "H22-PS-02-CORE",
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 14,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -658,19 +1061,50 @@
           "sourceQid": 14,
           "variationType": "STRICT_VARIANT",
           "variationNote": "$1$차부터 $10$차까지의 합 → $4$차부터 $11$차까지의 합에서 $x^4$과 $x^5$ 계수의 합으로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-040"
+        ],
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "이항정리",
+          "l3": "이항계수",
+          "l4": "이항계수의 성질",
+          "recordId": "H2-PS-RPM-040"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "이항정리",
+        "rpmPrimaryL3": "이항계수",
+        "rpmPrimaryL4": "이항계수의 성질",
+        "rpmPrimaryRecordId": "H2-PS-RPM-040",
+        "difficultyBasis": "파스칼의 항등식을 x^{4} 계수와 x^{5} 계수 합에 두 번 적용하여 {}_{13}C_{6}을 얻는 2단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-PS-02 / H22-PS-02-CORE: $(1+x)^{4}+(1+x)^{5}+(1+x)^{6}+\\cdots+(1+x)^{11}$의 전개식에서",
+          "curriculum": "H2-PS-RPM-040: 파스칼의 항등식 {}_{n}C_{r-1}+{}_{n}C_{r}={}_{n+1}C_{r}을 연속 적용해 {}_{12}C_{5}+{}_{12}C_{6}={}_{13}C_{6}을 얻는 이항계수의 성질 행이다.",
+          "problemType": "각 이항식의 x^{4}, x^{5} 계수를 파스칼의 항등식으로 연쇄 축약해 {}_{13}C_{6}으로 정리하는 이항계수 성질 유형이다.",
+          "difficulty": "파스칼의 항등식을 x^{4} 계수와 x^{5} 계수 합에 두 번 적용하여 {}_{13}C_{6}을 얻는 2단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "파스칼의 항등식을 x^{4} 계수와 x^{5} 계수 합에 두 번 적용하여 {}_{13}C_{6}을 얻는 2단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+        "why": "각 이항식의 x^{4}, x^{5} 계수를 파스칼의 항등식으로 연쇄 축약해 {}_{13}C_{6}으로 정리하는 이항계수 성질 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_abaa8f983a0fdeae88f724f20b606eb371bf361616de5d640a724fb79ed487c2",
@@ -682,20 +1116,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "확률과 통계",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-PS-01",
+        "standardUnit": "순열과 조합",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-PS-01-CORE",
+        "subUnit": "순열과 조합 핵심 개념",
+        "conceptClusterKey": "H22-PS-01-CORE",
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 15,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -705,19 +1139,50 @@
           "sourceQid": 15,
           "variationType": "STRICT_VARIANT",
           "variationNote": "기준 조합 값을 ${}_{11}C_3=165$에서 ${}_{10}C_3=120$으로 바꾸고 보기 구성을 재설계"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-036"
+        ],
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "순열과 조합",
+          "l3": "중복조합",
+          "l4": "중복을 허용한 선택",
+          "recordId": "H2-PS-RPM-036"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "순열과 조합",
+        "rpmPrimaryL3": "중복조합",
+        "rpmPrimaryL4": "중복을 허용한 선택",
+        "rpmPrimaryRecordId": "H2-PS-RPM-036",
+        "difficultyBasis": "서로 다른 5개 보기의 경우의 수 모델(120, 120, 343, 45, 120)을 모두 판별해 계산하는 합답형 3단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-PS-01 / H22-PS-01-CORE: 전개식에서 서로 다른 항의 개수",
+          "curriculum": "H2-PS-RPM-036: ㄱ, ㄹ의 중복조합 {}_{4}H_{7}=120, {}_{3}H_{8}=45 등을 조합 값과 비교해 같은 값을 찾는 중복을 허용한 선택 행이다.",
+          "problemType": "다섯 보기의 중복조합·같은 것이 있는 순열·중복순열·비이웃 선택을 각각 계산해 120으로 같은 ㄱ, ㄴ, ㅁ을 고른다.",
+          "difficulty": "서로 다른 5개 보기의 경우의 수 모델(120, 120, 343, 45, 120)을 모두 판별해 계산하는 합답형 3단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 이웃 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "서로 다른 5개 보기의 경우의 수 모델(120, 120, 343, 45, 120)을 모두 판별해 계산하는 합답형 3단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "why": "다섯 보기의 중복조합·같은 것이 있는 순열·중복순열·비이웃 선택을 각각 계산해 120으로 같은 ㄱ, ㄴ, ㅁ을 고른다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_bb73cdf5d1aba158669a5b7965c86b7e47cd3f9374a9eb3e91fcd27d78ac660c",
@@ -729,20 +1194,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "확률과 통계",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+        "subUnit": "확률의 뜻과 계산",
+        "conceptClusterKey": "H22-PS-03-PROBABILITY_BASIC",
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 16,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -752,19 +1217,50 @@
           "sourceQid": 16,
           "variationType": "STRICT_VARIANT",
           "variationNote": "$9$개 중 $5$개 진열 → $8$개 중 $4$개 진열로 물건 구성과 배열 길이 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-043"
+        ],
+        "rpmPrimary": {
+          "l1": "확률",
+          "l2": "확률의 뜻과 활용",
+          "l3": "확률의 기본",
+          "l4": "확률 계산",
+          "recordId": "H2-PS-RPM-043"
+        },
+        "rpmPrimaryL1": "확률",
+        "rpmPrimaryL2": "확률의 뜻과 활용",
+        "rpmPrimaryL3": "확률의 기본",
+        "rpmPrimaryL4": "확률 계산",
+        "rpmPrimaryRecordId": "H2-PS-RPM-043",
+        "difficultyBasis": "똑같은 양말을 서로 다른 것으로 취급하는 근원사건 설정과 교대·적어도 1켤레 조건을 결합해 72/1680을 구하는 3단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-PS-03 / H22-PS-03-PROBABILITY_BASIC: 다음 조건을 모두 만족시킬 확률은?",
+          "curriculum": "H2-PS-RPM-043: 8개를 구별되는 근원사건 {}_{8}P_{4}=1680으로 보고 조건을 만족하는 72가지의 비 3/70을 구하는 확률 계산 행이다.",
+          "problemType": "똑같은 양말도 확률 계산을 위해 구별되는 근원사건으로 두어 {}_{8}P_{4}=1680 중 조건 (가), (나)를 만족하는 72가지의 확률 3/70을 구한다.",
+          "difficulty": "똑같은 양말을 서로 다른 것으로 취급하는 근원사건 설정과 교대·적어도 1켤레 조건을 결합해 72/1680을 구하는 3단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 교대, 적어도 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "똑같은 양말을 서로 다른 것으로 취급하는 근원사건 설정과 교대·적어도 1켤레 조건을 결합해 72/1680을 구하는 3단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "why": "똑같은 양말도 확률 계산을 위해 구별되는 근원사건으로 두어 {}_{8}P_{4}=1680 중 조건 (가), (나)를 만족하는 72가지의 확률 3/70을 구한다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_a93d819b4a200cf0f3695e0f96a849ad04240d27c3bb3a0a97e73a5371d7080f",
@@ -776,20 +1272,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "확률과 통계",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-PS-01",
+        "standardUnit": "순열과 조합",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-PS-01-CORE",
+        "subUnit": "순열과 조합 핵심 개념",
+        "conceptClusterKey": "H22-PS-01-CORE",
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 17,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -799,19 +1295,50 @@
           "sourceQid": 17,
           "variationType": "STRICT_VARIANT",
           "variationNote": "자릿수 합 $10$ → 자릿수 합 $11$로 바꾸어 모든 자리에서 상한 초과 여사건이 발생하도록 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-037"
+        ],
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "순열과 조합",
+          "l3": "중복조합",
+          "l4": "정수해 개수",
+          "recordId": "H2-PS-RPM-037"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "순열과 조합",
+        "rpmPrimaryL3": "중복조합",
+        "rpmPrimaryL4": "정수해 개수",
+        "rpmPrimaryRecordId": "H2-PS-RPM-037",
+        "difficultyBasis": "합이 11인 조건을 a'=a-1로 치환해 286개를 구하고 각 자릿수의 상한(9 이하) 초과 경우 7가지를 제외해야 하는 3단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-PS-01 / H22-PS-01-CORE: 각 자리의 수의 합이 $11$인 모든 자연수의 개수를",
+          "curriculum": "H2-PS-RPM-037: a'+b+c+d=10의 음이 아닌 정수해 286개에서 상한 초과 7가지를 제외해 279를 구하는 정수해 개수 행이다.",
+          "problemType": "자릿수 합 방정식 a+b+c+d=11을 치환 후 중복조합 {}_{4}H_{10}=286으로 구하고 자릿수 상한(9 이하) 위반 7가지를 제외한다.",
+          "difficulty": "합이 11인 조건을 a'=a-1로 치환해 286개를 구하고 각 자릿수의 상한(9 이하) 초과 경우 7가지를 제외해야 하는 3단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 범위 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "합이 11인 조건을 a'=a-1로 치환해 286개를 구하고 각 자릿수의 상한(9 이하) 초과 경우 7가지를 제외해야 하는 3단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "why": "자릿수 합 방정식 a+b+c+d=11을 치환 후 중복조합 {}_{4}H_{10}=286으로 구하고 자릿수 상한(9 이하) 위반 7가지를 제외한다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_20a7204a1a32cebe4576ba23f7a7dceedc8ba3833718618cb89d290be4a88f70",
@@ -823,20 +1350,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "확률과 통계",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-PS-03",
+        "standardUnit": "확률의 뜻과 활용",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H22-PS-03-PROBABILITY_APPLICATION",
+        "subUnit": "확률의 활용",
+        "conceptClusterKey": "H22-PS-03-PROBABILITY_APPLICATION",
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 18,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -846,19 +1373,50 @@
           "sourceQid": 18,
           "variationType": "STRICT_VARIANT",
           "variationNote": "$3$의 배수 또는 $5$의 배수일 확률 → $3$의 배수 또는 $4$의 배수일 확률로 배수 판정 조건 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-043"
+        ],
+        "rpmPrimary": {
+          "l1": "확률",
+          "l2": "확률의 뜻과 활용",
+          "l3": "확률의 기본",
+          "l4": "확률 계산",
+          "recordId": "H2-PS-RPM-043"
+        },
+        "rpmPrimaryL1": "확률",
+        "rpmPrimaryL2": "확률의 뜻과 활용",
+        "rpmPrimaryL3": "확률의 기본",
+        "rpmPrimaryL4": "확률 계산",
+        "rpmPrimaryRecordId": "H2-PS-RPM-043",
+        "difficultyBasis": "3의 배수와 4의 배수 조건을 자릿수 나머지·끝 두 자리로 나누어 세고 덧셈정리로 교집합 18개를 빼는 3단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-PS-03 / H22-PS-03-PROBABILITY_APPLICATION: 이 수가 $3$의 배수이거나 $4$의 배수일 확률을 확률의 덧셈정리를 이용하여",
+          "curriculum": "H2-PS-RPM-043: 전체 216개 중 사건 A(72), B(54), A\\cap B(18)의 개수를 각각 세어 덧셈정리로 1/2을 구하는 확률 계산 행이다.",
+          "problemType": "3의 배수 사건 A, 4의 배수 사건 B와 교집합 A\\cap B의 확률 72/216, 54/216, 18/216을 구해 확률의 덧셈정리를 적용한다.",
+          "difficulty": "3의 배수와 4의 배수 조건을 자릿수 나머지·끝 두 자리로 나누어 세고 덧셈정리로 교집합 18개를 빼는 3단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 배수 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "3의 배수와 4의 배수 조건을 자릿수 나머지·끝 두 자리로 나누어 세고 덧셈정리로 교집합 18개를 빼는 3단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+        "why": "3의 배수 사건 A, 4의 배수 사건 B와 교집합 A\\cap B의 확률 72/216, 54/216, 18/216을 구해 확률의 덧셈정리를 적용한다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_4e5d7a796367421583a49d21f28dee84e26fa153abbfb8899a80f3836725f634",
@@ -870,20 +1428,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "확률과 통계",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-PS-01",
+        "standardUnit": "순열과 조합",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-PS-01-CORE",
+        "subUnit": "순열과 조합 핵심 개념",
+        "conceptClusterKey": "H22-PS-01-CORE",
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
         "sourceQid": 19,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -893,19 +1451,50 @@
           "sourceQid": 19,
           "variationType": "STRICT_VARIANT",
           "variationNote": "$5\\times 5$ 정사각형 도로망 → $4\\times 6$ 직사각형 도로망으로 바꾸어 교점 전후 경로 수가 비대칭이 되도록 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-033"
+        ],
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "순열과 조합",
+          "l3": "순열",
+          "l4": "중복·원순열",
+          "recordId": "H2-PS-RPM-033"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "순열과 조합",
+        "rpmPrimaryL3": "순열",
+        "rpmPrimaryL4": "중복·원순열",
+        "rpmPrimaryRecordId": "H2-PS-RPM-033",
+        "difficultyBasis": "전체 경로 쌍 44100에서 만나는 지점 P_{k} (k=0~4) 5개별 경로 수 합 15050을 빼야 하는 3단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-PS-01 / H22-PS-01-CORE: 도로를 따라 최단 경로로 이동하려고 할 때,",
+          "curriculum": "H2-PS-RPM-033: 가로 4칸, 세로 6칸 격자 최단경로 쌍 44100에서 중간 지점 P_{k}를 거치는 만나는 쌍 15050을 빼는 중복·원순열 행이다.",
+          "problemType": "전체 최단경로 쌍 210^{2}=44100에서 5칸 이동 지점 P_{k}에서 만나는 경로 쌍 15050을 여사건으로 제외한다.",
+          "difficulty": "전체 경로 쌍 44100에서 만나는 지점 P_{k} (k=0~4) 5개별 경로 수 합 15050을 빼야 하는 3단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 일정 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림과 같이 가로 $4$칸, 세로 $6$칸으로 이루어진 도로망이 있다.」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B34",
+      "difficultyReason": "전체 경로 쌍 44100에서 만나는 지점 P_{k} (k=0~4) 5개별 경로 수 합 15050을 빼야 하는 3단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "why": "전체 최단경로 쌍 210^{2}=44100에서 5칸 이동 지점 P_{k}에서 만나는 경로 쌍 15050을 여사건으로 제외한다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_dd0b065892c985466323f5d7535df408b8bfe89c5164d6ca4fb4e996e5b5325e",
@@ -917,20 +1506,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "확률과 통계",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-PS-04",
+        "standardUnit": "조건부확률",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H22-PS-04-CONDITIONAL_PROBABILITY",
+        "subUnit": "조건부확률의 계산과 활용",
+        "conceptClusterKey": "H22-PS-04-CONDITIONAL_PROBABILITY",
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 20,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -940,19 +1529,50 @@
           "sourceQid": 20,
           "variationType": "STRICT_VARIANT",
           "variationNote": "상자당 동전 $2$개 구성 → 상자당 동전 $3$개 구성으로 바꾸어 조건부확률 값이 달라지게 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-046"
+        ],
+        "rpmPrimary": {
+          "l1": "확률",
+          "l2": "조건부확률",
+          "l3": "조건부확률",
+          "l4": "조건부확률 계산",
+          "recordId": "H2-PS-RPM-046"
+        },
+        "rpmPrimaryL1": "확률",
+        "rpmPrimaryL2": "조건부확률",
+        "rpmPrimaryL3": "조건부확률",
+        "rpmPrimaryL4": "조건부확률 계산",
+        "rpmPrimaryRecordId": "H2-PS-RPM-046",
+        "difficultyBasis": "note-box 의 글을 읽고 전확률 4/9 계산과 조건부확률 3/4를 통해 잘못된 확률 직관(1/2)을 반박하는 서술형 3단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-PS-04 / H22-PS-04-CONDITIONAL_PROBABILITY: 다음은 조건부확률에 관한 글이다.",
+          "curriculum": "H2-PS-RPM-046: note-box 의 상자 구성에서 전체 금화 확률 4/9를 분모로 하여 첫 번째 상자일 조건부확률 (1/3)/(4/9)=3/4를 계산하는 조건부확률 계산 행이다.",
+          "problemType": "note-box 의 세 상자 분기에서 금화가 나올 확률 4/9를 구한 뒤, 금화 조건하에 첫 번째 상자였을 역조건부확률 3/4를 구한다.",
+          "difficulty": "note-box 의 글을 읽고 전확률 4/9 계산과 조건부확률 3/4를 통해 잘못된 확률 직관(1/2)을 반박하는 서술형 3단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「아래의 그림과 같이 첫 번째 상자에는 금화 $3$개가, 두 번째 상자에는 은화 $3$개가, 세 번째 상자에는 금화 $1$개와 은화 $2$개가 들어 있다.」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "note-box 의 글을 읽고 전확률 4/9 계산과 조건부확률 3/4를 통해 잘못된 확률 직관(1/2)을 반박하는 서술형 3단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+        "why": "note-box 의 세 상자 분기에서 금화가 나올 확률 4/9를 구한 뒤, 금화 조건하에 첫 번째 상자였을 역조건부확률 3/4를 구한다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c64f1b36ae1db2b7e544e1a1fd0ca5d07ca39b48ad828ad1677a74deefe6c6af",
@@ -964,20 +1584,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "확률과 통계",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-PS-01",
+        "standardUnit": "순열과 조합",
+        "standardUnitOrder": 1,
+        "subUnitKey": "H22-PS-01-CORE",
+        "subUnit": "순열과 조합 핵심 개념",
+        "conceptClusterKey": "H22-PS-01-CORE",
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B34",
         "sourceQid": 21,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -987,19 +1607,50 @@
           "sourceQid": 21,
           "variationType": "STRICT_VARIANT",
           "variationNote": "총합 $15$, 적어도 하나가 $2$ 조건 → 총합 $14$, 적어도 하나가 $1$ 조건으로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H2-PS-RPM-037"
+        ],
+        "rpmPrimary": {
+          "l1": "경우의 수",
+          "l2": "순열과 조합",
+          "l3": "중복조합",
+          "l4": "정수해 개수",
+          "recordId": "H2-PS-RPM-037"
+        },
+        "rpmPrimaryL1": "경우의 수",
+        "rpmPrimaryL2": "순열과 조합",
+        "rpmPrimaryL3": "중복조합",
+        "rpmPrimaryL4": "정수해 개수",
+        "rpmPrimaryRecordId": "H2-PS-RPM-037",
+        "difficultyBasis": "합이 14 인 식에서 곱이 0인 조건을 적어도 하나가 1인 조건으로 해석하고 d+e 값에 따라 4가지 경우의 중복조합 차를 계산하는 3단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-PS-01 / H22-PS-01-CORE: 자연수 $a, b, c, d, e$의 모든 순서쌍 $(a, b, c, d, e)$의 개수를",
+          "curriculum": "H2-PS-RPM-037: 방정식 a+b+c+2(d+e)=14의 자연수해 개수를 d+e 값별로 나누어 중복조합으로 구하는 정수해 개수 행이다.",
+          "problemType": "조건 (가) 합 14 에서 d+e의 값 2, 3, 4, 5에 따라 방정식 a+b+c=S를 세우고 적어도 하나가 1인 자연수해를 여사건과 중복조합으로 계산한다.",
+          "difficulty": "합이 14 인 식에서 곱이 0인 조건을 적어도 하나가 1인 조건으로 해석하고 d+e 값에 따라 4가지 경우의 중복조합 차를 계산하는 3단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 적어도 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B34",
+      "difficultyReason": "합이 14 인 식에서 곱이 0인 조건을 적어도 하나가 1인 조건으로 해석하고 d+e 값에 따라 4가지 경우의 중복조합 차를 계산하는 3단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "why": "조건 (가) 합 14 에서 d+e의 값 2, 3, 4, 5에 따라 방정식 a+b+c=S를 세우고 적어도 하나가 1인 자연수해를 여사건과 중복조합으로 계산한다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     }
   ]
 }

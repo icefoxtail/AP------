@@ -3,7 +3,7 @@
   "requestId": "25_연향중_2학기_기말_중3_유사-candidate-v1",
   "examUid": "25_연향중_2학기_기말_중3_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m3/2final/25_연향중_2학기_기말_중3_유사.js",
-  "expectedSourceBlobSha1": "f49c6f38ac812bf6f2dfcb09b20ffc12e5fd8b14",
+  "expectedSourceBlobSha1": "43a9e9eea2ad311feb1e3346d9c24393fd5536f5",
   "expectedQuestionCount": 23,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -50,20 +50,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-067"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원과 직선",
+          "l3": "원의 중심과 현",
+          "l4": "중심에서 현에 내린 수선",
+          "recordId": "M3-RPM-067"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원과 직선",
+        "rpmPrimaryL3": "원의 중심과 현",
+        "rpmPrimaryL4": "중심에서 현에 내린 수선",
+        "rpmPrimaryRecordId": "M3-RPM-067",
+        "difficultyBasis": "직각삼각형 OMA에서 피타고라스 정리로 R^2 - r^2 = 64를 바로 계산하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_LINE: 작은 원이 직선 $AB$와 만나는 접점을 $M$이라 하",
+          "curriculum": "M3-RPM-067: 중심 O에서 현 AB = 16에 내린 수선이 현을 이등분함을 이용하여 64pi를 산출한다.",
+          "problemType": "현 AB = 16의 절반인 AM = 8을 직각삼각형에 적용하여 두 동심원의 넓이 차 64pi를 구하는 유형이다.",
+          "difficulty": "직각삼각형 OMA에서 피타고라스 정리로 R^2 - r^2 = 64를 바로 계산하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_CIRCLE_CIRCUMFERENCE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림과 같이 점 $O$를 중심으로 하는 두 동심원」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "현의 중점 AM=8을 직각삼각형 OMA에 대입하여 R^2-r^2=64를 구하고 도넛 넓이 64pi를 산출한다.",
       "decisiveStep": "R^2 - r^2 = 8^2 = 64이므로 넓이 = 64pi",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "현의 이등분 성질로 직각변 8을 구한 후 피타고라스 정리로 두 반지름의 제곱차를 구하는 2단계 문항",
+      "difficultyReason": "직각삼각형 OMA에서 피타고라스 정리로 R^2 - r^2 = 64를 바로 계산하므로 난이도 2이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
         "templateKey": "TM_CIRCLE_CHORD_LENGTH",
-        "why": "동심원의 접선 현 이등분 성질과 피타고라스 정리를 이용한 두 원 사이의 넓이 도출"
+        "why": "현 AB = 16의 절반인 AM = 8을 직각삼각형에 적용하여 두 동심원의 넓이 차 64pi를 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_f0bc0888e2a956098614b65545773d11f23811568d3e6d1735bbbc0b7e2d62fc",
@@ -82,13 +114,13 @@
         "subUnit": "원과 직선",
         "conceptClusterKey": "CIRCLE_LINE",
         "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
-        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "templateKey": "TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD",
         "crossConceptKeys": [
           "CC_EQUAL_CHORDS_EQUAL_DISTANCE"
         ],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 2,
@@ -101,20 +133,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-069"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원과 직선",
+          "l3": "원의 중심과 현",
+          "l4": "중심거리와 현의 길이",
+          "recordId": "M3-RPM-069"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원과 직선",
+        "rpmPrimaryL3": "원의 중심과 현",
+        "rpmPrimaryL4": "중심거리와 현의 길이",
+        "rpmPrimaryRecordId": "M3-RPM-069",
+        "difficultyBasis": "꼭지각 44도로부터 이등변삼각형 밑각 공식으로 68도를 단번에 도출하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_LINE: 원의 중심 $O$에서 두 현 $AB, AC$까지의 거리",
+          "curriculum": "M3-RPM-069: 중심거리 OM = ON으로 두 현 AB, AC의 길이가 같음을 활용하여 68도를 구한다.",
+          "problemType": "중심거리가 같은 두 현에 의해 생성된 이등변삼각형에서 밑각 68도를 구하는 유형이다.",
+          "difficulty": "꼭지각 44도로부터 이등변삼각형 밑각 공식으로 68도를 단번에 도출하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_EQUAL_CHORDS_EQUAL_DISTANCE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림의 원 $O$에서 $\\overline{OM}」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "중심거리가 같은 두 현의 길이가 같음을 이용해 이등변삼각형을 확정하고 밑각 x=68도를 계산한다.",
       "decisiveStep": "x = (180° - 44°) / 2 = 68°",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "중심에서 현까지의 거리가 같으면 현의 길이가 같다는 정리를 적용해 밑각을 구하는 1단계 기본 문항",
+      "difficultyReason": "꼭지각 44도로부터 이등변삼각형 밑각 공식으로 68도를 단번에 도출하므로 난이도 2이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
-        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
-        "why": "원의 중심거리와 현의 길이 관계로부터 이등변삼각형 밑각 도출"
+        "templateKey": "TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD",
+        "why": "중심거리가 같은 두 현에 의해 생성된 이등변삼각형에서 밑각 68도를 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_1ec9298596e2c8d23f1402736f06c3d54e1c4a6931e47a8b3b0ffe1edcb7bd12",
@@ -152,20 +216,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-067"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원과 직선",
+          "l3": "원의 중심과 현",
+          "l4": "중심에서 현에 내린 수선",
+          "recordId": "M3-RPM-067"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원과 직선",
+        "rpmPrimaryL3": "원의 중심과 현",
+        "rpmPrimaryL4": "중심에서 현에 내린 수선",
+        "rpmPrimaryRecordId": "M3-RPM-067",
+        "difficultyBasis": "피타고라스 정리 OE = sqrt(8^2 - 4^2) = 4*sqrt(3)으로 바로 계산되므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_LINE: 원의 중심 $O$에서 현 $AB$에 내린 수선은 현을 ",
+          "curriculum": "M3-RPM-067: 중심에서 현 AB = 8에 내린 수선이 현을 이등분하여 AE = 4가 됨을 활용한다.",
+          "problemType": "현의 길이 AB = 8과 반지름 OA = 8로부터 수선 OE의 길이 4*sqrt(3)을 구하는 유형이다.",
+          "difficulty": "피타고라스 정리 OE = sqrt(8^2 - 4^2) = 4*sqrt(3)으로 바로 계산되므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_CIRCLE_CHORD_PERP_BISECTOR: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림에서 $\\triangle ABC$는 $\\ove」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "현의 중점 AE=4와 반지름 OA=8을 직각삼각형 OEA의 피타고라스 정리에 대입해 OE=4*sqrt(3)을 구한다.",
       "decisiveStep": "OE = sqrt(8^2 - 4^2) = sqrt(48) = 4*sqrt(3)",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "현의 이등분으로 직각삼각형의 한 변을 확정하고 피타고라스 정리로 높이를 계산하는 2단계 문항",
+      "difficultyReason": "피타고라스 정리 OE = sqrt(8^2 - 4^2) = 4*sqrt(3)으로 바로 계산되므로 난이도 2이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
         "templateKey": "TM_CIRCLE_CHORD_LENGTH",
-        "why": "현의 수직이등분선 성질과 피타고라스 정리를 이용한 중심거리 계산"
+        "why": "현의 길이 AB = 8과 반지름 OA = 8로부터 수선 OE의 길이 4*sqrt(3)을 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_30447e7482e1a0a86db7fee8bb73d95dea71ae06aa509ebab3777bfc81aabf0b",
@@ -203,20 +299,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-071"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "한 점에서 그은 두 접선",
+          "recordId": "M3-RPM-071"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원과 직선",
+        "rpmPrimaryL3": "원의 접선",
+        "rpmPrimaryL4": "한 점에서 그은 두 접선",
+        "rpmPrimaryRecordId": "M3-RPM-071",
+        "difficultyBasis": "반각 30도와 tan 30도 공식으로 PB = 4*sqrt(3)을 즉시 구하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_LINE: 원 밖의 한 점 $P$에서 원에 그은 두 접선의 길이는",
+          "curriculum": "M3-RPM-071: 원 밖의 점 P에서 그은 두 접선 PA, PB의 길이가 같음을 활용하여 8*sqrt(3)을 구한다.",
+          "problemType": "접선각 60도와 반지름 OB = 4로부터 접선의 길이 합 8*sqrt(3)을 계산하는 유형이다.",
+          "difficulty": "반각 30도와 tan 30도 공식으로 PB = 4*sqrt(3)을 즉시 구하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_CIRCLE_TANGENT_LENGTH: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림에서 두 선분 $\\overline{PA}, \\」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "각의 이등분각 30도와 반지름 4로 tan 30도 직각삼각형에서 접선 길이 4*sqrt(3)을 구하고 합 8*sqrt(3)을 계산한다.",
       "decisiveStep": "PB = 4 / tan(30°) = 4*sqrt(3)이므로 PA+PB = 8*sqrt(3)",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "접선과 반지름의 수직 관계 및 30도 삼각비를 이용하여 접선 길이를 구하는 2단계 문항",
+      "difficultyReason": "반각 30도와 tan 30도 공식으로 PB = 4*sqrt(3)을 즉시 구하므로 난이도 2이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_CIRCLE_TANGENT",
         "templateKey": "TM_TANGENT_LENGTH",
-        "why": "접선의 길이 성질과 특수각 직각삼각형 삼각비의 결합"
+        "why": "접선각 60도와 반지름 OB = 4로부터 접선의 길이 합 8*sqrt(3)을 계산하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_10347354b37c18ab05579a2cd93335159c05983b4eaee36d842cad05332eeb84",
@@ -241,7 +369,7 @@
         ],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 5,
@@ -254,20 +382,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-072"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접선 조건으로 길이 구하기",
+          "recordId": "M3-RPM-072"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원과 직선",
+        "rpmPrimaryL3": "원의 접선",
+        "rpmPrimaryL4": "접선 조건으로 길이 구하기",
+        "rpmPrimaryRecordId": "M3-RPM-072",
+        "difficultyBasis": "접선 길이 대칭성을 이용해 단순 덧셈과 뺄셈으로 BC = 6 cm을 구하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_LINE: 삼각형의 꼭짓점에서 내접원에 그은 두 접선의 길이는 서",
+          "curriculum": "M3-RPM-072: 내접원의 접선 길이 성질로 BF = 4, CE = 2를 구하여 BC = 6 cm를 산출한다.",
+          "problemType": "변 AB = 10, AC = 8과 접선 길이 AF = 6으로부터 변 BC의 길이를 구하는 유형이다.",
+          "difficulty": "접선 길이 대칭성을 이용해 단순 덧셈과 뺄셈으로 BC = 6 cm을 구하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_TRIANGLE_INSCRIBED_CIRCLE_PERIMETER: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림과 같이 원 $O$는 $\\triangle AB」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "접선의 길이 대칭성으로 BF=BD=4, CE=CD=2를 구하여 BC=4+2=6cm를 산출한다.",
       "decisiveStep": "BC = BD + CD = 4 + 2 = 6 cm",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "한 점에서 원에 그은 두 접선의 길이가 같다는 성질을 세 꼭짓점에 적용하는 1단계 기본 문항",
+      "difficultyReason": "접선 길이 대칭성을 이용해 단순 덧셈과 뺄셈으로 BC = 6 cm을 구하므로 난이도 2이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_CIRCLE_TANGENT",
         "templateKey": "TM_TANGENT_LENGTH",
-        "why": "내접원 둘레에서 꼭짓점별 접선 길이 일치 성질 활용"
+        "why": "변 AB = 10, AC = 8과 접선 길이 AF = 6으로부터 변 BC의 길이를 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_a40315e40e839e0f68772c6b6a8cf96abb2441cf7df764e5ee16a761f5544630",
@@ -305,20 +465,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-079"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "접선과 현이 이루는 각",
+          "recordId": "M3-RPM-079"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원주각",
+        "rpmPrimaryL3": "원주각의 활용",
+        "rpmPrimaryL4": "접선과 현이 이루는 각",
+        "rpmPrimaryRecordId": "M3-RPM-079",
+        "difficultyBasis": "호의 크기의 합이 360도임을 이용해 호 CD = 100도와 각 50도를 순차 계산하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_INSCRIBED_ANGLE: 원주각의 크기는 그 원주각이 바라보는 호의 크기의 절반",
+          "curriculum": "M3-RPM-079: 호 CD = 100도에 대하여 접선과 현이 이루는 각의 성질을 적용해 50도를 구한다.",
+          "problemType": "원주각 35도와 60도로부터 호 CD를 구하고 접현각 x = 50도를 계산하는 유형이다.",
+          "difficulty": "호의 크기의 합이 360도임을 이용해 호 CD = 100도와 각 50도를 순차 계산하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_CIRCLE_PROPERTIES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림에서 사각형 $ABCD$는 원에 내접하고 직선」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "원주각으로 세 호 70도, 70도, 120도를 구하고 전체 360도에서 호 CD=100도를 찾아 접현각 x=50도를 구한다.",
       "decisiveStep": "호 CD = 360° - 260° = 100°이므로 x = 50°",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "원주각으로 세 호를 계산하고 360도 차감 후 접현각의 절반 관계를 적용하는 3단계 문항",
+      "difficultyReason": "호의 크기의 합이 360도임을 이용해 호 CD = 100도와 각 50도를 순차 계산하므로 난이도 2이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
         "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
-        "why": "원주각과 호의 비례로 남은 호를 도출하고 접선과 현이 이루는 각 정리 적용"
+        "why": "원주각 35도와 60도로부터 호 CD를 구하고 접현각 x = 50도를 계산하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_f61443176b39bd7c45cfd6fa2c5b1e0d157b9b77ad74f56f621e9545eebe61a7",
@@ -356,20 +548,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-080"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "복합 각 추론",
+          "recordId": "M3-RPM-080"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원주각",
+        "rpmPrimaryL3": "원주각의 활용",
+        "rpmPrimaryL4": "복합 각 추론",
+        "rpmPrimaryRecordId": "M3-RPM-080",
+        "difficultyBasis": "호의 크기 70도와 교각 공식 (70+70)/2 = 70도를 바로 적용하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_INSCRIBED_ANGLE: $\\angle ABC = 35^\\circ$는 호 $AC",
+          "curriculum": "M3-RPM-080: 두 현의 교각 APC가 마주 보는 두 호 70도의 합의 절반임을 활용한다.",
+          "problemType": "원주각 35도로부터 구한 두 호의 크기 70도로 두 현의 교각을 계산하는 유형이다.",
+          "difficulty": "호의 크기 70도와 교각 공식 (70+70)/2 = 70도를 바로 적용하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_CIRCLE_PROPERTIES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림의 원 $O$에서 $\\wideparen{AC}」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "원주각 35도로 호 AC=70도를 얻고 같은 호 BD=70도와의 합의 절반 공식으로 각 APC=70도를 계산한다.",
       "decisiveStep": "각 APC = (70° + 70°) / 2 = 70°",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "원주각으로 호를 구하고 내부 현의 교각 공식을 순차적으로 적용하는 2단계 문항",
+      "difficultyReason": "호의 크기 70도와 교각 공식 (70+70)/2 = 70도를 바로 적용하므로 난이도 2이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
         "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-        "why": "내부 교차 현의 각 공식과 호의 원주각 관계 결합"
+        "why": "원주각 35도로부터 구한 두 호의 크기 70도로 두 현의 교각을 계산하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_74b05944b9d849640d3ef89500b72eb3887c4979b310afaa0f1eaa4ef28edf53",
@@ -394,7 +618,7 @@
         ],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 8,
@@ -407,20 +631,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-075"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원주각",
+          "l3": "원주각과 중심각",
+          "l4": "중심각과 원주각",
+          "recordId": "M3-RPM-075"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원주각",
+        "rpmPrimaryL3": "원주각과 중심각",
+        "rpmPrimaryL4": "중심각과 원주각",
+        "rpmPrimaryRecordId": "M3-RPM-075",
+        "difficultyBasis": "중심각과 원주각의 1/2 관계를 두 번 적용해 25도를 즉시 구하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_INSCRIBED_ANGLE: 중심각의 크기는 그 중심각이 바라보는 호의 크기와 같으",
+          "curriculum": "M3-RPM-075: 중심각 100도와 같은 호에 대한 원주각 BQC의 비례 관계를 활용한다.",
+          "problemType": "중심각 100도를 이등분한 호 BC로부터 원주각 BQC = 25도를 구하는 유형이다.",
+          "difficulty": "중심각과 원주각의 1/2 관계를 두 번 적용해 25도를 즉시 구하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_CIRCLE_PROPERTIES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림의 원 $O$에서 $\\wideparen{AB}」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "중심각 100도를 2등분하여 호 BC=50도를 얻고 그 절반으로 원주각 BQC=25도를 도출한다.",
       "decisiveStep": "각 BQC = 50° / 2 = 25°",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "중심각을 호로 변환한 후 등분하고 원주각의 절반 공식을 취하는 2단계 기본 문항",
+      "difficultyReason": "중심각과 원주각의 1/2 관계를 두 번 적용해 25도를 즉시 구하므로 난이도 2이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
         "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
-        "why": "호의 등분할과 원주각-중심각 관계의 기본 연계"
+        "why": "중심각 100도를 이등분한 호 BC로부터 원주각 BQC = 25도를 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c67de48a8270cff390c7a70cc40337425fa0f9d5680b6bf4c68fbc084007bab1",
@@ -439,7 +695,7 @@
         "subUnit": "원주각",
         "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
         "crossConceptKeys": [
           "CC_CIRCLE_RADIUS_DEFINITION"
         ],
@@ -458,20 +714,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-077"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "내접사각형의 각",
+          "recordId": "M3-RPM-077"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원주각",
+        "rpmPrimaryL3": "원주각의 활용",
+        "rpmPrimaryL4": "내접사각형의 각",
+        "rpmPrimaryRecordId": "M3-RPM-077",
+        "difficultyBasis": "이등변삼각형 성질과 내접사각형 대각 합 180도를 순차 적용해 140도를 구하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_INSCRIBED_ANGLE: 선분 $OA, OB$는 모두 원 $O$의 반지름이므로 ",
+          "curriculum": "M3-RPM-077: 내접사각형 ABCD에서 대각의 합이 180도임을 활용하여 140도를 도출한다.",
+          "problemType": "이등변삼각형 각 70도, 30도로부터 각 ABC = 40도를 구하고 내접사각형 대각 140도를 계산하는 유형이다.",
+          "difficulty": "이등변삼각형 성질과 내접사각형 대각 합 180도를 순차 적용해 140도를 구하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_CIRCLE_RADIUS_DEFINITION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림에서 사각형 $ABCD$는 원 $O$에 내접하」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "반지름에 의한 두 이등변삼각형의 각 차로 각 ABC=40도를 구하고 내접사각형 대각합으로 각 ADC=140도를 도출한다.",
       "decisiveStep": "각 ADC = 180° - 40° = 140°",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "반지름으로 만든 두 이등변삼각형의 각 차를 구한 뒤 내접사각형의 성질로 대각을 계산하는 2단계 문항",
+      "difficultyReason": "이등변삼각형 성질과 내접사각형 대각 합 180도를 순차 적용해 140도를 구하므로 난이도 2이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-        "why": "반지름의 등길이에 따른 이등변삼각형 밑각 판정과 내접사각형 대각 성질 결합"
+        "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+        "why": "이등변삼각형 각 70도, 30도로부터 각 ABC = 40도를 구하고 내접사각형 대각 140도를 계산하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_3b4d4f608b2e8e5514f902fc725036ef34917965e492285438e01416f2936ec4",
@@ -509,20 +797,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-080"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "복합 각 추론",
+          "recordId": "M3-RPM-080"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원주각",
+        "rpmPrimaryL3": "원주각의 활용",
+        "rpmPrimaryL4": "복합 각 추론",
+        "rpmPrimaryRecordId": "M3-RPM-080",
+        "difficultyBasis": "두 할선각 방정식을 원주 360도 조건과 연립하여 호의 합을 풀어야 하므로 난이도 3이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_INSCRIBED_ANGLE: 원 위의 네 호 $\\wideparen{AB}, \\wid",
+          "curriculum": "M3-RPM-080: 할선각 24도와 36도로부터 호의 합 120도를 구하고 원주각 60도를 도출한다.",
+          "problemType": "두 할선이 이루는 각 24도, 36도로부터 내접사각형의 각 x = 60도를 구하는 유형이다.",
+          "difficulty": "두 할선각 방정식을 원주 360도 조건과 연립하여 호의 합을 풀어야 하므로 난이도 3이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_CIRCLE_PROPERTIES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "INTERDEPENDENT: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림과 같이 사각형 $ABCD$는 원 $O$에 내」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "두 할선각 조건 c-a=48도와 b-d=72도를 원주 합 360도에 연립하여 a+d=120도를 구하고 원주각 60도를 산출한다.",
       "decisiveStep": "a + d = (360° - 120°) / 2 = 120°이므로 x = 60°",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "두 할선각 공식으로 두 호의 차를 세우고 호의 합 360도와 연립하여 마주보는 호의 합을 도출하는 3단계 복합 추론",
+      "difficultyReason": "두 할선각 방정식을 원주 360도 조건과 연립하여 호의 합을 풀어야 하므로 난이도 3이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
         "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-        "why": "외부 할선각과 원주각 관계식을 연립하여 원주각을 계산하는 고난도 유형"
+        "why": "두 할선이 이루는 각 24도, 36도로부터 내접사각형의 각 x = 60도를 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_7ccebd1af11942e8e5c9b07f3f75f18f6c100f8c7042b10a2bbf2e86bb4a0714",
@@ -560,20 +880,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-079"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "접선과 현이 이루는 각",
+          "recordId": "M3-RPM-079"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원주각",
+        "rpmPrimaryL3": "원주각의 활용",
+        "rpmPrimaryL4": "접선과 현이 이루는 각",
+        "rpmPrimaryRecordId": "M3-RPM-079",
+        "difficultyBasis": "중심각 140도와 접현각 성질을 결합하여 합 70도를 단번에 도출하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_INSCRIBED_ANGLE: 원 밖의 점 $P$에서 그은 두 접선 $PA, PB$가",
+          "curriculum": "M3-RPM-079: 호 AB = 140도에 대해 두 접선과 현이 이루는 각의 합 70도를 유도한다.",
+          "problemType": "접선각 40도로부터 호 AB = 140도를 얻고 접현각의 합 70도를 계산하는 유형이다.",
+          "difficulty": "중심각 140도와 접현각 성질을 결합하여 합 70도를 단번에 도출하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_CIRCLE_TANGENT_LENGTH: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림에서 두 선분 $\\overline{PA}, \\」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "접선 각 40도로 호 AB=140도를 얻고 접현각의 합이 호의 절반인 70도임을 유도한다.",
       "decisiveStep": "각 PAC + 각 PBC = 140° / 2 = 70°",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "접선 각으로 호의 중심각을 구하고 접현각 합 공식을 적용하는 2단계 문항",
+      "difficultyReason": "중심각 140도와 접현각 성질을 결합하여 합 70도를 단번에 도출하므로 난이도 2이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
         "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
-        "why": "접선 사이 각과 접현각의 합 공식 결합"
+        "why": "접선각 40도로부터 호 AB = 140도를 얻고 접현각의 합 70도를 계산하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_430aa0ab422159f1a4cc73c03cac625a2b7d99d3e3091c45890cd30db6d15d6d",
@@ -592,7 +944,7 @@
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
         "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
-        "templateKey": "",
+        "templateKey": "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
         "crossConceptKeys": [
           "CC_MEDIAN"
         ],
@@ -611,20 +963,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-081"
+        ],
+        "rpmPrimary": {
+          "l1": "통계",
+          "l2": "대푯값과 산포도",
+          "l3": "대푯값",
+          "l4": "평균·중앙값·최빈값",
+          "recordId": "M3-RPM-081"
+        },
+        "rpmPrimaryL1": "통계",
+        "rpmPrimaryL2": "대푯값과 산포도",
+        "rpmPrimaryL3": "대푯값",
+        "rpmPrimaryL4": "평균·중앙값·최빈값",
+        "rpmPrimaryRecordId": "M3-RPM-081",
+        "difficultyBasis": "정렬 후 4번째와 5번째 값 52, 54의 평균을 직접 구하므로 난이도 1이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-07 / M3-07-STATISTICS_REPRESENTATIVE: 주어진 $8$개의 변량을 작은 값부터 순서대로 나열하면",
+          "curriculum": "M3-RPM-081: 8개의 변량에서 가운데 두 값 52와 54의 평균으로 중앙값 53을 계산한다.",
+          "problemType": "주어진 8개의 변량으로부터 중앙값 53 kg을 구하는 유형이다.",
+          "difficulty": "정렬 후 4번째와 5번째 값 52, 54의 평균을 직접 구하므로 난이도 1이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_MEDIAN: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "8개의 변량을 크기순으로 정렬하여 4번째 값 52와 5번째 값 54의 평균으로 중앙값 53을 계산한다.",
       "decisiveStep": "중앙값 = (52 + 54) / 2 = 53",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "자료를 정렬한 후 가운데 두 수의 평균을 취하는 1단계 기본 문항",
+      "difficultyReason": "정렬 후 4번째와 5번째 값 52, 54의 평균을 직접 구하므로 난이도 1이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
-        "templateKey": null,
-        "why": "짝수 개 변량의 정렬 후 중앙값 도출 기본 알고리즘"
+        "templateKey": "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
+        "why": "주어진 8개의 변량으로부터 중앙값 53 kg을 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_8dc4cd0da062e848c6214596404a752ac1e0e4a25463ffd938663780d6f4691e",
@@ -643,13 +1027,13 @@
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
         "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
-        "templateKey": "",
+        "templateKey": "TPL_M3_CENTRAL_TENDENCY_MEDIAN_MODE_DIRECT",
         "crossConceptKeys": [
           "CC_CENTRAL_TENDENCY"
         ],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 1,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 13,
@@ -662,20 +1046,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-082"
+        ],
+        "rpmPrimary": {
+          "l1": "통계",
+          "l2": "대푯값과 산포도",
+          "l3": "대푯값",
+          "l4": "대푯값 비교",
+          "recordId": "M3-RPM-082"
+        },
+        "rpmPrimaryL1": "통계",
+        "rpmPrimaryL2": "대푯값과 산포도",
+        "rpmPrimaryL3": "대푯값",
+        "rpmPrimaryL4": "대푯값 비교",
+        "rpmPrimaryRecordId": "M3-RPM-082",
+        "difficultyBasis": "11개 변량에 대해 총합 66과 대푯값 공식으로 a=6, b=5, c=4를 구하고 비교하므로 난이도 1이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-07 / M3-07-STATISTICS_REPRESENTATIVE: 먼저 주어진 $11$개 변량의 총합을 구하면 $$ \\b",
+          "curriculum": "M3-RPM-082: 11개 변량의 총합 66과 평균 a = 6, 중앙값 b = 5, 최빈값 c = 4를 비교하여 a > b > c를 결정한다.",
+          "problemType": "11개 변량의 평균 6, 중앙값 5, 최빈값 4의 대소 관계를 판정하는 유형이다.",
+          "difficulty": "11개 변량에 대해 총합 66과 대푯값 공식으로 a=6, b=5, c=4를 구하고 비교하므로 난이도 1이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_CENTRAL_TENDENCY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "11개 변량의 평균 a=6, 정렬 6번째 중앙값 b=5, 최빈값 c=4를 구하고 a>b>c를 확정한다.",
       "decisiveStep": "a=6, b=5, c=4 이므로 a > b > c",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "평균 계산, 중앙값 정렬 추출, 최빈값 빈도 분석을 종합하여 대소를 비교하는 3단계 문항",
+      "difficultyReason": "11개 변량에 대해 총합 66과 대푯값 공식으로 a=6, b=5, c=4를 구하고 비교하므로 난이도 1이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
-        "templateKey": null,
-        "why": "단일 데이터셋에서 3대 대푯값을 각각 구하여 순서를 비교하는 문항"
+        "templateKey": "TPL_M3_CENTRAL_TENDENCY_MEDIAN_MODE_DIRECT",
+        "why": "11개 변량의 평균 6, 중앙값 5, 최빈값 4의 대소 관계를 판정하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_14247cec55f4dcce1442d94ca10771f0be9cf7f74bb644cb81be799154b22992",
@@ -694,7 +1110,7 @@
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
         "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
-        "templateKey": "",
+        "templateKey": "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
         "crossConceptKeys": [
           "CC_MEDIAN",
           "CC_MODE"
@@ -714,20 +1130,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-081"
+        ],
+        "rpmPrimary": {
+          "l1": "통계",
+          "l2": "대푯값과 산포도",
+          "l3": "대푯값",
+          "l4": "평균·중앙값·최빈값",
+          "recordId": "M3-RPM-081"
+        },
+        "rpmPrimaryL1": "통계",
+        "rpmPrimaryL2": "대푯값과 산포도",
+        "rpmPrimaryL3": "대푯값",
+        "rpmPrimaryL4": "평균·중앙값·최빈값",
+        "rpmPrimaryRecordId": "M3-RPM-081",
+        "difficultyBasis": "중앙값 70과 최빈값 72를 구하고 뺄셈 b - a = 2를 수행하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-07 / M3-07-STATISTICS_REPRESENTATIVE: 자료의 개수가 $16$개이므로 중앙값 $a$는 $8$번",
+          "curriculum": "M3-RPM-081: 중앙값 a = 70과 최빈값 b = 72로부터 차이 b - a = 2를 계산한다.",
+          "problemType": "정렬된 성적 16개에서 중앙값 70과 최빈값 72를 구하여 차를 구하는 유형이다.",
+          "difficulty": "중앙값 70과 최빈값 72를 구하고 뺄셈 b - a = 2를 수행하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_MEDIAN, CC_MODE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "16개 자료에서 8, 9번째 값의 평균 a=70과 빈도 1위 b=72를 구하여 b-a=2를 계산한다.",
       "decisiveStep": "b - a = 72 - 70 = 2",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "짝수 개 자료의 중앙값 평균 계산과 최빈값 빈도 분석을 결합한 2단계 문항",
+      "difficultyReason": "중앙값 70과 최빈값 72를 구하고 뺄셈 b - a = 2를 수행하므로 난이도 2이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
-        "templateKey": null,
-        "why": "짝수 개 정렬 자료의 중앙값과 최빈값 차 계산"
+        "templateKey": "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
+        "why": "정렬된 성적 16개에서 중앙값 70과 최빈값 72를 구하여 차를 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_4096f2fd87fd92bcb46fdc4d1150123d53778d4f428ecbf752f60dd33e129748",
@@ -746,7 +1194,7 @@
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
         "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
-        "templateKey": "",
+        "templateKey": "TPL_M3_CENTRAL_TENDENCY_MEDIAN_MODE_DIRECT",
         "crossConceptKeys": [
           "CC_CENTRAL_TENDENCY"
         ],
@@ -765,20 +1213,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-082"
+        ],
+        "rpmPrimary": {
+          "l1": "통계",
+          "l2": "대푯값과 산포도",
+          "l3": "대푯값",
+          "l4": "대푯값 비교",
+          "recordId": "M3-RPM-082"
+        },
+        "rpmPrimaryL1": "통계",
+        "rpmPrimaryL2": "대푯값과 산포도",
+        "rpmPrimaryL3": "대푯값",
+        "rpmPrimaryL4": "대푯값 비교",
+        "rpmPrimaryRecordId": "M3-RPM-082",
+        "difficultyBasis": "총합 49에서 구한 자료 A의 평균과 자료 C의 중앙값 7을 순차 확인하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-07 / M3-07-STATISTICS_REPRESENTATIVE: 각 자료의 대푯값을 판별한다.\n\n- 자료 $A$: 총합",
+          "curriculum": "M3-RPM-082: 총합 49인 자료 A와 중앙값 16인 자료 B 및 자료 C의 통계량을 비교하여 참과 거짓을 판별한다.",
+          "problemType": "총합 49인 자료 A와 중앙값 16인 자료 B를 통해 자료 C의 오류 진술 ⑤를 찾는 유형이다.",
+          "difficulty": "총합 49에서 구한 자료 A의 평균과 자료 C의 중앙값 7을 순차 확인하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_CENTRAL_TENDENCY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "자료 C의 중앙값이 (5+9)/2=7임을 계산하여 8이라고 진술한 5번 선지의 오류를 판정한다.",
       "decisiveStep": "자료 C의 중앙값 = (5+9)/2 = 7 != 8",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "세 개 자료의 평균, 중앙값, 최빈값을 각각 다각도로 계산하여 진위를 점검하는 다지선다 문항",
+      "difficultyReason": "총합 49에서 구한 자료 A의 평균과 자료 C의 중앙값 7을 순차 확인하므로 난이도 2이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
-        "templateKey": null,
-        "why": "다양한 분포 형태의 자료에서 대푯값 일치 및 다중 최빈값 판정"
+        "templateKey": "TPL_M3_CENTRAL_TENDENCY_MEDIAN_MODE_DIRECT",
+        "why": "총합 49인 자료 A와 중앙값 16인 자료 B를 통해 자료 C의 오류 진술 ⑤를 찾는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_1a1466f61a3428339269b62bdf3c2b9099bd9c188b7ce6c8ebcc4712c51c7518",
@@ -796,14 +1276,14 @@
         "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
-        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
-        "templateKey": "",
+        "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+        "templateKey": "TPL_M3_COUNT_TRUE_STATEMENTS_ON_STATISTICS_CONCEPTS",
         "crossConceptKeys": [
           "CC_STANDARD_DEVIATION"
         ],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 3,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 16,
@@ -816,20 +1296,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-085"
+        ],
+        "rpmPrimary": {
+          "l1": "통계",
+          "l2": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "표준편차",
+          "recordId": "M3-RPM-085"
+        },
+        "rpmPrimaryL1": "통계",
+        "rpmPrimaryL2": "대푯값과 산포도",
+        "rpmPrimaryL3": "산포도",
+        "rpmPrimaryL4": "표준편차",
+        "rpmPrimaryRecordId": "M3-RPM-085",
+        "difficultyBasis": "평균 3과 표준편차 sqrt(13)/2 등 4개 보기를 검증하여 3개를 찾으므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-07 / M3-07-STATISTICS_REPRESENTATIVE: 주어진 자료의 각 통계량을 검증한다.\n\n- 변량의 총합",
+          "curriculum": "M3-RPM-085: 평균 3, 중앙값 3.5, 최빈값 4, 표준편차 sqrt(13)/2를 계산하여 보기를 검증한다.",
+          "problemType": "총합 24인 8명의 턱걸이 횟수로부터 대푯값과 산포도 진술의 참 개수 3개를 판정하는 유형이다.",
+          "difficulty": "평균 3과 표준편차 sqrt(13)/2 등 4개 보기를 검증하여 3개를 찾으므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_STANDARD_DEVIATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "평균 3, 중앙값 3.5, 최빈값 4, 분산 13/4, 표준편차 sqrt(13)/2를 각각 계산하여 옳은 보기 3개를 가려낸다.",
       "decisiveStep": "옳은 보기는 ㄱ, ㄷ, ㄹ의 3개",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "평균, 중앙값, 최빈값 및 편차제곱합을 통한 표준편차 계산까지 전 과정을 점검하는 4단계 종합 문항",
+      "difficultyReason": "평균 3과 표준편차 sqrt(13)/2 등 4개 보기를 검증하여 3개를 찾으므로 난이도 2이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
-        "templateKey": null,
-        "why": "대푯값 3종과 산포도 표준편차를 모두 계산하여 합의형 보기를 검증하는 종합 문항"
+        "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+        "templateKey": "TPL_M3_COUNT_TRUE_STATEMENTS_ON_STATISTICS_CONCEPTS",
+        "why": "총합 24인 8명의 턱걸이 횟수로부터 대푯값과 산포도 진술의 참 개수 3개를 판정하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_69c7b26b1eb694a3c63762f20a578b18e2253a20753f95a5cb6bf70219742e71",
@@ -848,13 +1360,13 @@
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
         "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
-        "templateKey": "",
+        "templateKey": "TPL_M3_DISPERSION_DEVIATION_PROPERTIES_PARAMETER",
         "crossConceptKeys": [
           "CC_SUM_OF_SQUARES_IDENTITY"
         ],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 3,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 17,
@@ -867,20 +1379,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-084"
+        ],
+        "rpmPrimary": {
+          "l1": "통계",
+          "l2": "대푯값과 산포도",
+          "l3": "산포도",
+          "l4": "분산",
+          "recordId": "M3-RPM-084"
+        },
+        "rpmPrimaryL1": "통계",
+        "rpmPrimaryL2": "대푯값과 산포도",
+        "rpmPrimaryL3": "산포도",
+        "rpmPrimaryL4": "분산",
+        "rpmPrimaryRecordId": "M3-RPM-084",
+        "difficultyBasis": "x + y = 10과 편차 제곱합 식을 전개하여 x^2 + y^2 = 57을 구하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-07 / M3-07-STATISTICS_REPRESENTATIVE: 다섯 수의 평균이 $6$이므로 총합은 $5 \\times",
+          "curriculum": "M3-RPM-084: 평균 6과 분산 3.8의 편차제곱합 식을 연립하여 x^2 + y^2 = 57을 구한다.",
+          "problemType": "평균과 분산 조건으로부터 미지수 제곱의 합 x^2 + y^2 = 57을 도출하는 유형이다.",
+          "difficulty": "x + y = 10과 편차 제곱합 식을 전개하여 x^2 + y^2 = 57을 구하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SUM_OF_SQUARES_IDENTITY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "x+y=10과 편차제곱합 (x-6)^2+(y-6)^2=9를 전개하여 x^2+y^2=57을 도출한다.",
       "decisiveStep": "x^2 + y^2 = 9 + 48 = 57",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "분산 정의식을 이차식으로 전개하여 합 조건을 대입해 제곱의 합을 유도하는 3단계 문항",
+      "difficultyReason": "x + y = 10과 편차 제곱합 식을 전개하여 x^2 + y^2 = 57을 구하므로 난이도 2이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
-        "templateKey": null,
-        "why": "평균 합 조건과 분산 편차제곱합을 연립하여 제곱합을 계산하는 대수적 통계 문항"
+        "templateKey": "TPL_M3_DISPERSION_DEVIATION_PROPERTIES_PARAMETER",
+        "why": "평균과 분산 조건으로부터 미지수 제곱의 합 x^2 + y^2 = 57을 도출하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_ff98c00c1e7a4f63a0ee161f54437f9d6bf0f0811a41909221a5a54d375e0125",
@@ -899,7 +1443,7 @@
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
         "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
-        "templateKey": "",
+        "templateKey": "TPL_M3_LINEAR_TRANSFORMATION_STATISTICS_TRANSLATION",
         "crossConceptKeys": [
           "CC_VARIANCE_SCALING_PROPERTY"
         ],
@@ -918,20 +1462,52 @@
           "variationType": "CONTEXT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-087"
+        ],
+        "rpmPrimary": {
+          "l1": "통계",
+          "l2": "대푯값과 산포도",
+          "l3": "자료 비교",
+          "l4": "조건으로 자료 추론",
+          "recordId": "M3-RPM-087"
+        },
+        "rpmPrimaryL1": "통계",
+        "rpmPrimaryL2": "대푯값과 산포도",
+        "rpmPrimaryL3": "자료 비교",
+        "rpmPrimaryL4": "조건으로 자료 추론",
+        "rpmPrimaryRecordId": "M3-RPM-087",
+        "difficultyBasis": "aligned 전개에 의해 평균은 5 증가하고 분산은 변하지 않으므로 난이도 1이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-07 / M3-07-STATISTICS_REPRESENTATIVE: 각 변량에 같은 수 $5$를 더하면 자료 전체가 오른쪽",
+          "curriculum": "M3-RPM-087: aligned 식에서 변량 a, b, c, d에 5를 더해도 편차는 불변이므로 분산 v를 확인한다.",
+          "problemType": "aligned 식에서 변량의 평행이동에 따른 평균 m+5와 분산 v를 파악하는 유형이다.",
+          "difficulty": "aligned 전개에 의해 평균은 5 증가하고 분산은 변하지 않으므로 난이도 1이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_VARIANCE_SCALING_PROPERTY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "모든 변량에 상수를 더하면 평균은 그만큼 증가하고 편차는 불변이므로 분산은 변하지 않음을 판정한다.",
       "decisiveStep": "새 평균 = m+5, 새 분산 = v",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "변량에 상수를 더할 때 평균은 증가하고 분산은 유지된다는 기본 성질을 확인하는 1단계 문항",
+      "difficultyReason": "aligned 전개에 의해 평균은 5 증가하고 분산은 변하지 않으므로 난이도 1이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
-        "templateKey": null,
-        "why": "변량의 일차 선형 변환에서 덧셈 상수가 평균과 분산에 미치는 영향 판별"
+        "templateKey": "TPL_M3_LINEAR_TRANSFORMATION_STATISTICS_TRANSLATION",
+        "why": "aligned 식에서 변량의 평행이동에 따른 평균 m+5와 분산 v를 파악하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_5fa99d81b6b65c8316e548fa4b956cdc2383e468311f0de842cb6171f7a402ed",
@@ -949,8 +1525,8 @@
         "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
         "subUnit": "통계 자료 해석",
         "conceptClusterKey": "STATISTICS_DATA_INTERPRETATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+        "templateKey": "TPL_M3_SCATTER_PLOT_READ_POINT_RATIO",
         "crossConceptKeys": [
           "CC_BAR_GRAPH_DISTRIBUTION"
         ],
@@ -969,20 +1545,52 @@
           "variationType": "CONTEXT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-088"
+        ],
+        "rpmPrimary": {
+          "l1": "통계",
+          "l2": "상관관계",
+          "l3": "산점도",
+          "l4": "산점도 읽기",
+          "recordId": "M3-RPM-088"
+        },
+        "rpmPrimaryL1": "통계",
+        "rpmPrimaryL2": "상관관계",
+        "rpmPrimaryL3": "산점도",
+        "rpmPrimaryL4": "산점도 읽기",
+        "rpmPrimaryRecordId": "M3-RPM-088",
+        "difficultyBasis": "전체 20명 중 3명의 백분율을 (3/20)*100 = 15%로 바로 계산하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-07 / M3-07-STATISTICS_DATA_INTERPRETATION: 각 보기를 조건에 따라 검증한다. ① 문제의 조건에서 ",
+          "curriculum": "M3-RPM-088: 20명의 학생 중 70점 미만 3명의 비율 15%를 산점도 조건에서 계산한다.",
+          "problemType": "산점도 자료 조건으로부터 특정 구간 학생 비율 15%를 구하는 유형이다.",
+          "difficulty": "전체 20명 중 3명의 백분율을 (3/20)*100 = 15%로 바로 계산하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_BAR_GRAPH_DISTRIBUTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「어느 반 학생 $20$명의 중간고사 점수와 기말고사 점」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "두 점수가 모두 70점 미만인 학생 3명의 전체 20명 대비 비율이 3/20*100=15%임을 판정한다.",
       "decisiveStep": "재시험 비율 = (3 / 20) * 100 = 15%",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "산점도에서 최빈값, 상관관계 방향, 영역별 도수 및 평균을 다각도로 판별하는 2단계 문항",
+      "difficultyReason": "전체 20명 중 3명의 백분율을 (3/20)*100 = 15%로 바로 계산하므로 난이도 2이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "산점도 조건에서 특정 영역에 속하는 변량의 비율을 계산하고 타 선지의 오류를 감별"
+        "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+        "templateKey": "TPL_M3_SCATTER_PLOT_READ_POINT_RATIO",
+        "why": "산점도 자료 조건으로부터 특정 구간 학생 비율 15%를 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_f1adf58451319fabe1cc4cea54297789a1d0e654afab351216a95ba4c1ef2ac1",
@@ -1000,12 +1608,12 @@
         "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
         "subUnit": "통계 자료 해석",
         "conceptClusterKey": "STATISTICS_DATA_INTERPRETATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+        "templateKey": "TPL_M3_CORRELATION_TYPE_JUDGMENT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 20,
@@ -1018,20 +1626,52 @@
           "variationType": "CONTEXT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-090"
+        ],
+        "rpmPrimary": {
+          "l1": "통계",
+          "l2": "상관관계",
+          "l3": "상관관계",
+          "l4": "양의 상관관계",
+          "recordId": "M3-RPM-090"
+        },
+        "rpmPrimaryL1": "통계",
+        "rpmPrimaryL2": "상관관계",
+        "rpmPrimaryL3": "상관관계",
+        "rpmPrimaryL4": "양의 상관관계",
+        "rpmPrimaryRecordId": "M3-RPM-090",
+        "difficultyBasis": "직선 y=x 위쪽 점 D의 의미(국어 > 영어)를 직관적으로 판별하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-07 / M3-07-STATISTICS_DATA_INTERPRETATION: 산점도에서 가로축($x$축)은 영어 성적, 세로축($y",
+          "curriculum": "M3-RPM-090: 직선 y=x의 영역과 산점도 점의 위치를 해석하여 국어와 영어 성적을 비교한다.",
+          "problemType": "산점도에서 y=x 기준 점 D의 위치(y > x)를 파악해 오류 진술 ⑤를 찾는 유형이다.",
+          "difficulty": "직선 y=x 위쪽 점 D의 의미(국어 > 영어)를 직관적으로 판별하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「어느 학교 학생들의 영어 성적($x$축)과 국어 성적(」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "점 D가 y=x 위쪽에 위치하므로 국어 점수 y가 영어 점수 x보다 높음을 판단하여 5번의 오류를 가려낸다.",
       "decisiveStep": "점 D는 y > x 영역에 있으므로 국어 성적이 더 우수함",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "산점도 위 점의 가로 및 세로 위치를 읽어 대소 관계를 판정하는 1단계 해석 문항",
+      "difficultyReason": "직선 y=x 위쪽 점 D의 의미(국어 > 영어)를 직관적으로 판별하므로 난이도 2이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "산점도의 기준선 y=x와 상대적 좌표 위치를 이용한 변량 크기 비교"
+        "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+        "templateKey": "TPL_M3_CORRELATION_TYPE_JUDGMENT",
+        "why": "산점도에서 y=x 기준 점 D의 위치(y > x)를 파악해 오류 진술 ⑤를 찾는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_b1b42ecf69acc0b5da838934b3afd8cb0a19850ff596c2ee5aa1affbb184291d",
@@ -1056,7 +1696,7 @@
         ],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 21,
@@ -1069,20 +1709,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-067"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원과 직선",
+          "l3": "원의 중심과 현",
+          "l4": "중심에서 현에 내린 수선",
+          "recordId": "M3-RPM-067"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원과 직선",
+        "rpmPrimaryL3": "원의 중심과 현",
+        "rpmPrimaryL4": "중심에서 현에 내린 수선",
+        "rpmPrimaryRecordId": "M3-RPM-067",
+        "difficultyBasis": "두 직각삼각형 AMC, OMA에서 피타고라스 정리를 연립해 R = 15를 구하므로 난이도 3이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_LINE: $\\overline{CM} \\perp \\overline",
+          "curriculum": "M3-RPM-067: 현의 수직이등분선 성질과 피타고라스 정리로 반지름 15와 넓이 225pi를 산출한다.",
+          "problemType": "현의 반 AM = 12와 CA = 6*sqrt(5)로부터 반지름 15와 넓이 225pi를 구하는 서술형 유형이다.",
+          "difficulty": "두 직각삼각형 AMC, OMA에서 피타고라스 정리를 연립해 R = 15를 구하므로 난이도 3이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_CIRCLE_CHORD_PERP_BISECTOR: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「[서·논술형 1] 다음 그림의 원 $O$에서 선분 $\\」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "직각삼각형 AMC에서 CM=6을 구하고 직각삼각형 OMA에서 (x+6)^2=x^2+12^2을 풀어 반지름 15와 넓이 225pi를 산출한다.",
       "decisiveStep": "12x = 108 에서 x=9, 반지름 R=15이므로 넓이 = 225pi",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "두 직각삼각형에 피타고라스 정리를 연계 적용하여 미지의 중심거리와 반지름을 도출하는 서술형 문항",
+      "difficultyReason": "두 직각삼각형 AMC, OMA에서 피타고라스 정리를 연립해 R = 15를 구하므로 난이도 3이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
         "templateKey": "TM_CIRCLE_CHORD_LENGTH",
-        "why": "현의 수직이등분선과 반지름의 방정식을 연립하여 원의 넓이 계산"
+        "why": "현의 반 AM = 12와 CA = 6*sqrt(5)로부터 반지름 15와 넓이 225pi를 구하는 서술형 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_888ffb09196e7f6f27f2ba201e2f86b09e8bf4495c36225ca8f2976116657dce",
@@ -1120,20 +1792,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-080"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원주각",
+          "l3": "원주각의 활용",
+          "l4": "복합 각 추론",
+          "recordId": "M3-RPM-080"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원주각",
+        "rpmPrimaryL3": "원주각의 활용",
+        "rpmPrimaryL4": "복합 각 추론",
+        "rpmPrimaryRecordId": "M3-RPM-080",
+        "difficultyBasis": "중심각의 합 180도와 차 60도를 연립하여 중심각 120도와 호의 길이 8pi를 구하므로 난이도 3이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_INSCRIBED_ANGLE: 반지름의 길이가 $12,\\mathrm{cm}$이므로 원",
+          "curriculum": "M3-RPM-080: 할선각 30도와 원의 둘레 24pi로부터 호 AC의 중심각 120도와 길이 8pi를 구한다.",
+          "problemType": "두 할선의 교각 30도와 두 호의 길이 8pi, 4pi를 연립해 호 AC의 길이를 구하는 서술형 유형이다.",
+          "difficulty": "중심각의 합 180도와 차 60도를 연립하여 중심각 120도와 호의 길이 8pi를 구하므로 난이도 3이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_CIRCLE_SECTOR_AREA: 원천 마크다운 값, 재판정 안 함",
+          "integration": "INTERDEPENDENT: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「[서·논술형 2] 다음 그림과 같이 반지름의 길이가 $」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "호 AB, CD의 중심각 120도, 60도로 x+y=180도를 얻고 할선각 x-y=60도와 연립해 x=120도로부터 호 AC=8pi를 계산한다.",
       "decisiveStep": "x = 120° 이므로 호 AC = 24pi * (120/360) = 8pi",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "호의 길이로 중심각을 환산하고 외부 할선각 공식과 중심각 합 공식을 연립하여 호의 길이를 복원하는 고난도 서술형 문항",
+      "difficultyReason": "중심각의 합 180도와 차 60도를 연립하여 중심각 120도와 호의 길이 8pi를 구하므로 난이도 3이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
         "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-        "why": "외부 할선각과 원 둘레 중심각의 총합을 연립방정식으로 풀어 호의 길이를 계산하는 심화 문항"
+        "why": "두 할선의 교각 30도와 두 호의 길이 8pi, 4pi를 연립해 호 AC의 길이를 구하는 서술형 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_74085b7697753231ea5bdfe776edd8d63b94de539d82d83f52aa749e2b9425d4",
@@ -1152,7 +1856,7 @@
         "subUnit": "대푯값과 산포도",
         "conceptClusterKey": "STATISTICS_REPRESENTATIVE",
         "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
-        "templateKey": "",
+        "templateKey": "TPL_M3_LINEAR_TRANSFORMATION_STATISTICS_AFFINE",
         "crossConceptKeys": [
           "CC_VARIANCE_SCALING_PROPERTY",
           "CC_SUM_OF_SQUARES_IDENTITY"
@@ -1172,20 +1876,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-087"
+        ],
+        "rpmPrimary": {
+          "l1": "통계",
+          "l2": "대푯값과 산포도",
+          "l3": "자료 비교",
+          "l4": "조건으로 자료 추론",
+          "recordId": "M3-RPM-087"
+        },
+        "rpmPrimaryL1": "통계",
+        "rpmPrimaryL2": "대푯값과 산포도",
+        "rpmPrimaryL3": "자료 비교",
+        "rpmPrimaryL4": "조건으로 자료 추론",
+        "rpmPrimaryRecordId": "M3-RPM-087",
+        "difficultyBasis": "선형변환 성질로 평균 5, 분산 4를 구하고 편차제곱합 전개식을 풀어 116을 얻으므로 난이도 3이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-07 / M3-07-STATISTICS_REPRESENTATIVE: $a, b, c, d$의 평균을 $m$이라 하자. 각 ",
+          "curriculum": "M3-RPM-087: 선형변환된 평균 13과 분산 16으로부터 원래 평균 5와 분산 4를 구하고 제곱합 116을 산출한다.",
+          "problemType": "선형변환된 변량의 평균 13과 분산 16을 이용해 원래 변량의 제곱의 합 116을 구하는 서술형 유형이다.",
+          "difficulty": "선형변환 성질로 평균 5, 분산 4를 구하고 편차제곱합 전개식을 풀어 116을 얻으므로 난이도 3이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_VARIANCE_SCALING_PROPERTY, CC_SUM_OF_SQUARES_IDENTITY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "선형변환 평균 13에서 m=5, 합 20을 얻고 선형변환 분산 16에서 V=4를 도출한 후 편차제곱합 전개로 a^2+b^2+c^2+d^2=116을 구한다.",
       "decisiveStep": "a^2 + b^2 + c^2 + d^2 = 16 + 100 = 116",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "변량의 선형변환 성질로 원래 평균과 분산을 복원하고 편차제곱합 전개식에 대입하여 네 수의 제곱합을 계산하는 고난도 서술형 문항",
+      "difficultyReason": "선형변환 성질로 평균 5, 분산 4를 구하고 편차제곱합 전개식을 풀어 116을 얻으므로 난이도 3이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
-        "templateKey": null,
-        "why": "변량의 일차 변환에 따른 평균 및 분산의 변화 공식을 역산하여 제곱합을 계산하는 심화 서술형 문항"
+        "templateKey": "TPL_M3_LINEAR_TRANSFORMATION_STATISTICS_AFFINE",
+        "why": "선형변환된 변량의 평균 13과 분산 16을 이용해 원래 변량의 제곱의 합 116을 구하는 서술형 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     }
   ]
 }

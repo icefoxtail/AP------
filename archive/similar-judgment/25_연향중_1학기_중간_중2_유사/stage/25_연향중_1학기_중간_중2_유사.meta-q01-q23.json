@@ -3,7 +3,7 @@
   "requestId": "25_연향중_1학기_중간_중2_유사-candidate-v1",
   "examUid": "25_연향중_1학기_중간_중2_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/25_연향중_1학기_중간_중2_유사.js",
-  "expectedSourceBlobSha1": "679e898eae78e99294ae405d2c458bd4102e3f49",
+  "expectedSourceBlobSha1": "3b51cc97305f274e074eb6258c9ccaf73c7b03bf",
   "expectedQuestionCount": 23,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -29,8 +29,8 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "subUnit": "유리수와 순환소수",
-        "conceptClusterKey": "REPEATING_DECIMAL_CONVERSION_STRATEGY",
-        "problemTypeKey": "",
+        "conceptClusterKey": "REPEATING_DECIMAL",
+        "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_FRACTION_CONVERSION"
@@ -52,20 +52,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-004"
+        ],
+        "rpmPrimary": {
+          "l1": "유리수와 순환소수",
+          "l2": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환소수를 분수로",
+          "recordId": "M2-RPM-004"
+        },
+        "rpmPrimaryL1": "유리수와 순환소수",
+        "rpmPrimaryL2": "유리수와 순환소수",
+        "rpmPrimaryL3": "순환소수",
+        "rpmPrimaryL4": "순환소수를 분수로",
+        "rpmPrimaryRecordId": "M2-RPM-004",
+        "difficultyBasis": "순환마디의 자릿수에 따라 100x - x 식을 선택하는 기본 순환소수 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-REPEATING_DECIMAL: 순환소수 $0.\\dot{3}\\dot{8}$을 ",
+          "curriculum": "M2-RPM-004: 순환마디 숫자가 2개인 순환소수에서 100x - x를 이용하여 분수로 변환하는 편리한 식을 고르는 문제이다.",
+          "problemType": "순환소수를 100의 거듭제곱 곱셈으로 소수부분을 일치시켜 분수로 나타내는 과제이다.",
+          "difficulty": "순환마디의 자릿수에 따라 100x - x 식을 선택하는 기본 순환소수 문항이다.",
+          "condition": "COND_DECIMAL: 순환마디가 2자리임을 쓴다.",
+          "crossConcept": "CC_FRACTION_CONVERSION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "x = 0.(3)(8)에서 순환마디가 소수 둘째 자리까지이므로 100x - x를 선택한다.",
       "decisiveStep": "순환마디 길이 2에 대응하는 100x - x 식별",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "순환마디의 길이에 맞춰 10의 거듭제곱 배수를 바로 선택하는 1단계 기본 문항",
+      "difficultyReason": "순환마디의 자릿수에 따라 100x - x 식을 선택하는 기본 순환소수 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_REPEATING_TO_FRACTION_EQ",
-        "templateKey": "TPL_REPEATING_FRACTION_EQUATION_CHOICE",
-        "why": "순환소수 분수 변환을 위한 거듭제곱 뺄셈식을 선택하는 기본 템플릿"
+        "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+        "templateKey": null,
+        "why": "순환소수를 100의 거듭제곱 곱셈으로 소수부분을 일치시켜 분수로 나타내는 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_503441ea9dbbf8df85e1744ddb4b65766139d353273e2ada9df0b29af2550a11",
@@ -82,8 +114,8 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "subUnit": "유리수와 순환소수",
-        "conceptClusterKey": "MIXED_REPEATING_DECIMAL_AUDIT",
-        "problemTypeKey": "",
+        "conceptClusterKey": "REPEATING_DECIMAL",
+        "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_REPEATING_NOTATION"
@@ -105,20 +137,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-004"
+        ],
+        "rpmPrimary": {
+          "l1": "유리수와 순환소수",
+          "l2": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환소수를 분수로",
+          "recordId": "M2-RPM-004"
+        },
+        "rpmPrimaryL1": "유리수와 순환소수",
+        "rpmPrimaryL2": "유리수와 순환소수",
+        "rpmPrimaryL3": "순환소수",
+        "rpmPrimaryL4": "순환소수를 분수로",
+        "rpmPrimaryRecordId": "M2-RPM-004",
+        "difficultyBasis": "순환소수 x = 2.15333...의 성질을 각 선지별로 대조하여 오답을 찾는 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-REPEATING_DECIMAL: 순환소수 $x = 2.15333\\cdots$에",
+          "curriculum": "M2-RPM-004: 순환소수 x = 2.15333...의 분수 표현 및 순환마디 성질에서 잘못된 식 100x - 10x를 판별하는 문제이다.",
+          "problemType": "순환소수 x = 2.15333...의 순환마디, 유리수 여부, 분수 변환 식을 종합 검증하는 과제이다.",
+          "difficulty": "순환소수 x = 2.15333...의 성질을 각 선지별로 대조하여 오답을 찾는 문항이다.",
+          "condition": "COND_RATIONAL: 1000x - 100x를 이용해야 함을 확인한다.",
+          "crossConcept": "CC_REPEATING_NOTATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "1000x와 100x를 이용해야 순환마디가 소거되므로 100x-10x를 주장한 ⑤의 오류를 식별한다.",
       "decisiveStep": "1000x-100x가 아닌 100x-10x로는 소수 부분 소거 불가능 확인",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "혼순환소수의 소거 원리와 분수 변환 공식을 종합적으로 대조하는 2단계 문항",
+      "difficultyReason": "순환소수 x = 2.15333...의 성질을 각 선지별로 대조하여 오답을 찾는 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_REPEATING_DECIMAL_PROPERTY_AUDIT",
-        "templateKey": "TPL_MIXED_REPEATING_DECIMAL_CLAIMS",
-        "why": "혼순환소수의 분수 변환 원리와 순환마디 표기 규칙을 포괄 검증하는 템플릿"
+        "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+        "templateKey": null,
+        "why": "순환소수 x = 2.15333...의 순환마디, 유리수 여부, 분수 변환 식을 종합 검증하는 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_9a94626817fa8529961557e91493243fd22b504b7d5f6fc977dd99d2f45e82d5",
@@ -135,8 +199,8 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "subUnit": "유리수와 순환소수",
-        "conceptClusterKey": "REPEATING_PERIOD_LENGTH_SUM",
-        "problemTypeKey": "",
+        "conceptClusterKey": "REPEATING_DECIMAL",
+        "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_FRACTION_CONVERSION"
@@ -145,7 +209,7 @@
           "COND_NATURAL"
         ],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 3,
@@ -158,20 +222,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-003"
+        ],
+        "rpmPrimary": {
+          "l1": "유리수와 순환소수",
+          "l2": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환마디와 표현",
+          "recordId": "M2-RPM-003"
+        },
+        "rpmPrimaryL1": "유리수와 순환소수",
+        "rpmPrimaryL2": "유리수와 순환소수",
+        "rpmPrimaryL3": "순환소수",
+        "rpmPrimaryL4": "순환마디와 표현",
+        "rpmPrimaryRecordId": "M2-RPM-003",
+        "difficultyBasis": "두 분수 1/3과 4/27을 소수로 변환하여 순환마디 개수의 합을 구하는 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-REPEATING_DECIMAL: 분수 $\\dfrac{1}{3}$과 $\\dfra",
+          "curriculum": "M2-RPM-003: 분수 1/3과 4/27의 순환마디 길이 x = 1, y = 3을 구하여 합 x + y = 4를 계산하는 문제이다.",
+          "problemType": "분수 1/3과 4/27을 직접 나눗셈하여 순환마디의 숫자의 개수를 세는 과제이다.",
+          "difficulty": "두 분수 1/3과 4/27을 소수로 변환하여 순환마디 개수의 합을 구하는 문항이다.",
+          "condition": "COND_NATURAL: 각각의 순환마디 길이를 올바르게 센다.",
+          "crossConcept": "CC_FRACTION_CONVERSION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "1/3=0.(3)에서 x=1, 4/27=0.(1)4(8)에서 y=3을 구하여 1+3=4를 산출한다.",
       "decisiveStep": "4/27의 순환마디 148(길이 3) 식별 후 1+3=4 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "직접 나눗셈을 통해 순환마디를 구하고 자릿수 개수를 더하는 1단계 문항",
+      "difficultyReason": "두 분수 1/3과 4/27을 소수로 변환하여 순환마디 개수의 합을 구하는 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_REPEATING_PERIOD_LENGTH",
-        "templateKey": "TPL_FRACTION_TO_PERIOD_LENGTH_SUM",
-        "why": "두 분수의 소수 전개 순환마디 길이를 각각 세어 합산하는 템플릿"
+        "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+        "templateKey": null,
+        "why": "분수 1/3과 4/27을 직접 나눗셈하여 순환마디의 숫자의 개수를 세는 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_a1128e729d2621cfdba3817dccc9f23929b7926a8046e61e9bf60c1886ef1726",
@@ -188,8 +284,8 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "subUnit": "유리수와 순환소수",
-        "conceptClusterKey": "REPEATING_DECIMAL_NTH_DIGIT",
-        "problemTypeKey": "",
+        "conceptClusterKey": "REPEATING_DECIMAL",
+        "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_PERIODICITY_MODULO"
@@ -211,20 +307,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-003"
+        ],
+        "rpmPrimary": {
+          "l1": "유리수와 순환소수",
+          "l2": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환마디와 표현",
+          "recordId": "M2-RPM-003"
+        },
+        "rpmPrimaryL1": "유리수와 순환소수",
+        "rpmPrimaryL2": "유리수와 순환소수",
+        "rpmPrimaryL3": "순환소수",
+        "rpmPrimaryL4": "순환마디와 표현",
+        "rpmPrimaryRecordId": "M2-RPM-003",
+        "difficultyBasis": "나눗셈으로 순환마디를 찾고 100번째 자리 숫자를 주기로 계산하는 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-REPEATING_DECIMAL: 분수 $\\dfrac{5}{13}$를 소수로 나",
+          "curriculum": "M2-RPM-003: 분수 5/13의 순환마디 384615의 주기 6을 이용하여 100번째 자리 숫자 6을 구하는 문제이다.",
+          "problemType": "분수 5/13의 순환마디 주기성을 나눗셈의 나머지 100 = 6 * 16 + 4로 분석하는 과제이다.",
+          "difficulty": "나눗셈으로 순환마디를 찾고 100번째 자리 숫자를 주기로 계산하는 문항이다.",
+          "condition": "COND_NATURAL: 나머지 4에 대응하는 순환마디의 4번째 숫자를 취한다.",
+          "crossConcept": "CC_PERIODICITY_MODULO: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "5/13=0.(3)8461(5)에서 마디 길이 6, 100=6*16+4의 나머지 4로부터 4번째 숫자 6을 구한다.",
       "decisiveStep": "100 mod 6 = 4에서 순환마디 384615의 4번째 숫자 6 선택",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "순환마디를 전개하고 정수 나눗셈의 나머지를 대응시키는 2단계 문항",
+      "difficultyReason": "나눗셈으로 순환마디를 찾고 100번째 자리 숫자를 주기로 계산하는 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_REPEATING_NTH_DIGIT",
-        "templateKey": "TPL_DECIMAL_PERIODIC_MODULO",
-        "why": "순환마디 주기의 나머지 연산으로 자릿수 값을 결정하는 대표 템플릿"
+        "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+        "templateKey": null,
+        "why": "분수 5/13의 순환마디 주기성을 나눗셈의 나머지 100 = 6 * 16 + 4로 분석하는 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_84c6d849b9afecd31aaf447004505a286cbd58f7ce8ce0a2413863cd1500e894",
@@ -241,8 +369,8 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-REPEATING_DECIMAL",
         "subUnit": "유리수와 순환소수",
-        "conceptClusterKey": "FINITE_DECIMAL_DIVISOR_SUM",
-        "problemTypeKey": "",
+        "conceptClusterKey": "REPEATING_DECIMAL",
+        "problemTypeKey": "PT_M2_FINITE_DECIMAL",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_PRIME_FACTORIZATION",
@@ -253,7 +381,7 @@
           "COND_RANGE"
         ],
         "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 5,
@@ -266,20 +394,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-002"
+        ],
+        "rpmPrimary": {
+          "l1": "유리수와 순환소수",
+          "l2": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "분모의 소인수 조건",
+          "recordId": "M2-RPM-002"
+        },
+        "rpmPrimaryL1": "유리수와 순환소수",
+        "rpmPrimaryL2": "유리수와 순환소수",
+        "rpmPrimaryL3": "유한소수와 무한소수",
+        "rpmPrimaryL4": "분모의 소인수 조건",
+        "rpmPrimaryRecordId": "M2-RPM-002",
+        "difficultyBasis": "약분 후 분모의 소인수 조건을 고려하여 18 / (75 * x)가 유한소수가 되는 x들을 합산하는 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-REPEATING_DECIMAL: 분수 $\\dfrac{18}{75 \\times ",
+          "curriculum": "M2-RPM-002: 식 18 / (75 * x)가 유한소수가 되는 한 자리 자연수 x의 합 29를 구하는 문제이다.",
+          "problemType": "분수 18 / (75 * x)를 약분하여 분모의 소인수 2, 5 조건으로 x의 합 29를 결정하는 과제이다.",
+          "difficulty": "약분 후 분모의 소인수 조건을 고려하여 18 / (75 * x)가 유한소수가 되는 x들을 합산하는 문항이다.",
+          "condition": "COND_NATURAL, COND_RANGE: 분자의 소인수 3과 약분되는지 점검한다.",
+          "crossConcept": "CC_PRIME_FACTORIZATION, CC_REDUCING_FRACTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "18/(75x) = 6/(25x)에서 x의 소인수가 2, 5 또는 분자 3과 약분되는 수 x=1,2,3,4,5,6,8의 합 29를 구한다.",
       "decisiveStep": "x=3, 6이 분자의 3과 약분 가능함을 포함하고 x=9(3 잔존)를 배제하여 합 29 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "분자와의 약분 가능 여부(x=3, 6 허용, x=9 배제)를 단계적으로 검증하는 2단계 문항",
+      "difficultyReason": "약분 후 분모의 소인수 조건을 고려하여 18 / (75 * x)가 유한소수가 되는 x들을 합산하는 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_FINITE_DECIMAL_DIGIT_ENUM",
-        "templateKey": "TPL_SINGLE_DIGIT_FINITE_DECIMAL_SUM",
-        "why": "분자 약분 효과를 고려하여 한 자리 정수 중 유한소수 조건을 만족하는 수를 전수 합산하는 템플릿"
+        "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+        "templateKey": null,
+        "why": "분수 18 / (75 * x)를 약분하여 분모의 소인수 2, 5 조건으로 x의 합 29를 결정하는 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_35106dc4708b078303fe1ac53c262a7d434fcb693e3e49594fa0e3e665f064c4",
@@ -296,8 +456,8 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-EXPONENT_LAW",
         "subUnit": "지수법칙",
-        "conceptClusterKey": "EXPONENT_LAWS_COMPARATIVE_AUDIT",
-        "problemTypeKey": "",
+        "conceptClusterKey": "EXPONENT_LAW",
+        "problemTypeKey": "PT_M2_EXPONENT_LAWS",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_EXPONENT_ARITHMETIC"
@@ -319,20 +479,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-007"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫",
+          "recordId": "M2-RPM-007"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "단항식의 계산",
+        "rpmPrimaryL3": "지수법칙",
+        "rpmPrimaryL4": "거듭제곱의 곱·몫",
+        "rpmPrimaryRecordId": "M2-RPM-007",
+        "difficultyBasis": "각 보기의 지수 계산 결과가 a^8 또는 a^14임을 확인하는 기본 지수법칙 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-EXPONENT_LAW: 다음 중 계산 결과가 나머지 넷과 다른 하나를",
+          "curriculum": "M2-RPM-007: 지수법칙으로 보기 ② a^16 / a^2 = a^14만 다른 값임을 선별하는 문제이다.",
+          "problemType": "지수의 덧셈, 뺄셈, 곱셈 법칙을 비교하여 결과 a^14가 다른 보기를 고르는 과제이다.",
+          "difficulty": "각 보기의 지수 계산 결과가 a^8 또는 a^14임을 확인하는 기본 지수법칙 문항이다.",
+          "condition": "COND_NATURAL: 단일 밑 a의 거듭제곱으로 통일한다.",
+          "crossConcept": "CC_EXPONENT_ARITHMETIC: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "지수법칙으로 각 식을 a^8 또는 a^14로 단순화하여 다른 하나를 찾는다.",
       "decisiveStep": "② a^{16} / a^2 = a^{14} != a^8 식별",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "기본 지수법칙을 각각 적용하여 동일한 결과를 갖지 않는 선지를 고르는 1단계 문항",
+      "difficultyReason": "각 보기의 지수 계산 결과가 a^8 또는 a^14임을 확인하는 기본 지수법칙 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_EXPONENT_LAWS_EQUIVALENCE",
-        "templateKey": "TPL_EXPONENT_EXPRESSION_DIFFERENT_ONE",
-        "why": "다양한 지수법칙 표현식들의 결과를 표준 거듭제곱형으로 환원해 비교하는 템플릿"
+        "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+        "templateKey": null,
+        "why": "지수의 덧셈, 뺄셈, 곱셈 법칙을 비교하여 결과 a^14가 다른 보기를 고르는 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_60891703439e6312ea1d2441b5bfdfe56051a54f2329de256b8e076fba4055a1",
@@ -349,8 +541,8 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-EXPONENT_LAW",
         "subUnit": "지수법칙",
-        "conceptClusterKey": "BINARY_DATA_UNIT_EXPONENT",
-        "problemTypeKey": "",
+        "conceptClusterKey": "EXPONENT_LAW",
+        "problemTypeKey": "PT_M2_EXPONENT_LAWS",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_EXPONENT_ARITHMETIC"
@@ -359,7 +551,7 @@
           "COND_NATURAL"
         ],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 7,
@@ -372,20 +564,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-007"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫",
+          "recordId": "M2-RPM-007"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "단항식의 계산",
+        "rpmPrimaryL3": "지수법칙",
+        "rpmPrimaryL4": "거듭제곱의 곱·몫",
+        "rpmPrimaryRecordId": "M2-RPM-007",
+        "difficultyBasis": "MB에서 bit까지 2의 거듭제곱 환산 곱셈을 순서대로 수행하여 2^26을 구하는 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-EXPONENT_LAW: 컴퓨터에서 데이터의 양을 나타내는 가장 작은 ",
+          "curriculum": "M2-RPM-007: 단위 환산 관계를 거듭제곱의 곱셈으로 연결하여 8 MB = 2^26 bit를 계산하는 문제이다.",
+          "problemType": "데이터 단위 환산 관계와 2의 거듭제곱 지수 덧셈을 적용하여 bit 수를 구하는 과제이다.",
+          "difficulty": "MB에서 bit까지 2의 거듭제곱 환산 곱셈을 순서대로 수행하여 2^26을 구하는 문항이다.",
+          "condition": "COND_NATURAL: 8 = 2^3을 반영한다.",
+          "crossConcept": "CC_EXPONENT_ARITHMETIC: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "8 MB = 2^3 * 2^10 * 2^10 * 2^3 = 2^(3+10+10+3) = 2^26 bit를 계산한다.",
       "decisiveStep": "지수들의 합 3 + 10 + 10 + 3 = 26 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "밑 2의 거듭제곱 곱셈 법칙을 실생활 단위 환산에 적용하는 1단계 문항",
+      "difficultyReason": "MB에서 bit까지 2의 거듭제곱 환산 곱셈을 순서대로 수행하여 2^26을 구하는 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_DATA_UNIT_EXPONENT_CHAIN",
-        "templateKey": "TPL_BINARY_UNIT_CHAIN_EXPONENT_SUM",
-        "why": "데이터 저장 용량 단위를 밑 2의 거듭제곱의 합 법칙으로 누적 계산하는 템플릿"
+        "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+        "templateKey": null,
+        "why": "데이터 단위 환산 관계와 2의 거듭제곱 지수 덧셈을 적용하여 bit 수를 구하는 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_b971634ed585908a19a131d4e98be7e5543d018fb27bb6169b307d2df7214232",
@@ -402,8 +626,8 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-EXPONENT_LAW",
         "subUnit": "지수법칙",
-        "conceptClusterKey": "POWER_BASE_CHANGE_REPRESENTATION",
-        "problemTypeKey": "",
+        "conceptClusterKey": "EXPONENT_LAW",
+        "problemTypeKey": "PT_M2_EXPONENT_LAWS",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_VARIABLE_SUBSTITUTION"
@@ -425,20 +649,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-008"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 거듭제곱",
+          "recordId": "M2-RPM-008"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "단항식의 계산",
+        "rpmPrimaryL3": "지수법칙",
+        "rpmPrimaryL4": "거듭제곱의 거듭제곱",
+        "rpmPrimaryRecordId": "M2-RPM-008",
+        "difficultyBasis": "밑 16을 2^4로 변형하고 2^20을 (2^5)^4 = A^4로 연결하여 역수를 구하는 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-EXPONENT_LAW: $2^5 = A$일 때, $\\dfrac{1}{",
+          "curriculum": "M2-RPM-008: 16^5 = 2^20 = (2^5)^4를 변형하여 1 / 16^5 = 1 / A^4로 나타내는 문제이다.",
+          "problemType": "거듭제곱의 거듭제곱 법칙으로 16^5 = 2^20을 A의 식 1 / A^4로 표현하는 과제이다.",
+          "difficulty": "밑 16을 2^4로 변형하고 2^20을 (2^5)^4 = A^4로 연결하여 역수를 구하는 문항이다.",
+          "condition": "COND_NATURAL: 역수 형태를 유지한다.",
+          "crossConcept": "CC_VARIABLE_SUBSTITUTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "16^5 = (2^4)^5 = 2^20 = (2^5)^4 = A^4로부터 1/16^5 = 1/A^4를 구한다.",
       "decisiveStep": "16^5 = (2^5)^4 = A^4의 지수 분해 및 역수 취하기",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "밑 16을 밑 2로 바꾸고 지수를 20 = 5*4로 묶어 대입하는 2단계 문항",
+      "difficultyReason": "밑 16을 2^4로 변형하고 2^20을 (2^5)^4 = A^4로 연결하여 역수를 구하는 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_POWER_VARIABLE_REPRESENTATION",
-        "templateKey": "TPL_EXPONENT_SUBSTITUTION_POWER_OF_BASE",
-        "why": "소인수 밑 변환을 통해 거듭제곱을 기준 문자의 거듭제곱으로 나타내는 템플릿"
+        "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+        "templateKey": null,
+        "why": "거듭제곱의 거듭제곱 법칙으로 16^5 = 2^20을 A의 식 1 / A^4로 표현하는 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_474c3f2eaaa2db3a80cdf882750895e89fc342595247cea14538ea9711789ff4",
@@ -455,8 +711,8 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-EXPONENT_LAW",
         "subUnit": "지수법칙",
-        "conceptClusterKey": "COMPOSITE_MONOMIAL_SYSTEM",
-        "problemTypeKey": "",
+        "conceptClusterKey": "EXPONENT_LAW",
+        "problemTypeKey": "PT_M2_MONOMIAL",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_EXPONENT_ARITHMETIC"
@@ -478,20 +734,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-011"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "단항식의 계산",
+          "l3": "단항식의 곱셈과 나눗셈",
+          "l4": "혼합 계산",
+          "recordId": "M2-RPM-011"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "단항식의 계산",
+        "rpmPrimaryL3": "단항식의 곱셈과 나눗셈",
+        "rpmPrimaryL4": "혼합 계산",
+        "rpmPrimaryRecordId": "M2-RPM-011",
+        "difficultyBasis": "단항식의 거듭제곱과 나눗셈을 정리하여 미정 지수와 계수의 합 15를 구하는 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-EXPONENT_LAW: $(-3x^A y^2)^2 \\times x^4",
+          "curriculum": "M2-RPM-011: 단항식 혼합 계산으로 지수를 비교하여 A = 3, B = 3, C = 9에서 합 15를 구하는 문제이다.",
+          "problemType": "단항식의 거듭제곱과 곱셈, 나눗셈을 정리해 지수 16 및 7과 계수 C를 비교하는 과제이다.",
+          "difficulty": "단항식의 거듭제곱과 나눗셈을 정리하여 미정 지수와 계수의 합 15를 구하는 문항이다.",
+          "condition": "COND_NATURAL: 미지수 A, B, C가 상수임을 쓴다.",
+          "crossConcept": "CC_EXPONENT_ARITHMETIC: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "좌변을 9 x^(2A+4-B) y^(7+3B)로 정리하고 C=9, 7+3B=16(B=3), 2A+4-3=7(A=3)을 구해 합 15를 계산한다.",
       "decisiveStep": "B=3 도출 후 A=3, C=9를 차례로 구해 3+3+9=15 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "부호, x의 지수 방정식, y의 지수 방정식을 연계하여 3개 상수를 구하는 2단계 문항",
+      "difficultyReason": "단항식의 거듭제곱과 나눗셈을 정리하여 미정 지수와 계수의 합 15를 구하는 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_MONOMIAL_SYSTEM_EQUATION",
-        "templateKey": "TPL_MONOMIAL_COEFFICIENT_EXPONENTS_SOLVE",
-        "why": "단항식의 계수 및 각 변수의 지수를 연립방정식으로 풀어 상수를 결정하는 템플릿"
+        "problemTypeKey": "PT_M2_MONOMIAL",
+        "templateKey": null,
+        "why": "단항식의 거듭제곱과 곱셈, 나눗셈을 정리해 지수 16 및 7과 계수 C를 비교하는 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_7f241e271cdf1a5abfdaeb2e512e600c397d34116636ad850824c87d4580b1de",
@@ -508,8 +796,8 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
         "subUnit": "다항식의 계산",
-        "conceptClusterKey": "POLYNOMIAL_DISTRIBUTIVE_COEFFICIENT_SUM",
-        "problemTypeKey": "",
+        "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
+        "problemTypeKey": "PT_M2_POLYNOMIAL",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_DISTRIBUTIVE_LAW"
@@ -531,20 +819,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-014"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "분배법칙",
+          "recordId": "M2-RPM-014"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "다항식의 계산",
+        "rpmPrimaryL3": "단항식과 다항식의 곱셈·나눗셈",
+        "rpmPrimaryL4": "분배법칙",
+        "rpmPrimaryRecordId": "M2-RPM-014",
+        "difficultyBasis": "분배법칙으로 괄호를 풀고 ab의 계수 B = 7과 A = -2의 합 5를 계산하는 기본 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-POLYNOMIAL_OPERATIONS: 다음 식 $a(6a - 4b) - a(8a -",
+          "curriculum": "M2-RPM-014: 분배법칙으로 a(6a - 4b) - a(8a - 11b)를 정리하여 계수 합 -2 + 7 = 5를 구하는 문제이다.",
+          "problemType": "단항식과 다항식 8a - 11b 등의 곱셈을 전개하고 동류항을 정리하여 계수 합을 구하는 과제이다.",
+          "difficulty": "분배법칙으로 괄호를 풀고 ab의 계수 B = 7과 A = -2의 합 5를 계산하는 기본 문항이다.",
+          "condition": "COND_COEFFICIENT: a^2과 ab의 계수를 각각 분리한다.",
+          "crossConcept": "CC_DISTRIBUTIVE_LAW: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "분배법칙으로 전개하여 -2a^2 + 7ab를 얻은 뒤 A=-2, B=7의 합 -2+7=5를 계산한다.",
       "decisiveStep": "-4ab - (-11ab) = 7ab 부호 처리 후 A+B=5 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "분배법칙과 동류항 정리를 통해 계수를 직접 계산하는 1단계 문항",
+      "difficultyReason": "분배법칙으로 괄호를 풀고 ab의 계수 B = 7과 A = -2의 합 5를 계산하는 기본 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_MONO_POLY_EXPANSION_SUM",
-        "templateKey": "TPL_MONO_POLY_SUBTRACTION_COEFFICIENT_SUM",
-        "why": "두 단항식과 다항식 곱의 차를 전개하여 계수들의 합을 구하는 템플릿"
+        "problemTypeKey": "PT_M2_POLYNOMIAL",
+        "templateKey": null,
+        "why": "단항식과 다항식 8a - 11b 등의 곱셈을 전개하고 동류항을 정리하여 계수 합을 구하는 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_2020b98aa17758fc9837176fd1cfcb2cdf31b0af62a72de981c48bbdc2143d0c",
@@ -561,8 +881,8 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
         "subUnit": "다항식의 계산",
-        "conceptClusterKey": "POLYNOMIAL_ISOLATION_INVERSE_OP",
-        "problemTypeKey": "",
+        "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
+        "problemTypeKey": "PT_M2_POLYNOMIAL",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_DISTRIBUTIVE_LAW"
@@ -584,20 +904,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-015"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "다항식을 단항식으로 나누기",
+          "recordId": "M2-RPM-015"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "다항식의 계산",
+        "rpmPrimaryL3": "단항식과 다항식의 곱셈·나눗셈",
+        "rpmPrimaryL4": "다항식을 단항식으로 나누기",
+        "rpmPrimaryRecordId": "M2-RPM-015",
+        "difficultyBasis": "등식의 좌변 단항식을 정리하고 역수를 곱해 12x^2y - 18xy^2의 네모 안 다항식을 계산하는 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-POLYNOMIAL_OPERATIONS: 다음 $\\square$ 안에 알맞은 식을 구하",
+          "curriculum": "M2-RPM-015: 식 12x^2y - 18xy^2에 역수를 곱하여 미지의 식 8x^3y - 12x^2y^2를 구하는 문제이다.",
+          "problemType": "단항식의 곱셈과 나눗셈 등식에서 12x^2y - 18xy^2를 만족하는 다항식을 역연산으로 복원하는 과제이다.",
+          "difficulty": "등식의 좌변 단항식을 정리하고 역수를 곱해 12x^2y - 18xy^2의 네모 안 다항식을 계산하는 문항이다.",
+          "condition": "COND_NONZERO: 분배법칙으로 각 항을 전개한다.",
+          "crossConcept": "CC_DISTRIBUTIVE_LAW: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "빈칸 = (12x^2y - 18xy^2) * (2x/3) = 8x^3y - 12x^2y^2 역연산으로 고립시켜 분배한다.",
       "decisiveStep": "x^2y * 2/(3xy) = 2x/3 계산 후 다항식 각 항에 분배",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "역수 곱셈으로 미지 다항식을 격리한 뒤 다항식 분배법칙을 전개하는 2단계 문항",
+      "difficultyReason": "등식의 좌변 단항식을 정리하고 역수를 곱해 12x^2y - 18xy^2의 네모 안 다항식을 계산하는 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_FIND_UNKNOWN_POLYNOMIAL",
-        "templateKey": "TPL_INVERSE_OPERATION_ISOLATE_BOX",
-        "why": "단항식 곱셈과 나눗셈이 결합된 등식에서 미지의 다항식을 역연산으로 구하는 템플릿"
+        "problemTypeKey": "PT_M2_POLYNOMIAL",
+        "templateKey": null,
+        "why": "단항식의 곱셈과 나눗셈 등식에서 12x^2y - 18xy^2를 만족하는 다항식을 역연산으로 복원하는 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_cdd99c89581ede54deb19aaa93b190c386713df09f2c7b0207310235778c6811",
@@ -614,8 +966,8 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
         "subUnit": "다항식의 계산",
-        "conceptClusterKey": "WRONG_OPERATION_CORRECT_EXPRESSION",
-        "problemTypeKey": "",
+        "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
+        "problemTypeKey": "PT_M2_POLYNOMIAL",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_DISTRIBUTIVE_LAW"
@@ -637,20 +989,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-015"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "다항식을 단항식으로 나누기",
+          "recordId": "M2-RPM-015"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "다항식의 계산",
+        "rpmPrimaryL3": "단항식과 다항식의 곱셈·나눗셈",
+        "rpmPrimaryL4": "다항식을 단항식으로 나누기",
+        "rpmPrimaryRecordId": "M2-RPM-015",
+        "difficultyBasis": "다항식과 단항식의 곱셈 역연산으로 원래 식을 찾고 바른 나눗셈을 수행하여 16/y - 32/x를 구하는 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-POLYNOMIAL_OPERATIONS: 어떤 다항식을 $-\\dfrac{1}{2}xy$",
+          "curriculum": "M2-RPM-015: 잘못 곱한 결과 4x^2y - 8xy^2에서 원래 다항식을 구하고 바르게 나누어 16/y - 32/x를 얻는 문제이다.",
+          "problemType": "단항식 (-1/2)xy를 잘못 곱한 식에서 원래 식을 역연산으로 복원하고 바르게 나눗셈하여 16, 32 항을 얻는 과제이다.",
+          "difficulty": "다항식과 단항식의 곱셈 역연산으로 원래 식을 찾고 바른 나눗셈을 수행하여 16/y - 32/x를 구하는 문항이다.",
+          "condition": "COND_NONZERO: 나눗셈을 역수의 곱셈으로 변환한다.",
+          "crossConcept": "CC_DISTRIBUTIVE_LAW: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "원식 P = (4x^2y - 8xy^2) * (-2/xy) = -8x + 16y를 구하고 P * (-2/xy) = 16/y - 32/x를 계산한다.",
       "decisiveStep": "P = -8x + 16y 복원 후 다시 (-2/xy)를 곱해 16/y - 32/x 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "역연산으로 원래 다항식을 찾고 다시 나눗셈을 연속 적용하는 2단계 문항",
+      "difficultyReason": "다항식과 단항식의 곱셈 역연산으로 원래 식을 찾고 바른 나눗셈을 수행하여 16/y - 32/x를 구하는 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_CORRECT_CALCULATION_UNKNOWN",
-        "templateKey": "TPL_REVERSE_WRONG_OPERATION_THEN_REAPPLY",
-        "why": "잘못 적용된 연산의 역연산으로 원래 식을 복원하고 올바른 연산을 수행하는 템플릿"
+        "problemTypeKey": "PT_M2_POLYNOMIAL",
+        "templateKey": null,
+        "why": "단항식 (-1/2)xy를 잘못 곱한 식에서 원래 식을 역연산으로 복원하고 바르게 나눗셈하여 16, 32 항을 얻는 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_eba7dad1d71fda58f9ec267ec559e0adb5510d92c7abbf05f79e39505ebe53ad",
@@ -667,8 +1051,8 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
         "subUnit": "다항식의 계산",
-        "conceptClusterKey": "POLYNOMIAL_BY_MONOMIAL_SUBTRACTION",
-        "problemTypeKey": "",
+        "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
+        "problemTypeKey": "PT_M2_POLYNOMIAL",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_DISTRIBUTIVE_LAW"
@@ -690,20 +1074,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-015"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "다항식을 단항식으로 나누기",
+          "recordId": "M2-RPM-015"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "다항식의 계산",
+        "rpmPrimaryL3": "단항식과 다항식의 곱셈·나눗셈",
+        "rpmPrimaryL4": "다항식을 단항식으로 나누기",
+        "rpmPrimaryRecordId": "M2-RPM-015",
+        "difficultyBasis": "각 분수식을 항별로 약분하고 괄호를 풀어 동류항을 모으는 aligned 기본 연산 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-POLYNOMIAL_OPERATIONS: 다음 식 $\\dfrac{4x - 2x^3}{x",
+          "curriculum": "M2-RPM-015: 분수식에서 공통인수를 약분한 뒤 동류항을 정리하여 aligned 식 5x^2 - 5를 계산하는 문제이다.",
+          "problemType": "다항식을 단항식 x와 x^3으로 각각 나눈 결과를 aligned 뺄셈으로 정리하는 과제이다.",
+          "difficulty": "각 분수식을 항별로 약분하고 괄호를 풀어 동류항을 모으는 aligned 기본 연산 문항이다.",
+          "condition": "COND_NONZERO: 뺄셈 부호에 주의하여 동류항을 계산한다.",
+          "crossConcept": "CC_DISTRIBUTIVE_LAW: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "(4 - 2x^2) - (9 - 7x^2) = 5x^2 - 5로 각 항별 약분 후 뺀다.",
       "decisiveStep": "-(9 - 7x^2) = -9 + 7x^2 부호 분배 후 동류항 정리",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "두 분수식을 약분하여 동류항을 더하고 빼는 1단계 기본 문항",
+      "difficultyReason": "각 분수식을 항별로 약분하고 괄호를 풀어 동류항을 모으는 aligned 기본 연산 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_POLY_DIV_MONO_SUBTRACT",
-        "templateKey": "TPL_TWO_FRACTION_POLYNOMIAL_SUBTRACTION",
-        "why": "단항식 분모를 갖는 두 다항식 분수의 차를 항별 약분으로 정리하는 템플릿"
+        "problemTypeKey": "PT_M2_POLYNOMIAL",
+        "templateKey": null,
+        "why": "다항식을 단항식 x와 x^3으로 각각 나눈 결과를 aligned 뺄셈으로 정리하는 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_93f731d54c4250be5caca097e76ea36ec89d421756e75e55eada486fe7399cda",
@@ -718,10 +1134,10 @@
         "standardUnitKey": "M2-01",
         "standardUnit": "수와 식",
         "standardUnitOrder": 1,
-        "subUnitKey": "M2-01-EXPONENT_LAW",
-        "subUnit": "지수법칙",
-        "conceptClusterKey": "CYLINDER_VOLUME_RATIO_ALGEBRA",
-        "problemTypeKey": "",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "subUnit": "다항식의 계산",
+        "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
+        "problemTypeKey": "PT_M2_POLYNOMIAL",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_GEOMETRIC_VOLUME"
@@ -743,20 +1159,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-014"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "분배법칙",
+          "recordId": "M2-RPM-014"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "다항식의 계산",
+        "rpmPrimaryL3": "단항식과 다항식의 곱셈·나눗셈",
+        "rpmPrimaryL4": "분배법칙",
+        "rpmPrimaryRecordId": "M2-RPM-014",
+        "difficultyBasis": "반지름 2배, 높이 1/3배에 따른 부피 변화율 (4/3)배를 계산하고 역수 (3/4)배를 도출하는 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-POLYNOMIAL_OPERATIONS: 두 원기둥 A, B가 있다. 원기둥 B의 높이",
+          "curriculum": "M2-RPM-014: 원기둥 부피 공식 V = pi * r^2 * h를 이용하여 V_B = (4/3)V_A임을 유도하고 V_A = (3/4)V_B를 구하는 문제이다.",
+          "problemType": "단항식의 곱셈과 거듭제곱을 원기둥 A, B 부피 식에 적용하여 두 입체도형 부피의 비를 구하는 과제이다.",
+          "difficulty": "반지름 2배, 높이 1/3배에 따른 부피 변화율 (4/3)배를 계산하고 역수 (3/4)배를 도출하는 문항이다.",
+          "condition": "COND_POSITIVE: 높이 1/3배와 반지름 2배 조건을 반영한다.",
+          "crossConcept": "CC_GEOMETRIC_VOLUME: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "V_B = pi*(2r)^2*(h/3) = (4/3)*pi*r^2*h = (4/3)V_A에서 V_A = (3/4)V_B를 구한다.",
       "decisiveStep": "반지름 2배 시 넓이 4배, 높이 1/3배 결합으로 V_B = 4/3 V_A 도출 후 역수 취하기",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "반지름 제곱의 비례 효과와 높이의 선형 비례를 결합하여 상대적 비를 산출하는 2단계 문항",
+      "difficultyReason": "반지름 2배, 높이 1/3배에 따른 부피 변화율 (4/3)배를 계산하고 역수 (3/4)배를 도출하는 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_CYLINDER_VOLUME_RATIO",
-        "templateKey": "TPL_GEOMETRIC_VOLUME_RATIO_EXPONENT",
-        "why": "입체도형 부피 공식을 미지수 배수 관계식으로 모델링하여 비를 산출하는 템플릿"
+        "problemTypeKey": "PT_M2_POLYNOMIAL",
+        "templateKey": null,
+        "why": "단항식의 곱셈과 거듭제곱을 원기둥 A, B 부피 식에 적용하여 두 입체도형 부피의 비를 구하는 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_7a77089dfc9cc7a34c0578f2ee85bacdea2f1de5cac0107e397fb88a0a77aeec",
@@ -773,9 +1221,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M2-02-LINEAR_INEQUALITY",
         "subUnit": "일차부등식",
-        "conceptClusterKey": "LINEAR_INEQUALITY_DEFINITION_CHECK",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_INEQUALITY",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+        "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
         "crossConceptKeys": [
           "CC_ORDER_COMPARISON"
         ],
@@ -796,20 +1244,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-020"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "일차부등식",
+          "l3": "일차부등식의 풀이",
+          "l4": "기본형",
+          "recordId": "M2-RPM-020"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "일차부등식",
+        "rpmPrimaryL3": "일차부등식의 풀이",
+        "rpmPrimaryL4": "기본형",
+        "rpmPrimaryRecordId": "M2-RPM-020",
+        "difficultyBasis": "부등식의 정의와 차수를 aligned 및 10 등식과 비교하여 판별하는 기본 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-02 / M2-02-LINEAR_INEQUALITY: 다음 <보기> 중에서 일차부등식이 아닌 것만을",
+          "curriculum": "M2-RPM-020: 식들을 정리하여 aligned 및 10 형태로 일차부등식을 구분하는 문제이다.",
+          "problemType": "식들을 이항하여 aligned 일차부등식인지 10 판별하는 과제이다.",
+          "difficulty": "부등식의 정의와 차수를 aligned 및 10 등식과 비교하여 판별하는 기본 문항이다.",
+          "condition": "COND_INEQUALITY_SIGN: 등호만 있거나 분모에 미지수가 있는 경우를 제외한다.",
+          "crossConcept": "CC_ORDER_COMPARISON: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "등식(ㄱ)과 분수식(ㅁ)을 일차부등식이 아닌 것으로 가려내고 이차항 소거 식(ㄹ)을 확인한다.",
       "decisiveStep": "방정식 ㄱ과 분모 미지수식 ㅁ을 일차부등식에서 제외",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "일차부등식의 정의 요건(부등호, 최고차항 1차)을 직접 대조하는 1단계 기본 문항",
+      "difficultyReason": "부등식의 정의와 차수를 aligned 및 10 등식과 비교하여 판별하는 기본 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFY",
-        "templateKey": "TPL_IDENTIFY_LINEAR_INEQUALITY_AMONG_EXPRESSIONS",
-        "why": "다양한 대수식(방정식, 이차식 소거, 분수식) 중 일차부등식의 정의 부합 여부를 검증하는 템플릿"
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+        "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+        "why": "식들을 이항하여 aligned 일차부등식인지 10 판별하는 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_2e945d1c2b805773147e3440e5b20cc35dfab58e074c9f8512abb924870072ee",
@@ -826,8 +1306,8 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
         "subUnit": "일차부등식의 활용",
-        "conceptClusterKey": "VERBAL_TO_INEQUALITY_MODELING",
-        "problemTypeKey": "",
+        "conceptClusterKey": "LINEAR_INEQUALITY_WORD_PROBLEM",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_ORDER_COMPARISON"
@@ -849,20 +1329,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-024"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "일차부등식의 활용",
+          "l3": "수량 관계",
+          "l4": "이상·이하 조건",
+          "recordId": "M2-RPM-024"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "일차부등식의 활용",
+        "rpmPrimaryL3": "수량 관계",
+        "rpmPrimaryL4": "이상·이하 조건",
+        "rpmPrimaryRecordId": "M2-RPM-024",
+        "difficultyBasis": "각 보기의 실생활 문장을 1200 등의 부등식으로 번역하여 오류를 찾는 기본 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-02 / M2-02-LINEAR_INEQUALITY_WORD: 다음 문장을 부등식으로 나타낸 것 중 옳지 않",
+          "curriculum": "M2-RPM-024: 문장의 수량 관계를 부등호로 나타내어 1200 + 800x <= 15000 등의 부등식을 세우는 문제이다.",
+          "problemType": "일상생활의 수량 관계 1200 g, 800 g을 부등식으로 표현하여 바른 식을 고르는 과제이다.",
+          "difficulty": "각 보기의 실생활 문장을 1200 등의 부등식으로 번역하여 오류를 찾는 기본 문항이다.",
+          "condition": "COND_INEQUALITY_SIGN: 단위 일치 및 이상/이하/미만 조건을 검토한다.",
+          "crossConcept": "CC_ORDER_COMPARISON: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "볼펜 5자루의 가격 1200*5를 1200+5로 잘못 표현한 ④의 식 오류를 식별한다.",
       "decisiveStep": "1200*5+4000과 1200+5+4000의 곱셈/덧셈 혼동 오류 검출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "문장의 곱셈 관계(개수*단가)를 직관적으로 확인하여 오류를 가려내는 1단계 문항",
+      "difficultyReason": "각 보기의 실생활 문장을 1200 등의 부등식으로 번역하여 오류를 찾는 기본 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_VERBAL_INEQUALITY_FORMULATION",
-        "templateKey": "TPL_STATEMENT_TO_INEQUALITY_ACCURACY",
-        "why": "문장제 조건을 대수 부등식으로 번역할 때 곱셈과 덧셈 연산자 오류를 선별하는 템플릿"
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+        "templateKey": null,
+        "why": "일상생활의 수량 관계 1200 g, 800 g을 부등식으로 표현하여 바른 식을 고르는 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_2c57cca8bddb568a1d10d66664e18e2851b1f5cb9bb079d3e41f36380f7a94ee",
@@ -879,8 +1391,8 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M2-02-LINEAR_INEQUALITY",
         "subUnit": "일차부등식",
-        "conceptClusterKey": "DECIMAL_INEQUALITY_MIN_INTEGER",
-        "problemTypeKey": "",
+        "conceptClusterKey": "LINEAR_INEQUALITY",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_ORDER_COMPARISON"
@@ -902,20 +1414,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-021"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "일차부등식",
+          "l3": "일차부등식의 풀이",
+          "l4": "괄호·분수·소수가 있는 부등식",
+          "recordId": "M2-RPM-021"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "일차부등식",
+        "rpmPrimaryL3": "일차부등식의 풀이",
+        "rpmPrimaryL4": "괄호·분수·소수가 있는 부등식",
+        "rpmPrimaryRecordId": "M2-RPM-021",
+        "difficultyBasis": "양변에 10을 곱해 0.5 계수를 정수로 고쳐 풀고 최소 정수를 찾는 기본 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-02 / M2-02-LINEAR_INEQUALITY: 일차부등식 $2 - 0.5x \\le 0.5$를",
+          "curriculum": "M2-RPM-021: 소수 계수 0.5가 있는 일차부등식의 양변에 10을 곱해 정리하고 최소 정수 3을 구하는 문제이다.",
+          "problemType": "소수 계수 0.5가 포함된 일차부등식을 풀고 해의 조건에 맞는 가장 작은 정수를 찾는 과제이다.",
+          "difficulty": "양변에 10을 곱해 0.5 계수를 정수로 고쳐 풀고 최소 정수를 찾는 기본 문항이다.",
+          "condition": "COND_INTEGER: 음수로 나눌 때 부등호 방향이 바뀜에 유의한다.",
+          "crossConcept": "CC_ORDER_COMPARISON: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "10을 곱해 20 - 5x <= 5에서 -5x <= -15, 즉 x >= 3을 풀어 최소 정수 3을 구한다.",
       "decisiveStep": "음수 -5로 나눌 때 부등호 방향 역전하여 x >= 3 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "계수를 정수화하고 음수 나눗셈 시 부등호 역전을 적용하는 1단계 문항",
+      "difficultyReason": "양변에 10을 곱해 0.5 계수를 정수로 고쳐 풀고 최소 정수를 찾는 기본 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_DECIMAL_INEQUALITY_SOLVE",
-        "templateKey": "TPL_DECIMAL_COEFFICIENT_MIN_INTEGER",
-        "why": "소수 계수 일차부등식을 풀고 부등식 영역 내 최소 정수를 구하는 템플릿"
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+        "templateKey": null,
+        "why": "소수 계수 0.5가 포함된 일차부등식을 풀고 해의 조건에 맞는 가장 작은 정수를 찾는 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_09d1ea5688c96e91aa151d55588c95de28a05ead30d691d32eb9864985ca094d",
@@ -932,9 +1476,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M2-02-LINEAR_INEQUALITY",
         "subUnit": "일차부등식",
-        "conceptClusterKey": "INEQUALITY_PROPERTIES_TRANSFORMATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_INEQUALITY",
+        "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+        "templateKey": "TPL_M2_INEQUALITY_PROPERTIES_TRUE_FALSE_RULE",
         "crossConceptKeys": [
           "CC_ORDER_COMPARISON"
         ],
@@ -955,20 +1499,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-018"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질",
+          "recordId": "M2-RPM-018"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "일차부등식",
+        "rpmPrimaryL3": "부등식의 성질",
+        "rpmPrimaryL4": "부등식의 성질",
+        "rpmPrimaryRecordId": "M2-RPM-018",
+        "difficultyBasis": "음수를 곱하거나 나눌 때만 부등호가 반대로 바뀐다는 aligned 규칙을 검증하는 기본 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-02 / M2-02-LINEAR_INEQUALITY: $a < b$일 때, 다음 중 옳지 않은 것은",
+          "curriculum": "M2-RPM-018: 부등식의 양변에 음수를 곱하거나 나눌 때 부등호 방향이 바뀌는 aligned 성질을 확인하는 문제이다.",
+          "problemType": "a < b 조건에서 사칙연산 적용 시 aligned 부등호 방향의 변화 여부를 판별하는 과제이다.",
+          "difficulty": "음수를 곱하거나 나눌 때만 부등호가 반대로 바뀐다는 aligned 규칙을 검증하는 기본 문항이다.",
+          "condition": "COND_INEQUALITY_SIGN: 양수의 덧셈, 뺄셈, 곱셈, 나눗셈은 부등호가 유지됨을 확인한다.",
+          "crossConcept": "CC_ORDER_COMPARISON: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "양변을 -2로 나눌 때 부등호가 반대로 바뀌어야 하므로 ⑤가 옳지 않음을 식별한다.",
       "decisiveStep": "-(a+3)/2 > -(b+3)/2이어야 함을 확인하여 ⑤의 오류 판정",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "부등식 성질의 핵심인 음수 나눗셈 시 부등호 반전 여부를 판별하는 1단계 문항",
+      "difficultyReason": "음수를 곱하거나 나눌 때만 부등호가 반대로 바뀐다는 aligned 규칙을 검증하는 기본 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES",
-        "templateKey": "TPL_INEQUALITY_TRANSFORM_SIGN_CHECK",
-        "why": "다단계 부등식 변형식에서 음수 나눗셈 부등호 방향 오류를 검출하는 템플릿"
+        "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+        "templateKey": "TPL_M2_INEQUALITY_PROPERTIES_TRUE_FALSE_RULE",
+        "why": "a < b 조건에서 사칙연산 적용 시 aligned 부등호 방향의 변화 여부를 판별하는 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_01579634ec54c6331da1ee6eb9e96a43df2faf892c4dea9344e2c336701a8a09",
@@ -985,8 +1561,8 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M2-02-LINEAR_INEQUALITY",
         "subUnit": "일차부등식",
-        "conceptClusterKey": "EQUIVALENT_INEQUALITIES_COEFFICIENT",
-        "problemTypeKey": "",
+        "conceptClusterKey": "LINEAR_INEQUALITY",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_FRACTION_ARITHMETIC"
@@ -995,7 +1571,7 @@
           "COND_RATIONAL"
         ],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 19,
@@ -1008,20 +1584,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-023"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건",
+          "recordId": "M2-RPM-023"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "일차부등식",
+        "rpmPrimaryL3": "해의 조건",
+        "rpmPrimaryL4": "계수 조건",
+        "rpmPrimaryRecordId": "M2-RPM-023",
+        "difficultyBasis": "0.2 소수 부등식과 분수 부등식을 각각 정리하고 해를 일치시켜 방정식을 푸는 복합 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-02 / M2-02-LINEAR_INEQUALITY: 다음 두 일차부등식의 해가 같을 때, 상수 $",
+          "curriculum": "M2-RPM-023: 두 일차부등식을 각각 풀어 경계값이 일치함을 이용해 상수 a를 구하는 0.2 계수 문제이다.",
+          "problemType": "소수와 분수가 포함된 두 0.2 일차부등식의 해가 같을 때 미지수 a의 값을 결정하는 과제이다.",
+          "difficulty": "0.2 소수 부등식과 분수 부등식을 각각 정리하고 해를 일치시켜 방정식을 푸는 복합 문항이다.",
+          "condition": "COND_RATIONAL: 두 해의 경계값을 일치시켜 a에 대한 방정식을 푼다.",
+          "crossConcept": "CC_FRACTION_ARITHMETIC: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "첫째 부등식 해 x < 2와 둘째 부등식 해 x < 10a/7을 같다고 놓아 a = 7/5를 구한다.",
       "decisiveStep": "10a/7 = 2 일차방정식 해결로 a = 7/5 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "분수 부등식과 소수 괄호 부등식을 각각 풀고 해의 경계를 일치시키는 2단계 문항",
+      "difficultyReason": "0.2 소수 부등식과 분수 부등식을 각각 정리하고 해를 일치시켜 방정식을 푸는 복합 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_IDENTICAL_INEQUALITIES_SOLVE",
-        "templateKey": "TPL_EQUIVALENT_INEQUALITIES_PARAMETER",
-        "why": "두 일차부등식을 표준형으로 각각 풀고 해가 일치하도록 상수를 결정하는 템플릿"
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+        "templateKey": null,
+        "why": "소수와 분수가 포함된 두 0.2 일차부등식의 해가 같을 때 미지수 a의 값을 결정하는 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_3cf225aa06b0b1ff29334866e09d53a7de9a713355e99a3a3ef188a2b49dea9b",
@@ -1038,9 +1646,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
         "subUnit": "일차부등식의 활용",
-        "conceptClusterKey": "INEQUALITY_HIKING_SPEED_TIME",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_INEQUALITY_WORD_PROBLEM",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
         "crossConceptKeys": [
           "CC_TIME_SPEED_DISTANCE"
         ],
@@ -1061,20 +1669,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-026"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "일차부등식의 활용",
+          "l3": "거리·속력·시간",
+          "l4": "시간 제한",
+          "recordId": "M2-RPM-026"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "일차부등식의 활용",
+        "rpmPrimaryL3": "거리·속력·시간",
+        "rpmPrimaryL4": "시간 제한",
+        "rpmPrimaryRecordId": "M2-RPM-026",
+        "difficultyBasis": "분 단위를 시간 단위로 환산하고 왕복 시간 합 부등식을 세워 최대 거리 km를 계산하는 활용 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-02 / M2-02-LINEAR_INEQUALITY_WORD: 서우가 산을 등산하는 데, 올라갈 때는 시속 ",
+          "curriculum": "M2-RPM-026: 왕복 이동 시간과 물건 사는 시간의 합이 제한 시간 8/3 시간 이하임을 이용해 최대 거리 4 km를 구하는 문제이다.",
+          "problemType": "속력과 시간 제한 조건에서 최대 허용 편도 거리 x km를 일차부등식으로 세워 해결하는 과제이다.",
+          "difficulty": "분 단위를 시간 단위로 환산하고 왕복 시간 합 부등식을 세워 최대 거리 km를 계산하는 활용 문항이다.",
+          "condition": "COND_POSITIVE: 20분과 2시간 40분을 시간 단위로 통일한다.",
+          "crossConcept": "CC_TIME_SPEED_DISTANCE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "x/3 + 1/3 + x/4 <= 8/3을 세우고 양변에 12를 곱해 7x <= 28에서 x <= 4를 구한다.",
       "decisiveStep": "20분을 1/3시간, 2시간 40분을 8/3시간으로 단위 변환 후 일차부등식 해결",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "분 단위를 시간 단위로 변환하고 왕복 분수 부등식을 수립·풀이하는 3단계 문항",
+      "difficultyReason": "분 단위를 시간 단위로 환산하고 왕복 시간 합 부등식을 세워 최대 거리 km를 계산하는 활용 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_INEQUALITY_APPLICATION_SPEED",
-        "templateKey": "TPL_SPEED_TIME_BREAK_INEQUALITY",
-        "why": "왕복 속력과 휴식 시간이 포함된 전체 시간 제약을 부등식으로 모델링하는 템플릿"
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+        "why": "속력과 시간 제한 조건에서 최대 허용 편도 거리 x km를 일차부등식으로 세워 해결하는 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_e74ceff85edf32890c4b92bcbacca627ea2e0e64a9641b90fe714f69061cbddf",
@@ -1091,8 +1731,8 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-EXPONENT_LAW",
         "subUnit": "지수법칙",
-        "conceptClusterKey": "POWER_SUM_TO_PRODUCT_STEPWISE",
-        "problemTypeKey": "",
+        "conceptClusterKey": "EXPONENT_LAW",
+        "problemTypeKey": "PT_M2_EXPONENT_LAWS",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_EXPONENT_ARITHMETIC"
@@ -1114,20 +1754,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-007"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫",
+          "recordId": "M2-RPM-007"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "단항식의 계산",
+        "rpmPrimaryL3": "지수법칙",
+        "rpmPrimaryL4": "거듭제곱의 곱·몫",
+        "rpmPrimaryRecordId": "M2-RPM-007",
+        "difficultyBasis": "거듭제곱의 덧셈을 밑과 지수로 변환하고 aligned 나눗셈 지수법칙을 순서대로 서술하는 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-EXPONENT_LAW: $A = 3^3 + 3^3 + 3^3$, $B",
+          "curriculum": "M2-RPM-007: 거듭제곱의 덧셈을 곱셈으로 고치고 거듭제곱의 곱셈·나눗셈 지수법칙을 적용하는 aligned 문제이다.",
+          "problemType": "거듭제곱의 덧셈과 곱셈의 차이를 구분하여 aligned 지수법칙으로 값을 표현하는 서술형 과제이다.",
+          "difficulty": "거듭제곱의 덧셈을 밑과 지수로 변환하고 aligned 나눗셈 지수법칙을 순서대로 서술하는 문항이다.",
+          "condition": "COND_NATURAL: 서술형 풀이 과정을 단계별로 제시한다.",
+          "crossConcept": "CC_EXPONENT_ARITHMETIC: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "3*3^3=3^4, 3*(3^2)^4=3^9를 구하고 3^9 / 3^4 = 3^5를 단계별로 서술한다.",
       "decisiveStep": "B = 3 * 9^4 = 3 * 3^8 = 3^9 밑 통일 및 3^9 / 3^4 = 3^5 나눗셈",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "덧셈의 곱셈 변환, 거듭제곱의 거듭제곱 밑 변환, 나눗셈 지수 차를 종합 서술하는 문항",
+      "difficultyReason": "거듭제곱의 덧셈을 밑과 지수로 변환하고 aligned 나눗셈 지수법칙을 순서대로 서술하는 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_EXPONENT_SUM_STEPWISE",
-        "templateKey": "TPL_REPEATED_SUM_BASE_UNIFICATION_DIVISION",
-        "why": "거듭제곱 덧셈을 곱셈으로 환원하고 밑을 통일하여 지수 나눗셈을 수행하는 서술형 템플릿"
+        "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+        "templateKey": null,
+        "why": "거듭제곱의 덧셈과 곱셈의 차이를 구분하여 aligned 지수법칙으로 값을 표현하는 서술형 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_809f4af86c848b2e6901e677331d2ca03a664da76601a8af01db00f370b131a2",
@@ -1144,8 +1816,8 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
         "subUnit": "다항식의 계산",
-        "conceptClusterKey": "POLYNOMIAL_DIVISION_EVALUATION_STEPWISE",
-        "problemTypeKey": "",
+        "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
+        "problemTypeKey": "PT_M2_POLYNOMIAL",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_FRACTION_ARITHMETIC",
@@ -1155,7 +1827,7 @@
           "COND_RATIONAL"
         ],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 22,
@@ -1168,20 +1840,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-016"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "식의 값",
+          "recordId": "M2-RPM-016"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "다항식의 계산",
+        "rpmPrimaryL3": "식의 값과 활용",
+        "rpmPrimaryL4": "식의 값",
+        "rpmPrimaryRecordId": "M2-RPM-016",
+        "difficultyBasis": "다항식을 단항식으로 나누고 괄호 뺄셈을 거친 후 분수 값을 25 대입하여 계산하는 서술형 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-POLYNOMIAL_OPERATIONS: $x = \\dfrac{3}{4}, y = 2$",
+          "curriculum": "M2-RPM-016: 다항식을 단항식으로 나눈 뒤 식을 정리하고 x, y의 값을 대입하여 25 분수 값을 구하는 문제이다.",
+          "problemType": "다항식의 나눗셈과 덧셈·뺄셈을 전개하여 동류항을 정리하고 25 식의 값을 계산하는 서술형 과제이다.",
+          "difficulty": "다항식을 단항식으로 나누고 괄호 뺄셈을 거친 후 분수 값을 25 대입하여 계산하는 서술형 문항이다.",
+          "condition": "COND_RATIONAL: x = 1.5, y = 2를 대입해 분수 값을 정확히 계산한다.",
+          "crossConcept": "CC_FRACTION_ARITHMETIC, CC_DISTRIBUTIVE_LAW: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "(-2x+3y) - (4x-6+10y) = -6x-7y+6을 구하고 x=3/4, y=2를 대입해 -9/2 - 8 = -25/2를 산출한다.",
       "decisiveStep": "역수 곱셈 분배로 4x-6+10y 도출 후 부호 분배로 -6x-7y+6 완성 및 대입 연산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "다항식 나눗셈 2회, 괄호 뺄셈 부호 분배, 분수 수치 대입의 다단계 서술형 문항",
+      "difficultyReason": "다항식을 단항식으로 나누고 괄호 뺄셈을 거친 후 분수 값을 25 대입하여 계산하는 서술형 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_POLY_DIVISION_SUBSTITUTION",
-        "templateKey": "TPL_COMPOUND_DIVISION_VALUE_EVALUATION",
-        "why": "다항식 나눗셈 혼합식을 간단히 정리하고 유리수를 대입해 식의 값을 구하는 표준 서술형 템플릿"
+        "problemTypeKey": "PT_M2_POLYNOMIAL",
+        "templateKey": null,
+        "why": "다항식의 나눗셈과 덧셈·뺄셈을 전개하여 동류항을 정리하고 25 식의 값을 계산하는 서술형 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_95e38153affdabedcbe21ed0e268c0806a5869a1b76e02438f09e880170318ab",
@@ -1198,8 +1902,8 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M2-02-LINEAR_INEQUALITY",
         "subUnit": "일차부등식",
-        "conceptClusterKey": "INEQUALITY_BOUNDARY_MATCH_PARAM",
-        "problemTypeKey": "",
+        "conceptClusterKey": "LINEAR_INEQUALITY",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_ORDER_COMPARISON"
@@ -1221,20 +1925,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-023"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건",
+          "recordId": "M2-RPM-023"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "일차부등식",
+        "rpmPrimaryL3": "해의 조건",
+        "rpmPrimaryL4": "계수 조건",
+        "rpmPrimaryRecordId": "M2-RPM-023",
+        "difficultyBasis": "ax 계수의 부호를 판정하여 부등호 방향을 바꾸고 경계값을 비교하는 서술형 고난도 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-02 / M2-02-LINEAR_INEQUALITY: 일차부등식 $5x - 3 \\le -ax + b",
+          "curriculum": "M2-RPM-023: 미지수 a, b가 포함된 부등식에서 음수 ax 계수로 나누어 해를 일치시키고 a+b를 구하는 문제이다.",
+          "problemType": "미지수 계수가 있는 일차부등식 ax 해의 경계값을 수직선 조건과 일치시켜 a+b를 구하는 서술형 과제이다.",
+          "difficulty": "ax 계수의 부호를 판정하여 부등호 방향을 바꾸고 경계값을 비교하는 서술형 고난도 문항이다.",
+          "condition": "COND_INEQUALITY_SIGN: a < -5 조건에서 5 + a가 음수임을 고려해 부등호 방향을 바꾼다.",
+          "crossConcept": "CC_ORDER_COMPARISON: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "(5+a)x <= b+3에서 5+a<0이므로 x >= (b+3)/(5+a) = -1을 풀어 a+b=-8을 도출한다.",
       "decisiveStep": "5+a < 0 판별로 부등호 역전 및 (b+3)/(5+a) = -1에서 a+b = -8 정리",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "문자 계수 5+a의 부호 판정, 부등호 역전 서술, 분수 방정식 해결의 3단계를 완결하는 고배점 서술형 문항",
+      "difficultyReason": "ax 계수의 부호를 판정하여 부등호 방향을 바꾸고 경계값을 비교하는 서술형 고난도 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_INEQUALITY_COEFFICIENT_SIGN_MATCH",
-        "templateKey": "TPL_PARAMETER_SIGN_BOUNDARY_EQUATE",
-        "why": "문자 계수의 부호 조건에 따른 부등호 반전과 해의 경계값을 일치시켜 파라미터 합을 구하는 서술형 템플릿"
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+        "templateKey": null,
+        "why": "미지수 계수가 있는 일차부등식 ax 해의 경계값을 수직선 조건과 일치시켜 a+b를 구하는 서술형 과제이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     }
   ]
 }

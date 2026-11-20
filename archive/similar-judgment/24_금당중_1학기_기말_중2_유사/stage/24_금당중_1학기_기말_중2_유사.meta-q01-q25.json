@@ -3,7 +3,7 @@
   "requestId": "24_금당중_1학기_기말_중2_유사-candidate-v1",
   "examUid": "24_금당중_1학기_기말_중2_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_금당중_1학기_기말_중2_유사.js",
-  "expectedSourceBlobSha1": "e1e233413bffb60f03fde55fe82e75a8e0b27147",
+  "expectedSourceBlobSha1": "02bef15e60827b0919cc961d7f12f4219abfe0e5",
   "expectedQuestionCount": 25,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -29,9 +29,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
         "subUnit": "다항식의 계산",
-        "conceptClusterKey": "M2-01-SIMPLIFY_THEN_SUBSTITUTE_POLY",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_ALGEBRAIC_SIMPLIFICATION"
         ],
@@ -50,20 +50,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-012"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "다항식의 계산",
+          "l3": "다항식의 덧셈과 뺄셈",
+          "l4": "동류항 정리",
+          "recordId": "M2-RPM-012"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "다항식의 계산",
+        "rpmPrimaryL3": "다항식의 덧셈과 뺄셈",
+        "rpmPrimaryL4": "동류항 정리",
+        "rpmPrimaryRecordId": "M2-RPM-012",
+        "difficultyBasis": "Q1번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 13)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-POLYNOMIAL_OPERATIONS: $A = 3x - y$, $B = -x + 3y$일 때, $2(2A - 3B) - (3A - 2B)$를 계산하면?",
+          "curriculum": "M2-RPM-012: Q1번 문항은 M2-RPM-012에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 13)",
+          "problemType": "Q1번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 13)",
+          "difficulty": "Q1번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 13)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_ALGEBRAIC_SIMPLIFICATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "주어진 식을 A - 4B로 간단히 한 뒤 A = 3x - y, B = -x + 3y를 대입해 동류항을 정리한다.",
       "decisiveStep": "A - 4B = (3x - y) - 4(-x + 3y) = 7x - 13y를 계산한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "식을 간단히 정리해 두 일차식을 대입하면 바로 풀리는 1단계 문항이다.",
+      "difficultyReason": "Q1번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 13)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "문자식 간단히 한 후 다항식 대입 계산"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q1번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 13)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_65ed7ad78e31ee83b80dfd135358342a0ada2daa6e16dc11dbe779ab1e61a95f",
@@ -80,9 +112,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
         "subUnit": "다항식의 계산",
-        "conceptClusterKey": "M2-01-ERROR_CORRECTION_POLYNOMIAL",
+        "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
         "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
-        "templateKey": "",
+        "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
         "crossConceptKeys": [
           "CC_ERROR_CORRECTION",
           "CC_POLYNOMIAL_SUBTRACTION"
@@ -102,20 +134,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-012"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "다항식의 계산",
+          "l3": "다항식의 덧셈과 뺄셈",
+          "l4": "동류항 정리",
+          "recordId": "M2-RPM-012"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "다항식의 계산",
+        "rpmPrimaryL3": "다항식의 덧셈과 뺄셈",
+        "rpmPrimaryL4": "동류항 정리",
+        "rpmPrimaryRecordId": "M2-RPM-012",
+        "difficultyBasis": "Q2번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 10)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-POLYNOMIAL_OPERATIONS: 어떤 식에서 $3x^{2} - x + 4$를 빼야 할 것을 잘못하여 더했더니 $5x^{2} + 3x - 2$가 되었다.",
+          "curriculum": "M2-RPM-012: Q2번 문항은 M2-RPM-012에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 10)",
+          "problemType": "Q2번 문항은 PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)",
+          "difficulty": "Q2번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 10)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_ERROR_CORRECTION, CC_POLYNOMIAL_SUBTRACTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "잘못 더한 결과에서 어떤 식 A = 2x^2 + 4x - 6을 구한 뒤 3x^2 - x + 4를 빼 바른 식을 구한다.",
       "decisiveStep": "A를 구한 뒤 다시 뺄셈을 수행해 -x^2 + 5x - 10을 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "어떤 식 A를 먼저 구하고 바른 뺄셈을 한 번 더 수행해야 하는 2단계 문항이다.",
+      "difficultyReason": "Q2번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 10)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
-        "templateKey": null,
-        "why": "잘못 계산한 다항식 바로잡기"
+        "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+        "why": "Q2번 문항은 PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_1bb18b8aabf3e36615fceffdb5eddf9db948fe0f1dec3850328aa0b8fb726b91",
@@ -132,9 +196,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
         "subUnit": "다항식의 계산",
-        "conceptClusterKey": "M2-01-NESTED_BRACKETS_COEFF_PROD",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_ALGEBRAIC_SIMPLIFICATION"
         ],
@@ -153,20 +217,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-012"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "다항식의 계산",
+          "l3": "다항식의 덧셈과 뺄셈",
+          "l4": "동류항 정리",
+          "recordId": "M2-RPM-012"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "다항식의 계산",
+        "rpmPrimaryL3": "다항식의 덧셈과 뺄셈",
+        "rpmPrimaryL4": "동류항 정리",
+        "rpmPrimaryRecordId": "M2-RPM-012",
+        "difficultyBasis": "Q3번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ax)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-POLYNOMIAL_OPERATIONS: $4x - [x + 3y - {6x - 2y - (x - 4y)}] = ax + by$일 때, $a$와 $b$의 곱을 구하면?",
+          "curriculum": "M2-RPM-012: Q3번 문항은 M2-RPM-012에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ax)",
+          "problemType": "Q3번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)",
+          "difficulty": "Q3번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ax)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_ALGEBRAIC_SIMPLIFICATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "소괄호, 중괄호, 대괄호를 안쪽부터 풀어 8x - y로 정리한 뒤 계수 a, b의 곱을 계산한다.",
       "decisiveStep": "중괄호 5x + 2y와 대괄호 -4x + y를 정확히 정리해 8x - y를 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "괄호 풀기 순서에 따라 동류항을 정리하고 두 계수를 곱하는 기본 문항이다.",
+      "difficultyReason": "Q3번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ax)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "다중 괄호 다항식 계산 후 계수 곱"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q3번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_d7c85ccaeb88bc58b1a64f3b205ab52a1635786757c0129ae9bb7b43261cbbf2",
@@ -183,9 +279,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
         "subUnit": "다항식의 계산",
-        "conceptClusterKey": "M2-01-DISTRIBUTIVE_COEFF_SUM",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_ALGEBRAIC_SIMPLIFICATION"
         ],
@@ -204,20 +300,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-014"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "분배법칙",
+          "recordId": "M2-RPM-014"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "다항식의 계산",
+        "rpmPrimaryL3": "단항식과 다항식의 곱셈·나눗셈",
+        "rpmPrimaryL4": "분배법칙",
+        "rpmPrimaryRecordId": "M2-RPM-014",
+        "difficultyBasis": "Q4번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 11)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-POLYNOMIAL_OPERATIONS: $3x(x - 3) - (3x - 1)(-2x)$를 간단히 한 식에서 $x^{2}$의 계수를 $a$, $x$의 계수를 $b$라고 할 때, $a + b$의 값은?",
+          "curriculum": "M2-RPM-014: Q4번 문항은 M2-RPM-014에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 11)",
+          "problemType": "Q4번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 11)",
+          "difficulty": "Q4번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 11)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_ALGEBRAIC_SIMPLIFICATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "분배법칙으로 각 항을 전개해 9x^2 - 11x로 정리한 뒤 계수의 합을 구한다.",
       "decisiveStep": "-(3x - 1)(-2x) = 6x^2 - 2x의 부호 처리로 9x^2 - 11x를 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "분배법칙과 동류항 정리로 계수를 구해 더하는 기본 문항이다.",
+      "difficultyReason": "Q4번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 11)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "단항식과 다항식의 곱셈 전개 후 계수 합"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q4번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 11)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_68345bd0d8c34da430ce6372af36e87d089b96651d235fced5b25704296cde5d",
@@ -234,9 +362,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
         "subUnit": "다항식의 계산",
-        "conceptClusterKey": "M2-01-POLY_DIV_BY_MONOMIAL_DIFF",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_POLYNOMIAL_DIVISION_BY_MONOMIAL"
         ],
@@ -255,20 +383,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-014"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "분배법칙",
+          "recordId": "M2-RPM-014"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "다항식의 계산",
+        "rpmPrimaryL3": "단항식과 다항식의 곱셈·나눗셈",
+        "rpmPrimaryL4": "분배법칙",
+        "rpmPrimaryRecordId": "M2-RPM-014",
+        "difficultyBasis": "Q5번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 3)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-POLYNOMIAL_OPERATIONS: $\\frac{-3x^{2} + 4x^{3}}{x^{2}} - \\frac{5x^{3} - 3x^{5}}{x^{3}}$을 계산하면?",
+          "curriculum": "M2-RPM-014: Q5번 문항은 M2-RPM-014에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 3)",
+          "problemType": "Q5번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 3)",
+          "difficulty": "Q5번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 3)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_POLYNOMIAL_DIVISION_BY_MONOMIAL: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "각 분수식을 항별로 단항식으로 나눈 뒤 괄호를 풀어 동류항을 정리한다.",
       "decisiveStep": "(-3 + 4x) - (5 - 3x^2)에서 +3x^2과 -8 부호를 정확히 계산한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "항별 나눗셈 후 뺄셈 괄호를 풀어 정리하는 기본 문항이다.",
+      "difficultyReason": "Q5번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 3)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "다항식을 단항식으로 나눈 식의 차"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q5번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 3)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_290b0175db085685502bbc332025eee125ee128a2d7490317e654b8b84607e6b",
@@ -285,9 +445,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M2-02-LINEAR_INEQUALITY",
         "subUnit": "일차부등식",
-        "conceptClusterKey": "M2-02-IDENTIFY_INEQUALITY",
+        "conceptClusterKey": "LINEAR_INEQUALITY",
         "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
-        "templateKey": "",
+        "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
         "crossConceptKeys": [
           "CC_INEQUALITY_IDENTIFICATION"
         ],
@@ -306,20 +466,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-018"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질",
+          "recordId": "M2-RPM-018"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "일차부등식",
+        "rpmPrimaryL3": "부등식의 성질",
+        "rpmPrimaryL4": "부등식의 성질",
+        "rpmPrimaryRecordId": "M2-RPM-018",
+        "difficultyBasis": "Q6번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 11)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-02 / M2-02-LINEAR_INEQUALITY: 다음 중 부등식이 아닌 것을 모두 고르면?",
+          "curriculum": "M2-RPM-018: Q6번 문항은 M2-RPM-018에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 11)",
+          "problemType": "Q6번 문항은 PT_M2_LINEAR_INEQUALITY_IDENTIFICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 11)",
+          "difficulty": "Q6번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 11)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_INEQUALITY_IDENTIFICATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "부등호 사용 여부를 기준으로 다항식 ①과 등식 ⑤를 골라낸다.",
       "decisiveStep": "부등호가 없는 ①과 등호 =를 쓴 ⑤가 부등식이 아님을 판별한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "부등식의 기본 정의(부등호 사용 여부)를 확인하는 1단계 문항이다.",
+      "difficultyReason": "Q6번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 11)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
-        "templateKey": null,
-        "why": "부등식이 아닌 식 2개 고르기"
+        "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+        "why": "Q6번 문항은 PT_M2_LINEAR_INEQUALITY_IDENTIFICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 11)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_5ec58377cd9a9eb7b14e1842a705809d3aaa38bd31cad3d28e4b03ded1a246db",
@@ -336,9 +528,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M2-02-LINEAR_INEQUALITY",
         "subUnit": "일차부등식",
-        "conceptClusterKey": "M2-02-INEQUALITY_PROPERTIES_CHECK",
+        "conceptClusterKey": "LINEAR_INEQUALITY",
         "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
-        "templateKey": "",
+        "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
         "crossConceptKeys": [
           "CC_INEQUALITY_PROPERTIES",
           "CC_DIRECTION_OF_INEQUALITY"
@@ -358,20 +550,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-018"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질",
+          "recordId": "M2-RPM-018"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "일차부등식",
+        "rpmPrimaryL3": "부등식의 성질",
+        "rpmPrimaryL4": "부등식의 성질",
+        "rpmPrimaryRecordId": "M2-RPM-018",
+        "difficultyBasis": "Q7번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 3)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-02 / M2-02-LINEAR_INEQUALITY: $-3a - 2 \\le -3b - 2$일 때, 다음 중 옳지 않은 것은?",
+          "curriculum": "M2-RPM-018: Q7번 문항은 M2-RPM-018에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 3)",
+          "problemType": "Q7번 문항은 PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 3)",
+          "difficulty": "Q7번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 3)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_INEQUALITY_PROPERTIES, CC_DIRECTION_OF_INEQUALITY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "주어진 부등식을 정리해 a >= b를 얻은 뒤 각 보기 연산에서의 부등호 방향을 점검한다.",
       "decisiveStep": "a >= b를 양수 3으로 나누면 a/3 >= b/3이므로 ⑤가 거짓임을 확인한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "부등식의 성질로 a >= b를 유도한 뒤 보기별로 방향을 확인하는 기본 문항이다.",
+      "difficultyReason": "Q7번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 3)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
-        "templateKey": null,
-        "why": "부등식의 성질 진위 판별"
+        "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+        "why": "Q7번 문항은 PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 3)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_f2adfaa729509bd6b4f62cbe438eee3d736d9b9093cc354312101f68847f178c",
@@ -388,9 +612,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M2-02-LINEAR_INEQUALITY",
         "subUnit": "일차부등식",
-        "conceptClusterKey": "M2-02-BRACKET_INEQUALITY_NON_SOLUTION",
+        "conceptClusterKey": "LINEAR_INEQUALITY",
         "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
-        "templateKey": "",
+        "templateKey": "TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK",
         "crossConceptKeys": [
           "CC_NEGATIVE_MULTIPLICATION"
         ],
@@ -409,20 +633,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-020"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "일차부등식",
+          "l3": "일차부등식의 풀이",
+          "l4": "기본형",
+          "recordId": "M2-RPM-020"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "일차부등식",
+        "rpmPrimaryL3": "일차부등식의 풀이",
+        "rpmPrimaryL4": "기본형",
+        "rpmPrimaryRecordId": "M2-RPM-020",
+        "difficultyBasis": "Q8번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 12)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-02 / M2-02-LINEAR_INEQUALITY: 다음 중 일차부등식 $12 + x \\le 3(x - 2)$의 해가 아닌 것은?",
+          "curriculum": "M2-RPM-020: Q8번 문항은 M2-RPM-020에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 12)",
+          "problemType": "Q8번 문항은 PT_M2_LINEAR_INEQUALITY_SOLVING 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 12)",
+          "difficulty": "Q8번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 12)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_NEGATIVE_MULTIPLICATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "괄호를 전개하고 이항해 해 x >= 9를 구한 뒤 이 범위에 속하지 않는 보기를 고른다.",
       "decisiveStep": "-2x <= -18에서 x >= 9를 구해 8이 해가 아님을 판별한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "괄호 전개 후 음수로 나누어 해를 구하는 기본 1단계 문항이다.",
+      "difficultyReason": "Q8번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 12)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
-        "templateKey": null,
-        "why": "괄호가 있는 일차부등식의 해가 아닌 것 찾기"
+        "templateKey": "TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK",
+        "why": "Q8번 문항은 PT_M2_LINEAR_INEQUALITY_SOLVING 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 12)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_0bf1eb9dd81e195f2a19a5c3e1c7437077dd4d5f1d14cefccf99f65857f8fe51",
@@ -439,9 +695,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M2-02-LINEAR_INEQUALITY",
         "subUnit": "일차부등식",
-        "conceptClusterKey": "M2-02-MAX_SOLUTION_PARAMETER",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_INEQUALITY",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
         "crossConceptKeys": [
           "CC_COEFFICIENT_DETERMINATION"
         ],
@@ -460,20 +716,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-022"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "정수해 개수",
+          "recordId": "M2-RPM-022"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "일차부등식",
+        "rpmPrimaryL3": "해의 조건",
+        "rpmPrimaryL4": "정수해 개수",
+        "rpmPrimaryRecordId": "M2-RPM-022",
+        "difficultyBasis": "Q9번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 12)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-02 / M2-02-LINEAR_INEQUALITY: 일차부등식 $\\frac{1}{3}x - 2 \\ge x - a$의 해 중에서 가장 큰 수가 $6$일 때, 수 $a$의 값을 구하면?",
+          "curriculum": "M2-RPM-022: Q9번 문항은 M2-RPM-022에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 12)",
+          "problemType": "Q9번 문항은 PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 12)",
+          "difficulty": "Q9번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 12)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_COEFFICIENT_DETERMINATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "일차부등식을 x <= (3a - 6)/2로 정리한 뒤 최댓값 6과 같다고 놓고 a를 구한다.",
       "decisiveStep": "(3a - 6)/2 = 6에서 a = 6을 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "문자가 포함된 부등식의 해 범위를 구하고 경계값을 최댓값 6과 등치시켜 풀어야 한다.",
+      "difficultyReason": "Q9번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 12)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "부등식 해의 최댓값이 주어졌을 때 상수 구하기"
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+        "why": "Q9번 문항은 PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 12)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_eb1895db03e3328d81f8d65ebc1b8c44e1015ce8b8403fbc39e9412a2403231c",
@@ -490,9 +778,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M2-02-LINEAR_INEQUALITY",
         "subUnit": "일차부등식",
-        "conceptClusterKey": "M2-02-EQUIVALENT_INEQUALITY_CONSTANT",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_INEQUALITY",
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
         "crossConceptKeys": [
           "CC_DECIMAL_COEFFICIENTS",
           "CC_FRACTION_COEFFICIENTS",
@@ -513,20 +801,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-022"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "정수해 개수",
+          "recordId": "M2-RPM-022"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "일차부등식",
+        "rpmPrimaryL3": "해의 조건",
+        "rpmPrimaryL4": "정수해 개수",
+        "rpmPrimaryRecordId": "M2-RPM-022",
+        "difficultyBasis": "Q10번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 0.3)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-02 / M2-02-LINEAR_INEQUALITY: 두 일차부등식 $\\frac{1}{2}(x - 2) \\le 0.3(x - 5) - 2.9$, $\\frac{2 - x}{3} \\ge \\frac{a}{2} + \\frac{1}{3}$의 해가 서로 같을 때, 수 $a$의 값은?",
+          "curriculum": "M2-RPM-022: Q10번 문항은 M2-RPM-022에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 0.3)",
+          "problemType": "Q10번 문항은 PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 0.3)",
+          "difficulty": "Q10번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 0.3)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_DECIMAL_COEFFICIENTS, CC_FRACTION_COEFFICIENTS, CC_COEFFICIENT_DETERMINATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "소수·분수 계수 부등식에서 x <= -17을 구한 뒤 둘째 부등식의 해 x <= (2 - 3a)/2와 경계값을 등치시켜 a를 구한다.",
       "decisiveStep": "(2 - 3a)/2 = -17에서 a = 12를 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "분수·소수·괄호가 섞인 두 부등식을 각각 정리해 경계값을 비교해야 한다.",
+      "difficultyReason": "Q10번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 0.3)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "두 일차부등식의 해가 같을 때 상수 구하기"
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+        "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+        "why": "Q10번 문항은 PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 0.3)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c64620be626092844e6ddcd9f78e07f50c0f17b9d360c05dde991b641ed793c3",
@@ -543,9 +863,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-PARALLELOGRAM_ALTERNATE_ANGLES",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
         "crossConceptKeys": [
           "CC_PARALLELOGRAMS",
           "CC_ALTERNATE_INTERIOR_ANGLES"
@@ -565,20 +885,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-072"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "변·각의 성질",
+          "recordId": "M2-RPM-072"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "평행사변형",
+        "rpmPrimaryL3": "평행사변형의 성질",
+        "rpmPrimaryL4": "변·각의 성질",
+        "rpmPrimaryRecordId": "M2-RPM-072",
+        "difficultyBasis": "Q11번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ABCD)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: 평행사변형 $ABCD$에서 두 대각선 $AC, BD$의 교점을 $O$라 하자.",
+          "curriculum": "M2-RPM-072: Q11번 문항은 M2-RPM-072에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABCD)",
+          "problemType": "Q11번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)",
+          "difficulty": "Q11번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ABCD)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_PARALLELOGRAMS, CC_ALTERNATE_INTERIOR_ANGLES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "평행사변형의 두 쌍의 대변이 각각 평행함을 이용해 엇각으로 ∠ACD와 ∠CAD를 구해 합한다.",
       "decisiveStep": "엇각 ∠ACD = 38도, ∠CAD = 47도를 구해 합 85도를 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "평행사변형의 대변 평행과 엇각 성질만으로 바로 각을 구할 수 있는 문항이다.",
+      "difficultyReason": "Q11번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ABCD)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "평행사변형과 엇각을 이용한 각의 합"
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "why": "Q11번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_666960203c05caa58d7179964129f88b46619663183c5acf4e272ca24e121389",
@@ -595,9 +947,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-PARALLELOGRAM_PERIMETER_RATIO",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
         "crossConceptKeys": [
           "CC_PARALLELOGRAMS",
           "CC_RATIO_AND_PROPORTION",
@@ -618,20 +970,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-072"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "변·각의 성질",
+          "recordId": "M2-RPM-072"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "평행사변형",
+        "rpmPrimaryL3": "평행사변형의 성질",
+        "rpmPrimaryL4": "변·각의 성질",
+        "rpmPrimaryRecordId": "M2-RPM-072",
+        "difficultyBasis": "Q12번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ABCD)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: 평행사변형 $ABCD$의 둘레의 길이는 $30\\text{ cm}$이고, $\\overline{AB} : \\overline{AD} = 2 : 3$일 때, $\\overline{CD}$의 길이는?",
+          "curriculum": "M2-RPM-072: Q12번 문항은 M2-RPM-072에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABCD)",
+          "problemType": "Q12번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)",
+          "difficulty": "Q12번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ABCD)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_PARALLELOGRAMS, CC_RATIO_AND_PROPORTION, CC_PERIMETER: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "둘레의 절반 15cm를 2 : 3으로 비례배분해 AB 길이를 구하고 대변 CD 길이와 같음을 이용한다.",
       "decisiveStep": "AB + AD = 15를 2 : 3으로 나누어 CD = AB = 6을 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "평행사변형 대변 길이 일치와 비례배분을 한 번 적용하면 풀리는 기본 문항이다.",
+      "difficultyReason": "Q12번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ABCD)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "평행사변형 둘레와 변의 길이 비"
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "why": "Q12번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_12800cdcb2e990c6fb501c74a5ca29820aa466b12e54647ee9326684a1bc150a",
@@ -648,9 +1032,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-PARALLELOGRAM_ANGLE_BISECTORS_OVERLAP",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
         "crossConceptKeys": [
           "CC_ANGLE_BISECTOR_PARALLEL",
           "CC_ISOSCELES_TRIANGLES"
@@ -670,20 +1054,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-072"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "변·각의 성질",
+          "recordId": "M2-RPM-072"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "평행사변형",
+        "rpmPrimaryL3": "평행사변형의 성질",
+        "rpmPrimaryL4": "변·각의 성질",
+        "rpmPrimaryRecordId": "M2-RPM-072",
+        "difficultyBasis": "Q13번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ABCD)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: 평행사변형 $ABCD$에서 $\\angle A$와 $\\angle D$의 이등분선이 변 $BC$와 만나는 점을 각각 $E, F$라 하자.",
+          "curriculum": "M2-RPM-072: Q13번 문항은 M2-RPM-072에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABCD)",
+          "problemType": "Q13번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)",
+          "difficulty": "Q13번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ABCD)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_ANGLE_BISECTOR_PARALLEL, CC_ISOSCELES_TRIANGLES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "평행선 엇각으로 두 이등변삼각형 ABE, DCF를 찾아 BE = CF = x를 구한 뒤 겹치는 선분 EF = 2x - y를 계산한다.",
       "decisiveStep": "BE = x, CF = x와 BC = y의 겹침 관계에서 EF = x + x - y = 2x - y를 도출한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "엇각으로 이등변삼각형 두 개를 찾고 2x > y 조건에서 선분 겹침 길이를 식으로 표현해야 한다.",
+      "difficultyReason": "Q13번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ABCD)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "평행사변형 내각 이등분선이 만드는 겹친 선분 길이"
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "why": "Q13번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_67be90ab4cfeceb383a7a688ae5d5fa29686179d45022a44e1c75b7954d258c8",
@@ -700,9 +1116,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-PARALLELOGRAM_CRITERION_MATCH",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
         "crossConceptKeys": [
           "CC_PARALLELOGRAM_CRITERIA",
           "CC_SUPPLEMENTARY_ANGLES"
@@ -722,20 +1138,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-074"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "평행사변형",
+          "l3": "평행사변형의 판정",
+          "l4": "변·각 조건",
+          "recordId": "M2-RPM-074"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "평행사변형",
+        "rpmPrimaryL3": "평행사변형의 판정",
+        "rpmPrimaryL4": "변·각 조건",
+        "rpmPrimaryRecordId": "M2-RPM-074",
+        "difficultyBasis": "Q14번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ABCD)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: 사각형 $ABCD$에서 $\\angle A = 115^{\\circ}$, $\\angle B = 65^{\\circ}$이고 $\\overline{AD} = \\overline{BC} = 8\\text{ cm}$일 때, $\\square ABCD$가 평행사변형이 되는 가장 알맞은 조건은?",
+          "curriculum": "M2-RPM-074: Q14번 문항은 M2-RPM-074에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABCD)",
+          "problemType": "Q14번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)",
+          "difficulty": "Q14번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ABCD)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_PARALLELOGRAM_CRITERIA, CC_SUPPLEMENTARY_ANGLES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "∠A + ∠B = 180도에서 AD // BC를 이끌어내고 AD = BC 조건과 결합해 평행사변형 조건을 선택한다.",
       "decisiveStep": "동측내각 합 180도로 평행 조건을 확인해 ④를 고른다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "두 이웃각의 합 180도로 평행을 판단하고 대변 길이 일치와 연결하는 기본 문항이다.",
+      "difficultyReason": "Q14번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ABCD)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "주어진 각·길이 조건에 맞는 평행사변형 판정 조건 고르기"
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "why": "Q14번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c6c81e5a92711b043fc6c78d22598bb2817eb327b3f086f47292828ccf969280",
@@ -752,9 +1200,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-PARALLELOGRAM_TO_SQUARE_CONDITIONS",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
         "crossConceptKeys": [
           "CC_SQUARE_CLASSIFICATION",
           "CC_QUADRILATERAL_HIERARCHY"
@@ -774,20 +1222,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-082"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "여러 가지 사각형",
+          "l3": "사각형의 포함 관계",
+          "l4": "조건으로 사각형 판정",
+          "recordId": "M2-RPM-082"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "여러 가지 사각형",
+        "rpmPrimaryL3": "사각형의 포함 관계",
+        "rpmPrimaryL4": "조건으로 사각형 판정",
+        "rpmPrimaryRecordId": "M2-RPM-082",
+        "difficultyBasis": "Q15번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ABCD)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: 평행사변형 $ABCD$에서 두 대각선의 교점을 $O$라 할 때, 다음 중 평행사변형 $ABCD$가 정사각형이 되는 조건이 아닌 것은?",
+          "curriculum": "M2-RPM-082: Q15번 문항은 M2-RPM-082에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABCD)",
+          "problemType": "Q15번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)",
+          "difficulty": "Q15번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ABCD)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SQUARE_CLASSIFICATION, CC_QUADRILATERAL_HIERARCHY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "평행사변형에 직사각형 조건과 마름모 조건이 모두 추가되는지 보기별로 판별해 직사각형만 되는 2개를 고른다.",
       "decisiveStep": "②와 ③은 직사각형 조건만 중복되어 마름모 조건이 없음을 확인한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "각 보기가 직사각형 조건과 마름모 조건을 모두 포함하는지 구별해야 한다.",
+      "difficultyReason": "Q15번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ABCD)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "평행사변형이 정사각형이 될 조건 판별"
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "why": "Q15번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_d2c14972e68614186d91ff07f8fa642fc50d3d06a916436c1c949d2cc117580d",
@@ -804,9 +1284,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-PAPER_FOLDING_RHOMBUS",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
         "crossConceptKeys": [
           "CC_GEOMETRIC_FOLDING",
           "CC_RHOMBUS_PROPERTIES"
@@ -826,20 +1306,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-078"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "각 사각형의 성질",
+          "recordId": "M2-RPM-078"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "여러 가지 사각형",
+        "rpmPrimaryL3": "직사각형·마름모·정사각형",
+        "rpmPrimaryL4": "각 사각형의 성질",
+        "rpmPrimaryRecordId": "M2-RPM-078",
+        "difficultyBasis": "Q16번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 cm)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: 직사각형 모양의 종이를 가로로 한 번, 세로로 한 번 반씩 접어 네 겹이 된 상태에서, 두 접힌 선이 만나는 꼭짓점을 포함한 두 접힌 변 위에 길이가 각각 다른 두 점을 잡아 잇는 길이 $8\\text{ cm}$인 선분을 따라 직각삼각형 모양으로 잘라낸 후 폈다.",
+          "curriculum": "M2-RPM-078: Q16번 문항은 M2-RPM-078에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 cm)",
+          "problemType": "Q16번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 cm)",
+          "difficulty": "Q16번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 cm)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_GEOMETRIC_FOLDING, CC_RHOMBUS_PROPERTIES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "두 번 접어 자른 뒤 편 도형이 네 변의 길이가 모두 8cm이고 직각이 아닌 마름모임을 파악해 틀린 설명 2개를 고른다.",
       "decisiveStep": "만들어지는 도형이 정사각형이 아닌 일반 마름모이므로 직사각형·직각을 언급한 ①, ⑤가 거짓임을 판별한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "접어 자른 도형이 마름모임을 추론하고 마름모의 포함 관계와 성질 중 거짓 2개를 골라야 한다.",
+      "difficultyReason": "Q16번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 cm)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "종이접기 잘라내기로 만든 마름모 성질 판별"
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "why": "Q16번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 cm)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_7435984724d71437a39db89d86b5fe574bc2ff015e1235e86f0c48164eb81156",
@@ -856,9 +1368,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-RHOMBUS_SUFFICIENT_CONDITION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
         "crossConceptKeys": [
           "CC_RHOMBUS",
           "CC_SUFFICIENT_CONDITIONS"
@@ -878,20 +1390,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-082"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "여러 가지 사각형",
+          "l3": "사각형의 포함 관계",
+          "l4": "조건으로 사각형 판정",
+          "recordId": "M2-RPM-082"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "여러 가지 사각형",
+        "rpmPrimaryL3": "사각형의 포함 관계",
+        "rpmPrimaryL4": "조건으로 사각형 판정",
+        "rpmPrimaryRecordId": "M2-RPM-082",
+        "difficultyBasis": "Q17번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ABCD)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: 사각형 $ABCD$에서 두 대각선 $AC, BD$의 교점을 $O$라 할 때, 다음 중 $\\square ABCD$가 마름모가 되는 조건은?",
+          "curriculum": "M2-RPM-082: Q17번 문항은 M2-RPM-082에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABCD)",
+          "problemType": "Q17번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)",
+          "difficulty": "Q17번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ABCD)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_RHOMBUS, CC_SUFFICIENT_CONDITIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "일반 사각형이 평행사변형이 되는 조건과 대각선 직교 조건을 모두 갖춘 보기를 찾는다.",
       "decisiveStep": "한 쌍 대변 평행·길이 일치(평행사변형) + ∠AOB = 90도(직교)를 모두 만족하는 ⑤를 고른다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "일반 사각형에서 출발하므로 평행사변형 조건과 마름모 조건이 모두 갖추어졌는지 확인해야 한다.",
+      "difficultyReason": "Q17번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ABCD)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "일반 사각형이 마름모가 되는 조건 판별"
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "why": "Q17번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_b2919608960562b7e532ba139eb5684712e0eb35f5b8f40a29b2d19fdca60b8f",
@@ -908,9 +1452,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-PARALLELOGRAM_BISECTORS_RECTANGLE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
         "crossConceptKeys": [
           "CC_RECTANGLE_PROPERTIES",
           "CC_ANGLE_BISECTOR_PROPERTY"
@@ -930,20 +1474,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-078"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "각 사각형의 성질",
+          "recordId": "M2-RPM-078"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "여러 가지 사각형",
+        "rpmPrimaryL3": "직사각형·마름모·정사각형",
+        "rpmPrimaryL4": "각 사각형의 성질",
+        "rpmPrimaryRecordId": "M2-RPM-078",
+        "difficultyBasis": "Q18번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 AB)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: $\\overline{AB} \\ne \\overline{BC}$인 평행사변형 $ABCD$에서 네 내각의 이등분선의 교점으로 이루어진 사각형 $PQRS$에 대한 설명으로 다음 중 옳지 않은 것은?",
+          "curriculum": "M2-RPM-078: Q18번 문항은 M2-RPM-078에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AB)",
+          "problemType": "Q18번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AB)",
+          "difficulty": "Q18번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 AB)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_RECTANGLE_PROPERTIES, CC_ANGLE_BISECTOR_PROPERTY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "평행사변형의 네 내각 이등분선으로 생기는 사각형 PQRS가 직사각형임을 확인한 뒤 직사각형의 성질이 아닌 것을 고른다.",
       "decisiveStep": "PQRS는 직사각형이지만 정사각형은 아니므로 대각선 직교 ②가 거짓임을 판별한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "네 내각 이등분선이 직사각형을 만든다는 성질을 알고 대각선 직교 여부를 판별해야 한다.",
+      "difficultyReason": "Q18번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 AB)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "평행사변형 내각 이등분선이 만드는 직사각형 성질"
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "why": "Q18번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AB)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_650c3219a1accf6274bb7e46bb636ea8cc3692009d64766816c25e0ddc10a5cf",
@@ -960,9 +1536,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-DIAGONAL_BISECTION_COUNT",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
         "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
         "crossConceptKeys": [
           "CC_DIAGONALS",
           "CC_QUADRILATERAL_HIERARCHY"
@@ -982,20 +1558,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-082"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "여러 가지 사각형",
+          "l3": "사각형의 포함 관계",
+          "l4": "조건으로 사각형 판정",
+          "recordId": "M2-RPM-082"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "여러 가지 사각형",
+        "rpmPrimaryL3": "사각형의 포함 관계",
+        "rpmPrimaryL4": "조건으로 사각형 판정",
+        "rpmPrimaryRecordId": "M2-RPM-082",
+        "difficultyBasis": "Q19번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 2)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: 다음 보기 중 두 대각선이 서로 다른 것을 이등분하는 사각형은 몇 개인가?",
+          "curriculum": "M2-RPM-082: Q19번 문항은 M2-RPM-082에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 2)",
+          "problemType": "Q19번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 2)",
+          "difficulty": "Q19번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 2)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_DIAGONALS, CC_QUADRILATERAL_HIERARCHY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "두 대각선이 서로 다른 것을 이등분하는 성질이 평행사변형과 그 하위 특수 사각형에서 성립함을 이용해 개수를 센다.",
       "decisiveStep": "사다리꼴과 등변사다리꼴을 제외한 ㄱ, ㄹ, ㅁ, ㅂ의 4개를 고른다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "평행사변형의 대각선 성질이 포함되는 사각형들을 바로 세는 1단계 개념 문항이다.",
+      "difficultyReason": "Q19번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 2)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": null,
-        "why": "대각선 이등분 성질을 만족하는 사각형 개수"
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "why": "Q19번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 2)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_d28ce60da46e0fb245a76a3ddfe30c0832633e1977878359bd5c6e929f38d000",
@@ -1012,9 +1620,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-MIDPOINT_QUADRILATERALS",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
         "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
         "crossConceptKeys": [
           "CC_QUADRILATERAL_CLASSIFICATION"
         ],
@@ -1033,20 +1641,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-080"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "여러 가지 사각형",
+          "l3": "사다리꼴",
+          "l4": "등변사다리꼴",
+          "recordId": "M2-RPM-080"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "여러 가지 사각형",
+        "rpmPrimaryL3": "사다리꼴",
+        "rpmPrimaryL4": "등변사다리꼴",
+        "rpmPrimaryRecordId": "M2-RPM-080",
+        "difficultyBasis": "Q20번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 20)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: 다음 중 사각형과 그 사각형의 각 변의 중점을 연결하여 만든 사각형을 짝지은 것으로 옳지 않은 것은?",
+          "curriculum": "M2-RPM-080: Q20번 문항은 M2-RPM-080에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 20)",
+          "problemType": "Q20번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 20)",
+          "difficulty": "Q20번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 20)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_QUADRILATERAL_CLASSIFICATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "원래 사각형의 대각선 길이·수직 여부에 따라 중점 연결 사각형이 결정됨을 이용해 틀린 짝을 찾는다.",
       "decisiveStep": "평행사변형의 중점 연결 사각형은 평행사변형이므로 ①이 거짓임을 확인한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "사각형별 중점 연결 도형 결과를 바로 대조하는 1단계 개념 문항이다.",
+      "difficultyReason": "Q20번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 20)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": null,
-        "why": "사각형의 각 변 중점을 연결한 사각형 판별"
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "why": "Q20번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 20)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_ce39c52455bcb15396adc86b8828b16782c9cae8685274e7f3fdaca66dbb012a",
@@ -1063,9 +1703,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-ISOSCELES_TRAPEZOID_ANGLE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
         "crossConceptKeys": [
           "CC_ISOSCELES_TRAPEZOID",
           "CC_ISOSCELES_TRIANGLES",
@@ -1086,20 +1726,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-080"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "여러 가지 사각형",
+          "l3": "사다리꼴",
+          "l4": "등변사다리꼴",
+          "recordId": "M2-RPM-080"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "여러 가지 사각형",
+        "rpmPrimaryL3": "사다리꼴",
+        "rpmPrimaryL4": "등변사다리꼴",
+        "rpmPrimaryRecordId": "M2-RPM-080",
+        "difficultyBasis": "Q21번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 AD)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: $\\overline{AD} \\parallel \\overline{BC}$인 등변사다리꼴 $ABCD$에서 $\\overline{AB} = \\overline{AD}$이고 $\\angle DBC = 28^{\\circ}$일 때, $\\angle BDC$의 크기를 구하면?",
+          "curriculum": "M2-RPM-080: Q21번 문항은 M2-RPM-080에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AD)",
+          "problemType": "Q21번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AD)",
+          "difficulty": "Q21번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 AD)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_ISOSCELES_TRAPEZOID, CC_ISOSCELES_TRIANGLES, CC_TRIANGLE_ANGLE_SUM: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "엇각으로 ∠ADB = 28도, 이등변삼각형으로 ∠ABD = 28도를 구해 ∠C = 56도를 얻은 뒤 삼각형 BCD 내각 합에서 ∠BDC를 구한다.",
       "decisiveStep": "∠ABC = ∠C = 56도를 구해 180 - (28 + 56) = 96도를 계산한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "평행선 엇각, 이등변삼각형, 등변사다리꼴 밑각 일치를 순서대로 연결해 각을 구해야 한다.",
+      "difficultyReason": "Q21번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 AD)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "등변사다리꼴과 이등변삼각형을 이용한 각의 크기"
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "why": "Q21번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AD)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c9639ee3232e380142412da85c2c881bec51c197711049e5a15ca601ce82f3ca",
@@ -1116,9 +1788,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
         "subUnit": "다항식의 계산",
-        "conceptClusterKey": "M2-01-SIMPLIFY_AND_EVALUATE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
         "crossConceptKeys": [
           "CC_POLYNOMIAL_DIVISION_BY_MONOMIAL",
           "CC_ALGEBRAIC_SIMPLIFICATION"
@@ -1138,20 +1810,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-016"
+        ],
+        "rpmPrimary": {
+          "l1": "식의 계산",
+          "l2": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "식의 값",
+          "recordId": "M2-RPM-016"
+        },
+        "rpmPrimaryL1": "식의 계산",
+        "rpmPrimaryL2": "다항식의 계산",
+        "rpmPrimaryL3": "식의 값과 활용",
+        "rpmPrimaryL4": "식의 값",
+        "rpmPrimaryRecordId": "M2-RPM-016",
+        "difficultyBasis": "Q22번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 12)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-01 / M2-01-POLYNOMIAL_OPERATIONS: [서술형 1] $x = \\frac{3}{5}$, $y = 3$일 때, 식 $y - [2x - {3y + (12y^{2} - 9xy) \\div 3y}]$의 값을 구하려고 한다.",
+          "curriculum": "M2-RPM-016: Q22번 문항은 M2-RPM-016에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 12)",
+          "problemType": "Q22번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 12)",
+          "difficulty": "Q22번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 12)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_POLYNOMIAL_DIVISION_BY_MONOMIAL, CC_ALGEBRAIC_SIMPLIFICATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "소괄호의 다항식 나눗셈을 먼저 계산해 -5x + 8y로 정리한 뒤 x, y 값을 대입한다.",
       "decisiveStep": "중괄호 7y - 3x와 대괄호 5x - 7y를 거쳐 -5x + 8y를 얻고 대입해 21을 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "다항식 나눗셈과 다중 괄호 뺄셈을 차례로 정리한 뒤 분수를 대입해야 한다.",
+      "difficultyReason": "Q22번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 12)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "다항식 나눗셈 및 괄호 정리 후 식의 값"
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+        "why": "Q22번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 12)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_8dbe969c0fc0e5a87bcdb3ea308334c2faa9ea6b7fa0d6a0206644a3915b96a1",
@@ -1168,9 +1872,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
         "subUnit": "일차부등식의 활용",
-        "conceptClusterKey": "M2-02-WORD_BREAKDOWN_DISTANCE",
+        "conceptClusterKey": "LINEAR_INEQUALITY_WORD_PROBLEM",
         "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
-        "templateKey": "",
+        "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
         "crossConceptKeys": [
           "CC_SPEED_DISTANCE_TIME",
           "CC_APPLIED_WORD_PROBLEMS"
@@ -1192,20 +1896,52 @@
           "variationType": "CONTEXT",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-026"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "일차부등식의 활용",
+          "l3": "거리·속력·시간",
+          "l4": "시간 제한",
+          "recordId": "M2-RPM-026"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "일차부등식의 활용",
+        "rpmPrimaryL3": "거리·속력·시간",
+        "rpmPrimaryL4": "시간 제한",
+        "rpmPrimaryRecordId": "M2-RPM-026",
+        "difficultyBasis": "Q23번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 km)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-02 / M2-02-LINEAR_INEQUALITY_WORD: [서술형 2] 준호는 집에서 $8\\text{ km}$ 떨어진 도서관까지 가는데, 처음에는 자전거를 타고 시속 $10\\text{ km}$로 가다가 도중에 자전거가 고장이 나서 멈추고 $15$분 동안 살펴본 후, 다시 자전거를 끌고 시속 $5\\text{ km}$로 걸어갔다.",
+          "curriculum": "M2-RPM-026: Q23번 문항은 M2-RPM-026에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 km)",
+          "problemType": "Q23번 문항은 PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 km)",
+          "difficulty": "Q23번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 km)",
+          "condition": "COND_UPPER_BOUND: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_SPEED_DISTANCE_TIME, CC_APPLIED_WORD_PROBLEMS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "자전거 이동 시간 x/10, 휴식 시간 15/60, 도보 시간 (8-x)/5의 합이 3/2시간 이하라는 일차부등식을 세워 푼다.",
       "decisiveStep": "양변에 20을 곱해 2x + 5 + 4(8 - x) <= 30을 정리해 x >= 7/2을 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "휴식 시간 15분을 시간 단위로 환산해 세 구간의 시간 합 부등식을 세워 풀어야 한다.",
+      "difficultyReason": "Q23번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 km)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
-        "templateKey": null,
-        "why": "도중 고장·휴식이 포함된 이동 시간 일차부등식 서술형"
+        "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+        "why": "Q23번 문항은 PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 km)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_0297f347de111523ed022b20b74d06b2b564af994fafe87f378fee56a4fac1e6",
@@ -1222,9 +1958,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-TRAPEZOID_DIAGONAL_AREAS",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
         "crossConceptKeys": [
           "CC_PARALLEL_LINES_EQUAL_AREA",
           "CC_AREA_RATIO",
@@ -1245,20 +1981,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-076"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "평행사변형",
+          "l3": "넓이와 활용",
+          "l4": "평행선과 넓이",
+          "recordId": "M2-RPM-076"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "평행사변형",
+        "rpmPrimaryL3": "넓이와 활용",
+        "rpmPrimaryL4": "평행선과 넓이",
+        "rpmPrimaryRecordId": "M2-RPM-076",
+        "difficultyBasis": "Q24번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 AD)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: [서술형 3] $\\overline{AD} \\parallel \\overline{BC}$인 사다리꼴 $ABCD$에서 두 대각선 $AC, BD$의 교점을 $O$라고 할 때, $\\overline{AO} : \\overline{OC} = 2 : 5$이다.",
+          "curriculum": "M2-RPM-076: Q24번 문항은 M2-RPM-076에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AD)",
+          "problemType": "Q24번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AD)",
+          "difficulty": "Q24번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 AD)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_PARALLEL_LINES_EQUAL_AREA, CC_AREA_RATIO, CC_TRAPEZOID: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "평행선 사이 넓이가 같은 △ABC = △DBC에서 공통 부분 △OBC를 빼 △OAB = 14를 구한 뒤 밑변 비 2 : 5로 △OBC를 구한다.",
       "decisiveStep": "△OAB : △OBC = AO : OC = 2 : 5에서 △OBC = 35를 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "평행선과 넓이 성질로 나비 모양 넓이 일치를 설명한 뒤 높이가 같은 삼각형 넓이 비를 적용해야 한다.",
+      "difficultyReason": "Q24번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 AD)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "사다리꼴 대각선 분할 삼각형 넓이 비"
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "why": "Q24번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AD)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_5ab4f9557f04ec0b59270756cb91ee86084cd8cd02c3f850764601842abe0a01",
@@ -1275,9 +2043,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-PARALLELOGRAM_ANGLE_TO_RECT_RHOMBUS",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
         "crossConceptKeys": [
           "CC_ALTERNATE_INTERIOR_ANGLES",
           "CC_RECTANGLE_PROPERTIES",
@@ -1298,20 +2066,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-078"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "각 사각형의 성질",
+          "recordId": "M2-RPM-078"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "여러 가지 사각형",
+        "rpmPrimaryL3": "직사각형·마름모·정사각형",
+        "rpmPrimaryL4": "각 사각형의 성질",
+        "rpmPrimaryRecordId": "M2-RPM-078",
+        "difficultyBasis": "Q25번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ABCD)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: [서술형 4] 평행사변형 $ABCD$에서 두 대각선의 교점을 $O$라 하고, $\\angle CAB = a$, $\\angle ODC = b$일 때 다음 물음에 답하시오.",
+          "curriculum": "M2-RPM-078: Q25번 문항은 M2-RPM-078에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABCD)",
+          "problemType": "Q25번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)",
+          "difficulty": "Q25번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ABCD)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_ALTERNATE_INTERIOR_ANGLES, CC_RECTANGLE_PROPERTIES, CC_RHOMBUS_PROPERTIES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "엇각 ∠ACD = a를 구한 뒤 △ODC에서 a = b일 때 대각선 길이 일치(직사각형), a + b = 90도일 때 대각선 직교(마름모)를 보인다.",
       "decisiveStep": "△ODC에서 ∠OCD = a를 이용해 이등변삼각형과 직각삼각형 조건을 도출한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "엇각으로 △ODC의 두 각을 표현한 뒤 대각선의 길이 일치와 수직 조건을 각각 논증해야 한다.",
+      "difficultyReason": "Q25번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ABCD)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "평행사변형의 각 조건으로 직사각형·마름모 판정 설명"
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "why": "Q25번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     }
   ]
 }

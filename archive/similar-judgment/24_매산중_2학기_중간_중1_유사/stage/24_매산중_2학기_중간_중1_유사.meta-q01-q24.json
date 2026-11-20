@@ -3,7 +3,7 @@
   "requestId": "24_매산중_2학기_중간_중1_유사-candidate-v1",
   "examUid": "24_매산중_2학기_중간_중1_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m1/2mid/24_매산중_2학기_중간_중1_유사.js",
-  "expectedSourceBlobSha1": "d1e862debf5d25dff12088a8362d08914bfee68e",
+  "expectedSourceBlobSha1": "a9be60dd8f8f5f4b6c52301cbe0e020e492a4605",
   "expectedQuestionCount": 24,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -31,7 +31,7 @@
         "subUnit": "점·선·면과 각",
         "conceptClusterKey": "BASIC_FIGURE",
         "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
-        "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_SEGMENT_RAY_OBJECT_IDENTITY",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
@@ -48,20 +48,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-060"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "기본 도형",
+          "l3": "점·선·면",
+          "l4": "직선·반직선·선분",
+          "recordId": "M1-RPM-060"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "기본 도형",
+        "rpmPrimaryL3": "점·선·면",
+        "rpmPrimaryL4": "직선·반직선·선분",
+        "rpmPrimaryRecordId": "M1-RPM-060",
+        "difficultyBasis": "반직선의 시작점과 방향 일치 조건을 확인하는 난이도 1 문항이다. (CB)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-BASIC_FIGURE: 다음 그림과 같이 직선 $l",
+          "curriculum": "M1-RPM-060: 기본 도형 단원의 직선·반직선·선분의 상등 유형이다. (CB)",
+          "problemType": "기본 도형의 뜻과 반직선의 상등 판별 유형이다. (CB)",
+          "difficulty": "반직선의 시작점과 방향 일치 조건을 확인하는 난이도 1 문항이다. (CB)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 순서 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "직선 위의 네 점 순서를 바탕으로 시작점과 진행 방향이 일치하는 반직선을 식별한다.",
       "decisiveStep": "시작점 C와 왼쪽 진행 방향의 동등성 확인",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "반직선의 시작점과 방향의 일치 조건을 판별하는 1단계 기본 문항",
+      "difficultyReason": "반직선의 시작점과 방향 일치 조건을 확인하는 난이도 1 문항이다. (CB)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
-        "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_SEGMENT_RAY_OBJECT_IDENTITY",
-        "why": "한 직선 위의 점들로 만들어지는 직선, 반직선, 선분의 일치 여부를 판별하는 기본 문항"
+        "templateKey": null,
+        "why": "기본 도형의 뜻과 반직선의 상등 판별 유형이다. (CB)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_8b887b149eef918f1e5da16c6acc10a398db58061034fe456f7e2823674e86a0",
@@ -80,11 +112,11 @@
         "subUnit": "입체도형",
         "conceptClusterKey": "SOLID_FIGURE",
         "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
-        "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 1,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 2,
@@ -97,20 +129,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-094"
+        ],
+        "rpmPrimary": {
+          "l1": "입체도형",
+          "l2": "다면체와 회전체",
+          "l3": "다면체",
+          "l4": "면·모서리·꼭짓점",
+          "recordId": "M1-RPM-094"
+        },
+        "rpmPrimaryL1": "입체도형",
+        "rpmPrimaryL2": "다면체와 회전체",
+        "rpmPrimaryL3": "다면체",
+        "rpmPrimaryL4": "면·모서리·꼭짓점",
+        "rpmPrimaryRecordId": "M1-RPM-094",
+        "difficultyBasis": "입체도형에서 교점과 교선의 개수를 구하는 난이도 1 문항이다. (aligned)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-07 / M1-07-SOLID_FIGURE: 다음 그림과 같은 오각기둥에",
+          "curriculum": "M1-RPM-094: 입체도형의 성질 단원의 다면체의 면·모서리·꼭짓점 개수 유형이다. (aligned)",
+          "problemType": "다면체의 구성 요소인 교점과 교선 개수 계산 유형이다. (aligned)",
+          "difficulty": "입체도형에서 교점과 교선의 개수를 구하는 난이도 1 문항이다. (aligned)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 개수 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "각기둥의 꼭짓점과 모서리 공식을 적용하여 교점과 교선의 개수를 계산하고 차를 구한다.",
       "decisiveStep": "b-a = 15-10 = 5 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "오각기둥의 구성 요소를 세어 교점과 교선의 차를 계산하는 기본 문항",
+      "difficultyReason": "입체도형에서 교점과 교선의 개수를 구하는 난이도 1 문항이다. (aligned)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
-        "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
-        "why": "다면체의 꼭짓점(교점)과 모서리(교선)의 개수를 구하는 표준 템플릿"
+        "templateKey": null,
+        "why": "다면체의 구성 요소인 교점과 교선 개수 계산 유형이다. (aligned)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_4b9d46e9fff4cccafcc60620340cb513f5eee5aec783bbdff469685170bd1e8c",
@@ -129,11 +193,11 @@
         "subUnit": "점·선·면과 각",
         "conceptClusterKey": "BASIC_FIGURE",
         "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
-        "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_CHAINED_MIDPOINT",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 1,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 3,
@@ -146,20 +210,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-061"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "기본 도형",
+          "l3": "점·선·면",
+          "l4": "두 점 사이의 거리와 중점",
+          "recordId": "M1-RPM-061"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "기본 도형",
+        "rpmPrimaryL3": "점·선·면",
+        "rpmPrimaryL4": "두 점 사이의 거리와 중점",
+        "rpmPrimaryRecordId": "M1-RPM-061",
+        "difficultyBasis": "선분의 중점 관계를 비례식으로 연계하는 난이도 1 문항이다. (AC)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-BASIC_FIGURE: 다음 그림과 같이 직선 $l",
+          "curriculum": "M1-RPM-061: 기본 도형 단원의 두 점 사이의 거리와 중점 배수 관계 유형이다. (AC)",
+          "problemType": "선분의 중점과 길이 비례 관계 유형이다. (AC)",
+          "difficulty": "선분의 중점 관계를 비례식으로 연계하는 난이도 1 문항이다. (AC)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 직선 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "중점 성질을 연쇄 적용하여 각 구간의 선분 길이를 구한 뒤 전체 길이를 합산한다.",
       "decisiveStep": "AD = AB+BC+CD = 6+6+6 = 18cm 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "선분의 중점 관계를 두 번 적용하여 선분의 총 길이를 구하는 문항",
+      "difficultyReason": "선분의 중점 관계를 비례식으로 연계하는 난이도 1 문항이다. (AC)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
-        "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_CHAINED_MIDPOINT",
-        "why": "연쇄적인 중점 조건으로부터 선분의 길이를 결정하는 표준 템플릿"
+        "templateKey": null,
+        "why": "선분의 중점과 길이 비례 관계 유형이다. (AC)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_d19fe24e18cf21e9d4232122146ec4e5e8a4795fa00b1a00223e9a4610a16ff0",
@@ -171,18 +267,18 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "MID-MATH-1",
-        "standardUnitKey": "M1-07",
-        "standardUnit": "입체도형의 성질",
-        "standardUnitOrder": 7,
-        "subUnitKey": "M1-07-SOLID_FIGURE",
-        "subUnit": "입체도형",
-        "conceptClusterKey": "SOLID_FIGURE",
-        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
-        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_EDGE_FACE_INCIDENCE",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "conceptClusterKey": "POSITION_RELATION",
+        "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 2,
+        "difficultyBucket": 1,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 4,
@@ -195,20 +291,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-068"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "위치 관계",
+          "l3": "공간에서의 위치 관계",
+          "l4": "직선과 평면의 위치 관계",
+          "recordId": "M1-RPM-068"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "위치 관계",
+        "rpmPrimaryL3": "공간에서의 위치 관계",
+        "rpmPrimaryL4": "직선과 평면의 위치 관계",
+        "rpmPrimaryRecordId": "M1-RPM-068",
+        "difficultyBasis": "입체도형에서 두 모서리의 꼬인 위치를 판별하는 난이도 1 문항이다. (AC)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-POSITION_RELATION: 다음 그림과 같은 삼각기둥에",
+          "curriculum": "M1-RPM-068: 기본 도형 단원의 공간에서의 직선과 직선의 꼬인 위치 유형이다. (AC)",
+          "problemType": "공간에서의 위치 관계와 꼬인 위치 모서리 개수 유형이다. (AC)",
+          "difficulty": "입체도형에서 두 모서리의 꼬인 위치를 판별하는 난이도 1 문항이다. (AC)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 꼬인위치 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "삼각기둥에서 기준 모서리와 만나는 모서리 및 평행한 모서리를 제외하여 꼬인 위치의 모서리를 센다.",
       "decisiveStep": "꼬인 위치 모서리 BE, DE, EF의 3개 선별",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "공간에서 모서리의 교차, 평행, 꼬인 위치 관계를 분류하는 문항",
+      "difficultyReason": "입체도형에서 두 모서리의 꼬인 위치를 판별하는 난이도 1 문항이다. (AC)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
-        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_EDGE_FACE_INCIDENCE",
-        "why": "다면체에서 모서리 간의 위치 관계 및 꼬인 위치를 판별하는 템플릿"
+        "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+        "templateKey": null,
+        "why": "공간에서의 위치 관계와 꼬인 위치 모서리 개수 유형이다. (AC)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_40fd27586cc9f8a683b03b55017ad0db9e225b2d989d41794dfed20e07768181",
@@ -227,7 +355,7 @@
         "subUnit": "다각형과 원",
         "conceptClusterKey": "POLYGON_CIRCLE",
         "problemTypeKey": "PT_M1_POLYGON_CLASSIFICATION",
-        "templateKey": "TPL_M1_POLYGON_CLASSIFICATION_CORE",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
@@ -244,20 +372,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-085"
+        ],
+        "rpmPrimary": {
+          "l1": "평면도형",
+          "l2": "다각형",
+          "l3": "삼각형·다각형의 각",
+          "l4": "변·대각선 개수",
+          "recordId": "M1-RPM-085"
+        },
+        "rpmPrimaryL1": "평면도형",
+        "rpmPrimaryL2": "다각형",
+        "rpmPrimaryL3": "삼각형·다각형의 각",
+        "rpmPrimaryL4": "변·대각선 개수",
+        "rpmPrimaryRecordId": "M1-RPM-085",
+        "difficultyBasis": "다각형과 대각선의 기본 개념 정의를 검토하는 난이도 1 문항이다. (aligned)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-06 / M1-06-POLYGON_CIRCLE: 다음 중 다각형에 대한 설명",
+          "curriculum": "M1-RPM-085: 평면도형의 성질 단원의 변·대각선 개수와 다각형 기본 정의 유형이다. (aligned)",
+          "problemType": "다각형의 뜻과 대각선 기본 성질 판별 유형이다. (aligned)",
+          "difficulty": "다각형과 대각선의 기본 개념 정의를 검토하는 난이도 1 문항이다. (aligned)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "다각형은 선분으로만 둘러싸여야 하므로 곡선인 호를 포함하는 부채꼴이 다각형이 아님을 판정한다.",
       "decisiveStep": "부채꼴은 호(곡선)를 포함하므로 다각형이 아님을 확인",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "다각형의 기본 정의를 확인하는 1단계 개념 문항",
+      "difficultyReason": "다각형과 대각선의 기본 개념 정의를 검토하는 난이도 1 문항이다. (aligned)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_POLYGON_CLASSIFICATION",
-        "templateKey": "TPL_M1_POLYGON_CLASSIFICATION_CORE",
-        "why": "다각형 및 정다각형의 정의와 대각선 개념의 정확성을 검토하는 템플릿"
+        "templateKey": null,
+        "why": "다각형의 뜻과 대각선 기본 성질 판별 유형이다. (aligned)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_b31452a5beb0ee8d784d809037d60e36c585c32b9db300f08e2e9951ab0284cd",
@@ -275,8 +435,8 @@
         "subUnitKey": "M1-05-POSITION_RELATION",
         "subUnit": "위치 관계",
         "conceptClusterKey": "POSITION_RELATION",
-        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
-        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_ANGLE_RATIO",
+        "problemTypeKey": "PT_M1_PARALLELISM_CONVERSE",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
@@ -293,20 +453,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-065"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "기본 도형",
+          "l3": "평행선과 각",
+          "l4": "평행선 조건",
+          "recordId": "M1-RPM-065"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "기본 도형",
+        "rpmPrimaryL3": "평행선과 각",
+        "rpmPrimaryL4": "평행선 조건",
+        "rpmPrimaryRecordId": "M1-RPM-065",
+        "difficultyBasis": "주어진 각도들로부터 평행선 조건을 판정하는 난이도 2 문항이다. (110)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-POSITION_RELATION: 다음 그림에서 서로 평행한",
+          "curriculum": "M1-RPM-065: 기본 도형 단원의 평행선의 조건 동위각·엇각 역판정 유형이다. (110)",
+          "problemType": "동위각·엇각 성질을 이용한 평행선 판정 유형이다. (110)",
+          "difficulty": "주어진 각도들로부터 평행선 조건을 판정하는 난이도 2 문항이다. (110)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "동위각 및 엇각의 크기가 일치함을 각각 확인하여 l∥m과 p∥q를 판정한다.",
       "decisiveStep": "동위각 110도와 엇각 70도의 일치 확인",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "동위각과 엇각의 성질을 적용해 평행선을 판별하는 문항",
+      "difficultyReason": "주어진 각도들로부터 평행선 조건을 판정하는 난이도 2 문항이다. (110)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
-        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_ANGLE_RATIO",
-        "why": "동위각과 엇각의 크기 일치를 통해 직선 간 평행 관계를 판정하는 템플릿"
+        "problemTypeKey": "PT_M1_PARALLELISM_CONVERSE",
+        "templateKey": null,
+        "why": "동위각·엇각 성질을 이용한 평행선 판정 유형이다. (110)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c6efc2a48f618bdf41ad609120c6b3d20946298ba7876716b140c478544ad9d3",
@@ -321,11 +513,11 @@
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
         "standardUnitOrder": 5,
-        "subUnitKey": "M1-05-BASIC_FIGURE",
-        "subUnit": "점·선·면과 각",
-        "conceptClusterKey": "BASIC_FIGURE",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "conceptClusterKey": "POSITION_RELATION",
         "problemTypeKey": "PT_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE",
-        "templateKey": "TPL_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE_CORE",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
@@ -342,20 +534,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-070"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "위치 관계",
+          "l3": "수직과 거리",
+          "l4": "수선과 수선의 발",
+          "recordId": "M1-RPM-070"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "위치 관계",
+        "rpmPrimaryL3": "수직과 거리",
+        "rpmPrimaryL4": "수선과 수선의 발",
+        "rpmPrimaryRecordId": "M1-RPM-070",
+        "difficultyBasis": "수선의 발과 점과 직선 사이의 거리 정의를 도형에서 확인하는 난이도 2 문항이다. (AD)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-POSITION_RELATION: 다음 그림과 같이 $\\ove",
+          "curriculum": "M1-RPM-070: 기본 도형 단원의 수선과 수선의 발 및 거리 유형이다. (AD)",
+          "problemType": "점과 직선 사이의 거리 및 수선의 발 판정 유형이다. (AD)",
+          "difficulty": "수선의 발과 점과 직선 사이의 거리 정의를 도형에서 확인하는 난이도 2 문항이다. (AD)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 길이 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "점과 직선 사이의 거리 및 수선의 발 정의를 사다리꼴 도형 요소에 대조한다.",
       "decisiveStep": "수선의 발 H 및 거리 정의 일치 확인으로 ㄱ, ㄴ 채택",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "수선의 발과 거리의 정의를 다각적으로 판별하는 문항",
+      "difficultyReason": "수선의 발과 점과 직선 사이의 거리 정의를 도형에서 확인하는 난이도 2 문항이다. (AD)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE",
-        "templateKey": "TPL_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE_CORE",
-        "why": "점과 직선 사이의 거리 및 수선의 발 개념을 검토하는 템플릿"
+        "templateKey": null,
+        "why": "점과 직선 사이의 거리 및 수선의 발 판정 유형이다. (AD)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_0f6f80bac94e45d53e07b4361c69fc03927da9a711974cb8c0f763d2a88f0f08",
@@ -370,11 +594,11 @@
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
         "standardUnitOrder": 5,
-        "subUnitKey": "M1-05-BASIC_FIGURE",
-        "subUnit": "점·선·면과 각",
-        "conceptClusterKey": "BASIC_FIGURE",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "conceptClusterKey": "CONSTRUCTION_CONGRUENCE",
         "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
-        "templateKey": "TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
@@ -391,20 +615,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-072"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "작도와 합동",
+          "l3": "기본 작도",
+          "l4": "선분·각의 이동",
+          "recordId": "M1-RPM-072"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "작도와 합동",
+        "rpmPrimaryL3": "기본 작도",
+        "rpmPrimaryL4": "선분·각의 이동",
+        "rpmPrimaryRecordId": "M1-RPM-072",
+        "difficultyBasis": "작도 도구인 눈금 없는 자와 컴퍼스의 기본 기능을 구별하는 난이도 1 문항이다. (aligned)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-CONSTRUCTION_CONGRUENCE: 다음 보기 중 눈금 없는 자",
+          "curriculum": "M1-RPM-072: 기본 도형 단원의 기본 작도 도구 눈금 없는 자와 컴퍼스 유형이다. (aligned)",
+          "problemType": "기본 작도 도구의 역할과 사용법 판별 유형이다. (aligned)",
+          "difficulty": "작도 도구인 눈금 없는 자와 컴퍼스의 기본 기능을 구별하는 난이도 1 문항이다. (aligned)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 직선 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "작도에서 눈금 없는 자의 역할(선 긋기, 연장하기)과 컴퍼스의 역할(길이 옮기기)을 분류한다.",
       "decisiveStep": "선 긋기와 연장하기인 ㄱ, ㄴ 선택",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "작도 도구의 역할을 식별하는 1단계 개념 문항",
+      "difficultyReason": "작도 도구인 눈금 없는 자와 컴퍼스의 기본 기능을 구별하는 난이도 1 문항이다. (aligned)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
-        "templateKey": "TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE",
-        "why": "작도 도구의 명확한 역할과 허용 동작을 구분하는 표준 템플릿"
+        "templateKey": null,
+        "why": "기본 작도 도구의 역할과 사용법 판별 유형이다. (aligned)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_af565f834587784aee5ed0f9af0cfef827103a2815a68d51bfb5bff63969046f",
@@ -419,11 +675,11 @@
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
         "standardUnitOrder": 5,
-        "subUnitKey": "M1-05-BASIC_FIGURE",
-        "subUnit": "점·선·면과 각",
-        "conceptClusterKey": "BASIC_FIGURE",
-        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
-        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "conceptClusterKey": "CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_CONGRUENCE_INVARIANTS",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
@@ -440,20 +696,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-078"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "작도와 합동",
+          "l3": "삼각형의 합동",
+          "l4": "SSS 합동",
+          "recordId": "M1-RPM-078"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "작도와 합동",
+        "rpmPrimaryL3": "삼각형의 합동",
+        "rpmPrimaryL4": "SSS 합동",
+        "rpmPrimaryRecordId": "M1-RPM-078",
+        "difficultyBasis": "합동 기호의 대응 순서에 따른 변과 각의 일치성을 검토하는 난이도 2 문항이다. (ABC)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-CONSTRUCTION_CONGRUENCE: 다음 그림에서 $\\trian",
+          "curriculum": "M1-RPM-078: 기본 도형 단원의 삼각형의 합동 대응 관계 유형이다. (ABC)",
+          "problemType": "삼각형의 합동 기호와 대응변·대응각 판별 유형이다. (ABC)",
+          "difficulty": "합동 기호의 대응 순서에 따른 변과 각의 일치성을 검토하는 난이도 2 문항이다. (ABC)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "합동 기호의 꼭짓점 순서 대응을 점검하여 잘못 짝지어진 대응각을 찾는다.",
       "decisiveStep": "각 B의 대응각이 각 E임을 확인",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "합동인 도형의 대응점 순서와 내각의 합을 함께 확인하는 문항",
+      "difficultyReason": "합동 기호의 대응 순서에 따른 변과 각의 일치성을 검토하는 난이도 2 문항이다. (ABC)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
-        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
-        "why": "합동 기호의 대응 관계와 변·각의 크기를 대조하는 템플릿"
+        "problemTypeKey": "PT_M1_CONGRUENCE_INVARIANTS",
+        "templateKey": null,
+        "why": "삼각형의 합동 기호와 대응변·대응각 판별 유형이다. (ABC)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_5b06b4eb28f7a0dd7ec43b2a667cc5ffd2906b4b24174d191551d474efdc5eb2",
@@ -468,11 +756,11 @@
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
         "standardUnitOrder": 5,
-        "subUnitKey": "M1-05-BASIC_FIGURE",
-        "subUnit": "점·선·면과 각",
-        "conceptClusterKey": "BASIC_FIGURE",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "conceptClusterKey": "CONSTRUCTION_CONGRUENCE",
         "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
-        "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -489,20 +777,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-072"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "작도와 합동",
+          "l3": "기본 작도",
+          "l4": "선분·각의 이동",
+          "recordId": "M1-RPM-072"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "작도와 합동",
+        "rpmPrimaryL3": "기본 작도",
+        "rpmPrimaryL4": "선분·각의 이동",
+        "rpmPrimaryRecordId": "M1-RPM-072",
+        "difficultyBasis": "크기가 같은 각의 작도 순서를 정확히 나열하는 난이도 2 문항이다. (XOY)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-CONSTRUCTION_CONGRUENCE: 다음 그림은 $\\angle",
+          "curriculum": "M1-RPM-072: 기본 도형 단원의 기본 작도 선분·각의 이동 순서 유형이다. (XOY)",
+          "problemType": "기본 작도 순서와 크기가 같은 각의 작도 유형이다. (XOY)",
+          "difficulty": "크기가 같은 각의 작도 순서를 정확히 나열하는 난이도 2 문항이다. (XOY)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 작도 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "크기가 같은 각의 작도 절차(원호 그리기 -> 교점 옮기기 -> 호의 폭 측정 -> 교점 연결)를 순서대로 나열한다.",
       "decisiveStep": "작도 순서 ㉠->㉡->㉢->㉣->㉤ 확정",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "동일 각 작도의 논리적 순서를 바르게 기억하고 적용하는 문항",
+      "difficultyReason": "크기가 같은 각의 작도 순서를 정확히 나열하는 난이도 2 문항이다. (XOY)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
-        "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
-        "why": "크기가 같은 각의 표준 작도 단계를 순서대로 배열하는 템플릿"
+        "templateKey": null,
+        "why": "기본 작도 순서와 크기가 같은 각의 작도 유형이다. (XOY)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_3d666c9fc25a796a6f57f5da96b9c376c24f640281cde4d703880d1a6542554c",
@@ -521,7 +841,7 @@
         "subUnit": "위치 관계",
         "conceptClusterKey": "POSITION_RELATION",
         "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
-        "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_ANGLE_POSITION_CLAIM_AUDIT",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
@@ -538,20 +858,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-064"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "기본 도형",
+          "l3": "평행선과 각",
+          "l4": "동위각·엇각",
+          "recordId": "M1-RPM-064"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "기본 도형",
+        "rpmPrimaryL3": "평행선과 각",
+        "rpmPrimaryL4": "동위각·엇각",
+        "rpmPrimaryRecordId": "M1-RPM-064",
+        "difficultyBasis": "평행선에서 나타나는 8개 각의 상등 및 보각 관계를 판별하는 난이도 1 문항이다. (aligned)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-POSITION_RELATION: 다음 그림에서 $l \\par",
+          "curriculum": "M1-RPM-064: 기본 도형 단원의 평행선과 각 동위각·엇각 유형이다. (aligned)",
+          "problemType": "평행선과 각의 크기 동위각·엇각 식별 유형이다. (aligned)",
+          "difficulty": "평행선에서 나타나는 8개 각의 상등 및 보각 관계를 판별하는 난이도 1 문항이다. (aligned)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 동위각 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "평행선에서 동위각, 엇각, 맞꼭지각으로 같은 각의 묶음과 보각 관계인 각을 구별한다.",
       "decisiveStep": "a=c=e=g 군집과 보각 f의 구별",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "평행선에서 동위각, 엇각, 맞꼭지각의 크기 일치를 식별하는 기본 문항",
+      "difficultyReason": "평행선에서 나타나는 8개 각의 상등 및 보각 관계를 판별하는 난이도 1 문항이다. (aligned)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
-        "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_ANGLE_POSITION_CLAIM_AUDIT",
-        "why": "평행선 교각 중 크기가 같은 각과 이웃한 각을 분류하는 표준 템플릿"
+        "templateKey": null,
+        "why": "평행선과 각의 크기 동위각·엇각 식별 유형이다. (aligned)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_cd968087ce020e17b2254a6c3545f3d33037ba1fe4f954c5220fa3ef2dc84340",
@@ -566,11 +918,11 @@
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
         "standardUnitOrder": 5,
-        "subUnitKey": "M1-05-BASIC_FIGURE",
-        "subUnit": "점·선·면과 각",
-        "conceptClusterKey": "BASIC_FIGURE",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "conceptClusterKey": "CONSTRUCTION_CONGRUENCE",
         "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
-        "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_THIRD_SIDE_RANGE",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -587,20 +939,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-075"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "작도와 합동",
+          "l3": "삼각형의 작도",
+          "l4": "세 변 조건",
+          "recordId": "M1-RPM-075"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "작도와 합동",
+        "rpmPrimaryL3": "삼각형의 작도",
+        "rpmPrimaryL4": "세 변 조건",
+        "rpmPrimaryRecordId": "M1-RPM-075",
+        "difficultyBasis": "가장 긴 변이 지정된 조건에서 삼각형 성립 부등식을 세우는 난이도 2 문항이다. (cm)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-CONSTRUCTION_CONGRUENCE: 삼각형의 세 변의 길이가 각",
+          "curriculum": "M1-RPM-075: 기본 도형 단원의 삼각형의 작도 세 변 조건 유형이다. (cm)",
+          "problemType": "삼각형의 세 변의 길이 성립 조건과 미지수 개수 세기 유형이다. (cm)",
+          "difficulty": "가장 긴 변이 지정된 조건에서 삼각형 성립 부등식을 세우는 난이도 2 문항이다. (cm)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 자연수 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "가장 긴 변 조건과 삼각형의 두 변의 합 부등식을 연립하여 x의 자연수 범위를 구한다.",
       "decisiveStep": "6 < x <= 11 에서 자연수 5개 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "삼각형의 성립 부등식을 세워 정수해의 개수를 도출하는 문항",
+      "difficultyReason": "가장 긴 변이 지정된 조건에서 삼각형 성립 부등식을 세우는 난이도 2 문항이다. (cm)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
-        "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_THIRD_SIDE_RANGE",
-        "why": "가장 긴 변 조건이 포함된 삼각형 성립 부등식으로부터 변의 가능한 개수를 구하는 템플릿"
+        "templateKey": null,
+        "why": "삼각형의 세 변의 길이 성립 조건과 미지수 개수 세기 유형이다. (cm)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_75ab10af18341726d9923e44189cb806d38879dd7d2157746a2de27774f228bd",
@@ -615,11 +999,11 @@
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
         "standardUnitOrder": 5,
-        "subUnitKey": "M1-05-BASIC_FIGURE",
-        "subUnit": "점·선·면과 각",
-        "conceptClusterKey": "BASIC_FIGURE",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "conceptClusterKey": "CONSTRUCTION_CONGRUENCE",
         "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
-        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
@@ -636,20 +1020,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-076"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "작도와 합동",
+          "l3": "삼각형의 작도",
+          "l4": "두 변과 끼인각 조건",
+          "recordId": "M1-RPM-076"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "작도와 합동",
+        "rpmPrimaryL3": "삼각형의 작도",
+        "rpmPrimaryL4": "두 변과 끼인각 조건",
+        "rpmPrimaryRecordId": "M1-RPM-076",
+        "difficultyBasis": "삼각형이 하나로 결정되기 위한 조건의 충족 여부를 판단하는 난이도 2 문항이다. (BC)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-CONSTRUCTION_CONGRUENCE: 다음 그림과 같이 $\\ove",
+          "curriculum": "M1-RPM-076: 기본 도형 단원의 삼각형의 작도 두 변과 끼인각 및 결정 조건 유형이다. (BC)",
+          "problemType": "삼각형의 작도 조건과 유일성 판별 유형이다. (BC)",
+          "difficulty": "삼각형이 하나로 결정되기 위한 조건의 충족 여부를 판단하는 난이도 2 문항이다. (BC)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 조건 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "삼각형 결정 조건 및 세 변 성립 부등식을 대조하여 불가능한 조건을 찾는다.",
       "decisiveStep": "2+3 < 6으로 삼각형 불성립 판정",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "삼각형의 결정 조건과 삼각부등식을 종합 판별하는 문항",
+      "difficultyReason": "삼각형이 하나로 결정되기 위한 조건의 충족 여부를 판단하는 난이도 2 문항이다. (BC)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
-        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
-        "why": "주어진 변과 각 데이터로 삼각형이 유일하게 결정되는지 검토하는 템플릿"
+        "templateKey": null,
+        "why": "삼각형의 작도 조건과 유일성 판별 유형이다. (BC)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_a4f7a3197dfa69d2170bdc3a46757e9ccd026dc21b294d5e69de3b5f7fdacb8b",
@@ -664,11 +1080,11 @@
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
         "standardUnitOrder": 5,
-        "subUnitKey": "M1-05-BASIC_FIGURE",
-        "subUnit": "점·선·면과 각",
-        "conceptClusterKey": "BASIC_FIGURE",
-        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
-        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_FOLDED_RECTANGLE_PARALLEL_TRANSFER",
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "conceptClusterKey": "POSITION_RELATION",
+        "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -685,20 +1101,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-064"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "기본 도형",
+          "l3": "평행선과 각",
+          "l4": "동위각·엇각",
+          "recordId": "M1-RPM-064"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "기본 도형",
+        "rpmPrimaryL3": "평행선과 각",
+        "rpmPrimaryL4": "동위각·엇각",
+        "rpmPrimaryRecordId": "M1-RPM-064",
+        "difficultyBasis": "종이접기 도형에서 접은 각과 평행선 엇각을 연계 계산하는 난이도 2 문항이다. (50)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-POSITION_RELATION: 다음 그림과 같이 직사각형",
+          "curriculum": "M1-RPM-064: 기본 도형 단원의 평행선과 각 종이접기 응용 유형이다. (50)",
+          "problemType": "평행선 종이접기 도형의 엇각과 접은 각 계산 유형이다. (50)",
+          "difficulty": "종이접기 도형에서 접은 각과 평행선 엇각을 연계 계산하는 난이도 2 문항이다. (50)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 평행 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "접은 각의 성질과 평행선의 엇각 성질을 결합하여 이등변삼각형의 꼭지각 x를 구한다.",
       "decisiveStep": "x = 180 - (55+55) = 70도 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "종이접기에서 접은 각과 평행선 엇각의 성질을 연계하는 문항",
+      "difficultyReason": "종이접기 도형에서 접은 각과 평행선 엇각을 연계 계산하는 난이도 2 문항이다. (50)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
-        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_FOLDED_RECTANGLE_PARALLEL_TRANSFER",
-        "why": "직사각형 종이접기에서 접은 각과 엇각의 크기를 결합하여 각도를 추적하는 템플릿"
+        "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
+        "templateKey": null,
+        "why": "평행선 종이접기 도형의 엇각과 접은 각 계산 유형이다. (50)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_038ad7239c7b9d7957c54da5b77b19fb3b81ef7c99ac98c6a0d9430610ffb75b",
@@ -716,8 +1164,8 @@
         "subUnitKey": "M1-07-SOLID_FIGURE",
         "subUnit": "입체도형",
         "conceptClusterKey": "SOLID_FIGURE",
-        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
-        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FOLDED_NET_RELATION_AUDIT",
+        "problemTypeKey": "PT_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
@@ -734,20 +1182,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-096"
+        ],
+        "rpmPrimary": {
+          "l1": "입체도형",
+          "l2": "다면체와 회전체",
+          "l3": "정다면체",
+          "l4": "정다면체의 종류",
+          "recordId": "M1-RPM-096"
+        },
+        "rpmPrimaryL1": "입체도형",
+        "rpmPrimaryL2": "다면체와 회전체",
+        "rpmPrimaryL3": "정다면체",
+        "rpmPrimaryL4": "정다면체의 종류",
+        "rpmPrimaryRecordId": "M1-RPM-096",
+        "difficultyBasis": "정육면체 전개도를 입체로 조립했을 때 평행한 면의 위치를 추론하는 난이도 2 문항이다. (aligned)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-07 / M1-07-SOLID_FIGURE: 다음 그림의 정육면체 전개도",
+          "curriculum": "M1-RPM-096: 입체도형의 성질 단원의 정다면체의 전개도와 면의 위치 관계 유형이다. (aligned)",
+          "problemType": "정육면체 전개도와 마주 보는 면 추론 유형이다. (aligned)",
+          "difficulty": "정육면체 전개도를 입체로 조립했을 때 평행한 면의 위치를 추론하는 난이도 2 문항이다. (aligned)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 전개도 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "정육면체 전개도에서 일렬로 이어진 네 면 중 한 칸 건너뛴 면이 평행함을 적용한다.",
       "decisiveStep": "색칠된 면 ㉡과 한 칸 건너뛴 면 ㉣의 평행성 확인",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "정육면체 전개도의 공간적 접힘 관계를 해석하는 문항",
+      "difficultyReason": "정육면체 전개도를 입체로 조립했을 때 평행한 면의 위치를 추론하는 난이도 2 문항이다. (aligned)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
-        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FOLDED_NET_RELATION_AUDIT",
-        "why": "정육면체 전개도를 접었을 때 마주 보는 면과 평행 관계를 추론하는 템플릿"
+        "problemTypeKey": "PT_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT",
+        "templateKey": null,
+        "why": "정육면체 전개도와 마주 보는 면 추론 유형이다. (aligned)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_caa8a56ae6360c492b6dd6dde36e178ae0656b956a941404a284c4cc929e7470",
@@ -762,11 +1242,11 @@
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
         "standardUnitOrder": 5,
-        "subUnitKey": "M1-05-BASIC_FIGURE",
-        "subUnit": "점·선·면과 각",
-        "conceptClusterKey": "BASIC_FIGURE",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "conceptClusterKey": "CONSTRUCTION_CONGRUENCE",
         "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
-        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_GENERAL_SIDE_TRANSFER",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -783,20 +1263,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-079"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "작도와 합동",
+          "l3": "삼각형의 합동",
+          "l4": "SAS 합동",
+          "recordId": "M1-RPM-079"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "작도와 합동",
+        "rpmPrimaryL3": "삼각형의 합동",
+        "rpmPrimaryL4": "SAS 합동",
+        "rpmPrimaryRecordId": "M1-RPM-079",
+        "difficultyBasis": "삼각형의 합동 조건을 이용해 기하학적 성질을 증명하는 빈칸 완성 난이도 2 문항이다. (AB)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-CONSTRUCTION_CONGRUENCE: 다음은 선분 $AB$의 수직",
+          "curriculum": "M1-RPM-079: 기본 도형 단원의 삼각형의 합동 SAS 합동 응용 증명 유형이다. (AB)",
+          "problemType": "삼각형의 합동 조건을 활용한 기하 증명 빈칸 완성 유형이다. (AB)",
+          "difficulty": "삼각형의 합동 조건을 이용해 기하학적 성질을 증명하는 빈칸 완성 난이도 2 문항이다. (AB)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 중점 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "수직이등분선의 기하 증명 단계에서 두 변과 끼인각 조건에 따른 SAS 합동을 확인한다.",
       "decisiveStep": "합동 조건이 SAS인데 ASA로 잘못 표기된 (라) 식별",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "수직이등분선 위의 점에서 양 끝점에 이르는 거리의 합동 증명을 완성하는 문항",
+      "difficultyReason": "삼각형의 합동 조건을 이용해 기하학적 성질을 증명하는 빈칸 완성 난이도 2 문항이다. (AB)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
-        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_GENERAL_SIDE_TRANSFER",
-        "why": "수직이등분선 증명 단계의 합동 조건 빈칸을 채우는 템플릿"
+        "templateKey": null,
+        "why": "삼각형의 합동 조건을 활용한 기하 증명 빈칸 완성 유형이다. (AB)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_34cc84b82cc5f9a3dba17539aac6c13d8074df4e18db2a2354054c3806531069",
@@ -814,8 +1326,8 @@
         "subUnitKey": "M1-05-BASIC_FIGURE",
         "subUnit": "점·선·면과 각",
         "conceptClusterKey": "BASIC_FIGURE",
-        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
-        "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_INTERIOR_POINT_ANGLE_SUM",
+        "problemTypeKey": "PT_M1_STRAIGHT_ANGLE_PARTITION",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -832,20 +1344,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-063"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "기본 도형",
+          "l3": "각",
+          "l4": "맞꼭지각",
+          "recordId": "M1-RPM-063"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "기본 도형",
+        "rpmPrimaryL3": "각",
+        "rpmPrimaryL4": "맞꼭지각",
+        "rpmPrimaryRecordId": "M1-RPM-063",
+        "difficultyBasis": "맞꼭지각과 평각 성질을 결합하여 일차방정식으로 각을 구하는 난이도 2 문항이다. (15)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-BASIC_FIGURE: 다음 그림에서 세 직선이 한",
+          "curriculum": "M1-RPM-063: 기본 도형 단원의 맞꼭지각과 평각 활용 유형이다. (15)",
+          "problemType": "맞꼭지각의 성질과 평각을 이용한 각의 크기 계산 유형이다. (15)",
+          "difficulty": "맞꼭지각과 평각 성질을 결합하여 일차방정식으로 각을 구하는 난이도 2 문항이다. (15)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "맞꼭지각을 한 직선 위에 모아 평각 180도 방정식을 세워 x를 계산한다.",
       "decisiveStep": "3x + 90 = 180 으로부터 x = 30도 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "맞꼭지각과 평각의 성질을 결합하여 일차방정식을 푸는 문항",
+      "difficultyReason": "맞꼭지각과 평각 성질을 결합하여 일차방정식으로 각을 구하는 난이도 2 문항이다. (15)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
-        "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_INTERIOR_POINT_ANGLE_SUM",
-        "why": "맞꼭지각과 평각의 성질을 이용하여 일차방정식으로 미지 각도를 구하는 템플릿"
+        "problemTypeKey": "PT_M1_STRAIGHT_ANGLE_PARTITION",
+        "templateKey": null,
+        "why": "맞꼭지각의 성질과 평각을 이용한 각의 크기 계산 유형이다. (15)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_60ddd8166e470f405fb77ddd54ae3c91183333b125434cac2a993a90943959bf",
@@ -863,8 +1407,8 @@
         "subUnitKey": "M1-06-POLYGON_CIRCLE",
         "subUnit": "다각형과 원",
         "conceptClusterKey": "POLYGON_CIRCLE",
-        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
-        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+        "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
@@ -881,20 +1425,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-083"
+        ],
+        "rpmPrimary": {
+          "l1": "평면도형",
+          "l2": "다각형",
+          "l3": "다각형의 내각과 외각",
+          "l4": "정다각형의 각",
+          "recordId": "M1-RPM-083"
+        },
+        "rpmPrimaryL1": "평면도형",
+        "rpmPrimaryL2": "다각형",
+        "rpmPrimaryL3": "다각형의 내각과 외각",
+        "rpmPrimaryL4": "정다각형의 각",
+        "rpmPrimaryRecordId": "M1-RPM-083",
+        "difficultyBasis": "다양한 정다각형의 한 내각 크기를 공식을 통해 검산하는 난이도 2 문항이다. (60)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-06 / M1-06-POLYGON_CIRCLE: 다음 보기 중 정다각형과 그",
+          "curriculum": "M1-RPM-083: 평면도형의 성질 단원의 정다각형의 내각과 외각 유형이다. (60)",
+          "problemType": "정다각형의 한 내각의 크기 계산 및 판정 유형이다. (60)",
+          "difficulty": "다양한 정다각형의 한 내각 크기를 공식을 통해 검산하는 난이도 2 문항이다. (60)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "외각의 크기 360/n을 180도에서 감산하여 정십이각형의 한 내각이 150도임을 확인한다.",
       "decisiveStep": "정십이각형 한 내각 180-30=150도 확인으로 145도 오류 포착",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "여러 정다각형의 한 내각 공식을 계산하여 비교하는 문항",
+      "difficultyReason": "다양한 정다각형의 한 내각 크기를 공식을 통해 검산하는 난이도 2 문항이다. (60)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
-        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
-        "why": "정다각형 종류별 한 내각의 크기 일치 여부를 대조하는 템플릿"
+        "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
+        "templateKey": null,
+        "why": "정다각형의 한 내각의 크기 계산 및 판정 유형이다. (60)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_d64600c84d882de763780ad2d2cc76d59f70f1439568b235babe055839bfc327",
@@ -913,7 +1489,7 @@
         "subUnit": "다각형과 원",
         "conceptClusterKey": "POLYGON_CIRCLE",
         "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
-        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -930,20 +1506,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-082"
+        ],
+        "rpmPrimary": {
+          "l1": "평면도형",
+          "l2": "다각형",
+          "l3": "다각형의 내각과 외각",
+          "l4": "외각의 합",
+          "recordId": "M1-RPM-082"
+        },
+        "rpmPrimaryL1": "평면도형",
+        "rpmPrimaryL2": "다각형",
+        "rpmPrimaryL3": "다각형의 내각과 외각",
+        "rpmPrimaryL4": "외각의 합",
+        "rpmPrimaryRecordId": "M1-RPM-082",
+        "difficultyBasis": "다각형의 외각의 총합 성질을 이용해 다중 각의 합을 구하는 난이도 2 문항이다. (135)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-06 / M1-06-POLYGON_CIRCLE: 다음 그림의 오각형에서 $\\",
+          "curriculum": "M1-RPM-082: 평면도형의 성질 단원의 다각형의 외각의 합 유형이다. (135)",
+          "problemType": "다각형의 외각의 성질과 각의 합 계산 유형이다. (135)",
+          "difficulty": "다각형의 외각의 총합 성질을 이용해 다중 각의 합을 구하는 난이도 2 문항이다. (135)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "다각형의 외각의 총합이 360도임을 이용하여 미지 외각들의 합을 구한다.",
       "decisiveStep": "x+y = 360 - 215 = 145도 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "다각형 외각의 합 성질을 활용하여 두 미지 외각의 합을 구하는 문항",
+      "difficultyReason": "다각형의 외각의 총합 성질을 이용해 다중 각의 합을 구하는 난이도 2 문항이다. (135)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
-        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
-        "why": "다각형의 외각 총합 360도 공식을 적용해 미지 각의 합을 계산하는 템플릿"
+        "templateKey": null,
+        "why": "다각형의 외각의 성질과 각의 합 계산 유형이다. (135)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_63fb25a6e40fb741788f08b852786efe7af9d8d36c1dcf3008d3bd4e85d6f83f",
@@ -955,18 +1563,18 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "MID-MATH-1",
-        "standardUnitKey": "M1-05",
-        "standardUnit": "기본도형",
-        "standardUnitOrder": 5,
-        "subUnitKey": "M1-05-BASIC_FIGURE",
-        "subUnit": "점·선·면과 각",
-        "conceptClusterKey": "BASIC_FIGURE",
-        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
-        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_RATIO",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "conceptClusterKey": "POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 3,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 20,
@@ -979,20 +1587,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-084"
+        ],
+        "rpmPrimary": {
+          "l1": "평면도형",
+          "l2": "다각형",
+          "l3": "삼각형·다각형의 각",
+          "l4": "각의 크기 계산",
+          "recordId": "M1-RPM-084"
+        },
+        "rpmPrimaryL1": "평면도형",
+        "rpmPrimaryL2": "다각형",
+        "rpmPrimaryL3": "삼각형·다각형의 각",
+        "rpmPrimaryL4": "각의 크기 계산",
+        "rpmPrimaryRecordId": "M1-RPM-084",
+        "difficultyBasis": "삼각형의 내각·외각 이등분선이 이루는 각의 관계를 추론하는 난이도 2 문항이다. (ABC)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-06 / M1-06-POLYGON_CIRCLE: 다음 그림의 $\\triang",
+          "curriculum": "M1-RPM-084: 평면도형의 성질 단원의 삼각형의 각 크기 계산과 외각 성질 유형이다. (ABC)",
+          "problemType": "삼각형의 외각의 성질과 각의 이등분선 연계 유형이다. (ABC)",
+          "difficulty": "삼각형의 내각·외각 이등분선이 이루는 각의 관계를 추론하는 난이도 2 문항이다. (ABC)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 외각 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "삼각형 외각 정리와 내·외각 이등분선 비례 관계로부터 각 D가 각 A의 절반임을 유도한다.",
       "decisiveStep": "D = A/2 = 50/2 = 25도 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "외각 성질을 두 삼각형에 연립 적용하여 각의 반분 관계를 증명하는 문항",
+      "difficultyReason": "삼각형의 내각·외각 이등분선이 이루는 각의 관계를 추론하는 난이도 2 문항이다. (ABC)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
-        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_RATIO",
-        "why": "내각 이등분선과 외각 이등분선이 이루는 각의 관계를 추론하는 템플릿"
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+        "templateKey": null,
+        "why": "삼각형의 외각의 성질과 각의 이등분선 연계 유형이다. (ABC)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_22539a5247cbb96ce23d5deb34e79ed2332d9da10e79f03705201165a2cdbf62",
@@ -1004,18 +1644,18 @@
         "curriculum": "2015",
         "curriculumKey": "2015",
         "courseKey": "MID-MATH-1",
-        "standardUnitKey": "M1-07",
-        "standardUnit": "입체도형의 성질",
-        "standardUnitOrder": 7,
-        "subUnitKey": "M1-07-SOLID_FIGURE",
-        "subUnit": "입체도형",
-        "conceptClusterKey": "SOLID_FIGURE",
-        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
-        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_EDGE_FACE_INCIDENCE",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "conceptClusterKey": "POSITION_RELATION",
+        "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 21,
@@ -1028,20 +1668,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-068"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "위치 관계",
+          "l3": "공간에서의 위치 관계",
+          "l4": "직선과 평면의 위치 관계",
+          "recordId": "M1-RPM-068"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "위치 관계",
+        "rpmPrimaryL3": "공간에서의 위치 관계",
+        "rpmPrimaryL4": "직선과 평면의 위치 관계",
+        "rpmPrimaryRecordId": "M1-RPM-068",
+        "difficultyBasis": "복합 위치 관계 조건을 동시에 만족하는 공간 모서리를 찾는 난이도 3 서술형 문항이다. (BC)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-POSITION_RELATION: [서답형 1]\n\n\n[서술형]",
+          "curriculum": "M1-RPM-068: 기본 도형 단원의 공간에서의 직선의 위치 관계 복합 탐색 유형이다. (BC)",
+          "problemType": "입체도형에서의 다중 위치 관계 조건 만족 모서리 탐색 서술형 유형이다. (BC)",
+          "difficulty": "복합 위치 관계 조건을 동시에 만족하는 공간 모서리를 찾는 난이도 3 서술형 문항이다. (BC)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 꼬인위치 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "삼각기둥에서 특정 모서리와 만나는 모서리를 찾은 뒤 다른 모서리와의 공간 위치 관계를 판별한다.",
       "decisiveStep": "조건을 만족하는 모서리 BE, CF 식별",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "공간에서 모서리 간 만남과 꼬인 위치 조건을 교차 검증하는 서술형 문항",
+      "difficultyReason": "복합 위치 관계 조건을 동시에 만족하는 공간 모서리를 찾는 난이도 3 서술형 문항이다. (BC)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
-        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_EDGE_FACE_INCIDENCE",
-        "why": "공간도형에서 복합 위치 조건을 만족하는 모서리를 모두 찾는 서술형 템플릿"
+        "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+        "templateKey": null,
+        "why": "입체도형에서의 다중 위치 관계 조건 만족 모서리 탐색 서술형 유형이다. (BC)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_10bf1ef285a480b16f9f32ac56490cb6d56e913634310c249e4ee7fe59265b4f",
@@ -1060,11 +1732,11 @@
         "subUnit": "위치 관계",
         "conceptClusterKey": "POSITION_RELATION",
         "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
-        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_PARALLEL_ANGLE_EQUATION",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 22,
@@ -1077,20 +1749,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-064"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "기본 도형",
+          "l3": "평행선과 각",
+          "l4": "동위각·엇각",
+          "recordId": "M1-RPM-064"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "기본 도형",
+        "rpmPrimaryL3": "평행선과 각",
+        "rpmPrimaryL4": "동위각·엇각",
+        "rpmPrimaryRecordId": "M1-RPM-064",
+        "difficultyBasis": "평행선에서 엇각과 평각 성질을 이용해 미지수 값을 서술형으로 구하는 난이도 3 문항이다. (10)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-POSITION_RELATION: [서답형 2]\n\n\n[서술형]",
+          "curriculum": "M1-RPM-064: 기본 도형 단원의 평행선과 각 엇각을 이용한 방정식 풀이 유형이다. (10)",
+          "problemType": "평행선과 엇각을 이용한 방정식 서술형 유형이다. (10)",
+          "difficulty": "평행선에서 엇각과 평각 성질을 이용해 미지수 값을 서술형으로 구하는 난이도 3 문항이다. (10)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 평행 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "평행선의 엇각 성질로 각을 이동하여 평각 180도 방정식을 세우고 x를 구한다.",
       "decisiveStep": "5x+30=180 으로부터 x=30 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "평행선의 엇각 관계와 평각의 정의로 일차방정식을 풀이하는 서술형 문항",
+      "difficultyReason": "평행선에서 엇각과 평각 성질을 이용해 미지수 값을 서술형으로 구하는 난이도 3 문항이다. (10)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
-        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_PARALLEL_ANGLE_EQUATION",
-        "why": "평행선 엇각과 평각의 합 180도를 이용하여 일차방정식을 푸는 서술형 템플릿"
+        "templateKey": null,
+        "why": "평행선과 엇각을 이용한 방정식 서술형 유형이다. (10)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_982b66fdef544cee845c83eb9f4c90dcf667af4125ba1a761b79b64cd6af08b9",
@@ -1105,11 +1809,11 @@
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
         "standardUnitOrder": 5,
-        "subUnitKey": "M1-05-BASIC_FIGURE",
-        "subUnit": "점·선·면과 각",
-        "conceptClusterKey": "BASIC_FIGURE",
-        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
-        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_SQUARE_CONGRUENCE_TRANSFER",
+        "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+        "subUnit": "작도와 합동",
+        "conceptClusterKey": "CONSTRUCTION_CONGRUENCE",
+        "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -1126,20 +1830,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-079"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "작도와 합동",
+          "l3": "삼각형의 합동",
+          "l4": "SAS 합동",
+          "recordId": "M1-RPM-079"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "작도와 합동",
+        "rpmPrimaryL3": "삼각형의 합동",
+        "rpmPrimaryL4": "SAS 합동",
+        "rpmPrimaryRecordId": "M1-RPM-079",
+        "difficultyBasis": "정사각형 내부 도형의 합동 증명과 대응각을 통한 교각 계산 난이도 3 서술형 문항이다. (ABCD)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-CONSTRUCTION_CONGRUENCE: [서답형 3]\n\n\n[서술형]",
+          "curriculum": "M1-RPM-079: 기본 도형 단원의 삼각형의 합동 SAS 합동 도형 증명 유형이다. (ABCD)",
+          "problemType": "정사각형에서의 삼각형의 합동 증명 및 각의 크기 서술형 유형이다. (ABCD)",
+          "difficulty": "정사각형 내부 도형의 합동 증명과 대응각을 통한 교각 계산 난이도 3 서술형 문항이다. (ABCD)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 선분 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "정사각형의 변과 각 조건으로 SAS 합동을 증명하고 두 각의 합이 90도임을 이용해 교각을 구한다.",
       "decisiveStep": "SAS 합동 증명 및 각 BPE = 90도 유도",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "정사각형의 성질과 삼각형의 합동을 연계하여 교각의 크기를 구하는 고난도 서술형 문항",
+      "difficultyReason": "정사각형 내부 도형의 합동 증명과 대응각을 통한 교각 계산 난이도 3 서술형 문항이다. (ABCD)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
-        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_SQUARE_CONGRUENCE_TRANSFER",
-        "why": "정사각형 내부 삼각형의 합동 조건 서술 및 교각의 크기를 유도하는 서술형 템플릿"
+        "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+        "templateKey": null,
+        "why": "정사각형에서의 삼각형의 합동 증명 및 각의 크기 서술형 유형이다. (ABCD)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_af15a8d29045310c5925563934c992b4394f504f67828bf4dfbdcedd64ef72df",
@@ -1158,11 +1894,11 @@
         "subUnit": "다각형과 원",
         "conceptClusterKey": "POLYGON_CIRCLE",
         "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
-        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 24,
@@ -1175,20 +1911,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-081"
+        ],
+        "rpmPrimary": {
+          "l1": "평면도형",
+          "l2": "다각형",
+          "l3": "다각형의 내각과 외각",
+          "l4": "내각의 합",
+          "recordId": "M1-RPM-081"
+        },
+        "rpmPrimaryL1": "평면도형",
+        "rpmPrimaryL2": "다각형",
+        "rpmPrimaryL3": "다각형의 내각과 외각",
+        "rpmPrimaryL4": "내각의 합",
+        "rpmPrimaryRecordId": "M1-RPM-081",
+        "difficultyBasis": "대각선 개수로부터 다각형의 변 수를 구하고 내각의 총합을 구하는 난이도 3 서술형 문항이다. (aligned)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-06 / M1-06-POLYGON_CIRCLE: [서답형 4]\n\n\n[서술형]",
+          "curriculum": "M1-RPM-081: 평면도형의 성질 단원의 다각형의 내각의 합과 대각선 공식 유형이다. (aligned)",
+          "problemType": "다각형의 대각선 개수와 내각의 총합 연계 서술형 유형이다. (aligned)",
+          "difficulty": "대각선 개수로부터 다각형의 변 수를 구하고 내각의 총합을 구하는 난이도 3 서술형 문항이다. (aligned)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 개수 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "한 꼭짓점 대각선 수 공식 n-3=9에서 n=12를 구하고 내각합 공식 (12-2)×180을 적용한다.",
       "decisiveStep": "n=12 도출 후 10×180 = 1800도 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "대각선 개수 공식과 내각합 공식을 단계적으로 적용하는 서술형 문항",
+      "difficultyReason": "대각선 개수로부터 다각형의 변 수를 구하고 내각의 총합을 구하는 난이도 3 서술형 문항이다. (aligned)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
-        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
-        "why": "대각선 수 조건으로부터 다각형의 변의 수를 구하고 내각의 합을 도출하는 서술형 템플릿"
+        "templateKey": null,
+        "why": "다각형의 대각선 개수와 내각의 총합 연계 서술형 유형이다. (aligned)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     }
   ]
 }

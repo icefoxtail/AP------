@@ -17,7 +17,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-03-IDENTIFY_TWO_VAR_LINEAR_EQ",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -38,13 +38,18 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATIONS_TWO_VARIABLES"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "연립방정식의 풀이",
+    "rpmPrimaryL4": "가감법",
+    "rpmPrimaryRecordId": "M2-RPM-030",
     "sourceQid": 1,
     "variationType": "NUMERIC"
   },
@@ -63,7 +68,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-03-LINEAR_EQ_NATURAL_COUNT",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -83,8 +88,8 @@ window.questionBank = [
     "solution": "$x$에 $1$부터 차례로 자연수를 대입하면  \n$x = 1$일 때 $y = 10$  \n$x = 2$일 때 $y = 7$  \n$x = 3$일 때 $y = 4$  \n$x = 4$일 때 $y = 1$  \n$x \\ge 5$이면 $y \\le -2$이므로 자연수가 아니다.  \n따라서 해는 $4$개이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATIONS_TWO_VARIABLES"
@@ -93,6 +98,11 @@ window.questionBank = [
       "COND_NATURAL_NUMBER"
     ],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "해와 계수",
+    "rpmPrimaryL4": "해가 주어진 연립방정식",
+    "rpmPrimaryRecordId": "M2-RPM-032",
     "sourceQid": 2,
     "variationType": "NUMERIC"
   },
@@ -111,7 +121,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-03-SUBSTITUTION_STEPS_SUM",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -131,14 +141,19 @@ window.questionBank = [
     "solution": "$4y = 8$이므로 $\\fbox{1} = 8$, $y = 2$이므로 $\\fbox{2} = 2$  \n$y = 2$를 ㉠에 대입하면 $x = 6$이므로 $\\fbox{3} = 6$  \n$\\therefore \\fbox{1} + \\fbox{2} + \\fbox{3} = 8 + 2 + 6 = 16$",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_SIMULTANEOUS_LINEAR_EQUATIONS"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "연립방정식의 풀이",
+    "rpmPrimaryL4": "대입법",
+    "rpmPrimaryRecordId": "M2-RPM-031",
     "sourceQid": 3,
     "variationType": "NUMERIC"
   },
@@ -157,7 +172,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-03-GIVEN_SOLUTION_TO_PARAMS",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -177,8 +192,8 @@ window.questionBank = [
     "solution": "$x = 1,\\ y = -2$를 두 식에 대입하면  \n$\\begin{cases} a + 2b = 10 \\\\ a - 2b = 2 \\end{cases}$  \n두 식을 더하면 $2a = 12 \\implies a = 6$  \n$6 + 2b = 10 \\implies 2b = 4 \\implies b = 2$  \n$\\therefore a + b = 6 + 2 = 8$",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_SUBSTITUTION_IN_EQUATIONS",
@@ -186,6 +201,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "해와 계수",
+    "rpmPrimaryL4": "해가 주어진 연립방정식",
+    "rpmPrimaryRecordId": "M2-RPM-032",
     "sourceQid": 4,
     "variationType": "NUMERIC"
   },
@@ -204,7 +224,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-03-WORD_PARK_PERIMETER",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION_WORD_PROBLEM",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -224,8 +244,8 @@ window.questionBank = [
     "solution": "뛰어간 거리를 $x\\text{ km}$, 걸어간 거리를 $y\\text{ km}$라 하면 $2$시간 $20$분 $= \\frac{7}{3}$시간이므로  \n$\\begin{cases} x - y = 2 \\\\ \\frac{x}{6} + \\frac{y}{3} = \\frac{7}{3} \\end{cases}$  \n둘째 식에 $6$을 곱하면 $x + 2y = 14$  \n$x = y + 2$를 대입하면 $(y + 2) + 2y = 14 \\implies 3y = 12 \\implies y = 4$, $x = 6$  \n따라서 호수공원의 둘레는 $x + y = 6 + 4 = 10\\text{ km}$이다.",
     "score": 3,
     "points": 3,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "difficultyBucket": 3,
+    "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_SPEED_DISTANCE_TIME",
@@ -233,6 +253,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식의 활용",
+    "rpmPrimaryL3": "속력·시간·거리",
+    "rpmPrimaryL4": "마주가기·따라가기",
+    "rpmPrimaryRecordId": "M2-RPM-040",
     "sourceQid": 5,
     "variationType": "NUMERIC"
   },
@@ -251,7 +276,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-03-PARTIAL_SOLUTION_TO_PARAM",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -271,8 +296,8 @@ window.questionBank = [
     "solution": "$x = -1$을 $3x + 2y = 5$에 대입하면 $-3 + 2y = 5 \\implies 2y = 8 \\implies y = 4$  \n$x = -1, y = 4$를 $x + 3y = a$에 대입하면 $a = -1 + 3 \\times 4 = 11$",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_SUBSTITUTION_IN_EQUATIONS",
@@ -280,6 +305,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "해와 계수",
+    "rpmPrimaryL4": "계수 결정",
+    "rpmPrimaryRecordId": "M2-RPM-033",
     "sourceQid": 6,
     "variationType": "NUMERIC"
   },
@@ -298,7 +328,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-03-COMPLEX_DEC_FRAC_BRACKET_SYSTEM",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -318,15 +348,20 @@ window.questionBank = [
     "solution": "첫째 식에 $10$, 둘째 식에 $12$를 곱하면  \n$\\begin{cases} 4x + 3(y - 2) = 30 \\\\ 3(x - 2) - 4(y - 1) = 0 \\end{cases} \\implies \\begin{cases} 4x + 3y = 36 & \\cdots \\text{㉠} \\\\ 3x - 4y = 2 & \\cdots \\text{㉡} \\end{cases}$  \n$\\text{㉠} \\times 4 + \\text{㉡} \\times 3$을 하면 $25x = 150 \\implies x = 6$  \n$x = 6$을 ㉠에 대입하면 $24 + 3y = 36 \\implies 3y = 12 \\implies y = 4$  \n따라서 $a = 6,\\ b = 4$이므로 $2a - b = 12 - 4 = 8$",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 2,
+    "difficultyBucket": 3,
     "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
-    "templateKey": "",
+    "templateKey": "TPL_M2_SOLVE_DECIMAL_SYSTEM_AND_LINEAR_COMBINATION",
     "crossConceptKeys": [
       "CC_DECIMAL_COEFFICIENTS",
       "CC_FRACTION_COEFFICIENTS"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "복잡한 꼴의 연립방정식",
+    "rpmPrimaryL4": "분수·소수가 있는 연립방정식",
+    "rpmPrimaryRecordId": "M2-RPM-035",
     "sourceQid": 7,
     "variationType": "NUMERIC"
   },
@@ -345,7 +380,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-03-COMMON_SOLUTION_PARAMETERS",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -367,13 +402,18 @@ window.questionBank = [
     "points": 5,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
-    "templateKey": "",
+    "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
     "crossConceptKeys": [
       "CC_COMMON_SOLUTION",
       "CC_COEFFICIENT_DETERMINATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "해와 계수",
+    "rpmPrimaryL4": "계수 결정",
+    "rpmPrimaryRecordId": "M2-RPM-033",
     "sourceQid": 8,
     "variationType": "NUMERIC"
   },
@@ -392,7 +432,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-NON_FUNCTION_IDENTIFICATION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -413,11 +453,16 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+    "problemTypeKey": "PT_M2_FUNCTION",
     "templateKey": "",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "일차함수 판별",
+    "rpmPrimaryRecordId": "M2-RPM-047",
     "sourceQid": 9,
     "variationType": "CONTEXT"
   },
@@ -436,7 +481,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-FUNCTION_VALUE_WORD_BASIC",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -458,12 +503,17 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_FUNCTION_VALUE",
-    "templateKey": "",
+    "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
     "crossConceptKeys": [
       "CC_FUNCTION_VALUE"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "함숫값",
+    "rpmPrimaryRecordId": "M2-RPM-046",
     "sourceQid": 10,
     "variationType": "NUMERIC"
   },
@@ -482,7 +532,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-IDENTIFY_LINEAR_FUNCTION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -503,11 +553,16 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 1,
-    "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+    "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
     "templateKey": "",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "일차함수 판별",
+    "rpmPrimaryRecordId": "M2-RPM-047",
     "sourceQid": 11,
     "variationType": "NUMERIC"
   },
@@ -526,7 +581,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-GRAPH_POINTS_EVAL_SUM",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -547,13 +602,18 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "PT_FUNCTION_VALUE",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_EQUATION_POINT_SUBSTITUTION",
+    "templateKey": "TPL_M2_LINEAR_EQUATION_POINT_SUBSTITUTION_POINT",
     "crossConceptKeys": [
       "CC_POINT_SUBSTITUTION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 그래프",
+    "rpmPrimaryL4": "기울기·절편",
+    "rpmPrimaryRecordId": "M2-RPM-048",
     "sourceQid": 12,
     "variationType": "NUMERIC"
   },
@@ -572,7 +632,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-VERTICAL_TRANSLATION_BASIC",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -593,13 +653,18 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+    "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_PARALLEL_TRANSLATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 그래프",
+    "rpmPrimaryL4": "기울기·절편",
+    "rpmPrimaryRecordId": "M2-RPM-048",
     "sourceQid": 13,
     "variationType": "NUMERIC"
   },
@@ -618,7 +683,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-TRANSLATION_AMOUNT",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -639,13 +704,18 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+    "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_PARALLEL_TRANSLATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 그래프",
+    "rpmPrimaryL4": "기울기·절편",
+    "rpmPrimaryRecordId": "M2-RPM-048",
     "sourceQid": 14,
     "variationType": "NUMERIC"
   },
@@ -664,7 +734,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-FIND_BOTH_INTERCEPTS",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -685,13 +755,18 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_INTERCEPTS"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 그래프",
+    "rpmPrimaryL4": "그래프 그리기",
+    "rpmPrimaryRecordId": "M2-RPM-049",
     "sourceQid": 15,
     "variationType": "NUMERIC"
   },
@@ -710,7 +785,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-SLOPE_FROM_INTERCEPTS",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -731,14 +806,19 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_LINE_EQUATION",
+    "templateKey": "TPL_LINE_EQUATION_SLOPE",
     "crossConceptKeys": [
       "CC_SLOPE_FORMULA",
       "CC_INTERCEPTS"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "그래프의 성질",
+    "rpmPrimaryL4": "일차함수 그래프의 평행·일치",
+    "rpmPrimaryRecordId": "M2-RPM-050",
     "sourceQid": 16,
     "variationType": "NUMERIC"
   },
@@ -757,7 +837,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-SLOPE_SIGN_DIRECTION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -778,8 +858,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
     "crossConceptKeys": [
       "CC_SLOPE_SIGN"
     ],
@@ -787,6 +867,11 @@ window.questionBank = [
       "COND_NEGATIVE"
     ],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "그래프의 성질",
+    "rpmPrimaryL4": "증가·감소",
+    "rpmPrimaryRecordId": "M2-RPM-051",
     "sourceQid": 17,
     "variationType": "NUMERIC"
   },
@@ -805,7 +890,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-QUADRANT_SIGN_FLIP",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -827,13 +912,18 @@ window.questionBank = [
     "points": 3,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
-    "templateKey": "",
+    "templateKey": "TPL_M2_LINEAR_FUNCTION_QUADRANT_CONDITION_SIGNS",
     "crossConceptKeys": [
       "CC_QUADRANTS",
       "CC_SLOPE_SIGN"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "그래프의 성질",
+    "rpmPrimaryL4": "증가·감소",
+    "rpmPrimaryRecordId": "M2-RPM-051",
     "sourceQid": 18,
     "variationType": "CONDITION"
   },
@@ -852,7 +942,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-LINEAR_GRAPH_PROPERTIES_CHECK",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -872,15 +962,20 @@ window.questionBank = [
     "solution": "① 기울기가 $-2$이므로 $x$가 $2$ 증가할 때 $y$는 $4$ 감소한다. (옳음)  \n② 기울기가 음수이므로 오른쪽 아래로 향한다. (옳음)  \n③ 기울기가 $-2$로 같고 $y$절편이 다르므로 평행하다. (옳음)  \n④ $x = 2$를 대입하면 $y = -4 + 3 = -1 \\ne 1$이므로 점 $(2, 1)$을 지나지 않는다. (옳지 않음)  \n⑤ 두 그래프 모두 $y$절편이 $3$이므로 $y$축 위에서 만난다. (옳음)  \n따라서 옳지 않은 것은 ④이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
     "crossConceptKeys": [
       "CC_SLOPE_AND_INTERCEPT",
       "CC_POINT_SUBSTITUTION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "그래프의 성질",
+    "rpmPrimaryL4": "증가·감소",
+    "rpmPrimaryRecordId": "M2-RPM-051",
     "sourceQid": 19,
     "variationType": "NUMERIC"
   },
@@ -899,7 +994,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-TWO_POINTS_SLOPE_INTERCEPT_PROD",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -919,15 +1014,20 @@ window.questionBank = [
     "solution": "$a = \\frac{-4 - 5}{2 - (-1)} = \\frac{-9}{3} = -3$  \n$y = -3x + b$에 $(-1, 5)$를 대입하면 $5 = 3 + b \\implies b = 2$  \n$\\therefore ab = (-3) \\times 2 = -6$",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_LINE_EQUATION",
+    "templateKey": "TPL_LINE_TWO_POINTS",
     "crossConceptKeys": [
       "CC_SLOPE_FORMULA",
       "CC_POINT_SUBSTITUTION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "식 구하기",
+    "rpmPrimaryL4": "기울기와 한 점으로 식 구하기",
+    "rpmPrimaryRecordId": "M2-RPM-053",
     "sourceQid": 20,
     "variationType": "NUMERIC"
   },
@@ -946,7 +1046,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-03-ELIMINATION_METHOD_BASIC",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -960,14 +1060,19 @@ window.questionBank = [
     "solution": "$\\begin{cases} 4x - y = 9 \\quad \\cdots\\cdots \\text{㉠} \\\\ x + y = 11 \\quad \\cdots\\cdots \\text{㉡} \\end{cases}$  \n㉠과 ㉡을 변끼리 더하여 $y$를 소거하면 $5x = 20 \\implies x = 4$  \n$x = 4$를 ㉡에 대입하면 $4 + y = 11 \\implies y = 7$  \n따라서 구하는 해는 $x = 4,\\ y = 7$이다.",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
-    "templateKey": "",
+    "templateKey": "TPL_M2_SELECT_REQUIRED_OPERATION_FOR_VARIABLE_ELIMINATION",
     "crossConceptKeys": [
       "CC_SIMULTANEOUS_LINEAR_EQUATIONS"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "연립방정식의 풀이",
+    "rpmPrimaryL4": "가감법",
+    "rpmPrimaryRecordId": "M2-RPM-030",
     "sourceQid": 21,
     "variationType": "NUMERIC"
   },
@@ -986,7 +1091,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-03-WORD_ANIMALS_LEGS_COUNT",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION_WORD_PROBLEM",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1000,8 +1105,8 @@ window.questionBank = [
     "solution": "소의 마릿수를 $x$, 오리의 마릿수를 $y$라 하면  \n$\\begin{cases} x + y = 25 \\\\ 4x + 2y = 74 \\end{cases}$  \n둘째 식의 양변을 $2$로 나누면 $2x + y = 37$  \n$2x + y = 37$에서 $x + y = 25$를 변끼리 빼면 $x = 12$  \n$y = 25 - 12 = 13$  \n소는 꼬리가 $1$개, 오리는 날개가 $2$개씩 있으므로  \n소의 꼬리와 오리의 날개의 수의 합은 $12 \\times 1 + 13 \\times 2 = 12 + 26 = 38$이다.",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "difficultyBucket": 3,
+    "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_APPLIED_WORD_PROBLEMS"
@@ -1010,6 +1115,11 @@ window.questionBank = [
       "COND_NATURAL_NUMBER"
     ],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식의 활용",
+    "rpmPrimaryL3": "수와 개수",
+    "rpmPrimaryL4": "두 수 관계",
+    "rpmPrimaryRecordId": "M2-RPM-038",
     "sourceQid": 22,
     "variationType": "CONTEXT"
   },
@@ -1028,7 +1138,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-PARALLEL_AND_X_INTERCEPT_LINE",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1042,14 +1152,19 @@ window.questionBank = [
     "solution": "$y = -3x + 2$의 그래프와 평행하므로 구하는 일차함수의 기울기는 $-3$이다.  \n$y = -3x + b$라 하면 $x$절편이 $3$, 즉 점 $(3, 0)$을 지나므로  \n$0 = -3 \\times 3 + b \\implies b = 9$  \n따라서 구하는 일차함수의 식은 $y = -3x + 9$이다.",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 1,
-    "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
-    "templateKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_LINE_EQUATION",
+    "templateKey": "TPL_LINE_PARALLEL",
     "crossConceptKeys": [
       "CC_X_INTERCEPT"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "식 구하기",
+    "rpmPrimaryL4": "두 점으로 식 구하기",
+    "rpmPrimaryRecordId": "M2-RPM-052",
     "sourceQid": 23,
     "variationType": "NUMERIC"
   },
@@ -1068,7 +1183,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-WORD_CANDLE_BURNING",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1082,15 +1197,20 @@ window.questionBank = [
     "solution": "두 점 $(4, 20), (8, 17)$을 지나므로 기울기는 $\\frac{17 - 20}{8 - 4} = -\\frac{3}{4}$  \n$y = -\\frac{3}{4}x + b$에 $(4, 20)$을 대입하면 $20 = -3 + b \\implies b = 23$  \n따라서 관계식은 $y = -\\frac{3}{4}x + 23$  \n$x = 24$를 대입하면 $y = -\\frac{3}{4} \\times 24 + 23 = -18 + 23 = 5$  \n따라서 남은 양초의 길이는 $5\\text{ cm}$이다.",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 3,
+    "problemTypeKey": "PT_LINE_EQUATION",
+    "templateKey": "TPL_LINE_TWO_POINTS",
     "crossConceptKeys": [
       "CC_APPLIED_WORD_PROBLEMS",
       "CC_SLOPE_FORMULA"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+    "rpmPrimaryL3": "방정식과 그래프",
+    "rpmPrimaryL4": "일차방정식의 그래프",
+    "rpmPrimaryRecordId": "M2-RPM-054",
     "sourceQid": 24,
     "variationType": "NUMERIC"
   }

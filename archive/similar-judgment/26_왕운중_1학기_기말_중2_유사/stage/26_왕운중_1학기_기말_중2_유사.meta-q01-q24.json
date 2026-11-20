@@ -3,7 +3,7 @@
   "requestId": "26_왕운중_1학기_기말_중2_유사-candidate-v1",
   "examUid": "26_왕운중_1학기_기말_중2_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/26_왕운중_1학기_기말_중2_유사.js",
-  "expectedSourceBlobSha1": "c5d14623df04b59c83e88cf9904bc17e478e547e",
+  "expectedSourceBlobSha1": "65a263dd742e7434d5df2e86ca81116bde4020b4",
   "expectedQuestionCount": 24,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -29,8 +29,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "subUnit": "연립일차방정식",
-        "conceptClusterKey": "M2-03-TWO_VAR_LINEAR_EQ_CONDITION",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_LINEAR_EQUATIONS_TWO_VARIABLES"
@@ -39,7 +39,7 @@
           "COND_NONZERO"
         ],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 1,
@@ -52,20 +52,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-151"
+        ],
+        "rpmPrimary": {
+          "l1": "연립일차방정식",
+          "l2": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정",
+          "recordId": "M2-RPM-151"
+        },
+        "rpmPrimaryL1": "연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식",
+        "rpmPrimaryL3": "해와 계수",
+        "rpmPrimaryL4": "계수 결정",
+        "rpmPrimaryRecordId": "M2-RPM-151",
+        "difficultyBasis": "ax 와 by 의 동류항을 이항해 계수가 0이 되지 않는 조건을 바로 찾는 2단계 기본 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION: 미지수가 $2$개인 일차방정식이 되기 위한 조건을 구하면?",
+          "curriculum": "M2-RPM-151: 식 ax - 4y + 5 = -3x + by - 2 가 미지수가 2개인 일차방정식이 되도록 계수 a, b 의 조건을 정하는 계수 결정 문항이다.",
+          "problemType": "식 ax - 4y + 5 = -3x + by - 2 를 정리하여 미지수 x, y 가 모두 살아남도록 미정계수 조건을 판단하는 문제이므로 PT_M2_TWO_VARIABLE_LINEAR_EQUATION을 선택함.",
+          "difficulty": "ax 와 by 의 동류항을 이항해 계수가 0이 되지 않는 조건을 바로 찾는 2단계 기본 문항이다.",
+          "condition": "COND_NONZERO: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_LINEAR_EQUATIONS_TWO_VARIABLES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "모든 항을 좌변으로 이항해 (a+3)x - (b+4)y + 7 = 0으로 정리한 뒤 두 계수가 모두 0이 아닌 조건을 구한다.",
       "decisiveStep": "a + 3 != 0, b + 4 != 0에서 a != -3, b != -4를 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "이항 후 x와 y의 계수가 0이 아님을 확인하는 1단계 개념 문항이다.",
+      "difficultyReason": "ax 와 by 의 동류항을 이항해 계수가 0이 되지 않는 조건을 바로 찾는 2단계 기본 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
         "templateKey": null,
-        "why": "미지수가 2개인 일차방정식이 될 조건"
+        "why": "식 ax - 4y + 5 = -3x + by - 2 를 정리하여 미지수 x, y 가 모두 살아남도록 미정계수 조건을 판단하는 문제이므로 PT_M2_TWO_VARIABLE_LINEAR_EQUATION을 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_fa389aea043c7b5e65a6a3b3a32d5f7838be73bee7481210fcd8acfacb72616a",
@@ -82,8 +114,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "subUnit": "연립일차방정식",
-        "conceptClusterKey": "M2-03-LINEAR_EQ_NATURAL_PAIR_DIFF",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_LINEAR_EQUATIONS_TWO_VARIABLES"
@@ -92,7 +124,7 @@
           "COND_NATURAL_NUMBER"
         ],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 2,
@@ -105,20 +137,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-150"
+        ],
+        "rpmPrimary": {
+          "l1": "연립일차방정식",
+          "l2": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "해가 주어진 연립방정식",
+          "recordId": "M2-RPM-150"
+        },
+        "rpmPrimaryL1": "연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식",
+        "rpmPrimaryL3": "해와 계수",
+        "rpmPrimaryL4": "해가 주어진 연립방정식",
+        "rpmPrimaryRecordId": "M2-RPM-150",
+        "difficultyBasis": "x + 2y = 11 에서 y 에 자연수를 대입해 순서쌍을 조사하는 전형적인 2단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION: 일차방정식 $x + 2y = 11$을 만족시키는 자연수 $x, y$에 대하여",
+          "curriculum": "M2-RPM-150: 일차방정식 x + 2y = 11 을 만족시키는 자연수 순서쌍 해를 구하여 식의 값을 검증하는 문항이다.",
+          "problemType": "방정식 x + 2y = 11 의 자연수 해 순서쌍을 나열하고 x-y 가 될 수 없는 값을 고르는 문제이므로 PT_M2_TWO_VARIABLE_LINEAR_EQUATION을 선택함.",
+          "difficulty": "x + 2y = 11 에서 y 에 자연수를 대입해 순서쌍을 조사하는 전형적인 2단계 문항이다.",
+          "condition": "COND_NATURAL_NUMBER: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_LINEAR_EQUATIONS_TWO_VARIABLES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "y = 1, 2, 3, 4, 5를 대입해 자연수 해 (x, y)를 모두 구하고 각각의 x - y 값을 계산한다.",
       "decisiveStep": "가능한 x - y 값이 8, 5, 2, -1, -4이므로 -3이 불가능함을 확인한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "y = 1~5를 대입해 모든 자연수 해를 나열하면 바로 풀리는 1단계 문항이다.",
+      "difficultyReason": "x + 2y = 11 에서 y 에 자연수를 대입해 순서쌍을 조사하는 전형적인 2단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
         "templateKey": null,
-        "why": "미지수 2개인 일차방정식의 자연수 해 차 판별"
+        "why": "방정식 x + 2y = 11 의 자연수 해 순서쌍을 나열하고 x-y 가 될 수 없는 값을 고르는 문제이므로 PT_M2_TWO_VARIABLE_LINEAR_EQUATION을 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_15ca289cf4a50e578d9723cb9992ec837595f101f4178597fc0f09fef6409604",
@@ -135,8 +199,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "subUnit": "연립일차방정식",
-        "conceptClusterKey": "M2-03-SUBSTITUTE_SOLUTION_FOR_PARAM",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_SUBSTITUTION_IN_EQUATIONS",
@@ -144,7 +208,7 @@
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 3,
@@ -157,20 +221,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-151"
+        ],
+        "rpmPrimary": {
+          "l1": "연립일차방정식",
+          "l2": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정",
+          "recordId": "M2-RPM-151"
+        },
+        "rpmPrimaryL1": "연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식",
+        "rpmPrimaryL3": "해와 계수",
+        "rpmPrimaryL4": "계수 결정",
+        "rpmPrimaryRecordId": "M2-RPM-151",
+        "difficultyBasis": "해 (2, -1) 을 대입해 3a = -12 에서 a = -4 를 구하는 2단계 기본 계산 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION: 일차방정식 $4x - 3(ay - 2) = 2$의 한 해가 $(2, -1)$일 때, 상수 $a$의 값을 구하면?",
+          "curriculum": "M2-RPM-151: 일차방정식 4x - 3(ay - 2) = 2 에 해 (2, -1) 을 대입하여 상수 a 의 값을 결정하는 문항이다.",
+          "problemType": "방정식 4x - 3(ay - 2) = 2 에 해를 대입하여 일차방정식 3a = -12 를 풀어 미정계수 ay 의 a 를 구하는 문항이므로 PT_M2_TWO_VARIABLE_LINEAR_EQUATION을 선택함.",
+          "difficulty": "해 (2, -1) 을 대입해 3a = -12 에서 a = -4 를 구하는 2단계 기본 계산 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SUBSTITUTION_IN_EQUATIONS, CC_COEFFICIENT_DETERMINATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "주어진 해 (2, -1)을 일차방정식에 대입하여 a에 대한 일차방정식을 푼다.",
       "decisiveStep": "8 + 3a + 6 = 2에서 a = -4를 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "해의 좌표를 한 번 대입하면 바로 풀리는 1단계 문항이다.",
+      "difficultyReason": "해 (2, -1) 을 대입해 3a = -12 에서 a = -4 를 구하는 2단계 기본 계산 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
         "templateKey": null,
-        "why": "주어진 해를 대입해 상수 구하기"
+        "why": "방정식 4x - 3(ay - 2) = 2 에 해를 대입하여 일차방정식 3a = -12 를 풀어 미정계수 ay 의 a 를 구하는 문항이므로 PT_M2_TWO_VARIABLE_LINEAR_EQUATION을 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_483d733fc45c5e586d286bc88842ab9dbd4f0899a46180a31db91fd4884aa100",
@@ -187,8 +283,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "subUnit": "연립일차방정식",
-        "conceptClusterKey": "M2-03-CHAINED_SIMULTANEOUS_SYSTEMS",
-        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_SIMULTANEOUS_LINEAR_EQUATIONS"
@@ -208,20 +304,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-148"
+        ],
+        "rpmPrimary": {
+          "l1": "연립일차방정식",
+          "l2": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "가감법",
+          "recordId": "M2-RPM-148"
+        },
+        "rpmPrimaryL1": "연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식",
+        "rpmPrimaryL3": "연립방정식의 풀이",
+        "rpmPrimaryL4": "가감법",
+        "rpmPrimaryRecordId": "M2-RPM-148",
+        "difficultyBasis": "가감법으로 5x = 10 을 풀고 다시 5x = 15 를 푸는 표준 2단계 연립방정식 풀이 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION: 연립방정식 $\\begin{cases} 3x + y = 7 \\ 2x - y = 3 \\end{cases}$의 해가 $x = m,\\ y = n$일 때",
+          "curriculum": "M2-RPM-148: 가감법으로 5x = 10 및 5x = 15 를 풀어 연립일차방정식의 해를 차례로 구하는 가감법 풀이 문항이다.",
+          "problemType": "연립방정식 cases 3x+y=7, 2x-y=3 의 해로 계수 mx, ny 를 정하고 새 연립방정식을 푸는 연립일차방정식 문항이므로 PT_M2_LINEAR_SYSTEM을 선택함.",
+          "difficulty": "가감법으로 5x = 10 을 풀고 다시 5x = 15 를 푸는 표준 2단계 연립방정식 풀이 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SIMULTANEOUS_LINEAR_EQUATIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "첫째 연립방정식을 풀어 m = 2, n = 1을 구한 뒤 둘째 연립방정식에 대입해 다시 가감법으로 해를 구한다.",
       "decisiveStep": "m = 2, n = 1을 대입한 연립방정식 2x + y = 7, x - 2y = 1을 풀어 x = 3, y = 1을 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "두 번의 연립방정식 풀이를 순차적으로 연결해야 하는 2단계 문항이다.",
+      "difficultyReason": "가감법으로 5x = 10 을 풀고 다시 5x = 15 를 푸는 표준 2단계 연립방정식 풀이 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": null,
-        "why": "연립방정식 해를 계수로 하는 연립방정식 풀이"
+        "why": "연립방정식 cases 3x+y=7, 2x-y=3 의 해로 계수 mx, ny 를 정하고 새 연립방정식을 푸는 연립일차방정식 문항이므로 PT_M2_LINEAR_SYSTEM을 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_630772abdbddc552821b3d4ba9ac389db4ba51c1bea2130a41719659cf2a2145",
@@ -238,8 +366,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "subUnit": "연립일차방정식",
-        "conceptClusterKey": "M2-03-REPEATING_DECIMAL_FRACTION_SYSTEM",
-        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_FRACTION_COEFFICIENTS",
@@ -260,20 +388,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-153"
+        ],
+        "rpmPrimary": {
+          "l1": "연립일차방정식",
+          "l2": "연립일차방정식",
+          "l3": "복잡한 꼴의 연립방정식",
+          "l4": "분수·소수가 있는 연립방정식",
+          "recordId": "M2-RPM-153"
+        },
+        "rpmPrimaryL1": "연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식",
+        "rpmPrimaryL3": "복잡한 꼴의 연립방정식",
+        "rpmPrimaryL4": "분수·소수가 있는 연립방정식",
+        "rpmPrimaryRecordId": "M2-RPM-153",
+        "difficultyBasis": "순환소수를 분수로 바꾸고 x + 5y = 21 과 x + 12y = 42 를 연립하여 18 을 구하는 2단계 풀이 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION: 방정식 $0.\\dot{3}x + 1.\\dot{6}y = \\frac{1}{6}x + 2y = 7$을 만족시키는 $x, y$에 대하여 $xy$의 값을 구하면?",
+          "curriculum": "M2-RPM-153: 순환소수와 분수가 포함된 연립방정식을 정수 계수 x + 5y = 21, x + 12y = 42 로 고쳐 푸는 분수·소수가 있는 연립방정식 문항이다.",
+          "problemType": "A=B=C 꼴의 순환소수 연립방정식을 x + 5y = 21, x + 12y = 42 로 정리해 xy = 18 을 구하는 문제이므로 PT_M2_LINEAR_SYSTEM을 선택함.",
+          "difficulty": "순환소수를 분수로 바꾸고 x + 5y = 21 과 x + 12y = 42 를 연립하여 18 을 구하는 2단계 풀이 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_FRACTION_COEFFICIENTS, CC_SIMULTANEOUS_LINEAR_EQUATIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "순환소수 0.3...과 1.6...을 각각 분수 1/3, 5/3으로 바꾼 뒤 분모를 없애 연립방정식을 푼다.",
       "decisiveStep": "x + 5y = 21과 x + 12y = 42를 연립하여 x = 6, y = 3을 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "순환소수의 분수 변환과 A=B=C 꼴 연립방정식 풀이를 결합해야 한다.",
+      "difficultyReason": "순환소수를 분수로 바꾸고 x + 5y = 21 과 x + 12y = 42 를 연립하여 18 을 구하는 2단계 풀이 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": null,
-        "why": "순환소수와 분수 계수가 섞인 A=B=C 꼴 연립방정식"
+        "why": "A=B=C 꼴의 순환소수 연립방정식을 x + 5y = 21, x + 12y = 42 로 정리해 xy = 18 을 구하는 문제이므로 PT_M2_LINEAR_SYSTEM을 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c10325ecb8e52533b537ac5e0a3c881e8e6055c27c07e86a8c2b19deb0dde3f2",
@@ -290,15 +450,15 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "subUnit": "연립일차방정식",
-        "conceptClusterKey": "M2-03-SUBSTITUTION_METHOD_BASIC",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_SIMULTANEOUS_LINEAR_EQUATIONS"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 6,
@@ -311,20 +471,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-149"
+        ],
+        "rpmPrimary": {
+          "l1": "연립일차방정식",
+          "l2": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "대입법",
+          "recordId": "M2-RPM-149"
+        },
+        "rpmPrimaryL1": "연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식",
+        "rpmPrimaryL3": "연립방정식의 풀이",
+        "rpmPrimaryL4": "대입법",
+        "rpmPrimaryRecordId": "M2-RPM-149",
+        "difficultyBasis": "y = x + 5 를 대입해 일차방정식 x - 10 = -13 을 바로 푸는 2단계 기본 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION: 연립방정식 $\\begin{cases} 3x - 2y = -13 \\ y = x + 5 \\end{cases}$의 해를 구하면?",
+          "curriculum": "M2-RPM-149: 식 y = x + 5 를 3x - 2y = -13 에 대입하여 x = -3, y = 2 를 구하는 대입법 연립방정식 풀이 문항이다.",
+          "problemType": "연립방정식 cases 3x - 2y = -13, y = x + 5 에서 대입법을 적용하여 해를 구하는 문제이므로 PT_M2_LINEAR_SYSTEM을 선택함.",
+          "difficulty": "y = x + 5 를 대입해 일차방정식 x - 10 = -13 을 바로 푸는 2단계 기본 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SIMULTANEOUS_LINEAR_EQUATIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "y = x + 5를 첫째 식에 대입하여 x = -3을 구한 뒤 y = 2를 얻는다.",
       "decisiveStep": "3x - 2(x + 5) = -13에서 x = -3을 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "한 문자로 정리된 식을 바로 대입해 푸는 1단계 대입법 문항이다.",
+      "difficultyReason": "y = x + 5 를 대입해 일차방정식 x - 10 = -13 을 바로 푸는 2단계 기본 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": null,
-        "why": "대입법 기본 연립방정식 풀이"
+        "why": "연립방정식 cases 3x - 2y = -13, y = x + 5 에서 대입법을 적용하여 해를 구하는 문제이므로 PT_M2_LINEAR_SYSTEM을 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_f34798bde398f9eaaa4959b5b14fb75d8dddad5fc2892fc72e9b1b92dac67404",
@@ -341,15 +533,15 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "subUnit": "연립일차방정식",
-        "conceptClusterKey": "M2-03-SOLUTION_EXISTENCE_CONDITIONS",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_COEFFICIENT_RATIOS"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 7,
@@ -362,20 +554,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-155"
+        ],
+        "rpmPrimary": {
+          "l1": "연립일차방정식",
+          "l2": "연립일차방정식",
+          "l3": "해가 특수한 연립방정식",
+          "l4": "계수 조건으로 해의 상태 판단",
+          "recordId": "M2-RPM-155"
+        },
+        "rpmPrimaryL1": "연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식",
+        "rpmPrimaryL3": "해가 특수한 연립방정식",
+        "rpmPrimaryL4": "계수 조건으로 해의 상태 판단",
+        "rpmPrimaryRecordId": "M2-RPM-155",
+        "difficultyBasis": "ax + by + c = 0 의 계수 조건과 직선의 위치 관계를 종합적으로 이해해야 하는 3단계 개념 분석 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION: 연립방정식 $\\begin{cases} ax + by + c = 0 \\ a'x + b'y + c' = 0 \\end{cases}$ ($a, b, c, a', b', c'$는 상수)에 대한 설명으로 옳은 것은?",
+          "curriculum": "M2-RPM-155: 일반형 ax + by + c = 0 과 a'x + b'y + c' = 0 의 계수 조건에 따른 해의 개수 상태를 판별하는 문항이다.",
+          "problemType": "연립방정식 cases ax + by + c = 0, a'x + b'y + c' = 0 의 계수 조건에 따른 해의 개수를 분석하는 문항이므로 PT_M2_LINEAR_SYSTEM을 선택함.",
+          "difficulty": "ax + by + c = 0 의 계수 조건과 직선의 위치 관계를 종합적으로 이해해야 하는 3단계 개념 분석 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_COEFFICIENT_RATIOS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "일반형 연립일차방정식의 계수 조건에 따른 해의 개수(유일·무수히 많음·없음)를 보기별로 판별한다.",
       "decisiveStep": "a != 0, b = 0과 a' = 0, b' != 0이면 두 식이 각각 x = -c/a, y = -c'/b'가 되어 해가 유일함을 확인한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "문자로 주어진 연립방정식 계수 조건의 반례와 성립 조건을 정확히 판별해야 한다.",
+      "difficultyReason": "ax + by + c = 0 의 계수 조건과 직선의 위치 관계를 종합적으로 이해해야 하는 3단계 개념 분석 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": null,
-        "why": "연립방정식 해의 존재 조건 참·거짓 판별"
+        "why": "연립방정식 cases ax + by + c = 0, a'x + b'y + c' = 0 의 계수 조건에 따른 해의 개수를 분석하는 문항이므로 PT_M2_LINEAR_SYSTEM을 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_bdc6373beeca8aeba43c32bea0f5a2afbf1594fd669cb846d2942905a03412fd",
@@ -392,8 +616,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
         "subUnit": "연립일차방정식의 활용",
-        "conceptClusterKey": "M2-03-WORD_TILE_RECTANGLE_AREA",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION_WORD_PROBLEM",
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_RECTANGLE_AREA",
@@ -401,7 +625,7 @@
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 8,
@@ -414,20 +638,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-162"
+        ],
+        "rpmPrimary": {
+          "l1": "연립일차방정식",
+          "l2": "연립일차방정식의 활용",
+          "l3": "도형 활용",
+          "l4": "도형 조건을 이용한 연립방정식",
+          "recordId": "M2-RPM-162"
+        },
+        "rpmPrimaryL1": "연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식의 활용",
+        "rpmPrimaryL3": "도형 활용",
+        "rpmPrimaryL4": "도형 조건을 이용한 연립방정식",
+        "rpmPrimaryRecordId": "M2-RPM-162",
+        "difficultyBasis": "타일의 가로·세로 변의 관계식 6x=5y 와 둘레 164 를 연립해 410 을 풀어 넓이를 구하는 3단계 활용 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD: 모양과 크기가 같은 직사각형 모양의 타일 $11$장을 겹치지 않게 빈틈없이 이어 붙여",
+          "curriculum": "M2-RPM-162: 타일 11장을 이어붙인 큰 직사각형의 둘레 164 cm 조건으로 연립방정식을 세워 타일의 넓이 120 을 구하는 도형 활용 문항이다.",
+          "problemType": "타일 배치 조건을 6x = 5y 와 둘레 164 cm 로부터 7x + y = 82 로 연립방정식을 세워 푸는 도형 활용 문항이므로 PT_M2_LINEAR_SYSTEM을 선택함.",
+          "difficulty": "타일의 가로·세로 변의 관계식 6x=5y 와 둘레 164 를 연립해 410 을 풀어 넓이를 구하는 3단계 활용 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_RECTANGLE_AREA, CC_PERIMETER: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "타일의 짧은 변 x와 긴 변 y에 대해 가로 일치 조건 6x = 5y와 둘레 조건 2(6x + x + y) = 164를 연립해 넓이를 구한다.",
       "decisiveStep": "6x = 5y와 7x + y = 82를 연립하여 x = 10, y = 12를 구해 넓이 120을 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "타일 배치로부터 가로 일치 식과 둘레 식 두 개를 세워 연립하고 넓이를 계산해야 한다.",
+      "difficultyReason": "타일의 가로·세로 변의 관계식 6x=5y 와 둘레 164 를 연립해 410 을 풀어 넓이를 구하는 3단계 활용 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": null,
-        "why": "타일 배치 도형 조건 연립방정식 활용"
+        "why": "타일 배치 조건을 6x = 5y 와 둘레 164 cm 로부터 7x + y = 82 로 연립방정식을 세워 푸는 도형 활용 문항이므로 PT_M2_LINEAR_SYSTEM을 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_b0f61e0f6e644f37e30d3a650a0306dc728f168825dbdb28133311d2780cb14e",
@@ -444,9 +700,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-NON_FUNCTION_IDENTIFICATION",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
-        "templateKey": "",
+        "templateKey": "TPL_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION_FUNCTION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -463,20 +719,52 @@
           "variationType": "CONTEXT",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-165"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "일차함수 판별",
+          "recordId": "M2-RPM-165"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "일차함수의 뜻",
+        "rpmPrimaryL4": "일차함수 판별",
+        "rpmPrimaryRecordId": "M2-RPM-165",
+        "difficultyBasis": "함수의 정의를 800원 연필 및 약수 관계에 바로 적용하여 판단하는 1단계 기본 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: 다음 중 $y$가 $x$의 함수가 아닌 것은?",
+          "curriculum": "M2-RPM-165: 800원 연필 가격 y=800x 등 여러 대응 관계에서 함수인 것과 함수가 아닌 것을 구분하는 일차함수 판별 문항이다.",
+          "problemType": "800원 연필 등 여러 수량 관계에서 자연수 x의 약수 y는 y값이 유일하게 결정되지 않음을 찾아 함수가 아님을 판별하는 문제이므로 PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION을 선택함.",
+          "difficulty": "함수의 정의를 800원 연필 및 약수 관계에 바로 적용하여 판단하는 1단계 기본 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "다섯 문장 중 x 하나의 값에 y 값이 여러 개 대응하는 경우를 찾아 함수가 아닌 보기를 고른다.",
       "decisiveStep": "자연수 x의 약수 y는 값이 여러 개 대응하므로 함수가 아님을 판별한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "함수의 정의(유일 대응)를 일상·수학 문장에서 판별하는 1단계 문항이다.",
+      "difficultyReason": "함수의 정의를 800원 연필 및 약수 관계에 바로 적용하여 판단하는 1단계 기본 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
-        "templateKey": null,
-        "why": "함수가 아닌 관계 고르기"
+        "templateKey": "TPL_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION_FUNCTION",
+        "why": "800원 연필 등 여러 수량 관계에서 자연수 x의 약수 y는 y값이 유일하게 결정되지 않음을 찾아 함수가 아님을 판별하는 문제이므로 PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION을 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_ab7cd2902ce39a5c48bf53c6a170bab174ef3f7c44913930797fad3bf440f4de",
@@ -493,15 +781,15 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-FUNCTION_VALUE_TWO_STEP",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
         "problemTypeKey": "PT_FUNCTION_VALUE",
-        "templateKey": "",
+        "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
         "crossConceptKeys": [
           "CC_FUNCTION_VALUE"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 10,
@@ -514,20 +802,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-164"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값",
+          "recordId": "M2-RPM-164"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "일차함수의 뜻",
+        "rpmPrimaryL4": "함숫값",
+        "rpmPrimaryRecordId": "M2-RPM-164",
+        "difficultyBasis": "f(2)=1 로 a=5 를 찾고 f(b)=7 에서 3b = 12 로 b=4 를 찾아 20 을 구하는 2단계 기본 함숫값 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: 함수 $f(x) = 3x - a$에서 $f(2) = 1$, $f(b) = 7$일 때, $ab$의 값을 구하면?",
+          "curriculum": "M2-RPM-164: 일차함수 f(x) = 3x - a 에서 함숫값 조건 f(2)=1 과 f(b)=7 로 미지수를 결정해 ab = 20 을 구하는 함숫값 문항이다.",
+          "problemType": "함수 f(x) = 3x - a 의 함숫값 조건 f(2)=1 과 f(b)=7 로부터 3b = 12 를 풀어 함숫값을 계산하는 문제이므로 PT_FUNCTION_VALUE를 선택함.",
+          "difficulty": "f(2)=1 로 a=5 를 찾고 f(b)=7 에서 3b = 12 로 b=4 를 찾아 20 을 구하는 2단계 기본 함숫값 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_FUNCTION_VALUE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "f(2) = 1로 a = 5를 먼저 구한 뒤 f(b) = 7에서 b = 4를 구해 곱 ab를 계산한다.",
       "decisiveStep": "a = 5를 확정한 후 3b - 5 = 7에서 b = 4를 얻어 ab = 20을 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "함숫값을 두 번 차례대로 대입해 상수를 구하는 기본 문항이다.",
+      "difficultyReason": "f(2)=1 로 a=5 를 찾고 f(b)=7 에서 3b = 12 로 b=4 를 찾아 20 을 구하는 2단계 기본 함숫값 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_FUNCTION_VALUE",
-        "templateKey": null,
-        "why": "두 함숫값 조건을 이용한 미지수 곱"
+        "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+        "why": "함수 f(x) = 3x - a 의 함숫값 조건 f(2)=1 과 f(b)=7 로부터 3b = 12 를 풀어 함숫값을 계산하는 문제이므로 PT_FUNCTION_VALUE를 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_385b2c4ae1a1ee8b34f8ca6c479f4e584253795c1eaeb229de4771546fccb6d4",
@@ -544,16 +864,16 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-TRANSLATION_X_INTERCEPT",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
-        "templateKey": "",
+        "templateKey": "TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT",
         "crossConceptKeys": [
           "CC_PARALLEL_TRANSLATION",
           "CC_X_INTERCEPT"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 11,
@@ -566,20 +886,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-166"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편",
+          "recordId": "M2-RPM-166"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "일차함수의 그래프",
+        "rpmPrimaryL4": "기울기·절편",
+        "rpmPrimaryRecordId": "M2-RPM-166",
+        "difficultyBasis": "평행이동한 식 y = -3x + a - 4 에 점 (-2, 0) 을 대입해 a = -2 를 구하는 2단계 기본 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: 일차함수 $y = -3x + a$의 그래프를 $y$축의 방향으로 $-4$만큼 평행이동한",
+          "curriculum": "M2-RPM-166: 일차함수 y = -3x + a 의 y축 평행이동 식과 x절편 -2 조건을 이용해 상수 a 를 결정하는 기울기·절편 문항이다.",
+          "problemType": "일차함수 y = -3x + a 를 평행이동하여 x절편 (-2, 0) 을 대입해 미지수 a 를 구하는 평행이동 유형이므로 PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION을 선택함.",
+          "difficulty": "평행이동한 식 y = -3x + a - 4 에 점 (-2, 0) 을 대입해 a = -2 를 구하는 2단계 기본 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_PARALLEL_TRANSLATION, CC_X_INTERCEPT: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "y축 방향으로 -4만큼 평행이동한 식 y = -3x + a - 4에 x절편 점 (-2, 0)을 대입해 a를 구한다.",
       "decisiveStep": "0 = 6 + a - 4에서 a = -2를 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "평행이동 식을 쓰고 x절편 (-2, 0)을 대입하면 바로 풀리는 문항이다.",
+      "difficultyReason": "평행이동한 식 y = -3x + a - 4 에 점 (-2, 0) 을 대입해 a = -2 를 구하는 2단계 기본 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
-        "templateKey": null,
-        "why": "평행이동 후 x절편 조건으로 상수 구하기"
+        "templateKey": "TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT",
+        "why": "일차함수 y = -3x + a 를 평행이동하여 x절편 (-2, 0) 을 대입해 미지수 a 를 구하는 평행이동 유형이므로 PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION을 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_ea3824c108c6418d95c82954cd80854e1cdef11b8b47549617b9234254977c03",
@@ -596,9 +948,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-GRAPH_PROPERTIES_MULTIPLE_CHECK",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
         "crossConceptKeys": [
           "CC_SLOPE_AND_INTERCEPT",
           "CC_INTERCEPTS"
@@ -618,20 +970,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-168"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "그래프의 성질",
+          "l4": "일차함수 그래프의 평행·일치",
+          "recordId": "M2-RPM-168"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "그래프의 성질",
+        "rpmPrimaryL4": "일차함수 그래프의 평행·일치",
+        "rpmPrimaryRecordId": "M2-RPM-168",
+        "difficultyBasis": "y = -3x - 12 등 보기의 다섯 일차함수의 기울기와 절편을 각각 비교하여 옳은 보기를 확인하는 2단계 개념 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: 다음 보기의 일차함수들에 대한 설명으로 옳은 것은?",
+          "curriculum": "M2-RPM-168: y = -3x + 2 와 y = -3x - 12 등 여러 일차함수의 기울기와 절편, 평행, 증가·감소 성질을 종합 판정하는 문항이다.",
+          "problemType": "보기의 y = -3x + 2, y = -3x - 12 등 일차함수들의 그래프 개형과 증가·감소 성질을 종합 판별하는 문제이므로 PT_FUNCTION_GRAPH_PROPERTIES를 선택함.",
+          "difficulty": "y = -3x - 12 등 보기의 다섯 일차함수의 기울기와 절편을 각각 비교하여 옳은 보기를 확인하는 2단계 개념 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SLOPE_AND_INTERCEPT, CC_INTERCEPTS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "다섯 일차함수의 기울기, x절편, y절편을 각각 구한 뒤 다섯 보기의 진위를 판별한다.",
       "decisiveStep": "기울기가 양수인 식이 ㄷ 하나뿐임을 확인해 ⑤를 고른다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "5개 일차함수의 기울기, x절편, y절편, 평행 여부를 모두 점검해야 한다.",
+      "difficultyReason": "y = -3x - 12 등 보기의 다섯 일차함수의 기울기와 절편을 각각 비교하여 옳은 보기를 확인하는 2단계 개념 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "여러 일차함수 그래프 성질 종합 판별"
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "why": "보기의 y = -3x + 2, y = -3x - 12 등 일차함수들의 그래프 개형과 증가·감소 성질을 종합 판별하는 문제이므로 PT_FUNCTION_GRAPH_PROPERTIES를 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c87e11389129f77126db90b3262f777a68f6a4bb8110c4ecfbef45526a7013de",
@@ -648,8 +1032,8 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-SLOPE_FROM_CHANGE_RATE",
-        "problemTypeKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_RATE_OF_CHANGE"
@@ -669,20 +1053,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-166"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편",
+          "recordId": "M2-RPM-166"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "일차함수의 그래프",
+        "rpmPrimaryL4": "기울기·절편",
+        "rpmPrimaryRecordId": "M2-RPM-166",
+        "difficultyBasis": "기울기의 정의 -15/3 = -5 를 바로 적용하여 1단계로 해결하는 기본 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: 다음 일차함수의 그래프 중 $x$의 값이 $3$만큼 증가할 때 $y$의 값이 $15$만큼 감소하는 것은?",
+          "curriculum": "M2-RPM-166: x의 증가량 3 과 y의 증가량 -15 로부터 기울기 -5 를 구하여 일차함수를 찾는 기울기·절편 문항이다.",
+          "problemType": "x의 변화량 3 과 y의 변화량 15 로부터 기울기 -5 를 찾아 식 y = -5x + 1 을 결정하는 일차함수 기본 문제이므로 PT_M2_LINEAR_FUNCTION을 선택함.",
+          "difficulty": "기울기의 정의 -15/3 = -5 를 바로 적용하여 1단계로 해결하는 기본 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_RATE_OF_CHANGE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "x의 증가량 3에 대한 y의 증가량 -15의 비 -15/3 = -5를 기울기로 갖는 식을 찾는다.",
       "decisiveStep": "기울기 -5인 식 y = -5x + 1을 선택한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "기울기 정의를 한 번 계산하면 바로 답을 고르는 1단계 문항이다.",
+      "difficultyReason": "기울기의 정의 -15/3 = -5 를 바로 적용하여 1단계로 해결하는 기본 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
         "templateKey": null,
-        "why": "증가량 비를 이용한 기울기 판별"
+        "why": "x의 변화량 3 과 y의 변화량 15 로부터 기울기 -5 를 찾아 식 y = -5x + 1 을 결정하는 일차함수 기본 문제이므로 PT_M2_LINEAR_FUNCTION을 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_3a8fa608d75cda5cbd65fcda14ff1469a5ef2b5fb8ba5ba83583d6bb5b09e188",
@@ -699,9 +1115,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-TWO_POINTS_LINE_MISSING_COORD",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_TWO_POINTS",
         "crossConceptKeys": [
           "CC_SLOPE_FORMULA",
           "CC_POINT_SUBSTITUTION"
@@ -721,20 +1137,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-170"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기",
+          "recordId": "M2-RPM-170"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "식 구하기",
+        "rpmPrimaryL4": "두 점으로 식 구하기",
+        "rpmPrimaryRecordId": "M2-RPM-170",
+        "difficultyBasis": "두 점 (-2, 1) 과 (3, 11) 에서 기울기 2 를 구하고 식에 점 (b, 7) 을 대입해 a+b = 3 을 찾는 2단계 기본 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: 두 점 $(-2, 1)$, $(3, 11)$을 지나는 직선의 그래프의 기울기가 $a$이고",
+          "curriculum": "M2-RPM-170: 두 점 (-2, 1) 과 (3, 11) 로 직선의 식 y = 2x + 5 를 구하고 점 (b, 7) 을 대입해 a+b = 3 을 구하는 식 구하기 문항이다.",
+          "problemType": "두 점 (-2, 1), (3, 11) 로 직선의 방정식을 결정하고 다른 점 (b, 7) 을 대입하는 두 점 직선의 방정식 유형이므로 PT_LINE_EQUATION을 선택함.",
+          "difficulty": "두 점 (-2, 1) 과 (3, 11) 에서 기울기 2 를 구하고 식에 점 (b, 7) 을 대입해 a+b = 3 을 찾는 2단계 기본 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SLOPE_FORMULA, CC_POINT_SUBSTITUTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "두 점 (-2, 1), (3, 11)로 기울기 a = 2와 식 y = 2x + 5를 구한 뒤 (b, 7)을 대입해 b = 1을 구한다.",
       "decisiveStep": "y = 2x + 5에 y = 7을 대입해 b = 1을 얻어 합 3을 계산한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "두 점으로 직선의 식을 세운 뒤 세 번째 점의 x좌표를 역산해야 한다.",
+      "difficultyReason": "두 점 (-2, 1) 과 (3, 11) 에서 기울기 2 를 구하고 식에 점 (b, 7) 을 대입해 a+b = 3 을 찾는 2단계 기본 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "두 점으로 직선의 식을 구해 미지 좌표 찾기"
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_TWO_POINTS",
+        "why": "두 점 (-2, 1), (3, 11) 로 직선의 방정식을 결정하고 다른 점 (b, 7) 을 대입하는 두 점 직선의 방정식 유형이므로 PT_LINE_EQUATION을 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_b7049314056b902935caebe99cae30faa6e2377e20cc15c5284f13c7e748dedd",
@@ -751,9 +1199,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-QUADRANT_SIGN_PROPAGATION",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
-        "templateKey": "",
+        "templateKey": "TPL_M2_LINEAR_FUNCTION_QUADRANT_CONDITION_AVOID",
         "crossConceptKeys": [
           "CC_QUADRANTS",
           "CC_SLOPE_SIGN"
@@ -762,7 +1210,7 @@
           "COND_NEGATIVE"
         ],
         "integrationPattern": "NONE",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 15,
@@ -775,20 +1223,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-166"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편",
+          "recordId": "M2-RPM-166"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "일차함수의 그래프",
+        "rpmPrimaryL4": "기울기·절편",
+        "rpmPrimaryRecordId": "M2-RPM-166",
+        "difficultyBasis": "bx - a 에서 a < 0, b < 0 을 유도하고 abx + (a+b) 의 부호로부터 지나지 않는 사분면을 추론하는 3단계 종합 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: 일차함수 $y = bx - a$의 그래프가 제$1, 2, 4$사분면을 지날 때, 일차함수 $y = abx + (a + b)$의 그래프가 지나지 않는 사분면을 구하면?",
+          "curriculum": "M2-RPM-166: y = bx - a 의 지나는 사분면 조건으로 기울기와 절편의 부호를 판단하여 새 직선 y = abx + (a+b) 의 사분면을 결정하는 문항이다.",
+          "problemType": "일차함수 y = bx - a 의 사분면 조건에서 부호를 유추하고 y = abx + (a+b) 가 지나지 않는 사분면을 판별하는 문제이므로 PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION을 선택함.",
+          "difficulty": "bx - a 에서 a < 0, b < 0 을 유도하고 abx + (a+b) 의 부호로부터 지나지 않는 사분면을 추론하는 3단계 종합 문항이다.",
+          "condition": "COND_NEGATIVE: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_QUADRANTS, CC_SLOPE_SIGN: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "y = bx - a가 지나는 사분면에서 b < 0, a < 0의 부호를 결정한 뒤 ab > 0과 a + b < 0으로 새 직선의 사분면을 판별한다.",
       "decisiveStep": "ab > 0(양의 기울기), a + b < 0(음의 y절편)에서 제2사분면을 지나지 않음을 결정한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "사분면 조건으로 a, b 부호를 추론하고 이를 다시 곱과 합의 부호로 변환해 그래프를 판별해야 한다.",
+      "difficultyReason": "bx - a 에서 a < 0, b < 0 을 유도하고 abx + (a+b) 의 부호로부터 지나지 않는 사분면을 추론하는 3단계 종합 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
-        "templateKey": null,
-        "why": "부호 결정 후 지나지 않는 사분면 판별"
+        "templateKey": "TPL_M2_LINEAR_FUNCTION_QUADRANT_CONDITION_AVOID",
+        "why": "일차함수 y = bx - a 의 사분면 조건에서 부호를 유추하고 y = abx + (a+b) 가 지나지 않는 사분면을 판별하는 문제이므로 PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION을 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_8864840c0d32d9e67e87d3d3a25f6bbe945b447c40541255d70ec0d4c8184e5c",
@@ -805,15 +1285,15 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-WORD_BATTERY_DEPLETION",
-        "problemTypeKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_APPLIED_WORD_PROBLEMS"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 16,
@@ -826,20 +1306,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-164"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값",
+          "recordId": "M2-RPM-164"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "일차함수의 뜻",
+        "rpmPrimaryL4": "함숫값",
+        "rpmPrimaryRecordId": "M2-RPM-164",
+        "difficultyBasis": "5분마다 4% 감소에서 125분을 계산해 2시간 5분을 구하는 2단계 기본 활용 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: 어떤 스마트폰 배터리가 $5$분마다 $4\\%$씩 감소한다고 하자.",
+          "curriculum": "M2-RPM-164: 배터리 감소율 4% 조건으로 식 y = 100 - 4/5x 를 세워 y=0 일 때의 시간 125분(2시간 5분)을 구하는 함숫값 문항이다.",
+          "problemType": "배터리 잔량 관계를 일차함수 y = 100 - 4/5x 로 모델링하여 완전히 방전되는 125분을 구하는 일차함수 활용 문제이므로 PT_M2_LINEAR_FUNCTION을 선택함.",
+          "difficulty": "5분마다 4% 감소에서 125분을 계산해 2시간 5분을 구하는 2단계 기본 활용 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_APPLIED_WORD_PROBLEMS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "분당 감소율 4/5%로 일차함수 y = 100 - (4/5)x를 세운 뒤 y = 0이 되는 x = 125분을 시·분으로 환산한다.",
       "decisiveStep": "100 - (4/5)x = 0에서 x = 125분 = 2시간 5분을 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "일정한 감소율로 일차함수 식을 세워 절편을 구하고 시간 단위로 바꾸는 기본 활용 문항이다.",
+      "difficultyReason": "5분마다 4% 감소에서 125분을 계산해 2시간 5분을 구하는 2단계 기본 활용 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
         "templateKey": null,
-        "why": "일정한 비율로 감소하는 양의 소진 시간 구하기"
+        "why": "배터리 잔량 관계를 일차함수 y = 100 - 4/5x 로 모델링하여 완전히 방전되는 125분을 구하는 일차함수 활용 문제이므로 PT_M2_LINEAR_FUNCTION을 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_a82cb2296ad229a9994ad90950b1ec00fa00b7aa9580e9e6c95e3e44cc80bb55",
@@ -856,9 +1368,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
         "subUnit": "일차함수와 일차방정식의 관계",
-        "conceptClusterKey": "M2-04-LINEAR_EQ_GRAPH_PROPERTIES",
+        "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
         "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
-        "templateKey": "",
+        "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
         "crossConceptKeys": [
           "CC_SLOPE_AND_INTERCEPT",
           "CC_QUADRANTS"
@@ -878,20 +1390,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-172"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 일차방정식의 관계",
+          "l3": "방정식과 그래프",
+          "l4": "일차방정식의 그래프",
+          "recordId": "M2-RPM-172"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+        "rpmPrimaryL3": "방정식과 그래프",
+        "rpmPrimaryL4": "일차방정식의 그래프",
+        "rpmPrimaryRecordId": "M2-RPM-172",
+        "difficultyBasis": "-4x + 3y + 2 = 0 에서 기울기 4/3 와 y절편 -2/3 를 구해 보기를 검토하는 2단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_EQUATION: 다음 중 일차방정식 $-4x + 3y + 2 = 0$의 그래프에 대한 설명으로 옳은 것을 모두 고르면?",
+          "curriculum": "M2-RPM-172: 일차방정식 -4x + 3y + 2 = 0 을 y = 4/3x - 2/3 로 고쳐 기울기와 절편, 사분면을 판정하는 일차방정식의 그래프 문항이다.",
+          "problemType": "일차방정식 -4x + 3y + 2 = 0 의 그래프 기울기 4/3, 절편, 사분면 성질의 참·거짓을 종합 판정하는 문제이므로 PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES를 선택함.",
+          "difficulty": "-4x + 3y + 2 = 0 에서 기울기 4/3 와 y절편 -2/3 를 구해 보기를 검토하는 2단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SLOPE_AND_INTERCEPT, CC_QUADRANTS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "일차방정식을 y = (4/3)x - 2/3 꼴로 바꾼 뒤 절편, 증가성, 평행, 사분면, 지나는 점을 모두 점검한다.",
       "decisiveStep": "기울기 4/3 > 0과 y절편 -2/3 < 0으로부터 ②(증가)와 ④(제2사분면 미통과)를 고른다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "일차방정식을 표준형으로 고친 뒤 5가지 그래프 성질을 각각 검증해야 한다.",
+      "difficultyReason": "-4x + 3y + 2 = 0 에서 기울기 4/3 와 y절편 -2/3 를 구해 보기를 검토하는 2단계 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
-        "templateKey": null,
-        "why": "일차방정식 그래프 성질 복수 정답 판별"
+        "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+        "why": "일차방정식 -4x + 3y + 2 = 0 의 그래프 기울기 4/3, 절편, 사분면 성질의 참·거짓을 종합 판정하는 문제이므로 PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES를 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_6b92ebaeced3a8667f443c770b60d4edc692f052ce38622c4644ebf5f72aabf6",
@@ -908,9 +1452,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
         "subUnit": "일차함수와 일차방정식의 관계",
-        "conceptClusterKey": "M2-04-TRIANGLE_AREA_REVERSE_LINE",
+        "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
         "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
-        "templateKey": "",
+        "templateKey": "TPL_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA_INTERSECTION",
         "crossConceptKeys": [
           "CC_POLYGON_AREA",
           "CC_INTERSECTION_OF_TWO_GRAPHS",
@@ -933,20 +1477,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-176"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "넓이",
+          "recordId": "M2-RPM-176"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+        "rpmPrimaryL3": "그래프 활용",
+        "rpmPrimaryL4": "넓이",
+        "rpmPrimaryRecordId": "M2-RPM-176",
+        "difficultyBasis": "y = -2x + 11 과 교점 C(4, 3) 및 삼각형 넓이 8 로부터 y_A = 7, k = 2 를 구해 a+b+k = -3 을 도출하는 3단계 발전 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_EQUATION: 세 직선 $y = -2x + 11$, $ax + y + b = 0$, $y = 3$으로 둘러싸인 삼각형 $ABC$에 대하여",
+          "curriculum": "M2-RPM-176: 세 직선 y = -2x + 11, ax + y + b = 0, y = 3 이 둘러싼 삼각형 ABC 의 넓이 8 을 이용해 a, b, k 를 결정하는 넓이 문항이다.",
+          "problemType": "직선 y = -2x + 11 과 y = 3 의 교점과 넓이 8 로부터 점 A(k, 7) 과 직선 ax + y + b = 0 을 결정하는 직선과 둘러싸인 넓이 유형이므로 PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA를 선택함.",
+          "difficulty": "y = -2x + 11 과 교점 C(4, 3) 및 삼각형 넓이 8 로부터 y_A = 7, k = 2 를 구해 a+b+k = -3 을 도출하는 3단계 발전 문항이다.",
+          "condition": "COND_POSITIVE: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_POLYGON_AREA, CC_INTERSECTION_OF_TWO_GRAPHS, CC_COEFFICIENT_DETERMINATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "B(0, 3)과 C(4, 3)에서 밑변 4를 구하고 넓이 8로부터 A의 좌표 (2, 7)을 역산한 뒤 두 점 A, B로 a, b를 구한다.",
       "decisiveStep": "넓이 조건에서 y_A = 7, k = 2를 확정하고 B(0, 3), A(2, 7) 대입으로 a = -2, b = -3을 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "교점 B, C로 밑변을 구한 뒤 넓이로 꼭짓점 A를 역산하고 다시 직선 계수 a, b를 구하는 3단계 문항이다.",
+      "difficultyReason": "y = -2x + 11 과 교점 C(4, 3) 및 삼각형 넓이 8 로부터 y_A = 7, k = 2 를 구해 a+b+k = -3 을 도출하는 3단계 발전 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
-        "templateKey": null,
-        "why": "삼각형 넓이 조건으로부터 직선 계수 역산"
+        "templateKey": "TPL_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA_INTERSECTION",
+        "why": "직선 y = -2x + 11 과 y = 3 의 교점과 넓이 8 로부터 점 A(k, 7) 과 직선 ax + y + b = 0 을 결정하는 직선과 둘러싸인 넓이 유형이므로 PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA를 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_4a607b94fd2199cf41b40948a6a5b5185be128520434ec2270cbc0439c8ce809",
@@ -963,15 +1539,15 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
         "subUnit": "일차함수와 일차방정식의 관계",
-        "conceptClusterKey": "M2-04-VERTICAL_LINE_SAME_X",
+        "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
         "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
-        "templateKey": "",
+        "templateKey": "TPL_M2_FIND_VERTICAL_LINE_EQUATION_FROM_POINT",
         "crossConceptKeys": [
           "CC_EQUATIONS_PARALLEL_TO_AXES"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 19,
@@ -984,20 +1560,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-173"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 일차방정식의 관계",
+          "l3": "방정식과 그래프",
+          "l4": "x축·y축에 평행한 직선",
+          "recordId": "M2-RPM-173"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+        "rpmPrimaryL3": "방정식과 그래프",
+        "rpmPrimaryL4": "x축·y축에 평행한 직선",
+        "rpmPrimaryRecordId": "M2-RPM-173",
+        "difficultyBasis": "3a = -a + 12 에서 4a = 12 로 a = 3 을 바로 구하는 2단계 기본 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_EQUATION: 두 점 $(3a,\\ a + 2)$, $(-a + 12,\\ 7)$을 지나는 직선이 $y$축에 평행할 때, $a$의 값은?",
+          "curriculum": "M2-RPM-173: 두 점 (3a, a+2) 와 (-a+12, 7) 을 지나는 직선이 y축에 평행할 때 3a = -a + 12 로 a 를 구하는 평행선 문항이다.",
+          "problemType": "y축에 평행한 직선은 두 점의 x좌표가 같아야 하므로 3a = -a + 12 에서 4a = 12 를 푸는 y축 평행 직선 유형이므로 PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS를 선택함.",
+          "difficulty": "3a = -a + 12 에서 4a = 12 로 a = 3 을 바로 구하는 2단계 기본 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_EQUATIONS_PARALLEL_TO_AXES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "y축에 평행한 직선 위의 두 점은 x좌표가 같다는 성질로 3a = -a + 12를 푼다.",
       "decisiveStep": "3a = -a + 12에서 a = 3을 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "y축 평행 조건(x좌표 같음)을 바로 등식으로 세우는 1단계 문항이다.",
+      "difficultyReason": "3a = -a + 12 에서 4a = 12 로 a = 3 을 바로 구하는 2단계 기본 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
-        "templateKey": null,
-        "why": "y축에 평행한 직선 위 두 점의 x좌표 일치 조건"
+        "templateKey": "TPL_M2_FIND_VERTICAL_LINE_EQUATION_FROM_POINT",
+        "why": "y축에 평행한 직선은 두 점의 x좌표가 같아야 하므로 3a = -a + 12 에서 4a = 12 를 푸는 y축 평행 직선 유형이므로 PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS를 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_bc409fb65c935f7e8f3a994d80b4e9022870681ed5e50520ed7eb4b44de8f591",
@@ -1014,9 +1622,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
         "subUnit": "일차함수와 일차방정식의 관계",
-        "conceptClusterKey": "M2-04-COINCIDENT_AND_PARALLEL_FORBIDDEN_SUM",
-        "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+        "templateKey": "TPL_M2_FIND_PARAMETER_FOR_NO_SOLUTION_SYSTEM",
         "crossConceptKeys": [
           "CC_COEFFICIENT_RATIOS"
         ],
@@ -1035,20 +1643,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-175"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "두 직선의 평행·일치",
+          "recordId": "M2-RPM-175"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+        "rpmPrimaryL3": "두 직선의 관계",
+        "rpmPrimaryL4": "두 직선의 평행·일치",
+        "rpmPrimaryRecordId": "M2-RPM-175",
+        "difficultyBasis": "-x + 2y = 4 에서 a = 2 및 3b != 12 로 b != 4 를 찾아 a+b 가 6 이 될 수 없음을 판별하는 2단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_EQUATION: 일차방정식 $-x + 2y = 4$의 그래프는 $ax - 4y = -8$의 그래프와는 일치하고",
+          "curriculum": "M2-RPM-175: -x + 2y = 4 와 ax - 4y = -8 의 일치 조건 및 -3x + 6y = 3b 와의 평행 조건으로 계수를 결정하는 두 직선의 평행·일치 문항이다.",
+          "problemType": "-x + 2y = 4 와 일치하는 조건에서 ax - 4y = -8 과 비교해 a = 2, 만나지 않는 조건에서 3b != 12 를 구하여 a + b != 6 임을 판단하는 해가 없을 조건 유형이므로 PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION을 선택함.",
+          "difficulty": "-x + 2y = 4 에서 a = 2 및 3b != 12 로 b != 4 를 찾아 a+b 가 6 이 될 수 없음을 판별하는 2단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_COEFFICIENT_RATIOS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "일치 조건으로 a = 2를 확정하고, 평행(만나지 않음) 조건으로 b != 4를 구해 불가능한 a + b 값을 찾는다.",
       "decisiveStep": "a = 2, b != 4로부터 a + b != 6임을 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "일치 조건과 평행(불일치) 조건을 동시에 해석해 불가능한 합을 찾아야 한다.",
+      "difficultyReason": "-x + 2y = 4 에서 a = 2 및 3b != 12 로 b != 4 를 찾아 a+b 가 6 이 될 수 없음을 판별하는 2단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
-        "templateKey": null,
-        "why": "일치와 평행 조건을 동시에 만족하는 상수 합 제외값"
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+        "templateKey": "TPL_M2_FIND_PARAMETER_FOR_NO_SOLUTION_SYSTEM",
+        "why": "-x + 2y = 4 와 일치하는 조건에서 ax - 4y = -8 과 비교해 a = 2, 만나지 않는 조건에서 3b != 12 를 구하여 a + b != 6 임을 판단하는 해가 없을 조건 유형이므로 PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION을 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_cbeb905f4efb8f96ca23bd85805479433078471efba7425d34e002855ebacfa4",
@@ -1065,8 +1705,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "subUnit": "연립일차방정식",
-        "conceptClusterKey": "M2-03-RELATION_BETWEEN_VARS_PARAM",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_COEFFICIENT_DETERMINATION"
@@ -1086,20 +1726,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-150"
+        ],
+        "rpmPrimary": {
+          "l1": "연립일차방정식",
+          "l2": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "해가 주어진 연립방정식",
+          "recordId": "M2-RPM-150"
+        },
+        "rpmPrimaryL1": "연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식",
+        "rpmPrimaryL3": "해와 계수",
+        "rpmPrimaryL4": "해가 주어진 연립방정식",
+        "rpmPrimaryRecordId": "M2-RPM-150",
+        "difficultyBasis": "x = y - 4 를 x + 2y = -7 에 대입하고 2k = -12 를 풀어 k = -6 을 구하는 2단계 기본 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION: 연립방정식 $\\begin{cases} x + 2y = -7 \\ 3x - 2y = 2k - 1 \\end{cases}$를 만족시키는",
+          "curriculum": "M2-RPM-150: x = y - 4 조건으로 연립방정식 x + 2y = -7 의 해 (-5, -1) 을 구하고 3x - 2y = 2k - 1 에 대입해 2k = -12 로부터 k = -6 을 구하는 문항이다.",
+          "problemType": "조건 x = y - 4 를 연립방정식 cases x + 2y = -7 과 연립하여 해를 구하고 2k = -12 에서 미지의 상수 k 를 결정하는 문제이므로 PT_M2_LINEAR_SYSTEM을 선택함.",
+          "difficulty": "x = y - 4 를 x + 2y = -7 에 대입하고 2k = -12 를 풀어 k = -6 을 구하는 2단계 기본 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_COEFFICIENT_DETERMINATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "x = y - 4를 첫째 식에 대입해 x = -5, y = -1을 구한 뒤 둘째 식에 대입해 k를 구한다.",
       "decisiveStep": "x = -5, y = -1을 3x - 2y = 2k - 1에 대입해 k = -6을 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "문장 조건 x = y - 4를 세워 해를 구하고 둘째 식의 상수 k를 구해야 한다.",
+      "difficultyReason": "x = y - 4 를 x + 2y = -7 에 대입하고 2k = -12 를 풀어 k = -6 을 구하는 2단계 기본 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": null,
-        "why": "두 변수의 관계식이 주어진 연립방정식 상수 구하기"
+        "why": "조건 x = y - 4 를 연립방정식 cases x + 2y = -7 과 연립하여 해를 구하고 2k = -12 에서 미지의 상수 k 를 결정하는 문제이므로 PT_M2_LINEAR_SYSTEM을 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_7664b8982b43e711ba5cdcc94fd0d9a66d8593e58ee947759c64ea3edc8dc4b2",
@@ -1116,9 +1788,9 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
         "subUnit": "연립일차방정식의 활용",
-        "conceptClusterKey": "M2-03-WORD_ROCK_PAPER_SCISSORS_STAIRS",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION_WORD_PROBLEM",
         "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
-        "templateKey": "",
+        "templateKey": "TPL_M2_SOLVE_ROCK_PAPER_SCISSORS_STAIR_PROBLEM",
         "crossConceptKeys": [
           "CC_INVERSE_WIN_LOSS_RELATIONS",
           "CC_APPLIED_WORD_PROBLEMS"
@@ -1127,7 +1799,7 @@
           "COND_NATURAL_NUMBER"
         ],
         "integrationPattern": "NONE",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 22,
@@ -1140,20 +1812,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-156"
+        ],
+        "rpmPrimary": {
+          "l1": "연립일차방정식",
+          "l2": "연립일차방정식의 활용",
+          "l3": "수와 개수",
+          "l4": "두 수 관계",
+          "recordId": "M2-RPM-156"
+        },
+        "rpmPrimaryL1": "연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식의 활용",
+        "rpmPrimaryL3": "수와 개수",
+        "rpmPrimaryL4": "두 수 관계",
+        "rpmPrimaryRecordId": "M2-RPM-156",
+        "difficultyBasis": "이긴 횟수와 진 횟수가 상대방과 반대임을 파악해 4x - 2y = 24 와 4y - 2x = 12 를 연립하는 3단계 활용 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD: 지민이와 태호가 계단에서 가위바위보를 하여 이기면 $4$계단을 올라가고",
+          "curriculum": "M2-RPM-156: 가위바위보 계단 게임에서 4x - 2y = 24 와 4y - 2x = 12 연립방정식을 세워 태호가 진 횟수 8회를 구하는 문항이다.",
+          "problemType": "가위바위보 계단 이동 관계를 태호 24계단, 지민 12계단으로 연립방정식을 모델링하여 횟수를 구하는 문제이므로 PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME을 선택함.",
+          "difficulty": "이긴 횟수와 진 횟수가 상대방과 반대임을 파악해 4x - 2y = 24 와 4y - 2x = 12 를 연립하는 3단계 활용 문항이다.",
+          "condition": "COND_NATURAL_NUMBER: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_INVERSE_WIN_LOSS_RELATIONS, CC_APPLIED_WORD_PROBLEMS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "태호의 승·패 횟수 x, y가 지민의 패·승 횟수와 같음을 이용해 두 계단 변화 식을 연립한다.",
       "decisiveStep": "2x - y = 12와 -x + 2y = 6을 연립하여 태호가 진 횟수 y = 8을 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "상대방의 승패가 뒤바뀐다는 점을 이용해 연립방정식을 세워 풀어야 한다.",
+      "difficultyReason": "이긴 횟수와 진 횟수가 상대방과 반대임을 파악해 4x - 2y = 24 와 4y - 2x = 12 를 연립하는 3단계 활용 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
-        "templateKey": null,
-        "why": "가위바위보 계단 게임 연립방정식 활용"
+        "templateKey": "TPL_M2_SOLVE_ROCK_PAPER_SCISSORS_STAIR_PROBLEM",
+        "why": "가위바위보 계단 이동 관계를 태호 24계단, 지민 12계단으로 연립방정식을 모델링하여 횟수를 구하는 문제이므로 PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME을 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_5acfa48bd2fb182c5fa8a2c7ddbc0987f31a29e1f693ab2816fbf1d00c07aff1",
@@ -1170,16 +1874,16 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-MISREAD_SLOPE_INTERCEPT_RECOVERY",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_TWO_POINTS",
         "crossConceptKeys": [
           "CC_ERROR_CORRECTION",
           "CC_SLOPE_AND_INTERCEPT"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 23,
@@ -1192,20 +1896,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-170"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기",
+          "recordId": "M2-RPM-170"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "식 구하기",
+        "rpmPrimaryL4": "두 점으로 식 구하기",
+        "rpmPrimaryRecordId": "M2-RPM-170",
+        "difficultyBasis": "민수의 두 점에서 y절편 8, 수진의 두 점에서 기울기 2/5 를 각각 구해 y = 2/5x + 8 과 k = 10 을 도출하는 3단계 복원 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: 민수와 수진이가 어떤 일차함수의 식을 보고 그래프를 그리는데",
+          "curriculum": "M2-RPM-170: 두 점 (3, -1), (1, 5) 로 y절편 8 을 복원하고 (5, 0), (0, -2) 로 기울기 2/5 를 복원해 식 y = 2/5x + 8 과 k = 10 을 구하는 문항이다.",
+          "problemType": "잘못 본 두 점 조건으로부터 바른 기울기와 y절편을 각각 복원하여 직선의 방정식을 결정하고 k = 10 을 구하는 유형이므로 PT_LINE_EQUATION을 선택함.",
+          "difficulty": "민수의 두 점에서 y절편 8, 수진의 두 점에서 기울기 2/5 를 각각 구해 y = 2/5x + 8 과 k = 10 을 도출하는 3단계 복원 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_ERROR_CORRECTION, CC_SLOPE_AND_INTERCEPT: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "민수의 직선에서 바른 y절편 8을, 수진의 직선에서 바른 기울기 2/5를 각각 복원해 식을 세운 뒤 (5, k)를 대입한다.",
       "decisiveStep": "y = (2/5)x + 8을 복원하고 x = 5를 대입해 k = 10을 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "두 사람이 바르게 본 요소를 각각 구해 결합한 뒤 지나는 점의 좌표까지 계산해야 한다.",
+      "difficultyReason": "민수의 두 점에서 y절편 8, 수진의 두 점에서 기울기 2/5 를 각각 구해 y = 2/5x + 8 과 k = 10 을 도출하는 3단계 복원 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "잘못 보고 그린 두 그래프에서 바른 일차함수 복원"
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_TWO_POINTS",
+        "why": "잘못 본 두 점 조건으로부터 바른 기울기와 y절편을 각각 복원하여 직선의 방정식을 결정하고 k = 10 을 구하는 유형이므로 PT_LINE_EQUATION을 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_7670a3e2091195fd53802564b43bf191f92ad517cf80035563ba2addb43d7912",
@@ -1222,9 +1958,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
         "subUnit": "일차함수와 일차방정식의 관계",
-        "conceptClusterKey": "M2-04-NO_TRIANGLE_THREE_LINES",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
+        "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+        "templateKey": "TPL_LINE_INTERSECTION_CONDITION_TRIANGLE_AVOID",
         "crossConceptKeys": [
           "CC_INTERSECTION_OF_TWO_GRAPHS",
           "CC_COEFFICIENT_DETERMINATION"
@@ -1244,20 +1980,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-14",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-175"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "두 직선의 평행·일치",
+          "recordId": "M2-RPM-175"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+        "rpmPrimaryL3": "두 직선의 관계",
+        "rpmPrimaryL4": "두 직선의 평행·일치",
+        "rpmPrimaryRecordId": "M2-RPM-175",
+        "difficultyBasis": "ax - y + 4 = 0 의 평행 조건(a=1, -2)과 두 직선 교점 (-3, 0) 을 지나는 조건(a=4/3)을 빠짐없이 분석해야 하는 3단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_EQUATION: 세 일차방정식 $-x + y - 3 = 0$, $2x + y + 6 = 0$, $ax - y + 4 = 0$의 그래프가 삼각형을 이루지 않도록",
+          "curriculum": "M2-RPM-175: ax - y + 4 = 0 이 다른 두 직선과 평행할 조건 a=1, -2 와 교점 (-3, 0) 지나는 조건 a=4/3 를 구하는 위치 관계 문항이다.",
+          "problemType": "직선 ax - y + 4 = 0 이 삼각형을 이루지 않도록 평행 조건과 교점 조건을 나누어 a = -2, 1, 4/3 를 구하는 직선의 교점과 위치 조건 유형이므로 PT_LINE_INTERSECTION_CONDITION을 선택함.",
+          "difficulty": "ax - y + 4 = 0 의 평행 조건(a=1, -2)과 두 직선 교점 (-3, 0) 을 지나는 조건(a=4/3)을 빠짐없이 분석해야 하는 3단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_INTERSECTION_OF_TWO_GRAPHS, CC_COEFFICIENT_DETERMINATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "세 직선이 삼각형을 이루지 않는 조건인 평행한 경우(a = 1, -2)와 한 점에서 만나는 경우(교점 (-3, 0) 통과)로 나누어 구한다.",
       "decisiveStep": "평행 조건 두 개(a = 1, -2)와 두 직선 교점 (-3, 0) 대입 조건(a = 4/3)을 모두 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "평행한 2가지 경우와 세 직선이 한 점에서 만나는 1가지 경우를 모두 분류해 3개의 값을 구해야 한다.",
+      "difficultyReason": "ax - y + 4 = 0 의 평행 조건(a=1, -2)과 두 직선 교점 (-3, 0) 을 지나는 조건(a=4/3)을 빠짐없이 분석해야 하는 3단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "세 직선이 삼각형을 이루지 않을 조건"
+        "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+        "templateKey": "TPL_LINE_INTERSECTION_CONDITION_TRIANGLE_AVOID",
+        "why": "직선 ax - y + 4 = 0 이 삼각형을 이루지 않도록 평행 조건과 교점 조건을 나누어 a = -2, 1, 4/3 를 구하는 직선의 교점과 위치 조건 유형이므로 PT_LINE_INTERSECTION_CONDITION을 선택함."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     }
   ]
 }

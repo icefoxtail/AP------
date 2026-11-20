@@ -17,7 +17,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "FUNCTION_VALUE_EVALUATION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -38,8 +38,8 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATION"
     ],
@@ -47,6 +47,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "함숫값",
+    "rpmPrimaryRecordId": "M2-RPM-046",
     "sourceQid": 1,
     "variationType": "NUMERIC"
   },
@@ -61,15 +66,16 @@ window.questionBank = [
     "standardUnitKey": "M2-03",
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "M2-03-LINEAR_SYSTEM_BASIC",
-    "subUnit": "",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_EQUATION_SOLUTION_SUBSTITUTION",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "연립일차방정식"
     ],
     "wide": false,
     "content": "일차방정식 $3x-2y=k$가 $x=4$, $y=1$을 해로 가질 때, 상수 $k$의 값은? [3점]",
@@ -85,7 +91,7 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_PROBABILITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATION"
@@ -94,6 +100,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "연립방정식의 풀이",
+    "rpmPrimaryL4": "가감법",
+    "rpmPrimaryRecordId": "M2-RPM-030",
     "sourceQid": 2,
     "variationType": "NUMERIC"
   },
@@ -112,7 +123,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_FUNCTION_TRANSLATION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -133,8 +144,8 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATION"
     ],
@@ -142,6 +153,11 @@ window.questionBank = [
       "COND_INTEGER"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 그래프",
+    "rpmPrimaryL4": "기울기·절편",
+    "rpmPrimaryRecordId": "M2-RPM-048",
     "sourceQid": 3,
     "variationType": "NUMERIC"
   },
@@ -156,15 +172,16 @@ window.questionBank = [
     "standardUnitKey": "M2-03",
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "M2-03-LINEAR_SYSTEM_BASIC",
-    "subUnit": "",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_SYSTEM_ADDITION_METHOD",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "연립일차방정식"
     ],
     "wide": false,
     "content": "연립방정식 $\\begin{cases}x+2y=8\\3x-2y=0\\end{cases}$의 해가 $(a, b)$일 때, $a+b$의 값은? [3점]",
@@ -180,7 +197,7 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_PROBABILITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATION"
@@ -189,6 +206,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "연립방정식의 풀이",
+    "rpmPrimaryL4": "가감법",
+    "rpmPrimaryRecordId": "M2-RPM-030",
     "sourceQid": 4,
     "variationType": "NUMERIC"
   },
@@ -207,7 +229,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "FUNCTION_DEFINITION_JUDGMENT",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -228,8 +250,8 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_DIVISOR"
     ],
@@ -237,6 +259,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "함숫값",
+    "rpmPrimaryRecordId": "M2-RPM-046",
     "sourceQid": 5,
     "variationType": "STRUCTURAL"
   },
@@ -255,7 +282,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_FUNCTION_INTERCEPTS",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -276,8 +303,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATION"
     ],
@@ -285,6 +312,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 그래프",
+    "rpmPrimaryL4": "기울기·절편",
+    "rpmPrimaryRecordId": "M2-RPM-048",
     "sourceQid": 6,
     "variationType": "NUMERIC"
   },
@@ -299,15 +331,16 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY_SOLVE",
-    "subUnit": "",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "FRACTIONAL_LINEAR_INEQUALITY",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "일차부등식"
     ],
     "wide": false,
     "content": "일차부등식 $\\dfrac{1}{2}x - \\dfrac{x-3}{3} < \\dfrac{5}{6}$를 풀면? [4점]",
@@ -323,8 +356,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+    "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
     "crossConceptKeys": [
       "CC_FRACTION_ARITHMETIC"
     ],
@@ -332,6 +365,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "일차부등식의 풀이",
+    "rpmPrimaryL4": "기본형",
+    "rpmPrimaryRecordId": "M2-RPM-020",
     "sourceQid": 7,
     "variationType": "NUMERIC"
   },
@@ -350,7 +388,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_FUNCTION_IDENTIFICATION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -371,8 +409,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_POLYNOMIAL_EXPANSION"
     ],
@@ -380,6 +418,11 @@ window.questionBank = [
       "COND_REAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "함숫값",
+    "rpmPrimaryRecordId": "M2-RPM-046",
     "sourceQid": 8,
     "variationType": "STRUCTURAL"
   },
@@ -394,15 +437,16 @@ window.questionBank = [
     "standardUnitKey": "M2-03",
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "M2-03-LINEAR_SYSTEM_APPLICATION",
-    "subUnit": "",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SPEED_DISTANCE_TIME_WORD_PROBLEM",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "연립일차방정식"
     ],
     "wide": false,
     "content": "민우는 총 거리가 $8\\text{ km}$인 산책로를 걷는데, 처음에는 시속 $2\\text{ km}$로 걷다가 도중에 시속 $4\\text{ km}$로 걸어서 총 $3$시간 만에 산책을 마쳤다. 시속 $4\\text{ km}$로 걸은 거리는? [4점]",
@@ -418,7 +462,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_PROBABILITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_FRACTION_ARITHMETIC"
@@ -427,6 +471,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "연립방정식의 풀이",
+    "rpmPrimaryL4": "가감법",
+    "rpmPrimaryRecordId": "M2-RPM-030",
     "sourceQid": 9,
     "variationType": "NUMERIC"
   },
@@ -441,15 +490,16 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY_APPLICATION",
-    "subUnit": "",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "GEOMETRIC_PERIMETER_INEQUALITY",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "일차부등식"
     ],
     "wide": false,
     "content": "가로의 길이가 세로의 길이보다 $4\\text{ cm}$ 더 긴 직사각형이 있다. 이 직사각형의 둘레의 길이가 $64\\text{ cm}$ 이하가 되도록 할 때, 세로의 길이의 최댓값은? [4점]",
@@ -465,8 +515,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+    "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
     "crossConceptKeys": [
       "CC_PERIMETER"
     ],
@@ -474,6 +524,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "부등식의 성질",
+    "rpmPrimaryL4": "부등식의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-018",
     "sourceQid": 10,
     "variationType": "NUMERIC"
   },
@@ -492,7 +547,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_FUNCTION_SLOPE_FROM_INTERCEPTS",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -513,8 +568,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATION"
     ],
@@ -522,13 +577,18 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 그래프",
+    "rpmPrimaryL4": "기울기·절편",
+    "rpmPrimaryRecordId": "M2-RPM-048",
     "sourceQid": 11,
     "variationType": "NUMERIC"
   },
   {
     "id": 12,
-    "category": "일차함수와 그래프",
-    "originalCategory": "일차함수와 그래프",
+    "category": "일차함수의 뜻과 그래프",
+    "originalCategory": "일차함수의 뜻과 그래프",
     "standardCourse": "중2",
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -536,15 +596,16 @@ window.questionBank = [
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQ",
-    "subUnit": "",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "PARALLEL_LINEAR_EQUATION_REPRESENTATION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "일차함수의 뜻과 그래프"
     ],
     "wide": false,
     "content": "일차방정식 $3x + y - 5 = 0$의 그래프와 평행한 일차함수의 식은? [4점]",
@@ -560,8 +621,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATION"
     ],
@@ -569,6 +630,11 @@ window.questionBank = [
       "COND_INTEGER"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "함숫값",
+    "rpmPrimaryRecordId": "M2-RPM-046",
     "sourceQid": 12,
     "variationType": "NUMERIC"
   },
@@ -587,7 +653,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "COINCIDENT_LINES_CONDITION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -608,8 +674,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATION"
     ],
@@ -617,13 +683,18 @@ window.questionBank = [
       "COND_INTEGER"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "함숫값",
+    "rpmPrimaryRecordId": "M2-RPM-046",
     "sourceQid": 13,
     "variationType": "NUMERIC"
   },
   {
     "id": 14,
-    "category": "일차함수와 그래프",
-    "originalCategory": "일차함수와 그래프",
+    "category": "일차함수의 뜻과 그래프",
+    "originalCategory": "일차함수의 뜻과 그래프",
     "standardCourse": "중2",
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -631,15 +702,16 @@ window.questionBank = [
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQ",
-    "subUnit": "",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "VERTICAL_HORIZONTAL_LINE_EQUATION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "일차함수의 뜻과 그래프"
     ],
     "wide": false,
     "content": "점 $(-3, 5)$를 지나고, 일차방정식 $x = 1$의 그래프와 평행한 직선의 방정식은? [4점]",
@@ -655,8 +727,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_COORDINATE_PLANE"
     ],
@@ -664,6 +736,11 @@ window.questionBank = [
       "COND_INTEGER"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "함숫값",
+    "rpmPrimaryRecordId": "M2-RPM-046",
     "sourceQid": 14,
     "variationType": "NUMERIC"
   },
@@ -678,15 +755,16 @@ window.questionBank = [
     "standardUnitKey": "M2-03",
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "M2-03-LINEAR_SYSTEM_BASIC",
-    "subUnit": "",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "NATURAL_SOLUTION_ENUMERATION",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "연립일차방정식"
     ],
     "wide": false,
     "content": "$x, y$가 자연수일 때, 일차방정식 $2x + 3y = 31$을 만족시키는 순서쌍 $(x, y)$의 개수는? [4점]",
@@ -702,7 +780,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_PROBABILITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_PARITY"
@@ -711,6 +789,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "연립방정식의 풀이",
+    "rpmPrimaryL4": "가감법",
+    "rpmPrimaryRecordId": "M2-RPM-030",
     "sourceQid": 15,
     "variationType": "NUMERIC"
   },
@@ -725,15 +808,16 @@ window.questionBank = [
     "standardUnitKey": "M2-03",
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "M2-03-LINEAR_SYSTEM_SOLVE",
-    "subUnit": "",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "INFINITELY_MANY_SOLUTIONS_CONDITION",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "연립일차방정식"
     ],
     "wide": false,
     "content": "두 상수 $a, b$에 대하여 연립방정식 $\\begin{cases} 6x - 4y = 8 \\ ax + 2y = b \\end{cases}$의 해가 무수히 많을 때, $ab$의 값은? [5점]",
@@ -749,7 +833,7 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_PROBABILITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_RATIO"
@@ -758,13 +842,18 @@ window.questionBank = [
       "COND_INTEGER"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "연립방정식의 풀이",
+    "rpmPrimaryL4": "가감법",
+    "rpmPrimaryRecordId": "M2-RPM-030",
     "sourceQid": 16,
     "variationType": "NUMERIC"
   },
   {
     "id": 17,
-    "category": "일차함수와 그래프",
-    "originalCategory": "일차함수와 그래프",
+    "category": "일차함수의 뜻과 그래프",
+    "originalCategory": "일차함수의 뜻과 그래프",
     "standardCourse": "중2",
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -772,15 +861,16 @@ window.questionBank = [
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQ",
-    "subUnit": "",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_GRAPH_QUADRANTS_SIGN_DETERMINATION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "일차함수의 뜻과 그래프"
     ],
     "wide": false,
     "content": "직선 $ax + by + 1 = 0$의 그래프가 제$3$사분면을 지나지 않을 때, 일차함수 $y = ax + b$의 그래프가 지나지 않는 사분면은? [5점]",
@@ -796,8 +886,8 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_COORDINATE_PLANE"
     ],
@@ -805,13 +895,18 @@ window.questionBank = [
       "COND_REAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "함숫값",
+    "rpmPrimaryRecordId": "M2-RPM-046",
     "sourceQid": 17,
     "variationType": "STRUCTURAL"
   },
   {
     "id": 18,
-    "category": "일차함수와 그래프",
-    "originalCategory": "일차함수와 그래프",
+    "category": "일차함수의 뜻과 그래프",
+    "originalCategory": "일차함수의 뜻과 그래프",
     "standardCourse": "중2",
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -819,15 +914,16 @@ window.questionBank = [
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_APPLICATION",
-    "subUnit": "",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SPEED_DISTANCE_LINEAR_FUNCTION_MEETING",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "일차함수의 뜻과 그래프"
     ],
     "wide": false,
     "content": "집에서 $1500\\text{ m}$ 떨어진 공원까지 가는데 동생은 걸어서 가고, 형은 동생이 출발한 지 $4$분 후에 킥보드를 타고 출발하였다. 형은 출발한 지 $6$분 만에 공원에 도착하였다. 형과 동생이 집에서 $1000\\text{ m}$ 떨어진 지점에서 만났다면, 동생이 공원까지 가는 데 걸린 시간은? [5점]",
@@ -843,8 +939,8 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_FRACTION_ARITHMETIC"
     ],
@@ -852,6 +948,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "함숫값",
+    "rpmPrimaryRecordId": "M2-RPM-046",
     "sourceQid": 18,
     "variationType": "NUMERIC"
   },
@@ -866,15 +967,16 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY_SOLVE",
-    "subUnit": "",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "INEQUALITY_NATURAL_SOLUTION_COUNT_RANGE",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "일차부등식"
     ],
     "wide": false,
     "content": "일차부등식 $3x - a < 0$을 만족시키는 자연수 $x$의 개수가 $2$일 때, 상수 $a$의 값의 범위를 구하면? [5점]",
@@ -890,8 +992,8 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 3,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+    "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
     "crossConceptKeys": [
       "CC_NUMBER_LINE"
     ],
@@ -899,13 +1001,18 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "일차부등식의 풀이",
+    "rpmPrimaryL4": "기본형",
+    "rpmPrimaryRecordId": "M2-RPM-020",
     "sourceQid": 19,
     "variationType": "NUMERIC"
   },
   {
     "id": 20,
-    "category": "일차함수와 그래프",
-    "originalCategory": "일차함수와 그래프",
+    "category": "일차함수의 뜻과 그래프",
+    "originalCategory": "일차함수의 뜻과 그래프",
     "standardCourse": "중2",
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -913,15 +1020,16 @@ window.questionBank = [
     "standardUnitKey": "M2-04",
     "standardUnit": "일차함수와 그래프",
     "standardUnitOrder": 4,
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_APPLICATION",
-    "subUnit": "",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+    "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "RECTANGLE_INTERSECTION_AND_BISECTION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "객관식"
+      "객관식",
+      "일차함수의 뜻과 그래프"
     ],
     "wide": false,
     "content": "네 직선 $x=1$, $x=5$, $y=3$, $y=7$에 의해 둘러싸인 직사각형 모양의 도형이 있다. 일차함수 $y=ax-1$ ($a\\ne0$)의 그래프가 이 직사각형 모양의 도형과 만날 때, 보기에서 옳은 것을 모두 고른 것은? [5점]\n\n\n$$\n\\begin{aligned}\n&\\text{ㄱ. 직사각형 모양의 도형의 넓이는 } 16\\text{이다.} \\\n&\\text{ㄴ. } a\\text{의 최댓값을 } m\\text{, 최솟값을 } n\\text{이라 하면 } m = 10n\\text{이다.} \\\n&\\text{ㄷ. } a=2\\text{일 때 } y=ax-1\\text{의 그래프는 직사각형 모양의 도형의 넓이를 이등분한다.}\n\\end{aligned}\n$$",
@@ -937,8 +1045,8 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 3,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_CENTRAL_SYMMETRY"
     ],
@@ -946,6 +1054,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "함숫값",
+    "rpmPrimaryRecordId": "M2-RPM-046",
     "sourceQid": 20,
     "variationType": "STRUCTURAL"
   },
@@ -960,15 +1073,16 @@ window.questionBank = [
     "standardUnitKey": "M2-03",
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
-    "subUnitKey": "M2-03-LINEAR_SYSTEM_SOLVE",
-    "subUnit": "",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "GIVEN_ONE_VARIABLE_SOLUTION_DETERMINATION",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "연립일차방정식"
     ],
     "wide": false,
     "content": "연립방정식 $\\begin{cases}2x+3y=13\\4x-y=a+1\\end{cases}$을 만족시키는 $x$의 값이 $2$일 때, 상수 $a$의 값을 구하고 그 과정을 서술하시오. [4점]",
@@ -978,7 +1092,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_PROBABILITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATION"
@@ -987,6 +1101,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "연립방정식의 풀이",
+    "rpmPrimaryL4": "가감법",
+    "rpmPrimaryRecordId": "M2-RPM-030",
     "sourceQid": 21,
     "variationType": "NUMERIC"
   },
@@ -1005,7 +1124,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "TRANSLATED_LINE_POINT_SUBSTITUTION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1020,8 +1139,8 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATION"
     ],
@@ -1029,6 +1148,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 그래프",
+    "rpmPrimaryL4": "기울기·절편",
+    "rpmPrimaryRecordId": "M2-RPM-048",
     "sourceQid": 22,
     "variationType": "NUMERIC"
   },
@@ -1047,7 +1171,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "TWO_POINTS_LINEAR_EQUATION_FORMULATION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1062,8 +1186,8 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_COORDINATE_PLANE"
     ],
@@ -1071,6 +1195,11 @@ window.questionBank = [
       "COND_INTEGER"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "함숫값",
+    "rpmPrimaryRecordId": "M2-RPM-046",
     "sourceQid": 23,
     "variationType": "NUMERIC"
   },
@@ -1085,15 +1214,16 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "subUnitKey": "M2-02-LINEAR_INEQUALITY_APPLICATION",
-    "subUnit": "",
+    "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+    "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "GROUP_DISCOUNT_INEQUALITY_APPLICATION",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
-      "서술형"
+      "서술형",
+      "일차부등식"
     ],
     "wide": false,
     "content": "어느 미술관의 1인당 입장료는 $5000$원인데, $30$명 이상의 단체 관람객에게는 입장료의 $20\\,\\%$를 할인해 준다고 한다. $30$명 미만의 모임에서 몇 명 이상부터 $30$명의 단체 입장권을 구입하는 것이 더 유리한지(더 저렴한지) 구하고, 그 과정을 서술하시오. [6점]",
@@ -1103,8 +1233,8 @@ window.questionBank = [
     "score": 6,
     "points": 6,
     "difficultyBucket": 3,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+    "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
     "crossConceptKeys": [
       "CC_PERCENTAGE"
     ],
@@ -1112,6 +1242,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "부등식의 성질",
+    "rpmPrimaryL4": "부등식의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-018",
     "sourceQid": 24,
     "variationType": "NUMERIC"
   }

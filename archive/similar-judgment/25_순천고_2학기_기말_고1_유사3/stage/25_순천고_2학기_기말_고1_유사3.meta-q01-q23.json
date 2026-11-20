@@ -3,7 +3,7 @@
   "requestId": "25_순천고_2학기_기말_고1_유사3-candidate-v1",
   "examUid": "25_순천고_2학기_기말_고1_유사3",
   "sourceArchiveFile": "archive/exams/similar/high/h1/2final/25_순천고_2학기_기말_고1_유사3.js",
-  "expectedSourceBlobSha1": "a52b35754a9722b48163539e15312e4c02f5b2ec",
+  "expectedSourceBlobSha1": "04d1c49419467a0d3cbc178497dca4fdb207a5cb",
   "expectedQuestionCount": 23,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -24,20 +24,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "conceptClusterKey": "H22-C2-06-CORE",
+        "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+        "templateKey": "TPL_PROPOSITION_CONDITION_IDENTIFICATION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 1,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -47,19 +47,50 @@
           "sourceQid": 1,
           "variationType": "STRICT_VARIANT",
           "variationNote": "조건을 고르는 문제 → 거짓인 명제를 포함하여 참·거짓을 판별할 수 있는 명제를 고르는 문제로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-244"
+        ],
+        "rpmPrimary": {
+          "l1": "집합과 명제",
+          "l2": "명제",
+          "l3": "명제와 조건",
+          "l4": "명제의 참·거짓",
+          "recordId": "H1-RPM-244"
+        },
+        "rpmPrimaryL1": "집합과 명제",
+        "rpmPrimaryL2": "명제",
+        "rpmPrimaryL3": "명제와 조건",
+        "rpmPrimaryL4": "명제의 참·거짓",
+        "rpmPrimaryRecordId": "H1-RPM-244",
+        "difficultyBasis": "① 은 3^4=81, 4^3=64 의 비교만 하면 거짓인 명제이고 ② x=2, x=0 처럼 값을 넣어 나머지가 조건임을 알아보는 정의 확인이라 1단계이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-06 / H22-C2-06-CORE: 다음 중 명제인 것은?",
+          "curriculum": "H1-RPM-244: ① 3^4=81 과 4^3=64 의 비교는 거짓이라도 참·거짓이 정해진 명제이고 나머지는 값이나 기준에 따라 달라지는 조건·모호한 문장이라, 이 구별 단계가 명제의 참·거짓 행이다.",
+          "problemType": "보기 ①~⑤ 가운데 3^4=81, 4^3=64 처럼 참·거짓이 정해지면 명제, x=2, x=0 을 넣어 갈리면 조건이라 가려내는 것이 명제와 조건의 구별 템플릿이다.",
+          "difficulty": "① 은 3^4=81, 4^3=64 의 비교만 하면 거짓인 명제이고 ② x=2, x=0 처럼 값을 넣어 나머지가 조건임을 알아보는 정의 확인이라 1단계이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "① 은 3^4=81, 4^3=64 의 비교만 하면 거짓인 명제이고 ② x=2, x=0 처럼 값을 넣어 나머지가 조건임을 알아보는 정의 확인이라 1단계이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+        "templateKey": "TPL_PROPOSITION_CONDITION_IDENTIFICATION",
+        "why": "보기 ①~⑤ 가운데 3^4=81, 4^3=64 처럼 참·거짓이 정해지면 명제, x=2, x=0 을 넣어 갈리면 조건이라 가려내는 것이 명제와 조건의 구별 템플릿이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_08b7623e4625e648ba52c1ecd0002e2866bc9a3a863453ce8261ac838d11e0af",
@@ -71,20 +102,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "conceptClusterKey": "H22-C2-06-CORE",
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_ROOT_PARAMETER",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 2,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -94,19 +125,50 @@
           "sourceQid": 2,
           "variationType": "STRICT_VARIANT",
           "variationNote": "일차부등식 조건 → 절댓값 부등식 조건으로 바꾸어 두 근의 거리를 비교하는 문제로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-248"
+        ],
+        "rpmPrimary": {
+          "l1": "집합과 명제",
+          "l2": "명제",
+          "l3": "필요조건·충분조건",
+          "l4": "매개변수",
+          "recordId": "H1-RPM-248"
+        },
+        "rpmPrimaryL1": "집합과 명제",
+        "rpmPrimaryL2": "명제",
+        "rpmPrimaryL3": "필요조건·충분조건",
+        "rpmPrimaryL4": "매개변수",
+        "rpmPrimaryRecordId": "H1-RPM-248",
+        "difficultyBasis": "방정식을 풀고 역으로 바꾼 뒤 |-1-2|<=a, |6-2|<=a 에서 a>=4 를 얻어 최소 정수를 고르는 3~4단계라 2단계로 본다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-06 / H22-C2-06-CORE: 명제 $p\\to q$의 역이 참이 되도록 하는 정수 $a$의 최솟값은?",
+          "curriculum": "H1-RPM-248: 역 q→p 가 참이 되도록 하는 a 의 범위 a>=4 를 구하는 단계라 필요조건·충분조건의 매개변수 행이다.",
+          "problemType": "역 q→p 가 참이려면 방정식 x^2-5x-6=0 의 두 근 -1, 6 이 모두 |x-2|<=a 를 만족해야 한다는 조건으로 a 의 범위를 정하는 것이 역·대우와 방정식의 근 조건 템플릿이다.",
+          "difficulty": "방정식을 풀고 역으로 바꾼 뒤 |-1-2|<=a, |6-2|<=a 에서 a>=4 를 얻어 최소 정수를 고르는 3~4단계라 2단계로 본다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 성립조건 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "방정식을 풀고 역으로 바꾼 뒤 |-1-2|<=a, |6-2|<=a 에서 a>=4 를 얻어 최소 정수를 고르는 3~4단계라 2단계로 본다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_ROOT_PARAMETER",
+        "why": "역 q→p 가 참이려면 방정식 x^2-5x-6=0 의 두 근 -1, 6 이 모두 |x-2|<=a 를 만족해야 한다는 조건으로 a 의 범위를 정하는 것이 역·대우와 방정식의 근 조건 템플릿이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c0c986cfb41f2cd673011f5e4fa3d3f8fec8de987ae61ec52c0bd64a6bdf0e8d",
@@ -118,20 +180,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-09",
+        "standardUnit": "무리함수",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+        "subUnit": "함수의 뜻과 그래프",
+        "conceptClusterKey": "H22-C2-09-FUNCTION_BASIC",
+        "problemTypeKey": "PT_RADICAL_EXPRESSION",
+        "templateKey": "TPL_RADICAL_REAL_VALUE_RANGE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
         "sourceQid": 3,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -141,19 +203,50 @@
           "sourceQid": 3,
           "variationType": "STRICT_VARIANT",
           "variationNote": "두 분자 무리식 조건 → 분자 무리식과 분모 무리식 조건을 결합하여 등호 포함 여부를 구분하는 문제로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-268"
+        ],
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "무리함수",
+          "l3": "정의역과 치역",
+          "l4": "정의역 조건",
+          "recordId": "H1-RPM-268"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "무리함수",
+        "rpmPrimaryL3": "정의역과 치역",
+        "rpmPrimaryL4": "정의역 조건",
+        "rpmPrimaryRecordId": "H1-RPM-268",
+        "difficultyBasis": "근호 안 2x+5>=0, 분모 4-x>0 두 조건을 바로 쓰고 정수 -2~3 의 개수 6 을 세는 1단계 계산이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-09 / H22-C2-09-FUNCTION_BASIC: 두 무리식 $\\sqrt{2x+5}$와 $\\dfrac{1}{\\sqrt{4-x}}$의 값이 모두 실수가 되도록 하는 정수 $x$의 개수는?",
+          "curriculum": "H1-RPM-268: 2x+5>=0 과 4-x>0 으로 x 의 범위 -5/2<=x<4 를 정하는 단계가 무리식의 근호 안 조건, 즉 정의역 조건 행이다.",
+          "problemType": "sqrt(2x+5) 의 2x+5>=0, 분모 sqrt(4-x) 의 4-x>0 으로 두 무리식이 실수가 되는 x 의 범위 -5/2<=x<4 를 구하는 것이 무리식이 실수가 되는 범위 템플릿이다.",
+          "difficulty": "근호 안 2x+5>=0, 분모 4-x>0 두 조건을 바로 쓰고 정수 -2~3 의 개수 6 을 세는 1단계 계산이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 범위 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B12",
+      "difficultyReason": "근호 안 2x+5>=0, 분모 4-x>0 두 조건을 바로 쓰고 정수 -2~3 의 개수 6 을 세는 1단계 계산이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_RADICAL_EXPRESSION",
+        "templateKey": "TPL_RADICAL_REAL_VALUE_RANGE",
+        "why": "sqrt(2x+5) 의 2x+5>=0, 분모 sqrt(4-x) 의 4-x>0 으로 두 무리식이 실수가 되는 x 의 범위 -5/2<=x<4 를 구하는 것이 무리식이 실수가 되는 범위 템플릿이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_69cde7c18a0cbd2df20534a28cc2cd5884ac062258ff750250089463a89bb3f7",
@@ -165,20 +258,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-07",
+        "standardUnit": "함수",
+        "standardUnitOrder": 7,
+        "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+        "subUnit": "합성함수",
+        "conceptClusterKey": "H22-C2-07-FUNCTION_COMPOSITION",
+        "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+        "templateKey": "TPL_COMPOSITION_VALUE_MAPPING",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B12",
         "sourceQid": 4,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -188,19 +281,48 @@
           "sourceQid": 4,
           "variationType": "STRICT_VARIANT",
           "variationNote": "단순 합성함수의 함숫값 계산 → 역함숫값과 합성함숫값의 합을 구하는 문제로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-253"
+        ],
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "함수",
+          "l3": "합성함수",
+          "l4": "합성함수 계산",
+          "recordId": "H1-RPM-253"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "함수",
+        "rpmPrimaryL3": "합성함수",
+        "rpmPrimaryL4": "합성함수 계산",
+        "rpmPrimaryRecordId": "H1-RPM-253",
+        "difficultyBasis": "그림에서 g(5)=7, f(3)=6, g(6)=8 세 화살표를 읽어 5+8=13 을 더하는 두세 단계라 1단계로 본다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-07 / H22-C2-07-FUNCTION_COMPOSITION: $g^{-1}(7)+(g\\circ f)(3)$의 값은?",
+          "curriculum": "H1-RPM-253: 그림의 대응으로 (g∘f)(3)=g(f(3))=g(6)=8 을 계산하고 g^{-1}(7)=5 와 더하는 단계라 합성함수 계산 행이다. (합 13)",
+          "problemType": "대응도에서 g(5)=7, f(3)=6, g(6)=8 을 읽어 g^{-1}(7)+(g∘f)(3)=5+8=13 을 얻는 것이 대응도에서 합성함숫값을 계산하는 템플릿이다.",
+          "difficulty": "그림에서 g(5)=7, f(3)=6, g(6)=8 세 화살표를 읽어 5+8=13 을 더하는 두세 단계라 1단계로 본다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다."
+        },
+        "visualNecessity": {
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "B12",
+      "difficultyReason": "그림에서 g(5)=7, f(3)=6, g(6)=8 세 화살표를 읽어 5+8=13 을 더하는 두세 단계라 1단계로 본다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+        "templateKey": "TPL_COMPOSITION_VALUE_MAPPING",
+        "why": "대응도에서 g(5)=7, f(3)=6, g(6)=8 을 읽어 g^{-1}(7)+(g∘f)(3)=5+8=13 을 얻는 것이 대응도에서 합성함숫값을 계산하는 템플릿이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_7d620291723e2d1145bd1e10661f70bdc46cb1eb307426d2b93b45b47effae03",
@@ -212,20 +334,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "conceptClusterKey": "H22-C2-06-CORE",
+        "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+        "templateKey": "TPL_QUANTIFIER_NEGATION_INTERVAL",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 5,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -235,19 +357,50 @@
           "sourceQid": 5,
           "variationType": "STRICT_VARIANT",
           "variationNote": "이차부등식의 부정 → ‘어떤’과 ‘또는’이 결합된 부등식 명제의 부정으로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-246"
+        ],
+        "rpmPrimary": {
+          "l1": "집합과 명제",
+          "l2": "명제",
+          "l3": "역·이·대우",
+          "l4": "명제 변환",
+          "recordId": "H1-RPM-246"
+        },
+        "rpmPrimaryL1": "집합과 명제",
+        "rpmPrimaryL2": "명제",
+        "rpmPrimaryL3": "역·이·대우",
+        "rpmPrimaryL4": "명제 변환",
+        "rpmPrimaryRecordId": "H1-RPM-246",
+        "difficultyBasis": "‘어떤’→‘모든’ 과 ‘또는’→‘이고’ 규칙을 x<=-2, x>3 에 바로 적용하는 한 단계라 1단계이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-06 / H22-C2-06-CORE: 어떤 실수 $x$에 대하여 $x\\le -2$ 또는 $x\\gt 3$이다.",
+          "curriculum": "H1-RPM-246: ‘어떤 실수 x 에 대하여 x<=-2 또는 x>3’ 을 ‘모든 실수 x 에 대하여 x>-2 이고 x<=3’ 으로 바꾸는 명제 변환 단계가 이 행이다.",
+          "problemType": "어떤→모든으로 바꾸고 조건 x<=-2 또는 x>3 을 x>-2 이고 x<=3 으로 부정하는 것이 양화명제의 부정과 구간 템플릿이다.",
+          "difficulty": "‘어떤’→‘모든’ 과 ‘또는’→‘이고’ 규칙을 x<=-2, x>3 에 바로 적용하는 한 단계라 1단계이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 양화 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "‘어떤’→‘모든’ 과 ‘또는’→‘이고’ 규칙을 x<=-2, x>3 에 바로 적용하는 한 단계라 1단계이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+        "templateKey": "TPL_QUANTIFIER_NEGATION_INTERVAL",
+        "why": "어떤→모든으로 바꾸고 조건 x<=-2 또는 x>3 을 x>-2 이고 x<=3 으로 부정하는 것이 양화명제의 부정과 구간 템플릿이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_520975e9c6b6087ed0401a4bc393699ca54d54976d0d1dbfeab02052437160d9",
@@ -259,20 +412,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "conceptClusterKey": "H22-C2-06-CORE",
+        "problemTypeKey": "PT_NEC_SUFF_RELATION",
+        "templateKey": "TPL_NEC_SUFF_SET_RELATION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 6,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -282,19 +435,50 @@
           "sourceQid": 6,
           "variationType": "STRICT_VARIANT",
           "variationNote": "p가 q이기 위한 충분조건 → ~p가 q이기 위한 충분조건으로 부정 조건을 결합"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-247"
+        ],
+        "rpmPrimary": {
+          "l1": "집합과 명제",
+          "l2": "명제",
+          "l3": "필요조건·충분조건",
+          "l4": "조건 관계",
+          "recordId": "H1-RPM-247"
+        },
+        "rpmPrimaryL1": "집합과 명제",
+        "rpmPrimaryL2": "명제",
+        "rpmPrimaryL3": "필요조건·충분조건",
+        "rpmPrimaryL4": "조건 관계",
+        "rpmPrimaryRecordId": "H1-RPM-247",
+        "difficultyBasis": "충분조건을 P^c ⊂ Q 로 바꾸고 합집합 P∪Q=U, 여집합 P^c∩Q^c=∅ 로 이어 가는 집합 변형 세 단계라 2단계이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-06 / H22-C2-06-CORE: $\\neg p$가 $q$이기 위한 충분조건일 때, 다음 중 항상 옳은 것은?",
+          "curriculum": "H1-RPM-247: ¬p 가 q 이기 위한 충분조건이라는 조건 관계를 ¬p→q, 즉 P^c ⊂ Q 로 읽는 단계라 조건 관계 행이다.",
+          "problemType": "충분조건 ¬p→q 를 진리집합의 포함 P^c ⊂ Q 로 바꾸고 합집합 P∪Q=U 와 드모르간으로 P^c∩Q^c=∅ 를 얻는 것이 집합과 필요충분조건 템플릿이다.",
+          "difficulty": "충분조건을 P^c ⊂ Q 로 바꾸고 합집합 P∪Q=U, 여집합 P^c∩Q^c=∅ 로 이어 가는 집합 변형 세 단계라 2단계이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 충분조건 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "충분조건을 P^c ⊂ Q 로 바꾸고 합집합 P∪Q=U, 여집합 P^c∩Q^c=∅ 로 이어 가는 집합 변형 세 단계라 2단계이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_NEC_SUFF_RELATION",
+        "templateKey": "TPL_NEC_SUFF_SET_RELATION",
+        "why": "충분조건 ¬p→q 를 진리집합의 포함 P^c ⊂ Q 로 바꾸고 합집합 P∪Q=U 와 드모르간으로 P^c∩Q^c=∅ 를 얻는 것이 집합과 필요충분조건 템플릿이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_76b5c9fc16afc59c20ce0839c241e4bdb13e9c2a16db2395fdc5b7c7889e90b0",
@@ -306,20 +490,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-09",
+        "standardUnit": "무리함수",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+        "subUnit": "함수의 뜻과 그래프",
+        "conceptClusterKey": "H22-C2-09-FUNCTION_BASIC",
+        "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+        "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_PARAMETER",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 7,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -329,19 +513,50 @@
           "sourceQid": 7,
           "variationType": "STRICT_VARIANT",
           "variationNote": "정의역과 치역 구하기 → 정의역과 지나는 한 점을 주어 식을 완성하고 치역을 구하는 문제로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-268"
+        ],
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "무리함수",
+          "l3": "정의역과 치역",
+          "l4": "정의역 조건",
+          "recordId": "H1-RPM-268"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "무리함수",
+        "rpmPrimaryL3": "정의역과 치역",
+        "rpmPrimaryL4": "정의역 조건",
+        "rpmPrimaryRecordId": "H1-RPM-268",
+        "difficultyBasis": "정의역으로 a=6, 점 (5,-1) 로 b=3, 치역으로 k=3 을 차례로 구하고 a+b+k=12 를 더하는 네 단계라 2단계이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-09 / H22-C2-09-FUNCTION_BASIC: 함수 $y=-\\sqrt{2x+a}+b$의 정의역이 $\\{x\\mid x\\ge -3\\}$이고",
+          "curriculum": "H1-RPM-268: 근호 안 2x+a>=0 의 해가 x>=-3 이 되도록 a=6 을 정하는 단계가 무리함수의 정의역 조건 행이다. (합 12)",
+          "problemType": "정의역 x>=-3 에서 a=6, 점 (5,-1) 에서 b=3, 치역 y<=3 에서 k=3 을 정하는 것이 정의역·치역의 매개변수 조건 템플릿이다. (합 12)",
+          "difficulty": "정의역으로 a=6, 점 (5,-1) 로 b=3, 치역으로 k=3 을 차례로 구하고 a+b+k=12 를 더하는 네 단계라 2단계이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 경계조건 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「그래프가 점 $(5,-1)$을 지날 때」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "정의역으로 a=6, 점 (5,-1) 로 b=3, 치역으로 k=3 을 차례로 구하고 a+b+k=12 를 더하는 네 단계라 2단계이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+        "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_PARAMETER",
+        "why": "정의역 x>=-3 에서 a=6, 점 (5,-1) 에서 b=3, 치역 y<=3 에서 k=3 을 정하는 것이 정의역·치역의 매개변수 조건 템플릿이다. (합 12)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_aa700ccc46b2018d574773b19b432887d9106baa9ef6afd1f3d8e3a9bc83dc8d",
@@ -353,20 +568,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-07",
+        "standardUnit": "함수",
+        "standardUnitOrder": 7,
+        "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+        "subUnit": "함수의 뜻과 그래프",
+        "conceptClusterKey": "H22-C2-07-FUNCTION_BASIC",
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "templateKey": "TPL_AFFINE_INTERVAL_BIJECTION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 8,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -376,19 +591,50 @@
           "sourceQid": 8,
           "variationType": "STRICT_VARIANT",
           "variationNote": "반직선 구간의 일대일대응 → 닫힌구간에서 감소 일차함수가 일대일대응이 되도록 공역의 끝점과 상수항을 구하는 문제로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-257"
+        ],
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "함수",
+          "l3": "함수의 성질",
+          "l4": "일대일함수",
+          "recordId": "H1-RPM-257"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "함수",
+        "rpmPrimaryL3": "함수의 성질",
+        "rpmPrimaryL4": "일대일함수",
+        "rpmPrimaryRecordId": "H1-RPM-257",
+        "difficultyBasis": "감소 조건을 알아낸 뒤 f(-1)=7 로 k=5, f(3)=a 로 a=-1 을 얻어 a+k=4 를 구하는 세 단계라 2단계이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-07 / H22-C2-07-FUNCTION_BASIC: $X$에서 $Y$로의 함수 $f(x)=-2x+k$가 일대일대응일 때",
+          "curriculum": "H1-RPM-257: X 에서 Y 로 가는 f(x)=-2x+k 가 일대일대응이 되도록 감소함수의 두 끝점값 f(-1)=7, f(3)=a 를 쓰는 단계라 일대일함수 행이다.",
+          "problemType": "닫힌구간 -1<=x<=3 에서 a<=y<=7 로 가는 일차함수가 일대일대응이려면 감소하고 f(-1)=7, f(3)=a 이어야 한다는 조건으로 k=5, a=-1 을 정하는 것이 일차함수의 구간 일대일대응 템플릿이다.",
+          "difficulty": "감소 조건을 알아낸 뒤 f(-1)=7 로 k=5, f(3)=a 로 a=-1 을 얻어 a+k=4 를 구하는 세 단계라 2단계이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "감소 조건을 알아낸 뒤 f(-1)=7 로 k=5, f(3)=a 로 a=-1 을 얻어 a+k=4 를 구하는 세 단계라 2단계이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "templateKey": "TPL_AFFINE_INTERVAL_BIJECTION",
+        "why": "닫힌구간 -1<=x<=3 에서 a<=y<=7 로 가는 일차함수가 일대일대응이려면 감소하고 f(-1)=7, f(3)=a 이어야 한다는 조건으로 k=5, a=-1 을 정하는 것이 일차함수의 구간 일대일대응 템플릿이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_0c5f58d29a3f034a2dc56e9d8d722b7f91af2802237b647c39146c2a9d6815b9",
@@ -400,20 +646,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-07",
+        "standardUnit": "함수",
+        "standardUnitOrder": 7,
+        "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+        "subUnit": "함수의 뜻과 그래프",
+        "conceptClusterKey": "H22-C2-07-FUNCTION_BASIC",
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
         "sourceQid": 9,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -423,19 +669,50 @@
           "sourceQid": 9,
           "variationType": "STRICT_VARIANT",
           "variationNote": "계수 합의 최솟값 → 역함수가 존재할 조건으로 계수를 구한 뒤 역함숫값을 포함한 식의 최댓값을 묻는 문제로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-257"
+        ],
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "함수",
+          "l3": "함수의 성질",
+          "l4": "일대일함수",
+          "recordId": "H1-RPM-257"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "함수",
+        "rpmPrimaryL3": "함수의 성질",
+        "rpmPrimaryL4": "일대일함수",
+        "rpmPrimaryRecordId": "H1-RPM-257",
+        "difficultyBasis": "x<1 치역 y<3+a, x>=1 에서 b>0 과 y>=4, 경계 3+a=4 로 a=1 을 얻고 f^{-1}(5)=1+1/sqrt(b) 의 b=1 최댓값 2 로 1+2=3 을 구하는 네 단계라 3단계로 본다. (cases 꼴)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-07 / H22-C2-07-FUNCTION_BASIC: 가 실수 전체의 집합에서 정의된 역함수 $f^{-1}(x)$를 가질 때, $a+f^{-1}(5)$의 최댓값은?",
+          "curriculum": "H1-RPM-257: 역함수를 가지려면 x<1 과 x>=1 의 두 치역이 y<3+a 와 y>=4 로 이어지는 일대일대응이어야 한다는 단계가 일대일함수 행이다. (cases 꼴)",
+          "problemType": "조각함수 3x+a (x<1), b(x-1)^2+4 (x>=1) 의 두 치역을 3+a=4 에서 이어 붙여 일대일대응이 되도록 a=1, b>0 을 정하는 것이 조각함수의 일대일대응 조건 템플릿이다. (cases 꼴)",
+          "difficulty": "x<1 치역 y<3+a, x>=1 에서 b>0 과 y>=4, 경계 3+a=4 로 a=1 을 얻고 f^{-1}(5)=1+1/sqrt(b) 의 b=1 최댓값 2 로 1+2=3 을 구하는 네 단계라 3단계로 본다. (cases 꼴)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 경계조건 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "difficultyReason": "x<1 치역 y<3+a, x>=1 에서 b>0 과 y>=4, 경계 3+a=4 로 a=1 을 얻고 f^{-1}(5)=1+1/sqrt(b) 의 b=1 최댓값 2 로 1+2=3 을 구하는 네 단계라 3단계로 본다. (cases 꼴)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+        "why": "조각함수 3x+a (x<1), b(x-1)^2+4 (x>=1) 의 두 치역을 3+a=4 에서 이어 붙여 일대일대응이 되도록 a=1, b>0 을 정하는 것이 조각함수의 일대일대응 조건 템플릿이다. (cases 꼴)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_726bf5635ec5efd219e08997d5a1f8fdbadcb012df7fe4fb7248c80019b98b73",
@@ -447,20 +724,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-07",
+        "standardUnit": "함수",
+        "standardUnitOrder": 7,
+        "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+        "subUnit": "역함수",
+        "conceptClusterKey": "H22-C2-07-FUNCTION_INVERSE",
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 10,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -470,19 +747,48 @@
           "sourceQid": 10,
           "variationType": "STRICT_VARIANT",
           "variationNote": "정방향 합성 방정식 (f∘f)(k)=e → 역방향 합성값 (f⁻¹∘f⁻¹)(c)를 그래프에서 읽어 구하는 문제로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-255"
+        ],
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "함수",
+          "l3": "역함수",
+          "l4": "역함수 구하기",
+          "recordId": "H1-RPM-255"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "함수",
+        "rpmPrimaryL3": "역함수",
+        "rpmPrimaryL4": "역함수 구하기",
+        "rpmPrimaryRecordId": "H1-RPM-255",
+        "difficultyBasis": "그림에서 a→b→c 대응을 읽고 역함수로 c→b→a 두 번 거꾸로 가 a 를 얻는 두세 단계라 2단계이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-07 / H22-C2-07-FUNCTION_INVERSE: $(f^{-1}\\circ f^{-1})(c)$의 값은?",
+          "curriculum": "H1-RPM-255: 그래프에서 f(b)=c, f(a)=b 를 읽어 f^{-1}(c)=b, f^{-1}(b)=a 로 역함숫값을 두 번 구하는 단계라 역함수 구하기 행이다.",
+          "problemType": "y=x 를 이용한 점선 그림에서 f(b)=c, f(a)=b 를 읽어 f^{-1}(c)=b, f^{-1}(b)=a 로 (f^{-1}∘f^{-1})(c)=a 를 구하는 것이 그래프에서 역함숫값을 읽는 템플릿이다.",
+          "difficulty": "그림에서 a→b→c 대응을 읽고 역함수로 c→b→a 두 번 거꾸로 가 a 를 얻는 두세 단계라 2단계이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다."
+        },
+        "visualNecessity": {
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "그림에서 a→b→c 대응을 읽고 역함수로 c→b→a 두 번 거꾸로 가 a 를 얻는 두세 단계라 2단계이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+        "why": "y=x 를 이용한 점선 그림에서 f(b)=c, f(a)=b 를 읽어 f^{-1}(c)=b, f^{-1}(b)=a 로 (f^{-1}∘f^{-1})(c)=a 를 구하는 것이 그래프에서 역함숫값을 읽는 템플릿이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_8077249af13c65a49564cc200b8d08f46de018921dd24dc0b22de83902285281",
@@ -494,20 +800,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "conceptClusterKey": "H22-C2-06-CORE",
+        "problemTypeKey": "PT_TRUTH_SET_RELATION",
+        "templateKey": "TPL_TRUTHSET_CHAINED_INCLUSION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
         "sourceQid": 11,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -517,19 +823,50 @@
           "sourceQid": 11,
           "variationType": "STRICT_VARIANT",
           "variationNote": "차집합이 공집합인 조건 → 합집합의 여집합과 교집합이 공집합인 조건으로 바꾸어 3단 논법 포함 관계를 유도"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-243"
+        ],
+        "rpmPrimary": {
+          "l1": "집합과 명제",
+          "l2": "명제",
+          "l3": "명제와 조건",
+          "l4": "진리집합",
+          "recordId": "H1-RPM-243"
+        },
+        "rpmPrimaryL1": "집합과 명제",
+        "rpmPrimaryL2": "명제",
+        "rpmPrimaryL3": "명제와 조건",
+        "rpmPrimaryL4": "진리집합",
+        "rpmPrimaryRecordId": "H1-RPM-243",
+        "difficultyBasis": "합집합이 공집합임에서 P∪Q=U 와 P∩R=∅ 를 따로 끌어내 R ⊂ P^c ⊂ Q 를 만든 뒤 ㄱ·ㄴ·ㄷ 세 명제를 판정하는 네 단계라 3단계로 본다. (보기 q-box)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-06 / H22-C2-06-CORE: $(P\\cup Q)^c\\cup(P\\cap R)=\\varnothing$일 때, 다음 보기에서 항상 참인 명제만을 있는 대로 고른 것은?",
+          "curriculum": "H1-RPM-243: (P∪Q)^c∪(P∩R)=∅ 에서 진리집합 R ⊂ P^c ⊂ Q 의 포함 관계를 얻는 단계라 진리집합 행이다. 보기 q-box 의 ㄱㄴㄷ 판정이 이어진다.",
+          "problemType": "집합식 (P∪Q)^c∪(P∩R)=∅ 에서 R ⊂ P^c ⊂ Q 의 연쇄 포함을 만들어 ㄱ p→¬r, ㄴ q→¬p, ㄷ r→q 의 참·거짓을 가르는 것이 진리집합의 연쇄 포함 템플릿이다. (보기 q-box)",
+          "difficulty": "합집합이 공집합임에서 P∪Q=U 와 P∩R=∅ 를 따로 끌어내 R ⊂ P^c ⊂ Q 를 만든 뒤 ㄱ·ㄴ·ㄷ 세 명제를 판정하는 네 단계라 3단계로 본다. (보기 q-box)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 서로소 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "difficultyReason": "합집합이 공집합임에서 P∪Q=U 와 P∩R=∅ 를 따로 끌어내 R ⊂ P^c ⊂ Q 를 만든 뒤 ㄱ·ㄴ·ㄷ 세 명제를 판정하는 네 단계라 3단계로 본다. (보기 q-box)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_TRUTH_SET_RELATION",
+        "templateKey": "TPL_TRUTHSET_CHAINED_INCLUSION",
+        "why": "집합식 (P∪Q)^c∪(P∩R)=∅ 에서 R ⊂ P^c ⊂ Q 의 연쇄 포함을 만들어 ㄱ p→¬r, ㄴ q→¬p, ㄷ r→q 의 참·거짓을 가르는 것이 진리집합의 연쇄 포함 템플릿이다. (보기 q-box)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_b8ceab692ab516a4f6573472bace7402312477f351c48044af6af8f52d55003b",
@@ -541,20 +878,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-07",
+        "standardUnit": "함수",
+        "standardUnitOrder": 7,
+        "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+        "subUnit": "역함수",
+        "conceptClusterKey": "H22-C2-07-FUNCTION_INVERSE",
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_DIRECT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 12,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -564,19 +901,50 @@
           "sourceQid": 12,
           "variationType": "STRICT_VARIANT",
           "variationNote": "역함숫값 1회 계산 → 합성 역함수 (f⁻¹∘f⁻¹)(1)을 구하는 문제로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-255"
+        ],
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "함수",
+          "l3": "역함수",
+          "l4": "역함수 구하기",
+          "recordId": "H1-RPM-255"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "함수",
+        "rpmPrimaryL3": "역함수",
+        "rpmPrimaryL4": "역함수 구하기",
+        "rpmPrimaryRecordId": "H1-RPM-255",
+        "difficultyBasis": "x-1=1 에서 x=2 로 f^{-1}(1)=7 을, x-1=7 에서 x=8 로 f^{-1}(7)=19 를 구하는 같은 절차 두 번이라 2단계이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-07 / H22-C2-07-FUNCTION_INVERSE: 일차함수 $f(x)$의 역함수가 $f^{-1}(x)$이고 $f(2x+3)=x-1$을 만족시킬 때",
+          "curriculum": "H1-RPM-255: f(2x+3)=x-1 에서 f(7)=1, f(19)=7 을 얻어 f^{-1}(1)=7, f^{-1}(7)=19 로 읽는 단계라 역함수 구하기 행이다.",
+          "problemType": "f(2x+3)=x-1 의 우변을 1, 7 로 맞춰 f(7)=1, f(19)=7 을 얻고 역함수의 정의로 f^{-1}(1)=7, f^{-1}(7)=19 를 직접 구하는 것이 역함숫값 직접 구하기 템플릿이다.",
+          "difficulty": "x-1=1 에서 x=2 로 f^{-1}(1)=7 을, x-1=7 에서 x=8 로 f^{-1}(7)=19 를 구하는 같은 절차 두 번이라 2단계이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "x-1=1 에서 x=2 로 f^{-1}(1)=7 을, x-1=7 에서 x=8 로 f^{-1}(7)=19 를 구하는 같은 절차 두 번이라 2단계이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_DIRECT",
+        "why": "f(2x+3)=x-1 의 우변을 1, 7 로 맞춰 f(7)=1, f(19)=7 을 얻고 역함수의 정의로 f^{-1}(1)=7, f^{-1}(7)=19 를 직접 구하는 것이 역함숫값 직접 구하기 템플릿이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_ab4de398d112c47cc3a85f45cb6c6bcb1a567f12d2e45a5d4dc8c409f7dd9511",
@@ -588,20 +956,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-08",
+        "standardUnit": "유리함수",
+        "standardUnitOrder": 8,
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnit": "함수의 뜻과 그래프",
+        "conceptClusterKey": "H22-C2-08-FUNCTION_BASIC",
+        "problemTypeKey": "PT_FUNCTION_RECOVERY",
+        "templateKey": "TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
         "sourceQid": 13,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -611,19 +979,48 @@
           "sourceQid": 13,
           "variationType": "STRICT_VARIANT",
           "variationNote": "그래프를 보고 계수의 합을 구하는 문제 → 그래프를 보고 역함숫값 f⁻¹(4)를 구하는 문제로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-263"
+        ],
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "유리함수",
+          "l3": "유리함수의 활용",
+          "l4": "식 결정",
+          "recordId": "H1-RPM-263"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "유리함수",
+        "rpmPrimaryL3": "유리함수의 활용",
+        "rpmPrimaryL4": "식 결정",
+        "rpmPrimaryRecordId": "H1-RPM-263",
+        "difficultyBasis": "두 점근선으로 c=2, a=3 을 얻고 점 (0,1) 로 b=2 를 구한 뒤 f(k)=4 를 풀어 k=-6 을 얻는 네 단계라 2단계로 본다. (ax+b)/(x+c) 꼴",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-08 / H22-C2-08-FUNCTION_BASIC: 유리함수 $f(x)=\\dfrac{ax+b}{x+c}$의 수직 점근선은 분모가 $0$이 되는 $x=-c$이다.",
+          "curriculum": "H1-RPM-263: 그림의 점근선 x=-2, y=3 과 점 (0,1) 로 c=2, a=3, b=2 를 정해 식을 결정하는 단계가 유리함수 식 결정 행이다. (ax+b)/(x+c) 꼴",
+          "problemType": "점근선 x=-2, y=3 과 지나는 점 (0,1) 에서 f(x)=(3x+2)/(x+2) 를 정하는 것이 점근선과 한 점으로 함수식 구하기 템플릿이다. (ax+b)/(x+c) 꼴",
+          "difficulty": "두 점근선으로 c=2, a=3 을 얻고 점 (0,1) 로 b=2 를 구한 뒤 f(k)=4 를 풀어 k=-6 을 얻는 네 단계라 2단계로 본다. (ax+b)/(x+c) 꼴",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 통과 이 있다)."
+        },
+        "visualNecessity": {
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "difficultyReason": "두 점근선으로 c=2, a=3 을 얻고 점 (0,1) 로 b=2 를 구한 뒤 f(k)=4 를 풀어 k=-6 을 얻는 네 단계라 2단계로 본다. (ax+b)/(x+c) 꼴",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_FUNCTION_RECOVERY",
+        "templateKey": "TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT",
+        "why": "점근선 x=-2, y=3 과 지나는 점 (0,1) 에서 f(x)=(3x+2)/(x+2) 를 정하는 것이 점근선과 한 점으로 함수식 구하기 템플릿이다. (ax+b)/(x+c) 꼴"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_28ccd7ff5da9eb4a41c2f3f31a54f7c749f3ce4371c835bbb240267b801b9df9",
@@ -635,20 +1032,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-08",
+        "standardUnit": "유리함수",
+        "standardUnitOrder": 8,
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnit": "함수의 뜻과 그래프",
+        "conceptClusterKey": "H22-C2-08-FUNCTION_BASIC",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+        "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
         "sourceQid": 14,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -658,19 +1055,50 @@
           "sourceQid": 14,
           "variationType": "STRICT_VARIANT",
           "variationNote": "점근선의 y좌표에 미지수가 있는 문제 → 분자 상수 k를 미지수로 두고 제3사분면을 지나지 않도록 하는 최댓값을 구하는 문제로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-262"
+        ],
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "유리함수",
+          "l3": "점근선과 위치",
+          "l4": "그래프의 사분면",
+          "recordId": "H1-RPM-262"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "유리함수",
+        "rpmPrimaryL3": "점근선과 위치",
+        "rpmPrimaryL4": "그래프의 사분면",
+        "rpmPrimaryRecordId": "H1-RPM-262",
+        "difficultyBasis": "점근선 x=3, y=2 와 x<0 에서 y>f(0) 를 알아 f(0)=-k/3+2>=0 으로 k<=6 을 얻는 세 단계라 2단계로 본다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-08 / H22-C2-08-FUNCTION_BASIC: 유리함수 $y=\\dfrac{k}{x-3}+2$의 그래프가 제$3$사분면을 지나지 않도록 하는 자연수 $k$의 최댓값은?",
+          "curriculum": "H1-RPM-262: y=k/(x-3)+2 가 제3사분면을 지나지 않도록 y절편 f(0)=-k/3+2>=0 을 따지는 단계가 그래프의 사분면 행이다.",
+          "problemType": "y=k/(x-3)+2 가 제3사분면을 지나지 않도록 x=0 일 때의 y절편 -k/3+2>=0, 즉 k<=6 으로 매개변수 k 의 범위를 정하는 것이 매개변수에 따른 사분면 조건 템플릿이다.",
+          "difficulty": "점근선 x=3, y=2 와 x<0 에서 y>f(0) 를 알아 f(0)=-k/3+2>=0 으로 k<=6 을 얻는 세 단계라 2단계로 본다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 통과, 절편 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「그래프가 제$3$사분면을 지나지 않도록」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "difficultyReason": "점근선 x=3, y=2 와 x<0 에서 y>f(0) 를 알아 f(0)=-k/3+2>=0 으로 k<=6 을 얻는 세 단계라 2단계로 본다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+        "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
+        "why": "y=k/(x-3)+2 가 제3사분면을 지나지 않도록 x=0 일 때의 y절편 -k/3+2>=0, 즉 k<=6 으로 매개변수 k 의 범위를 정하는 것이 매개변수에 따른 사분면 조건 템플릿이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_ce6bd4ba75a2826802ae47af7cda53ba09992a57f34b0664baac71586de8e7da",
@@ -682,20 +1110,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-07",
+        "standardUnit": "함수",
+        "standardUnitOrder": 7,
+        "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+        "subUnit": "역함수",
+        "conceptClusterKey": "H22-C2-07-FUNCTION_INVERSE",
+        "problemTypeKey": "PT_INVERSE_GRAPH",
+        "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
         "sourceQid": 15,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -705,19 +1133,50 @@
           "sourceQid": 15,
           "variationType": "STRICT_VARIANT",
           "variationNote": "자연수 a의 개수 → 실수 a의 범위 양 끝점 p, q를 구하여 4(p+q)를 계산하는 문제로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-256"
+        ],
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "함수",
+          "l3": "역함수",
+          "l4": "그래프 대칭",
+          "recordId": "H1-RPM-256"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "함수",
+        "rpmPrimaryL3": "역함수",
+        "rpmPrimaryL4": "그래프 대칭",
+        "rpmPrimaryRecordId": "H1-RPM-256",
+        "difficultyBasis": "교점이 y=x 위임을 알아 x^2-5x+a=0 을 세우고 D=25-4a>0 과 g(2)=a-6>=0 두 조건으로 6<=a<25/4 를 얻어 4(p+q)=49 를 계산하는 네 단계라 3단계로 본다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-07 / H22-C2-07-FUNCTION_INVERSE: 역함수 $y=f^{-1}(x)$의 그래프가 서로 다른 두 점에서 만나도록 하는 실수 $a$의 값의 범위가",
+          "curriculum": "H1-RPM-256: f(x)=x^2-4x+a 와 역함수의 교점이 직선 y=x 위에 있음을 써서 x^2-5x+a=0 을 세우는 단계가 그래프 대칭 행이다. (4(p+q)=49, 25/4)",
+          "problemType": "증가함수의 그래프와 역함수 그래프의 교점은 y=x 위이므로 f(x)=x, 즉 x^2-5x+a=0 이 x>=2 에서 서로 다른 두 실근을 갖는 조건 6<=a<25/4 를 구하는 것이 함수와 역함수의 교점 템플릿이다.",
+          "difficulty": "교점이 y=x 위임을 알아 x^2-5x+a=0 을 세우고 D=25-4a>0 과 g(2)=a-6>=0 두 조건으로 6<=a<25/4 를 얻어 4(p+q)=49 를 계산하는 네 단계라 3단계로 본다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 경계조건 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「그 역함수 $y=f^{-1}(x)$의 그래프가 서로 다른 두 점에서 만나도록」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "difficultyReason": "교점이 y=x 위임을 알아 x^2-5x+a=0 을 세우고 D=25-4a>0 과 g(2)=a-6>=0 두 조건으로 6<=a<25/4 를 얻어 4(p+q)=49 를 계산하는 네 단계라 3단계로 본다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_INVERSE_GRAPH",
+        "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+        "why": "증가함수의 그래프와 역함수 그래프의 교점은 y=x 위이므로 f(x)=x, 즉 x^2-5x+a=0 이 x>=2 에서 서로 다른 두 실근을 갖는 조건 6<=a<25/4 를 구하는 것이 함수와 역함수의 교점 템플릿이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_46c06eda26e3ed78c7e58ed973a70e9c423bedecaa8e83792c2dfc6db5976a0c",
@@ -729,20 +1188,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "conceptClusterKey": "H22-C2-06-CORE",
+        "problemTypeKey": "PT_CONTRADICTION_PROOF",
+        "templateKey": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
         "sourceQid": 16,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -752,19 +1211,50 @@
           "sourceQid": 16,
           "variationType": "STRICT_VARIANT",
           "variationNote": "11a+b, 3a+b의 제곱수 판별 → 두 홀수의 제곱의 합 a²+b²이 제곱수가 아님을 귀류법으로 증명하는 문제로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-249"
+        ],
+        "rpmPrimary": {
+          "l1": "집합과 명제",
+          "l2": "명제",
+          "l3": "증명",
+          "l4": "귀류법",
+          "recordId": "H1-RPM-249"
+        },
+        "rpmPrimaryL1": "집합과 명제",
+        "rpmPrimaryL2": "명제",
+        "rpmPrimaryL3": "증명",
+        "rpmPrimaryL4": "귀류법",
+        "rpmPrimaryRecordId": "H1-RPM-249",
+        "difficultyBasis": "c^2=4r^2, 2 로 나눈 2r^2, 우변이 2 의 배수임을 채우고 f(2)+g(2)=16+8 을 계산하는 네 단계라 2단계로 본다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-06 / H22-C2-06-CORE: $a$, $b$가 모두 홀수이고 $a^2+b^2$이 어떤 정수 $c$의 제곱, 즉 $a^2+b^2=c^2$이라 가정하자.",
+          "curriculum": "H1-RPM-249: a^2+b^2=c^2 이라 가정하고 좌변 2(p^2+p+q^2+q)+1 이 홀수인데 우변 2r^2 이 2 의 배수가 되는 모순을 보이는 단계가 귀류법 행이다. (보기 q-box, 합 24)",
+          "problemType": "a=2p+1, b=2q+1, c=2r 로 놓고 4(p^2+p+q^2+q)+2=4r^2 에서 홀수와 2 의 배수의 모순을 보이는 것이 홀짝·배수 성질의 귀류법 증명 템플릿이다. (보기 q-box, 합 24)",
+          "difficulty": "c^2=4r^2, 2 로 나눈 2r^2, 우변이 2 의 배수임을 채우고 f(2)+g(2)=16+8 을 계산하는 네 단계라 2단계로 본다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 짝수 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "difficultyReason": "c^2=4r^2, 2 로 나눈 2r^2, 우변이 2 의 배수임을 채우고 f(2)+g(2)=16+8 을 계산하는 네 단계라 2단계로 본다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_CONTRADICTION_PROOF",
+        "templateKey": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+        "why": "a=2p+1, b=2q+1, c=2r 로 놓고 4(p^2+p+q^2+q)+2=4r^2 에서 홀수와 2 의 배수의 모순을 보이는 것이 홀짝·배수 성질의 귀류법 증명 템플릿이다. (보기 q-box, 합 24)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c8e891a18e5076ed85eb1e76aae6ea7ec1ed7a76a8f31d5f2ae3d337930a8e42",
@@ -776,20 +1266,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-09",
+        "standardUnit": "무리함수",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+        "subUnit": "함수의 뜻과 그래프",
+        "conceptClusterKey": "H22-C2-09-FUNCTION_BASIC",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
         "sourceQid": 17,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -799,19 +1289,50 @@
           "sourceQid": 17,
           "variationType": "STRICT_VARIANT",
           "variationNote": "오른쪽으로 뻗는 무리함수와 직선 기울기의 최솟값 → 왼쪽으로 뻗는 무리함수와 직선 기울기의 최댓값을 구하는 문제로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-272"
+        ],
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "무리함수",
+          "l3": "무리함수의 활용",
+          "l4": "무리함수의 교점",
+          "recordId": "H1-RPM-272"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "무리함수",
+        "rpmPrimaryL3": "무리함수의 활용",
+        "rpmPrimaryL4": "무리함수의 교점",
+        "rpmPrimaryRecordId": "H1-RPM-272",
+        "difficultyBasis": "치환 t, 구간 0<=t<=2 와 t>=2 분리, 정점 (0,1) 에서 시작점 (2,2) 를 지나는 k=1/2 판단, k>1/2 에서 교점 1개임을 f_1(t)=(k/2)t^2-t+1-2k 로 보이는 교점 개수 분류라 4단계로 본다. (y=kx+1)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-09 / H22-C2-09-FUNCTION_BASIC: 함수 $y=\\left|\\sqrt{4-2x}-2\\right|$의 그래프와 직선 $y=kx+1$이 서로 다른 두 점에서 만나도록 하는 실수 $k$의 최댓값은?",
+          "curriculum": "H1-RPM-272: y=|sqrt(4-2x)-2| 와 직선 y=kx+1 의 교점 수를 t=sqrt(4-2x) 치환으로 따지는 단계가 무리함수의 교점 행이다.",
+          "problemType": "절댓값이 붙은 무리함수를 t=2 에서 나눠 y=2-t, y=t-2 와 직선 y=kx+1 의 교점을 구간별로 세어 시작점 (2,2) 를 지나는 k=1/2 에서 두 점이 됨을 찾는 것이 절댓값·조각함수 그래프의 교점 템플릿이다.",
+          "difficulty": "치환 t, 구간 0<=t<=2 와 t>=2 분리, 정점 (0,1) 에서 시작점 (2,2) 를 지나는 k=1/2 판단, k>1/2 에서 교점 1개임을 f_1(t)=(k/2)t^2-t+1-2k 로 보이는 교점 개수 분류라 4단계로 본다. (y=kx+1)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 통과 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「그래프와 직선 $y=kx+1$이 서로 다른 두 점에서 만나도록」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "difficultyReason": "치환 t, 구간 0<=t<=2 와 t>=2 분리, 정점 (0,1) 에서 시작점 (2,2) 를 지나는 k=1/2 판단, k>1/2 에서 교점 1개임을 f_1(t)=(k/2)t^2-t+1-2k 로 보이는 교점 개수 분류라 4단계로 본다. (y=kx+1)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+        "why": "절댓값이 붙은 무리함수를 t=2 에서 나눠 y=2-t, y=t-2 와 직선 y=kx+1 의 교점을 구간별로 세어 시작점 (2,2) 를 지나는 k=1/2 에서 두 점이 됨을 찾는 것이 절댓값·조각함수 그래프의 교점 템플릿이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_76605e224df8e286b7eb1097de2c5a9777b61254756a6673de0a03e1fd907632",
@@ -823,20 +1344,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-08",
+        "standardUnit": "유리함수",
+        "standardUnitOrder": 8,
+        "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+        "subUnit": "함수의 뜻과 그래프",
+        "conceptClusterKey": "H22-C2-08-FUNCTION_BASIC",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+        "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DISTANCE_LENGTH",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
         "sourceQid": 18,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -846,19 +1367,50 @@
           "sourceQid": 18,
           "variationType": "STRICT_VARIANT",
           "variationNote": "한 가지와 원의 두 교점 사이 거리 → 유리함수의 두 가지와 원이 만나는 네 교점으로 이루어진 직사각형의 넓이를 구하는 문제로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-265"
+        ],
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "유리함수",
+          "l3": "유리함수의 활용",
+          "l4": "유리함수와 그래프의 교점",
+          "recordId": "H1-RPM-265"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "유리함수",
+        "rpmPrimaryL3": "유리함수의 활용",
+        "rpmPrimaryL4": "유리함수와 그래프의 교점",
+        "rpmPrimaryRecordId": "H1-RPM-265",
+        "difficultyBasis": "u 치환으로 u^4-5u^2+4=0 을 풀어 네 교점을 구하고 직사각형임을 알아 AB, BC 길이로 넓이 6 을 얻는 네 단계라 3단계로 본다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-08 / H22-C2-08-FUNCTION_BASIC: 원 $(x-1)^2+(y-3)^2=5$가 만나는 서로 다른 네 점을 꼭짓점으로 하는 사각형의 넓이를 구하시오.",
+          "curriculum": "H1-RPM-265: y=2/(x-1)+3 과 원 (x-1)^2+(y-3)^2=5 의 교점을 u^2+4/u^2=5 로 세워 네 점 A(2,5), B(3,4), C(0,1), D(-1,2) 를 얻는 단계가 유리함수와 그래프의 교점 행이다. (사각형 ABCD, AB, BC)",
+          "problemType": "교점 A(2,5), B(3,4), C(0,1), D(-1,2) 의 좌표로 AB=sqrt(2), BC=3 sqrt(2) 를 구해 직사각형의 넓이 6 을 얻는 것이 그래프 위 점의 거리·길이를 구하는 템플릿이다.",
+          "difficulty": "u 치환으로 u^4-5u^2+4=0 을 풀어 네 교점을 구하고 직사각형임을 알아 AB, BC 길이로 넓이 6 을 얻는 네 단계라 3단계로 본다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 대칭성 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「그래프와 원 $(x-1)^2+(y-3)^2=5$가 만나는 서로 다른 네 점을」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "difficultyReason": "u 치환으로 u^4-5u^2+4=0 을 풀어 네 교점을 구하고 직사각형임을 알아 AB, BC 길이로 넓이 6 을 얻는 네 단계라 3단계로 본다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+        "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DISTANCE_LENGTH",
+        "why": "교점 A(2,5), B(3,4), C(0,1), D(-1,2) 의 좌표로 AB=sqrt(2), BC=3 sqrt(2) 를 구해 직사각형의 넓이 6 을 얻는 것이 그래프 위 점의 거리·길이를 구하는 템플릿이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_f47fe190a69155d4dd3fbd1d01280064b16b60b64e038a34ab08ae97a1defe62",
@@ -870,20 +1422,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "conceptClusterKey": "H22-C2-06-CORE",
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "templateKey": "TPL_AMGM_RECIPROCAL_MINIMUM",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
         "sourceQid": 19,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -893,19 +1445,50 @@
           "sourceQid": 19,
           "variationType": "STRICT_VARIANT",
           "variationNote": "유리식의 최댓값 구하기 → 최댓값을 주고 분모의 상수항 k를 역산하여 구하는 문제로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-250"
+        ],
+        "rpmPrimary": {
+          "l1": "집합과 명제",
+          "l2": "명제",
+          "l3": "증명",
+          "l4": "절대부등식 증명",
+          "recordId": "H1-RPM-250"
+        },
+        "rpmPrimaryL1": "집합과 명제",
+        "rpmPrimaryL2": "명제",
+        "rpmPrimaryL3": "증명",
+        "rpmPrimaryL4": "절대부등식 증명",
+        "rpmPrimaryRecordId": "H1-RPM-250",
+        "difficultyBasis": "x-2=t 치환으로 t^2+k-4 를 만들고 분수를 뒤집어 산술기하평균으로 2 sqrt(k-4), 조건 1/6 로 sqrt(k-4)=3, k=13 을 얻는 네 단계라 3단계로 본다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-06 / H22-C2-06-CORE: $x\\gt 2$일 때, $\\dfrac{x-2}{x^2-4x+k}$의 최댓값이 $\\dfrac{1}{6}$이 되도록 하는 상수 $k$의 값을 구하시오.",
+          "curriculum": "H1-RPM-250: t/(t^2+k-4) 의 분모 t+(k-4)/t 에 산술평균과 기하평균의 관계를 써서 최댓값 1/(2 sqrt(k-4))=1/6 을 얻는 단계가 절대부등식을 쓰는 행이다 (k=13).",
+          "problemType": "t/(t^2+k-4) 를 1/(t+(k-4)/t) 로 바꿔 역수항 (k-4)/t 가 든 분모를 산술평균·기하평균으로 정리해 최솟값 2 sqrt(k-4) 를 얻고 최댓값 1/6 에서 k=13 을 구하는 것이 역수식의 최솟값 템플릿이다.",
+          "difficulty": "x-2=t 치환으로 t^2+k-4 를 만들고 분수를 뒤집어 산술기하평균으로 2 sqrt(k-4), 조건 1/6 로 sqrt(k-4)=3, k=13 을 얻는 네 단계라 3단계로 본다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 등호조건 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "difficultyReason": "x-2=t 치환으로 t^2+k-4 를 만들고 분수를 뒤집어 산술기하평균으로 2 sqrt(k-4), 조건 1/6 로 sqrt(k-4)=3, k=13 을 얻는 네 단계라 3단계로 본다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "templateKey": "TPL_AMGM_RECIPROCAL_MINIMUM",
+        "why": "t/(t^2+k-4) 를 1/(t+(k-4)/t) 로 바꿔 역수항 (k-4)/t 가 든 분모를 산술평균·기하평균으로 정리해 최솟값 2 sqrt(k-4) 를 얻고 최댓값 1/6 에서 k=13 을 구하는 것이 역수식의 최솟값 템플릿이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_f506095450e725f701eab2146f653668254f66a681964cd829d9509e2679f198",
@@ -917,20 +1500,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-06",
+        "standardUnit": "명제",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-C2-06-CORE",
+        "subUnit": "명제 핵심 개념",
+        "conceptClusterKey": "H22-C2-06-CORE",
+        "problemTypeKey": "PT_LOGIC_CHAIN",
+        "templateKey": "TPL_LOGIC_CONSTRAINT_PUZZLE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
         "sourceQid": 20,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -940,19 +1523,50 @@
           "sourceQid": 20,
           "variationType": "STRICT_VARIANT",
           "variationNote": "가능한 경우가 제한되어 최댓값을 구하는 문제 → 여러 가능한 경우를 모두 찾고 보이는 수들의 합의 최솟값을 구하는 문제로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-249"
+        ],
+        "rpmPrimary": {
+          "l1": "집합과 명제",
+          "l2": "명제",
+          "l3": "증명",
+          "l4": "귀류법",
+          "recordId": "H1-RPM-249"
+        },
+        "rpmPrimaryL1": "집합과 명제",
+        "rpmPrimaryL2": "명제",
+        "rpmPrimaryL3": "증명",
+        "rpmPrimaryL4": "귀류법",
+        "rpmPrimaryRecordId": "H1-RPM-249",
+        "difficultyBasis": "조건 (가)~(라) 를 명제로 읽고 4 를 뒤집지 않으면 모순임을 보인 뒤 네 경우의 합 14, 15, 16, 18 중 최솟값 14 를 고르는 네 단계라 3단계로 본다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-06 / H22-C2-06-CORE: 다음 조건을 모두 만족시키도록 카드를 뒤집었을 때, 보이는 면에 적혀 있는 모든 수들의 합의 최솟값을 구하시오.",
+          "curriculum": "H1-RPM-249: 4 번 카드를 뒤집지 않는다고 가정하면 (라)(다)(가)(나) 가 모순이 되어 4 번은 반드시 뒤집는다는 단계가 귀류법 행이다 (최솟값 14).",
+          "problemType": "(가)~(라) 의 조건명제를 이어 4 번 배제의 반대를 모순으로 보이고 S={2,4}, {2,3,4}, {1,4}, {1,2,4} 의 합 14, 16, 15, 18 을 가려 최솟값 14 를 구하는 것이 논리 조건을 이용한 추론 템플릿이다.",
+          "difficulty": "조건 (가)~(라) 를 명제로 읽고 4 를 뒤집지 않으면 모순임을 보인 뒤 네 경우의 합 14, 15, 16, 18 중 최솟값 14 를 고르는 네 단계라 3단계로 본다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 조건 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "difficultyReason": "조건 (가)~(라) 를 명제로 읽고 4 를 뒤집지 않으면 모순임을 보인 뒤 네 경우의 합 14, 15, 16, 18 중 최솟값 14 를 고르는 네 단계라 3단계로 본다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_LOGIC_CHAIN",
+        "templateKey": "TPL_LOGIC_CONSTRAINT_PUZZLE",
+        "why": "(가)~(라) 의 조건명제를 이어 4 번 배제의 반대를 모순으로 보이고 S={2,4}, {2,3,4}, {1,4}, {1,2,4} 의 합 14, 16, 15, 18 을 가려 최솟값 14 를 구하는 것이 논리 조건을 이용한 추론 템플릿이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_ca018bbb1faf6d6cd8d79f00da8024d131f3f6e05131ce018f5371dfdaacfba4",
@@ -964,20 +1578,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-07",
+        "standardUnit": "함수",
+        "standardUnitOrder": 7,
+        "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+        "subUnit": "함수의 뜻과 그래프",
+        "conceptClusterKey": "H22-C2-07-FUNCTION_BASIC",
+        "problemTypeKey": "PT_FINITE_BIJECTION",
+        "templateKey": "TPL_MULTIPLE_BIJECTIONS_DEDUCTION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 21,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -987,19 +1601,50 @@
           "sourceQid": 21,
           "variationType": "STRICT_VARIANT",
           "variationNote": "직접 함숫값 2개와 합성함수 1개 조건 → 직접 함숫값 1개와 합성함수 2개 조건을 결합해 모순 배제로 추론하는 문제로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-257"
+        ],
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "함수",
+          "l3": "함수의 성질",
+          "l4": "일대일함수",
+          "recordId": "H1-RPM-257"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "함수",
+        "rpmPrimaryL3": "함수의 성질",
+        "rpmPrimaryL4": "일대일함수",
+        "rpmPrimaryRecordId": "H1-RPM-257",
+        "difficultyBasis": "f(1)=2 이면 f(2)=1 모순으로 f(1)=1, g(1)=2, g(2)=1, g(3)=3 을 정해 1+3=4 를 얻는 네 단계라 2단계이다. 조건은 q-box 에 있다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-07 / H22-C2-07-FUNCTION_BASIC: $X$에서 $X$로의 두 함수 $f$와 $g$가 모두 일대일대응이고, 다음 조건을 모두 만족시킨다.",
+          "curriculum": "H1-RPM-257: f, g 가 집합 {1,2,3} 의 일대일대응이라 f(1) 이 1 또는 2 라는 것과 남은 값을 정하는 단계가 일대일함수 행이다. 보기 q-box 조건 (가)(나)(다) 를 쓴다.",
+          "problemType": "f(2)=3, (g∘f)(1)=2, (f∘g)(2)=1 로 f(1)=1, g(1)=2, g(2)=1, g(3)=3 을 차례로 정하는 것이 여러 일대일대응의 관계로 함수값 결정 템플릿이다. (보기 q-box)",
+          "difficulty": "f(1)=2 이면 f(2)=1 모순으로 f(1)=1, g(1)=2, g(2)=1, g(3)=3 을 정해 1+3=4 를 얻는 네 단계라 2단계이다. 조건은 q-box 에 있다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 조건 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "f(1)=2 이면 f(2)=1 모순으로 f(1)=1, g(1)=2, g(2)=1, g(3)=3 을 정해 1+3=4 를 얻는 네 단계라 2단계이다. 조건은 q-box 에 있다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_FINITE_BIJECTION",
+        "templateKey": "TPL_MULTIPLE_BIJECTIONS_DEDUCTION",
+        "why": "f(2)=3, (g∘f)(1)=2, (f∘g)(2)=1 로 f(1)=1, g(1)=2, g(2)=1, g(3)=3 을 차례로 정하는 것이 여러 일대일대응의 관계로 함수값 결정 템플릿이다. (보기 q-box)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c11b7c85599f1785f3289d8bfd227809d58c033e426131553708af7d109e8165",
@@ -1011,20 +1656,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-07",
+        "standardUnit": "함수",
+        "standardUnitOrder": 7,
+        "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+        "subUnit": "합성함수",
+        "conceptClusterKey": "H22-C2-07-FUNCTION_COMPOSITION",
+        "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+        "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
         "sourceQid": 22,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -1034,19 +1679,50 @@
           "sourceQid": 22,
           "variationType": "STRICT_VARIANT",
           "variationNote": "증가하는 두 직선의 합성 → 감소하는 두 직선을 조합하여 연속인 합성함수를 구하는 문제로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-253"
+        ],
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "함수",
+          "l3": "합성함수",
+          "l4": "합성함수 계산",
+          "recordId": "H1-RPM-253"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "함수",
+        "rpmPrimaryL3": "합성함수",
+        "rpmPrimaryL4": "합성함수 계산",
+        "rpmPrimaryRecordId": "H1-RPM-253",
+        "difficultyBasis": "(1) 에서 x<=0 을 구하고 (2) 에서 안쪽 f(x) 가 1 이상인지에 따라 세 구간으로 나눠 2x, x, 2x-1 을 잇는 두 덩이라 2단계로 본다 (cases 꼴).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-07 / H22-C2-07-FUNCTION_COMPOSITION: (1)의 결과를 이용하여 함수 $y=(f\\circ f)(x)$를 $x$의 값의 범위에 따라 나누어 구하는 과정을 서술하시오.",
+          "curriculum": "H1-RPM-253: f(f(x)) 를 안쪽 f(x) 가 1 이상인지에 따라 2x, x, 2x-1 로 계산하는 단계가 합성함수 계산 행이다 (cases 꼴).",
+          "problemType": "조각함수 f 에서 (1) 의 x<=0 을 이용해 x<=0, 0<x<1, x>=1 로 나눠 f(f(x)) 의 구간별 식 2x, x, 2x-1 을 얻는 것이 합성함수의 구간별 그래프 분석 템플릿이다 (cases 꼴).",
+          "difficulty": "(1) 에서 x<=0 을 구하고 (2) 에서 안쪽 f(x) 가 1 이상인지에 따라 세 구간으로 나눠 2x, x, 2x-1 을 잇는 두 덩이라 2단계로 본다 (cases 꼴).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B23",
+      "difficultyReason": "(1) 에서 x<=0 을 구하고 (2) 에서 안쪽 f(x) 가 1 이상인지에 따라 세 구간으로 나눠 2x, x, 2x-1 을 잇는 두 덩이라 2단계로 본다 (cases 꼴).",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+        "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+        "why": "조각함수 f 에서 (1) 의 x<=0 을 이용해 x<=0, 0<x<1, x>=1 로 나눠 f(f(x)) 의 구간별 식 2x, x, 2x-1 을 얻는 것이 합성함수의 구간별 그래프 분석 템플릿이다 (cases 꼴)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_fae50ce7de42bfd99c3ca182802bebc1efc0b71b91c8df043b19dbad90a32235",
@@ -1058,20 +1734,20 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "공통수학2",
-        "standardUnitKey": "",
-        "standardUnit": "",
-        "standardUnitOrder": null,
-        "subUnitKey": "",
-        "subUnit": "",
-        "conceptClusterKey": "",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "H22-C2-09",
+        "standardUnit": "무리함수",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+        "subUnit": "함수의 뜻과 그래프",
+        "conceptClusterKey": "H22-C2-09-FUNCTION_BASIC",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "",
-        "difficultyBucket": null,
-        "difficultyConfidence": "",
-        "difficultyBoundaryFlag": "",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
         "sourceQid": 23,
         "variationType": "STRICT_VARIANT",
         "provenance": {
@@ -1081,19 +1757,50 @@
           "sourceQid": 23,
           "variationType": "STRICT_VARIANT",
           "variationNote": "서로 다른 네 점에서 만나는 k의 값 → 서로 다른 세 점에서 만나도록 하는 k의 값의 범위를 구하는 문제로 변경"
+        },
+        "rpmPrimaryRecordIds": [
+          "H1-RPM-272"
+        ],
+        "rpmPrimary": {
+          "l1": "함수",
+          "l2": "무리함수",
+          "l3": "무리함수의 활용",
+          "l4": "무리함수의 교점",
+          "recordId": "H1-RPM-272"
+        },
+        "rpmPrimaryL1": "함수",
+        "rpmPrimaryL2": "무리함수",
+        "rpmPrimaryL3": "무리함수의 활용",
+        "rpmPrimaryL4": "무리함수의 교점",
+        "rpmPrimaryRecordId": "H1-RPM-272",
+        "difficultyBasis": "두 가지의 그래프 작성, t^2-t+1-k=0 과 s^2-s+k-1=0 의 판별식 4k-3, 5-4k 와 곱 1-k, k-1 의 부호로 교점 개수를 나누고 합 3 이 되는 범위를 얻는 4단계라 4단계로 본다 (cases 꼴).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "H22-C2-09 / H22-C2-09-FUNCTION_BASIC: 직선 $y=x+k$가 서로 다른 세 점에서 만나도록 하는 실수 $k$의 값의 범위를 구하는 과정을 서술하시오.",
+          "curriculum": "H1-RPM-272: x<=0 의 1-sqrt(-x) 와 x>=1 의 sqrt(x-1)+2 두 가지와 직선 y=x+k 의 교점 개수를 각각 이차방정식으로 세는 단계가 무리함수의 교점 행이다 (cases 꼴).",
+          "problemType": "조각함수의 두 무리함수 가지가 직선 y=x+k 와 만나는 개수 (왼쪽 0, 1, 2, 1 / 오른쪽 1, 2, 1, 0) 의 합이 3 이 되는 3/4<k<1 또는 1<k<5/4 를 구하는 것이 절댓값·조각함수 그래프의 교점 템플릿이다 (cases 꼴).",
+          "difficulty": "두 가지의 그래프 작성, t^2-t+1-k=0 과 s^2-s+k-1=0 의 판별식 4k-3, 5-4k 와 곱 1-k, k-1 의 부호로 교점 개수를 나누고 합 3 이 되는 범위를 얻는 4단계라 4단계로 본다 (cases 꼴).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 정의역제한 이 있다)."
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「함수 $y=f(x)$의 그래프를 그리는 과정을 서술하시오.」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "",
       "decisiveStep": "",
-      "difficultyConfidence": "",
-      "difficultyBoundaryFlag": "",
-      "difficultyReason": "",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "difficultyReason": "두 가지의 그래프 작성, t^2-t+1-k=0 과 s^2-s+k-1=0 의 판별식 4k-3, 5-4k 와 곱 1-k, k-1 의 부호로 교점 개수를 나누고 합 3 이 되는 범위를 얻는 4단계라 4단계로 본다 (cases 꼴).",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+        "why": "조각함수의 두 무리함수 가지가 직선 y=x+k 와 만나는 개수 (왼쪽 0, 1, 2, 1 / 오른쪽 1, 2, 1, 0) 의 합이 3 이 되는 3/4<k<1 또는 1<k<5/4 를 구하는 것이 절댓값·조각함수 그래프의 교점 템플릿이다 (cases 꼴)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: AI Studio 유사 JS 에서 만든 스테이지 (단원·유형·난이도·4칸은 판정 전)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     }
   ]
 }

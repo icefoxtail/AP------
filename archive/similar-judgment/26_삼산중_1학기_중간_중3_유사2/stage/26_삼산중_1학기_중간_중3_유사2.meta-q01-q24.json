@@ -3,7 +3,7 @@
   "requestId": "26_삼산중_1학기_중간_중3_유사2-candidate-v1",
   "examUid": "26_삼산중_1학기_중간_중3_유사2",
   "sourceArchiveFile": "archive/exams/similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사2.js",
-  "expectedSourceBlobSha1": "6469d35158d0deaf8be858fd8f5e5189fba4d9bc",
+  "expectedSourceBlobSha1": "122f5e1cf4686dfc9dcb3197912ed1fb0bf5e9b1",
   "expectedQuestionCount": 24,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -29,9 +29,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
         "subUnit": "제곱근과 실수",
-        "conceptClusterKey": "REAL_NUMBER_LINE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
+        "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+        "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
         "crossConceptKeys": [
           "CC_REAL_NUMBER_LINE",
           "CC_RATIONAL_IRRATIONAL_CLASSIFICATION"
@@ -51,23 +51,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-003"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "제곱근과 실수",
+          "l3": "무리수와 실수",
+          "l4": "무리수 판별",
+          "recordId": "M3-RPM-003"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "제곱근과 실수",
+        "rpmPrimaryL3": "무리수와 실수",
+        "rpmPrimaryL4": "무리수 판별",
+        "rpmPrimaryRecordId": "M3-RPM-003",
+        "difficultyBasis": "실수와 수직선, 0의 제곱근 등 기본 정의 1단계를 판별하는 기본 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-SQUARE_ROOT_REAL_NUMBER: 모든 실수는 각각 수직선 위의 한 점에 대응한다.",
+          "curriculum": "M3-RPM-003: 실수 체계와 무리수, 유리수, 순환소수, 0의 제곱근 등 실수의 기본 성질을 판별하는 M3-RPM-003 레코드에 해당합니다.",
+          "problemType": "수직선과 실수의 대응 및 유리수, 무리수, 0의 제곱근에 관한 명제의 진위를 가리는 TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT 템플릿입니다.",
+          "difficulty": "실수와 수직선, 0의 제곱근 등 기본 정의 1단계를 판별하는 기본 문항입니다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_REAL_NUMBER_LINE, CC_RATIONAL_IRRATIONAL_CLASSIFICATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "실수와 수직선의 일대일 대응 관계 및 무한소수의 분류 체계를 적용하여 참인 명제를 판별한다.",
       "decisiveStep": "수직선이 유리수와 무리수에 대응하는 점들로 완전히 메워진다는 일대일 대응 정리 확인",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "실수와 수직선 대응 개념의 기본 정의를 확인하는 1단계 개념 판정 문항",
+      "difficultyReason": "실수와 수직선, 0의 제곱근 등 기본 정의 1단계를 판별하는 기본 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_REAL_NUMBER_PROPERTIES",
-        "templateKey": "TPL_M3_REAL_NUMBER_LINE_CORRESPONDENCE",
-        "why": "실수의 기본 성질과 수직선 대응 명제의 진위 판별 템플릿"
+        "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+        "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
+        "why": "수직선과 실수의 대응 및 유리수, 무리수, 0의 제곱근에 관한 명제의 진위를 가리는 TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_a78971fb44c4ecaac149f6f8b75aade6e4484376758ccd21f0facf5ee7cadf9b",
@@ -84,9 +116,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
         "subUnit": "근호를 포함한 식의 계산",
-        "conceptClusterKey": "SQUARE_ROOT_EVALUATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
         "crossConceptKeys": [
           "CC_RADICAL_MULTIPLICATION",
           "CC_ABSOLUTE_VALUE_OF_RADICAL"
@@ -106,23 +138,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-007"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "근호를 포함한 식의 계산",
+          "l3": "근호의 곱셈과 나눗셈",
+          "l4": "근호의 곱",
+          "recordId": "M3-RPM-007"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "근호를 포함한 식의 계산",
+        "rpmPrimaryL3": "근호의 곱셈과 나눗셈",
+        "rpmPrimaryL4": "근호의 곱",
+        "rpmPrimaryRecordId": "M3-RPM-007",
+        "difficultyBasis": "sqrt(0.004) * sqrt(10) = 0.2 등 근호의 기본 곱셈 및 성질을 단일 단계로 계산하는 1단계 난이도 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-REAL_NUMBER_OPERATIONS: 다음 중 계산 결과가 옳은 것은? [3점]",
+          "curriculum": "M3-RPM-007: 근호의 곱셈 성질 sqrt(0.004) * sqrt(10) = sqrt(0.04) = 0.2를 계산하는 M3-RPM-007 레코드입니다.",
+          "problemType": "근호의 곱셈과 제곱근 성질 sqrt(0.004) * sqrt(10) = 0.2 등의 기본 계산 연산 템플릿입니다.",
+          "difficulty": "sqrt(0.004) * sqrt(10) = 0.2 등 근호의 기본 곱셈 및 성질을 단일 단계로 계산하는 1단계 난이도 문항입니다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_RADICAL_MULTIPLICATION, CC_ABSOLUTE_VALUE_OF_RADICAL: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "제곱근의 거듭제곱 성질과 소수 근호 곱셈 법칙을 적용해 식의 참거짓을 계산한다.",
       "decisiveStep": "근호 안 소수의 곱 0.004*10=0.04의 양의 제곱근이 0.2임을 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "제곱근의 기본 성질을 5개 독립 보기에 각각 적용하는 표준 기본 계산 문항",
+      "difficultyReason": "sqrt(0.004) * sqrt(10) = 0.2 등 근호의 기본 곱셈 및 성질을 단일 단계로 계산하는 1단계 난이도 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_SQUARE_ROOT_ARITHMETIC_CHECK",
-        "templateKey": "TPL_M3_RADICAL_BASIC_CALCULATION",
-        "why": "제곱근 기본 성질과 수치 계산의 정확도를 평가하는 템플릿"
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+        "why": "근호의 곱셈과 제곱근 성질 sqrt(0.004) * sqrt(10) = 0.2 등의 기본 계산 연산 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_94d6e8d58012fbb80382d279ebfd5ff0e74c61aec6dabb5778bb55e344f5ba1a",
@@ -137,11 +201,11 @@
         "standardUnitKey": "M3-01",
         "standardUnit": "실수와 그 계산",
         "standardUnitOrder": 1,
-        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-        "subUnit": "근호를 포함한 식의 계산",
+        "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
+        "subUnit": "실수와 무리수의 대소 비교",
         "conceptClusterKey": "IRRATIONAL_NUMBER_RANGE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": "TPL_M3_REAL_COMPARISON_BETWEEN",
         "crossConceptKeys": [
           "CC_ROOT_APPROXIMATION",
           "CC_RADICAL_ORDERING"
@@ -161,23 +225,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-004"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "제곱근과 실수",
+          "l3": "무리수와 실수",
+          "l4": "실수의 대소",
+          "recordId": "M3-RPM-004"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "제곱근과 실수",
+        "rpmPrimaryL3": "무리수와 실수",
+        "rpmPrimaryL4": "실수의 대소",
+        "rpmPrimaryRecordId": "M3-RPM-004",
+        "difficultyBasis": "sqrt(6)과 sqrt(18)의 근삿값 범위를 추정하고 각 선지의 범위를 비교하는 2단계 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-REAL_NUMBER_COMPARISON: 두 수 $\\sqrt{6}$과 $\\sqrt{18}$ 사이에 있는 수가 아닌 것은? [4점]",
+          "curriculum": "M3-RPM-004: 두 무리수 sqrt(6)과 sqrt(18)의 대소 및 근삿값 범위를 다루는 M3-RPM-004 레코드입니다.",
+          "problemType": "sqrt(6)과 sqrt(18) 사이에 위치하는 무리수를 어림하는 TPL_M3_REAL_COMPARISON_BETWEEN 템플릿입니다.",
+          "difficulty": "sqrt(6)과 sqrt(18)의 근삿값 범위를 추정하고 각 선지의 범위를 비교하는 2단계 문항입니다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_ROOT_APPROXIMATION, CC_RADICAL_ORDERING: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "무리수의 정수 부분과 소수 근삿값을 활용하여 수직선 구간 포함 여부를 대소 비교한다.",
       "decisiveStep": "sqrt(3)+3 약 4.73이 sqrt(18) 약 4.24보다 큼을 근삿값 범위로 식별",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "근삿값 판정과 제곱수 비교를 혼합하여 경계값을 초과하는 수를 찾아내는 문항",
+      "difficultyReason": "sqrt(6)과 sqrt(18)의 근삿값 범위를 추정하고 각 선지의 범위를 비교하는 2단계 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_IRRATIONAL_INTERVAL_CHECK",
-        "templateKey": "TPL_M3_BETWEEN_RADICALS_MEMBERSHIP",
-        "why": "두 근호 수 사이에 존재하는 수의 유무를 판별하는 템플릿"
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": "TPL_M3_REAL_COMPARISON_BETWEEN",
+        "why": "sqrt(6)과 sqrt(18) 사이에 위치하는 무리수를 어림하는 TPL_M3_REAL_COMPARISON_BETWEEN 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_69c342f7465358645330abe1ba3f37893ca4cd18d88ebb3262cf4c839cf0b030",
@@ -192,11 +288,11 @@
         "standardUnitKey": "M3-01",
         "standardUnit": "실수와 그 계산",
         "standardUnitOrder": 1,
-        "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-        "subUnit": "제곱근과 실수",
+        "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
+        "subUnit": "실수와 무리수의 대소 비교",
         "conceptClusterKey": "RADICAL_COMPARISON_BY_DIFFERENCE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": "TPL_M3_REAL_COMPARISON_ORDER",
         "crossConceptKeys": [
           "CC_DIFFERENCE_SIGN_METHOD",
           "CC_RADICAL_COEFFICIENT_ENTRY"
@@ -216,23 +312,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-004"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "제곱근과 실수",
+          "l3": "무리수와 실수",
+          "l4": "실수의 대소",
+          "recordId": "M3-RPM-004"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "제곱근과 실수",
+        "rpmPrimaryL3": "무리수와 실수",
+        "rpmPrimaryL4": "실수의 대소",
+        "rpmPrimaryRecordId": "M3-RPM-004",
+        "difficultyBasis": "두 수의 차를 구하고 근호 안의 수를 sqrt(20), sqrt(16)과 같이 제곱 비교하여 부호를 결정하는 2단계 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-REAL_NUMBER_COMPARISON: 세 실수 $a = 3\\sqrt{5} - 2$, $b = \\sqrt{5} + 2$, $c = 7 - \\sqrt{5}$ 의 대소 관계로 옳은 것은? [4점]",
+          "curriculum": "M3-RPM-004: 세 실수 a, b, c의 차를 계산하여 sqrt(20) > sqrt(16), sqrt(81) > sqrt(80)으로 대소를 비교하는 M3-RPM-004 레코드입니다.",
+          "problemType": "세 수의 차 a-b = 2*sqrt(5)-4 = sqrt(20)-sqrt(16) > 0과 c-a = 9-4*sqrt(5) = sqrt(81)-sqrt(80) > 0을 구하여 대소를 비교하는 TPL_M3_REAL_COMPARISON_ORDER 템플릿입니다.",
+          "difficulty": "두 수의 차를 구하고 근호 안의 수를 sqrt(20), sqrt(16)과 같이 제곱 비교하여 부호를 결정하는 2단계 문항입니다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_DIFFERENCE_SIGN_METHOD, CC_RADICAL_COEFFICIENT_ENTRY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "실수의 차의 부호 판정법(A-B>0)을 근호 변환 제곱비교와 연계하여 세 수의 순서를 확정한다.",
       "decisiveStep": "9-4*sqrt(5) = sqrt(81)-sqrt(80) > 0 을 이용해 a < c 증명",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "두 번의 차의 부호 판정 및 계수의 근호 안 삽입 연산이 필요한 2단계 비교 문항",
+      "difficultyReason": "두 수의 차를 구하고 근호 안의 수를 sqrt(20), sqrt(16)과 같이 제곱 비교하여 부호를 결정하는 2단계 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_REAL_ORDER_BY_SUBTRACTION",
-        "templateKey": "TPL_M3_THREE_RADICALS_ORDERING",
-        "why": "차의 부호 판정을 이용한 세 실수의 대소 비교 템플릿"
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": "TPL_M3_REAL_COMPARISON_ORDER",
+        "why": "세 수의 차 a-b = 2*sqrt(5)-4 = sqrt(20)-sqrt(16) > 0과 c-a = 9-4*sqrt(5) = sqrt(81)-sqrt(80) > 0을 구하여 대소를 비교하는 TPL_M3_REAL_COMPARISON_ORDER 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_15e091c191bc0c389f873842dc72713a2c7783934ff20688672159353c689279",
@@ -247,11 +375,11 @@
         "standardUnitKey": "M3-01",
         "standardUnit": "실수와 그 계산",
         "standardUnitOrder": 1,
-        "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-        "subUnit": "제곱근과 실수",
+        "subUnitKey": "M3-01-REAL_NUMBER_LINE",
+        "subUnit": "수직선 위의 실수 표현",
         "conceptClusterKey": "PYTHAGOREAN_RADICAL_LINE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+        "templateKey": "TPL_M3_NUMBER_LINE_SQUARE_ROTATION",
         "crossConceptKeys": [
           "CC_PYTHAGOREAN_THEOREM",
           "CC_RADICAL_SIMPLIFICATION"
@@ -273,23 +401,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-005"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "제곱근과 실수",
+          "l3": "수직선과 제곱근",
+          "l4": "무리수의 위치",
+          "recordId": "M3-RPM-005"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "제곱근과 실수",
+        "rpmPrimaryL3": "수직선과 제곱근",
+        "rpmPrimaryL4": "무리수의 위치",
+        "rpmPrimaryRecordId": "M3-RPM-005",
+        "difficultyBasis": "한 변이 3인 두 정사각형 ABCD에서 대각선 BD, BE 길이를 피타고라스 정리로 구하고 PQ 거리를 구하는 2단계 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-REAL_NUMBER_LINE: 수직선 위의 점 $\\mathrm{B}$를 기준으로",
+          "curriculum": "M3-RPM-005: 정사각형 ABCD의 대각선 BD, BE를 회전하여 수직선 위 점 PQ 길이를 구하는 M3-RPM-005 레코드입니다.",
+          "problemType": "정사각형 ABCD의 대각선 BD=3*sqrt(2), BE=3*sqrt(5)를 반지름으로 원호를 회전하여 수직선 위 PQ 거리를 구하는 TPL_M3_NUMBER_LINE_SQUARE_ROTATION 템플릿입니다.",
+          "difficulty": "한 변이 3인 두 정사각형 ABCD에서 대각선 BD, BE 길이를 피타고라스 정리로 구하고 PQ 거리를 구하는 2단계 문항입니다.",
+          "condition": "COND_SAME_DIRECTION: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_PYTHAGOREAN_THEOREM, CC_RADICAL_SIMPLIFICATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「한 변의 길이가 $3$인 두 정사각형 $\\mathrm{ABCD}$와 $\\mathrm{DCFE}$가 한 변을 공유하며 나란히 놓여 있다.」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "정사각형 및 연접 직사각형의 대각선 길이를 피타고라스 정리로 구하여 수직선상 호 회전 거리를 차분한다.",
       "decisiveStep": "가로 6 세로 3인 직사각형 대각선 BE=3*sqrt(5)와 한 변 3인 정사각형 대각선 BD=3*sqrt(2)의 차 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "피타고라스 정리를 두 직각삼각형에 각각 적용하여 근호를 간단히 한 뒤 차를 구하는 2단계 기하 결합 문항",
+      "difficultyReason": "한 변이 3인 두 정사각형 ABCD에서 대각선 BD, BE 길이를 피타고라스 정리로 구하고 PQ 거리를 구하는 2단계 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_SQUARE_ROOT_NUMBER_LINE_SEGMENT",
-        "templateKey": "TPL_M3_ADJACENT_SQUARE_DIAGONAL_DIFFERENCE",
-        "why": "연접 정사각형 대각선 회전을 통한 무리수 선분 길이 도출 템플릿"
+        "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+        "templateKey": "TPL_M3_NUMBER_LINE_SQUARE_ROTATION",
+        "why": "정사각형 ABCD의 대각선 BD=3*sqrt(2), BE=3*sqrt(5)를 반지름으로 원호를 회전하여 수직선 위 PQ 거리를 구하는 TPL_M3_NUMBER_LINE_SQUARE_ROTATION 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_67d4ff4b87346cd4b6c346f23430a64a5758a9df135e4711f57866995f5108a3",
@@ -304,11 +464,11 @@
         "standardUnitKey": "M3-01",
         "standardUnit": "실수와 그 계산",
         "standardUnitOrder": 1,
-        "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-        "subUnit": "제곱근과 실수",
+        "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
+        "subUnit": "실수와 무리수의 대소 비교",
         "conceptClusterKey": "ALGEBRAIC_RADICAL_ORDERING",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": "TPL_M3_REAL_COMPARISON_ORDER",
         "crossConceptKeys": [
           "CC_FRACTION_ORDERING",
           "CC_RADICAL_MONOTONICITY"
@@ -330,23 +490,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-004"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "제곱근과 실수",
+          "l3": "무리수와 실수",
+          "l4": "실수의 대소",
+          "recordId": "M3-RPM-004"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "제곱근과 실수",
+        "rpmPrimaryL3": "무리수와 실수",
+        "rpmPrimaryL4": "실수의 대소",
+        "rpmPrimaryRecordId": "M3-RPM-004",
+        "difficultyBasis": "1 < x < y 조건에서 분수식과 근호 식 A, B, C, D의 대소를 2단계로 연쇄 비교하는 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-REAL_NUMBER_COMPARISON: $1 < x < y$일 때, 보기의 네 수를 작은 것부터 차례대로 나열한 것으로 옳은 것은? [4점]",
+          "curriculum": "M3-RPM-004: 1 < x < y 조건에서 A, B, C, D의 대소를 문자로 비교하는 M3-RPM-004 레코드입니다.",
+          "problemType": "0 < x/y < 1에서 A < B < 1 < C < D로 대소를 비교하는 TPL_M3_REAL_COMPARISON_ORDER 템플릿입니다.",
+          "difficulty": "1 < x < y 조건에서 분수식과 근호 식 A, B, C, D의 대소를 2단계로 연쇄 비교하는 문항입니다.",
+          "condition": "COND_VARIABLE_CHAIN_INEQUALITY: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_FRACTION_ORDERING, CC_RADICAL_MONOTONICITY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "단위구간 (0,1)과 (1,inf)에서 밑과 근호의 대소 역전 성질을 이용해 네 문자의 크기 순서를 결정한다.",
       "decisiveStep": "0<x/y<1에서 x/y < sqrt(x/y) < 1 및 1 < sqrt(y/x) < y 를 단계별로 추론",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "0과 1 사이 및 1보다 큰 구간으로 나누어 제곱근의 단조성을 3단계로 추론해야 하는 논리 문항",
+      "difficultyReason": "1 < x < y 조건에서 분수식과 근호 식 A, B, C, D의 대소를 2단계로 연쇄 비교하는 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_VARIABLE_RADICAL_ORDERING",
-        "templateKey": "TPL_M3_FRACTION_ROOT_CHAIN_ORDER",
-        "why": "1<x<y 조건에서 역수 및 근호 포함 네 대수 표현의 정렬 템플릿"
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": "TPL_M3_REAL_COMPARISON_ORDER",
+        "why": "0 < x/y < 1에서 A < B < 1 < C < D로 대소를 비교하는 TPL_M3_REAL_COMPARISON_ORDER 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_6eca665bf244b05cc7f7598b21e7a6dcaa788d7aebf7d2efb7eddd8384441e79",
@@ -363,9 +555,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
         "subUnit": "제곱근과 실수",
-        "conceptClusterKey": "RADICAL_NATURAL_PAIRS",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
         "crossConceptKeys": [
           "CC_PERFECT_SQUARE",
           "CC_COMPLEMENTARY_COUNTING"
@@ -388,23 +580,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-003"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "제곱근과 실수",
+          "l3": "무리수와 실수",
+          "l4": "무리수 판별",
+          "recordId": "M3-RPM-003"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "제곱근과 실수",
+        "rpmPrimaryL3": "무리수와 실수",
+        "rpmPrimaryL4": "무리수 판별",
+        "rpmPrimaryRecordId": "M3-RPM-003",
+        "difficultyBasis": "제곱수 1, 4를 제외한 6*6=36개에서 x+y=4, 9, 16이 되는 6개를 여사건으로 제외하여 30개를 구하는 3단계 심화 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-SQUARE_ROOT_REAL_NUMBER: 세 실수 $\\sqrt{x}, \\sqrt{y}, \\sqrt{x+y}$가 모두 무리수가 되도록 하는 $8$ 이하의 자연수",
+          "curriculum": "M3-RPM-003: 세 수 sqrt(x), sqrt(y), sqrt(x+y)가 무리수가 되는 전체 36개 중 6개를 빼서 30개를 구하는 M3-RPM-003 레코드입니다.",
+          "problemType": "자연수 x, y에 대해 sqrt(x), sqrt(y), sqrt(x+y)가 무리수가 되는 36개 중 합이 4, 9, 16인 6개를 제외하는 TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION 템플릿입니다.",
+          "difficulty": "제곱수 1, 4를 제외한 6*6=36개에서 x+y=4, 9, 16이 되는 6개를 여사건으로 제외하여 30개를 구하는 3단계 심화 문항입니다.",
+          "condition": "COND_NATURAL_BOUND, COND_ALL_IRRATIONAL: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_PERFECT_SQUARE, CC_COMPLEMENTARY_COUNTING: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "유리수(제곱수) 배제 조건과 여사건 조합을 결합해 세 근호가 모두 무리수인 순서쌍의 수를 센다.",
       "decisiveStep": "전체 36개에서 합이 4, 9, 16이 되는 비적격 순서쌍 6개를 차감",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "개별 제곱수 배제 후 두 수의 합이 제곱수가 되는 경우를 빠짐없이 분류하는 심화 격자 세기 문항",
+      "difficultyReason": "제곱수 1, 4를 제외한 6*6=36개에서 x+y=4, 9, 16이 되는 6개를 여사건으로 제외하여 30개를 구하는 3단계 심화 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_SIMULTANEOUS_IRRATIONAL_PAIRS",
-        "templateKey": "TPL_M3_COMPLEMENTARY_SQUARE_SUM_COUNT",
-        "why": "독립 변수 및 합의 근호가 모두 무리수인 정수 순서쌍 개수 탐색 템플릿"
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
+        "why": "자연수 x, y에 대해 sqrt(x), sqrt(y), sqrt(x+y)가 무리수가 되는 36개 중 합이 4, 9, 16인 6개를 제외하는 TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_bc92307436d8ace6e116bdbc97ae9aeadc90b865c7e4220a5468888dc09633b5",
@@ -421,9 +645,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
         "subUnit": "근호를 포함한 식의 계산",
-        "conceptClusterKey": "RADICAL_ARITHMETIC_VERIFICATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
         "crossConceptKeys": [
           "CC_DISTRIBUTIVE_LAW_RADICAL",
           "CC_LIKE_RADICALS"
@@ -443,23 +667,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-009"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "근호를 포함한 식의 계산",
+          "l3": "근호의 덧셈과 뺄셈",
+          "l4": "동류근호",
+          "recordId": "M3-RPM-009"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "근호를 포함한 식의 계산",
+        "rpmPrimaryL3": "근호의 덧셈과 뺄셈",
+        "rpmPrimaryL4": "동류근호",
+        "rpmPrimaryRecordId": "M3-RPM-009",
+        "difficultyBasis": "sqrt(24)와 sqrt(54)를 간단히 하고 동류근호의 덧셈과 뺄셈을 1단계로 계산하는 기본 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-REAL_NUMBER_OPERATIONS: 다음 중 제곱근의 계산 결과로 옳은 것은? [3점]",
+          "curriculum": "M3-RPM-009: sqrt(24) + 3*sqrt(6) - sqrt(54) 등 근호의 덧셈과 뺄셈 및 동류근호 계산을 다루는 M3-RPM-009 레코드입니다.",
+          "problemType": "sqrt(24)+3*sqrt(6)-sqrt(54) 및 5*sqrt(2)-2*sqrt(2)=3*sqrt(2), 3*sqrt(7)+4*sqrt(7)=7*sqrt(7)의 동류근호 연산 템플릿입니다.",
+          "difficulty": "sqrt(24)와 sqrt(54)를 간단히 하고 동류근호의 덧셈과 뺄셈을 1단계로 계산하는 기본 문항입니다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_DISTRIBUTIVE_LAW_RADICAL, CC_LIKE_RADICALS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "동류근호의 덧셈·뺄셈과 분배법칙을 단계별로 전개하여 일치하는 식을 선별한다.",
       "decisiveStep": "동류근호 (5-2)sqrt(2) + (3+4)sqrt(7) = 3sqrt(2)+7sqrt(7) 연산 일치 확인",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "기본 분배법칙 및 동류근호 정리를 정확히 수행하면 해결되는 1단계 연산 확인 문항",
+      "difficultyReason": "sqrt(24)와 sqrt(54)를 간단히 하고 동류근호의 덧셈과 뺄셈을 1단계로 계산하는 기본 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_RADICAL_EXPRESSION_SIMPLIFICATION",
-        "templateKey": "TPL_M3_LIKE_RADICAL_OPERATIONS_CHECK",
-        "why": "근호를 포함한 사칙연산 식의 진위를 다각도로 검증하는 템플릿"
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+        "why": "sqrt(24)+3*sqrt(6)-sqrt(54) 및 5*sqrt(2)-2*sqrt(2)=3*sqrt(2), 3*sqrt(7)+4*sqrt(7)=7*sqrt(7)의 동류근호 연산 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_0d89c57d3233f670418c6d0ff11a87e5a7747e9bd69954359a5853204156e2ea",
@@ -476,9 +732,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
         "subUnit": "근호를 포함한 식의 계산",
-        "conceptClusterKey": "RADICAL_SCALING_FACTORS",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
         "crossConceptKeys": [
           "CC_SQUARE_EXTRACTION",
           "CC_DECIMAL_RADICAL"
@@ -498,23 +754,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-007"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "근호를 포함한 식의 계산",
+          "l3": "근호의 곱셈과 나눗셈",
+          "l4": "근호의 곱",
+          "recordId": "M3-RPM-007"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "근호를 포함한 식의 계산",
+        "rpmPrimaryL3": "근호의 곱셈과 나눗셈",
+        "rpmPrimaryL4": "근호의 곱",
+        "rpmPrimaryRecordId": "M3-RPM-007",
+        "difficultyBasis": "sqrt(48000)=40*sqrt(30)과 sqrt(0.6/50)=sqrt(1.2)/10으로 A=40, B=1/10을 구한 뒤 곱을 계산하는 2단계 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-REAL_NUMBER_OPERATIONS: $\\sqrt{48000}$은 $\\sqrt{30}$의 $A$배이고, $\\frac{\\sqrt{0.6}}{\\sqrt{50}}$은 $\\sqrt{1.2}$의 $B$배일 때, $A \\times B$의 값은? [4점]",
+          "curriculum": "M3-RPM-007: 근호 밖으로 제곱수를 꺼내어 48000 = 1600 * 30에서 A=40, B=1/10을 구하는 M3-RPM-007 레코드입니다.",
+          "problemType": "근호 변형을 통해 A=40, B=1/10을 구하고 곱 A * B = 4를 계산하는 TPL_M3_RADICAL_MIXED_OPERATION 템플릿입니다.",
+          "difficulty": "sqrt(48000)=40*sqrt(30)과 sqrt(0.6/50)=sqrt(1.2)/10으로 A=40, B=1/10을 구한 뒤 곱을 계산하는 2단계 문항입니다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SQUARE_EXTRACTION, CC_DECIMAL_RADICAL: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "큰 수와 소수의 제곱근을 기본 형태의 상수로 분리해 배수 비례상수를 곱산한다.",
       "decisiveStep": "A=40과 B=1/10을 각각 유도한 뒤 곱 4 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "자연수 단위와 소수 단위의 두 가지 근호 변형을 각각 해결한 후 곱하는 2단계 계산 문항",
+      "difficultyReason": "sqrt(48000)=40*sqrt(30)과 sqrt(0.6/50)=sqrt(1.2)/10으로 A=40, B=1/10을 구한 뒤 곱을 계산하는 2단계 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_RADICAL_MAGNIFICATION",
-        "templateKey": "TPL_M3_SCALE_FACTOR_PRODUCT",
-        "why": "루트 밖으로 완전제곱수를 꺼내어 배수 관계를 설정하고 곱하는 템플릿"
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+        "why": "근호 변형을 통해 A=40, B=1/10을 구하고 곱 A * B = 4를 계산하는 TPL_M3_RADICAL_MIXED_OPERATION 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_9a1851b55a85736abcf458e74461f81efecbea347a539788b94588ef194fbaed",
@@ -531,9 +819,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
         "subUnit": "근호를 포함한 식의 계산",
-        "conceptClusterKey": "GEOMETRIC_RADICAL_AREA",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+        "templateKey": "TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION",
         "crossConceptKeys": [
           "CC_TRIANGLE_AREA",
           "CC_RHOMBUS_AREA",
@@ -556,23 +844,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-007"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "근호를 포함한 식의 계산",
+          "l3": "근호의 곱셈과 나눗셈",
+          "l4": "근호의 곱",
+          "recordId": "M3-RPM-007"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "근호를 포함한 식의 계산",
+        "rpmPrimaryL3": "근호의 곱셈과 나눗셈",
+        "rpmPrimaryL4": "근호의 곱",
+        "rpmPrimaryRecordId": "M3-RPM-007",
+        "difficultyBasis": "삼각형의 넓이 12*sqrt(5)와 마름모의 넓이 3*sqrt(5)를 구하고 대각선 DF=6을 계산하는 2단계 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-REAL_NUMBER_OPERATIONS: 밑변의 길이가 $\\sqrt{72}\\text{ cm}$, 높이가 $\\sqrt{40}\\text{ cm}$인 삼각형 $\\mathrm{ABC}$의 넓이가",
+          "curriculum": "M3-RPM-007: 삼각형 ABC와 마름모 DEFG 넓이에서 sqrt(72) * sqrt(40) = 12*sqrt(5) 등 근호의 곱셈을 기하에 활용하는 M3-RPM-007 레코드입니다.",
+          "problemType": "삼각형과 마름모의 넓이 공식 및 제곱근 곱셈 sqrt(72)*sqrt(40)을 적용하여 대각선 DF=6을 구하는 TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION 템플릿입니다.",
+          "difficulty": "삼각형의 넓이 12*sqrt(5)와 마름모의 넓이 3*sqrt(5)를 구하고 대각선 DF=6을 계산하는 2단계 문항입니다.",
+          "condition": "COND_AREA_RATIO: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_TRIANGLE_AREA, CC_RHOMBUS_AREA, CC_RADICAL_MULTIPLICATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "삼각형 및 마름모의 대각선 넓이 공식을 근호 수치 계산과 연립하여 미지의 대각선을 도출한다.",
       "decisiveStep": "마름모 넓이 3*sqrt(5) = 1/2 * sqrt(5) * DF 로부터 DF=6 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "도형 넓이 공식을 세우고 무리수의 곱셈 및 일차방정식을 풀어 최종 유리수 해를 구하는 복합 문항",
+      "difficultyReason": "삼각형의 넓이 12*sqrt(5)와 마름모의 넓이 3*sqrt(5)를 구하고 대각선 DF=6을 계산하는 2단계 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_RADICAL_PLANE_GEOMETRY_AREA",
-        "templateKey": "TPL_M3_TRIANGLE_RHOMBUS_AREA_EQUATION",
-        "why": "근호 길이를 갖는 평면도형의 넓이 비례 관계 템플릿"
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+        "templateKey": "TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION",
+        "why": "삼각형과 마름모의 넓이 공식 및 제곱근 곱셈 sqrt(72)*sqrt(40)을 적용하여 대각선 DF=6을 구하는 TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_55c1aaed350949d5d8b554478f1d269e5e4bd40a369229eb418e0d6adea88533",
@@ -589,9 +909,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
         "subUnit": "근호를 포함한 식의 계산",
-        "conceptClusterKey": "RADICAL_COEFFICIENT_MATCHING",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
         "crossConceptKeys": [
           "CC_LIKE_RADICALS",
           "CC_RATIONAL_COEFFICIENT_EQUATION"
@@ -613,23 +933,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-009"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "근호를 포함한 식의 계산",
+          "l3": "근호의 덧셈과 뺄셈",
+          "l4": "동류근호",
+          "recordId": "M3-RPM-009"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "근호를 포함한 식의 계산",
+        "rpmPrimaryL3": "근호의 덧셈과 뺄셈",
+        "rpmPrimaryL4": "동류근호",
+        "rpmPrimaryRecordId": "M3-RPM-009",
+        "difficultyBasis": "동류근호로 묶고 우변의 -17/4*sqrt(3)과 비교하여 a=-1/2, b=-1/4을 구하여 합 a+b=-3/4을 계산하는 2단계 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-REAL_NUMBER_OPERATIONS: 유리수 $a, b$에 대하여 등식",
+          "curriculum": "M3-RPM-009: 우변의 -17/4*sqrt(3)과 동류근호 b-4를 비교하여 a=-1/2, b=-1/4을 구하는 M3-RPM-009 레코드입니다.",
+          "problemType": "우변의 -17/4*sqrt(3)과 동류근호 (3+a)*sqrt(5)+(b-4)*sqrt(3)의 계수를 비교하여 a=-1/2, b=-1/4, a+b=-3/4을 구하는 TPL_M3_RADICAL_MIXED_OPERATION 템플릿입니다.",
+          "difficulty": "동류근호로 묶고 우변의 -17/4*sqrt(3)과 비교하여 a=-1/2, b=-1/4을 구하여 합 a+b=-3/4을 계산하는 2단계 문항입니다.",
+          "condition": "COND_RATIONAL_VARIABLES: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_LIKE_RADICALS, CC_RATIONAL_COEFFICIENT_EQUATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "무리수 상등 원리를 동류항 묶음 식에 적용해 미정 유리수 계수 연립계를 풀이한다.",
       "decisiveStep": "3+a=5/2와 b-4=-17/4로부터 a=-1/2, b=-1/4 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "분수 연산과 무리수 상등의 계수 비교를 결합하여 두 미지수의 합을 구하는 문항",
+      "difficultyReason": "동류근호로 묶고 우변의 -17/4*sqrt(3)과 비교하여 a=-1/2, b=-1/4을 구하여 합 a+b=-3/4을 계산하는 2단계 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_RADICAL_COEFFICIENT_IDENTIFICATION",
-        "templateKey": "TPL_M3_RATIONAL_COEFFICIENT_MATCH",
-        "why": "서로 다른 두 무리수를 포함한 식에서 유리수 계수를 각각 비교하는 템플릿"
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+        "why": "우변의 -17/4*sqrt(3)과 동류근호 (3+a)*sqrt(5)+(b-4)*sqrt(3)의 계수를 비교하여 a=-1/2, b=-1/4, a+b=-3/4을 구하는 TPL_M3_RADICAL_MIXED_OPERATION 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_1bcc34aa352fc651abdcc29244e773a3df5e80951c92bddbc701ec94785f0176",
@@ -646,9 +998,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
         "subUnit": "근호를 포함한 식의 계산",
-        "conceptClusterKey": "RADICAL_MIXED_ARITHMETIC",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
         "crossConceptKeys": [
           "CC_RADICAL_DISTRIBUTIVE",
           "CC_RADICAL_DIVISION"
@@ -670,23 +1022,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-014"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "근호를 포함한 식의 계산",
+          "l3": "혼합 계산",
+          "l4": "식의 값",
+          "recordId": "M3-RPM-014"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "근호를 포함한 식의 계산",
+        "rpmPrimaryL3": "혼합 계산",
+        "rpmPrimaryL4": "식의 값",
+        "rpmPrimaryRecordId": "M3-RPM-014",
+        "difficultyBasis": "sqrt(98)=7*sqrt(2), sqrt(54)=3*sqrt(6), sqrt(32)=4*sqrt(2)를 전개 및 혼합 연산하여 a=14, b=-13을 구하는 2단계 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-REAL_NUMBER_OPERATIONS: $-\\sqrt{98}\\left(\\frac{\\sqrt{3}}{7} - \\sqrt{2}\\right) - \\sqrt{54} \\div \\sqrt{2} \\times \\sqrt{32} = a + b\\sqrt{6}$",
+          "curriculum": "M3-RPM-014: 근호의 분배법칙과 사칙연산 혼합 계산으로 sqrt(98), sqrt(54), sqrt(32)를 정리하여 a=14, b=-13을 구하는 M3-RPM-014 레코드입니다.",
+          "problemType": "-7*sqrt(2)*(sqrt(3)/7-sqrt(2)) - 12*sqrt(6) = 14-13*sqrt(6)으로 정리하여 a+b=1을 구하는 TPL_M3_RADICAL_MIXED_OPERATION 템플릿입니다.",
+          "difficulty": "sqrt(98)=7*sqrt(2), sqrt(54)=3*sqrt(6), sqrt(32)=4*sqrt(2)를 전개 및 혼합 연산하여 a=14, b=-13을 구하는 2단계 문항입니다.",
+          "condition": "COND_RATIONAL_VARIABLES: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_RADICAL_DISTRIBUTIVE, CC_RADICAL_DIVISION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "제곱근의 분배법칙 전개와 나눗셈-곱셈 혼합 연산을 결합해 a+b*sqrt(6) 형태로 유도한다.",
       "decisiveStep": "(14-sqrt(6)) - 12*sqrt(6) = 14-13*sqrt(6) 정리 후 a+b=1 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "부호 오류 가능성이 높은 괄호 분배 및 곱셈나눗셈 우선순위 혼합 연산 문항",
+      "difficultyReason": "sqrt(98)=7*sqrt(2), sqrt(54)=3*sqrt(6), sqrt(32)=4*sqrt(2)를 전개 및 혼합 연산하여 a=14, b=-13을 구하는 2단계 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_RADICAL_MIXED_EVALUATION",
-        "templateKey": "TPL_M3_EXPAND_AND_DIVIDE_RADICAL",
-        "why": "분배법칙과 사칙 혼합 연산이 포함된 무리수 정리 템플릿"
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+        "why": "-7*sqrt(2)*(sqrt(3)/7-sqrt(2)) - 12*sqrt(6) = 14-13*sqrt(6)으로 정리하여 a+b=1을 구하는 TPL_M3_RADICAL_MIXED_OPERATION 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_d0e492ac6e0ad1c1e68079e30821869900c108f426b6d19f9d1ecfbed454b171",
@@ -703,9 +1087,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
         "subUnit": "근호를 포함한 식의 계산",
-        "conceptClusterKey": "GEOMETRIC_PERIMETER_DEDUCTION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+        "templateKey": "TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION",
         "crossConceptKeys": [
           "CC_PERIMETER_CONSERVATION",
           "CC_RADICAL_ADDITION_SUBTRACTION"
@@ -727,23 +1111,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-009"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "근호를 포함한 식의 계산",
+          "l3": "근호의 덧셈과 뺄셈",
+          "l4": "동류근호",
+          "recordId": "M3-RPM-009"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "근호를 포함한 식의 계산",
+        "rpmPrimaryL3": "근호의 덧셈과 뺄셈",
+        "rpmPrimaryL4": "동류근호",
+        "rpmPrimaryRecordId": "M3-RPM-009",
+        "difficultyBasis": "네 조각의 둘레 총합 32+16*sqrt(5)를 구하고 내부 선분의 2배를 빼는 기하 논리를 결합한 3단계 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-REAL_NUMBER_OPERATIONS: 가로의 길이가 $8$, 세로의 길이가 $4$인 직사각형을 잘라 빗변의 길이가 $4\\sqrt{5}$이고",
+          "curriculum": "M3-RPM-009: 직각삼각형과 이등변삼각형 둘레 총합 32+16*sqrt(5)에서 내부 선분 2(8+4*sqrt(5))를 빼는 M3-RPM-009 레코드입니다.",
+          "problemType": "도형 조각의 둘레 총합 32+16*sqrt(5)에서 맞닿은 길이의 2배 16+8*sqrt(5)를 빼서 바깥 둘레 16+8*sqrt(5)를 구하는 TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION 템플릿입니다.",
+          "difficulty": "네 조각의 둘레 총합 32+16*sqrt(5)를 구하고 내부 선분의 2배를 빼는 기하 논리를 결합한 3단계 문항입니다.",
+          "condition": "COND_INTERNAL_BOUNDARY_SUM: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_PERIMETER_CONSERVATION, CC_RADICAL_ADDITION_SUBTRACTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "조각 다각형 둘레 총합에서 맞닿은 내부 공유변 길이의 두 배를 공제하는 기하 대수 원리를 적용한다.",
       "decisiveStep": "P = (32+16*sqrt(5)) - 2*(8+4*sqrt(5)) = 16+8*sqrt(5) 수식 전개",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "기하학적 접합부 공유 원리와 무리수 복합 연산을 종합적으로 추론해야 하는 고난도 문항",
+      "difficultyReason": "네 조각의 둘레 총합 32+16*sqrt(5)를 구하고 내부 선분의 2배를 빼는 기하 논리를 결합한 3단계 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_RADICAL_PUZZLE_PERIMETER",
-        "templateKey": "TPL_M3_DISSECTED_POLYGON_BOUNDARY",
-        "why": "도형 조각 재결합 시 공유 선분 배제 후 외곽선 둘레 산출 템플릿"
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+        "templateKey": "TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION",
+        "why": "도형 조각의 둘레 총합 32+16*sqrt(5)에서 맞닿은 길이의 2배 16+8*sqrt(5)를 빼서 바깥 둘레 16+8*sqrt(5)를 구하는 TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_27ae39836adba5ee99e7a0b1c7266ac0997f6ee054f172845706481e81a5b942",
@@ -760,9 +1176,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
         "subUnit": "다항식의 곱셈",
-        "conceptClusterKey": "POLYNOMIAL_EXPANSION_COEFFICIENT",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "POLYNOMIAL_MULTIPLICATION",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT",
         "crossConceptKeys": [
           "CC_DISTRIBUTIVE_LAW",
           "CC_LIKE_TERMS"
@@ -782,23 +1198,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-017"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "다항식의 곱셈",
+          "l3": "곱셈공식",
+          "l4": "두 일차식의 곱",
+          "recordId": "M3-RPM-017"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "다항식의 곱셈",
+        "rpmPrimaryL3": "곱셈공식",
+        "rpmPrimaryL4": "두 일차식의 곱",
+        "rpmPrimaryRecordId": "M3-RPM-017",
+        "difficultyBasis": "두 일차식의 곱을 분배법칙으로 전개하여 ab 계수 -7을 1단계로 구하는 기본 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-POLYNOMIAL_MULTIPLICATION: 다항식 $(3a - 4b)(4a + 3b)$를 전개했을 때, $ab$의 계수는? [3점]",
+          "curriculum": "M3-RPM-017: 두 일차식 (3a - 4b)(4a + 3b)의 곱셈 전개와 ab 계수 계산을 다루는 M3-RPM-017 레코드입니다.",
+          "problemType": "다항식 (3a - 4b)(4a + 3b)를 전개하여 9ab - 16ab = -7ab의 계수를 추출하는 TPL_M3_POLY_EXPANSION_COEFFICIENT 템플릿입니다.",
+          "difficulty": "두 일차식의 곱을 분배법칙으로 전개하여 ab 계수 -7을 1단계로 구하는 기본 문항입니다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_DISTRIBUTIVE_LAW, CC_LIKE_TERMS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "두 일차식의 곱셈 분배공식을 적용해 특정 동류항의 계수를 추출한다.",
       "decisiveStep": "전개식의 교차항 9ab - 16ab = -7ab 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "곱셈공식 분배법칙을 전개하여 단일 계수를 찾는 기본 계산 문항",
+      "difficultyReason": "두 일차식의 곱을 분배법칙으로 전개하여 ab 계수 -7을 1단계로 구하는 기본 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_POLYNOMIAL_CROSS_COEFFICIENT",
-        "templateKey": "TPL_M3_EXPAND_AND_EXTRACT_COEFFICIENT",
-        "why": "이차식 전개 후 특정 교차항 계수 도출 템플릿"
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT",
+        "why": "다항식 (3a - 4b)(4a + 3b)를 전개하여 9ab - 16ab = -7ab의 계수를 추출하는 TPL_M3_POLY_EXPANSION_COEFFICIENT 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_26ffd526d6e7a617a3b4c9c2fb47e100c77de6d9a60e4911a61a034408b98aa3",
@@ -815,9 +1263,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
         "subUnit": "근호를 포함한 식의 계산",
-        "conceptClusterKey": "RADICAL_RATIONALIZATION_DIFFERENCE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
         "crossConceptKeys": [
           "CC_CONJUGATE_RADICAL",
           "CC_DENOMINATOR_RATIONALIZATION"
@@ -839,23 +1287,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-012"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "근호를 포함한 식의 계산",
+          "l3": "분모의 유리화",
+          "l4": "합·차 꼴의 유리화",
+          "recordId": "M3-RPM-012"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "근호를 포함한 식의 계산",
+        "rpmPrimaryL3": "분모의 유리화",
+        "rpmPrimaryL4": "합·차 꼴의 유리화",
+        "rpmPrimaryRecordId": "M3-RPM-012",
+        "difficultyBasis": "1/sqrt(45)와 합차공식 분모 유리화를 거쳐 분모 15인 (5+2*sqrt(5))/15에서 a-b=1/5를 구하는 2단계 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-REAL_NUMBER_OPERATIONS: 유리수 $a, b$에 대하여",
+          "curriculum": "M3-RPM-012: 1/(sqrt(5)-2)의 분모의 유리화와 1/sqrt(45) 계산을 다루는 M3-RPM-012 레코드입니다.",
+          "problemType": "합차공식을 이용한 분모의 유리화로 (5+2*sqrt(5))/15를 정리하여 a-b=1/5를 구하는 TPL_M3_RADICAL_RATIONALIZATION 템플릿입니다.",
+          "difficulty": "1/sqrt(45)와 합차공식 분모 유리화를 거쳐 분모 15인 (5+2*sqrt(5))/15에서 a-b=1/5를 구하는 2단계 문항입니다.",
+          "condition": "COND_RATIONAL_VARIABLES: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_CONJUGATE_RADICAL, CC_DENOMINATOR_RATIONALIZATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "합차공식을 이용한 분모 유리화와 단항근호 유리화를 순차 적용해 계수 차를 구한다.",
       "decisiveStep": "1/(sqrt(5)-2) = sqrt(5)+2 로 유리화 후 1/(3*sqrt(5))와의 곱을 1/3 + 2/15*sqrt(5)로 정리",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "켤레근호를 이용한 분모의 유리화와 단항식 유리화를 동시에 수행해야 하는 2단계 계산 문항",
+      "difficultyReason": "1/sqrt(45)와 합차공식 분모 유리화를 거쳐 분모 15인 (5+2*sqrt(5))/15에서 a-b=1/5를 구하는 2단계 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_CONJUGATE_RATIONALIZATION",
-        "templateKey": "TPL_M3_PRODUCT_OF_RATIONALIZED_RADICALS",
-        "why": "합차꼴 및 단항 근호 분모를 유리화하여 미정계수를 도출하는 템플릿"
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
+        "why": "합차공식을 이용한 분모의 유리화로 (5+2*sqrt(5))/15를 정리하여 a-b=1/5를 구하는 TPL_M3_RADICAL_RATIONALIZATION 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_6c444b5b05e566c95f3f26d69f39903519b52a761d5d18de85db070049732988",
@@ -872,9 +1352,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
         "subUnit": "다항식의 곱셈",
-        "conceptClusterKey": "ALGEBRAIC_NUMERICAL_APPLICATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "POLYNOMIAL_MULTIPLICATION",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT",
         "crossConceptKeys": [
           "CC_PERFECT_SQUARE_EXPANSION",
           "CC_DIFFERENCE_OF_SQUARES"
@@ -894,23 +1374,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-018"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "다항식의 곱셈",
+          "l3": "곱셈공식의 활용",
+          "l4": "곱셈공식을 이용한 수의 계산",
+          "recordId": "M3-RPM-018"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "다항식의 곱셈",
+        "rpmPrimaryL3": "곱셈공식의 활용",
+        "rpmPrimaryL4": "곱셈공식을 이용한 수의 계산",
+        "rpmPrimaryRecordId": "M3-RPM-018",
+        "difficultyBasis": "(100-4)^2 전개식 오류 10016과 504*496 합차공식의 수 계산 진위를 2단계로 판별하는 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-POLYNOMIAL_MULTIPLICATION: 민호와 지우가 곱셈공식을 이용하여 수를 계산하는 과정을 나타낸 것이다.",
+          "curriculum": "M3-RPM-018: 곱셈공식 96^2 = (100-4)^2 = 10016의 오류와 504*496 = (500+4)(500-4)의 수 계산을 다루는 M3-RPM-018 레코드입니다.",
+          "problemType": "곱셈공식을 이용한 수 계산 (100-4)^2 = 9216과 504*496 = 249984의 오류 검증 템플릿입니다.",
+          "difficulty": "(100-4)^2 전개식 오류 10016과 504*496 합차공식의 수 계산 진위를 2단계로 판별하는 문항입니다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_PERFECT_SQUARE_EXPANSION, CC_DIFFERENCE_OF_SQUARES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "완전제곱식 및 합차공식의 전개 구조를 실측 오차 계산과 결합해 오류를 판정한다.",
       "decisiveStep": "민호의 누락항 -2ab=-800과 지우의 (가) 식 500^2-4^2 대조 검증",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "실제 값과 공식 전개값의 차이를 계산하고 합차공식 부호를 정밀 대조하는 보기 판정 문항",
+      "difficultyReason": "(100-4)^2 전개식 오류 10016과 504*496 합차공식의 수 계산 진위를 2단계로 판별하는 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_FORMULA_NUMERICAL_ERROR_AUDIT",
-        "templateKey": "TPL_M3_STUDENT_CALCULATION_ERROR_INSPECTION",
-        "why": "학생 풀이 과정의 곱셈공식 누락 및 오류를 점검하는 템플릿"
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT",
+        "why": "곱셈공식을 이용한 수 계산 (100-4)^2 = 9216과 504*496 = 249984의 오류 검증 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_f79366829e91b8f90e07da49d334066bcd6e4d8b9f71d64725cd4ff4c22401a8",
@@ -927,9 +1439,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
         "subUnit": "다항식의 곱셈",
-        "conceptClusterKey": "GEOMETRIC_FRAME_EXPANSION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "POLYNOMIAL_MULTIPLICATION",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING",
         "crossConceptKeys": [
           "CC_RECTANGLE_DIMENSIONS",
           "CC_POLYNOMIAL_MULTIPLICATION"
@@ -951,23 +1463,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-020"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "다항식의 곱셈",
+          "l3": "곱셈공식의 활용",
+          "l4": "도형 활용",
+          "recordId": "M3-RPM-020"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "다항식의 곱셈",
+        "rpmPrimaryL3": "곱셈공식의 활용",
+        "rpmPrimaryL4": "도형 활용",
+        "rpmPrimaryRecordId": "M3-RPM-020",
+        "difficultyBasis": "사진 배열 가로 6x, 세로 4x에 여백을 더하여 (6x+6)(4x+4) = 24x^2+48x+24를 전개하는 2단계 기하 활용 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-POLYNOMIAL_MULTIPLICATION: 포스터 전체의 넓이를 나타내는 다항식은? [4점]",
+          "curriculum": "M3-RPM-020: 가로 6x+6, 세로 4x+4의 직사각형 포스터 넓이 24x^2 + 48x + 24를 구하는 M3-RPM-020 레코드입니다.",
+          "problemType": "직사각형 가로 6x+6과 세로 4x+4를 곱하여 (6x+6)(4x+4) = 24x^2+48x+24를 전개하는 TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING 템플릿입니다.",
+          "difficulty": "사진 배열 가로 6x, 세로 4x에 여백을 더하여 (6x+6)(4x+4) = 24x^2+48x+24를 전개하는 2단계 기하 활용 문항입니다.",
+          "condition": "COND_NON_OVERLAPPING_TILES: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_RECTANGLE_DIMENSIONS, CC_POLYNOMIAL_MULTIPLICATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "사진 배열의 길이와 양방향 여백의 합으로 전체 가로·세로를 설정하고 일차식 곱을 전개한다.",
       "decisiveStep": "(6x+6)(4x+4) = 24x^2 + 48x + 24 로 전개",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "격자 배열 가로세로 계산과 양쪽 여백 덧셈을 결합한 후 다항식 곱셈을 수행하는 응용 문항",
+      "difficultyReason": "사진 배열 가로 6x, 세로 4x에 여백을 더하여 (6x+6)(4x+4) = 24x^2+48x+24를 전개하는 2단계 기하 활용 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_POLYNOMIAL_BORDER_AREA",
-        "templateKey": "TPL_M3_PHOTO_GRID_MARGIN_EXPANSION",
-        "why": "정사각 사진 격자에 양방향 여백을 더한 직사각형 전체 넓이 다항식 전개 템플릿"
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING",
+        "why": "직사각형 가로 6x+6과 세로 4x+4를 곱하여 (6x+6)(4x+4) = 24x^2+48x+24를 전개하는 TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_e93ee7785b006880ac11f1cfef223e388553569df5fb2c8af47971e1f13bc45a",
@@ -984,9 +1528,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-FACTORIZATION",
         "subUnit": "인수분해",
-        "conceptClusterKey": "QUADRATIC_FACTORIZATION_SUM",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "FACTORIZATION",
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_FACTORIZATION_FORMULA_APPLICATION",
         "crossConceptKeys": [
           "CC_CROSS_MULTIPLICATION_FACTORING",
           "CC_POLYNOMIAL_ADDITION"
@@ -1008,23 +1552,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-025"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "인수분해",
+          "l3": "인수분해 공식",
+          "l4": "이차식",
+          "recordId": "M3-RPM-025"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "인수분해 공식",
+        "rpmPrimaryL4": "이차식",
+        "rpmPrimaryRecordId": "M3-RPM-025",
+        "difficultyBasis": "6x^2-7x-20을 대각선 인수분해하여 두 일차식의 합 5x-1을 구하는 2단계 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-FACTORIZATION: 다항식 $6x^2 - 7x - 20$을 인수분해하면 $(ax + b)(cx + d)$일 때",
+          "curriculum": "M3-RPM-025: 이차식 6x^2 - 7x - 20의 인수분해를 통해 ax+b와 cx+d의 합 5x-1을 구하는 M3-RPM-025 레코드입니다.",
+          "problemType": "이차식 6x^2 - 7x - 20을 (2x-5)(3x+4)로 인수분해하여 합 (2x-5)+(3x+4) = 5x-1을 계산하는 TPL_M3_FACTORIZATION_FORMULA_APPLICATION 템플릿입니다.",
+          "difficulty": "6x^2-7x-20을 대각선 인수분해하여 두 일차식의 합 5x-1을 구하는 2단계 문항입니다.",
+          "condition": "COND_INTEGER_COEFFICIENTS: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_CROSS_MULTIPLICATION_FACTORING, CC_POLYNOMIAL_ADDITION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "이차항 계수가 1이 아닌 이차식을 크로스 인수분해하여 두 일차인수의 합을 도출한다.",
       "decisiveStep": "6x^2-7x-20 = (2x-5)(3x+4) 인수분해 후 (2x-5)+(3x+4)=5x-1 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "이차항 계수 분할 조합과 부호 판정을 통해 인수를 확정한 후 덧셈하는 정석 인수분해 문항",
+      "difficultyReason": "6x^2-7x-20을 대각선 인수분해하여 두 일차식의 합 5x-1을 구하는 2단계 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_AC_METHOD_FACTOR_SUM",
-        "templateKey": "TPL_M3_NON_MONIC_QUADRATIC_FACTOR_SUM",
-        "why": "ax^2+bx+c 형태의 이차식 인수분해 후 두 인수 합 산출 템플릿"
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_FACTORIZATION_FORMULA_APPLICATION",
+        "why": "이차식 6x^2 - 7x - 20을 (2x-5)(3x+4)로 인수분해하여 합 (2x-5)+(3x+4) = 5x-1을 계산하는 TPL_M3_FACTORIZATION_FORMULA_APPLICATION 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_39e5b99fe1dd01052cc227634af30598a3c26ffd553c9f13b138b06889391ad3",
@@ -1041,9 +1617,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-FACTORIZATION",
         "subUnit": "인수분해",
-        "conceptClusterKey": "FACTORIZATION_COEFFICIENT_EXTREMA",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "FACTORIZATION",
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_FACTORIZATION_INTEGER_CONSTRAINT",
         "crossConceptKeys": [
           "CC_FACTORING_COEFFICIENT_RELATION",
           "CC_ARITHMETIC_EXTREMA"
@@ -1052,7 +1628,7 @@
           "COND_NATURAL_NUMBER_FACTORS"
         ],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 3,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 19,
@@ -1065,23 +1641,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-028"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "인수분해",
+          "l3": "인수분해의 활용",
+          "l4": "조건식",
+          "recordId": "M3-RPM-028"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "인수분해의 활용",
+        "rpmPrimaryL4": "조건식",
+        "rpmPrimaryRecordId": "M3-RPM-028",
+        "difficultyBasis": "x^2+10x+k에서 a+b=10을 만족하는 자연수 쌍을 조사하여 k=ab의 최댓값 25와 최솟값 9를 구하고 합 34를 계산하는 2단계 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-FACTORIZATION: 다항식 $x^2 + 10x + k$가 두 일차식 $(x + a)(x + b)$의 곱으로 인수분해될 때",
+          "curriculum": "M3-RPM-028: x^2 + 10x + k의 인수분해 조건 a+b=10에서 k=ab의 최댓값 25와 최솟값 9의 합 34를 구하는 M3-RPM-028 레코드입니다.",
+          "problemType": "자연수 a+b=10 조건에서 x^2+10x+k의 k=ab 최솟값 9와 최댓값 25를 구하여 M+m=34를 계산하는 TPL_M3_FACTORIZATION_INTEGER_CONSTRAINT 템플릿입니다.",
+          "difficulty": "x^2+10x+k에서 a+b=10을 만족하는 자연수 쌍을 조사하여 k=ab의 최댓값 25와 최솟값 9를 구하고 합 34를 계산하는 2단계 문항입니다.",
+          "condition": "COND_NATURAL_NUMBER_FACTORS: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_FACTORING_COEFFICIENT_RELATION, CC_ARITHMETIC_EXTREMA: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "합이 고정된 두 자연수의 곱이 중심에서 최대, 양 끝에서 최소가 됨을 열거하여 합산한다.",
       "decisiveStep": "a+b=10에서 k=ab의 최솟값 1*9=9, 최댓값 5*5=25를 확인하여 9+25=34 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "인수분해 조건에서 도출되는 부정방정식의 자연수 해를 열거하여 최댓값과 최솟값을 결합하는 심화 문항",
+      "difficultyReason": "x^2+10x+k에서 a+b=10을 만족하는 자연수 쌍을 조사하여 k=ab의 최댓값 25와 최솟값 9를 구하고 합 34를 계산하는 2단계 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_FACTORABLE_CONSTANT_EXTREMA",
-        "templateKey": "TPL_M3_FIXED_SUM_PRODUCT_EXTREMA",
-        "why": "합이 일정한 두 일차인수의 곱으로 인수분해될 때 상수항의 최대최소 탐색 템플릿"
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_FACTORIZATION_INTEGER_CONSTRAINT",
+        "why": "자연수 a+b=10 조건에서 x^2+10x+k의 k=ab 최솟값 9와 최댓값 25를 구하여 M+m=34를 계산하는 TPL_M3_FACTORIZATION_INTEGER_CONSTRAINT 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_466e275e63f53627c83a8a5a98336a30a524f5f9d25f0333ec705fa1cd8451ae",
@@ -1098,9 +1706,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-FACTORIZATION",
         "subUnit": "인수분해",
-        "conceptClusterKey": "COMMON_LINEAR_FACTOR_PARAMETRIC",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "FACTORIZATION",
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION",
         "crossConceptKeys": [
           "CC_COMMON_FACTOR",
           "CC_DIVISOR_BOUND"
@@ -1123,23 +1731,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-021"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "인수분해",
+          "l3": "공통인수",
+          "l4": "공통인수 묶기",
+          "recordId": "M3-RPM-021"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "공통인수",
+        "rpmPrimaryL4": "공통인수 묶기",
+        "rpmPrimaryRecordId": "M3-RPM-021",
+        "difficultyBasis": "x^2+ax+36과 x^2+bx-24에 x=-c를 대입하여 c가 공약수임을 도출하고 c=6, a=12, b=2를 특정하는 3단계 심화 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-FACTORIZATION: $x$에 대한 두 이차식 $x^2 + ax + 36$, $x^2 + bx - 24$를 각각 인수분해했을 때 공통인수가 $x + c$이다.",
+          "curriculum": "M3-RPM-021: x^2+ax+36과 x^2+bx-24의 공통인수 x+c로부터 c=6, a=12, b=2를 구하는 M3-RPM-021 레코드입니다.",
+          "problemType": "x^2+ax+36과 x^2+bx-24의 공통인수 x+c에서 c=6, a=12, b=2, a-b+c=16을 구하는 TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION 템플릿입니다.",
+          "difficulty": "x^2+ax+36과 x^2+bx-24에 x=-c를 대입하여 c가 공약수임을 도출하고 c=6, a=12, b=2를 특정하는 3단계 심화 문항입니다.",
+          "condition": "COND_NATURAL_NUMBER_COEFFICIENT, COND_SINGLE_DIGIT: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_COMMON_FACTOR, CC_DIVISOR_BOUND: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "공통인수 근의 대입과 공약수 조건, 양수 부등식을 연립하여 세 매개변수를 확정한다.",
       "decisiveStep": "c^2>24와 한 자리 공약수 조건으로부터 c=6을 확정하고 a=12, b=2 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "인수정리, 공약수 성질, 양의 정수 조건 부등식을 삼중으로 결합하여 단일 해를 도출하는 최고난도 문항",
+      "difficultyReason": "x^2+ax+36과 x^2+bx-24에 x=-c를 대입하여 c가 공약수임을 도출하고 c=6, a=12, b=2를 특정하는 3단계 심화 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_COMMON_FACTOR_PARAMETRIC_DETERMINATION",
-        "templateKey": "TPL_M3_DUAL_QUADRATIC_COMMON_FACTOR_SYSTEM",
-        "why": "공통 일차인수를 갖는 두 이차식의 정수 계수 결정 템플릿"
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION",
+        "why": "x^2+ax+36과 x^2+bx-24의 공통인수 x+c에서 c=6, a=12, b=2, a-b+c=16을 구하는 TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_dc5a0bb51186660db7b377bac5a33f0acdd652193a5947aea59004b2c282946b",
@@ -1156,9 +1796,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
         "subUnit": "근호를 포함한 식의 계산",
-        "conceptClusterKey": "SQUARE_ROOT_INEQUALITY_INTEGER_COUNT",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": "TPL_M3_REAL_COMPARISON_INTEGER_RANGE",
         "crossConceptKeys": [
           "CC_SQUARE_ROOT_BOUNDS",
           "CC_INTEGER_COUNTING_BETWEEN"
@@ -1180,23 +1820,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-004"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "제곱근과 실수",
+          "l3": "무리수와 실수",
+          "l4": "실수의 대소",
+          "recordId": "M3-RPM-004"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "제곱근과 실수",
+        "rpmPrimaryL3": "무리수와 실수",
+        "rpmPrimaryL4": "실수의 대소",
+        "rpmPrimaryRecordId": "M3-RPM-004",
+        "difficultyBasis": "제곱수 범위를 이용하여 부등식 sqrt(26) < x <= sqrt(95)를 만족하는 자연수 개수 (1) 4개, (2) 17개를 2단계로 구하는 서술형 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-REAL_NUMBER_OPERATIONS: (1) $\\sqrt{26} < x \\le \\sqrt{95}$를 만족하는 자연수 $x$의 개수를 구하시오. [3점]",
+          "curriculum": "M3-RPM-004: 제곱근 부등식 sqrt(26) < x <= sqrt(95)에서 4개, 64 < y <= 81에서 17개를 구하는 M3-RPM-004 레코드입니다.",
+          "problemType": "제곱근의 부등식 sqrt(26) < x <= sqrt(95)와 64 < y <= 81에서 자연수 개수 4개와 17개를 구하는 TPL_M3_REAL_COMPARISON_INTEGER_RANGE 템플릿입니다.",
+          "difficulty": "제곱수 범위를 이용하여 부등식 sqrt(26) < x <= sqrt(95)를 만족하는 자연수 개수 (1) 4개, (2) 17개를 2단계로 구하는 서술형 문항입니다.",
+          "condition": "COND_NATURAL_COUNT_CONSTRAINT: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_SQUARE_ROOT_BOUNDS, CC_INTEGER_COUNTING_BETWEEN: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "제곱수 경계를 이용해 무리수의 범위를 좁히고 개수 조건에 따른 부등식을 세워 정수를 센다.",
       "decisiveStep": "5개 자연수가 4,5,6,7,8이어야 하므로 8 < sqrt(y) <= 9 로부터 64 < y <= 81 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "경계 부등호 포함 여부와 제곱수 변환을 정확히 서술해야 하는 표준 서술형 문항",
+      "difficultyReason": "제곱수 범위를 이용하여 부등식 sqrt(26) < x <= sqrt(95)를 만족하는 자연수 개수 (1) 4개, (2) 17개를 2단계로 구하는 서술형 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_RADICAL_INEQUALITY_INTEGER_COUNT",
-        "templateKey": "TPL_M3_DOUBLE_SIDED_SQUARE_ROOT_COUNT",
-        "why": "무리수 부등식을 만족하는 자연수의 개수를 구하는 서술형 템플릿"
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": "TPL_M3_REAL_COMPARISON_INTEGER_RANGE",
+        "why": "제곱근의 부등식 sqrt(26) < x <= sqrt(95)와 64 < y <= 81에서 자연수 개수 4개와 17개를 구하는 TPL_M3_REAL_COMPARISON_INTEGER_RANGE 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_0f5a982d87e197037c3575cfa9d56d02066bc8fccbe9b7ada770849450abefa5",
@@ -1213,9 +1885,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
         "subUnit": "다항식의 곱셈",
-        "conceptClusterKey": "POLYNOMIAL_STEPWISE_EXPANSION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "POLYNOMIAL_MULTIPLICATION",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT",
         "crossConceptKeys": [
           "CC_COEFFICIENT_COMPARISON",
           "CC_POLYNOMIAL_DISTRIBUTION"
@@ -1237,23 +1909,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-017"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "다항식의 곱셈",
+          "l3": "곱셈공식",
+          "l4": "두 일차식의 곱",
+          "recordId": "M3-RPM-017"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "다항식의 곱셈",
+        "rpmPrimaryL3": "곱셈공식",
+        "rpmPrimaryL4": "두 일차식의 곱",
+        "rpmPrimaryRecordId": "M3-RPM-017",
+        "difficultyBasis": "조건 1에서 A=5, 조건 2에서 C=6, B=11을 구하고 (5x+11)(6x-3) 식을 전개하는 2단계 서술형 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-POLYNOMIAL_MULTIPLICATION: [조건 1] $(x + A)(x - 2)$를 전개했을 때의 상수항은 $(x - 3)(x - 7)$을 전개했을 때의 $x$의 계수와 같다.",
+          "curriculum": "M3-RPM-017: 두 일차식의 전개와 계수비교로 A=5, B=11, C=6 및 (5x+11)(6x-3) 전개를 다루는 M3-RPM-017 레코드입니다.",
+          "problemType": "계수비교로 A=5, C=6, B=11을 구하고 (5x+11)(6x-3) = 30x^2+51x-33을 전개하는 TPL_M3_POLY_EXPANSION_COEFFICIENT 템플릿입니다.",
+          "difficulty": "조건 1에서 A=5, 조건 2에서 C=6, B=11을 구하고 (5x+11)(6x-3) 식을 전개하는 2단계 서술형 문항입니다.",
+          "condition": "COND_NATURAL_COEFFICIENTS: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_COEFFICIENT_COMPARISON, CC_POLYNOMIAL_DISTRIBUTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "단계별 조건식의 계수비교로 미정계수를 연쇄 결정하고 최종 대입 전개식을 구한다.",
       "decisiveStep": "-2A=-10에서 A=5, 5C=30에서 C=6, B=11 결정 후 (5x+11)(6x-3) 전개",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "조건1에서 A를 찾고 조건2에서 B, C를 구한 뒤 3단계로 대입 전개하는 단계형 서술형 문항",
+      "difficultyReason": "조건 1에서 A=5, 조건 2에서 C=6, B=11을 구하고 (5x+11)(6x-3) 식을 전개하는 2단계 서술형 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_POLYNOMIAL_COEFFICIENT_CHAIN",
-        "templateKey": "TPL_M3_COEFFICIENT_MATCH_SUBSTITUTION_EXPANSION",
-        "why": "조건별 계수 비교를 통해 상수를 확정하고 최종 일차식 곱을 전개하는 서술형 템플릿"
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT",
+        "why": "계수비교로 A=5, C=6, B=11을 구하고 (5x+11)(6x-3) = 30x^2+51x-33을 전개하는 TPL_M3_POLY_EXPANSION_COEFFICIENT 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_2714d5d74d533752f788baa757d7d9db4306e5e4d2622557c1a90c638a84799c",
@@ -1270,9 +1974,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-FACTORIZATION",
         "subUnit": "인수분해",
-        "conceptClusterKey": "FACTORIZATION_NUMERICAL_APPLICATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "FACTORIZATION",
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION",
         "crossConceptKeys": [
           "CC_MONIC_QUADRATIC_FACTORING",
           "CC_ALGEBRAIC_NUMERICAL_SUBSTITUTION"
@@ -1292,23 +1996,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-026"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "인수분해",
+          "l3": "인수분해의 활용",
+          "l4": "인수분해를 이용한 수의 계산",
+          "recordId": "M3-RPM-026"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "인수분해의 활용",
+        "rpmPrimaryL4": "인수분해를 이용한 수의 계산",
+        "rpmPrimaryRecordId": "M3-RPM-026",
+        "difficultyBasis": "이차식 x^2+14x+40 인수분해와 x=86 대입 수 계산 8640을 1단계로 적용하는 기본 서술형 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-FACTORIZATION: (1) 인수분해 공식을 이용하여 다항식 $x^2 + 14x + 40$을 인수분해하시오. [2점]",
+          "curriculum": "M3-RPM-026: 인수분해 (x+4)(x+10)을 이용하여 86^2 + 14*86 + 40 = 90*96 = 8640의 수 계산을 수행하는 M3-RPM-026 레코드입니다.",
+          "problemType": "이차식 x^2+14x+40 = (x+4)(x+10)의 인수분해를 수 계산 90*96 = 8640에 적용하는 TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION 템플릿입니다.",
+          "difficulty": "이차식 x^2+14x+40 인수분해와 x=86 대입 수 계산 8640을 1단계로 적용하는 기본 서술형 문항입니다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_MONIC_QUADRATIC_FACTORING, CC_ALGEBRAIC_NUMERICAL_SUBSTITUTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "이차식 인수분해 공식을 다항식에 적용한 후 특수값을 대입해 큰 수의 연산을 단순화한다.",
       "decisiveStep": "x=86 대입으로 (86+4)(86+10) = 90*96 = 8640 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "인수분해 기본 공식을 다항식과 수치 연산에 차례로 적용하는 표준 기본 서술형 문항",
+      "difficultyReason": "이차식 x^2+14x+40 인수분해와 x=86 대입 수 계산 8640을 1단계로 적용하는 기본 서술형 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_FACTORING_FORMULA_ARITHMETIC",
-        "templateKey": "TPL_M3_QUADRATIC_FACTOR_THEN_EVALUATE",
-        "why": "다항식 인수분해 공식을 먼저 유도하고 수치 계산에 대입하는 2소문항 서술형 템플릿"
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION",
+        "why": "이차식 x^2+14x+40 = (x+4)(x+10)의 인수분해를 수 계산 90*96 = 8640에 적용하는 TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_ed4abb35df783c879ff73debdd03dbea80a3d052bc7e509b2b1705921ebc8676",
@@ -1325,9 +2061,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
         "subUnit": "근호를 포함한 식의 계산",
-        "conceptClusterKey": "SELF_SIMILAR_RECTANGLE_RADICAL_TRAPEZOID",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+        "templateKey": "TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION",
         "crossConceptKeys": [
           "CC_SIMILAR_FIGURES",
           "CC_TRAPEZOID_AREA",
@@ -1350,23 +2086,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-007"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "근호를 포함한 식의 계산",
+          "l3": "근호의 곱셈과 나눗셈",
+          "l4": "근호의 곱",
+          "recordId": "M3-RPM-007"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "근호를 포함한 식의 계산",
+        "rpmPrimaryL3": "근호의 곱셈과 나눗셈",
+        "rpmPrimaryL4": "근호의 곱",
+        "rpmPrimaryRecordId": "M3-RPM-007",
+        "difficultyBasis": "닮음비 비례식으로 x=2*sqrt(5)를 구하고 사다리꼴 ABJK의 넓이 75*sqrt(2)/16을 계산하는 3단계 심화 문항입니다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-REAL_NUMBER_OPERATIONS: 가로의 길이가 $x(x > \\sqrt{10})$, 세로의 길이가 $\\sqrt{10}$인 직사각형 $\\mathrm{ABCD}$가 있다.",
+          "curriculum": "M3-RPM-007: 직사각형 ABCD의 닮음비 x/sqrt(10) = sqrt(10)/(x/2)에서 x=2*sqrt(5)를 구하고 사다리꼴 ABJK 넓이 75*sqrt(2)/16을 계산하는 M3-RPM-007 레코드입니다.",
+          "problemType": "직사각형 닮음비 x^2=20에서 x=2*sqrt(5)를 구하고 사다리꼴 넓이 공식 1/2*(5*sqrt(10)/4)*(3*sqrt(5)/2) = 75*sqrt(2)/16을 계산하는 TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION 템플릿입니다.",
+          "difficulty": "닮음비 비례식으로 x=2*sqrt(5)를 구하고 사다리꼴 ABJK의 넓이 75*sqrt(2)/16을 계산하는 3단계 심화 문항입니다.",
+          "condition": "COND_SELF_SIMILAR_BISECTION: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_SIMILAR_FIGURES, CC_TRAPEZOID_AREA, CC_RADICAL_MULTIPLICATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "자기닮음 직사각형 비례식으로 무리수 변을 확정하고 사다리꼴 넓이 공식에 대입해 근호를 간소화한다.",
       "decisiveStep": "x/sqrt(10) = sqrt(10)/(x/2) 에서 x=2*sqrt(5) 도출 후 사다리꼴 넓이 75*sqrt(2)/16 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "도형의 자기닮음비 비례식 풀이와 무리수 사다리꼴 넓이 공식을 종합 서술하는 고난도 기하 결합 문항",
+      "difficultyReason": "닮음비 비례식으로 x=2*sqrt(5)를 구하고 사다리꼴 ABJK의 넓이 75*sqrt(2)/16을 계산하는 3단계 심화 문항입니다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_SIMILAR_RECTANGLE_RADICAL_TRAPEZOID",
-        "templateKey": "TPL_M3_ITERATED_HALVING_SIMILAR_RECTANGLE",
-        "why": "직사각형 연속 반할 분할에서 닮음비로 미지수를 구하고 사다리꼴 넓이를 산출하는 서술형 템플릿"
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+        "templateKey": "TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION",
+        "why": "직사각형 닮음비 x^2=20에서 x=2*sqrt(5)를 구하고 사다리꼴 넓이 공식 1/2*(5*sqrt(10)/4)*(3*sqrt(5)/2) = 75*sqrt(2)/16을 계산하는 TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION 템플릿입니다."
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     }
   ]
 }

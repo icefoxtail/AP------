@@ -1,0 +1,1120 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/high/h2/1mid/25_순천고_1학기_중간_고2_대수_유사.js",
+  "sourceGitBlobSha": "15e6ac6bd3dacfd40c29c9de7b677172a59db1fb",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "similar-import-draft",
+    "at": "2026-11-20"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "단일 모델 초안(UNREVIEWED). 인용은 check-judgment 로 원문 포함을 확인했다."
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "따라서 옳은 것은 ②이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "거듭제곱",
+            "src": "choices",
+            "quote": "5^{\\frac{2}{3}} = \\sqrt[3]{25}"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "5^{\\frac{2}{3}} = \\sqrt[3]{5^2}",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "성질",
+            "src": "stem",
+            "quote": "다음 중 옳은 것은?"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "선지의 지수 및 거듭제곱근 등식들을 확인한다.",
+        "goal": "옳은 선지를 선별한다.",
+        "method": "유리수 지수를 거듭제곱근으로 변환하는 법칙을 적용한다.",
+        "condition": "밑과 지수의 부호 및 연산 규칙을 검토한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "로그의 성질에 의하"
+          }
+        ],
+        "goal": [
+          {
+            "term": "성질",
+            "src": "solution",
+            "quote": "로그의 성질에 의하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "로그의 성질에 의하",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "로그의 성질에 의하여"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "밑이 6인 두 로그의 덧셈식을 확인한다.",
+        "goal": "로그식의 값을 구한다.",
+        "method": "로그의 덧셈 성질을 적용해 진수를 곱한다.",
+        "condition": "216 = 6^3임을 이용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "상용로그",
+            "src": "stem",
+            "quote": "아래 상용로그표에서 $\\lo"
+          }
+        ],
+        "goal": [
+          {
+            "term": "로그",
+            "src": "stem",
+            "quote": "아래 상용로그표에서 $\\lo"
+          }
+        ],
+        "method": [
+          {
+            "term": "상용로그",
+            "src": "solution",
+            "quote": "상용로그표에서 $2.3",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "상용로그표에서 $2.3"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "상용로그표와 log 23 구하기를 확인한다.",
+        "goal": "log 23의 값을 구한다.",
+        "method": "표에서 log 2.3 = 0.3617을 찾고 1을 더한다.",
+        "condition": "23 = 2.3 * 10임을 이용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "동경이 속하는 사분면이 나머지 넷과"
+          }
+        ],
+        "goal": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "하는 사분면이 나머지 넷과 다른 하"
+          }
+        ],
+        "method": [
+          {
+            "term": "일반각",
+            "src": "stem",
+            "quote": "각을 나타내는 동경이 속하는 사분",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사분면",
+            "src": "solution",
+            "quote": "c$이므로 제2사분면의 각이다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "다섯 개의 각과 사분면 조건을 확인한다.",
+        "goal": "사분면이 다른 하나를 찾는다.",
+        "method": "360도 및 2pi 주기를 빼서 기본각을 구한다.",
+        "condition": "각 사분면의 각도 범위를 검토한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "점근선",
+            "src": "stem",
+            "quote": "$의 그래프의 점근선이 직선 $y"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "$a, b$는 상수이다.) (3."
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "y = 6$을 대입하면   $6",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "} + b$의 그래프의 점근선이 직"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "지수함수 식과 점근선, 지나는 점을 확인한다.",
+        "goal": "상수 곱 ab를 구한다.",
+        "method": "점근선 식과 좌표 대입으로 a, b를 연립하여 구한다.",
+        "condition": "지수방정식 3^{-a} = 9를 푼다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "존재",
+            "src": "stem",
+            "quote": "5)$의 값이 존재하기 위한 모든"
+          }
+        ],
+        "goal": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "기 위한 모든 정수 $x$의 값의"
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "로그가 정의되기 위한 밑",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "진수",
+            "src": "solution",
+            "quote": "한 밑 조건과 진수 조건을 적용한"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "로그식이 주어지고 정의 조건을 확인한다.",
+        "goal": "만족하는 모든 정수 x의 합을 구한다.",
+        "method": "밑 조건과 진수 조건을 각각 부등식으로 세운다.",
+        "condition": "두 부등식의 공통 범위를 구하고 -1을 제외한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "부등식 $\\log_{"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "3$과의 공통 범위는 $\\dfra"
+          }
+        ],
+        "method": [
+          {
+            "term": "진수",
+            "src": "solution",
+            "quote": "진수 조건에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "공통",
+            "src": "solution",
+            "quote": "< 3$과의 공통 범위는 $\\d"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "로그부등식을 확인한다.",
+        "goal": "부등식의 해를 구한다.",
+        "method": "진수 조건 x < 3과 부등호 반전을 적용한다.",
+        "condition": "두 부등식의 공통 범위를 취한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "정의역",
+            "src": "stem",
+            "quote": "정의역이 $\\{x \\"
+          }
+        ],
+        "goal": [
+          {
+            "term": "일반각",
+            "src": "stem",
+            "quote": "P$에 대하여 동경 $OP$가 나"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼각함수",
+            "src": "solution",
+            "quote": "= 2$   삼각함수의 정의에 의하",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사분면",
+            "src": "solution",
+            "quote": "$P$는 제2사분면 위의 점이다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "정의역이 음수인 일차함수 식을 확인한다.",
+        "goal": "cos theta의 값을 계산한다.",
+        "method": "좌표 P(-1, \\sqrt{3})와 거리 r = 2를 잡고 cos = x/r을 쓴다.",
+        "condition": "P가 제2사분면 위의 점임을 감안한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $y = \\l"
+          }
+        ],
+        "goal": [
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "- 2)$의 그래프의 특징에 대한"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "x$에 대하여 대칭이다. (참)",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정의역",
+            "src": "solution",
+            "quote": "0$에 의해 정의역은 $\\{x \\"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "로그함수 식을 확인한다.",
+        "goal": "그래프의 성질 중 옳은 것을 찾는다.",
+        "method": "역함수를 구하여 y = x 대칭인지 검증한다.",
+        "condition": "정의역과 점근선을 함께 확인한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "밑이 $2$인 거듭제곱으로 나타내면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "제곱근",
+            "src": "stem",
+            "quote": "b$의 $12$제곱근 중 하나이면"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "b$의 $12$제곱근 중 하나이면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "b$의 $12$제곱근 중 하나이므로"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "복잡한 거듭제곱근 식과 12제곱근 조건을 확인한다.",
+        "goal": "b의 값을 구한다.",
+        "method": "밑 2의 분수 지수로 통일하여 계산한다.",
+        "condition": "a^{12} = b를 계산한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "8$의 세제곱근은 방정식 $x^"
+          }
+        ],
+        "goal": [
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "8$의 세제곱근은 방정식 $x^3"
+          }
+        ],
+        "method": [
+          {
+            "term": "실수",
+            "src": "solution",
+            "quote": "개이며 실수인 것은 $2$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "성질",
+            "src": "solution",
+            "quote": "8$의 세제곱근은 방정식 $x^"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "거듭제곱근에 대한 5개의 명제를 확인한다.",
+        "goal": "옳지 않은 명제를 고른다.",
+        "method": "x^n = a 방정식의 복소수 근과 실근 개수를 확인한다.",
+        "condition": "근호 값과 거듭제곱근의 표현을 엄밀히 구별한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "정의역",
+            "src": "stem",
+            "quote": "정의역이 $\\left"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$의 최댓값과 최솟값의 합은? (4"
+          }
+        ],
+        "method": [
+          {
+            "term": "증가감소",
+            "src": "solution",
+            "quote": "< 1$이므로 감소함수이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "함수",
+            "src": "solution",
+            "quote": "1$이므로 감소함수이다.   $\\"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "정의역과 절댓값 로그함수 식을 확인한다.",
+        "goal": "최댓값과 최솟값의 합을 구한다.",
+        "method": "로그를 t로 치환해 절댓값의 범위를 구한다.",
+        "condition": "최소는 t = 0일 때, 최대는 t = -3일 때임을 파악한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "부채꼴",
+            "src": "stem",
+            "quote": "$O$인 두 부채꼴 $OAB$,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "러싸인 부분의 넓이는 두 부채꼴의"
+          }
+        ],
+        "method": [
+          {
+            "term": "공식",
+            "src": "solution",
+            "quote": "호의 길이 공식에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "중심각",
+            "src": "stem",
+            "quote": "중심각의 크기가 같고"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "두 부채꼴의 호의 길이와 둘러싸인 넓이를 확인한다.",
+        "goal": "중심각 AOB의 크기를 구한다.",
+        "method": "부채꼴 넓이 및 호의 길이 공식을 연립한다.",
+        "condition": "두 부채꼴이 같은 중심각을 공유함을 이용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "일 때, $2\\tan\\theta\\c"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "theta$의 최댓값은? (4.3점"
+          }
+        ],
+        "method": [
+          {
+            "term": "산술평균",
+            "src": "solution",
+            "quote": "> 0$이므로 산술평균과 기하평균의",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "기하평균",
+            "src": "solution",
+            "quote": "로 산술평균과 기하평균의 관계에 의하"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "삼각함수 곱 식과 각의 범위를 확인한다.",
+        "goal": "식의 최댓값을 구한다.",
+        "method": "tan = sin/cos로 바꾸어 2sin cos 형태로 단순화한다.",
+        "condition": "0 < theta < pi/2 범위를 고려한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "1$일 때, 함수 $y = a^"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "서 이 함수의 최솟값을 $m$이라"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수",
+            "src": "solution",
+            "quote": "g(x)}$는 지수 $g(x)$가",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "최댓값",
+            "src": "solution",
+            "quote": "$g(x)$의 최댓값은 $g(0)"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "지수가 2차식인 지수함수를 확인한다.",
+        "goal": "a + m의 값을 구한다.",
+        "method": "지수를 t로 치환해 범위를 구하고 최대·최소를 매칭한다.",
+        "condition": "0 < a < 1에서 감소함수임을 이용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "에 대하여 두 집합   $A ="
+          }
+        ],
+        "goal": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "n$과 모든 유리수 $p, q$에"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "가 정수일 때 지수법칙이 성립하는 밑",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "성립조건",
+            "src": "solution",
+            "quote": "때 지수법칙이 성립하는 밑의 범위"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "두 지수법칙 성립 집합 A, B를 확인한다.",
+        "goal": "설명으로 옳지 않은 선지를 찾는다.",
+        "method": "정수 지수와 유리수 지수의 밑 조건을 각각 파악한다.",
+        "condition": "A와 B의 진부분집합 관계를 비교한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "증가감소",
+            "src": "stem",
+            "quote": "$25\\%$씩 증가한다고 한다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "상용로그",
+            "src": "solution",
+            "quote": "$   양변에 상용로그를 취하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "로그",
+            "src": "solution",
+            "quote": "양변에 상용로그를 취하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "증가감소",
+            "src": "stem",
+            "quote": "$25\\%$씩 증가한다고 한다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "초기 매출액 100억과 증가율 25%를 확인한다.",
+        "goal": "처음으로 1000억 이상이 되는 해를 구한다.",
+        "method": "부등식을 세우고 양변에 상용로그를 취한다.",
+        "condition": "log 2 = 0.3으로부터 log 5/4 = 0.1을 유도한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "첫 번째 부등식 $2^{2x-"
+          }
+        ],
+        "goal": [
+          {
+            "term": "원소",
+            "src": "stem",
+            "quote": "B$의 모든 원소의 합은? (4"
+          }
+        ],
+        "method": [
+          {
+            "term": "집합",
+            "src": "solution",
+            "quote": "(1) 집합 $A$ 구하기",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "solution",
+            "quote": "x > 0$인 정수):   - $"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "미지수가 밑에 있는 부등식과 연립부등식을 확인한다.",
+        "goal": "교집합의 모든 원소의 합을 구한다.",
+        "method": "밑이 1일 때와 1보다 클 때로 나누어 각각 푼다.",
+        "condition": "두 정수해 집합의 교집합 원소를 합산한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "방정식 $(4^x + 4^{-"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "키는 자연수 $k$의 합은? ("
+          }
+        ],
+        "method": [
+          {
+            "term": "이차부등식",
+            "src": "stem",
+            "quote": "<조건> 이차부등식 $x^2 ",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실근",
+            "src": "stem",
+            "quote": "이 실근을 갖지 않고, 아래 <"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "지수방정식과 이차부등식 조건을 확인한다.",
+        "goal": "만족하는 자연수 k의 합을 구한다.",
+        "method": "산술기하로 t >= 2를 잡고 근의 위치를 판별한다.",
+        "condition": "이차부등식의 판별식이 0 이상인 k의 범위를 교집합한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "관계",
+            "src": "solution",
+            "quote": "주어진 관계식에 두 별 $"
+          }
+        ],
+        "goal": [
+          {
+            "term": "성립조건",
+            "src": "stem",
+            "quote": "과 같은 식이 성립한다.   $$"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "의 값을 각각 대입하면   $M_",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "존재",
+            "src": "stem",
+            "quote": "급된 두 별이 존재한다고 가정한다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "별의 등급 관계식과 거리를 확인한다.",
+        "goal": "M_B - M_A의 값을 구한다.",
+        "method": "두 별의 값을 각각 대입한 뒤 뺄셈을 수행한다.",
+        "condition": "로그의 진수 나눗셈으로 1/10을 만든다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "DESCRIPTIVE",
+      "slots": {
+        "given": [
+          {
+            "term": "일반각",
+            "src": "stem",
+            "quote": "$를 나타내는 동경과 각 $3\\t"
+          }
+        ],
+        "goal": [
+          {
+            "term": "탄젠트",
+            "src": "stem",
+            "quote": "$일 때, $\\tan\\left(\\t"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "stem",
+            "quote": "$축에 대하여 대칭이고 $\\sin",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사분면",
+            "src": "solution",
+            "quote": "키는 각은 제3사분면의 각인 $\\t"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "두 동경의 y축 대칭과 부호 조건을 확인한다.",
+        "goal": "탄젠트 식의 값을 구한다.",
+        "method": "두 각의 합이 2n pi + pi임을 이용해 theta를 구한다.",
+        "condition": "sin + cos < 0을 만족하는 제3사분면 각을 고른다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "DESCRIPTIVE",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "의 자연수들의 집합   $$S ="
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$10$개의 자연수들의 집합"
+          }
+        ],
+        "method": [
+          {
+            "term": "원소",
+            "src": "solution",
+            "quote": "의 가장 작은 원소이다.   또한",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양화",
+            "src": "stem",
+            "quote": "<조건> 모든 $i = 2,"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "10개의 원소로 이루어진 집합 조건을 확인한다.",
+        "goal": "로그들의 합을 구한다.",
+        "method": "크기 순서대로 a_k = a_1^k임을 귀납적으로 증명한다.",
+        "condition": "a_{10}을 제외한 원소들이 1대1 매칭됨을 이용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "DESCRIPTIVE",
+      "slots": {
+        "given": [
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "n$이 아래의 조건을 만족시킬 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "순서쌍",
+            "src": "stem",
+            "quote": "만족시킬 때, 순서쌍 $(m, n)"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "조건 (가)에 대입하면   $a^",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "약수",
+            "src": "solution",
+            "quote": "$8$의 양의 약수여야 한다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "두 지수 조건식을 확인한다.",
+        "goal": "자연수 순서쌍 (m, n)의 개수를 구한다.",
+        "method": "b를 a에 대한 식으로 나타내어 대입하고 지수를 비교한다.",
+        "condition": "n-1이 8의 약수임을 이용해 자연수 해를 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "DESCRIPTIVE",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": ")의 그래프와 직선 $y = -x"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "두 함수 $y = a^"
+          }
+        ],
+        "method": [
+          {
+            "term": "대칭성",
+            "src": "solution",
+            "quote": "x$에 대하여 대칭인 두 함수 $",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "내분",
+            "src": "solution",
+            "quote": "1$이다.   내분점 공식에 의하"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "지수함수, 로그함수 및 직선과의 교점 조건을 확인한다.",
+        "goal": "상수 a의 값을 구한다.",
+        "method": "대칭축 y = x - 1과의 수직성을 이용해 중점 M을 구한다.",
+        "condition": "선분 길이의 비로 A의 좌표를 구하고 곡선에 대입한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ]
+}
