@@ -1,0 +1,70 @@
+{
+  "qid": 16,
+  "itemFingerprint": "9d96fde5cbfaa7b3",
+  "solveSteps": [
+    "조건 (가)에서 근과 계수의 관계에 의하여 $\\alpha + \\beta = 2a, \\alpha\\beta = a + 2$이다.",
+    "$\\alpha^2\\beta + \\alpha\\beta^2 = \\alpha\\beta(\\alpha + \\beta) = 2a(a + 2) = 48 \\implies a^2 + 2a - 24 = 0$이다.",
+    "$(a + 6)(a - 4) = 0$이고 $\\alpha\\beta = a + 2 > 0$이므로 $a = 4$이다.",
+    "조건 (나)에서 두 근은 $a - 1 = 3, a + 1 = 5$이므로 $b = -(3 + 5) = -8, c = 15$이다.",
+    "따라서 $a + b + c = 4 + (-8) + 15 = 11$이다. (①번)"
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-05",
+  "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+  "unitEvidence": "이차방정식 $x^2 - 2ax + a + 2 = 0$의 두 근 $\\alpha, \\beta$",
+  "rpmRecordId": "H1-RPM-162",
+  "rpmReason": "이차방정식에서 근과 계수의 관계와 대칭식 값 48을 결합하는 H1-RPM-162에 해당한다.",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+  "typeReason": "대칭식 $\\alpha^2\\beta + \\alpha\\beta^2 = 48$로부터 $a=4$를 구하고 새 방정식을 작성하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "근과 계수의 관계를 두 번 적용하여 $a + b + c = 11$을 구하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "$x$에 대한 이차방정식 $x^2 -"
+      },
+      {
+        "term": "조건",
+        "src": "stem",
+        "quote": "ta$가 다음 조건을 만족시킬 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "b, c$는 상수이다.) (가"
+      }
+    ],
+    "method": [
+      {
+        "term": "관계",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여 $\\"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "대칭식 48에서 $a = 4$를 구하고 두 근 3, 5의 방정식에서 $b = -8, c = 15$를 얻어 합 11로 ①번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

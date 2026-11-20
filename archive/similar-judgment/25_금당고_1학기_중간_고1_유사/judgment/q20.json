@@ -1,0 +1,70 @@
+{
+  "qid": 20,
+  "itemFingerprint": "b35cab3903449ca3",
+  "solveSteps": [
+    "$f(x) = -(x - 2)^2 + k + 2$이므로 위로 볼록하고 축은 $x = 2$이다.",
+    "직선 $y = x + 2$와의 교점의 $x$좌표는 $x^2 - 3x + (4 - k) = 0$의 두 실근 $\\alpha, \\beta$이다.",
+    "축 $x = 2$가 $(\\alpha, \\beta)$에 포함될 때 최댓값은 꼭짓점의 $y$좌표이므로 $k + 2 = 6 \\implies k = 4$이다.",
+    "$k = 4$이면 $x^2 - 3x = 0$에서 $\\alpha = 0, \\beta = 3$이다.",
+    "구간 $[0, 3]$에서 최솟값은 축에서 가장 먼 $x = 0$일 때이므로 $f(0) = 4 - 2 = 2$이다. (④번)"
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-05",
+  "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+  "unitEvidence": "함수 $f(x)$의 최댓값이 $6$일 때, $\\alpha \\le x \\le \\beta$에서 함수 $f(x)$의 최솟값은?",
+  "rpmRecordId": "H1-RPM-170",
+  "rpmReason": "이차함수의 구간 최대 6과 최솟값 2를 구하는 H1-RPM-170에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+  "typeReason": "교점 구간 $[0, 3]$에서 꼭짓점 최댓값으로 $k=4$를 정하고 최솟값 2를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "직선과의 교점 구간에서 꼭짓점 최댓값 조건을 이용해 $k=4$를 찾고 최솟값을 구하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "k$에 대하여 이차함수 $f(x) ="
+      },
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "$의 그래프와 직선 $y = x"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "$f(x)$의 최솟값은? (단, $"
+      }
+    ],
+    "method": [
+      {
+        "term": "꼭짓점",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "되면 최댓값은 꼭짓점의 $y$좌표이"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "꼭짓점 최댓값 $k + 2 = 6 \\implies k = 4$에서 교점 $\\alpha = 0, \\beta = 3$을 구하고 최솟값 $f(0) = 2$로 ④번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
