@@ -1,0 +1,57 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "ed5671bad73615c9",
+  "solvedAnswer": "$12$",
+  "solveSteps": [
+    "$y=4$와 두 직선의 교점은 각각 $(2, 4)$, $(-4, 4)$이다. (10)",
+    "두 직선 $x+2y-10=0, 2x+y+4=0$의 교점은 $(-6, 8)$이다. (10)",
+    "밑변은 $y=4$ 위의 두 점 사이의 거리로 $2 - (-4) = 6$이다. (10)",
+    "높이는 교점의 $y$좌표 차이로 $8 - 4 = 4$이다. (10)",
+    "따라서 삼각형의 넓이는 $1/2 \\times 6 \\times 4 = 12$이다. (10)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "세 직선 $x+2y-10=0",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "세 직선의 교점으로 이루어지는 삼각형의 넓이를 구하는 유형이다. (10)",
+  "rpmRecordId": "M2-RPM-055",
+  "rpmReason": "일차함수와 일차방정식 단원의 두 직선의 교점 및 그래프와 도형의 넓이에 일치한다. (10)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "세 직선의 연립을 통해 꼭짓점 좌표를 구하고 넓이를 계산하는 서술형 난이도 3 문항이다. (10)",
+  "how": "세 직선의 세 교점 좌표를 구하고 밑변과 높이를 특정하여 삼각형의 넓이를 계산했다. (10)",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "세 직선 $x+2y-10=0$, $2x+y+4=0$, $y-4=0$이 이루는"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "삼각형의 넓이를 구하는 과정과 답을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "교점",
+        "src": "solution",
+        "quote": "$y=4$와 $x+2y-10=0$의 교점은",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

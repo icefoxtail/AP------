@@ -1,0 +1,56 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "786aa280d106e249",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "그래프가 오른쪽 아래로 향하므로 기울기 $a < 0$, 원점 아래에서 만나므로 $y$절편 $b < 0$이다. (ax)",
+    "$y = (b/a)x - b$의 기울기는 $b/a > 0$, $y$절편은 $-b > 0$이다. (ax)",
+    "기울기와 $y$절편이 모두 양수인 직선은 제1, 2, 3사분면을 지나므로 제4사분면을 지나지 않는다. (ax)",
+    "따라서 정답 ④이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "일차함수 $y=ax+b$의",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "일차함수 계수의 부호 조건으로 사분면 통과 여부를 구하는 유형이다. (ax)",
+  "rpmRecordId": "M2-RPM-051",
+  "rpmReason": "일차함수 단원의 일차함수 그래프 성질과 사분면 판단에 부합한다. (ax)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기호의 음수 양수 판정을 통해 사분면 통과 여부를 판단하는 난이도 2 문항이다. (ax)",
+  "how": "기울기와 절편의 부호를 결정한 후 새 함수의 지나는 사분면을 판정했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $y=ax+b$의 그래프가 오른쪽 아래로 향하고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사분면",
+        "src": "stem",
+        "quote": "그래프가 지나지 않는 사분면을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "기울기 $\\dfrac{b}{a} > 0$, $y$절편 $-b > 0$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

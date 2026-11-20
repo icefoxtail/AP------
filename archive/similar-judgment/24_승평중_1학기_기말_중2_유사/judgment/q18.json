@@ -1,0 +1,55 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "d000d8930fef6295",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "첫째 직선은 기울기 $2$, 점 $(3, 0)$을 지나므로 $y = 2x - 6 \\implies 2x - y = 6$이다. (cases)",
+    "둘째 직선은 기울기 $-2/5$, $y$절편 $-1$이므로 $y = -2/5 x - 1 \\implies 2x + 5y = -5$이다. (cases)",
+    "따라서 두 직선의 교점을 해로 갖는 연립방정식은 $\\begin{cases} 2x-y=6 \\\\ 2x+5y=-5 \\end{cases}$로 정답 ⑤이다. (cases)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 점 $(3, 0)$, $",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "직선의 방정식과 연립방정식의 해의 기하학적 관계 유형이다. (cases)",
+  "rpmRecordId": "M2-RPM-055",
+  "rpmReason": "일차함수와 일차방정식 단원의 두 직선의 교점과 연립방정식의 해에 일치한다. (cases)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 점으로 직선의 방정식을 유도하여 연립방정식을 작성하는 난이도 2 문항이다. (cases)",
+  "how": "각각의 두 점을 지나는 직선의 방정식을 세워 연립방정식 꼴로 표현했다. (cases)",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "두 점 $(3, 0)$, $(2, -2)$를 지나는 직선과 두 점 $(0, -1)$, $(5, -3)$을 지나는 직선의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "교점의 좌표를 해로 갖는 연립방정식은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "두 점 $(3, 0)$, $(2, -2)$를 지나는 직선의 기울기는",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

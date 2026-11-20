@@ -1,0 +1,57 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "a9bd4ebc0121fca2",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$x$절편은 $6$, $y$절편은 $4$이므로 $A(6, 0), B(0, 4)$이다. (ax)",
+    "점 $P(t, y)$에 대해 $\\triangle BOP$의 넓이는 $2t$, $\\triangle POA$의 넓이는 $3y$이다. (ax)",
+    "넓이비가 $2:1$이므로 $2t : 3y = 2 : 1 \\implies 2t = 6y \\implies t = 3y$이다. (ax)",
+    "$y = -2/3(3y) + 4 \\implies 3y = 4 \\implies y = 4/3, t = 4$이다. (ax)",
+    "따라서 기울기 $a = y/t = (4/3)/4 = 1/3$이므로 정답 ②이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "일차함수 $y=-\\dfrac",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "일차함수 그래프와 좌표축이 이루는 삼각형의 넓이 비 분석 유형이다. (ax)",
+  "rpmRecordId": "M2-RPM-048",
+  "rpmReason": "일차함수 단원의 일차함수 그래프 기울기와 절편 및 넓이 활용에 일치한다. (ax)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "좌표평면 위 삼각형의 넓이 비를 교점 좌표 조건으로 연결하는 난이도 3 문항이다. (ax)",
+  "how": "두 삼각형의 넓이비로부터 교점 P의 x, y좌표 비를 구하고 직선의 기울기 a를 결정했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $y=-\\dfrac{2}{3}x+4$의 그래프가 $x$축, $y$축과 만나는 점을 각각 $A$, $B$라 하고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $a$의 값을 구하면? (단, $O$는 원점, 점 $P$는 제1사분면 위의 점이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "src": "solution",
+        "quote": "넓이의 비가 $2:1$이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

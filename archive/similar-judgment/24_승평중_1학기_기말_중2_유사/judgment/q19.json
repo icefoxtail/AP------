@@ -1,0 +1,57 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "e549e8d4a6ce1f56",
+  "solvedAnswer": "①, ②",
+  "solveSteps": [
+    "앞의 두 직선의 교점은 $(-1, 0)$이고 기울기는 각각 $-3, -4$이다. (ax)",
+    "삼각형을 만들지 않는 조건: 기울기가 $-3$ 또는 $-4$이거나 교점 $(-1, 0)$을 지나는 경우이다. (ax)",
+    "보기 검토: ① $a=2, b=-1$은 기울기 $2$, $(-1, 0)$ 대입 시 $-3 \\ne 0$이므로 삼각형 생성 (정답 ①). (ax)",
+    "② $a=1, b=-2$는 기울기 $1/2$, 대입 시 $-2 \\ne 0$이므로 삼각형 생성 (정답 ②). (ax)",
+    "따라서 복수 정답 ①, ②이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "세 직선 $3x+y+3=0$",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "problemTypeKey": "PT_LINE_RELATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "세 직선이 삼각형을 이룰 조건과 평행 및 교점 분석 유형이다. (ax)",
+  "rpmRecordId": "M2-RPM-055",
+  "rpmReason": "일차함수와 일차방정식 단원의 두 직선 및 세 직선의 위치 관계에 부합한다. (ax)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "세 직선의 위치 관계(평행, 한 점 교차)를 파악하고 복수 정답을 고르는 난이도 3 문항이다. (ax)",
+  "how": "세 직선이 삼각형을 만들지 않을 조건을 제외하여 삼각형을 만드는 보기를 골랐다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "세 직선 $3x+y+3=0$, $4x+y+4=0$, $ax+by-1=0$이"
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "삼각형을 만드는 상수 $a$, $b$의 값을 모두 고르면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "교점",
+        "src": "solution",
+        "quote": "세 직선이 삼각형을 만들지 않으려면 세 번째 직선 $ax+by-1=0$이",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

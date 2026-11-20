@@ -1,0 +1,56 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "c709012bd69133f0",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "가득 채운 연료는 $900 / 15 = 60\\text{ L}$이다. (15)",
+    "$1\\text{ km}$당 $1/15\\text{ L}$ 소모하므로 남은 양 $y = 60 - 1/15 x$이다. (15)",
+    "남은 연료 $y = 35$를 대입하면 $35 = 60 - 1/15 x \\implies 1/15 x = 25$이다. (15)",
+    "$x = 25 \\times 15 = 375\\text{ km}$이므로 정답 ①이다. (15)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$1\\text{ L}$에 $",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "연료 소모와 주행거리의 관계를 일차함수로 나타내는 실생활 활용 유형이다. (15)",
+  "rpmRecordId": "M2-RPM-053",
+  "rpmReason": "일차함수 단원의 일차함수의 활용 실생활 문제 해결에 부합한다. (15)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "연료 소모 관계를 일차함수로 모델링하여 역산하는 난이도 2 문항이다. (15)",
+  "how": "연료 소비율로부터 남은 연료의 일차함수 식을 세우고 거리를 구했다. (15)",
+  "slots": {
+    "given": [
+      {
+        "term": "거리",
+        "src": "stem",
+        "quote": "$1\\text{ L}$에 $15\\text{ km}$를 가는 어떤 자동차의 연료 탱크에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "거리",
+        "src": "stem",
+        "quote": "이 자동차가 주행한 거리를 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "거리",
+        "src": "solution",
+        "quote": "$y = 60 - \\dfrac{1}{15}x$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "91b21af751494c51",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "교점이 없으려면 두 직선이 평행하고 일치하지 않아야 한다. (cases)",
+    "계수비 조건에 의해 $\\frac{a}{4} = \\frac{b}{3} \\ne \\frac{12}{12} = 1$이어야 한다. (cases)",
+    "따라서 $\\frac{b}{3} \\ne 1 \\implies b \\ne 3$이어야 하므로 $b$가 될 수 없는 값은 $3$이다. (cases)",
+    "그러므로 정답 ②이다. (cases)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "연립방정식 $\\begin{c",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "해가 없을 조건으로 미정계수의 제외 범위를 결정하는 유형이다. (cases)",
+  "rpmRecordId": "M2-RPM-036",
+  "rpmReason": "연립일차방정식 단원의 해가 특수한 연립방정식 해가 없는 경우에 일치한다. (cases)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "연립방정식의 해가 없는 조건의 계수 비를 파악하는 난이도 2 문항이다. (cases)",
+  "how": "교점이 없을 조건(평행하고 불일치)에서 계수비와 상수비 조건을 적용했다. (cases)",
+  "slots": {
+    "given": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "각 일차방정식의 그래프의 교점이 없을 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "다음 중 $b$의 값이 될 수 없는 것을 고르면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "교점",
+        "src": "solution",
+        "quote": "두 일차방정식의 그래프의 교점이 없으려면 두 직선이 서로 평행하고 일치하지 않아야 한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

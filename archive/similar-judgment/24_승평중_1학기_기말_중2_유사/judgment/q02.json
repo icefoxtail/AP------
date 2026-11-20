@@ -1,0 +1,55 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "2fe46385841549c1",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "해 $(2, 2)$를 연립방정식에 대입하면 $2a + 2 = 8 \\implies a = 3$, $6 - 2b = 4 \\implies b = 1$이다. (cases)",
+    "구한 $a=3, b=1$과 해 $(2, 2)$를 $ax + by = c$에 대입한다. (cases)",
+    "$c = 3(2) + 1(2) = 8$이므로 정답 ③이다. (cases)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "연립방정식 $\\begin{c",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "연립방정식의 해를 다른 일차방정식에 대입하여 상수를 구하는 공통해 유형이다. (cases)",
+  "rpmRecordId": "M2-RPM-032",
+  "rpmReason": "연립일차방정식 단원의 해가 주어진 연립방정식 계수 결정에 일치한다. (cases)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "순서쌍 해를 대입하여 일차방정식 계수를 구하는 기본 난이도 2 문항이다. (cases)",
+  "how": "주어진 해 (2, 2)를 각 식에 대입하여 미정계수 a, b를 구한 뒤 c를 계산했다. (cases)",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin{cases} ax+y=8 \\ 3x-by=4 \\end{cases}$의 해가 $(2, 2)$이고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$c$의 값을 구하면? (단, $a$, $b$, $c$는 상수)"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$x=2$, $y=2$를 연립방정식의 두 식에 각각 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
