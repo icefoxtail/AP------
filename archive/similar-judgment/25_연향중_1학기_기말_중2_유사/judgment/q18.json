@@ -1,0 +1,76 @@
+{
+  "qid": "18",
+  "itemFingerprint": "5c22bac19b5b3c40",
+  "solveSteps": [
+    "두 일차함수 y = x - 8과 y = -(1/3)x + 4의 교점의 x좌표를 구한다.",
+    "x - 8 = -(1/3)x + 4에서 (4/3)x = 12이므로 x = 9이다.",
+    "y축과의 교점(y절편)은 각각 (0, -8)과 (0, 4)이다.",
+    "y축 위의 밑변의 길이는 4 - (-8) = 12이다.",
+    "높이는 교점의 x좌표인 9이다.",
+    "도형의 넓이는 (1/2) * 12 * 9 = 54이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "unitEvidence": "두 일차함수 $y = x - 8$, $y = ",
+  "rpmRecordId": "M2-RPM-058",
+  "rpmReason": "두 일차함수의 교점과 y축 절편 차이 12를 이용하여 삼각형 넓이 54를 계산하는 문제이다.",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
+  "templateKey": "TPL_M2_CALCULATE_AREA_BOUNDED_BY_TWO_LINES_AND_AXES",
+  "typeReason": "두 직선과 y축이 둘러싼 영역의 넓이 54를 교점과 절편으로 구하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "두 일차함수의 연립 교점과 y절편 차이 12로 둘러싸인 삼각형 넓이 54를 구하는 표준 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "두 일차함수 $y = x - 8$,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "둘러싸인 도형의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "교점",
+        "src": "solution",
+        "quote": "그래프의 교점의 $x$좌표는",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "절편",
+        "src": "solution",
+        "quote": "그래프의 $y$절편은 각각 $-8, 4$이므로"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "두 일차함수의 식을 파악한다.",
+    "goal": "둘러싸인 도형의 넓이를 구한다.",
+    "method": "교점을 연립하여 구하고 y축 절편 간 거리로 넓이를 계산한다.",
+    "condition": "y축으로 둘러싸인 삼각형 형태임을 파악한다."
+  },
+  "how": "교점 x=9와 y절편 차이 12를 이용하여 넓이 $(1/2) \\times 12 \\times 9 = 54$를 얻어 정답 ①로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

@@ -1,0 +1,1203 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "25_연향중_1학기_기말_중2_유사-candidate-v1",
+  "examUid": "25_연향중_1학기_기말_중2_유사",
+  "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/25_연향중_1학기_기말_중2_유사.js",
+  "expectedSourceBlobSha1": "1a3fa8789685f3d3ae6cb1a7f941330646284a43",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "evidenceRefs": []
+  },
+  "registryChanges": [],
+  "items": [
+    {
+      "questionUid": "qid_v1_9929aa04a516699704c19a16e994ceb42ed8bf46e3ff9346b5dc581378785922",
+      "sourceOrdinal": 1,
+      "sourceQid": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "subUnit": "연립일차방정식",
+        "conceptClusterKey": "M2-03-IDENTIFY_TWO_VAR_LINEAR_EQ",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATIONS_TWO_VARIABLES"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 1,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 1,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "등호 유무, 미지수 개수 2개, 차수 1 조건을 다섯 보기에 적용해 일차방정식 2개를 고른다.",
+      "decisiveStep": "등호 없는 ②, 이차 ③, 소거되는 ④를 제외하고 ①과 ⑤를 선택한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "미지수가 2개인 일차방정식의 정의를 각 보기에 바로 적용하는 1단계 문항이다.",
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "미지수가 2개인 일차방정식 2개 고르기"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_498439410b7aacfd7550ac6b7665ddf506f80e43b7984d2cd3a55d2788494786",
+      "sourceOrdinal": 2,
+      "sourceQid": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "subUnit": "연립일차방정식",
+        "conceptClusterKey": "M2-03-NONNEG_INT_SOLUTIONS_COUNT",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_LINEAR_EQUATIONS_TWO_VARIABLES"
+        ],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 2,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 2,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "3x + 4y = 24를 세운 뒤 계수가 큰 y에 0 이상의 정수를 대입해 x도 음이 아닌 정수가 되는 순서쌍을 센다.",
+      "decisiveStep": "(8, 0), (4, 3), (0, 6)의 3쌍이 전부임을 확인한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "일차방정식을 세우고 0 이상의 정수를 대입해 개수를 세는 기본 문항이다.",
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "음이 아닌 정수 해의 순서쌍 개수"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_4019c2ae4476cfd48eabe642a237c6b1e86fe97b5e5539c3d5cae73b8240d5a8",
+      "sourceOrdinal": 3,
+      "sourceQid": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "subUnit": "연립일차방정식",
+        "conceptClusterKey": "M2-03-SUBSTITUTION_METHOD_BASIC",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_SIMULTANEOUS_LINEAR_EQUATIONS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 3,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 3,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "x = 2y - 5를 둘째 식에 대입해 y = 3, x = 1을 구한다.",
+      "decisiveStep": "7y = 21에서 y = 3을 얻고 x = 1을 구한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "x에 대해 정리된 식을 대입하면 바로 풀리는 1단계 대입법 문항이다.",
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "대입법 기본 연립방정식 풀이"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_11cb0fc2ad27755af967c5915ffd58344c7b5b98b6b9da4822b0716ac9f327e8",
+      "sourceOrdinal": 4,
+      "sourceQid": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "subUnit": "연립일차방정식",
+        "conceptClusterKey": "M2-03-FRACTION_ELIMINATION_DIFF",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_FRACTION_COEFFICIENTS",
+          "CC_SIMULTANEOUS_LINEAR_EQUATIONS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 4,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 4,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "x의 계수가 1로 같으므로 두 식을 빼 y = -6을 구한 뒤 x = 1을 구해 a - b를 계산한다.",
+      "decisiveStep": "(4/3)y = -8에서 y = -6을 얻고 1 - (-6) = 7을 계산한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "두 식을 바로 빼면 x가 소거되어 분수 계수 y를 구할 수 있는 기본 문항이다.",
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "분수 계수 연립방정식 해의 차"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_5e2ebc291c38ede19dc0c35841bcd5243626982a5c3e8f6d6dcbac0f8131f139",
+      "sourceOrdinal": 5,
+      "sourceQid": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "subUnit": "연립일차방정식",
+        "conceptClusterKey": "M2-03-TWO_SOLUTIONS_TO_COEFFS",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_SUBSTITUTION_IN_EQUATIONS",
+          "CC_COEFFICIENT_DETERMINATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 5,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 5,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "두 해 (2, 3), (-3, -7)을 ax + by = 4에 대입해 a, b에 대한 연립방정식을 세워 푼다.",
+      "decisiveStep": "2a + 3b = 4와 -3a - 7b = 4를 연립해 a = 8, b = -4를 구한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "두 순서쌍을 대입해 계수 a, b에 대한 연립방정식을 새로 세워 풀어야 한다.",
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "두 해를 대입해 계수 연립방정식 풀기"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_beb60effc80584583e2b883eb5d5b2d40e2c41a172692ecdfb708459115bc3ea",
+      "sourceOrdinal": 6,
+      "sourceQid": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "subUnit": "연립일차방정식의 활용",
+        "conceptClusterKey": "M2-03-WORD_PERCENT_CHANGE_THIS_YEAR",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_APPLIED_WORD_PROBLEMS"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 6,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 6,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "작년 남녀 학생 수 x, y로 합과 증감량 연립방정식을 풀어 작년 남학생 수 160명을 구한 뒤 15% 증가한 올해 수를 계산한다.",
+      "decisiveStep": "작년 남학생 수 x = 160을 구한 뒤 올해 수 160 * 1.15 = 184를 계산한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "작년 학생 수를 연립방정식으로 구한 뒤 15% 증가율을 적용해 올해 학생 수를 답해야 한다.",
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "증감률 연립방정식 활용(올해 값 계산)"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_1dc9f8b6a3179a55c682eddedd153d88ca549cfa13c715c36edd40fd86b7c288",
+      "sourceOrdinal": 7,
+      "sourceQid": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "subUnit": "연립일차방정식",
+        "conceptClusterKey": "M2-03-SOLUTION_SATISFIES_THIRD_EQ",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_SUBSTITUTION_IN_EQUATIONS",
+          "CC_COEFFICIENT_DETERMINATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 7,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 7,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "연립방정식의 해 (5, 4)를 먼저 구한 뒤 x + ay = 1에 대입해 상수 a를 구한다.",
+      "decisiveStep": "해 (5, 4)를 5 + 4a = 1에 대입해 a = -1을 얻는다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "연립방정식을 풀어 얻은 해를 한 번 대입하면 바로 풀리는 기본 문항이다.",
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "연립방정식 해를 다른 일차방정식에 대입해 계수 구하기"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_7e2b7532c8fa4d51e64b7ab52bd8b2d755f706b341906e55455b9a03c6806d28",
+      "sourceOrdinal": 8,
+      "sourceQid": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "subUnit": "연립일차방정식의 활용",
+        "conceptClusterKey": "M2-03-WORD_SALT_SOLUTION_STEPS",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_APPLIED_WORD_PROBLEMS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 8,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 8,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "소금물 양과 소금 양 등식에서 농도 비율 및 연립방정식 해를 차례로 확인해 틀린 빈칸을 찾는다.",
+      "decisiveStep": "목표 농도가 6%이므로 ㉢은 6/100이어야 함을 판별한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "주어진 농도 식의 빈칸 수치를 순서대로 대조하면 바로 풀리는 문항이다.",
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "소금물 농도 혼합 연립방정식 빈칸 판별"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_1082288cda2c12f8ac2ac036b53bfec0bf1607fc96c82c27f1ff9ffb3ff67019",
+      "sourceOrdinal": 9,
+      "sourceQid": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "M2-04-NON_FUNCTION_IDENTIFICATION",
+        "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 9,
+        "variationType": "CONTEXT",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 9,
+          "variationType": "CONTEXT",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "x 하나의 값에 y 값이 여러 개 대응하는 관계를 찾아 함수가 아닌 보기를 고른다.",
+      "decisiveStep": "자연수 x와 10의 공배수 y는 무수히 많으므로 함수가 아님을 판별한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "함수의 정의(유일 대응)를 문장에서 바로 판정하는 1단계 문항이다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+        "templateKey": null,
+        "why": "함수가 아닌 관계 고르기"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_0c2dd1c6c53f57c53edbaa626c7d33be275570ffbda50b36710d27144eaa82cc",
+      "sourceOrdinal": 10,
+      "sourceQid": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "M2-04-FUNCTION_VALUE_PREIMAGE",
+        "problemTypeKey": "PT_FUNCTION_VALUE",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_FUNCTION_VALUE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 10,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 10,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "f(a) = 5a + 3을 -12와 같다고 놓고 일차방정식을 풀어 a를 구한다.",
+      "decisiveStep": "5a + 3 = -12에서 a = -3을 얻는다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "함숫값 조건을 일차방정식으로 바로 푸는 1단계 문항이다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_FUNCTION_VALUE",
+        "templateKey": null,
+        "why": "주어진 함숫값에 해당하는 x값 구하기"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_eb07203f181035bda00c83428c9d3bb501ccbd980955f588c90ecdb003ee9614",
+      "sourceOrdinal": 11,
+      "sourceQid": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "M2-04-IDENTIFY_LINEAR_FUNCTION",
+        "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+        "templateKey": "",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 11,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 11,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "각 식을 y에 대해 정리해 y = ax + b (a != 0) 꼴이 되는 식을 고른다.",
+      "decisiveStep": "y - 2 = 4x + 5를 정리한 y = 4x + 7이 일차함수임을 확인한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "y에 대해 정리해 일차함수 정의를 확인하는 1단계 문항이다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+        "templateKey": null,
+        "why": "일차함수 식 판별"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_12c42b07166a440baf9699ac0aba620035d264b4b957e1a3a2e3b04e6281d99a",
+      "sourceOrdinal": 12,
+      "sourceQid": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "M2-04-VERTICAL_TRANSLATION_POINT",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_PARALLEL_TRANSLATION",
+          "CC_POINT_SUBSTITUTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 12,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 12,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "y축 방향으로 -5만큼 평행이동한 식 y = 3x + k - 5에 점 (-1, 4)를 대입해 k를 구한다.",
+      "decisiveStep": "4 = -8 + k에서 k = 12를 구한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "평행이동 식을 쓰고 점 좌표를 대입하면 바로 풀리는 1단계 문항이다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+        "templateKey": null,
+        "why": "평행이동한 그래프의 상수 구하기"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_24a9c15f424a30012807b4aef9f549ea06052fdabcdb66575468c27b7956d585",
+      "sourceOrdinal": 13,
+      "sourceQid": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "M2-04-X_INTERCEPT_EQUALS_Y_INTERCEPT",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_INTERCEPTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 13,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 13,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "첫째 식의 x절편 -4와 둘째 식의 y절편 2k를 구해 같다고 놓고 푼다.",
+      "decisiveStep": "2k = -4에서 k = -2를 얻는다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "x절편과 y절편을 각각 구해 등치시키면 바로 풀리는 1단계 문항이다.",
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "x절편과 y절편 일치 조건으로 상수 구하기"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_911e121f13900a6e0bafbd09f0784a2bbce0ec3c3e77ed1f08c8e6618f10b4ae",
+      "sourceOrdinal": 14,
+      "sourceQid": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "M2-04-LINEAR_GRAPH_PROPERTIES_CHECK",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_SLOPE_AND_INTERCEPT",
+          "CC_X_INTERCEPT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 14,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 14,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "y = -(4/3)x + 8의 기울기, x절편, 지나는 사분면을 보기별로 점검해 옳은 설명을 찾는다.",
+      "decisiveStep": "x절편이 6이므로 x축과의 교점이 (6, 0)임을 확인한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "일차함수의 기울기와 절편, 사분면을 바로 확인하는 1단계 문항이다.",
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "일차함수 그래프 성질 옳은 것 고르기"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_55167a3d1f6d46450c4d99ea31e582b6e4369ac5d0c82210066b99a9b039e129",
+      "sourceOrdinal": 15,
+      "sourceQid": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "M2-04-COLLINEAR_THREE_POINTS_DIFF",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_SLOPE_FORMULA",
+          "CC_POINT_SUBSTITUTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 15,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 15,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "두 점 (-2, -3), (0, 3)으로 직선 y = 3x + 3을 구한 뒤 (p, 3q)를 대입해 p - q를 구한다.",
+      "decisiveStep": "3q = 3p + 3의 양변을 3으로 나누어 p - q = -1을 얻는다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "두 점으로 직선 식을 구하고 세 번째 점을 대입해 미지수 개별로 구하지 않고 p - q를 도출해야 한다.",
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "한 직선 위 세 점 조건으로 두 문자의 차 구하기"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_24da03b4111d2aa44e632417e863dc950f62e8041116bf502a999660299c3687",
+      "sourceOrdinal": 16,
+      "sourceQid": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "M2-04-PARALLEL_SLOPE_AND_POINT",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_POINT_SUBSTITUTION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 16,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 16,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "평행 조건에서 기울기 a = 5를 구한 뒤 점 (k, 13)을 대입해 k = 2를 구하여 차를 계산한다.",
+      "decisiveStep": "a = 5, 13 = 5k + 3에서 k = 2를 얻어 a - k = 3을 구한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "평행 조건에서 기울기를 읽고 점 좌표를 대입하면 바로 풀리는 기본 문항이다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
+        "templateKey": null,
+        "why": "평행한 일차함수가 지나는 점 좌표 차"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_febab4177d1c575c2b09dc4268b00bfe11052ef81fe6fcfd327768fd8bea1135",
+      "sourceOrdinal": 17,
+      "sourceQid": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "M2-04-SIGN_CONDITION_QUADRANTS",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_QUADRANTS",
+          "CC_SLOPE_SIGN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 17,
+        "variationType": "CONDITION",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 17,
+          "variationType": "CONDITION",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "ab < 0과 a - b > 0에서 a > 0, b < 0임을 결정해 기울기·y절편 부호로 지나는 사분면을 찾는다.",
+      "decisiveStep": "a > 0, b < 0에서 제1, 3, 4사분면을 지남을 확정한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "두 부등식 조건에서 a, b 부호를 추론한 뒤 지나는 사분면을 결정해야 한다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+        "templateKey": null,
+        "why": "부호 조건으로 일차함수 그래프가 지나는 사분면 판별"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_4f8a177f55e76227f90dcd0ccca8715e9532639c3b123e88b89a57e24971015a",
+      "sourceOrdinal": 18,
+      "sourceQid": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+        "subUnit": "일차함수와 일차방정식의 관계",
+        "conceptClusterKey": "M2-04-Y_AXIS_TRIANGLE_AREA",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_INTERSECTION_OF_TWO_GRAPHS",
+          "CC_POLYGON_AREA",
+          "CC_Y_INTERCEPT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 18,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 18,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "두 직선의 y절편 차 12를 밑변, 두 직선 교점의 x좌표 9를 높이로 하여 삼각형 넓이를 계산한다.",
+      "decisiveStep": "y절편 차 12와 교점 x = 9로부터 (1/2)*12*9 = 54를 구한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "두 직선의 교점과 두 y절편을 구해 밑변과 높이로 삼각형 넓이를 계산해야 한다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
+        "templateKey": null,
+        "why": "두 일차함수와 y축으로 둘러싸인 삼각형의 넓이"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_9c54bd76be51ac8630a1c1473d209abd3ab8ccf07b88df8de3c030812dc0ed34",
+      "sourceOrdinal": 19,
+      "sourceQid": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "M2-04-SLOPE_AND_BOTH_INTERCEPTS_SUM",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_SLOPE_FORMULA",
+          "CC_INTERCEPTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 19,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 19,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "두 점으로 기울기 a = 2와 y절편 c = 8을 구해 식을 세운 뒤 x절편 b = -4를 구하여 합한다.",
+      "decisiveStep": "y = 2x + 8에서 a = 2, b = -4, c = 8을 모두 구해 합 6을 계산한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "직선 식을 구한 뒤 기울기, x절편, y절편 세 값을 모두 구해 합산해야 한다.",
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "두 점을 지나는 일차함수의 기울기와 두 절편 합"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_35534df1d0d3e564f49032c47c96aef6ceb6d9d818d43a223cca7caac98f7038",
+      "sourceOrdinal": 20,
+      "sourceQid": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "M2-04-WORD_COOLING_TEMPERATURE",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_APPLIED_WORD_PROBLEMS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 20,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 20,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "15분 동안 45도 감소로 분당 변화율 -3도를 구해 y = 100 - 3x를 세운 뒤 y = 25일 때의 x를 구한다.",
+      "decisiveStep": "y = 100 - 3x에 y = 25를 대입해 x = 25분을 구한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "두 시점의 온도에서 변화율을 구해 일차함수를 세우고 목표 온도에 도달하는 시간을 구해야 한다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE",
+        "templateKey": null,
+        "why": "일정한 속도로 식는 물의 온도 일차함수 활용"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_6b6b55569e853c9c700dcfe14c0ca2160d27f2dfe345ba823cf8003c0bf4a966",
+      "sourceOrdinal": 21,
+      "sourceQid": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-03",
+        "standardUnit": "연립일차방정식",
+        "standardUnitOrder": 3,
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "subUnit": "연립일차방정식의 활용",
+        "conceptClusterKey": "M2-03-WORD_SWAPPED_QUANTITIES_COST",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_APPLIED_WORD_PROBLEMS"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 21,
+        "variationType": "CONTEXT",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 21,
+          "variationType": "CONTEXT",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "총 개수 x + y = 12와 개수가 바뀌어 늘어난 금액 차 600x - 600y = 1200을 연립해 x를 구한다.",
+      "decisiveStep": "바뀐 금액 차 식을 x - y = 2로 정리해 x + y = 12와 연립하여 x = 7을 얻는다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "두 물건의 개수가 뒤바뀐 경우의 금액 차를 식으로 세워 연립해야 한다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
+        "templateKey": null,
+        "why": "바뀐 개수 금액 차 연립방정식 서술형"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_503f679663954278393aaba6e63d90191ff49ab2090455b1fdb5d2600406e687",
+      "sourceOrdinal": 22,
+      "sourceQid": 22,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "M2-04-OVERLAPPING_TRANSLATIONS",
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_PARALLEL_TRANSLATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 22,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 22,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "두 그래프를 각각 평행이동한 식을 세운 뒤 기울기 일치(2a = -4)와 y절편 일치(2 + p = -6)를 이용해 a - p를 구한다.",
+      "decisiveStep": "a = -2, p = -8을 구해 a - p = 6을 계산한다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "각각 평행이동한 식의 기울기와 y절편을 바로 비교하면 풀리는 기본 문항이다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+        "templateKey": null,
+        "why": "평행이동한 두 일차함수 일치 조건"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_6742be8ea9b0c026cc3ae199bd7725e20afc36cac5fcf54e8f867f1d49533cb9",
+      "sourceOrdinal": 23,
+      "sourceQid": 23,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2-1",
+        "standardUnitKey": "M2-04",
+        "standardUnit": "일차함수와 그래프",
+        "standardUnitOrder": 4,
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "M2-04-CHAINED_FUNCTION_EVAL",
+        "problemTypeKey": "PT_FUNCTION_VALUE",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_FUNCTION_VALUE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 23,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "25_연향중_1학기_기말_중2_기출",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+          "sourceQid": 23,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-15",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "f(6) = 8로 a를 먼저 구한 뒤 f(8) = 32/3을 g(b) = 16/b와 같다고 놓아 b를 구한다.",
+      "decisiveStep": "32/3 = 16/b에서 b = 3/2을 얻는다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "주어진 함숫값 식에 차례로 대입해 일차방정식을 풀면 되는 기본 문항이다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_FUNCTION_VALUE",
+        "templateKey": null,
+        "why": "연쇄 함숫값 조건을 이용한 상수 구하기"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    }
+  ]
+}

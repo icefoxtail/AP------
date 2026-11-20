@@ -1,0 +1,76 @@
+{
+  "qid": "09",
+  "itemFingerprint": "e2b2aff1960592d4",
+  "solveSteps": [
+    "함수는 x의 각 값에 y의 값이 오직 하나씩 대응해야 한다.",
+    "① y = 800x로 하나씩 대응하여 함수이다.",
+    "② y = 300 - x로 하나씩 대응하여 함수이다.",
+    "③ 자연수 x와 10의 공배수는 무수히 많으므로 y가 하나로 결정되지 않아 함수가 아니다.",
+    "④ 반 번호마다 학생 수는 하나로 정해지므로 함수이다.",
+    "⑤ 2(x + y) = 24에서 y = 12 - x로 하나씩 대응하여 함수이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "다음 중 $y$가 $x$의 함수가 아닌 것은?",
+  "rpmRecordId": "M2-RPM-046",
+  "rpmReason": "자연수 x와 10의 공배수 y처럼 하나의 입력에 여러 출력이 대응하는 함수 아닌 보기를 판별하는 문제이다.",
+  "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+  "templateKey": "TPL_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION_FUNCTION",
+  "typeReason": "x와 10의 공배수 관계처럼 유일 대응 조건이 성립하지 않는 경우를 식별하는 함수 판별 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "함수의 정의에 따라 자연수 x와 10의 공배수가 무수히 많음을 판단하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "choices",
+        "quote": "자연수 $x$와 $10$의 공배수 $y$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "다음 중 $y$가 $x$의 함수가 아닌 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "공배수",
+        "src": "choices",
+        "quote": "자연수 $x$와 $10$의 공배수 $y$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직사각형",
+        "src": "choices",
+        "quote": "세로의 길이가 $y$인 직사각형의 둘레의"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "각 보기의 x와 y 관계를 확인한다.",
+    "goal": "함수가 아닌 보기를 찾는다.",
+    "method": "대응하는 y값의 유일성 여부를 검토한다.",
+    "condition": "직사각형 둘레 등 다른 조건도 함수인지 확인한다."
+  },
+  "how": "자연수 x와 10의 공배수는 무수히 많아 하나로 정해지지 않으므로 함수가 아닌 ③으로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

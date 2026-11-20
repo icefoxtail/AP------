@@ -1,0 +1,75 @@
+{
+  "qid": "21",
+  "itemFingerprint": "00bbcc4edf2bfd47",
+  "solveSteps": [
+    "(1) 처음 주문한 형광펜 개수를 x개, 볼펜 개수를 y개라 하면",
+    "x + y = 12 ... ㉠",
+    "(1800x + 1200y) - (1200x + 1800y) = 1200에서 600x - 600y = 1200이므로 x - y = 2 ... ㉡",
+    "(2) ㉠ + ㉡을 하면 2x = 14이므로 x = 7, y = 5이다.",
+    "따라서 처음에 주문한 형광펜의 개수는 7개이다."
+  ],
+  "solvedAnswer": "7개",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+  "unitEvidence": "[서술형 1] 민서는 문구점에서 $1$개에 $",
+  "rpmRecordId": "M2-RPM-039",
+  "rpmReason": "1200원 형광펜과 1800원 볼펜의 개수가 바뀐 조건으로 연립방정식을 세워 처음 형광펜 7개를 구하는 문제이다.",
+  "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
+  "templateKey": "TPL_M2_SOLVE_UNIT_PRICE_SYSTEM_WORD_PROBLEM_DESCRIPTIVE",
+  "typeReason": "단가 1200원, 1800원 물품의 수량 교환에 따른 금액 차이로 연립방정식을 세워 해결하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "1200원과 1800원의 금액 차이 관계를 미지수 x, y의 연립일차방정식으로 서술하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "DESCRIPTIVE",
+  "slots": {
+    "given": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "형광펜과 볼펜의 개수가 바뀌어서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "처음에 주문한 형광펜의 개수를 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "해결하기 위한 연립방정식을 세우시오.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "미지수",
+        "src": "stem",
+        "quote": "(1) 미지수를 정하고, 문제를"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "단가와 총 개수 조건을 확인한다.",
+    "goal": "처음 주문한 형광펜의 개수를 구한다.",
+    "method": "미지수를 정하고 연립방정식을 세워 가감법으로 푼다.",
+    "condition": "서술형 조건에 맞추어 식과 답을 도출한다."
+  },
+  "how": "1200원 형광펜과 1800원 볼펜의 바뀐 금액 차이 1200원 식을 연립하여 처음 형광펜 7개로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

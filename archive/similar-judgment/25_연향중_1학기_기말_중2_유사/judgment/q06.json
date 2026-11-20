@@ -1,0 +1,70 @@
+{
+  "qid": "06",
+  "itemFingerprint": "a0d60999a693ea09",
+  "solveSteps": [
+    "작년 전체 학생 수 400명에서 작년 남학생 수를 x명, 여학생 수를 y명이라 하면",
+    "x + y = 400이다.",
+    "올해 증감률에 따른 식은 (15/100)x - (5/100)y = 12이다.",
+    "둘째 식에 20을 곱하면 3x - y = 240이다.",
+    "두 식을 더하면 4x = 640이므로 x = 160이다.",
+    "올해 남학생 수는 160 * (1 + 15/100) = 184명이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+  "unitEvidence": "K학교 작년 전체 학생 수는 $400$명이었다. 올해는 작년보다 남학생이 $15\\%$ 증가하고",
+  "rpmRecordId": "M2-RPM-043",
+  "rpmReason": "전체 400명 기준 증감률 연립방정식을 세워 올해 남학생 수 184명을 구하는 문제이다.",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "typeReason": "작년 400명에서 증감 조건을 연립일차방정식으로 나타내어 올해 남학생 수 184명을 도출하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "학생 수 400명 기준 증가와 감소를 미지수로 세워 올해 인원 184명을 계산하는 표준 활용 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "증가감소",
+        "src": "stem",
+        "quote": "$15\\%$ 증가하고 여학생은"
+      }
+    ],
+    "goal": [
+      {
+        "term": "증가감소",
+        "src": "stem",
+        "quote": "$12$명이 증가하였다. 올해의"
+      }
+    ],
+    "method": [
+      {
+        "term": "증가감소",
+        "src": "stem",
+        "quote": "여학생은 $5\\%$ 감소하여, 전체",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {
+    "given": "남학생과 여학생의 증감률 조건을 파악한다.",
+    "goal": "올해 남학생 인원수를 구한다.",
+    "method": "증감량 식을 연립하여 작년 인원을 먼저 구한다.",
+    "condition": ""
+  },
+  "how": "작년 400명을 기준으로 증감식을 세워 $x = 160$을 구하고 올해 남학생 수 184명을 얻어 정답 ④로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

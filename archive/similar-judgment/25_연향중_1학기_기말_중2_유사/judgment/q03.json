@@ -1,0 +1,75 @@
+{
+  "qid": "03",
+  "itemFingerprint": "2cbed417f2bafea8",
+  "solveSteps": [
+    "x = 2y - 5를 두 번째 식 3x + y = 6에 대입한다.",
+    "3(2y - 5) + y = 6에서 6y - 15 + y = 6이므로 7y = 21이다.",
+    "따라서 y = 3이다.",
+    "y = 3을 x = 2y - 5에 대입하면 x = 2(3) - 5 = 1이다.",
+    "따라서 연립방정식 cases의 해는 x = 1, y = 3이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "unitEvidence": "연립방정식 $\\begin{cases} x = 2y - 5 \\\\ 3x + y = 6 \\end{cases}$을 풀면?",
+  "rpmRecordId": "M2-RPM-031",
+  "rpmReason": "대입법을 이용하여 cases 식에서 7y - 15 = 6, y = 3, x = 1을 구하는 기본 연립방정식 문제이다.",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "typeReason": "이변수 연립일차방정식 cases 구조를 대입법으로 풀어 7y = 21에서 미지수 $x, y$의 값을 결정하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "한 문자에 대해 정리된 식을 대입하여 cases 연립방정식에서 7y = 21을 해결하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin{cases} x = 2y - 5"
+      }
+    ],
+    "goal": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin{cases} x = 2y - 5"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "6$에 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin{cases} x = 2y - 5"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "주어진 연립방정식의 식을 파악한다.",
+    "goal": "연립방정식의 공통해 x, y를 구한다.",
+    "method": "대입법으로 한 문자를 소거하여 푼다.",
+    "condition": "두 방정식을 동시에 만족해야 한다."
+  },
+  "how": "대입법으로 $x = 2y - 5$를 $3x + y = 6$에 대입하여 cases 연립방정식에서 7y = 21, y = 3, x = 1을 구해 정답 ①로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

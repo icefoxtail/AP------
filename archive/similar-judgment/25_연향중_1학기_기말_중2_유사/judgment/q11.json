@@ -1,0 +1,76 @@
+{
+  "qid": "11",
+  "itemFingerprint": "8a258c1ddd9ab9d0",
+  "solveSteps": [
+    "일차함수는 y = ax + b (a != 0)의 꼴로 나타내어지는 함수이다.",
+    "① y = x^2 - 3은 이차함수이다.",
+    "② y = 5/x + 1은 분모에 x가 있으므로 일차함수가 아니다.",
+    "③ y - 2 = 4x + 5를 정리하면 y = 4x + 7로 일차함수이다.",
+    "④ xy = 8은 y = 8/x로 분모에 x가 있어 일차함수가 아니다.",
+    "⑤ 2x + y = 2x - 7은 y = -7로 상수함수이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "다음 중 $y$가 $x$에 대한 일차",
+  "rpmRecordId": "M2-RPM-047",
+  "rpmReason": "반비례 식 xy = 8 등과 구분하여 y - 2 = 4x + 5를 y = 4x + 7로 정리해 일차함수를 판별하는 문제이다.",
+  "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+  "templateKey": "TPL_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION_LINEAR",
+  "typeReason": "반비례 xy = 8 및 이차식을 배제하고 일차함수 꼴을 식별하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "xy = 8 같은 분모의 변수나 이차식을 제외하고 일차함수를 찾는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "다음 중 $y$가 $x$에 대한 일차함수인 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "다음 중 $y$가 $x$에 대한 일차함수인 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "일차함수",
+        "src": "solution",
+        "quote": "7$이므로 일차함수이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "이차함수",
+        "src": "solution",
+        "quote": "① 이차함수, ② 분모에"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "주어진 다섯 보기의 함수식을 확인한다.",
+    "goal": "일차함수에 해당하는 식을 고른다.",
+    "method": "식을 y = ax + b 형태로 정리하여 판단한다.",
+    "condition": "이차함수나 반비례 식을 제외한다."
+  },
+  "how": "보기 ④의 xy = 8 및 이차식을 제외하고 ③ y - 2 = 4x + 5가 y = 4x + 7의 일차함수임을 확인하여 ③으로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}
