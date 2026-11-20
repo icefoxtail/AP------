@@ -4,7 +4,7 @@
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
   "problemTypeCount": 123,
-  "templateCount": 333,
+  "templateCount": 339,
   "problemTypes": [
     {
       "problemTypeKey": "PT_ABSOLUTE_VALUE_SIGN_EXTREMES",
@@ -14018,6 +14018,186 @@
           "bundleTable": {
             "branch": "data/type-bundles-20261117",
             "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_COORDINATE_POINT_READING_REFLECTION",
+      "parentProblemTypeKey": "PT_COORDINATE_POINT_READING",
+      "canonicalLabelKo": "대칭이동한 점의 좌표",
+      "definition": "x축·y축·원점에 대한 대칭이동으로 좌표의 부호가 바뀜을 이용해 대칭인 점의 좌표를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_2b77e0a769c31f1074a90adf4ce9634c3a65a981eedc6eaa29480a47347923a1",
+        "qid_v1_46cd2e95eaadc6def634849b89a9dc3a74b99493993fef49f7c23505cfa08e67",
+        "qid_v1_619c2cf9dac6bfe1403f67fa903ae2f9fcdb1b03ead339d80a8e85ff7a66a7ce",
+        "qid_v1_74a1c1f64391cbf6b84885d1937fed45c251014317b67682a5b3607c6d05012e"
+      ],
+      "sourceUnits": [
+        "M1-04"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_COORDINATE_POINT_READING_REFLECTION",
+          "bundleTable": {
+            "branch": "data/type-judgment-m1pro-b-20261120",
+            "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_COORDINATE_POINT_READING_ORDERED_PAIR_ENUMERATION",
+      "parentProblemTypeKey": "PT_COORDINATE_POINT_READING",
+      "canonicalLabelKo": "순서쌍 열거",
+      "definition": "주어진 조건(약수, 절댓값, 일차식)을 만족하는 자연수·정수의 순서쌍을 빠짐없이 나열해 개수를 센다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_007ecb85bf00ef9328117e1415dc59435688acd98e2f9331f3c3e850c8aa5fce",
+        "qid_v1_25d779564b25ccf2f3d497466dbe18f2145706d66f42aa767417900ade4cad85",
+        "qid_v1_d3bb5985a142f0d9e1269ec9d33bbd27e0a56409172163db55ccf0c170b7713e"
+      ],
+      "sourceUnits": [
+        "M1-04"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_M1_COORDINATE_POINT_READING_ORDERED_PAIR_ENUMERATION",
+          "bundleTable": {
+            "branch": "data/type-judgment-m1pro-b-20261120",
+            "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_EQUATION_DEFINITION",
+      "parentProblemTypeKey": "PT_M1_EQUATION",
+      "canonicalLabelKo": "등식 판별",
+      "definition": "등호가 있는 식만 등식이라는 정의로 보기의 등식 여부와 좌변·우변·항을 판별한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_4c1e30ee59c75a6b4f680646cdae23ebdd616fe77361fddead53b83fefe83168",
+        "qid_v1_f2535785757df437334f329b5fa3b5868ae38b9c6091d7360565c30d89238f4a",
+        "qid_v1_f422c4779c9ce3131ea5ca8d847d9fb595074e7f6e31222aff8fee1e990229d8"
+      ],
+      "sourceUnits": [
+        "M1-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_M1_EQUATION_DEFINITION",
+          "bundleTable": {
+            "branch": "data/type-judgment-m1pro-b-20261120",
+            "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_EQUATION_LINEAR_CLASSIFICATION",
+      "parentProblemTypeKey": "PT_M1_EQUATION",
+      "canonicalLabelKo": "일차방정식 판별",
+      "definition": "등식을 정리해 이항한 뒤 미지수의 일차식=0 꼴이 되는지, 이차항이 소거되고 일차항이 남는 조건이 무엇인지 판별한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_21c32903c4038bc7eaee3421ceb14d6630a65df5d4d6892abe7164756330dd61",
+        "qid_v1_21deaa1e1c1705656e6b2a58a069ec6e9088d99420027c1a2e09ea10a130191f",
+        "qid_v1_53c5108a2400ea87e2766ff53134e531248523ac38276cf30ec1c7fa5cbaaf7a",
+        "qid_v1_ce580d5aedfd0d68d1c2cff546704049221c41ea4c20a727263ec69ddba88995",
+        "qid_v1_de7889ffb318a3bf4aac33c0d1d772fd34f55894a850842e1fbe924d6d792e9d"
+      ],
+      "sourceUnits": [
+        "M1-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_M1_EQUATION_LINEAR_CLASSIFICATION",
+          "bundleTable": {
+            "branch": "data/type-judgment-m1pro-b-20261120",
+            "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_IDENTITY_RECOGNITION",
+      "parentProblemTypeKey": "PT_M1_IDENTITY",
+      "canonicalLabelKo": "항등식 판별",
+      "definition": "등식의 양변을 정리해 모든 문자 값에서 항상 성립하는 등식(항등식)인지 판별한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_1a7549ebb6d1c8dca36bcc4698fc3cb6911017a0b9f5d8151b344fa216eeb672",
+        "qid_v1_b0cdc41356abe302e2d4ab22614ba3e4981bad63642fa17793520bd953c56ee7"
+      ],
+      "sourceUnits": [
+        "M1-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_M1_IDENTITY_RECOGNITION",
+          "bundleTable": {
+            "branch": "data/type-judgment-m1pro-b-20261120",
+            "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_IDENTITY_UNDETERMINED_COEFFICIENT",
+      "parentProblemTypeKey": "PT_M1_IDENTITY",
+      "canonicalLabelKo": "항등식 조건으로 미정계수 결정",
+      "definition": "양변을 정리해 문자의 계수와 상수항이 각각 같다는 항등식 조건으로 미정계수를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 7,
+      "supportingQuestionUids": [
+        "qid_v1_25c1185c1a770e0154c6f3ae4093c47441ccd66b6fbcd5bfb3f6cb3ba7196d95",
+        "qid_v1_404514ff85d7e636fbf3a46357fc78d64aae5e0ea71e132b5f2869cc51f14ca6",
+        "qid_v1_48f8b191ec3f03c112e2b51dcbe73634438c5c608305df6f7e1a86c1e51ea618",
+        "qid_v1_5f613b8e91878b40481a89903be37de824acf27b7a9fb78606d2fa7e14df4037",
+        "qid_v1_a49d622b2dc80ef041536b0cd58de07f7b293eece7d80e10f5bf559305152663",
+        "qid_v1_c9255bf65fc0f24e729866f93f6ec58f2144eb400a040f479cac13e53d271380",
+        "qid_v1_cfa584e110d8e5b332bf7aef5aa24f43217116a2b9e89b974c90677277febe58"
+      ],
+      "sourceUnits": [
+        "M1-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_M1_IDENTITY_UNDETERMINED_COEFFICIENT",
+          "bundleTable": {
+            "branch": "data/type-judgment-m1pro-b-20261120",
+            "commit": "6cbde2f419a7ed06aa389e2a2493af89293abc53",
             "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
           }
         }
