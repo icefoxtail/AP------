@@ -1,0 +1,65 @@
+{
+  "qid": 18,
+  "itemFingerprint": "b747a503c2edd954",
+  "solveSteps": [
+    "y = -2x + 15 와 y = 1/2 x 의 교점은 -2x + 15 = 1/2 x 에서 5/2 x = 15 이므로 x = 6, y = 3 이다.",
+    "x = 2 와 y = -2x + 15 의 교점은 (2, 11) 이고, x = 2 와 y = 1/2 x 의 교점은 (2, 1) 이다.",
+    "둘러싸인 삼각형의 밑변은 직선 x = 2 위에서 11 - 1 = 10 이다.",
+    "높이는 교점의 x좌표 차이인 6 - 2 = 4 이다.",
+    "따라서 도형의 넓이는 1/2 * 10 * 4 = 20 이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "unitEvidence": "세 일차방정식 $y = -2",
+  "rpmRecordId": "M2-RPM-176",
+  "rpmReason": "y = -2x + 15 등의 세 직선의 교점을 구해 밑변 10 과 높이 4 로 삼각형 넓이 20 을 구하는 단계이다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+  "templateKey": "NONE",
+  "typeReason": "세 일차방정식 y = -2x + 15 등의 그래프로 둘러싸인 삼각형의 넓이 20 을 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "15 가 포함된 세 식의 세 교점 좌표를 모두 구하고 밑변과 높이를 계산해 20 을 도출하는 난이도 3 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "세 일차방정식 $y = -2"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "러싸인 도형의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "교점",
+        "src": "solution",
+        "quote": "}{2}x$의 교점은 $-2x +",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "교점 (6, 3), (2, 11), (2, 1)에서 밑변 10, 높이 4 로 넓이 20 을 구해 ④로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

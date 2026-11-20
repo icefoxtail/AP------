@@ -1,0 +1,58 @@
+{
+  "qid": 17,
+  "itemFingerprint": "4a1095b0ad6ef764",
+  "solveSteps": [
+    "교통카드 지불 학생을 x명, 현금 지불 학생을 y명이라 하면 x + y = 25 이다.",
+    "요금 총액은 800x + 1100y = 22700 에서 8x + 11y = 227 이다.",
+    "x = 25 - y 를 대입하면 8(25 - y) + 11y = 227 에서 200 + 3y = 227 이므로 3y = 27, y = 9 이다.",
+    "x = 25 - 9 = 16 이므로 두 학생 수의 차는 16 - 9 = 7 이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+  "unitEvidence": "학생 $25$명이 체험 학습을 가기",
+  "rpmRecordId": "M2-RPM-157",
+  "rpmReason": "총인원 25 명과 교통카드 요금 800 원 조건을 연립하여 학생 수의 차 7 을 구하는 단계이다.",
+  "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
+  "templateKey": "NONE",
+  "typeReason": "총인원 25 명과 단가 800 원, 1100 원 총액 조건에서 각 인원을 구하고 그 차를 묻는 활용 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "합이 25 이고 800x + 1100y = 22700 식을 세워 풀어 차 7 을 구하는 전형적인 난이도 2 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "차",
+        "src": "stem",
+        "quote": "학생 수와 현금으로 지불한 학생 수의 차는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "5 - y$를 대입하면 $8(25",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "x + y = 25 와 800x + 1100y = 22700 연립으로 x = 16, y = 9 를 구해 차 7 로 ⑤를 선택했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

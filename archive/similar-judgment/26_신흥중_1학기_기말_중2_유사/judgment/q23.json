@@ -1,0 +1,68 @@
+{
+  "qid": 23,
+  "itemFingerprint": "3d7c96e914977c49",
+  "solveSteps": [
+    "(1) (a + 3)x + 5y - b = 0 의 기울기는 -(a + 3)/5 이다.",
+    "점 P(a, 3a)와 점 A(x_A, -9)를 지나는 기울기는 (-9 - 3a) / (x_A - a) = -3(a + 3) / (x_A - a) 이다.",
+    "-(a + 3)/5 와 같으므로 3 / (x_A - a) = 1/5 에서 x_A - a = 15 이다.",
+    "점 B는 (a, -9)이므로 선분 AB = |x_A - a| = 15 이다.",
+    "(2) 삼각형 PAB의 밑변 AB = 15, 높이 PB = 3a - (-9) = 3a + 9 이다.",
+    "넓이가 180 이므로 1/2 * 15 * (3a + 9) = 180 에서 3a + 9 = 24, a = 5 이다.",
+    "점 (5, 15)를 대입하면 8 * 5 + 5 * 15 - b = 0 이므로 b = 40 + 75 = 115 이다.",
+    "따라서 AB = 15, a = 5, b = 115 이다."
+  ],
+  "solvedAnswer": "$\\overline{AB} = 15,\\ a = 5,\\ b = 115$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "unitEvidence": "세 일차방정식 $(a + 3)x + 5y - b = 0",
+  "rpmRecordId": "M2-RPM-176",
+  "rpmReason": "세 직선의 교점으로 이루어진 삼각형의 밑변 AB = 15 와 넓이 180 으로 a = 5, b = 115 를 구하는 단계이다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+  "templateKey": "NONE",
+  "typeReason": "세 일차방정식으로 둘러싸인 삼각형의 넓이 180 조건으로 선분 AB 와 미정계수 a, b = 115 를 구하는 고난도 서술형 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기울기로 AB = 15 를 유도하고 넓이 180 에서 a = 5 와 b = 115 를 도출하는 복합 단계 난이도 4 서술형 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "$)에 대하여 일차방정식 $(a + 3"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "러싸인 도형의 넓이가 $180$일"
+      }
+    ],
+    "method": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "{5}$이므로 기울기는 $-\\fra",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "기울기로 선분 AB = 15 를 구하고 삼각형 넓이 180 에서 a = 5, b = 115 임을 서술하여 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

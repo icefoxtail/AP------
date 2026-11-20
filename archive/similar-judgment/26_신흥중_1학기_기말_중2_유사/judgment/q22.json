@@ -1,0 +1,65 @@
+{
+  "qid": 22,
+  "itemFingerprint": "f3be8f770011b08a",
+  "solveSteps": [
+    "(1) (15, 420)과 (25, 400)을 지나므로 기울기는 (400 - 420) / (25 - 15) = -20 / 10 = -2 이다.",
+    "y = -2x + b 에 (15, 420)을 대입하면 420 = -30 + b 이므로 b = 450 이다.",
+    "따라서 y = -2x + 450 이다.",
+    "(2) 150 = -2x + 450 에서 2x = 300 이므로 x = 150 이다.",
+    "따라서 방향제의 양이 150 mL 가 되는 것은 개봉한 지 150일 후이다."
+  ],
+  "solvedAnswer": "(1) $y = -2x + 450$, (2) $150$일 후",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "풀이 과정을 일차함수의 식을 활용하",
+  "rpmRecordId": "M2-RPM-177",
+  "rpmReason": "15일 후 420 mL 및 25일 후 400 mL 로부터 일차함수 식 y = -2x + 450 을 세우고 150일 후를 구하는 단계이다.",
+  "problemTypeKey": "PT_M2_FUNCTION",
+  "templateKey": "NONE",
+  "typeReason": "두 시점의 용량 420 mL, 400 mL 로 일차함수 식을 작성하고 목표치 150 mL 가 되는 날을 구하는 활용 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "420 과 400 으로 기울기 -2 와 절편 450 을 구해 150 대입으로 답을 얻는 난이도 2 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "풀이 과정을 일차함수의 식을 활용하"
+      }
+    ],
+    "goal": [
+      {
+        "term": "속력",
+        "src": "stem",
+        "quote": "양이 일정한 속력으로 줄어들어"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "420)$을 대입하면 $420",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "두 점 (15, 420), (25, 400)으로 y = -2x + 450 식을 얻고 150 mL 가 되는 날이 150일 후임을 서술하여 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

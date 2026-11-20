@@ -1,0 +1,64 @@
+{
+  "qid": 9,
+  "itemFingerprint": "c4bf89808049e746",
+  "solveSteps": [
+    "두 점 (-1, 2), (3, k)를 지나는 직선의 기울기는 (k - 2) / (3 - (-1)) = (k - 2) / 4 이다.",
+    "이 직선이 y = 3/2 x - 4 와 평행하므로 기울기가 3/2 와 같다.",
+    "(k - 2) / 4 = 3/2 에서 k - 2 = 6 이므로 k = 8 이다.",
+    "따라서 k의 값은 8 이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "지나는 직선이 일차함수 $y = \\f",
+  "rpmRecordId": "M2-RPM-168",
+  "rpmReason": "두 점을 지나는 직선의 기울기와 일차함수 평행 조건에서 미지수 k = 8 을 구하는 단계이다.",
+  "problemTypeKey": "PT_LINE_RELATION",
+  "templateKey": "NONE",
+  "typeReason": "두 점을 지나는 직선이 일차함수 그래프와 평행할 때 미지수 k 의 값을 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 점의 x 증가량 4 와 k - 2 의 비를 3/2 과 비교하여 k = 8 을 얻는 난이도 2 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "지나는 직선이 일차함수 $y = \\f"
+      }
+    ],
+    "goal": [
+      {
+        "term": "평행",
+        "src": "stem",
+        "quote": "$의 그래프와 평행할 때, 수 $"
+      }
+    ],
+    "method": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "이 평행하므로 기울기가 같다. $\\",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "두 점의 기울기 (k - 2) / 4 가 3/2 과 같으므로 k = 8 임을 구하여 ⑤로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
