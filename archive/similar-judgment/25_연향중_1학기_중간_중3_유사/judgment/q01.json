@@ -1,0 +1,68 @@
+{
+  "qid": "01",
+  "itemFingerprint": "e3bc17a92294ea1e",
+  "solveSteps": [
+    "어떤 수 x가 11의 제곱근이라는 것은 x를 제곱하여 11이 되는 수를 의미한다.",
+    "따라서 정의에 의해 x^2 = 11이 항상 성립한다.",
+    "선지 중 x^2 = 11을 나타낸 것은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "unitEvidence": "$x$가 $11$의 제곱근일 때, 다음 중 항",
+  "rpmRecordId": "M3-RPM-001",
+  "rpmReason": "제곱근의 뜻과 정의에 의해 x^2 = 11임을 확인하는 기본 문제이다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+  "templateKey": "TPL_M3_ROOT_PROPERTY_DEFINITION",
+  "typeReason": "제곱근의 정의로부터 11의 제곱근 x에 대한 등식을 판별하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "11의 제곱근 정의인 x^2 = 11을 바로 찾는 난이도 1 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "제곱근",
+        "src": "stem",
+        "quote": "가 $11$의 제곱근일 때, 다음"
+      }
+    ],
+    "goal": [
+      {
+        "term": "관계",
+        "src": "solution",
+        "quote": "11$ 사이의 관계식을 판별한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정의",
+        "src": "solution",
+        "quote": "제곱근의 정의를 적용하여 $",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "성립조건",
+        "src": "solution",
+        "quote": "$$ 이 항상 성립한다. 2단계"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "x가 11의 제곱근이라는 조건을 확인한다.",
+    "goal": "항상 성립하는 관계식을 구한다.",
+    "method": "제곱근의 정의를 적용한다.",
+    "condition": "항상 성립하는 등식을 선별한다."
+  },
+  "how": "제곱근의 정의에 따라 11의 제곱근 x는 $x^2 = 11$을 만족하므로 정답 ①로 판정하였다."
+}

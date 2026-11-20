@@ -1,0 +1,71 @@
+{
+  "qid": "05",
+  "itemFingerprint": "08d9c8b63537f2c5",
+  "solveSteps": [
+    "ㄱ. 순환소수는 분수로 나타낼 수 있으므로 유리수이다 (참).",
+    "ㄴ. \\sqrt{0.64} = 0.8은 유한소수이므로 유리수이다. 무리수라 하였으므로 거짓이다 (거짓).",
+    "ㄷ. 수직선 위의 모든 점은 실수와 일대일로 대응한다 (참).",
+    "ㄹ. 실수의 조밀성에 의해 서로 다른 두 무리수 사이에는 무수히 많은 유리수가 존재한다 (참).",
+    "ㅁ. 무리수는 분수 a/b (a, b는 정수, b != 0) 꼴로 나타낼 수 없다. 나타낼 수 있다고 하였으므로 거짓이다 (거짓).",
+    "따라서 옳은 것은 ㄱ, ㄷ, ㄹ이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "unitEvidence": "다음 <보기>에서 옳은 것을 모두 고른 것은?",
+  "rpmRecordId": "M3-RPM-003",
+  "rpmReason": "실수와 무리수의 정의 및 수직선 대응과 0.64 근호식의 진위를 판별하는 문제이다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBERS",
+  "templateKey": "NONE",
+  "typeReason": "0.64 근호값과 실수의 체계 및 조밀성에 관한 각 명제의 참·거짓을 판별하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "유리수와 무리수의 정의, 수직선의 완비성, 0.64 소수 계산을 복합 검증하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "<보기> ㄱ. 순환소수는 유리수이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "의 모든 점은 실수에 일대일로 대"
+      }
+    ],
+    "method": [
+      {
+        "term": "무리수",
+        "src": "solution",
+        "quote": "유리수이다. 무리수라 한 것은 거",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "수직선",
+        "src": "stem",
+        "quote": "수이다. ㄷ. 수직선 위의 모든 점"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "보기의 여러 실수 관련 명제를 확인한다.",
+    "goal": "옳은 보기를 모두 고른다.",
+    "method": "유리수·무리수의 정의와 0.8 값을 점검한다.",
+    "condition": "수직선의 완비성과 조밀성을 검토한다."
+  },
+  "how": "0.64의 근호값 0.8은 유리수이므로 ㄴ이 거짓이고 ㄱ, ㄷ, ㄹ이 참이므로 ⑤로 판정하였다."
+}

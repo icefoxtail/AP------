@@ -1,0 +1,70 @@
+{
+  "qid": "19",
+  "itemFingerprint": "93f7dbf8f4a8f5fa",
+  "solveSteps": [
+    "x = 20005라 두면 분모는 20004 = x - 1이다.",
+    "분자는 x^2 + 4x - 5이다.",
+    "분자의 이차식을 인수분해하면 (x + 5)(x - 1)이다.",
+    "따라서 주어진 식은 ((x + 5)(x - 1)) / (x - 1) = x + 5이다.",
+    "x = 20005를 대입하면 20005 + 5 = 20010이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "unitEvidence": "$\\dfrac{20005^2 + 4 \\time",
+  "rpmRecordId": "M3-RPM-026",
+  "rpmReason": "20005를 치환하여 이차식을 인수분해하고 20004로 약분하여 20010을 계산하는 문제이다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_FACTORIZATION_NUMERIC",
+  "typeReason": "복잡한 수 20005를 문자로 치환해 인수분해와 약분으로 20010을 구하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "20005 = x 치환 후 약분하여 x+5 = 20010을 손쉽게 도출하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "분모",
+        "src": "solution",
+        "quote": "05$라 두면 분모는 다음과 같다"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "계: 분수식에 대입하여 약분한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "하여 이차식을 인수분해한 후 약분하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "이차식",
+        "src": "solution",
+        "quote": "자로 치환하여 이차식을 인수분해한"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "큰 수로 이루어진 복잡한 분수식을 확인한다.",
+    "goal": "주어진 식의 값을 구한다.",
+    "method": "20005를 치환하고 분자를 인수분해한다.",
+    "condition": "공통인수 x-1을 약분한다."
+  },
+  "how": "$x=20005$ 치환으로 $((x+5)(x-1))/(x-1) = x+5 = 20010$인 ④로 판정하였다."
+}
