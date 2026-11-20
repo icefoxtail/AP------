@@ -160,6 +160,27 @@ test("scope follows the strict lane and the alias file: another spelling or the 
   assert.equal(sc(strict, { curriculum: "2022", standardCourse: "공통수학1" }, "PT_HIGH").skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
 });
 
+test("a row that carries the other curriculum's course name falls back to the successor course instead of being refused", () => {
+  const reg = makeRegistry({ problemTypes: [{ problemTypeKey: "PT_X", status: "ACTIVE", ownerPack: "P2" }], templates: [],
+    bindings: [{ problemTypeKey: "PT_X", curriculum: "2022", standardCourse: "공통수학1", ownerPack: "P2", status: "ACTIVE" },
+      { problemTypeKey: "PT_X", curriculum: "2015", standardCourse: "수학(상)", ownerPack: "P2", status: "ACTIVE" }],
+    packs: new Map([["P2", { curricula: ["2015", "2022"], standardCourses: ["공통수학1", "수학(상)"] }]]) });
+  // 2015 row named with the 2022 course: the same-course binding is 2022 only, the successor 수학(상) exists in 2015
+  const r = chooseScope(reg, aliases, { sourceArchiveFile: EXAM, curriculum: "2015", standardCourse: "공통수학1" }, "PT_X");
+  assert.deepEqual(r.scope, { curriculum: "2015", standardCourse: "수학(상)" });
+  assert.equal(r.relation, "successor");
+  // the same-course binding still wins when it exists in the row's curriculum
+  const own = chooseScope(reg, aliases, { sourceArchiveFile: EXAM, curriculum: "2022", standardCourse: "공통수학1" }, "PT_X");
+  assert.deepEqual(own.scope, { curriculum: "2022", standardCourse: "공통수학1" });
+});
+
+test("--exclude-uids leaves a question that another pending request already carries out of the new requests", () => {
+  const { requests, skipped } = plan({ excludeUids: new Set(["uid1"]) });
+  assert.equal(requests[0].items.some(i => i.questionUid === "uid1"), false);
+  assert.ok(skipped.some(s => s.uid === "uid1" && s.reason === "ALREADY_IN_OTHER_REQUEST"));
+  assert.equal(parseCli(["--results", "r", "--exclude-uids", "f.txt"]).excludeUidsFile, "f.txt");
+});
+
 test("a pack that does not declare the binding course is skipped by default and widened append-only on request", () => {
   const narrow = { ...makeRegistry({ problemTypes: [{ problemTypeKey: "PT_A", status: "ACTIVE", ownerPack: "P1" }], templates: [{ templateKey: "TPL_A", status: "ACTIVE", parentProblemTypeKey: "PT_A" }],
     bindings: [{ problemTypeKey: "PT_A", curriculum: "2015", standardCourse: "중1 수학", ownerPack: "P1", status: "ACTIVE" }],
@@ -332,4 +353,48 @@ test("reach: a key of a grade at or below the exam's grade is chosen; a key abov
   assert.equal(sc({ sourceArchiveFile: M3_20, standardCourse: "중3" }, "PT_COORD").skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
   // without alias data nothing is reached
   assert.equal(sc({ sourceArchiveFile: M3_20, standardCourse: "중3" }, "PT_LOW", makeCourseAliases(null)).skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
+});
+
+test("a type written in the exam file: a dots judgment is registered as judged; another judge's judgment yields to a valid in-scope embedded type, and stands when the embedded type is dead or out of scope", () => {
+  const b = (problemTypeKey, curriculum, standardCourse, ownerPack) => ({ problemTypeKey, curriculum, standardCourse, ownerPack, status: "ACTIVE" });
+  const reg = makeRegistry({
+    problemTypes: [{ problemTypeKey: "PT_A", status: "ACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_B", status: "ACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_OFF", status: "INACTIVE", ownerPack: "P1" },
+      { problemTypeKey: "PT_HIGH", status: "ACTIVE", ownerPack: "P2" }],
+    templates: [{ templateKey: "TPL_A", status: "ACTIVE", parentProblemTypeKey: "PT_A" }, { templateKey: "TPL_B", status: "ACTIVE", parentProblemTypeKey: "PT_B" }],
+    bindings: [b("PT_A", "2015", "중1 수학", "P1"), b("PT_B", "2015", "중1 수학", "P1"), b("PT_OFF", "2015", "중1 수학", "P1"), b("PT_HIGH", "2015", "수학(상)", "P2")],
+    packs: new Map([["P1", { curricula: ["2015"], standardCourses: ["중1 수학"] }], ["P2", { curricula: ["2015"], standardCourses: ["수학(상)"] }]])
+  });
+  const embedded = { 1: ["PT_B", "TPL_B"], 2: ["PT_B", "TPL_B"], 3: ["PT_OFF", ""], 4: ["PT_HIGH", ""], 5: ["PT_A", "TPL_A"] };
+  const recs = [1, 2, 3, 4, 5, 6, 7].map(n => row(n));
+  const readBank = () => ({ bank: questions.map((q, i) => ({ ...q, problemTypeKey: embedded[i + 1]?.[0] || "", templateKey: embedded[i + 1]?.[1] || "" })), bytes });
+  const ctx = makeCtx({ records: recs, ctx: { registry: reg, readBank } });
+  const sonnet = { judge: "claude-sonnet-5.5" };
+  const { requests, stats } = planRequests({ ctx, resultRows: [line(1), line(2, sonnet), line(3, sonnet), line(4, sonnet), line(5, sonnet)], approvedBy: "테스트 결정" });
+  const items = requests.flatMap(r => r.items), after = Object.fromEntries(items.map(i => [i.questionUid, i.after]));
+  assert.deepEqual(after.uid1, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, "a dots judgment is registered as judged, the embedded value only differs");
+  assert.deepEqual(after.uid2, { problemTypeKey: "PT_B", templateKey: "TPL_B" }, "a non-dots judgment yields to a valid in-scope embedded type");
+  assert.match(items.find(i => i.questionUid === "uid2").rationale, /새 판정\(claude-sonnet-5\.5\): PT_A\/TPL_A/, "the new judgment stays on record in the rationale");
+  assert.deepEqual(after.uid3, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, "a dead embedded key does not win");
+  assert.deepEqual(after.uid4, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, "an embedded key outside the exam's course does not win");
+  assert.deepEqual(after.uid5, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, "an embedded type equal to the judgment changes nothing");
+  assert.deepEqual(stats.embeddedDiffers, { registeredDots: 1, registeredEmbedded: 1, registeredJudgment: { EMBEDDED_PT_NOT_ACTIVE: 1, EMBEDDED_OUT_OF_COURSE_SCOPE: 1 } });
+});
+
+test("on a meta-foundation row an exam-embedded type that differs from the value to register keeps the question out of the request (the catalog counts it as a metadata conflict and the consumer check refuses it)", () => {
+  const reg = makeRegistry({
+    problemTypes: [{ problemTypeKey: "PT_A", status: "ACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_B", status: "ACTIVE", ownerPack: "P1" }],
+    templates: [{ templateKey: "TPL_A", status: "ACTIVE", parentProblemTypeKey: "PT_A" }, { templateKey: "TPL_B", status: "ACTIVE", parentProblemTypeKey: "PT_B" }],
+    bindings: ["PT_A", "PT_B"].map(problemTypeKey => ({ problemTypeKey, curriculum: "2015", standardCourse: "중1 수학", ownerPack: "P1", status: "ACTIVE" })),
+    packs: new Map([["P1", { curricula: ["2015"], standardCourses: ["중1 수학"] }]])
+  });
+  const embedded = { 1: ["PT_B", "TPL_B"], 2: ["PT_B", "TPL_B"], 3: ["PT_A", "TPL_A"], 4: ["PT_B", ""] };
+  const recs = [1, 2, 3, 4, 5, 6, 7].map(n => row(n, { metadataRevision: "meta-foundation:X" }));
+  const readBank = () => ({ bank: questions.map((q, i) => ({ ...q, problemTypeKey: embedded[i + 1]?.[0] || "", templateKey: embedded[i + 1]?.[1] || "" })), bytes });
+  const ctx = makeCtx({ records: recs, ctx: { registry: reg, readBank } });
+  const sonnet = { judge: "claude-sonnet-5.5" };
+  const { requests, skipped } = planRequests({ ctx, resultRows: [line(1), line(2, sonnet), line(3), line(4, { tpl: null })], approvedBy: "x" });
+  const after = Object.fromEntries(requests.flatMap(r => r.items).map(i => [i.questionUid, i.after]));
+  assert.deepEqual(Object.keys(after).sort(), ["uid2", "uid3"], "uid2 (a valid embedded type wins over a non-dots judgment) and uid3 (equal) are registered");
+  assert.deepEqual(after.uid2, { problemTypeKey: "PT_B", templateKey: "TPL_B" });
+  for (const uid of ["uid1", "uid4"]) assert.equal(skipped.find(s => s.uid === uid).reason, "SOURCE_EMBEDDED_TYPE_DIFFERS_FROM_JUDGMENT");
 });

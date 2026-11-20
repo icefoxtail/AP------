@@ -40,7 +40,8 @@
     scopeIsSelected, scopeOpenState, scopeOptions, session, setOriginalStep, showDialog, showSavedPaper,
     state, status, stepComposeCount, teacherErrorMessage, unifiedIndex, unique, updateOriginalPreview,
     updatePreview, updateRecentResults, withDefaultComposeSubject, withoutShadowedChildren,
-    workspaceEligibility, setContentKeepingPreview, rememberComposeConditions, restoreClearedResult, discardClearedResult;
+    workspaceEligibility, setContentKeepingPreview, rememberComposeConditions, restoreClearedResult, discardClearedResult,
+    deriveAction, openDeriveFromUrl;
   WS.links.push(() => {
     ({
       $, ASSESSMENT_RECIPE_KEYS, ASSESSMENT_RECIPE_TITLES, HOME_PRODUCT_REGISTRY, META_FACET_FILTERS, Quick,
@@ -63,7 +64,8 @@
       scopeIsSelected, scopeOpenState, scopeOptions, session, setOriginalStep, showDialog, showSavedPaper,
       state, status, stepComposeCount, teacherErrorMessage, unifiedIndex, unique, updateOriginalPreview,
       updatePreview, updateRecentResults, withDefaultComposeSubject, withoutShadowedChildren,
-      workspaceEligibility, setContentKeepingPreview, rememberComposeConditions, restoreClearedResult, discardClearedResult
+      workspaceEligibility, setContentKeepingPreview, rememberComposeConditions, restoreClearedResult, discardClearedResult,
+      deriveAction, openDeriveFromUrl
     } = WS.api);
   });
   // function declarations are hoisted: export them now so the other parts (and this file's own load-time code) see them
@@ -186,9 +188,9 @@
   function teacherSessionOk() {
     const rule = window.Archive2Session;
     if (!rule?.state) return true;
-    const memory = window.__APMATH_AUTH_MEMORY || {};
-    if (memory.login_id && memory.raw_password) return true;
-    return rule.state(session()).loggedIn;
+    // 토큰이 없는 세션은 로그인한 것으로 보지 않는다(요청도 보내지 않고 로그인 안내를 낸다).
+    const current = session();
+    return Boolean(current?.session_token) && rule.state(current).loggedIn;
   }
   const isAuthError = (error) => error?.status === 401 || error?.status === 403;
   function loginNoticeMarkup(kind) {
@@ -464,6 +466,10 @@
         status("저장 결과를 확인할 때까지 작업 중인 문제지의 편집을 잠급니다. 출력과 작업 백업은 사용할 수 있습니다.", true);
         return;
       }
+      if (a === "assignment-derive" || /^derive-/.test(a || "")) {
+        await deriveAction(a, b);
+        return;
+      }
       if (a === "assignment-status") {
         await openRecentAssignmentStatus(b.dataset.assignment);
         return;
@@ -637,6 +643,11 @@
         await openQuickAssessment("all");
       } else if (a === "quick-open-selected") {
         await openQuickAssessment([...quickState.bundle]);
+      } else if (a === "quick-open-b") {
+        // The second window of an A·B pair cannot open with the same click everywhere; this click opens it.
+        const formB = quickState.formB;
+        if (formB?.url && window.open(formB.url, "_blank")) { quickState.formB = null; status(`${formB.title}를 열었습니다.`); render(); }
+        else status("새 창을 열 수 없습니다. 팝업 설정을 확인하세요.", true);
       } else if (a === "quick-grade") {
         quickState.grade = b.dataset.grade || "";
         quickState.subject = "";
@@ -644,6 +655,15 @@
         quickState.pick = "";
         quickState.shortOpen = false;
         replaceUrlState();
+        render();
+      } else if (a === "quick-semester") {
+        quickState.semester = ["1", "2"].includes(b.dataset.semester) ? b.dataset.semester : "";
+        // 고1: the semester button is the subject's semester (1학기 = 공통수학1, 2학기 = 공통수학2); the subject follows it.
+        // The address follows (a reload keeps what the teacher picked); the subject button's click already updates it the same way.
+        if (quickState.grade === "고1" && quickState.semester) { quickState.subject = "COMMON_MATH_" + quickState.semester; replaceUrlState(); }
+        quickState.bundle.clear();
+        quickState.pick = "";
+        quickState.shortOpen = false;
         render();
       } else if (a === "quick-subject") {
         quickState.subject = b.dataset.subject || "";
@@ -1030,6 +1050,12 @@
         render();
         return;
       }
+      if (isQuickAssessmentView() && el.dataset.quickTwoForms !== undefined) {
+        quickState.twoForms = Boolean(el.checked);
+        quickState.formB = null;
+        render();
+        return;
+      }
       if (isQuickAssessmentView() && el.dataset.quickBundle) {
         if (el.checked) quickState.bundle.add(el.dataset.quickBundle);
         else quickState.bundle.delete(el.dataset.quickBundle);
@@ -1193,9 +1219,7 @@
       el.type === "checkbox" ? el.checked : el.value;
     if (el.dataset.header === "title") {
       state.title = el.value;
-      const heading = document.querySelector(".intro h1");
-      if (heading?.firstChild)
-        heading.firstChild.textContent = state.title + " ";
+      syncComposeHeading();
     }
     state.prepared = [];
     scheduleSave();
@@ -1208,6 +1232,11 @@
     if (target?.matches?.("[data-cz-output]")) state.outputSettingsOpen = Boolean(target.open);
     else if (target?.matches?.("[data-scope-group]")) state.scopeGroupOpen[target.dataset.scopeGroup] = Boolean(target.open);
   }, true);
+  // 제목을 바꾸면 화면 맨 위 제목도 바로 새 이름을 보여 준다(출력 설정의 제목 칸과 머리글 칸 모두).
+  function syncComposeHeading() {
+    const heading = document.querySelector(".intro h1");
+    if (heading?.firstChild) heading.firstChild.textContent = state.title + " ";
+  }
   function changeOutput(el) {
     if (state.busy) return;
     if (
@@ -1231,6 +1260,7 @@
         includeQr: s.includeQr,
       });
       state.title = s.header.title;
+      syncComposeHeading();
       state.prepared = [];
       scheduleSave();
       refreshComposeSaveContinuity();
@@ -1397,7 +1427,7 @@
       state.selected = [];
       state.rows = [];
     }
-    state.view = ["home", "find", "compose", "saved", "recent", "health", "five-minute", "subunit-test", "unit-test", "monthly-test"].includes(p.get("view"))
+    state.view = ["home", "find", "compose", "saved", "recent", "health", "five-minute", "subunit-test", "unit-test", "monthly-test", "diagnostic"].includes(p.get("view"))
       ? p.get("view")
       : "home";
     if (isQuickAssessmentView()) {
@@ -1568,7 +1598,7 @@
       `${esc([record.year, record.school].filter(Boolean).join(" "))} ${esc(record.sourceQuestionNo ?? record.sourceOrdinal)}번`).join(" · ");
     const rest = route.records.length > 8 ? ` 외 ${route.records.length - 8}문항` : "";
     const scope = route.scopes[0];
-    return `<div class="resultbar"><h2>단원</h2></div><div class="callout" role="status" data-uid-route="accepted">검색에서 선택한 ${route.records.length}문항으로 범위가 고정되었습니다. ${names}${rest}<p>${clear}</p></div>
+    return `<div class="resultbar"><h2>단원</h2></div><div class="callout" role="status" data-uid-route="accepted">${state.derive ? "시험지를 다시 만들어 고른" : "검색에서 선택한"} ${route.records.length}문항으로 범위가 고정되었습니다. ${names}${rest}<p>${clear}</p></div>
       <div class="scope-list"><div class="scope-group"><div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(scope.key)}" ${scopeIsSelected(scope) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(scope.label)}</label><small>${scope.count}문항</small></div></div></div>`;
   }
   function applySourceRoute() {
@@ -1723,6 +1753,7 @@
       Boot?.finish?.(false);
       replayDeferredClick();
       scheduleIndexWarmUp();
+      openDeriveFromUrl();
       const previous = drafts();
       restoreCurrentHistoryScroll();
       if (state.view === "compose" && state.editSavedPaperId) {

@@ -174,13 +174,13 @@ window.questionBank = [
     "id": 6,
     "content": "다음 직각삼각형 $ABC$에서 $\\angle C = 90^\\circ, \\angle B = 30^\\circ, \\overline{BC} = 6\\sqrt{3}$이다. $\\angle A$의 이등분선이 변 $BC$와 만나는 점을 $D$라 할 때, 선분 $BD$의 길이를 구하면?",
     "choices": [
-      "① $4\\sqrt{3}$",
-      "② $3\\sqrt{3}$",
-      "③ $2\\sqrt{3}$",
-      "④ $5\\sqrt{3}$",
-      "⑤ $6\\sqrt{3}$"
+      "① $\\sqrt{3}$",
+      "② $2\\sqrt{3}$",
+      "③ $3\\sqrt{3}$",
+      "④ $4\\sqrt{3}$",
+      "⑤ $5\\sqrt{3}$"
     ],
-    "answer": "①",
+    "answer": "④",
     "solution": "$\\angle B = 30^\\circ, \\angle C = 90^\\circ$이므로 $\\angle A = 60^\\circ$이다.\n특수각의 삼각비에 의해\n$AC = BC \\times \\tan 30^\\circ = 6\\sqrt{3} \\times \\dfrac{1}{\\sqrt{3}} = 6$\n$AB = \\dfrac{AC}{\\sin 30^\\circ} = \\dfrac{6}{\\frac{1}{2}} = 12$\n\n선분 $AD$가 $\\angle A$의 이등분선이므로 각의 이등분선 정리에 의해\n$BD : DC = AB : AC = 12 : 6 = 2 : 1$\n\n따라서\n$BD = \\dfrac{2}{3} \\times BC = \\dfrac{2}{3} \\times 6\\sqrt{3} = 4\\sqrt{3}$이다.",
     "score": 4.0,
     "image": "assets/images/25_금당중_2학기_중간_중3_유사/q06-audit-rework.svg",
@@ -211,8 +211,8 @@ window.questionBank = [
       "① $2\\sqrt{3}\\,\\mathrm{cm}$",
       "② $4\\,\\mathrm{cm}$",
       "③ $4\\sqrt{2}\\,\\mathrm{cm}$",
-      "④ $4\\sqrt{3}\\,\\mathrm{cm}$",
-      "⑤ $6\\,\\mathrm{cm}$"
+      "④ $6\\,\\mathrm{cm}$",
+      "⑤ $4\\sqrt{3}\\,\\mathrm{cm}$"
     ],
     "answer": "②",
     "solution": "직각이등변삼각형 $ABC$에서\n$BC = AC \\times \\sin 45^\\circ = 8\\sqrt{2} \\times \\dfrac{\\sqrt{2}}{2} = 8\\,\\mathrm{cm}$\n\n직각삼각형 $BDC$에서 $\\angle BDC = 90^\\circ, \\angle DBC = 60^\\circ$이므로\n$BD = BC \\times \\cos 60^\\circ = 8 \\times \\dfrac{1}{2} = 4\\,\\mathrm{cm}$이다.",
@@ -241,10 +241,10 @@ window.questionBank = [
     "id": 8,
     "content": "다음 그림의 $\\triangle ABC$에서 $\\overline{AB} = 6\\,\\mathrm{cm}, \\angle B = 60^\\circ, \\overline{BC} = 9\\,\\mathrm{cm}$일 때, 선분 $AC$의 길이를 구하면?",
     "choices": [
-      "① $2\\sqrt{15}\\,\\mathrm{cm}$",
-      "② $7\\,\\mathrm{cm}$",
-      "③ $8\\,\\mathrm{cm}$",
-      "④ $2\\sqrt{17}\\,\\mathrm{cm}$",
+      "① $5\\,\\mathrm{cm}$",
+      "② $6\\,\\mathrm{cm}$",
+      "③ $7\\,\\mathrm{cm}$",
+      "④ $2\\sqrt{15}\\,\\mathrm{cm}$",
       "⑤ $3\\sqrt{7}\\,\\mathrm{cm}$"
     ],
     "answer": "⑤",
@@ -311,7 +311,7 @@ window.questionBank = [
     "content": "다음 그림의 $\\triangle ABC$에서 $\\overline{AB} = 8\\,\\mathrm{cm}, \\overline{BC} = 10\\,\\mathrm{cm}, \\angle B = 120^\\circ$일 때, 삼각형 $ABC$의 넓이를 구하면?",
     "choices": [
       "① $20\\sqrt{3}\\,\\mathrm{cm}^2$",
-      "② $20\\sqrt{2}\\,\\mathrm{cm}^2$",
+      "② $25\\sqrt{3}\\,\\mathrm{cm}^2$",
       "③ $30\\sqrt{3}\\,\\mathrm{cm}^2$",
       "④ $40\\sqrt{3}\\,\\mathrm{cm}^2$",
       "⑤ $50\\sqrt{3}\\,\\mathrm{cm}^2$"
@@ -377,8 +377,8 @@ window.questionBank = [
     "content": "다음 그림의 사각형 $ABCD$에서 두 대각선 $AC, BD$의 길이가 각각 $12\\,\\mathrm{cm}, 10\\,\\mathrm{cm}$이고 두 대각선이 이루는 예각의 크기가 $60^\\circ$일 때, 사각형 $ABCD$의 넓이를 구하면?",
     "choices": [
       "① $20\\sqrt{3}\\,\\mathrm{cm}^2$",
-      "② $25\\sqrt{3}\\,\\mathrm{cm}^2$",
-      "③ $30\\sqrt{2}\\,\\mathrm{cm}^2$",
+      "② $30\\sqrt{2}\\,\\mathrm{cm}^2$",
+      "③ $25\\sqrt{3}\\,\\mathrm{cm}^2$",
       "④ $30\\sqrt{3}\\,\\mathrm{cm}^2$",
       "⑤ $60\\sqrt{3}\\,\\mathrm{cm}^2$"
     ],
@@ -616,8 +616,8 @@ window.questionBank = [
     "choices": [
       "① $9\\,\\mathrm{cm}$",
       "② $10\\,\\mathrm{cm}$",
-      "③ $11\\,\\mathrm{cm}$",
-      "④ $\\sqrt{119}\\,\\mathrm{cm}$",
+      "③ $\\sqrt{119}\\,\\mathrm{cm}$",
+      "④ $11\\,\\mathrm{cm}$",
       "⑤ $12\\,\\mathrm{cm}$"
     ],
     "answer": "⑤",

@@ -36,7 +36,7 @@ function exportedNames(text) {
 test('workspace.html loads the workspace scripts in order: core, find, compose, preview, save, recent, then main last', () => {
   assert.deepEqual(files, [
     'archive2-workspace-core.js', 'archive2-workspace-find.js', 'archive2-workspace-compose.js',
-    'archive2-workspace-preview.js', 'archive2-workspace-save.js', 'archive2-workspace-recent.js', 'archive2-workspace.js',
+    'archive2-workspace-preview.js', 'archive2-workspace-save.js', 'archive2-workspace-recent.js', 'archive2-workspace-derive.js', 'archive2-workspace.js',
   ]);
   const position = file => html.indexOf('src="' + file);
   assert.ok(position('archive2-library.js') > 0 && position('archive2-library.js') < position(files[0]), 'after the scripts they read (library is the last of them)');

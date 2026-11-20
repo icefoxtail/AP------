@@ -22,8 +22,8 @@ test("standalone readers expose only the compact mobile back/mode/more controls"
   assert.match(css, /grid-template-columns: 98px minmax\(0, 1fr\) 48px/);
   assert.match(css, /min-height: 44px/);
   assert.match(css, /max-width: 640px/);
-  assert.match(engine, /archive2-reader-controls\.js\?v=20261111-student-navigation-1/);
-  assert.match(mixed, /archive2-reader-controls\.js\?v=20261111-student-navigation-1/);
+  assert.match(engine, /archive2-reader-controls\.js\?v=20261120-derive-ui-1/);
+  assert.match(mixed, /archive2-reader-controls\.js\?v=20261120-derive-ui-1/);
   assert.match(controls, /studentReview/);
   assert.match(controls, /studentReturnTo/);
   assert.match(controls, /target\.origin === location\.origin/);
