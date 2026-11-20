@@ -1,0 +1,70 @@
+{
+  "qid": 11,
+  "itemFingerprint": "623345f7a0fb0faa",
+  "solveSteps": [
+    "B_4∩B_6 은 4와 6의 공배수 집합이고 최소공배수가 12 이므로 B_12.",
+    "B_72⊆B_n⊆B_12. B_n⊆B_12 에서 n 은 12의 배수, B_72⊆B_n 에서 n 은 72의 약수.",
+    "72의 약수 중 12의 배수는 12, 24, 36, 72 로 4개, 보기 ①."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-05",
+  "subUnitKey": "H22-C2-05-CORE",
+  "unitEvidence": "$4$와 $6$의 최소공배수는 $12$이므로",
+  "rpmRecordId": "H1-RPM-235",
+  "rpmReason": "B_72⊆B_n⊆B_12 로 배수 집합 사이의 포함 관계를 n 의 약수·배수 조건으로 바꾸는 두 집합의 포함 단계다.",
+  "problemTypeKey": "PT_SET_INCLUSION",
+  "templateKey": "TPL_INCLUSION_DIVISOR_MULTIPLE",
+  "typeReason": "B_n⊆B_12 에서 n 은 12의 배수, B_72⊆B_n 에서 n 은 72의 약수로 바꿔 n=12,24,36,72 를 얻는 단계가 약수·배수의 집합 사이의 포함 관계 템플릿과 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "B_4∩B_6=B_12 로 정리하고, 포함 관계 B_72⊆B_n⊆B_12 를 12의 배수이면서 72의 약수인 n 으로 해석해 4개를 세는 세 단계 풀이다.",
+  "difficultyBoundaryFlag": "B23",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "배수",
+        "src": "stem",
+        "quote": "양의 배수를 원소로 하는 집합"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "모든 자연수 $n$의 개수는"
+      }
+    ],
+    "method": [
+      {
+        "term": "열거",
+        "src": "solution",
+        "quote": "$12,24,36,72$이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "72의 약수 가운데 12의 배수를 나열해 4개를 센다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "포함관계",
+        "src": "solution",
+        "quote": "주어진 포함 관계는"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "교집합을 B_12 로 줄이고 n=12,24,36,72 의 4개로 ① 을 확인했다. 해설과 같다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

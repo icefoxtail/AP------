@@ -1,0 +1,74 @@
+{
+  "qid": 4,
+  "itemFingerprint": "6f140e13dcadaf64",
+  "solveSteps": [
+    "P⊂Q^C 이므로 P 의 원소는 모두 Q 에 속하지 않는다. 즉 p→~q 가 참이다.",
+    "p→~q 의 대우는 ~(~q)→~p, 즉 q→~p 이고 대우는 참 거짓이 같으므로 q→~p 도 참이다.",
+    "보기에서 q→~p 는 ③ 이므로 정답 ③."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "진리집합 사이의 포함 관계 $P\\subset Q^C$는",
+  "rpmRecordId": "H1-RPM-243",
+  "rpmReason": "P⊂Q^C 라는 진리집합 사이의 포함 관계를 명제 p→~q 의 참으로 옮기는 진리집합 단계다.",
+  "problemTypeKey": "PT_TRUTH_SET_RELATION",
+  "templateKey": "TPL_IMPLICATION_TRUTHSET_RELATION",
+  "typeReason": "진리집합의 포함 P⊂Q^C 를 명제 p→~q 가 참이라는 말로 바꾸고 그 대우 q→~p 로 ③ 을 고르는 단계가 명제와 진리집합의 포함관계 템플릿과 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "P⊂Q^C 를 p→~q 로 해석하는 단계와 대우 q→~p 를 쓰는 단계의 두 단계이며 각각 정의 적용이라 1단계와의 경계다.",
+  "difficultyBoundaryFlag": "B12",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "전체집합",
+        "src": "stem",
+        "quote": "전체집합 $U$에서"
+      },
+      {
+        "term": "진리집합",
+        "src": "stem",
+        "quote": "두 조건 $p$, $q$의 진리집합을 각각 $P$, $Q$라 하자"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "반드시 참인 것은"
+      }
+    ],
+    "method": [
+      {
+        "term": "대우",
+        "src": "solution",
+        "quote": "의 대우를 구하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "포함관계",
+        "src": "solution",
+        "quote": "진리집합 사이의 포함 관계"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "진리집합 포함 P⊂Q^C 를 p→~q 로 바꾸고 대우 q→~p 를 확인해 ③ 을 얻었다. 해설과 같다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

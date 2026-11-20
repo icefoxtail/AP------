@@ -1,0 +1,69 @@
+{
+  "qid": 2,
+  "itemFingerprint": "86cb5f425755f68a",
+  "solveSteps": [
+    "A 는 15 미만의 3의 양의 배수이므로 A={3,6,9,12}.",
+    "부분집합이 되려면 모든 원소가 A 에 속해야 하고 ∅ 은 항상 부분집합이다.",
+    "② {3,6,8} 의 8 은 A 에 없으므로 부분집합이 아니고 ①, ③, ④, ⑤ 는 모두 부분집합이다. 정답 ②."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-05",
+  "subUnitKey": "H22-C2-05-CORE",
+  "unitEvidence": "부분집합이 되려면 그 집합의 모든 원소가 $A$에 속해야 한다.",
+  "rpmRecordId": "H1-RPM-233",
+  "rpmReason": "A={3,6,9,12} 에 대해 보기 {3,6,8} 의 8 이 A 에 속하는지 확인하는 단계라 부분집합 판정 행이다.",
+  "problemTypeKey": "PT_SUBSET_JUDGMENT",
+  "templateKey": "TPL_SUBSET_DIRECT",
+  "typeReason": "보기마다 원소가 A={3,6,9,12} 에 속하는지 보고 8 이 속하지 않는 ② 를 찾아 부분집합이 아닌 것을 판정하는 단계가 부분집합인지 판정하기와 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "15 미만의 3의 배수 3,6,9,12 를 나열하고 보기 원소가 속하는지 한 번씩 확인하면 되는 1단계다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "집합",
+        "src": "stem",
+        "quote": "집합 $A="
+      },
+      {
+        "term": "배수",
+        "src": "stem",
+        "quote": "의 양의 배수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "부분집합이 아닌 것은"
+      }
+    ],
+    "method": [
+      {
+        "term": "원소나열법",
+        "src": "solution",
+        "quote": "원소를 모두 구하면",
+        "evidenceType": "IMPLIED",
+        "justification": "15 미만의 3의 배수를 {3,6,9,12} 로 나열해 보기 원소와 비교한다"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "A={3,6,9,12} 를 구해 보기 ①~⑤ 를 대조했고 8 이 없는 ② 가 답이다. 해설과 같다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

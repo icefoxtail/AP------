@@ -1,0 +1,76 @@
+{
+  "qid": 17,
+  "itemFingerprint": "d42ad3338cd4ae54",
+  "solveSteps": [
+    "A={2,3,5,7}. A∩B 의 원소의 합이 10 인 경우는 {3,7} 또는 {2,3,5}.",
+    "{3,7} 이면 k 는 21의 배수이고 2, 5 의 배수가 아님. {2,3,5} 이면 k 는 30의 배수이고 7 의 배수가 아님.",
+    "두 경우 모두 k≥21 이므로 7∈C. A 의 원소 중 C 에 없는 것은 2,3,5 로 3개이므로 n(A∪C)=n(C)+3. 11≤n(C)+3≤13 에서 8≤n(C)≤10, 즉 56≤k≤76.",
+    "이 범위에서 첫째 경우 k=63, 둘째 경우 k=60. 합은 63+60=123, 보기 ①."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-05",
+  "subUnitKey": "H22-C2-05-CORE",
+  "unitEvidence": "$n(A\\cup C)=n(C)+3$",
+  "rpmRecordId": "H1-RPM-238",
+  "rpmReason": "7∈A∩C 이므로 n(A∪C)=n(A)+n(C)-1=n(C)+3 로 합집합의 원소 개수를 구해 56≤k≤76 을 얻는 단계라 교집합과 합집합의 원소 개수 행이다.",
+  "problemTypeKey": "PT_SET_CARDINALITY",
+  "templateKey": "TPL_TWO_SET_INCLUSION_EXCLUSION",
+  "typeReason": "A∩C={7} 로 n(A∪C)=4+n(C)-1=n(C)+3 을 얻고 11≤n(C)+3≤13 에서 8≤n(C)≤10 으로 k 의 범위를 정하는 단계가 두 집합의 원소의 개수 템플릿과 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "합이 10 인 A∩B 두 경우 {3,7}, {2,3,5} 를 찾고, n(A∪C)=n(C)+3 으로 56≤k≤76 을 얻은 뒤 배수 조건 63, 60 을 가려 합 123 을 구하는 여러 단계라 4단계이며 3단계와의 경계다.",
+  "difficultyBoundaryFlag": "B34",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "소수",
+        "src": "stem",
+        "quote": "한 자리의 소수"
+      },
+      {
+        "term": "배수",
+        "src": "stem",
+        "quote": "의 양의 배수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "모든 자연수 $k$의 값의 합은"
+      }
+    ],
+    "method": [
+      {
+        "term": "경우분류",
+        "src": "solution",
+        "quote": "두 경우 모두 $k\\ge 21$이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "합이 10 인 A∩B 가 {3,7} 인 경우와 {2,3,5} 인 경우로 나누어 k 를 구한다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "성립조건",
+        "src": "stem",
+        "quote": "이 성립하도록 하는"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "합이 10 인 A∩B 두 경우와 n(C) 범위 56≤k≤76 으로 k=63, 60 을 구해 123 으로 ① 을 확인했다. 해설과 같다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

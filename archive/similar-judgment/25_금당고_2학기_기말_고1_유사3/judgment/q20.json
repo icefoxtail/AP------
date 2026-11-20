@@ -1,0 +1,82 @@
+{
+  "qid": 20,
+  "itemFingerprint": "65a27264cf5d01a7",
+  "solveSteps": [
+    "x<1 에서 f(x)=2x+1 은 증가하고 치역이 (-∞,3).",
+    "역함수가 존재하려면 x≥1 에서도 증가하고 치역이 [3,∞) 이어야 하므로 f(1)=a+b+6=3, b=-a-3, a>0, 대칭축 -b/(2a)≤1.",
+    "2a+b≥0 에 b=-a-3 을 대입하면 a≥3. a 의 최솟값 3, b=-6.",
+    "g(x)=3x^2-6x+6 이므로 g(2)=12-12+6=6, 보기 ①."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+  "unitEvidence": "역함수가 존재하려면 $f$가 일대일대응이어야 하므로",
+  "rpmRecordId": "H1-RPM-257",
+  "rpmReason": "x<1 에서 2x+1, x≥1 에서 ax^2+bx+6 인 함수가 일대일대응이 되도록 f(1)=3, a≥3 을 정하는 일대일함수 행이다.",
+  "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+  "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+  "typeReason": "두 구간의 치역 (-∞,3) 과 [3,∞) 을 f(1)=3 에서 이어 붙이고 ax^2+bx+6 이 증가하도록 a≥3 을 정해 일대일대응이 되게 하는 단계가 조각함수의 일대일대응 조건 템플릿과 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "ax^2+bx+6 으로 된 조각함수가 일대일대응이 될 치역 이음 f(1)=3, 증가 조건 a>0 과 대칭축 -b/(2a)≤1 을 함께 세워 a≥3 을 얻고 g(2) 를 구하는 여러 단계라 4단계이며 3단계와의 경계다.",
+  "difficultyBoundaryFlag": "B34",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "공역",
+        "src": "stem",
+        "quote": "정의역과 공역이 각각 실수 전체의 집합인"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$g(2)$의 값은"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$b=-a-3$을 대입하면",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "부등식의성질",
+        "src": "solution",
+        "quote": "양변에 $2a$를 곱하면",
+        "evidenceType": "IMPLIED",
+        "justification": "양수 2a 를 곱해 -b≤2a 로 분모를 없앤다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "존재",
+        "src": "stem",
+        "quote": "역함수 $f^{-1}$가 존재하도록 하는"
+      },
+      {
+        "term": "경계조건",
+        "src": "solution",
+        "quote": "경계 $x=1$에서 이어져야 하므로"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "ax^2+bx+6 에서 일대일대응 조건 f(1)=3, a≥3 에서 a=3, b=-6 으로 g(2)=6 을 얻어 ① 을 확인했다. 해설과 같다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

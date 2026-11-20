@@ -1,0 +1,81 @@
+{
+  "qid": 9,
+  "itemFingerprint": "4116fcdee3a4bcf0",
+  "solveSteps": [
+    "평행이동한 식은 y=k/(x+2)+3.",
+    "점 (1,5) 를 대입하면 5=k/3+3, k=6.",
+    "점근선은 x=-2, y=3 이므로 p=-2, q=3.",
+    "k+p+q=6-2+3=7, 보기 ③."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-08",
+  "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+  "unitEvidence": "만큼 평행이동한 함수의 식은",
+  "rpmRecordId": "H1-RPM-260",
+  "rpmReason": "y=k/x 를 x축 방향 -2, y축 방향 3 만큼 평행이동한 y=k/(x+2)+3 을 얻는 평행이동 단계다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+  "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+  "typeReason": "y=k/x 를 x축으로 -2, y축으로 3 평행이동한 y=k/(x+2)+3 에 점 (1,5) 를 넣어 k=6 을 얻고 점근선 x=-2, y=3 을 읽는 단계가 함수 그래프의 평행이동 템플릿과 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "평행이동 공식으로 y=k/(x+2)+3 을 쓰고 점 (1,5) 를 대입해 k=6, 점근선 p=-2, q=3 을 읽는 정의 적용 단계라 1단계이며 2단계와의 경계다.",
+  "difficultyBoundaryFlag": "B12",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "유리함수",
+        "src": "stem",
+        "quote": "유리함수"
+      },
+      {
+        "term": "평행이동",
+        "src": "stem",
+        "quote": "$x$축의 방향으로 $-2$만큼, $y$축의 방향으로 $3$만큼 평행이동한"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$k+p+q$의 값은"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행이동",
+        "src": "solution",
+        "quote": "$y$축의 방향으로 $3$만큼 평행이동한 함수의 식은",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "이 그래프가 점 $(1,5)$를 지나므로 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "통과",
+        "src": "stem",
+        "quote": "평행이동한 그래프가 점 $(1,5)$를 지난다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "평행이동한 식 y=k/(x+2)+3 에 점 (1,5) 를 넣어 k=6, p=-2, q=3 으로 7, ③ 을 확인했다. 해설과 같다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

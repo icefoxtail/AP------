@@ -1,0 +1,69 @@
+{
+  "qid": 6,
+  "itemFingerprint": "bd7496270c81c396",
+  "solveSteps": [
+    "그림의 화살표에서 f(1)=4, f(2)=8, f(3)=2, f(4)=6.",
+    "정의역 {1,2,3,4}, 치역 {2,4,6,8} 이 공역과 같고 함숫값이 모두 달라 일대일대응이며 역함수가 존재하므로 ①~④ 는 옳다.",
+    "⑤ f(2)=8, f^{-1}(4)=1 이므로 f(2)+f^{-1}(4)=9≠7 이므로 옳지 않다. 정답 ⑤."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "가 그림과 같을 때",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+  "unitEvidence": "그림의 화살표를 읽으면 각 원소의 대응은 다음과 같다.",
+  "rpmRecordId": "H1-RPM-252",
+  "rpmReason": "치역 {2,4,6,8} 이 공역 Y={2,4,6,8} 과 같은지 따지는 ② 와 정의역 ① 을 확인하는 정의역·공역·치역 행이다.",
+  "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+  "templateKey": "TPL_DOMAIN_CODOMAIN_RANGE_CONDITION",
+  "typeReason": "대응도에서 f(1)=4, f(2)=8, f(3)=2, f(4)=6 을 읽고 정의역 {1,2,3,4}, 치역 {2,4,6,8}=공역 임을 판정한 뒤 ⑤ 의 f^{-1}(4)=1 로 틀린 보기를 찾는 단계가 정의역·공역·치역의 판정 템플릿과 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "그림에서 f(1)=4, f(2)=8, f(3)=2, f(4)=6 을 읽고 정의에 따라 보기 ①~⑤ 를 하나씩 확인하는 1단계이며, 확인할 보기가 많아 2단계와의 경계다.",
+  "difficultyBoundaryFlag": "B12",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "함수 $f:X\\to Y$가 그림과 같을 때"
+      },
+      {
+        "term": "집합",
+        "src": "stem",
+        "quote": "두 집합 $X="
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "다음 중 옳지 않은 것은"
+      }
+    ],
+    "method": [
+      {
+        "term": "경우분류",
+        "src": "solution",
+        "quote": "서로 다른 원소의 함숫값이 모두 다르므로",
+        "evidenceType": "IMPLIED",
+        "justification": "보기 ①~⑤ 를 정의역·치역·일대일대응·역함수·함숫값으로 나누어 하나씩 참 거짓을 가린다"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "그림에서 대응 f(1)=4, f(2)=8, f(3)=2, f(4)=6 을 직접 읽고 ⑤ 만 f(2)+f^{-1}(4)=9 로 틀림을 확인했다. 해설과 같다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

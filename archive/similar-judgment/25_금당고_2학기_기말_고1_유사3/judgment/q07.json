@@ -1,0 +1,64 @@
+{
+  "qid": 7,
+  "itemFingerprint": "3a9d3acd4a3726c8",
+  "solveSteps": [
+    "(f∘g)(2)=f(g(2)), g(2)=2·2-1=3, f(3)=3^2-2=7.",
+    "(g∘f)(2)=g(f(2)), f(2)=2^2-2=2, g(2)=3.",
+    "두 값의 차는 7-3=4, 보기 ③."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+  "unitEvidence": "먼저 $(f\\circ g)(2)=f(g(2))$를 구하면",
+  "rpmRecordId": "H1-RPM-253",
+  "rpmReason": "(f∘g)(2)=f(3)=7 과 (g∘f)(2)=g(2)=3 을 각각 합성 순서대로 계산하는 합성함수 계산 행이다.",
+  "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+  "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+  "typeReason": "g(2)=3 을 f 에 넣어 f(3)=7, f(2)=2 를 g 에 넣어 g(2)=3 으로 두 합성함숫값을 직접 계산해 7-3=4 를 얻는 단계가 합성함숫값 직접 계산과 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "두 합성함숫값 f(g(2))=7, g(f(2))=3 을 순서대로 대입해 뺄셈 7-3 만 하는 1단계다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "두 함수 $f(x)=x^2-2$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$(f\\circ g)(2)-(g\\circ f)(2)$의 값은"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$f(3)=3^2-2=7$",
+        "evidenceType": "IMPLIED",
+        "justification": "g(2)=3 을 f(x)=x^2-2 에 넣어 f(3)=7 을 구한다"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "두 합성함숫값을 따로 계산해 7 과 3 의 차 4 로 ③ 을 확인했다. 해설과 같다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "qid": 21,
+  "itemFingerprint": "dae904248781b98e",
+  "solveSteps": [
+    "서로소이므로 A∩B=∅ 이고 B 는 U 의 부분집합 중 A={1,2} 의 원소 1, 2 를 갖지 않는다.",
+    "따라서 B 는 {3,4,5,6} 의 부분집합이다.",
+    "개수는 2^(6-2)=2^4=16."
+  ],
+  "solvedAnswer": "16",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-05",
+  "subUnitKey": "H22-C2-05-CORE",
+  "unitEvidence": "두 집합 $A$, $B$가 서로소라는 것은 공통 원소가 없어 교집합이 공집합이라는 뜻이다.",
+  "rpmRecordId": "H1-RPM-234",
+  "rpmReason": "B 가 1, 2 를 제외한 {3,4,5,6} 의 부분집합이므로 2^4=16 으로 부분집합의 개수를 세는 단계다.",
+  "problemTypeKey": "PT_SUBSET_COUNT",
+  "templateKey": "TPL_SUBSET_COUNT_REQUIRED_FORBIDDEN",
+  "typeReason": "서로소 조건으로 원소 1, 2 를 제외한 {3,4,5,6} 의 부분집합 2^4=16 개를 세는 단계가 특정 원소의 포함·제외 조건이 있는 부분집합의 개수 템플릿과 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "서로소의 뜻으로 원소 1, 2 를 제외하고 부분집합의 개수 공식 2^(6-2)=16 을 쓰는 두 단계라 2단계이며, 정의 적용 위주여서 1단계와의 경계다.",
+  "difficultyBoundaryFlag": "B12",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "전체집합",
+        "src": "stem",
+        "quote": "전체집합 $U="
+      },
+      {
+        "term": "서로소",
+        "src": "stem",
+        "quote": "와 서로소인 $U$의 부분집합 $B$의 개수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "부분집합 $B$의 개수를 구하는"
+      }
+    ],
+    "method": [
+      {
+        "term": "지수법칙",
+        "src": "solution",
+        "quote": "$2^{6-2}=2^4=16$",
+        "evidenceType": "IMPLIED",
+        "justification": "남은 원소 4개로 만든 부분집합의 개수를 2^4=16 으로 센다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "공통",
+        "src": "solution",
+        "quote": "공통 원소가 없어"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "서로소 정의로 B 가 {3,4,5,6} 의 부분집합임을 보고 2^4=16 을 얻었다. 해설과 같다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

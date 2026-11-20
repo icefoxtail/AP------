@@ -1,0 +1,75 @@
+{
+  "qid": 12,
+  "itemFingerprint": "be132556110f5637",
+  "solveSteps": [
+    "명제가 참이면 대우도 참이다. 결론의 부정은 x<a 이고 y<3 이므로 대우는 \"x<a 이고 y<3 이면 2x+3y<19\".",
+    "x<a, y<3 이면 2x<2a, 3y<9 이므로 2x+3y<2a+9.",
+    "2a+9≤19, 즉 a≤5 이면 대우가 항상 참. a>5 이면 h=(a-5)/5 로 x=a-h, y=3-h 반례가 생겨 거짓. 최댓값 5, 보기 ⑤."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "주어진 명제가 참이 되려면 그 대우도 참이어야 한다.",
+  "rpmRecordId": "H1-RPM-246",
+  "rpmReason": "명제 \"2x+3y≥19 이면 x≥a 또는 y≥3\" 의 대우 \"x<a 이고 y<3 이면 2x+3y<19\" 를 세우는 명제 변환 단계다.",
+  "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+  "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_BOUND_PARAMETER",
+  "typeReason": "대우의 부등식 2x+3y<2a+9 가 경계 19 에 걸리도록 2a+9≤19, a≤5 를 정해 a 의 최댓값 5 를 얻는 단계가 역·대우의 경계조건과 매개변수 템플릿과 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "결론의 부정 x<a, y<3 으로 대우를 만들고 2x+3y<2a+9 와 19 를 비교해 a≤5 를 정하며 h=(a-5)/5 반례를 확인하는 3단계이고 4단계와의 경계다.",
+  "difficultyBoundaryFlag": "B34",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "명제",
+        "src": "stem",
+        "quote": "두 실수 $x,y$에 대한 명제"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "실수 $a$의 값의 최댓값은"
+      }
+    ],
+    "method": [
+      {
+        "term": "대우",
+        "src": "solution",
+        "quote": "그 대우도 참이어야 한다",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "반례",
+        "src": "solution",
+        "quote": "대우가 거짓이 되는 반례가 생긴다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "항상성립",
+        "src": "solution",
+        "quote": "대우가 항상 참이다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "대우 \"x<a 이고 y<3 이면 2x+3y<19\" 와 2x+3y<2a+9 로 a≤5 를 구해 ⑤ 를 확인했다. 반례 h=(a-5)/5 도 맞다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

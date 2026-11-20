@@ -1,0 +1,82 @@
+{
+  "qid": 13,
+  "itemFingerprint": "ca8330578f9f94ae",
+  "solveSteps": [
+    "x+y=(x+y)(4/x+1/y)=5+x/y+4y/x.",
+    "x/y>0, 4y/x>0 이므로 산술·기하평균으로 x/y+4y/x≥2sqrt(4)=4, 따라서 x+y≥9. m=9.",
+    "등호는 x/y=4y/x, 즉 x=2y 이고 4/(2y)+1/y=3/y=1 에서 y=3, x=6.",
+    "m+a+b=9+6+3=18, 보기 ⑤."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "산술평균과 기하평균의 관계에 의해",
+  "rpmRecordId": "H1-RPM-250",
+  "rpmReason": "4/x+1/y=1 에 x+y 를 곱해 x+y≥5+4=9, m+a+b=18 로 산술평균·기하평균 부등식을 쓰는 단계라 절대부등식 행에 가장 가깝다(최솟값 활용 전용 행은 없다).",
+  "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+  "templateKey": "TPL_AMGM_RECIPROCAL_MINIMUM",
+  "typeReason": "m+a+b=18 을 위해 4/x+1/y=1 의 역수식에 x+y 를 곱해 5+x/y+4y/x 로 바꾸고 산술평균과 기하평균으로 최솟값 9, 등호 x=2y 에서 x=6, y=3 을 얻는 단계가 역수식의 최솟값 템플릿과 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "m+a+b=18 을 위해 4/x+1/y=1 에 x+y 를 곱해 전개하는 변형, 산술·기하평균 x+y≥9, 등호 조건 x=2y 로 x=6, y=3 을 구하는 세 단계이나 모두 표준적 변형이라 2단계이며 3단계와의 경계다.",
+  "difficultyBoundaryFlag": "B23",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "양수",
+        "src": "stem",
+        "quote": "두 양수 $x,y$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "$x+y$의 최솟값을 $m$"
+      }
+    ],
+    "method": [
+      {
+        "term": "산술기하평균",
+        "src": "solution",
+        "quote": "산술평균과 기하평균의 관계에 의해",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "전개",
+        "src": "solution",
+        "quote": "식을 곱하여 전개하면",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "에 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "등호조건",
+        "src": "solution",
+        "quote": "즉 $x=2y$일 때 성립한다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "역수식에 x+y 를 곱해 최솟값 9, x=6, y=3 을 얻어 18 로 ⑤ 를 확인했다. 해설과 같다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

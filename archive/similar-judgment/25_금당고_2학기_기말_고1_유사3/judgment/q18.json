@@ -1,0 +1,74 @@
+{
+  "qid": 18,
+  "itemFingerprint": "46db5d073bfac302",
+  "solveSteps": [
+    "∠APB=90° 인 점 P 는 선분 AB 를 지름으로 하는 원 위(A,B 제외)에 있다. 중점 (-1,3), AB=sqrt20=2sqrt5 이므로 중심 (-1,3), 반지름 sqrt5.",
+    "직선 x+2y-k=0 이 원과 만나려면 중심 (-1,3) 에서 거리 |5-k|/sqrt5≤sqrt5, 즉 |k-5|≤5, 0≤k≤10.",
+    "접점이 A, B 가 아니고 A 또는 B 를 지나는 k=1, 9 도 다른 교점이 있으므로 정수 k 는 0~10 의 11개. 보기 ⑤."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-03",
+  "subUnitKey": "H22-C2-03-INTERSECTION",
+  "unitEvidence": "원 위의 점이 직선 $l:x+2y-k=0$ 위에도 존재하려면",
+  "rpmRecordId": "H1-RPM-219",
+  "rpmReason": "∠APB=90° 인 원(지름 AB)의 중심 (-1,3) 에서 직선 x+2y-k=0 까지의 거리 |5-k|/sqrt5 와 반지름 sqrt5 를 비교해 교점이 있을 조건 |k-5|≤5 를 얻는 원과 직선의 교점 개수 단계다.",
+  "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+  "templateKey": "TM_CIRCLE_LINE_POSITION",
+  "typeReason": "지름이 AB 인 원 (중심 (-1,3), 반지름 sqrt5) 과 직선 x+2y=k 가 만나려면 거리 |5-k|/sqrt5 가 반지름 이하여야 한다는 위치 관계로 0≤k≤10 을 얻는 단계가 원과 직선의 위치 관계 템플릿과 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "90° 조건을 지름 AB 의 원으로 바꾸고, 점과 직선 사이 거리 |5-k|/sqrt5≤sqrt5 로 0≤k≤10 을 얻어 정수 11개를 세며 A, B 제외 여부를 점검하는 단계이나 각 단계는 표준적이어서 3단계로 보고 4단계와의 경계로 둔다.",
+  "difficultyBoundaryFlag": "B34",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "점",
+        "src": "stem",
+        "quote": "두 점 $A(-3,2)$, $B(1,4)$와"
+      },
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직선 $l:x+2y=k$가 있다"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "정수 $k$의 개수는"
+      }
+    ],
+    "method": [
+      {
+        "term": "점과직선사이의거리",
+        "src": "solution",
+        "quote": "중심 $(-1,3)$에서 직선 $l$까지의 거리가 반지름 이하이어야 한다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양화",
+        "src": "stem",
+        "quote": "어떤 점 $P$에 대하여"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "직각 조건을 지름 AB 인 원으로 바꾸고 거리 조건 0≤k≤10 의 정수 11개로 ⑤ 를 확인했다. 해설과 같고 결정 단계는 원과 직선의 위치 관계다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

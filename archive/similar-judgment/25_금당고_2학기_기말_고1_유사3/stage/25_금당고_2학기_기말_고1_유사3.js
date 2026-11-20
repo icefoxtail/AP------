@@ -1,0 +1,651 @@
+window.examTitle = "25_금당고_2학기_기말_고1_유사3";
+window.examDisplayTitle = "25_금당고_2학기_기말_고1_유사3";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "다음 중 집합인 것은?",
+    "choices": [
+      "$x^2-3x+2=0$을 만족시키는 자연수 $x$의 모임",
+      "수학 시험을 잘 본 학생들의 모임",
+      "$0$에 아주 가까운 실수들의 모임",
+      "높은 산들의 모임",
+      "재미있는 책들의 모임"
+    ],
+    "answer": "①",
+    "solution": "집합은 그 모임에 속하는 대상을 객관적으로 분명하게 판단할 수 있어야 한다.\n\n② ‘잘 본’, ③ ‘아주 가까운’, ④ ‘높은’, ⑤ ‘재미있는’은 사람마다 판단 기준이 달라 원소를 분명하게 정할 수 없다.\n\n① 방정식 $x^2-3x+2=0$을 풀면 $(x-1)(x-2)=0$이므로 만족시키는 자연수 $x$는 $1,2$로 분명하게 정해진다.\n\n따라서 정답은 ①이다.",
+    "score": 3.5,
+    "points": 3.5,
+    "sourceQid": 1,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 2,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "집합 $A=\\{x\\mid x\\text{는 }15\\text{ 미만의 }3\\text{의 양의 배수}\\}$에 대하여 다음 중 집합 $A$의 부분집합이 아닌 것은?",
+    "choices": [
+      "$\\varnothing$",
+      "$\\{3,6,8\\}$",
+      "$\\{6,12\\}$",
+      "$\\{3,9,12\\}$",
+      "$\\{3,6,9,12\\}$"
+    ],
+    "answer": "②",
+    "solution": "집합 $A$의 원소를 모두 구하면\n$A=\\{3,6,9,12\\}$\n\n부분집합이 되려면 그 집합의 모든 원소가 $A$에 속해야 한다.\n①, ③, ④, ⑤는 모든 원소가 $A$에 속하므로 $A$의 부분집합이다.\n\n②의 원소 중 $8\\notin A$이므로 $\\{3,6,8\\}$은 $A$의 부분집합이 아니다.\n\n따라서 정답은 ②이다.",
+    "score": 3.5,
+    "points": 3.5,
+    "sourceQid": 2,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 3,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "두 집합 $A=\\{2,a^2-2\\}$, $B=\\{7,a-1\\}$에 대하여 $A\\subset B$이고 $B\\subset A$일 때, 실수 $a$의 값은?",
+    "choices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
+    ],
+    "answer": "③",
+    "solution": "$A\\subset B$이고 $B\\subset A$이므로 두 집합은 서로 같다.\n$A=B$\n\n집합 $A$의 원소 $2$가 집합 $B$에 속해야 하므로\n$a-1=2$\n$a=3$\n\n이때 $a^2-2=3^2-2=7$이 되어 두 집합이 모두 $\\{2,7\\}$로 같아진다.\n\n따라서 정답은 ③이다.",
+    "score": 3.5,
+    "points": 3.5,
+    "sourceQid": 3,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 4,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "전체집합 $U$에서 두 조건 $p$, $q$의 진리집합을 각각 $P$, $Q$라 하자. $P\\subset Q^C$일 때, 다음 명제 중 반드시 참인 것은?",
+    "choices": [
+      "$p\\to q$",
+      "$\\sim p\\to q$",
+      "$q\\to\\sim p$",
+      "$\\sim q\\to p$",
+      "$\\sim p\\to\\sim q$"
+    ],
+    "answer": "③",
+    "solution": "진리집합 사이의 포함 관계 $P\\subset Q^C$는 명제 $p\\to\\sim q$가 참임을 뜻한다.\n\n명제와 그 대우는 참, 거짓이 항상 같으므로 $p\\to\\sim q$의 대우를 구하면\n$\\sim(\\sim q)\\to\\sim p$\n$q\\to\\sim p$\n\n따라서 $q\\to\\sim p$는 반드시 참이다.\n\n따라서 정답은 ③이다.",
+    "score": 3.5,
+    "points": 3.5,
+    "sourceQid": 4,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 5,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "실수 $x$에 대하여 두 조건 $p$, $q$가\n$p$: $|x|<3$, $q$: $0<x<2$\n일 때, $p$는 $q$이기 위한 어떤 조건인가?",
+    "choices": [
+      "충분조건이지만 필요조건이 아니다.",
+      "필요조건이지만 충분조건이 아니다.",
+      "필요충분조건이다.",
+      "충분조건도 필요조건도 아니다.",
+      "아무 조건도 아니다."
+    ],
+    "answer": "②",
+    "solution": "두 조건 $p$, $q$의 진리집합을 각각 $P$, $Q$라 하자.\n부등식 $|x|<3$을 풀면 $-3<x<3$이므로\n$P=\\{x\\mid -3<x<3\\}$\n$Q=\\{x\\mid 0<x<2\\}$\n\n$Q\\subset P$이고 $P\\not\\subset Q$이므로 명제 $q\\to p$는 참이고, 명제 $p\\to q$는 거짓이다.\n\n그러므로 $p$는 $q$이기 위한 필요조건이지만 충분조건이 아니다.\n\n따라서 정답은 ②이다.",
+    "score": 3.7,
+    "points": 3.7,
+    "sourceQid": 5,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사3/q05-solution.svg",
+    "solutionImageAlt": "수직선 위에 P는 -3 초과 3 미만, Q는 0 초과 2 미만으로 나타낸 두 구간",
+    "solutionImageCaption": "p의 진리집합 P는 -3<x<3, q의 진리집합 Q는 0<x<2이다. Q가 P에 들어 있으므로 q이면 p이다(q→p는 참). 그러나 -3<x≤0인 x는 p만 만족하므로 p→q는 거짓이다. 따라서 p는 q이기 위한 필요조건이지만 충분조건은 아니므로 답은 ②이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 6,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "두 집합 $X=\\{1,2,3,4\\}$, $Y=\\{2,4,6,8\\}$에 대하여 함수 $f:X\\to Y$가 그림과 같을 때, 다음 중 옳지 않은 것은?",
+    "choices": [
+      "정의역은 $\\{1,2,3,4\\}$이다.",
+      "치역과 공역이 서로 같다.",
+      "$f$는 일대일대응이다.",
+      "역함수 $f^{-1}$가 존재한다.",
+      "$f(2)+f^{-1}(4)=7$이다."
+    ],
+    "answer": "⑤",
+    "solution": "그림의 화살표를 읽으면 각 원소의 대응은 다음과 같다.\n$f(1)=4$, $f(2)=8$, $f(3)=2$, $f(4)=6$\n\n정의역은 $\\{1,2,3,4\\}$이고, 치역은 $\\{2,4,6,8\\}$로 공역과 같다.\n서로 다른 원소의 함숫값이 모두 다르므로 $f$는 일대일대응이고, 따라서 역함수 $f^{-1}$가 존재한다.\n\n⑤에서 $f(2)=8$이고 $f(1)=4$에서 $f^{-1}(4)=1$이므로\n$f(2)+f^{-1}(4)=8+1=9$\n\n따라서 옳지 않은 것은 ⑤이므로 정답은 ⑤이다.",
+    "score": 3.7,
+    "points": 3.7,
+    "sourceQid": 6,
+    "variationType": "STRICT_VARIANT",
+    "image": "assets/images/25_금당고_2학기_기말_고1_유사3/q06-problem.svg",
+    "imageAlt": "함수 f의 대응도: 1→4, 2→8, 3→2, 4→6",
+    "imageSize": "full",
+    "imageStatus": "reviewed_pass",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사3/q06-solution.svg",
+    "solutionImageAlt": "대응도에서 f(1)=4, f(2)=8, f(3)=2, f(4)=6이다. 치역은 {2,4,6,8}로 공역과 같고 서로 다른 원소의 함숫값이 모두 다르므로 일대일대응이며 역함수가 있다. f(2)+f^{-1}(4)=8+1=9이므로 옳지 않은 것은 ⑤이다.",
+    "solutionImageCaption": "대응도에서 f(1)=4, f(2)=8, f(3)=2, f(4)=6이다. 치역은 {2,4,6,8}로 공역과 같고 서로 다른 원소의 함숫값이 모두 다르므로 일대일대응이며 역함수가 있다. f(2)+f^{-1}(4)=8+1=9이므로 옳지 않은 것은 ⑤이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 7,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "두 함수 $f(x)=x^2-2$, $g(x)=2x-1$에 대하여 $(f\\circ g)(2)-(g\\circ f)(2)$의 값은?",
+    "choices": [
+      "$0$",
+      "$2$",
+      "$4$",
+      "$6$",
+      "$8$"
+    ],
+    "answer": "③",
+    "solution": "먼저 $(f\\circ g)(2)=f(g(2))$를 구하면\n$g(2)=2\\cdot 2-1=3$\n$f(3)=3^2-2=7$\n\n다음으로 $(g\\circ f)(2)=g(f(2))$를 구하면\n$f(2)=2^2-2=2$\n$g(2)=2\\cdot 2-1=3$\n\n따라서 구하는 값은\n$(f\\circ g)(2)-(g\\circ f)(2)=7-3=4$\n\n따라서 정답은 ③이다.",
+    "score": 3.8,
+    "points": 3.8,
+    "sourceQid": 7,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 8,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "일차함수 $f(x)=ax+b$에 대하여 $y=f(x)$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프가 모두 점 $(1,4)$를 지날 때, $b-a$의 값은? (단, $a,b$는 상수이다.)",
+    "choices": [
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$"
+    ],
+    "answer": "⑤",
+    "solution": "$y=f(x)$의 그래프가 점 $(1,4)$를 지나므로\n$f(1)=4$\n\n또 $y=f^{-1}(x)$의 그래프가 점 $(1,4)$를 지나므로\n$f^{-1}(1)=4$\n$f(4)=1$\n\n두 식을 $f(x)=ax+b$에 대입하면\n$a+b=4$\n$4a+b=1$\n\n둘째 식에서 첫째 식을 빼면\n$3a=-3$\n$a=-1$\n\n이를 $a+b=4$에 대입하면\n$-1+b=4$\n$b=5$\n\n따라서 구하는 값은\n$b-a=5-(-1)=6$\n\n따라서 정답은 ⑤이다.",
+    "score": 3.8,
+    "points": 3.8,
+    "sourceQid": 8,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 9,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "유리함수 $y=\\dfrac{k}{x}$ ($k\\ne 0$)의 그래프를 $x$축의 방향으로 $-2$만큼, $y$축의 방향으로 $3$만큼 평행이동한 그래프가 점 $(1,5)$를 지난다. 이 평행이동한 그래프의 두 점근선의 방정식이 $x=p$, $y=q$일 때, $k+p+q$의 값은?",
+    "choices": [
+      "$5$",
+      "$6$",
+      "$7$",
+      "$8$",
+      "$9$"
+    ],
+    "answer": "③",
+    "solution": "유리함수 $y=\\dfrac{k}{x}$의 그래프를 $x$축의 방향으로 $-2$만큼, $y$축의 방향으로 $3$만큼 평행이동한 함수의 식은\n$y=\\dfrac{k}{x+2}+3$\n\n이 그래프가 점 $(1,5)$를 지나므로 대입하면\n$5=\\dfrac{k}{1+2}+3$\n$2=\\dfrac{k}{3}$\n$k=6$\n\n또 평행이동한 그래프의 두 점근선의 방정식은 $x=-2$, $y=3$이므로\n$p=-2$, $q=3$\n\n따라서 구하는 값은\n$k+p+q=6+(-2)+3=7$\n\n따라서 정답은 ③이다.",
+    "score": 4,
+    "points": 4,
+    "sourceQid": 9,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사3/q09-solution.svg",
+    "solutionImageAlt": "유리함수 y=6/(x+2)+3의 그래프와 점근선 x=-2, y=3, 점근선의 교점 C(-2,3)과 점 (1,5)",
+    "solutionImageCaption": "y=k/x를 x축으로 -2, y축으로 3만큼 평행이동하면 y=k/(x+2)+3이다. 점 (1,5)를 지나므로 5=k/3+3에서 k=6이다. 점근선은 x=-2, y=3이므로 p=-2, q=3이고 k+p+q=7이므로 답은 ③이다.",
+    "solutionImageSize": "medium"
+  },
+  {
+    "id": 10,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "무리식 $\\sqrt{x+5}+\\sqrt{10-2x}$의 값이 실수가 되도록 하는 모든 자연수 $x$의 값의 합은?",
+    "choices": [
+      "$10$",
+      "$15$",
+      "$21$",
+      "$28$",
+      "$36$"
+    ],
+    "answer": "②",
+    "solution": "무리식의 값이 실수가 되려면 근호 안의 식이 모두 $0$ 이상이어야 한다.\n\n첫째 근호 안의 식에서\n$x+5\\ge 0$\n$x\\ge -5$\n\n둘째 근호 안의 식에서\n$10-2x\\ge 0$\n$2x\\le 10$\n$x\\le 5$\n\n두 조건을 동시에 만족시키는 $x$의 값의 범위는\n$-5\\le x\\le 5$\n\n이 범위에 속하는 자연수 $x$는 $1,2,3,4,5$이므로 그 합은\n$1+2+3+4+5=15$\n\n따라서 정답은 ②이다.",
+    "score": 4,
+    "points": 4,
+    "sourceQid": 10,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사3/q10-solution.svg",
+    "solutionImageAlt": "수직선 세 줄: x가 -5 이상, x가 5 이하, 그리고 공통 범위 -5 이상 5 이하와 그 안의 정수점",
+    "solutionImageCaption": "첫째 근호 안은 x+5≥0이므로 x≥-5, 둘째 근호 안은 10-2x≥0이므로 x≤5이다. 공통 범위 -5≤x≤5 안의 자연수는 1, 2, 3, 4, 5이고 그 합은 15이므로 답은 ②이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 11,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "자연수 $k$의 양의 배수를 원소로 하는 집합을 $B_k$라 하자. $(B_4\\cap B_6)\\supseteq B_n$이고 $B_n\\supseteq B_{72}$를 만족시키는 모든 자연수 $n$의 개수는?",
+    "choices": [
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$",
+      "$8$"
+    ],
+    "answer": "①",
+    "solution": "$B_4\\cap B_6$은 $4$와 $6$의 공배수 전체의 집합이고, $4$와 $6$의 최소공배수는 $12$이므로\n$B_4\\cap B_6=B_{12}$\n\n따라서 주어진 포함 관계는\n$B_{72}\\subseteq B_n\\subseteq B_{12}$\n\n$B_n\\subseteq B_{12}$에서 $n$은 $12$의 배수이고, $B_{72}\\subseteq B_n$에서 $72$는 $n$의 배수, 즉 $n$은 $72$의 약수이다.\n$72$의 양의 약수 중 $12$의 배수는 $12,24,36,72$이므로 만족시키는 자연수 $n$의 개수는 $4$이다.\n\n따라서 정답은 ①이다.",
+    "score": 4,
+    "points": 4,
+    "sourceQid": 11,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사3/q11-solution.svg",
+    "solutionImageAlt": "세 원이 차례로 들어 있는 벤다이어그램: 가장 안쪽 원 B72에 72, 144, 가운데 원 안에 36, 108, 바깥 원 B12의 나머지에 12, 24, 48이 있다",
+    "solutionImageCaption": "B₄∩B₆=B₁₂이므로 B₇₂⊆Bₙ⊆B₁₂이다. n은 12의 배수이고 72의 약수이므로 n=12, 24, 36, 72이고 개수는 4이다. 그림의 가운데 원은 예로 n=36일 때의 Bₙ이다. 답은 ①이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 12,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "두 실수 $x,y$에 대한 명제\n‘$2x+3y\\ge 19$이면 $x\\ge a$ 또는 $y\\ge 3$이다.’\n가 참이 되도록 하는 실수 $a$의 값의 최댓값은?",
+    "choices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
+    ],
+    "answer": "⑤",
+    "solution": "주어진 명제가 참이 되려면 그 대우도 참이어야 한다.\n결론 ‘$x\\ge a$ 또는 $y\\ge 3$’의 부정은 ‘$x<a$이고 $y<3$’이므로 대우는\n‘$x<a$이고 $y<3$이면 $2x+3y<19$이다.’\n\n$x<a$, $y<3$일 때\n$2x<2a$\n$3y<9$\n\n두 부등식을 변끼리 더하면\n$2x+3y<2a+9$\n\n따라서 $2a+9\\le 19$, 즉 $a\\le 5$이면 대우가 항상 참이다.\n\n반대로 $a>5$이면 $h=\\dfrac{a-5}{5}>0$이라 두고 $x=a-h$, $y=3-h$로 잡을 때 $x<a$, $y<3$이지만\n$2x+3y=2a+9-5h=a+14>19$\n가 되어 대우가 거짓이 되는 반례가 생긴다.\n\n그러므로 $a\\le 5$이어야 하고 구하는 최댓값은 $5$이다.\n\n따라서 정답은 ⑤이다.",
+    "score": 4,
+    "points": 4,
+    "sourceQid": 12,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사3/q12-solution.svg",
+    "solutionImageAlt": "x가 5보다 작고 y가 3보다 작은 영역을 색칠하고 직선 2x+3y=19가 꼭짓점 (5,3)을 지나는 그림",
+    "solutionImageCaption": "대우의 조건 x<a, y<3인 영역(색칠)의 점은 모두 직선 2x+3y=2a+9의 아래쪽에 있다. a=5이면 직선 2x+3y=19가 영역의 꼭짓점 (5,3)을 지나므로 2x+3y<19가 항상 성립하고, a>5이면 성립하지 않는다. 따라서 a의 최댓값은 5이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 13,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "두 양수 $x,y$에 대하여 $\\dfrac{4}{x}+\\dfrac{1}{y}=1$일 때, $x+y$의 최솟값을 $m$, 그때의 $x,y$의 값을 각각 $a,b$라 하자. $m+a+b$의 값은?",
+    "choices": [
+      "$10$",
+      "$12$",
+      "$14$",
+      "$16$",
+      "$18$"
+    ],
+    "answer": "⑤",
+    "solution": "$x>0$, $y>0$이고 $\\dfrac{4}{x}+\\dfrac{1}{y}=1$이므로 식을 곱하여 전개하면\n$x+y=(x+y)\\left(\\dfrac{4}{x}+\\dfrac{1}{y}\\right)$\n$=4+\\dfrac{x}{y}+\\dfrac{4y}{x}+1$\n$=5+\\dfrac{x}{y}+\\dfrac{4y}{x}$\n\n$\\dfrac{x}{y}>0$, $\\dfrac{4y}{x}>0$이므로 산술평균과 기하평균의 관계에 의해\n$\\dfrac{x}{y}+\\dfrac{4y}{x}\\ge 2\\sqrt{\\dfrac{x}{y}\\cdot\\dfrac{4y}{x}}=4$\n\n따라서 $x+y\\ge 5+4=9$이다.\n등호는 $\\dfrac{x}{y}=\\dfrac{4y}{x}$, 즉 $x=2y$일 때 성립한다.\n이를 $\\dfrac{4}{x}+\\dfrac{1}{y}=1$에 대입하면\n$\\dfrac{4}{2y}+\\dfrac{1}{y}=1$\n$\\dfrac{3}{y}=1$\n$y=3$, $x=6$\n\n따라서 $m=9$, $a=6$, $b=3$이므로 구하는 값은\n$m+a+b=9+6+3=18$\n\n따라서 정답은 ⑤이다.",
+    "score": 4.2,
+    "points": 4.2,
+    "sourceQid": 13,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 14,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "집합 $X=\\{1,2,3,4\\}$에 대하여 함수 $f:X\\to X$가\n$f(x)=\\begin{cases}x+2&(x\\le 2)\\\\x-1&(x\\ge 3)\\end{cases}$\n일 때, $f^{10}(1)+f^{11}(4)$의 값은? (단, $f^1=f$, $f^{n+1}=f\\circ f^n$, $n$은 자연수)",
+    "choices": [
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$",
+      "$8$"
+    ],
+    "answer": "②",
+    "solution": "함수의 정의에 따라 함숫값을 차례로 구하면\n$f(1)=3$, $f(2)=4$, $f(3)=2$, $f(4)=3$\n\n$1$에서 시작하여 합성하면\n$f^1(1)=3$\n$f^2(1)=f(3)=2$\n$f^3(1)=f(2)=4$\n$f^4(1)=f(4)=3$\n\n주기가 $3$으로 반복되고 $10=3\\times 3+1$이므로\n$f^{10}(1)=f^1(1)=3$\n\n마찬가지로 $4$에서 시작하여 합성하면\n$f^1(4)=3$, $f^2(4)=2$, $f^3(4)=4$\n\n주기가 $3$으로 반복되고 $11=3\\times 3+2$이므로\n$f^{11}(4)=f^2(4)=2$\n\n따라서 구하는 값은\n$f^{10}(1)+f^{11}(4)=3+2=5$\n\n따라서 정답은 ②이다.",
+    "score": 4.2,
+    "points": 4.2,
+    "sourceQid": 14,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사3/q14-solution.svg",
+    "solutionImageAlt": "집합 X의 1, 2, 3, 4에서 X로 가는 대응도: 1은 3, 2는 4, 3은 2, 4는 3으로 간다",
+    "solutionImageCaption": "f(1)=3, f(2)=4, f(3)=2, f(4)=3이다. 1에서 시작하면 1→3→2→4→3→2→4→…로 f(1)=3 이후 3→2→4가 3번마다 반복되고, 4에서 시작하면 4→3→2→4→…로 3번마다 반복된다. f¹⁰(1)=3, f¹¹(4)=2이므로 합은 5이고 답은 ②이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 15,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "함수 $f(x)=\\sqrt{6x-17}+2$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프가 만나는 두 점을 $P,Q$라 할 때, 선분 $PQ$의 길이는?",
+    "choices": [
+      "$\\sqrt{2}$",
+      "$2\\sqrt{2}$",
+      "$3\\sqrt{2}$",
+      "$4\\sqrt{2}$",
+      "$5\\sqrt{2}$"
+    ],
+    "answer": "④",
+    "solution": "함수 $f(x)=\\sqrt{6x-17}+2$는 정의역 $x\\ge\\dfrac{17}{6}$에서 증가하므로 그 그래프와 역함수 $y=f^{-1}(x)$의 그래프의 교점은 직선 $y=x$ 위에 있다.\n\n따라서 교점의 $x$좌표는 방정식 $f(x)=x$의 실근이다.\n$\\sqrt{6x-17}+2=x$\n$\\sqrt{6x-17}=x-2$ ($x\\ge 2$)\n\n양변을 제곱하면\n$6x-17=x^2-4x+4$\n$x^2-10x+21=0$\n$(x-3)(x-7)=0$\n$x=3$ 또는 $x=7$\n\n두 값 모두 $x\\ge\\dfrac{17}{6}$을 만족시키므로 두 교점의 좌표는 $(3,3)$, $(7,7)$이다.\n따라서 선분 $PQ$의 길이는\n$\\sqrt{(7-3)^2+(7-3)^2}=\\sqrt{16+16}=4\\sqrt{2}$\n\n따라서 정답은 ④이다.",
+    "score": 4.3,
+    "points": 4.3,
+    "sourceQid": 15,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사3/q15-solution.svg",
+    "solutionImageAlt": "무리함수 y=f(x)와 그 역함수 그래프가 점선 y=x에 대칭이고 y=x 위의 두 점 P(3,3), Q(7,7)에서 만난다",
+    "solutionImageCaption": "f(x)=√(6x-17)+2는 증가하므로 f의 그래프와 역함수의 그래프는 직선 y=x에 대하여 대칭이고 교점은 y=x 위에 있다. f(x)=x에서 x=3 또는 x=7이므로 P(3,3), Q(7,7)이고 PQ=√(16+16)=4√2이다. 답은 ④이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 16,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "유리함수 $y=\\dfrac{ax+b}{x+c}$의 그래프가 그림과 같을 때, 무리함수 $y=-\\sqrt{ax+b}+c$의 그래프가 지나는 사분면은? (단, $a,b,c$는 상수이다.)",
+    "choices": [
+      "제1, 2사분면",
+      "제1, 4사분면",
+      "제2, 3사분면",
+      "제3, 4사분면",
+      "제1, 3, 4사분면"
+    ],
+    "answer": "④",
+    "solution": "그림에서 유리함수 $y=\\dfrac{ax+b}{x+c}$의 수직 점근선이 $x=1$이므로\n$-c=1$\n$c=-1$\n\n수평 점근선이 $y=-2$이므로\n$a=-2$\n\n그래프가 점 $(0,-4)$를 지나므로 대입하면\n$-4=\\dfrac{b}{0-1}$\n$b=4$\n\n따라서 구하는 무리함수는\n$y=-\\sqrt{-2x+4}-1$\n\n근호 안이 $0$ 이상이어야 하므로 $-2x+4\\ge 0$, 즉 $x\\le 2$이고 $y\\le -1$이다.\n시작점은 $(2,-1)$이고 $x$가 작아질수록 $y$도 작아지므로 $0<x\\le 2$일 때는 제4사분면, $x<0$일 때는 제3사분면을 지난다.\n\n따라서 정답은 ④이다.",
+    "score": 4.3,
+    "points": 4.3,
+    "sourceQid": 16,
+    "variationType": "STRICT_VARIANT",
+    "image": "assets/images/25_금당고_2학기_기말_고1_유사3/q16-problem.svg",
+    "imageAlt": "점근선 x=1, y=-2이고 점 (0,-4)와 (2,0)을 지나는 유리함수 그래프",
+    "imageSize": "medium",
+    "imageStatus": "reviewed_pass",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사3/q16-solution.svg",
+    "solutionImageAlt": "무리함수 y=-√(-2x+4)-1의 그래프가 점 S(2,-1)에서 시작해 y절편 (0,-3)을 지나 왼쪽 아래로 뻗는다",
+    "solutionImageCaption": "점근선 x=1이므로 c=-1, y=-2이므로 a=-2이고 (0,-4)를 지나므로 b=4이다. 무리함수 y=-√(-2x+4)-1은 x≤2이고 y≤-1이며 시작점 (2,-1)에서 왼쪽 아래로 뻗는다. y절편은 (0,-3)이므로 제4사분면과 제3사분면을 지난다. 답은 ④이다.",
+    "solutionImageSize": "medium"
+  },
+  {
+    "id": 17,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "세 집합\n$A=\\{x\\mid x\\text{는 한 자리의 소수}\\}$,\n$B=\\{x\\mid x\\text{는 }k\\text{의 양의 약수}\\}$,\n$C=\\{x\\mid x\\text{는 }k\\text{ 이하의 }7\\text{의 양의 배수}\\}$\n가 있다. 집합 $A\\cap B$의 모든 원소의 합이 $10$이고, $11\\le n(A\\cup C)\\le 13$이 성립하도록 하는 모든 자연수 $k$의 값의 합은?",
+    "choices": [
+      "$123$",
+      "$126$",
+      "$129$",
+      "$132$",
+      "$135$"
+    ],
+    "answer": "①",
+    "solution": "한 자리 소수의 집합은 $A=\\{2,3,5,7\\}$이다.\n$A$의 부분집합 중 모든 원소의 합이 $10$인 경우는 $\\{3,7\\}$과 $\\{2,3,5\\}$뿐이다.\n\n첫째로 $A\\cap B=\\{3,7\\}$이면 $k$는 $21$의 배수이고 $2$와 $5$의 배수가 아니다.\n둘째로 $A\\cap B=\\{2,3,5\\}$이면 $k$는 $30$의 배수이고 $7$의 배수가 아니다.\n\n두 경우 모두 $k\\ge 21$이므로 $7\\in C$이다. $C$는 $7$의 양의 배수로만 이루어져 있으므로 $A$의 원소 중 $C$에 속하지 않는 것은 $2,3,5$의 $3$개이다.\n따라서\n$n(A\\cup C)=n(C)+3$\n\n$11\\le n(C)+3\\le 13$이므로\n$8\\le n(C)\\le 10$\n\n$k$ 이하의 $7$의 양의 배수가 $8$개 이상 $10$개 이하이려면\n$56\\le k\\le 76$\n\n이 범위에서 첫째 경우를 만족시키는 $k$는 $63$이고, 둘째 경우를 만족시키는 $k$는 $60$이다.\n따라서 구하는 모든 자연수 $k$의 값의 합은\n$63+60=123$\n\n따라서 정답은 ①이다.",
+    "score": 4.5,
+    "points": 4.5,
+    "sourceQid": 17,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 18,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "좌표평면 위에 두 점 $A(-3,2)$, $B(1,4)$와 직선 $l:x+2y=k$가 있다. 명제\n‘직선 $l$ 위의 어떤 점 $P$에 대하여 $\\angle APB=90^\\circ$이다.’\n가 참이 되도록 하는 정수 $k$의 개수는?",
+    "choices": [
+      "$7$",
+      "$8$",
+      "$9$",
+      "$10$",
+      "$11$"
+    ],
+    "answer": "⑤",
+    "solution": "$\\angle APB=90^\\circ$인 점 $P$는 선분 $AB$를 지름으로 하는 원 위에 있다(단, $A,B$ 제외).\n두 점 $A(-3,2)$, $B(1,4)$의 중점은 $(-1,3)$이고 선분 $AB$의 길이는\n$\\sqrt{(1-(-3))^2+(4-2)^2}=\\sqrt{16+4}=2\\sqrt{5}$\n\n따라서 이 원의 중심은 $(-1,3)$이고 반지름의 길이는 $\\sqrt{5}$이다.\n원 위의 점이 직선 $l:x+2y-k=0$ 위에도 존재하려면 중심 $(-1,3)$에서 직선 $l$까지의 거리가 반지름 이하이어야 한다.\n$\\dfrac{|-1+2\\cdot 3-k|}{\\sqrt{1^2+2^2}}\\le\\sqrt{5}$\n$\\dfrac{|5-k|}{\\sqrt{5}}\\le\\sqrt{5}$\n$|k-5|\\le 5$\n$0\\le k\\le 10$\n\n직선 $l$은 기울기가 $-\\dfrac{1}{2}$이고 선분 $AB$는 기울기가 $\\dfrac{1}{2}$이므로 $k=0$과 $k=10$일 때의 접점은 $A,B$가 아니다.\n또 $k=1$이나 $k=9$처럼 직선이 $A$ 또는 $B$를 지날 때도 원과 서로 다른 두 점에서 만나므로 다른 교점을 $P$로 택할 수 있다.\n따라서 조건을 만족시키는 정수 $k$는 $0,1,2,\\ldots,10$으로 모두 $11$개이다.\n\n따라서 정답은 ⑤이다.",
+    "score": 4.5,
+    "points": 4.5,
+    "sourceQid": 18,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사3/q18-solution.svg",
+    "solutionImageAlt": "선분 AB를 지름으로 하는 원과 기울기가 -1/2인 두 접선 x+2y=0, x+2y=10을 그린 좌표평면",
+    "solutionImageCaption": "∠APB=90°이면 P는 선분 AB를 지름으로 하는 원 위에 있다. 이 원의 중심은 M(-1,3), 반지름은 √5이다. 직선 x+2y=k가 원과 만나려면 |5-k|/√5≤√5이므로 |k-5|≤5이고, 두 접선은 k=0, k=10이다. 접점은 A, B가 아니므로 0≤k≤10인 정수 11개가 모두 가능하다. 답은 ⑤이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 19,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "서로 다른 네 실수 $a,b,c,d$에 대하여 집합 $X=\\{a,b,c,d\\}$를 정의역으로 하는 함수 $f(x)=|x^2-4x-3|$이 상수함수이고 그 치역이 $\\{k\\}$일 때, 가능한 정수 $k$의 개수는?",
+    "choices": [
+      "$5$",
+      "$6$",
+      "$7$",
+      "$8$",
+      "$9$"
+    ],
+    "answer": "②",
+    "solution": "함수 $f$의 치역이 $\\{k\\}$이려면 $k\\ge 0$이고 방정식 $|x^2-4x-3|=k$가 서로 다른 네 실근을 가져야 한다.\n완전제곱식으로 나타내면\n$|(x-2)^2-7|=k$\n\n이 방정식은 다음 두 식으로 나뉜다.\n$(x-2)^2=7+k$\n$(x-2)^2=7-k$\n\n$k\\ge 0$일 때 $7+k>0$이므로 첫째 식에서 항상 서로 다른 두 실근이 나온다.\n둘째 식에서도 서로 다른 두 실근이 나오려면 $7-k>0$, 즉 $k<7$이어야 한다.\n\n$k=0$이면 두 식이 같아져 실근이 두 개뿐이고, $0<k<7$이면 $7+k$와 $7-k$가 서로 다른 양수이므로 네 실근이 모두 서로 다르다.\n따라서 $0<k<7$을 만족시키는 정수 $k$는 $1,2,3,4,5,6$으로 모두 $6$개이다.\n\n따라서 정답은 ②이다.",
+    "score": 4.5,
+    "points": 4.5,
+    "sourceQid": 19,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사3/q19-solution.svg",
+    "solutionImageAlt": "y=|x²-4x-3|의 그래프와 극대점 (2,7), 수평선 y=3이 네 점에서 만나고 y=7은 극대점에서 접한다",
+    "solutionImageCaption": "y=|x²-4x-3|=|(x-2)²-7|의 그래프는 꼭짓점 (2,-7)을 x축 위로 접어 올린 모양이어서 (2,7)에서 극대이다. 직선 y=k가 서로 다른 네 점에서 만나려면 0<k<7이다. 예로 k=3이면 네 교점이 생기고 그중 두 점은 (0,3), (4,3)이다. 이러한 정수 k는 1부터 6까지 6개이므로 답은 ②이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 20,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "정의역과 공역이 각각 실수 전체의 집합인 함수 $f$가\n$f(x)=\\begin{cases}2x+1&(x<1)\\\\ax^2+bx+6&(x\\ge 1)\\end{cases}$\n이다. 함수 $f$의 역함수 $f^{-1}$가 존재하도록 하는 두 실수 $a,b$에 대하여 $a$의 값이 최소일 때, 함수 $f$를 $g$라 하자. $g(2)$의 값은? (단, $a\\ne 0$)",
+    "choices": [
+      "$6$",
+      "$8$",
+      "$10$",
+      "$12$",
+      "$14$"
+    ],
+    "answer": "①",
+    "solution": "첫째 구간 $x<1$에서 $f(x)=2x+1$은 증가하므로 치역이 $(-\\infty,3)$이다.\n역함수가 존재하려면 $f$가 일대일대응이어야 하므로 둘째 구간 $x\\ge 1$에서 $f(x)$는 증가하면서 치역이 $[3,\\infty)$이어야 한다.\n\n경계 $x=1$에서 이어져야 하므로 $f(1)=3$에서\n$a+b+6=3$\n$b=-a-3$\n\n또 이차함수가 $x\\ge 1$에서 증가하려면 $a>0$이고, 포물선의 축이 $x=1$ 또는 그 왼쪽에 있어야 하므로\n$-\\dfrac{b}{2a}\\le 1$\n\n$a>0$이므로 양변에 $2a$를 곱하면\n$-b\\le 2a$\n$2a+b\\ge 0$\n\n$b=-a-3$을 대입하면\n$2a+(-a-3)\\ge 0$\n$a\\ge 3$\n\n따라서 $a$의 최솟값은 $3$이고, 그때 $b=-3-3=-6$이다.\n$x\\ge 1$에서 $g(x)=3x^2-6x+6$이므로\n$g(2)=3\\cdot 2^2-6\\cdot 2+6=6$\n\n따라서 정답은 ①이다.",
+    "score": 4.5,
+    "points": 4.5,
+    "sourceQid": 20,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사3/q20-solution.svg",
+    "solutionImageAlt": "x<1에서 직선 y=2x+1, x≥1에서 포물선 y=3x²-6x+6이 점 (1,3)에서 이어지며 점 (2,6)을 지나는 그래프",
+    "solutionImageCaption": "x<1에서 f(x)=2x+1은 증가하고 값이 3보다 작다. x≥1에서 g(x)=3x²-6x+6은 꼭짓점 (1,3)에서 증가하며 값이 3 이상이다. 두 조각이 (1,3)에서 이어져 f 전체가 증가하는 일대일대응이다. 따라서 a의 최솟값은 3이고 g(2)=12-12+6=6이므로 답은 ①이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 21,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형"
+    ],
+    "wide": false,
+    "content": "[서술형 1] 전체집합 $U=\\{1,2,3,4,5,6\\}$의 부분집합 $A=\\{1,2\\}$와 서로소인 $U$의 부분집합 $B$의 개수를 구하는 과정을 서술하시오.",
+    "choices": [],
+    "answer": "$16$",
+    "solution": "두 집합 $A$, $B$가 서로소라는 것은 공통 원소가 없어 교집합이 공집합이라는 뜻이다. 즉,\n$A\\cap B=\\varnothing$\n\n따라서 집합 $B$는 $U$의 부분집합 중에서 $A=\\{1,2\\}$의 원소인 $1$과 $2$를 모두 원소로 갖지 않는 집합이다.\n\n이는 집합 $\\{3,4,5,6\\}$의 부분집합의 개수와 같으므로 구하는 집합 $B$의 개수는\n$2^{6-2}=2^4=16$\n\n따라서 구하는 부분집합 $B$의 개수는 $16$이다.",
+    "score": 10,
+    "points": 10,
+    "sourceQid": 21,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사3/q21-solution.svg",
+    "solutionImageAlt": "전체집합 U 안에 원 A가 있고 A 안에 1, 2가, 바깥 색칠한 부분에 3, 4, 5, 6이 있다",
+    "solutionImageCaption": "B가 A와 서로소이면 A∩B=∅이므로 B는 1, 2를 원소로 갖지 않는다. 즉 B는 U에서 A를 제외한 색칠한 부분 {3,4,5,6}의 부분집합이다. 부분집합의 개수는 2⁴=16이므로 구하는 집합 B의 개수는 16이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 22,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형"
+    ],
+    "wide": false,
+    "content": "[서술형 2] 무리함수 $y=-\\sqrt{x+2}$의 그래프와 직선 $y=-x+k$가 서로 다른 두 점에서 만나도록 하는 실수 $k$의 값의 범위를 구하는 과정을 서술하시오.",
+    "choices": [],
+    "answer": "$-\\dfrac{9}{4}<k\\le -2$",
+    "solution": "교점의 $x$좌표는 무리함수의 정의역 $x\\ge -2$를 만족해야 한다.\n$t=\\sqrt{x+2}$라 놓으면 $t\\ge 0$이고 $x=t^2-2$이다.\n\n교점에서는 $-\\sqrt{x+2}=-x+k$이므로 대입하면\n$-t=-(t^2-2)+k$\n$t^2-t-(k+2)=0$\n\n서로 다른 두 교점을 얻으려면 $t$에 대한 이차방정식이 서로 다른 두 음이 아닌 실근을 가져야 한다.\n먼저 판별식 $D>0$이어야 하므로\n$D=(-1)^2-4(-k-2)=4k+9>0$\n$k>-\\dfrac{9}{4}$\n\n두 근의 합은 $1>0$이므로 두 근이 모두 $0$ 이상이려면 두 근의 곱이 $0$ 이상이어야 한다.\n$-(k+2)\\ge 0$\n$k\\le -2$\n\n실제로 $k=-2$이면 $t^2-t=0$에서 $t=0,1$로 서로 다른 두 음이 아닌 실근을 가지므로 두 점에서 만난다.\n반면 $k=-\\dfrac{9}{4}$이면 판별식이 $0$이어서 한 점에서만 만난다.\n\n따라서 구하는 실수 $k$의 값의 범위는 $-\\dfrac{9}{4}<k\\le -2$이다.",
+    "score": 10,
+    "points": 10,
+    "sourceQid": 22,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_금당고_2학기_기말_고1_유사3/q22-solution.svg",
+    "solutionImageAlt": "무리함수 y=-√(x+2)의 그래프와 직선 y=-x-2가 (-2,0), (-1,-1)에서 만나고 직선 y=-x-9/4가 점 (-7/4,-1/2)에서 접한다",
+    "solutionImageCaption": "t=√(x+2)로 놓으면 t²-t-(k+2)=0이 서로 다른 두 음이 아닌 실근을 가져야 한다. k=-2이면 직선 y=-x-2가 (-2,0), (-1,-1)에서 만나고, k=-9/4이면 직선이 곡선에 접하여 한 점 (-7/4,-1/2)에서 만난다. 따라서 -9/4<k≤-2이다.",
+    "solutionImageSize": "full"
+  }
+];

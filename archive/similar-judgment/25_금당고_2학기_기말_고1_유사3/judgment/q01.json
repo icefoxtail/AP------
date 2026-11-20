@@ -1,0 +1,76 @@
+{
+  "qid": 1,
+  "itemFingerprint": "36b1beddf8d50b27",
+  "solveSteps": [
+    "② 잘 본, ③ 아주 가까운, ④ 높은, ⑤ 재미있는 은 사람마다 기준이 달라 원소를 분명하게 정할 수 없으므로 집합이 아니다.",
+    "① x^2-3x+2=0 을 풀면 (x-1)(x-2)=0 이므로 자연수 x 는 1, 2 로 분명하게 정해져 집합이다.",
+    "집합인 것은 ① 하나이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-05",
+  "subUnitKey": "H22-C2-05-CORE",
+  "unitEvidence": "집합은 그 모임에 속하는 대상을 객관적으로 분명하게 판단할 수 있어야 한다.",
+  "rpmRecordId": "H1-RPM-231",
+  "rpmReason": "① x^2-3x+2=0 의 자연수 해 {1,2} 처럼 모임의 원소가 분명한지 따지는 집합과 원소의 단계라 집합과 원소 행이다.",
+  "problemTypeKey": "PT_SET_DEFINITION",
+  "templateKey": "TPL_SET_IDENTIFY",
+  "typeReason": "보기 ①~⑤ 가운데 ② 잘 본, ③ 아주 가까운, ④ 높은 같은 모호한 기준의 모임을 가려 내고 x^2-3x+2=0 의 해로 정해지는 ① 만 집합으로 고르는 단계가 집합인지 판정하기 정의와 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "집합의 뜻 \"대상을 분명하게 판단할 수 있다\"를 보기 ①~⑤ 에 바로 적용하고 x^2-3x+2=0 의 해만 확인하면 되는 1단계다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "choices",
+        "quote": "을 만족시키는 자연수 $x$의 모임"
+      },
+      {
+        "term": "실수",
+        "src": "choices",
+        "quote": "아주 가까운 실수들의 모임"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "다음 중 집합인 것은"
+      }
+    ],
+    "method": [
+      {
+        "term": "경우분류",
+        "src": "solution",
+        "quote": "사람마다 판단 기준이 달라",
+        "evidenceType": "IMPLIED",
+        "justification": "보기 ①~⑤ 를 기준이 분명한 모임과 모호한 모임으로 나누어 집합 여부를 가린다"
+      },
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "$(x-1)(x-2)=0$이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "x^2-3x+2=0 을 (x-1)(x-2)=0 으로 인수분해해 해 1, 2 를 구한다"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "보기 다섯 모임을 읽고 기준이 분명한 ① 만 집합임을 확인했다. ① 의 해 1, 2 를 직접 구했고 해설과 같다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

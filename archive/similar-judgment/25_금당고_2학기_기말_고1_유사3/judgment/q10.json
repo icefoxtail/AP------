@@ -1,0 +1,77 @@
+{
+  "qid": 10,
+  "itemFingerprint": "0171c0529519de9c",
+  "solveSteps": [
+    "근호 안이 모두 0 이상이어야 하므로 x+5≥0, x≥-5.",
+    "10-2x≥0 에서 2x≤10, x≤5. 따라서 -5≤x≤5.",
+    "자연수 x 는 1,2,3,4,5 이므로 합은 1+2+3+4+5=15, 보기 ②."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-09",
+  "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+  "unitEvidence": "무리식의 값이 실수가 되려면 근호 안의 식이 모두 $0$ 이상이어야 한다.",
+  "rpmRecordId": "H1-RPM-268",
+  "rpmReason": "근호 안 x+5≥0 과 10-2x≥0 으로 x 의 범위 -5≤x≤5 를 정하는 단계라 정의역 조건 행에 가장 가깝다(무리식 전용 행은 없다).",
+  "problemTypeKey": "PT_RADICAL_EXPRESSION",
+  "templateKey": "TPL_RADICAL_REAL_VALUE_RANGE",
+  "typeReason": "두 근호 안 x+5≥0, 10-2x≥0 이 모두 0 이상이 되는 범위 -5≤x≤5 를 구해 무리식이 실수가 되는 자연수 1~5 를 정하는 단계가 무리식이 실수가 되는 범위 템플릿과 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "근호 안 x+5≥0, 10-2x≥0 두 부등식만 풀어 -5≤x≤5 를 얻고 자연수 1~5 의 합 15 를 구하는 1단계이며 2단계와의 경계다.",
+  "difficultyBoundaryFlag": "B12",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "무리식",
+        "src": "stem",
+        "quote": "무리식 $\\sqrt{x+5}"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "자연수 $x$의 값의 합은"
+      }
+    ],
+    "method": [
+      {
+        "term": "부등식의성질",
+        "src": "solution",
+        "quote": "$2x\\le 10$",
+        "evidenceType": "IMPLIED",
+        "justification": "10-2x≥0 을 이항해 2x≤10, x≤5 로 푼다"
+      },
+      {
+        "term": "열거",
+        "src": "solution",
+        "quote": "$1,2,3,4,5$이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "범위 -5≤x≤5 의 자연수를 1부터 5 까지 나열해 합 15 를 구한다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "범위",
+        "src": "solution",
+        "quote": "$x$의 값의 범위는"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "두 근호 안의 부등식을 각각 풀어 -5≤x≤5 를 얻고 자연수 합 15 로 ② 를 확인했다. 해설과 같다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

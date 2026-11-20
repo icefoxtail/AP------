@@ -1,0 +1,82 @@
+{
+  "qid": 8,
+  "itemFingerprint": "0d03dc3393e0a70f",
+  "solveSteps": [
+    "f(x)=ax+b 에서 y=f(x) 의 그래프가 (1,4) 를 지나므로 f(1)=a+b=4.",
+    "y=f^{-1}(x) 의 그래프가 (1,4) 를 지나므로 f^{-1}(1)=4, 즉 f(4)=4a+b=1.",
+    "두 식을 빼면 3a=-3, a=-1, b=5.",
+    "b-a=5-(-1)=6, 보기 ⑤."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+  "unitEvidence": "$y=f^{-1}(x)$의 그래프가 점 $(1,4)$를 지나므로",
+  "rpmRecordId": "H1-RPM-255",
+  "rpmReason": "f(x)=ax+b 에서 f^{-1}(1)=4 를 f(4)=1 로 바꾸어 f(1)=4 와 함께 a+b=4, 4a+b=1 을 세우는 역함수 값 구하기 단계다.",
+  "problemTypeKey": "PT_INVERSE_VALUE",
+  "templateKey": "TPL_INVERSE_VALUE_DIRECT",
+  "typeReason": "f(x)=ax+b 에서 역함수의 그래프가 (1,4) 를 지난다는 조건 f^{-1}(1)=4 를 f(4)=1 로 바꾸고 f(1)=4 와 연립해 a=-1, b=5 를 구하는 단계가 역함숫값 직접 구하기와 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "f(x)=ax+b 에서 역함수 그래프의 점 (1,4) 를 f(4)=1 로 바꾸고, a+b=4 와 4a+b=1 연립으로 a=-1, b=5 를 구해 b-a=6 을 얻는 세 단계다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $f(x)=ax+b$에"
+      },
+      {
+        "term": "역함수",
+        "src": "stem",
+        "quote": "그 역함수 $y=f^{-1}(x)$의 그래프가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$b-a$의 값은"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "두 식을 $f(x)=ax+b$에 대입하면",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "가감법",
+        "src": "solution",
+        "quote": "둘째 식에서 첫째 식을 빼면",
+        "evidenceType": "IMPLIED",
+        "justification": "두 식 a+b=4, 4a+b=1 을 빼서 b 를 없앤다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "통과",
+        "src": "stem",
+        "quote": "모두 점 $(1,4)$를 지날 때"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "f(x)=ax+b 에서 역함수 그래프의 점을 f(4)=1 로 바꿔 a=-1, b=5 를 얻고 6 으로 ⑤ 를 확인했다. 해설과 같다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
