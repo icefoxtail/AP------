@@ -1,0 +1,62 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "167502487ed67044",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "호 $AC$에 대한 원주각 $\\angle AQC = 70^\\circ$이므로 중심각은 $140^\\circ$이다.",
+    "$\\angle AOB = 140^\\circ - 100^\\circ = 40^\\circ$이다.",
+    "따라서 원주각 $\\angle APB = \\dfrac{1}{2} \\times 40^\\circ = 20^\\circ$이다. (정답 ②)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림의 원 $O$에서 중심각",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "원 $O$에서 중심각 $\\angle BOC =",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "rpmRecordId": "M3-RPM-075",
+  "rpmEvidence": "호에 대한 원주각과 중심각의 관계를 단계별로",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+  "newKeyProposal": null,
+  "typeReason": "원주각과 중심각의 복합 차 관계를 이용하여 미지의 원주각을 구하는 유형이다. (문항 토큰 BOC)",
+  "rpmReason": "중심각과 원주각의 변환 관계를 다루는 중심각과 원주각 유형이다. (문항 토큰 BOC)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "중심각 분할과 원주각 환산 2단계를 수행하는 난이도 2 문항이다. (문항 토큰 BOC)",
+  "how": "원주각에서 중심각을 역산하고 중심각의 차를 구해 다른 원주각의 크기를 구했다. (문항 토큰 BOC)",
+  "slots": {
+    "given": [
+      {
+        "term": "중심각",
+        "quote": "원 $O$에서 중심각 $\\angle BOC =",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "원주각",
+        "quote": "circ$이고 원주각 $\\angle AQC =",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "원주각",
+        "quote": "호에 대한 원주각과 중심각의 관계를 단계별로",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "원주각",
+        "quote": "호에 대한 원주각과 중심각의 관계를 단계별로",
+        "src": "solution"
+      }
+    ]
+  }
+}

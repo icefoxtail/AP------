@@ -1,0 +1,62 @@
+{
+  "qid": "q01",
+  "itemFingerprint": "2f25989f36b316f1",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "호 $\\wideparen{AB}$에 대한 원주각 $\\angle APB = \\dfrac{1}{2}\\angle AOB$이다.",
+    "$\\angle x = \\dfrac{1}{2} \\times 130^\\circ = 65^\\circ$이다.",
+    "따라서 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림의 원 $O$에서 호",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "B}$에 대한 중심각 $\\angle AOB =",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "rpmRecordId": "M3-RPM-075",
+  "rpmEvidence": "한 호에 대한 원주각의 크기는 그 호에 대한 중",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+  "newKeyProposal": null,
+  "typeReason": "호에 대한 원주각과 중심각 사이의 기본 비례 관계를 묻는 유형이다. (문항 토큰 AB)",
+  "rpmReason": "중심각과 원주각의 크기 관계를 적용하는 중심각과 원주각 유형이다. (문항 토큰 AB)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기초적인 원주각 공식을 직접 대입하는 난이도 1 문항이다. (문항 토큰 AB)",
+  "how": "호에 대한 원주각의 크기가 중심각의 절반임을 이용하여 각을 계산했다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "중심각",
+        "quote": "B}$에 대한 중심각 $\\angle AOB =",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "원주각",
+        "quote": "은 호에 대한 원주각 $\\angle APB =",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "원주각",
+        "quote": "한 호에 대한 원주각의 크기는 그 호에 대한 중",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "원주각",
+        "quote": "한 호에 대한 원주각의 크기는 그 호에 대한 중",
+        "src": "solution"
+      }
+    ]
+  }
+}

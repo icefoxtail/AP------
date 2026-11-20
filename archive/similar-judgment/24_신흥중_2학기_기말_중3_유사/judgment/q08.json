@@ -1,0 +1,62 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "15f87f78897e62c7",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "지름 $AB$에 대한 원주각 $\\angle ACB = 90^\\circ$이다.",
+    "특수각 삼각비와 접현각을 적용하여 계산하면 선분 $AD = 21\\rm,cm$이다.",
+    "따라서 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 점 $D$는 원 $O$ 위의 점 $C$에서의 접선과",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$C$에서의 접선과 지름 $AB$의 연장선의",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-070",
+  "rpmEvidence": "직각삼각형의 삼각비와 접현각의 성질을",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TPL_CIRCLE_TANGENT_RIGHT_TRIANGLE",
+  "newKeyProposal": null,
+  "typeReason": "원의 접선과 지름이 이루는 직각삼각형에서 삼각비와 접현각으로 길이를 구하는 유형이다. (문항 토큰 AB)",
+  "rpmReason": "접점에서의 기하적 성질을 분석하는 접점의 반지름과 접선 유형이다. (문항 토큰 AB)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "삼각비와 원의 접선 성질을 융합하여 선분 길이를 계산하는 난이도 3 문항이다. (문항 토큰 AB)",
+  "how": "지름 원주각 90도, 특수각 삼각비, 접선과 현의 각 성질을 연계하여 길이를 도출했다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "접선",
+        "quote": "$C$에서의 접선과 지름 $AB$의 연장선의",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "quote": "circ$이고 선분 $AB = 14\\rm,cm",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "직각삼각형",
+        "quote": "직각삼각형의 삼각비와 접현각의 성질을",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직각삼각형",
+        "quote": "직각삼각형의 삼각비와 접현각의 성질을",
+        "src": "solution"
+      }
+    ]
+  }
+}

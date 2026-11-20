@@ -1,0 +1,61 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "a050ddf5af4ec469",
+  "solvedAnswer": "$70^\\circ$",
+  "solveSteps": [
+    "원주각 $55^\\circ$에서 중심각 $\\angle BOC = 110^\\circ$이다.",
+    "접선 직각 조건에 의해 $\\angle BAC = 180^\\circ - 110^\\circ = 70^\\circ$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "서술형2. 다음 그림에서 두 선분 $AB$와 $AC$는 점 $A$에서 원 $O$에 그은 두 접선이고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 선분 $AB$와 $AC$는 점 $A$에서 원 $O$에 그은 두 접선이고",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-071",
+  "rpmEvidence": "원주각과 중심각의 관계 및 접선의 성질을 단계별로 서술한다.",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TPL_CIRCLE_TANGENT_RIGHT_TRIANGLE",
+  "newKeyProposal": null,
+  "typeReason": "원주각으로부터 중심각을 구하고 접선 직각 조건으로 두 접선 사이의 각을 구하는 서술형 유형이다. (문항 토큰 AB)",
+  "rpmReason": "한 점에서 그은 두 접선과 반지름이 이루는 각의 성질을 다루는 한 점에서 그은 두 접선 유형이다. (문항 토큰 AB)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "원주각과 접선 성질을 단계별로 연결 서술하는 난이도 2 문항이다. (문항 토큰 AB)",
+  "how": "원주각에서 중심각을 도출하고 두 접선의 직각 성질을 이용해 사잇각을 서술했다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "접선",
+        "quote": "두 선분 $AB$와 $AC$는 점 $A$에서 원 $O$에 그은 두 접선이고",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "접점",
+        "quote": "두 점 $B, C$는 그 접점이다.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "접선",
+        "quote": "원주각과 중심각의 관계 및 접선의 성질을 단계별로 서술한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "접선",
+        "quote": "따라서 구하는 각 $\\angle BAC$의 크기는 $70^\\circ$이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

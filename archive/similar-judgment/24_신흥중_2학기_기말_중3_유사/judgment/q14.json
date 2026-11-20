@@ -1,0 +1,63 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "204d324ea579e0cb",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "자료 $4, 5, 6, a, 12, 13$에서 중앙값이 7이므로 $(6+a)/2 = 7 \\implies a = 8$이다.",
+    "평균은 $(4+5+6+8+12+13)/6 = 48/6 = 8$회이다.",
+    "편차 제곱의 평균인 분산 $V = 13$이며 표준편차는 $\\sqrt{13} \\approx 3.6$회이다.",
+    "따라서 정답은 ①이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이 자료의 중앙값이 $7$회일 때",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+  "rpmRecordId": "M3-RPM-085",
+  "rpmEvidence": "중앙값 조건으로 미지수 $a$를 구한 후 평균, 분산, 표준편차를 차례로 계산한다.",
+  "problemTypeKey": "PT_M3_VARIANCE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "대푯값 조건으로부터 변량을 복원하고 산포도인 표준편차를 계산하는 유형이다. (문항 토큰 13)",
+  "rpmReason": "편차 제곱합으로부터 표준편차를 도출하는 표준편차 유형이다. (문항 토큰 13)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "미지수 복원과 분산·표준편차 연산을 순차 진행하는 난이도 3 문항이다. (문항 토큰 13)",
+  "how": "최빈값과 평균으로 미지 변량을 확정하고 편차 제곱의 평균으로 표준편차를 구했다. (문항 토큰 13)",
+  "slots": {
+    "given": [
+      {
+        "term": "중앙값",
+        "quote": "이 자료의 중앙값이 $7$회일 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "표준편차",
+        "quote": "턱걸이 횟수의 표준편차를 구하면?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "표준편차",
+        "quote": "중앙값 조건으로 미지수 $a$를 구한 후 평균, 분산, 표준편차를 차례로 계산한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "표준편차",
+        "quote": "따라서 정답은 ①이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

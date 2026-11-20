@@ -1,0 +1,63 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "302ceb48bbc9ff02",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "자료: $5, 7, 8, a, 10, 8, 4$",
+    "이미 $8$이 $2$개 있으므로 최빈값은 $8$이다.",
+    "평균 $(42+a)/7 = 8 \\implies 42 + a = 56 \\implies a = 14$이다.",
+    "따라서 정답은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$개의 자료의 평균과 최빈값이 서로 같다고 할",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+  "rpmRecordId": "M3-RPM-081",
+  "rpmEvidence": "자료의 최빈값과 평균의 정의를 이용하여",
+  "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+  "templateKey": "TPL_M3_DETERMINE_UNKNOWN_FROM_MEAN_AND_MEDIAN_CONDITIONS",
+  "newKeyProposal": null,
+  "typeReason": "평균과 최빈값이 일치한다는 대푯값 조건으로부터 미지 변량을 결정하는 유형이다. (문항 토큰 10)",
+  "rpmReason": "대푯값의 정의와 성질을 다루는 평균·중앙값·최빈값 유형이다. (문항 토큰 10)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "최빈값 판단과 일차방정식 해결을 결합한 난이도 2 문항이다. (문항 토큰 10)",
+  "how": "최빈값을 먼저 확정하고 평균 공식과의 일치 방정식을 풀어 미지수를 구했다. (문항 토큰 10)",
+  "slots": {
+    "given": [
+      {
+        "term": "평균",
+        "quote": "$개의 자료의 평균과 최빈값이 서로 같다고 할",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최빈값",
+        "quote": "자료의 평균과 최빈값이 서로 같다고 할 때, 상",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "최빈값",
+        "quote": "자료의 최빈값과 평균의 정의를 이용하여",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "평균",
+        "quote": "료의 최빈값과 평균의 정의를 이용하여 미지수",
+        "src": "solution"
+      }
+    ]
+  }
+}

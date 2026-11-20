@@ -1,0 +1,62 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "d2288865d149d96d",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "남학생 $15$명, 여학생 $25$명 모두 평균 $70$점이므로 전체 $40$명의 평균도 $70$점이다.",
+    "전체 분산은 두 편차 제곱합의 합을 $40$으로 나눈 값이다.",
+    "따라서 전체 분산은 $70$이므로 정답은 ①이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "남학생 $15$명과 여학생 $25$명의 점수의 평균은 같고",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+  "rpmRecordId": "M3-RPM-084",
+  "rpmEvidence": "두 집단의 평균이 같을 때의 전체 분산 결합 원리를 적용한다.",
+  "problemTypeKey": "PT_M3_VARIANCE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "평균이 동일한 두 집단의 인원수와 분산으로부터 전체 집단의 표준편차를 구하는 유형이다. (문항 토큰 15)",
+  "rpmReason": "두 집단의 분산을 통합 계산하는 분산 유형이다. (문항 토큰 15)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "가중 평균 원리를 편차 제곱합에 적용하는 난이도 2 문항이다. (문항 토큰 15)",
+  "how": "평균이 같은 두 집단의 편차 제곱 총합을 전체 인원수로 나누어 결합 분산을 구했다. (문항 토큰 15)",
+  "slots": {
+    "given": [
+      {
+        "term": "평균",
+        "quote": "남학생 $15$명과 여학생 $25$명의 점수의 평균은 같고",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "분산",
+        "quote": "참가한 전체 $40$명 점수의 분산을 구하면? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "분산",
+        "quote": "두 집단의 평균이 같을 때의 전체 분산 결합 원리를 적용한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "분산",
+        "quote": "따라서 정답은 ①이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "d76b2fc28fea73d4",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "6명 자료: $12, 14, x, y, 22, 25$에서 중앙값 $(x+y)/2 = 18 \\implies x+y = 36$",
+    "자료 수정 후 가운데 두 값의 평균을 구하면 $19$가 된다.",
+    "따라서 바뀐 자료의 중앙값은 ④ $19$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$13$점이고 중앙값은 $10$점이다. 여기에",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+  "rpmRecordId": "M3-RPM-081",
+  "rpmEvidence": "중앙값의 정의와 변량 추가에 따른",
+  "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+  "templateKey": "TPL_M3_CENTRAL_TENDENCY_MEDIAN_MODE_ORDER_POSITION",
+  "newKeyProposal": null,
+  "typeReason": "자료의 정렬 순서와 중앙값의 정의를 이용하여 수정된 자료의 중앙값을 추론하는 유형이다. (문항 토큰 13)",
+  "rpmReason": "짝수 개수 자료의 중앙값 계산을 다루는 평균·중앙값·최빈값 유형이다. (문항 토큰 13)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "자료 갱신 전후의 순서 위치와 중앙값을 추론하는 난이도 2 문항이다. (문항 토큰 13)",
+  "how": "중앙값 정의로 미지수의 합을 구하고 자료 수정 후의 중앙값을 재계산했다. (문항 토큰 13)",
+  "slots": {
+    "given": [
+      {
+        "term": "중앙값",
+        "quote": "$13$점이고 중앙값은 $10$점이다. 여기에",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "중앙값",
+        "quote": "$13$점이고 중앙값은 $10$점이다. 여기에",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "중앙값",
+        "quote": "중앙값의 정의와 변량 추가에 따른",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "중앙값",
+        "quote": "중앙값의 정의와 변량 추가에 따른",
+        "src": "solution"
+      }
+    ]
+  }
+}

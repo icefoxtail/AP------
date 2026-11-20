@@ -1,0 +1,61 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "e5b1cb95578f7354",
+  "solvedAnswer": "$48 + 16\\sqrt{3}$",
+  "solveSteps": [
+    "호의 비 $4 : 5 : 3$에서 중심각 $120^\\circ, 150^\\circ, 90^\\circ$이다.",
+    "세 삼각형 넓이의 합은 $16\\sqrt{3} + 16 + 32 = 48 + 16\\sqrt{3}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "서술형1. 다음 그림에서 반지름의 길이가 $8$인 원 $O$",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림에서 반지름의 길이가 $8$인 원 $O",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "rpmRecordId": "M3-RPM-075",
+  "rpmEvidence": "부터 각 호의 중심각의 크기를 구한 뒤 세 삼각",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+  "newKeyProposal": null,
+  "typeReason": "호의 길이 비례로 중심각을 계산하고 삼각비를 이용해 내접삼각형의 넓이를 구하는 서술형 유형이다. (문항 토큰 AB)",
+  "rpmReason": "중심각의 크기를 구하고 기하적 계산을 수행하는 중심각과 원주각 유형이다. (문항 토큰 AB)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "비례 배분과 삼각함수 넓이 공식을 종합 서술하는 난이도 3 문항이다. (문항 토큰 AB)",
+  "how": "호의 길이 비로 중심각을 구하고 삼각형 넓이 공식을 적용하여 합산했다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "반지름",
+        "quote": "다음 그림에서 반지름의 길이가 $8$인 원 $O",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각형",
+        "quote": "만족시킬 때, 삼각형 $ABC$의 넓이를 구하는",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "중심각",
+        "quote": "부터 각 호의 중심각의 크기를 구한 뒤 세 삼각",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "삼각형",
+        "quote": "구한 뒤 세 삼각형의 넓이의 합으로 $\\tri",
+        "src": "solution"
+      }
+    ]
+  }
+}

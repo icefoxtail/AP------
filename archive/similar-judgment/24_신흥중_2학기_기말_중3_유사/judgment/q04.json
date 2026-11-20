@@ -1,0 +1,62 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "6df574e2db901405",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "오각형 내접에서 호의 중심각 합은 $360^\\circ + 80^\\circ = 440^\\circ$이다.",
+    "두 원주각의 합은 중심각 합의 절반이므로 $440^\\circ / 2 = 220^\\circ$이다.",
+    "따라서 정답은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 오각형 $ABCDE$가 원 $O$에 내접하고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "원 $O$에 내접하고 중심각 $\\angle",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "rpmRecordId": "M3-RPM-077",
+  "rpmEvidence": "원주각과 대하는 호의 중심각의 관",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_INSCRIBED_POLYGON_ARC_SUM",
+  "newKeyProposal": null,
+  "typeReason": "원에 내접하는 다각형에서 원주각과 대하는 호의 중심각 합을 연계하는 유형이다. (문항 토큰 ABCDE)",
+  "rpmReason": "내접다각형의 각과 원주각 성질을 응용하는 내접사각형의 각 유형이다. (문항 토큰 ABCDE)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "오각형에서 보조선 또는 호의 분할 합을 유도하는 난이도 2 문항이다. (문항 토큰 ABCDE)",
+  "how": "원주각이 대하는 호의 중심각 합을 구하고 2로 나누어 두 내각의 합을 도출했다. (문항 토큰 ABCDE)",
+  "slots": {
+    "given": [
+      {
+        "term": "내접",
+        "quote": "원 $O$에 내접하고 중심각 $\\angle",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "중심각",
+        "quote": "$에 내접하고 중심각 $\\angle BOC =",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "원주각",
+        "quote": "원주각과 대하는 호의 중심각의 관",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "원주각",
+        "quote": "원주각과 대하는 호의 중심각의 관",
+        "src": "solution"
+      }
+    ]
+  }
+}

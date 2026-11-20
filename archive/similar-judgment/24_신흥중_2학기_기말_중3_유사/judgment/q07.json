@@ -1,0 +1,62 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "5c94af9a6a5d5290",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "접현각 성질에 의해 $\\angle ADB = \\angle BAT = 35^\\circ$이다.",
+    "내접사각형 성질과 삼각형 내각 합으로 계산하면 $\\angle C = 70^\\circ$이다.",
+    "따라서 정답은 ①이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 직선 $AT$는 원 $O$의 접선이고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "원 $O$의 접선이고 점 $A$는 접점이다.",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "rpmRecordId": "M3-RPM-079",
+  "rpmEvidence": "접선과 현이 이루는 각 및 원에",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+  "newKeyProposal": null,
+  "typeReason": "접선과 현이 이루는 각의 성질과 내접사각형 성질을 복합 활용하는 유형이다. (문항 토큰 AT)",
+  "rpmReason": "접현각과 원주각의 등가성을 활용하는 접선과 현이 이루는 각 유형이다. (문항 토큰 AT)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "접현각 변환과 내접사각형 대각 판정을 연쇄적으로 적용하는 난이도 3 문항이다. (문항 토큰 AT)",
+  "how": "접선과 현이 이루는 각과 내접사각형 대각의 합 성질을 연계하여 각을 구했다. (문항 토큰 AT)",
+  "slots": {
+    "given": [
+      {
+        "term": "접선",
+        "quote": "원 $O$의 접선이고 점 $A$는 접점이다.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "접선",
+        "quote": "원 $O$의 접선이고 점 $A$는 접점이다.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "접선",
+        "quote": "접선과 현이 이루는 각 및 원에",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "접선",
+        "quote": "접선과 현이 이루는 각 및 원에",
+        "src": "solution"
+      }
+    ]
+  }
+}

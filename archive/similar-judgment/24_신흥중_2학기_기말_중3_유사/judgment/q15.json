@@ -1,0 +1,62 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "28483ffbb807a800",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "변량 $3, 6, 7, x, 4-x$의 합은 $20$이므로 평균은 $4$이다.",
+    "편차 제곱합으로부터 이차방정식 $x^2 - 4x + 3 = 0$을 얻는다.",
+    "따라서 자연수 $x = 3$이므로 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$5$개의 변량 $3, 6, 7, x, 4",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+  "rpmRecordId": "M3-RPM-084",
+  "rpmEvidence": "균을 구한 뒤 분산의 정의를 이용하여 $x$에",
+  "problemTypeKey": "PT_M3_VARIANCE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "분산 조건식을 세워 미지 변량에 대한 이차방정식을 해결하는 유형이다. (문항 토큰 4.8)",
+  "rpmReason": "편차 제곱의 평균인 분산 계산 절차를 다루는 분산 유형이다. (문항 토큰 4.8)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "문자 변량의 분산 식을 전개하고 이차방정식을 풀어야 하는 난이도 3 문항이다. (문항 토큰 4.8)",
+  "how": "합이 일정한 변량들의 평균을 먼저 구하고 분산 정의로부터 이차방정식을 풀어 x를 구했다. (문항 토큰 4.8)",
+  "slots": {
+    "given": [
+      {
+        "term": "변량",
+        "quote": "$5$개의 변량 $3, 6, 7, x, 4",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "분산",
+        "quote": ", 4-x$의 분산이 $4.8$일 때, 이를",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "분산",
+        "quote": "균을 구한 뒤 분산의 정의를 이용하여 $x$에",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "분산",
+        "quote": "균을 구한 뒤 분산의 정의를 이용하여 $x$에",
+        "src": "solution"
+      }
+    ]
+  }
+}

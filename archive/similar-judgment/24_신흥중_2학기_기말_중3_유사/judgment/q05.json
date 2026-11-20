@@ -1,0 +1,62 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "4df0234eccb47f1c",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "지름에 대한 원주각 $\\angle ADB = 90^\\circ$이다.",
+    "$\\angle DAB = 22^\\circ$에서 중심각 계산을 거쳐 $\\angle ADC = 46^\\circ$이다.",
+    "따라서 정답은 ⑤이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 선분 $AB$는 원 $O$의 지름이고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림에서 선분 $AB$는 원 $O$의 지",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "rpmRecordId": "M3-RPM-076",
+  "rpmEvidence": "원주각과 호의 중심각 관계를 단계별로 계산한다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+  "newKeyProposal": null,
+  "typeReason": "반원에 대한 원주각의 성질과 호의 비례를 결합한 각 계산 유형이다. (문항 토큰 AB)",
+  "rpmReason": "지름에 대한 원주각 성질을 다루는 반원에 대한 원주각 유형이다. (문항 토큰 AB)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "직각과 호의 등분 조건을 함께 활용하는 난이도 2 문항이다. (문항 토큰 AB)",
+  "how": "지름에 대한 원주각 90도와 호의 중점 비례 관계를 적용하여 각을 구했다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "quote": "다음 그림에서 선분 $AB$는 원 $O$의 지",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "quote": "다음 그림에서 선분 $AB$는 원 $O$의 지",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "중심각",
+        "quote": "원주각과 호의 중심각 관계를 단계별로 계산한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "중심각",
+        "quote": "원주각과 호의 중심각 관계를 단계별로 계산한다.",
+        "src": "solution"
+      }
+    ]
+  }
+}
