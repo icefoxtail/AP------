@@ -1,0 +1,64 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 8,
+        "depth": 6
+      },
+      "height": 6,
+      "names": {
+        "base": "EFGH",
+        "top": "ABCD"
+      }
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "G",
+      "style": "DASHED",
+      "role": "ACCENT"
+    },
+    {
+      "from": "E",
+      "to": "G",
+      "style": "DASHED",
+      "role": "ACCENT"
+    },
+    {
+      "from": "A",
+      "to": "E",
+      "style": "SOLID",
+      "role": "ACCENT"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "E",
+        "refs": [
+          "A",
+          "G"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "edge": "EF",
+      "side": "BOTTOM"
+    },
+    {
+      "edge": "FG",
+      "side": "RIGHT"
+    },
+    {
+      "edge": "AE",
+      "side": "LEFT"
+    }
+  ],
+  "caption": "직육면체 ABCD-EFGH에서 EF=6, FG=8, AE=6, 각 AGE=x"
+}

@@ -1,0 +1,64 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 8,
+        "depth": 6
+      },
+      "height": 6,
+      "names": {
+        "base": "EFGH",
+        "top": "ABCD"
+      }
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "G",
+      "style": "DASHED",
+      "role": "ACCENT"
+    },
+    {
+      "from": "E",
+      "to": "G",
+      "style": "DASHED",
+      "role": "ACCENT"
+    },
+    {
+      "from": "A",
+      "to": "E",
+      "style": "SOLID",
+      "role": "ACCENT"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "E",
+        "refs": [
+          "A",
+          "G"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "edge": "EF",
+      "side": "BOTTOM"
+    },
+    {
+      "edge": "FG",
+      "side": "RIGHT"
+    },
+    {
+      "edge": "AE",
+      "side": "LEFT"
+    }
+  ],
+  "caption": "밑면 EFGH에서 6, 8로 대각선 EG=10, 직각삼각형 AEG에서 AE=6, 대각선 AG, 각 x, 34"
+}
