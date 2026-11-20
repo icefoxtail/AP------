@@ -1,0 +1,67 @@
+{
+  "qid": 7,
+  "itemFingerprint": "fdfd798844a53c4d",
+  "solveSteps": [
+    "직육면체의 세 모서리를 a, b, c라 하면 4(a+b+c) = 60 이므로 a+b+c = 15 이다.",
+    "대각선의 길이는 sqrt(a^2+b^2+c^2) = 9 이므로 a^2+b^2+c^2 = 81 이다.",
+    "겉넓이는 2(ab+bc+ca) 이며, 곱셈공식 변형에 의해 (a+b+c)^2 - (a^2+b^2+c^2) 이다.",
+    "2(ab+bc+ca) = 15^2 - 81 = 225 - 81 = 144 이다.",
+    "정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-C-01",
+  "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+  "unitEvidence": "어느 직육면체의 모든 모서리의 길이의 합이 $60$이고",
+  "rpmRecordId": "H1-RPM-136",
+  "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+  "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "모서리합 4(a+b+c)=60, 대각선 sqrt(a^2+b^2+c^2)=9에서 겉넓이 2(ab+bc+ca)=15^2-81=144를 구했다.",
+  "typeReason": "직육면체 모서리 합 60과 대각선 조건으로부터 곱셈공식 변형으로 겉넓이 144를 구하는 대칭식 유형이다.",
+  "rpmReason": "삼차 대칭 곱셈공식 변형을 입체도형 겉넓이 60에 적용하는 RPM 유형이다.",
+  "difficultyReason": "기본적인 곱셈공식 변형 15^2-81=144를 적용하는 전형적인 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "직육면체",
+        "quote": "어느 직육면체의 모든 모서리의 길이의 합이 $60$이고",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "겉넓이",
+        "quote": "이 직육면체의 겉넓이는?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "곱셈공식",
+        "quote": "구하는 겉넓이는 $2(ab + bc + ca)$이므로 곱셈 공식의 변형에 의하여",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "대각선",
+        "quote": "대각선의 길이: $\\sqrt{a^2 + b^2 + c^2} = 9 \\implies a^2 + b^2 + c^2 = 81$",
+        "src": "solution"
+      }
+    ]
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

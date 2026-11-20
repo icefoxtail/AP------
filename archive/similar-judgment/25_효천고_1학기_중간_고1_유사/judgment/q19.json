@@ -1,0 +1,67 @@
+{
+  "qid": 19,
+  "itemFingerprint": "882fe1611bd6ec9d",
+  "solveSteps": [
+    "f(x) = ax^3 + bx^2 + cx + d 로 놓는다.",
+    "8*f(1/2) - f(2) = -7(a - d) - 2(b - c) = 0 이고 27*f(1/3) - f(3) = -26(a - d) - 6(b - c) = 0 이다.",
+    "연립하면 a - d = 0, b - c = 0 이므로 d = a, c = b 이다.",
+    "f(x)를 x+1로 나눈 나머지는 f(-1) = -a + b - c + d = (-a + a) + (b - b) = 0 이다.",
+    "정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-C-02",
+  "subUnitKey": "H22-C-02-REMAINDER",
+  "unitEvidence": "삼차다항식 $f(x)$에 대하여 $f!\\left(\\dfrac{1}{2}\\right) = \\dfrac{f(2)}{8}$,",
+  "rpmRecordId": "H1-RPM-142",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "f(x)=ax^3+bx^2+cx+d 조건에서 d=a, c=b를 연립도출하여 나머지 f(-1)=-a+b-c+d=0을 구했다.",
+  "typeReason": "삼차다항식 ax^3 조건식을 연립하여 계수 대칭성을 유도하고 나머지 f(-1)=0을 구하는 유형이다.",
+  "rpmReason": "일차식으로 나눈 나머지를 구하기 위해 연립방정식으로 ax^3 등의 계수 관계를 도출하는 RPM 유형이다.",
+  "difficultyReason": "미지수 4개 ax^3 등에서 관계식 d=a, c=b를 연립하여 f(-1)=0임을 증명하는 난이도 3 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "quote": "삼차다항식 $f(x)$에 대하여 $f!\\left(\\dfrac{1}{2}\\right) = \\dfrac{f(2)}{8}$,",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "quote": "$f(x)$를 $x + 1$로 나누었을 때의 나머지는?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "연립방정식",
+        "quote": "두 식을 연립하여 풀면 $a - d = 0$, $b - c = 0$, 즉 $d = a$, $c = b$이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "나머지",
+        "quote": "따라서 $f(x)$를 $x + 1$로 나누었을 때의 나머지는 $$f(-1) = -a + b - c + d = (-a + a) + (b - b) = 0$$",
+        "src": "solution"
+      }
+    ]
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

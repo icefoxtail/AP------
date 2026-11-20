@@ -1,0 +1,67 @@
+{
+  "qid": 11,
+  "itemFingerprint": "dc15e559c28db407",
+  "solveSteps": [
+    "분모와 분자에 4 - 3i를 곱해 실수화하면 분모는 4^2 + 3^2 = 25 이다.",
+    "분자는 (3a - i)(4 - 3i) = 12a - 9ai - 4i + 3i^2 = (12a - 3) - (9a + 4)i 이다.",
+    "실수부분은 (12a-3)/25 이고 허수부분은 -(9a+4)/25 이다.",
+    "두 부분의 합이 1/5 = 5/25 이므로 (3a - 7)/25 = 5/25 에서 3a - 7 = 5, 즉 a = 4 이다.",
+    "정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-C-04",
+  "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+  "unitEvidence": "복소수 $\\dfrac{3a - i}{4 + 3i}$의 실수부분과 허수부분의 합이",
+  "rpmRecordId": "H1-RPM-156",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "분모 실수화로 ((12a-3)-(9a+4)i)/25를 얻고 (3a-7)/25=1/5=5/25에서 a=4를 구했다.",
+  "typeReason": "복소수 분수의 분모 실수화 25 후 실수부와 허수부의 합 조건 일차방정식을 푸는 유형이다.",
+  "rpmReason": "복소수의 사칙연산과 분모 25 실수화 기본 계산을 다루는 RPM 유형이다.",
+  "difficultyReason": "분모 실수화로 25를 만들고 성분별 합 방정식을 세워 4를 도출하는 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "quote": "복소수 $\\dfrac{3a - i}{4 + 3i}$의 실수부분과 허수부분의 합이",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "quote": "실수 $a$의 값은? (단, $i = \\sqrt{-1}$)",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "분모",
+        "quote": "분모와 분자에 $4 - 3i$를 곱하여 실수화하면",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실수부분",
+        "quote": "실수부분과 허수부분의 합이 $\\frac{1}{5}$이므로",
+        "src": "solution"
+      }
+    ]
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

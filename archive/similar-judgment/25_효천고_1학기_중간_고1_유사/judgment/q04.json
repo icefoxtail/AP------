@@ -1,0 +1,67 @@
+{
+  "qid": 4,
+  "itemFingerprint": "f2f02321789814f1",
+  "solveSteps": [
+    "보기 ②의 우변을 전개하면 (x^2 + x + 1)(x^2 - x + 1) = (x^2 + 1)^2 - x^2 = x^4 + x^2 + 1 이다.",
+    "이는 좌변의 x^4 - x^2 + 1 과 일치하지 않으므로 ②는 옳지 않다.",
+    "보기 ④의 a^3+b^3+c^3-3abc 공식을 포함해 ab 등의 인수분해를 검토한다.",
+    "보기 ①, ③, ④, ⑤는 모두 표준 곱셈공식에 따른 올바른 인수분해이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-C-03",
+  "subUnitKey": "H22-C-03-FACTORIZATION",
+  "unitEvidence": "다음 중 인수분해가 옳지 않은 것은?",
+  "rpmRecordId": "H1-RPM-149",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "보기를 전개하여 (x^2+x+1)(x^2-x+1)=x^4+x^2+1이므로 x^4-x^2+1과 일치하지 않음을 판정하고 ab 공식과 비교했다.",
+  "typeReason": "고등학교 기본 ab 인수분해 공식의 정확한 형태를 보기에서 확인하고 판별하는 유형이다.",
+  "rpmReason": "합과 차의 곱셈공식 및 ab 복이차식 형태의 인수분해 공식 RPM 유형이다.",
+  "difficultyReason": "인수분해 공식의 ab 부호 오류를 전개 확인을 통해 찾아내는 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "인수분해",
+        "quote": "다음 중 인수분해가 옳지 않은 것은?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수분해",
+        "quote": "다음 중 인수분해가 옳지 않은 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "공식",
+        "quote": "나머지 ①, ③, ④, ⑤는 모두 옳은 인수분해 공식이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "인수분해",
+        "quote": "$(x^2 + x + 1)(x^2 - x + 1) = (x^2 + 1)^2 - x^2 = x^4 + 2x^2 + 1 - x^2 = x^4 + x^2 + 1$이므로 좌변 $x^4 - x^2 + 1$과 다르다.",
+        "src": "solution"
+      }
+    ]
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

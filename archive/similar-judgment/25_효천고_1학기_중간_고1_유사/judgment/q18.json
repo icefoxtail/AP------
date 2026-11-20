@@ -1,0 +1,68 @@
+{
+  "qid": 18,
+  "itemFingerprint": "ebadbbcaa803422e",
+  "solveSteps": [
+    "z+3i = a + (b+3)i 와 z_bar - 3i = a - (b+3)i 는 서로 켤레복소수이다.",
+    "(z+3i)(z_bar - 3i) = a^2 + (b+3)^2 = 65 이다.",
+    "a, b가 자연수이므로 b+3 >= 4 이고, 제곱수 합이 65인 쌍은 1^2 + 8^2, 4^2 + 7^2 이다.",
+    "가능한 (a, b)는 (1, 5), (4, 4), (7, 1) 이다.",
+    "(z+2)(z_bar+2) = (a+2)^2 + b^2 에 대입하면 각각 3^2+5^2=34, 6^2+4^2=52, 9^2+1^2=82 이므로 최솟값은 34 이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-C-04",
+  "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+  "unitEvidence": "두 자연수 $a, b$에 대하여 복소수 $z = a + bi$가 $(z + 3i)(\\bar{z} - 3i) = 65$를 만족시킬 때,",
+  "rpmRecordId": "H1-RPM-157",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "a^2+(b+3)^2=65를 만족하는 자연수 쌍 (1,5), (4,4), (7,1) 중 (a+2)^2+b^2 최솟값 3^2+5^2=34를 구했다.",
+  "typeReason": "복소수와 켤레복소수의 곱 구조로부터 정수 부정방정식을 풀어 식의 최솟값 65를 구하는 유형이다.",
+  "rpmReason": "켤레복소수의 노름 곱을 이용해 자연수 조건 부정방정식 65를 해석하는 RPM 유형이다.",
+  "difficultyReason": "부정방정식 순서쌍 후보를 분류하고 각각 식의 값을 비교해 34를 도출하는 난이도 3 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "quote": "두 자연수 $a, b$에 대하여 복소수 $z = a + bi$가 $(z + 3i)(\\bar{z} - 3i) = 65$를 만족시킬 때,",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "quote": "$(z + 2)(\\bar{z} + 2)$의 최솟값은? (단, $i = \\sqrt{-1}$)",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "켤레복소수",
+        "quote": "$z + 3i = a + (b + 3)i$와 $\\bar{z} - 3i = a - (b + 3)i$는 서로 켤레복소수이므로",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "거듭제곱",
+        "quote": "제곱의 합이 $65$인 두 자연수 쌍은 $1^2 + 8^2$과 $4^2 + 7^2$이므로",
+        "src": "solution"
+      }
+    ]
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

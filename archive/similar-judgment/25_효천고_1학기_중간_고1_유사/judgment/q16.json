@@ -1,0 +1,68 @@
+{
+  "qid": 16,
+  "itemFingerprint": "1599317990a7ec2b",
+  "solveSteps": [
+    "2x^2 + ax + b = 0 의 계수가 실수이므로 한 근이 -2+i 이면 다른 근은 -2-i 이다.",
+    "두 근의 합은 (-2+i) + (-2-i) = -4 = -a/2 에서 a = 8 이다.",
+    "두 근의 곱은 (-2)^2 + 1^2 = 5 = b/2 에서 b = 10 이다.",
+    "x^2 - 16x + 10 + k = 0 이 서로 다른 두 실근을 가지므로 D/4 = (-8)^2 - (10+k) = 54 - k > 0 에서 k < 54 이다.",
+    "54보다 작은 홀수인 자연수는 1, 3, 5, ..., 53 으로 (53-1)/2 + 1 = 27개이다.",
+    "정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-C-05",
+  "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+  "unitEvidence": "$x$에 대한 이차방정식 $2x^2 + ax + b = 0$의 한 근이 $-2 + i$이고,",
+  "rpmRecordId": "H1-RPM-165",
+  "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+  "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "켤레근에서 a=8, b=10을 구하고 판별식 D/4=64-(10+k)>0에서 k<54인 홀수 27개를 구했다.",
+  "typeReason": "실수 계수 이차방정식의 켤레근 성질로 미정계수를 구하고 판별식 조건으로 자연수 27을 카운트하는 유형이다.",
+  "rpmReason": "복소수 허근 조건에서 켤레근과 계수 관계를 판별식 부등식 54에 연계하는 RPM 유형이다.",
+  "difficultyReason": "켤레근으로 계수를 결정한 뒤 판별식 조건과 홀수 개수 27을 정확히 세어야 하는 난이도 3 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "quote": "$x$에 대한 이차방정식 $2x^2 + ax + b = 0$의 한 근이 $-2 + i$이고,",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "quote": "서로 다른 두 실근을 갖도록 하는 홀수인 자연수 $k$의 개수는?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "켤레복소수",
+        "quote": "계수가 모두 실수이므로 한 근이 $-2 + i$이면 켤레복소수 $-2 - i$도 근이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실근",
+        "quote": "서로 다른 두 실근을 가지므로 $$\\frac{D}{4} = (-8)^2 - (10 + k) > 0 \\implies 54 - k > 0",
+        "src": "solution"
+      }
+    ]
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

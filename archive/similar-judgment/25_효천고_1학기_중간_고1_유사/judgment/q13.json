@@ -1,0 +1,68 @@
+{
+  "qid": 13,
+  "itemFingerprint": "a43572e49dbfe890",
+  "solveSteps": [
+    "근과 계수의 관계에 의해 alpha + beta = -3/2, alpha*beta = 2 이다.",
+    "alpha^2 + beta^2 = (-3/2)^2 - 2*2 = 9/4 - 4 = -7/4 이고 (alpha*beta)^2 = 4 이다.",
+    "새 방정식 x^2 + ax + b = 0의 두 근이 1/alpha^2, 1/beta^2 이므로 -a = (alpha^2+beta^2)/(alpha*beta)^2 = (-7/4)/4 = -7/16 에서 a = 7/16 이다.",
+    "b = 1/(alpha*beta)^2 = 1/4 이다.",
+    "7/a + 1/b = 7/(7/16) + 1/(1/4) = 16 + 4 = 20 이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-C-05",
+  "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+  "unitEvidence": "이차방정식 $2x^2 + 3x + 4 = 0$의 두 근을 $\\alpha, \\beta$라 하자.",
+  "rpmRecordId": "H1-RPM-163",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "TPL_H1_ROOT_COEFFICIENT_RELATION_EQUATION",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "근과 계수의 관계에서 a=7/16, b=1/4를 구하고 7/(7/16)+1/(1/4)=16+4=20을 계산했다.",
+  "typeReason": "원래 방정식의 근과 계수의 관계로부터 역수 제곱근으로 구성된 새 방정식 계수 합 20을 구하는 유형이다.",
+  "rpmReason": "두 근의 합과 곱을 이용해 새로운 이차방정식을 작성하고 20을 계산하는 RPM 유형이다.",
+  "difficultyReason": "대칭식 계산 후 역수 합을 적용하여 16+4=20을 구하는 전형적인 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "quote": "이차방정식 $2x^2 + 3x + 4 = 0$의 두 근을 $\\alpha, \\beta$라 하자.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "quote": "$\\dfrac{7}{a} + \\dfrac{1}{b}$의 값은? (단, $a, b$는 실수이다.)",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "관계",
+        "quote": "근과 계수의 관계에 의하여 $\\alpha + \\beta = -\\frac{3}{2}$, $\\alpha\\beta = 2$이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "이차방정식",
+        "quote": "새로운 이차방정식 $x^2 + ax + b = 0$의 두 근이 $\\frac{1}{\\alpha^2}, \\frac{1}{\\beta^2}$이므로",
+        "src": "solution"
+      }
+    ]
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

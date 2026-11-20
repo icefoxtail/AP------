@@ -1,0 +1,55 @@
+{
+  "qid": 12,
+  "itemFingerprint": "5a5c54ae4b00a99d",
+  "solveSteps": [
+    "z = (1 - i)/sqrt(2) 로 두면 z^2 = (1 - 2i - 1)/2 = -i 이다.",
+    "z^6 = (-i)^3 = i 이므로 z^7 = z^6 * z = i * (1 - i)/sqrt(2) = (1 + i)/sqrt(2) 이다.",
+    "sqrt(2)/(1 - i) = (1 + i)/sqrt(2) = z_bar 이므로 {sqrt(2)/(1 - i)}^7 = (z_bar)^7 = (1 - i)/sqrt(2) 이다.",
+    "따라서 두 식의 합은 (1 + i)/sqrt(2) + (1 - i)/sqrt(2) = 2/sqrt(2) = sqrt(2) 이다.",
+    "정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-C-04",
+  "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+  "unitEvidence": "7$의 값은? (단, $i = \\sqrt{-1}$)",
+  "rpmRecordId": "H1-RPM-158",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "z=(1-i)/sqrt(2)의 거듭제곱 z^2=-i, z^7=(1+i)/sqrt(2)와 켤레식의 합으로 2/sqrt(2)=sqrt(2)를 구했다.",
+  "typeReason": "특수 복소수 거듭제곱의 주기성과 켤레복소수의 대칭성을 결합하여 식의 값을 7 구하는 유형이다.",
+  "rpmReason": "복소수의 거듭제곱 주기성을 이용해 고차 거듭제곱 7을 환원하는 RPM 유형이다.",
+  "difficultyReason": "제곱이 순허수가 되는 주기 구조를 파악해 7차 거듭제곱을 계산하는 난이도 3 문항이다.",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "quote": "7$의 값은? (단, $i = \\sqrt{-1}$)",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "값",
+        "quote": "따라서 구하는 값은 $$\\frac{1 + i}{\\sqrt{2}} + \\frac{1 - i}{\\sqrt{2}} =",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}
