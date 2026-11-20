@@ -1,0 +1,57 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "fe38317fff701fb3",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "마름모 $ABCD$의 넓이는 $\\dfrac{1}{2}\\times 14\\times 30=210\\text{ cm}^2$이다.",
+    "대각선 $AC$는 마름모의 넓이를 이등분하므로 $\\triangle ABC=\\dfrac{1}{2}\\times 210=105\\text{ cm}^2$이다.",
+    "$\\triangle ABP$와 $\\triangle APC$는 높이가 같으므로 넓이의 비는 $\\overline{BP}:\\overline{PC}=3:4$이다.",
+    "$\\therefore \\triangle APC=105\\times\\dfrac{4}{3+4}=105\\times\\dfrac{4}{7}=60\\text{ cm}^2$ $\\therefore$ ③"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "마름모 $ABCD$에서 변 $BC$ 위의 점 $P$에 대하여 $\\overline{BP}:\\overline{PC}=3:4$이고, $\\overline{AC}=14\\text{ cm}$, $\\overline{BD}=30\\text{ cm}$일 때, $\\triangle APC$의 넓이는?",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "rpmRecordId": "M2-RPM-076",
+  "rpmEvidence": "마름모 $ABCD$의 넓이는 $\\dfrac{1}{2}\\times 14\\times 30=210\\text{ cm}^2$이다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+  "newKeyProposal": null,
+  "typeReason": "Q12번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)",
+  "rpmReason": "Q12번 문항은 M2-RPM-076에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABCD)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q12번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ABCD)",
+  "how": "Q12번 문항으로 M2-05 단원의 기본 개념과 성질을 적용하여 ③을(를) 바르게 구하였다. (문항 토큰 ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "마름모",
+        "src": "stem",
+        "quote": "마름모 $ABCD$에서 변 $BC$ 위의 점 $P$에 대하여 $\\overline{BP}:\\overline{PC}=3:4$이고, $\\overline{AC}=14\\text{ cm}$, $\\overline{BD}=30\\text{ cm}$일 때, $\\triangle APC$의 넓이는?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "마름모 $ABCD$에서 변 $BC$ 위의 점 $P$에 대하여 $\\overline{BP}:\\overline{PC}=3:4$이고, $\\overline{AC}=14\\text{ cm}$, $\\overline{BD}=30\\text{ cm}$일 때, $\\triangle APC$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "이등분",
+        "src": "solution",
+        "quote": "대각선 $AC$는 마름모의 넓이를 이등분하므로 $\\triangle ABC=\\dfrac{1}{2}\\times 210=105\\text{ cm}^2$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

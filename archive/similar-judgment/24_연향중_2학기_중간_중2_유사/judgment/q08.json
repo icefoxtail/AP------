@@ -1,0 +1,57 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "43c2b67dfdb6cc78",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$\\angle DBC=x$, $\\angle DAC=y$라 하자.",
+    "$\\overline{AB}\\parallel\\overline{DC}$이므로 $\\angle DCA=\\angle BAC=58^\\circ$이다.",
+    "$\\overline{AD}\\parallel\\overline{BC}$이므로 $\\angle ADB=\\angle DBC=x$이다.",
+    "$\\triangle BCD$에서 $\\angle BCD=180^\\circ-x-47^\\circ=133^\\circ-x$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "평행사변형 $ABCD$에서 두 대각선 $AC$, $BD$의 교점을 $O$라 하자.",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "rpmRecordId": "M2-RPM-072",
+  "rpmEvidence": "$\\angle DBC=x$, $\\angle DAC=y$라 하자.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+  "newKeyProposal": null,
+  "typeReason": "Q8번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)",
+  "rpmReason": "Q8번 문항은 M2-RPM-072에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABCD)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q8번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ABCD)",
+  "how": "Q8번 문항으로 M2-05 단원의 기본 개념과 성질을 적용하여 ④을(를) 바르게 구하였다. (문항 토큰 ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "평행사변형 $ABCD$에서 두 대각선 $AC$, $BD$의 교점을 $O$라 하자."
+      }
+    ],
+    "goal": [
+      {
+        "term": "평행",
+        "src": "stem",
+        "quote": "평행사변형 $ABCD$에서 두 대각선 $AC$, $BD$의 교점을 $O$라 하자."
+      }
+    ],
+    "method": [
+      {
+        "term": "변형",
+        "src": "solution",
+        "quote": "평행사변형에서 $\\angle DAB=\\angle BCD$이므로 $y+58^\\circ=133^\\circ-x \\implies x+y=75^\\circ$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

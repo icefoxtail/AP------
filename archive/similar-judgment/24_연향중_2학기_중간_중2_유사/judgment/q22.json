@@ -1,0 +1,57 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "9f66d71dda8b10fc",
+  "solvedAnswer": "(1) $\\triangle OCQ \\equiv \\triangle OBP$ (ASA 합동) (2) $16\\text{ cm}^2$",
+  "solveSteps": [
+    "(1) 정사각형 $ABCD$의 대각선 성질에 의해 $\\overline{OB}=\\overline{OC}$, $\\angle BOC=90^\\circ$, $\\angle OBP=\\angle OCQ=45^\\circ$이다.",
+    "또 $\\angle POQ=90^\\circ$이므로 $\\angle BOP=90^\\circ-\\angle POC=\\angle COQ$이다.",
+    "따라서 $\\triangle OCQ \\equiv \\triangle OBP$ (ASA 합동)이다.",
+    "(2) $\\square OPCQ=\\triangle OPC+\\triangle OCQ=\\triangle OPC+\\triangle OBP=\\triangle OBC$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 2] 한 변의 길이가 $8\\text{ cm}$인 두 정사각형 $ABCD$와 $OEFG$가 겹쳐 있다.",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "rpmRecordId": "M2-RPM-078",
+  "rpmEvidence": "(1) 정사각형 $ABCD$의 대각선 성질에 의해 $\\overline{OB}=\\overline{OC}$, $\\angle BOC=90^\\circ$, $\\angle OBP=\\angle OCQ=45^\\circ$이다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+  "newKeyProposal": null,
+  "typeReason": "Q22번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 cm)",
+  "rpmReason": "Q22번 문항은 M2-RPM-078에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 cm)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q22번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 cm)",
+  "how": "Q22번 문항으로 M2-05 단원의 기본 개념과 성질을 적용하여 (1) $\\triangle OCQ \\equiv \\triangle OBP$ (ASA 합동) (2) $16\\text{ cm}^2$을(를) 바르게 구하였다. (문항 토큰 cm)",
+  "slots": {
+    "given": [
+      {
+        "term": "사각형",
+        "src": "stem",
+        "quote": "[서술형 2] 한 변의 길이가 $8\\text{ cm}$인 두 정사각형 $ABCD$와 $OEFG$가 겹쳐 있다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "정사각형",
+        "src": "stem",
+        "quote": "[서술형 2] 한 변의 길이가 $8\\text{ cm}$인 두 정사각형 $ABCD$와 $OEFG$가 겹쳐 있다."
+      }
+    ],
+    "method": [
+      {
+        "term": "성질",
+        "src": "solution",
+        "quote": "(1) 정사각형 $ABCD$의 대각선 성질에 의해 $\\overline{OB}=\\overline{OC}$, $\\angle BOC=90^\\circ$, $\\angle OBP=\\angle OCQ=45^\\circ$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

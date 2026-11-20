@@ -1,0 +1,57 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "6ee96c3e2da1ddcc",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "접은 부분의 길이가 같으므로 $\\overline{DA}=\\overline{DE}=7\\text{ cm}$, $\\overline{FA}=\\overline{FE}$이다.",
+    "정삼각형의 한 변의 길이는 $\\overline{AB}=8+7=15\\text{ cm}$이므로 $\\overline{CE}=15-5=10\\text{ cm}$이다.",
+    "$\\angle DEF=\\angle A=60^\\circ$이고 $\\angle B=\\angle C=60^\\circ$이므로 $\\angle BDE+\\angle BED=120^\\circ$, $\\angle CEF+\\angle BED=180^\\circ-60^\\circ=120^\\circ$에서 $\\angle BDE=\\angle CEF$이다.",
+    "따라서 $\\triangle BDE \\sim \\triangle CEF$ (AA 닮음)이므로 $\\overline{BD}:\\overline{CE}=\\overline{DE}:\\overline{EF}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "정삼각형 모양의 종이 $ABC$를 변 $AB$ 위의 점 $D$와 변 $AC$ 위의 점 $F$를 잇는 선분 $DF$를 접는 선으로 하여 꼭짓점 $A$가 변 $BC$ 위의 점 $E$에 오도록 접었다.",
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+  "rpmRecordId": "M2-RPM-239",
+  "rpmEvidence": "접은 부분의 길이가 같으므로 $\\overline{DA}=\\overline{DE}=7\\text{ cm}$, $\\overline{FA}=\\overline{FE}$이다.",
+  "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+  "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+  "newKeyProposal": null,
+  "typeReason": "Q20번 문항은 PT_TRIANGLE_SIMILARITY 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABC)",
+  "rpmReason": "Q20번 문항은 M2-RPM-239에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABC)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q20번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ABC)",
+  "how": "Q20번 문항으로 M2-06 단원의 기본 개념과 성질을 적용하여 ⑤을(를) 바르게 구하였다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "정삼각형 모양의 종이 $ABC$를 변 $AB$ 위의 점 $D$와 변 $AC$ 위의 점 $F$를 잇는 선분 $DF$를 접는 선으로 하여 꼭짓점 $A$가 변 $BC$ 위의 점 $E$에 오도록 접었다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "정삼각형 모양의 종이 $ABC$를 변 $AB$ 위의 점 $D$와 변 $AC$ 위의 점 $F$를 잇는 선분 $DF$를 접는 선으로 하여 꼭짓점 $A$가 변 $BC$ 위의 점 $E$에 오도록 접었다."
+      }
+    ],
+    "method": [
+      {
+        "term": "길이",
+        "src": "solution",
+        "quote": "접은 부분의 길이가 같으므로 $\\overline{DA}=\\overline{DE}=7\\text{ cm}$, $\\overline{FA}=\\overline{FE}$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

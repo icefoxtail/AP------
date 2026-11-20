@@ -1,0 +1,56 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "e57dcd19537c6ae9",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$\\overline{AB}=\\overline{AC}$이므로 $\\angle B=\\angle ACB=x$라 하면 $\\angle A=180^\\circ-2x$이다.",
+    "$\\overline{CD}$가 $\\angle C$의 이등분선이므로 $\\angle BCD=\\dfrac{x}{2}$이다.",
+    "$\\triangle ABC \\sim \\triangle CDB$에서 대응각 $\\angle A=\\angle BCD$이므로 $180^\\circ-2x=\\dfrac{x}{2} \\implies 360^\\circ-4x=x \\implies 5x=360^\\circ \\implies x=72^\\circ$ $\\therefore \\angle A=180^\\circ-2\\times 72^\\circ=36^\\circ$ $\\therefore$ ②"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$에서 $\\angle C$의 이등분선이 변 $AB$와 만나는 점을 $D$라 할 때, $\\triangle ABC \\sim \\triangle CDB$이다.",
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+  "rpmRecordId": "M2-RPM-238",
+  "rpmEvidence": "$\\overline{AB}=\\overline{AC}$이므로 $\\angle B=\\angle ACB=x$라 하면 $\\angle A=180^\\circ-2x$이다.",
+  "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+  "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+  "newKeyProposal": null,
+  "typeReason": "Q14번 문항은 PT_TRIANGLE_SIMILARITY 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AB)",
+  "rpmReason": "Q14번 문항은 M2-RPM-238에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AB)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q14번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 AB)",
+  "how": "Q14번 문항으로 M2-06 단원의 기본 개념과 성질을 적용하여 ②을(를) 바르게 구하였다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "$\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$에서 $\\angle C$의 이등분선이 변 $AB$와 만나는 점을 $D$라 할 때, $\\triangle ABC \\sim \\triangle CDB$이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "이등변삼각형",
+        "src": "stem",
+        "quote": "$\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$에서 $\\angle C$의 이등분선이 변 $AB$와 만나는 점을 $D$라 할 때, $\\triangle ABC \\sim \\triangle CDB$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "이등분선",
+        "src": "solution",
+        "quote": "$\\overline{CD}$가 $\\angle C$의 이등분선이므로 $\\angle BCD=\\dfrac{x}{2}$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "d279dfeb87029798",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$\\angle A=90^\\circ$이고 $\\angle BAO:\\angle OAC=1:4$이므로 $\\angle BAO=90^\\circ\\times\\dfrac{1}{1+4}=18^\\circ$이다.",
+    "직각삼각형의 빗변의 중점 $O$는 외심이므로 $\\overline{OA}=\\overline{OB}$이다.",
+    "따라서 $\\angle ABO=\\angle BAO=18^\\circ$이므로 $\\angle BOA=180^\\circ-18^\\circ-18^\\circ=144^\\circ$이다.",
+    "$\\therefore$ ①"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 점 $O$는 빗변 $BC$의 중점이다.",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "rpmRecordId": "M2-RPM-064",
+  "rpmEvidence": "$\\angle A=90^\\circ$이고 $\\angle BAO:\\angle OAC=1:4$이므로 $\\angle BAO=90^\\circ\\times\\dfrac{1}{1+4}=18^\\circ$이다.",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+  "newKeyProposal": null,
+  "typeReason": "Q3번 문항은 PT_TRIANGLE_CENTERS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 90)",
+  "rpmReason": "Q3번 문항은 M2-RPM-064에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 90)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q3번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 90)",
+  "how": "Q3번 문항으로 M2-05 단원의 기본 개념과 성질을 적용하여 ①을(를) 바르게 구하였다. (문항 토큰 90)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "$\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 점 $O$는 빗변 $BC$의 중점이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "$\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 점 $O$는 빗변 $BC$의 중점이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "빗변",
+        "src": "solution",
+        "quote": "직각삼각형의 빗변의 중점 $O$는 외심이므로 $\\overline{OA}=\\overline{OB}$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

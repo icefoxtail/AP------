@@ -1,0 +1,57 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "02a3fce208bdefee",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$\\triangle OCD=\\triangle DBC-\\triangle OBC=84-62=22\\text{ cm}^2$이다.",
+    "$\\overline{AD}\\parallel\\overline{BC}$이므로 밑변이 $\\overline{AD}$로 같고 높이가 같은 두 삼각형 $\\triangle ADB$와 $\\triangle ADC$의 넓이는 같다.",
+    "따라서 $\\triangle AOB=\\triangle ADB-\\triangle AOD=\\triangle ADC-\\triangle AOD=\\triangle OCD=22\\text{ cm}^2$이다.",
+    "$\\therefore$ ④"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\overline{AD}\\parallel\\overline{BC}$인 사다리꼴 $ABCD$에서 두 대각선 $AC$, $BD$의 교점을 $O$라 하자.",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "rpmRecordId": "M2-RPM-076",
+  "rpmEvidence": "$\\triangle OCD=\\triangle DBC-\\triangle OBC=84-62=22\\text{ cm}^2$이다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+  "newKeyProposal": null,
+  "typeReason": "Q13번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AD)",
+  "rpmReason": "Q13번 문항은 M2-RPM-076에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AD)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q13번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 AD)",
+  "how": "Q13번 문항으로 M2-05 단원의 기본 개념과 성질을 적용하여 ④을(를) 바르게 구하였다. (문항 토큰 AD)",
+  "slots": {
+    "given": [
+      {
+        "term": "사다리꼴",
+        "src": "stem",
+        "quote": "$\\overline{AD}\\parallel\\overline{BC}$인 사다리꼴 $ABCD$에서 두 대각선 $AC$, $BD$의 교점을 $O$라 하자."
+      }
+    ],
+    "goal": [
+      {
+        "term": "교점",
+        "src": "stem",
+        "quote": "$\\overline{AD}\\parallel\\overline{BC}$인 사다리꼴 $ABCD$에서 두 대각선 $AC$, $BD$의 교점을 $O$라 하자."
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각형",
+        "src": "solution",
+        "quote": "$\\overline{AD}\\parallel\\overline{BC}$이므로 밑변이 $\\overline{AD}$로 같고 높이가 같은 두 삼각형 $\\triangle ADB$와 $\\triangle ADC$의 넓이는 같다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

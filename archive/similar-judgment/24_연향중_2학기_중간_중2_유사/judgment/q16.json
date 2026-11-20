@@ -1,0 +1,56 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "23c2ae99f8781368",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$PQ$가 $\\overline{AC}$를 수직이등분하므로 $\\overline{AO}=\\overline{OC}=\\dfrac{15}{2}\\text{ cm}$이고 $\\angle AOP=90^\\circ$이다.",
+    "$\\overline{AD}\\parallel\\overline{BC}$이므로 $\\angle PAO=\\angle BCA$이고 $\\angle AOP=\\angle ABC=90^\\circ$이므로 $\\triangle AOP \\sim \\triangle CBA$ (AA 닮음)이다.",
+    "따라서 $\\overline{AP}:\\overline{CA}=\\overline{AO}:\\overline{CB}$에서 $\\overline{AP}:15=\\dfrac{15}{2}:12 \\implies 12\\overline{AP}=\\dfrac{225}{2} \\implies \\overline{AP}=\\dfrac{75}{8}\\text{ cm}$ $\\therefore$ ③"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\overline{AB}=9\\text{ cm}$, $\\overline{BC}=12\\text{ cm}$, $\\overline{AC}=15\\text{ cm}$인 직사각형 $ABCD$에서 대각선 $AC$의 수직이등분선이 두 변 $AD$, $BC$와 만나는 점을 각각 $P$, $Q$라 하고, 대각선 $AC$와의 교점을 $O$라 하자.",
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+  "rpmRecordId": "M2-RPM-239",
+  "rpmEvidence": "$PQ$가 $\\overline{AC}$를 수직이등분하므로 $\\overline{AO}=\\overline{OC}=\\dfrac{15}{2}\\text{ cm}$이고 $\\angle AOP=90^\\circ$이다.",
+  "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+  "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+  "newKeyProposal": null,
+  "typeReason": "Q16번 문항은 PT_TRIANGLE_SIMILARITY 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AB)",
+  "rpmReason": "Q16번 문항은 M2-RPM-239에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AB)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q16번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 AB)",
+  "how": "Q16번 문항으로 M2-06 단원의 기본 개념과 성질을 적용하여 ③을(를) 바르게 구하였다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "사각형",
+        "src": "stem",
+        "quote": "$\\overline{AB}=9\\text{ cm}$, $\\overline{BC}=12\\text{ cm}$, $\\overline{AC}=15\\text{ cm}$인 직사각형 $ABCD$에서 대각선 $AC$의 수직이등분선이 두 변 $AD$, $BC$와 만나는 점을 각각 $P$, $Q$라 하고, 대각선 $AC$와의 교점을 $O$라 하자."
+      }
+    ],
+    "goal": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "$\\overline{AB}=9\\text{ cm}$, $\\overline{BC}=12\\text{ cm}$, $\\overline{AC}=15\\text{ cm}$인 직사각형 $ABCD$에서 대각선 $AC$의 수직이등분선이 두 변 $AD$, $BC$와 만나는 점을 각각 $P$, $Q$라 하고, 대각선 $AC$와의 교점을 $O$라 하자."
+      }
+    ],
+    "method": [
+      {
+        "term": "이등분",
+        "src": "solution",
+        "quote": "$PQ$가 $\\overline{AC}$를 수직이등분하므로 $\\overline{AO}=\\overline{OC}=\\dfrac{15}{2}\\text{ cm}$이고 $\\angle AOP=90^\\circ$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "462ee73afe2b374d",
+  "solvedAnswer": "(1) $\\triangle ABC \\sim \\triangle ACD$ (AA 닮음) (2) 닮음비 $3:2$, $\\overline{CD}=10$",
+  "solveSteps": [
+    "(1) $\\triangle ABC$와 $\\triangle ACD$에서 $\\angle A$는 공통이고 $\\angle ABC=\\angle ACD$이므로 $\\triangle ABC \\sim \\triangle ACD$ (AA 닮음)이다.",
+    "(2) 닮음비는 $\\overline{AB}:\\overline{AC}=12:8=3:2$이다.",
+    "대응변 $\\overline{BC}$와 $\\overline{CD}$의 길이의 비도 $3:2$이므로 $15:\\overline{CD}=3:2 \\implies 3\\overline{CD}=30 \\implies \\overline{CD}=10$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 3] $\\triangle ABC$에서 변 $AB$ 위의 점 $D$에 대하여 $\\angle ABC=\\angle ACD$이고 $\\overline{AB}=12$, $\\overline{AC}=8$, $\\overline{BC}=15$일 때, 다음 물음에 답하시오.",
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+  "rpmRecordId": "M2-RPM-239",
+  "rpmEvidence": "(1) $\\triangle ABC$와 $\\triangle ACD$에서 $\\angle A$는 공통이고 $\\angle ABC=\\angle ACD$이므로 $\\triangle ABC \\sim \\triangle ACD$ (AA 닮음)이다.",
+  "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+  "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+  "newKeyProposal": null,
+  "typeReason": "Q23번 문항은 PT_TRIANGLE_SIMILARITY 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABC)",
+  "rpmReason": "Q23번 문항은 M2-RPM-239에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABC)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q23번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ABC)",
+  "how": "Q23번 문항으로 M2-06 단원의 기본 개념과 성질을 적용하여 (1) $\\triangle ABC \\sim \\triangle ACD$ (AA 닮음) (2) 닮음비 $3:2$, $\\overline{CD}=10$을(를) 바르게 구하였다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "[6점] (1) $\\triangle ABC$와 닮은 삼각형을 찾아 닮음기호를 사용하여 나타내고, 삼각형의 닮음조건을 설명하시오."
+      }
+    ],
+    "goal": [
+      {
+        "term": "닮음",
+        "src": "stem",
+        "quote": "[6점] (1) $\\triangle ABC$와 닮은 삼각형을 찾아 닮음기호를 사용하여 나타내고, 삼각형의 닮음조건을 설명하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "공통",
+        "src": "solution",
+        "quote": "(1) $\\triangle ABC$와 $\\triangle ACD$에서 $\\angle A$는 공통이고 $\\angle ABC=\\angle ACD$이므로 $\\triangle ABC \\sim \\triangle ACD$ (AA 닮음)이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

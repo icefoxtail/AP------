@@ -1,0 +1,57 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "24ba5ad664578c60",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$P$, $R$가 각각 $\\overline{AB}$, $\\overline{CD}$의 중점이므로 $\\overline{PR}\\parallel\\overline{BC}$이고 $\\overline{PR}=\\overline{BC}$이며, $\\overline{PR}$과 $\\overline{BC}$ 사이의 거리는 평행사변형 높이 $h$의 $\\dfrac{1}{2}$이다.",
+    "$\\triangle ABQ$에서 $P$는 $\\overline{AB}$의 중점이고 $\\overline{PM}\\parallel\\overline{BQ}$이므로 $\\overline{PM}=\\dfrac{1}{2}\\overline{BQ}=\\dfrac{1}{4}\\overline{BC}$이다.",
+    "마찬가지로 $\\overline{RN}=\\dfrac{1}{4}\\overline{BC}$이므로 $\\overline{MN}=\\overline{PR}-\\overline{PM}-\\overline{RN}=\\dfrac{1}{2}\\overline{BC}$이다.",
+    "따라서 $\\triangle MQN=\\dfrac{1}{2}\\times\\left(\\dfrac{1}{2}\\overline{BC}\\right)\\times\\left(\\dfrac{1}{2}h\\right)=\\dfrac{1}{8}\\overline{BC}\\cdot h=\\dfrac{1}{8}\\square ABCD$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "평행사변형 $ABCD$에서 세 변 $AB$, $BC$, $CD$의 중점을 각각 $P$, $Q$, $R$라 하고, 선분 $PR$과 두 선분 $AQ$, $DQ$의 교점을 각각 $M$, $N$이라 하자.",
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-PARALLEL_SEGMENT_RATIO",
+  "rpmRecordId": "M2-RPM-091",
+  "rpmEvidence": "$P$, $R$가 각각 $\\overline{AB}$, $\\overline{CD}$의 중점이므로 $\\overline{PR}\\parallel\\overline{BC}$이고 $\\overline{PR}=\\overline{BC}$이며, $\\overline{PR}$과 $\\overline{BC}$ 사이의 거리는 평행사변형 높이 $h$의 $\\dfrac{1}{2}$이다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+  "newKeyProposal": null,
+  "typeReason": "Q19번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)",
+  "rpmReason": "Q19번 문항은 M2-RPM-091에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABCD)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q19번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ABCD)",
+  "how": "Q19번 문항으로 M2-06 단원의 기본 개념과 성질을 적용하여 ②을(를) 바르게 구하였다. (문항 토큰 ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "평행사변형 $ABCD$에서 세 변 $AB$, $BC$, $CD$의 중점을 각각 $P$, $Q$, $R$라 하고, 선분 $PR$과 두 선분 $AQ$, $DQ$의 교점을 각각 $M$, $N$이라 하자."
+      }
+    ],
+    "goal": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "평행사변형 $ABCD$에서 세 변 $AB$, $BC$, $CD$의 중점을 각각 $P$, $Q$, $R$라 하고, 선분 $PR$과 두 선분 $AQ$, $DQ$의 교점을 각각 $M$, $N$이라 하자."
+      }
+    ],
+    "method": [
+      {
+        "term": "평행",
+        "src": "solution",
+        "quote": "$P$, $R$가 각각 $\\overline{AB}$, $\\overline{CD}$의 중점이므로 $\\overline{PR}\\parallel\\overline{BC}$이고 $\\overline{PR}=\\overline{BC}$이며, $\\overline{PR}$과 $\\overline{BC}$ 사이의 거리는 평행사변형 높이 $h$의 $\\dfrac{1}{2}$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

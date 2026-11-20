@@ -1,0 +1,57 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "eb44959fe5387c1a",
+  "solvedAnswer": "②, ⑤",
+  "solveSteps": [
+    "① 세 중선의 교점은 무게중심이다. (문항 토큰 ABC)",
+    "② 세 꼭짓점까지의 거리가 같은 점은 외심이다.",
+    "③, ④ 세 내각의 이등분선의 교점이며 세 변까지의 거리가 같은 점은 내심이다.",
+    "⑤ 두 변의 수직이등분선의 교점은 세 꼭짓점까지의 거리가 같으므로 외심이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중 점 $O$가 항상 $\\triangle ABC$의 외심인 조건을 모두 고르면?",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "rpmRecordId": "M2-RPM-064",
+  "rpmEvidence": "① 세 중선의 교점은 무게중심이다.",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+  "newKeyProposal": null,
+  "typeReason": "Q5번 문항은 PT_TRIANGLE_CENTERS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABC)",
+  "rpmReason": "Q5번 문항은 M2-RPM-064에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABC)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q5번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ABC)",
+  "how": "Q5번 문항으로 M2-05 단원의 기본 개념과 성질을 적용하여 ②, ⑤을(를) 바르게 구하였다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "외심",
+        "src": "stem",
+        "quote": "다음 중 점 $O$가 항상 $\\triangle ABC$의 외심인 조건을 모두 고르면?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "중점",
+        "src": "stem",
+        "quote": "다음 중 점 $O$가 항상 $\\triangle ABC$의 외심인 조건을 모두 고르면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "중심",
+        "src": "solution",
+        "quote": "① 세 중선의 교점은 무게중심이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
