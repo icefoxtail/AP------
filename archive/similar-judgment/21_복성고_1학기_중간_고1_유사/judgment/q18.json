@@ -1,0 +1,70 @@
+{
+  "qid": 18,
+  "itemFingerprint": "838b8067f5d99636",
+  "solveSteps": [
+    "$n$이 정수이므로 실계수 방정식이다. (nx)",
+    "1) $b=0$일 때 (정수 근 $a$): $a$는 $10$의 약수 $\\pm 1, \\pm 2, \\pm 5, \\pm 10$이고, $n=-\\left(a+\\dfrac{10}{a}\\right)$에서 $n=\\pm 11, \\pm 7$ ($4$개)  \n2) $b\\ne 0$일 때 (켤레복소수 근 $a\\pm bi$): 두 근의 곱 $a^2+b^2=10$을 만족하는 $0$ 아닌 정수 쌍 $(|a|, |b|)$는 $(1, 3), (3, 1)$이므로 $a\\in{\\pm 1, \\pm 3}$이다.",
+    "두 근의 합 $2a=-n$에서 $n=\\pm 2, \\pm 6$ ($4$개) 따라서 가능한 정수 $n$은 $\\pm 2, \\pm 6, \\pm 7, \\pm 11$의 모두 $8$개이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_ROOT",
+  "unitEvidence": "정수 $n$에 대해 방정식 $x^2+nx+10=0$의 ",
+  "rpmRecordId": "H1-RPM-031",
+  "rpmReason": "Q18(nx): 복소수와 이차방정식 단원의 RPM H1-RPM-031 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+  "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+  "typeReason": "Q18(nx): 복소수와 이차방정식 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(nx): 복소수와 이차방정식 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "방정식 $x^2+nx+10=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "정수 $n$에 대해"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "두 근의 곱 $a^2+b^2=10$",
+        "evidenceType": "IMPLIED",
+        "justification": "b=0 실근과 b!=0 켤레허근으로 나누어 근과 계수의 관계로 n을 모두 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "켤레복소수",
+        "src": "solution",
+        "quote": "켤레복소수 근 $a\\pm bi$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q18(nx): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

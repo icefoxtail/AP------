@@ -1,0 +1,63 @@
+{
+  "qid": 16,
+  "itemFingerprint": "131273ce74e309f9",
+  "solveSteps": [
+    "$f(x)=-(x-1)^2+k+1$은 위로 볼록하고 축이 $x=1$이다. (10)",
+    "구간 $-1\\le x\\le 4$에 꼭짓점 $x=1$이 포함되므로\n\n- 최댓값: $f(1)=k+1$  \n- 최솟값: 축에서 더 먼 끝점 $x=4$에서 $f(4)=-(4-1)^2+k+1=k-8$ 최댓값과 최솟값의 합이 $9$이므로 $(k+1)+(k-8)=2k-7=9 \\implies k=8$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "$-1\\le x\\le 4$일 때, 이차함수 $f(x)=",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q16(10): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+  "typeReason": "Q16(10): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q16(10): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "축",
+        "src": "solution",
+        "quote": "축이 $x=1$이다"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값과 최솟값의 합이 $9$"
+      }
+    ],
+    "method": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x)=-x^2+2x+k$",
+        "evidenceType": "IMPLIED",
+        "justification": "표준형 변환으로 꼭짓점 x=1과 끝점 x=4의 최대·최소를 구해 합산함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q16(10): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

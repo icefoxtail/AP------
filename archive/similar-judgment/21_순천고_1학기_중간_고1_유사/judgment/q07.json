@@ -1,0 +1,63 @@
+{
+  "qid": 7,
+  "itemFingerprint": "bbbc141d282eeb54",
+  "solveSteps": [
+    "$P(x)=x^4+x^3-7x^2-x+6$이라 하면 $P(1)=1+1-7-1+6=0$, $P(-1)=1-1-7+1+6=0$이다.",
+    "조립제법을 연속 적용하면 $$ (x-1)(x+1)(x^2+x-6) = (x-1)(x+1)(x+3)(x-2) = 0 $$ 따라서 네 근은 $-3, -1, 1, 2$이고 $\\alpha=2, \\beta=-3$이므로 $\\alpha-\\beta=2-(-3)=5$이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+  "unitEvidence": "사차방정식 $x^4+x^3-7x^2-x+6=0$의 가장",
+  "rpmRecordId": "H1-RPM-039",
+  "rpmReason": "Q7(x): 고차방정식의 풀이 단원의 RPM H1-RPM-039 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+  "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+  "typeReason": "Q7(x): 고차방정식의 풀이 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q7(x): 고차방정식의 풀이 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "solution",
+        "quote": "P(x)=x^4+x^3-7x^2-x+6"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사차방정식",
+        "src": "stem",
+        "quote": "사차방정식 $x^4+x^3-7x^2-x+6=0$"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수정리",
+        "src": "solution",
+        "quote": "P(1)=1+1-7-1+6=0$, $P(-1)=1-1-7+1+6=0$",
+        "evidenceType": "IMPLIED",
+        "justification": "x=1, -1 대입으로 인수를 찾아 조립제법으로 네 근을 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q7(x): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

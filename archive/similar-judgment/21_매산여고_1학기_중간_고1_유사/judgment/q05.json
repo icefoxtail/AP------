@@ -1,0 +1,63 @@
+{
+  "qid": 5,
+  "itemFingerprint": "5cebc0126169bad5",
+  "solveSteps": [
+    "$z=a+bi$ ($a, b$는 $0$이 아닌 실수)라 하면 $\\overline{z}=a-bi$이다.",
+    "- ① $z-\\overline{z}=2bi$ ($b\\ne 0$이므로 순허수, 실수 아님)  \n- ② $z+\\overline{z}=2a$ (실수)  \n- ③ $z\\overline{z}=a^2+b^2$ (실수)  \n- ④ $\\dfrac{z}{\\overline{z}}=\\dfrac{(a+bi)^2}{a^2+b^2}=\\dfrac{a^2-b^2+2abi}{a^2+b^2}$ ($ab\\ne 0$이므로 허수, 실수 아님)  \n- ⑤ $(2+z)(2+\\overline{z})=4+2(z+\\overline{z})+z\\overline{z}=4+4a+a^2+b^2$ (실수) 따라서 실수가 아닌 것은 ①, ④이다."
+  ],
+  "solvedAnswer": "①, ④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "실수부분과 허수부분이 모두 $0$이 아닌 복소수 $z$",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q5(bi): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+  "typeReason": "Q5(bi): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q5(bi): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "복소수 $z$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "수가 아닌 것을 모두 고르시오. (정답 2개)"
+      }
+    ],
+    "method": [
+      {
+        "term": "켤레복소수",
+        "src": "solution",
+        "quote": "\\overline{z}=a-bi$이다",
+        "evidenceType": "IMPLIED",
+        "justification": "z=a+bi와 켤레복소수 a-bi를 각 식에 대입해 허수부분의 0 여부를 판별함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q5(bi): 발문과 해설의 풀이 과정을 점검하여 정답 ①, ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

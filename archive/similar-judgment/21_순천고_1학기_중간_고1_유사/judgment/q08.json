@@ -1,0 +1,63 @@
+{
+  "qid": 8,
+  "itemFingerprint": "6f729bb46cd2b85b",
+  "solveSteps": [
+    "Q8 문제의 조건(xy)에 맞추어 식을 세운다.",
+    "$x+y+z=4$에서 $x+y=4-z$, $y+z=4-x$, $z+x=4-y$이므로 $$ \\begin{aligned} (x+y)(y+z)(z+x) &= (4-x)(4-y)(4-z) \\ &= 4^3-(x+y+z)\\cdot 4^2+(xy+yz+zx)\\cdot 4-xyz \\ &= 64-4\\cdot 16+(-3)\\cdot 4-(-5) \\ &= 64-64-12+5 = -7 \\end{aligned} $$ 이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+  "unitEvidence": "세 수 $x, y, z$에 대하여 $x+y+z=4$, ",
+  "rpmRecordId": "H1-RPM-001",
+  "rpmReason": "Q8(xy): 다항식의 기본 연산 단원의 RPM H1-RPM-001 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+  "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+  "typeReason": "Q8(xy): 다항식의 기본 연산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q8(xy): 다항식의 기본 연산 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "전개",
+        "src": "solution",
+        "quote": "(4-x)(4-y)(4-z)"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대칭식",
+        "src": "solution",
+        "quote": "(4-x)(4-y)(4-z)"
+      }
+    ],
+    "method": [
+      {
+        "term": "곱셈공식",
+        "src": "solution",
+        "quote": "4^3-(x+y+z)\\cdot 4^2+(xy+yz+zx)\\cdot 4-xyz",
+        "evidenceType": "IMPLIED",
+        "justification": "(4-x)(4-y)(4-z) 전개 공식에 세 기본대칭식 값을 대입함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q8(xy): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

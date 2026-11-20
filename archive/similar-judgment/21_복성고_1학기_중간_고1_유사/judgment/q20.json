@@ -1,0 +1,62 @@
+{
+  "qid": 20,
+  "itemFingerprint": "ccc3f9a5480bd7eb",
+  "solveSteps": [
+    "근과 계수의 관계에서 $\\alpha+\\beta=-4$, $\\alpha\\beta=5$이다.",
+    "조건 (가), (나)에서 $\\alpha=-4-\\beta$, $\\beta=-4-\\alpha$이므로 $$ f(\\beta)+\\beta+4 = 0, \\qquad f(\\alpha)+\\alpha+4 = 0 $$ 즉 이차식 $f(x)+x+4$는 $\\alpha, \\beta$를 두 근으로 가지므로 최고차항의 계수를 $k$ ($k\\ne 0$)라 하면 $$ f(x)+x+4 = k(x^2+4x+5) \\implies f(x) = k(x^2+4x+5)-x-4 $$ 조건 (다)에서 $f(0)=5k-4=6 \\implies k=2$이므로 $$ f(x) = 2(x^2+4x+5)-x-4 = 2x^2+7x+6 = 0 $$ 근과 계수의 관계에서 $p+q=-\\dfrac{7}{2}$, $pq=3$이므로 $$ |p-q| = \\sqrt{(p+q)^2-4pq} = \\sqrt{\\frac{49}{4}-12} = \\sqrt{\\frac{1}{4}} = \\frac{1}{2} $$ 이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-06",
+  "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+  "unitEvidence": "이차방정식 $x^2+4x+5=0$의 두 근을 $\\alp",
+  "rpmRecordId": "H1-RPM-029",
+  "rpmReason": "Q20(pq): 근과 계수의 관계 단원의 RPM H1-RPM-029 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+  "typeReason": "Q20(pq): 근과 계수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(pq): 근과 계수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2+4x+5=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차식",
+        "src": "stem",
+        "quote": "만족시키는 이차식 $f(x)$"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에서 $\\alpha+\\beta=-4$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q20(pq): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

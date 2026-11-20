@@ -1,0 +1,70 @@
+{
+  "qid": 17,
+  "itemFingerprint": "98b894527844dc57",
+  "solveSteps": [
+    "$P(x)=x^4-2x^2-9x+10$이라 하면 $P(1)=1-2-9+10=0$, $P(2)=16-8-18+10=0$이다.",
+    "조립제법을 연속 적용하면 $$ (x-1)(x-2)(x^2+3x+5) = 0 $$ $x^2+3x+5=0$의 판별식은 $D=3^2-4\\cdot 5=-11<0$이므로 서로 다른 두 허근을 갖는다.",
+    "따라서 두 실근 $1, 2$의 합은 $a=1+2=3$이고, 두 허근의 곱은 근과 계수의 관계에 의해 $b=5$이므로 $a+b=3+5=8$이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+  "unitEvidence": "사차방정식 $x^4-2x^2-9x+10=0$은 두 개의",
+  "rpmRecordId": "H1-RPM-039",
+  "rpmReason": "Q17(10): 고차방정식의 풀이 단원의 RPM H1-RPM-039 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+  "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+  "typeReason": "Q17(10): 고차방정식의 풀이 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(10): 고차방정식의 풀이 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "사차방정식",
+        "src": "stem",
+        "quote": "사차방정식 $x^4-2x^2-9x+10=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "두 실근의 합을 $a$"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수정리",
+        "src": "solution",
+        "quote": "P(1)=1-2-9+10=0$, $P(2)=16-8-18+10=0$",
+        "evidenceType": "IMPLIED",
+        "justification": "x=1, 2 대입으로 일차인수를 추출하고 남은 이차식의 두 허근 곱을 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "허근",
+        "src": "stem",
+        "quote": "두 개의 허근을 갖는다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q17(10): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

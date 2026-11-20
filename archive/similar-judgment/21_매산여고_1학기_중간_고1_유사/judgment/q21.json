@@ -1,0 +1,71 @@
+{
+  "qid": 21,
+  "itemFingerprint": "d22de24c90d1bb7f",
+  "solveSteps": [
+    "$z^2$이 음의 실수가 되려면 $z$는 순허수이어야 한다.",
+    "$z = {(n-3)^2-9}+6(n-3)i$이므로 순허수가 될 조건은 $$ (n-3)^2-9 = 0 \\quad \\text{이고} \\quad 6(n-3)\\ne 0 $$ 즉 $n(n-6)=0$이고 $n\\ne 3$이므로 자연수 조건에서 $n=6$이다.",
+    "따라서 $z=(3+3i)^2=18i$이다.",
+    "이차방정식 $x^2+ax+b=0$의 계수 $a, b$가 실수이므로 다른 한 근은 켤레복소수 $-18i$이다.",
+    "근과 계수의 관계에 의하여 $$ a = -(18i-18i) = 0, \\qquad b = (18i)(-18i) = 324 $$ 이다."
+  ],
+  "solvedAnswer": "$a=0$, $b=324$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "복소수 $z=(n-3+3i)^2$에 대하여 $z^2$이",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q21(ax): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+  "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+  "typeReason": "Q21(ax): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q21(ax): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$n$은 자연수이다"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2+ax+b=0$"
+      }
+    ],
+    "method": [
+      {
+        "term": "순허수",
+        "src": "solution",
+        "quote": "z$는 순허수이어야",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "켤레복소수",
+        "src": "solution",
+        "quote": "켤레복소수 $-18i$이다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q21(ax): 발문과 해설의 풀이 과정을 점검하여 정답 $a=0$, $b=324$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

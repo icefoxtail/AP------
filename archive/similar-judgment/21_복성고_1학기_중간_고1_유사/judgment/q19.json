@@ -1,0 +1,69 @@
+{
+  "qid": 19,
+  "itemFingerprint": "dd8f5721bf293f67",
+  "solveSteps": [
+    "두 교점의 $x$좌표가 $-1, 6$이므로 $f(x)-(ax+7)=a(x+1)(x-6)$이다.",
+    "따라서 $$ f(x) = a(x^2-5x-6)+ax+7 = a(x^2-4x-6)+7 = a(x-2)^2-10a+7 $$ $a>0$이고 축 $x=2$가 구간 $1\\le x\\le 3$에 포함되므로 최솟값은 $$ f(2) = -10a+7 = 3 \\implies 10a = 4 $$ 이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "최고차항의 계수가 $a$ ($a>0$)인 이차함수 $f",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q19(ax): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+  "typeReason": "Q19(ax): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q19(ax): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "f(x)$의 최솟값은 $3$"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수정리",
+        "src": "solution",
+        "quote": "f(x)-(ax+7)=a(x+1)(x-6)",
+        "evidenceType": "IMPLIED",
+        "justification": "교점 x좌표 -1, 6을 이용해 f(x)-(ax+7)을 인수분해 꼴로 세움"
+      }
+    ],
+    "condition": [
+      {
+        "term": "교점",
+        "src": "stem",
+        "quote": "만나는 두 교점의 $x$좌표"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q19(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

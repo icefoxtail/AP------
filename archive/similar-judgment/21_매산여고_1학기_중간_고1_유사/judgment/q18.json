@@ -1,0 +1,57 @@
+{
+  "qid": 18,
+  "itemFingerprint": "330743133c2aa703",
+  "solveSteps": [
+    "Q18 문제의 조건(2021)에 맞추어 식을 세운다.",
+    "분모를 실수화하면 $$ \\frac{1-i}{1+i} = \\frac{(1-i)^2}{(1+i)(1-i)} = \\frac{-2i}{2} = -i $$ $2021=4\\times 505+1$이고 $(-i)^4=1$이므로 $$ \\left(\\frac{1-i}{1+i}\\right)^{2021} = (-i)^{2021} = (-i)^{4\\times 505+1} = -i $$ 이다."
+  ],
+  "solvedAnswer": "$-i$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "$\\left(\\dfrac{1-i}{1+i}\\right)",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q18(2021): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+  "typeReason": "Q18(2021): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(2021): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "복소수",
+        "src": "solution",
+        "quote": "(-i)^{2021} = (-i)^{4\\times 505+1}"
+      }
+    ],
+    "method": [
+      {
+        "term": "켤레복소수",
+        "src": "solution",
+        "quote": "분모를 실수화하면",
+        "evidenceType": "IMPLIED",
+        "justification": "분모의 켤레복소수를 곱해 -i로 단순화한 뒤 4주기 성질을 적용함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q18(2021): 발문과 해설의 풀이 과정을 점검하여 정답 $-i$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

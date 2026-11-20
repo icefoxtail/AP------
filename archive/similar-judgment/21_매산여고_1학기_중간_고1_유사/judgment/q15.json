@@ -1,0 +1,63 @@
+{
+  "qid": 15,
+  "itemFingerprint": "907a81c1f555a3c4",
+  "solveSteps": [
+    "$\\omega^2+\\omega+1=0$이고 양변에 $\\omega-1$을 곱하면 $\\omega^3-1=0 \\implies \\omega^3=1$이다. (11)",
+    "주어진 식을 $\\omega^3=1$을 이용해 차수를 낮추면 $$ \\begin{aligned} 1+2\\omega+3\\omega^2+4\\omega^3+5\\omega^4+6\\omega^5+7\\omega^6+8\\omega^7 &= (1+4+7)+(2+5+8)\\omega+(3+6)\\omega^2 \\ &= 12+15\\omega+9\\omega^2 \\ &= 12+15\\omega+9(-1-\\omega) = 3+6\\omega \\end{aligned} $$ $\\omega$가 허수이고 $a, b$가 실수이므로 $a=3, b=6$, 따라서 $a+b=9$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-EQUATION_APPLICATION",
+  "unitEvidence": "방정식 $x^2+x+1=0$의 한 허근을 $\\omega",
+  "rpmRecordId": "H1-RPM-043",
+  "rpmReason": "Q15(11): 방정식과 부등식의 활용 단원의 RPM H1-RPM-043 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "NONE",
+  "typeReason": "Q15(11): 방정식과 부등식의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(11): 방정식과 부등식의 활용 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "방정식 $x^2+x+1=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "두 실수 $a$, $b$에 대하여"
+      }
+    ],
+    "method": [
+      {
+        "term": "허근",
+        "src": "stem",
+        "quote": "한 허근을 $\\omega$라 할 때",
+        "evidenceType": "IMPLIED",
+        "justification": "ω^3=1과 ω^2=-1-ω를 적용해 고차식을 a+bω 형태로 차수 축소함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q15(11): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

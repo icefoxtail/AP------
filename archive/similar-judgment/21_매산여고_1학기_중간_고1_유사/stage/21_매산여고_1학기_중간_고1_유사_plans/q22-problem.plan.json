@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      -6,
+      1
+    ],
+    "viewport": [
+      -6,
+      1,
+      -10,
+      14
+    ],
+    "pieces": [
+      {
+        "domain": [
+          -6,
+          1
+        ],
+        "coefficients": [
+          "10",
+          "12",
+          "2"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-5",
+        "y": "0",
+        "label": "A(-5, 0)"
+      },
+      {
+        "id": "B",
+        "x": "-1",
+        "y": "0",
+        "label": "B(-1, 0)"
+      },
+      {
+        "id": "C",
+        "x": "0",
+        "y": "10",
+        "label": "C(0, 10)"
+      }
+    ]
+  },
+  "caption": "y=2x^2+12x+10의 x축 교점 A(-5,0), B(-1,0)과 y축 교점 C(0,10)"
+}
