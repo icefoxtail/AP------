@@ -1,0 +1,56 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "456a69fd71132f90",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "해가 무수히 많으려면 계수비와 상수비가 같아야 하므로 $\\frac{1}{4} = \\frac{2}{-b} = \\frac{a}{28}$이다. (cases)",
+    "$-b = 8 \\implies b = -8$이다. (cases)",
+    "$a = 28 / 4 = 7$이다. (cases)",
+    "따라서 $a - b = 7 - (-8) = 15$이므로 정답 ⑤이다. (cases)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "연립방정식 $\\begin{c",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "해가 특수한 연립방정식의 계수 결정 유형이다. (cases)",
+  "rpmRecordId": "M2-RPM-036",
+  "rpmReason": "연립일차방정식 단원의 해가 무수히 많은 연립방정식 성질에 일치한다. (cases)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "해가 무수히 많은 연립방정식의 계수 비를 계산하는 표준 난이도 2 문항이다. (cases)",
+  "how": "해가 무수히 많을 조건으로 계수비와 상수항비가 일치함을 이용하여 a와 b를 구했다. (cases)",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin{cases} x + 2y = a \\ 4x - by = 28 \\end{cases}$ 의 해가 무수히 많을 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "$a - b$의 값을 구하면? (단, $a, b$는 상수)"
+      }
+    ],
+    "method": [
+      {
+        "term": "일차방정식",
+        "src": "solution",
+        "quote": "연립방정식의 해가 무수히 많으려면 두 일차방정식의 계수와 상수항의 비가 모두 같아야 한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

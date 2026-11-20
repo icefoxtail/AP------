@@ -1,0 +1,55 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "980cfb456a5e77f9",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$x = 2y$를 두 번째 식에 대입하면 $2y - 5y = 6 \\implies -3y = 6 \\implies y = -2, x = -4$이다. (cases)",
+    "구한 해 $(-4, -2)$를 첫 번째 식에 대입하면 $2(-4) - a(-2) = 4 \\implies -8 + 2a = 4 \\implies 2a = 12 \\implies a = 6$이다. (cases)",
+    "따라서 정답 ③이다. (cases)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "연립방정식 $\\begin{c",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "미지수 사이의 조건이 주어진 연립방정식 풀이 유형이다. (cases)",
+  "rpmRecordId": "M2-RPM-032",
+  "rpmReason": "연립일차방정식 단원의 해와 계수 조건 및 계수 결정에 일치한다. (cases)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "조건식 x=2y를 추가로 연립하여 푸는 표준 난이도 2 문항이다. (cases)",
+  "how": "x와 y의 비례 관계식 x=2y를 연립하여 해를 구한 뒤 미정계수 a를 결정했다. (cases)",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin{cases} 2x - ay = 4 \\ x - 5y = 6 \\end{cases}$ 을 만족시키는"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $a$의 값을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$x = 2y$를 두 번째 식 $x - 5y = 6$에 대입한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

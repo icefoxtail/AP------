@@ -1,0 +1,56 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "370ad1f986438f4c",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "점 $(3, -2)$ 대입: $2(3) + k(-2) - 4k = 0 \\implies 6 - 6k = 0 \\implies k = 1$이다. (ky)",
+    "방정식은 $2x + y - 4 = 0$이다. (ky)",
+    "$x$축과의 교점을 구하기 위해 $y = 0$ 대입: $2x - 4 = 0 \\implies x = 2$이다. (ky)",
+    "따라서 교점의 좌표는 $(2, 0)$이므로 정답 ⑤이다. (ky)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "일차방정식 $2x + ky",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "problemTypeKey": "PT_M2_LINEAR_EQUATION_POINT_SUBSTITUTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "그래프 위의 점을 이용한 미지수 결정 및 절편 좌표 구하기 유형이다. (ky)",
+  "rpmRecordId": "M2-RPM-054",
+  "rpmReason": "일차함수와 일차방정식 단원의 일차방정식의 그래프와 점 대입에 일치한다. (ky)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "좌표 대입으로 미정계수를 찾고 절편 좌표를 구하는 난이도 2 문항이다. (ky)",
+  "how": "지나는 점의 좌표를 대입해 k를 구하고 y=0을 대입해 x축 교점 좌표를 구했다. (ky)",
+  "slots": {
+    "given": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "일차방정식 $2x + ky - 4k = 0$ 의 그래프가 점 $(3, -2)$를 지날 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "좌표",
+        "src": "stem",
+        "quote": "이 그래프가 $x$축과 만나는 점의 좌표를 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "일차방정식",
+        "src": "solution",
+        "quote": "점 $(3, -2)$를 일차방정식 $2x + ky - 4k = 0$에 대입하여 $k$의 값을 구한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

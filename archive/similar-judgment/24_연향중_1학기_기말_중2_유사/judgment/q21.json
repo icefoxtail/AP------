@@ -1,0 +1,56 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "82fba28f588fd8dd",
+  "solvedAnswer": "(1) $a = 3, b = 2$\n(2) $x = \\dfrac{3}{2}, y = \\dfrac{1}{4}$",
+  "solveSteps": [
+    "(1) 민재는 둘째 식을 바르게 보았으므로 $(2, 1)$ 대입 시 $6 - b = 4 \\implies b = 2$이다. (cases)",
+    "서아는 첫째 식을 바르게 보았으므로 $(3, -2)$ 대입 시 $3a - 4 = 5 \\implies 3a = 9 \\implies a = 3$이다. (cases)",
+    "(2) 원래 연립방정식 $\\begin{cases} 3x + 2y = 5 \\\\ 3x - 2y = 4 \\end{cases}$를 변끼리 더하면 $6x = 9 \\implies x = 3/2$이다. (cases)",
+    "$2y = 5 - 3(3/2) = 1/2 \\implies y = 1/4$이다. (cases)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 1번]\n민재와 서아",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COEFFICIENT_SWAP",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "잘못 보고 푼 연립방정식의 해로부터 원래 연립방정식을 복원하는 서술형 유형이다. (cases)",
+  "rpmRecordId": "M2-RPM-033",
+  "rpmReason": "연립일차방정식 단원의 해와 계수 조건에서 계수 결정에 일치한다. (cases)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "잘못 본 계수 문제에서 바르게 본 식을 선별해 풀이하는 서술형 난이도 3 문항이다. (cases)",
+  "how": "각 사람이 바르게 본 식에 각각의 해를 대입하여 a, b를 구하고 바른 해를 풀었다. (cases)",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "민재와 서아가 연립방정식 $\\begin{cases} ax + 2y = 5 \\ 3x - by = 4 \\end{cases}$ 를 푸는데"
+      }
+    ],
+    "goal": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "처음 연립방정식의 해를 바르게 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "민재는 $a$를 잘못 보았으므로 두 번째 식 $3x - by = 4$는 바르게 보았다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
