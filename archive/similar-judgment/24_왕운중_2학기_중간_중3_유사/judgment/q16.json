@@ -1,0 +1,56 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "3b0a474188074199",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$A(t, 2t^2)$, $B\\left(s, \\dfrac{1}{2}s^2\\right)$라 하면 $2t^2 = \\dfrac{1}{2}s^2 \\implies s^2 = 4t^2$, 즉 $s = \\pm 2t$이다.",
+    "$|s - t| = 9$이므로 $s=2t$일 때 $|t|=9 \\implies t=\\pm 9$, $s=-2t$일 때 $|3t|=9 \\implies t=\\pm 3$이다.",
+    "따라서 모든 $t$의 곱은 $9\\times(-9)\\times 3\\times(-3) = 729$이므로 정답은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $y=2x^2$의 그래프 위의 점 $A$와 이차함수 $y=\\dfrac{1}{2}x^2$의 그래프 위의 점 $B$에 대하여, 두 점 $A$, $B$의 $y$좌표가 서로 같고 $\\overline{AB}=9$를 만족하는 점 $A$의 $x$좌표가 될 수 있는 모든 값의 곱은?",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "rpmRecordId": "M3-RPM-043",
+  "rpmEvidence": "$A(t, 2t^2)$, $B\\left(s, \\dfrac{1}{2}s^2\\right)$라 하면 $2t^2 = \\dfrac{1}{2}s^2 \\implies s^2 = 4t^2$, 즉 $s = \\pm 2t$이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_AXIS_AND_MONOTONICITY",
+  "templateKey": "TPL_M3_FIND_VERTEX_FROM_DECREASING_INTERVAL_OF_PARABOLA",
+  "newKeyProposal": null,
+  "typeReason": "Q16번 문항은 PT_M3_QUADRATIC_FUNCTION_AXIS_AND_MONOTONICITY 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AB)",
+  "rpmReason": "Q16번 문항은 M3-RPM-043에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AB)",
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q16번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 4 수준의 문항이다. (문항 토큰 AB)",
+  "how": "Q16번 문항으로 M3-04 단원의 기본 개념과 성질을 적용하여 ④을(를) 바르게 구하였다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "이차함수 $y=2x^2$의 그래프 위의 점 $A$와 이차함수 $y=\\dfrac{1}{2}x^2$의 그래프 위의 점 $B$에 대하여, 두 점 $A$, $B$의 $y$좌표가 서로 같고 $\\overline{AB}=9$를 만족하는 점 $A$의 $x$좌표가 될 수 있는 모든 값의 곱은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=2x^2$의 그래프 위의 점 $A$와 이차함수 $y=\\dfrac{1}{2}x^2$의 그래프 위의 점 $B$에 대하여, 두 점 $A$, $B$의 $y$좌표가 서로 같고 $\\overline{AB}=9$를 만족하는 점 $A$의 $x$좌표가 될 수 있는 모든 값의 곱은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "모든",
+        "src": "solution",
+        "quote": "따라서 모든 $t$의 곱은 $9\\times(-9)\\times 3\\times(-3) = 729$이므로 정답은 ④이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

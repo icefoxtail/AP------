@@ -1,0 +1,55 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "76389deaf00622b0",
+  "solvedAnswer": "$\\sin A=\\dfrac{2\\sqrt{29}}{29},\\ \\cos A=\\dfrac{5\\sqrt{29}}{29},\\ \\tan A=\\dfrac{2}{5}$",
+  "solveSteps": [
+    "피타고라스 정리에 의해 $AC = \\sqrt{5^2+2^2} = \\sqrt{29}$이다.",
+    "따라서 $$ \\sin A = \\dfrac{2}{\\sqrt{29}} = \\dfrac{2\\sqrt{29}}{29}, \\qquad \\cos A = \\dfrac{5}{\\sqrt{29}} = \\dfrac{5\\sqrt{29}}{29}, \\qquad \\tan A = \\dfrac{2}{5} $$ 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 $\\angle B=90^\\circ$, $\\overline{AB}=5$, $\\overline{BC}=2$인 직각삼각형 $ABC$에서 $\\angle A$의 삼각비($\\sin A$, $\\cos A$, $\\tan A$)의 값을 각각 구하시오",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 3] 다음 그림과 같이 $\\angle B=90^\\circ$, $\\overline{AB}=5$, $\\overline{BC}=2$인 직각삼각형 $ABC$에서 $\\angle A$의 삼각비($\\sin A$, $\\cos A$, $\\tan A$)의 값을 각각 구하시오.",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "rpmRecordId": "M3-RPM-055",
+  "rpmEvidence": "피타고라스 정리에 의해 $AC = \\sqrt{5^2+2^2} = \\sqrt{29}$이다.",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+  "newKeyProposal": null,
+  "typeReason": "Q23번 문항은 PT_TRIG_RATIO 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 90)",
+  "rpmReason": "Q23번 문항은 M3-RPM-055에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 90)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q23번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 90)",
+  "how": "Q23번 문항으로 M3-05 단원의 기본 개념과 성질을 적용하여 $\\sin A=\\dfrac{2\\sqrt{29}}{29},\\ \\cos A=\\dfrac{5\\sqrt{29}}{29},\\ \\tan A=\\dfrac{2}{5}$을(를) 바르게 구하였다. (문항 토큰 90)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "[서술형 3] 다음 그림과 같이 $\\angle B=90^\\circ$, $\\overline{AB}=5$, $\\overline{BC}=2$인 직각삼각형 $ABC$에서 $\\angle A$의 삼각비($\\sin A$, $\\cos A$, $\\tan A$)의 값을 각각 구하시오."
+      }
+    ],
+    "goal": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "[서술형 3] 다음 그림과 같이 $\\angle B=90^\\circ$, $\\overline{AB}=5$, $\\overline{BC}=2$인 직각삼각형 $ABC$에서 $\\angle A$의 삼각비($\\sin A$, $\\cos A$, $\\tan A$)의 값을 각각 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "피타고라스정리",
+        "src": "solution",
+        "quote": "피타고라스 정리에 의해 $AC = \\sqrt{5^2+2^2} = \\sqrt{29}$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
