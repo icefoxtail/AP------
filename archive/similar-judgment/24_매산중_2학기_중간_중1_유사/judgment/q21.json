@@ -1,0 +1,61 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "567b7abbe48cbfe7",
+  "solvedAnswer": "$\\overline{BE},\\ \\overline{CF}$",
+  "solveSteps": [
+    "모서리 $BC$와 한 점에서 만나는 모서리는 $\\overline{AB}, \\overline{AC}, \\overline{BE}, \\overline{CF}$ 등이다.",
+    "이 중 모서리 $AD$와 꼬인 위치(만나지도 않고 평행하지도 않은)에 있는 모서리를 거른다. (BC)",
+    "$\\overline{AB}, \\overline{AC}$는 $AD$와 만나므로 제외되고, $\\overline{BE}, \\overline{CF}$가 해당한다. (BC)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서답형 1]\n\n\n[서술형]",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-POSITION_RELATION",
+  "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "입체도형에서의 다중 위치 관계 조건 만족 모서리 탐색 서술형 유형이다. (BC)",
+  "rpmRecordId": "M1-RPM-068",
+  "rpmReason": "기본 도형 단원의 공간에서의 직선의 위치 관계 복합 탐색 유형이다. (BC)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "복합 위치 관계 조건을 동시에 만족하는 공간 모서리를 찾는 난이도 3 서술형 문항이다. (BC)",
+  "how": "모서리 BC와 교차하면서 모서리 AD와 꼬인 위치에 있는 두 모서리 BE, CF를 교차 검증했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "각기둥",
+        "src": "stem",
+        "quote": "삼각기둥에서 모서리 $BC$와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "모서리",
+        "src": "stem",
+        "quote": "꼬인 위치에 있는 모서리를 모두 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "꼬인위치",
+        "src": "solution",
+        "quote": "모서리 $AD$와 꼬인 위치에 있는 모서리를",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "꼬인위치",
+        "src": "stem",
+        "quote": "모서리 $AD$와 꼬인 위치에 있는"
+      }
+    ]
+  }
+}

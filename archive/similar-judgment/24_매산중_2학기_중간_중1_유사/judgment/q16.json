@@ -1,0 +1,61 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "3561433f700f3d3f",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$\\overline{AM} = \\overline{BM}$ (중점 조건), $\\angle PMA = \\angle PMB = 90^\\circ$ (수직 조건). (AB)",
+    "$\\overline{PM}$은 공통이므로 두 삼각형은 SAS 합동이다. (AB)",
+    "따라서 대응변인 $\\overline{PA} = \\overline{PB}$이다. (AB)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음은 선분 $AB$의 수직",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+  "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "삼각형의 합동 조건을 활용한 기하 증명 빈칸 완성 유형이다. (AB)",
+  "rpmRecordId": "M1-RPM-079",
+  "rpmReason": "기본 도형 단원의 삼각형의 합동 SAS 합동 응용 증명 유형이다. (AB)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "삼각형의 합동 조건을 이용해 기하학적 성질을 증명하는 빈칸 완성 난이도 2 문항이다. (AB)",
+  "how": "수직이등분선 위 점에서 양 끝점에 이르는 거리가 같음을 SAS 합동으로 증명했다. (AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "수직이등분선",
+        "src": "stem",
+        "quote": "선분 $AB$의 수직이등분선 $l$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "$\\overline{PA}=\\overline{PB}$임을 설명하는 과정이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각형",
+        "src": "solution",
+        "quote": "선분의 수직이등분선의 성질 증명 과정을 확인한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "중점",
+        "src": "solution",
+        "quote": "선분 $AB$의 중점 $M$을 지나므로"
+      }
+    ]
+  }
+}

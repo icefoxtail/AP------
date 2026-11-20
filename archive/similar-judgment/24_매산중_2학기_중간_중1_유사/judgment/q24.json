@@ -1,0 +1,61 @@
+{
+  "qid": "q24",
+  "itemFingerprint": "7b62cc3255cfec3d",
+  "solvedAnswer": "$1800^\\circ$",
+  "solveSteps": [
+    "한 꼭짓점에서 그을 수 있는 대각선의 개수는 $n-3 = 9 \\implies n = 12$ (십이각형). (aligned)",
+    "$n$각형의 내각의 크기의 합은 $(n-2) \\times 180^\\circ$이다. (aligned)",
+    "$(12-2) \\times 180^\\circ = 10 \\times 180^\\circ = 1800^\\circ$이다. (aligned)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서답형 4]\n\n\n[서술형]",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-POLYGON_CIRCLE",
+  "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "다각형의 대각선 개수와 내각의 총합 연계 서술형 유형이다. (aligned)",
+  "rpmRecordId": "M1-RPM-081",
+  "rpmReason": "평면도형의 성질 단원의 다각형의 내각의 합과 대각선 공식 유형이다. (aligned)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "대각선 개수로부터 다각형의 변 수를 구하고 내각의 총합을 구하는 난이도 3 서술형 문항이다. (aligned)",
+  "how": "대각선 개수 공식 n-3=9에서 n=12를 구하고 내각의 합 공식에 대입해 1800도를 계산했다. (aligned)",
+  "slots": {
+    "given": [
+      {
+        "term": "대각선",
+        "src": "stem",
+        "quote": "한 꼭짓점에서 그을 수 있는 대각선의 개수가 $9$개인"
+      }
+    ],
+    "goal": [
+      {
+        "term": "내각",
+        "src": "stem",
+        "quote": "다각형의 내각의 크기의 합을 구하고"
+      }
+    ],
+    "method": [
+      {
+        "term": "내각",
+        "src": "solution",
+        "quote": "한 꼭짓점에서 그을 수 있는 대각선의 개수는 $n - 3$개이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "대각선의 개수가 $9$개인 다각형의"
+      }
+    ]
+  }
+}

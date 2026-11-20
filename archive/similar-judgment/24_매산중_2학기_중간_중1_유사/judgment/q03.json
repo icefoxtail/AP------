@@ -1,0 +1,61 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "8406eeb92a7b7cad",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$\\overline{AB} = \\overline{BC}$이므로 $\\overline{AC} = 2\\overline{BC}$이다.",
+    "점 $C$가 $\\overline{AD}$의 중점이므로 $\\overline{AD} = 2\\overline{AC} = 4\\overline{BC}$이다.",
+    "따라서 $\\overline{BC} = \\dfrac{1}{4}\\overline{AD}$이므로 보기 ②가 옳다. (AC)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림과 같이 직선 $l",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "선분의 중점과 길이 비례 관계 유형이다. (AC)",
+  "rpmRecordId": "M1-RPM-061",
+  "rpmReason": "기본 도형 단원의 두 점 사이의 거리와 중점 배수 관계 유형이다. (AC)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "선분의 중점 관계를 비례식으로 연계하는 난이도 1 문항이다. (AC)",
+  "how": "선분의 중점 성질을 연속 적용하여 선분 BC와 AD의 배수 관계 1/4을 확인했다. (AC)",
+  "slots": {
+    "given": [
+      {
+        "term": "중점",
+        "src": "stem",
+        "quote": "점 $B$는 $\\overline{AC}$의 중점이고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "solution",
+        "quote": "두 개의 같은 길이로 이등분한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "중점",
+        "src": "solution",
+        "quote": "선분의 중점은 그 선분을 두 개의 같은 길이로 이등분한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직선 $l$ 위에 네 점 $A$, $B$, $C$, $D$가"
+      }
+    ]
+  }
+}

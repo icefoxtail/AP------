@@ -1,0 +1,61 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "35acf0bddaed6bcc",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "오각기둥의 교점은 꼭짓점이고 개수는 $a = 5 \\times 2 = 10$이다. (aligned)",
+    "오각기둥의 교선은 모서리이고 개수는 $b = 5 \\times 3 = 15$이다. (aligned)",
+    "따라서 $b-a = 15 - 10 = 5$이다. (aligned)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림과 같은 오각기둥에",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE",
+  "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "다면체의 구성 요소인 교점과 교선 개수 계산 유형이다. (aligned)",
+  "rpmRecordId": "M1-RPM-094",
+  "rpmReason": "입체도형의 성질 단원의 다면체의 면·모서리·꼭짓점 개수 유형이다. (aligned)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "입체도형에서 교점과 교선의 개수를 구하는 난이도 1 문항이다. (aligned)",
+  "how": "각기둥의 꼭짓점 수 a=10과 모서리 수 b=15를 계산해 차 b-a=5를 구했다. (aligned)",
+  "slots": {
+    "given": [
+      {
+        "term": "각기둥",
+        "src": "stem",
+        "quote": "오각기둥에서 교점의 개수를 $a$개"
+      }
+    ],
+    "goal": [
+      {
+        "term": "교선",
+        "src": "stem",
+        "quote": "$b-a$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "꼭짓점",
+        "src": "solution",
+        "quote": "교선은 모서리이고, 선과 선이 만나서 생기는 교점은 꼭짓점이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "교점의 개수를 $a$개, 교선의 개수를 $b$개라 할 때"
+      }
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "d7e451ec90f89f4f",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "삼각형의 한 외각의 크기는 이웃하지 않는 두 내각의 합과 같다. (ABC)",
+    "$\\angle ACD = \\angle D + \\angle DBC$이고 $2\\angle ACD = \\angle A + 2\\angle DBC$이다. (ABC)",
+    "두 식을 연립하여 $\\angle D = \\dfrac{1}{2}\\angle A = 25^\\circ$를 도출한다. (ABC)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림의 $\\triang",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-POLYGON_CIRCLE",
+  "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "삼각형의 외각의 성질과 각의 이등분선 연계 유형이다. (ABC)",
+  "rpmRecordId": "M1-RPM-084",
+  "rpmReason": "평면도형의 성질 단원의 삼각형의 각 크기 계산과 외각 성질 유형이다. (ABC)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "삼각형의 내각·외각 이등분선이 이루는 각의 관계를 추론하는 난이도 2 문항이다. (ABC)",
+  "how": "삼각형의 내각과 외각의 이등분선 관계에서 각 D가 각 A의 절반임을 이용해 25도를 구했다. (ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "이등분선",
+        "src": "stem",
+        "quote": "angle B$의 이등분선과"
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각형",
+        "src": "solution",
+        "quote": "삼각형의 한 외각의 크기는 그와 이웃하지 않는 두 내각의 크기의 합과 같다."
+      }
+    ],
+    "method": [
+      {
+        "term": "외각",
+        "src": "solution",
+        "quote": "한 외각의 크기는 그와 이웃하지 않는 두 내각의 크기의 합과 같다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "외각",
+        "src": "stem",
+        "quote": "angle C$의 외각의 이등분선이"
+      }
+    ]
+  }
+}

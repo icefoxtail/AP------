@@ -1,0 +1,61 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "135d2cc24ea4483f",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "종이를 접었을 때 접은 각의 크기는 접히기 전의 각과 같다. (50)",
+    "직사각형의 대변이 평행하므로 엇각의 크기가 같다. (50)",
+    "이등변삼각형의 밑각 성질과 평각 $180^\\circ$를 이용해 $\\angle x$를 계산한다. (50)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림과 같이 직사각형",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-POSITION_RELATION",
+  "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "평행선 종이접기 도형의 엇각과 접은 각 계산 유형이다. (50)",
+  "rpmRecordId": "M1-RPM-064",
+  "rpmReason": "기본 도형 단원의 평행선과 각 종이접기 응용 유형이다. (50)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "종이접기 도형에서 접은 각과 평행선 엇각을 연계 계산하는 난이도 2 문항이다. (50)",
+  "how": "접은 각의 성질과 평행선의 엇각을 이용해 이등변삼각형을 찾고 각 x의 크기를 구했다. (50)",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 모양의 종이테이프를 접었을 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사각형",
+        "src": "solution",
+        "quote": "직사각형의 마주 보는 두 변은 서로 평행하므로"
+      }
+    ],
+    "method": [
+      {
+        "term": "엇각",
+        "src": "solution",
+        "quote": "평행하므로 엇각의 크기가 같고, 종이를 접었을 때 접은 각의 크기는",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "평행",
+        "src": "solution",
+        "quote": "두 변은 서로 평행하므로"
+      }
+    ]
+  }
+}

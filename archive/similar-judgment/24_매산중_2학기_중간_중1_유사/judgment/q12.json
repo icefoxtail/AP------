@@ -1,0 +1,61 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "7186ac3a21f92c94",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "가장 긴 변이 11이므로 $x \\le 11$이다. (cm)",
+    "삼각형 결정조건에 의해 $11 < 5 + x \\implies x > 6$이다. (cm)",
+    "따라서 $6 < x \\le 11$이므로 만족하는 자연수 $x$는 $7, 8, 9, 10, 11$의 5개이다. (cm)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "삼각형의 세 변의 길이가 각",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-CONSTRUCTION_CONGRUENCE",
+  "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "삼각형의 세 변의 길이 성립 조건과 미지수 개수 세기 유형이다. (cm)",
+  "rpmRecordId": "M1-RPM-075",
+  "rpmReason": "기본 도형 단원의 삼각형의 작도 세 변 조건 유형이다. (cm)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "가장 긴 변이 지정된 조건에서 삼각형 성립 부등식을 세우는 난이도 2 문항이다. (cm)",
+  "how": "삼각형의 성립 조건(가장 긴 변 < 두 변 합)과 최장변 조건으로 7<=x<=11의 5개를 구했다. (cm)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "삼각형의 세 변의 길이가 각각"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "$x$의 값이 될 수 있는 자연수의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각형",
+        "src": "solution",
+        "quote": "가장 긴 변의 길이는 나머지 두 변의 길이의 합보다 반드시 작아야 한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "가장 긴 변의 길이가 $11,\\mathrm{cm}$라면"
+      }
+    ]
+  }
+}
