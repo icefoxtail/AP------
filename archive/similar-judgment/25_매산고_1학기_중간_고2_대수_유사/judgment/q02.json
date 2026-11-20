@@ -1,0 +1,69 @@
+{
+  "qid": 2,
+  "itemFingerprint": "590d5a4d4c815c54",
+  "solveSteps": [
+    "$-27$의 세제곱근 중 실수 $a$는 $x^3 = -27$의 실근이므로 $a = \\sqrt[3]{-27} = -3$이다.",
+    "$16$의 네제곱근 중 음의 실수 $b$는 $x^4 = 16$의 음의 실근이므로 $b = -\\sqrt[4]{16} = -2$이다.",
+    "따라서 $ab = (-3) \\times (-2) = 6$이다. (③번)"
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "$-27$의 세제곱근 중에서 실수인 것을 $a$",
+  "rpmRecordId": "H2-M1-RPM-068",
+  "rpmReason": "실수 거듭제곱근의 정의에 따라 $-27$의 세제곱근과 $16$의 네제곱근에서 $ab = 6$을 구하는 H2-M1-RPM-068에 해당한다.",
+  "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+  "templateKey": "TPL_H22A_01_ROOT_REAL_068",
+  "typeReason": "실수 조건의 거듭제곱근 정의를 적용하여 $a, b$를 구하고 곱 $ab = 6$을 계산하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "거듭제곱근의 정의로 $a = -3, b = -2$를 즉시 구하여 $ab = 6$을 얻는 기본 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "세제곱근",
+        "src": "stem",
+        "quote": "$-27$의 세제곱근 중에서 실수인 것을 $a$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "음의 실수인 것을 $b$라 할 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "방정식",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "방정식 $x^3 = -27$의 실근이므로"
+      }
+    ],
+    "condition": [
+      {
+        "term": "제곱근",
+        "src": "stem",
+        "quote": "$16$의 네제곱근 중에서"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "$-27$의 실수 세제곱근 $-3$과 $16$의 음의 네제곱근 $-2$의 곱으로 $ab = 6$을 얻어 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

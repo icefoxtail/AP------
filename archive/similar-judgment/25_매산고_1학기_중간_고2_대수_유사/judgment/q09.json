@@ -1,0 +1,65 @@
+{
+  "qid": 9,
+  "itemFingerprint": "6bf39e9dee72a0a3",
+  "solveSteps": [
+    "배점 4.6점 문항으로 규모가 3 증가할 때 진폭과 에너지 변화를 구한다.",
+    "$M_2 - M_1 = \\log(A_2 / A_1) = 3 \\implies A_2 / A_1 = 10^3 = 1000$배이다.",
+    "$\\log E = 11.8 + 1.5M$에서 $\\log(E_2 / E_1) = 1.5(M_2 - M_1) = 1.5 \\times 3 = 4.5$이다.",
+    "$E_2 / E_1 = 10^{4.5} = 10^4 \\times \\sqrt{10} = 10000 \\times 3.2 = 32000$배이다.",
+    "따라서 최대 진폭 1000배, 지진 에너지 32000배 증가한다. (④번)"
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "규모가 $M$인 지진의 에너지의 크기를 $E$라 하면 $\\log E=11.8+1.5M$이라고 한다.",
+  "rpmRecordId": "H2-M1-RPM-077",
+  "rpmReason": "배점 4.6점 문항으로 상용로그 식 $\\log E = 11.8 + 1.5M$을 이용해 배수 32000을 계산하는 H2-M1-RPM-077에 해당한다.",
+  "problemTypeKey": "PT_H22A_01_COMMON_LOG",
+  "templateKey": "TPL_H22A_01_COMMON_LOG_SUBSTITUTE",
+  "typeReason": "배점 4.6점 문항으로 실생활 상용로그 관계식에 차이를 대입하여 32000배를 도출하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "배점 4.6점 문항으로 로그의 뺄셈 성질을 이용해 진폭 $10^3=1000$과 에너지 $10^{4.5}=32000$을 구하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "진폭",
+        "src": "stem",
+        "quote": "최대 진폭이 $A\\,\\mu\\text{m}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "증가감소",
+        "src": "stem",
+        "quote": "지진의 규모가 $3$만큼 증가할 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "최댓값",
+        "evidenceType": "NAMED",
+        "src": "stem",
+        "quote": "최대 진폭이 $A\\,\\mu\\text{m}$"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "배점 4.6점 문항으로 $\\log(A_2/A_1)=3$, $\\log(E_2/E_1)=4.5=4+0.5$에서 1000배, 32000배로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
