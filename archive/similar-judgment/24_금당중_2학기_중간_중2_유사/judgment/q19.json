@@ -1,0 +1,60 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "f7203815b08fbed1",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$\\begin{cases} 2w - l = 7 \\ 2l - w = -2 \\end{cases}$에서 $w = 2l + 2$ 대입으로 $l = 1, w = 4$이다.",
+    "따라서 전체 횟수는 $w + l = 4 + 1 = 5$회이다. (cases)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "민호와 준서가 가위바위보를",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "가위바위보 계단 이동 연립방정식 실생활 활용 유형이다. ($7$계단, $-2$계단) (cases)",
+  "rpmRecordId": "M2-RPM-038",
+  "rpmReason": "연립일차방정식의 활용 단원의 두 수 관계 및 실생활 상황 유형이다. (cases)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "가위바위보 승패의 대칭성을 이용해 식 $2w - l = 7$을 세우고 푸는 난이도 3 실생활 응용 문항이다. (cases)",
+  "how": "이긴 횟수 $w$, 진 횟수 $l$로 $2w - l = 7, 2l - w = -2$를 세워 $w = 4, l = 1$에서 전체 횟수 $5$회를 구했다. (cases)",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "민호는 $7$계단 올라가 있고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "가위바위보를 한 전체 횟수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입법",
+        "src": "solution",
+        "quote": "$w = 2l + 2$를 첫째 식에 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "미지수",
+        "src": "stem",
+        "quote": "비긴 경우는 없었다."
+      }
+    ]
+  }
+}

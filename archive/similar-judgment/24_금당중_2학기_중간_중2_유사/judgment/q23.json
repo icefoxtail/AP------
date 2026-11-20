@@ -1,0 +1,61 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "af6fb08550074103",
+  "solvedAnswer": "$9\\text{ cm}$",
+  "solveSteps": [
+    "$\\triangle ABD$에서 $\\overline{EP} \\parallel \\overline{AD}$이고 $\\overline{BE} : \\overline{BA} = 3 : 9 = 1 : 3$이므로 $\\overline{EP} = 9 \\times (1/3) = 3\\text{ cm}$이다. (ABCD)",
+    "$\\triangle ABC$에서 $\\overline{EQ} \\parallel \\overline{BC}$이고 $\\overline{AE} : \\overline{AB} = 6 : 9 = 2 : 3$이므로 $\\overline{EQ} = 18 \\times (2/3) = 12\\text{ cm}$이다. (ABCD)",
+    "따라서 $\\overline{PQ} = \\overline{EQ} - \\overline{EP} = 12 - 3 = 9\\text{ cm}$이다. (ABCD)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "사다리꼴 $ABCD$에서 $",
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+  "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "사다리꼴과 평행선 사이의 선분의 길이의 비 응용 서술형 유형이다. ($6, 3, 9, 18$) (ABCD)",
+  "rpmRecordId": "M2-RPM-094",
+  "rpmReason": "평행선 사이의 선분의 길이의 비 단원의 사다리꼴 평행선 분할 유형이다. (ABCD)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "사다리꼴 대각선과 평행선에 의해 나누어지는 두 선분의 길이를 차분 $12 - 3 = 9$로 구하는 복합 문항이다. (ABCD)",
+  "how": "사다리꼴에서 평행선 비를 적용해 $\\overline{EP} = 3$, $\\overline{EQ} = 12$를 구하고 차로 $\\overline{PQ} = 9$를 구했다. (ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "\\overline{AE} = 6\\text{ cm}"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "$\\overline{PQ}$의 길이를 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "선분",
+        "src": "solution",
+        "quote": "\\overline{PQ} = \\overline{EQ} - \\overline{EP}",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "평행선",
+        "src": "stem",
+        "quote": "$\\overline{AD} \\parallel \\overline{EF} \\parallel \\overline{BC}$"
+      }
+    ]
+  }
+}

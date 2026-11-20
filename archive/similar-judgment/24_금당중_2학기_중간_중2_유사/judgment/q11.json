@@ -1,0 +1,61 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "4f8661bbe5514593",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "직각삼각형 ABC에서 $x = \\sqrt{17^2 - 8^2} = 15\\text{ cm}$이다. (90)",
+    "직각삼각형 BCD에서 $y = \\sqrt{25^2 - 15^2} = 20\\text{ cm}$이다. (90)",
+    "따라서 $x + y = 15 + 20 = 35$이다. (90)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\angle B = 90^",
+  "standardUnitKey": "M2-07",
+  "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+  "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "연속된 직각삼각형에서의 피타고라스 정리 변 길이 계산 유형이다. ($17, 8, 25$) (90)",
+  "rpmRecordId": "M2-RPM-101",
+  "rpmReason": "피타고라스 정리 단원의 두 직각삼각형 연계 변 길이 합산 계산 유형이다. ($17, 8, 25$)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "피타고라스 정리를 두 직각삼각형에 연속 적용하여 $x+y=35$를 구하는 난이도 2 문항이다. (90)",
+  "how": "두 직각삼각형에 피타고라스 정리를 순차 적용하여 $x = 15$, $y = 20$을 구하고 $x + y = 35$를 계산했다. (90)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "\\overline{AC} = 17\\text{ cm}"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$x + y$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "피타고라스정리",
+        "src": "solution",
+        "quote": "x^2 + 8^2 = 17^2",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "직각삼각형 $ABC$에서"
+      }
+    ]
+  }
+}

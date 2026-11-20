@@ -1,0 +1,61 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "652128c0e4dd1631",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$(1, 3)$ 대입으로 $a + 9 = 12 \\implies a = 3$이다. (ax)",
+    "$(p, -p/3)$ 대입으로 $3p - p = 12 \\implies p = 6$이다. (ax)",
+    "따라서 $a + p = 3 + 6 = 9$이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 순서쌍 $(1, 3)$과",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "일차방정식의 해가 주어졌을 때 미정계수 $a, p$를 구하는 유형이다. (ax)",
+  "rpmRecordId": "M2-RPM-033",
+  "rpmReason": "연립일차방정식 해와 계수 단원의 계수 결정 유형이다. ($ax+3y=12$)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 순서쌍 해를 대입하여 $a = 3, p = 6$을 차례로 구하는 난이도 2 문항이다. (ax)",
+  "how": "$(1, 3)$을 대입해 $a = 3$을 구하고, $(p, -p/3)$을 대입해 $p = 6$을 구해 $a + p = 9$를 도출했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "순서쌍",
+        "src": "stem",
+        "quote": "두 순서쌍 $(1, 3)$과 $\\left(p, -\\dfrac{1}{3}p\\right)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$a + p$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$(1, 3)$을 $ax + 3y = 12$에 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "단, $a$는 상수이다."
+      }
+    ]
+  }
+}

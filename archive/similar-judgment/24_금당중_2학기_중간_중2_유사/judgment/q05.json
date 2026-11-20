@@ -1,0 +1,61 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "e4870bddb302915f",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$\\overline{AB} = 15 - 5 = 10\\text{ cm}$이다. (ABC)",
+    "$\\triangle ABC \\sim \\triangle ADE$ 닮음비 $10 : 15 = 2 : 3$이다.",
+    "$\\overline{BC} = 8\\text{ cm}$, $\\overline{AC} = 8\\text{ cm}$이므로 둘레는 $10 + 8 + 8 = 26\\text{ cm}$이다. (ABC)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\triangle ABC$",
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-SIMILAR_FIGURES",
+  "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "평행선과 삼각형의 닮음비를 이용한 둘레 계산 유형이다. (ABC)",
+  "rpmRecordId": "M2-RPM-086",
+  "rpmReason": "도형의 닮음 단원의 삼각형의 닮음 활용 유형이다. (ABC)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "연장선상의 평행선 닮음비를 적용하여 세 변을 합산하는 난이도 2 문항이다. (ABC)",
+  "how": "연장선 평행선 닮음비 2:3을 이용해 각 변을 구하고 둘레 26cm를 계산했다. (ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "$\\overline{AD} = 15\\text{ cm}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "$\\triangle ABC$의 둘레의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "닮음",
+        "src": "solution",
+        "quote": "$\\triangle ABC \\sim \\triangle ADE$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "평행선",
+        "src": "stem",
+        "quote": "$\\overline{BC} \\parallel \\overline{DE}$"
+      }
+    ]
+  }
+}

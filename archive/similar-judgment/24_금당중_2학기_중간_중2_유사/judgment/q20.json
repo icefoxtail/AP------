@@ -1,0 +1,60 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "05082ff47ea7da7a",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "바꾼 식에 $x = 1, y = -2$ 대입하여 $a = 3, b = -1$을 구한다. (cases)",
+    "원래 식 $\\begin{cases} 3x + y = 5 \\ -x + 3y = 5 \\end{cases}$을 풀면 $x = 1, y = 2$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "연립방정식 $\\begin{c",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "계수를 바꾸어 놓고 푼 연립일차방정식의 역산 유형이다. ($ax-by=5$) (cases)",
+  "rpmRecordId": "M2-RPM-033",
+  "rpmReason": "연립일차방정식 단원의 해와 계수 결정 및 역산 유형이다. (cases)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "잘못 보고 푼 조건으로 계수 $a=3, b=-1$을 먼저 구한 뒤 원래 방정식을 다시 푸는 난이도 3 심화 문항이다. (cases)",
+  "how": "계수를 바꾼 식에 $x = 1, y = -2$를 대입해 $a = 3, b = -1$을 구하고 처음 식의 해 $x = 1, y = 2$를 도출했다. (cases)",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "ax - by = 5"
+      }
+    ],
+    "goal": [
+      {
+        "term": "해",
+        "src": "stem",
+        "quote": "처음 연립방정식의 해는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입법",
+        "src": "solution",
+        "quote": "$y = 5 - 3x$를 둘째 식에 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "단, $a$와 $b$는 상수이다."
+      }
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "qid": "q06",
+  "itemFingerprint": "04d17609e54bcc6f",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$\\overline{DF} \\parallel \\overline{BE}$이므로 $\\overline{AD} : \\overline{DB} = \\overline{AF} : \\overline{FE} = 8 : 4 = 2 : 1$이다. (ABC)",
+    "$\\overline{DE} \\parallel \\overline{BC}$이므로 $\\overline{AE} : \\overline{EC} = \\overline{AD} : \\overline{DB} = 2 : 1$이다. (ABC)",
+    "$\\overline{AE} = 8 + 4 = 12$이므로 $12 : \\overline{EC} = 2 : 1 \\implies \\overline{EC} = 6$이다. (ABC)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\triangle ABC$",
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+  "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "삼각형 내부 다중 평행선 선분 비례 계산 유형이다. ($8, 4$) (ABC)",
+  "rpmRecordId": "M2-RPM-093",
+  "rpmReason": "평행선 사이의 선분의 길이의 비 단원의 여러 평행선 사이 선분비 유형이다. ($2 : 1$) (ABC)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "평행선 두 쌍의 비례식 $2 : 1$을 연속으로 연계하여 미지 선분을 구하는 난이도 2 문항이다. (ABC)",
+  "how": "이중 평행선에 따른 선분 비 $8 : 4 = 2 : 1$을 연쇄 적용하여 $\\overline{EC} = 6$을 구했다. (ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "$\\overline{AF} = 8$, $\\overline{FE} = 4$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "$\\overline{EC}$의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "선분",
+        "src": "solution",
+        "quote": "$\\overline{AD} : \\overline{DB} = \\overline{AF} : \\overline{FE} = 8 : 4 = 2 : 1$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "평행선",
+        "src": "stem",
+        "quote": "$\\overline{DE} \\parallel \\overline{BC}$, $\\overline{DF} \\parallel \\overline{BE}$"
+      }
+    ]
+  }
+}

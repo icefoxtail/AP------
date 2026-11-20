@@ -1,0 +1,61 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "55753d5a2b5f1ec2",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$M$은 $\\overline{AB}$의 중점이므로 $x = 9/2$이다. (ABC)",
+    "중점연결정리에 의해 $y = 13/2$이다. (ABC)",
+    "따라서 $x + y = 9/2 + 13/2 = 11$이다. (ABC)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\triangle ABC$",
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+  "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "삼각형의 중점연결정리를 이용한 선분 길이 계산 유형이다. (ABC)",
+  "rpmRecordId": "M2-RPM-091",
+  "rpmReason": "평행선과 선분의 길이의 비 단원의 삼각형의 중점연결정리 유형이다. (ABC)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "중점연결정리를 이용해 두 선분의 길이를 구하고 합산하는 난이도 2 문항이다. (ABC)",
+  "how": "중점연결정리로 x=9/2, y=13/2를 구하고 합 x+y=11을 계산했다. (ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "$\\overline{AB} = 9\\text{ cm}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$x + y$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "선분",
+        "src": "solution",
+        "quote": "삼각형의 중점연결정리에 의해",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "평행선",
+        "src": "stem",
+        "quote": "변 $BC$에 평행한 직선이"
+      }
+    ]
+  }
+}

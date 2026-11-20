@@ -1,0 +1,62 @@
+{
+  "qid": "q24",
+  "itemFingerprint": "7d46b1926a1c1bea",
+  "solvedAnswer": "(1) $\\begin{cases} 15x + 5y = 33000 \\ 12x + 8y = 31200 \\end{cases}$, (2) 손거울 $1800$원, 열쇠고리 $1200$원",
+  "solveSteps": [
+    "(1) 손거울 1개 x원, 열쇠고리 1개 y원이므로 $\\begin{cases} 15x + 5y = 33000 \\ 12x + 8y = 31200 \\end{cases}$이다.",
+    "(2) 각 식을 약분하면 $3x + y = 6600, 3x + 2y = 7800$이다. (15)",
+    "변끼리 빼면 $y = 1200$이고 $3x + 1200 = 6600 \\implies x = 1800$이다. (15)",
+    "따라서 손거울은 1800원, 열쇠고리는 1200원이다. (15)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "민지네 반은 학교 축제를 위",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "연립일차방정식의 활용 개수와 가격 실생활 서술형 유형이다. ($33000, 31200$) (15)",
+  "rpmRecordId": "M2-RPM-039",
+  "rpmReason": "연립일차방정식의 활용 단원의 수와 개수, 개수·가격 유형이다. ($1800, 1200$) (15)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "실생활 구매 가격으로 식을 세우고 약분하여 연립방정식을 푸는 난이도 2 서술형 문항이다. ($33000, 31200$) (15)",
+  "how": "손거울 $x$원, 열쇠고리 $y$원으로 연립방정식을 세워 가감법으로 $x = 1800, y = 1200$을 구했다. (15)",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "손거울 $15$개와 열쇠고리 $5$개의 가격은 $33000$원이고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "손거울 $1$개와 열쇠고리 $1$개의 가격을 각각 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "가감법",
+        "src": "solution",
+        "quote": "$(3x + 2y) - (3x + y) = 7800 - 6600 \\implies y = 1200$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "문제의 뜻에 맞는 연립방정식을 세우시오."
+      }
+    ]
+  }
+}

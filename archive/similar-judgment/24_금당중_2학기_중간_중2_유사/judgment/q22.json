@@ -1,0 +1,61 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "2c0507f389d0b5e6",
+  "solvedAnswer": "(1) $\\triangle DOE \\sim \\triangle BCD$ ($\\text{AA}$ 닮음), (2) $5 : 8$, (3) $\\dfrac{15}{2}\\text{ cm}$",
+  "solveSteps": [
+    "(1) $\\angle DOE = \\angle BCD = 90^\\circ$이고 $\\overline{AD} \\parallel \\overline{BC}$의 엇각으로 $\\angle ODE = \\angle CBD$이므로 $\\triangle DOE \\sim \\triangle BCD$ (AA 닮음)이다. (ABCD)",
+    "(2) O는 BD의 중점이므로 $\\overline{DO} = 10\\text{ cm}$이다. 대응변의 비는 $\\overline{DO} : \\overline{BC} = 10 : 16 = 5 : 8$이다. (ABCD)",
+    "(3) $\\overline{EO} : \\overline{DC} = 5 : 8 \\implies \\overline{EO} : 12 = 5 : 8 \\implies \\overline{EO} = 12 \\times (5/8) = 15/2\\text{ cm}$이다. (ABCD)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "직사각형 $ABCD$에서 대",
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-SIMILAR_FIGURES",
+  "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "직사각형 내부 대각선 수선에 의한 삼각형 닮음 증명 및 계산 서술형 유형이다. (ABCD)",
+  "rpmRecordId": "M2-RPM-086",
+  "rpmReason": "도형의 닮음 단원의 직각삼각형의 닮음 및 선분의 길이 계산 유형이다. ($10, 16, 12$) (ABCD)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "직각과 엇각으로 닮음을 증명하고 닮음비 $5 : 8$로 선분을 구하는 난이도 3 서술형 문항이다. (ABCD)",
+  "how": "직사각형에서 $\\triangle DOE \\sim \\triangle BCD$ (AA닮음)과 닮음비 $10 : 16 = 5 : 8$을 이용해 $\\overline{EO} = 15/2$를 구했다. (ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "$\\overline{BO} = 10\\text{ cm}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "$\\overline{EO}$의 길이를 구하기 위한"
+      }
+    ],
+    "method": [
+      {
+        "term": "닮음",
+        "src": "solution",
+        "quote": "$\\triangle DOE \\sim \\triangle BCD$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "평행선",
+        "src": "solution",
+        "quote": "$\\overline{AD} \\parallel \\overline{BC}$이므로"
+      }
+    ]
+  }
+}

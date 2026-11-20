@@ -1,0 +1,60 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "7e471f0cac7fb51e",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$y = 2x$를 $x + 3y = 7$에 대입하면 $7x = 7 \\implies x = 1, y = 2$이다. (cases)",
+    "$(1, 2)$를 $4x - ay = 10$에 대입하면 $4 - 2a = 10 \\implies a = -3$이다. (cases)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "연립방정식 $\\begin{c",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "다른 일차방정식을 만족시키는 연립방정식의 미정계수 결정 유형이다. (cases)",
+  "rpmRecordId": "M2-RPM-030",
+  "rpmReason": "연립일차방정식의 풀이 단원의 가감법 및 대입법 유형이다. (cases)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "세 일차방정식의 관계로부터 해를 먼저 구하고 미정계수를 찾는 난이도 2 문항이다. (cases)",
+  "how": "조건식 y=2x를 연립해 x=1, y=2를 구하고 a=-3을 계산했다. (cases)",
+  "slots": {
+    "given": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "일차방정식 $2x - y = 0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "상수 $a$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "해 $(1, 2)$를 $4x - ay = 10$에 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $a$의 값은?"
+      }
+    ]
+  }
+}

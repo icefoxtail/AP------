@@ -1,0 +1,61 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "050ab30375686d70",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "접힌 변의 길이로 $\\overline{BC'} = 15\\text{ cm}$이다. (AB)",
+    "직각삼각형 ABC'에서 $\\overline{AC'} = \\sqrt{15^2 - 12^2} = 9\\text{ cm}$이다.",
+    "따라서 $\\overline{DC'} = 15 - 9 = 6\\text{ cm}$이다. (AB)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\overline{AB}",
+  "standardUnitKey": "M2-07",
+  "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+  "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "접은 도형에서의 피타고라스 정리 응용 선분 계산 유형이다. (AB)",
+  "rpmRecordId": "M2-RPM-101",
+  "rpmReason": "피타고라스 정리 단원의 직사각형 접기 도형 변 길이 계산 유형이다. ($12, 15, 6$)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "직사각형 접기에서 피타고라스 정리를 적용해 변을 구하는 난이도 2 문항이다. (AB)",
+  "how": "직각삼각형에 피타고라스 정리를 적용해 AC'=9를 구하고 DC'=6cm를 계산했다. (AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "$\\overline{AB} = 12\\text{ cm}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "$\\overline{DC'}$의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "피타고라스정리",
+        "src": "solution",
+        "quote": "피타고라스 정리에 의해",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 $ABCD$에서"
+      }
+    ]
+  }
+}

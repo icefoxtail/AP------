@@ -1,0 +1,61 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "63494ec6122035cd",
+  "solvedAnswer": "①, ⑤",
+  "solveSteps": [
+    "무게중심은 중선을 2:1로 나누므로 ① GA = GB는 거짓이다. (ABC)",
+    "⑤ CG : GF = 2:1이므로 GF = 1/2 CG이어야 하므로 ⑤도 거짓이다. (ABC)",
+    "따라서 옳지 않은 것은 ①, ⑤이다. (ABC)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\triangle ABC$",
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+  "problemTypeKey": "PT_M2_CENTROID",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "삼각형의 무게중심의 성질 참거짓 판정 복수정답 유형이다. (ABC)",
+  "rpmRecordId": "M2-RPM-097",
+  "rpmReason": "무게중심 단원의 무게중심의 성질 유형이다. (ABC)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "무게중심의 선분비 2:1과 넓이 6등분 성질을 종합 판별하는 난이도 2 문항이다. (ABC)",
+  "how": "무게중심의 2:1 내분 성질과 넓이 분할을 분석하여 거짓인 보기 ①, ⑤를 판정했다. (ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "세 중선 $AD$, $BE$, $CF$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "도형",
+        "src": "stem",
+        "quote": "다음 중 옳지 않은 것을 모두 고르면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "선분",
+        "src": "solution",
+        "quote": "각 중선을 꼭짓점으로부터 $2 : 1$로 나눈다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "$\\triangle ABC$의 세 중선"
+      }
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "9ed3962f8d930ad1",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$\\overline{AG} : \\overline{GD} = 2 : 1$에서 $\\overline{GD} = 8\\text{ cm}$, $\\overline{AD} = 24\\text{ cm}$이다. (ABC)",
+    "중점연결정리에 의해 $\\overline{EF} = \\dfrac{1}{2}\\overline{AD} = 12\\text{ cm}$이다. (ABC)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\triangle ABC$",
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+  "problemTypeKey": "PT_M2_CENTROID",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "무게중심과 중점연결정리 융합 선분 길이 계산 유형이다. (ABC)",
+  "rpmRecordId": "M2-RPM-097",
+  "rpmReason": "무게중심 단원의 중선과 무게중심 2:1 비 유형이다. (ABC)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "무게중심 2:1 비와 삼각형 중점연결정리를 결합한 난이도 2 문항이다. (ABC)",
+  "how": "무게중심 비로 AD=24cm를 구하고 중점연결정리로 EF=12cm를 계산했다. (ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "$\\overline{AG} = 16\\text{ cm}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "$\\overline{EF}$의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "선분",
+        "src": "solution",
+        "quote": "$\\overline{AG} : \\overline{GD} = 2 : 1$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "평행선",
+        "src": "stem",
+        "quote": "선분 $DA$에 평행한 직선이"
+      }
+    ]
+  }
+}

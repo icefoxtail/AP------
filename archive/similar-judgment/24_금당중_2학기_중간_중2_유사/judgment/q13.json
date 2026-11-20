@@ -1,0 +1,61 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "fcb6d522810d6014",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$5x + 2y = 29$에서 자연수 $x$에 $1, 2, 3, 4, 5$를 대입한다.",
+    "$x=1 \\implies y=12$, $x=3 \\implies y=7$, $x=5 \\implies y=2$이다. (29)",
+    "따라서 자연수 순서쌍 $(x, y)$는 $(1, 12), (3, 7), (5, 2)$의 $3$개이다. (29)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "일차방정식 $5x + 2y",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "일차방정식의 자연수 해의 순서쌍 개수를 구하는 표준 유형이다. ($29$)",
+  "rpmRecordId": "M2-RPM-032",
+  "rpmReason": "연립일차방정식 단원의 일차방정식의 해의 순서쌍 유형이다. ($5x+2y=29$)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "자연수 조건으로 $5x + 2y = 29$의 해를 유한 조사하는 난이도 2 문항이다.",
+  "how": "$5x + 2y = 29$에 자연수 $x=1,2,3,4,5$를 대입하여 순서쌍 $3$개를 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "일차방정식 $5x + 2y = 29$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순서쌍",
+        "src": "stem",
+        "quote": "순서쌍 $(x, y)$의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$x = 1, 2, 3, 4, 5$를 차례로 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "만족시키는 자연수 $x$와 $y$"
+      }
+    ]
+  }
+}

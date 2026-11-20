@@ -1,0 +1,61 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "de921241d6680320",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "첫째 식 $\\times 10$: $3x + y = 12$, 둘째 식 $\\times 6$: $2x - y = 3$이다. (cases)",
+    "두 식을 더하면 $5x = 15 \\implies x = 3$이고 $y = 3$이다. (cases)",
+    "따라서 $a + b = 3 + 3 = 6$이다. (cases)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "연립방정식 $\\begin{c",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "분수와 소수를 포함한 연립일차방정식의 풀이 유형이다. ($0.3x, 1/3x$) (cases)",
+  "rpmRecordId": "M2-RPM-035",
+  "rpmReason": "복잡한 꼴의 연립방정식 단원의 분수·소수가 있는 연립방정식 유형이다. (cases)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "소수와 분수 계수를 각각 $10$배, $6$배 정수화하여 푸는 난이도 2 계산 문항이다. (cases)",
+  "how": "계수를 정수화하여 $3x + y = 12$, $2x - y = 3$을 얻고 가감법으로 $x = 3, y = 3$을 구해 $a + b = 6$을 도출했다. (cases)",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "0.3x + 0.1y = 1.2"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$a + b$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "가감법",
+        "src": "solution",
+        "quote": "두 식을 더하면 $5x = 15 \\implies x = 3$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "해",
+        "src": "stem",
+        "quote": "해가 $(a, b)$일 때"
+      }
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "53c66de618d2a2a6",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "첫째 식 정리: $x + y = 3$, 둘째 식 정리: $2x + 3y = 7$이다. (cases)",
+    "가감법으로 $y = 1$이고 $x = 2$이다. (cases)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "연립방정식 $\\begin{c",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "괄호가 있는 복잡한 연립일차방정식 풀이 유형이다. ($2(x+3)$) (cases)",
+  "rpmRecordId": "M2-RPM-034",
+  "rpmReason": "연립일차방정식의 풀이 단원의 괄호가 있는 연립방정식 유형이다. (cases)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "괄호 전개 후 가감법으로 $x=2, y=1$을 구하는 표준적인 난이도 2 문항이다. (cases)",
+  "how": "괄호를 전개하여 $x + y = 3$, $2x + 3y = 7$을 유도한 뒤 가감법으로 $x = 2, y = 1$을 구했다. (cases)",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin{cases} 2(x + 3) = 9 - (y - x)"
+      }
+    ],
+    "goal": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin{cases}"
+      }
+    ],
+    "method": [
+      {
+        "term": "가감법",
+        "src": "solution",
+        "quote": "$(2x + 3y) - (2x + 2y) = 7 - 6 \\implies y = 1$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
