@@ -1,0 +1,73 @@
+{
+  "qid": 2,
+  "itemFingerprint": "5e23bfc30c92a92f",
+  "solveSteps": [
+    "기약분수로 나타내었을 때 분모의 소인수가 2 또는 5뿐이면 유한소수이다.",
+    "1번: 3/25 = 3/5^2 (유한)",
+    "2번: 7/40 = 7/(2^3 * 5) (유한)",
+    "3번: 9/150 = 3/50 = 3/(2 * 5^2) (유한)",
+    "4번: 5/18 = 5/(2 * 3^2) (분모에 3이 있어 유한소수 불가)",
+    "5번: 21/(2*3*5*7) = 1/(2*5) = 1/10 (유한)",
+    "따라서 답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "다음 중 유한소수로 나타낼 수",
+  "rpmRecordId": "M2-RPM-119",
+  "rpmReason": "분모 25, 40, 150, 18, 50, 10의 소인수를 확인하여 유한소수 가능 여부를 판별한다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "기약분수 분모 25, 40, 18 등의 소인수가 2, 5 이외의 수를 갖는지 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "분모 25, 40, 150, 18을 소인수분해하여 2와 5 외의 소인수 존재를 확인하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "소인수",
+        "quote": "을 때 분모의 소인수가 $2$ 또는",
+        "src": "solution"
+      }
+    ],
+    "goal": [
+      {
+        "term": "유한소수",
+        "quote": "다음 중 유한소수로 나타낼 수",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "기약분수",
+        "quote": "분수를 기약분수로 나타내었을",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "유한소수",
+        "quote": "$5$뿐이면 유한소수이고, $2$와",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "각 선지의 분모 25, 40, 150, 18을 기약분수로 정리하여 분모 소인수에 3이 남는 5/18을 찾았다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

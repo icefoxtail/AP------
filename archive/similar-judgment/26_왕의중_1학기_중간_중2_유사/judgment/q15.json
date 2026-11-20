@@ -1,0 +1,72 @@
+{
+  "qid": 15,
+  "itemFingerprint": "b342c5ec9a6d628a",
+  "solveSteps": [
+    "1번: a < b 이면 a + 5 < b + 5 (참)",
+    "2번: a - 4 < b - 4 이면 a < b (참)",
+    "3번: 3a - 2 < 3b - 2 이면 a < b 이고 -2a + 1 > -2b + 1 (참)",
+    "4번: a < b 이면 -a/3 > -b/3 (참)",
+    "5번: -4a + 3 > -4b + 3 에서 -4로 나누면 a < b 이어야 하므로 a > b 는 옳지 않다.",
+    "따라서 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "부등식의 성질을 적용",
+  "rpmRecordId": "M2-RPM-136",
+  "rpmReason": "부등식의 양변에 음수 -4, -2를 곱하거나 나눌 때 부등호 방향이 바뀌는 성질 4, 5, 3을 확인한다.",
+  "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+  "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+  "typeReason": "부등식의 성질에서 음수 -4를 나눌 때 부등호 방향 변화의 참·거짓을 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "부등식의 양변에 음수 -4를 나눌 때 부등호 방향이 반대로 바뀜을 확인하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "성질",
+        "quote": "부등식의 성질을 적용하여 각",
+        "src": "solution"
+      }
+    ],
+    "goal": [
+      {
+        "term": "부등식",
+        "quote": "부등식의 성질을 적용",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "음수",
+        "quote": "b$의 양변에 음수 $-2$를 곱",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양수",
+        "quote": "2$를 더하고 양수 $3$으로 나",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "5번 선지에서 양변을 -4로 나눌 때 부등호 방향이 바뀌어야 함에도 a > b로 표기된 오류를 찾았다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "qid": 10,
+  "itemFingerprint": "5b5699eeb21b1a25",
+  "solveSteps": [
+    "-3(x^2 - 2x + 1) - (ax^2 + 4x - 5) = -3x^2 + 6x - 3 - ax^2 - 4x + 5 이다.",
+    "동류항을 정리하면 (-3 - a)x^2 + 2x + 2 이다.",
+    "x^2의 계수와 상수항의 합이 0이므로 (-3 - a) + 2 = 0 이다.",
+    "-1 - a = 0 에서 a = -1 이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "unitEvidence": "2$의 계수와 상수항의 합이 $0$",
+  "rpmRecordId": "M2-RPM-130",
+  "rpmReason": "다항식의 괄호를 풀고 ax^2 등 동류항을 정리하여 계수 조건을 만족하는 상수 a를 구한다.",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "typeReason": "다항식의 덧셈·뺄셈 전개 후 ax^2 계수와 상수항의 합이 0이 되는 조건을 다루는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "분배법칙으로 식을 정리하고 ax^2 계수 -3-a와 상수항 2의 합 방정식을 푸는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "상수항",
+        "quote": "2$의 계수와 상수항의 합이 $0$",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "quote": "$x^2$의 계수와 상수항의 합",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "분배법칙",
+        "quote": "분배법칙을 이용하여 괄",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "동류항",
+        "quote": "괄호를 풀고 동류항끼리 모아 식을",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "ax 항이 포함된 식을 전개하여 (-3-a)x^2 + 2x + 2를 얻고 계수 합 (-3-a)+2=0에서 a=-1을 계산했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

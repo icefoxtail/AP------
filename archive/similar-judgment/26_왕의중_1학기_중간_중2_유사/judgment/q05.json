@@ -1,0 +1,71 @@
+{
+  "qid": 5,
+  "itemFingerprint": "56f79d01a618a947",
+  "solveSteps": [
+    "1번: 순환소수는 무한소수이다. (참)",
+    "2번: 기약분수의 분모 소인수가 2 또는 5뿐이면 10의 거듭제곱으로 나타낼 수 있어 유한소수이다. (참)",
+    "3번: 파이=3.141592...와 같이 순환하지 않는 무한소수는 무리수이다. (참)",
+    "4번: 순환소수는 분수로 나타낼 수 있으므로 유리수이다. (참)",
+    "5번: 1/3=0.333...은 정수가 아닌 유리수이지만 유한소수가 아닌 순환소수이다. 따라서 5번은 옳지 않다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "수 있으므로 유한소수이다. (참)",
+  "rpmRecordId": "M2-RPM-123",
+  "rpmReason": "유리수와 유한소수, 순환소수, 무리수 3.141592 및 0.333의 개념 분류와 성질을 판별한다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "유리수, 유한소수, 무한소수 3.141592 및 10 거듭제곱의 정의와 포함 관계를 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "정수가 아닌 유리수가 유한소수 또는 순환소수 0.333으로 표현됨을 확인하는 개념 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "기약분수",
+        "quote": ". (참) ② 기약분수의 분모의 소인",
+        "src": "solution"
+      }
+    ],
+    "goal": [
+      {
+        "term": "유한소수",
+        "quote": "수 있으므로 유한소수이다. (참)",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "순환소수",
+        "quote": "확인한다. ① 순환소수는 소수점 아래",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "무한소수",
+        "quote": "되풀이되므로 무한소수이다. (참)",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "정수가 아닌 유리수 1/3=0.333...이 유한소수가 아닌 순환소수임을 반례로 5번이 거짓임을 판별했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

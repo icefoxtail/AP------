@@ -1,0 +1,71 @@
+{
+  "qid": 21,
+  "itemFingerprint": "aa3da86fbc1d7f5b",
+  "solveSteps": [
+    "x = 0.2666... 이라 두자.",
+    "10을 곱하면 10x = 2.666... 이다.",
+    "100을 곱하면 100x = 26.666... 이다.",
+    "변끼리 빼면 90x = 24 이므로 x = 24/90 이다.",
+    "최대공약수 6으로 약분하면 x = 4/15 이다."
+  ],
+  "solvedAnswer": "$\\dfrac{4}{15}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "ot{6}$을 기약분수로 나타내는 과",
+  "rpmRecordId": "M2-RPM-122",
+  "rpmReason": "순환소수 0.2666...에 10과 100을 곱해 두 식의 차 90x=24로부터 기약분수 4/15를 구한다.",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "100x와 10x의 차를 이용하여 순환소수 0.2666을 분수 4/15로 유도하는 서술형 풀이 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "10x=2.666과 100x=26.666의 뺄셈으로 90x=24를 유도하고 약분하는 전형적인 서술형 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "quote": "답형 1]   순환소수 $0.2\\do",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "기약분수",
+        "quote": "ot{6}$을 기약분수로 나타내는 과",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "거듭제곱",
+        "quote": ", $10$의 거듭제곱을 곱하여 소수",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "공식",
+        "quote": "단, 순환소수 공식을 바로 사용하",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "100x=26.666...에서 10x=2.666...을 빼어 90x=24를 얻고 4/15로 약분했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
