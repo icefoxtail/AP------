@@ -1,0 +1,73 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "caption": "가운데 세로 칸막이를 공유하여 나란히 붙은 2개의 직사각형 꽃밭 (가로 w, 세로 h)",
+  "mathPlan": {
+    "nodes": [
+      {
+        "id": "A",
+        "kind": "SOURCE_POINT",
+        "x": 0,
+        "y": 2,
+        "label": "A"
+      },
+      {
+        "id": "B",
+        "kind": "SOURCE_POINT",
+        "x": 0,
+        "y": 0,
+        "label": "B"
+      },
+      {
+        "id": "C",
+        "kind": "SOURCE_POINT",
+        "x": 2,
+        "y": 0,
+        "label": "C"
+      },
+      {
+        "id": "D",
+        "kind": "SOURCE_POINT",
+        "x": 4,
+        "y": 0,
+        "label": "D"
+      },
+      {
+        "id": "E",
+        "kind": "SOURCE_POINT",
+        "x": 4,
+        "y": 2,
+        "label": "E"
+      },
+      {
+        "id": "F",
+        "kind": "SOURCE_POINT",
+        "x": 2,
+        "y": 2,
+        "label": "F"
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "from": "B",
+        "to": "D"
+      },
+      {
+        "from": "D",
+        "to": "E"
+      },
+      {
+        "from": "E",
+        "to": "A"
+      },
+      {
+        "from": "F",
+        "to": "C"
+      }
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "qid": 18,
+  "itemFingerprint": "8a3d3a725c8c108f",
+  "solveSteps": [
+    "조건 (가)에 의해 $f(x)=a(x+3)(x-2)$ ($a\\ne 0$)라 놓을 수 있다.",
+    "$4\\le x\\le 6$에서 $(x+3)(x-2)>0$이고 최댓값이 양수 $108$이므로 $a>0$이다.",
+    "$x>2$에서 $f(x)$는 증가하므로 최댓값은 $f(6)=a(9)(4)=36a=108 \\implies a=3$이다.",
+    "따라서 $f(-4)=3(-4+3)(-4-2)=3(-1)(-6)=18$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "이차함수 $f(x)$가 다음 조건을 만족시킬 때, $f",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q18(108): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+  "typeReason": "Q18(108): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(108): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x)$"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "f(x)=a(x+3)(x-2)",
+        "evidenceType": "IMPLIED",
+        "justification": "방정식 f(x)=0의 두 근으로 f(x)를 인수 형태로 설정하고 최댓값으로 a를 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값은 $108$이다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q18(108): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

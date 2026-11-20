@@ -1,0 +1,67 @@
+{
+  "qid": 22,
+  "itemFingerprint": "31dbc8f78eb4de7d",
+  "solveSteps": [
+    "(1) 두 점 $A, B$는 $x$축 위에 있고 점 $C(0, -6)$까지의 높이가 $|-6|=6$이므로 삼각형 $ACB$의 넓이에서 $$ \\dfrac{1}{2}\\cdot\\overline{AB}\\cdot 6 = 24 \\implies \\overline{AB} = 8 $$ 이다.",
+    "두 점 $A(x_A, 0), B(x_B, 0)$ ($x_A<x_B$)은 축 $x=2$에 대하여 대칭이므로 $$ \\dfrac{x_A+x_B}{2} = 2, \\qquad x_B-x_A = 8 $$ 이다.",
+    "연립하여 풀면 $x_A=-2, x_B=6$이므로 $A(-2, 0)$, $B(6, 0)$이다.",
+    "(2) $x$절편이 $-2, 6$이므로 $f(x)=c(x+2)(x-6)$ ($c\\ne 0$)이라 놓을 수 있다.",
+    "점 $C(0, -6)$을 지나므로 $f(0)=c(2)(-6)=-12c=-6 \\implies c=\\dfrac{1}{2}$이다.",
+    "따라서 $f(x)=\\dfrac{1}{2}(x+2)(x-6) = \\dfrac{1}{2}x^2-2x-6$이다."
+  ],
+  "solvedAnswer": "(1) $A(-2, 0),;B(6, 0)$ (2) $f(x)=\\dfrac{1}{2}x^2-2x-6$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "아래 그림과 같이 이차함수 $y=f(x)$의 그래프가 ",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q22(ACB): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+  "typeReason": "Q22(ACB): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q22(ACB): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "삼각형 $ACB$의 넓이가 $24$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=f(x)$의 식"
+      }
+    ],
+    "method": [
+      {
+        "term": "축",
+        "src": "stem",
+        "quote": "축의 방정식이 $x=2$이고",
+        "evidenceType": "IMPLIED",
+        "justification": "대칭축 x=2와 선분 AB 길이로 두 x절편을 구한 뒤 C(0,-6)으로 이차함수를 결정함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q22(ACB): 발문과 해설의 풀이 과정을 점검하여 정답 (1) $A(-2, 0),;B(6, 0)$ (2) $f(x)=\\dfrac{1}{2}x^2-2x-6$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "qid": 7,
+  "itemFingerprint": "35583754373c8478",
+  "solveSteps": [
+    "$(1+i)^2=2i$, $(1+i)^4=-4$, $(1+i)^8=16=2^4$이므로 $$ (1+i)^{40} = {(1+i)^8}^5 = (2^4)^5 = 2^{20} $$ 이다.",
+    "마찬가지로 $(1-i)^2=-2i$, $(1-i)^8=2^4$이므로 $(1-i)^{40}=2^{20}$이다.",
+    "따라서 $(1+i)^{40}+(1-i)^{40} = 2^{20}+2^{20} = 2^{21}$이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "$(1+i)^{40}+(1-i)^{40}$을 간단히 하",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q7(40): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+  "typeReason": "Q7(40): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q7(40): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "허수",
+        "src": "stem",
+        "quote": "i=\\sqrt{-1}"
+      }
+    ],
+    "goal": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "i=\\sqrt{-1}"
+      }
+    ],
+    "method": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "(1+i)^{40} = {(1+i)^8}^5",
+        "evidenceType": "IMPLIED",
+        "justification": "1+i와 1-i의 2제곱, 4제곱, 8제곱을 차례로 구해 40제곱을 계산함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q7(40): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

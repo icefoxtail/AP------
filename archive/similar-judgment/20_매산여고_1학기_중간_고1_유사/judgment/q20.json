@@ -1,0 +1,71 @@
+{
+  "qid": 20,
+  "itemFingerprint": "3e81977a007c8389",
+  "solveSteps": [
+    "허수 $z=a+bi$ ($a, b$는 실수, $b\\ne 0$)라 두면 $\\dfrac{4}{z}=\\dfrac{4(a-bi)}{a^2+b^2}$이므로 $$ z+\\dfrac{4}{z} = \\left(a+\\dfrac{4a}{a^2+b^2}\\right)+b\\left(1-\\dfrac{4}{a^2+b^2}\\right)i $$ 이다.",
+    "이 값이 실수이므로 허수부분이 $0$이어야 하고, $b\\ne 0$이므로 $1-\\dfrac{4}{a^2+b^2}=0$, 즉 $a^2+b^2=4$이다.",
+    "따라서 $z\\bar{z}=4$이고 $\\dfrac{4}{z}=\\bar{z}$이다.",
+    "이를 구하는 식에 대입하면 $$ \\begin{aligned} z+\\dfrac{4}{z}+(z-1)(\\bar{z}-1) &= z+\\bar{z}+(z\\bar{z}-z-\\bar{z}+1) \\ &= z\\bar{z}+1 = 4+1 = 5 \\end{aligned} $$ 이다."
+  ],
+  "solvedAnswer": "$5$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "허수 $z$에 대하여 $z+\\dfrac{4}{z}$가 ",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q20(bi): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+  "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+  "typeReason": "Q20(bi): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(bi): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "허수",
+        "src": "stem",
+        "quote": "허수 $z$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "켤레복소수",
+        "src": "stem",
+        "quote": "$\\bar{z}$는 $z$의 켤레복소수이다"
+      }
+    ],
+    "method": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "허수 $z$에 대하여",
+        "evidenceType": "IMPLIED",
+        "justification": "z=a+bi의 허수부분=0 조건으로 zzbar=4를 유도해 대입함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "$z+\\dfrac{4}{z}$가 실수일 때"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q20(bi): 발문과 해설의 풀이 과정을 점검하여 정답 $5$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

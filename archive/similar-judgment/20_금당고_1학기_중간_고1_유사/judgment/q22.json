@@ -1,0 +1,73 @@
+{
+  "qid": 22,
+  "itemFingerprint": "023123d2535e2c6e",
+  "solveSteps": [
+    "$f(0)=f(4)$에서 $$ -b^2+6b+5 = 16-24a-b^2+6b+5 \\implies 24a = 16 \\implies a = \\dfrac{2}{3} $$ 이다.",
+    "이차함수 $y=f(x)$와 직선 $y=cx+14$가 한 점에서 만나므로 이차방정식 $$ x^2-6ax-b^2+6b+5 = cx+14 $$ 이 중근을 가져야 한다.",
+    "$a=\\dfrac{2}{3}$를 대입하여 정리하면 $$ x^2-(4+c)x-(b^2-6b+9) = 0 \\iff x^2-(4+c)x-(b-3)^2 = 0 $$ 이다.",
+    "이 방정식이 중근을 가지므로 판별식 $D=0$이다.",
+    "$$ D = (4+c)^2+4(b-3)^2 = 0 $$ $b, c$는 실수이므로 실수의 제곱의 합이 $0$이 되려면 $4+c=0$, $b-3=0$이어야 한다.",
+    "따라서 $c=-4$, $b=3$이다.",
+    "그러므로 $abc = \\dfrac{2}{3}\\cdot 3\\cdot (-4) = -8$이다."
+  ],
+  "solvedAnswer": "$-8$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "이차함수 $f(x)=x^2-6ax-b^2+6b+5$가 ",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q22(ax): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+  "typeReason": "Q22(ax): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q22(ax): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x)=x^2-6ax-b^2+6b+5$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "세 실수 $a$, $b$, $c$에 대하여"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D=0$이다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "접함",
+        "src": "stem",
+        "quote": "직선 $y=cx+14$와 한 점에서 만날 때"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q22(ax): 발문과 해설의 풀이 과정을 점검하여 정답 $-8$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

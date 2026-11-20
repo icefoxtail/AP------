@@ -1,0 +1,63 @@
+{
+  "qid": 15,
+  "itemFingerprint": "d1bbe1ac806ef979",
+  "solveSteps": [
+    "$z=1+2i$를 대입하면 $$ \\omega = \\dfrac{(1+2i)+1}{(1+2i)-1} = \\dfrac{2+2i}{2i} = \\dfrac{1+i}{i} = \\dfrac{1}{i}+1 = 1-i $$ 이다.",
+    "따라서 $\\bar{\\omega}=1+i$이므로 $\\omega\\bar{\\omega}=(1-i)(1+i)=1-i^2=2$이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "복소수 $z=1+2i$에 대하여 $\\omega=\\dfr",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q15(z): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+  "typeReason": "Q15(z): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(z): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "복소수 $z=1+2i$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "켤레복소수",
+        "src": "stem",
+        "quote": "$\\bar{\\omega}$는 $\\omega$의 켤레복소수이다"
+      }
+    ],
+    "method": [
+      {
+        "term": "켤레복소수",
+        "src": "stem",
+        "quote": "$\\bar{\\omega}$는 $\\omega$의 켤레복소수이다",
+        "evidenceType": "IMPLIED",
+        "justification": "w=1-i를 구한 뒤 켤레복소수 1+i와의 곱을 계산함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q15(z): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

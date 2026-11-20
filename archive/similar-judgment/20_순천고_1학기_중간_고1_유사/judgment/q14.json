@@ -1,0 +1,72 @@
+{
+  "qid": 14,
+  "itemFingerprint": "83cf5d75c0a6e31e",
+  "solveSteps": [
+    "$x^2+y^2=9$에서 $y^2=9-x^2\\ge 0$이므로 $-3\\le x\\le 3$이다.",
+    "이를 $4x+y^2$에 대입하면 $$ 4x+y^2 = 4x+(9-x^2) = -x^2+4x+9 = -(x-2)^2+13 $$ 이다.",
+    "구간 $-3\\le x\\le 3$에 꼭짓점 $x=2$가 포함되므로 최댓값은 $M=13$이다.",
+    "구간의 양 끝값은 $x=-3$일 때 $-(-3-2)^2+13=-12$, $x=3$일 때 $-(3-2)^2+13=12$이므로 최솟값은 $m=-12$이다.",
+    "따라서 $M+m=13+(-12)=1$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "$x^2+y^2=9$를 만족시키는 실수 $x, y$에 ",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q14(13): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+  "typeReason": "Q14(13): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(13): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "만족시키는 실수 $x, y$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값과 최솟값을 각각 $M, m$이라 할 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "치환",
+        "src": "solution",
+        "quote": "4x+y^2 = 4x+(9-x^2)",
+        "evidenceType": "IMPLIED",
+        "justification": "y^2=9-x^2을 대입하고 실수 조건에서 얻은 x 범위로 최대·최소를 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "범위",
+        "src": "solution",
+        "quote": "-3\\le x\\le 3"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q14(13): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

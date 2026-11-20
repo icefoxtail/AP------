@@ -1,0 +1,63 @@
+{
+  "qid": 10,
+  "itemFingerprint": "816e0a906e1cbe83",
+  "solveSteps": [
+    "$P(x)=x^4-3x^2+2x+a$라 하면 $x-2$로 나눈 나머지가 $6$이므로 나머지정리에 의하여 $$ P(2) = 16-3\\cdot 4+2\\cdot 2+a = 8+a = 6 \\implies a = -2 $$ 이다.",
+    "이제 $P(x)=x^4-3x^2+2x-2$를 $x-2$로 조립제법을 이용해 나누면 $$ P(x) = (x-2)(x^3+2x^2+x+4)+6 $$ 이므로 $Q(x)=x^3+2x^2+x+4$이다.",
+    "따라서 $Q(x)$를 $x-a=x+2$로 나눈 나머지는 $$ Q(-2) = (-2)^3+2(-2)^2+(-2)+4 = -8+8-2+4 = 2 $$ 이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "unitEvidence": "다항식 $x^4-3x^2+2x+a$를 $x-2$로 나누",
+  "rpmRecordId": "H1-RPM-009",
+  "rpmReason": "Q10(16): 나머지정리와 인수정리 단원의 RPM H1-RPM-009 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "TPL_H1_REMAINDER_NESTED_DIVISION",
+  "typeReason": "Q10(16): 나머지정리와 인수정리 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q10(16): 나머지정리와 인수정리 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $x^4-3x^2+2x+a$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "$Q(x)$를 $x-a$로 나눈 나머지는"
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지정리",
+        "src": "solution",
+        "quote": "나머지정리에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q10(16): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

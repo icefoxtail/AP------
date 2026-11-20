@@ -1,0 +1,65 @@
+{
+  "qid": 14,
+  "itemFingerprint": "5bf8824299ce0a9e",
+  "solveSteps": [
+    "$F(x)=P(x+1)$이라 하면 $F(x)$를 $x^2-1=(x-1)(x+1)$로 나눈 나머지가 상수 $3$이므로 $F(1)=3$, $F(-1)=3$, 즉 $P(2)=3$, $P(0)=3$이다. (ax)",
+    "$P(0)=2(-b)+5=3$에서 $-2b=-2$이므로 $b=1$이다.",
+    "$P(2)=(2a+2)(2^2-2-1)+5=(2a+2)+5=2a+7=3$에서 $2a=-4$이므로 $a=-2$이다.",
+    "따라서 $|12a+b|=|12(-2)+1|=|-23|=23$이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "unitEvidence": "$x$에 대한 삼차다항식 $P(x)=(ax+2)(x^2",
+  "rpmRecordId": "H1-RPM-009",
+  "rpmReason": "Q14(ax): 나머지정리와 인수정리 단원의 RPM H1-RPM-009 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+  "typeReason": "Q14(ax): 나머지정리와 인수정리 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(ax): 나머지정리와 인수정리 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼차식",
+        "src": "stem",
+        "quote": "삼차다항식 $P(x)=(ax+2)(x^2-x-b)+5$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "단, $a$, $b$는 상수이다"
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지정리",
+        "src": "solution",
+        "quote": "P(2)=3$, $P(0)=3$이다",
+        "evidenceType": "IMPLIED",
+        "justification": "x^2-1의 두 근 x=1, -1을 대입하는 나머지정리로 P(2)=3, P(0)=3을 얻음"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q14(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

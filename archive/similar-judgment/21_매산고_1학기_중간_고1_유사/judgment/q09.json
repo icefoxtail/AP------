@@ -1,0 +1,71 @@
+{
+  "qid": 9,
+  "itemFingerprint": "76d854c1fba5d7de",
+  "solveSteps": [
+    "- ㄱ. (xy)",
+    "$x=-1, y=1$이면 $\\sqrt{-1}\\sqrt{1}=i=\\sqrt{-1}$로 가정은 성립하지만 $\\dfrac{\\sqrt{1}}{\\sqrt{-1}}=-i=-\\sqrt{-1}\\ne\\sqrt{-1}$이므로 거짓이다.",
+    "- ㄴ.",
+    "$x<y<3$이므로 $y-x>0, 3-y>0$이고 $\\sqrt{(y-x)^2}=\\sqrt{(x-y)^2}=y-x$, $\\sqrt{(3-y)^2}=\\sqrt{(y-3)^2}=3-y$이다.",
+    "따라서 좌변은 $1\\times 1=1\\ne i$이므로 거짓이다.",
+    "- ㄷ.",
+    "$x<0, y<0$일 때도 $\\dfrac{\\sqrt{y}}{\\sqrt{x}}=\\dfrac{\\sqrt{-y}i}{\\sqrt{-x}i}=\\sqrt{\\dfrac{y}{x}}$가 성립하므로 거짓이다.",
+    "- ㄹ.",
+    "$z=0$이면 $0=-\\overline{0}$을 만족하지만 $z^2=0$이므로 $z^2<0$이 거짓이다.",
+    "따라서 옳지 않은 것은 ㄱ, ㄴ, ㄷ, ㄹ의 $4$개이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "다음 <보기> 중 옳지 않은 것의 개수는? (단, $x",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q9(xy): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+  "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+  "typeReason": "Q9(xy): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q9(xy): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "켤레복소수",
+        "src": "stem",
+        "quote": "z=-\\overline{z}"
+      }
+    ],
+    "goal": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "복소수 $z$에 대하여"
+      }
+    ],
+    "method": [
+      {
+        "term": "제곱근",
+        "src": "solution",
+        "quote": "\\sqrt{-1}\\sqrt{1}=i=\\sqrt{-1}",
+        "evidenceType": "IMPLIED",
+        "justification": "음수 제곱근 연산 성질의 반례와 z=0 반례를 들어 4개 보기의 거짓을 판별함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q9(xy): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

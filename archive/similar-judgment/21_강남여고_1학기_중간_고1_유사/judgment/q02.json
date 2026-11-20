@@ -1,0 +1,62 @@
+{
+  "qid": 2,
+  "itemFingerprint": "7dc5307850ef3e41",
+  "solveSteps": [
+    "Q2 문제의 조건(aligned)에 맞추어 식을 세운다.",
+    "$x^2+x=t$로 치환하면 $$ \\begin{aligned} (x^2+x)^2-5(x^2+x)+6 &= t^2-5t+6 \\ &= (t-2)(t-3) \\ &= (x^2+x-2)(x^2+x-3) \\ &= (x+2)(x-1)(x^2+x-3) \\end{aligned} $$ 이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "unitEvidence": "$(x^2+x)^2-5x^2-5x+6$을 인수분해하면?",
+  "rpmRecordId": "H1-RPM-013",
+  "rpmReason": "Q2(aligned): 인수분해 단원의 RPM H1-RPM-013 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+  "typeReason": "Q2(aligned): 인수분해 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q2(aligned): 인수분해 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "solution",
+        "quote": "(x^2+x)^2-5(x^2+x)+6"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수분해",
+        "src": "stem",
+        "quote": "인수분해하면"
+      }
+    ],
+    "method": [
+      {
+        "term": "치환",
+        "src": "solution",
+        "quote": "x^2+x=t$로 치환하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q2(aligned): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

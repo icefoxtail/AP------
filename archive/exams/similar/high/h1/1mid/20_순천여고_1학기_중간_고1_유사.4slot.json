@@ -1,0 +1,929 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/high/h1/1mid/20_순천여고_1학기_중간_고1_유사.js",
+  "sourceGitBlobSha": "32b408e643152e3d8858695d5a1404658fdbd363",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "similar-import-draft",
+    "at": "2026-11-20"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "단일 모델 초안(UNREVIEWED). 인용은 check-judgment 로 원문 포함을 확인했다."
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "두 다항식 $A=2x^2-x+4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "두 다항식 $A=2x^2-x+4$"
+          }
+        ],
+        "method": [
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "4x^2-2x+8+x^2-3x+2",
+            "evidenceType": "IMPLIED",
+            "justification": "2A+B로 정리해 대입한 뒤 차수별 동류항을 더함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a, b$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a, b$에 대하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "복소수",
+            "src": "stem",
+            "quote": "a(1+i)-3b=1+7i",
+            "evidenceType": "IMPLIED",
+            "justification": "실수부분과 허수부분을 각각 비교하여 a, b를 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a, b$에 대하여"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $P(x)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "몫과 나머지를 바르게 나타낸 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "항등식",
+            "src": "solution",
+            "quote": "나눗셈 항등식",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2-6x+3=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대칭식",
+            "src": "stem",
+            "quote": "(\\alpha-1)(\\beta-1)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$(x-2y)(x-2y-4)-5$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "인수분해",
+            "src": "stem",
+            "quote": "인수분해한 것으로"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=x-2y$로 치환하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $f(x)=-x^2+6x+2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "-(x-3)^2+11",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱식으로 축과 개형을 확인하고 양 끝점 값을 비교함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "$0\\le x\\le 5$에서"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "허수",
+            "src": "stem",
+            "quote": "i=\\sqrt{-1}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "복소수",
+            "src": "stem",
+            "quote": "i=\\sqrt{-1}"
+          }
+        ],
+        "method": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "(1+i)^{40} = {(1+i)^8}^5",
+            "evidenceType": "IMPLIED",
+            "justification": "1+i와 1-i의 2제곱, 4제곱, 8제곱을 차례로 구해 40제곱을 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=x^2+2x-5$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $k$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $\\dfrac{D}{4}=(-1)^2-(k-5)=6-k=0$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "직선 $y=4x-k$가 접하도록"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $P(x)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "나머지를 $R(x)$라 할 때"
+          }
+        ],
+        "method": [
+          {
+            "term": "나머지정리",
+            "src": "solution",
+            "quote": "나머지정리에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "두 실수 $a, b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "$a>0, b>0$이다"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "\\sqrt{25a^2}=5|a|=5a",
+            "evidenceType": "IMPLIED",
+            "justification": "근호 조건에서 a>0, b>0을 판정하고 제곱근 성질을 적용해 식을 간단히 함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "두 실수 $a, b$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=x^2+2ax+b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a, b$에 대하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "(x+a)^2+b-a^2",
+            "evidenceType": "IMPLIED",
+            "justification": "이차식을 완전제곱식으로 고쳐 꼭짓점 좌표를 (-2, -7)과 비교함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값 $-7$을 가진다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=x^2-ax+b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "유리수 $a, b$에 대하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "유리수 $a, b$에 대하여"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차방정식",
+            "src": "stem",
+            "quote": "삼차방정식 $x^3-3x^2+5x-3=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "허근",
+            "src": "stem",
+            "quote": "두 허근을 $\\alpha$, $\\beta$라 할 때"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "조립제법으로 인수분해하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "허근",
+            "src": "stem",
+            "quote": "두 허근을 $\\alpha$, $\\beta$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=x^2+2(a-k)x+k^2+6k+b$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a, b$에 대하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $\\dfrac{D}{4}=0$이",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "항상 $x$축에 접할 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "자연수 $k$의 최솟값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "(x-y)^2\\ge 0",
+            "evidenceType": "IMPLIED",
+            "justification": "완전제곱식 >= 0 성질로 x^2+y^2의 최솟값을 구해 k 범위를 정함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $x, y$가 존재하도록"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "연립부등식",
+            "src": "stem",
+            "quote": "연립부등식 $2x-a<x+2\\le 3x-6$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "정수 $a$의 최댓값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "연립부등식",
+            "src": "stem",
+            "quote": "연립부등식 $2x-a<x+2\\le 3x-6$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $a$의 최댓값은?"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "부등식 $|ax-2|<4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a, b$에 대하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "부등식 $|ax-2|<4$",
+            "evidenceType": "IMPLIED",
+            "justification": "절댓값 부등식을 -4<ax-2<4로 푼 뒤 음수 a로 나누어 해를 비교함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "stem",
+            "quote": "단, $a<0$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형 $ABC$에 내접하는 직사각형"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "넓이의 최댓값을 구하는 과정"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차함수",
+            "src": "solution",
+            "quote": "-\\dfrac{3}{4}(x-4)^2+12",
+            "evidenceType": "IMPLIED",
+            "justification": "닮음비로 y=f(x)를 구한 뒤 넓이를 x에 대한 이차함수로 세워 완전제곱식으로 정리함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "내접",
+            "src": "stem",
+            "quote": "내접하는 직사각형 $PQRS$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $x, y$가 $x+y^2=3$을 만족시킬 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$x=3-y^2$을 주어진 식에 대입하면",
+            "evidenceType": "IMPLIED",
+            "justification": "x=3-y^2을 대입해 한 문자 y^2의 식으로 정리한 뒤 y^2>=0으로 최솟값을 구함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $x, y$가"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $x^n(x^2+ax+b)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a, b$에 대하여 $a-b$의 값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$x=2+t$로 치환하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "단, $n$은 자연수이다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2-6x+a=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "방정식 $\\sqrt{(a-4)^2+|a|}=13$의 해"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $D<0$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "허근",
+            "src": "stem",
+            "quote": "허근을 가질 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "삼각형 $ACB$의 넓이가 $24$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=f(x)$의 식"
+          }
+        ],
+        "method": [
+          {
+            "term": "축",
+            "src": "stem",
+            "quote": "축의 방정식이 $x=2$이고",
+            "evidenceType": "IMPLIED",
+            "justification": "대칭축 x=2와 선분 AB 길이로 두 x절편을 구한 뒤 C(0,-6)으로 이차함수를 결정함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $f(x)$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $f(x)$가"
+          }
+        ],
+        "method": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "함수 $f(x)$의 최댓값을 $g(p)$라 할 때",
+            "evidenceType": "IMPLIED",
+            "justification": "대칭축이 구간 [p, p+2]의 중앙에 놓일 때 구간 내 최댓값이 최소가 됨을 이용함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "함수 $g(p)$의 최솟값이 $-16$이다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ]
+}

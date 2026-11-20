@@ -1,0 +1,65 @@
+{
+  "qid": 17,
+  "itemFingerprint": "8c906d4dc6f0330b",
+  "solveSteps": [
+    "$f(x)=2x^3+Ax^2+Bx+C$라 하면 조건 (가)에서 $f(x)+f(-x)=2Ax^2+2C=0$이 모든 실수 $x$에 대해 성립하므로 $A=C=0$, 즉 $f(x)=2x^3+Bx$이다.",
+    "$g(x)=3x^2+Dx+E$라 하면 조건 (나)에서 $g(x)-g(-x)=2Dx=0$이 모든 실수 $x$에 대해 성립하므로 $D=0$, 즉 $g(x)=3x^2+E$이다.",
+    "조건 (다)에 의해 나머지정리로 $f(1)+g(1)=0$이므로 $(2+B)+(3+E)=0 \\implies B+E=-5$이다.",
+    "따라서 $$ f(2)+2g(4) = (16+2B)+2(48+E) = 112+2(B+E) = 112+2(-5) = 102 $$ 이다."
+  ],
+  "solvedAnswer": "$102$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-IDENTITY",
+  "unitEvidence": "[단답형2] 최고차항의 계수가 $2$인 삼차다항식 $f",
+  "rpmRecordId": "H1-RPM-007",
+  "rpmReason": "Q17(Ax): 항등식과 계수비교 단원의 RPM H1-RPM-007 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+  "typeReason": "Q17(Ax): 항등식과 계수비교 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(Ax): 항등식과 계수비교 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼차식",
+        "src": "stem",
+        "quote": "삼차다항식 $f(x)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "삼차다항식 $f(x)$"
+      }
+    ],
+    "method": [
+      {
+        "term": "항등식",
+        "src": "stem",
+        "quote": "모든 실수 $x$에 대하여 $f(x)+f(-x)=0$",
+        "evidenceType": "IMPLIED",
+        "justification": "f(x)+f(-x)=0, g(x)-g(-x)=0 항등식 조건으로 계수를 소거함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q17(Ax): 발문과 해설의 풀이 과정을 점검하여 정답 $102$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "qid": 17,
+  "itemFingerprint": "f7a95e68856f6b64",
+  "solveSteps": [
+    "Q17 문제의 조건(x)에 맞추어 식을 세운다.",
+    "절댓값 안이 $0$이 되는 $x=-2, 4$를 기준으로 구간을 나누어 풀면\n\n- $x<-2$일 때: $-(x+2)-(x-4)=-2x+2<8 \\implies x>-3$, 즉 $-3<x<-2$  \n- $-2\\le x\\le 4$일 때: $(x+2)-(x-4)=6<8$ (항상 성립)  \n- $x>4$일 때: $(x+2)+(x-4)=2x-2<8 \\implies x<5$, 즉 $4<x<5$ 따라서 부등식의 해는 $-3<x<5$이고, 정수 $x$는 $-2, -1, 0, 1, 2, 3, 4$이므로 $a=-2, b=4$에서 $a+b=2$이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-08",
+  "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
+  "unitEvidence": "부등식 $|x+2|+|x-4|<8$을 만족하는 정수 $",
+  "rpmRecordId": "H1-RPM-045",
+  "rpmReason": "Q17(x): 연립부등식 단원의 RPM H1-RPM-045 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+  "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+  "typeReason": "Q17(x): 연립부등식 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(x): 연립부등식 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "src": "stem",
+        "quote": "부등식 $|x+2|+|x-4|<8$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "정수 $x$의 최솟값을 $a$"
+      }
+    ],
+    "method": [
+      {
+        "term": "절댓값",
+        "src": "solution",
+        "quote": "절댓값 안이 $0$이 되는 $x=-2, 4$를 기준으로",
+        "evidenceType": "IMPLIED",
+        "justification": "절댓값 기호 내부의 영점을 기준으로 구간을 나누어 부등식을 풂"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "정수 $x$의 최솟값"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q17(x): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

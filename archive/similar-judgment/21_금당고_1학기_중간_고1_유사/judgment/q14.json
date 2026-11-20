@@ -1,0 +1,62 @@
+{
+  "qid": 14,
+  "itemFingerprint": "8c87ba2724cbec0a",
+  "solveSteps": [
+    "$\\alpha, \\beta$가 $x^2-4x+7=0$의 근이므로 $\\alpha^2=4\\alpha-7$, $\\beta^2=4\\beta-7$이고 $\\alpha+\\beta=4$, $\\alpha\\beta=7$이다.",
+    "분모를 일차식으로 낮추면 $$ 2\\alpha^2-5\\alpha+2 = 2(4\\alpha-7)-5\\alpha+2 = 3(\\alpha-4), \\qquad 2\\beta^2-5\\beta+2 = 3(\\beta-4) $$ 두 근을 $u=\\dfrac{\\alpha-3}{3(\\alpha-4)}$, $v=\\dfrac{\\beta-3}{3(\\beta-4)}$라 하면 $$ (\\alpha-4)(\\beta-4) = \\alpha\\beta-4(\\alpha+\\beta)+16 = 7-16+16 = 7 $$ $$ (\\alpha-3)(\\beta-3) = \\alpha\\beta-3(\\alpha+\\beta)+9 = 7-12+9 = 4 $$ 따라서 두 근의 합과 곱은 $$ \\begin{aligned} u+v &= \\frac{(\\alpha-3)(\\beta-4)+(\\beta-3)(\\alpha-4)}{9(\\alpha-4)(\\beta-4)} = \\frac{2\\alpha\\beta-7(\\alpha+\\beta)+24}{63} = \\frac{14-28+24}{63} = \\frac{10}{63} \\ uv &= \\frac{(\\alpha-3)(\\beta-3)}{9(\\alpha-4)(\\beta-4)} = \\frac{4}{63} \\end{aligned} $$ $ax^2+bx+1=0$의 두 근이 $u, v$이므로 근과 계수의 관계에서 $$ \\frac{1}{a} = \\frac{4}{63} \\implies a = \\frac{63}{4}, \\qquad -\\frac{b}{a} = \\frac{10}{63} \\implies b = -\\frac{10}{63}\\cdot\\frac{63}{4} = -\\frac{5}{2} $$ 그러므로 $a+b = \\dfrac{63}{4}-\\dfrac{10}{4} = \\dfrac{53}{4}$이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-06",
+  "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+  "unitEvidence": "이차방정식 $x^2-4x+7=0$의 두 근을 $\\alp",
+  "rpmRecordId": "H1-RPM-029",
+  "rpmReason": "Q14(ax): 근과 계수의 관계 단원의 RPM H1-RPM-029 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+  "typeReason": "Q14(ax): 근과 계수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(ax): 근과 계수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2-4x+7=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "src": "stem",
+        "quote": "계수인 실수 $a$, $b$"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에서",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q14(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

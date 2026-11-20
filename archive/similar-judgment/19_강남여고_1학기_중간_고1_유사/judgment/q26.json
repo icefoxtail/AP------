@@ -1,0 +1,63 @@
+{
+  "qid": 26,
+  "itemFingerprint": "d68bf1059ce50d63",
+  "solveSteps": [
+    "두 근 $x=1, x=-2$를 각각 대입하면\n\n- $x=1$: $2+a+b-6+a=0 \\implies 2a+b=4 \\implies b=4-2a$  \n- $x=-2$: $32-8a+4b+12+a=0 \\implies 44-7a+4b=0$ 첫째 식을 둘째 식에 대입하면 $44-7a+4(4-2a)=60-15a=0 \\implies a=4$이고, $b=4-2(4)=-4$이다. (ax)",
+    "따라서 사차방정식은 $2x^4+4x^3-4x^2-6x+4=0$이고, $(x-1)(x+2)=x^2+x-2$로 나누어 인수분해하면 $$ (x^2+x-2)(2x^2+2x-2) = 0 $$ 이다.",
+    "나머지 두 근은 이차방정식 $2x^2+2x-2=0$의 두 근이므로 근과 계수의 관계에 의하여 두 근의 곱은 $\\dfrac{-2}{2}=-1$이다."
+  ],
+  "solvedAnswer": "$-1$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+  "unitEvidence": "서술형4) 사차방정식 $2x^4+ax^3+bx^2-6x",
+  "rpmRecordId": "H1-RPM-039",
+  "rpmReason": "Q26(ax): 고차방정식의 풀이 단원의 RPM H1-RPM-039 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+  "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+  "typeReason": "Q26(ax): 고차방정식의 풀이 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q26(ax): 고차방정식의 풀이 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "사차방정식",
+        "src": "stem",
+        "quote": "사차방정식 $2x^4+ax^3+bx^2-6x+a=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사차방정식",
+        "src": "stem",
+        "quote": "사차방정식 $2x^4+ax^3+bx^2-6x+a=0$"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "나누어 인수분해하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q26(ax): 발문과 해설의 풀이 과정을 점검하여 정답 $-1$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

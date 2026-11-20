@@ -1,0 +1,68 @@
+{
+  "qid": 5,
+  "itemFingerprint": "dc755096bea7364a",
+  "solveSteps": [
+    "이차방정식이 허근을 가지므로 판별식 $D<0$이어야 한다.",
+    "$$ D = {-(2k+1)}^2-4(k^2+4) = 4k^2+4k+1-4k^2-16 = 4k-15 < 0 \\implies k < \\dfrac{15}{4} = 3.75 $$ 자연수 $k$는 $1, 2, 3$이므로 모든 자연수 $k$의 값의 곱은 $1\\cdot 2\\cdot 3=6$이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-DISCRIMINANT",
+  "unitEvidence": "$x$에 대한 이차방정식 $x^2-(2k+1)x+k^2",
+  "rpmRecordId": "H1-RPM-028",
+  "rpmReason": "Q5(16): 판별식과 근의 조건 단원의 RPM H1-RPM-028 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+  "typeReason": "Q5(16): 판별식과 근의 조건 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q5(16): 판별식과 근의 조건 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2-(2k+1)x+k^2+4=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "모든 자연수 $k$의 값의 곱은"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D<0$이어야 한다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "허근",
+        "src": "stem",
+        "quote": "허근을 갖도록 하는"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q5(16): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

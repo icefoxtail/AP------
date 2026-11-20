@@ -1,0 +1,70 @@
+{
+  "qid": 7,
+  "itemFingerprint": "73d2cbada3330b01",
+  "solveSteps": [
+    "좌변을 정리하면 $(2x+y)+(x-y)i = 6-15i$이고 $x, y$는 실수이므로 $$ 2x+y=6, \\qquad x-y=-15 $$ 이다.",
+    "두 식을 더하면 $3x=-9 \\implies x=-3$이고, $y=x+15=12$이다.",
+    "따라서 $\\sqrt{x}=\\sqrt{-3}=\\sqrt{3}i$, $\\sqrt{y}=\\sqrt{12}=2\\sqrt{3}$, $\\sqrt{-y}=\\sqrt{-12}=2\\sqrt{3}i$이므로 $$ \\dfrac{\\sqrt{y}}{\\sqrt{x}}+\\sqrt{x}\\sqrt{-y} = \\dfrac{2\\sqrt{3}}{\\sqrt{3}i}+(\\sqrt{3}i)(2\\sqrt{3}i) = \\dfrac{2}{i}+6i^2 = -2i-6 = -6-2i $$ 이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+  "unitEvidence": "실수 $x, y$에 대하여 $(2+i)x+(1-i)y=",
+  "rpmRecordId": "H1-RPM-021",
+  "rpmReason": "Q7(15): 복소수의 뜻과 표현 단원의 RPM H1-RPM-021 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+  "typeReason": "Q7(15): 복소수의 뜻과 표현 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q7(15): 복소수의 뜻과 표현 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 $x, y$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "복소수",
+        "src": "solution",
+        "quote": "좌변을 정리하면 $(2x+y)+(x-y)i = 6-15i$"
+      }
+    ],
+    "method": [
+      {
+        "term": "연립방정식",
+        "src": "solution",
+        "quote": "두 식을 더하면 $3x=-9",
+        "evidenceType": "IMPLIED",
+        "justification": "복소수 상등 조건에서 얻은 두 일차방정식을 연립해 x, y를 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 $x, y$에 대하여"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q7(15): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

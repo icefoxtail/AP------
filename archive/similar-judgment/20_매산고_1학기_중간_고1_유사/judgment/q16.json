@@ -1,0 +1,69 @@
+{
+  "qid": 16,
+  "itemFingerprint": "60201f640c9b6ccd",
+  "solveSteps": [
+    "$f(x)=3x^2+(a-2)x+a-2$라 하면 최고차항의 계수가 양수이므로 이차부등식 $f(x)\\le 0$이 해를 갖지 않으려면 모든 실수 $x$에 대하여 $f(x)>0$이어야 한다.",
+    "따라서 이차방정식 $f(x)=0$의 판별식 $D<0$이어야 하므로 $$ D = (a-2)^2-4\\cdot 3(a-2) = (a-2)(a-14) < 0 \\implies 2 < a < 14 $$ 이다.",
+    "이를 만족하는 정수 $a$는 $3, 4, \\ldots, 13$이므로 최댓값은 $13$이다."
+  ],
+  "solvedAnswer": "$13$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-08",
+  "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
+  "unitEvidence": "[단답형1] 이차부등식 $3x^2+(a-2)x+a-2\\",
+  "rpmRecordId": "H1-RPM-047",
+  "rpmReason": "Q16(14): 이차부등식 단원의 RPM H1-RPM-047 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+  "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+  "typeReason": "Q16(14): 이차부등식 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q16(14): 이차부등식 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차부등식",
+        "src": "stem",
+        "quote": "이차부등식 $3x^2+(a-2)x+a-2\\le 0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "정수 $a$의 최댓값을"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D<0$이어야 하므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "정수 $a$의 최댓값"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q16(14): 발문과 해설의 풀이 과정을 점검하여 정답 $13$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

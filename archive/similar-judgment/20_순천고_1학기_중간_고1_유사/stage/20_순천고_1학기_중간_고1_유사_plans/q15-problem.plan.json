@@ -1,0 +1,46 @@
+{
+  "status": "READY",
+  "pattern": "piecewise-polynomial-spike-v1",
+  "viewBox": "0 0 360 280",
+  "elements": [
+    {
+      "type": "curve",
+      "id": "parabola_f",
+      "expr": "3*(x-4)**2 - 26",
+      "domain": [
+        0.5,
+        7.5
+      ],
+      "label": "$y=f(x)$"
+    },
+    {
+      "type": "line",
+      "id": "line_secant",
+      "expr": "-6*x - 2",
+      "domain": [
+        0.5,
+        6
+      ],
+      "label": "$y=-2ax-2$"
+    },
+    {
+      "type": "point",
+      "coords": [
+        2,
+        -14
+      ],
+      "label": "$2$",
+      "projX": true
+    },
+    {
+      "type": "point",
+      "coords": [
+        4,
+        -26
+      ],
+      "label": "$4$",
+      "projX": true
+    }
+  ],
+  "note": "x=4를 축으로 하는 아래로 볼록 이차함수 y=f(x)와 직선 y=-2ax-2가 x=2, 4에서 만나는 그래프 개형"
+}

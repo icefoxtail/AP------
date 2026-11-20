@@ -1,0 +1,44 @@
+{
+  "status": "READY",
+  "pattern": "piecewise-polynomial-spike-v1",
+  "viewBox": "0 0 340 260",
+  "elements": [
+    {
+      "type": "curve",
+      "id": "parabola_1",
+      "expr": "x**2 - 4*x + 2",
+      "domain": [
+        -0.5,
+        4.5
+      ],
+      "label": "$y=x^2-4x+2$"
+    },
+    {
+      "type": "curve",
+      "id": "parabola_2",
+      "expr": "-x**2 + 4*x",
+      "domain": [
+        -0.5,
+        4.5
+      ],
+      "label": "$y=-x^2+ax+b$"
+    },
+    {
+      "type": "point",
+      "coords": [
+        0.268,
+        1
+      ],
+      "label": "$P$"
+    },
+    {
+      "type": "point",
+      "coords": [
+        3.732,
+        1
+      ],
+      "label": "$Q$"
+    }
+  ],
+  "note": "두 이차함수 y=x^2-4x+2와 y=-x^2+ax+b가 두 점 P, Q에서 만나는 그래프"
+}

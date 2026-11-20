@@ -1,0 +1,72 @@
+{
+  "qid": 23,
+  "itemFingerprint": "db0f322b9603d0ee",
+  "solveSteps": [
+    "조건 (나)에 의해 $f(x)$는 $x=-1$에서 최솟값을 가지므로 $f(x)=a(x+1)^2+c$ ($a>0$)로 놓을 수 있다.",
+    "조건 (가)에서 $f(-4)=9a+c=0 \\implies c=-9a$이므로 $f(x)=a(x+1)^2-9a$이다.",
+    "$a>0$이므로 구간 $[p, p+2]$에서 $f(x)$의 최댓값 $g(p)$는 축 $x=-1$에서 더 먼 양 끝점 중 하나에서 나타나므로 $$ g(p) = a\\max{(p+1)^2,; (p+3)^2}-9a $$ 이다.",
+    "$|p+1|=|p+3|$일 때 두 끝점이 축 $x=-1$로부터 같은 거리에 있어 $g(p)$가 최소가 되므로 $p=-2$일 때 $g(-2)=a\\cdot 1-9a=-8a$이다.",
+    "조건 (다)에서 $-8a=-16 \\implies a=2$이므로 $f(x)=2(x+1)^2-18$ ($=2x^2+4x-16$)이다."
+  ],
+  "solvedAnswer": "$f(x)=2(x+1)^2-18$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "이차함수 $f(x)$가 다음 조건을 만족시킬 때, $f",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q23(16): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+  "typeReason": "Q23(16): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q23(16): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x)$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x)$가"
+      }
+    ],
+    "method": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "함수 $f(x)$의 최댓값을 $g(p)$라 할 때",
+        "evidenceType": "IMPLIED",
+        "justification": "대칭축이 구간 [p, p+2]의 중앙에 놓일 때 구간 내 최댓값이 최소가 됨을 이용함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "함수 $g(p)$의 최솟값이 $-16$이다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q23(16): 발문과 해설의 풀이 과정을 점검하여 정답 $f(x)=2(x+1)^2-18$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

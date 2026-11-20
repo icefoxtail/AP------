@@ -1,0 +1,69 @@
+{
+  "qid": 12,
+  "itemFingerprint": "ae14d6fd12cf75c9",
+  "solveSteps": [
+    "교점의 $x$좌표는 이차방정식 $x^2-ax+b=2x+3$, 즉 $x^2-(a+2)x+(b-3)=0$의 근이다.",
+    "$a, b$가 유리수이므로 계수가 모두 유리수이고, 한 근이 $3-\\sqrt{2}$이면 다른 한 근은 켤레근 $3+\\sqrt{2}$이다.",
+    "근과 계수의 관계에 의하여 $$ (3-\\sqrt{2})+(3+\\sqrt{2}) = 6 = a+2 \\implies a = 4 $$ $$ (3-\\sqrt{2})(3+\\sqrt{2}) = 9-2 = 7 = b-3 \\implies b = 10 $$ 이므로 $a+b=4+10=14$이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-06",
+  "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+  "unitEvidence": "이차함수 $y=x^2-ax+b$의 그래프와 직선 $y=",
+  "rpmRecordId": "H1-RPM-029",
+  "rpmReason": "Q12(ax): 근과 계수의 관계 단원의 RPM H1-RPM-029 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+  "typeReason": "Q12(ax): 근과 계수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q12(ax): 근과 계수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=x^2-ax+b$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "유리수",
+        "src": "stem",
+        "quote": "유리수 $a, b$에 대하여"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "유리수",
+        "src": "stem",
+        "quote": "유리수 $a, b$에 대하여"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q12(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

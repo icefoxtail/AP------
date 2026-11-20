@@ -1,0 +1,74 @@
+{
+  "qid": 22,
+  "itemFingerprint": "f25adb966258f8f2",
+  "solveSteps": [
+    "$P(x)=0$과 $Q(x)=0$의 판별식을 각각 $D_P, D_Q$라 하면 $$ \\frac{D_P}{4} = a^2-(a-2)^2 = 4a-4, \\qquad \\frac{D_Q}{4} = (a+2)^2-a^2 = 4a+4 $$ 따라서 항상 $\\dfrac{D_Q}{4} = \\dfrac{D_P}{4}+8 > \\dfrac{D_P}{4}$이다. (ax)",
+    "- ㄱ.",
+    "$D_P\\ge 0$이면 $D_Q>0$이므로 $Q(x)=0$도 서로 다른 두 실근을 갖는다.",
+    "(참)  \n- ㄴ.",
+    "$D_P=0$이면 $\\dfrac{D_Q}{4}=8>0$이므로 $Q(x)=0$은 서로 다른 두 실근을 갖는다.",
+    "(참)  \n- ㄷ.",
+    "$D_P<0$일 때 예를 들어 $a=0$이면 $\\dfrac{D_P}{4}=-4<0$이지만 $\\dfrac{D_Q}{4}=4>0$이므로 $Q(x)=0$은 실근을 갖는다.",
+    "(거짓) 따라서 항상 옳은 것은 ㄱ, ㄴ이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-DISCRIMINANT",
+  "unitEvidence": "두 다항식 $P(x), Q(x)$에 대하여 $P(x)=",
+  "rpmRecordId": "H1-RPM-028",
+  "rpmReason": "Q22(ax): 판별식과 근의 조건 단원의 RPM H1-RPM-028 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+  "typeReason": "Q22(ax): 판별식과 근의 조건 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q22(ax): 판별식과 근의 조건 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "두 다항식 $P(x), Q(x)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식을 각각 $D_P, D_Q$"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "\\dfrac{D_Q}{4} = \\dfrac{D_P}{4}+8",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "중근",
+        "src": "stem",
+        "quote": "중근을 가지면"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q22(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

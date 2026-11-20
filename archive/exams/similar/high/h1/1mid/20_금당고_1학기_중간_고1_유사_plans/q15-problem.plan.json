@@ -1,0 +1,77 @@
+{
+  "status": "READY",
+  "pattern": "construction-spike-v1",
+  "viewBox": "0 0 360 300",
+  "elements": [
+    {
+      "type": "polygon",
+      "id": "triangle_ABC",
+      "points": [
+        [
+          60,
+          240
+        ],
+        [
+          60,
+          80
+        ],
+        [
+          300,
+          240
+        ]
+      ],
+      "labels": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "type": "polygon",
+      "id": "inscribed_square",
+      "points": [
+        [
+          60,
+          240
+        ],
+        [
+          60,
+          144
+        ],
+        [
+          156,
+          144
+        ],
+        [
+          156,
+          240
+        ]
+      ],
+      "fill": "none"
+    },
+    {
+      "type": "right_angle",
+      "vertex": [
+        60,
+        240
+      ]
+    },
+    {
+      "type": "label",
+      "pos": [
+        42,
+        160
+      ],
+      "text": "$\\alpha$"
+    },
+    {
+      "type": "label",
+      "pos": [
+        180,
+        260
+      ],
+      "text": "$\\beta$"
+    }
+  ],
+  "note": "각 B가 직각이고 AB=alpha, BC=beta인 직각삼각형 ABC의 두 변 AB, BC에 두 변이 놓인 내접 정사각형 도식"
+}

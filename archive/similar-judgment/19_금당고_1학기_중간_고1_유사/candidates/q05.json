@@ -1,0 +1,2722 @@
+{
+  "qid": 5,
+  "questionType": "객관식",
+  "course": [
+    "H15_COMMON_SANG"
+  ],
+  "curriculum": "2015",
+  "problem": {
+    "content": "$x$에 대한 이차방정식 $x^2-(2k+1)x+k^2+4=0$이 허근을 갖도록 하는 모든 자연수 $k$의 값의 곱은?",
+    "choices": [
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$"
+    ],
+    "points": 4
+  },
+  "reference": {
+    "answer": "⑤",
+    "solution": "이차방정식이 허근을 가지므로 판별식 $D<0$이어야 한다. $$ D = {-(2k+1)}^2-4(k^2+4) = 4k^2+4k+1-4k^2-16 = 4k-15 < 0 \\implies k < \\dfrac{15}{4} = 3.75 $$ 자연수 $k$는 $1, 2, 3$이므로 모든 자연수 $k$의 값의 곱은 $1\\cdot 2\\cdot 3=6$이다.",
+    "sourcePrimaryMethod": "판별식 $D=(2k+1)^2-4(k^2+4)=4k-15<0$을 풀어 자연수 $k=1, 2, 3$의 곱을 구한다.",
+    "sourceDecisiveStep": "$k^2$항이 소거된 일차부등식 $4k-15<0$에서 자연수 $1, 2, 3$을 모두 찾는다."
+  },
+  "source": {
+    "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
+    "standardUnitKey": "H15-SA-05",
+    "subUnitKey": "H15-SA-05-DISCRIMINANT",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식",
+      "l3": "이차방정식의 근",
+      "l4": "판별식"
+    },
+    "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+    "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+    "difficultyBucket": 1,
+    "newKeyProposal": null,
+    "item4slot": {
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "모든 자연수 $k$의 값의 곱은"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $D<0$이어야 한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2-(2k+1)x+k^2+4=0$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "허근",
+            "src": "stem",
+            "quote": "허근을 갖도록 하는"
+          }
+        ]
+      },
+      "reasons": {
+        "method": "판별식 D<0으로 k<15/4를 구해 자연수 1, 2, 3의 곱 6을 구함"
+      },
+      "steps": [],
+      "scenarioNote": ""
+    },
+    "boundary": "NONE"
+  },
+  "units": [
+    {
+      "standardUnitKey": "H15-SA-01",
+      "label": "다항식의 연산",
+      "order": 1,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+          "label": "다항식의 기본 연산"
+        },
+        {
+          "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+          "label": "다항식의 나눗셈"
+        },
+        {
+          "subUnitKey": "H15-SA-01-MULTIPLICATION_FORMULA",
+          "label": "곱셈공식의 변형"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H1-RPM-001",
+          "path": "다항식 > 다항식의 연산 > 다항식의 덧셈과 뺄셈 > 차수·계수 정리",
+          "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-002",
+          "path": "다항식 > 다항식의 연산 > 다항식의 덧셈과 뺄셈 > 다항식의 덧셈·뺄셈",
+          "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-003",
+          "path": "다항식 > 다항식의 연산 > 다항식의 곱셈 > 곱셈공식",
+          "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-004",
+          "path": "다항식 > 다항식의 연산 > 다항식의 곱셈 > 고차식 전개",
+          "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-005",
+          "path": "다항식 > 다항식의 연산 > 다항식의 나눗셈 > 다항식을 일차식으로 나누기",
+          "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-006",
+          "path": "다항식 > 다항식의 연산 > 다항식의 나눗셈 > 몫과 나머지",
+          "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+          "label": "다항식의 인수분해",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+              "label": "인수분해 구조의 활용"
+            },
+            {
+              "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+              "label": "표준 인수분해"
+            },
+            {
+              "templateKey": "TPL_H1_POLY_FACTORIZATION_COEFFICIENT",
+              "label": "인수와 계수 비교"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+          "label": "곱셈공식과 대칭식",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+              "label": "곱셈공식·대칭식 변형"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+          "label": "항등식과 미정계수",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+              "label": "항등식의 계수비교"
+            },
+            {
+              "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+              "label": "항등식의 특수값 대입"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+          "label": "다항식의 연산과 전개",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+              "label": "전개식의 특정 계수"
+            },
+            {
+              "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+              "label": "다항식의 직접 연산"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_POLY_DIVISION",
+          "label": "다항식의 나눗셈",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+              "label": "다항식 나눗셈 직접 실행"
+            },
+            {
+              "templateKey": "TPL_H1_POLY_DIVISION_IDENTITY",
+              "label": "나눗셈 항등식"
+            },
+            {
+              "templateKey": "TPL_H1_POLY_DIVISION_REDUCTION",
+              "label": "차수 낮추기"
+            },
+            {
+              "templateKey": "TPL_H1_POLY_DIVISION_SCALE",
+              "label": "제수 배율"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-SA-02",
+      "label": "항등식과 나머지정리",
+      "order": 2,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-SA-02-IDENTITY",
+          "label": "항등식과 계수비교"
+        },
+        {
+          "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+          "label": "나머지정리와 인수정리"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H1-RPM-007",
+          "path": "다항식 > 항등식과 나머지정리 > 항등식 > 미정계수법",
+          "subUnitKey": "H15-SA-02-IDENTITY",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-008",
+          "path": "다항식 > 항등식과 나머지정리 > 항등식 > 수치대입법",
+          "subUnitKey": "H15-SA-02-IDENTITY",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-009",
+          "path": "다항식 > 항등식과 나머지정리 > 나머지정리 > 일차식으로 나눈 나머지",
+          "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H1-RPM-010",
+          "path": "다항식 > 항등식과 나머지정리 > 나머지정리 > 고차식 조건",
+          "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+          "mappingStatus": "FAMILY_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-011",
+          "path": "다항식 > 항등식과 나머지정리 > 인수정리 > 인수 판정",
+          "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H1-RPM-012",
+          "path": "다항식 > 항등식과 나머지정리 > 인수정리 > 미정계수 결정",
+          "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+          "label": "항등식과 미정계수",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+              "label": "항등식의 계수비교"
+            },
+            {
+              "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+              "label": "항등식의 특수값 대입"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+          "label": "인수정리",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_FACTOR",
+              "label": "인수분해"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_REPEATED",
+              "label": "중복인수"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_RESTORE",
+              "label": "다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT",
+              "label": "인수 조건"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
+              "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_POLY_DIVISION",
+          "label": "다항식의 나눗셈",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+              "label": "다항식 나눗셈 직접 실행"
+            },
+            {
+              "templateKey": "TPL_H1_POLY_DIVISION_IDENTITY",
+              "label": "나눗셈 항등식"
+            },
+            {
+              "templateKey": "TPL_H1_POLY_DIVISION_REDUCTION",
+              "label": "차수 낮추기"
+            },
+            {
+              "templateKey": "TPL_H1_POLY_DIVISION_SCALE",
+              "label": "제수 배율"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+          "label": "다항식의 인수분해",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+              "label": "인수분해 구조의 활용"
+            },
+            {
+              "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+              "label": "표준 인수분해"
+            },
+            {
+              "templateKey": "TPL_H1_POLY_FACTORIZATION_COEFFICIENT",
+              "label": "인수와 계수 비교"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+          "label": "다항식의 연산과 전개",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+              "label": "전개식의 특정 계수"
+            },
+            {
+              "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+              "label": "다항식의 직접 연산"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+          "label": "나머지정리",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+              "label": "합성 제수 나머지 조건 결합"
+            },
+            {
+              "templateKey": "TPL_H1_REMAINDER_NESTED_DIVISION",
+              "label": "중첩 나눗셈 몫·나머지 관계"
+            },
+            {
+              "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+              "label": "나머지정리의 직접 대입"
+            },
+            {
+              "templateKey": "TPL_H1_REMAINDER_THEOREM_REDUCE",
+              "label": "나머지 환원"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-SA-03",
+      "label": "인수분해",
+      "order": 3,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-SA-03-COEFFICIENT_COMPARISON",
+          "label": "인수분해와 계수비교"
+        },
+        {
+          "subUnitKey": "H15-SA-03-COMPLEX_BASIC",
+          "label": "복소수의 뜻과 표현"
+        },
+        {
+          "subUnitKey": "H15-SA-03-COMPLEX_OPERATION",
+          "label": "복소수의 계산"
+        },
+        {
+          "subUnitKey": "H15-SA-03-COMPLEX_ROOT",
+          "label": "복소수와 이차방정식"
+        },
+        {
+          "subUnitKey": "H15-SA-03-FACTORIZATION",
+          "label": "인수분해"
+        },
+        {
+          "subUnitKey": "H15-SA-03-FACTORIZATION_BASIC",
+          "label": "인수분해 기본"
+        },
+        {
+          "subUnitKey": "H15-SA-03-IDENTITY_REMAINDER",
+          "label": "항등식과 나머지정리"
+        },
+        {
+          "subUnitKey": "H15-SA-03-POLYNOMIAL_BASIC",
+          "label": "다항식의 연산"
+        },
+        {
+          "subUnitKey": "H15-SA-03-FACTORIZATION_APPLICATION",
+          "label": "인수분해의 활용"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H1-RPM-013",
+          "path": "다항식 > 인수분해 > 공통인수 > 공통인수 묶기",
+          "subUnitKey": "H15-SA-03-FACTORIZATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-014",
+          "path": "다항식 > 인수분해 > 공통인수 > 단계적 인수분해",
+          "subUnitKey": "H15-SA-03-FACTORIZATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-015",
+          "path": "다항식 > 인수분해 > 인수분해 공식 > 제곱식",
+          "subUnitKey": "H15-SA-03-FACTORIZATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-016",
+          "path": "다항식 > 인수분해 > 인수분해 공식 > 합과 차",
+          "subUnitKey": "H15-SA-03-FACTORIZATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-017",
+          "path": "다항식 > 인수분해 > 인수분해 공식 > 이차식",
+          "subUnitKey": "H15-SA-03-FACTORIZATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-018",
+          "path": "다항식 > 인수분해 > 인수분해의 활용 > 수의 계산",
+          "subUnitKey": "H15-SA-03-FACTORIZATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-019",
+          "path": "다항식 > 인수분해 > 인수분해의 활용 > 식의 값",
+          "subUnitKey": "H15-SA-03-FACTORIZATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-020",
+          "path": "다항식 > 인수분해 > 인수분해의 활용 > 조건식",
+          "subUnitKey": "H15-SA-03-FACTORIZATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+          "label": "다항식의 인수분해",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+              "label": "인수분해 구조의 활용"
+            },
+            {
+              "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+              "label": "표준 인수분해"
+            },
+            {
+              "templateKey": "TPL_H1_POLY_FACTORIZATION_COEFFICIENT",
+              "label": "인수와 계수 비교"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+          "label": "인수정리",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_FACTOR",
+              "label": "인수분해"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_REPEATED",
+              "label": "중복인수"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_RESTORE",
+              "label": "다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT",
+              "label": "인수 조건"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
+              "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+          "label": "곱셈공식과 대칭식",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+              "label": "곱셈공식·대칭식 변형"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_POLY_DIVISION",
+          "label": "다항식의 나눗셈",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+              "label": "다항식 나눗셈 직접 실행"
+            },
+            {
+              "templateKey": "TPL_H1_POLY_DIVISION_IDENTITY",
+              "label": "나눗셈 항등식"
+            },
+            {
+              "templateKey": "TPL_H1_POLY_DIVISION_REDUCTION",
+              "label": "차수 낮추기"
+            },
+            {
+              "templateKey": "TPL_H1_POLY_DIVISION_SCALE",
+              "label": "제수 배율"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-SA-04",
+      "label": "복소수",
+      "order": 4,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+          "label": "복소수의 뜻과 표현"
+        },
+        {
+          "subUnitKey": "H15-SA-04-COMPLEX_NUMBER_BASIC",
+          "label": "복소수의 뜻과 표현"
+        },
+        {
+          "subUnitKey": "H15-SA-04-COMPLEX_NUMBER_OPERATION",
+          "label": "복소수의 계산"
+        },
+        {
+          "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+          "label": "복소수의 계산"
+        },
+        {
+          "subUnitKey": "H15-SA-04-COMPLEX_ROOT",
+          "label": "복소수와 이차방정식"
+        },
+        {
+          "subUnitKey": "H15-SA-04-EQUATION_APPLICATION",
+          "label": "방정식과 부등식의 활용"
+        },
+        {
+          "subUnitKey": "H15-SA-04-EQUATION_BASIC",
+          "label": "방정식의 풀이"
+        },
+        {
+          "subUnitKey": "H15-SA-04-INEQUALITY_BASIC",
+          "label": "부등식의 풀이"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H1-RPM-021",
+          "path": "방정식과 부등식 > 복소수 > 복소수의 뜻 > 실수부·허수부",
+          "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-022",
+          "path": "방정식과 부등식 > 복소수 > 복소수의 뜻 > 서로 같은 복소수",
+          "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-023",
+          "path": "방정식과 부등식 > 복소수 > 복소수의 연산 > 사칙연산",
+          "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-024",
+          "path": "방정식과 부등식 > 복소수 > 복소수의 연산 > 켤레복소수",
+          "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-025",
+          "path": "방정식과 부등식 > 복소수 > i의 거듭제곱 > 주기성",
+          "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-026",
+          "path": "방정식과 부등식 > 복소수 > i의 거듭제곱 > 복소수 조건",
+          "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-031",
+          "path": "방정식과 부등식 > 이차방정식 > 복소수 근 > 허근",
+          "subUnitKey": "H15-SA-04-COMPLEX_ROOT",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H1-RPM-032",
+          "path": "방정식과 부등식 > 이차방정식 > 복소수 근 > 계수 조건",
+          "subUnitKey": "H15-SA-04-COMPLEX_ROOT",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+          "label": "복소수 조건과 방정식",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+              "label": "켤레근과 방정식의 근"
+            },
+            {
+              "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+              "label": "실수·순허수 조건"
+            },
+            {
+              "templateKey": "TPL_H1_COMPLEX_CONDITION_EQUATION_SIGN",
+              "label": "음수 근호 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+          "label": "복소수의 연산과 상등",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+              "label": "복소수의 성분별 연산"
+            },
+            {
+              "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+              "label": "켤레복소수·노름의 활용"
+            },
+            {
+              "templateKey": "TPL_H1_COMPLEX_OPERATION_AUDIT",
+              "label": "복소 연산 판별"
+            },
+            {
+              "templateKey": "TPL_H1_COMPLEX_OPERATION_NEGATIVE_ROOT",
+              "label": "음수 제곱근"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+          "label": "복소수의 거듭제곱과 단위근",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+              "label": "허수단위 i의 거듭제곱 주기"
+            },
+            {
+              "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+              "label": "단위근·복소근의 주기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+          "label": "고차방정식의 풀이",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+              "label": "고차방정식의 인수분해"
+            },
+            {
+              "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+              "label": "치환을 이용한 차수 축소"
+            },
+            {
+              "templateKey": "TPL_H1_HIGHER_DEGREE_EQUATION_ROOT",
+              "label": "근 조건"
+            },
+            {
+              "templateKey": "TPL_H1_HIGHER_DEGREE_EQUATION_TRANSFORM",
+              "label": "근 변환"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-SA-05",
+      "label": "이차방정식",
+      "order": 5,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-SA-05-DISCRIMINANT",
+          "label": "판별식과 근의 조건"
+        },
+        {
+          "subUnitKey": "H15-SA-05-EQUATION_APPLICATION",
+          "label": "방정식과 부등식의 활용"
+        },
+        {
+          "subUnitKey": "H15-SA-05-EQUATION_BASIC",
+          "label": "방정식의 풀이"
+        },
+        {
+          "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+          "label": "이차방정식과 이차함수의 관계"
+        },
+        {
+          "subUnitKey": "H15-SA-05-FUNCTION_BASIC",
+          "label": "함수의 뜻과 그래프"
+        },
+        {
+          "subUnitKey": "H15-SA-05-FUNCTION_COMPOSITION",
+          "label": "합성함수"
+        },
+        {
+          "subUnitKey": "H15-SA-05-FUNCTION_INVERSE",
+          "label": "역함수"
+        },
+        {
+          "subUnitKey": "H15-SA-05-INEQUALITY_BASIC",
+          "label": "부등식의 풀이"
+        },
+        {
+          "subUnitKey": "H15-SA-05-QUADRATIC_SOLVING",
+          "label": "이차방정식의 풀이"
+        },
+        {
+          "subUnitKey": "H15-SA-05-ROOT_COEFFICIENT",
+          "label": "근과 계수의 관계"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H1-RPM-027",
+          "path": "방정식과 부등식 > 이차방정식 > 이차방정식의 근 > 인수분해·근의 공식",
+          "subUnitKey": "H15-SA-05-QUADRATIC_SOLVING",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H1-RPM-028",
+          "path": "방정식과 부등식 > 이차방정식 > 이차방정식의 근 > 판별식",
+          "subUnitKey": "H15-SA-05-DISCRIMINANT",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-033",
+          "path": "방정식과 부등식 > 이차방정식과 이차함수 > 그래프와 근 > x축과의 교점",
+          "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-034",
+          "path": "방정식과 부등식 > 이차방정식과 이차함수 > 그래프와 근 > 판별식과 위치",
+          "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-035",
+          "path": "방정식과 부등식 > 이차방정식과 이차함수 > 직선과 포물선 > 교점 개수",
+          "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-036",
+          "path": "방정식과 부등식 > 이차방정식과 이차함수 > 직선과 포물선 > 접선 조건",
+          "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+          "label": "이차방정식의 근과 판별식",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY",
+              "label": "매개변수와 무관한 판별식 조건"
+            },
+            {
+              "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+              "label": "판별식으로 근의 존재·중복 판정"
+            },
+            {
+              "templateKey": "TPL_H1_QUADRATIC_DISCRIMINANT_INTERVAL_ROOT",
+              "label": "구간근 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+          "label": "고차방정식의 풀이",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+              "label": "고차방정식의 인수분해"
+            },
+            {
+              "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+              "label": "치환을 이용한 차수 축소"
+            },
+            {
+              "templateKey": "TPL_H1_HIGHER_DEGREE_EQUATION_ROOT",
+              "label": "근 조건"
+            },
+            {
+              "templateKey": "TPL_H1_HIGHER_DEGREE_EQUATION_TRANSFORM",
+              "label": "근 변환"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+          "label": "이차함수의 최대·최소",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+              "label": "조건·도형을 이차함수로 모델링"
+            },
+            {
+              "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+              "label": "꼭짓점·제한구간의 최대·최소"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+          "label": "조건을 이용한 이차함수 결정",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+              "label": "복합 조건으로 이차함수 결정"
+            },
+            {
+              "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+              "label": "근·축·꼭짓점으로 이차함수 결정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+          "label": "근과 계수의 관계",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+              "label": "근의 합·곱으로 대칭식 계산"
+            },
+            {
+              "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+              "label": "변환된 근과 매개변수"
+            },
+            {
+              "templateKey": "TPL_H1_ROOT_COEFFICIENT_RELATION_EQUATION",
+              "label": "근에서 방정식"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+          "label": "이차함수의 그래프와 교점",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+              "label": "교점 좌표와 그래프·도형 관계"
+            },
+            {
+              "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+              "label": "이차함수와 직선의 교점·접점"
+            },
+            {
+              "templateKey": "TPL_H1_QUADRATIC_GRAPH_INTERSECTION_ROOT_LOCATION",
+              "label": "교점의 구간 위치"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_EQUATION_APPLICATION",
+          "label": "방정식의 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_EQUATION_KNOWN_WEIGHTS_SWAPPED_QUANTITIES",
+              "label": "알려진 단위량과 수량 교환 차이의 연립식"
+            },
+            {
+              "templateKey": "TPL_H1_EQUATION_APPLICATION_SUM_SQUARE",
+              "label": "도형 연립방정식"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-SA-06",
+      "label": "이차방정식의 근과 계수",
+      "order": 6,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-SA-06-EQUATION_APPLICATION",
+          "label": "방정식과 부등식의 활용"
+        },
+        {
+          "subUnitKey": "H15-SA-06-EQUATION_BASIC",
+          "label": "방정식의 풀이"
+        },
+        {
+          "subUnitKey": "H15-SA-06-INEQUALITY_BASIC",
+          "label": "부등식의 풀이"
+        },
+        {
+          "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+          "label": "근과 계수의 관계"
+        },
+        {
+          "subUnitKey": "H15-SA-06-ROOT_CONDITION",
+          "label": "근과 계수의 조건"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H1-RPM-029",
+          "path": "방정식과 부등식 > 이차방정식 > 근과 계수의 관계 > 근의 합·곱",
+          "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H1-RPM-030",
+          "path": "방정식과 부등식 > 이차방정식 > 근과 계수의 관계 > 근으로 방정식 구성",
+          "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+          "label": "근과 계수의 관계",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+              "label": "근의 합·곱으로 대칭식 계산"
+            },
+            {
+              "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+              "label": "변환된 근과 매개변수"
+            },
+            {
+              "templateKey": "TPL_H1_ROOT_COEFFICIENT_RELATION_EQUATION",
+              "label": "근에서 방정식"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-SA-07",
+      "label": "여러 가지 방정식",
+      "order": 7,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-SA-07-EQUATION_APPLICATION",
+          "label": "방정식과 부등식의 활용"
+        },
+        {
+          "subUnitKey": "H15-SA-07-EQUATION_BASIC",
+          "label": "방정식의 풀이"
+        },
+        {
+          "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+          "label": "고차방정식의 풀이"
+        },
+        {
+          "subUnitKey": "H15-SA-07-INEQUALITY_BASIC",
+          "label": "부등식의 풀이"
+        },
+        {
+          "subUnitKey": "H15-SA-07-SUBSTITUTION_SYSTEM",
+          "label": "치환과 연립방정식"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H1-RPM-039",
+          "path": "방정식과 부등식 > 여러 가지 방정식 > 삼차·사차방정식 > 인수분해형",
+          "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-040",
+          "path": "방정식과 부등식 > 여러 가지 방정식 > 삼차·사차방정식 > 치환형",
+          "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-041",
+          "path": "방정식과 부등식 > 여러 가지 방정식 > 연립방정식 > 이차식이 포함된 연립방정식",
+          "subUnitKey": "H15-SA-07-SUBSTITUTION_SYSTEM",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-042",
+          "path": "방정식과 부등식 > 여러 가지 방정식 > 연립방정식 > 대칭식 활용",
+          "subUnitKey": "H15-SA-07-SUBSTITUTION_SYSTEM",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-043",
+          "path": "방정식과 부등식 > 여러 가지 방정식 > 방정식의 활용 > 근의 조건",
+          "subUnitKey": "H15-SA-07-EQUATION_APPLICATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H1-RPM-044",
+          "path": "방정식과 부등식 > 여러 가지 방정식 > 방정식의 활용 > 도형·함수 결합",
+          "subUnitKey": "H15-SA-07-EQUATION_APPLICATION",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+          "label": "연립방정식과 공통근",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_SYSTEM_BRANCH_COMMON_ROOT",
+              "label": "인수 분기·공통근 연립"
+            },
+            {
+              "templateKey": "TPL_H1_SYSTEM_DIRECT",
+              "label": "연립방정식의 직접 해결"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+          "label": "복소수 조건과 방정식",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+              "label": "켤레근과 방정식의 근"
+            },
+            {
+              "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+              "label": "실수·순허수 조건"
+            },
+            {
+              "templateKey": "TPL_H1_COMPLEX_CONDITION_EQUATION_SIGN",
+              "label": "음수 근호 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_EQUATION_APPLICATION",
+          "label": "방정식의 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_EQUATION_KNOWN_WEIGHTS_SWAPPED_QUANTITIES",
+              "label": "알려진 단위량과 수량 교환 차이의 연립식"
+            },
+            {
+              "templateKey": "TPL_H1_EQUATION_APPLICATION_SUM_SQUARE",
+              "label": "도형 연립방정식"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+          "label": "고차방정식의 풀이",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+              "label": "고차방정식의 인수분해"
+            },
+            {
+              "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+              "label": "치환을 이용한 차수 축소"
+            },
+            {
+              "templateKey": "TPL_H1_HIGHER_DEGREE_EQUATION_ROOT",
+              "label": "근 조건"
+            },
+            {
+              "templateKey": "TPL_H1_HIGHER_DEGREE_EQUATION_TRANSFORM",
+              "label": "근 변환"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+          "label": "곱셈공식과 대칭식",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+              "label": "곱셈공식·대칭식 변형"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-SA-08",
+      "label": "여러 가지 부등식",
+      "order": 8,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-SA-08-ABSOLUTE_INEQUALITY",
+          "label": "절댓값 부등식"
+        },
+        {
+          "subUnitKey": "H15-SA-08-EQUATION_APPLICATION",
+          "label": "방정식과 부등식의 활용"
+        },
+        {
+          "subUnitKey": "H15-SA-08-EQUATION_BASIC",
+          "label": "방정식의 풀이"
+        },
+        {
+          "subUnitKey": "H15-SA-08-INEQUALITY_APPLICATION",
+          "label": "부등식의 활용"
+        },
+        {
+          "subUnitKey": "H15-SA-08-INEQUALITY_BASIC",
+          "label": "부등식의 풀이"
+        },
+        {
+          "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
+          "label": "이차부등식"
+        },
+        {
+          "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
+          "label": "연립부등식"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H1-RPM-045",
+          "path": "방정식과 부등식 > 여러 가지 부등식 > 연립일차부등식 > 해의 범위",
+          "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-046",
+          "path": "방정식과 부등식 > 여러 가지 부등식 > 연립일차부등식 > 정수해",
+          "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-047",
+          "path": "방정식과 부등식 > 여러 가지 부등식 > 이차부등식 > 그래프를 이용한 해",
+          "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-048",
+          "path": "방정식과 부등식 > 여러 가지 부등식 > 이차부등식 > 근의 위치와 해",
+          "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-049",
+          "path": "방정식과 부등식 > 여러 가지 부등식 > 절대부등식 > 산술·기하평균",
+          "subUnitKey": "H15-SA-08-ABSOLUTE_INEQUALITY",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H1-RPM-050",
+          "path": "방정식과 부등식 > 여러 가지 부등식 > 절대부등식 > 코시형 기본",
+          "subUnitKey": "H15-SA-08-ABSOLUTE_INEQUALITY",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H1-RPM-051",
+          "path": "방정식과 부등식 > 여러 가지 부등식 > 부등식의 활용 > 최대·최소",
+          "subUnitKey": "H15-SA-08-INEQUALITY_APPLICATION",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "H1-RPM-052",
+          "path": "방정식과 부등식 > 여러 가지 부등식 > 부등식의 활용 > 계수 조건",
+          "subUnitKey": "H15-SA-08-INEQUALITY_APPLICATION",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+          "label": "절댓값 방정식과 부등식",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_ABSOLUTE_DIRECT_INTERVAL",
+              "label": "절댓값의 직접 구간 변환"
+            },
+            {
+              "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+              "label": "절댓값의 구간별 분기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+          "label": "이차방정식의 근과 판별식",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY",
+              "label": "매개변수와 무관한 판별식 조건"
+            },
+            {
+              "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+              "label": "판별식으로 근의 존재·중복 판정"
+            },
+            {
+              "templateKey": "TPL_H1_QUADRATIC_DISCRIMINANT_INTERVAL_ROOT",
+              "label": "구간근 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+          "label": "이차부등식과 부호 조건",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER",
+              "label": "항상 성립·해 없음의 매개변수"
+            },
+            {
+              "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+              "label": "이차식의 근과 부호 구간"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+          "label": "일차·연립부등식",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+              "label": "연립부등식의 공통 구간"
+            },
+            {
+              "templateKey": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
+              "label": "정수 개수·매개변수 조건"
+            },
+            {
+              "templateKey": "TPL_H1_LINEAR_INEQUALITY_ALL_SOLUTIONS_SIGN",
+              "label": "일차부등식의 전체 해 부호 조건"
+            },
+            {
+              "templateKey": "TPL_H1_LINEAR_INEQUALITY_LEAST_INTEGER_SOLUTION",
+              "label": "일차부등식의 가장 작은 정수해"
+            },
+            {
+              "templateKey": "TPL_H1_INDEPENDENT_INEQUALITIES_LEAST_INTEGER_SUM",
+              "label": "독립된 부등식의 최소 정수해 합"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+          "label": "절대부등식의 활용과 최댓값·최솟값",
+          "templates": [
+            {
+              "templateKey": "TPL_AMGM_MINIMUM",
+              "label": "산술평균과 기하평균을 이용한 최솟값"
+            },
+            {
+              "templateKey": "TPL_AMGM_PRODUCT_EXTREMUM",
+              "label": "곱의 최댓값"
+            },
+            {
+              "templateKey": "TPL_AMGM_RECIPROCAL_MINIMUM",
+              "label": "역수식의 최솟값"
+            },
+            {
+              "templateKey": "TPL_CAUCHY_EXTREMUM",
+              "label": "코시·슈바르츠 부등식을 이용한 최댓값·최솟값"
+            },
+            {
+              "templateKey": "TPL_CAUCHY_MINIMUM",
+              "label": "코시·슈바르츠 부등식을 이용한 최솟값"
+            },
+            {
+              "templateKey": "TPL_MIXED_INEQUALITY_EXTREMUM",
+              "label": "여러 부등식을 이용한 최댓값·최솟값"
+            },
+            {
+              "templateKey": "TPL_PARAMETER_BOUND_EXTREMUM",
+              "label": "매개변수 조건이 있는 최댓값·최솟값"
+            },
+            {
+              "templateKey": "TPL_ABSOLUTE_INEQUALITY_EXTREMUM_SQUARE_BOUND",
+              "label": "제곱합 비음수 극값"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-SA-09",
+      "label": "평면좌표",
+      "order": 9,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
+          "label": "좌표와 거리"
+        },
+        {
+          "subUnitKey": "H15-SA-09-GEOMETRY_APPLICATION",
+          "label": "도형의 방정식 활용"
+        },
+        {
+          "subUnitKey": "H15-SA-09-GEOMETRY_EQUATION",
+          "label": "도형의 방정식"
+        },
+        {
+          "subUnitKey": "H15-SA-09-GEOMETRY_RELATION",
+          "label": "도형의 관계"
+        },
+        {
+          "subUnitKey": "H15-SA-09-LOCUS_RATIO",
+          "label": "거리 조건과 자취"
+        },
+        {
+          "subUnitKey": "H15-SA-09-TRIANGLE_CENTROID_AREA",
+          "label": "삼각형의 좌표와 무게중심"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H1-RPM-053",
+          "path": "도형의 방정식 > 평면좌표 > 두 점 사이의 거리 > 거리 공식",
+          "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-054",
+          "path": "도형의 방정식 > 평면좌표 > 두 점 사이의 거리 > 도형의 변 길이",
+          "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-055",
+          "path": "도형의 방정식 > 평면좌표 > 선분의 내분·외분 > 내분점",
+          "subUnitKey": "H15-SA-09-GEOMETRY_APPLICATION",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H1-RPM-056",
+          "path": "도형의 방정식 > 평면좌표 > 선분의 내분·외분 > 외분점",
+          "subUnitKey": "H15-SA-09-GEOMETRY_APPLICATION",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H1-RPM-057",
+          "path": "도형의 방정식 > 평면좌표 > 삼각형의 무게중심 > 좌표로 무게중심",
+          "subUnitKey": "H15-SA-09-TRIANGLE_CENTROID_AREA",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-058",
+          "path": "도형의 방정식 > 평면좌표 > 삼각형의 무게중심 > 좌표 도형 활용",
+          "subUnitKey": "H15-SA-09-TRIANGLE_CENTROID_AREA",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_COORD_CENTROID",
+          "label": "삼각형의 무게중심",
+          "templates": [
+            {
+              "templateKey": "TPL_CENTROID_DIRECT",
+              "label": "세 꼭짓점으로 무게중심 구하기"
+            },
+            {
+              "templateKey": "TPL_CENTROID_REVERSE",
+              "label": "무게중심으로 꼭짓점 구하기"
+            },
+            {
+              "templateKey": "TPL_CENTROID_APPLICATION",
+              "label": "무게중심의 활용"
+            },
+            {
+              "templateKey": "TPL_CENTROID_DISTANCE_RELATION",
+              "label": "무게중심과 거리의 관계"
+            },
+            {
+              "templateKey": "TPL_CENTROID_NESTED_MEDIAN_AREA_PARTITION",
+              "label": "중첩 무게중심의 중선과 높이비에 의한 넓이 분할"
+            },
+            {
+              "templateKey": "TPL_COORD_CENTROID_MEDIAN",
+              "label": "중선 분할"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_COORD_DISTANCE",
+          "label": "두 점 사이의 거리",
+          "templates": [
+            {
+              "templateKey": "TPL_COORD_DISTANCE_DIRECT",
+              "label": "두 점 사이의 거리 구하기"
+            },
+            {
+              "templateKey": "TPL_DISTANCE_UNKNOWN",
+              "label": "거리 조건으로 미지수 구하기"
+            },
+            {
+              "templateKey": "TPL_DISTANCE_TRIANGLE_CLASS",
+              "label": "세 변의 길이로 삼각형의 종류 판정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_COORD_DISTANCE_OPTIMIZATION",
+          "label": "거리의 최댓값과 최솟값",
+          "templates": [
+            {
+              "templateKey": "TPL_DISTANCE_SUM_MIN",
+              "label": "두 거리의 합의 최솟값"
+            },
+            {
+              "templateKey": "TPL_DISTANCE_SQSUM_MIN",
+              "label": "거리식을 이차함수로 나타낸 최솟값"
+            },
+            {
+              "templateKey": "TPL_DISTANCE_VERTEX_SQSUM",
+              "label": "세 꼭짓점까지 거리 제곱합의 최솟값"
+            },
+            {
+              "templateKey": "TPL_DISTANCE_PRODUCT_MAX",
+              "label": "두 거리의 곱의 최댓값"
+            },
+            {
+              "templateKey": "TPL_COORD_DISTANCE_OPTIMIZATION_CIRCLE_DISTANCE",
+              "label": "두 원 거리 극값"
+            },
+            {
+              "templateKey": "TPL_COORD_DISTANCE_OPTIMIZATION_POLYGON_DISTANCE",
+              "label": "다각형 거리 극값"
+            },
+            {
+              "templateKey": "TPL_COORD_DISTANCE_OPTIMIZATION_PROJECTION",
+              "label": "정사영 거리 극값"
+            },
+            {
+              "templateKey": "TPL_COORD_DISTANCE_OPTIMIZATION_REVERSE_TRIANGLE",
+              "label": "거리차 최대 등호 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_COORD_EQUIDISTANT",
+          "label": "두 점에서 같은 거리에 있는 점",
+          "templates": [
+            {
+              "templateKey": "TPL_EQUIDISTANT_AXIS",
+              "label": "좌표축 위의 등거리점"
+            },
+            {
+              "templateKey": "TPL_EQUIDISTANT_LINE",
+              "label": "직선 위의 등거리점"
+            },
+            {
+              "templateKey": "TPL_EQUIDISTANT_UNKNOWN",
+              "label": "등거리 조건으로 미지수 구하기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_COORD_FIGURE_PROPERTIES",
+          "label": "좌표를 이용한 도형의 성질",
+          "templates": [
+            {
+              "templateKey": "TPL_FIGURE_PARALLELOGRAM",
+              "label": "평행사변형의 성질을 이용한 좌표"
+            },
+            {
+              "templateKey": "TPL_FIGURE_RHOMBUS",
+              "label": "마름모의 성질을 이용한 좌표"
+            },
+            {
+              "templateKey": "TPL_COORD_FIGURE_PROPERTIES_SQUARE",
+              "label": "정사각형 좌표"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_COORD_MIDPOINT",
+          "label": "선분의 중점",
+          "templates": [
+            {
+              "templateKey": "TPL_MIDPOINT_DIRECT",
+              "label": "두 점의 중점"
+            },
+            {
+              "templateKey": "TPL_MIDPOINT_DISTANCE_RELATION",
+              "label": "중점과 거리의 관계"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_COORD_SECTION",
+          "label": "선분의 내분과 외분",
+          "templates": [
+            {
+              "templateKey": "TPL_SECTION_INTERNAL",
+              "label": "선분의 내분점"
+            },
+            {
+              "templateKey": "TPL_SECTION_EXTERNAL",
+              "label": "선분의 외분점"
+            },
+            {
+              "templateKey": "TPL_SECTION_CONDITION_REVERSE",
+              "label": "내분·외분 조건으로 미지수 구하기"
+            },
+            {
+              "templateKey": "TPL_SECTION_GEOMETRY_RATIO",
+              "label": "도형의 성질로 내분비 구하기"
+            },
+            {
+              "templateKey": "TPL_SECTION_BOTH",
+              "label": "내분점과 외분점 함께 다루기"
+            },
+            {
+              "templateKey": "TPL_SECTION_APPLICATION",
+              "label": "내분·외분점의 활용"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+          "label": "좌표를 이용한 삼각형의 넓이",
+          "templates": [
+            {
+              "templateKey": "TPL_AREA_DIRECT",
+              "label": "좌표를 이용한 삼각형의 넓이 구하기"
+            },
+            {
+              "templateKey": "TPL_AREA_POINT",
+              "label": "넓이 조건으로 점의 좌표 구하기"
+            },
+            {
+              "templateKey": "TPL_AREA_SECTION",
+              "label": "내분점을 이용한 삼각형의 넓이"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+          "label": "이차함수의 최대·최소",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+              "label": "조건·도형을 이차함수로 모델링"
+            },
+            {
+              "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+              "label": "꼭짓점·제한구간의 최대·최소"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-SA-10",
+      "label": "직선의 방정식",
+      "order": 10,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+          "label": "직선 사이의 거리와 각"
+        },
+        {
+          "subUnitKey": "H15-SA-10-EQUATION_APPLICATION",
+          "label": "방정식과 부등식의 활용"
+        },
+        {
+          "subUnitKey": "H15-SA-10-EQUATION_BASIC",
+          "label": "방정식의 풀이"
+        },
+        {
+          "subUnitKey": "H15-SA-10-INEQUALITY_BASIC",
+          "label": "부등식의 풀이"
+        },
+        {
+          "subUnitKey": "H15-SA-10-LINE_EQUATION",
+          "label": "직선의 방정식"
+        },
+        {
+          "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+          "label": "두 직선의 평행과 수직"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H1-RPM-059",
+          "path": "도형의 방정식 > 직선의 방정식 > 직선의 방정식 > 한 점과 기울기",
+          "subUnitKey": "H15-SA-10-LINE_EQUATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-060",
+          "path": "도형의 방정식 > 직선의 방정식 > 직선의 방정식 > 두 점을 지나는 직선",
+          "subUnitKey": "H15-SA-10-LINE_EQUATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-061",
+          "path": "도형의 방정식 > 직선의 방정식 > 두 직선의 위치 관계 > 평행",
+          "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-062",
+          "path": "도형의 방정식 > 직선의 방정식 > 두 직선의 위치 관계 > 수직",
+          "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-063",
+          "path": "도형의 방정식 > 직선의 방정식 > 두 직선의 위치 관계 > 교점",
+          "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-064",
+          "path": "도형의 방정식 > 직선의 방정식 > 점과 직선 사이의 거리 > 거리 공식",
+          "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-065",
+          "path": "도형의 방정식 > 직선의 방정식 > 점과 직선 사이의 거리 > 도형의 넓이·최소거리",
+          "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_AREA_BISECTING_LINE",
+          "label": "넓이를 이등분하는 직선",
+          "templates": [
+            {
+              "templateKey": "TPL_AREA_BISECT_TRIANGLE",
+              "label": "삼각형의 넓이를 이등분하는 직선"
+            },
+            {
+              "templateKey": "TPL_AREA_BISECT_POLYGON",
+              "label": "다각형의 넓이를 이등분하는 직선"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_INTERCEPT_OPTIMIZATION",
+          "label": "절편을 이용한 최댓값·최솟값",
+          "templates": [
+            {
+              "templateKey": "TPL_INTERCEPT_SUM_MINIMUM",
+              "label": "두 절편의 합의 최솟값"
+            },
+            {
+              "templateKey": "TPL_INTERCEPT_AREA_OPTIMIZATION",
+              "label": "절편을 이용한 넓이의 최댓값·최솟값"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_LINE_ANGLE_BISECTOR",
+          "label": "두 직선이 이루는 각의 이등분선",
+          "templates": [
+            {
+              "templateKey": "TPL_ANGLE_BISECTOR_EQUATION",
+              "label": "두 직선이 이루는 각의 이등분선 구하기"
+            },
+            {
+              "templateKey": "TPL_ANGLE_BISECTOR_EQUAL_DISTANCE_POINT",
+              "label": "두 직선까지의 거리가 같은 점"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_LINE_DISTANCE_EXTREMUM",
+          "label": "점과 직선 사이의 거리의 최댓값·최솟값",
+          "templates": [
+            {
+              "templateKey": "TPL_DISTANCE_EXTREMUM_SINGLE_POINT",
+              "label": "한 점과 직선 사이의 거리의 최댓값·최솟값"
+            },
+            {
+              "templateKey": "TPL_DISTANCE_EXTREMUM_SUM",
+              "label": "여러 점에서 직선까지의 거리 합의 최댓값·최솟값"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_LINE_EQUATION",
+          "label": "직선의 방정식 구하기",
+          "templates": [
+            {
+              "templateKey": "TPL_LINE_POINT_SLOPE",
+              "label": "한 점과 기울기가 주어진 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_TWO_POINTS",
+              "label": "두 점을 지나는 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_PARALLEL",
+              "label": "평행한 직선의 방정식"
+            },
+            {
+              "templateKey": "TPL_LINE_PERPENDICULAR",
+              "label": "수직인 직선의 방정식"
+            },
+            {
+              "templateKey": "TPL_LINE_PERP_BISECTOR",
+              "label": "수직이등분선의 방정식"
+            },
+            {
+              "templateKey": "TPL_LINE_MULTI_CONDITION",
+              "label": "조건이 주어진 직선의 방정식"
+            },
+            {
+              "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+              "label": "직선의 계수와 그래프"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_SLOPE",
+              "label": "평행·수직 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+              "label": "점과 방향벡터 직선식"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_LINE_FAMILY_COMMON_POINT",
+          "label": "정점을 지나는 직선",
+          "templates": [
+            {
+              "templateKey": "TPL_LINE_FAMILY_COMMON_POINT_APPLICATION",
+              "label": "정점을 지나는 직선의 방정식"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+          "label": "직선의 교점과 위치 조건",
+          "templates": [
+            {
+              "templateKey": "TPL_INTERSECTION_SEGMENT_RANGE",
+              "label": "직선이 선분과 만나는 조건"
+            },
+            {
+              "templateKey": "TPL_INTERSECTION_GRAPH_COUNT",
+              "label": "직선과 그래프의 교점 개수 조건"
+            },
+            {
+              "templateKey": "TPL_INTERSECTION_QUADRANT_AVOID",
+              "label": "직선의 사분면 통과 조건"
+            },
+            {
+              "templateKey": "TPL_INTERSECTION_TRIANGLE_FORMATION",
+              "label": "세 직선이 삼각형을 이루는 조건"
+            },
+            {
+              "templateKey": "TPL_LINE_INTERSECTION_CONDITION_QUADRANT",
+              "label": "교점 사분면"
+            },
+            {
+              "templateKey": "TPL_LINE_INTERSECTION_CONDITION_TRIANGLE_AVOID",
+              "label": "직선과 삼각형 비접촉"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_LINE_RELATION",
+          "label": "두 직선의 위치 관계",
+          "templates": [
+            {
+              "templateKey": "TPL_RELATION_PARALLEL_PARAMETER",
+              "label": "두 직선의 평행 조건"
+            },
+            {
+              "templateKey": "TPL_RELATION_PERPENDICULAR_PARAMETER",
+              "label": "두 직선의 수직 조건"
+            },
+            {
+              "templateKey": "TPL_RELATION_PARALLEL_PERP_COMBINED",
+              "label": "평행과 수직 조건"
+            },
+            {
+              "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+              "label": "두 직선의 위치 관계 종합"
+            },
+            {
+              "templateKey": "TPL_LINE_RELATION_COLLINEAR",
+              "label": "세 점 공선 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+          "label": "점과 직선 사이의 거리",
+          "templates": [
+            {
+              "templateKey": "TPL_POINT_LINE_DISTANCE_DIRECT",
+              "label": "점과 직선 사이의 거리 구하기"
+            },
+            {
+              "templateKey": "TPL_DISTANCE_CONDITION_PARAMETER",
+              "label": "점과 직선 사이의 거리 조건"
+            },
+            {
+              "templateKey": "TPL_DISTANCE_PARALLEL_LINES",
+              "label": "평행한 두 직선 사이의 거리"
+            },
+            {
+              "templateKey": "TPL_DISTANCE_FORMULA_DERIVATION",
+              "label": "점과 직선 사이의 거리 공식 유도"
+            },
+            {
+              "templateKey": "TPL_DISTANCE_AREA_APPLICATION",
+              "label": "점과 직선 사이의 거리를 이용한 넓이"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_TRIANGLE_INCENTER_FROM_LINES",
+          "label": "세 직선이 이루는 삼각형의 내심",
+          "templates": [
+            {
+              "templateKey": "TPL_INCENTER_BY_VERTICES",
+              "label": "꼭짓점과 변의 길이를 이용한 내심"
+            },
+            {
+              "templateKey": "TPL_INCENTER_BY_EQUAL_DISTANCE",
+              "label": "세 변까지의 거리로 내심 구하기"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-SA-11",
+      "label": "원의 방정식",
+      "order": 11,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+          "label": "원의 방정식"
+        },
+        {
+          "subUnitKey": "H15-SA-11-DISTANCE_RATIO_LOCUS",
+          "label": "원과 거리 조건"
+        },
+        {
+          "subUnitKey": "H15-SA-11-EQUATION_APPLICATION",
+          "label": "방정식과 부등식의 활용"
+        },
+        {
+          "subUnitKey": "H15-SA-11-EQUATION_BASIC",
+          "label": "방정식의 풀이"
+        },
+        {
+          "subUnitKey": "H15-SA-11-INEQUALITY_BASIC",
+          "label": "부등식의 풀이"
+        },
+        {
+          "subUnitKey": "H15-SA-11-INTERSECTION",
+          "label": "원과 직선·원의 교점"
+        },
+        {
+          "subUnitKey": "H15-SA-11-TANGENT",
+          "label": "원과 접선"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H1-RPM-066",
+          "path": "도형의 방정식 > 원의 방정식 > 원의 방정식 > 중심과 반지름",
+          "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-067",
+          "path": "도형의 방정식 > 원의 방정식 > 원의 방정식 > 일반형에서 원 찾기",
+          "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-068",
+          "path": "도형의 방정식 > 원의 방정식 > 원과 직선 > 교점 개수",
+          "subUnitKey": "H15-SA-11-INTERSECTION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-069",
+          "path": "도형의 방정식 > 원의 방정식 > 원과 직선 > 현의 길이",
+          "subUnitKey": "H15-SA-11-INTERSECTION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-070",
+          "path": "도형의 방정식 > 원의 방정식 > 원의 접선 > 접점이 주어진 접선",
+          "subUnitKey": "H15-SA-11-TANGENT",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-071",
+          "path": "도형의 방정식 > 원의 방정식 > 원의 접선 > 기울기가 주어진 접선",
+          "subUnitKey": "H15-SA-11-TANGENT",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-072",
+          "path": "도형의 방정식 > 원의 방정식 > 두 원 > 두 원의 위치 관계",
+          "subUnitKey": "H15-SA-11-INTERSECTION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H1-RPM-073",
+          "path": "도형의 방정식 > 원의 방정식 > 두 원 > 공통현·공통접선 조건",
+          "subUnitKey": "H15-SA-11-INTERSECTION",
+          "mappingStatus": "FAMILY_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_CIRCLE_EQUATION",
+          "label": "원의 방정식",
+          "templates": [
+            {
+              "templateKey": "TM_CIRCLE_CENTER_RADIUS",
+              "label": "원의 중심과 반지름"
+            },
+            {
+              "templateKey": "TM_CIRCLE_EXISTENCE_CONDITION",
+              "label": "방정식이 원을 나타내기 위한 조건"
+            },
+            {
+              "templateKey": "TM_CIRCLE_DIAMETER_ENDPOINTS",
+              "label": "지름의 양 끝점이 주어진 원의 방정식"
+            },
+            {
+              "templateKey": "TM_CIRCLE_THREE_POINTS",
+              "label": "세 점을 지나는 원의 방정식"
+            },
+            {
+              "templateKey": "TM_CIRCLE_DISTANCE_RATIO_LOCUS",
+              "label": "거리의 비가 일정한 점의 자취"
+            },
+            {
+              "templateKey": "TM_CIRCLE_DIVISION_LOCUS",
+              "label": "내분점·외분점의 자취"
+            },
+            {
+              "templateKey": "TM_CIRCLE_CENTROID_LOCUS",
+              "label": "무게중심의 자취"
+            },
+            {
+              "templateKey": "TM_CIRCLE_CENTER_ON_LINE",
+              "label": "중심이 직선 위에 있는 원의 방정식"
+            },
+            {
+              "templateKey": "TM_CIRCLE_AXIS_TANGENT",
+              "label": "좌표축에 접하는 원의 방정식"
+            },
+            {
+              "templateKey": "TM_CIRCLE_MULTI_LINE_TANGENT",
+              "label": "여러 직선에 접하는 원"
+            },
+            {
+              "templateKey": "TM_CIRCLE_INCIRCLE",
+              "label": "삼각형의 내접원"
+            },
+            {
+              "templateKey": "TM_CIRCLE_CIRCUMCIRCLE",
+              "label": "삼각형의 외접원"
+            },
+            {
+              "templateKey": "TM_CIRCLE_INSCRIBED_ANGLE_CENTER",
+              "label": "원주각과 원의 중심"
+            },
+            {
+              "templateKey": "TM_CIRCLE_POINT_DISTANCE",
+              "label": "원 위의 점과 한 점 사이의 거리"
+            },
+            {
+              "templateKey": "TM_CIRCLE_BISECTING_LINE",
+              "label": "원의 중심을 지나는 직선"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_EQUATION_CENTER_LOCUS",
+              "label": "원의 중심 자취"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_EQUATION_LOCUS",
+              "label": "거리 제곱합 원 자취"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_EQUATION_RADIUS_EXTREMA",
+              "label": "반지름 극값"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_EQUATION_STANDARD",
+              "label": "원 표준형 구성"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "label": "원과 직선",
+          "templates": [
+            {
+              "templateKey": "TM_CIRCLE_LINE_POSITION",
+              "label": "원과 직선의 위치 관계"
+            },
+            {
+              "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+              "label": "현의 길이"
+            },
+            {
+              "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+              "label": "현의 수직이등분선"
+            },
+            {
+              "templateKey": "TM_CIRCLE_CHORD_DIVISION",
+              "label": "현의 내분점"
+            },
+            {
+              "templateKey": "TM_CIRCLE_POINT_LINE_DISTANCE",
+              "label": "원 위의 점과 직선 사이의 거리"
+            },
+            {
+              "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+              "label": "교점의 개수"
+            },
+            {
+              "templateKey": "TM_CIRCLE_INTERSECTION_RELATION",
+              "label": "원과 직선의 두 교점"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD",
+              "label": "등거리 현"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "label": "원의 접선",
+          "templates": [
+            {
+              "templateKey": "TM_TANGENT_AT_POINT",
+              "label": "원 위의 점에서의 접선의 방정식"
+            },
+            {
+              "templateKey": "TM_TANGENT_GIVEN_SLOPE",
+              "label": "기울기가 주어진 원의 접선의 방정식"
+            },
+            {
+              "templateKey": "TM_TANGENT_FROM_EXTERNAL_POINT",
+              "label": "원 밖의 한 점에서 그은 접선의 방정식"
+            },
+            {
+              "templateKey": "TM_TANGENT_LENGTH",
+              "label": "접선의 길이"
+            },
+            {
+              "templateKey": "TM_TANGENT_CONTACT_CHORD_LINE",
+              "label": "두 접점을 지나는 직선"
+            },
+            {
+              "templateKey": "TM_TANGENT_CONTACT_CHORD_LENGTH",
+              "label": "두 접점을 잇는 현의 길이"
+            },
+            {
+              "templateKey": "TM_TANGENT_TWO_SLOPES",
+              "label": "두 접선의 기울기"
+            },
+            {
+              "templateKey": "TM_TANGENCY_CONDITION",
+              "label": "원과 직선이 접할 조건"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_TANGENT_APOLLONIUS",
+              "label": "거리비와 시야각"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_TANGENT_ARC_AREA",
+              "label": "호와 넓이"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_TANGENT_EQUAL_LENGTH",
+              "label": "등접선"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_TANGENT_HALF_ANGLE",
+              "label": "두 접선 사잇각 반각"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_TANGENT_POWER",
+              "label": "접선 할선 방멱"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_TANGENT_RIGHT_TRIANGLE",
+              "label": "접점 직각"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_TANGENT_TANGENT_FORMULA",
+              "label": "원의 접선 방정식"
+            },
+            {
+              "templateKey": "TPL_CIRCLE_TANGENT_TANGENT_RATIO",
+              "label": "접선 길이비와 내분"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_TWO_CIRCLES",
+          "label": "두 원",
+          "templates": [
+            {
+              "templateKey": "TM_TWO_CIRCLES_COMMON_CHORD_LINE",
+              "label": "두 원의 교점을 지나는 직선의 방정식"
+            },
+            {
+              "templateKey": "TM_TWO_CIRCLES_COMMON_CHORD_LENGTH",
+              "label": "두 원의 공통현의 길이"
+            },
+            {
+              "templateKey": "TM_TWO_CIRCLES_THROUGH_INTERSECTIONS",
+              "label": "두 원의 교점을 지나는 원의 방정식"
+            },
+            {
+              "templateKey": "TM_TWO_CIRCLES_COMMON_TANGENT",
+              "label": "공통접선"
+            },
+            {
+              "templateKey": "TM_TWO_CIRCLES_TANGENT_CIRCLE",
+              "label": "두 원에 접하는 원"
+            },
+            {
+              "templateKey": "TM_TWO_CIRCLES_CENTER_LINE",
+              "label": "두 원의 중심을 지나는 직선"
+            },
+            {
+              "templateKey": "TPL_TWO_CIRCLES_CENTER_TRIANGLE",
+              "label": "접하는 원 중심삼각형"
+            },
+            {
+              "templateKey": "TPL_TWO_CIRCLES_COMMON_TANGENT",
+              "label": "공통접선 길이"
+            },
+            {
+              "templateKey": "TPL_TWO_CIRCLES_POSITION",
+              "label": "두 원 위치"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-SA-12",
+      "label": "도형의 이동",
+      "order": 12,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
+          "label": "합성 변환"
+        },
+        {
+          "subUnitKey": "H15-SA-12-CORE",
+          "label": "도형의 이동 핵심 개념"
+        },
+        {
+          "subUnitKey": "H15-SA-12-REFLECTION",
+          "label": "대칭이동"
+        },
+        {
+          "subUnitKey": "H15-SA-12-TRANSLATION",
+          "label": "평행이동"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H1-RPM-074",
+          "path": "도형의 방정식 > 도형의 이동 > 평행이동 > 점·직선의 이동",
+          "subUnitKey": "H15-SA-12-TRANSLATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H1-RPM-075",
+          "path": "도형의 방정식 > 도형의 이동 > 평행이동 > 원의 이동",
+          "subUnitKey": "H15-SA-12-TRANSLATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-076",
+          "path": "도형의 방정식 > 도형의 이동 > 대칭이동 > x축·y축·원점 대칭",
+          "subUnitKey": "H15-SA-12-REFLECTION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-077",
+          "path": "도형의 방정식 > 도형의 이동 > 대칭이동 > 직선에 대한 대칭",
+          "subUnitKey": "H15-SA-12-REFLECTION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-078",
+          "path": "도형의 방정식 > 도형의 이동 > 이동의 합성 > 연속 이동",
+          "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
+          "mappingStatus": "FAMILY_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-079",
+          "path": "도형의 방정식 > 도형의 이동 > 이동의 합성 > 조건으로 원래 도형 찾기",
+          "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
+          "mappingStatus": "FAMILY_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_MOVE_CIRCLE_REFLECTION",
+          "label": "원의 대칭이동",
+          "templates": [
+            {
+              "templateKey": "TT_CIRCLE_REFLECTION_CENTER_RELATION",
+              "label": "대칭이동한 원의 중심과 위치 관계"
+            },
+            {
+              "templateKey": "TT_CIRCLE_REFLECTION_TANGENCY",
+              "label": "대칭이동한 원의 접선 조건"
+            },
+            {
+              "templateKey": "TPL_MOVE_CIRCLE_REFLECTION_ARC",
+              "label": "대칭 원호 길이"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
+          "label": "원의 평행이동",
+          "templates": [
+            {
+              "templateKey": "TT_CIRCLE_TRANSLATION_CENTER",
+              "label": "평행이동한 원의 중심과 조건"
+            },
+            {
+              "templateKey": "TT_CIRCLE_TRANSLATION_TANGENCY",
+              "label": "평행이동한 원의 접선 조건"
+            },
+            {
+              "templateKey": "TPL_MOVE_CIRCLE_TRANSLATION_RADIUS",
+              "label": "원이동 반지름 보존"
+            },
+            {
+              "templateKey": "TPL_MOVE_CIRCLE_TRANSLATION_STRIP_AREA",
+              "label": "이동 원호 상쇄 넓이"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MOVE_COMPOSITE",
+          "label": "여러 번의 도형의 이동",
+          "templates": [
+            {
+              "templateKey": "TT_COMPOSITE_CIRCLE",
+              "label": "원의 연속 이동"
+            },
+            {
+              "templateKey": "TT_COMPOSITE_GRAPH",
+              "label": "그래프의 연속 이동"
+            },
+            {
+              "templateKey": "TT_COMPOSITE_LINE",
+              "label": "직선의 연속 이동"
+            },
+            {
+              "templateKey": "TT_COMPOSITE_MIXED",
+              "label": "여러 도형의 이동과 조건"
+            },
+            {
+              "templateKey": "TT_COMPOSITE_POINT",
+              "label": "점의 연속 이동"
+            },
+            {
+              "templateKey": "TPL_MOVE_COMPOSITE_PERIOD",
+              "label": "반복 대칭 주기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+          "label": "방정식으로 나타낸 도형의 이동",
+          "templates": [
+            {
+              "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+              "label": "변수 치환과 도형의 이동"
+            },
+            {
+              "templateKey": "TT_EQUATION_POINT_MAPPING",
+              "label": "변수 치환과 점의 이동"
+            },
+            {
+              "templateKey": "TT_EQUATION_RELATION",
+              "label": "두 도형의 이동 관계"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
+          "label": "접기와 대칭이동",
+          "templates": [
+            {
+              "templateKey": "TT_FOLDING_REFLECTION",
+              "label": "접기에서의 대칭 관계"
+            },
+            {
+              "templateKey": "TPL_MOVE_FOLDING_REFLECTION_REFLECTION_EXISTING",
+              "label": "접기 각"
+            },
+            {
+              "templateKey": "TPL_MOVE_FOLDING_REFLECTION_CORE",
+              "label": "접기와 대칭이동 — 기본 풀이 골격"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MOVE_GRAPH_REFLECTION",
+          "label": "그래프의 대칭이동",
+          "templates": [
+            {
+              "templateKey": "TT_GRAPH_REFLECTION_CONDITION",
+              "label": "대칭이동한 그래프의 교점과 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MOVE_GRAPH_TRANSLATION",
+          "label": "그래프의 평행이동",
+          "templates": [
+            {
+              "templateKey": "TT_GRAPH_TRANSLATION_CONDITION",
+              "label": "평행이동한 그래프의 위치와 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MOVE_LINE_REFLECTION",
+          "label": "직선의 대칭이동",
+          "templates": [
+            {
+              "templateKey": "TT_LINE_REFLECTION_EQUATION",
+              "label": "대칭이동한 직선의 방정식과 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MOVE_LINE_TRANSLATION",
+          "label": "직선의 평행이동",
+          "templates": [
+            {
+              "templateKey": "TT_LINE_TRANSLATION_COMMON_POINT",
+              "label": "정점을 지나는 직선"
+            },
+            {
+              "templateKey": "TT_LINE_TRANSLATION_EQUATION",
+              "label": "평행이동한 직선의 방정식과 매개변수"
+            },
+            {
+              "templateKey": "TT_LINE_TRANSLATION_QUADRATIC",
+              "label": "평행이동한 직선과 이차함수의 교점·접선"
+            },
+            {
+              "templateKey": "TT_LINE_TRANSLATION_RELATION",
+              "label": "평행이동한 직선의 평행·수직·교점 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MOVE_POINT_REFLECTION",
+          "label": "점의 대칭이동",
+          "templates": [
+            {
+              "templateKey": "TT_POINT_REFLECTION_BASIC",
+              "label": "기본 대칭점의 좌표"
+            },
+            {
+              "templateKey": "TT_POINT_REFLECTION_DISTANCE",
+              "label": "대칭점과 거리 조건"
+            },
+            {
+              "templateKey": "TT_POINT_REFLECTION_GENERAL_LINE",
+              "label": "직선에 대한 대칭점"
+            },
+            {
+              "templateKey": "TT_POINT_REFLECTION_MULTI",
+              "label": "여러 대칭점과 도형의 성질"
+            },
+            {
+              "templateKey": "TPL_MOVE_POINT_REFLECTION_CENTER",
+              "label": "대칭중심 중점 좌표"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MOVE_POINT_TRANSLATION",
+          "label": "점의 평행이동",
+          "templates": [
+            {
+              "templateKey": "TT_POINT_TRANSLATION_COORD",
+              "label": "점의 평행이동과 좌표"
+            },
+            {
+              "templateKey": "TT_POINT_TRANSLATION_INVERSE",
+              "label": "평행이동 전 점의 좌표"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MOVE_REFLECTION_AXIS",
+          "label": "대칭축 구하기",
+          "templates": [
+            {
+              "templateKey": "TT_REFLECTION_AXIS",
+              "label": "대칭축의 결정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+          "label": "대칭이동을 이용한 최단거리",
+          "templates": [
+            {
+              "templateKey": "TT_SHORTEST_MULTI_LINE",
+              "label": "여러 대칭이동을 이용한 최단거리"
+            },
+            {
+              "templateKey": "TT_SHORTEST_ONE_LINE",
+              "label": "한 직선에 대한 대칭이동을 이용한 최단거리"
+            },
+            {
+              "templateKey": "TT_SHORTEST_WITH_POSITION",
+              "label": "최단거리와 이동점의 위치"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-SA-13",
+      "label": "이차함수",
+      "order": 13,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+          "label": "이차함수의 활용"
+        },
+        {
+          "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
+          "label": "이차함수의 그래프"
+        },
+        {
+          "subUnitKey": "H15-SA-13-QUADRATIC_MAXMIN",
+          "label": "이차함수의 최대·최소"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H1-RPM-037",
+          "path": "방정식과 부등식 > 이차방정식과 이차함수 > 최대·최소 > 구간 최대·최소",
+          "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-038",
+          "path": "방정식과 부등식 > 이차방정식과 이차함수 > 최대·최소 > 조건식 활용",
+          "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+          "label": "이차함수의 최대·최소",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+              "label": "조건·도형을 이차함수로 모델링"
+            },
+            {
+              "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+              "label": "꼭짓점·제한구간의 최대·최소"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+          "label": "이차함수의 그래프와 교점",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+              "label": "교점 좌표와 그래프·도형 관계"
+            },
+            {
+              "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+              "label": "이차함수와 직선의 교점·접점"
+            },
+            {
+              "templateKey": "TPL_H1_QUADRATIC_GRAPH_INTERSECTION_ROOT_LOCATION",
+              "label": "교점의 구간 위치"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+          "label": "조건을 이용한 이차함수 결정",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+              "label": "복합 조건으로 이차함수 결정"
+            },
+            {
+              "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+              "label": "근·축·꼭짓점으로 이차함수 결정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+          "label": "근과 계수의 관계",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+              "label": "근의 합·곱으로 대칭식 계산"
+            },
+            {
+              "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+              "label": "변환된 근과 매개변수"
+            },
+            {
+              "templateKey": "TPL_H1_ROOT_COEFFICIENT_RELATION_EQUATION",
+              "label": "근에서 방정식"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+          "label": "이차방정식의 근과 판별식",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY",
+              "label": "매개변수와 무관한 판별식 조건"
+            },
+            {
+              "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+              "label": "판별식으로 근의 존재·중복 판정"
+            },
+            {
+              "templateKey": "TPL_H1_QUADRATIC_DISCRIMINANT_INTERVAL_ROOT",
+              "label": "구간근 조건"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "termCandidates": [
+    {
+      "term": "이차방정식",
+      "matchedAs": "이차방정식",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "$x$에 대한 이차방정식 $x^2-(2"
+    },
+    {
+      "term": "방정식",
+      "matchedAs": "방정식",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "$에 대한 이차방정식 $x^2-(2"
+    },
+    {
+      "term": "자연수",
+      "matchedAs": "자연수",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "록 하는 모든 자연수 $k$의 값의"
+    },
+    {
+      "term": "양화",
+      "matchedAs": "모든",
+      "kind": "조건",
+      "src": "stem",
+      "quote": "갖도록 하는 모든 자연수 $k$"
+    },
+    {
+      "term": "허근",
+      "matchedAs": "허근",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "2+4=0$이 허근을 갖도록 하는"
+    },
+    {
+      "term": "이차방정식",
+      "matchedAs": "이차방정식",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "이차방정식이 허근을 가지"
+    },
+    {
+      "term": "방정식",
+      "matchedAs": "방정식",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "이차방정식이 허근을 가지"
+    },
+    {
+      "term": "자연수",
+      "matchedAs": "자연수",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "3.75 $$ 자연수 $k$는 $1"
+    },
+    {
+      "term": "판별식",
+      "matchedAs": "판별식",
+      "kind": "방법",
+      "src": "solution",
+      "quote": "근을 가지므로 판별식 $D<0$이어"
+    },
+    {
+      "term": "양화",
+      "matchedAs": "모든",
+      "kind": "조건",
+      "src": "solution",
+      "quote": ", 3$이므로 모든 자연수 $k$"
+    },
+    {
+      "term": "판정",
+      "matchedAs": "판별",
+      "kind": "행위",
+      "src": "solution",
+      "quote": "근을 가지므로 판별식 $D<0$이"
+    },
+    {
+      "term": "허근",
+      "matchedAs": "허근",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "이차방정식이 허근을 가지므로 판"
+    }
+  ],
+  "figure": {
+    "cueWords": [],
+    "hasPlan": true,
+    "problemPlanRef": "archive/exams/similar/high/h1/1mid/19_금당고_1학기_중간_고1_유사_plans/q05-problem.plan.json",
+    "hasImage": false,
+    "sourcePlan": {
+      "plan": true
+    },
+    "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
+  },
+  "sourceExamHint": {
+    "exam": "archive/exams/original/high/h1/1mid/19_금당고_1학기_중간_고1_기출.js",
+    "sourceQid": 5,
+    "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+    "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE"
+  },
+  "guide": "JUDGMENT_GUIDE.md 를 먼저 읽는다. 후보 밖 키는 쓸 수 없다. 모든 이유 문장에는 이 문항의 숫자·식을 넣는다."
+}

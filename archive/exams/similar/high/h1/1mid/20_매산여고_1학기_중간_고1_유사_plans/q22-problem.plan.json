@@ -1,0 +1,69 @@
+{
+  "status": "READY",
+  "pattern": "construction-spike-v1",
+  "viewBox": "0 0 360 220",
+  "elements": [
+    {
+      "type": "polyline",
+      "id": "gutter_cross_section",
+      "points": [
+        [
+          80,
+          50
+        ],
+        [
+          80,
+          170
+        ],
+        [
+          280,
+          170
+        ],
+        [
+          280,
+          50
+        ]
+      ]
+    },
+    {
+      "type": "polygon",
+      "id": "shaded_area",
+      "points": [
+        [
+          80,
+          50
+        ],
+        [
+          280,
+          50
+        ],
+        [
+          280,
+          170
+        ],
+        [
+          80,
+          170
+        ]
+      ],
+      "fill": "shaded"
+    },
+    {
+      "type": "label",
+      "pos": [
+        60,
+        110
+      ],
+      "text": "$x$"
+    },
+    {
+      "type": "label",
+      "pos": [
+        180,
+        190
+      ],
+      "text": "$16-2x$"
+    }
+  ],
+  "note": "폭 16 cm 철판의 양쪽을 높이 x cm씩 수직으로 구부려 만든 단면 직사각형(높이 x, 밑변 16-2x) 물받이 도식"
+}

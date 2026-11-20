@@ -1,0 +1,62 @@
+{
+  "qid": 14,
+  "itemFingerprint": "9c0be31ef070f3dc",
+  "solveSteps": [
+    "Q14 문제의 조건(35)에 맞추어 식을 세운다.",
+    "일차항의 계수가 같도록 두 개씩 짝지어 전개하면 $$ {(x-1)(x+3)}{(x-3)(x+5)}+35 = (x^2+2x-3)(x^2+2x-15)+35 $$ $x^2+2x=t$로 치환하면 $$ \\begin{aligned} (t-3)(t-15)+35 &= t^2-18t+80 \\ &= (t-8)(t-10) \\ &= (x^2+2x-8)(x^2+2x-10) \\ &= (x+4)(x-2)(x^2+2x-10) \\end{aligned} $$ 따라서 $a+b=4+(-2)=2$, $c=-10$이므로 $a+b+c=-8$이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "unitEvidence": "다항식 $(x-1)(x+3)(x-3)(x+5)+35$를",
+  "rpmRecordId": "H1-RPM-013",
+  "rpmReason": "Q14(35): 인수분해 단원의 RPM H1-RPM-013 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+  "typeReason": "Q14(35): 인수분해 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(35): 인수분해 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $(x-1)(x+3)(x-3)(x+5)+35$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수분해",
+        "src": "stem",
+        "quote": "인수분해하였더니"
+      }
+    ],
+    "method": [
+      {
+        "term": "치환",
+        "src": "solution",
+        "quote": "x^2+2x=t$로 치환하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q14(35): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

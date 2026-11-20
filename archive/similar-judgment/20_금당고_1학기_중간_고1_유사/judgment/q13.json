@@ -1,0 +1,75 @@
+{
+  "qid": 13,
+  "itemFingerprint": "3ac03f830c19a1bb",
+  "solveSteps": [
+    "모든 실수 $x$에 대하여 $f(x)\\ge f(5)$이므로 이차함수 $y=f(x)$는 아래로 볼록하고 대칭축은 $x=5$이다.",
+    "- ㄱ.",
+    "$f(x)=0$의 한 근이 $18$이고 대칭축이 $x=5$이므로 다른 실근을 $r$이라 하면 $\\dfrac{18+r}{2}=5 \\implies r=-8$이다.",
+    "(참)  \n- ㄴ.",
+    "$3$과 $7$은 대칭축 $x=5$로부터 같은 거리 $2$만큼 떨어져 있으므로 $f(3)=f(7)$이다.",
+    "(거짓)  \n- ㄷ.",
+    "$f(x)=a(x-18)(x+8)=a(x^2-10x-144)$ ($a>0$)라 두면 $k=f(0)=-144a$이다.",
+    "방정식 $f(x)=kx$는 $a(x^2-10x-144)=-144ax$, 즉 $x^2+134x-144=0$이므로 두 근의 합은 $-134$이다.",
+    "(거짓) 따라서 옳은 것은 ㄱ뿐이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "이차함수 $f(x)$의 한 실근은 $18$이고 모든 실",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q13(18): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+  "typeReason": "Q13(18): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q13(18): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "한 실근은 $18$이고"
+      }
+    ],
+    "method": [
+      {
+        "term": "축",
+        "src": "solution",
+        "quote": "대칭축은 $x=5$이다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "모든 실수 $x$에 대하여 $f(x)\\ge f(5)$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q13(18): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

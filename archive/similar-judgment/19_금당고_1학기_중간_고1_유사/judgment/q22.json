@@ -1,0 +1,70 @@
+{
+  "qid": 22,
+  "itemFingerprint": "71e52f2a1bba911b",
+  "solveSteps": [
+    "$z+\\dfrac{3}{z}=\\dfrac{1}{2}$의 양변에 $z$를 곱하면 $z^2-\\dfrac{1}{2}z+3=0$이다.",
+    "이 실수 계수 이차방정식의 판별식 $D=\\dfrac{1}{4}-12=-\\dfrac{47}{4}<0$이고 $z$는 실수가 아니므로, $\\bar{z}$도 이 방정식의 근이다.",
+    "근과 계수의 관계에 의하여 $z+\\bar{z}=\\dfrac{1}{2}$, $z\\bar{z}=3$이므로 $$ z^3+(\\bar{z})^3 = (z+\\bar{z})^3-3z\\bar{z}(z+\\bar{z}) = \\left(\\dfrac{1}{2}\\right)^3-3\\cdot 3\\cdot\\dfrac{1}{2} = \\dfrac{1}{8}-\\dfrac{9}{2} = -\\dfrac{35}{8} $$ 이다.",
+    "$8$과 $35$는 서로소인 자연수이므로 $p=8, q=35$이고, $p+q=43$이다."
+  ],
+  "solvedAnswer": "$43$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_ROOT",
+  "unitEvidence": "실수가 아닌 복소수 $z$에 대하여 $z+\\dfrac{",
+  "rpmRecordId": "H1-RPM-031",
+  "rpmReason": "Q22(12): 복소수와 이차방정식 단원의 RPM H1-RPM-031 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+  "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+  "typeReason": "Q22(12): 복소수와 이차방정식 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q22(12): 복소수와 이차방정식 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "실수가 아닌 복소수 $z$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "켤레복소수",
+        "src": "stem",
+        "quote": "$\\bar{z}$는 $z$의 켤레복소수이다"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "서로소인 자연수이고"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q22(12): 발문과 해설의 풀이 과정을 점검하여 정답 $43$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

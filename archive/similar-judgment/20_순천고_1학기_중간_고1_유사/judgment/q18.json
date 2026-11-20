@@ -1,0 +1,63 @@
+{
+  "qid": 18,
+  "itemFingerprint": "1980e8ee2028ea81",
+  "solveSteps": [
+    "$\\sqrt{(2x-1)^2}=|2x-1|$이므로 주어진 부등식은 $|2x-1|<x+5$이다.",
+    "따라서 $-(x+5)<2x-1<x+5$를 풀면 $$ -(x+5)<2x-1 \\implies 3x>-4 \\implies x>-\\dfrac{4}{3} $$ $$ 2x-1<x+5 \\implies x<6 $$ 이므로 해는 $-\\dfrac{4}{3}<x<6$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-08",
+  "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
+  "unitEvidence": "부등식 $x+5>\\sqrt{(2x-1)^2}$의 해는?",
+  "rpmRecordId": "H1-RPM-045",
+  "rpmReason": "Q18(x): 연립부등식 단원의 RPM H1-RPM-045 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+  "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+  "typeReason": "Q18(x): 연립부등식 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(x): 연립부등식 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "src": "stem",
+        "quote": "부등식 $x+5>\\sqrt{(2x-1)^2}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "부등식",
+        "src": "stem",
+        "quote": "부등식 $x+5>\\sqrt{(2x-1)^2}$의 해"
+      }
+    ],
+    "method": [
+      {
+        "term": "절댓값",
+        "src": "solution",
+        "quote": "\\sqrt{(2x-1)^2}=|2x-1|",
+        "evidenceType": "IMPLIED",
+        "justification": "제곱의 제곱근을 절댓값으로 고쳐 양방향 일차부등식을 풂"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q18(x): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

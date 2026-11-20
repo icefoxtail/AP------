@@ -1,0 +1,64 @@
+{
+  "qid": 10,
+  "itemFingerprint": "42dcae76848c73e1",
+  "solveSteps": [
+    "삼차방정식 $3x^3-114x+450=0$에서 $x^2$의 계수가 $0$이므로 근과 계수의 관계에 의하여 $$ \\alpha+\\beta+\\gamma = 0, \\qquad \\alpha\\beta\\gamma = -\\dfrac{450}{3} = -150 $$ 이다.",
+    "$\\alpha+\\beta+\\gamma=0$에서 $\\alpha+\\beta=-\\gamma$, $\\beta+\\gamma=-\\alpha$, $\\gamma+\\alpha=-\\beta$이므로 $$ (\\alpha+\\beta)^3+(\\beta+\\gamma)^3+(\\gamma+\\alpha)^3 = -(\\alpha^3+\\beta^3+\\gamma^3) $$ 이다.",
+    "항등식 $\\alpha^3+\\beta^3+\\gamma^3-3\\alpha\\beta\\gamma = (\\alpha+\\beta+\\gamma)(\\alpha^2+\\beta^2+\\gamma^2-\\alpha\\beta-\\beta\\gamma-\\gamma\\alpha)$에 $\\alpha+\\beta+\\gamma=0$을 대입하면 $\\alpha^3+\\beta^3+\\gamma^3=3\\alpha\\beta\\gamma$이다.",
+    "따라서 구하는 값은 $-3\\alpha\\beta\\gamma = -3(-150) = 450$이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-EQUATION_APPLICATION",
+  "unitEvidence": "삼차방정식 $3x^3-114x+450=0$의 세 근을 ",
+  "rpmRecordId": "H1-RPM-043",
+  "rpmReason": "Q10(114): 방정식과 부등식의 활용 단원의 RPM H1-RPM-043 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "NONE",
+  "typeReason": "Q10(114): 방정식과 부등식의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q10(114): 방정식과 부등식의 활용 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼차방정식",
+        "src": "stem",
+        "quote": "삼차방정식 $3x^3-114x+450=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "곱셈공식",
+        "src": "solution",
+        "quote": "\\alpha^3+\\beta^3+\\gamma^3-3\\alpha\\beta\\gamma"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q10(114): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

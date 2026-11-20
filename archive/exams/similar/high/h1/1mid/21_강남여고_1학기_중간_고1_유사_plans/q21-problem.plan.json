@@ -1,0 +1,62 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "caption": "중심 O인 반원에 내접하는 직사각형 ABCD (A, D는 반원 호 위, B, C는 지름 위)",
+  "mathPlan": {
+    "nodes": [
+      {
+        "id": "O",
+        "kind": "SOURCE_POINT",
+        "x": 0,
+        "y": 0,
+        "label": "O"
+      },
+      {
+        "id": "B",
+        "kind": "SOURCE_POINT",
+        "x": -2,
+        "y": 0,
+        "label": "B"
+      },
+      {
+        "id": "C",
+        "kind": "SOURCE_POINT",
+        "x": 2,
+        "y": 0,
+        "label": "C"
+      },
+      {
+        "id": "A",
+        "kind": "SOURCE_POINT",
+        "x": -2,
+        "y": 2,
+        "label": "A"
+      },
+      {
+        "id": "D",
+        "kind": "SOURCE_POINT",
+        "x": 2,
+        "y": 2,
+        "label": "D"
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "from": "D",
+        "to": "A"
+      }
+    ]
+  }
+}

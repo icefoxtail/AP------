@@ -1,0 +1,69 @@
+{
+  "qid": 5,
+  "itemFingerprint": "3ce597dc0f559533",
+  "solveSteps": [
+    "두 근이 $2-3i$, $2+3i$이고 $x^2$의 계수가 $1$인 이차방정식은 $$ \\begin{aligned} (x-(2-3i))(x-(2+3i)) &= ((x-2)+3i)((x-2)-3i) \\ &= (x-2)^2-(3i)^2 \\ &= x^2-4x+4+9 = x^2-4x+13 = 0 \\end{aligned} $$ 이다.",
+    "$x^2+ax+b=0$과 비교하면 $a=-4$, $b=13$이므로 $a+b=-4+13=9$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-06",
+  "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+  "unitEvidence": "두 수 $2-3i$, $2+3i$를 근으로 하는 이차방",
+  "rpmRecordId": "H1-RPM-029",
+  "rpmReason": "Q5(ax): 근과 계수의 관계 단원의 RPM H1-RPM-029 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+  "typeReason": "Q5(ax): 근과 계수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q5(ax): 근과 계수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식이 $x^2+ax+b=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "src": "stem",
+        "quote": "$x^2+ax+b=0$일 때, 실수 $a+b$의 값은"
+      }
+    ],
+    "method": [
+      {
+        "term": "전개",
+        "src": "solution",
+        "quote": "x^2-4x+4+9 = x^2-4x+13 = 0",
+        "evidenceType": "IMPLIED",
+        "justification": "두 일차인수의 곱을 합차 공식으로 전개해 계수 a, b를 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 $a+b$의 값은"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q5(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

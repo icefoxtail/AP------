@@ -1,0 +1,70 @@
+{
+  "qid": 19,
+  "itemFingerprint": "9e58c9359ccae217",
+  "solveSteps": [
+    "$y=f(x)$의 그래프가 $x$축에 접하므로 판별식 $D=p^2-4q=0 \\implies q=\\dfrac{p^2}{4}$이다. (px)",
+    "따라서 $f(x) = -\\left(x-\\dfrac{p}{2}\\right)^2$이고 위로 볼록하며 축은 $x=\\dfrac{p}{2}$($p>0$)이다.",
+    "구간 $-p\\le x\\le p$에서 축 $x=\\dfrac{p}{2}$로부터 가장 먼 점은 $x=-p$이므로 최솟값은 $$ f(-p) = -\\left(-p-\\frac{p}{2}\\right)^2 = -\\frac{9}{4}p^2 = -45 \\implies p^2 = 20 $$ $q=\\dfrac{p^2}{4}=5$이므로 $q^2=25$이다.",
+    "따라서 $p^2+q^2=20+25=45$이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "두 양수 $p$, $q$에 대하여 이차함수 $f(x)=",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q19(px): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+  "typeReason": "Q19(px): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q19(px): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x)=-x^2+px-q$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "최솟값이 $-45$일 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D=p^2-4q=0",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양수",
+        "src": "stem",
+        "quote": "두 양수 $p$, $q$에 대하여"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q19(px): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "qid": 20,
+  "itemFingerprint": "8a54edfad05c0803",
+  "solveSteps": [
+    "1) 삼차방정식의 세 근이 $\\alpha, \\alpha, \\beta$이고 $x$의 계수가 $0$이므로 근과 계수의 관계에 의하여 $$ \\alpha^2+2\\alpha\\beta = \\alpha(\\alpha+2\\beta) = 0 $$ 이다. (kpx)",
+    "만약 $\\alpha=0$이면 $\\alpha^2\\beta=4k^3$에서 $k=0$이 되어 방정식 $x^3=0$의 세 근이 모두 $0$이 되므로 $\\alpha>\\beta$에 모순이다.",
+    "따라서 $\\alpha=-2\\beta$이고, $\\alpha>\\beta$에서 $-2\\beta>\\beta \\implies \\beta<0$이다.",
+    "$\\alpha^2+\\beta^2=45$에 대입하면 $5\\beta^2=45 \\implies \\beta^2=9$이므로 $\\beta=-3$, $\\alpha=6$이다.",
+    "2) 근과 계수의 관계에서 $2\\alpha+\\beta = 9 = -3kp \\implies kp=-3$이고, $\\alpha^2\\beta = 36(-3) = -108 = 4k^3 \\implies k^3=-27$이므로 $k=-3$, $p=1$이다.",
+    "3) 첫째 부등식은 $-3(x-6)(x+3)>0$, 즉 $(x-6)(x+3)<0$이므로 $-3<x<6$이다.",
+    "둘째 부등식은 $(x-n)(x-(n+2))\\ge 0$이므로 $x\\le n$ 또는 $x\\ge n+2$이다.",
+    "4) 첫째 부등식을 만족하는 정수 $x$는 $-2, -1, 0, 1, 2, 3, 4, 5$의 $8$개이다.",
+    "둘째 부등식에서 제외되는 정수는 $x=n+1$ 하나뿐이므로, 연립부등식의 정수해가 $7$개가 되려면 제외되는 정수 $n+1$이 앞의 $8$개 정수 중 하나여야 한다.",
+    "따라서 $n+1 \\in {-2, -1, 0, 1, 2, 3, 4, 5}$이므로 $n \\in {-3, -2, -1, 0, 1, 2, 3, 4}$이고, 모든 정수 $n$의 값의 합은 $$ (-3)+(-2)+(-1)+0+1+2+3+4 = 4 $$ 이다."
+  ],
+  "solvedAnswer": "$4$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-EQUATION_APPLICATION",
+  "unitEvidence": "[서술형2] $x$에 대한 삼차방정식 $x^3+3kpx",
+  "rpmRecordId": "H1-RPM-043",
+  "rpmReason": "Q20(kpx): 방정식과 부등식의 활용 단원의 RPM H1-RPM-043 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "NONE",
+  "typeReason": "Q20(kpx): 방정식과 부등식의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(kpx): 방정식과 부등식의 활용 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼차방정식",
+        "src": "stem",
+        "quote": "삼차방정식 $x^3+3kpx^2-4k^3=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "정수 $n$의 값의 합을"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "중근",
+        "src": "stem",
+        "quote": "중근을 $\\alpha$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q20(kpx): 발문과 해설의 풀이 과정을 점검하여 정답 $4$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

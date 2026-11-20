@@ -1,0 +1,46 @@
+{
+  "status": "READY",
+  "pattern": "piecewise-polynomial-spike-v1",
+  "viewBox": "0 0 340 260",
+  "elements": [
+    {
+      "type": "curve",
+      "id": "parabola_f",
+      "expr": "x**2 - 3*x + 5",
+      "domain": [
+        0,
+        4.5
+      ],
+      "label": "$y=x^2+mx+5$"
+    },
+    {
+      "type": "line",
+      "id": "line_g",
+      "expr": "2*x - 1",
+      "domain": [
+        0,
+        4.5
+      ],
+      "label": "$y=2x+n$"
+    },
+    {
+      "type": "point",
+      "coords": [
+        2,
+        3
+      ],
+      "label": "$2$",
+      "projX": true
+    },
+    {
+      "type": "point",
+      "coords": [
+        3,
+        5
+      ],
+      "label": "$3$",
+      "projX": true
+    }
+  ],
+  "note": "이차함수 y=x^2+mx+5와 직선 y=2x+n이 x=2, 3에서 만나는 그래프"
+}

@@ -1,0 +1,63 @@
+{
+  "qid": 8,
+  "itemFingerprint": "25666a370ee9b55e",
+  "solveSteps": [
+    "$x+2y=5$에서 $x=5-2y$를 $x^2+y^2=25$에 대입하면 $$ (5-2y)^2+y^2=25 \\implies 5y^2-20y=0 \\implies y=0 \\text{ 또는 } y=4 $$\n\n- $y=0$이면 $x=5$이므로 $b=x+y=5$ ($b<2$에 모순)  \n- $y=4$이면 $x=-3$이므로 $b=x+y=1<2$ (성립) $x=-3, y=4$를 $ax+y=-2$에 대입하면 $-3a+4=-2 \\implies a=2$이다. (cases)",
+    "따라서 $ab=2\\cdot 1=2$이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-SUBSTITUTION_SYSTEM",
+  "unitEvidence": "연립방정식 $\\begin{cases} ax+y=-2 \\",
+  "rpmRecordId": "H1-RPM-041",
+  "rpmReason": "Q8(cases): 치환과 연립방정식 단원의 RPM H1-RPM-041 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+  "templateKey": "TPL_H1_SYSTEM_DIRECT",
+  "typeReason": "Q8(cases): 치환과 연립방정식 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q8(cases): 치환과 연립방정식 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "x^2+y^2=25$에 대입하면"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 $a$, $b$에 대하여"
+      }
+    ],
+    "method": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin{cases} ax+y=-2 \\ x+2y=5 \\end{cases}$의 해",
+        "evidenceType": "IMPLIED",
+        "justification": "미지수가 없는 두 식 x+2y=5와 x^2+y^2=25를 먼저 연립해 해를 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q8(cases): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

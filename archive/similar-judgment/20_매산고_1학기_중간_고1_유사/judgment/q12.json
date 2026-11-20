@@ -1,0 +1,76 @@
+{
+  "qid": 12,
+  "itemFingerprint": "b0216aa13f869617",
+  "solveSteps": [
+    "$z=a+bi$를 대입해 전개하면 $$ z^2-2z = (a^2-b^2-2a)+2b(a-1)i $$ 이다.",
+    "이 값이 실수이므로 허수부분 $2b(a-1)=0$이고, $b\\ne 0$이므로 $a=1$이다.",
+    "- ㄱ.",
+    "$\\overline{z^2}-2\\bar{z} = \\overline{z^2-2z}$이고, 실수의 켤레복소수는 자기 자신과 같으므로 실수이다.",
+    "(참)  \n- ㄴ.",
+    "$z+\\bar{z} = 2a = 2\\cdot 1 = 2 \\ne 1$이다.",
+    "(거짓)  \n- ㄷ.",
+    "$z\\bar{z} = a^2+b^2 = 1+b^2$이고 $b\\ne 0$인 실수이므로 $b^2>0$, 즉 $z\\bar{z}>1$이다.",
+    "(참) 따라서 옳은 것은 ㄱ, ㄷ이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+  "unitEvidence": "복소수 $z=a+bi$ ($a, b$는 $0$이 아닌 ",
+  "rpmRecordId": "H1-RPM-021",
+  "rpmReason": "Q12(bi): 복소수의 뜻과 표현 단원의 RPM H1-RPM-021 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+  "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+  "typeReason": "Q12(bi): 복소수의 뜻과 표현 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q12(bi): 복소수의 뜻과 표현 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "복소수 $z=a+bi$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "켤레복소수",
+        "src": "stem",
+        "quote": "$\\bar{z}$는 $z$의 켤레복소수이다"
+      }
+    ],
+    "method": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "복소수 $z=a+bi$",
+        "evidenceType": "IMPLIED",
+        "justification": "z=a+bi의 허수부분이 0인 조건으로 a=1을 구해 보기 참·거짓을 판정함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "$z^2-2z$가 실수일 때"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q12(bi): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "qid": 25,
+  "itemFingerprint": "5617cff6e406e493",
+  "solveSteps": [
+    "꼭짓점이 $(3, -2)$이므로 $y=a(x-3)^2-2$라 두자. (ax)",
+    "이차함수 그래프는 대칭축 $x=3$에 대하여 대칭이고 $\\overline{PQ}=6$이므로 $x$축과의 두 교점의 $x$좌표는 $3-3=0$과 $3+3=6$이다.",
+    "점 $(0, 0)$을 지나므로 대입하면 $$ 0 = a(0-3)^2-2 = 9a-2 \\implies a = \\frac{2}{9} $$ 따라서 $y=\\dfrac{2}{9}(x-3)^2-2$이고, $a+b+c$는 $x=1$을 대입한 함숫값이므로 $$ a+b+c = \\frac{2}{9}(1-3)^2-2 = \\frac{8}{9}-2 = -\\frac{10}{9} $$ 이다."
+  ],
+  "solvedAnswer": "$-\\dfrac{10}{9}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "[서술형 3] 이차함수 $y=ax^2+bx+c$의 그래",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q25(ax): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+  "typeReason": "Q25(ax): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q25(ax): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=ax^2+bx+c$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "꼭짓점의 좌표가 $(3, -2)$"
+      }
+    ],
+    "method": [
+      {
+        "term": "축",
+        "src": "solution",
+        "quote": "대칭축 $x=3$에 대하여",
+        "evidenceType": "IMPLIED",
+        "justification": "대칭축 x=3과 현의 길이 6을 이용해 x절편 (0,0), (6,0)을 구하고 x=1을 대입함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q25(ax): 발문과 해설의 풀이 과정을 점검하여 정답 $-\\dfrac{10}{9}$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

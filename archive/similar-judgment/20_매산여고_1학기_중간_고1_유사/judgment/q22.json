@@ -1,0 +1,71 @@
+{
+  "qid": 22,
+  "itemFingerprint": "d753eb48d576e480",
+  "solveSteps": [
+    "물받이의 높이를 $x,\\mathrm{cm}$라 하면 양쪽에서 각각 $x,\\mathrm{cm}$씩 구부리므로 밑면의 폭은 $(16-2x),\\mathrm{cm}$이고, $0<x<8$이다.",
+    "색칠한 직사각형 단면의 넓이를 $S$라 하면 $$ S = x(16-2x) = -2x^2+16x = -2(x-4)^2+32 $$ 이다.",
+    "$0<x<8$에서 $x=4$일 때 $S$는 최댓값 $32$를 가진다.",
+    "따라서 물받이의 높이는 $4,\\mathrm{cm}$, 색칠한 단면의 최대 넓이는 $32,\\mathrm{cm}^2$이다."
+  ],
+  "solvedAnswer": "높이 $4,\\mathrm{cm}$, 넓이 $32,\\mathrm{cm}^2$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "한 변의 길이가 $16,\\mathrm{cm}$인 정사각",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q22(16): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+  "typeReason": "Q22(16): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q22(16): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "단면이 직사각형 모양인"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "solution",
+        "quote": "최댓값 $32$를 가진다"
+      }
+    ],
+    "method": [
+      {
+        "term": "이차함수",
+        "src": "solution",
+        "quote": "-2(x-4)^2+32",
+        "evidenceType": "IMPLIED",
+        "justification": "단면 넓이를 x에 대한 이차함수로 세우고 완전제곱식으로 최댓값을 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "범위",
+        "src": "solution",
+        "quote": "0<x<8"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q22(16): 발문과 해설의 풀이 과정을 점검하여 정답 높이 $4,\\mathrm{cm}$, 넓이 $32,\\mathrm{cm}^2$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

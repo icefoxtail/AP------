@@ -1,0 +1,71 @@
+{
+  "qid": 18,
+  "itemFingerprint": "566602335e3c9544",
+  "solveSteps": [
+    "공통 접선을 $y=mx+b$라 두고 이차함수와 연립하면 $$ \\dfrac{1}{4k}(x+2k)^2 = mx+b \\iff x^2+4k(1-m)x+4k^2-4kb = 0 $$ 이다.",
+    "접하므로 판별식 $D=0$이어야 하고, $$ \\dfrac{D}{4} = 4k^2(1-m)^2-(4k^2-4kb) = 4k^2(m^2-2m)+4kb = 4k{km(m-2)+b} = 0 $$ 이다.",
+    "이 식이 $k\\ne 0$인 모든 실수 $k$에 대해 성립하려면 $m(m-2)=0$이고 $b=0$이어야 하므로 $m=0$ 또는 $m=2$이다.",
+    "따라서 두 직선 $l, m$은 $y=0$과 $y=2x$이다.",
+    "두 직선과 $x=6$으로 둘러싸인 도형은 꼭짓점이 $(0,0), (6,0), (6,12)$인 직각삼각형이므로 넓이는 $\\dfrac{1}{2}\\cdot 6\\cdot 12 = 36$이다."
+  ],
+  "solvedAnswer": "$36$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "[단답형3] 이차함수 $y=\\dfrac{1}{4k}(x",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q18(mx): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+  "typeReason": "Q18(mx): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(mx): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=\\dfrac{1}{4k}(x+2k)^2$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "부분의 넓이를 구하시오"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D=0$이어야 하고",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "접함",
+        "src": "stem",
+        "quote": "항상 서로 다른 두 직선 $l$, $m$과 접한다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q18(mx): 발문과 해설의 풀이 과정을 점검하여 정답 $36$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
