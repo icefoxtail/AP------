@@ -1,0 +1,71 @@
+{
+  "qid": 22,
+  "itemFingerprint": "7e8cebe4940a2adf",
+  "solveSteps": [
+    "15/126을 기약분수로 나타내면 5/42 = 5/(2 * 3 * 7)이다.",
+    "11/140 = 11/(2^2 * 5 * 7)이다.",
+    "5/(2 * 3 * 7) * a가 유한소수가 되려면 a는 3 * 7 = 21의 배수이어야 한다.",
+    "11/(2^2 * 5 * 7) * a가 유한소수가 되려면 a는 7의 배수이어야 한다.",
+    "두 분수 모두 유한소수가 되려면 a는 21과 7의 공배수이어야 하므로 가장 작은 자연수 a는 21이다."
+  ],
+  "solvedAnswer": "$21$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "두 분수 $\\dfrac{15}{126}$와 $\\dfrac{11}{140}$에 어떤 자연수 $a$를 각각 곱하면",
+  "rpmRecordId": "M2-RPM-120",
+  "rpmReason": "분모 소인수 3과 7을 소거하여 유한소수가 되도록 하는 자연수 21을 구하는 문제이다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "두 분수 15/126과 11/140의 분모 소인수를 약분하여 유한소수로 만드는 최소 자연수를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "15/126과 11/140의 분모를 분석하여 21의 배수 조건을 도출하는 2단계 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "유한소수",
+        "quote": "두 분수 $\\dfrac{15}{126}$와 $\\dfrac{11}{140}$에 어떤 자연수 $a$를 각각 곱하면",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "quote": "이때 $a$의 값이 될 수 있는 가장 작은 자연수를 풀이과정과 함께 구하시오.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "최소공배수",
+        "quote": "따라서 $a$는 $21$과 $7$의 공배수, 즉 최소공배수인 $21$의 배수이어야 한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "소인수분해",
+        "quote": "두 분수를 각각 기약분수로 나타내고 분모를 소인수분해한다.",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "15/126=5/42에서 분모 소인수 3, 7과 11/140의 소인수 7을 확인하여 최소공배수 21을 구하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

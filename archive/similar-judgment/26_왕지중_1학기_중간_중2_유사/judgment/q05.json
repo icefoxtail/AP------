@@ -1,0 +1,88 @@
+{
+  "qid": 5,
+  "solveSteps": [
+    "각 선지의 진위를 판별한다.",
+    "① 순환소수는 무한소수이다. (참)",
+    "② 유리수에 순환소수도 포함된다. (참)",
+    "③ 순환하지 않는 무한소수는 무리수이므로 유리수가 아니다. (참)",
+    "④ 순환소수는 분수 a/b (b!=0) 꼴로 나타낼 수 있다. (참)",
+    "⑤ 분모의 소인수가 2 또는 5 이외의 수를 가지면 유한소수로 나타낼 수 없으므로 옳지 않다. 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "다음 설명 중 옳지 않은 것은",
+  "rpmRecordId": "M2-RPM-119",
+  "rpmReason": "소인수 2 또는 5 조건과 기약분수 a/b 꼴의 유한소수 판별 성질을 다룬다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "소인수 2, 5 조건 및 기약분수 a/b 꼴 표현 등 유리수와 소수의 성질을 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "기약분수 a/b와 소인수 2, 5에 대한 기초 개념 정의를 묻는 1단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "quote": "순환소수는 모두 무한소수이다.",
+        "src": "choices"
+      }
+    ],
+    "goal": [
+      {
+        "term": "소수",
+        "quote": "다음 설명 중 옳지 않은 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "기약분수",
+        "quote": "기약분수의 분모의 소인수가 $2$ 또는 $5$ 이외의 수를 가지면",
+        "src": "choices",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "소인수",
+        "quote": "기약분수의 분모의 소인수가 $2$ 또는 $5$ 이외의 수를 가지면",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "분모의 소인수에 2나 5 이외의 수가 있으면 유한소수가 될 수 없다는 사실로 ⑤번이 거짓임을 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "figureNeedReason": "유리수와 소수의 개념에 관한 서술형 선지가 텍스트로 완결되어 그림이 필요 없다.",
+  "solutionFigureNeedReason": "개념 정의에 따른 진위 판별 해설이 명확하게 텍스트로 기술되어 있다.",
+  "unitReason": "유리수, 유한소수, 순환소수, 무한소수의 정의와 포함 관계를 다루므로 유리수와 순환소수 단원이다.",
+  "rpmKey": "M2-RPM-119",
+  "difficulty": 1,
+  "difficultyBorderline": false,
+  "termCitations": [
+    {
+      "term": "순환소수",
+      "text": "순환소수"
+    },
+    {
+      "term": "무한소수",
+      "text": "무한소수"
+    }
+  ],
+  "itemFingerprint": "178292c634c74d85"
+}

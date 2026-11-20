@@ -1,0 +1,71 @@
+{
+  "qid": 20,
+  "itemFingerprint": "71263a1d569877e0",
+  "solveSteps": [
+    "식품 A를 x g이라 하면 식품 B는 (200 - x) g이다.",
+    "100g당 단백질이 A는 30g, B는 15g이므로 1g당 단백질은 A가 0.3g, B가 0.15g이다.",
+    "총 단백질이 42g 이상이어야 하므로 0.3x + 0.15(200 - x) >= 42이다.",
+    "0.15x + 30 >= 42에서 0.15x >= 12이므로 x >= 12 / 0.15 = 80이다.",
+    "따라서 식품 A는 최소 80g이어야 한다. 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+  "unitEvidence": "섭취하여 단백질을 $42,\\text{g}$ 이상 얻으려고 할 때,",
+  "rpmRecordId": "M2-RPM-142",
+  "rpmReason": "100g당 단백질 30g, 15g 비율로 200g을 섭취해 42g 이상을 얻는 수량 관계 부등식을 푼다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "typeReason": "100g당 성분 함량 표를 바탕으로 42g 이상의 최소 섭취량을 구하는 일차부등식 활용 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "100g당 함량을 1g당으로 환산하고 합이 200g인 두 식품의 단백질 42g 부등식을 풀어 최소 80g을 구하는 3단계 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차부등식",
+        "quote": "두 식품 A, B를 합하여 $200,\\text{g}$을 섭취하여 단백질을 $42,\\text{g}$ 이상 얻으려고 할 때,",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "quote": "섭취해야 하는 식품 A의 양은 최소 몇 $\\text{g}$인가?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "일차부등식",
+        "quote": "총 단백질의 양이 $42,\\text{g}$ 이상이어야 하므로 일차부등식을 세우면",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "이항",
+        "quote": "$30$을 우변으로 이항하면",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "100g당 함량을 1g당 0.3g, 0.15g으로 두고 0.3x+0.15(200-x)>=42를 풀어 최소 80g을 구하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "qid": 24,
+  "itemFingerprint": "37c6dc1a22325fc5",
+  "solveSteps": [
+    "정사각형 ABCD의 전체 넓이는 18 * 18 = 324 cm^2이다.",
+    "직각삼각형 ABE의 넓이는 (1/2) * 6 * 18 = 54 cm^2이다.",
+    "직각삼각형 ADF의 넓이는 (1/2) * x * 18 = 9x cm^2이다.",
+    "사각형 AECF의 넓이는 324 - 54 - 9x = 270 - 9x cm^2이다.",
+    "정사각형 넓이의 5/9는 324 * (5/9) = 180 cm^2이므로 270 - 9x <= 180이다.",
+    "-9x <= -90에서 x >= 10이므로 가장 작은 자연수 x는 10이다. 정답은 10이다."
+  ],
+  "solvedAnswer": "$10$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+  "unitEvidence": "사각형 $AECF$의 넓이가 정사각형 $ABCD$의 넓이의 $\\dfrac{5}{9}$ 이하가 된다고 할 때,",
+  "rpmRecordId": "M2-RPM-147",
+  "rpmReason": "정사각형 ABCD 넓이 324에서 삼각형 넓이 54와 9x를 뺀 사각형 넓이에 대한 부등식을 푼다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "typeReason": "정사각형 넓이 324와 54를 이용하여 사각형 넓이 270 - 9x <= 180의 일차부등식을 세우는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "정사각형 ABCD의 넓이 324와 직각삼각형 54를 구하고 270 - 9x <= 180을 풀어 10을 구하는 3단계 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "정사각형",
+        "quote": "한 변의 길이가 $18,\\text{cm}$인 정사각형 $ABCD$에서 변 $BC$ 위의 점 $E$에 대하여",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "quote": "가능한 $x$의 값 중 가장 작은 자연수를 풀이과정과 함께 구하시오.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "일차부등식",
+        "quote": "조건에 맞는 일차부등식을 세우고 가장 작은 자연수 $x$를 구한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "사각형",
+        "quote": "사각형 $AECF$의 넓이가 정사각형 $ABCD$의 넓이의 $\\dfrac{5}{9}$ 이하가 된다고 할 때,",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "정사각형 넓이 324에서 두 삼각형 넓이를 뺀 270-9x가 180 이하임을 풀어 x>=10에서 가장 작은 자연수 10을 구하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
