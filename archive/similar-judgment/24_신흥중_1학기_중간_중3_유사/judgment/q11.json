@@ -1,0 +1,63 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "9f987925fea346eb",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$\\sqrt{32} = 4\\sqrt{2}, 2\\sqrt{18} = 6\\sqrt{2}, 6/\\sqrt{12} = \\sqrt{3}$이다.",
+    "식 $= 4\\sqrt{2} - 6\\sqrt{2} - (3\\sqrt{2} - \\sqrt{6}) = -5\\sqrt{2} + \\sqrt{6}$이다.",
+    "$a = -5, b = 1$이므로 $a + b = -5 + 1 = -4$이다.",
+    "따라서 정답은 ①이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이 성립할 때, 유리수 $a, b$에 대하여 $a+b$의 값은?",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-009",
+  "rpmEvidence": "근호 안의 제곱인수를 꺼내고 분배법칙과 분모의 유리화를 적용하여 동류근호 계수를 구한다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+  "newKeyProposal": null,
+  "typeReason": "동류근호 덧셈·뺄셈과 곱셈 혼합 계산을 통해 미정계수를 결정하는 유형이다. (문항 토큰 32)",
+  "rpmReason": "동류근호를 묶어 사칙연산을 정리하는 동류근호 유형이다. (문항 토큰 32)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "복수의 근호 정리와 동류항 계산을 포함한 난이도 2 문항이다. (문항 토큰 32)",
+  "how": "근호 안의 제곱인수를 꺼내고 분배법칙과 분모 유리화로 동류근호를 정리했다. (문항 토큰 32)",
+  "slots": {
+    "given": [
+      {
+        "term": "유리수",
+        "quote": "이 성립할 때, 유리수 $a, b$에 대하여 $a+b$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "유리수",
+        "quote": "$a+b$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "유리화",
+        "quote": "근호 안의 제곱인수를 꺼내고 분배법칙과 분모의 유리화를 적용하여 동류근호 계수를 구한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "유리수",
+        "quote": "따라서 정답은 ①이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

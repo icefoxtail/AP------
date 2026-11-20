@@ -1,0 +1,63 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "4c406b5c5bca95ba",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$a = \\sqrt{2} \\implies a^2 = 2$",
+    "$b = \\sqrt{5} \\implies b^2 = 5$",
+    "$a^2 + b^2 = 2 + 5 = 7$이므로 $\\sqrt{7} = \\sqrt{a^2 + b^2}$이다. (선지 ⑤의 $\\sqrt{ab}$와 구별)",
+    "따라서 정답은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\sqrt{2} = a, \\quad \\sqrt{5} = b$라 할 때",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-007",
+  "rpmEvidence": "주어진 근호를 각각 제곱하여 근호 안의 수를 문자의 이차식으로 표현한다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_LETTER_REPRESENTATION",
+  "newKeyProposal": null,
+  "typeReason": "제곱근 값을 문자로 치환하여 다른 근호식을 대수적으로 표현하는 유형이다. (문항 토큰 ab)",
+  "rpmReason": "근호 안의 수치를 대수적 문자로 치환 표현하는 근호의 곱 유형이다. (문항 토큰 ab)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "문자의 제곱합 꼴을 파악해야 하는 난이도 2 문항이다. (문항 토큰 ab)",
+  "how": "주어진 문자 근호를 제곱하여 근호 안의 수를 문자의 합으로 치환했다. (문항 토큰 ab)",
+  "slots": {
+    "given": [
+      {
+        "term": "제곱근",
+        "quote": "$\\sqrt{2} = a, \\quad \\sqrt{5} = b$라 할 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "제곱근",
+        "quote": "$\\sqrt{7}$을 $a, b$를 사용하여 바르게 나타낸 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "제곱근",
+        "quote": "주어진 근호를 각각 제곱하여 근호 안의 수를 문자의 이차식으로 표현한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "제곱근",
+        "quote": "따라서 정답은 ④이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

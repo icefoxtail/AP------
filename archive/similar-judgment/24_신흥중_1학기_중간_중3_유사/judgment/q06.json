@@ -1,0 +1,62 @@
+{
+  "qid": "q06",
+  "itemFingerprint": "98d8fcafb1f9d979",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "피타고라스 정리에 의해 $AB = \\sqrt{2^2+1^2} = \\sqrt{5}$이다.",
+    "$A(0)$에서 왼쪽으로 호를 그렸으므로 $P$의 좌표는 $-\\sqrt{5}$이다.",
+    "따라서 점 $P$가 나타내는 수가 $\\sqrt{5}$라는 설명은 옳지 않다. (정답 ①)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "한 눈금의 길이가 $1$인 모눈종이에 두 선분",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "한 눈금의 길이가 $1$인 모눈종이에 두 선분 $\\mathrm{AB}$와 $\\mathrm{CD}$를 그린 후",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "rpmRecordId": "M3-RPM-005",
+  "rpmEvidence": "피타고라스 정리로 선분의 길이를 구하고, 수직선 기준점과 이동 방향에 따른 좌표를 구한다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+  "templateKey": "TPL_M3_NUMBER_LINE_IRRATIONAL_MAPPING",
+  "newKeyProposal": null,
+  "typeReason": "피타고라스 정리와 원호 회전을 통해 수직선 위 무리수 좌표를 대응시키는 유형이다. (문항 토큰 AB)",
+  "rpmReason": "수직선에 무리수를 작도하고 위치를 찾는 무리수의 위치 유형이다. (문항 토큰 AB)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "좌표의 부호와 기준점 이동을 결합 판단하는 난이도 2 문항이다. (문항 토큰 AB)",
+  "how": "직각삼각형의 빗변 길이를 구하고 기준점과 이동 방향에 따른 수직선 좌표를 확인했다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "수직선",
+        "quote": "한 눈금의 길이가 $1$인 모눈종이에 두 선분 $\\mathrm{AB}$와 $\\mathrm{CD}$를 그린 후",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "좌표",
+        "quote": "다음 중 옳지 않은 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "직각삼각형",
+        "quote": "피타고라스 정리로 선분의 길이를 구하고, 수직선 기준점과 이동 방향에 따른 좌표를 구한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "수직선",
+        "quote": "따라서 정답은 ①이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

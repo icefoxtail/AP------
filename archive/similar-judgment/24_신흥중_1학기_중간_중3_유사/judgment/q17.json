@@ -1,0 +1,65 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "ea4d71071ff4dcb1",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "① $x^2 - 3x = x(x-3)$",
+    "② $x^2 + 6x + 9 = (x+3)^2$ ($x-3$을 인수로 갖지 않는다)",
+    "③ $x^2 - 9 = (x+3)(x-3)$",
+    "④ $x^2y - 3xy = xy(x-3)$",
+    "⑤ $2x^2 - 18 = 2(x^2-9) = 2(x+3)(x-3)$",
+    "따라서 $x-3$을 인수로 갖지 않는 것은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중 $x-3$을 인수로 갖지 않는 것은?",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "rpmRecordId": "M3-RPM-025",
+  "rpmEvidence": "각 선지의 다항식을 인수분해하여 일차식 $x-3$이 인수로 포함되어 있는지 검토한다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_FACTORIZATION_FACTOR_IDENTIFY",
+  "newKeyProposal": null,
+  "typeReason": "각 다항식을 인수분해하여 지정된 인수의 포함 여부를 확인하는 유형이다. (문항 토큰 xy)",
+  "rpmReason": "이차식 인수분해를 통해 인수를 판별하는 인수분해 공식 유형이다. (문항 토큰 xy)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기초 다항식 인수분해를 각각 확인하는 난이도 1 문항이다. (문항 토큰 xy)",
+  "how": "선지의 각 다항식을 인수분해하여 일차식 x-3의 포함 여부를 확인했다. (문항 토큰 xy)",
+  "slots": {
+    "given": [
+      {
+        "term": "인수",
+        "quote": "다음 중 $x-3$을 인수로 갖지 않는 것은?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수",
+        "quote": "$x-3$을 인수로 갖지 않는 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "quote": "각 선지의 다항식을 인수분해하여 일차식 $x-3$이 인수로 포함되어 있는지 검토한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "인수",
+        "quote": "따라서 정답은 ②이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

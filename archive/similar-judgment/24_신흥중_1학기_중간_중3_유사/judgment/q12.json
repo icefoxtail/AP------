@@ -1,0 +1,62 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "caf59f18334ed55d",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$(x+1)^2 = x^2 + 2x + 1$, $(x-1)(2x+3) = 2x^2 + x - 3$",
+    "두 식의 합은 $3x^2 + 3x - 2$이다. ($a = 3, b = 3, c = -2$)",
+    "$a - b + c = 3 - 3 + (-2) = -2$이다. (정답 ②)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(x+1)^2 + (x-1)(2x+3)$ 의 전개식에서 $x^2$의 계수를 $a$, $x$의 계수를 $b$, 상수항을 $c$라 할 때",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+  "rpmRecordId": "M3-RPM-017",
+  "rpmEvidence": "두 식을 각각 곱셈 공식으로 전개하여 동류항끼리 합산한 후 계수를 비교한다.",
+  "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+  "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT",
+  "newKeyProposal": null,
+  "typeReason": "다항식 곱셈공식 전개식에서 특정 차수 항의 계수를 구하는 유형이다. (문항 토큰 x)",
+  "rpmReason": "두 일차식의 곱과 합의 제곱 전개를 다루는 두 일차식의 곱 유형이다. (문항 토큰 x)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기초 곱셈공식 전개 및 계수 비교를 수행하는 난이도 1 문항이다. (문항 토큰 x)",
+  "how": "두 식을 각각 곱셈 공식으로 전개하여 동류항끼리 합산한 후 계수를 비교했다. (문항 토큰 x)",
+  "slots": {
+    "given": [
+      {
+        "term": "계수",
+        "quote": "$(x+1)^2 + (x-1)(2x+3)$ 의 전개식에서 $x^2$의 계수를 $a$, $x$의 계수를 $b$, 상수항을 $c$라 할 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "quote": "$a - b + c$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "곱셈공식",
+        "quote": "두 식을 각각 곱셈 공식으로 전개하여 동류항끼리 합산한 후 계수를 비교한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "계수",
+        "quote": "따라서 정답은 ②이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

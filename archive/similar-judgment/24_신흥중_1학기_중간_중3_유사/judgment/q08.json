@@ -1,0 +1,61 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "822ec0a21d5c21ce",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "③ $\\sqrt{3} \\times \\sqrt{12} \\div (\\sqrt{7}/\\sqrt{3}) = 6 \\times (\\sqrt{3}/\\sqrt{7}) = 6\\sqrt{3}/\\sqrt{7} = 6\\sqrt{21}/7$ (참)",
+    "따라서 옳은 것은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중 계산 결과가 옳은 것은?",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-007",
+  "rpmEvidence": "근호의 곱셈, 나눗셈 및 유리화를 각 선지에 적용하여 계산한다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+  "newKeyProposal": null,
+  "typeReason": "근호를 포함한 사칙연산의 혼합 계산 결과를 참·거짓으로 판별하는 유형이다. (문항 토큰 15)",
+  "rpmReason": "근호의 곱셈과 나눗셈을 처리하는 근호의 곱 유형이다. (문항 토큰 15)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "사칙연산 복합 단계를 점검하는 난이도 2 문항이다. (문항 토큰 15)",
+  "how": "근호식의 곱셈과 나눗셈을 역수 곱으로 바꾸고 유리화하여 계산 결과를 검증했다. (문항 토큰 15)",
+  "slots": {
+    "given": [
+      {
+        "term": "유리화",
+        "quote": "다음 중 계산 결과가 옳은 것은?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "유리화",
+        "quote": "다음 중 계산 결과가 옳은 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "유리화",
+        "quote": "근호의 곱셈, 나눗셈 및 유리화를 각 선지에 적용하여 계산한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "유리화",
+        "quote": "따라서 정답은 ③이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

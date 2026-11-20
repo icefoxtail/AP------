@@ -1,0 +1,62 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "da828f34b8ba569a",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$3003 = 3000 + 3$, $2997 = 3000 - 3$이다.",
+    "$3003 \\times 2997 = (3000+3)(3000-3) = 3000^2 - 3^2$",
+    "따라서 가장 편리하게 이용되는 곱셈공식은 ⑤ $(a+b)(a-b) = a^2 - b^2$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$3003 \\times 2997$ 을 계산하는 데 이용되는 가장 편리한 곱셈 공식은?",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+  "rpmRecordId": "M3-RPM-018",
+  "rpmEvidence": "두 수가 대칭 기준수 $3000$으로부터 일정한 거리만큼 떨어져 있음을 이용하여 적용할 공식을 판별한다.",
+  "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+  "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT",
+  "newKeyProposal": null,
+  "typeReason": "수의 계산에 가장 효율적인 곱셈공식을 선택하고 판단하는 유형이다. (문항 토큰 3003)",
+  "rpmReason": "곱셈공식을 이용한 수의 계산에 적합한 공식을 결정하는 수의 계산 유형이다. (문항 토큰 3003)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "수치 구조를 보고 알맞은 공식을 식별하는 난이도 1 문항이다. (문항 토큰 3003)",
+  "how": "기준수 3000으로부터 대칭 거리인 점을 활용해 합차 공식을 선택했다. (문항 토큰 3003)",
+  "slots": {
+    "given": [
+      {
+        "term": "곱셈공식",
+        "quote": "$3003 \\times 2997$ 을 계산하는 데 이용되는 가장 편리한 곱셈 공식은?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "곱셈공식",
+        "quote": "가장 편리한 곱셈 공식은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "곱셈공식",
+        "quote": "두 수가 대칭 기준수 $3000$으로부터 일정한 거리만큼 떨어져 있음을 이용하여 적용할 공식을 판별한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "곱셈공식",
+        "quote": "따라서 정답은 ⑤이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

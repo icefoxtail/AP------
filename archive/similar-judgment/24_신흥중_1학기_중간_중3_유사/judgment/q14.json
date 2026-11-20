@@ -1,0 +1,62 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "c0dad20f1597523e",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$(\\sqrt{3}-a\\sqrt{2})(\\sqrt{3}-2\\sqrt{2}) = (3+4a) - (a+2)\\sqrt{6}$",
+    "전체 식의 값이 유리수가 되려면 무리수 $\\sqrt{6}$의 계수 $-(a+2) = 0$이어야 한다.",
+    "따라서 $a = -2$이다. (정답 ④)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(\\sqrt{3}-a\\sqrt{2})(\\sqrt{3}-2\\sqrt{2})$ 가 유리수가 되도록 하는 유리수 $a$의 값은?",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-014",
+  "rpmEvidence": "식을 분배법칙으로 전개하여 유리수 부분과 무리수 $\\sqrt{6}$의 부분으로 나눈 후, 무리수의 계수가 $0$이 되는 조건을 적용한다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_RATIONAL_CONDITION",
+  "newKeyProposal": null,
+  "typeReason": "무리수식의 전개 결과가 유리수가 되도록 하는 미정계수 결정 유형이다. (문항 토큰 3)",
+  "rpmReason": "무리수 혼합 전개에서 식의 유리수 조건을 찾는 식의 값 유형이다. (문항 토큰 3)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "전개 후 무리수 부분 계수 소거 조건을 세우는 난이도 2 문항이다. (문항 토큰 3)",
+  "how": "식을 분배법칙으로 전개하여 무리수 앞의 계수가 0이 되는 조건을 적용했다. (문항 토큰 3)",
+  "slots": {
+    "given": [
+      {
+        "term": "유리수",
+        "quote": "$(\\sqrt{3}-a\\sqrt{2})(\\sqrt{3}-2\\sqrt{2})$ 가 유리수가 되도록 하는 유리수 $a$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "유리수",
+        "quote": "유리수 $a$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "유리수",
+        "quote": "식을 분배법칙으로 전개하여 유리수 부분과 무리수 $\\sqrt{6}$의 부분으로 나눈 후, 무리수의 계수가 $0$이 되는 조건을 적용한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "유리수",
+        "quote": "따라서 정답은 ④이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

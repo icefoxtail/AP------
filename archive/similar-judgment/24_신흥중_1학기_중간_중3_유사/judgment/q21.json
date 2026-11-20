@@ -1,0 +1,61 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "8eda971d379259ce",
+  "solvedAnswer": "잘못 말한 학생: 서연 / 바르게 고침: $\\sqrt{49} = \\sqrt{(-7)^2} = 7$",
+  "solveSteps": [
+    "서연: $\\sqrt{49} = \\sqrt{(-7)^2} = -7$이라 하였으나, 근호 안 제곱의 값은 항상 양수이므로 $7$이어야 한다.",
+    "따라서 잘못 말한 학생은 서연이고, 바르게 고치면 $\\sqrt{49} = \\sqrt{(-7)^2} = 7$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음은 세 학생이 제곱근의 성질에 대하여 설명한 것이다.",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "rpmRecordId": "M3-RPM-002",
+  "rpmEvidence": "근호 기호 $\\sqrt{A}$의 값은 항상 $0$ 이상의 양의 제곱근(또는 $0$)이어야 한다는 성질을 점검한다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+  "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
+  "newKeyProposal": null,
+  "typeReason": "제곱근의 성질에 대한 학생들의 대화에서 오류를 찾아 바르게 고치는 서술형 유형이다. (문항 토큰 49)",
+  "rpmReason": "근호 기호의 정의와 값의 범위를 다루는 제곱근의 성질 유형이다. (문항 토큰 49)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기초적인 근호 성질 오류를 식별하고 수정하는 난이도 1 서술형 문항이다. (문항 토큰 49)",
+  "how": "근호 기호의 양수성 성질을 기반으로 서연의 오류를 찾고 올바르게 교정했다. (문항 토큰 49)",
+  "slots": {
+    "given": [
+      {
+        "term": "제곱근",
+        "quote": "다음은 세 학생이 제곱근의 성질에 대하여 설명한 것이다.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "제곱근",
+        "quote": "잘못 말한 학생의 이름을 쓰고, 그 학생의 설명을 바르게 고쳐 쓰시오.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "제곱근",
+        "quote": "근호 기호 $\\sqrt{A}$의 값은 항상 $0$ 이상의 양의 제곱근(또는 $0$)이어야 한다는 성질을 점검한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "제곱근",
+        "quote": "따라서 정답은 잘못 말한 학생: 서연 / 바르게 고침: $\\sqrt{49} = \\sqrt{(-7)^2} = 7$이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

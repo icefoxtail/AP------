@@ -1,0 +1,62 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "1b06fa2b3ad2e37d",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "유리수: $0.\\dot{7}=7/9$, $\\sqrt{0.04}=0.2$, $\\sqrt{25/4}=5/2$, $\\sqrt{16/9}=4/3$, $3-\\sqrt{9}=0$ (5개)",
+    "무리수: $-\\sqrt{25/3}$, $\\sqrt{7}$, $\\pi^2$, $\\sqrt{8}$, $\\sqrt{1.6}$ (5개)",
+    "따라서 무리수는 모두 5개로 정답은 ⑤이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "<보기>에서 무리수를 모두 고르면 몇 개인가?",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "rpmRecordId": "M3-RPM-003",
+  "rpmEvidence": "유리수와 무리수의 정의를 적용하여 각 수를 분류한다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+  "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
+  "newKeyProposal": null,
+  "typeReason": "유리수와 무리수의 정의를 적용해 주어진 수들을 분류하는 유형이다. (문항 토큰 25)",
+  "rpmReason": "유리수와 무리수를 구별하는 무리수 판별 유형이다. (문항 토큰 25)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "수의 분류를 정확히 수행하는 난이도 1 문항이다. (문항 토큰 25)",
+  "how": "순환소수와 제곱수 근호식을 판별하여 무리수의 개수를 세었다. (문항 토큰 25)",
+  "slots": {
+    "given": [
+      {
+        "term": "무리수",
+        "quote": "<보기>에서 무리수를 모두 고르면 몇 개인가?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "무리수",
+        "quote": "무리수를 모두 고르면 몇 개인가?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "유리수",
+        "quote": "유리수와 무리수의 정의를 적용하여 각 수를 분류한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "무리수",
+        "quote": "따라서 정답은 ⑤이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

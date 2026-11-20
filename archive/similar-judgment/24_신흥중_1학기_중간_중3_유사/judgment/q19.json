@@ -1,0 +1,62 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "7d6d65772338822b",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$(2x+1)(2x-5) + k = 4x^2 - 10x + 2x - 5 + k = 4x^2 - 8x - 5 + k$ (선지 $16$)",
+    "완전제곱식 $(2x-2)^2 = 4x^2 - 8x + 4$가 되려면 $-5 + k = 4$이어야 한다.",
+    "따라서 $k = 9$이다. (정답 ④)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(2x+1)(2x-5) + k$ 가 완전제곱식이 되도록 하는 상수 $k$의 값은?",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "rpmRecordId": "M3-RPM-023",
+  "rpmEvidence": "식을 전개한 후 일차항 계수로부터 완전제곱식이 되기 위한 상수항 조건을 세운다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_FACTORIZATION_SQUARE_CONDITION",
+  "newKeyProposal": null,
+  "typeReason": "이차식이 완전제곱식이 되도록 하는 미정 상수를 결정하는 유형이다. (문항 토큰 16)",
+  "rpmReason": "완전제곱식이 되기 위한 계수 조건을 분석하는 제곱식 유형이다. (문항 토큰 16)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차식 전개 후 상수항 비교를 수행하는 난이도 1 문항이다. (문항 토큰 16)",
+  "how": "식을 전개한 뒤 완전제곱식이 되기 위한 상수항 조건을 세워 k를 구했다. (문항 토큰 16)",
+  "slots": {
+    "given": [
+      {
+        "term": "완전제곱식",
+        "quote": "$(2x+1)(2x-5) + k$ 가 완전제곱식이 되도록 하는 상수 $k$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "완전제곱식",
+        "quote": "상수 $k$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "quote": "식을 전개한 후 일차항 계수로부터 완전제곱식이 되기 위한 상수항 조건을 세운다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "완전제곱식",
+        "quote": "따라서 정답은 ④이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

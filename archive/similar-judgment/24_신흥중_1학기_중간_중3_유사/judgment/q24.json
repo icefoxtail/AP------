@@ -1,0 +1,62 @@
+{
+  "qid": "q24",
+  "itemFingerprint": "01fea23105da0030",
+  "solvedAnswer": "$72\\sqrt{3}\\pi,\\mathrm{cm^3}$",
+  "solveSteps": [
+    "밑면 원의 둘레: $2\\pi r = 6\\sqrt{2}\\pi \\implies r = 3\\sqrt{2}\\mathrm{cm}$",
+    "밑면의 넓이: $\\pi r^2 = \\pi (3\\sqrt{2})^2 = 18\\pi\\mathrm{cm^2}$",
+    "원기둥의 부피: $18\\pi \\times 4\\sqrt{3} = 72\\sqrt{3}\\pi\\mathrm{cm^3}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "옆면 직사각형의 가로의 길이(밑면 원의 둘레)는 $6\\sqrt{2}\\pi,\\mathrm{cm}$이고, 세로의 길이(원기둥의 높이)는 $4\\sqrt{3},\\mathrm{cm}$이다.",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-007",
+  "rpmEvidence": "밑면 원의 둘레 공식으로부터 반지름을 구하고, 밑면의 넓이와 높이를 곱하여 원기둥의 부피를 구한다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_GEOMETRY",
+  "newKeyProposal": null,
+  "typeReason": "입체도형 전개도의 치수를 무리수로 계산하여 원기둥 부피를 구하는 서술형 유형이다. (문항 토큰 cm)",
+  "rpmReason": "도형의 넓이와 부피에 근호 연산을 적용하는 근호의 곱 유형이다. (문항 토큰 cm)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "입체도형 공식과 무리수 곱셈을 결합한 난이도 2 문항이다. (문항 토큰 cm)",
+  "how": "전개도의 둘레에서 밑면 반지름을 도출하고 무리수 곱셈으로 부피를 계산했다. (문항 토큰 cm)",
+  "slots": {
+    "given": [
+      {
+        "term": "둘레",
+        "quote": "옆면 직사각형의 가로의 길이(밑면 원의 둘레)는 $6\\sqrt{2}\\pi,\\mathrm{cm}$이고, 세로의 길이(원기둥의 높이)는 $4\\sqrt{3},\\mathrm{cm}$이다.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "quote": "이 원기둥의 부피를 구하는 과정과 답을 서술하시오.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "quote": "밑면 원의 둘레 공식으로부터 반지름을 구하고, 밑면의 넓이와 높이를 곱하여 원기둥의 부피를 구한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "넓이",
+        "quote": "따라서 구하는 원기둥의 부피는 $72\\sqrt{3}\\pi,\\mathrm{cm^3}$이다. 따라서 정답은 $72\\sqrt{3}\\pi,\\mathrm{cm^3}$이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

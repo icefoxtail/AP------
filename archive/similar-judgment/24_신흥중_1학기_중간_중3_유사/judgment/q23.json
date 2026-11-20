@@ -1,0 +1,62 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "e01ed11127051c37",
+  "solvedAnswer": "4",
+  "solveSteps": [
+    "$3\\sqrt{12} = 6\\sqrt{3}$, $\\sqrt{72} = 6\\sqrt{2}$, $\\sqrt{48} = 4\\sqrt{3}$, $\\sqrt{32} = 4\\sqrt{2}$",
+    "식 $= (6\\sqrt{2} - 4\\sqrt{2}) + (6\\sqrt{3} - 4\\sqrt{3}) = 2\\sqrt{2} + 2\\sqrt{3}$",
+    "$a = 2, b = 2$이므로 $a + b = 2 + 2 = 4$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$3\\sqrt{12} + \\sqrt{72} - \\sqrt{48} - \\sqrt{32} = a\\sqrt{2} + b\\sqrt{3}$ 일 때, $a+b$의 값을 구하는 과정과 답을 서술하시오.",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-009",
+  "rpmEvidence": "각 근호를 $k\\sqrt{2}$ 또는 $k\\sqrt{3}$ 꼴로 간단히 정리한 후 동류항끼리 묶어 계수를 비교한다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+  "newKeyProposal": null,
+  "typeReason": "동류근호의 덧셈과 뺄셈을 수행하여 계수 비교를 완료하는 서술형 유형이다. (문항 토큰 12)",
+  "rpmReason": "동류근호의 사칙연산을 정리하는 동류근호 유형이다. (문항 토큰 12)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다항 근호 정리와 서술형 단계 작성을 요구하는 난이도 2 문항이다. (문항 토큰 12)",
+  "how": "각 근호를 간단히 정리한 후 동류근호끼리 묶어 계수의 합을 구했다. (문항 토큰 12)",
+  "slots": {
+    "given": [
+      {
+        "term": "유리수",
+        "quote": "$3\\sqrt{12} + \\sqrt{72} - \\sqrt{48} - \\sqrt{32} = a\\sqrt{2} + b\\sqrt{3}$ 일 때, $a+b$의 값을 구하는 과정과 답을 서술하시오.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "유리수",
+        "quote": "$a+b$의 값을 구하는 과정과 답을 서술하시오.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "유리수",
+        "quote": "각 근호를 $k\\sqrt{2}$ 또는 $k\\sqrt{3}$ 꼴로 간단히 정리한 후 동류항끼리 묶어 계수를 비교한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "유리수",
+        "quote": "따라서 정답은 4이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "6a830ec08af89801",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$\\sqrt{x^2 - 10x + 25} = \\sqrt{(x-5)^2} = |x-5|$",
+    "$\\sqrt{x^2 - 4x + 4} = \\sqrt{(x-2)^2} = |x-2|$",
+    "$2 < x < 5$에서 $|x-5| = -x + 5$, $|x-2| = x - 2$",
+    "식 $= (-x + 5) - (x - 2) = -2x + 7$이다. (정답 ③)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$2 < x < 5$ 일 때, $\\sqrt{x^2 - 10x + 25} - \\sqrt{x^2 - 4x + 4}$ 를 간단히 하면?",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "rpmRecordId": "M3-RPM-002",
+  "rpmEvidence": "근호 안의 식을 완전제곱식으로 인수분해한 후 절댓값으로 전환하고, 주어진 범위에서 각 식의 부호를 판별한다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+  "templateKey": "TPL_M3_ROOT_PROPERTY_ABSOLUTE",
+  "newKeyProposal": null,
+  "typeReason": "문자의 범위 조건에서 근호 안 완전제곱식을 절댓값 부호로 정리하는 유형이다. (문항 토큰 10)",
+  "rpmReason": "부호에 따른 제곱근의 근호 벗기기를 다루는 제곱근의 성질 유형이다. (문항 토큰 10)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 완전제곱식의 부호를 구간에 맞춰 판단해야 하는 난이도 2 문항이다. (문항 토큰 10)",
+  "how": "근호 안을 완전제곱식으로 인수분해하고 x의 범위에 따른 부호로 절댓값을 풀었다. (문항 토큰 10)",
+  "slots": {
+    "given": [
+      {
+        "term": "완전제곱식",
+        "quote": "$2 < x < 5$ 일 때, $\\sqrt{x^2 - 10x + 25} - \\sqrt{x^2 - 4x + 4}$ 를 간단히 하면?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "완전제곱식",
+        "quote": "간단히 하면?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "quote": "근호 안의 식을 완전제곱식으로 인수분해한 후 절댓값으로 전환하고, 주어진 범위에서 각 식의 부호를 판별한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "완전제곱식",
+        "quote": "따라서 정답은 ③이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

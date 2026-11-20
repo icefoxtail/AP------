@@ -1,0 +1,64 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "463b47337ac1010f",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "㉠ $\\sqrt{(-7/3)^2} = 7/3$ (거짓)",
+    "㉡ $-(\\sqrt{1/5})^2 = -1/5$ (거짓)",
+    "㉢ $\\sqrt{(-17)^2} = 17$ (참)",
+    "㉣ $(-\\sqrt{15})^2 = 15$ (참)",
+    "따라서 옳은 것은 ㉢, ㉣로 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "<보기>에서 옳은 것을 모두 고른 것은?",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "rpmRecordId": "M3-RPM-002",
+  "rpmEvidence": "근호의 성질 $(\\sqrt{a})^2 = a$, $\\sqrt{a^2} = |a|$를 각 보기에 적용하여 참과 거짓을 판별한다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+  "templateKey": "TPL_M3_ROOT_PROPERTY_ABSOLUTE",
+  "newKeyProposal": null,
+  "typeReason": "제곱근의 부호 처리와 절댓값 변환 성질을 판별하는 유형이다. (문항 토큰 17)",
+  "rpmReason": "근호식의 기본 성질을 검증하는 제곱근의 성질 유형이다. (문항 토큰 17)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기본적인 근호 계산 공식을 적용하는 난이도 1 문항이다. (문항 토큰 17)",
+  "how": "근호 안 제곱과 근호 밖 제곱의 부호 처리 규칙을 적용해 참인 보기를 판정했다. (문항 토큰 17)",
+  "slots": {
+    "given": [
+      {
+        "term": "제곱근",
+        "quote": "<보기>에서 옳은 것을 모두 고른 것은?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "제곱근",
+        "quote": "옳은 것을 모두 고른 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "제곱근",
+        "quote": "근호의 성질 $(\\sqrt{a})^2 = a$, $\\sqrt{a^2} = |a|$를 각 보기에 적용하여 참과 거짓을 판별한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "제곱근",
+        "quote": "옳은 것은 ㉢, ㉣이다. 따라서 정답은 ③이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

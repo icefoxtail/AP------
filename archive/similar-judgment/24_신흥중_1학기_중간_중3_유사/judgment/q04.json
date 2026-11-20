@@ -1,0 +1,62 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "68ea5839f286d05a",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "선지 ① $\\sqrt{12} < 4$, ② $\\sqrt{0.2} > 0.4$, ③ $3+\\sqrt{5} < 6$, ⑤ $-3+\\sqrt{7} > -\\sqrt{10}+\\sqrt{7}$이다.",
+    "④ $1/3 > 1/4$이므로 $\\sqrt{1/3} > 1/2$, 양변에 음수 곱하면 $-\\sqrt{1/3} < -1/2$ (참)",
+    "따라서 옳은 것은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중에서 옳은 것은?",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "rpmRecordId": "M3-RPM-004",
+  "rpmEvidence": "제곱 또는 부등식의 성질을 적용하여 각 선지의 대소 관계를 판정한다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+  "templateKey": "TPL_M3_REAL_COMPARISON_ORDER",
+  "newKeyProposal": null,
+  "typeReason": "제곱근을 포함한 실수의 대소 관계와 부등식 성질을 판단하는 유형이다. (문항 토큰 12)",
+  "rpmReason": "실수와 무리수의 대소 비교를 다루는 실수의 대소 유형이다. (문항 토큰 12)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "음수 근호식의 대소 비교를 요구하는 난이도 2 문항이다. (문항 토큰 12)",
+  "how": "양변 제곱과 음수 부호에 따른 부등호 역전 성질을 이용해 대소를 판정했다. (문항 토큰 12)",
+  "slots": {
+    "given": [
+      {
+        "term": "대소",
+        "quote": "다음 중에서 옳은 것은?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대소",
+        "quote": "다음 중에서 옳은 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "부등식",
+        "quote": "제곱 또는 부등식의 성질을 적용하여 각 선지의 대소 관계를 판정한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "무리수",
+        "quote": "따라서 옳은 것은 ④이다. 따라서 정답은 ④이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

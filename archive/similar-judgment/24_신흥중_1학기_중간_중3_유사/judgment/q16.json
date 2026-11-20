@@ -1,0 +1,64 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "d65c070243c4c86d",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$(x-1)(x+1) = x^2 - 1$",
+    "$(x^2-1)(x^2+1) = x^4 - 1$",
+    "$(x^4-1)(x^4+1) = x^8 - 1$",
+    "$(x^8-1)(x^8+1) = x^{16} - 1$",
+    "따라서 $\\square = 16$이므로 정답은 ①이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(x-1)(x+1)(x^2+1)(x^4+1)(x^8+1) = x^{\\square} - 1$",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+  "rpmRecordId": "M3-RPM-016",
+  "rpmEvidence": "합차 공식을 단계별로 반복 적용하여 최고차항의 지수를 연쇄적으로 확장한다.",
+  "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+  "templateKey": "TPL_M3_MULTIPLICATION_CHAIN",
+  "newKeyProposal": null,
+  "typeReason": "합차 공식을 연쇄적으로 적용하여 최고차항의 지수를 결정하는 유형이다. (문항 토큰 16)",
+  "rpmReason": "합과 차의 곱을 연속 적용하는 곱셈공식 유형이다. (문항 토큰 16)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "연쇄적 합차 공식 전개 단계를 거쳐 지수를 구하는 난이도 2 문항이다. (문항 토큰 16)",
+  "how": "합차 공식을 연속적으로 적용하여 최고차항의 지수를 연쇄적으로 확장했다. (문항 토큰 16)",
+  "slots": {
+    "given": [
+      {
+        "term": "합차공식",
+        "quote": "$(x-1)(x+1)(x^2+1)(x^4+1)(x^8+1) = x^{\\square} - 1$",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합차공식",
+        "quote": "$\\square$ 안에 알맞은 수는?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "합차공식",
+        "quote": "합차 공식을 단계별로 반복 적용하여 최고차항의 지수를 연쇄적으로 확장한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "합차공식",
+        "quote": "따라서 정답은 ①이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}
