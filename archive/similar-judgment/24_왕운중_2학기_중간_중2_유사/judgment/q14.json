@@ -1,0 +1,57 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "c0c8c0fab070ead6",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$\\overline{AB}\\parallel\\overline{CE}$이므로 $\\angle ABM=\\angle ECM$이고 $\\overline{BM}=\\overline{CM}$, $\\angle AMB=\\angle EMC$이므로 $\\triangle ABM \\equiv \\triangle ECM$ (ASA 합동)이다.",
+    "따라서 $\\overline{AM}=\\overline{ME}$, $\\overline{CE}=\\overline{AB}=\\overline{CD}$이다.",
+    "$M$이 $\\overline{AE}$의 중점이므로 $\\triangle DMA=\\triangle DME=24\\text{ cm}^2$이고 $\\triangle ADE=48\\text{ cm}^2$이다.",
+    "$C$가 $\\overline{DE}$의 중점이므로 $\\triangle ADC=\\dfrac{1}{2}\\triangle ADE=24\\text{ cm}^2$이고 $\\square ABCD=48\\text{ cm}^2$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "평행사변형 $ABCD$에서 변 $BC$의 중점을 $M$이라 하고, 직선 $AM$과 직선 $DC$의 교점을 $E$라 하자.",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "rpmRecordId": "M2-RPM-072",
+  "rpmEvidence": "$\\overline{AB}\\parallel\\overline{CE}$이므로 $\\angle ABM=\\angle ECM$이고 $\\overline{BM}=\\overline{CM}$, $\\angle AMB=\\angle EMC$이므로 $\\triangle ABM \\equiv \\triangle ECM$ (ASA 합동)이다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+  "newKeyProposal": null,
+  "typeReason": "Q14번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)",
+  "rpmReason": "Q14번 문항은 M2-RPM-072에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABCD)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q14번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ABCD)",
+  "how": "Q14번 문항으로 M2-05 단원의 기본 개념과 성질을 적용하여 ⑤을(를) 바르게 구하였다. (문항 토큰 ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "평행사변형 $ABCD$에서 변 $BC$의 중점을 $M$이라 하고, 직선 $AM$과 직선 $DC$의 교점을 $E$라 하자."
+      }
+    ],
+    "goal": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "평행사변형 $ABCD$에서 변 $BC$의 중점을 $M$이라 하고, 직선 $AM$과 직선 $DC$의 교점을 $E$라 하자."
+      }
+    ],
+    "method": [
+      {
+        "term": "합동",
+        "src": "solution",
+        "quote": "$\\overline{AB}\\parallel\\overline{CE}$이므로 $\\angle ABM=\\angle ECM$이고 $\\overline{BM}=\\overline{CM}$, $\\angle AMB=\\angle EMC$이므로 $\\triangle ABM \\equiv \\triangle ECM$ (ASA 합동)이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

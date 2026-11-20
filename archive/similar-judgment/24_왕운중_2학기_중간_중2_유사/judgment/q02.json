@@ -1,0 +1,55 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "f99736373d30e611",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "외심 $O$에서 세 꼭짓점까지의 거리는 같으므로 $\\overline{OA}=\\overline{OB}=\\overline{OC}$이다.",
+    "$\\angle OCB=\\angle OBC=22^\\circ$, $\\angle OAC=\\angle OCA=44^\\circ$이고 $\\angle BAO=\\angle ABO=x$라 하면 $\\triangle ABC$의 세 내각의 합에서 $(x+44^\\circ)+(x+22^\\circ)+(22^\\circ+44^\\circ)=180^\\circ$ $2x+132^\\circ=180^\\circ \\implies 2x=48^\\circ \\implies x=24^\\circ$ $\\therefore$ ④"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "점 $O$가 예각삼각형 $ABC$의 외심이고 $\\angle OBC=22^\\circ$, $\\angle OCA=44^\\circ$일 때, $\\angle BAO$의 크기는?",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "rpmRecordId": "M2-RPM-060",
+  "rpmEvidence": "외심 $O$에서 세 꼭짓점까지의 거리는 같으므로 $\\overline{OA}=\\overline{OB}=\\overline{OC}$이다.",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+  "newKeyProposal": null,
+  "typeReason": "Q2번 문항은 PT_TRIANGLE_CENTERS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABC)",
+  "rpmReason": "Q2번 문항은 M2-RPM-060에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABC)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q2번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ABC)",
+  "how": "Q2번 문항으로 M2-05 단원의 기본 개념과 성질을 적용하여 ④을(를) 바르게 구하였다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "점 $O$가 예각삼각형 $ABC$의 외심이고 $\\angle OBC=22^\\circ$, $\\angle OCA=44^\\circ$일 때, $\\angle BAO$의 크기는?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "외심",
+        "src": "stem",
+        "quote": "점 $O$가 예각삼각형 $ABC$의 외심이고 $\\angle OBC=22^\\circ$, $\\angle OCA=44^\\circ$일 때, $\\angle BAO$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "거리",
+        "src": "solution",
+        "quote": "외심 $O$에서 세 꼭짓점까지의 거리는 같으므로 $\\overline{OA}=\\overline{OB}=\\overline{OC}$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

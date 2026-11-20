@@ -1,0 +1,57 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "b6457e567cd87d95",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "정사각형에서 $\\angle ADB=45^\\circ$이므로 $\\angle PDA=45^\\circ-21^\\circ=24^\\circ$이다.",
+    "$\\overline{AP}=\\overline{AB}=\\overline{AD}$이므로 $\\triangle APD$는 이등변삼각형이고 $\\angle APD=\\angle PDA=24^\\circ$이다.",
+    "따라서 $\\angle PAD=180^\\circ-24^\\circ-24^\\circ=132^\\circ$이다.",
+    "$\\angle DAB=90^\\circ$이므로 $\\angle PAB=132^\\circ-90^\\circ=42^\\circ$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "정사각형 $ABCD$의 외부에 $\\overline{AB}=\\overline{AP}$가 되도록 점 $P$를 잡았다.",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "rpmRecordId": "M2-RPM-072",
+  "rpmEvidence": "정사각형에서 $\\angle ADB=45^\\circ$이므로 $\\angle PDA=45^\\circ-21^\\circ=24^\\circ$이다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+  "newKeyProposal": null,
+  "typeReason": "Q17번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)",
+  "rpmReason": "Q17번 문항은 M2-RPM-072에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABCD)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q17번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ABCD)",
+  "how": "Q17번 문항으로 M2-05 단원의 기본 개념과 성질을 적용하여 ②을(를) 바르게 구하였다. (문항 토큰 ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "사각형",
+        "src": "stem",
+        "quote": "정사각형 $ABCD$의 외부에 $\\overline{AB}=\\overline{AP}$가 되도록 점 $P$를 잡았다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "정사각형",
+        "src": "stem",
+        "quote": "정사각형 $ABCD$의 외부에 $\\overline{AB}=\\overline{AP}$가 되도록 점 $P$를 잡았다."
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각형",
+        "src": "solution",
+        "quote": "$\\overline{AP}=\\overline{AB}=\\overline{AD}$이므로 $\\triangle APD$는 이등변삼각형이고 $\\angle APD=\\angle PDA=24^\\circ$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

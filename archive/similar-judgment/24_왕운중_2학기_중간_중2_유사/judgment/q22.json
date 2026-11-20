@@ -1,0 +1,57 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "108571f0a87ca642",
+  "solvedAnswer": "$9\\text{ cm}$",
+  "solveSteps": [
+    "$I$가 내심이므로 $\\angle DBI=\\angle IBC$, $\\angle ECI=\\angle ICB$이다.",
+    "$\\overline{DE}\\parallel\\overline{BC}$이므로 엇각에 의해 $\\angle DIB=\\angle IBC=\\angle DBI$, $\\angle EIC=\\angle ICB=\\angle ECI$이다.",
+    "따라서 $\\overline{DB}=\\overline{DI}$, $\\overline{EC}=\\overline{EI}$이므로 $\\triangle ADE$의 둘레는 $\\overline{AD}+\\overline{DI}+\\overline{IE}+\\overline{AE}=\\overline{AB}+\\overline{AC}=22\\text{ cm}$이다.",
+    "$\\therefore \\overline{BC}=(\\triangle ABC\\text{의 둘레})-(\\overline{AB}+\\overline{AC})=31-22=9\\text{ cm}$"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 2] $\\triangle ABC$의 내심 $I$를 지나고 변 $BC$에 평행한 직선이 두 변 $AB$, $AC$와 만나는 점을 각각 $D$, $E$라 하자.",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "rpmRecordId": "M2-RPM-060",
+  "rpmEvidence": "$I$가 내심이므로 $\\angle DBI=\\angle IBC$, $\\angle ECI=\\angle ICB$이다.",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "TPL_TRIANGLE_INCENTER",
+  "newKeyProposal": null,
+  "typeReason": "Q22번 문항은 PT_TRIANGLE_CENTERS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABC)",
+  "rpmReason": "Q22번 문항은 M2-RPM-060에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABC)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q22번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ABC)",
+  "how": "Q22번 문항으로 M2-05 단원의 기본 개념과 성질을 적용하여 $9\\text{ cm}$을(를) 바르게 구하였다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "[서술형 2] $\\triangle ABC$의 내심 $I$를 지나고 변 $BC$에 평행한 직선이 두 변 $AB$, $AC$와 만나는 점을 각각 $D$, $E$라 하자."
+      }
+    ],
+    "goal": [
+      {
+        "term": "평행",
+        "src": "stem",
+        "quote": "[서술형 2] $\\triangle ABC$의 내심 $I$를 지나고 변 $BC$에 평행한 직선이 두 변 $AB$, $AC$와 만나는 점을 각각 $D$, $E$라 하자."
+      }
+    ],
+    "method": [
+      {
+        "term": "내심",
+        "src": "solution",
+        "quote": "$I$가 내심이므로 $\\angle DBI=\\angle IBC$, $\\angle ECI=\\angle ICB$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "qid": "q24",
+  "itemFingerprint": "67a032fda0ffb04a",
+  "solvedAnswer": "$3$",
+  "solveSteps": [
+    "$\\triangle ABC$의 넓이에서 $\\dfrac{1}{2}\\times 6\\times\\overline{BC}=24 \\implies \\overline{BC}=8$이다.",
+    "점 $D$에서 $\\overline{AB}$에 내린 수선의 발을 $E$라 하면 $\\triangle ACD$와 $\\triangle AED$에서 $\\angle ACD=\\angle AED=90^\\circ$, $\\overline{AD}$는 공통, $\\angle CAD=\\angle EAD$이므로 $\\triangle ACD \\equiv \\triangle AED$ (RHA 합동)이다.",
+    "따라서 $\\overline{AE}=\\overline{AC}=6$, $\\overline{DE}=\\overline{DC}$이므로 $\\overline{BE}=10-6=4$이다.",
+    "$\\overline{DC}=\\overline{DE}=t$라 하면 $\\overline{BD}=8-t$이고, 직각삼각형 $BDE$에서 피타고라스 정리에 의해 $(8-t)^2=4^2+t^2 \\implies 64-16t+t^2=16+t^2 \\implies 16t=48 \\implies t=3$ $\\therefore \\overline{DC}=3$"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 4] $\\angle C=90^\\circ$인 직각삼각형 $ABC$에서 $\\angle A$의 이등분선이 변 $BC$와 만나는 점을 $D$라 하자.",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "rpmRecordId": "M2-RPM-060",
+  "rpmEvidence": "$\\triangle ABC$의 넓이에서 $\\dfrac{1}{2}\\times 6\\times\\overline{BC}=24 \\implies \\overline{BC}=8$이다.",
+  "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+  "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+  "newKeyProposal": null,
+  "typeReason": "Q24번 문항은 PT_RIGHT_TRIANGLE_CONGRUENCE 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 90)",
+  "rpmReason": "Q24번 문항은 M2-RPM-060에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 90)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q24번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 90)",
+  "how": "Q24번 문항으로 M2-05 단원의 기본 개념과 성질을 적용하여 $3$을(를) 바르게 구하였다. (문항 토큰 90)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "[서술형 4] $\\angle C=90^\\circ$인 직각삼각형 $ABC$에서 $\\angle A$의 이등분선이 변 $BC$와 만나는 점을 $D$라 하자."
+      }
+    ],
+    "goal": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "[서술형 4] $\\angle C=90^\\circ$인 직각삼각형 $ABC$에서 $\\angle A$의 이등분선이 변 $BC$와 만나는 점을 $D$라 하자."
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "src": "solution",
+        "quote": "$\\triangle ABC$의 넓이에서 $\\dfrac{1}{2}\\times 6\\times\\overline{BC}=24 \\implies \\overline{BC}=8$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

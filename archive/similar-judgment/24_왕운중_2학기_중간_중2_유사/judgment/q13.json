@@ -1,0 +1,57 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "217c25a58e3b28fc",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "① 이웃한 두 각씩 크기가 같은 조건만으로는 등변사다리꼴이 될 수 있으므로 평행사변형이라 할 수 없다.",
+    "② 합동에 의해 $\\overline{AB}=\\overline{CD}$, $\\overline{BC}=\\overline{DA}$이므로 평행사변형이다.",
+    "③ 두 대각선이 서로를 이등분하므로 평행사변형이다.",
+    "④ $\\overline{AB}\\parallel\\overline{DC}$이면 $\\angle A+\\angle D=180^\\circ$이고 $\\angle A=\\angle C$이므로 $\\angle C+\\angle D=180^\\circ$가 되어 $\\overline{AD}\\parallel\\overline{BC}$이므로 평행사변형이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "사각형 $ABCD$에서 두 대각선 $AC$, $BD$의 교점을 $O$라 할 때, 다음 조건 중 $\\square ABCD$가 평행사변형이 되지 않는 것은?",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "rpmRecordId": "M2-RPM-072",
+  "rpmEvidence": "① 이웃한 두 각씩 크기가 같은 조건만으로는 등변사다리꼴이 될 수 있으므로 평행사변형이라 할 수 없다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+  "newKeyProposal": null,
+  "typeReason": "Q13번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)",
+  "rpmReason": "Q13번 문항은 M2-RPM-072에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABCD)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q13번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ABCD)",
+  "how": "Q13번 문항으로 M2-05 단원의 기본 개념과 성질을 적용하여 ①을(를) 바르게 구하였다. (문항 토큰 ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "사각형",
+        "src": "stem",
+        "quote": "사각형 $ABCD$에서 두 대각선 $AC$, $BD$의 교점을 $O$라 할 때, 다음 조건 중 $\\square ABCD$가 평행사변형이 되지 않는 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "사각형 $ABCD$에서 두 대각선 $AC$, $BD$의 교점을 $O$라 할 때, 다음 조건 중 $\\square ABCD$가 평행사변형이 되지 않는 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "사다리꼴",
+        "src": "solution",
+        "quote": "① 이웃한 두 각씩 크기가 같은 조건만으로는 등변사다리꼴이 될 수 있으므로 평행사변형이라 할 수 없다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
