@@ -1,0 +1,64 @@
+{
+  "qid": 13,
+  "itemFingerprint": "cfdbf99dce5e240a",
+  "solveSteps": [
+    "1) 3(x - 8) = -5x 의 괄호를 풀면 3x - 24 = -5x이다.",
+    "2) 3x + 5x = 24 => 8x = 24 => x = 3이다.",
+    "3) \\begin{aligned} 3(x - 8) = -5x \\implies 8x = 24 \\implies x = 3 \\end{aligned}",
+    "따라서 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-03",
+  "subUnitKey": "M1-03-LINEAR_EQUATION",
+  "unitEvidence": "일차방정식 $3(x - 8) = -5x$의 해는? [4점]",
+  "rpmRecordId": "M1-RPM-151",
+  "rpmReason": "괄호가 있는 일차방정식 \\begin{aligned} 3(x - 8) = -5x \\end{aligned} 을 괄호 전개 및 이항을 통해 푸는 M1-RPM-151에 해당한다.",
+  "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+  "templateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+  "typeReason": "괄호가 포함된 일차방정식 \\begin{aligned} 3(x - 8) = -5x \\end{aligned} 을 전개하고 정리하여 직접 해 x = 3을 구하는 PT_M1_LINEAR_EQUATION_SOLVING과 TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "3(x - 8) = -5x를 전개하여 \\begin{aligned} 8x = 24 \\implies x = 3 \\end{aligned} 을 구하는 전형적인 기본 일차방정식 풀이로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "일차방정식 $3(x - 8) = -5x$의 해는?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "일차방정식 $3(x - 8) = -5x$의 해는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "이항",
+        "src": "solution",
+        "quote": "상수항을 우변으로 이항하여 푼다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "3(x - 8) = -5x를 전개하여 \\begin{aligned} 8x = 24 \\implies x = 3 \\end{aligned} 을 도출하여 정답 ③으로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "qid": 7,
+  "itemFingerprint": "4f64b61701394399",
+  "solveSteps": [
+    "1) \\begin{aligned} (5 - 2x) - (-4x - 3) = 5 - 2x + 4x + 3 \\end{aligned}",
+    "2) 동류항끼리 묶으면 (-2x + 4x) + (5 + 3) = 2x + 8이다.",
+    "따라서 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-03",
+  "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+  "unitEvidence": "$(5 - 2x) - (-4x - 3)$을 계산한 식은? [4점]",
+  "rpmRecordId": "M1-RPM-147",
+  "rpmReason": "괄호 앞의 뺄셈 기호가 있는 식 \\begin{aligned} (5 - 2x) - (-4x - 3) \\end{aligned} 을 부호 분배 후 정리하는 M1-RPM-147에 해당한다.",
+  "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+  "templateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+  "typeReason": "일차식 \\begin{aligned} (5 - 2x) - (-4x - 3) \\end{aligned} 의 괄호를 풀고 덧셈·뺄셈을 수행하여 2x + 8을 구하는 PT_M1_LINEAR_EXPRESSION_STRUCTURE와 TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "부호 분배를 통해 \\begin{aligned} 5 - 2x + 4x + 3 = 2x + 8 \\end{aligned} 로 정리하는 기본 1단계 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "부호",
+        "src": "solution",
+        "quote": "항에 분배하여 부호를 바꾼다"
+      }
+    ],
+    "method": [
+      {
+        "term": "분배",
+        "src": "solution",
+        "quote": "안의 각 항에 분배하여 부호",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "식 \\begin{aligned} (5 - 2x) - (-4x - 3) \\end{aligned} 의 괄호를 전개하여 2x + 8을 얻어 정답 ②로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

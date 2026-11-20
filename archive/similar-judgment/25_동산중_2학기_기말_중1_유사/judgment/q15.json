@@ -1,0 +1,65 @@
+{
+  "qid": 15,
+  "itemFingerprint": "116f2f30c6caaf5a",
+  "solveSteps": [
+    "1) 점 A: x축 위의 점이고 x좌표가 3이므로 A(3, 0)이다.",
+    "2) 점 B: y축 위의 점이고 y좌표가 -4이므로 B(0, -4)이다.",
+    "3) 점 C: x좌표가 -2, y좌표가 5이므로 C(-2, 5)이다.",
+    "4) 점 D: x좌표가 4, y좌표가 -3이므로 D(4, -3)이다.",
+    "5) \\begin{aligned} D(4, -3) \\end{aligned} 이 바르게 나타낸 보기 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-04",
+  "subUnitKey": "M1-04-COORDINATE_PLANE",
+  "unitEvidence": "좌표평면 위의 네 점 $A, B, C, D$의 위치 설명 중 점의 좌표를 바르게 나타낸 것은? [3점]",
+  "rpmRecordId": "M1-RPM-163",
+  "rpmReason": "좌표축 및 사분면 조건에서 점의 순서쌍 좌표를 읽어 \\begin{aligned} D(4, -3) \\end{aligned} 을 판별하는 M1-RPM-163에 해당한다.",
+  "problemTypeKey": "PT_COORDINATE_POINT_READING",
+  "templateKey": "TPL_COORDINATE_POINT_READING_CORE",
+  "typeReason": "좌표평면 위의 점 위치 설명으로부터 순서쌍 좌표를 바르게 읽고 \\begin{aligned} D(4, -3) \\end{aligned} 을 고르는 PT_COORDINATE_POINT_READING과 TPL_COORDINATE_POINT_READING_CORE이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "좌표축과 사분면의 좌표 정의를 순서쌍 \\begin{aligned} D(4, -3) \\end{aligned} 에 직접 적용하는 기본 1단계 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "좌표",
+        "src": "stem",
+        "quote": "점의 좌표를 바르게 나타낸 것은? [3점]"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사분면",
+        "src": "stem",
+        "quote": "제$2$사분면 위의 점으로"
+      }
+    ],
+    "method": [
+      {
+        "term": "순서쌍",
+        "src": "solution",
+        "quote": "각 점의 위치에 대한 순서쌍 $(x, y)$를 구한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "네 점의 순서쌍을 점검하여 \\begin{aligned} D(4, -3) \\end{aligned} 이 옳음을 확인하고 정답 ⑤로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
