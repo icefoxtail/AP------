@@ -1,0 +1,76 @@
+{
+  "qid": 13,
+  "itemFingerprint": "9d8ebfd4a592baf3",
+  "solveSteps": [
+    "한 줄의 합 S = 3(x^2 + 2x - 3) = 3x^2 + 6x - 9 이다.",
+    "2행의 합에서 A = (3x^2 + 6x - 9) - (2x^2 + x + 1) = x^2 + 5x - 10 이다.",
+    "대각선에서 3행 1열의 칸 C_31 = 3x - 7 을 구한다.",
+    "1열에서 1행 1열의 칸 C_11 = 2x^2 + 4x - 6 을 구한다.",
+    "1행에서 B = -x^2 + x - 4 이므로 A - B = 2x^2 + 4x - 6 이다. 답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "unitEvidence": "선에 있는 세 다항식의 합을 $S$",
+  "rpmRecordId": "M2-RPM-130",
+  "rpmReason": "31번 위치의 칸과 11번 위치의 칸을 동류항 정리하여 A와 B의 다항식 식을 계산한다.",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "typeReason": "마방진의 합 규칙과 31번, 11번 칸의 동류항 정리를 이용하여 미지 다항식 A-B를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "한 줄의 합을 세우고 C_31과 C_11 칸을 단계별로 구하여 A와 B의 차를 구하는 복합 3단계 계산이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "quote": "선에 있는 세 다항식의 합이 모두",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "정리",
+        "quote": "변의 동류항을 정리하면 $$ (2",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "동류항",
+        "quote": "$$ 좌변의 동류항을 정리하면 $",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "대각선",
+        "quote": "가로, 세로, 대각선에 있는 세 다",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "C_31과 C_11을 구하고 A = x^2+5x-10 및 B를 계산하여 A-B = 2x^2+4x-6으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": [],
+  "course": [
+    "MIDDLE2"
+  ],
+  "curriculum": "2022"
+}

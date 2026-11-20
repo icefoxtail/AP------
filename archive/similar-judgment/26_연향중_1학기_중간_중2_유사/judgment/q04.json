@@ -1,0 +1,65 @@
+{
+  "qid": 4,
+  "itemFingerprint": "58612ecd3a2ba2eb",
+  "solveSteps": [
+    "순환소수를 분수로 고치면 0.05(5에 점) = 5/90 = 1/18 이고 0.7(7에 점) = 7/9 = 14/18 이다.",
+    "0.2 = 1/5 이므로 방정식은 1/5 x + 1/18 = 14/18 이다.",
+    "1/5 x = 13/18 이므로 x = (13/18) * 5 = 65/18 이다.",
+    "65 / 18 = 3.6111... = 3.6 1 (1에 점) 이다.",
+    "따라서 해를 순환소수로 바르게 나타낸 것은 3.6 1 (1에 점)이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "일차방정식 $0.2x +",
+  "rpmRecordId": "M2-RPM-122",
+  "rpmReason": "0.05 와 0.7 순환소수를 90 분모의 분수 1/18, 14/18 로 고쳐 해 65/18 을 순환소수로 변환하는 단계이다.",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "순환소수를 분수로 바꾸어 13/18 과 65/18 해를 구한 뒤 다시 순환소수로 나타내는 일차방정식 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "90 분모로 통분하여 13/18 에 5를 곱해 65/18 을 구하고 3.6111 순환소수를 찾는 난이도 2 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "일차방정식 $0.2x +"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "7}$의 해를 순환소수로 바르게 나타"
+      }
+    ],
+    "method": [
+      {
+        "term": "분수",
+        "src": "solution",
+        "quote": "순환소수를 분수로 고치면 $$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "1/5 x + 1/18 = 14/18 에서 x = 65/18 = 3.6111... 임을 계산하여 ②로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

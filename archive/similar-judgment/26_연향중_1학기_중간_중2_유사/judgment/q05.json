@@ -1,0 +1,65 @@
+{
+  "qid": 5,
+  "itemFingerprint": "9b007203dd852e25",
+  "solveSteps": [
+    "순환소수 0.27 (7에 점) = (27 - 2)/90 = 25/90 = 5/18 = 5 / (2 * 3^2) 이다.",
+    "5 / (2 * 3^2) * n 이 유한소수가 되려면 분모의 소인수 3^2 = 9 가 약분되어야 한다.",
+    "따라서 n은 9의 배수이어야 한다.",
+    "보기 중 30은 9의 배수가 아니므로 분모에 소인수 3이 남아 유한소수가 될 수 없다.",
+    "따라서 n의 값이 될 수 없는 것은 ④ 30이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "순환소수 $0.2\\do",
+  "rpmRecordId": "M2-RPM-120",
+  "rpmReason": "0.27 을 분모 18 로 고친 뒤 소인수 9 를 약분하기 위해 n이 9의 배수여야 함을 이용해 30 을 찾는 단계이다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "순환소수를 90 분모로 변환하여 5/18 을 얻고 유한소수가 되기 위한 자연수 n의 배수 조건을 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "분모 18 = 2 * 3^2 에서 9의 배수가 아닌 보기 30 을 즉시 찾아내는 기본 난이도 1 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "순환소수 $0.2\\do"
+      }
+    ],
+    "goal": [
+      {
+        "term": "유한소수",
+        "src": "stem",
+        "quote": "n$을 곱하면 유한소수로 나타낼 수"
+      }
+    ],
+    "method": [
+      {
+        "term": "배수",
+        "src": "solution",
+        "quote": "$은 $9$의 배수이어야 한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "0.27(점) = 5/18 에서 분모의 9를 약분해야 하므로 9의 배수가 아닌 30 을 골라 ④로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

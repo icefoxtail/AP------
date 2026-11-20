@@ -1,0 +1,76 @@
+{
+  "qid": 22,
+  "itemFingerprint": "61ed16b7813d23eb",
+  "solveSteps": [
+    "종이컵 (가)의 밑넓이는 pi * 6^2 = 36pi cm^2 이고 높이는 12 cm 이다.",
+    "원뿔의 부피 V = (1/3) * 36pi * 12 = 144pi cm^3 이다.",
+    "텀블러 (나)의 밑넓이는 pi * 4^2 = 16pi cm^2 이다.",
+    "물의 높이를 h라 하면 16pi * h = 144pi 이므로 h = 9 cm 이다.",
+    "답은 (1) 144pi cm^3, (2) 9 cm 이다."
+  ],
+  "solvedAnswer": "(1) $144\\pi\\rm,cm^3$ (2) $9\\rm,cm$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "unitEvidence": "(1) 원뿔의 부피는 $\\frac",
+  "rpmRecordId": "M2-RPM-134",
+  "rpmReason": "높이 12 cm와 밑넓이 36pi cm^2로부터 144pi 부피를 구하고 원기둥 16pi cm^2 식의 값을 계산한다.",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "typeReason": "원뿔의 부피 144pi cm^3와 원기둥의 밑넓이 16pi cm^2를 활용하여 물의 높이를 구하는 서술형 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "높이 12 cm로부터 144pi를 구하고 16pi로 나누어 높이 9 cm를 구하는 2단계 서술형 계산이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "원뿔",
+        "quote": "다음과 같은 원뿔 모양의 종이컵",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "높이",
+        "quote": "(\\text{높이})$이다. 종",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "부피",
+        "quote": "(1) 원뿔의 부피는 $\\frac",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "반지름",
+        "quote": "가): 밑면의 반지름의 길이가 $6",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "원뿔의 부피 144pi cm^3을 구하고 원기둥 밑넓이 16pi cm^2로 나누어 물의 높이 9 cm를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": [],
+  "course": [
+    "MIDDLE2"
+  ],
+  "curriculum": "2022"
+}

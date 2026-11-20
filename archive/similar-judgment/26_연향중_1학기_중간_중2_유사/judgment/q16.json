@@ -1,0 +1,77 @@
+{
+  "qid": 16,
+  "itemFingerprint": "4bde235e85b46748",
+  "solveSteps": [
+    "부등식을 좌변으로 이항하여 ax + b 꼴로 정리한다.",
+    "① x^2 - 3x <= 2x 에서 x^2 - 5x <= 0 이 되어 이차부등식이다.",
+    "② x - 5 < 0 (일차부등식)",
+    "③ 3x - 9 >= 0 (일차부등식)",
+    "④ 3x + 6 > 0 (일차부등식)",
+    "⑤ -2x - 10 < 0 (일차부등식). 따라서 일차부등식이 아닌 것은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "나는 부등식을 일차부등식이라고 한다.",
+  "rpmRecordId": "M2-RPM-136",
+  "rpmReason": "ax + b 꼴로 정리하여 최고차항의 차수가 1차인지 확인하고 -10 상수항 등을 계산한다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+  "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+  "typeReason": "각 식을 ax + b 꼴로 정리하여 최고차항이 1차인지 판별하며 5번의 -10 등을 확인한다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "식의 전개 후 ax + b 꼴인지 바로 판별할 수 있는 1단계 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차부등식",
+        "quote": "다음 중 일차부등식이 아닌 것은?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차부등식",
+        "quote": "등식이 아니라 이차부등식이다. ② $3",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "이항",
+        "quote": "항을 좌변으로 이항하여 정리했을",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "상수",
+        "quote": "\\text{는 상수}) $$ 꼴로",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "각 식을 ax 꼴로 전개 정리한 결과 1번 선지가 x^2 - 5x <= 0의 2차식이 되어 1번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": [],
+  "course": [
+    "MIDDLE2"
+  ],
+  "curriculum": "2022"
+}

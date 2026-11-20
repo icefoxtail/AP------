@@ -1,0 +1,64 @@
+{
+  "qid": 1,
+  "itemFingerprint": "f45743c992c63a14",
+  "solveSteps": [
+    "기약분수로 나타냈을 때 분모의 소인수가 2 또는 5뿐이면 유한소수이다.",
+    "① 21 / (2^3 * 3 * 5) = 7 / (2^3 * 5) 에서 분모 소인수가 2, 5 뿐이므로 유한소수이다.",
+    "② 7/18, ③ 11/24, ④ 9/(2^2 * 3^3 * 5) = 1/(2^2 * 3 * 5), ⑤ 14/75 = 14/(3 * 5^2) 는 모두 기약분수의 분모에 소인수 3이 남아 순환소수이다.",
+    "따라서 유한소수인 것은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "다음 분수를 소수로 나타낼 때, 유한소수인 것은?",
+  "rpmRecordId": "M2-RPM-119",
+  "rpmReason": "분자 21 과 분모의 3 을 약분하여 분모 소인수가 2 와 5 뿐인 유한소수를 판별하는 단계이다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "21 을 포함한 분수들을 기약분수로 고쳐 분모의 소인수로 유한소수를 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "21 과 3 의 약분 후 분모 소인수를 즉시 확인하는 기본 난이도 1 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "분수",
+        "src": "stem",
+        "quote": "다음 분수를 소수로 나타"
+      }
+    ],
+    "goal": [
+      {
+        "term": "유한소수",
+        "src": "stem",
+        "quote": "나타낼 때, 유한소수인 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "소인수분해",
+        "src": "solution",
+        "quote": "낸 후 분모를 소인수분해했을 때, 분모",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "21 / (2^3 * 3 * 5) = 7 / (2^3 * 5) 로 분모 소인수가 2와 5뿐임을 확인하여 ①로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

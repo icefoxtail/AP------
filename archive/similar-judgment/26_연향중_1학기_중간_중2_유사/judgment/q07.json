@@ -1,0 +1,75 @@
+{
+  "qid": 7,
+  "itemFingerprint": "91ca58f254cc53b2",
+  "solveSteps": [
+    "① a^4 * a^3 = a^7 이므로 옳지 않다.",
+    "② (x^3)^4 = x^12 이므로 옳지 않다.",
+    "③ (-3a^2)^3 = (-3)^3 * a^6 = -27a^6 이므로 옳다.",
+    "④ 2^8 / 2^5 / 2^3 = 2^3 / 2^3 = 1 이다.",
+    "⑤ (2x / y^3)^3 = 8x^3 / y^9 이다. 옳은 것은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "unitEvidence": "지수법칙을 적용하여 각 선지를 바르게 계산하면",
+  "rpmRecordId": "M2-RPM-126",
+  "rpmReason": "거듭제곱의 거듭제곱 및 부호와 계수의 지수법칙을 적용하여 -27과 차수를 계산한다.",
+  "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+  "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+  "typeReason": "지수법칙을 단항식 계산에 적용하여 -27을 얻는 계산의 옳고 그름을 검증한다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "기본적인 지수법칙과 거듭제곱 공식으로 -27 계수를 바로 판정하는 1단계 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "지수",
+        "quote": "지수법칙을 적용하여",
+        "src": "solution"
+      }
+    ],
+    "goal": [
+      {
+        "term": "지수법칙",
+        "quote": "지수법칙을 적용하여 각",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "법칙",
+        "quote": "지수법칙을 적용하여 각",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "각 선지의 단항식에 지수법칙을 직접 적용하여 3번 선지의 계산 결과가 -27임을 확인하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "problemFigureNeed": "NONE",
+  "problemFigureQuote": "",
+  "solutionFigureQuote": "",
+  "rpmKey": "M2-RPM-126",
+  "difficulty": 1,
+  "boundaryFlags": [],
+  "course": [
+    "MIDDLE2"
+  ],
+  "curriculum": "2022"
+}
