@@ -248,9 +248,9 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solutionImage": "assets/images/25_효천고_1학기_중간_고2_대수/q7-solution.svg",
-    "solutionImageAlt": "y=2⁻ˣ−3의 그래프가 (0,−2)를 지나고 오른쪽으로 갈수록 감소하면서 수평점근선 y=−3에 한없이 가까워지는 모습을 나타낸다.",
-    "solutionImageCaption": "exp_reflect",
+    "solutionImage": "assets/images/25_효천고_1학기_중간_고2_대수/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽으로 올라가는 파란 곡선 f, 왼쪽에서 내려오는 주황 곡선 g와 초록 곡선 h가 있고 가로 점근선 y=−3이 그려져 있다. y축 위의 점 P, Q의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f는 y=2ˣ, g는 y=2⁻ˣ, h는 y=2⁻ˣ−3의 그래프이다. g는 f를 y축에 대하여 대칭이동한 것이고, h는 g를 y축 방향으로 −3만큼 평행이동한 것이다. 점 P(0, 1)이 Q(0, −2)로 옮겨지므로 h는 점 (0, −2)를 지나고 점근선은 y=−3이며 x가 커지면 y가 감소한다. x축에 대한 대칭이동이라는 ⑤는 옳지 않으므로 답은 ⑤이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "content": "다음 중 함수 $y=2^{-x}-3$에 대한 설명으로 옳지 않은 것은? [4점]",
@@ -266,7 +266,8 @@ window.questionBank = [
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
     "subUnit": "지수함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageScale": 80
   },
   {
     "id": 8,
@@ -382,7 +383,12 @@ window.questionBank = [
     "subUnitKey": "H22-A-03-EXPONENTIAL_FUNCTION",
     "subUnit": "지수함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_중간_고2_대수/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 구간 −1 이상 2 이하에서 내려가는 파란 곡선 f와 올라가는 주황 곡선 g가 있고, f의 왼쪽 끝 점 A와 g의 오른쪽 끝 점 B의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f는 f(x)=2⁻ˣ+6의 그래프로 x가 커질수록 감소하므로 −1≤x≤2에서 A(−1, 8)이 최고점이고 a=8이다. g는 g(x)=log₃(2x+5)+3의 그래프로 증가하므로 B(2, 5)가 최고점이고 b=5이다. 따라서 a+b=13이고 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 11,
@@ -595,9 +601,9 @@ window.questionBank = [
       "좌표"
     ],
     "wide": false,
-    "solutionImage": "assets/images/25_효천고_1학기_중간_고2_대수/q16-solution.svg",
-    "solutionImageAlt": "반지름 1인 사분원의 호 PQ를 9등분한 P₁~P₈에서 x축에 내린 수선의 발 Q₁~Q₈을 표시하고, OQᵢ=cos(iπ/18)의 제곱합이 4임을 나타낸다.",
-    "solutionImageCaption": "quarter_circle",
+    "solutionImage": "assets/images/25_효천고_1학기_중간_고2_대수/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 중심 O에서 오른쪽 끝 P와 위쪽 끝 Q를 잇는 사분원의 호가 있고, 호 위의 여덟 점 P1부터 P8에서 선분 OP로 점선 수선이 내려와 있다.",
+    "solutionImageCaption": "사분원의 호 PQ를 9등분하는 점 P1, …, P8은 중심에서 10°, 20°, …, 80°의 방향에 있고, 각 점에서 선분 OP에 내린 수선의 발이 Q1, …, Q8이다. 반지름이 1이므로 OQi=cos(10i°)이다. 점 Pi와 P(9−i)는 보각이어서 cos²(10i°)+cos²(90°−10i°)=1이 되고 이런 짝이 4쌍이므로 합은 4이다. 따라서 답은 ④이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "content": "다음 그림과 같이 중심이 $O$, 반지름의 길이가 1인 사분원의 호 $PQ$를 9등분하는 점을 차례로 $P_1,\\ P_2,\\ \\cdots,\\ P_8$이라고 하자. 점 $P_1,\\ P_2,\\ \\cdots,\\ P_8$에서 선분 $OP$에 내린 수선의 발을 각각 $Q_1,\\ Q_2,\\ \\cdots,\\ Q_8$이라고 할 때, <br>$\\overline{OQ_1}^{\\,2}+\\overline{OQ_2}^{\\,2}+\\overline{OQ_3}^{\\,2}+\\cdots+\\overline{OQ_8}^{\\,2}$의 값은? [4.5점]<br><br><div style=\"text-align:center;\">\n<img src=\"assets/images/25_효천고_1학기_중간_고2_대수/q16-problem-v2.svg\" style=\"display:block; margin:8px auto; width:315px; max-width:100%; height:auto; max-height:248px; object-fit:contain\" alt=\"사분원호의 등분점에서 선분 OP에 내린 수선\"></div>",
@@ -613,7 +619,8 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageScale": 85
   },
   {
     "id": 17,
@@ -723,7 +730,11 @@ window.questionBank = [
     "subUnitKey": "H21-M1-01-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_중간_고2_대수/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽 점근선 근처에서 올라가는 파란 로그 곡선 f와 왼쪽에서 올라오는 주황 지수 곡선 g, 오른쪽 아래로 내려가는 초록 직선이 있다. 직선과 f의 교점 A, 직선과 g의 교점 B가 표시되어 있다.",
+    "solutionImageCaption": "k≈2.301일 때의 그림이다. f는 f(x)=log(x−k), g는 g(x)=10ˣ⁺¹+k+1의 그래프이고 직선 y=−x+2k와 만나는 점이 각각 A, B이다. AB=5√2이고 기울기가 −1이므로 두 점의 x좌표의 차는 5이다. 대칭성으로 A(k+2, k−2), B(k−3, k+3)이 되고 A가 f 위의 점이므로 k−2=log 2=0.3010이다. 따라서 k=2.3010이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -747,7 +758,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-EXPONENTIAL_FUNCTION",
     "subUnit": "지수함수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_중간_고2_대수/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 수직선 위에 세 줄이 있다. 첫 줄은 2와 11 사이의 열린 구간, 둘째 줄은 4 이상의 반직선, 셋째 줄은 4 이상 11 미만의 공통 구간이다.",
+    "solutionImageCaption": "위 줄은 log₃(x−2)<2에서 얻은 2<x<11이고, 가운데 줄은 두 번째 부등식에서 얻은 x≥4이다. 아래 줄은 공통 범위 4≤x<11이다. 삼각방정식 2cos²x−cosx−1=0의 해는 0≤x<2π에서 0, 2π/3(약 2.09), 4π/3(약 4.19)이고 이 중 4≤x<11에 속하는 것은 4π/3뿐이다. 따라서 답은 4π/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
