@@ -428,7 +428,11 @@ window.questionBank = [
     "subUnitKey": "H15-CALC-03-EXP_LOG_DERIVATIVE",
     "subUnit": "지수함수와 로그함수의 미분",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고2_미적분/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: y축에 대하여 대칭인 두 로그곡선이 파란색과 주황색으로 그려져 있고, x=1에서 두 곡선 위의 점 P, Q와 x축 위의 점 H가 표시되어 있다.",
+    "solutionImageCaption": "g(x)=f(-x)=log₂(3-x)는 f(x)=log₂(x+3)의 y축 대칭이다. 그림은 t=1일 때로, P(1,2), Q(1,1)이고 PQ=log₂(3+t)-log₂(3-t)이다. t→0+에서 PQ/(2t)는 h(t)=log₂(3+t)-log₂(3-t)에 대해 h′(0)/2이고 h′(0)=2/(3ln2)이므로 극한은 1/(3ln2)이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -462,7 +466,11 @@ window.questionBank = [
     "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
     "subUnit": "수열의 극한",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고2_미적분/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점을 지나는 직선 y=2x와 점 T에서 이 직선에 접하고 점 A를 지나는 원이 그려져 있으며, 원의 중심 C에서 T와 A로 반지름이 그어져 있고 T에서 직각 표시가 있다.",
+    "solutionImageCaption": "예: n=1일 때를 그린다. 점 T(1,2)에서 직선 y=2x에 접하는 원의 중심 C는 T를 지나고 기울기가 -1/2인 법선 위에 있고, 점 A(1,0)까지의 거리 CA와 CT가 같다. 이로부터 중심은 C(3,1)이고 a₁=3=(5·1²+1)/2이다. 일반적으로 aₙ=(5n²+1)/2이므로 aₙ/n²→5/2이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -497,7 +505,11 @@ window.questionBank = [
     "subUnitKey": "H15-CALC-04-TRIG_DERIVATIVE",
     "subUnit": "삼각함수의 미분",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고2_미적분/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: B에서 직각인 삼각형 ABC와 B에서 빗변 AC에 내린 수선의 발 H가 있고, 선분 BH 위의 점 P와 C를 이은 선분이 그려져 있다. 각 A와 각 PCH에 같은 크기의 각 표시 θ가 있고, 삼각형 PBC가 진한 회색으로 칠해져 있다.",
+    "solutionImageCaption": "예: AB=2, BC=1일 때(tanθ=1/2)를 그린다. 삼각형 ABC에서 BC=AB tanθ, BH=AB sinθ이고 CH=BC sin θ이다. 점 P는 BH 위에서 ∠PCH=θ이므로 PH=CH tanθ, CP=CH/cosθ이다. 삼각형 PBC(진한 회색)의 넓이는 (1/2)·PB·CH이고 내접원의 반지름은 r=(넓이)/(둘레의 반)이다. θ→0+에서 넓이는 θ³/2, 둘레는 2θ에 가까워지므로 r(θ)≈θ²/2이고 극한은 1/2이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
