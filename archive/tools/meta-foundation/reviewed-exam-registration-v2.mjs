@@ -24,6 +24,7 @@ import { REVIEWED_SOURCE_BINDING_OPT_INS, reviewedSourceBindingItems, reviewedSo
 import { restoreReviewedReplayCanonicalBefore } from "./reviewed-replay-registry-context.mjs";
 import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse } from "./native-reviewed-source-reuse.mjs";
 import { loadActiveMetaRegistry } from "./active-registry.mjs";
+import { TEXT_BOUND_REVIEW_TYPES, reviewedSourceTextUnchanged } from "./text-binding-lib.mjs";
 import { activeBindingContext, nativeReviewReceipt } from "./auto-register-merged-source.mjs";
 import { loadApprovedRendererPreservation, planApprovedRendererRecord, buildApprovedRendererBinding, verifyApprovedRendererReceipt } from "./native-approved-renderer-preservation.mjs";
 import { validateRpmPrimaryProvenance, fillRpmFromRecordId } from "./reviewed-rpm-provenance.mjs";
@@ -2172,12 +2173,17 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     ? execFileSync("git", ["hash-object", "--path", `archive/exams/${source}`, "--stdin"], { cwd: root, input: bytes, encoding: "utf8", stdio: ["pipe", "pipe", "pipe"] }).trim()
     : crypto.createHash("sha1").update(`blob ${bytes.length}\0`).update(bytes).digest("hex");
   // A direct type judgment is bound to each question's stem + choices (textBindingFingerprint, checked by its lane), not to the file blob.
-  if (req.expectedSourceBlobSha1 !== blob && req.approval.type !== DIRECT_JUDGMENT) fail("source Git blob drift");
+  // REVIEW2/FINAL_QA requests are bound to the stem + choices of the questions they cover (text-v1), not to the file blob: a changed blob
+  // is accepted below, once the bank is read, only when those texts equal the reviewed blob's. Other approval types keep the blob binding.
+  const blobDrift = req.expectedSourceBlobSha1 !== blob && req.approval.type !== DIRECT_JUDGMENT;
+  if (blobDrift && !TEXT_BOUND_REVIEW_TYPES.includes(req.approval.type)) fail("source Git blob drift");
   const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
   vm.createContext(ctx);
   vm.runInContext(bytes.toString("utf8"), ctx, { timeout: 5000 });
   const bank = ctx.window.questionBank || ctx.window.questions || ctx.questions || ctx.questionBank || ctx.window.examData?.questions;
   if (!Array.isArray(bank) || !Number.isInteger(req.expectedQuestionCount) || bank.length !== req.expectedQuestionCount || !bank.length) fail("source denominator mismatch");
+  if (blobDrift && !reviewedSourceTextUnchanged({ root, expectedBlobSha1: req.expectedSourceBlobSha1, currentBytes: bytes,
+    ordinals: req.items.map(item => item.sourceOrdinal).filter(Number.isInteger) }).ok) fail("source Git blob drift");
   const approvedRendererRequested = Object.hasOwn(req.approval, "rendererPreservation");
   const auditPreservationRequested = isAuditPreservation(req.approval);
   if ([AUDIT_PRESERVATION_SCHEMA, AUDIT_SOURCE_PRESERVATION_SCHEMA].includes(req.approval.sourceRebind?.schemaVersion) && !auditPreservationRequested)

@@ -36,6 +36,7 @@ const sorted = values => [...new Set(values)].sort();
 
 import { AUTHORITY_CORRECTION_MODE, isNativeAuthorityCorrection, authorityHoldSealPath } from '../../archive/tools/meta-foundation/native-authority-correction.mjs';
 import { bindDifficulty5Source, isTextBoundDraft } from '../../archive/tools/meta-foundation/register-difficulty5.mjs';
+import { TEXT_BOUND_REVIEW_TYPES, reviewedSourceTextUnchanged } from '../../archive/tools/meta-foundation/text-binding-lib.mjs';
 import { isPartialSubsetPreservation, validatePartialSubsetPreservation } from '../../archive/tools/meta-foundation/native-partial-subset-preservation.mjs';
 import { DECISION_DOCUMENT as TYPE_JUDGMENT_DECISION_DOCUMENT } from '../../archive/tools/meta-foundation/register-type-judgment.mjs';
 
@@ -924,7 +925,12 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
     const sourcePath = `archive/exams/${request.sourceArchiveFile}`;
     const source = fileRef(root, sourcePath), blobSha1 = git(root, 'rev-parse', `${headSha}:${sourcePath}`).trim();
     // A direct type judgment is bound to each question's stem + choices (the registrar checks the text), not to the file blob.
-    if ((blobSha1 !== request.expectedSourceBlobSha1 && request.approval?.type !== 'DIRECT_JUDGMENT') || sha(gitBytes(root, `${headSha}:${sourcePath}`)) !== source.sha256) fail('SOURCE_NOT_FIXED');
+    // A plain REVIEW2/FINAL_QA request is likewise bound to the stem + choices of its questions (same predicate as the registrar and the consumer gate).
+    const textBoundReview = blobSha1 !== request.expectedSourceBlobSha1 && !correction && !preservation && !authorityCorrection &&
+      TEXT_BOUND_REVIEW_TYPES.includes(request.approval?.type) &&
+      reviewedSourceTextUnchanged({ root, expectedBlobSha1: request.expectedSourceBlobSha1, currentBytes: gitBytes(root, `${headSha}:${sourcePath}`),
+        ordinals: selectedItems.map(item => item.sourceOrdinal) }).ok;
+    if ((blobSha1 !== request.expectedSourceBlobSha1 && request.approval?.type !== 'DIRECT_JUDGMENT' && !textBoundReview) || sha(gitBytes(root, `${headSha}:${sourcePath}`)) !== source.sha256) fail('SOURCE_NOT_FIXED');
     let bank;
     try {
       const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
