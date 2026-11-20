@@ -707,7 +707,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:883ae50f4053f20a0e45f08f9814c9723ecef98bda83cd8d02944e700f5d68d2",
+    "solutionImage": "assets/images/22_순천고_2학기_중간_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로 4칸, 세로 3칸 격자 도로망에서 A는 왼쪽 아래, B는 오른쪽 위이다. 각 교차점에 A에서 오는 최단 경로의 수가 적혀 있고 B에 35가 적힌다.",
+    "solutionImageCaption": "A에서 B까지 오른쪽 R 4번, 위쪽 U 3번이므로 전체 경로는 7!/(4!3!)=35가지이다. 그림은 각 교차점까지의 경로 수이다. 방향을 바꾼 횟수가 1번이면 R와 U 묶음이 2개로 2가지, 3번이면 묶음이 4개로 2×3×2=12가지, 5번이면 묶음이 6개로 2×3×1=6가지이다. 합 20/35=4/7이므로 p+q=11이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

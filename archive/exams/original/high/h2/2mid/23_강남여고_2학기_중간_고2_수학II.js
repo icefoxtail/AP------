@@ -170,7 +170,12 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선과 점 T에서 접하는 직선을 나타낸 그래프이며 T의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "y′=2x+1이므로 x=1에서 접선의 기울기는 2·1+1=3이다. 그림의 직선 y=3x-1은 접점 T(1,2)에서 곡선에 접하고 그 기울기가 미분계수 3이다. 접점의 y좌표 2를 기울기로 착각하지 않는다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 5,
@@ -602,7 +607,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: x=0에서 꺾여 이어지는 두 직선 조각의 그래프이며 x=-1, x=0, x=2의 점 A, C, B가 표시되어 있다.",
+    "solutionImageCaption": "f=(x-2)(x+1)이고 x<0에서 g=4(x+1), x≥0에서 g=-2(x-2)이다. 약분하면 x<0에서 h=(x-2)/4, x≥0에서 h=-(x+1)/2이다. 그림의 두 직선은 x=0에서 값 -1/2로 이어지고(경계 C도 연속), 빠진 점을 채우는 값이 A(-1,-3/4)의 a=-3/4, B(2,-3/2)의 b=-3/2이다. a+b=-9/4이므로 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -691,7 +700,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "projectionStatus": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY"
+    "projectionStatus": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: a=0과 a=1에서 값이 바뀌는 계단 모양 그래프이며 두 경계에서 높이 1인 점이 따로 표시되어 있다.",
+    "solutionImageCaption": "판별식 D=16a(a-1)이므로 f(a)는 a<0과 a>1에서 2, a=0과 a=1에서 1, 0<a<1에서 0이다. (가) a→1+에서 f(a)=2이고 a-2→-1+에서 f(a-2)=2이므로 합은 4로 참이다. (나) a=1에서 좌극한 0, 우극한 2, f(1)=1이므로 곱이 연속이려면 g(1)=0이어야 해 거짓이다. (다) f(a)=2a는 a=1을 요구하나 a=1에서 f=1이므로 실근이 없어 참이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -873,7 +886,12 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기 2인 직선 위의 두 점 A, P와 점 P에서 이 직선에 수직인 직선, 그 직선이 y축과 만나는 점 Q 및 선분 AP, AQ를 나타낸 그림이다.",
+    "solutionImageCaption": "예: t=2일 때의 그림이다. 직선 y=2x+4 위의 A(-2,0), P(2,8)에서 수직인 직선 n(기울기 -1/2)이 y축과 만나는 점은 Q(0,9)이다. 일반적으로 Q(0,5t/2+4)이고 AP²=5(t+2)², AQ²=4+(5t/2+4)²이다. t→∞에서 최고차항의 비 5/(25/4)=4/5이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 21,
@@ -919,7 +937,12 @@ window.questionBank = [
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 절댓값을 씌운 이차함수의 그래프로 x축 위의 두 점 A, B에서 뾰족하게 꺾이고 가운데 꼭짓점 C가 표시되어 있다.",
+    "solutionImageCaption": "예: k=3일 때 y=|f(x)|=|(x-7)(x+3)|의 그래프이다. 근 -k=-3과 7에서는 좌우 미분계수의 부호가 반대라 곱이 음수이므로 A(-3,0), B(7,0)이 집합 A에 속한다. 두 근 사이의 꼭짓점 C(2,25)에서는 미분계수가 0이라 곱이 0이므로 역시 속한다. 2∈A이므로 (7-k)/2=2에서 k=3이고 A={-3,2,7}, 합은 6이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 22,

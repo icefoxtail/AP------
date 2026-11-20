@@ -366,7 +366,12 @@ window.questionBank = [
     "metaStatus": "R2_RPM_REVIEWED_ACTIVE_EXACT; UID_PENDING",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/19_순천여고_2학기_중간_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 위에서 내려오는 삼차곡선과 곡선 위의 점 T에서 접하는 내려가는 직선 l이 있고, l이 세로축과 만나는 점 I가 표시된 그래프이다.",
+    "solutionImageCaption": "x+y-2=0의 기울기는 -1이다. y′=-3x²+6x-4=-1에서 -3(x-1)²=0이므로 접점은 T(1,-2)이다. 이 점에서의 접선 l은 y=-x-1이고 y축과 만나는 점 I(0,-1)이 y절편이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 13,
@@ -397,7 +402,12 @@ window.questionBank = [
       "CC_QUADRATIC_EQUATION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "solutionImage": "assets/images/19_순천여고_2학기_중간_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 오르는 직선과 아래로 볼록한 포물선이 있고, 왼쪽 끝에서는 포물선이 직선 아래에, 오른쪽 끝에서는 직선 위에 있어 구간 안에서 한 번 교차하는 그래프이다.",
+    "solutionImageCaption": "x=3에서 분자가 0이어야 하므로 a=-1이고 f(x)=x+2, b=5이다. 그래서 f(-1)+f(3)=1+5=6이라 ㄱ은 거짓이다. (x+1)f(x)=(x+1)(x+2)는 닫힌구간 [-2,2]에서 연속이라 최댓값과 최솟값이 있어 ㄴ은 참이다. 그림에서 포물선 y=x²+3x는 x=-2에서 직선 f보다 아래, x=2에서 위에 있어 구간 안에서 직선과 만나므로 x²+3x-f(x)=0이 근을 갖는다(ㄷ 참). 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 14,
@@ -433,7 +443,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/19_순천여고_2학기_중간_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점 O에서 가로축 위의 점 A와 세로축 위의 점 B로 가는 두 변과 빗변 AB가 직각삼각형을 이루고, 삼각형 안에 세 변에 접하는 원이 있으며 원의 중심 I에 좌표가 표시된 그림이다.",
+    "solutionImageCaption": "예: t=4일 때를 그린다. A(4,0), B(0,3)이고 OA=4, OB=3, 빗변 AB=5인 직각삼각형이다. 내접원은 세 변에 접하고 반지름 r=(4+3-5)/2=1이며 중심은 I(1,1)이다. 일반적으로 넓이 3t/2=r·(t+3+√(t²+9))/2에서 r/t=3/(t+3+√(t²+9))이고 t→0+에서 극한은 3/6=1/2이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -466,7 +480,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_PIECEWISE_DOMAIN_PARTITION"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/19_순천여고_2학기_중간_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 끝 점 A에서 올라가는 직선이 점 P에서 위로 볼록한 포물선 조각으로 이어져 내려가 오른쪽 끝 점 B에서 점 A와 같은 높이에 이르는 그래프이다.",
+    "solutionImageCaption": "x=1에서 1+a=2이므로 a=1이다. 주기 4이므로 한 주기 [-2,2]의 양 끝값이 같아야 이어지는데 f(-2)=-2+a=-1이고 f(2)=b+2이므로 b=-3이다. 그림은 한 주기의 그래프로 왼쪽 직선이 P(1,2)에서 포물선으로 이어지고 양 끝점 A(-2,-1), B(2,-1)의 높이가 같다. 따라서 a-b=4이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -501,7 +519,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_PIECEWISE_DOMAIN_PARTITION"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/19_순천여고_2학기_중간_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에서 내려와 점 V에서 가로축에 닿고 올라가 점 K에서 꼭대기에 이른 뒤 내려가 점 W에서 가로축에 닿고 다시 오르는 W와 M 모양이 이어진 그래프이다.",
+    "solutionImageCaption": "예: a=1일 때 g의 그래프이다. x≤a+3=4에서 g(x)=|x+1|이고 x>4에서 g(x)=|x-9|이다. 두 식이 경계 x=4에서 같은 높이 5를 가져 점 K(4,5)에서 이어지고 V(-1,0), W(9,0)에서 뾰족하게 닿는다. |a+4|=|a-6|에서 a=1이다. 따라서 g(a)=g(1)=|1+1|=2이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -534,7 +556,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_PIECEWISE_DOMAIN_PARTITION"
     ],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "solutionImage": "assets/images/19_순천여고_2학기_중간_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽의 낮은 수평선, 가운데의 높은 수평선, 오른쪽의 낮은 수평선이 계단 모양으로 이어지고 두 경계에는 중간 높이의 닫힌 점이 하나씩 있는 그래프이다.",
+    "solutionImageCaption": "가로축이 t, 세로축이 교점의 개수 g(t)이다. t<-3에서 1개, t=-3에서 2개(닫힌 점), -3<t<1에서 3개, t=1에서 2개(닫힌 점), t>1에서 1개이다. -3의 오른쪽 극한 3, 1의 오른쪽 극한 1이므로 a=3+1=4이고 g의 불연속점은 t=-3, 1의 2개라 b=2이다. 따라서 a+b=6이고 답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -569,7 +595,12 @@ window.questionBank = [
       "COND_POSITIVE",
       "COND_PIECEWISE_DOMAIN_PARTITION"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/19_순천여고_2학기_중간_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 개의 삼차곡선 조각이 점 P와 점 Q에서 수평으로 부드럽게 이어져 가운데는 올라가고 오른쪽은 다시 가파르게 올라가는 그래프이다.",
+    "solutionImageCaption": "접합점에서 값과 기울기가 같아야 하므로 f′(a)=f′(b)=0이고 f′(x)=6(x-1)(x+1)에서 a=-1, b=1이다. m=3f(-1)=18, n=m-3f(1)=24이다. 그림은 이때의 h이고 세 조각이 P(-1,6), Q(1,22)에서 값이 같고 기울기가 모두 0으로 매끄럽게 이어진다. 따라서 m-n=-6이고 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 19,
@@ -668,9 +699,10 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
-    "solutionImage": "assets/images/19_순천여고_2학기_중간_고2_수학II/q22-solution.svg",
-    "solutionImageAlt": "두 접점 P(3,-10), Q(-1,-2), 점 A(1,2), 중점 M(1,-6), 공통 밑변 AM과 삼각형 넓이",
-    "solutionImageCaption": "접점 P, Q에서 AM까지의 수평거리 2씩, AM=8이므로 삼각형 넓이는 16",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/19_순천여고_2학기_중간_고2_수학II/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선과 포물선 위쪽의 점 A가 있고, A를 지나는 두 직선이 포물선의 점 P와 점 Q에서 각각 접하며 P와 Q를 잇는 선분과 A에서 그 중점 M으로 내려가는 세로 선분이 그려진 그래프이다.",
+    "solutionImageCaption": "접점의 x좌표 t가 점 A(1,2)를 지나는 조건 t²-2t-3=0에서 t=3, -1이다. 접점 P(3,-10)에서의 접선 l1은 y=-6x+8, 접점 Q(-1,-2)에서의 접선 l2는 y=2x이고 두 접선이 A에서 만난다. PQ의 중점 M(1,-6)과 A를 잇는 AM은 길이 8로 수직이고, P, Q에서 직선 x=1까지의 거리는 모두 2이다. 넓이는 (1/2)·8·2+(1/2)·8·2=16이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   }
 ];

@@ -190,7 +190,11 @@ window.questionBank = [
     "imageStatus": "none",
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "reviewStatus": "manual_review"
+    "reviewStatus": "manual_review",
+    "solutionImage": "assets/images/18_매산고_1학기_중간_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "A와 B가 서로 배반이므로 그림의 겹침은 0이다. A의 여사건과 B의 여사건의 교집합인 바깥이 1/4이므로 P(A∪B)=1−1/4=3/4이다. 합집합이 A와 B로만 이루어지므로 P(B)=3/4−1/3=5/12이고 이것이 색칠한 B이다. 따라서 12P(B)=5이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -286,7 +290,11 @@ window.questionBank = [
     "imageStatus": "none",
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "reviewStatus": "manual_review"
+    "reviewStatus": "manual_review",
+    "solutionImage": "assets/images/18_매산고_1학기_중간_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 여섯 개의 점이 육각형 꼭짓점으로 놓인 원탁 그림이며 정현이가 앉는 점 A, 그 양옆의 점 B와 점 F, 이웃하지 않는 점 C, D, E가 구분되어 있다.",
+    "solutionImageCaption": "원탁의 6자리를 육각형 꼭짓점으로 나타낸 그림이다. 정현이의 자리를 점 A로 고정하면 회전이 없어진다. 호정이가 점 B 또는 점 F에 앉으면 이웃하고, 점 C, D, E에 앉으면 이웃하지 않는다. 전체 (6−1)!=120가지 중 이웃하는 경우는 (5−1)!×2=48가지이므로 이웃하지 않는 경우는 120−48=72가지이다. 따라서 확률은 72/120=3/5이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,

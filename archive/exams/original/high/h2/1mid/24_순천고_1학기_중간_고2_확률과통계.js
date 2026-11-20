@@ -214,9 +214,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_확률과통계/q05-solution.svg",
-    "solutionImageAlt": "세 경로 구간의 이동 순서와 경우 수를 연결해 곱의 법칙을 보인다.",
-    "solutionImageCaption": "세 경로 구간의 이동 순서와 경우 수를 연결해 곱의 법칙을 보인다.",
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_확률과통계/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 격자 모양의 길에서 출발점 A부터 각 교차점까지 가는 최단 경로의 수를 적은 그림이다.",
+    "solutionImageCaption": "A에서 X까지는 오른쪽 2번, 위쪽 2번으로 4!/(2!2!)=6가지, X에서 Y까지는 오른쪽 2번, 위쪽 1번으로 3가지, Y에서 B까지도 오른쪽 2번, 위쪽 1번으로 3가지이다. 세 구간의 경로 수를 곱하면 6×3×3=54이다. 따라서 답은 ②이다.",
     "solutionImageSize": "full"
   },
   {
@@ -354,9 +354,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_확률과통계/q08-solution.svg",
-    "solutionImageAlt": "B 학생 묶음을 원탁 배열 단위와 내부 배열로 나눈다.",
-    "solutionImageCaption": "B 학생 묶음을 원탁 배열 단위와 내부 배열로 나눈다.",
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_확률과통계/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 일곱 자리가 칠각형 꼭짓점으로 놓인 원탁 그림이며 이웃한 세 자리 P, Q, R과 나머지 네 자리 S, T, U, V가 있다.",
+    "solutionImageCaption": "원탁의 7자리를 칠각형 꼭짓점으로 나타낸 한 배치의 예이다. P, Q, R은 B 동아리 3명이 이웃해 앉은 묶음이고 S, T, U, V는 A 동아리 4명 자리이다. B 동아리 3명을 한 묶음으로 보면 A 4명과 묶음 1개, 모두 5개의 단위를 원탁에 앉히므로 (5−1)!=24가지이다. 묶음 안 B 3명의 순서는 3!=6가지이므로 24×6=144이다. 따라서 답은 ①이다.",
     "solutionImageSize": "full"
   },
   {
@@ -402,9 +402,9 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_확률과통계/q09-solution.svg",
-    "solutionImageAlt": "추가 학생 선택과 AB 블록의 원순열 배열 단계를 나눈다.",
-    "solutionImageCaption": "추가 학생 선택과 AB 블록의 원순열 배열 단계를 나눈다.",
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고2_확률과통계/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 다섯 자리가 오각형 꼭짓점으로 놓인 원탁 그림이며 이웃한 두 자리 A, B와 나머지 세 자리 C, D, E가 있다.",
+    "solutionImageCaption": "원탁의 5자리를 오각형 꼭짓점으로 나타낸 한 배치의 예이다. A와 B는 이웃해 앉은 두 학생이고 C, D, E는 함께 뽑힌 나머지 세 학생의 자리이다. A, B와 함께 앉을 3명을 나머지 5명 중에서 뽑는 방법은 5C3=10가지이다. A, B를 한 묶음으로 보면 묶음 1개와 3명, 모두 4개의 단위를 원탁에 앉히므로 (4−1)!=6가지이고, 묶음 안 순서는 2가지이다. 따라서 10×6×2=120이다. 그러므로 답은 ①이다.",
     "solutionImageSize": "full"
   },
   {

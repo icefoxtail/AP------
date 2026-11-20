@@ -43,7 +43,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_PIECEWISE_DOMAIN_PARTITION"
     ],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: x=1에서 끊어지는 두 직선 조각의 그래프이고, 왼쪽 직선은 열린 점에서 끝나며 오른쪽 직선은 아래쪽 닫힌 점 P에서 시작한다.",
+    "solutionImageCaption": "x<1에서 f(x)=-x+3이므로 x→1-에서 열린 점 (1,2)로 가까워져 a=2이다. x≥1에서 f(x)=x-2이므로 x→1+에서 닫힌 점 P(1,-1)에서 시작해 b=-1이다. 따라서 10a+b=20-1=19이고 답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 2,
@@ -176,7 +180,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 1인 직선 위에 x=1인 점 P와 y축과 만나는 점 Q가 표시된 그래프이다.",
+    "solutionImageCaption": "x=1에서 분모가 0이므로 분자도 0이어야 하고 1-a=0에서 a=1이다. 그러면 x≠1에서 f(x)=(x-1)(x+1)/(x-1)=x+1이므로 그래프는 직선 y=x+1이고 극한은 2이다. x=1의 함숫값 b가 이 극한과 같아야 연속이므로 점 P(1,2)가 직선 위에 있고 b=2이다. a+b=3이므로 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -219,7 +227,12 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 위의 두 점 A, B를 지나는 가파른 직선 l이 그려진 그래프이다.",
+    "solutionImageCaption": "f(2)=7, f(3)=14이므로 x가 2에서 3까지 변할 때의 평균변화율은 (14-7)/(3-2)=7이다. 그림의 직선 l은 두 점 A(2,7), B(3,14)를 지나며 기울기가 평균변화율 7이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 6,
@@ -262,7 +275,12 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 번 꺾였다 올라가는 삼차곡선과 오른쪽 점 T에서 접하는 가파른 직선 l을 나타낸 그래프이다.",
+    "solutionImageCaption": "f(x)=2x³+x²-1의 도함수 6x²+2x에서 f′(1)=8이다. 접점 T(1,2)를 지나는 직선은 y-2=8(x-1), 즉 y=8x-6이고 그림의 직선 l이 이 접선이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 7,
@@ -348,7 +366,12 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래로 같은 간격으로 나란히 놓인 두 포물선 사이에 가운데 포물선이 끼어 있는 그래프이고 세 곡선이 원점 가까이에서 오른쪽 위로 오른다.",
+    "solutionImageCaption": "예: f(x)=2x²일 때를 그렸다. x>0에서 f는 두 포물선 y=2x²-1과 y=2x²+1 사이에 있다. u=3x를 대입하면 18x²-1<f(3x)<18x²+1이고 2x²으로 나누면 9-1/(2x²)<f(3x)/(2x²)<9+1/(2x²)이다. 양쪽이 9로 수렴하므로 샌드위치 정리에 의해 극한은 9이다(예에서는 f(3x)/(2x²)=9). 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 9,
@@ -391,7 +414,12 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선이 왼쪽에서 한 번 올랐다 내려오고 점 A에서 아래에 있다가 점 B로 오르며 x축을 한 번 지나는 그래프이다.",
+    "solutionImageCaption": "P(x)=x³-2x²+x-3에서 P(2)=-1<0, P(3)=9>0이다. 그림에서 곡선은 A(2,-1)에서 B(3,9)로 올라가며 x축을 한 번 지난다. 연속함수의 부호가 바뀌므로 구간 (2,3)에 실근이 있고 실근이 하나뿐이므로 그 근이 이 구간에 있다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 10,
@@ -524,7 +552,11 @@ window.questionBank = [
       "CC_ABSOLUTE_VALUE_GRAPH"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 뾰족하게 꺾이는 V자 모양의 그래프이다.",
+    "solutionImageCaption": "f(x)=√(x²)=|x|의 그래프이다. 원점 O에서 끊기지 않으므로 x=0에서 연속이지만, 왼쪽 기울기 -1과 오른쪽 기울기 1이 달라 뾰족한 꼭짓점이라 미분가능하지 않다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -794,7 +826,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_PIECEWISE_DOMAIN_PARTITION"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: t=-1, 0, 1에서 높이가 바뀌는 계단 모양의 그래프이다. 가장 높은 구간은 -1과 0 사이이고 가장 낮은 구간은 0과 1 사이이며 두 바깥 구간은 중간 높이이다.",
+    "solutionImageCaption": "가로축은 t, 세로축은 f(t)를 π의 배수로 나타낸 값이다(1은 π, 3/2는 3π/2, 3은 3π). t<-1과 t≥1에서 f(t)=3π/2, t=-1에서 3π/2, -1<t≤0에서 3π, 0<t<1에서 π이다. 불연속점은 t=-1, 0, 1이므로 f(x)g(x)가 연속이려면 g(-1)=g(0)=g(1)=0이고 g(x)=x³-x이다. g(2)=8-2=6이므로 답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -882,7 +918,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_PIECEWISE_DOMAIN_PARTITION"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 낮은 수평선이 점 A에서 부드럽게 S자 모양으로 올라가 점 B에서 높은 수평선으로 이어지는 그래프이고 S자 부분 위에 점 G가 표시되어 있다.",
+    "solutionImageCaption": "g가 미분가능하려면 x=-1, 2에서 값과 기울기가 맞아야 하므로 f(-1)=-1, f′(-1)=0, f(2)=2, f′(2)=0이다. 이를 풀면 f(x)=-(2/9)x³+(1/3)x²+(4/3)x-2/9이다. 그림은 높이 -1의 수평선이 A(-1,-1)에서 삼차 조각으로 부드럽게 올라가 B(2,2)에서 높이 2의 수평선으로 이어지는 모습이고, 점 G(1,11/9)가 g(1)=11/9이다. a+b=9+11=20이므로 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

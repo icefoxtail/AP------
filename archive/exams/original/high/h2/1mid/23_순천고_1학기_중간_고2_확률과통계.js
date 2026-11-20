@@ -279,7 +279,11 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 여덟 자리가 팔각형 꼭짓점으로 놓인 원탁 그림이며 이웃한 두 자리가 한 쌍씩 네 쌍으로 묶이는 구조를 나타낸다.",
+    "solutionImageCaption": "원탁의 8자리를 팔각형 꼭짓점으로 나타낸 그림이다. 부부 4쌍이 각각 이웃한 두 자리(A와 B, C와 D, E와 F, G와 H)에 앉는 한 배치의 예이다. 부부 한 쌍을 한 블록으로 보면 블록 4개의 원순열은 (4−1)!=6가지이다. 남녀가 교대로 앉으려면 네 블록의 방향이 번갈아야 하므로 방향 배열은 2가지이다. 따라서 6×2=12이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -521,7 +525,11 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 격자 모양의 길에서 출발점 A부터 각 교차점까지 가는 최단 경로의 수를 적은 그림이다.",
+    "solutionImageCaption": "같은 속도로 동시에 출발하면 두 사람은 각자 4번 이동한 뒤 x+y=4인 점 P, Q, R, S 중 한 곳에서 만난다. 그림의 수는 A에서 각 점까지의 경로 수 4, 6, 4, 1이다. 각 점을 지나는 한 사람의 전체 경로는 A에서 점까지와 점에서 B까지의 곱으로 4, 24, 24, 4이다. 두 사람이 같은 점을 지나므로 곱의 합은 4×4+24×24+24×24+4×4=1184이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -724,7 +732,11 @@ window.questionBank = [
     "problemTypeKey": null,
     "templateKey": null,
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "UNKNOWN"
+    "legacyLevelCompatibility": "UNKNOWN",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 여덟 자리가 팔각형 꼭짓점으로 놓인 원탁 그림이며 마주 보는 네 쌍이 지름으로 이어져 있다.",
+    "solutionImageCaption": "원탁의 8자리를 팔각형 꼭짓점으로 나타내고 마주 보는 네 쌍을 지름 AE, BF, CG, DH로 이은 그림이다. 짝수 2, 4, 8, 16이 서로 이웃하지 않으려면 짝수와 홀수가 번갈아 놓여야 하므로 B, D, F, H에 짝수, A, C, E, G에 홀수가 놓이는 배치이다. 홀수 1, 3, 9, 27을 차가 3 이상인 두 쌍으로 나누는 방법은 2가지, 짝수도 2가지이고 각 집합에서 쌍을 지름에 놓는 방법과 쌍 안의 순서를 곱하면 16가지씩이다. 16×16=256을 회전 4가지로 나누면 64이므로 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

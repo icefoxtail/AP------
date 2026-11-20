@@ -85,7 +85,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_팔마고_1학기_중간_고2_확률과통계/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 여섯 자리가 육각형 꼭짓점으로 놓인 그림이며 노란 공 자리 A, C, E와 그 사이의 빨간 공 자리 B, D, F가 번갈아 놓여 있다.",
+    "solutionImageCaption": "원형 6자리를 육각형 꼭짓점으로 나타낸 그림이다. A, C, E는 노란 공 3개 자리이고 B, D, F는 노란 공 사이의 세 자리로 빨간 공이 교대로 들어간다. 서로 다른 노란 공 3개를 원형으로 배열하는 방법은 (3−1)!=2가지이다. 노란 공 사이 세 자리에 서로 다른 빨간 공 3개를 배열하는 방법은 3!=6가지이다. 따라서 2×6=12이므로 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -211,7 +215,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_팔마고_1학기_중간_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "A는 2의 배수 또는 5의 배수인 눈 2, 4, 5, 6, 8, 10의 모임이다. 사건 B가 A와 배반이면 B는 A의 여사건 1, 3, 7, 9의 부분집합이다. 색칠한 바깥의 네 원소 1, 3, 7, 9 중에서 공집합이 아닌 부분집합을 고르므로 2⁴−1=15개이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -253,7 +261,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_팔마고_1학기_중간_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "P(A∪B)=4/5이므로 바깥은 1/5이다. 드모르간 법칙에서 A의 여사건과 B의 여사건의 합집합은 A∩B의 여사건이므로 P(A∩B)=1−7/8=1/8이다. 그림은 색칠한 겹침이 1/8이고 바깥이 1/5이다. 덧셈정리에서 P(A)+P(B)=P(A∪B)+P(A∩B)=4/5+1/8=37/40이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -295,7 +307,12 @@ window.questionBank = [
     "integrationPattern": "CASE_BRANCH",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_팔마고_1학기_중간_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "A가 당첨 제비를 뽑지 않을 확률은 12/15=4/5이고 이때 B가 당첨을 뽑을 확률은 3/14이다. A가 당첨을 뽑을 확률은 3/15=1/5이고 이때 B가 당첨을 뽑을 확률은 2/14=1/7이다. B가 당첨인 두 경로의 확률은 4/5×3/14=6/35와 1/5×1/7=1/35이고 합은 7/35=1/5이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 8,
@@ -596,7 +613,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_팔마고_1학기_중간_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 여섯 개의 의자가 육각형 꼭짓점 A부터 F로 놓인 원탁 그림이다.",
+    "solutionImageCaption": "원탁의 의자 6개를 육각형 꼭짓점 A부터 F로 나타낸 그림이다. 4명이 앉을 의자 4개를 고르는 방법은 6C4=15가지이고(나머지 2개는 빈 의자), 고른 4개 의자에 4명을 앉히는 방법은 4!=24가지이다. 이렇게 세면 회전으로 같은 배치가 6번씩 세어지므로 6으로 나눈다. 따라서 15×24/6=60이므로 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -724,7 +745,12 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_팔마고_1학기_중간_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "여자 후기가 70%이고 그중 '제공'이 포함될 확률은 0.7이므로 경로의 확률은 0.49이다. 남자 후기는 30%이고 '제공'이 포함될 확률은 1−0.4=0.6이므로 경로의 확률은 0.18이다. '제공'이 포함된 후기 전체의 확률은 0.49+0.18=0.67이고, 그중 여자 후기의 비율이 0.49/0.67=49/67이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 18,
@@ -810,7 +836,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_팔마고_1학기_중간_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 격자 모양의 길에서 출발점 A부터 각 교차점까지 가는 최단 경로의 수를 적은 그림이다.",
+    "solutionImageCaption": "그림은 A에서 C까지 가는 최단 경로의 수를 교차점마다 적은 것이다. 형은 오른쪽 3번, 아래쪽 3번으로 6C3=20가지이고, B에서 출발하는 동생도 왼쪽 3번, 아래쪽 3번으로 20가지이다. 두 사람이 C에서 처음 만나려면 적어도 한 사람은 중앙 세로선에 C에서만 들어와야 하며 그런 경로는 10가지이다. 포함배제로 10×20+20×10−10×10=300이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -886,7 +916,11 @@ window.questionBank = [
     "integrationPattern": "CASE_BRANCH",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_팔마고_1학기_중간_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.",
+    "solutionImageCaption": "(가) f(2)f(5)=18인 순서쌍은 (3, 6)과 (6, 3)이다. (라)에서 f(2)≤f(5)이므로 그림처럼 f(2)=3, f(5)=6뿐이다. 이때 f(1)은 1, 2, 3 중 하나이고 f(3), f(4)는 3≤f(3)≤f(4)≤6을 만족하는 5C2=10가지이므로 두 조건을 모두 만족하는 함수는 3×10=30개이다. 조건 (라)의 함수는 d=10C5=252개이므로 확률은 30/252=5/42이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

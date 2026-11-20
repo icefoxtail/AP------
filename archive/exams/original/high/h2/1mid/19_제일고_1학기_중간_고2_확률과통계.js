@@ -123,7 +123,11 @@ window.questionBank = [
     "tags": [
       "객관식",
       "순열과 조합"
-    ]
+    ],
+    "solutionImage": "assets/images/19_제일고_1학기_중간_고2_확률과통계/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 여덟 개의 점이 팔각형 꼭짓점으로 놓인 원탁 그림이며 A가 놓인 점 A의 이웃인 점 B와 점 H, 맞은편인 점 E가 구분되어 있다.",
+    "solutionImageCaption": "원탁의 8자리를 팔각형 꼭짓점으로 나타낸 그림이다. A의 자리를 점 A로 고정하면 회전이 없어진다. A와 B가 이웃하려면 B가 점 B 또는 점 H에 앉는 2가지이고 나머지 6명을 놓는 방법이 6!가지이므로 m=2×6!=1440이다. A와 B가 마주 보려면 B는 맞은편인 점 E 하나뿐이고 나머지 6명을 놓는 방법이 6!가지이므로 n=720이다. 따라서 m+n=2160이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -249,7 +253,11 @@ window.questionBank = [
     "tags": [
       "객관식",
       "순열과 조합"
-    ]
+    ],
+    "solutionImage": "assets/images/19_제일고_1학기_중간_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 여섯 개의 점이 육각형 꼭짓점으로 놓인 원탁 그림이며 남학생 자리 A, C, E와 그 사이의 여학생 자리 B, D, F가 번갈아 있다.",
+    "solutionImageCaption": "원탁의 6자리를 육각형 꼭짓점으로 나타낸 그림이다. 점 A, C, E는 남학생 3명을 먼저 앉힌 자리이고 B, D, F는 남학생 사이의 세 자리로 여학생이 교대로 앉는다. 남학생 3명의 원순열은 (3−1)!=2가지이고 사이 세 자리에 여학생 3명을 앉히는 방법은 3!=6가지이다. 따라서 2×6=12이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -456,7 +464,11 @@ window.questionBank = [
     "tags": [
       "객관식",
       "확률의 뜻과 활용"
-    ]
+    ],
+    "solutionImage": "assets/images/19_제일고_1학기_중간_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "주사위 눈에서 짝수 A={2, 4, 6}, 소수 B={2, 3, 5}이다. A와 배반인 사건은 A 밖의 원소로만 이루어지고, B의 여사건과도 배반이면 B 안의 원소로만 이루어진다. 따라서 색칠한 A 밖의 B 부분 {3, 5}의 부분집합이어야 하고 개수는 2의 2제곱=4이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -623,9 +635,9 @@ window.questionBank = [
       "도형",
       "순열과 조합"
     ],
-    "solutionImage": "assets/images/19_제일고_1학기_중간_고2_확률과통계/q15-solution.svg",
-    "solutionImageAlt": "3×3 격자에서 속도 조건상 만날 수 있는 세 점 (1,3), (2,2), (3,1)을 표시한 그림",
-    "solutionImageCaption": "두 사람의 이동거리가 형 4칸, 동생 2칸일 때 같은 위치가 되는 세 격자점을 강조한다.",
+    "solutionImage": "assets/images/19_제일고_1학기_중간_고2_확률과통계/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 격자 모양의 길에서 출발점 A부터 각 교차점까지 가는 최단 경로의 수를 적은 그림이다.",
+    "solutionImageCaption": "형은 동생보다 두 배 빠르므로 둘이 만난다면 형이 4칸, 동생이 2칸 간 때이고 그 지점은 A에서 4칸 떨어진 C(1, 3), D(2, 2), E(3, 1)이다. 그림의 수는 A에서 오는 경로 수이다. 전체 경로 쌍은 20×20=400이다. D에서 만나는 쌍은 형이 6×2=12가지, 동생이 2×6=12가지여서 144쌍이다. C와 E에서 만나는 쌍은 각각 16쌍이다. 만나는 쌍이 모두 176쌍이므로 만나지 않는 경우는 400−176=224이고 답은 ②이다.",
     "solutionImageSize": "full"
   },
   {

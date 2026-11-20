@@ -565,7 +565,12 @@ window.questionBank = [
       "conditionKeyLookupStatus": "EVIDENCE_DEBT",
       "crossConceptLookupStatus": "EVIDENCE_DEBT"
     },
-    "decisiveStep": "x=0에서 y=−3이므로 ④가 참이다."
+    "decisiveStep": "x=0에서 y=−3이므로 ④가 참이다.",
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고2_수학I/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 0에서 4π/3까지 두 주기의 코사인 모양 곡선이 중심선 y=−1 위아래로 오르내리고, 왼쪽 끝의 가장 낮은 점에서 시작한다. 세로축에 1, −1, −3 눈금이 표시되어 있다.",
+    "solutionImageCaption": "y=2sin(3x−π/2)−1=−2cos3x−1이다. 그래프는 중심선 y=−1에서 위아래로 2만큼 움직이므로 최댓값은 1, 최솟값은 −3이고 주기는 2π/3이다. x=0에서 y=−3이므로 그래프는 (0, −3)을 지난다. 그림은 두 주기(0≤x≤4π/3)이다. 따라서 옳은 설명은 ④이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 90
   },
   {
     "id": 8,
@@ -1302,7 +1307,11 @@ window.questionBank = [
       "conditionKeyLookupStatus": "EVIDENCE_DEBT",
       "crossConceptLookupStatus": "EVIDENCE_DEBT"
     },
-    "decisiveStep": "최댓값 6, 최솟값 −1/4이므로 M−m=25/4."
+    "decisiveStep": "최댓값 6, 최솟값 −1/4이므로 M−m=25/4.",
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고2_수학I/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: −1에서 2까지의 구간에서 아래로 볼록한 포물선이 그려져 있고, 왼쪽 끝 A, 꼭짓점 V, 오른쪽 끝 B의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "t=log₃x로 두면 1/3≤x≤9에서 −1≤t≤2이고 y=(t−1)(t−2)=t²−3t+2이다. 그래프에서 꼭짓점 V(3/2, −1/4)가 최저점이고 구간의 양 끝은 A(−1, 6), B(2, 0)이다. 최댓값은 M=6, 최솟값은 m=−1/4이므로 M−m=25/4이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -1625,7 +1634,12 @@ window.questionBank = [
       "conditionKeyLookupStatus": "EVIDENCE_DEBT",
       "crossConceptLookupStatus": "EVIDENCE_DEBT"
     },
-    "decisiveStep": "OA와 AB의 기울기는 각각 2ab/π, −2ab/π이므로 직각 조건에서 a=π/(2b); 넓이 조건으로 a=3, b=π/6."
+    "decisiveStep": "OA와 AB의 기울기는 각각 2ab/π, −2ab/π이므로 직각 조건에서 a=π/(2b); 넓이 조건으로 a=3, b=π/6.",
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고2_수학I/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 0에서 6까지 올라갔다 내려오는 사인 곡선과 가로선 y=3이 가운데 꼭대기 점 A에서 닿는다. 원점 O, 꼭대기 A, 오른쪽 끝 B를 이은 삼각형이 색칠되어 있다.",
+    "solutionImageCaption": "A(π/2b, a), B(π/b, 0)이고 ∠OAB=π/2이므로 OA와 AB의 기울기의 곱이 −1에서 a=π/(2b)이다. 삼각형 OAB의 넓이 (1/2)·OB·a=(1/2)(π/b)·a=9에 π/b=2a를 넣으면 a²=9이고 a=3이다. 그림은 a=3, b=π/6인 그래프로 A(3, 3), B(6, 0)이다. 따라서 b=π/6이고 a+b=3+π/6이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 90
   },
   {
     "id": 21,
@@ -1856,6 +1870,11 @@ window.questionBank = [
       "conditionKeyLookupStatus": "EVIDENCE_DEBT",
       "crossConceptLookupStatus": "EVIDENCE_DEBT"
     },
-    "decisiveStep": "함수는 3(t−1/6)²+11/12, 따라서 m=11/12, M=3, 합은 47/12."
+    "decisiveStep": "함수는 3(t−1/6)²+11/12, 따라서 m=11/12, M=3, 합은 47/12.",
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고2_수학I/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 0에서 1까지의 구간에서 아래로 볼록한 포물선이 그려져 있고, 왼쪽 끝 A, 꼭짓점 V, 오른쪽 끝 B의 좌표가 표시되어 있다. 오른쪽 끝이 가장 높다.",
+    "solutionImageCaption": "t=sin²x로 두면 0≤x≤π/2에서 0≤t≤1이다. y=t³+(1−t)³+2t=3t²−t+1=3(t−1/6)²+11/12이다. 그래프는 꼭짓점 V(1/6, 11/12)에서 최소이고 구간의 끝 A(0, 1), B(1, 3) 중 B에서 최대이다. 따라서 m=11/12, M=3이고 M+m=47/12이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   }
 ];

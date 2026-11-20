@@ -537,7 +537,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_중간_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 끝에서 올라가 중간에서 꼭짓점을 이루고 오른쪽 끝에서 내려오는 삼각형 모양의 확률밀도함수 그래프이며 꼭짓점 오른쪽 일부가 사다리꼴로 칠해져 있다.",
+    "solutionImageCaption": "그림은 a=1일 때의 모양이다(예). 전체는 밑변 3a, 높이 a인 삼각형이므로 넓이가 3a²/2이다. x=a에서 높이는 a/2이므로 색칠한 0≤x≤a 부분은 평행한 두 변이 a와 a/2, 폭 a인 사다리꼴이고 넓이가 3a²/4이다. 확률은 (3a²/4)/(3a²/2)=1/2이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
