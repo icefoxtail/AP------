@@ -1,0 +1,82 @@
+{
+  "qid": 2,
+  "itemFingerprint": "2f734702ed08327e",
+  "solveSteps": [
+    "ㄱ: $a=\\sqrt3$, $b=-\\sqrt3$ 이면 $a+b=0$ 이 유리수이므로 거짓이다.",
+    "ㄴ: $(1+i)^2+(1-i)^2=2i-2i=0$ 이므로 거짓이다.",
+    "ㄷ: x^2-4x+5=(x-2)^2+1≥1>0 이므로 참이다. ㄹ: n=1 이면 1-3=-2≤0 이므로 참이다.",
+    "참인 명제는 ㄷ, ㄹ 이므로 정답은 ⑤ 이다 (배점 4.1)"
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "참인 명제인 것만을 모두 고른 것은?",
+  "rpmRecordId": "H1-RPM-244",
+  "rpmReason": "ㄱ~ㄹ 문장을 a=√3, b=-√3 반례나 (x-2)^2+1≥1, n=1 로 하나씩 참·거짓 판정하는 단계라 명제의 참·거짓 행이다 (배점 4.1)",
+  "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+  "templateKey": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+  "typeReason": "ㄱ은 a=√3, b=-√3 반례, ㄴ은 값 0 계산, ㄷ은 (x-2)^2+1>0, ㄹ은 n=1 예시로 각 문장의 참·거짓을 가리는 것이 명제의 참·거짓 템플릿이다 (배점 4.1)",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "ㄱ 반례 a=√3, ㄴ (1+i)^2 전개, ㄷ 완전제곱식 네 문장을 모두 판정해야 해 2단계다 (배점 4.1)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "무리수",
+        "src": "stem",
+        "quote": "두 무리수 $a, b$에 대하여"
+      },
+      {
+        "term": "양화",
+        "src": "stem",
+        "quote": "모든 실수 $x$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "참인 명제인 것만을 모두 고른 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "반례",
+        "src": "solution",
+        "quote": "$a=\\sqrt{3}$, $b=-\\sqrt{3}$은 모두 무리수이지만",
+        "evidenceType": "IMPLIED",
+        "justification": "a=√3, b=-√3 을 넣어 ㄱ이 거짓임을 보이는 반례 사용"
+      },
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "완전제곱식으로 변형하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "존재",
+        "src": "solution",
+        "quote": "자연수 $n$이 존재한다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "ㄱ~ㄹ을 직접 판정해 ㄷ, ㄹ만 참이라 ⑤를 얻었고 해설과 같았다. 문장마다 반례·예시·변형으로 가리는 판정이라 명제의 참·거짓 템플릿을 골랐다 (배점 4.1)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

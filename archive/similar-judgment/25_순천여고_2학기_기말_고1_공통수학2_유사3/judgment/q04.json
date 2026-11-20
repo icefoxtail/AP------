@@ -1,0 +1,82 @@
+{
+  "qid": 4,
+  "itemFingerprint": "47d322513dd7a62c",
+  "solveSteps": [
+    "Q 는 x+y>0 이고 xy>0 이라 x>0, y>0 이므로 P=Q 이다. R 는 x+y>0 또는 xy>0 이라 P⊂R 이고 (2,-1)∈R 이나 ∉P 이다.",
+    "ㄱ: P=Q 이므로 필요충분조건이다. ㄴ: q→r 의 역 r→q 는 R⊄Q 이므로 거짓이다.",
+    "ㄷ: ~r→~p 의 대우 p→r 은 P⊂R 이므로 참이다. ㄹ: P⊂R, R⊄P 이므로 필요조건이지만 충분조건은 아니다.",
+    "옳은 것은 ㄱ, ㄷ, ㄹ 이므로 정답은 ⑤ 이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "$p$는 $q$이기 위한 필요충분조건이다",
+  "rpmRecordId": "H1-RPM-247",
+  "rpmReason": "세 조건의 진리집합 P=Q, R 의 포함 관계 P=Q⊊R 로 필요충분조건·필요조건을 따지는 단계라 조건 관계 행이다 (배점 4.7)",
+  "problemTypeKey": "PT_NEC_SUFF_RELATION",
+  "templateKey": "TPL_NEC_SUFF_SET_RELATION",
+  "typeReason": "진리집합 P=Q⊊R 로 ㄱ의 필요충분조건, ㄹ의 필요조건이지만 충분조건 아님을 가리는 단계가 집합과 필요조건·충분조건 템플릿이다 (배점 4.7)",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "x>0, y>0 과 x+y>0 또는 xy>0 의 진리집합을 P=Q⊊R 로 비교하고 ㄱ~ㄹ 네 개를 역·대우까지 판정하는 3단계다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "두 실수 $x, y$에 대하여"
+      },
+      {
+        "term": "진리집합",
+        "src": "solution",
+        "quote": "세 조건 $p, q, r$의 진리집합을 각각 $P, Q, R$이라 하자"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "옳은 것만을 있는 대로 고른 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대우",
+        "src": "solution",
+        "quote": "대우는 $p \\to r$이다",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "반례",
+        "src": "solution",
+        "quote": "$(2, -1) \\in R$이지만 $(2, -1) \\notin P$",
+        "evidenceType": "IMPLIED",
+        "justification": "(2,-1) 이 R 에는 속하나 P 에는 속하지 않는 반례로 P≠R 임을 보인다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "필요조건",
+        "src": "stem",
+        "quote": "필요조건이지만 충분조건은 아니다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "P=Q, P⊂R 로 포함 관계를 만들어 ㄱ,ㄷ,ㄹ이 옳아 ⑤를 얻었고 해설과 같았다. 판단이 진리집합의 포함 관계로 이루어져 집합 관계 템플릿을 골랐다 (배점 4.7)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

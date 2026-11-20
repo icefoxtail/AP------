@@ -1,0 +1,88 @@
+{
+  "qid": 5,
+  "itemFingerprint": "cdfbb29d467d3613",
+  "solveSteps": [
+    "(가) P∪Q=Q 에서 P⊂Q 이다.",
+    "(나) Q∩R^c=Q 에서 Q⊂R^c 이다.",
+    "P⊂Q⊂R^c 이므로 P⊂R^c, 즉 p→~r 가 항상 참이다.",
+    "U={1,2,3,4}, P={1}, Q={1,2}, R={3} 으로 ①~④ 는 거짓이라 정답은 ⑤ 이다 (배점 4.6)"
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "세 조건 $p, q, r$의 진리집합을 각각 $P, Q, R$이라 하자",
+  "rpmRecordId": "H1-RPM-243",
+  "rpmReason": "조건 p,q,r 의 진리집합 P,Q,R 에 대한 (가) P∪Q=Q, (나) Q∩R^c=Q 를 포함 관계 P⊂Q⊂R^c 로 바꾸는 단계라 진리집합 행이다 (배점 4.6)",
+  "problemTypeKey": "PT_TRUTH_SET_RELATION",
+  "templateKey": "TPL_TRUTHSET_CHAINED_INCLUSION",
+  "typeReason": "두 집합 조건에서 P⊂Q 와 Q⊂R^c 를 얻어 P⊂Q⊂R^c 로 잇고 p→~r 을 고르는 단계가 진리집합의 연쇄 포함과 같다 (배점 4.6)",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
+  "difficultyReason": "P∪Q=Q 와 Q∩R^c=Q 를 포함 관계 두 개로 바꿔 잇고 U={1,2,3,4} 반례로 ①~④를 거르는 2~3단계라 낮은 쪽 2로 둔다 (배점 4.6)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "전체집합",
+        "src": "stem",
+        "quote": "전체집합 $U$에 대하여"
+      },
+      {
+        "term": "합집합",
+        "src": "stem",
+        "quote": "(가) $P \\cup Q = Q$"
+      },
+      {
+        "term": "교집합",
+        "src": "stem",
+        "quote": "(나) $Q \\cap R^c = Q$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "항상 참인 명제는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "변환",
+        "src": "solution",
+        "quote": "주어진 집합 조건을 포함관계로 바꾼다",
+        "evidenceType": "IMPLIED",
+        "justification": "(가),(나)의 합집합·교집합 등식을 P⊂Q, Q⊂R^c 로 바꿔 쓴다"
+      },
+      {
+        "term": "반례",
+        "src": "solution",
+        "quote": "이때 (가)와 (나)를 모두 만족한다",
+        "evidenceType": "IMPLIED",
+        "justification": "U={1,2,3,4}, P={1}, Q={1,2}, R={3} 반례로 ①~④를 거짓으로 가린다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "항상성립",
+        "src": "stem",
+        "quote": "항상 참인 명제는?"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "(가),(나)를 포함 관계 P⊂Q⊂R^c 로 바꿔 p→~r 이 항상 참이라 ⑤가 나왔고 해설과 같았다. 판단이 진리집합의 연쇄 포함에서 나와 연쇄 포함 템플릿을 골랐다 (배점 4.6)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

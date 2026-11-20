@@ -1,0 +1,80 @@
+{
+  "qid": 1,
+  "itemFingerprint": "fed218e85b61acef",
+  "solveSteps": [
+    "$\\sim p$는 $x^2-8x+12<0$ 이므로 $(x-2)(x-6)<0$, 즉 $2<x<6$ 이다.",
+    "전체집합이 자연수 전체이므로 $\\sim p$의 진리집합은 $\\{3,4,5\\}$ 이다.",
+    "원소의 합은 3+4+5=12 이므로 정답은 ④ 이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "$\\sim p$의 진리집합의 원소의 합은?",
+  "rpmRecordId": "H1-RPM-243",
+  "rpmReason": "x^2-8x+12<0 을 풀어 자연수 원소 3,4,5 로 이루어진 ~p 의 진리집합을 정하는 단계라 진리집합 행이다.",
+  "problemTypeKey": "PT_TRUTH_SET_RELATION",
+  "templateKey": "TPL_FINITE_TRUTHSET_ENUMERATION",
+  "typeReason": "조건 p 의 부정 ~p 의 진리집합을 {3,4,5} 로 나열해 합 12 를 구하는 단계가 유한 진리집합의 판정과 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B12",
+  "difficultyReason": "부정 x^2-8x+12<0 을 (x-2)(x-6)<0 으로 인수분해해 푼 뒤 자연수 3,4,5 를 더하는 두세 단계라 2단계로 본다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "전체집합",
+        "src": "stem",
+        "quote": "전체집합 $U$가 자연수 전체의 집합일 때"
+      },
+      {
+        "term": "이차부등식",
+        "src": "stem",
+        "quote": "$p: x^2-8x+12 \\ge 0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "원소의 합은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "부정",
+        "src": "solution",
+        "quote": "조건 $p$를 부정하면",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "좌변을 인수분해하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "범위",
+        "src": "solution",
+        "quote": "$2 < x < 6$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "발문만 보고 ~p: x^2-8x+12<0 으로 풀어 3,4,5 의 합 12 가 나와 ④와 같았다. 양화가 없는 조건의 부정이라 부정 유형 대신 유한 진리집합의 나열로 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

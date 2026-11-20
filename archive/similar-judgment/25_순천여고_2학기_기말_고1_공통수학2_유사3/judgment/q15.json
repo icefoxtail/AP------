@@ -1,0 +1,76 @@
+{
+  "qid": 15,
+  "itemFingerprint": "f396d5935bc32766",
+  "solveSteps": [
+    "교점의 x좌표 u,v 는 k/x=-x+6 에서 x^2-6x+k=0 의 두 근이므로 u+v=6, uv=k 이다.",
+    "PQ=√((u-v)^2+((-u+6)-(-v+6))^2)=√2|u-v|=2√5 이므로 (u-v)^2=10 이다.",
+    "(u-v)^2=(u+v)^2-4uv=36-4k 이므로 36-4k=10, k=13/2 이다.",
+    "판별식 36-4k=10>0 이라 정답은 ④ 이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "아래 그림과 같이 유리함수",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-08",
+  "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+  "unitEvidence": "선분 $PQ$의 길이가 $2\\sqrt{5}$일 때",
+  "rpmRecordId": "H1-RPM-265",
+  "rpmReason": "y=k/x 와 직선 y=-x+6 의 교점 P,Q 의 좌표를 x^2-6x+k=0 의 근으로 잡는 단계라 유리함수와 그래프의 교점 행이다 (배점 4.8)",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+  "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DISTANCE_LENGTH",
+  "typeReason": "교점 P,Q 의 좌표 합 6, 곱 k 로 선분 PQ=√2|u-v|=2√5 를 세워 k=13/2 를 구하는 단계가 그래프 위 점의 거리·길이 구하기와 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
+  "difficultyReason": "근과 계수의 관계 u+v=6, uv=k 와 PQ=√2|u-v| 의 거리 식으로 36-4k=10 을 푸는 2~3단계라 3으로 둔다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "유리함수",
+        "src": "stem",
+        "quote": "직선 $y=-x+6$과 두 점 $P, Q$에서 만난다"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "상수 $k$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "곱셈공식",
+        "src": "solution",
+        "quote": "곱셈 공식의 변형에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "선분 $PQ$의 길이가 $2\\sqrt{5}$일 때"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "교점의 x좌표를 근으로 두고 PQ=√2|u-v|=2√5 에서 36-4k=10 으로 k=13/2 가 나와 ④와 같았다. 교점 사이의 길이를 쓰는 문제라 그래프 위 점의 거리·길이 구하기를 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

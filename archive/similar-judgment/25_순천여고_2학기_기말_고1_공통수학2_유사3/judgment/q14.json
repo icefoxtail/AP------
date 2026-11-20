@@ -1,0 +1,76 @@
+{
+  "qid": 14,
+  "itemFingerprint": "f1267b00f66d4fa7",
+  "solveSteps": [
+    "f(0)=b/2=-1 이므로 b=-2 이다.",
+    "(f∘f)(x)=x 이므로 f 는 자기 자신이 역함수이고, y=(ax-2)/(x+2) 에서 x,y 를 바꾸면 y=(-2x-2)/(x-a) 이다.",
+    "f(x)=f^{-1}(x) 에서 계수를 비교하면 a=-2 이다.",
+    "a+b=-2+(-2)=-4 이므로 정답은 ① 이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+  "unitEvidence": "$(f\\circ f)(x)=x$를 만족시키고",
+  "rpmRecordId": "H1-RPM-255",
+  "rpmReason": "(f∘f)(x)=x 에서 f=f^{-1} 임을 이용해 y=(ax-2)/(x+2) 의 x,y 를 바꿔 역함수 (-2x-2)/(x-a) 를 구하는 단계라 역함수 구하기 행이다.",
+  "problemTypeKey": "PT_INVERSE_PROPERTIES",
+  "templateKey": "TPL_INVERSE_PROPERTY_JUDGMENT",
+  "typeReason": "(f∘f)(x)=x 로 f 가 자기역함수임을 알고 f^{-1}(x)=(-2x-2)/(x-a) 와 계수를 비교해 a=-2 를 얻는 단계가 역함수의 성질 판정과 같다 (배점 4.3)",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
+  "difficultyReason": "f(0)=-1 로 b=-2 를 얻고 x,y 를 바꿔 역함수를 구해 계수 비교로 a=-2 를 얻는 2~3단계라 낮은 쪽 2로 둔다 (배점 4.3)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "유리함수",
+        "src": "stem",
+        "quote": "유리함수 $f(x)=\\dfrac{ax+b}{x+2}$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$a+b$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$x=0$을 대입하면",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "계수비교",
+        "src": "solution",
+        "quote": "계수를 비교하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "항상성립",
+        "src": "stem",
+        "quote": "정의역의 모든 원소 $x$에 대하여"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "f(0)=-1 로 b=-2, (f∘f)(x)=x 로 자기역함수 조건에서 a=-2 가 나와 합 -4 라 ①과 같았다. 판단이 f=f^{-1} 이라는 역함수의 성질에 있어 역함수의 성질 판정을 골랐다 (배점 4.3)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

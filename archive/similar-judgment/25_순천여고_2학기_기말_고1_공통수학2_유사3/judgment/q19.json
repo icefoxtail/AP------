@@ -1,0 +1,83 @@
+{
+  "qid": 19,
+  "itemFingerprint": "70c58ace76e0dad3",
+  "solveSteps": [
+    "x≥-1 에서 f=(x+1)^2-3 은 증가하며 치역 [-3,∞), x<-1 에서 f=-(x+1)^2-3 은 증가하며 치역 (-∞,-3) 이라 f 는 일대일대응이다.",
+    "임의의 x 에서 (f∘g)(x)=x 이므로 g=f^{-1} 이다.",
+    "(g∘g)(a)=0 의 양변에 f 를 두 번 적용하면 a=(f∘f)(0) 이다.",
+    "f(0)=-2, f(-2)=-4+4-4=-4 이므로 a=-4 이다 (배점 br)"
+  ],
+  "solvedAnswer": "-4",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+  "unitEvidence": "임의의 실수 $x$에 대하여 $(f \\circ g)(x)=x$를 만족시키는 함수 $g(x)$가 존재한다",
+  "rpmRecordId": "H1-RPM-255",
+  "rpmReason": "(f∘g)(x)=x 에서 g=f^{-1} 임을 알고 a=(f∘f)(0)=-4 로 역함수를 이용하는 단계라 역함수 구하기 행이다 (배점 br)",
+  "problemTypeKey": "PT_FUNCTION_RECOVERY",
+  "templateKey": "TPL_RECOVER_FUNCTION_FROM_COMPOSITION",
+  "typeReason": "(f∘g)(x)=x 라는 합성관계에서 g=f^{-1} 로 g 를 복원하고 a=(f∘f)(0)=-4 를 얻는 단계가 합성관계에서 함수식 구하기와 같다 (배점 br)",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
+  "difficultyReason": "f 가 일대일대응임을 보여 g=f^{-1} 로 놓고 (g∘g)(a)=0 의 양변에 f 를 두 번 써서 a=f(f(0))=-4 로 가는 착상이 필요한 2~3단계다 (배점 br)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "조각함수",
+        "src": "stem",
+        "quote": "x^2+2x-2 & (x \\ge -1)"
+      },
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "함수 $g(x)$가 존재한다"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "상수 $a$의 값을 구하는"
+      }
+    ],
+    "method": [
+      {
+        "term": "역함수",
+        "src": "solution",
+        "quote": "$g=f^{-1}$이다",
+        "evidenceType": "IMPLIED",
+        "justification": "(f∘g)(x)=x 에서 g 가 f 의 역함수 f^{-1} 임을 이용한다"
+      },
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$f(-2)=-(-2)^2-2(-2)-4=-4+4-4=-4$",
+        "evidenceType": "IMPLIED",
+        "justification": "f(0)=-2 를 f 에 다시 넣어 f(-2)=-4 를 구한다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "존재",
+        "src": "stem",
+        "quote": "함수 $g(x)$가 존재한다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "x≥-1 과 x<-1 에서 f 가 증가하고 치역이 [-3,∞)·(-∞,-3) 이라 일대일대응임을 보고 g=f^{-1} 로 a=f(f(0))=-4 를 얻었고 해설과 같았다. 합성관계에서 g 를 복원하는 문제라 합성관계 함수식 구하기를 골랐다 (배점 br)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

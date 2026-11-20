@@ -1,0 +1,82 @@
+{
+  "qid": 10,
+  "itemFingerprint": "0a948f60e0377344",
+  "solveSteps": [
+    "(f∘f)(x)=f(ax+b)=a(ax+b)+b=a^2x+b(a+1) 이다.",
+    "4x+9 와 계수를 비교하면 a^2=4, b(a+1)=9 이고 a>0 이므로 a=2, b=3 이다.",
+    "f(x)=2x+3 이므로 f(-1)=1 이고 f^{-1}(-1)=k 라 하면 2k+3=-1 에서 k=-2 이다.",
+    "합은 1+(-2)=-1 이므로 정답은 ① 이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+  "unitEvidence": "$(f\\circ f)(x)=4x+9$일 때",
+  "rpmRecordId": "H1-RPM-253",
+  "rpmReason": "(f∘f)(x)=a^2x+b(a+1)=4x+9 로 합성함수를 계산해 a=2, b=3 을 정하는 단계라 합성함수 계산 행이다 (배점 4.6)",
+  "problemTypeKey": "PT_FUNCTION_RECOVERY",
+  "templateKey": "TPL_RECOVER_FUNCTION_FROM_COMPOSITION",
+  "typeReason": "(f∘f)(x)=4x+9 라는 합성관계를 계수 비교 a^2=4, b(a+1)=9 로 풀어 f(x)=2x+3 을 복원하는 단계가 합성관계에서 함수식 구하기와 같다 (배점 4.6)",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
+  "difficultyReason": "(f∘f)(x)=a^2x+b(a+1) 계수 비교로 a=2, b=3 을 정하고 f(-1)=1, f^{-1}(-1)=-2 를 구하는 2~3단계라 낮은 쪽 2로 둔다 (배점 4.6)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $f(x)=ax+b$ ($a>0$)에 대하여"
+      },
+      {
+        "term": "합성함수",
+        "src": "stem",
+        "quote": "$(f\\circ f)(x)=4x+9$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$f(-1)+f^{-1}(-1)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "계수비교",
+        "src": "solution",
+        "quote": "계수를 비교하면",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "f(ax+b)=a(ax+b)+b",
+        "evidenceType": "IMPLIED",
+        "justification": "f 의 식 f(x)=ax+b 에 f(x) 자신을 넣어 (f∘f)(x) 를 만든다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양수",
+        "src": "stem",
+        "quote": "($a>0$)"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "(f∘f)(x)=a^2x+b(a+1) 의 계수를 4x+9 와 비교해 a=2, b=3 을 얻고 -1 이 나와 ①과 같았다. 합성식에서 f 자체를 복원하는 단계가 핵심이라 합성관계 함수식 구하기를 골랐다 (배점 4.6)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "qid": 7,
+  "itemFingerprint": "8d2af79654d8a933",
+  "solveSteps": [
+    "역함수가 존재하려면 일대일대응이어야 하므로 정의역이 실수 전체이고 모든 수평선과 한 점에서 만나야 한다.",
+    "①은 x<0 에서 그래프가 없고 ②는 같은 수평선과 세 점에서 만나며 ⑤는 수평 구간이 있어 일대일이 아니다.",
+    "④는 -1≤y<1 인 수평선과 만나지 않아 치역이 공역과 다르다.",
+    "③은 모든 수평선과 정확히 한 점에서 만나는 일대일대응이라 정답은 ③ 이다 (배점 4.1)"
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "함수의 그래프 중에서 역함수가 존재하는 것은",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+  "unitEvidence": "역함수가 존재하는 것은",
+  "rpmRecordId": "H1-RPM-257",
+  "rpmReason": "①~⑤ 그래프에서 정의역과 수평선과 만나는 점의 수로 일대일대응인지 가려 역함수 존재를 판단하는 단계라 일대일함수 행이다 (배점 4.1)",
+  "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+  "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+  "typeReason": "③만 모든 수평선과 정확히 한 점에서 만나는 일대일대응이고 ④는 -1≤y<1 이 비어 일대일대응이 아니라고 가르는 단계가 일대일함수·일대일대응 판정과 같다 (배점 4.1)",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "역함수 존재 조건인 일대일대응의 정의를 ①~⑤ 그래프에 바로 대 보는 한 단계 판정이라 1단계다 (배점 4.1)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "함수의 그래프 중에서"
+      },
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 전체의 집합 $R$에서 $R$로의 함수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "역함수가 존재하는 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "경우분류",
+        "src": "solution",
+        "quote": "모든 수평선과 정확히 한 점에서 만나므로",
+        "evidenceType": "IMPLIED",
+        "justification": "보기 ①~⑤ 그래프를 정의역과 수평선과 만나는 점의 개수로 하나씩 가려낸다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "수평",
+        "src": "solution",
+        "quote": "같은 수평선과 세 점에서 만나는 경우가 있으므로"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "보기 그림 ①~⑤를 직접 보고 ③만 일대일대응이라 ③을 얻었고 해설과 같았다. 역함수 존재를 일대일대응 여부로 가리는 판정이라 판정 템플릿을 골랐다 (배점 4.1)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

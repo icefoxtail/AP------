@@ -1,0 +1,75 @@
+{
+  "qid": 9,
+  "itemFingerprint": "e5ccf4192b7ddce0",
+  "solveSteps": [
+    "그림에서 f(1)=4, f(2)=1, f(3)=2, f(4)=3 이고 g(1)=3, g(2)=4, g(3)=1, g(4)=2 이다.",
+    "h∘f=g 이므로 h(f(x))=g(x) 이고 x=3 을 대입하면 h(2)=g(3)=1 이다.",
+    "x=4 를 대입하면 h(3)=g(4)=2 이므로 h^{-1}(2)=3 이다.",
+    "h(2)+h^{-1}(2)=1+3=4 이므로 정답은 ② 이다 (배점 4.2)"
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "두 함수 $f, g$가 아래 그림과 같다",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+  "unitEvidence": "함수 $h$가 $h \\circ f = g$를 만족시킬 때",
+  "rpmRecordId": "H1-RPM-253",
+  "rpmReason": "h∘f=g 에서 h(f(x))=g(x) 에 x=3, 4 를 넣어 h(2)=1, h(3)=2 를 읽는 합성함수 계산 단계라 합성함수 계산 행이다 (배점 4.2)",
+  "problemTypeKey": "PT_FINITE_BIJECTION",
+  "templateKey": "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION",
+  "typeReason": "h∘f=g 조건에 대응도의 f,g 값을 넣어 h(2)=1, h(3)=2 로 h 의 값을 정하는 단계가 합성함수 조건으로 일대일대응 결정과 같다 (배점 4.2)",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
+  "difficultyReason": "그림에서 f,g 값 8개를 읽고 h(f(x))=g(x) 에 x=3, 4 를 넣어 h(2)=1, h^{-1}(2)=3 을 구하는 2단계로 본다 (배점 4.2)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "집합",
+        "src": "stem",
+        "quote": "집합 $X=\\{1, 2, 3, 4\\}$에 대하여"
+      },
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "함수 $h$가 $h \\circ f = g$를 만족시킬 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$h(2)+h^{-1}(2)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$x=3$을 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "성립조건",
+        "src": "solution",
+        "quote": "$h(f(x))=g(x)$가 성립한다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "그림에서 f,g 값을 읽고 h(f(x))=g(x) 에 x=3,4 를 넣어 h(2)=1, h(3)=2 로 합 1+3=4 가 나와 ②와 같았다. 합성 조건으로 h 의 값을 정하는 문제라 합성함수 조건 일대일대응 결정을 골랐다 (배점 4.2)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
