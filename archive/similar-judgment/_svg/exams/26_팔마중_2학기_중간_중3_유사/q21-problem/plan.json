@@ -1,0 +1,56 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": {
+        "base": "EFGH",
+        "top": "ABCD"
+      }
+    }
+  ],
+  "segments": [
+    {
+      "from": "C",
+      "to": "E",
+      "style": "DASHED",
+      "role": "ACCENT"
+    },
+    {
+      "from": "E",
+      "to": "G",
+      "style": "DASHED",
+      "role": "ACCENT"
+    },
+    {
+      "from": "C",
+      "to": "G",
+      "style": "SOLID",
+      "role": "ACCENT"
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "G",
+        "refs": [
+          "C",
+          "E"
+        ]
+      }
+    ]
+  },
+  "dims": [
+    {
+      "edge": "GH",
+      "side": "TOP"
+    }
+  ],
+  "caption": "한 모서리의 길이가 4인 정육면체에서 각 CEG=x도"
+}
