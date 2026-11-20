@@ -232,6 +232,7 @@
       "saveResultSignature",
       "saveResultState",
       "derivationSource",
+      "derive",
       "composeShortage",
     ];
     return {
@@ -368,6 +369,11 @@
       saveResultSignature: (v) => typeof v === "string",
       saveResultState: (v) => ["", "SAVED", "FAILED", "SAVING", "RESULT_UNKNOWN"].includes(v),
       derivationSource: (v) => v === null || isObj(v),
+      // 기준 시험지로 다시 만들기: 같은 결과를 다시 열고, 다시 뽑을 때 앞서 준 문항을 빼기 위한 기록.
+      derive: (v) => v === null || (isObj(v) && isStrArr(v.baseUids, 400) && isStrArr(v.exclude, 5000) && isStrArr(v.resultUids, 400) &&
+        ["same", "different"].includes(v.typeMode) && ["same", "up-some", "up-one"].includes(v.level) &&
+        isStr(v.baseTitle, 200) && isStr(v.source, 40) && isStr(v.publisher, 200) && isStr(v.seed, 200) &&
+        isStr(v.text, 2000) && isStr(v.levelText, 2000) && Array.isArray(v.notes) && v.notes.length <= 12 && v.notes.every((note) => isStr(note, 2000))),
       composeShortage: (v) => Array.isArray(v) && v.length <= 200 && v.every((item) => isObj(item) &&
         isStr(item.label, 500) && isBuckets(item.difficultyBuckets) && isInt(item.requested, 0, 100000) && isInt(item.got, 0, 100000)),
       pins: (v) => isStrArr(v, 5000),
@@ -516,6 +522,7 @@
     for (const key of allowed)
       if (data[key] !== undefined) state[key] = data[key];
     state.derivationSource = data.derivationSource || null;
+    state.derive = data.derive || null;
     // 모자라게 뽑은 문제지는 모자람 안내도 함께 복원한다(결과가 없으면 안내할 것도 없다).
     state.composeShortage = data.selected.length && Array.isArray(data.composeShortage)
       ? data.composeShortage.map((item) => ({ label: item.label, difficultyBuckets: item.difficultyBuckets, requested: item.requested, got: item.got }))
@@ -708,6 +715,7 @@
       parentDisplayName: String(paper.library_display_name || paper.title || title),
       derivationType: "REVISION",
     };
+    state.derive = null;
     state.derivedBaseQuestions = structuredClone(snapshot.questions);
     derivedBaseLoad = null;
     state.prepared = [];
@@ -1516,6 +1524,7 @@
       saveResultSignature: "",
       saveResultState: "",
       derivationSource: null,
+      derive: null,
       derivedBaseQuestions: null,
     });
     derivedBaseLoad = null;

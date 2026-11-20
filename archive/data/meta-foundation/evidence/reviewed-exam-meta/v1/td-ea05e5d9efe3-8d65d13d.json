@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-ea05e5d9efe3-8d65d13d",
+  "requestSha256": "b227785a34c4fc4e2a799317b6240d1efad1134b4f366cc39cc4281b838574a0",
+  "examUid": "23_여천고_1학기_중간_고1_기출",
+  "sourceArchiveFile": "original/high/h1/1mid/23_여천고_1학기_중간_고1_기출.js",
+  "sourceBlobSha1": "a0f55cedc54ce4fa0f982c4e12d97dca4ccc1f7d",
+  "sourceRawSha256": "46268528ffaadfdf5f7076fb90612aa3705309ddc329b02ffa750e264bc2cf02",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-r-20261120",
+      "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ea05e5d9efe3-8d65d13d.type-ledger.json",
+        "sha256": "488d2f40ab223cf6b4c7589d3d181af450a5c4526455399e961905a2b037fd44"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_8af06999d1a0b438d90a0643d1c241e20c11317b78164ec7e057c5e1720a6960",
+      "sourceArchiveFile": "original/high/h1/1mid/23_여천고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 5,
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-ea05e5d9efe3-8d65d13d",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "f(x)가 (x-1)로 나누어떨어지므로 인수정리 f(1)=0으로 a를 정하고 g(x)의 계수 합을 구한다. [시험지에 적힌 유형을 등록. 새 판정(claude-sonnet-5.5): PT_H1_FACTOR_THEOREM]",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학(상)",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "3e62f6b88874f24cabdecd4c9a9040ab0a1d51f57eca5a0c1a9e67ab703cacf2",
+        "judgedContentFingerprint": "6840ac51f758d6d87d770f1633cadba748d81dbd88342c25433b4372732f673a",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "de2e0c1ef71e2a0152f90d011aa7f84a33f6b8063c5c29263483fe01d86cbfcf",
+        "resultSource": {
+          "branch": "data/type-judgment-r-20261120",
+          "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ea05e5d9efe3-8d65d13d.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+          "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+          "matchesRegistered": true
+        },
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "approved_semantic_review",
+          "templateStatus": "approved_semantic_review"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}

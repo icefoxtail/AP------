@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-e3f265f355ca-50856358",
+  "examUid": "23_왕운중_2학기_기말_중1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m1/2final/23_왕운중_2학기_기말_중1_기출.js",
+  "expectedSourceBlobSha1": "5a882f85179ced5eff8e6389f4ee2fd6287b1152",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-e3f265f355ca-50856358.type-ledger.json",
+        "sha256": "7e150d261f514adf9c3b0d6246d27446964f614770477ca91d26a164b1747654"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_ef76d7b13f398968f2b56d513b8fef8637e85244340394284f429d015f6a5e84",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PAIR_COUNT"
+      },
+      "rationale": "양옆과 자신을 제외한4명을7명이 세고 중복을2로 나누어14번을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "89d85a1ce3eb4de2ab65b30e7ed0425c0a8d41ba3171ca18b762f4fb1f5474ad",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-e3f265f355ca-50856358.type-ledger.json",
+          "sha256": "7e150d261f514adf9c3b0d6246d27446964f614770477ca91d26a164b1747654"
+        }
+      ]
+    }
+  ]
+}

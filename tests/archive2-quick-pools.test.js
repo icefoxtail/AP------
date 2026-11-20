@@ -795,7 +795,8 @@ test('diagnostic pools: original exams only, 5단계 folded into the 4~5단계 s
   const unit = diagnostic.units['고1'].COMMON_MATH_1[0];
   assert.deepEqual(unit.counts, { 1: 0, 2: 1, 3: 0, 4: 2 }, '4단계 and 5단계 share one slot');
   const first = Quick.buildPools(index, { product: Quick.PRODUCTS.diagnostic, semester: '1' });
-  assert.deepEqual(only(first).map(rec => rec.examAxis).sort(), ['1-final', '1-mid']);
+  // 2026-11-20: the semester button is the semester's subject / unit scope, not the exam's semester. 고1 units are not cut by the exam semester.
+  assert.deepEqual(only(first).map(rec => rec.examAxis).sort(), ['1-final', '1-mid', '2-mid']);
   assert.equal(Quick.stillUsable(rows[1].record, Quick.PRODUCTS.diagnostic), true);
   assert.equal(Quick.stillUsable(rows[1].record, Quick.PRODUCTS['monthly-test']), false, 'a 5단계 question is still not usable elsewhere');
   // 2026-11-20: a 유형 / 유사 question is usable only as the reserve of a short step (unit.fillBuckets), never in unit.buckets
@@ -875,7 +876,7 @@ test('diagnostic: another semester, a similar source and a 5단계 question are 
   await h.w.openQuickAssessment('all');
   const ids = h.published.length ? h.published[0].questionUids : [];
   for (const id of ids) {
-    assert.equal(byUid.get(id).examAxis, '1-mid', 'only the chosen semester');
+    assert.ok(['1-mid', '2-mid'].includes(byUid.get(id).examAxis), 'a 고1 paper is not cut by the exam semester (the subject decides)');
     assert.ok(byUid.get(id).sourceFile.startsWith('original/'), 'only original exams');
   }
   if (h.published.length) {
@@ -1131,53 +1132,47 @@ test('diagnostic A·B: one check box opens two papers (A형 / B형) with the sam
   assert.doesNotMatch(h.w.renderQuick(), /quick-two-forms/);
 });
 
-test('diagnostic on the real catalog: 중1 1학기 기본 is built by fill once the 유형 questions have a 4단계 (registration simulated); A·B keep the cell counts', async () => {
+test('diagnostic on the real catalog: 고3 미적분Ⅱ 기본 (22 originals) is built by fill from 유형·유사; the screen says so; A·B keep the cell counts', async () => {
   const data = await catalog();
   const previous = globalThis.Archive2Similar;
   globalThis.Archive2Similar = require('../archive/archive2-similar.js');
   try {
-    // The RPM pro registration gives 유형 questions a 4단계: here every second 3단계 type question of 중1 reads as 4단계.
-    let n = 0;
-    const records = data.records.map(rec => (/^types\/middle\/m1\//.test(rec.sourceFile) && rec.difficultyBucket === 3 && n++ % 2 === 0
-      ? { ...rec, difficultyBucket: 4 } : rec));
-    const changed = { ...data, records };
+    const records = data.records, changed = data;
     const byUid = new Map(records.map(rec => [rec.questionUid, rec]));
     const product = Quick.PRODUCTS.diagnostic;
-    const subject = Unified.subjectsForGrade('중1')[0].value;
-    const before = Quick.buildPools(Unified.buildIndex(data.records, { projectionPolicy: data.projectionPolicy }), { product, semester: '1' });
-    const verdictBefore = Quick.evaluate(before.units['중1'][subject], product, 'standard');
-    assert.equal(verdictBefore.ok, false, 'today: only the originals, the 4~5단계 is short');
+    const subject = 'CALCULUS_ADVANCED';
     const index = Unified.buildIndex(records, { projectionPolicy: data.projectionPolicy });
-    const pools = Quick.buildPools(index, { product, semester: '1' });
-    const verdict = Quick.evaluate(pools.units['중1'][subject], product, 'standard');
-    assert.equal(verdict.ok, true, 'with 4단계 type questions the same paper is possible');
-    assert.deepEqual(verdict.fills.map(fill => fill.bucket), [4]);
+    const pools = Quick.buildPools(index, { product, semester: '' });
+    const verdict = Quick.evaluate(pools.units['고3'][subject], product, 'standard');
+    assert.equal(verdict.ok, true, 'the originals plus the 유형·유사 reserve make the paper');
+    assert.ok(verdict.fills.length > 0, '22 originals do not fill every step: the missing steps are filled');
+    const fillTotal = verdict.fills.reduce((sum, fill) => sum + fill.count, 0);
     const h = harness(changed, { restore: okRestore() });
     h.w.state.view = 'diagnostic';
-    h.w.quickState.grade = '중1';
-    h.w.quickState.semester = '1';
+    h.w.quickState.grade = '고3';
+    h.w.quickState.subject = subject;
+    h.w.quickState.semester = '';
     const html = h.w.renderQuick();
-    assert.match(html, new RegExp('4~5단계 ' + verdict.fills[0].count + '문항은 원본 기출이 모자라 유형·유사 문항으로 채웁니다'));
+    assert.match(html, new RegExp(verdict.fills[0].bucket + '단계 ' + verdict.fills[0].count + '문항'));
+    assert.match(html, /qk-r-fill[^>]*>[^<]*원본 기출이 모자라 유형·유사 문항으로 채웁니다/);
     await h.w.openQuickAssessment('all');
     assert.equal(h.published.length, 1);
     const rows = Array.from(h.published[0].questionUids, id => byUid.get(id));
     assert.equal(rows.length, 24);
     assert.deepEqual(countBy(rows.map(rec => Math.min(rec.difficultyBucket, 4)), [1, 2, 3, 4]), [3, 5, 10, 6]);
     const fillRows = rows.filter(isFilled);
-    assert.equal(fillRows.length, verdict.fills[0].count, 'exactly the missing number');
-    assert.ok(fillRows.every(rec => rec.difficultyBucket >= 4 && /^(types|similar)\/middle\/m1\//.test(rec.sourceFile)), 'same grade, the short step');
-    assert.ok(fillRows.every(rec => !Quick.examSemester(rec) || Quick.examSemester(rec) === '1'));
+    assert.equal(fillRows.length, fillTotal, 'exactly the missing number');
+    const fillSteps = new Set(verdict.fills.map(fill => fill.bucket));
+    assert.ok(fillRows.every(rec => fillSteps.has(Math.min(rec.difficultyBucket, 4)) && /^(types|similar)\/high\//.test(rec.sourceFile)), 'high school reserve, only in the short steps');
     const steps = rows.map(rec => rec.difficultyBucket);
     assert.deepEqual(steps, [...steps].sort((a, b) => a - b));
-    const familyOf = core.familyResolver(records);
-    const families = rows.map(familyOf).filter(Boolean);
-    assert.equal(new Set(families).size, families.length, 'no original / similar pair of one exam on the paper');
+    // 22 originals are all on the paper, so every similar question of this thin pool pairs with one of them: the family rule is relaxed there (see the synthetic family test).
     // A·B
     h.w.quickState.twoForms = true;
     await h.w.openQuickAssessment('all');
     assert.equal(h.published.length, 3);
     const [A, B] = h.published.slice(1);
-    const units = pools.units['중1'][subject];
+    const units = pools.units['고3'][subject];
     const cellOf = id => {
       for (const unit of units) for (const step of [1, 2, 3, 4])
         if (unit.buckets[step].some(rec => rec.questionUid === id) || unit.fillBuckets[step].some(rec => rec.questionUid === id)) return unit.key + '|' + step;
@@ -1196,10 +1191,101 @@ test('diagnostic on the real catalog: 중1 1학기 기본 is built by fill once 
       assert.ok(supply < 2 * tally(A.questionUids)[cellOf(id)], 'the overlap is only in a cell that cannot give B other questions: ' + cellOf(id));
     }
     assert.match(h.nodes.get('status').textContent, shared.length ? new RegExp('같은 문항 ' + shared.length + '개를 함께 씁니다') : /겹치는 문항은 없습니다/);
-    const familiesB = B.questionUids.map(id => familyOf(byUid.get(id))).filter(Boolean);
-    assert.equal(new Set(familiesB).size, familiesB.length);
   } finally {
     if (previous === undefined) delete globalThis.Archive2Similar; else globalThis.Archive2Similar = previous;
+  }
+});
+
+// ---- 학기 단추 = 그 학기의 과목·단원 범위 (2026-11-20): 시험지 학기로 풀을 자르지 않는다 ----------------------------------------------
+test('diagnostic semester is the scope of the subject / unit, not the exam: 고2 is not cut (unit or not), 중등 follows the unit book, only a 중등 unclassified question follows its exam', () => {
+  const diag = Quick.PRODUCTS.diagnostic;
+  const pick = (pools, grade, subject) => (pools.units[grade][subject] || []).flatMap(unit => Quick.BUCKETS.flatMap(bucket => unit.buckets[bucket]));
+  // 고2 대수: three classified questions of different exam semesters, plus unclassified ones that keep following their exam
+  const high = (axis, extra = {}) => entry(record(3, { sourceFile: 'original/high/h2/x.js', examAxis: axis }),
+    { grade: '고2', subject: 'ALGEBRA', subjectLabel: '대수', unitKey: 'H15-A-01', unitLabel: '지수', views: ['고2'], ...extra });
+  const unclassified = axis => high(axis, { unclassified: true, unitKey: '', unitLabel: '단원 미분류', unitOrder: 9999 });
+  const indexHigh = indexOf([high('1-mid'), high('1-final'), high('2-final'), unclassified('1-mid'), unclassified('2-mid')]);
+  const axes = semester => Array.from(pick(Quick.buildPools(indexHigh, { product: diag, semester }), '고2', 'ALGEBRA'), rec => rec.examAxis).sort();
+  // the subject decides, classified or not: the three semester buttons give the same pool
+  assert.deepEqual(axes('1'), ['1-final', '1-mid', '1-mid', '2-final', '2-mid']);
+  assert.deepEqual(axes('2'), axes('1'));
+  assert.deepEqual(axes(''), axes('1'));
+  // 중1: RPM22-M1-L1-01 is a 1학기 book unit, RPM22-M1-L1-06 a 2학기 one; the semester of the exam does not matter
+  const middle = (unitKey, axis) => middleEntry(record(3, { sourceFile: 'original/middle/m1/x.js', examAxis: axis, sourceGrade: '중1', effectiveBrowseGrade: '중1' }),
+    middleParent('x', 1), { unitKey, unitLabel: unitKey });
+  const unclassifiedMiddle = axis => middleEntry(record(3, { sourceFile: 'original/middle/m1/x.js', examAxis: axis, sourceGrade: '중1', effectiveBrowseGrade: '중1' }),
+    middleParent('x', 1), { unclassified: true, unitKey: '', unitLabel: '단원 미분류', unitOrder: 9999 });
+  const indexMiddle = indexOf([middle('RPM22-M1-L1-01', '2-mid'), middle('RPM22-M1-L1-01', '1-mid'), middle('RPM22-M1-L1-06', '1-final'), middle('RPM22-M1-L1-06', '2-final'),
+    unclassifiedMiddle('1-mid')]);
+  const unitsOf = semester => Array.from(pick(Quick.buildPools(indexMiddle, { product: diag, semester }), '중1', middleSubject),
+    rec => indexMiddle.byUid.get(rec.questionUid).unitKey).sort();
+  assert.deepEqual(unitsOf('1'), ['', 'RPM22-M1-L1-01', 'RPM22-M1-L1-01'], 'a 1학기-book unit printed on a 2학기 exam is a 1학기 question; the unclassified 1학기-exam one follows its exam');
+  assert.deepEqual(unitsOf('2'), ['RPM22-M1-L1-06', 'RPM22-M1-L1-06']);
+  assert.equal(unitsOf('').length, 5);
+  assert.equal(Quick.semesterCutsPool('중1'), true);
+  assert.equal(Quick.semesterCutsPool('고1'), false);
+});
+
+test('diagnostic 고1: the semester button and the subject button never disagree (1학기 = 공통수학1, 2학기 = 공통수학2)', async () => {
+  const h = harness(diagnosticCatalog([8, 8, 14, 10, 0]), { restore: okRestore() });
+  h.w.state.view = 'diagnostic';
+  h.w.quickState.grade = '고1';
+  h.w.quickState.subject = 'COMMON_MATH_1';
+  h.w.renderQuick();
+  assert.equal(h.w.quickState.semester, '1');
+  await h.click({ action: 'quick-semester', semester: '2' });
+  assert.equal(h.w.quickState.subject, 'COMMON_MATH_2', 'the 2학기 button picks the 공통수학2 units');
+  assert.equal(h.w.quickState.semester, '2');
+  assert.equal(h.w.routeUrl().searchParams.get('qsubject'), 'COMMON_MATH_2', 'the address follows the subject the semester button picked');
+  await h.click({ action: 'quick-subject', subject: 'COMMON_MATH_1' });
+  h.w.renderQuick();
+  assert.equal(h.w.quickState.semester, '1', 'the subject button sets the semester');
+  assert.equal(h.w.routeUrl().searchParams.get('qsubject'), 'COMMON_MATH_1', 'and the address');
+  await h.click({ action: 'quick-semester', semester: '' });
+  assert.equal(h.w.quickState.subject, 'COMMON_MATH_1', '1·2학기 keeps the subject');
+  h.w.renderQuick();
+  assert.equal(h.w.quickState.semester, '');
+});
+
+test('diagnostic on the real catalog: 고2 대수 2학기 and 중1 1학기 기본 are built from originals alone (no 유형·유사 fill), 고2 does not name a semester', async () => {
+  const data = await catalog();
+  const byUid = new Map(data.records.map(rec => [rec.questionUid, rec]));
+  const index = Unified.buildIndex(data.records, { projectionPolicy: data.projectionPolicy });
+  // 고2 대수 2학기: the 수학I originals sit on 1학기 exams; they are candidates now (was 14 questions + a 12-question fill)
+  const h = harness(data, { restore: okRestore() });
+  h.w.state.view = 'diagnostic';
+  h.w.quickState.grade = '고2';
+  h.w.quickState.subject = 'ALGEBRA';
+  h.w.quickState.semester = '2';
+  const html = h.w.renderQuick();
+  assert.doesNotMatch(html, /qk-r-fill|필요 · \d+문항 가능/, 'no fill line and no shortage');
+  assert.match(html, /class="qk-bar-count">24문항 · 대수 전체</, 'a 고2 paper does not claim a semester');
+  assert.match(html, /대수 <small>\d{4}<\/small>/, 'the subject button counts the whole subject');
+  await h.w.openQuickAssessment('all');
+  assert.equal(h.published.length, 1);
+  const rowsH2 = Array.from(h.published[0].questionUids, id => byUid.get(id));
+  assert.equal(rowsH2.length, 24);
+  assert.ok(rowsH2.every(rec => rec.sourceFile.startsWith('original/')), 'originals only: nothing needed a fill');
+  assert.ok(rowsH2.some(rec => Quick.examSemester(rec) === '1'), 'questions of 1학기 exams are in a 2학기 paper');
+  assert.equal(new Set(rowsH2.map(rec => rec.questionUid)).size, 24);
+  const stepsH2 = rowsH2.map(rec => rec.difficultyBucket);
+  assert.deepEqual(stepsH2, [...stepsH2].sort((a, b) => a - b));
+  // 중1 1학기 기본: the 4~5단계 had 4 originals on 1학기 exams; with the 1학기 book's units there are enough
+  const g = harness(data, { restore: okRestore() });
+  g.w.state.view = 'diagnostic';
+  g.w.quickState.grade = '중1';
+  g.w.quickState.semester = '1';
+  const htmlM1 = g.w.renderQuick();
+  assert.doesNotMatch(htmlM1, /qk-r-fill|필요 · \d+문항 가능/);
+  assert.match(htmlM1, /class="qk-bar-count">24문항 · 중1 수학 1학기 전체</);
+  await g.w.openQuickAssessment('all');
+  assert.equal(g.published.length, 1);
+  const rowsM1 = Array.from(g.published[0].questionUids, id => byUid.get(id));
+  assert.equal(rowsM1.length, 24);
+  assert.ok(rowsM1.every(rec => rec.sourceFile.startsWith('original/')));
+  for (const rec of rowsM1) {
+    const row = index.byUid.get(rec.questionUid);
+    if (!row.unclassified) assert.match(Unified.unitsForGrade('중1').find(unit => unit.key === row.unitKey).courseKey, /-1$/, 'a unit of the 1학기 book');
   }
 });
 
@@ -1320,7 +1406,12 @@ test('diagnostic on the real catalog: 기초 / 기본 / 심화 print the preset 
       assert.equal(new Set(questionUids).size, 24, grade + ' ' + presetName);
       const rows = Array.from(questionUids, id => byUid.get(id));
       assert.ok(rows.every(rec => rec.sourceFile.startsWith('original/')), 'original exams only');
-      assert.ok(rows.every(rec => Quick.examSemester(rec) === semester), 'the chosen semester');
+      // the chosen semester's scope: 중등 = units of that semester's book; 고1 = no cut by exam semester (the subject is the semester's subject)
+      for (const rec of rows) {
+        const row = index.byUid.get(rec.questionUid);
+        if (/^중/.test(grade) && !row.unclassified) assert.match(Unified.unitsForGrade(grade).find(unit => unit.key === row.unitKey).courseKey, new RegExp('-' + semester + '$'), grade + ' unit of the chosen semester');
+        else if (/^중/.test(grade)) assert.equal(Quick.examSemester(rec), semester, 'an unclassified question follows its exam semester');
+      }
       const steps = rows.map(rec => rec.difficultyBucket);
       assert.deepEqual(steps, [...steps].sort((a, b) => a - b), grade + ' ' + presetName + ' step order');
       assert.deepEqual(countBy(steps.map(step => Math.min(step, 4)), [1, 2, 3, 4]), preset.map(([, count]) => count), grade + ' ' + presetName);

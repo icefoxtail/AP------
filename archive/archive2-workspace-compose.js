@@ -13,7 +13,7 @@
   // names defined in other parts; WS.link() fills them in before the first call
   let
     $, META_FACET_FILTERS, Quick, QuickTree, activeAssessmentRecipe, activeAssessmentRecipeUids,
-    advancedOptions, api, assessmentSelectionOptions, button, composeMetaMatches, composeSubjectLabel,
+    advancedOptions, api, deriveNoteMarkup, assessmentSelectionOptions, button, composeMetaMatches, composeSubjectLabel,
     composeUnitLabel, context, displayTemplate, drafts, ensureDerivedBaseQuestions, ensureMetaIndex, esc,
     filterMarkup, frozenPaperCache, hasMetaFacetFilter, isAssessmentRecipeMode, isQuickAssessmentView,
     isSourceRoutedGeneralRange, lockedIndex, metaFacetLabel, omitUnifiedFilters, options, ownHistoryContext,
@@ -26,7 +26,7 @@
   WS.links.push(() => {
     ({
       $, META_FACET_FILTERS, Quick, QuickTree, activeAssessmentRecipe, activeAssessmentRecipeUids,
-      advancedOptions, api, assessmentSelectionOptions, button, composeMetaMatches, composeSubjectLabel,
+      advancedOptions, api, deriveNoteMarkup, assessmentSelectionOptions, button, composeMetaMatches, composeSubjectLabel,
       composeUnitLabel, context, displayTemplate, drafts, ensureDerivedBaseQuestions, ensureMetaIndex, esc,
       filterMarkup, frozenPaperCache, hasMetaFacetFilter, isAssessmentRecipeMode, isQuickAssessmentView,
       isSourceRoutedGeneralRange, lockedIndex, metaFacetLabel, omitUnifiedFilters, options,
@@ -639,13 +639,25 @@
     if (state.view !== "diagnostic") return V.quickPoolCache.pools;
     // 진단평가: its own pools (original exams only, 5단계 folded into the 4~5단계 slot) of the chosen semester, cached with the shared ones.
     if (quickDiagCache.token !== V.quickPoolCache) quickDiagCache = { token: V.quickPoolCache, bySemester: new Map() };
+    syncDiagnosticSemester();
     const semester = quickState.semester;
     if (!quickDiagCache.bySemester.has(semester))
       quickDiagCache.bySemester.set(semester, Quick.buildPools(index, { metaByUid: V.quickPoolCache.metaByUid, product: Quick.PRODUCTS.diagnostic, semester }));
     return quickDiagCache.bySemester.get(semester);
   }
   let quickDiagCache = { token: null, bySemester: new Map() };
+  // 고1: 1학기 = 공통수학1, 2학기 = 공통수학2 (학기 단추는 그 학기의 과목 범위, 시험지 학기가 아니다). The two buttons never disagree:
+  // the subject button wins (a link or a click on it sets the semester); "1·2학기" leaves the subject as it is. Returns true when it changed the semester.
+  function syncDiagnosticSemester() {
+    if (state.view !== "diagnostic" || quickState.grade !== "고1" || !["1", "2"].includes(quickState.semester)) return false;
+    const expected = quickState.subject === "COMMON_MATH_2" ? "2" : quickState.subject === "COMMON_MATH_1" ? "1" : "";
+    if (!expected || expected === quickState.semester) return false;
+    quickState.semester = expected;
+    return true;
+  }
   const QUICK_SEMESTER = Object.freeze({ "1": "1학기", "2": "2학기", "": "1·2학기" });
+  // The paper / bar name: 고2·고3 pools are the whole subject (the semester does not cut them), so no semester is claimed there.
+  const quickDiagnosticName = (subjectLabel) => /^고[23]$/.test(quickState.grade) ? subjectLabel : `${subjectLabel} ${QUICK_SEMESTER[quickState.semester]}`;
   // 중단원 / 소단원 scopes of the chosen grade and subject (shared unit tree). Built once per pool / selection /
   // 소단원 묶음표 load and read by every render and click. The 묶음표 (high school 소단원, a small JSON) is requested
   // at boot; until it is there a high school list shows its 단원 only and says so.
@@ -685,7 +697,8 @@
     "subunit-test": (grade) => `${/^중/.test(grade) ? "중단원" : "소단원"} 하나에서 12문항을 냅니다.`,
     "unit-test": (grade) => `${/^중/.test(grade) ? "중단원" : "단원"} 하나에서 20문항을 냅니다.`,
     "monthly-test": () => "여러 단원을 묶어 24문항을 냅니다. 고르지 않으면 과목 전체에서 냅니다.",
-    diagnostic: () => "첫 상담용 24문항입니다. 실제 학교 기출을 쓰고(모자란 단계만 유형·유사 문항으로 채움), 쉬운 단계부터 차례로 나옵니다. 학기를 고르고, 단원을 고르지 않으면 학기 전체에서 냅니다.",
+    diagnostic: (grade) => `첫 상담용 24문항입니다. 실제 학교 기출을 쓰고(모자란 단계만 유형·유사 문항으로 채움), 쉬운 단계부터 차례로 나옵니다. ${/^고[23]$/.test(grade)
+      ? "과목을 고르고, 단원을 고르지 않으면 과목 전체에서 냅니다." : "학기를 고르고, 단원을 고르지 않으면 학기 전체에서 냅니다."}`,
   };
   // One pickable row of the unit list: a button (one unit) or a check box (종합평가). `root` rows are the whole 대단원.
   function quickRowMarkup(item, product, picked, busy) {
@@ -705,9 +718,10 @@
     const product = quickProduct();
     const tabs = `<div class="qk-seg" role="group" aria-label="평가 종류">${Quick?.VIEWS.map(view =>
       `<button type="button" class="qk-seg-btn" data-view="${view}" aria-pressed="${view === state.view}">${esc(Quick.PRODUCTS[view].title)}</button>`).join("") || ""}</div>`;
-    const pools = quickPools();
+    let pools = quickPools();
     if (!pools) return `<div class="qk">${tabs}<section class="panel"><h1>${esc(product?.title || "빠른 평가")}</h1><p class="muted">단원 목록을 준비하지 못했습니다. 페이지를 새로 고쳐 주세요.</p></section></div>`;
     const subjects = quickEnsureSelection(pools);
+    if (syncDiagnosticSemester()) pools = quickPools();
     const preset = quickPreset();
     const busy = quickState.busy;
     const mix = Quick.presetMix(product, preset);
@@ -715,7 +729,7 @@
     const scopes = quickScopes(pools);
     const subjectLabel = subjects.find(subject => subject.value === quickState.subject)?.label || "";
     const diagnostic = state.view === "diagnostic";
-    const wholeName = diagnostic ? `${subjectLabel} ${QUICK_SEMESTER[quickState.semester]}` : subjectLabel;
+    const wholeName = diagnostic ? quickDiagnosticName(subjectLabel) : subjectLabel;
     const semesterChips = diagnostic ? `<div class="quick-chips" role="group" aria-label="학기">${["1", "2", ""].map(value =>
       `<button type="button" class="quick-chip" data-action="quick-semester" data-semester="${value}" aria-pressed="${value === quickState.semester}">${QUICK_SEMESTER[value]}</button>`).join("")}</div>` : "";
     const noun = Quick.unitNoun(state.view, grade);
@@ -1224,7 +1238,7 @@
     const units = everything ? scopes.roots : Quick.selectNodes(scopes, unitKeys);
     const subjectLabel = Unified.subjectByValue(quickState.grade, quickState.subject)?.label || "";
     const diagnostic = state.view === "diagnostic";
-    const label = quickUnitsLabel(units, diagnostic ? `${subjectLabel} ${QUICK_SEMESTER[quickState.semester]}` : subjectLabel, everything);
+    const label = quickUnitsLabel(units, diagnostic ? quickDiagnosticName(subjectLabel) : subjectLabel, everything);
     if (!units.length || (!product.combine && units.length !== 1)) return;
     const verdict = Quick.evaluate(units, product, preset);
     if (!verdict.ok) {
@@ -1646,6 +1660,7 @@
       <div class="cz-count"><span class="cz-big">${state.selected.length}문항</span><span class="cz-parts">${parts}권</span></div>
       <p class="cz-mix">${unitText}</p><p class="cz-mix">${stepText}</p>
       ${shortage}
+      ${deriveNoteMarkup()}
       <div class="cz-facts"><div class="summary-line"><span>회차</span><strong>${esc(state.round)}차</strong></div><div class="summary-line"><span>선택 범위</span><strong>${state.derivationSource ? "원본 유지" : `${selectedScopeOptions().length}개`}</strong></div><div class="summary-line"><span>고정 문항</span><strong>${state.pins.length}개</strong></div><div class="summary-line"><span>이전 회차 사용</span><strong>${unique(state.rounds.flatMap((round) => round.questionUids)).length}문항</strong></div>
       ${typeCoverageLine()}
       ${state.selected.length ? `<div class="summary-line" data-year-distribution><span>출제 연도</span><strong>${yearDistribution(state.selected).map((item) => `${esc(item.label)} ${item.count}문항`).join(" · ")}</strong></div>` : ""}</div>
@@ -1658,7 +1673,7 @@
   }
   function composeSourceNote() {
     if (state.uidRoute && !state.uidRoute.error)
-      return `<p class="cz-entry" data-cz-entry="uid">검색에서 고른 ${state.uidRoute.records.length}문항으로 범위가 고정되어 있습니다.</p>`;
+      return `<p class="cz-entry" data-cz-entry="uid">${state.derive ? "시험지를 다시 만들어 고른" : "검색에서 고른"} ${state.uidRoute.records.length}문항으로 범위가 고정되어 있습니다.</p>`;
     if (state.sources.length)
       return `<p class="cz-entry" data-cz-entry="sources">학교별 기출에서 고른 시험 ${state.sources.length}개 안에서 문항을 뽑습니다.</p>`;
     return "";

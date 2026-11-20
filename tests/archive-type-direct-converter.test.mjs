@@ -18,7 +18,7 @@ const sha1 = bytes => crypto.createHash("sha1").update(`blob ${bytes.length}\0`)
 const questions = [1, 2, 3, 4, 5, 6, 7].map(n => ({ id: n, content: `학생용 지문 ${n}`, choices: ["1", "2"], answer: "1", solution: `해설 ${n}`, image: "" }));
 const bytes = Buffer.from(`window.questions = ${JSON.stringify(questions)};\n`);
 const registry = makeRegistry({
-  problemTypes: [{ problemTypeKey: "PT_A", status: "ACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_OFF", status: "INACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_HIGH", status: "ACTIVE", ownerPack: "P2" }],
+  problemTypes: [{ problemTypeKey: "PT_A", status: "ACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_OFF", status: "INACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_HIGH", status: "ACTIVE", ownerPack: "P2" }, { problemTypeKey: "PT_DRAFT", status: "ACTIVE", ownerPack: "P1" }],
   templates: [{ templateKey: "TPL_A", status: "ACTIVE", parentProblemTypeKey: "PT_A" }, { templateKey: "TPL_OTHER", status: "ACTIVE", parentProblemTypeKey: "PT_HIGH" }],
   bindings: [{ problemTypeKey: "PT_A", curriculum: "2015", standardCourse: "중1 수학", ownerPack: "P1", status: "ACTIVE" },
     { problemTypeKey: "PT_HIGH", curriculum: "2015", standardCourse: "수학(상)", ownerPack: "P2", status: "ACTIVE" }],
@@ -160,6 +160,27 @@ test("scope follows the strict lane and the alias file: another spelling or the 
   assert.equal(sc(strict, { curriculum: "2022", standardCourse: "공통수학1" }, "PT_HIGH").skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
 });
 
+test("a row that carries the other curriculum's course name falls back to the successor course instead of being refused", () => {
+  const reg = makeRegistry({ problemTypes: [{ problemTypeKey: "PT_X", status: "ACTIVE", ownerPack: "P2" }], templates: [],
+    bindings: [{ problemTypeKey: "PT_X", curriculum: "2022", standardCourse: "공통수학1", ownerPack: "P2", status: "ACTIVE" },
+      { problemTypeKey: "PT_X", curriculum: "2015", standardCourse: "수학(상)", ownerPack: "P2", status: "ACTIVE" }],
+    packs: new Map([["P2", { curricula: ["2015", "2022"], standardCourses: ["공통수학1", "수학(상)"] }]]) });
+  // 2015 row named with the 2022 course: the same-course binding is 2022 only, the successor 수학(상) exists in 2015
+  const r = chooseScope(reg, aliases, { sourceArchiveFile: EXAM, curriculum: "2015", standardCourse: "공통수학1" }, "PT_X");
+  assert.deepEqual(r.scope, { curriculum: "2015", standardCourse: "수학(상)" });
+  assert.equal(r.relation, "successor");
+  // the same-course binding still wins when it exists in the row's curriculum
+  const own = chooseScope(reg, aliases, { sourceArchiveFile: EXAM, curriculum: "2022", standardCourse: "공통수학1" }, "PT_X");
+  assert.deepEqual(own.scope, { curriculum: "2022", standardCourse: "공통수학1" });
+});
+
+test("--exclude-uids leaves a question that another pending request already carries out of the new requests", () => {
+  const { requests, skipped } = plan({ excludeUids: new Set(["uid1"]) });
+  assert.equal(requests[0].items.some(i => i.questionUid === "uid1"), false);
+  assert.ok(skipped.some(s => s.uid === "uid1" && s.reason === "ALREADY_IN_OTHER_REQUEST"));
+  assert.equal(parseCli(["--results", "r", "--exclude-uids", "f.txt"]).excludeUidsFile, "f.txt");
+});
+
 test("a pack that does not declare the binding course is skipped by default and widened append-only on request", () => {
   const narrow = { ...makeRegistry({ problemTypes: [{ problemTypeKey: "PT_A", status: "ACTIVE", ownerPack: "P1" }], templates: [{ templateKey: "TPL_A", status: "ACTIVE", parentProblemTypeKey: "PT_A" }],
     bindings: [{ problemTypeKey: "PT_A", curriculum: "2015", standardCourse: "중1 수학", ownerPack: "P1", status: "ACTIVE" }],
@@ -271,14 +292,14 @@ test("selectable-by-type metric counts rows whose metadata is bound to the curre
   const stale = records.map(r => r.sourceOrdinal === 1 ? { ...r, contentFingerprint: "f".repeat(64) } : r);
   const planned = new Map([["uid1", { pt: "PT_A", tpl: "TPL_A" }]]);
   const fresh = typeSelectable(makeCtx(), [EXAM], planned);
-  assert.equal(fresh.selectableBefore, 1); // uid3 already carries an approved PT_A and is bound
-  assert.equal(fresh.selectableAfter, 2);
+  assert.equal(fresh.selectableBefore, 2); // uid2 (a registered draft PT) and uid3 (approved PT_A) are bound and shown
+  assert.equal(fresh.selectableAfter, 3);
   assert.equal(fresh.plannedSelectable, 1);
   // a stale row (fingerprint of an older text) stays hidden unless planned; the planned type is shown
   const staleApproved = records.map(r => r.sourceOrdinal === 3 ? { ...r, contentFingerprint: "f".repeat(64) } : r);
-  assert.equal(typeSelectable(makeCtx({ records: staleApproved }), [EXAM], planned).selectableBefore, 0);
+  assert.equal(typeSelectable(makeCtx({ records: staleApproved }), [EXAM], planned).selectableBefore, 1); // only the registered draft of uid2 is still shown
   const hidden = typeSelectable(makeCtx({ records: stale }), [EXAM], planned);
-  assert.equal(hidden.selectableAfter, 2);
+  assert.equal(hidden.selectableAfter, 3);
   assert.equal(hidden.plannedSelectable, 1);
 });
 
@@ -332,4 +353,36 @@ test("reach: a key of a grade at or below the exam's grade is chosen; a key abov
   assert.equal(sc({ sourceArchiveFile: M3_20, standardCourse: "중3" }, "PT_COORD").skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
   // without alias data nothing is reached
   assert.equal(sc({ sourceArchiveFile: M3_20, standardCourse: "중3" }, "PT_LOW", makeCourseAliases(null)).skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
+});
+
+test("a type field filled with a key the registry does not have holds no value (an old key is replaced, its old value kept in before); an approved registered key is still protected", () => {
+  const sem = "approved_semantic_review";
+  const recs = records.map(r => r.sourceOrdinal === 1 ? { ...r, problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL", fieldStatus: { problemType: sem, template: sem } } : r);
+  const { requests, skipped } = planRequests({ ctx: makeCtx({ records: recs }), resultRows: [line(1), line(3)], approvedBy: "x" });
+  const item = requests[0].items.find(i => i.questionUid === "uid1");
+  assert.deepEqual(item.before, { problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL" });
+  assert.deepEqual(item.after, { problemTypeKey: "PT_A", templateKey: "TPL_A" });
+  assert.equal(skipped.find(x => x.uid === "uid3").reason, "TYPE_ALREADY_PRESENT", "uid3 holds an approved ACTIVE key and stays");
+});
+
+test("a type written in the exam file never keeps a judged question out of a request (the registered judgment wins; the registrar records the embedded value)", () => {
+  const embedded = { 1: ["PT_B", "TPL_B"], 2: ["PT_A", "TPL_A"], 3: ["PT_OFF", ""] };
+  const recs = [1, 2, 3, 4, 5, 6, 7].map(n => row(n, { metadataRevision: "meta-foundation:X" }));
+  const readBank = () => ({ bank: questions.map((q, i) => ({ ...q, problemTypeKey: embedded[i + 1]?.[0] || "", templateKey: embedded[i + 1]?.[1] || "" })), bytes });
+  const ctx = makeCtx({ records: recs, ctx: { readBank } });
+  const { requests } = planRequests({ ctx, resultRows: [line(1), line(2), line(3)], approvedBy: "x" });
+  const after = Object.fromEntries(requests.flatMap(r => r.items).map(i => [i.questionUid, i.after]));
+  assert.deepEqual(Object.keys(after).sort(), ["uid1", "uid2", "uid3"]);
+  for (const uid of ["uid1", "uid2", "uid3"]) assert.deepEqual(after[uid], { problemTypeKey: "PT_A", templateKey: "TPL_A" });
+});
+
+test("a later result line for the same question is used when the earlier one was held; once one line is in a request the rest are duplicates", () => {
+  const held = line(1, { decision: "HOLD", pt: null, tpl: null });
+  const better = line(1, { judge: "claude-sonnet-5.5" });
+  const again = line(1, { judge: "dots" });
+  const { requests, skipped } = planRequests({ ctx: makeCtx(), resultRows: [held, better, again], approvedBy: "x" });
+  const items = requests.flatMap(r => r.items);
+  assert.equal(items.length, 1);
+  assert.equal(requests[0].approval.judge, "claude-sonnet-5.5");
+  assert.deepEqual(skipped.map(s => s.reason).sort(), ["DECISION_HOLD", "DUPLICATE_RESULT_LINE"]);
 });

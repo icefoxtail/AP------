@@ -40,7 +40,8 @@
     scopeIsSelected, scopeOpenState, scopeOptions, session, setOriginalStep, showDialog, showSavedPaper,
     state, status, stepComposeCount, teacherErrorMessage, unifiedIndex, unique, updateOriginalPreview,
     updatePreview, updateRecentResults, withDefaultComposeSubject, withoutShadowedChildren,
-    workspaceEligibility, setContentKeepingPreview, rememberComposeConditions, restoreClearedResult, discardClearedResult;
+    workspaceEligibility, setContentKeepingPreview, rememberComposeConditions, restoreClearedResult, discardClearedResult,
+    deriveAction, openDeriveFromUrl;
   WS.links.push(() => {
     ({
       $, ASSESSMENT_RECIPE_KEYS, ASSESSMENT_RECIPE_TITLES, HOME_PRODUCT_REGISTRY, META_FACET_FILTERS, Quick,
@@ -63,7 +64,8 @@
       scopeIsSelected, scopeOpenState, scopeOptions, session, setOriginalStep, showDialog, showSavedPaper,
       state, status, stepComposeCount, teacherErrorMessage, unifiedIndex, unique, updateOriginalPreview,
       updatePreview, updateRecentResults, withDefaultComposeSubject, withoutShadowedChildren,
-      workspaceEligibility, setContentKeepingPreview, rememberComposeConditions, restoreClearedResult, discardClearedResult
+      workspaceEligibility, setContentKeepingPreview, rememberComposeConditions, restoreClearedResult, discardClearedResult,
+      deriveAction, openDeriveFromUrl
     } = WS.api);
   });
   // function declarations are hoisted: export them now so the other parts (and this file's own load-time code) see them
@@ -464,6 +466,10 @@
         status("저장 결과를 확인할 때까지 작업 중인 문제지의 편집을 잠급니다. 출력과 작업 백업은 사용할 수 있습니다.", true);
         return;
       }
+      if (a === "assignment-derive" || /^derive-/.test(a || "")) {
+        await deriveAction(a, b);
+        return;
+      }
       if (a === "assignment-status") {
         await openRecentAssignmentStatus(b.dataset.assignment);
         return;
@@ -652,6 +658,9 @@
         render();
       } else if (a === "quick-semester") {
         quickState.semester = ["1", "2"].includes(b.dataset.semester) ? b.dataset.semester : "";
+        // 고1: the semester button is the subject's semester (1학기 = 공통수학1, 2학기 = 공통수학2); the subject follows it.
+        // The address follows (a reload keeps what the teacher picked); the subject button's click already updates it the same way.
+        if (quickState.grade === "고1" && quickState.semester) { quickState.subject = "COMMON_MATH_" + quickState.semester; replaceUrlState(); }
         quickState.bundle.clear();
         quickState.pick = "";
         quickState.shortOpen = false;
@@ -1589,7 +1598,7 @@
       `${esc([record.year, record.school].filter(Boolean).join(" "))} ${esc(record.sourceQuestionNo ?? record.sourceOrdinal)}번`).join(" · ");
     const rest = route.records.length > 8 ? ` 외 ${route.records.length - 8}문항` : "";
     const scope = route.scopes[0];
-    return `<div class="resultbar"><h2>단원</h2></div><div class="callout" role="status" data-uid-route="accepted">검색에서 선택한 ${route.records.length}문항으로 범위가 고정되었습니다. ${names}${rest}<p>${clear}</p></div>
+    return `<div class="resultbar"><h2>단원</h2></div><div class="callout" role="status" data-uid-route="accepted">${state.derive ? "시험지를 다시 만들어 고른" : "검색에서 선택한"} ${route.records.length}문항으로 범위가 고정되었습니다. ${names}${rest}<p>${clear}</p></div>
       <div class="scope-list"><div class="scope-group"><div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(scope.key)}" ${scopeIsSelected(scope) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(scope.label)}</label><small>${scope.count}문항</small></div></div></div>`;
   }
   function applySourceRoute() {
@@ -1744,6 +1753,7 @@
       Boot?.finish?.(false);
       replayDeferredClick();
       scheduleIndexWarmUp();
+      openDeriveFromUrl();
       const previous = drafts();
       restoreCurrentHistoryScroll();
       if (state.view === "compose" && state.editSavedPaperId) {

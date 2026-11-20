@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-98d4dd5d9b78-b233f47b",
+  "requestSha256": "4159a0b3cfb9f6c2113525dc77b3ec389d2b013f24cb6560bdf194d6a0774dc9",
+  "examUid": "22_풍덕중_1학기_기말_중3_기출c",
+  "sourceArchiveFile": "original/middle/m3/1final/22_풍덕중_1학기_기말_중3_기출c.js",
+  "sourceBlobSha1": "fde440eb4c4fa43c8c24c2a83b6610fd5d62c218",
+  "sourceRawSha256": "24290f1542e974d6e415720f5b0b8df2b6995543401b1018115cf335b4666e4e",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-r-20261120",
+      "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-98d4dd5d9b78-b233f47b.type-ledger.json",
+        "sha256": "3a80b66a03aaff20d5f8e1b811b781e7e52b8a9fd68a8236a56ec742f16e720e"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_50cd6de44dfdb8c4eda91b59e7ca4d7b5d646049adee308e5a2a63527b89c08f",
+      "sourceArchiveFile": "original/middle/m3/1final/22_풍덕중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 22,
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-98d4dd5d9b78-b233f47b",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "제곱근을 이용해 (2x+3)^2=7을 풀고 인수분해로 두 번째 방정식을 푼다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3-1",
+          "curriculumSource": "request",
+          "rowCourse": "중3 수학",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "c55b02d68127ba046a2a4a6ef206b6c528afc4d2bf66c42527644afa105f93af",
+        "judgedContentFingerprint": "870f6666dcc398424641cf2fe85f53e2c5e46c9aad62054ca1cc86c6a138f8b3",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "3968c7d301d504d19731d180d59f0dda977b7a64f76f2a1b0802f187600e2244",
+        "resultSource": {
+          "branch": "data/type-judgment-r-20261120",
+          "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-98d4dd5d9b78-b233f47b.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}

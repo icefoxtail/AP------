@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-e54cf01fce16-ea634c11",
+  "examUid": "24_연향중_2학기_기말_중3_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+  "expectedSourceBlobSha1": "800ed2e40184b8cf4d60341cdf0f70753fac2667",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-e54cf01fce16-ea634c11.type-ledger.json",
+        "sha256": "a1f4d5cab226b2413333f6f399b08188c2f273c7ef370ff3ac0212946eb11bef"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_9d2ea50be186defdd6e2c422fe21d6a6636e45dcd161ac34f73d64f834cf02f1",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC"
+      },
+      "rationale": "삼각형 C각50도와 내접원 접점 직각으로 EOF130도를 얻고 반지름 이등변삼각형 밑각25도의 여각65도를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "2bb90ca853e02101ccd0d94a1b1b898e0e151eedb1b82547c2f9d0635c22805d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-e54cf01fce16-ea634c11.type-ledger.json",
+          "sha256": "a1f4d5cab226b2413333f6f399b08188c2f273c7ef370ff3ac0212946eb11bef"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4200efa4630909faeda7350f7983fbc00590f0c0b91c0b49f78595e89edf3126",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_SELECT"
+      },
+      "rationale": "③의40은 다른 자료1,2,4와 크게 떨어져 평균을 끌어올리므로 중앙값이 적합함을 판단한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "4b05b6c0dde3fa44becf3dfec65eac0992542505e7779ed9b6c2881957745a21",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-e54cf01fce16-ea634c11.type-ledger.json",
+          "sha256": "a1f4d5cab226b2413333f6f399b08188c2f273c7ef370ff3ac0212946eb11bef"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9d0795b4b39b5cbd3bb0305b9704f978c1d02c7b118c57ba567870ac94312fc5",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_VARIANCE"
+      },
+      "rationale": "평균8,편차제곱합42,분산21/4,표준편차√21/2를 확인하며 평균보다 큰9,10,12는3개이므로②를 배제한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "19994e8dbc326fd2efd9c41dcae76dd6c450dfa8bef65b1b59ca4f26e563390b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-e54cf01fce16-ea634c11.type-ledger.json",
+          "sha256": "a1f4d5cab226b2413333f6f399b08188c2f273c7ef370ff3ac0212946eb11bef"
+        }
+      ]
+    }
+  ]
+}

@@ -122,7 +122,16 @@
     <script src="print_image_optimizer.js?v=20261030.1"></script>
     <script src="mathjax_render_loop.js?v=20261116-enclosed-latin"></script>
     <script src="concept_map.js" onerror="console.warn('[3B] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
-    <script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b" onerror="console.warn('[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행')"></script>
+    <!-- 2026-11-20 승인 메타 sidecar(question-meta.js → data/question_metadata.json, 압축 전 87.6MB·gzip 15MB)는 시험지를 그리는 데 쓰이지 않고
+         반 출제 등록(submitQr=1 / osqr=1)이 서버로 보내는 standardUnitKey 등만 채운다. 등록 주소가 아니면 불러오지 않는다(mixed_engine의
+         output-metadata-loader.js와 같은 규칙). 이유: 원본 시험지 하나를 열려고 15MB를 받고 87MB를 해석한 뒤에야 첫 문항이 그려졌다. -->
+    <script id="engine-metadata-gate">
+    (function () {
+        var params = new URLSearchParams(location.search);
+        if (params.get('submitQr') === '1' || params.get('osqr') === '1')
+            document.write('<script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b" onerror="console.warn(\'[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행\')"><\/script>');
+    })();
+    </script>
     <script src="print-contract.js?v=20261009.1" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
     <script src="data/svg-accessibility-index.js?v=20261014.1" onerror="console.warn('[svg-accessibility] 색인 로드 실패 — 그림 이름 한국어 기본값 사용')"></script>
     <script src="svg-accessibility.js?v=20261014.1"></script>
@@ -503,7 +512,7 @@
     <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261117-figure-large-1">
     <link rel="stylesheet" href="archive2-reader-controls.css?v=20261116-output-bar-1">
     <script src="render-feedback.js?v=20261116-output-bar-1"></script>
-    <script defer src="archive2-reader-controls.js?v=20261111-student-navigation-1"></script>
+    <script defer src="archive2-reader-controls.js?v=20261120-derive-ui-1"></script>
     <link rel="stylesheet" href="../apmath/css/student-navigation.css?v=2026.11.11.4">
     <script defer src="../apmath/js/student-navigation.js?v=2026.11.11.4" data-student-nav-active="exams" data-student-nav-context-only="true"></script>
 </head>
