@@ -1,0 +1,64 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "eee4557b25582e21",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "x초 후 BP의 길이는 2x cm 이다.",
+    "직사각형 ABCD 에서 변 BC = 18 cm, AB = 10 cm 이다.",
+    "사다리꼴 ABPD 에서 윗변 AD = 18 cm, 아랫변 BP = 2x cm, 높이 AB = 10 cm 이다.",
+    "넓이 y = 1/2 * (2x + 18) * 10 = 10x + 90 이다.",
+    "10x + 90 = 140 -> 10x = 50 -> x = 5초 이다.",
+    "따라서 출발한 지 5초 후이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "직사각형 $ABCD$에서 $",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_GRAPH_INTERSECTION_APPLICATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "직사각형 ABCD 에서 점 P의 움직임에 따른 사다리꼴 넓이 140 이 되는 시간을 구하는 활용 유형이다.",
+  "rpmRecordId": "M2-RPM-059",
+  "rpmReason": "변 BC = 18 cm 위의 점 이동 거리 2x 에 따른 사다리꼴 넓이 식 10x + 90 = 140 을 푼다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "직사각형 ABCD 조건으로 사다리꼴 넓이 식 y = 10x + 90 을 세우고 y = 140 일 때 x = 5 를 푼다.",
+  "how": "변 BC = 18 에서 BP = 2x cm 로부터 넓이 식 10x + 90 = 140 을 세워 5초 후임을 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 $ABCD$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "넓이가 $140\\text{ cm}^{2}$가 되는 것은"
+      }
+    ],
+    "method": [
+      {
+        "term": "사다리꼴",
+        "src": "solution",
+        "quote": "사다리꼴 $ABPD$의 넓이",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "일정",
+        "src": "stem",
+        "quote": "초속 $2\\text{ cm}$로 일정하게 움직이고"
+      }
+    ]
+  }
+}

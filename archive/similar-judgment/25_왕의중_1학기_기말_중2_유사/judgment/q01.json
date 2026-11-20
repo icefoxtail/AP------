@@ -1,0 +1,63 @@
+{
+  "qid": "q01",
+  "itemFingerprint": "7f8036cd255ece71",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "주어진 일차방정식 2x + y = 12 에 각 순서쌍을 대입한다.",
+    "① (1, 8): 2(1) + 8 = 10 != 12",
+    "② (2, 8): 2(2) + 8 = 12 성립한다.",
+    "③, ④, ⑤ 도 각각 계산하면 14 != 12 이다.",
+    "따라서 참이 되는 순서쌍은 ②번 12 가 성립하는 순서쌍이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "일차방정식 $2x + y =",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "미지수가 2개인 일차방정식 2x + y = 12 에 자연수 순서쌍을 대입하여 참이 되는 해를 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-032",
+  "rpmReason": "주어진 일차방정식 2x + y = 12 의 해 조건을 만족하는 순서쌍을 판별한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "일차방정식 2x + y = 12 에 순서쌍의 값을 대입하여 계산하는 기본 문항이다.",
+  "how": "일차방정식 2x + y = 12 에 보기를 대입하여 2(2) + 8 = 12 가 성립함을 확인했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "일차방정식 $2x + y = 12$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순서쌍",
+        "src": "stem",
+        "quote": "값을 순서쌍 $(x, y)$로 나타낸"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "각 순서쌍을 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "참이 되게 하는 자연수"
+      }
+    ]
+  }
+}

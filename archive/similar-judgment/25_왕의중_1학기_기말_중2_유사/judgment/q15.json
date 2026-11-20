@@ -1,0 +1,62 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "810155dcded147c9",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "두 점 (-3, 0)과 (0, -6)을 지나는 직선의 기울기는 (-6 - 0) / (0 - (-3)) = -2 이다.",
+    "y절편이 -6 이므로 식은 y = -2x - 6 이다.",
+    "⑤ 점 (2, -8) 대입: x = 2 일 때 y = -2(2) - 6 = -10 != -8 이다.",
+    "따라서 그래프 위의 점이 아닌 것은 ⑤번이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 점 $(-3, 0), (",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "problemTypeKey": "PT_LINE_EQUATION",
+  "templateKey": "TPL_LINE_TWO_POINTS",
+  "newKeyProposal": null,
+  "typeReason": "두 점을 지나는 일차함수의 식 y = -2x - 6 을 구하고 x=2 일 때 y=-10 임을 이용해 점을 판정하는 유형이다.",
+  "rpmRecordId": "M2-RPM-052",
+  "rpmReason": "두 점 (-3, 0), (0, -6)으로 직선의 식을 구한 뒤 대입하여 점 (2, -10) 여부를 확인한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 점으로 식을 세우고 점 (2, -8) 대입 시 y = -10 임을 확인한다.",
+  "how": "두 점으로 직선의 식 y = -2x - 6 을 세우고 x = 2 일 때 y = -10 이므로 ⑤가 아님을 확인했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "지나는 직선을 그래프로 하는"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "그래프로 하는 일차함수의 그래프 위의"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$x = 2$를 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "지나는 직선의 기울기는"
+      }
+    ]
+  }
+}

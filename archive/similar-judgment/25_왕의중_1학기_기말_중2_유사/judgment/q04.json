@@ -1,0 +1,57 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "00a6750133f4a463",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "상수가 온전한 두 식 x/2 + y/4 = 4 와 0.1x + 0.2y = 1.4 를 연립한다.",
+    "첫째 식에 4를 곱하면 2x + y = 16 이고, 둘째 식에 10을 곱하면 x + 2y = 14 이다.",
+    "연립하여 풀면 x = 6, y = 4 이다.",
+    "a = 3(6) - 4 = 14 이고 b = 2(6) + 3(4) = 24 이다.",
+    "따라서 b - a = 24 - 14 = 10 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 연립방정식 $\\begin",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+  "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+  "newKeyProposal": null,
+  "typeReason": "해가 같은 두 연립방정식에서 공통 해를 먼저 구하고 미정계수 차 b - a = 10 을 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-033",
+  "rpmReason": "공통해를 대입하여 미정계수 a = 14, b = 24 및 차이 10 을 결정한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "계수가 분수, 소수인 연립방정식을 정수화하여 공통해를 구한 뒤 계수 차 10 을 계산한다.",
+  "how": "미지수가 없는 두 식을 정수화하여 해 (6, 4)를 구하고 a=14, b=24 에서 b-a=10 을 얻었다.",
+  "slots": {
+    "given": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "두 연립방정식 $\\begin{cases}"
+      }
+    ],
+    "goal": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "두 연립방정식 $\\begin{cases}"
+      }
+    ],
+    "method": [
+      {
+        "term": "공통",
+        "src": "solution",
+        "quote": "공통 해는 $\\begin{cases}",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

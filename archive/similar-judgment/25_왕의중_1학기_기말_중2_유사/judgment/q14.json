@@ -1,0 +1,64 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "cc889814c485fecd",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "y = -2/3 x - 2 의 그래프 성질을 확인한다.",
+    "① x = -6 이면 y = 4 - 2 = 2 이므로 점 (-6, 2)를 지난다 (참).",
+    "② 기울기 < 0, y절편 < 0 이므로 제2, 3, 4사분면을 지나고 제1사분면을 지나지 않는다. 제4사분면을 지나지 않는다는 설명은 거짓이다.",
+    "③ 기울기가 -2/3 으로 음수이므로 오른쪽 아래로 향한다 (참).",
+    "④ x절편은 -3, y절편은 -2 이다 (참).",
+    "따라서 옳지 않은 것은 ②번이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중 일차함수 $y =",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+  "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+  "newKeyProposal": null,
+  "typeReason": "일차함수 y = -2/3 x - 2 의 절편, 기울기, 지나는 점, 사분면 성질을 종합 판별하는 유형이다.",
+  "rpmRecordId": "M2-RPM-051",
+  "rpmReason": "기울기 -2/3 와 절편의 부호로 일차함수 그래프가 지나는 사분면을 판정한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기울기 -2/3 와 y절편의 부호로 그래프 개형과 사분면 통과 여부를 점검한다.",
+  "how": "기울기와 y절편이 모두 음수이므로 제2, 3, 4사분면을 지나 제4사분면을 지나지 않는다는 ②가 거짓임을 확인했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $y = -\\frac{2}{3}x - 2$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사분면",
+        "src": "choices",
+        "quote": "제$4$사분면을 지나지 않는다"
+      }
+    ],
+    "method": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "기울기가 음수이고 $y$절편이",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "절편",
+        "src": "choices",
+        "quote": "$x$절편은 $-3$, $y$절편은 $-2$이다"
+      }
+    ]
+  }
+}

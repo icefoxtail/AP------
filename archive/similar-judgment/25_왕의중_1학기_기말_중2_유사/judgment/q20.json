@@ -1,0 +1,63 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "76653d0c154a6ca8",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "두 직선 x + y = 4 와 x - 2y = -2 를 cases 연립하여 교점을 구한다.",
+    "두 식을 빼면 3y = 6 -> y = 2, x = 2 이므로 교점은 (2, 2) 이다.",
+    "각 직선의 x절편은 y = 0 일 때 x = 4, x = -2 이다.",
+    "밑변의 길이는 4 - (-2) = 6 이고, 높이는 교점의 y좌표 2 이다.",
+    "삼각형의 넓이는 1/2 * 6 * 2 = 6 이다. 보기 10 중에서 ①번이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 직선 $x + y - 4",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+  "templateKey": "TPL_M2_FIND_INTERSECTION_COORDINATE_SUM_FROM_SYSTEM",
+  "newKeyProposal": null,
+  "typeReason": "cases 기호로 표현된 연립방정식으로 교점을 구하고 x축과 둘러싸인 삼각형 넓이를 계산하는 유형이다.",
+  "rpmRecordId": "M2-RPM-056",
+  "rpmReason": "cases 연립방정식을 풀어 교점 (2, 2)를 구하고 x절편 사이 거리로 넓이 6을 계산한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "cases 연립방정식으로 두 직선의 교점과 x절편을 각각 구한 뒤 삼각형 넓이 공식을 적용한다.",
+  "how": "cases 연립으로 교점 (2, 2)와 x절편 -2, 4 를 구하고 넓이 1/2 * 6 * 2 = 6 을 구했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "두 직선 $x + y - 4 = 0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "도형의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "교점",
+        "src": "solution",
+        "quote": "두 직선의 교점은 $\\begin{cases}",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "삼각형",
+        "src": "solution",
+        "quote": "삼각형의 밑변의 길이는"
+      }
+    ]
+  }
+}

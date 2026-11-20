@@ -1,0 +1,63 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "f32e7a108f18241c",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "x의 각 값에 대해 y의 값이 오직 하나로 정해지는지 확인한다.",
+    "① 약수의 개수 y 는 유일하게 결정된다.",
+    "② 5로 나눈 나머지 y 도 유일하게 결정된다.",
+    "③ 800원 지우개 x개의 가격 y = 800x 로 유일하게 결정된다.",
+    "④ 둘레가 x cm 인 직사각형은 가로와 세로의 비에 따라 넓이 y가 무수히 많이 변하므로 함수가 아니다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중 $y$가 $x$의",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "800원 가격과 둘레 x cm 조건에서 x에 대해 y가 오직 하나로 정해지는 함수의 정의를 판별하는 유형이다.",
+  "rpmRecordId": "M2-RPM-047",
+  "rpmReason": "함수의 정의에 따라 하나의 입력 x에 대해 800원 식과 같이 유일한 y가 대응하는지 판별한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "800원 지우개 등 보기의 대응 관계에서 둘레 x cm 직사각형의 넓이가 유일하지 않음을 판정한다.",
+  "how": "둘레 x cm 가 정해져도 가로, 세로에 따라 넓이 y가 유일하지 않아 함수가 아님을 확인했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "choices",
+        "quote": "둘레의 길이가 $x\\text{ cm}$인 직사각형의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "$y$가 $x$의 함수가 아닌 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "약수",
+        "src": "choices",
+        "quote": "자연수 $x$의 약수의 개수 $y$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "둘레",
+        "src": "choices",
+        "quote": "둘레의 길이가 $x\\text{ cm}$인"
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "18bc0f7200268045",
+  "solvedAnswer": "(1) $y = 900 - 30x$, (2) $26$분 후",
+  "solveSteps": [
+    "(1) 1분당 30L 씩 줄어들므로 y = b - 30x 이다.",
+    "7분 후 690L 이므로 690 = b - 30(7) -> 690 = b - 210 -> b = 900 이다.",
+    "따라서 관계식은 y = 900 - 30x 이다.",
+    "(2) y = 120 을 대입하면 120 = 900 - 30x -> 30x = 780 -> x = 26 이다.",
+    "따라서 26분 후이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서답형 2] 어느 물탱크의",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "1분당 30L 씩 변하는 상황을 일차함수 y = 900 - 30x 로 세워 26분 후를 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-059",
+  "rpmReason": "1분당 30L 비율로 변화하는 물의 양 관계식을 세우고 시간 26분 후를 계산한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기울기 -30 과 조건으로 관계식 y = 900 - 30x 를 세우고 26분 후를 구한다.",
+  "how": "초기량 900 을 구해 y = 900 - 30x 를 세우고 y = 120 에서 26분 후임을 구했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "일정",
+        "src": "stem",
+        "quote": "일정한 양의 물이"
+      }
+    ],
+    "goal": [
+      {
+        "term": "관계",
+        "src": "stem",
+        "quote": "$x$와 $y$ 사이의 관계식을"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$y = 120$을 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
