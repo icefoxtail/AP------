@@ -1,0 +1,63 @@
+{
+  "qid": 17,
+  "itemFingerprint": "7d53a4af5dd35df2",
+  "solveSteps": [
+    "평균이 6이므로 총합은 30에서 5 + 9 + x + y + 6 = 30, 즉 x + y = 10이다.",
+    "분산이 3.8이므로 편차 제곱의 합은 5 * 3.8 = 19이다.",
+    "(-1)^2 + 3^2 + (x-6)^2 + (y-6)^2 + 0 = 19에서 (x-6)^2 + (y-6)^2 = 9이고 x^2 + y^2 - 12(10) + 72 = 9에서 x^2 + y^2 = 57이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+  "unitEvidence": "다섯 수의 평균이 $6$이므로 총합은 $5 \\times",
+  "rpmRecordId": "M3-RPM-084",
+  "rpmReason": "평균 6과 분산 3.8의 편차제곱합 식을 연립하여 x^2 + y^2 = 57을 구한다.",
+  "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+  "templateKey": "TPL_M3_DISPERSION_DEVIATION_PROPERTIES_PARAMETER",
+  "typeReason": "평균과 분산 조건으로부터 미지수 제곱의 합 x^2 + y^2 = 57을 도출하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "x + y = 10과 편차 제곱합 식을 전개하여 x^2 + y^2 = 57을 구하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "변량",
+        "src": "solution",
+        "quote": "8$이므로 각 변량의 편차의 제곱"
+      }
+    ],
+    "goal": [
+      {
+        "term": "분산",
+        "src": "stem",
+        "quote": "이 $6$이고 분산이 $3.8$일"
+      }
+    ],
+    "method": [
+      {
+        "term": "전개",
+        "src": "solution",
+        "quote": "$$ 좌변을 전개하여 정리하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "x + y = 10과 편차 제곱합 (x-6)^2 + (y-6)^2 = 9를 전개해 x^2 + y^2 = 57을 도출하여 ②로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

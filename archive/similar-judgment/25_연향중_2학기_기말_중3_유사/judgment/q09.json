@@ -1,0 +1,63 @@
+{
+  "qid": 9,
+  "itemFingerprint": "8586fa662829023e",
+  "solveSteps": [
+    "반지름에 의해 삼각형 AOB와 BOC는 이등변삼각형이므로 angle ABO = 70도, angle CBO = 30도이다.",
+    "angle ABC = angle ABO - angle CBO = 70도 - 30도 = 40도이다.",
+    "원 O에 내접하는 사각형 ABCD에서 대각의 합은 180도이므로 angle ADC = 180도 - 40도 = 140도이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 사각형 $ABCD$는 원 $O$에 내접하",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "unitEvidence": "선분 $OA, OB$는 모두 원 $O$의 반지름이므로 ",
+  "rpmRecordId": "M3-RPM-077",
+  "rpmReason": "내접사각형 ABCD에서 대각의 합이 180도임을 활용하여 140도를 도출한다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+  "typeReason": "이등변삼각형 각 70도, 30도로부터 각 ABC = 40도를 구하고 내접사각형 대각 140도를 계산하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "이등변삼각형 성질과 내접사각형 대각 합 180도를 순차 적용해 140도를 구하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "사각형",
+        "src": "stem",
+        "quote": "다음 그림에서 사각형 $ABCD$는"
+      }
+    ],
+    "goal": [
+      {
+        "term": "내접",
+        "src": "stem",
+        "quote": "원 $O$에 내접하고 $\\ang"
+      }
+    ],
+    "method": [
+      {
+        "term": "이등변삼각형",
+        "src": "solution",
+        "quote": "e AOB$는 이등변삼각형이므로 $$ \\",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "angle ABC = 70도 - 30도 = 40도에서 내접사각형 대각 합으로 angle ADC = 140도를 산출하여 ④로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

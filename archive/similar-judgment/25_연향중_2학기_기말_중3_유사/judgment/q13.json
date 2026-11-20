@@ -1,0 +1,63 @@
+{
+  "qid": 13,
+  "itemFingerprint": "632557ca37afcf07",
+  "solveSteps": [
+    "11개 변량의 총합은 66이므로 평균 a = 66/11 = 6권이다.",
+    "크기순 정렬: 3, 3, 4, 4, 4, 5, 6, 8, 9, 9, 11에서 6번째 중앙값 b = 5권이다.",
+    "최빈값 c = 4권이므로 a = 6, b = 5, c = 4에서 대소 관계는 a > b > c이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+  "unitEvidence": "먼저 주어진 $11$개 변량의 총합을 구하면 $$ \\b",
+  "rpmRecordId": "M3-RPM-082",
+  "rpmReason": "11개 변량의 총합 66과 평균 a = 6, 중앙값 b = 5, 최빈값 c = 4를 비교하여 a > b > c를 결정한다.",
+  "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+  "templateKey": "TPL_M3_CENTRAL_TENDENCY_MEDIAN_MODE_DIRECT",
+  "typeReason": "11개 변량의 평균 6, 중앙값 5, 최빈값 4의 대소 관계를 판정하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "11개 변량에 대해 총합 66과 대푯값 공식으로 a=6, b=5, c=4를 구하고 비교하므로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "자료",
+        "src": "stem",
+        "quote": "다음 자료는 학생 $11"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대소비교",
+        "src": "stem",
+        "quote": "b, c$의 대소 관계로 옳은"
+      }
+    ],
+    "method": [
+      {
+        "term": "평균",
+        "src": "stem",
+        "quote": ". 이 자료의 평균, 중앙값, 최",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "11개 변량의 총합 66에서 평균 a = 6, 중앙값 b = 5, 최빈값 c = 4를 산출하여 a > b > c로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
