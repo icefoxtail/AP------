@@ -1,0 +1,71 @@
+{
+  "qid": 18,
+  "itemFingerprint": "51c03408429cc1e4",
+  "solveSteps": [
+    "점 H의 x좌표를 t라 하면 AH = t^2, BH = at^2이고 선분 AB = (1-a)t^2이다.",
+    "선분 AB = 3*BH이므로 (1-a)t^2 = 3at^2에서 1 - a = 3a, 4a = 1, a = 1/4이다.",
+    "점 E의 x좌표를 u라 하면 ED = (1/4)u^2 = 1/2이므로 u^2 = 2이다.",
+    "점 C는 y = x^2 위의 점이므로 선분 CE = u^2 = 2이다. 답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "림과 같이 두 이차함수 $y = x^",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "림과 같이 두 이차함수 $y = x^",
+  "rpmRecordId": "M3-RPM-048",
+  "rpmReason": "y = ax^2 에서 AB = 3*BH 비율 조건으로 a = 1/4을 구하고 선분 ED = 1/2을 이용해 CE = 2를 구한다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+  "templateKey": "NONE",
+  "typeReason": "포물선 위의 점들과 수선의 발로 이루어진 선분 AB, BH의 길이 비로부터 ax^2 식의 계수를 정하고 선분 CE 길이를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "선분 비율로 a = 1/4을 결정한 뒤 다른 점의 x좌표 제곱을 이용해 선분 CE의 길이를 구하는 복합 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "quote": "림과 같이 두 이차함수 $y = x^",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "quote": "{CE}}$의 길이는? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "교점",
+        "quote": "$의 그래프의 교점을 $\\math",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "선분",
+        "quote": "}$라 하고, 선분 $\\mathr",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "AB = 3*BH 조건으로 a = 1/4을 구하고 ED = (1/4)u^2 = 1/2에서 u^2 = 2이므로 CE = 2를 구하여 ⑤로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

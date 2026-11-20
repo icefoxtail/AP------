@@ -1,0 +1,72 @@
+{
+  "qid": 8,
+  "itemFingerprint": "1d26ec0210de274b",
+  "solveSteps": [
+    "이차방정식 x^2 - 3x - 10 = 0을 인수분해하면 (x+2)(x-5) = 0이므로 해는 x = -2 또는 x = 5이다.",
+    "두 식을 동시에 만족시키는 x가 x = -2뿐이어야 하므로 x = -2는 일차부등식을 만족하고, x = 5는 만족하지 않아야 한다.",
+    "x = -2를 대입하면 2(-2+2) < k + 1 에서 0 < k + 1 이므로 k > -1이다.",
+    "x = 5를 대입했을 때 성립하지 않아야 하므로 2(5+2) >= k + 1 에서 14 >= k + 1, k <= 13이다.",
+    "따라서 -1 < k <= 13이다. 답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "unitEvidence": "k + 1$과 이차방정식 $x^2 -",
+  "rpmRecordId": "M3-RPM-030",
+  "rpmReason": "x^2 - 3x - 10 = 0을 인수분해하여 두 해를 구하고 부등식 조건 k <= 13을 적용한다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_ROOT",
+  "templateKey": "NONE",
+  "typeReason": "식 x^2 - 3x - 10 = 0의 해 중 특정 해만 일차부등식을 만족하도록 경계값 13을 결정하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "이차방정식 x^2 - 3x - 10 = 0의 해를 구하고 부등식 만족 여부로 k의 범위를 정하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "quote": "k + 1$과 이차방정식 $x^2 -",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차부등식",
+        "quote": "일차부등식 $2(x+2)",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "부등식",
+        "quote": "일차부등식 $2(x+2)",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "등식",
+        "quote": "일차부등식 $2(x+2)",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "x^2 - 3x - 10 = 0의 해 x = -2, 5 중 -2만 2(x+2) < k + 1을 만족하도록 부등식을 풀어 -1 < k <= 13을 얻고 ④로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}
