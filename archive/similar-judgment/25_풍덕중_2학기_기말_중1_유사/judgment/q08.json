@@ -1,0 +1,59 @@
+{
+  "qid": 8,
+  "itemFingerprint": "39256002d4b480d6",
+  "solveSteps": [
+    "큰 원뿔의 부피 = (1/3) * pi * 6^2 * 6 = (1/3) * 36*pi * 6 = 72*pi cm^3.",
+    "작은 원뿔의 부피 = (1/3) * pi * 3^2 * 3 = (1/3) * 9*pi * 3 = 9*pi cm^3.",
+    "원뿔대의 부피 = 큰 원뿔 부피 - 작은 원뿔 부피 = 72*pi - 9*pi = 63*pi cm^3.",
+    "정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "unitEvidence": "높이가 $6\\rm\\,cm$인 큰 원뿔에서,",
+  "rpmRecordId": "M1-RPM-219",
+  "rpmEvidence": "원뿔대의 부피는 큰 원뿔의 부피에서 잘라낸 작은 원뿔의 부피를 빼서 구한다.",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+  "typeReason": "원뿔대 부피 cm를 두 원뿔 부피의 차로 계산하는 부피 차 유형이다.",
+  "rpmReason": "절단된 입체도형의 부피 cm를 차이로 계산하는 복합도형 RPM 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "큰 원뿔과 작은 원뿔의 부피를 각각 구해 빼는 표준적인 난이도 2 cm 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "원뿔",
+        "quote": "높이가 $6\\rm\\,cm$인 큰 원뿔에서,",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "부피",
+        "quote": "만든 원뿔대의 부피는? [5점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "원뿔",
+        "quote": "원뿔대의 부피는 큰 원뿔의 부피에서 잘라낸 작은 원뿔의 부피를 빼서 구한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "부피",
+        "quote": "큰 원뿔의 부피 $V_1$은",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "큰 원뿔 부피 72pi에서 잘라낸 원뿔 9pi를 빼서 원뿔대 부피 63pi cm^3를 aligned 구했다."
+}

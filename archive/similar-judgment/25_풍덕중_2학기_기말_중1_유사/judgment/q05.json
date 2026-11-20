@@ -1,0 +1,60 @@
+{
+  "qid": 5,
+  "itemFingerprint": "9fb6e0ad56018a77",
+  "solveSteps": [
+    "회전축에 수직인 단면이 항상 반지름 3 cm인 원이므로 입체도형은 원기둥이다.",
+    "축을 포함하는 단면이 가로 6 cm, 세로 8 cm인 직사각형이므로 밑면 지름은 6 cm, 높이는 8 cm이다.",
+    "두 밑면의 넓이의 합 = 2 * (pi * 3^2) = 18*pi cm^2.",
+    "옆넓이 = 2*pi * 3 * 8 = 48*pi cm^2.",
+    "겉넓이 = 18*pi + 48*pi = 66*pi cm^2. 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "unitEvidence": "회전축에 수직인 평면으로 자른 단면은",
+  "rpmRecordId": "M1-RPM-212",
+  "rpmEvidence": "단면으로부터 입체도형을 추론하여 겉넓이를 구한다.",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+  "typeReason": "수직 및 축포함 단면으로 회전체를 복원하여 겉넓이 cm를 계산하는 유형이다.",
+  "rpmReason": "단면 조건에서 기둥을 복원하고 기본 겉넓이 cm 공식을 적용하는 RPM 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "단면 조건으로 원기둥의 치수를 파악해 겉넓이 cm를 구하는 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "단면",
+        "quote": "회전축에 수직인 평면으로 자른 단면은",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "겉넓이",
+        "quote": "이 회전체의 겉넓이는? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "단면",
+        "quote": "단면으로부터 입체도형을 추론하여 겉넓이를 구한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "원기둥",
+        "quote": "두 밑면의 넓이의 합은",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "단면 정보로 반지름 3 cm, 높이 8 cm 원기둥을 특정하고 겉넓이 18pi+48pi=66pi cm^2를 aligned 계산했다."
+}

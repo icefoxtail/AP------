@@ -1,0 +1,60 @@
+{
+  "qid": 11,
+  "itemFingerprint": "83a21effd048f109",
+  "solveSteps": [
+    "학생 10명의 독서 시간 자료 중 90분은 다른 자료(15~25분)에 비해 매우 큰 극단적인 값이다.",
+    "극단적인 값이 있는 자료의 중심 경향은 평균보다 중앙값이 더 적절하다.",
+    "10개의 자료를 크기순으로 나열하면 15, 16, 17, 18, 19, 20, 22, 23, 25, 90 이다.",
+    "중앙값은 5번째(19)와 6번째(20) 값의 평균인 (19 + 20) / 2 = 19.5분이다.",
+    "정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_ORGANIZATION",
+  "unitEvidence": "학생 $10$명의 하루 독서 시간을",
+  "rpmRecordId": "M1-RPM-225",
+  "rpmEvidence": "극단적인 값의 유무를 확인하고",
+  "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+  "templateKey": "NONE",
+  "typeReason": "극단적인 값이 있는 자료 10에서 중심 경향을 나타내는 적절한 대푯값을 선택하는 유형이다.",
+  "rpmReason": "자료의 분포 특성에 맞게 적절한 대푯값을 10 선택하는 RPM 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "극단값 판단 후 10개의 자료의 중앙값을 계산하는 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "대푯값",
+        "quote": "학생 $10$명의 하루 독서 시간을",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "중앙값",
+        "quote": "적절한 대푯값과 그 값으로 옳은 것은? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "중앙값",
+        "quote": "극단적인 값의 유무를 확인하고",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "대푯값",
+        "quote": "평균은 극단적인 값의 영향을 크게 받으므로, 자료의 중심 경향을 나타내기에는",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "극단값 90분이 존재하므로 중앙값을 선택하고 10명 자료의 중앙값 19.5분을 구했다."
+}

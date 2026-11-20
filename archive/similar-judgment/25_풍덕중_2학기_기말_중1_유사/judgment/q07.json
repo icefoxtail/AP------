@@ -1,0 +1,59 @@
+{
+  "qid": 7,
+  "itemFingerprint": "f0016e3ddad6b65f",
+  "solveSteps": [
+    "사각뿔의 밑면은 가로 6 cm, 세로 4 cm인 직사각형이므로 밑넓이는 6 * 4 = 24 cm^2 이다.",
+    "사각뿔의 높이는 8 cm이다.",
+    "각뿔의 부피 = (1/3) * (밑넓이) * (높이) = (1/3) * 24 * 8 = 64 cm^3 이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "unitEvidence": "높이가 $8\\rm\\,cm$인 사각뿔의 부피는? [4점]",
+  "rpmRecordId": "M1-RPM-215",
+  "rpmEvidence": "각뿔의 부피는 $\\dfrac{1}{3} \\times (\\text{밑넓이}) \\times (\\text{높이})$이다.",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+  "typeReason": "직사각형 밑면을 갖는 사각뿔의 부피 cm 공식을 직접 적용하는 유형이다.",
+  "rpmReason": "뿔의 밑넓이와 높이를 이용해 부피 cm를 구하는 기본 RPM 유형이다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "사각뿔 부피 공식에 직접 대입하여 64 cm^3를 구하는 기본 난이도 1 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "각뿔",
+        "quote": "높이가 $8\\rm\\,cm$인 사각뿔의 부피는? [4점]",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "부피",
+        "quote": "사각뿔의 부피는? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "부피",
+        "quote": "각뿔의 부피는 $\\dfrac{1}{3} \\times (\\text{밑넓이}) \\times (\\text{높이})$이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "각뿔",
+        "quote": "밑면인 직사각형의 넓이는",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "밑넓이 24 cm^2와 높이 8 cm로 사각뿔 부피 (1/3)*24*8=64 cm^3를 aligned 계산했다."
+}

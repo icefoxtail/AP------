@@ -1,0 +1,59 @@
+{
+  "qid": 2,
+  "itemFingerprint": "2bd348d605462fdf",
+  "solveSteps": [
+    "육각뿔대는 육각뿔을 밑면에 평행한 평면으로 잘라 생기는 입체도형이다.",
+    "두 밑면은 평행하지만 크기가 다른 육각형으로 합동이 아니다.",
+    "육각뿔대의 면의 개수는 밑면 2개와 옆면 6개로 총 8개이고 꼭짓점은 12개이다.",
+    "면의 개수가 7개라고 한 ②는 옳지 않다. 모서리는 12개 이상이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE",
+  "unitEvidence": "육각뿔대의 특징에 대한 설명으로",
+  "rpmRecordId": "M1-RPM-208",
+  "rpmEvidence": "육각뿔대의 구성 요소와 기하학적 성질을 검토한다.",
+  "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+  "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+  "typeReason": "각뿔대의 구성 요소와 밑면, 옆면의 성질 진술을 검토하여 옳지 않은 설명을 찾는 12 유형이다.",
+  "rpmReason": "각뿔대의 면, 모서리, 꼭짓점 성질을 이해하고 판별하는 RPM 12 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "육각뿔대의 성질을 하나씩 대조하여 면의 개수 오류를 찾는 12 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "각뿔",
+        "quote": "육각뿔대의 특징에 대한 설명으로",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "각뿔",
+        "quote": "설명으로 옳지 않은 것은? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "각뿔",
+        "quote": "육각뿔대의 구성 요소와 기하학적 성질을 검토한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "각뿔",
+        "quote": "각뿔대의 두 밑면은 평행하지만 크기가 다르므로",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "육각뿔대의 면의 개수는 밑면 2개와 옆면 6개로 8개이며 꼭짓점은 12개임을 검토했다."
+}

@@ -1,0 +1,59 @@
+{
+  "qid": 9,
+  "itemFingerprint": "9a13762e0e5680a7",
+  "solveSteps": [
+    "구가 꼭 맞게 들어가는 원기둥에서 반지름 r, 높이 2r 일 때 원기둥 부피는 2*pi*r^3 이다.",
+    "구의 부피는 (4/3)*pi*r^3 이므로 남은 물의 부피는 2*pi*r^3 - (4/3)*pi*r^3 = (2/3)*pi*r^3 이다.",
+    "남은 물의 부피 (2/3)*pi*r^3 = 144*pi 이므로 r^3 = 216 이다.",
+    "따라서 r = 6 cm 이다. 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "unitEvidence": "구가 꼭 맞게 들어가는 원기둥 모양의",
+  "rpmRecordId": "M1-RPM-220",
+  "rpmEvidence": "남아 있는 물의 부피는",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+  "typeReason": "수조에서 입체를 꺼냈을 때 남은 물 144 부피로 구의 반지름을 복원하는 유형이다.",
+  "rpmReason": "원기둥에 내접하는 구와 빈 공간의 부피 144 관계를 적용하는 RPM 유형이다.",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "부피 비 3:2:1을 활용하여 구의 반지름을 144 역산해야 하는 난이도 3 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "구",
+        "quote": "구가 꼭 맞게 들어가는 원기둥 모양의",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "구",
+        "quote": "구의 반지름의 길이는? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "부피",
+        "quote": "남아 있는 물의 부피는",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "구",
+        "quote": "수조에 남아 있는 물의 부피가 $144\\pi\\rm\\,cm^3$일 때,",
+        "src": "stem"
+      }
+    ]
+  },
+  "how": "원기둥과 구의 부피 관계에서 남은 물 144pi를 (2/3)pi*r^3에 대입해 r=6 cm를 aligned 계산했다."
+}

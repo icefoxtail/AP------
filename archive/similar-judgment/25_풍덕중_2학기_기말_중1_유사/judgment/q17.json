@@ -1,0 +1,59 @@
+{
+  "qid": 17,
+  "itemFingerprint": "ffe72e58bfe57e1f",
+  "solveSteps": [
+    "전체 학생 수는 2 + 4 + 8 + 14 + 8 + 4 = 40명이다.",
+    "45회 이상인 학생 수는 마지막 계급의 4명이다.",
+    "전체 40명 중 4명이 차지하는 비율은 (4/40) * 100 = 10% 이다.",
+    "따라서 ②는 옳다. 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_INTERPRETATION",
+  "unitEvidence": "조사하여 나타낸 도수분포다각형에서,",
+  "rpmRecordId": "M1-RPM-231",
+  "rpmEvidence": "도수분포다각형의 항목을 하나씩 검토한다.",
+  "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+  "templateKey": "NONE",
+  "typeReason": "도수분포다각형에서 구간별 누적 도수와 비율을 40 검토하여 옳은 설명을 찾는 유형이다.",
+  "rpmReason": "도수분포다각형의 도수 분포와 구간 누적을 해석하는 40 RPM 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다각형의 각 점의 도수를 읽어 선지를 대조하는 40 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "도수분포다각형",
+        "quote": "조사하여 나타낸 도수분포다각형에서,",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "도수",
+        "quote": "옳은 것은? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "도수분포다각형",
+        "quote": "도수분포다각형의 항목을 하나씩 검토한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "도수",
+        "quote": "전체 학생 수는 모든 계급의 도수의 합이므로",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "도수분포다각형의 계급별 도수를 합산해 45회 이상 비율이 (4/40)*100=10%임을 40 확인했다."
+}

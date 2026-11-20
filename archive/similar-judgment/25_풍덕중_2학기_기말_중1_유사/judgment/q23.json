@@ -1,0 +1,59 @@
+{
+  "qid": 23,
+  "itemFingerprint": "42f629aaa041fc48",
+  "solveSteps": [
+    "티셔츠 치수와 같은 상품 주문에서는 수치적 평균보다 가장 수요가 많은 치수가 중요하다.",
+    "가장 많이 판매된 치수는 95(L)로 22장이 판매되었다.",
+    "따라서 가장 적절한 대푯값은 최빈값이고, 그 값은 95(L)이다.",
+    "답은 최빈값, 95(L)이다."
+  ],
+  "solvedAnswer": "최빈값, $95$(L). 가장 많이 판매된 치수가 $95$(L)이므로 추가 주문 수량을 결정하기 위한 대표 치수로 가장 적절하다.",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_ORGANIZATION",
+  "unitEvidence": "판매한 티셔츠의 치수를 조사하여 나타낸 표이다.",
+  "rpmRecordId": "M1-RPM-225",
+  "rpmEvidence": "가장 많은 학생이 선택한 치수를 파악하여",
+  "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+  "templateKey": "NONE",
+  "typeReason": "실생활 상품 주문 상황에서 최빈값을 적절한 대푯값으로 div 선택하는 유형이다.",
+  "rpmReason": "상황에 적절한 대푯값의 선택 근거를 서술하는 RPM div 유형이다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "상황에 맞는 대푯값으로 최빈값을 제시하고 div 이유를 쓰는 난이도 1 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "대푯값",
+        "quote": "판매한 티셔츠의 치수를 조사하여 나타낸 표이다.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최빈값",
+        "quote": "가장 적절한 대푯값은 무엇인지 구하고,",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "최빈값",
+        "quote": "가장 많은 학생이 선택한 치수를 파악하여",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "대푯값",
+        "quote": "의류 치수와 같은 상품 주문에서는 수치적인 평균값보다",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "의류 치수 추가 주문 상황에서 가장 빈도가 높은 대푯값인 최빈값 div 95(L)를 선정했다."
+}

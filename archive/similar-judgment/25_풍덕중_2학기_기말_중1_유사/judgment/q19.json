@@ -1,0 +1,59 @@
+{
+  "qid": 19,
+  "itemFingerprint": "01b7acfd6f445108",
+  "solveSteps": [
+    "A 중학교 전체 학생 수는 100명, B 중학교는 200명이다.",
+    "80 cm 이상 85 cm 미만 계급에서 A교 상대도수는 0.40, B교 상대도수는 0.35이다.",
+    "A교 학생 수 = 100 * 0.40 = 40명이고, B교 학생 수 = 200 * 0.35 = 70명이다.",
+    "두 학교의 학생 수가 서로 다르므로 같다고 한 ④는 옳지 않다. 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_INTERPRETATION",
+  "unitEvidence": "앉은키에 대한 상대도수의 분포를 비교한 자료에서,",
+  "rpmRecordId": "M1-RPM-232",
+  "rpmEvidence": "상대도수에 각 집단의 전체 도수를 곱하여 실제 학생 수를 비교한다.",
+  "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+  "templateKey": "NONE",
+  "typeReason": "도수의 총합이 다른 두 집단의 상대도수 분포를 실제 도수로 비교하는 100 유형이다.",
+  "rpmReason": "두 집단의 상대도수를 전체 학생 수와 곱해 비교하는 100 RPM 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "상대도수와 전체 도수를 곱해 각 학교의 학생 수를 구하는 100 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "상대도수",
+        "quote": "앉은키에 대한 상대도수의 분포를 비교한 자료에서,",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상대도수",
+        "quote": "다음 설명 중 옳지 않은 것은? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "상대도수",
+        "quote": "상대도수에 각 집단의 전체 도수를 곱하여 실제 학생 수를 비교한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "도수",
+        "quote": "두 집단의 전체 도수가 서로 다르므로",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "전체 도수가 100명, 200명인 두 학교의 상대도수를 실제 학생 수로 환산하여 비교했다."
+}

@@ -1,0 +1,59 @@
+{
+  "qid": 22,
+  "itemFingerprint": "a73be78a7335037d",
+  "solveSteps": [
+    "(1) 단면 원의 넓이는 pi*r^2 이고, 4개의 원을 채우므로 구의 겉넓이는 4*pi*r^2 이다.",
+    "(2) 반지름 5 cm인 반구의 겉넓이는 반구의 곡면(2*pi*r^2)과 잘린 단면 원(pi*r^2)의 합인 3*pi*r^2 이다.",
+    "따라서 겉넓이 = 3 * pi * 5^2 = 75*pi cm^2 이다.",
+    "답은 (1) 4*pi*r^2, (2) 75*pi cm^2 이다."
+  ],
+  "solvedAnswer": "(1) $4\\pi r^2$ (단면 원의 넓이의 $4$배)  (2) $75\\pi\\rm\\,cm^2$",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "unitEvidence": "다음은 구의 겉넓이를 탐구하기 위해,",
+  "rpmRecordId": "M1-RPM-216",
+  "rpmEvidence": "구의 중심을 지나는 단면인 원의 넓이는",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+  "typeReason": "구의 겉넓이 유도 원리와 반구의 합성 겉넓이 cm를 계산하는 유형이다.",
+  "rpmReason": "구의 겉넓이 공식을 적용하고 반구의 노출면 cm를 합산하는 RPM 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "구의 겉넓이 공식과 반구의 단면 포함 겉넓이 cm를 구하는 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "구",
+        "quote": "다음은 구의 겉넓이를 탐구하기 위해,",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "겉넓이",
+        "quote": "물음에 답하고 그 풀이 과정을 서술하시오. [총 6점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "구",
+        "quote": "구의 중심을 지나는 단면인 원의 넓이는",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "겉넓이",
+        "quote": "곡면 부분의 넓이는 구 전체의 겉넓이의 절반이므로",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "단면의 4배로 구의 겉넓이 공식을 유도하고 반구 겉넓이 3*pi*5^2=75pi cm^2를 aligned 계산했다."
+}
