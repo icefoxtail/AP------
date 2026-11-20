@@ -1,0 +1,51 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "5",
+      "8",
+      "2"
+    ],
+    "domain": [
+      -5,
+      2
+    ],
+    "viewport": [
+      -5,
+      2,
+      -4,
+      8
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -2,
+        "y": -3
+      },
+      {
+        "id": "P",
+        "x": 0,
+        "y": 5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점 (-2, -3)과 y절편 (0, 5)를 지나는 포물선 (-2, -3, 5)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "꼭짓점 (-2, -3), y절편 5",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점이 (-2, -3)이고 y절편이 5인 포물선"
+  ]
+}

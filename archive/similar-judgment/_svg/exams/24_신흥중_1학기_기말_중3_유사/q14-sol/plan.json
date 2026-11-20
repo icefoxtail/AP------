@@ -1,0 +1,51 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-4",
+      "0",
+      "3"
+    ],
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -3,
+      3,
+      -6,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 0,
+        "y": -4
+      },
+      {
+        "id": "P",
+        "x": 2,
+        "y": 8
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "이차함수 y=3x^2-4의 그래프 (-4, 2, 8, 3)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=3x^2-4 점 (2, 8) 지남",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점이 (0, -4)이고 점 (2, 8)을 지나는 포물선"
+  ]
+}

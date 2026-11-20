@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-7",
+      "8",
+      "-1"
+    ],
+    "domain": [
+      -1,
+      9
+    ],
+    "viewport": [
+      -2,
+      10,
+      -2,
+      11
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 4,
+        "y": 9
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 7,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "두 점의 x좌표 1, 7, 꼭짓점 (4, 9), 삼각형 넓이 27 (1, 7, 4, 9, 27)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 점 1, 7과 꼭짓점 (4, 9)로 만든 삼각형 넓이 27",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 ABC의 넓이 계산"
+  ]
+}

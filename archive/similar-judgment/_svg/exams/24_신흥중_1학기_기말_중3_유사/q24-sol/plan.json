@@ -1,0 +1,56 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "34",
+          "-16",
+          "2"
+        ],
+        "domain": [
+          "2",
+          "6"
+        ],
+        "label": "y=2(x-4)^2+2"
+      },
+      {
+        "id": "c2",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "7"
+        ],
+        "label": "y=x-2"
+      }
+    ],
+    "viewport": [
+      -1,
+      8,
+      -3,
+      12
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "직선 y=x-2와 꼭짓점 (p, q)=(4, 2)인 포물선 (p, q, 4, 2, 6)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "꼭짓점 (p, q)=(4, 2)가 y=x-2 위 (4-2=2)",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "직선 위에 꼭짓점이 있는 포물선"
+  ]
+}

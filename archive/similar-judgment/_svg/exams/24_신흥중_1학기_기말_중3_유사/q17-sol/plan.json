@@ -1,0 +1,51 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "4",
+      "-2/3"
+    ],
+    "domain": [
+      -1,
+      7
+    ],
+    "viewport": [
+      -2,
+      8,
+      -2,
+      8
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": 6
+      },
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점 (3, 6)을 지나고 제2사분면을 지나지 않는 포물선 (3, 6, 0)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=-(2/3)(x-3)^2+6 꼭짓점 (3, 6), y절편 0",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "위로 볼록하고 (0, 0)과 (3, 6)을 지나는 포물선"
+  ]
+}
