@@ -17,7 +17,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "FINITE_DECIMAL_POWERS_OF_TEN_FILL",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -38,7 +38,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_FINITE_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_FRACTION_ARITHMETIC"
@@ -47,6 +47,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "유한소수와 무한소수",
+    "rpmPrimaryL4": "유한소수 판별",
+    "rpmPrimaryRecordId": "M2-RPM-001",
     "sourceQid": 1,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q01-problem.plan.json"
@@ -66,7 +71,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "REPEATING_DECIMAL_IDENTIFICATION",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -87,7 +92,7 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_REDUCING_FRACTION"
@@ -96,6 +101,11 @@ window.questionBank = [
       "COND_IRREDUCIBLE"
     ],
     "integrationPattern": "CASE_BRANCH",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "유한소수와 무한소수",
+    "rpmPrimaryL4": "분모의 소인수 조건",
+    "rpmPrimaryRecordId": "M2-RPM-002",
     "sourceQid": 2,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q02-problem.plan.json"
@@ -115,7 +125,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "REPEATING_DECIMAL_ORDER_COMPARISON",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -136,7 +146,7 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_ORDER_COMPARISON"
@@ -145,6 +155,11 @@ window.questionBank = [
       "COND_DECIMAL"
     ],
     "integrationPattern": "CASE_BRANCH",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "유리수와 소수 표현",
+    "rpmPrimaryL4": "조건을 만족하는 유리수",
+    "rpmPrimaryRecordId": "M2-RPM-006",
     "sourceQid": 3,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q03-problem.plan.json"
@@ -164,7 +179,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "REPEATING_DECIMAL_EVEN_ODD_DIGIT_PRODUCT",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -185,7 +200,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_PERIODICITY_MODULO"
@@ -194,6 +209,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "순환소수",
+    "rpmPrimaryL4": "순환마디와 표현",
+    "rpmPrimaryRecordId": "M2-RPM-003",
     "sourceQid": 4,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q04-problem.plan.json"
@@ -213,7 +233,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SYMMETRIC_REPEATING_PRIME_CONSTRAINTS",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -233,8 +253,8 @@ window.questionBank = [
     "solution": "순환소수를 분수로 나타내어 $a + b$를 결정하고 소수 조건을 적용한다. 1단계: 두 순환소수의 합을 분수로 나타낸다. $$ 0.\\dot{a}\\dot{b} = \\frac{10a + b}{99}, \\quad 0.\\dot{b}\\dot{a} = \\frac{10b + a}{99} $$ 두 수의 합은 다음과 같다. $$ \\frac{10a + b}{99} + \\frac{10b + a}{99} = \\frac{11a + 11b}{99} = \\frac{11(a + b)}{99} = \\frac{a + b}{9} $$ 우변의 값 $0.\\dot{7} = \\dfrac{7}{9}$이므로 $$ \\frac{a + b}{9} = \\frac{7}{9} \\implies a + b = 7 $$ 2단계: 소수 조건 $a, b \\in {2, 3, 5, 7}$ 및 $a > b$를 적용한다. 합이 $7$이 되는 두 소수의 쌍은 $5 + 2 = 7$뿐이다. $a > b$이므로 $$ a = 5, \\quad b = 2 $$ 3단계: $0.\\dot{a} - 0.\\dot{b}$의 값을 구한다. $$ \\begin{aligned} 0.\\dot{a} - 0.\\dot{b} &= 0.\\dot{5} - 0.\\dot{2} \\ &= \\frac{5}{9} - \\frac{2}{9} = \\frac{3}{9} \\ &= 0.\\dot{3} \\end{aligned} $$ 따라서 정답은 ③이다.",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_PRIME_FACTORIZATION",
@@ -245,6 +265,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "INTERDEPENDENT",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "순환소수",
+    "rpmPrimaryL4": "순환소수를 분수로",
+    "rpmPrimaryRecordId": "M2-RPM-004",
     "sourceQid": 5,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q05-problem.plan.json"
@@ -264,7 +289,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "REVERSE_ENGINEER_ORIGINAL_FRACTION",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -285,7 +310,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_REDUCING_FRACTION"
@@ -294,6 +319,11 @@ window.questionBank = [
       "COND_IRREDUCIBLE"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "순환소수",
+    "rpmPrimaryL4": "순환소수를 분수로",
+    "rpmPrimaryRecordId": "M2-RPM-004",
     "sourceQid": 6,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q06-problem.plan.json"
@@ -313,7 +343,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "RATIONAL_DECIMAL_DEFINITION_AUDIT",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -333,8 +363,8 @@ window.questionBank = [
     "solution": "유리수와 순환소수의 정의 및 성질을 검토한다. $$ \\begin{aligned} \\text{ㄱ: } & \\text{모든 순환소수는 } 10\\text{의 거듭제곱을 이용하여 정수 분수 } \\frac{a}{b} \\text{ ($b \\ne 0$) 꼴로 나타낼 수 있으므로 유리수이다. (참)} \\ \\text{ㄴ: } & \\text{정수가 아닌 유리수를 소수로 나타내면 분모의 소인수에 따라 유한소수 또는 순환소수로 반드시 나타난다. (참)} \\ \\text{ㄷ: } & \\text{분수가 기약분수라는 조건이 없으면, 분모에 } 2, 5 \\text{ 이외의 소인수(예: } 3\\text{)가 있더라도 } \\ & \\frac{21}{30} = \\frac{7}{10} = 0.7\\text{처럼 분자와 약분되어 유한소수가 될 수 있다. 따라서 거짓이다.} \\end{aligned} $$ 따라서 옳은 것은 ㄱ, ㄴ이므로 정답은 ①이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_FINITE_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_IRREDUCIBLE_FRACTION"
@@ -343,6 +373,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "CASE_BRANCH",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "유리수와 소수 표현",
+    "rpmPrimaryL4": "분수를 소수로",
+    "rpmPrimaryRecordId": "M2-RPM-005",
     "sourceQid": 7,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q07-problem.plan.json"
@@ -362,7 +397,7 @@ window.questionBank = [
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "EXPONENT_DIVISION_SOLVE_BOX",
+    "conceptClusterKey": "EXPONENT_LAW",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -383,7 +418,7 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_EXPONENT_LAWS",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_EXPONENT_ARITHMETIC"
@@ -392,6 +427,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "단항식의 계산",
+    "rpmPrimaryL3": "지수법칙",
+    "rpmPrimaryL4": "거듭제곱의 곱·몫",
+    "rpmPrimaryRecordId": "M2-RPM-007",
     "sourceQid": 8,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q08-problem.plan.json"
@@ -411,7 +451,7 @@ window.questionBank = [
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "POWER_BASE_VARIABLE_SUBSTITUTION",
+    "conceptClusterKey": "EXPONENT_LAW",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -432,7 +472,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_EXPONENT_LAWS",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_VARIABLE_SUBSTITUTION"
@@ -441,6 +481,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "단항식의 계산",
+    "rpmPrimaryL3": "지수법칙",
+    "rpmPrimaryL4": "거듭제곱의 거듭제곱",
+    "rpmPrimaryRecordId": "M2-RPM-008",
     "sourceQid": 9,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q09-problem.plan.json"
@@ -460,7 +505,7 @@ window.questionBank = [
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "POWER_SUM_COMMON_FACTOR_EQUATION",
+    "conceptClusterKey": "EXPONENT_LAW",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -481,7 +526,7 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_EXPONENT_LAWS",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_DISTRIBUTIVE_LAW"
@@ -490,6 +535,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "단항식의 계산",
+    "rpmPrimaryL3": "지수법칙",
+    "rpmPrimaryL4": "거듭제곱의 곱·몫",
+    "rpmPrimaryRecordId": "M2-RPM-007",
     "sourceQid": 10,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q10-problem.plan.json"
@@ -509,7 +559,7 @@ window.questionBank = [
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "MONOMIAL_POWERS_PRODUCT_EXPONENTS",
+    "conceptClusterKey": "EXPONENT_LAW",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -530,7 +580,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_EXPONENT_LAWS",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_EXPONENT_ARITHMETIC"
@@ -539,6 +589,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "단항식의 계산",
+    "rpmPrimaryL3": "지수법칙",
+    "rpmPrimaryL4": "거듭제곱의 거듭제곱",
+    "rpmPrimaryRecordId": "M2-RPM-008",
     "sourceQid": 11,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q11-problem.plan.json"
@@ -558,7 +613,7 @@ window.questionBank = [
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "EXPONENT_GCD_MINIMUM_SUM",
+    "conceptClusterKey": "EXPONENT_LAW",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -579,7 +634,7 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_EXPONENT_LAWS",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_GCD"
@@ -588,6 +643,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "단항식의 계산",
+    "rpmPrimaryL3": "지수법칙",
+    "rpmPrimaryL4": "거듭제곱의 거듭제곱",
+    "rpmPrimaryRecordId": "M2-RPM-008",
     "sourceQid": 12,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q12-problem.plan.json"
@@ -607,7 +667,7 @@ window.questionBank = [
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "MONOMIAL_COMPOSITE_PRODUCT_DIVISION",
+    "conceptClusterKey": "EXPONENT_LAW",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -628,7 +688,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_MONOMIAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_EXPONENT_ARITHMETIC"
@@ -637,6 +697,11 @@ window.questionBank = [
       "COND_COEFFICIENT"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "단항식의 계산",
+    "rpmPrimaryL3": "단항식의 곱셈과 나눗셈",
+    "rpmPrimaryL4": "혼합 계산",
+    "rpmPrimaryRecordId": "M2-RPM-011",
     "sourceQid": 13,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q13-problem.plan.json"
@@ -656,7 +721,7 @@ window.questionBank = [
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "CUBOID_HEIGHT_MONOMIAL_DIVISION",
+    "conceptClusterKey": "EXPONENT_LAW",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -677,7 +742,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_MONOMIAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_GEOMETRIC_VOLUME"
@@ -686,6 +751,11 @@ window.questionBank = [
       "COND_POSITIVE"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "단항식의 계산",
+    "rpmPrimaryL3": "단항식의 곱셈과 나눗셈",
+    "rpmPrimaryL4": "단항식의 나눗셈",
+    "rpmPrimaryRecordId": "M2-RPM-010",
     "sourceQid": 14,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q14-problem.plan.json"
@@ -705,7 +775,7 @@ window.questionBank = [
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "POWER_OF_TEN_DIGIT_COUNTING",
+    "conceptClusterKey": "EXPONENT_LAW",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -725,8 +795,8 @@ window.questionBank = [
     "solution": "$2$와 $5$의 지수 중 작은 쪽인 $15$에 맞춰 $10$의 거듭제곱으로 묶는다. 1단계: 식을 변형한다. $$ \\begin{aligned} 2^{18} \\times 5^{15} &= 2^{3 + 15} \\times 5^{15} \\ &= 2^3 \\times (2 \\times 5)^{15} \\ &= 8 \\times 10^{15} \\end{aligned} $$ 2단계: $8 \\times 10^{15}$의 자릿수를 구한다. 한 자리 수 $8$ 뒤에 $0$이 $15$개 이어지므로 전체 자릿수는 다음과 같다. $$ n = 1 + 15 = 16 $$ 따라서 $n = 16$이므로 정답은 ④이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_EXPONENT_LAWS",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_EXPONENT_ARITHMETIC"
@@ -735,6 +805,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "단항식의 계산",
+    "rpmPrimaryL3": "지수법칙",
+    "rpmPrimaryL4": "거듭제곱의 곱·몫",
+    "rpmPrimaryRecordId": "M2-RPM-007",
     "sourceQid": 15,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q15-problem.plan.json"
@@ -754,7 +829,7 @@ window.questionBank = [
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "POLYNOMIAL_ERROR_ADD_SUB_RECOVERY",
+    "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -775,8 +850,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+    "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
     "crossConceptKeys": [
       "CC_DISTRIBUTIVE_LAW"
     ],
@@ -784,6 +859,11 @@ window.questionBank = [
       "COND_COEFFICIENT"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "다항식의 계산",
+    "rpmPrimaryL3": "다항식의 덧셈과 뺄셈",
+    "rpmPrimaryL4": "동류항 정리",
+    "rpmPrimaryRecordId": "M2-RPM-012",
     "sourceQid": 16,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q16-problem.plan.json"
@@ -803,7 +883,7 @@ window.questionBank = [
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "POLY_DIV_BY_FRACTIONAL_MONOMIAL",
+    "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -824,7 +904,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_POLYNOMIAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_DISTRIBUTIVE_LAW"
@@ -833,6 +913,11 @@ window.questionBank = [
       "COND_NONZERO"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "다항식의 계산",
+    "rpmPrimaryL3": "단항식과 다항식의 곱셈·나눗셈",
+    "rpmPrimaryL4": "다항식을 단항식으로 나누기",
+    "rpmPrimaryRecordId": "M2-RPM-015",
     "sourceQid": 17,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q17-problem.plan.json"
@@ -852,7 +937,7 @@ window.questionBank = [
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "INEQUALITY_SOLUTION_SUBSTITUTION_TEST",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -873,7 +958,7 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_ORDER_COMPARISON"
@@ -882,6 +967,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "CASE_BRANCH",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "부등식의 성질",
+    "rpmPrimaryL4": "부등식의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-018",
     "sourceQid": 18,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q18-problem.plan.json"
@@ -901,7 +991,7 @@ window.questionBank = [
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "INEQUALITY_SIGN_ORIENTATION_AUDIT",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -922,7 +1012,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_ORDER_COMPARISON"
@@ -931,6 +1021,11 @@ window.questionBank = [
       "COND_INEQUALITY_SIGN"
     ],
     "integrationPattern": "CASE_BRANCH",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "부등식의 성질",
+    "rpmPrimaryL4": "부등식의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-018",
     "sourceQid": 19,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q19-problem.plan.json"
@@ -950,7 +1045,7 @@ window.questionBank = [
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_BOUNDED_INTERVAL_EXTREMA",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -970,8 +1065,8 @@ window.questionBank = [
     "solution": "$a < 0$일 때 일차식의 단조감소 성질을 이용하여 $a$와 $b$를 구한다. 1단계: $a < 0$이므로 $-5 \\le x \\le 3$의 각 변에 $a$를 곱하면 부등호의 방향이 반대로 바뀐다. $$ 3a \\le ax \\le -5a $$ 각 변에 $\\dfrac{1}{4}$을 더한다. $$ \\frac{1}{4} + 3a \\le \\frac{1}{4} + ax \\le \\frac{1}{4} - 5a $$ 2단계: 최댓값 조건을 이용하여 $a$를 구한다. 최댓값은 $x = -5$일 때인 $\\dfrac{1}{4} - 5a$이다. 문제에서 최댓값이 $4$이므로 $$ \\begin{aligned} \\frac{1}{4} - 5a &= 4 \\ -5a &= 4 - \\frac{1}{4} = \\frac{15}{4} \\ a &= -\\frac{15}{4} \\times \\frac{1}{5} = -\\frac{3}{4} \\end{aligned} $$ $a = -\\dfrac{3}{4} < 0$이므로 조건을 만족한다.\n\n3단계: 최솟값 $b$를 구한다. 최솟값은 $x = 3$일 때인 $\\dfrac{1}{4} + 3a$이다. $$ b = \\frac{1}{4} + 3\\left(-\\frac{3}{4}\\right) = \\frac{1}{4} - \\frac{9}{4} = -\\frac{8}{4} = -2 $$ 4단계: $a - b$의 값을 계산한다. $$ a - b = -\\frac{3}{4} - (-2) = -\\frac{3}{4} + 2 = \\frac{5}{4} $$ 따라서 정답은 ④이다.",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_ORDER_COMPARISON",
@@ -982,6 +1077,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "부등식의 성질",
+    "rpmPrimaryL4": "수직선으로 해 표현",
+    "rpmPrimaryRecordId": "M2-RPM-019",
     "sourceQid": 20,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q20-problem.plan.json"
@@ -1001,7 +1101,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "REPEATING_FRACTION_MULTIPLIER_STEPWISE",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1016,7 +1116,7 @@ window.questionBank = [
     "score": 7,
     "points": 7,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_REDUCING_FRACTION",
@@ -1027,6 +1127,11 @@ window.questionBank = [
       "COND_RANGE"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "순환소수",
+    "rpmPrimaryL4": "순환소수를 분수로",
+    "rpmPrimaryRecordId": "M2-RPM-004",
     "sourceQid": 21,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q21-problem.plan.json"
@@ -1046,7 +1151,7 @@ window.questionBank = [
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "MONOMIAL_POWER_IDENTITY_SYSTEM_STEPWISE",
+    "conceptClusterKey": "EXPONENT_LAW",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1061,7 +1166,7 @@ window.questionBank = [
     "score": 6,
     "points": 6,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_EXPONENT_LAWS",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_EXPONENT_ARITHMETIC"
@@ -1070,6 +1175,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "단항식의 계산",
+    "rpmPrimaryL3": "지수법칙",
+    "rpmPrimaryL4": "거듭제곱의 거듭제곱",
+    "rpmPrimaryRecordId": "M2-RPM-008",
     "sourceQid": 22,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q22-problem.plan.json"
@@ -1089,7 +1199,7 @@ window.questionBank = [
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "INEQUALITY_INTERVAL_AFFINE_TRANSFORMATION",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1104,7 +1214,7 @@ window.questionBank = [
     "score": 7,
     "points": 7,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_ORDER_COMPARISON",
@@ -1115,6 +1225,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "부등식의 성질",
+    "rpmPrimaryL4": "수직선으로 해 표현",
+    "rpmPrimaryRecordId": "M2-RPM-019",
     "sourceQid": 23,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/25_진남중_1학기_중간_중2_유사_plans/q23-problem.plan.json"

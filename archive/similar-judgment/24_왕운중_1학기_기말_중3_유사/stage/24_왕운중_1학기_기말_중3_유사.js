@@ -17,7 +17,7 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "공통인수 묶기와 인수 판별",
+    "conceptClusterKey": "FACTORIZATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -39,10 +39,15 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+    "rpmPrimaryL2": "인수분해",
+    "rpmPrimaryL3": "공통인수",
+    "rpmPrimaryL4": "공통인수 묶기",
+    "rpmPrimaryRecordId": "M3-RPM-021",
     "sourceQid": 1,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q01-problem.plan.json"
@@ -62,7 +67,7 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "공통인수 묶기의 옳고 그름 판별",
+    "conceptClusterKey": "FACTORIZATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -84,10 +89,15 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+    "rpmPrimaryL2": "인수분해",
+    "rpmPrimaryL3": "공통인수",
+    "rpmPrimaryL4": "공통인수 묶기",
+    "rpmPrimaryRecordId": "M3-RPM-021",
     "sourceQid": 2,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q02-problem.plan.json"
@@ -107,7 +117,7 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "공통인수 묶기 후 완전제곱식 인수분해",
+    "conceptClusterKey": "FACTORIZATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -129,12 +139,17 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
     "crossConceptKeys": [
       "CC_COMMON_FACTOR_EXTRACTION"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+    "rpmPrimaryL2": "인수분해",
+    "rpmPrimaryL3": "공통인수",
+    "rpmPrimaryL4": "공통인수 묶기",
+    "rpmPrimaryRecordId": "M3-RPM-021",
     "sourceQid": 3,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q03-problem.plan.json"
@@ -154,7 +169,7 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "세 이차식의 완전제곱식 조건과 계수 결정",
+    "conceptClusterKey": "FACTORIZATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -176,12 +191,17 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
     "crossConceptKeys": [
       "CC_BINOMIAL_SQUARE_EXPANSION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+    "rpmPrimaryL2": "인수분해",
+    "rpmPrimaryL3": "인수분해 공식",
+    "rpmPrimaryL4": "제곱식",
+    "rpmPrimaryRecordId": "M3-RPM-023",
     "sourceQid": 4,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q04-problem.plan.json"
@@ -201,7 +221,7 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "완전제곱식 변형을 이용한 무리수 식의 값",
+    "conceptClusterKey": "FACTORIZATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -223,12 +243,17 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
     "crossConceptKeys": [
       "CC_RADICAL_SQUARE_SIMPLIFICATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+    "rpmPrimaryL2": "인수분해",
+    "rpmPrimaryL3": "인수분해의 활용",
+    "rpmPrimaryL4": "인수분해를 이용한 수의 계산",
+    "rpmPrimaryRecordId": "M3-RPM-026",
     "sourceQid": 5,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q05-problem.plan.json"
@@ -248,7 +273,7 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "합차 공식 인수분해",
+    "conceptClusterKey": "FACTORIZATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -270,10 +295,15 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+    "rpmPrimaryL2": "인수분해",
+    "rpmPrimaryL3": "인수분해 공식",
+    "rpmPrimaryL4": "제곱식",
+    "rpmPrimaryRecordId": "M3-RPM-023",
     "sourceQid": 6,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q06-problem.plan.json"
@@ -293,7 +323,7 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "합차 공식의 계수 관계식과 부호·대소 판별",
+    "conceptClusterKey": "FACTORIZATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -315,7 +345,7 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
     "crossConceptKeys": [
       "CC_POLYNOMIAL_COEFFICIENT_MATCHING"
     ],
@@ -324,6 +354,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+    "rpmPrimaryL2": "인수분해",
+    "rpmPrimaryL3": "인수분해 공식",
+    "rpmPrimaryL4": "제곱식",
+    "rpmPrimaryRecordId": "M3-RPM-023",
     "sourceQid": 7,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q07-problem.plan.json"
@@ -343,7 +378,7 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "x²+(a+b)x+ab 꼴 인수분해와 두 상수의 합",
+    "conceptClusterKey": "FACTORIZATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -365,10 +400,15 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+    "rpmPrimaryL2": "인수분해",
+    "rpmPrimaryL3": "인수분해 공식",
+    "rpmPrimaryL4": "제곱식",
+    "rpmPrimaryRecordId": "M3-RPM-023",
     "sourceQid": 8,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q08-problem.plan.json"
@@ -388,7 +428,7 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "정수 계수 이차식 인수분해의 계수 관계 분석",
+    "conceptClusterKey": "FACTORIZATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -410,7 +450,7 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 3,
     "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
     "crossConceptKeys": [
       "CC_POLYNOMIAL_COEFFICIENT_MATCHING",
       "CC_INTEGER_FACTOR_PAIRS"
@@ -420,6 +460,11 @@ window.questionBank = [
       "COND_POSITIVE"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+    "rpmPrimaryL2": "인수분해",
+    "rpmPrimaryL3": "인수분해 공식",
+    "rpmPrimaryL4": "제곱식",
+    "rpmPrimaryRecordId": "M3-RPM-023",
     "sourceQid": 9,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q09-problem.plan.json"
@@ -439,7 +484,7 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "전개 후 재인수분해와 일차인수의 합",
+    "conceptClusterKey": "FACTORIZATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -461,12 +506,17 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
     "crossConceptKeys": [
       "CC_POLYNOMIAL_PRODUCT_EXPANSION"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+    "rpmPrimaryL2": "인수분해",
+    "rpmPrimaryL3": "인수분해 공식",
+    "rpmPrimaryL4": "제곱식",
+    "rpmPrimaryRecordId": "M3-RPM-023",
     "sourceQid": 10,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q10-problem.plan.json"
@@ -486,7 +536,7 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "음의 정수 조건과 상수항 k의 순서 구하기",
+    "conceptClusterKey": "FACTORIZATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -508,7 +558,7 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
     "crossConceptKeys": [
       "CC_INTEGER_FACTOR_PAIRS"
     ],
@@ -517,6 +567,11 @@ window.questionBank = [
       "COND_NEGATIVE"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+    "rpmPrimaryL2": "인수분해",
+    "rpmPrimaryL3": "인수분해 공식",
+    "rpmPrimaryL4": "제곱식",
+    "rpmPrimaryRecordId": "M3-RPM-023",
     "sourceQid": 11,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q11-problem.plan.json"
@@ -536,7 +591,7 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "이차방정식 판별하기",
+    "conceptClusterKey": "QUADRATIC_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -558,10 +613,15 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_VERIFY_ROOT_OF_QUADRATIC_EQUATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "이차방정식",
+    "rpmPrimaryL2": "이차방정식의 풀이",
+    "rpmPrimaryL3": "이차방정식과 해",
+    "rpmPrimaryL4": "이차방정식 판별",
+    "rpmPrimaryRecordId": "M3-RPM-029",
     "sourceQid": 12,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q12-problem.plan.json"
@@ -581,7 +641,7 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "대입표를 통한 이차방정식의 해 의미 이해",
+    "conceptClusterKey": "QUADRATIC_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -603,10 +663,15 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_VERIFY_ROOT_OF_QUADRATIC_EQUATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "이차방정식",
+    "rpmPrimaryL2": "이차방정식의 풀이",
+    "rpmPrimaryL3": "이차방정식과 해",
+    "rpmPrimaryL4": "이차방정식 판별",
+    "rpmPrimaryRecordId": "M3-RPM-029",
     "sourceQid": 13,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q13-problem.plan.json"
@@ -626,7 +691,7 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "한 근 대입으로 미정계수 구하기",
+    "conceptClusterKey": "QUADRATIC_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -648,10 +713,15 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_EVALUATE_FRACTIONAL_EXPRESSION_USING_QUADRATIC_ROOT_DESCRIPTIVE",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "이차방정식",
+    "rpmPrimaryL2": "이차방정식의 풀이",
+    "rpmPrimaryL3": "이차방정식과 해",
+    "rpmPrimaryL4": "이차방정식 판별",
+    "rpmPrimaryRecordId": "M3-RPM-029",
     "sourceQid": 14,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q14-problem.plan.json"
@@ -671,7 +741,7 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "두 이차방정식의 모든 해의 합",
+    "conceptClusterKey": "QUADRATIC_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -693,10 +763,15 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT",
-    "templateKey": "",
+    "templateKey": "TPL_M3_COUNT_ORDERED_PAIRS_SATISFYING_ZERO_PRODUCT",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "이차방정식",
+    "rpmPrimaryL2": "이차방정식의 풀이",
+    "rpmPrimaryL3": "인수분해를 이용한 풀이",
+    "rpmPrimaryL4": "기본 인수분해",
+    "rpmPrimaryRecordId": "M3-RPM-032",
     "sourceQid": 15,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q15-problem.plan.json"
@@ -716,7 +791,7 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "주사위 눈 조건과 중근을 가질 확률",
+    "conceptClusterKey": "QUADRATIC_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -738,7 +813,7 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
-    "templateKey": "",
+    "templateKey": "TPL_M3_CALCULATE_PARAMETER_DIFFERENCE_FROM_DOUBLE_ROOT",
     "crossConceptKeys": [
       "CC_PRIME_FACTORIZATION_SQUARE"
     ],
@@ -746,6 +821,11 @@ window.questionBank = [
       "COND_NATURAL_NUMBER"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "이차방정식",
+    "rpmPrimaryL2": "이차방정식의 풀이",
+    "rpmPrimaryL3": "근의 공식",
+    "rpmPrimaryL4": "근의 공식",
+    "rpmPrimaryRecordId": "M3-RPM-035",
     "sourceQid": 16,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q16-problem.plan.json"
@@ -765,7 +845,7 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "제곱근을 이용한 ax²-c=0 풀이와 유리화",
+    "conceptClusterKey": "QUADRATIC_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -787,10 +867,15 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
-    "templateKey": "",
+    "templateKey": "TPL_M3_SOLVE_QUADRATIC_VIA_COMPLETED_SQUARE_ROOT",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "이차방정식",
+    "rpmPrimaryL2": "이차방정식의 풀이",
+    "rpmPrimaryL3": "제곱근·완전제곱식을 이용한 풀이",
+    "rpmPrimaryL4": "제곱근 이용",
+    "rpmPrimaryRecordId": "M3-RPM-033",
     "sourceQid": 17,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q17-problem.plan.json"
@@ -810,7 +895,7 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "분수 계수 완전제곱식 풀이 빈칸 추론",
+    "conceptClusterKey": "QUADRATIC_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -832,12 +917,17 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
-    "templateKey": "",
+    "templateKey": "TPL_M3_SOLVE_QUADRATIC_VIA_COMPLETED_SQUARE_ROOT",
     "crossConceptKeys": [
       "CC_FRACTION_ADDITION_SUBTRACTION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "이차방정식",
+    "rpmPrimaryL2": "이차방정식의 풀이",
+    "rpmPrimaryL3": "제곱근·완전제곱식을 이용한 풀이",
+    "rpmPrimaryL4": "제곱근 이용",
+    "rpmPrimaryRecordId": "M3-RPM-033",
     "sourceQid": 18,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q18-problem.plan.json"
@@ -857,7 +947,7 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "분수·소수 계수 이차방정식의 정수화 풀이",
+    "conceptClusterKey": "QUADRATIC_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -879,10 +969,15 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT",
-    "templateKey": "",
+    "templateKey": "TPL_M3_COUNT_ORDERED_PAIRS_SATISFYING_ZERO_PRODUCT",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "이차방정식",
+    "rpmPrimaryL2": "이차방정식의 풀이",
+    "rpmPrimaryL3": "인수분해를 이용한 풀이",
+    "rpmPrimaryL4": "기본 인수분해",
+    "rpmPrimaryRecordId": "M3-RPM-032",
     "sourceQid": 19,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q19-problem.plan.json"
@@ -902,7 +997,7 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "근의 공식과 미정계수 비교",
+    "conceptClusterKey": "QUADRATIC_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -924,10 +1019,15 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
-    "templateKey": "",
+    "templateKey": "TPL_M3_SOLVE_QUADRATIC_VIA_COMPLETED_SQUARE_ROOT",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "이차방정식",
+    "rpmPrimaryL2": "이차방정식의 풀이",
+    "rpmPrimaryL3": "근의 공식",
+    "rpmPrimaryL4": "근의 공식",
+    "rpmPrimaryRecordId": "M3-RPM-035",
     "sourceQid": 20,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q20-problem.plan.json"
@@ -947,7 +1047,7 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "직사각형 넓이 다항식 인수분해와 둘레 구하기",
+    "conceptClusterKey": "FACTORIZATION",
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -963,7 +1063,7 @@ window.questionBank = [
     "points": 6,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
     "crossConceptKeys": [
       "CC_GEOMETRIC_AREA_VOLUME_FORMULA"
     ],
@@ -971,6 +1071,11 @@ window.questionBank = [
       "COND_POSITIVE"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+    "rpmPrimaryL2": "인수분해",
+    "rpmPrimaryL3": "인수분해 공식",
+    "rpmPrimaryL4": "제곱식",
+    "rpmPrimaryRecordId": "M3-RPM-023",
     "sourceQid": 21,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q21-problem.plan.json"
@@ -990,7 +1095,7 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "연쇄 근 대입을 통한 두 이차방정식의 계수 결정",
+    "conceptClusterKey": "QUADRATIC_EQUATION",
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -1006,12 +1111,17 @@ window.questionBank = [
     "points": 7,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_EVALUATE_FRACTIONAL_EXPRESSION_USING_QUADRATIC_ROOT_DESCRIPTIVE",
     "crossConceptKeys": [
       "CC_ZERO_PRODUCT_PROPERTY"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "이차방정식",
+    "rpmPrimaryL2": "이차방정식의 풀이",
+    "rpmPrimaryL3": "이차방정식과 해",
+    "rpmPrimaryL4": "이차방정식 판별",
+    "rpmPrimaryRecordId": "M3-RPM-029",
     "sourceQid": 22,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q22-problem.plan.json"
@@ -1031,7 +1141,7 @@ window.questionBank = [
     "subUnit": "이차방정식의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "두 수의 제곱의 합 문장제 이차방정식",
+    "conceptClusterKey": "QUADRATIC_EQUATION_WORD_PROBLEM",
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -1047,7 +1157,7 @@ window.questionBank = [
     "points": 7,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
-    "templateKey": "",
+    "templateKey": "TPL_M3_FIND_TIME_FOR_GIVEN_PROJECTILE_HEIGHT",
     "crossConceptKeys": [
       "CC_BINOMIAL_SQUARE_EXPANSION"
     ],
@@ -1055,6 +1165,11 @@ window.questionBank = [
       "COND_NATURAL_NUMBER"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "이차방정식",
+    "rpmPrimaryL2": "이차방정식의 활용",
+    "rpmPrimaryL3": "수와 식",
+    "rpmPrimaryL4": "연속된 수",
+    "rpmPrimaryRecordId": "M3-RPM-037",
     "sourceQid": 23,
     "variationType": "CONTEXT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사_plans/q23-problem.plan.json"

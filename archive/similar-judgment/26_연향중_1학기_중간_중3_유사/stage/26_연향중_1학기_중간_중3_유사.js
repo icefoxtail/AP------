@@ -17,7 +17,7 @@ window.questionBank = [
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SQUARE_ROOT_DEFINITION_PROPERTIES",
+    "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -38,13 +38,18 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
     "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
     "crossConceptKeys": [
       "CC_SQUARE_ROOT_SUM"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "실수와 그 연산",
+    "rpmPrimaryL2": "제곱근과 실수",
+    "rpmPrimaryL3": "제곱근",
+    "rpmPrimaryL4": "제곱근의 뜻",
+    "rpmPrimaryRecordId": "M3-RPM-001",
     "sourceQid": 1,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q01-problem.plan.json"
@@ -64,7 +69,7 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SQUARE_ROOT_ARITHMETIC_ORDER",
+    "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -85,14 +90,19 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+    "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
     "crossConceptKeys": [
       "CC_ABSOLUTE_VALUE",
       "CC_ORDER_OF_OPERATIONS"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "실수와 그 연산",
+    "rpmPrimaryL2": "제곱근과 실수",
+    "rpmPrimaryL3": "제곱근",
+    "rpmPrimaryL4": "제곱근의 성질",
+    "rpmPrimaryRecordId": "M3-RPM-002",
     "sourceQid": 2,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q02-problem.plan.json"
@@ -112,7 +122,7 @@ window.questionBank = [
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "RADICAL_SQUARE_FACTOR_SEARCH",
+    "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -133,8 +143,8 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+    "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
     "crossConceptKeys": [
       "CC_PRIME_FACTORIZATION",
       "CC_PERFECT_SQUARE"
@@ -143,14 +153,19 @@ window.questionBank = [
       "COND_UPPER_BOUND"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "실수와 그 연산",
+    "rpmPrimaryL2": "제곱근과 실수",
+    "rpmPrimaryL3": "제곱근",
+    "rpmPrimaryL4": "제곱근의 성질",
+    "rpmPrimaryRecordId": "M3-RPM-002",
     "sourceQid": 3,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q03-problem.plan.json"
   },
   {
     "id": 4,
-    "category": "제곱근과 실수",
-    "originalCategory": "제곱근과 실수",
+    "category": "실수와 무리수의 대소 비교",
+    "originalCategory": "실수와 무리수의 대소 비교",
     "standardCourse": "중3",
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -158,8 +173,8 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "제곱근과 실수",
+    "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
+    "subUnit": "실수와 무리수의 대소 비교",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "conceptClusterKey": "RADICAL_COMPARISON_FOUR_CASES",
@@ -167,7 +182,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "제곱근과 실수"
+      "실수와 무리수의 대소 비교"
     ],
     "wide": false,
     "content": "다음 <보기> 중 대소 관계가 옳은 것만을 있는 대로 고른 것은? [4점]\n\n<보기> ㄱ. $\\sqrt{10} < 3$ ㄴ. $\\sqrt{0.5} > 0.5$ ㄷ. $-4 < -\\sqrt{15}$ ㄹ. $-\\frac{\\sqrt{5}}{3} < -\\frac{\\sqrt{7}}{3}$",
@@ -182,15 +197,20 @@ window.questionBank = [
     "solution": "제곱근의 대소 비교 성질과 음수의 성질을 각 보기에 적용하여 판정한다.\n\n1단계: 각 보기를 검토한다. ㄱ. $3 = \\sqrt{9}$이다. $10 > 9$이므로 $\\sqrt{10} > \\sqrt{9} = 3$이다. 따라서 $\\sqrt{10} < 3$은 거짓이다. ㄴ. $0.5 = \\sqrt{0.5^2} = \\sqrt{0.25}$이다. $0.5 > 0.25$이므로 $\\sqrt{0.5} > \\sqrt{0.25} = 0.5$이다. 따라서 참이다. ㄷ. $4 = \\sqrt{16}$이다. $16 > 15$이므로 $\\sqrt{16} > \\sqrt{15}$, 즉 $4 > \\sqrt{15}$이다. 양변에 $-1$을 곱하면 부등호 방향이 바뀌므로 $-4 < -\\sqrt{15}$이다. 따라서 참이다. ㄹ. $\\sqrt{5} < \\sqrt{7}$이므로 양변을 $3$으로 나누면 $\\frac{\\sqrt{5}}{3} < \\frac{\\sqrt{7}}{3}$이다. 양변에 $-1$을 곱하면 부등호 방향이 바뀌므로 $-\\frac{\\sqrt{5}}{3} > -\\frac{\\sqrt{7}}{3}$이다. 따라서 주어진 부등식은 거짓이다.\n\n2단계: 결론을 도출한다. 따라서 옳은 것은 ㄴ, ㄷ이다. 따라서 정답은 ④이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 1,
+    "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+    "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
     "crossConceptKeys": [
       "CC_DECIMAL_SQUARE",
       "CC_NEGATIVE_INEQUALITY_REVERSAL"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "실수와 그 연산",
+    "rpmPrimaryL2": "제곱근과 실수",
+    "rpmPrimaryL3": "무리수와 실수",
+    "rpmPrimaryL4": "실수의 대소",
+    "rpmPrimaryRecordId": "M3-RPM-004",
     "sourceQid": 4,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q04-problem.plan.json"
@@ -210,7 +230,7 @@ window.questionBank = [
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "IRRATIONAL_CLASSIFICATION_SET",
+    "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -231,22 +251,27 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+    "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
     "crossConceptKeys": [
       "CC_RECURRING_DECIMAL_RATIONALITY",
       "CC_RADICAL_REDUCTION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "실수와 그 연산",
+    "rpmPrimaryL2": "제곱근과 실수",
+    "rpmPrimaryL3": "무리수와 실수",
+    "rpmPrimaryL4": "무리수 판별",
+    "rpmPrimaryRecordId": "M3-RPM-003",
     "sourceQid": 5,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q05-problem.plan.json"
   },
   {
     "id": 6,
-    "category": "제곱근과 실수",
-    "originalCategory": "제곱근과 실수",
+    "category": "수직선 위의 실수 표현",
+    "originalCategory": "수직선 위의 실수 표현",
     "standardCourse": "중3",
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -254,8 +279,8 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "제곱근과 실수",
+    "subUnitKey": "M3-01-REAL_NUMBER_LINE",
+    "subUnit": "수직선 위의 실수 표현",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "conceptClusterKey": "REAL_NUMBER_COMPLETENESS",
@@ -263,7 +288,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "제곱근과 실수"
+      "수직선 위의 실수 표현"
     ],
     "wide": false,
     "content": "다음 중 옳은 설명은? [4점]",
@@ -279,7 +304,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M3_REAL_NUMBERS",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_REAL_LINE_COMPLETENESS",
@@ -287,14 +312,19 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "실수와 그 연산",
+    "rpmPrimaryL2": "제곱근과 실수",
+    "rpmPrimaryL3": "수직선과 제곱근",
+    "rpmPrimaryL4": "무리수의 위치",
+    "rpmPrimaryRecordId": "M3-RPM-005",
     "sourceQid": 6,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q06-problem.plan.json"
   },
   {
     "id": 7,
-    "category": "제곱근과 실수",
-    "originalCategory": "제곱근과 실수",
+    "category": "실수와 무리수의 대소 비교",
+    "originalCategory": "실수와 무리수의 대소 비교",
     "standardCourse": "중3",
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -302,8 +332,8 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "제곱근과 실수",
+    "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
+    "subUnit": "실수와 무리수의 대소 비교",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "conceptClusterKey": "RADICAL_SUBTRACTION_ORDERING",
@@ -311,7 +341,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "제곱근과 실수"
+      "실수와 무리수의 대소 비교"
     ],
     "wide": false,
     "content": "세 수 $A = 3 + \\sqrt{7}$, $B = 8 - \\sqrt{7}$, $C = 2\\sqrt{7}$ 의 대소 관계로 옳은 것은? [5점]",
@@ -327,22 +357,27 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+    "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
     "crossConceptKeys": [
       "CC_DIFFERENCE_SIGN_METHOD",
       "CC_RADICAL_COEFFICIENT_ENTRY"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "실수와 그 연산",
+    "rpmPrimaryL2": "제곱근과 실수",
+    "rpmPrimaryL3": "무리수와 실수",
+    "rpmPrimaryL4": "실수의 대소",
+    "rpmPrimaryRecordId": "M3-RPM-004",
     "sourceQid": 7,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q07-problem.plan.json"
   },
   {
     "id": 8,
-    "category": "근호를 포함한 식의 계산",
-    "originalCategory": "근호를 포함한 식의 계산",
+    "category": "제곱근과 실수",
+    "originalCategory": "제곱근과 실수",
     "standardCourse": "중3",
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -350,16 +385,16 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SQUARE_ROOT_TABLE_DECIMAL_SHIFT",
+    "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "근호를 포함한 식의 계산"
+      "제곱근과 실수"
     ],
     "wide": false,
     "content": "$\\sqrt{5.24} = 2.289$, $\\sqrt{52.4} = 7.239$ 일 때, $\\sqrt{524} = a$, $\\sqrt{0.524} = b$라고 하자. $a + 100b$의 값은? [4점]",
@@ -375,7 +410,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M3_SQUARE_ROOT_TABLE",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_POWERS_OF_TEN_RADICAL",
@@ -383,6 +418,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "실수와 그 연산",
+    "rpmPrimaryL2": "제곱근과 실수",
+    "rpmPrimaryL3": "수직선과 제곱근",
+    "rpmPrimaryL4": "근삿값",
+    "rpmPrimaryRecordId": "M3-RPM-006",
     "sourceQid": 8,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q08-problem.plan.json"
@@ -402,7 +442,7 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "BASIC_RADICAL_OPERATIONS_CHECK",
+    "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -423,14 +463,19 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+    "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
     "crossConceptKeys": [
       "CC_LIKE_RADICALS",
       "CC_RADICAL_ADDITION_ERROR"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "실수와 그 연산",
+    "rpmPrimaryL2": "근호를 포함한 식의 계산",
+    "rpmPrimaryL3": "근호의 덧셈과 뺄셈",
+    "rpmPrimaryL4": "동류근호",
+    "rpmPrimaryRecordId": "M3-RPM-009",
     "sourceQid": 9,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q09-problem.plan.json"
@@ -450,7 +495,7 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "GEOMETRIC_RADICAL_AREA_EQUIVALENCE",
+    "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -471,8 +516,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+    "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
     "crossConceptKeys": [
       "CC_TRIANGLE_AREA",
       "CC_RECTANGLE_AREA",
@@ -480,6 +525,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "실수와 그 연산",
+    "rpmPrimaryL2": "근호를 포함한 식의 계산",
+    "rpmPrimaryL3": "근호의 곱셈과 나눗셈",
+    "rpmPrimaryL4": "근호의 몫",
+    "rpmPrimaryRecordId": "M3-RPM-008",
     "sourceQid": 10,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q10-problem.plan.json"
@@ -499,7 +549,7 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "RADICAL_VARIABLE_INSERTION",
+    "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -519,9 +569,9 @@ window.questionBank = [
     "solution": "양수 조건을 이용하여 근호 밖의 문자를 제곱하여 근호 안으로 넣은 뒤 $abc=64$를 대입하여 계산한다.\n\n1단계: 각 항의 근호 밖의 문자를 근호 안으로 들여보낸다. $a > 0, b > 0, c > 0$이므로 $$a\\sqrt{\\frac{18bc}{a}} = \\sqrt{a^2 \\times \\frac{18bc}{a}} = \\sqrt{18abc}$$ $$b\\sqrt{\\frac{8ac}{b}} = \\sqrt{b^2 \\times \\frac{8ac}{b}} = \\sqrt{8abc}$$ $$c\\sqrt{\\frac{2ab}{c}} = \\sqrt{c^2 \\times \\frac{2ab}{c}} = \\sqrt{2abc}$$\n\n2단계: $abc = 64$를 각 식에 대입하여 값을 정리한다.\n\n- $\\sqrt{18abc} = \\sqrt{18 \\times 64} = \\sqrt{9 \\times 2 \\times 64} = 3 \\times 8\\sqrt{2} = 24\\sqrt{2}$  \n- $\\sqrt{8abc} = \\sqrt{8 \\times 64} = \\sqrt{4 \\times 2 \\times 64} = 2 \\times 8\\sqrt{2} = 16\\sqrt{2}$  \n- $\\sqrt{2abc} = \\sqrt{2 \\times 64} = 8\\sqrt{2}$\n\n3단계: 전체 식의 값을 계산한다. $$\\sqrt{18abc} - \\sqrt{8abc} + \\sqrt{2abc} = 24\\sqrt{2} - 16\\sqrt{2} + 8\\sqrt{2}$$ $$= (24 - 16 + 8)\\sqrt{2} = 16\\sqrt{2}$$ 따라서 정답은 ①이다.",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+    "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
     "crossConceptKeys": [
       "CC_RADICAL_ENTRY_PROPERTY",
       "CC_SYMMETRIC_POLYNOMIAL_PRODUCT"
@@ -531,6 +581,11 @@ window.questionBank = [
       "COND_PRODUCT_CONSTANT"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "실수와 그 연산",
+    "rpmPrimaryL2": "근호를 포함한 식의 계산",
+    "rpmPrimaryL3": "근호의 곱셈과 나눗셈",
+    "rpmPrimaryL4": "근호의 곱",
+    "rpmPrimaryRecordId": "M3-RPM-007",
     "sourceQid": 11,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q11-problem.plan.json"
@@ -550,7 +605,7 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "RADICAL_FRACTION_RATIONALIZATION",
+    "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -571,8 +626,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+    "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
     "crossConceptKeys": [
       "CC_DENOMINATOR_RATIONALIZATION",
       "CC_FRACTION_SUBTRACTION"
@@ -581,6 +636,11 @@ window.questionBank = [
       "COND_RATIONAL_VARIABLES"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "실수와 그 연산",
+    "rpmPrimaryL2": "근호를 포함한 식의 계산",
+    "rpmPrimaryL3": "근호의 곱셈과 나눗셈",
+    "rpmPrimaryL4": "근호의 몫",
+    "rpmPrimaryRecordId": "M3-RPM-008",
     "sourceQid": 12,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q12-problem.plan.json"
@@ -600,7 +660,7 @@ window.questionBank = [
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "TRAPEZOID_RADICAL_AREA",
+    "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -621,14 +681,19 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+    "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
     "crossConceptKeys": [
       "CC_TRAPEZOID_AREA",
       "CC_RADICAL_MULTIPLICATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "실수와 그 연산",
+    "rpmPrimaryL2": "근호를 포함한 식의 계산",
+    "rpmPrimaryL3": "근호의 덧셈과 뺄셈",
+    "rpmPrimaryL4": "분배법칙",
+    "rpmPrimaryRecordId": "M3-RPM-010",
     "sourceQid": 13,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q13-problem.plan.json"
@@ -648,7 +713,7 @@ window.questionBank = [
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "BASIC_MULTIPLICATION_FORMULA_CHECK",
+    "conceptClusterKey": "POLYNOMIAL_MULTIPLICATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -669,8 +734,8 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+    "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT",
     "crossConceptKeys": [
       "CC_PERFECT_SQUARE_EXPANSION",
       "CC_DIFFERENCE_OF_SQUARES",
@@ -678,6 +743,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+    "rpmPrimaryL2": "다항식의 곱셈",
+    "rpmPrimaryL3": "곱셈공식",
+    "rpmPrimaryL4": "여러 곱셈공식 비교·판별",
+    "rpmPrimaryRecordId": "M3-RPM-182",
     "sourceQid": 14,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q14-problem.plan.json"
@@ -697,7 +767,7 @@ window.questionBank = [
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "ALGEBRAIC_NUMERICAL_APPROPRIATENESS",
+    "conceptClusterKey": "POLYNOMIAL_MULTIPLICATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -718,14 +788,19 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+    "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT",
     "crossConceptKeys": [
       "CC_DIFFERENCE_OF_SQUARES",
       "CC_MENTAL_MATH_STRATEGY"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+    "rpmPrimaryL2": "다항식의 곱셈",
+    "rpmPrimaryL3": "곱셈공식의 활용",
+    "rpmPrimaryL4": "곱셈공식을 이용한 수의 계산",
+    "rpmPrimaryRecordId": "M3-RPM-018",
     "sourceQid": 15,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q15-problem.plan.json"
@@ -745,7 +820,7 @@ window.questionBank = [
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SYMMETRIC_SUM_OF_SQUARES",
+    "conceptClusterKey": "POLYNOMIAL_MULTIPLICATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -766,7 +841,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_CONJUGATE_RATIONALIZATION",
@@ -774,14 +849,19 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+    "rpmPrimaryL2": "다항식의 곱셈",
+    "rpmPrimaryL3": "곱셈공식의 활용",
+    "rpmPrimaryL4": "곱셈공식을 이용한 식의 값",
+    "rpmPrimaryRecordId": "M3-RPM-019",
     "sourceQid": 16,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q16-problem.plan.json"
   },
   {
     "id": 17,
-    "category": "제곱근과 실수",
-    "originalCategory": "제곱근과 실수",
+    "category": "수직선 위의 실수 표현",
+    "originalCategory": "수직선 위의 실수 표현",
     "standardCourse": "중3",
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -789,8 +869,8 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-    "subUnit": "제곱근과 실수",
+    "subUnitKey": "M3-01-REAL_NUMBER_LINE",
+    "subUnit": "수직선 위의 실수 표현",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "conceptClusterKey": "NUMBER_LINE_PYTHAGOREAN_PRODUCT",
@@ -798,7 +878,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "제곱근과 실수"
+      "수직선 위의 실수 표현"
     ],
     "wide": false,
     "content": "수직선 위의 기준점 $\\mathrm{A}(3)$에서 가로가 $3$, 세로가 $1$인 직각삼각형의 빗변을 반지름으로 하여 왼쪽으로 호를 그려 만난 점을 $\\mathrm{P}(a)$라 하고, 기준점 $\\mathrm{C}(5)$에서 가로가 $1$, 세로가 $3$인 직각삼각형의 빗변을 반지름으로 하여 오른쪽으로 호를 그려 만난 점을 $\\mathrm{Q}(b)$라 하자. 두 점이 나타내는 수의 곱 $ab$의 값은? [5점]",
@@ -814,14 +894,19 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+    "templateKey": "TPL_M3_NUMBER_LINE_IRRATIONAL_MAPPING",
     "crossConceptKeys": [
       "CC_PYTHAGOREAN_THEOREM",
       "CC_RADICAL_DISTRIBUTIVE"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "실수와 그 연산",
+    "rpmPrimaryL2": "제곱근과 실수",
+    "rpmPrimaryL3": "수직선과 제곱근",
+    "rpmPrimaryL4": "무리수의 위치",
+    "rpmPrimaryRecordId": "M3-RPM-005",
     "sourceQid": 17,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q17-problem.plan.json"
@@ -841,7 +926,7 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "FACTORIZATION_DIFFERENCE_OF_SQUARES",
+    "conceptClusterKey": "FACTORIZATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -862,14 +947,19 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+    "templateKey": "TPL_M3_GROUPING_FACTORIZATION",
     "crossConceptKeys": [
       "CC_PERFECT_SQUARE",
       "CC_DIFFERENCE_OF_SQUARES"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+    "rpmPrimaryL2": "인수분해",
+    "rpmPrimaryL3": "인수분해 공식",
+    "rpmPrimaryL4": "합과 차",
+    "rpmPrimaryRecordId": "M3-RPM-024",
     "sourceQid": 18,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q18-problem.plan.json"
@@ -889,7 +979,7 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "ALGEBRA_TILE_FACTORIZATION_PERIMETER",
+    "conceptClusterKey": "FACTORIZATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -910,14 +1000,19 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+    "templateKey": "TPL_M3_QUADRATIC_FACTORIZATION_SUM",
     "crossConceptKeys": [
       "CC_GEOMETRIC_ALGEBRA_TILES",
       "CC_RECTANGLE_PERIMETER"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+    "rpmPrimaryL2": "인수분해",
+    "rpmPrimaryL3": "인수분해 공식",
+    "rpmPrimaryL4": "이차식",
+    "rpmPrimaryRecordId": "M3-RPM-025",
     "sourceQid": 19,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q19-problem.plan.json"
@@ -937,7 +1032,7 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "PERFECT_SQUARE_CONDITION",
+    "conceptClusterKey": "FACTORIZATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -958,22 +1053,27 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+    "templateKey": "TPL_M3_PERFECT_SQUARE_CONDITION",
     "crossConceptKeys": [
       "CC_PERFECT_SQUARE_CONDITION",
       "CC_POLYNOMIAL_EXPANSION"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+    "rpmPrimaryL2": "인수분해",
+    "rpmPrimaryL3": "인수분해 공식",
+    "rpmPrimaryL4": "제곱식",
+    "rpmPrimaryRecordId": "M3-RPM-023",
     "sourceQid": 20,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q20-problem.plan.json"
   },
   {
     "id": 21,
-    "category": "근호를 포함한 식의 계산",
-    "originalCategory": "근호를 포함한 식의 계산",
+    "category": "제곱근과 실수",
+    "originalCategory": "제곱근과 실수",
     "standardCourse": "중3",
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -981,16 +1081,16 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "RADICAL_SIGN_ANALYSIS_SIMPLIFICATION",
+    "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "근호를 포함한 식의 계산"
+      "제곱근과 실수"
     ],
     "wide": false,
     "content": "[서술형 1] $xy < 0$이고 $x < y$일 때, $\\sqrt{(-2x)^2} - \\sqrt{9y^2} + \\sqrt{(x - y)^2}$ 를 간단히 하는 과정을 서술하시오. [6점]",
@@ -1000,8 +1100,8 @@ window.questionBank = [
     "score": 6,
     "points": 6,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+    "templateKey": "TPL_M3_RADICAL_VARIABLE_SIMPLIFY",
     "crossConceptKeys": [
       "CC_ABSOLUTE_VALUE_SIGN",
       "CC_ALGEBRAIC_SIMPLIFICATION"
@@ -1011,6 +1111,11 @@ window.questionBank = [
       "COND_VARIABLE_INEQUALITY"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "실수와 그 연산",
+    "rpmPrimaryL2": "제곱근과 실수",
+    "rpmPrimaryL3": "제곱근",
+    "rpmPrimaryL4": "제곱근의 성질",
+    "rpmPrimaryRecordId": "M3-RPM-002",
     "sourceQid": 21,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q21-problem.plan.json"
@@ -1030,7 +1135,7 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "FACTORIZATION_FRACTION_REDUCTION_TRANSFORMATION",
+    "conceptClusterKey": "FACTORIZATION",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1044,9 +1149,9 @@ window.questionBank = [
     "solution": "분자의 4개 항을 둘씩 묶어 공통인수로 인수분해하여 약분한 후 곱셈공식의 변형을 적용하여 서술한다.\n\n단계별 서술: 1단계: 분자의 다항식 $a^3 + a^2b + ab^2 + b^3$을 인수분해한다. 앞의 두 항과 뒤의 두 항에서 각각 공통인수를 묶어내면 $$a^3 + a^2b + ab^2 + b^3 = a^2(a + b) + b^2(a + b)$$ 공통인수 $a + b$로 묶으면 $$= (a + b)(a^2 + b^2)$$\n\n2단계: 분수식을 약분한다. $ab = 3 > 0$이므로 $a$와 $b$는 같은 부호이다. 만약 $a + b = 0$이라면 $b = -a$가 되어 $ab = -a^2 \\le 0$이므로 $ab = 3 > 0$이라는 조건에 모순이다. 따라서 $a + b \\ne 0$이므로 분모와 분자의 $a + b$를 약분할 수 있다. $$\\frac{a^3 + a^2b + ab^2 + b^3}{a + b} = \\frac{(a + b)(a^2 + b^2)}{a + b} = a^2 + b^2$$\n\n3단계: 곱셈공식의 변형을 이용하여 $a^2 + b^2$의 값을 계산한다. $$a^2 + b^2 = (a - b)^2 + 2ab$$ 주어진 조건 $a - b = 6$, $ab = 3$을 대입하면 $$a^2 + b^2 = 6^2 + 2 \\times 3 = 36 + 6 = 42$$\n\n따라서 구하는 식의 값은 $42$이다.",
     "score": 7,
     "points": 7,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+    "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
     "crossConceptKeys": [
       "CC_GROUPING_FACTORIZATION",
       "CC_SUM_OF_SQUARES_TRANSFORM"
@@ -1055,6 +1160,11 @@ window.questionBank = [
       "COND_NONZERO_DENOMINATOR"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+    "rpmPrimaryL2": "인수분해",
+    "rpmPrimaryL3": "공통인수",
+    "rpmPrimaryL4": "공통인수 묶기",
+    "rpmPrimaryRecordId": "M3-RPM-021",
     "sourceQid": 22,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q22-problem.plan.json"
@@ -1074,7 +1184,7 @@ window.questionBank = [
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "DUAL_ALGEBRAIC_EVALUATION_METHODS",
+    "conceptClusterKey": "FACTORIZATION",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1089,8 +1199,8 @@ window.questionBank = [
     "score": 7,
     "points": 7,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+    "templateKey": "TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION",
     "crossConceptKeys": [
       "CC_MONIC_QUADRATIC_FACTORING",
       "CC_COMPLETING_THE_SQUARE",
@@ -1098,6 +1208,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+    "rpmPrimaryL2": "인수분해",
+    "rpmPrimaryL3": "인수분해의 활용",
+    "rpmPrimaryL4": "인수분해를 이용한 식의 값",
+    "rpmPrimaryRecordId": "M3-RPM-027",
     "sourceQid": 23,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/middle/m3/1mid/26_연향중_1학기_중간_중3_유사_plans/q23-problem.plan.json"

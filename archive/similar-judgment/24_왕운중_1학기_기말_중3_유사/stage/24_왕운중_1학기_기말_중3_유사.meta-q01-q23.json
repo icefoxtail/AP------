@@ -3,7 +3,7 @@
   "requestId": "24_왕운중_1학기_기말_중3_유사-candidate-v1",
   "examUid": "24_왕운중_1학기_기말_중3_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m3/1final/24_왕운중_1학기_기말_중3_유사.js",
-  "expectedSourceBlobSha1": "3a2761ac4965b79e3f29537add448c83fadcad96",
+  "expectedSourceBlobSha1": "f415b71e4c5fb2a27a629e167c94ffbad2da5843",
   "expectedQuestionCount": 23,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -29,9 +29,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-FACTORIZATION",
         "subUnit": "인수분해",
-        "conceptClusterKey": "공통인수 묶기와 인수 판별",
+        "conceptClusterKey": "FACTORIZATION",
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -48,20 +48,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-021"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "인수분해",
+          "l3": "공통인수",
+          "l4": "공통인수 묶기",
+          "recordId": "M3-RPM-021"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "공통인수",
+        "rpmPrimaryL4": "공통인수 묶기",
+        "rpmPrimaryRecordId": "M3-RPM-021",
+        "difficultyBasis": "Q1번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 xy)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-FACTORIZATION: 다음 다항식의 인수가 아닌 것은?",
+          "curriculum": "M3-RPM-021: Q1번 문항은 M3-RPM-021에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 xy)",
+          "problemType": "Q1번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 xy)",
+          "difficulty": "Q1번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 xy)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "공통인수 $x^2y^2$으로 묶어 $x^2y^2(x+y)$로 인수분해한 뒤 각 선지가 인수인지 확인한다.",
       "decisiveStep": "$x^3y$는 $x^2$보다 $x$의 차수가 높아 $x^2y^2(x+y)$의 인수가 될 수 없음을 판별한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "공통인수로 묶어 인수의 차수만 비교하면 되는 1단계 문항이다.",
+      "difficultyReason": "Q1번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 xy)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": null,
-        "why": "공통인수로 묶은 뒤 인수가 아닌 단항식을 고르는 문항이다."
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+        "why": "Q1번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 xy)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_19991101065862405c89fcd28f9728fc19eb556518f270db4bc0ccf3f6f7dae4",
@@ -78,9 +110,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-FACTORIZATION",
         "subUnit": "인수분해",
-        "conceptClusterKey": "공통인수 묶기의 옳고 그름 판별",
+        "conceptClusterKey": "FACTORIZATION",
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -97,20 +129,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-021"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "인수분해",
+          "l3": "공통인수",
+          "l4": "공통인수 묶기",
+          "recordId": "M3-RPM-021"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "공통인수",
+        "rpmPrimaryL4": "공통인수 묶기",
+        "rpmPrimaryRecordId": "M3-RPM-021",
+        "difficultyBasis": "Q2번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ax)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-FACTORIZATION: 다음 중 인수분해를 옳게 한 것을 고르면?",
+          "curriculum": "M3-RPM-021: Q2번 문항은 M3-RPM-021에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ax)",
+          "problemType": "Q2번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)",
+          "difficulty": "Q2번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ax)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "다섯 선지의 우변을 전개하거나 공통인수를 최대로 묶어 옳은 식을 찾는다.",
       "decisiveStep": "③ $3x(2xy-1)=6x^2y-3x$만 빠짐없이 공통인수로 묶였음을 확인한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "각 선지의 공통인수 묶기가 올바른지 전개로 바로 검산하는 1단계 문항이다.",
+      "difficultyReason": "Q2번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ax)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": null,
-        "why": "공통인수 묶기 과정에서 흔한 실수를 가려내는 문항이다."
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+        "why": "Q2번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_2fcd00fd9ac50db542b3b2917b757b5e383eda2434c9009393a89ef1e9970e85",
@@ -127,9 +191,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-FACTORIZATION",
         "subUnit": "인수분해",
-        "conceptClusterKey": "공통인수 묶기 후 완전제곱식 인수분해",
+        "conceptClusterKey": "FACTORIZATION",
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
         "crossConceptKeys": [
           "CC_COMMON_FACTOR_EXTRACTION"
         ],
@@ -137,7 +201,7 @@
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 1,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 3,
         "variationType": "NUMERIC",
         "provenance": {
@@ -148,20 +212,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-021"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "인수분해",
+          "l3": "공통인수",
+          "l4": "공통인수 묶기",
+          "recordId": "M3-RPM-021"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "공통인수",
+        "rpmPrimaryL4": "공통인수 묶기",
+        "rpmPrimaryRecordId": "M3-RPM-021",
+        "difficultyBasis": "Q3번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 24)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-FACTORIZATION: 다항식 $3x^2-24xy+48y^2$을 인수분해하면 $3(x+\\square)^2$일 때, $\\square$ 안에 들어갈 식을 구하면?",
+          "curriculum": "M3-RPM-021: Q3번 문항은 M3-RPM-021에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 24)",
+          "problemType": "Q3번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 24)",
+          "difficulty": "Q3번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 24)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_COMMON_FACTOR_EXTRACTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "공통인수 $3$을 먼저 묶어낸 뒤 $x^2-8xy+16y^2$을 완전제곱식으로 인수분해한다.",
       "decisiveStep": "$3(x-4y)^2$에서 부호까지 포함해 $\\square=-4y$임을 확인한다.",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "공통인수 $3$을 묶어낸 뒤 완전제곱식 공식을 바로 적용하는 1단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "Q3번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 24)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": null,
-        "why": "공통인수로 묶은 후 완전제곱식 공식을 적용하는 2단계 인수분해 문항이다."
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+        "why": "Q3번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 24)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_3eb9168effba56d2420477ca6ab266244e6bc55fe758fa67e80ec1443f8cad5b",
@@ -178,9 +274,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-FACTORIZATION",
         "subUnit": "인수분해",
-        "conceptClusterKey": "세 이차식의 완전제곱식 조건과 계수 결정",
+        "conceptClusterKey": "FACTORIZATION",
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
         "crossConceptKeys": [
           "CC_BINOMIAL_SQUARE_EXPANSION"
         ],
@@ -199,20 +295,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-023"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "인수분해",
+          "l3": "인수분해 공식",
+          "l4": "제곱식",
+          "recordId": "M3-RPM-023"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "인수분해 공식",
+        "rpmPrimaryL4": "제곱식",
+        "rpmPrimaryRecordId": "M3-RPM-023",
+        "difficultyBasis": "Q4번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 24)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-FACTORIZATION: 다음의 이차식이 모두 완전제곱식일 때, $a+b+c$의 값을 구하면?",
+          "curriculum": "M3-RPM-023: Q4번 문항은 M3-RPM-023에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 24)",
+          "problemType": "Q4번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 24)",
+          "difficulty": "Q4번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 24)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_BINOMIAL_SQUARE_EXPANSION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "각 이차식을 $(mx+n)^2$ 꼴과 비교해 $a, b, c$를 차례로 구한 뒤 합한다.",
       "decisiveStep": "$cx^2-12x+9=(2x-3)^2$에서 $c=4$를 구해 $16+9+4=29$를 계산한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "세 가지 위치의 미정계수를 완전제곱식 구조로 각각 역산해야 하는 2단계 문항이다.",
+      "difficultyReason": "Q4번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 24)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": null,
-        "why": "상수항과 이차항 계수가 미지수로 주어진 세 완전제곱식의 계수를 구하는 문항이다."
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+        "why": "Q4번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 24)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_db8233e26de1441fac96c652929fd1c98d60f7943e1056dd0170b733cd96d81d",
@@ -229,9 +357,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-FACTORIZATION",
         "subUnit": "인수분해",
-        "conceptClusterKey": "완전제곱식 변형을 이용한 무리수 식의 값",
+        "conceptClusterKey": "FACTORIZATION",
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
         "crossConceptKeys": [
           "CC_RADICAL_SQUARE_SIMPLIFICATION"
         ],
@@ -250,20 +378,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-026"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "인수분해",
+          "l3": "인수분해의 활용",
+          "l4": "인수분해를 이용한 수의 계산",
+          "recordId": "M3-RPM-026"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "인수분해의 활용",
+        "rpmPrimaryL4": "인수분해를 이용한 수의 계산",
+        "rpmPrimaryRecordId": "M3-RPM-026",
+        "difficultyBasis": "Q5번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 aligned)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-FACTORIZATION: $a=3-\\sqrt{5}$일 때, $a^2-6a+9$의 값을 구하면?",
+          "curriculum": "M3-RPM-026: Q5번 문항은 M3-RPM-026에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 aligned)",
+          "problemType": "Q5번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)",
+          "difficulty": "Q5번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 aligned)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_RADICAL_SQUARE_SIMPLIFICATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$a^2-6a+9$를 $(a-3)^2$으로 인수분해한 뒤 $a=3-\\sqrt{5}$를 대입한다.",
       "decisiveStep": "$(a-3)^2$에 대입해 유리수 $3$이 소거되고 $(-\\sqrt{5})^2=5$가 됨을 확인한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "완전제곱식으로 인수분해해 바로 대입하면 되는 1단계 문항이다.",
+      "difficultyReason": "Q5번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 aligned)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": null,
-        "why": "완전제곱식으로 인수분해한 뒤 무리수를 대입해 간단히 계산하는 문항이다."
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+        "why": "Q5번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_9394852345fd4e20dbc69b4a3efebcaf0320a1616ead792b468531eff8930bec",
@@ -280,9 +440,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-FACTORIZATION",
         "subUnit": "인수분해",
-        "conceptClusterKey": "합차 공식 인수분해",
+        "conceptClusterKey": "FACTORIZATION",
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -299,20 +459,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-023"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "인수분해",
+          "l3": "인수분해 공식",
+          "l4": "제곱식",
+          "recordId": "M3-RPM-023"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "인수분해 공식",
+        "rpmPrimaryL4": "제곱식",
+        "rpmPrimaryRecordId": "M3-RPM-023",
+        "difficultyBasis": "Q6번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 9)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-FACTORIZATION: 다음 중에서 $9x^2-y^2$을 인수분해한 것으로 옳은 것은?",
+          "curriculum": "M3-RPM-023: Q6번 문항은 M3-RPM-023에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 9)",
+          "problemType": "Q6번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 9)",
+          "difficulty": "Q6번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 9)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$9x^2=(3x)^2$으로 보아 제곱의 차 공식 $A^2-B^2=(A+B)(A-B)$를 적용한다.",
       "decisiveStep": "$(3x)^2-y^2=(3x+y)(3x-y)$로 인수분해한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "합차 공식을 바로 적용하는 1단계 기초 문항이다.",
+      "difficultyReason": "Q6번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 9)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": null,
-        "why": "합차 공식을 직접 적용해 인수분해하는 기초 문항이다."
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+        "why": "Q6번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 9)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_a066b1aa4869216911c680432788ee8df51f3dbeb9f150ad33128c422701af17",
@@ -329,9 +521,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-FACTORIZATION",
         "subUnit": "인수분해",
-        "conceptClusterKey": "합차 공식의 계수 관계식과 부호·대소 판별",
+        "conceptClusterKey": "FACTORIZATION",
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
         "crossConceptKeys": [
           "CC_POLYNOMIAL_COEFFICIENT_MATCHING"
         ],
@@ -342,7 +534,7 @@
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B23",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 7,
         "variationType": "NUMERIC",
         "provenance": {
@@ -353,20 +545,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-023"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "인수분해",
+          "l3": "인수분해 공식",
+          "l4": "제곱식",
+          "recordId": "M3-RPM-023"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "인수분해 공식",
+        "rpmPrimaryL4": "제곱식",
+        "rpmPrimaryRecordId": "M3-RPM-023",
+        "difficultyBasis": "Q7번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 16)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-FACTORIZATION: 다항식 $16x^2+a$를 인수분해하면 $(4x+b)(4x-b)$ (단, $b<0$이고 $a, b$는 $0$이 아닌 유리수)일 때, 다음 중 옳은 것을 모두 고르면?",
+          "curriculum": "M3-RPM-023: Q7번 문항은 M3-RPM-023에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 16)",
+          "problemType": "Q7번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 16)",
+          "difficulty": "Q7번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 16)",
+          "condition": "COND_NEGATIVE, COND_RATIONAL: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_POLYNOMIAL_COEFFICIENT_MATCHING: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "우변을 전개해 $a=-b^2$을 얻고, $b<0$인 유리수 조건에서 부호와 대소 관계의 반례를 검증한다.",
       "decisiveStep": "$b=-2$와 $b=-\\frac{1}{2}$을 비교해 $a$와 $b$의 대소가 일정하지 않음을 보인다.",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B23",
-      "difficultyReason": "전개 비교 후 음의 유리수 $b$의 절댓값이 $1$보다 큰 경우와 작은 경우를 구분해 반례를 들어야 하는 2단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "Q7번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 16)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": null,
-        "why": "합차 공식 전개로 얻은 $a=-b^2$ 관계의 참·거짓 명제를 판별하는 문항이다."
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+        "why": "Q7번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 16)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_2b14c75f986470226d81a9970dc0038c558f5b132ba95f6fc485dce6268f59fa",
@@ -383,9 +607,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-FACTORIZATION",
         "subUnit": "인수분해",
-        "conceptClusterKey": "x²+(a+b)x+ab 꼴 인수분해와 두 상수의 합",
+        "conceptClusterKey": "FACTORIZATION",
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -402,20 +626,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-023"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "인수분해",
+          "l3": "인수분해 공식",
+          "l4": "제곱식",
+          "recordId": "M3-RPM-023"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "인수분해 공식",
+        "rpmPrimaryL4": "제곱식",
+        "rpmPrimaryRecordId": "M3-RPM-023",
+        "difficultyBasis": "Q8번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 18)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-FACTORIZATION: 다항식 $x^2-3x-18$을 인수분해하면 $(x+a)(x+b)$일 때, $a+b$의 값은?",
+          "curriculum": "M3-RPM-023: Q8번 문항은 M3-RPM-023에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 18)",
+          "problemType": "Q8번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 18)",
+          "difficulty": "Q8번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 18)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "곱이 $-18$, 합이 $-3$인 두 수 $-6, 3$으로 인수분해하거나 일차항 계수 $a+b=-3$을 바로 읽는다.",
       "decisiveStep": "$(x+a)(x+b)$의 일차항 계수가 $a+b$이므로 $-3$과 같음을 확인한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "기본 이차식 인수분해만으로 바로 답이 나오는 1단계 문항이다.",
+      "difficultyReason": "Q8번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 18)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": null,
-        "why": "이차식을 인수분해해 두 상수의 합을 구하는 기초 문항이다."
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+        "why": "Q8번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 18)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_18673ed48a213ec6d40d6e9bc4f77c099ab5c23baf6f5a6ce2d627c5db89497a",
@@ -432,9 +688,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-FACTORIZATION",
         "subUnit": "인수분해",
-        "conceptClusterKey": "정수 계수 이차식 인수분해의 계수 관계 분석",
+        "conceptClusterKey": "FACTORIZATION",
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
         "crossConceptKeys": [
           "CC_POLYNOMIAL_COEFFICIENT_MATCHING",
           "CC_INTEGER_FACTOR_PAIRS"
@@ -457,20 +713,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-023"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "인수분해",
+          "l3": "인수분해 공식",
+          "l4": "제곱식",
+          "recordId": "M3-RPM-023"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "인수분해 공식",
+        "rpmPrimaryL4": "제곱식",
+        "rpmPrimaryRecordId": "M3-RPM-023",
+        "difficultyBasis": "Q9번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ax)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-FACTORIZATION: 다항식 $5x^2+ax-2$를 인수분해하면 $(bx+c)(dx+e)$ (단, $b, d>0$이고 $a, b, c, d, e$는 정수)일 때, 다음 중에서 옳지 않은 것을 모두 고르면?",
+          "curriculum": "M3-RPM-023: Q9번 문항은 M3-RPM-023에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ax)",
+          "problemType": "Q9번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)",
+          "difficulty": "Q9번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ax)",
+          "condition": "COND_INTEGER, COND_POSITIVE: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_POLYNOMIAL_COEFFICIENT_MATCHING, CC_INTEGER_FACTOR_PAIRS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$(bx+c)(dx+e)$를 전개해 $bd=5, ce=-2, be+cd=a$를 얻고 각 보기의 성립 여부를 확인한다.",
       "decisiveStep": "$bd=5$와 $bcde=(bd)(ce)=-10<0$임을 이용해 ②와 ④가 거짓임을 판별한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "전개 계수 비교 후 $a$의 개수 열거와 $bcde$ 부호 판정까지 5개 명제를 모두 검증해야 하는 3단계 문항이다.",
+      "difficultyReason": "Q9번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ax)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": null,
-        "why": "정수 계수 인수분해의 계수 곱·합 관계를 종합적으로 따지는 문항이다."
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+        "why": "Q9번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_70d851c77283ed8fbad23c0da247be446f720d39414dae3212fbc73ed0b5df7b",
@@ -487,9 +775,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-FACTORIZATION",
         "subUnit": "인수분해",
-        "conceptClusterKey": "전개 후 재인수분해와 일차인수의 합",
+        "conceptClusterKey": "FACTORIZATION",
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
         "crossConceptKeys": [
           "CC_POLYNOMIAL_PRODUCT_EXPANSION"
         ],
@@ -508,20 +796,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-023"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "인수분해",
+          "l3": "인수분해 공식",
+          "l4": "제곱식",
+          "recordId": "M3-RPM-023"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "인수분해 공식",
+        "rpmPrimaryL4": "제곱식",
+        "rpmPrimaryRecordId": "M3-RPM-023",
+        "difficultyBasis": "Q10번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 aligned)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-FACTORIZATION: 다항식 $(2x+3)(3x-4)-3$을 인수분해하였을 때, 일차식인 두 인수의 합은?",
+          "curriculum": "M3-RPM-023: Q10번 문항은 M3-RPM-023에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 aligned)",
+          "problemType": "Q10번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)",
+          "difficulty": "Q10번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 aligned)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_POLYNOMIAL_PRODUCT_EXPANSION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "식을 완전히 전개해 동류항을 정리한 뒤 대각선 인수분해로 두 일차인수를 구해 더한다.",
       "decisiveStep": "$6x^2+x-15=(2x-3)(3x+5)$로 인수분해해 두 인수를 더한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "전개와 이차항 계수가 1이 아닌 인수분해를 순차적으로 수행하는 2단계 문항이다.",
+      "difficultyReason": "Q10번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 aligned)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": null,
-        "why": "곱셈 전개 후 상수를 결합해 다시 인수분해하는 문항이다."
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+        "why": "Q10번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_f06bd1e0f08dc36eede8ea97f3053eede143148f638b3d1d64d47df6776844a0",
@@ -538,9 +858,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-FACTORIZATION",
         "subUnit": "인수분해",
-        "conceptClusterKey": "음의 정수 조건과 상수항 k의 순서 구하기",
+        "conceptClusterKey": "FACTORIZATION",
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
         "crossConceptKeys": [
           "CC_INTEGER_FACTOR_PAIRS"
         ],
@@ -562,20 +882,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-023"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "인수분해",
+          "l3": "인수분해 공식",
+          "l4": "제곱식",
+          "recordId": "M3-RPM-023"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "인수분해 공식",
+        "rpmPrimaryL4": "제곱식",
+        "rpmPrimaryRecordId": "M3-RPM-023",
+        "difficultyBasis": "Q11번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 10)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-FACTORIZATION: 세 정수 $a, b, k$ (단, $b<0$)에 대하여 다항식 $x^2+10x+k$를 인수분해하면 $(x+a)(x+b)$일 때, $k$가 될 수 있는 수 중에서 $3$번째로 큰 값을 구하면?",
+          "curriculum": "M3-RPM-023: Q11번 문항은 M3-RPM-023에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 10)",
+          "problemType": "Q11번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)",
+          "difficulty": "Q11번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 10)",
+          "condition": "COND_INTEGER, COND_NEGATIVE: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_INTEGER_FACTOR_PAIRS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$a+b=10$에서 $b=-1, -2, -3, \\dots$을 차례로 대입해 $k=ab$의 크기를 나열한다.",
       "decisiveStep": "$b=-1, -2, -3$에 대응하는 $k=-11, -24, -39$에서 $3$번째 값을 찾는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "계수 비교 후 음의 정수 $b$를 순서대로 대입해 $k$의 순서를 판별하는 2단계 문항이다.",
+      "difficultyReason": "Q11번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 10)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": null,
-        "why": "정수 조건 $b<0$을 만족하는 인수분해 쌍에서 $k$의 $3$번째 최댓값을 구하는 문항이다."
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+        "why": "Q11번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_f2c1a425ecced88a6f4d5bb4807dcbaf1c4a8e7536922a09a3fd8ae0759d5bea",
@@ -592,9 +944,9 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M3-03-QUADRATIC_EQUATION",
         "subUnit": "이차방정식",
-        "conceptClusterKey": "이차방정식 판별하기",
+        "conceptClusterKey": "QUADRATIC_EQUATION",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_VERIFY_ROOT_OF_QUADRATIC_EQUATION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -611,20 +963,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-029"
+        ],
+        "rpmPrimary": {
+          "l1": "이차방정식",
+          "l2": "이차방정식의 풀이",
+          "l3": "이차방정식과 해",
+          "l4": "이차방정식 판별",
+          "recordId": "M3-RPM-029"
+        },
+        "rpmPrimaryL1": "이차방정식",
+        "rpmPrimaryL2": "이차방정식의 풀이",
+        "rpmPrimaryL3": "이차방정식과 해",
+        "rpmPrimaryL4": "이차방정식 판별",
+        "rpmPrimaryRecordId": "M3-RPM-029",
+        "difficultyBasis": "Q12번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 4)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-03 / M3-03-QUADRATIC_EQUATION: 다음 중에서 이차방정식을 찾으면?",
+          "curriculum": "M3-RPM-029: Q12번 문항은 M3-RPM-029에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 4)",
+          "problemType": "Q12번 문항은 PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 4)",
+          "difficulty": "Q12번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 4)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "등호 유무와 이항 정리 후 $x^2$항의 잔존 여부를 확인해 이차방정식을 찾는다.",
       "decisiveStep": "② $x^2+4=0$만 이차식$=0$ 꼴임을 확인한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "이차방정식의 정의만 적용해 바로 고를 수 있는 1단계 문항이다.",
+      "difficultyReason": "Q12번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 4)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION",
-        "templateKey": null,
-        "why": "다항식과 일차방정식 중에서 이차방정식을 고르는 기초 문항이다."
+        "templateKey": "TPL_M3_VERIFY_ROOT_OF_QUADRATIC_EQUATION",
+        "why": "Q12번 문항은 PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 4)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_f8fd8a5e07b60c25e68d53f854d3d4162e7c2e5534a7a854b75c18efa2f383e3",
@@ -641,9 +1025,9 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M3-03-QUADRATIC_EQUATION",
         "subUnit": "이차방정식",
-        "conceptClusterKey": "대입표를 통한 이차방정식의 해 의미 이해",
+        "conceptClusterKey": "QUADRATIC_EQUATION",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_VERIFY_ROOT_OF_QUADRATIC_EQUATION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -660,20 +1044,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-029"
+        ],
+        "rpmPrimary": {
+          "l1": "이차방정식",
+          "l2": "이차방정식의 풀이",
+          "l3": "이차방정식과 해",
+          "l4": "이차방정식 판별",
+          "recordId": "M3-RPM-029"
+        },
+        "rpmPrimaryL1": "이차방정식",
+        "rpmPrimaryL2": "이차방정식의 풀이",
+        "rpmPrimaryL3": "이차방정식과 해",
+        "rpmPrimaryL4": "이차방정식 판별",
+        "rpmPrimaryRecordId": "M3-RPM-029",
+        "difficultyBasis": "Q13번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ax)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-03 / M3-03-QUADRATIC_EQUATION: $x$의 값이 $-2, -1, 0, 1, 2$일 때, 이차방정식 $ax^2+bx+c=0$ (단, $a\\ne 0$, $a, b, c$는 상수)을 참이 되게 하는 $x$의 값을 알아보려고 $x$에 $-2, -1, 0, 1, 2$를 각각 대입하면 다음 표와 같다.",
+          "curriculum": "M3-RPM-029: Q13번 문항은 M3-RPM-029에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ax)",
+          "problemType": "Q13번 문항은 PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)",
+          "difficulty": "Q13번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ax)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "주어진 대입표에서 등식이 '참'이 되는 $x$의 값을 읽는다.",
       "decisiveStep": "표의 마지막 행 $x=2$에서만 참이 됨을 확인한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "대입표에서 '참'인 행의 $x$값만 읽으면 되는 1단계 문항이다.",
+      "difficultyReason": "Q13번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ax)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION",
-        "templateKey": null,
-        "why": "방정식의 해의 정의를 표를 통해 확인하는 기초 문항이다."
+        "templateKey": "TPL_M3_VERIFY_ROOT_OF_QUADRATIC_EQUATION",
+        "why": "Q13번 문항은 PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_fae39fc59c6627447d2f37c9b9c734d041af758f92c1de42a397f6925a311585",
@@ -690,9 +1106,9 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M3-03-QUADRATIC_EQUATION",
         "subUnit": "이차방정식",
-        "conceptClusterKey": "한 근 대입으로 미정계수 구하기",
+        "conceptClusterKey": "QUADRATIC_EQUATION",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_EVALUATE_FRACTIONAL_EXPRESSION_USING_QUADRATIC_ROOT_DESCRIPTIVE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -709,20 +1125,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-029"
+        ],
+        "rpmPrimary": {
+          "l1": "이차방정식",
+          "l2": "이차방정식의 풀이",
+          "l3": "이차방정식과 해",
+          "l4": "이차방정식 판별",
+          "recordId": "M3-RPM-029"
+        },
+        "rpmPrimaryL1": "이차방정식",
+        "rpmPrimaryL2": "이차방정식의 풀이",
+        "rpmPrimaryL3": "이차방정식과 해",
+        "rpmPrimaryL4": "이차방정식 판별",
+        "rpmPrimaryRecordId": "M3-RPM-029",
+        "difficultyBasis": "Q14번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ax)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-03 / M3-03-QUADRATIC_EQUATION: $x$에 대한 이차방정식 $x^2+ax-8=0$의 한 근이 $x=4$일 때, 상수 $a$의 값을 구하면?",
+          "curriculum": "M3-RPM-029: Q14번 문항은 M3-RPM-029에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ax)",
+          "problemType": "Q14번 문항은 PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)",
+          "difficulty": "Q14번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ax)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "주어진 근 $x=4$를 방정식에 대입해 $a$에 대한 일차방정식을 푼다.",
       "decisiveStep": "$16+4a-8=0$에서 $a=-2$를 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "근을 대입해 간단한 일차방정식 하나만 풀면 되는 1단계 문항이다.",
+      "difficultyReason": "Q14번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ax)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
-        "templateKey": null,
-        "why": "한 근 $x=4$를 대입해 일차항 계수 $a$를 구하는 기초 문항이다."
+        "templateKey": "TPL_M3_EVALUATE_FRACTIONAL_EXPRESSION_USING_QUADRATIC_ROOT_DESCRIPTIVE",
+        "why": "Q14번 문항은 PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_290a4a37f813bb1a5bf5f46de2797df2e495b49cef569f8e01d1990a5e2d73a4",
@@ -739,9 +1187,9 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M3-03-QUADRATIC_EQUATION",
         "subUnit": "이차방정식",
-        "conceptClusterKey": "두 이차방정식의 모든 해의 합",
+        "conceptClusterKey": "QUADRATIC_EQUATION",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT",
-        "templateKey": "",
+        "templateKey": "TPL_M3_COUNT_ORDERED_PAIRS_SATISFYING_ZERO_PRODUCT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -758,20 +1206,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-032"
+        ],
+        "rpmPrimary": {
+          "l1": "이차방정식",
+          "l2": "이차방정식의 풀이",
+          "l3": "인수분해를 이용한 풀이",
+          "l4": "기본 인수분해",
+          "recordId": "M3-RPM-032"
+        },
+        "rpmPrimaryL1": "이차방정식",
+        "rpmPrimaryL2": "이차방정식의 풀이",
+        "rpmPrimaryL3": "인수분해를 이용한 풀이",
+        "rpmPrimaryL4": "기본 인수분해",
+        "rpmPrimaryRecordId": "M3-RPM-032",
+        "difficultyBasis": "Q15번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 4)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-03 / M3-03-QUADRATIC_EQUATION: 다음 두 이차방정식의 해를 모두 더하면?",
+          "curriculum": "M3-RPM-032: Q15번 문항은 M3-RPM-032에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 4)",
+          "problemType": "Q15번 문항은 PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 4)",
+          "difficulty": "Q15번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 4)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "첫 번째 방정식은 인수분해, 두 번째 방정식은 제곱근으로 풀어 네 해를 모두 더한다.",
       "decisiveStep": "네 해 $2, -4, 6, 0$을 빠짐없이 구해 합 $4$를 계산한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "이미 인수분해된 식과 완전제곱꼴 식을 바로 풀어 더하는 1단계 문항이다.",
+      "difficultyReason": "Q15번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 4)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT",
-        "templateKey": null,
-        "why": "인수분해 꼴과 완전제곱꼴 이차방정식의 해를 각각 구해 합산하는 문항이다."
+        "templateKey": "TPL_M3_COUNT_ORDERED_PAIRS_SATISFYING_ZERO_PRODUCT",
+        "why": "Q15번 문항은 PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 4)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_dd4af8f64800a4cd5af6fdbe2fd2a3df7bf137a03a588bac28b4319e00bfb521",
@@ -788,9 +1268,9 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M3-03-QUADRATIC_EQUATION",
         "subUnit": "이차방정식",
-        "conceptClusterKey": "주사위 눈 조건과 중근을 가질 확률",
+        "conceptClusterKey": "QUADRATIC_EQUATION",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
-        "templateKey": "",
+        "templateKey": "TPL_M3_CALCULATE_PARAMETER_DIFFERENCE_FROM_DOUBLE_ROOT",
         "crossConceptKeys": [
           "CC_PRIME_FACTORIZATION_SQUARE"
         ],
@@ -811,20 +1291,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-035"
+        ],
+        "rpmPrimary": {
+          "l1": "이차방정식",
+          "l2": "이차방정식의 풀이",
+          "l3": "근의 공식",
+          "l4": "근의 공식",
+          "recordId": "M3-RPM-035"
+        },
+        "rpmPrimaryL1": "이차방정식",
+        "rpmPrimaryL2": "이차방정식의 풀이",
+        "rpmPrimaryL3": "근의 공식",
+        "rpmPrimaryL4": "근의 공식",
+        "rpmPrimaryRecordId": "M3-RPM-035",
+        "difficultyBasis": "Q16번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ax)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-03 / M3-03-QUADRATIC_EQUATION: 정육면체 주사위를 두 번 던져서 처음 나온 눈의 수를 $a$, 두 번째 나온 눈의 수를 $b$라 할 때, 이차방정식 $x^2+ax+3b=0$의 해가 중근일 확률을 구하면?",
+          "curriculum": "M3-RPM-035: Q16번 문항은 M3-RPM-035에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ax)",
+          "problemType": "Q16번 문항은 PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)",
+          "difficulty": "Q16번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ax)",
+          "condition": "COND_NATURAL_NUMBER: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_PRIME_FACTORIZATION_SQUARE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "중근 조건 $a^2=12b$를 만족하는 주사위 눈 순서쌍 $(a,b)$의 개수를 세어 $36$으로 나눈다.",
       "decisiveStep": "$b=1\\sim 6$ 중 $12b$가 제곱수가 되는 유일한 경우 $(6,3)$을 찾는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "중근 조건을 세운 뒤 주사위 눈 범위에서 제곱수 조건을 만족하는 순서쌍을 찾아 확률을 계산하는 2단계 문항이다.",
+      "difficultyReason": "Q16번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ax)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
-        "templateKey": null,
-        "why": "중근 조건과 주사위 확률을 결합한 문항이다."
+        "templateKey": "TPL_M3_CALCULATE_PARAMETER_DIFFERENCE_FROM_DOUBLE_ROOT",
+        "why": "Q16번 문항은 PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_51f8fa058480719988c43651b66f330bb391e482821161e7f5eec9ab4e8be2eb",
@@ -841,9 +1353,9 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M3-03-QUADRATIC_EQUATION",
         "subUnit": "이차방정식",
-        "conceptClusterKey": "제곱근을 이용한 ax²-c=0 풀이와 유리화",
+        "conceptClusterKey": "QUADRATIC_EQUATION",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
-        "templateKey": "",
+        "templateKey": "TPL_M3_SOLVE_QUADRATIC_VIA_COMPLETED_SQUARE_ROOT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -860,20 +1372,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-033"
+        ],
+        "rpmPrimary": {
+          "l1": "이차방정식",
+          "l2": "이차방정식의 풀이",
+          "l3": "제곱근·완전제곱식을 이용한 풀이",
+          "l4": "제곱근 이용",
+          "recordId": "M3-RPM-033"
+        },
+        "rpmPrimaryL1": "이차방정식",
+        "rpmPrimaryL2": "이차방정식의 풀이",
+        "rpmPrimaryL3": "제곱근·완전제곱식을 이용한 풀이",
+        "rpmPrimaryL4": "제곱근 이용",
+        "rpmPrimaryRecordId": "M3-RPM-033",
+        "difficultyBasis": "Q17번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 30)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-03 / M3-03-QUADRATIC_EQUATION: 이차방정식 $5x^2-6=0$을 풀면?",
+          "curriculum": "M3-RPM-033: Q17번 문항은 M3-RPM-033에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 30)",
+          "problemType": "Q17번 문항은 PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 30)",
+          "difficulty": "Q17번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 30)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$x^2=\\frac{6}{5}$로 정리한 뒤 $\\pm$ 제곱근을 취하고 분모를 유리화한다.",
       "decisiveStep": "$\\pm\\frac{\\sqrt{6}}{\\sqrt{5}}$의 분모·분자에 $\\sqrt{5}$를 곱해 $\\pm\\frac{\\sqrt{30}}{5}$로 유리화한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "제곱근 정의와 분모 유리화만 적용하면 되는 1단계 문항이다.",
+      "difficultyReason": "Q17번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 30)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
-        "templateKey": null,
-        "why": "제곱근 풀이 후 분모를 유리화해 답을 고르는 기초 문항이다."
+        "templateKey": "TPL_M3_SOLVE_QUADRATIC_VIA_COMPLETED_SQUARE_ROOT",
+        "why": "Q17번 문항은 PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 30)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_797c7f0adf7ede81cbea1f226b45aca881dfca1a7f47b309e2f88f46b4984fd6",
@@ -890,9 +1434,9 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M3-03-QUADRATIC_EQUATION",
         "subUnit": "이차방정식",
-        "conceptClusterKey": "분수 계수 완전제곱식 풀이 빈칸 추론",
+        "conceptClusterKey": "QUADRATIC_EQUATION",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
-        "templateKey": "",
+        "templateKey": "TPL_M3_SOLVE_QUADRATIC_VIA_COMPLETED_SQUARE_ROOT",
         "crossConceptKeys": [
           "CC_FRACTION_ADDITION_SUBTRACTION"
         ],
@@ -900,7 +1444,7 @@
         "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 18,
         "variationType": "NUMERIC",
         "provenance": {
@@ -911,20 +1455,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-033"
+        ],
+        "rpmPrimary": {
+          "l1": "이차방정식",
+          "l2": "이차방정식의 풀이",
+          "l3": "제곱근·완전제곱식을 이용한 풀이",
+          "l4": "제곱근 이용",
+          "recordId": "M3-RPM-033"
+        },
+        "rpmPrimaryL1": "이차방정식",
+        "rpmPrimaryL2": "이차방정식의 풀이",
+        "rpmPrimaryL3": "제곱근·완전제곱식을 이용한 풀이",
+        "rpmPrimaryL4": "제곱근 이용",
+        "rpmPrimaryRecordId": "M3-RPM-033",
+        "difficultyBasis": "Q18번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 49)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-03 / M3-03-QUADRATIC_EQUATION: 다음은 완전제곱식을 이용하여 이차방정식 $x^2-7x+3=0$을 푸는 과정이다.",
+          "curriculum": "M3-RPM-033: Q18번 문항은 M3-RPM-033에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 49)",
+          "problemType": "Q18번 문항은 PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 49)",
+          "difficulty": "Q18번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 49)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_FRACTION_ADDITION_SUBTRACTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "일차항 계수 $-7$의 절반의 제곱 $\\frac{49}{4}$를 양변에 더해 각 빈칸의 분수 값을 계산한다.",
       "decisiveStep": "$-3+\\frac{49}{4}=\\frac{37}{4}$을 계산해 최종 해 ⑤ $\\frac{7\\pm\\sqrt{37}}{2}$가 옳음을 확인한다.",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "일차항 계수가 홀수여도 분수 통분 계산을 정확히 따라가며 5개 빈칸을 대조해야 하는 2단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "Q18번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 49)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
-        "templateKey": null,
-        "why": "일차항 계수가 홀수인 이차방정식의 완전제곱식 풀이 과정을 점검하는 문항이다."
+        "templateKey": "TPL_M3_SOLVE_QUADRATIC_VIA_COMPLETED_SQUARE_ROOT",
+        "why": "Q18번 문항은 PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 49)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_20d724fc11c8d7d7f5bca6cbc926ce96a0b354c77278814e5fb1cfb91e59cbd0",
@@ -941,15 +1517,15 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M3-03-QUADRATIC_EQUATION",
         "subUnit": "이차방정식",
-        "conceptClusterKey": "분수·소수 계수 이차방정식의 정수화 풀이",
+        "conceptClusterKey": "QUADRATIC_EQUATION",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT",
-        "templateKey": "",
+        "templateKey": "TPL_M3_COUNT_ORDERED_PAIRS_SATISFYING_ZERO_PRODUCT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "difficultyBucket": 1,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 19,
         "variationType": "NUMERIC",
         "provenance": {
@@ -960,20 +1536,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-032"
+        ],
+        "rpmPrimary": {
+          "l1": "이차방정식",
+          "l2": "이차방정식의 풀이",
+          "l3": "인수분해를 이용한 풀이",
+          "l4": "기본 인수분해",
+          "recordId": "M3-RPM-032"
+        },
+        "rpmPrimaryL1": "이차방정식",
+        "rpmPrimaryL2": "이차방정식의 풀이",
+        "rpmPrimaryL3": "인수분해를 이용한 풀이",
+        "rpmPrimaryL4": "기본 인수분해",
+        "rpmPrimaryRecordId": "M3-RPM-032",
+        "difficultyBasis": "Q19번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 0.1)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-03 / M3-03-QUADRATIC_EQUATION: 이차방정식 $\\dfrac{1}{5}x^2-0.1x-\\dfrac{3}{5}=0$을 풀면?",
+          "curriculum": "M3-RPM-032: Q19번 문항은 M3-RPM-032에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 0.1)",
+          "problemType": "Q19번 문항은 PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 0.1)",
+          "difficulty": "Q19번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 0.1)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "양변에 $10$을 곱해 정수 계수 방정식 $2x^2-x-6=0$으로 고친 뒤 인수분해한다.",
       "decisiveStep": "$2x^2-x-6=(2x+3)(x-2)=0$을 푼다.",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "양변에 10을 곱해 정수로 바꾼 뒤 바로 인수분해하는 1단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "Q19번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 0.1)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT",
-        "templateKey": null,
-        "why": "분수·소수 계수를 정수로 바꾼 뒤 인수분해해 해를 구하는 문항이다."
+        "templateKey": "TPL_M3_COUNT_ORDERED_PAIRS_SATISFYING_ZERO_PRODUCT",
+        "why": "Q19번 문항은 PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 0.1)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_8da42ad5e925a8bee0cf980ee06a67c5966ec5565c05de2f53e9e2f76ebfdba6",
@@ -990,15 +1598,15 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M3-03-QUADRATIC_EQUATION",
         "subUnit": "이차방정식",
-        "conceptClusterKey": "근의 공식과 미정계수 비교",
+        "conceptClusterKey": "QUADRATIC_EQUATION",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
-        "templateKey": "",
+        "templateKey": "TPL_M3_SOLVE_QUADRATIC_VIA_COMPLETED_SQUARE_ROOT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "difficultyBucket": 1,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 20,
         "variationType": "NUMERIC",
         "provenance": {
@@ -1009,20 +1617,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-035"
+        ],
+        "rpmPrimary": {
+          "l1": "이차방정식",
+          "l2": "이차방정식의 풀이",
+          "l3": "근의 공식",
+          "l4": "근의 공식",
+          "recordId": "M3-RPM-035"
+        },
+        "rpmPrimaryL1": "이차방정식",
+        "rpmPrimaryL2": "이차방정식의 풀이",
+        "rpmPrimaryL3": "근의 공식",
+        "rpmPrimaryL4": "근의 공식",
+        "rpmPrimaryRecordId": "M3-RPM-035",
+        "difficultyBasis": "Q20번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 17)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-03 / M3-03-QUADRATIC_EQUATION: 이차방정식 $2x^2-x+A=0$의 해가 $x=\\dfrac{B\\pm\\sqrt{17}}{4}$일 때, $A+B$의 값을 구하면?",
+          "curriculum": "M3-RPM-035: Q20번 문항은 M3-RPM-035에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 17)",
+          "problemType": "Q20번 문항은 PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 17)",
+          "difficulty": "Q20번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 17)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "근의 공식에 계수를 대입한 $x=\\frac{1\\pm\\sqrt{1-8A}}{4}$를 주어진 해와 비교해 $A, B$를 구한다.",
       "decisiveStep": "$1-8A=17$에서 $A=-2$를 구하고 $B=1$과 더한다.",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "근의 공식에 바로 대입해 분자와 근호 안만 비교하는 1단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "Q20번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 17)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
-        "templateKey": null,
-        "why": "근의 공식 형태와 주어진 해를 비교해 상수를 결정하는 문항이다."
+        "templateKey": "TPL_M3_SOLVE_QUADRATIC_VIA_COMPLETED_SQUARE_ROOT",
+        "why": "Q20번 문항은 PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 17)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_db302083634c564cefc21fa4ecd4f621af23ef1c78f23d1ed62cfbae0477ca16",
@@ -1039,9 +1679,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-FACTORIZATION",
         "subUnit": "인수분해",
-        "conceptClusterKey": "직사각형 넓이 다항식 인수분해와 둘레 구하기",
+        "conceptClusterKey": "FACTORIZATION",
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
         "crossConceptKeys": [
           "CC_GEOMETRIC_AREA_VOLUME_FORMULA"
         ],
@@ -1051,7 +1691,7 @@
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 21,
         "variationType": "NUMERIC",
         "provenance": {
@@ -1062,20 +1702,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-023"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "인수분해",
+          "l3": "인수분해 공식",
+          "l4": "제곱식",
+          "recordId": "M3-RPM-023"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "인수분해 공식",
+        "rpmPrimaryL4": "제곱식",
+        "rpmPrimaryRecordId": "M3-RPM-023",
+        "difficultyBasis": "Q21번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 19)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-FACTORIZATION: 다음 그림과 같이 넓이가 $6x^2+19xy+15y^2$인 직사각형 모양의 액자가 있다.",
+          "curriculum": "M3-RPM-023: Q21번 문항은 M3-RPM-023에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 19)",
+          "problemType": "Q21번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 19)",
+          "difficulty": "Q21번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 19)",
+          "condition": "COND_POSITIVE: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_GEOMETRIC_AREA_VOLUME_FORMULA: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림과 같이 넓이가 $6x^2+19xy+15y^2$인 직사각형 모양의 액자가 있다」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "넓이 다항식 $6x^2+19xy+15y^2$을 인수분해해 세로 길이 $2x+3y$를 찾고 둘레를 구한다.",
       "decisiveStep": "$(3x+5y)(2x+3y)$로 인수분해해 세로를 구한 뒤 $2(\\text{가로}+\\text{세로})$를 계산한다.",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "문자가 2개인 이차식을 인수분해해 세로 길이를 구한 뒤 둘레까지 계산하는 2단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "Q21번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 19)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": null,
-        "why": "도형의 넓이를 나타내는 이차식을 인수분해해 변의 길이와 둘레를 구하는 문항이다."
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+        "why": "Q21번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 19)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_e7707644490ac06cae79262d220e12cd20c5a79f5613173992c08d1ea3433a08",
@@ -1092,9 +1764,9 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M3-03-QUADRATIC_EQUATION",
         "subUnit": "이차방정식",
-        "conceptClusterKey": "연쇄 근 대입을 통한 두 이차방정식의 계수 결정",
+        "conceptClusterKey": "QUADRATIC_EQUATION",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_EVALUATE_FRACTIONAL_EXPRESSION_USING_QUADRATIC_ROOT_DESCRIPTIVE",
         "crossConceptKeys": [
           "CC_ZERO_PRODUCT_PROPERTY"
         ],
@@ -1113,20 +1785,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-029"
+        ],
+        "rpmPrimary": {
+          "l1": "이차방정식",
+          "l2": "이차방정식의 풀이",
+          "l3": "이차방정식과 해",
+          "l4": "이차방정식 판별",
+          "recordId": "M3-RPM-029"
+        },
+        "rpmPrimaryL1": "이차방정식",
+        "rpmPrimaryL2": "이차방정식의 풀이",
+        "rpmPrimaryL3": "이차방정식과 해",
+        "rpmPrimaryL4": "이차방정식 판별",
+        "rpmPrimaryRecordId": "M3-RPM-029",
+        "difficultyBasis": "Q22번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 px)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-03 / M3-03-QUADRATIC_EQUATION: 이차방정식 $x^2-2px-7=0$의 한 근이 $x=-1$이고, 다른 한 근은 이차방정식 $x^2+(q-3)x+2q=0$의 근일 때, 상수 $p, q$의 값을 구하시오.",
+          "curriculum": "M3-RPM-029: Q22번 문항은 M3-RPM-029에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 px)",
+          "problemType": "Q22번 문항은 PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 px)",
+          "difficulty": "Q22번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 px)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_ZERO_PRODUCT_PROPERTY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$x=-1$을 첫 방정식에 대입해 $p=3$을 구하고, 인수분해로 다른 근 $x=7$을 찾아 두 번째 방정식에 대입한다.",
       "decisiveStep": "$x^2-6x-7=0$의 다른 근 $x=7$을 구해 $49+7(q-3)+2q=0$을 푼다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "근 대입, 인수분해, 두 번째 방정식 대입을 순차 3단계로 수행하는 2단계 문항이다.",
+      "difficultyReason": "Q22번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 px)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
-        "templateKey": null,
-        "why": "첫 방정식의 다른 한 근을 구해 두 번째 방정식의 계수를 결정하는 문항이다."
+        "templateKey": "TPL_M3_EVALUATE_FRACTIONAL_EXPRESSION_USING_QUADRATIC_ROOT_DESCRIPTIVE",
+        "why": "Q22번 문항은 PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 px)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_f844b736664ed446d44bd86b70a7a0d1a486594843cadd20889b5eba08fb0855",
@@ -1143,9 +1847,9 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
         "subUnit": "이차방정식의 활용",
-        "conceptClusterKey": "두 수의 제곱의 합 문장제 이차방정식",
+        "conceptClusterKey": "QUADRATIC_EQUATION_WORD_PROBLEM",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
-        "templateKey": "",
+        "templateKey": "TPL_M3_FIND_TIME_FOR_GIVEN_PROJECTILE_HEIGHT",
         "crossConceptKeys": [
           "CC_BINOMIAL_SQUARE_EXPANSION"
         ],
@@ -1166,20 +1870,52 @@
           "variationType": "CONTEXT",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-037"
+        ],
+        "rpmPrimary": {
+          "l1": "이차방정식",
+          "l2": "이차방정식의 활용",
+          "l3": "수와 식",
+          "l4": "연속된 수",
+          "recordId": "M3-RPM-037"
+        },
+        "rpmPrimaryL1": "이차방정식",
+        "rpmPrimaryL2": "이차방정식의 활용",
+        "rpmPrimaryL3": "수와 식",
+        "rpmPrimaryL4": "연속된 수",
+        "rpmPrimaryRecordId": "M3-RPM-037",
+        "difficultyBasis": "Q23번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 58)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-03 / M3-03-QUADRATIC_EQUATION_WORD: 지우는 민호보다 $4$살이 더 많다.",
+          "curriculum": "M3-RPM-037: Q23번 문항은 M3-RPM-037에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 58)",
+          "problemType": "Q23번 문항은 PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 58)",
+          "difficulty": "Q23번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 58)",
+          "condition": "COND_NATURAL_NUMBER: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_BINOMIAL_SQUARE_EXPANSION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "민호의 나이를 $x$로 놓고 $x^2+(x+4)^2=58$을 세워 인수분해로 자연수 해를 구한다.",
       "decisiveStep": "$x^2+4x-21=(x-3)(x+7)=0$에서 양수 해 $x=3$을 선택한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "문장제에서 제곱의 합 방정식을 세워 정리하고 자연수 해를 고르는 2단계 문항이다.",
+      "difficultyReason": "Q23번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 58)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
-        "templateKey": null,
-        "why": "나이 차이와 제곱의 합 조건으로 이차방정식을 세워 푸는 문항이다."
+        "templateKey": "TPL_M3_FIND_TIME_FOR_GIVEN_PROJECTILE_HEIGHT",
+        "why": "Q23번 문항은 PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 58)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     }
   ]
 }

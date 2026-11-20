@@ -17,7 +17,7 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "전개·이항 후 이차방정식 판별",
+    "conceptClusterKey": "QUADRATIC_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -39,10 +39,15 @@ window.questionBank = [
     "points": 3,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_VERIFY_ROOT_OF_QUADRATIC_EQUATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "이차방정식",
+    "rpmPrimaryL2": "이차방정식의 풀이",
+    "rpmPrimaryL3": "이차방정식과 해",
+    "rpmPrimaryL4": "이차방정식 판별",
+    "rpmPrimaryRecordId": "M3-RPM-029",
     "sourceQid": 1,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q01-problem.plan.json"
@@ -62,7 +67,7 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "방정식의 근 대입과 이차식의 값",
+    "conceptClusterKey": "QUADRATIC_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -84,12 +89,17 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_EVALUATE_FRACTIONAL_EXPRESSION_USING_QUADRATIC_ROOT_DESCRIPTIVE",
     "crossConceptKeys": [
       "CC_EQUATION_ROOT_SUBSTITUTION_IDENTITY"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "이차방정식",
+    "rpmPrimaryL2": "이차방정식의 풀이",
+    "rpmPrimaryL3": "이차방정식과 해",
+    "rpmPrimaryL4": "이차방정식 판별",
+    "rpmPrimaryRecordId": "M3-RPM-029",
     "sourceQid": 2,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q02-problem.plan.json"
@@ -109,7 +119,7 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "한 근이 주어진 이차방정식의 계수와 다른 근",
+    "conceptClusterKey": "QUADRATIC_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -131,12 +141,17 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_EVALUATE_FRACTIONAL_EXPRESSION_USING_QUADRATIC_ROOT_DESCRIPTIVE",
     "crossConceptKeys": [
       "CC_ZERO_PRODUCT_PROPERTY"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "이차방정식",
+    "rpmPrimaryL2": "이차방정식의 풀이",
+    "rpmPrimaryL3": "이차방정식과 해",
+    "rpmPrimaryL4": "이차방정식 판별",
+    "rpmPrimaryRecordId": "M3-RPM-029",
     "sourceQid": 3,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q03-problem.plan.json"
@@ -156,7 +171,7 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "이차방정식 해의 유리수/무리수 판별",
+    "conceptClusterKey": "QUADRATIC_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -178,7 +193,7 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
-    "templateKey": "",
+    "templateKey": "TPL_M3_SOLVE_QUADRATIC_VIA_COMPLETED_SQUARE_ROOT",
     "crossConceptKeys": [
       "CC_RATIONAL_ROOT_CONDITION"
     ],
@@ -186,6 +201,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "이차방정식",
+    "rpmPrimaryL2": "이차방정식의 풀이",
+    "rpmPrimaryL3": "제곱근·완전제곱식을 이용한 풀이",
+    "rpmPrimaryL4": "제곱근 이용",
+    "rpmPrimaryRecordId": "M3-RPM-033",
     "sourceQid": 4,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q04-problem.plan.json"
@@ -205,7 +225,7 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "근의 공식 결과와 무리수 해 계수 비교",
+    "conceptClusterKey": "QUADRATIC_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -225,12 +245,17 @@ window.questionBank = [
     "solution": "짝수 근의 공식을 적용하면 ($a=3, b'=-4, c=-p$) $\\begin{aligned} x &= \\frac{-(-4) \\pm \\sqrt{(-4)^2 - 3(-p)}}{3} = \\frac{4 \\pm \\sqrt{16+3p}}{3} \\ q &= 4, \\quad 16 + 3p = 22 \\implies 3p = 6 \\implies p = 2 \\ p + q &= 2 + 4 = 6 \\end{aligned}$",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
-    "templateKey": "",
+    "templateKey": "TPL_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD_FORMULA",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "이차방정식",
+    "rpmPrimaryL2": "이차방정식의 풀이",
+    "rpmPrimaryL3": "근의 공식",
+    "rpmPrimaryL4": "근의 공식",
+    "rpmPrimaryRecordId": "M3-RPM-035",
     "sourceQid": 5,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q05-problem.plan.json"
@@ -250,7 +275,7 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "중근 조건으로 계수와 중근 동시에 구하기",
+    "conceptClusterKey": "QUADRATIC_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -272,12 +297,17 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
-    "templateKey": "",
+    "templateKey": "TPL_M3_CALCULATE_PARAMETER_DIFFERENCE_FROM_DOUBLE_ROOT",
     "crossConceptKeys": [],
     "conditionKeys": [
       "COND_NEGATIVE"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "이차방정식",
+    "rpmPrimaryL2": "이차방정식의 풀이",
+    "rpmPrimaryL3": "근의 공식",
+    "rpmPrimaryL4": "근의 공식",
+    "rpmPrimaryRecordId": "M3-RPM-035",
     "sourceQid": 6,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q06-problem.plan.json"
@@ -297,7 +327,7 @@ window.questionBank = [
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "첫 방정식의 근을 계수로 갖는 이차방정식",
+    "conceptClusterKey": "QUADRATIC_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -319,12 +349,17 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT",
-    "templateKey": "",
+    "templateKey": "TPL_M3_ZERO_PRODUCT_SOLVE",
     "crossConceptKeys": [
       "CC_ZERO_PRODUCT_PROPERTY"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "이차방정식",
+    "rpmPrimaryL2": "이차방정식의 풀이",
+    "rpmPrimaryL3": "인수분해를 이용한 풀이",
+    "rpmPrimaryL4": "기본 인수분해",
+    "rpmPrimaryRecordId": "M3-RPM-032",
     "sourceQid": 7,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q07-problem.plan.json"
@@ -344,7 +379,7 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "기본형 y=ax² 그래프의 성질",
+    "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -366,10 +401,15 @@ window.questionBank = [
     "points": 3,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_BASIC_FORM",
-    "templateKey": "",
+    "templateKey": "TPL_M3_DETERMINE_EQUATION_FROM_GRAPH_POINT",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "이차함수",
+    "rpmPrimaryL2": "이차함수와 그 그래프",
+    "rpmPrimaryL3": "y=ax²의 그래프",
+    "rpmPrimaryL4": "그래프의 모양",
+    "rpmPrimaryRecordId": "M3-RPM-045",
     "sourceQid": 8,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q08-problem.plan.json"
@@ -389,7 +429,7 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "포물선 내접 직사각형의 넓이와 둘레",
+    "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -411,7 +451,7 @@ window.questionBank = [
     "points": 5,
     "difficultyBucket": 3,
     "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_INSCRIBED_RECTANGLE",
-    "templateKey": "",
+    "templateKey": "TPL_M3_OPTIMIZE_INSCRIBED_RECTANGLE_PERIMETER_DESCRIPTIVE",
     "crossConceptKeys": [
       "CC_PARABOLA_AXIS_SYMMETRY",
       "CC_GEOMETRIC_AREA_VOLUME_FORMULA"
@@ -420,6 +460,11 @@ window.questionBank = [
       "COND_POSITIVE"
     ],
     "integrationPattern": "INTERDEPENDENT",
+    "rpmPrimaryL1": "이차함수",
+    "rpmPrimaryL2": "이차함수와 그 그래프",
+    "rpmPrimaryL3": "그래프와 식",
+    "rpmPrimaryL4": "점의 좌표",
+    "rpmPrimaryRecordId": "M3-RPM-047",
     "sourceQid": 9,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q09-problem.plan.json"
@@ -439,7 +484,7 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "y축 평행이동된 두 포물선 사이의 세로 길이",
+    "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -459,15 +504,20 @@ window.questionBank = [
     "solution": "선분 $\\text{AB}$가 $y$축에 평행하므로 두 점 $\\text{A}, \\text{B}$의 $x$좌표를 $t$라 하면 $\\text{A}(t, -2t^2)$, $\\text{B}(t, -2t^2-7)$ $\\overline{\\text{AB}} = (-2t^2) - (-2t^2 - 7) = 7$",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_FIND_VERTICAL_DISTANCE_BETWEEN_PARALLEL_PARABOLAS",
     "crossConceptKeys": [
       "CC_QUADRATIC_VERTICAL_TRANSLATION",
       "CC_VERTICAL_SEGMENT_LENGTH"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "이차함수",
+    "rpmPrimaryL2": "이차함수 y=ax²+bx+c의 그래프",
+    "rpmPrimaryL3": "꼭짓점형",
+    "rpmPrimaryL4": "평행이동",
+    "rpmPrimaryRecordId": "M3-RPM-049",
     "sourceQid": 10,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q10-problem.plan.json"
@@ -487,7 +537,7 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "식 전개 후 이차함수 판별",
+    "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -509,12 +559,17 @@ window.questionBank = [
     "points": 3,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_QUADRATIC_FUNCTION_DEFINITION_POLYNOMIAL",
     "crossConceptKeys": [
       "CC_FUNCTION_DEGREE_CLASSIFICATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "이차함수",
+    "rpmPrimaryL2": "이차함수와 그 그래프",
+    "rpmPrimaryL3": "이차함수의 뜻",
+    "rpmPrimaryL4": "이차함수 판별",
+    "rpmPrimaryRecordId": "M3-RPM-043",
     "sourceQid": 11,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q11-problem.plan.json"
@@ -534,7 +589,7 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "포물선 축 대칭을 이용한 함숫값 구하기",
+    "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -556,12 +611,17 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_AXIS_AND_MONOTONICITY",
-    "templateKey": "",
+    "templateKey": "TPL_M3_FIND_VERTEX_FROM_DECREASING_INTERVAL_OF_PARABOLA",
     "crossConceptKeys": [
       "CC_PARABOLA_AXIS_SYMMETRY"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "이차함수",
+    "rpmPrimaryL2": "이차함수와 그 그래프",
+    "rpmPrimaryL3": "y=ax²의 그래프",
+    "rpmPrimaryL4": "그래프의 모양",
+    "rpmPrimaryRecordId": "M3-RPM-045",
     "sourceQid": 12,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q12-problem.plan.json"
@@ -581,7 +641,7 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "축과 두 점이 주어진 이차함수 식 구하기",
+    "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -603,13 +663,18 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
-    "templateKey": "",
+    "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
     "crossConceptKeys": [
       "CC_SYSTEM_OF_EQUATIONS",
       "CC_POINT_ON_CURVE_SUBSTITUTION"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "이차함수",
+    "rpmPrimaryL2": "이차함수 y=ax²+bx+c의 그래프",
+    "rpmPrimaryL3": "그래프와 계수",
+    "rpmPrimaryL4": "그래프 위치",
+    "rpmPrimaryRecordId": "M3-RPM-053",
     "sourceQid": 13,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q13-problem.plan.json"
@@ -629,7 +694,7 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "주어진 포물선 부호로 변환된 이차함수 개형 판정",
+    "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -649,14 +714,19 @@ window.questionBank = [
     "solution": "주어진 그림에서 포물선이 위로 볼록하므로 $a < 0$이고, 꼭짓점 $(-p, 0)$이 $y$축의 오른쪽에 있으므로 $-p > 0 \\implies p < 0$이다. 따라서 이차함수 $y=ax^2+p$의 그래프는 $a<0$이므로 위로 볼록하고, 꼭짓점 $(0, p)$에서 $p<0$이므로 $y$축의 음의 부분에 있다. 그러므로 옳은 것은 ⑤이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 2,
+    "difficultyBucket": 3,
     "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
-    "templateKey": "",
+    "templateKey": "TPL_M3_IDENTIFY_FALSE_PROPERTY_FROM_PARABOLA_GRAPH",
     "crossConceptKeys": [
       "CC_COEFFICIENT_SIGN_FROM_GRAPH"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "이차함수",
+    "rpmPrimaryL2": "이차함수 y=ax²+bx+c의 그래프",
+    "rpmPrimaryL3": "그래프와 계수",
+    "rpmPrimaryL4": "그래프 위치",
+    "rpmPrimaryRecordId": "M3-RPM-053",
     "sourceQid": 14,
     "variationType": "CONDITION",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q14-problem.plan.json"
@@ -676,7 +746,7 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "문자 계수 이차함수의 완전제곱식 변형과 꼭짓점",
+    "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -698,12 +768,17 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
-    "templateKey": "",
+    "templateKey": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE",
     "crossConceptKeys": [
       "CC_QUADRATIC_GENERAL_FORM"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "이차함수",
+    "rpmPrimaryL2": "이차함수 y=ax²+bx+c의 그래프",
+    "rpmPrimaryL3": "일반형",
+    "rpmPrimaryL4": "완전제곱식 변형",
+    "rpmPrimaryRecordId": "M3-RPM-051",
     "sourceQid": 15,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q15-problem.plan.json"
@@ -723,7 +798,7 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "지나는 점으로 계수 결정 후 축의 방정식",
+    "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -745,12 +820,17 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_AXIS_AND_MONOTONICITY",
-    "templateKey": "",
+    "templateKey": "TPL_M3_FIND_VERTEX_FROM_DECREASING_INTERVAL_OF_PARABOLA",
     "crossConceptKeys": [
       "CC_POINT_ON_CURVE_SUBSTITUTION"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "이차함수",
+    "rpmPrimaryL2": "이차함수 y=ax²+bx+c의 그래프",
+    "rpmPrimaryL3": "일반형",
+    "rpmPrimaryL4": "완전제곱식 변형",
+    "rpmPrimaryRecordId": "M3-RPM-051",
     "sourceQid": 16,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q16-problem.plan.json"
@@ -770,7 +850,7 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "평행이동한 이차함수의 일반형 계수 구하기",
+    "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -790,14 +870,19 @@ window.questionBank = [
     "solution": "$\\begin{aligned} y &= 2(x - 3)^2 - 7 \\ &= 2(x^2 - 6x + 9) - 7 \\ &= 2x^2 - 12x + 11 \\end{aligned}$ 따라서 $p = -12$, $q = 11$이므로 $p + q = -12 + 11 = -1$이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 1,
+    "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
-    "templateKey": "",
+    "templateKey": "TPL_M3_CALCULATE_SUM_OF_TRANSLATION_PARAMETERS",
     "crossConceptKeys": [
       "CC_BINOMIAL_SQUARE_EXPANSION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "이차함수",
+    "rpmPrimaryL2": "이차함수 y=ax²+bx+c의 그래프",
+    "rpmPrimaryL3": "꼭짓점형",
+    "rpmPrimaryL4": "평행이동",
+    "rpmPrimaryRecordId": "M3-RPM-049",
     "sourceQid": 17,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q17-problem.plan.json"
@@ -817,7 +902,7 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "일반형 이차함수의 축·꼭짓점·증감 판별",
+    "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -839,10 +924,15 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
-    "templateKey": "",
+    "templateKey": "TPL_M3_EVALUATE_PARABOLA_PROPERTIES_STATEMENTS",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "이차함수",
+    "rpmPrimaryL2": "이차함수 y=ax²+bx+c의 그래프",
+    "rpmPrimaryL3": "일반형",
+    "rpmPrimaryL4": "완전제곱식 변형",
+    "rpmPrimaryRecordId": "M3-RPM-051",
     "sourceQid": 18,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q18-problem.plan.json"
@@ -862,7 +952,7 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "x절편과 삼각형 넓이로 이차함수 계수 구하기",
+    "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -884,13 +974,18 @@ window.questionBank = [
     "points": 5,
     "difficultyBucket": 3,
     "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
-    "templateKey": "",
+    "templateKey": "TPL_M3_FIND_COEFFICIENT_FROM_TRIANGLE_AREA_WITH_VERTEX",
     "crossConceptKeys": [
       "CC_GEOMETRIC_AREA_VOLUME_FORMULA",
       "CC_PARABOLA_AXIS_SYMMETRY"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "이차함수",
+    "rpmPrimaryL2": "이차함수 y=ax²+bx+c의 그래프",
+    "rpmPrimaryL3": "그래프와 계수",
+    "rpmPrimaryL4": "그래프 위치",
+    "rpmPrimaryRecordId": "M3-RPM-053",
     "sourceQid": 19,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q19-problem.plan.json"
@@ -910,7 +1005,7 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "두 x절편이 주어진 이차함수 식 구하기",
+    "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -932,12 +1027,17 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_THREE_POINTS",
-    "templateKey": "",
+    "templateKey": "TPL_M3_DETERMINE_EQUATION_FROM_THREE_GIVEN_POINTS",
     "crossConceptKeys": [
       "CC_POINT_ON_CURVE_SUBSTITUTION"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "이차함수",
+    "rpmPrimaryL2": "이차함수 y=ax²+bx+c의 그래프",
+    "rpmPrimaryL3": "그래프와 계수",
+    "rpmPrimaryL4": "그래프 위치",
+    "rpmPrimaryRecordId": "M3-RPM-053",
     "sourceQid": 20,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q20-problem.plan.json"
@@ -957,7 +1057,7 @@ window.questionBank = [
     "subUnit": "이차방정식의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "원의 넓이 배수 조건과 제곱근 이차방정식",
+    "conceptClusterKey": "QUADRATIC_EQUATION_WORD_PROBLEM",
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -971,9 +1071,9 @@ window.questionBank = [
     "solution": "처음 원의 넓이는 $\\pi \\times 8^2 = 64\\pi\\text{ (cm}^2\\text{)}$이다. 반지름을 $x\\text{ cm}$ 늘인 원의 넓이는 $\\pi(8+x)^2$이므로 $\\begin{aligned} \\pi(8+x)^2 &= 2 \\times 64\\pi \\ (8+x)^2 &= 128 \\ 8+x &= 8\\sqrt{2} \\quad (x > 0) \\ x &= 8\\sqrt{2} - 8 \\end{aligned}$",
     "score": 7,
     "points": 7,
-    "difficultyBucket": 2,
+    "difficultyBucket": 3,
     "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
-    "templateKey": "",
+    "templateKey": "TPL_M3_QUADRATIC_EQUATION_WORD_PROBLEM_GEOMETRY",
     "crossConceptKeys": [
       "CC_GEOMETRIC_AREA_VOLUME_FORMULA"
     ],
@@ -981,6 +1081,11 @@ window.questionBank = [
       "COND_POSITIVE"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "이차방정식",
+    "rpmPrimaryL2": "이차방정식의 활용",
+    "rpmPrimaryL3": "도형",
+    "rpmPrimaryL4": "길이·넓이",
+    "rpmPrimaryRecordId": "M3-RPM-039",
     "sourceQid": 21,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q21-problem.plan.json"
@@ -1000,7 +1105,7 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "f(p)=p를 만족시키는 이차방정식 해의 합",
+    "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -1016,12 +1121,17 @@ window.questionBank = [
     "points": 7,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_BASIC_FORM",
-    "templateKey": "",
+    "templateKey": "TPL_M3_DETERMINE_EQUATION_FROM_GRAPH_POINT",
     "crossConceptKeys": [
       "CC_QUADRATIC_EQUATIONS"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "이차함수",
+    "rpmPrimaryL2": "이차함수와 그 그래프",
+    "rpmPrimaryL3": "이차함수의 뜻",
+    "rpmPrimaryL4": "이차함수 판별",
+    "rpmPrimaryRecordId": "M3-RPM-043",
     "sourceQid": 22,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q22-problem.plan.json"
@@ -1041,7 +1151,7 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "축과 x절편 거리로 문자 계수 소거 및 식의 값",
+    "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -1057,7 +1167,7 @@ window.questionBank = [
     "points": 7,
     "difficultyBucket": 3,
     "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_X_INTERCEPTS_DISTANCE",
-    "templateKey": "",
+    "templateKey": "TPL_M3_FIND_CONSTANT_FROM_CHORD_LENGTH_ON_X_AXIS",
     "crossConceptKeys": [
       "CC_PARABOLA_AXIS_SYMMETRY",
       "CC_ALGEBRAIC_FRACTION_SIMPLIFY"
@@ -1066,6 +1176,11 @@ window.questionBank = [
       "COND_POSITIVE"
     ],
     "integrationPattern": "INTERDEPENDENT",
+    "rpmPrimaryL1": "이차함수",
+    "rpmPrimaryL2": "이차함수 y=ax²+bx+c의 그래프",
+    "rpmPrimaryL3": "그래프와 계수",
+    "rpmPrimaryL4": "그래프 위치",
+    "rpmPrimaryRecordId": "M3-RPM-053",
     "sourceQid": 23,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사_plans/q23-problem.plan.json"

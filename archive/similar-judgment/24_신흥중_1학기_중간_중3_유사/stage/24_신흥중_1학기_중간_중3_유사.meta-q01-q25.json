@@ -3,7 +3,7 @@
   "requestId": "24_신흥중_1학기_중간_중3_유사-candidate-v1",
   "examUid": "24_신흥중_1학기_중간_중3_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m3/1mid/24_신흥중_1학기_중간_중3_유사.js",
-  "expectedSourceBlobSha1": "55b9e29942bd218de9977a9ded8b2bce9330edcd",
+  "expectedSourceBlobSha1": "8ca6df78e75b55487a9ae162d52cf13dd7491d3b",
   "expectedQuestionCount": 25,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -29,9 +29,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
         "subUnit": "제곱근과 실수",
-        "conceptClusterKey": "SQUARE_ROOT_DEFINITION_PROPERTIES",
-        "problemTypeKey": "",
-        "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
+        "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_ROOT_PROPERTY_ROOT_VALUE",
         "crossConceptKeys": [
           "CC_SQUARE_ROOT_NOTATION"
         ],
@@ -50,23 +50,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-001"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "제곱근과 실수",
+          "l3": "제곱근",
+          "l4": "제곱근의 뜻",
+          "recordId": "M3-RPM-001"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "제곱근과 실수",
+        "rpmPrimaryL3": "제곱근",
+        "rpmPrimaryL4": "제곱근의 뜻",
+        "rpmPrimaryRecordId": "M3-RPM-001",
+        "difficultyBasis": "기초적인 수치 제곱근을 구하여 합을 구하는 난이도 1 문항이다. (문항 토큰 49)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-SQUARE_ROOT_REAL_NUMBER: $(-6)^2$의 양의 제곱근을 $a$, $49$의 음의 제곱근을 $b$라 할 때",
+          "curriculum": "M3-RPM-001: 제곱근의 뜻을 파악하고 값을 계산하는 제곱근의 뜻 유형이다. (문항 토큰 49)",
+          "problemType": "제곱근의 정의와 성질을 이용해 양·음의 제곱근을 계산하는 유형이다. (문항 토큰 49)",
+          "difficulty": "기초적인 수치 제곱근을 구하여 합을 구하는 난이도 1 문항이다. (문항 토큰 49)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 제곱근 이 있다).",
+          "crossConcept": "CC_SQUARE_ROOT_NOTATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "(-6)^2=36의 양의 제곱근 a=6과 49의 음의 제곱근 b=-7의 합 -1을 구한다.",
       "decisiveStep": "a=6과 b=-7을 정확히 산출하여 a+b=-1 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "거듭제곱 수의 양의 제곱근과 자연수의 음의 제곱근을 합산하는 1단계 문항",
+      "difficultyReason": "기초적인 수치 제곱근을 구하여 합을 구하는 난이도 1 문항이다. (문항 토큰 49)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_SQUARE_ROOT_DEFINITION_CHECK",
-        "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
-        "why": "수의 제곱과 제곱근의 부호 처리를 점검하는 기본 문항"
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_ROOT_PROPERTY_ROOT_VALUE",
+        "why": "제곱근의 정의와 성질을 이용해 양·음의 제곱근을 계산하는 유형이다. (문항 토큰 49)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_e3ae24a3ed0b570f53ee87534c1d187da000cff0903da065c0a458f703f741ec",
@@ -83,9 +115,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
         "subUnit": "제곱근과 실수",
-        "conceptClusterKey": "SQUARE_ROOT_DEFINITION_PROPERTIES",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
         "crossConceptKeys": [
           "CC_SQUARE_ROOT_NOTATION"
         ],
@@ -104,23 +136,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-001"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "제곱근과 실수",
+          "l3": "제곱근",
+          "l4": "제곱근의 뜻",
+          "recordId": "M3-RPM-001"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "제곱근과 실수",
+        "rpmPrimaryL3": "제곱근",
+        "rpmPrimaryL4": "제곱근의 뜻",
+        "rpmPrimaryRecordId": "M3-RPM-001",
+        "difficultyBasis": "기초 개념 지식을 직접 묻는 난이도 1 문항이다. (문항 토큰 49)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-SQUARE_ROOT_REAL_NUMBER: 다음 중에서 옳은 것은?",
+          "curriculum": "M3-RPM-001: 제곱근의 기본 개념과 근호의 기호적 의미를 다루는 제곱근의 뜻 유형이다. (문항 토큰 49)",
+          "problemType": "제곱근의 정의와 표현에 대한 참·거짓을 명제별로 판정하는 유형이다. (문항 토큰 49)",
+          "difficulty": "기초 개념 지식을 직접 묻는 난이도 1 문항이다. (문항 토큰 49)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 제곱근 이 있다).",
+          "crossConcept": "CC_SQUARE_ROOT_NOTATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "81의 양의 제곱근이 9라는 참인 명제를 식별하고 오답 선지의 오류를 검증한다.",
       "decisiveStep": "81의 양의 제곱근은 9의 일치성 확인 및 루트16의 제곱근이 풀마 2임을 판별",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "제곱근의 기본 정의와 기호 표기법을 대조하는 1단계 문항",
+      "difficultyReason": "기초 개념 지식을 직접 묻는 난이도 1 문항이다. (문항 토큰 49)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY_AUDIT",
-        "templateKey": "TPL_M3_SQUARE_ROOT_TRUE_FALSE_SET",
-        "why": "제곱근의 정의와 표현의 정확성을 점검하는 개념 문항"
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
+        "why": "제곱근의 정의와 표현에 대한 참·거짓을 명제별로 판정하는 유형이다. (문항 토큰 49)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_8e7721c95eb550f70aadcf0648c4e247f1f6186a5e9eb697a42b644c0676ba5a",
@@ -137,9 +201,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
         "subUnit": "제곱근과 실수",
-        "conceptClusterKey": "SQUARE_ROOT_SIMPLIFICATION_RULES",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_ROOT_PROPERTY_ABSOLUTE",
         "crossConceptKeys": [
           "CC_ABSOLUTE_VALUE_OF_RADICAL"
         ],
@@ -158,23 +222,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-002"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "제곱근과 실수",
+          "l3": "제곱근",
+          "l4": "제곱근의 성질",
+          "recordId": "M3-RPM-002"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "제곱근과 실수",
+        "rpmPrimaryL3": "제곱근",
+        "rpmPrimaryL4": "제곱근의 성질",
+        "rpmPrimaryRecordId": "M3-RPM-002",
+        "difficultyBasis": "기본적인 근호 계산 공식을 적용하는 난이도 1 문항이다. (문항 토큰 17)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-SQUARE_ROOT_REAL_NUMBER: <보기>에서 옳은 것을 모두 고른 것은?",
+          "curriculum": "M3-RPM-002: 근호식의 기본 성질을 검증하는 제곱근의 성질 유형이다. (문항 토큰 17)",
+          "problemType": "제곱근의 부호 처리와 절댓값 변환 성질을 판별하는 유형이다. (문항 토큰 17)",
+          "difficulty": "기본적인 근호 계산 공식을 적용하는 난이도 1 문항이다. (문항 토큰 17)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 제곱근 이 있다).",
+          "crossConcept": "CC_ABSOLUTE_VALUE_OF_RADICAL: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "루트(-17)^2 = 17과 (-루트15)^2 = 15의 참을 식별하여 ㄷ, ㄹ을 고른다.",
       "decisiveStep": "근호 밖 음수 제곱과 근호 안 음수 제곱의 절댓값 부호 규칙 대조",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "부호 처리와 절댓값 성질을 직접 적용하여 보기를 판정하는 문항",
+      "difficultyReason": "기본적인 근호 계산 공식을 적용하는 난이도 1 문항이다. (문항 토큰 17)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTIES_EVAL",
-        "templateKey": "TPL_M3_SQUARE_ROOT_TRUE_FALSE_SET",
-        "why": "근호 안팎의 제곱과 음수 부호 처리 규칙을 점검하는 기본 문항"
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_ROOT_PROPERTY_ABSOLUTE",
+        "why": "제곱근의 부호 처리와 절댓값 변환 성질을 판별하는 유형이다. (문항 토큰 17)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_3a65ca918cac2acd4c9e4c2c958feb5e4df5f26ff5bc00904b5bd9984aa5ba53",
@@ -191,9 +287,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
         "subUnit": "제곱근과 실수",
-        "conceptClusterKey": "REAL_NUMBER_INEQUALITY_COMPARISON",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": "TPL_M3_REAL_COMPARISON_ORDER",
         "crossConceptKeys": [
           "CC_RADICAL_ORDER_PROPERTY"
         ],
@@ -212,23 +308,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-004"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "제곱근과 실수",
+          "l3": "무리수와 실수",
+          "l4": "실수의 대소",
+          "recordId": "M3-RPM-004"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "제곱근과 실수",
+        "rpmPrimaryL3": "무리수와 실수",
+        "rpmPrimaryL4": "실수의 대소",
+        "rpmPrimaryRecordId": "M3-RPM-004",
+        "difficultyBasis": "음수 근호식의 대소 비교를 요구하는 난이도 2 문항이다. (문항 토큰 12)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-SQUARE_ROOT_REAL_NUMBER: 다음 중에서 옳은 것은?",
+          "curriculum": "M3-RPM-004: 실수와 무리수의 대소 비교를 다루는 실수의 대소 유형이다. (문항 토큰 12)",
+          "problemType": "제곱근을 포함한 실수의 대소 관계와 부등식 성질을 판단하는 유형이다. (문항 토큰 12)",
+          "difficulty": "음수 근호식의 대소 비교를 요구하는 난이도 2 문항이다. (문항 토큰 12)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 무리수 이 있다).",
+          "crossConcept": "CC_RADICAL_ORDER_PROPERTY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "1/3 > 1/4에서 루트(1/3) > 1/2이므로 음수를 취하면 -루트(1/3) < -1/2임을 증명한다.",
       "decisiveStep": "음수 곱셈 시 부등호 역전 성질의 정확한 적용",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "분수 무리수의 대소 비교와 음수 부호 처리를 종합하는 문항",
+      "difficultyReason": "음수 근호식의 대소 비교를 요구하는 난이도 2 문항이다. (문항 토큰 12)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_REAL_NUMBER_INEQUALITY",
-        "templateKey": "TPL_M3_RADICAL_ORDER_COMPARISON",
-        "why": "근호와 분수, 음수 부호가 결합된 대소 비교를 점검하는 정형 문항"
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": "TPL_M3_REAL_COMPARISON_ORDER",
+        "why": "제곱근을 포함한 실수의 대소 관계와 부등식 성질을 판단하는 유형이다. (문항 토큰 12)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_fc571f10acf3627585c872da399d03187c3175cd6673a9fc4eb2de23ca04e577",
@@ -245,9 +373,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
         "subUnit": "제곱근과 실수",
-        "conceptClusterKey": "RATIONAL_IRRATIONAL_CLASSIFICATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
+        "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+        "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
         "crossConceptKeys": [
           "CC_NON_REPEATING_INFINITE_DECIMAL"
         ],
@@ -266,23 +394,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-003"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "제곱근과 실수",
+          "l3": "무리수와 실수",
+          "l4": "무리수 판별",
+          "recordId": "M3-RPM-003"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "제곱근과 실수",
+        "rpmPrimaryL3": "무리수와 실수",
+        "rpmPrimaryL4": "무리수 판별",
+        "rpmPrimaryRecordId": "M3-RPM-003",
+        "difficultyBasis": "수의 분류를 정확히 수행하는 난이도 1 문항이다. (문항 토큰 25)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-SQUARE_ROOT_REAL_NUMBER: <보기>에서 무리수를 모두 고르면 몇 개인가?",
+          "curriculum": "M3-RPM-003: 유리수와 무리수를 구별하는 무리수 판별 유형이다. (문항 토큰 25)",
+          "problemType": "유리수와 무리수의 정의를 적용해 주어진 수들을 분류하는 유형이다. (문항 토큰 25)",
+          "difficulty": "수의 분류를 정확히 수행하는 난이도 1 문항이다. (문항 토큰 25)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 무리수 이 있다).",
+          "crossConcept": "CC_NON_REPEATING_INFINITE_DECIMAL: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "7개 수 중 유리수 2개를 제외한 나머지 무리수 5개를 선별한다.",
       "decisiveStep": "루트1.6이 분수 변형 시 16/10으로 근호가 벗겨지지 않음을 파악",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "수들의 유리수/무리수 성질을 대조하여 개수를 세는 1단계 문항",
+      "difficultyReason": "수의 분류를 정확히 수행하는 난이도 1 문항이다. (문항 토큰 25)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_IRRATIONAL_COUNT",
-        "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_SET",
-        "why": "다양한 수 표현(순환소수, 파이 거듭제곱, 소수 근호)에서 무리수를 정확히 분별하는 문항"
+        "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+        "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
+        "why": "유리수와 무리수의 정의를 적용해 주어진 수들을 분류하는 유형이다. (문항 토큰 25)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_ffb29fd08cd292f7b71f78c234c601eae8ad48cf501695a8934dee3dcfedb769",
@@ -299,9 +459,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
         "subUnit": "제곱근과 실수",
-        "conceptClusterKey": "REAL_NUMBER_LINE_COORDINATE_MAPPING",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
+        "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+        "templateKey": "TPL_M3_NUMBER_LINE_IRRATIONAL_MAPPING",
         "crossConceptKeys": [
           "CC_PYTHAGOREAN",
           "CC_NUMBER_LINE_DISPLACEMENT"
@@ -321,23 +481,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-005"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "제곱근과 실수",
+          "l3": "수직선과 제곱근",
+          "l4": "무리수의 위치",
+          "recordId": "M3-RPM-005"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "제곱근과 실수",
+        "rpmPrimaryL3": "수직선과 제곱근",
+        "rpmPrimaryL4": "무리수의 위치",
+        "rpmPrimaryRecordId": "M3-RPM-005",
+        "difficultyBasis": "좌표의 부호와 기준점 이동을 결합 판단하는 난이도 2 문항이다. (문항 토큰 AB)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-SQUARE_ROOT_REAL_NUMBER: 한 눈금의 길이가 $1$인 모눈종이에 두 선분 $\\mathrm{AB}$와 $\\mathrm{CD}$를 그린 후",
+          "curriculum": "M3-RPM-005: 수직선에 무리수를 작도하고 위치를 찾는 무리수의 위치 유형이다. (문항 토큰 AB)",
+          "problemType": "피타고라스 정리와 원호 회전을 통해 수직선 위 무리수 좌표를 대응시키는 유형이다. (문항 토큰 AB)",
+          "difficulty": "좌표의 부호와 기준점 이동을 결합 판단하는 난이도 2 문항이다. (문항 토큰 AB)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 수직선 이 있다).",
+          "crossConcept": "CC_PYTHAGOREAN, CC_NUMBER_LINE_DISPLACEMENT: 원천 마크다운 값, 재판정 안 함",
+          "integration": "GEOMETRY_ALGEBRA_FUSION: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「한 눈금의 길이가 $1$인 모눈종이에 두 선분」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "A(0)의 왼쪽 점 P = -루트5이므로 1번 보기(루트5)가 틀렸음을 식별한다.",
       "decisiveStep": "점 P의 위치가 기준점 A(0)의 왼쪽이므로 음수 -루트5이어야 함을 파악",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "피타고라스 빗변 계산과 좌우 방향성 부호 적용을 검증하는 문항",
+      "difficultyReason": "좌표의 부호와 기준점 이동을 결합 판단하는 난이도 2 문항이다. (문항 토큰 AB)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_NUMBER_LINE_MAPPING",
-        "templateKey": "TPL_M3_SQUARE_DIAGONAL_ROTATION",
-        "why": "피타고라스 정리와 원호를 통한 수직선 무리수 좌표 작도 오류를 판별하는 문항"
+        "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+        "templateKey": "TPL_M3_NUMBER_LINE_IRRATIONAL_MAPPING",
+        "why": "피타고라스 정리와 원호 회전을 통해 수직선 위 무리수 좌표를 대응시키는 유형이다. (문항 토큰 AB)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_4ea5f221b7b86210883ca313e2563ce72af2ed7e62d0e4fa8cb2392ce9e44f5e",
@@ -352,11 +544,11 @@
         "standardUnitKey": "M3-01",
         "standardUnit": "실수와 그 계산",
         "standardUnitOrder": 1,
-        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-        "subUnit": "근호를 포함한 식의 계산",
-        "conceptClusterKey": "RADICAL_NATURAL_NUMBER_PROBABILITY",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+        "subUnit": "제곱근과 실수",
+        "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
         "crossConceptKeys": [
           "CC_CLASSICAL_PROBABILITY",
           "CC_PRIME_FACTORIZATION_POWER_PARITY"
@@ -378,23 +570,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-002"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "제곱근과 실수",
+          "l3": "제곱근",
+          "l4": "제곱근의 성질",
+          "recordId": "M3-RPM-002"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "제곱근과 실수",
+        "rpmPrimaryL3": "제곱근",
+        "rpmPrimaryL4": "제곱근의 성질",
+        "rpmPrimaryRecordId": "M3-RPM-002",
+        "difficultyBasis": "소인수분해 조건과 주사위 곱 순서쌍을 빠짐없이 세어야 하는 난이도 3 문항이다. (문항 토큰 12)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-SQUARE_ROOT_REAL_NUMBER: $\\mathrm{A, B}$ 두 개의 주사위를 동시에 던져 나오는 눈의 수를 각각 $a, b$라 할 때, $\\sqrt{12ab}$ 가 자연수가 될 확률은?",
+          "curriculum": "M3-RPM-002: 근호 안의 식이 제곱수가 되는 성질을 다루는 제곱근의 성질 유형이다. (문항 토큰 12)",
+          "problemType": "제곱수가 되는 조건과 확률론적 순서쌍 세기를 융합한 유형이다. (문항 토큰 12)",
+          "difficulty": "소인수분해 조건과 주사위 곱 순서쌍을 빠짐없이 세어야 하는 난이도 3 문항이다. (문항 토큰 12)",
+          "condition": "COND_DICE_ROLL: 4칸 condition: 자연수",
+          "crossConcept": "CC_CLASSICAL_PROBABILITY, CC_PRIME_FACTORIZATION_POWER_PARITY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "INTERDEPENDENT: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "12=4*3에서 ab=3k^2 꼴을 세우고 ab=3, 12인 6쌍을 찾아 6/36=1/6을 산출한다.",
       "decisiveStep": "ab=3에서 2가지, ab=12에서 4가지로 총 6가지 사건 수 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "소인수분해 조건과 주사위 눈 범위(1~6) 내 순서쌍을 전수 조사해야 하는 문항",
+      "difficultyReason": "소인수분해 조건과 주사위 곱 순서쌍을 빠짐없이 세어야 하는 난이도 3 문항이다. (문항 토큰 12)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_RADICAL_DICE_PROBABILITY",
-        "templateKey": "TPL_M3_SQUARE_CONDITION_PROBABILITY",
-        "why": "제곱근이 자연수가 되는 조건과 주사위 확률을 융합한 대표 고난도 문항"
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
+        "why": "제곱수가 되는 조건과 확률론적 순서쌍 세기를 융합한 유형이다. (문항 토큰 12)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_66d9291e2d56dae2cfda9d05bc91550a671be80ddd52436f438bd92f8eba00dc",
@@ -411,9 +635,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
         "subUnit": "근호를 포함한 식의 계산",
-        "conceptClusterKey": "RADICAL_ARITHMETIC_SIMPLIFICATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
         "crossConceptKeys": [
           "CC_RECIPROCAL_MULTIPLICATION_RADICAL",
           "CC_DENOMINATOR_RATIONALIZATION_MONOMIAL"
@@ -433,23 +657,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-007"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "근호를 포함한 식의 계산",
+          "l3": "근호의 곱셈과 나눗셈",
+          "l4": "근호의 곱",
+          "recordId": "M3-RPM-007"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "근호를 포함한 식의 계산",
+        "rpmPrimaryL3": "근호의 곱셈과 나눗셈",
+        "rpmPrimaryL4": "근호의 곱",
+        "rpmPrimaryRecordId": "M3-RPM-007",
+        "difficultyBasis": "사칙연산 복합 단계를 점검하는 난이도 2 문항이다. (문항 토큰 15)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-REAL_NUMBER_OPERATIONS: 다음 중 계산 결과가 옳은 것은?",
+          "curriculum": "M3-RPM-007: 근호의 곱셈과 나눗셈을 처리하는 근호의 곱 유형이다. (문항 토큰 15)",
+          "problemType": "근호를 포함한 사칙연산의 혼합 계산 결과를 참·거짓으로 판별하는 유형이다. (문항 토큰 15)",
+          "difficulty": "사칙연산 복합 단계를 점검하는 난이도 2 문항이다. (문항 토큰 15)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 유리화 이 있다).",
+          "crossConcept": "CC_RECIPROCAL_MULTIPLICATION_RADICAL, CC_DENOMINATOR_RATIONALIZATION_MONOMIAL: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "루트3 * 루트12 = 6에 역수 루트3/루트7을 곱해 6루트21/7을 도출한다.",
       "decisiveStep": "역수 곱셈 후 분모 유리화 6루트21/7의 정확한 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "역수 곱셈과 분모의 유리화 과정을 결합하여 계산을 검증하는 문항",
+      "difficultyReason": "사칙연산 복합 단계를 점검하는 난이도 2 문항이다. (문항 토큰 15)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_RADICAL_CALCULATION_AUDIT",
-        "templateKey": "TPL_M3_ARITHMETIC_ERROR_FINDING",
-        "why": "근호의 사칙연산 규칙과 분모 유리화를 혼합 평가하는 표준 문항"
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+        "why": "근호를 포함한 사칙연산의 혼합 계산 결과를 참·거짓으로 판별하는 유형이다. (문항 토큰 15)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_1b89c15bb30d6af1812765ad4b2f6ba967bd9edbc519b7d18d0755cde317b1f0",
@@ -466,9 +722,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
         "subUnit": "근호를 포함한 식의 계산",
-        "conceptClusterKey": "RADICAL_VARIABLE_SUBSTITUTION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_LETTER_REPRESENTATION",
         "crossConceptKeys": [
           "CC_VARIABLE_SUBSTITUTION"
         ],
@@ -487,23 +743,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-007"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "근호를 포함한 식의 계산",
+          "l3": "근호의 곱셈과 나눗셈",
+          "l4": "근호의 곱",
+          "recordId": "M3-RPM-007"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "근호를 포함한 식의 계산",
+        "rpmPrimaryL3": "근호의 곱셈과 나눗셈",
+        "rpmPrimaryL4": "근호의 곱",
+        "rpmPrimaryRecordId": "M3-RPM-007",
+        "difficultyBasis": "문자의 제곱합 꼴을 파악해야 하는 난이도 2 문항이다. (문항 토큰 ab)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-REAL_NUMBER_OPERATIONS: $\\sqrt{2} = a, \\quad \\sqrt{5} = b$라 할 때",
+          "curriculum": "M3-RPM-007: 근호 안의 수치를 대수적 문자로 치환 표현하는 근호의 곱 유형이다. (문항 토큰 ab)",
+          "problemType": "제곱근 값을 문자로 치환하여 다른 근호식을 대수적으로 표현하는 유형이다. (문항 토큰 ab)",
+          "difficulty": "문자의 제곱합 꼴을 파악해야 하는 난이도 2 문항이다. (문항 토큰 ab)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 제곱근 이 있다).",
+          "crossConcept": "CC_VARIABLE_SUBSTITUTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "a^2=2, b^2=5로부터 a^2+b^2=7을 얻어 루트7 = 루트(a^2+b^2)임을 유도한다.",
       "decisiveStep": "7 = a^2 + b^2 치환 적용",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "루트(a+b)와 루트(a^2+b^2)의 차이를 명확히 구분해야 하는 문항",
+      "difficultyReason": "문자의 제곱합 꼴을 파악해야 하는 난이도 2 문항이다. (문항 토큰 ab)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_RADICAL_VARIABLE_EXPRESSION",
-        "templateKey": "TPL_M3_RADICAL_TO_ALGEBRAIC_FORM",
-        "why": "근호 안의 합을 문자의 제곱의 합으로 나타내는 발상을 점검하는 문항"
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_LETTER_REPRESENTATION",
+        "why": "제곱근 값을 문자로 치환하여 다른 근호식을 대수적으로 표현하는 유형이다. (문항 토큰 ab)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_4008529edd65125ce9704e92c4c02a52a973908b7af32a0325c95b3ffb1b84f1",
@@ -520,9 +808,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
         "subUnit": "근호를 포함한 식의 계산",
-        "conceptClusterKey": "DENOMINATOR_RATIONALIZATION_CONJUGATE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
         "crossConceptKeys": [
           "CC_DENOMINATOR_RATIONALIZATION_CONJUGATE"
         ],
@@ -541,23 +829,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-011"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "근호를 포함한 식의 계산",
+          "l3": "분모의 유리화",
+          "l4": "한 항의 유리화",
+          "recordId": "M3-RPM-011"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "근호를 포함한 식의 계산",
+        "rpmPrimaryL3": "분모의 유리화",
+        "rpmPrimaryL4": "한 항의 유리화",
+        "rpmPrimaryRecordId": "M3-RPM-011",
+        "difficultyBasis": "단순 분모 유리화 규칙을 적용하는 난이도 1 문항이다. (문항 토큰 10)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-REAL_NUMBER_OPERATIONS: 다음 중 분모를 유리화한 것으로 옳지 않은 것은?",
+          "curriculum": "M3-RPM-011: 분모의 유리화 공식을 직접 적용하는 한 항의 유리화 유형이다. (문항 토큰 10)",
+          "problemType": "분모의 유리화 공식을 직접 적용하여 계산 결과를 판정하는 유형이다. (문항 토큰 10)",
+          "difficulty": "단순 분모 유리화 규칙을 적용하는 난이도 1 문항이다. (문항 토큰 10)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 유리화 이 있다).",
+          "crossConcept": "CC_DENOMINATOR_RATIONALIZATION_CONJUGATE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "3/(2-루트3) = 6+3루트3인데 2+루트3으로 분자의 3이 누락된 5번을 식별한다.",
       "decisiveStep": "합차 유리화 시 분자 3 곱셈 누락 오류 포착",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "다섯 선지의 유리화 공식을 직접 적용하여 계산 실수를 찾아내는 1단계 문항",
+      "difficultyReason": "단순 분모 유리화 규칙을 적용하는 난이도 1 문항이다. (문항 토큰 10)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_RATIONALIZATION_AUDIT",
-        "templateKey": "TPL_M3_FRACTION_RATIONALIZE_CHECK_SET",
-        "why": "단항식과 켤레 다항식 분모의 유리화 과정을 종합 점검하는 문항"
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
+        "why": "분모의 유리화 공식을 직접 적용하여 계산 결과를 판정하는 유형이다. (문항 토큰 10)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_632fe0530aa18ce0d45420c023e10280943fd387078c79f7534e9e2ea3439bde",
@@ -574,9 +894,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
         "subUnit": "근호를 포함한 식의 계산",
-        "conceptClusterKey": "RADICAL_ARITHMETIC_SIMPLIFICATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
         "crossConceptKeys": [
           "CC_DISTRIBUTIVE_LAW",
           "CC_DENOMINATOR_RATIONALIZATION_MONOMIAL"
@@ -598,23 +918,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-009"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "근호를 포함한 식의 계산",
+          "l3": "근호의 덧셈과 뺄셈",
+          "l4": "동류근호",
+          "recordId": "M3-RPM-009"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "근호를 포함한 식의 계산",
+        "rpmPrimaryL3": "근호의 덧셈과 뺄셈",
+        "rpmPrimaryL4": "동류근호",
+        "rpmPrimaryRecordId": "M3-RPM-009",
+        "difficultyBasis": "복수의 근호 정리와 동류항 계산을 포함한 난이도 2 문항이다. (문항 토큰 32)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-REAL_NUMBER_OPERATIONS: 이 성립할 때, 유리수 $a, b$에 대하여 $a+b$의 값은?",
+          "curriculum": "M3-RPM-009: 동류근호를 묶어 사칙연산을 정리하는 동류근호 유형이다. (문항 토큰 32)",
+          "problemType": "동류근호 덧셈·뺄셈과 곱셈 혼합 계산을 통해 미정계수를 결정하는 유형이다. (문항 토큰 32)",
+          "difficulty": "복수의 근호 정리와 동류항 계산을 포함한 난이도 2 문항이다. (문항 토큰 32)",
+          "condition": "COND_RATIONAL_COEFFICIENTS: 4칸 condition: 유리수",
+          "crossConcept": "CC_DISTRIBUTIVE_LAW, CC_DENOMINATOR_RATIONALIZATION_MONOMIAL: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "식 전체를 -5루트2 + 루트6으로 정리하여 a=-5, b=1에서 a+b=-4를 도출한다.",
       "decisiveStep": "루트2*(3 - 루트3) 전개 후 부호 분배 및 계수 a=-5, b=1 확정",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "괄호 앞 음수 부호 처리와 루트12 분모 유리화를 모두 실수 없이 완결해야 하는 문항",
+      "difficultyReason": "복수의 근호 정리와 동류항 계산을 포함한 난이도 2 문항이다. (문항 토큰 32)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_RADICAL_COEFFICIENT_MATCH",
-        "templateKey": "TPL_M3_RADICAL_EXPRESSION_COEFFICIENT_SUM",
-        "why": "근호 꺼내기, 유리화, 분배법칙을 복합 적용하여 계수 합을 산출하는 표준 문항"
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+        "why": "동류근호 덧셈·뺄셈과 곱셈 혼합 계산을 통해 미정계수를 결정하는 유형이다. (문항 토큰 32)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_ea668e584c7a09133631b1dc34fd06f276cc1bfbac3d8fb65678f6b64ec20632",
@@ -631,9 +983,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
         "subUnit": "다항식의 곱셈",
-        "conceptClusterKey": "EXPANSION_COEFFICIENT_DETERMINATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "POLYNOMIAL_MULTIPLICATION",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT",
         "crossConceptKeys": [
           "CC_PERFECT_SQUARE_EXPANSION",
           "CC_COEFFICIENT_COMPARISON_METHOD"
@@ -653,23 +1005,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-017"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "다항식의 곱셈",
+          "l3": "곱셈공식",
+          "l4": "두 일차식의 곱",
+          "recordId": "M3-RPM-017"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "다항식의 곱셈",
+        "rpmPrimaryL3": "곱셈공식",
+        "rpmPrimaryL4": "두 일차식의 곱",
+        "rpmPrimaryRecordId": "M3-RPM-017",
+        "difficultyBasis": "기초 곱셈공식 전개 및 계수 비교를 수행하는 난이도 1 문항이다. (문항 토큰 x)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-POLYNOMIAL_MULTIPLICATION: $(x+1)^2 + (x-1)(2x+3)$ 의 전개식에서 $x^2$의 계수를 $a$, $x$의 계수를 $b$, 상수항을 $c$라 할 때",
+          "curriculum": "M3-RPM-017: 두 일차식의 곱과 합의 제곱 전개를 다루는 두 일차식의 곱 유형이다. (문항 토큰 x)",
+          "problemType": "다항식 곱셈공식 전개식에서 특정 차수 항의 계수를 구하는 유형이다. (문항 토큰 x)",
+          "difficulty": "기초 곱셈공식 전개 및 계수 비교를 수행하는 난이도 1 문항이다. (문항 토큰 x)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 계수 이 있다).",
+          "crossConcept": "CC_PERFECT_SQUARE_EXPANSION, CC_COEFFICIENT_COMPARISON_METHOD: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "전개식 3x^2 + 3x - 2에서 a=3, b=3, c=-2를 구하여 a-b+c=-2를 산출한다.",
       "decisiveStep": "전개 후 동류항 합산 3x^2+3x-2 및 a-b+c = 3-3-2 = -2 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "두 다항식의 전개와 동류항 취합 후 계수 뺄셈을 수행하는 2단계 문항",
+      "difficultyReason": "기초 곱셈공식 전개 및 계수 비교를 수행하는 난이도 1 문항이다. (문항 토큰 x)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_POLYNOMIAL_EXPANSION_COEFFICIENTS",
-        "templateKey": "TPL_M3_POLYNOMIAL_EXPANSION_ALGEBRAIC_SUM",
-        "why": "완전제곱식과 일차식의 곱을 합산하여 계수의 대수적 합을 구하는 기본 문항"
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT",
+        "why": "다항식 곱셈공식 전개식에서 특정 차수 항의 계수를 구하는 유형이다. (문항 토큰 x)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_2bbdd9b1fa19ccfbf646ab530ec80b8bd7456bd19e9d15e56e83c4112d2914b7",
@@ -686,9 +1070,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
         "subUnit": "다항식의 곱셈",
-        "conceptClusterKey": "SUM_OF_SQUARES_ALGEBRAIC_VALUE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "POLYNOMIAL_MULTIPLICATION",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "TPL_M3_MULTIPLICATION_SUM_PRODUCT",
         "crossConceptKeys": [
           "CC_SUM_OF_SQUARES_IDENTITY"
         ],
@@ -707,23 +1091,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-019"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "다항식의 곱셈",
+          "l3": "곱셈공식의 활용",
+          "l4": "곱셈공식을 이용한 식의 값",
+          "recordId": "M3-RPM-019"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "다항식의 곱셈",
+        "rpmPrimaryL3": "곱셈공식의 활용",
+        "rpmPrimaryL4": "곱셈공식을 이용한 식의 값",
+        "rpmPrimaryRecordId": "M3-RPM-019",
+        "difficultyBasis": "전형적인 곱셈공식 변형 대입 난이도 1 문항이다. (문항 토큰 xy)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-POLYNOMIAL_MULTIPLICATION: $x+y = 6, \\quad xy = 4$ 일 때",
+          "curriculum": "M3-RPM-019: 곱셈공식을 변형하여 식의 값을 계산하는 식의 값 유형이다. (문항 토큰 xy)",
+          "problemType": "합과 곱이 주어졌을 때 곱셈공식 변형을 활용해 식의 값을 구하는 유형이다. (문항 토큰 xy)",
+          "difficulty": "전형적인 곱셈공식 변형 대입 난이도 1 문항이다. (문항 토큰 xy)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 곱셈공식 이 있다).",
+          "crossConcept": "CC_SUM_OF_SQUARES_IDENTITY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "x^2+y^2 = (x+y)^2 - 2xy = 6^2 - 2*4 = 28을 산출한다.",
       "decisiveStep": "곱셈 공식 변형식에 6과 4를 대입하여 36 - 8 = 28 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "공식에 직접 대입하여 계산하는 표준 1단계 문항",
+      "difficultyReason": "전형적인 곱셈공식 변형 대입 난이도 1 문항이다. (문항 토큰 xy)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_SUM_OF_SQUARES_EVAL",
-        "templateKey": "TPL_M3_SYMMETRIC_SUM_PRODUCT_EVAL",
-        "why": "합과 곱으로부터 제곱의 합을 구하는 곱셈 공식 변형의 가장 대표적인 문항"
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "TPL_M3_MULTIPLICATION_SUM_PRODUCT",
+        "why": "합과 곱이 주어졌을 때 곱셈공식 변형을 활용해 식의 값을 구하는 유형이다. (문항 토큰 xy)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c3774b3f121643344da7fa2ae5c6195005d7f4f2da3bab589fa813fcaab6ec30",
@@ -740,9 +1156,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
         "subUnit": "근호를 포함한 식의 계산",
-        "conceptClusterKey": "RADICAL_EXPRESSION_RATIONAL_CONDITION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_RATIONAL_CONDITION",
         "crossConceptKeys": [
           "CC_DISTRIBUTIVE_LAW",
           "CC_RADICAL_LIKE_TERMS_COMBINE"
@@ -764,23 +1180,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-014"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "근호를 포함한 식의 계산",
+          "l3": "혼합 계산",
+          "l4": "식의 값",
+          "recordId": "M3-RPM-014"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "근호를 포함한 식의 계산",
+        "rpmPrimaryL3": "혼합 계산",
+        "rpmPrimaryL4": "식의 값",
+        "rpmPrimaryRecordId": "M3-RPM-014",
+        "difficultyBasis": "전개 후 무리수 부분 계수 소거 조건을 세우는 난이도 2 문항이다. (문항 토큰 3)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-REAL_NUMBER_OPERATIONS: $(\\sqrt{3}-a\\sqrt{2})(\\sqrt{3}-2\\sqrt{2})$ 가 유리수가 되도록 하는 유리수 $a$의 값은?",
+          "curriculum": "M3-RPM-014: 무리수 혼합 전개에서 식의 유리수 조건을 찾는 식의 값 유형이다. (문항 토큰 3)",
+          "problemType": "무리수식의 전개 결과가 유리수가 되도록 하는 미정계수 결정 유형이다. (문항 토큰 3)",
+          "difficulty": "전개 후 무리수 부분 계수 소거 조건을 세우는 난이도 2 문항이다. (문항 토큰 3)",
+          "condition": "COND_RATIONAL_COEFFICIENTS: 4칸 condition: 유리수",
+          "crossConcept": "CC_DISTRIBUTIVE_LAW, CC_RADICAL_LIKE_TERMS_COMBINE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "전개식 (3+4a) - (a+2)루트6에서 무리수 계수 a+2=0을 풀어 a=-2를 구한다.",
       "decisiveStep": "무리수 계수 a+2=0 수립 및 해 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "이항식 전개 후 무리수 동류항의 계수를 0으로 놓는 일차방정식 해결 문항",
+      "difficultyReason": "전개 후 무리수 부분 계수 소거 조건을 세우는 난이도 2 문항이다. (문항 토큰 3)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_RATIONAL_PRODUCT_CONDITION",
-        "templateKey": "TPL_M3_BINOMIAL_RADICAL_PRODUCT_RATIONAL_UNKNOWN",
-        "why": "두 무리수 이항식의 곱이 유리수가 되는 조건을 분배법칙과 연계하여 평가하는 문항"
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_RATIONAL_CONDITION",
+        "why": "무리수식의 전개 결과가 유리수가 되도록 하는 미정계수 결정 유형이다. (문항 토큰 3)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_5d19d7d7b4302bdfabcdd0c4c391f45f45905380defa192714495a70da19cf5d",
@@ -797,9 +1245,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
         "subUnit": "다항식의 곱셈",
-        "conceptClusterKey": "NUMERICAL_CALCULATION_FORMULA_SELECTION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "POLYNOMIAL_MULTIPLICATION",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT",
         "crossConceptKeys": [
           "CC_DIFFERENCE_OF_SQUARES_PRODUCT"
         ],
@@ -818,23 +1266,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-018"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "다항식의 곱셈",
+          "l3": "곱셈공식의 활용",
+          "l4": "곱셈공식을 이용한 수의 계산",
+          "recordId": "M3-RPM-018"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "다항식의 곱셈",
+        "rpmPrimaryL3": "곱셈공식의 활용",
+        "rpmPrimaryL4": "곱셈공식을 이용한 수의 계산",
+        "rpmPrimaryRecordId": "M3-RPM-018",
+        "difficultyBasis": "수치 구조를 보고 알맞은 공식을 식별하는 난이도 1 문항이다. (문항 토큰 3003)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-POLYNOMIAL_MULTIPLICATION: $3003 \\times 2997$ 을 계산하는 데 이용되는 가장 편리한 곱셈 공식은?",
+          "curriculum": "M3-RPM-018: 곱셈공식을 이용한 수의 계산에 적합한 공식을 결정하는 수의 계산 유형이다. (문항 토큰 3003)",
+          "problemType": "수의 계산에 가장 효율적인 곱셈공식을 선택하고 판단하는 유형이다. (문항 토큰 3003)",
+          "difficulty": "수치 구조를 보고 알맞은 공식을 식별하는 난이도 1 문항이다. (문항 토큰 3003)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 곱셈공식 이 있다).",
+          "crossConcept": "CC_DIFFERENCE_OF_SQUARES_PRODUCT: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "3003*2997 = (3000+3)(3000-3)이므로 (a+b)(a-b)=a^2-b^2이 가장 편리함을 판별한다.",
       "decisiveStep": "기준수 3000을 중심으로 합차 공식 꼴임을 식별",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "수의 대칭성을 파악하고 합차 공식을 선택하는 기본 1단계 문항",
+      "difficultyReason": "수치 구조를 보고 알맞은 공식을 식별하는 난이도 1 문항이다. (문항 토큰 3003)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_FORMULA_SELECTION_NUMERICAL",
-        "templateKey": "TPL_M3_ARITHMETIC_EXPANSION_CHOICE",
-        "why": "큰 수의 곱셈을 가장 빠르게 해결하는 대수 공식의 선택 능력을 점검하는 문항"
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT",
+        "why": "수의 계산에 가장 효율적인 곱셈공식을 선택하고 판단하는 유형이다. (문항 토큰 3003)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_0428f811c65da3895c01bf465a6a5215cb1bb9c67db6e912209fc85344d513b4",
@@ -851,9 +1331,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
         "subUnit": "다항식의 곱셈",
-        "conceptClusterKey": "CHAINED_DIFFERENCE_OF_SQUARES",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "POLYNOMIAL_MULTIPLICATION",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "TPL_M3_MULTIPLICATION_CHAIN",
         "crossConceptKeys": [
           "CC_DIFFERENCE_OF_SQUARES_PRODUCT",
           "CC_EXPONENT_LAWS"
@@ -873,23 +1353,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-016"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "다항식의 곱셈",
+          "l3": "곱셈공식",
+          "l4": "합과 차의 곱",
+          "recordId": "M3-RPM-016"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "다항식의 곱셈",
+        "rpmPrimaryL3": "곱셈공식",
+        "rpmPrimaryL4": "합과 차의 곱",
+        "rpmPrimaryRecordId": "M3-RPM-016",
+        "difficultyBasis": "연쇄적 합차 공식 전개 단계를 거쳐 지수를 구하는 난이도 2 문항이다. (문항 토큰 16)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-POLYNOMIAL_MULTIPLICATION: $(x-1)(x+1)(x^2+1)(x^4+1)(x^8+1) = x^{\\square} - 1$",
+          "curriculum": "M3-RPM-016: 합과 차의 곱을 연속 적용하는 곱셈공식 유형이다. (문항 토큰 16)",
+          "problemType": "합차 공식을 연쇄적으로 적용하여 최고차항의 지수를 결정하는 유형이다. (문항 토큰 16)",
+          "difficulty": "연쇄적 합차 공식 전개 단계를 거쳐 지수를 구하는 난이도 2 문항이다. (문항 토큰 16)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 합차공식 이 있다).",
+          "crossConcept": "CC_DIFFERENCE_OF_SQUARES_PRODUCT, CC_EXPONENT_LAWS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "합차 공식을 4회 연쇄 적용하여 지수가 2, 4, 8, 16으로 두 배씩 증가함을 이용해 16을 구한다.",
       "decisiveStep": "(x^8-1)(x^8+1) = x^16 - 1의 마지막 전개 완결",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "합차 공식을 단계별로 4번 연쇄 전개하여 지수를 추적하는 문항",
+      "difficultyReason": "연쇄적 합차 공식 전개 단계를 거쳐 지수를 구하는 난이도 2 문항이다. (문항 토큰 16)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_CHAINED_DIFFERENCE_OF_SQUARES",
-        "templateKey": "TPL_M3_REPEATED_SUM_DIFF_POWER_EXPANSION",
-        "why": "합차 공식을 연쇄적으로 적용하여 높은 차수의 다항식을 전개하는 원리를 점검하는 문항"
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "TPL_M3_MULTIPLICATION_CHAIN",
+        "why": "합차 공식을 연쇄적으로 적용하여 최고차항의 지수를 결정하는 유형이다. (문항 토큰 16)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_a505202c96b9b3616ec05bbae346e4f019448cd4f7b3e2334fd318c6c57d49d1",
@@ -906,9 +1418,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-FACTORIZATION",
         "subUnit": "인수분해",
-        "conceptClusterKey": "FACTOR_DEFINITION_VERIFICATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "FACTORIZATION",
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_FACTORIZATION_FACTOR_IDENTIFY",
         "crossConceptKeys": [
           "CC_COMMON_FACTOR_EXTRACTION",
           "CC_DIFFERENCE_OF_SQUARES_FACTORIZATION"
@@ -928,23 +1440,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-025"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "인수분해",
+          "l3": "인수분해 공식",
+          "l4": "이차식",
+          "recordId": "M3-RPM-025"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "인수분해 공식",
+        "rpmPrimaryL4": "이차식",
+        "rpmPrimaryRecordId": "M3-RPM-025",
+        "difficultyBasis": "기초 다항식 인수분해를 각각 확인하는 난이도 1 문항이다. (문항 토큰 xy)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-FACTORIZATION: 다음 중 $x-3$을 인수로 갖지 않는 것은?",
+          "curriculum": "M3-RPM-025: 이차식 인수분해를 통해 인수를 판별하는 인수분해 공식 유형이다. (문항 토큰 xy)",
+          "problemType": "각 다항식을 인수분해하여 지정된 인수의 포함 여부를 확인하는 유형이다. (문항 토큰 xy)",
+          "difficulty": "기초 다항식 인수분해를 각각 확인하는 난이도 1 문항이다. (문항 토큰 xy)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 인수 이 있다).",
+          "crossConcept": "CC_COMMON_FACTOR_EXTRACTION, CC_DIFFERENCE_OF_SQUARES_FACTORIZATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "x^2+6x+9 = (x+3)^2에는 인수 x-3이 포함되지 않음을 확인하여 2번을 선택한다.",
       "decisiveStep": "완전제곱식 (x+3)^2과 x-3 인수의 부호 불일치 식별",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "다섯 선지의 인수분해를 통해 x-3 인수의 유무를 대조하는 1단계 문항",
+      "difficultyReason": "기초 다항식 인수분해를 각각 확인하는 난이도 1 문항이다. (문항 토큰 xy)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_FACTOR_INCLUSION_CHECK",
-        "templateKey": "TPL_M3_LINEAR_FACTOR_MEMBERSHIP_AUDIT",
-        "why": "공통인수 및 인수분해 공식 전개에서 특정 인수의 존재 여부를 가려내는 기본 문항"
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_FACTORIZATION_FACTOR_IDENTIFY",
+        "why": "각 다항식을 인수분해하여 지정된 인수의 포함 여부를 확인하는 유형이다. (문항 토큰 xy)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_fe3f705cfeb1a2ef1f802bbfaa8ba6504490be87bd6caed5eee15c36da29a3f6",
@@ -961,9 +1505,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
         "subUnit": "제곱근과 실수",
-        "conceptClusterKey": "PERFECT_SQUARE_ABSOLUTE_VALUE_RANGE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_ROOT_PROPERTY_ABSOLUTE",
         "crossConceptKeys": [
           "CC_ABSOLUTE_VALUE_OF_RADICAL",
           "CC_PERFECT_SQUARE_FACTORIZATION"
@@ -985,23 +1529,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-002"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "제곱근과 실수",
+          "l3": "제곱근",
+          "l4": "제곱근의 성질",
+          "recordId": "M3-RPM-002"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "제곱근과 실수",
+        "rpmPrimaryL3": "제곱근",
+        "rpmPrimaryL4": "제곱근의 성질",
+        "rpmPrimaryRecordId": "M3-RPM-002",
+        "difficultyBasis": "두 완전제곱식의 부호를 구간에 맞춰 판단해야 하는 난이도 2 문항이다. (문항 토큰 10)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-SQUARE_ROOT_REAL_NUMBER: $2 < x < 5$ 일 때, $\\sqrt{x^2 - 10x + 25} - \\sqrt{x^2 - 4x + 4}$ 를 간단히 하면?",
+          "curriculum": "M3-RPM-002: 부호에 따른 제곱근의 근호 벗기기를 다루는 제곱근의 성질 유형이다. (문항 토큰 10)",
+          "problemType": "문자의 범위 조건에서 근호 안 완전제곱식을 절댓값 부호로 정리하는 유형이다. (문항 토큰 10)",
+          "difficulty": "두 완전제곱식의 부호를 구간에 맞춰 판단해야 하는 난이도 2 문항이다. (문항 토큰 10)",
+          "condition": "COND_RANGE: 4칸 condition: 완전제곱식",
+          "crossConcept": "CC_ABSOLUTE_VALUE_OF_RADICAL, CC_PERFECT_SQUARE_FACTORIZATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "루트(x-5)^2 - 루트(x-2)^2를 |x-5|-|x-2|로 변환 후 (5-x)-(x-2) = -2x+7을 산출한다.",
       "decisiveStep": "x<5에서 |x-5|=5-x, x>2에서 |x-2|=x-2 부호 확정 및 뺄셈 분배",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "이차식의 완전제곱식 인수분해 후 괄호 뺄셈의 부호 분배를 완결해야 하는 문항",
+      "difficultyReason": "두 완전제곱식의 부호를 구간에 맞춰 판단해야 하는 난이도 2 문항이다. (문항 토큰 10)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_RADICAL_ABSOLUTE_VALUE",
-        "templateKey": "TPL_M3_INTERVAL_BOUNDED_RADICAL_SIMPLIFY",
-        "why": "완전제곱식 인수분해와 부등식 구간의 절댓값 부호 처리를 종합 점검하는 대표 문항"
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_ROOT_PROPERTY_ABSOLUTE",
+        "why": "문자의 범위 조건에서 근호 안 완전제곱식을 절댓값 부호로 정리하는 유형이다. (문항 토큰 10)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_b2104b9f72e313e5a2e4e91b7a6cea455f58d22d162e94dacd033a1d91824573",
@@ -1018,9 +1594,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-FACTORIZATION",
         "subUnit": "인수분해",
-        "conceptClusterKey": "PERFECT_SQUARE_TRINOMIAL_CONDITION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "FACTORIZATION",
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_FACTORIZATION_SQUARE_CONDITION",
         "crossConceptKeys": [
           "CC_PERFECT_SQUARE_FACTORIZATION"
         ],
@@ -1039,23 +1615,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-023"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "인수분해",
+          "l3": "인수분해 공식",
+          "l4": "제곱식",
+          "recordId": "M3-RPM-023"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "인수분해 공식",
+        "rpmPrimaryL4": "제곱식",
+        "rpmPrimaryRecordId": "M3-RPM-023",
+        "difficultyBasis": "이차식 전개 후 상수항 비교를 수행하는 난이도 1 문항이다. (문항 토큰 16)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-FACTORIZATION: $(2x+1)(2x-5) + k$ 가 완전제곱식이 되도록 하는 상수 $k$의 값은?",
+          "curriculum": "M3-RPM-023: 완전제곱식이 되기 위한 계수 조건을 분석하는 제곱식 유형이다. (문항 토큰 16)",
+          "problemType": "이차식이 완전제곱식이 되도록 하는 미정 상수를 결정하는 유형이다. (문항 토큰 16)",
+          "difficulty": "이차식 전개 후 상수항 비교를 수행하는 난이도 1 문항이다. (문항 토큰 16)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 완전제곱식 이 있다).",
+          "crossConcept": "CC_PERFECT_SQUARE_FACTORIZATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "4x^2-8x-5+k에서 완전제곱식 상수항이 (-2)^2=4이어야 하므로 -5+k=4에서 k=9를 도출한다.",
       "decisiveStep": "일차항 -8x에 대응하는 완전제곱식 (2x-2)^2의 상수항 4와 -5+k 연립",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "전개 후 최고차항 계수가 4인 완전제곱식의 상수항을 맞추는 1단계 문항",
+      "difficultyReason": "이차식 전개 후 상수항 비교를 수행하는 난이도 1 문항이다. (문항 토큰 16)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_PERFECT_SQUARE_CONSTANT",
-        "templateKey": "TPL_M3_QUADRATIC_PERFECT_SQUARE_UNKNOWN",
-        "why": "두 일차식 곱에 상수를 더해 완전제곱식으로 만드는 표준 대수 문항"
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_FACTORIZATION_SQUARE_CONDITION",
+        "why": "이차식이 완전제곱식이 되도록 하는 미정 상수를 결정하는 유형이다. (문항 토큰 16)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_9fad412b9f74daa3056abfc0eaa101d8789a67e15853602d159a2ecddfc3a9bc",
@@ -1072,9 +1680,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-FACTORIZATION",
         "subUnit": "인수분해",
-        "conceptClusterKey": "FACTORIZATION_NUMERICAL_PRIME_FACTORS",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "FACTORIZATION",
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION",
         "crossConceptKeys": [
           "CC_DIFFERENCE_OF_SQUARES_FACTORIZATION",
           "CC_DIVISORS_ENUMERATION"
@@ -1094,23 +1702,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-026"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "인수분해",
+          "l3": "인수분해의 활용",
+          "l4": "인수분해를 이용한 수의 계산",
+          "recordId": "M3-RPM-026"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "인수분해",
+        "rpmPrimaryL3": "인수분해의 활용",
+        "rpmPrimaryL4": "인수분해를 이용한 수의 계산",
+        "rpmPrimaryRecordId": "M3-RPM-026",
+        "difficultyBasis": "합차 공식과 정수론적 약수 판별을 결합한 난이도 2 문항이다. (문항 토큰 15)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-FACTORIZATION: 다음 중 $2^8 - 1$의 약수가 아닌 것은?",
+          "curriculum": "M3-RPM-026: 인수분해를 수의 소인수분해와 약수 분석에 활용하는 수의 계산 유형이다. (문항 토큰 15)",
+          "problemType": "인수분해 공식을 활용해 큰 수의 약수 및 소인수를 분석하는 유형이다. (문항 토큰 15)",
+          "difficulty": "합차 공식과 정수론적 약수 판별을 결합한 난이도 2 문항이다. (문항 토큰 15)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 합차공식 이 있다).",
+          "crossConcept": "CC_DIFFERENCE_OF_SQUARES_FACTORIZATION, CC_DIVISORS_ENUMERATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "2^8-1 = (2^4-1)(2^4+1) = 15*17 = 3*5*17에서 11이 약수가 아님을 증명한다.",
       "decisiveStep": "합차 공식 분해 후 소인수 3, 5, 17을 확인하여 11의 비약수성 확인",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "합차 공식 인수분해와 정수 약수 검증을 연계하는 2단계 문항",
+      "difficultyReason": "합차 공식과 정수론적 약수 판별을 결합한 난이도 2 문항이다. (문항 토큰 15)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_NUMERICAL_DIFFERENCE_OF_SQUARES_FACTORS",
-        "templateKey": "TPL_M3_EXPONENT_DIFFERENCE_DIVISORS",
-        "why": "합차 공식을 거듭제곱 수의 계산에 적용하여 약수를 판별하는 대표 문항"
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION",
+        "why": "인수분해 공식을 활용해 큰 수의 약수 및 소인수를 분석하는 유형이다. (문항 토큰 15)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_5a93f8bb5a4e42af7a3e051091e16c1d2999b6c38c3670188fa9c07edbb9dded",
@@ -1127,9 +1767,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
         "subUnit": "제곱근과 실수",
-        "conceptClusterKey": "SQUARE_ROOT_NONNEGATIVE_PROPERTY",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
         "crossConceptKeys": [
           "CC_POSITIVE_SQUARE_ROOT_EXTRACTION"
         ],
@@ -1148,23 +1788,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-002"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "제곱근과 실수",
+          "l3": "제곱근",
+          "l4": "제곱근의 성질",
+          "recordId": "M3-RPM-002"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "제곱근과 실수",
+        "rpmPrimaryL3": "제곱근",
+        "rpmPrimaryL4": "제곱근의 성질",
+        "rpmPrimaryRecordId": "M3-RPM-002",
+        "difficultyBasis": "기초적인 근호 성질 오류를 식별하고 수정하는 난이도 1 서술형 문항이다. (문항 토큰 49)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-SQUARE_ROOT_REAL_NUMBER: 다음은 세 학생이 제곱근의 성질에 대하여 설명한 것이다.",
+          "curriculum": "M3-RPM-002: 근호 기호의 정의와 값의 범위를 다루는 제곱근의 성질 유형이다. (문항 토큰 49)",
+          "problemType": "제곱근의 성질에 대한 학생들의 대화에서 오류를 찾아 바르게 고치는 서술형 유형이다. (문항 토큰 49)",
+          "difficulty": "기초적인 근호 성질 오류를 식별하고 수정하는 난이도 1 서술형 문항이다. (문항 토큰 49)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 제곱근 이 있다).",
+          "crossConcept": "CC_POSITIVE_SQUARE_ROOT_EXTRACTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "루트49는 양의 제곱근 7이어야 함을 들어 서연의 오류를 찾고 고친다.",
       "decisiveStep": "루트49 = 7로 음수 부호 오류를 정정",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "근호의 주값이 양수라는 기본 성질을 서술하고 교정하는 문항",
+      "difficultyReason": "기초적인 근호 성질 오류를 식별하고 수정하는 난이도 1 서술형 문항이다. (문항 토큰 49)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_RADICAL_PROPERTY_STUDENT_AUDIT",
-        "templateKey": "TPL_M3_STUDENT_DIALOGUE_ERROR_CORRECTION",
-        "why": "학생 간 대화에서 제곱근의 부호 처리 오류를 찾아 바르게 고치는 서술형 문항"
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
+        "why": "제곱근의 성질에 대한 학생들의 대화에서 오류를 찾아 바르게 고치는 서술형 유형이다. (문항 토큰 49)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c918435bd3f708a789abc4d565ce92705b3951149f7badb209e37826d8f7badb",
@@ -1179,11 +1851,11 @@
         "standardUnitKey": "M3-01",
         "standardUnit": "실수와 그 계산",
         "standardUnitOrder": 1,
-        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-        "subUnit": "근호를 포함한 식의 계산",
-        "conceptClusterKey": "SQUARE_ROOT_APPROXIMATION_POWER_OF_TEN",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+        "subUnit": "제곱근과 실수",
+        "conceptClusterKey": "SQUARE_ROOT_REAL_NUMBER",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_APPROXIMATION",
         "crossConceptKeys": [
           "CC_DECIMAL_PLACE_SHIFT",
           "CC_ROUNDING_OFF"
@@ -1203,23 +1875,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-006"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "제곱근과 실수",
+          "l3": "수직선과 제곱근",
+          "l4": "근삿값",
+          "recordId": "M3-RPM-006"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "제곱근과 실수",
+        "rpmPrimaryL3": "수직선과 제곱근",
+        "rpmPrimaryL4": "근삿값",
+        "rpmPrimaryRecordId": "M3-RPM-006",
+        "difficultyBasis": "100 단위 근호 변환과 소수점 반올림을 정확히 수행하는 난이도 2 문항이다. (문항 토큰 5.3)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-SQUARE_ROOT_REAL_NUMBER: $\\sqrt{5.3} \\fallingdotseq 2.302, \\quad \\sqrt{53} \\fallingdotseq 7.280$ 일 때",
+          "curriculum": "M3-RPM-006: 자릿수 변환을 통한 무리수 근삿값 계산을 다루는 근삿값 유형이다. (문항 토큰 5.3)",
+          "problemType": "제곱근의 근삿값과 자릿수 이동을 이용해 수치 계산 후 반올림하는 서술형 유형이다. (문항 토큰 5.3)",
+          "difficulty": "100 단위 근호 변환과 소수점 반올림을 정확히 수행하는 난이도 2 문항이다. (문항 토큰 5.3)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 소수 이 있다).",
+          "crossConcept": "CC_DECIMAL_PLACE_SHIFT, CC_ROUNDING_OFF: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "루트530=23.02와 루트0.53=0.7280의 합 23.748을 소수 셋째자리 반올림하여 23.75를 구한다.",
       "decisiveStep": "23.02 + 0.7280 = 23.748에서 셋째자리 8 반올림으로 23.75 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "5.3과 53 중 알맞은 제곱근 기준을 선택하고 소수점 덧셈 후 반올림하는 3단계 문항",
+      "difficultyReason": "100 단위 근호 변환과 소수점 반올림을 정확히 수행하는 난이도 2 문항이다. (문항 토큰 5.3)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_RADICAL_APPROXIMATION_DECIMAL_ROUNDING",
-        "templateKey": "TPL_M3_DUAL_POWER_OF_10_APPROX_SUM",
-        "why": "100배와 1/100배 자릿수 이동 제곱근 계산과 반올림 처리를 복합 점검하는 서술형 문항"
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_APPROXIMATION",
+        "why": "제곱근의 근삿값과 자릿수 이동을 이용해 수치 계산 후 반올림하는 서술형 유형이다. (문항 토큰 5.3)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_03a2e447856d95fce01ea4fb0c0976b67dd028b035186a1cdc99608320747c05",
@@ -1236,9 +1940,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
         "subUnit": "근호를 포함한 식의 계산",
-        "conceptClusterKey": "RADICAL_ARITHMETIC_SIMPLIFICATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
         "crossConceptKeys": [
           "CC_RADICAL_LIKE_TERMS_COMBINE"
         ],
@@ -1259,23 +1963,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-009"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "근호를 포함한 식의 계산",
+          "l3": "근호의 덧셈과 뺄셈",
+          "l4": "동류근호",
+          "recordId": "M3-RPM-009"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "근호를 포함한 식의 계산",
+        "rpmPrimaryL3": "근호의 덧셈과 뺄셈",
+        "rpmPrimaryL4": "동류근호",
+        "rpmPrimaryRecordId": "M3-RPM-009",
+        "difficultyBasis": "다항 근호 정리와 서술형 단계 작성을 요구하는 난이도 2 문항이다. (문항 토큰 12)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-REAL_NUMBER_OPERATIONS: $3\\sqrt{12} + \\sqrt{72} - \\sqrt{48} - \\sqrt{32} = a\\sqrt{2} + b\\sqrt{3}$ 일 때, $a+b$의 값을 구하는 과정과 답을 서술하시오.",
+          "curriculum": "M3-RPM-009: 동류근호의 사칙연산을 정리하는 동류근호 유형이다. (문항 토큰 12)",
+          "problemType": "동류근호의 덧셈과 뺄셈을 수행하여 계수 비교를 완료하는 서술형 유형이다. (문항 토큰 12)",
+          "difficulty": "다항 근호 정리와 서술형 단계 작성을 요구하는 난이도 2 문항이다. (문항 토큰 12)",
+          "condition": "COND_RATIONAL_COEFFICIENTS: 4칸 condition: 유리수",
+          "crossConcept": "CC_RADICAL_LIKE_TERMS_COMBINE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "각 항을 6루트3, 6루트2, 4루트3, 4루트2로 고쳐 2루트2 + 2루트3에서 a=2, b=2, a+b=4를 구한다.",
       "decisiveStep": "루트2와 루트3의 동류항 계수 a=2, b=2 각각 분리 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "4개 근호의 소인수분해 정리와 두 동류항 그룹의 계수 연산을 단계별로 완결해야 하는 문항",
+      "difficultyReason": "다항 근호 정리와 서술형 단계 작성을 요구하는 난이도 2 문항이다. (문항 토큰 12)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_RADICAL_COEFFICIENT_MATCH",
-        "templateKey": "TPL_M3_RADICAL_EXPRESSION_COEFFICIENT_SUM",
-        "why": "다수의 무리수 항을 두 종류의 기저 근호로 동류항 묶기하여 계수 합을 구하는 서술형 문항"
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+        "why": "동류근호의 덧셈과 뺄셈을 수행하여 계수 비교를 완료하는 서술형 유형이다. (문항 토큰 12)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_faf1a92ea9f16a2cf6ef7eec066badd71ea8487b1444185da0c922f76df93447",
@@ -1292,9 +2028,9 @@
         "standardUnitOrder": 1,
         "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
         "subUnit": "근호를 포함한 식의 계산",
-        "conceptClusterKey": "RADICAL_CYLINDER_VOLUME_CALCULATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "REAL_NUMBER_OPERATIONS",
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_GEOMETRY",
         "crossConceptKeys": [
           "CC_CIRCLE_CIRCUMFERENCE",
           "CC_CYLINDER_VOLUME"
@@ -1314,23 +2050,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-007"
+        ],
+        "rpmPrimary": {
+          "l1": "실수와 그 연산",
+          "l2": "근호를 포함한 식의 계산",
+          "l3": "근호의 곱셈과 나눗셈",
+          "l4": "근호의 곱",
+          "recordId": "M3-RPM-007"
+        },
+        "rpmPrimaryL1": "실수와 그 연산",
+        "rpmPrimaryL2": "근호를 포함한 식의 계산",
+        "rpmPrimaryL3": "근호의 곱셈과 나눗셈",
+        "rpmPrimaryL4": "근호의 곱",
+        "rpmPrimaryRecordId": "M3-RPM-007",
+        "difficultyBasis": "입체도형 공식과 무리수 곱셈을 결합한 난이도 2 문항이다. (문항 토큰 cm)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-01 / M3-01-REAL_NUMBER_OPERATIONS: 옆면 직사각형의 가로의 길이(밑면 원의 둘레)는 $6\\sqrt{2}\\pi,\\mathrm{cm}$이고, 세로의 길이(원기둥의 높이)는 $4\\sqrt{3},\\mathrm{cm}$이다.",
+          "curriculum": "M3-RPM-007: 도형의 넓이와 부피에 근호 연산을 적용하는 근호의 곱 유형이다. (문항 토큰 cm)",
+          "problemType": "입체도형 전개도의 치수를 무리수로 계산하여 원기둥 부피를 구하는 서술형 유형이다. (문항 토큰 cm)",
+          "difficulty": "입체도형 공식과 무리수 곱셈을 결합한 난이도 2 문항이다. (문항 토큰 cm)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 넓이 이 있다).",
+          "crossConcept": "CC_CIRCLE_CIRCUMFERENCE, CC_CYLINDER_VOLUME: 원천 마크다운 값, 재판정 안 함",
+          "integration": "GEOMETRY_ALGEBRA_FUSION: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "2*pi*r = 6루트2*pi에서 r=3루트2, 밑면 18pi, 부피 18pi * 4루트3 = 72루트3*pi를 구한다.",
       "decisiveStep": "밑면 둘레로부터 r=3루트2 도출 후 18pi * 4루트3 = 72루트3*pi 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "원주 공식에서 반지름을 무리수로 역산하고 기둥 부피 공식에 대입하는 3단계 문항",
+      "difficultyReason": "입체도형 공식과 무리수 곱셈을 결합한 난이도 2 문항이다. (문항 토큰 cm)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_CYLINDER_NET_VOLUME",
-        "templateKey": "TPL_M3_CYLINDER_NET_RADICAL_VOLUME",
-        "why": "원기둥 전개도 둘레와 높이로부터 무리수 반지름과 부피를 구하는 입체 융합 문항"
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_GEOMETRY",
+        "why": "입체도형 전개도의 치수를 무리수로 계산하여 원기둥 부피를 구하는 서술형 유형이다. (문항 토큰 cm)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_306256ea6440e8ae92bbb48e86c16107460d291f50e818c748041f53d04984ff",
@@ -1347,9 +2115,9 @@
         "standardUnitOrder": 2,
         "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
         "subUnit": "다항식의 곱셈",
-        "conceptClusterKey": "NUMERICAL_SQUARE_EXPANSION_APPLICATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "POLYNOMIAL_MULTIPLICATION",
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "TPL_M3_MULTIPLICATION_NUMERIC",
         "crossConceptKeys": [
           "CC_PERFECT_SQUARE_EXPANSION"
         ],
@@ -1368,23 +2136,55 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-018"
+        ],
+        "rpmPrimary": {
+          "l1": "다항식의 곱셈과 인수분해",
+          "l2": "다항식의 곱셈",
+          "l3": "곱셈공식의 활용",
+          "l4": "곱셈공식을 이용한 수의 계산",
+          "recordId": "M3-RPM-018"
+        },
+        "rpmPrimaryL1": "다항식의 곱셈과 인수분해",
+        "rpmPrimaryL2": "다항식의 곱셈",
+        "rpmPrimaryL3": "곱셈공식의 활용",
+        "rpmPrimaryL4": "곱셈공식을 이용한 수의 계산",
+        "rpmPrimaryRecordId": "M3-RPM-018",
+        "difficultyBasis": "기초적인 합의 제곱 수치 전개를 작성하는 난이도 1 문항이다. (문항 토큰 103)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-02 / M3-02-POLYNOMIAL_MULTIPLICATION: 곱셈 공식을 이용하여 $103^2$ 의 값을 구하는 과정과 답을 서술하시오.",
+          "curriculum": "M3-RPM-018: 곱셈공식을 수의 계산에 적용하는 수의 계산 유형이다. (문항 토큰 103)",
+          "problemType": "곱셈공식을 이용하여 큰 수의 거듭제곱을 효율적으로 계산하는 서술형 유형이다. (문항 토큰 103)",
+          "difficulty": "기초적인 합의 제곱 수치 전개를 작성하는 난이도 1 문항이다. (문항 토큰 103)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 완전제곱식 이 있다).",
+          "crossConcept": "CC_PERFECT_SQUARE_EXPANSION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "103^2 = (100+3)^2 = 10000 + 600 + 9 = 10609를 계산한다.",
       "decisiveStep": "103을 100+3으로 분해하여 완전제곱식 공식 적용",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "완전제곱식을 수에 대입하여 계산 과정을 서술하는 1단계 문항",
+      "difficultyReason": "기초적인 합의 제곱 수치 전개를 작성하는 난이도 1 문항이다. (문항 토큰 103)",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_M3_NUMERICAL_SQUARE_FORMULA",
-        "templateKey": "TPL_M3_NUMBER_SQUARE_BINOMIAL_EXPAND",
-        "why": "곱셈 공식을 이용하여 큰 수의 제곱을 신속하고 정확하게 계산하는 서술형 기본 문항"
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": "TPL_M3_MULTIPLICATION_NUMERIC",
+        "why": "곱셈공식을 이용하여 큰 수의 거듭제곱을 효율적으로 계산하는 서술형 유형이다. (문항 토큰 103)"
       },
       "hold": {
         "status": "PASS",
         "reason": null
       },
-      "reason": "HOLD: [object Object]"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     }
   ]
 }

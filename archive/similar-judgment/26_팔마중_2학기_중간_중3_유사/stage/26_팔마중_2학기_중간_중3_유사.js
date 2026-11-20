@@ -17,7 +17,7 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "직각삼각형 세 변으로 sin A × tan B 계산",
+    "conceptClusterKey": "TRIG_RATIO",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -39,12 +39,17 @@ window.questionBank = [
     "points": 3,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
     "crossConceptKeys": [
       "CC_TRIG_RATIO_DEFINITIONS"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "삼각비",
+    "rpmPrimaryL2": "삼각비",
+    "rpmPrimaryL3": "삼각비의 뜻",
+    "rpmPrimaryL4": "sin·cos·tan",
+    "rpmPrimaryRecordId": "M3-RPM-055",
     "sourceQid": 1,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q01-problem.plan.json"
@@ -64,7 +69,7 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "여각 관계 sin B + cos A 계산",
+    "conceptClusterKey": "TRIG_RATIO",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -86,13 +91,18 @@ window.questionBank = [
     "points": 3,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
     "crossConceptKeys": [
       "CC_TRIG_RATIO_DEFINITIONS",
       "CC_COMPLEMENTARY_ANGLE_TRIG"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "삼각비",
+    "rpmPrimaryL2": "삼각비",
+    "rpmPrimaryL3": "삼각비의 뜻",
+    "rpmPrimaryL4": "sin·cos·tan",
+    "rpmPrimaryRecordId": "M3-RPM-055",
     "sourceQid": 2,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q02-problem.plan.json"
@@ -112,7 +122,7 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "탄젠트 값으로 직각삼각형을 그려 sin×cos 구하기",
+    "conceptClusterKey": "TRIG_RATIO",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -134,12 +144,17 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_TRIG_RATIO",
-    "templateKey": "",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
     "crossConceptKeys": [
       "CC_TRIG_RATIO_DEFINITIONS"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "삼각비",
+    "rpmPrimaryL2": "삼각비",
+    "rpmPrimaryL3": "삼각비의 뜻",
+    "rpmPrimaryL4": "삼각비의 관계",
+    "rpmPrimaryRecordId": "M3-RPM-056",
     "sourceQid": 3,
     "variationType": "NUMERIC"
   },
@@ -158,7 +173,7 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "특수각 역추적 후 sin(x+y) 계산",
+    "conceptClusterKey": "TRIG_RATIO",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -179,8 +194,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
     "crossConceptKeys": [
       "CC_SPECIAL_ANGLES",
       "CC_TRIG_TABLE_LOOKUP"
@@ -189,6 +204,11 @@ window.questionBank = [
       "COND_RANGE"
     ],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "삼각비",
+    "rpmPrimaryL2": "삼각비",
+    "rpmPrimaryL3": "특수각의 삼각비",
+    "rpmPrimaryL4": "특수각 계산",
+    "rpmPrimaryRecordId": "M3-RPM-058",
     "sourceQid": 4,
     "variationType": "NUMERIC"
   },
@@ -207,7 +227,7 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "삼각형 내각 비와 특수각 삼각비의 연비",
+    "conceptClusterKey": "TRIG_RATIO",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -228,14 +248,19 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
     "crossConceptKeys": [
       "CC_SPECIAL_ANGLES",
       "CC_RATIO"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "삼각비",
+    "rpmPrimaryL2": "삼각비",
+    "rpmPrimaryL3": "특수각의 삼각비",
+    "rpmPrimaryL4": "특수각 계산",
+    "rpmPrimaryRecordId": "M3-RPM-058",
     "sourceQid": 5,
     "variationType": "NUMERIC"
   },
@@ -254,7 +279,7 @@ window.questionBank = [
     "subUnit": "삼각비",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "사분원 삼각비와 여각 관계 상쇄",
+    "conceptClusterKey": "TRIG_RATIO",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -275,14 +300,19 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
     "crossConceptKeys": [
       "CC_UNIT_QUARTER_CIRCLE",
       "CC_COMPLEMENTARY_ANGLE_TRIG"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "삼각비",
+    "rpmPrimaryL2": "삼각비",
+    "rpmPrimaryL3": "삼각비의 뜻",
+    "rpmPrimaryL4": "sin·cos·tan",
+    "rpmPrimaryRecordId": "M3-RPM-055",
     "sourceQid": 6,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q06-problem.plan.json"
@@ -302,7 +332,7 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "올려본각과 눈높이를 포함한 나무 높이 측정",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -324,13 +354,18 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "crossConceptKeys": [
       "CC_ELEVATION_ANGLE",
       "CC_TRIG_TABLE_LOOKUP"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "삼각비",
+    "rpmPrimaryL2": "삼각비의 활용",
+    "rpmPrimaryL3": "측정 문제",
+    "rpmPrimaryL4": "앙각·부각",
+    "rpmPrimaryRecordId": "M3-RPM-064",
     "sourceQid": 7,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q07-problem.plan.json"
@@ -350,7 +385,7 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "두 변과 끼인각 45°에서 대변 길이 구하기",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -372,13 +407,18 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 3,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "crossConceptKeys": [
       "CC_AUXILIARY_ALTITUDE",
       "CC_SPECIAL_ANGLES"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "삼각비",
+    "rpmPrimaryL2": "삼각비",
+    "rpmPrimaryL3": "삼각비와 길이",
+    "rpmPrimaryL4": "직각삼각형의 변",
+    "rpmPrimaryRecordId": "M3-RPM-059",
     "sourceQid": 8,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q08-problem.plan.json"
@@ -398,7 +438,7 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "둔각삼각형 넓이에서 둔각 크기 역산",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -420,13 +460,18 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "crossConceptKeys": [
       "CC_TRIANGLE_AREA_TRIG",
       "CC_OBLIQUE_TRIANGLE_MEASURE"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "삼각비",
+    "rpmPrimaryL2": "삼각비의 활용",
+    "rpmPrimaryL3": "평면도형",
+    "rpmPrimaryL4": "삼각형의 높이·넓이",
+    "rpmPrimaryRecordId": "M3-RPM-061",
     "sourceQid": 9,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q09-problem.plan.json"
@@ -446,7 +491,7 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "특수각 직각삼각형의 수선과 부분 삼각형 넓이",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -468,13 +513,18 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 3,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "crossConceptKeys": [
       "CC_SPECIAL_ANGLES",
       "CC_TRIANGLE_AREA_TRIG"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "삼각비",
+    "rpmPrimaryL2": "삼각비의 활용",
+    "rpmPrimaryL3": "복합도형",
+    "rpmPrimaryL4": "보조선 활용",
+    "rpmPrimaryRecordId": "M3-RPM-065",
     "sourceQid": 10,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q10-problem.plan.json"
@@ -494,7 +544,7 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "두 대각선과 끼인각으로 사각형 넓이 구하기",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -516,20 +566,25 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "crossConceptKeys": [
       "CC_QUADRILATERAL_AREA_TRIG",
       "CC_SPECIAL_ANGLES"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "삼각비",
+    "rpmPrimaryL2": "삼각비의 활용",
+    "rpmPrimaryL3": "평면도형",
+    "rpmPrimaryL4": "다각형의 길이·넓이",
+    "rpmPrimaryRecordId": "M3-RPM-062",
     "sourceQid": 11,
     "variationType": "NUMERIC"
   },
   {
     "id": 12,
-    "category": "삼각비의 활용",
-    "originalCategory": "삼각비의 활용",
+    "category": "삼각비",
+    "originalCategory": "삼각비",
     "standardCourse": "중3",
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -537,16 +592,16 @@ window.questionBank = [
     "standardUnitKey": "M3-05",
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
-    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-    "subUnit": "삼각비의 활용",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "subUnit": "삼각비",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "직사각형 대각선 수선 닮음과 cos x",
+    "conceptClusterKey": "TRIG_RATIO",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "삼각비의 활용"
+      "삼각비"
     ],
     "wide": false,
     "content": "다음 직사각형 $\\text{ABCD}$에서 대각선 $\\text{AC}$에 꼭짓점 $\\text{D}$에서 내린 수선의 발을 $\\text{E}$라 하자. $\\overline{\\text{AE}} = 9$, $\\overline{\\text{EC}} = 4$이고 $\\angle\\text{ACB} = x^\\circ$일 때, $\\cos x^\\circ$의 값은? (5점)",
@@ -562,14 +617,19 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 3,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_TRIG_RATIO",
+    "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
     "crossConceptKeys": [
       "CC_TRIANGLE_SIMILARITY",
       "CC_TRIG_RATIO_DEFINITIONS"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "삼각비",
+    "rpmPrimaryL2": "삼각비의 활용",
+    "rpmPrimaryL3": "복합도형",
+    "rpmPrimaryL4": "보조선 활용",
+    "rpmPrimaryRecordId": "M3-RPM-065",
     "sourceQid": 12,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q12-problem.plan.json"
@@ -589,7 +649,7 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "종이띠 접기 이등변삼각형과 삼각비 넓이",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -610,14 +670,19 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 3,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "crossConceptKeys": [
       "CC_PAPER_FOLDING_SIMILARITY",
       "CC_SPECIAL_ANGLES"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "삼각비",
+    "rpmPrimaryL2": "삼각비의 활용",
+    "rpmPrimaryL3": "평면도형",
+    "rpmPrimaryL4": "삼각형의 높이·넓이",
+    "rpmPrimaryRecordId": "M3-RPM-061",
     "sourceQid": 13,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q13-problem.plan.json"
@@ -637,7 +702,7 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "현의 성질과 접선 직각삼각형 피타고라스",
+    "conceptClusterKey": "CIRCLE_LINE",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -658,14 +723,19 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD",
     "crossConceptKeys": [
       "CC_EQUAL_CHORDS_EQUAL_DISTANCE",
       "CC_CIRCLE_TANGENT_PROPERTY"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "원의 성질",
+    "rpmPrimaryL2": "원과 직선",
+    "rpmPrimaryL3": "원의 접선",
+    "rpmPrimaryL4": "접선 조건으로 길이 구하기",
+    "rpmPrimaryRecordId": "M3-RPM-072",
     "sourceQid": 14,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q14-problem.plan.json"
@@ -685,7 +755,7 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "지름과 수직인 현의 길이",
+    "conceptClusterKey": "CIRCLE_LINE",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -706,13 +776,18 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M3_CIRCLE_CHORD",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_CIRCLE_CHORD_PERP_BISECTOR"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "원의 성질",
+    "rpmPrimaryL2": "원과 직선",
+    "rpmPrimaryL3": "원의 중심과 현",
+    "rpmPrimaryL4": "중심에서 현에 내린 수선",
+    "rpmPrimaryRecordId": "M3-RPM-067",
     "sourceQid": 15,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q15-problem.plan.json"
@@ -732,7 +807,7 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "중심거리가 같은 두 현의 중심각과 원주각",
+    "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -754,12 +829,17 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 3,
     "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-    "templateKey": "",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
     "crossConceptKeys": [
       "CC_EQUAL_CHORDS_EQUAL_DISTANCE"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "원의 성질",
+    "rpmPrimaryL2": "원주각",
+    "rpmPrimaryL3": "원주각과 중심각",
+    "rpmPrimaryL4": "중심각과 원주각",
+    "rpmPrimaryRecordId": "M3-RPM-075",
     "sourceQid": 16,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q16-problem.plan.json"
@@ -779,7 +859,7 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "두 접선의 길이 같음과 삼각형 넓이",
+    "conceptClusterKey": "CIRCLE_LINE",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -801,13 +881,18 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_CIRCLE_TANGENT",
-    "templateKey": "",
+    "templateKey": "TPL_CIRCLE_TANGENT_EQUAL_LENGTH",
     "crossConceptKeys": [
       "CC_CIRCLE_TANGENT_LENGTH",
       "CC_TRIANGLE_AREA_TRIG"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "원의 성질",
+    "rpmPrimaryL2": "원과 직선",
+    "rpmPrimaryL3": "원의 접선",
+    "rpmPrimaryL4": "한 점에서 그은 두 접선",
+    "rpmPrimaryRecordId": "M3-RPM-071",
     "sourceQid": 17,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q17-problem.plan.json"
@@ -827,7 +912,7 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "원에 외접하는 사각형의 대변 합 성질",
+    "conceptClusterKey": "CIRCLE_LINE",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -856,6 +941,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "원의 성질",
+    "rpmPrimaryL2": "원과 직선",
+    "rpmPrimaryL3": "원의 접선",
+    "rpmPrimaryL4": "접선 조건으로 길이 구하기",
+    "rpmPrimaryRecordId": "M3-RPM-072",
     "sourceQid": 18,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q18-problem.plan.json"
@@ -875,7 +965,7 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "반원에 외접하는 직각사다리꼴과 반원의 넓이",
+    "conceptClusterKey": "CIRCLE_LINE",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -897,13 +987,18 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 3,
     "problemTypeKey": "PT_CIRCLE_TANGENT",
-    "templateKey": "",
+    "templateKey": "TPL_CIRCLE_TANGENT_EQUAL_LENGTH",
     "crossConceptKeys": [
       "CC_CIRCLE_TANGENT_LENGTH",
       "CC_AUXILIARY_ALTITUDE"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "원의 성질",
+    "rpmPrimaryL2": "원과 직선",
+    "rpmPrimaryL3": "원의 접선",
+    "rpmPrimaryL4": "접선 조건으로 길이 구하기",
+    "rpmPrimaryRecordId": "M3-RPM-072",
     "sourceQid": 19,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q19-problem.plan.json"
@@ -923,7 +1018,7 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "동심원에서 작은 원에 접하는 수직 두 현의 교점 거리",
+    "conceptClusterKey": "CIRCLE_LINE",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -944,7 +1039,7 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 4,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M3_CIRCLE_CHORD",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_CIRCLE_CHORD_PERP_BISECTOR",
@@ -952,6 +1047,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "원의 성질",
+    "rpmPrimaryL2": "원과 직선",
+    "rpmPrimaryL3": "원의 중심과 현",
+    "rpmPrimaryL4": "중심에서 현에 내린 수선",
+    "rpmPrimaryRecordId": "M3-RPM-067",
     "sourceQid": 20,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q20-problem.plan.json"
@@ -971,7 +1071,7 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "정육면체 공간대각선과 삼각비",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -987,12 +1087,17 @@ window.questionBank = [
     "points": 5,
     "difficultyBucket": 3,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "",
+    "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
     "crossConceptKeys": [
       "CC_TRIG_RATIO_DEFINITIONS"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "삼각비",
+    "rpmPrimaryL2": "삼각비의 활용",
+    "rpmPrimaryL3": "복합도형",
+    "rpmPrimaryL4": "보조선 활용",
+    "rpmPrimaryRecordId": "M3-RPM-065",
     "sourceQid": 21,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q21-problem.plan.json"
@@ -1012,7 +1117,7 @@ window.questionBank = [
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "두 지점의 올려본각(30°, 45°)으로 높이 구하기",
+    "conceptClusterKey": "TRIG_RATIO_APPLICATION",
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -1028,13 +1133,18 @@ window.questionBank = [
     "points": 5,
     "difficultyBucket": 4,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-    "templateKey": "",
+    "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
     "crossConceptKeys": [
       "CC_ELEVATION_ANGLE",
       "CC_DENOMINATOR_RATIONALIZATION_CONJUGATE"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "삼각비",
+    "rpmPrimaryL2": "삼각비의 활용",
+    "rpmPrimaryL3": "측정 문제",
+    "rpmPrimaryL4": "앙각·부각",
+    "rpmPrimaryRecordId": "M3-RPM-064",
     "sourceQid": 22,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q22-problem.plan.json"
@@ -1054,7 +1164,7 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "현의 길이와 활꼴 높이로 원의 반지름 구하기",
+    "conceptClusterKey": "CIRCLE_LINE",
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -1069,13 +1179,18 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 2,
-    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "problemTypeKey": "PT_M3_CIRCLE_CHORD",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_CIRCLE_CHORD_PERP_BISECTOR"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "원의 성질",
+    "rpmPrimaryL2": "원과 직선",
+    "rpmPrimaryL3": "원의 중심과 현",
+    "rpmPrimaryL4": "중심에서 현에 내린 수선",
+    "rpmPrimaryRecordId": "M3-RPM-067",
     "sourceQid": 23,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q23-problem.plan.json"
@@ -1095,7 +1210,7 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "직사각형 내접원 접선과 사다리꼴 길이 방정식",
+    "conceptClusterKey": "CIRCLE_LINE",
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -1111,13 +1226,18 @@ window.questionBank = [
     "points": 5,
     "difficultyBucket": 4,
     "problemTypeKey": "PT_CIRCLE_TANGENT",
-    "templateKey": "",
+    "templateKey": "TPL_CIRCLE_TANGENT_EQUAL_LENGTH",
     "crossConceptKeys": [
       "CC_RECTANGLE_INSCRIBED_CIRCLE_TANGENT",
       "CC_CIRCLE_TANGENT_LENGTH"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "원의 성질",
+    "rpmPrimaryL2": "원과 직선",
+    "rpmPrimaryL3": "원의 접선",
+    "rpmPrimaryL4": "접선 조건으로 길이 구하기",
+    "rpmPrimaryRecordId": "M3-RPM-072",
     "sourceQid": 24,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사_plans/q24-problem.plan.json"

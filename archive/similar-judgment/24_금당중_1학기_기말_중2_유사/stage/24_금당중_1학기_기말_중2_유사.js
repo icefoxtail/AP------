@@ -17,7 +17,7 @@ window.questionBank = [
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-01-SIMPLIFY_THEN_SUBSTITUTE_POLY",
+    "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -38,13 +38,18 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+    "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
     "crossConceptKeys": [
       "CC_ALGEBRAIC_SIMPLIFICATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "다항식의 계산",
+    "rpmPrimaryL3": "다항식의 덧셈과 뺄셈",
+    "rpmPrimaryL4": "동류항 정리",
+    "rpmPrimaryRecordId": "M2-RPM-012",
     "sourceQid": 1,
     "variationType": "NUMERIC"
   },
@@ -63,7 +68,7 @@ window.questionBank = [
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-01-ERROR_CORRECTION_POLYNOMIAL",
+    "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -85,13 +90,18 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
-    "templateKey": "",
+    "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
     "crossConceptKeys": [
       "CC_ERROR_CORRECTION",
       "CC_POLYNOMIAL_SUBTRACTION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "다항식의 계산",
+    "rpmPrimaryL3": "다항식의 덧셈과 뺄셈",
+    "rpmPrimaryL4": "동류항 정리",
+    "rpmPrimaryRecordId": "M2-RPM-012",
     "sourceQid": 2,
     "variationType": "NUMERIC"
   },
@@ -110,7 +120,7 @@ window.questionBank = [
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-01-NESTED_BRACKETS_COEFF_PROD",
+    "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -131,13 +141,18 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+    "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
     "crossConceptKeys": [
       "CC_ALGEBRAIC_SIMPLIFICATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "다항식의 계산",
+    "rpmPrimaryL3": "다항식의 덧셈과 뺄셈",
+    "rpmPrimaryL4": "동류항 정리",
+    "rpmPrimaryRecordId": "M2-RPM-012",
     "sourceQid": 3,
     "variationType": "NUMERIC"
   },
@@ -156,7 +171,7 @@ window.questionBank = [
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-01-DISTRIBUTIVE_COEFF_SUM",
+    "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -177,13 +192,18 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+    "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
     "crossConceptKeys": [
       "CC_ALGEBRAIC_SIMPLIFICATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "다항식의 계산",
+    "rpmPrimaryL3": "단항식과 다항식의 곱셈·나눗셈",
+    "rpmPrimaryL4": "분배법칙",
+    "rpmPrimaryRecordId": "M2-RPM-014",
     "sourceQid": 4,
     "variationType": "NUMERIC"
   },
@@ -202,7 +222,7 @@ window.questionBank = [
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-01-POLY_DIV_BY_MONOMIAL_DIFF",
+    "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -223,13 +243,18 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+    "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
     "crossConceptKeys": [
       "CC_POLYNOMIAL_DIVISION_BY_MONOMIAL"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "다항식의 계산",
+    "rpmPrimaryL3": "단항식과 다항식의 곱셈·나눗셈",
+    "rpmPrimaryL4": "분배법칙",
+    "rpmPrimaryRecordId": "M2-RPM-014",
     "sourceQid": 5,
     "variationType": "NUMERIC"
   },
@@ -248,7 +273,7 @@ window.questionBank = [
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-02-IDENTIFY_INEQUALITY",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -270,12 +295,17 @@ window.questionBank = [
     "points": 3,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
-    "templateKey": "",
+    "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
     "crossConceptKeys": [
       "CC_INEQUALITY_IDENTIFICATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "부등식의 성질",
+    "rpmPrimaryL4": "부등식의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-018",
     "sourceQid": 6,
     "variationType": "NUMERIC"
   },
@@ -294,7 +324,7 @@ window.questionBank = [
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-02-INEQUALITY_PROPERTIES_CHECK",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -316,13 +346,18 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
-    "templateKey": "",
+    "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
     "crossConceptKeys": [
       "CC_INEQUALITY_PROPERTIES",
       "CC_DIRECTION_OF_INEQUALITY"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "부등식의 성질",
+    "rpmPrimaryL4": "부등식의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-018",
     "sourceQid": 7,
     "variationType": "NUMERIC"
   },
@@ -341,7 +376,7 @@ window.questionBank = [
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-02-BRACKET_INEQUALITY_NON_SOLUTION",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -363,12 +398,17 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
-    "templateKey": "",
+    "templateKey": "TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK",
     "crossConceptKeys": [
       "CC_NEGATIVE_MULTIPLICATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "일차부등식의 풀이",
+    "rpmPrimaryL4": "기본형",
+    "rpmPrimaryRecordId": "M2-RPM-020",
     "sourceQid": 8,
     "variationType": "NUMERIC"
   },
@@ -387,7 +427,7 @@ window.questionBank = [
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-02-MAX_SOLUTION_PARAMETER",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -408,13 +448,18 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+    "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
     "crossConceptKeys": [
       "CC_COEFFICIENT_DETERMINATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "해의 조건",
+    "rpmPrimaryL4": "정수해 개수",
+    "rpmPrimaryRecordId": "M2-RPM-022",
     "sourceQid": 9,
     "variationType": "NUMERIC"
   },
@@ -433,7 +478,7 @@ window.questionBank = [
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-02-EQUIVALENT_INEQUALITY_CONSTANT",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -454,8 +499,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+    "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
     "crossConceptKeys": [
       "CC_DECIMAL_COEFFICIENTS",
       "CC_FRACTION_COEFFICIENTS",
@@ -463,6 +508,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "해의 조건",
+    "rpmPrimaryL4": "정수해 개수",
+    "rpmPrimaryRecordId": "M2-RPM-022",
     "sourceQid": 10,
     "variationType": "NUMERIC"
   },
@@ -481,7 +531,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-05-PARALLELOGRAM_ALTERNATE_ANGLES",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -502,14 +552,19 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_QUADRILATERAL_CRITERIA",
     "crossConceptKeys": [
       "CC_PARALLELOGRAMS",
       "CC_ALTERNATE_INTERIOR_ANGLES"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "평행사변형",
+    "rpmPrimaryL3": "평행사변형의 성질",
+    "rpmPrimaryL4": "변·각의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-072",
     "sourceQid": 11,
     "variationType": "NUMERIC"
   },
@@ -528,7 +583,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-05-PARALLELOGRAM_PERIMETER_RATIO",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -549,8 +604,8 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_QUADRILATERAL_CRITERIA",
     "crossConceptKeys": [
       "CC_PARALLELOGRAMS",
       "CC_RATIO_AND_PROPORTION",
@@ -558,6 +613,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "평행사변형",
+    "rpmPrimaryL3": "평행사변형의 성질",
+    "rpmPrimaryL4": "변·각의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-072",
     "sourceQid": 12,
     "variationType": "NUMERIC"
   },
@@ -576,7 +636,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-05-PARALLELOGRAM_ANGLE_BISECTORS_OVERLAP",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -597,14 +657,19 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_QUADRILATERAL_CRITERIA",
     "crossConceptKeys": [
       "CC_ANGLE_BISECTOR_PARALLEL",
       "CC_ISOSCELES_TRIANGLES"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "평행사변형",
+    "rpmPrimaryL3": "평행사변형의 성질",
+    "rpmPrimaryL4": "변·각의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-072",
     "sourceQid": 13,
     "variationType": "CONDITION"
   },
@@ -623,7 +688,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-05-PARALLELOGRAM_CRITERION_MATCH",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -644,14 +709,19 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_QUADRILATERAL_CRITERIA",
     "crossConceptKeys": [
       "CC_PARALLELOGRAM_CRITERIA",
       "CC_SUPPLEMENTARY_ANGLES"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "평행사변형",
+    "rpmPrimaryL3": "평행사변형의 판정",
+    "rpmPrimaryL4": "변·각 조건",
+    "rpmPrimaryRecordId": "M2-RPM-074",
     "sourceQid": 14,
     "variationType": "NUMERIC"
   },
@@ -670,7 +740,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-05-PARALLELOGRAM_TO_SQUARE_CONDITIONS",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -691,14 +761,19 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_QUADRILATERAL_CRITERIA",
     "crossConceptKeys": [
       "CC_SQUARE_CLASSIFICATION",
       "CC_QUADRILATERAL_HIERARCHY"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "여러 가지 사각형",
+    "rpmPrimaryL3": "사각형의 포함 관계",
+    "rpmPrimaryL4": "조건으로 사각형 판정",
+    "rpmPrimaryRecordId": "M2-RPM-082",
     "sourceQid": 15,
     "variationType": "CONDITION"
   },
@@ -717,7 +792,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-05-PAPER_FOLDING_RHOMBUS",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -738,14 +813,19 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_QUADRILATERAL_CRITERIA",
     "crossConceptKeys": [
       "CC_GEOMETRIC_FOLDING",
       "CC_RHOMBUS_PROPERTIES"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "여러 가지 사각형",
+    "rpmPrimaryL3": "직사각형·마름모·정사각형",
+    "rpmPrimaryL4": "각 사각형의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-078",
     "sourceQid": 16,
     "variationType": "NUMERIC"
   },
@@ -764,7 +844,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-05-RHOMBUS_SUFFICIENT_CONDITION",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -785,14 +865,19 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_QUADRILATERAL_CRITERIA",
     "crossConceptKeys": [
       "CC_RHOMBUS",
       "CC_SUFFICIENT_CONDITIONS"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "여러 가지 사각형",
+    "rpmPrimaryL3": "사각형의 포함 관계",
+    "rpmPrimaryL4": "조건으로 사각형 판정",
+    "rpmPrimaryRecordId": "M2-RPM-082",
     "sourceQid": 17,
     "variationType": "CONDITION"
   },
@@ -811,7 +896,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-05-PARALLELOGRAM_BISECTORS_RECTANGLE",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -832,14 +917,19 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_QUADRILATERAL_CRITERIA",
     "crossConceptKeys": [
       "CC_RECTANGLE_PROPERTIES",
       "CC_ANGLE_BISECTOR_PROPERTY"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "여러 가지 사각형",
+    "rpmPrimaryL3": "직사각형·마름모·정사각형",
+    "rpmPrimaryL4": "각 사각형의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-078",
     "sourceQid": 18,
     "variationType": "CONDITION"
   },
@@ -858,7 +948,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-05-DIAGONAL_BISECTION_COUNT",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -880,13 +970,18 @@ window.questionBank = [
     "points": 3,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-    "templateKey": "",
+    "templateKey": "TPL_QUADRILATERAL_CRITERIA",
     "crossConceptKeys": [
       "CC_DIAGONALS",
       "CC_QUADRILATERAL_HIERARCHY"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "여러 가지 사각형",
+    "rpmPrimaryL3": "사각형의 포함 관계",
+    "rpmPrimaryL4": "조건으로 사각형 판정",
+    "rpmPrimaryRecordId": "M2-RPM-082",
     "sourceQid": 19,
     "variationType": "CONDITION"
   },
@@ -905,7 +1000,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-05-MIDPOINT_QUADRILATERALS",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -927,12 +1022,17 @@ window.questionBank = [
     "points": 3,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-    "templateKey": "",
+    "templateKey": "TPL_QUADRILATERAL_CRITERIA",
     "crossConceptKeys": [
       "CC_QUADRILATERAL_CLASSIFICATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "여러 가지 사각형",
+    "rpmPrimaryL3": "사다리꼴",
+    "rpmPrimaryL4": "등변사다리꼴",
+    "rpmPrimaryRecordId": "M2-RPM-080",
     "sourceQid": 20,
     "variationType": "CONDITION"
   },
@@ -951,7 +1051,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-05-ISOSCELES_TRAPEZOID_ANGLE",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -972,8 +1072,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_QUADRILATERAL_CRITERIA",
     "crossConceptKeys": [
       "CC_ISOSCELES_TRAPEZOID",
       "CC_ISOSCELES_TRIANGLES",
@@ -981,6 +1081,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "여러 가지 사각형",
+    "rpmPrimaryL3": "사다리꼴",
+    "rpmPrimaryL4": "등변사다리꼴",
+    "rpmPrimaryRecordId": "M2-RPM-080",
     "sourceQid": 21,
     "variationType": "NUMERIC"
   },
@@ -999,7 +1104,7 @@ window.questionBank = [
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-01-SIMPLIFY_AND_EVALUATE",
+    "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1014,14 +1119,19 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+    "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
     "crossConceptKeys": [
       "CC_POLYNOMIAL_DIVISION_BY_MONOMIAL",
       "CC_ALGEBRAIC_SIMPLIFICATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "다항식의 계산",
+    "rpmPrimaryL3": "식의 값과 활용",
+    "rpmPrimaryL4": "식의 값",
+    "rpmPrimaryRecordId": "M2-RPM-016",
     "sourceQid": 22,
     "variationType": "NUMERIC"
   },
@@ -1040,7 +1150,7 @@ window.questionBank = [
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-02-WORD_BREAKDOWN_DISTANCE",
+    "conceptClusterKey": "LINEAR_INEQUALITY_WORD_PROBLEM",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1056,7 +1166,7 @@ window.questionBank = [
     "points": 5,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
-    "templateKey": "",
+    "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
     "crossConceptKeys": [
       "CC_SPEED_DISTANCE_TIME",
       "CC_APPLIED_WORD_PROBLEMS"
@@ -1065,6 +1175,11 @@ window.questionBank = [
       "COND_UPPER_BOUND"
     ],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "일차부등식의 활용",
+    "rpmPrimaryL3": "거리·속력·시간",
+    "rpmPrimaryL4": "시간 제한",
+    "rpmPrimaryRecordId": "M2-RPM-026",
     "sourceQid": 23,
     "variationType": "CONTEXT"
   },
@@ -1083,7 +1198,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-05-TRAPEZOID_DIAGONAL_AREAS",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1098,8 +1213,8 @@ window.questionBank = [
     "score": 6,
     "points": 6,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_QUADRILATERAL_CRITERIA",
     "crossConceptKeys": [
       "CC_PARALLEL_LINES_EQUAL_AREA",
       "CC_AREA_RATIO",
@@ -1107,6 +1222,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "평행사변형",
+    "rpmPrimaryL3": "넓이와 활용",
+    "rpmPrimaryL4": "평행선과 넓이",
+    "rpmPrimaryRecordId": "M2-RPM-076",
     "sourceQid": 24,
     "variationType": "NUMERIC"
   },
@@ -1125,7 +1245,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-05-PARALLELOGRAM_ANGLE_TO_RECT_RHOMBUS",
+    "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1140,8 +1260,8 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_QUADRILATERAL_CRITERIA",
     "crossConceptKeys": [
       "CC_ALTERNATE_INTERIOR_ANGLES",
       "CC_RECTANGLE_PROPERTIES",
@@ -1149,6 +1269,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "사각형의 성질",
+    "rpmPrimaryL2": "여러 가지 사각형",
+    "rpmPrimaryL3": "직사각형·마름모·정사각형",
+    "rpmPrimaryL4": "각 사각형의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-078",
     "sourceQid": 25,
     "variationType": "CONDITION"
   }

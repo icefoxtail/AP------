@@ -17,7 +17,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-03-VERIFY_SOLUTION_BY_SUBSTITUTION",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -38,7 +38,7 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_PROBABILITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
@@ -46,6 +46,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "해와 계수",
+    "rpmPrimaryL4": "해가 주어진 연립방정식",
+    "rpmPrimaryRecordId": "M2-RPM-032",
     "sourceQid": 1,
     "variationType": "NUMERIC"
   },
@@ -64,7 +69,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-03-FIND_COEFFICIENTS_FROM_SOLUTION",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -85,7 +90,7 @@ window.questionBank = [
     "score": 3.5,
     "points": 3.5,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_PROBABILITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
@@ -93,6 +98,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "해와 계수",
+    "rpmPrimaryL4": "해가 주어진 연립방정식",
+    "rpmPrimaryRecordId": "M2-RPM-032",
     "sourceQid": 2,
     "variationType": "NUMERIC"
   },
@@ -111,7 +121,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-03-NATURAL_NUMBER_ORDERED_PAIRS",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION_WORD_PROBLEM",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -132,7 +142,7 @@ window.questionBank = [
     "score": 3.5,
     "points": 3.5,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_PROBABILITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_LINEAR_EQUATIONS_TWO_VARIABLES"
@@ -141,6 +151,11 @@ window.questionBank = [
       "COND_NATURAL_NUMBER"
     ],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식의 활용",
+    "rpmPrimaryL3": "수와 개수",
+    "rpmPrimaryL4": "두 수 관계",
+    "rpmPrimaryRecordId": "M2-RPM-038",
     "sourceQid": 3,
     "variationType": "NUMERIC"
   },
@@ -159,7 +174,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-FUNCTION_DEFINITION_CHECK",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -181,13 +196,18 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
-    "templateKey": "",
+    "templateKey": "TPL_M2_COUNT_VALID_FUNCTIONS_AND_LINEAR_FUNCTIONS",
     "crossConceptKeys": [
       "CC_CLASSIFICATION",
       "CC_COUNTEREXAMPLE_CONDITION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "함숫값",
+    "rpmPrimaryRecordId": "M2-RPM-046",
     "sourceQid": 4,
     "variationType": "CONTEXT"
   },
@@ -206,7 +226,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-FUNCTION_VALUE_EVALUATION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -227,13 +247,18 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_FUNCTION_VALUE"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "함숫값",
+    "rpmPrimaryRecordId": "M2-RPM-046",
     "sourceQid": 5,
     "variationType": "NUMERIC"
   },
@@ -252,7 +277,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-IDENTIFY_LINEAR_FUNCTION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -274,7 +299,7 @@ window.questionBank = [
     "points": 3,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
-    "templateKey": "",
+    "templateKey": "TPL_M2_COUNT_VALID_FUNCTIONS_AND_LINEAR_FUNCTIONS",
     "crossConceptKeys": [
       "CC_CLASSIFICATION",
       "CC_POLYNOMIAL_DEGREE"
@@ -283,6 +308,11 @@ window.questionBank = [
       "COND_NONZERO"
     ],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "함숫값",
+    "rpmPrimaryRecordId": "M2-RPM-046",
     "sourceQid": 6,
     "variationType": "NUMERIC"
   },
@@ -301,7 +331,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-VERTICAL_TRANSLATION_POINT",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -323,13 +353,18 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
-    "templateKey": "",
+    "templateKey": "TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT",
     "crossConceptKeys": [
       "CC_PARALLEL_TRANSLATION",
       "CC_POINT_SUBSTITUTION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 그래프",
+    "rpmPrimaryL4": "기울기·절편",
+    "rpmPrimaryRecordId": "M2-RPM-048",
     "sourceQid": 7,
     "variationType": "NUMERIC"
   },
@@ -348,7 +383,7 @@ window.questionBank = [
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-AXIS_INTERCEPT_TRIANGLE_AREA",
+    "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -370,13 +405,18 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
-    "templateKey": "",
+    "templateKey": "TPL_M2_CALCULATE_AREA_BOUNDED_BY_TWO_LINES_AND_AXES",
     "crossConceptKeys": [
       "CC_INTERCEPTS",
       "CC_POLYGON_AREA"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+    "rpmPrimaryL3": "그래프 활용",
+    "rpmPrimaryL4": "넓이",
+    "rpmPrimaryRecordId": "M2-RPM-058",
     "sourceQid": 8,
     "variationType": "NUMERIC"
   },
@@ -395,7 +435,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-VERTICAL_LINE_COEFFICIENTS",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -417,13 +457,18 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
-    "templateKey": "",
+    "templateKey": "TPL_M2_FIND_VERTICAL_LINE_EQUATION_FROM_POINT",
     "crossConceptKeys": [
       "CC_EQUATIONS_PARALLEL_TO_AXES",
       "CC_COEFFICIENT_DETERMINATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "함숫값",
+    "rpmPrimaryRecordId": "M2-RPM-046",
     "sourceQid": 9,
     "variationType": "CONDITION"
   },
@@ -442,7 +487,7 @@ window.questionBank = [
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-INTERSECTION_WITH_VERTICAL_LINE",
+    "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -463,14 +508,19 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_EQUATIONS_PARALLEL_TO_AXES",
       "CC_INTERSECTION_OF_TWO_GRAPHS"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+    "rpmPrimaryL3": "두 직선의 관계",
+    "rpmPrimaryL4": "교점과 연립방정식",
+    "rpmPrimaryRecordId": "M2-RPM-056",
     "sourceQid": 10,
     "variationType": "NUMERIC"
   },
@@ -489,7 +539,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-SLOPE_FROM_TWO_POINTS",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -510,13 +560,18 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_SLOPE_FORMULA"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 그래프",
+    "rpmPrimaryL4": "기울기·절편",
+    "rpmPrimaryRecordId": "M2-RPM-048",
     "sourceQid": 11,
     "variationType": "NUMERIC"
   },
@@ -535,7 +590,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-GRAPH_SHAPE_FROM_COEFFICIENTS",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -557,7 +612,7 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M2_LINEAR_FUNCTION_CONDITIONS_MATCHING",
-    "templateKey": "",
+    "templateKey": "TPL_M2_SELECT_FUNCTION_MATCHING_SLOPE_AND_INTERCEPT_CONDITIONS",
     "crossConceptKeys": [
       "CC_SLOPE_SIGN",
       "CC_Y_INTERCEPT",
@@ -569,6 +624,11 @@ window.questionBank = [
       "COND_NONZERO"
     ],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "그래프의 성질",
+    "rpmPrimaryL4": "일차함수 그래프의 평행·일치",
+    "rpmPrimaryRecordId": "M2-RPM-050",
     "sourceQid": 12,
     "variationType": "CONDITION"
   },
@@ -587,7 +647,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-03-ROCK_PAPER_SCISSORS_STAIRS",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION_WORD_PROBLEM",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -608,7 +668,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_PROBABILITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
@@ -618,6 +678,11 @@ window.questionBank = [
       "COND_NATURAL_NUMBER"
     ],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식의 활용",
+    "rpmPrimaryL3": "수와 개수",
+    "rpmPrimaryL4": "두 수 관계",
+    "rpmPrimaryRecordId": "M2-RPM-038",
     "sourceQid": 13,
     "variationType": "NUMERIC"
   },
@@ -636,7 +701,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-PARALLEL_LINE_THROUGH_POINT",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -658,7 +723,7 @@ window.questionBank = [
     "points": 4.5,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
-    "templateKey": "",
+    "templateKey": "TPL_M2_FIND_UNKNOWN_COORDINATE_FROM_PARALLEL_SLOPE",
     "crossConceptKeys": [
       "CC_SLOPE_AND_INTERCEPT",
       "CC_INTERCEPTS",
@@ -666,6 +731,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "식 구하기",
+    "rpmPrimaryL4": "두 점으로 식 구하기",
+    "rpmPrimaryRecordId": "M2-RPM-052",
     "sourceQid": 14,
     "variationType": "CONDITION"
   },
@@ -684,7 +754,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-EQUATION_FROM_INTERCEPTS",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -705,14 +775,19 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_INTERCEPTS",
       "CC_SLOPE_FORMULA"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "식 구하기",
+    "rpmPrimaryL4": "두 점으로 식 구하기",
+    "rpmPrimaryRecordId": "M2-RPM-052",
     "sourceQid": 15,
     "variationType": "CONDITION"
   },
@@ -731,7 +806,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-03-FRACTION_DECIMAL_PARAM_CONDITION",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -752,7 +827,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_PROBABILITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_FRACTION_COEFFICIENTS",
@@ -761,6 +836,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식",
+    "rpmPrimaryL3": "복잡한 꼴의 연립방정식",
+    "rpmPrimaryL4": "괄호가 있는 연립방정식",
+    "rpmPrimaryRecordId": "M2-RPM-034",
     "sourceQid": 16,
     "variationType": "NUMERIC"
   },
@@ -779,7 +859,7 @@ window.questionBank = [
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-INTERSECTION_COEFFICIENTS",
+    "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -800,14 +880,19 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_INTERSECTION_OF_TWO_GRAPHS",
       "CC_COEFFICIENT_DETERMINATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+    "rpmPrimaryL3": "두 직선의 관계",
+    "rpmPrimaryL4": "교점과 연립방정식",
+    "rpmPrimaryRecordId": "M2-RPM-056",
     "sourceQid": 17,
     "variationType": "NUMERIC"
   },
@@ -826,7 +911,7 @@ window.questionBank = [
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-LINE_FROM_X_AND_Y_INTERCEPT_CONDITIONS",
+    "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -847,8 +932,8 @@ window.questionBank = [
     "score": 4.5,
     "points": 4.5,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_X_INTERCEPT",
       "CC_Y_INTERCEPT",
@@ -856,6 +941,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+    "rpmPrimaryL3": "방정식과 그래프",
+    "rpmPrimaryL4": "일차방정식의 그래프",
+    "rpmPrimaryRecordId": "M2-RPM-054",
     "sourceQid": 18,
     "variationType": "NUMERIC"
   },
@@ -874,7 +964,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-MOVING_POINT_TRIANGLE_AREA",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -895,8 +985,8 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 3,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_RECTANGLE_PROPERTIES",
       "CC_POLYGON_AREA",
@@ -904,6 +994,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 뜻",
+    "rpmPrimaryL4": "함숫값",
+    "rpmPrimaryRecordId": "M2-RPM-046",
     "sourceQid": 19,
     "variationType": "NUMERIC"
   },
@@ -922,7 +1017,7 @@ window.questionBank = [
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-THREE_LINES_TRIANGLE_AREA",
+    "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -944,7 +1039,7 @@ window.questionBank = [
     "points": 5,
     "difficultyBucket": 3,
     "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
-    "templateKey": "",
+    "templateKey": "TPL_M2_CALCULATE_AREA_BOUNDED_BY_TWO_LINES_AND_AXES",
     "crossConceptKeys": [
       "CC_EQUATIONS_PARALLEL_TO_AXES",
       "CC_INTERSECTION_OF_TWO_GRAPHS",
@@ -952,6 +1047,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+    "rpmPrimaryL3": "그래프 활용",
+    "rpmPrimaryL4": "넓이",
+    "rpmPrimaryRecordId": "M2-RPM-058",
     "sourceQid": 20,
     "variationType": "NUMERIC"
   },
@@ -970,7 +1070,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-INTERCEPTS_EQUATION_AND_DIRECTION",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -985,8 +1085,8 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_INTERCEPTS",
       "CC_SLOPE_FORMULA",
@@ -994,6 +1094,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "일차함수의 그래프",
+    "rpmPrimaryL4": "기울기·절편",
+    "rpmPrimaryRecordId": "M2-RPM-048",
     "sourceQid": 21,
     "variationType": "CONDITION"
   },
@@ -1012,7 +1117,7 @@ window.questionBank = [
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-TEMPERATURE_LINEAR_FUNCTION_WORD",
+    "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -1028,13 +1133,18 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 2,
     "problemTypeKey": "PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE",
-    "templateKey": "",
+    "templateKey": "TPL_M2_SOLVE_TEMPERATURE_ALTITUDE_WORD_PROBLEM_DESCRIPTIVE",
     "crossConceptKeys": [
       "CC_RATE_OF_CHANGE",
       "CC_ALGEBRAIC_MODELING"
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 그 그래프",
+    "rpmPrimaryL3": "식 구하기",
+    "rpmPrimaryL4": "두 점으로 식 구하기",
+    "rpmPrimaryRecordId": "M2-RPM-052",
     "sourceQid": 22,
     "variationType": "NUMERIC"
   },
@@ -1053,7 +1163,7 @@ window.questionBank = [
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-04-THREE_LINES_RELATION_AND_INTERSECTIONS",
+    "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1068,8 +1178,8 @@ window.questionBank = [
     "score": 6,
     "points": 6,
     "difficultyBucket": 3,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+    "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
     "crossConceptKeys": [
       "CC_SLOPE_FORMULA",
       "CC_INTERSECTION_OF_TWO_GRAPHS",
@@ -1077,6 +1187,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차함수",
+    "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+    "rpmPrimaryL3": "두 직선의 관계",
+    "rpmPrimaryL4": "교점과 연립방정식",
+    "rpmPrimaryRecordId": "M2-RPM-056",
     "sourceQid": 23,
     "variationType": "CONDITION"
   },
@@ -1095,7 +1210,7 @@ window.questionBank = [
     "subUnit": "연립일차방정식의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "M2-03-SPEED_TIME_DISTANCE_WALK",
+    "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION_WORD_PROBLEM",
     "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
@@ -1110,7 +1225,7 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_PROBABILITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_SPEED_DISTANCE_TIME",
@@ -1118,6 +1233,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "NONE",
+    "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+    "rpmPrimaryL2": "연립일차방정식의 활용",
+    "rpmPrimaryL3": "속력·시간·거리",
+    "rpmPrimaryL4": "마주가기·따라가기",
+    "rpmPrimaryRecordId": "M2-RPM-040",
     "sourceQid": 24,
     "variationType": "NUMERIC"
   }

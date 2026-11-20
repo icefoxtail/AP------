@@ -3,7 +3,7 @@
   "requestId": "25_연향중_2학기_기말_중1_유사-candidate-v1",
   "examUid": "25_연향중_2학기_기말_중1_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m1/2final/25_연향중_2학기_기말_중1_유사.js",
-  "expectedSourceBlobSha1": "5ddec71313fc5dfeb36cdd8748cbcc7ceab45421",
+  "expectedSourceBlobSha1": "cbab2b02591d0f4676e3cd674ec0c53879b69be7",
   "expectedQuestionCount": 23,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -30,8 +30,8 @@
         "subUnitKey": "M1-06-POLYGON_CIRCLE",
         "subUnit": "다각형과 원",
         "conceptClusterKey": "POLYGON_CIRCLE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
@@ -48,20 +48,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-199"
+        ],
+        "rpmPrimary": {
+          "l1": "평면도형",
+          "l2": "다각형",
+          "l3": "정다각형",
+          "l4": "정다각형의 성질",
+          "recordId": "M1-RPM-199"
+        },
+        "rpmPrimaryL1": "평면도형",
+        "rpmPrimaryL2": "다각형",
+        "rpmPrimaryL3": "정다각형",
+        "rpmPrimaryL4": "정다각형의 성질",
+        "rpmPrimaryRecordId": "M1-RPM-199",
+        "difficultyBasis": "정다각형의 기본 공식들을 적용하여 보기의 진술들을 순차적으로 검증하는 난이도 2 문항이다 (내각 합 1440, 변 10).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-06 / M1-06-POLYGON_CIRCLE: 두 만족시키는 다각형에 대한 설명으",
+          "curriculum": "M1-RPM-199: 정십각형의 내각의 합과 대각선 공식 등을 검증하는 M1-RPM-199 정다각형 > 정다각형의 성질에 해당한다 (내각 합 1440, 변 10).",
+          "problemType": "조건을 통해 정십각형임을 판별하고 내각의 합, 대각선 개수 등 진술을 검토하는 유형이다 (내각 합 1440, 변 10).",
+          "difficulty": "정다각형의 기본 공식들을 적용하여 보기의 진술들을 순차적으로 검증하는 난이도 2 문항이다 (내각 합 1440, 변 10).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 선분 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "정십각형의 내각의 합 공식을 적용하여 (10-2)*180=1440도를 계산하고 각 선지의 참 거짓을 판별한다.",
       "decisiveStep": "내각의 크기의 합 (10-2)*180 = 1440도 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "정다각형의 정의와 대각선 및 각도 공식을 복합 대조하는 기본 문항",
+      "difficultyReason": "정다각형의 기본 공식들을 적용하여 보기의 진술들을 순차적으로 검증하는 난이도 2 문항이다 (내각 합 1440, 변 10).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_REGULAR_POLYGON_PROPERTIES",
-        "templateKey": "TPL_REGULAR_POLYGON_ANGLE_DIAGONAL",
-        "why": "조건으로 주어진 정다각형을 식별하고 내각의 합, 외각, 대각선의 개수를 판별하는 표준 템플릿"
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT",
+        "why": "조건을 통해 정십각형임을 판별하고 내각의 합, 대각선 개수 등 진술을 검토하는 유형이다 (내각 합 1440, 변 10)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_6cf621831710f7f81f920ff5bb0278089f72604e943b611088ad7cb04137293e",
@@ -79,12 +111,12 @@
         "subUnitKey": "M1-05-BASIC_FIGURE",
         "subUnit": "점·선·면과 각",
         "conceptClusterKey": "BASIC_FIGURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_EQUATION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 2,
@@ -97,20 +129,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-176"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "기본 도형",
+          "l3": "각",
+          "l4": "맞꼭지각",
+          "recordId": "M1-RPM-176"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "기본 도형",
+        "rpmPrimaryL3": "각",
+        "rpmPrimaryL4": "맞꼭지각",
+        "rpmPrimaryRecordId": "M1-RPM-176",
+        "difficultyBasis": "맞꼭지각 일치 조건과 평각 $180^\\circ$ 관계를 이용하는 기본 난이도 2 문항이다 (직선 AB, CD, 각 AOC, BOD).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-BASIC_FIGURE: 두 직선 $AB$와 $",
+          "curriculum": "M1-RPM-176: 맞꼭지각의 크기가 같음을 이용해 일차방정식을 세우는 M1-RPM-176 각 > 맞꼭지각에 해당한다 (직선 AB, CD, 각 AOC, BOD).",
+          "problemType": "맞꼭지각의 성질로 각 방정식을 세워 $x$ 를 구하고 보각을 구하는 유형이다 (직선 AB, CD, 각 AOC, BOD).",
+          "difficulty": "맞꼭지각 일치 조건과 평각 $180^\\circ$ 관계를 이용하는 기본 난이도 2 문항이다 (직선 AB, CD, 각 AOC, BOD).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 대입 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "맞꼭지각의 성질 3x+10=2x+40에서 x=30을 구하고, 평각 성질 180-100=80도로 각 BOC를 산출한다.",
       "decisiveStep": "맞꼭지각 방정식으로 x=30 산출 후 평각에서 80도 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "맞꼭지각 동치 방정식 풀이 후 평각에서 차를 구하는 2단계 기본 연산",
+      "difficultyReason": "맞꼭지각 일치 조건과 평각 $180^\\circ$ 관계를 이용하는 기본 난이도 2 문항이다 (직선 AB, CD, 각 AOC, BOD).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_VERTICAL_ANGLES_LINEAR_EQUATION",
-        "templateKey": "TPL_VERTICAL_AND_SUPPLEMENTARY_ANGLES",
-        "why": "맞꼭지각 상등 조건과 평각의 합 조건을 결합하여 각의 크기를 구하는 표준 템플릿"
+        "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_EQUATION",
+        "why": "맞꼭지각의 성질로 각 방정식을 세워 $x$ 를 구하고 보각을 구하는 유형이다 (직선 AB, CD, 각 AOC, BOD)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_eeee611aa17eee01b33c53df1686922ea595c9eec4f8c12c6caba6621a65ea99",
@@ -122,14 +186,14 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "MID-MATH-1",
-        "standardUnitKey": "M1-05",
-        "standardUnit": "기본도형",
-        "standardUnitOrder": 5,
-        "subUnitKey": "M1-05-BASIC_FIGURE",
-        "subUnit": "점·선·면과 각",
-        "conceptClusterKey": "BASIC_FIGURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "standardUnitKey": "M1-06",
+        "standardUnit": "평면도형의 성질",
+        "standardUnitOrder": 6,
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "conceptClusterKey": "POLYGON_CIRCLE",
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+        "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -146,20 +210,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-197"
+        ],
+        "rpmPrimary": {
+          "l1": "평면도형",
+          "l2": "다각형",
+          "l3": "삼각형·다각형의 각",
+          "l4": "각의 크기 계산",
+          "recordId": "M1-RPM-197"
+        },
+        "rpmPrimaryL1": "평면도형",
+        "rpmPrimaryL2": "다각형",
+        "rpmPrimaryL3": "삼각형·다각형의 각",
+        "rpmPrimaryL4": "각의 크기 계산",
+        "rpmPrimaryRecordId": "M1-RPM-197",
+        "difficultyBasis": "다섯 꼭짓점의 합 공식 $180^\\circ$ 에 대입하여 $\\angle z$ 를 구하고 식의 값을 찾는 난이도 2 문항이다 (각 35, 40, 45, 55).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-06 / M1-06-POLYGON_CIRCLE: e z$이고, 삼각형의 외각 성질에",
+          "curriculum": "M1-RPM-197: 삼각형의 외각의 성질을 결합하여 별 모양 다각형의 각을 계산하는 M1-RPM-197 삼각형·다각형의 각 > 각의 크기 계산에 해당한다 (각 35, 40, 45, 55).",
+          "problemType": "외각 정리를 연속 적용하여 꼭짓점 각들의 합이 $180^\\circ$ 임을 이용해 각의 차를 구하는 유형이다 (각 35, 40, 45, 55).",
+          "difficulty": "다섯 꼭짓점의 합 공식 $180^\\circ$ 에 대입하여 $\\angle z$ 를 구하고 식의 값을 찾는 난이도 2 문항이다 (각 35, 40, 45, 55).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 성질 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "오각별 꼭짓점 각의 합 180도 성질로부터 z=25도를 산출하고, 55도에서 z를 빼어 30도를 계산한다.",
       "decisiveStep": "오각별 꼭짓점 각의 합 180도로부터 z=25도 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "삼각형 외각 성질의 누적 결과인 오각별 각 합 180도를 활용하는 단계",
+      "difficultyReason": "다섯 꼭짓점의 합 공식 $180^\\circ$ 에 대입하여 $\\angle z$ 를 구하고 식의 값을 찾는 난이도 2 문항이다 (각 35, 40, 45, 55).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_STAR_POLYGON_ANGLES",
-        "templateKey": "TPL_STAR_ANGLE_SUM_PROPERTY",
-        "why": "오각별의 꼭짓점 각의 합이 180도임을 이용하여 미지각을 구하는 전형적 템플릿"
+        "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+        "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+        "why": "외각 정리를 연속 적용하여 꼭짓점 각들의 합이 $180^\\circ$ 임을 이용해 각의 차를 구하는 유형이다 (각 35, 40, 45, 55)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_bf02366fb6e0f3fd933f39db62d9bd14cd52fee769053b13e0a5329dd53d6c5b",
@@ -177,12 +273,12 @@
         "subUnitKey": "M1-06-POLYGON_CIRCLE",
         "subUnit": "다각형과 원",
         "conceptClusterKey": "POLYGON_CIRCLE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 4,
@@ -195,20 +291,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-201"
+        ],
+        "rpmPrimary": {
+          "l1": "평면도형",
+          "l2": "원과 부채꼴",
+          "l3": "원과 부채꼴의 기본",
+          "l4": "중심각·호·현",
+          "recordId": "M1-RPM-201"
+        },
+        "rpmPrimaryL1": "평면도형",
+        "rpmPrimaryL2": "원과 부채꼴",
+        "rpmPrimaryL3": "원과 부채꼴의 기본",
+        "rpmPrimaryL4": "중심각·호·현",
+        "rpmPrimaryRecordId": "M1-RPM-201",
+        "difficultyBasis": "원과 부채꼴 단원의 기본 개념 정의를 정확히 알고 있는지 판정하는 난이도 2 문항이다 (배점 3점).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-06 / M1-06-POLYGON_CIRCLE: 원과 부채꼴에 대한 설명",
+          "curriculum": "M1-RPM-201: 원과 부채꼴의 중심각, 호, 현의 정의와 비례 관계를 묻는 M1-RPM-201 원과 부채꼴의 기본 > 중심각·호·현에 해당한다 (배점 3점).",
+          "problemType": "원과 부채꼴의 정의 진술(현, 활꼴, 중심각, 지름, 정비례)을 종합적으로 판정하는 유형이다 (배점 3점).",
+          "difficulty": "원과 부채꼴 단원의 기본 개념 정의를 정확히 알고 있는지 판정하는 난이도 2 문항이다 (배점 3점).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 성질 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "현, 지름, 활꼴, 부채꼴의 기하학적 정의를 대조하여 4번의 참을 판별한다.",
       "decisiveStep": "원의 가장 긴 현이 지름이라는 핵심 성질 검증",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "원 관련 기본 용어의 정의를 직접 묻는 1단계 개념 판정",
+      "difficultyReason": "원과 부채꼴 단원의 기본 개념 정의를 정확히 알고 있는지 판정하는 난이도 2 문항이다 (배점 3점).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_CIRCLE_DEFINITIONS",
-        "templateKey": "TPL_CIRCLE_TERMINOLOGY_CHECK",
-        "why": "원의 기본 요소(호, 현, 활꼴, 부채꼴, 지름) 정의의 참 거짓을 평가하는 템플릿"
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
+        "why": "원과 부채꼴의 정의 진술(현, 활꼴, 중심각, 지름, 정비례)을 종합적으로 판정하는 유형이다 (배점 3점)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_005c2a3f07a58fbe12f549d5ab473d756fce783f820c28f77d5f1f580d5269b3",
@@ -226,12 +354,12 @@
         "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
         "subUnit": "평면도형의 측정",
         "conceptClusterKey": "PLANE_FIGURE_MEASURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 5,
@@ -244,20 +372,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-204"
+        ],
+        "rpmPrimary": {
+          "l1": "평면도형",
+          "l2": "원과 부채꼴",
+          "l3": "부채꼴의 넓이",
+          "l4": "호의 길이와 넓이 관계",
+          "recordId": "M1-RPM-204"
+        },
+        "rpmPrimaryL1": "평면도형",
+        "rpmPrimaryL2": "원과 부채꼴",
+        "rpmPrimaryL3": "부채꼴의 넓이",
+        "rpmPrimaryL4": "호의 길이와 넓이 관계",
+        "rpmPrimaryRecordId": "M1-RPM-204",
+        "difficultyBasis": "공식 $S = (1/2)rl$ 에 값을 대입하여 일차방정식으로 바로 풀리는 난이도 2 문항이다 (단위 cm, 넓이 27).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-06 / M1-06-PLANE_FIGURE_MEASURE: 반지름의 길이가 $6",
+          "curriculum": "M1-RPM-204: 부채꼴 넓이 $S = (1/2)rl$ 공식을 적용하여 호의 길이를 구하는 M1-RPM-204 부채꼴의 넓이 > 호의 길이와 넓이 관계에 해당한다 (단위 cm, 넓이 27).",
+          "problemType": "호의 길이와 넓이 관계식을 통해 미지수를 계산하는 기본 측정 유형이다 (단위 cm, 넓이 27).",
+          "difficulty": "공식 $S = (1/2)rl$ 에 값을 대입하여 일차방정식으로 바로 풀리는 난이도 2 문항이다 (단위 cm, 넓이 27).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 길이 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "부채꼴 넓이 공식 S=1/2*r*l에 r=6, S=27pi를 대입하여 l=9pi를 산출한다.",
       "decisiveStep": "S=1/2*r*l 적용으로 l=9pi cm 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "부채꼴 넓이 기본 공식 1단계 대입 연산",
+      "difficultyReason": "공식 $S = (1/2)rl$ 에 값을 대입하여 일차방정식으로 바로 풀리는 난이도 2 문항이다 (단위 cm, 넓이 27).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_SECTOR_AREA_AND_ARC",
-        "templateKey": "TPL_SECTOR_HALF_R_L",
-        "why": "반지름과 넓이로부터 S=1/2*r*l을 이용해 호의 길이를 산출하는 기본 템플릿"
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "why": "호의 길이와 넓이 관계식을 통해 미지수를 계산하는 기본 측정 유형이다 (단위 cm, 넓이 27)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_0d0768277ed9570a7a06f0afdf986c83ab86c54f7af5b333d38fad78254862e3",
@@ -272,11 +432,11 @@
         "standardUnitKey": "M1-06",
         "standardUnit": "평면도형의 성질",
         "standardUnitOrder": 6,
-        "subUnitKey": "M1-06-POLYGON_CIRCLE",
-        "subUnit": "다각형과 원",
-        "conceptClusterKey": "POLYGON_CIRCLE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "subUnit": "평면도형의 측정",
+        "conceptClusterKey": "PLANE_FIGURE_MEASURE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
@@ -293,20 +453,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-203"
+        ],
+        "rpmPrimary": {
+          "l1": "평면도형",
+          "l2": "원과 부채꼴",
+          "l3": "부채꼴의 넓이",
+          "l4": "중심각을 이용한 넓이",
+          "recordId": "M1-RPM-203"
+        },
+        "rpmPrimaryL1": "평면도형",
+        "rpmPrimaryL2": "원과 부채꼴",
+        "rpmPrimaryL3": "부채꼴의 넓이",
+        "rpmPrimaryL4": "중심각을 이용한 넓이",
+        "rpmPrimaryRecordId": "M1-RPM-203",
+        "difficultyBasis": "원 전체 $360^\\circ$ 에 대한 비례배분으로 각 중심각을 찾고 보기 진술의 참·거짓을 판별하는 난이도 2 문항이다 (호 AB, BC, CA).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-06 / M1-06-PLANE_FIGURE_MEASURE: cm$일 때, 부채꼴 $BOC$의",
+          "curriculum": "M1-RPM-203: 원주를 비례배분하여 중심각을 구하고 부채꼴의 성질을 검토하는 M1-RPM-203 부채꼴의 넓이 > 중심각을 이용한 넓이에 해당한다 (호 AB, BC, CA).",
+          "problemType": "호의 길이의 비를 이용해 각 중심각을 비례배분하고 관련 부채꼴의 호와 넓이를 종합 계산하는 유형이다 (호 AB, BC, CA).",
+          "difficulty": "원 전체 $360^\\circ$ 에 대한 비례배분으로 각 중심각을 찾고 보기 진술의 참·거짓을 판별하는 난이도 2 문항이다 (호 AB, BC, CA).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 길이 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "호의 비 2:3:4로 중심각 80, 120, 160도를 구하고, 호의 비례식 및 부채꼴 넓이를 계산하여 보기를 판정한다.",
       "decisiveStep": "중심각 360도에 비례배분 2:3:4 적용하여 80도 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "비례배분과 호-중심각 정비례, 현 정비례 불성립 개념을 복합 검증하는 문항",
+      "difficultyReason": "원 전체 $360^\\circ$ 에 대한 비례배분으로 각 중심각을 찾고 보기 진술의 참·거짓을 판별하는 난이도 2 문항이다 (호 AB, BC, CA).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_ARC_RATIO_ANGLE_PROPORTION",
-        "templateKey": "TPL_ARC_RATIO_CIRCLE_PARTITION",
-        "why": "호의 길이의 비로부터 중심각을 비례배분하고 부채꼴의 넓이 및 현의 성질을 감사하는 복합 템플릿"
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "why": "호의 길이의 비를 이용해 각 중심각을 비례배분하고 관련 부채꼴의 호와 넓이를 종합 계산하는 유형이다 (호 AB, BC, CA)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c7945dc02fda65aaf85e4a7c7e38269eb2e68eaa3ca1c4feaa592421b0a948f5",
@@ -324,8 +516,8 @@
         "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
         "subUnit": "평면도형의 측정",
         "conceptClusterKey": "PLANE_FIGURE_MEASURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -342,20 +534,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-202"
+        ],
+        "rpmPrimary": {
+          "l1": "평면도형",
+          "l2": "원과 부채꼴",
+          "l3": "원과 부채꼴의 기본",
+          "l4": "부채꼴의 호의 길이",
+          "recordId": "M1-RPM-202"
+        },
+        "rpmPrimaryL1": "평면도형",
+        "rpmPrimaryL2": "원과 부채꼴",
+        "rpmPrimaryL3": "원과 부채꼴의 기본",
+        "rpmPrimaryL4": "부채꼴의 호의 길이",
+        "rpmPrimaryRecordId": "M1-RPM-202",
+        "difficultyBasis": "회전 중심이 바뀌는 3단계 회전에서 각각의 회전 반경(5, 13, 12)과 중심각 $90^\\circ$ 를 정확히 추론해야 하는 난이도 3 문항이다 (직사각형 ABCD, 대각선 13, 합 15).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-06 / M1-06-PLANE_FIGURE_MEASURE: m\\,cm$인 직사각형 $ABCD$가",
+          "curriculum": "M1-RPM-202: 도형의 회전 이동에 따른 호의 길이를 각각 계산하여 합하는 M1-RPM-202 원과 부채꼴의 기본 > 부채꼴의 호의 길이에 해당한다 (직사각형 ABCD, 대각선 13, 합 15).",
+          "problemType": "회전 중심과 회전 반경(가로, 대각선, 세로)을 파악하여 각 호의 길이를 더하는 도형 회전 궤적 유형이다 (직사각형 ABCD, 대각선 13, 합 15).",
+          "difficulty": "회전 중심이 바뀌는 3단계 회전에서 각각의 회전 반경(5, 13, 12)과 중심각 $90^\\circ$ 를 정확히 추론해야 하는 난이도 3 문항이다 (직사각형 ABCD, 대각선 13, 합 15).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 길이 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "회전 반지름 5, 13, 12cm인 세 개의 90도 사분원 호의 길이를 구하여 합산한다.",
       "decisiveStep": "회전 중심에 따른 반지름 5, 13, 12cm 파악 후 호의 합 15pi 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "회전 중심의 변화와 대각선 길이를 포함한 3단계 호의 길이 합성 연산",
+      "difficultyReason": "회전 중심이 바뀌는 3단계 회전에서 각각의 회전 반경(5, 13, 12)과 중심각 $90^\\circ$ 를 정확히 추론해야 하는 난이도 3 문항이다 (직사각형 ABCD, 대각선 13, 합 15).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_ROLLING_POLYGON_TRAJECTORY",
-        "templateKey": "TPL_RECTANGLE_ROLLING_VERTEX_DISTANCE",
-        "why": "직사각형을 굴릴 때 꼭짓점이 그리는 원호들의 길이의 합을 계산하는 대표 심화 템플릿"
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "why": "회전 중심과 회전 반경(가로, 대각선, 세로)을 파악하여 각 호의 길이를 더하는 도형 회전 궤적 유형이다 (직사각형 ABCD, 대각선 13, 합 15)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_7bb21983923a5f239bd180e3028b5acd8e34ff69e888a88bd73f5f0a9940e1f8",
@@ -373,12 +597,12 @@
         "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
         "subUnit": "평면도형의 측정",
         "conceptClusterKey": "PLANE_FIGURE_MEASURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 8,
@@ -391,20 +615,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-205"
+        ],
+        "rpmPrimary": {
+          "l1": "평면도형",
+          "l2": "원과 부채꼴",
+          "l3": "복합도형",
+          "l4": "부채꼴을 포함한 둘레",
+          "recordId": "M1-RPM-205"
+        },
+        "rpmPrimaryL1": "평면도형",
+        "rpmPrimaryL2": "원과 부채꼴",
+        "rpmPrimaryL3": "복합도형",
+        "rpmPrimaryL4": "부채꼴을 포함한 둘레",
+        "rpmPrimaryRecordId": "M1-RPM-205",
+        "difficultyBasis": "발문에 주어진 둘레 구성 조건(정사각형 변 4개 + 원 2개 둘레)을 식으로 정확히 번역하는 난이도 3 문항이다 (길이 24, 12).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-06 / M1-06-PLANE_FIGURE_MEASURE: m\\,cm$인 정사각형 내부에서 네",
+          "curriculum": "M1-RPM-205: 선분과 원호가 결합된 복합 평면도형의 둘레를 계산하는 M1-RPM-205 복합도형 > 부채꼴을 포함한 둘레에 해당한다 (길이 24, 12).",
+          "problemType": "직선 경계와 원호 경계를 분리하여 둘레의 길이를 합산하는 복합도형 둘레 유형이다 (길이 24, 12).",
+          "difficulty": "발문에 주어진 둘레 구성 조건(정사각형 변 4개 + 원 2개 둘레)을 식으로 정확히 번역하는 난이도 3 문항이다 (길이 24, 12).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 꼭짓점 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "정사각형 변의 길이 24cm와 원둘레 12pi cm를 분리하여 합산한다.",
       "decisiveStep": "직선 둘레 24와 원호 둘레 12pi의 합성",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "직선 부분과 곡선 부분을 분리하여 정확히 합산하는 2단계 문항",
+      "difficultyReason": "발문에 주어진 둘레 구성 조건(정사각형 변 4개 + 원 2개 둘레)을 식으로 정확히 번역하는 난이도 3 문항이다 (길이 24, 12).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_COMPOSITE_FIGURE_PERIMETER",
-        "templateKey": "TPL_SQUARE_AND_CIRCULAR_ARCS_PERIMETER",
-        "why": "다각형의 변과 원호가 결합된 복합 도형의 둘레를 분할 합산하는 템플릿"
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
+        "why": "직선 경계와 원호 경계를 분리하여 둘레의 길이를 합산하는 복합도형 둘레 유형이다 (길이 24, 12)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_5268dceafa3aed691f335033a6e279f86ecf23211b797d3313795aa18e1a86c7",
@@ -422,12 +678,12 @@
         "subUnitKey": "M1-07-SOLID_FIGURE",
         "subUnit": "입체도형",
         "conceptClusterKey": "SOLID_FIGURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 9,
@@ -440,20 +696,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-209"
+        ],
+        "rpmPrimary": {
+          "l1": "입체도형",
+          "l2": "다면체와 회전체",
+          "l3": "정다면체",
+          "l4": "정다면체의 종류",
+          "recordId": "M1-RPM-209"
+        },
+        "rpmPrimaryL1": "입체도형",
+        "rpmPrimaryL2": "다면체와 회전체",
+        "rpmPrimaryL3": "정다면체",
+        "rpmPrimaryL4": "정다면체의 종류",
+        "rpmPrimaryRecordId": "M1-RPM-209",
+        "difficultyBasis": "입체도형의 명칭별 옆면의 형태와 구성요소 기본 성질을 확인하는 난이도 2 문항이다 (배점 3점).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-07 / M1-07-SOLID_FIGURE: 입체도형에 대한 설명으",
+          "curriculum": "M1-RPM-209: 다면체와 정다면체의 기본 정의 및 면의 모양을 검증하는 M1-RPM-209 정다면체 > 정다면체의 종류에 해당한다 (배점 3점).",
+          "problemType": "다면체의 종류별 면의 모양과 구성요소 진술의 참·거짓을 종합 검토하는 유형이다 (배점 3점).",
+          "difficulty": "입체도형의 명칭별 옆면의 형태와 구성요소 기본 성질을 확인하는 난이도 2 문항이다 (배점 3점).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 이등변삼각형 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "정십이면체의 면의 형태가 정오각형임을 확인하여 4번의 오류를 판별한다.",
       "decisiveStep": "정십이면체의 면 모양(정오각형) 불일치 식별",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "정다면체의 기본 정의 및 구성 요소를 대조하는 1단계 개념 판별",
+      "difficultyReason": "입체도형의 명칭별 옆면의 형태와 구성요소 기본 성질을 확인하는 난이도 2 문항이다 (배점 3점).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_POLYHEDRA_PROPERTIES",
-        "templateKey": "TPL_REGULAR_POLYHEDRON_SHAPE_CHECK",
-        "why": "기둥, 뿔, 정다면체의 면의 개수와 모양, 단면의 성질을 감사하는 템플릿"
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+        "why": "다면체의 종류별 면의 모양과 구성요소 진술의 참·거짓을 종합 검토하는 유형이다 (배점 3점)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_bf3bbe69f871cf622aeeb8ac7f04afe8154804e13c9b362ec11ecd811db95182",
@@ -471,12 +759,12 @@
         "subUnitKey": "M1-07-SOLID_FIGURE",
         "subUnit": "입체도형",
         "conceptClusterKey": "SOLID_FIGURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_ROTATION_SOLID_GENERATION",
+        "templateKey": "TPL_M1_ROTATION_SOLID_GENERATION_SHAPE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 10,
@@ -489,20 +777,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-211"
+        ],
+        "rpmPrimary": {
+          "l1": "입체도형",
+          "l2": "다면체와 회전체",
+          "l3": "회전체",
+          "l4": "회전체의 생성",
+          "recordId": "M1-RPM-211"
+        },
+        "rpmPrimaryL1": "입체도형",
+        "rpmPrimaryL2": "다면체와 회전체",
+        "rpmPrimaryL3": "회전체",
+        "rpmPrimaryL4": "회전체의 생성",
+        "rpmPrimaryRecordId": "M1-RPM-211",
+        "difficultyBasis": "회전체의 정의와 단면, 전개도의 모양을 묻는 기본 개념 문항이다 (회전체 1바퀴 3).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-07 / M1-07-SOLID_FIGURE: 회전체와 그 전개도에",
+          "curriculum": "M1-RPM-211: 평면도형의 회전으로 만들어진 회전체와 그 전개도를 다루는 M1-RPM-211 회전체 > 회전체의 생성에 해당한다 (회전체 1바퀴 3).",
+          "problemType": "회전체의 축단면과 수직단면, 전개도의 기하학적 형태를 종합 판정하는 유형이다 (회전체 1바퀴 3).",
+          "difficulty": "회전체의 정의와 단면, 전개도의 모양을 묻는 기본 개념 문항이다 (회전체 1바퀴 3).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 전개도 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "직각사다리꼴의 회전체가 원뿔대임을 파악하고 전개도의 옆면 모양을 검증한다.",
       "decisiveStep": "직각사다리꼴 1회전 시 원뿔대 및 전개도 형태 확인",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "회전체 형성과 전개도의 형태를 올바르게 연결하는 1단계 개념 판별",
+      "difficultyReason": "회전체의 정의와 단면, 전개도의 모양을 묻는 기본 개념 문항이다 (회전체 1바퀴 3).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_REVOLUTION_NET_PROPERTIES",
-        "templateKey": "TPL_ROTATION_SOLID_NET_CHECK",
-        "why": "회전체를 만드는 평면도형과 완성된 입체도형의 전개도 관계를 파악하는 템플릿"
+        "problemTypeKey": "PT_M1_ROTATION_SOLID_GENERATION",
+        "templateKey": "TPL_M1_ROTATION_SOLID_GENERATION_SHAPE",
+        "why": "회전체의 축단면과 수직단면, 전개도의 기하학적 형태를 종합 판정하는 유형이다 (회전체 1바퀴 3)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_deab5c2d896469131ffc49de0b937d8455d77b0e0e418a68322e9d639334eeb7",
@@ -520,8 +840,8 @@
         "subUnitKey": "M1-07-SOLID_FIGURE",
         "subUnit": "입체도형",
         "conceptClusterKey": "SOLID_FIGURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+        "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -538,20 +858,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-207"
+        ],
+        "rpmPrimary": {
+          "l1": "입체도형",
+          "l2": "다면체와 회전체",
+          "l3": "다면체",
+          "l4": "면·모서리·꼭짓점",
+          "recordId": "M1-RPM-207"
+        },
+        "rpmPrimaryL1": "입체도형",
+        "rpmPrimaryL2": "다면체와 회전체",
+        "rpmPrimaryL3": "다면체",
+        "rpmPrimaryL4": "면·모서리·꼭짓점",
+        "rpmPrimaryRecordId": "M1-RPM-207",
+        "difficultyBasis": "n각뿔대 꼭짓점 $2n$ 과 정이십면체 모서리 30개를 바로 떠올려 더하는 기본 난이도 2 문항이다 (값 44, 46).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-07 / M1-07-SOLID_FIGURE: box\">• 칠각뿔대의 꼭짓점의 개",
+          "curriculum": "M1-RPM-207: 다면체의 꼭짓점과 모서리 개수 공식을 적용하는 M1-RPM-207 다면체 > 면·모서리·꼭짓점에 해당한다 (값 44, 46).",
+          "problemType": "각뿔대와 정다면체의 구성요소(꼭짓점, 모서리) 개수를 각각 구하여 합을 구하는 유형이다 (값 44, 46).",
+          "difficulty": "n각뿔대 꼭짓점 $2n$ 과 정이십면체 모서리 30개를 바로 떠올려 더하는 기본 난이도 2 문항이다 (값 44, 46).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 조건 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "칠각뿔대 꼭짓점 a=14와 정이십면체 모서리 b=30을 각각 구하여 a+b=44를 산출한다.",
       "decisiveStep": "칠각뿔대 꼭짓점 14개와 정이십면체 모서리 30개의 합 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "각뿔대와 정다면체의 구성 요소 개수 공식을 각각 적용하는 2단계 연산",
+      "difficultyReason": "n각뿔대 꼭짓점 $2n$ 과 정이십면체 모서리 30개를 바로 떠올려 더하는 기본 난이도 2 문항이다 (값 44, 46).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_POLYHEDRA_VERTICES_EDGES",
-        "templateKey": "TPL_PRISM_PYRAMID_REGULAR_ELEMENTS_SUM",
-        "why": "각뿔대와 정다면체의 꼭짓점 및 모서리 개수를 공식으로 계산하여 합하는 표준 템플릿"
+        "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+        "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
+        "why": "각뿔대와 정다면체의 구성요소(꼭짓점, 모서리) 개수를 각각 구하여 합을 구하는 유형이다 (값 44, 46)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_5ce5f39dd03e221f7e176c7d094d76e027d9327faafc7547f0d8832eb22f0f5e",
@@ -569,8 +921,8 @@
         "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
         "subUnit": "입체도형의 측정",
         "conceptClusterKey": "SOLID_FIGURE_MEASURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_NET_MEASURE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -587,20 +939,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-216"
+        ],
+        "rpmPrimary": {
+          "l1": "입체도형",
+          "l2": "입체도형의 겉넓이와 부피",
+          "l3": "뿔의 겉넓이와 부피",
+          "l4": "원뿔",
+          "recordId": "M1-RPM-216"
+        },
+        "rpmPrimaryL1": "입체도형",
+        "rpmPrimaryL2": "입체도형의 겉넓이와 부피",
+        "rpmPrimaryL3": "뿔의 겉넓이와 부피",
+        "rpmPrimaryL4": "원뿔",
+        "rpmPrimaryRecordId": "M1-RPM-216",
+        "difficultyBasis": "원뿔의 밑면 둘레와 회전 바퀴 수의 곱이 큰 원의 둘레가 됨을 파악해야 하는 난이도 3 문항이다 (넓이 144, 둘레 24).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-07 / M1-07-SOLID_FIGURE_MEASURE: 원의 반지름의 길이가 $4\\rm\\",
+          "curriculum": "M1-RPM-216: 원뿔의 밑면 둘레와 회전 바퀴 수를 곱해 모선 반지름을 찾는 M1-RPM-216 뿔의 겉넓이와 부피 > 원뿔에 해당한다 (넓이 144, 둘레 24).",
+          "problemType": "원뿔 회전 궤적을 전개도 상의 큰 원으로 해석하여 넓이를 계산하는 유형이다 (넓이 144, 둘레 24).",
+          "difficulty": "원뿔의 밑면 둘레와 회전 바퀴 수의 곱이 큰 원의 둘레가 됨을 파악해야 하는 난이도 3 문항이다 (넓이 144, 둘레 24).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 꼭짓점 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "밑면 둘레 8pi와 회전수 3회로부터 큰 원의 둘레 24pi, 모선 l=12를 구하고 큰 원 넓이 144pi를 계산한다.",
       "decisiveStep": "3회전에 따른 모선 길이 l=12 산출 후 넓이 144pi 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "회전수와 밑면 원주의 곱으로 모선의 길이를 유도하고 넓이를 계산하는 3단계 추론",
+      "difficultyReason": "원뿔의 밑면 둘레와 회전 바퀴 수의 곱이 큰 원의 둘레가 됨을 파악해야 하는 난이도 3 문항이다 (넓이 144, 둘레 24).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_CONE_ROLLING_ROTATION",
-        "templateKey": "TPL_CONE_ROLLING_TRACE_AREA",
-        "why": "원뿔 밑면 둘레와 회전수를 이용해 모선 길이를 구하고 궤적 원의 넓이를 계산하는 심화 템플릿"
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "why": "원뿔 회전 궤적을 전개도 상의 큰 원으로 해석하여 넓이를 계산하는 유형이다 (넓이 144, 둘레 24)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_5615e3ee1901ab07ff54ab4186caa0391810c2d3a67ba2b519894cdf6d1aab63",
@@ -618,8 +1002,8 @@
         "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
         "subUnit": "입체도형의 측정",
         "conceptClusterKey": "SOLID_FIGURE_MEASURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -636,20 +1020,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-214"
+        ],
+        "rpmPrimary": {
+          "l1": "입체도형",
+          "l2": "입체도형의 겉넓이와 부피",
+          "l3": "기둥의 겉넓이와 부피",
+          "l4": "원기둥",
+          "recordId": "M1-RPM-214"
+        },
+        "rpmPrimaryL1": "입체도형",
+        "rpmPrimaryL2": "입체도형의 겉넓이와 부피",
+        "rpmPrimaryL3": "기둥의 겉넓이와 부피",
+        "rpmPrimaryL4": "원기둥",
+        "rpmPrimaryRecordId": "M1-RPM-214",
+        "difficultyBasis": "단면으로부터 원기둥의 반지름 4와 높이 9를 파악하여 부피 공식에 대입하는 난이도 2 문항이다 (값 144, 16).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-07 / M1-07-SOLID_FIGURE_MEASURE: 항상 반지름의 길이가 $4\\rm\\",
+          "curriculum": "M1-RPM-214: 단면 정보를 통해 원기둥임을 추론하고 부피를 계산하는 M1-RPM-214 기둥의 겉넓이와 부피 > 원기둥에 해당한다 (값 144, 16).",
+          "problemType": "단면의 기하학적 특성으로부터 원기둥의 반지름과 높이를 복원하여 기본 부피 공식에 대입하는 유형이다 (값 144, 16).",
+          "difficulty": "단면으로부터 원기둥의 반지름 4와 높이 9를 파악하여 부피 공식에 대입하는 난이도 2 문항이다 (값 144, 16).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 포함관계 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "단면 성질로부터 밑면 반지름 4, 높이 9인 원기둥을 식별하고 부피 V=pi*4^2*9=144pi를 계산한다.",
       "decisiveStep": "원기둥 부피 공식 V = 16pi * 9 = 144pi 적용",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "단면 정보로 회전체를 식별한 후 부피 공식을 적용하는 2단계 문항",
+      "difficultyReason": "단면으로부터 원기둥의 반지름 4와 높이 9를 파악하여 부피 공식에 대입하는 난이도 2 문항이다 (값 144, 16).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_CYLINDER_CROSS_SECTION_VOLUME",
-        "templateKey": "TPL_ROTATION_SOLID_IDENTIFY_AND_VOLUME",
-        "why": "회전축에 수직/평행한 단면 모양으로부터 원기둥을 결정하고 부피를 계산하는 템플릿"
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+        "why": "단면의 기하학적 특성으로부터 원기둥의 반지름과 높이를 복원하여 기본 부피 공식에 대입하는 유형이다 (값 144, 16)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_f019d6f4d0f33e6617fc15560532812b4be7dcdfef527c0271d0fb7b9d4f7653",
@@ -667,12 +1083,12 @@
         "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
         "subUnit": "입체도형의 측정",
         "conceptClusterKey": "SOLID_FIGURE_MEASURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 14,
@@ -685,20 +1101,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-219"
+        ],
+        "rpmPrimary": {
+          "l1": "입체도형",
+          "l2": "입체도형의 겉넓이와 부피",
+          "l3": "복합입체도형",
+          "l4": "잘라낸 입체",
+          "recordId": "M1-RPM-219"
+        },
+        "rpmPrimaryL1": "입체도형",
+        "rpmPrimaryL2": "입체도형의 겉넓이와 부피",
+        "rpmPrimaryL3": "복합입체도형",
+        "rpmPrimaryL4": "잘라낸 입체",
+        "rpmPrimaryRecordId": "M1-RPM-219",
+        "difficultyBasis": "구면의 7/8 뿐만 아니라 절단면에 생기는 사분원 3개의 넓이를 빠짐없이 더해야 하는 난이도 3 문항이다 (겉넓이 68, 구면 56).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-07 / M1-07-SOLID_FIGURE_MEASURE: 은 입체도형의 겉넓이는? [4점]",
+          "curriculum": "M1-RPM-219: 구의 1/8 을 절단하고 남은 입체의 노출 겉넓이를 구하는 M1-RPM-219 복합입체도형 > 잘라낸 입체에 해당한다 (겉넓이 68, 구면 56).",
+          "problemType": "절단 입체의 굽은 면과 새로 노출된 평면들의 넓이를 합산하여 총 겉넓이를 구하는 유형이다 (겉넓이 68, 구면 56).",
+          "difficulty": "구면의 7/8 뿐만 아니라 절단면에 생기는 사분원 3개의 넓이를 빠짐없이 더해야 하는 난이도 3 문항이다 (겉넓이 68, 구면 56).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 길이 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "구면의 7/8 넓이 56pi와 세 사분면 넓이 합 12pi를 구하여 겉넓이 68pi를 계산한다.",
       "decisiveStep": "남은 구면 56pi와 세 단면 사분원 12pi의 합산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "구의 겉넓이 공식과 단면 원의 넓이를 결합하는 2단계 기하 계산",
+      "difficultyReason": "구면의 7/8 뿐만 아니라 절단면에 생기는 사분원 3개의 넓이를 빠짐없이 더해야 하는 난이도 3 문항이다 (겉넓이 68, 구면 56).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_TRUNCATED_SPHERE_SURFACE_AREA",
-        "templateKey": "TPL_SPHERE_ONE_EIGHTH_REMOVED_SURFACE",
-        "why": "구의 일부를 잘라냈을 때 남은 구면과 절단면의 넓이를 합산하는 표준 심화 템플릿"
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "why": "절단 입체의 굽은 면과 새로 노출된 평면들의 넓이를 합산하여 총 겉넓이를 구하는 유형이다 (겉넓이 68, 구면 56)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_0e0e45379089ae1885a275304a7edfc3663debcc4dc791c63a7957379275e885",
@@ -716,12 +1164,12 @@
         "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
         "subUnit": "입체도형의 측정",
         "conceptClusterKey": "SOLID_FIGURE_MEASURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 15,
@@ -734,20 +1182,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-218"
+        ],
+        "rpmPrimary": {
+          "l1": "입체도형",
+          "l2": "입체도형의 겉넓이와 부피",
+          "l3": "구",
+          "l4": "구의 부피",
+          "recordId": "M1-RPM-218"
+        },
+        "rpmPrimaryL1": "입체도형",
+        "rpmPrimaryL2": "입체도형의 겉넓이와 부피",
+        "rpmPrimaryL3": "구",
+        "rpmPrimaryL4": "구의 부피",
+        "rpmPrimaryRecordId": "M1-RPM-218",
+        "difficultyBasis": "원기둥 부피와 구의 부피 공식을 각각 계산하고 뺀 부피를 다른 원기둥에 부어 높이를 구하는 난이도 3 문항이다 (부피 144, 36).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-07 / M1-07-SOLID_FIGURE_MEASURE: 원의 반지름의 길이가 $4\\rm\\",
+          "curriculum": "M1-RPM-218: 구의 부피 공식과 원기둥의 부피 보존을 연계하여 높이를 구하는 M1-RPM-218 구 > 구의 부피에 해당한다 (부피 144, 36).",
+          "problemType": "구슬이 잠길 때 넘친 물의 양을 구의 부피로 계산하고 다른 용기에서의 수면 높이를 구하는 부피 보존 유형이다 (부피 144, 36).",
+          "difficulty": "원기둥 부피와 구의 부피 공식을 각각 계산하고 뺀 부피를 다른 원기둥에 부어 높이를 구하는 난이도 3 문항이다 (부피 144, 36).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 지름 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "수조 (가)의 부피 144pi와 수조 (나)의 부피 36pi*x를 같게 놓아 x=4를 산출한다.",
       "decisiveStep": "36pi*x = 144pi 방정식 수립 및 x=4 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "부피 보존에 따른 등식을 세우고 일차방정식을 푸는 2단계 연산",
+      "difficultyReason": "원기둥 부피와 구의 부피 공식을 각각 계산하고 뺀 부피를 다른 원기둥에 부어 높이를 구하는 난이도 3 문항이다 (부피 144, 36).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_CYLINDER_WATER_CONSERVATION",
-        "templateKey": "TPL_WATER_LEVEL_CHANGE_CYLINDER",
-        "why": "액체의 부피 보존 법칙을 이용하여 두 입체도형의 치수와 높이 관계를 계산하는 템플릿"
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "why": "구슬이 잠길 때 넘친 물의 양을 구의 부피로 계산하고 다른 용기에서의 수면 높이를 구하는 부피 보존 유형이다 (부피 144, 36)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_74e0d93b79fef4e7ee9f0beca10963fd2e4c3a7f56dff45f078744bb8fb0e4a0",
@@ -765,12 +1245,12 @@
         "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
         "subUnit": "입체도형의 측정",
         "conceptClusterKey": "SOLID_FIGURE_MEASURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 16,
@@ -783,20 +1263,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-213"
+        ],
+        "rpmPrimary": {
+          "l1": "입체도형",
+          "l2": "입체도형의 겉넓이와 부피",
+          "l3": "기둥의 겉넓이와 부피",
+          "l4": "각기둥",
+          "recordId": "M1-RPM-213"
+        },
+        "rpmPrimaryL1": "입체도형",
+        "rpmPrimaryL2": "입체도형의 겉넓이와 부피",
+        "rpmPrimaryL3": "기둥의 겉넓이와 부피",
+        "rpmPrimaryL4": "각기둥",
+        "rpmPrimaryRecordId": "M1-RPM-213",
+        "difficultyBasis": "부채꼴 기둥에서 굽은 옆면뿐 아니라 평면 사각형 2개의 넓이를 놓치지 않고 합해야 하는 난이도 3 문항이다 (중심각 270, 겉넓이 54pi + 40).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-07 / M1-07-SOLID_FIGURE_MEASURE: 꼴 기둥 모양 입체도형의 겉넓이는?",
+          "curriculum": "M1-RPM-213: 부채꼴 밑면 기둥의 밑넓이와 옆넓이(곡면 및 평면)를 합산하는 M1-RPM-213 기둥의 겉넓이와 부피 > 각기둥에 해당한다 (중심각 270, 겉넓이 54pi + 40).",
+          "problemType": "두 밑면의 넓이와 굽은 옆면, 평면 옆면 2개를 분리 계산하여 합하는 기둥 겉넓이 유형이다 (중심각 270, 겉넓이 54pi + 40).",
+          "difficulty": "부채꼴 기둥에서 굽은 옆면뿐 아니라 평면 사각형 2개의 넓이를 놓치지 않고 합해야 하는 난이도 3 문항이다 (중심각 270, 겉넓이 54pi + 40).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 중심각 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "두 밑면 24pi, 곡면 옆면 30pi, 평면 직사각형 40을 분할 계산하여 합산한다.",
       "decisiveStep": "24pi + 30pi + 40 = 54pi + 40 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "부채꼴 넓이, 호의 길이 및 직사각형 면적을 분리 합성하는 3단계 기하 연산",
+      "difficultyReason": "부채꼴 기둥에서 굽은 옆면뿐 아니라 평면 사각형 2개의 넓이를 놓치지 않고 합해야 하는 난이도 3 문항이다 (중심각 270, 겉넓이 54pi + 40).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_SECTOR_PRISM_SURFACE_AREA",
-        "templateKey": "TPL_CYLINDRICAL_PART_SURFACE_AREA",
-        "why": "부채꼴을 밑면으로 하는 기둥의 곡면과 평면 옆면을 고려하여 겉넓이를 구하는 템플릿"
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "why": "두 밑면의 넓이와 굽은 옆면, 평면 옆면 2개를 분리 계산하여 합하는 기둥 겉넓이 유형이다 (중심각 270, 겉넓이 54pi + 40)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_58fc6a2ce243e028b4776668caa715a042d4eeb2b8a65fafff1c05825c012926",
@@ -814,12 +1326,12 @@
         "subUnitKey": "M1-08-DATA_ORGANIZATION",
         "subUnit": "자료의 정리",
         "conceptClusterKey": "DATA_ORGANIZATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_STEM_LEAF_PLACEHOLDER_EVALUATION",
+        "templateKey": "TPL_M1_STEM_LEAF_PLACEHOLDER_EVALUATION_CORE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 17,
@@ -832,20 +1344,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-227"
+        ],
+        "rpmPrimary": {
+          "l1": "통계",
+          "l2": "도수분포표와 상대도수",
+          "l3": "도수분포표",
+          "l4": "계급·도수",
+          "recordId": "M1-RPM-227"
+        },
+        "rpmPrimaryL1": "통계",
+        "rpmPrimaryL2": "도수분포표와 상대도수",
+        "rpmPrimaryL3": "도수분포표",
+        "rpmPrimaryL4": "계급·도수",
+        "rpmPrimaryRecordId": "M1-RPM-227",
+        "difficultyBasis": "표에 주어진 20개의 수치를 십의 자리 줄기와 일의 자리 잎으로 단순 정리하는 기본 난이도 2 문항이다 (학생 20명, 문항 17, 18).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-08 / M1-08-DATA_ORGANIZATION: 것이다. 이 자료를 줄기와 잎",
+          "curriculum": "M1-RPM-227: 자료의 수치를 자릿수별로 줄기와 잎으로 분류하는 M1-RPM-227 도수분포표와 상대도수 > 도수분포표 > 계급·도수에 해당한다 (학생 20명, 문항 17, 18).",
+          "problemType": "줄기와 잎 그림에서 누락된 미지수의 값을 자료의 원소들과 대응시켜 구하는 유형이다 (학생 20명, 문항 17, 18).",
+          "difficulty": "표에 주어진 20개의 수치를 십의 자리 줄기와 일의 자리 잎으로 단순 정리하는 기본 난이도 2 문항이다 (학생 20명, 문항 17, 18).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 정리 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "자료를 크기순으로 정렬하여 줄기별 잎의 누락값을 찾고 a=7, b=8, c=7의 합 22를 계산한다.",
       "decisiveStep": "자료 정렬 대조를 통한 a=7, b=8, c=7 결정 및 합산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "자료 정렬 및 줄기와 잎 그림의 1:1 대조를 통한 단순 계산",
+      "difficultyReason": "표에 주어진 20개의 수치를 십의 자리 줄기와 일의 자리 잎으로 단순 정리하는 기본 난이도 2 문항이다 (학생 20명, 문항 17, 18).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_STEM_AND_LEAF_COMPLETION",
-        "templateKey": "TPL_STEM_LEAF_MISSING_VALUE",
-        "why": "원자료 표를 바탕으로 줄기와 잎 그림의 빈칸 미지수를 구하는 표준 템플릿"
+        "problemTypeKey": "PT_M1_STEM_LEAF_PLACEHOLDER_EVALUATION",
+        "templateKey": "TPL_M1_STEM_LEAF_PLACEHOLDER_EVALUATION_CORE",
+        "why": "줄기와 잎 그림에서 누락된 미지수의 값을 자료의 원소들과 대응시켜 구하는 유형이다 (학생 20명, 문항 17, 18)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_e67c94e041054f49dc702a101313be84450f1c5c6a357b0cce2b820770619f11",
@@ -863,12 +1407,12 @@
         "subUnitKey": "M1-08-DATA_INTERPRETATION",
         "subUnit": "자료의 해석",
         "conceptClusterKey": "DATA_INTERPRETATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 18,
@@ -881,20 +1425,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-223"
+        ],
+        "rpmPrimary": {
+          "l1": "통계",
+          "l2": "대푯값",
+          "l3": "중앙값과 최빈값",
+          "l4": "중앙값",
+          "recordId": "M1-RPM-223"
+        },
+        "rpmPrimaryL1": "통계",
+        "rpmPrimaryL2": "대푯값",
+        "rpmPrimaryL3": "중앙값과 최빈값",
+        "rpmPrimaryL4": "중앙값",
+        "rpmPrimaryRecordId": "M1-RPM-223",
+        "difficultyBasis": "20개 자료를 정렬한 후 10번째와 11번째 값 30과 31의 평균을 구하는 전형적인 기본 문항이다 (학생 20명, 중앙값 30.5).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-08 / M1-08-DATA_INTERPRETATION: 18] 자료의 중앙값은? [4점]",
+          "curriculum": "M1-RPM-223: 자료의 개수가 짝수일 때 가운데 두 값의 평균으로 중앙값을 구하는 M1-RPM-223 대푯값 > 중앙값과 최빈값 > 중앙값에 해당한다 (학생 20명, 중앙값 30.5).",
+          "problemType": "순서대로 정렬된 자료에서 중앙 위치의 두 값의 평균을 취해 중앙값을 계산하는 유형이다 (학생 20명, 중앙값 30.5).",
+          "difficulty": "20개 자료를 정렬한 후 10번째와 11번째 값 30과 31의 평균을 구하는 전형적인 기본 문항이다 (학생 20명, 중앙값 30.5).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 개수 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "20개 자료의 10번째 값 30과 11번째 값 31의 평균 (30+31)/2 = 30.5를 계산한다.",
       "decisiveStep": "10번째(30)와 11번째(31) 값 식별 및 평균 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "자료 순서 위치 파악 후 두 값의 평균을 구하는 기본 연산",
+      "difficultyReason": "20개 자료를 정렬한 후 10번째와 11번째 값 30과 31의 평균을 구하는 전형적인 기본 문항이다 (학생 20명, 중앙값 30.5).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_MEDIAN_EVEN_DATASET",
-        "templateKey": "TPL_MEDIAN_FROM_STEM_LEAF",
-        "why": "줄기와 잎 그림에서 짝수 개의 자료의 중앙값을 산출하는 표준 템플릿"
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC",
+        "why": "순서대로 정렬된 자료에서 중앙 위치의 두 값의 평균을 취해 중앙값을 계산하는 유형이다 (학생 20명, 중앙값 30.5)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_38ed3ea7df4619b224e4011b842ff5cbbce494ba0a61fedacc5cf6ec3dfef4a9",
@@ -912,8 +1488,8 @@
         "subUnitKey": "M1-08-DATA_ORGANIZATION",
         "subUnit": "자료의 정리",
         "conceptClusterKey": "DATA_ORGANIZATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
@@ -930,20 +1506,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-227"
+        ],
+        "rpmPrimary": {
+          "l1": "통계",
+          "l2": "도수분포표와 상대도수",
+          "l3": "도수분포표",
+          "l4": "계급·도수",
+          "recordId": "M1-RPM-227"
+        },
+        "rpmPrimaryL1": "통계",
+        "rpmPrimaryL2": "도수분포표와 상대도수",
+        "rpmPrimaryL3": "도수분포표",
+        "rpmPrimaryL4": "계급·도수",
+        "rpmPrimaryRecordId": "M1-RPM-227",
+        "difficultyBasis": "도수분포표의 행별 도수와 합계, 계급값을 읽어 보기를 확인하는 기본 난이도 2 문항이다 (총 50명).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-08 / M1-08-DATA_ORGANIZATION: 다음 도수분포표는 어느 중학교",
+          "curriculum": "M1-RPM-227: 도수분포표의 각 항목과 도수 계산 진술의 정오를 판정하는 M1-RPM-227 도수분포표와 상대도수 > 도수분포표 > 계급·도수에 해당한다 (총 50명).",
+          "problemType": "도수분포표의 각 계급과 도수를 읽고 비율 및 계급값을 종합 검증하는 유형이다 (총 50명).",
+          "difficulty": "도수분포표의 행별 도수와 합계, 계급값을 읽어 보기를 확인하는 기본 난이도 2 문항이다 (총 50명).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 도수 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "6시간 미만 학생 수 34명의 백분율을 34/50*100=68%로 계산하여 4번의 오류를 판별한다.",
       "decisiveStep": "누적 도수 백분율 34/50*100 = 68% 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "도수분포표의 계급 크기, 계급값 및 부분 백분율을 종합 검토하는 문항",
+      "difficultyReason": "도수분포표의 행별 도수와 합계, 계급값을 읽어 보기를 확인하는 기본 난이도 2 문항이다 (총 50명).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_FREQUENCY_TABLE_INTERPRETATION",
-        "templateKey": "TPL_FREQUENCY_TABLE_PERCENTAGE_CHECK",
-        "why": "도수분포표에서 계급의 크기, 계급값, 누적 비율을 해석하고 판정하는 표준 템플릿"
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+        "why": "도수분포표의 각 계급과 도수를 읽고 비율 및 계급값을 종합 검증하는 유형이다 (총 50명)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_a29226183d72146a4fc8b3100ab29b6225887cfd0b196248ddb52b183b9dfa38",
@@ -958,11 +1566,11 @@
         "standardUnitKey": "M1-08",
         "standardUnit": "자료의 정리와 해석",
         "standardUnitOrder": 8,
-        "subUnitKey": "M1-08-DATA_INTERPRETATION",
-        "subUnit": "자료의 해석",
-        "conceptClusterKey": "DATA_INTERPRETATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "subUnitKey": "M1-08-DATA_ORGANIZATION",
+        "subUnit": "자료의 정리",
+        "conceptClusterKey": "DATA_ORGANIZATION",
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -979,20 +1587,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-228"
+        ],
+        "rpmPrimary": {
+          "l1": "통계",
+          "l2": "도수분포표와 상대도수",
+          "l3": "도수분포표",
+          "l4": "도수분포표 완성",
+          "recordId": "M1-RPM-228"
+        },
+        "rpmPrimaryL1": "통계",
+        "rpmPrimaryL2": "도수분포표와 상대도수",
+        "rpmPrimaryL3": "도수분포표",
+        "rpmPrimaryL4": "도수분포표 완성",
+        "rpmPrimaryRecordId": "M1-RPM-228",
+        "difficultyBasis": "전체 도수와 6회, 7회 계급 사이의 관계를 일차방정식으로 세워 해결해야 하는 난이도 3 문항이다 (나머지 21, 24).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-08 / M1-08-DATA_ORGANIZATION: 기록을 나타낸 도수분포다각형의 일부이다.",
+          "curriculum": "M1-RPM-228: 누락된 도수를 일차방정식으로 완성하는 M1-RPM-228 도수분포표와 상대도수 > 도수분포표 > 도수분포표 완성에 해당한다 (나머지 21, 24).",
+          "problemType": "찢어진 도수분포 자료에서 주어진 비율 조건을 활용해 누락된 도수를 복원하는 유형이다 (나머지 21, 24).",
+          "difficulty": "전체 도수와 6회, 7회 계급 사이의 관계를 일차방정식으로 세워 해결해야 하는 난이도 3 문항이다 (나머지 21, 24).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 나머지 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림은 어느 반 학생들의 턱걸이 기록을 나타낸 도수분포다각형의 일부이다. 종이가 찢어져서 일부 계급이 보이지 않는다.」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "7회 계급 도수를 a로 두고 전체 8a = 21 + (a+3) + a를 풀어 a=4를 구한 뒤 7회 이상 인원 4+2+1=7명을 계산한다.",
       "decisiveStep": "일차방정식 8a = 2a + 24로 a=4 도출 후 7회 이상 합산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "비율 조건으로부터 전체 인원 식을 세우고 일차방정식을 풀어 구간 합을 구하는 3단계 추론",
+      "difficultyReason": "전체 도수와 6회, 7회 계급 사이의 관계를 일차방정식으로 세워 해결해야 하는 난이도 3 문항이다 (나머지 21, 24).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_TORN_FREQUENCY_POLYGON_EQUATION",
-        "templateKey": "TPL_TORN_GRAPH_RATIO_RESTORATION",
-        "why": "도수분포다각형의 일부가 훼손되었을 때 비율과 차이 조건으로 일차방정식을 세워 복원하는 심화 템플릿"
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+        "why": "찢어진 도수분포 자료에서 주어진 비율 조건을 활용해 누락된 도수를 복원하는 유형이다 (나머지 21, 24)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_4c7f0473d8bf7537564d1f6429713c8c6f537683a1faff8b6707e91ebd2204ea",
@@ -1010,12 +1650,12 @@
         "subUnitKey": "M1-06-POLYGON_CIRCLE",
         "subUnit": "다각형과 원",
         "conceptClusterKey": "POLYGON_CIRCLE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 21,
@@ -1028,20 +1668,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-194"
+        ],
+        "rpmPrimary": {
+          "l1": "평면도형",
+          "l2": "다각형",
+          "l3": "다각형의 내각과 외각",
+          "l4": "내각의 합",
+          "recordId": "M1-RPM-194"
+        },
+        "rpmPrimaryL1": "평면도형",
+        "rpmPrimaryL2": "다각형",
+        "rpmPrimaryL3": "다각형의 내각과 외각",
+        "rpmPrimaryL4": "내각의 합",
+        "rpmPrimaryRecordId": "M1-RPM-194",
+        "difficultyBasis": "다각형의 기본 공식 2개를 연립하여 $n=16$ 을 구하고 내각의 합 공식에 대입하는 2단계 서술형 문항이다 (값 27, 32, 16, 2520).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-06 / M1-06-POLYGON_CIRCLE: 술형 1] 한 꼭짓점에서 그을 수",
+          "curriculum": "M1-RPM-194: 대각선과 삼각형 분할 조건으로 변의 수를 결정하고 내각의 합을 구하는 M1-RPM-194 다각형의 내각과 외각 > 내각의 합에 해당한다 (값 27, 32, 16, 2520).",
+          "problemType": "한 꼭짓점 대각선 수와 분할 삼각형 수 공식 $n-3, n-2$ 를 연립해 다각형을 특정하고 내각의 합을 구하는 서술형 유형이다 (값 27, 32, 16, 2520).",
+          "difficulty": "다각형의 기본 공식 2개를 연립하여 $n=16$ 을 구하고 내각의 합 공식에 대입하는 2단계 서술형 문항이다 (값 27, 32, 16, 2520).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 삼각형 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "a=n-3, b=n-2에서 2n-5=27, n=16을 구하고 내각의 합 (16-2)*180=2520도를 도출한다.",
       "decisiveStep": "2n-5=27로부터 n=16 도출 및 (16-2)*180 = 2520도 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "다각형 대각선 관계식으로 n을 구한 뒤 내각의 합을 서술 계산하는 2단계 문항",
+      "difficultyReason": "다각형의 기본 공식 2개를 연립하여 $n=16$ 을 구하고 내각의 합 공식에 대입하는 2단계 서술형 문항이다 (값 27, 32, 16, 2520).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_POLYGON_DIAGONAL_TRIANGLE_EQUATION",
-        "templateKey": "TPL_POLYGON_INNER_ANGLE_SUM_DERIVATION",
-        "why": "대각선 공식과 분할 삼각형 개수의 관계식을 세워 변의 수를 구하고 내각의 합을 도출하는 템플릿"
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS",
+        "why": "한 꼭짓점 대각선 수와 분할 삼각형 수 공식 $n-3, n-2$ 를 연립해 다각형을 특정하고 내각의 합을 구하는 서술형 유형이다 (값 27, 32, 16, 2520)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_7f4c27e708ff16b858d55d8b4c4fc35866579a70509b31cb8c3d3fead09dde0e",
@@ -1056,15 +1728,15 @@
         "standardUnitKey": "M1-06",
         "standardUnit": "평면도형의 성질",
         "standardUnitOrder": 6,
-        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
-        "subUnit": "평면도형의 측정",
-        "conceptClusterKey": "PLANE_FIGURE_MEASURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "subUnit": "다각형과 원",
+        "conceptClusterKey": "POLYGON_CIRCLE",
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 3,
+        "difficultyBucket": 4,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 22,
@@ -1077,20 +1749,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-201"
+        ],
+        "rpmPrimary": {
+          "l1": "평면도형",
+          "l2": "원과 부채꼴",
+          "l3": "원과 부채꼴의 기본",
+          "l4": "중심각·호·현",
+          "recordId": "M1-RPM-201"
+        },
+        "rpmPrimaryL1": "평면도형",
+        "rpmPrimaryL2": "원과 부채꼴",
+        "rpmPrimaryL3": "원과 부채꼴의 기본",
+        "rpmPrimaryL4": "중심각·호·현",
+        "rpmPrimaryRecordId": "M1-RPM-201",
+        "difficultyBasis": "보조선과 외각 성질로 $\\theta = 20^\\circ$ 를 유도하고 두 호의 중심각 $20^\\circ, 100^\\circ$ 로 각각의 길이를 구해야 하는 고난도 서술형 문항이다 (선분 AB, CD, DO, DP, 각 AOC 60).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-06 / M1-06-POLYGON_CIRCLE: n{CD}$의 길이를 각각 구하고",
+          "curriculum": "M1-RPM-201: 중심각의 크기와 호의 길이의 정비례 관계를 복합 기하에 적용하는 M1-RPM-201 원과 부채꼴의 기본 > 중심각·호·현에 해당한다 (선분 AB, CD, DO, DP, 각 AOC 60).",
+          "problemType": "이등변삼각형의 성질과 삼각형의 외각 정리를 연쇄 적용하여 중심각을 구하고 호의 길이를 비례식으로 계산하는 서술형 유형이다 (선분 AB, CD, DO, DP, 각 AOC 60).",
+          "difficulty": "보조선과 외각 성질로 $\\theta = 20^\\circ$ 를 유도하고 두 호의 중심각 $20^\\circ, 100^\\circ$ 로 각각의 길이를 구해야 하는 고난도 서술형 문항이다 (선분 AB, CD, DO, DP, 각 AOC 60).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 교점 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「[서·논술형 2] 다음 그림과 같이 원 $O$의 지름 $\\overline{AB}$의 연장선과 현 $\\overline{CD}$의 연장선의 교점을 $P$라 하자.」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "이등변삼각형 외각 성질로 theta=20도를 구하고, 중심각 20도와 100도에 대응하는 호의 길이를 비례배분하여 5cm, 25cm를 도출한다.",
       "decisiveStep": "외각 성질 3*theta=60도에서 theta=20도 산출 및 호의 길이 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "외각 성질 2회 적용으로 미지각을 구하고 두 호의 길이를 비례식으로 연계 서술하는 고난도 문항",
+      "difficultyReason": "보조선과 외각 성질로 $\\theta = 20^\\circ$ 를 유도하고 두 호의 중심각 $20^\\circ, 100^\\circ$ 로 각각의 길이를 구해야 하는 고난도 서술형 문항이다 (선분 AB, CD, DO, DP, 각 AOC 60).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_CIRCLE_SECANT_ANGLE_ARC",
-        "templateKey": "TPL_EXTERIOR_ANGLE_ISOSCELES_ARC_LENGTH",
-        "why": "외부 교점과 반지름으로 형성된 이등변삼각형들의 외각 관계를 이용하여 호의 길이를 구하는 대표 서술형 템플릿"
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "why": "이등변삼각형의 성질과 삼각형의 외각 정리를 연쇄 적용하여 중심각을 구하고 호의 길이를 비례식으로 계산하는 서술형 유형이다 (선분 AB, CD, DO, DP, 각 AOC 60)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_fe82def1a71c4c219a3397aabdd5173b9510ecc7a877bf3abbe0bc6b85e94bae",
@@ -1108,12 +1812,12 @@
         "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
         "subUnit": "입체도형의 측정",
         "conceptClusterKey": "SOLID_FIGURE_MEASURE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 23,
@@ -1126,20 +1830,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-214"
+        ],
+        "rpmPrimary": {
+          "l1": "입체도형",
+          "l2": "입체도형의 겉넓이와 부피",
+          "l3": "기둥의 겉넓이와 부피",
+          "l4": "원기둥",
+          "recordId": "M1-RPM-214"
+        },
+        "rpmPrimaryL1": "입체도형",
+        "rpmPrimaryL2": "입체도형의 겉넓이와 부피",
+        "rpmPrimaryL3": "기둥의 겉넓이와 부피",
+        "rpmPrimaryL4": "원기둥",
+        "rpmPrimaryRecordId": "M1-RPM-214",
+        "difficultyBasis": "세 입체도형의 기본 부피 공식을 $r$ 로 나타내고 비례식을 정수비로 정리하는 2단계 서술형 문항이다 (div Archimedes).",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-07 / M1-07-SOLID_FIGURE_MEASURE: 기둥의 밑면의 반지름의 길이를 $r",
+          "curriculum": "M1-RPM-214: 원기둥에 내접하는 구와 원뿔의 기본 부피 공식을 적용하는 M1-RPM-214 기둥의 겉넓이와 부피 > 원기둥에 해당한다 (div Archimedes).",
+          "problemType": "원기둥, 구, 원뿔의 부피 공식을 세우고 공통 인수를 약분하여 가장 간단한 자연수 비 $1:2:3$ 을 도출하는 대표적인 서술형 유형이다 (div Archimedes).",
+          "difficulty": "세 입체도형의 기본 부피 공식을 $r$ 로 나타내고 비례식을 정수비로 정리하는 2단계 서술형 문항이다 (div Archimedes).",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 규칙 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림과 같이 밑면의 지름과 높이가 모두 구의 지름과 같은 원기둥에 꼭 맞는 구와 원뿔이 있다.」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "높이 h=2r을 적용하여 원뿔 (2/3)pi r^3, 구 (4/3)pi r^3, 원기둥 2pi r^3을 유도하고 공통식을 약분하여 1:2:3 비를 서술한다.",
       "decisiveStep": "높이 2r 적용 부피 산출 및 1:2:3 자연수 비 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "세 입체도형의 부피 공식을 적용하고 비례식을 자연수로 정리하는 2단계 서술",
+      "difficultyReason": "세 입체도형의 기본 부피 공식을 $r$ 로 나타내고 비례식을 정수비로 정리하는 2단계 서술형 문항이다 (div Archimedes).",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_CONE_SPHERE_CYLINDER_VOLUME_RATIO",
-        "templateKey": "TPL_ARCHIMEDES_GRAVESTONE_VOLUME_RATIO",
-        "why": "원기둥에 내접하는 구와 원뿔의 부피 공식 유도 및 정수비 1:2:3을 서술하는 대표 템플릿"
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+        "why": "원기둥, 구, 원뿔의 부피 공식을 세우고 공통 인수를 약분하여 가장 간단한 자연수 비 $1:2:3$ 을 도출하는 대표적인 서술형 유형이다 (div Archimedes)."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     }
   ]
 }

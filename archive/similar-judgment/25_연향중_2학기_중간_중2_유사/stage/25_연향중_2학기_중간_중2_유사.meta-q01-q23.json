@@ -3,7 +3,7 @@
   "requestId": "25_연향중_2학기_중간_중2_유사-candidate-v1",
   "examUid": "25_연향중_2학기_중간_중2_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m2/2mid/25_연향중_2학기_중간_중2_유사.js",
-  "expectedSourceBlobSha1": "6ce34cb1304bf4b6927c573823e9398d8157e040",
+  "expectedSourceBlobSha1": "e39b31035dbe570f328ae246fbd43d89c3a4a4e8",
   "expectedQuestionCount": 23,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -29,9 +29,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
         "subUnit": "일차함수와 일차방정식의 관계",
-        "conceptClusterKey": "M2-04-VERTICAL_LINE_EQ",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
+        "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
+        "templateKey": "TPL_M2_FIND_VERTICAL_LINE_EQUATION_FROM_POINT",
         "crossConceptKeys": [
           "CC_EQUATIONS_PARALLEL_TO_AXES"
         ],
@@ -50,20 +50,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-055"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 일차방정식의 관계",
+          "l3": "방정식과 그래프",
+          "l4": "x축·y축에 평행한 직선",
+          "recordId": "M2-RPM-055"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+        "rpmPrimaryL3": "방정식과 그래프",
+        "rpmPrimaryL4": "x축·y축에 평행한 직선",
+        "rpmPrimaryRecordId": "M2-RPM-055",
+        "difficultyBasis": "방정식 x = -3의 정의에 따라 y축 평행 직선임을 바로 찾으므로 난이도 1이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_EQUATION: 방정식 $x = -3$의 그래프는 $x$좌표가 항상 $",
+          "curriculum": "M2-RPM-055: 일차방정식 x = -3이 y축에 평행한 직선임을 판별한다.",
+          "problemType": "방정식 x = -3의 형태로부터 축에 평행한 직선 그래프를 찾는 유형이다.",
+          "difficulty": "방정식 x = -3의 정의에 따라 y축 평행 직선임을 바로 찾으므로 난이도 1이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_EQUATIONS_PARALLEL_TO_AXES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "x = -3은 x좌표가 -3으로 일정하므로 (-3, 0)을 지나고 y축에 평행한 직선임을 고른다.",
       "decisiveStep": "x = k 꼴의 그래프가 (k, 0)을 지나고 y축에 평행함을 구분하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "일차방정식 x = -3의 그래프가 어느 축에 평행하고 어떤 점을 지나는지 바로 고르는 1단계 문항이다.",
+      "difficultyReason": "방정식 x = -3의 정의에 따라 y축 평행 직선임을 바로 찾으므로 난이도 1이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "x = k 꼴 직선의 기하적 표현 판별 키가 선택표에 없음"
+        "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
+        "templateKey": "TPL_M2_FIND_VERTICAL_LINE_EQUATION_FROM_POINT",
+        "why": "방정식 x = -3의 형태로부터 축에 평행한 직선 그래프를 찾는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_08aac06497cfd7b71534f6dcf5be21a1d2ac4a8cedb0cacb342e47f29887d929",
@@ -80,9 +112,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-PARALLELOGRAM_COND_NOT",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+        "templateKey": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
         "crossConceptKeys": [
           "CC_PARALLELOGRAM_CRITERIA"
         ],
@@ -101,20 +133,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-074"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "평행사변형",
+          "l3": "평행사변형의 판정",
+          "l4": "변·각 조건",
+          "recordId": "M2-RPM-074"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "평행사변형",
+        "rpmPrimaryL3": "평행사변형의 판정",
+        "rpmPrimaryL4": "변·각 조건",
+        "rpmPrimaryRecordId": "M2-RPM-074",
+        "difficultyBasis": "이웃 내각의 합 180도는 한 쌍만 평행함을 의미하므로 즉시 반례를 찾아 난이도 1이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: ④ 이웃하는 두 내각의 크기의 합이 $180^\\circ",
+          "curriculum": "M2-RPM-074: 이웃하는 두 내각의 합이 180도인 조건의 반례(사다리꼴)를 검토한다.",
+          "problemType": "두 내각의 합 180도 조건 등 평행사변형 판정 조건의 유효성을 판별하는 유형이다.",
+          "difficulty": "이웃 내각의 합 180도는 한 쌍만 평행함을 의미하므로 즉시 반례를 찾아 난이도 1이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_PARALLELOGRAM_CRITERIA: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "평행사변형이 되는 5가지 조건과 비교해 한 쌍의 대변만 평행한 사다리꼴도 만족하는 ④를 고른다.",
       "decisiveStep": "이웃한 두 내각 합 180° 조건이 한 쌍의 대변 평행만 보장함을 파악하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "평행사변형이 되는 다섯 가지 조건을 알고 있으면 반례를 바로 찾을 수 있는 1단계 문항이다.",
+      "difficultyReason": "이웃 내각의 합 180도는 한 쌍만 평행함을 의미하므로 즉시 반례를 찾아 난이도 1이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "평행사변형 성립 조건 중 거짓인 문장 판별 키가 선택표에 없음"
+        "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+        "templateKey": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
+        "why": "두 내각의 합 180도 조건 등 평행사변형 판정 조건의 유효성을 판별하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_e745f6fcfd1616241abbb2e7afa26293cd094cd4b2b6e1540e485ae327243379",
@@ -131,18 +195,18 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
         "subUnit": "일차함수와 일차방정식의 관계",
-        "conceptClusterKey": "M2-04-LINE_INTERSECT_PARAM",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+        "templateKey": "TPL_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION_COEFFICIENT",
         "crossConceptKeys": [
           "CC_INTERSECTION_OF_TWO_GRAPHS",
           "CC_POINT_SUBSTITUTION"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 3,
         "variationType": "NUMERIC",
         "provenance": {
@@ -153,20 +217,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-056"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "교점과 연립방정식",
+          "recordId": "M2-RPM-056"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+        "rpmPrimaryL3": "두 직선의 관계",
+        "rpmPrimaryL4": "교점과 연립방정식",
+        "rpmPrimaryRecordId": "M2-RPM-056",
+        "difficultyBasis": "직선과 ax - 3y = 11에 교점 좌표를 순차 대입하여 a, b를 구하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_EQUATION: 교점 $(2, b)$를 $3x - y = 7$에 대입하",
+          "curriculum": "M2-RPM-056: 교점 (2, b)를 직선과 ax - 3y = 11에 각각 대입해 연립방정식의 해를 구한다.",
+          "problemType": "직선 ax - 3y = 11과의 교점 좌표로부터 상수 a, b를 구하는 유형이다.",
+          "difficulty": "직선과 ax - 3y = 11에 교점 좌표를 순차 대입하여 a, b를 구하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_INTERSECTION_OF_TWO_GRAPHS, CC_POINT_SUBSTITUTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "교점 (2, b)를 3x - y = 7에 대입해 b = -1을 구한 뒤 ax - 3y = 11에 대입해 a = 4를 구한다.",
       "decisiveStep": "첫째 식에서 b = -1을 먼저 구하고 (2, -1)을 둘째 식에 대입하는 단계",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "교점의 좌표를 두 일차방정식에 차례로 대입하여 미정계수를 구하는 1단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "직선과 ax - 3y = 11에 교점 좌표를 순차 대입하여 a, b를 구하므로 난이도 2이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "두 직선 교점 좌표를 대입해 미정계수 구하기 키가 선택표에 없음"
+        "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+        "templateKey": "TPL_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION_COEFFICIENT",
+        "why": "직선 ax - 3y = 11과의 교점 좌표로부터 상수 a, b를 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_b3c0b7ba822c7ec6fd5141a9cb10e10c298e417ad00de1789f7f3f9bbc5a9425",
@@ -183,9 +279,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
         "subUnit": "일차함수와 일차방정식의 관계",
-        "conceptClusterKey": "M2-04-PARALLEL_NO_SOLUTION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
+        "problemTypeKey": "PT_LINE_RELATION",
+        "templateKey": "TPL_RELATION_PARALLEL_PARAMETER",
         "crossConceptKeys": [
           "CC_SIMULTANEOUS_LINEAR_EQUATIONS"
         ],
@@ -193,7 +289,7 @@
         "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 4,
         "variationType": "NUMERIC",
         "provenance": {
@@ -204,20 +300,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-057"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "두 직선의 평행·일치",
+          "recordId": "M2-RPM-057"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+        "rpmPrimaryL3": "두 직선의 관계",
+        "rpmPrimaryL4": "두 직선의 평행·일치",
+        "rpmPrimaryRecordId": "M2-RPM-057",
+        "difficultyBasis": "cases 식에서 두 직선의 기울기 -a = 3을 비교하여 a = -3을 바로 구하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_EQUATION: 두 일차방정식을 $y$에 대하여 정리하면 $y = -a",
+          "curriculum": "M2-RPM-057: cases 연립방정식의 두 직선 ax + y + 2 = 0이 평행하여 해가 없을 조건을 분석한다.",
+          "problemType": "cases 연립방정식에서 ax 계수의 평행 조건을 찾아 해가 없는 a를 구하는 유형이다.",
+          "difficulty": "cases 식에서 두 직선의 기울기 -a = 3을 비교하여 a = -3을 바로 구하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SIMULTANEOUS_LINEAR_EQUATIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "두 식을 y = mx + n 꼴로 정리해 기울기 일치(-a = 3)와 y절편 불일치를 확인하여 a = -3을 구한다.",
       "decisiveStep": "기울기 -a = 3을 만족할 때 y절편 -2와 -5/2가 서로 다름을 확인하는 단계",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "일차함수의 기울기와 y절편 비교를 통해 해가 없을 조건을 적용하는 2단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "cases 식에서 두 직선의 기울기 -a = 3을 비교하여 a = -3을 바로 구하므로 난이도 2이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "두 직선 평행 조건으로 해가 없는 연립방정식 계수 구하기 키가 선택표에 없음"
+        "problemTypeKey": "PT_LINE_RELATION",
+        "templateKey": "TPL_RELATION_PARALLEL_PARAMETER",
+        "why": "cases 연립방정식에서 ax 계수의 평행 조건을 찾아 해가 없는 a를 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_3afc8f0118b75d022ae092c8b63a37b545dce2dbc6b447e3838fe95b2f970c6d",
@@ -232,11 +360,11 @@
         "standardUnitKey": "M2-04",
         "standardUnit": "일차함수와 그래프",
         "standardUnitOrder": 4,
-        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-        "subUnit": "일차함수와 일차방정식의 관계",
-        "conceptClusterKey": "M2-04-QUADRANT_BY_SIGN",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "subUnit": "일차함수의 뜻과 그래프",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+        "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
         "crossConceptKeys": [
           "CC_QUADRANTS",
           "CC_SLOPE_SIGN"
@@ -259,20 +387,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-054"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 일차방정식의 관계",
+          "l3": "방정식과 그래프",
+          "l4": "일차방정식의 그래프",
+          "recordId": "M2-RPM-054"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+        "rpmPrimaryL3": "방정식과 그래프",
+        "rpmPrimaryL4": "일차방정식의 그래프",
+        "rpmPrimaryRecordId": "M2-RPM-054",
+        "difficultyBasis": "항 ay에서 유도된 기울기 양수와 절편 음수로 사분면을 즉시 판별하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: $x + ay - b = 0$을 $y$에 대하여 정리하",
+          "curriculum": "M2-RPM-054: 방정식 x + ay - b = 0에서 계수 a, b의 부호로 사분면을 판정한다.",
+          "problemType": "항 ay가 포함된 일차방정식의 기울기와 절편 부호로 지나지 않는 사분면을 결정하는 유형이다.",
+          "difficulty": "항 ay에서 유도된 기울기 양수와 절편 음수로 사분면을 즉시 판별하므로 난이도 2이다.",
+          "condition": "COND_NEGATIVE, COND_POSITIVE: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_QUADRANTS, CC_SLOPE_SIGN: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "y = -(1/a)x + b/a로 변형한 뒤 a < 0, b > 0으로부터 기울기 양수, y절편 음수를 판정해 제2사분면을 제외한다.",
       "decisiveStep": "-(1/a) > 0과 b/a < 0의 부호를 정확히 판정하여 그래프 개형을 잡는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "일차방정식을 일차함수 꼴로 고쳐 계수 부호로 기울기·절편 부호를 판별하고 사분면을 찾는 2단계 문항이다.",
+      "difficultyReason": "항 ay에서 유도된 기울기 양수와 절편 음수로 사분면을 즉시 판별하므로 난이도 2이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "계수 부호에 따른 직선이 지나지 않는 사분면 판별 키가 선택표에 없음"
+        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+        "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+        "why": "항 ay가 포함된 일차방정식의 기울기와 절편 부호로 지나지 않는 사분면을 결정하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_0417b3f3b8aaf0e6baa864764f82708578ee5f6b9c49595f9ba547dce02a202c",
@@ -289,9 +449,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
         "subUnit": "일차함수와 일차방정식의 관계",
-        "conceptClusterKey": "M2-04-THREE_LINES_TRIANGLE_AREA",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
+        "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+        "templateKey": "TPL_AREA_DIRECT",
         "crossConceptKeys": [
           "CC_INTERSECTION_OF_TWO_GRAPHS",
           "CC_INTERCEPTS"
@@ -311,20 +471,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-058"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "넓이",
+          "recordId": "M2-RPM-058"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+        "rpmPrimaryL3": "그래프 활용",
+        "rpmPrimaryL4": "넓이",
+        "rpmPrimaryRecordId": "M2-RPM-058",
+        "difficultyBasis": "y절편 차이 12와 교점 x좌표 4로 밑변과 높이를 구해 넓이 24를 계산하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_EQUATION: $x = 0$을 두 직선에 대입하면 $y$절편은 각각 ",
+          "curriculum": "M2-RPM-058: 세 직선의 밑변 12와 교점 높이 4로부터 넓이 24를 산출한다.",
+          "problemType": "세 직선으로 둘러싸인 삼각형의 밑변 12와 높이 4로 넓이 24를 구하는 유형이다.",
+          "difficulty": "y절편 차이 12와 교점 x좌표 4로 밑변과 높이를 구해 넓이 24를 계산하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_INTERSECTION_OF_TWO_GRAPHS, CC_INTERCEPTS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "y축 위 두 절편 (0, 6), (0, -6) 사이의 거리 12를 밑변, 두 직선 교점 (4, 2)의 x좌표 4를 높이로 하여 넓이를 구한다.",
       "decisiveStep": "연립방정식으로 구한 교점 (4, 2)의 x좌표 4가 y축에 내린 높이임을 파악하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "y절편 차로 밑변을 구하고 연립방정식 교점으로 높이를 구해 삼각형 넓이를 계산하는 2단계 문항이다.",
+      "difficultyReason": "y절편 차이 12와 교점 x좌표 4로 밑변과 높이를 구해 넓이 24를 계산하므로 난이도 2이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "y축과 두 일차방정식 직선이 이루는 삼각형 넓이 키가 선택표에 없음"
+        "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+        "templateKey": "TPL_AREA_DIRECT",
+        "why": "세 직선으로 둘러싸인 삼각형의 밑변 12와 높이 4로 넓이 24를 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_90da3d81841358c2bbd9931c2636948cdecec09ee5a308cfcfb13895c1d98ad1",
@@ -341,18 +533,18 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-ANGLE_BISECTOR_PROOF_RHA",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_CONGRUENCE_CRITERIA",
         "crossConceptKeys": [
           "CC_ANGLE_BISECTOR_PROPERTY",
           "CC_RIGHT_TRIANGLE_CONGRUENCE_RHA"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 7,
         "variationType": "NUMERIC",
         "provenance": {
@@ -363,20 +555,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-071"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "삼각형의 성질",
+          "l3": "직각삼각형의 합동",
+          "l4": "RHA",
+          "recordId": "M2-RPM-071"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "삼각형의 성질",
+        "rpmPrimaryL3": "직각삼각형의 합동",
+        "rpmPrimaryL4": "RHA",
+        "rpmPrimaryRecordId": "M2-RPM-071",
+        "difficultyBasis": "각 POA의 이등분 조건으로 RHA 합동임을 바로 파악하여 오류 선지 ②를 찾으므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: $\\angle POA = \\angle POB$, 빗변 ",
+          "curriculum": "M2-RPM-071: 직각삼각형 POA와 POB의 빗변 OP 공통과 한 예각 조건으로 RHA 합동을 판별한다.",
+          "problemType": "삼각형 POA에서 각의 이등분선 정리의 RHA 합동 조건 빈칸을 검증하는 유형이다.",
+          "difficulty": "각 POA의 이등분 조건으로 RHA 합동임을 바로 파악하여 오류 선지 ②를 찾으므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_ANGLE_BISECTOR_PROPERTY, CC_RIGHT_TRIANGLE_CONGRUENCE_RHA: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "공통 빗변 OP와 예각 ∠POA = ∠POB가 주어졌으므로 합동 조건 (라)가 RHS가 아닌 RHA임을 찾는다.",
       "decisiveStep": "각의 이등분선 조건 ㉠과 직각 조건 ㉢에서 RHA 합동임을 판별하는 단계",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "각의 이등분선 성질 증명 과정에서 사용된 합동 조건이 RHA임을 바로 판별하는 1단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "각 POA의 이등분 조건으로 RHA 합동임을 바로 파악하여 오류 선지 ②를 찾으므로 난이도 2이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "각의 이등분선 성질 증명 빈칸 오류 찾기 키가 선택표에 없음"
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_CONGRUENCE_CRITERIA",
+        "why": "삼각형 POA에서 각의 이등분선 정리의 RHA 합동 조건 빈칸을 검증하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_feac595e56a3c6dc055239fe7694f8cd73d8f0b1b32573aa8c9f68d256945419",
@@ -393,9 +617,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-CIRCUMCENTER_PERP_BISECT",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
         "crossConceptKeys": [
           "CC_TRIANGLE_CIRCUMCENTER"
         ],
@@ -414,20 +638,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-064"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "삼각형의 외심과 내심",
+          "l3": "외심",
+          "l4": "수직이등분선과 외심",
+          "recordId": "M2-RPM-064"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "삼각형의 외심과 내심",
+        "rpmPrimaryL3": "외심",
+        "rpmPrimaryL4": "수직이등분선과 외심",
+        "rpmPrimaryRecordId": "M2-RPM-064",
+        "difficultyBasis": "외심 O에서 OA = OB와 수직이등분선 정의를 바로 적용하여 두 보기를 고르므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: 점 $O$는 $\\triangle ABC$의 외심이므로 ",
+          "curriculum": "M2-RPM-064: 외심 O의 성질인 OA = OB = OC 및 세 변의 수직이등분선 교점 성질을 확인한다.",
+          "problemType": "삼각형 ABC의 외심 성질로부터 triangle AOB의 이등변삼각형 판정 및 수직이등분선 진술을 판별하는 유형이다.",
+          "difficulty": "외심 O에서 OA = OB와 수직이등분선 정의를 바로 적용하여 두 보기를 고르므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_TRIANGLE_CIRCUMCENTER: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "두 변의 수직이등분선 교점 O가 외심(OA=OB=OC)임을 파악해 ①과 ⑤를 참으로 고른다.",
       "decisiveStep": "OA = OB에서 ΔAOB가 이등변삼각형이고 O가 AB의 수직이등분선 위에 있음을 연결하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "외심의 정의(세 변의 수직이등분선의 교점)와 꼭짓점 거리 일치 성질로 5개 선지를 판별하는 2단계 문항이다.",
+      "difficultyReason": "외심 O에서 OA = OB와 수직이등분선 정의를 바로 적용하여 두 보기를 고르므로 난이도 2이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "외심 작도와 성질 복수정답 판별 키가 선택표에 없음"
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "why": "삼각형 ABC의 외심 성질로부터 triangle AOB의 이등변삼각형 판정 및 수직이등분선 진술을 판별하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_ad931d6cdd02f5dcfeb73dd6a3019f6550f38097ec9cce1e32ba7aa59bc7a1e1",
@@ -444,9 +700,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-A_PLUS_BOC_FROM_BIC",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
         "crossConceptKeys": [
           "CC_TRIANGLE_INCENTER",
           "CC_TRIANGLE_CIRCUMCENTER"
@@ -466,20 +722,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-069"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "삼각형의 외심과 내심",
+          "l3": "외접원·내접원 활용",
+          "l4": "외심·내심을 이용한 복합도형",
+          "recordId": "M2-RPM-069"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "삼각형의 외심과 내심",
+        "rpmPrimaryL3": "외접원·내접원 활용",
+        "rpmPrimaryL4": "외심·내심을 이용한 복합도형",
+        "rpmPrimaryRecordId": "M2-RPM-069",
+        "difficultyBasis": "내심 각 125도 공식으로 x = 70, 외심 각 공식으로 y = 140을 차례로 구하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: 점 $I$는 내심이므로 $125 = 90 + \\dfra",
+          "curriculum": "M2-RPM-069: 내심 각 BIC = 125도에서 x = 70을 구하고 외심 각 BOC에서 y = 140을 얻어 합 210을 계산한다.",
+          "problemType": "삼각형 ABC의 외심과 내심 각 공식을 결합하여 각의 합 210을 구하는 유형이다.",
+          "difficulty": "내심 각 125도 공식으로 x = 70, 외심 각 공식으로 y = 140을 차례로 구하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_TRIANGLE_INCENTER, CC_TRIANGLE_CIRCUMCENTER: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "내심 공식 125 = 90 + x/2에서 x = 70을 구한 뒤 외심 중심각 y = 2x = 140을 더해 210을 구한다.",
       "decisiveStep": "∠BIC = 125°에서 ∠A = 70°를 먼저 역산하고 ∠BOC = 2∠A로 연결하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "내심의 각 공식을 역산해 ∠A를 구한 뒤 외심의 중심각 성질을 적용하는 2단계 문항이다.",
+      "difficultyReason": "내심 각 125도 공식으로 x = 70, 외심 각 공식으로 y = 140을 차례로 구하므로 난이도 2이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "∠BIC로부터 ∠A와 ∠BOC의 합을 구하는 키가 선택표에 없음"
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+        "why": "삼각형 ABC의 외심과 내심 각 공식을 결합하여 각의 합 210을 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_604921f229ce11b55dc7c2d289099c042809a9a08697babdf072a555b8b68d76",
@@ -496,9 +784,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-CIRCUM_CENTER_ANGLE_RATIO",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
         "crossConceptKeys": [
           "CC_TRIANGLE_CIRCUMCENTER",
           "CC_RATIO_AND_PROPORTION"
@@ -518,20 +806,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-065"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "삼각형의 외심과 내심",
+          "l3": "외심",
+          "l4": "외심의 위치·각",
+          "recordId": "M2-RPM-065"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "삼각형의 외심과 내심",
+        "rpmPrimaryL3": "외심",
+        "rpmPrimaryL4": "외심의 위치·각",
+        "rpmPrimaryRecordId": "M2-RPM-065",
+        "difficultyBasis": "비례배분으로 중심각 90도를 구하고 절반 공식으로 45도를 즉시 계산하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: $\\angle AOB + \\angle BOC + \\an",
+          "curriculum": "M2-RPM-065: 외심 O를 중심으로 한 각의 비례배분으로 각 AOB = 90도를 구하고 원주각 45도를 계산한다.",
+          "problemType": "삼각형 ABC의 외심 중심각 비로부터 꼭짓각 ACB = 45도를 구하는 유형이다.",
+          "difficulty": "비례배분으로 중심각 90도를 구하고 절반 공식으로 45도를 즉시 계산하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_TRIANGLE_CIRCUMCENTER, CC_RATIO_AND_PROPORTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "360°를 3:5:4로 비례배분해 ∠AOB = 90°를 구하고 외심 중심각 성질로 ∠ACB = 45°를 구한다.",
       "decisiveStep": "∠AOB = 360° × 3/12 = 90°를 구한 뒤 절반인 45°를 계산하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "한 바퀴 360°를 비례배분해 중심각을 구하고 외심 각의 절반 성질을 적용하는 2단계 문항이다.",
+      "difficultyReason": "비례배분으로 중심각 90도를 구하고 절반 공식으로 45도를 즉시 계산하므로 난이도 2이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "외심 세 중심각의 비에서 삼각형 내각 구하기 키가 선택표에 없음"
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "why": "삼각형 ABC의 외심 중심각 비로부터 꼭짓각 ACB = 45도를 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_f3c53ff6d4be478636e03998fabce0e2ea9711e2482dac74174c1f0785afa9b6",
@@ -548,9 +868,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-INCIRCLE_TANGENT_LEN",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
         "crossConceptKeys": [
           "CC_TRIANGLE_INCENTER",
           "CC_PERIMETER"
@@ -559,7 +879,7 @@
         "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 11,
         "variationType": "NUMERIC",
         "provenance": {
@@ -570,20 +890,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-068"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "삼각형의 외심과 내심",
+          "l3": "외접원·내접원 활용",
+          "l4": "반지름·각 계산",
+          "recordId": "M2-RPM-068"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "삼각형의 외심과 내심",
+        "rpmPrimaryL3": "외접원·내접원 활용",
+        "rpmPrimaryL4": "반지름·각 계산",
+        "rpmPrimaryRecordId": "M2-RPM-068",
+        "difficultyBasis": "접선 길이 대칭성으로 둘레 절반 식 11 + x = 14에서 x = 3을 바로 구하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: $\\overline{FC} = x\\text{ cm}$라",
+          "curriculum": "M2-RPM-068: 내접원의 접선 길이 대칭성과 삼각형 ABC의 둘레 28 cm를 이용해 x = 3 cm를 구한다.",
+          "problemType": "삼각형 ABC의 둘레 28 cm와 접선 길이 조건으로부터 선분 FC의 길이를 구하는 유형이다.",
+          "difficulty": "접선 길이 대칭성으로 둘레 절반 식 11 + x = 14에서 x = 3을 바로 구하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_TRIANGLE_INCENTER, CC_PERIMETER: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "접선 길이 일치로 둘레 2(5 + 6 + x) = 28을 세워 x = 3cm를 구한다.",
       "decisiveStep": "AF = AD, BE = BD, EC = FC임을 이용해 둘레 절반 14 = 5 + 6 + FC를 세우는 단계",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "내접원의 접선 길이 일치 성질을 이용해 둘레 방정식으로 변 길이를 구하는 2단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "접선 길이 대칭성으로 둘레 절반 식 11 + x = 14에서 x = 3을 바로 구하므로 난이도 2이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "내접원 접선 길이와 둘레로 나머지 접선 길이 구하기 키가 선택표에 없음"
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH",
+        "why": "삼각형 ABC의 둘레 28 cm와 접선 길이 조건으로부터 선분 FC의 길이를 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_7b675aa144dc4799165c32b32dac4c1084b20c33f1b3f8923e23473a64ea664c",
@@ -600,9 +952,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-BISECTOR_DIST_AREA",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+        "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_EQUIDISTANCE",
         "crossConceptKeys": [
           "CC_ANGLE_BISECTOR_PROPERTY"
         ],
@@ -610,7 +962,7 @@
         "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 12,
         "variationType": "NUMERIC",
         "provenance": {
@@ -621,20 +973,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-066"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "삼각형의 외심과 내심",
+          "l3": "내심",
+          "l4": "각의 이등분선과 내심",
+          "recordId": "M2-RPM-066"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "삼각형의 외심과 내심",
+        "rpmPrimaryL3": "내심",
+        "rpmPrimaryL4": "각의 이등분선과 내심",
+        "rpmPrimaryRecordId": "M2-RPM-066",
+        "difficultyBasis": "각의 이등분선 성질로 높이 7을 확인하고 밑변 20과 곱해 70을 구하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: 점 $D$에서 변 $AB$에 내린 수선의 발을 $H$라",
+          "curriculum": "M2-RPM-066: 각의 이등분선 성질로 점 D에서 변 AB = 20에 이르는 거리 7을 파악해 넓이 70을 계산한다.",
+          "problemType": "직각삼각형 ABC에서 각의 이등분선과 변 AB = 20으로 삼각형 ABD의 넓이를 구하는 유형이다.",
+          "difficulty": "각의 이등분선 성질로 높이 7을 확인하고 밑변 20과 곱해 70을 구하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_ANGLE_BISECTOR_PROPERTY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "점 D에서 AB에 내린 수선의 길이 DH = CD = 7cm임을 각의 이등분선 성질로 구해 넓이를 계산한다.",
       "decisiveStep": "각의 이등분선 성질에 의해 ΔABD의 높이 DH가 CD = 7cm와 같음을 파악하는 단계",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "수선의 발을 내려 각의 이등분선 성질(거리 일치)을 높이로 바로 적용하는 2단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "각의 이등분선 성질로 높이 7을 확인하고 밑변 20과 곱해 70을 구하므로 난이도 2이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "각의 이등분선 위 점의 거리 일치로 삼각형 넓이 구하기 키가 선택표에 없음"
+        "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+        "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_EQUIDISTANCE",
+        "why": "직각삼각형 ABC에서 각의 이등분선과 변 AB = 20으로 삼각형 ABD의 넓이를 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c452593c0f577dc007d8be7960313f6fa28b2ca94902d3e98f05a6b14db7d459",
@@ -651,15 +1035,15 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-RHOMBUS_PROPS_NOT",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
         "crossConceptKeys": [
           "CC_RHOMBUS_PROPERTIES"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 13,
@@ -672,20 +1056,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-078"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "각 사각형의 성질",
+          "recordId": "M2-RPM-078"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "여러 가지 사각형",
+        "rpmPrimaryL3": "직사각형·마름모·정사각형",
+        "rpmPrimaryL4": "각 사각형의 성질",
+        "rpmPrimaryRecordId": "M2-RPM-078",
+        "difficultyBasis": "마름모의 대각선 성질을 비교하여 angle BAC = angle BDC가 항상 성립하지 않음을 판별하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: ①, ③ 마름모의 두 대각선은 서로 다른 것을 수직이등",
+          "curriculum": "M2-RPM-078: 마름모 ABCD의 대각선 수직이등분 및 각 성질을 검토하여 거짓인 선지를 찾는다.",
+          "problemType": "마름모 ABCD의 대각선과 각에 관한 설명 중 옳지 않은 진술 ④를 판별하는 유형이다.",
+          "difficulty": "마름모의 대각선 성질을 비교하여 angle BAC = angle BDC가 항상 성립하지 않음을 판별하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_RHOMBUS_PROPERTIES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "마름모의 대각선 수직이등분·내각 이등분 성질과 대조해 이웃각 절반을 같다고 한 ④를 거짓으로 고른다.",
       "decisiveStep": "∠BAC는 ∠A의 절반이고 ∠BDC는 ∠D의 절반이므로 일반적으로 다름을 가리는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "마름모의 대각선과 내각 성질을 선지별로 바로 판별하는 1단계 문항이다.",
+      "difficultyReason": "마름모의 대각선 성질을 비교하여 angle BAC = angle BDC가 항상 성립하지 않음을 판별하므로 난이도 2이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "마름모의 대각선과 각 성질 참거짓 판별 키가 선택표에 없음"
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "why": "마름모 ABCD의 대각선과 각에 관한 설명 중 옳지 않은 진술 ④를 판별하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_828377bcd89f3d61894f429e1ec70650584753471057b34a55eecdd98d7d3f5e",
@@ -702,9 +1118,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-PARALLELOGRAM_PERP_BISECTOR",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
         "crossConceptKeys": [
           "CC_PARALLELOGRAMS",
           "CC_ANGLE_BISECTOR_PROPERTY"
@@ -724,20 +1140,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-072"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "변·각의 성질",
+          "recordId": "M2-RPM-072"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "평행사변형",
+        "rpmPrimaryL3": "평행사변형의 성질",
+        "rpmPrimaryL4": "변·각의 성질",
+        "rpmPrimaryRecordId": "M2-RPM-072",
+        "difficultyBasis": "이웃각 64도, 이등분각 32도, 직각삼각형 여각 58도를 순차 계산하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: 평행사변형에서 이웃한 두 각의 합은 $180^\\circ",
+          "curriculum": "M2-RPM-072: 평행사변형 ABCD의 이웃각 합 180도와 각의 이등분선으로 angle DAE = 58도를 구한다.",
+          "problemType": "평행사변형 ABCD의 내각 116도로부터 직각삼각형 ADE의 각 DAE = 58도를 구하는 유형이다.",
+          "difficulty": "이웃각 64도, 이등분각 32도, 직각삼각형 여각 58도를 순차 계산하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_PARALLELOGRAMS, CC_ANGLE_BISECTOR_PROPERTY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "∠D = 180° - 116° = 64°의 절반 ∠ADE = 32°를 구하고 직각삼각형 AED에서 ∠DAE = 58°를 구한다.",
       "decisiveStep": "∠ADC = 64°의 이등분각 32°를 직각삼각형 AED의 여각 계산으로 잇는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "평행사변형의 이웃각 합과 각의 이등분, 직각삼각형 내각 합을 차례로 적용하는 2단계 문항이다.",
+      "difficultyReason": "이웃각 64도, 이등분각 32도, 직각삼각형 여각 58도를 순차 계산하므로 난이도 2이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "평행사변형 각 이등분선과 수선 직각삼각형 각 계산 키가 선택표에 없음"
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "why": "평행사변형 ABCD의 내각 116도로부터 직각삼각형 ADE의 각 DAE = 58도를 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_10f3c950e3989c76611eaa7c9aca6752c09340ca85c65f5d9098f43a601ebfde",
@@ -754,9 +1202,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-QUAD_TRANSITION_COND",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+        "templateKey": "TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE",
         "crossConceptKeys": [
           "CC_QUADRILATERAL_HIERARCHY",
           "CC_SQUARE_CLASSIFICATION"
@@ -765,7 +1213,7 @@
         "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 15,
         "variationType": "NUMERIC",
         "provenance": {
@@ -776,20 +1224,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-082"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "여러 가지 사각형",
+          "l3": "사각형의 포함 관계",
+          "l4": "조건으로 사각형 판정",
+          "recordId": "M2-RPM-082"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "여러 가지 사각형",
+        "rpmPrimaryL3": "사각형의 포함 관계",
+        "rpmPrimaryL4": "조건으로 사각형 판정",
+        "rpmPrimaryRecordId": "M2-RPM-082",
+        "difficultyBasis": "마름모의 기존 성질 AC perp BD는 추가 조건이 될 수 없음을 직관적으로 찾아내므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: ⑤ 마름모의 두 대각선은 이미 서로 수직이므로 $\\ov",
+          "curriculum": "M2-RPM-082: 사각형 계통도에서 마름모가 정사각형이 되는 조건으로 90도 내각 또는 대각선 조건을 판별한다.",
+          "problemType": "대각선 AC, BD의 성질을 바탕으로 마름모에서 정사각형으로의 변환 조건을 판정하는 유형이다.",
+          "difficulty": "마름모의 기존 성질 AC perp BD는 추가 조건이 될 수 없음을 직관적으로 찾아내므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_QUADRILATERAL_HIERARCHY, CC_SQUARE_CLASSIFICATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "사각형 포함 관계에서 마름모에 대각선 직교를 추가한 ⑤가 이미 성립하는 조건임을 판별한다.",
       "decisiveStep": "마름모가 정사각형이 되려면 직사각형 조건이 추가되어야 하는데 ⑤는 마름모 자체 성질임을 가리는 단계",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "평행사변형·직사각형·마름모가 상위·하위 사각형으로 변환되는 추가 조건을 판별하는 2단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "마름모의 기존 성질 AC perp BD는 추가 조건이 될 수 없음을 직관적으로 찾아내므로 난이도 2이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "사각형 변환 조건 판별표 오류 찾기 키가 선택표에 없음"
+        "problemTypeKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+        "templateKey": "TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE",
+        "why": "대각선 AC, BD의 성질을 바탕으로 마름모에서 정사각형으로의 변환 조건을 판정하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_e361d2324171b4a13bde706590d7fb405fd8097c5d50a5615381581c3f591476",
@@ -806,9 +1286,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-RECT_FOLD_GFE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
         "crossConceptKeys": [
           "CC_GEOMETRIC_FOLDING",
           "CC_SUPPLEMENTARY_ANGLES"
@@ -817,7 +1297,7 @@
         "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B23",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 16,
         "variationType": "NUMERIC",
         "provenance": {
@@ -828,20 +1308,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-078"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "각 사각형의 성질",
+          "recordId": "M2-RPM-078"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "여러 가지 사각형",
+        "rpmPrimaryL3": "직사각형·마름모·정사각형",
+        "rpmPrimaryL4": "각 사각형의 성질",
+        "rpmPrimaryRecordId": "M2-RPM-078",
+        "difficultyBasis": "접은 각으로 이등변삼각형 밑각 56도를 구하고 평각에서 124도를 계산하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: $\\overline{AF} \\parallel \\over",
+          "curriculum": "M2-RPM-078: 직사각형 ABCD의 종이접기에서 이등변삼각형 밑각과 접은 각의 성질로 124도를 계산한다.",
+          "problemType": "직사각형 ABCD를 접었을 때 각 EAF = 68도로부터 각 GFE = 124도를 구하는 유형이다.",
+          "difficulty": "접은 각으로 이등변삼각형 밑각 56도를 구하고 평각에서 124도를 계산하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_GEOMETRIC_FOLDING, CC_SUPPLEMENTARY_ANGLES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「직사각형 $ABCD$를 변 $BC$ 위의 점 $E$와」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "동측내각 ∠AEC = 112°의 절반 56°로 ∠EFA = 56°를 구하고 평각 보각 ∠EFD = ∠GFE = 124°를 구한다.",
       "decisiveStep": "∠AEF = ∠FEC = 56°에서 ∠EFA = 56°를 구해 평각 180° - 56°로 ∠GFE를 얻는 단계",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B23",
-      "difficultyReason": "직사각형 평행선과 종이접기 대응각 일치 성질을 연속 적용해 각을 구하는 2단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "접은 각으로 이등변삼각형 밑각 56도를 구하고 평각에서 124도를 계산하므로 난이도 2이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "직사각형 대각선 접기 ∠GFE 각도 계산 키가 선택표에 없음"
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "why": "직사각형 ABCD를 접었을 때 각 EAF = 68도로부터 각 GFE = 124도를 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_99a546627fecc74a0b357439b121e340d24a7022aee47980d5f09d672aa37091",
@@ -858,9 +1370,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-SAME_HEIGHT_AREA_RATIO",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION",
+        "templateKey": "TPL_MG_FIND_PARALLEL_CONDITION_FOR_EQUAL_AREA_QUADRILATERAL",
         "crossConceptKeys": [
           "CC_AREA_RATIO"
         ],
@@ -879,20 +1391,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-077"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "평행사변형",
+          "l3": "넓이와 활용",
+          "l4": "분할도형",
+          "recordId": "M2-RPM-077"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "평행사변형",
+        "rpmPrimaryL3": "넓이와 활용",
+        "rpmPrimaryL4": "분할도형",
+        "rpmPrimaryRecordId": "M2-RPM-077",
+        "difficultyBasis": "전체 넓이 65에 밑변 비 2/5를 곱하여 26을 바로 계산하므로 난이도 1이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: $\\triangle ABP$와 $\\triangle AP",
+          "curriculum": "M2-RPM-077: 삼각형 ABC의 넓이 65 cm^2를 밑변의 비 BP : PC = 2 : 3으로 비례배분하여 26을 산출한다.",
+          "problemType": "삼각형 ABC의 분할도형에서 밑변의 비 2 : 3에 따른 넓이 비례배분을 구하는 유형이다.",
+          "difficulty": "전체 넓이 65에 밑변 비 2/5를 곱하여 26을 바로 계산하므로 난이도 1이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_AREA_RATIO: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "높이가 같은 두 삼각형의 넓이 비가 밑변 비 2:3과 같음을 이용해 65 × 2/5 = 26을 계산한다.",
       "decisiveStep": "전체 넓이 65를 2 : 3으로 비례배분하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "높이가 같은 삼각형의 넓이 비가 밑변 비와 같다는 성질을 바로 적용하는 1단계 문항이다.",
+      "difficultyReason": "전체 넓이 65에 밑변 비 2/5를 곱하여 26을 바로 계산하므로 난이도 1이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "같은 높이 삼각형 밑변 비 넓이 분할 기본 키가 선택표에 없음"
+        "problemTypeKey": "PT_MG_PARALLEL_LINES_EQUAL_AREA_TRANSFORMATION",
+        "templateKey": "TPL_MG_FIND_PARALLEL_CONDITION_FOR_EQUAL_AREA_QUADRILATERAL",
+        "why": "삼각형 ABC의 분할도형에서 밑변의 비 2 : 3에 따른 넓이 비례배분을 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_1a1f0b7aee01a79beb9ad54b0c9fd99294a502871b4ed1f841cff5cc1791a44a",
@@ -909,9 +1453,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-RHA_TRAPEZOID_AREA",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
         "crossConceptKeys": [
           "CC_RIGHT_TRIANGLE_CONGRUENCE_RHA",
           "CC_TRAPEZOID"
@@ -920,7 +1464,7 @@
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B23",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 18,
         "variationType": "NUMERIC",
         "provenance": {
@@ -931,20 +1475,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-071"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "삼각형의 성질",
+          "l3": "직각삼각형의 합동",
+          "l4": "RHA",
+          "recordId": "M2-RPM-071"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "삼각형의 성질",
+        "rpmPrimaryL3": "직각삼각형의 합동",
+        "rpmPrimaryL4": "RHA",
+        "rpmPrimaryRecordId": "M2-RPM-071",
+        "difficultyBasis": "RHA 합동으로 각 변의 길이를 결정하고 일반적이지 않은 각 조건 ③을 가려내므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: $\\angle ADB = \\angle CEA = 90^",
+          "curriculum": "M2-RPM-071: 직각이등변삼각형 ABC의 꼭짓점 수선에서 RHA 합동과 사다리꼴 넓이 98을 검증한다.",
+          "problemType": "삼각형 ABC에서 변 DB = 5, EC = 9 조건으로 RHA 합동 및 진술 오류 ③을 찾는 유형이다.",
+          "difficulty": "RHA 합동으로 각 변의 길이를 결정하고 일반적이지 않은 각 조건 ③을 가려내므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_RIGHT_TRIANGLE_CONGRUENCE_RHA, CC_TRAPEZOID: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "ΔADB ≡ ΔCEA(RHA 합동)로 DE = 14와 사다리꼴 넓이 98을 확인하고, 항상 성립하지 않는 ③을 고른다.",
       "decisiveStep": "선지 ③의 ∠DAB = ∠ABC가 직선 l의 위치에 따라 변하는 각임을 가리는 단계",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B23",
-      "difficultyReason": "직각삼각형 RHA 합동으로 변 길이와 사다리꼴 넓이를 구한 뒤 각 선지의 참거짓을 판별하는 2단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "RHA 합동으로 각 변의 길이를 결정하고 일반적이지 않은 각 조건 ③을 가려내므로 난이도 2이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "직각이등변삼각형 수선 RHA 합동과 사다리꼴 넓이 판별 키가 선택표에 없음"
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+        "why": "삼각형 ABC에서 변 DB = 5, EC = 9 조건으로 RHA 합동 및 진술 오류 ③을 찾는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_d6f93b8cb90fda39520514563f25fee8ad8b6a47db2115a01fe2a1625ab3ebdd",
@@ -961,9 +1537,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-CIRCUM_IN_CIRCUMFERENCE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
         "crossConceptKeys": [
           "CC_TRIANGLE_CIRCUMCENTER",
           "CC_TRIANGLE_INCENTER"
@@ -972,7 +1548,7 @@
         "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B23",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 19,
         "variationType": "NUMERIC",
         "provenance": {
@@ -983,20 +1559,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-068"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "삼각형의 외심과 내심",
+          "l3": "외접원·내접원 활용",
+          "l4": "반지름·각 계산",
+          "recordId": "M2-RPM-068"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "삼각형의 외심과 내심",
+        "rpmPrimaryL3": "외접원·내접원 활용",
+        "rpmPrimaryL4": "반지름·각 계산",
+        "rpmPrimaryRecordId": "M2-RPM-068",
+        "difficultyBasis": "외접원 둘레 10pi와 내접원 둘레 4pi를 각각 구하여 합 14pi를 계산하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: 직각삼각형의 외심 $O$는 빗변 $AB$의 중점이므로 ",
+          "curriculum": "M2-RPM-068: 직각삼각형 ABC의 외접원 반지름 5와 내접원 반지름 2로부터 둘레의 합 14pi를 산출한다.",
+          "problemType": "변 AB = 10, BC = 6, AC = 8인 직각삼각형의 외접원과 내접원의 둘레 합을 구하는 유형이다.",
+          "difficulty": "외접원 둘레 10pi와 내접원 둘레 4pi를 각각 구하여 합 14pi를 계산하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_TRIANGLE_CIRCUMCENTER, CC_TRIANGLE_INCENTER: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "빗변의 절반 R = 5와 넓이 공식으로 구한 내접원 반지름 r = 2의 둘레 10π와 4π를 더한다.",
       "decisiveStep": "직각삼각형 외접원 반지름 R = AB/2 = 5와 넓이 24 = 12r에서 r = 2를 각각 구하는 단계",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B23",
-      "difficultyReason": "직각삼각형의 외접원 반지름(빗변 절반)과 내접원 반지름(넓이 이용)을 각각 구해 둘레를 합산하는 2단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "외접원 둘레 10pi와 내접원 둘레 4pi를 각각 구하여 합 14pi를 계산하므로 난이도 2이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "직각삼각형 외접원과 내접원 둘레의 합 구하기 키가 선택표에 없음"
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+        "why": "변 AB = 10, BC = 6, AC = 8인 직각삼각형의 외접원과 내접원의 둘레 합을 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_37fa4ddd22694bec907d5daeac7257c3f88ad0028730ffa9925a766f250872a7",
@@ -1013,9 +1621,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-RHOMBUS_DIAG_ISOSCELES",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "templateKey": "TPL_ISOSCELES_CONVERSE",
         "crossConceptKeys": [
           "CC_RHOMBUS_PROPERTIES",
           "CC_ALTERNATE_INTERIOR_ANGLES"
@@ -1035,20 +1643,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-078"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "각 사각형의 성질",
+          "recordId": "M2-RPM-078"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "여러 가지 사각형",
+        "rpmPrimaryL3": "직사각형·마름모·정사각형",
+        "rpmPrimaryL4": "각 사각형의 성질",
+        "rpmPrimaryRecordId": "M2-RPM-078",
+        "difficultyBasis": "각의 추론으로 triangle DCF가 이등변삼각형임을 밝혀 DF = 15를 찾아 합산하므로 난이도 3이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: $\\overline{BE} = \\overline{BF}",
+          "curriculum": "M2-RPM-078: 마름모 ABCD의 변의 길이 15와 이등변삼각형 성질로 DF = 15를 얻어 대각선 BD = 26을 구한다.",
+          "problemType": "마름모 ABCD에서 BE = BF = 11과 BC = 15 조건으로 대각선 BD = 26을 계산하는 유형이다.",
+          "difficulty": "각의 추론으로 triangle DCF가 이등변삼각형임을 밝혀 DF = 15를 찾아 합산하므로 난이도 3이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_RHOMBUS_PROPERTIES, CC_ALTERNATE_INTERIOR_ANGLES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「마름모 $ABCD$에서 변 $AB$ 위의 점 $E$와」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "엇각과 맞꼭지각으로 ΔDFC가 이등변삼각형임을 보여 DF = DC = 15를 구하고 BF = 11과 더한다.",
       "decisiveStep": "∠BEF = ∠EFB = ∠DFC = ∠DCF를 통해 DF = DC = 15를 도출하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "이등변삼각형 밑각, 평행선 엇각, 맞꼭지각을 연결해 새 이등변삼각형을 판정하고 대각선 길이를 구하는 3단계 문항이다.",
+      "difficultyReason": "각의 추론으로 triangle DCF가 이등변삼각형임을 밝혀 DF = 15를 찾아 합산하므로 난이도 3이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "마름모 내 이등변삼각형 엇각 연쇄로 대각선 길이 구하기 키가 선택표에 없음"
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "templateKey": "TPL_ISOSCELES_CONVERSE",
+        "why": "마름모 ABCD에서 BE = BF = 11과 BC = 15 조건으로 대각선 BD = 26을 계산하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_81526a5ecfd9e8c73d64479229c675235b25f145a19ffb3b4b2a1ce44decc4ba",
@@ -1065,9 +1705,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
         "subUnit": "일차함수와 일차방정식의 관계",
-        "conceptClusterKey": "M2-04-THREE_LINES_NO_TRIANGLE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
+        "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+        "templateKey": "TPL_INTERSECTION_TRIANGLE_FORMATION",
         "crossConceptKeys": [
           "CC_INTERSECTION_OF_TWO_GRAPHS"
         ],
@@ -1088,20 +1728,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-057"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "두 직선의 평행·일치",
+          "recordId": "M2-RPM-057"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+        "rpmPrimaryL3": "두 직선의 관계",
+        "rpmPrimaryL4": "두 직선의 평행·일치",
+        "rpmPrimaryRecordId": "M2-RPM-057",
+        "difficultyBasis": "직선 ax + y + 3 = 0의 평행 조건 a = 1, -2와 교점 대입 a = -4/3를 모두 구해 합하므로 난이도 3이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_EQUATION: 세 직선이 삼각형을 이루지 않는 경우는 두 직선이 평행",
+          "curriculum": "M2-RPM-057: 세 직선이 삼각형을 이루지 않도록 하는 ax 계수 조건(평행 및 한 점 교점)을 연립한다.",
+          "problemType": "직선 ax + y + 3 = 0이 삼각형을 형성하지 않을 모든 a의 값의 합을 구하는 서술형 유형이다.",
+          "difficulty": "직선 ax + y + 3 = 0의 평행 조건 a = 1, -2와 교점 대입 a = -4/3를 모두 구해 합하므로 난이도 3이다.",
+          "condition": "COND_NONZERO: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_INTERSECTION_OF_TWO_GRAPHS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "두 직선 평행 조건 2가지(a = 1, a = -2)와 교점 (3, 1) 통과 조건(a = -4/3)을 모두 구해 합산한다.",
       "decisiveStep": "평행한 두 경우 외에 두 직선의 교점 (3, 1)을 세 번째 직선이 지나는 경우를 빠뜨리지 않는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "세 직선이 삼각형을 만들지 못하는 세 가지 경우(평행 2건, 한 점 교차 1건)를 모두 구해 더하는 3단계 문항이다.",
+      "difficultyReason": "직선 ax + y + 3 = 0의 평행 조건 a = 1, -2와 교점 대입 a = -4/3를 모두 구해 합하므로 난이도 3이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "세 직선이 삼각형을 이루지 않을 조건의 모든 a 합 구하기 키가 선택표에 없음"
+        "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+        "templateKey": "TPL_INTERSECTION_TRIANGLE_FORMATION",
+        "why": "직선 ax + y + 3 = 0이 삼각형을 형성하지 않을 모든 a의 값의 합을 구하는 서술형 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_ff553d86913c7c90bc62afdd3f248f4815e7e73790d155cfaea35618353995a5",
@@ -1118,7 +1790,7 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
         "subUnit": "삼각형의 성질",
-        "conceptClusterKey": "M2-05-ISOSCELES_BISECTOR_BDC",
+        "conceptClusterKey": "TRIANGLE_PROPERTIES",
         "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
         "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
         "crossConceptKeys": [
@@ -1129,7 +1801,7 @@
         "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 22,
         "variationType": "NUMERIC",
         "provenance": {
@@ -1140,20 +1812,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-060"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각형의 성질",
+          "l2": "이등변삼각형",
+          "l3": "이등변삼각형의 성질",
+          "l4": "밑각",
+          "recordId": "M2-RPM-060"
+        },
+        "rpmPrimaryL1": "삼각형의 성질",
+        "rpmPrimaryL2": "이등변삼각형",
+        "rpmPrimaryL3": "이등변삼각형의 성질",
+        "rpmPrimaryL4": "밑각",
+        "rpmPrimaryRecordId": "M2-RPM-060",
+        "difficultyBasis": "밑각 공식으로 58도를 구하고 삼각형 내각 합으로 93도를 순차 계산하므로 난이도 2이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-TRIANGLE_PROPERTIES: (1) 이등변삼각형의 두 밑각의 크기는 같으므로 $\\a",
+          "curriculum": "M2-RPM-060: 이등변삼각형 ABC의 밑각 성질로 angle B = 58도와 각 BDC = 93도를 산출한다.",
+          "problemType": "이등변삼각형 ABC에서 꼭지각 64도와 각 이등분선으로 밑각과 교각을 구하는 서술형 유형이다.",
+          "difficulty": "밑각 공식으로 58도를 구하고 삼각형 내각 합으로 93도를 순차 계산하므로 난이도 2이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_ISOSCELES_TRIANGLES, CC_ANGLE_BISECTOR_PROPERTY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "이등변삼각형 밑각 성질로 ∠B = ∠C = 58°를 구하고 절반각 ∠BCD = 29°와 함께 ∠BDC = 93°를 구한다.",
       "decisiveStep": "∠B = 58°와 이등분각 ∠BCD = 29°를 ΔBDC 내각의 합에 적용하는 단계",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "이등변삼각형 밑각 성질과 각의 이등분선을 이용해 두 단계로 각을 구하는 2단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "밑각 공식으로 58도를 구하고 삼각형 내각 합으로 93도를 순차 계산하므로 난이도 2이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
         "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
-        "why": "이등변삼각형 밑각 성질 서술 및 밑각 이등분선 교점 각 구하기"
+        "why": "이등변삼각형 ABC에서 꼭지각 64도와 각 이등분선으로 밑각과 교각을 구하는 서술형 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_7c5bb9801de2491c002d92898ee0618021a483eb85349ea253087c5bb0f16c5f",
@@ -1170,16 +1874,16 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
         "subUnit": "사각형의 성질",
-        "conceptClusterKey": "M2-05-SQUARE_DIAG_PROPS_XY",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "QUADRILATERAL_PROPERTIES",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
         "crossConceptKeys": [
           "CC_SQUARE_PROPERTIES",
           "CC_DIAGONALS"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 23,
@@ -1192,20 +1896,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-079"
+        ],
+        "rpmPrimary": {
+          "l1": "사각형의 성질",
+          "l2": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "특수 사각형의 대각선 성질",
+          "recordId": "M2-RPM-079"
+        },
+        "rpmPrimaryL1": "사각형의 성질",
+        "rpmPrimaryL2": "여러 가지 사각형",
+        "rpmPrimaryL3": "직사각형·마름모·정사각형",
+        "rpmPrimaryL4": "특수 사각형의 대각선 성질",
+        "rpmPrimaryRecordId": "M2-RPM-079",
+        "difficultyBasis": "정사각형 대각선의 수직이등분 및 꼭짓각 45도 이등분 성질을 종합 적용하므로 난이도 3이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-05 / M2-05-QUADRILATERAL_PROPERTIES: (1) 정사각형의 두 대각선은 길이가 같고, 서로 다른",
+          "curriculum": "M2-RPM-079: 정사각형 ABCD의 대각선 길이 같음과 수직이등분 성질로 x = 8, y = 17을 구한다.",
+          "problemType": "정사각형 ABCD의 대각선 성질을 이용해 미지수 x, y의 값을 구하는 서술형 유형이다.",
+          "difficulty": "정사각형 대각선의 수직이등분 및 꼭짓각 45도 이등분 성질을 종합 적용하므로 난이도 3이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SQUARE_PROPERTIES, CC_DIAGONALS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "정사각형 대각선의 길이 일치·수직이등분·꼭짓각 이등분 성질로 x = 8, ∠EBO = 28°, y = 45 - 28 = 17을 구한다.",
       "decisiveStep": "∠BOE = 90°에서 ∠EBO = 28°를 구해 ∠ABO = 45°에서 빼는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "정사각형 대각선의 세 가지 성질을 모두 서술하고 이를 수치 계산에 적용하는 2단계 문항이다.",
+      "difficultyReason": "정사각형 대각선의 수직이등분 및 꼭짓각 45도 이등분 성질을 종합 적용하므로 난이도 3이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "정사각형 대각선 성질 서술 및 길이·각도 구하기 키가 선택표에 없음"
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "why": "정사각형 ABCD의 대각선 성질을 이용해 미지수 x, y의 값을 구하는 서술형 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     }
   ]
 }

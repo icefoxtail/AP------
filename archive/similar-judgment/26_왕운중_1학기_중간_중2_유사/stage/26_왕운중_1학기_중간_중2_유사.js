@@ -17,7 +17,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "REPEATING_DECIMAL_FRACTION_CONVERSION",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -38,7 +38,7 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_FRACTION_ARITHMETIC"
@@ -47,6 +47,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "순환소수",
+    "rpmPrimaryL4": "순환소수를 분수로",
+    "rpmPrimaryRecordId": "M2-RPM-122",
     "sourceQid": 1,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q01-problem.plan.json"
@@ -66,7 +71,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "FINITE_VS_REPEATING_DECIMAL_IDENTIFICATION",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -86,8 +91,8 @@ window.questionBank = [
     "solution": "분수를 기약분수로 나타내었을 때 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수이고, $2$와 $5$ 이외의 소인수가 있으면 순환소수가 된다. 각 분수를 기약분수로 나타내어 분모의 소인수를 확인한다.\n\n1. $\\frac{3}{11}$ : 기약분수이며 분모의 소인수가 $11$이므로 순환소수이다.  \n2. $\\frac{21}{2 \\times 3 \\times 5 \\times 7} = \\frac{21}{21 \\times 2 \\times 5} = \\frac{1}{2 \\times 5} = \\frac{1}{10}$ : 분모 소인수가 $2, 5$뿐이므로 유한소수이다.  \n3. $-\\frac{2}{17}$ : 기약분수이며 분모의 소인수가 $17$이므로 순환소수이다.  \n4. $\\frac{15}{75} = \\frac{1}{5}$ : 분모 소인수가 $5$뿐이므로 유한소수이다.  \n5. $-\\frac{14}{2 \\times 3 \\times 7} = -\\frac{14}{14 \\times 3} = -\\frac{1}{3}$ : 기약분수의 분모 소인수가 $3$이므로 순환소수이다. 따라서 순환소수로만 나타낼 수 있는 것은 $\\frac{3}{11}$, $-\\frac{2}{17}$, $-\\frac{14}{2 \\times 3 \\times 7}$로 총 $3$개이다. 그러므로 정답은 ③이다.",
     "score": 3,
     "points": 3,
-    "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_FINITE_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_FRACTION_ARITHMETIC"
@@ -96,6 +101,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "PARALLEL",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "유한소수와 무한소수",
+    "rpmPrimaryL4": "유한소수 판별",
+    "rpmPrimaryRecordId": "M2-RPM-119",
     "sourceQid": 2,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q02-problem.plan.json"
@@ -115,7 +125,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "RATIONAL_AND_DECIMAL_CONCEPTS_AUDIT",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -136,7 +146,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_FINITE_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_CLASSIFICATION"
@@ -145,6 +155,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "CASE_BRANCH",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "유한소수와 무한소수",
+    "rpmPrimaryL4": "유한소수 판별",
+    "rpmPrimaryRecordId": "M2-RPM-119",
     "sourceQid": 3,
     "variationType": "STRUCTURAL",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q03-problem.plan.json"
@@ -164,7 +179,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "FINITE_DECIMAL_RANGE_COUNT",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -185,7 +200,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_FINITE_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_FRACTION_ARITHMETIC"
@@ -194,6 +209,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "유한소수와 무한소수",
+    "rpmPrimaryL4": "분모의 소인수 조건",
+    "rpmPrimaryRecordId": "M2-RPM-120",
     "sourceQid": 4,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q04-problem.plan.json"
@@ -213,7 +233,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "REPEATING_PERIOD_AND_POWER_EVALUATION",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -233,8 +253,8 @@ window.questionBank = [
     "solution": "분자 $8$을 분모 $27$로 나누어 순환소수를 구한다. $$ 8 \\div 27 = 0.296296\\cdots = 0.\\overline{296} $$ 1단계: 순환마디는 $296$이므로 순환마디를 이루는 숫자의 개수는 $$ a = 3 $$ 2단계: 소수점 아래 $2026$번째 자리의 숫자를 구한다. 순환마디의 길이가 $3$이므로 $2026$을 $3$으로 나눈 몫과 나머지를 계산하면 $$ 2026 = 3 \\times 675 + 1 $$ 나머지가 $1$이므로 소수점 아래 $2026$번째 자리의 숫자는 순환마디의 첫 번째 숫자인 $2$이다. $$ b = 2 $$ 3단계: 구하는 식의 값을 계산한다. $$ \\frac{b^a + b^a + b^a}{a} = \\frac{2^3 + 2^3 + 2^3}{3} = \\frac{8 + 8 + 8}{3} = \\frac{24}{3} = 8 $$ 그러므로 정답은 ⑤이다.",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_EXPONENT_CALCULATION",
@@ -244,6 +264,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "순환소수",
+    "rpmPrimaryL4": "순환마디와 표현",
+    "rpmPrimaryRecordId": "M2-RPM-121",
     "sourceQid": 5,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q05-problem.plan.json"
@@ -263,7 +288,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "FINITE_DECIMAL_CONTEXTUAL_ANALYSIS",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -283,8 +308,8 @@ window.questionBank = [
     "solution": "$1$보다 작은 분수로 나타내므로 $a < b$이다. 세 학생의 설명을 각각 검토한다.\n\n1. 민준: 5월 20일은 $a = 5, b = 20$이므로 $$ \\frac{5}{20} = \\frac{1}{4} = \\frac{1}{2^2} $$ 기약분수의 분모 소인수가 $2$뿐이므로 유한소수이다. (참)  \n2. 서아: $b = 16$일 때 $a < 16$인 자연수 $a$에 대하여 $$ \\frac{a}{16} = \\frac{a}{2^4} $$ 분모 $16$의 소인수는 $2$뿐이므로 분자 $a$의 값에 관계없이 기약분수로 나타내어도 분모의 소인수는 $2$뿐이다. 따라서 모든 $a$에 대하여 항상 유한소수가 되며, 순환소수가 되는 $a$는 존재하지 않는다. (참)  \n3. 하은: 2월은 $a = 2$이다. 2월의 날짜는 $1$일부터 $28$일까지이므로 $a < b$를 만족하는 $b$는 $3$부터 $28$까지 총 $26$개이다. $\\frac{2}{b}$가 유한소수가 되는 경우를 찾으면, 약분 후 기약분수의 분모의 소인수가 $2, 5$뿐이어야 한다.  \n- $b$가 홀수일 때: 분자 $2$와 약분되지 않으므로 $b$ 자체가 $5$의 거듭제곱이어야 한다. $b = 5, 25$ ($2$개)  \n- $b$가 짝수일 때: $b = 2k$라 하면 $\\frac{2}{2k} = \\frac{1}{k}$이므로 $k$의 소인수가 $2, 5$뿐이어야 한다 ($2 \\le k \\le 14$). $k \\in {2, 4, 5, 8, 10} \\implies b \\in {4, 8, 10, 16, 20}$ ($5$개) 따라서 유한소수가 되는 날은 총 $2 + 5 = 7$개이다. 순환소수가 되는 날의 개수는 전체 $26$개에서 유한소수 $7$개를 제외한 $$ 26 - 7 = 19\\text{ (개)} $$ 이므로 $20$개라고 한 하은의 설명은 옳지 않다. (거짓) 따라서 옳은 설명을 한 학생은 민준, 서아이다. 그러므로 정답은 ②이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "difficultyBucket": 3,
+    "problemTypeKey": "PT_M2_FINITE_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_FRACTION_ARITHMETIC",
@@ -294,6 +319,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "CASE_BRANCH",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "유한소수와 무한소수",
+    "rpmPrimaryL4": "유한소수 판별",
+    "rpmPrimaryRecordId": "M2-RPM-119",
     "sourceQid": 6,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q06-problem.plan.json"
@@ -313,7 +343,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "REPEATING_DECIMAL_TO_FRACTION_FORMULA",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -334,13 +364,18 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_FRACTION_ARITHMETIC"
     ],
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "순환소수",
+    "rpmPrimaryL4": "순환소수를 분수로",
+    "rpmPrimaryRecordId": "M2-RPM-122",
     "sourceQid": 7,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q07-problem.plan.json"
@@ -360,7 +395,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "REPEATING_DECIMAL_DIGIT_PERIODICITY",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -380,8 +415,8 @@ window.questionBank = [
     "solution": "두 분수를 소수로 나타내어 각 자릿수 숫자의 규칙을 찾는다.\n\n1. $\\frac{1}{3} = 0.3333\\cdots = 0.\\dot{3}$ 소수점 아래 모든 자리의 숫자가 $3$이므로 모든 자연수 $n$에 대하여 $$ a_n = 3 $$  \n2. $\\frac{3}{7} = 0.428571428571\\cdots = 0.\\overline{428571}$ 소수점 아래 첫째 자리부터 $6$개의 숫자 $4, 2, 8, 5, 7, 1$이 순환마디를 이루어 반복된다.  \n3. $a_n + b_n = 7$에서 $a_n = 3$을 대입하면 $$ 3 + b_n = 7 \\implies b_n = 4 $$ 즉, $\\frac{3}{7}$의 소수점 아래 $n$번째 자리의 숫자가 $4$이어야 한다. 순환마디 $4, 2, 8, 5, 7, 1$에서 숫자 $4$는 첫 번째 숫자이므로 $n$을 $6$으로 나눈 나머지가 $1$이어야 한다. $$ n \\equiv 1 \\pmod 6 $$ $20$ 이하의 자연수 중에서 이를 만족하는 $n$은 $$ n = 1, 7, 13, 19 $$ 로 총 $4$개이다. 그러므로 정답은 ①이다.",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_PLACE_VALUE",
@@ -391,6 +426,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "순환소수",
+    "rpmPrimaryL4": "순환마디와 표현",
+    "rpmPrimaryRecordId": "M2-RPM-121",
     "sourceQid": 8,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q08-problem.plan.json"
@@ -410,7 +450,7 @@ window.questionBank = [
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "EXPONENT_LAWS_BASIC_OPERATIONS",
+    "conceptClusterKey": "EXPONENT_LAW",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -431,8 +471,8 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+    "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
     "crossConceptKeys": [
       "CC_ALGEBRAIC_SIMPLIFICATION"
     ],
@@ -440,6 +480,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "CASE_BRANCH",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "단항식의 계산",
+    "rpmPrimaryL3": "지수법칙",
+    "rpmPrimaryL4": "거듭제곱의 곱·몫",
+    "rpmPrimaryRecordId": "M2-RPM-125",
     "sourceQid": 9,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q09-problem.plan.json"
@@ -459,7 +504,7 @@ window.questionBank = [
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "POWER_BASE_TRANSFORMATION_SUBSTITUTION",
+    "conceptClusterKey": "EXPONENT_LAW",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -480,13 +525,18 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_EXPONENT_LAWS",
     "templateKey": "",
     "crossConceptKeys": [],
     "conditionKeys": [
       "COND_NATURAL"
     ],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "단항식의 계산",
+    "rpmPrimaryL3": "지수법칙",
+    "rpmPrimaryL4": "거듭제곱의 거듭제곱",
+    "rpmPrimaryRecordId": "M2-RPM-126",
     "sourceQid": 10,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q10-problem.plan.json"
@@ -506,7 +556,7 @@ window.questionBank = [
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "POLYNOMIAL_DIVISION_AND_SUBTRACTION",
+    "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -527,13 +577,18 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_POLYNOMIAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_POLYNOMIAL_DIVISION_BY_MONOMIAL"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "다항식의 계산",
+    "rpmPrimaryL3": "단항식과 다항식의 곱셈·나눗셈",
+    "rpmPrimaryL4": "다항식을 단항식으로 나누기",
+    "rpmPrimaryRecordId": "M2-RPM-133",
     "sourceQid": 11,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q11-problem.plan.json"
@@ -553,7 +608,7 @@ window.questionBank = [
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "NESTED_POLYNOMIAL_SUBSTITUTION",
+    "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -574,21 +629,26 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_POLYNOMIAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_POLYNOMIAL_SUBSTITUTION"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "다항식의 계산",
+    "rpmPrimaryL3": "다항식의 덧셈과 뺄셈",
+    "rpmPrimaryL4": "괄호가 있는 계산",
+    "rpmPrimaryRecordId": "M2-RPM-131",
     "sourceQid": 12,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q12-problem.plan.json"
   },
   {
     "id": 13,
-    "category": "다항식의 계산",
-    "originalCategory": "다항식의 계산",
+    "category": "지수법칙",
+    "originalCategory": "지수법칙",
     "standardCourse": "중2",
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -596,16 +656,16 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
-    "subUnit": "다항식의 계산",
+    "subUnitKey": "M2-01-EXPONENT_LAW",
+    "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "ROTATIONAL_SOLID_VOLUME_CALCULATION",
+    "conceptClusterKey": "EXPONENT_LAW",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "다항식의 계산"
+      "지수법칙"
     ],
     "wide": false,
     "content": "가로의 길이가 $3x^2y$, 세로의 길이가 $2x^2y$인 직사각형 $ABCD$에서 변 $AB$는 세로이다. 변 $AB$를 회전축으로 하여 직각삼각형 $ABC$를 $1$회전시킬 때 생기는 회전체의 부피를 $V_1$, 변 $AB$를 지름으로 하는 반원을 지름 $AB$를 축으로 하여 $1$회전시킬 때 생기는 회전체의 부피를 $V_2$라고 할 때, $V_1 + V_2$를 구하면? [5점]",
@@ -621,13 +681,18 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_MONOMIAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_EXPONENT_CALCULATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "단항식의 계산",
+    "rpmPrimaryL3": "단항식의 곱셈과 나눗셈",
+    "rpmPrimaryL4": "혼합 계산",
+    "rpmPrimaryRecordId": "M2-RPM-129",
     "sourceQid": 13,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q13-problem.plan.json"
@@ -647,7 +712,7 @@ window.questionBank = [
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "POLYNOMIAL_UNDETERMINED_COEFFICIENTS",
+    "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -667,14 +732,19 @@ window.questionBank = [
     "solution": "두 조건으로부터 이차식 $A$를 각각 표현하여 계수를 비교한다. 1단계: 조건 (가)에서 $5x^2 - x + 3 - A = -x^2 + 5x - b$이므로 $$ A = (5x^2 - x + 3) - (-x^2 + 5x - b) $$ $$ A = 5x^2 - x + 3 + x^2 - 5x + b = 6x^2 - 6x + 3 + b $$ 2단계: 조건 (나)에서 $A \\div 2x = 3x - a + \\frac{5}{x}$이므로 양변에 $2x$를 곱하면 $$ A = 2x\\left(3x - a + \\frac{5}{x}\\right) = 6x^2 - 2ax + 10 $$ 3단계: 두 식의 각 항의 계수가 일치해야 하므로\n\n- $x$의 계수 비교: $$ -6 = -2a \\implies a = 3 $$  \n- 상수항 비교: $$ 3 + b = 10 \\implies b = 7 $$ 따라서 구하는 $a + b$의 값은 $$ a + b = 3 + 7 = 10 $$ 그러므로 정답은 ③이다.",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_POLYNOMIAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_COEFFICIENT_DETERMINATION"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "다항식의 계산",
+    "rpmPrimaryL3": "단항식과 다항식의 곱셈·나눗셈",
+    "rpmPrimaryL4": "다항식을 단항식으로 나누기",
+    "rpmPrimaryRecordId": "M2-RPM-133",
     "sourceQid": 14,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q14-problem.plan.json"
@@ -694,7 +764,7 @@ window.questionBank = [
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "POLYNOMIAL_DIVISION_COEFFICIENT_SUM",
+    "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -715,13 +785,18 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_POLYNOMIAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_POLYNOMIAL_DIVISION_BY_MONOMIAL"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "다항식의 계산",
+    "rpmPrimaryL3": "단항식과 다항식의 곱셈·나눗셈",
+    "rpmPrimaryL4": "다항식을 단항식으로 나누기",
+    "rpmPrimaryRecordId": "M2-RPM-133",
     "sourceQid": 15,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q15-problem.plan.json"
@@ -741,7 +816,7 @@ window.questionBank = [
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_INEQUALITY_BASIC_SOLUTION",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -769,6 +844,11 @@ window.questionBank = [
     ],
     "conditionKeys": [],
     "integrationPattern": "DIRECT",
+    "rpmPrimaryL1": "일차부등식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "일차부등식의 풀이",
+    "rpmPrimaryL4": "기본형",
+    "rpmPrimaryRecordId": "M2-RPM-138",
     "sourceQid": 16,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q16-problem.plan.json"
@@ -788,7 +868,7 @@ window.questionBank = [
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "INEQUALITY_PROPERTIES_AUDIT",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -810,12 +890,17 @@ window.questionBank = [
     "points": 4,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
-    "templateKey": "",
+    "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
     "crossConceptKeys": [
       "CC_DIRECTION_OF_INEQUALITY"
     ],
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
+    "rpmPrimaryL1": "일차부등식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "부등식의 성질",
+    "rpmPrimaryL4": "부등식의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-136",
     "sourceQid": 17,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q17-problem.plan.json"
@@ -835,7 +920,7 @@ window.questionBank = [
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "INEQUALITY_NEGATIVE_SOLUTION_CONDITION",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -856,7 +941,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_COEFFICIENT_DETERMINATION"
@@ -865,6 +950,11 @@ window.questionBank = [
       "COND_NEGATIVE"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차부등식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "해의 조건",
+    "rpmPrimaryL4": "계수 조건",
+    "rpmPrimaryRecordId": "M2-RPM-141",
     "sourceQid": 18,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q18-problem.plan.json"
@@ -884,7 +974,7 @@ window.questionBank = [
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "DECIMAL_FRACTION_INEQUALITY_INTEGER_BOUND",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -905,7 +995,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+    "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_LINEAR_INEQUALITIES"
@@ -914,6 +1004,11 @@ window.questionBank = [
       "COND_INTEGER"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차부등식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "일차부등식의 풀이",
+    "rpmPrimaryL4": "괄호·분수·소수가 있는 부등식",
+    "rpmPrimaryRecordId": "M2-RPM-139",
     "sourceQid": 19,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q19-problem.plan.json"
@@ -933,7 +1028,7 @@ window.questionBank = [
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "DUAL_INEQUALITY_EXTREMA_SUM",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -954,7 +1049,7 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_LINEAR_INEQUALITIES"
@@ -963,6 +1058,11 @@ window.questionBank = [
       "COND_INTEGER"
     ],
     "integrationPattern": "PARALLEL",
+    "rpmPrimaryL1": "일차부등식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "일차부등식의 풀이",
+    "rpmPrimaryL4": "괄호·분수·소수가 있는 부등식",
+    "rpmPrimaryRecordId": "M2-RPM-139",
     "sourceQid": 20,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q20-problem.plan.json"
@@ -982,7 +1082,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "FINITE_DECIMAL_REVERSE_PARAMETER",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -997,7 +1097,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_FINITE_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_FRACTION_ARITHMETIC",
@@ -1007,6 +1107,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "유한소수와 무한소수",
+    "rpmPrimaryL4": "분모의 소인수 조건",
+    "rpmPrimaryRecordId": "M2-RPM-120",
     "sourceQid": 21,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q21-problem.plan.json"
@@ -1026,7 +1131,7 @@ window.questionBank = [
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "POWER_OF_TEN_DIGIT_COUNTING_ESSAY",
+    "conceptClusterKey": "EXPONENT_LAW",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1041,7 +1146,7 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_EXPONENT_LAWS",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_EXPONENT_CALCULATION",
@@ -1051,6 +1156,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "단항식의 계산",
+    "rpmPrimaryL3": "지수법칙",
+    "rpmPrimaryL4": "거듭제곱의 곱·몫",
+    "rpmPrimaryRecordId": "M2-RPM-125",
     "sourceQid": 22,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q22-problem.plan.json"
@@ -1070,7 +1180,7 @@ window.questionBank = [
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "RECTANGLE_DIMENSION_DIVISION_SUM_ESSAY",
+    "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1085,13 +1195,18 @@ window.questionBank = [
     "score": 5,
     "points": 5,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_POLYNOMIAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_POLYNOMIAL_DIVISION_BY_MONOMIAL"
     ],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "다항식의 계산",
+    "rpmPrimaryL3": "단항식과 다항식의 곱셈·나눗셈",
+    "rpmPrimaryL4": "다항식을 단항식으로 나누기",
+    "rpmPrimaryRecordId": "M2-RPM-133",
     "sourceQid": 23,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q23-problem.plan.json"
@@ -1111,7 +1226,7 @@ window.questionBank = [
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SPEED_DISTANCE_TIME_INEQUALITY_ESSAY",
+    "conceptClusterKey": "LINEAR_INEQUALITY_WORD_PROBLEM",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1125,8 +1240,8 @@ window.questionBank = [
     "solution": "1단계: 미지수를 정하고 걸린 시간을 문자로 나타낸다. 역에서 식당까지의 거리를 $x\\text{ km}$ ($x > 0$)라 하자.\n\n- 시속 $3\\text{ km}$로 걸어서 왕복하므로 왕복 거리는 $2x\\text{ km}$이다. 왕복 걷는 시간은 $$ \\frac{2x}{3}\\text{ (시간)} \\quad [2점] $$  \n- 식당에서 점심을 먹는 시간은 $$ 30\\text{분} = \\frac{30}{60}\\text{시간} = \\frac{1}{2}\\text{ (시간)} \\quad [1점] $$  \n- 기차 출발 시각까지 남은 여유 시간은 $$ 2\\text{시간 } 30\\text{분} = 2 + \\frac{1}{2} = \\frac{5}{2}\\text{ (시간)} $$\n\n2단계: 일차부등식을 세운다. (왕복 걷는 시간) + (식사 시간) $\\le$ (전체 여유 시간)이므로 $$ \\frac{2x}{3} + \\frac{1}{2} \\le \\frac{5}{2} \\quad [2점] $$\n\n3단계: 부등식을 풀고 답을 구한다. 양변에 분모의 최소공배수인 $6$을 곱하면 $$ 6 \\times \\left(\\frac{2x}{3} + \\frac{1}{2}\\right) \\le 6 \\times \\frac{5}{2} $$ $$ 4x + 3 \\le 15 $$ 상수항을 이항하면 $$ 4x \\le 12 $$ 양변을 $4$로 나누면 $$ x \\le 3 \\quad [1점] $$ 따라서 역에서 최대 $3\\text{ km}$ 떨어진 식당까지 다녀올 수 있다.",
     "score": 6,
     "points": 6,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_SPEED_DISTANCE_TIME",
@@ -1136,6 +1251,11 @@ window.questionBank = [
       "COND_POSITIVE"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차부등식",
+    "rpmPrimaryL2": "일차부등식의 활용",
+    "rpmPrimaryL3": "거리·속력·시간",
+    "rpmPrimaryL4": "시간 제한",
+    "rpmPrimaryRecordId": "M2-RPM-144",
     "sourceQid": 24,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕운중_1학기_중간_중2_유사_plans/q24-problem.plan.json"

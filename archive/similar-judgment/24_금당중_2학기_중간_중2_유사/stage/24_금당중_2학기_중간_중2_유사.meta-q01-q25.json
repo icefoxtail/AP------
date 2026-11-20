@@ -3,7 +3,7 @@
   "requestId": "24_금당중_2학기_중간_중2_유사-candidate-v1",
   "examUid": "24_금당중_2학기_중간_중2_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m2/2mid/24_금당중_2학기_중간_중2_유사.js",
-  "expectedSourceBlobSha1": "f7b13e19ab19257254eb68b9f653f1ab53f27acc",
+  "expectedSourceBlobSha1": "34fe2369d9727b91ab32b490ea5d2b9e190adfb2",
   "expectedQuestionCount": 25,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -29,8 +29,8 @@
         "standardUnitOrder": 6,
         "subUnitKey": "M2-06-SIMILAR_FIGURES",
         "subUnit": "닮은 도형의 성질과 겉넓이·부피의 비",
-        "conceptClusterKey": "M2-06-SIMILAR_PERIMETER",
-        "problemTypeKey": "",
+        "conceptClusterKey": "M2-06-SIMILAR_FIGURES",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_SIMILAR_FIGURES_RATIO",
@@ -51,20 +51,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-084"
+        ],
+        "rpmPrimary": {
+          "l1": "도형의 닮음과 피타고라스 정리",
+          "l2": "도형의 닮음",
+          "l3": "닮은 도형",
+          "l4": "닮음비",
+          "recordId": "M2-RPM-084"
+        },
+        "rpmPrimaryL1": "도형의 닮음과 피타고라스 정리",
+        "rpmPrimaryL2": "도형의 닮음",
+        "rpmPrimaryL3": "닮은 도형",
+        "rpmPrimaryL4": "닮음비",
+        "rpmPrimaryRecordId": "M2-RPM-084",
+        "difficultyBasis": "닮음비를 활용해 대응변의 길이를 구하고 둘레를 합산하는 난이도 1 문항이다. (ABC)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-06 / M2-06-SIMILAR_FIGURES: $\\triangle ABC",
+          "curriculum": "M2-RPM-084: 도형의 닮음 단원의 닮은 도형의 성질 기본 유형이다. (ABC)",
+          "problemType": "닮은 도형의 둘레의 비와 변의 길이 계산 기본 유형이다. (ABC)",
+          "difficulty": "닮음비를 활용해 대응변의 길이를 구하고 둘레를 합산하는 난이도 1 문항이다. (ABC)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SIMILAR_FIGURES_RATIO, CC_PERIMETER: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "닮음비 2:1을 적용해 EF = 9cm, DF = 8cm를 구하고 DE = 7cm와 더해 둘레 24cm를 계산한다.",
       "decisiveStep": "대응변 BC와 CA를 각각 2로 나누어 EF = 9, DF = 8을 구하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "주어진 닮음비로 대응변의 길이를 바로 구해 둘레를 합산하는 1단계 문항이다.",
+      "difficultyReason": "닮음비를 활용해 대응변의 길이를 구하고 둘레를 합산하는 난이도 1 문항이다. (ABC)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
         "templateKey": null,
-        "why": "닮음비로 삼각형 둘레의 길이 구하기 키가 선택표에 없음"
+        "why": "닮은 도형의 둘레의 비와 변의 길이 계산 기본 유형이다. (ABC)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_8357dda278e5f4250162222ccd52f125f72375097b11a6c07797f3e78ade489f",
@@ -81,8 +113,8 @@
         "standardUnitOrder": 6,
         "subUnitKey": "M2-06-SIMILAR_FIGURES",
         "subUnit": "닮은 도형의 성질과 겉넓이·부피의 비",
-        "conceptClusterKey": "M2-06-NOT_ALWAYS_SIMILAR",
-        "problemTypeKey": "",
+        "conceptClusterKey": "M2-06-SIMILAR_FIGURES",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_ISOSCELES_TRIANGLES"
@@ -91,7 +123,7 @@
         "integrationPattern": "NONE",
         "difficultyBucket": 1,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 2,
         "variationType": "NUMERIC",
         "provenance": {
@@ -102,20 +134,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-085"
+        ],
+        "rpmPrimary": {
+          "l1": "도형의 닮음과 피타고라스 정리",
+          "l2": "도형의 닮음",
+          "l3": "닮은 도형",
+          "l4": "대응변·대응각",
+          "recordId": "M2-RPM-085"
+        },
+        "rpmPrimaryL1": "도형의 닮음과 피타고라스 정리",
+        "rpmPrimaryL2": "도형의 닮음",
+        "rpmPrimaryL3": "닮은 도형",
+        "rpmPrimaryL4": "대응변·대응각",
+        "rpmPrimaryRecordId": "M2-RPM-085",
+        "difficultyBasis": "항상 닮은 도형의 성질과 $40^\\circ$ 내각 반례를 확인하는 난이도 1 문항이다. (70)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-06 / M2-06-SIMILAR_FIGURES: 다음 중 항상 닮은 도형이라",
+          "curriculum": "M2-RPM-085: 도형의 닮음 단원의 항상 닮은 도형 판별 유형으로 $40^\\circ$ 반례를 다룬다. (70)",
+          "problemType": "도형의 닮음 정의와 $40^\\circ$ 반례를 판별하는 객관식 기본 유형이다. (70)",
+          "difficulty": "항상 닮은 도형의 성질과 $40^\\circ$ 내각 반례를 확인하는 난이도 1 문항이다. (70)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_ISOSCELES_TRIANGLES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "한 내각만 같은 두 이등변삼각형은 꼭짓각과 밑각이 엇갈릴 수 있어 닮음이 아닐 수 있음을 판별한다.",
       "decisiveStep": "한 내각이 같은 이등변삼각형에서 꼭짓각 대 밑각 반례를 찾는 단계",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "주어진 조건만으로 항상 닮음이 결정되는 도형과 반례가 존재하는 도형을 구분하는 1단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "항상 닮은 도형의 성질과 $40^\\circ$ 내각 반례를 확인하는 난이도 1 문항이다. (70)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
         "templateKey": null,
-        "why": "항상 닮은 도형이 아닌 조건 판별 키가 선택표에 없음"
+        "why": "도형의 닮음 정의와 $40^\\circ$ 반례를 판별하는 객관식 기본 유형이다. (70)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_6bab942d976a32ad9abf8e693648376f5c75940eeb171ab62b231e1c1be097d5",
@@ -130,15 +194,15 @@
         "standardUnitKey": "M2-06",
         "standardUnit": "도형의 닮음",
         "standardUnitOrder": 6,
-        "subUnitKey": "M2-06-PARALLEL_SEGMENT_RATIO",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
         "subUnit": "평행선 사이의 선분의 길이의 비",
-        "conceptClusterKey": "M2-06-MIDPOINT_THEOREM_SUM",
-        "problemTypeKey": "",
+        "conceptClusterKey": "PARALLEL_LENGTH_RATIO",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 3,
@@ -151,20 +215,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-091"
+        ],
+        "rpmPrimary": {
+          "l1": "도형의 닮음과 피타고라스 정리",
+          "l2": "평행선과 선분의 길이의 비",
+          "l3": "삼각형과 평행선",
+          "l4": "기본 비례",
+          "recordId": "M2-RPM-091"
+        },
+        "rpmPrimaryL1": "도형의 닮음과 피타고라스 정리",
+        "rpmPrimaryL2": "평행선과 선분의 길이의 비",
+        "rpmPrimaryL3": "삼각형과 평행선",
+        "rpmPrimaryL4": "기본 비례",
+        "rpmPrimaryRecordId": "M2-RPM-091",
+        "difficultyBasis": "중점연결정리를 이용해 두 선분의 길이를 구하고 합산하는 난이도 2 문항이다. (ABC)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-06 / M2-06-PARALLEL_LENGTH_RATIO: $\\triangle ABC$",
+          "curriculum": "M2-RPM-091: 평행선과 선분의 길이의 비 단원의 삼각형의 중점연결정리 유형이다. (ABC)",
+          "problemType": "삼각형의 중점연결정리를 이용한 선분 길이 계산 유형이다. (ABC)",
+          "difficulty": "중점연결정리를 이용해 두 선분의 길이를 구하고 합산하는 난이도 2 문항이다. (ABC)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 평행선 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "중점 조건으로 x = 9/2, 삼각형의 중점연결정리로 y = 13/2를 구해 두 값을 더한다.",
       "decisiveStep": "MN = BC/2 = 13/2를 중점연결정리로 바로 구해 9/2와 더하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "중점과 삼각형의 중점연결정리를 바로 적용해 두 길이의 합을 구하는 1단계 문항이다.",
+      "difficultyReason": "중점연결정리를 이용해 두 선분의 길이를 구하고 합산하는 난이도 2 문항이다. (ABC)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
         "templateKey": null,
-        "why": "삼각형 중점연결정리 두 선분 길이 합 키가 선택표에 없음"
+        "why": "삼각형의 중점연결정리를 이용한 선분 길이 계산 유형이다. (ABC)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_17ddc7bc8c34abb5171aa449fcf68eeb8781abbbe6470d64093e11f6b4e3e02e",
@@ -181,8 +277,8 @@
         "standardUnitOrder": 6,
         "subUnitKey": "M2-06-SIMILAR_FIGURES",
         "subUnit": "닮은 도형의 성질과 겉넓이·부피의 비",
-        "conceptClusterKey": "M2-06-PRISM_VOLUME_RATIO",
-        "problemTypeKey": "",
+        "conceptClusterKey": "M2-06-SIMILAR_FIGURES",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_SIMILAR_FIGURES_AREA_VOLUME",
@@ -190,7 +286,7 @@
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 4,
@@ -203,20 +299,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-090"
+        ],
+        "rpmPrimary": {
+          "l1": "도형의 닮음과 피타고라스 정리",
+          "l2": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "넓이·부피 비",
+          "recordId": "M2-RPM-090"
+        },
+        "rpmPrimaryL1": "도형의 닮음과 피타고라스 정리",
+        "rpmPrimaryL2": "도형의 닮음",
+        "rpmPrimaryL3": "닮음의 활용",
+        "rpmPrimaryL4": "넓이·부피 비",
+        "rpmPrimaryRecordId": "M2-RPM-090",
+        "difficultyBasis": "닮음비로부터 입체도형 부피비를 유도하고 계산하는 난이도 2 문항이다. (ABC)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-06 / M2-06-SIMILAR_FIGURES: 두 삼각기둥 $ABC\\tex",
+          "curriculum": "M2-RPM-090: 도형의 닮음 단원의 입체도형의 부피의 비 유형이다. (ABC)",
+          "problemType": "닮은 입체도형의 부피의 비 계산 유형이다. (ABC)",
+          "difficulty": "닮음비로부터 입체도형 부피비를 유도하고 계산하는 난이도 2 문항이다. (ABC)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 도형 이 있다).",
+          "crossConcept": "CC_SIMILAR_FIGURES_AREA_VOLUME, CC_VOLUME_RATIO: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "닮음비 3:6 = 1:2를 세제곱해 부피비 1:8을 구하고 15 × 8 = 120을 계산한다.",
       "decisiveStep": "부피의 비가 닮음비의 세제곱 1 : 8임을 적용하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "닮음비의 세제곱이 부피의 비임을 바로 적용하는 1단계 문항이다.",
+      "difficultyReason": "닮음비로부터 입체도형 부피비를 유도하고 계산하는 난이도 2 문항이다. (ABC)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
         "templateKey": null,
-        "why": "닮은 삼각기둥 부피 비 계산 키가 선택표에 없음"
+        "why": "닮은 입체도형의 부피의 비 계산 유형이다. (ABC)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c1e53cfef249455dfb65716a46ed36070bd494d54054fa9430417ad362b4ed1c",
@@ -231,10 +359,10 @@
         "standardUnitKey": "M2-06",
         "standardUnit": "도형의 닮음",
         "standardUnitOrder": 6,
-        "subUnitKey": "M2-06-PARALLEL_SEGMENT_RATIO",
-        "subUnit": "평행선 사이의 선분의 길이의 비",
-        "conceptClusterKey": "M2-06-PARALLEL_TRI_PERIMETER",
-        "problemTypeKey": "",
+        "subUnitKey": "M2-06-SIMILAR_FIGURES",
+        "subUnit": "닮은 도형의 성질과 겉넓이·부피의 비",
+        "conceptClusterKey": "M2-06-SIMILAR_FIGURES",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_PARALLEL_LINES_RATIO",
@@ -255,20 +383,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-086"
+        ],
+        "rpmPrimary": {
+          "l1": "도형의 닮음과 피타고라스 정리",
+          "l2": "도형의 닮음",
+          "l3": "삼각형의 닮음",
+          "l4": "AA",
+          "recordId": "M2-RPM-086"
+        },
+        "rpmPrimaryL1": "도형의 닮음과 피타고라스 정리",
+        "rpmPrimaryL2": "도형의 닮음",
+        "rpmPrimaryL3": "삼각형의 닮음",
+        "rpmPrimaryL4": "AA",
+        "rpmPrimaryRecordId": "M2-RPM-086",
+        "difficultyBasis": "연장선상의 평행선 닮음비를 적용하여 세 변을 합산하는 난이도 2 문항이다. (ABC)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-06 / M2-06-SIMILAR_FIGURES: $\\triangle ABC$",
+          "curriculum": "M2-RPM-086: 도형의 닮음 단원의 삼각형의 닮음 활용 유형이다. (ABC)",
+          "problemType": "평행선과 삼각형의 닮음비를 이용한 둘레 계산 유형이다. (ABC)",
+          "difficulty": "연장선상의 평행선 닮음비를 적용하여 세 변을 합산하는 난이도 2 문항이다. (ABC)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 평행선 이 있다).",
+          "crossConcept": "CC_PARALLEL_LINES_RATIO, CC_PERIMETER: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "AB = 15 - 5 = 10으로 닮음비 2:3을 구해 BC = 8과 방정식 AC/(AC+4) = 2/3에서 AC = 8을 구한다.",
       "decisiveStep": "닮음비 2 : 3을 이용해 BC = 8과 AC : CE = 2 : 1에서 AC = 8을 각각 구하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "평행선 닮음비를 구해 미지의 두 변 BC와 AC를 비례식으로 찾아 둘레를 구하는 2단계 문항이다.",
+      "difficultyReason": "연장선상의 평행선 닮음비를 적용하여 세 변을 합산하는 난이도 2 문항이다. (ABC)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
         "templateKey": null,
-        "why": "삼각형 평행선 닮음비로 둘레 구하기 키가 선택표에 없음"
+        "why": "평행선과 삼각형의 닮음비를 이용한 둘레 계산 유형이다. (ABC)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_35fa13d1f24e9b9d17287eeb7eb7ad2b22be3725b27363cccd4786e74f5677a5",
@@ -283,10 +443,10 @@
         "standardUnitKey": "M2-06",
         "standardUnit": "도형의 닮음",
         "standardUnitOrder": 6,
-        "subUnitKey": "M2-06-PARALLEL_SEGMENT_RATIO",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
         "subUnit": "평행선 사이의 선분의 길이의 비",
-        "conceptClusterKey": "M2-06-DOUBLE_PARALLEL_RATIO",
-        "problemTypeKey": "",
+        "conceptClusterKey": "PARALLEL_LENGTH_RATIO",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_PARALLEL_LINES_RATIO"
@@ -295,7 +455,7 @@
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B23",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 6,
         "variationType": "NUMERIC",
         "provenance": {
@@ -306,20 +466,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-093"
+        ],
+        "rpmPrimary": {
+          "l1": "도형의 닮음과 피타고라스 정리",
+          "l2": "평행선과 선분의 길이의 비",
+          "l3": "평행선 사이 선분비",
+          "l4": "여러 평행선",
+          "recordId": "M2-RPM-093"
+        },
+        "rpmPrimaryL1": "도형의 닮음과 피타고라스 정리",
+        "rpmPrimaryL2": "평행선과 선분의 길이의 비",
+        "rpmPrimaryL3": "평행선 사이 선분비",
+        "rpmPrimaryL4": "여러 평행선",
+        "rpmPrimaryRecordId": "M2-RPM-093",
+        "difficultyBasis": "평행선 두 쌍의 비례식 $2 : 1$을 연속으로 연계하여 미지 선분을 구하는 난이도 2 문항이다. (ABC)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-06 / M2-06-PARALLEL_LENGTH_RATIO: $\\triangle ABC$",
+          "curriculum": "M2-RPM-093: 평행선 사이의 선분의 길이의 비 단원의 여러 평행선 사이 선분비 유형이다. ($2 : 1$) (ABC)",
+          "problemType": "삼각형 내부 다중 평행선 선분 비례 계산 유형이다. ($8, 4$) (ABC)",
+          "difficulty": "평행선 두 쌍의 비례식 $2 : 1$을 연속으로 연계하여 미지 선분을 구하는 난이도 2 문항이다. (ABC)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 평행선 이 있다).",
+          "crossConcept": "CC_PARALLEL_LINES_RATIO: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "DF ∥ BE에서 AD:DB = 8:4 = 2:1을 얻고 DE ∥ BC로 AE:EC = 2:1에 대입해 EC = 6을 구한다.",
       "decisiveStep": "두 평행선이 공유하는 선분비 AD : DB = 2 : 1을 매개로 연결하는 단계",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B23",
-      "difficultyReason": "두 평행선 조건에서 공통 변의 길이 비 AD:DB를 매개로 다른 변의 길이를 구하는 2단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "평행선 두 쌍의 비례식 $2 : 1$을 연속으로 연계하여 미지 선분을 구하는 난이도 2 문항이다. (ABC)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
         "templateKey": null,
-        "why": "이중 평행선 선분비 전이 길이 구하기 키가 선택표에 없음"
+        "why": "삼각형 내부 다중 평행선 선분 비례 계산 유형이다. ($8, 4$) (ABC)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_e59eeb8be35e0a4f5cab3ffc7838fcc004f929f1cf0c668b0fd399527c0db181",
@@ -336,8 +528,8 @@
         "standardUnitOrder": 6,
         "subUnitKey": "M2-06-TRIANGLE_CENTROID",
         "subUnit": "삼각형의 무게중심의 성질",
-        "conceptClusterKey": "M2-06-CENTROID_PROPS_NOT",
-        "problemTypeKey": "",
+        "conceptClusterKey": "M2-06-TRIANGLE_CENTROID",
+        "problemTypeKey": "PT_M2_CENTROID",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
@@ -355,20 +547,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-097"
+        ],
+        "rpmPrimary": {
+          "l1": "도형의 닮음과 피타고라스 정리",
+          "l2": "삼각형의 무게중심",
+          "l3": "중선과 무게중심",
+          "l4": "2:1 비",
+          "recordId": "M2-RPM-097"
+        },
+        "rpmPrimaryL1": "도형의 닮음과 피타고라스 정리",
+        "rpmPrimaryL2": "삼각형의 무게중심",
+        "rpmPrimaryL3": "중선과 무게중심",
+        "rpmPrimaryL4": "2:1 비",
+        "rpmPrimaryRecordId": "M2-RPM-097",
+        "difficultyBasis": "무게중심의 선분비 2:1과 넓이 6등분 성질을 종합 판별하는 난이도 2 문항이다. (ABC)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-06 / M2-06-TRIANGLE_CENTROID: $\\triangle ABC$",
+          "curriculum": "M2-RPM-097: 무게중심 단원의 무게중심의 성질 유형이다. (ABC)",
+          "problemType": "삼각형의 무게중심의 성질 참거짓 판정 복수정답 유형이다. (ABC)",
+          "difficulty": "무게중심의 선분비 2:1과 넓이 6등분 성질을 종합 판별하는 난이도 2 문항이다. (ABC)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 삼각형 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "무게중심의 2:1 내분 성질과 넓이 6등분 성질로 ②, ③, ④를 확인하고 ①, ⑤를 거짓으로 고른다.",
       "decisiveStep": "CG : GF = 2 : 1이므로 GF가 CG의 1/3이 아니라 1/2임을 가리는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "무게중심의 길이 2:1 비와 넓이 6등분 성질을 선지별로 정확히 대조하는 2단계 문항이다.",
+      "difficultyReason": "무게중심의 선분비 2:1과 넓이 6등분 성질을 종합 판별하는 난이도 2 문항이다. (ABC)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_CENTROID",
         "templateKey": null,
-        "why": "삼각형 무게중심 길이 비와 넓이 분할 복수정답 판별 키가 선택표에 없음"
+        "why": "삼각형의 무게중심의 성질 참거짓 판정 복수정답 유형이다. (ABC)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_4cb34624ca2dcdc631c727c0b54a6f8b6759c2113646c03e277cf26f298a5bf1",
@@ -385,8 +609,8 @@
         "standardUnitOrder": 6,
         "subUnitKey": "M2-06-TRIANGLE_CENTROID",
         "subUnit": "삼각형의 무게중심의 성질",
-        "conceptClusterKey": "M2-06-CENTROID_MIDPOINT_LEN",
-        "problemTypeKey": "",
+        "conceptClusterKey": "M2-06-TRIANGLE_CENTROID",
+        "problemTypeKey": "PT_M2_CENTROID",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_PARALLEL_LINES_RATIO"
@@ -406,20 +630,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-097"
+        ],
+        "rpmPrimary": {
+          "l1": "도형의 닮음과 피타고라스 정리",
+          "l2": "삼각형의 무게중심",
+          "l3": "중선과 무게중심",
+          "l4": "2:1 비",
+          "recordId": "M2-RPM-097"
+        },
+        "rpmPrimaryL1": "도형의 닮음과 피타고라스 정리",
+        "rpmPrimaryL2": "삼각형의 무게중심",
+        "rpmPrimaryL3": "중선과 무게중심",
+        "rpmPrimaryL4": "2:1 비",
+        "rpmPrimaryRecordId": "M2-RPM-097",
+        "difficultyBasis": "무게중심 2:1 비와 삼각형 중점연결정리를 결합한 난이도 2 문항이다. (ABC)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-06 / M2-06-TRIANGLE_CENTROID: $\\triangle ABC$",
+          "curriculum": "M2-RPM-097: 무게중심 단원의 중선과 무게중심 2:1 비 유형이다. (ABC)",
+          "problemType": "무게중심과 중점연결정리 융합 선분 길이 계산 유형이다. (ABC)",
+          "difficulty": "무게중심 2:1 비와 삼각형 중점연결정리를 결합한 난이도 2 문항이다. (ABC)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 평행선 이 있다).",
+          "crossConcept": "CC_PARALLEL_LINES_RATIO: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "무게중심 2:1 비로 AD = 24를 구한 뒤 ΔADC에서 중점연결정리로 EF = AD/2 = 12를 계산한다.",
       "decisiveStep": "AG = 16에서 GD = 8, AD = 24를 먼저 구하고 EF = AD/2를 적용하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "무게중심의 2:1 비로 중선 전체 길이를 구한 뒤 삼각형의 중점연결정리를 적용하는 2단계 문항이다.",
+      "difficultyReason": "무게중심 2:1 비와 삼각형 중점연결정리를 결합한 난이도 2 문항이다. (ABC)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_CENTROID",
         "templateKey": null,
-        "why": "무게중심 2:1과 중점연결정리 결합 길이 구하기 키가 선택표에 없음"
+        "why": "무게중심과 중점연결정리 융합 선분 길이 계산 유형이다. (ABC)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_5953f88858d5bf60eceb7884d1b00ec44fc3badade2a42616b929a0d39fcee69",
@@ -436,15 +692,15 @@
         "standardUnitOrder": 6,
         "subUnitKey": "M2-06-TRIANGLE_CENTROID",
         "subUnit": "삼각형의 무게중심의 성질",
-        "conceptClusterKey": "M2-06-CENTROID_MIDLINE_AREA",
-        "problemTypeKey": "",
+        "conceptClusterKey": "M2-06-TRIANGLE_CENTROID",
+        "problemTypeKey": "PT_M2_CENTROID",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_AREA_RATIO"
         ],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 3,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 9,
@@ -457,20 +713,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-099"
+        ],
+        "rpmPrimary": {
+          "l1": "도형의 닮음과 피타고라스 정리",
+          "l2": "삼각형의 무게중심",
+          "l3": "넓이와 무게중심",
+          "l4": "넓이 분할",
+          "recordId": "M2-RPM-099"
+        },
+        "rpmPrimaryL1": "도형의 닮음과 피타고라스 정리",
+        "rpmPrimaryL2": "삼각형의 무게중심",
+        "rpmPrimaryL3": "넓이와 무게중심",
+        "rpmPrimaryL4": "넓이 분할",
+        "rpmPrimaryRecordId": "M2-RPM-099",
+        "difficultyBasis": "중점연결선과 무게중심의 높이 비를 유도하여 넓이를 구하는 난이도 2 문항이다. (ABC)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-06 / M2-06-TRIANGLE_CENTROID: $\\triangle ABC$",
+          "curriculum": "M2-RPM-099: 무게중심 단원의 넓이와 무게중심 넓이 분할 유형이다. (ABC)",
+          "problemType": "무게중심과 중점연결선 사이 넓이 분할 유형이다. (ABC)",
+          "difficulty": "중점연결선과 무게중심의 높이 비를 유도하여 넓이를 구하는 난이도 2 문항이다. (ABC)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 삼각형 이 있다).",
+          "crossConcept": "CC_AREA_RATIO: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "중점연결선 DE와 무게중심 G의 높이 비 h/2 : h/6 = 3 : 1을 이용해 ΔGDE = 36/3 = 12를 구한다.",
       "decisiveStep": "G에서 DE까지의 거리가 전체 높이 h의 1/2 - 1/3 = 1/6임을 파악하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "중점연결정리와 무게중심 2:1 내분비를 높이 비(3:1)로 환산해 넓이를 구하는 3단계 문항이다.",
+      "difficultyReason": "중점연결선과 무게중심의 높이 비를 유도하여 넓이를 구하는 난이도 2 문항이다. (ABC)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_CENTROID",
         "templateKey": null,
-        "why": "중점연결선과 무게중심이 만드는 삼각형 넓이 비 키가 선택표에 없음"
+        "why": "무게중심과 중점연결선 사이 넓이 분할 유형이다. (ABC)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_6682e63110602eea6a4c90fa1f702881b5e976a1c9ad297a7e6b636a005d4470",
@@ -485,10 +773,10 @@
         "standardUnitKey": "M2-07",
         "standardUnit": "피타고라스 정리",
         "standardUnitOrder": 7,
-        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
-        "subUnit": "피타고라스 정리의 활용",
-        "conceptClusterKey": "M2-07-RECT_FOLD_PYTHAGORAS",
-        "problemTypeKey": "",
+        "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+        "subUnit": "피타고라스 정리",
+        "conceptClusterKey": "PYTHAGOREAN_THEOREM",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_GEOMETRIC_FOLDING",
@@ -509,20 +797,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-101"
+        ],
+        "rpmPrimary": {
+          "l1": "도형의 닮음과 피타고라스 정리",
+          "l2": "피타고라스 정리",
+          "l3": "피타고라스 정리",
+          "l4": "직각삼각형의 변 길이",
+          "recordId": "M2-RPM-101"
+        },
+        "rpmPrimaryL1": "도형의 닮음과 피타고라스 정리",
+        "rpmPrimaryL2": "피타고라스 정리",
+        "rpmPrimaryL3": "피타고라스 정리",
+        "rpmPrimaryL4": "직각삼각형의 변 길이",
+        "rpmPrimaryRecordId": "M2-RPM-101",
+        "difficultyBasis": "직사각형 접기에서 피타고라스 정리를 적용해 변을 구하는 난이도 2 문항이다. (AB)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-07 / M2-07-PYTHAGOREAN_THEOREM: $\\overline{AB}",
+          "curriculum": "M2-RPM-101: 피타고라스 정리 단원의 직사각형 접기 도형 변 길이 계산 유형이다. ($12, 15, 6$)",
+          "problemType": "접은 도형에서의 피타고라스 정리 응용 선분 계산 유형이다. (AB)",
+          "difficulty": "직사각형 접기에서 피타고라스 정리를 적용해 변을 구하는 난이도 2 문항이다. (AB)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 직사각형 이 있다).",
+          "crossConcept": "CC_GEOMETRIC_FOLDING, CC_RECTANGLE_PROPERTIES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "접은 변 BC' = 15와 AB = 12로 직각삼각형 ABC'에 피타고라스 정리를 적용해 AC' = 9를 구하고 15 - 9 = 6을 계산한다.",
       "decisiveStep": "BC' = BC = 15를 빗변으로 하는 직각삼각형 ABC'에서 AC' = 9를 구하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "종이접기 길이 보존 성질과 피타고라스 정리를 결합해 남은 변 길이를 구하는 2단계 문항이다.",
+      "difficultyReason": "직사각형 접기에서 피타고라스 정리를 적용해 변을 구하는 난이도 2 문항이다. (AB)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
         "templateKey": null,
-        "why": "직사각형 접기 피타고라스 정리 선분 길이 구하기 키가 선택표에 없음"
+        "why": "접은 도형에서의 피타고라스 정리 응용 선분 계산 유형이다. (AB)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_381710a9555090bd82705381f46249cde88ab273937c2088f3db27fe2c365f55",
@@ -539,15 +859,15 @@
         "standardUnitOrder": 7,
         "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
         "subUnit": "피타고라스 정리",
-        "conceptClusterKey": "M2-07-DOUBLE_PYTHAGORAS_SUM",
-        "problemTypeKey": "",
+        "conceptClusterKey": "PYTHAGOREAN_THEOREM",
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 11,
         "variationType": "NUMERIC",
         "provenance": {
@@ -558,20 +878,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-101"
+        ],
+        "rpmPrimary": {
+          "l1": "도형의 닮음과 피타고라스 정리",
+          "l2": "피타고라스 정리",
+          "l3": "피타고라스 정리",
+          "l4": "직각삼각형의 변 길이",
+          "recordId": "M2-RPM-101"
+        },
+        "rpmPrimaryL1": "도형의 닮음과 피타고라스 정리",
+        "rpmPrimaryL2": "피타고라스 정리",
+        "rpmPrimaryL3": "피타고라스 정리",
+        "rpmPrimaryL4": "직각삼각형의 변 길이",
+        "rpmPrimaryRecordId": "M2-RPM-101",
+        "difficultyBasis": "피타고라스 정리를 두 직각삼각형에 연속 적용하여 $x+y=35$를 구하는 난이도 2 문항이다. (90)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-07 / M2-07-PYTHAGOREAN_THEOREM: $\\angle B = 90^",
+          "curriculum": "M2-RPM-101: 피타고라스 정리 단원의 두 직각삼각형 연계 변 길이 합산 계산 유형이다. ($17, 8, 25$)",
+          "problemType": "연속된 직각삼각형에서의 피타고라스 정리 변 길이 계산 유형이다. ($17, 8, 25$) (90)",
+          "difficulty": "피타고라스 정리를 두 직각삼각형에 연속 적용하여 $x+y=35$를 구하는 난이도 2 문항이다. (90)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 직각삼각형 이 있다).",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "ΔABC에서 피타고라스 정리로 x = 15를 구한 뒤 ΔBCD에 다시 적용해 y = 20을 구하고 합산한다.",
       "decisiveStep": "첫째 직각삼각형에서 구한 x = 15를 둘째 직각삼각형의 한 변으로 넘기는 단계",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "공통 변을 공유하는 두 직각삼각형에 피타고라스 정리를 두 번 연속 적용하는 2단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "피타고라스 정리를 두 직각삼각형에 연속 적용하여 $x+y=35$를 구하는 난이도 2 문항이다. (90)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
         "templateKey": null,
-        "why": "이어진 두 직각삼각형 피타고라스 정리 변 합산 키가 선택표에 없음"
+        "why": "연속된 직각삼각형에서의 피타고라스 정리 변 길이 계산 유형이다. ($17, 8, 25$) (90)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_da7d6b2280e179647ded3d7e749c622a3c307ea01d31c704037093d2c58d1547",
@@ -588,8 +940,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "subUnit": "연립일차방정식",
-        "conceptClusterKey": "M2-03-LINEAR_EQ_SELECT",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_LINEAR_EQUATIONS_TWO_VARIABLES"
@@ -609,20 +961,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-032"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "해가 주어진 연립방정식",
+          "recordId": "M2-RPM-032"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식",
+        "rpmPrimaryL3": "해와 계수",
+        "rpmPrimaryL4": "해가 주어진 연립방정식",
+        "rpmPrimaryRecordId": "M2-RPM-032",
+        "difficultyBasis": "미지수가 2개인 일차방정식의 기본 정의를 확인하는 난이도 1 문항이다. ($2x+5y-9=0$)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION: 다음 중에서 미지수가 $2$",
+          "curriculum": "M2-RPM-032: 연립일차방정식 단원의 미지수가 2개인 일차방정식 개념 유형이다. ($2x+5y-9=0$)",
+          "problemType": "미지수가 2개인 일차방정식 판별 개념 확인 객관식 유형이다. ($2$)",
+          "difficulty": "미지수가 2개인 일차방정식의 기본 정의를 확인하는 난이도 1 문항이다. ($2x+5y-9=0$)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 미지수 이 있다).",
+          "crossConcept": "CC_LINEAR_EQUATIONS_TWO_VARIABLES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "등호 유무, 미지수 개수(2개), 최고차항 차수(1차)를 확인해 ② 2x + 5y = 9를 고른다.",
       "decisiveStep": "다항식(①), 이차식(③, ④), 일차일원방정식(⑤)을 제외하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "미지수가 2개인 일차방정식의 정의를 다섯 식에 바로 적용하는 1단계 문항이다.",
+      "difficultyReason": "미지수가 2개인 일차방정식의 기본 정의를 확인하는 난이도 1 문항이다. ($2x+5y-9=0$)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
         "templateKey": null,
-        "why": "미지수가 2개인 일차방정식 고르기 키가 선택표에 없음"
+        "why": "미지수가 2개인 일차방정식 판별 개념 확인 객관식 유형이다. ($2$)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_a63cf9b6422da6d09954e18a0783fdf12d22d68cfb5d7d4326c3f9fe950fa482",
@@ -639,8 +1023,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "subUnit": "연립일차방정식",
-        "conceptClusterKey": "M2-03-NATURAL_PAIR_COUNT",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_LINEAR_EQUATIONS_TWO_VARIABLES"
@@ -649,7 +1033,7 @@
           "COND_NATURAL_NUMBER"
         ],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 13,
@@ -662,20 +1046,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-032"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "해가 주어진 연립방정식",
+          "recordId": "M2-RPM-032"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식",
+        "rpmPrimaryL3": "해와 계수",
+        "rpmPrimaryL4": "해가 주어진 연립방정식",
+        "rpmPrimaryRecordId": "M2-RPM-032",
+        "difficultyBasis": "자연수 조건으로 $5x + 2y = 29$의 해를 유한 조사하는 난이도 2 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION: 일차방정식 $5x + 2y",
+          "curriculum": "M2-RPM-032: 연립일차방정식 단원의 일차방정식의 해의 순서쌍 유형이다. ($5x+2y=29$)",
+          "problemType": "일차방정식의 자연수 해의 순서쌍 개수를 구하는 표준 유형이다. ($29$)",
+          "difficulty": "자연수 조건으로 $5x + 2y = 29$의 해를 유한 조사하는 난이도 2 문항이다.",
+          "condition": "COND_NATURAL_NUMBER: 4칸 condition: 자연수",
+          "crossConcept": "CC_LINEAR_EQUATIONS_TWO_VARIABLES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "계수가 큰 x에 1부터 5까지 자연수를 대입해 y가 자연수가 되는 순서쌍 3개를 찾는다.",
       "decisiveStep": "2y가 짝수이므로 x가 홀수(1, 3, 5)일 때만 자연수 y가 나옴을 확인하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "자연수 조건을 만족하는 x를 순차 대입해 해의 개수를 세는 1단계 문항이다.",
+      "difficultyReason": "자연수 조건으로 $5x + 2y = 29$의 해를 유한 조사하는 난이도 2 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
         "templateKey": null,
-        "why": "자연수 순서쌍 해 개수 세기 키가 선택표에 없음"
+        "why": "일차방정식의 자연수 해의 순서쌍 개수를 구하는 표준 유형이다. ($29$)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_750a7e0aaa8f4a859accd04d90d7bea002df95d163cd1f126d5efe5adbed9685",
@@ -692,8 +1108,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "subUnit": "연립일차방정식",
-        "conceptClusterKey": "M2-03-TWO_SOLS_PARAM_SUM",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_SUBSTITUTION_IN_EQUATIONS"
@@ -713,20 +1129,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-033"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정",
+          "recordId": "M2-RPM-033"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식",
+        "rpmPrimaryL3": "해와 계수",
+        "rpmPrimaryL4": "계수 결정",
+        "rpmPrimaryRecordId": "M2-RPM-033",
+        "difficultyBasis": "두 순서쌍 해를 대입하여 $a = 3, p = 6$을 차례로 구하는 난이도 2 문항이다. (ax)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION: 두 순서쌍 $(1, 3)$과",
+          "curriculum": "M2-RPM-033: 연립일차방정식 해와 계수 단원의 계수 결정 유형이다. ($ax+3y=12$)",
+          "problemType": "일차방정식의 해가 주어졌을 때 미정계수 $a, p$를 구하는 유형이다. (ax)",
+          "difficulty": "두 순서쌍 해를 대입하여 $a = 3, p = 6$을 차례로 구하는 난이도 2 문항이다. (ax)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 상수 이 있다).",
+          "crossConcept": "CC_SUBSTITUTION_IN_EQUATIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "해 (1, 3)을 대입해 a = 3을 먼저 구한 뒤 두 번째 해 (p, -p/3)을 대입해 p = 6을 구해 더한다.",
       "decisiveStep": "(1, 3)에서 a = 3을 확정하고 3p - p = 12에서 p = 6을 구하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "첫 번째 해로 계수 a를 결정한 뒤 두 번째 문자 해를 대입해 p를 구하는 2단계 문항이다.",
+      "difficultyReason": "두 순서쌍 해를 대입하여 $a = 3, p = 6$을 차례로 구하는 난이도 2 문항이다. (ax)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": null,
-        "why": "두 순서쌍 해를 대입해 계수와 좌표 합 구하기 키가 선택표에 없음"
+        "why": "일차방정식의 해가 주어졌을 때 미정계수 $a, p$를 구하는 유형이다. (ax)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_bbe1f241b779c62a410d4b8e71129a73d2ff7a981fdb459d49e788eb841311e4",
@@ -743,8 +1191,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "subUnit": "연립일차방정식",
-        "conceptClusterKey": "M2-03-CHECK_SYSTEM_SOL",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_SUBSTITUTION_IN_EQUATIONS"
@@ -764,20 +1212,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-032"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "해가 주어진 연립방정식",
+          "recordId": "M2-RPM-032"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식",
+        "rpmPrimaryL3": "해와 계수",
+        "rpmPrimaryL4": "해가 주어진 연립방정식",
+        "rpmPrimaryRecordId": "M2-RPM-032",
+        "difficultyBasis": "해 $x = 2, y = -1$을 선지 식에 대입해 참거짓을 판정하는 난이도 1 문항이다. (cases)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION: 다음 연립방정식 중에서 해가",
+          "curriculum": "M2-RPM-032: 연립일차방정식 단원의 주어진 해를 만족하는 연립방정식 판별 유형이다. (cases)",
+          "problemType": "주어진 해 $x = 2, y = -1$를 만족하는 연립방정식 찾기 객관식 유형이다. (cases)",
+          "difficulty": "해 $x = 2, y = -1$을 선지 식에 대입해 참거짓을 판정하는 난이도 1 문항이다. (cases)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SUBSTITUTION_IN_EQUATIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "x = 2, y = -1을 각 연립방정식의 두 식에 모두 대입해 등식이 모두 성립하는 ①을 고른다.",
       "decisiveStep": "①의 두 식 3(2)+2(-1)=4, 2-3(-1)=5가 모두 참임을 확인하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "주어진 해 (2, -1)을 각 선지의 두 방정식에 대입해 성립 여부를 확인하는 1단계 문항이다.",
+      "difficultyReason": "해 $x = 2, y = -1$을 선지 식에 대입해 참거짓을 판정하는 난이도 1 문항이다. (cases)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": null,
-        "why": "주어진 해를 갖는 연립방정식 고르기 키가 선택표에 없음"
+        "why": "주어진 해 $x = 2, y = -1$를 만족하는 연립방정식 찾기 객관식 유형이다. (cases)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_379b567f61b99036deb911855924ba48c593b21a109441f526fe51e37452ca59",
@@ -794,8 +1274,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "subUnit": "연립일차방정식",
-        "conceptClusterKey": "M2-03-BRACKET_SYSTEM_SOL",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_SIMULTANEOUS_LINEAR_EQUATIONS"
@@ -804,7 +1284,7 @@
         "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 16,
         "variationType": "NUMERIC",
         "provenance": {
@@ -815,20 +1295,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-034"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "연립일차방정식",
+          "l3": "복잡한 꼴의 연립방정식",
+          "l4": "괄호가 있는 연립방정식",
+          "recordId": "M2-RPM-034"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식",
+        "rpmPrimaryL3": "복잡한 꼴의 연립방정식",
+        "rpmPrimaryL4": "괄호가 있는 연립방정식",
+        "rpmPrimaryRecordId": "M2-RPM-034",
+        "difficultyBasis": "괄호 전개 후 가감법으로 $x=2, y=1$을 구하는 표준적인 난이도 2 문항이다. (cases)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION: 연립방정식 $\\begin{c",
+          "curriculum": "M2-RPM-034: 연립일차방정식의 풀이 단원의 괄호가 있는 연립방정식 유형이다. (cases)",
+          "problemType": "괄호가 있는 복잡한 연립일차방정식 풀이 유형이다. ($2(x+3)$) (cases)",
+          "difficulty": "괄호 전개 후 가감법으로 $x=2, y=1$을 구하는 표준적인 난이도 2 문항이다. (cases)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SIMULTANEOUS_LINEAR_EQUATIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "괄호와 동류항을 정리해 x + y = 3, 2x + 3y = 7로 만든 뒤 가감법으로 해 (2, 1)을 구한다.",
       "decisiveStep": "괄호를 풀어 표준형 x + y = 3, 2x + 3y = 7을 세운 뒤 2배하여 빼는 단계",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "괄호를 전개하고 이항하여 표준형으로 정리한 뒤 가감법으로 푸는 2단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "괄호 전개 후 가감법으로 $x=2, y=1$을 구하는 표준적인 난이도 2 문항이다. (cases)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": null,
-        "why": "괄호가 있는 연립일차방정식 풀이 키가 선택표에 없음"
+        "why": "괄호가 있는 복잡한 연립일차방정식 풀이 유형이다. ($2(x+3)$) (cases)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_175004c556167b7fe041a60d7e9395990831f98cc70a5122f0130c183a267f35",
@@ -845,8 +1357,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "subUnit": "연립일차방정식",
-        "conceptClusterKey": "M2-03-COMMON_SOL_THREE_EQ",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_COMMON_SOLUTION",
@@ -867,20 +1379,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-030"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "가감법",
+          "recordId": "M2-RPM-030"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식",
+        "rpmPrimaryL3": "연립방정식의 풀이",
+        "rpmPrimaryL4": "가감법",
+        "rpmPrimaryRecordId": "M2-RPM-030",
+        "difficultyBasis": "세 일차방정식의 관계로부터 해를 먼저 구하고 미정계수를 찾는 난이도 2 문항이다. (cases)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION: 연립방정식 $\\begin{c",
+          "curriculum": "M2-RPM-030: 연립일차방정식의 풀이 단원의 가감법 및 대입법 유형이다. (cases)",
+          "problemType": "다른 일차방정식을 만족시키는 연립방정식의 미정계수 결정 유형이다. (cases)",
+          "difficulty": "세 일차방정식의 관계로부터 해를 먼저 구하고 미정계수를 찾는 난이도 2 문항이다. (cases)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 상수 이 있다).",
+          "crossConcept": "CC_COMMON_SOLUTION, CC_SIMULTANEOUS_LINEAR_EQUATIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "a가 없는 두 식 x + 3y = 7과 2x - y = 0을 연립해 해 (1, 2)를 구한 뒤 4x - ay = 10에 대입한다.",
       "decisiveStep": "미정계수 a가 없는 두 식을 먼저 연립해 (1, 2)를 구하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "계수가 주어진 두 식을 연립해 해를 구하고 나머지 식에 대입해 상수를 구하는 2단계 문항이다.",
+      "difficultyReason": "세 일차방정식의 관계로부터 해를 먼저 구하고 미정계수를 찾는 난이도 2 문항이다. (cases)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": null,
-        "why": "세 일차방정식 공통해로 계수 구하기 키가 선택표에 없음"
+        "why": "다른 일차방정식을 만족시키는 연립방정식의 미정계수 결정 유형이다. (cases)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_6cdf87c3406769db25d9d7e550b67c6be9cf34c0101addf34fce778de61e6e6b",
@@ -897,8 +1441,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "subUnit": "연립일차방정식",
-        "conceptClusterKey": "M2-03-DECIMAL_FRAC_SYSTEM",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_DECIMAL_COEFFICIENTS",
@@ -908,7 +1452,7 @@
         "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 18,
         "variationType": "NUMERIC",
         "provenance": {
@@ -919,20 +1463,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-035"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "연립일차방정식",
+          "l3": "복잡한 꼴의 연립방정식",
+          "l4": "분수·소수가 있는 연립방정식",
+          "recordId": "M2-RPM-035"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식",
+        "rpmPrimaryL3": "복잡한 꼴의 연립방정식",
+        "rpmPrimaryL4": "분수·소수가 있는 연립방정식",
+        "rpmPrimaryRecordId": "M2-RPM-035",
+        "difficultyBasis": "소수와 분수 계수를 각각 $10$배, $6$배 정수화하여 푸는 난이도 2 계산 문항이다. (cases)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION: 연립방정식 $\\begin{c",
+          "curriculum": "M2-RPM-035: 복잡한 꼴의 연립방정식 단원의 분수·소수가 있는 연립방정식 유형이다. (cases)",
+          "problemType": "분수와 소수를 포함한 연립일차방정식의 풀이 유형이다. ($0.3x, 1/3x$) (cases)",
+          "difficulty": "소수와 분수 계수를 각각 $10$배, $6$배 정수화하여 푸는 난이도 2 계산 문항이다. (cases)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 해 이 있다).",
+          "crossConcept": "CC_DECIMAL_COEFFICIENTS, CC_FRACTION_COEFFICIENTS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "첫째 식에 10, 둘째 식에 6을 곱해 3x + y = 12, 2x - y = 3으로 만든 뒤 더해 해 (3, 3)을 구한다.",
       "decisiveStep": "소수 식에 10, 분수 식에 최소공배수 6을 곱해 정수 계수 식으로 바꾸는 단계",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "소수와 분수 계수를 정수로 환산한 뒤 가감법으로 해를 구해 합산하는 2단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "소수와 분수 계수를 각각 $10$배, $6$배 정수화하여 푸는 난이도 2 계산 문항이다. (cases)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": null,
-        "why": "소수·분수 계수 연립방정식 해의 합 구하기 키가 선택표에 없음"
+        "why": "분수와 소수를 포함한 연립일차방정식의 풀이 유형이다. ($0.3x, 1/3x$) (cases)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_97db744e192d3960339070f812a92987e4bf28733afcc3e8a974a92dce09af91",
@@ -949,15 +1525,15 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
         "subUnit": "연립일차방정식의 활용",
-        "conceptClusterKey": "M2-03-STAIR_RPS_WORD",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION_WORD_PROBLEM",
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_INVERSE_WIN_LOSS_RELATIONS"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 19,
@@ -970,20 +1546,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-038"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "연립일차방정식의 활용",
+          "l3": "수와 개수",
+          "l4": "두 수 관계",
+          "recordId": "M2-RPM-038"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식의 활용",
+        "rpmPrimaryL3": "수와 개수",
+        "rpmPrimaryL4": "두 수 관계",
+        "rpmPrimaryRecordId": "M2-RPM-038",
+        "difficultyBasis": "가위바위보 승패의 대칭성을 이용해 식 $2w - l = 7$을 세우고 푸는 난이도 3 실생활 응용 문항이다. (cases)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD: 민호와 준서가 가위바위보를",
+          "curriculum": "M2-RPM-038: 연립일차방정식의 활용 단원의 두 수 관계 및 실생활 상황 유형이다. (cases)",
+          "problemType": "가위바위보 계단 이동 연립방정식 실생활 활용 유형이다. ($7$계단, $-2$계단) (cases)",
+          "difficulty": "가위바위보 승패의 대칭성을 이용해 식 $2w - l = 7$을 세우고 푸는 난이도 3 실생활 응용 문항이다. (cases)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 미지수 이 있다).",
+          "crossConcept": "CC_INVERSE_WIN_LOSS_RELATIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "민호의 승·패 횟수 w, l이 준서의 패·승 횟수와 같음을 이용해 2w - l = 7, 2l - w = -2를 연립해 푼다.",
       "decisiveStep": "비김이 없으므로 한 사람의 승리 횟수가 상대방의 패배 횟수와 같음을 식으로 세우는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "가위바위보의 승패 반전 관계를 미지수 두 개로 식을 세워 전체 경기 수를 구하는 2단계 문항이다.",
+      "difficultyReason": "가위바위보 승패의 대칭성을 이용해 식 $2w - l = 7$을 세우고 푸는 난이도 3 실생활 응용 문항이다. (cases)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": null,
-        "why": "가위바위보 계단 오르내리기 연립방정식 활용 키가 선택표에 없음"
+        "why": "가위바위보 계단 이동 연립방정식 실생활 활용 유형이다. ($7$계단, $-2$계단) (cases)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_55e2704294e661acd5a4b9ed4bd50253a62cadf6a3cc31ddc5c85e0f77518033",
@@ -1000,8 +1608,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "subUnit": "연립일차방정식",
-        "conceptClusterKey": "M2-03-SWAPPED_COEFF_SYSTEM",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_COEFFICIENT_SWAP",
@@ -1022,20 +1630,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-033"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정",
+          "recordId": "M2-RPM-033"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식",
+        "rpmPrimaryL3": "해와 계수",
+        "rpmPrimaryL4": "계수 결정",
+        "rpmPrimaryRecordId": "M2-RPM-033",
+        "difficultyBasis": "잘못 보고 푼 조건으로 계수 $a=3, b=-1$을 먼저 구한 뒤 원래 방정식을 다시 푸는 난이도 3 심화 문항이다. (cases)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION: 연립방정식 $\\begin{c",
+          "curriculum": "M2-RPM-033: 연립일차방정식 단원의 해와 계수 결정 및 역산 유형이다. (cases)",
+          "problemType": "계수를 바꾸어 놓고 푼 연립일차방정식의 역산 유형이다. ($ax-by=5$) (cases)",
+          "difficulty": "잘못 보고 푼 조건으로 계수 $a=3, b=-1$을 먼저 구한 뒤 원래 방정식을 다시 푸는 난이도 3 심화 문항이다. (cases)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 상수 이 있다).",
+          "crossConcept": "CC_COEFFICIENT_SWAP, CC_ERROR_CORRECTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "a, b를 바꾼 식에 (1, -2)를 대입해 a = 3, b = -1을 복원한 뒤 원래 연립방정식을 다시 풀어 (1, 2)를 구한다.",
       "decisiveStep": "바꾼 식에서 얻은 연립방정식으로 a = 3, b = -1을 먼저 구하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "잘못 푼 식에서 계수 a, b에 대한 연립방정식을 풀어 계수를 복원한 뒤 원래 식을 다시 푸는 3단계 문항이다.",
+      "difficultyReason": "잘못 보고 푼 조건으로 계수 $a=3, b=-1$을 먼저 구한 뒤 원래 방정식을 다시 푸는 난이도 3 심화 문항이다. (cases)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": null,
-        "why": "계수 a, b를 바꾸어 푼 연립방정식 바른 해 구하기 키가 선택표에 없음"
+        "why": "계수를 바꾸어 놓고 푼 연립일차방정식의 역산 유형이다. ($ax-by=5$) (cases)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_043d432dfcc2fe6d309181c1602e9d0ceb99979ebb769b6eb08a360b48b11975",
@@ -1052,8 +1692,8 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-FUNC_VALUE_CHECK",
-        "problemTypeKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_FUNCTION_VALUE",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_FUNCTION_VALUE"
@@ -1073,20 +1713,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-046"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값",
+          "recordId": "M2-RPM-046"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "일차함수의 뜻",
+        "rpmPrimaryL4": "함숫값",
+        "rpmPrimaryRecordId": "M2-RPM-046",
+        "difficultyBasis": "주어진 함수식에 x=2를 대입하여 함숫값 계산을 수행하는 난이도 1 문항이다. (10)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: 다음 <보기>의 함수 중 $",
+          "curriculum": "M2-RPM-046: 일차함수 단원의 함숫값 계산 유형이다. (10)",
+          "problemType": "함수의 뜻과 함숫값 계산 기본 유형이다. (10)",
+          "difficulty": "주어진 함수식에 x=2를 대입하여 함숫값 계산을 수행하는 난이도 1 문항이다. (10)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_FUNCTION_VALUE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "네 함수식에 x = 2를 각각 대입해 함숫값이 5가 되는 ㄴ, ㄷ, ㄹ을 고른다.",
       "decisiveStep": "각 식에 x = 2를 대입해 계산 결과 5와 일치하는지 확인하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "주어진 x = 2를 각 함수식에 바로 대입해 함숫값이 5인지 확인하는 1단계 문항이다.",
+      "difficultyReason": "주어진 함수식에 x=2를 대입하여 함숫값 계산을 수행하는 난이도 1 문항이다. (10)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_FUNCTION_VALUE",
         "templateKey": null,
-        "why": "주어진 함숫값을 만족시키는 함수식 고르기 키가 선택표에 없음"
+        "why": "함수의 뜻과 함숫값 계산 기본 유형이다. (10)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_90c424aa4a6ec65fac20ab2ed603866b0269cf7728edfc628528505c9d21ed4f",
@@ -1101,10 +1773,10 @@
         "standardUnitKey": "M2-06",
         "standardUnit": "도형의 닮음",
         "standardUnitOrder": 6,
-        "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
-        "subUnit": "삼각형의 닮음 조건과 대응변의 길이",
-        "conceptClusterKey": "M2-06-RECT_DIAG_PERP_AA",
-        "problemTypeKey": "",
+        "subUnitKey": "M2-06-SIMILAR_FIGURES",
+        "subUnit": "닮은 도형의 성질과 겉넓이·부피의 비",
+        "conceptClusterKey": "M2-06-SIMILAR_FIGURES",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_TRIANGLE_SIMILARITY_AA",
@@ -1125,20 +1797,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-086"
+        ],
+        "rpmPrimary": {
+          "l1": "도형의 닮음과 피타고라스 정리",
+          "l2": "도형의 닮음",
+          "l3": "삼각형의 닮음",
+          "l4": "AA",
+          "recordId": "M2-RPM-086"
+        },
+        "rpmPrimaryL1": "도형의 닮음과 피타고라스 정리",
+        "rpmPrimaryL2": "도형의 닮음",
+        "rpmPrimaryL3": "삼각형의 닮음",
+        "rpmPrimaryL4": "AA",
+        "rpmPrimaryRecordId": "M2-RPM-086",
+        "difficultyBasis": "직각과 엇각으로 닮음을 증명하고 닮음비 $5 : 8$로 선분을 구하는 난이도 3 서술형 문항이다. (ABCD)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-06 / M2-06-SIMILAR_FIGURES: 직사각형 $ABCD$에서 대",
+          "curriculum": "M2-RPM-086: 도형의 닮음 단원의 직각삼각형의 닮음 및 선분의 길이 계산 유형이다. ($10, 16, 12$) (ABCD)",
+          "problemType": "직사각형 내부 대각선 수선에 의한 삼각형 닮음 증명 및 계산 서술형 유형이다. (ABCD)",
+          "difficulty": "직각과 엇각으로 닮음을 증명하고 닮음비 $5 : 8$로 선분을 구하는 난이도 3 서술형 문항이다. (ABCD)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 평행선 이 있다).",
+          "crossConcept": "CC_TRIANGLE_SIMILARITY_AA, CC_ALTERNATE_INTERIOR_ANGLES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "ΔDOE ~ ΔBCD(AA 닮음)를 찾고 닮음비 DO:BC = 10:16 = 5:8을 이용해 EO = 12×5/8를 구한다.",
       "decisiveStep": "엇각 ∠ODE = ∠CBD와 직각 일치로 ΔDOE ~ ΔBCD(AA 닮음)를 짝짓는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "직사각형에서 대각선 수직선으로 생긴 두 삼각형의 AA 닮음을 찾고 닮음비로 선분 길이를 구하는 3단계 문항이다.",
+      "difficultyReason": "직각과 엇각으로 닮음을 증명하고 닮음비 $5 : 8$로 선분을 구하는 난이도 3 서술형 문항이다. (ABCD)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
         "templateKey": null,
-        "why": "직사각형 대각선 수직이등분선 AA 닮음 선분 길이 키가 선택표에 없음"
+        "why": "직사각형 내부 대각선 수선에 의한 삼각형 닮음 증명 및 계산 서술형 유형이다. (ABCD)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_417a2285dc6ed947c1ed18c0432e4a3a51576ece5d4ed605426f0f8c840325a3",
@@ -1153,10 +1857,10 @@
         "standardUnitKey": "M2-06",
         "standardUnit": "도형의 닮음",
         "standardUnitOrder": 6,
-        "subUnitKey": "M2-06-PARALLEL_SEGMENT_RATIO",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
         "subUnit": "평행선 사이의 선분의 길이의 비",
-        "conceptClusterKey": "M2-06-TRAPEZOID_DIAG_PQ",
-        "problemTypeKey": "",
+        "conceptClusterKey": "PARALLEL_LENGTH_RATIO",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_TRAPEZOID",
@@ -1164,9 +1868,9 @@
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B23",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 23,
         "variationType": "NUMERIC",
         "provenance": {
@@ -1177,20 +1881,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-094"
+        ],
+        "rpmPrimary": {
+          "l1": "도형의 닮음과 피타고라스 정리",
+          "l2": "평행선과 선분의 길이의 비",
+          "l3": "평행선 사이 선분비",
+          "l4": "사다리꼴",
+          "recordId": "M2-RPM-094"
+        },
+        "rpmPrimaryL1": "도형의 닮음과 피타고라스 정리",
+        "rpmPrimaryL2": "평행선과 선분의 길이의 비",
+        "rpmPrimaryL3": "평행선 사이 선분비",
+        "rpmPrimaryL4": "사다리꼴",
+        "rpmPrimaryRecordId": "M2-RPM-094",
+        "difficultyBasis": "사다리꼴 대각선과 평행선에 의해 나누어지는 두 선분의 길이를 차분 $12 - 3 = 9$로 구하는 복합 문항이다. (ABCD)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-06 / M2-06-PARALLEL_LENGTH_RATIO: 사다리꼴 $ABCD$에서 $",
+          "curriculum": "M2-RPM-094: 평행선 사이의 선분의 길이의 비 단원의 사다리꼴 평행선 분할 유형이다. (ABCD)",
+          "problemType": "사다리꼴과 평행선 사이의 선분의 길이의 비 응용 서술형 유형이다. ($6, 3, 9, 18$) (ABCD)",
+          "difficulty": "사다리꼴 대각선과 평행선에 의해 나누어지는 두 선분의 길이를 차분 $12 - 3 = 9$로 구하는 복합 문항이다. (ABCD)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 평행선 이 있다).",
+          "crossConcept": "CC_TRAPEZOID, CC_PARALLEL_LINES_RATIO: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "ΔABD에서 BE:BA = 1:3으로 EP = 3을, ΔABC에서 AE:AB = 2:3으로 EQ = 12를 구해 차 EQ - EP = 9를 계산한다.",
       "decisiveStep": "PQ = EQ - EP로 분해하여 두 닮은 삼각형에서 각각의 길이를 구하는 단계",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B23",
-      "difficultyReason": "사다리꼴의 두 대각선으로 나뉜 두 삼각형에 평행선 길이 비를 각각 적용해 차를 구하는 2단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "사다리꼴 대각선과 평행선에 의해 나누어지는 두 선분의 길이를 차분 $12 - 3 = 9$로 구하는 복합 문항이다. (ABCD)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
         "templateKey": null,
-        "why": "사다리꼴 평행선 두 대각선 사이 선분 PQ 길이 구하기 키가 선택표에 없음"
+        "why": "사다리꼴과 평행선 사이의 선분의 길이의 비 응용 서술형 유형이다. ($6, 3, 9, 18$) (ABCD)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_a25df07cbd08a274fc4ec7cb2b6893e0e8552eb5cca261a2ff32810583fa2dfb",
@@ -1207,8 +1943,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
         "subUnit": "연립일차방정식의 활용",
-        "conceptClusterKey": "M2-03-WORD_UNIT_PRICE",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION_WORD_PROBLEM",
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_UNIT_PRICE",
@@ -1229,20 +1965,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-039"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "연립일차방정식의 활용",
+          "l3": "수와 개수",
+          "l4": "개수·가격",
+          "recordId": "M2-RPM-039"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식의 활용",
+        "rpmPrimaryL3": "수와 개수",
+        "rpmPrimaryL4": "개수·가격",
+        "rpmPrimaryRecordId": "M2-RPM-039",
+        "difficultyBasis": "실생활 구매 가격으로 식을 세우고 약분하여 연립방정식을 푸는 난이도 2 서술형 문항이다. ($33000, 31200$) (15)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD: 민지네 반은 학교 축제를 위",
+          "curriculum": "M2-RPM-039: 연립일차방정식의 활용 단원의 수와 개수, 개수·가격 유형이다. ($1800, 1200$) (15)",
+          "problemType": "연립일차방정식의 활용 개수와 가격 실생활 서술형 유형이다. ($33000, 31200$) (15)",
+          "difficulty": "실생활 구매 가격으로 식을 세우고 약분하여 연립방정식을 푸는 난이도 2 서술형 문항이다. ($33000, 31200$) (15)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 연립방정식 이 있다).",
+          "crossConcept": "CC_UNIT_PRICE, CC_SIMULTANEOUS_LINEAR_EQUATIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "두 구매 조건으로 연립방정식을 세운 뒤 각각 5와 4로 약분해 3x + y = 6600, 3x + 2y = 7800을 가감법으로 푼다.",
       "decisiveStep": "두 식을 각각 5와 4로 약분하여 x의 계수 3을 바로 맞추는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "두 물품의 개수와 총액 조건으로 연립방정식을 세우고 약분 후 가감법으로 푸는 2단계 문항이다.",
+      "difficultyReason": "실생활 구매 가격으로 식을 세우고 약분하여 연립방정식을 푸는 난이도 2 서술형 문항이다. ($33000, 31200$) (15)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": null,
-        "why": "두 물건 묶음 가격으로 단가 구하기 연립방정식 키가 선택표에 없음"
+        "why": "연립일차방정식의 활용 개수와 가격 실생활 서술형 유형이다. ($33000, 31200$) (15)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_261646a5eb8c9a54f54e9a728b910ccb1fa67daa9071dfbce099f723ed5b4d4f",
@@ -1259,8 +2027,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "subUnit": "연립일차방정식",
-        "conceptClusterKey": "M2-03-FOUR_EQ_COMMON_SOL",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_COMMON_SOLUTION",
@@ -1268,7 +2036,7 @@
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 25,
@@ -1281,20 +2049,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-033"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정",
+          "recordId": "M2-RPM-033"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식",
+        "rpmPrimaryL3": "해와 계수",
+        "rpmPrimaryL4": "계수 결정",
+        "rpmPrimaryRecordId": "M2-RPM-033",
+        "difficultyBasis": "공통해 $(4, -3)$을 먼저 연립하여 구한 후 나머지 두 식에 대입해 $ab=12$를 구하는 난이도 3 문항이다. (17)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION: 다음 네 일차방정식이 한 쌍",
+          "curriculum": "M2-RPM-033: 연립일차방정식 단원의 해와 계수, 공통인 해 유형이다. ($ab=12$) (17)",
+          "problemType": "네 일차방정식의 공통해를 이용한 미정계수 결정 서술형 유형이다. ($17, -18$)",
+          "difficulty": "공통해 $(4, -3)$을 먼저 연립하여 구한 후 나머지 두 식에 대입해 $ab=12$를 구하는 난이도 3 문항이다. (17)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 해 이 있다).",
+          "crossConcept": "CC_COMMON_SOLUTION, CC_SIMULTANEOUS_LINEAR_EQUATIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "상수 계수인 첫째·넷째 식을 연립해 공통해 (4, -3)을 구한 뒤 둘째·셋째 식에 대입해 a = 3, b = 4를 구한다.",
       "decisiveStep": "미정계수가 없는 두 식을 먼저 골라 가감법으로 공통해 (4, -3)을 구하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "미정계수가 없는 두 식을 연립해 공통해를 구한 뒤 나머지 두 식에 대입해 계수를 결정하는 2단계 문항이다.",
+      "difficultyReason": "공통해 $(4, -3)$을 먼저 연립하여 구한 후 나머지 두 식에 대입해 $ab=12$를 구하는 난이도 3 문항이다. (17)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
         "templateKey": null,
-        "why": "네 일차방정식 공통해로 두 미정계수 곱 구하기 키가 선택표에 없음"
+        "why": "네 일차방정식의 공통해를 이용한 미정계수 결정 서술형 유형이다. ($17, -18$)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     }
   ]
 }

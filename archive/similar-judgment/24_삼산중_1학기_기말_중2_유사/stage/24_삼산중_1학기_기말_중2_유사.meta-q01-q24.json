@@ -3,7 +3,7 @@
   "requestId": "24_삼산중_1학기_기말_중2_유사-candidate-v1",
   "examUid": "24_삼산중_1학기_기말_중2_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m2/1final/24_삼산중_1학기_기말_중2_유사.js",
-  "expectedSourceBlobSha1": "77668dc81cd2e5ed5c3d1270a24958aebabe5f67",
+  "expectedSourceBlobSha1": "51077e38852b75bcdaf55688ed6b003088afd152",
   "expectedQuestionCount": 24,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -29,8 +29,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "subUnit": "연립일차방정식",
-        "conceptClusterKey": "M2-03-VERIFY_SOLUTION_BY_SUBSTITUTION",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_PROBABILITY",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
@@ -51,20 +51,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-032"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "해가 주어진 연립방정식",
+          "recordId": "M2-RPM-032"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식",
+        "rpmPrimaryL3": "해와 계수",
+        "rpmPrimaryL4": "해가 주어진 연립방정식",
+        "rpmPrimaryRecordId": "M2-RPM-032",
+        "difficultyBasis": "Q1번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 cases)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION: 다음 중에서 해가 $x=2$, $y=-1$인 연립방정식을 찾으시오.",
+          "curriculum": "M2-RPM-032: Q1번 문항은 M2-RPM-032에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 cases)",
+          "problemType": "Q1번 문항은 PT_M2_PROBABILITY 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 cases)",
+          "difficulty": "Q1번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 cases)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SIMULTANEOUS_LINEAR_EQUATIONS, CC_SUBSTITUTION_IN_EQUATIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "주어진 해 x = 2, y = -1을 각 보기의 두 일차방정식에 대입하여 모두 참이 되는 ②를 찾는다.",
       "decisiveStep": "2x + y = 3과 x - 2y = 4에 (2, -1)을 대입해 두 등식이 동시에 성립함을 확인한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "주어진 해 (2, -1)을 각 선택지의 두 식에 직접 대입해 참·거짓만 판별하는 1단계 문항이다.",
+      "difficultyReason": "Q1번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 cases)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_PROBABILITY",
         "templateKey": null,
-        "why": "주어진 순서쌍을 연립방정식에 대입하여 해 판별"
+        "why": "Q1번 문항은 PT_M2_PROBABILITY 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 cases)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_fe2e648be706239cb0a16707764bb3359069542ca309986293e18ee28c14c299",
@@ -81,8 +113,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "subUnit": "연립일차방정식",
-        "conceptClusterKey": "M2-03-FIND_COEFFICIENTS_FROM_SOLUTION",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_PROBABILITY",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
@@ -103,20 +135,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-032"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "해가 주어진 연립방정식",
+          "recordId": "M2-RPM-032"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식",
+        "rpmPrimaryL3": "해와 계수",
+        "rpmPrimaryL4": "해가 주어진 연립방정식",
+        "rpmPrimaryRecordId": "M2-RPM-032",
+        "difficultyBasis": "Q2번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 cases)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION: 연립방정식 $\\begin{cases}2x+3y=8\\4x+ay=2\\end{cases}$의 해가 $x=1$, $y=b$일 때, $ab$의 값은?",
+          "curriculum": "M2-RPM-032: Q2번 문항은 M2-RPM-032에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 cases)",
+          "problemType": "Q2번 문항은 PT_M2_PROBABILITY 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 cases)",
+          "difficulty": "Q2번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 cases)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SIMULTANEOUS_LINEAR_EQUATIONS, CC_COEFFICIENT_DETERMINATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "x = 1, y = b를 2x + 3y = 8에 대입해 b = 2를 구한 뒤 4x + ay = 2에 대입해 a = -1을 구한다.",
       "decisiveStep": "첫째 식에서 b = 2를 먼저 확정한 다음 둘째 식에서 a = -1을 구해 곱한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "첫째 식에서 b를 구하고 그 결과를 둘째 식에 다시 대입해 a를 구하는 2단계 절차 문항이다.",
+      "difficultyReason": "Q2번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 cases)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_PROBABILITY",
         "templateKey": null,
-        "why": "해의 일부와 미정계수를 순차 대입으로 구하는 문항"
+        "why": "Q2번 문항은 PT_M2_PROBABILITY 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 cases)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c1cc52e719e65387d7141bb17f4a369f0454dda0d41067fce509a5362f1dab92",
@@ -133,8 +197,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
         "subUnit": "연립일차방정식의 활용",
-        "conceptClusterKey": "M2-03-NATURAL_NUMBER_ORDERED_PAIRS",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION_WORD_PROBLEM",
+        "problemTypeKey": "PT_M2_PROBABILITY",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_LINEAR_EQUATIONS_TWO_VARIABLES"
@@ -156,20 +220,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-038"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "연립일차방정식의 활용",
+          "l3": "수와 개수",
+          "l4": "두 수 관계",
+          "recordId": "M2-RPM-038"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식의 활용",
+        "rpmPrimaryL3": "수와 개수",
+        "rpmPrimaryL4": "두 수 관계",
+        "rpmPrimaryRecordId": "M2-RPM-038",
+        "difficultyBasis": "Q3번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 19)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD: 일차방정식 $3x+2y=19$를 만족시키는 자연수 $x$와 $y$의 순서쌍 $(x, y)$의 개수는?",
+          "curriculum": "M2-RPM-038: Q3번 문항은 M2-RPM-038에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 19)",
+          "problemType": "Q3번 문항은 PT_M2_PROBABILITY 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 19)",
+          "difficulty": "Q3번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 19)",
+          "condition": "COND_NATURAL_NUMBER: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_LINEAR_EQUATIONS_TWO_VARIABLES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "3x + 2y = 19에서 x에 자연수 1부터 대입하여 y가 자연수가 되는 순서쌍을 모두 찾는다.",
       "decisiveStep": "19 - 3x가 양의 짝수가 되는 홀수 x = 1, 3, 5를 빠짐없이 나열한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "자연수 조건과 홀짝성·상한 조건을 함께 고려해 순서쌍 개수를 세어야 하는 2단계 문항이다.",
+      "difficultyReason": "Q3번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 19)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_PROBABILITY",
         "templateKey": null,
-        "why": "미지수가 2개인 일차방정식의 자연수 해 개수"
+        "why": "Q3번 문항은 PT_M2_PROBABILITY 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 19)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_66f96a8f10722bf649beb8a8e624d1dc6296c788469bf06700db52e47c03c59e",
@@ -186,9 +282,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-FUNCTION_DEFINITION_CHECK",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
-        "templateKey": "",
+        "templateKey": "TPL_M2_COUNT_VALID_FUNCTIONS_AND_LINEAR_FUNCTIONS",
         "crossConceptKeys": [
           "CC_CLASSIFICATION",
           "CC_COUNTEREXAMPLE_CONDITION"
@@ -208,20 +304,52 @@
           "variationType": "CONTEXT",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-046"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값",
+          "recordId": "M2-RPM-046"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "일차함수의 뜻",
+        "rpmPrimaryL4": "함숫값",
+        "rpmPrimaryRecordId": "M2-RPM-046",
+        "difficultyBasis": "Q4번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 24)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: 다음 중 $y$가 $x$의 함수가 아닌 것을 고르면?",
+          "curriculum": "M2-RPM-046: Q4번 문항은 M2-RPM-046에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 24)",
+          "problemType": "Q4번 문항은 PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 24)",
+          "difficulty": "Q4번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 24)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_CLASSIFICATION, CC_COUNTEREXAMPLE_CONDITION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "각 대응 관계에서 x 하나의 값에 y의 값이 오직 하나만 정해지는지 반례로 판별한다.",
       "decisiveStep": "④에서 x = 4일 때 약수 y가 1, 2, 4로 복수 대응함을 확인한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "함수의 정의(하나의 x에 하나의 y 대응)를 곧바로 적용해 반례를 찾는 1단계 문항이다.",
+      "difficultyReason": "Q4번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 24)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
-        "templateKey": null,
-        "why": "일상 및 수 개념에서 함수 여부 판별"
+        "templateKey": "TPL_M2_COUNT_VALID_FUNCTIONS_AND_LINEAR_FUNCTIONS",
+        "why": "Q4번 문항은 PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 24)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c434f8ae38f25dd33232083ffb55792c2720a5041411611de62c99a5e8439781",
@@ -238,9 +366,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-FUNCTION_VALUE_EVALUATION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
         "crossConceptKeys": [
           "CC_FUNCTION_VALUE"
         ],
@@ -259,20 +387,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-046"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값",
+          "recordId": "M2-RPM-046"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "일차함수의 뜻",
+        "rpmPrimaryL4": "함숫값",
+        "rpmPrimaryRecordId": "M2-RPM-046",
+        "difficultyBasis": "Q5번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 10)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: 일차함수 $f(x)=3x-4$에 대하여 $f(-2)=a$, $f(3)=b$일 때, $a+b$의 값은?",
+          "curriculum": "M2-RPM-046: Q5번 문항은 M2-RPM-046에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 10)",
+          "problemType": "Q5번 문항은 PT_M2_FUNCTION_VALUE_PRIME_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)",
+          "difficulty": "Q5번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 10)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_FUNCTION_VALUE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "f(x) = 3x - 4에 x = -2와 x = 3을 각각 대입해 a, b를 구한 뒤 합한다.",
       "decisiveStep": "f(-2) = -10과 f(3) = 5를 정확히 계산해 더한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "함숫값의 정의에 따라 x = -2, 3을 대입해 바로 계산하는 1단계 문항이다.",
+      "difficultyReason": "Q5번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 10)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "두 함숫값을 구해 더하는 기본 계산"
+        "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
+        "why": "Q5번 문항은 PT_M2_FUNCTION_VALUE_PRIME_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_f61df747ac3985e1035892b78a20fdc04b8875193615919546f0c901b3e9464e",
@@ -289,9 +449,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-IDENTIFY_LINEAR_FUNCTION",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
-        "templateKey": "",
+        "templateKey": "TPL_M2_COUNT_VALID_FUNCTIONS_AND_LINEAR_FUNCTIONS",
         "crossConceptKeys": [
           "CC_CLASSIFICATION",
           "CC_POLYNOMIAL_DEGREE"
@@ -313,20 +473,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-046"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값",
+          "recordId": "M2-RPM-046"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "일차함수의 뜻",
+        "rpmPrimaryL4": "함숫값",
+        "rpmPrimaryRecordId": "M2-RPM-046",
+        "difficultyBasis": "Q6번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ax)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: 다음 중 $y$가 $x$에 대한 일차함수인 것을 고르면?",
+          "curriculum": "M2-RPM-046: Q6번 문항은 M2-RPM-046에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ax)",
+          "problemType": "Q6번 문항은 PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)",
+          "difficulty": "Q6번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ax)",
+          "condition": "COND_NONZERO: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_CLASSIFICATION, CC_POLYNOMIAL_DEGREE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "y = ax + b (a != 0) 꼴의 정의를 기준으로 각 식의 차수와 분모 위치를 확인한다.",
       "decisiveStep": "⑤ y = -4x + 3만이 x의 계수가 0이 아닌 일차식 형태임을 판별한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "일차함수의 정의 y = ax + b (a != 0)를 바로 대조해 고르는 1단계 문항이다.",
+      "difficultyReason": "Q6번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ax)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
-        "templateKey": null,
-        "why": "주어진 식들 중 일차함수 판별"
+        "templateKey": "TPL_M2_COUNT_VALID_FUNCTIONS_AND_LINEAR_FUNCTIONS",
+        "why": "Q6번 문항은 PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_181d1306d424099828b70b40d14aadad865643e82f98bc6969b6fb8e76a82742",
@@ -343,9 +535,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-VERTICAL_TRANSLATION_POINT",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
-        "templateKey": "",
+        "templateKey": "TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT",
         "crossConceptKeys": [
           "CC_PARALLEL_TRANSLATION",
           "CC_POINT_SUBSTITUTION"
@@ -365,20 +557,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-048"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편",
+          "recordId": "M2-RPM-048"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "일차함수의 그래프",
+        "rpmPrimaryL4": "기울기·절편",
+        "rpmPrimaryRecordId": "M2-RPM-048",
+        "difficultyBasis": "Q7번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 y)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: 일차함수 $y=-3x$의 그래프를 $y$축의 방향으로 $k$만큼 평행이동한 그래프가 점 $(3, -4)$를 지날 때, 수 $k$의 값은?",
+          "curriculum": "M2-RPM-048: Q7번 문항은 M2-RPM-048에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 y)",
+          "problemType": "Q7번 문항은 PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 y)",
+          "difficulty": "Q7번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 y)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_PARALLEL_TRANSLATION, CC_POINT_SUBSTITUTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "y = -3x를 y축 방향으로 k만큼 평행이동한 식 y = -3x + k에 (3, -4)를 대입한다.",
       "decisiveStep": "평행이동한 식 y = -3x + k를 세우고 (-4) = -9 + k에서 k = 5를 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "평행이동 공식을 적용해 식을 쓰고 한 점의 좌표를 대입하는 1단계 문항이다.",
+      "difficultyReason": "Q7번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 y)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
-        "templateKey": null,
-        "why": "y축 방향 평행이동 후 지나는 점 대입"
+        "templateKey": "TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT",
+        "why": "Q7번 문항은 PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 y)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_320a5ec588b1a7d749088ac6f0ffab3ca1f6577f3b349ad4b67869ec6d6f702e",
@@ -395,9 +619,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
         "subUnit": "일차함수와 일차방정식의 관계",
-        "conceptClusterKey": "M2-04-AXIS_INTERCEPT_TRIANGLE_AREA",
+        "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
         "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
-        "templateKey": "",
+        "templateKey": "TPL_M2_CALCULATE_AREA_BOUNDED_BY_TWO_LINES_AND_AXES",
         "crossConceptKeys": [
           "CC_INTERCEPTS",
           "CC_POLYGON_AREA"
@@ -417,20 +641,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-058"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "넓이",
+          "recordId": "M2-RPM-058"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+        "rpmPrimaryL3": "그래프 활용",
+        "rpmPrimaryL4": "넓이",
+        "rpmPrimaryRecordId": "M2-RPM-058",
+        "difficultyBasis": "Q8번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 12)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_EQUATION: 일차함수 $y=-3x+12$의 그래프와 $x$축, $y$축으로 둘러싸인 도형의 넓이는?",
+          "curriculum": "M2-RPM-058: Q8번 문항은 M2-RPM-058에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 12)",
+          "problemType": "Q8번 문항은 PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 12)",
+          "difficulty": "Q8번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 12)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_INTERCEPTS, CC_POLYGON_AREA: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "y = -3x + 12의 x절편 4와 y절편 12를 구해 직각삼각형의 넓이를 계산한다.",
       "decisiveStep": "두 절편 4와 12를 밑변과 높이로 삼아 (1/2)*4*12 = 24를 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "x절편과 y절편을 먼저 구한 뒤 삼각형 넓이 공식에 적용하는 2단계 문항이다.",
+      "difficultyReason": "Q8번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 12)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
-        "templateKey": null,
-        "why": "일차함수와 두 좌표축이 만드는 삼각형 넓이"
+        "templateKey": "TPL_M2_CALCULATE_AREA_BOUNDED_BY_TWO_LINES_AND_AXES",
+        "why": "Q8번 문항은 PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 12)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_af6f8c5d4bfa853870e54ded44e822ce999a2877e4c2759de4790012f2b9b4f4",
@@ -447,9 +703,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-VERTICAL_LINE_COEFFICIENTS",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
-        "templateKey": "",
+        "templateKey": "TPL_M2_FIND_VERTICAL_LINE_EQUATION_FROM_POINT",
         "crossConceptKeys": [
           "CC_EQUATIONS_PARALLEL_TO_AXES",
           "CC_COEFFICIENT_DETERMINATION"
@@ -469,20 +725,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-046"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값",
+          "recordId": "M2-RPM-046"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "일차함수의 뜻",
+        "rpmPrimaryL4": "함숫값",
+        "rpmPrimaryRecordId": "M2-RPM-046",
+        "difficultyBasis": "Q9번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ax)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: 일차방정식 $ax+by+6=0$의 그래프가 점 $(-3, 0)$을 지나고 $y$축에 평행한 직선일 때, 두 수 $a$, $b$에 대하여 $b-a$의 값은?",
+          "curriculum": "M2-RPM-046: Q9번 문항은 M2-RPM-046에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ax)",
+          "problemType": "Q9번 문항은 PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)",
+          "difficulty": "Q9번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ax)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_EQUATIONS_PARALLEL_TO_AXES, CC_COEFFICIENT_DETERMINATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "y축에 평행하고 (-3, 0)을 지나는 직선 x = -3과 ax + by + 6 = 0을 비교해 b = 0, a = 2를 구한다.",
       "decisiveStep": "y축에 평행한 직선 조건에서 b = 0임을 먼저 확정한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "y축에 평행한 직선의 형태가 x = 상수임을 파악하고 계수 b = 0과 a를 구해야 하는 2단계 문항이다.",
+      "difficultyReason": "Q9번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ax)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
-        "templateKey": null,
-        "why": "y축에 평행한 일차방정식의 계수 결정"
+        "templateKey": "TPL_M2_FIND_VERTICAL_LINE_EQUATION_FROM_POINT",
+        "why": "Q9번 문항은 PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_ceec70232554925c6b24844f3e13ac15d6c93917a3d3987870defeaea3a6f5de",
@@ -499,9 +787,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
         "subUnit": "일차함수와 일차방정식의 관계",
-        "conceptClusterKey": "M2-04-INTERSECTION_WITH_VERTICAL_LINE",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
+        "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
         "crossConceptKeys": [
           "CC_EQUATIONS_PARALLEL_TO_AXES",
           "CC_INTERSECTION_OF_TWO_GRAPHS"
@@ -521,20 +809,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-056"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "교점과 연립방정식",
+          "recordId": "M2-RPM-056"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+        "rpmPrimaryL3": "두 직선의 관계",
+        "rpmPrimaryL4": "교점과 연립방정식",
+        "rpmPrimaryRecordId": "M2-RPM-056",
+        "difficultyBasis": "Q10번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 12)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_EQUATION: 점 $(-3, 0)$을 지나고 $y$축에 평행한 직선의 방정식과 직선의 방정식 $x+3y=9$는 한 점에서 만난다.",
+          "curriculum": "M2-RPM-056: Q10번 문항은 M2-RPM-056에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 12)",
+          "problemType": "Q10번 문항은 PT_M2_FUNCTION_VALUE_PRIME_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 12)",
+          "difficulty": "Q10번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 12)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_EQUATIONS_PARALLEL_TO_AXES, CC_INTERSECTION_OF_TWO_GRAPHS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "(-3, 0)을 지나고 y축에 평행한 직선 x = -3을 x + 3y = 9에 대입해 교점 (-3, 4)를 구한다.",
       "decisiveStep": "직선 x = -3을 세워 x + 3y = 9에 대입함으로써 y = 4를 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "y축에 평행한 직선의 식 x = -3을 먼저 세운 뒤 다른 직선과 연립해야 하는 2단계 문항이다.",
+      "difficultyReason": "Q10번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 12)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "y축 평행 직선과 일반 직선의 교점 구하기"
+        "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
+        "why": "Q10번 문항은 PT_M2_FUNCTION_VALUE_PRIME_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 12)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_87b80dbc1ed34773eeea0c209cfbbb30728ee13c6dc1db0d8e83d264132a1b65",
@@ -551,9 +871,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-SLOPE_FROM_TWO_POINTS",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
         "crossConceptKeys": [
           "CC_SLOPE_FORMULA"
         ],
@@ -572,20 +892,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-048"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편",
+          "recordId": "M2-RPM-048"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "일차함수의 그래프",
+        "rpmPrimaryL4": "기울기·절편",
+        "rpmPrimaryRecordId": "M2-RPM-048",
+        "difficultyBasis": "Q11번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 10)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: 기울기가 $\\dfrac{1}{4}$인 일차함수가 두 점 $(2, 7)$, $(k, 5)$를 지날 때, 수 $k$의 값은?",
+          "curriculum": "M2-RPM-048: Q11번 문항은 M2-RPM-048에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 10)",
+          "problemType": "Q11번 문항은 PT_M2_FUNCTION_VALUE_PRIME_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)",
+          "difficulty": "Q11번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 10)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SLOPE_FORMULA: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "두 점 (2, 7), (k, 5)의 기울기 (5 - 7)/(k - 2)가 1/4과 같다고 식을 세워 k를 구한다.",
       "decisiveStep": "-2 / (k - 2) = 1/4에서 k - 2 = -8임을 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "기울기 공식 (y의 증가량)/(x의 증가량)에 좌표를 바로 대입해 푸는 1단계 문항이다.",
+      "difficultyReason": "Q11번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 10)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "두 점과 기울기 조건으로 미지 좌표 구하기"
+        "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
+        "why": "Q11번 문항은 PT_M2_FUNCTION_VALUE_PRIME_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_3c4bb2b915dfd7e6edfd2f43de75222511d0b356079817a6e138f6dc7189b9a7",
@@ -602,9 +954,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-GRAPH_SHAPE_FROM_COEFFICIENTS",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M2_LINEAR_FUNCTION_CONDITIONS_MATCHING",
-        "templateKey": "",
+        "templateKey": "TPL_M2_SELECT_FUNCTION_MATCHING_SLOPE_AND_INTERCEPT_CONDITIONS",
         "crossConceptKeys": [
           "CC_SLOPE_SIGN",
           "CC_Y_INTERCEPT",
@@ -629,20 +981,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-050"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "그래프의 성질",
+          "l4": "일차함수 그래프의 평행·일치",
+          "recordId": "M2-RPM-050"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "그래프의 성질",
+        "rpmPrimaryL4": "일차함수 그래프의 평행·일치",
+        "rpmPrimaryRecordId": "M2-RPM-050",
+        "difficultyBasis": "Q12번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ax)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: 일차함수 $y=ax+b$의 그래프에 대하여 $a>0$, $b<0$을 만족하는 그래프의 특징과 $a<0$, $b=0$을 만족하는 그래프의 특징을 아래 <보기>에서 순서대로 바르게 짝지은 것은?",
+          "curriculum": "M2-RPM-050: Q12번 문항은 M2-RPM-050에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ax)",
+          "problemType": "Q12번 문항은 PT_M2_LINEAR_FUNCTION_CONDITIONS_MATCHING 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)",
+          "difficulty": "Q12번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ax)",
+          "condition": "COND_POSITIVE, COND_NEGATIVE, COND_NONZERO: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_SLOPE_SIGN, CC_Y_INTERCEPT, CC_GRAPH_MATCHING: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "기울기 a의 부호로 그래프의 증가·감소 방향을 정하고 y절편 b의 부호로 y축과의 교점 위치를 판별한다.",
       "decisiveStep": "(a>0, b<0)은 ㄴ, (a<0, b=0)은 ㅁ에 대응함을 각각 확인한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "기울기 부호와 y절편 부호의 기하적 의미를 바로 연결하는 1단계 문항이다.",
+      "difficultyReason": "Q12번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ax)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M2_LINEAR_FUNCTION_CONDITIONS_MATCHING",
-        "templateKey": null,
-        "why": "a, b의 부호 조건에 맞는 그래프 성질 매칭"
+        "templateKey": "TPL_M2_SELECT_FUNCTION_MATCHING_SLOPE_AND_INTERCEPT_CONDITIONS",
+        "why": "Q12번 문항은 PT_M2_LINEAR_FUNCTION_CONDITIONS_MATCHING 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_49403aa420ac57fa3180663db58028719816b6caf15741073a9e797bc3dd132d",
@@ -659,8 +1043,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
         "subUnit": "연립일차방정식의 활용",
-        "conceptClusterKey": "M2-03-ROCK_PAPER_SCISSORS_STAIRS",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION_WORD_PROBLEM",
+        "problemTypeKey": "PT_M2_PROBABILITY",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_SIMULTANEOUS_LINEAR_EQUATIONS",
@@ -683,20 +1067,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-038"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "연립일차방정식의 활용",
+          "l3": "수와 개수",
+          "l4": "두 수 관계",
+          "recordId": "M2-RPM-038"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식의 활용",
+        "rpmPrimaryL3": "수와 개수",
+        "rpmPrimaryL4": "두 수 관계",
+        "rpmPrimaryRecordId": "M2-RPM-038",
+        "difficultyBasis": "Q13번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 13)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD: 민수와 지수가 계단에서 가위바위보를 하여 이기면 $4$계단 올라가고 지면 $3$계단을 내려가며, 비길 경우는 움직이지 않는 게임을 했다.",
+          "curriculum": "M2-RPM-038: Q13번 문항은 M2-RPM-038에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 13)",
+          "problemType": "Q13번 문항은 PT_M2_PROBABILITY 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 13)",
+          "difficulty": "Q13번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 13)",
+          "condition": "COND_NATURAL_NUMBER: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_SIMULTANEOUS_LINEAR_EQUATIONS, CC_INVERSE_WIN_LOSS_RELATIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "민수와 지수가 이긴 횟수를 각각 x, y로 두고 두 사람의 계단 변화량으로 연립방정식을 세운다.",
       "decisiveStep": "4x - 3y = 6과 -3x + 4y = 13을 더해 x + y = 19를 구하고 비긴 횟수 4를 더한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "상대의 승리가 나의 패배라는 관계를 식으로 세우고 비긴 횟수까지 합산해야 하는 3단계 문항이다.",
+      "difficultyReason": "Q13번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 13)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_PROBABILITY",
         "templateKey": null,
-        "why": "승패가 엇갈리는 계단 게임의 연립방정식 활용"
+        "why": "Q13번 문항은 PT_M2_PROBABILITY 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 13)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_97e448ab4d0eda2f0bd3ee8a0b5f8cc20c56d02353c8d35964a6b66420dd479b",
@@ -713,9 +1129,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-PARALLEL_LINE_THROUGH_POINT",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
-        "templateKey": "",
+        "templateKey": "TPL_M2_FIND_UNKNOWN_COORDINATE_FROM_PARALLEL_SLOPE",
         "crossConceptKeys": [
           "CC_SLOPE_AND_INTERCEPT",
           "CC_INTERCEPTS",
@@ -736,20 +1152,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-052"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기",
+          "recordId": "M2-RPM-052"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "식 구하기",
+        "rpmPrimaryL4": "두 점으로 식 구하기",
+        "rpmPrimaryRecordId": "M2-RPM-052",
+        "difficultyBasis": "Q14번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 y)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: 일차함수 $y=-\\dfrac{3}{2}x+1$의 그래프와 평행하고 점 $(4, -2)$를 지나는 일차함수의 그래프의 $x$절편과 $y$절편을 순서대로 구하면?",
+          "curriculum": "M2-RPM-052: Q14번 문항은 M2-RPM-052에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 y)",
+          "problemType": "Q14번 문항은 PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 y)",
+          "difficulty": "Q14번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 y)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SLOPE_AND_INTERCEPT, CC_INTERCEPTS, CC_POINT_SUBSTITUTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "평행 조건에서 기울기 -3/2를 가져와 y = -(3/2)x + b에 (4, -2)를 대입해 식을 완성한 뒤 절편을 구한다.",
       "decisiveStep": "b = 4를 구해 식 y = -(3/2)x + 4를 세운 다음 x절편 8/3을 계산한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "평행 조건으로 기울기를 정하고 한 점을 대입해 식을 구한 뒤 x절편까지 구하는 2단계 문항이다.",
+      "difficultyReason": "Q14번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 y)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
-        "templateKey": null,
-        "why": "평행한 직선과 한 점으로 식을 세워 절편 구하기"
+        "templateKey": "TPL_M2_FIND_UNKNOWN_COORDINATE_FROM_PARALLEL_SLOPE",
+        "why": "Q14번 문항은 PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 y)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_1c14ca0146e833835e0d7ba48d6123b6dad2bc8af8b1cb14ceb6588941fe740c",
@@ -766,9 +1214,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-EQUATION_FROM_INTERCEPTS",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
         "crossConceptKeys": [
           "CC_INTERCEPTS",
           "CC_SLOPE_FORMULA"
@@ -788,20 +1236,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-052"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기",
+          "recordId": "M2-RPM-052"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "식 구하기",
+        "rpmPrimaryL4": "두 점으로 식 구하기",
+        "rpmPrimaryRecordId": "M2-RPM-052",
+        "difficultyBasis": "Q15번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 x)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: $x$절편이 $8$이고 $y$절편이 $2$인 직선을 그래프로 하는 일차함수의 식을 구하면?",
+          "curriculum": "M2-RPM-052: Q15번 문항은 M2-RPM-052에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 x)",
+          "problemType": "Q15번 문항은 PT_M2_FUNCTION_VALUE_PRIME_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 x)",
+          "difficulty": "Q15번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 x)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_INTERCEPTS, CC_SLOPE_FORMULA: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "x절편 (8, 0)과 y절편 (0, 2)로부터 기울기 -1/4을 구해 y = -(1/4)x + 2를 세운다.",
       "decisiveStep": "기울기 (0 - 2)/(8 - 0) = -1/4을 정확히 부호까지 계산한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "x절편과 y절편을 두 점으로 읽어 기울기와 y절편으로 식을 바로 쓰는 1단계 문항이다.",
+      "difficultyReason": "Q15번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 x)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "x절편과 y절편으로 일차함수의 식 구하기"
+        "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
+        "why": "Q15번 문항은 PT_M2_FUNCTION_VALUE_PRIME_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 x)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_039aec8ff13b547d8af6b7e60090545d4c745d8c0f0e3128d7335836d6c770eb",
@@ -818,8 +1298,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
         "subUnit": "연립일차방정식",
-        "conceptClusterKey": "M2-03-FRACTION_DECIMAL_PARAM_CONDITION",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION",
+        "problemTypeKey": "PT_M2_PROBABILITY",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_FRACTION_COEFFICIENTS",
@@ -841,20 +1321,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-034"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "연립일차방정식",
+          "l3": "복잡한 꼴의 연립방정식",
+          "l4": "괄호가 있는 연립방정식",
+          "recordId": "M2-RPM-034"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식",
+        "rpmPrimaryL3": "복잡한 꼴의 연립방정식",
+        "rpmPrimaryL4": "괄호가 있는 연립방정식",
+        "rpmPrimaryRecordId": "M2-RPM-034",
+        "difficultyBasis": "Q16번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 cases)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION: 연립방정식 $\\begin{cases}\\dfrac{x}{4}+\\dfrac{y}{6}=\\dfrac{7}{6}\\0.2x+ky=-0.8\\end{cases}$의 해는 $y$의 값이 $x$의 $2$배일 때, 수 $k$의 값은?",
+          "curriculum": "M2-RPM-034: Q16번 문항은 M2-RPM-034에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 cases)",
+          "problemType": "Q16번 문항은 PT_M2_PROBABILITY 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 cases)",
+          "difficulty": "Q16번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 cases)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_FRACTION_COEFFICIENTS, CC_DECIMAL_COEFFICIENTS, CC_COEFFICIENT_DETERMINATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "y = 2x 조건을 첫째 분수 방정식에 대입해 x = 2, y = 4를 구한 뒤 둘째 소수 방정식에서 k를 구한다.",
       "decisiveStep": "y = 2x를 x/4 + y/6 = 7/6에 대입해 x = 2, y = 4를 먼저 확정한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "y = 2x 조건을 이용해 분수 방정식을 풀고 그 해를 소수 방정식에 대입해 k를 구하는 2단계 문항이다.",
+      "difficultyReason": "Q16번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 cases)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_PROBABILITY",
         "templateKey": null,
-        "why": "해 사이의 비례 조건과 분수·소수 계수 연립방정식"
+        "why": "Q16번 문항은 PT_M2_PROBABILITY 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 cases)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_e0f43d523bc8c3b22fbc4d24d2546d4850c510630c44055fdff372da77808b3f",
@@ -871,9 +1383,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
         "subUnit": "일차함수와 일차방정식의 관계",
-        "conceptClusterKey": "M2-04-INTERSECTION_COEFFICIENTS",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
+        "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
         "crossConceptKeys": [
           "CC_INTERSECTION_OF_TWO_GRAPHS",
           "CC_COEFFICIENT_DETERMINATION"
@@ -893,20 +1405,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-056"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "교점과 연립방정식",
+          "recordId": "M2-RPM-056"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+        "rpmPrimaryL3": "두 직선의 관계",
+        "rpmPrimaryL4": "교점과 연립방정식",
+        "rpmPrimaryRecordId": "M2-RPM-056",
+        "difficultyBasis": "Q17번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ax)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_EQUATION: 두 일차방정식 $ax+y=5$와 $bx-ay=4$의 그래프가 만나는 교점을 $(2, 1)$이라 하자.",
+          "curriculum": "M2-RPM-056: Q17번 문항은 M2-RPM-056에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ax)",
+          "problemType": "Q17번 문항은 PT_M2_FUNCTION_VALUE_PRIME_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)",
+          "difficulty": "Q17번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ax)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_INTERSECTION_OF_TWO_GRAPHS, CC_COEFFICIENT_DETERMINATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "교점 (2, 1)을 ax + y = 5에 대입해 a = 2를 구하고 bx - ay = 4에 대입해 b = 3을 구한다.",
       "decisiveStep": "첫째 식에서 a = 2를 먼저 결정한 뒤 둘째 식에 a = 2와 (2, 1)을 대입해 b = 3을 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "교점을 두 방정식에 순차적으로 대입해 계수 a, b를 구해야 하는 2단계 문항이다.",
+      "difficultyReason": "Q17번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ax)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "두 직선의 교점 좌표로 미정계수 결정"
+        "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
+        "why": "Q17번 문항은 PT_M2_FUNCTION_VALUE_PRIME_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_de088b855cab91a14afa7e45bb285341982fed137bfe17362bbebe111736179e",
@@ -923,9 +1467,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
         "subUnit": "일차함수와 일차방정식의 관계",
-        "conceptClusterKey": "M2-04-LINE_FROM_X_AND_Y_INTERCEPT_CONDITIONS",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
+        "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
         "crossConceptKeys": [
           "CC_X_INTERCEPT",
           "CC_Y_INTERCEPT",
@@ -946,20 +1490,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-054"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 일차방정식의 관계",
+          "l3": "방정식과 그래프",
+          "l4": "일차방정식의 그래프",
+          "recordId": "M2-RPM-054"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+        "rpmPrimaryL3": "방정식과 그래프",
+        "rpmPrimaryL4": "일차방정식의 그래프",
+        "rpmPrimaryRecordId": "M2-RPM-054",
+        "difficultyBasis": "Q18번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ax)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_EQUATION: 일차함수 $y=ax+b$의 그래프는 일차함수 $y=-\\dfrac{1}{2}x+2$의 그래프와 $x$축 위에서 만나고, 일차함수 $y=3x+6$의 그래프와는 $y$축 위에서 만난다.",
+          "curriculum": "M2-RPM-054: Q18번 문항은 M2-RPM-054에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ax)",
+          "problemType": "Q18번 문항은 PT_M2_FUNCTION_VALUE_PRIME_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)",
+          "difficulty": "Q18번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ax)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_X_INTERCEPT, CC_Y_INTERCEPT, CC_COEFFICIENT_RATIOS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "x축 위 교점에서 x절편 4를, y축 위 교점에서 y절편 6을 구해 일차함수의 식과 b/a를 계산한다.",
       "decisiveStep": "두 조건을 각각 (4, 0)과 (0, 6) 통과 조건으로 해석해 a = -3/2, b = 6을 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "x축 위·y축 위 교점을 각각 절편으로 해석해 두 점으로 식을 세우는 2단계 문항이다.",
+      "difficultyReason": "Q18번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ax)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "x축·y축 위 교점 조건으로부터 일차함수 계수 구하기"
+        "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
+        "why": "Q18번 문항은 PT_M2_FUNCTION_VALUE_PRIME_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_f0b2851a6ec7cb043d536dce9d228869eb4e7dab525292bb0775f0763ae140fa",
@@ -976,9 +1552,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-MOVING_POINT_TRIANGLE_AREA",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
         "crossConceptKeys": [
           "CC_RECTANGLE_PROPERTIES",
           "CC_POLYGON_AREA",
@@ -999,20 +1575,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-046"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값",
+          "recordId": "M2-RPM-046"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "일차함수의 뜻",
+        "rpmPrimaryL4": "함숫값",
+        "rpmPrimaryRecordId": "M2-RPM-046",
+        "difficultyBasis": "Q19번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ABCD)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: 직사각형 $ABCD$에서 점 $P$는 점 $B$를 출발하여 변 $BC$를 따라 점 $C$까지 움직인다.",
+          "curriculum": "M2-RPM-046: Q19번 문항은 M2-RPM-046에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABCD)",
+          "problemType": "Q19번 문항은 PT_M2_FUNCTION_VALUE_PRIME_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)",
+          "difficulty": "Q19번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ABCD)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_RECTANGLE_PROPERTIES, CC_POLYGON_AREA, CC_LINEAR_FUNCTIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "PC = x에서 BP = 10 - x를 구하고 삼각형 ABP의 넓이 식 y = -3x + 30을 세워 y = 18일 때 x를 구한다.",
       "decisiveStep": "밑변 BP를 10 - x로 표현해 y = (1/2)*(10 - x)*6 = -3x + 30을 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "동점의 위치 x = PC로부터 밑변 10 - x를 유도하고 넓이 식과 방정식까지 풀어야 하는 3단계 문항이다.",
+      "difficultyReason": "Q19번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ABCD)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "도형 위 동점에 따른 삼각형 넓이의 일차함수 활용"
+        "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
+        "why": "Q19번 문항은 PT_M2_FUNCTION_VALUE_PRIME_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_1ea5fee9975aeb805fbea914db9bdfff47a6302a57895c68ea2f323ecfa609e7",
@@ -1029,9 +1637,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
         "subUnit": "일차함수와 일차방정식의 관계",
-        "conceptClusterKey": "M2-04-THREE_LINES_TRIANGLE_AREA",
+        "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
         "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
-        "templateKey": "",
+        "templateKey": "TPL_M2_CALCULATE_AREA_BOUNDED_BY_TWO_LINES_AND_AXES",
         "crossConceptKeys": [
           "CC_EQUATIONS_PARALLEL_TO_AXES",
           "CC_INTERSECTION_OF_TWO_GRAPHS",
@@ -1052,20 +1660,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-058"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "넓이",
+          "recordId": "M2-RPM-058"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+        "rpmPrimaryL3": "그래프 활용",
+        "rpmPrimaryL4": "넓이",
+        "rpmPrimaryRecordId": "M2-RPM-058",
+        "difficultyBasis": "Q20번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 10)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_EQUATION: 점 $(-2, 6)$을 지나고 $x$축에 평행한 직선과 두 직선 $x+y-4=0$, $2x-3y+2=0$이 이루는 도형의 넓이는?",
+          "curriculum": "M2-RPM-058: Q20번 문항은 M2-RPM-058에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 10)",
+          "problemType": "Q20번 문항은 PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)",
+          "difficulty": "Q20번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 10)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_EQUATIONS_PARALLEL_TO_AXES, CC_INTERSECTION_OF_TWO_GRAPHS, CC_POLYGON_AREA: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "y = 6과 두 직선의 교점 (-2, 6), (8, 6) 및 두 직선의 교점 (2, 2)를 모두 구해 삼각형 넓이를 계산한다.",
       "decisiveStep": "세 교점 (-2, 6), (8, 6), (2, 2)를 구해 밑변 10과 높이 4를 결정한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "세 직선의 세 교점을 연립방정식으로 모두 구한 뒤 밑변과 높이를 계산해 넓이를 구하는 3단계 문항이다.",
+      "difficultyReason": "Q20번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 10)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
-        "templateKey": null,
-        "why": "세 직선으로 둘러싸인 삼각형의 넓이"
+        "templateKey": "TPL_M2_CALCULATE_AREA_BOUNDED_BY_TWO_LINES_AND_AXES",
+        "why": "Q20번 문항은 PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_2b5f940da07b2949c436c9fb21a7d8422f6cedc58d26e79c9c8aeb2f178375b1",
@@ -1082,9 +1722,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-INTERCEPTS_EQUATION_AND_DIRECTION",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
+        "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
         "crossConceptKeys": [
           "CC_INTERCEPTS",
           "CC_SLOPE_FORMULA",
@@ -1105,20 +1745,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-048"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편",
+          "recordId": "M2-RPM-048"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "일차함수의 그래프",
+        "rpmPrimaryL4": "기울기·절편",
+        "rpmPrimaryRecordId": "M2-RPM-048",
+        "difficultyBasis": "Q21번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 4)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: 일차함수의 그래프가 두 점 $(-4, 0)$, $(0, 5)$를 지날 때, 다음 물음에 답하여라.",
+          "curriculum": "M2-RPM-048: Q21번 문항은 M2-RPM-048에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 4)",
+          "problemType": "Q21번 문항은 PT_M2_FUNCTION_VALUE_PRIME_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 4)",
+          "difficulty": "Q21번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 4)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_INTERCEPTS, CC_SLOPE_FORMULA, CC_SLOPE_SIGN: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "두 점 (-4, 0), (0, 5)에서 x절편, y절편을 읽고 기울기 5/4로 일차함수 식과 그래프 방향을 서술한다.",
       "decisiveStep": "두 절편에서 기울기 (5 - 0)/(0 - (-4)) = 5/4를 구해 식을 완성한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "절편 읽기, 식 세우기, 기울기 부호에 따른 방향 서술까지 단계적으로 연결되는 2단계 문항이다.",
+      "difficultyReason": "Q21번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 4)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "두 절편에서 일차함수 식과 그래프 방향 서술"
+        "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
+        "why": "Q21번 문항은 PT_M2_FUNCTION_VALUE_PRIME_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 4)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_73855618441664591159e082e506215ce0548e600723f2d2fc2febbbe4afb21d",
@@ -1135,9 +1807,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
         "subUnit": "일차함수의 뜻과 그래프",
-        "conceptClusterKey": "M2-04-TEMPERATURE_LINEAR_FUNCTION_WORD",
+        "conceptClusterKey": "LINEAR_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE",
-        "templateKey": "",
+        "templateKey": "TPL_M2_SOLVE_TEMPERATURE_ALTITUDE_WORD_PROBLEM_DESCRIPTIVE",
         "crossConceptKeys": [
           "CC_RATE_OF_CHANGE",
           "CC_ALGEBRAIC_MODELING"
@@ -1157,20 +1829,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-052"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 그 그래프",
+          "l3": "식 구하기",
+          "l4": "두 점으로 식 구하기",
+          "recordId": "M2-RPM-052"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 그 그래프",
+        "rpmPrimaryL3": "식 구하기",
+        "rpmPrimaryL4": "두 점으로 식 구하기",
+        "rpmPrimaryRecordId": "M2-RPM-052",
+        "difficultyBasis": "Q22번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 34)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_BASIC: 서준이는 무더운 날씨가 이어져 실내 온도가 $34^\\circ\\mathrm{C}$까지 올라간 상태에서 에어컨을 켜기 시작하였다.",
+          "curriculum": "M2-RPM-052: Q22번 문항은 M2-RPM-052에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 34)",
+          "problemType": "Q22번 문항은 PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 34)",
+          "difficulty": "Q22번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 34)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_RATE_OF_CHANGE, CC_ALGEBRAIC_MODELING: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "경과 시간 x와 실내 온도 y를 변수로 정하고 초기값 34와 변화율 -3으로 y = -3x + 34를 세운다.",
       "decisiveStep": "y = -3x + 34에 y = 22를 대입해 x = 4를 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "실생활 문장에서 변수를 정의하고 변화율을 기울기로 삼아 일차함수 식을 세우는 2단계 문항이다.",
+      "difficultyReason": "Q22번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 34)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE",
-        "templateKey": null,
-        "why": "일정한 비율로 변하는 온도 문장제"
+        "templateKey": "TPL_M2_SOLVE_TEMPERATURE_ALTITUDE_WORD_PROBLEM_DESCRIPTIVE",
+        "why": "Q22번 문항은 PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 34)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_77406fb221ac2add6d5e4fb48b8b6ef0b48cd95fac7a5f2193a45255d620c972",
@@ -1187,9 +1891,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
         "subUnit": "일차함수와 일차방정식의 관계",
-        "conceptClusterKey": "M2-04-THREE_LINES_RELATION_AND_INTERSECTIONS",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "LINEAR_FUNCTION_EQUATION_RELATION",
+        "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
         "crossConceptKeys": [
           "CC_SLOPE_FORMULA",
           "CC_INTERSECTION_OF_TWO_GRAPHS",
@@ -1210,20 +1914,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-056"
+        ],
+        "rpmPrimary": {
+          "l1": "일차함수",
+          "l2": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "교점과 연립방정식",
+          "recordId": "M2-RPM-056"
+        },
+        "rpmPrimaryL1": "일차함수",
+        "rpmPrimaryL2": "일차함수와 일차방정식의 관계",
+        "rpmPrimaryL3": "두 직선의 관계",
+        "rpmPrimaryL4": "교점과 연립방정식",
+        "rpmPrimaryRecordId": "M2-RPM-056",
+        "difficultyBasis": "Q23번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 15)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-04 / M2-04-LINEAR_FUNCTION_EQUATION: 좌표평면 위의 세 직선 (가), (나), (다)가 각각 다음과 같은 두 점을 지날 때, 물음에 답하여라.",
+          "curriculum": "M2-RPM-056: Q23번 문항은 M2-RPM-056에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 15)",
+          "problemType": "Q23번 문항은 PT_M2_FUNCTION_VALUE_PRIME_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 15)",
+          "difficulty": "Q23번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 15)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SLOPE_FORMULA, CC_INTERSECTION_OF_TWO_GRAPHS, CC_SLOPE_AND_INTERCEPT: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "세 직선의 식 y = 2x + 3, y = 3x - 3, y = 2x - 5를 구한 뒤 교점 두 쌍과 평행 조건을 판별한다.",
       "decisiveStep": "세 직선의 기울기 2, 3, 2를 비교해 만나는 두 쌍의 교점과 평행한 한 쌍을 분류한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "세 직선의 식을 각각 구하고 두 쌍의 교점 계산과 평행 조건 서술을 모두 수행해야 하는 3단계 문항이다.",
+      "difficultyReason": "Q23번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 15)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "세 직선의 방정식 도출 및 교점·평행 관계 분류"
+        "problemTypeKey": "PT_M2_FUNCTION_VALUE_PRIME_COUNT",
+        "templateKey": "TPL_M2_CALCULATE_FUNCTION_VALUE_FOR_PRIME_COUNTING_RULE",
+        "why": "Q23번 문항은 PT_M2_FUNCTION_VALUE_PRIME_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 15)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_f34bef60c9b393425de9401e39f12146c80e6a4888dfc33857820c0784c80e8a",
@@ -1240,8 +1976,8 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
         "subUnit": "연립일차방정식의 활용",
-        "conceptClusterKey": "M2-03-SPEED_TIME_DISTANCE_WALK",
-        "problemTypeKey": "",
+        "conceptClusterKey": "SIMULTANEOUS_LINEAR_EQUATION_WORD_PROBLEM",
+        "problemTypeKey": "PT_M2_PROBABILITY",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_SPEED_DISTANCE_TIME",
@@ -1262,20 +1998,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-15",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M2-RPM-040"
+        ],
+        "rpmPrimary": {
+          "l1": "일차부등식과 연립일차방정식",
+          "l2": "연립일차방정식의 활용",
+          "l3": "속력·시간·거리",
+          "l4": "마주가기·따라가기",
+          "recordId": "M2-RPM-040"
+        },
+        "rpmPrimaryL1": "일차부등식과 연립일차방정식",
+        "rpmPrimaryL2": "연립일차방정식의 활용",
+        "rpmPrimaryL3": "속력·시간·거리",
+        "rpmPrimaryL4": "마주가기·따라가기",
+        "rpmPrimaryRecordId": "M2-RPM-040",
+        "difficultyBasis": "Q24번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 10)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M2-03 / M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD: 지민이는 길이가 $10\\text{ km}$인 산책로를 걷는데 처음에는 시속 $4\\text{ km}$로 걷다가 도중에 힘이 들어 남은 거리는 시속 $2\\text{ km}$로 걸어 총 $3$시간 만에 산책을 마쳤다.",
+          "curriculum": "M2-RPM-040: Q24번 문항은 M2-RPM-040에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 10)",
+          "problemType": "Q24번 문항은 PT_M2_PROBABILITY 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)",
+          "difficulty": "Q24번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 10)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SPEED_DISTANCE_TIME, CC_SIMULTANEOUS_LINEAR_EQUATIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "두 구간에서 걸은 시간을 x, y로 두고 x + y = 3과 4x + 2y = 10을 연립해 푼다.",
       "decisiveStep": "시간 합 x + y = 3과 거리 합 4x + 2y = 10을 세워 가감법으로 x = 2, y = 1을 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "문장제에서 두 구간의 시간을 미지수로 두고 시간·거리 두 방정식을 세워 푸는 2단계 문항이다.",
+      "difficultyReason": "Q24번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 10)",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M2_PROBABILITY",
         "templateKey": null,
-        "why": "속력 변화 구간별 시간 구하기 연립방정식 활용"
+        "why": "Q24번 문항은 PT_M2_PROBABILITY 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     }
   ]
 }

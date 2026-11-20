@@ -1,0 +1,1074 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/middle/m2/1mid/25_연향중_1학기_중간_중2_유사.js",
+  "sourceGitBlobSha": "3b51cc97305f274e074eb6258c9ccaf73c7b03bf",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "similar-import-draft",
+    "at": "2026-11-20"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "단일 모델 초안(UNREVIEWED). 인용은 check-judgment 로 원문 포함을 확인했다."
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "순환소수 $0.\\dot{3}\\dot{8}$을 분수로 나타낼"
+          }
+        ],
+        "goal": [
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "순환소수 $0.\\dot{3}\\dot{8}$을 분수로 나타낼"
+          }
+        ],
+        "method": [
+          {
+            "term": "소거",
+            "src": "solution",
+            "quote": "소수점 아래 순환마디 부분을 완전히 일치시켜 소거하기",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "순환마디",
+            "src": "solution",
+            "quote": "순환마디의 숫자가 $2$개인 순환소수는"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "주어진 순환소수를 확인한다.",
+        "goal": "분수로 나타낼 가장 편리한 식을 고른다.",
+        "method": "100x - x를 이용해 소수점 아래 순환마디를 소거한다.",
+        "condition": "순환마디가 2자리임을 쓴다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "순환소수",
+            "src": "stem",
+            "quote": "순환소수 $x = 2.15333\\cdots$에 대한"
+          }
+        ],
+        "goal": [
+          {
+            "term": "순환마디",
+            "src": "choices",
+            "quote": "순환마디는 $3$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "유리수",
+            "src": "choices",
+            "quote": "$x$는 무한소수이면서 유리수이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "분수",
+            "src": "choices",
+            "quote": "$100x - 10x$를 이용하면 분수로 나타낼 수 있다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "순환소수 x의 값을 확인한다.",
+        "goal": "성질 중 옳지 않은 보기를 찾는다.",
+        "method": "유리수 및 순환마디 소거 조건을 검증한다.",
+        "condition": "1000x - 100x를 이용해야 함을 확인한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "분수 $\\dfrac{1}{3}$과 $\\dfrac{4}{27}$를"
+          }
+        ],
+        "goal": [
+          {
+            "term": "순환마디",
+            "src": "stem",
+            "quote": "순환마디의 숫자의 개수를 각각 $x, y$라"
+          }
+        ],
+        "method": [
+          {
+            "term": "다항식의나눗셈",
+            "src": "solution",
+            "quote": "각 분수를 나눗셈하여 순환마디를 구하고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "순환마디의 숫자의 개수를 각각 $x, y$라"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "두 분수를 확인한다.",
+        "goal": "순환마디 숫자 개수의 합 x + y를 구한다.",
+        "method": "나눗셈으로 순환마디를 구한다.",
+        "condition": "각각의 순환마디 길이를 올바르게 센다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "분수",
+            "src": "stem",
+            "quote": "분수 $\\dfrac{5}{13}$를 소수로 나타낼"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자릿수",
+            "src": "stem",
+            "quote": "소수점 아래 100번째 자리의 숫자를 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "나머지",
+            "src": "solution",
+            "quote": "나눈 나머지를 구한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "순환마디",
+            "src": "solution",
+            "quote": "순환마디는 $384615$이며"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "분수 5/13을 확인한다.",
+        "goal": "소수점 아래 100번째 자리 숫자를 구한다.",
+        "method": "순환마디 길이 6으로 100을 나눈 나머지를 본다.",
+        "condition": "나머지 4에 대응하는 순환마디의 4번째 숫자를 취한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "유한소수",
+            "src": "stem",
+            "quote": "소수로 나타내면 유한소수가 될 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "모든 한 자리 자연수의 합을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "기약분수",
+            "src": "solution",
+            "quote": "분수를 기약분수로 나타내어 분모의",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "소인수분해하여 약분한다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "유한소수가 되는 조건을 확인한다.",
+        "goal": "가능한 한 자리 자연수 x의 합을 구한다.",
+        "method": "기약분수로 정리하여 분모의 소인수를 분석한다.",
+        "condition": "분자의 소인수 3과 약분되는지 점검한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "계산 결과가 나머지 넷과 다른 하나를"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "밑 $a$의 단일 거듭제곱으로 정리한다."
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "지수법칙을 적용하여 각 선지의 식을",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정리",
+            "src": "solution",
+            "quote": "단일 거듭제곱으로 정리한다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "주어진 다섯 거듭제곱 계산식을 확인한다.",
+        "goal": "결과가 다른 하나를 고른다.",
+        "method": "지수법칙을 적용해 각 식의 지수를 계산한다.",
+        "condition": "단일 밑 a의 거듭제곱으로 통일한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "관계",
+            "src": "stem",
+            "quote": "단위 사이의 관계가 다음과 같을 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "거듭제곱의 곱셈으로 차례대로 연결한다."
+          }
+        ],
+        "method": [
+          {
+            "term": "변환",
+            "src": "solution",
+            "quote": "bit}$ 단위로 변환한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "관계",
+            "src": "solution",
+            "quote": "주어진 단위 환산 관계를"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "단위 간의 2의 거듭제곱 환산 관계를 파악한다.",
+        "goal": "8 MB의 bit 환산값을 구한다.",
+        "method": "단계별로 거듭제곱을 곱해 최종 지수를 합산한다.",
+        "condition": "8 = 2^3을 반영한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "밑 $16$을 소인수 $2$의 거듭제곱으로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "역수",
+            "src": "solution",
+            "quote": "따라서 역수를 취하면 다음과 같다."
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "A$를 대입한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "소인수",
+            "src": "solution",
+            "quote": "소인수 $2$의 거듭제곱으로 변형하여"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "2^5 = A라는 조건을 확인한다.",
+        "goal": "1 / 16^5를 A로 표현한다.",
+        "method": "16^5 = 2^20 = (2^5)^4 = A^4로 대입한다.",
+        "condition": "역수 형태를 유지한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "세 상수 $A, B, C$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거듭제곱",
+            "src": "solution",
+            "quote": "좌변의 거듭제곱과 곱셈, 나눗셈을 전개한다."
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "좌변을 지수법칙을 이용하여 정리한 후",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "우변의 계수 및 지수와 비교한다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "단항식 등식 조건을 확인한다.",
+        "goal": "A + B + C의 합을 구한다.",
+        "method": "좌변을 전개하고 우변과 계수 및 각 지수를 비교한다.",
+        "condition": "미지수 A, B, C가 상수임을 쓴다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "전개",
+            "src": "stem",
+            "quote": "를 전개하여 간단히 했을 때,"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "$a^2$의 계수를 $A$, $ab$의 계수를"
+          }
+        ],
+        "method": [
+          {
+            "term": "분배법칙",
+            "src": "solution",
+            "quote": "분배법칙으로 괄호를 풀고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "동류항끼리 모아 정리한다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "주어진 전개식을 파악한다.",
+        "goal": "계수 합 A + B를 계산한다.",
+        "method": "분배법칙과 동류항 덧셈으로 식을 정리한다.",
+        "condition": "a^2과 ab의 계수를 각각 분리한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "등식의 성질과 역연"
+          }
+        ],
+        "goal": [
+          {
+            "term": "연산",
+            "src": "solution",
+            "quote": "식의 성질과 역연산을 이용하여 $"
+          }
+        ],
+        "method": [
+          {
+            "term": "분배",
+            "src": "solution",
+            "quote": "계: 다항식에 분배하여 곱한다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "다항식",
+            "src": "solution",
+            "quote": "$$ 3단계: 다항식에 분배하여 곱"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "주어진 혼합 계산 등식을 확인한다.",
+        "goal": "네모 안에 알맞은 식을 구한다.",
+        "method": "좌변을 약분한 뒤 역수를 양변에 곱한다.",
+        "condition": "분배법칙으로 각 항을 전개한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "어떤 다항식을 $-\\dfrac{1}{2}xy$로"
+          }
+        ],
+        "goal": [
+          {
+            "term": "다항식",
+            "src": "solution",
+            "quote": "1단계: 어떤 다항식을 $P$라 하자."
+          }
+        ],
+        "method": [
+          {
+            "term": "다항식의나눗셈",
+            "src": "solution",
+            "quote": "원래 나누어야 했던 $-\\dfrac{1}{2}xy$로 나눈다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양화",
+            "src": "stem",
+            "quote": "이때 바르게 계산한 식을 구하면?"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "잘못 계산된 식의 조건을 파악한다.",
+        "goal": "바르게 계산한 식을 구한다.",
+        "method": "역연산으로 원래 다항식을 구한 뒤 다시 나눈다.",
+        "condition": "나눗셈을 역수의 곱셈으로 변환한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "분수식",
+            "src": "solution",
+            "quote": "1단계: 첫 번째 분수식을 계산한다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "정리",
+            "src": "solution",
+            "quote": "약분하여 정리한 후 뺄셈을 수행한다."
+          }
+        ],
+        "method": [
+          {
+            "term": "약분",
+            "src": "solution",
+            "quote": "각각 항별로 약분하여 정리한 후",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "분수",
+            "src": "solution",
+            "quote": "두 분수식을 각각 항별로"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "주어진 두 분수식의 형태를 확인한다.",
+        "goal": "바르게 계산한 결과를 구한다.",
+        "method": "분모의 문자로 항별 약분을 수행한 뒤 뺀다.",
+        "condition": "뺄셈 부호에 주의하여 동류항을 계산한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "원기둥",
+            "src": "stem",
+            "quote": "두 원기둥 A, B가 있다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "원기둥 A의 부피는 원기둥 B의 부피의 몇 배인지"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "원기둥의 부피 공식 $V = \\pi r^2 h$를",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "밑면의 반지름의 길이는 원기둥 A의"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "두 원기둥의 반지름과 높이 관계를 확인한다.",
+        "goal": "원기둥 A의 부피가 B의 부피의 몇 배인지 구한다.",
+        "method": "원기둥 부피 공식을 적용하여 비를 계산한다.",
+        "condition": "높이 1/3배와 반지름 2배 조건을 반영한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "src": "stem",
+            "quote": "다음 <보기> 중에서 일차부등식이 아닌"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "다음 <보기> 중에서 일차부등식이 아닌 것만을"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항",
+            "src": "solution",
+            "quote": "부등식을 모든 항을 좌변으로 이항하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "다항식",
+            "src": "solution",
+            "quote": "미지수 } x\\text{가 분모에 있으므로 다항식이"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "보기의 여러 식들을 확인한다.",
+        "goal": "일차부등식이 아닌 것을 모두 고른다.",
+        "method": "모든 항을 좌변으로 이항해 일차식 부등호 0 형태인지 점검한다.",
+        "condition": "등호만 있거나 분모에 미지수가 있는 경우를 제외한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "다음 문장을 부등식으로 나타낸 것"
+          }
+        ],
+        "goal": [
+          {
+            "term": "관계",
+            "src": "solution",
+            "quote": "문장의 수량 관계를 부등호 및"
+          }
+        ],
+        "method": [
+          {
+            "term": "사칙연산",
+            "src": "solution",
+            "quote": "를 부등호 및 사칙연산 기호로 옳게",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "사용하고 남은 길이: } x -"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "주어진 실생활 문장 조건들을 확인한다.",
+        "goal": "부등식으로 잘못 나타낸 보기를 찾는다.",
+        "method": "수량 관계를 곱셈과 덧셈, 부등호로 표현한다.",
+        "condition": "단위 일치 및 이상/이하/미만 조건을 검토한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "src": "stem",
+            "quote": "일차부등식 $2 - 0."
+          }
+        ],
+        "goal": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "서 가장 작은 정수는? [4점]"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항",
+            "src": "solution",
+            "quote": "$을 우변으로 이항한다. $$ -",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "소수",
+            "src": "solution",
+            "quote": "소수 계수를 정수로"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "소수 계수를 포함한 일차부등식을 확인한다.",
+        "goal": "부등식을 만족하는 가장 작은 정수를 구한다.",
+        "method": "10을 곱해 정수 계수로 바꾼 뒤 이항하여 푼다.",
+        "condition": "음수로 나눌 때 부등호 방향이 바뀜에 유의한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "부등식의 양변에 음수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "성질",
+            "src": "solution",
+            "quote": "바뀐다는 기본 성질을 검토한다."
+          }
+        ],
+        "method": [
+          {
+            "term": "음수",
+            "src": "solution",
+            "quote": "등식의 양변에 음수를 곱하거나 나",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "판정",
+            "src": "solution",
+            "quote": "옳지 않다. (거짓)} \\end{"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "a < b 기본 대소 관계를 확인한다.",
+        "goal": "부등식의 성질이 잘못 적용된 보기를 찾는다.",
+        "method": "음수의 곱셈과 나눗셈에서 부등호 반전 규칙을 적용한다.",
+        "condition": "양수의 덧셈, 뺄셈, 곱셈, 나눗셈은 부등호가 유지됨을 확인한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "src": "stem",
+            "quote": "다음 두 일차부등식의 해가 같을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "가 같을 때, 상수 $a$의 값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "최소공배수",
+            "src": "solution",
+            "quote": "양변에 분모의 최소공배수 $8$을 곱한",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "경계조건",
+            "src": "solution",
+            "quote": "서로 같으므로 경계값을 비교한다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "두 일차부등식을 확인한다.",
+        "goal": "해가 같아지도록 하는 상수 a를 구한다.",
+        "method": "각각 10과 8을 곱해 x의 해 범위를 구한다.",
+        "condition": "두 해의 경계값을 일치시켜 a에 대한 방정식을 푼다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "CHOICE",
+      "slots": {
+        "given": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "한다. 서우가 최대 몇 $\\tex"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거리",
+            "src": "solution",
+            "quote": "코스의 편도 거리를 $x\\tex"
+          }
+        ],
+        "method": [
+          {
+            "term": "최소공배수",
+            "src": "solution",
+            "quote": "양변에 분모의 최소공배수 $12$를 곱",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "라 두고 시간 부등식을 세운다. 1"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "속력과 소요 시간 조건을 확인한다.",
+        "goal": "다녀올 수 있는 최대 거리를 구한다.",
+        "method": "시간 = 거리/속력 공식과 12 배수 곱셈으로 부등식을 푼다.",
+        "condition": "20분과 2시간 40분을 시간 단위로 통일한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "DESCRIPTIVE",
+      "slots": {
+        "given": [
+          {
+            "term": "지수법칙",
+            "src": "stem",
+            "quote": "풀이 과정에 지수법칙을 적용한 과정"
+          }
+        ],
+        "goal": [
+          {
+            "term": "거듭제곱",
+            "src": "stem",
+            "quote": "각각 $3$의 거듭제곱을 사용하여 나"
+          }
+        ],
+        "method": [
+          {
+            "term": "다항식의나눗셈",
+            "src": "solution",
+            "quote": "은 거듭제곱의 나눗셈 지수법칙을 적",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "제곱의 덧셈을 곱셈으로 바꾸고 밑"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "A와 B의 거듭제곱 덧셈 및 곱셈 식을 확인한다.",
+        "goal": "A, B를 3의 거듭제곱으로 나타내고 B / A를 계산한다.",
+        "method": "거듭제곱 덧셈을 곱으로 바꾸고 지수법칙 곱셈·나눗셈을 적용한다.",
+        "condition": "서술형 풀이 과정을 단계별로 제시한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "DESCRIPTIVE",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "시오. (단, 다항식의 사칙계산을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대입",
+            "src": "stem",
+            "quote": "y = 2$를 대입하여 주어진 식"
+          }
+        ],
+        "method": [
+          {
+            "term": "다항식의나눗셈",
+            "src": "solution",
+            "quote": "다항식의 나눗셈을 전개하고 식",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "식의 뺄셈을 동류항끼리 정리한다."
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "다항식의 혼합 계산식을 확인한다.",
+        "goal": "식을 간단히 정리하고 주어진 문자의 값을 대입한다.",
+        "method": "다항식을 단항식으로 각각 나눈 뒤 괄호를 풀어 동류항을 모은다.",
+        "condition": "x = 1.5, y = 2를 대입해 분수 값을 정확히 계산한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "DESCRIPTIVE",
+      "slots": {
+        "given": [
+          {
+            "term": "일차부등식",
+            "src": "stem",
+            "quote": "일차부등식 $5x - 3"
+          }
+        ],
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "$a, b$는 상수이고 $a <"
+          }
+        ],
+        "method": [
+          {
+            "term": "이항",
+            "src": "solution",
+            "quote": "$을 우변으로 이항하여 $a +",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "solution",
+            "quote": "5 + a$는 음수이다. 양변을"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "given": "문자 계수가 포함된 일차부등식을 확인한다.",
+        "goal": "수직선 해와 비교하여 a + b의 값을 구한다.",
+        "method": "x항과 상수항을 이항한 뒤 5 + a로 나눈다.",
+        "condition": "a < -5 조건에서 5 + a가 음수임을 고려해 부등호 방향을 바꾼다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ]
+}

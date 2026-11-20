@@ -84,6 +84,7 @@ export function buildReceipt({ stem, targetJsPath, targetMetaPath, blob, bank, j
 export function applyJudgments({
   jsPath, judgmentDir, candidatesDir = null, outDir = null, only = null, partialReceipt = false, judge = 'similar-import-draft', reviewer = 'similar-import-reviewer',
   holdFile = path.join(DEFAULT_WORK_ROOT, 'HOLD.md'), statusFile = null, date = new Date().toISOString().slice(0, 10), repoRoot = DEFAULT_REPO_ROOT, log = console.log,
+  allowSourceDefects = false,
 }) {
   const { bank, examDisplayTitle, text: jsText } = readBank(jsPath);
   const stem = path.basename(jsPath, '.js');
@@ -96,7 +97,9 @@ export function applyJudgments({
   printReport(check, log);
   const status = (s, detail) => { if (statusFile) appendStatus(statusFile, stem, s, detail); };
 
-  const failures = check.items.filter(r => r.verdict === 'FAIL').length + check.examCodes.filter(c => c.severity === 'FAIL').length;
+  const sourceDefectCodes = new Set(['CHOICE_ORDER', 'CHOICE_DUPLICATE', 'ANSWER_DISTRIBUTION']);
+  const isActualFail = c => c.severity === 'FAIL' && (!allowSourceDefects || !sourceDefectCodes.has(c.code));
+  const failures = check.items.filter(r => r.codes.some(isActualFail)).length + check.examCodes.filter(isActualFail).length;
   if (failures) {
     status('CONVERTED', `판정 검사 실패 ${failures}건`);
     return { written: false, reason: 'CHECK_FAILED', exitCode: 1, check };
@@ -115,7 +118,7 @@ export function applyJudgments({
   const crosswalk = new Map(loadCrosswalkRecords(repoRoot).map(r => [r.id, r]));
   const dictionary = loadTermDictionary(repoRoot);
 
-  const appliedQids = check.items.filter(r => r.verdict === 'PASS').map(r => r.qid);
+  const appliedQids = check.items.filter(r => !r.codes.some(isActualFail) && r.verdict !== 'HOLD').map(r => r.qid);
   const newBank = bank.map(item => {
     if (!appliedQids.includes(item.id)) return item;
     const j = check.judgments.get(item.id);
@@ -264,9 +267,9 @@ export function applyJudgments({
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const a = process.argv.slice(2);
-  const { pos, opt } = parseCli(a, ['--partial-receipt', '--no-status']);
+  const { pos, opt } = parseCli(a, ['--partial-receipt', '--no-status', '--allow-source-defects']);
   if (pos.length < 2) {
-    console.error('Usage: node apply-judgment.mjs <stem.js> <judgmentDir> [--out-dir <dir>] [--only 1,3,5] [--partial-receipt] [--judge <이름>] [--reviewer <이름>] [--hold-file <path>] [--status-file <path>] [--no-status]');
+    console.error('Usage: node apply-judgment.mjs <stem.js> <judgmentDir> [--out-dir <dir>] [--only 1,3,5] [--partial-receipt] [--judge <이름>] [--reviewer <이름>] [--hold-file <path>] [--status-file <path>] [--no-status] [--allow-source-defects]');
     process.exit(1);
   }
   try {
@@ -275,6 +278,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
       outDir: opt('--out-dir'), only: opt('--only') ? opt('--only').split(',').map(Number) : null, partialReceipt: a.includes('--partial-receipt'),
       judge: opt('--judge') || undefined, reviewer: opt('--reviewer') || undefined, holdFile: opt('--hold-file') || undefined,
       statusFile: a.includes('--no-status') ? null : (opt('--status-file') || path.join(DEFAULT_WORK_ROOT, 'STATUS.tsv')), date: opt('--date') || undefined,
+      allowSourceDefects: a.includes('--allow-source-defects'),
     });
     if (r.written) {
       console.log(`\n반영 완료 (${r.partial ? '일부 문항 Q' + r.appliedQids.join(',Q') : '전 문항'}) -> ${r.destDir}`);

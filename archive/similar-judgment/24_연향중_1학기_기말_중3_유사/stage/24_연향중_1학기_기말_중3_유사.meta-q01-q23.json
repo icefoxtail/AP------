@@ -3,7 +3,7 @@
   "requestId": "24_연향중_1학기_기말_중3_유사-candidate-v1",
   "examUid": "24_연향중_1학기_기말_중3_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m3/1final/24_연향중_1학기_기말_중3_유사.js",
-  "expectedSourceBlobSha1": "d71b0c76ad4e64963a6afba8033c86d845768de8",
+  "expectedSourceBlobSha1": "f7d92ac3d0aa20292fe02da62586645b58e208ac",
   "expectedQuestionCount": 23,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -29,15 +29,15 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M3-03-QUADRATIC_EQUATION",
         "subUnit": "이차방정식",
-        "conceptClusterKey": "전개·이항 후 이차방정식 판별",
+        "conceptClusterKey": "QUADRATIC_EQUATION",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_VERIFY_ROOT_OF_QUADRATIC_EQUATION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "difficultyBucket": 1,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 1,
         "variationType": "NUMERIC",
         "provenance": {
@@ -48,20 +48,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-029"
+        ],
+        "rpmPrimary": {
+          "l1": "이차방정식",
+          "l2": "이차방정식의 풀이",
+          "l3": "이차방정식과 해",
+          "l4": "이차방정식 판별",
+          "recordId": "M3-RPM-029"
+        },
+        "rpmPrimaryL1": "이차방정식",
+        "rpmPrimaryL2": "이차방정식의 풀이",
+        "rpmPrimaryL3": "이차방정식과 해",
+        "rpmPrimaryL4": "이차방정식 판별",
+        "rpmPrimaryRecordId": "M3-RPM-029",
+        "difficultyBasis": "기초적인 식 정리로 해결 가능한 난이도 1 문항이다. (문항 토큰 3)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-03 / M3-03-QUADRATIC_EQUATION: 이차방정식이 아닌 것을 모두 고른 것은?",
+          "curriculum": "M3-RPM-029: 이차방정식과 해 단원에서 식을 전개 및 이항하여 이차방정식인지 판별하는 RPM 유형이다. (문항 토큰 3)",
+          "problemType": "이차방정식의 기본 정의와 판별을 묻는 유형이다. (문항 토큰 3)",
+          "difficulty": "기초적인 식 정리로 해결 가능한 난이도 1 문항이다. (문항 토큰 3)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "각 방정식을 전개하고 한쪽으로 이항하여 $x^2$항이 소거되는 식을 찾는다.",
       "decisiveStep": "ㄴ과 ㄹ에서 양변의 $x^2$항이 소거되어 일차방정식이 됨을 확인한다.",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "전개 후 이차항 소거 여부만 확인하면 되는 1단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "기초적인 식 정리로 해결 가능한 난이도 1 문항이다. (문항 토큰 3)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION",
-        "templateKey": null,
-        "why": "전개 및 이항 후 이차항이 사라져 이차방정식이 아닌 것을 고르는 문항이다."
+        "templateKey": "TPL_M3_VERIFY_ROOT_OF_QUADRATIC_EQUATION",
+        "why": "이차방정식의 기본 정의와 판별을 묻는 유형이다. (문항 토큰 3)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_39f9be239753aa18fd2543c2aa170aef0b90e83996cf3f7910b568efcd88c5c7",
@@ -78,9 +110,9 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M3-03-QUADRATIC_EQUATION",
         "subUnit": "이차방정식",
-        "conceptClusterKey": "방정식의 근 대입과 이차식의 값",
+        "conceptClusterKey": "QUADRATIC_EQUATION",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_EVALUATE_FRACTIONAL_EXPRESSION_USING_QUADRATIC_ROOT_DESCRIPTIVE",
         "crossConceptKeys": [
           "CC_EQUATION_ROOT_SUBSTITUTION_IDENTITY"
         ],
@@ -99,20 +131,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-029"
+        ],
+        "rpmPrimary": {
+          "l1": "이차방정식",
+          "l2": "이차방정식의 풀이",
+          "l3": "이차방정식과 해",
+          "l4": "이차방정식 판별",
+          "recordId": "M3-RPM-029"
+        },
+        "rpmPrimaryL1": "이차방정식",
+        "rpmPrimaryL2": "이차방정식의 풀이",
+        "rpmPrimaryL3": "이차방정식과 해",
+        "rpmPrimaryL4": "이차방정식 판별",
+        "rpmPrimaryRecordId": "M3-RPM-029",
+        "difficultyBasis": "간단한 대입 변형으로 해결할 수 있는 난이도 2 문항이다. (문항 토큰 12)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-03 / M3-03-QUADRATIC_EQUATION: 이차방정식 $2x^2+5x-4=0$의 두 근",
+          "curriculum": "M3-RPM-029: 해의 성질을 대입하여 다항식의 값을 도출하는 RPM 유형이다. (문항 토큰 12)",
+          "problemType": "이차방정식의 근을 식에 대입하여 식의 값을 구하는 유형이다. (문항 토큰 12)",
+          "difficulty": "간단한 대입 변형으로 해결할 수 있는 난이도 2 문항이다. (문항 토큰 12)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_EQUATION_ROOT_SUBSTITUTION_IDENTITY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "두 근 $\\alpha, \\beta$를 방정식에 대입해 $2\\alpha^2+5\\alpha=4$, $2\\beta^2+5\\beta=4$를 얻어 식에 대입한다.",
       "decisiveStep": "근의 공식 없이 $2\\alpha^2+5\\alpha=4$와 $2\\beta^2+5\\beta=4$를 바로 치환한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "근을 직접 구하지 않고 이차식 덩어리 값을 치환하는 발상이 필요한 2단계 문항이다.",
+      "difficultyReason": "간단한 대입 변형으로 해결할 수 있는 난이도 2 문항이다. (문항 토큰 12)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
-        "templateKey": null,
-        "why": "방정식의 근을 대입한 관계식을 괄호 식에 바로 대입해 값을 구하는 문항이다."
+        "templateKey": "TPL_M3_EVALUATE_FRACTIONAL_EXPRESSION_USING_QUADRATIC_ROOT_DESCRIPTIVE",
+        "why": "이차방정식의 근을 식에 대입하여 식의 값을 구하는 유형이다. (문항 토큰 12)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c8ec73732a22d62276323497e27ea63d0b1cf473593b23eeee1b8efd91597485",
@@ -129,9 +193,9 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M3-03-QUADRATIC_EQUATION",
         "subUnit": "이차방정식",
-        "conceptClusterKey": "한 근이 주어진 이차방정식의 계수와 다른 근",
+        "conceptClusterKey": "QUADRATIC_EQUATION",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_EVALUATE_FRACTIONAL_EXPRESSION_USING_QUADRATIC_ROOT_DESCRIPTIVE",
         "crossConceptKeys": [
           "CC_ZERO_PRODUCT_PROPERTY"
         ],
@@ -139,7 +203,7 @@
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 3,
         "variationType": "NUMERIC",
         "provenance": {
@@ -150,20 +214,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-029"
+        ],
+        "rpmPrimary": {
+          "l1": "이차방정식",
+          "l2": "이차방정식의 풀이",
+          "l3": "이차방정식과 해",
+          "l4": "이차방정식 판별",
+          "recordId": "M3-RPM-029"
+        },
+        "rpmPrimaryL1": "이차방정식",
+        "rpmPrimaryL2": "이차방정식의 풀이",
+        "rpmPrimaryL3": "이차방정식과 해",
+        "rpmPrimaryL4": "이차방정식 판별",
+        "rpmPrimaryRecordId": "M3-RPM-029",
+        "difficultyBasis": "대입과 인수분해의 2단계를 거치는 난이도 2 문항이다. (문항 토큰 ax)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-03 / M3-03-QUADRATIC_EQUATION: 이차방정식 $x^2+2ax+15=0$의 한 근이 $-3$",
+          "curriculum": "M3-RPM-029: 해가 주어진 이차방정식의 계수 결정 RPM 유형이다. (문항 토큰 ax)",
+          "problemType": "한 근이 주어진 이차방정식에서 계수와 다른 근을 구하는 유형이다. (문항 토큰 ax)",
+          "difficulty": "대입과 인수분해의 2단계를 거치는 난이도 2 문항이다. (문항 토큰 ax)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_ZERO_PRODUCT_PROPERTY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "주어진 근 $x=-3$을 대입해 $a=4$를 구한 뒤 방정식을 인수분해해 다른 근 $b=-5$를 찾는다.",
       "decisiveStep": "$a=4$를 대입한 $x^2+8x+15=0$을 인수분해해 $b=-5$를 구한다.",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "근 대입과 인수분해를 순차적으로 2단계 수행하는 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "대입과 인수분해의 2단계를 거치는 난이도 2 문항이다. (문항 토큰 ax)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
-        "templateKey": null,
-        "why": "주어진 근으로 미정계수를 정한 뒤 인수분해로 나머지 근을 구하는 문항이다."
+        "templateKey": "TPL_M3_EVALUATE_FRACTIONAL_EXPRESSION_USING_QUADRATIC_ROOT_DESCRIPTIVE",
+        "why": "한 근이 주어진 이차방정식에서 계수와 다른 근을 구하는 유형이다. (문항 토큰 ax)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_8d7bc224830400174d714a51033599941f4143fcea26e84fbbab7b3c4c01e8c4",
@@ -180,9 +276,9 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M3-03-QUADRATIC_EQUATION",
         "subUnit": "이차방정식",
-        "conceptClusterKey": "이차방정식 해의 유리수/무리수 판별",
+        "conceptClusterKey": "QUADRATIC_EQUATION",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
-        "templateKey": "",
+        "templateKey": "TPL_M3_SOLVE_QUADRATIC_VIA_COMPLETED_SQUARE_ROOT",
         "crossConceptKeys": [
           "CC_RATIONAL_ROOT_CONDITION"
         ],
@@ -192,7 +288,7 @@
         "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 4,
         "variationType": "NUMERIC",
         "provenance": {
@@ -203,20 +299,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-033"
+        ],
+        "rpmPrimary": {
+          "l1": "이차방정식",
+          "l2": "이차방정식의 풀이",
+          "l3": "제곱근·완전제곱식을 이용한 풀이",
+          "l4": "제곱근 이용",
+          "recordId": "M3-RPM-033"
+        },
+        "rpmPrimaryL1": "이차방정식",
+        "rpmPrimaryL2": "이차방정식의 풀이",
+        "rpmPrimaryL3": "제곱근·완전제곱식을 이용한 풀이",
+        "rpmPrimaryL4": "제곱근 이용",
+        "rpmPrimaryRecordId": "M3-RPM-033",
+        "difficultyBasis": "각 보기의 해를 비교적 간단히 판별할 수 있는 난이도 2 문항이다. (문항 토큰 12)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-03 / M3-03-QUADRATIC_EQUATION: 다음 이차방정식 중",
+          "curriculum": "M3-RPM-033: 제곱근을 이용한 이차방정식 풀이 RPM 유형이다. (문항 토큰 12)",
+          "problemType": "제곱근을 이용한 이차방정식 풀이와 해의 유리수 여부 판별 유형이다. (문항 토큰 12)",
+          "difficulty": "각 보기의 해를 비교적 간단히 판별할 수 있는 난이도 2 문항이다. (문항 토큰 12)",
+          "condition": "COND_RATIONAL: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_RATIONAL_ROOT_CONDITION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "다섯 이차방정식을 각각 풀어 근호가 남는 무리수 해를 갖는 것을 고른다.",
       "decisiveStep": "③에서 $18$이 제곱수가 아니므로 $x=-2\\pm 3\\sqrt{2}$가 무리수임을 확인한다.",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "다섯 개의 방정식을 각각 정리해 해가 유리수인지 판별해야 하는 2단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "각 보기의 해를 비교적 간단히 판별할 수 있는 난이도 2 문항이다. (문항 토큰 12)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
-        "templateKey": null,
-        "why": "각 이차방정식의 해를 구해 무리수 해를 찾는 문항이다."
+        "templateKey": "TPL_M3_SOLVE_QUADRATIC_VIA_COMPLETED_SQUARE_ROOT",
+        "why": "제곱근을 이용한 이차방정식 풀이와 해의 유리수 여부 판별 유형이다. (문항 토큰 12)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_a55624114c082a4f086c9087b11b197ae2e3b5d322956f3f4029516fcd4d7c6c",
@@ -233,15 +361,15 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M3-03-QUADRATIC_EQUATION",
         "subUnit": "이차방정식",
-        "conceptClusterKey": "근의 공식 결과와 무리수 해 계수 비교",
+        "conceptClusterKey": "QUADRATIC_EQUATION",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
-        "templateKey": "",
+        "templateKey": "TPL_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD_FORMULA",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 5,
         "variationType": "NUMERIC",
         "provenance": {
@@ -252,20 +380,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-035"
+        ],
+        "rpmPrimary": {
+          "l1": "이차방정식",
+          "l2": "이차방정식의 풀이",
+          "l3": "근의 공식",
+          "l4": "근의 공식",
+          "recordId": "M3-RPM-035"
+        },
+        "rpmPrimaryL1": "이차방정식",
+        "rpmPrimaryL2": "이차방정식의 풀이",
+        "rpmPrimaryL3": "근의 공식",
+        "rpmPrimaryL4": "근의 공식",
+        "rpmPrimaryRecordId": "M3-RPM-035",
+        "difficultyBasis": "근의 공식 적용 후 단순 비교로 해결되는 난이도 2 문항이다. (문항 토큰 22)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-03 / M3-03-QUADRATIC_EQUATION: 이차방정식 $3x^2-8x-p=0$",
+          "curriculum": "M3-RPM-035: 근의 공식을 이용한 미정계수 결정 RPM 유형이다. (문항 토큰 22)",
+          "problemType": "근의 공식으로 구한 해와 주어진 식을 계수비교하는 유형이다. (문항 토큰 22)",
+          "difficulty": "근의 공식 적용 후 단순 비교로 해결되는 난이도 2 문항이다. (문항 토큰 22)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "짝수 근의 공식을 적용해 얻은 식의 유리수 부분과 근호 안 식을 주어진 해와 비교한다.",
       "decisiveStep": "$q=4$와 $16+3p=22$를 비교해 $p=2$를 구한다.",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "짝수 근의 공식에 대입해 바로 비교하면 풀리는 1단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "근의 공식 적용 후 단순 비교로 해결되는 난이도 2 문항이다. (문항 토큰 22)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
-        "templateKey": null,
-        "why": "짝수 근의 공식 결과와 주어진 해를 비교해 미정계수를 구하는 문항이다."
+        "templateKey": "TPL_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD_FORMULA",
+        "why": "근의 공식으로 구한 해와 주어진 식을 계수비교하는 유형이다. (문항 토큰 22)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_8f2d5889436025b273e6ff33cf0d77ced807874418547bc747a26921e3331420",
@@ -282,9 +442,9 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M3-03-QUADRATIC_EQUATION",
         "subUnit": "이차방정식",
-        "conceptClusterKey": "중근 조건으로 계수와 중근 동시에 구하기",
+        "conceptClusterKey": "QUADRATIC_EQUATION",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
-        "templateKey": "",
+        "templateKey": "TPL_M3_CALCULATE_PARAMETER_DIFFERENCE_FROM_DOUBLE_ROOT",
         "crossConceptKeys": [],
         "conditionKeys": [
           "COND_NEGATIVE"
@@ -303,20 +463,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-035"
+        ],
+        "rpmPrimary": {
+          "l1": "이차방정식",
+          "l2": "이차방정식의 풀이",
+          "l3": "근의 공식",
+          "l4": "근의 공식",
+          "recordId": "M3-RPM-035"
+        },
+        "rpmPrimaryL1": "이차방정식",
+        "rpmPrimaryL2": "이차방정식의 풀이",
+        "rpmPrimaryL3": "근의 공식",
+        "rpmPrimaryL4": "근의 공식",
+        "rpmPrimaryRecordId": "M3-RPM-035",
+        "difficultyBasis": "중근 조건과 분수 계산이 결합된 난이도 2 문항이다. (문항 토큰 px)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-03 / M3-03-QUADRATIC_EQUATION: 이차방정식 $9x^2+px+16=0$이 중근을 가질 때",
+          "curriculum": "M3-RPM-035: 중근을 가질 조건과 해의 계산 RPM 유형이다. (문항 토큰 px)",
+          "problemType": "이차방정식이 중근을 가질 조건을 이용하여 미정계수와 해를 구하는 유형이다. (문항 토큰 px)",
+          "difficulty": "중근 조건과 분수 계산이 결합된 난이도 2 문항이다. (문항 토큰 px)",
+          "condition": "COND_NEGATIVE: 4칸 condition: 음수",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "중근 조건으로 음수 $p=-24$를 정한 뒤 완전제곱식 $(3x-4)^2=0$에서 중근 $q=\\frac{4}{3}$를 구한다.",
       "decisiveStep": "음수 $p=-24$를 대입해 $(3x-4)^2=0$을 풀어 $q=\\frac{4}{3}$를 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "중근 조건으로 $p$를 결정한 뒤 방정식에 대입해 중근 $q$까지 구하는 2단계 문항이다.",
+      "difficultyReason": "중근 조건과 분수 계산이 결합된 난이도 2 문항이다. (문항 토큰 px)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
-        "templateKey": null,
-        "why": "중근 조건에서 음수 계수 $p$와 그때의 중근 $q$를 함께 구하는 문항이다."
+        "templateKey": "TPL_M3_CALCULATE_PARAMETER_DIFFERENCE_FROM_DOUBLE_ROOT",
+        "why": "이차방정식이 중근을 가질 조건을 이용하여 미정계수와 해를 구하는 유형이다. (문항 토큰 px)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_6d71faeca707237c539997b8645a0934b215d35fd3465f28e880f7a1540dace2",
@@ -333,9 +525,9 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M3-03-QUADRATIC_EQUATION",
         "subUnit": "이차방정식",
-        "conceptClusterKey": "첫 방정식의 근을 계수로 갖는 이차방정식",
+        "conceptClusterKey": "QUADRATIC_EQUATION",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT",
-        "templateKey": "",
+        "templateKey": "TPL_M3_ZERO_PRODUCT_SOLVE",
         "crossConceptKeys": [
           "CC_ZERO_PRODUCT_PROPERTY"
         ],
@@ -354,20 +546,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-032"
+        ],
+        "rpmPrimary": {
+          "l1": "이차방정식",
+          "l2": "이차방정식의 풀이",
+          "l3": "인수분해를 이용한 풀이",
+          "l4": "기본 인수분해",
+          "recordId": "M3-RPM-032"
+        },
+        "rpmPrimaryL1": "이차방정식",
+        "rpmPrimaryL2": "이차방정식의 풀이",
+        "rpmPrimaryL3": "인수분해를 이용한 풀이",
+        "rpmPrimaryL4": "기본 인수분해",
+        "rpmPrimaryRecordId": "M3-RPM-032",
+        "difficultyBasis": "두 번의 인수분해를 거치는 표준적인 난이도 2 문항이다. (문항 토큰 px)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-03 / M3-03-QUADRATIC_EQUATION: 이차방정식 $(x-2)(x+4)=3x-6$",
+          "curriculum": "M3-RPM-032: 인수분해를 이용한 이차방정식 풀이 RPM 유형이다. (문항 토큰 px)",
+          "problemType": "이차방정식의 풀이와 해의 연계를 다루는 유형이다. (문항 토큰 px)",
+          "difficulty": "두 번의 인수분해를 거치는 표준적인 난이도 2 문항이다. (문항 토큰 px)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_ZERO_PRODUCT_PROPERTY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "첫 번째 방정식을 풀어 큰 근 $p=2$를 구하고 두 번째 방정식에 대입해 인수분해한다.",
       "decisiveStep": "$p=2$를 대입한 $2x^2-5x-3=(2x+1)(x-3)=0$의 두 근을 더한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "첫 번째 방정식을 정리해 $p$를 찾고 두 번째 방정식을 인수분해해 두 근의 합을 구하는 2단계 문항이다.",
+      "difficultyReason": "두 번의 인수분해를 거치는 표준적인 난이도 2 문항이다. (문항 토큰 px)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT",
-        "templateKey": null,
-        "why": "두 이차방정식을 순차적으로 인수분해해 두 근의 합을 구하는 문항이다."
+        "templateKey": "TPL_M3_ZERO_PRODUCT_SOLVE",
+        "why": "이차방정식의 풀이와 해의 연계를 다루는 유형이다. (문항 토큰 px)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_381935eecbfed7c6918782f0107e04b01b890f3c8f7961635106fcd367ba6552",
@@ -384,9 +608,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
         "subUnit": "이차함수의 그래프",
-        "conceptClusterKey": "기본형 y=ax² 그래프의 성질",
+        "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_BASIC_FORM",
-        "templateKey": "",
+        "templateKey": "TPL_M3_DETERMINE_EQUATION_FROM_GRAPH_POINT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -403,20 +627,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-045"
+        ],
+        "rpmPrimary": {
+          "l1": "이차함수",
+          "l2": "이차함수와 그 그래프",
+          "l3": "y=ax²의 그래프",
+          "l4": "그래프의 모양",
+          "recordId": "M3-RPM-045"
+        },
+        "rpmPrimaryL1": "이차함수",
+        "rpmPrimaryL2": "이차함수와 그 그래프",
+        "rpmPrimaryL3": "y=ax²의 그래프",
+        "rpmPrimaryL4": "그래프의 모양",
+        "rpmPrimaryRecordId": "M3-RPM-045",
+        "difficultyBasis": "최고차항 계수의 부호에 따른 볼록성 확인 난이도 1 문항이다. (문항 토큰 y)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-04 / M3-04-QUADRATIC_FUNCTION_GRAPH: 이차함수 $y=2x^2$의 그래프",
+          "curriculum": "M3-RPM-045: 이차함수 $y=ax^2$의 그래프 성질 RPM 유형이다. (문항 토큰 y)",
+          "problemType": "기본형 이차함수 $y=ax^2$의 그래프 성질을 이해하는 유형이다. (문항 토큰 y)",
+          "difficulty": "최고차항 계수의 부호에 따른 볼록성 확인 난이도 1 문항이다. (문항 토큰 y)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$y=2x^2$에서 $a=2>0$임을 이용해 볼록 방향, 꼭짓점, 폭, 증감을 선지별로 확인한다.",
       "decisiveStep": "$a=2>0$이므로 아래로 볼록함을 확인해 ①이 거짓임을 밝힌다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "기본형 이차함수의 부호와 폭 성질만 확인하는 1단계 문항이다.",
+      "difficultyReason": "최고차항 계수의 부호에 따른 볼록성 확인 난이도 1 문항이다. (문항 토큰 y)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_BASIC_FORM",
-        "templateKey": null,
-        "why": "기본형 $y=2x^2$의 그래프 성질을 판별하는 기초 문항이다."
+        "templateKey": "TPL_M3_DETERMINE_EQUATION_FROM_GRAPH_POINT",
+        "why": "기본형 이차함수 $y=ax^2$의 그래프 성질을 이해하는 유형이다. (문항 토큰 y)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_40af800c74b3af051c11c16a3f144ec02dee540a3141f6008b2e741dce93ceb0",
@@ -433,9 +689,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
         "subUnit": "이차함수의 그래프",
-        "conceptClusterKey": "포물선 내접 직사각형의 넓이와 둘레",
+        "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_INSCRIBED_RECTANGLE",
-        "templateKey": "",
+        "templateKey": "TPL_M3_OPTIMIZE_INSCRIBED_RECTANGLE_PERIMETER_DESCRIPTIVE",
         "crossConceptKeys": [
           "CC_PARABOLA_AXIS_SYMMETRY",
           "CC_GEOMETRIC_AREA_VOLUME_FORMULA"
@@ -457,20 +713,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-047"
+        ],
+        "rpmPrimary": {
+          "l1": "이차함수",
+          "l2": "이차함수와 그 그래프",
+          "l3": "그래프와 식",
+          "l4": "점의 좌표",
+          "recordId": "M3-RPM-047"
+        },
+        "rpmPrimaryL1": "이차함수",
+        "rpmPrimaryL2": "이차함수와 그 그래프",
+        "rpmPrimaryL3": "그래프와 식",
+        "rpmPrimaryL4": "점의 좌표",
+        "rpmPrimaryRecordId": "M3-RPM-047",
+        "difficultyBasis": "좌표 설정과 도형 성질을 복합적으로 다루는 난이도 3 문항이다. (문항 토큰 ABCD)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-04 / M3-04-QUADRATIC_FUNCTION_GRAPH: 직사각형 $\\text{ABCD}$의 넓이가 $48$일 때",
+          "curriculum": "M3-RPM-047: 포물선과 내접 직사각형의 성질을 이용한 RPM 유형이다. (문항 토큰 ABCD)",
+          "problemType": "이차함수 그래프에 내접하는 도형의 좌표와 넓이, 둘레를 연계하는 유형이다. (문항 토큰 ABCD)",
+          "difficulty": "좌표 설정과 도형 성질을 복합적으로 다루는 난이도 3 문항이다. (문항 토큰 ABCD)",
+          "condition": "COND_POSITIVE: 4칸 condition: 사분면",
+          "crossConcept": "CC_PARABOLA_AXIS_SYMMETRY, CC_GEOMETRIC_AREA_VOLUME_FORMULA: 원천 마크다운 값, 재판정 안 함",
+          "integration": "INTERDEPENDENT: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림과 같이 점 $\\text{A}, \\text{B}$는 $x$축 위에 있고」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "제1사분면 위 꼭짓점 $\\text{C}(t, 3t^2)$을 잡고 $y$축 대칭으로 가로 $2t$, 세로 $3t^2$을 구해 넓이 방정식을 푼다.",
       "decisiveStep": "넓이 $6t^3=48$에서 $t=2$를 구해 가로 $4$, 세로 $12$를 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "점의 좌표를 미지수 $t$로 설정하고 대칭성으로 변의 길이를 표현해 $t^3=8$을 풀어야 하는 3단계 문항이다.",
+      "difficultyReason": "좌표 설정과 도형 성질을 복합적으로 다루는 난이도 3 문항이다. (문항 토큰 ABCD)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_INSCRIBED_RECTANGLE",
-        "templateKey": null,
-        "why": "포물선 $y=3x^2$에 내접하는 직사각형의 넓이 조건으로 둘레를 구하는 문항이다."
+        "templateKey": "TPL_M3_OPTIMIZE_INSCRIBED_RECTANGLE_PERIMETER_DESCRIPTIVE",
+        "why": "이차함수 그래프에 내접하는 도형의 좌표와 넓이, 둘레를 연계하는 유형이다. (문항 토큰 ABCD)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_4dc53bef656d1f320d58549db4872c085d18a489bfa931a08011fc79f27e2105",
@@ -487,16 +775,16 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
         "subUnit": "이차함수의 그래프",
-        "conceptClusterKey": "y축 평행이동된 두 포물선 사이의 세로 길이",
+        "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_FIND_VERTICAL_DISTANCE_BETWEEN_PARALLEL_PARABOLAS",
         "crossConceptKeys": [
           "CC_QUADRATIC_VERTICAL_TRANSLATION",
           "CC_VERTICAL_SEGMENT_LENGTH"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 10,
@@ -509,20 +797,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-049"
+        ],
+        "rpmPrimary": {
+          "l1": "이차함수",
+          "l2": "이차함수 y=ax²+bx+c의 그래프",
+          "l3": "꼭짓점형",
+          "l4": "평행이동",
+          "recordId": "M3-RPM-049"
+        },
+        "rpmPrimaryL1": "이차함수",
+        "rpmPrimaryL2": "이차함수 y=ax²+bx+c의 그래프",
+        "rpmPrimaryL3": "꼭짓점형",
+        "rpmPrimaryL4": "평행이동",
+        "rpmPrimaryRecordId": "M3-RPM-049",
+        "difficultyBasis": "평행이동의 개념을 직접 적용하는 난이도 2 문항이다. (문항 토큰 AB)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-04 / M3-04-QUADRATIC_FUNCTION_GRAPH: 두 이차함수 $y=-2x^2$과 $y=-2x^2-7$의 그래프",
+          "curriculum": "M3-RPM-049: 평행이동한 포물선 사이의 수직 거리를 파악하는 RPM 유형이다. (문항 토큰 AB)",
+          "problemType": "이차함수의 평행이동과 두 그래프 사이의 거리를 구하는 유형이다. (문항 토큰 AB)",
+          "difficulty": "평행이동의 개념을 직접 적용하는 난이도 2 문항이다. (문항 토큰 AB)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_QUADRATIC_VERTICAL_TRANSLATION, CC_VERTICAL_SEGMENT_LENGTH: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「두 이차함수 $y=-2x^2$과 $y=-2x^2-7$의 그래프가 다음 그림과 같을 때」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "같은 $x=t$에서의 두 함숫값 차가 평행이동 거리 $7$과 같음을 이용한다.",
       "decisiveStep": "$(-2t^2)-(-2t^2-7)=7$로 $t$에 관계없이 길이가 일정함을 확인한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "평행이동한 양만큼 세로 거리가 일정함을 바로 읽는 1단계 문항이다.",
+      "difficultyReason": "평행이동의 개념을 직접 적용하는 난이도 2 문항이다. (문항 토큰 AB)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
-        "templateKey": null,
-        "why": "상하 평행이동된 두 포물선 위의 같은 $x$좌표 두 점 사이 거리를 구하는 문항이다."
+        "templateKey": "TPL_M3_FIND_VERTICAL_DISTANCE_BETWEEN_PARALLEL_PARABOLAS",
+        "why": "이차함수의 평행이동과 두 그래프 사이의 거리를 구하는 유형이다. (문항 토큰 AB)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_fdd5ec758bf416e3b7bce5c79ec89e3d841bfd6e6a9352586f433a10925caf99",
@@ -539,9 +859,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
         "subUnit": "이차함수의 그래프",
-        "conceptClusterKey": "식 전개 후 이차함수 판별",
+        "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_QUADRATIC_FUNCTION_DEFINITION_POLYNOMIAL",
         "crossConceptKeys": [
           "CC_FUNCTION_DEGREE_CLASSIFICATION"
         ],
@@ -560,20 +880,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-043"
+        ],
+        "rpmPrimary": {
+          "l1": "이차함수",
+          "l2": "이차함수와 그 그래프",
+          "l3": "이차함수의 뜻",
+          "l4": "이차함수 판별",
+          "recordId": "M3-RPM-043"
+        },
+        "rpmPrimaryL1": "이차함수",
+        "rpmPrimaryL2": "이차함수와 그 그래프",
+        "rpmPrimaryL3": "이차함수의 뜻",
+        "rpmPrimaryL4": "이차함수 판별",
+        "rpmPrimaryRecordId": "M3-RPM-043",
+        "difficultyBasis": "간단한 전개로 식별 가능한 난이도 1 문항이다. (문항 토큰 y)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-04 / M3-04-QUADRATIC_FUNCTION_GRAPH: $y$가 $x$에 관한 이차함수인 것은?",
+          "curriculum": "M3-RPM-043: 이차함수의 뜻과 식의 판별 RPM 유형이다. (문항 토큰 y)",
+          "problemType": "이차함수의 정의와 식의 전개를 통해 이차함수 여부를 판별하는 유형이다. (문항 토큰 y)",
+          "difficulty": "간단한 전개로 식별 가능한 난이도 1 문항이다. (문항 토큰 y)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_FUNCTION_DEGREE_CLASSIFICATION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "각 식을 전개해 $y=ax^2+bx+c\\ (a\\ne 0)$ 꼴이 되는 것을 찾는다.",
       "decisiveStep": "④에서 $x^2$항이 소거됨을 확인하고 ①만 $y=x^2+4x$임을 판별한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "식을 전개해 $x^2$항의 잔존 여부만 확인하는 1단계 문항이다.",
+      "difficultyReason": "간단한 전개로 식별 가능한 난이도 1 문항이다. (문항 토큰 y)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
-        "templateKey": null,
-        "why": "일차·삼차·분수식 중에서 이차함수를 고르는 기초 문항이다."
+        "templateKey": "TPL_M3_QUADRATIC_FUNCTION_DEFINITION_POLYNOMIAL",
+        "why": "이차함수의 정의와 식의 전개를 통해 이차함수 여부를 판별하는 유형이다. (문항 토큰 y)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_75af387e4bcc85af2097e0a2e1ff00d4ffea93d2085930ed8d7908b8f0674834",
@@ -590,9 +942,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
         "subUnit": "이차함수의 그래프",
-        "conceptClusterKey": "포물선 축 대칭을 이용한 함숫값 구하기",
+        "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_AXIS_AND_MONOTONICITY",
-        "templateKey": "",
+        "templateKey": "TPL_M3_FIND_VERTEX_FROM_DECREASING_INTERVAL_OF_PARABOLA",
         "crossConceptKeys": [
           "CC_PARABOLA_AXIS_SYMMETRY"
         ],
@@ -600,7 +952,7 @@
         "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 12,
         "variationType": "NUMERIC",
         "provenance": {
@@ -611,20 +963,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-045"
+        ],
+        "rpmPrimary": {
+          "l1": "이차함수",
+          "l2": "이차함수와 그 그래프",
+          "l3": "y=ax²의 그래프",
+          "l4": "그래프의 모양",
+          "recordId": "M3-RPM-045"
+        },
+        "rpmPrimaryL1": "이차함수",
+        "rpmPrimaryL2": "이차함수와 그 그래프",
+        "rpmPrimaryL3": "y=ax²의 그래프",
+        "rpmPrimaryL4": "그래프의 모양",
+        "rpmPrimaryRecordId": "M3-RPM-045",
+        "difficultyBasis": "기본적인 평행이동 식에 점을 대입하는 난이도 2 문항이다. (문항 토큰 ax)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-04 / M3-04-QUADRATIC_FUNCTION_GRAPH: 꼭짓점의 좌표가 $(3, 0)$",
+          "curriculum": "M3-RPM-045: 그래프의 꼭짓점과 지나는 점을 이용한 포물선 식 결정 RPM 유형이다. (문항 토큰 ax)",
+          "problemType": "평행이동된 포물선의 그래프에서 식을 구하고 함숫값을 찾는 유형이다. (문항 토큰 ax)",
+          "difficulty": "기본적인 평행이동 식에 점을 대입하는 난이도 2 문항이다. (문항 토큰 ax)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_PARABOLA_AXIS_SYMMETRY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림은 이차함수 $y=ax^2$의 그래프를 평행이동한 것이다」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "꼭짓점 $(3,0)$에서 축이 $x=3$임을 읽고 $(0,7)$과 대칭인 점 $(6,7)$을 구한다.",
       "decisiveStep": "$a$를 구하지 않고도 $x=0$과 $x=6$이 축 $x=3$에 대칭임을 이용한다.",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "대칭축 $x=3$을 읽어 대칭점의 함숫값이 같음을 이용하는 2단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "기본적인 평행이동 식에 점을 대입하는 난이도 2 문항이다. (문항 토큰 ax)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_AXIS_AND_MONOTONICITY",
-        "templateKey": null,
-        "why": "축에 대한 대칭성을 이용해 대칭점의 $y$좌표를 바로 구하는 문항이다."
+        "templateKey": "TPL_M3_FIND_VERTEX_FROM_DECREASING_INTERVAL_OF_PARABOLA",
+        "why": "평행이동된 포물선의 그래프에서 식을 구하고 함숫값을 찾는 유형이다. (문항 토큰 ax)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_b1d0e67b5825d10aeae6cf16a452f834249d442e2067a0750a531e2e2a4ea7b5",
@@ -641,9 +1025,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
         "subUnit": "이차함수의 그래프",
-        "conceptClusterKey": "축과 두 점이 주어진 이차함수 식 구하기",
+        "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
-        "templateKey": "",
+        "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
         "crossConceptKeys": [
           "CC_SYSTEM_OF_EQUATIONS",
           "CC_POINT_ON_CURVE_SUBSTITUTION"
@@ -663,20 +1047,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-053"
+        ],
+        "rpmPrimary": {
+          "l1": "이차함수",
+          "l2": "이차함수 y=ax²+bx+c의 그래프",
+          "l3": "그래프와 계수",
+          "l4": "그래프 위치",
+          "recordId": "M3-RPM-053"
+        },
+        "rpmPrimaryL1": "이차함수",
+        "rpmPrimaryL2": "이차함수 y=ax²+bx+c의 그래프",
+        "rpmPrimaryL3": "그래프와 계수",
+        "rpmPrimaryL4": "그래프 위치",
+        "rpmPrimaryRecordId": "M3-RPM-053",
+        "difficultyBasis": "연립방정식으로 식을 도출하는 표준적인 난이도 2 문항이다. (문항 토큰 15)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-04 / M3-04-QUADRATIC_FUNCTION_GRAPH: 축의 방정식이 $x=-1$",
+          "curriculum": "M3-RPM-053: 조건이 주어진 이차함수의 식 구하기 RPM 유형이다. (문항 토큰 15)",
+          "problemType": "축의 방정식과 점의 좌표 조건으로 이차함수 식을 결정하는 유형이다. (문항 토큰 15)",
+          "difficulty": "연립방정식으로 식을 도출하는 표준적인 난이도 2 문항이다. (문항 토큰 15)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SYSTEM_OF_EQUATIONS, CC_POINT_ON_CURVE_SUBSTITUTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "축 $x=-1$로 $y=a(x+1)^2+q$를 세우고 $(0,3), (1,9)$를 대입해 $a, q$를 구한 뒤 $x=2$를 대입한다.",
       "decisiveStep": "연립방정식 $a+q=3, 4a+q=9$에서 $a=2, q=1$을 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "축을 이용해 식을 세우고 두 점을 대입해 연립방정식을 푼 뒤 $k$를 구하는 2단계 문항이다.",
+      "difficultyReason": "연립방정식으로 식을 도출하는 표준적인 난이도 2 문항이다. (문항 토큰 15)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
-        "templateKey": null,
-        "why": "축의 방정식과 두 점의 좌표로부터 이차함수 식을 결정해 함숫값을 구하는 문항이다."
+        "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+        "why": "축의 방정식과 점의 좌표 조건으로 이차함수 식을 결정하는 유형이다. (문항 토큰 15)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_2389675b3cf65f157dd5dcb5373a775bb8ff52535e9ced1198620541d9e8aec0",
@@ -693,15 +1109,15 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
         "subUnit": "이차함수의 그래프",
-        "conceptClusterKey": "주어진 포물선 부호로 변환된 이차함수 개형 판정",
+        "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
-        "templateKey": "",
+        "templateKey": "TPL_M3_IDENTIFY_FALSE_PROPERTY_FROM_PARABOLA_GRAPH",
         "crossConceptKeys": [
           "CC_COEFFICIENT_SIGN_FROM_GRAPH"
         ],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 14,
@@ -714,20 +1130,52 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-053"
+        ],
+        "rpmPrimary": {
+          "l1": "이차함수",
+          "l2": "이차함수 y=ax²+bx+c의 그래프",
+          "l3": "그래프와 계수",
+          "l4": "그래프 위치",
+          "recordId": "M3-RPM-053"
+        },
+        "rpmPrimaryL1": "이차함수",
+        "rpmPrimaryL2": "이차함수 y=ax²+bx+c의 그래프",
+        "rpmPrimaryL3": "그래프와 계수",
+        "rpmPrimaryL4": "그래프 위치",
+        "rpmPrimaryRecordId": "M3-RPM-053",
+        "difficultyBasis": "부호 판별과 그래프 유추의 복합 사고가 필요한 난이도 3 문항이다. (문항 토큰 ax)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-04 / M3-04-QUADRATIC_FUNCTION_GRAPH: 이차함수 $y=a(x+p)^2$의 그래프",
+          "curriculum": "M3-RPM-053: 이차함수 식의 계수의 부호 판별 및 활용 RPM 유형이다. (문항 토큰 ax)",
+          "problemType": "포물선의 그래프에서 계수의 부호를 결정하고 다른 그래프의 성질을 유추하는 유형이다. (문항 토큰 ax)",
+          "difficulty": "부호 판별과 그래프 유추의 복합 사고가 필요한 난이도 3 문항이다. (문항 토큰 ax)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_COEFFICIENT_SIGN_FROM_GRAPH: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「이차함수 $y=a(x+p)^2$의 그래프가 아래 그림과 같을 때」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "원래 그래프에서 $a<0$과 $-p>0$($p<0$)을 읽어 새 식 $y=ax^2+p$의 볼록 방향과 꼭짓점 위치를 구한다.",
       "decisiveStep": "꼭짓점 $(-p,0)$이 오른쪽에 있어 $-p>0$, 즉 $p<0$임을 정확히 변환한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "꼭짓점 $(-p,0)$에서 $p$의 부호를 반대 부호로 읽어야 하는 2단계 문항이다.",
+      "difficultyReason": "부호 판별과 그래프 유추의 복합 사고가 필요한 난이도 3 문항이다. (문항 토큰 ax)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
-        "templateKey": null,
-        "why": "그래프에서 계수 $a, p$의 부호를 읽어 다른 이차함수 그래프의 개형을 찾는 문항이다."
+        "templateKey": "TPL_M3_IDENTIFY_FALSE_PROPERTY_FROM_PARABOLA_GRAPH",
+        "why": "포물선의 그래프에서 계수의 부호를 결정하고 다른 그래프의 성질을 유추하는 유형이다. (문항 토큰 ax)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_00d98db1f0ea6a748de04c4bb10a63326bfa1e766cf534912ba4b73091a0af54",
@@ -744,9 +1192,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
         "subUnit": "이차함수의 그래프",
-        "conceptClusterKey": "문자 계수 이차함수의 완전제곱식 변형과 꼭짓점",
+        "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
-        "templateKey": "",
+        "templateKey": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE",
         "crossConceptKeys": [
           "CC_QUADRATIC_GENERAL_FORM"
         ],
@@ -765,20 +1213,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-051"
+        ],
+        "rpmPrimary": {
+          "l1": "이차함수",
+          "l2": "이차함수 y=ax²+bx+c의 그래프",
+          "l3": "일반형",
+          "l4": "완전제곱식 변형",
+          "recordId": "M3-RPM-051"
+        },
+        "rpmPrimaryL1": "이차함수",
+        "rpmPrimaryL2": "이차함수 y=ax²+bx+c의 그래프",
+        "rpmPrimaryL3": "일반형",
+        "rpmPrimaryL4": "완전제곱식 변형",
+        "rpmPrimaryRecordId": "M3-RPM-051",
+        "difficultyBasis": "완전제곱식 변형과 비교로 해결되는 난이도 2 문항이다. (문항 토큰 ax)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-04 / M3-04-QUADRATIC_FUNCTION_GRAPH: 꼭짓점의 좌표가 $(4, -2)$일 때",
+          "curriculum": "M3-RPM-051: 일반형 $y=ax^2+bx+c$를 표준형으로 고쳐 꼭짓점 구하기 RPM 유형이다. (문항 토큰 ax)",
+          "problemType": "이차함수 일반형을 표준형으로 변형하여 꼭짓점의 좌표를 활용하는 유형이다. (문항 토큰 ax)",
+          "difficulty": "완전제곱식 변형과 비교로 해결되는 난이도 2 문항이다. (문항 토큰 ax)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_QUADRATIC_GENERAL_FORM: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "문자가 포함된 일반형을 완전제곱식으로 고쳐 꼭짓점 $(2a, -a^2+b)$를 $(4,-2)$와 비교한다.",
       "decisiveStep": "$y=(x-2a)^2-a^2+b$로 정리해 $2a=4$, $-a^2+b=-2$를 연립한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "문자가 포함된 일반형을 완전제곱식으로 변형해 두 식을 비교해야 하는 2단계 문항이다.",
+      "difficultyReason": "완전제곱식 변형과 비교로 해결되는 난이도 2 문항이다. (문항 토큰 ax)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
-        "templateKey": null,
-        "why": "문자 계수 일반형을 표준형으로 변형해 주어진 꼭짓점과 비교하는 문항이다."
+        "templateKey": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE",
+        "why": "이차함수 일반형을 표준형으로 변형하여 꼭짓점의 좌표를 활용하는 유형이다. (문항 토큰 ax)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_f0b93b6dc3335c6be9486b9a29153f42234b03c985eeae77658dabb4236d741f",
@@ -795,9 +1275,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
         "subUnit": "이차함수의 그래프",
-        "conceptClusterKey": "지나는 점으로 계수 결정 후 축의 방정식",
+        "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_AXIS_AND_MONOTONICITY",
-        "templateKey": "",
+        "templateKey": "TPL_M3_FIND_VERTEX_FROM_DECREASING_INTERVAL_OF_PARABOLA",
         "crossConceptKeys": [
           "CC_POINT_ON_CURVE_SUBSTITUTION"
         ],
@@ -805,7 +1285,7 @@
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 16,
         "variationType": "NUMERIC",
         "provenance": {
@@ -816,20 +1296,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-051"
+        ],
+        "rpmPrimary": {
+          "l1": "이차함수",
+          "l2": "이차함수 y=ax²+bx+c의 그래프",
+          "l3": "일반형",
+          "l4": "완전제곱식 변형",
+          "recordId": "M3-RPM-051"
+        },
+        "rpmPrimaryL1": "이차함수",
+        "rpmPrimaryL2": "이차함수 y=ax²+bx+c의 그래프",
+        "rpmPrimaryL3": "일반형",
+        "rpmPrimaryL4": "완전제곱식 변형",
+        "rpmPrimaryRecordId": "M3-RPM-051",
+        "difficultyBasis": "간단한 대입과 표준형 변형으로 해결되는 난이도 2 문항이다. (문항 토큰 kx)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-04 / M3-04-QUADRATIC_FUNCTION_GRAPH: 이차함수 $y=-2x^2+kx-3$의 그래프",
+          "curriculum": "M3-RPM-051: 점 대입을 통한 식 결정 및 축의 방정식 도출 RPM 유형이다. (문항 토큰 kx)",
+          "problemType": "이차함수의 계수를 결정하고 대칭축을 구하는 유형이다. (문항 토큰 kx)",
+          "difficulty": "간단한 대입과 표준형 변형으로 해결되는 난이도 2 문항이다. (문항 토큰 kx)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_POINT_ON_CURVE_SUBSTITUTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "점 $(2,5)$를 대입해 $k=8$을 구한 뒤 표준형으로 고쳐 축의 방정식을 찾는다.",
       "decisiveStep": "$k=8$을 구해 $y=-2(x-2)^2+5$에서 축 $x=2$를 얻는다.",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "점 대입으로 $k$를 구하고 표준형 변형으로 축을 찾는 2단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "간단한 대입과 표준형 변형으로 해결되는 난이도 2 문항이다. (문항 토큰 kx)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_AXIS_AND_MONOTONICITY",
-        "templateKey": null,
-        "why": "한 점을 대입해 일차항 계수를 구한 뒤 축의 방정식을 구하는 문항이다."
+        "templateKey": "TPL_M3_FIND_VERTEX_FROM_DECREASING_INTERVAL_OF_PARABOLA",
+        "why": "이차함수의 계수를 결정하고 대칭축을 구하는 유형이다. (문항 토큰 kx)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_6f94f1e09c5a72860328d0b45152dd42fc2c964626a4d16f30cd5ceeb5a85fc7",
@@ -846,17 +1358,17 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
         "subUnit": "이차함수의 그래프",
-        "conceptClusterKey": "평행이동한 이차함수의 일반형 계수 구하기",
+        "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
-        "templateKey": "",
+        "templateKey": "TPL_M3_CALCULATE_SUM_OF_TRANSLATION_PARAMETERS",
         "crossConceptKeys": [
           "CC_BINOMIAL_SQUARE_EXPANSION"
         ],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 17,
         "variationType": "NUMERIC",
         "provenance": {
@@ -867,20 +1379,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-049"
+        ],
+        "rpmPrimary": {
+          "l1": "이차함수",
+          "l2": "이차함수 y=ax²+bx+c의 그래프",
+          "l3": "꼭짓점형",
+          "l4": "평행이동",
+          "recordId": "M3-RPM-049"
+        },
+        "rpmPrimaryL1": "이차함수",
+        "rpmPrimaryL2": "이차함수 y=ax²+bx+c의 그래프",
+        "rpmPrimaryL3": "꼭짓점형",
+        "rpmPrimaryL4": "평행이동",
+        "rpmPrimaryRecordId": "M3-RPM-049",
+        "difficultyBasis": "평행이동 공식 적용 후 전개하는 난이도 2 문항이다. (문항 토큰 px)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-04 / M3-04-QUADRATIC_FUNCTION_GRAPH: 이차함수 $y=2x^2$의 그래프",
+          "curriculum": "M3-RPM-049: 평행이동한 이차함수 식의 전개와 계수 합 RPM 유형이다. (문항 토큰 px)",
+          "problemType": "이차함수의 평행이동과 전개식을 연계하는 유형이다. (문항 토큰 px)",
+          "difficulty": "평행이동 공식 적용 후 전개하는 난이도 2 문항이다. (문항 토큰 px)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_BINOMIAL_SQUARE_EXPANSION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "평행이동 식 $y=2(x-3)^2-7$을 전개해 일반형 계수 $p, q$를 구한다.",
       "decisiveStep": "$2(x-3)^2-7=2x^2-12x+11$로 전개해 $p=-12, q=11$을 얻는다.",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "평행이동 식을 세워 전개만 하면 풀리는 1단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "평행이동 공식 적용 후 전개하는 난이도 2 문항이다. (문항 토큰 px)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
-        "templateKey": null,
-        "why": "평행이동한 표준형을 전개해 일반형 계수의 합을 구하는 문항이다."
+        "templateKey": "TPL_M3_CALCULATE_SUM_OF_TRANSLATION_PARAMETERS",
+        "why": "이차함수의 평행이동과 전개식을 연계하는 유형이다. (문항 토큰 px)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_ba21a95d70e7450343c88d5ecedbb26378062476717938805bf250f9c39d6a4f",
@@ -897,15 +1441,15 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
         "subUnit": "이차함수의 그래프",
-        "conceptClusterKey": "일반형 이차함수의 축·꼭짓점·증감 판별",
+        "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
-        "templateKey": "",
+        "templateKey": "TPL_M3_EVALUATE_PARABOLA_PROPERTIES_STATEMENTS",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "B12",
+        "difficultyBoundaryFlag": "NONE",
         "sourceQid": 18,
         "variationType": "NUMERIC",
         "provenance": {
@@ -916,20 +1460,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-051"
+        ],
+        "rpmPrimary": {
+          "l1": "이차함수",
+          "l2": "이차함수 y=ax²+bx+c의 그래프",
+          "l3": "일반형",
+          "l4": "완전제곱식 변형",
+          "recordId": "M3-RPM-051"
+        },
+        "rpmPrimaryL1": "이차함수",
+        "rpmPrimaryL2": "이차함수 y=ax²+bx+c의 그래프",
+        "rpmPrimaryL3": "일반형",
+        "rpmPrimaryL4": "완전제곱식 변형",
+        "rpmPrimaryRecordId": "M3-RPM-051",
+        "difficultyBasis": "보기들의 성질을 표준형으로 빠르게 대조하는 난이도 2 문항이다. (문항 토큰 y)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-04 / M3-04-QUADRATIC_FUNCTION_GRAPH: 이차함수 $y=-x^2+6x-4$의 그래프",
+          "curriculum": "M3-RPM-051: 이차함수 그래프의 성질 종합 판별 RPM 유형이다. (문항 토큰 y)",
+          "problemType": "이차함수의 표준형 변형과 그래프의 성질 종합 판별 유형이다. (문항 토큰 y)",
+          "difficulty": "보기들의 성질을 표준형으로 빠르게 대조하는 난이도 2 문항이다. (문항 토큰 y)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$y=-(x-3)^2+5$로 변형해 축, $y$절편, 꼭짓점, 증감 구간을 확인한다.",
       "decisiveStep": "표준형에서 축의 방정식이 $x=3$임을 확인해 ①이 거짓임을 밝힌다.",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "B12",
-      "difficultyReason": "완전제곱식 변형 후 5개 보기의 성질을 검증하는 2단계 문항이다.",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "보기들의 성질을 표준형으로 빠르게 대조하는 난이도 2 문항이다. (문항 토큰 y)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
-        "templateKey": null,
-        "why": "일반형 이차함수를 표준형으로 고쳐 그래프의 성질을 판별하는 문항이다."
+        "templateKey": "TPL_M3_EVALUATE_PARABOLA_PROPERTIES_STATEMENTS",
+        "why": "이차함수의 표준형 변형과 그래프의 성질 종합 판별 유형이다. (문항 토큰 y)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_cc71ef52a6b94632acff7cda0f098aa6d0c821af477bb04e722c69867a52bba1",
@@ -946,9 +1522,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
         "subUnit": "이차함수의 그래프",
-        "conceptClusterKey": "x절편과 삼각형 넓이로 이차함수 계수 구하기",
+        "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
-        "templateKey": "",
+        "templateKey": "TPL_M3_FIND_COEFFICIENT_FROM_TRIANGLE_AREA_WITH_VERTEX",
         "crossConceptKeys": [
           "CC_GEOMETRIC_AREA_VOLUME_FORMULA",
           "CC_PARABOLA_AXIS_SYMMETRY"
@@ -968,20 +1544,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-053"
+        ],
+        "rpmPrimary": {
+          "l1": "이차함수",
+          "l2": "이차함수 y=ax²+bx+c의 그래프",
+          "l3": "그래프와 계수",
+          "l4": "그래프 위치",
+          "recordId": "M3-RPM-053"
+        },
+        "rpmPrimaryL1": "이차함수",
+        "rpmPrimaryL2": "이차함수 y=ax²+bx+c의 그래프",
+        "rpmPrimaryL3": "그래프와 계수",
+        "rpmPrimaryL4": "그래프 위치",
+        "rpmPrimaryRecordId": "M3-RPM-053",
+        "difficultyBasis": "도형 넓이와 꼭짓점 좌표 연계가 필요한 난이도 3 문항이다. (문항 토큰 ax)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-04 / M3-04-QUADRATIC_FUNCTION_GRAPH: 꼭짓점을 $\\text{A}$라고 하자.",
+          "curriculum": "M3-RPM-053: 도형의 넓이와 결합된 포물선 식 구하기 RPM 유형이다. (문항 토큰 ax)",
+          "problemType": "포물선과 꼭짓점을 지나는 삼각형의 넓이 조건으로 함수식을 결정하는 유형이다. (문항 토큰 ax)",
+          "difficulty": "도형 넓이와 꼭짓점 좌표 연계가 필요한 난이도 3 문항이다. (문항 토큰 ax)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_GEOMETRIC_AREA_VOLUME_FORMULA, CC_PARABOLA_AXIS_SYMMETRY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림과 같은 이차함수 $y=ax^2+bx+c$의 그래프에서 꼭짓점을」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "두 $x$절편 $0, 4$로 $y=ax(x-4)$를 세우고 $\\triangle\\text{OAB}$ 넓이에서 꼭짓점 $(2,-4)$를 구해 $a$를 결정한다.",
       "decisiveStep": "넓이 $8$에서 높이 $4$를 구해 꼭짓점 $\\text{A}(2,-4)$를 확정하고 $a=1$을 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "$x$절편으로 식을 세우고 삼각형 넓이로 꼭짓점 좌표를 역산해 $a, b, c$를 모두 구하는 3단계 문항이다.",
+      "difficultyReason": "도형 넓이와 꼭짓점 좌표 연계가 필요한 난이도 3 문항이다. (문항 토큰 ax)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
-        "templateKey": null,
-        "why": "두 $x$절편과 꼭짓점 삼각형의 넓이로 이차함수 식을 결정하는 문항이다."
+        "templateKey": "TPL_M3_FIND_COEFFICIENT_FROM_TRIANGLE_AREA_WITH_VERTEX",
+        "why": "포물선과 꼭짓점을 지나는 삼각형의 넓이 조건으로 함수식을 결정하는 유형이다. (문항 토큰 ax)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_6207ccd8b32ebd407f956d63b6f3154354f49ca528996e351b50839bb25d72df",
@@ -998,9 +1606,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
         "subUnit": "이차함수의 그래프",
-        "conceptClusterKey": "두 x절편이 주어진 이차함수 식 구하기",
+        "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_THREE_POINTS",
-        "templateKey": "",
+        "templateKey": "TPL_M3_DETERMINE_EQUATION_FROM_THREE_GIVEN_POINTS",
         "crossConceptKeys": [
           "CC_POINT_ON_CURVE_SUBSTITUTION"
         ],
@@ -1019,20 +1627,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-053"
+        ],
+        "rpmPrimary": {
+          "l1": "이차함수",
+          "l2": "이차함수 y=ax²+bx+c의 그래프",
+          "l3": "그래프와 계수",
+          "l4": "그래프 위치",
+          "recordId": "M3-RPM-053"
+        },
+        "rpmPrimaryL1": "이차함수",
+        "rpmPrimaryL2": "이차함수 y=ax²+bx+c의 그래프",
+        "rpmPrimaryL3": "그래프와 계수",
+        "rpmPrimaryL4": "그래프 위치",
+        "rpmPrimaryRecordId": "M3-RPM-053",
+        "difficultyBasis": "$x$절편을 이용해 식을 빠르게 완성하는 난이도 2 문항이다. (문항 토큰 bx)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-04 / M3-04-QUADRATIC_FUNCTION_GRAPH: 세 점 $(2, 0)$, $(6, 0)$, $(5, k)$를 지나는 포물선",
+          "curriculum": "M3-RPM-053: 주어진 점들을 지나는 포물선의 식 완성 RPM 유형이다. (문항 토큰 bx)",
+          "problemType": "세 점의 좌표가 주어진 이차함수의 식을 결정하는 유형이다. (문항 토큰 bx)",
+          "difficulty": "$x$절편을 이용해 식을 빠르게 완성하는 난이도 2 문항이다. (문항 토큰 bx)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_POINT_ON_CURVE_SUBSTITUTION: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "두 $x$절편 $(2,0), (6,0)$으로 $y=(x-2)(x-6)$을 세워 전개한 뒤 $x=5$를 대입해 $k$를 구한다.",
       "decisiveStep": "$y=(x-2)(x-6)$을 전개해 $b=-8, c=12$를 구하고 $k=-3$을 대입한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "두 $x$절편으로 인수분해형을 바로 세워 전개하고 세 번째 점의 $y$좌표를 구하는 2단계 문항이다.",
+      "difficultyReason": "$x$절편을 이용해 식을 빠르게 완성하는 난이도 2 문항이다. (문항 토큰 bx)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_THREE_POINTS",
-        "templateKey": null,
-        "why": "두 $x$절편과 한 점이 주어진 이차함수 식을 결정하는 문항이다."
+        "templateKey": "TPL_M3_DETERMINE_EQUATION_FROM_THREE_GIVEN_POINTS",
+        "why": "세 점의 좌표가 주어진 이차함수의 식을 결정하는 유형이다. (문항 토큰 bx)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_59c925306f6c48bbb0a27b26fe5c2ca9e026eabdbffe33a2d0366dd137aba75a",
@@ -1049,9 +1689,9 @@
         "standardUnitOrder": 3,
         "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
         "subUnit": "이차방정식의 활용",
-        "conceptClusterKey": "원의 넓이 배수 조건과 제곱근 이차방정식",
+        "conceptClusterKey": "QUADRATIC_EQUATION_WORD_PROBLEM",
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
-        "templateKey": "",
+        "templateKey": "TPL_M3_QUADRATIC_EQUATION_WORD_PROBLEM_GEOMETRY",
         "crossConceptKeys": [
           "CC_GEOMETRIC_AREA_VOLUME_FORMULA"
         ],
@@ -1059,7 +1699,7 @@
           "COND_POSITIVE"
         ],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 21,
@@ -1072,20 +1712,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-039"
+        ],
+        "rpmPrimary": {
+          "l1": "이차방정식",
+          "l2": "이차방정식의 활용",
+          "l3": "도형",
+          "l4": "길이·넓이",
+          "recordId": "M3-RPM-039"
+        },
+        "rpmPrimaryL1": "이차방정식",
+        "rpmPrimaryL2": "이차방정식의 활용",
+        "rpmPrimaryL3": "도형",
+        "rpmPrimaryL4": "길이·넓이",
+        "rpmPrimaryRecordId": "M3-RPM-039",
+        "difficultyBasis": "원의 넓이 식 세우기와 무리수 근 도출이 요구되는 서술형 난이도 3 문항이다. (문항 토큰 cm)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-03 / M3-03-QUADRATIC_EQUATION_WORD: 반지름의 길이가 $8\\text{ cm}$인 원",
+          "curriculum": "M3-RPM-039: 도형의 넓이에 관한 이차방정식 활용 RPM 유형이다. (문항 토큰 cm)",
+          "problemType": "도형의 넓이 변화를 다루는 이차방정식의 활용 서술형 유형이다. (문항 토큰 cm)",
+          "difficulty": "원의 넓이 식 세우기와 무리수 근 도출이 요구되는 서술형 난이도 3 문항이다. (문항 토큰 cm)",
+          "condition": "COND_POSITIVE: 4칸 condition: 양수",
+          "crossConcept": "CC_GEOMETRIC_AREA_VOLUME_FORMULA: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「아래 그림과 같이 반지름의 길이가 $8\\text{ cm}$인 원이 있다」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "넓이 조건 $\\pi(8+x)^2=128\\pi$를 세우고 제곱근을 이용해 양수 $x$를 구한다.",
       "decisiveStep": "$(8+x)^2=128$에서 $x>0$이므로 $8+x=8\\sqrt{2}$만 택한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "원의 넓이 식으로 $(8+x)^2=128$을 세우고 양수 조건에 맞는 무리수 해를 구하는 2단계 문항이다.",
+      "difficultyReason": "원의 넓이 식 세우기와 무리수 근 도출이 요구되는 서술형 난이도 3 문항이다. (문항 토큰 cm)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
-        "templateKey": null,
-        "why": "원의 넓이가 2배가 되는 반지름 증가량을 제곱근 풀이로 구하는 문항이다."
+        "templateKey": "TPL_M3_QUADRATIC_EQUATION_WORD_PROBLEM_GEOMETRY",
+        "why": "도형의 넓이 변화를 다루는 이차방정식의 활용 서술형 유형이다. (문항 토큰 cm)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_e49df47280a3b81ec1fa375f4a273519b74a985298b4dcf076c7d9653142a6e7",
@@ -1102,9 +1774,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
         "subUnit": "이차함수의 그래프",
-        "conceptClusterKey": "f(p)=p를 만족시키는 이차방정식 해의 합",
+        "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_BASIC_FORM",
-        "templateKey": "",
+        "templateKey": "TPL_M3_DETERMINE_EQUATION_FROM_GRAPH_POINT",
         "crossConceptKeys": [
           "CC_QUADRATIC_EQUATIONS"
         ],
@@ -1123,20 +1795,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-043"
+        ],
+        "rpmPrimary": {
+          "l1": "이차함수",
+          "l2": "이차함수와 그 그래프",
+          "l3": "이차함수의 뜻",
+          "l4": "이차함수 판별",
+          "recordId": "M3-RPM-043"
+        },
+        "rpmPrimaryL1": "이차함수",
+        "rpmPrimaryL2": "이차함수와 그 그래프",
+        "rpmPrimaryL3": "이차함수의 뜻",
+        "rpmPrimaryL4": "이차함수 판별",
+        "rpmPrimaryRecordId": "M3-RPM-043",
+        "difficultyBasis": "식 세우기와 근과 계수의 관계를 간결히 적용하는 난이도 2 문항이다. (문항 토큰 aligned)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-04 / M3-04-QUADRATIC_FUNCTION_GRAPH: 이차함수 $f(x)=\\dfrac{1}{2}x^2-2x+3$",
+          "curriculum": "M3-RPM-043: 이차함수의 함숫값 활용 RPM 유형이다. (문항 토큰 aligned)",
+          "problemType": "이차함수의 함숫값 조건식을 이차방정식으로 변형하여 해결하는 서술형 유형이다. (문항 토큰 aligned)",
+          "difficulty": "식 세우기와 근과 계수의 관계를 간결히 적용하는 난이도 2 문항이다. (문항 토큰 aligned)",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_QUADRATIC_EQUATIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$f(p)=p$를 이차방정식 $p^2-6p+6=0$으로 정리해 두 근 $3\\pm\\sqrt{3}$을 구한 뒤 더한다.",
       "decisiveStep": "분모 $2$를 없앤 $p^2-6p+6=0$을 풀어 두 근의 합 $6$을 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "함숫값 조건을 이차방정식으로 전환해 두 무리수 근의 합을 구하는 2단계 문항이다.",
+      "difficultyReason": "식 세우기와 근과 계수의 관계를 간결히 적용하는 난이도 2 문항이다. (문항 토큰 aligned)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_BASIC_FORM",
-        "templateKey": null,
-        "why": "함숫값 조건 $f(p)=p$를 이차방정식으로 바꾸어 모든 해의 합을 구하는 문항이다."
+        "templateKey": "TPL_M3_DETERMINE_EQUATION_FROM_GRAPH_POINT",
+        "why": "이차함수의 함숫값 조건식을 이차방정식으로 변형하여 해결하는 서술형 유형이다. (문항 토큰 aligned)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_4953fb5e2921d3f613ddfa038bd418a19184c75059b194e98268b06f176fa671",
@@ -1153,9 +1857,9 @@
         "standardUnitOrder": 4,
         "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
         "subUnit": "이차함수의 그래프",
-        "conceptClusterKey": "축과 x절편 거리로 문자 계수 소거 및 식의 값",
+        "conceptClusterKey": "QUADRATIC_FUNCTION_GRAPH",
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_X_INTERCEPTS_DISTANCE",
-        "templateKey": "",
+        "templateKey": "TPL_M3_FIND_CONSTANT_FROM_CHORD_LENGTH_ON_X_AXIS",
         "crossConceptKeys": [
           "CC_PARABOLA_AXIS_SYMMETRY",
           "CC_ALGEBRAIC_FRACTION_SIMPLIFY"
@@ -1177,20 +1881,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-16",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-053"
+        ],
+        "rpmPrimary": {
+          "l1": "이차함수",
+          "l2": "이차함수 y=ax²+bx+c의 그래프",
+          "l3": "그래프와 계수",
+          "l4": "그래프 위치",
+          "recordId": "M3-RPM-053"
+        },
+        "rpmPrimaryL1": "이차함수",
+        "rpmPrimaryL2": "이차함수 y=ax²+bx+c의 그래프",
+        "rpmPrimaryL3": "그래프와 계수",
+        "rpmPrimaryL4": "그래프 위치",
+        "rpmPrimaryRecordId": "M3-RPM-053",
+        "difficultyBasis": "대칭성과 미정계수 비 계산이 필요한 서술형 난이도 3 문항이다. (문항 토큰 ax)",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-04 / M3-04-QUADRATIC_FUNCTION_GRAPH: 꼭짓점의 좌표가 $(2, n)$이고",
+          "curriculum": "M3-RPM-053: $x$축 교점 사이의 거리가 주어진 포물선 식 결정 RPM 유형이다. (문항 토큰 ax)",
+          "problemType": "포물선의 대칭성과 $x$축 교점 사이의 거리로 미정계수 식의 값을 구하는 서술형 유형이다. (문항 토큰 ax)",
+          "difficulty": "대칭성과 미정계수 비 계산이 필요한 서술형 난이도 3 문항이다. (문항 토큰 ax)",
+          "condition": "COND_POSITIVE: 4칸 condition: 양수",
+          "crossConcept": "CC_PARABOLA_AXIS_SYMMETRY, CC_ALGEBRAIC_FRACTION_SIMPLIFY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "INTERDEPENDENT: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "축 $x=2$ 대칭으로 두 $x$절편 $-1, 5$를 구해 $b=-4a, n=-9a$를 $a$로 나타낸 뒤 약분한다.",
       "decisiveStep": "$b=-4a$와 $n=-9a$를 $a$에 관한 식으로 표현해 $\\frac{b-n}{a}$에서 $a$를 약분한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "$a$의 값이 구체적으로 주어지지 않은 상태에서 $b, n$을 모두 $a$의 배수로 표현해 약분해야 하는 3단계 문항이다.",
+      "difficultyReason": "대칭성과 미정계수 비 계산이 필요한 서술형 난이도 3 문항이다. (문항 토큰 ax)",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_X_INTERCEPTS_DISTANCE",
-        "templateKey": null,
-        "why": "축과 $x$절편 거리로부터 $b, n$을 $a$로 표현해 비의 값을 구하는 문항이다."
+        "templateKey": "TPL_M3_FIND_CONSTANT_FROM_CHORD_LENGTH_ON_X_AXIS",
+        "why": "포물선의 대칭성과 $x$축 교점 사이의 거리로 미정계수 식의 값을 구하는 서술형 유형이다. (문항 토큰 ax)"
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     }
   ]
 }

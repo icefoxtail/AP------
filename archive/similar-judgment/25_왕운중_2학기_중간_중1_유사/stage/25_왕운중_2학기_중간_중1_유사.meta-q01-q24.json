@@ -3,7 +3,7 @@
   "requestId": "25_왕운중_2학기_중간_중1_유사-candidate-v1",
   "examUid": "25_왕운중_2학기_중간_중1_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m1/2mid/25_왕운중_2학기_중간_중1_유사.js",
-  "expectedSourceBlobSha1": "0faab18f549d2051f6c6a98fb009559205086b72",
+  "expectedSourceBlobSha1": "a5c5a2e9e3a10c24d55ed6518556028ad65003db",
   "expectedQuestionCount": 24,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -27,9 +27,9 @@
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
         "standardUnitOrder": 5,
-        "subUnitKey": "M1-05-POSITION_RELATION",
-        "subUnit": "위치 관계",
-        "conceptClusterKey": "POSITION_RELATION",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "conceptClusterKey": "BASIC_FIGURE",
         "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
         "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
         "crossConceptKeys": [],
@@ -48,20 +48,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-177"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "기본 도형",
+          "l3": "평행선과 각",
+          "l4": "동위각·엇각",
+          "recordId": "M1-RPM-177"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "기본 도형",
+        "rpmPrimaryL3": "평행선과 각",
+        "rpmPrimaryL4": "동위각·엇각",
+        "rpmPrimaryRecordId": "M1-RPM-177",
+        "difficultyBasis": "110도 동위각과 편각의 합 180도를 순차적으로 적용하여 x - y를 구한다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-BASIC_FIGURE: 다음 그림에서 두 직선 $l",
+          "curriculum": "M1-RPM-177: 평행선과 110도 동위각의 성질을 적용하여 각을 이동한다.",
+          "problemType": "평행선에서 110도 동위각과 보각 관계를 이용해 미지각을 구하는 유형이다.",
+          "difficulty": "110도 동위각과 편각의 합 180도를 순차적으로 적용하여 x - y를 구한다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "동위각의 크기가 같음을 이용하여 각 y를 구한 뒤 두 각의 합에서 각 x를 산출한다.",
       "decisiveStep": "세로 직선의 동위각 110도로부터 각 y=70도를 얻고 x+y=155도에서 x=85도를 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "평행선의 동위각 성질과 평각의 성질을 단계적으로 적용하는 2단계 문항",
+      "difficultyReason": "110도 동위각과 편각의 합 180도를 순차적으로 적용하여 x - y를 구한다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
         "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
-        "why": "평행선 상에서 동위각을 다른 교점으로 옮겨 각의 합과 차를 구하는 템플릿"
+        "why": "평행선에서 110도 동위각과 보각 관계를 이용해 미지각을 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_edbabee9ef7b1ca79d38e615c07ff469cb2f4eb61928c58251a9a5b8224cc2a3",
@@ -76,11 +108,11 @@
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
         "standardUnitOrder": 5,
-        "subUnitKey": "M1-05-POSITION_RELATION",
-        "subUnit": "위치 관계",
-        "conceptClusterKey": "POSITION_RELATION",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "conceptClusterKey": "BASIC_FIGURE",
         "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
-        "templateKey": "",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_POSITIONAL_ANGLE_SUM",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
@@ -97,20 +129,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-177"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "기본 도형",
+          "l3": "평행선과 각",
+          "l4": "동위각·엇각",
+          "recordId": "M1-RPM-177"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "기본 도형",
+        "rpmPrimaryL3": "평행선과 각",
+        "rpmPrimaryL4": "동위각·엇각",
+        "rpmPrimaryRecordId": "M1-RPM-177",
+        "difficultyBasis": "110도 둔각의 보각과 맞꼭지각으로부터 두 직선에 대한 동위각의 합을 도출한다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-BASIC_FIGURE: 다음 그림과 같이 가로선과",
+          "curriculum": "M1-RPM-177: 교점의 110도 각과 동위각의 위치 관계를 파악하여 합을 구한다.",
+          "problemType": "110도 각과 60도 각이 주어졌을 때 교점에서의 동위각 위치와 합을 판정하는 유형이다.",
+          "difficulty": "110도 둔각의 보각과 맞꼭지각으로부터 두 직선에 대한 동위각의 합을 도출한다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "각 직선을 자르는 직선으로 설정하여 두 비스듬한 직선 사이 각의 동위각을 찾아 합산한다.",
       "decisiveStep": "두 자르는 직선 기준 동위각이 각각 60도, 70도임을 파악하고 합 130도 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "동위각의 위치 정의를 정확히 이해하고 보각/맞꼭지각을 계산하여 합하는 2단계 문항",
+      "difficultyReason": "110도 둔각의 보각과 맞꼭지각으로부터 두 직선에 대한 동위각의 합을 도출한다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
-        "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_FIND_CORRESPONDING",
-        "why": "주어진 직선들의 교각 배치에서 특정 각의 동위각들을 찾아 그 합을 계산하는 템플릿"
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_POSITIONAL_ANGLE_SUM",
+        "why": "110도 각과 60도 각이 주어졌을 때 교점에서의 동위각 위치와 합을 판정하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_1c687e7c5360534d3d167a1c2699d317541fa83061a24c0a8568c1919436eb2d",
@@ -125,11 +189,11 @@
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
         "standardUnitOrder": 5,
-        "subUnitKey": "M1-05-POSITION_RELATION",
-        "subUnit": "위치 관계",
-        "conceptClusterKey": "POSITION_RELATION",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "conceptClusterKey": "BASIC_FIGURE",
         "problemTypeKey": "PT_M1_PARALLELISM_CONVERSE",
-        "templateKey": "",
+        "templateKey": "TPL_M1_PARALLELISM_CONVERSE_CORE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
@@ -146,20 +210,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-178"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "기본 도형",
+          "l3": "평행선과 각",
+          "l4": "평행선 조건",
+          "recordId": "M1-RPM-178"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "기본 도형",
+        "rpmPrimaryL3": "평행선과 각",
+        "rpmPrimaryL4": "평행선 조건",
+        "rpmPrimaryRecordId": "M1-RPM-178",
+        "difficultyBasis": "88도 맞꼭지각을 구하고 동위각이 같은 두 직선을 선택해야 한다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-BASIC_FIGURE: 세 직선 $l, m, n$과",
+          "curriculum": "M1-RPM-178: 88도 각의 동위각 크기가 같음을 확인하여 평행선 l // n 을 결정한다.",
+          "problemType": "88도 교각의 동위각과 맞꼭지각 크기가 일치함을 통해 평행선을 판정하는 유형이다.",
+          "difficulty": "88도 맞꼭지각을 구하고 동위각이 같은 두 직선을 선택해야 한다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "자르는 직선과 만나는 동위각의 크기를 비교하여 일치하는 두 직선 l과 n의 평행성을 확인한다.",
       "decisiveStep": "직선 p와의 교각에서 l과 n의 왼쪽 아래 동위각이 모두 88도로 일치함을 규명",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "맞꼭지각과 동위각의 일치 여부를 통해 평행한 직선 쌍을 정확히 도출하는 2단계 문항",
+      "difficultyReason": "88도 맞꼭지각을 구하고 동위각이 같은 두 직선을 선택해야 한다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_PARALLELISM_CONVERSE",
-        "templateKey": "TPL_M1_PARALLELISM_CONVERSE_ANGLE_COMPARISON",
-        "why": "교각들의 크기를 대조하여 평행 조건을 충족하는 직선 쌍을 식별하는 템플릿"
+        "templateKey": "TPL_M1_PARALLELISM_CONVERSE_CORE",
+        "why": "88도 교각의 동위각과 맞꼭지각 크기가 일치함을 통해 평행선을 판정하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_9c59853206cc458b457699382b93b7a337729a434c522651e1c30d14e2651b4d",
@@ -174,11 +270,11 @@
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
         "standardUnitOrder": 5,
-        "subUnitKey": "M1-05-POSITION_RELATION",
-        "subUnit": "위치 관계",
-        "conceptClusterKey": "BASIC_CONSTRUCTION",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "conceptClusterKey": "BASIC_FIGURE",
         "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
-        "templateKey": "",
+        "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -195,20 +291,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-185"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "작도와 합동",
+          "l3": "기본 작도",
+          "l4": "선분·각의 이동",
+          "recordId": "M1-RPM-185"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "작도와 합동",
+        "rpmPrimaryL3": "기본 작도",
+        "rpmPrimaryL4": "선분·각의 이동",
+        "rpmPrimaryRecordId": "M1-RPM-185",
+        "difficultyBasis": "컴퍼스로 선분 AB 의 길이를 재어 호를 그린 원리에 따라 참인 명제를 찾는다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-BASIC_FIGURE: $\\angle XOY$와 크",
+          "curriculum": "M1-RPM-185: 크기가 같은 각 작도에서 선분 AB 와 호의 교점 거리를 복사한다.",
+          "problemType": "각의 작도 절차에서 컴퍼스로 옮긴 선분 AB 와 CD 의 길이 관계를 확인하는 유형이다.",
+          "difficulty": "컴퍼스로 선분 AB 의 길이를 재어 호를 그린 원리에 따라 참인 명제를 찾는다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "컴퍼스를 사용하여 두 점 사이의 거리를 옮기는 작도 단계로부터 선분의 길이가 같음을 판정한다.",
       "decisiveStep": "각의 폭을 측정하여 옮기는 단계에서 선분 AB = 선분 CD가 성립함을 확인",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "작도 도구(컴퍼스)의 용도와 변의 길이 보존 관계를 직관적으로 파악하는 2단계 문항",
+      "difficultyReason": "컴퍼스로 선분 AB 의 길이를 재어 호를 그린 원리에 따라 참인 명제를 찾는다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
-        "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ANGLE_COPY_PROPERTIES",
-        "why": "크기가 같은 각의 작도 과정에서 길이가 같은 선분과 순서의 타당성을 평가하는 템플릿"
+        "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
+        "why": "각의 작도 절차에서 컴퍼스로 옮긴 선분 AB 와 CD 의 길이 관계를 확인하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_de2e461046bdaf792cf8cdd1f077ef3ab1358fbfcd0422750f400ae4c1eaea8b",
@@ -227,7 +355,7 @@
         "subUnit": "점·선·면과 각",
         "conceptClusterKey": "BASIC_FIGURE",
         "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
-        "templateKey": "",
+        "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_INTEGER_PERIMETER_CASES",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
@@ -244,20 +372,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-188"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "작도와 합동",
+          "l3": "삼각형의 작도",
+          "l4": "세 변 조건",
+          "recordId": "M1-RPM-188"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "작도와 합동",
+        "rpmPrimaryL3": "삼각형의 작도",
+        "rpmPrimaryL4": "세 변 조건",
+        "rpmPrimaryRecordId": "M1-RPM-188",
+        "difficultyBasis": "세 변의 합 18 과 각 변이 3 이상인 조건을 이용해 c의 범위를 구하고 순서쌍을 센다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-BASIC_FIGURE: 길이가 $18,\\mathrm",
+          "curriculum": "M1-RPM-188: 둘레 18 과 가장 긴 변 c < 9 조건을 통해 가능한 삼각형 조합을 분류한다.",
+          "problemType": "둘레가 18 cm 인 삼각형의 세 변 조건과 삼각부등식을 만족하는 자연수 해의 개수를 세는 유형이다.",
+          "difficulty": "세 변의 합 18 과 각 변이 3 이상인 조건을 이용해 c의 범위를 구하고 순서쌍을 센다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "가장 긴 변 c의 범위(6 <= c < 9)를 설정하고 각 경우별 (a, b) 자연수 순서쌍을 조사한다.",
       "decisiveStep": "c=6(1개), c=7(2개), c=8(3개)로 분류하여 총 6개의 삼각형 형성 가능성 확인",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "삼각형 부등식과 세 변의 합 조건을 연립하여 가능한 변의 순서쌍을 빠짐없이 계수하는 3단계 문항",
+      "difficultyReason": "세 변의 합 18 과 각 변이 3 이상인 조건을 이용해 c의 범위를 구하고 순서쌍을 센다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
-        "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_INTEGER_COUNT",
-        "why": "둘레의 길이가 주어진 삼각형에서 세 변의 길이 조건과 자연수 제약을 만족하는 개수를 구하는 템플릿"
+        "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_INTEGER_PERIMETER_CASES",
+        "why": "둘레가 18 cm 인 삼각형의 세 변 조건과 삼각부등식을 만족하는 자연수 해의 개수를 세는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_dbfc11c963b0f59385127523435558160efc0e88f4ce447e9143d3a79dd1927d",
@@ -272,15 +432,15 @@
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
         "standardUnitOrder": 5,
-        "subUnitKey": "M1-05-POSITION_RELATION",
-        "subUnit": "위치 관계",
-        "conceptClusterKey": "POSITION_RELATION",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "conceptClusterKey": "BASIC_FIGURE",
         "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
-        "templateKey": "",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 3,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 6,
@@ -293,20 +453,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-177"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "기본 도형",
+          "l3": "평행선과 각",
+          "l4": "동위각·엇각",
+          "recordId": "M1-RPM-177"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "기본 도형",
+        "rpmPrimaryL3": "평행선과 각",
+        "rpmPrimaryL4": "동위각·엇각",
+        "rpmPrimaryRecordId": "M1-RPM-177",
+        "difficultyBasis": "130도와 75도의 두 꼭짓점에 평행 보조선을 그어 a + b = 25도를 유도한다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-BASIC_FIGURE: 두 직선 $l, m$이 서로",
+          "curriculum": "M1-RPM-177: 보조선을 긋고 130도 꺾인 점의 엇각 관계를 연속 적용한다.",
+          "problemType": "평행선 사이의 꺾인 선 130도와 75도에서 보조선을 그어 각의 합을 계산하는 유형이다.",
+          "difficulty": "130도와 75도의 두 꼭짓점에 평행 보조선을 그어 a + b = 25도를 유도한다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "각 꺾인 점에 평행선을 그어 엇각으로 각의 표현식을 전달하여 a + b의 값을 구한다.",
       "decisiveStep": "두 꼭짓점에서 보조선 위아래 각도를 a로 표현하여 b = 25도 - a 관계식을 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "보조선 2개를 도입하여 엇각과 보각을 다단계로 연계하는 3단계 문항",
+      "difficultyReason": "130도와 75도의 두 꼭짓점에 평행 보조선을 그어 a + b = 25도를 유도한다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
-        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_ZIGZAG_AUXILIARY",
-        "why": "복수 개의 꺾인 점을 갖는 평행선 구조에서 평행 보조선을 도입하여 각의 합을 계산하는 템플릿"
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
+        "why": "평행선 사이의 꺾인 선 130도와 75도에서 보조선을 그어 각의 합을 계산하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_49a8820e10db02757c94e394513f9573d881c7f5effd0e21298d656ab57a37f1",
@@ -325,7 +517,7 @@
         "subUnit": "점·선·면과 각",
         "conceptClusterKey": "BASIC_FIGURE",
         "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
-        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_CORRESPONDENCE",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -342,20 +534,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-192"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "작도와 합동",
+          "l3": "삼각형의 합동",
+          "l4": "SAS 합동",
+          "recordId": "M1-RPM-192"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "작도와 합동",
+        "rpmPrimaryL3": "삼각형의 합동",
+        "rpmPrimaryL4": "SAS 합동",
+        "rpmPrimaryRecordId": "M1-RPM-192",
+        "difficultyBasis": "삼각형 합동 정의에 따라 대응변 x=12와 105도를 포함한 내각합으로 y=30을 쉽게 구한다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-BASIC_FIGURE: 두 삼각형 $ABC$와 $F",
+          "curriculum": "M1-RPM-192: 대응각과 105도 내각 합을 이용해 y=30을 구하고 x와 더한다.",
+          "problemType": "합동인 두 삼각형의 대응변 x = 12와 각 105도 및 45도로부터 내각합을 적용하는 유형이다.",
+          "difficulty": "삼각형 합동 정의에 따라 대응변 x=12와 105도를 포함한 내각합으로 y=30을 쉽게 구한다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "합동인 두 삼각형의 꼭짓점 대응 관계를 대조하여 미지수 변의 길이와 각의 크기를 결정한다.",
       "decisiveStep": "AB 대응변 FE로부터 x=12를 구하고 각 D=45도로부터 각 F=30도(y=30) 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "삼각형 합동 기호의 알파벳 대응 규칙을 확인하여 값을 구하는 1단계 기본 문항",
+      "difficultyReason": "삼각형 합동 정의에 따라 대응변 x=12와 105도를 포함한 내각합으로 y=30을 쉽게 구한다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
-        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_CORRESPONDENCE",
-        "why": "합동 기호 표기법에서 대응점 순서를 추적하여 대응변과 대응각의 수치를 구하는 템플릿"
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
+        "why": "합동인 두 삼각형의 대응변 x = 12와 각 105도 및 45도로부터 내각합을 적용하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_fa709ed4f465c8a6de8cefbeaec931dd62a46dbd4d0c379a5c067d1080b2ce2a",
@@ -374,7 +598,7 @@
         "subUnit": "점·선·면과 각",
         "conceptClusterKey": "BASIC_FIGURE",
         "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
-        "templateKey": "",
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -391,20 +615,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-192"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "작도와 합동",
+          "l3": "삼각형의 합동",
+          "l4": "SAS 합동",
+          "recordId": "M1-RPM-192"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "작도와 합동",
+        "rpmPrimaryL3": "삼각형의 합동",
+        "rpmPrimaryL4": "SAS 합동",
+        "rpmPrimaryRecordId": "M1-RPM-192",
+        "difficultyBasis": "두 변 AB, BC의 끼인각이 각 B임을 확인하여 SAS 합동 조건을 선택한다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-BASIC_FIGURE: 두 삼각형 $ABC$와 $D",
+          "curriculum": "M1-RPM-192: 두 대응변 사이의 끼인각이 같아야 SAS 합동이 됨을 확인한다.",
+          "problemType": "두 변이 같을 때 끼인각 조건에 따른 SAS 합동 판정을 묻는 유형이다.",
+          "difficulty": "두 변 AB, BC의 끼인각이 각 B임을 확인하여 SAS 합동 조건을 선택한다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "주어진 두 변의 끼인각을 찾아 각의 일치 조건과 SAS 합동 명칭의 일치성을 판정한다.",
       "decisiveStep": "AB와 BC의 끼인각이 각 B, DE와 EF의 끼인각이 각 E임을 확인하여 SAS 합동 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "두 변 사이의 끼인각 개념과 SAS 합동 정의를 곧바로 대조하는 1단계 기본 문항",
+      "difficultyReason": "두 변 AB, BC의 끼인각이 각 B임을 확인하여 SAS 합동 조건을 선택한다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
-        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_MISSING_CONDITION",
-        "why": "합동을 완성하기 위해 필요한 변이나 각의 조건 및 대응 합동 명칭을 선별하는 템플릿"
+        "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+        "why": "두 변이 같을 때 끼인각 조건에 따른 SAS 합동 판정을 묻는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_42a568ff4f76deb7ff10fe78a3eabbe5d127e8fc21a2358c511b70d8f7e76dac",
@@ -423,11 +679,11 @@
         "subUnit": "점·선·면과 각",
         "conceptClusterKey": "BASIC_FIGURE",
         "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
-        "templateKey": "",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 9,
@@ -440,20 +696,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-192"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "작도와 합동",
+          "l3": "삼각형의 합동",
+          "l4": "SAS 합동",
+          "recordId": "M1-RPM-192"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "작도와 합동",
+        "rpmPrimaryL3": "삼각형의 합동",
+        "rpmPrimaryL4": "SAS 합동",
+        "rpmPrimaryRecordId": "M1-RPM-192",
+        "difficultyBasis": "정삼각형의 성질로부터 각 ACE=120도를 구하고 보기의 100도 오류를 식별해야 한다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-BASIC_FIGURE: 선분 $AB$ 위의 한 점",
+          "curriculum": "M1-RPM-192: 정삼각형의 60도 각을 이용해 120도 끼인각과 SAS 합동을 적용한다.",
+          "problemType": "한 직선 위의 두 정삼각형에서 SAS 합동을 유도하고 각 100도 선지의 거짓을 판별하는 유형이다.",
+          "difficulty": "정삼각형의 성질로부터 각 ACE=120도를 구하고 보기의 100도 오류를 식별해야 한다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "정삼각형 각과 변의 성질로 삼각형 ACE와 삼각형 DCB의 합동을 확인하고 각 ACE=120도임을 밝힌다.",
       "decisiveStep": "각 ACE = 60도 + 60도 = 120도임을 계산하여 선지 ②(100도)의 오류 판정",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "정삼각형의 60도 각 관계를 종합하여 두 삼각형의 합동을 입증하고 대응각을 계산하는 4단계 문항",
+      "difficultyReason": "정삼각형의 성질로부터 각 ACE=120도를 구하고 보기의 100도 오류를 식별해야 한다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
-        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_ROTATION",
-        "why": "공유된 꼭짓점을 갖는 정삼각형 쌍에서 회전 합동 구조를 파악하여 변과 각의 성질을 검증하는 템플릿"
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
+        "why": "한 직선 위의 두 정삼각형에서 SAS 합동을 유도하고 각 100도 선지의 거짓을 판별하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_d3dc1c7c38a196f324437fdbd5fc2307ec47ec2079cf65c5e5ca14743871b8ca",
@@ -472,7 +760,7 @@
         "subUnit": "그래프와 관계",
         "conceptClusterKey": "GRAPH_RELATION",
         "problemTypeKey": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
-        "templateKey": "",
+        "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
@@ -489,20 +777,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-167"
+        ],
+        "rpmPrimary": {
+          "l1": "좌표평면과 그래프",
+          "l2": "정비례와 반비례",
+          "l3": "정비례",
+          "l4": "정비례 관계식",
+          "recordId": "M1-RPM-167"
+        },
+        "rpmPrimaryL1": "좌표평면과 그래프",
+        "rpmPrimaryL2": "정비례와 반비례",
+        "rpmPrimaryL3": "정비례",
+        "rpmPrimaryL4": "정비례 관계식",
+        "rpmPrimaryRecordId": "M1-RPM-167",
+        "difficultyBasis": "넓이 48 에서 xy = 48 은 반비례 관계임을 바로 알 수 있다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-04 / M1-04-GRAPH_RELATION: 다음 중 $x$와 $y$ 사",
+          "curriculum": "M1-RPM-167: y = ax 꼴과 y = 48/x 꼴을 비교하여 정비례 여부를 판정한다.",
+          "problemType": "넓이 48 인 직사각형의 가로와 세로가 반비례 관계임을 구분하는 유형이다.",
+          "difficulty": "넓이 48 에서 xy = 48 은 반비례 관계임을 바로 알 수 있다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "각 보기의 실생활 관계를 수식으로 표현하여 y=ax 꼴이 아닌 반비례 식을 선별한다.",
       "decisiveStep": "직사각형의 넓이 관계식 xy=48(y=48/x)이 반비례 관계임을 확인",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "정비례와 반비례의 표준 형태를 비교하여 비례 관계를 직관적으로 판별하는 1단계 기본 문항",
+      "difficultyReason": "넓이 48 에서 xy = 48 은 반비례 관계임을 바로 알 수 있다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
-        "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CONTEXT",
-        "why": "문장제 상황을 관계식으로 모델링하여 정비례와 반비례를 분류하는 템플릿"
+        "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE",
+        "why": "넓이 48 인 직사각형의 가로와 세로가 반비례 관계임을 구분하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_18d685c98a86382c304fae3911fe10b7f9cfe7d23d53dd1c0eb7e5644bed4e2a",
@@ -521,7 +841,7 @@
         "subUnit": "좌표평면",
         "conceptClusterKey": "COORDINATE_PLANE",
         "problemTypeKey": "PT_M1_QUADRANT_SIGN_DEDUCTION",
-        "templateKey": "",
+        "templateKey": "TPL_M1_QUADRANT_SIGN_DEDUCTION_GRAPH_SIGN_QUADRANTS",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
@@ -538,20 +858,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-168"
+        ],
+        "rpmPrimary": {
+          "l1": "좌표평면과 그래프",
+          "l2": "정비례와 반비례",
+          "l3": "정비례",
+          "l4": "정비례 그래프",
+          "recordId": "M1-RPM-168"
+        },
+        "rpmPrimaryL1": "좌표평면과 그래프",
+        "rpmPrimaryL2": "정비례와 반비례",
+        "rpmPrimaryL3": "정비례",
+        "rpmPrimaryL4": "정비례 그래프",
+        "rpmPrimaryRecordId": "M1-RPM-168",
+        "difficultyBasis": "y=ax 에서 a<0, b<0 조건으로부터 각 보기의 비례계수 ab 등의 부호를 판정해야 한다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-04 / M1-04-COORDINATE_PLANE: 정비례 관계 $y=ax$와",
+          "curriculum": "M1-RPM-168: 정비례 y=ax 와 반비례의 부호 조건에서 제1, 3사분면을 지나는 식을 선별한다.",
+          "problemType": "비례상수 a, b 의 부호로부터 ab 등 각 그래프가 지나는 사분면을 추론하는 유형이다.",
+          "difficulty": "y=ax 에서 a<0, b<0 조건으로부터 각 보기의 비례계수 ab 등의 부호를 판정해야 한다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "주어진 두 식으로부터 a<0, b<0을 유도하고 각 보기의 비례상수 부호를 분석한다.",
       "decisiveStep": "-(a+b)>0임을 파악하여 제1, 3사분면을 지나는 ㄱ, ㄷ, ㄹ을 정확히 선별",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "부호의 곱과 합 성질을 이용하여 그래프의 지나는 사분면을 종합 판단하는 2단계 문항",
+      "difficultyReason": "y=ax 에서 a<0, b<0 조건으로부터 각 보기의 비례계수 ab 등의 부호를 판정해야 한다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_QUADRANT_SIGN_DEDUCTION",
-        "templateKey": "TPL_M1_QUADRANT_SIGN_DEDUCTION_COMPOSITE_PARAMETERS",
-        "why": "계수들의 부호 관계로부터 복합 파라미터가 부여된 그래프의 사분면 통과 여부를 판단하는 템플릿"
+        "templateKey": "TPL_M1_QUADRANT_SIGN_DEDUCTION_GRAPH_SIGN_QUADRANTS",
+        "why": "비례상수 a, b 의 부호로부터 ab 등 각 그래프가 지나는 사분면을 추론하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_0998a2297d584ee5628b20f6f7dc073dc33e5c3ec97176e7ab36d0674a062190",
@@ -587,20 +939,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-170"
+        ],
+        "rpmPrimary": {
+          "l1": "좌표평면과 그래프",
+          "l2": "정비례와 반비례",
+          "l3": "반비례",
+          "l4": "반비례 그래프",
+          "recordId": "M1-RPM-170"
+        },
+        "rpmPrimaryL1": "좌표평면과 그래프",
+        "rpmPrimaryL2": "정비례와 반비례",
+        "rpmPrimaryL3": "반비례",
+        "rpmPrimaryL4": "반비례 그래프",
+        "rpmPrimaryRecordId": "M1-RPM-170",
+        "difficultyBasis": "보일의 법칙 xy = k 를 반비례 관계와 제1사분면 감소 곡선으로 연결한다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-04 / M1-04-GRAPH_RELATION: 어느 닫힌 용기 안에서 온도",
+          "curriculum": "M1-RPM-170: 곱이 일정한 반비례 관계식 xy = k 의 제1사분면 곡선 특징을 확인한다.",
+          "problemType": "보일의 법칙 xy = k 상황을 반비례 그래프의 특징으로 해석하는 유형이다.",
+          "difficulty": "보일의 법칙 xy = k 를 반비례 관계와 제1사분면 감소 곡선으로 연결한다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "곱이 일정함을 통해 반비례 관계식을 세우고 제1사분면에서의 감소 곡선 형태를 도출한다.",
       "decisiveStep": "xy=k(k>0)로부터 제1사분면에서 x 증가 시 y 감소 곡선 형태 식별",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "반비례 관계의 정의와 그래프의 볼록 곡선 거동을 연결하는 2단계 문항",
+      "difficultyReason": "보일의 법칙 xy = k 를 반비례 관계와 제1사분면 감소 곡선으로 연결한다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
         "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_RECIPROCAL_GRAPH",
-        "why": "물리적 맥락에서 반비례 관계를 식별하고 해당 그래프의 기하학적 거동을 선택하는 템플릿"
+        "why": "보일의 법칙 xy = k 상황을 반비례 그래프의 특징으로 해석하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_e6f54f4bcc27699463e6cb2a3fd61747a9dccadbd3e25d1debcd532df10e8513",
@@ -615,11 +999,11 @@
         "standardUnitKey": "M1-04",
         "standardUnit": "좌표평면과 그래프",
         "standardUnitOrder": 4,
-        "subUnitKey": "M1-04-COORDINATE_PLANE",
-        "subUnit": "좌표평면",
-        "conceptClusterKey": "COORDINATE_PLANE",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "conceptClusterKey": "GRAPH_RELATION",
         "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
-        "templateKey": "",
+        "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -636,20 +1020,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-167"
+        ],
+        "rpmPrimary": {
+          "l1": "좌표평면과 그래프",
+          "l2": "정비례와 반비례",
+          "l3": "정비례",
+          "l4": "정비례 관계식",
+          "recordId": "M1-RPM-167"
+        },
+        "rpmPrimaryL1": "좌표평면과 그래프",
+        "rpmPrimaryL2": "정비례와 반비례",
+        "rpmPrimaryL3": "정비례",
+        "rpmPrimaryL4": "정비례 관계식",
+        "rpmPrimaryRecordId": "M1-RPM-167",
+        "difficultyBasis": "정비례식 y = -1/6 x 를 구하고 p, q, r을 계산하여 곱 24 를 도출한다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-04 / M1-04-GRAPH_RELATION: 다음 표에서 $y$가 $x$",
+          "curriculum": "M1-RPM-167: 정비례 상수 a = -1/6 을 찾아 표의 빈칸을 채우고 곱 24 를 구한다.",
+          "problemType": "표로 주어진 정비례 관계에서 상수 p, q, r 을 구하고 곱 24 를 계산하는 유형이다.",
+          "difficulty": "정비례식 y = -1/6 x 를 구하고 p, q, r을 계산하여 곱 24 를 도출한다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "x=-3, y=1/2로부터 a=-1/6을 구하고 표의 각 값을 대입하여 p, q, r을 계산한다.",
       "decisiveStep": "p=-6, q=-1/3, r=12를 구한 뒤 세 값의 곱 24 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "정비례 관계식을 유도하고 각 열의 미지수를 차례로 구하여 곱하는 2단계 문항",
+      "difficultyReason": "정비례식 y = -1/6 x 를 구하고 p, q, r을 계산하여 곱 24 를 도출한다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
-        "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TABLE_EVAL",
-        "why": "표로 주어진 정비례 대응에서 비례상수를 찾아 빈칸의 미지수들을 곱하는 템플릿"
+        "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION",
+        "why": "표로 주어진 정비례 관계에서 상수 p, q, r 을 구하고 곱 24 를 계산하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_417f0d6523dc4388c0d40a8f6a1e2f728f39d6ae09898026e274963681de40fc",
@@ -661,13 +1077,13 @@
         "curriculum": "2022",
         "curriculumKey": "2022",
         "courseKey": "MID-MATH-1",
-        "standardUnitKey": "M1-06",
-        "standardUnit": "평면도형의 성질",
-        "standardUnitOrder": 6,
-        "subUnitKey": "M1-06-POLYGON_CIRCLE",
-        "subUnit": "다각형과 원",
-        "conceptClusterKey": "BASIC_FIGURE",
-        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "standardUnitKey": "M1-05",
+        "standardUnit": "기본도형",
+        "standardUnitOrder": 5,
+        "subUnitKey": "M1-05-POSITION_RELATION",
+        "subUnit": "위치 관계",
+        "conceptClusterKey": "POSITION_RELATION",
+        "problemTypeKey": "PT_M1_PERP_DISTANCE",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
@@ -685,20 +1101,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-183"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "위치 관계",
+          "l3": "수직과 거리",
+          "l4": "수선과 수선의 발",
+          "recordId": "M1-RPM-183"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "위치 관계",
+        "rpmPrimaryL3": "수직과 거리",
+        "rpmPrimaryL4": "수선과 수선의 발",
+        "rpmPrimaryRecordId": "M1-RPM-183",
+        "difficultyBasis": "수직이등분선은 중점을 지나야 하므로 선분 AO 의 끝점을 지나는 직선 BD는 거짓이다. AC",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-POSITION_RELATION: 두 대각선 $AC$와 $BD",
+          "curriculum": "M1-RPM-183: 선분 AC 수선의 발과 수직이등분선의 정의를 정확히 판별한다.",
+          "problemType": "수직이등분선과 수선의 발, 점과 직선 사이의 거리 진술의 참·거짓을 선분 AC 등에 대해 판단하는 유형이다.",
+          "difficulty": "수직이등분선은 중점을 지나야 하므로 선분 AO 의 끝점을 지나는 직선 BD는 거짓이다. AC",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "수직이등분선의 정의(선분의 중점을 지나고 수직)를 선분 AO와 대조하여 판정한다.",
       "decisiveStep": "직선 BD가 선분 AO의 중점을 지나지 않음을 지적하여 선지 ⑤의 오류 확인",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "수직이등분선과 점과 직선 사이의 거리 정의를 정확히 판별하는 2단계 문항",
+      "difficultyReason": "수직이등분선은 중점을 지나야 하므로 선분 AO 의 끝점을 지나는 직선 BD는 거짓이다. AC",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_QUADRILATERAL_PROPERTIES_DIAGONAL_ORTHOGONAL",
-        "why": "대각선이 직교하는 평행사변형 구조에서 기하학적 용어 정의의 정합성을 검증하는 템플릿"
+        "problemTypeKey": "PT_M1_PERP_DISTANCE",
+        "templateKey": null,
+        "why": "수직이등분선과 수선의 발, 점과 직선 사이의 거리 진술의 참·거짓을 선분 AC 등에 대해 판단하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_1bae749a889b52fe71249063f344a399d6bcf22d5f82b10f72296826c0b4c4c7",
@@ -717,11 +1165,11 @@
         "subUnit": "점·선·면과 각",
         "conceptClusterKey": "BASIC_FIGURE",
         "problemTypeKey": "PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT",
-        "templateKey": "",
+        "templateKey": "TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_MULTI_OBJECT_COUNT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 3,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 15,
@@ -734,20 +1182,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-173"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "기본 도형",
+          "l3": "점·선·면",
+          "l4": "직선·반직선·선분",
+          "recordId": "M1-RPM-173"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "기본 도형",
+        "rpmPrimaryL3": "점·선·면",
+        "rpmPrimaryL4": "직선·반직선·선분",
+        "rpmPrimaryRecordId": "M1-RPM-173",
+        "difficultyBasis": "직선 5개, 반직선 14개, 선분 10개를 체계적으로 세어 합 29 를 계산해야 한다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-BASIC_FIGURE: 직선 $l$ 위에 서로 다른",
+          "curriculum": "M1-RPM-173: 직선, 반직선, 선분의 정의에 따라 개수를 분류하여 29 를 도출한다.",
+          "problemType": "공선점과 외부 점에서 결정되는 직선, 반직선, 선분의 개수를 세어 합 29 를 구하는 유형이다.",
+          "difficulty": "직선 5개, 반직선 14개, 선분 10개를 체계적으로 세어 합 29 를 계산해야 한다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "직선(5개), 반직선(14개), 선분(10개)의 성질을 나누어 계산한 뒤 총합 29를 도출한다.",
       "decisiveStep": "직선 l 위의 반직선이 6개이고 P 관련 반직선이 8개임을 구분하여 b=14 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "반직선의 시작점과 방향 조건을 정확히 구별하여 빠짐없이 계수하는 3단계 문항",
+      "difficultyReason": "직선 5개, 반직선 14개, 선분 10개를 체계적으로 세어 합 29 를 계산해야 한다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT",
-        "templateKey": "TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_COLLINEAR_EXTERNAL",
-        "why": "공선점들과 외부점의 조합으로 형성되는 직선, 반직선, 선분의 개수를 각각 계수하는 템플릿"
+        "templateKey": "TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_MULTI_OBJECT_COUNT",
+        "why": "공선점과 외부 점에서 결정되는 직선, 반직선, 선분의 개수를 세어 합 29 를 구하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_97f9a229bd8590cf5e158e4b7e905e3e3b7f6c26afbed728560c40ea5b8bfc16",
@@ -766,7 +1246,7 @@
         "subUnit": "위치 관계",
         "conceptClusterKey": "POSITION_RELATION",
         "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
-        "templateKey": "",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_EDGE_FACE_INCIDENCE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -783,20 +1263,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-179"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "위치 관계",
+          "l3": "평면에서의 위치 관계",
+          "l4": "두 직선의 위치 관계",
+          "recordId": "M1-RPM-179"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "위치 관계",
+        "rpmPrimaryL3": "평면에서의 위치 관계",
+        "rpmPrimaryL4": "두 직선의 위치 관계",
+        "rpmPrimaryRecordId": "M1-RPM-179",
+        "difficultyBasis": "교선 AB를 구하고 꼭짓점 A에서 만나는 모서리 AE 를 바로 선택할 수 있다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-POSITION_RELATION: 직육면체 $ABCD-EFGH",
+          "curriculum": "M1-RPM-179: 공유 모서리 AB와 꼭짓점에서 만나는 모서리 AE 를 식별한다.",
+          "problemType": "직육면체에서 두 면의 교선인 모서리 AB 와 한 점에서 만나는 모서리 AE 를 찾는 유형이다.",
+          "difficulty": "교선 AB를 구하고 꼭짓점 A에서 만나는 모서리 AE 를 바로 선택할 수 있다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "두 면의 공통 모서리 AB를 교선으로 찾고 점 A에서 만나는 모서리 AE를 식별한다.",
       "decisiveStep": "교선 AB의 양 끝점 A, B에 접속된 모서리 중 선지에 존재하는 모서리 AE 선택",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "직육면체 모서리의 교선 식별과 꼭짓점 공유 모서리를 가려내는 1단계 기본 문항",
+      "difficultyReason": "교선 AB를 구하고 꼭짓점 A에서 만나는 모서리 AE 를 바로 선택할 수 있다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
-        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_INTERSECTING_EDGES",
-        "why": "입체도형에서 두 면의 교선을 구하고 해당 모서리와 만나는 모서리를 선별하는 템플릿"
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_EDGE_FACE_INCIDENCE",
+        "why": "직육면체에서 두 면의 교선인 모서리 AB 와 한 점에서 만나는 모서리 AE 를 찾는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_4c34aa2d6810e69789ddcbb33e29732485740cbb177c6a8d407216e257e506e8",
@@ -815,11 +1327,11 @@
         "subUnit": "점·선·면과 각",
         "conceptClusterKey": "BASIC_FIGURE",
         "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
-        "templateKey": "",
+        "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 3,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 17,
@@ -832,20 +1344,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-174"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "기본 도형",
+          "l3": "점·선·면",
+          "l4": "두 점 사이의 거리와 중점",
+          "recordId": "M1-RPM-174"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "기본 도형",
+        "rpmPrimaryL3": "점·선·면",
+        "rpmPrimaryL4": "두 점 사이의 거리와 중점",
+        "rpmPrimaryRecordId": "M1-RPM-174",
+        "difficultyBasis": "선분의 비례 배분과 두 번의 중점 조건을 적용하여 24 cm 를 계산한다. 12",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-BASIC_FIGURE: 직선 위의 네 점 $A, B",
+          "curriculum": "M1-RPM-174: 비례식과 중점 성질을 단계적으로 적용하여 12 cm 로부터 BC의 길이를 구한다.",
+          "problemType": "선분의 중점 조건과 12 cm 및 4:3 비를 이용하여 선분 BC의 길이를 계산하는 유형이다.",
+          "difficulty": "선분의 비례 배분과 두 번의 중점 조건을 적용하여 24 cm 를 계산한다. 12",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "M'M과 MB의 비로 M'B=21을 얻어 AB=42, AM=33, AC=66을 유도하여 BC=24를 산출한다.",
       "decisiveStep": "AM=33으로부터 AC=66을 유도하고 AB=42를 차감하여 BC=24cm 도출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "중점의 2배 관계와 선분의 덧셈 및 비례식을 체계적으로 연립하는 3단계 문항",
+      "difficultyReason": "선분의 비례 배분과 두 번의 중점 조건을 적용하여 24 cm 를 계산한다. 12",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
-        "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_NESTED_MIDPOINTS",
-        "why": "선분 위의 중점들이 중첩된 구조에서 비례 배분을 통해 최종 선분 길이를 계산하는 템플릿"
+        "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
+        "why": "선분의 중점 조건과 12 cm 및 4:3 비를 이용하여 선분 BC의 길이를 계산하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_d339b148740f0ce2f405d33529bb3d674900d790abe5c31bef6fff66f7260c95",
@@ -864,7 +1408,7 @@
         "subUnit": "위치 관계",
         "conceptClusterKey": "POSITION_RELATION",
         "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
-        "templateKey": "",
+        "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_LINE_PLANE_NORMAL_TRANSFER",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
@@ -881,20 +1425,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-181"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "위치 관계",
+          "l3": "공간에서의 위치 관계",
+          "l4": "직선과 평면의 위치 관계",
+          "recordId": "M1-RPM-181"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "위치 관계",
+        "rpmPrimaryL3": "공간에서의 위치 관계",
+        "rpmPrimaryL4": "직선과 평면의 위치 관계",
+        "rpmPrimaryRecordId": "M1-RPM-181",
+        "difficultyBasis": "aligned 공간에서 직선과 평면의 다양한 위치 관계의 반례를 점검해야 한다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-POSITION_RELATION: 공간에서 서로 다른 두 직선",
+          "curriculum": "M1-RPM-181: aligned 직육면체 모델을 이용하여 직선과 평면의 수직 전달 성질을 검증한다.",
+          "problemType": "aligned 수직 전달 원리에 따라 공간에서 직선과 평면의 위치 관계를 판별하는 유형이다.",
+          "difficulty": "aligned 공간에서 직선과 평면의 다양한 위치 관계의 반례를 점검해야 한다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "평행한 두 평면에 대하여 한 평면에 수직인 직선은 다른 평면과도 수직임을 판정한다.",
       "decisiveStep": "P || Q 조건에서 l ⊥ Q이면 l ⊥ P가 필연적으로 성립함을 확인",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "공간도형의 기본 공리와 직육면체 모델을 활용하여 반례를 가려내는 3단계 문항",
+      "difficultyReason": "aligned 공간에서 직선과 평면의 다양한 위치 관계의 반례를 점검해야 한다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
-        "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_LOGICAL_DEDUCTION",
-        "why": "공간에서 두 직선과 두 평면 사이의 수직/평행 조건의 참·거짓을 판별하는 템플릿"
+        "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_LINE_PLANE_NORMAL_TRANSFER",
+        "why": "aligned 수직 전달 원리에 따라 공간에서 직선과 평면의 위치 관계를 판별하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_002e68549965a09566aa57174e56c42690ccd2975e4fff681157fb0d32f1da7a",
@@ -913,7 +1489,7 @@
         "subUnit": "위치 관계",
         "conceptClusterKey": "POSITION_RELATION",
         "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
-        "templateKey": "",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_AND_FACE_COUNT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
@@ -930,20 +1506,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-181"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "위치 관계",
+          "l3": "공간에서의 위치 관계",
+          "l4": "직선과 평면의 위치 관계",
+          "recordId": "M1-RPM-181"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "위치 관계",
+        "rpmPrimaryL3": "공간에서의 위치 관계",
+        "rpmPrimaryL4": "직선과 평면의 위치 관계",
+        "rpmPrimaryRecordId": "M1-RPM-181",
+        "difficultyBasis": "모서리 AB와 만나지도 평행하지도 않은 꼬인 위치 4개와 평행 3개를 정확히 센다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-POSITION_RELATION: 직육면체 $ABCD-EFGH",
+          "curriculum": "M1-RPM-181: 공간 도형에서 모서리 AB와의 꼬인 위치 및 평행 모서리 수를 구한다.",
+          "problemType": "직육면체의 꼬인 위치 모서리 AB 기준 개수와 삼각기둥의 면 평행 모서리를 세는 유형이다.",
+          "difficulty": "모서리 AB와 만나지도 평행하지도 않은 꼬인 위치 4개와 평행 3개를 정확히 센다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "직육면체에서 만나는/평행한 모서리를 제외하여 꼬인 위치 4개를 구하고, 삼각기둥에서 평행한 모서리 3개를 센다.",
       "decisiveStep": "직육면체 모서리 AB의 꼬인 위치 4개와 삼각기둥 밑면 평행 모서리 3개를 정확히 계수",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "입체도형에서 꼬인 위치 정의와 면과의 평행 조건을 각각 분류하여 세는 2단계 문항",
+      "difficultyReason": "모서리 AB와 만나지도 평행하지도 않은 꼬인 위치 4개와 평행 3개를 정확히 센다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
-        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_SKEW_PARALLEL_COUNT",
-        "why": "기둥 입체도형에서 꼬인 위치 모서리 수와 면-모서리 평행 관계를 복합 계수하는 템플릿"
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_AND_FACE_COUNT",
+        "why": "직육면체의 꼬인 위치 모서리 AB 기준 개수와 삼각기둥의 면 평행 모서리를 세는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_3fcef61d8c32026d7a60923777efea36a9e7a74fa042d792ad626c73c1a61f4b",
@@ -958,15 +1566,15 @@
         "standardUnitKey": "M1-04",
         "standardUnit": "좌표평면과 그래프",
         "standardUnitOrder": 4,
-        "subUnitKey": "M1-04-COORDINATE_PLANE",
-        "subUnit": "좌표평면",
-        "conceptClusterKey": "COORDINATE_PLANE",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "conceptClusterKey": "GRAPH_RELATION",
         "problemTypeKey": "PT_M1_COORDINATE_COMPOSITE_AREA",
-        "templateKey": "",
+        "templateKey": "TPL_M1_COORDINATE_COMPOSITE_AREA_GRAPH_AREA_RATIO",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 4,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 20,
@@ -979,20 +1587,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-171"
+        ],
+        "rpmPrimary": {
+          "l1": "좌표평면과 그래프",
+          "l2": "정비례와 반비례",
+          "l3": "관계 해석",
+          "l4": "그래프에서 식 구하기",
+          "recordId": "M1-RPM-171"
+        },
+        "rpmPrimaryL1": "좌표평면과 그래프",
+        "rpmPrimaryL2": "정비례와 반비례",
+        "rpmPrimaryL3": "관계 해석",
+        "rpmPrimaryL4": "그래프에서 식 구하기",
+        "rpmPrimaryRecordId": "M1-RPM-171",
+        "difficultyBasis": "반비례식 18/x 에서 A를 구하고 밑변 길이 비로 C의 y좌표 -12를 구해 c=-4를 도출한다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-04 / M1-04-GRAPH_RELATION: 반비례 관계 $y=\\dfra",
+          "curriculum": "M1-RPM-171: y=18/x 교점 A(3, 6)과 공통 밑변 직선 위의 삼각형 넓이 비를 활용한다.",
+          "problemType": "반비례 y=18/x 와 정비례 교점 좌표 및 삼각형의 넓이 비를 이용해 상수 c 를 결정하는 유형이다.",
+          "difficulty": "반비례식 18/x 에서 A를 구하고 밑변 길이 비로 C의 y좌표 -12를 구해 c=-4를 도출한다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "점 A(3,6), B(3,-3)을 구하고 삼각형 넓이 관계로부터 AC=18을 유도하여 3c=-12를 푼다.",
       "decisiveStep": "밑변 AC의 길이가 18임을 구하고 점 C의 y좌표가 6-18=-12임을 찾아 c=-4 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "반비례 함수값, 수직선 상의 거리, 삼각형 넓이 공식을 종합적으로 결합하는 4단계 문항",
+      "difficultyReason": "반비례식 18/x 에서 A를 구하고 밑변 길이 비로 C의 y좌표 -12를 구해 c=-4를 도출한다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_COORDINATE_COMPOSITE_AREA",
-        "templateKey": "TPL_M1_COORDINATE_COMPOSITE_AREA_VERTICAL_SEGMENT",
-        "why": "동일 수직선 상의 교점들로 이루어진 삼각형의 넓이 비로부터 비례상수를 역산하는 템플릿"
+        "templateKey": "TPL_M1_COORDINATE_COMPOSITE_AREA_GRAPH_AREA_RATIO",
+        "why": "반비례 y=18/x 와 정비례 교점 좌표 및 삼각형의 넓이 비를 이용해 상수 c 를 결정하는 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_39b89eaa41fb7831888e60075acc3195b39c9ec18b4057c076199d4f1ff496f3",
@@ -1011,7 +1651,7 @@
         "subUnit": "점·선·면과 각",
         "conceptClusterKey": "BASIC_FIGURE",
         "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
-        "templateKey": "",
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -1028,20 +1668,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-176"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "기본 도형",
+          "l3": "각",
+          "l4": "맞꼭지각",
+          "recordId": "M1-RPM-176"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "기본 도형",
+        "rpmPrimaryL3": "각",
+        "rpmPrimaryL4": "맞꼭지각",
+        "rpmPrimaryRecordId": "M1-RPM-176",
+        "difficultyBasis": "맞꼭지각 일치 식과 편각의 합 180도 식을 순차적으로 세워 x=16, y=40을 도출한다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-BASIC_FIGURE: 두 직선이 한 점에서 만날",
+          "curriculum": "M1-RPM-176: 맞꼭지각이 같음을 이용해 x를 구하고 180도 보각으로 y를 구한다.",
+          "problemType": "맞꼭지각과 편각 180도 방정식을 세워 미지수 x, y 를 각각 구하는 서술형 유형이다.",
+          "difficulty": "맞꼭지각 일치 식과 편각의 합 180도 식을 순차적으로 세워 x=16, y=40을 도출한다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "맞꼭지각의 크기가 같다는 식으로 x=16을 구하고 평각의 합 180도로 y=40을 도출한다.",
       "decisiveStep": "2x+15=4x-17에서 x=16(47도) 도출 후 3y+13+47=180에서 y=40 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "맞꼭지각과 평각의 기초 정의를 방정식으로 전환하여 단계별로 해결하는 2단계 서술형 문항",
+      "difficultyReason": "맞꼭지각 일치 식과 편각의 합 180도 식을 순차적으로 세워 x=16, y=40을 도출한다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
-        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_LINEAR_SYSTEM",
-        "why": "교차하는 두 직선에서 맞꼭지각과 평각의 관계를 연립방정식으로 풀어내는 서술형 템플릿"
+        "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+        "why": "맞꼭지각과 편각 180도 방정식을 세워 미지수 x, y 를 각각 구하는 서술형 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_7ed09f2991d5061c8feb207e5fe6f5346342ee7cd07690f6c6b27e0905dc9429",
@@ -1056,15 +1728,15 @@
         "standardUnitKey": "M1-04",
         "standardUnit": "좌표평면과 그래프",
         "standardUnitOrder": 4,
-        "subUnitKey": "M1-04-COORDINATE_PLANE",
-        "subUnit": "좌표평면",
-        "conceptClusterKey": "COORDINATE_PLANE",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "subUnit": "그래프와 관계",
+        "conceptClusterKey": "GRAPH_RELATION",
         "problemTypeKey": "PT_M1_SQUARE_COORDINATES_AND_GRAPH_COEFFICIENTS",
-        "templateKey": "",
+        "templateKey": "TPL_M1_SQUARE_COORDINATES_AND_GRAPH_COEFFICIENTS_CORE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 3,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 22,
@@ -1077,20 +1749,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-171"
+        ],
+        "rpmPrimary": {
+          "l1": "좌표평면과 그래프",
+          "l2": "정비례와 반비례",
+          "l3": "관계 해석",
+          "l4": "그래프에서 식 구하기",
+          "recordId": "M1-RPM-171"
+        },
+        "rpmPrimaryL1": "좌표평면과 그래프",
+        "rpmPrimaryL2": "정비례와 반비례",
+        "rpmPrimaryL3": "관계 해석",
+        "rpmPrimaryL4": "그래프에서 식 구하기",
+        "rpmPrimaryRecordId": "M1-RPM-171",
+        "difficultyBasis": "넓이 25 에서 변의 길이 5를 얻고 점 A(-6,-2), B(-6,-7)을 대입해 ab=14를 구한다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-04 / M1-04-GRAPH_RELATION: 넓이가 $25$인 정사각형",
+          "curriculum": "M1-RPM-171: 정사각형 25 변의 길이 5로부터 점 A, B를 구하고 함수식에 대입한다.",
+          "problemType": "정사각형 넓이 25 로부터 꼭짓점 좌표를 복원하고 정비례, 반비례 계수의 곱을 구하는 서술형 유형이다.",
+          "difficulty": "넓이 25 에서 변의 길이 5를 얻고 점 A(-6,-2), B(-6,-7)을 대입해 ab=14를 구한다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "정사각형 한 변 5를 이용해 A(-6,-2), B(-6,-7)을 구하고 a=1/3, b=42를 대입하여 ab=14를 도출한다.",
       "decisiveStep": "점 A(-6,-2)와 점 B(-6,-7)의 좌표를 정확히 특정하여 a=1/3, b=42를 계산",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "정사각형의 넓이와 좌표 이동, 두 비례 함수의 식 대입을 체계적으로 서술하는 3단계 문항",
+      "difficultyReason": "넓이 25 에서 변의 길이 5를 얻고 점 A(-6,-2), B(-6,-7)을 대입해 ab=14를 구한다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_SQUARE_COORDINATES_AND_GRAPH_COEFFICIENTS",
-        "templateKey": "TPL_M1_SQUARE_COORDINATES_AND_GRAPH_COEFFICIENTS_STANDARD",
-        "why": "정사각형의 기하학적 좌표 전개와 정비례·반비례 함수의 관계식을 결합하는 서술형 템플릿"
+        "templateKey": "TPL_M1_SQUARE_COORDINATES_AND_GRAPH_COEFFICIENTS_CORE",
+        "why": "정사각형 넓이 25 로부터 꼭짓점 좌표를 복원하고 정비례, 반비례 계수의 곱을 구하는 서술형 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_a97c1493263dfd8333f09cb66a92d73a3fdf05f6895d30fe70368c5b261f2728",
@@ -1105,11 +1809,11 @@
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
         "standardUnitOrder": 5,
-        "subUnitKey": "M1-05-POSITION_RELATION",
-        "subUnit": "위치 관계",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
         "conceptClusterKey": "BASIC_FIGURE",
         "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
-        "templateKey": "",
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_DISTANCE_MEASUREMENT_SAS",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -1126,20 +1830,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-192"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "작도와 합동",
+          "l3": "삼각형의 합동",
+          "l4": "SAS 합동",
+          "recordId": "M1-RPM-192"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "작도와 합동",
+        "rpmPrimaryL3": "삼각형의 합동",
+        "rpmPrimaryL4": "SAS 합동",
+        "rpmPrimaryRecordId": "M1-RPM-192",
+        "difficultyBasis": "AO=DO, BO=CO와 맞꼭지각으로 SAS 합동을 보이고 AB=15km를 결론짓는다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-BASIC_FIGURE: 지점 $A$에서 강 건너에",
+          "curriculum": "M1-RPM-192: 맞꼭지각과 두 변 조건을 결합하여 SAS 합동을 서술하고 거리를 구한다.",
+          "problemType": "측량 상황에서 SAS 합동을 증명하고 15 km 대응변 길이를 전달하는 서술형 유형이다.",
+          "difficulty": "AO=DO, BO=CO와 맞꼭지각으로 SAS 합동을 보이고 AB=15km를 결론짓는다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "AO=DO, BO=CO 및 맞꼭지각을 근거로 SAS 합동을 명시하고 대응변 AB=15km를 제시한다.",
       "decisiveStep": "각 AOB와 각 DOC가 맞꼭지각임을 서술하여 SAS 합동 조건을 완성",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "삼각형의 합동 조건 3요소를 빠짐없이 기재하고 대응변의 길이를 결론짓는 2단계 서술형 문항",
+      "difficultyReason": "AO=DO, BO=CO와 맞꼭지각으로 SAS 합동을 보이고 AB=15km를 결론짓는다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
-        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_DISTANCE_MEASUREMENT",
-        "why": "맞꼭지각을 끼인각으로 하는 두 변의 등가성으로부터 SAS 합동을 보이고 거리를 구하는 서술형 템플릿"
+        "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_DISTANCE_MEASUREMENT_SAS",
+        "why": "측량 상황에서 SAS 합동을 증명하고 15 km 대응변 길이를 전달하는 서술형 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_c8b3f57d838422e7686a5df47e930f8bfc854063c0a877db90a0784d1471e47a",
@@ -1154,15 +1890,15 @@
         "standardUnitKey": "M1-05",
         "standardUnit": "기본도형",
         "standardUnitOrder": 5,
-        "subUnitKey": "M1-05-POSITION_RELATION",
-        "subUnit": "위치 관계",
-        "conceptClusterKey": "POSITION_RELATION",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "subUnit": "점·선·면과 각",
+        "conceptClusterKey": "BASIC_FIGURE",
         "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
-        "templateKey": "",
+        "templateKey": "TPL_MOVE_FOLDING_REFLECTION_CORE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 3,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": 24,
@@ -1175,20 +1911,52 @@
           "variationType": "STRICT_VARIANT",
           "createdAt": "2026-11-12",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M1-RPM-177"
+        ],
+        "rpmPrimary": {
+          "l1": "기본 도형",
+          "l2": "기본 도형",
+          "l3": "평행선과 각",
+          "l4": "동위각·엇각",
+          "recordId": "M1-RPM-177"
+        },
+        "rpmPrimaryL1": "기본 도형",
+        "rpmPrimaryL2": "기본 도형",
+        "rpmPrimaryL3": "평행선과 각",
+        "rpmPrimaryL4": "동위각·엇각",
+        "rpmPrimaryRecordId": "M1-RPM-177",
+        "difficultyBasis": "124도에서 편각 56도를 구하고 접은 각 및 엇각으로 이등변삼각형 내각합을 적용한다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M1-05 / M1-05-BASIC_FIGURE: 직사각형 모양의 종이를 선분",
+          "curriculum": "M1-RPM-177: 평행선 엇각과 접은 각이 같음을 이용해 56도를 옮기고 각 x를 계산한다.",
+          "problemType": "직사각형 접기에서 124도 편각과 엇각 및 접은 각의 성질로 삼각형 내각을 구하는 서술형 유형이다.",
+          "difficulty": "124도에서 편각 56도를 구하고 접은 각 및 엇각으로 이등변삼각형 내각합을 적용한다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "평행선의 엇각과 접은 각의 등가성으로 삼각형 EFI의 밑각이 모두 56도임을 밝혀 꼭지각 68도를 구한다.",
       "decisiveStep": "각 FEI=56도, 각 EFI=56도를 서술하고 삼각형 내각의 합 180도에서 68도 산출",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "종이접기의 각 보존 법칙과 평행선 엇각을 체계적으로 기술하여 삼각형 내각을 구하는 3단계 서술형 문항",
+      "difficultyReason": "124도에서 편각 56도를 구하고 접은 각 및 엇각으로 이등변삼각형 내각합을 적용한다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
-        "templateKey": "TPL_MOVE_FOLDING_REFLECTION_RECTANGLE_TAPE",
-        "why": "직사각형 종이를 접었을 때 발생하는 이등변삼각형 구조와 엇각의 합동성을 이용하는 서술형 템플릿"
+        "templateKey": "TPL_MOVE_FOLDING_REFLECTION_CORE",
+        "why": "직사각형 접기에서 124도 편각과 엇각 및 접은 각의 성질로 삼각형 내각을 구하는 서술형 유형이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     }
   ]
 }

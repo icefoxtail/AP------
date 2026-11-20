@@ -3,7 +3,7 @@
   "requestId": "26_팔마중_2학기_중간_중3_유사-candidate-v1",
   "examUid": "26_팔마중_2학기_중간_중3_유사",
   "sourceArchiveFile": "archive/exams/similar/middle/m3/2mid/26_팔마중_2학기_중간_중3_유사.js",
-  "expectedSourceBlobSha1": "8a78c21f6c4b13e331d1e26e81a25928c46eefe8",
+  "expectedSourceBlobSha1": "470e7e6a7764e59c32bab03a334c26ff5bd7a414",
   "expectedQuestionCount": 24,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -29,9 +29,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M3-05-TRIG_RATIO",
         "subUnit": "삼각비",
-        "conceptClusterKey": "직각삼각형 세 변으로 sin A × tan B 계산",
+        "conceptClusterKey": "TRIG_RATIO",
         "problemTypeKey": "PT_TRIG_RATIO",
-        "templateKey": "",
+        "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
         "crossConceptKeys": [
           "CC_TRIG_RATIO_DEFINITIONS"
         ],
@@ -50,20 +50,50 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-055"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각비",
+          "l2": "삼각비",
+          "l3": "삼각비의 뜻",
+          "l4": "sin·cos·tan",
+          "recordId": "M3-RPM-055"
+        },
+        "rpmPrimaryL1": "삼각비",
+        "rpmPrimaryL2": "삼각비",
+        "rpmPrimaryL3": "삼각비의 뜻",
+        "rpmPrimaryL4": "sin·cos·tan",
+        "rpmPrimaryRecordId": "M3-RPM-055",
+        "difficultyBasis": "그림의 직각삼각형 ABC에서 피타고라스 정리로 AC = 3을 구하고 sin A 와 tan B 를 곱해 1/2을 얻는 2단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-05 / M3-05-TRIG_RATIO: 다음 직각삼각형 $\\text{ABC}$에서 $\\sin A \\times \\tan B$의 값은?",
+          "curriculum": "M3-RPM-055: 직각삼각형 ABC에서 삼각비 sin과 tan의 정의를 이용해 계산하므로 sin·cos·tan(M3-RPM-055)에 해당한다.",
+          "problemType": "직각삼각형 ABC의 세 변의 길이 관계로부터 삼각비 sin A와 tan B의 값을 유도하므로 도형에서 삼각비 값 유도(TPL_TRIG_RATIO_GEOMETRIC_DERIVATION)이다.",
+          "difficulty": "그림의 직각삼각형 ABC에서 피타고라스 정리로 AC = 3을 구하고 sin A 와 tan B 를 곱해 1/2을 얻는 2단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_TRIG_RATIO_DEFINITIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "피타고라스 정리로 $\\overline{AC}=3$을 구한 뒤 $\\sin A=\\frac{\\sqrt{3}}{2}, \\tan B=\\frac{1}{\\sqrt{3}}$을 곱한다.",
       "decisiveStep": "나머지 한 변 $\\overline{AC}=3$을 구해 각 $A$와 각 $B$에 대한 삼각비를 정확히 구분하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "피타고라스 정리로 변을 구한 뒤 서로 다른 두 각의 삼각비를 각각 구해 곱해야 한다.",
+      "difficultyReason": "그림의 직각삼각형 ABC에서 피타고라스 정리로 AC = 3을 구하고 sin A 와 tan B 를 곱해 1/2을 얻는 2단계 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_TRIG_RATIO",
-        "templateKey": null,
-        "why": "직각삼각형에서 나머지 변을 구해 두 예각의 삼각비 곱을 계산한다."
+        "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "why": "직각삼각형 ABC의 세 변의 길이 관계로부터 삼각비 sin A와 tan B의 값을 유도하므로 도형에서 삼각비 값 유도(TPL_TRIG_RATIO_GEOMETRIC_DERIVATION)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_93c5136c0b6ef1d44427d48742774ac6d54303baace50df8b429ab1bf188c879",
@@ -80,9 +110,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M3-05-TRIG_RATIO",
         "subUnit": "삼각비",
-        "conceptClusterKey": "여각 관계 sin B + cos A 계산",
+        "conceptClusterKey": "TRIG_RATIO",
         "problemTypeKey": "PT_TRIG_RATIO",
-        "templateKey": "",
+        "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
         "crossConceptKeys": [
           "CC_TRIG_RATIO_DEFINITIONS",
           "CC_COMPLEMENTARY_ANGLE_TRIG"
@@ -102,20 +132,50 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-055"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각비",
+          "l2": "삼각비",
+          "l3": "삼각비의 뜻",
+          "l4": "sin·cos·tan",
+          "recordId": "M3-RPM-055"
+        },
+        "rpmPrimaryL1": "삼각비",
+        "rpmPrimaryL2": "삼각비",
+        "rpmPrimaryL3": "삼각비의 뜻",
+        "rpmPrimaryL4": "sin·cos·tan",
+        "rpmPrimaryRecordId": "M3-RPM-055",
+        "difficultyBasis": "그림의 직각삼각형 ABC에서 피타고라스 정리로 AC = 2를 구하고 sin B = 2/5, cos A = 2/5 를 더해 4/5를 내는 2단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-05 / M3-05-TRIG_RATIO: 다음 직각삼각형 $\\text{ABC}$에서 $\\sin B + \\cos A$의 값은?",
+          "curriculum": "M3-RPM-055: 직각삼각형 ABC에서 삼각비 sin과 cos의 정의를 적용하므로 sin·cos·tan(M3-RPM-055)에 해당한다.",
+          "problemType": "직각삼각형 ABC의 변의 길이로부터 삼각비 sin B 와 cos A 의 값을 유도하여 더하므로 도형에서 삼각비 값 유도(TPL_TRIG_RATIO_GEOMETRIC_DERIVATION)이다.",
+          "difficulty": "그림의 직각삼각형 ABC에서 피타고라스 정리로 AC = 2를 구하고 sin B = 2/5, cos A = 2/5 를 더해 4/5를 내는 2단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_TRIG_RATIO_DEFINITIONS, CC_COMPLEMENTARY_ANGLE_TRIG: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "피타고라스 정리로 $\\overline{AC}=2$를 구해 $\\sin B=\\cos A=\\frac{2}{5}$를 더한다.",
       "decisiveStep": "$\\overline{AC}=\\sqrt{25-21}=2$를 구해 $\\sin B$와 $\\cos A$가 모두 $\\frac{2}{5}$임을 계산하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "무리수 변이 포함된 피타고라스 정리 후 두 삼각비의 합을 구해야 한다.",
+      "difficultyReason": "그림의 직각삼각형 ABC에서 피타고라스 정리로 AC = 2를 구하고 sin B = 2/5, cos A = 2/5 를 더해 4/5를 내는 2단계 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_TRIG_RATIO",
-        "templateKey": null,
-        "why": "직각삼각형에서 나머지 변을 구해 $\\sin B + \\cos A$를 계산한다."
+        "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "why": "직각삼각형 ABC의 변의 길이로부터 삼각비 sin B 와 cos A 의 값을 유도하여 더하므로 도형에서 삼각비 값 유도(TPL_TRIG_RATIO_GEOMETRIC_DERIVATION)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_0f9a6b0629ba227d4c9281e85cb39b7c5548fdc266e5704f3f78dc40e2781568",
@@ -132,9 +192,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M3-05-TRIG_RATIO",
         "subUnit": "삼각비",
-        "conceptClusterKey": "탄젠트 값으로 직각삼각형을 그려 sin×cos 구하기",
+        "conceptClusterKey": "TRIG_RATIO",
         "problemTypeKey": "PT_TRIG_RATIO",
-        "templateKey": "",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
         "crossConceptKeys": [
           "CC_TRIG_RATIO_DEFINITIONS"
         ],
@@ -153,20 +213,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-056"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각비",
+          "l2": "삼각비",
+          "l3": "삼각비의 뜻",
+          "l4": "삼각비의 관계",
+          "recordId": "M3-RPM-056"
+        },
+        "rpmPrimaryL1": "삼각비",
+        "rpmPrimaryL2": "삼각비",
+        "rpmPrimaryL3": "삼각비의 뜻",
+        "rpmPrimaryL4": "삼각비의 관계",
+        "rpmPrimaryRecordId": "M3-RPM-056",
+        "difficultyBasis": "tan A = sqrt(5)/3 에서 빗변 14 를 구하고 sin A 와 cos A 의 곱 3*sqrt(5)/14 를 계산하는 2단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-05 / M3-05-TRIG_RATIO: $3\\tan A - \\sqrt{5} = 0$일 때, $\\sin A \\times \\cos A$의 값은?",
+          "curriculum": "M3-RPM-056: 주어진 tan A 값으로부터 빗변 14 를 찾아 sin A 와 cos A 의 상호 관계를 다루므로 삼각비의 관계(M3-RPM-056)에 해당한다.",
+          "problemType": "하나의 삼각비 tan A로부터 직각삼각형 빗변 14 를 구해 sin A 와 cos A 의 곱을 구하므로 삼각비의 기본 관계(TPL_TRIG_RATIO_BASIC_RELATION)이다.",
+          "difficulty": "tan A = sqrt(5)/3 에서 빗변 14 를 구하고 sin A 와 cos A 의 곱 3*sqrt(5)/14 를 계산하는 2단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_TRIG_RATIO_DEFINITIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$\\tan A=\\frac{\\sqrt{5}}{3}$에 대응하는 직각삼각형의 빗변 $\\sqrt{14}$를 구해 $\\sin A\\cos A$를 계산한다.",
       "decisiveStep": "밑변 $3$, 높이 $\\sqrt{5}$로 빗변 $\\sqrt{14}$를 구해 $\\sin A$와 $\\cos A$를 얻는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "한 삼각비에서 직각삼각형을 세워 나머지 두 삼각비를 구해 곱해야 한다.",
+      "difficultyReason": "tan A = sqrt(5)/3 에서 빗변 14 를 구하고 sin A 와 cos A 의 곱 3*sqrt(5)/14 를 계산하는 2단계 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_TRIG_RATIO",
-        "templateKey": null,
-        "why": "주어진 $\\tan A$ 값으로부터 직각삼각형을 작도해 $\\sin A \\times \\cos A$를 구한다."
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "why": "하나의 삼각비 tan A로부터 직각삼각형 빗변 14 를 구해 sin A 와 cos A 의 곱을 구하므로 삼각비의 기본 관계(TPL_TRIG_RATIO_BASIC_RELATION)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_ead71d0816496989c2b81462d8687d5a340e7328ae7125c53f40e5b6aa8e4eeb",
@@ -183,9 +275,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M3-05-TRIG_RATIO",
         "subUnit": "삼각비",
-        "conceptClusterKey": "특수각 역추적 후 sin(x+y) 계산",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "TRIG_RATIO",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
         "crossConceptKeys": [
           "CC_SPECIAL_ANGLES",
           "CC_TRIG_TABLE_LOOKUP"
@@ -207,20 +299,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-058"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각비",
+          "l2": "삼각비",
+          "l3": "특수각의 삼각비",
+          "l4": "특수각 계산",
+          "recordId": "M3-RPM-058"
+        },
+        "rpmPrimaryL1": "삼각비",
+        "rpmPrimaryL2": "삼각비",
+        "rpmPrimaryL3": "특수각의 삼각비",
+        "rpmPrimaryL4": "특수각 계산",
+        "rpmPrimaryRecordId": "M3-RPM-058",
+        "difficultyBasis": "특수각 x = 30도, y = 60도를 각각 찾고 sin 90도 = 1 을 계산하는 2단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-05 / M3-05-TRIG_RATIO: $\\tan x = \\frac{\\sqrt{3}}{3}$이고 $\\sin y = \\frac{\\sqrt{3}}{2}$일 때",
+          "curriculum": "M3-RPM-058: 특수각 30도와 60도의 삼각비 값을 이용해 연산하므로 특수각 계산(M3-RPM-058)에 해당한다.",
+          "problemType": "특수각의 삼각비 값으로부터 각도 x = 30도, y = 60도를 구하고 sin(x+y)를 계산하므로 특수각의 삼각비(TPL_TRIG_RATIO_SPECIAL_ANGLE)이다.",
+          "difficulty": "특수각 x = 30도, y = 60도를 각각 찾고 sin 90도 = 1 을 계산하는 2단계 문항이다.",
+          "condition": "COND_RANGE: 4칸 condition 칸이 비어 있다.",
+          "crossConcept": "CC_SPECIAL_ANGLES, CC_TRIG_TABLE_LOOKUP: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$\\tan x=\\frac{\\sqrt{3}}{3}$에서 $x=30^\\circ$, $\\sin y=\\frac{\\sqrt{3}}{2}$에서 $y=60^\\circ$를 구해 $\\sin 90^\\circ=1$을 계산한다.",
       "decisiveStep": "각 삼각비 값에 대응하는 특수각 $30^\\circ, 60^\\circ$를 찾아 $\\sin 90^\\circ = 1$을 구하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "삼각비에서 두 특수각을 역으로 구해 $\\sin 90^\\circ$ 값까지 계산해야 한다.",
+      "difficultyReason": "특수각 x = 30도, y = 60도를 각각 찾고 sin 90도 = 1 을 계산하는 2단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "특수각 삼각비 값에서 각의 크기를 구한 뒤 합의 사인 값을 계산한다."
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+        "why": "특수각의 삼각비 값으로부터 각도 x = 30도, y = 60도를 구하고 sin(x+y)를 계산하므로 특수각의 삼각비(TPL_TRIG_RATIO_SPECIAL_ANGLE)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_022e934ad14ad104b71669af5d28c00c10818a32d3b63e4d10fdec27dff19676",
@@ -237,9 +361,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M3-05-TRIG_RATIO",
         "subUnit": "삼각비",
-        "conceptClusterKey": "삼각형 내각 비와 특수각 삼각비의 연비",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "TRIG_RATIO",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
         "crossConceptKeys": [
           "CC_SPECIAL_ANGLES",
           "CC_RATIO"
@@ -259,20 +383,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-058"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각비",
+          "l2": "삼각비",
+          "l3": "특수각의 삼각비",
+          "l4": "특수각 계산",
+          "recordId": "M3-RPM-058"
+        },
+        "rpmPrimaryL1": "삼각비",
+        "rpmPrimaryL2": "삼각비",
+        "rpmPrimaryL3": "특수각의 삼각비",
+        "rpmPrimaryL4": "특수각 계산",
+        "rpmPrimaryRecordId": "M3-RPM-058",
+        "difficultyBasis": "내각 비 3:4:5에서 A = 45도를 비례배분으로 찾고 세 삼각비의 비 1 : 1 : sqrt(2)를 구하는 2단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-05 / M3-05-TRIG_RATIO: 세 내각의 크기의 비가 $3 : 4 : 5$인 삼각형의 가장 작은 내각의 크기를 $A$라고 할 때",
+          "curriculum": "M3-RPM-058: 특수각 45도의 삼각비 값을 연산하여 간단한 자연수 비로 나타내므로 특수각 계산(M3-RPM-058)에 해당한다.",
+          "problemType": "특수각 A = 45도에서의 삼각비 sin 45도, cos 45도, tan 45도의 비율을 구하므로 특수각의 삼각비(TPL_TRIG_RATIO_SPECIAL_ANGLE)이다.",
+          "difficulty": "내각 비 3:4:5에서 A = 45도를 비례배분으로 찾고 세 삼각비의 비 1 : 1 : sqrt(2)를 구하는 2단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SPECIAL_ANGLES, CC_RATIO: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "비례배분으로 $A=45^\\circ$를 구한 뒤 $\\frac{\\sqrt{2}}{2}:\\frac{\\sqrt{2}}{2}:1$을 가장 간단한 정수비 $1:1:\\sqrt{2}$로 나타낸다.",
       "decisiveStep": "$\\frac{\\sqrt{2}}{2} : \\frac{\\sqrt{2}}{2} : 1$에 $\\sqrt{2}$를 곱해 $1 : 1 : \\sqrt{2}$로 정리하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "내각 비례배분, 특수각 삼각비 대입, 무리수 연비 약분까지 이어진다.",
+      "difficultyReason": "내각 비 3:4:5에서 A = 45도를 비례배분으로 찾고 세 삼각비의 비 1 : 1 : sqrt(2)를 구하는 2단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "내각의 비로 특수각을 구하고 세 삼각비의 연비를 간단히 한다."
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+        "why": "특수각 A = 45도에서의 삼각비 sin 45도, cos 45도, tan 45도의 비율을 구하므로 특수각의 삼각비(TPL_TRIG_RATIO_SPECIAL_ANGLE)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_aad4054a70f828d5fbaef36cf46a9c886a5293924861552b43b83d1859e90fcc",
@@ -289,9 +445,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M3-05-TRIG_RATIO",
         "subUnit": "삼각비",
-        "conceptClusterKey": "사분원 삼각비와 여각 관계 상쇄",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "TRIG_RATIO",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
         "crossConceptKeys": [
           "CC_UNIT_QUARTER_CIRCLE",
           "CC_COMPLEMENTARY_ANGLE_TRIG"
@@ -311,20 +467,50 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-055"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각비",
+          "l2": "삼각비",
+          "l3": "삼각비의 뜻",
+          "l4": "sin·cos·tan",
+          "recordId": "M3-RPM-055"
+        },
+        "rpmPrimaryL1": "삼각비",
+        "rpmPrimaryL2": "삼각비",
+        "rpmPrimaryL3": "삼각비의 뜻",
+        "rpmPrimaryL4": "sin·cos·tan",
+        "rpmPrimaryRecordId": "M3-RPM-055",
+        "difficultyBasis": "sin 38도 = cos 52도 여각 관계로 소거한 뒤 그림에서 tan 38도 = 0.78 을 읽는 2단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-05 / M3-05-TRIG_RATIO: 다음 그림과 같이 점 $\\text{O}$를 중심으로 하고 반지름의 길이가 $1$인 사분원에서",
+          "curriculum": "M3-RPM-055: 사분원에서 sin 38도, cos 52도, tan 38도의 정의와 값을 다루므로 sin·cos·tan(M3-RPM-055)에 해당한다.",
+          "problemType": "여각의 삼각비 sin 38도 = cos 52도의 상호 관계를 이용해 식을 간단히 하므로 삼각비의 기본 관계(TPL_TRIG_RATIO_BASIC_RELATION)이다.",
+          "difficulty": "sin 38도 = cos 52도 여각 관계로 소거한 뒤 그림에서 tan 38도 = 0.78 을 읽는 2단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_UNIT_QUARTER_CIRCLE, CC_COMPLEMENTARY_ANGLE_TRIG: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$\\sin 38^\\circ = \\cos 52^\\circ$로 두 항을 소거하고 사분원에서 $\\tan 38^\\circ = 0.78$을 읽는다.",
       "decisiveStep": "$38^\\circ + 52^\\circ = 90^\\circ$이므로 $\\sin 38^\\circ - \\cos 52^\\circ = 0$임을 파악하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "여각 관계 $\\sin 38^\\circ = \\cos 52^\\circ$를 이용해 소거하고 사분원에서 $\\tan 38^\\circ$를 읽어야 한다.",
+      "difficultyReason": "sin 38도 = cos 52도 여각 관계로 소거한 뒤 그림에서 tan 38도 = 0.78 을 읽는 2단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "단위 사분원에서 여각 성질로 식을 단순화하고 $\\tan$ 값을 읽는다."
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "why": "여각의 삼각비 sin 38도 = cos 52도의 상호 관계를 이용해 식을 간단히 하므로 삼각비의 기본 관계(TPL_TRIG_RATIO_BASIC_RELATION)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_cfece5ca0b7a8c91612d2dcffaef342ab8aa65c9063709a721af173eb68f0acb",
@@ -341,9 +527,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
         "subUnit": "삼각비의 활용",
-        "conceptClusterKey": "올려본각과 눈높이를 포함한 나무 높이 측정",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
         "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-        "templateKey": "",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
         "crossConceptKeys": [
           "CC_ELEVATION_ANGLE",
           "CC_TRIG_TABLE_LOOKUP"
@@ -363,20 +549,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-064"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각비",
+          "l2": "삼각비의 활용",
+          "l3": "측정 문제",
+          "l4": "앙각·부각",
+          "recordId": "M3-RPM-064"
+        },
+        "rpmPrimaryL1": "삼각비",
+        "rpmPrimaryL2": "삼각비의 활용",
+        "rpmPrimaryL3": "측정 문제",
+        "rpmPrimaryL4": "앙각·부각",
+        "rpmPrimaryRecordId": "M3-RPM-064",
+        "difficultyBasis": "밑변 15 m 와 tan 28도 = 0.532 로 7.98 m 를 구하고 눈높이 1.5 m 를 더해 9.48 m 를 구하는 2단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-05 / M3-05-TRIG_RATIO_APPLICATION: 다음 그림과 같이 학생이 나무로부터 $15\\text{ m}$ 떨어진 지점 $\\text{A}$에서",
+          "curriculum": "M3-RPM-064: 올려본 각 28도를 이용해 높이를 측정하는 실생활 문제이므로 앙각·부각(M3-RPM-064)에 해당한다.",
+          "problemType": "올려본 각 28도와 거리 15 m 에서 삼각비를 이용해 나무의 높이를 직접 구하므로 삼각비로 직접 길이·높이·거리 구하기(TPL_TRIG_APPLICATION_DIRECT_MEASURE)이다.",
+          "difficulty": "밑변 15 m 와 tan 28도 = 0.532 로 7.98 m 를 구하고 눈높이 1.5 m 를 더해 9.48 m 를 구하는 2단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_ELEVATION_ANGLE, CC_TRIG_TABLE_LOOKUP: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림과 같이 학생이」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$15\\tan 28^\\circ = 7.98$을 계산한 뒤 눈높이 $1.5\\text{ m}$를 더해 $9.48\\text{ m}$를 구한다.",
       "decisiveStep": "눈높이 위 높이 $7.98\\text{ m}$에 눈높이 $1.5\\text{ m}$를 빠뜨리지 않고 더하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "세 삼각비 중 $\\tan 28^\\circ$를 선택해 곱하고 눈높이를 합산해야 한다.",
+      "difficultyReason": "밑변 15 m 와 tan 28도 = 0.532 로 7.98 m 를 구하고 눈높이 1.5 m 를 더해 9.48 m 를 구하는 2단계 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-        "templateKey": null,
-        "why": "수평 거리와 올려본 각의 탄젠트 값으로 높이를 구해 눈높이를 더한다."
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "why": "올려본 각 28도와 거리 15 m 에서 삼각비를 이용해 나무의 높이를 직접 구하므로 삼각비로 직접 길이·높이·거리 구하기(TPL_TRIG_APPLICATION_DIRECT_MEASURE)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_fb8d89418a5cb731b04224281c9e07f63deae4f1116886056ab79c47f2c48d33",
@@ -393,9 +611,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
         "subUnit": "삼각비의 활용",
-        "conceptClusterKey": "두 변과 끼인각 45°에서 대변 길이 구하기",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
         "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-        "templateKey": "",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
         "crossConceptKeys": [
           "CC_AUXILIARY_ALTITUDE",
           "CC_SPECIAL_ANGLES"
@@ -415,20 +633,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-059"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각비",
+          "l2": "삼각비",
+          "l3": "삼각비와 길이",
+          "l4": "직각삼각형의 변",
+          "recordId": "M3-RPM-059"
+        },
+        "rpmPrimaryL1": "삼각비",
+        "rpmPrimaryL2": "삼각비",
+        "rpmPrimaryL3": "삼각비와 길이",
+        "rpmPrimaryL4": "직각삼각형의 변",
+        "rpmPrimaryRecordId": "M3-RPM-059",
+        "difficultyBasis": "수선의 발 H를 내려 AH = 4*sqrt(2)와 BH = sqrt(2)를 구한 뒤 피타고라스 정리로 AB = sqrt(34)를 계산하는 3단계 발전 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-05 / M3-05-TRIG_RATIO_APPLICATION: 다음 그림과 같이 $\\overline{\\text{AC}} = 8$, $\\overline{\\text{BC}} = 5\\sqrt{2}$, $\\angle\\text{ACB} = 45^\\circ$인 삼각형 $\\text{ABC}$에서",
+          "curriculum": "M3-RPM-059: 직각삼각형 ABH와 ACH에서 삼각비를 활용해 변의 길이를 결정하므로 직각삼각형의 변(M3-RPM-059)에 해당한다.",
+          "problemType": "삼각형 ABC에서 45도 삼각비와 수선을 이용해 미지 변 AB 길이를 구하므로 삼각비로 직접 길이·높이·거리 구하기(TPL_TRIG_APPLICATION_DIRECT_MEASURE)이다.",
+          "difficulty": "수선의 발 H를 내려 AH = 4*sqrt(2)와 BH = sqrt(2)를 구한 뒤 피타고라스 정리로 AB = sqrt(34)를 계산하는 3단계 발전 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_AUXILIARY_ALTITUDE, CC_SPECIAL_ANGLES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림과 같이 $\\overline{\\text{AC}} = 8$」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "수선 $\\text{AH}$를 내려 $\\overline{CH}=\\overline{AH}=4\\sqrt{2}, \\overline{BH}=\\sqrt{2}$를 구해 $\\overline{AB}=\\sqrt{34}$를 계산한다.",
       "decisiveStep": "보조선 $\\text{AH}$로 $\\triangle ABH$의 두 직각변을 구해 피타고라스 정리를 적용하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "수선 작도, $45^\\circ$ 삼각비, 피타고라스 정리를 순차적으로 적용해야 한다.",
+      "difficultyReason": "수선의 발 H를 내려 AH = 4*sqrt(2)와 BH = sqrt(2)를 구한 뒤 피타고라스 정리로 AB = sqrt(34)를 계산하는 3단계 발전 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-        "templateKey": null,
-        "why": "두 변과 끼인각 $45^\\circ$가 주어진 삼각형에서 수선을 내려 나머지 변 길이를 구한다."
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "why": "삼각형 ABC에서 45도 삼각비와 수선을 이용해 미지 변 AB 길이를 구하므로 삼각비로 직접 길이·높이·거리 구하기(TPL_TRIG_APPLICATION_DIRECT_MEASURE)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_f52d07ead0392b4401d2aef939c24b44a24bd444f98e1f4a19c7756cd12e3db8",
@@ -445,9 +695,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
         "subUnit": "삼각비의 활용",
-        "conceptClusterKey": "둔각삼각형 넓이에서 둔각 크기 역산",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
         "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-        "templateKey": "",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
         "crossConceptKeys": [
           "CC_TRIANGLE_AREA_TRIG",
           "CC_OBLIQUE_TRIANGLE_MEASURE"
@@ -467,20 +717,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-061"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각비",
+          "l2": "삼각비의 활용",
+          "l3": "평면도형",
+          "l4": "삼각형의 높이·넓이",
+          "recordId": "M3-RPM-061"
+        },
+        "rpmPrimaryL1": "삼각비",
+        "rpmPrimaryL2": "삼각비의 활용",
+        "rpmPrimaryL3": "평면도형",
+        "rpmPrimaryL4": "삼각형의 높이·넓이",
+        "rpmPrimaryRecordId": "M3-RPM-061",
+        "difficultyBasis": "삼각형 ABC 넓이 20*sqrt(2)에서 sin(180-A) = sqrt(2)/2 를 구하고 각 A = 135도를 결정하는 2단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-05 / M3-05-TRIG_RATIO_APPLICATION: 다음 그림과 같이 $\\overline{\\text{AB}} = 8\\text{ cm}$, $\\overline{\\text{AC}} = 10\\text{ cm}$인 삼각형 $\\text{ABC}$의 넓이가 $20\\sqrt{2}\\text{ cm}^2$일 때",
+          "curriculum": "M3-RPM-061: 두 변 AB = 8, AC = 10과 끼인각을 이용한 삼각형 ABC의 넓이 공식으로 넓이 20*sqrt(2)를 다루므로 삼각형의 높이·넓이(M3-RPM-061)에 해당한다.",
+          "problemType": "두 변 AB, AC와 넓이로부터 사잇각 A의 크기를 구하므로 삼각비로 직접 길이·높이·거리 구하기(TPL_TRIG_APPLICATION_DIRECT_MEASURE)이다.",
+          "difficulty": "삼각형 ABC 넓이 20*sqrt(2)에서 sin(180-A) = sqrt(2)/2 를 구하고 각 A = 135도를 결정하는 2단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_TRIANGLE_AREA_TRIG, CC_OBLIQUE_TRIANGLE_MEASURE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림과 같이 $\\overline{\\text{AB}} = 8\\text{ cm}$」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$\\frac{1}{2}\\cdot 8\\cdot 10\\sin(180^\\circ-A)=20\\sqrt{2}$에서 $180^\\circ-A=45^\\circ$를 구해 $A=135^\\circ$를 찾는다.",
       "decisiveStep": "둔각 조건에서 $\\sin(180^\\circ-A)=\\frac{\\sqrt{2}}{2}$로부터 $A=135^\\circ$를 구하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "넓이 공식으로 $\\sin(180^\\circ-A)$를 구한 뒤 둔각 $135^\\circ$로 변환해야 한다.",
+      "difficultyReason": "삼각형 ABC 넓이 20*sqrt(2)에서 sin(180-A) = sqrt(2)/2 를 구하고 각 A = 135도를 결정하는 2단계 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-        "templateKey": null,
-        "why": "두 변과 넓이가 주어진 둔각삼각형에서 둔각의 크기를 구한다."
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "why": "두 변 AB, AC와 넓이로부터 사잇각 A의 크기를 구하므로 삼각비로 직접 길이·높이·거리 구하기(TPL_TRIG_APPLICATION_DIRECT_MEASURE)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_4ee3be9e2ddd85e793664ab8c9f40207c534f6a55af941748014759bd62206a5",
@@ -497,9 +779,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
         "subUnit": "삼각비의 활용",
-        "conceptClusterKey": "특수각 직각삼각형의 수선과 부분 삼각형 넓이",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
         "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-        "templateKey": "",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
         "crossConceptKeys": [
           "CC_SPECIAL_ANGLES",
           "CC_TRIANGLE_AREA_TRIG"
@@ -519,20 +801,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-065"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각비",
+          "l2": "삼각비의 활용",
+          "l3": "복합도형",
+          "l4": "보조선 활용",
+          "recordId": "M3-RPM-065"
+        },
+        "rpmPrimaryL1": "삼각비",
+        "rpmPrimaryL2": "삼각비의 활용",
+        "rpmPrimaryL3": "복합도형",
+        "rpmPrimaryL4": "보조선 활용",
+        "rpmPrimaryRecordId": "M3-RPM-065",
+        "difficultyBasis": "큰 직각삼각형 ABC에서 AB = 8*sqrt(3)을 구하고 삼각형 ABD에서 30도 삼각비로 넓이 24*sqrt(3)을 계산하는 3단계 발전 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-05 / M3-05-TRIG_RATIO_APPLICATION: 다음 그림과 같이 $\\angle\\text{B} = 90^\\circ$, $\\angle\\text{A} = 30^\\circ$, $\\overline{\\text{AC}} = 16$인 직각삼각형 $\\text{ABC}$에서",
+          "curriculum": "M3-RPM-065: 직각삼각형 내부 수선 BD에 의한 부분삼각형 넓이를 삼각비로 계산하므로 보조선 활용(M3-RPM-065)에 해당한다.",
+          "problemType": "직각삼각형 ABC 내부 수선에서 30도 삼각비를 연쇄 적용해 넓이를 구하므로 삼각비로 직접 길이·높이·거리 구하기(TPL_TRIG_APPLICATION_DIRECT_MEASURE)이다.",
+          "difficulty": "큰 직각삼각형 ABC에서 AB = 8*sqrt(3)을 구하고 삼각형 ABD에서 30도 삼각비로 넓이 24*sqrt(3)을 계산하는 3단계 발전 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_SPECIAL_ANGLES, CC_TRIANGLE_AREA_TRIG: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림과 같이 $\\angle\\text{B} = 90^\\circ$」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$\\overline{AB}=8\\sqrt{3}$을 구한 뒤 $\\triangle ABD$에서 $\\overline{BD}=4\\sqrt{3}, \\overline{AD}=12$를 구해 넓이를 계산한다.",
       "decisiveStep": "큰 직각삼각형에서 $\\overline{AB}$를 먼저 구한 뒤 $\\triangle ABD$에 다시 $30^\\circ$ 삼각비를 적용하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "직각삼각형을 두 번 연속으로 풀어 변의 길이를 구한 뒤 넓이를 계산해야 한다.",
+      "difficultyReason": "큰 직각삼각형 ABC에서 AB = 8*sqrt(3)을 구하고 삼각형 ABD에서 30도 삼각비로 넓이 24*sqrt(3)을 계산하는 3단계 발전 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-        "templateKey": null,
-        "why": "특수각 직각삼각형에 내린 수선으로 생긴 부분 직각삼각형의 넓이를 구한다."
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "why": "직각삼각형 ABC 내부 수선에서 30도 삼각비를 연쇄 적용해 넓이를 구하므로 삼각비로 직접 길이·높이·거리 구하기(TPL_TRIG_APPLICATION_DIRECT_MEASURE)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_3e5d4fe1d86bf2bc198d970c597b66a8f0a5ab389955dc97bd475be1eaf445d0",
@@ -549,9 +863,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
         "subUnit": "삼각비의 활용",
-        "conceptClusterKey": "두 대각선과 끼인각으로 사각형 넓이 구하기",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
         "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-        "templateKey": "",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
         "crossConceptKeys": [
           "CC_QUADRILATERAL_AREA_TRIG",
           "CC_SPECIAL_ANGLES"
@@ -571,20 +885,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-062"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각비",
+          "l2": "삼각비의 활용",
+          "l3": "평면도형",
+          "l4": "다각형의 길이·넓이",
+          "recordId": "M3-RPM-062"
+        },
+        "rpmPrimaryL1": "삼각비",
+        "rpmPrimaryL2": "삼각비의 활용",
+        "rpmPrimaryL3": "평면도형",
+        "rpmPrimaryL4": "다각형의 길이·넓이",
+        "rpmPrimaryRecordId": "M3-RPM-062",
+        "difficultyBasis": "사각형 ABCD의 두 대각선 12, 8과 예각 45도로 넓이 24*sqrt(2)를 공식을 써서 바로 구하는 기본 1단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-05 / M3-05-TRIG_RATIO_APPLICATION: 사각형 $\\text{ABCD}$의 두 대각선 $\\text{AC}$, $\\text{BD}$의 길이가 각각 $12\\text{ cm}$, $8\\text{ cm}$이고",
+          "curriculum": "M3-RPM-062: 두 대각선 AC, BD와 각 45도를 이용해 사각형 ABCD 넓이를 계산하므로 다각형의 길이·넓이(M3-RPM-062)에 해당한다.",
+          "problemType": "두 대각선 AC, BD와 45도 사잇각에서 삼각비 넓이 공식을 직접 적용하므로 삼각비로 직접 길이·높이·거리 구하기(TPL_TRIG_APPLICATION_DIRECT_MEASURE)이다.",
+          "difficulty": "사각형 ABCD의 두 대각선 12, 8과 예각 45도로 넓이 24*sqrt(2)를 공식을 써서 바로 구하는 기본 1단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_QUADRILATERAL_AREA_TRIG, CC_SPECIAL_ANGLES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "사각형 넓이 공식 $\\frac{1}{2} \\times 12 \\times 8 \\times \\sin 45^\\circ = 24\\sqrt{2}$를 적용한다.",
       "decisiveStep": "사각형 대각선 넓이 공식에 $\\frac{1}{2}$을 곱해 $24\\sqrt{2}$를 얻는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "두 대각선과 끼인각의 넓이 공식에 바로 대입하면 된다.",
+      "difficultyReason": "사각형 ABCD의 두 대각선 12, 8과 예각 45도로 넓이 24*sqrt(2)를 공식을 써서 바로 구하는 기본 1단계 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-        "templateKey": null,
-        "why": "두 대각선 길이와 끼인각으로 일반 사각형의 넓이를 구한다."
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "why": "두 대각선 AC, BD와 45도 사잇각에서 삼각비 넓이 공식을 직접 적용하므로 삼각비로 직접 길이·높이·거리 구하기(TPL_TRIG_APPLICATION_DIRECT_MEASURE)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_46705cc16a31f92ab04a9ec2f540501aa4de54d0d7366a523de64d461d267de6",
@@ -599,11 +945,11 @@
         "standardUnitKey": "M3-05",
         "standardUnit": "삼각비",
         "standardUnitOrder": 5,
-        "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-        "subUnit": "삼각비의 활용",
-        "conceptClusterKey": "직사각형 대각선 수선 닮음과 cos x",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "subUnitKey": "M3-05-TRIG_RATIO",
+        "subUnit": "삼각비",
+        "conceptClusterKey": "TRIG_RATIO",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
         "crossConceptKeys": [
           "CC_TRIANGLE_SIMILARITY",
           "CC_TRIG_RATIO_DEFINITIONS"
@@ -623,20 +969,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-065"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각비",
+          "l2": "삼각비의 활용",
+          "l3": "복합도형",
+          "l4": "보조선 활용",
+          "recordId": "M3-RPM-065"
+        },
+        "rpmPrimaryL1": "삼각비",
+        "rpmPrimaryL2": "삼각비의 활용",
+        "rpmPrimaryL3": "복합도형",
+        "rpmPrimaryL4": "보조선 활용",
+        "rpmPrimaryRecordId": "M3-RPM-065",
+        "difficultyBasis": "AC = 13과 직각삼각형 닮음으로 AD = 3*sqrt(13)을 구하고 cos x도 = 3*sqrt(13)/13을 도출하는 3단계 발전 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-05 / M3-05-TRIG_RATIO: 다음 직사각형 $\\text{ABCD}$에서 대각선 $\\text{AC}$에 꼭짓점 $\\text{D}$에서 내린 수선의 발을 $\\text{E}$라 하자.",
+          "curriculum": "M3-RPM-065: 직각삼각형 내부 수선 DE와 피타고라스·닮음 정리를 결합해 삼각비를 구하므로 보조선 활용(M3-RPM-065)에 해당한다.",
+          "problemType": "직사각형 ABCD 내부 수선과 직각삼각형 닮음으로 변의 길이를 찾아 삼각비 cos x도를 유도하므로 도형에서 삼각비 값 유도(TPL_TRIG_RATIO_GEOMETRIC_DERIVATION)이다.",
+          "difficulty": "AC = 13과 직각삼각형 닮음으로 AD = 3*sqrt(13)을 구하고 cos x도 = 3*sqrt(13)/13을 도출하는 3단계 발전 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_TRIANGLE_SIMILARITY, CC_TRIG_RATIO_DEFINITIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "직각삼각형 닮음으로 $\\overline{AD}=\\sqrt{9\\times 13}=3\\sqrt{13}$을 구해 $\\cos x^\\circ=\\frac{3\\sqrt{13}}{13}$을 구한다.",
       "decisiveStep": "$\\overline{AD}^2 = \\overline{AE} \\cdot \\overline{AC}$ 정리를 이용해 $\\overline{BC}=3\\sqrt{13}$을 구하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "직각삼각형의 닮음 정리($AD^2=AE\\cdot AC$)와 직사각형 대변 같음을 연결해야 한다.",
+      "difficultyReason": "AC = 13과 직각삼각형 닮음으로 AD = 3*sqrt(13)을 구하고 cos x도 = 3*sqrt(13)/13을 도출하는 3단계 발전 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "직사각형 대각선에 내린 수선 분할 길이로 직각삼각형 닮음을 적용해 삼각비를 구한다."
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+        "why": "직사각형 ABCD 내부 수선과 직각삼각형 닮음으로 변의 길이를 찾아 삼각비 cos x도를 유도하므로 도형에서 삼각비 값 유도(TPL_TRIG_RATIO_GEOMETRIC_DERIVATION)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_b12418d324e15fcd0038abc344100c742e951fbb9eeb0973c8e60a197578d92e",
@@ -653,9 +1031,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
         "subUnit": "삼각비의 활용",
-        "conceptClusterKey": "종이띠 접기 이등변삼각형과 삼각비 넓이",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
         "crossConceptKeys": [
           "CC_PAPER_FOLDING_SIMILARITY",
           "CC_SPECIAL_ANGLES"
@@ -675,20 +1053,50 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-061"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각비",
+          "l2": "삼각비의 활용",
+          "l3": "평면도형",
+          "l4": "삼각형의 높이·넓이",
+          "recordId": "M3-RPM-061"
+        },
+        "rpmPrimaryL1": "삼각비",
+        "rpmPrimaryL2": "삼각비의 활용",
+        "rpmPrimaryL3": "평면도형",
+        "rpmPrimaryL4": "삼각형의 높이·넓이",
+        "rpmPrimaryRecordId": "M3-RPM-061",
+        "difficultyBasis": "종이접기 이등변삼각형 성질과 sin 45도로 밑변 6*sqrt(2)를 구하고 넓이 18*sqrt(2)를 도출하는 3단계 발전 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-05 / M3-05-TRIG_RATIO_APPLICATION: 다음 그림과 같이 폭이 $6\\text{ cm}$인 종이를 선분 $\\text{AC}$를 접는 선으로 하여 접었다.",
+          "curriculum": "M3-RPM-061: 밑변 AB와 높이 6 cm를 이용해 삼각형 ABC 넓이를 계산하므로 삼각형의 높이·넓이(M3-RPM-061)에 해당한다.",
+          "problemType": "삼각형 ABC에서 sin 45도와 높이 6을 이용해 밑변과 넓이를 구하므로 삼각비로 직접 길이·높이·거리 구하기(TPL_TRIG_APPLICATION_DIRECT_MEASURE)이다.",
+          "difficulty": "종이접기 이등변삼각형 성질과 sin 45도로 밑변 6*sqrt(2)를 구하고 넓이 18*sqrt(2)를 도출하는 3단계 발전 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_PAPER_FOLDING_SIMILARITY, CC_SPECIAL_ANGLES: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$\\overline{AB}=\\overline{BC}=\\frac{6}{\\sin 45^\\circ}=6\\sqrt{2}$를 구해 높이 $6$으로 넓이 $18\\sqrt{2}$를 계산한다.",
       "decisiveStep": "엇각과 접은 각으로 $\\triangle ABC$가 이등변삼각형임을 파악하고 폭 $6$으로 $\\overline{BC}$를 구하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "접은 각·엇각에 의한 이등변삼각형 성질과 폭을 높이로 쓰는 삼각비 계산을 결합해야 한다.",
+      "difficultyReason": "종이접기 이등변삼각형 성질과 sin 45도로 밑변 6*sqrt(2)를 구하고 넓이 18*sqrt(2)를 도출하는 3단계 발전 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "일정한 폭의 종이를 접어 생긴 이등변삼각형의 넓이를 삼각비로 구한다."
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "why": "삼각형 ABC에서 sin 45도와 높이 6을 이용해 밑변과 넓이를 구하므로 삼각비로 직접 길이·높이·거리 구하기(TPL_TRIG_APPLICATION_DIRECT_MEASURE)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_a5b64094b42fe32be24fe07880d1604221e36e7b0aeecd49234e28942868f92c",
@@ -705,9 +1113,9 @@
         "standardUnitOrder": 6,
         "subUnitKey": "M3-06-CIRCLE_LINE",
         "subUnit": "원과 직선",
-        "conceptClusterKey": "현의 성질과 접선 직각삼각형 피타고라스",
-        "problemTypeKey": "",
-        "templateKey": "",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD",
         "crossConceptKeys": [
           "CC_EQUAL_CHORDS_EQUAL_DISTANCE",
           "CC_CIRCLE_TANGENT_PROPERTY"
@@ -727,20 +1135,50 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-072"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접선 조건으로 길이 구하기",
+          "recordId": "M3-RPM-072"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원과 직선",
+        "rpmPrimaryL3": "원의 접선",
+        "rpmPrimaryL4": "접선 조건으로 길이 구하기",
+        "rpmPrimaryRecordId": "M3-RPM-072",
+        "difficultyBasis": "현의 이등분 성질로 x = 14를 구하고 접선 직각삼각형으로 y = 13을 구해 합 27을 얻는 2단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_LINE: 다음 두 그림에서 $x + y$의 값은? (단, 왼쪽 원에서 중심에서 두 현까지의 거리는 같고",
+          "curriculum": "M3-RPM-072: 접선 PA와 반지름의 수직 조건 및 직각삼각형 피타고라스 정리로 y = 13 을 구하므로 접선 조건으로 길이 구하기(M3-RPM-072)에 해당한다.",
+          "problemType": "중심에서 같은 거리에 있는 두 현의 길이 x = 14 와 접선 PA 성질을 이용하므로 등거리 현(TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD)이다.",
+          "difficulty": "현의 이등분 성질로 x = 14를 구하고 접선 직각삼각형으로 y = 13을 구해 합 27을 얻는 2단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_EQUAL_CHORDS_EQUAL_DISTANCE, CC_CIRCLE_TANGENT_PROPERTY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "현의 이등분으로 $x=14$, 접선 수직 직각삼각형으로 $y=\\sqrt{5^2+12^2}=13$을 구해 더한다.",
       "decisiveStep": "왼쪽 원에서 현의 수직이등분선($x=14$), 오른쪽 원에서 $5$-$12$-$13$ 직각삼각형($y=13$)을 각각 구하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "두 독립된 원 성질(현의 길이, 접선 직각삼각형)을 각각 적용해 합해야 한다.",
+      "difficultyReason": "현의 이등분 성질로 x = 14를 구하고 접선 직각삼각형으로 y = 13을 구해 합 27을 얻는 2단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
-        "templateKey": null,
-        "why": "두 원 그림에서 각각 현의 성질과 접선 직각삼각형으로 $x, y$를 구해 합한다."
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD",
+        "why": "중심에서 같은 거리에 있는 두 현의 길이 x = 14 와 접선 PA 성질을 이용하므로 등거리 현(TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_1057b0445ccc9cb34ac7f706ee44dc20e956d957ee2e58c22653cb0c690e4b66",
@@ -757,8 +1195,8 @@
         "standardUnitOrder": 6,
         "subUnitKey": "M3-06-CIRCLE_LINE",
         "subUnit": "원과 직선",
-        "conceptClusterKey": "지름과 수직인 현의 길이",
-        "problemTypeKey": "",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "problemTypeKey": "PT_M3_CIRCLE_CHORD",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_CIRCLE_CHORD_PERP_BISECTOR"
@@ -778,20 +1216,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-067"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원과 직선",
+          "l3": "원의 중심과 현",
+          "l4": "중심에서 현에 내린 수선",
+          "recordId": "M3-RPM-067"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원과 직선",
+        "rpmPrimaryL3": "원의 중심과 현",
+        "rpmPrimaryL4": "중심에서 현에 내린 수선",
+        "rpmPrimaryRecordId": "M3-RPM-067",
+        "difficultyBasis": "지름 16 cm에서 반지름 8과 OM = 4를 구하고 피타고라스 정리와 현의 이등분으로 CD = 8*sqrt(3) cm를 얻는 2단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_LINE: 다음 그림과 같이 원 $\\text{O}$의 지름 $\\text{AB}$와 현 $\\text{CD}$가 점 $\\text{M}$에서 수직으로 만난다.",
+          "curriculum": "M3-RPM-067: 원의 중심에서 현 CD에 내린 수선이 현을 이등분하는 성질을 이용하므로 중심에서 현에 내린 수선(M3-RPM-067)에 해당한다.",
+          "problemType": "현의 수직이등분선 성질과 피타고라스 정리를 이용해 현 CD의 길이를 구하므로 원의 현(PT_M3_CIRCLE_CHORD)이다.",
+          "difficulty": "지름 16 cm에서 반지름 8과 OM = 4를 구하고 피타고라스 정리와 현의 이등분으로 CD = 8*sqrt(3) cm를 얻는 2단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_CIRCLE_CHORD_PERP_BISECTOR: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림과 같이 원 $\\text{O}$의 지름 $\\text{AB}$와」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "반지름 $8$과 $\\overline{OM}=4$로 반현 $\\overline{CM}=4\\sqrt{3}$을 구해 $2$배한 $8\\sqrt{3}$을 구한다.",
       "decisiveStep": "지름 $16$에서 반지름 $8$과 $\\overline{OM}=4$를 구해 피타고라스 정리를 적용하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "분할된 지름에서 반지름과 $\\overline{OM}$을 구한 뒤 반현의 $2$배를 구해야 한다.",
+      "difficultyReason": "지름 16 cm에서 반지름 8과 OM = 4를 구하고 피타고라스 정리와 현의 이등분으로 CD = 8*sqrt(3) cm를 얻는 2단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M3_CIRCLE_CHORD",
         "templateKey": null,
-        "why": "지름이 현에 의해 분할된 두 길이로 반지름과 중심거리를 구해 현의 길이를 계산한다."
+        "why": "현의 수직이등분선 성질과 피타고라스 정리를 이용해 현 CD의 길이를 구하므로 원의 현(PT_M3_CIRCLE_CHORD)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_9f94f1744f991f814fe502338633d82a0b762dc8d119ff399fd51ae022603112",
@@ -808,9 +1278,9 @@
         "standardUnitOrder": 6,
         "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
         "subUnit": "원주각",
-        "conceptClusterKey": "중심거리가 같은 두 현의 중심각과 원주각",
+        "conceptClusterKey": "CIRCLE_INSCRIBED_ANGLE",
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-        "templateKey": "",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
         "crossConceptKeys": [
           "CC_EQUAL_CHORDS_EQUAL_DISTANCE"
         ],
@@ -829,20 +1299,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-075"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원주각",
+          "l3": "원주각과 중심각",
+          "l4": "중심각과 원주각",
+          "recordId": "M3-RPM-075"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원주각",
+        "rpmPrimaryL3": "원주각과 중심각",
+        "rpmPrimaryL4": "중심각과 원주각",
+        "rpmPrimaryRecordId": "M3-RPM-075",
+        "difficultyBasis": "OM = ON 으로 중심각 AOB = 124도를 구하고 원주각 성질로 각 ACB = 62도를 계산하는 3단계 발전 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_INSCRIBED_ANGLE: 다음 그림에서 $\\overline{\\text{OM}} \\perp \\overline{\\text{AB}}$, $\\overline{\\text{ON}} \\perp \\overline{\\text{BC}}$이고 $\\overline{\\text{OM}} = \\overline{\\text{ON}}$이다.",
+          "curriculum": "M3-RPM-075: 중심각 124도로부터 원주각 각 ACB = 62도를 구하는 관계를 다루므로 중심각과 원주각(M3-RPM-075)에 해당한다.",
+          "problemType": "호 AB에 대한 중심각 AOB = 124도와 원주각 ACB의 절반 관계를 이용하므로 원주각과 중심각(TPL_CIRCLE_ANGLE_CENTER_ARC)이다.",
+          "difficulty": "OM = ON 으로 중심각 AOB = 124도를 구하고 원주각 성질로 각 ACB = 62도를 계산하는 3단계 발전 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_EQUAL_CHORDS_EQUAL_DISTANCE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림에서 $\\overline{\\text{OM}} \\perp \\overline{\\text{AB}}$」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$\\angle AOB = \\angle MON = 124^\\circ$임을 구한 뒤 원주각 $\\angle ACB = \\frac{1}{2}(124^\\circ) = 62^\\circ$를 구한다.",
       "decisiveStep": "중심에서 현에 내린 수선이 중심각을 이등분해 $\\angle AOB = \\angle MON$이 됨을 파악하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "현의 중심각 이등분 성질과 원주각이 중심각의 절반임을 연결해야 한다.",
+      "difficultyReason": "OM = ON 으로 중심각 AOB = 124도를 구하고 원주각 성질로 각 ACB = 62도를 계산하는 3단계 발전 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-        "templateKey": null,
-        "why": "중심거리가 같은 두 현의 수선이 이루는 각에서 중심각과 원주각을 구한다."
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "why": "호 AB에 대한 중심각 AOB = 124도와 원주각 ACB의 절반 관계를 이용하므로 원주각과 중심각(TPL_CIRCLE_ANGLE_CENTER_ARC)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_bc56bc505b389b2c28f1883c2dcfee31bf23db75d2a44a1f90144121bcc10db7",
@@ -859,9 +1361,9 @@
         "standardUnitOrder": 6,
         "subUnitKey": "M3-06-CIRCLE_LINE",
         "subUnit": "원과 직선",
-        "conceptClusterKey": "두 접선의 길이 같음과 삼각형 넓이",
+        "conceptClusterKey": "CIRCLE_LINE",
         "problemTypeKey": "PT_CIRCLE_TANGENT",
-        "templateKey": "",
+        "templateKey": "TPL_CIRCLE_TANGENT_EQUAL_LENGTH",
         "crossConceptKeys": [
           "CC_CIRCLE_TANGENT_LENGTH",
           "CC_TRIANGLE_AREA_TRIG"
@@ -881,20 +1383,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-071"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "한 점에서 그은 두 접선",
+          "recordId": "M3-RPM-071"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원과 직선",
+        "rpmPrimaryL3": "원의 접선",
+        "rpmPrimaryL4": "한 점에서 그은 두 접선",
+        "rpmPrimaryRecordId": "M3-RPM-071",
+        "difficultyBasis": "접선의 성질로 PB = PA = 8 cm을 확인하고 사잇각 60도 삼각비 공식으로 넓이 16*sqrt(3)을 계산하는 2단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_LINE: 다음 그림에서 두 점 $\\text{A}$와 $\\text{B}$는 점 $\\text{P}$에서 원 $\\text{O}$에 그은 두 접선의 접점이다.",
+          "curriculum": "M3-RPM-071: 점 P에서 그은 두 접선 PA = PB = 8 cm 의 성질을 이용하므로 한 점에서 그은 두 접선(M3-RPM-071)에 해당한다.",
+          "problemType": "외부점 P에서 원에 그은 두 접선 PA = PB = 8 과 각 APB = 60도에서 넓이를 구하므로 등접선(TPL_CIRCLE_TANGENT_EQUAL_LENGTH)이다.",
+          "difficulty": "접선의 성질로 PB = PA = 8 cm을 확인하고 사잇각 60도 삼각비 공식으로 넓이 16*sqrt(3)을 계산하는 2단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_CIRCLE_TANGENT_LENGTH, CC_TRIANGLE_AREA_TRIG: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림에서 두 점 $\\text{A}$와 $\\text{B}$는」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$\\overline{PB}=\\overline{PA}=8$을 이용해 $\\frac{1}{2}\\times 8\\times 8\\times\\sin 60^\\circ=16\\sqrt{3}$을 계산한다.",
       "decisiveStep": "두 접선의 길이가 같으므로 $\\triangle APB$가 한 변 $8$인 정삼각형이 됨을 이용하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "접선 길이 같음과 삼각비 넓이 공식을 함께 적용해야 한다.",
+      "difficultyReason": "접선의 성질로 PB = PA = 8 cm을 확인하고 사잇각 60도 삼각비 공식으로 넓이 16*sqrt(3)을 계산하는 2단계 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_CIRCLE_TANGENT",
-        "templateKey": null,
-        "why": "원 밖의 점에서 그은 두 접선과 끼인각으로 삼각형 넓이를 구한다."
+        "templateKey": "TPL_CIRCLE_TANGENT_EQUAL_LENGTH",
+        "why": "외부점 P에서 원에 그은 두 접선 PA = PB = 8 과 각 APB = 60도에서 넓이를 구하므로 등접선(TPL_CIRCLE_TANGENT_EQUAL_LENGTH)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_efa35857f66e69fb20a35fd573779fadd4e096a1b611cd4b0fd3b4ebe6dd5937",
@@ -911,7 +1445,7 @@
         "standardUnitOrder": 6,
         "subUnitKey": "M3-06-CIRCLE_LINE",
         "subUnit": "원과 직선",
-        "conceptClusterKey": "원에 외접하는 사각형의 대변 합 성질",
+        "conceptClusterKey": "CIRCLE_LINE",
         "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
         "templateKey": "",
         "crossConceptKeys": [
@@ -933,20 +1467,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-072"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접선 조건으로 길이 구하기",
+          "recordId": "M3-RPM-072"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원과 직선",
+        "rpmPrimaryL3": "원의 접선",
+        "rpmPrimaryL4": "접선 조건으로 길이 구하기",
+        "rpmPrimaryRecordId": "M3-RPM-072",
+        "difficultyBasis": "외접사각형 ABCD 대변의 합 공식 7 + CD = 5 + 10 에서 CD = 8 cm 를 바로 구하는 기본 1단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_LINE: 다음 그림에서 사각형 $\\text{ABCD}$가 원 $\\text{O}$에 외접할 때",
+          "curriculum": "M3-RPM-072: 접선으로 이루어진 외접사각형 ABCD에서 변의 길이를 결정하므로 접선 조건으로 길이 구하기(M3-RPM-072)에 해당한다.",
+          "problemType": "원 O에 외접하는 사각형 ABCD의 마주 보는 두 쌍의 변의 합 성질을 이용하므로 원과 직선(PT_CIRCLE_LINE_RELATION)이다.",
+          "difficulty": "외접사각형 ABCD 대변의 합 공식 7 + CD = 5 + 10 에서 CD = 8 cm 를 바로 구하는 기본 1단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_CIRCUMSCRIBED_POLYGON, CC_CIRCLE_TANGENT_LENGTH: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림에서 사각형 $\\text{ABCD}$가」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$\\overline{AB}+\\overline{CD}=\\overline{AD}+\\overline{BC}$에 $7, 5, 10$을 대입해 $\\overline{CD}=8$을 구한다.",
       "decisiveStep": "외접사각형의 대변 합 등식 $7 + \\overline{CD} = 5 + 10$을 세우는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "외접사각형의 대변 합 공식에 세 변의 길이를 바로 대입하면 된다.",
+      "difficultyReason": "외접사각형 ABCD 대변의 합 공식 7 + CD = 5 + 10 에서 CD = 8 cm 를 바로 구하는 기본 1단계 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
         "templateKey": null,
-        "why": "원에 외접하는 사각형의 대변 길이 합이 같음을 이용해 한 변의 길이를 구한다."
+        "why": "원 O에 외접하는 사각형 ABCD의 마주 보는 두 쌍의 변의 합 성질을 이용하므로 원과 직선(PT_CIRCLE_LINE_RELATION)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_757056ccec6ecca4103cb5b22defcb1f4955d856de118ed559a1b04af797d56a",
@@ -963,9 +1529,9 @@
         "standardUnitOrder": 6,
         "subUnitKey": "M3-06-CIRCLE_LINE",
         "subUnit": "원과 직선",
-        "conceptClusterKey": "반원에 외접하는 직각사다리꼴과 반원의 넓이",
+        "conceptClusterKey": "CIRCLE_LINE",
         "problemTypeKey": "PT_CIRCLE_TANGENT",
-        "templateKey": "",
+        "templateKey": "TPL_CIRCLE_TANGENT_EQUAL_LENGTH",
         "crossConceptKeys": [
           "CC_CIRCLE_TANGENT_LENGTH",
           "CC_AUXILIARY_ALTITUDE"
@@ -985,20 +1551,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-072"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접선 조건으로 길이 구하기",
+          "recordId": "M3-RPM-072"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원과 직선",
+        "rpmPrimaryL3": "원의 접선",
+        "rpmPrimaryL4": "접선 조건으로 길이 구하기",
+        "rpmPrimaryRecordId": "M3-RPM-072",
+        "difficultyBasis": "접선 성질로 AD = 13을 찾고 수선 AH로 지름 BC = 12를 구해 반원 넓이 18*pi를 계산하는 3단계 발전 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_LINE: 다음 그림에서 $\\overline{\\text{BC}}$는 반원 $\\text{O}$의 지름이고 $\\overline{\\text{AB}}, \\overline{\\text{AD}}, \\overline{\\text{CD}}$는 반원 $\\text{O}$의 접선이다.",
+          "curriculum": "M3-RPM-072: 접선 조건을 결합해 반원의 지름 BC = 12 와 넓이를 계산하므로 접선 조건으로 길이 구하기(M3-RPM-072)에 해당한다.",
+          "problemType": "접선 길이 AE = AB = 4, DE = CD = 9 가 같음을 핵심으로 이용해 사다리꼴 변을 구하므로 등접선(TPL_CIRCLE_TANGENT_EQUAL_LENGTH)이다.",
+          "difficulty": "접선 성질로 AD = 13을 찾고 수선 AH로 지름 BC = 12를 구해 반원 넓이 18*pi를 계산하는 3단계 발전 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_CIRCLE_TANGENT_LENGTH, CC_AUXILIARY_ALTITUDE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림에서 $\\overline{\\text{BC}}$는 반원 $\\text{O}$의」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$\\overline{AD}=4+9=13$과 $\\overline{DH}=9-4=5$로 직각삼각형에서 지름 $12$를 구해 반원 넓이 $18\\pi$를 구한다.",
       "decisiveStep": "수선 $\\text{AH}$를 그어 빗변 $13$, 밑변 $5$인 직각삼각형에서 지름 $12$를 구하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "접선 합으로 $\\overline{AD}$를 구하고 수선을 내려 피타고라스 정리로 지름을 구한 뒤 반원 넓이를 계산해야 한다.",
+      "difficultyReason": "접선 성질로 AD = 13을 찾고 수선 AH로 지름 BC = 12를 구해 반원 넓이 18*pi를 계산하는 3단계 발전 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_CIRCLE_TANGENT",
-        "templateKey": null,
-        "why": "반원에 외접하는 사다리꼴에서 수선을 내려 반원의 지름과 넓이를 구한다."
+        "templateKey": "TPL_CIRCLE_TANGENT_EQUAL_LENGTH",
+        "why": "접선 길이 AE = AB = 4, DE = CD = 9 가 같음을 핵심으로 이용해 사다리꼴 변을 구하므로 등접선(TPL_CIRCLE_TANGENT_EQUAL_LENGTH)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_5eaba268e86502b1dfbae7c67c0d17a74c382bcd225517267a6c8bba607086e8",
@@ -1015,8 +1613,8 @@
         "standardUnitOrder": 6,
         "subUnitKey": "M3-06-CIRCLE_LINE",
         "subUnit": "원과 직선",
-        "conceptClusterKey": "동심원에서 작은 원에 접하는 수직 두 현의 교점 거리",
-        "problemTypeKey": "",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "problemTypeKey": "PT_M3_CIRCLE_CHORD",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_CIRCLE_CHORD_PERP_BISECTOR",
@@ -1037,20 +1635,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-067"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원과 직선",
+          "l3": "원의 중심과 현",
+          "l4": "중심에서 현에 내린 수선",
+          "recordId": "M3-RPM-067"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원과 직선",
+        "rpmPrimaryL3": "원의 중심과 현",
+        "rpmPrimaryL4": "중심에서 현에 내린 수선",
+        "rpmPrimaryRecordId": "M3-RPM-067",
+        "difficultyBasis": "반지름 5와 13으로 반현 12를 구하고 정사각형 OQPR의 변 5를 더해 AP = 17을 도출하는 4단계 심화 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_LINE: 다음 그림에서 중심이 같은 두 원의 반지름의 길이는 각각 $5, 13$이고 점 $\\text{Q}, \\text{R}$은 작은 원의 접점이다.",
+          "curriculum": "M3-RPM-067: 원의 중심에서 현 AB에 내린 수선 OQ = 5 와 반현 길이를 다루므로 중심에서 현에 내린 수선(M3-RPM-067)에 해당한다.",
+          "problemType": "현의 중심거리 5와 피타고라스 정리로 반현 AQ = 12 를 구하므로 원의 현(PT_M3_CIRCLE_CHORD)이다.",
+          "difficulty": "반지름 5와 13으로 반현 12를 구하고 정사각형 OQPR의 변 5를 더해 AP = 17을 도출하는 4단계 심화 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_CIRCLE_CHORD_PERP_BISECTOR, CC_CIRCLE_TANGENT_PROPERTY: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림에서 중심이 같은 두 원의」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "반현 $\\overline{AQ}=\\sqrt{13^2-5^2}=12$와 정사각형 $\\text{OQPR}$의 변 $\\overline{QP}=5$를 더해 $17$을 구한다.",
       "decisiveStep": "중심과 접점·교점이 한 변이 $5$인 정사각형 $\\text{OQPR}$을 이룸을 파악하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "현의 반길이 계산과 접점 수직이 만드는 정사각형 구조를 결합해 선분 합을 구해야 하는 고난도 문항이다.",
+      "difficultyReason": "반지름 5와 13으로 반현 12를 구하고 정사각형 OQPR의 변 5를 더해 AP = 17을 도출하는 4단계 심화 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": null,
+        "problemTypeKey": "PT_M3_CIRCLE_CHORD",
         "templateKey": null,
-        "why": "동심원에서 작은 원에 접하며 수직으로 만나는 두 현의 교점까지 선분 길이를 구한다."
+        "why": "현의 중심거리 5와 피타고라스 정리로 반현 AQ = 12 를 구하므로 원의 현(PT_M3_CIRCLE_CHORD)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_072a4fa8f90f4f948be85d250a0ef31a3ca38bcdea2123cc7730805b14a009d0",
@@ -1067,9 +1697,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
         "subUnit": "삼각비의 활용",
-        "conceptClusterKey": "정육면체 공간대각선과 삼각비",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
         "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-        "templateKey": "",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
         "crossConceptKeys": [
           "CC_TRIG_RATIO_DEFINITIONS"
         ],
@@ -1088,20 +1718,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-065"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각비",
+          "l2": "삼각비의 활용",
+          "l3": "복합도형",
+          "l4": "보조선 활용",
+          "recordId": "M3-RPM-065"
+        },
+        "rpmPrimaryL1": "삼각비",
+        "rpmPrimaryL2": "삼각비의 활용",
+        "rpmPrimaryL3": "복합도형",
+        "rpmPrimaryL4": "보조선 활용",
+        "rpmPrimaryRecordId": "M3-RPM-065",
+        "difficultyBasis": "면대각선 EG = 4*sqrt(2)와 공간대각선 EC = 4*sqrt(3)을 구해 sin x도 와 tan x도의 곱 sqrt(6)/6을 구하는 3단계 발전 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-05 / M3-05-TRIG_RATIO_APPLICATION: 다음 그림과 같이 한 모서리의 길이가 $4$인 정육면체에서 $\\angle\\text{CEG} = x^\\circ$라 할 때",
+          "curriculum": "M3-RPM-065: 정육면체 공간도형 직각삼각형 EGC에서 EG = 4*sqrt(2) 와 공간대각선 EC 로 삼각비를 결합하므로 보조선 활용(M3-RPM-065)에 해당한다.",
+          "problemType": "정육면체 내부 직각삼각형 EGC에서 공간대각선과 모서리를 이용해 삼각비를 계산하므로 삼각비로 직접 길이·높이·거리 구하기(TPL_TRIG_APPLICATION_DIRECT_MEASURE)이다.",
+          "difficulty": "면대각선 EG = 4*sqrt(2)와 공간대각선 EC = 4*sqrt(3)을 구해 sin x도 와 tan x도의 곱 sqrt(6)/6을 구하는 3단계 발전 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_TRIG_RATIO_DEFINITIONS: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림과 같이 한 모서리의」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "밑면 대각선 $4\\sqrt{2}$와 공간대각선 $4\\sqrt{3}$을 구해 $\\sin x^\\circ=\\frac{1}{\\sqrt{3}}, \\tan x^\\circ=\\frac{1}{\\sqrt{2}}$를 곱한다.",
       "decisiveStep": "직각삼각형 $\\text{EGC}$의 세 변 $4, 4\\sqrt{2}, 4\\sqrt{3}$을 구해 삼각비를 계산하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "입체도형에서 직각삼각형 $\\text{EGC}$를 추출해 대각선 두 개를 구한 뒤 삼각비를 곱해야 한다.",
+      "difficultyReason": "면대각선 EG = 4*sqrt(2)와 공간대각선 EC = 4*sqrt(3)을 구해 sin x도 와 tan x도의 곱 sqrt(6)/6을 구하는 3단계 발전 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-        "templateKey": null,
-        "why": "정육면체의 면대각선과 공간대각선이 이루는 각의 삼각비 곱을 구한다."
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "why": "정육면체 내부 직각삼각형 EGC에서 공간대각선과 모서리를 이용해 삼각비를 계산하므로 삼각비로 직접 길이·높이·거리 구하기(TPL_TRIG_APPLICATION_DIRECT_MEASURE)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_8cf840894b6993a72c8b7c063893e05fc4efc2753033d03c8c6726ee70764a36",
@@ -1118,9 +1780,9 @@
         "standardUnitOrder": 5,
         "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
         "subUnit": "삼각비의 활용",
-        "conceptClusterKey": "두 지점의 올려본각(30°, 45°)으로 높이 구하기",
+        "conceptClusterKey": "TRIG_RATIO_APPLICATION",
         "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-        "templateKey": "",
+        "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
         "crossConceptKeys": [
           "CC_ELEVATION_ANGLE",
           "CC_DENOMINATOR_RATIONALIZATION_CONJUGATE"
@@ -1140,20 +1802,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-064"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각비",
+          "l2": "삼각비의 활용",
+          "l3": "측정 문제",
+          "l4": "앙각·부각",
+          "recordId": "M3-RPM-064"
+        },
+        "rpmPrimaryL1": "삼각비",
+        "rpmPrimaryL2": "삼각비의 활용",
+        "rpmPrimaryL3": "측정 문제",
+        "rpmPrimaryL4": "앙각·부각",
+        "rpmPrimaryRecordId": "M3-RPM-064",
+        "difficultyBasis": "두 올려본각 30도, 45도로 h*sqrt(3) - h = 30 방정식을 세우고 유리화하여 15*(sqrt(3)+1) m를 구하는 4단계 심화 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-05 / M3-05-TRIG_RATIO_APPLICATION: 다음 그림과 같이 성 밖의 $\\text{A}$ 지점에서 성벽의 꼭대기 $\\text{B}$ 지점을 올려본 각의 크기가 $30^\\circ$이고",
+          "curriculum": "M3-RPM-064: 올려본각 30도와 45도를 이용해 성벽 높이를 측정하는 전형적인 문제이므로 앙각·부각(M3-RPM-064)에 해당한다.",
+          "problemType": "두 지점에서 측정한 앙각과 거리 30 m를 이용해 공통 높이를 구하므로 공통 높이·거리 측량(TPL_TRIG_APPLICATION_SHARED_HEIGHT)이다.",
+          "difficulty": "두 올려본각 30도, 45도로 h*sqrt(3) - h = 30 방정식을 세우고 유리화하여 15*(sqrt(3)+1) m를 구하는 4단계 심화 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_ELEVATION_ANGLE, CC_DENOMINATOR_RATIONALIZATION_CONJUGATE: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림과 같이 성 밖의」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$\\overline{CD}=h, \\overline{AC}=h\\sqrt{3}$을 세워 $h(\\sqrt{3}-1)=30$을 풀고 분모를 유리화한다.",
       "decisiveStep": "거리 차 $h\\sqrt{3} - h = 30$을 세운 뒤 켤레무리수로 분모를 유리화하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "높이를 미지수로 두고 두 삼각비 길이 차 방정식을 세워 켤레 유리화까지 마쳐야 한다.",
+      "difficultyReason": "두 올려본각 30도, 45도로 h*sqrt(3) - h = 30 방정식을 세우고 유리화하여 15*(sqrt(3)+1) m를 구하는 4단계 심화 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
-        "templateKey": null,
-        "why": "두 지점에서 측정한 올려본각 $30^\\circ, 45^\\circ$와 거리 차로 성벽의 높이를 구한다."
+        "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+        "why": "두 지점에서 측정한 앙각과 거리 30 m를 이용해 공통 높이를 구하므로 공통 높이·거리 측량(TPL_TRIG_APPLICATION_SHARED_HEIGHT)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_20e04375c052377504370877ccd35a659b50b9d2d988f1c2487296e01be404ff",
@@ -1170,8 +1864,8 @@
         "standardUnitOrder": 6,
         "subUnitKey": "M3-06-CIRCLE_LINE",
         "subUnit": "원과 직선",
-        "conceptClusterKey": "현의 길이와 활꼴 높이로 원의 반지름 구하기",
-        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "conceptClusterKey": "CIRCLE_LINE",
+        "problemTypeKey": "PT_M3_CIRCLE_CHORD",
         "templateKey": "",
         "crossConceptKeys": [
           "CC_CIRCLE_CHORD_PERP_BISECTOR"
@@ -1191,20 +1885,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-067"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원과 직선",
+          "l3": "원의 중심과 현",
+          "l4": "중심에서 현에 내린 수선",
+          "recordId": "M3-RPM-067"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원과 직선",
+        "rpmPrimaryL3": "원의 중심과 현",
+        "rpmPrimaryL4": "중심에서 현에 내린 수선",
+        "rpmPrimaryRecordId": "M3-RPM-067",
+        "difficultyBasis": "OM = r - 4로 설정하고 직각삼각형 피타고라스 방정식 r^2 = (r-4)^2 + 8^2에서 r = 10을 구하는 2단계 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_LINE: 다음 그림에서 $\\overline{\\text{AB}} \\perp \\overline{\\text{OC}}$이고 $\\overline{\\text{BM}} = 8\\text{ cm}$, $\\overline{\\text{CM}} = 4\\text{ cm}$일 때",
+          "curriculum": "M3-RPM-067: 원의 중심에서 현 AB에 내린 수선에 피타고라스 정리를 적용하므로 중심에서 현에 내린 수선(M3-RPM-067)에 해당한다.",
+          "problemType": "현 AB의 수선과 반지름 r의 피타고라스 방정식을 이용하므로 원의 현(PT_M3_CIRCLE_CHORD)이다.",
+          "difficulty": "OM = r - 4로 설정하고 직각삼각형 피타고라스 방정식 r^2 = (r-4)^2 + 8^2에서 r = 10을 구하는 2단계 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_CIRCLE_CHORD_PERP_BISECTOR: 원천 마크다운 값, 재판정 안 함",
+          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림에서 $\\overline{\\text{AB}} \\perp \\overline{\\text{OC}}$이고」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "반지름을 $r$로 두어 $\\overline{OM}=r-4$를 얻고 $\\triangle OMB$에서 $r^2=(r-4)^2+8^2$을 푼다.",
       "decisiveStep": "$\\overline{OM}=r-4$로 설정해 피타고라스 방정식에서 $r^2$이 소거되도록 푸는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "반지름 $r$을 미지수로 잡아 $\\overline{OM}=r-4$를 표현하고 이차항 소거 방정식을 풀어야 한다.",
+      "difficultyReason": "OM = r - 4로 설정하고 직각삼각형 피타고라스 방정식 r^2 = (r-4)^2 + 8^2에서 r = 10을 구하는 2단계 문항이다.",
       "ptTplCandidate": {
-        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "problemTypeKey": "PT_M3_CIRCLE_CHORD",
         "templateKey": null,
-        "why": "반현의 길이와 활꼴의 높이로 원의 반지름을 구한다."
+        "why": "현 AB의 수선과 반지름 r의 피타고라스 방정식을 이용하므로 원의 현(PT_M3_CIRCLE_CHORD)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     },
     {
       "questionUid": "qid_v1_72d263b8ac01ce4188a88bd181ecc495bcd1713b8e471c06eac6577cdeeee008",
@@ -1221,9 +1947,9 @@
         "standardUnitOrder": 6,
         "subUnitKey": "M3-06-CIRCLE_LINE",
         "subUnit": "원과 직선",
-        "conceptClusterKey": "직사각형 내접원 접선과 사다리꼴 길이 방정식",
+        "conceptClusterKey": "CIRCLE_LINE",
         "problemTypeKey": "PT_CIRCLE_TANGENT",
-        "templateKey": "",
+        "templateKey": "TPL_CIRCLE_TANGENT_EQUAL_LENGTH",
         "crossConceptKeys": [
           "CC_RECTANGLE_INSCRIBED_CIRCLE_TANGENT",
           "CC_CIRCLE_TANGENT_LENGTH"
@@ -1243,20 +1969,52 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        },
+        "rpmPrimaryRecordIds": [
+          "M3-RPM-072"
+        ],
+        "rpmPrimary": {
+          "l1": "원의 성질",
+          "l2": "원과 직선",
+          "l3": "원의 접선",
+          "l4": "접선 조건으로 길이 구하기",
+          "recordId": "M3-RPM-072"
+        },
+        "rpmPrimaryL1": "원의 성질",
+        "rpmPrimaryL2": "원과 직선",
+        "rpmPrimaryL3": "원의 접선",
+        "rpmPrimaryL4": "접선 조건으로 길이 구하기",
+        "rpmPrimaryRecordId": "M3-RPM-072",
+        "difficultyBasis": "CH = 6 cm와 반지름 4 cm로부터 DE = 6 + x를 표현하고 DH = 10 cm 접선 방정식으로 x = 2 cm를 도출하는 4단계 심화 문항이다.",
+        "metaRationale": {
+          "draftTier": "SINGLE_MODEL_DRAFT",
+          "unit": "M3-06 / M3-06-CIRCLE_LINE: 다음 그림에서 원 $\\text{O}$는 직사각형 $\\text{ABCD}$의 세 변과 접하고",
+          "curriculum": "M3-RPM-072: 직사각형 ABCD와 접선 DH 조건으로 GH = 2 cm 를 구하므로 접선 조건으로 길이 구하기(M3-RPM-072)에 해당한다.",
+          "problemType": "외부점에서 그은 두 접선의 길이 DI = DE = 6 + x, HI = HG = x 가 같음을 이용하므로 등접선(TPL_CIRCLE_TANGENT_EQUAL_LENGTH)이다.",
+          "difficulty": "CH = 6 cm와 반지름 4 cm로부터 DE = 6 + x를 표현하고 DH = 10 cm 접선 방정식으로 x = 2 cm를 도출하는 4단계 심화 문항이다.",
+          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
+          "crossConcept": "CC_RECTANGLE_INSCRIBED_CIRCLE_TANGENT, CC_CIRCLE_TANGENT_LENGTH: 원천 마크다운 값, 재판정 안 함",
+          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
+        },
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "그림을 가리키는 말(「다음 그림에서 원 $\\text{O}$는 직사각형」)이 있으나 글만으로 풀려 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
       "primaryMethod": "$\\overline{CH}=6$과 반지름 $4$를 구하고 $\\overline{GH}=x$로 두어 $\\overline{DH}=(6+x)+x=10$을 푼다.",
       "decisiveStep": "가로 길이 $\\overline{BC}=10+x$를 이용해 $\\overline{DE}=6+x$로 표현하고 $\\overline{DH}$ 합을 세우는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "직각삼각형 피타고라스, 원의 반지름, 직사각형 대변 같음, 접선 길이 방정식을 모두 통합해야 한다.",
+      "difficultyReason": "CH = 6 cm와 반지름 4 cm로부터 DE = 6 + x를 표현하고 DH = 10 cm 접선 방정식으로 x = 2 cm를 도출하는 4단계 심화 문항이다.",
       "ptTplCandidate": {
         "problemTypeKey": "PT_CIRCLE_TANGENT",
-        "templateKey": null,
-        "why": "직사각형 내접원과 외부 접선이 만날 때 접점까지의 길이를 방정식으로 구한다."
+        "templateKey": "TPL_CIRCLE_TANGENT_EQUAL_LENGTH",
+        "why": "외부점에서 그은 두 접선의 길이 DI = DE = 6 + x, HI = HG = x 가 같음을 이용하므로 등접선(TPL_CIRCLE_TANGENT_EQUAL_LENGTH)이다."
       },
       "hold": "",
-      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
     }
   ]
 }

@@ -17,7 +17,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "FINITE_DECIMAL_CONDITIONS",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -38,7 +38,7 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_FINITE_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_FRACTION_ARITHMETIC"
@@ -47,6 +47,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "유한소수와 무한소수",
+    "rpmPrimaryL4": "유한소수 판별",
+    "rpmPrimaryRecordId": "M2-RPM-119",
     "sourceQid": 1,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q01-problem.plan.json"
@@ -66,7 +71,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "REPEATING_DECIMAL_PERIODICITY",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -87,7 +92,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_PLACE_VALUE"
@@ -96,6 +101,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "순환소수",
+    "rpmPrimaryL4": "순환마디와 표현",
+    "rpmPrimaryRecordId": "M2-RPM-121",
     "sourceQid": 2,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q02-problem.plan.json"
@@ -115,7 +125,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "REPEATING_DECIMAL_CONDITIONS",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -135,8 +145,8 @@ window.questionBank = [
     "solution": "주어진 분수의 분자와 분모를 $3$으로 약분하여 기약분수로 나타내면 $$ \\frac{33}{2 \\times 3 \\times 5 \\times a} = \\frac{11}{2 \\times 5 \\times a} = \\frac{11}{10a} $$ 이 분수가 순환소수가 되려면 기약분수의 분모에 $2$와 $5$ 이외의 소인수가 존재해야 한다. 한 자리 자연수 $a$는 $1, 2, 3, 4, 5, 6, 7, 8, 9$이다. 먼저 유한소수가 되는 $a$를 찾으면, $a$의 소인수가 $2$ 또는 $5$뿐이어야 하므로 $$ a \\in {1, 2, 4, 5, 8} $$ 로 $5$개이다. (분자의 $11$과 약분되는 한 자리 자연수는 없다.) 전체 한 자리 자연수의 개수 $9$개 중 유한소수가 되는 경우를 제외하면 순환소수가 되므로 $$ a \\in {3, 6, 7, 9} $$ 따라서 순환소수가 되도록 하는 한 자리 자연수 $a$의 값의 개수는 $4$개이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_NUMBER_OF_ELEMENTS"
@@ -145,6 +155,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "유한소수와 무한소수",
+    "rpmPrimaryL4": "분모의 소인수 조건",
+    "rpmPrimaryRecordId": "M2-RPM-120",
     "sourceQid": 3,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q03-problem.plan.json"
@@ -164,7 +179,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "REPEATING_DECIMAL_EQUATION",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -184,8 +199,8 @@ window.questionBank = [
     "solution": "순환소수를 분수로 고치면 $$ 0.0\\dot{5} = \\frac{5}{90} = \\frac{1}{18},\\qquad 0.\\dot{7} = \\frac{7}{9} = \\frac{14}{18} $$ 소수 $0.2$는 $\\frac{1}{5}$이므로 주어진 일차방정식은 $$ \\frac{1}{5}x + \\frac{1}{18} = \\frac{14}{18} $$ 양변에서 $\\frac{1}{18}$을 빼면 $$ \\frac{1}{5}x = \\frac{14}{18} - \\frac{1}{18} = \\frac{13}{18} $$ 양변에 $5$를 곱하여 $x$를 구하면 $$ x = \\frac{13}{18} \\times 5 = \\frac{65}{18} $$ $\\frac{65}{18}$을 순환소수로 나타내면 $$ 65 \\div 18 = 3.6111\\cdots = 3.6\\dot{1} $$ 따라서 구하는 해를 순환소수로 바르게 나타낸 것은 ②이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_FRACTION_ARITHMETIC"
@@ -194,6 +209,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "순환소수",
+    "rpmPrimaryL4": "순환소수를 분수로",
+    "rpmPrimaryRecordId": "M2-RPM-122",
     "sourceQid": 4,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q04-problem.plan.json"
@@ -213,7 +233,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "FINITE_DECIMAL_MULTIPLIER",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -233,8 +253,8 @@ window.questionBank = [
     "solution": "순환소수 $0.2\\dot{7}$을 분수로 나타내면 $$ 0.2\\dot{7} = \\frac{27 - 2}{90} = \\frac{25}{90} = \\frac{5}{18} $$ 분모 $18$을 소인수분해하면 $$ \\frac{5}{18} = \\frac{5}{2 \\times 3^2} $$ 이 식에 자연수 $n$을 곱한 식 $$ \\frac{5}{2 \\times 3^2} \\times n $$ 이 유한소수가 되려면 분모의 소인수 $3^2=9$가 약분되어 사라져야 하므로 $n$은 $9$의 배수이어야 한다. 선지의 수들을 살펴보면 ① $9 = 9 \\times 1$ ($9$의 배수) ② $18 = 9 \\times 2$ ($9$의 배수) ③ $27 = 9 \\times 3$ ($9$의 배수) ④ $30$은 $9$의 배수가 아니다. ($30$을 곱하면 $\\frac{5}{18} \\times 30 = \\frac{25}{3}$으로 분모에 $3$이 남아 유한소수가 될 수 없다.) ⑤ $36 = 9 \\times 4$ ($9$의 배수) 따라서 $n$의 값이 될 수 없는 것은 ④이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "difficultyBucket": 1,
+    "problemTypeKey": "PT_M2_FINITE_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_LEAST_COMMON_MULTIPLE"
@@ -243,6 +263,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "유한소수와 무한소수",
+    "rpmPrimaryL4": "분모의 소인수 조건",
+    "rpmPrimaryRecordId": "M2-RPM-120",
     "sourceQid": 5,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q05-problem.plan.json"
@@ -262,7 +287,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "RATIONAL_AND_DECIMAL_CONCEPTS",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -282,8 +307,8 @@ window.questionBank = [
     "solution": "<보기>의 각 문장의 참, 거짓을 판정하면 다음과 같다. ㄱ. 무한소수 중에는 순환소수와 같이 유리수인 것도 있지만, $\\pi$와 같이 순환하지 않는 무한소수는 유리수가 아니다. 따라서 '무한소수는 모두 유리수이다.'는 옳지 않다. (거짓) ㄴ. 모든 순환소수는 분수 $\\frac{a}{b}$ ($a, b$는 정수, $b \\ne 0$) 꼴로 나타낼 수 있으므로 유리수이다. (참) ㄷ. 기약분수의 분모를 소인수분해했을 때 분모의 소인수가 $2$ 또는 $5$뿐이면 10의 거듭제곱 꼴로 변형할 수 있어 유한소수로 나타낼 수 있다. (참) ㄹ. 기약분수의 분모에 $2$ 또는 $5$ 이외의 소인수(예: $3, 7$ 등)가 있으면 유한소수로 나타낼 수 없고 순환소수로 나타내어진다. 따라서 '모든 기약분수는 분모의 소인수와 관계없이 유한소수로 나타낼 수 있다.'는 옳지 않다. (거짓) 이상에서 옳지 않은 것은 ㄱ, ㄹ이다. 따라서 정답은 ①이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "difficultyBucket": 1,
+    "problemTypeKey": "PT_M2_FINITE_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_CLASSIFICATION"
@@ -292,6 +317,11 @@ window.questionBank = [
       "COND_RATIONAL"
     ],
     "integrationPattern": "PARALLEL",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "유한소수와 무한소수",
+    "rpmPrimaryL4": "유한소수 판별",
+    "rpmPrimaryRecordId": "M2-RPM-119",
     "sourceQid": 6,
     "variationType": "STRUCTURAL",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q06-problem.plan.json"
@@ -311,7 +341,7 @@ window.questionBank = [
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "EXPONENT_LAWS_BASIC",
+    "conceptClusterKey": "EXPONENT_LAW",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -332,8 +362,8 @@ window.questionBank = [
     "score": 3,
     "points": 3,
     "difficultyBucket": 1,
-    "problemTypeKey": "",
-    "templateKey": "",
+    "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+    "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
     "crossConceptKeys": [
       "CC_ALGEBRAIC_SIMPLIFICATION"
     ],
@@ -341,6 +371,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "PARALLEL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "단항식의 계산",
+    "rpmPrimaryL3": "지수법칙",
+    "rpmPrimaryL4": "거듭제곱의 거듭제곱",
+    "rpmPrimaryRecordId": "M2-RPM-126",
     "sourceQid": 7,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q07-problem.plan.json"
@@ -360,7 +395,7 @@ window.questionBank = [
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "NUMBER_OF_DIGITS_EXPONENT",
+    "conceptClusterKey": "EXPONENT_LAW",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -381,7 +416,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_EXPONENT_LAWS",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_PLACE_VALUE"
@@ -390,6 +425,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "단항식의 계산",
+    "rpmPrimaryL3": "지수법칙",
+    "rpmPrimaryL4": "거듭제곱의 곱·몫",
+    "rpmPrimaryRecordId": "M2-RPM-125",
     "sourceQid": 8,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q08-problem.plan.json"
@@ -409,7 +449,7 @@ window.questionBank = [
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "FACTORIAL_PRIME_EXPONENT",
+    "conceptClusterKey": "EXPONENT_LAW",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -429,8 +469,8 @@ window.questionBank = [
     "solution": "$1$부터 $12$까지의 자연수의 곱에서 소인수 $3$의 개수를 구한다. $1$부터 $12$까지의 자연수 중 소인수로 $3$을 포함하는 수들을 소인수분해하면 다음과 같다.\n\n- $3 = 3^1$ ($3$이 $1$개)  \n- $6 = 2 \\times 3^1$ ($3$이 $1$개)  \n- $9 = 3^2$ ($3$이 $2$개)  \n- $12 = 2^2 \\times 3^1$ ($3$이 $1$개) 그 외의 수인 $1, 2, 4, 5, 7, 8, 10, 11$은 소인수 $3$을 갖지 않는다. 따라서 전체 곱에 포함된 소인수 $3$의 총 개수 $a$는 $$ a = 1 + 1 + 2 + 1 = 5 $$ 소인수 $3$을 모두 묶어내면 $3^5 \\times b$의 꼴이 되며, 이때 $b$는 $3$을 소인수로 갖지 않으므로 $3$의 배수가 아니다. 따라서 자연수 $a$의 값은 $5$이다.",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_EXPONENT_LAWS",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_LEAST_COMMON_MULTIPLE"
@@ -439,6 +479,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "단항식의 계산",
+    "rpmPrimaryL3": "지수법칙",
+    "rpmPrimaryL4": "거듭제곱의 곱·몫",
+    "rpmPrimaryRecordId": "M2-RPM-125",
     "sourceQid": 9,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q09-problem.plan.json"
@@ -458,7 +503,7 @@ window.questionBank = [
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "EXPONENT_COMBINED_OPERATIONS",
+    "conceptClusterKey": "EXPONENT_LAW",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -478,8 +523,8 @@ window.questionBank = [
     "solution": "첫 번째 식의 밑을 소인수분해하여 지수법칙을 적용하면 $$ 24 = 2^3 \\times 3,\\qquad 36 = 2^2 \\times 3^2 $$ 이므로 $$ 24^2 = (2^3 \\times 3)^2 = (2^3)^2 \\times 3^2 = 2^6 \\times 3^2 $$ 따라서 첫 번째 식의 좌변은 $$ \\frac{24^2}{36} = \\frac{2^6 \\times 3^2}{2^2 \\times 3^2} = 2^{6-2} = 2^4 $$ $2^4 = 2^a$이므로 $a = 4$이다.\n\n두 번째 식에서 분자는 같은 수 $5^6$을 $5$번 더한 것이므로 곱셈으로 나타내면 $$ 5^6 + 5^6 + 5^6 + 5^6 + 5^6 = 5 \\times 5^6 = 5^{1+6} = 5^7 $$ 분모 $25^2$은 밑을 $5$로 고치면 $$ 25^2 = (5^2)^2 = 5^{2 \\times 2} = 5^4 $$ 따라서 두 번째 식의 좌변은 $$ \\frac{5^7}{5^4} = 5^{7-4} = 5^3 $$ $5^3 = 5^b$이므로 $b = 3$이다.\n\n따라서 구하는 $a+b$의 값은 $$ a + b = 4 + 3 = 7 $$ 그러므로 정답은 ④이다.",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_EXPONENT_LAWS",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_ALGEBRAIC_SUM"
@@ -488,6 +533,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "PARALLEL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "단항식의 계산",
+    "rpmPrimaryL3": "지수법칙",
+    "rpmPrimaryL4": "거듭제곱의 곱·몫",
+    "rpmPrimaryRecordId": "M2-RPM-125",
     "sourceQid": 10,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q10-problem.plan.json"
@@ -507,7 +557,7 @@ window.questionBank = [
     "subUnit": "지수법칙",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "MONOMIAL_OPERATIONS",
+    "conceptClusterKey": "EXPONENT_LAW",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -529,7 +579,7 @@ window.questionBank = [
     "points": 3,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
-    "templateKey": "",
+    "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
     "crossConceptKeys": [
       "CC_MONOMIAL_DIVISION"
     ],
@@ -537,6 +587,11 @@ window.questionBank = [
       "COND_NONZERO"
     ],
     "integrationPattern": "PARALLEL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "단항식의 계산",
+    "rpmPrimaryL3": "단항식의 곱셈과 나눗셈",
+    "rpmPrimaryL4": "단항식의 나눗셈",
+    "rpmPrimaryRecordId": "M2-RPM-128",
     "sourceQid": 11,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q11-problem.plan.json"
@@ -556,7 +611,7 @@ window.questionBank = [
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "POLYNOMIAL_DIVISION_BY_MONOMIAL",
+    "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -577,7 +632,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_POLYNOMIAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_POLYNOMIAL_DIVISION_BY_MONOMIAL"
@@ -586,6 +641,11 @@ window.questionBank = [
       "COND_NONZERO"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "다항식의 계산",
+    "rpmPrimaryL3": "단항식과 다항식의 곱셈·나눗셈",
+    "rpmPrimaryL4": "다항식을 단항식으로 나누기",
+    "rpmPrimaryRecordId": "M2-RPM-133",
     "sourceQid": 12,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q12-problem.plan.json"
@@ -605,7 +665,7 @@ window.questionBank = [
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "MAGIC_SQUARE_POLYNOMIAL",
+    "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -625,8 +685,8 @@ window.questionBank = [
     "solution": "$3 \\times 3$ 마방진에서 가로, 세로, 대각선에 있는 세 다항식의 합을 $S$라 하자. 중앙에 위치한 다항식은 $x^2 + 2x - 3$이므로, 마방진의 성질에 의해 한 줄의 합 $S$는 중앙 다항식의 $3$배와 같다. $$ S = 3(x^2 + 2x - 3) = 3x^2 + 6x - 9 $$ 먼저 제2행(가로 둘째 줄)의 세 다항식의 합이 $S$이므로 $$ (x^2 - x + 4) + (x^2 + 2x - 3) + A = 3x^2 + 6x - 9 $$ 좌변의 동류항을 정리하면 $$ (2x^2 + x + 1) + A = 3x^2 + 6x - 9 $$ 따라서 $A$는 $$ A = (3x^2 + 6x - 9) - (2x^2 + x + 1) = x^2 + 5x - 10 $$ 다음으로 제3행 제1열의 칸을 $C_{31}$이라 하면, 오른쪽 위에서 왼쪽 아래로 이어지는 대각선의 세 다항식의 합이 $S$이므로 $$ C_{31} + (x^2 + 2x - 3) + (2x^2 + x + 1) = 3x^2 + 6x - 9 $$ $$ C_{31} + (3x^2 + 3x - 2) = 3x^2 + 6x - 9 \\implies C_{31} = 3x - 7 $$ 이제 제1열(세로 첫째 줄)의 세 다항식의 합이 $S$이므로, 제1행 제1열의 칸을 $C_{11}$이라 하면 $$ C_{11} + (x^2 - x + 4) + C_{31} = 3x^2 + 6x - 9 $$ $$ C_{11} + (x^2 - x + 4) + (3x - 7) = 3x^2 + 6x - 9 $$ $$ C_{11} + (x^2 + 2x - 3) = 3x^2 + 6x - 9 \\implies C_{11} = 2x^2 + 4x - 6 $$ 이제 제1행(가로 첫째 줄)의 세 다항식의 합이 $S$이므로 $$ C_{11} + B + (2x^2 + x + 1) = 3x^2 + 6x - 9 $$ $$ (2x^2 + 4x - 6) + B + (2x^2 + x + 1) = 3x^2 + 6x - 9 $$ $$ (4x^2 + 5x - 5) + B = 3x^2 + 6x - 9 $$ $$ B = (3x^2 + 6x - 9) - (4x^2 + 5x - 5) = -x^2 + x - 4 $$ 따라서 구하는 $A - B$의 값은 $$ A - B = (x^2 + 5x - 10) - (-x^2 + x - 4) = 2x^2 + 4x - 6 $$ 그러므로 정답은 ⑤이다.",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 4,
-    "problemTypeKey": "",
+    "difficultyBucket": 3,
+    "problemTypeKey": "PT_M2_POLYNOMIAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_POLYNOMIAL_SUBTRACTION"
@@ -635,6 +695,11 @@ window.questionBank = [
       "COND_ALGEBRAIC_MODELING"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "다항식의 계산",
+    "rpmPrimaryL3": "다항식의 덧셈과 뺄셈",
+    "rpmPrimaryL4": "동류항 정리",
+    "rpmPrimaryRecordId": "M2-RPM-130",
     "sourceQid": 13,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q13-problem.plan.json"
@@ -654,7 +719,7 @@ window.questionBank = [
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "POLYNOMIAL_NESTED_BRACKETS",
+    "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -675,7 +740,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_POLYNOMIAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_POLYNOMIAL_SUBTRACTION"
@@ -684,6 +749,11 @@ window.questionBank = [
       "COND_ALGEBRAIC_MODELING"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "다항식의 계산",
+    "rpmPrimaryL3": "다항식의 덧셈과 뺄셈",
+    "rpmPrimaryL4": "괄호가 있는 계산",
+    "rpmPrimaryRecordId": "M2-RPM-131",
     "sourceQid": 14,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q14-problem.plan.json"
@@ -703,7 +773,7 @@ window.questionBank = [
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "INEQUALITY_MODELING_STATEMENTS",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -723,8 +793,8 @@ window.questionBank = [
     "solution": "<보기>의 각 문장을 부등식으로 바르게 나타내어 판정하면 다음과 같다. ㄱ. 동생의 나이가 $x$살이고 형의 나이는 동생보다 $4$살 많으므로 $(x + 4)$살이다. 두 사람의 나이의 합은 $x + (x + 4) = 2x + 4$이다. 따라서 '나이의 합이 30 이상이다'를 부등식으로 나타내면 $$ 2x + 4 \\ge 30 $$ 이어야 한다. 보기의 $x + 4 \\ge 30$은 동생의 나이가 빠졌으므로 옳지 않다. (거짓) ㄴ. $a,\\text{kg}$인 상자 $3$개의 무게는 $3a,\\text{kg}$이고, $5,\\text{kg}$인 가방을 더한 총 무게는 $(3a + 5),\\text{kg}$이다. '총 무게가 $35,\\text{kg}$ 이하이다'를 부등식으로 나타내면 $$ 3a + 5 \\le 35 $$ 이므로 옳다. (참) ㄷ. 어떤 수 $x$에서 $6$을 뺀 값은 $(x - 6)$이고, 그 값의 $2$배는 $2(x - 6)$이다. '작지 않다'는 '크거나 같다($\\ge$)'와 같은 뜻이므로 $$ 2(x - 6) \\ge 14 $$ 이므로 옳다. (참) 따라서 옳게 나타낸 것은 ㄴ, ㄷ이다. 그러므로 정답은 ④이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "difficultyBucket": 1,
+    "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_APPLIED_WORD_PROBLEMS"
@@ -733,6 +803,11 @@ window.questionBank = [
       "COND_INEQUALITY_CONSTRAINT"
     ],
     "integrationPattern": "PARALLEL",
+    "rpmPrimaryL1": "일차부등식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "부등식의 성질",
+    "rpmPrimaryL4": "부등식의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-136",
     "sourceQid": 15,
     "variationType": "STRUCTURAL",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q15-problem.plan.json"
@@ -752,7 +827,7 @@ window.questionBank = [
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_INEQUALITY_IDENTIFICATION",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -774,7 +849,7 @@ window.questionBank = [
     "points": 3,
     "difficultyBucket": 1,
     "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
-    "templateKey": "",
+    "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
     "crossConceptKeys": [
       "CC_INEQUALITY_IDENTIFICATION"
     ],
@@ -782,6 +857,11 @@ window.questionBank = [
       "COND_POLYNOMIAL_DEGREE_ONE"
     ],
     "integrationPattern": "PARALLEL",
+    "rpmPrimaryL1": "일차부등식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "부등식의 성질",
+    "rpmPrimaryL4": "부등식의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-136",
     "sourceQid": 16,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q16-problem.plan.json"
@@ -801,7 +881,7 @@ window.questionBank = [
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "LINEAR_INEQUALITY_NATURAL_SOLUTIONS",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -822,7 +902,7 @@ window.questionBank = [
     "score": 4,
     "points": 4,
     "difficultyBucket": 2,
-    "problemTypeKey": "",
+    "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_LINEAR_INEQUALITIES"
@@ -831,6 +911,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차부등식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "해의 조건",
+    "rpmPrimaryL4": "정수해 개수",
+    "rpmPrimaryRecordId": "M2-RPM-140",
     "sourceQid": 17,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q17-problem.plan.json"
@@ -850,7 +935,7 @@ window.questionBank = [
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "INEQUALITY_PROPERTIES_NUMBER_LINE",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -870,9 +955,9 @@ window.questionBank = [
     "solution": "세 수의 부호와 대소 관계는 $a < 0$이고 $0 < b < c$이다. 부등식의 성질을 이용하여 각 선지의 참, 거짓을 확인한다. ① $b < c$의 양변에 음수 $a$를 곱하면 부등호의 방향이 반대로 바뀌므로 $$ ab > ac\\text{ (참)} $$ ② $a < b$의 양변을 양수 $c$로 나누면 부등호의 방향이 바뀌지 않으므로 $$ \\frac{a}{c} < \\frac{b}{c}\\text{ (참)} $$ ③ $a < c$의 양변에 음수 $-1$을 곱하면 부등호의 방향이 반대로 바뀌므로 $$ -a > -c\\text{ (참)} $$ ④ $a < b$의 양변에서 같은 수 $c$를 빼도 부등호의 방향은 바뀌지 않으므로 $$ a - c < b - c\\text{ (참)} $$ ⑤ $0 < b < c$에서 양변을 양수 $bc$로 나누면 $$ \\frac{b}{bc} < \\frac{c}{bc} \\implies \\frac{1}{c} < \\frac{1}{b} \\implies \\frac{1}{b} > \\frac{1}{c} $$ 따라서 $\\frac{1}{b} < \\frac{1}{c}$는 옳지 않다. (거짓) 그러므로 옳지 않은 것은 ⑤이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 3,
+    "difficultyBucket": 2,
     "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
-    "templateKey": "",
+    "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
     "crossConceptKeys": [
       "CC_DIRECTION_OF_INEQUALITY"
     ],
@@ -880,6 +965,11 @@ window.questionBank = [
       "COND_INEQUALITY_CONSTRAINT"
     ],
     "integrationPattern": "PARALLEL",
+    "rpmPrimaryL1": "일차부등식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "부등식의 성질",
+    "rpmPrimaryL4": "부등식의 성질",
+    "rpmPrimaryRecordId": "M2-RPM-136",
     "sourceQid": 18,
     "variationType": "STRUCTURAL",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q18-problem.plan.json"
@@ -899,7 +989,7 @@ window.questionBank = [
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SAME_SOLUTION_INEQUALITIES",
+    "conceptClusterKey": "LINEAR_INEQUALITY",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -919,8 +1009,8 @@ window.questionBank = [
     "solution": "첫 번째 일차부등식의 양변에 분모의 최소공배수 $6$을 곱하면 $$ 3(x - 1) - 2x \\le 6a $$ 괄호를 풀고 좌변을 정리하면 $$ 3x - 3 - 2x \\le 6a \\implies x - 3 \\le 6a $$ $-3$을 우변으로 이항하면 $$ x \\le 6a + 3 $$ 이 부등식의 해가 $x \\le -1$과 같으므로 $$ 6a + 3 = -1 \\implies 6a = -4 \\implies a = -\\frac{2}{3} $$ 두 번째 일차부등식 $x + 4 \\le b$에서 $4$를 우변으로 이항하면 $$ x \\le b - 4 $$ 이 부등식의 해 역시 $x \\le -1$과 같으므로 $$ b - 4 = -1 \\implies b = 3 $$ 따라서 상수 $a$와 $b$의 곱 $ab$의 값은 $$ ab = \\left(-\\frac{2}{3}\\right) \\times 3 = -2 $$ 그러므로 정답은 ②이다.",
     "score": 5,
     "points": 5,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_COEFFICIENT_DETERMINATION"
@@ -929,6 +1019,11 @@ window.questionBank = [
       "COND_RATIONAL_COEFFICIENTS"
     ],
     "integrationPattern": "PARALLEL",
+    "rpmPrimaryL1": "일차부등식",
+    "rpmPrimaryL2": "일차부등식",
+    "rpmPrimaryL3": "일차부등식의 풀이",
+    "rpmPrimaryL4": "괄호·분수·소수가 있는 부등식",
+    "rpmPrimaryRecordId": "M2-RPM-139",
     "sourceQid": 19,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q19-problem.plan.json"
@@ -948,7 +1043,7 @@ window.questionBank = [
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "DIGIT_SWAP_INEQUALITY",
+    "conceptClusterKey": "LINEAR_INEQUALITY_WORD_PROBLEM",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -968,8 +1063,8 @@ window.questionBank = [
     "solution": "두 자리 자연수 $A$의 십의 자리 숫자가 $x$이고, 일의 자리 숫자는 $x$보다 $3$만큼 크므로 일의 자리 숫자는 $$ x + 3 $$ 따라서 처음 두 자리 자연수 $A$의 값은 $$ A = 10 \\times x + (x + 3) = 10x + (x + 3) $$ 십의 자리 숫자와 일의 자리 숫자를 맞바꾼 수는 십의 자리 숫자가 $(x + 3)$이고 일의 자리 숫자가 $x$이므로 $$ \\text{(맞바꾼 수)} = 10(x + 3) + x $$ 문제에서 맞바꾼 수가 처음 수 $A$의 $2$배보다 작다고 하였으므로 $$ \\text{(맞바꾼 수)} < 2 \\times A $$ 이 관계를 $x$에 대한 식으로 나타내면 $$ 10(x + 3) + x < 2{10x + (x + 3)} $$ 따라서 옳은 부등식은 ④이다.",
     "score": 4,
     "points": 4,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_PLACE_VALUE"
@@ -978,6 +1073,11 @@ window.questionBank = [
       "COND_INEQUALITY_CONSTRAINT"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차부등식",
+    "rpmPrimaryL2": "일차부등식의 활용",
+    "rpmPrimaryL3": "수량 관계",
+    "rpmPrimaryL4": "이상·이하 조건",
+    "rpmPrimaryRecordId": "M2-RPM-142",
     "sourceQid": 20,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q20-problem.plan.json"
@@ -997,7 +1097,7 @@ window.questionBank = [
     "subUnit": "유리수와 순환소수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "FINITE_VS_REPEATING_DECIMAL_ESSAY",
+    "conceptClusterKey": "REPEATING_DECIMAL",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1011,8 +1111,8 @@ window.questionBank = [
     "solution": "(1) 분모 $180$을 소인수분해하면 $$ 180 = 2^2 \\times 3^2 \\times 5 $$ 분수 $\\frac{n}{180} = \\frac{n}{2^2 \\times 3^2 \\times 5}$이 유한소수가 되려면 기약분수로 나타내었을 때 분모의 소인수가 $2$ 또는 $5$뿐이어야 하므로, 분자 $n$은 분모의 소인수 $3^2=9$를 약분하여 없앨 수 있어야 한다. 따라서 $n$은 $9$의 배수이어야 한다. 그러므로 구하는 가장 작은 자연수 $n$의 값은 $9$이다. [3점]\n\n(2) $180$ 이하의 자연수 $n$의 전체 개수는 $180$개이다. $\\frac{n}{180}$이 유한소수가 되는 경우는 (1)에 의해 $n$이 $9$의 배수인 경우이다. $180$ 이하의 자연수 중 $9$의 배수의 개수는 $$ 180 \\div 9 = 20\\text{ (개)} $$ $180$ 이하의 자연수 $n$에 대하여 $\\frac{n}{180}$은 유한소수이거나 순환소수이므로, 순환소수가 되는 $n$의 개수는 전체 개수에서 유한소수가 되는 개수를 뺀 것과 같다. $$ 180 - 20 = 160\\text{ (개)} $$ 따라서 구하는 자연수 $n$의 개수는 $160$개이다. [4점]",
     "score": 7,
     "points": 7,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_FINITE_DECIMAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_NUMBER_OF_ELEMENTS"
@@ -1021,6 +1121,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "유리수와 순환소수",
+    "rpmPrimaryL2": "유리수와 순환소수",
+    "rpmPrimaryL3": "유한소수와 무한소수",
+    "rpmPrimaryL4": "분모의 소인수 조건",
+    "rpmPrimaryRecordId": "M2-RPM-120",
     "sourceQid": 21,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q21-problem.plan.json"
@@ -1040,7 +1145,7 @@ window.questionBank = [
     "subUnit": "다항식의 계산",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "SOLID_VOLUME_EQUALITY",
+    "conceptClusterKey": "POLYNOMIAL_OPERATIONS",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1054,8 +1159,8 @@ window.questionBank = [
     "solution": "(1) 원뿔의 부피는 $\\frac{1}{3} \\times (\\text{밑넓이}) \\times (\\text{높이})$이다. 종이컵 (가)의 밑면의 반지름이 $6\\rm,cm$이므로 밑넓이는 $$ \\pi \\times 6^2 = 36\\pi\\rm,cm^2 $$ 높이가 $12\\rm,cm$이므로 종이컵 (가)의 부피 $V$는 $$ V = \\frac{1}{3} \\times 36\\pi \\times 12 = 144\\pi\\rm,cm^3 $$ 따라서 종이컵 (가)의 부피는 $144\\pi\\rm,cm^3$이다. [3점]\n\n(2) 텀블러 (나)에 채워진 물의 높이를 $h\\rm,cm$라 하자. 텀블러 (나)는 밑면의 반지름의 길이가 $4\\rm,cm$인 원기둥 모양이므로 밑넓이는 $$ \\pi \\times 4^2 = 16\\pi\\rm,cm^2 $$ 텀블러에 채워진 물의 부피는 $(\\text{밑넓이}) \\times (\\text{물의 높이})$이므로 $$ 16\\pi \\times h\\rm,cm^3 $$ 이 물의 부피는 종이컵 (가)에 가득 찬 물의 부피 $144\\pi\\rm,cm^3$와 같으므로 다음과 같은 방정식을 세울 수 있다. $$ 16\\pi h = 144\\pi $$ 양변을 $16\\pi$로 나누어 $h$를 구하면 $$ h = \\frac{144\\pi}{16\\pi} = 9 $$ 따라서 텀블러 (나)에 채워진 물의 높이는 $9\\rm,cm$이다. [4점]",
     "score": 7,
     "points": 7,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_POLYNOMIAL",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_CONE_VOLUME",
@@ -1065,6 +1170,11 @@ window.questionBank = [
       "COND_POSITIVE"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "식의 계산",
+    "rpmPrimaryL2": "다항식의 계산",
+    "rpmPrimaryL3": "식의 값과 활용",
+    "rpmPrimaryL4": "식의 값",
+    "rpmPrimaryRecordId": "M2-RPM-134",
     "sourceQid": 22,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q22-problem.plan.json"
@@ -1084,7 +1194,7 @@ window.questionBank = [
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "conceptClusterKey": "COST_COMPARISON_INEQUALITY",
+    "conceptClusterKey": "LINEAR_INEQUALITY_WORD_PROBLEM",
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -1098,8 +1208,8 @@ window.questionBank = [
     "solution": "볼펜을 $x$묶음 ($x$는 자연수) 산다고 하자. $1$묶음에 $5$자루가 들어 있으므로, 총 구매하는 볼펜의 수는 $5x$자루이다.\n\n1) 동네 문구점에서 볼펜 $5x$자루를 살 때 드는 비용은 $$ 1200 \\times 5x = 6000x\\text{ (원)} $$ 이다.  \n     \n2) 대형 할인점에서 볼펜 $x$묶음을 살 때 드는 총 비용은 볼펜 가격에 왕복 버스비를 더해야 하므로 $$ 4200x + 3000\\text{ (원)} $$ 이다.\n\n대형 할인점에서 사는 것이 더 저렴하려면 대형 할인점의 총비용이 동네 문구점의 총비용보다 작아야 하므로 $$ 4200x + 3000 < 6000x $$ $4200x$를 우변으로 이항하면 $$ 3000 < 6000x - 4200x \\implies 1800x > 3000 $$ 양변을 $1800$으로 나누면 $$ x > \\frac{3000}{1800} = \\frac{5}{3} = 1.666\\cdots $$ $x$는 자연수이므로 $x$의 최솟값은 $2$이다. 따라서 볼펜을 최소 $2$묶음 이상 사야 대형 할인점에서 사는 것이 더 저렴하다. [6점]",
     "score": 6,
     "points": 6,
-    "difficultyBucket": 3,
-    "problemTypeKey": "",
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
     "templateKey": "",
     "crossConceptKeys": [
       "CC_UNIT_PRICE"
@@ -1108,6 +1218,11 @@ window.questionBank = [
       "COND_NATURAL"
     ],
     "integrationPattern": "SEQUENTIAL",
+    "rpmPrimaryL1": "일차부등식",
+    "rpmPrimaryL2": "일차부등식의 활용",
+    "rpmPrimaryL3": "비율·가격·도형",
+    "rpmPrimaryL4": "할인·이익",
+    "rpmPrimaryRecordId": "M2-RPM-146",
     "sourceQid": 23,
     "variationType": "NUMERIC",
     "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_연향중_1학기_중간_중2_유사_plans/q23-problem.plan.json"
