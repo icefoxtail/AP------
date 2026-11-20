@@ -1,0 +1,67 @@
+{
+  "qid": 4,
+  "itemFingerprint": "cbf9f1d119b13901",
+  "solveSteps": [
+    "기약분수의 분모 소인수가 2 또는 5뿐이면 유한소수이다.",
+    "① 1/(3*5): 분모에 소인수 3이 있어 순환소수이다.",
+    "② 15/(2^3 * 3 * 5) = (3*5)/(2^3 * 3 * 5) = 1/2^3: 분모 소인수가 2뿐이므로 유한소수이다.",
+    "③ 11/36 = 11/(2^2 * 3^2): 분모에 소인수 3이 있어 순환소수이다.",
+    "④ (3*7)/(2 * 3^2 * 5 * 7) = 1/(2 * 3 * 5): 분모에 소인수 3이 있어 순환소수이다.",
+    "⑤ (3*13)/(5*11): 분모에 소인수 11이 있어 순환소수이다.",
+    "따라서 유한소수로 나타낼 수 있는 것은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "다음 분수 중 소수로 나타내었을 때 유한소수로 나타낼 수 있는 것은?",
+  "rpmRecordId": "M2-RPM-119",
+  "rpmReason": "선지 $\\frac{15}{2^3 \\times 3 \\times 5}$를 약분하여 $\\frac{1}{2^3}$로 만들고 분모 소인수가 2뿐임을 확인하는 유한소수 판별 문항이다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "선지 $\\frac{15}{2^3 \\times 3 \\times 5}$ 등 주어진 분수들을 약분하여 기약분수 분모의 소인수를 분석하고 유한소수를 선별하는 유한소수 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "기약분수 변환 후 분모의 소인수를 확인하는 기본 판별 절차로 $\\frac{15}{2^3 \\times 3 \\times 5} = \\frac{1}{2^3}$을 찾으므로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "유한소수",
+        "src": "stem",
+        "quote": "나타내었을 때 유한소수로 나타낼 수 있는 것은? [4점]"
+      }
+    ],
+    "goal": [
+      {
+        "term": "유한소수",
+        "src": "stem",
+        "quote": "유한소수로 나타낼 수 있는 것은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "기약분수",
+        "src": "solution",
+        "quote": "기약분수로 나타내었을 때 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$\\frac{15}{2^3 \\times 3 \\times 5} = \\frac{1}{2^3}$에서 분모 소인수가 2뿐이어서 유한소수로 나타낼 수 있음을 확인하고 ②로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

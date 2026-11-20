@@ -1,0 +1,68 @@
+{
+  "qid": 12,
+  "itemFingerprint": "abc6986844c6710a",
+  "solveSteps": [
+    "1) 나눗셈을 분모로 보낸다: (3x^4 y^3 * 4x^2) / (x^5 * x^2 y)",
+    "2) 분자 정리: (3 * 4) * x^(4+2) * y^3 = 12x^6 y^3",
+    "3) 분모 정리: x^(5+2) * y = x^7 y",
+    "4) 약분: 12x^6 y^3 / (x^7 y) = 12y^(3-1) / x^(7-6) = 12y^2 / x",
+    "따라서 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "unitEvidence": "$3x^4y^3 \\times 4x^2 \\div x^5 \\div x^2y$를 계산한 식은? [4점]",
+  "rpmRecordId": "M2-RPM-129",
+  "rpmReason": "단항식 $3x^4y^3 \\times 4x^2 \\div x^5 \\div x^2y$의 곱셈과 나눗셈을 한 번에 정리하여 $\\frac{12y^2}{x}$를 구하는 혼합 계산 문항이다.",
+  "problemTypeKey": "PT_M2_MONOMIAL",
+  "templateKey": "NONE",
+  "typeReason": "단항식의 곱셈과 나눗셈 $3x^4y^3 \\times 4x^2 \\div x^5 \\div x^2y$에서 계수와 문자의 지수를 정리하여 $\\frac{12y^2}{x}$를 계산하는 단항식 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "단항식의 곱셈 및 나눗셈 규칙을 직접 적용하여 분자 $12x^6y^3$, 분모 $x^7y$에서 $\\frac{12y^2}{x}$를 구하는 기본 계산으로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "분모",
+        "src": "solution",
+        "quote": "나눗셈을 분모로 보내거나 역수의 곱셈으로 바꾸어 한 번에 계산한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "goal": [
+      {
+        "term": "분자",
+        "src": "solution",
+        "quote": "분자와 분모의 계수 및 문자를 각각 정리하면",
+        "evidenceType": "IMPLIED",
+        "justification": "정리된 식 도출"
+      }
+    ],
+    "method": [
+      {
+        "term": "계수",
+        "src": "solution",
+        "quote": "분자와 분모의 계수 및 문자를 각각 정리하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "분자 $12x^6y^3$과 분모 $x^7y$를 약분하여 $\\frac{12y^2}{x}$를 얻어 ①로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

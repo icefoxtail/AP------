@@ -1,0 +1,66 @@
+{
+  "qid": 21,
+  "itemFingerprint": "f82946f2f9cc774a",
+  "solveSteps": [
+    "1) 민호: 0.4\\dot{6} = (46 - 4)/90 = 42/90 = 7/15. 분모를 잘못 보았으므로 원래 기약분수의 분자는 7이다.",
+    "2) 서연: 0.\\dot{4}\\dot{1} = 41/99. 분자를 잘못 보았으므로 원래 기약분수의 분모는 99이다.",
+    "3) 따라서 처음의 기약분수는 7/99이다.",
+    "4) 7/99를 순환소수로 나타내면 0.0707... = 0.\\dot{0}\\dot{7}이다."
+  ],
+  "solvedAnswer": "$0.\\dot{0}\\dot{7}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "민호와 서연이가 어떤 기약분수를 순환소수로 각각 나타내고 나눈 대화",
+  "rpmRecordId": "M2-RPM-122",
+  "rpmReason": "0.4\\dot{6}과 0.\\dot{4}\\dot{1}을 기약분수로 나타내어 바른 분자와 분모를 찾는 순환소수를 분수로 나타내는 문제이므로 M2-RPM-122가 적합하다.",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "0.4\\dot{6}과 0.\\dot{4}\\dot{1}의 순환마디 성질을 이용하여 원래 분수를 복원하고 0.\\dot{0}\\dot{7}로 표현하는 문제이므로 PT_M2_REPEATING_DECIMAL로 판정한다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "0.4\\dot{6}과 0.\\dot{4}\\dot{1}을 분수로 변환하여 분모와 분자를 구하고 다시 순환소수로 바꾸는 2단계 이상의 기본 서술형 계산이므로 2로 평가한다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "기약분수",
+        "src": "stem",
+        "quote": "서연이가 어떤 기약분수를 순환소수로"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "떤 기약분수를 순환소수로 각각 나타내"
+      }
+    ],
+    "method": [
+      {
+        "term": "약분",
+        "src": "solution",
+        "quote": "순환소수를 기약분수로 나타내어",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "민호의 0.4\\dot{6}=7/15에서 분자 7, 서연의 0.\\dot{4}\\dot{1}=41/99에서 분모 99를 찾아 처음 기약분수 7/99=0.\\dot{0}\\dot{7}를 구하여 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficulty": 2,
+  "isBorderline": false
+}

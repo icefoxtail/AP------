@@ -1,0 +1,67 @@
+{
+  "qid": 5,
+  "itemFingerprint": "0d0dd7ab2c65f945",
+  "solveSteps": [
+    "1) 18 / (2 * 5^2 * a) = 9 / (5^2 * a) = 3^2 / (25a)",
+    "2) 순환소수가 되려면 기약분수 분모에 2, 5 이외의 소인수가 남아 있어야 한다.",
+    "3) 전체 두 자리 자연수 10~99의 개수는 90개이다.",
+    "4) 유한소수가 되는 경우: a = 2^m * 5^n * c (c in {1, 3, 9})",
+    "   c = 1: 9개, c = 3: 8개, c = 9: 5개 => 총 22개",
+    "5) 순환소수가 되는 a의 개수: 90 - 22 = 68개",
+    "따라서 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "분수 $\\dfrac{18}{2 \\times 5^2 \\times a}$을 소수로 나타내면 순환소수가 된다.",
+  "rpmRecordId": "M2-RPM-120",
+  "rpmReason": "식 $\\frac{18}{2 \\times 5^2 \\times a}$에서 유한소수가 되는 $a$ 22개를 여사건으로 제외하여 68개를 구하는 분모의 소인수 조건 문항이다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "기약분수 분모의 소인수 조건을 분석하여 순환소수를 만드는 두 자리 자연수 $a$의 개수 68개를 구하는 유한소수 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "두 자리 수 전체 90개 중 분모 소인수 조건으로 유한소수가 되는 22개를 분류하여 세고 $90 - 22 = 68$을 계산하므로 난이도 3이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "수로 나타내면 순환소수가 된다. 이때 $a$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "자리 자연수의 개수는? [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "기약분수",
+        "src": "solution",
+        "quote": "주어진 분수를 기약분수 형태로 정리하면 $$ \\frac{18}{2 \\times 5^2 \\times a} = \\frac{9}{5^2 \\times a}",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "전체 두 자리 자연수 90개에서 유한소수가 되는 22개를 제외하여 $90 - 22 = 68$개를 도출하여 ③으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

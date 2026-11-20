@@ -1,0 +1,66 @@
+{
+  "qid": 22,
+  "itemFingerprint": "b97ca3d5d4e693e8",
+  "solveSteps": [
+    "1) 어떤 식을 A라 하면 잘못 계산한 식은 A - (2a^2 - 3ab + b^2) = a^2 + 4ab - 3b^2이다.",
+    "2) A = (a^2 + 4ab - 3b^2) + (2a^2 - 3ab + b^2) = 3a^2 + ab - 2b^2이다.",
+    "3) 바르게 계산한 결과는 A + (2a^2 - 3ab + b^2)이다.",
+    "4) (3a^2 + ab - 2b^2) + (2a^2 - 3ab + b^2) = 5a^2 - 2ab - b^2이다."
+  ],
+  "solvedAnswer": "$5a^2 - 2ab - b^2$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "unitEvidence": "어떤 식에 $2a^2 - 3ab + b^2$을 더해야 할 것을 잘못하여 뺐더니 $a^2 + 4ab - 3b^2$이 되었다.",
+  "rpmRecordId": "M2-RPM-130",
+  "rpmReason": "어떤 식에서 2a^2 - 3ab + b^2을 잘못 뺀 식 a^2 + 4ab - 3b^2에서 동류항을 정리하여 원래 식을 구하고 바르게 계산하는 문제이므로 M2-RPM-130이 적합하다.",
+  "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+  "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+  "typeReason": "2a^2 - 3ab + b^2을 잘못 뺀 식 a^2 + 4ab - 3b^2으로부터 바른 계산 결과를 복원하는 전형적인 다항식 바른 계산 유형이므로 PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION과 TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION으로 판정한다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "2a^2 - 3ab + b^2을 역연산하여 A를 구하고 다시 덧셈하는 2단계 다항식 서술형 연산이므로 난이도 2로 판정한다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "양화",
+        "src": "stem",
+        "quote": "술형 2]   어떤 식에 $2a^"
+      }
+    ],
+    "goal": [
+      {
+        "term": "양화",
+        "src": "solution",
+        "quote": "1단계: 어떤 식을 구한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "동류항",
+        "src": "solution",
+        "quote": "b^2) $$ 동류항끼리 묶어 계산",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "어떤 식 A를 구한 뒤 2a^2 - 3ab + b^2을 더해 5a^2 - 2ab - b^2을 도출하여 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficulty": 2,
+  "isBorderline": false
+}

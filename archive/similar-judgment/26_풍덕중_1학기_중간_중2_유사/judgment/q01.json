@@ -1,0 +1,66 @@
+{
+  "qid": 1,
+  "itemFingerprint": "62cae32b24579e89",
+  "solveSteps": [
+    "소수점 아래 숫자가 끝없이 계속되는 소수를 무한소수라고 한다.",
+    "ㄱ. 2.718: 소수점 아래 자릿수가 3자리로 유한하므로 유한소수이다.",
+    "ㄴ. -1.4142142...: 소수점 아래 숫자가 끝없이 계속되므로 무한소수이다.",
+    "ㄷ. pi = 3.141592...: 순환하지 않는 무한소수이다.",
+    "ㄹ. 0.2(dot)7(dot) = 0.2727...: 순환소수이므로 무한소수이다.",
+    "따라서 무한소수는 ㄴ, ㄷ, ㄹ이므로 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "다음 중에서 무한소수를 모두 고른 것은? [3점]",
+  "rpmRecordId": "M2-RPM-119",
+  "rpmReason": "보기 ㄱ 2.718, ㄴ -1.4142142..., ㄷ pi, ㄹ 0.2(dot)7(dot)의 소수점 아래 자릿수를 확인하여 무한소수를 가려내는 유한소수 판별 문항이다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "주어진 수 2.718, -1.4142142..., pi, 0.2(dot)7(dot) 중 무한소수인 것을 선별하는 유한소수 및 무한소수 분류 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "무한소수의 정의에 따라 2.718은 유한소수이고 ㄴ, ㄷ, ㄹ은 무한소수임을 판별하는 기본 개념 문항으로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "무한소수",
+        "src": "stem",
+        "quote": "다음 중에서 무한소수를 모두 고른 것은? [3점]"
+      }
+    ],
+    "goal": [
+      {
+        "term": "무한소수",
+        "src": "stem",
+        "quote": "다음 중에서 무한소수를 모두 고른 것은? [3점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "무한소수",
+        "src": "solution",
+        "quote": "소수점 아래의 $0$이 아닌 숫자가 끝없이 계속되는 소수를 무한소수라고 한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "소수점 아래가 무한히 이어지는 ㄴ (-1.4142142...), ㄷ (pi), ㄹ (0.2(dot)7(dot))을 골라 ⑤를 정답으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
