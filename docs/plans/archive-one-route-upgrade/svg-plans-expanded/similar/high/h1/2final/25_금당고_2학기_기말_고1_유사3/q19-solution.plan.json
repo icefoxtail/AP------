@@ -26,7 +26,8 @@
      "6"
     ],
     "abs": true,
-    "color": "BLUE"
+    "color": "BLUE",
+    "hideLabel": true
    },
    {
     "id": "h",
@@ -41,7 +42,7 @@
     ],
     "style": "DASHED",
     "color": "WARM",
-    "label": "y=3"
+    "hideLabel": true
    },
    {
     "id": "m",
@@ -56,7 +57,7 @@
     ],
     "style": "DASHED",
     "color": "GREEN",
-    "label": "y=7"
+    "hideLabel": true
    }
   ],
   "overlays": {
@@ -71,13 +72,13 @@
      "id": "A",
      "x": "0",
      "y": "3",
-     "coordinates": true
+     "unnamed": true
     },
     {
      "id": "B",
      "x": "4",
      "y": "3",
-     "coordinates": true
+     "unnamed": true
     },
     {
      "id": "i1",
@@ -90,29 +91,28 @@
      "x": "2+sqrt(10)",
      "y": "3",
      "unnamed": true
-    },
-    {
-     "id": "cc",
-     "x": "5",
-     "y": "2",
-     "unnamed": true
     }
    ],
    "callouts": [
     {
-     "id": "cf",
-     "point": "cc",
-     "text": "y=abs(x^2-4x-3)",
+     "id": "zA",
+     "point": "A",
+     "text": "A(0,3)",
      "labelKind": "MATH",
-     "direction": "SE"
+     "direction": "NE"
+    },
+    {
+     "id": "zB",
+     "point": "B",
+     "text": "B(4,3)",
+     "labelKind": "MATH",
+     "direction": "NE"
     }
    ]
   }
  },
  "pointNames": {
-  "V": "V",
-  "A": "A",
-  "B": "B"
+  "V": "V"
  },
  "caption": "y=|x²-4x-3|=|(x-2)²-7|의 그래프는 꼭짓점 (2,-7)을 x축 위로 접어 올린 모양이어서 (2,7)에서 극대이다. 직선 y=k가 서로 다른 네 점에서 만나려면 0<k<7이다. 예로 k=3이면 네 교점이 생기고 그중 두 점은 (0,3), (4,3)이다. 이러한 정수 k는 1부터 6까지 6개이므로 답은 ②이다.",
  "sourceConditions": [

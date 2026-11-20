@@ -14,7 +14,7 @@
   },
   "curves": [
    {
-    "id": "f1",
+    "id": "f",
     "kind": "Y_OF_X",
     "coefficients": [
      "4",
@@ -23,38 +23,9 @@
     ],
     "domain": [
      "-2/5",
-     "3-sqrt(5)"
-    ],
-    "color": "BLUE",
-    "hideLabel": true
-   },
-   {
-    "id": "f2",
-    "kind": "Y_OF_X",
-    "coefficients": [
-     "-4",
-     "6",
-     "-1"
-    ],
-    "domain": [
-     "3-sqrt(5)",
-     "3+sqrt(5)"
-    ],
-    "color": "BLUE",
-    "hideLabel": true
-   },
-   {
-    "id": "f3",
-    "kind": "Y_OF_X",
-    "coefficients": [
-     "4",
-     "-6",
-     "1"
-    ],
-    "domain": [
-     "3+sqrt(5)",
      "32/5"
     ],
+    "abs": true,
     "color": "BLUE",
     "hideLabel": true
    },
@@ -71,7 +42,7 @@
     ],
     "style": "DASHED",
     "color": "WARM",
-    "label": "y=k"
+    "hideLabel": true
    },
    {
     "id": "m",
@@ -86,7 +57,7 @@
     ],
     "style": "DASHED",
     "color": "GREEN",
-    "label": "y=5"
+    "hideLabel": true
    }
   ],
   "overlays": {
@@ -120,21 +91,6 @@
      "x": "6",
      "y": "4",
      "unnamed": true
-    },
-    {
-     "id": "F",
-     "x": "31/5",
-     "y": "131/25",
-     "unnamed": true
-    }
-   ],
-   "callouts": [
-    {
-     "id": "cf",
-     "point": "F",
-     "text": "y=abs(x^2-6x+4)",
-     "labelKind": "MATH",
-     "direction": "NE"
     }
    ]
   }

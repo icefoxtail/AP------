@@ -3,10 +3,10 @@
  "graphPlan": {
   "family": "multi-curve",
   "viewport": [
-   -1,
-   21,
-   -2,
-   6
+   -21.35,
+   41.35,
+   -9.4,
+   13.4
   ],
   "axisTickValues": {
    "x": [],
@@ -65,19 +65,19 @@
      "id": "A",
      "x": "3",
      "y": "0",
-     "coordinates": true
+     "unnamed": true
     },
     {
      "id": "B",
      "x": "19",
      "y": "4",
-     "coordinates": true
+     "unnamed": true
     },
     {
      "id": "T",
      "x": "9",
      "y": "2",
-     "coordinates": true
+     "unnamed": true
     },
     {
      "id": "Ec",
@@ -103,31 +103,48 @@
      "id": "cc",
      "point": "Ec",
      "text": "y=f(x)",
-     "direction": "N",
+     "direction": "NE",
      "labelKind": "MATH"
     },
     {
      "id": "ca",
      "point": "Ea",
      "text": "y=x/4-3/4",
-     "direction": "S",
+     "direction": "SW",
      "labelKind": "MATH"
     },
     {
      "id": "cb",
      "point": "Eb",
      "text": "y=x/4-1/4",
-     "direction": "N",
+     "direction": "NE",
      "labelKind": "MATH"
+    },
+    {
+     "id": "zA",
+     "point": "A",
+     "text": "A(3,0)",
+     "labelKind": "MATH",
+     "direction": "NE"
+    },
+    {
+     "id": "zB",
+     "point": "B",
+     "text": "B(19,4)",
+     "labelKind": "MATH",
+     "direction": "NE"
+    },
+    {
+     "id": "zT",
+     "point": "T",
+     "text": "T(9,2)",
+     "labelKind": "MATH",
+     "direction": "NE"
     }
    ]
   }
  },
- "pointNames": {
-  "A": "A",
-  "B": "B",
-  "T": "T"
- },
+ "pointNames": {},
  "caption": "k=-3/4이면 직선 y=x/4-3/4이 곡선과 (3,0), (19,4)의 두 점에서 만나고, k=-1/4이면 직선 y=x/4-1/4이 곡선의 오른쪽 가지에 점 (9,2)에서 접하고 왼쪽 가지와 한 점에서 만나 두 점이 된다. 따라서 k=-3/4, -1/4이고 합은 -1이므로 답은 ②이다. (곡선은 y=f(x)=|√(2x-2)-2|이다.)",
  "sourceConditions": [
   "y=|√(2x-2)-2|와 y=x/4+k가 서로 다른 두 점에서 만나는 k"

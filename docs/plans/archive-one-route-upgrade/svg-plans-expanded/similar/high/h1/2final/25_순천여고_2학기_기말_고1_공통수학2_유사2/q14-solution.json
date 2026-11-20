@@ -24,8 +24,14 @@
    9
   ],
   "axisTickValues": {
-   "x": [],
-   "y": []
+   "x": [
+    "3",
+    "5"
+   ],
+   "y": [
+    "3",
+    "5"
+   ]
   },
   "equalUnits": true,
   "overlays": {
@@ -54,6 +60,16 @@
      "id": "Q",
      "curveX": "5",
      "coordinates": true
+    },
+    {
+     "id": "X1",
+     "curveX": "1/2",
+     "unnamed": true
+    },
+    {
+     "id": "Y1",
+     "curveX": "0",
+     "unnamed": true
     }
    ],
    "segments": [
@@ -62,6 +78,22 @@
      "from": "P",
      "to": "Q",
      "dashed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "c1",
+     "point": "X1",
+     "text": "(1/2,0)",
+     "labelKind": "MATH",
+     "direction": "SE"
+    },
+    {
+     "id": "c2",
+     "point": "Y1",
+     "text": "(0,1/2)",
+     "labelKind": "MATH",
+     "direction": "NW"
     }
    ]
   },
