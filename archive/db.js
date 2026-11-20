@@ -11755,6 +11755,47 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
+      "file": "similar/middle/m1/2mid/24_향림중_2학기_중간_중1_유사.js",
+      "school": "향림중",
+      "topic": "",
+      "grade": "중1",
+      "year": 2024,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 23,
+      "rangeStartUnitKey": "M1-05",
+      "rangeStartUnit": "기본도형",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M1-06",
+      "rangeEndUnit": "평면도형의 성질",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-05",
+          "rangeStartUnit": "기본도형",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M1-06",
+          "rangeEndUnit": "평면도형의 성질",
+          "rangeEndUnitOrder": 6
+        },
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-08",
+          "rangeStartUnit": "확률",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "M2-08",
+          "rangeEndUnit": "확률",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
       "file": "original/high/h2/1final/23_강남여고_1학기_기말_고2_수학I.js",
       "school": "강남여고",
       "topic": "",
