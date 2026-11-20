@@ -1,0 +1,58 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "a41bfea9ec8275b7",
+  "solvedAnswer": "20",
+  "solveSteps": [
+    "450 = 2 * 3^2 * 5^2 이다.",
+    "x/450 이 유한소수가 되지 않으려면 기약분수로 나타냈을 때 분모에 3이 남아있어야 한다.",
+    "따라서 x는 9의 배수가 아니어야 한다.",
+    "x는 두 자리 자연수 중 3의 배수이므로 12부터 99까지 총 (99 - 12)/3 + 1 = 30개이다.",
+    "이 중 9의 배수는 18부터 99까지 총 (99 - 18)/9 + 1 = 10개이다.",
+    "따라서 구하는 x의 개수는 30 - 10 = 20개이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 조건을 만족시키는 $x",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "분모 450 의 소인수분해를 통해 유한소수가 되지 않는 자연수의 개수를 구하는 서술형 유형이다.",
+  "rpmRecordId": "M2-RPM-002",
+  "rpmReason": "분모 450 = 2 * 3^2 * 5^2 에서 9의 배수가 아닌 3의 배수를 센다.",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "450 의 소인수분해와 유한소수가 되지 않는 여사건(9의 배수 제외)을 서술해야 한다.",
+  "how": "450을 소인수분해해 3의 배수 30개에서 9의 배수 10개를 빼 20개를 구하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "분수",
+        "src": "stem",
+        "quote": "두 자리 자연수이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "순환소수로 나타낼 수 있다."
+      }
+    ],
+    "method": [
+      {
+        "term": "소인수분해",
+        "src": "solution",
+        "quote": "분모의 소인수분해와",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

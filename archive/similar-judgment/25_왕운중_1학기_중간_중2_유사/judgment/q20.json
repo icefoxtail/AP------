@@ -1,0 +1,57 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "b5bb36191645b66b",
+  "solvedAnswer": "$-1 < n \\le 0$",
+  "solveSteps": [
+    "x - 2 - n < -2 에서 x < n 이다.",
+    "후보 {-3, -2, -1, 0, 1} 중에서 부등식을 만족하는 x가 3 개이어야 한다.",
+    "작은 수부터 3개이므로 -3, -2, -1 은 만족하고 0은 만족하지 않아야 한다.",
+    "-1 < n 이어야 하고, n <= 0 이어야 0이 포함되지 않는다.",
+    "따라서 상수 n의 범위는 -1 < n <= 0 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$x$의 값이 $-3, -2",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "부등식의 해가 되는 원소 3 개 조건으로부터 상수 n의 범위를 결정하는 유형이다.",
+  "rpmRecordId": "M2-RPM-022",
+  "rpmReason": "정수해 3 개를 포함하도록 경계값 n의 범위를 정한다.",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "해의 개수 3 개 조건에서 경계값 -1과 0의 등호 포함 여부를 정확히 판단해야 한다.",
+  "how": "x < n 에서 해가 -3, -2, -1의 3개가 되도록 -1 < n <= 0 을 도출하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "src": "stem",
+        "quote": "부등식 $x - 2 - n < -2$를"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $n$의 값의 범위를 구하시오. [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "포함",
+        "src": "solution",
+        "quote": "원소의 조건을 분석한다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
