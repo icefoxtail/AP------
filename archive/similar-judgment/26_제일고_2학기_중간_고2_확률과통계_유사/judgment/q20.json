@@ -1,0 +1,75 @@
+{
+  "qid": 20,
+  "itemFingerprint": "a658a4fe3ff65b51",
+  "solveSteps": [
+    "(1) 발문 note-box 의 상자 구성에서 세 상자 선택 확률이 각 1/3이므로 금화를 꺼낼 확률은 P(G)=(1/3)\\cdot 1+(1/3)\\cdot 0+(1/3)\\cdot(1/3)=4/9이다.",
+    "(2) 두 번째도 금화일 사건은 첫 번째 상자를 고른 사건 K와 같으므로 P(K|G)=(1/3)/(4/9)=3/4\\neq 1/2이므로 문장은 틀리다."
+  ],
+  "solvedAnswer": "$(1)\\ \\dfrac{4}{9},\\quad (2)\\ \\dfrac{3}{4}$ (문장은 틀림)",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "아래의 그림과 같이 첫 번째 상자에는 금화 $3$개가, 두 번째 상자에는 은화 $3$개가, 세 번째 상자에는 금화 $1$개와 은화 $2$개가 들어 있다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-04",
+  "subUnitKey": "H22-PS-04-CONDITIONAL_PROBABILITY",
+  "unitEvidence": "다음은 조건부확률에 관한 글이다.",
+  "rpmRecordId": "H2-PS-RPM-046",
+  "rpmReason": "note-box 의 상자 구성에서 전체 금화 확률 4/9를 분모로 하여 첫 번째 상자일 조건부확률 (1/3)/(4/9)=3/4를 계산하는 조건부확률 계산 행이다.",
+  "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+  "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+  "typeReason": "note-box 의 세 상자 분기에서 금화가 나올 확률 4/9를 구한 뒤, 금화 조건하에 첫 번째 상자였을 역조건부확률 3/4를 구한다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "note-box 의 글을 읽고 전확률 4/9 계산과 조건부확률 3/4를 통해 잘못된 확률 직관(1/2)을 반박하는 서술형 3단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "조건부확률",
+        "src": "stem",
+        "quote": "다음은 조건부확률에 관한 글이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "확률",
+        "src": "stem",
+        "quote": "꺼낸 동전이 금화일 확률을"
+      },
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "밑줄 친 문장의 옳고 그름을 판단하고,"
+      }
+    ],
+    "method": [
+      {
+        "term": "전확률",
+        "src": "solution",
+        "quote": "$\\dfrac{1}{3}\\times 1+\\dfrac{1}{3}\\times 0+\\dfrac{1}{3}\\times\\dfrac{1}{3}=\\dfrac{4}{9}$",
+        "evidenceType": "IMPLIED",
+        "justification": "세 상자별 선택 확률과 금화 추출 확률을 곱해 합산함"
+      },
+      {
+        "term": "베이즈정리",
+        "src": "solution",
+        "quote": "$P(K\\mid G)=\\dfrac{P(K\\cap G)}{P(G)}=\\dfrac{\\dfrac{1}{3}}{\\dfrac{4}{9}}=\\dfrac{3}{4}$",
+        "evidenceType": "IMPLIED",
+        "justification": "결과(금화)가 주어졌을 때 원인(첫 번째 상자)의 사후 조건부확률을 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "발문 question note-box 의 그림 설명에 각 상자의 금화·은화 개수가 모두 적혀 있어 SELF_CONTAINED로 판정했고, (1) 4/9, (2) 3/4(틀림)을 구해 저장 정답과 일치함을 확인했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "qid": 7,
+  "itemFingerprint": "5a33ffc72603d47d",
+  "solveSteps": [
+    "a는 b보다 왼쪽, c는 b보다 오른쪽에 있으므로 a, b, c의 상대적 순서는 a, b, c로 고정된다.",
+    "a, b, c를 같은 문자로 보고 8개 문자를 나열하면 8!/(3!2!2!)=40320/24=1680이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "$8$장의 카드를 일렬로 나열할 때,",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "8장의 카드를 일렬로 나열하되 a, b, c의 순서를 고정해 40320/24=1680을 계산하는 일렬 배열 행이다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+  "typeReason": "순서가 정해진 a, b, c를 같은 문자로 취급해 같은 것이 있는 순열 8!/(3!2!2!)=1680을 계산하는 구조이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "상대적 순서 고정을 같은 문자로 치환하여 같은 것이 있는 순열 40320/24=1680을 적용하는 2단계 풀이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "나열하는 경우의 수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "상대순서고정",
+        "src": "solution",
+        "quote": "세 문자의 상대적 순서는",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "같은것이있는순열",
+        "src": "solution",
+        "quote": "$\\dfrac{8!}{3!\\,2!\\,2!}=\\dfrac{40320}{6\\times 2\\times 2}$",
+        "evidenceType": "IMPLIED",
+        "justification": "순서가 정해진 $a, b, c$를 같은 문자 $\\square$로 보고 같은 것이 있는 순열을 적용함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "순서",
+        "src": "solution",
+        "quote": "상대적 순서는 $a, b, c$의"
+      },
+      {
+        "term": "구별불가",
+        "src": "stem",
+        "quote": "서로 구별하지 않는다.)"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "a, b, c를 같은 문자로 두고 8!/(3!2!2!)=1680(⑤)을 구해 저장 정답과 대조했다. 해설과 동일하게 같은 것이 있는 순열 템플릿을 선택했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

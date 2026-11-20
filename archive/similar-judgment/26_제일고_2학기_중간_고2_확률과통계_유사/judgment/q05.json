@@ -1,0 +1,69 @@
+{
+  "qid": 5,
+  "itemFingerprint": "e09c280748537eee",
+  "solveSteps": [
+    "전체 학생 400명 중 수학 동아리 65명, 과학 동아리 75명은 서로 겹치지 않는다.",
+    "수학 또는 과학 동아리 학생 수는 65+75=140명이므로 확률은 140/400=7/20이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 표는 어느 고등학교 학생 $400$명의 동아리별 학생 수를 나타낸 것이다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-03",
+  "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+  "unitEvidence": "그 학생이 수학 동아리 또는 과학 동아리에 속할 확률은?",
+  "rpmRecordId": "H2-PS-RPM-043",
+  "rpmReason": "표에서 읽은 학생 수 65+75=140을 전체 400으로 나누어 7/20을 구하는 확률 계산 행이다.",
+  "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+  "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+  "typeReason": "표의 65명과 75명을 더해 전체 400명과의 비 140/400=7/20을 구하는 기본 확률 계산 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "표에서 두 수 65, 75를 더해 400으로 나누기만 하면 되는 1단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "집단",
+        "src": "stem",
+        "quote": "어느 고등학교 학생 $400$명의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "확률",
+        "src": "stem",
+        "quote": "속할 확률은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "합의법칙",
+        "src": "solution",
+        "quote": "$65+75=140$",
+        "evidenceType": "IMPLIED",
+        "justification": "서로 배반인 두 동아리 학생 수 $65$와 $75$를 합의 법칙으로 더함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "배반사건",
+        "src": "stem",
+        "quote": "한 곳에만 속한다.)"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "표가 발문 HTML에 포함되어 있어 SELF_CONTAINED로 판정했고, (65+75)/400=7/20(③)을 얻어 저장 정답과 일치함을 확인했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

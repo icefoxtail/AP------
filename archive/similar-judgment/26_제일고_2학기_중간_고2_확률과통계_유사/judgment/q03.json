@@ -1,0 +1,74 @@
+{
+  "qid": 3,
+  "itemFingerprint": "39498339a07e5613",
+  "solveSteps": [
+    "(x^{2}+a/x)^{6}의 전개식 일반항은 {}_{6}C_{r}(x^{2})^{6-r}(a/x)^{r}={}_{6}C_{r}a^{r}x^{12-3r}이다.",
+    "12-3r=3에서 r=3이고, 계수 {}_{6}C_{3}a^{3}=20a^{3}=540에서 a^{3}=27, 양수 a=3이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-02",
+  "subUnitKey": "H22-PS-02-CORE",
+  "unitEvidence": "$\\left(x^{2}+\\dfrac{a}{x}\\right)^{6}$의 전개식에서 $x^{3}$의 계수가",
+  "rpmRecordId": "H2-PS-RPM-039",
+  "rpmReason": "이항전개 일반항에서 x^{3} 항의 계수 20a^{3}=540을 구해 a=3을 찾는 특정 항의 계수 행이다.",
+  "problemTypeKey": "PT_BINOMIAL_THEOREM",
+  "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+  "typeReason": "일반항 {}_{6}C_{r}a^{r}x^{12-3r}에서 지수 12-3r=3인 r=3을 찾고 계수 20a^{3}=540을 푸는 전개식의 항·계수 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "이항정리 일반항 공식을 바로 적용해 r=3과 a^{3}=27을 구하는 기본 문항이라 1단계이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "계수",
+        "src": "stem",
+        "quote": "$x^{3}$의 계수가 $540$일 때,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "양수 $a$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "이항정리",
+        "src": "solution",
+        "quote": "이항정리에 의해",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "전개",
+        "src": "stem",
+        "quote": "전개식에서 $x^{3}$의",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양수",
+        "src": "stem",
+        "quote": "양수 $a$의 값은?"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "일반항 {}_{6}C_{r}a^{r}x^{12-3r}에서 12-3r=3, 20a^{3}=540을 풀어 a=3(③)을 얻고 저장 정답과 일치함을 확인했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

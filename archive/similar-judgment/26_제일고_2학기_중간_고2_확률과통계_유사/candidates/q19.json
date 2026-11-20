@@ -1,0 +1,638 @@
+{
+  "qid": 19,
+  "questionType": "서술형",
+  "course": [
+    "PROBABILITY_STATISTICS"
+  ],
+  "curriculum": "2022",
+  "problem": {
+    "content": "[서술형 3] 다음 그림과 같이 가로 $4$칸, 세로 $6$칸으로 이루어진 도로망이 있다. 민수는 지점 $A$에서 지점 $B$까지, 지수는 지점 $B$에서 지점 $A$까지 도로를 따라 최단 경로로 이동하려고 할 때, 두 사람이 서로 만나지 않는 경우의 수를 구하는 과정을 서술하시오. (단, 두 사람은 동시에 출발하여 같은 속력으로 이동한다.) [6점]<br>[그림: 가로 $4$칸, 세로 $6$칸인 직사각형 도로망의 왼쪽 아래 꼭짓점에 $A$, 오른쪽 위 꼭짓점에 $B$가 표시된 그림]",
+    "choices": [],
+    "points": 6
+  },
+  "reference": {
+    "answer": "29050",
+    "solution": "한 사람이 $A$에서 $B$까지(또는 $B$에서 $A$까지) 최단 경로로 이동하려면 가로 $4$칸, 세로 $6$칸, 총 $10$칸을 이동해야 하므로 최단 경로의 수는 각각\n${}_{10}C_{4}=\\dfrac{10\\times 9\\times 8\\times 7}{4\\times 3\\times 2\\times 1}=210$\n\n따라서 두 사람이 이동하는 전체 경로 쌍의 수는\n$210\\times 210=44100$\n\n두 사람이 동시에 출발하여 같은 속력으로 이동하므로, 두 사람이 만난다면 각각 출발한 지 $5$칸을 이동한 지점에서 만나야 한다.\n$A$에서 출발하여 가로로 $k$칸, 세로로 $5-k$칸 이동한 교점을 $P_{k}$라 하자. 가로가 $4$칸, 세로가 $6$칸이므로 가능한 $k$는 $0, 1, 2, 3, 4$이다.\n\n$A$에서 $P_{k}$까지 가는 최단 경로의 수는 ${}_{5}C_{k}$이고, $P_{k}$에서 $B$까지 가는 최단 경로는 가로 $4-k$칸, 세로 $6-(5-k)=k+1$칸이므로 ${}_{5}C_{k+1}$이다.\n지수가 $B$에서 $P_{k}$를 거쳐 $A$로 가는 최단 경로의 수 역시 ${}_{5}C_{k+1}\\times{}_{5}C_{k}$이므로, 점 $P_{k}$에서 만나는 경로 쌍의 수는\n$({}_{5}C_{k}\\times{}_{5}C_{k+1})^{2}$\n\n각 $k$에 대하여 계산하면 다음과 같다.\n$k=0$일 때: $(1\\times 5)^{2}=25$\n$k=1$일 때: $(5\\times 10)^{2}=2500$\n$k=2$일 때: $(10\\times 10)^{2}=10000$\n$k=3$일 때: $(10\\times 5)^{2}=2500$\n$k=4$일 때: $(5\\times 1)^{2}=25$\n\n두 사람이 서로 다른 지점 $P_{k}$에서 동시에 만날 수 없으므로 만나는 경우의 수는\n$25+2500+10000+2500+25=15050$\n\n따라서 두 사람이 만나지 않는 경우의 수는\n$44100-15050=29050$\n\n따라서 구하는 경우의 수는 $29050$이다.",
+    "sourcePrimaryMethod": "",
+    "sourceDecisiveStep": ""
+  },
+  "source": {
+    "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
+    "standardUnitKey": null,
+    "subUnitKey": null,
+    "rpmPath": null,
+    "problemTypeKey": null,
+    "templateKey": null,
+    "difficultyBucket": null,
+    "newKeyProposal": null,
+    "item4slot": null,
+    "boundary": ""
+  },
+  "units": [
+    {
+      "standardUnitKey": "H22-PS-01",
+      "label": "순열과 조합",
+      "order": 1,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-PS-01-CORE",
+          "label": "순열과 조합 핵심 개념"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-PS-RPM-032",
+          "path": "경우의 수 > 순열과 조합 > 순열 > 일렬 배열",
+          "subUnitKey": "H22-PS-01-CORE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-033",
+          "path": "경우의 수 > 순열과 조합 > 순열 > 중복·원순열",
+          "subUnitKey": "H22-PS-01-CORE",
+          "mappingStatus": "FAMILY_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-034",
+          "path": "경우의 수 > 순열과 조합 > 조합 > 선택",
+          "subUnitKey": "H22-PS-01-CORE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-035",
+          "path": "경우의 수 > 순열과 조합 > 조합 > 분할·분배",
+          "subUnitKey": "H22-PS-01-CORE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-036",
+          "path": "경우의 수 > 순열과 조합 > 중복조합 > 중복을 허용한 선택",
+          "subUnitKey": "H22-PS-01-CORE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-037",
+          "path": "경우의 수 > 순열과 조합 > 중복조합 > 정수해 개수",
+          "subUnitKey": "H22-PS-01-CORE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "label": "조합·중복조합",
+          "templates": [
+            {
+              "templateKey": "TPL_COMBINATION_SELECTION",
+              "label": "조합과 선택"
+            },
+            {
+              "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+              "label": "중복조합·정수해·동일물 분배"
+            },
+            {
+              "templateKey": "TPL_H1_BINOMIAL_IDENTITY_CHECK",
+              "label": "조합 항등식 증명·판정"
+            },
+            {
+              "templateKey": "TPL_H1_BINOMIAL_PARAMETER_RELATION",
+              "label": "순열·조합 관계로 매개변수 결정"
+            },
+            {
+              "templateKey": "TPL_H1_SELECTION_BOX_IDENTITY",
+              "label": "상자 배정에서 동일·서로 다른 대상 구분"
+            },
+            {
+              "templateKey": "TPL_H1_SELECTION_CAPACITY_DISTRIBUTION",
+              "label": "수용량 제약이 있는 대상 분배"
+            },
+            {
+              "templateKey": "TPL_H1_SELECTION_GEOMETRIC_DEGENERACY",
+              "label": "기하 점 선택 후 퇴화 경우 제외"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+          "label": "순열",
+          "templates": [
+            {
+              "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+              "label": "일반 순열·조건 배열"
+            },
+            {
+              "templateKey": "TPL_CIRCULAR_PERMUTATION",
+              "label": "원순열"
+            },
+            {
+              "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+              "label": "같은 것이 있는 순열"
+            },
+            {
+              "templateKey": "TPL_COUNTING_ARRANGEMENT_PATH",
+              "label": "격자 경로"
+            },
+            {
+              "templateKey": "TPL_COUNTING_ARRANGEMENT_ROTATION",
+              "label": "회전 중복"
+            },
+            {
+              "templateKey": "TPL_H1_ARRANGEMENT_LEXICOGRAPHIC_RANK",
+              "label": "사전식 순열 순위·역순위"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_COUNTING",
+          "label": "함수의 개수",
+          "templates": [
+            {
+              "templateKey": "TPL_BASIC_FUNCTION_TYPE_COUNT",
+              "label": "함수·일대일대응·상수함수 등의 개수"
+            },
+            {
+              "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
+              "label": "조건을 만족하는 함수의 개수"
+            },
+            {
+              "templateKey": "TPL_IDENTITY_DOMAIN_COUNT",
+              "label": "항등함수가 되는 정의역의 개수"
+            },
+            {
+              "templateKey": "TPL_INJECTIVE_BIJECTION_COUNT",
+              "label": "일대일함수·일대일대응의 개수"
+            },
+            {
+              "templateKey": "TPL_MONOTONE_FUNCTION_COUNT",
+              "label": "증가·감소 조건이 있는 함수의 개수"
+            },
+            {
+              "templateKey": "TPL_SURJECTION_COUNT",
+              "label": "치역과 공역이 같은 함수의 개수"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_COUNT_VALUE_RESTRICTION_AND_ORDER",
+              "label": "함수값 제한과 순서 조건을 결합한 함수 개수"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+          "label": "중복순열",
+          "templates": [
+            {
+              "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+              "label": "중복순열·반복 배정"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H22-PS-02",
+      "label": "이항정리",
+      "order": 2,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-PS-02-CORE",
+          "label": "이항정리 핵심 개념"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-PS-RPM-038",
+          "path": "경우의 수 > 이항정리 > 이항정리 > 전개식의 항",
+          "subUnitKey": "H22-PS-02-CORE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-039",
+          "path": "경우의 수 > 이항정리 > 이항정리 > 특정 항의 계수",
+          "subUnitKey": "H22-PS-02-CORE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-040",
+          "path": "경우의 수 > 이항정리 > 이항계수 > 이항계수의 성질",
+          "subUnitKey": "H22-PS-02-CORE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-041",
+          "path": "경우의 수 > 이항정리 > 이항계수 > 조합 항등식",
+          "subUnitKey": "H22-PS-02-CORE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_BINOMIAL_THEOREM",
+          "label": "이항정리",
+          "templates": [
+            {
+              "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+              "label": "전개식의 항·계수"
+            },
+            {
+              "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+              "label": "이항계수의 성질·활용"
+            },
+            {
+              "templateKey": "TPL_BINOMIAL_THEOREM_REMAINDER",
+              "label": "나머지"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H22-PS-03",
+      "label": "확률의 뜻과 활용",
+      "order": 3,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-PS-03-PROBABILITY_APPLICATION",
+          "label": "확률의 활용"
+        },
+        {
+          "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+          "label": "확률의 뜻과 계산"
+        },
+        {
+          "subUnitKey": "H22-PS-03-PROBABILITY_DISTRIBUTION",
+          "label": "확률분포"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-PS-RPM-042",
+          "path": "확률 > 확률의 뜻과 활용 > 확률의 기본 > 표본공간과 사건",
+          "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-043",
+          "path": "확률 > 확률의 뜻과 활용 > 확률의 기본 > 확률 계산",
+          "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-044",
+          "path": "확률 > 확률의 뜻과 활용 > 확률의 덧셈정리 > 배반사건",
+          "subUnitKey": "H22-PS-03-PROBABILITY_APPLICATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-045",
+          "path": "확률 > 확률의 뜻과 활용 > 확률의 덧셈정리 > 여사건",
+          "subUnitKey": "H22-PS-03-PROBABILITY_APPLICATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+          "label": "확률의 기본 성질과 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+              "label": "확률의 뜻·기본 계산"
+            },
+            {
+              "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+              "label": "사건의 관계·덧셈정리·여사건"
+            },
+            {
+              "templateKey": "TPL_PROBABILITY_PROPERTIES_APPLICATION_DEFINITION",
+              "label": "확률 정의"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+          "label": "독립시행의 확률",
+          "templates": [
+            {
+              "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+              "label": "독립시행의 확률"
+            },
+            {
+              "templateKey": "TPL_INDEPENDENT_TRIAL_STATE_PARITY",
+              "label": "독립시행의 출현 횟수 홀짝 상태 분석"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+          "label": "조건부확률",
+          "templates": [
+            {
+              "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+              "label": "조건부확률의 직접 계산"
+            },
+            {
+              "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+              "label": "분기·역조건 조건부확률"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H22-PS-04",
+      "label": "조건부확률",
+      "order": 4,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-PS-04-CONDITIONAL_PROBABILITY",
+          "label": "조건부확률의 계산과 활용"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-PS-RPM-046",
+          "path": "확률 > 조건부확률 > 조건부확률 > 조건부확률 계산",
+          "subUnitKey": "H22-PS-04-CONDITIONAL_PROBABILITY",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-047",
+          "path": "확률 > 조건부확률 > 사건의 독립 > 독립 판정",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-048",
+          "path": "확률 > 조건부확률 > 사건의 독립 > 독립사건의 확률",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-049",
+          "path": "확률 > 조건부확률 > 독립시행 > 이항형 시행",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-050",
+          "path": "확률 > 조건부확률 > 독립시행 > 반복 시행의 확률",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+          "label": "조건부확률",
+          "templates": [
+            {
+              "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+              "label": "조건부확률의 직접 계산"
+            },
+            {
+              "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+              "label": "분기·역조건 조건부확률"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_EVENT_INDEPENDENCE",
+          "label": "사건의 독립과 종속",
+          "templates": [
+            {
+              "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
+              "label": "독립·종속 판정"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H22-PS-05",
+      "label": "확률분포",
+      "order": 5,
+      "subUnits": [],
+      "rpm": [
+        {
+          "id": "H2-PS-RPM-051",
+          "path": "통계 > 확률분포 > 확률변수와 확률분포 > 이산확률변수",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-052",
+          "path": "통계 > 확률분포 > 확률변수와 확률분포 > 확률질량함수",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-053",
+          "path": "통계 > 확률분포 > 기댓값과 분산 > 기댓값",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-054",
+          "path": "통계 > 확률분포 > 기댓값과 분산 > 분산·표준편차",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-055",
+          "path": "통계 > 확률분포 > 이항분포 > 이항분포의 확률",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-056",
+          "path": "통계 > 확률분포 > 이항분포 > 평균·분산",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-057",
+          "path": "통계 > 확률분포 > 정규분포 > 표준정규분포",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-058",
+          "path": "통계 > 확률분포 > 정규분포 > 정규분포 확률",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      ],
+      "problemTypes": []
+    },
+    {
+      "standardUnitKey": "H22-PS-06",
+      "label": "통계적 추정",
+      "order": 6,
+      "subUnits": [],
+      "rpm": [
+        {
+          "id": "H2-PS-RPM-059",
+          "path": "통계 > 통계적 추정 > 모집단과 표본 > 표본평균",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-060",
+          "path": "통계 > 통계적 추정 > 모집단과 표본 > 표본분포",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-061",
+          "path": "통계 > 통계적 추정 > 모평균 추정 > 신뢰구간",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-062",
+          "path": "통계 > 통계적 추정 > 모평균 추정 > 표본크기",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-063",
+          "path": "통계 > 통계적 추정 > 모비율 추정 > 표본비율",
+          "subUnitKey": "",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-PS-RPM-064",
+          "path": "통계 > 통계적 추정 > 모비율 추정 > 신뢰구간",
+          "subUnitKey": "",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": []
+    }
+  ],
+  "termCandidates": [
+    {
+      "term": "직사각형",
+      "matchedAs": "직사각형",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "로 $6$칸인 직사각형 도로망의 왼쪽"
+    },
+    {
+      "term": "꼭짓점",
+      "matchedAs": "꼭짓점",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "의 왼쪽 아래 꼭짓점에 $A$, 오"
+    },
+    {
+      "term": "사각형",
+      "matchedAs": "사각형",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "$6$칸인 직사각형 도로망의 왼쪽"
+    },
+    {
+      "term": "경로",
+      "matchedAs": "경로",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "를 따라 최단 경로로 이동하려고"
+    },
+    {
+      "term": "속력",
+      "matchedAs": "속력",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "출발하여 같은 속력으로 이동한다."
+    },
+    {
+      "term": "이동",
+      "matchedAs": "이동",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "최단 경로로 이동하려고 할 때,"
+    },
+    {
+      "term": "지수",
+      "matchedAs": "지수",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "$B$까지, 지수는 지점 $B$"
+    },
+    {
+      "term": "경로",
+      "matchedAs": "경로",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "$까지) 최단 경로로 이동하려면"
+    },
+    {
+      "term": "교점",
+      "matchedAs": "교점",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "k$칸 이동한 교점을 $P_{k}"
+    },
+    {
+      "term": "논리합",
+      "matchedAs": "또는",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "서 $B$까지(또는 $B$에서 $"
+    },
+    {
+      "term": "속력",
+      "matchedAs": "속력",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "출발하여 같은 속력으로 이동하므로"
+    },
+    {
+      "term": "이동",
+      "matchedAs": "이동",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "최단 경로로 이동하려면 가로 $"
+    },
+    {
+      "term": "지수",
+      "matchedAs": "지수",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "+1}$이다. 지수가 $B$에서"
+    }
+  ],
+  "figure": {
+    "cueWords": [
+      {
+        "word": "그림",
+        "quote": "[서술형 3] 다음 그림과 같이 가로 $4$칸"
+      },
+      {
+        "word": "그림",
+        "quote": ".) [6점]<br>[그림: 가로 $4$칸, 세"
+      },
+      {
+        "word": "아래",
+        "quote": "사각형 도로망의 왼쪽 아래 꼭짓점에 $A$, 오"
+      },
+      {
+        "word": "그림",
+        "quote": "점에 $B$가 표시된 그림]"
+      }
+    ],
+    "hasPlan": false,
+    "problemPlanRef": null,
+    "hasImage": false,
+    "sourcePlan": null,
+    "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
+  },
+  "sourceExamHint": {
+    "exam": "archive/exams/original/high/h2/2mid/26_제일고_2학기_중간_고2_확률과통계.js",
+    "sourceQid": 19,
+    "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+    "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT"
+  },
+  "guide": "JUDGMENT_GUIDE.md 를 먼저 읽는다. 후보 밖 키는 쓸 수 없다. 모든 이유 문장에는 이 문항의 숫자·식을 넣는다."
+}

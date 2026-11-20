@@ -1,0 +1,76 @@
+{
+  "qid": 9,
+  "itemFingerprint": "c0a9f12df5130c69",
+  "solveSteps": [
+    "A와 B가 총 4개의 공을 꺼내므로 상자에 남은 공 5개 중 검은 공이 흰 공보다 많으려면 꺼낸 검은 공이 0, 1, 2개여야 한다.",
+    "전체 {}_{9}C_{4}=126가지 중 {}_{5}C_{0}{}_{4}C_{4}+{}_{5}C_{1}{}_{4}C_{3}+{}_{5}C_{2}{}_{4}C_{2}=1+20+60=81가지이므로 확률은 81/126=9/14, p+q=23이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-03",
+  "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+  "unitEvidence": "검은 공의 개수가 흰 공의 개수보다 많을 확률은",
+  "rpmRecordId": "H2-PS-RPM-043",
+  "rpmReason": "전체 9개에서 4개를 뽑는 126가지 중 조건에 맞는 81가지의 확률 9/14를 구하는 확률 계산 행이다.",
+  "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+  "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+  "typeReason": "남은 공 조건을 꺼낸 검은 공 0, 1, 2개 조건으로 바꾸어 조합으로 경우의 수 81을 세고 126으로 나누어 9/14를 구한다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "꺼낸 공 4개 중 검은 공이 0, 1, 2개인 3가지 경우를 조합으로 세어 전체 126으로 나누어 p+q=23을 구하는 2단계 풀이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$p$와 $q$는 서로소인 자연수이다.)"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$p+q$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "조합",
+        "src": "solution",
+        "quote": "${}_{9}C_{4}=\\dfrac{9\\times 8\\times 7\\times 6}{4\\times 3\\times 2\\times 1}=126$",
+        "evidenceType": "IMPLIED",
+        "justification": "$9$개 중 $4$개의 공을 택하는 경우의 수를 조합으로 계산함"
+      },
+      {
+        "term": "경우분류",
+        "src": "solution",
+        "quote": "각 경우의 수를 구하면 다음과 같다.",
+        "evidenceType": "IMPLIED",
+        "justification": "꺼낸 검은 공이 $0$개, $1$개, $2$개인 세 경우로 나누어 계산함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "서로소",
+        "src": "stem",
+        "quote": "$p$와 $q$는 서로소인"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "꺼낸 검은 공이 0, 1, 2개인 경우를 합해 81/126=9/14, p+q=23(②)을 얻고 저장 정답과 일치함을 확인했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

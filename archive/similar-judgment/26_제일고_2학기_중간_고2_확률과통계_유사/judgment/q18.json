@@ -1,0 +1,75 @@
+{
+  "qid": 18,
+  "itemFingerprint": "44da5668d535e414",
+  "solveSteps": [
+    "전체 수는 6^{3}=216개이다. 3의 배수인 사건 A는 36\\times 2=72개, 4의 배수인 사건 B는 6\\times 9=54개이다.",
+    "A\\cap B는 끝 두 자리 9가지마다 백의 자리 2가지씩이므로 18개이고, 덧셈정리에 의해 (72+54-18)/216=1/2이다."
+  ],
+  "solvedAnswer": "\\dfrac{1}{2}",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-03",
+  "subUnitKey": "H22-PS-03-PROBABILITY_APPLICATION",
+  "unitEvidence": "이 수가 $3$의 배수이거나 $4$의 배수일 확률을 확률의 덧셈정리를 이용하여",
+  "rpmRecordId": "H2-PS-RPM-043",
+  "rpmReason": "전체 216개 중 사건 A(72), B(54), A\\cap B(18)의 개수를 각각 세어 덧셈정리로 1/2을 구하는 확률 계산 행이다.",
+  "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+  "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+  "typeReason": "3의 배수 사건 A, 4의 배수 사건 B와 교집합 A\\cap B의 확률 72/216, 54/216, 18/216을 구해 확률의 덧셈정리를 적용한다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "3의 배수와 4의 배수 조건을 자릿수 나머지·끝 두 자리로 나누어 세고 덧셈정리로 교집합 18개를 빼는 3단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "세 자리의 자연수 중에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "확률",
+        "src": "stem",
+        "quote": "$4$의 배수일 확률을"
+      }
+    ],
+    "method": [
+      {
+        "term": "확률의덧셈정리",
+        "src": "stem",
+        "quote": "확률의 덧셈정리를 이용하여",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "경우분류",
+        "src": "solution",
+        "quote": "사건 $A\\cap B$의 경우,",
+        "evidenceType": "IMPLIED",
+        "justification": "사건 $A, B, A\\cap B$의 경우의 수를 각각 자리 조건에 맞게 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "배수",
+        "src": "stem",
+        "quote": "$3$의 배수이거나 $4$의 배수일"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "P(A)=72/216, P(B)=54/216, P(A\\cap B)=18/216을 구해 덧셈정리로 1/2을 얻었으며 저장 정답과 일치함을 확인했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

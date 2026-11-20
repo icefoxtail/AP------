@@ -1,0 +1,88 @@
+{
+  "qid": 21,
+  "itemFingerprint": "74a166c8e8b66687",
+  "solveSteps": [
+    "a+b+c\\ge 3이므로 d+e\\le 5이고, d, e 중 적어도 하나가 1이므로 d+e=2(1가지), 3(2가지), 4(2가지), 5(2가지)이다.",
+    "각 경우에 a+b+c=10, 8, 6, 4에서 적어도 하나가 1인 자연수해는 21, 15, 9, 3개이므로 1\\cdot 21+2\\cdot 15+2\\cdot 9+2\\cdot 3=75개이다."
+  ],
+  "solvedAnswer": "75",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "자연수 $a, b, c, d, e$의 모든 순서쌍 $(a, b, c, d, e)$의 개수를",
+  "rpmRecordId": "H2-PS-RPM-037",
+  "rpmReason": "방정식 a+b+c+2(d+e)=14의 자연수해 개수를 d+e 값별로 나누어 중복조합으로 구하는 정수해 개수 행이다.",
+  "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+  "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+  "typeReason": "조건 (가) 합 14 에서 d+e의 값 2, 3, 4, 5에 따라 방정식 a+b+c=S를 세우고 적어도 하나가 1인 자연수해를 여사건과 중복조합으로 계산한다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "합이 14 인 식에서 곱이 0인 조건을 적어도 하나가 1인 조건으로 해석하고 d+e 값에 따라 4가지 경우의 중복조합 차를 계산하는 3단계 문항이다.",
+  "difficultyBoundaryFlag": "B34",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "자연수 $a, b, c, d, e$의"
+      },
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "$a+b+c+2(d+e)=14$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "순서쌍 $(a, b, c, d, e)$의 개수를"
+      }
+    ],
+    "method": [
+      {
+        "term": "경우분류",
+        "src": "solution",
+        "quote": "$d+e=2$일 때:",
+        "evidenceType": "IMPLIED",
+        "justification": "$d+e$의 값 $2, 3, 4, 5$에 따라 $4$가지 경우로 나누어 셈"
+      },
+      {
+        "term": "여사건",
+        "src": "solution",
+        "quote": "전체 자연수해의 개수에서 $a, b, c$가 모두 $2$ 이상인 경우의 수를 빼면 된다.",
+        "evidenceType": "IMPLIED",
+        "justification": "$a, b, c$ 중 적어도 하나가 $1$인 해의 개수를 전체에서 모두 $2$ 이상인 경우를 빼서 구함"
+      },
+      {
+        "term": "중복조합",
+        "src": "solution",
+        "quote": "${}_{9}C_{2}-{}_{6}C_{2}=36-15=21$",
+        "evidenceType": "IMPLIED",
+        "justification": "각 합 $S$에 대한 자연수해 개수를 중복조합(조합)으로 계산함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "적어도",
+        "src": "solution",
+        "quote": "적어도 하나는 $1$이고,"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "d+e=2,3,4,5별로 (d,e)의 개수와 a+b+c=10,8,6,4의 해 개수를 곱해 더하여 75를 얻고 저장 정답과 일치함을 확인했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

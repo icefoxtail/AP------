@@ -1,0 +1,87 @@
+{
+  "qid": 11,
+  "itemFingerprint": "5b5aa378d7d9047d",
+  "solveSteps": [
+    "1이 적힌 공을 n개(n\\ge 5)라 하면 P(A)=n(9-n)/36=7/18에서 n^{2}-9n+14=0, n=7이다.",
+    "2가 적힌 공은 2개이고, 곱이 짝수인 사건 B의 여사건은 모두 1을 뽑는 경우이므로 P(B)=1-{}_{7}C_{2}/36=1-21/36=5/12이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-03",
+  "subUnitKey": "H22-PS-03-PROBABILITY_APPLICATION",
+  "unitEvidence": "사건을 $A$, 두 수의 곱이 짝수인 사건을 $B$라 하자.",
+  "rpmRecordId": "H2-PS-RPM-045",
+  "rpmReason": "n=7을 구한 뒤 곱이 짝수인 사건 B의 확률을 여사건(모두 1인 경우) 1-21/36=5/12로 구하는 여사건 행이다.",
+  "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+  "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+  "typeReason": "P(A)=7/18로 1이 적힌 공 개수 n=7을 결정한 뒤, 사건 B를 여사건으로 바꾸어 1-21/36=5/12를 계산한다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "P(A)=7/18로 미지수 n=7을 구하는 이차방정식 풀이와 여사건을 이용한 P(B)=5/12 계산이 결합된 2단계 문항이다.",
+  "difficultyBoundaryFlag": "B23",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "사건",
+        "src": "stem",
+        "quote": "합이 $3$의 배수인 사건을 $A$,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "확률",
+        "src": "stem",
+        "quote": "$P(B)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "여사건",
+        "src": "solution",
+        "quote": "사건 $B$의 여사건은",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "$(n-2)(n-7)=0$",
+        "evidenceType": "IMPLIED",
+        "justification": "이차방정식 $n^{2}-9n+14=0$을 인수분해해 $n=7$을 구함"
+      },
+      {
+        "term": "조합",
+        "src": "solution",
+        "quote": "$P(B)=1-\\dfrac{{}_{7}C_{2}}{{}_{9}C_{2}}$",
+        "evidenceType": "IMPLIED",
+        "justification": "$9$개 중 $2$개를 꺼내는 경우의 수를 조합으로 계산함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "배수",
+        "src": "stem",
+        "quote": "수의 합이 $3$의 배수인"
+      },
+      {
+        "term": "짝수",
+        "src": "stem",
+        "quote": "두 수의 곱이 짝수인"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "P(A)=7/18에서 n=7을 구하고 여사건으로 P(B)=5/12(①)를 구해 저장 정답과 일치함을 확인했다. 해설의 여사건 풀이 단계를 기준으로 TPL_EVENT_RELATION_COMPLEMENT_ADDITION을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

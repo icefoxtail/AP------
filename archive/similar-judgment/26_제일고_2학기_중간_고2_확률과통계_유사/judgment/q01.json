@@ -1,0 +1,69 @@
+{
+  "qid": 1,
+  "itemFingerprint": "9f26d6f19ac57fed",
+  "solveSteps": [
+    "중복순열의 정의에 의해 {}_{2}\\Pi_{n}=2^{n}, {}_{2}\\Pi_{n+1}=2^{n+1}이다.",
+    "주어진 식 2^{n}+2^{n+1}=24에서 3\\cdot 2^{n}=24이므로 2^{n}=8, n=3이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "${}_{2}\\Pi_{n}+{}_{2}\\Pi_{n+1}=24$",
+  "rpmRecordId": "H2-PS-RPM-033",
+  "rpmReason": "{}_{2}\\Pi_{n}=2^{n}으로 바꾸어 2^{n}+2^{n+1}=24를 푸는 중복순열 문제이므로 중복·원순열 행이다.",
+  "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+  "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+  "typeReason": "{}_{2}\\Pi_{n}+{}_{2}\\Pi_{n+1}=24에서 중복순열의 공식을 적용해 2^{n}에 대한 지수방정식을 푸는 구조이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "중복순열 공식 {}_{m}\\Pi_{r}=m^{r}을 바로 대입해 3\\cdot 2^{n}=24에서 n=3을 구하는 2단계 풀이라 1단계이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "만족시키는 자연수 $n$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "자연수 $n$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "중복순열",
+        "src": "solution",
+        "quote": "중복순열 ${}_{m}\\Pi_{r}$는",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "지수법칙",
+        "src": "solution",
+        "quote": "$2^{n}+2^{n+1}=24$",
+        "evidenceType": "IMPLIED",
+        "justification": "$2^{n}+2^{n+1}=3\\cdot 2^{n}$으로 거듭제곱 식을 정리하여 $n=3$을 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "발문의 2^{n}+2^{n+1}=24를 직접 풀어 n=3(②)을 얻고 저장 정답과 일치함을 확인했다. 중복순열 정의를 바로 쓰는 문항이라 TPL_REPEATED_PERMUTATION_ASSIGNMENT를 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

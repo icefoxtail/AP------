@@ -1,0 +1,69 @@
+{
+  "qid": 4,
+  "itemFingerprint": "fff6c3b7723ea392",
+  "solveSteps": [
+    "1부터 12까지의 자연수 중 소수는 2, 3, 5, 7, 11의 5개이다.",
+    "전체 12장 중 임의로 1장을 뽑으므로 소수일 확률은 5/12이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-03",
+  "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+  "unitEvidence": "카드에 적힌 수가 소수일 확률은?",
+  "rpmRecordId": "H2-PS-RPM-043",
+  "rpmReason": "전체 12가지 경우 중 소수 5가지의 비율 5/12를 구하는 확률 계산 행이다.",
+  "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+  "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+  "typeReason": "전체 경우의 수 12와 소수인 경우의 수 5의 비 5/12로 수학적 확률을 구하는 기본 계산 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "12 이하의 소수 5개를 세어 확률의 정의 5/12를 바로 적용하는 1단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$1$부터 $12$까지의 자연수가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "확률",
+        "src": "stem",
+        "quote": "소수일 확률은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "열거",
+        "src": "solution",
+        "quote": "소수는 $2, 3, 5, 7, 11$의 $5$개이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "$1$부터 $12$까지의 자연수 중 소수 $5$개를 직접 열거하여 셈"
+      }
+    ],
+    "condition": [
+      {
+        "term": "소수",
+        "src": "stem",
+        "quote": "적힌 수가 소수일"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "1부터 12까지의 소수 5개를 직접 세어 5/12(④)를 구하고 저장 정답과 일치함을 확인했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

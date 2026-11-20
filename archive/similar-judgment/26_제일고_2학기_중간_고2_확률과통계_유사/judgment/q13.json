@@ -1,0 +1,81 @@
+{
+  "qid": 13,
+  "itemFingerprint": "b2887f29d4bebd97",
+  "solveSteps": [
+    "전체 경우의 수는 3^{5}=243이고, 여사건은 a가 어느 두 개도 연속하지 않는 경우이다.",
+    "a가 0, 1, 2, 3개일 때 각각 2^{5}=32, 5\\cdot 2^{4}=80, {}_{4}C_{2}\\cdot 2^{3}=48, 1\\cdot 2^{2}=4가지이므로 243-(32+80+48+4)=79가지이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "세 문자 $a, b, c$에서 중복을 허락하여 $5$개를 택해 일렬로 나열할 때,",
+  "rpmRecordId": "H2-PS-RPM-033",
+  "rpmReason": "중복을 허용해 5개를 나열하는 전체 3^{5}=243가지에서 여사건 164가지를 빼는 중복·원순열 행이다.",
+  "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+  "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+  "typeReason": "중복순열 전체 3^{5}=243에서 여사건인 a 비이웃 배열을 a의 개수(0~3개)별로 세어 빼는 풀이 구조이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "여사건으로 전환한 뒤 a가 0, 1, 2, 3개인 4가지 경우를 모두 세어 243-164=79를 구하는 3단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "나열하는 경우의 수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "여사건",
+        "src": "solution",
+        "quote": "여사건인",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "중복순열",
+        "src": "solution",
+        "quote": "$3^{5}=243$",
+        "evidenceType": "IMPLIED",
+        "justification": "전체 나열 수 $3^{5}$과 $b, c$만 나열하는 수 $2^{k}$를 중복순열로 계산함"
+      },
+      {
+        "term": "경우분류",
+        "src": "solution",
+        "quote": "(i) $a$가 $0$개일 때:",
+        "evidenceType": "IMPLIED",
+        "justification": "$a$의 개수에 따라 $0, 1, 2, 3$개의 $4$가지 경우로 나누어 셈"
+      }
+    ],
+    "condition": [
+      {
+        "term": "적어도",
+        "src": "stem",
+        "quote": "$a$가 적어도 $2$개 연속하도록"
+      },
+      {
+        "term": "이웃",
+        "src": "solution",
+        "quote": "서로 이웃하지 않게"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "여사건으로 a가 이웃하지 않는 32+80+48+4=164가지를 구하고 243-164=79(③)를 얻어 저장 정답과 일치함을 확인했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
