@@ -1,0 +1,57 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "e7fae57fcb819504",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "직사각형의 세로의 길이를 $x\\text{ cm}$라 하면, 가로의 길이는 $(x + 4)\\text{ cm}$이다.",
+    "직사각형의 둘레의 길이는 $2 \\times (\\text{가로} + \\text{세로})$이므로",
+    "2{ (x + 4) + x } \\le 64",
+    "2(2x + 4) \\le 64"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "가로의 길이가 세로의 길이보다 $4\\text{ cm}$ 더 긴 직사각형이 있다.",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "rpmRecordId": "M2-RPM-018",
+  "rpmEvidence": "직사각형의 세로의 길이를 $x\\text{ cm}$라 하면, 가로의 길이는 $(x + 4)\\text{ cm}$이다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+  "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+  "newKeyProposal": null,
+  "typeReason": "Q10번 문항은 PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 cm)",
+  "rpmReason": "Q10번 문항은 M2-RPM-018에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 cm)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q10번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 cm)",
+  "how": "Q10번 문항으로 M2-02 단원의 기본 개념과 성질을 적용하여 ⑤을(를) 바르게 구하였다. (문항 토큰 cm)",
+  "slots": {
+    "given": [
+      {
+        "term": "사각형",
+        "src": "stem",
+        "quote": "가로의 길이가 세로의 길이보다 $4\\text{ cm}$ 더 긴 직사각형이 있다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "가로의 길이가 세로의 길이보다 $4\\text{ cm}$ 더 긴 직사각형이 있다."
+      }
+    ],
+    "method": [
+      {
+        "term": "길이",
+        "src": "solution",
+        "quote": "직사각형의 세로의 길이를 $x\\text{ cm}$라 하면, 가로의 길이는 $(x + 4)\\text{ cm}$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
