@@ -3,7 +3,7 @@
 - 상태: **IN_PROGRESS / EXAM_AUDIT_COMPLETE=NO / EXAM_DRAFT_COMPLETE=NO**
 - sourcePath: `archive/exams/original/high/h2/2final/22_매산고_2학기_기말_고2_수학II.js`; source blob SHA: `8142605df32ecdfad9208d01b24c47fdb6dbcc3a`; 원본 ref: main
 - 과목: 수학II / 교육과정 2015; 문항수 20
-- 원본 JS 전 문항의 발문·보기·정답·solution 텍스트를 확보했으나, 독립 수학 검산 및 문제 PNG 판독 미완료. 현재 KEEP 18문항은 독립 검산했고 HOLD 2문항(Q03/Q19)은 원본 PNG 실물 판독 미완료다.
+- 원본 JS 전 문항의 발문·보기·정답·solution 텍스트를 확보했으나, 독립 수학 검산 및 문제 PNG 판독 미완료. 현재 KEEP 18문항은 독립 검산했고 HOLD 2문항(Q03/Q19)은 원본 PNG 실물 판독 미완료다. 이번 재개에서 Q03·Q19의 기존 풀이를 조건부 독립 재계산했으나 GitHub main의 두 가지 이미지 경로 모두 404여서 그림 사실을 확정하지 못했다.
 - Golden/Negative 독립 샘플 판독, preflight receipt, 학생 렌더: NOT_RUN. 원본 JS/SVG/main 미변경.
 - nextQid: Q03 (그림 판독 필요); 독립 검산 완료 Q01,Q02,Q04,Q05,Q06,Q07,Q08,Q09,Q10,Q11,Q12,Q13,Q14,Q15,Q16,Q17,Q18,Q20. 나머지 Q03,Q19 재개. 미완료 UPGRADE: 검산 후 판정. 미완료 그림: Q03, Q19.
 
@@ -58,7 +58,8 @@
 > $f(0)=1$이므로 $f(3)=1$입니다. 다른 보기 $0,2,3,4$는 이 함수값과 다르므로 정답은 ②입니다.
 
 - **판정 근거 및 남은 확인:** 그래프·조건·경우분류·고난도 전개 중 독립 검산이 끝나지 않아 HOLD. 문제 이미지 assets/images/22_매산고_2학기_기말_고2_수학II/q3.png 실물 시각 판독 NOT_RUN; VISUAL_HOLD.
-- 독립 검산: NOT_RUN. 학생용 완성 개선 풀이: 아직 미판정. 상태: READ_EVIDENCED / QA_NOT_RUN.
+- **이번 재개 수학 검산:** 기존 해설이 주장한 영점 0,2와 꼭짓점 (1,-1)이 실제 그래프와 같다는 조건부로, f'(x)=x(x-2)이고 ∫₀³(x²−2x)dx=[x³/3−x²]₀³=9−9=0, f(3)=f(0)=1(②) 계산은 일치한다. **단, 그래프 원본 미확인으로 계수/영점은 독립 확정 불가.**
+- **실물 탐색 기록:** `assets/images/22_매산고_2학기_기말_고2_수학II/q3.png` 및 `archive/exams/original/high/h2/2final/assets/images/22_매산고_2학기_기말_고2_수학II/q3.png`를 GitHub main contents API에서 직접 요청했으나 둘 다 HTTP 404. 이미지 내용 판독은 NOT_RUN. 상태: VISUAL_HOLD / CONDITIONAL_MATH_CHECK / RELEASE_QA_NOT_RUN.
 
 ## Q04 — KEEP
 
@@ -423,7 +424,8 @@
 > (3) 높이 $h=3$일 때 $t=3$이므로 $V'(3)=\frac{16\pi}{9}\cdot9=16\pi\ (\mathrm{cm}^3/\mathrm{s})$입니다.
 
 - **판정 근거 및 남은 확인:** 그래프·조건·경우분류·고난도 전개 중 독립 검산이 끝나지 않아 HOLD. 문제 이미지 assets/images/22_매산고_2학기_기말_고2_수학II/q19.png 실물 시각 판독 NOT_RUN; VISUAL_HOLD.
-- 독립 검산: NOT_RUN. 학생용 완성 개선 풀이: 아직 미판정. 상태: READ_EVIDENCED / QA_NOT_RUN.
+- **이번 재개 수학 검산:** 원뿔의 전체 높이 9 cm, 반지름 12 cm라는 기존 해설의 그림 판독값을 *조건부*로 사용하면 닮음에서 r/h=12/9=4/3. 수면 상승률 1 cm/s와 초기 빈 그릇으로 h=t, r=4t/3 (0≤t≤9). V=(π/3)(4t/3)²t=16πt³/27, dV/dt=16πt²/9, h=3일 때 t=3이므로 dV/dt=16π. 원문 정답과 수학식 일치. **그림 치수 9·12의 실물 확인은 실패했으므로 확정 KEEP 아님.**
+- **실물 탐색 기록:** `assets/images/22_매산고_2학기_기말_고2_수학II/q19.png` 및 `archive/exams/original/high/h2/2final/assets/images/22_매산고_2학기_기말_고2_수학II/q19.png`를 GitHub main contents API에서 직접 요청했으나 둘 다 HTTP 404. 상태: VISUAL_HOLD / CONDITIONAL_MATH_CHECK / RELEASE_QA_NOT_RUN.
 
 ## Q20 — KEEP
 
