@@ -1,0 +1,63 @@
+# 고등 학생용 해설 업그레이드 — 예약 4라인 공통 하네스
+
+> 적용: 고1·대수·미적분Ⅰ·확률과 통계의 기존 기출/유사/교과서 JS. 이 문서는 공통 진입점이며 현행 `AGENTS.md`, `docs/rules/RULEBOOK_CURRENT.md`와 해설·SVG 영역의 정본을 대체하지 않는다. 규칙이 충돌하면 상위 정본과 사용자의 최신 지시를 따른다.
+
+## 1. 고정 목표와 책임
+
+- 목표는 **기존 해설 중 학생이 따라 풀기 어려운 문항을 찾아 필요한 것만 개선**하는 것이다. 모든 해설을 재작성하거나 수정 건수를 목표로 하지 않는다.
+- 각 실행은 해당 과목의 **시험지 1개**만 맡는다. 문항 전체를 실제로 읽고 `KEEP`, `UPGRADE`, `HOLD`를 문항별로 남긴다. 이미 충분한 해설은 `KEEP`한다.
+- 우선 결함: 교육과정 외 개념, 잘못된 수학, 핵심 논리 점프, 계산·조건·경우 누락, 불필요하게 어려운 풀이, 학생이 이해하기 어려운 설명. [학생용 해설 정본](../../rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md)의 코드와 게이트를 적용한다.
+- `solution`은 학생이 재현할 수 있는 **작은 칠판** 흐름으로 쓴다. 두 번째 풀이가 실질적으로 이해를 돕는 경우에만 같은 `solution` 안에 자연스럽게 추가한다. 현행 JS에 없는 상세해설 필드를 임의로 만들지 않는다.
+- `content`, `choices`, `answer`, 문제 `image`, 기존 승인 메타, 기존 `solutionImage`는 기본 보호한다. 오류를 찾으면 별도 `HOLD`/defect로 남긴다. 승인된 `solution` 변경에서 요구하는 원본 고정 해시 갱신 등은 `common.md`의 공식 절차를 따른다.
+- **새 SVG·손 SVG·우회 스크립트는 절대 만들지 않는다.** 해설이 수학적으로 검증된 후 그림이 필요하면 SVG 엔진용 수학 사실과 plan을 작성하고 별도 엔진 라인으로 넘긴다. 엔진 렌더·PNG 독립 검수·게시는 SVG 라인이 담당한다. 필수 시각자료가 미완료면 시험지의 최종 시각 PASS를 선언하지 않는다.
+- 기존 source identity와 전체 문항 denominator를 확정한다. `id`/문항 번호만으로 다른 시험지의 문항을 결속하지 않는다.
+
+## 2. 라인과 시간 (Asia/Seoul)
+
+| course key | 매시 시작 | 대상 |
+| --- | --- | --- |
+| `h1` | 10분 | 고1 공통수학1·2 |
+| `algebra` | 20분 | 대수(수1) |
+| `calculus1` | 30분 | 미적분Ⅰ(수2) |
+| `probstat` | 40분 | 확률과 통계 |
+
+시험지 선택은 `archive/exams/original/high/`, `archive/exams/similar/high/`와 실제 교과서 소스의 현행 파일에서 한다. 원본 → 유사 → 교과서 순으로 아직 처리하지 않은 시험지 1개를 고른다. `h2`/`h3` 폴더나 파일명만으로 과목을 추측하지 말고 실제 `standardCourse`, 교육과정/단원, 시험지명을 확인한다. 불확실한 교과 구분은 건너뛰고 명시한다. 중등은 제외한다.
+
+각 라인은 **자기 과목의 진행 상태와 작업 브랜치**만 쓰고, 서로 다른 라인이 공통 진행 JSON을 동시에 갱신하지 않는다. 같은 파일의 이미 진행 중인 작업이 확인되면 중복 수정을 하지 않는다. 원격 `main`의 최근 상태를 먼저 보고, 기록된 완료본과 `questionUid`/source fingerprint를 대조한다. 브랜치 충돌·쓰기 권한 부재·미완료 승인 작업은 건너뛰거나 `HOLD`로 기록하고 다른 라인의 변경을 덮어쓰지 않는다.
+
+매시 시작 시각을 10분씩 벌려도 실행 종료는 보장되지 않는다. 외부 작업·렌더와 충돌할 경우 완료 예상 시간을 지어내지 말고 안전하게 중단/보류한다.
+
+## 3. 하네스 시작 게이트: 링크 열람이 아니라 본문 읽기
+
+1. 현재 소스와 적용할 Git commit SHA를 고정하고, `node tools/solution-upgrade-reservation/preflight.mjs --course <course>`를 실행한다. 실행기가 Node/Git을 제공하지 않으면 `docs-manifest.json`의 같은 상대 경로를 **그 Git commit에서 직접 열어** 읽고 `NOT_RUN`을 기록한다.
+2. `docs-manifest.json`의 `core` 문서 전부의 실제 본문을 읽는다. `AGENTS.md`가 요구하는 직접 적용 추가 문서와 하위 `AGENTS.md`도 읽는다. 링크 존재·문서 목록 출력·요약만으로 필독을 대체하지 않는다.
+3. 각 문서의 실제 SHA-256과 원문 속 적용 규칙 한 문장 이상을 `read-receipt.json`에 기록한다. Node 실행 가능한 경우 `node tools/solution-upgrade-reservation/preflight.mjs --course <course> --receipt <read-receipt.json>`이 문서 해시와 인용문이 실제 본문에 있는지 검사해야 한다. 이 검증은 **읽기 증거 검증**일 뿐 내용 이해 자체를 기계적으로 증명하지 못한다.
+4. Golden 2~3개 및 관련 Negative sample을 현행 calibration 문서대로 실제 판독한다. 타인 결과를 통과 근거로 삼지 않는다.
+5. 실제 source/문항/해설을 읽지 못하거나 문서 열람·교육과정 확인이 불가능하면 `PASS`가 아니라 `NOT_RUN`/`EVIDENCE_DEBT`/`HOLD`로 남기고 수정·커밋을 중단한다.
+
+## 4. 한 시험지 처리
+
+1. 소스 경로, Git SHA, `questionUid` 및 content/choices/image fingerprint, 수정 전 solution hash를 기록하고 전 문항을 실제로 읽는다.
+2. 정확한 학년·과목·교육과정·단원을 확인한다. 원본 발문/조건과 답의 독립 풀이를 통해 해설의 수학적 사실을 검산한다.
+3. 문항마다 `KEEP`(충분함), `UPGRADE`(근거 있는 결함), `HOLD`(source·정답·교육과정/시각 충돌)를 기록한다. `UPGRADE`는 정본 reason code와 결함 문장/식, 학생 관점 개선 의도를 남긴다.
+4. `UPGRADE`만 `solution` 필드를 좁게 수정한다. 핵심 발상 → 실제 계산 → 조건/경우 → 결론을 자연스럽게 잇고, 교육과정 내 더 쉬운 풀이가 있으면 그것을 우선한다. 두 번째 풀이가 의미 있을 때만 추가한다. 정상 문항의 문체만 바꾸지 않는다.
+5. Golden/Negative 대조, 독립 수학 검증, source/solution identity alignment, `solution` 보호 필드 diff, JS syntax, 관련 시험지 검사, 실제 최종 `sol` 전 문항 렌더 및 `exam`/`ans` 보조 검사를 현행 문서대로 수행한다. 검사 환경이 없으면 사실대로 `NOT_RUN`을 기록하며 최종 PASS로 봉인하지 않는다.
+6. SVG가 필요하면 §5를 따른다. 생성되지 않은 필수 시각자료는 `SOLUTION_VISUAL_MISSING`/OPEN으로 남긴다.
+7. 과목별 브랜치에 안전한 변경과 운영상 필요한 기록만 남기고, 원시 스크린샷·로그·대용량 증거는 Git에 넣지 않는다. Drive 증거 및 Git 포인터는 `docs/agents/git-evidence.md`를 따른다. main 직접 커밋·강제 push·보호 규칙 우회는 금지한다.
+8. 마지막에 source/수정 qid와 reason/KEEP·UPGRADE·HOLD 수/미해결 SVG 플랜/실제 검사와 미실행 검사/브랜치·커밋·PR을 보고한다. 미수정 시험지는 확인 완료 근거가 있어야만 완료로 표시한다.
+
+## 5. SVG 엔진 플랜 인계 게이트 (조건부)
+
+그림이 필요하다고 판단한 문항에서만 `--svg`를 추가하여 시작 문서와 해당 그래프/도형 형태 가이드를 실제로 읽는다. SVG plan 스키마는 `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`가 정본이며, 읽지 않은 채 `plan.json` 구조를 지어내지 않는다. 기존 `ops/golden`의 같은 형태 통과 예시를 참고한다.
+
+- 해설 변경 뒤 **현재 문항·정답·수학적 독립 검산이 일치한 사실**로 `item.json`(sourcePath/ordinal), `plan.json`, 필요시 `publish.json` 초안을 구성한다.
+- 그래프에서 표현해야 할 함수식·정의역·교점·점근선·부호·영역·경계, 사용된 주/보조 풀이, 학습 목적, 화면에 보여줄 실제 값을 분명히 한다.
+- 엔진 plan을 썼으면 `node archive/tools/geometry-equation/ops/claude-batch/plan-lint.cjs <plan.json>`을 실행할 수 있을 때 실행하고 결과를 남긴다. 계획 검증만으로 그림 생성이나 SVG 검수가 완료된 것이 아니다.
+- plan 형식·수학적 사실이 확정되지 않으면 `SVG_REQUEST` 수준의 인계 메모만 작성한다. 이 경우 엔진 호환 `plan.json`을 만들었다고 주장하지 않는다.
+- 실제 SVG 생성, 렌더, PNG 시각 검수, 게시와 figure ledger 변경은 기존 SVG 엔진 라인의 권한이다. 해당 문항의 그림 작업은 완료 전까지 OPEN으로 남긴다.
+
+## 6. 안전한 시작·중단
+
+- Git 쓰기 권한 또는 브랜치 준비가 없으면 기존 파일 변경을 시도하지 않고 문항별 후보/수정 제안과 `SAVE_BLOCKED` 사유를 보고한다. 저장하지 못한 결과를 완료/커밋으로 보고하지 않는다.
+- 동일한 source identity가 이미 완료됐거나 다른 작업자가 진행 중이면 중복 수정하지 않는다. 기존 예약 라인과 Drive 이관 라인의 브랜치를 건드리지 않는다.
+- 교육과정 프로필/정답/SVG 필수 조건이 충돌하면 안전하게 `HOLD` 처리하고 정확한 문제를 보고한다.
