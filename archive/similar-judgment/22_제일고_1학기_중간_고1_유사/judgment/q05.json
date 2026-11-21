@@ -1,0 +1,63 @@
+{
+  "qid": 5,
+  "itemFingerprint": "0b4871d0a53ba192",
+  "solveSteps": [
+    "Q5 문제의 조건(xy)에 맞추어 식을 세운다.",
+    "$x$에 대하여 내림차순으로 정리하면 $$ \\begin{aligned} x^2+(-y+7)x-(6y^2+11y-10) &= x^2+(-y+7)x-(3y-2)(2y+5) \\ &= (x-3y+2)(x+2y+5) \\end{aligned} $$ 따라서 보기 중 알맞은 인수는 ④ $x-3y+2$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "unitEvidence": "$x^2-xy-6y^2+7x-11y+10$의 인수로 알",
+  "rpmRecordId": "H1-RPM-013",
+  "rpmReason": "Q5(xy): 인수분해 단원의 RPM H1-RPM-013 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+  "typeReason": "Q5(xy): 인수분해 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q5(xy): 인수분해 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차식",
+        "src": "stem",
+        "quote": "x^2-xy-6y^2+7x-11y+10"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "(x-3y+2)(x+2y+5)"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "내림차순으로 정리하면",
+        "evidenceType": "IMPLIED",
+        "justification": "x에 대한 내림차순 정리 후 상수항을 인수분해하여 X자 인수분해를 수행함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q5(xy): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

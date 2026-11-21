@@ -1,0 +1,76 @@
+{
+  "qid": 17,
+  "itemFingerprint": "a69290c867ac7d4c",
+  "solveSteps": [
+    "$u=xz$라 두면 $xyz=36$에서 $y=\\dfrac{36}{u}$이다.",
+    "주어진 식을 정리하면 $$ \\dfrac{1}{x}+\\dfrac{1}{z} = \\dfrac{x+z}{xz} = \\dfrac{x+z}{u} = \\dfrac{2}{y} = \\dfrac{2u}{36} = \\dfrac{u}{18} $$ 이므로 $x+z = \\dfrac{u^2}{18}$이다.",
+    "$x, z$가 자연수이므로 $u$는 $36$의 약수이면서 $u^2$이 $18=2\\cdot 3^2$의 배수여야 하므로 $u$는 $6$의 배수이다.",
+    "따라서 가능한 값은 $u=6, 12, 18, 36$이다.",
+    "$S=x+z=\\dfrac{u^2}{18}$라 두면 $x, z$는 이차방정식 $r^2-Sr+u=0$의 두 근이므로 판별식 $D=S^2-4u$가 $0$ 이상의 제곱수여야 한다.",
+    "- $u=6$: $S=2,; D=4-24=-20 < 0$ (불가능)  \n- $u=12$: $S=8,; D=64-48=16=4^2$ (가능)  \n- $u=18$: $S=18,; D=324-72=252$ ($15^2<252<16^2$, 제곱수 아님)  \n- $u=36$: $S=72,; D=5184-144=5040$ ($70^2<5040<71^2$, 제곱수 아님) 따라서 $u=12$뿐이다.",
+    "이때 $x+z=8, xz=12$이므로 $r^2-8r+12=(r-2)(r-6)=0$이고, $x>z$에서 $x=6, z=2$이다.",
+    "또한 $y=\\dfrac{36}{12}=3$으로 $x>y>z$를 만족한다.",
+    "그러므로 $x+y+z=6+3+2=11$이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-EQUATION_APPLICATION",
+  "unitEvidence": "$xyz=36$이고 $\\dfrac{1}{x}+\\dfra",
+  "rpmRecordId": "H1-RPM-043",
+  "rpmReason": "Q17(xyz): 방정식과 부등식의 활용 단원의 RPM H1-RPM-043 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+  "templateKey": "TPL_H1_SYSTEM_BRANCH_COMMON_ROOT",
+  "typeReason": "Q17(xyz): 방정식과 부등식의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(xyz): 방정식과 부등식의 활용 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "등식",
+        "src": "stem",
+        "quote": "$xyz=36$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "자연수 $x, y, z$에 대하여 $x+y+z$의 값은"
+      }
+    ],
+    "method": [
+      {
+        "term": "부정방정식",
+        "src": "solution",
+        "quote": "판별식 $D=S^2-4u$가 $0$ 이상의 제곱수여야 한다",
+        "evidenceType": "IMPLIED",
+        "justification": "자연수 해 조건을 u=xz의 약수 범위와 이차방정식 판별식 제곱수 조건으로 해결함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "자연수 $x, y, z$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q17(xyz): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

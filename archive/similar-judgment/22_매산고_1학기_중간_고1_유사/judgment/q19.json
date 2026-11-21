@@ -1,0 +1,69 @@
+{
+  "qid": 19,
+  "itemFingerprint": "ba9eed4d42e74eeb",
+  "solveSteps": [
+    "$f(x)+g(x)$가 $x^2+2x-1$을 인수로 가지므로 $x^2+2x-1$로 나누어떨어진다.",
+    "여기에서 $x$ 대신 $-x$를 대입하면 $f(-x)+g(-x)$는 $(-x)^2+2(-x)-1 = x^2-2x-1$로 나누어떨어진다.",
+    "한편 조건에서 $f(-x)-2g(-x)$를 $x^2-2x-1$로 나눈 나머지가 $-6$이므로 $$ {f(-x)+g(-x)} - {f(-x)-2g(-x)} = 3g(-x) $$ 를 $x^2-2x-1$로 나눈 나머지는 $0-(-6)=6$이다.",
+    "따라서 $g(-x)$를 $x^2-2x-1$로 나눈 나머지는 $2$이다.",
+    "즉, 몫을 $Q(x)$라 하면 $$ g(-x) = (x^2-2x-1)Q(x)+2 $$ 다시 $x$ 대신 $-x$를 대입하면 $$ g(x) = (x^2+2x-1)Q(-x)+2 $$ 이므로 $g(x)$를 $x^2+2x-1$로 나눈 나머지는 $a=2$이다.",
+    "또한 $f(x)+g(x)$가 $x^2+2x-1$로 나누어떨어지므로 $b+a=0$, 즉 $b=-2$이다.",
+    "끝으로 $f(x)+kg(x)$를 $x^2+2x-1$로 나눈 나머지는 $b+ka = -2+2k$이므로, 인수로 가지려면 $-2+2k=0$, 즉 $c=k=1$이다.",
+    "따라서 $a+b+c = 2+(-2)+1 = 1$이다."
+  ],
+  "solvedAnswer": "$1$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "unitEvidence": "두 다항식 $f(x)$, $g(x)$에 대하여 $f(x",
+  "rpmRecordId": "H1-RPM-009",
+  "rpmReason": "Q19(kg): 나머지정리와 인수정리 단원의 RPM H1-RPM-009 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+  "typeReason": "Q19(kg): 나머지정리와 인수정리 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q19(kg): 나머지정리와 인수정리 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "두 다항식 $f(x)$, $g(x)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나눈 나머지를 $a$"
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식의나눗셈",
+        "src": "solution",
+        "quote": "g(-x) = (x^2-2x-1)Q(x)+2",
+        "evidenceType": "IMPLIED",
+        "justification": "나눗셈 항등식에서 x를 -x로 바꾸어 g(x)의 나머지를 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q19(kg): 발문과 해설의 풀이 과정을 점검하여 정답 $1$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

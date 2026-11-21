@@ -1,0 +1,63 @@
+{
+  "qid": 8,
+  "itemFingerprint": "4085dd00a4d9d2b3",
+  "solveSteps": [
+    "두 근을 $\\alpha=3+2i$, $\\beta=3-2i$라 하면 두 근의 합과 곱은 $$ \\alpha+\\beta = (3+2i)+(3-2i) = 6, \\qquad \\alpha\\beta = (3+2i)(3-2i) = 9-4i^2 = 13 $$ 이다.",
+    "따라서 $x^2$의 계수가 $1$인 이차방정식은 $x^2-(\\alpha+\\beta)x+\\alpha\\beta=0$이므로 $$ x^2-6x+13=0 $$ 이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-06",
+  "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+  "unitEvidence": "$3+2i$, $3-2i$를 두 근으로 하고 $x^2$",
+  "rpmRecordId": "H1-RPM-029",
+  "rpmReason": "Q8(13): 근과 계수의 관계 단원의 RPM H1-RPM-029 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+  "typeReason": "Q8(13): 근과 계수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q8(13): 근과 계수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "$3+2i$, $3-2i$를 두 근으로"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "두 근의 합과 곱은",
+        "evidenceType": "IMPLIED",
+        "justification": "두 근의 합 6과 곱 13을 이용해 x^2-(합)x+(곱)=0을 세움"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q8(13): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

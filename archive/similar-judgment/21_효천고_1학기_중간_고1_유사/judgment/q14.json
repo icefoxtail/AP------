@@ -1,0 +1,75 @@
+{
+  "qid": 14,
+  "itemFingerprint": "455a960052cd144a",
+  "solveSteps": [
+    "일차함수 $y=f(x)$는 점 $(6,0)$을 지나고 최고차항의 계수가 양수이므로 $$ f(x) = m(x-6) \\quad (m>0) $$ 이라 둘 수 있다.",
+    "이차함수 $y=g(x)$는 직선 $x=6$을 축으로 하고 최고차항의 계수가 양수이므로 $$ g(x) = a(x-6)^2+c \\quad (a>0) $$ 이라 둘 수 있다.",
+    "$t=x-6$이라 하면 두 교점의 $t$좌표는 $t=3-6=-3$과 $t=12-6=6$이다.",
+    "두 함수의 값이 같으므로 $$ -3m = 9a+c, \\qquad 6m = 36a+c $$ 두 식을 빼면 $9m=27a$에서 $m=3a$이고, 이를 첫째 식에 대입하면 $-9a=9a+c$에서 $c=-18a$이다.",
+    "따라서 방정식 $f(x)+|g(x)|=0$은 $$ 3at + |a(t^2-18)| = a{3t + |t^2-18|} = 0 $$ 이고 $a>0$이므로 $3t + |t^2-18| = 0$과 동치이다.",
+    "1) $t^2-18 \\ge 0$ (즉, $|t| \\ge 3\\sqrt{2}$)일 때: $$ t^2+3t-18 = (t+6)(t-3) = 0 \\implies t=-6 \\text{ 또는 } t=3 $$ 이 중 $|t| \\ge 3\\sqrt{2}$를 만족하는 것은 $t=-6$뿐이다.",
+    "2) $t^2-18 \\le 0$ (즉, $|t| \\le 3\\sqrt{2}$)일 때: $$ -t^2+3t+18 = -(t-6)(t+3) = 0 \\implies t=-3 \\text{ 또는 } t=6 $$ 이 중 $|t| \\le 3\\sqrt{2}$를 만족하는 것은 $t=-3$뿐이다.",
+    "따라서 실근은 $t=-6, -3$, 즉 $x=0, 3$의 $2$개이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "그림과 같이 일차함수 $y=f(x)$의 그래프는 점 $",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q14(12): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+  "typeReason": "Q14(12): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(12): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=g(x)$의 그래프"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "실근의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "절댓값",
+        "src": "solution",
+        "quote": "3t + |t^2-18| = 0",
+        "evidenceType": "IMPLIED",
+        "justification": "계수를 a로 통일한 뒤 절댓값 안의 부호 구간에 따라 방정식을 나누어 품"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양수",
+        "src": "stem",
+        "quote": "최고차항의 계수는 양수이다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q14(12): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

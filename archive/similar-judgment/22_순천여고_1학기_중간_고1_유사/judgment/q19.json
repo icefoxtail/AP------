@@ -1,0 +1,75 @@
+{
+  "qid": 19,
+  "itemFingerprint": "d415d7720f78d88c",
+  "solveSteps": [
+    "점 $A$의 $x$좌표를 $u>0$, 점 $B$의 $x$좌표를 $-v<0$ ($v>0$)이라 두면 두 점은 $y=x^2$ 위의 점이므로 $A(u, u^2)$, $B(-v, v^2)$이다.",
+    "삼각형 $AOC$와 $DOB$의 넓이는 각각 $$ S_1 = \\frac{1}{2}\\cdot u\\cdot u^2 = \\frac{1}{2}u^3, \\qquad S_2 = \\frac{1}{2}\\cdot v\\cdot v^2 = \\frac{1}{2}v^3 $$ $S_1:S_2=8:1$이므로 $u^3:v^3=8:1 \\implies u:v=2:1$, 즉 $u=2v$이다.",
+    "한편 $u$와 $-v$는 방정식 $x^2=ax+8 \\implies x^2-ax-8=0$의 두 근이므로 근과 계수의 관계에 의해 $$ u(-v) = -8 \\implies uv = 8 $$ $u=2v$를 대입하면 $2v^2=8 \\implies v=2$ ($v>0$), $u=4$이다.",
+    "따라서 두 근의 합 $a = u+(-v) = 4-2 = 2$이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "그림과 같이 이차함수 $y=x^2$의 그래프와 직선 $",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q19(ax): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+  "typeReason": "Q19(ax): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q19(ax): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=x^2$의 그래프"
+      },
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직선 $y=ax+8$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "삼각형 $AOC$의 넓이"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의해",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "수선",
+        "src": "stem",
+        "quote": "내린 수선의 발을 $C$, $D$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q19(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

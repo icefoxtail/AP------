@@ -1,0 +1,70 @@
+{
+  "qid": 21,
+  "itemFingerprint": "3748c8ecbbf0a12b",
+  "solveSteps": [
+    "두 함수를 전개하면 $f(x)=x^2-2ax$, $g(x)=-x^2+4ax+b$이다.",
+    "방정식 $f(x)=g(x)$에서 $2x^2-6ax-b=0$이므로 근과 계수의 관계에 의하여 $$ \\alpha+\\beta = 3a, \\qquad \\alpha\\beta = -\\frac{b}{2} $$ 조건 (나)의 $\\beta-\\alpha=4$와 곱셈 공식의 변형 $(\\alpha+\\beta)^2-(\\beta-\\alpha)^2=4\\alpha\\beta$를 이용하면 $$ (3a)^2-4^2 = 4\\left(-\\frac{b}{2}\\right) \\implies 9a^2-16 = -2b \\implies b = 8-\\frac{9}{2}a^2 $$ 조건 (가)에서 $f(\\beta)=g(\\beta)$이므로 조건 (다)의 좌변은 $$ \\begin{aligned} f(\\beta)-g(\\alpha) &= g(\\beta)-g(\\alpha) = (-\\beta^2+4a\\beta+b)-(-\\alpha^2+4a\\alpha+b) \\ &= (\\beta-\\alpha){4a-(\\alpha+\\beta)} = 4(4a-3a) = 4a \\end{aligned} $$ 우변은 $g(2a)-f(a)=(4a^2+b)-(-a^2)=5a^2+b$이므로 조건 (다)는 $4a\\le 5a^2+b$이다.",
+    "이제 조건 (라) $g(\\beta)-f(\\alpha)=5a^2+b$를 정리하면 $$ \\begin{aligned} g(\\beta)-f(\\alpha) &= (-\\beta^2+4a\\beta+b)-(\\alpha^2-2a\\alpha) \\ &= -(\\alpha^2+\\beta^2)+4a\\beta+2a\\alpha+b \\ &= -{(\\alpha+\\beta)^2-2\\alpha\\beta}+3a(\\alpha+\\beta)+a(\\beta-\\alpha)+b \\ &= -(9a^2+b)+9a^2+4a+b = 4a \\end{aligned} $$ 따라서 $4a = 5a^2+b$이고(조건 (다)의 등호도 성립), 여기에 $b=8-\\dfrac{9}{2}a^2$을 대입하면 $$ 4a = 5a^2+8-\\frac{9}{2}a^2 = \\frac{1}{2}a^2+8 \\implies \\frac{1}{2}a^2-4a+8 = 0 \\implies \\frac{1}{2}(a-4)^2 = 0 $$ 그러므로 $a=4$이고 $b=8-\\dfrac{9}{2}\\cdot 16=-64$이다.",
+    "따라서 $ab=4\\cdot(-64)=-256$이다."
+  ],
+  "solvedAnswer": "$-256$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-06",
+  "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+  "unitEvidence": "두 이차함수 $f(x)=(x-a)^2-a^2$, $g(",
+  "rpmRecordId": "H1-RPM-029",
+  "rpmReason": "Q21(ab): 근과 계수의 관계 단원의 RPM H1-RPM-029 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+  "typeReason": "Q21(ab): 근과 계수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q21(ab): 근과 계수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "두 이차함수 $f(x)=(x-a)^2-a^2$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "곱",
+        "src": "stem",
+        "quote": "$ab$의 값을 구하고"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "서로 다른 두 실근 $\\alpha$, $\\beta$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q21(ab): 발문과 해설의 풀이 과정을 점검하여 정답 $-256$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

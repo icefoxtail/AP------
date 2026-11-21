@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -3,
+      5,
+      -4,
+      16
+    ],
+    "pieces": [
+      {
+        "domain": [
+          -3,
+          5
+        ],
+        "coefficients": [
+          "2",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "-2",
+        "label": "꼭짓점(2, -2)"
+      },
+      {
+        "id": "L",
+        "x": "-2",
+        "y": "14",
+        "label": "(-2, 14)"
+      },
+      {
+        "id": "R",
+        "x": "4",
+        "y": "2",
+        "label": "(4, 2)"
+      }
+    ]
+  },
+  "caption": "구간 [-2, 4]에서 이차함수 y=x^2-4x+2의 최솟값 (2, -2)와 최댓값 (-2, 14)"
+}

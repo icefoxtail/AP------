@@ -1,0 +1,856 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/high/h1/1mid/22_효천고_1학기_중간_고1_유사.js",
+  "sourceGitBlobSha": "6ffa7179e4e68f8e30032f27c54658e0b5fba3f0",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "similar-md-importer",
+    "at": "2026-11-19"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "일체형 마크다운 변환 산출물(UNREVIEWED)"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "곱셈 공식의 변형에 의하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "(-3)^3+3\\cdot 2\\cdot (-3)",
+            "evidenceType": "IMPLIED",
+            "justification": "x^3-y^3의 곱셈 공식 변형식에 x-y=-3, xy=2를 대입함"
+          }
+        ],
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$x^3-y^3$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "곱셈 공식 변형에 차와 곱을 대입해 x^3-y^3을 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식은"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "3(x^2-2x-8)=0",
+            "evidenceType": "IMPLIED",
+            "justification": "두 근을 인수로 갖는 식 3(x+2)(x-4)=0을 전개하여 일반형으로 정리함"
+          }
+        ],
+        "given": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "$x^2$의 계수가 $3$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "두 근 -2, 4와 이차항 계수 3으로 이차방정식을 세워 전개함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "대칭식",
+            "src": "solution",
+            "quote": "\\frac{\\alpha^2+\\beta^2}{\\alpha\\beta}"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2-5x-2=0$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "근과 계수의 관계로 합과 곱을 구한 뒤 통분식 값을 계산함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$, $b$에 대하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수정리",
+            "src": "solution",
+            "quote": "인수정리에 의하여 $P(1)=0$, $P(2)=0$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $P(x)=2x^3-5x^2+ax+b$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "제수 인수분해 후 인수정리 P(1)=0, P(2)=0으로 2a+b를 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "복소수",
+            "src": "stem",
+            "quote": "모든 복소수 $a$의 값의 곱"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $D=0$이어야",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "완전제곱식",
+            "src": "stem",
+            "quote": "완전제곱식이 되도록"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "완전제곱식 판별식 D=0으로 얻은 a의 이차방정식에 근과 계수의 관계를 적용함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "곱셈공식",
+            "src": "stem",
+            "quote": "곱셈공식을 이용하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "a=100$, $b=2$로 놓으면",
+            "evidenceType": "IMPLIED",
+            "justification": "100과 2를 문자 a, b로 치환해 (a+b)^3-(a^3+b^3)=3ab(a+b) 공식을 적용함"
+          }
+        ],
+        "given": [
+          {
+            "term": "다항식",
+            "src": "solution",
+            "quote": "(a+b)^3-(a^3+b^3)"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "100과 2를 치환해 세제곱 합·차 공식으로 61200을 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "나눈 나머지이다"
+          }
+        ],
+        "method": [
+          {
+            "term": "나머지정리",
+            "src": "solution",
+            "quote": "나머지정리에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $P(x)=(x^2-x+1)(x-5)+7x+11$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "제수 차수 조건과 나머지정리로 ㄱ, ㄴ, ㄷ의 참·거짓을 판별함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$, $b$, $c$의 곱"
+          }
+        ],
+        "method": [
+          {
+            "term": "계수비교",
+            "src": "solution",
+            "quote": "계수를 비교하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "항등식",
+            "src": "stem",
+            "quote": "$x$, $y$에 대한 항등식"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "x, y에 대해 정리 후 계수비교법으로 a, b, c를 구해 곱함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "나머지가 $mx+n$일 때"
+          }
+        ],
+        "method": [
+          {
+            "term": "나머지정리",
+            "src": "solution",
+            "quote": "나머지정리에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $P(x)$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "나머지정리 P(1)=2, P(3)=8을 연립해 m, n을 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "나누었을 때의 나머지는"
+          }
+        ],
+        "method": [
+          {
+            "term": "나머지정리",
+            "src": "solution",
+            "quote": "조건에서 $f(1)=10$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "이차 나머지 R(x)를 a(x^2+3)+3x-1로 두고 나머지정리 f(1)=10을 대입해 a를 구함"
+          }
+        ],
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $f(x)$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "삼차식 나머지를 a(x^2+3)+3x-1로 설정하고 f(1)=10을 대입해 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "a_0+a_2+a_4+a_6+a_8=130"
+          }
+        ],
+        "method": [
+          {
+            "term": "수치대입법",
+            "src": "solution",
+            "quote": "각각 대입하면",
+            "evidenceType": "IMPLIED",
+            "justification": "x+1이 1과 -1이 되는 x=0, -2를 대입한 두 식을 더해 짝수차 계수합을 구함"
+          }
+        ],
+        "given": [
+          {
+            "term": "항등식",
+            "src": "solution",
+            "quote": "주어진 항등식에서"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "x=0과 x=-2를 대입한 두 식을 더해 짝수차 계수의 합을 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $a$의 값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "일차방정식",
+            "src": "solution",
+            "quote": "일차방정식의 해가 존재하지 않으려면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "$x$에 대한 방정식"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "Ax=B 꼴로 정리 후 불능 조건 A=0, B≠0으로 a=-4를 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "연속한 $4$개 항의 합은"
+          }
+        ],
+        "method": [
+          {
+            "term": "복소수",
+            "src": "solution",
+            "quote": "주기가 $4$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "f(2k)가 k에 대해 주기 4로 반복되며 4항 합이 0임을 이용해 50항 합을 계산함"
+          }
+        ],
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $n$에 대하여"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "제곱으로 ±i를 얻은 뒤 4주기 소거로 50개 짝수항의 합을 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $x$, $y$의 개수를"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "\\dfrac{\\sqrt{A}}{\\sqrt{B}}=-\\sqrt{\\dfrac{A}{B}}",
+            "evidenceType": "IMPLIED",
+            "justification": "음수의 제곱근 나눗셈과 곱셈에서 음의 부호가 나오는 부호 및 등호 조건을 적용함"
+          }
+        ],
+        "given": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "-2\\le x<3"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "음수 제곱근 나눗셈·곱셈 부호 조건의 경계 등호를 구분해 정수 개수를 셈"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "자연수 $n$의 최솟값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "최소공배수",
+            "src": "solution",
+            "quote": "최솟값은 $\\operatorname{lcm}(8, 12)=24$",
+            "evidenceType": "IMPLIED",
+            "justification": "두 복소수가 각각 1이 되는 최소 지수 8과 12의 최소공배수를 구함"
+          }
+        ],
+        "given": [
+          {
+            "term": "복소수",
+            "src": "solution",
+            "quote": "z_1=\\dfrac{1-i}{\\sqrt{2}}"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "두 복소수의 주기 8, 12를 구하고 최소공배수 24를 찾음"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "모든 자연수 $x$의 값의 합"
+          }
+        ],
+        "method": [
+          {
+            "term": "다항식의나눗셈",
+            "src": "solution",
+            "quote": "분자를 분모 $x^2+4x+3=(x+1)(x+3)$으로 나누어",
+            "evidenceType": "IMPLIED",
+            "justification": "삼차식을 이차식으로 나눈 뒤 (x+1)을 약분하여 12의 약수 조건으로 환원함"
+          }
+        ],
+        "given": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "(x+1)(x+3)"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "삼차식 나눗셈 후 (x+1) 약분으로 12의 약수 조건을 풀어 x 합을 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "내림차순",
+            "src": "stem",
+            "quote": "$x$에 대한 내림차순으로"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "-(x^4+2x^2y^2-3x^3y-6xy^3)",
+            "evidenceType": "IMPLIED",
+            "justification": "문자식을 3A와 -BC로 단순화한 뒤 대입하여 전개하고 x에 대해 내림차순 정리함"
+          }
+        ],
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "세 다항식 $A$, $B$, $C$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "식을 3A, -BC로 먼저 정리한 뒤 대입해 x에 대한 내림차순으로 전개함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "켤레복소수",
+            "src": "stem",
+            "quote": "$z$의 켤레복소수이다"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "(z-\\overline{z})\\left(1-\\frac{4}{z\\overline{z}}\\right) = 0",
+            "evidenceType": "IMPLIED",
+            "justification": "실수 조건 w=w_bar를 이항·통분하여 (z-z_bar)로 인수분해함"
+          }
+        ],
+        "given": [
+          {
+            "term": "허수",
+            "src": "stem",
+            "quote": "허수 $z$에 대하여"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수일 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "w=w_bar를 인수분해하고 z≠z_bar 조건으로 z*z_bar=4를 도출함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 값의 합을 구하고"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "a^3+b^3+c^3-3abc=",
+            "evidenceType": "IMPLIED",
+            "justification": "세제곱 항등식 인수분해로 a+b+c=0과 a=b=c 두 경우를 도출해 식의 값을 구함"
+          }
+        ],
+        "given": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "$0$이 아닌 세 실수 $a$, $b$, $c$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "a+b+c=0과 a=b=c 두 경우로 분기해 식의 값의 합을 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수이다"
+          }
+        ],
+        "method": [
+          {
+            "term": "다항식의나눗셈",
+            "src": "solution",
+            "quote": "조립제법을 연속 적용해",
+            "evidenceType": "IMPLIED",
+            "justification": "x=1로 연속 조립제법을 수행해 (x-1) 거듭제곱 계수를 구한 뒤 2^k으로 나눔"
+          }
+        ],
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "사차다항식 $2x^4+24x^3-52x^2+28x+3$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "x=1 연속 조립제법과 2^k 환산으로 계수 a, b, c, d, e를 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "$26$으로 나눈 나머지를"
+          }
+        ],
+        "method": [
+          {
+            "term": "다항식의나눗셈",
+            "src": "solution",
+            "quote": "다항식 $f(x)$를 $x^3-1$로 나누었을 때",
+            "evidenceType": "IMPLIED",
+            "justification": "26=3^3-1을 이용해 f(x)를 x^3-1로 나눈 나머지에 x=3을 대입함"
+          }
+        ],
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $f(x)=x^{2022}+x^{2021}+x^{2020}+x^2+2$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "26=3^3-1을 이용해 f(x)를 x^3-1로 나눈 나머지에 x=3을 대입함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $p$, $q$에 대하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2+px+q=0$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실근",
+            "src": "stem",
+            "quote": "부호가 다른 두 실근"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "부호 다른 두 근 조건으로 |α||β|=-q, (|α|+|β|)^2=p^2-4q를 연립함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ]
+}

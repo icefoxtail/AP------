@@ -1,0 +1,74 @@
+{
+  "qid": 16,
+  "itemFingerprint": "12eca98f532ba2b2",
+  "solveSteps": [
+    "원의 중심 $O$에서 현 $BC$에 내린 수선 $OD$는 현 $BC$를 수직이등분하므로 $\\overline{DB}=\\overline{DC}$이다.",
+    "$\\overline{DC}=d$라 두면 직각삼각형 $ODC$에서 $\\overline{OC}=r$, $\\overline{OD}=h$이므로 피타고라스 정리에 의하여 $$ d^2+h^2=r^2 \\implies d^2=r^2-h^2 $$ 네 점이 $A, B, D, C$ 순이고 $\\overline{AD}=3r$이므로 $$ \\overline{AB}=3r-d, \\quad \\overline{AC}=3r+d $$ 따라서 두 근의 합과 곱은 다음과 같다.",
+    "$$ \\begin{aligned} \\overline{AB}+\\overline{AC} &= (3r-d)+(3r+d) = 6r \\ \\overline{AB}\\cdot\\overline{AC} &= (3r-d)(3r+d) = 9r^2-d^2 = 9r^2-(r^2-h^2) = 8r^2+h^2 \\end{aligned} $$ 그러므로 $\\overline{AC}$, $\\overline{AB}$를 두 근으로 갖는 이차방정식은 $x^2-6rx+8r^2+h^2=0$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-06",
+  "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+  "unitEvidence": "그림과 같이 반지름의 길이가 $r$인 원 $O$에서 선",
+  "rpmRecordId": "H1-RPM-029",
+  "rpmReason": "Q16(AC): 근과 계수의 관계 단원의 RPM H1-RPM-029 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+  "typeReason": "Q16(AC): 근과 계수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q16(AC): 근과 계수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "원",
+        "src": "stem",
+        "quote": "원 $O$에서"
+      },
+      {
+        "term": "현",
+        "src": "stem",
+        "quote": "현 $BC$에 내린"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "두 근으로 갖는 이차방정식은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "피타고라스정리",
+        "src": "solution",
+        "quote": "피타고라스 정리에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "수선",
+        "src": "stem",
+        "quote": "수선의 발을 $D$라 하자"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q16(AC): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

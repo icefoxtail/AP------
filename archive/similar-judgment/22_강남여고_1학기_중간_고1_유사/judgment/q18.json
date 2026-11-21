@@ -1,0 +1,69 @@
+{
+  "qid": 18,
+  "itemFingerprint": "6bce663d0e2ff30e",
+  "solveSteps": [
+    "$x^2+5xy+4y^2=(x+y)(x+4y)$이므로 주어진 이차식이 두 일차식의 곱으로 인수분해되면 상수 $u$, $v$에 대하여 $$ (x+y+u)(x+4y+v) $$ 의 꼴로 나타낼 수 있다.",
+    "이를 전개하여 $x$항과 $y$항의 계수를 비교하면 $$ \\begin{aligned} u+v &= -3a \\ 4u+v &= -3a \\end{aligned} $$ 두 식을 빼면 $3u=0$이므로 $u=0$, 따라서 $v=-3a$이다.",
+    "이 곱의 상수항은 $uv=0$이므로 원래 식의 상수항과 비교하면 $$ a^2-b^2-c^2 = 0 \\implies a^2 = b^2+c^2 $$ $a, b, c$는 삼각형의 세 변의 길이인 양수이므로 이 삼각형은 빗변의 길이가 $a$인 직각삼각형이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "unitEvidence": "$x$, $y$에 대한 이차식 $x^2+5xy+4y^2",
+  "rpmRecordId": "H1-RPM-013",
+  "rpmReason": "Q18(xy): 인수분해 단원의 RPM H1-RPM-013 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+  "typeReason": "Q18(xy): 인수분해 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(xy): 인수분해 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차식",
+        "src": "stem",
+        "quote": "$x$, $y$에 대한 이차식"
+      }
+    ],
+    "goal": [
+      {
+        "term": "직각삼각형",
+        "src": "choices",
+        "quote": "빗변의 길이가 $a$인 직각삼각형"
+      }
+    ],
+    "method": [
+      {
+        "term": "계수비교",
+        "src": "solution",
+        "quote": "계수를 비교하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "일차식",
+        "src": "stem",
+        "quote": "두 일차식의 곱으로 인수분해될 때"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q18(xy): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "qid": 13,
+  "itemFingerprint": "dfcb472c25b40e2d",
+  "solveSteps": [
+    "$P(x)$가 삼차식이고 $P(x)+3$이 $(x-1)^2$으로 나누어떨어지므로 상수 $A$, $B$에 대하여 $$ P(x)+3 = (x-1)^2(Ax+B) $$ 즉, $$ P(x) = (x-1)^2(Ax+B)-3 $$ 으로 놓을 수 있다.",
+    "또한 $29-P(x)$가 $x^2-9=(x-3)(x+3)$으로 나누어떨어지므로 나머지정리에 의하여 $P(3)=29$, $P(-3)=29$이다.",
+    "$$ \\begin{aligned} P(3) &= (3-1)^2(3A+B)-3 = 4(3A+B)-3 = 29 \\implies 3A+B = 8 \\ P(-3) &= (-3-1)^2(-3A+B)-3 = 16(-3A+B)-3 = 29 \\implies -3A+B = 2 \\end{aligned} $$ 두 식을 더하면 $2B=10$이므로 $B=5$, 대입하면 $3A+5=8$이므로 $A=1$이다.",
+    "따라서 $P(x)=(x-1)^2(x+5)-3$이고, $P(x)$를 $x+1$로 나눈 나머지는 $$ P(-1) = (-1-1)^2(-1+5)-3 = 4\\cdot 4-3 = 13 $$ 이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "unitEvidence": "다항식 $P(x)$가 삼차식일 때, $P(x)+3$은 ",
+  "rpmRecordId": "H1-RPM-009",
+  "rpmReason": "Q13(29): 나머지정리와 인수정리 단원의 RPM H1-RPM-009 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+  "typeReason": "Q13(29): 나머지정리와 인수정리 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q13(29): 나머지정리와 인수정리 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $P(x)$가 삼차식"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나눈 나머지는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지정리",
+        "src": "solution",
+        "quote": "나머지정리에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "상수",
+        "src": "solution",
+        "quote": "상수 $A$, $B$에 대하여"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q13(29): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

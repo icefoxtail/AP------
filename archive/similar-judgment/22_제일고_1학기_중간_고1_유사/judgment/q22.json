@@ -1,0 +1,73 @@
+{
+  "qid": 22,
+  "itemFingerprint": "1702ab6361f78faf",
+  "solveSteps": [
+    "조건 (가)에서 대칭축이 $x=3$이므로 $f(x)=a(x-3)^2+c$라 두자.",
+    "구간 $0\\le x\\le 5$에서 꼭짓점 $x=3$이 구간 안에 있고, 축에서 더 먼 끝점은 $x=0$이다.",
+    "1) $a>0$일 때: 최솟값은 $c=0$, 최댓값은 $f(0)=9a=9 \\implies a=1$이므로 $f(x)=(x-3)^2$이다.",
+    "$y=-2x+16$과 연립하면 $x^2-4x-7=0$의 판별식 $D/4=4+7=11>0$이므로 접하지 않아 조건 (다)에 모순이다.",
+    "2) $a<0$일 때: 최댓값은 $c=9$, 최솟값은 $f(0)=9a+9=0 \\implies a=-1$이므로 $f(x)=-(x-3)^2+9=-x^2+6x$이다.",
+    "$y=-2x+16$과 연립하면 $-x^2+6x=-2x+16 \\implies x^2-8x+16=(x-4)^2=0$으로 중근을 가지므로 접한다.",
+    "따라서 $f(x)=-(x-3)^2+9=0$에서 $x=0$ 또는 $x=6$이므로 $\\alpha=6, \\beta=0$이고 $\\alpha-\\beta=6$이다."
+  ],
+  "solvedAnswer": "$6$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "이차함수 $y=f(x)$가 다음 조건을 모두 만족시킬 ",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q22(16): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+  "typeReason": "Q22(16): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q22(16): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=f(x)$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "교점",
+        "src": "stem",
+        "quote": "$x$축의 교점의 좌표를"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D/4=4+7=11>0$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "축",
+        "src": "solution",
+        "quote": "대칭축이 $x=3$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q22(16): 발문과 해설의 풀이 과정을 점검하여 정답 $6$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

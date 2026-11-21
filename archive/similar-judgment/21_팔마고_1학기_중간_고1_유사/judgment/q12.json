@@ -1,0 +1,63 @@
+{
+  "qid": 12,
+  "itemFingerprint": "4b63f69c85b834a5",
+  "solveSteps": [
+    "$a<0$이므로 $-a>0$이다.",
+    "- $\\sqrt{3a}=\\sqrt{-3a}i$이므로 $\\sqrt{3a}\\sqrt{-3a}=(\\sqrt{-3a}i)(\\sqrt{-3a})=-3ai$ (또는 $\\sqrt{-3a}^2=-3a$)  \n- $\\sqrt{-3a}\\sqrt{-3a}=-3a$  \n- $\\dfrac{\\sqrt{a}}{\\sqrt{-a}}=\\dfrac{\\sqrt{-a}i}{\\sqrt{-a}}=i$  \n- $\\dfrac{\\sqrt{a^2}}{\\sqrt{(-a)^2}}=\\dfrac{-a}{-a}=1$ 따라서 주어진 식은 $$ \\frac{-3ai-3a}{3a}+i-1 = (-i-1)+i-1 = -2 $$ 이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "$a<0$일 때, 다음 식을 간단히 하시오. $$\\df",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q12(ai): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+  "typeReason": "Q12(ai): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q12(ai): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "src": "stem",
+        "quote": "a<0$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "제곱근",
+        "src": "solution",
+        "quote": "\\sqrt{3a}=\\sqrt{-3a}i"
+      }
+    ],
+    "method": [
+      {
+        "term": "허수",
+        "src": "solution",
+        "quote": "\\sqrt{-a}i",
+        "evidenceType": "IMPLIED",
+        "justification": "a<0일 때 음수 제곱근을 허수단위 i로 변환하고 √(a^2)=-a를 적용함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q12(ai): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

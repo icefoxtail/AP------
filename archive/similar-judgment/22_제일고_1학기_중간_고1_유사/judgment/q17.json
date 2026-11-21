@@ -1,0 +1,70 @@
+{
+  "qid": 17,
+  "itemFingerprint": "fcc2f70f66ac8db7",
+  "solveSteps": [
+    "$f(x)=-(x-2a)^2+4a^2+2a-8$이므로 위로 볼록하고 꼭짓점의 $x$좌표는 $2a$이다. (ax)",
+    "- (1) $2a<1$ ($a<\\dfrac{1}{2}$)일 때: 최댓값은 $f(1)=6a-9=4 \\implies a=\\dfrac{13}{6}$ (범위에 속하지 않는다.)  \n- (2) $1\\le 2a\\le 3$ ($\\dfrac{1}{2}\\le a\\le\\dfrac{3}{2}$)일 때: 최댓값은 꼭짓점의 $y$좌표이므로 $$4a^2+2a-8=4 \\implies 2a^2+a-6=(2a-3)(a+2)=0$$ 범위에 속하는 값은 $a=\\dfrac{3}{2}$이다.",
+    "- (3) $2a>3$ ($a>\\dfrac{3}{2}$)일 때: 최댓값은 $f(3)=14a-17=4 \\implies a=\\dfrac{3}{2}$ (범위 $a>\\frac{3}{2}$에 속하지 않는다.) 따라서 조건을 만족하는 실수 $a$는 $\\dfrac{3}{2}$뿐이므로 합도 $\\dfrac{3}{2}$이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "$1\\le x\\le 3$에서 이차함수 $f(x)=-x^",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q17(ax): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+  "typeReason": "Q17(ax): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(ax): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x)=-x^2+4ax+2a-8$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값이 $4$일 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "-(x-2a)^2+4a^2+2a-8",
+        "evidenceType": "IMPLIED",
+        "justification": "대칭축 x=2a를 구해 구간과의 위치 관계를 분류하기 위해 완전제곱식으로 변형함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "꼭짓점",
+        "src": "solution",
+        "quote": "꼭짓점의 $x$좌표는 $2a$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q17(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

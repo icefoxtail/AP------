@@ -1,0 +1,136 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "x^2",
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "O"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "sampleNote": "예시: k=3",
+    "overlays": {
+      "lines": [
+        {
+          "id": "L",
+          "slope": "2",
+          "intercept": "3",
+          "label": "y=2x+k",
+          "labelValues": {
+            "k": "3"
+          }
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "curveX": "3"
+        },
+        {
+          "id": "B",
+          "curveX": "-1"
+        },
+        {
+          "id": "C",
+          "axis": "x",
+          "value": "3"
+        },
+        {
+          "id": "D",
+          "axis": "x",
+          "value": "-1"
+        },
+        {
+          "id": "O0",
+          "x": "0",
+          "y": "0",
+          "unnamed": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "OA",
+          "from": "O0",
+          "to": "A"
+        },
+        {
+          "id": "OB",
+          "from": "O0",
+          "to": "B"
+        },
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "id": "BD",
+          "from": "B",
+          "to": "D"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "S1",
+          "points": [
+            "A",
+            "O0",
+            "C"
+          ],
+          "fill": "BLUE",
+          "label": "S_1"
+        },
+        {
+          "id": "S2",
+          "points": [
+            "D",
+            "O0",
+            "B"
+          ],
+          "fill": "WARM",
+          "label": "S_2"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D",
+    "O": "O"
+  },
+  "caption": "예시(k=3)일 때 y=x^2과 직선 y=2x+k의 두 교점 A, B와 x축 위 수선의 발 C, D로 만든 두 삼각형 AOC(S_1)와 DOB(S_2)의 배치이다."
+}

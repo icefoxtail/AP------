@@ -1,0 +1,81 @@
+{
+  "qid": 20,
+  "itemFingerprint": "aeb0975d708b9503",
+  "solveSteps": [
+    "공통부분이 생기도록 두 일차식씩 짝을 지어 전개하면 $(x+1)(x+8)=x^2+9x+8$, $(x+3)(x+6)=x^2+9x+18$ $t=x^2+9x$로 치환하면 $\\begin{aligned} P(x) &= (t+8)(t+18)+k \\ &= t^2+26t+144+k \\end{aligned}$ $P(x)$가 최고차항의 계수가 $1$인 이차식 $f(x)$의 제곱이 되려면 $t$에 대한 이차식 $t^2+26t+144+k$가 완전제곱식이어야 한다.",
+    "즉, $t^2+26t+144+k=(t+13)^2=t^2+26t+169$이므로 $144+k=169 \\implies k=25$ 따라서 $P(x)=(t+13)^2=(x^2+9x+13)^2$이므로 $f(x)=x^2+9x+13$이다.",
+    "그러므로 $f(1)=1^2+9\\cdot 1+13=23$이다.",
+    "따라서 구하는 값은 $k=25$, $f(1)=23$이다."
+  ],
+  "solvedAnswer": "k=25, f(1)=23",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "unitEvidence": "[서술형 2] $P(x)={(x+1)(x+8)}{(x+",
+  "rpmRecordId": "H1-RPM-013",
+  "rpmReason": "Q20(18): 인수분해 단원의 RPM H1-RPM-013 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+  "typeReason": "Q20(18): 인수분해 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(18): 인수분해 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "$P(x)={(x+1)(x+8)}{(x+3)(x+6)}+k$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $k$의 값"
+      },
+      {
+        "term": "함숫값",
+        "src": "stem",
+        "quote": "$f(1)$의 값"
+      }
+    ],
+    "method": [
+      {
+        "term": "치환",
+        "src": "solution",
+        "quote": "$t=x^2+9x$로 치환하면",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "$t^2+26t+144+k$가 완전제곱식이어야 한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "이차식",
+        "src": "stem",
+        "quote": "최고차항의 계수가 $1$인 이차식 $f(x)$의 제곱"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q20(18): 발문과 해설의 풀이 과정을 점검하여 정답 k=25, f(1)=23를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

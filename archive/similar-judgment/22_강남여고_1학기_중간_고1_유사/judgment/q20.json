@@ -1,0 +1,75 @@
+{
+  "qid": 20,
+  "itemFingerprint": "079a2ff4290fb222",
+  "solveSteps": [
+    "두 직선 $l_1: y=3x+3$, $l_2: y=5-x$의 교점의 $y$좌표는 $3x+3=5-x$에서 $x=\\dfrac{1}{2}$, $y=\\dfrac{9}{2}$이다. (25)",
+    "직사각형의 세로(높이)의 길이를 $t$ ($0<t<\\dfrac{9}{2}$)라 하면, $l_1$ 위의 꼭짓점의 $x$좌표는 $\\dfrac{t-3}{3}$이고, $l_2$ 위의 꼭짓점의 $x$좌표는 $5-t$이다.",
+    "따라서 직사각형의 가로 길이는 $$ (5-t)-\\frac{t-3}{3} = 5-t-\\frac{t}{3}+1 = 6-\\frac{4}{3}t $$ 직사각형의 넓이 $S(t)$는 $$ \\begin{aligned} S(t) &= t\\left(6-\\frac{4}{3}t\\right) = -\\frac{4}{3}t^2+6t \\ &= -\\frac{4}{3}\\left(t^2-\\frac{9}{2}t\\right) \\ &= -\\frac{4}{3}\\left(t-\\frac{9}{4}\\right)^2+\\frac{27}{4} \\end{aligned} $$ $t=\\dfrac{9}{4}$는 $0<t<\\dfrac{9}{2}$에 포함되므로 직사각형의 넓이의 최댓값은 $\\dfrac{27}{4}$이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "그림과 같이 두 직선 $l_1: 3x-y+3=0$, $",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q20(25): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+  "typeReason": "Q20(25): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(25): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "두 직선 $l_1:"
+      },
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형이 있다"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "넓이의 최댓값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "&= -\\frac{4}{3}\\left(t-\\frac{9}{4}\\right)^2+\\frac{27}{4}",
+        "evidenceType": "IMPLIED",
+        "justification": "이차함수를 완전제곱식으로 변형해 꼭짓점에서 최댓값을 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "직사각형의 넓이의"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q20(25): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

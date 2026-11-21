@@ -1,0 +1,66 @@
+{
+  "qid": 13,
+  "itemFingerprint": "685f796b23653f09",
+  "solveSteps": [
+    "$u=\\dfrac{1}{a}$, $v=\\dfrac{1}{b}$, $w=\\dfrac{1}{c}$라 두면 주어진 두 조건은 $$ u+v+w = \\frac{1}{2024}, \\qquad uv+vw+wu = 2024uvw $$ 이다.",
+    "$X=2024u$, $Y=2024v$, $Z=2024w$라 두면 $X+Y+Z=1$, $XY+YZ+ZX=XYZ$가 된다.",
+    "$X, Y, Z$를 세 근으로 하는 삼차방정식은 $$ t^3-t^2+(XYZ)t-XYZ = (t-1)(t^2+XYZ) = 0 $$ 으로 인수분해된다.",
+    "따라서 세 수 $X, Y, Z$ 중 하나는 $1$이고, 나머지 둘은 $t^2+XYZ=0$의 두 근이므로 서로 부호가 반대(합이 $0$)이다.",
+    "그러므로 홀수 거듭제곱의 합에서 두 항은 서로 상쇄되어 $$ X^{2025}+Y^{2025}+Z^{2025} = 1^{2025} = 1 $$ 이다.",
+    "따라서 $$ \\frac{1}{a^{2025}}+\\frac{1}{b^{2025}}+\\frac{1}{c^{2025}} = \\frac{X^{2025}+Y^{2025}+Z^{2025}}{2024^{2025}} = \\frac{1}{2024^{2025}} $$ 이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+  "unitEvidence": "$a+b+c=2024$, $\\dfrac{1}{a}+\\d",
+  "rpmRecordId": "H1-RPM-039",
+  "rpmReason": "Q13(2024): 고차방정식의 풀이 단원의 RPM H1-RPM-039 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+  "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+  "typeReason": "Q13(2024): 고차방정식의 풀이 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q13(2024): 고차방정식의 풀이 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼차방정식",
+        "src": "solution",
+        "quote": "세 근으로 하는 삼차방정식은"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "solution",
+        "quote": "홀수 거듭제곱의 합에서"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "으로 인수분해된다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q13(2024): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

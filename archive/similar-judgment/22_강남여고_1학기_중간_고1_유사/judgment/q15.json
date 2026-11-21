@@ -1,0 +1,68 @@
+{
+  "qid": 15,
+  "itemFingerprint": "fe8c89eb4e8ca534",
+  "solveSteps": [
+    "$u=z-3$이라 두고 $x=a-3$이라 쓰면 $u=x+bi$ ($u\\ne 0$)이고 $z-9=u-6$이다.",
+    "$$ \\frac{z-9}{z-3} = \\frac{u-6}{u} = 1 - \\frac{6}{u} = 1 - \\frac{6(x-bi)}{x^2+b^2} = \\left(1-\\frac{6x}{x^2+b^2}\\right) + \\frac{6b}{x^2+b^2}i $$ 허수부분이 $1$이므로 $$ \\frac{6b}{x^2+b^2} = 1 \\implies x^2+b^2 = 6b $$ 이제 구하는 식은 $z-3-3i = x+(b-3)i$와 그 켤레복소수의 곱이므로 $$ \\begin{aligned} (z-3-3i)\\overline{(z-3-3i)} &= x^2+(b-3)^2 \\ &= x^2+b^2-6b+9 \\ &= 6b-6b+9 \\ &= 9 \\end{aligned} $$ 따라서 구하는 값은 $9$이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "복소수 $z=a+bi$ ($a$, $b$는 실수)에 대",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q15(bi): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+  "typeReason": "Q15(bi): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(bi): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "복소수 $z=a+bi$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "곱",
+        "src": "solution",
+        "quote": "켤레복소수의 곱"
+      }
+    ],
+    "method": [
+      {
+        "term": "켤레복소수",
+        "src": "solution",
+        "quote": "켤레복소수의 곱이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "허수부분",
+        "src": "stem",
+        "quote": "허수부분이 $1$일 때"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q15(bi): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

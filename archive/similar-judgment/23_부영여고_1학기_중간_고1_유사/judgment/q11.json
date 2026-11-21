@@ -1,0 +1,80 @@
+{
+  "qid": 11,
+  "itemFingerprint": "4cd6d4b047b4d468",
+  "solveSteps": [
+    "조건 (가)에서 $a^2-4a-5=(a-5)(a+1)=0$이다.",
+    "$a$는 삼각형의 변의 길이이므로 $a>0$이고, 따라서 $a=5$이다.",
+    "조건 (나)의 우변을 좌변으로 이항하여 인수분해한다.",
+    "$\\begin{aligned} (a^3+b^3)+(a+b)c^2 - c(a^2+2ab+b^2) &= 0 \\ (a+b)(a^2-ab+b^2)+(a+b)c^2-c(a+b)^2 &= 0 \\ (a+b)(a^2+b^2+c^2-ab-bc-ca) &= 0 \\end{aligned}$ $a+b>0$이므로 $a^2+b^2+c^2-ab-bc-ca=0$이다.",
+    "양변을 변형하면 $\\frac{1}{2}{(a-b)^2+(b-c)^2+(c-a)^2}=0$이므로 $a=b=c$이다.",
+    "$a=5$이므로 삼각형 $ABC$의 둘레의 길이는 $5+5+5=15$이다.",
+    "따라서 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "unitEvidence": "세 변의 길이가 $a, b, c$인 삼각형 $ABC$가",
+  "rpmRecordId": "H1-RPM-013",
+  "rpmReason": "Q11(ABC): 인수분해 단원의 RPM H1-RPM-013 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+  "typeReason": "Q11(ABC): 인수분해 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q11(ABC): 인수분해 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "세 변의 길이가 $a, b, c$인 삼각형 $ABC$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "둘레",
+        "src": "stem",
+        "quote": "삼각형 $ABC$의 둘레의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "이항하여 인수분해한다.",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "$\\frac{1}{2}{(a-b)^2+(b-c)^2+(c-a)^2}=0$",
+        "evidenceType": "IMPLIED",
+        "justification": "세 실수의 제곱의 합이 0이면 각 항이 0임을 이용함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양수",
+        "src": "solution",
+        "quote": "$a>0$이고"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q11(ABC): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

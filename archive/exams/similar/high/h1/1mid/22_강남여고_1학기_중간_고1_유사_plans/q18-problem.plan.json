@@ -1,0 +1,52 @@
+{
+  "capability": "plane",
+  "title": "빗변이 a인 직각삼각형",
+  "points": [
+    {
+      "id": "A",
+      "x": 0,
+      "y": 3,
+      "label": "A"
+    },
+    {
+      "id": "C",
+      "x": 0,
+      "y": 0,
+      "label": "C"
+    },
+    {
+      "id": "B",
+      "x": 4,
+      "y": 0,
+      "label": "B"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAB",
+      "from": "A",
+      "to": "B",
+      "label": "a"
+    },
+    {
+      "id": "sBC",
+      "from": "B",
+      "to": "C",
+      "label": "b"
+    },
+    {
+      "id": "sCA",
+      "from": "C",
+      "to": "A",
+      "label": "c"
+    }
+  ],
+  "rightAngles": [
+    {
+      "vertex": "C",
+      "p1": "A",
+      "p2": "B"
+    }
+  ],
+  "caption": "a^2=b^2+c^2을 만족하는 빗변의 길이가 a인 직각삼각형"
+}

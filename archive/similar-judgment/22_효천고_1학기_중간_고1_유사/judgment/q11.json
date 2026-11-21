@@ -1,0 +1,63 @@
+{
+  "qid": 11,
+  "itemFingerprint": "04f6f88a4879a6b4",
+  "solveSteps": [
+    "Q11 문제의 조건(130)에 맞추어 식을 세운다.",
+    "주어진 항등식에서 $x+1=1$이 되는 $x=0$과 $x+1=-1$이 되는 $x=-2$를 각각 대입하면 $$ \\begin{aligned} 0^8+2 &= a_8+a_7+a_6+\\cdots+a_1+a_0 = 2 \\ (-2)^8+2 &= a_8-a_7+a_6-\\cdots-a_1+a_0 = 258 \\end{aligned} $$ 두 식을 변끼리 더하면 $$ 2(a_0+a_2+a_4+a_6+a_8) = 2+258 = 260 $$ 따라서 $a_0+a_2+a_4+a_6+a_8=130$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-IDENTITY",
+  "unitEvidence": "모든 실수 $x$에 대하여 $x^8+2=a_8(x+1)",
+  "rpmRecordId": "H1-RPM-007",
+  "rpmReason": "Q11(130): 항등식과 계수비교 단원의 RPM H1-RPM-007 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+  "typeReason": "Q11(130): 항등식과 계수비교 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q11(130): 항등식과 계수비교 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "항등식",
+        "src": "solution",
+        "quote": "주어진 항등식에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "src": "solution",
+        "quote": "a_0+a_2+a_4+a_6+a_8=130"
+      }
+    ],
+    "method": [
+      {
+        "term": "수치대입법",
+        "src": "solution",
+        "quote": "각각 대입하면",
+        "evidenceType": "IMPLIED",
+        "justification": "x+1이 1과 -1이 되는 x=0, -2를 대입한 두 식을 더해 짝수차 계수합을 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q11(130): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

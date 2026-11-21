@@ -1,0 +1,69 @@
+{
+  "qid": 15,
+  "itemFingerprint": "eefb7f9c535d27ba",
+  "solveSteps": [
+    "근과 계수의 관계에서 $\\alpha+\\beta=-11<0$, $\\alpha\\beta=9>0$이고 판별식 $D=121-36=85>0$이므로 두 근 $\\alpha, \\beta$는 모두 음수이다.",
+    "음수의 제곱근 성질에 의하여 $\\sqrt{\\alpha}\\sqrt{\\beta}=-\\sqrt{\\alpha\\beta}=-\\sqrt{9}=-3$이다.",
+    "따라서 $$ (\\sqrt{\\alpha}-\\sqrt{\\beta})^2 = \\alpha+\\beta-2\\sqrt{\\alpha}\\sqrt{\\beta} = -11-2(-3) = -5 $$ 이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-06",
+  "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+  "unitEvidence": "이차방정식 $x^2+11x+9=0$의 두 근을 $\\al",
+  "rpmRecordId": "H1-RPM-029",
+  "rpmReason": "Q15(11): 근과 계수의 관계 단원의 RPM H1-RPM-029 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+  "typeReason": "Q15(11): 근과 계수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(11): 근과 계수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2+11x+9=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "제곱근",
+        "src": "solution",
+        "quote": "음수의 제곱근 성질"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에서",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D=121-36=85>0$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q15(11): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

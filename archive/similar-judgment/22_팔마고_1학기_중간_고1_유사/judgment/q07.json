@@ -1,0 +1,63 @@
+{
+  "qid": 7,
+  "itemFingerprint": "8029dd4e384a9a02",
+  "solveSteps": [
+    "Q7 문제의 조건(15)에 맞추어 식을 세운다.",
+    "- ① $\\sqrt{-2}=\\sqrt{2}i$이므로 $\\dfrac{\\sqrt{7}}{\\sqrt{-2}}=\\dfrac{\\sqrt{7}}{\\sqrt{2}i}$ (성립)  \n- ② $\\dfrac{1}{i}=-i$이므로 $\\dfrac{\\sqrt{7}}{\\sqrt{2}i}=-\\sqrt{\\dfrac{7}{2}}i \\ne \\sqrt{\\dfrac{7}{2}}i$ (성립하지 않음)  \n- ③ $\\sqrt{-5}=\\sqrt{5}i, \\sqrt{-3}=\\sqrt{3}i$이므로 성립  \n- ④ $(\\sqrt{5}i)(\\sqrt{3}i)=\\sqrt{15}i^2=-\\sqrt{15} \\ne \\sqrt{15}$ (성립하지 않음)  \n- ⑤ $\\sqrt{15}=\\sqrt{(-5)(-3)}$ (성립) 따라서 등식이 성립하지 않는 부분은 ②, ④이다."
+  ],
+  "solvedAnswer": "②, ④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "다음은 복소수의 계산 과정을 표현한 것이다. 등식이 성",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q7(15): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+  "typeReason": "Q7(15): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q7(15): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "복소수의 계산 과정을"
+      }
+    ],
+    "goal": [
+      {
+        "term": "등식",
+        "src": "stem",
+        "quote": "등식이 성립하지"
+      }
+    ],
+    "method": [
+      {
+        "term": "제곱근",
+        "src": "solution",
+        "quote": "\\sqrt{-2}=\\sqrt{2}i$이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "음수의 제곱근을 i로 표현해 1/i=-i 및 i^2=-1 부호 오류를 검증함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q7(15): 발문과 해설의 풀이 과정을 점검하여 정답 ②, ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

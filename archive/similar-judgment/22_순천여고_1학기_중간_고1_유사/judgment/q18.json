@@ -1,0 +1,71 @@
+{
+  "qid": 18,
+  "itemFingerprint": "f593ca3819f86c8f",
+  "solveSteps": [
+    "$A(0, 0)$, $B(10, 0)$, $C(0, 10\\sqrt{3})$으로 좌표를 잡고 $P(p, 0)$ ($0<p<10$)이라 두자.",
+    "직선 $PR$은 $BC$와 평행하고 $\\triangle APR$는 $\\angle A=90^\\circ, \\angle P=60^\\circ$인 직각삼각형이므로 $\\overline{PR}=2p$이다.",
+    "한편 $\\overline{PB}=10-p$이고 $\\triangle PQB$에서 $\\angle B=60^\\circ, \\angle Q=90^\\circ$이므로 $$ \\overline{PQ} = \\frac{\\sqrt{3}}{2}(10-p), \\qquad \\overline{BQ} = \\frac{10-p}{2} $$ $\\overline{BC}=20$이므로 $\\overline{QC}=20-\\dfrac{10-p}{2}=\\dfrac{p+30}{2}$이다.",
+    "사다리꼴 $PQCR$의 넓이 $S(p)$는 $$ \\begin{aligned} S(p) &= \\frac{1}{2}(\\overline{PR}+\\overline{QC})\\cdot\\overline{PQ} \\ &= \\frac{1}{2}\\left(2p+\\frac{p+30}{2}\\right)\\cdot\\frac{\\sqrt{3}(10-p)}{2} \\ &= \\frac{5\\sqrt{3}}{8}(p+6)(10-p) \\ &= \\frac{5\\sqrt{3}}{8}{64-(p-2)^2} \\end{aligned} $$ $0<p<10$에서 $p=2$일 때 최댓값은 $\\dfrac{5\\sqrt{3}}{8}\\cdot 64 = 40\\sqrt{3}$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "오른쪽 그림과 같이 $\\angle A=90^\\circ$",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q18(90): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+  "typeReason": "Q18(90): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(90): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "수선",
+        "src": "stem",
+        "quote": "내린 수선의 발을 $Q$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "넓이의 최댓값을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "직각삼각형 $ABC$가 있다",
+        "evidenceType": "IMPLIED",
+        "justification": "60도 특수각 직각삼각형의 길이 비로 사다리꼴 변과 높이를 표현해 넓이 이차함수를 세움"
+      }
+    ],
+    "condition": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "사각형 $PQCR$의 넓이"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q18(90): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

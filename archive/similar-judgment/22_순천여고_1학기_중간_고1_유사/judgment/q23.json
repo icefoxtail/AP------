@@ -1,0 +1,77 @@
+{
+  "qid": 23,
+  "itemFingerprint": "98b1f7dce6941821",
+  "solveSteps": [
+    "조건 (가)에서 $f(x)=(x-1){9x^2+g(x)}+9x^2-{g(x)}^2$이다.",
+    "나머지 $9x^2-{g(x)}^2$의 차수는 나누는 식 $9x^2+g(x)$의 차수보다 낮아야 한다.",
+    "만약 $g(x)$가 $2$차 이상이면 ${g(x)}^2$의 차수가 $9x^2+g(x)$보다 크고, $g(x)$가 상수이면 나머지의 $9x^2$항이 남아 나누는 식과 차수가 같아져 모순이다.",
+    "따라서 $g(x)$는 일차식 $g(x)=mx+n$ ($m>0$)이다.",
+    "나머지 $9x^2-(mx+n)^2=(9-m^2)x^2-2mnx-n^2$의 차수가 $2$보다 작아야 하므로 $9-m^2=0$, $m>0$에서 $m=3$이다.",
+    "즉 $g(x)=3x+n$이다.",
+    "이제 조건 (가)를 정리하면 $$ \\begin{aligned} f(x) &= 9x^3-9x^2+(x-1)g(x)+9x^2-{g(x)}^2 \\ &= 9x^3+(x-1)g(x)-{g(x)}^2 \\end{aligned} $$ 조건 (나)에서 $f(x)$를 $g(x)=3x+n$으로 나눈 나머지가 $\\dfrac{1}{3}$이므로 $x=-\\dfrac{n}{3}$을 대입하면 $$ f\\left(-\\frac{n}{3}\\right) = 9\\left(-\\frac{n}{3}\\right)^3 = -\\frac{n^3}{3} = \\frac{1}{3} \\implies n^3 = -1 $$ $n$은 실수이므로 $n=-1$, 즉 $g(x)=3x-1$이다.",
+    "따라서 $$ f(x) = 9x^3+(x-1)(3x-1)-(3x-1)^2 = 9x^3-6x^2+2x $$ 이므로 $f(-1)=9(-1)^3-6(-1)^2+2(-1)=-9-6-2=-17$이다."
+  ],
+  "solvedAnswer": "$-17$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+  "unitEvidence": "최고차항의 계수가 양수인 두 다항식 $f(x)$, $g",
+  "rpmRecordId": "H1-RPM-005",
+  "rpmReason": "Q23(mx): 다항식의 나눗셈 단원의 RPM H1-RPM-005 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_DIVISION",
+  "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+  "typeReason": "Q23(mx): 다항식의 나눗셈 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 5,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q23(mx): 다항식의 나눗셈 단원의 기본 개념과 계산을 적용하는 난이도 5 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "최고차항",
+        "src": "stem",
+        "quote": "최고차항의 계수가 양수인"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "두 다항식 $f(x)$, $g(x)$"
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식의나눗셈",
+        "src": "solution",
+        "quote": "나머지 $9x^2-{g(x)}^2$의 차수는",
+        "evidenceType": "IMPLIED",
+        "justification": "나머지의 차수가 제수의 차수보다 낮아야 하는 다항식 나눗셈 성질을 적용함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "나머지정리",
+        "src": "solution",
+        "quote": "f\\left(-\\frac{n}{3}\\right) = 9\\left(-\\frac{n}{3}\\right)^3",
+        "evidenceType": "IMPLIED",
+        "justification": "일차식 g(x)=0의 근을 대입해 나머지를 구하는 나머지정리 적용"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q23(mx): 발문과 해설의 풀이 과정을 점검하여 정답 $-17$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

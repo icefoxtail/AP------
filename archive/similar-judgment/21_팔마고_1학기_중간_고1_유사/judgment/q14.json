@@ -1,0 +1,63 @@
+{
+  "qid": 14,
+  "itemFingerprint": "85de4c822ae8b2e0",
+  "solveSteps": [
+    "Q14 문제의 조건(aligned)에 맞추어 식을 세운다.",
+    "식을 먼저 정리하면 $(A+2B)-(C-B)+2C = A+3B+C$이므로 $$ \\begin{aligned} A+3B+C &= (-2x^2+x-1)+3(x^2+2x+4)+(-x^2-4x+2) \\ &= (-2+3-1)x^2+(1+6-4)x+(-1+12+2) \\ &= 3x+13 \\end{aligned} $$ 이다."
+  ],
+  "solvedAnswer": "$3x+13$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+  "unitEvidence": "단답형 1. 세 다항식 $A=-2x^2+x-1$, $B",
+  "rpmRecordId": "H1-RPM-001",
+  "rpmReason": "Q14(aligned): 다항식의 기본 연산 단원의 RPM H1-RPM-001 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+  "typeReason": "Q14(aligned): 다항식의 기본 연산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(aligned): 다항식의 기본 연산 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "세 다항식 $A=-2x^2+x-1$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "세 다항식 $A=-2x^2+x-1$"
+      }
+    ],
+    "method": [
+      {
+        "term": "동류항",
+        "src": "solution",
+        "quote": "A+3B+C &=",
+        "evidenceType": "IMPLIED",
+        "justification": "식을 A+3B+C로 정리한 뒤 차수별 동류항 계수를 합산함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q14(aligned): 발문과 해설의 풀이 과정을 점검하여 정답 $3x+13$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

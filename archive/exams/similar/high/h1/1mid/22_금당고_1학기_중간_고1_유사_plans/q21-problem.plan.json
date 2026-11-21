@@ -1,0 +1,54 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      -2,
+      10
+    ],
+    "viewport": [
+      -2,
+      10,
+      -20,
+      5
+    ],
+    "pieces": [
+      {
+        "domain": [
+          -2,
+          10
+        ],
+        "coefficients": [
+          "0",
+          "-8",
+          "1"
+        ]
+      }
+    ],
+    "referenceCurves": [
+      {
+        "coefficients": [
+          "-64",
+          "16",
+          "-1"
+        ],
+        "label": "g(x)"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "4",
+        "y": "-16",
+        "label": "교점(4, -16)"
+      },
+      {
+        "id": "B",
+        "x": "8",
+        "y": "0",
+        "label": "교점(8, 0)"
+      }
+    ]
+  },
+  "caption": "a=4, b=-64일 때 두 이차함수 f(x)=x^2-8x와 g(x)=-x^2+16x-64의 두 교점 (4, -16), (8, 0)"
+}

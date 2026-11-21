@@ -1,0 +1,51 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2,
+      2,
+      -2,
+      6
+    ],
+    "pieces": [
+      {
+        "domain": [
+          -2,
+          2
+        ],
+        "coefficients": [
+          "9/16",
+          "3/2",
+          "1"
+        ]
+      }
+    ],
+    "referenceLines": [
+      {
+        "slope": "3",
+        "intercept": "0",
+        "label": "y=3x"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "T1",
+        "x": "-3/4",
+        "y": "0",
+        "label": "x축 접점(-3/4, 0)"
+      },
+      {
+        "id": "T2",
+        "x": "3/4",
+        "y": "9/4",
+        "label": "접점(3/4, 9/4)"
+      }
+    ]
+  },
+  "caption": "a=1/4일 때 x축에 접하는 이차함수 y=x^2+(3/2)x+9/16와 직선 y=3x의 접점"
+}

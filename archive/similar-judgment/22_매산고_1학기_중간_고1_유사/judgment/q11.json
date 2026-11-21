@@ -1,0 +1,69 @@
+{
+  "qid": 11,
+  "itemFingerprint": "66f4f495d27baf12",
+  "solveSteps": [
+    "$f(a)=a^2+6a-1=2b$, $f(b)=b^2+6b-1=2a$에서 두 식을 빼면 $$ \\begin{aligned} (a^2-b^2)+6(a-b) &= 2(b-a) \\ (a-b)(a+b+6) &= -2(a-b) \\end{aligned} $$ $a\\ne b$이므로 양변을 $a-b$로 나누면 $a+b+6=-2$, 즉 $a+b=-8$이다.",
+    "한편 두 식을 더하면 $$ (a^2+b^2)+6(a+b)-2 = 2(a+b) \\implies a^2+b^2 = -4(a+b)+2 = 32+2 = 34 $$ 따라서 $$ ab = \\frac{(a+b)^2-(a^2+b^2)}{2} = \\frac{64-34}{2} = 15 $$ ($a, b$는 $t^2+8t+15=0$의 두 근 $-5, -3$으로 서로 다른 실수가 존재한다.) 구하는 함수는 $$ y = (x+2a)(x+2b) = x^2+2(a+b)x+4ab = x^2-16x+60 = (x-8)^2-4 $$ 이므로 최솟값은 $-4$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-06",
+  "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+  "unitEvidence": "이차함수 $f(x)=x^2+6x-1$과 서로 다른 두 ",
+  "rpmRecordId": "H1-RPM-029",
+  "rpmReason": "Q11(aligned): 근과 계수의 관계 단원의 RPM H1-RPM-029 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+  "typeReason": "Q11(aligned): 근과 계수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q11(aligned): 근과 계수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x)=x^2+6x-1$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "의 최솟값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대칭식",
+        "src": "solution",
+        "quote": "(a+b)^2-(a^2+b^2)",
+        "evidenceType": "IMPLIED",
+        "justification": "a+b와 a^2+b^2으로부터 곱 ab를 구하는 대칭식 변형"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "서로 다른 두 실수 $a$, $b$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q11(aligned): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

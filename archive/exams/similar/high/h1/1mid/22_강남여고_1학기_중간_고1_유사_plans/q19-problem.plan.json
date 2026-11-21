@@ -1,0 +1,62 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      0,
+      8
+    ],
+    "viewport": [
+      -1,
+      9,
+      0,
+      14
+    ],
+    "pieces": [
+      {
+        "domain": [
+          0,
+          8
+        ],
+        "coefficients": [
+          "0",
+          "6",
+          "-3/4"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "0",
+        "label": "A(0,0)"
+      },
+      {
+        "id": "B",
+        "x": "8",
+        "y": "0",
+        "label": "B(8,0)"
+      },
+      {
+        "id": "C",
+        "x": "6",
+        "y": "0",
+        "label": "C(6,0)"
+      },
+      {
+        "id": "P",
+        "x": "6",
+        "y": "9",
+        "label": "P(6,9)"
+      },
+      {
+        "id": "V",
+        "x": "4",
+        "y": "12",
+        "label": "최고점(4,12)"
+      }
+    ]
+  },
+  "caption": "지점 A(0,0)에서 출발해 P(6,9)를 지나 B(8,0)에 떨어지는 포물선 궤적 y=(3/4)x(8-x)"
+}

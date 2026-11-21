@@ -1,0 +1,69 @@
+{
+  "qid": 21,
+  "itemFingerprint": "17765fb551e5a537",
+  "solveSteps": [
+    "주어진 등식의 우변을 $x$에 대하여 내림차순으로 정리하면 $$ \\begin{aligned} a(x-2)+b(x+1) &= ax-2a+bx+b \\ &= (a+b)x+(-2a+b) \\end{aligned} $$ 양변의 계수를 비교하면 $$ \\begin{aligned} a+b &= 4 \\ -2a+b &= 7 \\end{aligned} $$ 첫 번째 식에서 두 번째 식을 빼면 $3a=-3$이므로 $a=-1$이다.",
+    "이를 $a+b=4$에 대입하면 $-1+b=4$이므로 $b=5$이다.",
+    "따라서 $b-a = 5-(-1) = 6$이다."
+  ],
+  "solvedAnswer": "$6$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-IDENTITY",
+  "unitEvidence": "등식 $4x+7=a(x-2)+b(x+1)$이 $x$에 ",
+  "rpmRecordId": "H1-RPM-007",
+  "rpmReason": "Q21(aligned): 항등식과 계수비교 단원의 RPM H1-RPM-007 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+  "typeReason": "Q21(aligned): 항등식과 계수비교 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q21(aligned): 항등식과 계수비교 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "항등식",
+        "src": "stem",
+        "quote": "항등식이 되도록"
+      }
+    ],
+    "goal": [
+      {
+        "term": "미정계수",
+        "src": "solution",
+        "quote": "계수를 비교하면"
+      }
+    ],
+    "method": [
+      {
+        "term": "계수비교",
+        "src": "solution",
+        "quote": "양변의 계수를 비교하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $a$, $b$의 값을"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q21(aligned): 발문과 해설의 풀이 과정을 점검하여 정답 $6$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

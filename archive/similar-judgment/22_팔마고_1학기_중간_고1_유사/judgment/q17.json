@@ -1,0 +1,72 @@
+{
+  "qid": 17,
+  "itemFingerprint": "3d84b9161ad26ee0",
+  "solveSteps": [
+    "조건 (나)에서 $f(x)$는 $x=2$에서 최솟값을 가지므로 아래로 볼록하고 대칭축은 $x=2$이다.",
+    "최고차항의 계수를 $k$($k>0$)라 하면 $f(x)=k(x-2)^2+c$이고, 조건 (가)에서 $f(-2)=16k+c=0$이므로 $c=-16k$, 즉 $f(x)=k(x-2)^2-16k$이다.",
+    "- ㄱ.",
+    "대칭축 $x=2$로부터의 거리는 $\\left|\\dfrac{1}{2}-2\\right|=\\dfrac{3}{2} < |0-2|=2 < |7-2|=5$이므로 $f\\left(\\dfrac{1}{2}\\right) < f(0) < f(7)$이다.",
+    "(거짓)  \n- ㄴ.",
+    "$k>0$인 아래로 볼록한 이차함수에서 $a<b$이므로 두 점 $(a, f(a)), (b, f(b))$를 잇는 선분의 중점의 $y$좌표는 중점 $x=\\dfrac{a+b}{2}$에서의 함숫값보다 항상 크다.",
+    "실제로 $\\dfrac{f(a)+f(b)}{2}-f\\left(\\dfrac{a+b}{2}\\right)=\\dfrac{k}{4}(a-b)^2>0$이므로 성립한다.",
+    "(참)  \n- ㄷ.",
+    "길이 $2$인 구간 $[p, p+2]$에서의 최댓값 $g(p)$는 구간의 중심 $p+1$이 대칭축 $x=2$와 일치할 때, 즉 $p=1$일 때 최소이다.",
+    "이때 최솟값은 $g(1)=f(1)=f(3)=k(1-2)^2-16k=-15k=-1$이므로 $k=\\dfrac{1}{15}$이고 $f(2)=-16k=-\\dfrac{16}{15}$이다.",
+    "(참) 따라서 옳은 것은 ㄴ, ㄷ이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "이차함수 $y=f(x)$가 다음 조건을 만족시킨다. (",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q17(16): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+  "typeReason": "Q17(16): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(16): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=f(x)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "함수 $g(p)$의 최솟값이 $-1$"
+      }
+    ],
+    "method": [
+      {
+        "term": "축",
+        "src": "solution",
+        "quote": "대칭축은 $x=2$",
+        "evidenceType": "IMPLIED",
+        "justification": "대칭축 x=2를 기준으로 함숫값 크기, 볼록성, 이동 구간 최댓값을 판별함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q17(16): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

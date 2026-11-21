@@ -1,0 +1,67 @@
+{
+  "qid": 12,
+  "itemFingerprint": "87310f6fc3b26853",
+  "solveSteps": [
+    "$z=a+bi$ ($a, b$는 실수, $a^2+b^2\\ne 0$)라 하면 $\\overline{z}=a-bi$이다.",
+    "- ㄱ.",
+    "$z-\\overline{z}=2bi$ ($b\\ne 0$이면 순허수)  \n- ㄴ.",
+    "$z\\overline{z}=a^2+b^2$ (항상 실수)  \n- ㄷ.",
+    "$(z+\\overline{z})^2=(2a)^2=4a^2$ (항상 실수)  \n- ㄹ.",
+    "$z^2-\\overline{z}^2=4abi$ ($ab\\ne 0$이면 순허수)  \n- ㅁ.",
+    "$\\dfrac{1}{z}+\\dfrac{1}{\\overline{z}}=\\dfrac{z+\\overline{z}}{z\\overline{z}}=\\dfrac{2a}{a^2+b^2}$ (항상 실수) 따라서 항상 실수인 것은 ㄴ, ㄷ, ㅁ이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "$0$이 아닌 복소수 $z$에 대하여 다음 <보기> 중",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q12(bi): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+  "typeReason": "Q12(bi): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q12(bi): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "$0$이 아닌 복소수 $z$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "항상 실수인 것만을"
+      }
+    ],
+    "method": [
+      {
+        "term": "켤레복소수",
+        "src": "stem",
+        "quote": "\\overline{z}$는 $z$의 켤레복소수",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q12(bi): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

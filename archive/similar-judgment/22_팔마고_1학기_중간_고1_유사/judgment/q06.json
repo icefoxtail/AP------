@@ -1,0 +1,68 @@
+{
+  "qid": 6,
+  "itemFingerprint": "9015c851f1d88069",
+  "solveSteps": [
+    "이차방정식이므로 최고차항의 계수 $a\\ne 0$이다. (ax)",
+    "실근을 가질 조건은 판별식 $D\\ge 0$이므로 $$ \\frac{D}{4} = (a+3)^2-a^2 = 6a+9 \\ge 0 \\implies a \\ge -\\frac{3}{2} $$ 따라서 $-\\dfrac{3}{2} \\le a \\le 5$이고 $a\\ne 0$인 정수 $a$는 $-1, 1, 2, 3, 4, 5$의 $6$개이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-DISCRIMINANT",
+  "unitEvidence": "이차방정식 $ax^2+2(a+3)x+a=0$이 실근을 ",
+  "rpmRecordId": "H1-RPM-028",
+  "rpmReason": "Q6(ax): 판별식과 근의 조건 단원의 RPM H1-RPM-028 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+  "typeReason": "Q6(ax): 판별식과 근의 조건 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q6(ax): 판별식과 근의 조건 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $ax^2+2(a+3)x+a=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "$5$ 이하의 정수 $a$의 개수"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D\\ge 0$이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "실근을 갖도록"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q6(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

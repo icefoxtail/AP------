@@ -1,0 +1,64 @@
+{
+  "qid": 13,
+  "itemFingerprint": "6e8ca624c921f4b4",
+  "solveSteps": [
+    "$x^4+8x^2-9 = (x^2-1)(x^2+9) = (x-1)(x+1)(x^2+9)$이다. (10)",
+    "$x\\ge 3$이면 $(x-1)(x-2)>0$이고, $$ \\frac{x^4+8x^2-9}{(x-1)(x-2)} = \\frac{(x+1)(x^2+9)}{x-2} $$ $t=x-2$($t\\ge 1$인 자연수)라 놓으면 $x=t+2$이므로 $$ \\begin{aligned} \\frac{(t+3){(t+2)^2+9}}{t} &= \\frac{(t+3)(t^2+4t+13)}{t} \\ &= \\frac{t^3+7t^2+25t+39}{t} \\ &= t^2+7t+25+\\frac{39}{t} \\end{aligned} $$ 이 값이 자연수가 되려면 $t$는 $39$의 양의 약수이어야 하므로 $t\\in{1, 3, 13, 39}$이다.",
+    "각각에 대응하는 자연수 $x=t+2$는 $3, 5, 15, 41$로 모두 $3$ 이상이므로 구하는 개수는 $4$개이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+  "unitEvidence": "$x^4+8x^2-9$가 $(x-1)(x-2)$의 배수",
+  "rpmRecordId": "H1-RPM-005",
+  "rpmReason": "Q13(10): 다항식의 나눗셈 단원의 RPM H1-RPM-005 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_DIVISION",
+  "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+  "typeReason": "Q13(10): 다항식의 나눗셈 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q13(10): 다항식의 나눗셈 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "배수",
+        "src": "stem",
+        "quote": "(x-1)(x-2)$의 배수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$3$ 이상의 자연수 $x$의 개수"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "(x-1)(x+1)(x^2+9)",
+        "evidenceType": "IMPLIED",
+        "justification": "보기차식을 인수분해해 x-1을 약분하고 x-2로 나눈 나머지가 39임을 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q13(10): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

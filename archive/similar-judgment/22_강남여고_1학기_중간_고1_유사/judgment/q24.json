@@ -1,0 +1,72 @@
+{
+  "qid": 24,
+  "itemFingerprint": "a058652587ced6bb",
+  "solveSteps": [
+    "주어진 이차함수를 완전제곱식으로 변형하면 $$ y = x^2-4x+m = (x-2)^2+m-4 $$ 포물선은 아래로 볼록하고 꼭짓점의 $x$좌표는 $2$이다.",
+    "$a<2$이므로 꼭짓점 $x=2$는 구간 $a\\le x\\le 4$ 안에 포함된다.",
+    "따라서 최솟값은 꼭짓점 $x=2$에서 $m-4$이므로 $$ m-4 = -2 \\implies m = 2 $$ 한편 아래로 볼록한 포물선의 닫힌 구간 최댓값은 구간의 양 끝점 $x=a$ 또는 $x=4$에서 나온다.",
+    "$m=2$일 때 오른쪽 끝점 $x=4$에서의 함숫값은 $$ y(4) = 4^2-4\\cdot 4+2 = 2 $$ 이므로 최댓값 $14$는 왼쪽 끝점 $x=a$에서 얻어진다.",
+    "$$ \\begin{aligned} a^2-4a+2 &= 14 \\ a^2-4a-12 &= 0 \\ (a-6)(a+2) &= 0 \\end{aligned} $$ 조건 $a<2$에 의하여 $a=-2$이다.",
+    "따라서 $m-a = 2-(-2) = 4$이다."
+  ],
+  "solvedAnswer": "$4$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "$x$의 값의 범위가 $a\\le x\\le 4$일 때, ",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q24(14): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+  "typeReason": "Q24(14): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q24(14): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=x^2-4x+m$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값은 $14$, 최솟값은 $-2$"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "완전제곱식으로 변형하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "꼭짓점",
+        "src": "solution",
+        "quote": "꼭짓점의 $x$좌표는 $2$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q24(14): 발문과 해설의 풀이 과정을 점검하여 정답 $4$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

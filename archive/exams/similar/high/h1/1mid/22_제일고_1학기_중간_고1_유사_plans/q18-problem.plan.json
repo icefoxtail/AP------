@@ -1,0 +1,55 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      -6,
+      4
+    ],
+    "viewport": [
+      -6,
+      4,
+      -2,
+      10
+    ],
+    "pieces": [
+      {
+        "domain": [
+          -6,
+          4
+        ],
+        "coefficients": [
+          "3",
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "referenceCurves": [
+      {
+        "coefficients": [
+          "9",
+          "6",
+          "1"
+        ],
+        "label": "g(x)"
+      }
+    ],
+    "referenceLines": [
+      {
+        "slope": "0",
+        "intercept": "4",
+        "label": "y=4"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": "1",
+        "y": "4",
+        "label": "접점(1, 4)"
+      }
+    ]
+  },
+  "caption": "직선 y=4가 f(x)=-x^2+2x+3에 접하고 g(x)=x^2+6x+9와 두 점에서 만나는 모습"
+}

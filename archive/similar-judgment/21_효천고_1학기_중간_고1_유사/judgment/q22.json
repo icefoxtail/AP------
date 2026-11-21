@@ -1,0 +1,69 @@
+{
+  "qid": 22,
+  "itemFingerprint": "6fe0d82e4ea998d4",
+  "solveSteps": [
+    "$w^2=-1$이므로 $w^3=w\\cdot w^2=-w$이다.",
+    "따라서 $$ w^3+3w^2+w = -w-3+w = -3, \\qquad w^3+w^2+w = -w-1+w = -1 $$ 이다.",
+    "$f(x), g(x)$는 각각 $x^2$의 계수가 $a, b$인 이차다항식이므로 일차식으로 나눈 몫을 $$ Q_1(x) = ax+c_1, \\qquad Q_2(x) = bx+c_2 $$ 이라 둘 수 있다.",
+    "주어진 조건에 대입하면 $$ Q_1(-3) = -3a+c_1 = 2 \\implies c_1 = 3a+2, \\qquad Q_2(-1) = -b+c_2 = 2 \\implies c_2 = b+2 $$ 이다.",
+    "따라서 $$ \\begin{aligned} f(x) &= (x+1)(ax+3a+2)+2a = ax^2+(4a+2)x+(5a+2) \\ g(x) &= (x+3)(bx+b+2)+2b = bx^2+(4b+2)x+(5b+6) \\end{aligned} $$ 이다.",
+    "$s=a+b$라 두면 $$ f(x)+g(x) = sx^2+(4s+4)x+(5s+8) $$ 이므로 $$ xf(x)+xg(x) = sx^3+(4s+4)x^2+(5s+8)x $$ 이다.",
+    "이를 $x^2+4x+3$으로 나누기 위해 몫을 $sx+4$로 두고 곱하면 $$ (x^2+4x+3)(sx+4) = sx^3+(4s+4)x^2+(3s+16)x+12 $$ 원래 식에서 이를 빼면 나머지는 $((5s+8)-(3s+16))x-12 = (2s-8)x-12$이다.",
+    "$s=a+b$를 대입하면 몫은 $(a+b)x+4$, 나머지는 $(2a+2b-8)x-12$이다."
+  ],
+  "solvedAnswer": "몫: $(a+b)x+4$, 나머지: $(2a+2b-8)x-12$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+  "unitEvidence": "서술형 4번. $x^2$의 계수가 $a$인 이차다항식 ",
+  "rpmRecordId": "H1-RPM-005",
+  "rpmReason": "Q22(xf): 다항식의 나눗셈 단원의 RPM H1-RPM-005 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_DIVISION",
+  "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+  "typeReason": "Q22(xf): 다항식의 나눗셈 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q22(xf): 다항식의 나눗셈 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "이차다항식 $f(x)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나눈 몫과 나머지를 구하시오"
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식의나눗셈",
+        "src": "solution",
+        "quote": "이를 $x^2+4x+3$으로 나누기 위해",
+        "evidenceType": "IMPLIED",
+        "justification": "f(x), g(x)를 복원한 뒤 xf(x)+xg(x)를 x^2+4x+3으로 직접 나누어 몫과 나머지를 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q22(xf): 발문과 해설의 풀이 과정을 점검하여 정답 몫: $(a+b)x+4$, 나머지: $(2a+2b-8)x-12$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

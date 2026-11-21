@@ -1,0 +1,94 @@
+{
+  "qid": 16,
+  "itemFingerprint": "fd5c34e50ca566c8",
+  "solveSteps": [
+    "두 교점 $A, B$의 $x$좌표를 각각 $u,(u>0)$, $v,(v<0)$라 하자.",
+    "교점의 $x$좌표는 방정식 $x^2=2x+k$, 즉 $x^2-2x-k=0$의 두 근이므로 근과 계수의 관계에 의하여 $u+v=2$, $uv=-k$이다.",
+    "$A(u, u^2)$, $C(u, 0)$이고 $u>0$이므로 삼각형 $AOC$의 넓이는 $S_1 = \\frac{1}{2}\\cdot u \\cdot u^2 = \\frac{u^3}{2}$ $B(v, v^2)$, $D(v, 0)$이고 $v<0$이므로 밑변 $OD$의 길이는 $-v$이다.",
+    "따라서 삼각형 $DOB$의 넓이는 $S_2 = \\frac{1}{2}\\cdot (-v) \\cdot v^2 = -\\frac{v^3}{2}$ 그러므로 $\\begin{aligned} S_1-S_2 &= \\frac{u^3}{2}-\\left(-\\frac{v^3}{2}\\right) = \\frac{u^3+v^3}{2} \\ &= \\frac{(u+v)^3-3uv(u+v)}{2} \\ &= \\frac{2^3-3(-k)\\cdot 2}{2} = \\frac{8+6k}{2} = 4+3k \\end{aligned}$ $4+3k=22$에서 $3k=18$이므로 $k=6$이다.",
+    "따라서 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "이차함수 $y=x^2$의 그래프와 직선 $y=2x+k$",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q16(AOC): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+  "typeReason": "Q16(AOC): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q16(AOC): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=x^2$"
+      },
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직선 $y=2x+k$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "매개변수",
+        "src": "stem",
+        "quote": "양수 $k$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여 $u+v=2$, $uv=-k$이다.",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "넓이",
+        "src": "solution",
+        "quote": "삼각형 $AOC$의 넓이는",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "대칭식",
+        "src": "solution",
+        "quote": "\\frac{(u+v)^3-3uv(u+v)}{2}",
+        "evidenceType": "IMPLIED",
+        "justification": "두 교점 x좌표의 세제곱 합을 합과 곱의 대칭식으로 변형함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양수",
+        "src": "stem",
+        "quote": "양수 $k$"
+      },
+      {
+        "term": "사분면",
+        "src": "stem",
+        "quote": "점 $A$는 제$1$사분면 위의 점이다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q16(AOC): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

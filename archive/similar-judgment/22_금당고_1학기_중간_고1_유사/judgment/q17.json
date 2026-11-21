@@ -1,0 +1,76 @@
+{
+  "qid": 17,
+  "itemFingerprint": "bf95d75839411821",
+  "solveSteps": [
+    "$h(x)=f(x)-g(x)$라 두면 $h(x)$는 삼차 이하의 다항식이다.",
+    "조건 (나)에서 $f(4)=-3$, $g(4)=3$이므로 $h(4)=f(4)-g(4)=-3-3=-6$이다.",
+    "조건 (가)에서 방정식 $h(x)=0$의 실근은 $1, 3$뿐이므로 $h(x)$의 차수에 따라 경우를 나눈다.",
+    "1) $f(x), g(x)$의 최고차항이 소거되어 $h(x)$가 이차식인 경우: $h(x)=c(x-1)(x-3)$ ($c\\ne 0$)이라 두면 $h(4)=3c=-6$이므로 $c=-2$이다.",
+    "따라서 $|h(5)|=|-2(5-1)(5-3)|=16$이다.",
+    "2) $h(x)$가 삼차식인 경우: 실근이 $1, 3$뿐이려면 $1$ 또는 $3$이 중근이어야 한다.",
+    "- $h(x)=c(x-1)^2(x-3)$이면 $h(4)=9c=-6 \\implies c=-\\dfrac{2}{3}$, $|h(5)|=\\left|-\\dfrac{2}{3}\\cdot 16\\cdot 2\\right|=\\dfrac{64}{3}$이다.",
+    "- $h(x)=c(x-1)(x-3)^2$이면 $h(4)=3c=-6 \\implies c=-2$, $|h(5)|=|-2\\cdot 4\\cdot 4|=32$이다.",
+    "(참고: $h(x)=c(x-1)(x^2+px+q)$로 허근을 갖는 경우에도 판별식 $p^2-4q<0$ 조건에서 값이 더 커진다.) 따라서 $|f(5)-g(5)|$의 최솟값은 $16$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "unitEvidence": "두 삼차다항식 $f(x)$, $g(x)$가 다음 조건을",
+  "rpmRecordId": "H1-RPM-009",
+  "rpmReason": "Q17(16): 나머지정리와 인수정리 단원의 RPM H1-RPM-009 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+  "typeReason": "Q17(16): 나머지정리와 인수정리 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(16): 나머지정리와 인수정리 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "두 삼차다항식 $f(x)$, $g(x)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "의 최솟값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수정리",
+        "src": "solution",
+        "quote": "실근은 $1, 3$뿐이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "방정식의 실근으로부터 다항식 h(x)의 인수를 구성함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나눈 나머지는 각각 $-3$, $3$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q17(16): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

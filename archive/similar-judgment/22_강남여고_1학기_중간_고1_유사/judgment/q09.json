@@ -1,0 +1,63 @@
+{
+  "qid": 9,
+  "itemFingerprint": "db0c65ccf941e7db",
+  "solveSteps": [
+    "각 등식의 좌변과 우변을 비교한다.",
+    "$$ \\begin{aligned} \\text{① } (x+2y)^2 &= x^2+4xy+4y^2 \\ne x^2-4xy+4y^2 \\ \\text{② } 27x^3+1 &= (3x+1)(9x^2-3x+1) \\ne (3x+1)(9x^2+3x+1) \\ \\text{③ } t=x+y\\text{로 치환하면 } (t+3)(t-3)+8 &= t^2-9+8 = t^2-1 = (t+1)(t-1) \\ &= (x+y+1)(x+y-1) \\ \\text{④ } x^3-2x^2-x+2 &= x^2(x-2)-(x-2) = (x^2-1)(x-2) = (x-1)(x+1)(x-2) \\ \\text{⑤ } x^4-5x^2+4 &= (x^2-1)(x^2-4) = (x^2-1)(x+2)(x-2) \\end{aligned} $$ 따라서 옳은 것은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "unitEvidence": "다음 다항식의 인수분해 중 옳은 것은?",
+  "rpmRecordId": "H1-RPM-013",
+  "rpmReason": "Q9(xy): 인수분해 단원의 RPM H1-RPM-013 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+  "typeReason": "Q9(xy): 인수분해 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q9(xy): 인수분해 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다음 다항식의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수분해",
+        "src": "stem",
+        "quote": "다항식의 인수분해 중"
+      }
+    ],
+    "method": [
+      {
+        "term": "전개",
+        "src": "solution",
+        "quote": "우변을 비교한다",
+        "evidenceType": "IMPLIED",
+        "justification": "공식을 적용하거나 전개해 좌우변 일치 여부를 확인함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q9(xy): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

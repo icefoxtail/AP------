@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      -6,
+      2
+    ],
+    "viewport": [
+      -6,
+      2,
+      -10,
+      4
+    ],
+    "pieces": [
+      {
+        "domain": [
+          -6,
+          2
+        ],
+        "coefficients": [
+          "-5",
+          "4",
+          "1"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "-2",
+        "y": "-9",
+        "label": "P(-2, -9)"
+      },
+      {
+        "id": "A",
+        "x": "-5",
+        "y": "0",
+        "label": "(-5, 0)"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "0",
+        "label": "(1, 0)"
+      }
+    ]
+  },
+  "caption": "꼭짓점 P(-2, -9)를 지나고 x축과 (-5, 0), (1, 0)에서 만나는 이차함수 y=x^2+4x-5"
+}

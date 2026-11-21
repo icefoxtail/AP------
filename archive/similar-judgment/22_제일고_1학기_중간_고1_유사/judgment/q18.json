@@ -1,0 +1,75 @@
+{
+  "qid": 18,
+  "itemFingerprint": "39f81007face5cc2",
+  "solveSteps": [
+    "직선 $y=ax+b$가 $(0, 4)$를 지나므로 $b=4$이다.",
+    "직선 $y=ax+4$가 $f(x)=-x^2+2x+3$과 접하므로 $-x^2+2x+3=ax+4$, 즉 $x^2+(a-2)x+1=0$의 판별식 $D_1=0$이다.",
+    "$$ D_1 = (a-2)^2-4 = 0 \\implies a-2 = \\pm 2 \\implies a=0 \\text{ 또는 } a=4 $$ 또한 $y=ax+4$가 $g(x)=x^2+6x+9$와 서로 다른 두 점에서 만나므로 $x^2+(6-a)x+5=0$의 판별식 $D_2>0$이어야 한다.",
+    "$$ D_2 = (6-a)^2-20 > 0 $$\n\n- $a=0$이면 $D_2=36-20=16>0$ (성립)  \n- $a=4$이면 $D_2=4-20=-16<0$ (불가) 따라서 $a=0$, $b=4$이므로 $a+b=4$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "$(0, 4)$를 지나는 직선 $y=ax+b$에 대하여",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q18(ax): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+  "typeReason": "Q18(ax): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(ax): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x)=-x^2+2x+3$"
+      },
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직선 $y=ax+b$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "교점",
+        "src": "solution",
+        "quote": "서로 다른 두 점에서 만나므로"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D_1=0$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실근",
+        "src": "solution",
+        "quote": "D_2 = (6-a)^2-20 > 0"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q18(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

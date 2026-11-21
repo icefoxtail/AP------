@@ -1,0 +1,61 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      0,
+      12
+    ],
+    "viewport": [
+      0,
+      12,
+      0,
+      25
+    ],
+    "pieces": [
+      {
+        "domain": [
+          0,
+          12
+        ],
+        "coefficients": [
+          "99",
+          "-28",
+          "2"
+        ]
+      }
+    ],
+    "referenceCurves": [
+      {
+        "coefficients": [
+          "39",
+          "-12",
+          "1"
+        ],
+        "label": "g(x)"
+      }
+    ],
+    "referenceLines": [
+      {
+        "slope": "0",
+        "intercept": "19",
+        "label": "y=19"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "6",
+        "y": "3",
+        "label": "교점(6, 3)"
+      },
+      {
+        "id": "B",
+        "x": "10",
+        "y": "19",
+        "label": "교점(10, 19)"
+      }
+    ]
+  },
+  "caption": "f(x)=2(x-6)(x-8)+3과 g(x)=(x-6)^2+3이 y=19와 만나 서로 다른 세 실근을 만드는 모습"
+}

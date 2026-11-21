@@ -1,0 +1,68 @@
+{
+  "qid": 14,
+  "itemFingerprint": "94045cd0c19adec4",
+  "solveSteps": [
+    "Q14 문제의 조건(2)에 맞추어 식을 세운다.",
+    "이차방정식 $2x^2+6x+5=0$의 두 근을 근의 공식으로 구하면 $$ x = \\frac{-3\\pm\\sqrt{3^2-2\\cdot 5}}{2} = \\frac{-3\\pm i}{2} $$ 최고차항의 계수가 $2$이므로 복소수 범위에서 인수분해하면 $$ 2x^2+6x+5 = 2\\left(x-\\frac{-3+i}{2}\\right)\\left(x-\\frac{-3-i}{2}\\right) = 2\\left(x+\\frac{3-i}{2}\\right)\\left(x+\\frac{3+i}{2}\\right) $$ 이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-QUADRATIC_SOLVING",
+  "unitEvidence": "이차식 $2x^2+6x+5$를 복소수의 범위에서 인수분",
+  "rpmRecordId": "H1-RPM-027",
+  "rpmReason": "Q14(2): 이차방정식의 풀이 단원의 RPM H1-RPM-027 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "templateKey": "TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY",
+  "typeReason": "Q14(2): 이차방정식의 풀이 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(2): 이차방정식의 풀이 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차식",
+        "src": "stem",
+        "quote": "이차식 $2x^2+6x+5$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수분해",
+        "src": "stem",
+        "quote": "복소수의 범위에서 인수분해하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "근의공식",
+        "src": "solution",
+        "quote": "근의 공식으로 구하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "복소수의 범위에서"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q14(2): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

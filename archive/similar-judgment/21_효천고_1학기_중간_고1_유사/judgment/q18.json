@@ -1,0 +1,65 @@
+{
+  "qid": 18,
+  "itemFingerprint": "489337ba22c96c9a",
+  "solveSteps": [
+    "$t=\\dfrac{b}{a}$라 두면 $a, b\\ne 0$이므로 $t\\ne 0$이고 $$ \\dfrac{P(x)}{a} = x^3+(2+t)x^2+(1+2t)x+(2+5t) $$ 이다. (ax)",
+    "삼차방정식 $P(x)=0$의 세 근이 $p, q, r$이므로 근과 계수의 관계에 의하여 $$ s_1 = p+q+r = -(2+t), \\quad s_2 = pq+qr+rp = 1+2t, \\quad s_3 = pqr = -(2+5t) $$ 이다.",
+    "구하는 식을 통분하면 분자는 $$ (q+r)(r+p)+(r+p)(p+q)+(p+q)(q+r) = p^2+q^2+r^2+3(pq+qr+rp) = s_1^2+s_2 $$ 이고, 분모는 $(s_1-r)(s_1-p)(s_1-q) = s_1s_2-s_3$이다.",
+    "각각 $t$로 나타내면 $$ s_1^2+s_2 = (2+t)^2+(1+2t) = t^2+6t+5 $$ $$ s_1s_2-s_3 = -(2+t)(1+2t)+(2+5t) = -(2+5t+2t^2)+(2+5t) = -2t^2 $$ 이므로 $$ \\dfrac{s_1^2+s_2}{s_1s_2-s_3} = \\dfrac{t^2+6t+5}{-2t^2} = -\\dfrac{1}{2}-\\dfrac{3}{t}-\\dfrac{5}{2t^2} = -\\dfrac{5}{2}\\left(\\dfrac{1}{t}+\\dfrac{3}{5}\\right)^2+\\dfrac{2}{5} $$ 이다.",
+    "$\\dfrac{1}{t}=-\\dfrac{3}{5}$ (즉 $t=-\\dfrac{5}{3}$)일 때 실수 조건 $a, b\\ne 0$을 만족하며 최댓값은 $\\dfrac{2}{5}$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-06",
+  "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+  "unitEvidence": "삼차다항식 $P(x)=ax^3+(2a+b)x^2+(a+",
+  "rpmRecordId": "H1-RPM-029",
+  "rpmReason": "Q18(ax): 근과 계수의 관계 단원의 RPM H1-RPM-029 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+  "typeReason": "Q18(ax): 근과 계수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(ax): 근과 계수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼차식",
+        "src": "stem",
+        "quote": "삼차다항식 $P(x)=ax^3+(2a+b)x^2+(a+2b)x+2a+5b$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q18(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "qid": 5,
+  "itemFingerprint": "fa4f7857efa54f71",
+  "solveSteps": [
+    "$f(x)=x^4+ax^2+b$는 짝수차항만 있으므로 $f(-x)=f(x)$이다.",
+    "조건 (가)에서 $f(2)=0$이므로 $f(-2)=0$이고, 따라서 $f(x)$는 $(x-2)(x+2)=x^2-4$를 인수로 갖는다.",
+    "조건 (나)에서 $x^2-2$도 인수이므로 최고차항 계수가 $1$인 사차다항식 $f(x)$는 $$ f(x) = (x^2-2)(x^2-4) = x^4-6x^2+8 $$ 따라서 $a=-6, b=8$이므로 $2a+b=2(-6)+8=-4$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "unitEvidence": "다항식 $f(x)=x^4+ax^2+b$가 다음 조건을 ",
+  "rpmRecordId": "H1-RPM-009",
+  "rpmReason": "Q5(ax): 나머지정리와 인수정리 단원의 RPM H1-RPM-009 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+  "typeReason": "Q5(ax): 나머지정리와 인수정리 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q5(ax): 나머지정리와 인수정리 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $f(x)=x^4+ax^2+b$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $a, b$에 대하여"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수정리",
+        "src": "solution",
+        "quote": "f(2)=0$이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "f(2)=0과 x^2-2 인수 조건을 이용해 f(x)=(x^2-2)(x^2-4)를 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q5(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

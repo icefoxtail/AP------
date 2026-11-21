@@ -1,0 +1,70 @@
+{
+  "qid": 12,
+  "itemFingerprint": "577c31f13121bfb5",
+  "solveSteps": [
+    "두 이차식을 각각 인수분해한 뒤 일차항의 계수가 같도록 짝지어 묶는다.",
+    "$$ \\begin{aligned} (x^2-7x+12)(x^2-3x+2) &= (x-4)(x-3)(x-2)(x-1) \\ &= {(x-4)(x-1)}{(x-3)(x-2)} \\ &= (x^2-5x+4)(x^2-5x+6) = 35 \\end{aligned} $$ $t=x^2-5x$로 치환하면 $$ (t+4)(t+6)=35 \\implies t^2+10t-11=0 \\implies (t-1)(t+11)=0 $$ 따라서 $x^2-5x-1=0$ 또는 $x^2-5x+11=0$이다.",
+    "$x^2-5x-1=0$은 판별식 $D=25+4=29>0$이므로 실근을 가지고, $x^2-5x+11=0$은 판별식 $D=25-44=-19<0$이므로 허근을 가진다.",
+    "따라서 허근 $\\omega$는 $\\omega^2-5\\omega+11=0$을 만족하므로 $\\omega^2-5\\omega=-11$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+  "unitEvidence": "방정식 $(x^2-7x+12)(x^2-3x+2)=35$",
+  "rpmRecordId": "H1-RPM-039",
+  "rpmReason": "Q12(12): 고차방정식의 풀이 단원의 RPM H1-RPM-039 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+  "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+  "typeReason": "Q12(12): 고차방정식의 풀이 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q12(12): 고차방정식의 풀이 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "방정식 $(x^2-7x+12)(x^2-3x+2)=35$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "허근",
+        "src": "stem",
+        "quote": "한 허근을 $\\omega$라 할 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "각각 인수분해한 뒤",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D=25-44=-19<0$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q12(12): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

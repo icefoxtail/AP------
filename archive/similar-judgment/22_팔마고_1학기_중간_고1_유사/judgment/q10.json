@@ -1,0 +1,62 @@
+{
+  "qid": 10,
+  "itemFingerprint": "57c02898f62d133a",
+  "solveSteps": [
+    "나머지정리에 의하여 $$ f(-2)-1=4 \\implies f(-2)=5, \\qquad 2f\\left(\\frac{1}{3}\\right)+1=5 \\implies f\\left(\\frac{1}{3}\\right)=2 $$ $f(x)$를 이차식 $(x+2)(3x-1)$로 나눈 나머지 $R(x)$는 일차 이하의 다항식이므로 $R(x)=ax+b$라 두면 $$ f(x) = (x+2)(3x-1)Q(x)+ax+b $$ $x=-2$와 $x=\\dfrac{1}{3}$을 대입하면 $$ -2a+b=5, \\qquad \\frac{1}{3}a+b=2 $$ 두 식을 빼면 $\\dfrac{7}{3}a=-3 \\implies a=-\\dfrac{9}{7}$, $b=5+2a=5-\\dfrac{18}{7}=\\dfrac{17}{7}$이다. (10)",
+    "따라서 $R(x)=-\\dfrac{9}{7}x+\\dfrac{17}{7}$이므로 $R(1)=\\dfrac{8}{7}$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "unitEvidence": "다항식 $f(x)-1$을 $x+2$로 나누었을 때의 나",
+  "rpmRecordId": "H1-RPM-009",
+  "rpmReason": "Q10(10): 나머지정리와 인수정리 단원의 RPM H1-RPM-009 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+  "typeReason": "Q10(10): 나머지정리와 인수정리 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q10(10): 나머지정리와 인수정리 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $f(x)-1$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나머지가 $R(x)$일 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지정리",
+        "src": "solution",
+        "quote": "나머지정리에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q10(10): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

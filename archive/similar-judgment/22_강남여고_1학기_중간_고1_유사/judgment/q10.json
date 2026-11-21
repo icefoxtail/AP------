@@ -1,0 +1,69 @@
+{
+  "qid": 10,
+  "itemFingerprint": "c4b1c63067557674",
+  "solveSteps": [
+    "$x$, $y$가 실수이므로 복소수가 서로 같을 조건에 의하여 실수부분끼리, 허수부분끼리 각각 같다. (yi)",
+    "$$ \\begin{aligned} x-y &= 5 \\ 4 &= 2y \\end{aligned} $$ 두 번째 식에서 $y=2$이고, 첫 번째 식에 대입하면 $x-2=5$이므로 $x=7$이다.",
+    "따라서 $x+y=7+2=9$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+  "unitEvidence": "등식 $(x-y)+4i=5+2yi$가 성립할 때, 실수",
+  "rpmRecordId": "H1-RPM-021",
+  "rpmReason": "Q10(yi): 복소수의 뜻과 표현 단원의 RPM H1-RPM-021 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+  "typeReason": "Q10(yi): 복소수의 뜻과 표현 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q10(yi): 복소수의 뜻과 표현 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "solution",
+        "quote": "복소수가 서로 같을 조건"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "$x+y$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "실수부분",
+        "src": "solution",
+        "quote": "실수부분끼리, 허수부분끼리",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 $x$, $y$에 대하여"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q10(yi): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

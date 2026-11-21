@@ -1,0 +1,38 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      -10,
+      2
+    ],
+    "viewport": [
+      -10,
+      2,
+      -20,
+      60
+    ],
+    "pieces": [
+      {
+        "domain": [
+          -10,
+          2
+        ],
+        "coefficients": [
+          "-15",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "referenceLines": [
+      {
+        "slope": "-10",
+        "intercept": "-25",
+        "label": "y=-10x-25"
+      }
+    ],
+    "requiredPoints": []
+  },
+  "caption": "a=-5일 때 이차함수 y=x^2-15와 직선 y=-10x-25가 서로 다른 두 점에서 만나는 모습"
+}

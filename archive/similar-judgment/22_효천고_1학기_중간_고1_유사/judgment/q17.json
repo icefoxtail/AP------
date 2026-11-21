@@ -1,0 +1,63 @@
+{
+  "qid": 17,
+  "itemFingerprint": "8a13fa86d4c07847",
+  "solveSteps": [
+    "Q17 문제의 조건(xy)에 맞추어 식을 세운다.",
+    "(1) 먼저 식을 간단히 하면 $$ (A+B)+(2A-B) = 3A = 3(2x^2-xy+y^2) = 6x^2-3xy+3y^2 $$ (2) 다항식의 곱셈은 교환법칙이 성립하므로 $CB=BC$이고 $$ \\begin{aligned} BC-2CB &= -BC \\ &= -(x^2-3xy)(x^2+2y^2) \\ &= -(x^4+2x^2y^2-3x^3y-6xy^3) \\ &= -x^4+3x^3y-2x^2y^2+6xy^3 \\end{aligned} $$ 이다."
+  ],
+  "solvedAnswer": "(1) $6x^2-3xy+3y^2$, (2) $-x^4+3x^3y-2x^2y^2+6xy^3$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+  "unitEvidence": "세 다항식 $A$, $B$, $C$가 $A=2x^2-x",
+  "rpmRecordId": "H1-RPM-001",
+  "rpmReason": "Q17(xy): 다항식의 기본 연산 단원의 RPM H1-RPM-001 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+  "typeReason": "Q17(xy): 다항식의 기본 연산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(xy): 다항식의 기본 연산 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "세 다항식 $A$, $B$, $C$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "내림차순",
+        "src": "stem",
+        "quote": "$x$에 대한 내림차순으로"
+      }
+    ],
+    "method": [
+      {
+        "term": "전개",
+        "src": "solution",
+        "quote": "-(x^4+2x^2y^2-3x^3y-6xy^3)",
+        "evidenceType": "IMPLIED",
+        "justification": "문자식을 3A와 -BC로 단순화한 뒤 대입하여 전개하고 x에 대해 내림차순 정리함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q17(xy): 발문과 해설의 풀이 과정을 점검하여 정답 (1) $6x^2-3xy+3y^2$, (2) $-x^4+3x^3y-2x^2y^2+6xy^3$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

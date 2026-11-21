@@ -1,0 +1,69 @@
+{
+  "qid": 16,
+  "itemFingerprint": "2c3ba16bfc5b98ba",
+  "solveSteps": [
+    "두 근을 $\\alpha, \\beta$라 하면 근과 계수의 관계에 의하여 $\\alpha+\\beta=2k+4$, $\\alpha\\beta=2k+3$이다.",
+    "두 근의 차가 $4$이므로 $(\\alpha-\\beta)^2=16$, 즉 판별식 $D=16$이다.",
+    "$$ \\begin{aligned} D &= (2k+4)^2-4(2k+3) = 4k^2+8k+4 = 16 \\ 4k^2+8k-12 &= 0 \\implies k^2+2k-3 = 0 \\implies (k+3)(k-1) = 0 \\end{aligned} $$ 따라서 $k=-3$ 또는 $k=1$이므로 모든 실수 $k$의 값의 합은 $-3+1=-2$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-06",
+  "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+  "unitEvidence": "이차방정식 $x^2-(2k+4)x+2k+3=0$의 두 ",
+  "rpmRecordId": "H1-RPM-029",
+  "rpmReason": "Q16(16): 근과 계수의 관계 단원의 RPM H1-RPM-029 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+  "typeReason": "Q16(16): 근과 계수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q16(16): 근과 계수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2-(2k+4)x+2k+3=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "값의 합을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D=16$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q16(16): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

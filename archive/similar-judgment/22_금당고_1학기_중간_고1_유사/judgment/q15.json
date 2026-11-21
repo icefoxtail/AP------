@@ -1,0 +1,70 @@
+{
+  "qid": 15,
+  "itemFingerprint": "94fcb258d6c51f63",
+  "solveSteps": [
+    "이차방정식 $x^2+ax-2a=0$에서 근과 계수의 관계에 의하여 $$ \\alpha+\\beta = -a, \\qquad \\alpha\\beta = -2a < 0 \\quad (a>0) $$ 두 근의 곱이 음수이므로 $\\alpha$와 $\\beta$는 서로 다른 부호를 가지며 $|\\alpha||\\beta|=|\\alpha\\beta|=2a$이다.",
+    "한편 방정식 $x^2-5ax+6a^2=(x-2a)(x-3a)=0$의 두 근은 $2a$, $3a$이므로 $|\\alpha|+|\\beta|=3a$이다.",
+    "$\\alpha$와 $\\beta$의 부호가 다르므로 $|\\alpha|+|\\beta|=|\\alpha-\\beta|$가 성립한다.",
+    "$$ \\begin{aligned} (3a)^2 &= (\\alpha-\\beta)^2 = (\\alpha+\\beta)^2-4\\alpha\\beta \\ 9a^2 &= (-a)^2-4(-2a) = a^2+8a \\ 8a^2 &= 8a \\end{aligned} $$ $a>0$이므로 양변을 $8a$로 나누면 $a=1$이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-06",
+  "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+  "unitEvidence": "이차방정식 $x^2+ax-2a=0$이 서로 다른 두 실",
+  "rpmRecordId": "H1-RPM-029",
+  "rpmReason": "Q15(ax): 근과 계수의 관계 단원의 RPM H1-RPM-029 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+  "typeReason": "Q15(ax): 근과 계수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(ax): 근과 계수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2+ax-2a=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "서로 다른 두 실근"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "서로 다른 두 실근 $\\alpha$, $\\beta$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q15(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

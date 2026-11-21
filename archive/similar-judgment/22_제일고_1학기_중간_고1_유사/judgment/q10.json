@@ -1,0 +1,67 @@
+{
+  "qid": 10,
+  "itemFingerprint": "85a7a5c6a4eb14d6",
+  "solveSteps": [
+    "- ① $\\dfrac{1}{3-i}=\\dfrac{3+i}{10}$이므로 실수부분은 $\\dfrac{3}{10}$이다.",
+    "(거짓)  \n- ② $2-\\sqrt{5}i$의 허수부분은 $-\\sqrt{5}$이다.",
+    "(거짓)  \n- ③ $\\dfrac{\\sqrt{6}}{\\sqrt{-2}}=\\dfrac{\\sqrt{6}}{\\sqrt{2}i}=-\\sqrt{3}i$이다.",
+    "(거짓)  \n- ④ $\\sqrt{-3}\\sqrt{-12}=(\\sqrt{3}i)(2\\sqrt{3}i)=6i^2=-6$이다.",
+    "(참)  \n- ⑤ $a=0, b=0$이면 $a+bi=0$은 실수이므로 거짓이다.",
+    "따라서 옳은 것은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "다음 중 옳은 것은? (단, $i=\\sqrt{-1}$)",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q10(12): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+  "typeReason": "Q10(12): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q10(12): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "실수부분",
+        "src": "solution",
+        "quote": "실수부분은 $\\dfrac{3}{10}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수부분",
+        "src": "solution",
+        "quote": "실수부분은 $\\dfrac{3}{10}$"
+      }
+    ],
+    "method": [
+      {
+        "term": "제곱근",
+        "src": "solution",
+        "quote": "(\\sqrt{3}i)(2\\sqrt{3}i)=6i^2=-6",
+        "evidenceType": "IMPLIED",
+        "justification": "음수의 제곱근을 허수단위 i로 바꾸어 곱셈을 계산함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q10(12): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

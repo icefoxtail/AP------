@@ -1,0 +1,78 @@
+{
+  "qid": 15,
+  "itemFingerprint": "d9536513e07d4d96",
+  "solveSteps": [
+    "두 식을 전개하면 $f(x)=x^2-4ax$, $g(x)=-x^2+2ax-b$이다.",
+    "방정식 $f(x)=g(x)$는 $2x^2-6ax+b=0$이므로 근과 계수의 관계에 의해 $\\alpha+\\beta=3a$, $\\alpha\\beta=\\dfrac{b}{2}$이다.",
+    "두 근의 차가 $3$이므로 $(\\beta-\\alpha)^2=(\\alpha+\\beta)^2-4\\alpha\\beta=9a^2-2b=9$, 즉 $b=\\dfrac{9a^2-9}{2}$이다.",
+    "- ㄱ.",
+    "$5a^2<\\dfrac{9a^2-9}{2} \\iff 10a^2<9a^2-9 \\iff a^2<-9$이므로 성립할 수 없다.",
+    "(거짓)  \n- ㄴ.",
+    "$f(\\alpha)=g(\\alpha)$이므로 좌변은 $$f(\\alpha)-g(\\beta)=g(\\alpha)-g(\\beta)=(\\beta-\\alpha)(\\alpha+\\beta-2a)=3(3a-2a)=3a$$ 우변은 $g(a)-f(2a)=(a^2-b)-(-4a^2)=5a^2-b=5a^2-\\dfrac{9a^2-9}{2}=\\dfrac{a^2+9}{2}$이다.",
+    "따라서 $3a\\le\\dfrac{a^2+9}{2} \\iff a^2-6a+9=(a-3)^2\\ge 0$이므로 항상 참이다.",
+    "- ㄷ.",
+    "$g(\\alpha)=f(\\beta)+5a^2-b$는 $g(\\alpha)-g(\\beta)=5a^2-b$, 즉 $3a=\\dfrac{a^2+9}{2}$와 같으므로 $(a-3)^2=0$에서 $a=3$이다.",
+    "이때 $b=\\dfrac{9\\cdot 9-9}{2}=36$이다.",
+    "(참) 따라서 옳은 것은 ㄴ, ㄷ이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "두 이차함수 $f(x)=(x-2a)^2-4a^2$, $",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q15(36): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+  "typeReason": "Q15(36): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(36): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "두 이차함수 $f(x)=(x-2a)^2-4a^2$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "서로 다른 두 실근 $\\alpha$, $\\beta$"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의해",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "(a-3)^2\\ge 0"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q15(36): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

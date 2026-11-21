@@ -1,0 +1,72 @@
+{
+  "qid": 19,
+  "itemFingerprint": "e180167fcba2460f",
+  "solveSteps": [
+    "지점 $A$를 원점 $(0, 0)$, 지면이 $x$축이 되도록 좌표평면을 잡으면 $B(8, 0)$, $C(6, 0)$이다. (10)",
+    "기둥의 높이가 $4\\text{m}$이고 $P$는 기둥 꼭대기보다 $5\\text{m}$ 위이므로 $P(6, 9)$이다.",
+    "공의 궤적은 $x=0$과 $x=8$에서 지면과 만나므로 포물선의 식을 $$ y = kx(8-x) $$ 으로 놓을 수 있다.",
+    "이 포물선이 점 $P(6, 9)$를 지나므로 $$ 9 = k\\cdot 6\\cdot (8-6) = 12k \\implies k = \\frac{3}{4} $$ 두 근 $0$과 $8$의 중점 $x=4$에서 대칭축을 가지므로 최댓값(최고 높이)은 $x=4$일 때이다.",
+    "$$ y = \\frac{3}{4}\\cdot 4\\cdot (8-4) = 12 $$ 따라서 공이 가장 높이 올라갔을 때의 지면으로부터의 높이는 $12\\text{m}$이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "그림과 같이 평평한 지면 위에 있는 두 지점 $A$, ",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q19(10): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+  "typeReason": "Q19(10): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q19(10): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "포물선",
+        "src": "stem",
+        "quote": "포물선의 축은"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "solution",
+        "quote": "최댓값(최고 높이)은"
+      }
+    ],
+    "method": [
+      {
+        "term": "포물선",
+        "src": "stem",
+        "quote": "포물선 모양으로 날아",
+        "evidenceType": "IMPLIED",
+        "justification": "두 x절편을 이용해 이차함수 식 y=kx(8-x)를 세우는 포물선 모델링"
+      }
+    ],
+    "condition": [
+      {
+        "term": "축",
+        "src": "stem",
+        "quote": "포물선의 축은 지면에 수직"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q19(10): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

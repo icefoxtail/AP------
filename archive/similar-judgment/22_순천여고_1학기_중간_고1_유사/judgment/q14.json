@@ -1,0 +1,71 @@
+{
+  "qid": 14,
+  "itemFingerprint": "de8ca3c68b41cb6d",
+  "solveSteps": [
+    "허근 $\\omega$는 방정식의 근이므로 $\\omega^3=11\\omega-20$이다.",
+    "이를 대입해 차수를 낮추면 $$ \\omega^3-10\\omega+17 = (11\\omega-20)-10\\omega+17 = \\omega-3 $$ 마찬가지로 $\\overline{\\omega}^3-10\\overline{\\omega}+17=\\overline{\\omega}-3$이다.",
+    "한편 $x^3-11x+20=(x+4)(x^2-4x+5)=0$이므로 두 허근 $\\omega, \\overline{\\omega}$는 $x^2-4x+5=0$의 두 근 $2\\pm i$이다.",
+    "따라서 $$ (\\omega-3)(\\overline{\\omega}-3) = (-1+i)(-1-i) = 1+1 = 2 $$ 이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+  "unitEvidence": "삼차방정식 $x^3-11x+20=0$의 한 허근을 $\\",
+  "rpmRecordId": "H1-RPM-039",
+  "rpmReason": "Q14(11): 고차방정식의 풀이 단원의 RPM H1-RPM-039 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+  "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+  "typeReason": "Q14(11): 고차방정식의 풀이 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(11): 고차방정식의 풀이 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼차방정식",
+        "src": "stem",
+        "quote": "삼차방정식 $x^3-11x+20=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "곱",
+        "src": "solution",
+        "quote": "(\\omega-3)(\\overline{\\omega}-3)"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "(x+4)(x^2-4x+5)=0",
+        "evidenceType": "IMPLIED",
+        "justification": "차수를 낮춘 뒤 삼차식을 인수분해해 허근이 속한 이차식을 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "허근",
+        "src": "stem",
+        "quote": "한 허근을 $\\omega$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q14(11): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

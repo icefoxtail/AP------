@@ -1,0 +1,50 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      0,
+      6,
+      0,
+      14
+    ],
+    "pieces": [
+      {
+        "domain": [
+          0,
+          6
+        ],
+        "coefficients": [
+          "7",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "3",
+        "label": "(2, 3)"
+      },
+      {
+        "id": "A",
+        "x": "3",
+        "y": "4",
+        "label": "(3, 4)"
+      },
+      {
+        "id": "B",
+        "x": "5",
+        "y": "12",
+        "label": "(5, 12)"
+      }
+    ]
+  },
+  "caption": "이차함수 y=x^2-4x+7의 그래프와 구간 [3, 5]에서의 최솟값 (3, 4) 및 최댓값 (5, 12)"
+}

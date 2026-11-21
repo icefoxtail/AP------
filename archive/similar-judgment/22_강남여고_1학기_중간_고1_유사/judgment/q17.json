@@ -1,0 +1,74 @@
+{
+  "qid": 17,
+  "itemFingerprint": "7189262c5a853372",
+  "solveSteps": [
+    "$f(x)$의 계수가 모두 실수이고 $2+i$가 $f(x)=0$의 근이므로, 켤레복소수 $2-i$도 $f(x)=0$의 근이다. (12)",
+    "두 근 $2+i$, $2-i$를 갖는 이차식은 $$ {x-(2+i)}{x-(2-i)} = (x-2)^2+1 = x^2-4x+5 $$ 나머지 두 근은 실수인 중근이므로 이를 $r, r$이라 하고 최고차항의 계수가 $1$임을 적용하면 $$ \\begin{aligned} f(x) &= (x^2-4x+5)(x-r)^2 \\ &= (x^2-4x+5)(x^2-2rx+r^2) \\end{aligned} $$ 여기서 $x^3$항의 계수는 $-2r-4$이다.",
+    "조건 (나)에서 삼차항의 계수가 $0$이므로 $$ -2r-4 = 0 \\implies r = -2 $$ 따라서 $f(x)=(x^2-4x+5)(x+2)^2$이므로 $$ f(1) = (1^2-4\\cdot 1+5)(1+2)^2 = 2\\cdot 9 = 18 $$ 이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_ROOT",
+  "unitEvidence": "실수 계수를 갖는 사차식 $f(x)$가 다음 조건을 만",
+  "rpmRecordId": "H1-RPM-031",
+  "rpmReason": "Q17(12): 복소수와 이차방정식 단원의 RPM H1-RPM-031 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+  "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+  "typeReason": "Q17(12): 복소수와 이차방정식 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(12): 복소수와 이차방정식 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "사차식",
+        "src": "stem",
+        "quote": "실수 계수를 갖는 사차식"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사차식",
+        "src": "stem",
+        "quote": "사차식 $f(x)$가"
+      }
+    ],
+    "method": [
+      {
+        "term": "켤레복소수",
+        "src": "solution",
+        "quote": "켤레복소수 $2-i$도",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최고차항",
+        "src": "stem",
+        "quote": "최고차항의 계수는 $1$"
+      },
+      {
+        "term": "중근",
+        "src": "stem",
+        "quote": "실수인 중근을 갖는다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q17(12): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

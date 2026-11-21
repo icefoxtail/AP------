@@ -1,0 +1,77 @@
+{
+  "qid": 3,
+  "itemFingerprint": "2f31926904a02a1e",
+  "solveSteps": [
+    "$f(x)$가 $(x-1)(x+2)$로 나누어떨어지므로 인수정리에 의하여 $f(1)=0$, $f(-2)=0$이다. (px)",
+    "$f(1)=1+p+q-6=0 \\implies p+q=5$ $f(-2)=-8+4p-2q-6=0 \\implies 4p-2q=14 \\implies 2p-q=7$ 두 식을 변변 더하면 $3p=12$이므로 $p=4$이다.",
+    "$p+q=5$에 대입하면 $q=1$이다.",
+    "따라서 $pq=4\\cdot 1=4$이므로 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "unitEvidence": "다항식 $f(x)=x^3+px^2+qx-6$이 $(x-",
+  "rpmRecordId": "H1-RPM-009",
+  "rpmReason": "Q3(px): 나머지정리와 인수정리 단원의 RPM H1-RPM-009 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+  "typeReason": "Q3(px): 나머지정리와 인수정리 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q3(px): 나머지정리와 인수정리 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $f(x)=x^3+px^2+qx-6$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "곱",
+        "src": "stem",
+        "quote": "$pq$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수정리",
+        "src": "solution",
+        "quote": "인수정리에 의하여 $f(1)=0$, $f(-2)=0$이다.",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "연립일차방정식",
+        "src": "solution",
+        "quote": "두 식을 변변 더하면 $3p=12$",
+        "evidenceType": "IMPLIED",
+        "justification": "p, q에 대한 두 일차방정식을 가감법으로 연립하여 해를 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "$p, q$는 상수이다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q3(px): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

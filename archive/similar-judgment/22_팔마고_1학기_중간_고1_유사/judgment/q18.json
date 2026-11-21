@@ -1,0 +1,64 @@
+{
+  "qid": 18,
+  "itemFingerprint": "0e50776caeb18453",
+  "solveSteps": [
+    "분모의 지수 $3, 10, 17, \\cdots, 2019$는 첫째항이 $3$, 공차가 $7$인 수열이므로 항의 개수는 $$ \\frac{2019-3}{7}+1 = 288+1 = 289 $$ 한편 $i^4=1$이고 $7\\equiv 3 \\pmod 4$이므로 각 항을 앞에서부터 네 항씩 묶어 보면 $$ \\frac{1}{i^3}+\\frac{1}{i^{10}}+\\frac{1}{i^{17}}+\\frac{1}{i^{24}} = \\frac{1}{-i}+\\frac{1}{-1}+\\frac{1}{i}+\\frac{1}{1} = i-1-i+1 = 0 $$ 마찬가지로 연속한 네 항의 합은 항상 $0$이다.",
+    "$289 = 4\\times 72 + 1$이므로 앞의 $288$개 항의 합은 $0$이고 마지막 항만 남는다.",
+    "$2019 = 4\\times 504 + 3$이므로 $$ \\frac{1}{i^{2019}} = \\frac{1}{i^3} = \\frac{1}{-i} = i $$ 따라서 $a=0, b=1$이므로 $a+b=1$이다."
+  ],
+  "solvedAnswer": "$1$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "[서답형1 (단답형1)] 실수 $a$, $b$에 대하여",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q18(10): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+  "typeReason": "Q18(10): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(10): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "합",
+        "src": "solution",
+        "quote": "네 항의 합은"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 $a$, $b$에 대하여"
+      }
+    ],
+    "method": [
+      {
+        "term": "복소수",
+        "src": "solution",
+        "quote": "연속한 네 항의 합은 항상 $0$",
+        "evidenceType": "IMPLIED",
+        "justification": "i^4=1 주기성을 이용해 4항씩 묶어 0으로 소거함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q18(10): 발문과 해설의 풀이 과정을 점검하여 정답 $1$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

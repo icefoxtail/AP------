@@ -1,0 +1,64 @@
+{
+  "qid": 14,
+  "itemFingerprint": "d8eae80e61d63f95",
+  "solveSteps": [
+    "- 조건 (가): $\\dfrac{\\sqrt{A}}{\\sqrt{B}}=-\\sqrt{\\dfrac{A}{B}}$가 성립하려면 $A\\ge 0$, $B<0$이어야 하므로 $$x+2\\ge 0 \\quad \\text{이고} \\quad x-3<0 \\implies -2\\le x<3$$ 따라서 정수 $x$는 $-2, -1, 0, 1, 2$로 $m=5$개이다.",
+    "- 조건 (나): $-y^2+6y-8=(2-y)(y-4)$이고 $\\sqrt{A}\\sqrt{B}=-\\sqrt{AB}$가 성립하려면 $A\\le 0$, $B\\le 0$이어야 하므로 $$2-y\\le 0 \\quad \\text{이고} \\quad y-4\\le 0 \\implies 2\\le y\\le 4$$ 따라서 정수 $y$는 $2, 3, 4$로 $n=3$개이다.",
+    "그러므로 $m+n=5+3=8$이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "(가) $\\dfrac{\\sqrt{x+2}}{\\sqrt{",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q14(AB): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+  "typeReason": "Q14(AB): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(AB): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "src": "solution",
+        "quote": "-2\\le x<3"
+      }
+    ],
+    "goal": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "정수 $x$, $y$의 개수를"
+      }
+    ],
+    "method": [
+      {
+        "term": "제곱근",
+        "src": "solution",
+        "quote": "\\dfrac{\\sqrt{A}}{\\sqrt{B}}=-\\sqrt{\\dfrac{A}{B}}",
+        "evidenceType": "IMPLIED",
+        "justification": "음수의 제곱근 나눗셈과 곱셈에서 음의 부호가 나오는 부호 및 등호 조건을 적용함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q14(AB): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

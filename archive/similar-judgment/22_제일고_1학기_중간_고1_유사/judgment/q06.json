@@ -1,0 +1,74 @@
+{
+  "qid": 6,
+  "itemFingerprint": "dccea70290d098eb",
+  "solveSteps": [
+    "$x^3+1=(x+1)(x^2-x+1)=0$의 허근이 $u$이므로 $u^3=-1$, $u^2-u+1=0$이고 근과 계수의 관계에 의해 $u+\\overline{u}=1$, $u\\overline{u}=1$이다.",
+    "- ㄱ.",
+    "$u^2-u+1=0$이므로 참이다.",
+    "- ㄴ.",
+    "$u^3=-1$을 $u$로 나누면 $u^2=-\\dfrac{1}{u}$이므로 거짓이다.",
+    "- ㄷ.",
+    "$\\dfrac{1}{u+1}+\\dfrac{1}{\\overline{u}+1} = \\dfrac{u+\\overline{u}+2}{u\\overline{u}+u+\\overline{u}+1} = \\dfrac{1+2}{1+1+1} = 1\\ne -1$이므로 거짓이다.",
+    "따라서 옳은 것은 ㄱ뿐이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+  "unitEvidence": "방정식 $x^3=-1$의 한 허근을 $u$라고 할 때,",
+  "rpmRecordId": "H1-RPM-039",
+  "rpmReason": "Q6(x): 고차방정식의 풀이 단원의 RPM H1-RPM-039 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+  "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+  "typeReason": "Q6(x): 고차방정식의 풀이 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q6(x): 고차방정식의 풀이 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "방정식 $x^3=-1$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "허근",
+        "src": "stem",
+        "quote": "한 허근을 $u$라고 할 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의해",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "켤레복소수",
+        "src": "stem",
+        "quote": "켤레복소수이다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q6(x): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "qid": 15,
+  "itemFingerprint": "b0867d2d715959f7",
+  "solveSteps": [
+    "Q15 문제의 조건(11)에 맞추어 식을 세운다.",
+    "가로와 세로의 길이를 각각 인수분해하면 $$ n^3+6n^2+11n+6 = (n+1)(n+2)(n+3), \\qquad n^2+4n+3 = (n+1)(n+3) $$ 가로 방향에 필요한 타일 수는 $(n+2)(n+3)$개, 세로 방향에 필요한 타일 수는 $(n+3)$개이므로 전체 필요한 타일의 개수는 $(n+2)(n+3)^2$이다."
+  ],
+  "solvedAnswer": "$(n+2)(n+3)^2$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "unitEvidence": "단답형 2. 자연수 $n$에 대하여 가로의 길이가 $n",
+  "rpmRecordId": "H1-RPM-013",
+  "rpmReason": "Q15(11): 인수분해 단원의 RPM H1-RPM-013 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+  "typeReason": "Q15(11): 인수분해 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(11): 인수분해 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 모양의 바닥"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수분해",
+        "src": "stem",
+        "quote": "인수분해한 식으로"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "가로와 세로의 길이를 각각 인수분해하면",
+        "evidenceType": "IMPLIED",
+        "justification": "가로·세로 길이를 인수분해해 타일 한 변 n+1로 나눈 개수를 곱함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q15(11): 발문과 해설의 풀이 과정을 점검하여 정답 $(n+2)(n+3)^2$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

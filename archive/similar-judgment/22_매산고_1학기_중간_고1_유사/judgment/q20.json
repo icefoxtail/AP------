@@ -1,0 +1,79 @@
+{
+  "qid": 20,
+  "itemFingerprint": "6e19046e2f178155",
+  "solveSteps": [
+    "$F(x)=f(x)-3$, $G(x)=g(x)-3$이라 두면 $F(x)G(x)=0$의 모든 실근이 $\\alpha, \\beta$이고 $f(\\alpha)=g(\\alpha)$이므로 $F(\\alpha)=G(\\alpha)=0$이다.",
+    "만약 $F(x), G(x)$가 모두 $(x-\\alpha)(x-\\beta)$를 인수로 가지면 $f(\\beta)=g(\\beta)=3$이 되어 $f(x)=g(x)$의 다른 근이 $\\beta$가 되므로 모순이다.",
+    "또 $F(x)=2(x-\\alpha)^2$, $G(x)=(x-\\alpha)(x-\\beta)$이면 $f(x)-g(x)=(x-\\alpha)(x-2\\alpha+\\beta)=0$의 다른 근이 $2\\alpha-\\beta<\\alpha<\\beta+2$가 되어 모순이다.",
+    "따라서 $$ F(x) = 2(x-\\alpha)(x-\\beta), \\qquad G(x) = (x-\\alpha)^2 $$ 이어야 한다.",
+    "이때 $f(x)-g(x)=2(x-\\alpha)(x-\\beta)-(x-\\alpha)^2=(x-\\alpha)(x-2\\beta+\\alpha)=0$이므로 다른 한 근은 $2\\beta-\\alpha$이다.",
+    "조건에서 이 근이 $\\beta+2$이므로 $2\\beta-\\alpha=\\beta+2 \\implies \\beta-\\alpha=2$이다.",
+    "$y=x-\\alpha$라 두면 $\\beta-\\alpha=2$이므로 $$ f(x) = 2y(y-2)+3 = 2y^2-4y+3, \\qquad g(x) = y^2+3 $$ 이제 ${f(x)-k}{g(x)-k}=0$의 서로 다른 실근이 $3$개가 되려면 $f(x)=k$와 $g(x)=k$가 각각 서로 다른 두 실근을 가지면서 그중 하나가 공통근이어야 한다.",
+    "공통근은 $f(x)=g(x)$, 즉 $y^2-4y=0$에서 $y=0$ 또는 $y=4$일 때 발생한다.",
+    "- $y=0$이면 $k=3$이고 실근이 $\\alpha, \\beta$의 $2$개뿐이므로 불가하다.",
+    "- $y=4$이면 $k=g(\\alpha+4)=4^2+3=19$이다.",
+    "이때 $f(x)=19 \\iff 2y^2-4y-16=0 \\iff y=4, -2$이고, $g(x)=19 \\iff y^2=16 \\iff y=4, -4$이다.",
+    "따라서 서로 다른 세 실근은 $\\alpha-4, \\alpha-2, \\alpha+4$이고 그 합이 $16$이므로 $$ (\\alpha-4)+(\\alpha-2)+(\\alpha+4) = 3\\alpha-2 = 16 \\implies \\alpha = 6 $$ 그러므로 $\\beta=\\alpha+2=8$, $k=19$이며, $\\alpha+\\beta+k = 6+8+19 = 33$이다."
+  ],
+  "solvedAnswer": "$33$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "최고차항의 계수가 $2$인 이차함수 $f(x)$와 최고",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q20(16): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+  "typeReason": "Q20(16): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 5,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(16): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 5 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "최고차항의 계수가 $2$인 이차함수 $f(x)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "서로 다른 실근의 개수가 $3$"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수정리",
+        "src": "solution",
+        "quote": "$F(\\alpha)=G(\\alpha)=0$이다",
+        "evidenceType": "IMPLIED",
+        "justification": "근 조건으로부터 두 이차식 F(x), G(x)의 일차 인수를 결정함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최고차항",
+        "src": "stem",
+        "quote": "최고차항의 계수가 $1$인 이차함수"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q20(16): 발문과 해설의 풀이 과정을 점검하여 정답 $33$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

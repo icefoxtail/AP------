@@ -1,0 +1,65 @@
+{
+  "qid": 19,
+  "itemFingerprint": "570123546d8f7c7a",
+  "solveSteps": [
+    "우변을 전개하여 $x$에 대하여 내림차순 정리하면 $$ \\begin{aligned} a(x-2)(x+1)+b(x-2)+c &= a(x^2-x-2)+bx-2b+c \\ &= ax^2+(-a+b)x+(-2a-2b+c) \\end{aligned} $$ 이다.",
+    "$x$에 대한 항등식이므로 양변의 같은 차수의 계수를 비교하면 $$ a=2, \\qquad -a+b=-5, \\qquad -2a-2b+c=7 $$ 이다.",
+    "$a=2$를 둘째 식에 대입하면 $-2+b=-5$이므로 $b=-3$이고, 이를 셋째 식에 대입하면 $-4+6+c=7$이므로 $c=5$이다.",
+    "따라서 $a=2,;b=-3,;c=5$이다."
+  ],
+  "solvedAnswer": "$a=2,;b=-3,;c=5$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-IDENTITY",
+  "unitEvidence": "서술형 1번. 다음 등식이 $x$에 대한 항등식이 되도",
+  "rpmRecordId": "H1-RPM-007",
+  "rpmReason": "Q19(aligned): 항등식과 계수비교 단원의 RPM H1-RPM-007 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+  "typeReason": "Q19(aligned): 항등식과 계수비교 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q19(aligned): 항등식과 계수비교 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "항등식",
+        "src": "stem",
+        "quote": "$x$에 대한 항등식"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $a, b, c$의 값을"
+      }
+    ],
+    "method": [
+      {
+        "term": "계수비교",
+        "src": "solution",
+        "quote": "계수를 비교하면",
+        "evidenceType": "IMPLIED",
+        "justification": "우변을 내림차순 전개한 뒤 좌변과 차수별 계수를 비교함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q19(aligned): 발문과 해설의 풀이 과정을 점검하여 정답 $a=2,;b=-3,;c=5$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

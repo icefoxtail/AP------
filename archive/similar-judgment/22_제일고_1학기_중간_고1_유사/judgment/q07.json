@@ -1,0 +1,65 @@
+{
+  "qid": 7,
+  "itemFingerprint": "0cd2b840798ba8fe",
+  "solveSteps": [
+    "주어진 삼차식을 인수분해하면 $$ \\begin{aligned} x^3-ax^2+(a+2)x-a(a+2) &= x^2(x-a)+(a+2)(x-a) \\ &= (x-a)(x^2+a+2) = 0 \\end{aligned} $$\n\n- $a=-3$일 때 $(x+3)(x^2-1)=0$이므로 실근은 $-3, -1, 1$로 $f(-3)=3$이다.",
+    "- $a=-2$일 때 $(x+2)x^2=0$이므로 실근은 $-2, 0$으로 $f(-2)=2$이다.",
+    "- $a=-1, 0, 1$일 때 $a+2>0$이므로 $x^2+a+2=0$은 허근을 갖고 실근은 $x=a$뿐이다.",
+    "즉 $f(-1)=f(0)=f(1)=1$이다.",
+    "따라서 $f(-3)+f(-2)+f(-1)+f(0)+f(1)=3+2+1+1+1=8$이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+  "unitEvidence": "$x$에 대한 삼차방정식 $x^3-ax^2+(a+2)x",
+  "rpmRecordId": "H1-RPM-039",
+  "rpmReason": "Q7(ax): 고차방정식의 풀이 단원의 RPM H1-RPM-039 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+  "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+  "typeReason": "Q7(ax): 고차방정식의 풀이 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q7(ax): 고차방정식의 풀이 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼차방정식",
+        "src": "stem",
+        "quote": "삼차방정식 $x^3-ax^2+(a+2)x-a^2-2a=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "서로 다른 실근의 개수를 $f(a)$"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "삼차식을 인수분해하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q7(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

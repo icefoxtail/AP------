@@ -1,0 +1,74 @@
+{
+  "qid": 10,
+  "itemFingerprint": "bbd27ad2c7ab73f4",
+  "solveSteps": [
+    "$x=1000$으로 두면 $1003^8=(x+3)^8$이다.",
+    "다항식 $(x+3)^8$을 전개하면 상수항 $3^8$을 제외한 모든 항은 $x$를 인수로 가지므로 $x$로 나누어떨어진다.",
+    "즉, $(x+3)^8 = xQ(x)+3^8$ (단, $Q(x)$는 다항식) 꼴로 나타낼 수 있다.",
+    "$x=1000=250\\cdot 4$는 $250$의 배수이므로 $1003^8$을 $250$으로 나눈 나머지는 $3^8$을 $250$으로 나눈 나머지와 같다.",
+    "$3^8 = (3^4)^2 = 81^2 = 6561$ $6561 = 250\\cdot 26 + 61$이므로 구하는 나머지는 $61$이다.",
+    "따라서 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "unitEvidence": "$1003^8$을 $250$으로 나누었을 때의 나머지는",
+  "rpmRecordId": "H1-RPM-013",
+  "rpmReason": "Q10(1003): 인수분해 단원의 RPM H1-RPM-013 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+  "typeReason": "Q10(1003): 인수분해 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q10(1003): 인수분해 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "거듭제곱",
+        "src": "stem",
+        "quote": "$1003^8$을 $250$으로 나누었을 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나머지는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "치환",
+        "src": "solution",
+        "quote": "$x=1000$으로 두면 $1003^8=(x+3)^8$이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "큰 수의 밑에서 250의 배수 1000을 문자 x로 치환함"
+      },
+      {
+        "term": "나머지정리",
+        "src": "solution",
+        "quote": "$(x+3)^8 = xQ(x)+3^8$",
+        "evidenceType": "IMPLIED",
+        "justification": "다항식 나눗셈의 항등식 표현으로 나머지 항만 분리함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q10(1003): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

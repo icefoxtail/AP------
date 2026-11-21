@@ -1,0 +1,90 @@
+{
+  "capability": "plane",
+  "title": "원 O와 현 BC, 수선 OD 및 점 A",
+  "points": [
+    {
+      "id": "O",
+      "x": 0,
+      "y": 0,
+      "label": "O"
+    },
+    {
+      "id": "D",
+      "x": 0,
+      "y": -3,
+      "label": "D"
+    },
+    {
+      "id": "B",
+      "x": -4,
+      "y": -3,
+      "label": "B"
+    },
+    {
+      "id": "C",
+      "x": 4,
+      "y": -3,
+      "label": "C"
+    },
+    {
+      "id": "A",
+      "x": -15,
+      "y": -3,
+      "label": "A"
+    }
+  ],
+  "circles": [
+    {
+      "id": "k",
+      "center": "O",
+      "radius": 5
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAC",
+      "from": "A",
+      "to": "C"
+    },
+    {
+      "id": "sOD",
+      "from": "O",
+      "to": "D"
+    },
+    {
+      "id": "sOC",
+      "from": "O",
+      "to": "C"
+    }
+  ],
+  "rightAngles": [
+    {
+      "vertex": "D",
+      "p1": "O",
+      "p2": "C"
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sBD",
+          "sDC"
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "kind": "ON_CIRCLE",
+        "circle": "k",
+        "points": [
+          "B",
+          "C"
+        ]
+      }
+    ]
+  },
+  "caption": "반지름이 r인 원 O에서 현 BC에 내린 수선 OD와 연장선 위의 점 A"
+}

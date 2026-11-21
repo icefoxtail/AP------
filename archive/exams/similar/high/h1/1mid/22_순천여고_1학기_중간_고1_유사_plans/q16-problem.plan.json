@@ -1,0 +1,86 @@
+{
+  "capability": "plane",
+  "title": "반지름이 5인 원에 내접하는 직사각형",
+  "points": [
+    {
+      "id": "O",
+      "x": 0,
+      "y": 0,
+      "label": "O"
+    },
+    {
+      "id": "A",
+      "x": -4,
+      "y": 3,
+      "label": "A"
+    },
+    {
+      "id": "B",
+      "x": -4,
+      "y": -3,
+      "label": "B"
+    },
+    {
+      "id": "C",
+      "x": 4,
+      "y": -3,
+      "label": "C"
+    },
+    {
+      "id": "D",
+      "x": 4,
+      "y": 3,
+      "label": "D"
+    }
+  ],
+  "circles": [
+    {
+      "id": "k",
+      "center": "O",
+      "radius": 5
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAB",
+      "from": "A",
+      "to": "B"
+    },
+    {
+      "id": "sBC",
+      "from": "B",
+      "to": "C"
+    },
+    {
+      "id": "sCD",
+      "from": "C",
+      "to": "D"
+    },
+    {
+      "id": "sDA",
+      "from": "D",
+      "to": "A"
+    },
+    {
+      "id": "sAC",
+      "from": "A",
+      "to": "C",
+      "label": "10"
+    }
+  ],
+  "planeMarks": {
+    "facts": [
+      {
+        "kind": "ON_CIRCLE",
+        "circle": "k",
+        "points": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      }
+    ]
+  },
+  "caption": "반지름이 5인 원에 내접하는 둘레 28인 직사각형 ABCD"
+}

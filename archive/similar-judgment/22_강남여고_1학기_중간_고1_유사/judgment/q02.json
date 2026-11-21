@@ -1,0 +1,63 @@
+{
+  "qid": 2,
+  "itemFingerprint": "251c9dedaea8216a",
+  "solveSteps": [
+    "각 등식의 우변을 전개하여 좌변과 비교한다.",
+    "$$ \\begin{aligned} (a+b)(a-b) &= a^2-b^2 \\ (a-b)^3 &= a^3-3a^2b+3ab^2-b^3 \\ (a-2)(a^2+2a+4) &= a^3-8 \\ (a-b+c)^2 &= a^2+b^2+c^2-2ab-2bc+2ca \\end{aligned} $$ 한편 ⑤의 우변을 전개하면 $$ \\begin{aligned} (a^2+ab+b^2)(a^2+ab-b^2) &= (a^2+ab)^2-b^4 \\ &= a^4+2a^3b+a^2b^2-b^4 \\end{aligned} $$ 이므로 $a^4+a^2b^2+b^4$과 같지 않다.",
+    "(올바른 인수분해는 $(a^2+ab+b^2)(a^2-ab+b^2)$이다.) 따라서 옳지 않은 것은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "unitEvidence": "다음 인수분해 공식 중 옳지 않은 것을 고르면?",
+  "rpmRecordId": "H1-RPM-013",
+  "rpmReason": "Q2(ab): 인수분해 단원의 RPM H1-RPM-013 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+  "typeReason": "Q2(ab): 인수분해 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q2(ab): 인수분해 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "인수분해",
+        "src": "stem",
+        "quote": "인수분해 공식"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수분해",
+        "src": "stem",
+        "quote": "다음 인수분해 공식 중"
+      }
+    ],
+    "method": [
+      {
+        "term": "전개",
+        "src": "solution",
+        "quote": "우변을 전개하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q2(ab): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "qid": 2,
+  "itemFingerprint": "1515f42e3c891038",
+  "solveSteps": [
+    "$a=2023, b=\\sqrt{2024}$라 하면 곱셈 공식에 의해 $$ (a+b)^3+(a-b)^3 = 2a^3+6ab^2 = 2a(a^2+3b^2) $$ 따라서 $A = 2(a^2+3b^2) = 2(2023^2+3\\cdot 2024)$이다.",
+    "$2023^2$의 일의 자리 숫자는 $3^2=9$이고, $3\\cdot 2024$의 일의 자리 숫자는 $3\\cdot 4=12$에서 $2$이므로 $2023^2+3\\cdot 2024$의 일의 자리 숫자는 $9+2=11$에서 $1$이다.",
+    "그러므로 $A$의 일의 자리 숫자는 $2\\times 1=2$이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+  "unitEvidence": "식 $\\dfrac{(2023+\\sqrt{2024})^3",
+  "rpmRecordId": "H1-RPM-001",
+  "rpmReason": "Q2(2023): 다항식의 기본 연산 단원의 RPM H1-RPM-001 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+  "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+  "typeReason": "Q2(2023): 다항식의 기본 연산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q2(2023): 다항식의 기본 연산 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "치환",
+        "src": "solution",
+        "quote": "a=2023, b=\\sqrt{2024}$라 하면"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "자연수 $A$의 일의 자리의 수"
+      }
+    ],
+    "method": [
+      {
+        "term": "곱셈공식",
+        "src": "solution",
+        "quote": "곱셈 공식에 의해",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q2(2023): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

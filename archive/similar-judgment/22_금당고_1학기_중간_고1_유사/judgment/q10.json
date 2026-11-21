@@ -1,0 +1,74 @@
+{
+  "qid": 10,
+  "itemFingerprint": "2264735b0d115108",
+  "solveSteps": [
+    "이차함수 $y=x^2+6ax+b$의 그래프가 $x$축에 접하므로 방정식 $x^2+6ax+b=0$이 중근을 가진다.",
+    "$$ \\frac{D_1}{4} = (3a)^2-b = 0 \\implies b = 9a^2 $$ 또한 이 이차함수의 그래프가 직선 $y=3x$와 적어도 한 점에서 만나려면 방정식 $$ x^2+6ax+9a^2 = 3x \\implies x^2+(6a-3)x+9a^2 = 0 $$ 이 실근을 가져야 하므로 판별식 $D_2\\ge 0$이어야 한다.",
+    "$$ \\begin{aligned} D_2 &= (6a-3)^2-4\\cdot 1\\cdot 9a^2 \\ &= 36a^2-36a+9-36a^2 \\ &= -36a+9 \\ge 0 \\end{aligned} $$ 따라서 $36a\\le 9$이므로 $a\\le\\dfrac{1}{4}$이고, 실수 $a$의 최댓값은 $\\dfrac{1}{4}$이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "이차함수 $y=x^2+6ax+b$의 그래프는 $x$축에",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q10(ax): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+  "typeReason": "Q10(ax): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q10(ax): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=x^2+6ax+b$"
+      },
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직선 $y=3x$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "실수 $a$의 최댓값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D_2\\ge 0$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실근",
+        "src": "solution",
+        "quote": "실근을 가져야 하므로"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q10(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

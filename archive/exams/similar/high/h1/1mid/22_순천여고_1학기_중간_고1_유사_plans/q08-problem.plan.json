@@ -1,0 +1,45 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -4,
+      4,
+      -2,
+      14
+    ],
+    "pieces": [
+      {
+        "domain": [
+          -4,
+          4
+        ],
+        "coefficients": [
+          "5",
+          "-4+2*sqrt(3)",
+          "1"
+        ]
+      }
+    ],
+    "referenceLines": [
+      {
+        "slope": "-4",
+        "intercept": "2",
+        "label": "y=-4x+2"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": "-sqrt(3)",
+        "y": "2+4*sqrt(3)",
+        "label": "접점"
+      }
+    ]
+  },
+  "caption": "k=-4+2sqrt(3)일 때 이차함수 y=x^2+kx+5와 직선 y=-4x+2가 접하는 모습"
+}

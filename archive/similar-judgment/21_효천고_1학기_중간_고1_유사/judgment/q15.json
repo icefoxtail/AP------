@@ -1,0 +1,71 @@
+{
+  "qid": 15,
+  "itemFingerprint": "2a837de05bc1fbb4",
+  "solveSteps": [
+    "$x^2-x-1$로 나눈 나머지를 구하기 위해 $x^2 \\equiv x+1$로 차수를 낮추어 차례로 계산하면 $$ \\begin{aligned} x^2 &\\equiv x+1 \\ x^3 &\\equiv x(x+1) = x^2+x \\equiv 2x+1 \\ x^4 &\\equiv x(2x+1) = 2x^2+x \\equiv 3x+2 \\ x^5 &\\equiv x(3x+2) = 3x^2+2x \\equiv 5x+3 \\ x^6 &\\equiv x(5x+3) = 5x^2+3x \\equiv 8x+5 \\ x^7 &\\equiv x(8x+5) = 8x^2+5x \\equiv 13x+8 \\end{aligned} $$ 이다.",
+    "따라서 $ax^7+bx^6+1$을 $x^2-x-1$로 나눈 나머지는 $$ a(13x+8)+b(8x+5)+1 = (13a+8b)x+(8a+5b+1) $$ 이고, 나누어떨어지려면 $$ 13a+8b=0, \\qquad 8a+5b+1=0 $$ 이어야 한다.",
+    "첫째 식에 $5$, 둘째 식에 $8$을 곱하면 $65a+40b=0$, $64a+40b+8=0$이므로 두 식을 빼면 $a-8=0$, 즉 $a=8$이다.",
+    "(이때 $b=-13$)."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "unitEvidence": "$x$에 대한 다항식 $ax^7+bx^6+1$이 다항식",
+  "rpmRecordId": "H1-RPM-009",
+  "rpmReason": "Q15(ax): 나머지정리와 인수정리 단원의 RPM H1-RPM-009 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+  "typeReason": "Q15(ax): 나머지정리와 인수정리 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(ax): 나머지정리와 인수정리 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $ax^7+bx^6+1$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "정수 $a$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지정리",
+        "src": "solution",
+        "quote": "x^2 \\equiv x+1$로 차수를 낮추어",
+        "evidenceType": "IMPLIED",
+        "justification": "x^2=x+1 관계를 반복 적용해 나눗셈의 나머지를 일차식으로 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "정수 $a$의 값은?"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q15(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

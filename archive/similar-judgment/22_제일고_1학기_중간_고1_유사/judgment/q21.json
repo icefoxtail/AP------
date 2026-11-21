@@ -1,0 +1,63 @@
+{
+  "qid": 21,
+  "itemFingerprint": "53acc3945439f931",
+  "solveSteps": [
+    "$i^4=1$이므로 연속한 네 항씩 묶어 계산하면 $$ \\frac{4m+1}{i^{4m+1}}+\\frac{4m+2}{i^{4m+2}}+\\frac{4m+3}{i^{4m+3}}+\\frac{4m+4}{i^{4m+4}} = -(4m+1)i-(4m+2)+(4m+3)i+(4m+4) = 2+2i $$ $101=4\\cdot 25+1$이므로 처음 $100$개의 항은 $25$묶음의 합 $25(2+2i)=50+50i$이다.",
+    "마지막 항은 $\\dfrac{101}{i^{101}}=\\dfrac{101}{i}=-101i$이므로 전체 합은 $$ (50+50i)-101i = 50-51i $$ 따라서 $a=50$, $b=-51$이므로 $a-b=50-(-51)=101$이다."
+  ],
+  "solvedAnswer": "$101$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "두 실수 $a$, $b$에 대하여 $\\dfrac{1}{",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q21(101): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+  "typeReason": "Q21(101): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q21(101): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "합",
+        "src": "solution",
+        "quote": "전체 합은"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "두 실수 $a$, $b$에 대하여"
+      }
+    ],
+    "method": [
+      {
+        "term": "복소수",
+        "src": "solution",
+        "quote": "연속한 네 항씩 묶어",
+        "evidenceType": "IMPLIED",
+        "justification": "i^4=1의 주기성을 이용해 연속 4항의 합 2+2i를 반복 합산함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q21(101): 발문과 해설의 풀이 과정을 점검하여 정답 $101$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

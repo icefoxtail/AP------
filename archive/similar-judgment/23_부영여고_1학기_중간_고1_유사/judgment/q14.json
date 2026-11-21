@@ -1,0 +1,89 @@
+{
+  "qid": 14,
+  "itemFingerprint": "4608b40360f29273",
+  "solveSteps": [
+    "$f(x)=x^2-6x+4k-2$라 하자.",
+    "방정식 $f(x)=0$의 두 근이 모두 $1$보다 크려면 다음 세 조건을 모두 만족해야 한다.",
+    "(i) 판별식: $\\frac{D}{4} = (-3)^2-(4k-2) = 11-4k \\ge 0 \\implies k \\le \\frac{11}{4}$ (ii) 축의 위치: $f(x)=(x-3)^2+4k-11$의 축은 $x=3$이므로 $3 > 1$을 항상 만족한다.",
+    "(iii) 경계에서의 함숫값: $f(1)=1-6+4k-2=4k-7 > 0 \\implies k > \\frac{7}{4}$ (i), (ii), (iii)의 공통 범위는 $\\frac{7}{4} < k \\le \\frac{11}{4}$이다.",
+    "따라서 $a=\\frac{7}{4}$, $b=\\frac{11}{4}$이므로 $a+b=\\frac{7}{4}+\\frac{11}{4}=\\frac{18}{4}=\\frac{9}{2}$이다.",
+    "그러므로 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "이차방정식 $x^2-6x+4k-2=0$의 두 근이 모두",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q14(11): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+  "typeReason": "Q14(11): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(11): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2-6x+4k-2=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "범위",
+        "src": "stem",
+        "quote": "실수 $k$의 값의 범위가 $a < k \\le b$일 때"
+      },
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "$a+b$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "근의분리",
+        "src": "solution",
+        "quote": "두 근이 모두 $1$보다 크려면 다음 세 조건을 모두 만족해야 한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "이차함수의 그래프를 이용해 근이 특정 수보다 클 조건을 판정함"
+      },
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식: $\\frac{D}{4} = (-3)^2-(4k-2) = 11-4k \\ge 0",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실근",
+        "src": "solution",
+        "quote": "두 근이 모두 $1$보다 크려면"
+      },
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 $k$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q14(11): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

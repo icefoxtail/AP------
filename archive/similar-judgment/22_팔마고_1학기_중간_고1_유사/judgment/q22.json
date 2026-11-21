@@ -1,0 +1,68 @@
+{
+  "qid": 22,
+  "itemFingerprint": "4d9ff17517112f23",
+  "solveSteps": [
+    "이차함수와 직선의 교점의 $x$좌표 $\\alpha, \\beta$는 이차방정식 $$ x^2+2mx-7 = 4x-m^2 \\iff x^2+(2m-4)x+(m^2-7) = 0 $$ 의 서로 다른 두 실근이다.",
+    "서로 다른 두 실근을 가질 조건은 판별식 $D>0$이므로 $$ \\frac{D}{4} = (m-2)^2-(m^2-7) = -4m+11 > 0 \\implies m < \\frac{11}{4} $$ 근과 계수의 관계에 의하여 $\\alpha+\\beta=4-2m$, $\\alpha\\beta=m^2-7$이므로 $$ \\begin{aligned} (\\alpha-1)(\\beta-1) &= \\alpha\\beta-(\\alpha+\\beta)+1 \\ &= (m^2-7)-(4-2m)+1 \\ &= m^2+2m-10 \\ &= (m+1)^2-11 \\end{aligned} $$ 꼭짓점 $m=-1$이 범위 $m<\\dfrac{11}{4}$에 포함되므로 구하는 최솟값은 $-11$이다."
+  ],
+  "solvedAnswer": "$-11$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "[서답형5 (서술형3)] 이차함수 $y=x^2+2mx-",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q22(mx): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+  "typeReason": "Q22(mx): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q22(mx): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=x^2+2mx-7$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "최솟값을 구하시오"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D>0$이므로"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q22(mx): 발문과 해설의 풀이 과정을 점검하여 정답 $-11$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

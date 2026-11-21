@@ -1,0 +1,73 @@
+{
+  "qid": 20,
+  "itemFingerprint": "99db27df8c640736",
+  "solveSteps": [
+    "주어진 삼차식을 인수분해하면 $x^3-2x^2-2x-3=(x-3)(x^2+x+1)=0$이므로 허근 $w$는 $w^2+w+1=0$, $w^3=1$을 만족한다. (2024)",
+    "(1) 항의 개수는 $2025$개이고 $2025=3\\times 675$이므로 연속한 세 항씩 묶으면 모두 $1+w+w^2=0$이 되어 전체 합은 $0$이다.",
+    "(2) $w$의 켤레복소수 $\\overline{w}=w^2$이므로 조건 (가)는 $w^2f(w)=2$이다.",
+    "양변에 $w$를 곱하면 $w^3f(w)=f(w)=2w$이다.",
+    "$f(x)=Ax^2+Bx+C$ ($A, B, C$는 실수, $A\\ne 0$)라 두면 조건 (나)에서 $C=2$이다.",
+    "$Aw^2+Bw+2=2w$에 $w^2=-w-1$을 대입하면 $$ A(-w-1)+(B-2)w+2 = (B-A-2)w+(2-A) = 0 $$ $w$가 허수이고 $A, B$가 실수이므로 $2-A=0$, $B-A-2=0$에서 $A=2$, $B=4$이다.",
+    "따라서 $f(x)=2x^2+4x+2$이다."
+  ],
+  "solvedAnswer": "(1) $0$, (2) $f(x)=2x^2+4x+2$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+  "unitEvidence": "삼차방정식 $x^3-2x^2-2x-3=0$의 한 허근을",
+  "rpmRecordId": "H1-RPM-039",
+  "rpmReason": "Q20(2024): 고차방정식의 풀이 단원의 RPM H1-RPM-039 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+  "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+  "typeReason": "Q20(2024): 고차방정식의 풀이 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(2024): 고차방정식의 풀이 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼차방정식",
+        "src": "stem",
+        "quote": "삼차방정식 $x^3-2x^2-2x-3=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차식",
+        "src": "stem",
+        "quote": "이차식 $f(x)$가"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "삼차식을 인수분해하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "허근",
+        "src": "stem",
+        "quote": "한 허근을 $w$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q20(2024): 발문과 해설의 풀이 과정을 점검하여 정답 (1) $0$, (2) $f(x)=2x^2+4x+2$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

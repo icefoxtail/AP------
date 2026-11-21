@@ -1,0 +1,69 @@
+{
+  "qid": 16,
+  "itemFingerprint": "e8abe599e9407c5a",
+  "solveSteps": [
+    "원에 내접하는 직사각형의 대각선의 길이는 원의 지름 $10$과 같다.",
+    "직사각형의 가로와 세로의 길이를 $a, b$라 하면 둘레가 $28$이므로 $2(a+b)=28 \\implies a+b=14$이다.",
+    "피타고라스 정리에 의해 $a^2+b^2=10^2=100$이므로 $$ (a+b)^2 = a^2+b^2+2ab \\implies 196 = 100+2ab \\implies ab = 48 $$ 따라서 $a, b$는 $t^2-14t+48=(t-6)(t-8)=0$의 두 근 $6, 8$이므로 긴 변의 길이는 $8$이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+  "unitEvidence": "오른쪽 그림과 같이 반지름의 길이가 $5$인 원에 둘레",
+  "rpmRecordId": "H1-RPM-001",
+  "rpmReason": "Q16(28): 다항식의 기본 연산 단원의 RPM H1-RPM-001 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+  "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+  "typeReason": "Q16(28): 다항식의 기본 연산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q16(28): 다항식의 기본 연산 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "원",
+        "src": "stem",
+        "quote": "반지름의 길이가 $5$인 원에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형의 긴 변의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "피타고라스정리",
+        "src": "solution",
+        "quote": "피타고라스 정리에 의해",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "반지름의 길이가 $5$인"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q16(28): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

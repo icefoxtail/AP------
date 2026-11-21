@@ -1,0 +1,894 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/high/h1/1mid/22_제일고_1학기_중간_고1_유사.js",
+  "sourceGitBlobSha": "c6bf6782cdba4bb973e9274a995db6907fe65cf3",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "similar-md-importer",
+    "at": "2026-11-19"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "일체형 마크다운 변환 산출물(UNREVIEWED)"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $A$를 구한"
+          }
+        ],
+        "method": [
+          {
+            "term": "다항식의나눗셈",
+            "src": "solution",
+            "quote": "나눗셈 관계식에 의하여",
+            "evidenceType": "IMPLIED",
+            "justification": "나눗셈 항등식 A=BQ+R을 이용해 피제수 다항식 A를 복원함"
+          }
+        ],
+        "given": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "나머지가 $2x-3$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "나눗셈 관계식 A=BQ+R을 전개하여 다항식 A를 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "인수",
+            "src": "stem",
+            "quote": "인수인 것을"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수정리",
+            "src": "solution",
+            "quote": "$P(-1)=1+1-4+1+1=0$이므로 $x+1$을 인수",
+            "evidenceType": "IMPLIED",
+            "justification": "x=-1을 대입해 0이 되는 일차인수 (x+1)을 찾아 나눗셈을 반복함"
+          }
+        ],
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $x^4-x^3-4x^2-x+1$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "인수정리로 (x+1)^2을 분리하여 이차인수 x^2-3x+1을 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "몫과 나머지를 구하는 과정"
+          }
+        ],
+        "method": [
+          {
+            "term": "다항식의나눗셈",
+            "src": "stem",
+            "quote": "조립제법을 이용하여",
+            "evidenceType": "IMPLIED",
+            "justification": "조립제법 연산과 제수 상수배 보정으로 몫과 나머지를 구함"
+          }
+        ],
+        "given": [
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "계수가 $5$이므로"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "조립제법 빈칸을 채우고 2x+1 나눗셈의 실제 몫과 나머지를 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "우변을 전개하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "우변을 전개하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "다항식",
+            "src": "solution",
+            "quote": "a^3+6a^2b+6ab^2+b^3"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "각 공식의 우변을 전개해 좌변과 비교하여 틀린 공식을 찾음"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "(x-3y+2)(x+2y+5)"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "내림차순으로 정리하면",
+            "evidenceType": "IMPLIED",
+            "justification": "x에 대한 내림차순 정리 후 상수항을 인수분해하여 X자 인수분해를 수행함"
+          }
+        ],
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "x^2-xy-6y^2+7x-11y+10"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "x 기준 내림차순 정리 후 대각선 인수분해로 일차 인수를 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "허근",
+            "src": "stem",
+            "quote": "한 허근을 $u$라고 할 때"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의해",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "방정식 $x^3=-1$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "켤레복소수",
+            "src": "stem",
+            "quote": "켤레복소수이다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "x^3=-1 인수분해와 근과 계수의 관계로 u의 성질 참거짓을 판별함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "실근",
+            "src": "stem",
+            "quote": "서로 다른 실근의 개수를 $f(a)$"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "삼차식을 인수분해하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "삼차방정식",
+            "src": "stem",
+            "quote": "삼차방정식 $x^3-ax^2+(a+2)x-a^2-2a=0$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "삼차식을 (x-a)(x^2+a+2)=0으로 인수분해해 a별 실근 개수를 셈"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "두 이차다항식 $P(x)$, $Q(x)$"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수정리",
+            "src": "solution",
+            "quote": "$P(2)=P(-2)=0$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "-{P(x)}^2이 x^2-4로 나누어떨어지는 조건에서 P(±2)=0을 도출함"
+          }
+        ],
+        "given": [
+          {
+            "term": "항등식",
+            "src": "stem",
+            "quote": "모든 실수 $x$에 대하여 $P(x)+Q(x)=0$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "Q=-P 대입 후 인수정리로 P(x)=c(x^2-4)를 세워 Q(3)을 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "나누었을 때의 나머지로"
+          }
+        ],
+        "method": [
+          {
+            "term": "수치대입법",
+            "src": "solution",
+            "quote": "양변에 $x=-1$을 대입하면",
+            "evidenceType": "IMPLIED",
+            "justification": "나눗셈 항등식에 x=1, -1을 대입하여 몫의 함숫값 Q(-1)을 구함"
+          }
+        ],
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $1+x+2x^2+3x^3+\\cdots+12x^{12}$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "나머지정리",
+            "src": "solution",
+            "quote": "S(x) = (x-1)Q(x)+S(1)"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "나눗셈 항등식에 x=1, -1을 대입해 몫의 나머지 Q(-1)을 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "실수부분",
+            "src": "solution",
+            "quote": "실수부분은 $\\dfrac{3}{10}$"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "(\\sqrt{3}i)(2\\sqrt{3}i)=6i^2=-6",
+            "evidenceType": "IMPLIED",
+            "justification": "음수의 제곱근을 허수단위 i로 바꾸어 곱셈을 계산함"
+          }
+        ],
+        "given": [
+          {
+            "term": "실수부분",
+            "src": "solution",
+            "quote": "실수부분은 $\\dfrac{3}{10}$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "음수의 제곱근과 복소수 기본 개념의 정오를 판별함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "다항식",
+            "src": "solution",
+            "quote": "x^2-x+1=0"
+          }
+        ],
+        "method": [
+          {
+            "term": "켤레복소수",
+            "src": "solution",
+            "quote": "(1+\\sqrt{3}i)(1-\\sqrt{3}i)",
+            "evidenceType": "IMPLIED",
+            "justification": "분모의 켤레복소수를 곱해 실수화한 뒤 이차방정식으로 차수를 낮춤"
+          }
+        ],
+        "given": [
+          {
+            "term": "허수",
+            "src": "stem",
+            "quote": "i=\\sqrt{-1}"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "분모 실수화 후 x^2-x+1=0을 유도해 삼차식의 차수를 낮추어 계산함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "항상 실수인 것만을"
+          }
+        ],
+        "method": [
+          {
+            "term": "켤레복소수",
+            "src": "stem",
+            "quote": "\\overline{z}$는 $z$의 켤레복소수",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "복소수",
+            "src": "stem",
+            "quote": "$0$이 아닌 복소수 $z$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "z=a+bi와 켤레복소수를 대입해 허수부가 소거되는 식을 판별함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "두 근의 곱은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의해",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $f(2x+1)=0$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "f(2x+1)을 전개하고 근과 계수의 관계로 두 근의 곱을 계산함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "인수분해",
+            "src": "stem",
+            "quote": "복소수의 범위에서 인수분해하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "근의공식",
+            "src": "solution",
+            "quote": "근의 공식으로 구하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "이차식 $2x^2+6x+5$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "복소수",
+            "src": "stem",
+            "quote": "복소수의 범위에서"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "근의 공식으로 두 허근을 구하고 최고차항 계수 2를 붙여 인수분해함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "대칭식",
+            "src": "solution",
+            "quote": "4-(\\alpha+\\beta)"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2-2x+5=0$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "방정식 대입으로 분모 차수를 일차로 낮춘 뒤 근과 계수의 관계로 통분 계산함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "값의 합을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $D=16$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2-(2k+4)x+2k+3=0$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의하여"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "두 근의 차 제곱이 판별식과 같음을 이용해 k의 이차방정식을 푼다"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "최댓값이 $4$일 때"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "-(x-2a)^2+4a^2+2a-8",
+            "evidenceType": "IMPLIED",
+            "justification": "대칭축 x=2a를 구해 구간과의 위치 관계를 분류하기 위해 완전제곱식으로 변형함"
+          }
+        ],
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $f(x)=-x^2+4ax+2a-8$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "꼭짓점의 $x$좌표는 $2a$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "대칭축 2a와 구간 [1,3]의 위치 관계 3가지로 나누어 가능한 a를 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "서로 다른 두 점에서 만나므로"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $D_1=0$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $f(x)=-x^2+2x+3$"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=ax+b$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실근",
+            "src": "solution",
+            "quote": "D_2 = (6-a)^2-20 > 0"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "f와의 접선 조건 D_1=0과 g와의 교점 조건 D_2>0을 연립해 a, b를 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "삼차방정식",
+            "src": "stem",
+            "quote": "삼차방정식을 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "삼차방정식",
+            "src": "stem",
+            "quote": "삼차방정식 $x^3-2x^2+3x-1=0$",
+            "evidenceType": "IMPLIED",
+            "justification": "근의 역수 변환 t=1/x를 방정식에 대입해 역수근 방정식을 구함"
+          }
+        ],
+        "given": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "$x^3$의 계수가 $1$인"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "t=1/x 변환 대입으로 역수근을 갖는 삼차방정식을 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "이차식",
+            "src": "stem",
+            "quote": "이차식 $f(x)$가"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "삼차식을 인수분해하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "삼차방정식",
+            "src": "stem",
+            "quote": "삼차방정식 $x^3-2x^2-2x-3=0$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "허근",
+            "src": "stem",
+            "quote": "한 허근을 $w$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "삼차식 인수분해로 w^3=1을 얻고 켤레변환과 복소수 상등으로 f(x)를 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "두 실수 $a$, $b$에 대하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "복소수",
+            "src": "solution",
+            "quote": "연속한 네 항씩 묶어",
+            "evidenceType": "IMPLIED",
+            "justification": "i^4=1의 주기성을 이용해 연속 4항의 합 2+2i를 반복 합산함"
+          }
+        ],
+        "given": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "전체 합은"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "4항 묶음 합이 항상 2+2i임을 이용해 101항까지의 합을 계산함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "교점",
+            "src": "stem",
+            "quote": "$x$축의 교점의 좌표를"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $D/4=4+7=11>0$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=f(x)$가"
+          }
+        ],
+        "condition": [
+          {
+            "term": "축",
+            "src": "solution",
+            "quote": "대칭축이 $x=3$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "대칭축과 구간 최대·최소로 두 후보를 세우고 접선 판별식으로 유일한 f(x)를 확정함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ]
+}

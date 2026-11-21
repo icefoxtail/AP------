@@ -1,0 +1,68 @@
+{
+  "qid": 13,
+  "itemFingerprint": "e49b2da719836a0f",
+  "solveSteps": [
+    "조건 (가)에서 $g(x)={f(x)}^2$이고 조건 (나)의 우변이 사차식이므로 $f(x)$는 최고차항의 계수가 $1$인 이차식이다.",
+    "$f(x)=x^2+px+q$라 두면 $$ g(x)+(x+1)f(x) = f(x){f(x)+x+1} = (x^2+px+q){x^2+(p+1)x+(q+1)} $$ 우변과 전개식의 $x^3$항, $x^2$항의 계수를 비교하면 $$ \\begin{aligned} p+(p+1) &= -5 \\implies 2p=-6 \\implies p=-3 \\ p(p+1)+q+(q+1) &= 7 \\implies (-3)(-2)+2q+1=7 \\implies 2q=0 \\implies q=0 \\end{aligned} $$ (일차항 계수 $p(q+1)+q(p+1)=-3$과 상수항 $q(q+1)=0$도 모두 일치한다.) 따라서 $f(x)=x^2-3x$, $g(x)=(x^2-3x)^2$이므로 $g(x)$를 $x-4$로 나눈 나머지는 $$ g(4) = (4^2-3\\cdot 4)^2 = 4^2 = 16 $$ 이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-IDENTITY",
+  "unitEvidence": "최고차항의 계수가 $1$인 두 다항식 $f(x)$, $",
+  "rpmRecordId": "H1-RPM-007",
+  "rpmReason": "Q13(16): 항등식과 계수비교 단원의 RPM H1-RPM-007 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+  "typeReason": "Q13(16): 항등식과 계수비교 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q13(16): 항등식과 계수비교 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "두 다항식 $f(x)$, $g(x)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나눈 나머지는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "계수비교",
+        "src": "solution",
+        "quote": "계수를 비교하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최고차항",
+        "src": "stem",
+        "quote": "최고차항의 계수가 $1$인"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q13(16): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

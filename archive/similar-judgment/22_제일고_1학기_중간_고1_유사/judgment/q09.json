@@ -1,0 +1,69 @@
+{
+  "qid": 9,
+  "itemFingerprint": "5de515d4c48dcfe1",
+  "solveSteps": [
+    "$S(x)=1+x+2x^2+3x^3+\\cdots+12x^{12}$이라 두면 나눗셈 항등식은 $$ S(x) = (x-1)Q(x)+S(1) $$ 여기서 $S(1)=1+(1+2+3+\\cdots+12)=1+78=79$이다.",
+    "$Q(x)$를 $x+1$로 나눈 나머지는 $Q(-1)$이므로 양변에 $x=-1$을 대입하면 $$ S(-1) = 1+(-1+2)+(-3+4)+\\cdots+(-11+12) = 1+6\\cdot 1 = 7 $$ 따라서 $7=(-2)Q(-1)+79 \\implies 2Q(-1)=72 \\implies Q(-1)=36$이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-IDENTITY",
+  "unitEvidence": "다항식 $1+x+2x^2+3x^3+\\cdots+12x^",
+  "rpmRecordId": "H1-RPM-007",
+  "rpmReason": "Q9(12): 항등식과 계수비교 단원의 RPM H1-RPM-007 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+  "typeReason": "Q9(12): 항등식과 계수비교 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q9(12): 항등식과 계수비교 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $1+x+2x^2+3x^3+\\cdots+12x^{12}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나누었을 때의 나머지로"
+      }
+    ],
+    "method": [
+      {
+        "term": "수치대입법",
+        "src": "solution",
+        "quote": "양변에 $x=-1$을 대입하면",
+        "evidenceType": "IMPLIED",
+        "justification": "나눗셈 항등식에 x=1, -1을 대입하여 몫의 함숫값 Q(-1)을 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "나머지정리",
+        "src": "solution",
+        "quote": "S(x) = (x-1)Q(x)+S(1)"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q9(12): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "qid": 15,
+  "itemFingerprint": "4e1665cc52e68d41",
+  "solveSteps": [
+    "점 $P(a, b)$가 직선 $y=-2x+8$ 위의 점이므로 $b=-2a+8$이다. (24)",
+    "또한 점 $P$가 $A(0, 8)$에서 $B(4, 0)$까지 움직이므로 $a$의 범위는 $0 \\le a \\le 4$이다.",
+    "$b=-2a+8$을 주어진 식에 대입하면 $\\begin{aligned} 3a^2+6b &= 3a^2+6(-2a+8) \\ &= 3a^2-12a+48 \\ &= 3(a-2)^2+36 \\end{aligned}$ 꼭짓점의 $a$좌표 $a=2$가 구간 $0 \\le a \\le 4$ 안에 있으므로, $a=2$일 때 최솟값 $36$을 갖는다.",
+    "따라서 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "점 $P(a, b)$가 점 $A(0, 8)$에서 점 $",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q15(24): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+  "typeReason": "Q15(24): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(24): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "점",
+        "src": "stem",
+        "quote": "점 $P(a, b)$"
+      },
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직선 $y=-2x+8$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "$3a^2+6b$의 최솟값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$b=-2a+8$을 주어진 식에 대입하면",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "3(a-2)^2+36",
+        "evidenceType": "IMPLIED",
+        "justification": "이차식을 표준형으로 변형하여 꼭짓점에서 최솟값을 찾음"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정의역제한",
+        "src": "solution",
+        "quote": "범위는 $0 \\le a \\le 4$이다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q15(24): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

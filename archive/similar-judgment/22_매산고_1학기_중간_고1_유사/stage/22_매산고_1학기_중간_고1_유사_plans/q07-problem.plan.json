@@ -1,0 +1,45 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -6,
+      20
+    ],
+    "pieces": [
+      {
+        "domain": [
+          -1,
+          5
+        ],
+        "coefficients": [
+          "5",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "referenceLines": [
+      {
+        "slope": "4",
+        "intercept": "-5",
+        "label": "y=4x-5 (m=7)"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "4",
+        "label": "꼭짓점(1, 4)"
+      }
+    ]
+  },
+  "caption": "m=7일 때 만나지 않는 이차함수 y=x^2-2x+5와 직선 y=4x-5"
+}

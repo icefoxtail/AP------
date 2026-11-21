@@ -1,0 +1,70 @@
+{
+  "qid": 18,
+  "itemFingerprint": "2ab3439cb92aa9ab",
+  "solveSteps": [
+    "$\\overline{\\mathrm{PS}}\\parallel\\overline{\\mathrm{QR}}\\parallel\\overline{\\mathrm{BC}}$이므로 $\\triangle\\mathrm{APS}$와 $\\triangle\\mathrm{AQR}$는 각각 $\\triangle\\mathrm{ABC}$와 닮음이다.",
+    "$\\dfrac{\\overline{\\mathrm{BP}}}{\\overline{\\mathrm{BA}}}=t$ ($0\\le t\\le 1$)라 두면 $\\dfrac{\\overline{\\mathrm{AP}}}{\\overline{\\mathrm{AB}}}=1-t$이고, 점 $\\mathrm{Q}$가 선분 $\\mathrm{BP}$의 중점이므로 $\\dfrac{\\overline{\\mathrm{AQ}}}{\\overline{\\mathrm{AB}}}=1-\\dfrac{t}{2}$이다.",
+    "닮은 두 도형의 넓이의 비는 닮음비의 제곱과 같으므로 $$ \\triangle\\mathrm{AQR} = 24\\left(1-\\frac{t}{2}\\right)^2, \\qquad \\triangle\\mathrm{APS} = 24(1-t)^2 $$ 사각형 $\\mathrm{PQRS}$의 넓이 $S(t)$는 두 삼각형 넓이의 차와 같으므로 $$ \\begin{aligned} S(t) &= 24\\left(1-\\frac{t}{2}\\right)^2 - 24(1-t)^2 \\ &= 24\\left(1-t+\\frac{t^2}{4}-1+2t-t^2\\right) \\ &= 24\\left(t-\\frac{3}{4}t^2\\right) = -18t^2+24t \\ &= -18\\left(t-\\frac{2}{3}\\right)^2+8 \\end{aligned} $$ $t=\\dfrac{2}{3}$은 $0\\le t\\le 1$에 포함되므로 사각형 $\\mathrm{PQRS}$의 넓이의 최댓값은 $8$이다."
+  ],
+  "solvedAnswer": "$8$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "그림과 같이 $\\triangle\\mathrm{ABC}$",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q18(ABC): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+  "typeReason": "Q18(ABC): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(ABC): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "$\\triangle\\mathrm{ABC}$의 넓이가 $24$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "넓이의 최댓값을 구하시오"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "-18\\left(t-\\frac{2}{3}\\right)^2+8",
+        "evidenceType": "IMPLIED",
+        "justification": "넓이 이차함수를 완전제곱식으로 변형하여 최댓값을 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "사각형 $\\mathrm{PQRS}$의 넓이"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q18(ABC): 발문과 해설의 풀이 과정을 점검하여 정답 $8$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

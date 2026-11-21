@@ -1,0 +1,63 @@
+{
+  "qid": 10,
+  "itemFingerprint": "c0e06df5622f5c39",
+  "solveSteps": [
+    "$\\dfrac{1}{i}=-i, \\dfrac{1}{i^2}=-1, \\dfrac{1}{i^3}=i, \\dfrac{1}{i^4}=1$이므로 연속한 네 항의 합은 $$ \\frac{4k+1}{i}+\\frac{4k+2}{i^2}+\\frac{4k+3}{i^3}+\\frac{4k+4}{i^4} = -(4k+1)i-(4k+2)+(4k+3)i+(4k+4) = 2+2i $$ 로 항상 일정하다. (2024)",
+    "$2025=4\\times 506+1$이므로 $$ 506(2+2i)+\\frac{2025}{i^{2025}} = (1012+1012i)-2025i = 1012-1013i $$ 따라서 $a=1012, b=-1013$이므로 $a+b=1012+(-1013)=-1$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "실수 $a, b$에 대하여 $\\dfrac{1}{i}+\\",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q10(2024): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+  "typeReason": "Q10(2024): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q10(2024): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "합",
+        "src": "solution",
+        "quote": "연속한 네 항의 합은"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 $a, b$에 대하여"
+      }
+    ],
+    "method": [
+      {
+        "term": "복소수",
+        "src": "solution",
+        "quote": "연속한 네 항의 합은",
+        "evidenceType": "IMPLIED",
+        "justification": "i^4=1 주기성을 이용해 연속 4항의 합이 항상 2+2i임을 이용함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q10(2024): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

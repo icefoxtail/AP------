@@ -1,0 +1,69 @@
+{
+  "qid": 9,
+  "itemFingerprint": "e4e6def1bfaa4ebc",
+  "solveSteps": [
+    "두 그래프가 만나는 점의 $x$좌표는 이차방정식 $$ x^2-5x+3 = -x+k \\iff x^2-4x+(3-k) = 0 $$ 의 실근과 같다. (y)",
+    "한 점에서 만나려면 이 이차방정식이 중근을 가져야 하므로 판별식 $D=0$이다.",
+    "$$ \\dfrac{D}{4} = (-2)^2 - (3-k) = 4-3+k = k+1 = 0 $$ 따라서 $k=-1$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "이차함수 $y=x^2-5x+3$의 그래프와 직선 $y=",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q9(y): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+  "typeReason": "Q9(y): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q9(y): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=x^2-5x+3$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 $k$의 값은"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D=0$이다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "접함",
+        "src": "stem",
+        "quote": "한 점에서 만날 때"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q9(y): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

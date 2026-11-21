@@ -1,0 +1,89 @@
+{
+  "capability": "plane",
+  "title": "삼각형 ABC와 평행선 PS, QR로 만든 사각형 PQRS",
+  "points": [
+    {
+      "id": "A",
+      "x": 2,
+      "y": 6,
+      "label": "A"
+    },
+    {
+      "id": "B",
+      "x": 0,
+      "y": 0,
+      "label": "B"
+    },
+    {
+      "id": "C",
+      "x": 8,
+      "y": 0,
+      "label": "C"
+    },
+    {
+      "id": "P",
+      "x": 0.67,
+      "y": 2,
+      "label": "P"
+    },
+    {
+      "id": "Q",
+      "x": 1.33,
+      "y": 4,
+      "label": "Q"
+    },
+    {
+      "id": "S",
+      "x": 6,
+      "y": 2,
+      "label": "S"
+    },
+    {
+      "id": "R",
+      "x": 4,
+      "y": 4,
+      "label": "R"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAB",
+      "from": "A",
+      "to": "B"
+    },
+    {
+      "id": "sBC",
+      "from": "B",
+      "to": "C"
+    },
+    {
+      "id": "sCA",
+      "from": "C",
+      "to": "A"
+    },
+    {
+      "id": "sPS",
+      "from": "P",
+      "to": "S"
+    },
+    {
+      "id": "sQR",
+      "from": "Q",
+      "to": "R"
+    }
+  ],
+  "planeMarks": {
+    "parallels": [
+      {
+        "id": "p1",
+        "count": 1,
+        "segments": [
+          "sQR",
+          "sPS",
+          "sBC"
+        ]
+      }
+    ]
+  },
+  "caption": "삼각형 ABC에서 BP의 중점 Q와 BC에 평행한 선분 PS, QR로 둘러싸인 사각형 PQRS"
+}

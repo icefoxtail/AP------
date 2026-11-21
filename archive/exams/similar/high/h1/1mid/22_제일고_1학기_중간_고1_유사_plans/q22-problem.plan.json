@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      -1,
+      7
+    ],
+    "viewport": [
+      -1,
+      7,
+      -2,
+      12
+    ],
+    "pieces": [
+      {
+        "domain": [
+          -1,
+          7
+        ],
+        "coefficients": [
+          "0",
+          "6",
+          "-1"
+        ]
+      }
+    ],
+    "referenceLines": [
+      {
+        "slope": "-2",
+        "intercept": "16",
+        "label": "y=-2x+16"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "3",
+        "y": "9",
+        "label": "꼭짓점(3, 9)"
+      },
+      {
+        "id": "T",
+        "x": "4",
+        "y": "8",
+        "label": "접점(4, 8)"
+      },
+      {
+        "id": "A",
+        "x": "0",
+        "y": "0",
+        "label": "(0, 0)"
+      },
+      {
+        "id": "B",
+        "x": "6",
+        "y": "0",
+        "label": "(6, 0)"
+      }
+    ]
+  },
+  "caption": "f(x)=-(x-3)^2+9와 접선 y=-2x+16 및 x축 교점 (0, 0), (6, 0)"
+}
