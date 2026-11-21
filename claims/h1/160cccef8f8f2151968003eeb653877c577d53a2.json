@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane40",
   "workerBranch": "work/solution-upgrade-lane-40-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2mid",
@@ -11,18 +11,25 @@
   "sourcePath": "archive/exams/original/high/h1/2mid/25_매산고_2학기_중간_고1_기출.js",
   "sourceBlobSha": "160cccef8f8f2151968003eeb653877c577d53a2",
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2025_maesan_2mid_DEEP_AUDIT.md",
-  "nextQid": 11,
+  "nextQid": null,
   "remainingWork": [
-    "Write detailed Q11-Q20 evidence and full Q12,Q18 improved solutions",
-    "Independently check all calculations, save final MD and readback"
+    "Existing solutionImage SVG visual review VISUAL_HOLD",
+    "Golden/Negative physical gate and exam/sol/ans render NOT_RUN"
   ],
   "sourceQuestionCount": 20,
-  "readQuestionCount": 10,
+  "readQuestionCount": 20,
   "decisionCounts": {
-    "KEEP": 10,
-    "UPGRADE": 0,
+    "KEEP": 18,
+    "UPGRADE": 2,
     "HOLD": 0,
-    "UNREAD": 10
+    "UNREAD": 0
   },
-  "lastAuditCommit": "05b1fe840bfd69fba5e984f6b7ef9afec5828d48"
+  "upgradedQids": [
+    12,
+    18
+  ],
+  "lastAuditCommit": "7e90129aa8193c320b9f9a063a74ec49496b0f87",
+  "auditGate": "EXAM_AUDIT_COMPLETE",
+  "draftGate": "EXAM_DRAFT_COMPLETE",
+  "releaseStatus": "NOT_RUN"
 }
