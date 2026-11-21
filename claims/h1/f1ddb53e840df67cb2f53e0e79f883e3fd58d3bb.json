@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane10",
   "workerBranch": "work/solution-upgrade-lane-10-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2final",
@@ -12,10 +12,26 @@
   "sourceBlobSha": "f1ddb53e840df67cb2f53e0e79f883e3fd58d3bb",
   "sourceQuestionCount": 23,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2025_suncheon_2final_DEEP_AUDIT.md",
-  "draftedQuestionIds": [],
-  "remainingWork": [
-    "Q1-Q23 full deep audit and needed final student solutions"
+  "draftedQuestionIds": [
+    17,
+    23
   ],
-  "nextQid": 1,
-  "stateNotes": "Actual standardCourse 공통수학2 in all source qids."
+  "remainingWork": [
+    "Release/Golden/Negative/solutionImage actual render and visual QA: NOT_RUN"
+  ],
+  "nextQid": null,
+  "stateNotes": "Q1-Q23 actual direct read; q4/q10/q13/q16 original PNG inspected. KEEP 21, UPGRADE 2 (Q17, Q23 student solution completed and algebra/roots checked). Worker MD commits bc775663cc9f365a9d323bb93efc20ee37bd9a86, 4179e517bd23051c2772f56261f4b11bac2eb496. Not production PASS.",
+  "examAuditComplete": true,
+  "examDraftComplete": true,
+  "auditCounts": {
+    "total": 23,
+    "read": 23,
+    "keep": 21,
+    "upgrade": 2,
+    "hold": 0,
+    "unread": 0
+  },
+  "auditBlobSha": "d67e8272097ebc758fe0138ebd72c4c82222fe20",
+  "draftBlobSha": "c78a533055362a76c4e2f4b972d9b0dd5157b631",
+  "finishedAtKst": "2026-11-21"
 }
