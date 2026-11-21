@@ -408,7 +408,7 @@
         return root.html2canvas(page, { ...options, async onclone(document, element) {
             await options.onclone?.(document, element);
             if (equalSlot) list(document, '[data-layout-overflow]').forEach(node => node.removeAttribute('data-layout-overflow')); // 교사 화면용 경고 표시는 인쇄 이미지에 넣지 않는다
-            if (equalSlot) for (const content of list(document, PAGE + ' .ap-slot-content')) {
+            if (equalSlot) for (const content of list(element, '.ap-equal-slot > .ap-slot-content')) {
                 const fit = JSON.parse(content.dataset.equalSlotFit);
                 content.style.zoom = '1';
                 content.style.transform = `translate(${fit.offsetX * fit.scale}px, ${fit.offsetY * fit.scale}px) scale(${fit.scale})`;

@@ -118,7 +118,7 @@
     <script src="exam-display-title.js?v=20261116-polish-1"></script>
     <script src="student-svg-refresh.js?v=1"></script>
     <script src="js/ap-table-engine.js?v=20261109-ap-table-1"></script>
-    <script src="render-text.js?v=20261120-render-text-2"></script>
+    <script src="render-text.js?v=20261121-question-spacing"></script>
     <script src="print_image_optimizer.js?v=20261030.1"></script>
     <script src="mathjax_render_loop.js?v=20261116-enclosed-latin"></script>
     <script src="concept_map.js" onerror="console.warn('[3B] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
@@ -140,9 +140,9 @@
     <script src="layout-materializer.js?v=20261118-auto-promote-1"></script>
     <script src="solution-render-executor.js?v=20261118-figure-ratio-1" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="answer-render-executor.js?v=20261029-sections-1" onerror="console.warn('[answer-render-executor] shared answer renderer 로드 실패 — legacy renderer 유지')"></script>
-    <script src="equal-slot-engine.js?v=20261118-auto-promote-1"></script>
+    <script src="equal-slot-engine.js?v=20261121-raster-page"></script>
     <link rel="stylesheet" href="equal-slot-engine.css?v=20261118-auto-promote-2">
-    <link rel="stylesheet" href="figure-size.css?v=20261118-figure-ratio-1">
+    <link rel="stylesheet" href="figure-size.css?v=20261121-figure-ratio-2">
     <script src="exam-render-executor.js?v=20261118-auto-promote-1" onerror="console.warn('[exam-render-executor] shared exam renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="render-state-normalizer.js?v=20261118-auto-promote-1"></script>
     <script src="side-effect-ledger.js?v=20260911.5"></script>
@@ -371,7 +371,8 @@
         /* 조건/보기/자료 박스는 .box 또는 .question-note-box를 사용한다. question-table은 행/열이 있는 실제 표에만 사용한다. */
         .question-note-box,
         .note-box,
-        .box {
+        .box,
+        .box-region {
             /* html2canvas (평탄화 인쇄)가 inline-block 안 블록 자식의 글자 노드를 그리지 못해 상자 안 한글이 빠졌다. 블록 상자를 내용 폭으로 줄여 같은 모양을 유지한다. */
             display: block;
             width: fit-content;
@@ -387,9 +388,7 @@
             vertical-align: top;
         }
         /* normalizeViewBlocks가 .note-box 안의 ㄱ. ㄴ. 줄을 다시 .question-note-box로 감싸 상자 안에 상자가 생긴다. 안쪽 상자는 테두리 없이 안의 글로만 취급한다. */
-        .question-note-box .question-note-box, .question-note-box .note-box, .question-note-box .box,
-        .note-box .question-note-box, .note-box .note-box, .note-box .box,
-        .box .question-note-box, .box .note-box, .box .box {
+        :is(.question-note-box, .note-box, .box, .box-region) :is(.question-note-box, .note-box, .box, .box-region) {
             display: block;
             width: auto;
             max-width: none;
@@ -1966,17 +1965,6 @@ function detectChoiceRenderMode(choices) { return APRenderText.detectChoiceRende
 
 function renderChoicesHTML(q) { return APRenderText.renderChoicesHTML(q); }
 
-function applyQuestionContentBreaks(html) {
-    if (!html) return '';
-    let count = 0;
-    return html.replace(/([\.?\!]|\s|>)\s*(\(\d+\))/g, (match, p1, p2) => {
-        count++;
-        if (count === 1) return match;
-        if (p1.includes('br>') || p1.includes('\n')) return match;
-        return p1 + '<br>' + p2;
-    });
-}
-
 function splitSubjectiveHeadingSource(source) {
     const value = String(source || '');
     const locator = /(?:^|(?:<br\s*\/?>(?:\s*)?){2,}|\r?\n{2,})\s*(?=(?:\[|&lt;|<)?\s*서(?:술|논술)형(?![가-힣]))/i;
@@ -2010,13 +1998,13 @@ function formatQuestionContent(html, q) {
     if (q?.__apExamSubjectiveSpacing === true) {
         const split = splitSubjectiveHeadingSource(html);
         if (split) {
-            const prefix = applyQuestionContentBreaks(wrapLatex(split.prefix));
-            const heading = applyQuestionContentBreaks(wrapLatex(split.heading));
-            const body = applyQuestionContentBreaks(wrapLatex(split.body));
+            const prefix = APRenderText.normalizeQuestionContentBreaks(wrapLatex(split.prefix));
+            const heading = APRenderText.normalizeQuestionContentBreaks(wrapLatex(split.heading));
+            const body = APRenderText.normalizeQuestionContentBreaks(wrapLatex(split.body), { subjective: true });
             return `${prefix}<div class="subjective-heading">${heading}</div><div class="subjective-prompt">${body}</div>`;
         }
     }
-    return applyQuestionContentBreaks(html);
+    return APRenderText.normalizeQuestionContentBreaks(html, { subjective: /서(?:술|논술)형/.test(q?.questionType || '') });
 }
 
 function normalizeQuestionTables(html) {
