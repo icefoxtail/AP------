@@ -3,19 +3,36 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane10",
   "workerBranch": "work/solution-upgrade-lane-10-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2final",
   "sourceYear": 2022,
   "sourcePath": "archive/exams/original/high/h1/2final/22_복성고_2학기_기말_고1_기출.js",
   "sourceBlobSha": "8772727b0aae407a0d48beb7f4aa8bf51435daf4",
-  "sourceQuestionCount": null,
+  "sourceQuestionCount": 22,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2022_bokseong_2final_DEEP_AUDIT.md",
   "draftedQuestionIds": [],
-  "remainingWork": [
-    "q1-qN all source and student-upgrade deep audit"
+  "remainingWork": [],
+  "nextQid": null,
+  "stateNotes": "All 22 direct source questions fully audited; 19 existing solutions sufficient, 0 improvements needed, q13/q14/q19 image-dependent VISUAL_HOLD, no PASS.",
+  "readQuestionCount": 22,
+  "decisionCounts": {
+    "KEEP": 19,
+    "UPGRADE": 0,
+    "HOLD": 3,
+    "UNREAD": 0
+  },
+  "examAuditComplete": true,
+  "examDraftComplete": true,
+  "visualStatus": "VISUAL_HOLD",
+  "visualHoldQuestionIds": [
+    13,
+    14,
+    19
   ],
-  "nextQid": 1,
-  "stateNotes": "After lane10 completed 2022 Maesan high; 2023 GangnamGirls remains lane30 IN_PROGRESS."
+  "goldenStatus": "NOT_RUN",
+  "negativeStatus": "NOT_RUN",
+  "renderStatus": "NOT_RUN",
+  "releaseStatus": "NOT_RUN"
 }
