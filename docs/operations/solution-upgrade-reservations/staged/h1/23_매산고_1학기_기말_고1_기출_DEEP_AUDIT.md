@@ -166,3 +166,88 @@ $f(12)=w^{12}+z^{12}=1+(-1)=0$.
 - **추가 발견:** 기존 solution의 중심 결정 근거는 학생이 재현하기에 부족하다. q18은 그림만 보류할 것이 아니라 위 중심 유일성 전개를 포함하는 **UPGRADE 후보**다. 단, 원본 도형 SVG의 렌더 판독이 미완료이므로 기존 판정 HOLD를 유지하고 `q18-visual-and-upgrade`를 다음 cursor로 둔다. 완료 건수에는 포함하지 않는다.
 - 시작 게이트: HARNESS_CURRENT, GLOBAL_QUEUE_CURRENT, DEEP_QUESTION_AUDIT_TEMPLATE_CURRENT 실제 본문 확인. docs-manifest.json은 harness 브랜치와 lane 브랜치 지정 경로에서 NOT_FOUND, core 전체·Golden/Negative 전체 판독 미완료(EVIDENCE_DEBT). preflight=NOT_RUN.
 - EXAM_AUDIT_COMPLETE=NO; EXAM_DRAFT_COMPLETE=YES (기존 q9 초안에 한함); q18 개선 풀이 최종 작성/시각 검증 미완료; 출고/학생 렌더/Golden/Negative=NOT_RUN.
+
+
+## 2026-11-22 q18 학생용 개선 풀이 초안 — 시각 HOLD 유지
+
+- sourceKey: 23_매산고_1학기_기말_고1_기출; sourcePath: archive/exams/original/high/h1/1final/23_매산고_1학기_기말_고1_기출.js; source blob SHA: 71d65714273a0db1461649b65a1be6b0864caa13.
+- q18 원본의 정확한 전환: \`삼각형 ABC는 y축에 대하여 대칭이다. 따라서 ... 반원도 y축에 대하여 대칭이며, 그 중심은 원점\`. 삼각형의 대칭성만으로 접하는 반원의 중심이 유일함을 곧바로 단정하면 학생이 그 단계를 재현할 수 없다.
+- 판정: **HOLD(q18-visual-and-upgrade)**. 아래 완성 풀이 초안은 수학적으로 독립 검산했으나, 실제 SVG의 래스터화·학생 시각 판독은 NOT_RUN. q18의 UPGRADE 최종 확정 및 EXAM_AUDIT_COMPLETE는 보류.
+- 원본 solutionImage: \`archive/assets/images/23_매산고_1학기_기말_고1_기출/q18-solution-v2.svg\`; blob SHA \`57621feafc21ce817693463ebffd7cca44a1b2b3\`. SVG XML의 O,P,Q,R,S와 반원 경로는 직접 fetch. 이미지 자체의 시각 PASS는 주장하지 않음.
+
+### q18 학생용 대체 solution 초안 (전체)
+
+반원의 지름이 $BC$ 위에 있으므로 중심을 $T(t,0)$, 반지름을 $r>0$이라고 놓는다. 반원이 두 변 $AB$, $AC$에 접하므로 중심에서 두 직선까지의 거리는 모두 $r$이다.
+
+$AC$의 기울기는
+$$\frac{0-\sqrt6}{\sqrt2-0}=-\sqrt3$$
+이므로 $AC$의 방정식은 $\sqrt3x+y-\sqrt6=0$이다.
+
+같은 방법으로 $AB$의 기울기는
+$$\frac{0-\sqrt6}{-\sqrt2-0}=\sqrt3$$
+이므로 $AB$의 방정식은 $-\sqrt3x+y-\sqrt6=0$이다.
+
+두 직선까지의 거리를 같게 놓으면
+$$
+\frac{|\sqrt3t-\sqrt6|}{2}
+=\frac{|-\sqrt3t-\sqrt6|}{2}.
+$$
+양변에 $2$를 곱하고 제곱하면
+$$
+(\sqrt3t-\sqrt6)^2=(-\sqrt3t-\sqrt6)^2,
+$$
+$$
+3t^2-2\sqrt{18}t+6=3t^2+2\sqrt{18}t+6,
+$$
+$$
+-4\sqrt{18}t=0,\qquad t=0.
+$$
+따라서 반원의 중심은 유일하게 $O(0,0)$이다.
+
+반지름은 원점에서 $AC$까지의 거리이므로
+$$
+r=\frac{|-\sqrt6|}{\sqrt{(\sqrt3)^2+1^2}}
+=\frac{\sqrt6}{\sqrt4}
+=\frac{\sqrt6}{2}.
+$$
+지름 양 끝의 $x$좌표는 $\pm\sqrt6/2$이고 $\sqrt6/2<\sqrt2$이므로 지름은 실제로 $BC$ 안에 있다.
+
+접점 $Q$는 $O$에서 $AC$에 내린 수선의 발이다. 직선 $OQ$의 기울기는 $1/\sqrt3$이므로 $y=x/\sqrt3$이다. $AC$와 연립하면
+$$
+\frac{x}{\sqrt3}=-\sqrt3x+\sqrt6,
+$$
+$$
+x=-3x+\sqrt{18},
+$$
+$$
+4x=3\sqrt2,\qquad x=\frac{3\sqrt2}{4},
+$$
+$$
+y=\frac{3\sqrt2}{4\sqrt3}=\frac{\sqrt6}{4}.
+$$
+따라서 $Q=(3\sqrt2/4,\sqrt6/4)$이다. 중심과 두 변이 $y$축 대칭이므로 $P=(-3\sqrt2/4,\sqrt6/4)$이다.
+
+$S,R$은 각각 $P,Q$에서 $x$축에 내린 수선의 발이므로
+$$
+PQ=\frac{3\sqrt2}{4}-\left(-\frac{3\sqrt2}{4}\right)=\frac{3\sqrt2}{2},
+$$
+$$
+QR=\frac{\sqrt6}{4}-0=\frac{\sqrt6}{4}.
+$$
+따라서 직사각형의 넓이는
+$$
+PQ\cdot QR
+=\frac{3\sqrt2}{2}\cdot\frac{\sqrt6}{4}
+=\frac{3\sqrt{12}}8
+=\frac{3\cdot2\sqrt3}{8}
+=\boxed{\frac{3\sqrt3}{4}}.
+$$
+
+### 독립 검산 및 남은 게이트
+
+- $Q$의 $AC$ 직선 대입: $\sqrt3(3\sqrt2/4)+\sqrt6/4-\sqrt6=(3\sqrt6+\sqrt6-4\sqrt6)/4=0$.
+- $OQ^2=(3\sqrt2/4)^2+(\sqrt6/4)^2=18/16+6/16=24/16=3/2=r^2$.
+- $Q$의 $x$좌표 $3\sqrt2/4$는 $0$과 $\sqrt2$ 사이이며 $y>0$이므로 접점은 선분 $AC$ 위에 있다. $P$도 대칭적으로 선분 $AB$ 위에 있다.
+- 완성 풀이 초안 qid: q9(기존), q18(이번); q18 최종 판정은 VISUAL_HOLD로 남김.
+- nextQid: q18-visual-and-upgrade; unfinishedUpgrade: q18 시각 대조 후 최종 판정 확정.
+- EXAM_AUDIT_COMPLETE=NO; EXAM_DRAFT_COMPLETE=NO (q18 최종 판정 미확정); 학생 화면 렌더=NOT_RUN; Golden/Negative preflight=NOT_RUN; 시각 PASS=NOT_RUN; 출고 PASS=NO.
