@@ -3,19 +3,43 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane10",
   "workerBranch": "work/solution-upgrade-lane-10-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2final",
   "sourceYear": 2019,
   "sourcePath": "archive/exams/original/high/h1/2final/19_강남여고_2학기_기말_고1_기출.js",
   "sourceBlobSha": "000191c34e6b23d50d23a71ca7de1e5e848349d0",
-  "sourceQuestionCount": null,
+  "sourceQuestionCount": 25,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2019_gangnam-girls_2final_DEEP_AUDIT.md",
-  "draftedQuestionIds": [],
-  "remainingWork": [
-    "q1-qN original content/options/answer/solution audit, required upgrades"
+  "draftedQuestionIds": [
+    12,
+    21
   ],
-  "nextQid": 1,
-  "stateNotes": "Exclusive claim made before original source reading."
+  "remainingWork": [],
+  "nextQid": null,
+  "stateNotes": "25/25 full original source and three PNG audited; q12 direct derangement enumeration, q21 rigorous piecewise bijection explanatory draft independently verified; q21 supplementary SVG_REQUEST is VISUAL_HOLD; no production changes.",
+  "readQuestionCount": 25,
+  "decisionCounts": {
+    "KEEP": 23,
+    "UPGRADE": 2,
+    "HOLD": 0,
+    "UNREAD": 0
+  },
+  "examAuditComplete": true,
+  "examDraftComplete": true,
+  "visualStatus": "VISUAL_HOLD_SVG_REQUEST",
+  "visualHoldQuestionIds": [
+    21
+  ],
+  "svgRequestPath": "docs/operations/solution-upgrade-reservations/staged/h1/2019_gangnam-girls_2final_SVG_REQUEST.md",
+  "goldenStatus": "NOT_RUN",
+  "negativeStatus": "NOT_RUN",
+  "renderStatus": "NOT_RUN",
+  "releaseStatus": "NOT_RUN",
+  "auditCommit": "213b0afeaaa9af85846f564ed8d0c6118b066abd",
+  "svgRequestCommit": "fa31f7dcbd24448a7fe0ad440fc753f1ea535111",
+  "studentPaths": [
+    "docs/operations/solution-upgrade-reservations/staged/h1/2019_gangnam-girls_2final_DEEP_AUDIT.md"
+  ]
 }
