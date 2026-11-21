@@ -3,19 +3,40 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane10",
   "workerBranch": "work/solution-upgrade-lane-10-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2final",
   "sourceYear": 2021,
   "sourcePath": "archive/exams/original/high/h1/2final/21_순천고_2학기_기말_고1_기출.js",
   "sourceBlobSha": "e7d625d874fd488cc2d2cf40a8ee13e648ee4942",
-  "sourceQuestionCount": null,
+  "sourceQuestionCount": 22,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2021_suncheon_2final_DEEP_AUDIT.md",
-  "draftedQuestionIds": [],
-  "remainingWork": [
-    "All q1-qN exact original audit and student upgrades"
+  "draftedQuestionIds": [
+    11,
+    22
   ],
-  "nextQid": 1,
-  "stateNotes": "Exclusive claim created before original exam question reading. Follow global course and 2final ordering."
+  "remainingWork": [],
+  "nextQid": null,
+  "stateNotes": "All 22 original contents, choices, answers, original solutions directly audited, 2 upgraded full equalities and verified on worker branch; original PNG q10/q20/q21 actually opened. No production release.",
+  "readQuestionCount": 22,
+  "decisionCounts": {
+    "KEEP": 20,
+    "UPGRADE": 2,
+    "HOLD": 0,
+    "UNREAD": 0
+  },
+  "examAuditComplete": true,
+  "examDraftComplete": true,
+  "visualStatus": "ORIGINAL_PNG_READ",
+  "visualHoldQuestionIds": [],
+  "goldenStatus": "NOT_RUN",
+  "negativeStatus": "NOT_RUN",
+  "renderStatus": "NOT_RUN",
+  "releaseStatus": "NOT_RUN",
+  "auditCommit": "60a60c5f677c5044ee8cfdf84a2d8299d76e94eb",
+  "studentPaths": [
+    "docs/operations/solution-upgrade-reservations/staged/h1/2021_suncheon_2final_q11.md",
+    "docs/operations/solution-upgrade-reservations/staged/h1/2021_suncheon_2final_q22.md"
+  ]
 }
