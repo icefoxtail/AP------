@@ -1,0 +1,59 @@
+{
+  "qid": 21,
+  "itemFingerprint": "138e91b30114e655",
+  "solveSteps": [
+    "$\\overline{CD} = x$, $\\overline{CE} = y$라 하면 $x + y = 7$이다.",
+    "네 점 $A, B, C, E$가 한 원 위에 있으므로 원주각의 성질에 의해 $\\angle CED = \\angle CEB = \\angle CAB = A$이다.",
+    "$\\triangle CDE$에서 코사인법칙을 적용하면  \n$$(7 - y)^2 = y^2 + 5^2 - 2 \\cdot y \\cdot 5 \\cdot \\frac{1}{5} \\implies 49 - 14y + y^2 = y^2 + 25 - 2y \\implies 12y = 24 \\implies y = 2$$  \n따라서 $\\overline{CE} = 2$, $\\overline{CD} = 5$이다.",
+    "맞꼭지각 $\\angle CDE = \\angle BDA$와 원주각 $\\angle CED = \\angle BAD$에 의해 $\\triangle CDE \\sim \\triangle BDA$이므로  \n$$\\frac{\\overline{CE}}{\\overline{BA}} = \\frac{\\overline{DE}}{\\overline{DA}} \\implies \\frac{2}{4} = \\frac{5}{\\overline{DA}} \\implies \\overline{DA} = 10$$  \n따라서 $\\overline{AC} = \\overline{CD} + \\overline{DA} = 5 + 10 = 15$이다.",
+    "$\\triangle ABC$에서 코사인법칙에 의해  \n$$\\overline{BC}^2 = 4^2 + 15^2 - 2 \\cdot 4 \\cdot 15 \\cdot \\frac{1}{5} = 16 + 225 - 24 = 217$$  \n$\\sin^2 A = 1 - \\left(\\frac{1}{5}\\right)^2 = \\frac{24}{25}$이고 외접원의 반지름을 $R$이라 하면 사인법칙에서  \n$$4R^2 = \\frac{\\overline{BC}^2}{\\sin^2 A} = \\frac{217}{24/25} = \\frac{5425}{24} \\implies R^2 = \\frac{5425}{96}$$  \n따라서 외접원의 넓이는 $\\pi R^2 = \\frac{5425\\pi}{96}$이다."
+  ],
+  "solvedAnswer": "$\\frac{5425\\pi}{96}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-05",
+  "subUnitKey": "H22-A-05-CORE",
+  "unitEvidence": "$\\overline{AB} = 4$, $\\cos(\\an",
+  "rpmRecordId": "H2-M1-RPM-109",
+  "rpmReason": "Q21(AB): 사인법칙과 코사인법칙 핵심 개념 단원의 RPM H2-M1-RPM-109 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_05_SINE_LAW",
+  "templateKey": "TPL_H22A_05_SINE_LAW_109",
+  "typeReason": "Q21(AB): 사인법칙과 코사인법칙 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 5,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q21(AB): 사인법칙과 코사인법칙 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 5 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "의 넓이를 구하는 풀이과정과 답을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$\\overline{CD} = x$, $\\ov",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q21(AB): 발문과 해설의 풀이 과정을 점검하여 정답 $\\frac{5425\\pi}{96}$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

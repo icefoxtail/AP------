@@ -1,0 +1,59 @@
+{
+  "qid": 18,
+  "itemFingerprint": "b6ded59bf7f598dd",
+  "solveSteps": [
+    "$h(x)$가 $x=2$에서 연속이려면 $\\lim_{x\\to 2}\\dfrac{f(x)}{x-2}$가 존재해야 하므로 $f(2)=0$이고, $h(2)=5f(2)=0$이므로 $f'(2)=0$이다. (cases)",
+    "따라서 $f(x) = 3(x-2)^2(x-r)$로 놓을 수 있으며, 모든 실수 $x$에서 $h(x) = 3(x-2)(x-r)$이다.",
+    "$h'(x) = 3(x-r) + 3(x-2)$이므로 $h'(2) = 3(2-r) = 9 \\implies r = -1$이다.",
+    "따라서 $f(3) = 3(3-2)^2(3+1) = 12$이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-M2-04",
+  "subUnitKey": "H15-M2-04-DERIVATIVE",
+  "unitEvidence": "최고차항의 계수가 $3$인 삼차함수 $f(x)$와 함수",
+  "rpmRecordId": "H2-M2-RPM-015",
+  "rpmReason": "Q18(cases): 도함수 단원의 RPM H2-M2-RPM-015 유형에 해당한다.",
+  "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+  "templateKey": "TPL_DIFFERENTIABILITY_POINT_CONDITION",
+  "typeReason": "Q18(cases): 도함수 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(cases): 도함수 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$h'(2)=9$이다. $f(3)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$h(x)$가 $x=2$에서 연속이려면 $\\l",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q18(cases): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

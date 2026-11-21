@@ -1,0 +1,59 @@
+{
+  "qid": 18,
+  "itemFingerprint": "11e67ee64b7044bb",
+  "solveSteps": [
+    "점 $A(p,2p)$에서의 접선의 방정식은 $2py=2p(x+p)$, 즉 $y=x+p$이다. (px)",
+    "이 접선과 준선 $x=-p$의 교점은 $(-p,0)$이고, 직선 $y=2p$와 준선 $x=-p$의 교점은 $(-p,2p)$이다.",
+    "따라서 세 직선으로 둘러싸인 도형은 밑변의 길이가 $p-(-p)=2p$, 높이가 $2p-0=2p$인 직각삼각형이다.",
+    "넓이가 $\\frac{1}{2}(2p)(2p)=2p^2=32$이므로 $p^2=16$, $p=4$ ($p>0$)이다.",
+    "따라서 $A(4,8)$이므로 $\\overline{OA}=\\sqrt{4^2+8^2}=\\sqrt{80}=4\\sqrt{5}$이다."
+  ],
+  "solvedAnswer": "$4\\sqrt{5}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-GE-02",
+  "subUnitKey": "H22-GE-02-CORE",
+  "unitEvidence": "[주관식 2] 포물선 $y^2=4px$ ($p>0$) ",
+  "rpmRecordId": "H2-GEO-RPM-047",
+  "rpmReason": "Q18(px): 이차곡선의 접선 핵심 개념 단원의 RPM H2-GEO-RPM-047 유형에 해당한다.",
+  "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+  "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+  "typeReason": "Q18(px): 이차곡선의 접선 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(px): 이차곡선의 접선 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "길이를 구하시오. (단, $O$는 원점이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "점 $A(p,2p)$에서의 접선의 방정식은 $",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q18(px): 발문과 해설의 풀이 과정을 점검하여 정답 $4\\sqrt{5}$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

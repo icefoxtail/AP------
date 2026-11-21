@@ -1,0 +1,57 @@
+{
+  "qid": 12,
+  "itemFingerprint": "0043e7e0443d0302",
+  "solveSteps": [
+    "$a_{n+1}$의 합에서 $k = 1$인 첫 항은 $\\frac{n + 1}{n}$이므로 $(\\text{가}) = \\frac{n + 1}{n}$이다.",
+    "나머지 $k = 2$부터 $n$까지의 합에서 $j = k - 1$로 치환하면  \n$$\\sum_{j=1}^{n-1} \\frac{n + 1}{n - j} \\cdot \\frac{1}{3^j} = \\frac{n + 1}{3n} \\sum_{j=1}^{n-1} \\frac{n}{n - j} \\cdot \\frac{1}{3^{j-1}} = \\frac{n + 1}{3n} a_n$$  \n이므로 $(\\text{나}) = \\frac{n + 1}{3n}$이다.",
+    "따라서 두 식의 비는 $\\frac{(n+1)/n}{(n+1)/(3n)} = 3$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-08",
+  "subUnitKey": "H22-A-08-CORE",
+  "unitEvidence": "다음은 $2$ 이상인 모든 자연수 $n$에 대하여 부등",
+  "rpmRecordId": "H2-M1-RPM-129",
+  "rpmReason": "Q12(2): 수학적 귀납법 핵심 개념 단원의 RPM H2-M1-RPM-129 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_08_MATHEMATICAL_INDUCTION",
+  "templateKey": "TPL_H22A_08_MATHEMATICAL_INDUCTION_131",
+  "typeReason": "Q12(2): 수학적 귀납법 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q12(2): 수학적 귀납법 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "을 (나)의 식으로 나눈 값으로 알맞은 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$a_{n+1}$의 합에서 $k = 1$인 첫",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q12(2): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

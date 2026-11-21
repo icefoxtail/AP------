@@ -1,0 +1,57 @@
+{
+  "qid": 12,
+  "itemFingerprint": "57d2ad9c733c43e6",
+  "solveSteps": [
+    "첫째 극한에서 분모가 $0$으로 가므로 $f(2)=0$이고 $f'(2)=3$이다. (12)",
+    "둘째 극한에서 분모가 $4$로 수렴하므로 $\\dfrac{f(3)}{4}=2 \\implies f(3)=8$이다.",
+    "$$\\lim_{x\\to 3}\\frac{f(x-1)f(x)}{x-3} = \\lim_{x\\to 3}\\frac{f(x-1)-f(2)}{(x-1)-2}\\cdot f(x) = f'(2)\\cdot f(3) = 3\\times 8 = 24$$\n\n따라서 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-M2-03",
+  "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
+  "unitEvidence": "다항함수 $f(x)$가 $\\lim_{x\\to 2}\\df",
+  "rpmRecordId": "H2-M2-RPM-013",
+  "rpmReason": "Q12(12): 미분계수 단원의 RPM H2-M2-RPM-013 유형에 해당한다.",
+  "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+  "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+  "typeReason": "Q12(12): 미분계수 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q12(12): 미분계수 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "ac{f(x-1)f(x)}{x-3}$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "첫째 극한에서 분모가 $0$으로 가므로 $f(",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q12(12): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

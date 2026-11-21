@@ -1,0 +1,1106 @@
+{
+  "qid": 19,
+  "questionType": "서술형",
+  "course": [
+    "GEOMETRY"
+  ],
+  "curriculum": "2022",
+  "problem": {
+    "content": "[서술형 1] 다음 그림과 같이 해안 기지국 $A$를 초점으로 하고 항구 $O$를 꼭짓점으로 하는 포물선 모양의 해안선 도로가 있다. 어느 정유회사의 공장 $B$에서 해안선 도로 위의 저장 시설 $P$를 거쳐 기지국 $A$로 연결되는 파이프라인의 총 길이가 최소가 되도록 하는 점 $P$의 위치를 논리적으로 서술하시오. (3점) 또한 <조건>을 만족하는 포물선의 방정식과 점 $P$의 좌표를 구하고, 과정을 서술하시오. (6점) (단, 항구 $O$는 좌표평면의 원점이고, 기지국 $A$는 $x$축의 양의 부분에 위치하며, 파이프라인의 폭은 고려하지 않는다.)\n\n> **<조건>** (가) 항구 $O$와 기지국 $A$ 사이의 거리는 $15$이고, 기지국 $A$와 공장 $B$ 사이의 거리는 $5$이다. (나) 직선 $AB$와 $x$축의 양의 방향이 이루는 예각의 크기를 $\\theta$라 할 때, $\\cos\\theta=\\dfrac{3}{5}$이다.",
+    "choices": [],
+    "points": 9
+  },
+  "reference": {
+    "answer": "$y^2=60x$, $P\\left(\\frac{4}{15}, 4\\right)$",
+    "solution": "1. **(점 $P$의 위치 서술)**: 포물선의 준선을 $l$이라 하고, 포물선 위의 점 $P$에서 준선 $l$에 내린 수선의 발을 $H$라 하면 포물선의 정의에 의해 $\\overline{PA}=\\overline{PH}$이다. 따라서 $\\overline{BP}+\\overline{PA}=\\overline{BP}+\\overline{PH}$이고, 이 값이 최소가 되려면 점 $B$에서 준선 $l$에 내린 수선의 발을 $H_0$라 할 때 점 $P$가 선분 $BH_0$와 포물선의 교점이어야 한다. (즉, $P$는 $B$를 지나고 포물선의 축과 평행한 직선과 포물선의 교점이다.)  \n     \n2. **(방정식 및 좌표 계산)**: 초점이 $A(15,0)$이고 꼭짓점이 원점이므로 포물선의 방정식은 $y^2=60x$이다. 조건 (나)에서 $\\cos\\theta=\\frac{3}{5}$이므로 $\\sin\\theta=\\frac{4}{5}$이고, 그림에서 $B$는 제1사분면에 있으므로 $B\\left(15+5\\cdot\\frac{3}{5},\\ 5\\cdot\\frac{4}{5}\\right)=(18,4)$이다. $B$를 지나고 $x$축에 평행한 직선 $y=4$를 $y^2=60x$에 대입하면 $16=60x \\implies x=\\frac{4}{15}$이다. 따라서 포물선의 방정식은 $y^2=60x$, 점 $P$의 좌표는 $P\\left(\\frac{4}{15}, 4\\right)$이다.",
+    "sourcePrimaryMethod": "포물선 정의 PA=PH로 BP+PA=BP+PH>=BH_0 최소 조건을 유도해 직선 y=4와의 교점 P 계산",
+    "sourceDecisiveStep": "점 B에서 준선에 내린 수선과 포물선의 교점이 최단거리 점 P임을 논증"
+  },
+  "source": {
+    "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
+    "standardUnitKey": "H22-GE-01",
+    "subUnitKey": "H22-GE-01-CORE",
+    "rpmPath": {
+      "majorUnit": "이차곡선",
+      "midUnit": "이차곡선",
+      "l3": "포물선",
+      "l4": "초점·준선"
+    },
+    "problemTypeKey": null,
+    "templateKey": null,
+    "difficultyBucket": 3,
+    "newKeyProposal": null,
+    "item4slot": {
+      "given": [
+        "포물선",
+        "초점",
+        "준선"
+      ],
+      "goal": [
+        "최솟값"
+      ],
+      "method": [
+        "포물선",
+        "수선의발"
+      ],
+      "condition": []
+    },
+    "boundary": "NONE"
+  },
+  "units": [
+    {
+      "standardUnitKey": "H22-GE-01",
+      "label": "이차곡선",
+      "order": 1,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-GE-01-CORE",
+          "label": "이차곡선 핵심 개념"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-GEO-RPM-039",
+          "path": "이차곡선 > 이차곡선 > 포물선 > 정의와 방정식",
+          "subUnitKey": "H22-GE-01-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-040",
+          "path": "이차곡선 > 이차곡선 > 포물선 > 초점·준선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-041",
+          "path": "이차곡선 > 이차곡선 > 타원 > 정의와 방정식",
+          "subUnitKey": "H22-GE-01-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-042",
+          "path": "이차곡선 > 이차곡선 > 타원 > 초점·장축·단축",
+          "subUnitKey": "H22-GE-01-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-043",
+          "path": "이차곡선 > 이차곡선 > 쌍곡선 > 정의와 방정식",
+          "subUnitKey": "H22-GE-01-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-044",
+          "path": "이차곡선 > 이차곡선 > 쌍곡선 > 점근선",
+          "subUnitKey": "H22-GE-01-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-045",
+          "path": "이차곡선 > 이차곡선 > 이차곡선의 이동 > 평행이동",
+          "subUnitKey": "H22-GE-01-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-046",
+          "path": "이차곡선 > 이차곡선 > 이차곡선의 이동 > 조건으로 방정식",
+          "subUnitKey": "H22-GE-01-CORE",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+          "label": "이차곡선의 접선 문제",
+          "templates": [
+            {
+              "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+              "label": "이차곡선 위 점에서 접선 조건 적용"
+            },
+            {
+              "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+              "label": "곡선 밖의 점에서 이차곡선에 그은 접선"
+            },
+            {
+              "templateKey": "TPL_GEO_TANGENT_ORTHOGONAL",
+              "label": "접선에 수직인 직선의 조건 활용"
+            },
+            {
+              "templateKey": "TPL_GEO_CONIC_TANGENT_DISCRIMINANT",
+              "label": "접선 조건"
+            },
+            {
+              "templateKey": "TPL_GEO_CONIC_TANGENT_SLOPE_TANGENT",
+              "label": "기울기 지정 접선"
+            },
+            {
+              "templateKey": "TPL_GEO_CONIC_TANGENT_TANGENT_TYPES",
+              "label": "이차곡선 접선식 적용"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_GEO_ELLIPSE",
+          "label": "타원 문제",
+          "templates": [
+            {
+              "templateKey": "TPL_GEO_ELLIPSE_STANDARD_EQUATION",
+              "label": "타원 표준방정식 해석"
+            },
+            {
+              "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+              "label": "타원의 축·초점 관계 활용"
+            },
+            {
+              "templateKey": "TPL_GEO_ELLIPSE_FOCAL",
+              "label": "초점거리합"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_GEO_HYPERBOLA",
+          "label": "쌍곡선 문제",
+          "templates": [
+            {
+              "templateKey": "TPL_GEO_HYPERBOLA_STANDARD_EQUATION",
+              "label": "쌍곡선 표준방정식 해석"
+            },
+            {
+              "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
+              "label": "쌍곡선 점근선·축 관계 활용"
+            },
+            {
+              "templateKey": "TPL_GEO_HYPERBOLA_FOCAL_DIFF",
+              "label": "쌍곡선 초점거리차"
+            },
+            {
+              "templateKey": "TPL_GEO_HYPERBOLA_FOCAL_DISTANCE",
+              "label": "초점 거리"
+            },
+            {
+              "templateKey": "TPL_GEO_HYPERBOLA_MODEL",
+              "label": "거리차 쌍곡선 모형"
+            },
+            {
+              "templateKey": "TPL_GEO_HYPERBOLA_RIGHT_TRIANGLE",
+              "label": "쌍곡선 직각 초점삼각형"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_GEO_PARABOLA",
+          "label": "포물선 문제",
+          "templates": [
+            {
+              "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+              "label": "포물선 초점·준선 관계 활용"
+            },
+            {
+              "templateKey": "TPL_GEO_PARABOLA_STANDARD_EQUATION",
+              "label": "포물선 표준방정식 해석"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H22-GE-02",
+      "label": "이차곡선의 접선",
+      "order": 2,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-GE-02-CORE",
+          "label": "이차곡선의 접선 핵심 개념"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-GEO-RPM-047",
+          "path": "이차곡선 > 이차곡선의 접선 > 포물선의 접선 > 접점형",
+          "subUnitKey": "H22-GE-02-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-048",
+          "path": "이차곡선 > 이차곡선의 접선 > 포물선의 접선 > 기울기형",
+          "subUnitKey": "H22-GE-02-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-049",
+          "path": "이차곡선 > 이차곡선의 접선 > 타원의 접선 > 접점형",
+          "subUnitKey": "H22-GE-02-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-050",
+          "path": "이차곡선 > 이차곡선의 접선 > 타원의 접선 > 기울기·조건형",
+          "subUnitKey": "H22-GE-02-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-051",
+          "path": "이차곡선 > 이차곡선의 접선 > 쌍곡선의 접선 > 접점형",
+          "subUnitKey": "H22-GE-02-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-052",
+          "path": "이차곡선 > 이차곡선의 접선 > 쌍곡선의 접선 > 기울기·조건형",
+          "subUnitKey": "H22-GE-02-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-085",
+          "path": "이차곡선 > 이차곡선의 접선 > 쌍곡선의 접선 > 접점형",
+          "subUnitKey": "H22-GE-02-CORE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+          "label": "이차곡선의 접선 문제",
+          "templates": [
+            {
+              "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+              "label": "이차곡선 위 점에서 접선 조건 적용"
+            },
+            {
+              "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+              "label": "곡선 밖의 점에서 이차곡선에 그은 접선"
+            },
+            {
+              "templateKey": "TPL_GEO_TANGENT_ORTHOGONAL",
+              "label": "접선에 수직인 직선의 조건 활용"
+            },
+            {
+              "templateKey": "TPL_GEO_CONIC_TANGENT_DISCRIMINANT",
+              "label": "접선 조건"
+            },
+            {
+              "templateKey": "TPL_GEO_CONIC_TANGENT_SLOPE_TANGENT",
+              "label": "기울기 지정 접선"
+            },
+            {
+              "templateKey": "TPL_GEO_CONIC_TANGENT_TANGENT_TYPES",
+              "label": "이차곡선 접선식 적용"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_GEO_HYPERBOLA",
+          "label": "쌍곡선 문제",
+          "templates": [
+            {
+              "templateKey": "TPL_GEO_HYPERBOLA_STANDARD_EQUATION",
+              "label": "쌍곡선 표준방정식 해석"
+            },
+            {
+              "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
+              "label": "쌍곡선 점근선·축 관계 활용"
+            },
+            {
+              "templateKey": "TPL_GEO_HYPERBOLA_FOCAL_DIFF",
+              "label": "쌍곡선 초점거리차"
+            },
+            {
+              "templateKey": "TPL_GEO_HYPERBOLA_FOCAL_DISTANCE",
+              "label": "초점 거리"
+            },
+            {
+              "templateKey": "TPL_GEO_HYPERBOLA_MODEL",
+              "label": "거리차 쌍곡선 모형"
+            },
+            {
+              "templateKey": "TPL_GEO_HYPERBOLA_RIGHT_TRIANGLE",
+              "label": "쌍곡선 직각 초점삼각형"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H22-GE-03",
+      "label": "공간도형",
+      "order": 3,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-GE-03-CORE",
+          "label": "공간도형 핵심 개념"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-GEO-RPM-053",
+          "path": "공간도형과 공간좌표 > 공간도형 > 직선과 평면 > 평행·수직",
+          "subUnitKey": "H22-GE-03-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-054",
+          "path": "공간도형과 공간좌표 > 공간도형 > 직선과 평면 > 정사영",
+          "subUnitKey": "H22-GE-03-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-055",
+          "path": "공간도형과 공간좌표 > 공간도형 > 삼수선 정리 > 거리·각",
+          "subUnitKey": "H22-GE-03-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-056",
+          "path": "공간도형과 공간좌표 > 공간도형 > 삼수선 정리 > 정사영 활용",
+          "subUnitKey": "H22-GE-03-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-057",
+          "path": "공간도형과 공간좌표 > 공간도형 > 이면각 > 이면각",
+          "subUnitKey": "H22-GE-03-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-058",
+          "path": "공간도형과 공간좌표 > 공간도형 > 이면각 > 공간에서의 각",
+          "subUnitKey": "H22-GE-03-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-083",
+          "path": "공간도형과 공간좌표 > 공간도형 > 두 직선이 이루는 각 > 방향벡터의 수직 판정",
+          "subUnitKey": "H22-GE-03-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-084",
+          "path": "공간도형과 공간좌표 > 공간도형 > 두 직선이 이루는 각 > 평행선에 의한 각의 환원",
+          "subUnitKey": "H22-GE-03-CORE",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_GEO_PARABOLA",
+          "label": "포물선 문제",
+          "templates": [
+            {
+              "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+              "label": "포물선 초점·준선 관계 활용"
+            },
+            {
+              "templateKey": "TPL_GEO_PARABOLA_STANDARD_EQUATION",
+              "label": "포물선 표준방정식 해석"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+          "label": "공간도형 문제",
+          "templates": [
+            {
+              "templateKey": "TPL_GEO_SPACE_DIHEDRAL_ANGLE",
+              "label": "공간에서 두 직선 사이의 각 구하기"
+            },
+            {
+              "templateKey": "TPL_GEO_SPACE_LINES_ANGLE",
+              "label": "공간에서 두 직선 사이의 각"
+            },
+            {
+              "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+              "label": "공간의 수선의 발·정사영 관계 활용"
+            },
+            {
+              "templateKey": "TPL_GEO_SPACE_FIGURE_ANGLE",
+              "label": "공간각"
+            },
+            {
+              "templateKey": "TPL_GEO_SPACE_FIGURE_DOT_ANGLE",
+              "label": "방향벡터 법선으로 각"
+            },
+            {
+              "templateKey": "TPL_GEO_SPACE_FIGURE_LINE_PLANE",
+              "label": "직선·평면 각"
+            },
+            {
+              "templateKey": "TPL_GEO_SPACE_FIGURE_PERP_PLANE",
+              "label": "평면 수직 증명"
+            },
+            {
+              "templateKey": "TPL_GEO_SPACE_FIGURE_PLANES",
+              "label": "평면 결정과 중복 보정"
+            },
+            {
+              "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+              "label": "정사영 넓이"
+            },
+            {
+              "templateKey": "TPL_GEO_SPACE_FIGURE_RELATION",
+              "label": "평면 관계"
+            },
+            {
+              "templateKey": "TPL_GEO_SPACE_FIGURE_SKEW",
+              "label": "공간 꼬인 직선 판정"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H22-GE-04",
+      "label": "공간좌표",
+      "order": 4,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-GE-04-CORE",
+          "label": "공간좌표 핵심 개념"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-GEO-RPM-059",
+          "path": "공간도형과 공간좌표 > 공간좌표 > 공간의 좌표 > 점의 좌표",
+          "subUnitKey": "H22-GE-04-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-060",
+          "path": "공간도형과 공간좌표 > 공간좌표 > 공간의 좌표 > 두 점 사이 거리",
+          "subUnitKey": "H22-GE-04-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-061",
+          "path": "공간도형과 공간좌표 > 공간좌표 > 분점과 중점 > 내분점·외분점",
+          "subUnitKey": "H22-GE-04-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-062",
+          "path": "공간도형과 공간좌표 > 공간좌표 > 분점과 중점 > 무게중심",
+          "subUnitKey": "H22-GE-04-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-063",
+          "path": "공간도형과 공간좌표 > 공간좌표 > 구의 방정식 > 중심·반지름",
+          "subUnitKey": "H22-GE-04-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-064",
+          "path": "공간도형과 공간좌표 > 공간좌표 > 구의 방정식 > 구와 좌표조건",
+          "subUnitKey": "H22-GE-04-CORE",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+          "label": "공간좌표",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_GEO_SPHERE",
+          "label": "구",
+          "templates": []
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H22-GE-05",
+      "label": "벡터의 연산",
+      "order": 5,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-GE-05-VECTOR_BASIC",
+          "label": "벡터의 뜻과 연산"
+        },
+        {
+          "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+          "label": "벡터의 성분"
+        },
+        {
+          "subUnitKey": "H22-GE-05-VECTOR_DOT",
+          "label": "벡터의 내적"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-GEO-RPM-065",
+          "path": "벡터 > 벡터의 연산 > 벡터의 뜻 > 벡터와 스칼라",
+          "subUnitKey": "H22-GE-05-VECTOR_BASIC",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-066",
+          "path": "벡터 > 벡터의 연산 > 벡터의 뜻 > 같은 벡터",
+          "subUnitKey": "H22-GE-05-VECTOR_BASIC",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-067",
+          "path": "벡터 > 벡터의 연산 > 벡터의 덧셈과 뺄셈 > 삼각형법",
+          "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-068",
+          "path": "벡터 > 벡터의 연산 > 벡터의 덧셈과 뺄셈 > 위치벡터",
+          "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-069",
+          "path": "벡터 > 벡터의 연산 > 벡터의 실수배 > 평행 조건",
+          "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-070",
+          "path": "벡터 > 벡터의 연산 > 벡터의 실수배 > 내분·외분",
+          "subUnitKey": "H22-GE-05-VECTOR_COMPONENT",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+          "label": "평면벡터 문제",
+          "templates": [
+            {
+              "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+              "label": "벡터의 기본 연산"
+            },
+            {
+              "templateKey": "TPL_GEO_PLANE_VECTOR_ANGLE",
+              "label": "벡터 각"
+            },
+            {
+              "templateKey": "TPL_GEO_PLANE_VECTOR_DOT",
+              "label": "내적 계산"
+            },
+            {
+              "templateKey": "TPL_GEO_PLANE_VECTOR_DOT_ZERO",
+              "label": "내적 영 수직 조건"
+            },
+            {
+              "templateKey": "TPL_GEO_PLANE_VECTOR_EXTREMA",
+              "label": "내적 최적화"
+            },
+            {
+              "templateKey": "TPL_GEO_PLANE_VECTOR_LOCUS",
+              "label": "내적 자취"
+            },
+            {
+              "templateKey": "TPL_GEO_PLANE_VECTOR_PARAMETER",
+              "label": "벡터 조건"
+            },
+            {
+              "templateKey": "TPL_GEO_PLANE_VECTOR_PROJECTION",
+              "label": "정사영"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+          "label": "공간좌표",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_GEO_VECTOR",
+          "label": "벡터",
+          "templates": []
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H22-GE-06",
+      "label": "벡터의 성분",
+      "order": 6,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-GE-06-VECTOR_BASIC",
+          "label": "벡터의 뜻과 연산"
+        },
+        {
+          "subUnitKey": "H22-GE-06-VECTOR_COMPONENT",
+          "label": "벡터의 성분"
+        },
+        {
+          "subUnitKey": "H22-GE-06-VECTOR_DOT",
+          "label": "벡터의 내적"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-GEO-RPM-071",
+          "path": "벡터 > 벡터의 성분과 내적 > 벡터의 성분 > 성분 계산",
+          "subUnitKey": "H22-GE-06-VECTOR_COMPONENT",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-072",
+          "path": "벡터 > 벡터의 성분과 내적 > 벡터의 성분 > 크기",
+          "subUnitKey": "H22-GE-06-VECTOR_COMPONENT",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-075",
+          "path": "벡터 > 벡터의 성분과 내적 > 도형에의 활용 > 수직·평행",
+          "subUnitKey": "H22-GE-06-VECTOR_COMPONENT",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-076",
+          "path": "벡터 > 벡터의 성분과 내적 > 도형에의 활용 > 거리·각",
+          "subUnitKey": "H22-GE-06-VECTOR_COMPONENT",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+          "label": "평면벡터 문제",
+          "templates": [
+            {
+              "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+              "label": "벡터의 기본 연산"
+            },
+            {
+              "templateKey": "TPL_GEO_PLANE_VECTOR_ANGLE",
+              "label": "벡터 각"
+            },
+            {
+              "templateKey": "TPL_GEO_PLANE_VECTOR_DOT",
+              "label": "내적 계산"
+            },
+            {
+              "templateKey": "TPL_GEO_PLANE_VECTOR_DOT_ZERO",
+              "label": "내적 영 수직 조건"
+            },
+            {
+              "templateKey": "TPL_GEO_PLANE_VECTOR_EXTREMA",
+              "label": "내적 최적화"
+            },
+            {
+              "templateKey": "TPL_GEO_PLANE_VECTOR_LOCUS",
+              "label": "내적 자취"
+            },
+            {
+              "templateKey": "TPL_GEO_PLANE_VECTOR_PARAMETER",
+              "label": "벡터 조건"
+            },
+            {
+              "templateKey": "TPL_GEO_PLANE_VECTOR_PROJECTION",
+              "label": "정사영"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_GEO_VECTOR",
+          "label": "벡터",
+          "templates": []
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H22-GE-07",
+      "label": "벡터의 내적",
+      "order": 7,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-GE-07-VECTOR_BASIC",
+          "label": "벡터의 뜻과 연산"
+        },
+        {
+          "subUnitKey": "H22-GE-07-VECTOR_COMPONENT",
+          "label": "벡터의 성분"
+        },
+        {
+          "subUnitKey": "H22-GE-07-VECTOR_DOT",
+          "label": "벡터의 내적"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-GEO-RPM-073",
+          "path": "벡터 > 벡터의 성분과 내적 > 내적 > 내적 계산",
+          "subUnitKey": "H22-GE-07-VECTOR_DOT",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-074",
+          "path": "벡터 > 벡터의 성분과 내적 > 내적 > 두 벡터의 각",
+          "subUnitKey": "H22-GE-07-VECTOR_DOT",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_GEO_PARABOLA",
+          "label": "포물선 문제",
+          "templates": [
+            {
+              "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+              "label": "포물선 초점·준선 관계 활용"
+            },
+            {
+              "templateKey": "TPL_GEO_PARABOLA_STANDARD_EQUATION",
+              "label": "포물선 표준방정식 해석"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_GEO_VECTOR",
+          "label": "벡터",
+          "templates": []
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H22-GE-08",
+      "label": "도형의 방정식",
+      "order": 8,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-GE-08-CORE",
+          "label": "도형의 방정식 핵심 개념"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-GEO-RPM-077",
+          "path": "벡터 > 도형의 방정식 > 벡터를 이용한 직선 > 방향벡터",
+          "subUnitKey": "H22-GE-08-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-078",
+          "path": "벡터 > 도형의 방정식 > 벡터를 이용한 직선 > 두 점을 지나는 직선",
+          "subUnitKey": "H22-GE-08-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-079",
+          "path": "벡터 > 도형의 방정식 > 벡터를 이용한 평면 > 법선벡터",
+          "subUnitKey": "H22-GE-08-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-080",
+          "path": "벡터 > 도형의 방정식 > 벡터를 이용한 평면 > 평면의 방정식",
+          "subUnitKey": "H22-GE-08-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-081",
+          "path": "벡터 > 도형의 방정식 > 거리와 위치 관계 > 점과 직선·평면 거리",
+          "subUnitKey": "H22-GE-08-CORE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-GEO-RPM-082",
+          "path": "벡터 > 도형의 방정식 > 거리와 위치 관계 > 교점·각",
+          "subUnitKey": "H22-GE-08-CORE",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_GEO_PLANE_EQUATION",
+          "label": "평면의 방정식",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_GEO_SPACE_LINE",
+          "label": "공간직선",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_GEO_SPHERE",
+          "label": "구",
+          "templates": []
+        }
+      ]
+    }
+  ],
+  "termCandidates": [
+    {
+      "term": "꼭짓점",
+      "matchedAs": "꼭짓점",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "항구 $O$를 꼭짓점으로 하는 포물"
+    },
+    {
+      "term": "방정식",
+      "matchedAs": "방정식",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "하는 포물선의 방정식과 점 $P$의"
+    },
+    {
+      "term": "포물선",
+      "matchedAs": "포물선",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "짓점으로 하는 포물선 모양의 해안선"
+    },
+    {
+      "term": "거리",
+      "matchedAs": "거리",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "$A$ 사이의 거리는 $15$이고"
+    },
+    {
+      "term": "길이",
+      "matchedAs": "길이",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "이프라인의 총 길이가 최소가 되도"
+    },
+    {
+      "term": "논리",
+      "matchedAs": "논리",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "P$의 위치를 논리적으로 서술하시"
+    },
+    {
+      "term": "부분",
+      "matchedAs": "부분",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "x$축의 양의 부분에 위치하며,"
+    },
+    {
+      "term": "예각",
+      "matchedAs": "예각",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "방향이 이루는 예각의 크기를 $\\"
+    },
+    {
+      "term": "원점",
+      "matchedAs": "원점",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "는 좌표평면의 원점이고, 기지국"
+    },
+    {
+      "term": "위치",
+      "matchedAs": "위치",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "점 $P$의 위치를 논리적으로"
+    },
+    {
+      "term": "조건",
+      "matchedAs": "조건",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "3점) 또한 <조건>을 만족하는"
+    },
+    {
+      "term": "좌표",
+      "matchedAs": "좌표",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "점 $P$의 좌표를 구하고, 과"
+    },
+    {
+      "term": "직선",
+      "matchedAs": "직선",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "이다. (나) 직선 $AB$와 $"
+    },
+    {
+      "term": "초점",
+      "matchedAs": "초점",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "지국 $A$를 초점으로 하고 항구"
+    },
+    {
+      "term": "최솟값",
+      "matchedAs": "최소",
+      "kind": "행위",
+      "src": "stem",
+      "quote": "의 총 길이가 최소가 되도록 하는"
+    },
+    {
+      "term": "평면",
+      "matchedAs": "평면",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "$O$는 좌표평면의 원점이고,"
+    },
+    {
+      "term": "꼭짓점",
+      "matchedAs": "꼭짓점",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "5,0)$이고 꼭짓점이 원점이므로"
+    },
+    {
+      "term": "방정식",
+      "matchedAs": "방정식",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "2. **(방정식 및 좌표 계산"
+    },
+    {
+      "term": "사분면",
+      "matchedAs": "사분면",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "$B$는 제1사분면에 있으므로 $"
+    },
+    {
+      "term": "포물선",
+      "matchedAs": "포물선",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "서술)**: 포물선의 준선을 $l"
+    },
+    {
+      "term": "교점",
+      "matchedAs": "교점",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "$와 포물선의 교점이어야 한다."
+    },
+    {
+      "term": "대입",
+      "matchedAs": "대입",
+      "kind": "방법",
+      "src": "solution",
+      "quote": "2=60x$에 대입하면 $16=6"
+    },
+    {
+      "term": "선분",
+      "matchedAs": "선분",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "점 $P$가 선분 $BH_0$와"
+    },
+    {
+      "term": "수선",
+      "matchedAs": "수선",
+      "kind": "조건",
+      "src": "solution",
+      "quote": "$l$에 내린 수선의 발을 $H$"
+    },
+    {
+      "term": "원점",
+      "matchedAs": "원점",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "이고 꼭짓점이 원점이므로 포물선의"
+    },
+    {
+      "term": "위치",
+      "matchedAs": "위치",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "(점 $P$의 위치 서술)**:"
+    },
+    {
+      "term": "정의",
+      "matchedAs": "정의",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "하면 포물선의 정의에 의해 $\\o"
+    },
+    {
+      "term": "조건",
+      "matchedAs": "조건",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "60x$이다. 조건 (나)에서 $"
+    },
+    {
+      "term": "좌표",
+      "matchedAs": "좌표",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "*(방정식 및 좌표 계산)**:"
+    },
+    {
+      "term": "준선",
+      "matchedAs": "준선",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "*: 포물선의 준선을 $l$이라"
+    },
+    {
+      "term": "직선",
+      "matchedAs": "직선",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "축과 평행한 직선과 포물선의 교"
+    },
+    {
+      "term": "초점",
+      "matchedAs": "초점",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "계산)**: 초점이 $A(15,"
+    },
+    {
+      "term": "최솟값",
+      "matchedAs": "최소",
+      "kind": "행위",
+      "src": "solution",
+      "quote": "고, 이 값이 최소가 되려면 점"
+    },
+    {
+      "term": "통과",
+      "matchedAs": "지나",
+      "kind": "조건",
+      "src": "solution",
+      "quote": "$는 $B$를 지나고 포물선의 축"
+    },
+    {
+      "term": "평행",
+      "matchedAs": "평행",
+      "kind": "조건",
+      "src": "solution",
+      "quote": "포물선의 축과 평행한 직선과 포물"
+    }
+  ],
+  "figure": {
+    "cueWords": [
+      {
+        "word": "그림",
+        "quote": "[서술형 1] 다음 그림과 같이 해안 기지국"
+      },
+      {
+        "word": "위의",
+        "quote": "B$에서 해안선 도로 위의 저장 시설 $P$를"
+      },
+      {
+        "word": "좌표평면",
+        "quote": "(단, 항구 $O$는 좌표평면의 원점이고, 기지국"
+      }
+    ],
+    "hasPlan": true,
+    "problemPlanRef": "archive/exams/similar/high/h2/2mid/26_금당고_2학기_중간_고2_기하_유사_plans/q19-problem.plan.json",
+    "hasImage": false,
+    "sourcePlan": {
+      "plan": true
+    },
+    "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
+  },
+  "sourceExamHint": {
+    "exam": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+    "sourceQid": 19,
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_STANDARD_EQUATION"
+  },
+  "guide": "JUDGMENT_GUIDE.md 를 먼저 읽는다. 후보 밖 키는 쓸 수 없다. 모든 이유 문장에는 이 문항의 숫자·식을 넣는다."
+}

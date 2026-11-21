@@ -1,0 +1,59 @@
+{
+  "qid": 20,
+  "itemFingerprint": "ce05788748acf1c1",
+  "solveSteps": [
+    "직각을 낀 두 변이 $2$인 직각이등변삼각형의 빗변의 길이는 $2\\sqrt{2}$이다.",
+    "첫 정사각형의 한 변의 길이를 $s$라 하면 양 끝에 생기는 직각이등변삼각형의 빗변 위의 조각 길이도 각각 $s$이므로 $3s = 2\\sqrt{2} \\implies s = \\frac{2\\sqrt{2}}{3}$이다.",
+    "따라서 첫 정사각형의 넓이는 $A_1 = s^2 = \\frac{8}{9}$이다.",
+    "각 단계마다 남는 직각이등변삼각형의 닮음비는 $\\frac{s}{2} = \\frac{\\sqrt{2}}{3}$이고 개수가 $2$배씩 늘어나므로 새로 색칠되는 넓이의 비(공비)는 $r = 2 \\times \\left(\\frac{\\sqrt{2}}{3}\\right)^2 = \\frac{4}{9}$이다.",
+    "따라서 $S_6$은 첫째항 $\\frac{8}{9}$, 공비 $\\frac{4}{9}$인 등비수열의 제$6$항까지의 합이므로  \n$$S_6 = \\frac{\\frac{8}{9}\\left(1 - \\left(\\frac{4}{9}\\right)^6\\right)}{1 - \\frac{4}{9}} = \\frac{8}{5}\\left(1 - \\left(\\frac{2}{3}\\right)^{12}\\right)$$  \n그러므로 $p = 5, q = 8, m = 2, n = 3$이고 $p + q + m + n = 5 + 8 + 2 + 3 = 18$이다."
+  ],
+  "solvedAnswer": "$18$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-06",
+  "subUnitKey": "H22-A-06-SEQUENCE_APPLICATION",
+  "unitEvidence": "직각을 낀 두 변의 길이가 $2$인 직각이등변삼각형이 ",
+  "rpmRecordId": "H2-M1-RPM-121",
+  "rpmReason": "Q20(12): 수열의 활용 단원의 RPM H2-M1-RPM-121 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+  "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_121",
+  "typeReason": "Q20(12): 수열의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(12): 수열의 활용 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "자연수, $m, n$은 서로소인 자연수이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "직각을 낀 두 변이 $2$인 직각이등변삼각형의",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q20(12): 발문과 해설의 풀이 과정을 점검하여 정답 $18$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

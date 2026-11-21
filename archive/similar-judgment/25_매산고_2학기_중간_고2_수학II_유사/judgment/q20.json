@@ -1,0 +1,58 @@
+{
+  "qid": 20,
+  "itemFingerprint": "807737c5afe676fb",
+  "solveSteps": [
+    "$a\\ne g(a)$이므로 조건 (가)의 우변을 인수분해하여 정리하면 다음과 같다. (kx)",
+    "$$f'(a) = 3a^2 + k = \\frac{a^3 - g(a)^3 + k{a-g(a)}}{a-g(a)} = a^2 + ag(a) + g(a)^2 + k$$\n\n$$2a^2 - ag(a) - g(a)^2 = (a-g(a))(2a+g(a)) = 0$$\n\n$0$이 아닌 실수 $a$에 대하여 $g(a)\\ne a$이고 $g$는 다항함수이므로 $g(x) = -2x$이다.",
+    "따라서 $f'(g(x)) = 3(-2x)^2 + k = 12x^2 + k$이므로 조건 (나)의 방정식은 다음과 같다.",
+    "$$(3x^2+k)(12x^2+k) = k^2 \\implies 3x^2(12x^2+5k) = 0$$\n\n$0$이 아닌 두 실근은 $x = \\pm\\sqrt{-\\dfrac{5k}{12}}$이고, 두 근의 곱이 $-10$이므로\n\n$$\\frac{5k}{12} = -10 \\implies k = -24$$\n\n따라서 $\\dfrac{k}{6} = -4$이므로 $g(-4) = -2(-4) = 8$이다."
+  ],
+  "solvedAnswer": "8",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-M2-04",
+  "subUnitKey": "H15-M2-04-DERIVATIVE",
+  "unitEvidence": "[서답형 6번] 삼차함수 $f(x)=x^3+kx$에 대",
+  "rpmRecordId": "H2-M2-RPM-015",
+  "rpmReason": "Q20(kx): 도함수 단원의 RPM H2-M2-RPM-015 유형에 해당한다.",
+  "problemTypeKey": "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+  "templateKey": "TPL_LOCAL_DERIVATIVE_CONSTRAINT_FUNCTION_DETERMINE",
+  "typeReason": "Q20(kx): 도함수 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(kx): 도함수 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "ht)$의 값을 구하고 그 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$a\\ne g(a)$이므로 조건 (가)의 우변",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q20(kx): 발문과 해설의 풀이 과정을 점검하여 정답 8를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

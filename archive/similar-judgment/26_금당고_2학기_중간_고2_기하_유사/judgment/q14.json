@@ -1,0 +1,60 @@
+{
+  "qid": 14,
+  "itemFingerprint": "cdc7de97125e54f5",
+  "solveSteps": [
+    "포물선 $y^2=12x$ 위의 점 $P(3,6)$에서의 접선은 $6y=6(x+3)$, 즉 $y=x+3$이므로 기울기는 $1$이다.",
+    "이에 수직이고 점 $A(3,0)$을 지나는 직선 $l$의 방정식은 $y=-(x-3)$, 즉 $x=3-y$이다.",
+    "포물선 $y^2=12x$와 연립하면 $y^2=12(3-y) \\implies y^2+12y-36=0$이다.",
+    "두 교점 $Q, R$의 $y$좌표를 $y_1, y_2$라 하면 $y_1+y_2=-12$, $y_1 y_2=-36$이므로 $(y_1-y_2)^2=144+144=288$이다.",
+    "직선 $l$의 기울기가 $-1$이므로\n\n$$\\overline{QR} = \\sqrt{2}|y_1-y_2| = \\sqrt{2\\cdot 288} = \\sqrt{576} = 24$$\n\n이다.",
+    "정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-GE-02",
+  "subUnitKey": "H22-GE-02-CORE",
+  "unitEvidence": "다음 그림과 같이 포물선 $y^2=12x$ 위의 점 $",
+  "rpmRecordId": "H2-GEO-RPM-047",
+  "rpmReason": "Q14(12): 이차곡선의 접선 핵심 개념 단원의 RPM H2-GEO-RPM-047 유형에 해당한다.",
+  "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+  "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+  "typeReason": "Q14(12): 이차곡선의 접선 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(12): 이차곡선의 접선 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "때, $\\overline{QR}$의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "포물선 $y^2=12x$ 위의 점 $P(3,6",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q14(12): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

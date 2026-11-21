@@ -1,0 +1,59 @@
+{
+  "qid": 3,
+  "itemFingerprint": "595ebf6a1a06272c",
+  "solveSteps": [
+    "$x=-1$에서 미분가능하려면 먼저 연속이어야 하고 좌미분계수와 우미분계수가 같아야 한다. (cases)",
+    "1.",
+    "좌미분계수와 우미분계수의 일치: $$a = \\left.(x^4)'\\right|_{x=-1} = 4(-1)^3 = -4$$  \n2.",
+    "$x=-1$에서의 연속 조건: $$-a + b = (-1)^4 = 1 \\implies 4 + b = 1 \\implies b = -3$$\n\n따라서 $|a-b| = |-4 - (-3)| = 1$이다.",
+    "정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-M2-04",
+  "subUnitKey": "H15-M2-04-DERIVATIVE",
+  "unitEvidence": "함수 $f(x)=\\begin{cases}ax+b&(x\\",
+  "rpmRecordId": "H2-M2-RPM-015",
+  "rpmReason": "Q3(cases): 도함수 단원의 RPM H2-M2-RPM-015 유형에 해당한다.",
+  "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+  "templateKey": "TPL_DIFFERENTIABILITY_POINT_CONDITION",
+  "typeReason": "Q3(cases): 도함수 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q3(cases): 도함수 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$에 대하여 $|a-b|$의 값을 구한 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$x=-1$에서 미분가능하려면 먼저 연속이어야",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q3(cases): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

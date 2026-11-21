@@ -1,0 +1,59 @@
+{
+  "qid": 12,
+  "itemFingerprint": "3b4625c79353b38e",
+  "solveSteps": [
+    "$F(x) = x^3 - 6x^2 + 3x + 8$이라 하면 $F'(x) = 3x^2 - 12x + 3$이다. (143)",
+    "접점의 $x$좌표를 $t$라 하면 접선의 방정식은 다음과 같다.",
+    "$$y = (3t^2-12t+3)(x-t) + (t^3-6t^2+3t+8)$$\n\n이 접선이 점 $(1,\\ k)$를 지나므로 $x=1,\\ y=k$를 대입하여 정리한다.",
+    "$$\\begin{aligned} k &= (3t^2-12t+3)(1-t) + (t^3-6t^2+3t+8) \\ &= -2t^3 + 9t^2 - 12t + 11 \\ &\\implies 2t^3 - 9t^2 + 12t + k - 11 = 0 \\end{aligned}$$\n\n세 실근을 등비수열의 순서대로 $\\alpha,\\ \\beta,\\ \\gamma$라 하면 $\\beta^2 = \\alpha\\gamma$이고 근과 계수의 관계에서 다음과 같다.",
+    "$$\\alpha+\\beta+\\gamma = \\frac{9}{2}, \\qquad \\alpha\\beta+\\beta\\gamma+\\gamma\\alpha = 6, \\qquad \\alpha\\beta\\gamma = \\frac{11-k}{2}$$\n\n$$\\alpha\\beta+\\beta\\gamma+\\alpha\\gamma = \\beta(\\alpha+\\gamma)+\\beta^2 = \\beta(\\alpha+\\beta+\\gamma) = 6 \\implies \\beta\\cdot\\frac{9}{2} = 6 \\implies \\beta = \\frac{4}{3}$$\n\n따라서 $\\alpha\\beta\\gamma = \\beta^3$이므로\n\n$$\\frac{11-k}{2} = \\left(\\frac{4}{3}\\right)^3 = \\frac{64}{27} \\implies k = 11 - \\frac{128}{27} = \\frac{169}{27}$$\n\n따라서 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-M2-05",
+  "subUnitKey": "H15-M2-05-TANGENT",
+  "unitEvidence": "점 $(1,\\ k)$에서 곡선 $y=x^3-6x^2+3",
+  "rpmRecordId": "H2-M2-RPM-019",
+  "rpmReason": "Q12(143): 접선의 방정식 단원의 RPM H2-M2-RPM-019 유형에 해당한다.",
+  "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+  "templateKey": "TPL_TANGENCY_RELATION_GEOMETRY",
+  "typeReason": "Q12(143): 접선의 방정식 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q12(143): 접선의 방정식 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "을 이룬다고 한다. $k$의 값을 구한 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$F(x) = x^3 - 6x^2 + 3x +",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q12(143): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

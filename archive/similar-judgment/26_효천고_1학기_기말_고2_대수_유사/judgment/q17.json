@@ -1,0 +1,59 @@
+{
+  "qid": 17,
+  "itemFingerprint": "981a84eea85d4006",
+  "solveSteps": [
+    "$AB \\parallel DC$이므로 평행사변형의 넓이와 $\\triangle EBC$의 높이가 $h$로 같다.",
+    "넓이 비 조건에서 $\\frac{\\frac{1}{2}\\overline{CE}\\cdot h}{30h} = \\frac{1}{5} \\implies \\overline{CE} = 12$이므로 $\\overline{DE} = 30 - 12 = 18$이다.",
+    "접은 각과 엇각에 의해 $\\angle DBE = \\angle ABD = \\angle BDE$이므로 $\\triangle DEB$는 이등변삼각형이고 $\\overline{EB} = \\overline{DE} = 18$이다.",
+    "$\\overline{CE}, \\overline{EB}, \\overline{BD}$가 등비수열이므로 $18^2 = 12 \\cdot \\overline{BD} \\implies \\overline{BD} = 27$이다.",
+    "$\\angle BDE = \\theta$라 하면 $\\triangle DBE$에서 코사인법칙에 의해  \n$$18^2 = 27^2 + 18^2 - 2 \\cdot 27 \\cdot 18 \\cos\\theta \\implies \\cos\\theta = \\frac{27}{36} = \\frac{3}{4}$$  \n$\\angle ABD = \\theta$이므로 $\\triangle ABD$에서 코사인법칙에 의해  \n$$\\overline{AD}^2 = 30^2 + 27^2 - 2 \\cdot 30 \\cdot 27 \\cdot \\frac{3}{4} = 900 + 729 - 1215 = 414 \\implies \\overline{AD} = 3\\sqrt{46}$$."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-06",
+  "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+  "unitEvidence": "$\\overline{AB} = 30$인 평행사변형 $A",
+  "rpmRecordId": "H2-M1-RPM-115",
+  "rpmReason": "Q17(AB): 수열의 기본 단원의 RPM H2-M1-RPM-115 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+  "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_118",
+  "typeReason": "Q17(AB): 수열의 기본 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 5,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(AB): 수열의 기본 단원의 기본 개념과 계산을 적용하는 난이도 5 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "등비수열을 이룰 때, 선분 $AD$의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$AB \\parallel DC$이므로 평행사변",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q17(AB): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

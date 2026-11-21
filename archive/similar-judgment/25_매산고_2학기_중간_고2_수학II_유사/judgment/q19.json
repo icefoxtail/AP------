@@ -1,0 +1,60 @@
+{
+  "qid": 19,
+  "itemFingerprint": "d174d8968082013a",
+  "solveSteps": [
+    "주어진 극한은 $h(x) = |x-a|^n$의 $x=5$에서의 미분계수 $h'(5)$이다.",
+    "$a=5$이면 극한은 $n=1$일 때 존재하지 않고 $n\\ge 2$일 때 $0$이므로 자연수 $b$가 될 수 없다.",
+    "따라서 $a\\ne 5$이고, $x=5$ 근방에서 $h'(5) = n(5-a)|5-a|^{n-2} = b > 0$이다.",
+    "$b > 0$이므로 $a < 5$, 즉 $a \\in {1,\\ 2,\\ 3,\\ 4}$이다.",
+    "각 $a$에 대해 $b < 10$인 경우를 조사하면 다음과 같다.",
+    "- $a = 4$: $b = n$이므로 $n = 9$일 때 $b = 9$가 최대이고 $a^2+b^2 = 4^2+9^2 = 97$  \n- $a = 3$: $b = n\\cdot 2^{n-1} < 10$에서 최대는 $n = 2,\\ b = 4$이고 $a^2+b^2 = 3^2+4^2 = 25$  \n- $a = 2$: $b = n\\cdot 3^{n-1} < 10$에서 최대는 $n = 2,\\ b = 6$이고 $a^2+b^2 = 2^2+6^2 = 40$  \n- $a = 1$: $b = n\\cdot 4^{n-1} < 10$에서 최대는 $n = 2,\\ b = 8$이고 $a^2+b^2 = 1^2+8^2 = 65$\n\n따라서 $a^2+b^2$의 최댓값은 $97$이다."
+  ],
+  "solvedAnswer": "97",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-M2-03",
+  "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
+  "unitEvidence": "[서답형 5번] $10$보다 작은 세 자연수 $a,\\ ",
+  "rpmRecordId": "H2-M2-RPM-013",
+  "rpmReason": "Q19(10): 미분계수 단원의 RPM H2-M2-RPM-013 유형에 해당한다.",
+  "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+  "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+  "typeReason": "Q19(10): 미분계수 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q19(10): 미분계수 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "2$의 최댓값을 구하고 그 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "주어진 극한은 $h(x) = |x-a|^n$의",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q19(10): 발문과 해설의 풀이 과정을 점검하여 정답 97를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

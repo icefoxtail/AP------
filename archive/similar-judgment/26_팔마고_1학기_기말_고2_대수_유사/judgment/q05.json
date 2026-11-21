@@ -1,0 +1,56 @@
+{
+  "qid": 5,
+  "itemFingerprint": "f5a9c72f35213d41",
+  "solveSteps": [
+    "$n$개의 원판을 옮기려면 위의 $n - 1$개를 보조 기둥에 옮긴 뒤($a_{n-1}$회), 가장 큰 원판을 목표 기둥에 옮기고($1$회), 다시 $n - 1$개를 목표 기둥 위로 옮겨야($a_{n-1}$회) 한다.",
+    "따라서 $a_n = 2a_{n-1} + 1$이고 $a_2 = 3$에서 차례로 계산하면  \n$a_3 = 7$, $a_4 = 15$, $a_5 = 31$, $a_6 = 63$, $a_7 = 2 \\times 63 + 1 = 127$이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-08",
+  "subUnitKey": "H22-A-08-CORE",
+  "unitEvidence": "세 기둥 중에서 한 기둥에 크기가 서로 다른 $n$개의",
+  "rpmRecordId": "H2-M1-RPM-129",
+  "rpmReason": "Q5(31): 수학적 귀납법 핵심 개념 단원의 RPM H2-M1-RPM-129 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_08_RECURSIVE_SEQUENCE",
+  "templateKey": "TPL_H22A_08_RECURSIVE_SEQUENCE_129",
+  "typeReason": "Q5(31): 수학적 귀납법 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q5(31): 수학적 귀납법 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "3$이다. $a_7$의 값으로 알맞은 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$n$개의 원판을 옮기려면 위의 $n - 1$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q5(31): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

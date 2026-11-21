@@ -1,0 +1,59 @@
+{
+  "qid": 8,
+  "itemFingerprint": "de476b232e4c717c",
+  "solveSteps": [
+    "그림에서 곡선 $y=f(x)$는 $(0, p)$에서 직선 $y=\\dfrac{1}{3}x$보다 아래에 있고, $x>p$에서 직선보다 위에 있으며 점 $P$에서 직선을 아래에서 위로 관통한다.",
+    "- ㄱ: 점 $P$에서 곡선의 접선 기울기가 직선의 기울기 $\\dfrac{1}{3}$보다 크므로 $f'(p) > \\dfrac{1}{3}$이다.",
+    "(참)  \n- ㄴ: $f(a) < \\dfrac{1}{3}a$, $f(b) > \\dfrac{1}{3}b$이므로 $f(a)-f(b) < \\dfrac{1}{3}(a-b)$이다.",
+    "(거짓)  \n- ㄷ: $h(x) = f(x) - \\dfrac{1}{3}x$라 두면 $h(0) = h(p) = 0$이고 닫힌구간 $[0, p]$에서 연속, 열린구간 $(0, p)$에서 미분가능하므로 롤의 정리에 의하여 $h'(\\alpha) = 0$, 즉 $f'(\\alpha) = \\dfrac{1}{3}$인 $\\alpha \\in (0, p)$가 적어도 하나 존재한다.",
+    "(참)\n\n따라서 옳은 것은 ㄱ, ㄷ이므로 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-M2-06",
+  "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+  "unitEvidence": "미분가능한 함수 $f(x)$의 그래프와 직선 $y=\\d",
+  "rpmRecordId": "H2-M2-RPM-021",
+  "rpmReason": "Q8(f): 도함수의 활용 단원의 RPM H2-M2-RPM-021 유형에 해당한다.",
+  "problemTypeKey": "PT_MEAN_VALUE_THEOREM",
+  "templateKey": "TPL_MVT_ROLLE_DIRECT",
+  "typeReason": "Q8(f): 도함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q8(f): 도함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "간 $(0,\\ p)$에 적어도 하나 존재한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "그림에서 곡선 $y=f(x)$는 $(0, p)",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q8(f): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

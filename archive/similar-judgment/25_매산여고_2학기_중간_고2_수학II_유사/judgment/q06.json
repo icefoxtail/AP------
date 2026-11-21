@@ -1,0 +1,57 @@
+{
+  "qid": 6,
+  "itemFingerprint": "be5dadc3d17c0f5a",
+  "solveSteps": [
+    "주어진 극한은 $\\dfrac{1}{2}\\lim_{h\\to 0}\\dfrac{f(5+h)-f(5)}{h} = \\dfrac{1}{2}f'(5)$이다.",
+    "$f'(x) = 2x - 4$이므로 $f'(5) = 10 - 4 = 6$이고, 구하는 값은 $\\dfrac{1}{2}\\times 6 = 3$이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-M2-03",
+  "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
+  "unitEvidence": "함수 $f(x)=x^2-4x+5$에 대하여 $\\lim_",
+  "rpmRecordId": "H2-M2-RPM-013",
+  "rpmReason": "Q6(10): 미분계수 단원의 RPM H2-M2-RPM-013 유형에 해당한다.",
+  "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+  "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+  "typeReason": "Q6(10): 미분계수 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q6(10): 미분계수 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "ac{f(5+h)-f(5)}{2h}$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "주어진 극한은 $\\dfrac{1}{2}\\lim",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q6(10): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

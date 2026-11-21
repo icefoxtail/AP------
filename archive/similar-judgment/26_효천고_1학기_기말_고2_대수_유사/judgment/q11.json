@@ -1,0 +1,57 @@
+{
+  "qid": 11,
+  "itemFingerprint": "9caf98a3df1c5493",
+  "solveSteps": [
+    "매 시행마다 짝수 번째 항을 지우므로 남은 항들의 원래 번호 간격이 $2$배씩 커진다.",
+    "$7$번째 시행 후 남은 수열의 제$5$항의 원래 번호는 $1 + (5 - 1) \\times 2^7 = 1 + 4 \\times 128 = 513$이다.",
+    "원래 등차수열에서 $a_{513} = 3 + (513 - 1) \\times \\frac{1}{4} = 3 + 128 = 131$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-06",
+  "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+  "unitEvidence": "첫째항이 $3$, 공차가 $\\frac{1}{4}$인 등",
+  "rpmRecordId": "H2-M1-RPM-115",
+  "rpmReason": "Q11(131): 수열의 기본 단원의 RPM H2-M1-RPM-115 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+  "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
+  "typeReason": "Q11(131): 수열의 기본 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q11(131): 수열의 기본 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "일곱 번째 시행 후 남은 수열의 제$5$항은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "매 시행마다 짝수 번째 항을 지우므로 남은 항",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q11(131): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

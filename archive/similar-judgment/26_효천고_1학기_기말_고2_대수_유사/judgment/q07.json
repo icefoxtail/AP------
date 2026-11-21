@@ -1,0 +1,57 @@
+{
+  "qid": 7,
+  "itemFingerprint": "38465107584f6ab8",
+  "solveSteps": [
+    "$a_1 = S_1 = 1 + 5 = 6$이고, $n \\ge 2$일 때 $a_n = S_n - S_{n-1} = (n^2 + 5n) - \\{(n-1)^2 + 5(n-1)\\} = 2n + 4$이다.",
+    "$n = 1$일 때도 $2(1) + 4 = 6 = a_1$이므로 모든 자연수 $n$에 대하여 $a_n = 2n + 4$이다.",
+    "부등식 $2n + 4 < 41$에서 $2n < 37 \\implies n < 18.5$이므로 자연수 $n$은 $1, 2, \\dots, 18$의 $18$개다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-06",
+  "subUnitKey": "H22-A-06-SEQUENCE_APPLICATION",
+  "unitEvidence": "수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합",
+  "rpmRecordId": "H2-M1-RPM-121",
+  "rpmReason": "Q7(41): 수열의 활용 단원의 RPM H2-M1-RPM-121 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+  "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_121",
+  "typeReason": "Q7(41): 수열의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q7(41): 수열의 활용 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "만족시키는 자연수 $n$의 개수를 구한 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$a_1 = S_1 = 1 + 5 = 6$이고",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q7(41): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

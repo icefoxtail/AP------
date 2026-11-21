@@ -1,0 +1,58 @@
+{
+  "qid": 16,
+  "itemFingerprint": "338af7bb4c8a5c5f",
+  "solveSteps": [
+    "$f(x) = \\begin{cases}3x+4 & (x<1)\\ 5x+2 & (x\\ge 1)\\end{cases}$이다.",
+    "- $x<1$: $mx=3x+4 \\implies x=\\dfrac{4}{m-3}<1 \\iff m<3$ 또는 $m>7$  \n- $x\\ge 1$: $mx=5x+2 \\implies x=\\dfrac{2}{m-5}\\ge 1 \\iff 5<m\\le 7$\n\n따라서 $g(m)=1$ ($m<3$), $0$ ($3\\le m\\le 5$), $1$ ($m>5$)이므로 $g$는 $m=3,\\ 5$에서 불연속이다.",
+    "그러므로 $h(x)=(x-3)(x-5)$이고 $h(9)=6\\times 4 = 24$이다.",
+    "정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-M2-02",
+  "subUnitKey": "H15-M2-02-CONTINUITY",
+  "unitEvidence": "실수 $m$에 대하여 직선 $y=mx$와 함수 $f(x",
+  "rpmRecordId": "H2-M2-RPM-007",
+  "rpmReason": "Q16(mx): 함수의 연속 단원의 RPM H2-M2-RPM-007 유형에 해당한다.",
+  "problemTypeKey": "PT_CONTINUITY_CONDITION",
+  "templateKey": "TPL_CONTINUITY_FACTOR_CONDITION",
+  "typeReason": "Q16(mx): 함수의 연속 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q16(mx): 함수의 연속 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "의 집합에서 연속일 때, $h(9)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$f(x) = \\begin{cases}3x+4",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q16(mx): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

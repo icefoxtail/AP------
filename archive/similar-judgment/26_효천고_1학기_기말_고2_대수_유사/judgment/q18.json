@@ -1,0 +1,56 @@
+{
+  "qid": 18,
+  "itemFingerprint": "81ccdae0b09b5fae",
+  "solveSteps": [
+    "첫째항을 $a_1$, 공비를 $r$이라 하면 $a_5 = a_2 r^3$에서 $81 = 3r^3 \\implies r^3 = 27 \\implies r = 3$이다.",
+    "$a_2 = a_1 r = 3$에서 $a_1 = 1$이므로 일반항은 $a_n = 3^{n-1}$이다."
+  ],
+  "solvedAnswer": "$a_n = 3^{n-1}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-06",
+  "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+  "unitEvidence": "[단답형1] 제$2$항이 $3$이고 제$5$항이 $81",
+  "rpmRecordId": "H2-M1-RPM-115",
+  "rpmReason": "Q18(81): 수열의 기본 단원의 RPM H2-M1-RPM-115 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+  "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_118",
+  "typeReason": "Q18(81): 수열의 기본 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(81): 수열의 기본 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$인 등비수열의 일반항 $a_n$을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "첫째항을 $a_1$, 공비를 $r$이라 하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q18(81): 발문과 해설의 풀이 과정을 점검하여 정답 $a_n = 3^{n-1}$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

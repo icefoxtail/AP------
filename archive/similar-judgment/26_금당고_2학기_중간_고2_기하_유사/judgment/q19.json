@@ -1,0 +1,62 @@
+{
+  "qid": 19,
+  "itemFingerprint": "58d712a4519070ec",
+  "solveSteps": [
+    "1.",
+    "**(점 $P$의 위치 서술)**: 포물선의 준선을 $l$이라 하고, 포물선 위의 점 $P$에서 준선 $l$에 내린 수선의 발을 $H$라 하면 포물선의 정의에 의해 $\\overline{PA}=\\overline{PH}$이다.",
+    "따라서 $\\overline{BP}+\\overline{PA}=\\overline{BP}+\\overline{PH}$이고, 이 값이 최소가 되려면 점 $B$에서 준선 $l$에 내린 수선의 발을 $H_0$라 할 때 점 $P$가 선분 $BH_0$와 포물선의 교점이어야 한다.",
+    "(즉, $P$는 $B$를 지나고 포물선의 축과 평행한 직선과 포물선의 교점이다.)  \n     \n2.",
+    "**(방정식 및 좌표 계산)**: 초점이 $A(15,0)$이고 꼭짓점이 원점이므로 포물선의 방정식은 $y^2=60x$이다.",
+    "조건 (나)에서 $\\cos\\theta=\\frac{3}{5}$이므로 $\\sin\\theta=\\frac{4}{5}$이고, 그림에서 $B$는 제1사분면에 있으므로 $B\\left(15+5\\cdot\\frac{3}{5},\\ 5\\cdot\\frac{4}{5}\\right)=(18,4)$이다.",
+    "$B$를 지나고 $x$축에 평행한 직선 $y=4$를 $y^2=60x$에 대입하면 $16=60x \\implies x=\\frac{4}{15}$이다.",
+    "따라서 포물선의 방정식은 $y^2=60x$, 점 $P$의 좌표는 $P\\left(\\frac{4}{15}, 4\\right)$이다."
+  ],
+  "solvedAnswer": "$y^2=60x$, $P\\left(\\frac{4}{15}, 4\\right)$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-GE-01",
+  "subUnitKey": "H22-GE-01-CORE",
+  "unitEvidence": "[서술형 1] 다음 그림과 같이 해안 기지국 $A$를 ",
+  "rpmRecordId": "H2-GEO-RPM-039",
+  "rpmReason": "Q19(15): 이차곡선 핵심 개념 단원의 RPM H2-GEO-RPM-039 유형에 해당한다.",
+  "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+  "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+  "typeReason": "Q19(15): 이차곡선 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q19(15): 이차곡선 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "os\\theta=\\dfrac{3}{5}$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "1. **(점 $P$의 위치 서술)**: 포물",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q19(15): 발문과 해설의 풀이 과정을 점검하여 정답 $y^2=60x$, $P\\left(\\frac{4}{15}, 4\\right)$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

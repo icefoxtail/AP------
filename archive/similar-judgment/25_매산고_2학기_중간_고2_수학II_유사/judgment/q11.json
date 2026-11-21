@@ -1,0 +1,58 @@
+{
+  "qid": 11,
+  "itemFingerprint": "afcbaa9c8d2361cb",
+  "solveSteps": [
+    "- ㄱ: 반례로 $a=0$, $f(x)=x$, $g(x)=\\dfrac{1}{x^2}$ ($x\\ne 0$), $g(0)=0$이라 두면 $\\lim_{x\\to 0}f(x)=0$, $\\lim_{x\\to 0}g(x)=\\infty$이지만 $f(x)g(x)=\\dfrac{1}{x}$이므로 극한이 존재하지 않는다.",
+    "(거짓)  \n- ㄴ: $g(x) = f(x) - {f(x)-g(x)}$이고 두 함수가 모두 수렴하므로 극한의 성질에 의하여 $\\lim_{x\\to a}g(x) = \\lim_{x\\to a}f(x) - \\lim_{x\\to a}{f(x)-g(x)}$가 존재한다.",
+    "(참)  \n- ㄷ: 수렴할 때에도 $f(x) < g(x)$이면 $\\lim_{x\\to a}f(x) \\le \\lim_{x\\to a}g(x)$로 등호가 성립할 수 있으며(예: $f(x)=-x^2$, $g(x)=x^2+0$ 아닌 $f(x)=0$, $g(x)=x^2$는 $x=0$ 제외, 또는 $f(x)=-\\frac{1}{1+x^2}$ 등 $x\\to a$에서 같아질 수 있고, 애초에 극한이 존재하지 않을 수도 있다).",
+    "(거짓)\n\n따라서 옳은 것은 ㄴ뿐이므로 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-M2-01",
+  "subUnitKey": "H15-M2-01-LIMIT",
+  "unitEvidence": "실수 전체의 집합에서 정의된 두 함수 $f(x),\\ g",
+  "rpmRecordId": "H2-M2-RPM-001",
+  "rpmReason": "Q11(f): 함수의 극한 단원의 RPM H2-M2-RPM-001 유형에 해당한다.",
+  "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+  "templateKey": "TPL_LIMIT_OPERATION_LAWS",
+  "typeReason": "Q11(f): 함수의 극한 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q11(f): 함수의 극한 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": ") < \\lim_{x\\to a}g(x)$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "- ㄱ: 반례로 $a=0$, $f(x)=x$,",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q11(f): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

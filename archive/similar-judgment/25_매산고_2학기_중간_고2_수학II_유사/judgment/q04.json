@@ -1,0 +1,57 @@
+{
+  "qid": 4,
+  "itemFingerprint": "da54c2a12c2aceb5",
+  "solveSteps": [
+    "$P(x) = x^3 - 3x^2 - 2$라 하면 다항함수 $P(x)$는 모든 실수에서 연속이다.",
+    "$$\\begin{aligned} P(3) &= 3^3 - 3(3)^2 - 2 = -2 < 0 \\ P(4) &= 4^3 - 3(4)^2 - 2 = 64 - 48 - 2 = 14 > 0 \\end{aligned}$$\n\n$P(3)P(4) < 0$이므로 사잇값 정리에 의하여 열린구간 $(3,\\ 4)$에 $P(x)=0$의 실근이 존재한다.",
+    "정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-M2-02",
+  "subUnitKey": "H15-M2-02-CONTINUITY",
+  "unitEvidence": "방정식 $x^3-3x^2-2=0$이 오직 하나의 실근을",
+  "rpmRecordId": "H2-M2-RPM-007",
+  "rpmReason": "Q4(aligned): 함수의 연속 단원의 RPM H2-M2-RPM-007 유형에 해당한다.",
+  "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+  "templateKey": "TPL_IVT_VALUE_EXISTENCE_INTERVAL",
+  "typeReason": "Q4(aligned): 함수의 연속 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q4(aligned): 함수의 연속 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "방정식의 실근이 존재하는 구간을 구한 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$P(x) = x^3 - 3x^2 - 2$라",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q4(aligned): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

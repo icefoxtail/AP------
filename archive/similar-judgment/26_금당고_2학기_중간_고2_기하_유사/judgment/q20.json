@@ -1,0 +1,63 @@
+{
+  "qid": 20,
+  "itemFingerprint": "11479b50c44530ba",
+  "solveSteps": [
+    "점 $P(x_1, y_1)$ ($x_1>0, y_1>0$)에서의 접선의 방정식은 $\\frac{x_1 x}{32}+\\frac{y_1 y}{8}=1$이다.",
+    "이 접선이 점 $A(0,k)$를 지나므로 $\\frac{k y_1}{8}=1$, 즉 $y_1=\\frac{8}{k}$이다.",
+    "타원의 대칭성에 의해 $Q(-x_1, y_1)$이다.",
+    "사각형 $OPAQ$가 마름모이므로 두 대각선 $OA$와 $PQ$가 서로를 수직이등분한다.",
+    "따라서 선분 $OA$의 중점 $\\left(0,\\frac{k}{2}\\right)$와 선분 $PQ$의 중점 $(0, y_1)$이 일치하므로\n\n$$\\frac{k}{2} = y_1 = \\frac{8}{k} \\implies k^2=16 \\implies k=4 \\quad (k>2\\sqrt{2})$$\n\n이고 $y_1=2$이다.",
+    "이를 타원 $\\frac{x_1^2}{32}+\\frac{y_1^2}{8}=1$에 대입하면 $\\frac{x_1^2}{32}+\\frac{4}{8}=1 \\implies x_1^2=16 \\implies x_1=4$이다.",
+    "즉 $P(4,2)$, $Q(-4,2)$, $A(0,4)$이다.",
+    "접선 $AP$의 방정식은 $\\frac{4x}{32}+\\frac{2y}{8}=1 \\implies \\frac{x}{8}+\\frac{y}{4}=1$이므로 $x$절편 $R(8,0)$이고, 대칭성에 의해 $S(-8,0)$이다.",
+    "따라서 $\\triangle ARS$의 넓이는 $\\frac{1}{2}\\times\\overline{RS}\\times 4 = \\frac{1}{2}\\times 16\\times 4 = 32$이다."
+  ],
+  "solvedAnswer": "$32$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-GE-02",
+  "subUnitKey": "H22-GE-02-CORE",
+  "unitEvidence": "[서술형 2] $k>2\\sqrt{2}$인 실수 $k$에",
+  "rpmRecordId": "H2-GEO-RPM-047",
+  "rpmReason": "Q20(32): 이차곡선의 접선 핵심 개념 단원의 RPM H2-GEO-RPM-047 유형에 해당한다.",
+  "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+  "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+  "typeReason": "Q20(32): 이차곡선의 접선 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(32): 이차곡선의 접선 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "이고, 점 $Q$는 제2사분면 위의 점이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "점 $P(x_1, y_1)$ ($x_1>0,",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q20(32): 발문과 해설의 풀이 과정을 점검하여 정답 $32$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

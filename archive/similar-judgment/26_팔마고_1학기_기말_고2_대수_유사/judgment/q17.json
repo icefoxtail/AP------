@@ -1,0 +1,60 @@
+{
+  "qid": 17,
+  "itemFingerprint": "6be71830d1624704",
+  "solveSteps": [
+    "$O(0, 0)$을 원점으로 하고 $AB$를 $x$축 위에 놓으면 $A(-3, 0)$, $B(3, 0)$, 반원은 $x^2 + y^2 = 9$ ($y \\ge 0$)이다.",
+    "$\\angle CAB = \\frac{\\pi}{6}$이므로 중심각 $\\angle COB = \\frac{\\pi}{3}$이고 $C\\left(\\frac{3}{2}, \\frac{3\\sqrt{3}}{2}\\right)$이다.",
+    "$AP \\parallel OC$이므로 $\\angle PAB = \\frac{\\pi}{3}$이고 중심각 $\\angle POB = \\frac{2\\pi}{3}$에서 $P\\left(-\\frac{3}{2}, \\frac{3\\sqrt{3}}{2}\\right)$이다.",
+    "직선 $OC: y = \\sqrt{3}x$와 직선 $BP: y = -\\frac{1}{\\sqrt{3}}(x - 3)$의 교점 $Q$를 구하면  \n$$\\sqrt{3}x = -\\frac{x - 3}{\\sqrt{3}} \\implies 3x = 3 - x \\implies x = \\frac{3}{4} \\implies Q\\left(\\frac{3}{4}, \\frac{3\\sqrt{3}}{4}\\right)$$  \n$QD \\parallel PO$이고 $PO$의 기울기는 $-\\sqrt{3}$이므로 $Q$를 지나고 기울기가 $-\\sqrt{3}$인 직선의 $x$절편은 $D\\left(\\frac{3}{2}, 0\\right)$이다.",
+    "따라서 $\\overline{DB} = 3 - \\frac{3}{2} = \\frac{3}{2}$이므로 $S = \\frac{1}{2} \\cdot \\frac{3}{2} \\cdot \\frac{3\\sqrt{3}}{4} = \\frac{9\\sqrt{3}}{16}$이고,  \n$\\overline{PC} = \\frac{3}{2} - \\left(-\\frac{3}{2}\\right) = 3$, $Q$에서 $PC$까지 높이는 $\\frac{3\\sqrt{3}}{2} - \\frac{3\\sqrt{3}}{4} = \\frac{3\\sqrt{3}}{4}$이므로 $T = \\frac{1}{2} \\cdot 3 \\cdot \\frac{3\\sqrt{3}}{4} = \\frac{18\\sqrt{3}}{16}$이다.",
+    "그러므로 $S + T = \\frac{9\\sqrt{3}}{16} + \\frac{18\\sqrt{3}}{16} = \\frac{27\\sqrt{3}}{16}$이다."
+  ],
+  "solvedAnswer": "$\\frac{27\\sqrt{3}}{16}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-05",
+  "subUnitKey": "H22-A-05-CORE",
+  "unitEvidence": "길이가 $6$인 선분 $AB$를 지름으로 하는 반원이 ",
+  "rpmRecordId": "H2-M1-RPM-109",
+  "rpmReason": "Q17(AB): 사인법칙과 코사인법칙 핵심 개념 단원의 RPM H2-M1-RPM-109 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+  "templateKey": "TPL_H22A_05_TRIANGLE_AREA_113",
+  "typeReason": "Q17(AB): 사인법칙과 코사인법칙 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(AB): 사인법칙과 코사인법칙 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "넓이 $T$의 합 $S + T$를 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$O(0, 0)$을 원점으로 하고 $AB$를",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q17(AB): 발문과 해설의 풀이 과정을 점검하여 정답 $\\frac{27\\sqrt{3}}{16}$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

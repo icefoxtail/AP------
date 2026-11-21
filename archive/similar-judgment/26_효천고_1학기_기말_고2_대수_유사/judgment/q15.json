@@ -1,0 +1,59 @@
+{
+  "qid": 15,
+  "itemFingerprint": "938d1fd7681df3bd",
+  "solveSteps": [
+    "외접원의 넓이가 $16\\pi$이므로 반지름 $R = 4$이다.",
+    "$\\overline{BC} = a$, $\\overline{AB} = \\overline{AC} = b$라 하면 사인법칙에 의해 $\\frac{a}{b} = \\frac{\\sin A}{\\sin B} = \\frac{3}{4}$이므로 $a = \\frac{3}{4}b$이다.",
+    "$D$는 밑변 $BC$의 중점이므로 $AD \\perp BC$이고 $\\overline{BD} = \\frac{a}{2} = \\frac{3}{8}b$이다.",
+    "직각삼각형 $ABD$에서 $\\cos B = \\frac{\\overline{BD}}{\\overline{AB}} = \\frac{3}{8}$이므로 $\\sin B = \\sqrt{1 - \\frac{9}{64}} = \\frac{\\sqrt{55}}{8}$이다.",
+    "사인법칙에서 $b = 2R\\sin B = 8 \\cdot \\frac{\\sqrt{55}}{8} = \\sqrt{55}$이므로  \n$$\\overline{AD} = \\overline{AB}\\sin B = \\sqrt{55} \\cdot \\frac{\\sqrt{55}}{8} = \\frac{55}{8}$$."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-05",
+  "subUnitKey": "H22-A-05-CORE",
+  "unitEvidence": "$4\\sin A = 3\\sin B$, $\\overlin",
+  "rpmRecordId": "H2-M1-RPM-109",
+  "rpmReason": "Q15(AB): 사인법칙과 코사인법칙 핵심 개념 단원의 RPM H2-M1-RPM-109 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_05_SINE_LAW",
+  "templateKey": "TPL_H22A_05_SINE_LAW_109",
+  "typeReason": "Q15(AB): 사인법칙과 코사인법칙 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(AB): 사인법칙과 코사인법칙 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "때, $\\overline{AD}$의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "외접원의 넓이가 $16\\pi$이므로 반지름 $",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q15(AB): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

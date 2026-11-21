@@ -1,0 +1,62 @@
+{
+  "qid": 14,
+  "itemFingerprint": "a7126df0ee28391f",
+  "solveSteps": [
+    "$N(x) = g(x)-f(x) = (x^2-4x+a-1)f(x)$라 두면 조건 (가)에서 $N(3) = 0$, $N'(3) = 0$이다.",
+    "$$N(3) = (a-4)f(3) = 0, \\qquad N'(3) = 2f(3) + (a-4)f'(3) = 0$$\n\n만약 $a\\ne 4$이면 $f(3)=0$, $f'(3)=0$이 되어 $g'(3) = 2f(3)+(a-3)f'(3) = 0$이 되므로 조건 (나)에 모순이다.",
+    "따라서 $a=4$이고 $f(3)=0$, $g'(3)=f'(3)\\ne 0$이므로 $f(x) = (x-3)(x-r)$ ($r\\ne 3$), $g(x) = (x-2)^2 f(x)$이다.",
+    "이제 $g'(x) = 2(x-2)f(x) + (x-2)^2 f'(x)$에 $f(\\alpha)=f'(\\alpha)$를 대입하면\n\n$$g'(\\alpha) = {2(\\alpha-2) + (\\alpha-2)^2}f'(\\alpha) = (\\alpha^2-2\\alpha)f'(\\alpha) = 3f'(\\alpha)$$\n\n$f'(\\alpha)=0$이면 $f(\\alpha)=0$이 되어 $f$가 중근을 가져 $f'(3)=0$이므로 모순이다.",
+    "따라서 $\\alpha^2-2\\alpha-3=0$에서 $\\alpha=3$ 또는 $\\alpha=-1$이고, $\\alpha=3$이면 $f'(3)=0$으로 모순이므로 $\\alpha=-1$이다.",
+    "$f(-1)=f'(-1)$에서 $(-4)(-1-r) = -5-r \\implies 5r = -9 \\implies r = -\\dfrac{9}{5}$이다.",
+    "따라서 $\\alpha+5=4$이고 $g(4) = 2^2(4-3)\\left(4+\\dfrac{9}{5}\\right) = \\dfrac{116}{5}$이므로 $\\dfrac{g(4)}{16} = \\dfrac{29}{20}$, 즉 $p+q = 29+20 = 49$이다.",
+    "정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-M2-04",
+  "subUnitKey": "H15-M2-04-DERIVATIVE",
+  "unitEvidence": "실수 $a$와 최고차항의 계수가 $1$인 이차함수 $f",
+  "rpmRecordId": "H2-M2-RPM-015",
+  "rpmReason": "Q14(16): 도함수 단원의 RPM H2-M2-RPM-015 유형에 해당한다.",
+  "problemTypeKey": "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+  "templateKey": "TPL_LOCAL_DERIVATIVE_CONSTRAINT_FUNCTION_DETERMINE",
+  "typeReason": "Q14(16): 도함수 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 5,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(16): 도함수 단원의 기본 개념과 계산을 적용하는 난이도 5 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "(단, $p,\\ q$는 서로소인 자연수이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$N(x) = g(x)-f(x) = (x^2-",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q14(16): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "qid": 16,
+  "itemFingerprint": "dccf3d9c44fc651e",
+  "solveSteps": [
+    "$A_k$의 첫 항 번호를 $s_k$라 하면 $s_1 = 1$이고, 조건 ㄴ, ㄷ에 의해 $A_k$의 맨 앞 $3$개 항만 빠지므로 $s_{k+1} = s_k + 3$, 즉 $s_k = 3k - 2$이다.",
+    "$A_k$의 원소 개수가 $2k + 3$개이므로 끝 항 번호는 $(3k - 2) + (2k + 3) - 1 = 5k$이다.",
+    "따라서 $A_4$는 제$10$항부터 제$20$항까지를 포함하고, $A_p$는 제$(3p - 2)$항부터 제$5p$항까지를 포함한다.",
+    "$A_4 \\cap A_p \\ne \\varnothing$이려면 $3p - 2 \\le 20$이고 $5p \\ge 10$이어야 하므로 $2 \\le p \\le \\frac{22}{3}$이다.",
+    "자연수 $p$는 $2, 3, 4, 5, 6, 7$이므로 합은 $2 + 3 + 4 + 5 + 6 + 7 = 27$이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-06",
+  "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+  "unitEvidence": "일반항이 $a_n = 2n - 1$인 등차수열 $\\{a",
+  "rpmRecordId": "H2-M1-RPM-115",
+  "rpmReason": "Q16(20): 수열의 기본 단원의 RPM H2-M1-RPM-115 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+  "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
+  "typeReason": "Q16(20): 수열의 기본 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q16(20): 수열의 기본 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "키는 자연수 $p$의 값들의 합을 구한 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$A_k$의 첫 항 번호를 $s_k$라 하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q16(20): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "qid": 14,
+  "itemFingerprint": "f2110ef1b7d3da77",
+  "solveSteps": [
+    "$(a_1, b_1) = (1, 1)$부터 차례로 계산하면  \n- $(a_2, b_2) = (2, \\sin\\frac{\\pi}{2}) = (2, 1)$  \n- $(a_3, b_3) = (3, \\sin\\pi) = (3, 0)$  \n- $(a_4, b_4) = (3, \\sin\\frac{3\\pi}{2}) = (3, -1)$  \n- $(a_5, b_5) = (2, \\sin\\frac{3\\pi}{2}) = (2, -1)$  \n- $(a_6, b_6) = (1, \\sin\\pi) = (1, 0)$  \n- $(a_7, b_7) = (1, \\sin\\frac{\\pi}{2}) = (1, 1)$  \n따라서 순서쌍 $(a_n, b_n)$은 주기 $6$으로 반복된다.",
+    "$2027 = 6 \\times 337 + 5$이므로 $(a_{2027}, b_{2027}) = (a_5, b_5) = (2, -1)$이고, $a_{2027} + b_{2027} = 2 + (-1) = 1$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-08",
+  "subUnitKey": "H22-A-08-CORE",
+  "unitEvidence": "두 수열 $\\{a_n\\}, \\{b_n\\}$은 $a_1 ",
+  "rpmRecordId": "H2-M1-RPM-129",
+  "rpmReason": "Q14(2027): 수학적 귀납법 핵심 개념 단원의 RPM H2-M1-RPM-129 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_08_RECURSIVE_SEQUENCE",
+  "templateKey": "TPL_H22A_08_RECURSIVE_SEQUENCE_129",
+  "typeReason": "Q14(2027): 수학적 귀납법 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(2027): 수학적 귀납법 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "a_{2027} + b_{2027}$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$(a_1, b_1) = (1, 1)$부터 차",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q14(2027): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

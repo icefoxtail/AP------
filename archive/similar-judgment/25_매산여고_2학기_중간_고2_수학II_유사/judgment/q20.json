@@ -1,0 +1,62 @@
+{
+  "qid": 20,
+  "itemFingerprint": "9e7e7ce76f63f2f3",
+  "solveSteps": [
+    "$f(0)=a$이므로 평균변화율 $g(t)$는 $0<t<1$일 때 $t-a-1$, $1\\le t<2$일 때 $-\\dfrac{a}{t}$, $t\\ge 2$일 때 $\\dfrac{2-a}{t}$이다. (cases)",
+    "1.",
+    "$0<k<1$일 때: $g(k+1)=g(k+2)$에서 $-\\dfrac{a}{k+1} = \\dfrac{2-a}{k+2} \\implies a = -2k-2$이다.",
+    "이때 $g(k+1) = \\dfrac{2k+2}{k+1} = 2$이므로 $g(k) = k - (-2k-2) - 1 = 3k+1 = 2 \\implies k=\\dfrac{1}{3}$이고 $a = -\\dfrac{8}{3}$이다.",
+    "2.",
+    "$1\\le k<2$일 때: $g(k+1)=g(k+2)$에서 $a=2$이나 $g(k)=-\\dfrac{2}{k}\\ne 0=g(k+1)$이므로 모순이다.",
+    "따라서 $f(-1) = (-1-1)\\left(-1+\\dfrac{8}{3}\\right) = -\\dfrac{10}{3}$이다.",
+    "정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-M2-03",
+  "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
+  "unitEvidence": "실수 $a$에 대하여 함수 $f(x)=\\begin{ca",
+  "rpmRecordId": "H2-M2-RPM-013",
+  "rpmReason": "Q20(cases): 미분계수 단원의 RPM H2-M2-RPM-013 유형에 해당한다.",
+  "problemTypeKey": "PT_DERIVATIVE_RATE_RELATION",
+  "templateKey": "TPL_AVERAGE_RATE_ANALYSIS",
+  "typeReason": "Q20(cases): 미분계수 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(cases): 미분계수 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$k$가 존재할 때, $f(-1)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$f(0)=a$이므로 평균변화율 $g(t)$는",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q20(cases): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "qid": 10,
+  "itemFingerprint": "2c6d525910e0ade4",
+  "solveSteps": [
+    "이웃한 두 점근선의 간격이 주기이므로 $T = \\frac{11}{3}\\pi - \\frac{5}{3}\\pi = 2\\pi$이다.",
+    "$b > 0$이므로 $\\frac{\\pi}{b} = 2\\pi \\implies b = \\frac{1}{2}$이다.",
+    "점 $\\left(\\frac{8}{3}\\pi, 0\\right)$을 지나므로 $\\tan\\left\\{\\frac{1}{2}\\left(\\frac{8}{3}\\pi + c\\right)\\right\\} = 0$에서 $\\frac{8}{3}\\pi + c = 2k\\pi$ ($k$는 정수), 즉 $c = 2k\\pi - \\frac{8}{3}\\pi$이다.",
+    "$-\\frac{3}{2}\\pi < c < -\\frac{\\pi}{2}$를 만족하는 정수 $k = 1$이므로 $c = -\\frac{2}{3}\\pi$이다.",
+    "또 $f\\left(\\frac{7}{6}\\pi\\right) = a\\tan\\left\\{\\frac{1}{2}\\left(\\frac{7}{6}\\pi - \\frac{2}{3}\\pi\\right)\\right\\} = a\\tan\\frac{\\pi}{4} = a = 4$이다.",
+    "따라서 $a + b + c = 4 + \\frac{1}{2} - \\frac{2}{3}\\pi = \\frac{9}{2} - \\frac{2}{3}\\pi$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-04",
+  "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+  "unitEvidence": "함수 $f(x) = a\\tan b(x + c)$ ($a",
+  "rpmRecordId": "H2-M1-RPM-103",
+  "rpmReason": "Q10(11): 삼각함수의 그래프 단원의 RPM H2-M1-RPM-103 유형에 해당한다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+  "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+  "typeReason": "Q10(11): 삼각함수의 그래프 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q10(11): 삼각함수의 그래프 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "= 4$일 때, $a + b + c$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "이웃한 두 점근선의 간격이 주기이므로 $T =",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q10(11): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "qid": 16,
+  "itemFingerprint": "2fa3897e80c10f28",
+  "solveSteps": [
+    "쌍곡선 $C_2$의 주축의 길이가 $6\\sqrt{5}$이므로 $\\overline{F'S}-\\overline{FS}=6\\sqrt{5}$, $\\overline{F'Q}-\\overline{FQ}=6\\sqrt{5}$이다.",
+    "두 식을 더하면 $(\\overline{F'S}+\\overline{F'Q})-(\\overline{FS}+\\overline{FQ})=12\\sqrt{5}$이므로\n\n$$\\overline{SQ} = \\overline{FS}+\\overline{FQ} = 20\\sqrt{5}-12\\sqrt{5} = 8\\sqrt{5}$$\n\n이다.",
+    "한편 포물선 $C_1$의 정의에 의해 $X(x,y)$에서 $\\overline{AX}=x-k$이므로\n\n$$\\overline{AS}-\\overline{AQ} = (x_S-k)-(x_Q-k) = x_S-x_Q = 8$$\n\n이다.",
+    "직각삼각형에서 $|y_S-y_Q|=\\sqrt{\\overline{SQ}^2-(x_S-x_Q)^2}=\\sqrt{320-64}=\\sqrt{256}=16$이다.",
+    "두 곡선 모두 $x$축 대칭이므로 $P$는 $S$, $R$은 $Q$의 $x$축 대칭점이고 사각형 $RQPS$는 등변사다리꼴이다.",
+    "$S$는 $x$축 위, $Q$는 $x$축 아래에 있으므로 $\\overline{PS}+\\overline{RQ}=2(|y_S|+|y_Q|)=2|y_S-y_Q|=32$이고, 높이는 $x_S-x_Q=8$이다.",
+    "따라서 사각형 $RQPS$의 넓이는 $\\frac{1}{2}\\times 32\\times 8=128$이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-GE-01",
+  "subUnitKey": "H22-GE-01-CORE",
+  "unitEvidence": "그림과 같이 초점이 $A(a,0)$이고 준선이 $x=k",
+  "rpmRecordId": "H2-GEO-RPM-039",
+  "rpmReason": "Q16(20): 이차곡선 핵심 개념 단원의 RPM H2-GEO-RPM-039 유형에 해당한다.",
+  "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+  "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+  "typeReason": "Q16(20): 이차곡선 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 5,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q16(20): 이차곡선 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 5 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "}=8$일 때, 사각형 $RQPS$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "쌍곡선 $C_2$의 주축의 길이가 $6\\sqr",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q16(20): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

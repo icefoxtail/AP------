@@ -1,0 +1,59 @@
+{
+  "qid": 19,
+  "itemFingerprint": "ce09df4e7f655749",
+  "solveSteps": [
+    "$S_n = 1 + \\frac{1}{2} + \\cdots + \\frac{1}{2^n}$이라 하자.",
+    "(ⅰ) $n = 2$일 때, $S_2 = 1 + \\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4} = \\frac{25}{12} > 2 = 1 + \\frac{2}{2}$이므로 성립한다.",
+    "(ⅱ) $n = k$ ($k \\ge 2$)일 때 $S_k > 1 + \\frac{k}{2}$가 성립한다고 가정하자.",
+    "$n = k + 1$일 때,  \n$$S_{k+1} = S_k + \\left(\\frac{1}{2^k + 1} + \\frac{1}{2^k + 2} + \\cdots + \\frac{1}{2^{k+1}}\\right)$$  \n괄호 안의 항은 모두 $2^k$개이고 각 항은 최소값 $\\frac{1}{2^{k+1}}$ 이상이므로  \n$$S_{k+1} > \\left(1 + \\frac{k}{2}\\right) + 2^k \\cdot \\frac{1}{2^{k+1}} = 1 + \\frac{k}{2} + \\frac{1}{2} = 1 + \\frac{k + 1}{2}$$  \n따라서 $n = k + 1$일 때도 성립한다.",
+    "(ⅰ), (ⅱ)에 의하여 $2$ 이상인 모든 자연수 $n$에 대하여 주어진 부등식이 성립한다."
+  ],
+  "solvedAnswer": "주어진 부등식은 $2$ 이상인 모든 자연수 $n$에 대하여 성립한다.",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-08",
+  "subUnitKey": "H22-A-08-CORE",
+  "unitEvidence": "$2$ 이상인 모든 자연수 $n$에 대하여 다음 부등식",
+  "rpmRecordId": "H2-M1-RPM-129",
+  "rpmReason": "Q19(25): 수학적 귀납법 핵심 개념 단원의 RPM H2-M1-RPM-129 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_08_MATHEMATICAL_INDUCTION",
+  "templateKey": "TPL_H22A_08_MATHEMATICAL_INDUCTION_131",
+  "typeReason": "Q19(25): 수학적 귀납법 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q19(25): 수학적 귀납법 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "{2^n} > 1 + \\frac{n}{2}$$"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$S_n = 1 + \\frac{1}{2} +",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q19(25): 발문과 해설의 풀이 과정을 점검하여 정답 주어진 부등식은 $2$ 이상인 모든 자연수 $n$에 대하여 성립한다.를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "qid": 13,
+  "itemFingerprint": "cdd7cc9971041f6c",
+  "solveSteps": [
+    "$f(n) = \\sum_{k=1}^n k(n + 1 - k) = (n + 1)\\frac{n(n + 1)}{2} - \\frac{n(n + 1)(2n + 1)}{6} = \\frac{n(n + 1)(n + 2)}{6}$이다. (an)",
+    "$g(n) = \\sum_{k=1}^n k(k + 2) = \\frac{n(n + 1)(2n + 1)}{6} + 2 \\cdot \\frac{n(n + 1)}{2} = \\frac{n(n + 1)(2n + 7)}{6}$이다.",
+    "따라서  \n$$g(n) - f(n) = \\frac{n(n + 1)\\{(2n + 7) - (n + 2)\\}}{6} = \\frac{1}{6}n(n + 1)(n + 5)$$  \n그러므로 $a = \\frac{1}{6}$, $b = 5$이고 $\\frac{b}{a} = 30$이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-07",
+  "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+  "unitEvidence": "$f(n) = 1 \\times n + 2 \\times ",
+  "rpmRecordId": "H2-M1-RPM-125",
+  "rpmReason": "Q13(an): 수열의 합 단원의 RPM H2-M1-RPM-125 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_07_SEQUENCE_SUM",
+  "templateKey": "TPL_H22A_07_SEQUENCE_SUM_125",
+  "typeReason": "Q13(an): 수열의 합 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q13(an): 수열의 합 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$의 값은? (단, $a, b$는 상수이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$f(n) = \\sum_{k=1}^n k(n",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q13(an): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
