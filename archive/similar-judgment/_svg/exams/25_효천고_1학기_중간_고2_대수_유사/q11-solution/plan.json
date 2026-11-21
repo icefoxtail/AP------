@@ -1,0 +1,173 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sOV",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "V"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sVL1",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "V",
+          "L1"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sL1L2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "L1",
+          "L2"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sOV",
+      "refs": [
+        "O",
+        "V"
+      ]
+    },
+    {
+      "id": "sVL1",
+      "refs": [
+        "V",
+        "L1"
+      ]
+    },
+    {
+      "id": "sL1L2",
+      "refs": [
+        "L1",
+        "L2"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "V",
+    "L1",
+    "L2"
+  ],
+  "coordinateLabels": [
+    "O",
+    "V",
+    "L1",
+    "L2"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "치역, 직선",
+      "mappedTo": [
+        "O",
+        "V",
+        "L1",
+        "L2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "V자 지수함수 y=3^{|x-1|}+2 치역 y>=3 및 직선 y=k (k<3)"
+  ],
+  "caption": "V자 지수함수 y=3^{|x-1|}+2 치역 y>=3 및 직선 y=k (k<3)"
+}

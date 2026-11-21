@@ -1,0 +1,213 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sOP",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sPQ",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "P",
+          "Q"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sQP1",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "Q",
+          "P1"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sP1P2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "P1",
+          "P2"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sQP1",
+      "refs": [
+        "Q",
+        "P1"
+      ]
+    },
+    {
+      "id": "sP1P2",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "P",
+    "Q",
+    "P1",
+    "P2"
+  ],
+  "coordinateLabels": [
+    "O",
+    "P",
+    "Q",
+    "P1",
+    "P2"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "반지름, 시초선",
+      "mappedTo": [
+        "O",
+        "P",
+        "Q",
+        "P1",
+        "P2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "단위 사분원 7등분점 및 x축 수선의 발 길이 제곱합"
+  ],
+  "caption": "단위 사분원 7등분점 및 x축 수선의 발 길이 제곱합"
+}

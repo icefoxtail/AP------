@@ -1,0 +1,213 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sOM",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "M"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sMP1",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "M",
+          "P1"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sP1P2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "P1",
+          "P2"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sP2X",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "P2",
+          "X"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sMP1",
+      "refs": [
+        "M",
+        "P1"
+      ]
+    },
+    {
+      "id": "sP1P2",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "sP2X",
+      "refs": [
+        "P2",
+        "X"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "M",
+    "P1",
+    "P2",
+    "X"
+  ],
+  "coordinateLabels": [
+    "O",
+    "M",
+    "P1",
+    "P2",
+    "X"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주기, 실근",
+      "mappedTo": [
+        "O",
+        "M",
+        "P1",
+        "P2",
+        "X"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "코사인함수 대칭축 x=3 주기 반복 및 실근 합 108 (N=36)"
+  ],
+  "caption": "코사인함수 대칭축 x=3 주기 반복 및 실근 합 108 (N=36)"
+}
