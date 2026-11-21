@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-a7dcbe7897b4-6927dc02",
+  "sourceArchiveFile": "original/middle/m3/2mid/19_연향중_2학기_중간_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_98fff74b3ae917e2ff5ebbdfa532d4629629ad353a1b630ab98436ea08f4e7af",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+      "templateKey": null,
+      "step": "평균에 같은 일차변환을 적용하면2×6-3=9이다.",
+      "note": "필요 TPL: 일차변환한 자료의 평균. 정의: 평균에 같은 일차변환을 적용하면2×6-3=9이다. 검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6190df075c1746cd31cb59122072a0ad5000a80df998e102fa267ea4c09c4aea",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
+      "step": "6이5회로 가장 자주 나타나 최빈값6이다.",
+      "note": "검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b939259ce53f4227947affdae0c28f609ead1fb486b65daa44e48fc71be364f0",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": null,
+      "step": "C편차0으로 평균8을 얻고 A=4,E=11을 복원하여합15이다.",
+      "note": "필요 TPL: 편차에서 평균 및 원자료 복원. 정의: C편차0으로 평균8을 얻고 A=4,E=11을 복원하여합15이다. 검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0f0212198fed744576f94dd4652b4588d46f488a51f28e1da4b5ac34e8492d6b",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": null,
+      "step": "평균6에서 편차제곱합2를5로 나누어 분산0.4이다.",
+      "note": "필요 TPL: 원자료의 분산 직접계산. 정의: 평균6에서 편차제곱합2를5로 나누어 분산0.4이다. 검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a741c1b320d52416c19069cf4fea329bcc9ebe62c5c13e871e5ff05bd385f39e",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": null,
+      "step": "평균이 최대인4반과 표준편차가 최소인3반을 각각 고른다.",
+      "note": "필요 TPL: 집단별 평균과 산포도 해석. 정의: 평균이 최대인4반과 표준편차가 최소인3반을 각각 고른다. 검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1e2236560e3bb82ccbac8037f238e9051e81da39066c191432c592aa43a3f8e4",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_FREQUENCY_TABLE",
+      "templateKey": null,
+      "step": "그림에서10점2회·9점1회·8점4회·7점1회를 세고 평균8.5에 대한 분산1의 제곱근1을 구한다.",
+      "note": "필요 TPL: 그림의 도수 집계와 표준편차. 정의: 그림에서10점2회·9점1회·8점4회·7점1회를 세고 평균8.5에 대한 분산1의 제곱근1을 구한다. 검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ffcfc4c246cfe45ac974c09a548ce9fb29df002e391f554db46d8407b4faa956",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "step": "30도에서tan30=BC/5를 써BC=5√3/3이다.",
+      "note": " 원문에 대체문항 표시가 있으며 현재 본문과 그림의 직각·30도·5cm 조건을 직접 판독하였다. 검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d0ee49be6c6e8cf5b572da00dfa209360f99d83e47ff78f6bc78f7b6f4555166",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+      "step": "높이h에대해h/√3+h=9-3이므로h=9-3√3,사다리꼴넓이6h이다.",
+      "note": "검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c401745d6b8c19d78ea0bc7e57e6de733fe68a62d1fff3d0981e20cef0ee152b",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+      "templateKey": null,
+      "step": "평균은3×33+1=100,분산은3²×3²=81이다.",
+      "note": "필요 TPL: 일차변환한 자료의 평균·분산. 정의: 평균은3×33+1=100,분산은3²×3²=81이다. 검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-21e704e7dd26-b9ee5ec9",
+  "sourceArchiveFile": "original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_e15a120f5eeba03474064701c98753b588ca30cbc2658867e7cf183ad4041d12",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "각 식을 y=ax+b로 정리하되 a≠0을 검사하여 -x/2+3과3x-3만 일차함수로 고른다.",
+      "note": " 새 TPL 제안: 함수와 일차함수 판별의 직접 풀이. 정의: 각 식을 y=ax+b로 정리하되 a≠0을 검사하여 -x/2+3과3x-3만 일차함수로 고른다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_83242ba62a5b8f2abafa733e98a15b60f429638cd248c6917d6cc819e2325bed",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
+      "templateKey": null,
+      "step": "그림의 수직선을 x=-2로 읽고2x-1=k에 대입하여 k=-5를 구한다.",
+      "note": " 새 TPL 제안: y축에 평행한 직선의 방정식의 직접 풀이. 정의: 그림의 수직선을 x=-2로 읽고2x-1=k에 대입하여 k=-5를 구한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-648fc8bd4208-ccbf3ba6",
+  "examUid": "25_제일고_2학기_기말_고1_유사",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "similar/high/h1/2final/25_제일고_2학기_기말_고1_유사.js",
+  "expectedSourceBlobSha1": "247ff08c45cf685b3a9826c4845c23fd939e88ef",
+  "expectedQuestionCount": 22,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-648fc8bd4208-ccbf3ba6.type-ledger.json",
+        "sha256": "3d9cea2e2658e1f29939d137eecbaa4d8c283d94dbac8f40d9ff3177fa973857"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_f25efbb82d667e53e61bc7b2c6e24b1fa25623496cbab0b9981cc1a497b35de5",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING"
+      },
+      "rationale": "그래프수직읽기f4=7,수평읽기f(q)=8의입력q5, p+q12.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "0f1c9544a5b974c3d15ad6a5db41ebee26f12e8f5226772c9795500c6ff1d47c",
+        "contentFingerprint": "cea1a86aa96226e2c9b632ab8b4c5598fe6b758e6adc257f36af2379a98cf9e8"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-648fc8bd4208-ccbf3ba6.type-ledger.json",
+          "sha256": "3d9cea2e2658e1f29939d137eecbaa4d8c283d94dbac8f40d9ff3177fa973857"
+        }
+      ]
+    }
+  ]
+}

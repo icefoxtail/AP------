@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-c1fbe63fbafb-e31ac3d5",
+  "sourceArchiveFile": "original/middle/m2/1final/19_신흥중_1학기_기말_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_bb86c5b2853dbd07e661a2abc8e78f2f521b89374d430c1cb9d50446c9b3b1ec",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "생활 관계를 식으로 나타내면 직사각형의 가로 y=40/x만 일차식이 아니므로 일차함수가 아니다.",
+      "note": "새 TPL 제안: 생활 관계의 일차함수 여부 판별. 정의: 생활 관계를 식으로 나타내면 직사각형의 가로 y=40/x만 일차식이 아니므로 일차함수가 아니다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_452944536ef759777c13b73e69ceafddf78cac215e6fb2b2bbc95b51ec9e6c66",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": null,
+      "step": "아래로9 이동한 식 y=ax-4에서 b=-4이고 x절편4를 대입하면 a=1이므로 합-3이다.",
+      "note": "새 TPL 제안: 수직 이동과 절편 조건으로 계수 결정. 정의: 아래로9 이동한 식 y=ax-4에서 b=-4이고 x절편4를 대입하면 a=1이므로 합-3이다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_56e70166e404b75ca05faeadf94b889236f582bb04ba9c995530298b0d12330d",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+      "templateKey": "TPL_M2_FIND_PARAMETER_FOR_NO_SOLUTION_SYSTEM",
+      "step": "y=ax-3과 y=-2x+b가 만나지 않으려면 기울기는 같고 절편은 달라 a=-2,b≠-3이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1afbc8c03f22058a2211655dbe1690b9f65ba5cd89493d8ff6dfad5a6355c29e",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+      "step": "기울기 -4는 감소를 뜻하므로 x와 y가 함께 증가한다는 진술만 거짓이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4d152320d1a91ea033a762198a94b6ec6a6d3e4d33014df94c8393bab7c0e11b",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_GRAPH_INTERSECTION_APPLICATION",
+      "templateKey": "TPL_M2_SOLVE_MOTION_GRAPH_INTERSECTION_WORD_PROBLEM_DESCRIPTIVE",
+      "step": "그림의 거리시간 점으로 동생 y=x/10,형 y=3x/10-6을 세워 교점(30,3)을 구하므로 만나는 거리는3km이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1d2d0874fc11b3e6e684b26720ee37e49988c66cc205baba43f0f8cf6eacbd91",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+      "templateKey": null,
+      "step": "해가 없으므로 계수비를 같게 하여 a=6을 구하고 (4,3)을 대입하여 b=-12를 얻어 b/a=-2를 계산한다.",
+      "note": "새 TPL 제안: 해 없음과 지나는 점 조건으로 두 계수 결정. 정의: 해가 없으므로 계수비를 같게 하여 a=6을 구하고 (4,3)을 대입하여 b=-12를 얻어 b/a=-2를 계산한다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

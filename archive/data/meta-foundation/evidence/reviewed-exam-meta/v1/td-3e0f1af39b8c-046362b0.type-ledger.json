@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-3e0f1af39b8c-046362b0",
+  "sourceArchiveFile": "original/middle/m2/2final/19_신흥중_2학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_f0dc628aa040458e6964ba9e03720a94f15048d338a1f7213094558e6d5758c3",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+      "step": "빗변 위 정사각형100은 두 직각변 위 정사각형 넓이의 합이므로 미지넓이100-64=36을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_343af84e0314e53cbadebf0dfd61cb8219a00d5b56b5520868414a90d14f3108",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+      "step": "직각변 제곱 AB²=BC×BJ와 정사각형 변을 이용해 네 삼각형 넓이를 AB²/2로 연결하고 반대 직각변 쪽 BCI를 구별한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ead67e9d9f3d828cd08c634d9c4768c136cb33e39eb7b194a3ab1abdd69b5e32",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": null,
+      "step": "가장 긴 변 제곱과 나머지 제곱합의 대소로 예각·직각·둔각을 판별하여8²<5²+7²인 삼각형의 둔각 표기를 배제한다.",
+      "note": " 새 TPL 제안: 피타고라스 정리·역 및 도형 활용의 직접 풀이. 정의: 가장 긴 변 제곱과 나머지 제곱합의 대소로 예각·직각·둔각을 판별하여8²<5²+7²인 삼각형의 둔각 표기를 배제한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_eb9eaddd541661c7606c87398fec09aa14af7812e2a3ba2e64e3f5d3ded2c14e",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+      "step": "나머지 직각변은 sqrt(15²-12²)=9이다. 반원 제곱넓이 관계에서 공통 조각을 빼 초승달합을 삼각형넓이54로 바꾼다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d218eb11c94b10b5bd21e0e0a6e34c9fb90b70681acc4d8fc4ce5874ad706fec",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": null,
+      "step": "피타고라스로 직사각형 대각선BD=10을 얻고 같은 삼각형넓이6×8/2=10×AE/2를 세워 수선길이4.8을 구한다.",
+      "note": " 새 TPL 제안: 피타고라스 정리·역 및 도형 활용의 직접 풀이. 정의: 피타고라스로 직사각형 대각선BD=10을 얻고 같은 삼각형넓이6×8/2=10×AE/2를 세워 수선길이4.8을 구한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-14a84d182b51-c049bb9e",
+  "sourceArchiveFile": "original/middle/m2/2final/19_연향중_2학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_503fb38ea3cf9e619533ca60c09095a8be5f99434f15dce0f51fc432e4c11ccb",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+      "step": "정사각형넓이100,64에서 빗변10·직각변8을 읽고 나머지변sqrt(100-64)=6을 얻어 삼각형넓이24를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ca7d16db07050e5a94d2f78de7b39fa8621ace5da662c8eec906d090b2c00af0",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "step": "BC=6+9=15로 x²=17²-15²=64를 얻고 y²=8²+6²=100을 얻어 합18을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cfc2820900e1a8361f9833462ebee41a6f5533ba263910a959fc6f6b4f6151e0",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "step": "연결 선분AE의 가로길이12+x,세로길이12이므로 (12+x)²+12²=20²를 풀어 CE=4를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4d8943b260725a13ad5b154abb55f54f40cfdeef163bdc2808d8a3bbd53f4e17",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_CONVERSE",
+      "step": "가장 긴 변의 제곱과 나머지 제곱합이 같은3·4·5와8·15·17 두 묶음을 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9ce1934291a388f0ec28c792eef7afe7203de882f5b06811554e75d7085be5cb",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+      "step": "직사각형 대각선20을 지름으로 한 원의 넓이100π와 네 반원의 총넓이100π를 상쇄하면 네 초승달 넓이가 직사각형넓이192로 남는다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e5bd124281da2585962e7a0b80c501b9d24e8a34f8b8fd7f779265d64382b24c",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": null,
+      "step": "미지변a가 빗변인 경우 a²=4²+6²=52와6이빗변인 경우 a²=6²-4²=20을 나누어 모두 구한다.",
+      "note": " 새 TPL 제안: 피타고라스 정리·역 및 도형 활용의 직접 풀이. 정의: 미지변a가 빗변인 경우 a²=4²+6²=52와6이빗변인 경우 a²=6²-4²=20을 나누어 모두 구한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    }
+  ]
+}
