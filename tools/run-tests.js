@@ -732,6 +732,16 @@ const requiredCommands = [
   {
     label: 'tests/recapture-approved-renders.test.mjs',
     args: ['--test', 'tests/recapture-approved-renders.test.mjs']
+  },
+  {
+    label: 'tests/archive-pages-version-stamp.test.mjs',
+    args: ['--test', 'tests/archive-pages-version-stamp.test.mjs']
+  },
+  {
+    // Plans the real Pages package (selection and hashing, nothing written): the PR-time dry-run of the release build.
+    label: 'tests/archive-pages-version-stamp-real.test.mjs',
+    args: ['--test', 'tests/archive-pages-version-stamp-real.test.mjs'],
+    timeout: 300000
   }
 ];
 
