@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const vm = require('node:vm');
 const file = path.join(__dirname, '../archive/equal-slot-engine.js');
 const engine = fs.existsSync(file) ? require(file) : {};
 
@@ -50,6 +51,24 @@ test('audit compares physical local rectangles consistently under zoom and trans
   const rect = { left:60, top:100, right:210, bottom:300, width:150, height:200 };
   const origin = { left:10, top:20 };
   assert.deepEqual(engine.normalizeRect(rect, origin, 0.5), {left:100,top:160,right:400,bottom:560,width:300,height:400});
+});
+
+test('raster clones apply measured fits only to the page being printed', async () => {
+  const fitted = { dataset: { equalSlotFit: '{"offsetX":2,"offsetY":4,"scale":0.5}' }, style: {} };
+  const staging = { dataset: {}, style: {} };
+  const clone = { querySelectorAll: selector => selector.includes('.ap-slot-content') ? [fitted] : [] };
+  const document = {
+    defaultView: {},
+    querySelectorAll: selector => selector.includes('.ap-slot-content') ? [fitted, staging] : []
+  };
+  const module = { exports: {} };
+  vm.runInNewContext(fs.readFileSync(file, 'utf8'), {
+    module,
+    html2canvas: async (_page, options) => options.onclone(document, clone)
+  });
+  await module.exports.rasterizePage({ matches: () => true });
+  assert.equal(fitted.style.transform, 'translate(1px, 2px) scale(0.5)');
+  assert.deepEqual(staging.style, {});
 });
 
 test('audit source contains explicit empty-slot and SVG viewBox failure codes', () => {
