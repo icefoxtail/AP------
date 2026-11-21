@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane40",
   "workerBranch": "work/solution-upgrade-lane-40-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2mid",
@@ -11,8 +11,22 @@
   "sourcePath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
   "sourceBlobSha": "a42fedfd90ab30920d3e20f915a59e1f019c0eda",
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2025_palma_2mid_DEEP_AUDIT.md",
-  "nextQid": 1,
+  "nextQid": null,
   "remainingWork": [
-    "Full question-by-question audit and student solution drafts"
-  ]
+    "VISUAL_HOLD q9 q10 q15 q17 q19 source PNG compare",
+    "Golden/Negative calibration and student render NOT_RUN"
+  ],
+  "sourceQuestionCount": 23,
+  "readQuestionCount": 23,
+  "decisionCounts": {
+    "KEEP": 16,
+    "UPGRADE": 2,
+    "HOLD": 5,
+    "UNREAD": 0
+  },
+  "draftedQuestionIds": [
+    8,
+    13
+  ],
+  "auditCommit": "9835e2803323bbea7d7b1fdc878ef5098919d166"
 }
