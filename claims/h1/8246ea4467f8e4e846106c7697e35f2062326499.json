@@ -3,19 +3,48 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane10",
   "workerBranch": "work/solution-upgrade-lane-10-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2final",
   "sourceYear": 2020,
   "sourcePath": "archive/exams/original/high/h1/2final/20_효천고_2학기_기말_고1_기출.js",
   "sourceBlobSha": "8246ea4467f8e4e846106c7697e35f2062326499",
-  "sourceQuestionCount": null,
+  "sourceQuestionCount": 23,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2020_hyocheon_2final_DEEP_AUDIT.md",
-  "draftedQuestionIds": [],
-  "remainingWork": [
-    "q1–qN full original question and solution audit plus all UPGRADE student drafts"
+  "draftedQuestionIds": [
+    13,
+    14,
+    15,
+    16,
+    17,
+    21
   ],
-  "nextQid": 1,
-  "stateNotes": "Exclusive claim prior to reading source."
+  "remainingWork": [],
+  "nextQid": null,
+  "stateNotes": "23/23 full original question/options/answer/solution audits. Six full student equation-first drafts q13 q14 q15 q16 q17 q21 independently verified. Original PNG q16/q19/q21/q22/q23 visually read. SVG_REQUEST q13/q21 remains visual hold, no golden/render/release.",
+  "readQuestionCount": 23,
+  "decisionCounts": {
+    "KEEP": 17,
+    "UPGRADE": 6,
+    "HOLD": 0,
+    "UNREAD": 0
+  },
+  "examAuditComplete": true,
+  "examDraftComplete": true,
+  "visualStatus": "VISUAL_HOLD_SVG_REQUEST",
+  "visualHoldQuestionIds": [
+    13,
+    21
+  ],
+  "svgRequestPath": "docs/operations/solution-upgrade-reservations/staged/h1/2020_hyocheon_2final_SVG_REQUEST.md",
+  "goldenStatus": "NOT_RUN",
+  "negativeStatus": "NOT_RUN",
+  "renderStatus": "NOT_RUN",
+  "releaseStatus": "NOT_RUN",
+  "auditCommit": "4cfb6eab8e545f319659b116f9ce5940c073a20d",
+  "svgRequestCommit": "7460bf3df2367476876030ffb5ef00b013603c10",
+  "studentPaths": [
+    "docs/operations/solution-upgrade-reservations/staged/h1/2020_hyocheon_2final_DEEP_AUDIT.md"
+  ]
 }
