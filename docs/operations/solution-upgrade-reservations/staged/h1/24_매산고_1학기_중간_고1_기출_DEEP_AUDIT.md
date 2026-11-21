@@ -645,3 +645,13 @@ $-\dfrac92+\sqrt{14}<n\le-\dfrac13$
 - **q20 (HOLD / 시각 QA 미실행):** $n=-1/3$일 때 $F(x)=x^2-(37/6)x+26/3=(x-4)(x-13/6)$으로 두 근 $13/6,4$가 모두 $[2,4]$에 있어 우측 끝 포함이 맞다. $n=-9/2+\sqrt{14}$에서는 판별식 0으로 서로 다른 두 교점이 아니므로 좌측 끝 제외. 본문 수식만의 경계 검산이며 출고 PASS 아님.
 - **q14 (SOURCE_ANSWER_HOLD):** 독립 반례 두 개로 정답 ①과 ③이 모두 가능함이 기존 문서에 입증되어 있다. 정오표/원본 조건 정정 없이는 HOLD 해제 불가.
 - **필독 EVIDENCE_DEBT:** 하네스 브랜치에서 HARNESS_CURRENT.md, GLOBAL_QUEUE_CURRENT.md, DEEP_QUESTION_AUDIT_TEMPLATE_CURRENT.md 본문은 재열람했다. 루트 docs-manifest.json은 하네스 브랜치에서 404, main의 필독 파일도 접근 오류가 있어 전체 core/Golden/Negative/판서 샘플은 확인하지 못했다. preflight NOT_RUN. 이 문서의 상태는 IN_PROGRESS, nextQid=q14, KEEP 17 / UPGRADE 0 / HOLD 3 / UNREAD 0. 신규 완료 시험지 0/5. JS/SVG/main 변경 없음.
+
+
+## lane20 재개 검증 기록 — 2026-11-22
+
+- 상태: **IN_PROGRESS / BLOCKED_BY_SOURCE_DEFECT**. sourceKey=`24_매산고_1학기_중간_고1_기출`; sourcePath=`archive/exams/original/high/h1/1mid/24_매산고_1학기_중간_고1_기출.js`; sourceBlobSha=`b2dedbbcef82c2748ae78586dd5d800f8ea7d757`; nextQid=q14. 이번 신규 완료 시험지 0/5. q14·q15·q20은 미종결, UPGRADE 미작성 없음. 전체 KEEP 17 / UPGRADE 0 / HOLD 3 / UNREAD 0.
+- q14 **해결 불가 원본 정답 유일성 결함** 재확인: `s1-s2=3, s2+s3=-2, s1-s3=1`은 종속이다. `s3=0`이면 `(s1,s2,s3)=(1,-2,0)`, 근 `(-1,0,2)`, `p+q=11`. `s3=-1`이면 `(s1,s2,s3)=(0,-3,-1)`, 근은 `t³-3t+1=0`의 서로 다른 세 실근(판별식 81), `p=6, q=9, p+q=15`. 따라서 선택지 ①과 ③ 모두 가능한 원본 결함이다. 학생용 해설 보강만으로 복구할 수 없어 정오표/원본 문항 담당자 결정이 필요하다. 정답·JS 임의 수정 금지.
+- q15 수식 독립 재검산: 좌표 `A(-3,-a), B(1,0), C(3,3a), D(-3,0)`의 신발끈 넓이는 `|(-3·0+1·3a+3·0+(-3)(-a))-((-a)·1+0·3+3a·(-3)+0·(-3))|/2=8a`, 따라서 `a=4`. `f(t)=(t+3)²/4-4`, `g(t)=-2(t-3)²/3+12`로 `4f(t)-3g(t)=3(t-1)²-28`. `[-4,3]`에서 최소 -28, 최대 47, 합 19. **실제 q15.png 그림은 이 실행에서 열람하지 못했으므로 VISUAL_HOLD 유지**. SVG_REQUEST: 엔진 담당자가 기존 문제 그림의 A/B/C/D 좌표·선분 CD 및 g의 y절편을 원본 자산과 대조해 달라. 새 SVG 직접 생성 없음.
+- q20 경계 재검산: `F(x)=x²-(13/2+n)x+(9+n)`에서 `F(2)=-n`, `F(4)=-1-3n`; 축 `13/4+n/2`, 판별식 `(n+9/2)²-14`. `-9/2+√14<n≤-1/3`에서 축은 (2,4), 양끝값은 음수가 아니고 판별식 양수이므로 서로 다른 두 근이 구간 내에 있다. 하한 등호는 중근이라 제외, 상한 등호는 x=4 교점 허용. 기존 풀이의 수학적 경계는 일치하지만 기존 solutionImage의 실제 시각·렌더 검증은 NOT_RUN으로 HOLD 유지.
+- 문서 증거: 공통 하네스 브랜치 `work/solution-upgrade-reservation-harness-20261121`에서 HARNESS_CURRENT.md(blob fa258f6ab998c7fd0e2b398956309a43ce967e82), GLOBAL_QUEUE_CURRENT.md(259bf732ac9932f832077a506c587cb1401a4f7f), DEEP_QUESTION_AUDIT_TEMPLATE_CURRENT.md(eb02a8ed22515b70b0d897949945e40b013eaab6), docs-manifest.json(649d90226c8dc8a936f1d41a07e4c51e09acc4e5) 및 core 경로 16개를 조회하였다. core 전문 전체 검토·Golden 2~3/Negative 판독·preflight/렌더 실행은 **NOT_RUN/EVIDENCE_DEBT**로 유지하며 PASS 주장 금지.
+- 후속: q14 원본 정오표 또는 정답 유일성 수정 권한 확보 → q15 문제 그림 실제 판독 → q20 기존 해설 그림 대조 → 필독/Golden·Negative 게이트 완료 후에만 이 시험지 종료 재판정. 다른 시험지로 폴백하지 않음.
