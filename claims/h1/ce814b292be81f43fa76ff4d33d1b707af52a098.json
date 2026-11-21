@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "solution_upgrade_exam_claim",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "ownerLane": "lane10",
   "workerBranch": "work/solution-upgrade-lane-10-20261121",
   "courseKey": "h1",
@@ -21,10 +21,20 @@
     23
   ],
   "remainingWork": [
-    "Q1,Q2,Q3,Q5 원본 대응도/그래프 실물 확인 및 판단",
-    "Q18,Q19 원본 그래프·도형 시각 대조",
-    "Golden/Negative 등 최종 해설 출고 QA (예약 MD 단계에서는 NOT_RUN)"
+    "Production/Golden/Negative/solutionImage real-render and visual semantics: NOT_RUN (separate release gate)"
   ],
-  "nextQid": "VISUAL_HOLD_Q1_Q2_Q3_Q5",
-  "stateNotes": "Earlier h1 branch's staged MD/audit inherited into lane10. This is not production PASS. Do not reassign or duplicate."
+  "nextQid": null,
+  "stateNotes": "All 23 qids directly read, source PNGs q1/2/3/5/18/19 visually inspected, 17 KEEP 6 detailed UPGRADE MD drafts complete, readback commit 596b5ec7cf0fd196d550196156605e8e1d3b551d. NOT production/visual/release PASS.",
+  "auditCounts": {
+    "total": 23,
+    "read": 23,
+    "keep": 17,
+    "upgrade": 6,
+    "hold": 0,
+    "unread": 0
+  },
+  "examAuditComplete": true,
+  "examDraftComplete": true,
+  "finishedAtKst": "2026-11-21",
+  "auditBlobSha": "0d60a5a660af85b496ca7f4bdde0d4aea7ad7ea1"
 }
