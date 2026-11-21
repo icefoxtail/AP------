@@ -1,7 +1,7 @@
 # 2026 매산여고 고1 1학기 중간 — 문항별 심층 감사
 
 - 원본 `archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js`; blob SHA `69c0f964c6e9752e63bf9f91d33ac154c7fcf2f3`; standardCourse 공통수학1
-- 23/23 원문 문제·보기·정답·풀이 검토; KEEP 21 / UPGRADE 0 / HOLD 2(q17,q22) / UNREAD 0.
+- 23/23 원문 문제·보기·정답·풀이 검토; KEEP 22 / UPGRADE 0 / HOLD 1(q22·VISUAL_HOLD) / UNREAD 0.
 - EXAM_AUDIT_COMPLETE=true; EXAM_DRAFT_COMPLETE=true(UPGRADE 0); 출고/시각/Golden/Negative/렌더 PASS 아님.
 
 ## q1 — KEEP
@@ -539,7 +539,7 @@ $g(2)=11$
 
 **검토·검산:** g(2)=f(2)=2²+2·2+3=11. 기존 해설에 해당 계산과 조건 연결이 있어 유지.
 
-## q17 — HOLD
+## q17 — KEEP
 
 **문제 원문:** 자연수 $n$에 대하여 $z_n=\left(\dfrac{1-i}{\sqrt{2}}\right)^{2n}+\dfrac{n}{\left(\dfrac{1-i}{\sqrt{2}}\right)^{2n}}$이라 할 때, $z_1+z_2+\cdots+z_{50}=a+bi$를 만족시키는 실수 $a,b$에 대하여 $a+b$의 값을 구하면? (단, $i=\sqrt{-1}$) [4.4점]
 
@@ -612,7 +612,7 @@ $b=312-288=24$
 $a+b=-27+24=-3$
 정답은 ③이다.
 
-**검토·검산:** ((1−i)/√2)^{2n}=(−i)^n, 홀짝 주기 합 원문 50항 그룹 확인 필요. 추가 독립 검증이 남아 있으므로 KEEP 확정 보류.
+**검토·독립 검산 및 KEEP 이유:** w²=−i, z_n=(−i)^n+n i^n. n=4k+1,4k+2,4k+3,4k+4의 연속 네 항 합은 [(4k)i]+[−(4k+3)]+[−(4k+2)i]+[4k+5]=2−2i이다. 따라서 n=1~48의 12묶음 합 24−24i, n=49는 48i, n=50은 −51이므로 전체 −27+24i, a+b=−3=③. 원본에서도 4주기별 실수·허수 합을 실제 계산식으로 보여 주어 KEEP. 원본 조건·선지·answer와 직접 대조 완료.
 
 ## q18 — KEEP
 
@@ -986,6 +986,9 @@ $12$
 이다.
 
 **검토·검산:** 도형 그림이 원본에 포함되어 있으므로 도형 배치와 P,Q,R 위치의 시각 확인 필요; 계산 S=12−3/4(t−2)²은 대수적으로 최대 12. 추가 독립 검증이 남아 있으므로 KEEP 확정 보류.
+
+
+**SVG_REQUEST / VISUAL_HOLD:** 원본 JS image=`assets/images/26_매산여고_1학기_중간_고1_기출/q22.png`, solutionImage=`assets/images/26_매산여고_1학기_중간_고1_기출_c/q22-solution.svg` 확인. main의 문제 PNG fetch는 404라서 P,Q,R과 직각삼각형 위치를 시각 검증할 수 없다. A(0,0),B(6,0),C(0,6),P(t,0)에서 shoelace/삼각형 차로 S=9+3t−3t²/4=12−3(t−2)²/4가 됨은 독립 검산, 0<t<6에서 t=2 실현 가능. 원본 PNG/엔진 그래프 회복·PNG 검토를 그림 담당에게 요청하며 lane20은 SVG/JS 미수정. 그림 확인 전 수학 KEEP 확정은 보류.
 
 ## q23 — KEEP
 
