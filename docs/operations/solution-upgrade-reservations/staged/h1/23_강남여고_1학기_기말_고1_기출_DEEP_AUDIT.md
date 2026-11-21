@@ -1,10 +1,10 @@
-# 2023 강남여고 고1 1학기 기말 — 심층 감사 진행 중
+# 2023 강남여고 고1 1학기 기말 — 문항별 심층 감사 완료 (출고 QA 미실행)
 
 - lane30 / original / h1/1final / 2023 / 2015 교육과정 수학(상).
 - sourcePath: `archive/exams/original/high/h1/1final/23_강남여고_1학기_기말_고1_기출.js`
 - sourceBlobSha: `89d4bacd0ccb07cd4dc0627b07ac2b03d651aee6`.
-- 현재 상태: IN_PROGRESS; nextQid=1 (원본 이미지 재검증); 25/25 수학·문항 본문 판독, KEEP 24 / UPGRADE 1(q21) / HOLD 0 / UNREAD 0 (원본 PNG 3개 판독 완료; 기존 solution SVG 시각 QA 별도 NOT_RUN), q1~q7 수학적 잠정 KEEP 포함.
-- 원본 solutionImage SVG의 실물 시각 검증은 아직 NOT_RUN. 그림이 포함된 q1,q3~q7은 이미지 독립 검증 후 최종 판정 재확인 필요.
+- 현재 상태: AUDIT_COMPLETE; nextQid=NONE; 25/25 수학·문항 본문 판독, KEEP 24 / UPGRADE 1(q21) / HOLD 0 / UNREAD 0 (원본 PNG 3개 판독 완료; 기존 solution SVG 시각 QA 별도 NOT_RUN), q1~q7 수학적 KEEP 포함.
+- 원본 solutionImage SVG의 실물 시각 검증은 아직 NOT_RUN. q1,q3~q7 및 다른 기존 solutionImage SVG의 시각 QA는 별도 NOT_RUN.
 - EXAM_AUDIT_COMPLETE=YES (원본 문제 PNG 판독 포함, 문항별 감사 완료; solution SVG 시각 QA 별도 NOT_RUN); EXAM_DRAFT_COMPLETE=YES (q21 완성 풀이 작성); Golden/Negative calibration=NOT_RUN; student exam/sol/ans render=NOT_RUN; 출고 PASS 아님.
 - 이번 실행은 원격 source와 하네스·템플릿·판서 샘플·core 문서의 접근 및 시작 부분을 확인했으나 core 전체 판독·Golden/Negative 실물 판독은 완료하지 못함. 따라서 완전한 preflight 완료 주장 금지.
 
@@ -59,7 +59,7 @@
 ## 이번 실행 q8~q25 원본 전수 판독·독립 검산
 
 - 원본 SHA `89d4bacd0ccb07cd4dc0627b07ac2b03d651aee6`; 총 25문항. 아래 q별 원문·보기·정답·solution 핵심식 직접 판독. 기존 q1~q7 기록 유지.
-- PNG q17/q20/q25는 GitHub 파일 바이너리 실물 판독 실패로 HOLD. SVG 전체 시각 검증 NOT_RUN; 수학적 판정과 시각 출고 판정 구별.
+- PNG q17/q20/q25는 후속 실행에서 원본 파일 실물 판독 완료로 KEEP 전환했다. SVG 전체 시각 검증 NOT_RUN; 수학적 판정과 시각 출고 판정 구별.
 
 ### q8 — KEEP
 - 원문 조건: 삼차방정식 $x^3-2x^2-5x+6=0$의 세 실근을 $\alpha,\beta,\gamma$라 할 때, $\alpha<\beta<\gamma$를 만족시키는 $\gamma$의 값은?
