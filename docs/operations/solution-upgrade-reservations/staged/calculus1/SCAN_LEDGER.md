@@ -102,3 +102,25 @@
 - 원본 `archive/exams/original/high/h2/2final/22_복성고_2학기_기말_고2_수학II.js`, blob `7c7a2c053f6077a8a2345e15a79a872e887268e2`, 2015 수학Ⅱ.
 - [심층 감사 MD](22_복성고_2학기_기말_고2_수학II_DEEP_AUDIT.md): 원문 22/22, KEEP 19, HOLD 3(Q13–Q15 원본 PNG), UPGRADE 0, UNREAD 0. 상태 **IN_PROGRESS**, next_qid=Q13. MD 커밋 `f784554b19e1b77bd8b3a8ac28d3e29305c70281`, 원격 readback 일치.
 - Golden/Negative 독립 calibration, preflight SHA-256 receipt, 문제 PNG 시각 판독, 학생 렌더/출고 QA: NOT_RUN. 이 시험지는 완료 누적에 포함하지 않음. 공유 claims 생략.
+
+
+## 2026-11-22 추가 5개 완료 — 2022 기말 4장 + 2021 기말 1장
+
+- 이전 예약이 남긴 `22_복성고_2학기_기말_고2_수학II` IN_PROGRESS부터 재개. Q13/14/15 원본 PNG 실물을 GitHub에서 직접 판독해 HOLD 해소 후 문서 갱신·원격 readback 확인. 기존 IN_PROGRESS 항목은 과거 이력이며 **현재 상태는 AUDIT_DRAFT_COMPLETE**.
+- 이후 중복되지 않는 2022 순천고·팔마고·효천고 및 2021 매산여고 2학기 기말을 순차 처리. 신규 4개 MD와 재개 1개 MD의 모든 문항·보기·기존 solution을 실제 읽고 독립 계산 근거 기록.
+- 원본 시각 증거: PNG **16개 실제 파일 시각 판독**, 2021 매산여고 Q06의 원본 SVG **1개 XML/polyline 좌표 직접 대조** (꼭짓점 t/v: (0,0),(1,4),(3,-4),(4,-4),(6,4),(8,4),(9,0)). 해당 SVG 화면 렌더·해설 SVG 및 학생 화면 렌더는 NOT_RUN.
+- 공유 점유/claim: 사용자 지시대로 **SKIPPED_BY_USER**.
+
+| 순서 | 시험지 | 전체 | KEEP | UPGRADE | HOLD | UNREAD | 원본 그림 검토 | 감사 MD 커밋 |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | --- | --- |
+| 18 | [22_복성고_2학기_기말_고2_수학II](22_복성고_2학기_기말_고2_수학II_DEEP_AUDIT.md) | 22 | 22 | 0 | 0 | 0 | PNG Q13–15 총 3개 | `834274969243` |
+| 19 | [22_순천고_2학기_기말_고2_수학II](22_순천고_2학기_기말_고2_수학II_DEEP_AUDIT.md) | 22 | 22 | 0 | 0 | 0 | PNG Q3,Q21 총 2개 | `9e18098018c8` |
+| 20 | [22_팔마고_2학기_기말_고2_수학II](22_팔마고_2학기_기말_고2_수학II_DEEP_AUDIT.md) | 22 | 22 | 0 | 0 | 0 | PNG Q3,Q13,Q18,Q21 총 4개 | `0e10e668d173` |
+| 21 | [22_효천고_2학기_기말_고2_수학II](22_효천고_2학기_기말_고2_수학II_DEEP_AUDIT.md) | 24 | 24 | 0 | 0 | 0 | PNG Q4,Q10,Q18,Q19,Q22,Q24 총 6개 | `6bd79b4536da` |
+| 22 | [21_매산여고_2학기_기말_고2_수학II](21_매산여고_2학기_기말_고2_수학II_DEEP_AUDIT.md) | 23 | 23 | 0 | 0 | 0 | Q6 SVG 경로 1·Q20 PNG 1 | `d1791d0236d5` |
+| **이번 회차** | **5장** | **113** | **113** | **0** | **0** | **0** | **17개 원본 그림 확인** | **5개 MD 원격 readback 일치** |
+
+- **전체 누적 초안 22장/493문항:** KEEP **437** + UPGRADE **28** + HOLD **28** + UNREAD **0**. 지난 회차 HOLD 28개는 여전히 유지하고 이번 보류 3개는 해소됨.
+- 본인 MD의 **EXAM_AUDIT_COMPLETE / EXAM_DRAFT_COMPLETE** 5건, 원격 파일 내용 전체 readback 모두 일치. 이 회차에서 새로운 UPGRADE 판단은 없고 기존 수학식/정답이 검산과 합치함.
+- **출고 경계:** 기존 SVG/학생 화면 렌더, Golden/Negative 독립 검수, 자동 preflight receipt, 운영 JS·SVG 수정 및 `main` 병합 **NOT_RUN**. 감사 초안 완료이지 운영 출고 PASS 아님.
+- **다음 커서:** calculus1/original/high/h2/2final의 `21_순천여고_2학기_기말_고2_수학II.js` 등 다음 미감사 같은 과목 기출. 시험지 5장 완료 후 보고 설정 유지.
