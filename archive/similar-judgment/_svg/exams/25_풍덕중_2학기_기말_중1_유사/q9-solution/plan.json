@@ -1,0 +1,133 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sOR",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sRH",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "R",
+          "H"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sOR",
+      "refs": [
+        "O",
+        "R"
+      ]
+    },
+    {
+      "id": "sRH",
+      "refs": [
+        "R",
+        "H"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "R",
+    "H"
+  ],
+  "coordinateLabels": [
+    "O",
+    "R",
+    "H"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "144, 2r, r",
+      "mappedTo": [
+        "O",
+        "R",
+        "H"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원기둥 반지름 r 높이 2r 구 부피 144파이"
+  ],
+  "caption": "원기둥 반지름 r 높이 2r 구 부피 144파이"
+}
