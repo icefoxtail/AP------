@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane20",
   "workerBranch": "work/solution-upgrade-lane-20-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "1mid",
@@ -12,49 +12,31 @@
   "sourceBlobSha": "7929a8c0c7335302a30be1af8847a6a7a892eb05",
   "sourceQuestionCount": 26,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/21_강남여고_1학기_중간_고1_기출_DEEP_AUDIT.md",
-  "draftedQuestionIds": [],
-  "remainingWork": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    20,
-    21,
-    22,
-    23,
-    24,
-    25,
-    26
+  "draftedQuestionIds": [
+    4
   ],
-  "nextQid": 1,
-  "stateNotes": "Legacy source standardCourse not present; verified problem contents as math high1 1mid curriculum, lane20 auditing.",
-  "readQuestionCount": 0,
+  "remainingWork": [],
+  "nextQid": null,
+  "stateNotes": "Legacy standardCourse absent in all 26; original q1-q26 curriculum math(상) classified by actual contents. q4 full intermediate derivation; q21 required semicircle drawing visual HOLD. Both exam MD gates completed; no production QA.",
+  "readQuestionCount": 26,
   "decisionCounts": {
-    "KEEP": 0,
-    "UPGRADE": 0,
-    "HOLD": 0,
-    "UNREAD": 26
+    "KEEP": 24,
+    "UPGRADE": 1,
+    "HOLD": 1,
+    "UNREAD": 0
   },
-  "examAuditComplete": false,
-  "examDraftComplete": false,
-  "visualStatus": "NOT_RUN",
+  "examAuditComplete": true,
+  "examDraftComplete": true,
+  "visualStatus": "VISUAL_HOLD",
   "goldenStatus": "NOT_RUN",
   "negativeStatus": "NOT_RUN",
   "renderStatus": "NOT_RUN",
-  "releaseStatus": "NOT_RUN"
+  "releaseStatus": "NOT_RUN",
+  "visualHoldQuestionIds": [
+    21
+  ],
+  "auditCommit": "b769d662419a10465cd7ccc1f78c797d5c99a98e",
+  "studentPaths": [
+    "docs/operations/solution-upgrade-reservations/staged/h1/21_강남여고_1학기_중간_고1_기출_DEEP_AUDIT.md"
+  ]
 }
