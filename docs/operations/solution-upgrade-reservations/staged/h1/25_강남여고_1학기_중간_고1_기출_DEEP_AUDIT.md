@@ -1,6 +1,6 @@
 # 2025 강남여고 고1 1학기 중간 — 전 문항 심층 감사
 
-원본: `archive/exams/original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js` (blob `c1bab2ae26145a3e98ba5811f173df6de3c53b6b`). standardCourse=수학(상), 구 교육과정 분류로 표기됨. 전체 24문항 원문·정답·해설 확인. KEEP 22, HOLD 2(q16,q19), UPGRADE 0, UNREAD 0. 시각·Golden·Negative·렌더 NOT_RUN. EXAM_AUDIT_COMPLETE=true, EXAM_DRAFT_COMPLETE=true(UPGRADE 없음), 출고 PASS 아님.
+원본: `archive/exams/original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js` (blob `c1bab2ae26145a3e98ba5811f173df6de3c53b6b`). standardCourse=수학(상), 구 교육과정 분류로 표기됨. 전체 24문항 원문·정답·해설 확인. KEEP 22, HOLD 2(q16,q19), UPGRADE 0, UNREAD 0. q16·q19 이미지 경로 404 및 VISUAL_HOLD/SVG_REQUEST, Golden·Negative·렌더 NOT_RUN. EXAM_AUDIT_COMPLETE=true, EXAM_DRAFT_COMPLETE=true(UPGRADE 없음), 출고 PASS 아님.
 
 ## q1 — KEEP
 
@@ -305,6 +305,9 @@ $\therefore V = 3x^{2}y - 2x^{3} = x^{2}(3y-2x)$
 
 **수학적 검산·판정 근거:** 그림 1/2 세 직육면체의 중앙 겹침 정육면체 부피 x³가 3회 합산되므로 2x³ 차감; 배치 그림 독립 확인 필요. 원본 시각 자료와 입체/절단 구조를 확인할 때까지 보류.
 
+
+**추가 독립 검산 / VISUAL_HOLD / SVG_REQUEST:** 원문 HTML 이미지 `assets/images/25_강남여고_1학기_중간_고1_기출/q16-quality-v4.svg`의 Git main fetch가 404. 그림에서 세 직육면체가 실제로 동일한 중심 정육면체 x³ 부분만 공유한다면 포함-배제 V=3x²y−3x³+x³=3x²y−2x³=x²(3y−2x), ⑤. 하지만 교차한 부피와 각 방향의 배치가 그림 의존이므로 현재 HOLD. 기존 SVG 엔진 담당에 원본 도면/엔진 렌더/PNG 검산 `SVG_REQUEST`만 전달. SVG/JS 미수정.
+
 ## q17 — KEEP
 
 **문제 원문:** 직육면체에서 한 개의 꼭짓점을 공유하는 세 직사각형의 면적이 각각 $3, 9, 27$일 때, 이 직육면체의 가로, 세로, 높이의 합은? [4.7점]
@@ -380,6 +383,9 @@ $S(x) = -\frac{5}{4}(x-4)^{2} + 20$
 $\therefore$ 정답은 ③이다.
 
 **수학적 검산·판정 근거:** 직각삼각형 내접 직사각형 배치 그림 확인 필요; 밑면 S(x)=x(10−5x/4) 최대20, 부피480. 원본 시각 자료와 입체/절단 구조를 확인할 때까지 보류.
+
+
+**추가 독립 검산 / VISUAL_HOLD / SVG_REQUEST:** 원문 HTML 이미지 `assets/images/25_강남여고_1학기_중간_고1_기출/q19-problem-v2.svg`의 Git main fetch가 404. 삼각기둥 밑면에서 가로 x(0<x<8)와 세로 y가 직각삼각형에 내접하는 배치로 해석하면 y=10−5x/4; S(x)=x(10−5x/4)=20−5(x−4)²/4. 높이 24를 곱해 최대 부피 480=③. 그러나 실제 두 절단 방식이 계산 가정과 같은지 시각 확인 전 HOLD. SVG 엔진 담당에 원본 도면/엔진 렌더/PNG 검산 `SVG_REQUEST`만 전달. SVG/JS 미수정.
 
 ## q20 — KEEP
 
