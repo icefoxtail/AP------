@@ -350,7 +350,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "이차방정식 $ax^2+bx+c=0 (a \\n e 0)$에 대하여, 영희는 일차항의 계수 $b$를 잘못 봐서 두 근 $-2, 5$를 얻었고, 철수는 상수항 $c$를 잘못 봐서 두 근 $1, 4$를 얻었을 때, 원래 방정식의 두 근을 $\\alpha, \\beta$라 하자. 이때 $\\alpha^2+\\beta^2$의 값은?",
+    "content": "이차방정식 $ax^2+bx+c=0 (a \\neq 0)$에 대하여, 영희는 일차항의 계수 $b$를 잘못 봐서 두 근 $-2, 5$를 얻었고, 철수는 상수항 $c$를 잘못 봐서 두 근 $1, 4$를 얻었을 때, 원래 방정식의 두 근을 $\\alpha, \\beta$라 하자. 이때 $\\alpha^2+\\beta^2$의 값은?",
     "choices": [
       "15",
       "25",
@@ -378,7 +378,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "복소수 $z=a+bi (b \\n e 0)$에 대하여 $\\dfrac{z}{1+z^2}$가 실수일 때, $a^2+b^2$의 값은?",
+    "content": "복소수 $z=a+bi (b \\neq 0)$에 대하여 $\\dfrac{z}{1+z^2}$가 실수일 때, $a^2+b^2$의 값은?",
     "choices": [
       "1",
       "2",
