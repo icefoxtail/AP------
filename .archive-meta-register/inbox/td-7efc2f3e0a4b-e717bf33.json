@@ -1,0 +1,274 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-7efc2f3e0a4b-e717bf33",
+  "examUid": "중1_2_기말대비1_입체도형_통계",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "types/middle/m1/중1_2_기말대비1_입체도형_통계.js",
+  "expectedSourceBlobSha1": "d2edbc1e7763bea4e0949b25f4f6092f09820a66",
+  "expectedQuestionCount": 25,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-e717bf33.type-ledger.json",
+        "sha256": "c6f885fadd52bc8e5e1bdc63aaa5bfa706f332c466f0d9545dd23de8b879d895"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_fcfd7e95b5c51aa7d4e29818cd187dd6876710952fd1a201a786e6db1d71926c",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT"
+      },
+      "rationale": "다면체는 다각형 면으로 둘러싸인 입체이므로 평면 오각형과 곡면 원뿔은 제외한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "a196e88c380b927f92f794ac7931b60d7875390fb1f450af9c539e1b86ec48a5",
+        "contentFingerprint": "3cd2190f30dd21f007e642fd46e0f0574c4e4cb374e7dd5cf1db9fa44cdedf01"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-e717bf33.type-ledger.json",
+          "sha256": "c6f885fadd52bc8e5e1bdc63aaa5bfa706f332c466f0d9545dd23de8b879d895"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_01fb6c9ac66b13454632ff03c82e101ce3f8de8a31bf87a1786f8db983d65603",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT"
+      },
+      "rationale": "기둥·뿔·뿔대의 옆면 정의를 대조하면 오각기둥의 직사각형 옆면만 맞는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "7de98d786eb89cf77d4860a63867023547a77e1e689bd545a8a0be5d5776ae2e",
+        "contentFingerprint": "970c5a9642e33ffe4bb938b89af2ebb34443cde9858ab82af921affc8ded1a27"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-e717bf33.type-ledger.json",
+          "sha256": "c6f885fadd52bc8e5e1bdc63aaa5bfa706f332c466f0d9545dd23de8b879d895"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_8c5817dfce90c08a3cb9307d86189244a744cefd62fbe3704acf8b30032bc8dc",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+        "templateKey": "TPL_M1_ROTATION_SOLID_PROPERTIES_CLAIM_AUDIT"
+      },
+      "rationale": "회전축 수직인 비퇴화 단면은 모두 원이므로 다른 모양인 것은 없다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "959351e770ee26555bb778ac8a85ad752770c81ced7ac9c97eac94d81ed76010",
+        "contentFingerprint": "e9980574fe8545da05dfb84ddb8a1554df692dd36abc55a20fd9a0c71348c5ad"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-e717bf33.type-ledger.json",
+          "sha256": "c6f885fadd52bc8e5e1bdc63aaa5bfa706f332c466f0d9545dd23de8b879d895"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_cc959c649207a19c4d28a75d8c4639c08ca2101e2e5169d2b00ce44879be807c",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      },
+      "rationale": "해설의 사다리꼴 밑넓이(3+7)×3/2=15로 부피90을 나누어 높이6이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "3500f7416f384c6051a81d7ceeb88d745f5c5232e7cb0bd3a926e8de25629378",
+        "contentFingerprint": "acc466c058cfb18bd08fa1e2dc83d9d6f0bdb14c8166f7f885cc4199c8cfb663"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-e717bf33.type-ledger.json",
+          "sha256": "c6f885fadd52bc8e5e1bdc63aaa5bfa706f332c466f0d9545dd23de8b879d895"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_eac5b91a4e47bf01b415ddfd0beb11a01d96ef446a7b51c91513a33be6316b9c",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      },
+      "rationale": "해설의 반지름3·모선5를 원뿔 겉넓이πr²+πrl에 대입하여24π이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "d48e7b1320f8329608d868d60b10c09a5ab568355e87be074826317a87b6f67a",
+        "contentFingerprint": "ffdcc7dd1a32b1aa28275dd53e3b27681b7d29ba526f743f74753b3a0a82d09f"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-e717bf33.type-ledger.json",
+          "sha256": "c6f885fadd52bc8e5e1bdc63aaa5bfa706f332c466f0d9545dd23de8b879d895"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f4bd01eb8739666c7950766d24c7e58d524b56bdc864851957d9c9e5675b7f28",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+        "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      },
+      "rationale": "해설의 밑변10·높이12로 각뿔 부피(1/3)×100×12=400이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "bf4f030ad82fbb2975b4f53db56a23c6d807031dd9b60bf308afe384994180b2",
+        "contentFingerprint": "86713b14ae50b70281a641debbd7391e60a05365f0cd62aa5234da6642a8aea3"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-e717bf33.type-ledger.json",
+          "sha256": "c6f885fadd52bc8e5e1bdc63aaa5bfa706f332c466f0d9545dd23de8b879d895"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_fb7c884dc6911da3194f6dc4db86f0d927e93141b5a7a1d17ff045c7ca6ee82b",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE"
+      },
+      "rationale": "구 겉넓이4πr²에 반지름7을 대입하여196π이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "ff266ea8a1cdb5feacb8cf5cde38a60894f2cb43052f71526d22c8936d1c1ab5",
+        "contentFingerprint": "3e645f0538a466a1adaf9060cd2886fa3a38a33c2cae0c3c17380a335b43c9e3"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-e717bf33.type-ledger.json",
+          "sha256": "c6f885fadd52bc8e5e1bdc63aaa5bfa706f332c466f0d9545dd23de8b879d895"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_80c2d63c01c5ccaf31d4ed59634904c241c5e1dc0d674154cc8c6f0f80d78a89",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE"
+      },
+      "rationale": "반구의 곡면과 바닥 원 넓이를 합하면48π,구부피 절반은128π/3이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "958fa3e0b8f32a605a1e3e5ceb9e7550438564fe8d17cb4a902571c6bd358008",
+        "contentFingerprint": "eebf11fc24e9673bbf8c8143117a4eaab6b1b4ac2b7756107a8f0c40c490fae0"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-e717bf33.type-ledger.json",
+          "sha256": "c6f885fadd52bc8e5e1bdc63aaa5bfa706f332c466f0d9545dd23de8b879d895"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_77129fd2e0433e3896d1c2c25b79a474dad8db515981a6dab031200366306155",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE"
+      },
+      "rationale": "정육면체 모서리는 구 지름10이므로(500π/3):1000=π:6이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "7869aa3af6bbaf50e03b6cd3d3755b3e023a751df5d19186a3d26beeed67bd7d",
+        "contentFingerprint": "db3472f8304560ef360e3c4a0d03f4337b9d44ecb4df326f89cebef49cfe4bae"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-e717bf33.type-ledger.json",
+          "sha256": "c6f885fadd52bc8e5e1bdc63aaa5bfa706f332c466f0d9545dd23de8b879d895"
+        }
+      ]
+    }
+  ]
+}

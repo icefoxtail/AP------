@@ -1,0 +1,436 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-b4b991e22d61-345dc9e8",
+  "examUid": "동아_공통수학1_행렬_중단원연습_고1",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/동아출판_공통수학1/동아_공통수학1_행렬_중단원연습_고1/동아_공통수학1_행렬_중단원연습_고1.js",
+  "expectedSourceBlobSha1": "c0627bda7703892054c1bddd7f793048ae68e012",
+  "expectedQuestionCount": 15,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b4b991e22d61-345dc9e8.type-ledger.json",
+        "sha256": "efe60437ee02532b27469ae680d23b750bbd68a4dc1a57f94700d420f2e46e59"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_a86188599d14230889fc3e649a47482a56297b831e470add4392798b20d44638",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+        "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT"
+      },
+      "rationale": "행과 열을 세어2×3임을 확인하고 지정된 행열 교차점의 성분3,-1을 읽는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "e2ba817a11644a954b23f933267d9cdf70dde6095430f4c31f143dcb3e6eb6ff",
+        "contentFingerprint": "af11d4488ed1c6abed4708e6afadc2c2ab86b52ea8910b0f99d283b62ce1f688"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b4b991e22d61-345dc9e8.type-ledger.json",
+          "sha256": "efe60437ee02532b27469ae680d23b750bbd68a4dc1a57f94700d420f2e46e59"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f84e193691bdd114e4dae9a3f130b9451486ab000353461fe5fd4d3b87b75494",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+        "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT"
+      },
+      "rationale": "i,j에1,2를 각각 대입하여 네 성분을 계산해 행렬을 구성한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "c20b736b1ccb6ef5f04de3daeaed426413ebf2d86c05cc4cf4500ff9e8d87f03",
+        "contentFingerprint": "78b5445378c87c40c17d1e16ba664bacd61e3d9e39562dac6903ba364d1759f0"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b4b991e22d61-345dc9e8.type-ledger.json",
+          "sha256": "efe60437ee02532b27469ae680d23b750bbd68a4dc1a57f94700d420f2e46e59"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ff0de4a9734599fc997c2093f6329867caa3fe8df29264574e113821bf953b95",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+        "templateKey": "TPL_H1_MATRIX_BASIC_EQUALITY"
+      },
+      "rationale": "상등인 행렬의 대응성분에서 a+2b=10,2a-3b=-8을 연립하여 a=2,b=4를 얻는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "347487802f8eb33e582f073755e0f1157184bb3630e1e5dde1b182b8118329d6",
+        "contentFingerprint": "528c4be59cf4980b8e1ab5937e49a4967af0254397d46d0603cae92d780b7a7d"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b4b991e22d61-345dc9e8.type-ledger.json",
+          "sha256": "efe60437ee02532b27469ae680d23b750bbd68a4dc1a57f94700d420f2e46e59"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3c5324dfdb5114b6935b199cf4d612eab23a13e1b67f6287c55e5f3b8cf8ce3c",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION"
+      },
+      "rationale": "그림의 색별 딱지를 세어 학년별 행과 음식별 열에 배치한[[5,3,4,5],[6,4,5,4]]에서(2,2)는 불고기를 좋아하는2학년4명이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "f0f32ca4c2d2561d0019c00d1808fa844c6a14f8d612e56b81468f57baa6d299",
+        "contentFingerprint": "295d53c552c3ea4936aeff490edf9fd0d6f59041952e7caf9c6417069b2ec220"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b4b991e22d61-345dc9e8.type-ledger.json",
+          "sha256": "efe60437ee02532b27469ae680d23b750bbd68a4dc1a57f94700d420f2e46e59"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_932897041785626976b08203f10dfdf9e4239b596c6baec263343634bfc43e52",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+        "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT"
+      },
+      "rationale": "대응 성분끼리 덧셈을 하고 둘째는 각 성분에서 상대 성분의2배를 빼어 결과행렬을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "244c746fbe8997c393a1f5ae1780c78c1c111657ef6daae833361e93e7bb378b",
+        "contentFingerprint": "bc83bd36bca9dca96536e63da4696af3ab1800988aa5fc4ad47b8f601bdd72eb"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b4b991e22d61-345dc9e8.type-ledger.json",
+          "sha256": "efe60437ee02532b27469ae680d23b750bbd68a4dc1a57f94700d420f2e46e59"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_79abcaf5bb6537496662b66828ac3b5488d743cfbb042cc66fff460a17c14b75",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+        "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT"
+      },
+      "rationale": "각 대응성분에 A+B와3A-2B의 선형결합을 직접 적용하여 두 결과행렬을 계산한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "3bdcbb451ec39824bd31c7946acb492628d1ac208e8a1f01ec93b9f426164a11",
+        "contentFingerprint": "26c8eca535490fecec8b473592041ab6e1dd75e401266d78d861bfcae4f8d594"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b4b991e22d61-345dc9e8.type-ledger.json",
+          "sha256": "efe60437ee02532b27469ae680d23b750bbd68a4dc1a57f94700d420f2e46e59"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_326e4ff83ba58630fcf45f0d1f7f2ba3f498b2f48b38d760470f717292e8ab7f",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+        "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT"
+      },
+      "rationale": "A의 각 성분에-2,B의 대응성분에3을 곱해 더하면[[1,-6,-7],[-4,11,-2]]이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "67a5e53d991d93c7cbc0c9fbec41e3a5cea36cc3c5807ed6b8695766a51b518e",
+        "contentFingerprint": "e87a0fdb5eb156495b2b158fa30cd7beff694b023d9d01b95b745b457beced3f"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b4b991e22d61-345dc9e8.type-ledger.json",
+          "sha256": "efe60437ee02532b27469ae680d23b750bbd68a4dc1a57f94700d420f2e46e59"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9f2816987ad8b4d20abc52556a25f8a06ff954d1ed938072038208e166789f8a",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_LINEAR"
+      },
+      "rationale": "행렬 방정식을 X=5B-A로 정리하고 각 성분을 계산하여[[4,3,-7],[-7,21,6]]을 얻는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "49aad7a17c418913687f3b3daa555744aa9058dc4a619ba1e428c7566b51b9cd",
+        "contentFingerprint": "f821f9de4161a97fc503abab82d1b6984a389f2a360cf722fcd124fe85d63d1f"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b4b991e22d61-345dc9e8.type-ledger.json",
+          "sha256": "efe60437ee02532b27469ae680d23b750bbd68a4dc1a57f94700d420f2e46e59"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c82d6593a115858b6aaf5f4e7975b99540381d0ee157ecfc84ad0ae0c18fadc5",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+        "templateKey": "TPL_H1_MATRIX_BASIC_EQUALITY"
+      },
+      "rationale": "대응성분의 상등으로 xy=5,x-y=4를 얻어 x²+y²=(x-y)²+2xy=26을 계산한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "b96ece333b7bb000a35d85bb2f965276c3dc81b00160dab54ec2781475ff64f1",
+        "contentFingerprint": "14341ef4e1c55ad9fd71b751d6d5cc0bab5b5c5464a2bdf8c290a166bda06a40"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b4b991e22d61-345dc9e8.type-ledger.json",
+          "sha256": "efe60437ee02532b27469ae680d23b750bbd68a4dc1a57f94700d420f2e46e59"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4c1032596f1fe43c8b2cc8fd53279016f8a69a1da6d4fb643f86af587ae51d44",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION"
+      },
+      "rationale": "생산비행렬A와 이익행렬B로 작년가격A+B와 올해비용1.1A를 나타내면 올해이익 B-0.1A=[[300,190],[390,280]]이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "1664e37b9f73cc837fe87ad97e93a1933fd4b3beb1bf96ba881da8fc9e4fae28",
+        "contentFingerprint": "648284a8e6c56dfccb625ebb90c2a6163003fb2fb90710ba1387568ef357ba58"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b4b991e22d61-345dc9e8.type-ledger.json",
+          "sha256": "efe60437ee02532b27469ae680d23b750bbd68a4dc1a57f94700d420f2e46e59"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_80120258283a10d2b879d9e41ed80dda96b08980a33f61a4c301de8652054da0",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
+        "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT"
+      },
+      "rationale": "앞 행렬의 행과 뒤 행렬의 열을 내적하여 각 곱의 성분을 순서대로 계산한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "0fce92bf336402362f5419ee5cb60bc993f8a8a081c3962e4988519387ab1eea",
+        "contentFingerprint": "48ccc9bc55127d0780a81975bea1631cc5114bd8f6cf796cb2cb28556fac34f5"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b4b991e22d61-345dc9e8.type-ledger.json",
+          "sha256": "efe60437ee02532b27469ae680d23b750bbd68a4dc1a57f94700d420f2e46e59"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6ce3cdc92c67b18da460c5f893515f421420407d115d8f0aba5988e1fb5ac2f6",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_LINEAR"
+      },
+      "rationale": "AB의 성분6x-3,2x-1,18-3y,6-y를 모두0으로 놓아 x=1/2,y=6을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "416ac48bb1b70ca67d0bab8593eb0ec997de06ce0cebdf20089050b28d8bcb4c",
+        "contentFingerprint": "612204bf627848265f905cf4996d40803504dc514d3de0af8d4969e5d29b6ff2"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b4b991e22d61-345dc9e8.type-ledger.json",
+          "sha256": "efe60437ee02532b27469ae680d23b750bbd68a4dc1a57f94700d420f2e46e59"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c23d907fb7b92366b80af3cee2ff4bdc6d7926f55f4cdaded328dc0b69eb1914",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
+        "templateKey": "TPL_H1_MATRIX_PRODUCT_MODEL"
+      },
+      "rationale": "재료별 한 잔 필요량행렬에 주문량열벡터(50,40)를 곱하여 설탕1300g,우유20500mL를 얻는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "252298338a2b022b229fa48da30cb34d7e86768037b4bc3bc5e4f15a4a9cf420",
+        "contentFingerprint": "9724499f5da33b039c87f151a656c8d1242d0d4091b64798b0074e0968da4c91"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b4b991e22d61-345dc9e8.type-ledger.json",
+          "sha256": "efe60437ee02532b27469ae680d23b750bbd68a4dc1a57f94700d420f2e46e59"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f99bbdd52ba6c80c9902b7aec08449cf406f14f5986a54a7ea8fe2f3a8a103e5",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_MATRIX_POWER_IDENTITY"
+      },
+      "rationale": "대각행렬을 거듭제곱하면 비대각성분은0으로 유지되고 대각성분만 각자 거듭제곱되어 A⁵=diag(32,-1)이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "028f42ed314d1d867e6e9a8233dfdf851b3fefc352f9eb23de1d7d8ee9e832c6",
+        "contentFingerprint": "629952fc70c963664026fe83be768b3ad1531c62ebb51ef267db7358263b3d09"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b4b991e22d61-345dc9e8.type-ledger.json",
+          "sha256": "efe60437ee02532b27469ae680d23b750bbd68a4dc1a57f94700d420f2e46e59"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f46a07e903adca7a7a39ff75d781a0fb6380ebc1c59bd67318163d3223ad9f7d",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
+        "templateKey": "TPL_H1_MATRIX_PRODUCT_MODEL"
+      },
+      "rationale": "기록행렬과 평가가중치벡터의 곱으로 가산점(33,34)과 감점(18.5,15)을 구해 차(14.5,19)를 비교하면 B가 높다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "a738fff591312cbd1db9ed37ded24c2213aed2fac5949c4614cb57fae9d10298",
+        "contentFingerprint": "4de939de78fa1ed32e866824d67209e47620f1c1a5562ddb5b032c5fb98576b6"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b4b991e22d61-345dc9e8.type-ledger.json",
+          "sha256": "efe60437ee02532b27469ae680d23b750bbd68a4dc1a57f94700d420f2e46e59"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-06c1ec28cd04-ce6047f1",
+  "sourceArchiveFile": "types/middle/m1/중1_1학기_식의값.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_fa0e56319f3b7211304e96398adddc06b4f0e0d0a67aed96ecfd67dc68c1ca6a",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+      "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
+      "step": "계수1,1,-3,1; 상수2,-1,1,0; 대입값1,-2,4,-1.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_05ad66ff2d81b886d5ec9257d8ab971e505df94a0d1741f1fb656074a15a6908",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+      "step": "1/b=1/4-1/2=-1/4이므로 b=-4.",
+      "note": "분모를 제거하거나 주어진 수를 대입하여 일차방정식으로 환원. 검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b70c3e425877aab51206b051484a66fba81728222de735c7041c74266f8c4a01",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+      "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
+      "step": "7(-3)-5·4=-41.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d301db41a2cd5d7a07463c7a6b9d0ebd130cc51b0c6a35678711abd01046c70a",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+      "templateKey": null,
+      "step": "대입값5,5/2,2를 비교하여 ㉢㉡㉠.",
+      "note": "필요 TPL: 대입한 여러 식의 값을 정렬한다. 검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8427e2899185bb58196377bef57d7e88b0d12fd3f847aec48667b5a8cd664975",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+      "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
+      "step": "기온15를 대입한 속력340에 시간10을 곱해3400m.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e2c023426e8a99cf228d60c52e4b98ed2f7fd044f01dd39facd7d0317e93f78c",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_EVALUATION",
+      "templateKey": null,
+      "step": "안쪽 min/max부터 c,e,c,a로 계산하여 최종 max(e,a)=e.",
+      "note": "필요 TPL: min/max 규칙의 중첩 연산을 안쪽부터 계산. 검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e60434d6fc7ac2b53864092ead8fa0608a143dce9470d6d83d0ad7e3db98a173",
+      "sourceOrdinal": 26,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+      "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_EVALUATE_AND_RANK",
+      "step": "각 값을 -1/2,1/4,4,-1/4,2로 계산하여③이 최대.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ca3f3eaa106ac391ac898f1a39699c7aefa98b334c927d55e3e4b872a31c7c0e",
+      "sourceOrdinal": 30,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+      "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
+      "step": "속력348에 시간4를 곱하여1392m.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9cdc3749c510a0c1a14bd08c3e175bbf104069042f71aae029ee11e41a2f45e6",
+      "sourceOrdinal": 31,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+      "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
+      "step": "331+0.6(-20)=319m/초.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3ae1d7b3f3b1ce55aa270bec62a17247c20bc0b8e21ae634b847e7f256f31ecd",
+      "sourceOrdinal": 41,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+      "step": "346=331+0.6t를 풀어 t=25.",
+      "note": "분모를 제거하거나 주어진 수를 대입하여 일차방정식으로 환원. 검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_25ca27bf0a34e8dfa8f9f2f943238906981a8f444410173f3fac5abc07d17eae",
+      "sourceOrdinal": 42,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+      "templateKey": null,
+      "step": "0<a<1에서 a³<a²<a이고 부호를 바꾸면 -a가 가장 작음.",
+      "note": "필요 TPL: 0과1 사이 변수의 거듭제곱·반대수 대소를 비교한다. 검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b92221c36104f5548370ce01c51a47558231e2d41d60b0be1f8babf182ddcef3",
+      "sourceOrdinal": 56,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "templateKey": "TPL_M1_LINEAR_EXPRESSION_LIKE_TERMS",
+      "step": "a=4, b=3-4/3=5/3이므로 3a/8-3b/5=1/2.",
+      "note": "원문 해설은3y를 잘못 통분하였다. 실제 b=5/3, 정답1/2. 검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c3502c868a7b74b44681a2a5fd74c423328c9dde1a2ab9b81f77b320666385d8",
+      "sourceOrdinal": 57,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+      "step": "절대영도 -273.15°C를 관계식에 대입하면 F=-459.67°F. 원문은 -273°C 근삿값을 사용함.",
+      "note": "분모를 제거하거나 주어진 수를 대입하여 일차방정식으로 환원. 검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    }
+  ]
+}

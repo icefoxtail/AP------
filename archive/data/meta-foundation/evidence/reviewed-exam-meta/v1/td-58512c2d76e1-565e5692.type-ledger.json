@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-58512c2d76e1-565e5692",
+  "sourceArchiveFile": "types/high/h2/비상_대수_삼각함수_중단원_고2_유형확인.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_1a9b17f45d762a1b5e380faf702ff0aa465da0bc30147c1bbee722bd5c1785a5",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_GRAPH_TRANSFORM",
+      "templateKey": "TPL_H22A_04_TRIG_GRAPH_TRANSFORM_105",
+      "step": "각 식의 진폭과 수직이동, x계수에서 극값과 주기를 읽는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_349ff0c14b8811c700f4ebd80f40fc9a9bc08a62794608158979f3dfa1081361",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+      "templateKey": "TPL_H22A_04_TRIG_EQUATION_102",
+      "step": "cosx의 이차식으로 통일하고 범위[−1,1]에서 cosx=1/2만 남긴다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_005bccabfc2b583845d9123b65dd951bd964ba212543ed29591511661c87fc9e",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_GRAPH_TRANSFORM",
+      "templateKey": "TPL_H22A_04_TRIG_GRAPH_TRANSFORM_105",
+      "step": "최대최소와 주기로 a=3,d=1,b=2/3을 정해 f(π)를 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5025fb86f1b2e319b291df847ddc3df30a93bdc8556388d6f471c5cce0c84a64",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+      "templateKey": "TPL_H22A_04_TRIG_EQUATION_101",
+      "step": "한 주기에서 대칭축x=1/2에 대한 두 교점으로 근의 합1을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4885cb3751c123743a1a38e954bdc245739d03a410cd911588e0a8f1d894786a",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+      "templateKey": "TPL_H22A_04_TRIG_EQUATION_102",
+      "step": "반주기에서 sin(πx/4)=1/2의 두 근2/3,10/3을 구하여 밑변 길이를 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4a219da2d00fa591efce79ac08a44c6873ca880cda4daf8809afdf48b1bb3e41",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+      "templateKey": "TPL_H22A_04_TRIG_EQUATION_101",
+      "step": "탄젠트의 세 증가 가지와 감소직선을 비교하여 양끝 교점조건 k≥0,k≤4를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_24157f3a2f35e533d96a78905237a616df1ff6decf30807b2f534ae4a85a5682",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+      "templateKey": null,
+      "step": "0<x<π/4에서 sinx<cosx,0<tanx<1을 구해 지수·로그 단조성을 적용한다.",
+      "note": "새 TPL 제안: 삼각함수 값의 대소 비교 검사: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    }
+  ]
+}

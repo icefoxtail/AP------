@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-9bce8b0987e5-d6619d66",
+  "sourceArchiveFile": "types/middle/m1/중1_1단원_최대공약수와최소공배수.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_efc024668a76cb613b506bb5946e6408765d5dfa8408d2012dcad740029fecd7",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_COMMON_DIVISIBILITY_FILTER",
+      "templateKey": "TPL_M1_COMMON_DIVISIBILITY_FILTER_COMMON_DIVISOR_CHECK",
+      "step": "두수에 공통으로없는 인수7을 포함한④는 공약수불가.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d3c7b48f4462748e173dd82ef17f78cc68595c2d6204fe9d2e1458ce1cf008e5",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+      "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_MIN_MAX_RATIO",
+      "step": "L=2³·3²·5²,G=2·5이므로 L/G=2²·3²·5.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8238230e549a35f89c4097b1610156b8086e58b8c9bf5650e721f69c1c5f0821",
+      "sourceOrdinal": 29,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+      "templateKey": null,
+      "step": "G18,L540의지수범위를맞추면 N은2를포함하고3지수3.36<N<90에서54.",
+      "note": "필요 TPL: 세수의 gcd/lcm 지수상한·하한과수범위로세번째수를구한다. 검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_330063449b5250c46ef1531618cba0a27ec0a0000055c77f1c7022f5d4a02421",
+      "sourceOrdinal": 31,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LCM_APPLICATION",
+      "templateKey": "TPL_LCM_APPLICATION_SHIFTED_REMAINDER",
+      "step": "학생수x에1을더하면12의배수.40에가장가까운12k-1은35.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c46b515a757d6394a0a50b276fcb2d43620fda93bbf85b5d6da14499d0dbe80b",
+      "sourceOrdinal": 39,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LCM_APPLICATION",
+      "templateKey": "TPL_LCM_APPLICATION_SHIFTED_REMAINDER",
+      "step": "x+3은lcm15,6,8=120의배수.최대세자리x=960-3=957.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9c3f353e852d4c3c530c1dff72297384d45e5f345ca8cb848dde0319443ab62b",
+      "sourceOrdinal": 46,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LCM_APPLICATION",
+      "templateKey": "TPL_LCM_APPLICATION_REPEATED_EVENT_CYCLE",
+      "step": "세출발주기의최소공배수80분후이므로오전7시20분.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d3d861948d07528ba117b0b23b1721b3526ee0a60abd29380e0ed641713bca9c",
+      "sourceOrdinal": 48,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LCM_APPLICATION",
+      "templateKey": "TPL_LCM_APPLICATION_TILING_BY_LCM",
+      "step": "같은방향세변의최소공배수120이정육면체변.12·15·20=3600개.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_428e28a2ac21db1df4aa269748cc26ca24a267638fca311e393a7221830c3068",
+      "sourceOrdinal": 50,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LCM_APPLICATION",
+      "templateKey": "TPL_LCM_APPLICATION_TILING_BY_LCM",
+      "step": "세변최소공배수60에서5·3·10=150개.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1259ca16fb100899aad97bf33a1f13ab074f513725e2193c75d7fa960d800ebb",
+      "sourceOrdinal": 52,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LCM_APPLICATION",
+      "templateKey": null,
+      "step": "타일변12,15의최소공배수60이정사각형변.4·5=20장.",
+      "note": "필요 TPL: 직사각형타일을같은방향으로붙여최소정사각형을만드는2차원최소공배수배치. 검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cfceb38bb76fdc46d2680446f08d38f80d528e5f303ab4cdd0199f011f044d0a",
+      "sourceOrdinal": 53,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LCM_APPLICATION",
+      "templateKey": "TPL_LCM_APPLICATION_REPEATED_EVENT_CYCLE",
+      "step": "출발점공동복귀주기lcm60,75=300초,동생은300/75=4바퀴.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e16258f84c738eee4b026a4fc30e4dfcb64fec8966906522f8a966396d66867c",
+      "sourceOrdinal": 54,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LCM_APPLICATION",
+      "templateKey": "TPL_LCM_APPLICATION_REPEATED_EVENT_CYCLE",
+      "step": "공동납품주기24일.현재기준일후30일이므로다음48일까지18일.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_649b4def7c92a813726969a6d1827876153af63d02aaa5dd2a46869ff1018e03",
+      "sourceOrdinal": 56,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LCM_APPLICATION",
+      "templateKey": "TPL_LCM_APPLICATION_TILING_BY_LCM",
+      "step": "12,20,6의공통배수60을변으로 같은방향쌓으면150개.부피조건상정수변인가능최소정육면체변도60.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    }
+  ]
+}
