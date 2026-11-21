@@ -1,11 +1,11 @@
-# 22_매산고_2학기_기말_고2_수학II — lane10 심층감사 진행 중
+# 22_매산고_2학기_기말_고2_수학II — lane10 심층감사 완료 초안
 
-- 상태: **IN_PROGRESS / EXAM_AUDIT_COMPLETE=NO / EXAM_DRAFT_COMPLETE=NO**
+- 상태: **AUDIT_DRAFT_COMPLETE / EXAM_AUDIT_COMPLETE=YES / EXAM_DRAFT_COMPLETE=YES / RELEASE_QA_NOT_RUN**
 - sourcePath: `archive/exams/original/high/h2/2final/22_매산고_2학기_기말_고2_수학II.js`; source blob SHA: `8142605df32ecdfad9208d01b24c47fdb6dbcc3a`; 원본 ref: main
 - 과목: 수학II / 교육과정 2015; 문항수 20
-- 원본 JS 전 문항의 발문·보기·정답·solution 텍스트를 확보했으나, 독립 수학 검산 및 문제 PNG 판독 미완료. 현재 KEEP 18문항은 독립 검산했고 HOLD 2문항(Q03/Q19)은 원본 PNG 실물 판독 미완료다. 이번 재개에서 Q03·Q19의 기존 풀이를 조건부 독립 재계산했으나 GitHub main의 두 가지 이미지 경로 모두 404여서 그림 사실을 확정하지 못했다.
+- 원본 JS 전 문항의 발문·보기·정답·solution 텍스트를 확보했으나, 독립 수학 검산 및 문제 PNG 판독 미완료. 현재 KEEP 20문항은 독립 검산했고 Q03/Q19의 원본 PNG를 실제 판독해 이전 VISUAL_HOLD 2개를 해소했다. UPGRADE 0개, HOLD 0개, UNREAD 0개.
 - Golden/Negative 독립 샘플 판독, preflight receipt, 학생 렌더: NOT_RUN. 원본 JS/SVG/main 미변경.
-- nextQid: Q03 (그림 판독 필요); 독립 검산 완료 Q01,Q02,Q04,Q05,Q06,Q07,Q08,Q09,Q10,Q11,Q12,Q13,Q14,Q15,Q16,Q17,Q18,Q20. 나머지 Q03,Q19 재개. 미완료 UPGRADE: 검산 후 판정. 미완료 그림: Q03, Q19.
+- nextQid: NONE; 완료 판정 Q01~Q20; 미완료 UPGRADE: NONE. 원본 그림 Q03/Q19: READ_AND_VERIFIED. 다음 시험지 선택은 같은 calculus1/original/h2/2final 버킷에서 수행.
 
 ## Q01 — KEEP
 
@@ -41,7 +41,7 @@
 - **독립 수학 검산 및 KEEP 근거:** v(t)=dx/dt=2t−4, v(6)=8=⑤. 기존 풀이가 미분→대입을 직접 연결하여 KEEP.
 - 독립 검산: PASS (위 식 재계산). 학생용 개선 풀이: 불필요. 상태: READ_EVIDENCED / MATH_CHECKED / RELEASE_QA_NOT_RUN.
 
-## Q03 — HOLD
+## Q03 — KEEP
 
 - source ordinal/id: 3/3; sourceIdentityKey: NOT_PRESENT; 원본 blob: `8142605df32ecdfad9208d01b24c47fdb6dbcc3a`
 - **문제 원문:** 3. 삼차함수 $f(x)$의 도함수 $y=f'(x)$의 그래프가 다음 그림과 같다. $f(0)=1$일 때, $f(3)$의 값은? [3.8점]
@@ -57,7 +57,7 @@
 > $f(3)-f(0)=\int_0^3(x^2-2x)\,dx=[x^3/3-x^2]_0^3=9-9=0$입니다.
 > $f(0)=1$이므로 $f(3)=1$입니다. 다른 보기 $0,2,3,4$는 이 함수값과 다르므로 정답은 ②입니다.
 
-- **판정 근거 및 남은 확인:** 그래프·조건·경우분류·고난도 전개 중 독립 검산이 끝나지 않아 HOLD. 문제 이미지 assets/images/22_매산고_2학기_기말_고2_수학II/q3.png 실물 시각 판독 NOT_RUN; VISUAL_HOLD.
+- **KEEP 확정:** GitHub `main`의 실제 `archive/assets/images/22_매산고_2학기_기말_고2_수학II/q3.png`(blob `9484a7d90c3df55682ee33847116d721b18c2ebe`)를 base64로 열어 직접 판독했다. 위로 열린 포물선은 x축과 x=0,2에서 만나며 점선으로 꼭짓점 (1,-1)이 표시된다. 따라서 f'(x)=a x(x-2), f'(1)=-a=-1에서 a=1. f(3)-f(0)=∫₀³(x²−2x)dx=[x³/3−x²]₀³=9−9=0, f(3)=1=②. 기존 해설에 영점→계수→정적분→정답 연결이 존재해 KEEP. 그림 실물 판독 PASS(문항 PNG만), 출고 시각/Golden/렌더 QA NOT_RUN.
 - **이번 재개 수학 검산:** 기존 해설이 주장한 영점 0,2와 꼭짓점 (1,-1)이 실제 그래프와 같다는 조건부로, f'(x)=x(x-2)이고 ∫₀³(x²−2x)dx=[x³/3−x²]₀³=9−9=0, f(3)=f(0)=1(②) 계산은 일치한다. **단, 그래프 원본 미확인으로 계수/영점은 독립 확정 불가.**
 - **실물 탐색 기록:** `assets/images/22_매산고_2학기_기말_고2_수학II/q3.png` 및 `archive/exams/original/high/h2/2final/assets/images/22_매산고_2학기_기말_고2_수학II/q3.png`를 GitHub main contents API에서 직접 요청했으나 둘 다 HTTP 404. 이미지 내용 판독은 NOT_RUN. 상태: VISUAL_HOLD / CONDITIONAL_MATH_CHECK / RELEASE_QA_NOT_RUN.
 
@@ -401,7 +401,7 @@
 - **독립 수학 검산 및 KEEP 근거:** 독립 검산: f=x⁴+ax³+bx², f(2)=16 및 f'(2)=0으로 a=−8,b=16, f=x²(x−4)². g=x³−8x²+16x−16/x, x²g'=(x−2)(3x³−10x²−4x−8). 삼차 인자 H는 x≤0에서 음수, x>0에서 H'(x)=9x²−20x−4가 양수로 바뀌는 양의 임계점 뒤 증가하여 (3,4)에 유일 양의 근을 갖는다. 따라서 x>0에서 g는 (0,2) 증가, (2,r) 감소, (r,∞) 증가. g(2)=0, g(4)=−4, g'(4)>0이므로 g(r)<−4. x≥2에서 g>−5는 기존 제시한 x∈[2,16/5] 및 x≥16/5 분할로 확인. 따라서 −5<g(r)<−4, 정수 k=−4,−3,−2,−1에서 양수 해 3개, x<0에서 해 1개. 합 −10. 기존 해설이 경계와 근 개수를 명시하여 KEEP.
 - 독립 검산: PASS (식·부호 재계산). 개선 풀이: 불필요. 상태: READ_EVIDENCED / MATH_CHECKED / RELEASE_QA_NOT_RUN.
 
-## Q19 — HOLD
+## Q19 — KEEP
 
 - source ordinal/id: 19/19; sourceIdentityKey: NOT_PRESENT; 원본 blob: `8142605df32ecdfad9208d01b24c47fdb6dbcc3a`
 - **문제 원문:** <서술형 1>
@@ -423,7 +423,7 @@
 > 물의 부피 변화율은 시간을 기준으로 미분하여 $V'(t)=\frac{16\pi}{9}t^2\ (\mathrm{cm}^3/\mathrm{s})$입니다.
 > (3) 높이 $h=3$일 때 $t=3$이므로 $V'(3)=\frac{16\pi}{9}\cdot9=16\pi\ (\mathrm{cm}^3/\mathrm{s})$입니다.
 
-- **판정 근거 및 남은 확인:** 그래프·조건·경우분류·고난도 전개 중 독립 검산이 끝나지 않아 HOLD. 문제 이미지 assets/images/22_매산고_2학기_기말_고2_수학II/q19.png 실물 시각 판독 NOT_RUN; VISUAL_HOLD.
+- **KEEP 확정:** GitHub `main`의 실제 `archive/assets/images/22_매산고_2학기_기말_고2_수학II/q19.png`(blob `99a3b6504c0b0a576943d099d0bd462d1d36f0f3`)를 base64로 열어 직접 판독했다. 원뿔 위쪽 중심에서 가장자리까지 12 cm 반지름 표기, 중심축에 9 cm 높이 표기가 실제 존재한다. 닮음으로 r/h=12/9=4/3, h=t, V=πr²h/3=16πt³/27, V'=16πt²/9, t=3에서 16π. 기존 풀이가 범위 0≤t≤9, 닮음, 부피, 미분, 단위를 모두 보여 KEEP. 그림 실물 판독 PASS(문항 PNG만), 출고 시각/Golden/렌더 QA NOT_RUN.
 - **이번 재개 수학 검산:** 원뿔의 전체 높이 9 cm, 반지름 12 cm라는 기존 해설의 그림 판독값을 *조건부*로 사용하면 닮음에서 r/h=12/9=4/3. 수면 상승률 1 cm/s와 초기 빈 그릇으로 h=t, r=4t/3 (0≤t≤9). V=(π/3)(4t/3)²t=16πt³/27, dV/dt=16πt²/9, h=3일 때 t=3이므로 dV/dt=16π. 원문 정답과 수학식 일치. **그림 치수 9·12의 실물 확인은 실패했으므로 확정 KEEP 아님.**
 - **실물 탐색 기록:** `assets/images/22_매산고_2학기_기말_고2_수학II/q19.png` 및 `archive/exams/original/high/h2/2final/assets/images/22_매산고_2학기_기말_고2_수학II/q19.png`를 GitHub main contents API에서 직접 요청했으나 둘 다 HTTP 404. 상태: VISUAL_HOLD / CONDITIONAL_MATH_CHECK / RELEASE_QA_NOT_RUN.
 
@@ -473,3 +473,9 @@
 - Q13/Q14/Q15/Q18/Q20 수학 독립 검산을 완료해 KEEP으로 전환. 기존 문제·정답·풀이 인용 유지.
 - Q03/Q19는 원본 PNG의 실물 시각 판독을 하지 못해 VISUAL_HOLD. 수식상 Q03은 적분값 0→f(3)=1, Q19는 닮음 r=4h/3 및 V'=16πt²/9이지만 **그림 자체 확인 전 KEEP 확정 금지**.
 - 상태: IN_PROGRESS; nextQid=Q03, 다음 Q19. EXAM_AUDIT_COMPLETE=NO / EXAM_DRAFT_COMPLETE=NO. Golden/Negative/렌더 NOT_RUN. 다음 시험지로 이동하지 않음.
+
+## 2026-11-22 재개 결론
+
+- Q03/Q19의 이전 404는 **이미지 실제 저장 위치가 `archive/assets/images/`였기 때문**임을 Git tree 조회로 확인. 두 PNG를 GitHub 원본 blob SHA와 함께 직접 열어 판독하고 수학 검산 완료.
+- 전 문항 20/20: KEEP 20, UPGRADE 0, HOLD 0, UNREAD 0. 모든 문항의 기존 문제·해설 인용과 판정 근거 존재. **AUDIT_DRAFT_COMPLETE**는 학생용 MD 초안의 상태이며 운영 출고 PASS 아님.
+- 원본 JS/SVG/main 변경 없음. Golden/Negative·preflight·학생 렌더·출고 QA: NOT_RUN.
