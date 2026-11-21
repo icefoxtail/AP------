@@ -1,0 +1,57 @@
+{
+  "qid": 21,
+  "itemFingerprint": "13ee4186cbea7a99",
+  "solveSteps": [
+    "$\\triangle APQ$에서 사인법칙을 적용하면  \n$$\\frac{\\overline{PQ}}{\\sin(\\angle QAP)} = \\frac{\\overline{AQ}}{\\sin(\\angle APQ)} \\implies \\overline{PQ} = 2\\sqrt{2} \\times \\frac{1}{2\\sqrt{2}} = 1$$  \n조건 (가)에 의해 $\\overline{BP} = 3$, $\\overline{PQ} = 1$, $\\overline{QC} = 2$이므로 $\\overline{BQ} = 4$, $\\overline{BC} = 6$이다.",
+    "$\\triangle ABQ$에서 코사인법칙을 적용하면  \n$$\\cos B = \\frac{4^2 + 4^2 - (2\\sqrt{2})^2}{2 \\times 4 \\times 4} = \\frac{16 + 16 - 8}{32} = \\frac{3}{4}$$  \n$\\sin B = \\sqrt{1 - \\left(\\frac{3}{4}\\right)^2} = \\frac{\\sqrt{7}}{4}$이다.",
+    "이제 $\\triangle ABC$에서 코사인법칙을 적용하면  \n$$\\overline{AC}^2 = 4^2 + 6^2 - 2 \\times 4 \\times 6 \\times \\frac{3}{4} = 16 + 36 - 36 = 16 \\implies \\overline{AC} = 4$$  \n따라서 외접원의 반지름의 길이 $R$은 사인법칙에 의해  \n$$2R = \\frac{\\overline{AC}}{\\sin B} = \\frac{4}{\\frac{\\sqrt{7}}{4}} = \\frac{16\\sqrt{7}}{7} \\implies R = \\frac{8\\sqrt{7}}{7}$$."
+  ],
+  "solvedAnswer": "$\\frac{8\\sqrt{7}}{7}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-05",
+  "subUnitKey": "H22-A-05-CORE",
+  "unitEvidence": "삼각형 $ABC$가 다음 조건을 만족시킬 때, 삼각형 ",
+  "rpmRecordId": "H2-M1-RPM-109",
+  "rpmReason": "Q21(ABC): 사인법칙과 코사인법칙 핵심 개념 단원의 RPM H2-M1-RPM-109 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_05_SINE_LAW",
+  "templateKey": "TPL_H22A_05_SINE_LAW_109",
+  "typeReason": "Q21(ABC): 사인법칙과 코사인법칙 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q21(ABC): 사인법칙과 코사인법칙 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "overline{AQ} = 2\\sqrt{2}$"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$\\triangle APQ$에서 사인법칙을 적",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q21(ABC): 발문과 해설의 풀이 과정을 점검하여 정답 $\\frac{8\\sqrt{7}}{7}$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

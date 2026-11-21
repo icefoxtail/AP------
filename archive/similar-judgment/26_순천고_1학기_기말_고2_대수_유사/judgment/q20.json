@@ -1,0 +1,56 @@
+{
+  "qid": 20,
+  "itemFingerprint": "89a5ad0680c1f940",
+  "solveSteps": [
+    "Q20 문제의 조건(48)에 맞추어 식을 세운다.",
+    "(가) 귀납 가정 $a_m = \\frac{4}{m(m+1)}$을 대입하면  \n$$f(m) = m^2 a_m = m^2 \\cdot \\frac{4}{m(m+1)} = \\frac{4m}{m + 1}$$  \n(나) $f(m) + a_{m+1} = (m + 1)^2 a_{m+1}$에서 $a_{m+1}$ 항을 모으면  \n$$f(m) = \\{(m + 1)^2 - 1\\} a_{m+1} = m(m + 2) a_{m+1} \\implies g(m) = m(m + 2)$$  \n따라서 $f(3) = \\frac{12}{4} = 3$, $g(4) = 4 \\times 6 = 24$이므로 $f(3) \\times g(4) = 3 \\times 24 = 72$이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-08",
+  "subUnitKey": "H22-A-08-CORE",
+  "unitEvidence": "다음은 수열 $\\{a_n\\}$이 $a_1 = 2$이고,",
+  "rpmRecordId": "H2-M1-RPM-129",
+  "rpmReason": "Q20(48): 수학적 귀납법 핵심 개념 단원의 RPM H2-M1-RPM-129 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_08_MATHEMATICAL_INDUCTION",
+  "templateKey": "TPL_H22A_08_MATHEMATICAL_INDUCTION_131",
+  "typeReason": "Q20(48): 수학적 귀납법 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(48): 수학적 귀납법 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": ", $f(3) \\times g(4)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "(가) 귀납 가정 $a_m = \\frac{4}",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q20(48): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

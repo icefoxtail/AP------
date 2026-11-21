@@ -1,0 +1,59 @@
+{
+  "qid": 19,
+  "itemFingerprint": "dab6186a86742fcc",
+  "solveSteps": [
+    "(가), (나)에서 $|a_1|, |a_2|, \\dots, |a_6|$은 차례로 $1, 2, 4, 8, 16, 32$이고, 모두 양수일 때의 합은 $63$이다.",
+    "어떤 항의 부호가 음수이면 전체 합은 그 항 절댓값의 $2$배만큼 감소한다.",
+    "음수인 항들의 절댓값의 합을 $T$라 하면 $63 - 2T = 29 \\implies 2T = 34 \\implies T = 17$이다.",
+    "$\\{1, 2, 4, 8, 16, 32\\}$의 부분집합 중 합이 $17$이 되는 조합은 $1 + 16$뿐이므로 $a_1 = -1, a_5 = -16$이고 나머지 항은 양수이다.",
+    "따라서 $a_2 + a_5 = 2 + (-16) = -14$이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-06",
+  "subUnitKey": "H22-A-06-SEQUENCE_APPLICATION",
+  "unitEvidence": "수열 $\\{a_n\\}$이 다음 조건을 모두 만족시킬 때",
+  "rpmRecordId": "H2-M1-RPM-121",
+  "rpmReason": "Q19(29): 수열의 활용 단원의 RPM H2-M1-RPM-121 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+  "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_121",
+  "typeReason": "Q19(29): 수열의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q19(29): 수열의 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": ") $\\sum_{k=1}^6 a_k = 29$"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "(가), (나)에서 $|a_1|, |a_2|,",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q19(29): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

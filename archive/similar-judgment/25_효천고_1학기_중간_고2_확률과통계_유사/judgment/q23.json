@@ -1,0 +1,59 @@
+{
+  "qid": 23,
+  "itemFingerprint": "8999da473edaef7a",
+  "solveSteps": [
+    "치역의 원소의 개수가 $3$이므로 $4$개의 함숫값은 ${x, x, y, z}$ ($x, y, z$는 서로 다른 원소) 꼴이다.",
+    "조건 (가)에서 $2x + y + z$가 짝수이려면 $y + z$가 짝수여야 하므로 $y$와 $z$는 모두 홀수이거나 모두 짝수여야 한다.",
+    "치역 $R$이 될 수 있는 원소 $3$개의 부분집합 $4$가지에 대하여 $x$로 가능한 원소를 조사하면 다음과 같다.",
+    "- $R = {1, 2, 3}$: ${y, z} = {1, 3} \\implies x = 2$ ($1$가지)  \n- $R = {1, 2, 4}$: ${y, z} = {2, 4} \\implies x = 1$ ($1$가지)  \n- $R = {1, 3, 4}$: ${y, z} = {1, 3} \\implies x = 4$ ($1$가지)  \n- $R = {2, 3, 4}$: ${y, z} = {2, 4} \\implies x = 3$ ($1$가지)\n\n각 $4$가지 경우마다 ${x, x, y, z}$를 정의역 ${1, 2, 3, 4}$에 대응시키는 방법의 수는 $\\dfrac{4!}{2!,1!,1!} = 12$가지이다.",
+    "따라서 구하는 함수의 개수는 $4 \\times 12 = 48$이다."
+  ],
+  "solvedAnswer": "48",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "집합 $X = {1, 2, 3, 4}$에 대하여 다음 ",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q23(12): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q23(12): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q23(12): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "수 $f$의 치역의 원소의 개수는 $3$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "치역의 원소의 개수가 $3$이므로 $4$개의",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q23(12): 발문과 해설의 풀이 과정을 점검하여 정답 48를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

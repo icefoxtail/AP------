@@ -1,0 +1,57 @@
+{
+  "qid": 20,
+  "itemFingerprint": "bde1f1c68326608e",
+  "solveSteps": [
+    "$f(x) = \\frac{k(x + 1) + 2k + 10}{x + 1} = k + \\frac{2k + 10}{x + 1}$이다. (kx)",
+    "$x > 0$일 때 $x + 1 > 1$이므로 $0 < \\frac{1}{x + 1} < 1$이고 $2k + 10 > 0$이므로  \n$$k < f(x) < 3k + 10$$  \n따라서 치역에 속하는 정수는 $k + 1, k + 2, \\dots, 3k + 9$이며, 항의 개수는 $(3k + 9) - (k + 1) + 1 = 2k + 9$개다.",
+    "공차가 $1$인 등차수열의 합이 $221$이므로  \n$$\\frac{(2k + 9)\\{(k + 1) + (3k + 9)\\}}{2} = (2k + 9)(2k + 5) = 221$$  \n$$4k^2 + 28k + 45 = 221 \\implies k^2 + 7k - 44 = 0 \\implies (k + 11)(k - 4) = 0$$  \n$k$는 자연수이므로 $k = 4$이다."
+  ],
+  "solvedAnswer": "$k = 4$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-06",
+  "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+  "unitEvidence": "$x > 0$에서 정의된 함수 $f(x) = \\frac",
+  "rpmRecordId": "H2-M1-RPM-115",
+  "rpmReason": "Q20(kx): 수열의 기본 단원의 RPM H2-M1-RPM-115 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+  "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
+  "typeReason": "Q20(kx): 수열의 기본 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(kx): 수열의 기본 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "연수 $k$의 값을 풀이과정과 함께 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$f(x) = \\frac{k(x + 1) +",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q20(kx): 발문과 해설의 풀이 과정을 점검하여 정답 $k = 4$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

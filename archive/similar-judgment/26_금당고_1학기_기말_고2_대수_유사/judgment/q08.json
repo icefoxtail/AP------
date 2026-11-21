@@ -1,0 +1,56 @@
+{
+  "qid": 8,
+  "itemFingerprint": "a33d86e9baf8b12d",
+  "solveSteps": [
+    "삼각형의 내각의 합 $A + B + C = \\pi$에서 $A + B = \\pi - C$이므로  \n$$\\cos(A + B) = \\cos(\\pi - C) = -\\cos C$$  \n또 각 변환에 의해 $\\sin\\left(\\frac{\\pi}{2} + C\\right) = \\cos C$이다. (ABC)",
+    "따라서 구하는 식의 값은  \n$$(-\\cos C)(\\cos C) = -\\cos^2 C = -(1 - \\sin^2 C) = -\\left(1 - \\frac{6}{9}\\right) = -\\frac{1}{3}$$."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-04",
+  "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+  "unitEvidence": "삼각형 $ABC$에 대하여 $\\sin C = \\frac",
+  "rpmRecordId": "H2-M1-RPM-095",
+  "rpmReason": "Q8(ABC): 삼각함수의 기본 단원의 RPM H2-M1-RPM-095 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+  "templateKey": "TPL_H22A_04_TRIG_PROPERTIES_099",
+  "typeReason": "Q8(ABC): 삼각함수의 기본 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q8(ABC): 삼각함수의 기본 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "{\\pi}{2} + C\\right)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "삼각형의 내각의 합 $A + B + C = \\",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q8(ABC): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

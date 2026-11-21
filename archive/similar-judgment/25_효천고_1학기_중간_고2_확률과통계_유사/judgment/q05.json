@@ -1,0 +1,57 @@
+{
+  "qid": 5,
+  "itemFingerprint": "5f43f29125b47420",
+  "solveSteps": [
+    "파스칼의 삼각형 성질 ${}*{k}\\mathrm{C}*{r-1} + {}*{k}\\mathrm{C}*{r} = {}*{k+1}\\mathrm{C}*{r}$를 왼쪽부터 차례대로 적용한다.",
+    "$$\\begin{aligned} {}*{n}\\mathrm{C}*{0} + {}*{n}\\mathrm{C}*{1} &= {}*{n+1}\\mathrm{C}*{1} \\ {}*{n+1}\\mathrm{C}*{1} + {}*{n+1}\\mathrm{C}*{2} &= {}*{n+2}\\mathrm{C}*{2} \\ {}*{n+2}\\mathrm{C}*{2} + {}*{n+2}\\mathrm{C}*{3} &= {}*{n+3}\\mathrm{C}*{3} \\ {}*{n+3}\\mathrm{C}*{3} + {}*{n+3}\\mathrm{C}*{4} &= {}*{n+4}\\mathrm{C}*{4} \\ {}*{n+4}\\mathrm{C}*{4} + {}*{n+4}\\mathrm{C}*{5} &= {}*{n+5}\\mathrm{C}*{5} \\end{aligned}$$\n\n즉 ${}*{n+5}\\mathrm{C}*{5} = {}*{12}\\mathrm{C}*{5}$이고 $n$은 자연수이므로 $n+5 = 12$, 따라서 $n = 7$이다.",
+    "정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-02",
+  "subUnitKey": "H22-PS-02-CORE",
+  "unitEvidence": "${}*{n}\\mathrm{C}*{0} + {}*{n}",
+  "rpmRecordId": "H2-PS-RPM-038",
+  "rpmReason": "Q5(12): 이항정리 핵심 개념 단원의 RPM H2-PS-RPM-038 유형에 해당한다.",
+  "problemTypeKey": "PT_BINOMIAL_THEOREM",
+  "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+  "typeReason": "Q5(12): 이항정리 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q5(12): 이항정리 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "때, 등식을 만족시키는 자연수 $n$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "파스칼의 삼각형 성질 ${}*{k}\\mathr",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q5(12): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

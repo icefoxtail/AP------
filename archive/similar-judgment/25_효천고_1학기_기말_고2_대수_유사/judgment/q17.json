@@ -1,0 +1,56 @@
+{
+  "qid": 17,
+  "itemFingerprint": "10d75ad6e9ebd827",
+  "solveSteps": [
+    "등차중항에 의해 $a_5 + a_9 = 2a_7 = 0$이므로 $a_7 = a_1 + 6d = 0$, 즉 $a_1 = -6d$ ($d > 0$)이다.",
+    "부분분수 분해를 적용하면  \n$$\\sum_{k=1}^{5} \\frac{1}{a_k a_{k+1}} = \\frac{1}{d} \\sum_{k=1}^{5} \\left(\\frac{1}{a_k} - \\frac{1}{a_{k+1}}\\right) = \\frac{1}{d}\\left(\\frac{1}{a_1} - \\frac{1}{a_6}\\right)$$  \n$a_1 = -6d$, $a_6 = -d$를 대입하면  \n$$\\frac{1}{d}\\left(\\frac{1}{-6d} - \\frac{1}{-d}\\right) = \\frac{5}{6d^2} = \\frac{5}{96} \\implies d^2 = 16 \\implies d = 4 \\ (d > 0)$$  \n따라서 $a_1 = -24$이므로 $a_n = -24 + 4(n - 1) = 4n - 28$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-07",
+  "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+  "unitEvidence": "공차가 양수인 등차수열 $\\{a_n\\}$에 대하여 $a",
+  "rpmRecordId": "H2-M1-RPM-125",
+  "rpmReason": "Q17(96): 수열의 합 단원의 RPM H2-M1-RPM-125 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_07_SEQUENCE_SUM",
+  "templateKey": "TPL_H22A_07_SEQUENCE_SUM_125",
+  "typeReason": "Q17(96): 수열의 합 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(96): 수열의 합 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "c{5}{96}$일 때, 일반항 $a_n$은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "등차중항에 의해 $a_5 + a_9 = 2a_",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q17(96): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

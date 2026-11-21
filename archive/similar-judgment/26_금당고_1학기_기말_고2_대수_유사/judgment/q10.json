@@ -1,0 +1,58 @@
+{
+  "qid": 10,
+  "itemFingerprint": "b95891b144dab83e",
+  "solveSteps": [
+    "비례식에서 첫째 항과 셋째 항의 비가 같으므로 $\\sin A + \\sin B = \\sin C + \\sin A \\implies \\sin B = \\sin C$이다. (ABC)",
+    "삼각형의 내각에서 $B + C = \\pi$이면 $A = 0$이 되어 모순이므로 $B = C$이다.",
+    "$x = \\sin A$, $y = \\sin B = \\sin C$ ($x, y > 0$)라 하면 $(x + y) : 2y = 4 : 6$에서  \n$$6(x + y) = 8y \\implies 6x = 2y \\implies y = 3x$$  \n사인법칙에 의해 $a : b : c = \\sin A : \\sin B : \\sin C = 1 : 3 : 3$이므로 $a = t$, $b = 3t$, $c = 3t$ ($t > 0$)로 놓을 수 있다.",
+    "코사인법칙에 의하여  \n$$\\cos C = \\frac{a^2 + b^2 - c^2}{2ab} = \\frac{t^2 + 9t^2 - 9t^2}{2 \\cdot t \\cdot 3t} = \\frac{t^2}{6t^2} = \\frac{1}{6}$$."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-05",
+  "subUnitKey": "H22-A-05-CORE",
+  "unitEvidence": "삼각형 $ABC$에서 $(\\sin A + \\sin B)",
+  "rpmRecordId": "H2-M1-RPM-109",
+  "rpmReason": "Q10(ABC): 사인법칙과 코사인법칙 핵심 개념 단원의 RPM H2-M1-RPM-109 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_05_COSINE_LAW",
+  "templateKey": "TPL_H22A_05_COSINE_LAW_111",
+  "typeReason": "Q10(ABC): 사인법칙과 코사인법칙 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q10(ABC): 사인법칙과 코사인법칙 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "6 : 4$일 때, $\\cos C$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "비례식에서 첫째 항과 셋째 항의 비가 같으므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q10(ABC): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "qid": 20,
+  "itemFingerprint": "ae2168fc430cb0b9",
+  "solveSteps": [
+    "$(1+x)^{2n}$의 전개식에서 $x^n$의 계수는 ${}*{2n}\\mathrm{C}*{n}$이다.",
+    "한편 $(1+x)^n \\times (1+x)^n$에서 $x^n$항은 앞의 식의 $x^r$항과 뒤의 식의 $x^{n-r}$항을 곱하여 얻으므로 $x^n$의 계수는 다음과 같다.",
+    "$$\\sum_{r=0}^{n} {}*{n}\\mathrm{C}*{r} \\cdot {}*{n}\\mathrm{C}*{n-r} = \\sum_{r=0}^{n} ({}*{n}\\mathrm{C}*{r})^2$$\n\n양변의 $x^n$의 계수를 비교하면 $\\sum_{r=0}^{n} ({}*{n}\\mathrm{C}*{r})^2 = {}*{2n}\\mathrm{C}*{n}$이다.",
+    "$n = 12$를 대입하면 구하는 값은 ${}*{24}\\mathrm{C}*{12}$이다."
+  ],
+  "solvedAnswer": "${}*{24}\\mathrm{C}*{12}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-02",
+  "subUnitKey": "H22-PS-02-CORE",
+  "unitEvidence": "항등식 $(1+x)^{2n} = (1+x)^n \\tim",
+  "rpmRecordId": "H2-PS-RPM-038",
+  "rpmReason": "Q20(12): 이항정리 핵심 개념 단원의 RPM H2-PS-RPM-038 유형에 해당한다.",
+  "problemTypeKey": "PT_BINOMIAL_THEOREM",
+  "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+  "typeReason": "Q20(12): 이항정리 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(12): 이항정리 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "hrm{C}*{12})^2$의 값을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$(1+x)^{2n}$의 전개식에서 $x^n$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q20(12): 발문과 해설의 풀이 과정을 점검하여 정답 ${}*{24}\\mathrm{C}*{12}$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

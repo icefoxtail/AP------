@@ -1,0 +1,57 @@
+{
+  "qid": 12,
+  "itemFingerprint": "913ef97124836ba6",
+  "solveSteps": [
+    "$a_1 = \\frac{1}{4}$이고 매 시행마다 색칠되는 정사각형의 넓이는 직전의 $\\frac{1}{4}$배이므로 $a_n = \\left(\\frac{1}{4}\\right)^n$이다.",
+    "따라서 첫째항부터 제$n$항까지의 합은  \n$$\\sum_{k=1}^{n} a_k = \\frac{\\frac{1}{4}\\left\\{1 - \\left(\\frac{1}{4}\\right)^n\\right\\}}{1 - \\frac{1}{4}} = \\frac{1}{3}\\left(1 - \\frac{1}{4^n}\\right)$$  \n부등식 $\\frac{1}{3}\\left(1 - \\frac{1}{4^n}\\right) > \\frac{85}{256}$을 풀면  \n$$1 - \\frac{1}{4^n} > \\frac{255}{256} \\implies \\frac{1}{4^n} < \\frac{1}{256} = \\frac{1}{4^4}$$  \n이므로 $n > 4$이다.",
+    "따라서 구하는 자연수 $n$의 최솟값은 $5$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-06",
+  "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+  "unitEvidence": "한 변의 길이가 $1$인 정사각형 모양의 종이가 있다.",
+  "rpmRecordId": "H2-M1-RPM-115",
+  "rpmReason": "Q12(85): 수열의 기본 단원의 RPM H2-M1-RPM-115 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+  "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_118",
+  "typeReason": "Q12(85): 수열의 기본 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q12(85): 수열의 기본 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "{256}$보다 커지는 자연수 $n$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$a_1 = \\frac{1}{4}$이고 매 시",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q12(85): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

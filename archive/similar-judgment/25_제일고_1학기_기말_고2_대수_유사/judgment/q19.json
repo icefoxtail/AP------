@@ -1,0 +1,57 @@
+{
+  "qid": 19,
+  "itemFingerprint": "e5814dd355fdff4c",
+  "solveSteps": [
+    "수열 $\\{a_n\\}$의 공비를 $R$ ($R < 0$)이라 하면 수열 $\\{(a_n)^2\\}$은 첫째항이 $9$, 공비가 $R^2$인 등비수열이다.",
+    "$R^2 = t$ ($t > 0$)로 놓으면  \n$$T_4 = \\frac{9(t^4 - 1)}{t - 1} = 9(t^3 + t^2 + t + 1) = 135 \\implies t^3 + t^2 + t + 1 = 15$$  \n$$t^3 + t^2 + t - 14 = 0 \\implies (t - 2)(t^2 + 3t + 7) = 0$$  \n$t > 0$이므로 $t = R^2 = 2$이고, $R < 0$이므로 $R = -\\sqrt{2}$이다.",
+    "이제 $S_4$를 구하면  \n$$S_4 = \\frac{3\\{(-\\sqrt{2})^4 - 1\\}}{-\\sqrt{2} - 1} = \\frac{9}{-(\\sqrt{2} + 1)} = -9(\\sqrt{2} - 1) = 9 - 9\\sqrt{2}$$  \n따라서 $p = 9$, $q = -9$, $r = 2$이므로 $\\frac{p}{q} + r = \\frac{9}{-9} + 2 = 1$이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-06",
+  "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+  "unitEvidence": "첫째항이 $3$이고 공비가 음수인 등비수열 $\\{a_n",
+  "rpmRecordId": "H2-M1-RPM-115",
+  "rpmReason": "Q19(135): 수열의 기본 단원의 RPM H2-M1-RPM-115 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+  "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_118",
+  "typeReason": "Q19(135): 수열의 기본 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q19(135): 수열의 기본 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "q, r$은 유리수이고, $r$은 소수이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "수열 $\\{a_n\\}$의 공비를 $R$ ($R",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q19(135): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

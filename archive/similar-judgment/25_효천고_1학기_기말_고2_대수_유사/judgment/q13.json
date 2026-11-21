@@ -1,0 +1,58 @@
+{
+  "qid": 13,
+  "itemFingerprint": "2d5e327ac0d7b188",
+  "solveSteps": [
+    "(ⅰ) $n = 2$일 때 확인하므로 ①은 $2$이고, $(1 + h)^2 = 1 + 2h + h^2$이므로 ②는 $h^2$이다. (nh)",
+    "(ⅱ) $n = k$일 때 가정하므로 ③은 $k$이고, 양변에 양수 $1 + h$를 곱하므로 ④는 $1 + h$이다.",
+    "우변을 전개하면 $(1 + kh)(1 + h) = 1 + (k + 1)h + kh^2$이므로 ⑤에 알맞은 식은 $kh^2$이다.",
+    "따라서 옳지 않은 것은 ⑤($k^2 h$)이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-08",
+  "subUnitKey": "H22-A-08-CORE",
+  "unitEvidence": "$h > 0$일 때, $n \\ge 2$인 모든 자연수 ",
+  "rpmRecordId": "H2-M1-RPM-129",
+  "rpmReason": "Q13(nh): 수학적 귀납법 핵심 개념 단원의 RPM H2-M1-RPM-129 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_08_MATHEMATICAL_INDUCTION",
+  "templateKey": "TPL_H22A_08_MATHEMATICAL_INDUCTION_131",
+  "typeReason": "Q13(nh): 수학적 귀납법 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q13(nh): 수학적 귀납법 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "~⑤에 알맞은 것으로 옳지 **않은** 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "(ⅰ) $n = 2$일 때 확인하므로 ①은 $",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q13(nh): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

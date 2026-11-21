@@ -1,0 +1,56 @@
+{
+  "qid": 19,
+  "itemFingerprint": "d76cbe7294988954",
+  "solveSteps": [
+    "원점 $O(0, 0)$과 두 직선 위의 점 $P(1, 3)$, $Q(1, -2)$를 잡으면 $\\angle POQ = \\theta$이다.",
+    "두 점 사이의 거리 공식에 의해  \n$$\\overline{OP} = \\sqrt{1^2 + 3^2} = \\sqrt{10}, \\qquad \\overline{OQ} = \\sqrt{1^2 + (-2)^2} = \\sqrt{5}, \\qquad \\overline{PQ} = 3 - (-2) = 5$$  \n삼각형 $OPQ$에 코사인법칙을 적용하면  \n$$\\cos\\theta = \\frac{10 + 5 - 25}{2\\sqrt{10}\\sqrt{5}} = \\frac{-10}{10\\sqrt{2}} = -\\frac{\\sqrt{2}}{2}$$  \n$90^\\circ < \\theta < 180^\\circ$이므로 $\\theta = 135^\\circ$이다."
+  ],
+  "solvedAnswer": "$135^\\circ$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-05",
+  "subUnitKey": "H22-A-05-CORE",
+  "unitEvidence": "[서술형 문제 1] 두 직선 $y = 3x$와 $y =",
+  "rpmRecordId": "H2-M1-RPM-109",
+  "rpmReason": "Q19(90): 사인법칙과 코사인법칙 핵심 개념 단원의 RPM H2-M1-RPM-109 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_05_COSINE_LAW",
+  "templateKey": "TPL_H22A_05_COSINE_LAW_111",
+  "typeReason": "Q19(90): 사인법칙과 코사인법칙 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q19(90): 사인법칙과 코사인법칙 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "heta$의 값을 풀이과정과 함께 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "원점 $O(0, 0)$과 두 직선 위의 점 $",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q19(90): 발문과 해설의 풀이 과정을 점검하여 정답 $135^\\circ$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

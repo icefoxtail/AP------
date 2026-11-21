@@ -1,0 +1,60 @@
+{
+  "qid": 13,
+  "itemFingerprint": "3ae788cae0b2728a",
+  "solveSteps": [
+    "조건 (나)에서 $c \\ge d+2$이므로 $c' = c - (d+2)$라 두면 $c' \\ge 0$이고 $c = c' + d + 2$이다. (144)",
+    "이를 조건 (가)에 대입하면 다음과 같다.",
+    "$$a + b + (c' + d + 2) - d = 9 \\implies a + b + c' = 7$$\n\n$a, b, c'$은 음이 아닌 정수이므로 $d$의 값에 관계없이 해의 개수는 다음과 같다.",
+    "$${}*{3}\\mathrm{H}*{7} = {}*{9}\\mathrm{C}*{7} = {}*{9}\\mathrm{C}*{2} = \\frac{9 \\times 8}{2} = 36$$\n\n한편 $d$는 $0 \\le d \\le 4$인 정수이므로 $0, 1, 2, 3, 4$의 $5$가지 값을 가질 수 있다.",
+    "따라서 전체 순서쌍의 개수는 $36 \\times 5 = 180$이다.",
+    "정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "다음 조건을 만족시키는 음이 아닌 정수 $a, b, c",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q13(144): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+  "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+  "typeReason": "Q13(144): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q13(144): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "d \\le 4$이고 $c \\ge d+2$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "조건 (나)에서 $c \\ge d+2$이므로 $",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q13(144): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

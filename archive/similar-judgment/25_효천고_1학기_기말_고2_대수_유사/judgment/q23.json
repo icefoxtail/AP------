@@ -1,0 +1,60 @@
+{
+  "qid": 23,
+  "itemFingerprint": "ad71037dbb121a71",
+  "solveSteps": [
+    "두 원의 반지름의 길이를 $R$이라 하자. (BO)",
+    "$\\triangle O_1 O_2 C$는 $\\overline{O_1 C} = \\overline{O_1 O_2} = R$인 이등변삼각형이므로 $\\angle O_1 O_2 C = 90^\\circ - \\frac{\\theta_2}{2}$이다.",
+    "세 점 $C, O_2, D$가 한 직선 위에 있으므로 $\\theta_3 = 180^\\circ - \\left(90^\\circ - \\frac{\\theta_2}{2}\\right) = 90^\\circ + \\frac{\\theta_2}{2}$이다.",
+    "조건 $\\theta_3 = \\theta_1 + \\theta_2$에 대입하면 $\\theta_1 + \\frac{\\theta_2}{2} = 90^\\circ$이고, 따라서 $\\theta_3 = 180^\\circ - \\theta_1$이다.",
+    "한편 $\\triangle O_1 O_2 C$에서 코사인법칙에 의해  \n$$\\overline{CO_2}^2 = 2R^2(1 - \\cos\\theta_2) = 4R^2\\sin^2\\frac{\\theta_2}{2} \\implies \\overline{CO_2} = 2R\\sin\\frac{\\theta_2}{2} = 2R\\cos\\theta_1$$  \n따라서 구하는 값은 $\\overline{CO_2} \\times \\overline{O_2 D} = 2R^2\\cos\\theta_1$이다.",
+    "$\\triangle O_1 AB$와 $\\triangle O_1 O_2 D$에서 각각 코사인법칙을 적용하면  \n$$\\overline{AB}^2 = 16 = 2R^2(1 - \\cos\\theta_1), \\quad \\overline{O_1 D}^2 = 72 = 2R^2(1 - \\cos\\theta_3) = 2R^2(1 + \\cos\\theta_1)$$  \n두 식을 변변 빼면 $72 - 16 = 4R^2\\cos\\theta_1 \\implies 4R^2\\cos\\theta_1 = 56$이므로  \n$$\\overline{CO_2} \\times \\overline{O_2 D} = 2R^2\\cos\\theta_1 = 28$$."
+  ],
+  "solvedAnswer": "$28$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-05",
+  "subUnitKey": "H22-A-05-CORE",
+  "unitEvidence": "반지름의 길이가 $\\overline{O_1 O_2}$인",
+  "rpmRecordId": "H2-M1-RPM-109",
+  "rpmReason": "Q23(BO): 사인법칙과 코사인법칙 핵심 개념 단원의 RPM H2-M1-RPM-109 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_05_COSINE_LAW",
+  "templateKey": "TPL_H22A_05_COSINE_LAW_111",
+  "typeReason": "Q23(BO): 사인법칙과 코사인법칙 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q23(BO): 사인법칙과 코사인법칙 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "_2 D}$의 값을 구하는 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "두 원의 반지름의 길이를 $R$이라 하자. $",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q23(BO): 발문과 해설의 풀이 과정을 점검하여 정답 $28$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

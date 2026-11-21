@@ -1,0 +1,57 @@
+{
+  "qid": 14,
+  "itemFingerprint": "f931f5b2aa3ae04d",
+  "solveSteps": [
+    "$t = g(x) = \\frac{\\pi}{3}\\cos(\\pi x)$라 하면 $-1 \\le \\cos(\\pi x) \\le 1$이므로 $-\\frac{\\pi}{3} \\le t \\le \\frac{\\pi}{3}$이다.",
+    "구간 $\\left[-\\frac{\\pi}{3}, \\frac{\\pi}{3}\\right]$에서 $\\sin t$는 증가하므로 최솟값은 $\\sin\\left(-\\frac{\\pi}{3}\\right) = -\\frac{\\sqrt{3}}{2}$, 최댓값은 $\\sin\\frac{\\pi}{3} = \\frac{\\sqrt{3}}{2}$이다.",
+    "따라서 $y = 4\\sin t - 1$의 최댓값은 $2\\sqrt{3} - 1$, 최솟값은 $-2\\sqrt{3} - 1$이므로 두 값의 합은  \n$$(2\\sqrt{3} - 1) + (-2\\sqrt{3} - 1) = -2$$."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-04",
+  "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+  "unitEvidence": "두 함수 $f(x) = 4\\sin x - 1$, $g(",
+  "rpmRecordId": "H2-M1-RPM-103",
+  "rpmReason": "Q14(f): 삼각함수의 그래프 단원의 RPM H2-M1-RPM-103 유형에 해당한다.",
+  "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+  "templateKey": "TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT",
+  "typeReason": "Q14(f): 삼각함수의 그래프 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(f): 삼각함수의 그래프 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "irc g)(x)$의 최댓값과 최솟값의 합은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$t = g(x) = \\frac{\\pi}{3}",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q14(f): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

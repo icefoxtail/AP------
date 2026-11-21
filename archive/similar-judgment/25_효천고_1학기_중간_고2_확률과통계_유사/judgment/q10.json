@@ -1,0 +1,58 @@
+{
+  "qid": 10,
+  "itemFingerprint": "696d2846190c0b7c",
+  "solveSteps": [
+    "$7$장의 카드를 모두 일렬로 나열하는 전체 경우의 수는 다음과 같다. (120)",
+    "$$\\frac{7!}{4!} = 7 \\times 6 \\times 5 = 210$$\n\n여사건은 $1$과 $2$가 적힌 카드가 서로 이웃하는 경우이므로, $1$과 $2$를 한 묶음으로 보아 전체 $6$개를 나열한 뒤 묶음 내부를 배열한다.",
+    "$$\\frac{6!}{4!} \\times 2! = 30 \\times 2 = 60$$\n\n따라서 구하는 경우의 수는 $210 - 60 = 150$이다.",
+    "정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "숫자 $1, 2, 3, 3, 3, 3, 5$가 하나씩 ",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q10(120): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q10(120): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q10(120): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "이상의 카드가 있도록 나열하는 경우의 수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$7$장의 카드를 모두 일렬로 나열하는 전체",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q10(120): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

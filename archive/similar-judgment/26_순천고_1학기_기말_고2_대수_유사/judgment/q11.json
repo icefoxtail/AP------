@@ -1,0 +1,59 @@
+{
+  "qid": 11,
+  "itemFingerprint": "156d798b6800c4a3",
+  "solveSteps": [
+    "(가) $\\cos A = \\frac{1}{2}$이고 $0 < A < \\pi$이므로 $A = 60^\\circ$이다. (ABC)",
+    "(나) 외접원 반지름 $R$에 대하여 $\\pi R^2 = \\frac{196}{3}\\pi \\implies R = \\frac{14}{\\sqrt{3}}$이다.",
+    "사인법칙에 의해 $\\overline{BC} = 2R\\sin 60^\\circ = 2 \\cdot \\frac{14}{\\sqrt{3}} \\cdot \\frac{\\sqrt{3}}{2} = 14$이다.",
+    "(다) $\\overline{AB} = 3t$, $\\overline{AC} = 8t$ ($t > 0$)라 두고 코사인법칙을 적용하면  \n$$14^2 = (3t)^2 + (8t)^2 - 2(3t)(8t)\\cos 60^\\circ = (9 + 64 - 24)t^2 = 49t^2$$  \n$t > 0$이므로 $t = 2$이고 $\\overline{AB} = 6$, $\\overline{AC} = 16$이다.",
+    "따라서 넓이는 $S = \\frac{1}{2} \\times 6 \\times 16 \\times \\sin 60^\\circ = 24\\sqrt{3}$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-05",
+  "subUnitKey": "H22-A-05-CORE",
+  "unitEvidence": "삼각형 $ABC$가 다음 조건을 만족시킬 때, 삼각형 ",
+  "rpmRecordId": "H2-M1-RPM-109",
+  "rpmReason": "Q11(ABC): 사인법칙과 코사인법칙 핵심 개념 단원의 RPM H2-M1-RPM-109 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_05_COSINE_LAW",
+  "templateKey": "TPL_H22A_05_COSINE_LAW_111",
+  "typeReason": "Q11(ABC): 사인법칙과 코사인법칙 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q11(ABC): 사인법칙과 코사인법칙 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "\\overline{AC} = 3 : 8$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "(가) $\\cos A = \\frac{1}{2}",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q11(ABC): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

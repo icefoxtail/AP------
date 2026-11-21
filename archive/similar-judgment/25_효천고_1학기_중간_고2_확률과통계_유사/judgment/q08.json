@@ -1,0 +1,58 @@
+{
+  "qid": 8,
+  "itemFingerprint": "e347f69dbb831144",
+  "solveSteps": [
+    "전체 $6$개의 숫자를 일렬로 나열하는 경우의 수는 다음과 같다. (40)",
+    "$$\\frac{6!}{3!,2!} = \\frac{720}{6 \\times 2} = 60$$\n\n이 중 맨 앞자리에 $0$이 오는 경우의 수는 나머지 $5$개의 숫자 $1, 1, 1, 4, 4$를 나열하는 경우의 수와 같다.",
+    "$$\\frac{5!}{3!,2!} = \\frac{120}{6 \\times 2} = 10$$\n\n따라서 여섯 자리 자연수의 개수는 $60 - 10 = 50$이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "여섯 개의 숫자 $0, 1, 1, 1, 4, 4$를 모",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q8(40): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q8(40): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q8(40): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "여 만들 수 있는 여섯 자리 자연수의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "전체 $6$개의 숫자를 일렬로 나열하는 경우의",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q8(40): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

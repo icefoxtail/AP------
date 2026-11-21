@@ -1,0 +1,58 @@
+{
+  "qid": 17,
+  "itemFingerprint": "28ff10fe0ec647bd",
+  "solveSteps": [
+    "반원의 중심을 $O$, 반지름의 길이를 $R$이라 하자. (AB)",
+    "$\\angle BAC = \\frac{\\pi}{3}$는 호 $BC$에 대한 원주각이므로 중심각 $\\angle BOC = \\frac{2\\pi}{3}$이다.",
+    "점 $D$는 호 $BC$의 사등분점 중 $B$에 가장 가까운 점이므로 $\\angle BOD = \\frac{1}{4} \\cdot \\frac{2\\pi}{3} = \\frac{\\pi}{6}$이고,  \n$$\\angle COD = \\frac{2\\pi}{3} - \\frac{\\pi}{6} = \\frac{\\pi}{2}$$  \n점 $E$는 호 $CD$의 중점이므로 $\\angle COE = \\frac{\\pi}{4}$이다.",
+    "코사인법칙에 의하여  \n$$\\overline{CD}^2 = R^2 + R^2 - 2R^2\\cos\\frac{\\pi}{2} = 2R^2$$  \n$$\\overline{CE}^2 = R^2 + R^2 - 2R^2\\cos\\frac{\\pi}{4} = R^2(2 - \\sqrt{2})$$  \n조건 $\\overline{CD}^2 = \\overline{CE}^2 + 16\\sqrt{2}$에 대입하면  \n$$2R^2 = R^2(2 - \\sqrt{2}) + 16\\sqrt{2} \\implies R^2\\sqrt{2} = 16\\sqrt{2} \\implies R^2 = 16$$  \n한편 $\\angle ACB = \\frac{\\pi}{2}$이므로 $\\overline{BC} = 2R\\sin\\frac{\\pi}{3} = R\\sqrt{3}$이고, 따라서 $\\overline{BC}^2 = 3R^2 = 48$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-05",
+  "subUnitKey": "H22-A-05-CORE",
+  "unitEvidence": "선분 $AB$를 지름으로 하는 반원의 호 $AB$ 위의",
+  "rpmRecordId": "H2-M1-RPM-109",
+  "rpmReason": "Q17(AB): 사인법칙과 코사인법칙 핵심 개념 단원의 RPM H2-M1-RPM-109 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_05_COSINE_LAW",
+  "templateKey": "TPL_H22A_05_COSINE_LAW_111",
+  "typeReason": "Q17(AB): 사인법칙과 코사인법칙 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(AB): 사인법칙과 코사인법칙 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "때, $\\overline{BC}^2$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "반원의 중심을 $O$, 반지름의 길이를 $R$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q17(AB): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

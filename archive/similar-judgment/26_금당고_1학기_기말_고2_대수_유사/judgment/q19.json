@@ -1,0 +1,57 @@
+{
+  "qid": 19,
+  "itemFingerprint": "0e344d54e257e141",
+  "solveSteps": [
+    "두 선분 $AC, BD$의 교점이 $E$이므로 $\\angle AEB = \\angle CED$ (맞꼭지각)이다. (ABCD)",
+    "이 각을 $\\theta$라 하고 두 외접원 반지름을 $R_1, R_2$라 하면 사인법칙에 의해  \n$$\\frac{\\overline{AB}}{\\overline{CD}} = \\frac{2R_1\\sin\\theta}{2R_2\\sin\\theta} = \\frac{R_1}{R_2} = \\frac{3}{4}$$  \n$\\overline{AB} = 6$이므로 $\\overline{CD} = 8$이다.",
+    "$\\triangle BCD$에서 $\\angle BCD = \\phi$라 하면 $\\cos\\phi = \\frac{1}{4}$이므로 코사인법칙에 의해  \n$$\\overline{BD}^2 = 7^2 + 8^2 - 2 \\cdot 7 \\cdot 8 \\cdot \\frac{1}{4} = 49 + 64 - 28 = 85 \\implies \\overline{BD} = \\sqrt{85}$$  \n또한 $\\sin\\phi = \\sqrt{1 - \\left(\\frac{1}{4}\\right)^2} = \\frac{\\sqrt{15}}{4}$이고 $\\triangle BCD$의 외접원이 원 $O$이므로 사인법칙에 의해  \n$$2R = \\frac{\\sqrt{85}}{\\sqrt{15}/4} = \\frac{4\\sqrt{17}}{\\sqrt{3}} = \\frac{4\\sqrt{51}}{3} \\implies R = \\frac{2\\sqrt{51}}{3}$$."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-05",
+  "subUnitKey": "H22-A-05-CORE",
+  "unitEvidence": "원 $O$에 내접하는 사각형 $ABCD$에서 두 대각선",
+  "rpmRecordId": "H2-M1-RPM-109",
+  "rpmReason": "Q19(ABCD): 사인법칙과 코사인법칙 핵심 개념 단원의 RPM H2-M1-RPM-109 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_05_COSINE_LAW",
+  "templateKey": "TPL_H22A_05_COSINE_LAW_111",
+  "typeReason": "Q19(ABCD): 사인법칙과 코사인법칙 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q19(ABCD): 사인법칙과 코사인법칙 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": ": 4$일 때, 원 $O$의 반지름의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "두 선분 $AC, BD$의 교점이 $E$이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q19(ABCD): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

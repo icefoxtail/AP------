@@ -1,0 +1,60 @@
+{
+  "qid": 18,
+  "itemFingerprint": "1d6b7ff963e75b29",
+  "solveSteps": [
+    "$t = \\frac{\\pi}{6}(x + 1)$이라 하면 $0 \\le x \\le n$일 때 $\\frac{\\pi}{6} \\le t \\le \\frac{n + 1}{6}\\pi$이다. (11)",
+    "- $1 \\le n \\le 5$이면 $\\frac{n+1}{6}\\pi \\le \\pi$이므로 $0 \\le \\sin t \\le 1$에서 $f(n) - g(n) \\le 2$이다.",
+    "(불가)  \n- $6 \\le n \\le 7$이면 $\\pi < \\frac{n+1}{6}\\pi < \\frac{3\\pi}{2}$이므로 $t = \\frac{\\pi}{2}$를 포함해 $f(n) = 2$이고, $-2 < g(n) < 0$이다.",
+    "따라서 $2 < f(n) - g(n) < 4$를 만족한다.",
+    "- $n \\ge 8$이면 $\\frac{n+1}{6}\\pi \\ge \\frac{3\\pi}{2}$이므로 $f(n) = 2, g(n) = -2$에서 $f(n) - g(n) = 4$이다.",
+    "(불가)  \n따라서 가능한 자연수는 $n = 6, 7$이고 합은 $6 + 7 = 13$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-04",
+  "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+  "unitEvidence": "자연수 $n$에 대하여 $0 \\le x \\le n$에서",
+  "rpmRecordId": "H2-M1-RPM-103",
+  "rpmReason": "Q18(11): 삼각함수의 그래프 단원의 RPM H2-M1-RPM-103 유형에 해당한다.",
+  "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+  "templateKey": "TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT",
+  "typeReason": "Q18(11): 삼각함수의 그래프 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(11): 삼각함수의 그래프 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "만족시키는 모든 자연수 $n$의 값의 합은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$t = \\frac{\\pi}{6}(x + 1)",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q18(11): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

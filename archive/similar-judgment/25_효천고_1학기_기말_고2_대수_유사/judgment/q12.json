@@ -1,0 +1,59 @@
+{
+  "qid": 12,
+  "itemFingerprint": "5e0af08fae8a60c0",
+  "solveSteps": [
+    "$1 \\le n \\le 9$일 때, $n$은 한 자리 자연수이므로 $a_n$은 $n$자리 자연수이다. (22)",
+    "따라서 $\\log a_n$의 정수 부분 $b_n = n - 1$이다.",
+    "$n = 10, 11, 12$일 때, $n$은 두 자리 자연수이므로 $a_n$은 $2n$자리 자연수이다.",
+    "따라서 $b_{10} = 19$, $b_{11} = 21$, $b_{12} = 23$이다.",
+    "그러므로  \n$$\\sum_{n=1}^{12} b_n = \\sum_{n=1}^{9} (n - 1) + (19 + 21 + 23) = (0 + 1 + \\cdots + 8) + 63 = \\frac{8 \\times 9}{2} + 63 = 36 + 63 = 99$$."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "수열 $\\{a_n\\}$에서 $a_n$은 자연수 $n$을",
+  "rpmRecordId": "H2-M1-RPM-067",
+  "rpmReason": "Q12(22): 지수와 로그 단원의 RPM H2-M1-RPM-067 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_01_COMMON_LOG",
+  "templateKey": "TPL_H22A_01_COMMON_LOG_077",
+  "typeReason": "Q12(22): 지수와 로그 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q12(22): 지수와 로그 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "값은? (단, $\\log$는 상용로그이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$1 \\le n \\le 9$일 때, $n$은",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q12(22): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

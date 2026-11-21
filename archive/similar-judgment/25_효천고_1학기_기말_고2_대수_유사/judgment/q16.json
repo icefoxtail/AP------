@@ -1,0 +1,56 @@
+{
+  "qid": 16,
+  "itemFingerprint": "227b2af96c5d86e2",
+  "solveSteps": [
+    "수직 조건에서 각 인접 직선의 기울기의 곱이 $-1$이므로  \n$$\\frac{b}{a} \\cdot \\left(-\\frac{b}{c}\\right) = -1 \\implies b^2 = ac, \\quad \\left(-\\frac{b}{c}\\right) \\cdot \\frac{d}{c} = -1 \\implies c^2 = bd, \\quad \\frac{d}{c} \\cdot \\left(-\\frac{d}{e}\\right) = -1 \\implies d^2 = ce$$  \n또한 $\\overline{AO} = a$, $\\overline{OC} = c$, $\\overline{EA} = e - a$가 이 순서대로 등차수열을 이루므로 등차중항의 성질에 의해  \n$$2(2c) = a + (e - a) \\implies e = 4c$$  \n직선 $BC$의 기울기를 $m = -\\frac{b}{c}$ ($m < 0$)라 하면 $d = \\frac{c^2}{b} = -\\frac{c}{m}$이다. (AB)",
+    "$d^2 = ce$에 대입하면  \n$$\\left(-\\frac{c}{m}\\right)^2 = c \\cdot 4c \\implies \\frac{1}{m^2} = 4 \\implies m^2 = \\frac{1}{4}$$  \n$m < 0$이므로 구하는 기울기는 $m = -\\frac{1}{2}$이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-06",
+  "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+  "unitEvidence": "좌표축 위의 다섯 개의 점 $A(-a, 0)$, $B(",
+  "rpmRecordId": "H2-M1-RPM-115",
+  "rpmReason": "Q16(AB): 수열의 기본 단원의 RPM H2-M1-RPM-115 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+  "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
+  "typeReason": "Q16(AB): 수열의 기본 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q16(AB): 수열의 기본 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "는? (단, $O$는 원점이다.) [4.7점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "수직 조건에서 각 인접 직선의 기울기의 곱이",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q16(AB): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

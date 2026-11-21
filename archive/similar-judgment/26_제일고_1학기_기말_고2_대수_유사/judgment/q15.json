@@ -1,0 +1,56 @@
+{
+  "qid": 15,
+  "itemFingerprint": "b6a58d05bbd66aff",
+  "solveSteps": [
+    "$n = 1$일 때 $2S_1 = 3a_2 \\implies 12 = 3a_2 \\implies a_2 = 4$이다.",
+    "$n \\ge 2$일 때 $2S_n - 2S_{n-1} = (n + 2)a_{n+1} - (n + 1)a_n$이므로  \n$$2a_n = (n + 2)a_{n+1} - (n + 1)a_n \\implies (n + 3)a_n = (n + 2)a_{n+1} \\implies a_{n+1} = \\frac{n + 3}{n + 2}a_n$$  \n$n = 2$부터 $9$까지 변변 곱하여 약분하면  \n$$a_{10} = a_2 \\cdot \\frac{5}{4} \\cdot \\frac{6}{5} \\cdots \\frac{12}{11} = 4 \\cdot \\frac{12}{4} = 12$$."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-08",
+  "subUnitKey": "H22-A-08-CORE",
+  "unitEvidence": "수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합",
+  "rpmRecordId": "H2-M1-RPM-129",
+  "rpmReason": "Q15(10): 수학적 귀납법 핵심 개념 단원의 RPM H2-M1-RPM-129 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_08_RECURSIVE_SEQUENCE",
+  "templateKey": "TPL_H22A_08_RECURSIVE_SEQUENCE_129",
+  "typeReason": "Q15(10): 수학적 귀납법 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(10): 수학적 귀납법 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "_1 = 6$일 때, $a_{10}$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$n = 1$일 때 $2S_1 = 3a_2 \\",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q15(10): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

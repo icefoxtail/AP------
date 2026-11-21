@@ -1,0 +1,57 @@
+{
+  "qid": 22,
+  "itemFingerprint": "c989e0b09370fcec",
+  "solveSteps": [
+    "$\\cos(\\pi + x) = -\\cos x$, $\\cos\\left(\\frac{\\pi}{2} - x\\right) = \\sin x$이므로 주어진 부등식은  \n$$-2\\cos^2 x + \\sin x + 1 \\ge 0$$  \n$\\cos^2 x = 1 - \\sin^2 x$를 대입하면  \n$$-2(1 - \\sin^2 x) + \\sin x + 1 \\ge 0 \\implies 2\\sin^2 x + \\sin x - 1 \\ge 0 \\implies (2\\sin x - 1)(\\sin x + 1) \\ge 0$$  \n$-1 \\le \\sin x \\le 1$이므로 $\\sin x \\ge \\frac{1}{2}$ 또는 $\\sin x = -1$이다.",
+    "$0 \\le x \\le 3\\pi$에서 $\\sin x \\ge \\frac{1}{2}$의 해는 $\\frac{\\pi}{6} \\le x \\le \\frac{5\\pi}{6}$ 또는 $\\frac{13\\pi}{6} \\le x \\le \\frac{17\\pi}{6}$이고, $\\sin x = -1$의 해는 $x = \\frac{3\\pi}{2}$이다.",
+    "따라서 구하는 해는 $\\left[\\frac{\\pi}{6}, \\frac{5\\pi}{6}\\right] \\cup \\left\\{\\frac{3\\pi}{2}\\right\\} \\cup \\left[\\frac{13\\pi}{6}, \\frac{17\\pi}{6}\\right]$이다."
+  ],
+  "solvedAnswer": "$\\left[\\frac{\\pi}{6}, \\frac{5\\pi}{6}\\right] \\cup \\left\\{\\frac{3\\pi}{2}\\right\\} \\cup \\left[\\frac{13\\pi}{6}, \\frac{17\\pi}{6}\\right]$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-04",
+  "subUnitKey": "H22-A-04-TRIGONOMETRIC_EQUATION",
+  "unitEvidence": "$0 \\le x \\le 3\\pi$일 때, 부등식 $-2",
+  "rpmRecordId": "H2-M1-RPM-101",
+  "rpmReason": "Q22(13): 삼각방정식과 부등식 단원의 RPM H2-M1-RPM-101 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+  "templateKey": "TPL_H22A_04_TRIG_EQUATION_101",
+  "typeReason": "Q22(13): 삼각방정식과 부등식 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q22(13): 삼각방정식과 부등식 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "구하는 과정을 풀이 과정과 함께 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$\\cos(\\pi + x) = -\\cos x$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q22(13): 발문과 해설의 풀이 과정을 점검하여 정답 $\\left[\\frac{\\pi}{6}, \\frac{5\\pi}{6}\\right] \\cup \\left\\{\\frac{3\\pi}{2}\\right\\} \\cup \\left[\\frac{13\\pi}{6}, \\frac{17\\pi}{6}\\right]$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

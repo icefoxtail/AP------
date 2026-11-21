@@ -1,0 +1,63 @@
+{
+  "qid": 18,
+  "itemFingerprint": "0c5bfe43d0f8e329",
+  "solveSteps": [
+    "$a, b, c > 0$이고 $b^2 = ac$가 성립한다. (4.7)",
+    "ㄱ.",
+    "산술평균과 기하평균의 관계에 의해 $a + c \\ge 2\\sqrt{ac} = 2b$이고, 등호는 $a = c = b$일 때 성립하므로 최솟값은 $2b$이다.",
+    "(참)  \nㄴ.",
+    "$\\log_3 a + \\log_3 c = \\log_3(ac) = \\log_3 b^2 = 2\\log_3 b$이므로 세 수는 이 순서대로 등차수열을 이룬다.",
+    "(참)  \nㄷ.",
+    "$x = a^4$, $y = b^4$, $z = c^4$이므로 $y^2 = b^8 = (ac)^4 = a^4 c^4 = xz$가 성립한다.",
+    "즉 $x, y, z$는 등비수열을 이루며 항상 등차수열을 이루는 것은 아니다.",
+    "(거짓)  \n따라서 옳은 것은 ㄱ, ㄴ이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-06",
+  "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+  "unitEvidence": "$1$이 아닌 양의 실수 $a, b, c$가 이 순서대",
+  "rpmRecordId": "H2-M1-RPM-115",
+  "rpmReason": "Q18(4.7): 수열의 기본 단원의 RPM H2-M1-RPM-115 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+  "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_118",
+  "typeReason": "Q18(4.7): 수열의 기본 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(4.7): 수열의 기본 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "y, z$는 이 순서대로 등차수열을 이룬다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$a, b, c > 0$이고 $b^2 = ac",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q18(4.7): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

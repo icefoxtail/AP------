@@ -1,0 +1,56 @@
+{
+  "qid": 10,
+  "itemFingerprint": "e884813ad68c0ab4",
+  "solveSteps": [
+    "주어진 관계식에서 $a_{n+2} = \\frac{a_{n-1}a_{n+1}}{a_n}$이므로 차례로 구하면  \n$$a_4 = \\frac{a_1 a_3}{a_2} = \\frac{1 \\times 16}{4} = 4, \\quad a_5 = \\frac{a_2 a_4}{a_3} = \\frac{4 \\times 4}{16} = 1, \\quad a_6 = \\frac{a_3 a_5}{a_4} = \\frac{16 \\times 1}{4} = 4$$  \n따라서 수열 $\\{a_n\\}$은 $1, 4, 16, 4$가 반복되는 주기 $4$인 수열이다.",
+    "한 주기의 합은 $1 + 4 + 16 + 4 = 25$이므로  \n$$\\sum_{k=1}^{24} a_k = 6 \\times 25 = 150$$."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-08",
+  "subUnitKey": "H22-A-08-CORE",
+  "unitEvidence": "다음과 같이 정의되는 수열 $\\{a_n\\}$에 대하여 ",
+  "rpmRecordId": "H2-M1-RPM-129",
+  "rpmReason": "Q10(24): 수학적 귀납법 핵심 개념 단원의 RPM H2-M1-RPM-129 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_08_RECURSIVE_SEQUENCE",
+  "templateKey": "TPL_H22A_08_RECURSIVE_SEQUENCE_129",
+  "typeReason": "Q10(24): 수학적 귀납법 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q10(24): 수학적 귀납법 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$ ($n = 2, 3, 4, \\cdots$)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "주어진 관계식에서 $a_{n+2} = \\fra",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q10(24): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

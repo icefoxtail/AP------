@@ -1,0 +1,58 @@
+{
+  "qid": 10,
+  "itemFingerprint": "37cf480e777ab432",
+  "solveSteps": [
+    "$a > 0$이므로 최댓값 조건에서 $a + 2 = 5 \\implies a = 3$이다.",
+    "(최솟값 $-3 + 2 = -1$도 일치한다.)  \n이웃한 두 최댓값 사이의 간격이 주기 $T$이므로  \n$$T = \\frac{7\\pi}{3} - \\frac{\\pi}{3} = 2\\pi$$  \n$b > 0$이므로 $\\frac{2\\pi}{b} = 2\\pi \\implies b = 1$이다.",
+    "또한 $x = \\frac{\\pi}{3}$에서 최댓값을 가지므로 어떤 정수 $n$에 대하여  \n$$1\\left(\\frac{\\pi}{3} - c\\right) = 2n\\pi \\implies c = \\frac{\\pi}{3} - 2n\\pi$$  \n양수 $c$의 최솟값은 $n = 0$일 때 $c = \\frac{\\pi}{3}$이다.",
+    "따라서 $\\frac{abc}{\\pi}$의 최솟값은 $\\frac{3 \\times 1 \\times \\frac{\\pi}{3}}{\\pi} = 1$이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-04",
+  "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+  "unitEvidence": "양수 $a, b, c$에 대하여 함수 $y = a\\co",
+  "rpmRecordId": "H2-M1-RPM-103",
+  "rpmReason": "Q10(abc): 삼각함수의 그래프 단원의 RPM H2-M1-RPM-103 유형에 해당한다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+  "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+  "typeReason": "Q10(abc): 삼각함수의 그래프 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q10(abc): 삼각함수의 그래프 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$\\frac{abc}{\\pi}$의 최솟값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$a > 0$이므로 최댓값 조건에서 $a +",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q10(abc): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

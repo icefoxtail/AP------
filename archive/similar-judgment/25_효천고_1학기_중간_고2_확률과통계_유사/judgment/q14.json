@@ -1,0 +1,61 @@
+{
+  "qid": 14,
+  "itemFingerprint": "bcfad456f1210b8b",
+  "solveSteps": [
+    "계수가 가장 큰 자연수 $w$의 값에 따라 경우를 나눈다. (16)",
+    "1.",
+    "$w = 1$일 때: $x+y+z = 11$의 자연수해는 $x'+y'+z' = 8$의 음이 아닌 정수해와 같으므로 $${}*{3}\\mathrm{H}*{8} = {}*{10}\\mathrm{C}*{2} = 45$$  \n2.",
+    "$w = 2$일 때: $x+y+z = 6$의 자연수해는 $x'+y'+z' = 3$의 음이 아닌 정수해와 같으므로 $${}*{3}\\mathrm{H}*{3} = {}*{5}\\mathrm{C}*{2} = 10$$  \n3.",
+    "$w \\ge 3$일 때: $x+y+z \\le 1$이므로 자연수 $x, y, z$가 존재하지 않는다.",
+    "따라서 구하는 순서쌍의 개수는 $45 + 10 = 55$이다.",
+    "정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "방정식 $x+y+z+5w=16$을 만족시키는 자연수 $",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q14(16): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+  "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+  "typeReason": "Q14(16): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(16): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "순서쌍 $(x, y, z, w)$의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "계수가 가장 큰 자연수 $w$의 값에 따라 경",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q14(16): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

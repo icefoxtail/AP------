@@ -1,0 +1,56 @@
+{
+  "qid": 14,
+  "itemFingerprint": "83a195799d8a9448",
+  "solveSteps": [
+    "Q14 문제의 조건(11)에 맞추어 식을 세운다.",
+    "일반항을 통분하여 분리하면  \n$$\\frac{k}{k+1} + \\frac{k+1}{k} = \\frac{k^2 + (k+1)^2}{k(k+1)} = \\frac{2k(k+1) + 1}{k(k+1)} = 2 + \\frac{1}{k(k+1)} = 2 + \\left(\\frac{1}{k} - \\frac{1}{k+1}\\right)$$  \n따라서 주어진 합은  \n$$\\sum_{k=1}^{11} 2 + \\sum_{k=1}^{11} \\left(\\frac{1}{k} - \\frac{1}{k+1}\\right) = 22 + \\left(1 - \\frac{1}{12}\\right) = 22 + \\frac{11}{12} = \\frac{275}{12}$$  \n그러므로 $a = 275$이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-07",
+  "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+  "unitEvidence": "$\\sum_{k=1}^{11} \\left(\\frac{k",
+  "rpmRecordId": "H2-M1-RPM-125",
+  "rpmReason": "Q14(11): 수열의 합 단원의 RPM H2-M1-RPM-125 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_07_SEQUENCE_SUM",
+  "templateKey": "TPL_H22A_07_SEQUENCE_SUM_125",
+  "typeReason": "Q14(11): 수열의 합 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(11): 수열의 합 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "c{a}{12}$일 때, 상수 $a$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "일반항을 통분하여 분리하면  \n$$\\frac{",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q14(11): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

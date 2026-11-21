@@ -1,0 +1,62 @@
+{
+  "qid": 16,
+  "itemFingerprint": "632561833c2d6f8e",
+  "solveSteps": [
+    "회전을 고려하지 않고 $9$칸 중 빨간색과 파란색을 배치하는 전체 경우의 수는 $9 \\times 8 = 72$가지이다. (15)",
+    "$3 \\times 3$ 격자에서 변을 공유하는 인접한 두 칸의 쌍은 가로 방향 $6$쌍, 세로 방향 $6$쌍으로 총 $12$쌍이다.",
+    "빨간색과 파란색이 이 $12$쌍에 놓이는 경우는 $12 \\times 2 = 24$가지이다.",
+    "따라서 조건 (다)를 만족하도록 빨간색과 파란색을 칠하는 경우의 수는 $72 - 24 = 48$가지이고, 남은 $7$칸에 나머지 $7$가지 색을 칠하는 방법은 $7!$가지이다.",
+    "$9$가지 색이 모두 다르므로 $90^\\circ$ 회전할 때마다 $4$가지씩 같은 배치가 나온다.",
+    "따라서 구하는 경우의 수는 다음과 같다.",
+    "$$\\frac{48 \\times 7!}{4} = 12 \\times 7!$$\n\n$a = 12,\\ b = 7$이므로 $a+b = 19$이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "오른쪽 그림과 같이 합동인 $9$개의 정사각형으로 이루",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q16(15): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q16(15): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q16(15): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "회전하여 일치하는 것은 같은 것으로 본다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "회전을 고려하지 않고 $9$칸 중 빨간색과 파",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q16(15): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

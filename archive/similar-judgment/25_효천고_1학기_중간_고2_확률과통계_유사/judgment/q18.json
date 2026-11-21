@@ -1,0 +1,60 @@
+{
+  "qid": 18,
+  "itemFingerprint": "e3887549d4ba4a9a",
+  "solveSteps": [
+    "숫자 접시 $3$개가 서로 이웃하지 않도록 먼저 원형으로 배치하는 경우의 수는 $(3-1)! = 2$가지이다.",
+    "숫자 접시 사이의 $3$개의 빈 공간에 문자 접시 $4$개를 적어도 $1$개씩 나누어 넣으려면 각 공간에 $(2, 1, 1)$개로 배치되어야 한다.",
+    "$2$개가 들어갈 공간을 정하는 방법은 $3$가지이다.",
+    "$4$개의 문자를 $4$자리에 배열하는 전체 방법은 $4! = 24$가지이고, 이 중 조건 (가)에 위배되어 $2$개짜리 공간에 $\\mathrm{A, B}$가 함께 들어가는 경우는 $\\mathrm{A, B}$의 순서 $2!$과 나머지 $2$자리의 배열 $2!$을 곱한 $2! \\times 2! = 4$가지이다.",
+    "따라서 유효한 문자 배치는 $24 - 4 = 20$가지이므로 구하는 전체 경우의 수는 $2 \\times 3 \\times 20 = 120$이다.",
+    "정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "문자 $\\mathrm{A, B, C, D}$가 각각 하",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q18(120): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q18(120): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(120): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "숫자가 적힌 접시끼리는 서로 이웃하지 않는다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "숫자 접시 $3$개가 서로 이웃하지 않도록 먼",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q18(120): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

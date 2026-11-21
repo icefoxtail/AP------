@@ -1,0 +1,56 @@
+{
+  "qid": 8,
+  "itemFingerprint": "68c83ee9c81ca788",
+  "solveSteps": [
+    "Q8 문제의 조건(40)에 맞추어 식을 세운다.",
+    "$a_k = k + 8$, $a_{k+1} = k + 9$이므로 분모를 유리화하면  \n$$\\frac{1}{\\sqrt{k + 8} + \\sqrt{k + 9}} = \\frac{\\sqrt{k + 9} - \\sqrt{k + 8}}{(k + 9) - (k + 8)} = \\sqrt{k + 9} - \\sqrt{k + 8}$$  \n따라서 $k = 1$부터 $40$까지 더하면 인접한 항이 소거되어  \n$$\\sum_{k=1}^{40} (\\sqrt{k + 9} - \\sqrt{k + 8}) = \\sqrt{49} - \\sqrt{9} = 7 - 3 = 4$$."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-07",
+  "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+  "unitEvidence": "수열 $\\{a_n\\}$의 일반항이 $a_n = n + ",
+  "rpmRecordId": "H2-M1-RPM-125",
+  "rpmReason": "Q8(40): 수열의 합 단원의 RPM H2-M1-RPM-125 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_07_SEQUENCE_SUM",
+  "templateKey": "TPL_H22A_07_SEQUENCE_SUM_125",
+  "typeReason": "Q8(40): 수열의 합 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q8(40): 수열의 합 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "} + \\sqrt{a_{k+1}}}$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$a_k = k + 8$, $a_{k+1} =",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q8(40): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

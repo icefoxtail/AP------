@@ -1,0 +1,56 @@
+{
+  "qid": 7,
+  "itemFingerprint": "5c84641d9d360050",
+  "solveSteps": [
+    "Q7 문제의 조건(pn)에 맞추어 식을 세운다.",
+    "등차수열의 합 $S_n = \\frac{d}{2}n^2 + \\left(a_1 - \\frac{d}{2}\\right)n$에서 $n^2$의 계수가 $\\frac{d}{2}$이므로  \n$$p = \\frac{4}{2} = 2 \\implies S_n = 2n^2 + 5n$$  \n$n \\ge 2$일 때  \n$$a_n = S_n - S_{n-1} = (2n^2 + 5n) - \\{2(n-1)^2 + 5(n-1)\\} = 4n + 3$$  \n$n = 1$일 때도 $a_1 = S_1 = 7$로 성립하므로 $a_8 = 4 \\times 8 + 3 = 35$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-06",
+  "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+  "unitEvidence": "공차가 $4$인 등차수열 $\\{a_n\\}$의 첫째항부터",
+  "rpmRecordId": "H2-M1-RPM-115",
+  "rpmReason": "Q7(pn): 수열의 기본 단원의 RPM H2-M1-RPM-115 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+  "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
+  "typeReason": "Q7(pn): 수열의 기본 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q7(pn): 수열의 기본 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "pn^2 + 5n$일 때, $a_8$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "등차수열의 합 $S_n = \\frac{d}{2",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q7(pn): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

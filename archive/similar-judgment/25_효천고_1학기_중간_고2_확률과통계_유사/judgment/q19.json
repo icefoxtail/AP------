@@ -1,0 +1,60 @@
+{
+  "qid": 19,
+  "itemFingerprint": "54e5f9f93362052e",
+  "solveSteps": [
+    "$4000$보다 작은 자연수의 개수를 자릿수별로 센다.",
+    "1.",
+    "한 자리 자연수: $1, 2, 3, 4$의 $4$개  \n2.",
+    "두 자리 자연수: $4 \\times 5 = 20$개  \n3.",
+    "세 자리 자연수: $4 \\times 5 \\times 5 = 100$개  \n4.",
+    "천의 자리가 $1, 2, 3$인 네 자리 자연수: $3 \\times 5 \\times 5 \\times 5 = 375$개\n\n$4000$ 앞까지 모두 $4 + 20 + 100 + 375 = 499$개의 수가 있으므로, $4000$은 $500$번째 수이다."
+  ],
+  "solvedAnswer": "500",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "다섯 개의 숫자 $0, 1, 2, 3, 4$ 중에서 중",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q19(4000): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q19(4000): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q19(4000): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "때, $4000$은 몇 번째 수인가 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$4000$보다 작은 자연수의 개수를 자릿수별",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q19(4000): 발문과 해설의 풀이 과정을 점검하여 정답 500를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "qid": 17,
+  "itemFingerprint": "1ba4f45c8037f29e",
+  "solveSteps": [
+    "등차중항에 의해 $a_k + a_{k+1} + a_{k+2} = 3a_{k+1} = 15 \\implies a_{k+1} = 5$이다.",
+    "공차를 자연수 $d$라 하면 $a_1 + kd = 5 \\implies a_1 = 5 - kd$이다.",
+    "$S_{k+3} = 13$에 등차수열 합 공식을 적용하면  \n$$\\frac{k + 3}{2}\\{2(5 - kd) + (k + 2)d\\} = 13 \\implies (k + 3)\\{10 + (2 - k)d\\} = 26$$  \n$k$가 자연수이므로 $k + 3 \\ge 4$이고 $26$의 약수여야 하므로 $k + 3 = 13$ 또는 $26$이다.",
+    "- $k + 3 = 13$ ($k = 10$): $10 - 8d = 2 \\implies d = 1$ (자연수)  \n- $k + 3 = 26$ ($k = 23$): $10 - 21d = 1 \\implies d = \\frac{9}{21}$ (탈락)  \n따라서 $k = 10, d = 1, a_{11} = 5$이므로 $a_m = 5 + (m - 11) = m - 6$이다.",
+    "$$\\sum_{m=1}^{15} |m - 6| = (5 + 4 + 3 + 2 + 1) + 0 + (1 + 2 + \\cdots + 9) = 15 + 45 = 60$$."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-06",
+  "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+  "unitEvidence": "공차가 자연수인 등차수열 $\\{a_n\\}$의 첫째항부터",
+  "rpmRecordId": "H2-M1-RPM-115",
+  "rpmReason": "Q17(15): 수열의 기본 단원의 RPM H2-M1-RPM-115 유형에 해당한다.",
+  "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+  "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
+  "typeReason": "Q17(15): 수열의 기본 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(15): 수열의 기본 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "um_{m=1}^{15} |a_m|$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "등차중항에 의해 $a_k + a_{k+1} +",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q17(15): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

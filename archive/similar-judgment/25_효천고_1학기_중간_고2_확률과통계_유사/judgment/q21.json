@@ -1,0 +1,59 @@
+{
+  "qid": 21,
+  "itemFingerprint": "8b25fb2026bd87b9",
+  "solveSteps": [
+    "$5(x+a)^n$의 전개식에서 $x^{n-2}$의 계수는 $5\\cdot {}*{n}\\mathrm{C}*{n-2},a^2 = \\dfrac{5}{2}n(n-1)a^2$이다.",
+    "$(x-1)(x+a)^n = x(x+a)^n - (x+a)^n$에서 $x^{n-2}$의 계수는 다음과 같다.",
+    "$${}*{n}\\mathrm{C}*{n-3},a^3 - {}*{n}\\mathrm{C}*{n-2},a^2 = \\frac{n(n-1)(n-2)}{6}a^3 - \\frac{n(n-1)}{2}a^2$$\n\n두 계수가 같으므로 양변을 $\\dfrac{n(n-1)a^2}{2}$ ($>0$)로 나누어 정리하면 다음과 같다.",
+    "$$5 = \\frac{n-2}{3}a - 1 \\implies a(n-2) = 18$$\n\n$a \\ge 1$, $n-2 \\ge 1$인 자연수 쌍 $(a, n-2)$와 $(a, n)$, 그리고 $an$의 값은 다음과 같다.",
+    "- $(18, 1) \\to (18, 3)$: $an = 54$  \n- $(9, 2) \\to (9, 4)$: $an = 36$  \n- $(6, 3) \\to (6, 5)$: $an = 30$  \n- $(3, 6) \\to (3, 8)$: $an = 24$  \n- $(2, 9) \\to (2, 11)$: $an = 22$  \n- $(1, 18) \\to (1, 20)$: $an = 20$\n\n따라서 $an$의 최댓값은 $54$이다."
+  ],
+  "solvedAnswer": "54",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-02",
+  "subUnitKey": "H22-PS-02-CORE",
+  "unitEvidence": "다항식 $5(x+a)^n$의 전개식에서 $x^{n-2}",
+  "rpmRecordId": "H2-PS-RPM-038",
+  "rpmReason": "Q21(an): 이항정리 핵심 개념 단원의 RPM H2-PS-RPM-038 유형에 해당한다.",
+  "problemTypeKey": "PT_BINOMIAL_THEOREM",
+  "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+  "typeReason": "Q21(an): 이항정리 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q21(an): 이항정리 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": ", $n$은 $n \\ge 3$인 자연수이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$5(x+a)^n$의 전개식에서 $x^{n-2",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q21(an): 발문과 해설의 풀이 과정을 점검하여 정답 54를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
