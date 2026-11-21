@@ -2,9 +2,9 @@
 
 - lane30; original h1/1final; standardCourse: 수학(상), 2015 개정 고1 범위.
 - sourcePath: `archive/exams/original/high/h1/1final/23_금당고_1학기_기말_고1_기출.js`; sourceBlobSha: `02402a3a6ea327e167d35b2b9433a959cf5cc7d6`; denominator 21.
-- 실제 원본 문제·보기·정답·solution 21/21 판독. KEEP 18 / UPGRADE 0 / HOLD 3(q8,q12,q15) / UNREAD 0.
-- 원본 문제 PNG 실물 판독: NOT_RUN. q8,q12,q15는 VISUAL_HOLD. 학생 exam/sol/ans 렌더 및 Golden/Negative 독립 calibration: NOT_RUN.
-- EXAM_AUDIT_COMPLETE=NO (그림 실물 확인 후 HOLD 해소 필요); EXAM_DRAFT_COMPLETE=YES (확정된 UPGRADE 없음); nextQid=8 (이미지 확인부터).
+- 실제 원본 문제·보기·정답·solution 21/21 판독. KEEP 17 / UPGRADE 1(q19) / HOLD 3(q8,q12,q15) / UNREAD 0.
+- 원본 문제 PNG 파일 3개 base64 원본 fetch 및 Git blob SHA 확인: q8 `09c34f11a8b03fa837c392f32a03d960d570f629`, q12 `b05bb6bcf6ebd4e8cc51b0cb9feb0360fb246772`, q15 `ac3b1eaffc102411d5ad107a6c210a41ff3d8768`. 시각적 픽셀 판독은 이미지 디코딩 도구 오류로 NOT_RUN. q8,q12,q15는 VISUAL_HOLD. 학생 exam/sol/ans 렌더 및 Golden/Negative 독립 calibration: NOT_RUN.
+- EXAM_AUDIT_COMPLETE=NO (그림 실물 확인 후 HOLD 해소 필요); EXAM_DRAFT_COMPLETE=YES (q19 완성 개선 풀이 작성·독립 검산); nextQid=8 (이미지 확인부터).
 - 하네스/매니페스트/core 문서 조회. 실행기 preflight/read-receipt 검증: NOT_RUN. 시각·출고 PASS 아님.
 
 ## q1 — KEEP
@@ -169,13 +169,56 @@
 - 독립 계산·판정: P(−1)=0으로 a=1,2를 구하고 이차식 판별식 D=4(a²−a−2)<0에서 a=1만 남겨 세 근 곱 −2를 검산한다.
 - 그림: 문제 이미지 없음; 문제 그림 없음. 학생 렌더 NOT_RUN.
 
-## q19 — KEEP
+## q19 — UPGRADE
 
 - 원문 조건: 양의 실수 $k$에 대하여 원 $(x-3)^2+(y-4)^2=k^2$과 $x$축 또는 $y$축과의 교점의 개수를 $f(k)$라 하자. 이때, $f(k)=4$를 만족하는 모든 양의 실수 $k$의 범위를 구하시오. [5.0점]
 - 원문 보기: 서답형(없음)
 - 원본 answer: $k>4,\ k\ne5$; standardCourse: 수학(상); sourceBlobSha: `02402a3a6ea327e167d35b2b9433a959cf5cc7d6`.
 - 기존 solution 원문 발췌: [키포인트] 좌표축과 원의 교점 개수를 각각 조사하고, 두 축에서 같은 점이 겹치는 경우를 확인한다. / 조건 정리: 원의 중심은 $(3,4)$이고 반지름은 양수 $k$이다. $x$축과 $y$축에 생기는 교점 수를 따로 계산한다. / 풀이 방향: 각 축을 원의 방정식에 대입해 교점 수가 4개가 되는 반지름 범위를 정한 뒤 중복점을 점검한다.
-- 독립 계산·판정: x축 교점 2개에는 k>4, y축 교점 2개에는 k>3이 필요하고 k=5에서 원점 중복을 제외하여 k>4,k≠5를 얻는다.
+- 독립 계산·판정: x축 교점 2개에는 k>4, y축 교점 2개에는 k>3이 필요하고 k=5에서 원점 중복을 제외하여 k>4,k≠5를 얻는다. **UPGRADE 이유:** 원본 solution은 `각 축을 원의 방정식에 대입해 교점 수가 4개가 되는 반지름 범위를 정한 뒤 중복점을 점검한다.`에서 끝나며, 실제 대입식·판별 경계 k=3,4 및 원점 중복 k=5의 계산이 없다. 학생이 그대로 답을 재현할 수 없어 다음 완성 풀이로 교체 필요.
+
+### q19 완성 학생용 새 solution
+
+원의 방정식은
+\[
+(x-3)^2+(y-4)^2=k^2\quad(k>0)
+\]
+이다. 먼저 x축과 만나는 점을 구하기 위해 \(y=0\)을 대입하면
+\[
+\begin{aligned}
+(x-3)^2+(0-4)^2&=k^2\\
+(x-3)^2+16&=k^2\\
+(x-3)^2&=k^2-16.
+\end{aligned}
+\]
+따라서 x축과 서로 다른 두 점에서 만나려면 \(k^2-16>0\), 즉 \(k>4\)이다.
+
+이번에는 y축에 대해 \(x=0\)을 대입하면
+\[
+\begin{aligned}
+(0-3)^2+(y-4)^2&=k^2\\
+9+(y-4)^2&=k^2\\
+(y-4)^2&=k^2-9.
+\end{aligned}
+\]
+따라서 y축과 서로 다른 두 점에서 만나려면 \(k>3\)이다. 두 축에서 각각 두 점을 얻으려면 \(k>4\)여야 한다.
+
+단, 두 축의 공통점인 원점 \((0,0)\)이 원 위에 있으면 중복해서 센다. 원점이 원 위에 있는 조건은
+\[
+\begin{aligned}
+(0-3)^2+(0-4)^2&=k^2\\
+9+16&=k^2\\
+k^2&=25\\
+k&=5\quad(k>0).
+\end{aligned}
+\]
+\(k=5\)에서는 원점이 두 축의 교점에 중복 포함되어 실제 서로 다른 교점이 3개이므로 제외한다. 따라서
+\[
+\boxed{k>4,\quad k\ne5}
+\]
+이다.
+
+**독립 검산:** \(k=4\)에서는 x축 접점 1개, y축 교점 2개로 총 3개이고, \(k=5\)에서는 x축 교점 \((0,0),(6,0)\), y축 교점 \((0,0),(0,8)\)로 서로 다른 점 3개이다. \(k=6\)에서는 두 축 각각 2개이며 원점은 원 위에 없으므로 4개이다.
 - 그림: 문제 이미지 없음; 문제 그림 없음. 학생 렌더 NOT_RUN.
 
 ## q20 — KEEP
