@@ -3,19 +3,43 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane10",
   "workerBranch": "work/solution-upgrade-lane-10-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2final",
   "sourceYear": 2022,
   "sourcePath": "archive/exams/original/high/h1/2final/22_순천여고_2학기_기말_고1_기출.js",
   "sourceBlobSha": "971b5d9945f99c2a391d111818321eab53515b50",
-  "sourceQuestionCount": null,
+  "sourceQuestionCount": 23,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2022_suncheon-girls_2final_DEEP_AUDIT.md",
-  "draftedQuestionIds": [],
-  "remainingWork": [
-    "q1-qN full deep audit and upgraded student explanations"
+  "draftedQuestionIds": [
+    13,
+    20
   ],
-  "nextQid": 1,
-  "stateNotes": "2022 Bokseong complete; next unclaimed 2022 Suncheon Girls while 2023 GangnamGirls owned lane30."
+  "remainingWork": [],
+  "nextQid": null,
+  "stateNotes": "All 23 qids read full; q13,q20 complete student drafts and q14 separate mathematical ambiguity memo (a=±6 although choice only positive). q5,q12,q17 image VISUAL_HOLD; q14 ANSWER_HOLD. NO release PASS.",
+  "readQuestionCount": 23,
+  "decisionCounts": {
+    "KEEP": 17,
+    "UPGRADE": 2,
+    "HOLD": 4,
+    "UNREAD": 0
+  },
+  "examAuditComplete": true,
+  "examDraftComplete": true,
+  "visualStatus": "VISUAL_HOLD",
+  "visualHoldQuestionIds": [
+    5,
+    12,
+    17
+  ],
+  "answerStatus": "ANSWER_HOLD",
+  "answerHoldQuestionIds": [
+    14
+  ],
+  "goldenStatus": "NOT_RUN",
+  "negativeStatus": "NOT_RUN",
+  "renderStatus": "NOT_RUN",
+  "releaseStatus": "NOT_RUN"
 }
