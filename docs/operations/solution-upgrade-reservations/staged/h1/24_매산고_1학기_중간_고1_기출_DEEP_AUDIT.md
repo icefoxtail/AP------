@@ -637,3 +637,11 @@ $-\dfrac92+\sqrt{14}<n\le-\dfrac13$
 - q20: 원문 해설의 $F(2)=-n$, $F(4)=-1-3n$, 축 $13/4+n/2$, 판별식 $(n+9/2)^2-14$를 다시 대조했다. 경계 $n=-1/3$에서는 $F(4)=0$이고 다른 근은 $13/2-1/3-4=13/6$으로 구간 안에 있으므로 우측 경계 포함이 타당하다. $n=-9/2+\sqrt{14}$에서는 중근이므로 제외한다. 단, 기존 그림은 시각 미검증으로 **VISUAL_HOLD** 유지.
 - 문항별 기존 판정 집계 KEEP 17 / UPGRADE 0 / HOLD 3 / UNREAD 0, 총 20문항. 이번 직접 재검증 q14·q15·q20. 완성 개선 qid 없음. EXAM_DRAFT_COMPLETE=false. Golden/Negative/렌더 NOT_RUN. 5장 완료 목표 중 새로 완료 0장. 다른 시험지로 이동하지 않음.
 - 필독 게이트: 하네스 브랜치의 HARNESS_CURRENT, GLOBAL_QUEUE_CURRENT, DEEP_QUESTION_AUDIT_TEMPLATE_CURRENT 본문을 읽음. main 및 하네스 브랜치의 루트 `docs-manifest.json`은 GitHub 404로 접근 실패하여 core/Golden/Negative 전체 필독은 **EVIDENCE_DEBT**. 완료/PASS 선언 금지.
+
+
+## lane20 추가 독립 계산 검증 (2026-11-22)
+
+- **q15 (HOLD / VISUAL_HOLD 유지):** 좌표만으로 사각형 ABCD의 신발끈 공식은 $2S=|(-3)0+1(3a)+3(0)+(-3)(-a)-[(-a)1+0(3)+3a(-3)+0(-3)]|=16a$이므로 $S=8a=32$, $a=4$이다. $f(t)=\frac14(t+3)^2-4$, $g(t)=-\frac23(t-3)^2+12$에서 $4f(t)-3g(t)=(t+3)^2-16+2(t-3)^2-36=3t^2-6t-25=3(t-1)^2-28$. $t=1$에서 $-28$, $t=-4$에서 $47$, $t=3$에서 $-16$이므로 합은 $19$로 정답 ②와 일치한다. 다만 원본 그림 q15.png의 실물 판독이 없어 KEEP 전환 금지.
+- **q20 (HOLD / 시각 QA 미실행):** $n=-1/3$일 때 $F(x)=x^2-(37/6)x+26/3=(x-4)(x-13/6)$으로 두 근 $13/6,4$가 모두 $[2,4]$에 있어 우측 끝 포함이 맞다. $n=-9/2+\sqrt{14}$에서는 판별식 0으로 서로 다른 두 교점이 아니므로 좌측 끝 제외. 본문 수식만의 경계 검산이며 출고 PASS 아님.
+- **q14 (SOURCE_ANSWER_HOLD):** 독립 반례 두 개로 정답 ①과 ③이 모두 가능함이 기존 문서에 입증되어 있다. 정오표/원본 조건 정정 없이는 HOLD 해제 불가.
+- **필독 EVIDENCE_DEBT:** 하네스 브랜치에서 HARNESS_CURRENT.md, GLOBAL_QUEUE_CURRENT.md, DEEP_QUESTION_AUDIT_TEMPLATE_CURRENT.md 본문은 재열람했다. 루트 docs-manifest.json은 하네스 브랜치에서 404, main의 필독 파일도 접근 오류가 있어 전체 core/Golden/Negative/판서 샘플은 확인하지 못했다. preflight NOT_RUN. 이 문서의 상태는 IN_PROGRESS, nextQid=q14, KEEP 17 / UPGRADE 0 / HOLD 3 / UNREAD 0. 신규 완료 시험지 0/5. JS/SVG/main 변경 없음.
