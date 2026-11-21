@@ -1,0 +1,184 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "한 직선 위의 점에서 뻗어나간 반직선들이 이루는 각을 나타낸 그림이다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "L"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "50"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "L",
+    "R",
+    "P1",
+    "P2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sLR",
+      "refs": [
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "sOP1",
+      "refs": [
+        "O",
+        "P1"
+      ]
+    },
+    {
+      "id": "sOP2",
+      "refs": [
+        "O",
+        "P2"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r1",
+      "refs": [
+        "P1",
+        "O",
+        "P2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "L",
+          "O",
+          "P1"
+        ],
+        "value": 50,
+        "label": "3x+5"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "P2",
+          "O",
+          "R"
+        ],
+        "value": 40,
+        "label": "2x+10"
+      }
+    ]
+  },
+  "sourceQuote": "다음 그림에서 $x$의 값은? [3점]",
+  "assetPath": "assets/images/23_신흥중_2학기_중간_중1_유사/q04.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/23_신흥중_2학기_중간_중1_유사/q04-problem-result.json",
+    "statePath": "archive/assets/images/23_신흥중_2학기_중간_중1_유사/q04-problem-state.json",
+    "svgPath": "archive/assets/images/23_신흥중_2학기_중간_중1_유사/q04-problem-solution.svg"
+  }
+}

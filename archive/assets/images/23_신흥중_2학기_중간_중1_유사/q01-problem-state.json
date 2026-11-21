@@ -1,0 +1,505 @@
+{
+ "meta": {
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/23_신흥중_2학기_중간_중1_유사.js",
+  "ordinal": 1,
+  "dir": "q01-problem"
+ },
+ "identity": {
+  "questionUid": "23_신흥중_2학기_중간_중1_유사|1",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:11a775ac23944ef632853ad745ad4993f980431179daafeb4c50296e34957dec",
+  "assetId": "va-d3dc63761b86edc45ac28d2bc1866cfd6afd7add91fe49ecf4bb1dd5cb29c10a"
+ },
+ "plan": {
+  "capability": "construction-spike-v1",
+  "caption": "밑면이 오각형이고 옆면이 삼각형인 오각뿔을 나타낸 겨냥도이다.",
+  "sourceQuote": "다음 그림과 같은 오각뿔에서 교점의 개수를 $a$개",
+  "assetPath": "assets/images/23_신흥중_2학기_중간_중1_유사/q01.svg",
+  "mathPlan": {
+   "schemaVersion": "construction-spike-v1",
+   "realization": {
+    "recipeId": "PLANE_FIGURE_v1",
+    "unit": "source-length",
+    "reflectionEquivalent": false
+   },
+   "nodes": [
+    {
+     "id": "P",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "0"
+       },
+       {
+        "kind": "integer",
+        "value": "4"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "A",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "-4"
+       },
+       {
+        "kind": "integer",
+        "value": "-1"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "B",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "-2"
+       },
+       {
+        "kind": "integer",
+        "value": "-3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "C",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "2"
+       },
+       {
+        "kind": "integer",
+        "value": "-3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "D",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "4"
+       },
+       {
+        "kind": "integer",
+        "value": "-1"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "E",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "1"
+       },
+       {
+        "kind": "integer",
+        "value": "1"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    }
+   ]
+  },
+  "displayPoints": [
+   "P",
+   "A",
+   "B",
+   "C",
+   "D",
+   "E"
+  ],
+  "displaySegments": [
+   {
+    "id": "sAB",
+    "refs": [
+     "A",
+     "B"
+    ]
+   },
+   {
+    "id": "sBC",
+    "refs": [
+     "B",
+     "C"
+    ]
+   },
+   {
+    "id": "sCD",
+    "refs": [
+     "C",
+     "D"
+    ]
+   },
+   {
+    "id": "sDE",
+    "refs": [
+     "D",
+     "E"
+    ],
+    "style": "DASHED"
+   },
+   {
+    "id": "sEA",
+    "refs": [
+     "E",
+     "A"
+    ],
+    "style": "DASHED"
+   },
+   {
+    "id": "sPA",
+    "refs": [
+     "P",
+     "A"
+    ]
+   },
+   {
+    "id": "sPB",
+    "refs": [
+     "P",
+     "B"
+    ]
+   },
+   {
+    "id": "sPC",
+    "refs": [
+     "P",
+     "C"
+    ]
+   },
+   {
+    "id": "sPD",
+    "refs": [
+     "P",
+     "D"
+    ]
+   },
+   {
+    "id": "sPE",
+    "refs": [
+     "P",
+     "E"
+    ],
+    "style": "DASHED"
+   }
+  ]
+ },
+ "model": {
+  "engine": "SymPy",
+  "version": "1.14.0",
+  "points": {
+   "A": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "-4"
+     },
+     {
+      "kind": "integer",
+      "value": "-1"
+     }
+    ],
+    "approximation": [
+     -4,
+     -1
+    ],
+    "precisionDigits": 17
+   },
+   "B": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "-2"
+     },
+     {
+      "kind": "integer",
+      "value": "-3"
+     }
+    ],
+    "approximation": [
+     -2,
+     -3
+    ],
+    "precisionDigits": 17
+   },
+   "C": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "2"
+     },
+     {
+      "kind": "integer",
+      "value": "-3"
+     }
+    ],
+    "approximation": [
+     2,
+     -3
+    ],
+    "precisionDigits": 17
+   },
+   "D": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "4"
+     },
+     {
+      "kind": "integer",
+      "value": "-1"
+     }
+    ],
+    "approximation": [
+     4,
+     -1
+    ],
+    "precisionDigits": 17
+   },
+   "E": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "1"
+     },
+     {
+      "kind": "integer",
+      "value": "1"
+     }
+    ],
+    "approximation": [
+     1,
+     1
+    ],
+    "precisionDigits": 17
+   },
+   "P": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "0"
+     },
+     {
+      "kind": "integer",
+      "value": "4"
+     }
+    ],
+    "approximation": [
+     0,
+     4
+    ],
+    "precisionDigits": 17
+   }
+  },
+  "scalars": {},
+  "lines": {},
+  "circles": {},
+  "pointSets": {},
+  "conditionAudits": [],
+  "transcript": [
+   {
+    "nodeId": "A",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "B",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "C",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "D",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "E",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "P",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   }
+  ],
+  "order": [
+   "A",
+   "B",
+   "C",
+   "D",
+   "E",
+   "P"
+  ],
+  "coordinateMode": "CONSTRUCTED_REALIZATION"
+ },
+ "composed": {
+  "schemaVersion": "construction-candidate-svg-v1",
+  "status": "COMPOSED",
+  "detail": null,
+  "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 384 320\" width=\"384\" height=\"320\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-labelledby=\"visual-title visual-desc\" data-engine-version=\"geometry-visual-v1\" data-geometry-style-version=\"AP_GEOMETRY_PRINT_V1_0_DRAFT\" data-geometry-preset=\"GEOMETRY_STANDARD\" data-graph-style-version=\"AP_GRAPH_PRINT_V1_1_DRAFT\" data-geometry-mode=\"COORDINATE_GEOMETRY_HYBRID\" data-axis-scale-mode=\"EQUAL_UNIT\" data-geometry-fact-hash=\"44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a\" data-visual-provenance=\"independent-facts-python\" style=\"max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round\" data-publication-profile=\"fragment-publication-spike-v1\" data-safe-margin=\"12\"><title id=\"visual-title\">밑면이 오각형이고 옆면이 삼각형인 오각뿔을 나타낸 겨냥도이다.</title><desc id=\"visual-desc\">점과 도형의 관계를 확인한다.</desc><rect width=\"384\" height=\"320\" fill=\"#fff\"/><g data-layer=\"30\"><line id=\"sAB\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"63.35678392\" y1=\"208.24120603\" x2=\"127.67839196\" y2=\"272.56281407\"/></g><g data-layer=\"30\"><line id=\"sBC\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"127.67839196\" y1=\"272.56281407\" x2=\"256.32160804\" y2=\"272.56281407\"/></g><g data-layer=\"30\"><line id=\"sCD\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"256.32160804\" y1=\"272.56281407\" x2=\"320.64321608\" y2=\"208.24120603\"/></g><g data-layer=\"30\"><line id=\"sDE\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"320.64321608\" y1=\"208.24120603\" x2=\"224.16080402\" y2=\"143.91959799\"/></g><g data-layer=\"30\"><line id=\"sEA\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"224.16080402\" y1=\"143.91959799\" x2=\"63.35678392\" y2=\"208.24120603\"/></g><g data-layer=\"30\"><line id=\"sPA\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"192\" y1=\"47.43718593\" x2=\"63.35678392\" y2=\"208.24120603\"/></g><g data-layer=\"30\"><line id=\"sPB\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"192\" y1=\"47.43718593\" x2=\"127.67839196\" y2=\"272.56281407\"/></g><g data-layer=\"30\"><line id=\"sPC\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"192\" y1=\"47.43718593\" x2=\"256.32160804\" y2=\"272.56281407\"/></g><g data-layer=\"30\"><line id=\"sPD\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"192\" y1=\"47.43718593\" x2=\"320.64321608\" y2=\"208.24120603\"/></g><g data-layer=\"30\"><line id=\"sPE\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"192\" y1=\"47.43718593\" x2=\"224.16080402\" y2=\"143.91959799\"/></g><g data-layer=\"70\"><circle id=\"P\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"192\" cy=\"47.43718593\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"A\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"63.35678392\" cy=\"208.24120603\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"B\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"127.67839196\" cy=\"272.56281407\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"C\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"256.32160804\" cy=\"272.56281407\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"D\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"320.64321608\" cy=\"208.24120603\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"E\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"224.16080402\" cy=\"143.91959799\" r=\"3.2\"/></g><g data-layer=\"85\"><line id=\"E-name-owner-leader\" data-role=\"leader\" data-owner-label=\"E-name\" data-owner=\"E\" data-leader-crossing=\"1\" x1=\"224.16080402\" y1=\"143.91959799\" x2=\"212.086785851\" y2=\"164.832410911\" stroke=\"#666\" stroke-width=\"0.8\" fill=\"none\"/></g><g data-layer=\"90\"><g id=\"A-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"20\" data-owner=\"A\" data-fragment-sha=\"sha256:9891149fe7e1417be541cd6648daf437979ede8476c6801b3195dc4ab25d27e1\" transform=\"translate(36.35678392 220.24120603)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"14.32\" viewBox=\"0 0 15 14.32\" data-outline-width=\"15\" data-outline-height=\"14.32\" id=\"lb-c0fbba8f6439b2aab0fa018fcf08d78d3935296b7a416f20a11701827fd833f6\" data-owner=\"A\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 14.32) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D434\" d=\"M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"B-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"20\" data-owner=\"B\" data-fragment-sha=\"sha256:9a071e88600dcb18474bf02567a826c53bcef514223ff18a30047ee5ddc93626\" transform=\"translate(139.67839196 284.56281407)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15.18\" height=\"13.66\" viewBox=\"0 0 15.18 13.66\" data-outline-width=\"15.18\" data-outline-height=\"13.66\" id=\"lb-971ab52be87c0b6701d76779b2094c8fb6443bcc08c7c4ae945b0be518083e03\" data-owner=\"B\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 13.66) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D435\" d=\"M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"C-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"20\" data-owner=\"C\" data-fragment-sha=\"sha256:8e46fca83ad280f130ac79e4d0ed1c7ffcfadd1761fb175484156e8a2d23dfdd\" transform=\"translate(268.32160804 284.56281407)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15.2\" height=\"14.54\" viewBox=\"0 0 15.2 14.54\" data-outline-width=\"15.2\" data-outline-height=\"14.54\" id=\"lb-e406dba00bde783e17b50566ba74bc054f362c469200d7b1e001e75b3ba75c8a\" data-owner=\"C\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 14.1) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D436\" d=\"M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"D-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"20\" data-owner=\"D\" data-fragment-sha=\"sha256:fb5871cd172b66be9e2e14362b4f3f80590ecd48f361bb848df0893cd57bda37\" transform=\"translate(332.64321608 182.58120603)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16.56\" height=\"13.66\" viewBox=\"0 0 16.56 13.66\" data-outline-width=\"16.56\" data-outline-height=\"13.66\" id=\"lb-03161c12d34a2c58b96a82692507b006060bf3853ca48d12b9aed8c0a28cbadd\" data-owner=\"D\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 13.66) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D437\" d=\"M287 628Q287 635 230 637Q207 637 200 638T193 647Q193 655 197 667T204 682Q206 683 403 683Q570 682 590 682T630 676Q702 659 752 597T803 431Q803 275 696 151T444 3L430 1L236 0H125H72Q48 0 41 2T33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM703 469Q703 507 692 537T666 584T629 613T590 629T555 636Q553 636 541 636T512 636T479 637H436Q392 637 386 627Q384 623 313 339T242 52Q242 48 253 48T330 47Q335 47 349 47T373 46Q499 46 581 128Q617 164 640 212T683 339T703 469Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"P-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"20\" data-owner=\"P\" data-fragment-sha=\"sha256:60f84a151f1b8f8e657e4bd96bbbe2c8c4dd2a274b7bb52e13ae8edd067675a8\" transform=\"translate(184.49 21.77718593)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15.02\" height=\"13.66\" viewBox=\"0 0 15.02 13.66\" data-outline-width=\"15.02\" data-outline-height=\"13.66\" id=\"lb-c630db8c8d1c621f0c0374933321fb5eab50b5e0a44fd487ab490eef7d626c95\" data-owner=\"P\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 13.66) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D443\" d=\"M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"E-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"20\" data-owner=\"E\" data-fragment-sha=\"sha256:f2b023959f4eda359d1e8a604212c46da2eb1e839d49dba77969d6ecf38e0c0c\" transform=\"translate(200.52080402 164.832410911)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15.28\" height=\"13.6\" viewBox=\"0 0 15.28 13.6\" data-outline-width=\"15.28\" data-outline-height=\"13.6\" id=\"lb-eebea5c14bd7d32aec24db91837de40d548a39e94075ca5e1209344aba2c1042\" data-owner=\"E\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 13.6) scale(0.02)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D438\" d=\"M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z\"></path></g></g></g></g></svg></g></g></svg>\n",
+  "lineage": {
+   "planSha256": "sha256:2e12a9455d9320ac78744c60c5bfa401509dc9256b1e60c45997ea2e17e29812",
+   "modelSha256": "sha256:0c0bb778b94a5ee017983adca2b593e39be6ee258075c58f711cec5cc624caa9",
+   "typographyPolicySha256": "sha256:1ea64d3e75cfcaade3c70285829d1f3638d6bc2346e1e92b863cf5440bc79009",
+   "specSha256": "sha256:d049b89978ad391bd44a452a9b729cee0f2a21a9a1fe401480ef1a65873fc741",
+   "fragmentSha256s": {
+    "P-name": "sha256:60f84a151f1b8f8e657e4bd96bbbe2c8c4dd2a274b7bb52e13ae8edd067675a8",
+    "A-name": "sha256:9891149fe7e1417be541cd6648daf437979ede8476c6801b3195dc4ab25d27e1",
+    "B-name": "sha256:9a071e88600dcb18474bf02567a826c53bcef514223ff18a30047ee5ddc93626",
+    "C-name": "sha256:8e46fca83ad280f130ac79e4d0ed1c7ffcfadd1761fb175484156e8a2d23dfdd",
+    "D-name": "sha256:fb5871cd172b66be9e2e14362b4f3f80590ecd48f361bb848df0893cd57bda37",
+    "E-name": "sha256:f2b023959f4eda359d1e8a604212c46da2eb1e839d49dba77969d6ecf38e0c0c"
+   },
+   "measurementsSha256": "sha256:1079ef854dd523578e86dbc07d6bce9c7c86cb2e8ab9174ad3b071928ef46cb6",
+   "svgSha256": "sha256:de70e90de0fade143c3e7748facf7c606150bc7ec6e2f9ba07c9f57108abd02b",
+   "witnessSha256": "sha256:8a5122acc2457f1170862dc010c200a464359fc613fdcf7b61afcbfec6140cc1",
+   "staticAuditSha256": "sha256:e544e2f9158e118c3325c0275dd38f7bac068e820e4b92464b0800339e83b2dd",
+   "renderedLayoutSha256": "sha256:291208556dafafb614eca5584bc8000d5c61621e98a93bd7f6ffc1e92baf67cc"
+  },
+  "staticAudit": {
+   "status": "PASS",
+   "errors": []
+  },
+  "renderedLayout": {
+   "status": "PASS",
+   "display": {
+    "width": 252.90625,
+    "height": 210.75520833333331
+   },
+   "errors": []
+  },
+  "layoutRepairs": [],
+  "typographyPolicyProvenance": "CALLER_SUPPLIED_UNVERIFIED",
+  "sizeSelection": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "independentVisualReview": "NOT_RUN",
+  "productionAuthorized": false,
+  "qualification": "NOT_RUN"
+ },
+ "capture": {
+  "schemaVersion": "construction-archive-capture-v1",
+  "status": "ARCHIVE_BOUND",
+  "detail": null,
+  "lineage": {
+   "l1SvgSha256": "sha256:de70e90de0fade143c3e7748facf7c606150bc7ec6e2f9ba07c9f57108abd02b",
+   "policySha256": "sha256:1ea64d3e75cfcaade3c70285829d1f3638d6bc2346e1e92b863cf5440bc79009",
+   "candidateBankSha256": "sha256:79f031ccae96675daa78868fd52d4c2612fc0a9bbb925f5b7615930689f98cec",
+   "assetPath": ".tmp/archive/pilot-capture-466807ab/23_신흥중_2학기_중간_중1_유사/assets/images/23_신흥중_2학기_중간_중1_유사/q01-solution.svg",
+   "assetResponseSha256": "sha256:de70e90de0fade143c3e7748facf7c606150bc7ec6e2f9ba07c9f57108abd02b",
+   "archiveRowSha256": "sha256:591c20671484e64729ac390f44b59a685219945fa5e5942d5436d10a9bdb32f3",
+   "screenshotSha256s": {
+    "image": "sha256:a6ea9c3f9c4a5214d01d203e3efbb08bfae93fce4c77b86e541638bb7987be67",
+    "context": "sha256:58736969ca703fcb8778d85c8f8fa6f99cc33c788f5bbfa32215d648539a897b",
+    "page": "sha256:34ff88d2597b814276a5a784c536d1b57a1b3fa71b00c56dd2cd7396cca7ca0c"
+   },
+   "matrixSha256": "sha256:849e3cdb48753f4ee0684f56e9aa6dbf9bbcb1b82d80d3f6e5aed674e2f778a6",
+   "engineSha256": "sha256:b2787e1b76f3d32e3d0d8c39c013a8e928068667652f309bae01c7d1c3c8fd74"
+  },
+  "paths": {
+   "runRoot": ".tmp/archive/pilot-capture-466807ab",
+   "asset": ".tmp/archive/pilot-capture-466807ab/23_신흥중_2학기_중간_중1_유사/assets/images/23_신흥중_2학기_중간_중1_유사/q01-solution.svg",
+   "candidateBank": ".tmp/archive/pilot-capture-466807ab/23_신흥중_2학기_중간_중1_유사/candidates/23_신흥중_2학기_중간_중1_유사.js",
+   "matrix": ".tmp/archive/pilot-capture-466807ab/23_신흥중_2학기_중간_중1_유사/visual-engine/production/archive-capture/archive-render-matrix.json",
+   "archiveRow": ".tmp/archive/pilot-capture-466807ab/23_신흥중_2학기_중간_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-d3dc63761b86edc45ac28d2bc1866cfd6afd7add91fe49ecf4bb1dd5cb29c10a-sol-desktop.json",
+   "screenshots": {
+    "image": ".tmp/archive/pilot-capture-466807ab/23_신흥중_2학기_중간_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-d3dc63761b86edc45ac28d2bc1866cfd6afd7add91fe49ecf4bb1dd5cb29c10a-sol-desktop-va-d3dc63761b86edc45ac28d2bc1866cfd6afd7add91fe49ecf4bb1dd5cb29c10a.png",
+    "context": ".tmp/archive/pilot-capture-466807ab/23_신흥중_2학기_중간_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-d3dc63761b86edc45ac28d2bc1866cfd6afd7add91fe49ecf4bb1dd5cb29c10a-sol-desktop-va-d3dc63761b86edc45ac28d2bc1866cfd6afd7add91fe49ecf4bb1dd5cb29c10a-context.png",
+    "page": ".tmp/archive/pilot-capture-466807ab/23_신흥중_2학기_중간_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-d3dc63761b86edc45ac28d2bc1866cfd6afd7add91fe49ecf4bb1dd5cb29c10a-sol-desktop.png"
+   }
+  },
+  "protectedParity": {
+   "status": "PASS",
+   "sourceRef": {
+    "path": "archive/exams/similar/middle/m1/2mid/23_신흥중_2학기_중간_중1_유사.js",
+    "bytes": 63016,
+    "sha256": "sha256:8e2122dc7539fff049bf2ee3e8b0a1394f343201f33c319f93678acbd1ebe75a"
+   },
+   "originalQuestionSha256": "sha256:69682e784b2fc2d9c6a03c1548e1cc3f1551879071e49f334cb85f1ec7cb5950",
+   "questionCount": 26,
+   "protectedFields": [
+    "content",
+    "choices",
+    "answer",
+    "solution",
+    "image"
+   ],
+   "changedFields": [
+    "solutionImage",
+    "solutionImageSize",
+    "solutionImageAlt"
+   ],
+   "targetOrdinal": 1
+  },
+  "sizeClass": "full",
+  "observedDisplayScale": 0.6586100260416666,
+  "expectedDisplayScale": 0.6586100260416666,
+  "displayScaleDeltaCssPx": 0,
+  "layout": {
+   "source": "ARCHIVE_ROW_ISOLATED_REPLAY",
+   "status": "PASS",
+   "errors": []
+  },
+  "checks": {
+   "network": "PASS",
+   "assetResponse": "PASS",
+   "bankResponse": "PASS",
+   "naturalSize": "PASS",
+   "sizeClass": "PASS",
+   "displayScale": "PASS",
+   "layout": "PASS"
+  },
+  "fixtureClassification": "PILOT_AUTHOR_PLAN_CANDIDATE",
+  "evidenceIntegrity": "NO_CALLER_HOOK",
+  "uidAuthority": "STRUCTURAL_ONLY",
+  "independentInverseObservation": "NOT_RUN",
+  "qualification": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false
+ }
+}
