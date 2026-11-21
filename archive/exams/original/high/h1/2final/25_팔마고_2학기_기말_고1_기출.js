@@ -386,7 +386,7 @@ window.questionBank = [
       "$\\dfrac{49}{4}$"
     ],
     "answer": "⑤",
-    "solution": "$x\\ge3$에서\n$f(x)=x^2-6x+a=(x-3)^2+a-9$\n이므로 $f$는 증가한다.\n증가함수와 그 역함수의 그래프가 만나는 점은 직선 $y=x$ 위에 있으므로\n교점의 $x$좌표는\n$f(x)=x$\n를 만족한다.\n두 그래프가 한 점에서 접하려면 이 방정식이 중근을 가져야 한다.\n$x^2-6x+a=x$이므로\n$x^2-7x+a=0$이다.\n판별식이 $0$이어야 하므로\n$49-4a=0$이다.\n따라서\n$a=\\dfrac{49}{4}$이다.\n이때 중근은\n$x=\\dfrac72\\ge3$\n이므로 정의역 조건도 만족한다.\n정답은 ⑤이다.",
+    "solution": "먼저 식을 완전제곱식으로 고친다.\n\n$$\n\\begin{aligned}\nf(x)&=x^2-6x+a\\\\\n&=(x-3)^2+a-9.\n\\end{aligned}\n$$\n\n$x\\ge3$이면 $x-3\\ge0$이고, $x$가 커질수록 $(x-3)^2$도 커진다. 따라서 이 정의역에서 $f$는 증가한다.\n\n두 그래프의 교점을 $(p,q)$라 하면 교점은 두 그래프의 정의역에 있으므로 $p,q\\ge3$이고,\n$$\nq=f(p),\\qquad p=f(q)\n$$\n이다.\n\n만약 $p<q$라면 $f$가 증가하므로 $f(p)<f(q)$이다. 그런데 $f(p)=q$, $f(q)=p$이므로 $q<p$가 되어 처음 조건과 모순이다. $p>q$인 경우에도 같은 방법으로 모순이 생긴다. 따라서 $p=q$이고, 교점은 직선 $y=x$ 위에 있다.\n\n두 그래프가 한 점에서 접하려면 $y=f(x)$와 $y=x$도 한 점에서 접해야 한다. 따라서\n$$\nf(x)=x\n$$\n가 중근을 가져야 한다.\n\n$$\n\\begin{aligned}\nx^2-6x+a&=x\\\\\nx^2-7x+a&=0\\\\\n\\left(x-\\frac72\\right)^2-\\frac{49}{4}+a&=0\\\\\n\\left(x-\\frac72\\right)^2&=\\frac{49}{4}-a.\n\\end{aligned}\n$$\n\n한 근으로 겹치려면\n$$\n\\begin{aligned}\n\\left(x-\\frac72\\right)^2&=0,\\\\\n\\frac{49}{4}-a&=0,\\\\\na&=\\frac{49}{4}.\n\\end{aligned}\n$$\n이때 접점은 $\\left(\\frac72,\\frac72\\right)$이고 $\\frac72\\ge3$이다.\n\n따라서 구하는 값은 $\\boxed{\\frac{49}{4}}$이고 정답은 ⑤이다.",
 
     "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q11-solution-v2.svg",
 
@@ -609,7 +609,7 @@ window.questionBank = [
       "$1$"
     ],
     "answer": "①",
-    "solution": "전체 함수가 일대일대응이 되려면 두 조각의 치역이 겹치지 않고 실수 전체를 정확히 나누어야 한다.\n$x<b$에서\n$f(x)=x+c$이므로 첫째 조각의 치역은\n$(-\\infty,b+c)$이다.\n\n둘째 조각은\n$f(x)=ax^2-2ax-3$\n$=a(x-1)^2-a-3$이다.\n$x\\ge b$에서 이 함수가 일대일이고 위로 무한히 커지려면\n$a>0$이고\n$b\\ge1$이어야 한다.\n따라서 $b$의 최솟값은\n$t=1$이다.\n$b=1$일 때 두 치역이 빈틈없이 이어지려면 둘째 조각의 시작값이 $1+c$와 같아야 한다.\n$f(1)=-a-3$이므로\n$-a-3=1+c$이다.\n따라서\n$a+c=-4$이다.\n정답은 ①이다.",
+    "solution": "$x<b$에서 $f(x)=x+c$이므로 이 부분의 치역은\n$$\n(-\\infty,b+c)\n$$\n이다. 전체 치역이 실수 전체가 되려면 $x\\ge b$인 부분이 $b+c$ 이상의 모든 값을 만들어야 한다.\n\n$$\n\\begin{aligned}\nf(x)&=ax^2-2ax-3\\\\\n&=a(x^2-2x)-3\\\\\n&=a\\{(x-1)^2-1\\}-3\\\\\n&=a(x-1)^2-a-3.\n\\end{aligned}\n$$\n\n$x$가 커질수록 함수값이 위로 끝없이 커져야 하므로 $a>0$이다. 이 이차함수의 대칭축은 $x=1$이다.\n\n만약 $b<1$이면 $0<h<1-b$인 $h$를 잡을 수 있다. 그러면 $1-h\\ge b$, $1+h\\ge b$이고\n$$\n\\begin{aligned}\nf(1-h)&=a(-h)^2-a-3=ah^2-a-3,\\\\\nf(1+h)&=a(h)^2-a-3=ah^2-a-3.\n\\end{aligned}\n$$\n서로 다른 두 입력의 함숫값이 같아져 일대일이 아니다. 따라서 $b\\ge1$이다.\n\n$b\\ge1$이면 이차함수는 $x\\ge b$에서 증가하므로 이 부분의 치역은 $[f(b),\\infty)$이다. 앞 조각과 뒤 조각의 치역이 겹치거나 비지 않고 실수 전체가 되려면\n$$\nf(b)=b+c\n$$\n이어야 한다. 그러므로 $b$의 최솟값은 $t=1$이다.\n\n$b=1$일 때 조건이 실제로 가능함을 확인하자. $a=1$, $c=-5$로 두면\n$$\nf(x)=\n\\begin{cases}\nx-5 &(x<1),\\\\\n(x-1)^2-4 &(x\\ge1)\n\\end{cases}\n$$\n이고 두 부분의 치역은 각각 $(-\\infty,-4)$, $[-4,\\infty)$이다. 두 조각은 각각 증가하고 치역이 겹치지 않으므로 이 함수는 일대일대응이다.\n\n이제 $b=t=1$을 대입한다.\n$$\n\\begin{aligned}\nf(1)&=a-2a-3=-a-3,\\\\\nf(1)&=1+c.\n\\end{aligned}\n$$\n따라서\n$$\n\\begin{aligned}\n-a-3&=1+c,\\\\\na+c&=-4.\n\\end{aligned}\n$$\n정답은 ①이다.",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -649,7 +649,7 @@ window.questionBank = [
       "$19$"
     ],
     "answer": "③",
-    "solution":"그림에서\n$P=(0,2)$,\n$Q=(3,0)$,\n$A=(4,4)$,\n$B=(7,2)$이다.\n$y=\\sqrt{x-3}$의 그래프는 $y=\\sqrt x+2$의 그래프를 오른쪽으로 $3$, 아래로 $2$만큼 평행이동한 것이다.\n따라서 곡선 $PA$를 같은 방향으로 옮기면 곡선 $QB$와 겹친다.\n곡선 사이의 띠를 같은 넓이가 되도록 잘라 붙이면 평행사변형 $PABQ$와 같은 넓이가 된다.\n이 평행사변형을 가로 $7$, 세로 $4$인 직사각형 안에서 계산하면\n직사각형의 넓이는\n$7\\cdot4=28$이다.\n바깥쪽의 네 직각삼각형 넓이는 각각\n$\\dfrac12\\times4\\times2=4$인 것이 두 개,\n$\\dfrac12\\times3\\times2=3$인 것이 두 개이다.\n따라서 바깥쪽의 넓이의 합은\n$2\\times4+2\\times3=8+6=14$이다.\n그러므로 평행사변형 $PABQ$의 넓이는\n$28-14=14$이다.\n실제 영역의 아래쪽 경계는 선분 $PQ$가 아니라\n$P\\to O\\to Q$이다.\n$\\triangle POQ$의 넓이는\n$\\dfrac12\\cdot3\\cdot2=3$이다.\n따라서 구하는 넓이는\n$14+3=17$이다.\n정답은 ③이다.",
+    "solution":"두 교점은 $A=(4,4)$, $B=(7,2)$이고, 두 곡선의 시작점은\n$$\nP=(0,2),\\qquad Q=(3,0)\n$$\n이다.\n\n두 함수를 비교하면\n$$\n\\begin{aligned}\nf(x)&=\\sqrt{x}+2,\\\\\ng(x+3)&=\\sqrt{(x+3)-3}\\\\\n&=\\sqrt{x}=f(x)-2.\n\\end{aligned}\n$$\n따라서 곡선 $PA$를 오른쪽으로 $3$, 아래로 $2$만큼 옮기면 곡선 $QB$와 겹친다. 두 곡선과 각각의 현 사이 휘어진 부분의 넓이는 같다. 실제 영역은 첫 곡선 쪽 넓이를 더하고 둘째 곡선 쪽의 같은 넓이를 빼므로 서로 상쇄된다. 따라서 구하는 넓이는 오각형 $PABQO$의 넓이와 같다.\n\n$PABQ$는\n$$\n\\overrightarrow{PA}=(4,2)=\\overrightarrow{QB},\\qquad\n\\overrightarrow{AB}=(3,-2)=\\overrightarrow{PQ}\n$$\n이므로 평행사변형이다. 이 평행사변형은 가로 $7$, 세로 $4$인 직사각형 안에 있다. 바깥 네 직각삼각형의 넓이는 가로 $4$, 세로 $2$인 것이 두 개, 가로 $3$, 세로 $2$인 것이 두 개이다.\n$$\n\\begin{aligned}\n\\text{직사각형의 넓이}&=7\\cdot4=28,\\\\\n\\text{바깥 네 삼각형의 넓이}\n&=2\\left(\\frac12\\cdot4\\cdot2\\right)\n+2\\left(\\frac12\\cdot3\\cdot2\\right)\\\\\n&=8+6=14,\\\\\n[\\text{평행사변형 }PABQ]&=28-14=14.\n\\end{aligned}\n$$\n또 $PO=2$, $OQ=3$이므로\n$$\n[\\triangle POQ]=\\frac12\\cdot2\\cdot3=3.\n$$\n따라서 구하는 넓이는\n$$\n14+3=\\boxed{17}\n$$\n이고 정답은 ③이다.",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -688,7 +688,7 @@ window.questionBank = [
       "$1$"
     ],
     "answer": "①",
-    "solution": "그래프에서 $f(x)=0$의 두 근은\n$x=-2$, $x=1$이다.\n또 $f(0)=-2$이므로\n$f(x)=(x+2)(x-1)$\n$=x^2+x-2$이다.\n$(f\\circ f)(x)=0$이므로\n$f(x)$는 $-2$ 또는 $1$이다.\n먼저\n$f(x)=-2$이면\n$x^2+x-2=-2$,\n$x(x+1)=0$이다.\n따라서\n$x=0,-1$이다.\n또\n$f(x)=1$이면\n$x^2+x-3=0$이다.\n이 두 근의 합은 근과 계수의 관계에서 $-1$이다.\n네 근은 서로 다르므로 전체 실근의 합은\n$0+(-1)+(-1)=-2$이다.\n정답은 ①이다.",
+    "solution": "그래프에서 $f(x)=0$의 두 근은 $-2,1$이고 $f(0)=-2$이다. 따라서\n$$\n\\begin{aligned}\nf(x)&=a(x+2)(x-1),\\\\\n-2=f(0)&=a\\cdot2\\cdot(-1)=-2a,\\\\\na&=1\n\\end{aligned}\n$$\n이므로\n$$\nf(x)=(x+2)(x-1)=x^2+x-2.\n$$\n\n$(f\\circ f)(x)=0$은 $f(f(x))=0$이라는 뜻이다. $f(t)=0$의 해가 $t=-2,1$이므로\n$$\nf(x)=-2\\quad\\text{또는}\\quad f(x)=1\n$$\n을 풀면 된다.\n\n먼저 $f(x)=-2$이면\n$$\n\\begin{aligned}\nx^2+x-2&=-2\\\\\nx^2+x&=0\\\\\nx(x+1)&=0\\\\\nx&=0\\quad\\text{또는}\\quad x=-1.\n\\end{aligned}\n$$\n\n다음으로 $f(x)=1$이면\n$$\n\\begin{aligned}\nx^2+x-2&=1\\\\\nx^2+x-3&=0\\\\\nx&=\\frac{-1\\pm\\sqrt{1+12}}{2}\\\\\n&=\\frac{-1\\pm\\sqrt{13}}{2}.\n\\end{aligned}\n$$\n두 근은 서로 다르다. 또 $x=0,-1$을 $x^2+x-3$에 대입하면 모두 $-3$이므로 앞에서 구한 두 근과 겹치지 않는다.\n\n따라서 서로 다른 네 실근의 합은\n$$\n\\begin{aligned}\n0+(-1)+\\frac{-1+\\sqrt{13}}2+\\frac{-1-\\sqrt{13}}2\n&=-1-1\\\\\n&=\\boxed{-2}.\n\\end{aligned}\n$$\n정답은 ①이다.",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
