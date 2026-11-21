@@ -1,0 +1,58 @@
+{
+  "qid": 10,
+  "itemFingerprint": "5f1de30f9b598203",
+  "solveSteps": [
+    "먼저 $(|x|, |y|, |z|)$의 순서쌍을 정하면 $1$부터 $5$까지의 자연수 중에서 중복을 허락하여 3개를 뽑는 경우의 수와 같으므로 ${}*{5}\\mathrm{H}*{3}={}*{7}\\mathrm{C}*{3}=35$가지이다.",
+    "각각의 $|x|, |y|, |z|$는 모두 $1$ 이상이므로 $x, y, z$의 부호($+$ 또는 $-$)를 정하는 경우는 $2^3=8$가지이다.",
+    "따라서 구하는 순서쌍 $(x,y,z)$의 개수는 $35\\times 8=280$이다.",
+    "정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "세 정수 $x,y,z$에 대하여 $1\\le |x|\\le",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q10(35): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+  "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+  "typeReason": "Q10(35): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q10(35): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "키는 모든 순서쌍 $(x,y,z)$의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "먼저 $(|x|, |y|, |z|)$의 순서쌍",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q10(35): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

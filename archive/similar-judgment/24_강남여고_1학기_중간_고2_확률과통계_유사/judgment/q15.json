@@ -1,0 +1,57 @@
+{
+  "qid": 15,
+  "itemFingerprint": "799ef6639216b078",
+  "solveSteps": [
+    "각 항 $x^i(x+1)^{18-i}$ ($i=0,\\ 1,\\ \\dots,\\ 16$)에서 $x^{16}$의 계수는 $(x+1)^{18-i}$의 $x^{16-i}$의 계수인 ${}*{18-i}\\mathrm{C}*{16-i} = {}*{18-i}\\mathrm{C}*{2}$이다.",
+    "파스칼의 삼각형 성질(하키스틱 정리)에 의하여 계수의 합은 다음과 같다.",
+    "$$\\sum_{i=0}^{16} {}*{18-i}\\mathrm{C}*{2} = {}*{2}\\mathrm{C}*{2} + {}*{3}\\mathrm{C}*{2} + \\cdots + {}*{18}\\mathrm{C}*{2} = {}*{19}\\mathrm{C}*{3} = \\frac{19\\times 18\\times 17}{3\\times 2\\times 1} = 969$$\n\n따라서 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-PS-02",
+  "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+  "unitEvidence": "다음 다항식에서 $x^{16}$의 계수는?\n\n$$(x+",
+  "rpmRecordId": "H2-PS-RPM-009",
+  "rpmReason": "Q15(16): 이항계수와 계수비교 단원의 RPM H2-PS-RPM-009 유형에 해당한다.",
+  "problemTypeKey": "PT_BINOMIAL_THEOREM",
+  "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+  "typeReason": "Q15(16): 이항계수와 계수비교 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(16): 이항계수와 계수비교 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "(x+1)^3 + x^{16}(x+1)^2$$"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "각 항 $x^i(x+1)^{18-i}$ ($i",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q15(16): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "qid": 2,
+  "itemFingerprint": "7dbceea8e1d1700a",
+  "solveSteps": [
+    "전체 $8$명이 정사각형 탁자에 둘러앉는 경우의 수는 회전 대칭 $4$가지를 나누어 $\\dfrac{8!}{4}=10080$이다.",
+    "남자 $2$명이 같은 변에 앉는 경우의 수는 변 선택 $4$가지, 남자 배열 $2!$, 여자 배열 $6!$을 회전 대칭 $4$로 나눈 $\\dfrac{4\\times 2!\\times 6!}{4}=1440$이다.",
+    "따라서 서로 다른 변에 앉는 경우의 수는 $10080-1440=8640$이다.",
+    "정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "그림과 같이 정사각형 모양의 탁자 각 변에 $2$명씩 ",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q2(8640): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q2(8640): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q2(8640): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "회전하여 일치하는 것은 같은 것으로 본다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "전체 $8$명이 정사각형 탁자에 둘러앉는 경우",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q2(8640): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

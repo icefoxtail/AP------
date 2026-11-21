@@ -1,0 +1,57 @@
+{
+  "qid": 21,
+  "itemFingerprint": "0e9dc9c74107d855",
+  "solveSteps": [
+    "부모 $2$명을 한 묶음으로 보면 묶음과 자녀 $5$명, 총 $6$개의 단위를 원형으로 배열하는 경우의 수는 $(6-1)! = 5! = 120$가지이다.",
+    "묶음 내부에서 부모 $2$명이 자리를 바꾸는 경우의 수는 $2! = 2$가지이다.",
+    "따라서 구하는 경우의 수는 $120 \\times 2 = 240$이다."
+  ],
+  "solvedAnswer": "240",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-PS-01",
+  "subUnitKey": "H15-PS-01-PERMUTATION",
+  "unitEvidence": "[서술형 1] 부모 $2$명과 자녀 $5$명을 포함한 ",
+  "rpmRecordId": "H2-PS-RPM-001",
+  "rpmReason": "Q21(120): 순열 단원의 RPM H2-PS-RPM-001 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q21(120): 순열 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q21(120): 순열 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "회전하여 일치하는 것은 같은 것으로 본다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "부모 $2$명을 한 묶음으로 보면 묶음과 자녀",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q21(120): 발문과 해설의 풀이 과정을 점검하여 정답 240를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

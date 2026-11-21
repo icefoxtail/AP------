@@ -1,0 +1,58 @@
+{
+  "qid": 16,
+  "itemFingerprint": "3223e256de73c5f0",
+  "solveSteps": [
+    "전체 세 자리 정수의 개수는 $5\\times 4\\times 3 = 60$가지이다.",
+    "$320$보다 큰 짝수를 백의 자리 숫자별로 세면 다음과 같다.",
+    "- 백의 자리가 $3$인 경우: $324,\\ 342,\\ 352,\\ 354$ ($4$개)  \n- 백의 자리가 $4$인 경우: 일의 자리는 $2$뿐이고 십의 자리는 $1,\\ 3,\\ 5$ 중 $1$개이므로 $3$개  \n- 백의 자리가 $5$인 경우: 일의 자리는 $2$ 또는 $4$ ($2$가지), 십의 자리는 남은 $3$개 중 $1$개이므로 $6$개\n\n따라서 유리한 경우는 $4+3+6=13$개이므로 구하는 확률은 $\\dfrac{13}{60}$이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-PS-03",
+  "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+  "unitEvidence": "$5$개의 숫자 $1,\\ 2,\\ 3,\\ 4,\\ 5$에서",
+  "rpmRecordId": "H2-PS-RPM-011",
+  "rpmReason": "Q16(320): 확률의 뜻과 활용 단원의 RPM H2-PS-RPM-011 유형에 해당한다.",
+  "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+  "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+  "typeReason": "Q16(320): 확률의 뜻과 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q16(320): 확률의 뜻과 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "들 때, $320$보다 큰 짝수가 될 확률은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "전체 세 자리 정수의 개수는 $5\\times",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q16(320): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

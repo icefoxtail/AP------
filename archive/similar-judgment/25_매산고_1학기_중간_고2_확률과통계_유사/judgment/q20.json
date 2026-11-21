@@ -1,0 +1,66 @@
+{
+  "qid": 20,
+  "itemFingerprint": "3512c2aeb070a081",
+  "solveSteps": [
+    "각 종류의 카드가 $4$장씩 있으므로 $4$번 뽑는 모든 경우의 수는 $6^4=1296$이다.",
+    "곱 $abcd$가 $18=2\\times 3^2$의 배수가 되지 않는 여사건을 구한다.",
+    "1.",
+    "$abcd$가 $2$의 배수가 아닌 경우 ($A$): 4개 모두 홀수 ${1,3,5}$에서 뽑히므로 $n(A)=3^4=81$이다.",
+    "2.",
+    "$abcd$가 $9$의 배수가 아닌 경우 ($B$): 4개 중 $3$의 배수($3$ 또는 $6$)가 $0$개 또는 $1$개 뽑히는 경우이다.",
+    "- $0$개: $4$개 모두 ${1,2,4,5}$에서 뽑히므로 $4^4=256$  \n   - $1$개: 자리 선택 $4$가지 × ($3$ 또는 $6$ 중 $1$개) × 나머지 3자리 $4^3$ = $4\\times 2\\times 64 = 512$ 따라서 $n(B)=256+512=768$이다.",
+    "3.",
+    "$abcd$가 $2$의 배수도 아니고 $9$의 배수도 아닌 경우 ($A\\cap B$): 4개 모두 홀수 ${1,3,5}$이면서 $3$이 $0$개 또는 $1$개 뽑히는 경우이다.",
+    "- $3$이 $0$개: ${1,5}$에서 4개 $\\implies 2^4=16$  \n   - $3$이 $1$개: 자리 선택 $4$가지 × 나머지 3자리 ${1,5}$ $\\implies 4\\times 2^3=32$ 따라서 $n(A\\cap B)=16+32=48$이다.",
+    "포함배제의 원리에 의해 여사건의 수는 $n(A\\cup B)=81+768-48=801$이다.",
+    "따라서 구하는 순서쌍의 개수는 $1296-801=495$이다."
+  ],
+  "solvedAnswer": "$495$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "[서술형 2] $1$부터 $6$까지 적혀있는 $6$종류",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q20(18): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q20(18): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(18): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "순서쌍의 수를 구하고 그 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "각 종류의 카드가 $4$장씩 있으므로 $4$번",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q20(18): 발문과 해설의 풀이 과정을 점검하여 정답 $495$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

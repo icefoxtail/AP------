@@ -1,0 +1,674 @@
+{
+  "qid": 20,
+  "questionType": "서술형",
+  "course": [
+    "PROBABILITY_STATISTICS"
+  ],
+  "curriculum": "2022",
+  "problem": {
+    "content": "[서술형 2] $1$부터 $6$까지 적혀있는 $6$종류의 카드가 각각 $4$장씩 있다. 카드를 총 $4$번 뽑는 과정에서 나온 수를 순서대로 $a,b,c,d$라고 한다. $a\\times b\\times c\\times d$의 값이 $18$의 배수가 되는 $(a,b,c,d)$의 순서쌍의 수를 구하고 그 과정을 서술하시오.",
+    "choices": [],
+    "points": 8
+  },
+  "reference": {
+    "answer": "$495$",
+    "solution": "각 종류의 카드가 $4$장씩 있으므로 $4$번 뽑는 모든 경우의 수는 $6^4=1296$이다. 곱 $abcd$가 $18=2\\times 3^2$의 배수가 되지 않는 여사건을 구한다.\n\n1. $abcd$가 $2$의 배수가 아닌 경우 ($A$): 4개 모두 홀수 ${1,3,5}$에서 뽑히므로 $n(A)=3^4=81$이다.  \n2. $abcd$가 $9$의 배수가 아닌 경우 ($B$): 4개 중 $3$의 배수($3$ 또는 $6$)가 $0$개 또는 $1$개 뽑히는 경우이다.  \n   - $0$개: $4$개 모두 ${1,2,4,5}$에서 뽑히므로 $4^4=256$  \n   - $1$개: 자리 선택 $4$가지 × ($3$ 또는 $6$ 중 $1$개) × 나머지 3자리 $4^3$ = $4\\times 2\\times 64 = 512$ 따라서 $n(B)=256+512=768$이다.  \n3. $abcd$가 $2$의 배수도 아니고 $9$의 배수도 아닌 경우 ($A\\cap B$): 4개 모두 홀수 ${1,3,5}$이면서 $3$이 $0$개 또는 $1$개 뽑히는 경우이다.  \n   - $3$이 $0$개: ${1,5}$에서 4개 $\\implies 2^4=16$  \n   - $3$이 $1$개: 자리 선택 $4$가지 × 나머지 3자리 ${1,5}$ $\\implies 4\\times 2^3=32$ 따라서 $n(A\\cap B)=16+32=48$이다.\n\n포함배제의 원리에 의해 여사건의 수는 $n(A\\cup B)=81+768-48=801$이다. 따라서 구하는 순서쌍의 개수는 $1296-801=495$이다.",
+    "sourcePrimaryMethod": "전체 6^4=1296에서 18=2*3^2 배수 여사건(2의 배수 아님 U 9의 배수 아님)을 포함배제로 제외",
+    "sourceDecisiveStep": "여사건 A(모두 홀수, 81), B(3·6 최대 1개, 768), A∩B(홀수 중 3 최대 1개, 48) 계산"
+  },
+  "source": {
+    "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
+    "standardUnitKey": "H22-PS-01",
+    "subUnitKey": "H22-PS-01-CORE",
+    "rpmPath": {
+      "majorUnit": "경우의 수",
+      "midUnit": "순열과 조합",
+      "l3": "순열",
+      "l4": "일렬 배열"
+    },
+    "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+    "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+    "difficultyBucket": 4,
+    "newKeyProposal": null,
+    "item4slot": {
+      "given": [
+        "자연수",
+        "곱"
+      ],
+      "goal": [
+        "개수"
+      ],
+      "method": [
+        "여사건",
+        "포함배제의원리",
+        "중복순열"
+      ],
+      "condition": [
+        "자연수"
+      ]
+    },
+    "boundary": "NONE"
+  },
+  "units": [
+    {
+      "standardUnitKey": "H22-PS-01",
+      "label": "순열과 조합",
+      "order": 1,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-PS-01-CORE",
+          "label": "순열과 조합 핵심 개념"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-PS-RPM-032",
+          "path": "경우의 수 > 순열과 조합 > 순열 > 일렬 배열",
+          "subUnitKey": "H22-PS-01-CORE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-033",
+          "path": "경우의 수 > 순열과 조합 > 순열 > 중복·원순열",
+          "subUnitKey": "H22-PS-01-CORE",
+          "mappingStatus": "FAMILY_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-034",
+          "path": "경우의 수 > 순열과 조합 > 조합 > 선택",
+          "subUnitKey": "H22-PS-01-CORE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-035",
+          "path": "경우의 수 > 순열과 조합 > 조합 > 분할·분배",
+          "subUnitKey": "H22-PS-01-CORE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-036",
+          "path": "경우의 수 > 순열과 조합 > 중복조합 > 중복을 허용한 선택",
+          "subUnitKey": "H22-PS-01-CORE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-037",
+          "path": "경우의 수 > 순열과 조합 > 중복조합 > 정수해 개수",
+          "subUnitKey": "H22-PS-01-CORE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "label": "조합·중복조합",
+          "templates": [
+            {
+              "templateKey": "TPL_COMBINATION_SELECTION",
+              "label": "조합과 선택"
+            },
+            {
+              "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+              "label": "중복조합·정수해·동일물 분배"
+            },
+            {
+              "templateKey": "TPL_H1_BINOMIAL_IDENTITY_CHECK",
+              "label": "조합 항등식 증명·판정"
+            },
+            {
+              "templateKey": "TPL_H1_BINOMIAL_PARAMETER_RELATION",
+              "label": "순열·조합 관계로 매개변수 결정"
+            },
+            {
+              "templateKey": "TPL_H1_SELECTION_BOX_IDENTITY",
+              "label": "상자 배정에서 동일·서로 다른 대상 구분"
+            },
+            {
+              "templateKey": "TPL_H1_SELECTION_CAPACITY_DISTRIBUTION",
+              "label": "수용량 제약이 있는 대상 분배"
+            },
+            {
+              "templateKey": "TPL_H1_SELECTION_GEOMETRIC_DEGENERACY",
+              "label": "기하 점 선택 후 퇴화 경우 제외"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+          "label": "순열",
+          "templates": [
+            {
+              "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+              "label": "일반 순열·조건 배열"
+            },
+            {
+              "templateKey": "TPL_CIRCULAR_PERMUTATION",
+              "label": "원순열"
+            },
+            {
+              "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+              "label": "같은 것이 있는 순열"
+            },
+            {
+              "templateKey": "TPL_COUNTING_ARRANGEMENT_PATH",
+              "label": "격자 경로"
+            },
+            {
+              "templateKey": "TPL_COUNTING_ARRANGEMENT_ROTATION",
+              "label": "회전 중복"
+            },
+            {
+              "templateKey": "TPL_H1_ARRANGEMENT_LEXICOGRAPHIC_RANK",
+              "label": "사전식 순열 순위·역순위"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_COUNTING",
+          "label": "함수의 개수",
+          "templates": [
+            {
+              "templateKey": "TPL_BASIC_FUNCTION_TYPE_COUNT",
+              "label": "함수·일대일대응·상수함수 등의 개수"
+            },
+            {
+              "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
+              "label": "조건을 만족하는 함수의 개수"
+            },
+            {
+              "templateKey": "TPL_IDENTITY_DOMAIN_COUNT",
+              "label": "항등함수가 되는 정의역의 개수"
+            },
+            {
+              "templateKey": "TPL_INJECTIVE_BIJECTION_COUNT",
+              "label": "일대일함수·일대일대응의 개수"
+            },
+            {
+              "templateKey": "TPL_MONOTONE_FUNCTION_COUNT",
+              "label": "증가·감소 조건이 있는 함수의 개수"
+            },
+            {
+              "templateKey": "TPL_SURJECTION_COUNT",
+              "label": "치역과 공역이 같은 함수의 개수"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_COUNT_VALUE_RESTRICTION_AND_ORDER",
+              "label": "함수값 제한과 순서 조건을 결합한 함수 개수"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+          "label": "중복순열",
+          "templates": [
+            {
+              "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+              "label": "중복순열·반복 배정"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H22-PS-02",
+      "label": "이항정리",
+      "order": 2,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-PS-02-CORE",
+          "label": "이항정리 핵심 개념"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-PS-RPM-038",
+          "path": "경우의 수 > 이항정리 > 이항정리 > 전개식의 항",
+          "subUnitKey": "H22-PS-02-CORE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-039",
+          "path": "경우의 수 > 이항정리 > 이항정리 > 특정 항의 계수",
+          "subUnitKey": "H22-PS-02-CORE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-040",
+          "path": "경우의 수 > 이항정리 > 이항계수 > 이항계수의 성질",
+          "subUnitKey": "H22-PS-02-CORE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-041",
+          "path": "경우의 수 > 이항정리 > 이항계수 > 조합 항등식",
+          "subUnitKey": "H22-PS-02-CORE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_BINOMIAL_THEOREM",
+          "label": "이항정리",
+          "templates": [
+            {
+              "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+              "label": "전개식의 항·계수"
+            },
+            {
+              "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+              "label": "이항계수의 성질·활용"
+            },
+            {
+              "templateKey": "TPL_BINOMIAL_THEOREM_REMAINDER",
+              "label": "나머지"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H22-PS-03",
+      "label": "확률의 뜻과 활용",
+      "order": 3,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-PS-03-PROBABILITY_APPLICATION",
+          "label": "확률의 활용"
+        },
+        {
+          "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+          "label": "확률의 뜻과 계산"
+        },
+        {
+          "subUnitKey": "H22-PS-03-PROBABILITY_DISTRIBUTION",
+          "label": "확률분포"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-PS-RPM-042",
+          "path": "확률 > 확률의 뜻과 활용 > 확률의 기본 > 표본공간과 사건",
+          "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-043",
+          "path": "확률 > 확률의 뜻과 활용 > 확률의 기본 > 확률 계산",
+          "subUnitKey": "H22-PS-03-PROBABILITY_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-044",
+          "path": "확률 > 확률의 뜻과 활용 > 확률의 덧셈정리 > 배반사건",
+          "subUnitKey": "H22-PS-03-PROBABILITY_APPLICATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-045",
+          "path": "확률 > 확률의 뜻과 활용 > 확률의 덧셈정리 > 여사건",
+          "subUnitKey": "H22-PS-03-PROBABILITY_APPLICATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+          "label": "확률의 기본 성질과 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+              "label": "확률의 뜻·기본 계산"
+            },
+            {
+              "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+              "label": "사건의 관계·덧셈정리·여사건"
+            },
+            {
+              "templateKey": "TPL_PROBABILITY_PROPERTIES_APPLICATION_DEFINITION",
+              "label": "확률 정의"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+          "label": "독립시행의 확률",
+          "templates": [
+            {
+              "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+              "label": "독립시행의 확률"
+            },
+            {
+              "templateKey": "TPL_INDEPENDENT_TRIAL_STATE_PARITY",
+              "label": "독립시행의 출현 횟수 홀짝 상태 분석"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+          "label": "조건부확률",
+          "templates": [
+            {
+              "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+              "label": "조건부확률의 직접 계산"
+            },
+            {
+              "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+              "label": "분기·역조건 조건부확률"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H22-PS-04",
+      "label": "조건부확률",
+      "order": 4,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-PS-04-CONDITIONAL_PROBABILITY",
+          "label": "조건부확률의 계산과 활용"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-PS-RPM-046",
+          "path": "확률 > 조건부확률 > 조건부확률 > 조건부확률 계산",
+          "subUnitKey": "H22-PS-04-CONDITIONAL_PROBABILITY",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-047",
+          "path": "확률 > 조건부확률 > 사건의 독립 > 독립 판정",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-048",
+          "path": "확률 > 조건부확률 > 사건의 독립 > 독립사건의 확률",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-049",
+          "path": "확률 > 조건부확률 > 독립시행 > 이항형 시행",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-050",
+          "path": "확률 > 조건부확률 > 독립시행 > 반복 시행의 확률",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+          "label": "조건부확률",
+          "templates": [
+            {
+              "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+              "label": "조건부확률의 직접 계산"
+            },
+            {
+              "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+              "label": "분기·역조건 조건부확률"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_EVENT_INDEPENDENCE",
+          "label": "사건의 독립과 종속",
+          "templates": [
+            {
+              "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
+              "label": "독립·종속 판정"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H22-PS-05",
+      "label": "확률분포",
+      "order": 5,
+      "subUnits": [],
+      "rpm": [
+        {
+          "id": "H2-PS-RPM-051",
+          "path": "통계 > 확률분포 > 확률변수와 확률분포 > 이산확률변수",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-052",
+          "path": "통계 > 확률분포 > 확률변수와 확률분포 > 확률질량함수",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-053",
+          "path": "통계 > 확률분포 > 기댓값과 분산 > 기댓값",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-054",
+          "path": "통계 > 확률분포 > 기댓값과 분산 > 분산·표준편차",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-055",
+          "path": "통계 > 확률분포 > 이항분포 > 이항분포의 확률",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-056",
+          "path": "통계 > 확률분포 > 이항분포 > 평균·분산",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-057",
+          "path": "통계 > 확률분포 > 정규분포 > 표준정규분포",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-058",
+          "path": "통계 > 확률분포 > 정규분포 > 정규분포 확률",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      ],
+      "problemTypes": []
+    },
+    {
+      "standardUnitKey": "H22-PS-06",
+      "label": "통계적 추정",
+      "order": 6,
+      "subUnits": [],
+      "rpm": [
+        {
+          "id": "H2-PS-RPM-059",
+          "path": "통계 > 통계적 추정 > 모집단과 표본 > 표본평균",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-060",
+          "path": "통계 > 통계적 추정 > 모집단과 표본 > 표본분포",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-061",
+          "path": "통계 > 통계적 추정 > 모평균 추정 > 신뢰구간",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-062",
+          "path": "통계 > 통계적 추정 > 모평균 추정 > 표본크기",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-PS-RPM-063",
+          "path": "통계 > 통계적 추정 > 모비율 추정 > 표본비율",
+          "subUnitKey": "",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-PS-RPM-064",
+          "path": "통계 > 통계적 추정 > 모비율 추정 > 신뢰구간",
+          "subUnitKey": "",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": []
+    }
+  ],
+  "termCandidates": [
+    {
+      "term": "순서쌍",
+      "matchedAs": "순서쌍",
+      "kind": "대상",
+      "src": "stem",
+      "quote": ",c,d)$의 순서쌍의 수를 구하고"
+    },
+    {
+      "term": "배수",
+      "matchedAs": "배수",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "이 $18$의 배수가 되는 $(a"
+    },
+    {
+      "term": "순서",
+      "matchedAs": "순서",
+      "kind": "조건",
+      "src": "stem",
+      "quote": "서 나온 수를 순서대로 $a,b,"
+    },
+    {
+      "term": "원소의개수",
+      "matchedAs": "n(A)",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "서 뽑히므로 $n(A)=3^4=81$"
+    },
+    {
+      "term": "포함배제의원리",
+      "matchedAs": "포함배제",
+      "kind": "방법",
+      "src": "solution",
+      "quote": "48$이다. 포함배제의 원리에 의해"
+    },
+    {
+      "term": "나머지",
+      "matchedAs": "나머지",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "$1$개) × 나머지 3자리 $4^"
+    },
+    {
+      "term": "순서쌍",
+      "matchedAs": "순서쌍",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "따라서 구하는 순서쌍의 개수는 $1"
+    },
+    {
+      "term": "여사건",
+      "matchedAs": "여사건",
+      "kind": "방법",
+      "src": "solution",
+      "quote": "가 되지 않는 여사건을 구한다."
+    },
+    {
+      "term": "개수",
+      "matchedAs": "개수",
+      "kind": "행위",
+      "src": "solution",
+      "quote": "하는 순서쌍의 개수는 $1296-"
+    },
+    {
+      "term": "논리합",
+      "matchedAs": "또는",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "배수($3$ 또는 $6$)가 $"
+    },
+    {
+      "term": "배수",
+      "matchedAs": "배수",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "s 3^2$의 배수가 되지 않는"
+    },
+    {
+      "term": "사건",
+      "matchedAs": "사건",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "되지 않는 여사건을 구한다."
+    },
+    {
+      "term": "순서",
+      "matchedAs": "순서",
+      "kind": "조건",
+      "src": "solution",
+      "quote": "따라서 구하는 순서쌍의 개수는 $"
+    },
+    {
+      "term": "양화",
+      "matchedAs": "모든",
+      "kind": "조건",
+      "src": "solution",
+      "quote": "$4$번 뽑는 모든 경우의 수는"
+    },
+    {
+      "term": "자릿수",
+      "matchedAs": "자리",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "- $1$개: 자리 선택 $4$가"
+    },
+    {
+      "term": "조합",
+      "matchedAs": "선택",
+      "kind": "방법",
+      "src": "solution",
+      "quote": "1$개: 자리 선택 $4$가지 ×"
+    },
+    {
+      "term": "포함관계",
+      "matchedAs": "포함",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "48$이다. 포함배제의 원리에"
+    },
+    {
+      "term": "홀수",
+      "matchedAs": "홀수",
+      "kind": "대상",
+      "src": "solution",
+      "quote": ": 4개 모두 홀수 ${1,3,5"
+    }
+  ],
+  "figure": {
+    "cueWords": [],
+    "hasPlan": false,
+    "problemPlanRef": null,
+    "hasImage": false,
+    "sourcePlan": {
+      "exempt": "NONE"
+    },
+    "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
+  },
+  "sourceExamHint": null,
+  "guide": "JUDGMENT_GUIDE.md 를 먼저 읽는다. 후보 밖 키는 쓸 수 없다. 모든 이유 문장에는 이 문항의 숫자·식을 넣는다."
+}

@@ -1,0 +1,58 @@
+{
+  "qid": 5,
+  "itemFingerprint": "9d2f04ae5023af71",
+  "solveSteps": [
+    "전체 공은 $4+3+2=9$개이므로 2개의 공을 꺼내는 전체 경우의 수는 ${}*{9}\\mathrm{C}*{2}=36$이다. (11)",
+    "여사건은 같은 색의 공 2개를 꺼내는 경우이므로\n\n$${}*{4}\\mathrm{C}*{2}+{}*{3}\\mathrm{C}*{2}+{}*{2}\\mathrm{C}*{2} = 6+3+1 = 10$$\n\n이다.",
+    "따라서 서로 다른 색의 공을 꺼낼 확률은\n\n$$1 - \\frac{10}{36} = \\frac{26}{36} = \\frac{13}{18}$$\n\n이다.",
+    "정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-03",
+  "subUnitKey": "H22-PS-03-PROBABILITY_APPLICATION",
+  "unitEvidence": "빨간 공 4개, 노란 공 3개, 파란 공 2개가 들어있",
+  "rpmRecordId": "H2-PS-RPM-044",
+  "rpmReason": "Q5(11): 확률의 활용 단원의 RPM H2-PS-RPM-044 유형에 해당한다.",
+  "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+  "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+  "typeReason": "Q5(11): 확률의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q5(11): 확률의 활용 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "꺼낼 때, 서로 다른 색의 공을 꺼낼 확률은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "전체 공은 $4+3+2=9$개이므로 2개의 공",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q5(11): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

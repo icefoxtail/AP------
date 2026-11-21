@@ -1,0 +1,59 @@
+{
+  "qid": 20,
+  "itemFingerprint": "896a7ff98864ee9c",
+  "solveSteps": [
+    "전체 함수의 개수는 $4^4=256$이다. (237)",
+    "합이 $6$ 이하인 여사건을 세기 위해 각 함숫값에서 $1$을 뺀 증가분 $0,\\ 1,\\ 2,\\ 5$의 합이 $2$ 이하인 경우를 센다.",
+    "증가분 합이 $0$인 경우 $1$가지, $1$인 경우 $4$가지, $2$인 경우는 $(1,\\ 1,\\ 0,\\ 0)$ 형태 ${}*{4}\\mathrm{C}*{2}=6$가지와 $(2,\\ 0,\\ 0,\\ 0)$ 형태 $4$가지로 총 $10$가지이다.",
+    "따라서 제외할 경우는 $1+4+10=15$가지이므로 구하는 함수의 개수는 $256-15=241$이다.",
+    "정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "집합 $X={1,\\ 2,\\ 3,\\ 6}$에 대하여 $f",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q20(237): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q20(237): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(237): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "만족시키는 함수 $f:X\\to X$의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "전체 함수의 개수는 $4^4=256$이다. 합",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q20(237): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "qid": 20,
+  "itemFingerprint": "da0dc020d5ac6c19",
+  "solveSteps": [
+    "짝수인 변수를 선택하는 방법은 $4$가지이다.",
+    "그 변수를 $2y$ ($y\\ge 1$), 나머지 세 홀수 변수를 $2x_1+1,\\ 2x_2+1,\\ 2x_3+1$ ($x_i\\ge 0$)이라 하면\n\n$$2(x_1+x_2+x_3+y)+3 = 15 \\implies x_1+x_2+x_3+y = 6$$\n\n$y' = y-1 \\ge 0$으로 치환하면 $x_1+x_2+x_3+y' = 5$이므로 해의 개수는 ${}*{4}\\mathrm{H}*{5} = {}*{8}\\mathrm{C}*{5} = {}*{8}\\mathrm{C}*{3} = 56$개이다.",
+    "따라서 구하는 순서쌍의 개수는 $4 \\times 56 = 224$이다.",
+    "정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-PS-01",
+  "subUnitKey": "H15-PS-01-COMBINATION",
+  "unitEvidence": "방정식 $a+b+c+d=15$를 만족시키는 자연수 $a",
+  "rpmRecordId": "H2-PS-RPM-003",
+  "rpmReason": "Q20(15): 조합 단원의 RPM H2-PS-RPM-003 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+  "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+  "typeReason": "Q20(15): 조합 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(15): 조합 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "는 홀수, $1$개는 짝수인 순서쌍의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "짝수인 변수를 선택하는 방법은 $4$가지이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q20(15): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

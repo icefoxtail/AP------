@@ -1,0 +1,59 @@
+{
+  "qid": 5,
+  "itemFingerprint": "3534542d1c1f2e70",
+  "solveSteps": [
+    "짝수는 $2$뿐이므로 $2$끼리 이웃하지 않는 경우를 구한다. (192)",
+    "전체 경우의 수는 $4^4=256$이다.",
+    "$2$끼리 이웃하는 경우는 다음과 같다.",
+    "① $2$가 $4$번 나오는 경우: $1$가지 ② $2$가 $3$번 나오는 경우: $4\\times 3=12$가지 ③ $2$가 $2$번 이웃해 나오는 경우: 이웃 위치 $3$곳에 나머지 두 자리 $3^2$을 곱한 $3\\times 9=27$가지 따라서 구하는 경우의 수는 $256-(1+12+27)=256-40=216$이다.",
+    "정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "$4$개의 숫자 $1,\\ 2,\\ 3,\\ 5$에서 중복을",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q5(192): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q5(192): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q5(192): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "수끼리 이웃하지 않도록 나열하는 경우의 수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "짝수는 $2$뿐이므로 $2$끼리 이웃하지 않는",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q5(192): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

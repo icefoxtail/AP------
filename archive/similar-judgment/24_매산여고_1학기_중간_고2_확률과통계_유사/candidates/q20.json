@@ -1,0 +1,1046 @@
+{
+  "qid": 20,
+  "questionType": "객관식",
+  "course": [
+    "PROBABILITY_STATISTICS"
+  ],
+  "curriculum": "2015",
+  "problem": {
+    "content": "방정식 $a+b+c+d=15$를 만족시키는 자연수 $a,\\ b,\\ c,\\ d$의 순서쌍 $(a,\\ b,\\ c,\\ d)$ 중에서 $a,\\ b,\\ c,\\ d$ 중 $3$개는 홀수, $1$개는 짝수인 순서쌍의 개수는?",
+    "choices": [
+      "$140$",
+      "$168$",
+      "$196$",
+      "$210$",
+      "$224$"
+    ],
+    "points": 4.5
+  },
+  "reference": {
+    "answer": "⑤",
+    "solution": "짝수인 변수를 선택하는 방법은 $4$가지이다. 그 변수를 $2y$ ($y\\ge 1$), 나머지 세 홀수 변수를 $2x_1+1,\\ 2x_2+1,\\ 2x_3+1$ ($x_i\\ge 0$)이라 하면\n\n$$2(x_1+x_2+x_3+y)+3 = 15 \\implies x_1+x_2+x_3+y = 6$$\n\n$y' = y-1 \\ge 0$으로 치환하면 $x_1+x_2+x_3+y' = 5$이므로 해의 개수는 ${}*{4}\\mathrm{H}*{5} = {}*{8}\\mathrm{C}*{5} = {}*{8}\\mathrm{C}*{3} = 56$개이다.\n\n따라서 구하는 순서쌍의 개수는 $4 \\times 56 = 224$이다. 정답은 ⑤이다.",
+    "sourcePrimaryMethod": "짝수 위치 4가지에 2y(y>=1)와 세 홀수 2x_i+1을 대입해 x1+x2+x3+y'=5의 해 4H5=56을 곱해 224 산출",
+    "sourceDecisiveStep": "4 * 4H5 = 4 * 56 = 224"
+  },
+  "source": {
+    "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
+    "standardUnitKey": "H15-PS-01",
+    "subUnitKey": "H15-PS-01-COMBINATION",
+    "rpmPath": {
+      "majorUnit": "경우의 수",
+      "midUnit": "순열과 조합",
+      "l3": "중복조합",
+      "l4": "정수해 개수"
+    },
+    "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+    "difficultyBucket": 3,
+    "newKeyProposal": null,
+    "item4slot": {
+      "given": [
+        "방정식",
+        "자연수"
+      ],
+      "goal": [
+        "순서쌍",
+        "개수"
+      ],
+      "method": [
+        "중복조합",
+        "곱의법칙"
+      ],
+      "condition": [
+        "홀수",
+        "짝수"
+      ]
+    },
+    "boundary": "NONE"
+  },
+  "units": [
+    {
+      "standardUnitKey": "H15-PS-01",
+      "label": "순열과 조합",
+      "order": 1,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-PS-01-COMBINATION",
+          "label": "조합"
+        },
+        {
+          "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+          "label": "경우의 수의 활용"
+        },
+        {
+          "subUnitKey": "H15-PS-01-PERMUTATION",
+          "label": "순열"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-PS-RPM-001",
+          "path": "경우의 수 > 순열과 조합 > 순열 > 일렬 배열",
+          "subUnitKey": "H15-PS-01-PERMUTATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-002",
+          "path": "경우의 수 > 순열과 조합 > 순열 > 중복·원순열",
+          "subUnitKey": "H15-PS-01-PERMUTATION",
+          "mappingStatus": "FAMILY_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-003",
+          "path": "경우의 수 > 순열과 조합 > 조합 > 선택",
+          "subUnitKey": "H15-PS-01-COMBINATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-004",
+          "path": "경우의 수 > 순열과 조합 > 조합 > 분할·분배",
+          "subUnitKey": "H15-PS-01-COMBINATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-005",
+          "path": "경우의 수 > 순열과 조합 > 중복조합 > 중복을 허용한 선택",
+          "subUnitKey": "H15-PS-01-COMBINATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-006",
+          "path": "경우의 수 > 순열과 조합 > 중복조합 > 정수해 개수",
+          "subUnitKey": "H15-PS-01-COMBINATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+          "label": "순열",
+          "templates": [
+            {
+              "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+              "label": "일반 순열·조건 배열"
+            },
+            {
+              "templateKey": "TPL_CIRCULAR_PERMUTATION",
+              "label": "원순열"
+            },
+            {
+              "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+              "label": "같은 것이 있는 순열"
+            },
+            {
+              "templateKey": "TPL_COUNTING_ARRANGEMENT_PATH",
+              "label": "격자 경로"
+            },
+            {
+              "templateKey": "TPL_COUNTING_ARRANGEMENT_ROTATION",
+              "label": "회전 중복"
+            },
+            {
+              "templateKey": "TPL_H1_ARRANGEMENT_LEXICOGRAPHIC_RANK",
+              "label": "사전식 순열 순위·역순위"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "label": "조합·중복조합",
+          "templates": [
+            {
+              "templateKey": "TPL_COMBINATION_SELECTION",
+              "label": "조합과 선택"
+            },
+            {
+              "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+              "label": "중복조합·정수해·동일물 분배"
+            },
+            {
+              "templateKey": "TPL_H1_BINOMIAL_IDENTITY_CHECK",
+              "label": "조합 항등식 증명·판정"
+            },
+            {
+              "templateKey": "TPL_H1_BINOMIAL_PARAMETER_RELATION",
+              "label": "순열·조합 관계로 매개변수 결정"
+            },
+            {
+              "templateKey": "TPL_H1_SELECTION_BOX_IDENTITY",
+              "label": "상자 배정에서 동일·서로 다른 대상 구분"
+            },
+            {
+              "templateKey": "TPL_H1_SELECTION_CAPACITY_DISTRIBUTION",
+              "label": "수용량 제약이 있는 대상 분배"
+            },
+            {
+              "templateKey": "TPL_H1_SELECTION_GEOMETRIC_DEGENERACY",
+              "label": "기하 점 선택 후 퇴화 경우 제외"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+          "label": "중복순열",
+          "templates": [
+            {
+              "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+              "label": "중복순열·반복 배정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_COUNTING",
+          "label": "함수의 개수",
+          "templates": [
+            {
+              "templateKey": "TPL_BASIC_FUNCTION_TYPE_COUNT",
+              "label": "함수·일대일대응·상수함수 등의 개수"
+            },
+            {
+              "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
+              "label": "조건을 만족하는 함수의 개수"
+            },
+            {
+              "templateKey": "TPL_IDENTITY_DOMAIN_COUNT",
+              "label": "항등함수가 되는 정의역의 개수"
+            },
+            {
+              "templateKey": "TPL_INJECTIVE_BIJECTION_COUNT",
+              "label": "일대일함수·일대일대응의 개수"
+            },
+            {
+              "templateKey": "TPL_MONOTONE_FUNCTION_COUNT",
+              "label": "증가·감소 조건이 있는 함수의 개수"
+            },
+            {
+              "templateKey": "TPL_SURJECTION_COUNT",
+              "label": "치역과 공역이 같은 함수의 개수"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_COUNT_VALUE_RESTRICTION_AND_ORDER",
+              "label": "함수값 제한과 순서 조건을 결합한 함수 개수"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+          "label": "확률의 기본 성질과 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+              "label": "확률의 뜻·기본 계산"
+            },
+            {
+              "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+              "label": "사건의 관계·덧셈정리·여사건"
+            },
+            {
+              "templateKey": "TPL_PROBABILITY_PROPERTIES_APPLICATION_DEFINITION",
+              "label": "확률 정의"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+          "label": "독립시행의 확률",
+          "templates": [
+            {
+              "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+              "label": "독립시행의 확률"
+            },
+            {
+              "templateKey": "TPL_INDEPENDENT_TRIAL_STATE_PARITY",
+              "label": "독립시행의 출현 횟수 홀짝 상태 분석"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_PROB_COUNTING",
+          "label": "경우의 수",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_PROB_INTEGER_PARTITION",
+          "label": "정수의 분할",
+          "templates": []
+        },
+        {
+          "problemTypeKey": "PT_PROB_PERMUTATION_COMBINATION",
+          "label": "순열과 조합",
+          "templates": []
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-PS-02",
+      "label": "이항정리",
+      "order": 2,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-PS-02-BINOMIAL_APPLICATION",
+          "label": "이항정리의 활용"
+        },
+        {
+          "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+          "label": "이항정리"
+        },
+        {
+          "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+          "label": "이항계수와 계수비교"
+        },
+        {
+          "subUnitKey": "H15-PS-02-BINOMIAL_THEOREM",
+          "label": "이항정리"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-PS-RPM-007",
+          "path": "경우의 수 > 이항정리 > 이항정리 > 전개식의 항",
+          "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-008",
+          "path": "경우의 수 > 이항정리 > 이항정리 > 특정 항의 계수",
+          "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-009",
+          "path": "경우의 수 > 이항정리 > 이항계수 > 이항계수의 성질",
+          "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-010",
+          "path": "경우의 수 > 이항정리 > 이항계수 > 조합 항등식",
+          "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_BINOMIAL_THEOREM",
+          "label": "이항정리",
+          "templates": [
+            {
+              "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+              "label": "전개식의 항·계수"
+            },
+            {
+              "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+              "label": "이항계수의 성질·활용"
+            },
+            {
+              "templateKey": "TPL_BINOMIAL_THEOREM_REMAINDER",
+              "label": "나머지"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "label": "조합·중복조합",
+          "templates": [
+            {
+              "templateKey": "TPL_COMBINATION_SELECTION",
+              "label": "조합과 선택"
+            },
+            {
+              "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+              "label": "중복조합·정수해·동일물 분배"
+            },
+            {
+              "templateKey": "TPL_H1_BINOMIAL_IDENTITY_CHECK",
+              "label": "조합 항등식 증명·판정"
+            },
+            {
+              "templateKey": "TPL_H1_BINOMIAL_PARAMETER_RELATION",
+              "label": "순열·조합 관계로 매개변수 결정"
+            },
+            {
+              "templateKey": "TPL_H1_SELECTION_BOX_IDENTITY",
+              "label": "상자 배정에서 동일·서로 다른 대상 구분"
+            },
+            {
+              "templateKey": "TPL_H1_SELECTION_CAPACITY_DISTRIBUTION",
+              "label": "수용량 제약이 있는 대상 분배"
+            },
+            {
+              "templateKey": "TPL_H1_SELECTION_GEOMETRIC_DEGENERACY",
+              "label": "기하 점 선택 후 퇴화 경우 제외"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_PROB_EXPONENT_LAWS",
+          "label": "지수법칙",
+          "templates": []
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-PS-03",
+      "label": "확률의 뜻과 활용",
+      "order": 3,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-PS-03-CONDITIONAL_PROBABILITY",
+          "label": "조건부확률"
+        },
+        {
+          "subUnitKey": "H15-PS-03-PROBABILITY_ADDITION",
+          "label": "확률의 덧셈정리"
+        },
+        {
+          "subUnitKey": "H15-PS-03-PROBABILITY_APPLICATION",
+          "label": "확률의 활용"
+        },
+        {
+          "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+          "label": "확률의 뜻과 활용"
+        },
+        {
+          "subUnitKey": "H15-PS-03-PROBABILITY_DISTRIBUTION",
+          "label": "확률분포"
+        },
+        {
+          "subUnitKey": "H15-PS-03-RANDOM_VARIABLE",
+          "label": "확률변수"
+        },
+        {
+          "subUnitKey": "H15-PS-03-STATISTICAL_ESTIMATION",
+          "label": "통계적 추정"
+        },
+        {
+          "subUnitKey": "H15-PS-03-ADDITION_THEOREM",
+          "label": "확률의 덧셈정리"
+        },
+        {
+          "subUnitKey": "H15-PS-03-BASIC_PROBABILITY",
+          "label": "확률의 뜻과 활용"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-PS-RPM-011",
+          "path": "확률 > 확률의 뜻과 활용 > 확률의 기본 > 표본공간과 사건",
+          "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-012",
+          "path": "확률 > 확률의 뜻과 활용 > 확률의 기본 > 확률 계산",
+          "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-013",
+          "path": "확률 > 확률의 뜻과 활용 > 확률의 덧셈정리 > 배반사건",
+          "subUnitKey": "H15-PS-03-PROBABILITY_ADDITION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-014",
+          "path": "확률 > 확률의 뜻과 활용 > 확률의 덧셈정리 > 여사건",
+          "subUnitKey": "H15-PS-03-PROBABILITY_ADDITION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_EVENT_INDEPENDENCE",
+          "label": "사건의 독립과 종속",
+          "templates": [
+            {
+              "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
+              "label": "독립·종속 판정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+          "label": "확률의 기본 성질과 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+              "label": "확률의 뜻·기본 계산"
+            },
+            {
+              "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+              "label": "사건의 관계·덧셈정리·여사건"
+            },
+            {
+              "templateKey": "TPL_PROBABILITY_PROPERTIES_APPLICATION_DEFINITION",
+              "label": "확률 정의"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+          "label": "독립시행의 확률",
+          "templates": [
+            {
+              "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+              "label": "독립시행의 확률"
+            },
+            {
+              "templateKey": "TPL_INDEPENDENT_TRIAL_STATE_PARITY",
+              "label": "독립시행의 출현 횟수 홀짝 상태 분석"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+          "label": "조건부확률",
+          "templates": [
+            {
+              "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+              "label": "조건부확률의 직접 계산"
+            },
+            {
+              "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+              "label": "분기·역조건 조건부확률"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-PS-04",
+      "label": "조건부확률",
+      "order": 4,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-PS-04-CONDITIONAL_BASIC",
+          "label": "조건부확률"
+        },
+        {
+          "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+          "label": "조건부확률"
+        },
+        {
+          "subUnitKey": "H15-PS-04-INDEPENDENCE",
+          "label": "독립사건과 곱셈정리"
+        },
+        {
+          "subUnitKey": "H15-PS-04-PROBABILITY_DISTRIBUTION",
+          "label": "확률분포"
+        },
+        {
+          "subUnitKey": "H15-PS-04-RANDOM_VARIABLE",
+          "label": "확률변수"
+        },
+        {
+          "subUnitKey": "H15-PS-04-STATISTICAL_ESTIMATION",
+          "label": "통계적 추정"
+        },
+        {
+          "subUnitKey": "H15-PS-04-TOTAL_BAYES",
+          "label": "전확률과 베이즈"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-PS-RPM-015",
+          "path": "확률 > 조건부확률 > 조건부확률 > 조건부확률 계산",
+          "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-016",
+          "path": "확률 > 조건부확률 > 사건의 독립 > 독립 판정",
+          "subUnitKey": "H15-PS-04-INDEPENDENCE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-017",
+          "path": "확률 > 조건부확률 > 사건의 독립 > 독립사건의 확률",
+          "subUnitKey": "H15-PS-04-INDEPENDENCE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-018",
+          "path": "확률 > 조건부확률 > 독립시행 > 이항형 시행",
+          "subUnitKey": "H15-PS-04-CONDITIONAL_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-019",
+          "path": "확률 > 조건부확률 > 독립시행 > 반복 시행의 확률",
+          "subUnitKey": "H15-PS-04-CONDITIONAL_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-066",
+          "path": "확률 > 조건부확률 > 조건부확률 > 조건부확률 계산",
+          "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+          "label": "조건부확률",
+          "templates": [
+            {
+              "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+              "label": "조건부확률의 직접 계산"
+            },
+            {
+              "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+              "label": "분기·역조건 조건부확률"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_EVENT_INDEPENDENCE",
+          "label": "사건의 독립과 종속",
+          "templates": [
+            {
+              "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
+              "label": "독립·종속 판정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+          "label": "독립시행의 확률",
+          "templates": [
+            {
+              "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+              "label": "독립시행의 확률"
+            },
+            {
+              "templateKey": "TPL_INDEPENDENT_TRIAL_STATE_PARITY",
+              "label": "독립시행의 출현 횟수 홀짝 상태 분석"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-PS-05",
+      "label": "확률분포",
+      "order": 5,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+          "label": "이항분포와 정규분포"
+        },
+        {
+          "subUnitKey": "H15-PS-05-CONDITIONAL_PROBABILITY",
+          "label": "조건부확률"
+        },
+        {
+          "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+          "label": "확률분포"
+        },
+        {
+          "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+          "label": "확률변수와 기댓값"
+        },
+        {
+          "subUnitKey": "H15-PS-05-STATISTICAL_ESTIMATION",
+          "label": "통계적 추정"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-PS-RPM-020",
+          "path": "통계 > 확률분포 > 확률변수와 확률분포 > 이산확률변수",
+          "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-021",
+          "path": "통계 > 확률분포 > 확률변수와 확률분포 > 확률질량함수",
+          "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-065",
+          "path": "통계 > 확률분포 > 확률변수와 확률분포 > 확률밀도함수",
+          "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-022",
+          "path": "통계 > 확률분포 > 기댓값과 분산 > 기댓값",
+          "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-023",
+          "path": "통계 > 확률분포 > 기댓값과 분산 > 분산·표준편차",
+          "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-024",
+          "path": "통계 > 확률분포 > 이항분포 > 이항분포의 확률",
+          "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-025",
+          "path": "통계 > 확률분포 > 이항분포 > 평균·분산",
+          "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-026",
+          "path": "통계 > 확률분포 > 정규분포 > 표준정규분포",
+          "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-027",
+          "path": "통계 > 확률분포 > 정규분포 > 정규분포 확률",
+          "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-067",
+          "path": "통계 > 확률분포 > 정규분포 > 정규분포 확률",
+          "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+          "label": "확률변수와 확률분포",
+          "templates": [
+            {
+              "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+              "label": "이산확률변수와 확률분포"
+            },
+            {
+              "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+              "label": "연속확률변수와 확률밀도함수"
+            },
+            {
+              "templateKey": "TPL_RANDOM_VARIABLE_DISTRIBUTION_CLASSIFICATION",
+              "label": "이산과 연속"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+          "label": "이항분포",
+          "templates": [
+            {
+              "templateKey": "TPL_BINOMIAL_PROBABILITY",
+              "label": "이항분포의 확률"
+            },
+            {
+              "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+              "label": "이항분포의 평균·분산·모수"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+          "label": "기댓값과 표준편차",
+          "templates": [
+            {
+              "templateKey": "TPL_EXPECTATION_TRANSFORM",
+              "label": "기댓값과 확률변수의 변환"
+            },
+            {
+              "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+              "label": "분산·표준편차와 변환"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+          "label": "정규분포",
+          "templates": [
+            {
+              "templateKey": "TPL_NORMAL_STANDARDIZATION",
+              "label": "정규분포의 표준화"
+            },
+            {
+              "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+              "label": "정규분포의 확률·활용"
+            },
+            {
+              "templateKey": "TPL_BINOMIAL_NORMAL_RELATION",
+              "label": "이항분포와 정규분포의 관계"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+          "label": "독립시행의 확률",
+          "templates": [
+            {
+              "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+              "label": "독립시행의 확률"
+            },
+            {
+              "templateKey": "TPL_INDEPENDENT_TRIAL_STATE_PARITY",
+              "label": "독립시행의 출현 횟수 홀짝 상태 분석"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+          "label": "표본평균과 모평균의 관계",
+          "templates": [
+            {
+              "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+              "label": "표본평균의 분포"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+          "label": "조건부확률",
+          "templates": [
+            {
+              "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+              "label": "조건부확률의 직접 계산"
+            },
+            {
+              "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+              "label": "분기·역조건 조건부확률"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-PS-06",
+      "label": "통계적 추정",
+      "order": 6,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-PS-06-CONDITIONAL_PROBABILITY",
+          "label": "조건부확률"
+        },
+        {
+          "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+          "label": "신뢰구간"
+        },
+        {
+          "subUnitKey": "H15-PS-06-ESTIMATION_APPLICATION",
+          "label": "추정의 활용"
+        },
+        {
+          "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+          "label": "통계적 추정"
+        },
+        {
+          "subUnitKey": "H15-PS-06-PROBABILITY_DISTRIBUTION",
+          "label": "확률분포"
+        },
+        {
+          "subUnitKey": "H15-PS-06-RANDOM_VARIABLE",
+          "label": "확률변수"
+        },
+        {
+          "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+          "label": "통계적 추정"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-PS-RPM-028",
+          "path": "통계 > 통계적 추정 > 모집단과 표본 > 표본평균",
+          "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-029",
+          "path": "통계 > 통계적 추정 > 모집단과 표본 > 표본분포",
+          "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-030",
+          "path": "통계 > 통계적 추정 > 모평균 추정 > 신뢰구간",
+          "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-PS-RPM-031",
+          "path": "통계 > 통계적 추정 > 모평균 추정 > 표본크기",
+          "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+          "label": "표본평균과 모평균의 관계",
+          "templates": [
+            {
+              "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+              "label": "표본평균의 분포"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+          "label": "통계적 추정",
+          "templates": [
+            {
+              "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+              "label": "모평균의 추정"
+            },
+            {
+              "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+              "label": "신뢰구간·표본크기"
+            },
+            {
+              "templateKey": "TPL_CENSUS_SAMPLE_SURVEY_JUDGMENT",
+              "label": "전수조사와 표본조사 판정"
+            },
+            {
+              "templateKey": "TPL_STATISTICAL_ESTIMATION_PROP_CI",
+              "label": "모비율 신뢰구간"
+            },
+            {
+              "templateKey": "TPL_STATISTICAL_ESTIMATION_SAMPLE_MEAN",
+              "label": "표본평균 분포"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "termCandidates": [
+    {
+      "term": "방정식",
+      "matchedAs": "방정식",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "방정식 $a+b+c+"
+    },
+    {
+      "term": "순서쌍",
+      "matchedAs": "순서쌍",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "c,\\ d$의 순서쌍 $(a,\\ b"
+    },
+    {
+      "term": "자연수",
+      "matchedAs": "자연수",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "를 만족시키는 자연수 $a,\\ b,"
+    },
+    {
+      "term": "개수",
+      "matchedAs": "개수",
+      "kind": "행위",
+      "src": "stem",
+      "quote": "수인 순서쌍의 개수는?"
+    },
+    {
+      "term": "순서",
+      "matchedAs": "순서",
+      "kind": "조건",
+      "src": "stem",
+      "quote": "c,\\ d$의 순서쌍 $(a,\\"
+    },
+    {
+      "term": "짝수",
+      "matchedAs": "짝수",
+      "kind": "대상",
+      "src": "stem",
+      "quote": ", $1$개는 짝수인 순서쌍의 개"
+    },
+    {
+      "term": "홀수",
+      "matchedAs": "홀수",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "중 $3$개는 홀수, $1$개는"
+    },
+    {
+      "term": "나머지",
+      "matchedAs": "나머지",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "ge 1$), 나머지 세 홀수 변수"
+    },
+    {
+      "term": "순서쌍",
+      "matchedAs": "순서쌍",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "따라서 구하는 순서쌍의 개수는 $4"
+    },
+    {
+      "term": "개수",
+      "matchedAs": "개수",
+      "kind": "행위",
+      "src": "solution",
+      "quote": "$이므로 해의 개수는 ${}*{4"
+    },
+    {
+      "term": "변수",
+      "matchedAs": "변수",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "짝수인 변수를 선택하는 방"
+    },
+    {
+      "term": "순서",
+      "matchedAs": "순서",
+      "kind": "조건",
+      "src": "solution",
+      "quote": "따라서 구하는 순서쌍의 개수는 $"
+    },
+    {
+      "term": "조합",
+      "matchedAs": "선택",
+      "kind": "방법",
+      "src": "solution",
+      "quote": "짝수인 변수를 선택하는 방법은 $"
+    },
+    {
+      "term": "짝수",
+      "matchedAs": "짝수",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "짝수인 변수를 선택"
+    },
+    {
+      "term": "치환",
+      "matchedAs": "치환",
+      "kind": "방법",
+      "src": "solution",
+      "quote": "ge 0$으로 치환하면 $x_1+"
+    },
+    {
+      "term": "홀수",
+      "matchedAs": "홀수",
+      "kind": "대상",
+      "src": "solution",
+      "quote": ", 나머지 세 홀수 변수를 $2x"
+    }
+  ],
+  "figure": {
+    "cueWords": [],
+    "hasPlan": false,
+    "problemPlanRef": null,
+    "hasImage": false,
+    "sourcePlan": {
+      "exempt": "NONE"
+    },
+    "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
+  },
+  "sourceExamHint": {
+    "exam": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_확률과통계.js",
+    "sourceQid": 20,
+    "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+    "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION"
+  },
+  "guide": "JUDGMENT_GUIDE.md 를 먼저 읽는다. 후보 밖 키는 쓸 수 없다. 모든 이유 문장에는 이 문항의 숫자·식을 넣는다."
+}

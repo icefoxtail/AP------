@@ -1,0 +1,59 @@
+{
+  "qid": 18,
+  "itemFingerprint": "9edd9dace573398e",
+  "solveSteps": [
+    "다섯 수의 총합은 $4+5+6+7+8=30$이므로 전체 배치 $3^5=243$가지에서 한 바구니의 합이 $26$ 이상이 되는 경우를 뺀다.",
+    "특정 바구니의 합이 $26$ 이상이 되려면 나머지 구슬의 합이 $4$ 이하여야 하므로 모든 구슬이 그 바구니에 들어가거나($1$가지), $4$만 다른 두 바구니 중 하나에 들어가야 한다($2$가지).",
+    "바구니가 $3$개이고 동시에 두 바구니가 $26$ 이상일 수 없으므로 제외할 경우는 $3\\times 3=9$가지이다.",
+    "따라서 $243-9=234$이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "$4,\\ 5,\\ 6,\\ 7,\\ 8$의 숫자가 적힌 $5",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q18(26): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q18(26): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(26): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "되는 경우가 없도록 구슬을 넣는 방법의 수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "다섯 수의 총합은 $4+5+6+7+8=30$이",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q18(26): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

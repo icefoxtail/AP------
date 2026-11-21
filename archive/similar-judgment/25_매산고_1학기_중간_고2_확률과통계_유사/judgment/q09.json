@@ -1,0 +1,58 @@
+{
+  "qid": 9,
+  "itemFingerprint": "292c2fc44c688c72",
+  "solveSteps": [
+    "지수법칙과 합차공식을 이용하면 식을 하나로 묶을 수 있다.",
+    "$$\\left(x+\\frac{1}{x}\\right)^5\\left(x-\\frac{1}{x}\\right)^5 = \\left(x^2-\\frac{1}{x^2}\\right)^5$$\n\n이 전개식의 일반항은\n\n$${}*{5}\\mathrm{C}*{r}(x^2)^{5-r}\\left(-\\frac{1}{x^2}\\right)^r = {}*{5}\\mathrm{C}*{r}(-1)^r x^{10-4r}$$\n\n이다.",
+    "$x^2$항이 되려면 $10-4r=2$에서 $r=2$이므로 $x^2$의 계수는 ${}*{5}\\mathrm{C}*{2}(-1)^2 = 10$이다.",
+    "정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-02",
+  "subUnitKey": "H22-PS-02-CORE",
+  "unitEvidence": "$\\left(x+\\dfrac{1}{x}\\right)^5",
+  "rpmRecordId": "H2-PS-RPM-038",
+  "rpmReason": "Q9(10): 이항정리 핵심 개념 단원의 RPM H2-PS-RPM-038 유형에 해당한다.",
+  "problemTypeKey": "PT_BINOMIAL_THEOREM",
+  "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+  "typeReason": "Q9(10): 이항정리 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q9(10): 이항정리 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "ht)^5$의 전개식에서 $x^2$의 계수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "지수법칙과 합차공식을 이용하면 식을 하나로 묶",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q9(10): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

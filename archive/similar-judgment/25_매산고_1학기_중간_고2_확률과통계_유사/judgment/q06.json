@@ -1,0 +1,62 @@
+{
+  "qid": 6,
+  "itemFingerprint": "ffba3ef437fdbfea",
+  "solveSteps": [
+    "1부터 5까지의 숫자 중 소수는 $2, 3, 5$이다. (144)",
+    "마지막 자리의 숫자에 따라 경우를 나눈다.",
+    "1.",
+    "마지막 자리가 $5$인 경우: 앞의 세 자리에는 $5$를 제외한 $1, 2, 3, 4$ 중에서 중복을 허락하여 넣으므로 $4^3=64$가지이다.",
+    "2.",
+    "마지막 자리가 $2$ 또는 $3$인 경우 ($2$가지): 앞의 세 자리 중 $5$가 들어갈 1자리를 정하는 경우는 $3$가지이고, 나머지 두 자리에는 $1, 2, 3, 4$가 들어가므로 $2\\times 3\\times 4^2 = 96$가지이다.",
+    "따라서 구하는 비밀번호의 개수는 $64+96=160$이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "5개의 숫자 $1, 2, 3, 4, 5$ 중에서 중복을",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q6(144): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q6(144): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q6(144): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "고, 마지막 자리가 소수인 비밀번호의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "1부터 5까지의 숫자 중 소수는 $2, 3,",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q6(144): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

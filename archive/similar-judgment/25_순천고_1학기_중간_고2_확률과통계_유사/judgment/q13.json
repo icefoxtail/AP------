@@ -1,0 +1,58 @@
+{
+  "qid": 13,
+  "itemFingerprint": "92e147154587e02f",
+  "solveSteps": [
+    "첫 자리에는 $0$이 올 수 없으므로 전체 네 자리 자연수의 개수는 $4\\times 5^3=500$이다. (460)",
+    "둘째·셋째 자리가 $00$인 경우는 $4\\times 5=20$가지, 셋째·넷째 자리가 $00$인 경우는 $4\\times 5=20$가지, 둘째~넷째 자리가 모두 $0$인 경우는 $4$가지이다.",
+    "따라서 제외할 개수는 $20+20-4=36$이고, 전송 가능한 수의 개수는 $500-36=464$이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "중복을 허락하여 $0,\\ 1,\\ 2,\\ 3,\\ 4$의 ",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q13(460): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q13(460): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q13(460): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "이 불가능할 때, 전송이 가능한 수의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "첫 자리에는 $0$이 올 수 없으므로 전체 네",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q13(460): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

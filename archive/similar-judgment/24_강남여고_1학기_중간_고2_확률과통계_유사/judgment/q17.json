@@ -1,0 +1,60 @@
+{
+  "qid": 17,
+  "itemFingerprint": "3a53041806b38a1f",
+  "solveSteps": [
+    "$a+b+c=12$를 만족시키는 음이 아닌 정수해의 전체 개수는 ${}*{3}\\mathrm{H}*{12} = {}*{14}\\mathrm{C}*{2} = 91$이다.",
+    "여사건은 세 점 $(1,\\ a),\\ (2,\\ b),\\ (3,\\ c)$가 한 직선 위에 있는 경우이므로 $a+c = 2b$가 성립해야 한다.",
+    "이를 $a+b+c=12$에 대입하면 $3b = 12$, 즉 $b = 4$이고 $a+c = 8$이다.",
+    "음이 아닌 정수 쌍 $(a,\\ c)$는 $(0,8),\\ (1,7),\\ \\dots,\\ (8,0)$의 $9$개이다.",
+    "따라서 구하는 순서쌍의 개수는 $91 - 9 = 82$이다.",
+    "정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-PS-01",
+  "subUnitKey": "H15-PS-01-COMBINATION",
+  "unitEvidence": "다음 조건을 만족시키는 음이 아닌 정수 $a,\\ b,\\",
+  "rpmRecordId": "H2-PS-RPM-003",
+  "rpmReason": "Q17(12): 조합 단원의 RPM H2-PS-RPM-003 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+  "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+  "typeReason": "Q17(12): 조합 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(12): 조합 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "(3,\\ c)$가 한 직선 위에 있지 않다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$a+b+c=12$를 만족시키는 음이 아닌 정",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q17(12): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

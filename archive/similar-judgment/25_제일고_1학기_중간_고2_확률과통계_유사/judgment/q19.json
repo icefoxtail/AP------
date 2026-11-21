@@ -1,0 +1,58 @@
+{
+  "qid": 19,
+  "itemFingerprint": "a9594832ec13d5a1",
+  "solveSteps": [
+    "$D,\\ C$가 받은 개수를 $d,\\ c$라 하면 $c=2d,\\ d\\ge 1$이고 총합 $6$이므로 $(d,\\ c)=(1,\\ 2)$ 또는 $(2,\\ 4)$이다. (28)",
+    "$d=2,\\ c=4$이면 $A+B=0$이 되어 (가)에 모순이므로 $d=1,\\ c=2$이고 $A+B=3$이다.",
+    "① $D$가 볼펜 $1$개: $C$가 볼펜 $p$개($0\\le p\\le 2$), 연필 $2-p$개를 받으면 $A,\\ B$는 볼펜 $2-p$개, 연필 $p+1$개를 나누어 받으므로 $\\sum_{p=0}^{2}(3-p)(p+2)=6+6+4=16$가지 ② $D$가 연필 $1$개: $C$가 볼펜 $p$개($0\\le p\\le 2$), 연필 $2-p$개를 받으면 $A,\\ B$는 볼펜 $3-p$개, 연필 $p$개를 나누어 받으므로 $\\sum_{p=0}^{2}(4-p)(p+1)=4+6+6=16$가지 따라서 구하는 경우의 수는 $16+16=32$이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "볼펜 $3$개와 연필 $3$개를 $4$명의 학생 $A,",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q19(28): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+  "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+  "typeReason": "Q19(28): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 5,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q19(28): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 5 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "는 볼펜 또는 연필을 적어도 $1$개 받는다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$D,\\ C$가 받은 개수를 $d,\\ c$라",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q19(28): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

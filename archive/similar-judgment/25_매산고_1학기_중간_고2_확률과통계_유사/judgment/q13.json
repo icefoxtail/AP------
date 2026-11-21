@@ -1,0 +1,59 @@
+{
+  "qid": 13,
+  "itemFingerprint": "f10543fd852d8519",
+  "solveSteps": [
+    "4개의 변수 $a, b, c, d$ 중 $4$로 나눈 나머지가 $(2, 1, 1, 0)$인 역할에 배정하는 경우의 수는 $\\frac{4!}{2!}=12$가지이다.",
+    "각 배정된 수를 각각 $4x+2$, $4y+1$, $4z+1$, $4w+4$ ($x, y, z, w$는 음이 아닌 정수, 네 번째 수는 $4$의 배수인 자연수이므로 $4w+4$)로 놓으면\n\n$$(4x+2)+(4y+1)+(4z+1)+(4w+4)=28 \\implies 4(x+y+z+w)+8=28 \\implies x+y+z+w=5$$\n\n이다.",
+    "음이 아닌 정수해 $(x,y,z,w)$의 개수는 ${}*{4}\\mathrm{H}*{5}={}*{8}\\mathrm{C}*{3}=56$이다.",
+    "따라서 구하는 순서쌍의 개수는 $12\\times 56=672$이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "다음 조건을 만족시키는 $a,b,c,d$의 모든 순서쌍",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q13(28): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+  "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+  "typeReason": "Q13(28): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q13(28): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$1$이고, 1개는 $4$로 나누어 떨어진다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "4개의 변수 $a, b, c, d$ 중 $4$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q13(28): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

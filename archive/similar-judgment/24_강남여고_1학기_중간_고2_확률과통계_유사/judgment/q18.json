@@ -1,0 +1,60 @@
+{
+  "qid": 18,
+  "itemFingerprint": "985930b067f2abc8",
+  "solveSteps": [
+    "$1$학년 $2$명을 한 묶음으로 보고 이 묶음을 원탁의 기준 자리에 고정한다.",
+    "묶음 내부에서 $1$학년 $2$명이 자리를 바꾸는 경우는 $2! = 2$가지이다.",
+    "$1$학년과 $3$학년이 이웃하지 않으려면 $1$학년 묶음의 양옆 두 자리에 모두 $2$학년이 앉아야 하므로, $2$학년 $4$명 중 $2$명을 뽑아 양옆에 앉히는 경우의 수는 ${}*{4}\\mathrm{P}*{2} = 4 \\times 3 = 12$가지이다.",
+    "남은 $4$개의 자리에 나머지 $2$학년 $2$명과 $3$학년 $2$명을 배열하는 경우의 수는 $4! = 24$가지이다.",
+    "따라서 구하는 경우의 수는 $2 \\times 12 \\times 24 = 576$이다.",
+    "정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-PS-01",
+  "subUnitKey": "H15-PS-01-PERMUTATION",
+  "unitEvidence": "$1$학년 $2$명, $2$학년 $4$명, $3$학년 ",
+  "rpmRecordId": "H2-PS-RPM-001",
+  "rpmReason": "Q18(576): 순열 단원의 RPM H2-PS-RPM-001 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q18(576): 순열 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(576): 순열 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "회전하여 일치하는 것은 같은 것으로 본다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$1$학년 $2$명을 한 묶음으로 보고 이 묶",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q18(576): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

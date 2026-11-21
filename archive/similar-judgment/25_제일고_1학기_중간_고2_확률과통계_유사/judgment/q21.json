@@ -1,0 +1,56 @@
+{
+  "qid": 21,
+  "itemFingerprint": "2a6d208358c391a7",
+  "solveSteps": [
+    "주어진 식은 첫째항이 $1+3x$, 공비가 $1+3x$인 등비수열의 합이므로 $$S = \\frac{(1+3x){(1+3x)^8-1}}{(1+3x)-1} = \\frac{(1+3x)^9-(1+3x)}{3x}$$ 따라서 $x^3$의 계수는 분자의 $x^4$ 계수를 $3$으로 나눈 값과 같다.",
+    "$$\\frac{{}*{9}\\mathrm{C}*{4}\\cdot 3^4}{3} = 126\\times 27 = 3402$$."
+  ],
+  "solvedAnswer": "3402",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-02",
+  "subUnitKey": "H22-PS-02-CORE",
+  "unitEvidence": "[서술형 1] $(1+3x)+(1+3x)^2+(1+3x",
+  "rpmRecordId": "H2-PS-RPM-038",
+  "rpmReason": "Q21(126): 이항정리 핵심 개념 단원의 RPM H2-PS-RPM-038 유형에 해당한다.",
+  "problemTypeKey": "PT_BINOMIAL_THEOREM",
+  "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+  "typeReason": "Q21(126): 이항정리 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q21(126): 이항정리 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "계수를 구하는 과정을 구체적으로 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "주어진 식은 첫째항이 $1+3x$, 공비가 $",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q21(126): 발문과 해설의 풀이 과정을 점검하여 정답 3402를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "qid": 20,
+  "itemFingerprint": "b4002a1129a9a238",
+  "solveSteps": [
+    "$x = a+c+e$, $y = b+d$라 두면 $x+y = 10$이고 $|x-y| \\le 2$이므로 $x \\in {4,\\ 5,\\ 6}$이다.",
+    "음이 아닌 정수해에서 $a+c+e=x$의 해는 ${}*{3}\\mathrm{H}*{x} = {}*{x+2}\\mathrm{C}*{2}$개, $b+d=10-x$의 해는 ${}*{2}\\mathrm{H}*{10-x} = 11-x$개이다.",
+    "- $x=4,\\ y=6$: ${}*{6}\\mathrm{C}*{2} \\times 7 = 15 \\times 7 = 105$  \n- $x=5,\\ y=5$: ${}*{7}\\mathrm{C}*{2} \\times 6 = 21 \\times 6 = 126$  \n- $x=6,\\ y=4$: ${}*{8}\\mathrm{C}*{2} \\times 5 = 28 \\times 5 = 140$\n\n따라서 전체 순서쌍의 개수는 $105 + 126 + 140 = 371$이다.",
+    "정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-PS-01",
+  "subUnitKey": "H15-PS-01-COMBINATION",
+  "unitEvidence": "다음 조건을 만족시키는 음이 아닌 정수 $a,\\ b,\\",
+  "rpmRecordId": "H2-PS-RPM-003",
+  "rpmReason": "Q20(10): 조합 단원의 RPM H2-PS-RPM-003 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+  "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+  "typeReason": "Q20(10): 조합 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(10): 조합 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$ (나) $|a-b+c-d+e| \\le 2$"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$x = a+c+e$, $y = b+d$라 두",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q20(10): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "qid": 21,
+  "itemFingerprint": "9e74c9c382dae016",
+  "solveSteps": [
+    "$a$는 $10$의 양의 약수이므로 $a\\in{1,\\ 2,\\ 5,\\ 10}$이고, $s=b+c+d+e$는 각각 $10,\\ 5,\\ 2,\\ 1$이다.",
+    "$d'=d-2c\\ge 0$으로 놓으면 $b+d'+e=s-3c$이므로 고정된 $c$마다 ${}*{s-3c+2}\\mathrm{C}*{2}$가지이다.",
+    "$$\\begin{aligned} s=10 &: {}*{12}\\mathrm{C}*{2}+{}*{9}\\mathrm{C}*{2}+{}*{6}\\mathrm{C}*{2}+{}*{3}\\mathrm{C}*{2} = 66+36+15+3 = 120 \\ s=5 &: {}*{7}\\mathrm{C}*{2}+{}*{4}\\mathrm{C}*{2} = 21+6 = 27 \\ s=2 &: {}*{4}\\mathrm{C}*{2} = 6, \\quad s=1 : {}*{3}\\mathrm{C}*{2} = 3 \\end{aligned}$$ 따라서 전체 순서쌍의 개수는 $120+27+6+3=156$이다.",
+    "정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "다음 조건을 만족시키는 음이 아닌 정수 $a,\\ b,\\",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q21(10): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+  "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+  "typeReason": "Q21(10): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q21(10): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "+c+d+e)=10$ (나) $d\\ge 2c$"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$a$는 $10$의 양의 약수이므로 $a\\in",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q21(10): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

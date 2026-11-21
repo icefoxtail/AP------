@@ -1,0 +1,62 @@
+{
+  "qid": 12,
+  "itemFingerprint": "d0cf6ef76ebfd09a",
+  "solveSteps": [
+    "네 자리 자연수이므로 $a\\ne0$이고, 집합 ${a,b,c,d}$는 원소 $0, 4, 8$을 반드시 포함해야 하므로 원소의 개수는 $3$개 또는 $4$개이다. (10)",
+    "1.",
+    "${a,b,c,d}={0,4,8}$인 경우 (숫자 3개 사용, 1개가 2번 등장):  \n   - $0$이 2번, $4, 8$이 각 1번: $a\\in{4,8}$($2$가지)이고 나머지 세 자리에 $0,0$과 남은 1수를 배열($\\frac{3!}{2!}=3$가지)하므로 $2\\times 3=6$가지이다.",
+    "- $4$ 또는 $8$이 2번 등장 ($2$가지): 전체 배열 $\\frac{4!}{2!}=12$가지 중 $a=0$인 경우 $\\frac{3!}{2!}=3$가지를 빼면 $12-3=9$가지이므로 $2\\times 9=18$가지이다.",
+    "2.",
+    "${a,b,c,d}={0,4,8,x}$ ($x\\in{1,5,9}$, $3$가지)인 경우 (서로 다른 4개 숫자 사용):  \n   - $x$를 고르는 경우 $3$가지, 각 경우마다 $a\\ne0$이므로 $3\\times 3!=18$가지여서 $3\\times 18=54$가지이다.",
+    "따라서 구하는 자연수 $N$의 개수는 $6+18+54=78$이다.",
+    "정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "네 자리의 자연수 $N=a\\times10^3+b\\tim",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q12(10): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q12(10): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q12(10): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "${0,4,8}\\subset{a,b,c,d}$"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "네 자리 자연수이므로 $a\\ne0$이고, 집합",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q12(10): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

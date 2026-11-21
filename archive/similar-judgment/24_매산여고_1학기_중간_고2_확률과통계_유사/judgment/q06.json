@@ -1,0 +1,58 @@
+{
+  "qid": 6,
+  "itemFingerprint": "8d074ef870c9bbfc",
+  "solveSteps": [
+    "각 자리의 홀수를 $2x_i+1$ ($0\\le x_i\\le 4$, $i=1,\\ 2,\\ 3,\\ 4,\\ 5$)이라 하면\n\n$$2(x_1+x_2+x_3+x_4+x_5)+5 = 17 \\implies x_1+x_2+x_3+x_4+x_5 = 6$$\n\n상한 조건을 제외한 음이 아닌 정수해의 개수는 ${}*{5}\\mathrm{H}*{6} = {}*{10}\\mathrm{C}*{6} = {}*{10}\\mathrm{C}*{4} = 210$개이다.",
+    "이 중 한 변수가 $5$ 이상인 여사건을 제외한다.",
+    "- $(6, 0, 0, 0, 0)$의 배열: $5$개  \n- $(5, 1, 0, 0, 0)$의 배열: $5\\times 4 = 20$개\n\n따라서 구하는 자연수의 개수는 $210 - (5+20) = 185$이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-PS-01",
+  "subUnitKey": "H15-PS-01-COMBINATION",
+  "unitEvidence": "다음 조건을 만족시키는 다섯 자리 자연수의 개수는?\n\n",
+  "rpmRecordId": "H2-PS-RPM-003",
+  "rpmReason": "Q6(17): 조합 단원의 RPM H2-PS-RPM-003 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+  "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+  "typeReason": "Q6(17): 조합 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q6(17): 조합 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "이다. (나) 각 자리의 수는 모두 홀수이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "각 자리의 홀수를 $2x_i+1$ ($0\\le",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q6(17): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

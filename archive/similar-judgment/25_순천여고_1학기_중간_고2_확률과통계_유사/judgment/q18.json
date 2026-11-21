@@ -1,0 +1,58 @@
+{
+  "qid": 18,
+  "itemFingerprint": "da6a6a95ae59f467",
+  "solveSteps": [
+    "네 학생이 받는 사탕의 개수를 $a,\\ b,\\ c,\\ d$라 하면 $a>b\\ge 1$이므로 $a\\ge 2$이다. (11)",
+    "따라서 $1$개를 받는 $2$명은 $B,\\ C,\\ D$ 중 $2$명이다.",
+    "① $b=1,\\ c=1$: $a+d=9$ ($a,\\ d\\ge 2$)이므로 $(2,\\ 7),\\ \\dots,\\ (7,\\ 2)$의 $6$가지 ② $b=1,\\ d=1$: $a+c=9$ ($a,\\ c\\ge 2$)이므로 $6$가지 ③ $c=1,\\ d=1$: $a+b=9$ ($a>b\\ge 2$)이므로 $(5,\\ 4),\\ (6,\\ 3),\\ (7,\\ 2)$의 $3$가지 따라서 총 경우의 수는 $6+6+3=15$이다.",
+    "정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "같은 종류의 사탕 $11$개를 $4$명의 학생 $A,\\",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q18(11): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+  "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+  "typeReason": "Q18(11): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(11): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "사탕을 $1$개만 받는 학생은 $2$명이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "네 학생이 받는 사탕의 개수를 $a,\\ b,\\",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q18(11): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

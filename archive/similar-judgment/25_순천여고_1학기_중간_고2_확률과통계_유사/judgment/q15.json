@@ -1,0 +1,58 @@
+{
+  "qid": 15,
+  "itemFingerprint": "2a1c2acabc439cff",
+  "solveSteps": [
+    "$f(a)=8$인 원소 $1$개를 고르는 방법은 ${}*{6}\\mathrm{C}*{1}=6$가지이다. (360)",
+    "남은 $5$개 원소를 $2,\\ 4,\\ 6$에 대응시키는 개수를 $n_2,\\ n_4,\\ n_6$이라 하면 $n_2+n_4+n_6=5$ ($0\\le n_2\\le 2,\\ 0\\le n_4\\le 4,\\ 0\\le n_6\\le 1$)이다.",
+    "① $n_6=0$: $(n_2,\\ n_4)=(1,\\ 4),\\ (2,\\ 3)$이므로 $\\dfrac{5!}{1!4!}+\\dfrac{5!}{2!3!}=5+10=15$가지 ② $n_6=1$: $(n_2,\\ n_4)=(0,\\ 4),\\ (1,\\ 3),\\ (2,\\ 2)$이므로 $\\dfrac{5!}{4!1!}+\\dfrac{5!}{1!3!1!}+\\dfrac{5!}{2!2!1!}=5+20+30=55$가지 따라서 구하는 함수의 개수는 $6\\times(15+55)=6\\times 70=420$이다.",
+    "정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "두 집합 $X={1,\\ 2,\\ 3,\\ 4,\\ 5,\\ 6",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q15(360): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q15(360): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(360): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "개수는 각각 최대 $2,\\ 4,\\ 1$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$f(a)=8$인 원소 $1$개를 고르는 방법",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q15(360): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

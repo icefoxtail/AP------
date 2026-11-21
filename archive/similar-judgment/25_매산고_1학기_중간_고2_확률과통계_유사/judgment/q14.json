@@ -1,0 +1,63 @@
+{
+  "qid": 14,
+  "itemFingerprint": "cb4c6264c29d7fd2",
+  "solveSteps": [
+    "정오각뿔의 밑면(정오각형)과 5개의 옆면(이등변삼각형)을 구분하여 칠한다.",
+    "1.",
+    "밑면에 색을 칠하는 경우의 수는 $5$가지이다.",
+    "2.",
+    "밑면과 이웃한 5개의 옆면은 밑면의 색을 제외한 나머지 $4$가지 색으로 이웃한 옆면끼리 서로 다른 색이 되도록 원형으로 칠해야 한다.",
+    "5개의 옆면에 순서를 매겨 1번~5번이라 하고, $4$가지 색으로 1번부터 차례로 칠할 때 1번과 5번이 같은 색인지 다른 색인지로 나누어 세면:  \n   - 1, 3, 5번 같은 색(1가지) / 다름 등을 점화식 또는 케이스로 계산하면 일렬 기준 $4\\cdot 3^4$ 중 양 끝이 다른 경우는 $(4-1)^5 - (4-1) = 243 - 3 = 240$가지이다.",
+    "- 원순열로 회전하여 일치하는 5가지를 하나로 보면 옆면 색칠 경우의 수는 $\\frac{240}{5}=48$가지이다.",
+    "따라서 전체 경우의 수는 $5\\times 48=240$이다.",
+    "정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "그림과 같이 정오각뿔의 각 면에 서로 다른 5가지 색을",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q14(240): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_CIRCULAR_PERMUTATION",
+  "typeReason": "Q14(240): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(240): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "회전하여 일치하는 것은 같은 것으로 본다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "정오각뿔의 밑면(정오각형)과 5개의 옆면(이등",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q14(240): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

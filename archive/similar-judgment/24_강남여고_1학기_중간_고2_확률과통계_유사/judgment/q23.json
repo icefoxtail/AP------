@@ -1,0 +1,57 @@
+{
+  "qid": 23,
+  "itemFingerprint": "db30a640db74f2a3",
+  "solveSteps": [
+    "전체 경우의 수는 ${}*{8}\\mathrm{C}*{3} = \\dfrac{8\\times 7\\times 6}{3\\times 2\\times 1} = 56$가지이다.",
+    "가운데 수 $b$의 값에 따라 $a < b < c$를 만족시키는 $(a,\\ c)$의 개수는 $(b-1)(8-b)$가지이다.",
+    "- $b = 4$: $3 \\times 4 = 12$가지  \n- $b = 5$: $4 \\times 3 = 12$가지  \n- $b = 6$: $5 \\times 2 = 10$가지  \n- $b = 7$: $6 \\times 1 = 6$가지\n\n유리한 경우의 수는 $12 + 12 + 10 + 6 = 40$가지이므로 구하는 확률은 $\\dfrac{40}{56} = \\dfrac{5}{7}$이다."
+  ],
+  "solvedAnswer": "$\\dfrac{5}{7}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-PS-03",
+  "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+  "unitEvidence": "[서술형 3] $1$부터 $8$까지 자연수가 각각 적힌",
+  "rpmRecordId": "H2-PS-RPM-011",
+  "rpmReason": "Q23(56): 확률의 뜻과 활용 단원의 RPM H2-PS-RPM-011 유형에 해당한다.",
+  "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+  "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+  "typeReason": "Q23(56): 확률의 뜻과 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q23(56): 확률의 뜻과 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "4$일 확률을 구하고 그 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "전체 경우의 수는 ${}*{8}\\mathrm{",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q23(56): 발문과 해설의 풀이 과정을 점검하여 정답 $\\dfrac{5}{7}$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

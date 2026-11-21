@@ -1,0 +1,59 @@
+{
+  "qid": 24,
+  "itemFingerprint": "91b34034fdb84d84",
+  "solveSteps": [
+    "다섯 자리 자연수가 짝수이려면 일의 자리에 숫자 $2$가 와야 한다.",
+    "$2$가 적힌 카드 $1$장을 일의 자리에 놓으면 남은 카드는 $1$($2$장), $2$($2$장), $3$($2$장)의 $6$장이며, 이 중 $4$장을 뽑아 앞 네 자리에 배열한다.",
+    "1.",
+    "같은 숫자 $2$쌍 $(a,\\ a,\\ b,\\ b)$을 뽑아 배열하는 경우: 종류 $3$가지 중 $2$가지를 고르는 방법 ${}*{3}\\mathrm{C}*{2} = 3$가지마다 $\\dfrac{4!}{2!,2!} = 6$가지이므로 $3 \\times 6 = 18$가지  \n2.",
+    "같은 숫자 $1$쌍과 서로 다른 숫자 $2$개 $(a,\\ a,\\ b,\\ c)$를 뽑아 배열하는 경우: 쌍으로 쓸 종류를 고르는 방법 $3$가지마다 $\\dfrac{4!}{2!,1!,1!} = 12$가지이므로 $3 \\times 12 = 36$가지\n\n따라서 구하는 짝수의 개수는 $18 + 36 = 54$이다."
+  ],
+  "solvedAnswer": "54",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-PS-01",
+  "subUnitKey": "H15-PS-01-PERMUTATION",
+  "unitEvidence": "[서술형 4] 그림과 같이 $7$개의 숫자 $1,\\ 1",
+  "rpmRecordId": "H2-PS-RPM-001",
+  "rpmReason": "Q24(18): 순열 단원의 RPM H2-PS-RPM-001 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q24(18): 순열 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q24(18): 순열 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "짝수의 개수를 구하고 그 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "다섯 자리 자연수가 짝수이려면 일의 자리에 숫",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q24(18): 발문과 해설의 풀이 과정을 점검하여 정답 54를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

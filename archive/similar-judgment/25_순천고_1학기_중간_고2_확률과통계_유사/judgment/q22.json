@@ -1,0 +1,57 @@
+{
+  "qid": 22,
+  "itemFingerprint": "58cf9763b7b4de3b",
+  "solveSteps": [
+    "오른쪽, 왼쪽, 위쪽, 아래쪽 이동 횟수를 각각 $R,\\ L,\\ U,\\ D$라 하면 $R-L=2$, $U-D=1$, $R+L+U+D=7$이다.",
+    "$(L+2)+L+(D+1)+D=7 \\implies L+D=2$이므로 가능한 $(L,\\ D)$는 $(0,\\ 2)$, $(1,\\ 1)$, $(2,\\ 0)$이다.",
+    "$$\\begin{aligned} (R,L,U,D)=(2,0,3,2) &: \\frac{7!}{2!0!3!2!} = 210 \\ (R,L,U,D)=(3,1,2,1) &: \\frac{7!}{3!1!2!1!} = 420 \\ (R,L,U,D)=(4,2,1,0) &: \\frac{7!}{4!2!1!0!} = 105 \\end{aligned}$$ 따라서 구하는 경우의 수는 $210+420+105=735$이다."
+  ],
+  "solvedAnswer": "735",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "[서술형 1] 그림과 같이 좌표평면 위에서 상·하 또는",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q22(aligned): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q22(aligned): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q22(aligned): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "경우의 수를 자세한 풀이와 함께 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "오른쪽, 왼쪽, 위쪽, 아래쪽 이동 횟수를 각",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q22(aligned): 발문과 해설의 풀이 과정을 점검하여 정답 735를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

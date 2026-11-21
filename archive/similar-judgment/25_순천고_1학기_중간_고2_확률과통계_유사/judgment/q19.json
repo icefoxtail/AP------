@@ -1,0 +1,59 @@
+{
+  "qid": 19,
+  "itemFingerprint": "ef77866e9abd9cf1",
+  "solveSteps": [
+    "$X$에는 홀수 $3$개($1,\\ 3,\\ 5$), 짝수 $2$개($2,\\ 4$)가 있다. (1080)",
+    "(가) $f(2)+f(4)$가 홀수인 경우는 (홀수, 짝수) 또는 (짝수, 홀수)이므로 $3\\times 2+2\\times 3=12$가지이다.",
+    "(나) $f(1)f(3)f(5)$가 짝수인 경우는 전체 $5^3=125$에서 모두 홀수인 경우 $3^3=27$을 뺀 $98$가지이다.",
+    "따라서 구하는 함수의 개수는 $12\\times 98=1176$이다.",
+    "정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "집합 $X={1,\\ 2,\\ 3,\\ 4,\\ 5}$에 대하",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q19(1080): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q19(1080): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q19(1080): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "(3)\\times f(5)$의 값은 짝수이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$X$에는 홀수 $3$개($1,\\ 3,\\ 5$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q19(1080): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

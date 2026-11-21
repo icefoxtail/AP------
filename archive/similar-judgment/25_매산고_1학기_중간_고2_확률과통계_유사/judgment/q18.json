@@ -1,0 +1,59 @@
+{
+  "qid": 18,
+  "itemFingerprint": "0b2580e9e9211e03",
+  "solveSteps": [
+    "조건 (가)는 인접한 원소마다 $f(x+1)\\ge f(x)+2$임을 뜻한다.",
+    "$f(2)=k$라 하면 $f(5)=2k$이다.",
+    "조건에 의해:\n\n- $f(1)\\le k-2$이고 $f(1)\\ge 1$이므로 $k\\ge 3$  \n- $f(6)\\ge 2k+2$이고 $f(6)\\le 18$이므로 $2k\\le 16 \\implies k\\le 8$  \n- $f(2)+2 \\le f(3) \\le f(4)-2 \\le f(5)-4$이므로 $k+2 \\le 2k-4 \\implies k\\ge 6$\n\n따라서 가능한 $k$는 $6, 7, 8$뿐이다.",
+    "각 $k$에 대하여 $f(1)$은 $k-2$가지, $f(6)$은 $18-(2k+2)+1=17-2k$가지이고, $(f(3), f(4))$는 폭이 $(2k-2)-(k+2)+1 = k-3$인 정수 구간에서 차이가 $2$ 이상인 두 수 선택이므로 ${}*{(k-3)-1}\\mathrm{C}*{2} = {}*{k-4}\\mathrm{C}*{2}$가 아니라, $a=f(3)-(k+2)\\ge0$, $b=f(4)-(k+4)\\ge a$, $b\\le k-6$이므로 ${}*{k-4}\\mathrm{C}*{2}$이다.",
+    "- $k=6$: $4 \\times {}*{2}\\mathrm{C}*{2} \\times 5 = 4 \\times 1 \\times 5 = 20$  \n- $k=7$: $5 \\times {}*{3}\\mathrm{C}*{2} \\times 3 = 5 \\times 3 \\times 3 = 45$  \n- $k=8$: $6 \\times {}*{4}\\mathrm{C}*{2} \\times 1 = 6 \\times 6 \\times 1 = 36$\n\n따라서 전체 함수의 개수는 $20+45+36=101$이다."
+  ],
+  "solvedAnswer": "$101$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "[단답형 3] 두 집합 $X={1,2,3,4,5,6}$",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q18(18): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+  "templateKey": "TPL_COMBINATION_SELECTION",
+  "typeReason": "Q18(18): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(18): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "x_2)$이다. (나) $f(5)=2f(2)$"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "조건 (가)는 인접한 원소마다 $f(x+1)\\",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q18(18): 발문과 해설의 풀이 과정을 점검하여 정답 $101$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

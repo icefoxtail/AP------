@@ -1,0 +1,57 @@
+{
+  "qid": 11,
+  "itemFingerprint": "22a5a3fc05d7710e",
+  "solveSteps": [
+    "정오각형 책상은 한 변에 $2$명씩 앉아 $72^\\circ$씩 회전한 $5$가지 배치가 같으므로 $a = \\dfrac{10!}{5}$이다.",
+    "정사각형 탁자는 한 변에 $2$명씩 앉아 $90^\\circ$씩 회전한 $4$가지 배치가 같으므로 $b = \\dfrac{8!}{4}$이다.",
+    "$$\\frac{a}{b} = \\frac{10!/5}{8!/4} = \\frac{10\\times 9\\times 8!}{5} \\times \\frac{4}{8!} = 2 \\times 9 \\times 4 = 72$$\n\n따라서 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-PS-01",
+  "subUnitKey": "H15-PS-01-PERMUTATION",
+  "unitEvidence": "다음 그림과 같이 정오각형 모양의 책상에 $10$명이 ",
+  "rpmRecordId": "H2-PS-RPM-001",
+  "rpmReason": "Q11(10): 순열 단원의 RPM H2-PS-RPM-001 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q11(10): 순열 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q11(10): 순열 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "회전하여 일치하는 것은 같은 것으로 본다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "정오각형 책상은 한 변에 $2$명씩 앉아 $7",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q11(10): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

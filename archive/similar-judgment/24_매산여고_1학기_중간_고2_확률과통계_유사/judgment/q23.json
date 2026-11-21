@@ -1,0 +1,57 @@
+{
+  "qid": 23,
+  "itemFingerprint": "2a0429bda281a9ca",
+  "solveSteps": [
+    "조건 (나)에서 $1\\le f(1)\\le f(2)\\le f(3)\\le f(4)\\le f(5)\\le f(6)\\le 4$이다.",
+    "$(r,\\ s,\\ t) = (f(1),\\ f(2),\\ f(3))$ ($1\\le r\\le s\\le t\\le 4$)라 할 때, 조건 (가)에 의해 $rst$가 완전제곱수가 되는 순서쌍 $(r,\\ s,\\ t)$를 $t$의 값에 따라 찾으면 다음과 같다.",
+    "- $t=1$: $(1,1,1)$ ($1$개) $\\to$ $(f(4),f(5),f(6))$은 ${}*{4}\\mathrm{H}*{3} = {}*{6}\\mathrm{C}*{3} = 20$가지  \n- $t=2$: $(1,2,2)$ ($1$개) $\\to$ $(f(4),f(5),f(6))$은 ${}*{3}\\mathrm{H}*{3} = {}*{5}\\mathrm{C}*{3} = 10$가지  \n- $t=3$: $(1,3,3)$ ($1$개) $\\to$ $(f(4),f(5),f(6))$은 ${}*{2}\\mathrm{H}*{3} = {}*{4}\\mathrm{C}*{3} = 4$가지  \n- $t=4$: $(1,1,4),\\ (1,4,4),\\ (2,2,4),\\ (3,3,4),\\ (4,4,4)$ ($5$개) $\\to$ $(f(4),f(5),f(6))$은 ${}*{1}\\mathrm{H}*{3} = 1$가지\n\n따라서 구하는 함수의 개수는 $1\\times 20 + 1\\times 10 + 1\\times 4 + 5\\times 1 = 39$이다."
+  ],
+  "solvedAnswer": "39",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-PS-01",
+  "subUnitKey": "H15-PS-01-COMBINATION",
+  "unitEvidence": "[주관식3 (서술형)] 두 집합 $X={1,\\ 2,\\ ",
+  "rpmRecordId": "H2-PS-RPM-003",
+  "rpmReason": "Q23(rst): 조합 단원의 RPM H2-PS-RPM-003 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+  "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+  "typeReason": "Q23(rst): 조합 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q23(rst): 조합 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$이면 $f(x_1)\\le f(x_2)$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "조건 (나)에서 $1\\le f(1)\\le f(",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q23(rst): 발문과 해설의 풀이 과정을 점검하여 정답 39를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

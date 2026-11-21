@@ -1,0 +1,59 @@
+{
+  "qid": 6,
+  "itemFingerprint": "f187d3e14291578b",
+  "solveSteps": [
+    "남은 $4$과목 중 월~~수에 배치할 $1$과목을 고르는 방법은 ${}*{4}\\mathrm{C}*{1}=4$가지이다.",
+    "월~~수 $3$일에 확통, 국어와 선택된 $1$과목을 확통이 국어보다 앞서도록 배열하는 방법은 $\\dfrac{3!}{2!}=3$가지이다.",
+    "목~일 $4$일에 영어와 남은 $3$과목을 배열하는 방법은 $4!=24$가지이다.",
+    "따라서 구하는 경우의 수는 $4\\times 3\\times 24=288$이다.",
+    "정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-PS-01",
+  "subUnitKey": "H22-PS-01-CORE",
+  "unitEvidence": "수아는 확통과 국어, 영어를 포함한 $7$개의 과목을 ",
+  "rpmRecordId": "H2-PS-RPM-032",
+  "rpmReason": "Q6(288): 순열과 조합 핵심 개념 단원의 RPM H2-PS-RPM-032 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q6(288): 순열과 조합 핵심 개념 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q6(288): 순열과 조합 핵심 개념 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": ") 영어는 목요일부터 일요일 사이에 공부한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "남은 $4$과목 중 월~~수에 배치할 $1$과",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q6(288): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

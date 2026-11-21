@@ -1,0 +1,56 @@
+{
+  "qid": 15,
+  "itemFingerprint": "ff145c2c534fbe84",
+  "solveSteps": [
+    "민수와 지수 $2$명을 먼저 포함하면 남은 $12$명 중 짝수 명을 택해야 하므로 $$a = {}*{12}\\mathrm{C}*{0} + {}*{12}\\mathrm{C}*{2} + \\cdots + {}*{12}\\mathrm{C}*{12} = 2^{12-1} = 2^{11}$$\n\n집합 $A$에서 $1,\\ 2$를 먼저 포함하면 남은 $13$개의 원소 중 홀수 개를 택해야 하므로 $$b = {}*{13}\\mathrm{C}*{1} + {}*{13}\\mathrm{C}*{3} + \\cdots + {}*{13}\\mathrm{C}*{13} = 2^{13-1} = 2^{12}$$\n\n따라서 $b - a = 2^{12} - 2^{11} = 2^{11}$이다. (14)",
+    "정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-PS-02",
+  "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+  "unitEvidence": "민수와 지수를 포함하여 $14$명의 학생으로 구성된 학",
+  "rpmRecordId": "H2-PS-RPM-009",
+  "rpmReason": "Q15(14): 이항계수와 계수비교 단원의 RPM H2-PS-RPM-009 유형에 해당한다.",
+  "problemTypeKey": "PT_BINOMIAL_THEOREM",
+  "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+  "typeReason": "Q15(14): 이항계수와 계수비교 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(14): 이항계수와 계수비교 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "개수를 $b$라 할 때, $b-a$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "민수와 지수 $2$명을 먼저 포함하면 남은 $",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q15(14): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
