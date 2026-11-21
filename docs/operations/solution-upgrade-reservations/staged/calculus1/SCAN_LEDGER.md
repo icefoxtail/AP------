@@ -86,3 +86,12 @@
 - MD 커밋 `651cd06793953639ddf5425fcfcce6a290bd8cd5`, 원격 readback 일치. Q03/Q19 PNG 및 나머지 13문항 검산 미완료.
 - 다음 재개: `22_매산고_2학기_기말_고2_수학II_DEEP_AUDIT.md` Q03부터, 동일 시험지 완료 전 다른 시험지 이동 금지.
 - harness 브랜치의 HARNESS_CURRENT/GLOBAL_QUEUE_CURRENT/DEEP_QUESTION_AUDIT_TEMPLATE_CURRENT 본문 조회. `docs-manifest.json` 루트 경로는 NOT_FOUND. core 전수·Golden/Negative·렌더 QA는 NOT_RUN.
+
+
+### 2026-11-22: 2022 매산고 기말 이미지 경로 해결 및 초안 완료
+
+- `22_매산고_2학기_기말_고2_수학II_DEEP_AUDIT.md` **AUDIT_DRAFT_COMPLETE**: 20/20 읽기, KEEP 20 / UPGRADE 0 / HOLD 0 / UNREAD 0. 원본 blob `8142605df32ecdfad9208d01b24c47fdb6dbcc3a`.
+- Q03 PNG `archive/assets/images/22_매산고_2학기_기말_고2_수학II/q3.png` (blob `9484a7d90c3df55682ee33847116d721b18c2ebe`): 영점 0·2, 꼭짓점 (1,-1) 실물 확인.
+- Q19 PNG `archive/assets/images/22_매산고_2학기_기말_고2_수학II/q19.png` (blob `99a3b6504c0b0a576943d099d0bd462d1d36f0f3`): 반지름 12cm·높이 9cm 실물 확인. 이전 경로 404는 실제 파일 부재가 아니라 경로 오류였음.
+- MD 커밋 `96e00c714d6e4992a0f3b1a85b2fada64b076850`, 원격 readback 일치. **누적 초안 17장 / 380문항** (KEEP 324, UPGRADE 28, HOLD 28, UNREAD 0). 이전 2022 매산고 IN_PROGRESS 행은 역사적 기록이며 현재 상태가 아님.
+- 이번 실행 완료 1/5. 다음 재개 위치: `calculus1/original/high/h2/2final`의 다음 미감사 원본(2022 또는 과거 연도), 본인 MD 중복 검사 후 선택. Golden/Negative·preflight·학생 렌더·출고 QA NOT_RUN. JS/SVG/main 변경 없음.
