@@ -192,3 +192,24 @@
 - **2학기 중간 원본 범위:** 42장 중 현재 9장 감사 MD 대응(이전 4장+이번 5장), **남은 33장**. 기말 26/26 대응 기록과 별개.
 - **다음 커서:** `archive/exams/original/high/h2/2mid/25_제일고_2학기_중간_고2_수학II.js`. 같은 미적분Ⅰ 전담 브랜치에서 **회차당 미감사 시험지 5장 완성 후 보고** 유지.
 - **출고 경계:** EXAM_AUDIT_COMPLETE / EXAM_DRAFT_COMPLETE이나 운영 RELEASE PASS 아님. Golden/Negative, 자동 preflight SHA-256 receipt, 기존 해설 SVG 및 학생 화면 렌더, 운영 JS·SVG 수정, `main` 병합·배포는 **NOT_RUN / NOT_PERFORMED**.
+
+
+## 2026-11-22 2학기 중간 추가 5개 심층감사 완료 — 2025 제일고부터 2023 매산고까지
+
+- 원본 `archive/exams/original/high/h2/2mid`에서 중복 없는 시험지 **5장/113문항**을 순서대로 처리. 원본 JS의 모든 발문·보기·정답·기존 해설을 MD에 보존하고 독립 수학 검산 및 개별 KEEP 판단을 기록.
+- 원본 PNG **13개 모두 GitHub 원본 blob을 직접 열어 시각 판독**(제일고 2, 매산여고 2, 조대부고 4, 강남여고 2, 매산고 3). 문항 본문 내 HTML `<img>`도 포함하여 조사. 원본 JS·SVG 운영 수정은 수행하지 않음.
+- 공유 점유/claim 확인은 사용자 지시대로 **SKIPPED_BY_USER**. 5개 MD 신규 커밋 및 원격 본문 전체 readback **5/5 일치 확인**.
+
+| 누적 순서 | 시험지 | 전체 | KEEP | UPGRADE | HOLD | UNREAD | 원본 PNG | MD 커밋 |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| 36 | [25_제일고_2학기_중간_고2_수학II](25_제일고_2학기_중간_고2_수학II_DEEP_AUDIT.md) | 22 | 22 | 0 | 0 | 0 | 2개 | `1f171458c37b` |
+| 37 | [24_매산여고_2학기_중간_고2_수학II](24_매산여고_2학기_중간_고2_수학II_DEEP_AUDIT.md) | 23 | 23 | 0 | 0 | 0 | 2개 | `f4e7092ca826` |
+| 38 | [24_조대부고_2학기_중간_고2_수학II](24_조대부고_2학기_중간_고2_수학II_DEEP_AUDIT.md) | 23 | 23 | 0 | 0 | 0 | 4개 | `99dbab550e3f` |
+| 39 | [23_강남여고_2학기_중간_고2_수학II](23_강남여고_2학기_중간_고2_수학II_DEEP_AUDIT.md) | 25 | 25 | 0 | 0 | 0 | 2개 | `289fe720ca47` |
+| 40 | [23_매산고_2학기_중간_고2_수학II](23_매산고_2학기_중간_고2_수학II_DEEP_AUDIT.md) | 20 | 20 | 0 | 0 | 0 | 3개 | `4990f04230ef` |
+| **이번 회차** | **중간 5장** | **113** | **113** | **0** | **0** | **0** | **13개 판독** | **5/5 readback PASS** |
+
+- **전체 누적 감사 MD 초안: 40장 / 895문항** = KEEP **838** + UPGRADE **29** + HOLD **28** + UNREAD **0**. 과거 UPGRADE 29와 HOLD 28은 미해결 상태로 유지.
+- **2학기 중간 범위:** 원본 총 42장 중 **14장 MD 대응**, **28장 미감사**. 2학기 기말의 26/26 기록은 별개.
+- **다음 커서:** `archive/exams/original/high/h2/2mid/23_매산여고_2학기_중간_고2_수학II.js`부터 같은 미적분Ⅰ 라인으로 5장씩 이어가기.
+- **출고 경계:** EXAM_AUDIT_COMPLETE / EXAM_DRAFT_COMPLETE. 기존 solutionImage SVG·학생 화면 렌더, Golden/Negative 독립 테스트, 자동 preflight SHA-256 receipt, 운영 출고 QA, JS·SVG 운영 수정, `main` 병합 및 배포는 **NOT_RUN / NOT_PERFORMED**. 감사 MD 초안 완료는 운영 RELEASE PASS가 아님.
