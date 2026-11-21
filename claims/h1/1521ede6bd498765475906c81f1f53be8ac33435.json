@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane10",
   "workerBranch": "work/solution-upgrade-lane-10-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2final",
@@ -12,10 +12,30 @@
   "sourceBlobSha": "1521ede6bd498765475906c81f1f53be8ac33435",
   "sourceQuestionCount": 23,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2023_maesan-girls_2final_DEEP_AUDIT.md",
-  "draftedQuestionIds": [],
-  "remainingWork": [
-    "q1-q23 original source full audit, solutions for every UPGRADE"
+  "draftedQuestionIds": [
+    16,
+    17
   ],
-  "nextQid": 1,
-  "stateNotes": "2023 Gangnam Girls owned lane30 IN_PROGRESS; 2023 Geumdang lane10 complete; Maesan Girls next oldest unclaimed within 2023 2final."
+  "remainingWork": [],
+  "nextQid": null,
+  "stateNotes": "All 23 original problem/choices/answer/solution directly audited, Q16/Q17 full student drafts independently checked, Git readback exact verified; lane30 owns 2023 Gangnam Girls.",
+  "auditQuestionCount": 23,
+  "readQuestionCount": 23,
+  "decisionCounts": {
+    "KEEP": 21,
+    "UPGRADE": 2,
+    "HOLD": 0,
+    "UNREAD": 0
+  },
+  "studentDraftPaths": [
+    "docs/operations/solution-upgrade-reservations/staged/h1/2023_maesan-girls_2final_q16.md",
+    "docs/operations/solution-upgrade-reservations/staged/h1/2023_maesan-girls_2final_q17.md"
+  ],
+  "qualityGates": {
+    "visual": "NOT_RUN",
+    "render": "NOT_RUN",
+    "golden": "NOT_RUN",
+    "negative": "NOT_RUN",
+    "release": "NOT_PASS"
+  }
 }
