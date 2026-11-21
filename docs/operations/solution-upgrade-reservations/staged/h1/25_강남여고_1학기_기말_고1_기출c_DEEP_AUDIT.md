@@ -2,7 +2,7 @@
 
 - Repository: `icefoxtail/AP------`
 - Work branch: `work/solution-upgrade-lane-30-20261121`
-- Source: `archive/h1/1final/25_강남여고_1학기_기말_고1_기출c.js`
+- Source: `archive/exams/original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js`
 - Fixed source blob SHA: `5a2f970c4c1dfcf7045a6e528356f4dc473b2471`
 - SourceKey: `25_강남여고_1학기_기말_고1_기출c`
 - Classification: `h1/1final`; q1–q24 모두 `standardCourse=공통수학1`, 고1 2022 개정 공통수학1 단원. 다른 시험 구분 사용 없음.
