@@ -1,0 +1,448 @@
+{
+  "schemaVersion": "ALIVE_COURIER_INTAKE_MANIFEST_v3",
+  "examTitle": "23_복성고_1학기_기말_고1_기출",
+  "sourceFileDriveId": "1RMxzB9ur_evON2yw-QtRHPd43UEf-Kig",
+  "sourceSha256": "3571b794b5f40d540f4bbf85ceab60137f220f9f8300e876964a216e2f931758",
+  "status": "READY_FOR_COURIER_REGISTRATION",
+  "manifestTimestamp": "2026-10-23T15:48:45.204604+00:00",
+  "totalQuestions": 22,
+  "totalHoldCount": 0,
+  "recordsToBind": [
+    {
+      "questionId": 1,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-07",
+      "standardUnit": "여러 가지 방정식",
+      "subUnitKey": "H15-SA-07-EQUATION_BASIC",
+      "subUnit": "방정식의 풀이",
+      "problemTypeKey": "PT_HIGHER_ORDER_EQUATION_ROOT_RELATION",
+      "templateKey": "TPL_CUBIC_ROOT_SUBSTITUTION_AND_SUM",
+      "crossConceptKeys": [
+        "CC_CUBIC_EQUATION",
+        "CC_ROOTS_AND_COEFFICIENTS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "한 근 x=-1 대입으로 a=-1 구한 뒤 (x+1)(x²-3x-1)=0 인수분해하여 α+β=3 도출 후 a+α+β=2 산출 (2단계)"
+    },
+    {
+      "questionId": 2,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-08",
+      "standardUnit": "여러 가지 부등식",
+      "subUnitKey": "H15-SA-08-INEQUALITY_BASIC",
+      "subUnit": "부등식의 풀이",
+      "problemTypeKey": "PT_ABSOLUTE_VALUE_INEQUALITY",
+      "templateKey": "TPL_ABSOLUTE_VALUE_BOUNDED_INTEGER_COUNT",
+      "crossConceptKeys": [
+        "CC_ABSOLUTE_VALUE",
+        "CC_INTEGER_COUNT"
+      ],
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "|x-3|<4에서 -1<x<7 범위 정수 0부터 6까지 7개 직접 산출 (1단계)"
+    },
+    {
+      "questionId": 3,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-09",
+      "standardUnit": "평면좌표",
+      "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
+      "subUnit": "좌표와 거리",
+      "problemTypeKey": "PT_COORDINATE_DISTANCE",
+      "templateKey": "TPL_TWO_POINT_DISTANCE_DIRECT",
+      "crossConceptKeys": [
+        "CC_DISTANCE_FORMULA",
+        "CC_PYTHAGOREAN_THEOREM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "두 점 (3,1), (-1,4) 거리 공식 √((3-(-1))²+(1-4)²)=5 직접 산출 (1단계)"
+    },
+    {
+      "questionId": 4,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-10",
+      "standardUnit": "직선의 방정식",
+      "subUnitKey": "H15-SA-10-LINE_EQUATION",
+      "subUnit": "직선의 방정식",
+      "problemTypeKey": "PT_LINE_EQUATION_DETERMINATION",
+      "templateKey": "TPL_LINE_INCLINATION_ANGLE_POINT",
+      "crossConceptKeys": [
+        "CC_SLOPE_ANGLE",
+        "CC_POINT_ON_LINE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "기울기 tan(45°)=1과 두 점 (2,1), (5,a) 기울기 (a-1)/3=1에서 a=4 산출 (1단계, 시각자료 확인)"
+    },
+    {
+      "questionId": 5,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-10",
+      "standardUnit": "직선의 방정식",
+      "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+      "subUnit": "두 직선의 평행과 수직",
+      "problemTypeKey": "PT_PERPENDICULAR_LINE_EQUATION",
+      "templateKey": "TPL_PERPENDICULAR_SLOPE_POINT_DETERMINATION",
+      "crossConceptKeys": [
+        "CC_PERPENDICULAR_SLOPE",
+        "CC_POINT_SLOPE_FORM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "수직 기울기 m=2 구하고 점 (1,5) 대입하여 y=2x+3 직접 산출 (1단계, 시각자료 확인)"
+    },
+    {
+      "questionId": 6,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-12",
+      "standardUnit": "도형의 이동",
+      "subUnitKey": "H15-SA-12-TRANSLATION",
+      "subUnit": "평행이동",
+      "problemTypeKey": "PT_POINT_TRANSLATION",
+      "templateKey": "TPL_POINT_TRANSLATION_INVERSE_TARGET",
+      "crossConceptKeys": [
+        "CC_POINT_TRANSLATION",
+        "CC_INVERSE_MAPPING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "(3,-1)->(a,7)에서 a=8, b=-8 구한 뒤 점 (8,-8)로 옮겨지는 원점 (u,v)=(3,-16) 역산 (2단계, 시각자료 확인)"
+    },
+    {
+      "questionId": 7,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-08",
+      "standardUnit": "여러 가지 부등식",
+      "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
+      "subUnit": "연립부등식",
+      "problemTypeKey": "PT_LINEAR_SYSTEM_INEQUALITY",
+      "templateKey": "TPL_SYSTEM_INEQUALITY_EXISTENCE_PARAMETER",
+      "crossConceptKeys": [
+        "CC_SYSTEM_INEQUALITY",
+        "CC_PARAMETER_BOUND"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "x<=-a-1과 x>=-2의 공통해가 존재할 조건 -2<=-a-1에서 a<=1 최댓값 1 산출 (2단계)"
+    },
+    {
+      "questionId": 8,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-07",
+      "standardUnit": "여러 가지 방정식",
+      "subUnitKey": "H15-SA-07-SUBSTITUTION_SYSTEM",
+      "subUnit": "치환과 연립방정식",
+      "problemTypeKey": "PT_QUADRATIC_SYSTEM_EQUATION",
+      "templateKey": "TPL_HOMOGENEOUS_FACTOR_SUBSTITUTION_EXTREMA",
+      "crossConceptKeys": [
+        "CC_HOMOGENEOUS_FACTORIZATION",
+        "CC_QUADRATIC_SYSTEM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "4x²-y²=0에서 y=±2x 분기 후 대입하여 x+2y의 후보 ±5√6, ±3√2 중 최댓값 5√6 산출 (3단계)"
+    },
+    {
+      "questionId": 9,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-08",
+      "standardUnit": "여러 가지 부등식",
+      "subUnitKey": "H15-SA-08-INEQUALITY_BASIC",
+      "subUnit": "부등식의 풀이",
+      "problemTypeKey": "PT_QUADRATIC_INEQUALITY_ALWAYS_HOLD",
+      "templateKey": "TPL_QUADRATIC_INEQUALITY_COEFFICIENT_CASE_SPLIT",
+      "crossConceptKeys": [
+        "CC_ALWAYS_POSITIVE_CONDITION",
+        "CC_CASE_ANALYSIS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "최고차항 계수 m-1=0일 때 성립 확인 및 m-1>0일 때 판별식/꼭짓점 5-m>0 연립하여 1<=m<5 도출 (3단계)"
+    },
+    {
+      "questionId": 10,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-09",
+      "standardUnit": "평면좌표",
+      "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
+      "subUnit": "좌표와 거리",
+      "problemTypeKey": "PT_COORDINATE_INTERNAL_DIVISION",
+      "templateKey": "TPL_MIDPOINT_AND_SECTION_POINT_RECOVERY",
+      "crossConceptKeys": [
+        "CC_MIDPOINT_FORMULA",
+        "CC_INTERNAL_DIVISION_POINT",
+        "CC_DISTANCE_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "중점 (2,-1)과 3:1 내분점 (3,-4)로부터 두 점 A(0,5), B(4,-7) 복원 후 거리 AB=4√10 산출 (3단계, 시각자료 확인)"
+    },
+    {
+      "questionId": 11,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-10",
+      "standardUnit": "직선의 방정식",
+      "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+      "subUnit": "두 직선의 평행과 수직",
+      "problemTypeKey": "PT_THREE_LINES_NO_TRIANGLE",
+      "templateKey": "TPL_THREE_LINES_PARALLEL_OR_CONCURRENT",
+      "crossConceptKeys": [
+        "CC_PARALLEL_LINES",
+        "CC_CONCURRENT_LINES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "두 직선 평행 조건 a=1, a=-1 및 두 직선 교점 (6,0) 지날 조건 a=-2/3을 합하여 -2/3 산출 (3단계, 시각자료 확인)"
+    },
+    {
+      "questionId": 12,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-11",
+      "standardUnit": "원의 방정식",
+      "subUnitKey": "H15-SA-11-INTERSECTION",
+      "subUnit": "원과 직선·원의 교점",
+      "problemTypeKey": "PT_CIRCLE_LINE_POSITION_RELATION",
+      "templateKey": "TPL_FAMILY_OF_CIRCLES_LINE_INTERSECTIONS",
+      "crossConceptKeys": [
+        "CC_DISTANCE_POINT_TO_LINE",
+        "CC_TANGENT_AND_SECANT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "원점에서 직선까지 거리 d=5 구하고 R=25 접점 1개, R=26~30 2개씩 총 1+5*2=11개 교점 산출 (3단계, 시각자료 확인)"
+    },
+    {
+      "questionId": 13,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-11",
+      "standardUnit": "원의 방정식",
+      "subUnitKey": "H15-SA-11-TANGENT",
+      "subUnit": "원과 접선",
+      "problemTypeKey": "PT_CIRCLE_TANGENT_EQUATION",
+      "templateKey": "TPL_CIRCLE_TANGENT_AXES_TRIANGLE_AREA",
+      "crossConceptKeys": [
+        "CC_CIRCLE_TANGENT_AT_POINT",
+        "CC_TRIANGLE_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "점 P(4,2)에서의 접선 y=-1/2x+4 도출 후 x절편 8, y절편 4로 둘러싸인 삼각형 넓이 1/2*8*4=16 산출 (2단계, 시각자료 확인)"
+    },
+    {
+      "questionId": 14,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-12",
+      "standardUnit": "도형의 이동",
+      "subUnitKey": "H15-SA-12-COMPOSITE_TRANSFORMATION",
+      "subUnit": "합성 변환",
+      "problemTypeKey": "PT_LINE_TRANSFORMATION",
+      "templateKey": "TPL_LINE_TRANSLATION_AND_REFLECTION_INTERSECTION",
+      "crossConceptKeys": [
+        "CC_LINE_TRANSLATION",
+        "CC_LINE_SYMMETRIC_MAPPING",
+        "CC_Y_INTERCEPT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "l 평행이동 후 y=x 대칭한 l' 식 도출하고 y축 교점 조건 5=-2-8/a에서 a=-8/7 산출 (4단계, 시각자료 확인)"
+    },
+    {
+      "questionId": 15,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-12",
+      "standardUnit": "도형의 이동",
+      "subUnitKey": "H15-SA-12-REFLECTION",
+      "subUnit": "대칭이동",
+      "problemTypeKey": "PT_FOLDING_PAPER_APPLICATION",
+      "templateKey": "TPL_RECTANGLE_DIAGONAL_FOLDING_AREA",
+      "crossConceptKeys": [
+        "CC_PAPER_FOLDING_SYMMETRY",
+        "CC_PYTHAGOREAN_THEOREM",
+        "CC_TRIANGLE_AREA"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "대각선 접기에서 밑변 d=(a²+16)/8 유도 후 겹친 넓이 1/2*a*d=5/2에서 a³+16a-40=0 인수분해하여 a=2 산출 (4단계, 시각자료 확인)"
+    },
+    {
+      "questionId": 16,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-08",
+      "standardUnit": "여러 가지 부등식",
+      "subUnitKey": "H15-SA-08-INEQUALITY_APPLICATION",
+      "subUnit": "부등식의 활용",
+      "problemTypeKey": "PT_SYSTEM_INEQUALITY_INTEGER_SOLUTION",
+      "templateKey": "TPL_QUADRATIC_SYSTEM_INTEGER_EXCLUSION_COUNT",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_INEQUALITY",
+        "CC_INTEGER_COUNT"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "1<=x<=5 정수 5개 중 x<=n-2 또는 x>=n에 의해 정확히 1개(n-1)만 제외되는 조건에서 n=2,3,4,5,6 합 20 산출 (4단계)"
+    },
+    {
+      "questionId": 17,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-09",
+      "standardUnit": "평면좌표",
+      "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
+      "subUnit": "좌표와 거리",
+      "problemTypeKey": "PT_ANGLE_BISECTOR_THEOREM",
+      "templateKey": "TPL_ANGLE_BISECTOR_MIDPOINT_ISOSCELES",
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR_THEOREM",
+        "CC_DISTANCE_FORMULA"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "각의 이등분선이 중점을 지나므로 AB=BC=5임을 파악하고 √(9+a²)=5에서 a=4 산출 (2단계, 시각자료 확인)"
+    },
+    {
+      "questionId": 18,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-12",
+      "standardUnit": "도형의 이동",
+      "subUnitKey": "H15-SA-12-REFLECTION",
+      "subUnit": "대칭이동",
+      "problemTypeKey": "PT_POINT_SYMMETRY_AND_CENTROID",
+      "templateKey": "TPL_SECTION_POINT_AXES_REFLECTION_CENTROID",
+      "crossConceptKeys": [
+        "CC_INTERNAL_DIVISION_POINT",
+        "CC_REFLECTION_TRANSFORMATION",
+        "CC_CENTROID_COORDINATES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "1:2 내분점 P(2, 4/3), 대칭점 Q(2, -4/3), R(-2, 4/3)의 무게중심 (2/3, 4/9)로부터 a+b=10/9 산출 (3단계, 시각자료 확인)"
+    },
+    {
+      "questionId": 19,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-11",
+      "standardUnit": "원의 방정식",
+      "subUnitKey": "H15-SA-11-TANGENT",
+      "subUnit": "원과 접선",
+      "problemTypeKey": "PT_CIRCLE_TANGENT_LINE_AND_POINT",
+      "templateKey": "TPL_CIRCLE_CENTER_ON_LINE_TANGENT_VERTICAL",
+      "crossConceptKeys": [
+        "CC_CIRCLE_TANGENT_DISTANCE",
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "중심 (h, h-2), 반지름 |h-1|로 세운 (h+2)²+(h+5)²=(h-1)²에서 h=-2, -14 구하고 y좌표 k=-4, -16 합 -20 산출 (3단계, 시각자료 확인)"
+    },
+    {
+      "questionId": 20,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-11",
+      "standardUnit": "원의 방정식",
+      "subUnitKey": "H15-SA-11-CIRCLE_EQUATION",
+      "subUnit": "원의 방정식",
+      "problemTypeKey": "PT_CIRCLE_CENTER_LOCUS",
+      "templateKey": "TPL_SUBTENDED_ANGLE_RIGHT_ISOSCELES_CENTER_DISTANCE",
+      "crossConceptKeys": [
+        "CC_INSCRIBED_ANGLE_CENTRAL_ANGLE",
+        "CC_PERPENDICULAR_BISECTOR",
+        "CC_DISTANCE_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "원주각 45°에서 중심각 90° 파악, 중점 M(3,-2)에서 수직방향 거리 3√5 떨어진 두 중심 (0,4), (6,-8) 중 원점거리 최댓값 10 산출 (4단계, 시각자료 확인)"
+    },
+    {
+      "questionId": 21,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-07",
+      "standardUnit": "여러 가지 방정식",
+      "subUnitKey": "H15-SA-07-EQUATION_APPLICATION",
+      "subUnit": "방정식과 부등식의 활용",
+      "problemTypeKey": "PT_QUADRATIC_SYSTEM_WORD_PROBLEM",
+      "templateKey": "TPL_RECTANGLE_PERIMETER_DIAGONAL_DIMENSIONS",
+      "crossConceptKeys": [
+        "CC_RECTANGLE_PERIMETER",
+        "CC_PYTHAGOREAN_THEOREM",
+        "CC_SYMMETRIC_POLYNOMIAL_SYSTEM"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "x+y=17, x²+y²=169에서 xy=60 유도 후 t²-17t+60=0의 두 근 5cm, 12cm 산출 (2단계 서술형)"
+    },
+    {
+      "questionId": 22,
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-11",
+      "standardUnit": "원의 방정식",
+      "subUnitKey": "H15-SA-11-INTERSECTION",
+      "subUnit": "원과 직선·원의 교점",
+      "problemTypeKey": "PT_CIRCLE_LINE_POSITION_RELATION",
+      "templateKey": "TPL_DUAL_CIRCLES_DISJOINT_LINE_INTEGER_SLOPES",
+      "crossConceptKeys": [
+        "CC_DISTANCE_POINT_TO_LINE",
+        "CC_INTEGER_COUNT"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "rule_inferred",
+      "difficultyReason": "두 번째 원과의 거리 조건 m²<k²/4-1을 만족하는 양의 정수가 3개(m=1,2,3)가 되는 9<k²/4-1<=16에서 40<k²<=68 자연수 k=7, 8 합 15 산출 (4단계 서술형, 시각자료 확인)"
+    }
+  ]
+}

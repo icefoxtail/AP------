@@ -1,0 +1,598 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "examTitle": "25_매산고_2학기_중간_고1_기출",
+  "sourceFileDriveId": "1QNblCt5C2BIN-fga8QkMt2ZvxtinMoZN",
+  "sourceSha256": "5af45679ec348119a7d3bf0022f2f2cba0d1c43af26d39b70690589dfd752ba6",
+  "auditedTimestamp": "2026-10-23T16:53:01.685310+00:00",
+  "auditVerdict": "APPROVED",
+  "totalAuditedCount": 20,
+  "zeroStubCertified": true,
+  "allVisualAssetsVerified": true,
+  "records": [
+    {
+      "questionId": 1,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-05",
+      "standardUnit": "집합",
+      "subUnitKey": "H22-C2-05-CORE",
+      "subUnit": "집합 핵심 개념",
+      "problemTypeKey": "PT_SET_DEFINITION",
+      "templateKey": "TPL_SET_IDENTIFY",
+      "crossConceptKeys": [
+        "CC_SET_ELEMENT_MEMBERSHIP"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "집합의 정의에 따라 대상의 기준이 객관적이고 명확한지 여부를 직관적으로 판정 (1단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 중 집합인 것만을 있는 대로 고른 것은? [3.7점]",
+        "solutionDecisiveExcerpt": "어떤 대상이 그 모임에 속하는지 누구나 같은 기준으로 판단할 수 있는지를 보면 된다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 2,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-02",
+      "standardUnit": "직선의 방정식",
+      "subUnitKey": "H22-C2-02-RELATION",
+      "subUnit": "두 직선의 관계",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_PARALLEL",
+      "crossConceptKeys": [
+        "CC_LINEAR_EQUATION_GRAPH",
+        "CC_SLOPE_PARALLEL"
+      ],
+      "conditionKeys": [
+        "COND_PARALLEL"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "주어진 직선에서 기울기를 구한 후 평행 조건과 지나는 한 점으로 직선의 방정식을 세우고 미지수 대입 (2단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "좌표평면 위의 점 $(6,4)$를 지나고, 직선 $x-3y+3=0$에 평행한 직선이 존재한다. 이 직선이 점 $(k,-1)$을 지날 때, $k$의 값은?",
+        "solutionDecisiveExcerpt": "구하는 직선도 기울기가 $\\dfrac13$이고 점 $(6,4)$를 지나므로 $y-4=\\dfrac13(x-6)$이다. $k=-9$",
+        "visualAssetChecked": true,
+        "visualType": "SVG_SOLUTION_DIAGRAM"
+      }
+    },
+    {
+      "questionId": 3,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-05",
+      "standardUnit": "집합",
+      "subUnitKey": "H22-C2-05-CORE",
+      "subUnit": "집합 핵심 개념",
+      "problemTypeKey": "PT_SET_AGGREGATE",
+      "templateKey": "TPL_SET_ELEMENT_SUM",
+      "crossConceptKeys": [
+        "CC_SET_INTERSECTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "두 집합의 공통 원소(교집합)를 직접 구하여 모든 원소의 합을 계산 (1단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "전체집합 $U=\\{2,4,6,8,10\\}$의 두 부분집합 $A=\\{2,4\\}$, $B=\\{4,6,8\\}$에 대하여 집합 $A\\cap B$의 모든 원소의 합은?",
+        "solutionDecisiveExcerpt": "두 집합에 모두 들어 있는 원소는 $4$뿐이므로 $A\\cap B=\\{4\\}$이다. 원소의 합은 $4$이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 4,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "problemTypeKey": "PT_MOVE_LINE_TRANSLATION",
+      "templateKey": "TT_LINE_TRANSLATION_EQUATION",
+      "crossConceptKeys": [
+        "CC_TRANSLATION_GEOMETRY",
+        "CC_COEFFICIENT_COMPARISON"
+      ],
+      "conditionKeys": [
+        "COND_TRANSLATION"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "점의 평행이동 벡터 분석 -> 직선의 방정식 치환 평행이동 적용 -> 계수 비교로 a, b 결정 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "점 $(0,0)$을 점 $(2,-3)$으로 이동시키는 평행이동에 의하여 직선 $3x+2y+8=0$이 이동한 도형이 $ax-by+8=0$일 때",
+        "solutionDecisiveExcerpt": "직선 $3x+2y+8=0$을 평행이동한 직선은 $3(x-2)+2(y+3)+8=0$이다. $a=3, b=-2$이므로 $a-b=5$",
+        "visualAssetChecked": true,
+        "visualType": "SVG_SOLUTION_DIAGRAM"
+      }
+    },
+    {
+      "questionId": 5,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-05",
+      "standardUnit": "집합",
+      "subUnitKey": "H22-C2-05-CORE",
+      "subUnit": "집합 핵심 개념",
+      "problemTypeKey": "PT_SUBSET_COUNT",
+      "templateKey": "TPL_SUBSET_COUNT_REQUIRED_FORBIDDEN",
+      "crossConceptKeys": [
+        "CC_SUBSET_COUNT_POWERSET",
+        "CC_SET_INTERSECTION"
+      ],
+      "conditionKeys": [
+        "COND_CONTAIN_ELEMENT",
+        "COND_EXCLUDE_ELEMENT"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "교집합 조건으로부터 특정 원소 2개 포함, 2개 제외 제약 도출 후 잔여 6개 원소의 거듭제곱(2^6=64) 계산 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "전체집합 $U$는 $10$ 이하의 자연수 전체의 집합이다. $X\\cap\\{2,3,5,7\\}=\\{2,7\\}$을 만족시키는 집합 $X$의 개수는?",
+        "solutionDecisiveExcerpt": "$2,7\\in X$이고, $3,5\\notin X$이다... $1,4,6,8,9,10$의 6개 원소의 선택으로 $2^6=64$개",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 6,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-02",
+      "standardUnit": "직선의 방정식",
+      "subUnitKey": "H22-C2-02-RELATION",
+      "subUnit": "두 직선의 관계",
+      "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+      "templateKey": "TPL_DISTANCE_CONDITION_PARAMETER",
+      "crossConceptKeys": [
+        "CC_POINT_LINE_DISTANCE",
+        "CC_ABSOLUTE_VALUE_EQUATION",
+        "CC_INTEGER_CONDITION"
+      ],
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_DISTANCE_EQUAL"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "직선 y=x 위의 점 (a,a) 설정 -> 점-직선 거리 공식으로 절댓값 방정식 수립 -> 정수 조건 만족해 판별 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "직선 $y=x$ 위의 점 $P(a,b)$와 직선 $5x+12y-4=0$ 사이의 거리가 $1$일 때, $a+b$의 값은? (단, $a,b$는 정수이다.)",
+        "solutionDecisiveExcerpt": "$\\dfrac{|17a-4|}{13}=1$에서 $17a-4=13$이어야 정수 $a=1$이 도출되고 $b=1$이므로 $a+b=2$",
+        "visualAssetChecked": true,
+        "visualType": "SVG_SOLUTION_DIAGRAM"
+      }
+    },
+    {
+      "questionId": 7,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-03",
+      "standardUnit": "원의 방정식",
+      "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+      "subUnit": "원의 방정식",
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_DIAMETER_ENDPOINTS",
+      "crossConceptKeys": [
+        "CC_MIDPOINT_FORMULA",
+        "CC_DISTANCE_FORMULA",
+        "CC_CIRCLE_EQUATION_GENERAL"
+      ],
+      "conditionKeys": [
+        "COND_DIAMETER_ENDPOINTS"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "지름의 양 끝점 중점으로 중심 (1,2) 도출 -> 두 점 거리로 반지름 r=5 계산 -> 일반형 전개 후 계수 비율 계산 (4단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "두 점 $A(5,-1)$, $B(-3,5)$를 지름의 양 끝점으로 하는 원의 방정식을 $x^2+y^2+ax+by+c=0$이라 할 때",
+        "solutionDecisiveExcerpt": "원의 중심은 중점 (1,2), 지름 AB=10으로 r=5... $x^2+y^2-2x-4y-20=0$에서 $\\dfrac{bc}{a}=\\dfrac{(-4)(-20)}{-2}=-40$",
+        "visualAssetChecked": true,
+        "visualType": "SVG_SOLUTION_DIAGRAM"
+      }
+    },
+    {
+      "questionId": 8,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "problemTypeKey": "PT_MOVE_COMPOSITE",
+      "templateKey": "TT_COMPOSITE_LINE",
+      "crossConceptKeys": [
+        "CC_AXIAL_SYMMETRY",
+        "CC_TRANSLATION_GEOMETRY",
+        "CC_LINE_SYMMETRY_Y_X",
+        "CC_CIRCLE_AREA_BISECTION"
+      ],
+      "conditionKeys": [
+        "COND_BISECT_CIRCLE_AREA",
+        "COND_MULTI_STEP_TRANSFORM"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "x축 대칭 -> y축 평행이동 -> y=x 대칭 3연속 변환 공식 적용 후 원의 넓이 이등분(중심 (2,-2) 통과) 조건 대입 (4단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "직선 $(a-2)x-2y-10=0$을 $x$축에 대하여 대칭이동하고, $y$축 방향으로 $3$만큼 평행이동한 후, 직선 $y=x$에 대하여 대칭이동하였더니 원의 넓이를 이등분",
+        "solutionDecisiveExcerpt": "최종 직선 $2x+(a-2)y-16=0$에 원의 중심 $(2,-2)$를 대입하면 $4-2(a-2)-16=0$에서 $a=-4$",
+        "visualAssetChecked": true,
+        "visualType": "SVG_SOLUTION_DIAGRAM"
+      }
+    },
+    {
+      "questionId": 9,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-01",
+      "standardUnit": "평면좌표",
+      "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+      "subUnit": "평면좌표와 거리",
+      "problemTypeKey": "PT_COORD_SECTION",
+      "templateKey": "TPL_SECTION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_PERPENDICULAR_SLOPE",
+        "CC_INTERNAL_DIVISION_POINT",
+        "CC_LINEAR_EQUATION"
+      ],
+      "conditionKeys": [
+        "COND_PERPENDICULAR",
+        "COND_INTERNAL_RATIO"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "수직 조건(기울기 곱 -1)으로 직선 AB 기울기 산출 및 a=-1 결정 -> 1:3 내분점 P(0,2) 계산 -> 직선 방정식에 대입하여 k=2 산출 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "선분 $AB$를 $1:3$으로 내분하는 점을 지나고, 선분 $AB$에 수직인 직선의 방정식이 $y=2x+k$일 때, $a+k$의 값은?",
+        "solutionDecisiveExcerpt": "기울기 $\\dfrac{a-3}{8}=-\\dfrac12$에서 $a=-1$, 내분점 $P=(0,2)$를 $y=2x+k$에 대입하면 $k=2$, 합은 $1$",
+        "visualAssetChecked": true,
+        "visualType": "SVG_SOLUTION_DIAGRAM"
+      }
+    },
+    {
+      "questionId": 10,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-03",
+      "standardUnit": "원의 방정식",
+      "subUnitKey": "H22-C2-03-TANGENT",
+      "subUnit": "원과 접선",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_TWO_SLOPES",
+      "crossConceptKeys": [
+        "CC_TANGENT_LINE_TO_CIRCLE",
+        "CC_POINT_LINE_DISTANCE",
+        "CC_COPRIME_NATURAL_NUMBERS"
+      ],
+      "conditionKeys": [
+        "COND_TANGENT_TO_CIRCLE",
+        "COND_EXTERNAL_POINT"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "외부점 A(15,0)을 지나는 접선식 설정 -> 원점과의 거리=반지름(3) 접선 공식 전개 -> 기울기 제곱 및 곱 계산 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "인공위성에서 지구에 접선을 그었을 때, 두 접선의 기울기의 곱은 $-\\dfrac ba$이다. $a+b$의 값은?",
+        "solutionDecisiveExcerpt": "$\\dfrac{15|m|}{\\sqrt{m^2+1}}=3$에서 $m^2=\\dfrac1{24}$, 두 기울기 곱은 $-m^2=-\\dfrac1{24}$이므로 $a=24, b=1$, 합은 $25$",
+        "visualAssetChecked": true,
+        "visualType": "PNG_IMAGE"
+      }
+    },
+    {
+      "questionId": 11,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-05",
+      "standardUnit": "집합",
+      "subUnitKey": "H22-C2-05-CORE",
+      "subUnit": "집합 핵심 개념",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_EXACTLY_K_SETS",
+      "crossConceptKeys": [
+        "CC_THREE_SET_INCLUSION_EXCLUSION",
+        "CC_LINEAR_SYSTEM"
+      ],
+      "conditionKeys": [
+        "COND_EXACTLY_TWO"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "합집합 인원수 방정식(x+y+9=90)과 총 관람횟수 방정식(x+2y+27=130)을 수립하여 두 편만 본 학생수 y 소거 연립 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "세 영화 $A$, $B$, $C$의 관람 여부를 조사하였더니... 영화를 두 종류만 감상한 학생 수는?",
+        "solutionDecisiveExcerpt": "$x+y=81$, $x+2y=103$ 두 식을 빼면 $y=22$명 도출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 12,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+      "templateKey": "TT_SHORTEST_ONE_LINE",
+      "crossConceptKeys": [
+        "CC_LINE_SYMMETRY_Y_X",
+        "CC_SHORTEST_DISTANCE_REFLECTION",
+        "CC_DISTANCE_FORMULA"
+      ],
+      "conditionKeys": [
+        "COND_SHORTEST_PATH_ON_LINE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "점 A의 대칭/평행이동 점 B(-5,3), C(-5,1) 결정 -> 직선 y=x에 대한 대칭점 B'(3,-5) 생성 -> B'C 직선거리(최단거리) 산출 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "두 점 $B,C$와 직선 $y=x$ 위를 움직이는 점 $P$에 대하여 $\\overline{BP}+\\overline{CP}$의 최솟값은?",
+        "solutionDecisiveExcerpt": "대칭점 $B'=(3,-5)$를 잡으면 최솟값은 선분 $B'C$의 길이인 $\\sqrt{(-8)^2+6^2}=10$",
+        "visualAssetChecked": true,
+        "visualType": "SVG_SOLUTION_DIAGRAM"
+      }
+    },
+    {
+      "questionId": 13,
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-09",
+      "standardUnit": "행렬과 그 연산",
+      "subUnitKey": "H22-C-09-MATRIX_OPERATION",
+      "subUnit": "행렬의 연산",
+      "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+      "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+      "crossConceptKeys": [
+        "CC_MATRIX_COMMUTATIVITY",
+        "CC_ABSOLUTE_VALUE_RHOMBUS",
+        "CC_PERIMETER_GEOMETRY"
+      ],
+      "conditionKeys": [
+        "COND_COMMUTATIVE_MATRIX"
+      ],
+      "integrationPattern": "CROSS_TOPIC",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "행렬 곱셈 전개로부터 교환법칙 AB=BA 도출 -> 절댓값 방정식 |x|+|y|=3 유도 -> 마름모의 한 변(3*sqrt(2)) 및 둘레(12*sqrt(2)) 계산 (4단계 고난도 융합)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "집합 $X=\\{(x,y)\\mid A^2-B^2=(A+B)(A-B)\\}$가 나타내는 도형의 둘레의 길이는? [4.7점]",
+        "solutionDecisiveExcerpt": "$AB=BA$에서 $|x|+|y|=3$ 도출, 네 꼭짓점 $(3,0), (0,3), (-3,0), (0,-3)$ 마름모의 둘레는 $4\\times 3\\sqrt2 = 12\\sqrt2$",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 14,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-03",
+      "standardUnit": "원의 방정식",
+      "subUnitKey": "H22-C2-03-TANGENT",
+      "subUnit": "원과 접선",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENCY_CONDITION",
+      "crossConceptKeys": [
+        "CC_TANGENT_AT_POINT",
+        "CC_CIRCLE_LINE_TANGENCY",
+        "CC_POINT_LINE_DISTANCE"
+      ],
+      "conditionKeys": [
+        "COND_TANGENT_AT_POINT",
+        "COND_TANGENT_TWO_CIRCLES"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "첫 번째 원 위 접점에서의 접선 x+3y-1=0 결정 -> 두 번째 원의 표준형(중심 (3,-4), 반지름 sqrt(25-k)) 정리 -> 점-직선 거리 공식으로 k=15 도출 (4단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "원 위의 점 $(-2,1)$에서의 접선이 원 $x^2+y^2-6x+8y+k=0$과 접할 때, 실수 $k$의 값은?",
+        "solutionDecisiveExcerpt": "접선 $x+3y-1=0$과 두 번째 원의 중심 $(3,-4)$ 사이의 거리 $\\sqrt{10}$이 반지름과 같으므로 $25-k=10$, $k=15$",
+        "visualAssetChecked": true,
+        "visualType": "SVG_SOLUTION_DIAGRAM"
+      }
+    },
+    {
+      "questionId": 15,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-02",
+      "standardUnit": "직선의 방정식",
+      "subUnitKey": "H22-C2-02-RELATION",
+      "subUnit": "두 직선의 관계",
+      "problemTypeKey": "PT_TRIANGLE_INCENTER_FROM_LINES",
+      "templateKey": "TPL_INCENTER_BY_EQUAL_DISTANCE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_INCENTER",
+        "CC_POINT_LINE_DISTANCE",
+        "CC_SYMMETRIC_FIGURE",
+        "CC_RADICAL_RATIONALIZATION"
+      ],
+      "conditionKeys": [
+        "COND_INCENTER_EQUAL_DISTANCE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "세 직선의 기하 대칭성 파악으로 내심의 x좌표 a=-4 확정 -> 점-직선 거리 공식으로 내접원 반지름 방정식 수립 -> 유리화로 b=20-10*sqrt(3) 산출 (4단계 심화)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "세 직선으로 둘러싸인 삼각형의 내심의 좌표를 $(a,b)$라 할 때, $a+b$의 값은? [4.9점]",
+        "solutionDecisiveExcerpt": "삼각형 대칭축 $x=-4$에서 $a=-4$, 거리 공식 $\\dfrac{6-\\sqrt3b}{2}=b-2$에서 $b=20-10\\sqrt3$, $a+b=16-10\\sqrt3$",
+        "visualAssetChecked": true,
+        "visualType": "SVG_SOLUTION_DIAGRAM"
+      }
+    },
+    {
+      "questionId": 16,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-01",
+      "standardUnit": "평면좌표",
+      "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+      "subUnit": "평면좌표와 거리",
+      "problemTypeKey": "PT_COORD_DISTANCE",
+      "templateKey": "TPL_COORD_DISTANCE_DIRECT",
+      "crossConceptKeys": [
+        "CC_DISTANCE_FORMULA",
+        "CC_RADICAL_SIMPLIFICATION"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "좌표평면 위 두 점 사이의 거리 공식을 직접 적용하여 근호 간소화 및 자연수 계수 합 계산 (1단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "좌표평면 위의 두 점 $(4,-2)$, $(-1,3)$ 사이의 거리가 $a\\sqrt b$일 때, 자연수 $a,b$에 대하여 $a+b$의 값을 구하시오.",
+        "solutionDecisiveExcerpt": "거리 $\\sqrt{(-5)^2+5^2}=\\sqrt{50}=5\\sqrt2$이므로 $a=5, b=2$, $a+b=7$",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 17,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-05",
+      "standardUnit": "집합",
+      "subUnitKey": "H22-C2-05-CORE",
+      "subUnit": "집합 핵심 개념",
+      "problemTypeKey": "PT_SET_AGGREGATE",
+      "templateKey": "TPL_WEIGHTED_SET_SUM_CONDITION",
+      "crossConceptKeys": [
+        "CC_PRIME_NUMBER_PROPERTIES",
+        "CC_SET_ELEMENT_SUM",
+        "CC_EXHAUSTIVE_SEARCH"
+      ],
+      "conditionKeys": [
+        "COND_CONTAIN_ELEMENT",
+        "COND_PRIME_SUM",
+        "COND_MINIMUM"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "소수 전체집합 U에서 원소 3 필수 포함 하에 원소의 합이 5 초과 소수가 되는 후보(7,11,13 불가 판정, 17 적합)를 순차 검증 (3단계)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "집합 $X$의 모든 원소의 합을 $S(X)$라 하자. (가) $3\\in X$이다. (나) $S(X)$는 $5$보다 큰 소수이다.",
+        "solutionDecisiveExcerpt": "$S(X)=17$일 때 $X=\\{2,3,5,7\\}$로 가능하며 5보다 큰 소수이므로 최솟값은 $17$",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 18,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-03",
+      "standardUnit": "원의 방정식",
+      "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+      "subUnit": "원의 방정식",
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_CIRCUMCIRCLE",
+      "crossConceptKeys": [
+        "CC_LINE_SYMMETRY_Y_X",
+        "CC_DISTANCE_FORMULA",
+        "CC_LINEAR_SYSTEM",
+        "CC_CIRCUMCIRCLE_EQUATION"
+      ],
+      "conditionKeys": [
+        "COND_ISOSCELES_TRIANGLE",
+        "COND_SYMMETRY_ON_LINE",
+        "COND_CIRCUMCIRCLE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "대칭점 조건과 거리식 연립으로 점 A(4,2), B(0,4) 결정 -> 직선 AB와 y=x, y=2x의 교점 D, E 계산 -> 세 점 O, D, E의 외접원 방정식 및 넓이 산출 (5단계 최고난도)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "삼각형 $ODE$의 외접원의 넓이를 $k\\pi$라 하자. $36k$의 값을 구하시오. (단, $O$는 원점이다.) [6점]",
+        "solutionDecisiveExcerpt": "외접원 방정식 $(x-\\frac43)^2+(y-\\frac43)^2=\\frac{32}{9}$에서 $k=\\frac{32}{9}$, $36k=128$",
+        "visualAssetChecked": true,
+        "visualType": "SVG_SOLUTION_DIAGRAM"
+      }
+    },
+    {
+      "questionId": 19,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-05",
+      "standardUnit": "집합",
+      "subUnitKey": "H22-C2-05-CORE",
+      "subUnit": "집합 핵심 개념",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_TWO_SET_INCLUSION_EXCLUSION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_DISCRIMINANT",
+        "CC_VIETA_RELATION",
+        "CC_SET_UNION_CARDINALITY",
+        "CC_CASE_ANALYSIS"
+      ],
+      "conditionKeys": [
+        "COND_NONEMPTY_SET",
+        "COND_UNION_CARDINALITY"
+      ],
+      "integrationPattern": "CROSS_TOPIC",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "두 이차방정식 실근의 판별식(D_A>=0, D_B>=0) 분석 -> 합집합 원소수 2인 원소 개수 분기(1+1, 1+2, 2+1) 전수 조사 -> bc의 값(44, 48, 55) 비교로 최댓값 55, 최솟값 44 서술 (5단계 서술형 킬러)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "두 집합 $A,B$는 공집합이 아니고 $n(A\\cup B)=2$일 때, $bc$의 최댓값과 최솟값을 구하는 과정을 서술하시오. [10점]",
+        "solutionDecisiveExcerpt": "가능한 $bc$의 값은 44, 48, 55이다. 그러므로 $bc$의 최댓값은 55, 최솟값은 44이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 20,
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-03",
+      "standardUnit": "원의 방정식",
+      "subUnitKey": "H22-C2-03-TANGENT",
+      "subUnit": "원과 접선",
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_MULTI_LINE_TANGENT",
+      "crossConceptKeys": [
+        "CC_CIRCLE_AXIS_TANGENT",
+        "CC_POINT_LINE_DISTANCE",
+        "CC_TRAPEZOID_AREA",
+        "CC_PYTHAGOREAN"
+      ],
+      "conditionKeys": [
+        "COND_TANGENT_TO_AXIS",
+        "COND_TANGENT_TO_LINE",
+        "COND_FIRST_QUADRANT"
+      ],
+      "integrationPattern": "CROSS_TOPIC",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "좌표축 및 직선에 동시 접하는 원의 중심 M(r,r)과 접선 거리 공식으로 반지름 1/5, 3/2 도출 -> 직각사다리꼴 구조 파악 -> 피타고라스 정리로 높이 P1P2=7/10 계산 후 사다리꼴 넓이 119/200 도출 (5단계 서술형 킬러)",
+      "auditVerdict": "APPROVED",
+      "readingEvidence": {
+        "sourceTextExcerpt": "사각형 $M_1P_1M_2P_2$의 넓이를 구하는 과정을 서술하시오. (단, $C_1$의 반지름보다 $C_2$의 반지름이 더 크다.) [10점]",
+        "solutionDecisiveExcerpt": "사다리꼴의 넓이를 구하면 $\\dfrac12\\left(\\dfrac15+\\dfrac32\\right)\\cdot\\dfrac7{10}=\\dfrac{119}{200}$이다.",
+        "visualAssetChecked": true,
+        "visualType": "SVG_SOLUTION_DIAGRAM"
+      }
+    }
+  ]
+}
