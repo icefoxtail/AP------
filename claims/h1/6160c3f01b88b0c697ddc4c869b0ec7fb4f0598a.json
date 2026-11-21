@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane40",
   "workerBranch": "work/solution-upgrade-lane-40-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2mid",
@@ -11,17 +11,20 @@
   "sourcePath": "archive/exams/original/high/h1/2mid/24_강남여고_2학기_중간_고1_수학.js",
   "sourceBlobSha": "6160c3f01b88b0c697ddc4c869b0ec7fb4f0598a",
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2024_gangnamgirls_2mid_DEEP_AUDIT.md",
-  "nextQid": 1,
-  "remainingWork": [
-    "Read and audit all Q1-Q24; check problem images and course classification",
-    "Write and verify every required student solution draft"
-  ],
+  "nextQid": null,
+  "remainingWork": [],
   "sourceQuestionCount": 24,
-  "readQuestionCount": 0,
+  "readQuestionCount": 24,
   "decisionCounts": {
-    "KEEP": 0,
+    "KEEP": 24,
     "UPGRADE": 0,
     "HOLD": 0,
-    "UNREAD": 24
-  }
+    "UNREAD": 0
+  },
+  "completedUpgradeQids": [],
+  "auditStatus": "EXAM_AUDIT_COMPLETE",
+  "draftStatus": "EXAM_DRAFT_COMPLETE",
+  "visualStatus": "VISUAL_HOLD",
+  "goldenNegativeStatus": "NOT_RUN",
+  "auditCommitSha": "7ed38325f717dacd17e7d744952aa54090a15262"
 }
