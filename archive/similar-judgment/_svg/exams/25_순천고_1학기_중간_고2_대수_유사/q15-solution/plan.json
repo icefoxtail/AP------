@@ -1,0 +1,173 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sOV",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "V"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sVP1",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "V",
+          "P1"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sP1P2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "P1",
+          "P2"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sOV",
+      "refs": [
+        "O",
+        "V"
+      ]
+    },
+    {
+      "id": "sVP1",
+      "refs": [
+        "V",
+        "P1"
+      ]
+    },
+    {
+      "id": "sP1P2",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "V",
+    "P1",
+    "P2"
+  ],
+  "coordinateLabels": [
+    "O",
+    "V",
+    "P1",
+    "P2"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "최댓값, 최솟값",
+      "mappedTo": [
+        "O",
+        "V",
+        "P1",
+        "P2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "이차함수 g(x)=x^2-4x+2 꼭짓점과 합성 지수함수 최댓값 최솟값"
+  ],
+  "caption": "이차함수 g(x)=x^2-4x+2 꼭짓점과 합성 지수함수 최댓값 최솟값"
+}
