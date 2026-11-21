@@ -1,0 +1,253 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sA1B1",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A1",
+          "B1"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sB1C1",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "B1",
+          "C1"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sC1A2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "C1",
+          "A2"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sA2B2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A2",
+          "B2"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sB2C2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "B2",
+          "C2"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sA1B1",
+      "refs": [
+        "A1",
+        "B1"
+      ]
+    },
+    {
+      "id": "sB1C1",
+      "refs": [
+        "B1",
+        "C1"
+      ]
+    },
+    {
+      "id": "sC1A2",
+      "refs": [
+        "C1",
+        "A2"
+      ]
+    },
+    {
+      "id": "sA2B2",
+      "refs": [
+        "A2",
+        "B2"
+      ]
+    },
+    {
+      "id": "sB2C2",
+      "refs": [
+        "B2",
+        "C2"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A1",
+    "B1",
+    "C1",
+    "A2",
+    "B2",
+    "C2"
+  ],
+  "coordinateLabels": [
+    "A1",
+    "B1",
+    "C1",
+    "A2",
+    "B2",
+    "C2"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "55, 65",
+      "mappedTo": [
+        "A1",
+        "B1",
+        "C1",
+        "A2",
+        "B2",
+        "C2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 각 55, 65, 60 ASA 합동 대응"
+  ],
+  "caption": "세 각 55, 65, 60 ASA 합동 대응"
+}
