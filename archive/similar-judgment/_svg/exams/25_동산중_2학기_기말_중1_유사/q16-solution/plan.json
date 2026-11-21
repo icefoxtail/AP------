@@ -1,0 +1,93 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sOP",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "P"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "P"
+  ],
+  "coordinateLabels": [
+    "O",
+    "P"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "(0, 0), (a, b), 순서쌍, 원점",
+      "mappedTo": [
+        "O",
+        "P"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "원점 (0, 0) 및 순서쌍 (a, b) 좌표평면 사분면 정의"
+  ],
+  "caption": "원점 (0, 0) 및 순서쌍 (a, b) 좌표평면 사분면 정의"
+}

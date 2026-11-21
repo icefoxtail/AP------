@@ -1,0 +1,173 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "30"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "J0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "J",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "40"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sOM",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "M"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sMJ0",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "M",
+          "J0"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sJ0J",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "J0",
+          "J"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sOM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "sMJ0",
+      "refs": [
+        "M",
+        "J0"
+      ]
+    },
+    {
+      "id": "sJ0J",
+      "refs": [
+        "J0",
+        "J"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "M",
+    "J0",
+    "J"
+  ],
+  "coordinateLabels": [
+    "O",
+    "M",
+    "J0",
+    "J"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "(0, 0), (30, 2), (10, 0), 30",
+      "mappedTo": [
+        "O",
+        "M",
+        "J0",
+        "J"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "출발 시각 (0, 0), (10, 0) 및 도달 좌표 (30, 2), 30분 해석"
+  ],
+  "caption": "출발 시각 (0, 0), (10, 0) 및 도달 좌표 (30, 2), 30분 해석"
+}

@@ -1,0 +1,133 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sOT",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "T"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sTV",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "T",
+          "V"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sOT",
+      "refs": [
+        "O",
+        "T"
+      ]
+    },
+    {
+      "id": "sTV",
+      "refs": [
+        "T",
+        "V"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "T",
+    "V"
+  ],
+  "coordinateLabels": [
+    "O",
+    "T",
+    "V"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "속력, 시간, 직선",
+      "mappedTo": [
+        "O",
+        "T",
+        "V"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "시간 및 속력 변화 그래프 직선 모양"
+  ],
+  "caption": "시간 및 속력 변화 그래프 직선 모양"
+}

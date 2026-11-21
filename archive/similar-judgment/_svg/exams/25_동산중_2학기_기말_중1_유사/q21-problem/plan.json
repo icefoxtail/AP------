@@ -1,0 +1,93 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sPO",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "P",
+          "O"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sPO",
+      "refs": [
+        "P",
+        "O"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "P",
+    "O"
+  ],
+  "coordinateLabels": [
+    "P",
+    "O"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y = ax, -4, 3",
+      "mappedTo": [
+        "P",
+        "O"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "정비례 y = ax 및 교점 (-4, 3)"
+  ],
+  "caption": "정비례 y = ax 및 교점 (-4, 3)"
+}
