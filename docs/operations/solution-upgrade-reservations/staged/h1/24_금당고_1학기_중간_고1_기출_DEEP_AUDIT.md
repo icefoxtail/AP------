@@ -1,6 +1,6 @@
 # 24_금당고 고1 1학기 중간 — 문항별 감사
 
-원본 `archive/exams/original/high/h1/1mid/24_금당고_1학기_중간_고1_기출.js` SHA `a84af78e324fe3c516dd98a98fa43a452b781347`, 공통수학1, 19문항. KEEP 18, HOLD 1, UPGRADE 0, UNREAD 0. EXAM_AUDIT_COMPLETE=true(문항별 1차), EXAM_DRAFT_COMPLETE=false(HOLD 잔여). 시각·Golden·Negative·렌더 NOT_RUN, 출고 PASS 아님.
+원본 `archive/exams/original/high/h1/1mid/24_금당고_1학기_중간_고1_기출.js` SHA `a84af78e324fe3c516dd98a98fa43a452b781347`, 공통수학1, 19문항. KEEP 18, HOLD 1, UPGRADE 0, UNREAD 0. EXAM_AUDIT_COMPLETE=true(19문항 원본 대조), EXAM_DRAFT_COMPLETE=true(UPGRADE 없음). q13 VISUAL_HOLD·SVG_REQUEST, Golden·Negative·렌더 NOT_RUN, 출고 PASS 아님.
 
 ## q1 — KEEP
 
@@ -188,6 +188,8 @@ $i+i^{15}=0$이고 $i+i^2+\cdots+i^{16}=0$이므로 $i^2+i^3+\cdots+i^{14}=-1$�
 $P(1)=16$이므로 정답은 ④이다.
 
 **독립 검산·판정 근거:** h(x)=−(x+a+2)(x−3a−2), 두 근 간격4(a+1), 최대4(a+1)², P(1)=16; 그림 x좌표 확인 필요. 전 조건/그림/독립 증명 검토가 더 필요해 HOLD.
+
+**SVG_REQUEST / VISUAL_HOLD:** 원본 `archive/exams/original/high/h1/1mid/24_금당고_1학기_중간_고1_기출.js` q13의 `image=assets/images/24_금당고_1학기_중간_고1_기출/q13.png`, `solutionImage=assets/images/24_금당고_1학기_중간_고1_기출/q13-solution.svg`. main에서 문제 PNG를 fetch한 결과 404여서 그림의 실제 교점 순서와 곡선 방향을 검사할 수 없다. 엔진 `archive/tools/geometry-equation/` 그래프 가이드에 따라 SVG 담당에게 원본 회복·엔진 출력·PNG 실물 검산 요청. 텍스트 대수 해설은 h(x)=−(x+a+2)(x−3a−2), P(1)=16으로 별도 검산됨. 본 lane SVG/JS 미수정.
 
 ## q14 — KEEP
 
