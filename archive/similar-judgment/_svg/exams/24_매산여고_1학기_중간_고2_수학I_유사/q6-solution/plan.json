@@ -1,0 +1,173 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sOX1",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "X1"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sX1X2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "X1",
+          "X2"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sX2V",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "X2",
+          "V"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sOX1",
+      "refs": [
+        "O",
+        "X1"
+      ]
+    },
+    {
+      "id": "sX1X2",
+      "refs": [
+        "X1",
+        "X2"
+      ]
+    },
+    {
+      "id": "sX2V",
+      "refs": [
+        "X2",
+        "V"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "X1",
+    "X2",
+    "V"
+  ],
+  "coordinateLabels": [
+    "O",
+    "X1",
+    "X2",
+    "V"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "지수함수, 부등식",
+      "mappedTo": [
+        "O",
+        "X1",
+        "X2",
+        "V"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "포물선 f(x)와 직선 g(x) 교점 사이 영역 (1, 6)"
+  ],
+  "caption": "포물선 f(x)와 직선 g(x) 교점 사이 영역 (1, 6)"
+}
