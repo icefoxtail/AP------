@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane10",
   "workerBranch": "work/solution-upgrade-lane-10-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2final",
@@ -12,10 +12,28 @@
   "sourceBlobSha": "5cbedc8febf32259794867c5b08bc4ffaa489331",
   "sourceQuestionCount": 22,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2024_jeil_2final_DEEP_AUDIT.md",
-  "draftedQuestionIds": [],
-  "remainingWork": [
-    "Q1-Q22 full deep audit and all upgraded student solutions"
+  "draftedQuestionIds": [
+    14
   ],
-  "nextQid": 1,
-  "stateNotes": "2025 2final and previous 2024 Gangnam Girls, Geumdang, Maesan Girls completed; selected next unclaimed exam in global stage."
+  "remainingWork": [],
+  "nextQid": null,
+  "stateNotes": "22/22 all source problem/choices/answer/solution read and stored; q14 rationalized student solution independently verified; remote MD readback.",
+  "auditQuestionCount": 22,
+  "readQuestionCount": 22,
+  "decisionCounts": {
+    "KEEP": 21,
+    "UPGRADE": 1,
+    "HOLD": 0,
+    "UNREAD": 0
+  },
+  "studentDraftPaths": [
+    "docs/operations/solution-upgrade-reservations/staged/h1/2024_jeil_2final_q14.md"
+  ],
+  "qualityGates": {
+    "visual": "NOT_RUN",
+    "render": "NOT_RUN",
+    "golden": "NOT_RUN",
+    "negative": "NOT_RUN",
+    "release": "NOT_PASS"
+  }
 }
