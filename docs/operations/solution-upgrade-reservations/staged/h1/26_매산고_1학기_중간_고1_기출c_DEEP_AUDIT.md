@@ -176,7 +176,7 @@ f(1)+g(1)=−6+6=0이다. 정답은 ②이다.
 ## q8 — KEEP
 
 **문제 원문:** 서로 다른 복소수 $z_1, z_2$에 대하여 다음 중 옳은 것만을 있는대로 고른 것은?
- 
+<보기>
 $\text{ㄱ. }(z_1+3)(\overline{z_1}+3)\text{은 실수이다.}$
 $\text{ㄴ. }(z_1-\overline{z_2})(\overline{z_1}+z_2)\text{가 실수이면 }z_1, z_2\text{는 실수이다.}$
 $\text{ㄷ. }z_1\overline{z_1}=z_2\overline{z_2}\text{이면 }z_1=\overline{z_2}\text{이다.}$
@@ -208,7 +208,7 @@ $(z_1-\bar{z}_2)(\bar{z}_1+z_2) = (i-i)(-i-i) = 0 \times (-2i) = 0$이 되어 �
 ## q9 — KEEP
 
 **문제 원문:** $0$이 아닌 두 실수 $a, b$에 대하여 $\dfrac{\sqrt{b}}{\sqrt{a}} = -\sqrt{\dfrac{b}{a}}$ 가 성립할 때, 항상 서로 다른 두 실근을 갖는 이차방정식인 것만을 보기에서 있는대로 고른 것은?
- 
+<보기>
 $\text{ㄱ. } ax^2-x+b=0$
 $\text{ㄴ. } x^2+ax+b=0$
 $\text{ㄷ. } ax^2-bx+1=0$
