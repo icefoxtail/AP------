@@ -1,0 +1,59 @@
+{
+  "qid": 12,
+  "itemFingerprint": "e01725b41271a68e",
+  "solveSteps": [
+    "사탕을 C, 초콜릿을 H라 하고 꺼낸 초콜릿 개수에 따라 경우를 나눈다. (4.4)",
+    "(1) 초콜릿을 $1$개 꺼내는 경우 (사탕 $4$개, 초콜릿 $1$개): 사탕이 $3$개 이상 연속하지 않으려면 H가 정가운데에 오는 `C C H C C`의 $1$가지 위치 패턴만 가능하다.",
+    "서로 다른 사탕 $5$개 중 $4$개를 골라 배열하는 방법: ${}_5P_4 = 120$ $\\implies 1 \\times 120 = 120$가지 (2) 초콜릿을 $2$개 꺼내는 경우 (사탕 $3$개, 초콜릿 $2$개): $5$자리 중 H가 이웃하지 않게 $2$자리를 고르는 방법은 ${}_4C_2 = 6$가지인데, 이 중 `H C C C H`는 사탕이 $3$개 연속되므로 제외한다.",
+    "따라서 가능한 위치 패턴은 `H C C H C`, `H C H C C`, `C H C H C`, `C H C C H`, `C C H C H`의 $5$가지이다.",
+    "서로 다른 사탕 $5$개 중 $3$개를 골라 배열하는 방법: ${}_5P_3 = 60$ $\\implies 5 \\times 60 = 300$가지 $\\therefore 120 + 300 = 420$ (③)."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-07",
+  "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+  "unitEvidence": "주머니 속에 서로 다른 사탕 $5$개와 서로 같은 초콜",
+  "rpmRecordId": "H1-RPM-125",
+  "rpmReason": "Q12(4.4): 조건이 있는 순열 단원의 RPM H1-RPM-125 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q12(4.4): 조건이 있는 순열 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q12(4.4): 조건이 있는 순열 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "사탕은 $2$개까지 연속하여 꺼낼 수 있다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "사탕을 C, 초콜릿을 H라 하고 꺼낸 초콜릿",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q12(4.4): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

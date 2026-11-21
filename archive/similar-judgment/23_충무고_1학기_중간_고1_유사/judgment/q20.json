@@ -1,0 +1,69 @@
+{
+  "qid": 20,
+  "itemFingerprint": "8d369fd4e0c37cb6",
+  "solveSteps": [
+    "$x^2+x+1=0$의 두 근이 $\\alpha, \\beta$이므로 근과 계수의 관계에 의하여 $\\alpha+\\beta=-1$, $\\alpha\\beta=1$이고, $\\alpha^2+\\alpha+1=0$, $\\beta^2+\\beta+1=0$이다. (px)",
+    "따라서 $-\\alpha-1=\\alpha^2=\\beta$, $\\beta^2=\\alpha$이므로 주어진 조건은 $f(\\beta)=-3\\alpha$, $f(\\alpha)=-3\\beta$ 이때 $\\alpha=-1-\\beta$, $\\beta=-1-\\alpha$를 대입하면 $f(\\beta)=3\\beta+3$, $f(\\alpha)=3\\alpha+3$ 즉, 최고차항의 계수가 $1$인 이차식 $f(x)-3x-3$은 $\\alpha, \\beta$를 두 근으로 가지므로 $f(x)-3x-3=x^2+x+1 \\implies f(x)=x^2+4x+4$ 따라서 $f(2)=2^2+4\\cdot 2+4=16$이다."
+  ],
+  "solvedAnswer": "$16$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+  "unitEvidence": "이차방정식 $x^2+x+1=0$의 두 근 $\\alpha",
+  "rpmRecordId": "H1-RPM-039",
+  "rpmReason": "Q20(px): 고차방정식의 풀이 단원의 RPM H1-RPM-039 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+  "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+  "typeReason": "Q20(px): 고차방정식의 풀이 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(px): 고차방정식의 풀이 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2+x+1=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "함숫값",
+        "src": "stem",
+        "quote": "$f(2)$의 값을 구하는 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "인수정리",
+        "src": "solution",
+        "quote": "$\\alpha, \\beta$를 두 근으로 가지므로",
+        "evidenceType": "IMPLIED",
+        "justification": "f(x)-3x-3=0의 두 근이 alpha, beta임을 이용해 식을 세움"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q20(px): 발문과 해설의 풀이 과정을 점검하여 정답 $16$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

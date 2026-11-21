@@ -1,0 +1,75 @@
+{
+  "qid": 5,
+  "itemFingerprint": "8dc38c6ddcb12e3e",
+  "solveSteps": [
+    "$0 < a < 2$에서 점 $P$는 제$1$사분면 위에 있으므로 직사각형 $PQOR$의 가로 길이는 $a$, 세로 길이는 $-3a+6$이다.",
+    "따라서 넓이 $S$는 $S=a(-3a+6)=-3a^2+6a=-3(a-1)^2+3$ $0 < a < 2$에서 꼭짓점 $a=1$이 범위에 속하므로 $S$의 최댓값은 $3$이다.",
+    "따라서 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "그림과 같이 직선 $y=-3x+6$ 위의 점 $P(a,",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q5(PQOR): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+  "typeReason": "Q5(PQOR): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q5(PQOR): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직선 $y=-3x+6$"
+      },
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 $PQOR$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "$S$의 최댓값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "-3(a-1)^2+3",
+        "evidenceType": "IMPLIED",
+        "justification": "넓이 이차식을 표준형으로 변형해 꼭짓점에서 최댓값을 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "범위",
+        "src": "stem",
+        "quote": "$0 < a < 2$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q5(PQOR): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

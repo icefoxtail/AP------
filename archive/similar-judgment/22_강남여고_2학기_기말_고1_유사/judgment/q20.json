@@ -1,0 +1,57 @@
+{
+  "qid": 20,
+  "itemFingerprint": "dedb7a361391c256",
+  "solveSteps": [
+    "$(f \\circ f)(x) = \\dfrac{4 \\cdot \\dfrac{4x - 9}{x + a} - 9}{\\dfrac{4x - 9}{x + a} + a} = \\dfrac{4(4x - 9) - 9(x + a)}{(4x - 9) + a(x + a)} = \\dfrac{7x - 9a - 36}{(a + 4)x + a^2 - 9}$ $(f \\circ f)(x) = x$에서 분모가 $0$이 아닌 $x$에 대하여 $(a + 4)x^2 + (a^2 - 9)x = 7x - 9a - 36$ $(a + 4)x^2 + (a^2 - 16)x + 9(a + 4) = 0$ $a > 0$이므로 $a + 4 \\ne 0$이고 양변을 $a + 4$로 나누면 $x^2 + (a - 4)x + 9 = 0$ 실수 $k$가 오직 한 개 존재하려면 이 이차방정식이 중근을 가져야 하므로 판별식 $D = 0$이다. (5.2)",
+    "$D = (a - 4)^2 - 36 = 0 \\implies a - 4 = \\pm 6$ $a > 0$이므로 $a = 10$ 이때 $(x + 3)^2 = 0$이므로 중근은 $k = -3$이다.",
+    "($a = 10, k = -3$일 때 $k + a = 7 \\ne 0$, $f(k) + a = -3 + 10 = 7 \\ne 0$으로 모두 정의된다.) $\\therefore a + k = 10 + (-3) = 7$ (⑤)."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-03",
+  "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+  "unitEvidence": "함수 $f(x) = \\dfrac{4x - 9}{x + ",
+  "rpmRecordId": "H1-RPM-102",
+  "rpmReason": "Q20(5.2): 합성함수 단원의 RPM H1-RPM-102 유형에 해당한다.",
+  "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+  "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+  "typeReason": "Q20(5.2): 합성함수 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(5.2): 합성함수 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "은? (단, $a > 0$이다.) [5.2점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$(f \\circ f)(x) = \\dfrac{",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q20(5.2): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

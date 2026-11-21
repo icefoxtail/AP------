@@ -1,0 +1,74 @@
+{
+  "qid": 14,
+  "itemFingerprint": "850dafbf0233d402",
+  "solveSteps": [
+    "Q14 문제의 조건(ac)에 맞추어 식을 세운다.",
+    "$u=x-\\frac{1}{2}$로 치환하면 $x=u+\\frac{1}{2}$이므로 좌변에 대입하여 정리하면 $\\begin{aligned} 4\\left(u+\\frac{1}{2}\\right)^3-2\\left(u+\\frac{1}{2}\\right)^2+3\\left(u+\\frac{1}{2}\\right)+\\frac{1}{2} &= 4\\left(u^3+\\frac{3}{2}u^2+\\frac{3}{4}u+\\frac{1}{8}\\right)-2\\left(u^2+u+\\frac{1}{4}\\right)+3u+2 \\ &= 4u^3+4u^2+4u+2 \\end{aligned}$ 계수를 비교하면 $a=4, b=4, c=4, d=2$이므로 $ac+b+d=4\\cdot 4+4+2=22$ 따라서 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-IDENTITY",
+  "unitEvidence": "모든 실수 $x$에 대하여 등식 $4x^3-2x^2+3",
+  "rpmRecordId": "H1-RPM-007",
+  "rpmReason": "Q14(ac): 항등식과 계수비교 단원의 RPM H1-RPM-007 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+  "typeReason": "Q14(ac): 항등식과 계수비교 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(ac): 항등식과 계수비교 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "등식",
+        "src": "stem",
+        "quote": "모든 실수 $x$에 대하여 등식"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$ac+b+d$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "치환",
+        "src": "solution",
+        "quote": "$u=x-\\frac{1}{2}$로 치환하면",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "계수비교",
+        "src": "solution",
+        "quote": "계수를 비교하면 $a=4, b=4, c=4, d=2$이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $a, b, c, d$에 대하여"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q14(ac): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

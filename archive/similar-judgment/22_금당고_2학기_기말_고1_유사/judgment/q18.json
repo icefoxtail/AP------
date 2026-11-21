@@ -1,0 +1,59 @@
+{
+  "qid": 18,
+  "itemFingerprint": "75d2b5f29bac51aa",
+  "solveSteps": [
+    "교점의 좌표를 $(x, y)$라 하면 $x \\ge 0, y \\ge 0$이고 $x^2 + n = 8y$, $y^2 + n = 8x$ 두 식을 변변 빼면 $x^2 - y^2 = 8(y - x) \\implies (x - y)(x + y + 8) = 0$ $x \\ge 0, y \\ge 0$이므로 $x + y + 8 > 0$, 따라서 $x = y$이다.",
+    "$x = y$를 첫째 식에 대입하면 $x^2 - 8x + n = 0$ 양의 정수 $n$에 대하여 $1 \\le n < 16$이면 두 근 $4 \\pm \\sqrt{16 - n}$이 모두 양수이므로 교점이 $2$개이다.",
+    "$n = 16$이면 $(x - 4)^2 = 0$으로 유일한 근 $x = 4 \\ge 0$을 가지므로 교점이 $1$개이다.",
+    "$n > 16$이면 실근이 없다.",
+    "$\\therefore n = 16$."
+  ],
+  "solvedAnswer": "$16$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-05",
+  "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
+  "unitEvidence": "단답형 1. 두 집합 $A = \\left{(x, y) ",
+  "rpmRecordId": "H1-RPM-119",
+  "rpmReason": "Q18(16): 무리함수의 뜻과 계산 단원의 RPM H1-RPM-119 유형에 해당한다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+  "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+  "typeReason": "Q18(16): 무리함수의 뜻과 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(16): 무리함수의 뜻과 계산 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "도록 하는 양의 정수 $n$의 값은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "교점의 좌표를 $(x, y)$라 하면 $x \\",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q18(16): 발문과 해설의 풀이 과정을 점검하여 정답 $16$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

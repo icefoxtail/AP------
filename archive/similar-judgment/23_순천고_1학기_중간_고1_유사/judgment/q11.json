@@ -1,0 +1,79 @@
+{
+  "qid": 11,
+  "itemFingerprint": "361bb4715c254df4",
+  "solveSteps": [
+    "절댓값 안의 식이 $0$이 되는 $x=3$을 기준으로 경우를 나눈다.",
+    "(i) $x \\ge 3$일 때: $x-3=m(x+1)-2 \\implies (1-m)x=m+1$ $m=1$이면 $0=2$로 해가 없다.",
+    "$m<1$일 때 해 $x=\\frac{m+1}{1-m} \\ge 3$이어야 하므로 $m+1 \\ge 3-3m \\implies 4m \\ge 2 \\implies m \\ge \\frac{1}{2}$ ($m>1$이면 $m+1 \\le 3-3m \\implies m \\le \\frac{1}{2}$로 모순.) 따라서 $\\frac{1}{2} \\le m < 1$이다.",
+    "(ii) $x < 3$일 때: $3-x=m(x+1)-2 \\implies (m+1)x=5-m$ $m=-1$이면 $0=6$으로 해가 없다.",
+    "$m>-1$일 때 해 $x=\\frac{5-m}{m+1} < 3$이어야 하므로 $5-m < 3m+3 \\implies 4m > 2 \\implies m > \\frac{1}{2}$ ($m<-1$이면 $5-m > 3m+3 \\implies m < \\frac{1}{2}$로 항상 성립.) 따라서 $m<-1$ 또는 $m>\\frac{1}{2}$이다.",
+    "서로 다른 두 실근을 가지려면 두 구간에서 각각 해가 존재해야 하므로 공통 범위는 $\\frac{1}{2} < m < 1$이다.",
+    "따라서 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-08",
+  "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
+  "unitEvidence": "방정식 $|x-3|=m(x+1)-2$가 서로 다른 두 ",
+  "rpmRecordId": "H1-RPM-045",
+  "rpmReason": "Q11(ii): 연립부등식 단원의 RPM H1-RPM-045 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+  "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+  "typeReason": "Q11(ii): 연립부등식 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q11(ii): 연립부등식 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "절댓값",
+        "src": "stem",
+        "quote": "방정식 $|x-3|=m(x+1)-2$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "범위",
+        "src": "stem",
+        "quote": "실수 $m$의 값의 범위는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "경우분류",
+        "src": "solution",
+        "quote": "$x=3$을 기준으로 경우를 나눈다.",
+        "evidenceType": "IMPLIED",
+        "justification": "절댓값 기호를 벗기기 위해 x>=3과 x<3으로 나누어 방정식을 풂"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "서로 다른 두 실근을 갖도록 하는"
+      },
+      {
+        "term": "매개변수",
+        "src": "stem",
+        "quote": "실수 $m$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q11(ii): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

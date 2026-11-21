@@ -1,0 +1,77 @@
+{
+  "qid": 10,
+  "itemFingerprint": "c369c60acd127d54",
+  "solveSteps": [
+    "이차방정식 $x^2-6x+a=0$이 허근을 가지려면 판별식 $D < 0$이어야 한다.",
+    "$\\frac{D}{4} = (-3)^2-a = 9-a < 0 \\implies a > 9$ $a > 9$이므로 $|a|=a$이고 $\\sqrt{(a-10)^2}=|a-10|$이므로 주어진 방정식은 $|a-10|+a=18$ (i) $9 < a < 10$일 때: $(10-a)+a=10 \\neq 18$이므로 해가 없다.",
+    "(ii) $a \\ge 10$일 때: $(a-10)+a=18 \\implies 2a=28 \\implies a=14$ ($a \\ge 10$ 만족).",
+    "따라서 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-DISCRIMINANT",
+  "unitEvidence": "이차방정식 $x^2-6x+a=0$이 허근을 가질 때, ",
+  "rpmRecordId": "H1-RPM-028",
+  "rpmReason": "Q10(10): 판별식과 근의 조건 단원의 RPM H1-RPM-028 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+  "typeReason": "Q10(10): 판별식과 근의 조건 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q10(10): 판별식과 근의 조건 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2-6x+a=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "해",
+        "src": "stem",
+        "quote": "방정식 $\\sqrt{(a-10)^2}+|a|=18$의 해는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D < 0$이어야 한다.",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "경우분류",
+        "src": "solution",
+        "quote": "(i) $9 < a < 10$일 때:",
+        "evidenceType": "IMPLIED",
+        "justification": "절댓값 안의 식 a-10의 부호가 바뀌는 기준 a=10으로 구간을 나눔"
+      }
+    ],
+    "condition": [
+      {
+        "term": "허근",
+        "src": "stem",
+        "quote": "허근을 가질 때"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q10(10): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

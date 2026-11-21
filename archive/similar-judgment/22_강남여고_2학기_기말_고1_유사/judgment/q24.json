@@ -1,0 +1,57 @@
+{
+  "qid": 24,
+  "itemFingerprint": "1b8608f833f71c48",
+  "solveSteps": [
+    "같은 종류의 구슬 $10$개를 일렬로 나열하면 구슬과 구슬 사이의 틈은 $9$곳이다.",
+    "$6$개의 상자에 각각 적어도 $1$개의 구슬을 넣는 것은, $9$곳의 틈 중에서 $5$곳을 경계로 골라 $6$개의 비어 있지 않은 묶음으로 나누고 차례로 $1$번부터 $6$번 상자에 넣는 것과 일대일대응한다.",
+    "$\\therefore {}_9C_5 = {}_9C_4 = \\dfrac{9 \\times 8 \\times 7 \\times 6}{4 \\times 3 \\times 2 \\times 1} = 126$."
+  ],
+  "solvedAnswer": "$126$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-08",
+  "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
+  "unitEvidence": "서술형 4. 서로 다른 상자 $6$개가 일렬로 놓여 있",
+  "rpmRecordId": "H1-RPM-128",
+  "rpmReason": "Q24(10): 조합 단원의 RPM H1-RPM-128 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+  "templateKey": "TPL_COMBINATION_SELECTION",
+  "typeReason": "Q24(10): 조합 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q24(10): 조합 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "도 $1$개의 구슬을 넣어야 한다.) [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "같은 종류의 구슬 $10$개를 일렬로 나열하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q24(10): 발문과 해설의 풀이 과정을 점검하여 정답 $126$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

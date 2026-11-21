@@ -1,0 +1,56 @@
+{
+  "qid": 9,
+  "itemFingerprint": "a505bf4dc32e9d3c",
+  "solveSteps": [
+    "$f(x) = b + \\dfrac{c - ab}{x + a}$라 하고 $d = c - ab$ ($d \\ne 0$, 다항함수가 아니므로)라 놓자. (bx)",
+    "$f(3 - x) + f(3 + x) = 2b + \\dfrac{d}{3 + a - x} + \\dfrac{d}{3 + a + x} = 2b + \\dfrac{2d(a + 3)}{(a + 3)^2 - x^2} = 8$ 이 등식이 정의되는 모든 $x$에 대해 성립하고 $d \\ne 0$이므로 $a + 3 = 0 \\implies a = -3$, $2b = 8 \\implies b = 4$ 점 $(4, 7)$을 지나므로 $f(4) = \\dfrac{4(4) + c}{4 - 3} = 16 + c = 7 \\implies c = -9$ ($d = -9 - (-3)(4) = 3 \\ne 0$이므로 조건을 만족한다.) $\\therefore |a| + |b| + |c| = |-3| + |4| + |-9| = 3 + 4 + 9 = 16$ (②)."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-04",
+  "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+  "unitEvidence": "$f(3 - x)$와 $f(3 + x)$가 모두 정의되",
+  "rpmRecordId": "H1-RPM-108",
+  "rpmReason": "Q9(bx): 유리함수의 그래프 단원의 RPM H1-RPM-108 유형에 해당한다.",
+  "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+  "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+  "typeReason": "Q9(bx): 유리함수의 그래프 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q9(bx): 유리함수의 그래프 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$a, b, c$는 상수이다.) [4.2점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$f(x) = b + \\dfrac{c - ab",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q9(bx): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

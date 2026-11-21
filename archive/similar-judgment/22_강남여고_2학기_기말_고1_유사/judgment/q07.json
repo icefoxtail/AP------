@@ -1,0 +1,56 @@
+{
+  "qid": 7,
+  "itemFingerprint": "682cd9ad4ad2a7d8",
+  "solveSteps": [
+    "A $\\to$ B 이동: $5$가지 B $\\to$ C 이동: $n$가지 C $\\to$ B 이동: 직전에 이용한 도로 $1$개를 제외하므로 $(n - 1)$가지 곱의 법칙에 의하여 $5 \\times n \\times (n - 1) = 150 \\implies n(n - 1) = 30$ $n^2 - n - 30 = 0 \\implies (n - 6)(n + 5) = 0$ $n$은 자연수이므로 $n = 6$이다.",
+    "$\\therefore$ ④."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-06",
+  "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+  "unitEvidence": "두 도시 A, B를 연결하는 도로는 $5$가지, 두 도",
+  "rpmRecordId": "H1-RPM-122",
+  "rpmReason": "Q7(150): 경우의 수의 기본 원리 단원의 RPM H1-RPM-122 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+  "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+  "typeReason": "Q7(150): 경우의 수의 기본 원리 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q7(150): 경우의 수의 기본 원리 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "도로는 다시 이용하지 않는다.) [3.6점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "A $\\to$ B 이동: $5$가지 B $\\t",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q7(150): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

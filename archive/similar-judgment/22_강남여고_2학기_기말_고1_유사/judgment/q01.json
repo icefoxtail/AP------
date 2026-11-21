@@ -1,0 +1,62 @@
+{
+  "qid": 1,
+  "itemFingerprint": "7f3279d9364152d3",
+  "solveSteps": [
+    "$15$ 이상 $30$ 이하의 소수는 $17, 19, 23, 29$이므로 $A = {17, 19, 23, 29}$이다.",
+    "ㄱ.",
+    "$19 \\in A$ (참) ㄴ.",
+    "$21 = 3 \\times 7$이므로 소수가 아니다 $\\implies 21 \\notin A$ (거짓) ㄷ.",
+    "${17, 23}$은 $A$의 원소가 아니라 부분집합이므로 ${17, 23} \\subset A$이다 (거짓) ㄹ.",
+    "공집합 $\\varnothing$은 모든 집합의 부분집합이므로 $\\varnothing \\subset A$ (참) ㅁ.",
+    "$29 \\in A$이므로 ${29} \\subset A$ (참) ㅂ.",
+    "$27 = 3^3 \\notin A$이므로 ${23, 27} \\not\\subset A$ (거짓) $\\therefore$ 옳은 것은 ㄱ, ㄹ, ㅁ (②)."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-01",
+  "subUnitKey": "H15-SB-01-SET_COUNT",
+  "unitEvidence": "집합 $A = {x \\mid x\\text{는 } 15\\",
+  "rpmRecordId": "H1-RPM-081",
+  "rpmReason": "Q1(15): 집합의 원소의 개수 단원의 RPM H1-RPM-081 유형에 해당한다.",
+  "problemTypeKey": "PT_SET_CARDINALITY",
+  "templateKey": "TPL_SET_CARDINALITY_DIRECT",
+  "typeReason": "Q1(15): 집합의 원소의 개수 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q1(15): 집합의 원소의 개수 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$ ㅂ. ${23, 27} \\subset A$"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$15$ 이상 $30$ 이하의 소수는 $17,",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q1(15): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

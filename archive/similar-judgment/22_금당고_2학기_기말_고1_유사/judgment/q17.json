@@ -1,0 +1,64 @@
+{
+  "qid": 17,
+  "itemFingerprint": "75c3bcf922221268",
+  "solveSteps": [
+    "유리함수에서 $y \\ne 4$이고 $x = \\dfrac{2y}{y - 4}$이다. (4.5)",
+    "무리함수에서 $w = \\sqrt{2x - 4t} = y + t \\ge 0$이므로 $2x = w^2 + 4t$이고 $t = w - y$이다.",
+    "대입하면 $w^2 + 4(w - y) = \\dfrac{4y}{y - 4} \\implies (w + 2)^2 = 4 + 4y + \\dfrac{4y}{y - 4} = \\dfrac{4(y^2 - 2y - 4)}{y - 4}$ $R(y) = \\dfrac{4(y^2 - 2y - 4)}{y - 4}$라 하면 $w \\ge 0$이므로 $R(y) \\ge 4$여야 한다.",
+    "$R(y) - 4 = \\dfrac{4y(y - 3)}{y - 4} \\ge 0 \\implies 0 \\le y \\le 3$ 또는 $y > 4$ 이때 $t = T(y) = \\sqrt{R(y)} - 2 - y$이다.",
+    "각 허용 구간에서 $y_2 > y_1$이면 $R(y_2) - R(y_1) = 4(y_2 - y_1)\\left(1 - \\dfrac{4}{(y_1 - 4)(y_2 - 4)}\\right) < 4(y_2 - y_1)$이고 $\\sqrt{R(y_2)} + \\sqrt{R(y_1)} \\ge 4$이므로 $\\sqrt{R(y_2)} - \\sqrt{R(y_1)} < y_2 - y_1 \\implies T(y_2) < T(y_1)$ (즉 $T(y)$는 감소한다).",
+    "- $y > 4$ 구간: $y \\to 4^+$일 때 $T(y) \\to +\\infty$, $y \\to +\\infty$일 때 $T(y) \\to -\\infty$이므로 모든 실수 $t$에 대해 교점이 정확히 $1$개 존재한다.",
+    "- $0 \\le y \\le 3$ 구간: $(y + 2)^2 - R(y) = \\dfrac{4y(y^2 - 4y - 4)}{y - 4} \\ge 0$ (since $0 \\le y \\le 3$에서 $y-4 < 0$이고 $y^2 - 4y - 4 < 0$)이므로 $w = \\sqrt{R(y)} - 2 \\le y$를 항상 만족하고 $w \\ge 0$이다.",
+    "$T(y)$가 감소하므로 이 구간에서 교점이 $1$개 더 생기는 $t$의 범위는 $[T(3), T(0)]$이다.",
+    "$T(0) = \\sqrt{4} - 2 - 0 = 0$, $T(3) = \\sqrt{4} - 2 - 3 = -3$ 따라서 $-3 \\le t \\le 0$이고 $M = 0$, $m = -3$이다.",
+    "$\\therefore M - 2m = 0 - 2(-3) = 6$ (④)."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-05",
+  "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+  "unitEvidence": "함수 $y = \\dfrac{4x}{x - 2}$의 그래",
+  "rpmRecordId": "H1-RPM-115",
+  "rpmReason": "Q17(4.5): 무리함수의 그래프 단원의 RPM H1-RPM-115 유형에 해당한다.",
+  "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+  "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+  "typeReason": "Q17(4.5): 무리함수의 그래프 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(4.5): 무리함수의 그래프 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "하자. $M - 2m$의 값은? [4.5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "유리함수에서 $y \\ne 4$이고 $x = \\",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q17(4.5): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

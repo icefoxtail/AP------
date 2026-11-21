@@ -1,0 +1,66 @@
+{
+  "question": {
+    "status": "EXEMPT",
+    "reason": "발문에 그림이 없는 유리함수와 매개변수 무리함수의 교점 개수 문항이다."
+  },
+  "solution": {
+    "capability": "multi-curve-figure-v1",
+    "graphPlan": {
+      "family": "multi-curve",
+      "curves": [
+        {
+          "id": "rat",
+          "kind": "RATIONAL",
+          "numerator": [
+            "0",
+            "4"
+          ],
+          "denominator": [
+            "-2",
+            "1"
+          ],
+          "domain": [
+            "-4",
+            "10"
+          ]
+        },
+        {
+          "id": "sq",
+          "kind": "SQRT",
+          "radicand": [
+            "0",
+            "2"
+          ],
+          "amplitude": "1",
+          "sign": 1,
+          "offset": "0",
+          "domain": [
+            "0",
+            "10"
+          ]
+        }
+      ],
+      "overlays": {
+        "points": [
+          {
+            "id": "O",
+            "x": "0",
+            "y": "0",
+            "label": "(0,0)"
+          }
+        ]
+      },
+      "axisTickValues": {
+        "x": [
+          "0",
+          "2"
+        ],
+        "y": [
+          "0",
+          "4"
+        ]
+      }
+    },
+    "caption": "t=0일 때 y=4x/(x-2)와 y=√(2x)는 (0,0)과 y>4인 점에서 서로 다른 두 교점을 갖는다."
+  }
+}

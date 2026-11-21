@@ -1,0 +1,76 @@
+{
+  "qid": 7,
+  "itemFingerprint": "f5480f82a9a9664b",
+  "solveSteps": [
+    "$(x+a)(x+b)=x^2+(a+b)x+ab$이므로 $(x^2+2x+1){x^2+(a+b)x+ab}$ 에서 $x^3$의 계수는 $(a+b)+2=5 \\implies a+b=3$이고, $x^2$의 계수는 $ab+2(a+b)+1=11 \\implies ab+6+1=11 \\implies ab=4$이다.",
+    "따라서 $a^3+b^3=(a+b)^3-3ab(a+b)=3^3-3\\cdot 4\\cdot 3=27-36=-9$ 그러므로 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+  "unitEvidence": "다항식 $(x^2+2x+1)(x+a)(x+b)$의 전개",
+  "rpmRecordId": "H1-RPM-001",
+  "rpmReason": "Q7(11): 다항식의 기본 연산 단원의 RPM H1-RPM-001 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+  "typeReason": "Q7(11): 다항식의 기본 연산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q7(11): 다항식의 기본 연산 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $(x^2+2x+1)(x+a)(x+b)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "$a^3+b^3$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "계수비교",
+        "src": "stem",
+        "quote": "$x^3$의 계수가 $5$이고",
+        "evidenceType": "IMPLIED",
+        "justification": "전개식의 특정 차수 계수를 비교해 a+b와 ab를 구함"
+      },
+      {
+        "term": "곱셈공식",
+        "src": "solution",
+        "quote": "(a+b)^3-3ab(a+b)",
+        "evidenceType": "IMPLIED",
+        "justification": "세제곱 합 곱셈공식 변형을 적용함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "$a, b$는 상수이다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q7(11): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

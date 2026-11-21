@@ -1,0 +1,46 @@
+{
+  "stem": {
+    "status": "EXEMPT",
+    "reason": "발문에는 그림이 없고 해설에서만 x축과 만나지 않는 예시 포물선을 제시한다."
+  },
+  "solution": {
+    "capability": "polynomial-spike-v1",
+    "graphPlan": {
+      "family": "polynomial",
+      "coefficients": [
+        "5",
+        "2",
+        "1"
+      ],
+      "sourceDomain": {
+        "kind": "ALL_REALS"
+      },
+      "domain": [
+        -4,
+        2
+      ],
+      "viewport": [
+        -4,
+        2,
+        -1,
+        10
+      ],
+      "requiredPoints": [
+        {
+          "id": "V",
+          "x": -1,
+          "y": 4
+        }
+      ],
+      "axisTickValues": {
+        "x": [
+          -1
+        ],
+        "y": [
+          4
+        ]
+      }
+    },
+    "caption": "예: a=-1일 때 y=x^2+2x+5의 그래프는 x축 위쪽에 있어 x축과 만나지 않는다."
+  }
+}

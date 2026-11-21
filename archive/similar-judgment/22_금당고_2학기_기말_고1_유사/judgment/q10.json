@@ -1,0 +1,56 @@
+{
+  "qid": 10,
+  "itemFingerprint": "f9db40cfae90396e",
+  "solveSteps": [
+    "Q10 문제의 조건(4.2)에 맞추어 식을 세운다.",
+    "공이 들어갈 $3$개의 상자를 먼저 고르는 경우의 수: ${}_4C_3 = 4$ 고른 $3$개의 상자에 서로 다른 공 $4$개를 넣되, 빈 상자가 없도록 하는 경우의 수는 (전체 넣는 방법) $-$ (적어도 $1$개 상자가 비는 방법) $= 3^4 - {}_3C_1 \\cdot 2^4 + {}_3C_2 \\cdot 1^4 = 81 - 48 + 3 = 36$ $\\therefore 4 \\times 36 = 144$ (⑤)."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-06",
+  "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+  "unitEvidence": "서로 다른 공 $4$개를 서로 다른 $4$개의 상자에 ",
+  "rpmRecordId": "H1-RPM-122",
+  "rpmReason": "Q10(4.2): 경우의 수의 기본 원리 단원의 RPM H1-RPM-122 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+  "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+  "typeReason": "Q10(4.2): 경우의 수의 기본 원리 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q10(4.2): 경우의 수의 기본 원리 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$개가 되도록 넣는 방법의 수는? [4.2점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "공이 들어갈 $3$개의 상자를 먼저 고르는 경",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q10(4.2): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

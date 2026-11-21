@@ -1,0 +1,57 @@
+{
+  "qid": 13,
+  "itemFingerprint": "5914f32aecf00498",
+  "solveSteps": [
+    "$ab + a + b = 15$에서 $a + b = 15 - ab$이다.",
+    "$a > 0, b > 0$이므로 산술평균과 기하평균의 관계에 의해 $15 - ab = a + b \\ge 2\\sqrt{ab}$ $t = \\sqrt{ab} > 0$으로 놓으면 $ab = t^2$이므로 $15 - t^2 \\ge 2t \\implies t^2 + 2t - 15 \\le 0 \\implies (t + 5)(t - 3) \\le 0$ $t > 0$이므로 $0 < t \\le 3 \\implies ab = t^2 \\le 9$ 등호는 $a = b = 3$일 때 성립하며, 이때 $ab + a + b = 9 + 3 + 3 = 15$를 만족한다.",
+    "$\\therefore$ $ab$의 최댓값은 $9$ (①)."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-02",
+  "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
+  "unitEvidence": "$a, b$가 양수일 때, $a + b \\ge 2\\sq",
+  "rpmRecordId": "H1-RPM-096",
+  "rpmReason": "Q13(ab): 필요조건과 충분조건 단원의 RPM H1-RPM-096 유형에 해당한다.",
+  "problemTypeKey": "PT_NEC_SUFF_RELATION",
+  "templateKey": "TPL_NEC_SUFF_DIRECT_JUDGMENT",
+  "typeReason": "Q13(ab): 필요조건과 충분조건 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q13(ab): 필요조건과 충분조건 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "때, $ab$의 최댓값을 구하면? [4.4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$ab + a + b = 15$에서 $a +",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q13(ab): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

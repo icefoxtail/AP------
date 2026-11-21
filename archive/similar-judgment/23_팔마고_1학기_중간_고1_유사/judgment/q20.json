@@ -1,0 +1,77 @@
+{
+  "qid": 20,
+  "itemFingerprint": "6680f7561047e2fb",
+  "solveSteps": [
+    "1) $y=-x^2+4x+5=-(x-2)^2+9$이므로 꼭짓점의 좌표는 $(2, 9)$이다.",
+    "$y=0$을 대입하면 $x^2-4x-5=(x+1)(x-5)=0$이므로 $x$절편은 $(-1, 0)$, $(5, 0)$이다.",
+    "$x=0$을 대입하면 $y=5$이므로 $y$절편은 $(0, 5)$이다.",
+    "2) $0 \\le x \\le 5$에서 꼭짓점 $x=2$가 범위에 속하므로 최댓값은 $9$이다.",
+    "양 끝점의 함숫값은 $x=0$일 때 $5$, $x=5$일 때 $0$이므로 최솟값은 $0$이다."
+  ],
+  "solvedAnswer": "1) 꼭짓점 $(2, 9)$, $x$절편 $(-1, 0), (5, 0)$, $y$절편 $(0, 5)$  2) 최댓값 $9$, 최솟값 $0$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "이차함수 $y=-x^2+4x+5$에 대하여 다음 물음에",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q20(y): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+  "typeReason": "Q20(y): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(y): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=-x^2+4x+5$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "꼭짓점,"
+      },
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값과 최솟값을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "-(x-2)^2+9",
+        "evidenceType": "IMPLIED",
+        "justification": "이차함수를 표준형으로 변형해 꼭짓점을 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "범위",
+        "src": "stem",
+        "quote": "$0 \\le x \\le 5$의 범위에서"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q20(y): 발문과 해설의 풀이 과정을 점검하여 정답 1) 꼭짓점 $(2, 9)$, $x$절편 $(-1, 0), (5, 0)$, $y$절편 $(0, 5)$  2) 최댓값 $9$, 최솟값 $0$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

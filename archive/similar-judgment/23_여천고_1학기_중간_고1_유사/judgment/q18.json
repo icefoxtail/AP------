@@ -1,0 +1,88 @@
+{
+  "qid": 18,
+  "itemFingerprint": "ef998c4451eae6dd",
+  "solveSteps": [
+    "ㄱ.",
+    "$y=f(x)=x^2-ax+b$의 그래프가 $x$축에 접하므로 이차방정식 $x^2-ax+b=0$의 판별식 $D=a^2-4b=0$이다.",
+    "(참) ㄴ.",
+    "두 그래프의 교점의 $x$좌표는 $x^2-ax+b=-x^2+cx-d$, 즉 $2x^2-(a+c)x+(b+d)=0$ 의 두 실근이다.",
+    "두 교점이 제$1$사분면과 제$2$사분면에 각각 있으므로 두 근의 부호가 서로 다르다.",
+    "따라서 두 근의 곱 $\\frac{b+d}{2} < 0$, 즉 $b+d < 0$이다.",
+    "ㄱ에서 $b=\\frac{a^2}{4}$이므로 $\\frac{a^2}{4}+d < 0 \\implies d < -\\frac{a^2}{4} \\implies a^2-4d > 2a^2 \\ge 0$이다.",
+    "(거짓) ㄷ.",
+    "두 그래프가 서로 다른 두 점에서 만나므로 $2x^2-(a+c)x+(b+d)=0$의 판별식 $D=(a+c)^2-8(b+d) > 0$이다.",
+    "(참) 따라서 옳은 것은 ㄱ, ㄷ이므로 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "두 이차함수 $f(x)=x^2-ax+b$, $g(x)=",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q18(ax): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+  "typeReason": "Q18(ax): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(ax): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "두 이차함수 $f(x)=x^2-ax+b$, $g(x)=-x^2+cx-d$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "진리값",
+        "src": "stem",
+        "quote": "옳은 것만을 있는 대로 고른 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D=a^2-4b=0$이다.",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "두 근의 곱 $\\frac{b+d}{2} < 0$",
+        "evidenceType": "IMPLIED",
+        "justification": "교점 x좌표의 부호가 다름을 두 근의 곱<0으로 해석함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "접함",
+        "src": "stem",
+        "quote": "$x$축에 접하고"
+      },
+      {
+        "term": "사분면",
+        "src": "stem",
+        "quote": "제$1$사분면과 제$2$사분면에서 만난다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q18(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

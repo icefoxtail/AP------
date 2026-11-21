@@ -1,0 +1,68 @@
+{
+  "qid": 15,
+  "itemFingerprint": "41506c2fab22390a",
+  "solveSteps": [
+    "$\\alpha, \\beta$가 $x^2-2x+5=0$의 근이므로 $\\alpha^2=2\\alpha-5$, $\\beta^2=2\\beta-5$이다.",
+    "따라서 $\\alpha^2-3\\alpha+7=(2\\alpha-5)-3\\alpha+7=2-\\alpha$ $\\beta^2-3\\beta+7=(2\\beta-5)-3\\beta+7=2-\\beta$ 구하는 식을 통분하면 $\\frac{1}{2-\\alpha}+\\frac{1}{2-\\beta}=\\frac{(2-\\beta)+(2-\\alpha)}{(2-\\alpha)(2-\\beta)}=\\frac{4-(\\alpha+\\beta)}{4-2(\\alpha+\\beta)+\\alpha\\beta}$ 근과 계수의 관계에 의하여 $\\alpha+\\beta=2$, $\\alpha\\beta=5$이므로 $\\frac{4-2}{4-2\\cdot 2+5}=\\frac{2}{5}$ 따라서 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-06",
+  "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+  "unitEvidence": "이차방정식 $x^2-2x+5=0$의 두 근을 $\\alp",
+  "rpmRecordId": "H1-RPM-029",
+  "rpmReason": "Q15(x): 근과 계수의 관계 단원의 RPM H1-RPM-029 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+  "typeReason": "Q15(x): 근과 계수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(x): 근과 계수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2-2x+5=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "식의값",
+        "src": "stem",
+        "quote": "$\\frac{1}{\\alpha^2-3\\alpha+7}+\\frac{1}{\\beta^2-3\\beta+7}$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여 $\\alpha+\\beta=2$, $\\alpha\\beta=5$이므로",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "통분",
+        "src": "solution",
+        "quote": "구하는 식을 통분하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q15(x): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

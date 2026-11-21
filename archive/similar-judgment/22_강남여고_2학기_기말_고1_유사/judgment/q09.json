@@ -1,0 +1,59 @@
+{
+  "qid": 9,
+  "itemFingerprint": "3ccbeb2b711e11c3",
+  "solveSteps": [
+    "① $(x, y) = (1, 0)$일 때 $p$는 참이지만 $q$는 거짓이므로 $p \\not\\to q$ ② $x = 3$일 때 $q$는 참이지만 $p$는 거짓이므로 $q \\not\\to p$ ③ $(x, y) = (1, 1)$일 때 $p$는 참이지만 $q$는 $1 + 1 = 2 \\ne 4$로 거짓이므로 $p \\not\\to q$ ④ $x = 1, y = -2$일 때 $p$는 참이지만 $q$는 $1 > 4$로 거짓이고, $x = -2, y = 1$일 때 $q$는 참이지만 $p$는 거짓이다. (3.8)",
+    "⑤ $x < 0, y < 0$이면 $x + y < 0$이고 $xy > 0$이다 ($p \\implies q$).",
+    "반대로 $xy > 0$이면 $x, y$의 부호가 같고, $x + y < 0$이므로 둘 다 음수이다 ($q \\implies p$).",
+    "따라서 $p$는 $q$이기 위한 필요충분조건이다.",
+    "$\\therefore$ ⑤."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-02",
+  "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
+  "unitEvidence": "다음 중 두 조건 $p, q$에 대하여 $p$가 $q$",
+  "rpmRecordId": "H1-RPM-092",
+  "rpmReason": "Q9(3.8): 명제와 진리집합 단원의 RPM H1-RPM-092 유형에 해당한다.",
+  "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+  "templateKey": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+  "typeReason": "Q9(3.8): 명제와 진리집합 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q9(3.8): 명제와 진리집합 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "(단, $x, y$는 실수이다.) [3.8점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "① $(x, y) = (1, 0)$일 때 $p",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q9(3.8): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

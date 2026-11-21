@@ -1,0 +1,210 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            "0",
+            "12"
+          ]
+        }
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            "0",
+            "0"
+          ]
+        }
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            "24",
+            "0"
+          ]
+        }
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            "24",
+            "12"
+          ]
+        }
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            "8",
+            "8"
+          ]
+        }
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            "8",
+            "0"
+          ]
+        }
+      },
+      {
+        "id": "G",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            "0",
+            "8"
+          ]
+        }
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            "8",
+            "12"
+          ]
+        }
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "outputType": "POINT",
+        "args": {
+          "coordinates": [
+            "24",
+            "8"
+          ]
+        }
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "from": "A",
+      "to": "B"
+    },
+    {
+      "id": "sBC",
+      "from": "B",
+      "to": "C"
+    },
+    {
+      "id": "sCD",
+      "from": "C",
+      "to": "D"
+    },
+    {
+      "id": "sDA",
+      "from": "D",
+      "to": "A"
+    },
+    {
+      "id": "sAC",
+      "from": "A",
+      "to": "C"
+    },
+    {
+      "id": "sGF",
+      "from": "G",
+      "to": "I"
+    },
+    {
+      "id": "sHF",
+      "from": "H",
+      "to": "F"
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "r1",
+        "fill": "BLUE",
+        "shapes": [
+          {
+            "polygon": [
+              "B",
+              "F",
+              "E",
+              "G"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "r2",
+        "fill": "WARM",
+        "shapes": [
+          {
+            "polygon": [
+              "E",
+              "C",
+              "I",
+              "H"
+            ]
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "dBC",
+        "from": "B",
+        "to": "C",
+        "label": "24",
+        "side": "BELOW",
+        "style": "ARROW"
+      },
+      {
+        "id": "dAB",
+        "from": "A",
+        "to": "B",
+        "label": "12",
+        "side": "LEFT",
+        "style": "ARROW"
+      }
+    ]
+  },
+  "caption": "예시: 가로 24, 세로 12인 직사각형 ABCD의 대각선 AC 위의 점 E로 나눈 두 직사각형 BGEF와 EHDI의 배치이다."
+}

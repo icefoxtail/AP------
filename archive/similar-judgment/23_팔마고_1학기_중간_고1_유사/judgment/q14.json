@@ -1,0 +1,68 @@
+{
+  "qid": 14,
+  "itemFingerprint": "58dc49052ea10a14",
+  "solveSteps": [
+    "ㄱ.",
+    "$ax^3+bx^2+cx+d=0$에 $x=\\frac{1}{t}$를 대입하고 양변에 $t^3$을 곱하면 $dt^3+ct^2+bt+a=0$이므로 세 근은 $\\frac{1}{\\alpha}, \\frac{1}{\\beta}, \\frac{1}{\\gamma}$이다.",
+    "(참) ㄴ.",
+    "$x$ 대신 $-x$를 대입하면 $-ax^3+bx^2-cx+d=0$, 즉 $ax^3-bx^2+cx-d=0$의 세 근은 $-\\alpha, -\\beta, -\\gamma$이다.",
+    "(거짓) ㄷ.",
+    "양변에 $0$이 아닌 상수 $k$를 곱한 $k(ax^3+bx^2+cx+d)=0$도 같은 세 근을 가지므로 유일하지 않다.",
+    "(거짓) 따라서 옳은 것은 ㄱ뿐이므로 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-06",
+  "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+  "unitEvidence": "삼차방정식 $ax^3+bx^2+cx+d=0$의 세 근을",
+  "rpmRecordId": "H1-RPM-029",
+  "rpmReason": "Q14(ax): 근과 계수의 관계 단원의 RPM H1-RPM-029 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+  "typeReason": "Q14(ax): 근과 계수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(ax): 근과 계수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼차방정식",
+        "src": "stem",
+        "quote": "삼차방정식 $ax^3+bx^2+cx+d=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "진리값",
+        "src": "stem",
+        "quote": "옳은 것만을 있는 대로 고른 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "치환",
+        "src": "solution",
+        "quote": "$x=\\frac{1}{t}$를 대입하고",
+        "evidenceType": "IMPLIED",
+        "justification": "x=1/t와 x=-t 치환을 통해 변환된 방정식의 근을 판별함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q14(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

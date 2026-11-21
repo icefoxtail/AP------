@@ -1,0 +1,81 @@
+{
+  "qid": 8,
+  "itemFingerprint": "ddef8e3327df3ada",
+  "solveSteps": [
+    "주어진 식을 $k$에 대하여 내림차순으로 정리하면 $y=k(2x+4)+(-3x+5)$ $k$의 값에 관계없이 항상 성립하려면 $k$의 계수가 $0$이어야 하므로 $2x+4=0 \\implies x=-2$ $x=-2$를 대입하면 $y=-3(-2)+5=11$이다. (13)",
+    "따라서 항상 지나는 점은 $P(-2, 11)$이므로 $a=-2$, $b=11$이고 $a+b=9$이다.",
+    "그러므로 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-10",
+  "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+  "unitEvidence": "직선 $y=(2k-3)x+4k+5$가 실수 $k$의 값",
+  "rpmRecordId": "H1-RPM-061",
+  "rpmReason": "Q8(13): 두 직선의 평행과 수직 단원의 RPM H1-RPM-061 유형에 해당한다.",
+  "problemTypeKey": "PT_LINE_RELATION",
+  "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+  "typeReason": "Q8(13): 두 직선의 평행과 수직 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q8(13): 두 직선의 평행과 수직 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직선 $y=(2k-3)x+4k+5$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "$a+b$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "내림차순",
+        "src": "solution",
+        "quote": "$k$에 대하여 내림차순으로 정리하면",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "항등식",
+        "src": "solution",
+        "quote": "$2x+4=0 \\implies x=-2$",
+        "evidenceType": "IMPLIED",
+        "justification": "k에 대한 항등식 계수 비교로 정점의 좌표를 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "항상성립",
+        "src": "stem",
+        "quote": "실수 $k$의 값에 관계없이 항상"
+      },
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 $k$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q8(13): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

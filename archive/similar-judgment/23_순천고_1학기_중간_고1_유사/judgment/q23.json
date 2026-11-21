@@ -1,0 +1,73 @@
+{
+  "qid": 23,
+  "itemFingerprint": "ad4b5c8ec48018e0",
+  "solveSteps": [
+    "금액의 단위를 천 원으로 통일하자.",
+    "운송비를 제외한 이익은 $x\\left(70-\\frac{x}{5}\\right)$천 원이다.",
+    "기본 운송비 $20$만 원은 $200$천 원, $1$톤당 추가 요금 $1$만 원은 $10$천 원이므로 총 운송비는 $200+10x$천 원이다.",
+    "매월 순이익을 $P(x)$천 원이라 하면 $\\begin{aligned} P(x) &= x\\left(70-\\frac{x}{5}\\right)-(200+10x) \\ &= -\\frac{1}{5}x^2+60x-200 \\ &= -\\frac{1}{5}(x-150)^2+4300 \\end{aligned}$ $x>0$에서 이차함수 $P(x)$는 위로 볼록하므로 $x=150$일 때 최댓값 $4300$을 갖는다.",
+    "따라서 매월 순이익금이 최대가 되려면 $150$톤을 판매해야 한다."
+  ],
+  "solvedAnswer": "150톤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "어느 농장에서 특산물을 $x$톤 판매할 때, 운송비를 ",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q23(70): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+  "typeReason": "Q23(70): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q23(70): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "solution",
+        "quote": "이차함수 $P(x)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "매월 순이익금이 최대가 되려면 매달 몇 톤을 판매해야 하는지"
+      }
+    ],
+    "method": [
+      {
+        "term": "모델링",
+        "src": "solution",
+        "quote": "매월 순이익을 $P(x)$천 원이라 하면",
+        "evidenceType": "IMPLIED",
+        "justification": "단위를 천 원으로 통일해 수익에서 비용을 뺀 이차함수를 세움"
+      },
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "-\\frac{1}{5}(x-150)^2+4300",
+        "evidenceType": "IMPLIED",
+        "justification": "표준형 변환으로 꼭짓점 x=150에서 최댓값을 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q23(70): 발문과 해설의 풀이 과정을 점검하여 정답 150톤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

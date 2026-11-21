@@ -1,0 +1,71 @@
+{
+  "qid": 15,
+  "itemFingerprint": "379df83dd8c4c540",
+  "solveSteps": [
+    "$z=\\frac{1+i}{\\sqrt{2}}$를 제곱하면 $z^2=\\frac{2i}{2}=i$이고, $z^4=i^2=-1$, $z^8=1$이다.",
+    "따라서 $z^n=-1$이 되려면 $n$은 $8$로 나누었을 때 나머지가 $4$인 자연수여야 한다.",
+    "$120$ 이하의 자연수 중 $n=8m+4$ ($m$은 $0$ 이상의 정수) 꼴은 $4, 12, 20, \\ldots, 116$으로 모두 $\\frac{116-4}{8}+1=15$개이다.",
+    "따라서 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "복소수 $z=\\frac{1+i}{\\sqrt{2}}$에 ",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q15(120): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+  "typeReason": "Q15(120): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(120): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "복소수 $z=\\frac{1+i}{\\sqrt{2}}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "자연수 $n$의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "를 제곱하면 $z^2=\\frac{2i}{2}=i$이고",
+        "evidenceType": "IMPLIED",
+        "justification": "z^2=i, z^4=-1, z^8=1의 거듭제곱 주기를 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$120$ 이하의 자연수 $n$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q15(120): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

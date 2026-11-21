@@ -1,0 +1,2893 @@
+{
+  "qid": 18,
+  "questionType": "단답형",
+  "course": [
+    "H15_COMMON_HA"
+  ],
+  "curriculum": "2015",
+  "problem": {
+    "content": "단답형 1. 두 집합 $A = \\left{(x, y) ;\\middle|; y = \\dfrac{x^2 + n}{8},; x \\ge 0\\right}$, $B = \\left{(x, y) ;\\middle|; y = \\sqrt{8x - n}\\right}$에 대하여 $n(A \\cap B) = 1$이 되도록 하는 양의 정수 $n$의 값은? [4점]",
+    "choices": [],
+    "points": 4
+  },
+  "reference": {
+    "answer": "$16$",
+    "solution": "교점의 좌표를 $(x, y)$라 하면 $x \\ge 0, y \\ge 0$이고 $x^2 + n = 8y$, $y^2 + n = 8x$ 두 식을 변변 빼면 $x^2 - y^2 = 8(y - x) \\implies (x - y)(x + y + 8) = 0$ $x \\ge 0, y \\ge 0$이므로 $x + y + 8 > 0$, 따라서 $x = y$이다. $x = y$를 첫째 식에 대입하면 $x^2 - 8x + n = 0$ 양의 정수 $n$에 대하여 $1 \\le n < 16$이면 두 근 $4 \\pm \\sqrt{16 - n}$이 모두 양수이므로 교점이 $2$개이다. $n = 16$이면 $(x - 4)^2 = 0$으로 유일한 근 $x = 4 \\ge 0$을 가지므로 교점이 $1$개이다. $n > 16$이면 실근이 없다. $\\therefore n = 16$",
+    "sourcePrimaryMethod": "두 역함수 관계인 식 $x^2+n=8y$, $y^2+n=8x$를 빼 $x=y$를 얻은 뒤 $x^2-8x+n=0$이 유일한 양근을 갖도록 $n$을 정한다.",
+    "sourceDecisiveStep": "$(x-y)(x+y+8)=0$에서 $x=y$를 얻고 $x^2-8x+n=0$의 중근 조건 $n=16$을 구한다."
+  },
+  "source": {
+    "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
+    "standardUnitKey": "H15-SB-05",
+    "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
+    "rpmPath": {
+      "majorUnit": "함수",
+      "midUnit": "무리함수",
+      "l3": "무리함수의 활용",
+      "l4": "무리함수의 교점"
+    },
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+    "difficultyBucket": 3,
+    "newKeyProposal": null,
+    "item4slot": {
+      "format": "단답",
+      "slots": {
+        "given": [
+          "집합",
+          "이차함수",
+          "무리함수"
+        ],
+        "goal": [
+          "값"
+        ],
+        "method": [
+          "대칭성",
+          "판별식"
+        ],
+        "condition": [
+          "중근",
+          "자연수"
+        ]
+      }
+    },
+    "boundary": "NONE"
+  },
+  "units": [
+    {
+      "standardUnitKey": "H15-SB-01",
+      "label": "집합",
+      "order": 1,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-SB-01-SET_BASIC",
+          "label": "집합의 뜻과 표현"
+        },
+        {
+          "subUnitKey": "H15-SB-01-SET_COUNT",
+          "label": "집합의 원소의 개수"
+        },
+        {
+          "subUnitKey": "H15-SB-01-SET_OPERATION",
+          "label": "집합의 연산"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H1-RPM-080",
+          "path": "집합과 명제 > 집합의 뜻과 포함 관계 > 집합과 원소 > 원소나열법·조건제시법",
+          "subUnitKey": "H15-SB-01-SET_BASIC",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H1-RPM-081",
+          "path": "집합과 명제 > 집합의 뜻과 포함 관계 > 집합과 원소 > 유한집합 원소 개수",
+          "subUnitKey": "H15-SB-01-SET_COUNT",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-082",
+          "path": "집합과 명제 > 집합의 뜻과 포함 관계 > 부분집합 > 부분집합 판정",
+          "subUnitKey": "H15-SB-01-SET_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-083",
+          "path": "집합과 명제 > 집합의 뜻과 포함 관계 > 부분집합 > 부분집합의 개수",
+          "subUnitKey": "H15-SB-01-SET_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-084",
+          "path": "집합과 명제 > 집합의 뜻과 포함 관계 > 집합의 포함 관계 > 두 집합의 포함",
+          "subUnitKey": "H15-SB-01-SET_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-085",
+          "path": "집합과 명제 > 집합의 뜻과 포함 관계 > 집합의 포함 관계 > 매개변수 조건",
+          "subUnitKey": "H15-SB-01-SET_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-086",
+          "path": "집합과 명제 > 집합의 연산 > 교집합과 합집합 > 집합 연산",
+          "subUnitKey": "H15-SB-01-SET_OPERATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-087",
+          "path": "집합과 명제 > 집합의 연산 > 교집합과 합집합 > 원소 개수",
+          "subUnitKey": "H15-SB-01-SET_COUNT",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-088",
+          "path": "집합과 명제 > 집합의 연산 > 여집합과 차집합 > 여집합",
+          "subUnitKey": "H15-SB-01-SET_OPERATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-089",
+          "path": "집합과 명제 > 집합의 연산 > 여집합과 차집합 > 차집합",
+          "subUnitKey": "H15-SB-01-SET_OPERATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-090",
+          "path": "집합과 명제 > 집합의 연산 > 집합의 연산법칙 > 드모르간 법칙",
+          "subUnitKey": "H15-SB-01-SET_OPERATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-091",
+          "path": "집합과 명제 > 집합의 연산 > 집합의 연산법칙 > 복합 연산",
+          "subUnitKey": "H15-SB-01-SET_OPERATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_SET_AGGREGATE",
+          "label": "집합의 원소의 합",
+          "templates": [
+            {
+              "templateKey": "TPL_SET_ELEMENT_SUM",
+              "label": "집합의 모든 원소의 합"
+            },
+            {
+              "templateKey": "TPL_SUBSET_AGGREGATE_BY_ROLE_FREQUENCY",
+              "label": "각 원소가 포함되는 횟수를 이용한 합"
+            },
+            {
+              "templateKey": "TPL_SUBSET_SUM_AGGREGATE",
+              "label": "조건을 만족하는 부분집합들의 원소의 합"
+            },
+            {
+              "templateKey": "TPL_WEIGHTED_SET_SUM_CONDITION",
+              "label": "집합의 원소의 합 조건으로 집합 구하기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_SET_CARDINALITY",
+          "label": "집합의 원소의 개수",
+          "templates": [
+            {
+              "templateKey": "TPL_COMPLEMENT_CARDINALITY",
+              "label": "여집합의 원소의 개수"
+            },
+            {
+              "templateKey": "TPL_DIFFERENCE_CARDINALITY_DIRECT",
+              "label": "차집합의 원소의 개수"
+            },
+            {
+              "templateKey": "TPL_EXACTLY_K_SETS",
+              "label": "정확히 두 집합 등에 속하는 원소의 개수"
+            },
+            {
+              "templateKey": "TPL_INTERSECTION_CARDINALITY_DIRECT",
+              "label": "교집합의 원소의 개수"
+            },
+            {
+              "templateKey": "TPL_OPERATION_CARDINALITY_COMPOSITE",
+              "label": "여러 집합의 연산으로 얻은 집합의 원소의 개수"
+            },
+            {
+              "templateKey": "TPL_SET_CARDINALITY_DIRECT",
+              "label": "집합의 원소의 개수 구하기"
+            },
+            {
+              "templateKey": "TPL_SYMMETRIC_DIFFERENCE_CARDINALITY",
+              "label": "한쪽 집합에만 속하는 원소의 개수"
+            },
+            {
+              "templateKey": "TPL_THREE_SET_INCLUSION_EXCLUSION",
+              "label": "세 집합의 원소의 개수"
+            },
+            {
+              "templateKey": "TPL_TWO_SET_INCLUSION_EXCLUSION",
+              "label": "두 집합의 원소의 개수"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_SET_CONSTRUCTION",
+          "label": "조건을 만족하는 집합",
+          "templates": [
+            {
+              "templateKey": "TPL_CONSTRUCTION_CLOSURE_CONDITION",
+              "label": "주어진 연산 조건을 만족하는 집합 구하기"
+            },
+            {
+              "templateKey": "TPL_RECONSTRUCT_FROM_REGIONS",
+              "label": "교집합·차집합·여집합 조건으로 집합 구하기"
+            },
+            {
+              "templateKey": "TPL_SET_EQUATION_SOLUTION",
+              "label": "집합의 조건을 만족하는 집합 구하기"
+            },
+            {
+              "templateKey": "TPL_SET_CONSTRUCTION_ENUMERATE",
+              "label": "집합 원소 나열"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_SET_DEFINITION",
+          "label": "집합의 뜻",
+          "templates": [
+            {
+              "templateKey": "TPL_SET_IDENTIFY",
+              "label": "집합인지 판정하기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_SET_ELEMENT_RELATION",
+          "label": "집합의 원소와 부분집합",
+          "templates": [
+            {
+              "templateKey": "TPL_ELEMENT_MEMBERSHIP_BASIC",
+              "label": "원소 관계 판정하기"
+            },
+            {
+              "templateKey": "TPL_NESTED_SET_RELATION",
+              "label": "원소와 부분집합 관계 판정하기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_SET_EQUALITY",
+          "label": "서로 같은 집합",
+          "templates": [
+            {
+              "templateKey": "TPL_EQUAL_SET_PARAMETER",
+              "label": "서로 같은 집합에서 미지수 구하기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_SET_EXTREMUM",
+          "label": "집합의 원소의 개수와 합의 최대·최소",
+          "templates": [
+            {
+              "templateKey": "TPL_DIFFERENCE_RANGE",
+              "label": "한쪽 집합에만 속하는 원소의 개수의 최대·최소"
+            },
+            {
+              "templateKey": "TPL_INTERSECTION_RANGE",
+              "label": "교집합의 원소의 개수의 최대·최소"
+            },
+            {
+              "templateKey": "TPL_SET_SUM_EXTREMUM",
+              "label": "집합의 원소의 합의 최대·최소"
+            },
+            {
+              "templateKey": "TPL_UNION_RANGE",
+              "label": "합집합의 원소의 개수의 최대·최소"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_SET_INCLUSION",
+          "label": "집합의 포함 관계",
+          "templates": [
+            {
+              "templateKey": "TPL_INCLUSION_DIRECT",
+              "label": "집합의 포함 관계 판정하기"
+            },
+            {
+              "templateKey": "TPL_INCLUSION_DIVISOR_MULTIPLE",
+              "label": "약수·배수의 집합 사이의 포함 관계"
+            },
+            {
+              "templateKey": "TPL_INCLUSION_FROM_UNION_INTERSECTION",
+              "label": "집합의 연산에서 포함 관계 찾기"
+            },
+            {
+              "templateKey": "TPL_INCLUSION_PARAMETER",
+              "label": "포함 관계를 이용하여 미지수 구하기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_SET_OPERATION",
+          "label": "집합의 연산",
+          "templates": [
+            {
+              "templateKey": "TPL_DIRECT_MIXED_OPERATION",
+              "label": "여러 집합의 연산 결과 구하기"
+            },
+            {
+              "templateKey": "TPL_OPERATION_DISJOINT_DEFINITION",
+              "label": "서로소인 두 집합의 뜻"
+            },
+            {
+              "templateKey": "TPL_OPERATION_DISJOINT_JUDGMENT",
+              "label": "서로소인 두 집합의 성질"
+            },
+            {
+              "templateKey": "TPL_OPERATION_NUMBER_SET",
+              "label": "수의 성질로 정의된 집합의 연산"
+            },
+            {
+              "templateKey": "TPL_OPERATION_WITH_PARAMETER",
+              "label": "집합의 연산 조건을 이용하여 미지수 구하기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_SET_OPERATION_LAW",
+          "label": "집합의 연산법칙",
+          "templates": [
+            {
+              "templateKey": "TPL_ABSORPTION",
+              "label": "흡수법칙"
+            },
+            {
+              "templateKey": "TPL_OPERATION_LAW_COMPOSITE",
+              "label": "여러 집합의 연산법칙을 이용한 식의 정리"
+            },
+            {
+              "templateKey": "TPL_OPERATION_LAW_JUDGMENT",
+              "label": "집합의 연산법칙의 참·거짓 판정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_SUBSET_COUNT",
+          "label": "부분집합의 개수",
+          "templates": [
+            {
+              "templateKey": "TPL_PROPER_OR_NONEMPTY_SUBSET_COUNT",
+              "label": "진부분집합 또는 공집합을 제외한 부분집합의 개수"
+            },
+            {
+              "templateKey": "TPL_RELATED_SUBSET_PAIR_COUNT",
+              "label": "포함·서로소 조건이 있는 두 부분집합의 개수"
+            },
+            {
+              "templateKey": "TPL_SUBSET_COUNT_AT_LEAST_ONE",
+              "label": "적어도 하나를 포함하는 부분집합의 개수"
+            },
+            {
+              "templateKey": "TPL_SUBSET_COUNT_POWERSET_BASIC",
+              "label": "부분집합의 개수 구하기"
+            },
+            {
+              "templateKey": "TPL_SUBSET_COUNT_REQUIRED_FORBIDDEN",
+              "label": "특정 원소의 포함·제외 조건이 있는 부분집합의 개수"
+            },
+            {
+              "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
+              "label": "집합의 조건을 만족하는 부분집합의 개수"
+            },
+            {
+              "templateKey": "TPL_SUBSET_COUNT_SUM_PARITY",
+              "label": "원소의 합이 홀수 또는 짝수인 부분집합의 개수"
+            },
+            {
+              "templateKey": "TPL_SUBSET_COUNT_PAIR_CLOSED",
+              "label": "짝 대응 닫힘 부분집합"
+            },
+            {
+              "templateKey": "TPL_SUBSET_COUNT_SUM_SUBSET",
+              "label": "원소 합 조건 부분집합"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_SUBSET_JUDGMENT",
+          "label": "부분집합의 판정",
+          "templates": [
+            {
+              "templateKey": "TPL_SUBSET_DIRECT",
+              "label": "부분집합인지 판정하기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_SET_REGION_EXPRESSION",
+          "label": "벤다이어그램과 집합의 연산",
+          "templates": [
+            {
+              "templateKey": "TPL_EXPRESSION_TO_VENN",
+              "label": "집합을 벤다이어그램의 영역으로 나타내기"
+            },
+            {
+              "templateKey": "TPL_REGION_EQUIVALENCE",
+              "label": "같은 영역을 나타내는 집합 찾기"
+            },
+            {
+              "templateKey": "TPL_VENN_TO_EXPRESSION",
+              "label": "벤다이어그램의 영역을 집합으로 나타내기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_SUBSET_SELECTION_COUNTING",
+          "label": "두 부분집합의 경우의 수",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_SUBSET_PAIR_INTERSECTION_COMPLEMENT",
+              "label": "전체 쌍에서 서로소인 쌍을 빼기"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-SB-02",
+      "label": "명제",
+      "order": 2,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
+          "label": "필요조건과 충분조건"
+        },
+        {
+          "subUnitKey": "H15-SB-02-PROOF",
+          "label": "증명과 절대부등식"
+        },
+        {
+          "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
+          "label": "명제와 진리집합"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H1-RPM-092",
+          "path": "집합과 명제 > 명제 > 명제와 조건 > 진리집합",
+          "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-093",
+          "path": "집합과 명제 > 명제 > 명제와 조건 > 명제의 참·거짓",
+          "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-094",
+          "path": "집합과 명제 > 명제 > 역·이·대우 > 대우를 이용한 증명",
+          "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "H1-RPM-095",
+          "path": "집합과 명제 > 명제 > 역·이·대우 > 명제 변환",
+          "subUnitKey": "H15-SB-02-PROPOSITION_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-096",
+          "path": "집합과 명제 > 명제 > 필요조건·충분조건 > 조건 관계",
+          "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-097",
+          "path": "집합과 명제 > 명제 > 필요조건·충분조건 > 매개변수",
+          "subUnitKey": "H15-SB-02-NECESSARY_SUFFICIENT",
+          "mappingStatus": "FAMILY_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-098",
+          "path": "집합과 명제 > 명제 > 증명 > 귀류법",
+          "subUnitKey": "H15-SB-02-PROOF",
+          "mappingStatus": "FAMILY_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-099",
+          "path": "집합과 명제 > 명제 > 증명 > 절대부등식 증명",
+          "subUnitKey": "H15-SB-02-PROOF",
+          "mappingStatus": "FAMILY_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_NEC_SUFF_RELATION",
+          "label": "필요조건·충분조건",
+          "templates": [
+            {
+              "templateKey": "TPL_NEC_SUFF_CHAIN",
+              "label": "조건 관계의 연쇄"
+            },
+            {
+              "templateKey": "TPL_NEC_SUFF_DIRECT_JUDGMENT",
+              "label": "필요조건·충분조건의 판정"
+            },
+            {
+              "templateKey": "TPL_NEC_SUFF_INTERVAL_PARAMETER",
+              "label": "구간과 필요조건·충분조건"
+            },
+            {
+              "templateKey": "TPL_NEC_SUFF_POLYNOMIAL_PARAMETER",
+              "label": "방정식의 해와 필요조건·충분조건"
+            },
+            {
+              "templateKey": "TPL_NEC_SUFF_RELATION_FUNCTION",
+              "label": "필요조건·충분조건 관계의 함수화"
+            },
+            {
+              "templateKey": "TPL_NEC_SUFF_SET_RELATION",
+              "label": "집합과 필요조건·충분조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+          "label": "절대부등식의 활용과 최댓값·최솟값",
+          "templates": [
+            {
+              "templateKey": "TPL_AMGM_MINIMUM",
+              "label": "산술평균과 기하평균을 이용한 최솟값"
+            },
+            {
+              "templateKey": "TPL_AMGM_PRODUCT_EXTREMUM",
+              "label": "곱의 최댓값"
+            },
+            {
+              "templateKey": "TPL_AMGM_RECIPROCAL_MINIMUM",
+              "label": "역수식의 최솟값"
+            },
+            {
+              "templateKey": "TPL_CAUCHY_EXTREMUM",
+              "label": "코시·슈바르츠 부등식을 이용한 최댓값·최솟값"
+            },
+            {
+              "templateKey": "TPL_CAUCHY_MINIMUM",
+              "label": "코시·슈바르츠 부등식을 이용한 최솟값"
+            },
+            {
+              "templateKey": "TPL_MIXED_INEQUALITY_EXTREMUM",
+              "label": "여러 부등식을 이용한 최댓값·최솟값"
+            },
+            {
+              "templateKey": "TPL_PARAMETER_BOUND_EXTREMUM",
+              "label": "매개변수 조건이 있는 최댓값·최솟값"
+            },
+            {
+              "templateKey": "TPL_ABSOLUTE_INEQUALITY_EXTREMUM_SQUARE_BOUND",
+              "label": "제곱합 비음수 극값"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_PROOF",
+          "label": "절대부등식의 증명",
+          "templates": [
+            {
+              "templateKey": "TPL_ABSOLUTE_INEQUALITY_TRUTH_PROOF",
+              "label": "절대부등식의 참·거짓과 증명"
+            },
+            {
+              "templateKey": "TPL_ABSOLUTE_VALUE_CASE_PROOF",
+              "label": "절댓값의 경우분류를 이용한 증명"
+            },
+            {
+              "templateKey": "TPL_AMGM_PROOF",
+              "label": "산술평균과 기하평균의 관계를 이용한 증명"
+            },
+            {
+              "templateKey": "TPL_CAUCHY_PROOF",
+              "label": "코시·슈바르츠 부등식을 이용한 증명"
+            },
+            {
+              "templateKey": "TPL_FUNCTIONAL_INEQUALITY_PROOF",
+              "label": "함수 관계를 이용한 부등식 증명"
+            },
+            {
+              "templateKey": "TPL_SQUARE_COMPARISON_PROOF",
+              "label": "제곱 비교를 이용한 부등식 증명"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_CONTRADICTION_PROOF",
+          "label": "귀류법",
+          "templates": [
+            {
+              "templateKey": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+              "label": "홀짝·배수 성질의 귀류법 증명"
+            },
+            {
+              "templateKey": "TPL_INEQUALITY_CONTRADICTION",
+              "label": "부등식의 귀류법 증명"
+            },
+            {
+              "templateKey": "TPL_IRRATIONALITY_DIVISIBILITY_CONTRADICTION",
+              "label": "무리수의 배수성 귀류법 증명"
+            },
+            {
+              "templateKey": "TPL_IRRATIONALITY_INTEGER_GAP_CONTRADICTION",
+              "label": "정수의 제곱 사이를 이용한 무리수 증명"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_CONTRAPOSITIVE_PROOF",
+          "label": "대우를 이용한 증명",
+          "templates": [
+            {
+              "templateKey": "TPL_CONTRAPOSITIVE_DIVISIBILITY_PROOF",
+              "label": "대우를 이용한 배수·나눗셈성 증명"
+            },
+            {
+              "templateKey": "TPL_CONTRAPOSITIVE_SIGN_PROOF",
+              "label": "대우를 이용한 부호·인수 증명"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_LOGIC_CHAIN",
+          "label": "논리 관계와 추론",
+          "templates": [
+            {
+              "templateKey": "TPL_IMPLICATION_CHAIN",
+              "label": "조건명제의 연쇄 추론"
+            },
+            {
+              "templateKey": "TPL_LOGIC_CONSTRAINT_PUZZLE",
+              "label": "논리 조건을 이용한 추론"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+          "label": "명제와 조건의 판정",
+          "templates": [
+            {
+              "templateKey": "TPL_EXISTENCE_PROPOSITION_APPLICATION",
+              "label": "존재 명제의 활용"
+            },
+            {
+              "templateKey": "TPL_IMPLICATION_FALSIFICATION",
+              "label": "조건명제의 반례 판정"
+            },
+            {
+              "templateKey": "TPL_IMPLICATION_TRUTH_VALUE",
+              "label": "조건명제의 참·거짓"
+            },
+            {
+              "templateKey": "TPL_PROPOSITION_CONDITION_IDENTIFICATION",
+              "label": "명제와 조건의 구별"
+            },
+            {
+              "templateKey": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+              "label": "명제의 참·거짓"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+          "label": "명제가 참이 되기 위한 조건",
+          "templates": [
+            {
+              "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_BOUND_PARAMETER",
+              "label": "역·대우의 경계조건과 매개변수"
+            },
+            {
+              "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_COMPOSITE_PARAMETER",
+              "label": "역·대우 조건을 함께 이용한 매개변수"
+            },
+            {
+              "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_ROOT_PARAMETER",
+              "label": "역·대우와 방정식의 근 조건"
+            },
+            {
+              "templateKey": "TPL_CONVERSE_FALSE_PARAMETER_COUNT",
+              "label": "역이 거짓이 되는 매개변수의 개수"
+            },
+            {
+              "templateKey": "TPL_IMPLICATION_INTERVAL_PARAMETER",
+              "label": "함의와 구간 조건의 매개변수"
+            },
+            {
+              "templateKey": "TPL_PROPOSITION_COUNTEREXAMPLE_COUNT_PARAMETER",
+              "label": "반례가 되는 정수의 개수와 매개변수"
+            },
+            {
+              "templateKey": "TPL_PROPOSITION_DIRECT_SUBSTITUTION_PARAMETER",
+              "label": "직접 대입으로 명제의 매개변수 구하기"
+            },
+            {
+              "templateKey": "TPL_PROPOSITION_UNIVERSAL_QUADRATIC_PARAMETER",
+              "label": "모든 실수에서 성립하는 이차식 조건"
+            },
+            {
+              "templateKey": "TPL_PROPOSITION_PARAMETER_CONDITION_OVERLAP",
+              "label": "진리집합 겹침 조건"
+            },
+            {
+              "templateKey": "TPL_PROPOSITION_PARAMETER_CONDITION_UNIVERSAL",
+              "label": "반직선 전칭 부등식"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_PROPOSITION_TRANSFORM",
+          "label": "역·이·대우와 명제 변환",
+          "templates": [
+            {
+              "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_CONSTRUCTION",
+              "label": "역과 대우 구하기"
+            },
+            {
+              "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_TRUTH_JUDGMENT",
+              "label": "역·대우의 참·거짓"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+          "label": "모든·어떤 명제와 부정",
+          "templates": [
+            {
+              "templateKey": "TPL_EXISTENTIAL_NEGATION_BASIC",
+              "label": "존재명제의 부정"
+            },
+            {
+              "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+              "label": "존재명제의 부정과 매개변수"
+            },
+            {
+              "templateKey": "TPL_QUANTIFIER_NEGATION_INTERVAL",
+              "label": "양화명제의 부정과 구간"
+            },
+            {
+              "templateKey": "TPL_QUANTIFIER_TRUTH_JUDGMENT",
+              "label": "양화명제의 참·거짓"
+            },
+            {
+              "templateKey": "TPL_QUANTIFIER_NEGATION_NEGATE",
+              "label": "양화명제 부정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_TRUTH_SET_RELATION",
+          "label": "진리집합과 명제의 관계",
+          "templates": [
+            {
+              "templateKey": "TPL_FINITE_TRUTHSET_ENUMERATION",
+              "label": "유한 진리집합의 판정"
+            },
+            {
+              "templateKey": "TPL_IMPLICATION_TRUTHSET_RELATION",
+              "label": "명제와 진리집합의 포함관계"
+            },
+            {
+              "templateKey": "TPL_QUANTIFIED_SET_RELATION",
+              "label": "양화명제와 집합관계"
+            },
+            {
+              "templateKey": "TPL_TRUTHSET_CHAINED_INCLUSION",
+              "label": "진리집합의 연쇄 포함"
+            },
+            {
+              "templateKey": "TPL_TRUTHSET_SET_OPERATION",
+              "label": "집합 연산과 명제"
+            },
+            {
+              "templateKey": "TPL_TRUTH_SET_RELATION_INTERSECTION",
+              "label": "진리집합 교집합 정수"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-SB-03",
+      "label": "함수",
+      "order": 3,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+          "label": "합성함수"
+        },
+        {
+          "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+          "label": "함수의 뜻과 대응"
+        },
+        {
+          "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
+          "label": "역함수"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H1-RPM-100",
+          "path": "함수 > 함수 > 함수의 뜻 > 대응과 함수",
+          "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-101",
+          "path": "함수 > 함수 > 함수의 뜻 > 정의역·공역·치역",
+          "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-102",
+          "path": "함수 > 함수 > 합성함수 > 합성함수 계산",
+          "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-103",
+          "path": "함수 > 함수 > 합성함수 > 정의역 조건",
+          "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-104",
+          "path": "함수 > 함수 > 역함수 > 역함수 구하기",
+          "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-105",
+          "path": "함수 > 함수 > 역함수 > 그래프 대칭",
+          "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-106",
+          "path": "함수 > 함수 > 함수의 성질 > 일대일함수",
+          "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-107",
+          "path": "함수 > 함수 > 함수의 성질 > 항등함수·상수함수",
+          "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-273",
+          "path": "함수 > 함수 > 합성함수 > 합성함수 계산",
+          "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-274",
+          "path": "함수 > 함수 > 합성함수 > 합성함수 계산",
+          "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-282",
+          "path": "함수 > 함수 > 역함수 > 그래프 대칭",
+          "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-284",
+          "path": "함수 > 함수 > 함수의 성질 > 일대일함수",
+          "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+          "label": "합성함수의 그래프와 치역",
+          "templates": [
+            {
+              "templateKey": "TPL_COMPOSITE_EXTREMUM",
+              "label": "합성함수의 최댓값·최솟값"
+            },
+            {
+              "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+              "label": "합성함수의 구간별 그래프 분석"
+            },
+            {
+              "templateKey": "TPL_COMPOSITE_RANGE",
+              "label": "합성함수의 치역"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_COMPOSITION_EQUATION",
+          "label": "합성함수 방정식과 부등식",
+          "templates": [
+            {
+              "templateKey": "TPL_COMPOSITION_EQUATION_SOLVE",
+              "label": "합성함수 방정식 풀기"
+            },
+            {
+              "templateKey": "TPL_COMPOSITION_INEQUALITY",
+              "label": "합성함수 부등식 풀기"
+            },
+            {
+              "templateKey": "TPL_COMPOSITION_ROOT_COUNT_PARAMETER",
+              "label": "합성함수 방정식의 실근 개수와 매개변수"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+          "label": "합성함수의 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_COMPOSITION_GRAPH_TRACE_VALUE",
+              "label": "그래프에서 합성함숫값 역추적"
+            },
+            {
+              "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+              "label": "합성함숫값 직접 계산"
+            },
+            {
+              "templateKey": "TPL_COMPOSITION_VALUE_MAPPING",
+              "label": "대응도에서 합성함숫값 계산"
+            },
+            {
+              "templateKey": "TPL_COMPOSITION_WITH_INVERSE_VALUE",
+              "label": "역함수가 포함된 합성함숫값 계산"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+          "label": "합성함수의 성질",
+          "templates": [
+            {
+              "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+              "label": "합성함수의 관계 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+          "label": "정의역·공역·치역",
+          "templates": [
+            {
+              "templateKey": "TPL_DOMAIN_CODOMAIN_RANGE_CONDITION",
+              "label": "정의역·공역·치역의 판정과 조건"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_DIRECT",
+              "label": "정의역·치역 직접 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_EXTREMUM",
+              "label": "정의역·치역에서 최댓값·최솟값 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_PARAMETER",
+              "label": "정의역·치역의 매개변수 조건"
+            },
+            {
+              "templateKey": "TPL_RANGE_ENUMERATION",
+              "label": "치역 구하기"
+            },
+            {
+              "templateKey": "TPL_SURJECTIVITY_CONDITION",
+              "label": "공역과 치역이 일치하는 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FINITE_BIJECTION",
+          "label": "유한집합의 일대일대응",
+          "templates": [
+            {
+              "templateKey": "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION",
+              "label": "합성함수 조건으로 일대일대응 결정"
+            },
+            {
+              "templateKey": "TPL_FINITE_BIJECTION_DIRECT_DEDUCTION",
+              "label": "주어진 함수값으로 일대일대응 결정"
+            },
+            {
+              "templateKey": "TPL_FINITE_BIJECTION_INVERSE_DEDUCTION",
+              "label": "역함수 조건으로 일대일대응 결정"
+            },
+            {
+              "templateKey": "TPL_MULTIPLE_BIJECTIONS_DEDUCTION",
+              "label": "여러 일대일대응의 관계로 함수값 결정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
+          "label": "함수방정식",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+              "label": "가법형 함수방정식"
+            },
+            {
+              "templateKey": "TPL_FUNCTIONAL_EQUATION_MULTIPLICATIVE",
+              "label": "곱셈형 함수방정식"
+            },
+            {
+              "templateKey": "TPL_FUNCTIONAL_EQUATION_SYMMETRY",
+              "label": "대입으로 대칭·배수 관계 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTIONAL_EQUATION_DIFFERENTIAL_INVARIANT",
+              "label": "함수방정식 미분으로 불변식 구성"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_COUNTING",
+          "label": "함수의 개수",
+          "templates": [
+            {
+              "templateKey": "TPL_BASIC_FUNCTION_TYPE_COUNT",
+              "label": "함수·일대일대응·상수함수 등의 개수"
+            },
+            {
+              "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
+              "label": "조건을 만족하는 함수의 개수"
+            },
+            {
+              "templateKey": "TPL_IDENTITY_DOMAIN_COUNT",
+              "label": "항등함수가 되는 정의역의 개수"
+            },
+            {
+              "templateKey": "TPL_INJECTIVE_BIJECTION_COUNT",
+              "label": "일대일함수·일대일대응의 개수"
+            },
+            {
+              "templateKey": "TPL_MONOTONE_FUNCTION_COUNT",
+              "label": "증가·감소 조건이 있는 함수의 개수"
+            },
+            {
+              "templateKey": "TPL_SURJECTION_COUNT",
+              "label": "치역과 공역이 같은 함수의 개수"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_COUNT_VALUE_RESTRICTION_AND_ORDER",
+              "label": "함수값 제한과 순서 조건을 결합한 함수 개수"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_DEFINITION_JUDGMENT",
+          "label": "함수의 뜻과 판정",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_JUDGMENT_GRAPH",
+              "label": "함수의 그래프 판정"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_JUDGMENT_MAPPING",
+              "label": "대응이 함수인지 판정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_EQUALITY",
+          "label": "서로 같은 함수",
+          "templates": [
+            {
+              "templateKey": "TPL_EQUAL_FUNCTION_DOMAIN_SELECTION",
+              "label": "두 함수가 같아지는 정의역 구하기"
+            },
+            {
+              "templateKey": "TPL_EQUAL_FUNCTION_FINITE_DOMAIN",
+              "label": "유한 정의역에서 두 함수가 같은 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+          "label": "함수 그래프와 도형",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+              "label": "그래프의 도형 관계에서 식 유도하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DISTANCE_LENGTH",
+              "label": "그래프 위 점의 거리·길이 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_LATTICE",
+              "label": "그래프와 격자점 관계"
+            },
+            {
+              "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+              "label": "그래프와 직선으로 둘러싸인 넓이"
+            },
+            {
+              "templateKey": "TPL_SINE_INSCRIBED_RECTANGLE_AREA",
+              "label": "사인함수의 대칭성과 내접 직사각형 면적"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_PARALLELOGRAM",
+              "label": "함수 그래프 평행사변형"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_STRIP",
+              "label": "함수 간격 일정 넓이"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_TRACE",
+              "label": "그래프 좌표 추적"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_TRIANGLE_AREA",
+              "label": "교점 삼각형 넓이"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "label": "함수 그래프의 교점",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+              "label": "절댓값·조각함수 그래프의 교점"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_DISTANCE_RATIO",
+              "label": "교점의 거리·비 조건"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_TANGENCY_SINGLE",
+              "label": "접함 조건으로 교점 하나 만들기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+              "label": "두 함수 그래프의 교점"
+            },
+            {
+              "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+              "label": "그래프의 교점 개수"
+            },
+            {
+              "templateKey": "TPL_PERIODIC_SYMMETRY_INTERSECTION",
+              "label": "대칭·주기 그래프의 교점 개수"
+            },
+            {
+              "templateKey": "TPL_SINE_HORIZONTAL_PHASE_INTERSECTION",
+              "label": "사인곡선 수평 교점의 위상 합 제약"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "label": "함수 그래프의 성질",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+              "label": "함수 그래프의 성질 판정"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_SYMMETRY",
+              "label": "함수 그래프의 대칭성"
+            },
+            {
+              "templateKey": "TPL_GRAPH_ORDER_INTERVAL",
+              "label": "그래프의 대소 관계"
+            },
+            {
+              "templateKey": "TPL_TRIG_ABSOLUTE_PERIOD_COMBINATION",
+              "label": "절댓값 및 합성 삼각함수의 최소주기 합"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_RECOVERY",
+          "label": "함수식 구하기",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT",
+              "label": "점근선과 한 점으로 함수식 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_FORM_FROM_GRAPH",
+              "label": "그래프의 특징으로 함수식 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_FORM_FROM_POINT_VALUE",
+              "label": "점·함숫값 조건으로 함수식 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_FORM_FROM_RELATION_SYMMETRY",
+              "label": "함수 관계·대칭 조건으로 함수식 구하기"
+            },
+            {
+              "templateKey": "TPL_RECOVER_FUNCTION_BY_INPUT_CHANGE",
+              "label": "입력 치환으로 함수식 구하기"
+            },
+            {
+              "templateKey": "TPL_RECOVER_FUNCTION_FROM_COMPOSITION",
+              "label": "합성관계에서 함수식 구하기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_VALUE",
+          "label": "함숫값 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+              "label": "함숫값 직접 계산"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_INVERSE_COMPOSITION",
+          "label": "역함수와 합성함수",
+          "templates": [
+            {
+              "templateKey": "TPL_INVERSE_COMPOSITION_FORMULA",
+              "label": "합성함수의 역함수 공식"
+            },
+            {
+              "templateKey": "TPL_INVERSE_COMPOSITION_VALUE",
+              "label": "역함수와 합성함수의 값 계산"
+            },
+            {
+              "templateKey": "TPL_INVERSE_CONJUGATION",
+              "label": "f⁻¹∘g∘f 형태의 합성"
+            },
+            {
+              "templateKey": "TPL_INVERSE_IDENTITY_RELATION",
+              "label": "f∘f⁻¹과 항등함수 관계"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_INVERSE_GRAPH",
+          "label": "역함수의 그래프",
+          "templates": [
+            {
+              "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
+              "label": "역함수 그래프의 대칭을 이용한 거리·넓이"
+            },
+            {
+              "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+              "label": "함수와 역함수의 교점·접점"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_INVERSE_PROPERTIES",
+          "label": "역함수의 성질",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_INVERSE_EQUATION",
+              "label": "함수와 역함수가 포함된 방정식"
+            },
+            {
+              "templateKey": "TPL_INVERSE_PROPERTY_JUDGMENT",
+              "label": "역함수의 성질 판정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_INVERSE_VALUE",
+          "label": "역함수 구하기와 함수값",
+          "templates": [
+            {
+              "templateKey": "TPL_INVERSE_AFFINE_INPUT",
+              "label": "f(ax+b)의 역함수"
+            },
+            {
+              "templateKey": "TPL_INVERSE_FUNCTION_FORM",
+              "label": "역함수 식 구하기"
+            },
+            {
+              "templateKey": "TPL_INVERSE_VALUE_DIRECT",
+              "label": "역함숫값 직접 구하기"
+            },
+            {
+              "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+              "label": "그래프·대응도에서 역함숫값 읽기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_ITERATED_COMPOSITION",
+          "label": "반복합성",
+          "templates": [
+            {
+              "templateKey": "TPL_ITERATION_EQUATION_GRAPH",
+              "label": "여러 번 합성한 함수의 방정식·그래프"
+            },
+            {
+              "templateKey": "TPL_ITERATION_FIXED_POINT_PREIMAGE",
+              "label": "f∘f=f의 고정점과 원상"
+            },
+            {
+              "templateKey": "TPL_ITERATION_IDENTITY_ORDER",
+              "label": "fⁿ=I인 반복합성"
+            },
+            {
+              "templateKey": "TPL_ITERATION_PERIOD",
+              "label": "반복합성의 주기"
+            },
+            {
+              "templateKey": "TPL_ITERATION_RULE",
+              "label": "반복합성의 규칙"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+          "label": "일대일함수와 일대일대응",
+          "templates": [
+            {
+              "templateKey": "TPL_ABSOLUTE_VALUE_INJECTIVITY",
+              "label": "절댓값 함수의 일대일 조건"
+            },
+            {
+              "templateKey": "TPL_AFFINE_INTERVAL_BIJECTION",
+              "label": "일차함수의 구간 일대일대응"
+            },
+            {
+              "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+              "label": "일대일함수·일대일대응의 판정과 조건"
+            },
+            {
+              "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+              "label": "조각함수의 일대일대응 조건"
+            },
+            {
+              "templateKey": "TPL_QUADRATIC_DOMAIN_BIJECTION",
+              "label": "이차함수의 정의역 제한과 일대일대응"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_RECURSIVE_FUNCTION",
+          "label": "재귀적으로 정의된 함수",
+          "templates": [
+            {
+              "templateKey": "TPL_RECURSIVE_FUNCTION_VALUES",
+              "label": "재귀식으로 함수값 반복 계산"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_SPECIAL_FUNCTION_PROPERTIES",
+          "label": "여러 가지 함수의 성질",
+          "templates": [
+            {
+              "templateKey": "TPL_CONSTANT_FUNCTION_PREIMAGE",
+              "label": "상수함수가 되기 위한 같은 함수값의 개수"
+            },
+            {
+              "templateKey": "TPL_SPECIAL_FUNCTION_DIRECT",
+              "label": "항등함수·상수함수 직접 적용"
+            },
+            {
+              "templateKey": "TPL_SPECIAL_FUNCTION_RELATION",
+              "label": "여러 가지 함수의 성질로 함수값 결정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_COMPOSITE_INVERSE_FUNCTION",
+          "label": "합성함수와 역함수의 값 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_PIECEWISE_ITERATED_INVERSE_EVALUATION",
+              "label": "역함수 합성값의 순차 대입"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_FUNCTION_COUNTING_CONDITIONS",
+          "label": "조건을 만족하는 함수의 개수",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_RESTRICTED_CODOMAIN_ORDER_FUNCTION_COUNT",
+              "label": "치역 후보 축소 후 대소 선택"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-SB-04",
+      "label": "유리함수",
+      "order": 4,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
+          "label": "유리함수의 활용"
+        },
+        {
+          "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
+          "label": "유리함수의 뜻과 계산"
+        },
+        {
+          "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+          "label": "유리함수의 그래프"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H1-RPM-108",
+          "path": "함수 > 유리함수 > 유리함수의 그래프 > 기본 그래프",
+          "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-109",
+          "path": "함수 > 유리함수 > 유리함수의 그래프 > 평행이동",
+          "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-110",
+          "path": "함수 > 유리함수 > 점근선과 위치 > 점근선",
+          "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-111",
+          "path": "함수 > 유리함수 > 점근선과 위치 > 그래프의 사분면",
+          "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-112",
+          "path": "함수 > 유리함수 > 유리함수의 활용 > 식 결정",
+          "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-113",
+          "path": "함수 > 유리함수 > 유리함수의 활용 > 유리함수의 최대·최소",
+          "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
+          "mappingStatus": "FAMILY_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-114",
+          "path": "함수 > 유리함수 > 유리함수의 활용 > 유리함수와 그래프의 교점",
+          "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-279",
+          "path": "함수 > 유리함수 > 점근선과 위치 > 그래프의 사분면",
+          "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+          "label": "함수의 최댓값·최솟값",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT",
+              "label": "범위 조건으로 계수의 최댓값·최솟값 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+              "label": "거리·넓이·둘레의 최댓값·최솟값"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+              "label": "구간 끝점과 함수의 최댓값·최솟값"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+              "label": "매개변수 함수의 최댓값·최솟값"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_INEQUALITY",
+              "label": "부등식 경계"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_QUADRATIC",
+              "label": "이차식 환원"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_SUB_QUADRATIC",
+              "label": "치환범위 이차식 극값"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+          "label": "함수 그래프와 도형",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+              "label": "그래프의 도형 관계에서 식 유도하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DISTANCE_LENGTH",
+              "label": "그래프 위 점의 거리·길이 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_LATTICE",
+              "label": "그래프와 격자점 관계"
+            },
+            {
+              "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+              "label": "그래프와 직선으로 둘러싸인 넓이"
+            },
+            {
+              "templateKey": "TPL_SINE_INSCRIBED_RECTANGLE_AREA",
+              "label": "사인함수의 대칭성과 내접 직사각형 면적"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_PARALLELOGRAM",
+              "label": "함수 그래프 평행사변형"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_STRIP",
+              "label": "함수 간격 일정 넓이"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_TRACE",
+              "label": "그래프 좌표 추적"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_TRIANGLE_AREA",
+              "label": "교점 삼각형 넓이"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "label": "함수 그래프의 교점",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+              "label": "절댓값·조각함수 그래프의 교점"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_DISTANCE_RATIO",
+              "label": "교점의 거리·비 조건"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_TANGENCY_SINGLE",
+              "label": "접함 조건으로 교점 하나 만들기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+              "label": "두 함수 그래프의 교점"
+            },
+            {
+              "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+              "label": "그래프의 교점 개수"
+            },
+            {
+              "templateKey": "TPL_PERIODIC_SYMMETRY_INTERSECTION",
+              "label": "대칭·주기 그래프의 교점 개수"
+            },
+            {
+              "templateKey": "TPL_SINE_HORIZONTAL_PHASE_INTERSECTION",
+              "label": "사인곡선 수평 교점의 위상 합 제약"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "label": "함수 그래프의 성질",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+              "label": "함수 그래프의 성질 판정"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_SYMMETRY",
+              "label": "함수 그래프의 대칭성"
+            },
+            {
+              "templateKey": "TPL_GRAPH_ORDER_INTERVAL",
+              "label": "그래프의 대소 관계"
+            },
+            {
+              "templateKey": "TPL_TRIG_ABSOLUTE_PERIOD_COMBINATION",
+              "label": "절댓값 및 합성 삼각함수의 최소주기 합"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+          "label": "함수 그래프와 사분면",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+              "label": "함수 그래프가 지나는 사분면"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
+              "label": "다른 함수와 비교한 사분면 관계"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
+              "label": "매개변수에 따른 사분면 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+          "label": "함수 그래프의 변환",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+              "label": "함수 그래프의 평행이동"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION_REFLECTION",
+              "label": "함수 그래프의 평행이동과 대칭이동"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_TRANSFORM_ASYMPTOTE_POINT",
+              "label": "이동 그래프 계수 복원"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_RECOVERY",
+          "label": "함수식 구하기",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT",
+              "label": "점근선과 한 점으로 함수식 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_FORM_FROM_GRAPH",
+              "label": "그래프의 특징으로 함수식 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_FORM_FROM_POINT_VALUE",
+              "label": "점·함숫값 조건으로 함수식 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_FORM_FROM_RELATION_SYMMETRY",
+              "label": "함수 관계·대칭 조건으로 함수식 구하기"
+            },
+            {
+              "templateKey": "TPL_RECOVER_FUNCTION_BY_INPUT_CHANGE",
+              "label": "입력 치환으로 함수식 구하기"
+            },
+            {
+              "templateKey": "TPL_RECOVER_FUNCTION_FROM_COMPOSITION",
+              "label": "합성관계에서 함수식 구하기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_INVERSE_GRAPH",
+          "label": "역함수의 그래프",
+          "templates": [
+            {
+              "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
+              "label": "역함수 그래프의 대칭을 이용한 거리·넓이"
+            },
+            {
+              "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+              "label": "함수와 역함수의 교점·접점"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_INVERSE_PROPERTIES",
+          "label": "역함수의 성질",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_INVERSE_EQUATION",
+              "label": "함수와 역함수가 포함된 방정식"
+            },
+            {
+              "templateKey": "TPL_INVERSE_PROPERTY_JUDGMENT",
+              "label": "역함수의 성질 판정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_INVERSE_VALUE",
+          "label": "역함수 구하기와 함수값",
+          "templates": [
+            {
+              "templateKey": "TPL_INVERSE_AFFINE_INPUT",
+              "label": "f(ax+b)의 역함수"
+            },
+            {
+              "templateKey": "TPL_INVERSE_FUNCTION_FORM",
+              "label": "역함수 식 구하기"
+            },
+            {
+              "templateKey": "TPL_INVERSE_VALUE_DIRECT",
+              "label": "역함숫값 직접 구하기"
+            },
+            {
+              "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+              "label": "그래프·대응도에서 역함숫값 읽기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_ITERATED_COMPOSITION",
+          "label": "반복합성",
+          "templates": [
+            {
+              "templateKey": "TPL_ITERATION_EQUATION_GRAPH",
+              "label": "여러 번 합성한 함수의 방정식·그래프"
+            },
+            {
+              "templateKey": "TPL_ITERATION_FIXED_POINT_PREIMAGE",
+              "label": "f∘f=f의 고정점과 원상"
+            },
+            {
+              "templateKey": "TPL_ITERATION_IDENTITY_ORDER",
+              "label": "fⁿ=I인 반복합성"
+            },
+            {
+              "templateKey": "TPL_ITERATION_PERIOD",
+              "label": "반복합성의 주기"
+            },
+            {
+              "templateKey": "TPL_ITERATION_RULE",
+              "label": "반복합성의 규칙"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+          "label": "일대일함수와 일대일대응",
+          "templates": [
+            {
+              "templateKey": "TPL_ABSOLUTE_VALUE_INJECTIVITY",
+              "label": "절댓값 함수의 일대일 조건"
+            },
+            {
+              "templateKey": "TPL_AFFINE_INTERVAL_BIJECTION",
+              "label": "일차함수의 구간 일대일대응"
+            },
+            {
+              "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+              "label": "일대일함수·일대일대응의 판정과 조건"
+            },
+            {
+              "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+              "label": "조각함수의 일대일대응 조건"
+            },
+            {
+              "templateKey": "TPL_QUADRATIC_DOMAIN_BIJECTION",
+              "label": "이차함수의 정의역 제한과 일대일대응"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+          "label": "유리함수의 점근선",
+          "templates": [
+            {
+              "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+              "label": "유리함수의 점근선 직접 구하기"
+            },
+            {
+              "templateKey": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+              "label": "점근선과 도형 관계"
+            },
+            {
+              "templateKey": "TPL_RATIONAL_ASYMPTOTE_MODEL",
+              "label": "모델 관계에서 점근선 조건 이용하기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+          "label": "유리식의 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_RATIONAL_EXPRESSION_IDENTIFICATION",
+              "label": "유리식 판정"
+            },
+            {
+              "templateKey": "TPL_RATIONAL_EXPRESSION_SIMPLIFY",
+              "label": "유리식 간단히 하기"
+            },
+            {
+              "templateKey": "TPL_RATIONAL_NESTED_FRACTION",
+              "label": "복분수형 유리식 정리"
+            },
+            {
+              "templateKey": "TPL_RATIONAL_PARTIAL_FRACTION",
+              "label": "부분분수로 유리식 정리"
+            },
+            {
+              "templateKey": "TPL_RATIONAL_TELESCOPING_SUM",
+              "label": "유리식의 망원합"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_RATIONAL_EXPRESSION_IDENTITY",
+          "label": "유리식 항등식의 미정계수 결정",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_PARTIAL_FRACTION_UNDETERMINED_COEFFICIENTS",
+              "label": "부분분수 통분 후 계수 비교"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_RATIONAL_FUNCTION_TRANSLATION",
+          "label": "유리함수 그래프의 평행이동 판별",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_RATIONAL_FUNCTION_SUPERIMPOSITION_K_MATCH",
+              "label": "표준형 계수 비교로 평행이동 판별"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_RATIONAL_FUNCTION_SYMMETRY",
+          "label": "유리함수의 대칭 중심과 미지수 결정",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_RATIONAL_SYMMETRY_CENTER_POINT_PARAMETER",
+              "label": "대칭 중심과 함숫값으로 계수 결정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_RATIONAL_LINE_INTERSECTION_DISTANCE",
+          "label": "유리함수와 직선의 교점 거리 최솟값",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_HYPERBOLA_CHORD_MINIMUM_DISTANCE",
+              "label": "교점 거리 제곱의 최솟값"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_ITERATED_COMPOSITE_FUNCTION",
+          "label": "반복 합성함수의 값",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_RATIONAL_FUNCTION_PERIODIC_ITERATION",
+              "label": "f²=x 주기 확인 후 지수 축소"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_FUNCTION_COEFFICIENT_SIGNS",
+          "label": "그래프에서 함수의 계수 부호 판정",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_IRRATIONAL_TO_RATIONAL_GRAPH_QUADRANTS",
+              "label": "무리함수 계수 부호로 유리함수 사분면 판정"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-SB-05",
+      "label": "무리함수",
+      "order": 5,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
+          "label": "무리함수의 뜻과 계산"
+        },
+        {
+          "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+          "label": "무리함수의 그래프"
+        },
+        {
+          "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
+          "label": "무리함수와 역함수"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H1-RPM-115",
+          "path": "함수 > 무리함수 > 무리함수의 그래프 > 기본 그래프",
+          "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-116",
+          "path": "함수 > 무리함수 > 무리함수의 그래프 > 평행이동",
+          "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-117",
+          "path": "함수 > 무리함수 > 정의역과 치역 > 정의역 조건",
+          "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-118",
+          "path": "함수 > 무리함수 > 정의역과 치역 > 그래프 위치",
+          "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-119",
+          "path": "함수 > 무리함수 > 무리함수의 활용 > 식 결정",
+          "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H1-RPM-120",
+          "path": "함수 > 무리함수 > 무리함수의 활용 > 무리함수의 역함수",
+          "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-121",
+          "path": "함수 > 무리함수 > 무리함수의 활용 > 무리함수의 교점",
+          "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-275",
+          "path": "함수 > 무리함수 > 정의역과 치역 > 그래프 위치",
+          "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-276",
+          "path": "함수 > 무리함수 > 무리함수의 그래프 > 평행이동",
+          "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-280",
+          "path": "함수 > 무리함수 > 무리함수의 활용 > 식 결정",
+          "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-281",
+          "path": "함수 > 무리함수 > 무리함수의 활용 > 무리함수의 교점",
+          "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+          "label": "정의역·공역·치역",
+          "templates": [
+            {
+              "templateKey": "TPL_DOMAIN_CODOMAIN_RANGE_CONDITION",
+              "label": "정의역·공역·치역의 판정과 조건"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_DIRECT",
+              "label": "정의역·치역 직접 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_EXTREMUM",
+              "label": "정의역·치역에서 최댓값·최솟값 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_PARAMETER",
+              "label": "정의역·치역의 매개변수 조건"
+            },
+            {
+              "templateKey": "TPL_RANGE_ENUMERATION",
+              "label": "치역 구하기"
+            },
+            {
+              "templateKey": "TPL_SURJECTIVITY_CONDITION",
+              "label": "공역과 치역이 일치하는 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+          "label": "함수의 최댓값·최솟값",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT",
+              "label": "범위 조건으로 계수의 최댓값·최솟값 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+              "label": "거리·넓이·둘레의 최댓값·최솟값"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+              "label": "구간 끝점과 함수의 최댓값·최솟값"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+              "label": "매개변수 함수의 최댓값·최솟값"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_INEQUALITY",
+              "label": "부등식 경계"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_QUADRATIC",
+              "label": "이차식 환원"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_SUB_QUADRATIC",
+              "label": "치환범위 이차식 극값"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+          "label": "함수 그래프와 도형",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+              "label": "그래프의 도형 관계에서 식 유도하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DISTANCE_LENGTH",
+              "label": "그래프 위 점의 거리·길이 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_LATTICE",
+              "label": "그래프와 격자점 관계"
+            },
+            {
+              "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+              "label": "그래프와 직선으로 둘러싸인 넓이"
+            },
+            {
+              "templateKey": "TPL_SINE_INSCRIBED_RECTANGLE_AREA",
+              "label": "사인함수의 대칭성과 내접 직사각형 면적"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_PARALLELOGRAM",
+              "label": "함수 그래프 평행사변형"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_STRIP",
+              "label": "함수 간격 일정 넓이"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_TRACE",
+              "label": "그래프 좌표 추적"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_TRIANGLE_AREA",
+              "label": "교점 삼각형 넓이"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "label": "함수 그래프의 교점",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+              "label": "절댓값·조각함수 그래프의 교점"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_DISTANCE_RATIO",
+              "label": "교점의 거리·비 조건"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_TANGENCY_SINGLE",
+              "label": "접함 조건으로 교점 하나 만들기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+              "label": "두 함수 그래프의 교점"
+            },
+            {
+              "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+              "label": "그래프의 교점 개수"
+            },
+            {
+              "templateKey": "TPL_PERIODIC_SYMMETRY_INTERSECTION",
+              "label": "대칭·주기 그래프의 교점 개수"
+            },
+            {
+              "templateKey": "TPL_SINE_HORIZONTAL_PHASE_INTERSECTION",
+              "label": "사인곡선 수평 교점의 위상 합 제약"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "label": "함수 그래프의 성질",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+              "label": "함수 그래프의 성질 판정"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_SYMMETRY",
+              "label": "함수 그래프의 대칭성"
+            },
+            {
+              "templateKey": "TPL_GRAPH_ORDER_INTERVAL",
+              "label": "그래프의 대소 관계"
+            },
+            {
+              "templateKey": "TPL_TRIG_ABSOLUTE_PERIOD_COMBINATION",
+              "label": "절댓값 및 합성 삼각함수의 최소주기 합"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+          "label": "함수 그래프와 사분면",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+              "label": "함수 그래프가 지나는 사분면"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
+              "label": "다른 함수와 비교한 사분면 관계"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
+              "label": "매개변수에 따른 사분면 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+          "label": "함수 그래프의 변환",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+              "label": "함수 그래프의 평행이동"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION_REFLECTION",
+              "label": "함수 그래프의 평행이동과 대칭이동"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_TRANSFORM_ASYMPTOTE_POINT",
+              "label": "이동 그래프 계수 복원"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_RECOVERY",
+          "label": "함수식 구하기",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT",
+              "label": "점근선과 한 점으로 함수식 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_FORM_FROM_GRAPH",
+              "label": "그래프의 특징으로 함수식 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_FORM_FROM_POINT_VALUE",
+              "label": "점·함숫값 조건으로 함수식 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_FORM_FROM_RELATION_SYMMETRY",
+              "label": "함수 관계·대칭 조건으로 함수식 구하기"
+            },
+            {
+              "templateKey": "TPL_RECOVER_FUNCTION_BY_INPUT_CHANGE",
+              "label": "입력 치환으로 함수식 구하기"
+            },
+            {
+              "templateKey": "TPL_RECOVER_FUNCTION_FROM_COMPOSITION",
+              "label": "합성관계에서 함수식 구하기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_INVERSE_GRAPH",
+          "label": "역함수의 그래프",
+          "templates": [
+            {
+              "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
+              "label": "역함수 그래프의 대칭을 이용한 거리·넓이"
+            },
+            {
+              "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+              "label": "함수와 역함수의 교점·접점"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_INVERSE_VALUE",
+          "label": "역함수 구하기와 함수값",
+          "templates": [
+            {
+              "templateKey": "TPL_INVERSE_AFFINE_INPUT",
+              "label": "f(ax+b)의 역함수"
+            },
+            {
+              "templateKey": "TPL_INVERSE_FUNCTION_FORM",
+              "label": "역함수 식 구하기"
+            },
+            {
+              "templateKey": "TPL_INVERSE_VALUE_DIRECT",
+              "label": "역함숫값 직접 구하기"
+            },
+            {
+              "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+              "label": "그래프·대응도에서 역함숫값 읽기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_RADICAL_EXPRESSION",
+          "label": "무리식의 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_RADICAL_EXPRESSION_APPLICATION",
+              "label": "무리식의 활용"
+            },
+            {
+              "templateKey": "TPL_RADICAL_EXPRESSION_SIMPLIFY",
+              "label": "무리식 간단히 하기"
+            },
+            {
+              "templateKey": "TPL_RADICAL_REAL_VALUE_RANGE",
+              "label": "무리식이 실수가 되는 범위"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_IRRATIONAL_EXPRESSION_REAL_CONDITION",
+          "label": "무리식이 실수가 되는 조건",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_RADICAL_QUOTIENT_REAL_DOMAIN",
+              "label": "근호 분수식의 정의역 연립"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_IRRATIONAL_LINE_INTERSECTION",
+          "label": "무리함수와 직선의 접선 조건",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_IRRATIONAL_CURVE_LINE_TANGENCY_PARAMETER",
+              "label": "제곱 후 판별식 0으로 접선 매개변수"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_IRRATIONAL_GRAPH_AREA_SYMMETRY",
+          "label": "무리함수 그래프로 둘러싸인 넓이",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_CUT_AND_PASTE_CONGRUENT_CURVE_AREA",
+              "label": "합동 조각 이동으로 직사각형 등적변형"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_IRRATIONAL_EXPRESSION_SIMPLIFICATION",
+          "label": "무리식의 통분과 유리화",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_CONJUGATE_DENOMINATOR_RATIONALIZATION",
+              "label": "켤레를 이용한 통분과 유리화"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-SB-06",
+      "label": "경우의 수",
+      "order": 6,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-SB-06-COUNTING_APPLICATION",
+          "label": "경우의 수의 활용"
+        },
+        {
+          "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+          "label": "경우의 수의 기본 원리"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H1-RPM-122",
+          "path": "경우의 수 > 경우의 수와 순열 > 합·곱의 법칙 > 경우를 나누어 세기",
+          "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-123",
+          "path": "경우의 수 > 경우의 수와 순열 > 합·곱의 법칙 > 단계별 선택",
+          "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-278",
+          "path": "경우의 수 > 경우의 수와 순열 > 합·곱의 법칙 > 단계별 선택",
+          "subUnitKey": "H15-SB-06-COUNTING_APPLICATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+          "label": "순열",
+          "templates": [
+            {
+              "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+              "label": "일반 순열·조건 배열"
+            },
+            {
+              "templateKey": "TPL_CIRCULAR_PERMUTATION",
+              "label": "원순열"
+            },
+            {
+              "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+              "label": "같은 것이 있는 순열"
+            },
+            {
+              "templateKey": "TPL_COUNTING_ARRANGEMENT_PATH",
+              "label": "격자 경로"
+            },
+            {
+              "templateKey": "TPL_COUNTING_ARRANGEMENT_ROTATION",
+              "label": "회전 중복"
+            },
+            {
+              "templateKey": "TPL_H1_ARRANGEMENT_LEXICOGRAPHIC_RANK",
+              "label": "사전식 순열 순위·역순위"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+          "label": "경우의 수의 합·곱 법칙",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_COUNT_TOURNAMENT_BRACKET",
+              "label": "부전승·대진표 자리 배치"
+            },
+            {
+              "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+              "label": "합·곱의 법칙과 경우 분해"
+            },
+            {
+              "templateKey": "TPL_H1_COUNTING_GRAPH_PATH_COLOR",
+              "label": "경로·그래프·색칠 경우의 수"
+            },
+            {
+              "templateKey": "TPL_H1_COUNTING_PRINCIPLE_GENERAL_COMPLEMENT",
+              "label": "여사건 경우의 수"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "label": "조합·중복조합",
+          "templates": [
+            {
+              "templateKey": "TPL_COMBINATION_SELECTION",
+              "label": "조합과 선택"
+            },
+            {
+              "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+              "label": "중복조합·정수해·동일물 분배"
+            },
+            {
+              "templateKey": "TPL_H1_BINOMIAL_IDENTITY_CHECK",
+              "label": "조합 항등식 증명·판정"
+            },
+            {
+              "templateKey": "TPL_H1_BINOMIAL_PARAMETER_RELATION",
+              "label": "순열·조합 관계로 매개변수 결정"
+            },
+            {
+              "templateKey": "TPL_H1_SELECTION_BOX_IDENTITY",
+              "label": "상자 배정에서 동일·서로 다른 대상 구분"
+            },
+            {
+              "templateKey": "TPL_H1_SELECTION_CAPACITY_DISTRIBUTION",
+              "label": "수용량 제약이 있는 대상 분배"
+            },
+            {
+              "templateKey": "TPL_H1_SELECTION_GEOMETRIC_DEGENERACY",
+              "label": "기하 점 선택 후 퇴화 경우 제외"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_COUNTING",
+          "label": "함수의 개수",
+          "templates": [
+            {
+              "templateKey": "TPL_BASIC_FUNCTION_TYPE_COUNT",
+              "label": "함수·일대일대응·상수함수 등의 개수"
+            },
+            {
+              "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
+              "label": "조건을 만족하는 함수의 개수"
+            },
+            {
+              "templateKey": "TPL_IDENTITY_DOMAIN_COUNT",
+              "label": "항등함수가 되는 정의역의 개수"
+            },
+            {
+              "templateKey": "TPL_INJECTIVE_BIJECTION_COUNT",
+              "label": "일대일함수·일대일대응의 개수"
+            },
+            {
+              "templateKey": "TPL_MONOTONE_FUNCTION_COUNT",
+              "label": "증가·감소 조건이 있는 함수의 개수"
+            },
+            {
+              "templateKey": "TPL_SURJECTION_COUNT",
+              "label": "치역과 공역이 같은 함수의 개수"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_COUNT_VALUE_RESTRICTION_AND_ORDER",
+              "label": "함수값 제한과 순서 조건을 결합한 함수 개수"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_DERANGEMENT_COUNTING",
+          "label": "교란순열을 이용한 경우의 수",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_PARTIAL_FIXED_POINT_DERANGEMENT",
+              "label": "고정점 선택 후 완전순열"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_COMBINATORIAL_GEOMETRY_CIRCLE",
+          "label": "원 위 점으로 만드는 도형의 개수",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_REGULAR_POLYGON_RIGHT_TRIANGLE_RECTANGLE",
+              "label": "지름을 이용한 직각삼각형·직사각형 계수"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_ORDER_CONSTRAINED_TUPLE_COUNTING",
+          "label": "대소 조건이 있는 순서쌍의 개수",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_WEAK_INEQUALITY_COMBINATION_WITH_REPETITION",
+              "label": "기준 변수 값별 분기 후 합산"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_NUMBER_THEORETIC_COUNTING",
+          "label": "공약수 조건의 경우의 수",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_NON_COPRIME_PAIR_INCLUSION_EXCLUSION",
+              "label": "소인수별 배수 쌍 포함배제"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-SB-07",
+      "label": "순열",
+      "order": 7,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-SB-07-CIRCULAR_PERMUTATION",
+          "label": "원순열"
+        },
+        {
+          "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+          "label": "순열"
+        },
+        {
+          "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+          "label": "조건이 있는 순열"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H1-RPM-124",
+          "path": "경우의 수 > 경우의 수와 순열 > 순열 > 일렬 배열",
+          "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-125",
+          "path": "경우의 수 > 경우의 수와 순열 > 순열 > 특정 조건 배열",
+          "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-126",
+          "path": "경우의 수 > 경우의 수와 순열 > 중복·원순열 기초 > 같은 것이 있는 배열",
+          "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-127",
+          "path": "경우의 수 > 경우의 수와 순열 > 중복·원순열 기초 > 원형 배열",
+          "subUnitKey": "H15-SB-07-CIRCULAR_PERMUTATION",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H1-RPM-283",
+          "path": "경우의 수 > 경우의 수와 순열 > 순열 > 일렬 배열",
+          "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+          "label": "순열",
+          "templates": [
+            {
+              "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+              "label": "일반 순열·조건 배열"
+            },
+            {
+              "templateKey": "TPL_CIRCULAR_PERMUTATION",
+              "label": "원순열"
+            },
+            {
+              "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+              "label": "같은 것이 있는 순열"
+            },
+            {
+              "templateKey": "TPL_COUNTING_ARRANGEMENT_PATH",
+              "label": "격자 경로"
+            },
+            {
+              "templateKey": "TPL_COUNTING_ARRANGEMENT_ROTATION",
+              "label": "회전 중복"
+            },
+            {
+              "templateKey": "TPL_H1_ARRANGEMENT_LEXICOGRAPHIC_RANK",
+              "label": "사전식 순열 순위·역순위"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "label": "조합·중복조합",
+          "templates": [
+            {
+              "templateKey": "TPL_COMBINATION_SELECTION",
+              "label": "조합과 선택"
+            },
+            {
+              "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+              "label": "중복조합·정수해·동일물 분배"
+            },
+            {
+              "templateKey": "TPL_H1_BINOMIAL_IDENTITY_CHECK",
+              "label": "조합 항등식 증명·판정"
+            },
+            {
+              "templateKey": "TPL_H1_BINOMIAL_PARAMETER_RELATION",
+              "label": "순열·조합 관계로 매개변수 결정"
+            },
+            {
+              "templateKey": "TPL_H1_SELECTION_BOX_IDENTITY",
+              "label": "상자 배정에서 동일·서로 다른 대상 구분"
+            },
+            {
+              "templateKey": "TPL_H1_SELECTION_CAPACITY_DISTRIBUTION",
+              "label": "수용량 제약이 있는 대상 분배"
+            },
+            {
+              "templateKey": "TPL_H1_SELECTION_GEOMETRIC_DEGENERACY",
+              "label": "기하 점 선택 후 퇴화 경우 제외"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+          "label": "경우의 수의 합·곱 법칙",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_COUNT_TOURNAMENT_BRACKET",
+              "label": "부전승·대진표 자리 배치"
+            },
+            {
+              "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+              "label": "합·곱의 법칙과 경우 분해"
+            },
+            {
+              "templateKey": "TPL_H1_COUNTING_GRAPH_PATH_COLOR",
+              "label": "경로·그래프·색칠 경우의 수"
+            },
+            {
+              "templateKey": "TPL_H1_COUNTING_PRINCIPLE_GENERAL_COMPLEMENT",
+              "label": "여사건 경우의 수"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_CONSTRAINED_PERMUTATION",
+          "label": "사이 간격이 정해진 순열",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_FIXED_SPACING_BLOCK_PERMUTATION",
+              "label": "사이 문자 선택 후 양 끝 교환"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_ADJACENT_GROUP_PERMUTATION",
+          "label": "이웃 조건이 있는 선택과 배열",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_SELECTION_AND_ADJACENT_ARRANGEMENT_CASES",
+              "label": "선택 인원에 따른 경우 분할 후 합산"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_DICTIONARY_ORDER_PERMUTATION",
+          "label": "사전식 배열의 순위",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_LEXICOGRAPHIC_RANK_EVALUATION",
+              "label": "앞서는 접두사별 배열 수 누적"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-SB-08",
+      "label": "조합",
+      "order": 8,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-SB-08-COMBINATION_APPLICATION",
+          "label": "조합의 활용"
+        },
+        {
+          "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
+          "label": "조합"
+        },
+        {
+          "subUnitKey": "H15-SB-08-COMBINATION_REPETITION",
+          "label": "중복조합"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H1-RPM-128",
+          "path": "경우의 수 > 조합 > 조합의 뜻과 계산 > 조합 계산",
+          "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-129",
+          "path": "경우의 수 > 조합 > 조합의 뜻과 계산 > 순열과 조합 구별",
+          "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H1-RPM-130",
+          "path": "경우의 수 > 조합 > 조합의 활용 > 선택 조건",
+          "subUnitKey": "H15-SB-08-COMBINATION_APPLICATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-131",
+          "path": "경우의 수 > 조합 > 조합의 활용 > 도형에서의 선택",
+          "subUnitKey": "H15-SB-08-COMBINATION_APPLICATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-132",
+          "path": "경우의 수 > 조합 > 분할·분배 > 선택 후 배치",
+          "subUnitKey": "H15-SB-08-COMBINATION_APPLICATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H1-RPM-133",
+          "path": "경우의 수 > 조합 > 분할·분배 > 조합을 이용한 경우의 수",
+          "subUnitKey": "H15-SB-08-COMBINATION_APPLICATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H1-RPM-277",
+          "path": "경우의 수 > 조합 > 조합의 뜻과 계산 > 조합 계산",
+          "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "label": "조합·중복조합",
+          "templates": [
+            {
+              "templateKey": "TPL_COMBINATION_SELECTION",
+              "label": "조합과 선택"
+            },
+            {
+              "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+              "label": "중복조합·정수해·동일물 분배"
+            },
+            {
+              "templateKey": "TPL_H1_BINOMIAL_IDENTITY_CHECK",
+              "label": "조합 항등식 증명·판정"
+            },
+            {
+              "templateKey": "TPL_H1_BINOMIAL_PARAMETER_RELATION",
+              "label": "순열·조합 관계로 매개변수 결정"
+            },
+            {
+              "templateKey": "TPL_H1_SELECTION_BOX_IDENTITY",
+              "label": "상자 배정에서 동일·서로 다른 대상 구분"
+            },
+            {
+              "templateKey": "TPL_H1_SELECTION_CAPACITY_DISTRIBUTION",
+              "label": "수용량 제약이 있는 대상 분배"
+            },
+            {
+              "templateKey": "TPL_H1_SELECTION_GEOMETRIC_DEGENERACY",
+              "label": "기하 점 선택 후 퇴화 경우 제외"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+          "label": "경우의 수의 합·곱 법칙",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_COUNT_TOURNAMENT_BRACKET",
+              "label": "부전승·대진표 자리 배치"
+            },
+            {
+              "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+              "label": "합·곱의 법칙과 경우 분해"
+            },
+            {
+              "templateKey": "TPL_H1_COUNTING_GRAPH_PATH_COLOR",
+              "label": "경로·그래프·색칠 경우의 수"
+            },
+            {
+              "templateKey": "TPL_H1_COUNTING_PRINCIPLE_GENERAL_COMPLEMENT",
+              "label": "여사건 경우의 수"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_PERMUTATION_COMBINATION_CALCULATION",
+          "label": "순열·조합 공식 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_DIRECT_COMBINATION_PERMUTATION_DIFFERENCE",
+              "label": "nPr·nCr 직접 계산 후 차"
+            },
+            {
+              "templateKey": "TPL_H1_PERMUTATION_COMBINATION_CALCULATION_CALCULATE",
+              "label": "공식 계산"
+            },
+            {
+              "templateKey": "TPL_H1_PERMUTATION_COMBINATION_CALCULATION_FACTORIAL",
+              "label": "팩토리얼 변형"
+            },
+            {
+              "templateKey": "TPL_H1_PERMUTATION_COMBINATION_CALCULATION_IDENTITY",
+              "label": "성질 판별"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_CONSECUTIVE_COMBINATION_RATIO",
+          "label": "연속 조합의 비율로 미지수 결정",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_COMBINATION_PROPORTION_SYSTEM_SOLVE",
+              "label": "연속 조합 비의 연립"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "termCandidates": [
+    {
+      "term": "정수",
+      "matchedAs": "정수",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "록 하는 양의 정수 $n$의 값은"
+    },
+    {
+      "term": "집합",
+      "matchedAs": "집합",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "답형 1. 두 집합 $A = \\l"
+    },
+    {
+      "term": "교점",
+      "matchedAs": "교점",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "교점의 좌표를 $("
+    },
+    {
+      "term": "대입",
+      "matchedAs": "대입",
+      "kind": "방법",
+      "src": "solution",
+      "quote": "를 첫째 식에 대입하면 $x^2"
+    },
+    {
+      "term": "실근",
+      "matchedAs": "실근",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "> 16$이면 실근이 없다. $\\"
+    },
+    {
+      "term": "양수",
+      "matchedAs": "양수",
+      "kind": "조건",
+      "src": "solution",
+      "quote": "n}$이 모두 양수이므로 교점이"
+    },
+    {
+      "term": "유일성",
+      "matchedAs": "유일",
+      "kind": "조건",
+      "src": "solution",
+      "quote": "= 0$으로 유일한 근 $x ="
+    },
+    {
+      "term": "정수",
+      "matchedAs": "정수",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "= 0$ 양의 정수 $n$에 대하"
+    },
+    {
+      "term": "좌표",
+      "matchedAs": "좌표",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "교점의 좌표를 $(x, y"
+    }
+  ],
+  "figure": {
+    "cueWords": [],
+    "hasPlan": true,
+    "problemPlanRef": "archive/exams/similar/high/h1/2final/22_금당고_2학기_기말_고1_유사_plans/q18-problem.plan.json",
+    "hasImage": false,
+    "sourcePlan": {
+      "plan": true
+    },
+    "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
+  },
+  "sourceExamHint": null,
+  "guide": "JUDGMENT_GUIDE.md 를 먼저 읽는다. 후보 밖 키는 쓸 수 없다. 모든 이유 문장에는 이 문항의 숫자·식을 넣는다."
+}

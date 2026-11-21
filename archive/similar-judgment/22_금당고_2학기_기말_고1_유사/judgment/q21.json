@@ -1,0 +1,67 @@
+{
+  "qid": 21,
+  "itemFingerprint": "4ed2c4545f39ce85",
+  "solveSteps": [
+    "두 대칭축 $y = x + 1$과 $y = -x + 3$의 교점이 $(1, 2)$이므로 유리함수 $y = f(x)$의 점근선의 교점은 $(1, 2)$이다. (ax)",
+    "$-\\dfrac{c}{b} = 1 \\implies c = -b$, $\\dfrac{a}{b} = 2 \\implies a = 2b$ 점 $(2, 3)$을 지나므로 $f(2) = \\dfrac{4b - 1}{2b - b} = 3 \\implies 4b - 1 = 3b \\implies b = 1$ 따라서 $a = 2, b = 1, c = -1$이고 $f(x) = \\dfrac{2x - 1}{x - 1} = 2 + \\dfrac{1}{x - 1}$이다.",
+    "평행이동 $X = x - 1$, $Y = y - 2$를 적용하면 유리함수는 $XY = 1$, 기준점 $(1, 2)$는 원점 $(0, 0)$으로 옮겨진다.",
+    "이 좌표계에서 중심이 $(p, q)$, 반지름이 $r$인 원 $(X - p)^2 + (Y - q)^2 = r^2$에 $Y = \\dfrac{1}{X}$를 대입하고 $X^2$을 곱하면 $X^4 - 2pX^3 + (p^2 + q^2 - r^2)X^2 - 2qX + 1 = 0$ 서로 다른 두 점($X = \\alpha, \\beta$)에서 접하므로 위 사차식은 $(X - \\alpha)^2(X - \\beta)^2$과 항등식이다.",
+    "전개하면 $X^4 - 2(\\alpha + \\beta)X^3 + (\\alpha^2 + 4\\alpha\\beta + \\beta^2)X^2 - 2\\alpha\\beta(\\alpha + \\beta)X + (\\alpha\\beta)^2 = 0$ 상수항에서 $(\\alpha\\beta)^2 = 1 \\implies \\alpha\\beta = 1$ 또는 $\\alpha\\beta = -1$이다.",
+    "(1) $\\alpha\\beta = 1$인 경우: 계수 비교로 $p = \\alpha + \\beta$, $q = p$이고, $p^2 + q^2 - r^2 = (\\alpha + \\beta)^2 + 2 = p^2 + 2 \\implies r^2 = p^2 - 2$.",
+    "원점과 중심 사이 거리가 $k$이므로 $p^2 + q^2 = 2p^2 = k^2$.",
+    "접점의 $x$좌표가 양수여야 하므로 $p = \\dfrac{k}{\\sqrt{2}} > 2$이고 두 접점은 모두 $X > 0$이므로 $x = X + 1 > 1 > 0$이다.",
+    "이때 $r^2 = \\dfrac{k^2}{2} - 2$.",
+    "(2) $\\alpha\\beta = -1$인 경우: 계수 비교로 $p = \\alpha + \\beta$, $q = -p$이고, $p^2 + q^2 - r^2 = (\\alpha + \\beta)^2 - 2 = p^2 - 2 \\implies r^2 = p^2 + 2$.",
+    "역시 $p = \\dfrac{k}{\\sqrt{2}} > 2$이면 양근 $\\alpha > 2$, 음근 $\\beta = -\\dfrac{1}{\\alpha} > -\\dfrac{1}{2}$이므로 두 접점 모두 $x = X + 1 > \\dfrac{1}{2} > 0$을 만족한다.",
+    "이때 $r^2 = \\dfrac{k^2}{2} + 2$.",
+    "따라서 $g(k) = \\pi\\left(\\dfrac{k^2}{2} + 2\\right)$, $h(k) = \\pi\\left(\\dfrac{k^2}{2} - 2\\right)$이므로 $g(k) - h(k) = 4\\pi$ $\\therefore g(4) - h(4) = 4\\pi$."
+  ],
+  "solvedAnswer": "$4\\pi$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-04",
+  "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
+  "unitEvidence": "서술형 2. 함수 $f(x) = \\dfrac{ax - ",
+  "rpmRecordId": "H1-RPM-112",
+  "rpmReason": "Q21(ax): 유리함수의 활용 단원의 RPM H1-RPM-112 유형에 해당한다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+  "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+  "typeReason": "Q21(ax): 유리함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 5,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q21(ax): 유리함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 5 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": ", $a, b, c$는 상수이다.) [10점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "두 대칭축 $y = x + 1$과 $y = -",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q21(ax): 발문과 해설의 풀이 과정을 점검하여 정답 $4\\pi$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

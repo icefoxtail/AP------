@@ -1,0 +1,87 @@
+{
+  "qid": 17,
+  "itemFingerprint": "548217000afe178b",
+  "solveSteps": [
+    "$m$의 홀짝에 따라 $z_m$의 값을 구한다.",
+    "(i) $m$이 짝수일 때: $(-i)^m=i^m$이므로 $z_m=\\frac{i^m-i^m}{2i}=0$이다.",
+    "(ii) $m$이 홀수일 때: $(-i)^m=-i^m$이므로 $z_m=\\frac{2i^m}{2i}=i^{m-1}$이다.",
+    "$m-1$은 짝수이므로 $i^{m-1}$은 $1$ 또는 $-1$의 값을 갖는다.",
+    "ㄱ.",
+    "$m=3$이면 $z_3=i^2=-1$이므로 참이다.",
+    "ㄴ.",
+    "$105-1=104$, $101-1=100$은 모두 $4$의 배수이므로 $z_{105}=i^{104}=1$, $z_{101}=i^{100}=1$로 같다.",
+    "참이다.",
+    "ㄷ.",
+    "모든 자연수 $m$에 대하여 $z_m$은 $-1, 0, 1$ 중 하나인 실수이므로 항상 $z_m=\\bar{z}_m$이다.",
+    "참이다.",
+    "따라서 ㄱ, ㄴ, ㄷ 모두 옳으므로 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "자연수 $m$에 대하여 복소수 $z_m=\\frac{i^",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q17(105): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+  "typeReason": "Q17(105): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(105): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "복소수 $z_m=\\frac{i^m-(-i)^m}{2i}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "옳은 것만을 있는 대로 고른 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "경우분류",
+        "src": "solution",
+        "quote": "$m$의 홀짝에 따라 $z_m$의 값을 구한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "m이 짝수일 때와 홀수일 때로 나누어 식을 간단히 함"
+      },
+      {
+        "term": "주기",
+        "src": "solution",
+        "quote": "$4$의 배수이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "i^4=1의 주기 4를 이용해 z_105와 z_101을 비교함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "자연수 $m$에 대하여"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q17(105): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

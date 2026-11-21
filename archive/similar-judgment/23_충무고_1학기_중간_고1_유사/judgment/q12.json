@@ -1,0 +1,72 @@
+{
+  "qid": 12,
+  "itemFingerprint": "c185a01de5c7a050",
+  "solveSteps": [
+    "$0$이 아닌 두 실수 $a, b$에 대하여 $\\frac{\\sqrt{a}}{\\sqrt{b}}=-\\sqrt{\\frac{a}{b}}$가 성립하므로 $a > 0$, $b < 0$이다.",
+    "ㄱ.",
+    "$x^2+ax+b=0$의 판별식 $D=a^2-4b$에서 $b < 0$이므로 $-4b > 0 \\implies D > 0$ (항상 실근 존재) ㄴ.",
+    "$ax^2+x+b=0$의 판별식 $D=1-4ab$에서 $a > 0, b < 0$이므로 $-4ab > 0 \\implies D > 0$ (항상 실근 존재) ㄷ.",
+    "$ax^2+2ax-b=0$의 판별식 $\\frac{D}{4}=a^2+ab=a(a+b)$는 $a=1, b=-2$일 때 음수가 되므로 항상 실근을 갖지는 않는다.",
+    "따라서 항상 실근을 갖는 것은 ㄱ, ㄴ이므로 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-DISCRIMINANT",
+  "unitEvidence": "$0$이 아닌 두 실수 $a, b$에 대하여 $\\fra",
+  "rpmRecordId": "H1-RPM-028",
+  "rpmReason": "Q12(ax): 판별식과 근의 조건 단원의 RPM H1-RPM-028 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+  "typeReason": "Q12(ax): 판별식과 근의 조건 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q12(ax): 판별식과 근의 조건 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "근호",
+        "src": "stem",
+        "quote": "$\\frac{\\sqrt{a}}{\\sqrt{b}}=-\\sqrt{\\frac{a}{b}}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "항상 실근을 갖는 방정식만을"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D=a^2-4b$에서",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "$0$이 아닌 두 실수 $a, b$에 대하여"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q12(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "qid": 15,
+  "itemFingerprint": "e056f863197f533a",
+  "solveSteps": [
+    "$x$축에 수직인 직선을 $x=t$라 하면 $A(t, t^2)$, $B\\left(t, -\\frac{1}{2}t^2+3t\\right)$이다.",
+    "삼각형 $ABC$가 정삼각형이고 꼭짓점 $C(k, 0)$이 $x$축 위에 있으므로 선분 $AB$의 중점의 $y$좌표가 $0$이어야 한다.",
+    "$\\frac{t^2+\\left(-\\frac{1}{2}t^2+3t\\right)}{2}=0 \\implies \\frac{1}{2}t^2+3t=0 \\implies t(t+6)=0$ $t=0$이면 $A=B$이므로 $t=-6$이다.",
+    "이때 $A(-6, 36)$, $B(-6, -36)$이므로 $\\overline{AB}=72$이고, 정삼각형의 높이는 $\\frac{\\sqrt{3}}{2}\\cdot 72=36\\sqrt{3}$이다.",
+    "$k > 0$이므로 $k=-6+36\\sqrt{3}$이고 $a=-6, b=36$이므로 $a+b=30$이다.",
+    "따라서 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "좌표평면에서 두 이차함수 $y=x^2$, $y=-\\fr",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q15(ABC): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+  "typeReason": "Q15(ABC): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(ABC): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "두 이차함수 $y=x^2$, $y=-\\frac{1}{2}x^2+3x$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "$a+b$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정삼각형",
+        "src": "stem",
+        "quote": "삼각형 $ABC$가 정삼각형이 되도록",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양수",
+        "src": "stem",
+        "quote": "양수 $k$의 값이"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q15(ABC): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

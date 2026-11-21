@@ -1,0 +1,59 @@
+{
+  "qid": 12,
+  "itemFingerprint": "f969149a875c596a",
+  "solveSteps": [
+    "홀수의 개수를 $o$라 하면 짝수의 개수는 $6 - o$이다.",
+    "$6$개의 서로 다른 자연수를 일렬로 나열하는 전체 경우의 수는 $6! = 720$이다.",
+    "양쪽 끝이 모두 홀수인 경우의 수는 ${}_oP_2 \\times 4! = o(o - 1) \\times 24$이다.",
+    "여사건에 의하여 $720 - 24o(o - 1) = 576 \\implies 24o(o - 1) = 144 \\implies o(o - 1) = 6$ $o$는 자연수이므로 $o = 3$이다.",
+    "$\\therefore$ 짝수의 개수는 $6 - 3 = 3$ (②)."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-07",
+  "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+  "unitEvidence": "서로 다른 $6$개의 자연수를 일렬로 나열하였더니 적어",
+  "rpmRecordId": "H1-RPM-124",
+  "rpmReason": "Q12(576): 순열 단원의 RPM H1-RPM-124 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q12(576): 순열 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q12(576): 순열 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": ". 이때, 짝수의 개수를 구하면? [4.3점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "홀수의 개수를 $o$라 하면 짝수의 개수는 $",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q12(576): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

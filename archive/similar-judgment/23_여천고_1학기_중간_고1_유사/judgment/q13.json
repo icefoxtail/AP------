@@ -1,0 +1,74 @@
+{
+  "qid": 13,
+  "itemFingerprint": "3b60dc40a674256c",
+  "solveSteps": [
+    "두 그래프의 교점의 $x$좌표는 이차방정식 $x^2+ax+4=3x+b$, 즉 $x^2+(a-3)x+(4-b)=0$ 의 두 실근 $-1, 2$이다.",
+    "근과 계수의 관계에 의하여 $-1+2=-(a-3) \\implies 1=3-a \\implies a=2$ $(-1)\\cdot 2=4-b \\implies -2=4-b \\implies b=6$ 따라서 $a+b=2+6=8$이다.",
+    "그러므로 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "이차함수 $y=x^2+ax+4$의 그래프와 직선 $y=",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q13(ax): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+  "typeReason": "Q13(ax): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q13(ax): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=x^2+ax+4$"
+      },
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직선 $y=3x+b$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "$a+b$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "$a, b$는 상수이다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q13(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

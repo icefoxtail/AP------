@@ -1,0 +1,95 @@
+{
+  "stem": {
+    "capability": "piecewise-polynomial-spike-v1",
+    "graphPlan": {
+      "family": "piecewise-polynomial",
+      "pieces": [
+        {
+          "coefficients": [
+            "6",
+            "-3"
+          ]
+        }
+      ],
+      "breakpoints": [],
+      "sourceDomain": {
+        "kind": "CLOSED_INTERVAL",
+        "range": [
+          0,
+          2
+        ]
+      },
+      "domain": [
+        0,
+        2
+      ],
+      "viewport": [
+        -0.5,
+        2.5,
+        -0.5,
+        7
+      ],
+      "requiredPoints": [
+        {
+          "id": "O",
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "axisTickValues": {
+        "x": [
+          2
+        ],
+        "y": [
+          6
+        ]
+      }
+    },
+    "caption": "직선 y=-3x+6 위의 점 P에서 두 축에 내린 수선의 발로 만든 직사각형 PQOR"
+  },
+  "solution": {
+    "capability": "polynomial-spike-v1",
+    "graphPlan": {
+      "family": "polynomial",
+      "coefficients": [
+        "0",
+        "6",
+        "-3"
+      ],
+      "sourceDomain": {
+        "kind": "CLOSED_INTERVAL",
+        "range": [
+          0,
+          2
+        ]
+      },
+      "domain": [
+        0,
+        2
+      ],
+      "viewport": [
+        -0.5,
+        2.5,
+        -0.5,
+        4
+      ],
+      "requiredPoints": [
+        {
+          "id": "V",
+          "x": 1,
+          "y": 3
+        }
+      ],
+      "axisTickValues": {
+        "x": [
+          1,
+          2
+        ],
+        "y": [
+          3
+        ]
+      }
+    },
+    "caption": "S=-3(a-1)^2+3은 0<a<2에서 a=1일 때 최댓값 3을 갖는다."
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "qid": 16,
+  "itemFingerprint": "aa5cefc4eeed5dcf",
+  "solveSteps": [
+    "남학생 $2$명이 서로 이웃하여 앉을 수 있는 좌석쌍은 $(A_1, A_2)$, $(A_2, A_3)$, $(B_1, B_2)$의 $3$가지이다. (4.5)",
+    "각 경우 남은 $5$석에서 여학생 $2$명이 서로 이웃하지 않게 좌석 $2$개를 고르는 경우의 수는 다음과 같다.",
+    "(1) 남학생이 $(A_1, A_2)$에 앉을 때: 남은 좌석 ${A_3, B_1, B_2, C_1, C_2}$ 중 이웃한 쌍은 $(B_1, B_2)$뿐이므로 ${}_5C_2 - 1 = 10 - 1 = 9$가지 (2) 남학생이 $(A_2, A_3)$에 앉을 때: 같은 이유로 $9$가지 (3) 남학생이 $(B_1, B_2)$에 앉을 때: 남은 좌석 ${A_1, A_2, A_3, C_1, C_2}$ 중 이웃한 쌍은 $(A_1, A_2)$, $(A_2, A_3)$의 $2$개이므로 ${}_5C_2 - 2 = 10 - 2 = 8$가지\n\n따라서 좌석을 선택하는 전체 방법의 수는 $9 + 9 + 8 = 26$가지이다.",
+    "각 좌석 선택마다 남학생 $2$명 배열 $2!$가지, 여학생 $2$명 배열 $2!$가지이므로 $\\therefore 26 \\times 2! \\times 2! = 26 \\times 4 = 104$ (②)."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-07",
+  "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+  "unitEvidence": "남학생 $2$명과 여학생 $2$명이 함께 독서실을 등록",
+  "rpmRecordId": "H1-RPM-124",
+  "rpmReason": "Q16(4.5): 순열 단원의 RPM H1-RPM-124 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+  "typeReason": "Q16(4.5): 순열 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q16(4.5): 순열 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "이웃하지 않는 모든 방법의 수는? [4.5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "남학생 $2$명이 서로 이웃하여 앉을 수 있는",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q16(4.5): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

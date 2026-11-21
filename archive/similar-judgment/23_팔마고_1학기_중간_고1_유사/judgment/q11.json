@@ -1,0 +1,76 @@
+{
+  "qid": 11,
+  "itemFingerprint": "1090d4b990f80e30",
+  "solveSteps": [
+    "조건 (가)에서 근과 계수의 관계에 의하여 $a+b=16$, $ab=k$이다.",
+    "조건 (나)에서 방정식 $x^2+4x+(b-a^2)=0$이 오직 하나의 실근을 가지므로 판별식 $D=0$이다.",
+    "$\\frac{D}{4}=2^2-(b-a^2)=0 \\implies b-a^2=4 \\implies b=a^2+4$ 이를 $a+b=16$에 대입하면 $a^2+a-12=0 \\implies (a-3)(a+4)=0$ $a > 2$이므로 $a=3$, $b=13$이고 $k=ab=3\\cdot 13=39$이다.",
+    "따라서 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-06",
+  "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+  "unitEvidence": "실수 $a, b$가 다음 조건을 만족시킬 때, 상수 $",
+  "rpmRecordId": "H1-RPM-029",
+  "rpmReason": "Q11(16): 근과 계수의 관계 단원의 RPM H1-RPM-029 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+  "typeReason": "Q11(16): 근과 계수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q11(16): 근과 계수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2-16x+k=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $k$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여 $a+b=16$, $ab=k$이다.",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D=0$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "오직 하나의 실근을 갖는다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q11(16): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

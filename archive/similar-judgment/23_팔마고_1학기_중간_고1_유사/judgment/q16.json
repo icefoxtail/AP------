@@ -1,0 +1,74 @@
+{
+  "qid": 16,
+  "itemFingerprint": "20644bd70d2f18dd",
+  "solveSteps": [
+    "$x^3+1=(x+1)(x^2-x+1)=0$의 허근이 $\\omega$이므로 $\\omega^3=-1$, $\\omega^2-\\omega+1=0$이다.",
+    "ㄱ.",
+    "$\\omega^3=-1$ 양변을 $\\omega$로 나누면 $\\omega^2=-\\frac{1}{\\omega}$ (참) ㄴ.",
+    "$1-\\omega+\\omega^2=0$이므로 연속한 $3$개 항씩 묶으면 $(1-\\omega+\\omega^2)-\\omega^3(1-\\omega+\\omega^2)+\\omega^6(1-\\omega+\\omega^2)-\\omega^9(1-\\omega+\\omega^2)+\\omega^{12}=0+0+0+0+(-1)^4=1$ (참) ㄷ.",
+    "$\\omega, \\overline{\\omega}$는 $x^2-x+1=0$의 두 근이므로 $\\omega+\\overline{\\omega}=1$, $\\omega\\overline{\\omega}=1$이다.",
+    "$\\frac{1}{\\omega+1}+\\frac{1}{\\overline{\\omega}+1}=\\frac{(\\omega+\\overline{\\omega})+2}{\\omega\\overline{\\omega}+(\\omega+\\overline{\\omega})+1}=\\frac{1+2}{1+1+1}=1$ (참) 따라서 옳은 것은 $3$개이므로 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+  "unitEvidence": "방정식 $x^3=-1$의 한 허근을 $\\omega$라 ",
+  "rpmRecordId": "H1-RPM-039",
+  "rpmReason": "Q16(12): 고차방정식의 풀이 단원의 RPM H1-RPM-039 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+  "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+  "typeReason": "Q16(12): 고차방정식의 풀이 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q16(12): 고차방정식의 풀이 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "허근",
+        "src": "stem",
+        "quote": "한 허근을 $\\omega$라 할 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "옳은 것의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "\\omega^3=-1",
+        "evidenceType": "IMPLIED",
+        "justification": "w^3=-1과 w^2-w+1=0을 이용해 고차항을 소거함"
+      },
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "\\omega+\\overline{\\omega}=1$, $\\omega\\overline{\\omega}=1",
+        "evidenceType": "IMPLIED",
+        "justification": "켤레근의 합과 곱을 유리식에 대입함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q16(12): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

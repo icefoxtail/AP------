@@ -1,0 +1,57 @@
+{
+  "qid": 14,
+  "itemFingerprint": "cfdb585ff9897808",
+  "solveSteps": [
+    "그림의 $6$개 영역을 위쪽 $3$개 영역(위쪽 바깥 영역과 그 안의 원 $2$개 영역: 셋이 서로 모두 인접)과 아래쪽 $3$개 영역(좌, 우, 맨 아래: 위쪽 바깥 영역과 함께 $4$개 영역이 순환 인접)으로 나누어 센다. (4.4)",
+    "(1) 위쪽 $3$개 영역 칠하기: 서로 모두 인접하므로 $5 \\times 4 \\times 3 = 60$가지 (2) 위쪽 바깥 영역 색이 정해진 상태에서 아래쪽 $3$개 영역 칠하기: 아래쪽 좌·우 영역은 각각 위쪽 바깥색을 제외한 $4$가지 색을 칠할 수 있다.",
+    "- 좌·우가 같은 색인 경우: $4$가지마다 맨 아래 영역은 $4$가지 $\\implies 4 \\times 4 = 16$가지  \n- 좌·우가 다른 색인 경우: $4 \\times 3 = 12$가지마다 맨 아래 영역은 $3$가지 $\\implies 12 \\times 3 = 36$가지 아래쪽 소계: $16 + 36 = 52$가지 $\\therefore 60 \\times 52 = 3120$ (⑤)."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-06",
+  "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+  "unitEvidence": "수지는 교내 연날리기 대회에서 가오리연을 만들어 날리려",
+  "rpmRecordId": "H1-RPM-122",
+  "rpmReason": "Q14(4.4): 경우의 수의 기본 원리 단원의 RPM H1-RPM-122 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+  "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+  "typeReason": "Q14(4.4): 경우의 수의 기본 원리 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(4.4): 경우의 수의 기본 원리 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "영역은 서로 다른 색을 칠한다.) [4.4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "그림의 $6$개 영역을 위쪽 $3$개 영역(위",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q14(4.4): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

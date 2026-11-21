@@ -1,0 +1,69 @@
+{
+  "qid": 6,
+  "itemFingerprint": "20b6cff476fea221",
+  "solveSteps": [
+    "$x=0$은 근이 아니므로 양변을 $x^2$으로 나누면 $\\left(x^2+\\frac{1}{x^2}\\right)+5\\left(x+\\frac{1}{x}\\right)-4=0$ $t=x+\\frac{1}{x}$라 하면 $x^2+\\frac{1}{x^2}=t^2-2$이므로 $t^2+5t-6=0 \\implies (t-1)(t+6)=0 \\implies t=1$ 또는 $t=-6$ (i) $t=-6$일 때, $x+\\frac{1}{x}=-6 \\implies x^2+6x+1=0$: 판별식 $\\frac{D}{4}=9-1=8 > 0$이므로 서로 다른 두 실근을 갖고 두 근의 합은 $-6$이다.",
+    "(ii) $t=1$일 때, $x+\\frac{1}{x}=1 \\implies x^2-x+1=0$: 판별식 $D=1-4=-3 < 0$이므로 서로 다른 두 허근을 갖고 두 근의 곱은 $1$이다.",
+    "따라서 ㄱ, ㄴ, ㄷ이 모두 옳으므로 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+  "unitEvidence": "사차방정식 $x^4+5x^3-4x^2+5x+1=0$에 ",
+  "rpmRecordId": "H1-RPM-039",
+  "rpmReason": "Q6(ii): 고차방정식의 풀이 단원의 RPM H1-RPM-039 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+  "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+  "typeReason": "Q6(ii): 고차방정식의 풀이 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q6(ii): 고차방정식의 풀이 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "사차방정식",
+        "src": "stem",
+        "quote": "사차방정식 $x^4+5x^3-4x^2+5x+1=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "진리값",
+        "src": "stem",
+        "quote": "옳은 것만을 <보기>에서 있는 대로 고른 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "치환",
+        "src": "solution",
+        "quote": "$t=x+\\frac{1}{x}$라 하면",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $\\frac{D}{4}=9-1=8 > 0$이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q6(ii): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

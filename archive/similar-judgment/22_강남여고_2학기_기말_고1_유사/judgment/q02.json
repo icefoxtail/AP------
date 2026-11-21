@@ -1,0 +1,56 @@
+{
+  "qid": 2,
+  "itemFingerprint": "d1092188d2d39fd2",
+  "solveSteps": [
+    "$A \\subseteq B$이고 $B \\subseteq A$이므로 $A = B = {-1, b}$이다.",
+    "$-1 \\in A$이므로 $ax^2 - 5x - 6 = 0$에 $x = -1$을 대입하면 $a(-1)^2 - 5(-1) - 6 = 0 \\implies a - 1 = 0 \\implies a = 1$ 따라서 방정식은 $x^2 - 5x - 6 = 0$ $(x + 1)(x - 6) = 0 \\implies x = -1$ 또는 $x = 6$ $A = {-1, 6} = {-1, b}$이므로 $b = 6$ $\\therefore a + b = 1 + 6 = 7$ (④)."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-01",
+  "subUnitKey": "H15-SB-01-SET_BASIC",
+  "unitEvidence": "두 집합 $A = {x \\mid ax^2 - 5x - ",
+  "rpmRecordId": "H1-RPM-080",
+  "rpmReason": "Q2(ax): 집합의 뜻과 표현 단원의 RPM H1-RPM-080 유형에 해당한다.",
+  "problemTypeKey": "PT_SET_INCLUSION",
+  "templateKey": "TPL_INCLUSION_DIRECT",
+  "typeReason": "Q2(ax): 집합의 뜻과 표현 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q2(ax): 집합의 뜻과 표현 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "(단, $a, b$는 상수이다.) [2.8점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$A \\subseteq B$이고 $B \\sub",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q2(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

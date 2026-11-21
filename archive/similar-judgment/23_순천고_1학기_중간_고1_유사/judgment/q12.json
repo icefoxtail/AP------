@@ -1,0 +1,75 @@
+{
+  "qid": 12,
+  "itemFingerprint": "2e11d24608c85b00",
+  "solveSteps": [
+    "$x$축과 만나는 두 점의 $x$좌표를 $\\alpha, \\beta$라 하면 근의 공식에 의하여 $\\alpha=\\frac{-q+\\sqrt{D}}{2p}$, $\\beta=\\frac{-q-\\sqrt{D}}{2p}$ 두 점 사이의 거리는 $|\\alpha-\\beta|=\\left|\\frac{2\\sqrt{D}}{2p}\\right|=\\frac{\\sqrt{D}}{|p|}$ 그래프가 아래로 볼록하므로 $p>0$이고 $|p|=p$이다. (px)",
+    "따라서 두 점 사이의 거리는 $\\frac{\\sqrt{D}}{p}$이므로 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "아래로 볼록인 이차함수 $y=px^2+qx+r$의 그래",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q12(px): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+  "typeReason": "Q12(px): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q12(px): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=px^2+qx+r$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "거리",
+        "src": "stem",
+        "quote": "두 점 사이의 거리는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "근의공식",
+        "src": "solution",
+        "quote": "근의 공식에 의하여",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "판별식",
+        "src": "stem",
+        "quote": "$D=q^2-4pr$",
+        "evidenceType": "IMPLIED",
+        "justification": "두 근의 차를 판별식 D를 포함한 식으로 정리함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "부호",
+        "src": "solution",
+        "quote": "아래로 볼록하므로 $p>0$이고"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q12(px): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
