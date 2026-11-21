@@ -1,0 +1,213 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "9"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sOV",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "V"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sVY",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "V",
+          "Y"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sYX1",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "Y",
+          "X1"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sX1X2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "X1",
+          "X2"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sOV",
+      "refs": [
+        "O",
+        "V"
+      ]
+    },
+    {
+      "id": "sVY",
+      "refs": [
+        "V",
+        "Y"
+      ]
+    },
+    {
+      "id": "sYX1",
+      "refs": [
+        "Y",
+        "X1"
+      ]
+    },
+    {
+      "id": "sX1X2",
+      "refs": [
+        "X1",
+        "X2"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "V",
+    "Y",
+    "X1",
+    "X2"
+  ],
+  "coordinateLabels": [
+    "O",
+    "V",
+    "Y",
+    "X1",
+    "X2"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "방정식, 실근",
+      "mappedTo": [
+        "O",
+        "V",
+        "Y",
+        "X1",
+        "X2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "이차방정식 t^2+at+9=0 t>0 양의 실근 판별 포물선"
+  ],
+  "caption": "이차방정식 t^2+at+9=0 t>0 양의 실근 판별 포물선"
+}
