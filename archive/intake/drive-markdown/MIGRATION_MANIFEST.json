@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-21",
+  "repository": "icefoxtail/AP------",
+  "branch": "work/drive-markdown-migration-20261121",
+  "targetRoot": "archive/intake/drive-markdown",
+  "policy": {
+    "sourceAction": "COPY_ONLY",
+    "recursive": true,
+    "dedupe": [
+      "driveFileId",
+      "relativePathAndFilename"
+    ],
+    "overwriteExisting": false,
+    "preserveRelativeFolders": true,
+    "includeTextualFiles": true,
+    "note": "Do not delete or move Google Drive originals. Import only files not yet represented on this branch."
+  },
+  "sources": [
+    {
+      "account": "icefoxtail@gmail.com",
+      "name": "AP_기하_유형풀_마크다운",
+      "folderId": "19-5f2xFi8YCtX5R5bxux8vzHVEzs023o",
+      "target": "geometry-type-bank"
+    },
+    {
+      "account": "icefoxtail@gmail.com",
+      "name": "AP_미적분2_유형풀_마크다운",
+      "folderId": "1bloHNTPLL1OwnQChxy_glzwcMb4UMF0H",
+      "target": "calculus2-type-bank"
+    },
+    {
+      "account": "icefoxtail@gmail.com",
+      "name": "AP_유사시험지_마크다운",
+      "folderId": "1DutIqQgrGy98PpIZa8CbDf5BvI6ayMCt",
+      "target": "similar-exams"
+    },
+    {
+      "account": "icefoxella@gmail.com",
+      "name": "00_공용_정답풀_및_상태",
+      "folderId": "1LRbidslRnmqRTxDkM5kpaZQEJkcjLf9D",
+      "target": "textbook-variant/00_공용_정답풀_및_상태"
+    },
+    {
+      "account": "icefoxella@gmail.com",
+      "name": "01_변환_공통수학2상",
+      "folderId": "1qDIos3rfvVv7f4KG1WBfhpxlZkmroAC2",
+      "target": "textbook-variant/01_변환_공통수학2상"
+    },
+    {
+      "account": "icefoxella@gmail.com",
+      "name": "02_변환_공통수학2하",
+      "folderId": "1-y_zPTX4qjE-5mYPP7JlbY8Jl-m6NkLn",
+      "target": "textbook-variant/02_변환_공통수학2하"
+    },
+    {
+      "account": "icefoxella@gmail.com",
+      "name": "03_신규_중등",
+      "folderId": "1XbMfTYBIt32lWgvc1Fzd6BneohILwjC9",
+      "target": "textbook-variant/03_신규_중등"
+    },
+    {
+      "account": "icefoxella@gmail.com",
+      "name": "04_신규_고등",
+      "folderId": "1MLcj7sP29fWaPfJ3iyt2env0SEguhVMB",
+      "target": "textbook-variant/04_신규_고등"
+    }
+  ]
+}
