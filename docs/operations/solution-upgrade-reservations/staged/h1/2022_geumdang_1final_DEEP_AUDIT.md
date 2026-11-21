@@ -665,7 +665,8 @@ $x\ge4$이면 $f(x)-x\ge0$이고
 \begin{aligned}
 f(x)+\tfrac12|f(x)-x|
 &=\tfrac32x^2-2x-\tfrac92\\
-&\ge\tfrac32\cdot 16-2\cdot4-\tfrac92=\tfrac{23}{2}>3.
+&=\tfrac{23}{2}+(x-4)\left(\tfrac32x+4\right)\\
+&\ge\tfrac{23}{2}>3\qquad(x\ge4).
 \end{aligned}
 \]
 반면 $p<0$, $x\ge4$이면 $p(x-3)+3<3$이므로 정수해가 없다.
