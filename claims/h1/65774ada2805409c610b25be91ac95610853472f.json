@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane10",
   "workerBranch": "work/solution-upgrade-lane-10-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2final",
@@ -12,10 +12,30 @@
   "sourceBlobSha": "65774ada2805409c610b25be91ac95610853472f",
   "sourceQuestionCount": 21,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2023_geumdang_2final_DEEP_AUDIT.md",
-  "draftedQuestionIds": [],
-  "remainingWork": [
-    "q1-q21 full deep audit; all upgrades student solutions"
+  "draftedQuestionIds": [
+    16,
+    19
   ],
-  "nextQid": 1,
-  "stateNotes": "2023 Gangnam Girls source is independently claimed IN_PROGRESS by lane30; next earliest unclaimed 2023 Geumdang in same 2final stage."
+  "remainingWork": [],
+  "nextQid": null,
+  "stateNotes": "All 21 original problem, choices, answer, solution audited; Q16/Q19 full equation-based student drafts independently checked; remote readback verified; lane30 owns 2023 Gangnam Girls.",
+  "auditQuestionCount": 21,
+  "readQuestionCount": 21,
+  "decisionCounts": {
+    "KEEP": 19,
+    "UPGRADE": 2,
+    "HOLD": 0,
+    "UNREAD": 0
+  },
+  "studentDraftPaths": [
+    "docs/operations/solution-upgrade-reservations/staged/h1/2023_geumdang_2final_q16.md",
+    "docs/operations/solution-upgrade-reservations/staged/h1/2023_geumdang_2final_q19.md"
+  ],
+  "qualityGates": {
+    "visual": "NOT_RUN",
+    "render": "NOT_RUN",
+    "golden": "NOT_RUN",
+    "negative": "NOT_RUN",
+    "release": "NOT_PASS"
+  }
 }
