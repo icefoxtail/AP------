@@ -95,3 +95,10 @@
 - Q19 PNG `archive/assets/images/22_매산고_2학기_기말_고2_수학II/q19.png` (blob `99a3b6504c0b0a576943d099d0bd462d1d36f0f3`): 반지름 12cm·높이 9cm 실물 확인. 이전 경로 404는 실제 파일 부재가 아니라 경로 오류였음.
 - MD 커밋 `96e00c714d6e4992a0f3b1a85b2fada64b076850`, 원격 readback 일치. **누적 초안 17장 / 380문항** (KEEP 324, UPGRADE 28, HOLD 28, UNREAD 0). 이전 2022 매산고 IN_PROGRESS 행은 역사적 기록이며 현재 상태가 아님.
 - 이번 실행 완료 1/5. 다음 재개 위치: `calculus1/original/high/h2/2final`의 다음 미감사 원본(2022 또는 과거 연도), 본인 MD 중복 검사 후 선택. Golden/Negative·preflight·학생 렌더·출고 QA NOT_RUN. JS/SVG/main 변경 없음.
+
+
+## 2022 복성고 2학기 기말 — 진행 중 (2026-11-22)
+
+- 원본 `archive/exams/original/high/h2/2final/22_복성고_2학기_기말_고2_수학II.js`, blob `7c7a2c053f6077a8a2345e15a79a872e887268e2`, 2015 수학Ⅱ.
+- [심층 감사 MD](22_복성고_2학기_기말_고2_수학II_DEEP_AUDIT.md): 원문 22/22, KEEP 19, HOLD 3(Q13–Q15 원본 PNG), UPGRADE 0, UNREAD 0. 상태 **IN_PROGRESS**, next_qid=Q13. MD 커밋 `f784554b19e1b77bd8b3a8ac28d3e29305c70281`, 원격 readback 일치.
+- Golden/Negative 독립 calibration, preflight SHA-256 receipt, 문제 PNG 시각 판독, 학생 렌더/출고 QA: NOT_RUN. 이 시험지는 완료 누적에 포함하지 않음. 공유 claims 생략.
