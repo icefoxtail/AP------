@@ -1,0 +1,135 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "20"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "36"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sLineA",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A0",
+          "P"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sLineB",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "B0",
+          "P"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sLineA",
+      "refs": [
+        "A0",
+        "P"
+      ]
+    },
+    {
+      "id": "sLineB",
+      "refs": [
+        "B0",
+        "P"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A0",
+    "B0",
+    "P"
+  ],
+  "coordinateLabels": [
+    "A0",
+    "B0",
+    "P"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "초기 20, 36, 1분당 1, 3 줄어듦",
+      "mappedTo": [
+        "A0",
+        "B0",
+        "P",
+        "sLineA",
+        "sLineB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "물통 A(20), B(36)에서 1분에 각각 1L, 3L 줄어듦"
+  ],
+  "caption": "물통 A(20), B(36)에서 1분에 각각 1L, 3L 줄어듦"
+}

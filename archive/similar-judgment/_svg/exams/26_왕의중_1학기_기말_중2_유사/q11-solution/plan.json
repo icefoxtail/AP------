@@ -1,0 +1,116 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sLine",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sLine",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B",
+    "C"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y = -2/3x + 4, 점 (3, 2), y절편 4, x절편 6",
+      "mappedTo": [
+        "A",
+        "B",
+        "C",
+        "sLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "일차함수 y = -2/3x + 4, y절편 4, 점 (3, 2), x절편 6"
+  ],
+  "caption": "일차함수 y = -2/3x + 4, y절편 4, 점 (3, 2), x절편 6"
+}

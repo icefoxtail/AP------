@@ -1,0 +1,94 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sLine",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sLine",
+      "refs": [
+        "B",
+        "A"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "ax + by + 1 = 0, 제1, 2, 3사분면 지남",
+      "mappedTo": [
+        "A",
+        "B",
+        "sLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "일차방정식 ax + by + 1 = 0, 제1, 2, 3사분면을 지나는 직선"
+  ],
+  "caption": "일차방정식 ax + by + 1 = 0, 제1, 2, 3사분면을 지나는 직선"
+}

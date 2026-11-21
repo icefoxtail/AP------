@@ -1,0 +1,176 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sL1",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "P"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sL2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "B",
+          "P"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sL3",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "C",
+          "P"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sL1",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sL2",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "sL3",
+      "refs": [
+        "C",
+        "P"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "P",
+    "A",
+    "B",
+    "C"
+  ],
+  "coordinateLabels": [
+    "P",
+    "A",
+    "B",
+    "C"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y = 3x - 4, y = -x, y = ax + 2",
+      "mappedTo": [
+        "P",
+        "A",
+        "B",
+        "C",
+        "sL1",
+        "sL2",
+        "sL3"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 직선 y = 3x - 4, y = -x, y = ax + 2의 위치 관계"
+  ],
+  "caption": "세 직선 y = 3x - 4, y = -x, y = ax + 2의 위치 관계"
+}
