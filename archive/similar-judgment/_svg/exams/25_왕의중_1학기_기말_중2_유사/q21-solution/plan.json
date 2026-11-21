@@ -1,0 +1,154 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sOA",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sOB",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sAB",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B"
+  ],
+  "coordinateLabels": [
+    "O",
+    "A",
+    "B"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y = ax - 6, 넓이 18, a = -1",
+      "mappedTo": [
+        "O",
+        "A",
+        "B",
+        "sOA",
+        "sOB",
+        "sAB"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "일차함수 y = ax - 6 의 그래프와 좌표축으로 둘러싸인 도형 (넓이 18, a = -1)"
+  ],
+  "caption": "일차함수 y = ax - 6 의 그래프와 좌표축으로 둘러싸인 도형 (넓이 18, a = -1)"
+}

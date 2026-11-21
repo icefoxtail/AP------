@@ -1,0 +1,94 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sLine",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sLine",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B"
+  ],
+  "coordinateLabels": [
+    "A",
+    "B"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "-1, 7, 9",
+      "mappedTo": [
+        "A",
+        "B",
+        "sLine"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "그래프가 제1사분면을 지나지 않는 범위의 정수 a (최소 -1, 최대 7, 총 9 개)"
+  ],
+  "caption": "그래프가 제1사분면을 지나지 않는 범위의 정수 a (최소 -1, 최대 7, 총 9 개)"
+}
