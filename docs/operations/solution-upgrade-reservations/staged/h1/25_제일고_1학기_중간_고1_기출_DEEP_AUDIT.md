@@ -1,6 +1,6 @@
 # 2025 제일고 고1 1학기 중간 — 전 문항 심층 감사
 
-원본 `archive/exams/original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js`, SHA `a94bb507ae7adfa28aa2077a131d26cf9dfa934d`, standardCourse=공통수학1. 22/22 문제/보기/정답/풀이 확인. KEEP 18 / HOLD 4(q6,q12,q13,q18) / UPGRADE 0 / UNREAD 0. **q12 원문 정답 오류 의심: 실수 제곱근의 정의역에 따르면 해가 없음.** EXAM_AUDIT_COMPLETE=true, EXAM_DRAFT_COMPLETE=true(UPGRADE 0). 시각·Golden·Negative·렌더 NOT_RUN, 출고 PASS 아님.
+원본 `archive/exams/original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js`, SHA `a94bb507ae7adfa28aa2077a131d26cf9dfa934d`, standardCourse=공통수학1. 22/22 문제/보기/정답/풀이 확인. KEEP 21 / HOLD 1(q13·VISUAL_HOLD) / UPGRADE 0 / UNREAD 0. **q12 원문 정답 재검증: 복소수 단원에서 음수의 제곱근을 허용하므로 해가 6개(④)로 확인됨.** EXAM_AUDIT_COMPLETE=true, EXAM_DRAFT_COMPLETE=true(UPGRADE 0). q13 SVG_REQUEST·VISUAL_HOLD, q18 inline SVG 시각 NOT_RUN, Golden·Negative·렌더 NOT_RUN, 출고 PASS 아님.
 
 ## q1 — KEEP
 
@@ -104,7 +104,7 @@ $P(1) = 1^{3}+1^{2}-2(1)+2 = 1+1-2+2 = 2$이다.
 
 **독립 검산·판정 근거:** P(2)=(2−1)Q(2)+4=1+4=5. 원문 풀이의 중간 단계와 정답이 일치해 KEEP.
 
-## q6 — HOLD
+## q6 — KEEP
 
 **문제 원문:** $x+y=1, xy=1$일 때, $x^{5}+y^{5}$의 값은? [4.6점]
 
@@ -123,7 +123,7 @@ $P(1) = 1^{3}+1^{2}-2(1)+2 = 1+1-2+2 = 2$이다.
 5) $2 = x^5+y^5+1$이므로 $x^5+y^5 = 1$이다.
 결론: 따라서 정답은 ①이다.
 
-**독립 검산·판정 근거:** S0=2,S1=1,S_n=S_{n−1}−S_{n−2} (xy=1), S2=−1,S3=−2,S4=−1,S5=1. 다만 실수 x,y라면 x+y=xy=1을 만족하는 쌍이 없어 수의 범위 확인 필요. 수학적 정의역/원본 그림/변수 범위 검증이 남아 HOLD.
+**독립 검산·판정 근거:** x,y가 실수라는 가정은 지문에 없다. 다항식 t²−t+1=0의 서로 다른 복소근 (1±√3i)/2를 취하면 x+y=1,xy=1을 만족해 주어진 조건은 공집합이 아니다. S_n=x^n+y^n에 대하여 각 근이 t²=t−1을 만족하므로 S_n=S_(n−1)−S_(n−2), S0=2,S1=1에서 S2=−1,S3=−2,S4=−1,S5=1. 원본도 (x²+y²)(x³+y³)=(x⁵+y⁵)+(xy)²(x+y) 식으로 2=S5+1을 정확히 계산하므로 KEEP.
 
 ## q7 — KEEP
 
@@ -228,7 +228,7 @@ $P(1) = 1^{3}+1^{2}-2(1)+2 = 1+1-2+2 = 2$이다.
 
 **독립 검산·판정 근거:** (1−i)(2+2i)=4, 3+5i−4=−1+5i, 합4. 원문 풀이의 중간 단계와 정답이 일치해 KEEP.
 
-## q12 — HOLD
+## q12 — KEEP
 
 **문제 원문:** 실수 $a$에 대하여 $\sqrt{\frac{a+3}{a-3}}=-\frac{\sqrt{a+3}}{\sqrt{a-3}}$ 을 만족하는 정수 $a$의 개수는? [4.3점]
 
@@ -245,7 +245,7 @@ $P(1) = 1^{3}+1^{2}-2(1)+2 = 1+1-2+2 = 2$이다.
 3) 정수 개수: $a$는 $-3, -2, -1, 0, 1, 2$로 총 6개이다.
 결론: 따라서 정답은 ④이다.
 
-**독립 검산·판정 근거:** **원본 수학적 정의 오류:** 실수 제곱근 표준 정의에서 √(a−3)가 실수가 되려면 a>3이고, 이때 좌변은 양수·우변은 음수라 등식 불가. a≤3에서는 RHS 분모가 실수로 정의되지 않음(a=3은 0분모). 따라서 정수 해는 0개이며 기존 정답 '6개'는 성립하지 않음. 음수의 제곱근을 복소수로 해석하더라도 a=−3의 0/√−6 등 별도 정의가 필요. 원문/정답 수정 요청 HOLD. 수학적 정의역/원본 그림/변수 범위 검증이 남아 HOLD.
+**독립 검산·판정 근거:** 원본 문항 standardUnit=복소수와 이차방정식(2022 공통수학1), sqrt(−u)=i√u를 허용한다. a>3이면 두 근호가 양의 실수로 LHS>0,RHS<0; a<−3이면 두 분자·분모 근호가 순허수라 LHS>0,RHS<0; a=3은 분모0. −3≤a<3에서는 √(a−3)=i√(3−a), √((a+3)/(a−3))=i√((a+3)/(3−a))이므로 LHS=−i√((a+3)/(3−a))=RHS(끝점 a=−3도 양쪽0). 정수 −3,−2,−1,0,1,2 총6개=④. 이전 '실수 제곱근만 사용해야 한다'는 HOLD 이유는 이 문항의 복소수 단원에 부적합하여 철회; 원본 계산이 조건·정수 개수를 충분히 보여 KEEP.
 
 ## q13 — HOLD
 
@@ -266,6 +266,9 @@ $P(1) = 1^{3}+1^{2}-2(1)+2 = 1+1-2+2 = 2$이다.
 결론: 따라서 정답은 ①이다.
 
 **독립 검산·판정 근거:** 원본 그래프 x절편 −2,5를 전제하면 f(x+1)=0의 근 −3,4, 곱−12. 실제 SVG x절편 검증 필요. 수학적 정의역/원본 그림/변수 범위 검증이 남아 HOLD.
+
+
+**SVG_REQUEST / VISUAL_HOLD:** 원문 `<img>`가 가리키는 `assets/images/25_제일고_1학기_중간_고1_기출/q13-problem-v2.svg`를 main에서 fetch한 결과 404. 대체텍스트에는 x절편 −2,5가 적혀 있어 수학 풀이에서 f(x+1)=0의 두 근 x=−3,4, 곱 −12=①을 독립 계산했다. 다만 실제 그래프의 원점·절편이 이 설명과 같은지 육안 검증을 못 하여 q13은 HOLD로 둔다. SVG 엔진 담당에 원본 그림 회복/PNG 판서 검증을 요청하고 lane20은 SVG·JS 미수정.
 
 ## q14 — KEEP
 
@@ -350,7 +353,7 @@ $P(1) = 1^{3}+1^{2}-2(1)+2 = 1+1-2+2 = 2$이다.
 
 **독립 검산·판정 근거:** f(x)=c(x²−2x+3)+3, f(1)=2 ⇒ 2c+3=2,c=−1/2; f(5)=−6. 원문 풀이의 중간 단계와 정답이 일치해 KEEP.
 
-## q18 — HOLD
+## q18 — KEEP
 
 **문제 원문:** 다음 그림과 같이 한 변의 길이가 8인 정사각형 $ABCD$에 $DE=4, DF=3$이 되도록 점 $E, F$가 각각 변 $CD$와 $AD$ 위에 있다. 선분 $EF$ 위에 한 점 $P$를 잡고 점 $P$에서 변 $AB, BC$에 내린 수선의 발을 각각 $M, N$이라 할 때, 사각형 $PMBN$의 넓이의 최댓값은? [4.8점]<br/><div style='text-align:center; margin:10px 0;'><svg width='235' height='235' viewBox='-20 -20 340 340' style='background:white; max-width:100%; height:auto;'><rect x='0' y='0' width='300' height='300' fill='none' stroke='black' stroke-width='2'/><text x='-15' y='15' font-size='14'>A</text><text x='-15' y='315' font-size='14'>B</text><text x='305' y='315' font-size='14'>C</text><text x='305' y='15' font-size='14'>D</text><circle cx='300' cy='150' r='3' fill='black'/><text x='310' y='155' font-size='14'>E</text><circle cx='187.5' cy='0' r='3' fill='black'/><text x='180' y='-5' font-size='14'>F</text><line x1='300' y1='150' x2='187.5' y2='0' stroke='black' stroke-width='2'/><circle cx='243.75' cy='75' r='4' fill='black'/><text x='250' y='70' font-size='14' font-weight='bold'>P</text><line x1='243.75' y1='75' x2='0' y2='75' stroke='black' stroke-width='1' stroke-dasharray='4'/><line x1='243.75' y1='75' x2='243.75' y2='300' stroke='black' stroke-width='1' stroke-dasharray='4'/><text x='-15' y='80' font-size='14'>M</text><text x='238' y='320' font-size='14'>N</text><rect x='0' y='75' width='243.75' height='225' fill='#f0f0f0' stroke='black' stroke-width='1.5'/><text x='150' y='320' font-size='14' text-anchor='middle'>8</text></svg></div>
 
@@ -371,7 +374,7 @@ $P(1) = 1^{3}+1^{2}-2(1)+2 = 1+1-2+2 = 2$이다.
 7) 최댓값 $S(\frac{5}{2}) = (8-\frac{5}{2})(\frac{4}{3} \cdot \frac{5}{2}+4) = \frac{11}{2} \cdot (\frac{10}{3}+4) = \frac{11}{2} \cdot \frac{22}{3} = \frac{121}{3}$이다.
 결론: 따라서 정답은 ⑤이다.
 
-**독립 검산·판정 근거:** 좌표 D(0,0), E(0,4),F(3,0), P(t,4−4t/3), S=(8−t)(4+4t/3), 0≤t≤3; 꼭짓점 t=5/2, 최대121/3. 그림 방향 확인 필요. 수학적 정의역/원본 그림/변수 범위 검증이 남아 HOLD.
+**독립 검산·판정 근거:** 문제 원문에 SVG로 A,B,C,D,E,F,P,M,N의 위치가 명시되어 있다. D를 (0,0), A=(8,0), C=(0,8), B=(8,8), E=(0,4), F=(3,0)으로 두면 P=(t,4−4t/3),0≤t≤3. PMBN=(8−t)(4+4t/3)=−4t²/3+20t/3+32=121/3−(4/3)(t−5/2)². t=5/2는 허용 구간, 최대121/3=⑤. 원본의 좌표·폭·높이·완전제곱 계산이 전부 있어 KEEP. inline SVG 실제 렌더 검수만 VISUAL_HOLD/NOT_RUN으로 분리.
 
 ## q19 — KEEP
 
