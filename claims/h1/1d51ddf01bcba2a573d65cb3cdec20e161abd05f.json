@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane40",
   "workerBranch": "work/solution-upgrade-lane-40-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2mid",
@@ -11,17 +11,22 @@
   "sourcePath": "archive/exams/original/high/h1/2mid/23_매산여고_2학기_중간_고1_기출.js",
   "sourceBlobSha": "1d51ddf01bcba2a573d65cb3cdec20e161abd05f",
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2023_maesangirls_2mid_DEEP_AUDIT.md",
-  "nextQid": 1,
-  "remainingWork": [
-    "Read q1~q23 full source, problem images and solution",
-    "Draft and verify necessary student explanations"
-  ],
+  "nextQid": null,
+  "remainingWork": [],
   "sourceQuestionCount": 23,
-  "readQuestionCount": 0,
+  "readQuestionCount": 23,
   "decisionCounts": {
-    "KEEP": 0,
-    "UPGRADE": 0,
+    "KEEP": 22,
+    "UPGRADE": 1,
     "HOLD": 0,
-    "UNREAD": 23
-  }
+    "UNREAD": 0
+  },
+  "completedUpgradeQids": [
+    4
+  ],
+  "auditStatus": "EXAM_AUDIT_COMPLETE",
+  "draftStatus": "EXAM_DRAFT_COMPLETE",
+  "visualStatus": "VISUAL_HOLD",
+  "goldenNegativeStatus": "NOT_RUN",
+  "auditCommitSha": "f83ca633bdf71f3540d2d17aa7e86638de14d559"
 }
