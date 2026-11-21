@@ -1,0 +1,176 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sL1",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "P",
+          "A"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sL2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "P",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sL3",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "P",
+          "C"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sL1",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sL2",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sL3",
+      "refs": [
+        "P",
+        "C"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "P",
+    "A",
+    "B",
+    "C"
+  ],
+  "coordinateLabels": [
+    "P",
+    "A",
+    "B",
+    "C"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "-x, 2x, ax, 4, 교점 x = -3",
+      "mappedTo": [
+        "P",
+        "A",
+        "B",
+        "C",
+        "sL1",
+        "sL2",
+        "sL3"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 직선 -x, 2x, ax + 4 삼각형 이루지 않을 조건, 교점 -3"
+  ],
+  "caption": "세 직선 -x, 2x, ax + 4 삼각형 이루지 않을 조건, 교점 -3"
+}

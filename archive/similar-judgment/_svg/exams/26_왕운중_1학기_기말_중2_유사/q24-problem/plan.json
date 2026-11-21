@@ -1,0 +1,135 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sL1",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "P",
+          "A"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sL2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "P",
+          "B"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sL1",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "sL2",
+      "refs": [
+        "P",
+        "B"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "P",
+    "A",
+    "B"
+  ],
+  "coordinateLabels": [
+    "P",
+    "A",
+    "B"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "-x + y - 3 = 0, 2x + y + 6 = 0, ax - y + 4 = 0",
+      "mappedTo": [
+        "P",
+        "A",
+        "B",
+        "sL1",
+        "sL2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "세 직선 -x + y - 3 = 0, 2x + y + 6 = 0, ax - y + 4 = 0 위치관계"
+  ],
+  "caption": "세 직선 -x + y - 3 = 0, 2x + y + 6 = 0, ax - y + 4 = 0 위치관계"
+}
