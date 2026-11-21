@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane10",
   "workerBranch": "work/solution-upgrade-lane-10-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2final",
@@ -12,10 +12,29 @@
   "sourceBlobSha": "ddacbfd5d93eb1c2a4f8f786edccc01bc698ac43",
   "sourceQuestionCount": 21,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2024_geumdang_2final_DEEP_AUDIT.md",
-  "draftedQuestionIds": [],
-  "remainingWork": [
-    "Q1-Q21 source deep audit and any UPGRADE full student solutions"
+  "draftedQuestionIds": [
+    18
   ],
-  "nextQid": 1,
-  "stateNotes": "All source standardCourse 수학(하); 2025 2final all, preceding 2024 Gangnam Girls complete."
+  "remainingWork": [],
+  "nextQid": null,
+  "stateNotes": "21/21 full problem/choices/answer/solution audited; q18 complete independently checked; q17 source picture A/B labels reversed and handoff SVG_REQUEST written, visual release blocked; all MD Git readback verified.",
+  "auditQuestionCount": 21,
+  "readQuestionCount": 21,
+  "decisionCounts": {
+    "KEEP": 19,
+    "UPGRADE": 1,
+    "HOLD": 1,
+    "UNREAD": 0
+  },
+  "studentDraftPaths": [
+    "docs/operations/solution-upgrade-reservations/staged/h1/2024_geumdang_2final_q18.md"
+  ],
+  "svgRequestPath": "docs/operations/solution-upgrade-reservations/staged/h1/2024_geumdang_2final_SVG_REQUEST.md",
+  "visualStatus": "VISUAL_HOLD_Q17_SOURCE_IMAGE_LABELS",
+  "qualityGates": {
+    "render": "NOT_RUN",
+    "golden": "NOT_RUN",
+    "negative": "NOT_RUN",
+    "release": "NOT_PASS"
+  }
 }
