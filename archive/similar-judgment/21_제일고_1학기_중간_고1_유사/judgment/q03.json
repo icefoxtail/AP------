@@ -1,0 +1,63 @@
+{
+  "qid": 3,
+  "itemFingerprint": "7f7470dd8f8b38fa",
+  "solveSteps": [
+    "$x=0$은 방정식을 만족하지 않으므로 $x\\ne 0$이다. (144)",
+    "양변을 $x$로 나누면 $$ x-6+\\frac{2}{x}=0 \\implies x+\\frac{2}{x}=6 $$ 따라서 곱셈 공식의 변형에 의하여 $$ x^3+\\frac{8}{x^3} = \\left(x+\\frac{2}{x}\\right)^3-3\\cdot x\\cdot\\frac{2}{x}\\left(x+\\frac{2}{x}\\right) = 6^3-6\\cdot 6 = 216-36 = 180 $$ 이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+  "unitEvidence": "$x^2-6x+2=0$일 때, $x^3+\\dfrac{8",
+  "rpmRecordId": "H1-RPM-001",
+  "rpmReason": "Q3(144): 다항식의 기본 연산 단원의 RPM H1-RPM-001 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+  "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+  "typeReason": "Q3(144): 다항식의 기본 연산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q3(144): 다항식의 기본 연산 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "solution",
+        "quote": "방정식을 만족하지"
+      }
+    ],
+    "goal": [
+      {
+        "term": "곱셈공식",
+        "src": "solution",
+        "quote": "곱셈 공식의 변형에 의하여"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "6^3-6\\cdot 6",
+        "evidenceType": "IMPLIED",
+        "justification": "x+2/x=6을 구한 뒤 세제곱 합 변형 공식에 대입함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q3(144): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

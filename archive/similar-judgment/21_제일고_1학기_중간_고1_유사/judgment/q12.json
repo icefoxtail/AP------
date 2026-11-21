@@ -1,0 +1,64 @@
+{
+  "qid": 12,
+  "itemFingerprint": "f972b04e286f2151",
+  "solveSteps": [
+    "$z$를 실수부분과 허수부분으로 정리하면 $$ z = (x^2+x-6)+(-7x+x^2+10)i = (x+3)(x-2)+(x-2)(x-5)i $$ $z^2$이 음의 실수가 되려면 $z$는 순허수이어야 하므로 실수부분이 $0$이고 허수부분이 $0$이 아니어야 한다.",
+    "$(x+3)(x-2)=0$이고 $(x-2)(x-5)\\ne 0$이므로 $x=-3$이다.",
+    "따라서 $a=-3$이고, 이때 $z=0+(-3-2)(-3-5)i=40i$이므로 $b=40$이다.",
+    "그러므로 $ab=(-3)\\cdot 40=-120$이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "복소수 $z=(1+i)x^2+(1-7i)x+(-6+10",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q12(10): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+  "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+  "typeReason": "Q12(10): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q12(10): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "복소수 $z=(1+i)x^2+(1-7i)x+(-6+10i)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "허수부분",
+        "src": "stem",
+        "quote": "z$의 허수부분을 $b$"
+      }
+    ],
+    "method": [
+      {
+        "term": "순허수",
+        "src": "solution",
+        "quote": "z$는 순허수이어야",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q12(10): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

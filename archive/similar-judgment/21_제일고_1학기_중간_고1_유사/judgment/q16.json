@@ -1,0 +1,69 @@
+{
+  "qid": 16,
+  "itemFingerprint": "d944d78f104dfa26",
+  "solveSteps": [
+    "두 삼각형 $OAA'$과 $OBB'$은 모두 원점 $O$를 지나고 빗변이 직선 $y=kx$ 위에 있으므로 서로 닮음이다.",
+    "넓이의 비가 $1:9=1^2:3^2$이므로 닮음비는 $1:3$이고, $k>0$이며 점 $A$의 $x$좌표가 점 $B$의 $x$좌표보다 크므로 두 교점의 $x$좌표를 $\\alpha, -3\\alpha$ ($\\alpha>0$)라 놓을 수 있다.",
+    "이들은 이차방정식 $12-x^2=kx \\iff x^2+kx-12=0$의 두 근이므로 근과 계수의 관계에 의해 $$ \\alpha+(-3\\alpha) = -k \\implies \\alpha = \\frac{k}{2}, \\qquad \\alpha(-3\\alpha) = -12 \\implies \\alpha^2 = 4 \\implies \\alpha = 2 $$ 따라서 $\\dfrac{k}{2}=2 \\implies k=4$이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "그림과 같이 이차함수 $y=12-x^2$의 그래프가 직",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q16(12): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+  "typeReason": "Q16(12): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q16(12): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "두 삼각형 $OAA'$, $OBB'$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "양수",
+        "src": "stem",
+        "quote": "양수 $k$의 값은"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의해",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "교점",
+        "src": "solution",
+        "quote": "두 교점의 $x$좌표"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q16(12): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

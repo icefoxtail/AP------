@@ -1,0 +1,70 @@
+{
+  "qid": 8,
+  "itemFingerprint": "6488dd12a74a8d1c",
+  "solveSteps": [
+    "좌변에 $x=a$를 대입하면 $a^3-(a+5)a^2+6a^2-a^2=0$이므로 $x-a$를 인수로 갖는다. (ax)",
+    "조립제법으로 인수분해하면 $$ (x-a)(x^2-5x+a) = 0 $$ 서로 다른 세 실근을 가지려면 이차방정식 $x^2-5x+a=0$이 $a$가 아닌 서로 다른 두 실근을 가져야 한다.",
+    "1) 판별식 $D=25-4a>0 \\implies a<\\dfrac{25}{4}=6.25$  \n2) $x=a$가 근이 아니어야 하므로 $a^2-5a+a=a(a-4)\\ne 0 \\implies a\\ne 0, 4$ 따라서 조건을 만족하는 자연수 $a$는 $1, 2, 3, 5, 6$이고 합은 $1+2+3+5+6=17$이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-EQUATION_APPLICATION",
+  "unitEvidence": "$x$에 대한 삼차방정식 $x^3-(a+5)x^2+6a",
+  "rpmRecordId": "H1-RPM-043",
+  "rpmReason": "Q8(ax): 방정식과 부등식의 활용 단원의 RPM H1-RPM-043 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "NONE",
+  "typeReason": "Q8(ax): 방정식과 부등식의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q8(ax): 방정식과 부등식의 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼차방정식",
+        "src": "stem",
+        "quote": "삼차방정식 $x^3-(a+5)x^2+6ax-a^2=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "모든 자연수 $a$의 합"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수정리",
+        "src": "solution",
+        "quote": "x=a$를 대입하면",
+        "evidenceType": "IMPLIED",
+        "justification": "x=a 대입으로 일차인수를 추출하고 이차식의 판별식 D>0 및 x!=a 조건을 적용함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D=25-4a>0"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q8(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

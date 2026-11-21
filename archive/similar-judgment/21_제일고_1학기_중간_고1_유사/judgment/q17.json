@@ -1,0 +1,65 @@
+{
+  "qid": 17,
+  "itemFingerprint": "919d98ac5183966c",
+  "solveSteps": [
+    "$y=-2(x+1)^2+k+5$는 위로 볼록하고 축이 $x=-1$이다.",
+    "구간 $1\\le x\\le k$ ($k\\ge 1$)는 축 $x=-1$의 오른쪽에 있으므로 이 구간에서 함수는 감소한다.",
+    "따라서 최솟값은 $x=k$일 때이므로 $$ -2k^2-4k+k+3 = -11 \\implies 2k^2+3k-14 = 0 \\implies (2k+7)(k-2) = 0 $$ $k\\ge 1$이므로 $k=2$이다.",
+    "그러므로 최댓값은 $x=1$일 때 $-2(1)^2-4(1)+2+3=-1$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "$x$의 값의 범위가 $1\\le x\\le k$일 때, ",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q17(11): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+  "typeReason": "Q17(11): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(11): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "최솟값이 $-11$이다"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "이차함수의 최댓값은"
+      }
+    ],
+    "method": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=-2x^2-4x+k+3$",
+        "evidenceType": "IMPLIED",
+        "justification": "축 x=-1과 구간 [1, k]의 위치 관계로 x=k 최솟값 방정식을 세워 k=2를 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q17(11): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

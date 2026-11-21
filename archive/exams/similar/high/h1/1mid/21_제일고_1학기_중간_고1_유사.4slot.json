@@ -1,0 +1,818 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/high/h1/1mid/21_제일고_1학기_중간_고1_유사.js",
+  "sourceGitBlobSha": "a4e87eb76a5ffbc06053d864ca6f13f7cfb50950",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "similar-import-draft",
+    "at": "2026-11-21"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "단일 모델 초안(UNREVIEWED). 인용은 check-judgment 로 원문 포함을 확인했다."
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $(x-2)(x^2+2x+4)(x-1)^3$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "$x^3$의 계수를 구하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "곱셈 공식에 의해",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "solution",
+            "quote": "x^9+x^8+\\cdots+x+1"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "곱셈 공식 $(x-1)(x^9+x^8+\\cdots+x+1)=x^{10}-1$"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "x=2$를 대입하면",
+            "evidenceType": "IMPLIED",
+            "justification": "x^10-1 인수분해 항등식에 x=2를 대입해 합을 구함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "방정식을 만족하지"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "곱셈 공식의 변형에 의하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "6^3-6\\cdot 6",
+            "evidenceType": "IMPLIED",
+            "justification": "x+2/x=6을 구한 뒤 세제곱 합 변형 공식에 대입함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "(3x^3-x^2+6x-2)"
+          }
+        ],
+        "goal": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "몫과 나머지를 구하는 과정"
+          }
+        ],
+        "method": [
+          {
+            "term": "다항식의나눗셈",
+            "src": "stem",
+            "quote": "조립제법을 이용하여",
+            "evidenceType": "IMPLIED",
+            "justification": "조립제법 연산 및 일차항 계수 3에 대한 몫 보정으로 각 빈칸을 검증함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "항등식",
+            "src": "stem",
+            "quote": "$x$에 대한 항등식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "a_1+a_2+a_3+a_4"
+          }
+        ],
+        "method": [
+          {
+            "term": "수치대입법",
+            "src": "solution",
+            "quote": "항등식의 양변에 $x=0$을 대입하면",
+            "evidenceType": "IMPLIED",
+            "justification": "x=0과 x=1을 수치대입하여 a_1+a_2+a_3+a_4를 구함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $f(x)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "나머지를 $R(x)$라 하자"
+          }
+        ],
+        "method": [
+          {
+            "term": "나머지정리",
+            "src": "solution",
+            "quote": "f(3)=R(3)=3$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "R(x)=a(x-1)^2+2x-7로 두고 나머지정리 f(3)=3을 대입해 a를 구함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "choices",
+            "quote": "27x^3+8"
+          }
+        ],
+        "goal": [
+          {
+            "term": "인수분해",
+            "src": "stem",
+            "quote": "인수분해가 옳지"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "옳은 인수분해이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼차방정식",
+            "src": "stem",
+            "quote": "삼차방정식 $x^3-(a+5)x^2+6ax-a^2=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "모든 자연수 $a$의 합"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수정리",
+            "src": "solution",
+            "quote": "x=a$를 대입하면",
+            "evidenceType": "IMPLIED",
+            "justification": "x=a 대입으로 일차인수를 추출하고 이차식의 판별식 D>0 및 x!=a 조건을 적용함"
+          }
+        ],
+        "condition": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $D=25-4a>0"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "(x^2+6x+4)^2"
+          }
+        ],
+        "goal": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "\\sqrt{(11^2+6\\cdot 11+4)^2}"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "x=11$이라 하면",
+            "evidenceType": "IMPLIED",
+            "justification": "11을 x로 치환해 짝지어 전개함으로써 근호 안을 완전제곱식으로 정리함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "지수",
+            "src": "solution",
+            "quote": "255=4\\times 63+3"
+          }
+        ],
+        "goal": [
+          {
+            "term": "복소수",
+            "src": "stem",
+            "quote": "복소수 $z=\\dfrac{1+i}{\\sqrt{2}}$"
+          }
+        ],
+        "method": [
+          {
+            "term": "허수",
+            "src": "solution",
+            "quote": "z^2 = \\left(\\dfrac{1+i}{\\sqrt{2}}\\right)^2 = \\dfrac{2i}{2} = i$",
+            "evidenceType": "IMPLIED",
+            "justification": "z^2=i를 구한 뒤 i^4=1 주기성을 적용해 510제곱을 계산함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "실수부분",
+            "src": "solution",
+            "quote": "실수부분과 허수부분을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "복소수",
+            "src": "stem",
+            "quote": "만족시키는 복소수 $z$는"
+          }
+        ],
+        "method": [
+          {
+            "term": "켤레복소수",
+            "src": "stem",
+            "quote": "\\overline{z}$는 $z$의 켤레복소수",
+            "evidenceType": "IMPLIED",
+            "justification": "z=a+bi와 켤레복소수 a-bi를 대입해 실수부·허수부를 비교함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "복소수",
+            "src": "stem",
+            "quote": "복소수 $z=(1+i)x^2+(1-7i)x+(-6+10i)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "허수부분",
+            "src": "stem",
+            "quote": "z$의 허수부분을 $b$"
+          }
+        ],
+        "method": [
+          {
+            "term": "순허수",
+            "src": "solution",
+            "quote": "z$는 순허수이어야",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "중근",
+            "src": "stem",
+            "quote": "항상 중근을 갖도록"
+          }
+        ],
+        "goal": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "가장 작은 정수를 $b$"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $D_1=0$에서",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실근",
+            "src": "stem",
+            "quote": "실근을 갖도록"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=2x^2+ax-12$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a, b$에 대하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "복소수",
+            "src": "stem",
+            "quote": "복소수 $\\sqrt{-a}+\\sqrt{-b}+\\sqrt{ab}+\\sqrt{-ab}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "허수부분",
+            "src": "stem",
+            "quote": "허수부분은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "\\sqrt{-a} = \\sqrt{a}i",
+            "evidenceType": "IMPLIED",
+            "justification": "나눗셈 부호 조건으로 a>0, b<0을 정하고 음수 제곱근을 i로 변환해 허수부분을 모음"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "두 삼각형 $OAA'$, $OBB'$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양수 $k$의 값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의해",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "두 교점의 $x$좌표"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값이 $-11$이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "이차함수의 최댓값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=-2x^2-4x+k+3$",
+            "evidenceType": "IMPLIED",
+            "justification": "축 x=-1과 구간 [1, k]의 위치 관계로 x=k 최솟값 방정식을 세워 k=2를 구함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값이 $6$이 되도록"
+          }
+        ],
+        "goal": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $m$의 값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "축",
+            "src": "solution",
+            "quote": "대칭축이 $x=m$이다",
+            "evidenceType": "IMPLIED",
+            "justification": "대칭축 x=m과 구간 중점 0을 비교해 m>=0, m<0 두 경우로 나누어 최솟값 6을 풂"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "겉넓이",
+            "src": "stem",
+            "quote": "겉넓이가 $44$이고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "대각선의 길이를"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "곱셈 공식의 변형에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "인수분해",
+            "src": "stem",
+            "quote": "인수분해하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "t=x-\\dfrac{1}{x}$라 하면",
+            "evidenceType": "IMPLIED",
+            "justification": "x^2으로 묶은 뒤 x-1/x=t로 치환해 이차식으로 인수분해함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=x^2-5x-k$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $k$의 최댓값을"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $D<0$이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "이익금이 최대일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차함수",
+            "src": "solution",
+            "quote": "-500(x-3)^2+40500"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "-500(x-3)^2+40500",
+            "evidenceType": "IMPLIED",
+            "justification": "총 이익금 이차식을 완전제곱식으로 변형해 최댓값 위치 x=3을 구함"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ]
+}

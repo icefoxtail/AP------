@@ -1,0 +1,69 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      -7,
+      4
+    ],
+    "viewport": [
+      -7,
+      4,
+      -26,
+      14
+    ],
+    "pieces": [
+      {
+        "domain": [
+          -7,
+          4
+        ],
+        "coefficients": [
+          "12",
+          "0",
+          "-1"
+        ]
+      }
+    ],
+    "referenceLines": [
+      {
+        "slope": "4",
+        "intercept": "0",
+        "label": "y=kx"
+      }
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "2",
+        "y": "8",
+        "label": "A"
+      },
+      {
+        "id": "B",
+        "x": "-6",
+        "y": "-24",
+        "label": "B"
+      },
+      {
+        "id": "A1",
+        "x": "2",
+        "y": "0",
+        "label": "A'"
+      },
+      {
+        "id": "B1",
+        "x": "-6",
+        "y": "0",
+        "label": "B'"
+      },
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0",
+        "label": "O"
+      }
+    ]
+  },
+  "caption": "y=12-x^2과 직선 y=kx의 교점 A, B 및 x축 수선의 발 A', B'"
+}

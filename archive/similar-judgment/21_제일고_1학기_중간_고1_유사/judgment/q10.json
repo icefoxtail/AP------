@@ -1,0 +1,63 @@
+{
+  "qid": 10,
+  "itemFingerprint": "a00cff795cfc9b50",
+  "solveSteps": [
+    "Q10 문제의 조건(510)에 맞추어 식을 세운다.",
+    "$z^2 = \\left(\\dfrac{1+i}{\\sqrt{2}}\\right)^2 = \\dfrac{2i}{2} = i$이므로 $$ z^{510} = (z^2)^{255} = i^{255} $$ $255=4\\times 63+3$이고 $i^4=1$이므로 $i^{255}=i^3=-i$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "복소수 $z=\\dfrac{1+i}{\\sqrt{2}}$일",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q10(510): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+  "typeReason": "Q10(510): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q10(510): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "지수",
+        "src": "solution",
+        "quote": "255=4\\times 63+3"
+      }
+    ],
+    "goal": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "복소수 $z=\\dfrac{1+i}{\\sqrt{2}}$"
+      }
+    ],
+    "method": [
+      {
+        "term": "허수",
+        "src": "solution",
+        "quote": "z^2 = \\left(\\dfrac{1+i}{\\sqrt{2}}\\right)^2 = \\dfrac{2i}{2} = i$",
+        "evidenceType": "IMPLIED",
+        "justification": "z^2=i를 구한 뒤 i^4=1 주기성을 적용해 510제곱을 계산함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q10(510): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
