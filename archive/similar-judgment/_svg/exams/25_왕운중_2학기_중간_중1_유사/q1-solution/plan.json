@@ -1,0 +1,253 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sL1L2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "L1",
+          "L2"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sL2M1",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "L2",
+          "M1"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sM1M2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "M1",
+          "M2"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sM2P",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "M2",
+          "P"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sPQ",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "P",
+          "Q"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sL1L2",
+      "refs": [
+        "L1",
+        "L2"
+      ]
+    },
+    {
+      "id": "sL2M1",
+      "refs": [
+        "L2",
+        "M1"
+      ]
+    },
+    {
+      "id": "sM1M2",
+      "refs": [
+        "M1",
+        "M2"
+      ]
+    },
+    {
+      "id": "sM2P",
+      "refs": [
+        "M2",
+        "P"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "L1",
+    "L2",
+    "M1",
+    "M2",
+    "P",
+    "Q"
+  ],
+  "coordinateLabels": [
+    "L1",
+    "L2",
+    "M1",
+    "M2",
+    "P",
+    "Q"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "110, 155, 70, 85, 15",
+      "mappedTo": [
+        "L1",
+        "L2",
+        "M1",
+        "M2",
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "평행선 동위각 110 보각 70 엇각 155 각의 차 15"
+  ],
+  "caption": "평행선 동위각 110 보각 70 엇각 155 각의 차 15"
+}
