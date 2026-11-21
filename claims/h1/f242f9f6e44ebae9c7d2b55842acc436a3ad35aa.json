@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane10",
   "workerBranch": "work/solution-upgrade-lane-10-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2final",
@@ -12,10 +12,28 @@
   "sourceBlobSha": "f242f9f6e44ebae9c7d2b55842acc436a3ad35aa",
   "sourceQuestionCount": 24,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2022_gangnamgirls_2final_DEEP_AUDIT.md",
-  "draftedQuestionIds": [],
-  "remainingWork": [
-    "q1-q24 full original audit and all improved student MD"
+  "draftedQuestionIds": [
+    20
   ],
-  "nextQid": 1,
-  "stateNotes": "All 2025/2024 and unclaimed 2023 2final dealt with; lane30 owns 2023 GangnamGirls IN_PROGRESS; 2022 GangnamGirls earliest unclaimed in 2final."
+  "remainingWork": [],
+  "nextQid": null,
+  "stateNotes": "24 original qids content/choices/answer/solution audited; q20 full algebra/domain student explanation independently checked; MD exact remote readback.",
+  "auditQuestionCount": 24,
+  "readQuestionCount": 24,
+  "decisionCounts": {
+    "KEEP": 23,
+    "UPGRADE": 1,
+    "HOLD": 0,
+    "UNREAD": 0
+  },
+  "studentDraftPaths": [
+    "docs/operations/solution-upgrade-reservations/staged/h1/2022_gangnamgirls_2final_q20.md"
+  ],
+  "qualityGates": {
+    "visual": "NOT_RUN",
+    "render": "NOT_RUN",
+    "golden": "NOT_RUN",
+    "negative": "NOT_RUN",
+    "release": "NOT_PASS"
+  }
 }
