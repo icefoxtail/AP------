@@ -1,0 +1,173 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sOT1",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "T1"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sT1T2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "T1",
+          "T2"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sT2V",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "T2",
+          "V"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sOT1",
+      "refs": [
+        "O",
+        "T1"
+      ]
+    },
+    {
+      "id": "sT1T2",
+      "refs": [
+        "T1",
+        "T2"
+      ]
+    },
+    {
+      "id": "sT2V",
+      "refs": [
+        "T2",
+        "V"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "T1",
+    "T2",
+    "V"
+  ],
+  "coordinateLabels": [
+    "O",
+    "T1",
+    "T2",
+    "V"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "이차방정식, 실근",
+      "mappedTo": [
+        "O",
+        "T1",
+        "T2",
+        "V"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "판별식 t^2-t-2>=0 및 로그 치환 범위"
+  ],
+  "caption": "판별식 t^2-t-2>=0 및 로그 치환 범위"
+}
