@@ -1,0 +1,75 @@
+{
+  "capability": "plane",
+  "title": "삼각형 ABC와 각 변의 2:1 내분점 D, E, F",
+  "points": [
+    {
+      "id": "A",
+      "x": -2,
+      "y": 3,
+      "label": "A(-2,3)"
+    },
+    {
+      "id": "B",
+      "x": 4,
+      "y": -1,
+      "label": "B(4,-1)"
+    },
+    {
+      "id": "C",
+      "x": 7,
+      "y": 4,
+      "label": "C(7,4)"
+    },
+    {
+      "id": "D",
+      "x": 2,
+      "y": 0.33,
+      "label": "D"
+    },
+    {
+      "id": "E",
+      "x": 6,
+      "y": 2.33,
+      "label": "E"
+    },
+    {
+      "id": "F",
+      "x": 1,
+      "y": 3.33,
+      "label": "F"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAB",
+      "from": "A",
+      "to": "B"
+    },
+    {
+      "id": "sBC",
+      "from": "B",
+      "to": "C"
+    },
+    {
+      "id": "sCA",
+      "from": "C",
+      "to": "A"
+    },
+    {
+      "id": "sDE",
+      "from": "D",
+      "to": "E"
+    },
+    {
+      "id": "sEF",
+      "from": "E",
+      "to": "F"
+    },
+    {
+      "id": "sFD",
+      "from": "F",
+      "to": "D"
+    }
+  ],
+  "caption": "삼각형 ABC의 세 변을 2:1로 내분하는 점 D, E, F로 만든 삼각형 DEF"
+}

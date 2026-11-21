@@ -1,0 +1,65 @@
+{
+  "qid": 12,
+  "itemFingerprint": "5f530715e481ec6c",
+  "solveSteps": [
+    "$t=x^2-2x=(x-1)^2-1$로 치환하면 $-1\\le x\\le 1$에서 $-1\\le t\\le 3$이다.",
+    "주어진 함수는 $$ y = -t^2+4t+2 = -(t-2)^2+6 $$ 꼭짓점 $t=2$가 구간 $[-1, 3]$ 안에 있으므로 최댓값은 $M=6$이다.",
+    "양 끝점의 값은 $y(-1)=-1-4+2=-3$, $y(3)=-9+12+2=5$이므로 최솟값은 $m=-3$이다.",
+    "따라서 $M+m=6+(-3)=3$이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "$-1\\le x\\le 1$에서 함수 $y=-(x^2-2",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q12(12): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+  "typeReason": "Q12(12): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q12(12): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "solution",
+        "quote": "t=x^2-2x=(x-1)^2-1"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값을 $M$, 최솟값을 $m$"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "-(t-2)^2+6",
+        "evidenceType": "IMPLIED",
+        "justification": "치환 후 이차함수를 완전제곱식으로 변형해 최대·최소를 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q12(12): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

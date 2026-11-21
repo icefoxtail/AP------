@@ -1,0 +1,71 @@
+{
+  "qid": 22,
+  "itemFingerprint": "6c6ccb3ee4226e29",
+  "solveSteps": [
+    "조건 (가)의 좌변을 $(b-c)$가 드러나도록 인수분해하면 $$ \\begin{aligned} a^2(b-c)+a(2b^2-bc-c^2)+b(b^2-c^2) &= (b-c){a^2+a(2b+c)+b(b+c)} \\ &= (b-c)(a+b)(a+b+c) = 0 \\end{aligned} $$ 삼각형의 세 변의 길이는 양수이므로 $a+b>0$, $a+b+c>0$이다.",
+    "따라서 $b-c=0$, 즉 $b=c$이다.",
+    "조건 (나)에서 $b+c=26$이므로 $b=c=13$이고, 조건 (다)에서 $13a=10\\cdot 13$이므로 $a=10$이다.",
+    "따라서 삼각형 $\\mathrm{ABC}$는 세 변의 길이가 $13, 13, 10$인 이등변삼각형이다.",
+    "길이가 $10$인 밑변 $\\mathrm{BC}$의 중점을 $\\mathrm{H}$라 하면 $\\overline{\\mathrm{AH}}\\perp\\overline{\\mathrm{BC}}$, $\\overline{\\mathrm{BH}}=5$이므로 피타고라스 정리에 의해 높이 $h=\\overline{\\mathrm{AH}}$는 $$ h = \\sqrt{13^2-5^2} = \\sqrt{144} = 12 $$ 따라서 삼각형 $\\mathrm{ABC}$의 넓이는 $\\dfrac{1}{2}\\times 10\\times 12 = 60$이다."
+  ],
+  "solvedAnswer": "$60$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "unitEvidence": "세 변의 길이가 $a$, $b$, $c$인 삼각형 $\\",
+  "rpmRecordId": "H1-RPM-013",
+  "rpmReason": "Q22(ABC): 인수분해 단원의 RPM H1-RPM-013 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+  "typeReason": "Q22(ABC): 인수분해 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q22(ABC): 인수분해 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "삼각형 $\\mathrm{ABC}$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "삼각형 $\\mathrm{ABC}$의 넓이를"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "드러나도록 인수분해하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "피타고라스정리",
+        "src": "solution",
+        "quote": "피타고라스 정리에 의해"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q22(ABC): 발문과 해설의 풀이 과정을 점검하여 정답 $60$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

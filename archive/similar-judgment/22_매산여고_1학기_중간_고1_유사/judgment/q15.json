@@ -1,0 +1,75 @@
+{
+  "qid": 15,
+  "itemFingerprint": "7f84e23412229c15",
+  "solveSteps": [
+    "$f(x)=x^2-4ax$, $g(x)=-x^2+2ax-b$이므로 $f(x)=g(x)$는 $2x^2-6ax+b=0$이다.",
+    "근과 계수의 관계에서 $\\alpha+\\beta=3a$, $\\alpha\\beta=\\dfrac{b}{2}$이고, $\\beta-\\alpha=7$이므로 $$ 49 = (3a)^2-4\\cdot\\frac{b}{2} = 9a^2-2b \\implies b = \\frac{9a^2-49}{2} $$\n\n- ㄱ.",
+    "$5a^2<\\dfrac{9a^2-49}{2} \\iff a^2<-49$이므로 거짓이다.",
+    "- ㄴ.",
+    "$f(\\alpha)-g(\\beta)=g(\\alpha)-g(\\beta)=(\\beta-\\alpha)(\\alpha+\\beta-2a)=7a$이고, $g(a)-f(2a)=5a^2-b=\\dfrac{a^2+49}{2}$이다.",
+    "$7a\\le\\dfrac{a^2+49}{2} \\iff (a-7)^2\\ge 0$이므로 참이다.",
+    "- ㄷ.",
+    "$g(\\alpha)=f(\\beta)+5a^2-b$는 $7a=\\dfrac{a^2+49}{2}$와 같으므로 $(a-7)^2=0 \\implies a=7$, $b=\\dfrac{9\\cdot 49-49}{2}=196$이다.",
+    "(참) 따라서 옳은 것은 ㄴ, ㄷ이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "두 이차함수 $f(x)=(x-2a)^2-4a^2$, $",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q15(196): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+  "typeReason": "Q15(196): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(196): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "두 이차함수 $f(x)=(x-2a)^2-4a^2$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "서로 다른 두 실근 $\\alpha$, $\\beta$"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에서",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "(a-7)^2\\ge 0"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q15(196): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

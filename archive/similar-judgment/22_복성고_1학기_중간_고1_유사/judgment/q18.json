@@ -1,0 +1,71 @@
+{
+  "qid": 18,
+  "itemFingerprint": "cd3488a4baf81eee",
+  "solveSteps": [
+    "점 $P\\left(t, \\dfrac{t^2}{2}\\right)$를 지나고 기울기가 $t$인 직선의 방정식은 $$ y-\\frac{t^2}{2} = t(x-t) $$ $y=0$을 대입하면 $-\\dfrac{t^2}{2}=tx-t^2 \\implies x=\\dfrac{t}{2}$이므로 $Q\\left(\\dfrac{t}{2}, 0\\right)$이다.",
+    "선분 $QA$를 $3:2$로 외분하는 점 $R$의 좌표는 $$ R = \\left(\\frac{3\\cdot 0-2\\cdot\\frac{t}{2}}{3-2}, \\frac{3\\cdot 2-2\\cdot 0}{3-2}\\right) = (-t, 6) $$ 점 $R(-t, 6)$이 $y=\\dfrac{1}{2}x^2$ 위의 점이므로 $6=\\dfrac{1}{2}(-t)^2$, 즉 $t^2=12$이고 $t>0$이므로 $t=2\\sqrt{3}$이다.",
+    "따라서 $Q(\\sqrt{3}, 0)$, $P(2\\sqrt{3}, 6)$, $R(-2\\sqrt{3}, 6)$이다.",
+    "선분 $RP$는 $x$축에 평행하고 길이 $4\\sqrt{3}$, 점 $Q$에서 직선 $RP$까지의 높이는 $6$이므로 삼각형 $RQP$의 넓이는 $$ \\frac{1}{2}\\times 4\\sqrt{3}\\times 6 = 12\\sqrt{3} $$ 이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-09",
+  "subUnitKey": "H15-SA-09-GEOMETRY_APPLICATION",
+  "unitEvidence": "좌표평면 위의 점 $A(0, 2)$가 있다. 이차함수 ",
+  "rpmRecordId": "H1-RPM-055",
+  "rpmReason": "Q18(QA): 도형의 방정식 활용 단원의 RPM H1-RPM-055 유형에 해당한다.",
+  "problemTypeKey": "PT_COORD_SECTION",
+  "templateKey": "TPL_SECTION_EXTERNAL",
+  "typeReason": "Q18(QA): 도형의 방정식 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(QA): 도형의 방정식 활용 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x)=\\dfrac{1}{2}x^2$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "삼각형 $RQP$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "외분",
+        "src": "solution",
+        "quote": "외분하는 점 $R$의 좌표",
+        "evidenceType": "IMPLIED",
+        "justification": "선분 QA의 3:2 외분점 공식으로 점 R의 좌표를 구해 포물선에 대입함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "기울기",
+        "src": "stem",
+        "quote": "기울기가 $t$인 직선"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q18(QA): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

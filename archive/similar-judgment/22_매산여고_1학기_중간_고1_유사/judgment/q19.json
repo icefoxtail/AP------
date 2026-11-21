@@ -1,0 +1,69 @@
+{
+  "qid": 19,
+  "itemFingerprint": "1277dd5ed06ca34d",
+  "solveSteps": [
+    "Q19 문제의 조건(aligned)에 맞추어 식을 세운다.",
+    "$P(x)=(2x^2+x-1)^4$이라 두면 $$ \\begin{aligned} P(1) &= (2+1-1)^4 = 16 = a_8+a_7+\\cdots+a_1+a_0 \\ P(-1) &= (2-1-1)^4 = 0 = a_8-a_7+\\cdots-a_1+a_0 \\end{aligned} $$ 두 식을 더하여 $2$로 나누면 $$ a_0+a_2+a_4+a_6+a_8 = \\frac{P(1)+P(-1)}{2} = \\frac{16+0}{2} = 8 $$ 한편 $a_0=P(0)=(-1)^4=1$이므로 $$ a_2+a_4+a_6+a_8 = 8-1 = 7 $$ 이다."
+  ],
+  "solvedAnswer": "$7$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-IDENTITY",
+  "unitEvidence": "모든 실수 $x$에 대하여 등식 $(2x^2+x-1)^",
+  "rpmRecordId": "H1-RPM-007",
+  "rpmReason": "Q19(aligned): 항등식과 계수비교 단원의 RPM H1-RPM-007 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+  "typeReason": "Q19(aligned): 항등식과 계수비교 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q19(aligned): 항등식과 계수비교 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "항등식",
+        "src": "stem",
+        "quote": "모든 실수 $x$에 대하여 등식"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "src": "stem",
+        "quote": "$a_2+a_4+a_6+a_8$의 값을"
+      }
+    ],
+    "method": [
+      {
+        "term": "수치대입법",
+        "src": "solution",
+        "quote": "P(1) &= (2+1-1)^4",
+        "evidenceType": "IMPLIED",
+        "justification": "항등식에 x=1, -1, 0을 대입하여 계수들의 합을 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수이다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q19(aligned): 발문과 해설의 풀이 과정을 점검하여 정답 $7$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

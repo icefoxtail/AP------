@@ -1,0 +1,74 @@
+{
+  "qid": 13,
+  "itemFingerprint": "6db1a9c0c90528dc",
+  "solveSteps": [
+    "$(x-a)(x-b)=x^2-(a+b)x+ab$와 계수를 비교하면 $a+b=-4$, $ab=-n$이다.",
+    "$b=-4-a$를 대입하면 $$ n = -a(-4-a) = a(a+4) = (a+2)^2-4 $$ $m=|a+2|$라 두면 $m$은 음이 아닌 정수이고 $1\\le m^2-4\\le 200$, 즉 $5\\le m^2\\le 204$이다.",
+    "따라서 $3\\le m\\le 14$이고, 각 $m$마다 서로 다른 $n=m^2-4$가 하나씩 정해지므로 개수는 $14-3+1=12$개다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "unitEvidence": "$a$, $b$가 정수이고, $n$이 $200$ 이하의",
+  "rpmRecordId": "H1-RPM-013",
+  "rpmReason": "Q13(200): 인수분해 단원의 RPM H1-RPM-013 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+  "typeReason": "Q13(200): 인수분해 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q13(200): 인수분해 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "인수분해",
+        "src": "stem",
+        "quote": "꼴로 인수분해되도록"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "자연수 $n$의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "계수비교",
+        "src": "solution",
+        "quote": "계수를 비교하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "$a$, $b$가 정수이고"
+      },
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$200$ 이하의 자연수"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q13(200): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "qid": 22,
+  "itemFingerprint": "97b6a6ebf9ec5379",
+  "solveSteps": [
+    "다항식 $f(x)$의 차수를 $d$라 하면 $f(x^2)$의 차수는 $2d$이고, 몫 $x^2-3x+6$의 차수가 $2$이므로 $2d=d+2$, 즉 $d=2$이다.",
+    "$f(x)=ax^2+bx+c$ ($a\\ne 0$)라 두면 나눗셈 항등식은 $$ ax^4+bx^2+c = (ax^2+bx+c)(x^2-3x+6)-30 $$ 우변을 전개하여 양변의 계수를 비교하면\n\n- $x^3$의 계수: $-3a+b=0 \\implies b=3a$  \n- $x$의 계수: $6b-3c=0 \\implies c=2b=6a$ ($x^2$의 계수 $6a-3b+c=6a-9a+6a=3a=b$도 자동으로 성립한다.)  \n- 상수항: $c = 6c-30 \\implies 5c=30 \\implies c=6$ 따라서 $6a=6$에서 $a=1$, $b=3$, $c=6$이므로 $$ f(x) = x^2+3x+6 $$ 그러므로 $f(2) = 2^2+3\\cdot 2+6 = 16$이다."
+  ],
+  "solvedAnswer": "$16$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-IDENTITY",
+  "unitEvidence": "다항식 $f(x)$에 대하여 $f(x^2)$을 $f(x",
+  "rpmRecordId": "H1-RPM-007",
+  "rpmReason": "Q22(30): 항등식과 계수비교 단원의 RPM H1-RPM-007 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+  "typeReason": "Q22(30): 항등식과 계수비교 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q22(30): 항등식과 계수비교 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나머지가 $-30$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "만족하는 다항식 $f(x)$에 대하여"
+      }
+    ],
+    "method": [
+      {
+        "term": "계수비교",
+        "src": "solution",
+        "quote": "양변의 계수를 비교하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "항등식",
+        "src": "solution",
+        "quote": "나눗셈 항등식은"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q22(30): 발문과 해설의 풀이 과정을 점검하여 정답 $16$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

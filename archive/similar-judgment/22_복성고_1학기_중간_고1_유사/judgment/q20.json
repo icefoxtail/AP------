@@ -1,0 +1,67 @@
+{
+  "qid": 20,
+  "itemFingerprint": "ba3e5547b2b90c2a",
+  "solveSteps": [
+    "점들의 상대적 위치 비를 구하기 위해 수직선 위에 $A=0$, $B=4$라 두면 $\\overline{AB}=4$이다.",
+    "- $P$는 $AB$를 $3:1$로 내분하므로 $P=\\dfrac{3\\cdot 4+1\\cdot 0}{3+1}=3$이다.",
+    "- $Q$는 $AB$를 $3:1$로 외분하므로 $Q=\\dfrac{3\\cdot 4-1\\cdot 0}{3-1}=6$이다.",
+    "따라서 네 점은 직선 위에 $A(0)-P(3)-B(4)-Q(6)$ 순으로 놓이며, $$ \\overline{PB}=4-3=1, \\qquad \\overline{BQ}=6-4=2 $$ 이다.",
+    "그러므로 점 $B$는 선분 $PQ$를 $1:2$로 내분하는 점이다.",
+    "(1) $1:2$  (2) 내분  (3) 직선 위에 $A, P, B, Q$를 $\\overline{AP}=3, \\overline{PB}=1, \\overline{BQ}=2$의 비율로 순서대로 표시한다."
+  ],
+  "solvedAnswer": "(1) $1:2$, (2) 내분, (3) 한 직선 위에 $A-P-B-Q$ 순으로 $\\overline{AP}:\\overline{PB}:\\overline{BQ}=3:1:2$가 되도록 나타낸 그림",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-09",
+  "subUnitKey": "H15-SA-09-GEOMETRY_APPLICATION",
+  "unitEvidence": "좌표평면 위의 두 점 $A$, $B$에 대하여 선분 $",
+  "rpmRecordId": "H1-RPM-055",
+  "rpmReason": "Q20(AB): 도형의 방정식 활용 단원의 RPM H1-RPM-055 유형에 해당한다.",
+  "problemTypeKey": "PT_COORD_SECTION",
+  "templateKey": "TPL_SECTION_EXTERNAL",
+  "typeReason": "Q20(AB): 도형의 방정식 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(AB): 도형의 방정식 활용 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "solution",
+        "quote": "네 점은 직선 위에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "내분",
+        "src": "stem",
+        "quote": "내분하는 점을 $P$"
+      }
+    ],
+    "method": [
+      {
+        "term": "외분",
+        "src": "stem",
+        "quote": "외분하는 점을 $Q$",
+        "evidenceType": "IMPLIED",
+        "justification": "1차원 좌표를 잡아 내분점 P와 외분점 Q의 좌표를 직접 구해 비를 비교함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q20(AB): 발문과 해설의 풀이 과정을 점검하여 정답 (1) $1:2$, (2) 내분, (3) 한 직선 위에 $A-P-B-Q$ 순으로 $\\overline{AP}:\\overline{PB}:\\overline{BQ}=3:1:2$가 되도록 나타낸 그림를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

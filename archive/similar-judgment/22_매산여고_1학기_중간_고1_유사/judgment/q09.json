@@ -1,0 +1,68 @@
+{
+  "qid": 9,
+  "itemFingerprint": "180bdd57be2b893f",
+  "solveSteps": [
+    "$z$를 실수부분과 허수부분으로 정리하면 $$ z = (x^2-8x+16)+(x^2-x+5)i = (x-4)^2+(x^2-x+5)i $$ 허수부분 $x^2-x+5=\\left(x-\\dfrac{1}{2}\\right)^2+\\dfrac{19}{4}>0$이므로 $z^2$이 음의 실수가 되려면 $z$가 순허수, 즉 실수부분이 $0$이어야 한다.",
+    "$$ (x-4)^2 = 0 \\implies x = 4 $$ 이때 $z=17i$이므로 $z^2=-289<0$이 성립한다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "복소수 $z=(1+i)x^2-(8+i)x+16+5i$에",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q9(16): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+  "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+  "typeReason": "Q9(16): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q9(16): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "복소수 $z=(1+i)x^2-(8+i)x+16+5i$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 $x$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "실수부분",
+        "src": "solution",
+        "quote": "실수부분과 허수부분으로 정리하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "허수부분",
+        "src": "solution",
+        "quote": "허수부분 $x^2-x+5="
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q9(16): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

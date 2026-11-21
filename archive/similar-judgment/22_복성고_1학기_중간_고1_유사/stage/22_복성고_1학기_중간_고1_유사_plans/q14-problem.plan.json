@@ -1,0 +1,42 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise_polynomial",
+    "domain": [
+      -2,
+      3
+    ],
+    "viewport": [
+      -2,
+      3,
+      -4,
+      8
+    ],
+    "pieces": [
+      {
+        "domain": [
+          -2,
+          3
+        ],
+        "coefficients": [
+          "-2",
+          "3"
+        ]
+      }
+    ],
+    "referenceLines": [
+      {
+        "slope": "3",
+        "intercept": "4",
+        "label": "l2: y=3x+4"
+      },
+      {
+        "slope": "3",
+        "intercept": "0",
+        "label": "y=3x"
+      }
+    ],
+    "requiredPoints": []
+  },
+  "caption": "평행한 두 직선 y=3x-2, y=3x+4 위 점의 1:2 내분점 자취 y=3x"
+}

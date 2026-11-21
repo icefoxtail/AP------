@@ -1,0 +1,70 @@
+{
+  "qid": 16,
+  "itemFingerprint": "f2e4b5003a8a1343",
+  "solveSteps": [
+    "- ㄱ.",
+    "$\\dfrac{\\sqrt{18}}{\\sqrt{-2}} = \\dfrac{3\\sqrt{2}}{\\sqrt{2}i} = \\dfrac{3}{i} = -3i$이므로 참이다.",
+    "- ㄴ.",
+    "$i^{10}=-1$, $i^{11}=-i$, $i^{12}=1$, $i^{13}=i$이므로 $i^{10}+2i^{11}+3i^{12}+4i^{13} = -1-2i+3+4i = 2+2i$이다.",
+    "따라서 거짓이다.",
+    "- ㄷ.",
+    "$z=a+bi$ ($a, b$는 실수)라 하면 $z\\overline{z}=a^2+b^2=0$이므로 $a=b=0$, 즉 $z=0$이다.",
+    "$0$은 실수이므로 거짓이다.",
+    "따라서 옳은 것은 ㄱ뿐이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "다음 중 옳은 것만을 <보기>에서 있는 대로 고른 것은",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q16(18): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+  "typeReason": "Q16(18): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q16(18): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "허수",
+        "src": "stem",
+        "quote": "$z$는 허수이다"
+      }
+    ],
+    "goal": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "켤레복소수"
+      }
+    ],
+    "method": [
+      {
+        "term": "켤레복소수",
+        "src": "solution",
+        "quote": "z\\overline{z}=a^2+b^2=0",
+        "evidenceType": "IMPLIED",
+        "justification": "복소수와 켤레복소수 곱의 실수 제곱합 성질을 이용해 z=0을 판별"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q16(18): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

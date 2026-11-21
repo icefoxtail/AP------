@@ -1,0 +1,76 @@
+{
+  "capability": "plane",
+  "title": "세 변이 13, 13, 10인 이등변삼각형 ABC와 높이 AH",
+  "points": [
+    {
+      "id": "A",
+      "x": 5,
+      "y": 12,
+      "label": "A"
+    },
+    {
+      "id": "B",
+      "x": 0,
+      "y": 0,
+      "label": "B"
+    },
+    {
+      "id": "C",
+      "x": 10,
+      "y": 0,
+      "label": "C"
+    },
+    {
+      "id": "H",
+      "x": 5,
+      "y": 0,
+      "label": "H"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAB",
+      "from": "A",
+      "to": "B",
+      "label": "13"
+    },
+    {
+      "id": "sAC",
+      "from": "A",
+      "to": "C",
+      "label": "13"
+    },
+    {
+      "id": "sBC",
+      "from": "B",
+      "to": "C",
+      "label": "10"
+    },
+    {
+      "id": "sAH",
+      "from": "A",
+      "to": "H",
+      "label": "12"
+    }
+  ],
+  "rightAngles": [
+    {
+      "vertex": "H",
+      "p1": "A",
+      "p2": "C"
+    }
+  ],
+  "planeMarks": {
+    "equalLengths": [
+      {
+        "id": "e1",
+        "count": 1,
+        "segments": [
+          "sAB",
+          "sAC"
+        ]
+      }
+    ]
+  },
+  "caption": "b=c=13, a=10인 이등변삼각형 ABC의 밑변에 내린 수선 AH의 길이 12"
+}
