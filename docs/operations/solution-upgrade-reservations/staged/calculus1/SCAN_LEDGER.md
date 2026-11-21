@@ -39,3 +39,14 @@
 - 이번 5개 MD는 커밋 뒤 GitHub 원격에서 전체 문자열 readback **일치 확인**. 운영 JS·원본 정답·보기·SVG·main은 변경하지 않음.
 - **별도 이슈:** 2025 매산고 Q10 `x≥1` vs `모든 실수 x` 범위 충돌(원문 수정 승인 필요); 2025 매산여고 Q22·2025 순천고 Q24의 그래프 작성 요구는 SVG 엔진 인계 필요.
 - Golden/Negative 독립 테스트, preflight receipt, 학생 화면/기존 문제 이미지·SVG 렌더와 운영 출고 QA는 **NOT_RUN**. 출고 완료라고 보고하지 않음.
+
+## 2024년 2학기 기말 이어받기
+
+| 순서 | 시험지 | 전체 | KEEP | UPGRADE | HOLD | UNREAD | 상태 | 커밋 |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | --- | --- |
+| 11 | [24_매산여고_2학기_기말_고2_수학II](24_매산여고_2학기_기말_고2_수학II_DEEP_AUDIT.md) | 23 | 21 | 0 | 2 | 0 | AUDIT_DRAFT_COMPLETE / RELEASE_QA_NOT_RUN | `caf263a8a6c9` |
+
+- 원본: `archive/exams/original/high/h2/2final/24_매산여고_2학기_기말_고2_수학II.js`, blob `183d43d02497112b051cd6dd84938797740eeb93`; 원본 standardCourse `수학II`.
+- Q03 부정적분 보기의 엄밀한 해석·유일정답성, Q11 원본 속도 그래프 시각 판독은 HOLD. 완성 개선 풀이 0개(UPGRADE 판정 0개). 나머지 전 문항 원문/기존 해설 인용 및 판정 기록.
+- 누적 11장: 247문항 = KEEP 213 + UPGRADE 6 + HOLD 28 + UNREAD 0. MD 커밋/readback PASS. Golden/Negative/시각/운영 QA NOT_RUN.
+- 다음 cursor: **calculus1/original/h2/2final**, 2024년 또는 더 과거 연도의 아직 미감사 원본 시험지 탐색. 다른 과목·유사 자료로 이동 금지.
