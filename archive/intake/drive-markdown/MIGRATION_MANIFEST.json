@@ -14,6 +14,8 @@
     "overwriteExisting": false,
     "preserveRelativeFolders": true,
     "includeTextualFiles": true,
+    "maxFilesPerRun": 20,
+    "markdownExport": "text/markdown",
     "note": "Do not delete or move Google Drive originals. Import only files not yet represented on this branch."
   },
   "sources": [
@@ -33,7 +35,18 @@
       "account": "icefoxtail@gmail.com",
       "name": "AP_유사시험지_마크다운",
       "folderId": "1DutIqQgrGy98PpIZa8CbDf5BvI6ayMCt",
-      "target": "similar-exams"
+      "target": "similar-exams",
+      "includeSubfolders": [
+        "1mid",
+        "1final",
+        "2mid",
+        "2final"
+      ],
+      "excludeSubfolders": [
+        "정본",
+        "evidence",
+        "AI_Studio"
+      ]
     },
     {
       "account": "icefoxella@gmail.com",
