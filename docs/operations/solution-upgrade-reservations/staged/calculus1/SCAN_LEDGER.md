@@ -124,3 +124,9 @@
 - 본인 MD의 **EXAM_AUDIT_COMPLETE / EXAM_DRAFT_COMPLETE** 5건, 원격 파일 내용 전체 readback 모두 일치. 이 회차에서 새로운 UPGRADE 판단은 없고 기존 수학식/정답이 검산과 합치함.
 - **출고 경계:** 기존 SVG/학생 화면 렌더, Golden/Negative 독립 검수, 자동 preflight receipt, 운영 JS·SVG 수정 및 `main` 병합 **NOT_RUN**. 감사 초안 완료이지 운영 출고 PASS 아님.
 - **다음 커서:** calculus1/original/high/h2/2final의 `21_순천여고_2학기_기말_고2_수학II.js` 등 다음 미감사 같은 과목 기출. 시험지 5장 완료 후 보고 설정 유지.
+
+
+## 2026-11-22 다음 회차 진행 중 — 2021 순천여고 2학기 기말
+
+- `21_순천여고_2학기_기말_고2_수학II_DEEP_AUDIT.md`: **IN_PROGRESS**, source blob `8a5278a5d0d6117bef274242e965c04e4e9d2553`, 23문항 원문 확보. Q01~Q08 독립 계산 및 KEEP 근거 저장; Q09~Q23 심층 판정 미완료(UNREAD 15), nextQid=Q09. 그림 실물 확인·Golden/Negative·preflight·학생 렌더 NOT_RUN.
+- 감사 MD 커밋 `711ba715063c902612d5a92a48c619c9821a899d`, 원격 readback 일치. **이번 회차 신규 완료 0/5**, 이전 누적 22장/493문항 유지. 다음 실행에서 동일 시험지 Q09부터 재개. 운영 JS/SVG/main 변경 없음.
