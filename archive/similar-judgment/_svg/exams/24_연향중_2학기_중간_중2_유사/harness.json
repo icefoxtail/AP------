@@ -23,8 +23,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「$\\triangle ABC$에서 $\\angle B=\\angle C$이고 $\\overline{AB}=7x-8$」 만으로 풀이 가능"
       },
       "solution": {
         "need": "NO",
@@ -64,8 +64,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「$\\angle C=90^\\circ$인 직각삼각형 $ABC$에서 $\\angle B$의 이등분선이 변 $AC$와 만나는 점을 $D$라 하자.」 만으로 풀이 가능"
       },
       "solution": {
         "need": "YES",
@@ -74,15 +74,21 @@
         "originalImage": "assets/images/24_연향중_2학기_중간_중2_수학/q02-solution.svg",
         "reusePlan": null,
         "design": {
-          "kind": "",
-          "basedOn": "",
-          "solutionUses": "",
-          "mustShow": []
+          "kind": "geometry",
+          "basedOn": "archive/tools/geometry-equation/ops/golden/item01/plan.json",
+          "solutionUses": "$\\overline{BD}$가 $\\angle B$의 이등분선이므로 $\\angle ABC=2\\angle DBC=2\\times 27^\\circ=54^\\circ$이다.",
+          "mustShow": [
+            "BD",
+            "ABC",
+            "DBC",
+            "27",
+            "54"
+          ]
         },
-        "planPath": null,
+        "planPath": "archive/similar-judgment/_svg/exams/24_연향중_2학기_중간_중2_유사/q2-solution/plan.json",
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
+        "status": "PLANNED",
         "note": ""
       }
     },
@@ -105,8 +111,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「$\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 점 $O$는 빗변 $BC$의 중점이다.」 만으로 풀이 가능"
       },
       "solution": {
         "need": "NO",
@@ -146,8 +152,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「$\\overline{AB}=14\\text{ cm}$, $\\overline{AC}=10\\text{ cm}$인 $\\triangle ABC$에서 점 $I$는 내심이고」 만으로 풀이 가능"
       },
       "solution": {
         "need": "NO",
@@ -187,8 +193,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「다음 중 점 $O$가 항상 $\\triangle ABC$의 외심인 조건을 모두 고르면?」 만으로 풀이 가능"
       },
       "solution": {
         "need": "NO",
@@ -228,8 +234,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「세 변의 길이가 $5$, $12$, $13$인 직각삼각형의 내접원의 반지름의 길이와 넓이를 차례로 짝지은 것은?」 만으로 풀이 가능"
       },
       "solution": {
         "need": "NO",
@@ -269,8 +275,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「예각삼각형 $ABC$의 외심을 $O$라 하자. $\\angle AOC=124^\\circ$, $\\angle OAB=36^\\circ$일 때」 만으로 풀이 가능"
       },
       "solution": {
         "need": "NO",
@@ -310,8 +316,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「평행사변형 $ABCD$에서 두 대각선 $AC$, $BD$의 교점을 $O$라 하자.」 만으로 풀이 가능"
       },
       "solution": {
         "need": "NO",
@@ -351,8 +357,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「변 $BC$의 중점을 $E$라 하자. 선분 $AE$의 연장선과 변 $DC$의 연장선의 교점을 $F$」 만으로 풀이 가능"
       },
       "solution": {
         "need": "YES",
@@ -361,15 +367,22 @@
         "originalImage": "assets/images/24_연향중_2학기_중간_중2_수학/q09-solution.svg",
         "reusePlan": null,
         "design": {
-          "kind": "",
-          "basedOn": "",
-          "solutionUses": "",
-          "mustShow": []
+          "kind": "geometry",
+          "basedOn": "archive/tools/geometry-equation/ops/golden/item01/plan.json",
+          "solutionUses": "따라서 $\\triangle ABE \\equiv \\triangle FCE$ (ASA 합동)이므로 $\\overline{CF}=\\overline{AB}=7\\text{ cm}$이다.",
+          "mustShow": [
+            "ABE",
+            "FCE",
+            "CF",
+            "AB",
+            "7",
+            "14"
+          ]
         },
-        "planPath": null,
+        "planPath": "archive/similar-judgment/_svg/exams/24_연향중_2학기_중간_중2_유사/q9-solution/plan.json",
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
+        "status": "PLANNED",
         "note": ""
       }
     },
@@ -474,8 +487,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「마름모 $ABCD$에서 변 $BC$ 위의 점 $P$에 대하여 $\\overline{BP}:\\overline{PC}=3:4$」 만으로 풀이 가능"
       },
       "solution": {
         "need": "YES",
@@ -484,15 +497,22 @@
         "originalImage": "assets/images/24_연향중_2학기_중간_중2_수학/q12-solution.svg",
         "reusePlan": null,
         "design": {
-          "kind": "",
-          "basedOn": "",
-          "solutionUses": "",
-          "mustShow": []
+          "kind": "geometry",
+          "basedOn": "archive/tools/geometry-equation/ops/golden/item01/plan.json",
+          "solutionUses": "대각선 $AC$는 마름모의 넓이를 이등분하므로 $\\triangle ABC=\\dfrac{1}{2}\\times 210=105\\text{ cm}^2$이다.",
+          "mustShow": [
+            "AC",
+            "ABC",
+            "210",
+            "105",
+            "APC",
+            "60"
+          ]
         },
-        "planPath": null,
+        "planPath": "archive/similar-judgment/_svg/exams/24_연향중_2학기_중간_중2_유사/q12-solution/plan.json",
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
+        "status": "PLANNED",
         "note": ""
       }
     },
@@ -515,8 +535,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「두 대각선 $AC$, $BD$의 교점을 $O$라 하자. $\\triangle DBC$의 넓이가 $84\\text{ cm}^2$」 만으로 풀이 가능"
       },
       "solution": {
         "need": "YES",
@@ -525,15 +545,23 @@
         "originalImage": "assets/images/24_연향중_2학기_중간_중2_수학/q13-solution.svg",
         "reusePlan": null,
         "design": {
-          "kind": "",
-          "basedOn": "",
-          "solutionUses": "",
-          "mustShow": []
+          "kind": "geometry",
+          "basedOn": "archive/tools/geometry-equation/ops/golden/item01/plan.json",
+          "solutionUses": "$\\triangle OCD=\\triangle DBC-\\triangle OBC=84-62=22\\text{ cm}^2$이다.",
+          "mustShow": [
+            "OCD",
+            "DBC",
+            "OBC",
+            "84",
+            "62",
+            "22",
+            "AOB"
+          ]
         },
-        "planPath": null,
+        "planPath": "archive/similar-judgment/_svg/exams/24_연향중_2학기_중간_중2_유사/q13-solution/plan.json",
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
+        "status": "PLANNED",
         "note": ""
       }
     },
@@ -556,8 +584,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「$\\angle C$의 이등분선이 변 $AB$와 만나는 점을 $D$라 할 때, $\\triangle ABC \\sim \\triangle CDB$이다.」 만으로 풀이 가능"
       },
       "solution": {
         "need": "YES",
@@ -566,15 +594,21 @@
         "originalImage": "assets/images/24_연향중_2학기_중간_중2_수학/q14-solution.svg",
         "reusePlan": null,
         "design": {
-          "kind": "",
-          "basedOn": "",
-          "solutionUses": "",
-          "mustShow": []
+          "kind": "geometry",
+          "basedOn": "archive/tools/geometry-equation/ops/golden/item01/plan.json",
+          "solutionUses": "$\\overline{CD}$가 $\\angle C$의 이등분선이므로 $\\angle BCD=\\dfrac{x}{2}$이다.",
+          "mustShow": [
+            "CD",
+            "BCD",
+            "ABC",
+            "CDB",
+            "36"
+          ]
         },
-        "planPath": null,
+        "planPath": "archive/similar-judgment/_svg/exams/24_연향중_2학기_중간_중2_유사/q14-solution/plan.json",
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
+        "status": "PLANNED",
         "note": ""
       }
     },
@@ -638,8 +672,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「대각선 $AC$의 수직이등분선이 두 변 $AD$, $BC$와 만나는 점을 각각 $P$, $Q$라 하고」 만으로 풀이 가능"
       },
       "solution": {
         "need": "YES",
@@ -648,15 +682,22 @@
         "originalImage": "assets/images/24_연향중_2학기_중간_중2_수학/q16-solution.svg",
         "reusePlan": null,
         "design": {
-          "kind": "",
-          "basedOn": "",
-          "solutionUses": "",
-          "mustShow": []
+          "kind": "geometry",
+          "basedOn": "archive/tools/geometry-equation/ops/golden/item01/plan.json",
+          "solutionUses": "$PQ$가 $\\overline{AC}$를 수직이등분하므로 $\\overline{AO}=\\overline{OC}=\\dfrac{15}{2}\\text{ cm}$이고",
+          "mustShow": [
+            "PQ",
+            "AC",
+            "AO",
+            "OC",
+            "AOP",
+            "CBA"
+          ]
         },
-        "planPath": null,
+        "planPath": "archive/similar-judgment/_svg/exams/24_연향중_2학기_중간_중2_유사/q16-solution/plan.json",
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
+        "status": "PLANNED",
         "note": ""
       }
     },
@@ -679,8 +720,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「꼭짓점 $A$로부터 빗변 $BC$에 내린 수선의 발을 $H$라 하자.」 만으로 풀이 가능"
       },
       "solution": {
         "need": "YES",
@@ -689,15 +730,24 @@
         "originalImage": "assets/images/24_연향중_2학기_중간_중2_수학/q17-solution.svg",
         "reusePlan": null,
         "design": {
-          "kind": "",
-          "basedOn": "",
-          "solutionUses": "",
-          "mustShow": []
+          "kind": "geometry",
+          "basedOn": "archive/tools/geometry-equation/ops/golden/item01/plan.json",
+          "solutionUses": "$\\triangle ABH \\sim \\triangle CBA$ (AA 닮음)이므로 $\\overline{AB}^2=\\overline{BH}\\times\\overline{BC}=4\\times 9=36$이다.",
+          "mustShow": [
+            "ABH",
+            "CBA",
+            "AB",
+            "BH",
+            "BC",
+            "4",
+            "9",
+            "6"
+          ]
         },
-        "planPath": null,
+        "planPath": "archive/similar-judgment/_svg/exams/24_연향중_2학기_중간_중2_유사/q17-solution/plan.json",
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
+        "status": "PLANNED",
         "note": ""
       }
     },
@@ -720,8 +770,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「밑면의 반지름의 길이가 $12\\text{ cm}$인 원뿔을 밑면에 평행한 평면으로 자를 때」 만으로 풀이 가능"
       },
       "solution": {
         "need": "NO",
@@ -761,8 +811,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「평행사변형 $ABCD$에서 세 변 $AB$, $BC$, $CD$의 중점을 각각」 만으로 풀이 가능"
       },
       "solution": {
         "need": "YES",
@@ -771,15 +821,20 @@
         "originalImage": "assets/images/24_연향중_2학기_중간_중2_수학/q19-solution.svg",
         "reusePlan": null,
         "design": {
-          "kind": "",
-          "basedOn": "",
-          "solutionUses": "",
-          "mustShow": []
+          "kind": "geometry",
+          "basedOn": "archive/tools/geometry-equation/ops/golden/item01/plan.json",
+          "solutionUses": "따라서 $\\triangle MQN=\\dfrac{1}{2}\\times\\left(\\dfrac{1}{2}\\overline{BC}\\right)\\times\\left(\\dfrac{1}{2}h\\right)=\\dfrac{1}{8}\\overline{BC}\\cdot h=\\dfrac{1}{8}\\square ABCD$이다.",
+          "mustShow": [
+            "MQN",
+            "BC",
+            "ABCD",
+            "72"
+          ]
         },
-        "planPath": null,
+        "planPath": "archive/similar-judgment/_svg/exams/24_연향중_2학기_중간_중2_유사/q19-solution/plan.json",
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
+        "status": "PLANNED",
         "note": ""
       }
     },
@@ -802,8 +857,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「선분 $DF$를 접는 선으로 하여 꼭짓점 $A$가 변 $BC$ 위의 점 $E$에 오도록 접었다.」 만으로 풀이 가능"
       },
       "solution": {
         "need": "YES",
@@ -812,15 +867,24 @@
         "originalImage": "assets/images/24_연향중_2학기_중간_중2_수학/q20-solution.svg",
         "reusePlan": null,
         "design": {
-          "kind": "",
-          "basedOn": "",
-          "solutionUses": "",
-          "mustShow": []
+          "kind": "geometry",
+          "basedOn": "archive/tools/geometry-equation/ops/golden/item01/plan.json",
+          "solutionUses": "따라서 $\\triangle BDE \\sim \\triangle CEF$ (AA 닮음)이므로 $\\overline{BD}:\\overline{CE}=\\overline{DE}:\\overline{EF}$이다.",
+          "mustShow": [
+            "BDE",
+            "CEF",
+            "BD",
+            "CE",
+            "DE",
+            "EF",
+            "AF",
+            "8"
+          ]
         },
-        "planPath": null,
+        "planPath": "archive/similar-judgment/_svg/exams/24_연향중_2학기_중간_중2_유사/q20-solution/plan.json",
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
+        "status": "PLANNED",
         "note": ""
       }
     },
@@ -843,8 +907,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「빗변 $AB$ 위에 $\\overline{AC}=\\overline{AD}$인 점 $D$를 잡고」 만으로 풀이 가능"
       },
       "solution": {
         "need": "YES",
@@ -853,15 +917,24 @@
         "originalImage": "assets/images/24_연향중_2학기_중간_중2_수학/q21-solution.svg",
         "reusePlan": null,
         "design": {
-          "kind": "",
-          "basedOn": "",
-          "solutionUses": "",
-          "mustShow": []
+          "kind": "geometry",
+          "basedOn": "archive/tools/geometry-equation/ops/golden/item01/plan.json",
+          "solutionUses": "빗변 $\\overline{AE}$는 공통, $\\overline{AC}=\\overline{AD}$이므로 $\\triangle ACE \\equiv \\triangle ADE$ (RHS 합동)이다.",
+          "mustShow": [
+            "AE",
+            "AC",
+            "AD",
+            "ACE",
+            "ADE",
+            "DB",
+            "DE",
+            "6"
+          ]
         },
-        "planPath": null,
+        "planPath": "archive/similar-judgment/_svg/exams/24_연향중_2학기_중간_중2_유사/q21-solution/plan.json",
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
+        "status": "PLANNED",
         "note": ""
       }
     },
@@ -884,8 +957,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「한 변의 길이가 $8\\text{ cm}$인 두 정사각형 $ABCD$와 $OEFG$가 겹쳐 있다.」 만으로 풀이 가능"
       },
       "solution": {
         "need": "YES",
@@ -894,15 +967,22 @@
         "originalImage": "assets/images/24_연향중_2학기_중간_중2_수학/q22-solution.svg",
         "reusePlan": null,
         "design": {
-          "kind": "",
-          "basedOn": "",
-          "solutionUses": "",
-          "mustShow": []
+          "kind": "geometry",
+          "basedOn": "archive/tools/geometry-equation/ops/golden/item01/plan.json",
+          "solutionUses": "따라서 $\\triangle OCQ \\equiv \\triangle OBP$ (ASA 합동)이다.",
+          "mustShow": [
+            "OCQ",
+            "OBP",
+            "OPCQ",
+            "OBC",
+            "ABCD",
+            "16"
+          ]
         },
-        "planPath": null,
+        "planPath": "archive/similar-judgment/_svg/exams/24_연향중_2학기_중간_중2_유사/q22-solution/plan.json",
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
+        "status": "PLANNED",
         "note": ""
       }
     },
@@ -925,8 +1005,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「변 $AB$ 위의 점 $D$에 대하여 $\\angle ABC=\\angle ACD$이고」 만으로 풀이 가능"
       },
       "solution": {
         "need": "YES",
@@ -935,15 +1015,22 @@
         "originalImage": "assets/images/24_연향중_2학기_중간_중2_수학/q23-solution.svg",
         "reusePlan": null,
         "design": {
-          "kind": "",
-          "basedOn": "",
-          "solutionUses": "",
-          "mustShow": []
+          "kind": "geometry",
+          "basedOn": "archive/tools/geometry-equation/ops/golden/item01/plan.json",
+          "solutionUses": "대응변 $\\overline{BC}$와 $\\overline{CD}$의 길이의 비도 $3:2$이므로 $15:\\overline{CD}=3:2 \\implies 3\\overline{CD}=30 \\implies \\overline{CD}=10$이다.",
+          "mustShow": [
+            "BC",
+            "CD",
+            "ABC",
+            "ACD",
+            "15",
+            "10"
+          ]
         },
-        "planPath": null,
+        "planPath": "archive/similar-judgment/_svg/exams/24_연향중_2학기_중간_중2_유사/q23-solution/plan.json",
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
+        "status": "PLANNED",
         "note": ""
       }
     }
