@@ -3,7 +3,7 @@
 - 상태: **IN_PROGRESS / EXAM_AUDIT_COMPLETE=NO / EXAM_DRAFT_COMPLETE=NO**
 - sourcePath: `archive/exams/original/high/h2/2final/22_매산고_2학기_기말_고2_수학II.js`; source blob SHA: `8142605df32ecdfad9208d01b24c47fdb6dbcc3a`; 원본 ref: main
 - 과목: 수학II / 교육과정 2015; 문항수 20
-- 원본 JS 전 문항의 발문·보기·정답·solution 텍스트를 확보했으나, 독립 수학 검산 및 문제 PNG 판독 미완료. 아래의 미검산 KEEP은 **잠정**이며 완료 판정이 아니다.
+- 원본 JS 전 문항의 발문·보기·정답·solution 텍스트를 확보했으나, 독립 수학 검산 및 문제 PNG 판독 미완료. 현재 KEEP 13문항은 독립 검산했고 HOLD 7문항은 미완료다.
 - Golden/Negative 독립 샘플 판독, preflight receipt, 학생 렌더: NOT_RUN. 원본 JS/SVG/main 미변경.
 - nextQid: Q03 (그림 판독 필요); 독립 검산 완료 Q01,Q02,Q04,Q05,Q06,Q07,Q08,Q09,Q10,Q11,Q12,Q16,Q17. 나머지 Q03,Q13,Q14,Q15,Q18,Q19,Q20 재개. 미완료 UPGRADE: 검산 후 판정. 미완료 그림: Q03, Q19.
 
@@ -458,7 +458,7 @@
 
 ## 이번 실행의 추가 검산 기록
 
-- Q01, Q02, Q04, Q05, Q06, Q08, Q10은 실제 수학 계산을 독립 재검산하여 KEEP 확정. 나머지 7문항은 아직 미완료(HOLD 7). 원본 PNG Q03/Q19는 시각 판독 미완료.
+- 기존 검산 7문항(Q01,Q02,Q04,Q05,Q06,Q08,Q10)에 더해 Q07,Q09,Q11,Q12,Q16,Q17 여섯 문항을 독립 검산하여 KEEP 확정. 나머지 7문항은 아직 미완료(HOLD 7). 원본 PNG Q03/Q19는 시각 판독 미완료.
 - 필독 하네스 3종은 harness 브랜치에서 확인. docs-manifest.json은 해당 ref 루트에서 NOT_FOUND였고 core 전수 읽기 및 Golden/Negative는 NOT_RUN. 따라서 이 문서는 계속 IN_PROGRESS.
 
 ## 진행 집계
