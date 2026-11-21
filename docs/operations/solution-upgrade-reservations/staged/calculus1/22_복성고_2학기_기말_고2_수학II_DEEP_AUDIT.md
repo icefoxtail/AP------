@@ -1,14 +1,14 @@
 # 2022 복성고 2학기 기말 수학Ⅱ — lane10 심층 감사
 
-- 상태: **IN_PROGRESS** (원본 그림 Q13–Q15 미확인(실물은 archive/assets/images/에 존재하나 현재 이미지 바이너리 판독 불가), calibration 및 출고 검증 NOT_RUN)
+- 상태: **AUDIT_DRAFT_COMPLETE / RELEASE_QA_NOT_RUN** (원본 문제 PNG Q13–Q15 실물 시각 판독 및 22문항 감사 완료; Golden/Negative 및 학생 렌더·출고 QA NOT_RUN)
 - 과목: calculus1 / 2015 수학Ⅱ, original / h2 / 2final / 2022
 - sourcePath: `archive/exams/original/high/h2/2final/22_복성고_2학기_기말_고2_수학II.js`
 - source ref: main; source blob SHA: `7c7a2c053f6077a8a2345e15a79a872e887268e2`
 - 분모: 22, 원본 발문·보기·정답·solution 텍스트 판독: 22/22
-- 판정: KEEP 19 / UPGRADE 0 / HOLD 3 / UNREAD 0
-- 개선 풀이 완료 qid: 없음; 미완료: Q13,Q14,Q15 이미지 확인 및 재판정
-- next_qid: Q13; 공유 claims: SKIPPED_BY_USER
-- 하네스/템플릿/manifest/판서 샘플: 본문 열람. core 목록 16개 조회. preflight/receipt SHA-256 검증: NOT_RUN; Golden/Negative 독립 calibration: NOT_RUN; 학생 렌더: NOT_RUN. 따라서 완료 상태나 출고 PASS 아님.
+- 판정: KEEP 22 / UPGRADE 0 / HOLD 0 / UNREAD 0
+- 개선 풀이 완료 qid: 없음(UPGRADE 판정 0개); 미완료 qid: 없음
+- next_qid: 없음(완료); 공유 claims: SKIPPED_BY_USER
+- 하네스/템플릿/manifest/판서 샘플: 본문 열람. core 목록 16개 조회. preflight/receipt SHA-256 검증: NOT_RUN; Golden/Negative 독립 calibration: NOT_RUN; 학생 렌더: NOT_RUN. 따라서 감사 문서 초안 완료이며 출고 PASS 아님.
 
 ## Q01 — KEEP
 
@@ -124,32 +124,32 @@
 - Q14·Q15도 같은 원본 이미지 폴더의 경로를 우선 조사해야 하며, 존재 여부와 시각 판독은 아직 미확정. **Q13–Q15 HOLD 유지**. 이미지의 실제 좌표·영역·표식은 읽지 않았으므로 KEEP으로 승격하지 않음.
 - 실행 환경에서 GitHub 외부 네트워크 접근도 DNS 실패. 새 풀이·출고 검증 없이 이 파일에 접근 장애 근거만 추가함. 다음 커서 Q13.
 
-## Q13 — HOLD
+## Q13 — KEEP
 
 - identity: ordinal 13, sourceQid `13`, questionUid `qid_v1_3aade4309973b475a8b02a01a9af4f8fc751dc9ce8bd31361475b993d3261c45`, blob `7c7a2c053f6077a8a2345e15a79a872e887268e2`.
 - **원본 문제**: 13. 함수 $y=f(x)$의 그래프가 다음 그림과 같고, 함수 $g(x)$가 $g(x)=\int_{x}^{x+1} f(t)dt$를 만족시킬 때, $g(x)$의 최솟값은? [4.0점]  [원본 문제 PNG 참조]
 - **보기**: $g(1)$ / $g(2)$ / $g\left(\frac{5}{2}\right)$ / $g\left(\frac{7}{2}\right)$ / $g(4)$; **정답**: ②.
 - **기존 solution 원문 발췌**: 그림의 포물선은 $x=1,4$에서 $x$축과 만나므로 양의 상수 $k$에 대해 $$f(t)=k(t-1)(t-4)$$로 나타낼 수 있습니다. 적분구간의 양 끝이 모두 변수이므로 미적분의 기본정리로 $$g'(x)=f(x+1)-f(x).$$ $$=k\{x(x-3)-(x-1)(x-4)\}=k(2x-4).$$ $k>0$이므로 $x<2$에서 $g'(x)<0$, $x>2$에서 $g'(x)>0$입니다. 따라서 $g(x)$는 $x=2$에서 최솟값을 가지므로 정답은 $$\boxed{g(2)}$$인 ②입니다. ①·③
-- **독립 대조 및 판정 이유**: 원본 PNG q13.png의 실제 x축 교점 1,4와 포물선 방향 미확인. 해설은 k>0을 전제하고 g'=k(2x-4)로 결론을 내므로 그림을 확인해야 함. **VISUAL_HOLD** — 실제 PNG 판독 전에는 그래프/영역을 확정하지 않음.
-- 그림: assets/images/22_복성고_2학기_기말_고2_수학II/q13.png — 실물 시각 판독 NOT_RUN.
+- **독립 대조 및 판정 이유**: 원본 PNG 실물에서 위로 열린 포물선의 영점 x=1,4 및 사이 구간의 음의 부호를 확인. 따라서 f(t)=k(t-1)(t-4), k>0이고 g'(x)=f(x+1)-f(x)=k(2x-4)는 x=2에서 음→양으로 전환. g(2) 최솟값, 선택지 ②와 일치한다.
+- 그림: `archive/assets/images/22_복성고_2학기_기말_고2_수학II/q13.png`, source blob `d559c836000dd20151b0a347bd837affa4b36ef8` — 실제 PNG 원본 직접 판독 PASS. solutionImage SVG 렌더 NOT_RUN.
 
-## Q14 — HOLD
+## Q14 — KEEP
 
 - identity: ordinal 14, sourceQid `14`, questionUid `qid_v1_6490a2136149748dd44a3360570d77ba9fb9c5b291430e00ecbae624d5b57ce2`, blob `7c7a2c053f6077a8a2345e15a79a872e887268e2`.
 - **원본 문제**: 14. 다음 그림과 같이 두 곡선 $y=x^4-x^3, y=-x^4+x$로 둘러싸인 도형의 넓이를 곡선 $f(x)=ax(1-x)$가 이등분할 때, $f\left(\frac{1}{2}\right)$의 값은? (단, $0 < a < 1$) [4.0점]  [원본 문제 PNG 참조]
 - **보기**: $\frac{3}{16}$ / $\frac{3}{8}$ / $1$ / $\frac{3}{4}$ / $\frac{1}{4}$; **정답**: ①.
 - **기존 solution 원문 발췌**: 두 곡선은 $x=0,1$에서 만나고 이 구간에서 위쪽은 $y=-x^4+x$, 아래쪽은 $y=x^4-x^3$입니다. 전체 넓이는 $$S=\int_0^1[(-x^4+x)-(x^4-x^3)]dx=\int_0^1(-2x^4+x^3+x)dx=\frac7{20}.$$ 가운데 곡선 $y=ax(1-x)$ 아래쪽과 아래 곡선 사이 넓이는 $$S_1=\int_0^1[ax(1-x)-(x^4-x^3)]dx=\frac a6+\frac1{20}.$$ 넓이를 이등분하므로 $S_1=\frac{S}{2}=\frac{7}{40}
-- **독립 대조 및 판정 이유**: 원본 PNG q14.png에서 영역·이등분 곡선의 위치를 직접 확인하지 못함. 텍스트 기준 적분은 S=7/20, S1=a/6+1/20, a=3/4이나 도형 대응은 미확정. **VISUAL_HOLD** — 실제 PNG 판독 전에는 그래프/영역을 확정하지 않음.
-- 그림: assets/images/22_복성고_2학기_기말_고2_수학II/q14.png — 실물 시각 판독 NOT_RUN.
+- **독립 대조 및 판정 이유**: 원본 PNG 실물에서 x=0,1 사이 상단 곡선 y=-x⁴+x, 하단 곡선 y=x⁴-x³, 가운데 곡선 y=ax(1-x)의 영역 구성을 확인. S=7/20, 아래쪽 넓이 S1=a/6+1/20의 반분 조건으로 a=3/4, f(1/2)=3/16(①) 검산.
+- 그림: `archive/assets/images/22_복성고_2학기_기말_고2_수학II/q14.png`, source blob `42531779d224c094a49d6882c07e4a7bd5b74efb` — 실제 PNG 원본 직접 판독 PASS. solutionImage SVG 렌더 NOT_RUN.
 
-## Q15 — HOLD
+## Q15 — KEEP
 
 - identity: ordinal 15, sourceQid `15`, questionUid `qid_v1_c52f413a46c309cbe5f5958f223b5042198a64252a8298dde6f7fcaa4446917c`, blob `7c7a2c053f6077a8a2345e15a79a872e887268e2`.
 - **원본 문제**: 15. 함수 $f(x)=x^2(x-1)(x-2a)$에서 다음 그림과 같이 곡선 $y=f(x)$와 $x$축으로 둘러싸인 도형을 $A, B$라고 하자. 두 도형 $A, B$의 넓이가 같을 때, 상수 $a$의 값은? (단, $a > \frac{1}{2}$) [4.0점]  [원본 문제 PNG 참조]
 - **보기**: $\frac{5}{6}$ / $1$ / $\frac{7}{6}$ / $\frac{4}{3}$ / $\frac{3}{2}$; **정답**: ①.
 - **기존 solution 원문 발췌**: $a>\frac{1}{2}$이므로 세 영점은 $0<1<2a$입니다. $f(x)=x^2(x-1)(x-2a)$는 $(0,1)$에서 양수, $(1,2a)$에서 음수입니다. 그림의 A와 B 넓이가 같다는 것은 부호를 포함한 정적분이 상쇄되어 $$\int_0^{2a}x^2(x-1)(x-2a)dx=0$$이라는 뜻입니다. 전개하면 $x^4-(1+2a)x^3+2ax^2$이므로 $$\left[\frac{x^5}{5}-\frac{(1+2a)x^4}{4}+\frac{2ax^3}{3}\right]_0^{2a}=\fra
-- **독립 대조 및 판정 이유**: 원본 PNG q15.png에서 A/B 영역 배치를 직접 확인하지 못함. 텍스트 조건상 ∫₀²ᵃ f=0에서 a=5/6이지만 그림 확인 필요. **VISUAL_HOLD** — 실제 PNG 판독 전에는 그래프/영역을 확정하지 않음.
-- 그림: assets/images/22_복성고_2학기_기말_고2_수학II/q15.png — 실물 시각 판독 NOT_RUN.
+- **독립 대조 및 판정 이유**: 원본 PNG 실물에서 x=0은 접점, x=1과 x=2a는 교점이고 A는 (0,1)의 위쪽, B는 (1,2a)의 아래쪽임을 확인. ∫₀²ᵃf=(4a⁴/15)(5-6a)=0에서 a=5/6>1/2, 정답 ① 검산.
+- 그림: `archive/assets/images/22_복성고_2학기_기말_고2_수학II/q15.png`, source blob `f2208d08174fbbfa3f2d638d337c32d39cb11535` — 실제 PNG 원본 직접 판독 PASS. solutionImage SVG 렌더 NOT_RUN.
 
 ## Q16 — KEEP
 
@@ -214,3 +214,9 @@
 - **독립 대조 및 판정 이유**: I=∫₁²f; I=4-3I+I²→(I-2)²=0→I=2. f(7)=84-28+4=60. 원문에 표시된 핵심 식과 결과가 연결되며 이 조건에 필요한 부호·범위·경우를 확인함.
 - 그림: 문제 그림 없음.
 
+
+## 재개 보류 해소 및 출고 경계 (2026-11-22)
+
+- Q13/14/15의 실물 PNG 3개를 GitHub에서 직접 열어 그래프·영역·좌표를 판독해 기존 보류를 KEEP으로 재판정. **22/22문항 감사 완료, HOLD/UNREAD 0.**
+- 저장된 기존 문제 조건·보기·answer·solution 및 표제의 원본 SHA는 유지. 실물 PNG blob SHA는 해당 문항에 별도 기록.
+- 학생용 완성 개선 풀이 대상 없음. 학생 화면/solutionImage SVG 검수, 독립 Golden/Negative, SHA-256 receipt, 메인 운영 JS 적용·출고는 **NOT_RUN**.
