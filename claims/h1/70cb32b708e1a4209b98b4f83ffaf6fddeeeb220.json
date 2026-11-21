@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane10",
   "workerBranch": "work/solution-upgrade-lane-10-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2final",
@@ -12,12 +12,33 @@
   "sourceBlobSha": "70cb32b708e1a4209b98b4f83ffaf6fddeeeb220",
   "sourceQuestionCount": 21,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2025_suncheongirls_2final_DEEP_AUDIT.md",
-  "draftedQuestionIds": [],
-  "remainingWork": [
-    "Q6-Q21 full original question/choices/answer/solution audit",
-    "All discovered UPGRADE full solutions and independent checks",
-    "Golden/Negative calibration and Q4-Q5 visual verification outstanding"
+  "draftedQuestionIds": [
+    9,
+    15,
+    17,
+    18,
+    19
   ],
-  "nextQid": 6,
-  "stateNotes": "Q1-Q5 evidenced KEEP in lane10 staged MD commit a2fcb76a0da636b1a1590746cf1ad544a4666412; UNREAD 16; no exam completion claim."
+  "remainingWork": [
+    "Release/Golden/Negative/solutionImage actual render and visual QA: NOT_RUN"
+  ],
+  "nextQid": null,
+  "stateNotes": "2025 Suncheon Girls 2final Q1-Q21 actual source direct read. KEEP 16 UPGRADE 5; Q7 PNG and Q9/Q15/Q18 SVG source geometry verified; Q9/Q17/Q18 newly written, Q15/Q19 existing draft rechecked. Commits d9460bf433b87da2007380b501114619e1f98e6f and 5b0c30adabcf6ec62cf01648d1f08f58127bb150. Student production PASS NOT_RUN.",
+  "examAuditComplete": true,
+  "examDraftComplete": true,
+  "auditCounts": {
+    "total": 21,
+    "read": 21,
+    "keep": 16,
+    "upgrade": 5,
+    "hold": 0,
+    "unread": 0
+  },
+  "auditBlobSha": "7525e52c9aacce0f28e4bea1ec0f544fa8fd886a",
+  "newDraftBlobSha": "081f492b3b6e076bed323c335acf9994905f8c8d",
+  "existingDraftBlobShas": {
+    "q15": "6ea981a7a7eaa0ef0156c2f20eb608966f9e2db2",
+    "q19": "1708ca2512a280502b2cf73925368d8fa31e61e5"
+  },
+  "finishedAtKst": "2026-11-21"
 }
