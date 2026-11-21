@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane30",
   "workerBranch": "work/solution-upgrade-lane-30-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "1final",
@@ -11,9 +11,26 @@
   "sourcePath": "archive/exams/original/high/h1/1final/26_광양제철고_1학기_기말_고1_기출.js",
   "sourceBlobSha": "52b90f5e0c02e00817787d9131466289fa39219c",
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2026_gwangyang_1final_DEEP_AUDIT.md",
-  "nextQid": 1,
+  "nextQid": null,
   "remainingWork": [
-    "Read complete core docs and golden/negative",
-    "Read and audit every original question and write upgrades"
-  ]
+    "Q13 VISUAL_HOLD: confirm original CSS grid rendering",
+    "Golden/Negative calibration, Node preflight and student render NOT_RUN"
+  ],
+  "sourceQuestionCount": 19,
+  "readQuestionCount": 19,
+  "decisionCounts": {
+    "KEEP": 15,
+    "UPGRADE": 3,
+    "HOLD": 1,
+    "UNREAD": 0
+  },
+  "draftedQuestionIds": [
+    4,
+    11,
+    16
+  ],
+  "auditBlobSha": "2118382d0176fd3c34c2d92e47633b553229b428",
+  "auditCommitSha": "49589d8a1b9e57302c059ca57bbdf3674ad66c4a",
+  "examAuditComplete": true,
+  "examDraftComplete": true
 }
