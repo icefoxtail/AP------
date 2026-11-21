@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane30",
   "workerBranch": "work/solution-upgrade-lane-30-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2final",
@@ -12,24 +12,28 @@
   "sourceBlobSha": "c322897c0cb3a7b6f6e518febc1c029705a19eca",
   "sourceQuestionCount": 24,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2023_gangnamgirls_2final_DEEP_AUDIT.md",
-  "nextQid": 12,
-  "remainingWork": [
-    "q12/q14/q18/q20/q22 original PNG visual confirmation",
-    "Golden/Negative calibration and student render NOT_RUN"
-  ],
+  "nextQid": null,
+  "remainingWork": [],
   "readQuestionCount": 24,
   "decisionCounts": {
-    "KEEP": 17,
+    "KEEP": 22,
     "UPGRADE": 2,
-    "HOLD": 5,
+    "HOLD": 0,
     "UNREAD": 0
   },
   "draftedQuestionIds": [
     10,
     19
   ],
-  "auditBlobSha": "195d633a173fa5301f17ea093cc8113fcd25f633",
-  "auditCommitSha": "abd08d89e9270c595d37d804a48dd93a87b54551",
-  "examAuditComplete": false,
-  "examDraftComplete": true
+  "auditBlobSha": "b30aa72d374f83252fc92dd95a40d79de9a0f3f8",
+  "auditCommitSha": "f260e905e6d442a4aeea980c821cde17f8b4f99c",
+  "examAuditComplete": true,
+  "examDraftComplete": true,
+  "visualStatus": "ORIGINAL_PNG_READ_NO_NEW_SVG",
+  "visualHoldQuestionIds": [],
+  "goldenStatus": "NOT_RUN",
+  "negativeStatus": "NOT_RUN",
+  "renderStatus": "NOT_RUN",
+  "releaseStatus": "NOT_RUN",
+  "stateNotes": "User-directed completion of lane30 reserved exam: all 24 qids audited, q12/q14/q18/q20/q22 original PNG directly inspected and HOLD resolved, q10/q19 full student drafts retained/verified; no production JS/SVG/main edits."
 }
