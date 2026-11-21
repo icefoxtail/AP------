@@ -78,3 +78,11 @@
 - `22_매산고_2학기_기말_고2_수학II_DEEP_AUDIT.md`: **IN_PROGRESS**. 원문 20/20 확보, 독립 검산·원본 그림 확인 미완료, KEEP 잠정 9 / HOLD 11. 완료 집계에 포함하지 않는다.
 - source blob `8142605df32ecdfad9208d01b24c47fdb6dbcc3a`; MD 커밋 `67cd24c12ddba4e17edf005e563c5564d0ee1678`, 원격 readback 일치.
 - 다음 실행 재개: **이 시험지 Q01부터 독립 검산 및 Q03/Q19 PNG 확인**, 완료 후에만 다음 2022 기말 시험지로 이동.
+
+
+### 2026-11-21 23시 재개 진행
+
+- 2022 매산고 2학기 기말 20문항 중 **7문항(Q01, Q02, Q04, Q05, Q06, Q08, Q10) 독립 검산 KEEP 확정**. 나머지 KEEP 잠정 2, HOLD 11; 시험지 상태 IN_PROGRESS, 완료 집계 변화 없음.
+- MD 커밋 `651cd06793953639ddf5425fcfcce6a290bd8cd5`, 원격 readback 일치. Q03/Q19 PNG 및 나머지 13문항 검산 미완료.
+- 다음 재개: `22_매산고_2학기_기말_고2_수학II_DEEP_AUDIT.md` Q03부터, 동일 시험지 완료 전 다른 시험지 이동 금지.
+- harness 브랜치의 HARNESS_CURRENT/GLOBAL_QUEUE_CURRENT/DEEP_QUESTION_AUDIT_TEMPLATE_CURRENT 본문 조회. `docs-manifest.json` 루트 경로는 NOT_FOUND. core 전수·Golden/Negative·렌더 QA는 NOT_RUN.
