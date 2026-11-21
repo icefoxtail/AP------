@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane40",
   "workerBranch": "work/solution-upgrade-lane-40-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2mid",
@@ -11,17 +11,22 @@
   "sourcePath": "archive/exams/original/high/h1/2mid/23_금당고_2학기_중간_고1_기출.js",
   "sourceBlobSha": "72268c03b007613546ac85a0cbd94fdb4070423c",
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2023_geumdang_2mid_DEEP_AUDIT.md",
-  "nextQid": 1,
-  "remainingWork": [
-    "Read q1~q21 full source and problem images",
-    "Draft and verify required upgrades"
-  ],
+  "nextQid": null,
+  "remainingWork": [],
   "sourceQuestionCount": 21,
-  "readQuestionCount": 0,
+  "readQuestionCount": 21,
   "decisionCounts": {
-    "KEEP": 0,
-    "UPGRADE": 0,
+    "KEEP": 20,
+    "UPGRADE": 1,
     "HOLD": 0,
-    "UNREAD": 21
-  }
+    "UNREAD": 0
+  },
+  "completedUpgradeQids": [
+    18
+  ],
+  "auditStatus": "EXAM_AUDIT_COMPLETE",
+  "draftStatus": "EXAM_DRAFT_COMPLETE",
+  "visualStatus": "VISUAL_HOLD",
+  "goldenNegativeStatus": "NOT_RUN",
+  "auditCommitSha": "af7987ba724872937b32f526b3b6acb6c0f6a3e6"
 }
