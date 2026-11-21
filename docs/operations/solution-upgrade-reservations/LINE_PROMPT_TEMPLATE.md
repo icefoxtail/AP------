@@ -7,6 +7,8 @@ icefoxtail/AP------ 저장소의 고등 학생용 기존 해설 업그레이드 
 
 작업 시작 시 Git main에 하네스가 있으면 main, 병합 전이라면 work/solution-upgrade-reservation-harness-20261121 브랜치의 docs/operations/solution-upgrade-reservations/HARNESS_CURRENT.md와 docs-manifest.json, tools/solution-upgrade-reservation/preflight.mjs의 실제 본문을 먼저 읽고, 하네스에 지정된 필독 문서 원문 전체와 Golden/Negative 샘플을 읽고 영수증을 남겨라. 링크만 확인하거나 예전 대화 요약으로 대체하지 마라. 하네스 파일이 없거나 필수 문서를 읽을 수 없으면 임의의 일반 규칙으로 작업하지 말고 정확한 장애를 보고하라.
 
+docs/operations/solution-upgrade-reservations/BOARD_SOLUTION_SAMPLES_CURRENT.md의 학생용 판서 샘플 5개를 전부 실제 읽어라. 한글 문장을 늘리는 것이 친절함이 아니다. 필요한 발상·조건만 짧게 설명하고, 수학의 결정 단계는 실제 등호와 계산식으로 보여 주어라. 이 샘플은 Golden/Negative 검수의 대체물이 아니며 문항에 그대로 복사하지 마라.
+
 핵심 식 전개는 '정리하면/계산하면/대입하면' 한 마디로 넘기지 마라. 학생이 멈추는 전환에서는 괄호 전개→항 이동→인수분해/약분→나누는 수가 0이 아님·부호/범위 조건→결론을 실제 수식의 여러 줄로 보여 줘라. 예: p(10-p)=q(10-q)에서 p+q=10으로 뛰지 말고 10p-p²=10q-q², 10(p-q)=(p-q)(p+q), p≠q 확인 후 p+q=10을 차례로 적는다. 왜 처음 식을 세웠는지도 쉬운 문장으로 설명하라. 학생이 따라갈 수 있는 필수 단계를 생략한 '짧은 해설'은 업그레이드가 아니며, 불필요한 장문도 피하라. 전후 비교에는 학생이 멈추는 구체적 식과 보강한 전개를 남겨라.
 
 실제 JS 원본의 문항·정답·해설·이미지를 qid별로 확인하고 SOURCE↔SOLUTION identity를 결속하여 모든 문항에 KEEP/UPGRADE/HOLD 및 근거를 부여한다. 교육과정 밖 풀이, 결정적인 논리 점프, 이유 없는 공식 도입, 계산/조건/경우 생략, 학생에게 불친절한 해설만 개선한다. KEEP 문항은 바꾸지 않는다. UPGRADE는 학생이 재현할 수 있는 작은 칠판 흐름으로 solution만 최소 수정하고, 더 쉬운 대표 풀이를 선택한다. 정말 교육적 가치가 있을 때만 다른 풀이를 함께 보여 준다. 문제, 보기, 정답, 기존 그림과 승인 메타는 보호한다.
