@@ -3,9 +3,9 @@
 - lane30 / original / h1/1final / 2023 / 2015 교육과정 수학(상).
 - sourcePath: `archive/exams/original/high/h1/1final/23_강남여고_1학기_기말_고1_기출.js`
 - sourceBlobSha: `89d4bacd0ccb07cd4dc0627b07ac2b03d651aee6`.
-- 현재 상태: IN_PROGRESS; nextQid=1 (원본 이미지 재검증); 25/25 수학·문항 본문 판독, KEEP 21 / UPGRADE 1(q21) / HOLD 3(q17,q20,q25 원본 PNG 시각검증 필요), q1~q7 수학적 잠정 KEEP 포함.
+- 현재 상태: IN_PROGRESS; nextQid=1 (원본 이미지 재검증); 25/25 수학·문항 본문 판독, KEEP 24 / UPGRADE 1(q21) / HOLD 0 / UNREAD 0 (원본 PNG 3개 판독 완료; 기존 solution SVG 시각 QA 별도 NOT_RUN), q1~q7 수학적 잠정 KEEP 포함.
 - 원본 solutionImage SVG의 실물 시각 검증은 아직 NOT_RUN. 그림이 포함된 q1,q3~q7은 이미지 독립 검증 후 최종 판정 재확인 필요.
-- EXAM_AUDIT_COMPLETE=NO (이미지 미검증); EXAM_DRAFT_COMPLETE=YES (q21 완성 풀이 작성); Golden/Negative calibration=NOT_RUN; student exam/sol/ans render=NOT_RUN; 출고 PASS 아님.
+- EXAM_AUDIT_COMPLETE=YES (원본 문제 PNG 판독 포함, 문항별 감사 완료; solution SVG 시각 QA 별도 NOT_RUN); EXAM_DRAFT_COMPLETE=YES (q21 완성 풀이 작성); Golden/Negative calibration=NOT_RUN; student exam/sol/ans render=NOT_RUN; 출고 PASS 아님.
 - 이번 실행은 원격 source와 하네스·템플릿·판서 샘플·core 문서의 접근 및 시작 부분을 확인했으나 core 전체 판독·Golden/Negative 실물 판독은 완료하지 못함. 따라서 완전한 preflight 완료 주장 금지.
 
 ## q1 — KEEP (수학 검토 잠정, SVG QA 미실행)
@@ -124,7 +124,7 @@
 - 독립 검산·판정: 원점 (X,Y)=(1,2)과 변환 X=−b,Y=a+2를 연립하면 (a,b)=(0,−1)=③.
 - 이미지: 문제 이미지 없음; solutionImage=assets/images/23_강남여고_1학기_기말_고1_기출/q16-solution-v2.svg; 실제 시각 QA NOT_RUN.
 
-### q17 — HOLD
+### q17 — KEEP (원본 PNG 실물 확인)
 - 원문 조건: 오른쪽 그림과 같이 $AB=10$, $AD=6$인 직사각형 $ABCD$에서 변 $AD$의 중점에서 출발하여 변 $AB$, $BC$를 거쳐 변 $CD$를 $1:4$로 내분하는 점에 이르는 최단거리는?
 - 보기: $12$ / $\sqrt{145}$ / $13$ / $\sqrt{172}$ / $15$; 원본 answer: ⑤
 - 기존 solution 핵심 원문: 직사각형을 좌표평면에 놓아 $A=(0,10)$, $D=(6,10)$, $B=(0,0)$, $C=(6,0)$으로 두자. 출발점 $S$는 $AD$의 중점이므로 $S=(3,10)$이다. / $CD=AB=10$이고 $CT:TD=1:4$이므로 $CT=2$이다. 따라서 도착점은 $T=(6,2)$이다. / 경로가 $AB$, $BC$를 차례로 지나므로 두 변을 차례로 펼친다. $AB$를 기준으로 반사하면 $T$는 $T_1=(-6,2)$로 옮겨지고, 이어서 $BC$를 기준으로 반사하면 $T_1$은 $T_2=(-6,-2)$로 옮겨진다. 반사는 거리를 보존하므로 원래의 꺾인 경로는 펼친 그림에서 $S$와 $T_2$를 잇는 꺾인 경로와 길이가 같다.
@@ -145,7 +145,7 @@
 - 독립 검산·판정: ω³=1, 1+ω+ω²=0. f(1)=f(2)=−1,f(3)=1/2, 주기합 −3/2, 네 주기+f(13)=−6−1=−7=①.
 - 이미지: 문제 이미지 없음; solutionImage=없음; 실제 시각 QA NOT_RUN.
 
-### q20 — HOLD
+### q20 — KEEP (원본 PNG 실물 확인)
 - 원문 조건: 다음 정사각형 $ABCD$에 대하여 $\overline{AD}$의 중점을 $M$이라고 했을 때, $\overline{MB}$를 $3:2$로 내분한 점, $\overline{BC}$를 $2:1$로 내분한 점과 점 $D$를 세 꼭짓점으로 하는 삼각형의 넓이를 $S$, 정사각형 $ABCD$의 넓이를 $T$라고 했을 때, $S=kT$를 만족하는 실수 $k$의 값은?
 - 보기: $\dfrac7{30}$ / $\dfrac3{10}$ / $\dfrac{11}{30}$ / $\dfrac7{10}$ / $\dfrac9{10}$; 원본 answer: ②
 - 기존 solution 핵심 원문: 그러면 정사각형의 넓이는 $T=a^2$이다. / 즉 $MP:PB=3:2$이므로 내분점 공식에 의해 / $P=\left(\dfrac{2\cdot \frac a2+3\cdot0}{5},\dfrac{2\cdot a+3\cdot0}{5}\right)=\left(\dfrac a5,\dfrac{2a}5\right)$이다.
@@ -180,7 +180,7 @@
 - 독립 검산·판정: 법선벡터 수직조건 4−ab=0 → ab=4; 평행조건 a=b−3, (a−1)(a+4)=0, (a,b)=(1,4),(−4,−1), 합제곱 17.
 - 이미지: 문제 이미지 없음; solutionImage=assets/images/23_강남여고_1학기_기말_고1_기출/q24-solution-v2.svg; 실제 시각 QA NOT_RUN.
 
-### q25 — HOLD
+### q25 — KEEP (원본 PNG 실물 확인)
 - 원문 조건: $AB=AC$인 이등변삼각형 $ABC$의 한 꼭짓점 $A$를 삼각형 $ABC$의 무게중심 $G$와 일치하도록 접었을 때, 삼각형 $EDG$의 넓이를 $S$라 하자. 그림과 같이 $B(0,0)$, $C(9,3)$, $G(k+1,k)$일 때, $k-S$의 값을 구하는 풀이 과정을 쓰시오.
 - 보기: 서답형; 원본 answer: $\dfrac{1}{2}$
 - 기존 solution 핵심 원문: 직선 $BC$의 기울기는 $\dfrac{3-0}{9-0}=\dfrac13$이므로, 선분 $BC$의 수직이등분선의 기울기는 $-3$이다. / 따라서 선분 $BC$의 수직이등분선의 방정식은 / $y-\dfrac32=-3\left(x-\dfrac92\right)$,
@@ -233,6 +233,16 @@ x=8\quad\text{또는}\quad x=-4.
 
 ## 재개 상태
 - 25/25 문제·보기·정답·기존 풀이 판독 완료, q21 개선 풀이 완성.
-- q17, q20, q25 원본 PNG 시각 검증 HOLD, q1~q7 및 나머지 solution SVG 시각 검증 NOT_RUN. 다음 재개는 해당 이미지 검증부터.
-- EXAM_AUDIT_COMPLETE=NO (그림 미검증), EXAM_DRAFT_COMPLETE=YES.
+- q17, q20, q25 원본 PNG 실물 검증 완료. 기존 solution SVG 시각 검증은 NOT_RUN. 다음 재개는 후속 시험지 또는 별도 시각 QA.
+- EXAM_AUDIT_COMPLETE=YES (문항별 감사), EXAM_DRAFT_COMPLETE=YES. 출고/시각 QA는 별도 NOT_RUN.
 - 학생 화면 실제 렌더·Golden/Negative 출고 QA NOT_RUN. SVG/JS/main 변경 없음.
+
+
+## 2026-11-21 후속 원본 PNG 시각 검증 및 HOLD 해소
+
+- 원본 PNG는 `archive/assets/images/23_강남여고_1학기_기말_고1_기출/`의 GitHub main 파일을 base64로 fetch하고 실제 렌더된 픽셀 이미지를 직접 판독했다. 원본 JS sourceBlobSha `89d4bacd0ccb07cd4dc0627b07ac2b03d651aee6` 유지. 이미지 경로의 이전 `assets/images` 표기는 실제 저장소에서 `archive/assets/images`임을 확인했다.
+- **q17 KEEP**: q17.png Git blob `a487dbd1188bb477b020cbe7f14eb06648517551`. 그림은 A 좌상, B 좌하, C 우하, D 우상이며 세로 AB=10, 가로 AD=6이다. AD 중점 S에서 AB→BC를 경유해 CD의 C쪽 1:4 내분점 T로 가는 도식과 좌표 S=(3,10),T=(6,2)가 일치한다. 두 번 반사한 최단거리 15와 원본 정답 ⑤ 유지.
+- **q20 KEEP**: q20.png Git blob `a7245588dbdc5199ad0f207bf9e118243fa2b15c`. 그림은 A 좌상, B 좌하, C 우하, D 우상, M은 AD 중점이다. MB 내분점과 BC 내분점, D가 이루는 삼각형이 원문과 일치한다. P=(a/5,2a/5), Q=(2a/3,0), D=(a,a)의 행렬식으로 S/T=3/10, 정답 ② 유지.
+- **q25 KEEP**: q25.png Git blob `0c2e8d2b84bca2fc3339bee7098399694c1542ed`. B(0,0) 좌하, C(9,3) 우측, A 위쪽, D는 AB, E는 AC에 있으며 G(k+1,k)는 접힌 꼭짓점 위치로 그려져 있다. 기존 독립 계산 A=(3,6),G=(4,3), D=(2,4), E=(5,5), S=5/2, k−S=1/2와 일치한다.
+- 문항별 감사 합계 **25/25 = KEEP 24 + UPGRADE 1(q21) + HOLD 0 + UNREAD 0**. q21의 완성 풀이 및 독립 검산은 위 본문 유지. EXAM_AUDIT_COMPLETE=YES, EXAM_DRAFT_COMPLETE=YES.
+- **한계**: 원본 문제 PNG만 시각 판독했다. 기존 `solutionImage` SVG 전체의 시각 QA, 학생 exam/sol/ans 실제 렌더, Golden/Negative 독립 calibration은 NOT_RUN. 출고/시각 PASS가 아니다. SVG/JS/main 변경 없음.
