@@ -155,3 +155,14 @@ $f(12)=w^{12}+z^{12}=1+(-1)=0$.
 - **q18 VISUAL_HOLD:** 원본 문제 이미지 경로 및 GitHub 실제 이미지 파일을 확인해 반원 중심·접점·직사각형 배치를 독립 판독해야 함. 이미지 미확인 상태에서 KEEP으로 변경하지 않는다.
 - Golden 2~3개와 관련 Negative sample 직접 판독, core 문서 전체 본문 독해 및 read-receipt 미완료(EVIDENCE_DEBT). 학생 화면 exam/sol/ans 렌더=NOT_RUN, Golden/Negative=NOT_RUN, 전체 SVG 시각 검증=NOT_RUN. 출고 PASS 금지.
 - 다음 실행은 q18 원본 그림 검증 및 필독 게이트를 우선 해결. 시험지 완료 확정 전 다음 시험지로 이동하지 않음.
+
+## 2026-11-22 q18 추가 검증 (원본 SVG 구조 확인; 시각 판독은 미완료)
+- 원본 JS blob SHA 재확인: `71d65714273a0db1461649b65a1be6b0864caa13`. 원본 q18에는 `image` 필드가 없고, 문제 본문은 세 꼭짓점과 접선·투영 관계를 텍스트로 명시한다.
+- 실제 SVG 파일 확인: `archive/assets/images/23_매산고_1학기_기말_고1_기출/q18-solution-v2.svg`; blob SHA `57621feafc21ce817693463ebffd7cca44a1b2b3`. SVG XML의 `rect` 영역 P-Q-R-S, x축·y축, AB·AC 선분, OQ·OP 반지름 선, BC·RS 선분, `semi` 원호 등 구조를 직접 확인했다. 다만 SVG를 래스터화하여 눈으로 확인하는 시각 검사는 NOT_RUN이므로 시각 PASS는 주장하지 않는다.
+- 기존 풀이의 '대칭이므로 반원 중심이 원점' 논리는 유일성 증명을 생략한다. 이를 보완하면, 반원의 중심을 `T(t,0)`, 반지름을 `r>0`이라 두었을 때 접선 AB, AC까지의 거리가 같으므로
+  \[\frac{|\sqrt3t+\sqrt6|}{2}=\frac{|\sqrt3t-\sqrt6|}{2}.\]
+  양변 제곱으로 `(√3t+√6)²=(√3t-√6)²`, 따라서 `4√18 t=0`이므로 `t=0`이다. 따라서 `T=O(0,0)`은 유일하고, `r=√6/2`. 반원의 지름 양 끝은 `±√6/2`로 BC 구간 `[-√2,√2]` 안에 있다.
+- 접점 `Q=(3√2/4,√6/4)`은 선분 AC 위에 있고, P는 대칭점이다. `PQ=3√2/2`, `QR=√6/4`, 따라서 `PQ·QR=3√3/4`로 원본 answer와 독립 일치한다.
+- **추가 발견:** 기존 solution의 중심 결정 근거는 학생이 재현하기에 부족하다. q18은 그림만 보류할 것이 아니라 위 중심 유일성 전개를 포함하는 **UPGRADE 후보**다. 단, 원본 도형 SVG의 렌더 판독이 미완료이므로 기존 판정 HOLD를 유지하고 `q18-visual-and-upgrade`를 다음 cursor로 둔다. 완료 건수에는 포함하지 않는다.
+- 시작 게이트: HARNESS_CURRENT, GLOBAL_QUEUE_CURRENT, DEEP_QUESTION_AUDIT_TEMPLATE_CURRENT 실제 본문 확인. docs-manifest.json은 harness 브랜치와 lane 브랜치 지정 경로에서 NOT_FOUND, core 전체·Golden/Negative 전체 판독 미완료(EVIDENCE_DEBT). preflight=NOT_RUN.
+- EXAM_AUDIT_COMPLETE=NO; EXAM_DRAFT_COMPLETE=YES (기존 q9 초안에 한함); q18 개선 풀이 최종 작성/시각 검증 미완료; 출고/학생 렌더/Golden/Negative=NOT_RUN.
