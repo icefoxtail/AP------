@@ -1,0 +1,56 @@
+{
+  "qid": 9,
+  "itemFingerprint": "6c307af3b641ef27",
+  "solveSteps": [
+    "Q9 문제의 조건(f)에 맞추어 식을 세운다.",
+    "$h(x) = (g \\circ f)(x) = g(-3x + 2) = 2(-3x + 2) + 3 = -6x + 7$ $y = -6x + 7 \\implies x = \\dfrac{7 - y}{6}$이므로 $h^{-1}(x) = \\dfrac{7 - x}{6}$ $f(1) = -3(1) + 2 = -1$ $h^{-1}(-1) = \\dfrac{7 - (-1)}{6} = \\dfrac{8}{6} = \\dfrac{4}{3}$ $\\therefore (f \\circ (g \\circ f)^{-1} \\circ f)(1) = f\\left(\\dfrac{4}{3}\\right) = -3\\left(\\dfrac{4}{3}\\right) + 2 = -4 + 2 = -2$."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-03",
+  "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+  "unitEvidence": "두 함수 $f(x) = -3x + 2$, $g(x) =",
+  "rpmRecordId": "H1-RPM-102",
+  "rpmReason": "Q9(f): 합성함수 단원의 RPM H1-RPM-102 유형에 해당한다.",
+  "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+  "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+  "typeReason": "Q9(f): 합성함수 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q9(f): 합성함수 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "f)^{-1} \\circ f)(1)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$h(x) = (g \\circ f)(x) =",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q9(f): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

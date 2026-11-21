@@ -1,0 +1,56 @@
+{
+  "qid": 23,
+  "itemFingerprint": "d65c1b86fe11671e",
+  "solveSteps": [
+    "이차방정식 $x^2 + ax + 2b = 0$이 실근을 갖지 않으려면 판별식 $D < 0$이어야 한다.",
+    "$D = a^2 - 8b < 0 \\implies b > \\dfrac{a^2}{8}$ $1 \\le a, b \\le 6$인 자연수 $a$의 값에 따라 가능한 $b$의 개수를 세면 • $a = 1$일 때: $b > \\dfrac{1}{8}$이므로 $b = 1, 2, 3, 4, 5, 6$ ($6$개) • $a = 2$일 때: $b > \\dfrac{1}{2}$이므로 $b = 1, 2, 3, 4, 5, 6$ ($6$개) • $a = 3$일 때: $b > \\dfrac{9}{8}$이므로 $b = 2, 3, 4, 5, 6$ ($5$개) • $a = 4$일 때: $b > 2$이므로 $b = 3, 4, 5, 6$ ($4$개) • $a = 5$일 때: $b > \\dfrac{25}{8}$이므로 $b = 4, 5, 6$ ($3$개) • $a = 6$일 때: $b > \\dfrac{36}{8} = 4.5$이므로 $b = 5, 6$ ($2$개) 따라서 순서쌍 $(a, b)$의 개수는 $6 + 6 + 5 + 4 + 3 + 2 = 26$."
+  ],
+  "solvedAnswer": "$26$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-06",
+  "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+  "unitEvidence": "[서술형3] 서로 다른 두 개의 주사위를 동시에 던져서",
+  "rpmRecordId": "H1-RPM-122",
+  "rpmReason": "Q23(ax): 경우의 수의 기본 원리 단원의 RPM H1-RPM-122 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+  "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+  "typeReason": "Q23(ax): 경우의 수의 기본 원리 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q23(ax): 경우의 수의 기본 원리 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "를 구하는 풀이 과정과 답을 쓰시오. [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "이차방정식 $x^2 + ax + 2b = 0$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q23(ax): 발문과 해설의 풀이 과정을 점검하여 정답 $26$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

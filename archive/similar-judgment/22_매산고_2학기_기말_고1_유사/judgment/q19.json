@@ -1,0 +1,57 @@
+{
+  "qid": 19,
+  "itemFingerprint": "1da2d6db25818a0c",
+  "solveSteps": [
+    "두 교점 $P, Q$의 $x$좌표를 $x_1, x_2$라 하면 $\\dfrac{k}{x} = x + 8 \\implies x^2 + 8x - k = 0$의 두 근이다.",
+    "근과 계수의 관계에 의하여 $x_1 + x_2 = -8$, $x_1 x_2 = -k$이다.",
+    "$P(x_1, x_1 + 8)$, $Q(x_2, x_2 + 8)$이므로 삼각형 $OPQ$의 넓이는 $\\dfrac{1}{2}|x_1(x_2 + 8) - x_2(x_1 + 8)| = \\dfrac{1}{2}|8(x_1 - x_2)| = 4|x_1 - x_2|$ 넓이가 $16$이므로 $4|x_1 - x_2| = 16 \\implies |x_1 - x_2| = 4$ 양변을 제곱하면 $(x_1 - x_2)^2 = (x_1 + x_2)^2 - 4x_1 x_2 = (-8)^2 - 4(-k) = 64 + 4k = 16$ $4k = -48 \\implies k = -12$ ($k = -12 < 0$이고 판별식 $D/4 = 16 + (-12) = 4 > 0$이므로 서로 다른 두 교점이 존재한다.) $\\therefore k = -12$."
+  ],
+  "solvedAnswer": "$-12$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-04",
+  "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
+  "unitEvidence": "<서술형 1> 그림과 같이 유리함수 $y = \\dfra",
+  "rpmRecordId": "H1-RPM-112",
+  "rpmReason": "Q19(OPQ): 유리함수의 활용 단원의 RPM H1-RPM-112 유형에 해당한다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+  "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+  "typeReason": "Q19(OPQ): 유리함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q19(OPQ): 유리함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "시오. (단, $O$는 원점이다.) [10점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "두 교점 $P, Q$의 $x$좌표를 $x_1,",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q19(OPQ): 발문과 해설의 풀이 과정을 점검하여 정답 $-12$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

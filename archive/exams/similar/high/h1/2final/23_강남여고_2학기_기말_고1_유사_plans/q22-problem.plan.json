@@ -1,0 +1,61 @@
+{
+  "question": {
+    "capability": "rational-spike-v1",
+    "graphPlan": {
+      "family": "rational",
+      "numerator": [
+        "0",
+        "2"
+      ],
+      "denominator": [
+        "-3",
+        "1"
+      ],
+      "sourceDomain": {
+        "kind": "ALL_REALS"
+      },
+      "domain": [
+        -4,
+        10
+      ],
+      "viewport": [
+        -4,
+        10,
+        -4,
+        8
+      ]
+    },
+    "caption": "점근선이 x=3, y=2이고 원점을 지나는 유리함수 y=2x/(x-3)의 그래프이다."
+  },
+  "solution": {
+    "capability": "sqrt-affine-spike-v1",
+    "graphPlan": {
+      "family": "sqrt-affine",
+      "radicand": [
+        "0",
+        "2"
+      ],
+      "amplitude": "1",
+      "sign": 1,
+      "offset": "-3",
+      "sourceDomain": {
+        "kind": "CLOSED_INTERVAL",
+        "range": [
+          2,
+          8
+        ]
+      },
+      "domain": [
+        2,
+        8
+      ],
+      "viewport": [
+        0,
+        10,
+        -3,
+        3
+      ]
+    },
+    "caption": "2≤x≤8에서 증가하는 무리함수 y=√(2x)-3의 최솟값(-1)과 최댓값(1)을 보인다."
+  }
+}

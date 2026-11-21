@@ -1,0 +1,77 @@
+{
+  "question": {
+    "status": "EXEMPT",
+    "reason": "발문에 그림이 없는 무리함수와 직선의 접선·넓이 문항이다."
+  },
+  "solution": {
+    "capability": "multi-curve-figure-v1",
+    "graphPlan": {
+      "family": "multi-curve",
+      "curves": [
+        {
+          "id": "f",
+          "kind": "SQRT",
+          "radicand": [
+            "4",
+            "2"
+          ],
+          "amplitude": "2",
+          "sign": 1,
+          "offset": "0",
+          "domain": [
+            "-2",
+            "3"
+          ]
+        }
+      ],
+      "overlays": {
+        "lines": [
+          {
+            "id": "tan",
+            "slope": "2",
+            "intercept": "5"
+          }
+        ],
+        "points": [
+          {
+            "id": "A",
+            "x": "-2",
+            "y": "0",
+            "label": "A"
+          },
+          {
+            "id": "B",
+            "x": "0",
+            "y": "4",
+            "label": "B"
+          },
+          {
+            "id": "C",
+            "x": "-3/2",
+            "y": "2",
+            "label": "C"
+          }
+        ],
+        "polygons": [
+          {
+            "id": "tri",
+            "points": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      },
+      "axisTickValues": {
+        "x": [
+          "-2"
+        ],
+        "y": [
+          "4"
+        ]
+      }
+    },
+    "caption": "a=2, b=5일 때 무리함수 y=2√(2(x+2))와 접선 y=2x+5의 접점 C(-3/2, 2) 및 삼각형 ABC이다."
+  }
+}

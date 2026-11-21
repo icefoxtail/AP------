@@ -1,0 +1,59 @@
+{
+  "qid": 12,
+  "itemFingerprint": "dca624908117ac4b",
+  "solveSteps": [
+    "$A = (3, 4)$는 $y = f(x)$ 위의 점이므로 $y = x$에 대하여 대칭인 점은 $B = (4, 3)$이다.",
+    "$4 - f^{-1}(3) = 9 \\implies f^{-1}(3) = -5$ 따라서 $y = f^{-1}(x)$ 위의 점은 $C = (3, -5)$이고, 이와 직선 $y = x$에 대하여 대칭인 $y = f(x)$ 위의 점은 $D = (-5, 3)$이다.",
+    "두 점 $B(4, 3)$과 $D(-5, 3)$은 모두 직선 $y = 3$ 위에 있으므로 밑변 $\\overline{BD} = 4 - (-5) = 9$이다.",
+    "점 $A(3, 4)$에서 직선 $BD$($y = 3$)까지의 높이는 $4 - 3 = 1$이다.",
+    "$\\therefore \\triangle ABD = \\dfrac{1}{2} \\times 9 \\times 1 = \\dfrac{9}{2}$ (①)."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-03",
+  "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
+  "unitEvidence": "아래 그림과 같은 함수 $y = f(x)$와 그 역함수",
+  "rpmRecordId": "H1-RPM-104",
+  "rpmReason": "Q12(ABD): 역함수 단원의 RPM H1-RPM-104 유형에 해당한다.",
+  "problemTypeKey": "PT_INVERSE_GRAPH",
+  "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
+  "typeReason": "Q12(ABD): 역함수 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q12(ABD): 역함수 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "C$의 $x$좌표는 $3$이다.) [4.4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$A = (3, 4)$는 $y = f(x)$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q12(ABD): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "qid": 17,
+  "itemFingerprint": "53669fa036ade194",
+  "solveSteps": [
+    "조건 (다)에서 $(g \\circ f)(x) = x$이므로 $g = f^{-1}$ 조건 (나)에서 $f(2) = g(2) = f^{-1}(2) \\implies f(f(2)) = 2$, 마찬가지로 $f(f(3)) = 3$ 또한 $g(3) = f(3)$이므로 조건 (가)에서 $f(2) + f(3) = 7$ $f$는 일대일대응이므로 $f(2) \\ne f(3)$이고, $f(1) = 4$이므로 $f(2), f(3) \\in {1, 2, 3, 5}$ 합이 $7$인 서로 다른 두 수는 $2$와 $5$뿐이므로 ${f(2), f(3)} = {2, 5}$ 만약 $f(2) = 5, f(3) = 2$이면 $f(5) = f(f(2)) = 2 = f(3)$이 되어 일대일대응에 모순이다. (4.2)",
+    "따라서 $f(2) = 2$, $f(3) = 5$이고, $f(5) = f(f(3)) = 3$ 남은 원소 $4$에 대하여 $f(4) = 1$, $g(5) = f^{-1}(5) = 3$ $\\therefore g(5) - f(4) = 3 - 1 = 2$."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-03",
+  "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
+  "unitEvidence": "집합 $X = {1, 2, 3, 4, 5}$에 대하여 ",
+  "rpmRecordId": "H1-RPM-104",
+  "rpmReason": "Q17(4.2): 역함수 단원의 RPM H1-RPM-104 유형에 해당한다.",
+  "problemTypeKey": "PT_INVERSE_VALUE",
+  "templateKey": "TPL_INVERSE_FUNCTION_FORM",
+  "typeReason": "Q17(4.2): 역함수 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(4.2): 역함수 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$g(5) - f(4)$의 값은? [4.2점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "조건 (다)에서 $(g \\circ f)(x)",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q17(4.2): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

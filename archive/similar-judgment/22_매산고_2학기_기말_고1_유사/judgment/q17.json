@@ -1,0 +1,61 @@
+{
+  "qid": 17,
+  "itemFingerprint": "22442977bcf7c42e",
+  "solveSteps": [
+    "$f(x) = f(-x)$이고 $f(x) = f(x + 2)$이므로 $y = f(x)$는 $y$축에 대하여 대칭이고 주기가 $2$인 함수이다.",
+    "$[0, 1]$에서 $f(x) = -1 + \\dfrac{2}{x + 1}$는 $(0, 1)$에서 $(1, 0)$으로 감소하고, $[1, 2]$에서는 $y$축 대칭과 주기성으로 $(1, 0)$에서 $(2, 1)$로 증가한다.",
+    "$x \\ge 0$에서 직선 $y = \\dfrac{x}{2024}$는 $x = 2024$일 때 $y = 1$이므로, $x > 2024$에서는 교점이 없다.",
+    "($f(x) \\le 1$)\n\n- 감소 구간 $[2n, 2n + 1]$ ($n = 0, 1, \\cdots, 1011$): $f$는 감소($1 \\to 0$)하고 직선은 증가($\\le 1$)하므로 각 구간마다 교점이 $1$개씩 ($1012$개), 또한 $x = 2024$에서 $f(2024) = 1 = \\dfrac{2024}{2024}$이므로 $1$개 추가되어 총 $1013$개이다.",
+    "- 증가 구간 $[2n + 1, 2n + 2]$ ($n = 0, 1, \\cdots, 1011$): 각 구간에서 $t = x - (2n + 1) \\in [0, 1]$로 두면 $f(x) = \\dfrac{t}{2 - t}$는 $0 \\to 1$로 증가하고, $\\dfrac{x}{2024} = \\dfrac{2n + 1 + t}{2024}$와 $t=0$에서 $0 < \\dfrac{2n+1}{2024}$, $t=1$에서 $1 \\ge \\dfrac{2n+2}{2024}$이므로 사잇값 비교(이차방정식)로 각 구간마다 교점이 $1$개씩 총 $1012$개이다.",
+    "이 중 $x = 2024$($n=1011$의 끝점)는 두 목록에서 중복되므로 $x \\ge 0$에서의 교점 개수는 $1013 + 1012 - 1 = 2024$개이다.",
+    "$x = 0$은 교점이 아니며 두 그래프 모두 $y$축에 대하여 대칭이므로 전체 교점의 개수는 $\\therefore 2 \\times 2024 = 4048$."
+  ],
+  "solvedAnswer": "$4048$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-04",
+  "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
+  "unitEvidence": "<단답형 2> $0 \\le x \\le 1$에서 정의된 ",
+  "rpmRecordId": "H1-RPM-112",
+  "rpmReason": "Q17(2024): 유리함수의 활용 단원의 RPM H1-RPM-112 유형에 해당한다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+  "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+  "typeReason": "Q17(2024): 유리함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(2024): 유리함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "ght|$의 교점의 개수를 구하시오. [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$f(x) = f(-x)$이고 $f(x) =",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q17(2024): 발문과 해설의 풀이 과정을 점검하여 정답 $4048$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "question": {
+    "status": "EXEMPT",
+    "reason": "발문에 그림이 없는 절댓값 포함 일차함수의 일대일대응 조건 문항이다."
+  },
+  "solution": {
+    "capability": "composite-panels-v1",
+    "panels": [
+      {
+        "capability": "piecewise-affine-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-affine",
+          "sourceDomain": {
+            "kind": "CLOSED_INTERVAL",
+            "range": [
+              -1,
+              6
+            ]
+          },
+          "piecewise": {
+            "breakX": "3",
+            "owner": "RIGHT",
+            "left": [
+              "3",
+              "1"
+            ],
+            "right": [
+              "0",
+              "2"
+            ]
+          },
+          "domain": [
+            -1,
+            6
+          ],
+          "viewport": [
+            -1,
+            6,
+            -1,
+            12
+          ]
+        },
+        "caption": "a=1/2 (<1): 왼쪽 기울기 1>0, 오른쪽 기울기 2>0으로 일대일대응"
+      },
+      {
+        "capability": "piecewise-affine-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-affine",
+          "sourceDomain": {
+            "kind": "CLOSED_INTERVAL",
+            "range": [
+              -1,
+              6
+            ]
+          },
+          "piecewise": {
+            "breakX": "3",
+            "owner": "RIGHT",
+            "left": [
+              "12",
+              "-2"
+            ],
+            "right": [
+              "0",
+              "2"
+            ]
+          },
+          "domain": [
+            -1,
+            6
+          ],
+          "viewport": [
+            -1,
+            6,
+            0,
+            14
+          ]
+        },
+        "caption": "a=2 (>1): 왼쪽 기울기 -2<0, 오른쪽 기울기 2>0으로 일대일대응이 아님"
+      }
+    ],
+    "caption": "경계 x=3을 기준으로 왼쪽 직선의 기울기 2-2a가 양수여야 일대일대응이 된다."
+  }
+}

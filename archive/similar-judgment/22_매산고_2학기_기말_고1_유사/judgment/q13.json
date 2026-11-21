@@ -1,0 +1,61 @@
+{
+  "qid": 13,
+  "itemFingerprint": "0574f6bc7175b062",
+  "solveSteps": [
+    "유리식 조각은 $\\dfrac{-2x + 1}{x - 3} = -2 - \\dfrac{5}{x - 3}$이므로 $x = 3$에서 정의되지 않는다. (cases)",
+    "함수 $f$가 실수 전체에서 정의되고 일대일대응(역함수 존재, 치역이 실수 전체)이 되려면 $x = 3$이 근호 조각에 속해야 하므로, 경계는 $px + q = 0$의 해가 $x = 3$이어야 한다.",
+    "또한 유리식 조각이 한쪽 반직선에서 단조여야 하므로 $x > 3$에서 유리식, $x \\le 3$에서 근호식이 정의되어야 한다.",
+    "따라서 $px + q < 0$의 해가 $x > 3$이므로 $p < 0$이고 $3p + q = 0 \\implies q = -3p$이다.",
+    "$x > 3$에서 유리식 조각의 치역은 $(-\\infty, -2)$이므로, $x \\le 3$에서 근호식 $\\sqrt{px + q} + r$의 치역이 $[-2, \\infty)$이어야 한다.",
+    "즉 시작점의 $y$좌표가 $r = -2$이다.",
+    "$\\therefore \\dfrac{qr}{p} = \\dfrac{(-3p)(-2)}{p} = 6$ (④)."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-05",
+  "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+  "unitEvidence": "실수 전체의 집합에서 정의된 함수 $$f(x) = \\b",
+  "rpmRecordId": "H1-RPM-115",
+  "rpmReason": "Q13(cases): 무리함수의 그래프 단원의 RPM H1-RPM-115 유형에 해당한다.",
+  "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+  "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_DIRECT",
+  "typeReason": "Q13(cases): 무리함수의 그래프 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q13(cases): 무리함수의 그래프 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "치역은 실수 전체의 집합이다.) [4.9점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "유리식 조각은 $\\dfrac{-2x + 1}{",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q13(cases): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

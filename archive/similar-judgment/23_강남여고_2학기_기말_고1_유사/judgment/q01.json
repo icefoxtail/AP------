@@ -1,0 +1,56 @@
+{
+  "qid": 1,
+  "itemFingerprint": "760939e0067c6de8",
+  "solveSteps": [
+    "Q1 문제의 조건(nP)에 맞추어 식을 세운다.",
+    "${}_nP_2 = n(n-1)$, ${}_5C_2 = \\dfrac{5 \\times 4}{2} = 10$이므로 $n(n-1) - 10 = 20$ $n^2 - n - 30 = 0$ $(n-6)(n+5) = 0$ $n$은 자연수이므로 $n = 6$."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-08",
+  "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
+  "unitEvidence": "등식 ${}_nP_2 - {}_5C_2 = 20$을 만",
+  "rpmRecordId": "H1-RPM-128",
+  "rpmReason": "Q1(nP): 조합 단원의 RPM H1-RPM-128 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+  "templateKey": "TPL_H1_BINOMIAL_PARAMETER_RELATION",
+  "typeReason": "Q1(nP): 조합 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q1(nP): 조합 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "만족시키는 자연수 $n$의 값은? [3.8점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "${}_nP_2 = n(n-1)$, ${}_5",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q1(nP): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

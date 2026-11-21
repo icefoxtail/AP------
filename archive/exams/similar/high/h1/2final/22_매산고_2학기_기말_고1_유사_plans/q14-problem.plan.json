@@ -1,0 +1,71 @@
+{
+  "question": {
+    "status": "EXEMPT",
+    "reason": "발문에 그림이 없는 두 무리함수의 교점 존재 조건 문항이다."
+  },
+  "solution": {
+    "capability": "multi-curve-figure-v1",
+    "graphPlan": {
+      "family": "multi-curve",
+      "curves": [
+        {
+          "id": "c1",
+          "kind": "SQRT",
+          "radicand": [
+            "18",
+            "4.5"
+          ],
+          "amplitude": "1",
+          "sign": -1,
+          "offset": "3",
+          "domain": [
+            "-4",
+            "4"
+          ]
+        },
+        {
+          "id": "c2",
+          "kind": "SQRT",
+          "radicand": [
+            "18",
+            "-4.5"
+          ],
+          "amplitude": "1",
+          "sign": 1,
+          "offset": "-3",
+          "domain": [
+            "-4",
+            "4"
+          ]
+        }
+      ],
+      "overlays": {
+        "points": [
+          {
+            "id": "P",
+            "x": "-4",
+            "y": "3",
+            "label": "(-4,3)"
+          },
+          {
+            "id": "Q",
+            "x": "4",
+            "y": "-3",
+            "label": "(4,-3)"
+          }
+        ]
+      },
+      "axisTickValues": {
+        "x": [
+          "-4",
+          "4"
+        ],
+        "y": [
+          "-3",
+          "3"
+        ]
+      }
+    },
+    "caption": "k=9/2일 때 두 곡선은 양 끝점 (-4,3)과 (4,-3)에서 만나므로 최댓값은 9/2이다."
+  }
+}

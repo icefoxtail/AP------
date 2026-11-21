@@ -1,0 +1,58 @@
+{
+  "qid": 13,
+  "itemFingerprint": "566f25703ee7141a",
+  "solveSteps": [
+    "ㄱ. (6480)",
+    "A와 B를 한 묶음으로 보면 $6$명을 배열하는 $6!$가지이고, 묶음 안의 순서가 $2!$가지이므로 $6! \\times 2! = 720 \\times 2 = 1440$ ㄴ.",
+    "전체 $7!$에서 양 끝에 모두 남자가 오는 경우를 빼면 $7! - {}_3P_2 \\times 5! = 5040 - 6 \\times 120 = 5040 - 720 = 4320$ ㄷ.",
+    "여자 $4$명을 먼저 일렬로 세우고($4!$), 양 끝과 사이 $5$개의 빈자리에 남자 $3$명을 배열하면(${}_5P_3$) $4! \\times {}_5P_3 = 24 \\times 60 = 1440$ $\\therefore 1440 + 4320 + 1440 = 7200$."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-07",
+  "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+  "unitEvidence": "A를 포함한 남자 $3$명과 B를 포함한 여자 $4$명",
+  "rpmRecordId": "H1-RPM-124",
+  "rpmReason": "Q13(6480): 순열 단원의 RPM H1-RPM-124 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q13(6480): 순열 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q13(6480): 순열 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "끼리는 서로 이웃하지 않도록 세우는 경우의 수"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "ㄱ. A와 B를 한 묶음으로 보면 $6$명을",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q13(6480): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

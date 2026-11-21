@@ -1,0 +1,59 @@
+{
+  "qid": 20,
+  "itemFingerprint": "573462c8fe0b0076",
+  "solveSteps": [
+    "$f_1(3) = f_2(3) = 3$인 두 일차함수는 기울기를 각각 $a_1, a_2$ ($a_1 \\ne 0, a_2 \\ne 0$)라 하면 $f_1(x) = a_1(x - 3) + 3$, $f_2(x) = a_2(x - 3) + 3$ 로 나타낼 수 있다. (10)",
+    "$f_1(8) = 5a_1 + 3 = 8 \\implies a_1 = 1$, 즉 $f_1(x) = x$이다.",
+    "$a_2 = t$ ($t \\ne 0$)라 하면 $(f_2 \\circ f_2)(x) = t^2(x - 3) + 3$이 $f_1$ 또는 $f_2$와 같아야 하므로 $t^2 = 1$ 또는 $t^2 = t$ $t \\ne 0$이므로 $t = 1$ 또는 $t = -1$이다.",
+    "(실제로 $t = 1$이면 $f_1 = f_2 = I$로 네 합성 모두 $f_1$, $t = -1$이면 $f_1 \\circ f_1 = f_2 \\circ f_2 = f_1$, $f_1 \\circ f_2 = f_2 \\circ f_1 = f_2$가 되어 모두 성립한다.) 따라서 가능한 $f_2(8) = 5t + 3$의 값은 $8$과 $-2$이다.",
+    "$\\therefore 8 \\times (-2) = -16$."
+  ],
+  "solvedAnswer": "$-16$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-03",
+  "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+  "unitEvidence": "<서술형 2> 두 일차함수 $f_1, f_2$에 대하여",
+  "rpmRecordId": "H1-RPM-102",
+  "rpmReason": "Q20(10): 합성함수 단원의 RPM H1-RPM-102 유형에 해당한다.",
+  "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+  "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+  "typeReason": "Q20(10): 합성함수 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(10): 합성함수 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "의 곱을 구하는 과정을 서술하시오. [10점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$f_1(3) = f_2(3) = 3$인 두",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q20(10): 발문과 해설의 풀이 과정을 점검하여 정답 $-16$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

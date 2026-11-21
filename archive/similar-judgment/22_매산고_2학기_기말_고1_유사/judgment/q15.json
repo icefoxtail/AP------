@@ -1,0 +1,61 @@
+{
+  "qid": 15,
+  "itemFingerprint": "95035c3ce1e27e71",
+  "solveSteps": [
+    "(1) $\\alpha$ (서로 다른 $4$가지 색만 사용): 사용할 $4$가지 색을 고르는 방법: ${}_6C_4 = 15$가지 고른 $4$색 중 중앙 $A$의 색 선택: $4$가지 바깥 고리 $B, C, D, E, F$에는 나머지 $3$색($1, 2, 3$이라 하자)을 모두 사용해 칠해야 한다(홀수 개 고리는 $2$색만으로 인접 다르게 칠할 수 없음). (5.0)",
+    "$B$는 $3$가지, $C$는 $B$와 다른 $2$가지.",
+    "$B, C$가 정해졌을 때:\n\n- $D = B$이면 $E$는 $B$와 다른 $2$가지, 그때 $F$는 $B$와 다른 $2$가지 $\\implies 2 \\times 2 = 4$가지  \n- $D$가 세 번째 색이면 $E = B$($1$가지, 이때 $F$는 $2$가지) 또는 $E = C$($1$가지, 이때 $F$는 $B, C$ 모두와 다른 $1$가지) $\\implies 2 + 1 = 3$가지 고리 전체는 $3 \\times 2 \\times (4 + 3) = 42$? 잠깐, $D$의 선택지마다 $C$는 이미 $2$가지에 곱해졌으므로 $B(3) \\times [C(2) \\times \\text{나머지}] = 3 \\times 2 \\times \\dots$가 아니라 $C$는 $2$가지씩 동등하므로 $3 \\times 2 \\times (4 + 3)$..",
+    "아! $B$가 $1$, $C$가 $2$일 때:  \n- $D = 1$: $E \\in {2, 3}$ ($2$가지) $\\implies E=2$면 $F \\in {3}$($1$가지), $E=3$이면 $F \\in {2}$($1$가지)! 즉 $E=2,3$ 둘 다 $B=1$과 다르므로 $F$는 각각 $1$가지가 아니라..",
+    "아! $E=2$이면 $F$는 $B(1)$과 $E(2)$ 모두와 달라야 하므로 $F=3$ ($1$가지)! $E=3$이면 $F$는 $B(1)$과 $E(3)$ 모두와 달라야 하므로 $F=2$ ($1$가지)!  \n- $D = 3$: $E = 1$이면 $F \\in {2, 3}$ ($2$가지), $E = 2$이면 $F = 3$ ($1$가지)!  \n- 합계: $(1 + 1) + (2 + 1) = 5$가지! 따라서 $B, C$ 선택 $3 \\times 2 = 6$을 곱하면 $6 \\times 5 = 30$가지이다.",
+    "$\\implies \\alpha = 15 \\times 4 \\times 30 = 1800$\n\n(2) $\\beta$ (서로 다른 $5$가지 색만 사용): 사용할 $5$가지 색을 고르는 방법: ${}_6C_5 = 6$가지 중앙 $A$의 색 선택: $5$가지 바깥 $5$개 영역에 나머지 $4$색을 모두 사용하려면 한 색만 $2$번, 나머지 $3$색은 $1$번씩 쓰인다.",
+    "- 두 번 쓸 색 선택: $4$가지  \n- 그 색이 놓일 서로 인접하지 않은 $2$영역 선택: ${}_5C_2 - 5 = 5$가지  \n- 남은 $3$영역에 나머지 $3$색 배열: $3! = 6$가지 $\\implies \\beta = 6 \\times 5 \\times (4 \\times 5 \\times 6) = 30 \\times 120 = 3600$\n\n$\\therefore \\alpha + \\beta = 1800 + 3600 = 5400$ (⑤)."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-07",
+  "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+  "unitEvidence": "오른쪽 그림과 같이 중앙 영역 $A$를 둘러싼 $5$개",
+  "rpmRecordId": "H1-RPM-125",
+  "rpmReason": "Q15(5.0): 조건이 있는 순열 단원의 RPM H1-RPM-125 유형에 해당한다.",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "Q15(5.0): 조건이 있는 순열 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(5.0): 조건이 있는 순열 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "역은 한 가지 색으로만 칠한다.) [5.0점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "(1) $\\alpha$ (서로 다른 $4$가지",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q15(5.0): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

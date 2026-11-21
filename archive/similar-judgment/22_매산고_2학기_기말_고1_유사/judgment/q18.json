@@ -1,0 +1,58 @@
+{
+  "qid": 18,
+  "itemFingerprint": "bddd3ec1d509050f",
+  "solveSteps": [
+    "$f(x) = \\dfrac{ax + b}{x + c} = a + \\dfrac{b - ac}{x + c}$ 정의역 $x > 0$에서 서로 다른 $x_1, x_2$에 대하여 $\\dfrac{1}{x_1 + c} \\ne \\dfrac{1}{x_2 + c}$이므로 $b - ac \\ne 0$이면 $f$는 일대일함수이고, $b = ac$이면 $f(x) = a$인 상수함수이므로 일대일함수가 아니다.",
+    "$6$ 이하의 자연수 $(a, b, c)$의 전체 순서쌍 개수는 $6^3 = 216$개이다.",
+    "이 중 $b = ac$ ($1 \\le b \\le 6$)를 만족하는 순서쌍의 개수는\n\n- $a = 1$: $c = 1, 2, 3, 4, 5, 6$ ($6$개)  \n- $a = 2$: $c = 1, 2, 3$ ($3$개)  \n- $a = 3$: $c = 1, 2$ ($2$개)  \n- $a = 4, 5, 6$: 각각 $c = 1$ ($3$개) 합계 $6 + 3 + 2 + 3 = 14$개이다.",
+    "$\\therefore 216 - 14 = 202$."
+  ],
+  "solvedAnswer": "$202$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-03",
+  "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+  "unitEvidence": "<단답형 3> $6$ 이하의 세 자연수 $a, b, c",
+  "rpmRecordId": "H1-RPM-100",
+  "rpmReason": "Q18(ax): 함수의 뜻과 대응 단원의 RPM H1-RPM-100 유형에 해당한다.",
+  "problemTypeKey": "PT_FUNCTION_COUNTING",
+  "templateKey": "TPL_MONOTONE_FUNCTION_COUNT",
+  "typeReason": "Q18(ax): 함수의 뜻과 대응 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(ax): 함수의 뜻과 대응 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "a, b, c)$의 개수를 구하시오. [6점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$f(x) = \\dfrac{ax + b}{x",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q18(ax): 발문과 해설의 풀이 과정을 점검하여 정답 $202$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
