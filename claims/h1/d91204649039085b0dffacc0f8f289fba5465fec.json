@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane40",
   "workerBranch": "work/solution-upgrade-lane-40-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2mid",
@@ -11,17 +11,28 @@
   "sourcePath": "archive/exams/original/high/h1/2mid/22_매산고_2학기_중간_고1_기출.js",
   "sourceBlobSha": "d91204649039085b0dffacc0f8f289fba5465fec",
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2022_maesan_2mid_DEEP_AUDIT.md",
-  "nextQid": 1,
+  "nextQid": null,
   "remainingWork": [
-    "q1~q20 원문·해설 심층 판독",
-    "UPGRADE 학생용 완성 해설·독립 검산"
+    "q3 protected choices duplicate requires separate source owner repair"
   ],
   "sourceQuestionCount": 20,
-  "readQuestionCount": 0,
+  "readQuestionCount": 20,
   "decisionCounts": {
-    "KEEP": 0,
-    "UPGRADE": 0,
-    "HOLD": 0,
-    "UNREAD": 20
-  }
+    "KEEP": 17,
+    "UPGRADE": 2,
+    "HOLD": 1,
+    "UNREAD": 0
+  },
+  "completedUpgradeQids": [
+    15,
+    20
+  ],
+  "holdQids": [
+    3
+  ],
+  "auditStatus": "EXAM_AUDIT_COMPLETE",
+  "draftStatus": "EXAM_DRAFT_COMPLETE",
+  "visualStatus": "VISUAL_HOLD",
+  "goldenNegativeStatus": "NOT_RUN",
+  "auditCommitSha": "becfa4217752e69e99b01d6ec6353d39dc5a1fc5"
 }
