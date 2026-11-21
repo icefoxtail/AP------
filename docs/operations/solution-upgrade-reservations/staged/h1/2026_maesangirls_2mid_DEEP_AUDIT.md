@@ -794,3 +794,10 @@ AB=\sqrt{(5-1)^2+(1-3)^2}
 - q20: 그림의 A,B,C,D,E 및 교점·외접원 삼각형 정의 확인
 - 해당 문항들은 원문 텍스트/solution을 읽었지만 이미지 미확인으로 HOLD; JS/SVG 직접 수정하지 않음
 - nextQid: q12 visual 확인 → q19 → q20, 그 후 완료 여부 재판정
+
+## 추가 확인: 원본 SVG 소스 접근 증거
+
+- q12 `archive/assets/images/26_매산여고_2학기_중간_고1_기출/q12-problem-v2.svg`, blob `a71813348c039518d39f4000a64fa446a2f923a2`, title `원과 접은 호, 접는 선분 AB`, 720×600. XML 원문 접근 성공, 실제 픽셀 렌더·원본 스캔 비교 NOT_RUN → VISUAL_HOLD 유지.
+- q19 `archive/assets/images/26_매산여고_2학기_중간_고1_기출/q19-problem-v2.svg`, blob `6bf224c304ec119d82331332643f7ed4e5fd1670`, title `제2사분면에서 만나는 두 직선과 축의 교점`, 512×384. XML 접근 성공, 픽셀/원본 대조 NOT_RUN → VISUAL_HOLD.
+- q20 `archive/assets/images/26_매산여고_2학기_중간_고1_기출/q20-quality-v4.svg`, blob `a8ecb8ebd37e86ff24c02b44478eadee03216a89`, title `이등변삼각형과 두 직선의 교점`, 512×384. XML 접근 성공, 픽셀/원본 대조 NOT_RUN → VISUAL_HOLD.
+- 본문 23문항은 모두 판독 및 분류됐고 q8 개선 해설은 완성됨. `EXAM_AUDIT_COMPLETE` (HOLD 3개 공개), `EXAM_DRAFT_COMPLETE` (UPGRADE 1개 작성). **최종 시각 PASS 아님.**
