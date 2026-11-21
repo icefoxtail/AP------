@@ -1,6 +1,6 @@
 # 2025 금당고 고1 1학기 중간 — 전 문항 심층 감사
 
-원본 `archive/exams/original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js`; SHA `044ce80f90f756b1036a64c0192cb8784a537af6`; standardCourse=수학(상) (구 교육과정 표기). 22문항 원문/보기/정답/풀이 확인. KEEP 17 / HOLD 5(q15,q16,q19,q20,q22) / UPGRADE 0 / UNREAD 0. 시각·Golden·Negative·렌더 NOT_RUN. EXAM_AUDIT_COMPLETE=true, EXAM_DRAFT_COMPLETE=true(UPGRADE 0), 출고 PASS 아님.
+원본 `archive/exams/original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js`; SHA `044ce80f90f756b1036a64c0192cb8784a537af6`; standardCourse=수학(상) (구 교육과정 표기). 22문항 원문/보기/정답/풀이 확인. KEEP 18 / HOLD 4(q15,q16,q19,q20,q22) / UPGRADE 0 / UNREAD 0. 시각·Golden·Negative·렌더 NOT_RUN. EXAM_AUDIT_COMPLETE=true, EXAM_DRAFT_COMPLETE=true(UPGRADE 0), 출고 PASS 아님.
 
 ## q1 — KEEP
 
@@ -458,7 +458,7 @@ $-2a^2x^2 + 2b^2 = ax^2 + b$
 
 **독립 검산·판정 근거:** f(0) 조건은 2f(0)²=f(0), f(0)=0 또는 1/2. ㄱ~ㄷ 전칭/존재 의미와 다항식 차수 제약 재검증 필요. 정답/조건/원본 시각 자료에 미해결 검증 항목이 있어 HOLD.
 
-## q16 — HOLD
+## q16 — KEEP
 
 **문제 원문:** $x$에 대한 이차방정식 $x^2-3ax+a+1=0$의 두 근 $\alpha, \beta$가 다음 조건을 만족시킬 때, $a+b+c$의 값은? [4.3점]<br><br>(가) $\alpha^2 \beta + \alpha \beta^2 = 36, \alpha \beta > 0$<br>(나) 두 수 $a-1, a+1$을 근으로 하고, 이차항의 계수가 1인 이차방정식은 $x^2+bx+c=0$이다.
 
@@ -492,7 +492,7 @@ $a+b+c = 3 + (-6) + 8 = 5$
 따라서 $a+b+c$의 값은 5이다.
 ∴ 정답은 ②
 
-**독립 검산·판정 근거:** 조건 α²β+αβ²=αβ(α+β)=(a+1)(3a) 등으로 a=3, 이후 새 이차식 b=−6,c=8, 합5; 조건 원문 독립 확인 필요. 정답/조건/원본 시각 자료에 미해결 검증 항목이 있어 HOLD.
+**재검증 및 판정:** 독립 검산: α+β=3a, αβ=a+1. α²β+αβ²=αβ(α+β)=3a(a+1)=36 ⇒ (a+4)(a−3)=0. αβ>0 ⇒ a+1>0이므로 a=3. 새로운 두 근은 2,4이므로 x²−6x+8=0, b=−6,c=8, a+b+c=5(②). 원문 모든 조건 및 원본 해설과 일치하여 KEEP.
 
 ## q17 — KEEP
 
