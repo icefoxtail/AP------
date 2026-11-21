@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-f8355b5fcb78-500ffc10",
+  "examUid": "21_이수중_2학기_기말_중2_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/2final/21_이수중_2학기_기말_중2_기출.js",
+  "expectedSourceBlobSha1": "1bec0b755fa92b301a1e5fdac4d37149af13f563",
+  "expectedQuestionCount": 26,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f8355b5fcb78-500ffc10.type-ledger.json",
+        "sha256": "b51d026237880d8e65bcc7b6b6ed30a9d75a60a48dd78019d97f360be1d4fa09"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_48c43d572f6b0160fd08158633c30cbc8dc01978cfa00dc1cb9faa5996256a9f",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH"
+      },
+      "rationale": "높이4와 빗변5로 밑변차3을 구해 윗변2에 더한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "00e905c6b58d5b70a5d3a5c553b8e3334a1f66aa59fb5f9cefe5513c9fa80b1d",
+        "contentFingerprint": "7d6c31e786c3d192beb0861b230094ae04bf2893fa65d24c3b9397c65705deb2"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f8355b5fcb78-500ffc10.type-ledger.json",
+          "sha256": "b51d026237880d8e65bcc7b6b6ed30a9d75a60a48dd78019d97f360be1d4fa09"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c271a3ea2227bb532af4c36e7187c6617d6a5f8e4fdf403b1fd7b30c17ada9ec",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_CONVERSE"
+      },
+      "rationale": "가장 긴 변제곱과 나머지 제곱합이 일치하는3·4·5만 선택한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "0e145defd3bbc4199afc802bf733d46f47b777ab3dd6590ceacff5a68da08267",
+        "contentFingerprint": "783421f5270725760061ae2fc73aa13206186541e0261264eca052b846448d55"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f8355b5fcb78-500ffc10.type-ledger.json",
+          "sha256": "b51d026237880d8e65bcc7b6b6ed30a9d75a60a48dd78019d97f360be1d4fa09"
+        }
+      ]
+    }
+  ]
+}

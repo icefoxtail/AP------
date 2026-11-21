@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-2ebe42a315ac-5c48bfbc",
+  "sourceArchiveFile": "original/middle/m3/2final/21_왕운중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_76e1d921b42d1fc297d5f1840a198e71bb52956fe22491d5750602e4792c1a65",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": null,
+      "step": "(79+여섯째)/2=83에서87, 추가91은 뒤에 놓여11개의 여섯째87 유지.",
+      "note": "필요 TPL: 자료 추가 전후의 중앙값 변화: 기존 짝수 자료의 두 중앙값과 추가 자료의 위치를 이용하여 홀수 개가 된 자료의 중앙값을 구한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9ee50440f9c73cf511c973ff24ac9727785a5ddb77a123f950b323a499945be1",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": null,
+      "step": "평균8에서 편차-5,-1,-1,0,1,2,4를 계산하여 최대4, 제곱평균48/7과 대푯값 검토.",
+      "note": "필요 TPL: 원자료의 대푯값과 편차·분산 종합 검토: 평균과 정렬한 자료에서 중앙값·최빈값을 구하고 각 편차 및 제곱평균으로 관련 진술을 확인한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fa140229d3c7d7812c2297217a3ae1ce42229071d112741dd9a9633676e4de66",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": null,
+      "step": "x의 정렬 위치에 따라 중앙값12,x,15를 나누고 평균(56+x)/5와 같게 하여4,14,19 합37.",
+      "note": "필요 TPL: 평균과 중앙값 일치 조건의 경우 분류: 미지 변량의 정렬 위치에 따른 중앙값 구간별 식을 평균과 연립하고 범위에 맞는 해만 선택한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_81fc01a464eb66464e0c139d0e87f1849740ab2e42469f26969827f3d58d2d2a",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "step": "편차합0으로 x²1, 음수조건 x-1, C=7+4=11, 제곱편차 평균10의 제곱근√10.",
+      "note": "도구: CUE_LENGTH_4_TO_60_REQUIRED",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

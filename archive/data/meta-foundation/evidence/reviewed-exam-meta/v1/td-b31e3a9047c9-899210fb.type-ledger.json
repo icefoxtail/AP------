@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-b31e3a9047c9-899210fb",
+  "sourceArchiveFile": "original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_e04def690e30bb1446fab43b8d865b54ef643b40aee08364e876417e33e93c51",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": null,
+      "step": "편차평균0와대푯값정의를대조하고평균에모일수록산포도가작다는성질에반하는다섯째선택.",
+      "note": "필요 TPL: 산포도의 크기와 집중도 판정: 평균 주위에 자료가 집중될수록 산포도가 작고 멀리 퍼질수록 커짐을 진술에 적용한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b61a6612903afb95ccbbeb73f0f238c22c77c5a8c796461fbd30789cb90097c1",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
+      "step": "각값도수를세어5가5회로가장많아최빈값5.",
+      "note": "도구: CUE_LENGTH_4_TO_60_REQUIRED",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_28d6f79d7bd4ceb8c89afb550413959d8f0aff6618ea0be553cc90ec157f9717",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": null,
+      "step": "홀수자료중앙값10에서a≥10,짝수자료중앙두값평균16에서a≤15,공통범위밖16선택.",
+      "note": "필요 TPL: 중앙값 조건에 따른 미지 변량 범위: 미지수의 삽입 순서를 나누어 홀수·짝수 자료의 중앙값 조건을 만족하는 범위를 정한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0a444aeaecab857af3a841dd4d47fa7fb6338beb9cb02e911c59726ec934cb13",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": null,
+      "step": "편차합0에서c=-2,평균12를더해자료값10.",
+      "note": "필요 TPL: 미지 편차와 원래 변량 복원: 편차 합이 0임을 이용해 빠진 편차를 구하고 평균을 더하여 원래 자료값을 복원한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4f334ad53d776db21095dfeda46001e3a34f2bdbb3165a18b394026c2ef30d9b",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": null,
+      "step": "두자료평균5와편차제곱합10,50을구해표준편차√2,√10,더작은연이를선택.",
+      "note": "필요 TPL: 자료별 표준편차 계산과 균일성 비교: 각 자료의 평균과 편차 제곱의 평균을 구해 표준편차로 바꾸고 더 작은 집단을 고르게 분포한 집단으로 판단한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-daab52914507-23fcf870",
+  "sourceArchiveFile": "original/middle/m3/2final/21_동산중_2학기_기말_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_247f16215f9798c0da10d00d7a98c329d91f0d24268650ab1566b40f1fe9255a",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": null,
+      "step": "원주각은 호의 길이에는 비례하나 현의 길이에 정비례하지 않음을 구별.",
+      "note": "필요 TPL: 원의 각과 호·현 관계 진술 검토: 원주각과 호의 비례 관계 및 현의 성질을 구분하여 비례 대상을 잘못 바꾼 주장을 판정한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5d60721ab14a3bd551112f30c79dc852f57a1efd21729cde1afaf916701f8c1c",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "step": "지름의 반원180과 작은호50 차의 절반65.",
+      "note": "도구: CUE_LENGTH_4_TO_60_REQUIRED",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_195e1ea3b2f697df53d577a8a8228b73dce5d4ccc8d3b20a59f1b7132059ee9e",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": null,
+      "step": "같은 현을 보는 각43과40으로 공원점·원 안팎을 비교하며 비공선 세 점의 원은 유일함을 판정.",
+      "note": "필요 TPL: 원주각과 공원점·점의 위치 판정: 같은 현을 보는 각의 일치와 크기 비교로 한 원 위 또는 원 안팎을 판정하고 세 점의 원의 유일성을 적용한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e2a62b742929345a1881bee0e676b781af13eb85541b990c76abd834c81f0ffc",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": null,
+      "step": "여덟 값 정렬 후 가운데3과6의 평균4.5, 최빈6과 곱27.",
+      "note": "필요 TPL: 짝수 개 자료의 중앙값·최빈값 계산: 정렬한 두 중앙 변량의 평균과 최대 도수 변량을 각각 중앙값·최빈값으로 정한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ad6b5bb0077aae978111e010e8e5ff45a1371c73d80193ede38ab18d7ebafbcd",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": null,
+      "step": "평균10에서 미지수 합24, 유일 최빈9를 만족하도록 하나를9로 정해 다른 값15.",
+      "note": "필요 TPL: 평균과 유일 최빈값으로 미지 자료 복원: 총합 조건과 최대 빈도가 유일해야 하는 조건을 함께 적용하여 빠진 변량을 결정한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b214c1abd6a39eb8045e05c0ae07bf484616adc9bb58c672d07485449f9b29a0",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": null,
+      "step": "편차합0에서 x2, 평균85를 더하여87.",
+      "note": "필요 TPL: 편차 합으로 누락 변량 복원: 주어진 편차의 합에서 빠진 편차를 구한 뒤 평균을 더해 원래 변량을 복원한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c50b74dcacfc4c34de39790a85608615230f8bdba6c0d52efa83d4e2d793d643",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": null,
+      "step": "대푯값 셋과 흩어짐을 수치화하는 분산·표준편차를 구별한다.",
+      "note": "필요 TPL: 대푯값과 산포도의 개념 구별: 통계량의 정의를 대조하여 자료의 중심을 나타내는 값과 흩어짐을 나타내는 값을 구별한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_400038c6cfbf062d6ceced3a6b66abf3d047b8817e00b37f275a90bd4521f901",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": null,
+      "step": "표준편차가 작을수록 평균 주위 집중, 가장 작은 √2의4반.",
+      "note": "필요 TPL: 표준편차로 자료의 고른 정도 비교: 각 집단의 표준편차를 비교하여 평균 주변에 가장 덜 흩어진 집단을 선택한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_545ae807ba663719cc9a31c15e7d1f7f37e84de66283542c3ec32bf76597cedf",
+      "sourceOrdinal": 25,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": null,
+      "step": "평균10, 편차2,-7,-6,5,6,0의 제곱합150, 분산25의 제곱근5.",
+      "note": "필요 TPL: 주어진 자료의 분산과 표준편차: 자료의 평균을 구하고 각 편차의 제곱을 평균하여 분산을 계산한 뒤 제곱근을 취한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

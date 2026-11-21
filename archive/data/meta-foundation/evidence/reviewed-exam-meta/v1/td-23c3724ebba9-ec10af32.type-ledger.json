@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-23c3724ebba9-ec10af32",
+  "sourceArchiveFile": "original/middle/m2/1final/21_왕운중_1학기_기말_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_6efa7aafe5799dc46f1c499b925e9d1428c25c81bc550c8ab144b3e4c3086235",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "각 생활 관계를 식으로 옮겨 거스름돈 y=5000-300x만 일차함수임을 확인한다.",
+      "note": "새 TPL 제안: 생활 관계의 일차함수 여부 판별. 정의: 각 생활 관계를 식으로 옮겨 거스름돈 y=5000-300x만 일차함수임을 확인한다. 원문 정답·해설 공란; 발문·보기 직접 풀이. 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"},{\"code\":\"CANONICAL_SCOPE_INCOMPLETE\"},{\"code\":\"CUE_NOT_IN_SOURCE\"},{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_df08d0d9d9b122cf251db0eee03f53bc601df5722810350e844f4bacf3e2cd9d",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+      "step": "점 대입·기울기 부호와 절댓값·절편·사분면을 점검하여 일반식의 절편 -b/a,b에 관한 진술을 고른다.",
+      "note": " 원문 정답·해설 공란; 발문·보기 직접 풀이. 도구 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}] 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"},{\"code\":\"CANONICAL_SCOPE_INCOMPLETE\"},{\"code\":\"CUE_NOT_IN_SOURCE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_908126eb130e2a040804221ce524462f07509a7c8cace090a5adbef376e70622",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": null,
+      "step": "이동식 y=2x+b에 (2,3)을 넣어 b=-1을 구하고 (a,-3)으로 a=-1을 결정한다.",
+      "note": "새 TPL 제안: 수직 이동 후 두 점으로 이동량과 미지 좌표 결정. 정의: 이동식 y=2x+b에 (2,3)을 넣어 b=-1을 구하고 (a,-3)으로 a=-1을 결정한다. 원문 정답·해설 공란; 발문·보기 직접 풀이. 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"},{\"code\":\"CANONICAL_SCOPE_INCOMPLETE\"},{\"code\":\"CUE_NOT_IN_SOURCE\"},{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b04b6784173b891c308035f2fe34597af874f9e27a86d525db3153ad03986abc",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+      "templateKey": "TPL_M2_FIND_INTERSECTION_COORDINATE_SUM_FROM_SYSTEM",
+      "step": "그림의 절편으로 y=2x-4,y=-x/3+3을 세워 교점 (3,2)을 구하고 좌표 합 5를 계산한다.",
+      "note": " 원문 정답·해설 공란; 발문·보기 직접 풀이. 도구 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}] 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"},{\"code\":\"CANONICAL_SCOPE_INCOMPLETE\"},{\"code\":\"CUE_NOT_IN_SOURCE\"}]",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

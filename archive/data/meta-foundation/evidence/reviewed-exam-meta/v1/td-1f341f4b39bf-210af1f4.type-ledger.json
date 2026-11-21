@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-1f341f4b39bf-210af1f4",
+  "sourceArchiveFile": "original/middle/m2/1final/21_매산중_1학기_기말_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_585be3259c062b960275f3f8f6ed5d1c2cbef633d5142bbff0f9421d66648e8c",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
+      "templateKey": null,
+      "step": "서로 이긴 횟수를 x,y로 두어 5x-3y=0,5y-3x=16을 세우고 y=5를 구한다.",
+      "note": "새 TPL 제안: 가위바위보 계단 이동의 특정 승리 횟수. 정의: 서로 이긴 횟수를 x,y로 두어 5x-3y=0,5y-3x=16을 세우고 y=5를 구한다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2eead93ad98ce576d7cb26a231a2b3a3b1cbb2632d09b9c721b97ec053f50261",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+      "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+      "step": "미정계수가 없는 두 식으로 공통해 (3,1)을 찾고 남은 식에 대입하여 a=2,b=-2를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b857d65c6e70fa83e7ae26f69ee4012a3eb51be3f1a6fcc238248751ff7cae1e",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "각 생활 관계를 y의 식으로 나타내 원 넓이 πx²만 일차함수가 아님을 가린다.",
+      "note": "새 TPL 제안: 생활 관계의 일차함수 여부 판별. 정의: 각 생활 관계를 y의 식으로 나타내 원 넓이 πx²만 일차함수가 아님을 가린다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d2cb7137d486830f6c152279de18ebe6fd6ed2f4aebec8fb9aea2e3b1ed01786",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": null,
+      "step": "위로 5 이동한 식 y=ax+3에 점 (2,7)을 대입하여 기울기 a=2를 구한다.",
+      "note": "새 TPL 제안: 수직 이동 후 지나는 점으로 기울기 결정. 정의: 위로 5 이동한 식 y=ax+3에 점 (2,7)을 대입하여 기울기 a=2를 구한다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b4d3d0324ba317a99063191bed21f3bed85624ccad404b65eed8880aa8677e56",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+      "step": "기울기 -2/3과 절편 3,2 및 이동 관계를 확인하고 같은 기울기의 직선은 평행이지 수직이 아님을 가린다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_670d367bd0fda423aa0897817e80a681a2c27d6bdbf29e462ad0ab82da5e44be",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_GRAPH_INTERSECTION_APPLICATION",
+      "templateKey": "TPL_M2_SOLVE_MOTION_GRAPH_INTERSECTION_WORD_PROBLEM_DESCRIPTIVE",
+      "step": "그림의 두 점에서 속력 5,3m/s를 구해 5x=200+3x의 교점 시각 100초를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5ab21156e6dbc2a03265131a47dd14bfaded86a2d24537ff8bc3c031e8cb352b",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+      "templateKey": null,
+      "step": "해당하는 두 직선의 교점 (2,-1)을 읽고 두 방정식에 대입해 공통해임을 확인한다.",
+      "note": "새 TPL 제안: 연립방정식 그래프의 교점 좌표 판독. 정의: 해당하는 두 직선의 교점 (2,-1)을 읽고 두 방정식에 대입해 공통해임을 확인한다. 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b33a5e6831583bc0f52b6011c39172eea78f6829d9248b5fc3c5e5b22af0ae11",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
+      "templateKey": "TPL_M2_CALCULATE_AREA_BOUNDED_BY_TWO_LINES_AND_AXES",
+      "step": "기본의 축평행 사각형은 2×3, 심화의 이동된 두 평행선 영역은 절편으로 구한 큰 삼각형 16에서 작은 삼각형 1을 뺀다.",
+      "note": " 원문 한 UID에 수준별 두 문제가 합쳐짐; 양쪽을 읽고 심화 결정 단계를 기준으로 판정.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d8fdbc567096c1e56a463bba2aa8a5227e5cd198c0a0670615a59bf69678a467",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+      "templateKey": null,
+      "step": "기본의 기울기·절편을 읽고 심화에서 평행 조건 -a=3/2와 제2사분면 회피 조건 a-b≤0을 결합하되 일치하는 b=1/2는 제외한다.",
+      "note": "새 TPL 제안: 평행 조건과 제2사분면 회피 조건의 계수 범위. 정의: 기본의 기울기·절편을 읽고 심화에서 평행 조건 -a=3/2와 제2사분면 회피 조건 a-b≤0을 결합하되 일치하는 b=1/2는 제외한다. 원문 한 UID에 수준별 두 문제가 합쳐짐; 양쪽을 읽고 심화 결정 단계를 기준으로 판정. 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

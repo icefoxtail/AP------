@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-ffbb1649b221-4b2f4fe8",
+  "sourceArchiveFile": "original/middle/m2/1final/21_연향중_1학기_기말_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_f9eb8f2de048648a98293c91eeb7ab44e7717b40a97522df947fac3bfbadaa2b",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "하나의 x에 y가 하나로 정해지는지 따져 x보다 큰 짝수는 여러 개이므로 함수가 아님을 가린다.",
+      "note": "새 TPL 제안: 대응 관계의 함수 여부 판별. 정의: 하나의 x에 y가 하나로 정해지는지 따져 x보다 큰 짝수는 여러 개이므로 함수가 아님을 가린다. 원문 정답·해설 공란; 발문·보기 직접 풀이. 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"},{\"code\":\"CANONICAL_SCOPE_INCOMPLETE\"},{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4dd3e3d194e71a6ee74399a8c5b3b57d478a7a2ece03f332d4606902c34051b7",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
+      "templateKey": "TPL_M2_SOLVE_ROCK_PAPER_SCISSORS_STAIR_PROBLEM",
+      "step": "승리 횟수 x,y로 3x-2y=2,3y-2x=7을 세우고 더해 전체 횟수 x+y=9를 구한다.",
+      "note": " 원문 정답·해설 공란; 발문·보기 직접 풀이. 도구 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}] 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"},{\"code\":\"CANONICAL_SCOPE_INCOMPLETE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1a69245086de5741a5f577ef47f09b2ebde70d9f3fca514dbdd0c71832c10db4",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
+      "templateKey": "TPL_M2_FIND_VERTICAL_LINE_EQUATION_FROM_POINT",
+      "step": "두 식을 더하여 교점의 x좌표 -2를 구하고 y축 평행선은 x=-2임을 적용한다.",
+      "note": " 원문 정답·해설 공란; 발문·보기 직접 풀이. 도구 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}] 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"},{\"code\":\"CANONICAL_SCOPE_INCOMPLETE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dc7e45e12f26e35118f31ec90c0f9793134f2f9d1b7ea18c0a2452fa93ce2fa8",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": null,
+      "step": "그림의 절편으로 기울기 3/4와 세로절편 3을 구한 뒤 -a=3/4,3+k=7로 a+k=13/4를 얻는다.",
+      "note": "새 TPL 제안: 수직 이동의 기울기 불변과 절편 차. 정의: 그림의 절편으로 기울기 3/4와 세로절편 3을 구한 뒤 -a=3/4,3+k=7로 a+k=13/4를 얻는다. 원문 정답·해설 공란; 발문·보기 직접 풀이. 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"},{\"code\":\"CANONICAL_SCOPE_INCOMPLETE\"},{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2f76b4be930d329ee02c67ca216805e6d96c2acf5b24b4b9a0be7de19d2cc2f4",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+      "templateKey": "TPL_M2_FIND_PARAMETER_FOR_NO_SOLUTION_SYSTEM",
+      "step": "두 직선이 평행하고 일치하지 않도록 a/5=2/(-4)와 상수항 비 불일치를 확인하여 a=-5/2를 구한다.",
+      "note": " 원문 정답·해설 공란; 발문·보기 직접 풀이. 도구 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}] 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"},{\"code\":\"CANONICAL_SCOPE_INCOMPLETE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

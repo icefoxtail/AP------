@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-257f7fc13feb-f0909bf5",
+  "sourceArchiveFile": "original/middle/m3/2mid/22_동산중_2학기_중간_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_c604b314ad2b0e00680fe353ef077b6d95c61119bfe5a95adcd2026edee0c70f",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+      "templateKey": "TPL_M3_FIND_VERTICAL_DISTANCE_BETWEEN_PARALLEL_PARABOLAS",
+      "step": "동일x의두함숫값차에서제곱항이소거되어길이4이다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_686e19ad41d6881ea48d47d0d06a98e550b1d62582c5f64c31462fb7fa7f734f",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": null,
+      "step": "꼭짓점(4,0)과계수2/3로축·대칭·폭을검토하면실제오른쪽4이동을왼쪽4라한④가거짓이다.",
+      "note": "필요 TPL: 표준형 포물선 성질 검토. 정의: 꼭짓점·축·대칭·폭·평행이동 진술을 비교한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_93e84daeb76d3612b6b4772d67c1ff75a935ae70a8a757b63ac5ed617d0c489a",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": null,
+      "step": "꼭짓점(-4,-5)의축은x=-4이므로x=4라한④가거짓이다.",
+      "note": "필요 TPL: 표준형 포물선 성질 검토. 정의: 꼭짓점·축·증감·평행이동 진술을 비교한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5070aa2bc774cc66c70857a01352577df68cf0e35fafd678f258d1632f11c79d",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+      "templateKey": null,
+      "step": "꼭짓점좌표-b/(2a),-b²/(4a)가모두양수이므로제1사분면이다.",
+      "note": "필요 TPL: 일반형 계수부호로 꼭짓점 사분면. 정의: 꼭짓점 두좌표의 부호를 각각 판정한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7c4470d8987c610fe15bae6a740e4ea2ceb09c1ca8d5b29a8b9d8e2e3c5c0946",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+      "templateKey": null,
+      "step": "이동식-3(x+2)²-5를전개하여a=-12,b=-17의차5이다.",
+      "note": "필요 TPL: 평행이동 후 일반형계수 복원. 정의: 수평수직 이동 표준형을 전개해 계수결합을 계산한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_606971aca98c4db7fd54b70f7b597e0e510e94eee82c01dfae40aa9dd1e80e0e",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+      "templateKey": "TPL_M3_EVALUATE_EXPRESSIONS_FROM_PARABOLA_GRAPH_AND_INTERCEPTS",
+      "step": "축-1과근1로다른근-3을복원하고a<0에서f(-2)=-3a>0이므로③이거짓이다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6f61057113447cb7f89ae8ecc3403037cef8be751bcc1f7282bd7b89e297c663",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_AXIS_AND_MONOTONICITY",
+      "templateKey": null,
+      "step": "증가에서감소로바뀌는축-3과꼭짓점공식-3a/2를같게놓아a=2이다.",
+      "note": "필요 TPL: 증감경계로 매개변수 결정. 정의: 증감구간 경계를 대칭축으로 읽고 계수식을 역산한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_08d5b468c240179d2ddd9f441886fdea73a07cec4bc4a510a0b1b13f1314060b",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": null,
+      "step": "완전제곱꼴로꼭짓점높이18,두근-2,4의거리6을구해삼각형넓이54이다.",
+      "note": "필요 TPL: 꼭짓점과 두 x절편 삼각형 넓이. 정의: 근간거리와 꼭짓점높이의 곱의 절반을 구한다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    }
+  ]
+}

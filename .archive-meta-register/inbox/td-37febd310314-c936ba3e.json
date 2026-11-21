@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-37febd310314-c936ba3e",
+  "examUid": "20_금당중_2학기_기말_중2_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+  "expectedSourceBlobSha1": "2dab2f8d025083e303faf177bb2d4098f4b7ad1a",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-37febd310314-c936ba3e.type-ledger.json",
+        "sha256": "881fa913f9e46a1087a872d25b5a7ef9edadf2db1a1e84c0346d7d8d751d7f23"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_d5a7d623d9a356650d37df03955161e82aea38b1ad8303c41e6c4c0921c93d3b",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH"
+      },
+      "rationale": "해설의 직각변5와 빗변13으로 x=12를 구하고 다음 빗변15의 직각삼각형에서 y=9를 얻어 합21을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "6a884404412c24a031715d335383606662a7f55c9a6df158487ee5b73453cce6",
+        "contentFingerprint": "118314d815778ae1e61234fcce2a7bc4489706ff269ffe95ec0232075a41cf5c"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-37febd310314-c936ba3e.type-ledger.json",
+          "sha256": "881fa913f9e46a1087a872d25b5a7ef9edadf2db1a1e84c0346d7d8d751d7f23"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-5f4d0ac4c5fd-9d460a10",
+  "sourceArchiveFile": "original/middle/m3/2final/21_매산중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_672549a8d923b045756c1d3b74c9b610e6dcc317bbe8ec47206334d0c344be57",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": null,
+      "step": "범주별 빈도5,9,8,4,2 중 최대9의 햄버거가 최빈값.",
+      "note": "필요 TPL: 범주형 자료의 최빈값: 수치로 정렬할 수 없는 범주별 도수를 비교해 가장 자주 관측된 범주를 선택한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d89cdfee8268de70dcd9bc6a547b22eceeb55570ab42594539c11c305bf77cba",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": null,
+      "step": "전체도수에서 x+y5, 평균으로6x+10y42를 연립해 y3,x2, 최빈10.",
+      "note": "필요 TPL: 평균으로 미지 도수와 최빈값 결정: 도수 총합과 가중 합을 연립하여 누락 도수를 구하고 최대 도수의 변량을 선택한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_abf58c1bef1d19fdabd28ff13a78c89e64472a877320bd90f7ae8c6a88296405",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_LINE_GRAPH_ANALYSIS",
+      "templateKey": "TPL_M3_EVALUATE_CENTRAL_TENDENCY_FROM_LINE_GRAPHS",
+      "step": "11회 누적 여섯째 값과 정점을 읽어 B중앙7·최빈8 불일치를 선택.",
+      "note": "도구: CUE_LENGTH_4_TO_60_REQUIRED",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bbb980e6508ec486220195533bd08d25845a90b29e1d5c0d9a95130e6c4e1c23",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": null,
+      "step": "나머지 편차-4,6,2,3의 합7이므로 빠진 편차-7.",
+      "note": "필요 TPL: 편차 합으로 누락 편차 결정: 평균과 주어진 변량에서 편차를 구하여 전체 편차 합0으로 빠진 편차를 복원한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f30e9a737dd7725c0d7b35769095a1f7ddfd6b3d3432ba5a69ac1eadcfc13d8b",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": null,
+      "step": "편차 제곱합10을 개수5로 나누어 분산2.",
+      "note": "필요 TPL: 주어진 편차의 분산 계산: 편차들을 제곱하여 더한 값을 자료의 개수로 나누어 분산을 구한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_05b4e5a923ef61d4bd788b9ae88e27ce6e68d4b6382fcd9284d3a197f98c1c17",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+      "templateKey": null,
+      "step": "모든 값에3을 더하면 평균9, 편차는 불변이므로 표준편차2, 합11.",
+      "note": "필요 TPL: 평행이동한 자료의 평균과 표준편차: 모든 변량에 같은 상수를 더할 때 평균만 그만큼 변하고 분산·표준편차는 유지됨을 적용한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a08a32d20af41824017d701741be760905482f9dc1c91df95f421267d74afd47",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": null,
+      "step": "10개 정렬 후 다섯째·여섯째 모두3, 최빈3의 합6.",
+      "note": "필요 TPL: 짝수 개 자료의 중앙값·최빈값 계산: 정렬한 두 중앙 변량의 평균과 최대 도수 변량을 각각 중앙값·최빈값으로 정한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d16f70989465a56106904f408c9d2c574bc70b97826419bc38c1e81b71323c14",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_FREQUENCY_TABLE",
+      "templateKey": null,
+      "step": "직접 자료의 평균5·분산6, 평점도수의 평균3과 가중 제곱편차합12를10으로 나누어1.2.",
+      "note": "필요 TPL: 원자료와 이산 도수그래프의 분산 계산: 평균을 구하고 변량별 제곱편차에 도수를 곱하여 합한 뒤 전체 개수로 나누어 분산을 구한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

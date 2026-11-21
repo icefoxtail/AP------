@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-23ace8d6b26f-de8cd86f",
+  "sourceArchiveFile": "original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_113084bf2b39019a620eba2125d5183b5f4f2f1b3348f22c44611f5aead38e1b",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": null,
+      "step": "접선과반지름의직교및접선등장으로OP=√(8²+15²)=17,두삼각형합동을확인한다.",
+      "note": "필요 TPL: 동일외부점 접선 직각삼각형의 합동과 거리. 정의: 접선과반지름의직교및접선등장으로OP=√(8²+15²)=17,두삼각형합동을확인한다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7e4aa07247570caab785677161982d36ebdf98ba8c7963a1cb05c1f3ce67b4dd",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": null,
+      "step": "접선길이보존으로DC=6+3=9,높이차3이므로지름AB=√(81-9)=6√2이다.",
+      "note": "필요 TPL: 반원의 세접선과 피타고라스. 정의: 접선길이보존으로DC=6+3=9,높이차3이므로지름AB=√(81-9)=6√2이다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_09408a4741c7f5b97f42d0b52a8f9c8e57a26893183ae05801b6e21990ac503c",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": null,
+      "step": "두접선과반지름의직교로중심각100도를구하고이등변삼각형밑각40도를구한다.",
+      "note": "필요 TPL: 두접선각과 접점삼각형의 밑각. 정의: 두접선과반지름의직교로중심각100도를구하고이등변삼각형밑각40도를구한다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2ce2c3ae134e7a18f7f3a7bd4a2e542df808e1262ecac8bd89e8ee6d82691dc1",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": null,
+      "step": "같은원에서의현·중심거리정리는반지름이다른두원으로확장할수없으므로④가거짓이다.",
+      "note": "필요 TPL: 원과 현의 거리 성질 적용범위. 정의: 같은원에서의현·중심거리정리는반지름이다른두원으로확장할수없으므로④가거짓이다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    }
+  ]
+}

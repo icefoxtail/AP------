@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-4f74d5394c49-23b74c14",
+  "examUid": "21_금당중_1학기_중간_중2_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+  "expectedSourceBlobSha1": "4a20adbce9e5a7f07744143cef611d453e454250",
+  "expectedQuestionCount": 26,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4f74d5394c49-23b74c14.type-ledger.json",
+        "sha256": "e9ac48a71087607c6984d98db3abeed96e6197babb706887254b7c80accbd35c"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+        "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES"
+      },
+      "rationale": "그림에서 a<b<0<d<c를 읽고 양수 d제곱과 음수 ad를 비교해 ⑤가 거짓임을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2-1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "a82c3e94931a8970fb3a07507a71cb5e3dffd56126ac49b3ad1699caf23dfcfc",
+        "contentFingerprint": "06b435ee6f9802d2f95833fe5a685317095f6eda42f61ab85800fcfccc4972cc"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4f74d5394c49-23b74c14.type-ledger.json",
+          "sha256": "e9ac48a71087607c6984d98db3abeed96e6197babb706887254b7c80accbd35c"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3c3e2316fff2aec4e2083a286a06f5da3ba98cdde7c6bfceef7be875ea2eb965",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+        "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES"
+      },
+      "rationale": "각 식을 정리했을 때 ④만 10x<2로 일차 미지수항이 남는 부등식임을 확인한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2-1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "c9e439ca5bfdef0a734a6bd3e08123d99f342e1796abb407fbb4e1cff7063c4a",
+        "contentFingerprint": "ebef19270c890272b9dd06965c73da69ebd611842aab919ee037c779b336506b"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4f74d5394c49-23b74c14.type-ledger.json",
+          "sha256": "e9ac48a71087607c6984d98db3abeed96e6197babb706887254b7c80accbd35c"
+        }
+      ]
+    }
+  ]
+}

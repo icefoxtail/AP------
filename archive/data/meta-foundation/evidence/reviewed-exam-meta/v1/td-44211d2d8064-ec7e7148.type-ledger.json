@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-44211d2d8064-ec7e7148",
+  "sourceArchiveFile": "original/middle/m2/1final/21_이수중_1학기_기말_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_f26fca4c93cd747127661c4892886470234d4a6a14431df7285cab438be71146",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+      "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+      "step": "a<b의 양변에 음수 -2를 곱하면 방향이 바뀌므로 1-2a>1-2b여야 한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2e794ccc469c9f2def63321f1b2635aa624c42873cf3f4c8eef3ea5c861f55c8",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+      "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+      "step": "괄호·동류항 정리 후 일차항이 남는 부등식 ㄴ,ㄹ,ㅁ,ㅂ을 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ad3b658a8ebc780d4841f5e3a867434fe177b92fb6b0a8ccd82db5b6be02e46b",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
+      "templateKey": "TPL_M2_SELECT_REQUIRED_OPERATION_FOR_VARIABLE_ELIMINATION",
+      "step": "x의 계수 2,3을 6으로 맞추어 첫 식 3배에서 둘째 식 2배를 빼는 연산을 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ea8c4ff864248497ba39fd99b07db5571ad34af757cd8ec9322ea3e6d53befd5",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+      "templateKey": "TPL_M2_SOLVE_DECIMAL_SYSTEM_AND_LINEAR_COMBINATION",
+      "step": "첫 식 10배·둘째 식 15배로 정수화하고 더해 x=5,y=6을 얻어 차 -1을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_876c4f827a8799bc9d6edeb3c720ba864a5fda2de645a6c28ac146cb694c029a",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "주어진 x에 y가 하나로 정해지는지 살펴 자연수의 약수는 여러 개라 함수가 아님을 확인한다.",
+      "note": "새 TPL 제안: 대응 관계의 함수 여부 판별. 정의: 주어진 x에 y가 하나로 정해지는지 살펴 자연수의 약수는 여러 개라 함수가 아님을 확인한다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_33a363c6d0a1914c76ad25c4251579452856100e08e9c40084d7ba30e39c3d8f",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": null,
+      "step": "위로 5 이동한 식 y=-3x+5에 x=2를 대입하여 미지 좌표 a=-1을 구한다.",
+      "note": "새 TPL 제안: 주어진 수직 이동량으로 일차함수 식 변환. 정의: 위로 5 이동한 식 y=-3x+5에 x=2를 대입하여 미지 좌표 a=-1을 구한다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5356e476136f50c68c9f08c099791fc3ddad19dbc11d6fd3a7d57a311f0e82ef",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+      "step": "기울기·절편·수직 이동 성질을 확인하고 (2,1)을 대입하면 y=-1이라 지나지 않음을 판별한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

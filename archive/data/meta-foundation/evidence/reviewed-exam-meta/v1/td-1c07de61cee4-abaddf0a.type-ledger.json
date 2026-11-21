@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-1c07de61cee4-abaddf0a",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_신흥중_2학기_중간_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_ba4a3127dd0819a8fcc7ac0d3c0d90b7558575f5b56e111a976d22db172bd827",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+      "step": "반현4와중심거리r-2에서r²=(r-2)²+16을풀어r=5,원넓이25π이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ad99f1a3300eda9217d5100391a103a5ce42b8de77af98e3ae264f07cb6247dd",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": null,
+      "step": "동일중심거리로세현이같아변6정삼각형,외접반지름2√3으로원넓이12π이다.",
+      "note": "필요 TPL: 세현 중심거리로 정삼각형 외접반지름. 정의: 동일중심거리로세현이같아변6정삼각형,외접반지름2√3으로원넓이12π이다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fa486507ca3c763ed47823dbd925ab089ed42d138391b6064bc55e024ee080c1",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": null,
+      "step": "접선등장으로BC=10-3=7,평행한접선높이차4와빗변10에서지름2√21이다.",
+      "note": "필요 TPL: 반원의 세접선과 지름 복원. 정의: 접선등장으로BC=10-3=7,평행한접선높이차4와빗변10에서지름2√21이다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7f870e7e4ae0ad746ea9496fe5eb477b7de3bb627477a6323695f29b3e28c439",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "step": "접선등장으로PA=PB=14,CD=3,DE=EB=5이므로PE=9이다.",
+      "note": " 원본 래스터의 일부 외곽이 잘렸지만 현재 본문에 필요한 길이·접점·각 조건이 명시되어 판정 가능.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-caca1b59887b-276b915e",
+  "sourceArchiveFile": "original/middle/m3/2final/22_풍덕중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_d8042496d199fa6784bbb97ccf747ae3bdad1a2e39cef4fec8f15a211ada4f78",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
+      "step": "반원의 원주각90도, 한 호의 중심각 하나, 현길이와 중심각의 비례 불성립을 확인하여 같은 호의 원주각이 같다는④만 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3a9073f91f5ef8450cafaf089988a42ab860c4cfca9abf8e62d700b993439e9e",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "step": "원주각60도와50도로 호 BC=120도,AD=100도를 얻고 교차현각을 두 호 합의 절반110도로 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9cd7dd179a11bcb1110b7d0b291824c92b0cfba2887950e15516865f5c81fa32",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
+      "step": "자료에서3이 세 번으로 가장 많이 나타나므로 최빈값은3이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b7986d6d2e6e4ced4c880a9990e90dd6870d8e229a4b1bffcd2b65f562f32cc3",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": null,
+      "step": "편차 제곱의 평균은 분산이고 그 제곱근이 표준편차이므로 두 정의를 혼동한⑤가 틀리다.",
+      "note": "필요 TPL: 산포도 정의 진술 판정; 편차·분산·표준편차를 정의와 대조해 잘못된 진술을 찾는다. | 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_219acb018cb1631e5987ac445cd5041b08412ee38ed8aeca26a0daa1c9ee25cd",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": null,
+      "step": "표준편차1인2반이3반보다 고르고 편차합은 모두0이며 평균5와6을 비교하면3반이1반보다 평균적으로 많이 보았다는⑤만 참이다.",
+      "note": "필요 TPL: 집단별 평균·표준편차의 해석; 평균은 대표 수준, 표준편차는 고름을 나타내며 개별 극값을 보장하지 않음을 확인한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3a35102fa73a44317d18ba014eb99aad36147ed14e0060f88141bbdafb66e512",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+      "templateKey": null,
+      "step": "각 자료와 평균을 모두3씩 빼면 편차는 그대로여서 분산도 기존3으로 유지된다.",
+      "note": "필요 TPL: 일정량 평행이동의 분산 불변; 모든 자료에 상수를 더하거나 빼도 편차와 분산은 변하지 않는다. | 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3031022afa6ecf3e4700368b57ef495201eb5500d6a7e804a496d9e5e273170e",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_BAR_GRAPH_COMPARISON",
+      "templateKey": "TPL_M3_COMPARE_DISPERSION_FROM_BAR_GRAPHS",
+      "step": "평균8이 같은 세 그래프에서 B가7·8·9에만 몰려 편차제곱 평균4/7이 A의11/7,C의19/7보다 작으므로 가장 고르다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4db6a06abc704a569dd107ebba89f76f6a16369b57d757a25cc92589c995997c",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "step": "편차합 2+x-4+0-1=0에서 x=3을 얻고 제곱합30을5로 나눈 분산6의 제곱근√6을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

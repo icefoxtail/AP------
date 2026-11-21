@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-688b45019056-8c149f7c",
+  "sourceArchiveFile": "original/middle/m2/1mid/21_연향중_1학기_중간_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_eec24cf1fabe7dd0e2c209f2c13856b943db564c741d010b58e69f1fad196cd5",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+      "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+      "step": "이차항이 소거되어 일차부등식인③과 달리 상수만 있는④와 등식인⑤를 제외한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0aad98a7fad44ab29a816c5a857c5bbb3f6265b74cf27d6767632cdb90e03062",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+      "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+      "step": "같은 문자의 지수합차와 계수를 계산하면②의 b는 분모에 남고④는2a의6제곱b의6제곱이어야 함을 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_661c4ae0fd71b2986702643358ae91be3ba32a1c2ef0dc9666f71bece1ddb917",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+      "templateKey": null,
+      "step": "양수6을 곱함,같은 수를 더하거나 뺌,음수-3으로 나눔의 순서로 사용한 부등식 성질을 구별한다.",
+      "note": "필요 TPL: 부등식 변형 과정별 사용 성질의 순서를 선택한다.  도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_92b1fa2a6b0795c0b3c5f4a822bc7e395867ef55ed593bb3b69a00c82e005f27",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+      "templateKey": null,
+      "step": "편도거리x와 돌아오는 거리x+2의 시간합 x/3+(x+2)/5≤3/2를 풀어x≤33/16을 얻는다.",
+      "note": "필요 TPL: 왕복 경로 길이 차이를 반영한 시간 합 제한으로 편도거리의 범위를 구한다.  도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+    }
+  ]
+}

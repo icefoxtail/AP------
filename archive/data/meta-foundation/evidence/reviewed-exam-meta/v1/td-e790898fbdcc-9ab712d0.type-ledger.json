@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-e790898fbdcc-9ab712d0",
+  "sourceArchiveFile": "original/middle/m2/2final/21_연향중_2학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_4156ab233cfc540790aca573d31d9b43e735299f3418d437bc2383131f7e20b3",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "step": "첫 그림은 전체9에서3을 뺀6과 대응비를, 둘째는 교차 횡선의6:x=5:4를 적용한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8eee5b443909cd86a65132237b849737c7150a79c397bfeab41b951dfecf9d65",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "step": "넓이60·밑변10에서 높이12를 구하고 밑변절반5와 제곱합으로 같은 변13을 구해 둘레36을 얻는다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_92ff217e89c556eddf4798c23a53d4fbf293f0cc3ef33e13365ec748a3e9e1c9",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+      "step": "직각변2와 삼각형 넓이5에서 다른 직각변5를 얻고 빗변 정사각형 넓이를 제곱합29로 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6469a3f5aa5e63e3b924907562348252d4aa42c10afbb6cc6c39a0c9be62909e",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "step": "중점A를 지나 DE평행선을 그어 BE를 이등분하고 AC중점M의 닮음으로 PE=CE를 얻어 BE:BC=2:3을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ed72584240f6e9f69c850f225b161c52556418f815ae396e7f4962c0b2705027",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "step": "연속 세 직각삼각형에서 빗변제곱에 같은 길이제곱을 더해 OD제곱=4OA제곱을 얻는다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8b1bf4c848643c42093be4aed27147eceb6542d5d639d77c0c6335eb0fe0bbaa",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": null,
+      "step": "5·12·13의 제곱관계로 직각임을 확인한 뒤 같은 넓이를 두 밑변으로 표현하여 AH=60/13을 구한다.",
+      "note": " 새 TPL 제안: 피타고라스 정리·역 및 도형 활용의 직접 풀이. 정의: 5·12·13의 제곱관계로 직각임을 확인한 뒤 같은 넓이를 두 밑변으로 표현하여 AH=60/13을 구한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    }
+  ]
+}

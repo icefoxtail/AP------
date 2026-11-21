@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-84c9cee05f7a-de929316",
+  "sourceArchiveFile": "original/middle/m3/2final/22_연향중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_58a457cbc042ae541d3a685fd5e5f61e7ebd41f43027a2b00a53aea7554e521c",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+      "step": "내접사각형 대각의 합으로 BAD=75도를 얻고 삼각형 ABP에서 180-75-80=25도를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8e85a7d1d73cace8211ec936d2b317bb877864ccf5f3fd76963dee2e87dd52f3",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": null,
+      "step": "여섯 자료를 7,13,17,19,21,22로 정렬하고 가운데 두 값 17과19의 평균 18을 중앙값으로 구한다.",
+      "note": "필요 TPL: 짝수 개 자료의 중앙값; 정렬 뒤 가운데 두 자료의 평균을 취한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f12d07352839bfb92eb33e75327d17fb639eb1143aae2eba7ce85fc29caf469c",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
+      "step": "도수가 각각 2인 7과11이 다른 변량보다 많이 나타나므로 두 값을 모두 최빈값으로 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_61e5f20d5736d5f281fe5cdf6aba5d79f0ea1f1406c6cbcd8ab962e1c7d5ff7e",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": null,
+      "step": "산포도가 클수록 평균에서 더 멀리 흩어지므로 자료가 고르다는 ②를 산포도 정의와 대조해 거짓으로 판정한다.",
+      "note": "필요 TPL: 산포도 정의와 분포의 고름 판정; 분산·표준편차의 정의 및 산포 크기와 밀집의 관계를 진술별로 확인한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c69b1be6c065f74ef85ce76d5f7211e5108f5aceea08b7f60b9e73342482aaba",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "step": "편차합 a-4+3+2-1=0에서 a=0을 얻고 제곱합30을 자료 수5로 나누어 분산6을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a26422b90913af4a2d3b8008f25fd35950f71cfe4e2bd440c0f9e70de872679a",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+      "templateKey": null,
+      "step": "각 자료를 2배하고 1을 더하면 평균은 2×3+1=7, 표준편차는 2×2=4이므로 합은11이다.",
+      "note": "필요 TPL: 아핀변환의 평균·표준편차; ax+b의 평균은 aμ+b, 표준편차는 |a|σ로 변환한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

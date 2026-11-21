@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-4d39b4ff337b-c6c0abd4",
+  "sourceArchiveFile": "original/middle/m2/1final/20_풍덕중_1학기_기말_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_93a2af19c7646027a160d435f591a1c88fd983b9ad7212ec5a33666117c5ccb6",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+      "templateKey": null,
+      "step": "잘못 뺀 결과에 -x²+x+7을 더해 원래 식을 복원한 뒤 이를 한 번 더 더한다.",
+      "note": "새 TPL 제안: 잘못 뺀 다항식의 덧셈 복원. 정의: 잘못 뺀 결과에 -x²+x+7을 더해 원래 식을 복원한 뒤 이를 한 번 더 더한다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9ede37fc00cf1a24a58d7743397e716221d0659106f2b205d7cbb8f974f5d5f3",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+      "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+      "step": "양변에 음수 -2를 곱한 경우만 부등호 방향이 반대가 된다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7a3680a4c2187579ace8218860d9eeaba01dbaab68a63e73db1a427f51ef41dd",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+      "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+      "step": "괄호와 동류항을 정리해 미지수 일차항이 남는 부등식을 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_00d6e4e28ff7e7138e718ff47a76a85678caf92bf25be3fc6870e8ead714e38d",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+      "templateKey": "TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK",
+      "step": "각 부등식을 풀어 제시된 해와 비교하며 -6x≤12의 올바른 해 x≥-2를 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_938125d560630a261f20745c0a1ebc8ed2a34d6d089330cffd255cf2a71e68a6",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+      "step": "두 쌍 대변 길이가 같아 평행사변형임을 판정하고 이웃각의 합 180°에서 130°를 뺀다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b2cbf16acefb45c249c08aac5fdb3ced11ae805bad58253764793ef9a53a8918",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "step": "대변 CD=AB=4와 대각선 이등분 OC=3,OD=4를 이용하여 삼각형 둘레 11을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_832543daf36d2e7b444764dc2e4f838790ac741b4692009f0f252301ea54da30",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+      "step": "각 조건이 두 쌍 평행 또는 같은 한 쌍의 평행·등변을 보장하는지 구별한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5c215885f6f9cc69b20fbe9428495d2a2b764cd250403254743c34a565a04b95",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "step": "대변이 같으므로 인접변 합은 둘레의 절반 21이며 3:4로 나누어 DC=AB=9를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5176d7902b4505314a44d9951c043d78d2d590ebf2089e115ac9ab3a1e3ae84d",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_INTERNAL_POINT_AREA",
+      "templateKey": "TPL_MG_CALCULATE_OPPOSITE_TRIANGLE_AREA_FROM_INTERNAL_POINT",
+      "step": "내부점에서 두 대변에 만든 삼각형 넓이 합이 전체 절반 26이므로 12를 빼어 14를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a56794b5a26f767353d163c1477947b4fa866c8fd79827ec740fab17ba54f37e",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "step": "이웃변 같음·대각선 수직·내각 이등분은 마름모를 보장하지만 대각선 길이 같음은 직사각형 조건임을 구별한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6ad984010f1bb6cc90bd20fe39da8a3660c74f1b727b79bd19fb296cc1c612dc",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "step": "직사각형 대각선의 길이가 같고 서로 이등분하므로 생기는 이등변삼각형의 밑각과 내각합으로 표시된 두 각을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0e32de0384bf2528d588d8d74f5e8f10c1bb0b9c8769a1dc67737abcac42c1af",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "step": "정사각형의 두 대각선이 길이 8로 같고 수직이므로 넓이 8×8/2를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f9e610e699699c6aff16c9f07140861b7bf115813a8a1b5b4707a2697d461486",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "step": "각 사각형의 충분조건·대각선 성질을 참거짓 판별하고 순서도의 실제 화살표를 따라 부산에 이른다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9e55f0449db6361caac542b9f9f088a08a3b53b0d31f58335d88799d595623f0",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+      "templateKey": "TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE",
+      "step": "사다리꼴에서 평행사변형, 마름모·직사각형, 정사각형으로 이어지는 화살표마다 충분한 추가조건을 쓴다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

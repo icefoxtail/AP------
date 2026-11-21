@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-bdd72218a9f5-a2cf1cb8",
+  "sourceArchiveFile": "original/middle/m2/1final/21_신흥중_1학기_기말_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_9575c8c0befac27db0419ab973c51eae63ce140a1774139aa15475bfcc47ab23",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "주어진 식들이 y=ax+b,a≠0 꼴인지 확인하여 1000x와 5-3x 두 개를 센다.",
+      "note": "새 TPL 제안: 식의 형태로 일차함수 여부 판별. 정의: 주어진 식들이 y=ax+b,a≠0 꼴인지 확인하여 1000x와 5-3x 두 개를 센다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d808a4b48e76ba5fb58abbd7f95cb22cd3b4e8e5bd58f02f854136ca9b325cdb",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
+      "templateKey": "TPL_M2_FIND_UNKNOWN_COORDINATE_FROM_PARALLEL_SLOPE",
+      "step": "두 점의 기울기 (k-3)/4가 주어진 평행선의 기울기 1/2와 같도록 k=5를 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9949d6862424f6d33dc8aebf7a0647d02afc33c705c45e6d1f307aa37360f457",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": null,
+      "step": "y축 방향으로 3 이동한 식 y=ax+3을 -x/2+b와 계수 비교하여 a=-1/2,b=3을 얻는다.",
+      "note": "새 TPL 제안: 주어진 수직 이동량으로 일차함수 식 변환. 정의: y축 방향으로 3 이동한 식 y=ax+3을 -x/2+b와 계수 비교하여 a=-1/2,b=3을 얻는다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6059f96f419a7010ebdd5b51033b7e786f619978ab568d40fdd46d63746b8ef7",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+      "templateKey": null,
+      "step": "두 방정식을 연립하고 빼어 y=1을 얻은 뒤 x=1/3을 구해 교점 좌표를 결정한다.",
+      "note": "새 TPL 제안: 두 일차방정식 그래프의 교점 좌표 계산. 정의: 두 방정식을 연립하고 빼어 y=1을 얻은 뒤 x=1/3을 구해 교점 좌표를 결정한다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f718dcd3e65266304899760dea76c551b15a84c526ee663c65128c50ce3bc9ab",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE",
+      "templateKey": "TPL_M2_SOLVE_TEMPERATURE_ALTITUDE_WORD_PROBLEM_DESCRIPTIVE",
+      "step": "고도 1km당 변화량 -6℃와 초기 15℃로 y=15-6x를 세워 x=1.7을 대입한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

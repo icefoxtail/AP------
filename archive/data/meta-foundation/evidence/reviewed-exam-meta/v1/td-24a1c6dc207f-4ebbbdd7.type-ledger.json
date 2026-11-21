@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-24a1c6dc207f-4ebbbdd7",
+  "sourceArchiveFile": "original/middle/m2/2final/21_풍덕중_2학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_b958b2e3115c90928b6c094b0ce0a50de9c472140fc8831f0551ac26eebf1adb",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": "TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT",
+      "step": "상수항2에 이동량b를 더한 y절편을5로 두어 b3을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4523f25cd9bf3980d15b6b2d0d2310910cc449b7bb72f50bb5fb7f8acc72979d",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+      "templateKey": null,
+      "step": "1·2·4사분면 통과로 기울기 음수와 y절편 양수를 판정한다.",
+      "note": " 새 TPL 제안: 1·2·4사분면 통과로 기울기 음수와 y절편 양수를 판정한다. 정의: 1·2·4사분면 통과로 기울기 음수와 y절편 양수를 판정한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    }
+  ]
+}
