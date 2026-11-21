@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane10",
   "workerBranch": "work/solution-upgrade-lane-10-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2final",
@@ -12,10 +12,25 @@
   "sourceBlobSha": "b9b8c8649f1b47adf41b9bcc07cc94af0647a55e",
   "sourceQuestionCount": 22,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2025_jeil_2final_DEEP_AUDIT.md",
-  "draftedQuestionIds": [],
-  "remainingWork": [
-    "Q1-Q22 full deep audit, full needed student solution drafts"
+  "draftedQuestionIds": [
+    18
   ],
-  "nextQid": 1,
-  "stateNotes": "Actual standardCourse 공통수학2 all 22 qids; preceding 2025 original 2final Geumdang, Suncheon, Suncheon Girls, Palma all audited."
+  "remainingWork": [
+    "Student screen actual render, SVG/Golden/Negative/release QA NOT_RUN; Q10 original PNG low contrast VISUAL_HOLD"
+  ],
+  "nextQid": null,
+  "stateNotes": "2025 Jeil h1 2final 22/22 source direct read. Original Q10 Q12 Q17 PNG viewed. KEEP21 UPGRADE1 Q18 branch-boundary error corrected in student MD; answer same. Worker commits fb96e5536464873d989262597912ac2c8a30e762 and 389e705a37ead22c8721f05c3c9a8d2ca739e4fb. Release NOT_RUN.",
+  "examAuditComplete": true,
+  "examDraftComplete": true,
+  "auditCounts": {
+    "total": 22,
+    "read": 22,
+    "keep": 21,
+    "upgrade": 1,
+    "hold": 0,
+    "unread": 0
+  },
+  "auditBlobSha": "685a6f51d9dfe06e83a7bb34750cd6969c632384",
+  "draftBlobSha": "3013f2f5ff16bd1795f4caf06285e1e8364e56ba",
+  "finishedAtKst": "2026-11-21"
 }
