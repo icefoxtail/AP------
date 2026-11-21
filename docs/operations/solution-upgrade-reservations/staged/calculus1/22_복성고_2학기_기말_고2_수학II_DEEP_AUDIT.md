@@ -1,6 +1,6 @@
 # 2022 복성고 2학기 기말 수학Ⅱ — lane10 심층 감사
 
-- 상태: **IN_PROGRESS** (원본 그림 Q13–Q15 미확인, calibration 및 출고 검증 NOT_RUN)
+- 상태: **IN_PROGRESS** (원본 그림 Q13–Q15 미확인(실물은 archive/assets/images/에 존재하나 현재 이미지 바이너리 판독 불가), calibration 및 출고 검증 NOT_RUN)
 - 과목: calculus1 / 2015 수학Ⅱ, original / h2 / 2final / 2022
 - sourcePath: `archive/exams/original/high/h2/2final/22_복성고_2학기_기말_고2_수학II.js`
 - source ref: main; source blob SHA: `7c7a2c053f6077a8a2345e15a79a872e887268e2`
@@ -117,6 +117,12 @@
 - **기존 solution 원문 발췌**: 모든 $t$에서 접선 기울기가 $f'(t)=3t^2-4t+5$이므로 원시함수는 $$f(x)=x^3-2x^2+5x+C.$$ 그래프가 $(0,3)$을 지나므로 $f(0)=C=3$입니다. 따라서 $$k=f(1)=1-2+5+3=\boxed7.$$ ①~④는 적분상수를 정하는 조건 또는 $x=1$ 대입을 빠뜨린 값입니다.
 - **독립 대조 및 판정 이유**: f'=3x²-4x+5→f=x³-2x²+5x+C, C=f(0)=3; f(1)=7. 원문에 표시된 핵심 식과 결과가 연결되며 이 조건에 필요한 부호·범위·경우를 확인함.
 - 그림: 문제 그림 없음.
+
+## 이미지 접근 조사 (2026-11-22)
+
+- 기존 MD에 기록된 `assets/images/.../q13.png` 경로는 실제 GitHub contents 위치가 아님. `archive/assets/images/22_복성고_2학기_기말_고2_수학II/q13.png`는 GitHub API에서 404가 아닌 `GitHub Fetch only accepts UTF-8 text` 오류를 반환하여 **파일 존재는 확인**했으나 바이너리 이미지의 시각 판독은 불가능했음.
+- Q14·Q15도 같은 원본 이미지 폴더의 경로를 우선 조사해야 하며, 존재 여부와 시각 판독은 아직 미확정. **Q13–Q15 HOLD 유지**. 이미지의 실제 좌표·영역·표식은 읽지 않았으므로 KEEP으로 승격하지 않음.
+- 실행 환경에서 GitHub 외부 네트워크 접근도 DNS 실패. 새 풀이·출고 검증 없이 이 파일에 접근 장애 근거만 추가함. 다음 커서 Q13.
 
 ## Q13 — HOLD
 
