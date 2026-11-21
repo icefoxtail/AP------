@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane10",
   "workerBranch": "work/solution-upgrade-lane-10-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2final",
@@ -12,10 +12,28 @@
   "sourceBlobSha": "9e5a27aab079faf4698efc366b63eba996c077d1",
   "sourceQuestionCount": 23,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2024_hyocheon_2final_DEEP_AUDIT.md",
-  "draftedQuestionIds": [],
-  "remainingWork": [
-    "Read Q1-Q23 full source; decide every qid; complete any UPGRADE student MD"
+  "draftedQuestionIds": [
+    11
   ],
-  "nextQid": 1,
-  "stateNotes": "Selected next unclaimed 2024 original 2final after completing 2024 Gangnam Girls, Geumdang, Maesan Girls, Jeil."
+  "remainingWork": [],
+  "nextQid": null,
+  "stateNotes": "23/23 original content/choices/answer/solution audited; q11 improved complete-square student explanation independently verified, remote readback.",
+  "auditQuestionCount": 23,
+  "readQuestionCount": 23,
+  "decisionCounts": {
+    "KEEP": 22,
+    "UPGRADE": 1,
+    "HOLD": 0,
+    "UNREAD": 0
+  },
+  "studentDraftPaths": [
+    "docs/operations/solution-upgrade-reservations/staged/h1/2024_hyocheon_2final_q11.md"
+  ],
+  "qualityGates": {
+    "visual": "NOT_RUN",
+    "render": "NOT_RUN",
+    "golden": "NOT_RUN",
+    "negative": "NOT_RUN",
+    "release": "NOT_PASS"
+  }
 }
