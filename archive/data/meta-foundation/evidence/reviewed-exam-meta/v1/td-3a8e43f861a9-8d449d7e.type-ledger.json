@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-3a8e43f861a9-8d449d7e",
+  "sourceArchiveFile": "textbooks/미래엔_공통수학2/미래엔_공통수학2_평면좌표와직선의방정식_중단원마무리_고1/미래엔_공통수학2_평면좌표와직선의방정식_중단원마무리_고1.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_31b5de41e56a49aadaff8ff4911734fdbd2cde98b7977324f2565db12af3014f",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_DISTANCE",
+      "templateKey": "TPL_COORD_DISTANCE_DIRECT",
+      "step": "수직선에서는 좌표 차의 절댓값, 평면에서는 √(3²+5²)을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_316b3f6e7e7fadccd9ae24fd3ed63ffe1e9ffb6500a1e5f1d6ca5a7cf75389fd",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_SECTION",
+      "templateKey": "TPL_SECTION_INTERNAL",
+      "step": "주어진 비 3:2와 1:2를 내분점의 가중평균 공식에 각각 대입한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2a0f8b69753fb02cf50eac2973dddda1d18f91be13da4214026e66312e7f8def",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": null,
+      "step": "평행한 직선의 기울기 -3과 수직인 직선의 기울기 -1/2를 각 주어진 점에 대입한다.",
+      "note": "TPL_LINE_PARALLEL_PERPENDICULAR_SUBITEMS: 독립 소문항별로 평행·수직 기울기를 구해 각각의 주어진 점을 지나는 직선식을 결정한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2a811fafaeb58a4a41891febc1e55a383331b24d38c091c2fac14793b2b16e25",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+      "templateKey": "TPL_POINT_LINE_DISTANCE_DIRECT",
+      "step": "거리 공식 |3·4-4·2+11|/√(3²+(-4)²)을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a2d2c02aaa27922c4cf8dcc2b494d87763a96ba56afad0716782cebc39bd126f",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_DISTANCE",
+      "templateKey": "TPL_DISTANCE_UNKNOWN",
+      "step": "CA²+CB²=AB²를 적용해 a²-2a=0을 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_04d8d453941570813ae94e16f311af7e255b179e39453b86420ba60fa4cc19bd",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_SECTION",
+      "templateKey": "TPL_SECTION_APPLICATION",
+      "step": "내분점 (16/5,3/5)을 계산하여 직선식의 k=y-x/2에 대입한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_aefcf5d19f17f3a75c08118f23f50e5723191d19fba20d6b7035d412b95a9008",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_CENTROID",
+      "templateKey": "TPL_CENTROID_REVERSE",
+      "step": "무게중심 좌표 평균식에서 a=1,b=-4를 역산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_673cc4aee6aff452d6eb3b63e905f3e05549d8377be5317170f1ed042f44dcc1",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+      "templateKey": "TPL_DISTANCE_PARALLEL_LINES",
+      "step": "평행선의 거리 |k-1|/√13=√13을 풀어 상수항 차를 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ad2bcc32bab32ac8ecbc0b6c77990171044a64a3ac275a184fbce9c716f21c05",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_PARALLEL",
+      "step": "두 직선을 연립해 교점 (1,2)를 구한 뒤 기울기 -2인 직선을 세운다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a2bc916589fbce4587ded738761cd2b63327e1a7d287e71376285e05eeacdb97",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+      "templateKey": null,
+      "step": "교점의 x=(1-3k)/(k+1),y=(6k+2)/(k+1)가 동시에 양수일 부등식을 푼다.",
+      "note": "TPL_TWO_LINE_INTERSECTION_QUADRANT_PARAMETER: 두 직선의 교점을 매개변수로 나타내고 교점 좌표의 부호 조건을 연립한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bc1980a7f7bb8ce7687ef4db29a76bea59979c731cd103182c70cc5f37d7d038",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_ANGLE_BISECTOR",
+      "templateKey": "TPL_ANGLE_BISECTOR_EQUATION",
+      "step": "두 법선의 길이가 같으므로 4x+y-5=±(x-4y+3)을 풀어 두 이등분선을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    }
+  ]
+}

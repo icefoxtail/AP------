@@ -1,0 +1,493 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-4efa811a4e46-35cf8d30",
+  "examUid": "미래엔_공통수학2_함수와그래프_대단원마무리_고1",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/미래엔_공통수학2/미래엔_공통수학2_함수와그래프_대단원마무리_고1/미래엔_공통수학2_함수와그래프_대단원마무리_고1.js",
+  "expectedSourceBlobSha1": "488d79d5513e3e4cc020989babc862c9a9864fa2",
+  "expectedQuestionCount": 17,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4efa811a4e46-35cf8d30.type-ledger.json",
+        "sha256": "c03d27b0f016d7efbff6a7c6f9185f08771302c1cdfb0faf4b99d7e62a941b5d"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_8f8cdd5723ec4010254fcd67bdfc01391afd63e64e02442c3a9280e3328ae1fc",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+        "templateKey": "TPL_RANGE_ENUMERATION"
+      },
+      "rationale": "x=1,2,3,4,5의 제곱을 7로 나눈 나머지의 중복을 제거해 치역 {1,2,4}를 합한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "0878f58ece0afd97ca45bf39cedf08743115090d4904f77bfabed69b41991872",
+        "contentFingerprint": "80454760c63e55499df535561b436f1d8b5ce8bb4291a51e2c6f946652b7f659"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4efa811a4e46-35cf8d30.type-ledger.json",
+          "sha256": "c03d27b0f016d7efbff6a7c6f9185f08771302c1cdfb0faf4b99d7e62a941b5d"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_cc1992054997d6f664eae5dc8293e689f87e9c5a5a82c0aa3c7a526956356502",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_EQUALITY",
+        "templateKey": "TPL_EQUAL_FUNCTION_FINITE_DOMAIN"
+      },
+      "rationale": "x=-1,3에서 값 -6,-2를 일치시켜 a=1,b=-5를 얻는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "fb04e57f3634a0c35c7c600ca86e1517d2e879025bfaab8c7efb8776c887c267",
+        "contentFingerprint": "78d1df38e0bf3066c1ee298c06c164338a38b74a909cc21386206c713d296e5d"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4efa811a4e46-35cf8d30.type-ledger.json",
+          "sha256": "c03d27b0f016d7efbff6a7c6f9185f08771302c1cdfb0faf4b99d7e62a941b5d"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9f233993efe2a5a10b36754214714f97b339c5f964d3893e28c480b767be530c",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "templateKey": "TPL_ABSOLUTE_VALUE_INJECTIVITY"
+      },
+      "rationale": "x=1 양쪽 기울기 a-2,a+2가 같은 부호의 비영수여야 전 실수 일대일대응이므로 자연수 a>2이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "bb793519293f96f24b2c0a8eb74efd18b4beeba5cc6179ea1a652d53766fe75c",
+        "contentFingerprint": "d247a441f6d796cc13be61c27127c3b0d357cc5ea0a46b81b74c8316a9225ef8"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4efa811a4e46-35cf8d30.type-ledger.json",
+          "sha256": "c03d27b0f016d7efbff6a7c6f9185f08771302c1cdfb0faf4b99d7e62a941b5d"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d5272d0fefccbb27e1465544d5b99cab3d4afb76cbe8c3d3d25b4c5f2d41c51d",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SPECIAL_FUNCTION_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_FUNCTION_DIRECT"
+      },
+      "rationale": "항등함수의 f(3)=3과 상수함수의 g(1)=g(2)=4를 더한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "5d2819b141abb24cb3ff8d78b6ca92b1a218c49f7ee44bea6127e7574ba859b0",
+        "contentFingerprint": "c7082718cd634c6d368c1f4301181afa9a65ca3daf780e73866c9cb5c9939e71"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4efa811a4e46-35cf8d30.type-ledger.json",
+          "sha256": "c03d27b0f016d7efbff6a7c6f9185f08771302c1cdfb0faf4b99d7e62a941b5d"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f347e39aae9e1eb0016e42a894ed77da1af0ab405a554940c9fdfac237cc860e",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_ITERATED_COMPOSITION",
+        "templateKey": "TPL_ITERATION_PERIOD"
+      },
+      "rationale": "0→2→4→6→0의 주기 4를 이용하면 f²⁶(6)=2,f²⁷(0)=6이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "7348434ce692f981c8979f4d7fbac1a3c31a06ac989b0071162c6e3e31574961",
+        "contentFingerprint": "e7cabfdafbb151d8e8886e5dfb15202a4893d301ebacb1507e0edceb45a6a5b5"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4efa811a4e46-35cf8d30.type-ledger.json",
+          "sha256": "c03d27b0f016d7efbff6a7c6f9185f08771302c1cdfb0faf4b99d7e62a941b5d"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_fabd170126d2eff751e978cfa20d916f120d20ecf603715fbcf25837e3daa7a0",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_VALUE_DIRECT"
+      },
+      "rationale": "f(x)=6을 풀어 x/4+2=6의 해를 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "a3aa04d1bf1754b28976f0f7ca7f5f82a76a6053d2e4d3ad006138bbcf9e38d0",
+        "contentFingerprint": "49faeec26abfc3af5aee0375aa0a149c8b3431b934c6573e2d66824e4842cb76"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4efa811a4e46-35cf8d30.type-ledger.json",
+          "sha256": "c03d27b0f016d7efbff6a7c6f9185f08771302c1cdfb0faf4b99d7e62a941b5d"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_79b3b01d8785392db9804d6c79a74882eabc81575923fa4d84f15659ac4a5cd1",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_RECOVERY",
+        "templateKey": "TPL_FUNCTION_FORM_FROM_POINT_VALUE"
+      },
+      "rationale": "역함수 조건을 f(-1)=2로 바꾸면 합성조건은 f(2)=11이므로 f(x)=3x+5를 복원한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "0502f6f2f885fc70e8b52e5141c4d02ec041091234b3767eb5d37f73aa0971dd",
+        "contentFingerprint": "afa466857178f3b858ecb3f381db4c08bb83c16f239f95fb16a070be9fee946d"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4efa811a4e46-35cf8d30.type-ledger.json",
+          "sha256": "c03d27b0f016d7efbff6a7c6f9185f08771302c1cdfb0faf4b99d7e62a941b5d"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_277b64ef2a63abd699a7eb715462d5a117013b603102457233461494a6343a8c",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FINITE_BIJECTION",
+        "templateKey": "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION"
+      },
+      "rationale": "f(1)=3,f(3)=2와 일대일대응에서 남은 f(4)=5를 결정해 f⁻¹(2)=3,f(f(4))=1을 합한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "6a614c22d79847b8e3dbf8731d68a0c5135a69f0012c060756a64d866edf3373",
+        "contentFingerprint": "4b219af8cd7ad4411f0cfb833310196170c8d150cf3dacbbdbf5d3fe5924a6c5"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4efa811a4e46-35cf8d30.type-ledger.json",
+          "sha256": "c03d27b0f016d7efbff6a7c6f9185f08771302c1cdfb0faf4b99d7e62a941b5d"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_42c95240edbe6ac607089f7b1973428052d37482b3d66a771fa85e0afbb4ca35",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_AFFINE_INPUT"
+      },
+      "rationale": "입력을 t=6x+1로 치환해 f(t)=(22-t)/3을 얻고 역함수 -3x+22의 계수곱을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "4f081e6e8a3126b76a105809299b8c587be10cff4352241d57062f5530eaa266",
+        "contentFingerprint": "e6124c331d1f68869c6bdd58803e03b30d80d9b622a18dca2901f4613e7fa3c4"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4efa811a4e46-35cf8d30.type-ledger.json",
+          "sha256": "c03d27b0f016d7efbff6a7c6f9185f08771302c1cdfb0faf4b99d7e62a941b5d"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_92f28cbc6c9f5bb6f67b262dde99b8da9cfbef4282dc30c42b1887102cc45a64",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_RATIONAL_FUNCTION_SYMMETRY",
+        "templateKey": "TPL_H1_RATIONAL_SYMMETRY_CENTER_POINT_PARAMETER"
+      },
+      "rationale": "대칭중심은 두 점근선의 교점이므로 a=3,c=-2이고 (5,4)를 대입해 b=-3이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "fea9aabf57c6c798c9f0a3db91cd9b74109837b7dfa4fa93a8d541530ec59665",
+        "contentFingerprint": "5b56812db08fdfd0a6f23d96215062ec00540bc17cd8c26d8cedbdc040ebf11b"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4efa811a4e46-35cf8d30.type-ledger.json",
+          "sha256": "c03d27b0f016d7efbff6a7c6f9185f08771302c1cdfb0faf4b99d7e62a941b5d"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0670e36725578a8aaf7a9585322287cafade5a3291fa854b382e3ff84a412eb1",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+        "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY"
+      },
+      "rationale": "교점 x좌표 α,β는 x²-8x+k=0의 근이고 삼각형 넓이 4|α-β|=20에서 64-4k=25를 얻는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "a9f10a73f562fe81aa5b41ff9b8f30eab2a1c5e2e7fcc032772e6a68d32455d5",
+        "contentFingerprint": "b9a594bba994c74413eb0915e4396ec4ac1281b39fb4e47df7371609677a9aa3"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4efa811a4e46-35cf8d30.type-ledger.json",
+          "sha256": "c03d27b0f016d7efbff6a7c6f9185f08771302c1cdfb0faf4b99d7e62a941b5d"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_82af903c9c54a508898a415213d98f48445eeb26ec066cee444e3a0e78e00f85",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT"
+      },
+      "rationale": "근호 조건·치역·이동·역함수를 확인하고 x>1에서는 y<0이므로 제4사분면을 지난다는 반례를 찾는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "5a2724a6a7fdf0b54fa0c576e826b94952c987cca3063e0c4d4b797538d924c9",
+        "contentFingerprint": "0bc9e6d502da22a0b99a71a81f43f44d399388ee99c3f9072fdbda1f6c41029f"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4efa811a4e46-35cf8d30.type-ledger.json",
+          "sha256": "c03d27b0f016d7efbff6a7c6f9185f08771302c1cdfb0faf4b99d7e62a941b5d"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d12f5990941882ff929cae7bb5b7ad2297dd44c2012c72b40c57012e794cc634",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_RECOVERY",
+        "templateKey": "TPL_FUNCTION_FORM_FROM_GRAPH"
+      },
+      "rationale": "그림의 시작점 (-4,-6)에서 b=4,c=-6이고 원점 통과로 2a-6=0이므로 a=3이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "bee9335292a3ac98075d19c231631b6ca19a9027cf706f5412677f175360f6a2",
+        "contentFingerprint": "67daeecfcbcbf78b113628f36c5b9a9926cb4200c6703f0f5396074c3368b825"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4efa811a4e46-35cf8d30.type-ledger.json",
+          "sha256": "c03d27b0f016d7efbff6a7c6f9185f08771302c1cdfb0faf4b99d7e62a941b5d"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9ba7d80f8bb4b743bef958b239a7383797865f8d8096d7c9ab3a7af9175be02a",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_VALUE",
+        "templateKey": "TPL_FUNCTION_VALUE_DIRECT"
+      },
+      "rationale": "340=20√(273+x)를 제곱하여 273+x=289를 푼다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "b1c90767d5eb1adaa96759230b52371bf696f44c9243071a84405dfb7ca2a0a4",
+        "contentFingerprint": "8cc820a35f38356abf5e59f47fe78b45a396d93a43687e95de8603f64d418bff"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4efa811a4e46-35cf8d30.type-ledger.json",
+          "sha256": "c03d27b0f016d7efbff6a7c6f9185f08771302c1cdfb0faf4b99d7e62a941b5d"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_68d0f4f6951586c7d4b5c6c04e6bce4cdd923cd741dd9c44a0693c7a6775cf96",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+        "templateKey": "TPL_COMPOSITION_RELATION_CONDITION"
+      },
+      "rationale": "두 합성식의 상수항 -11과 4k+5를 같게 놓아 k=-4를 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "bb7dd4a539164461b9d6d3dbda561f748fe54bf2efd6df7cdad9ebc93e576b6e",
+        "contentFingerprint": "b1223df5fc5a95b074253b89d2f78c0c0aad50581292a032b83c0e8b646e227c"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4efa811a4e46-35cf8d30.type-ledger.json",
+          "sha256": "c03d27b0f016d7efbff6a7c6f9185f08771302c1cdfb0faf4b99d7e62a941b5d"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e7dd1361ff009281cdfa6f50049f5131694bfdfba49ca9a61d6456528e552bac",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_INVERSE_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_INVERSE_EQUATION"
+      },
+      "rationale": "두 그래프의 공통점 조건은 f(1)=2,f(2)=1이므로 a=2,b=-2를 구한 뒤 f(x)=4를 푼다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "857258b205c1627df4540896be8e08601e4cdbd5990b2bf110de166b0c729a01",
+        "contentFingerprint": "8105bbd07291132fa702b4789a947dc86ab3f4b519b2adb482847809decfe1dd"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4efa811a4e46-35cf8d30.type-ledger.json",
+          "sha256": "c03d27b0f016d7efbff6a7c6f9185f08771302c1cdfb0faf4b99d7e62a941b5d"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5fa3c5f61f1c832dc6f6d35e5611fa6afca08f2f4e23630fe606623cc6f018d1",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_INVERSE_GRAPH",
+        "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY"
+      },
+      "rationale": "증가함수의 역함수 교점은 y=x 위이므로 √(3x-5)=x-1을 풀어 (2,2),(3,3)의 거리를 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "88c369ae8cd2bee27e1648f7c96f0cc96bf2d1700c115a3054d1ce5f49b4142c",
+        "contentFingerprint": "1c4bf437ec1e24b0af4191be2f8b0954ce12a7312e4b004477b07ecbbde49173"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4efa811a4e46-35cf8d30.type-ledger.json",
+          "sha256": "c03d27b0f016d7efbff6a7c6f9185f08771302c1cdfb0faf4b99d7e62a941b5d"
+        }
+      ]
+    }
+  ]
+}

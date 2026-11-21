@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-9805f8aa6049-6ecb17e9",
+  "sourceArchiveFile": "textbooks/비상교육_대수/비상_대수_지수함수와로그함수_중단원학습점검_고2/비상_대수_지수함수와로그함수_중단원학습점검_고2.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_대수.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_4569b1937c70d83884be5e0334cc2305fdeab3fac79daf30bbf81ec791722c9d",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": null,
+      "step": "기본 지수·로그 그래프의 평행·대칭 이동으로 점근선과 통과점 및 증감을 정한다.",
+      "note": "필요 TPL: 지수·로그 그래프 이동과 점근선 작도.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_26bdeccba28b7b9b5e53239ea2efef9dd9e53149c0eacaf9b035fd4d4f9922e1",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": null,
+      "step": "첫 함수는 증가,둘째는 감소하므로 주어진 닫힌구간 양 끝에서 극값을 계산한다.",
+      "note": "필요 TPL: 제한구간 지수·로그 함수의 단조성 극값.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b9aa26ea0ddac8914f1bdef592387706b9086129d2ff7bcdc286a4d9567d5933",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": null,
+      "step": "점근선 y=-1에서 b=-1이고 x절편 -2에서 (1/2)^(-2+a)=1이다.",
+      "note": "필요 TPL: 지수그래프 점근선과 한 점으로 이동량 결정.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fe1315d78f4cd59a0fda087864a04bde48288cbef5ccb4fe276a7833e63d7958",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": null,
+      "step": "이동 후 y=4×2^(x+1)-5,대칭 후 y=4×2^(1-x)-5이므로 x=-1을 대입한다.",
+      "note": "필요 TPL: 지수그래프 평행·대칭 이동 후 함숫값.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_63288d6f0196f28af4c810e6dcea5f3182d83edc6811d6e0aca3303292d989e5",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": null,
+      "step": "높이 4에서 A의 x좌표는 -2,B는 -1이므로 밑변 1과 높이 4로 넓이를 계산한다.",
+      "note": "필요 TPL: 같은 높이 지수그래프 두 점과 원점의 삼각형 넓이.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5f025b4f7813da33941ed67a0d3918095816edfe326acf4b3fc42673ee8876a1",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": null,
+      "step": "그림에서 y=x의 높이 1에 대응하는 로그그래프 x좌표는 2,다음 높이 2에 대응하는 x좌표는 4이다.",
+      "note": "필요 TPL: 로그그래프와 y=x 사이 수평수직 연결점 추적.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fba8c74ab02b40d021169d0e800e9d3d7b882d61cbe0a59c1150d8926a144b04",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+      "templateKey": "TPL_H22A_01_LOG_PROPERTIES_076",
+      "step": "세로길이 log2 k-log8 k=(2/3)log2 k=4/3을 푼다.",
+      "note": "",
+      "figure": true,
+      "check": "NOT_RUN",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_806b6de3525dd34fa0b22279b7e9453a328f7109d3af93c6aaa7739f04168284",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_02_EXP_INEQUALITY",
+      "templateKey": "TPL_H22A_02_EXP_INEQUALITY_083",
+      "step": "두 인수가 같은 부호인 범위는 -3<x<4이므로 정수 -2,-1,0,1,2,3을 센다.",
+      "note": "",
+      "figure": false,
+      "check": "NOT_RUN",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a5f1576efa7ec10799bb443774fb9e55f0eaeb3f13d08fb43ce92bf186ffc1f3",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_02_EXP_INEQUALITY",
+      "templateKey": "TPL_H22A_02_EXP_INEQUALITY_083",
+      "step": "2a²=16에서 a=2^(3/2)이고 2a^x≥1024는 x≥6이다.",
+      "note": "",
+      "figure": false,
+      "check": "NOT_RUN",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6510b924283a1f6d8777582de1593c6ef0244048b1835f20f19ba83baeae4309",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_02_EXP_INEQUALITY",
+      "templateKey": "TPL_H22A_02_EXP_INEQUALITY_083",
+      "step": "0.96^n≤1/2에 로그를 취하면 -0.02n≤-0.30이므로 n≥15이다.",
+      "note": "",
+      "figure": false,
+      "check": "NOT_RUN",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_deb13b0795a02ec723f68d7ad0e207afdcd55b4d0b1f68a6fa8742d62b2f64d5",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": null,
+      "step": "역함수 대칭으로 Q=(2,14),넓이로 PR=13,R=(1,2)를 얻어 a-b=2,a²-b=14에서 a=4,b=2이다.",
+      "note": "필요 TPL: 지수·로그 역함수 대칭점과 삼각형 넓이로 매개변수 결정.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c5997c6f22de30785d264e5d2c0746dc964626afb4bf3d231ffca6534377c1ec",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_03_LOG_INEQUALITY",
+      "templateKey": "TPL_H22A_03_LOG_INEQUALITY_091",
+      "step": "거리 30에서 c=30이고 y≥60이면 log_(1/2)(T/T0)≥2이므로 T/T0≤1/4이다.",
+      "note": "",
+      "figure": false,
+      "check": "NOT_RUN",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_대수.jsonl"
+    }
+  ]
+}

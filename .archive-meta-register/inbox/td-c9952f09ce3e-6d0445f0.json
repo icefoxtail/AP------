@@ -1,0 +1,519 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-c9952f09ce3e-6d0445f0",
+  "examUid": "비상_확률과통계_확률분포_중단원학습점검_고2",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/비상교육_확률과통계/비상_확률과통계_확률분포_중단원학습점검_고2/비상_확률과통계_확률분포_중단원학습점검_고2.js",
+  "expectedSourceBlobSha1": "e25f4d322205a4784f44492a527122ae238a3931",
+  "expectedQuestionCount": 18,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_확률과통계.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c9952f09ce3e-6d0445f0.type-ledger.json",
+        "sha256": "5be771ca997de62b13b2a109cf9e0b5e75b75a41275e4029db4e32e31ed7770f"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_7bd214d29180d1f02aa5f62cc5885b1cf42d03dbe4f4160494dc8771b19498ee",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION"
+      },
+      "rationale": "확률표로 평균1/4와 이차적률3/4를 구해 분산11/16을 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "0b837d036c57c960364d7b9410c59e0f37c6412ac1a1840c7328a8ca1da53dcb",
+        "contentFingerprint": "f37e7d8d9851f7dac18dfb6b81ea0c45bb16c446ef2c16676bac1b4b6ee7342d"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c9952f09ce3e-6d0445f0.type-ledger.json",
+          "sha256": "5be771ca997de62b13b2a109cf9e0b5e75b75a41275e4029db4e32e31ed7770f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_80bd23307b744c6ec6d8be2a94e5d7afc3103fd2220677edfb00eb0b64835a6f",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS"
+      },
+      "rationale": "B(90,1/3)의 평균30,분산20,표준편차2√5를 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "c1abb1fe179809b9d9d86b9948b05ca2df4b2dfc788659fc1b62367992391dad",
+        "contentFingerprint": "76d31b117ca24b9583a429d7efa69832a54e1e864672f53cf4264136c530fff5"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c9952f09ce3e-6d0445f0.type-ledger.json",
+          "sha256": "5be771ca997de62b13b2a109cf9e0b5e75b75a41275e4029db4e32e31ed7770f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_85b6f127ba046a3c2135b0ac4b886c75d619e4137a128a41be6d0990b810919f",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+        "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY"
+      },
+      "rationale": "[-1,0]의 밀도그래프 삼각형 넓이1/4를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "5875afc8b3a8c09de50f5b0a27e64a2163e3904d33f219d3a4fcbb867da0da22",
+        "contentFingerprint": "855eda3b3605b10fa92107a02cbad45c4f093e2c03fd3a1653779e0d88f823f8"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c9952f09ce3e-6d0445f0.type-ledger.json",
+          "sha256": "5be771ca997de62b13b2a109cf9e0b5e75b75a41275e4029db4e32e31ed7770f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_edc8db96760902a74e4c79330d570e9fc0d040b261d2951a3d5f2df3f186ee1f",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_STANDARDIZATION"
+      },
+      "rationale": "43을 (43-40)/3=1로 표준화한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "491fd2a5aff94afdb7f659cfa4555729d648a3280902288c2c009fb2d0aaa476",
+        "contentFingerprint": "f334e680646ada8e5dc8716d74fa03360f6c14e0857041b861fbc6ebe32bbec9"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c9952f09ce3e-6d0445f0.type-ledger.json",
+          "sha256": "5be771ca997de62b13b2a109cf9e0b5e75b75a41275e4029db4e32e31ed7770f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_da74b577fd0cce8af4b5d79bcd7721bf6cafe2955f22ead2b90d8c0325abfa03",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION"
+      },
+      "rationale": "확률합으로 a=6을 정하고 평균7/3과 분산5/9를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "23a24ae1da89307ae9e27c25c218b5094c9f80a7b70a29680bcd3356aff1def1",
+        "contentFingerprint": "832709e1e87118f63767a2477834cc39fc04003d019627bff2853cd5e29fdad9"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c9952f09ce3e-6d0445f0.type-ledger.json",
+          "sha256": "5be771ca997de62b13b2a109cf9e0b5e75b75a41275e4029db4e32e31ed7770f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_64c16ed1afd78cc123dc5562f64b70d4685da3f38c3e276948ebaab4787f2f45",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE"
+      },
+      "rationale": "첫 흰 공까지의 횟수분포를 구해 평균3/2를 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "1e5656eabfb26b331573789bfe86e8e5207bd3231d3e0b2a282e9ae94253dbcc",
+        "contentFingerprint": "f8eeacc3c83ef75c1f3a769ca2090d20c02ac5c84ae13091b35499542e959f6a"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c9952f09ce3e-6d0445f0.type-ledger.json",
+          "sha256": "5be771ca997de62b13b2a109cf9e0b5e75b75a41275e4029db4e32e31ed7770f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e80ae0558e9a7c1a3bb92185788de42fa6f3ce911b2547f4752d73fea644d8bb",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION"
+      },
+      "rationale": "세 카드 최댓값3,4,5의 확률1/10,3/10,6/10으로 분산9/20을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "1220c91c5f8372f7de49d8bba48016a92ee87210999b4bb325be7efc5e0ecbaf",
+        "contentFingerprint": "ec25f96914ef3f81d4dfb2c80fa42a418f68fa8fa95ff177ead3eac5a31a1512"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c9952f09ce3e-6d0445f0.type-ledger.json",
+          "sha256": "5be771ca997de62b13b2a109cf9e0b5e75b75a41275e4029db4e32e31ed7770f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a3f4986da2d0eeac6172ec4a0f9c901621a2425c875f2523dfc30755f947bf26",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION"
+      },
+      "rationale": "선형변환 조건에서 E(X)=5,V(X)=2를 얻어 E(X²)=27을 복원한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "217ae2e12d952da9872de27377ac54029ab6806ea933ff94a439cc26fbb41c03",
+        "contentFingerprint": "3e3213d5d27ca6d097088e257cc4c01058b2acfbae925ebf51cc3496662ac296"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c9952f09ce3e-6d0445f0.type-ledger.json",
+          "sha256": "5be771ca997de62b13b2a109cf9e0b5e75b75a41275e4029db4e32e31ed7770f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_cc117ba44f185c4540c6b9482f1ba5ba56071a4145aeb84a2ef740448c67a04c",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS"
+      },
+      "rationale": "p³=8/27에서 p=2/3이고 분산3p(1-p)=2/3이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "c57ae9b14669422b70ffcf0ddec4f0964b6e81b3ac708786bf7fdef78669f7b5",
+        "contentFingerprint": "22fe114b165b03cfcacb4a3501b8e98409f1e9f9d848aa06ddbaf5ce24cf9608"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c9952f09ce3e-6d0445f0.type-ledger.json",
+          "sha256": "5be771ca997de62b13b2a109cf9e0b5e75b75a41275e4029db4e32e31ed7770f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_bf0abc2cfd940f53690cf0e339aac5b91fd6adc325ce6728adab1600b6d73af4",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS"
+      },
+      "rationale": "두 눈의 곱이 소수일 확률1/6로 B(36,1/6)의 평균을 선형변환한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "74fe3fb24ec78f7274d1112f2ab22434c3a998824f63e2d367269dc5e2499557",
+        "contentFingerprint": "689e4485c399999254ded3d7e94c1b5617cf9c62f36932531a1888ef76e63af3"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c9952f09ce3e-6d0445f0.type-ledger.json",
+          "sha256": "5be771ca997de62b13b2a109cf9e0b5e75b75a41275e4029db4e32e31ed7770f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_daca6b1ef9517deee867ccfedca5501c833380e20c0fb2dd183518fafdee71bf",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+        "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY"
+      },
+      "rationale": "꺾인 밀도그래프의 전체 넓이5k/2=1과 x≥1 부분 넓이를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "f8177f27960faaf649a095ad2d7d4fae04e829a4c808aa007ecc56591077d57d",
+        "contentFingerprint": "dc3a6d0dad76030e74f69858c63bcdc5d9fbba5068169f073dcb27e8356fe66a"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c9952f09ce3e-6d0445f0.type-ledger.json",
+          "sha256": "5be771ca997de62b13b2a109cf9e0b5e75b75a41275e4029db4e32e31ed7770f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7113685c8e063fe6b2b62152284751bf13b94af02aa31e8293da716624b2b8ce",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION"
+      },
+      "rationale": "중앙확률.9544에서4/σ=2로 σ=2를 구하고15의 z=1.5를 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "415aa82604fbac52d0095b9ea8fa660af7d5644b2b5d13cc3a319c613b90b552",
+        "contentFingerprint": "86877b8af4b0b44bfe8e3d02a363ab69bb8b045d7c15511acd933c1447e6e109"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c9952f09ce3e-6d0445f0.type-ledger.json",
+          "sha256": "5be771ca997de62b13b2a109cf9e0b5e75b75a41275e4029db4e32e31ed7770f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2ad7fa403fb96e2774c40cc1fb112067c99c67c3502027136627ff0680a74af4",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION"
+      },
+      "rationale": "양쪽 구간을 표준화하여 맞은편 경계 (k-50)/3=-(k-64)/4를 푼다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "1746320e29cfee211d1b61a3bcaf3ec7ac53ee280760f8a2b955ac399c299f02",
+        "contentFingerprint": "f832995cf23b1928b517038af86638155502646ead792538642d814fda30136f"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c9952f09ce3e-6d0445f0.type-ledger.json",
+          "sha256": "5be771ca997de62b13b2a109cf9e0b5e75b75a41275e4029db4e32e31ed7770f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_8de31afe2f4599c5c9352b8c7c8a4cf70718a1d8739121ff221e3d789e8f916c",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_STANDARDIZATION"
+      },
+      "rationale": "57을 (57-60)/3=-1로 표준화해 왼쪽 꼬리를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "256252d61f9f5929129fbf2f193fc9dcfea875499c83665c7e18eab6dacfeea2",
+        "contentFingerprint": "21f6a1354b57f4d385023e79b198695713a36e05edfd99e5c039a93eb78d4814"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c9952f09ce3e-6d0445f0.type-ledger.json",
+          "sha256": "5be771ca997de62b13b2a109cf9e0b5e75b75a41275e4029db4e32e31ed7770f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2e857227c16bfafc568f45a7ee75e43d01790f931e5162e1401c99bc35205e99",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_NORMAL_RELATION"
+      },
+      "rationale": "B(400,.2)를 N(80,8²)로 근사하여72..96의 z=-1..2를 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "9a29d8cb1ccd16b0b94553f5419ee18f3731b5a19fa68203a53d0cb4be7709cb",
+        "contentFingerprint": "2412d1cf73549fc6d95f8d690499e50969bba10cb285d9b7eb42cbb64c106c91"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c9952f09ce3e-6d0445f0.type-ledger.json",
+          "sha256": "5be771ca997de62b13b2a109cf9e0b5e75b75a41275e4029db4e32e31ed7770f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a11ae23a4092d61ad7b8d3db6171a45fd39e056112a240bbdc8472889775bf27",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_EXPECTATION_TRANSFORM"
+      },
+      "rationale": "주사위 눈을7에서 뺀 대칭변환으로 중간값 X와7-X가 같은 분포이므로 평균7/2이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "4f24526e37772e89bd221ce725f3be527fcb3549fc12db675310d8a9c52f8fe2",
+        "contentFingerprint": "61a3848966f2a49a4135d97983c6090a216b7376ea0154c19868a68277409f6d"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c9952f09ce3e-6d0445f0.type-ledger.json",
+          "sha256": "5be771ca997de62b13b2a109cf9e0b5e75b75a41275e4029db4e32e31ed7770f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_cccdfaaeeed1b8792891b358a932e39f929df2f7c802dbc68062fdb360bd5143",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION"
+      },
+      "rationale": "꼬리 대칭으로 평균31을 정하고 길이10인 구간을 평균 중심으로 배치한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "98b425ab76605918bb712b7ee152fe460318a5dab11801d624df69345784a504",
+        "contentFingerprint": "9098f8c0f2e8a2eaa2f5381d38adf2fea7c14e38ecca1bd37da2c5882ed9b175"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c9952f09ce3e-6d0445f0.type-ledger.json",
+          "sha256": "5be771ca997de62b13b2a109cf9e0b5e75b75a41275e4029db4e32e31ed7770f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d8dbbc5d3c1d237f6f9ffe6c0643cb1c417dc9a2bc7456d99bd4f729ac03c620",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_NORMAL_RELATION"
+      },
+      "rationale": "개별 정상확률 .9를 구하고 정상상자수 B(900,.9)를 정규근사하여828의 z=2를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "338aed3a8807519f19ee7ade3b4b2ac8c56a9b6603e90aef4e034351cb292db9",
+        "contentFingerprint": "327398612b843a2bbffe71e53afbd600a580bac1897c8fe78446fa15dfc4cae6"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c9952f09ce3e-6d0445f0.type-ledger.json",
+          "sha256": "5be771ca997de62b13b2a109cf9e0b5e75b75a41275e4029db4e32e31ed7770f"
+        }
+      ]
+    }
+  ]
+}
