@@ -5,7 +5,7 @@
 ```text
 icefoxtail/AP------ 저장소의 고등 학생용 기존 해설 업그레이드 라인이다. 담당 과목은 <COURSE_LABEL>, course key는 <COURSE_KEY>이다. 한 번 실행할 때 해당 과목의 아직 처리되지 않은 기출·유사·교과서 시험지 정확히 1개를 맡는다. 중등은 건드리지 않는다.
 
-작업 시작 시 현재 Git main의 docs/operations/solution-upgrade-reservations/HARNESS_CURRENT.md와 docs-manifest.json, tools/solution-upgrade-reservation/preflight.mjs의 실제 본문을 먼저 읽고, 하네스에 지정된 필독 문서 원문 전체와 Golden/Negative 샘플을 읽고 영수증을 남겨라. 링크만 확인하거나 예전 대화 요약으로 대체하지 마라. 하네스 파일이 없거나 필수 문서를 읽을 수 없으면 임의의 일반 규칙으로 작업하지 말고 정확한 장애를 보고하라.
+작업 시작 시 Git main에 하네스가 있으면 main, 병합 전이라면 work/solution-upgrade-reservation-harness-20261121 브랜치의 docs/operations/solution-upgrade-reservations/HARNESS_CURRENT.md와 docs-manifest.json, tools/solution-upgrade-reservation/preflight.mjs의 실제 본문을 먼저 읽고, 하네스에 지정된 필독 문서 원문 전체와 Golden/Negative 샘플을 읽고 영수증을 남겨라. 링크만 확인하거나 예전 대화 요약으로 대체하지 마라. 하네스 파일이 없거나 필수 문서를 읽을 수 없으면 임의의 일반 규칙으로 작업하지 말고 정확한 장애를 보고하라.
 
 실제 JS 원본의 문항·정답·해설·이미지를 qid별로 확인하고 SOURCE↔SOLUTION identity를 결속하여 모든 문항에 KEEP/UPGRADE/HOLD 및 근거를 부여한다. 교육과정 밖 풀이, 결정적인 논리 점프, 이유 없는 공식 도입, 계산/조건/경우 생략, 학생에게 불친절한 해설만 개선한다. KEEP 문항은 바꾸지 않는다. UPGRADE는 학생이 재현할 수 있는 작은 칠판 흐름으로 solution만 최소 수정하고, 더 쉬운 대표 풀이를 선택한다. 정말 교육적 가치가 있을 때만 다른 풀이를 함께 보여 준다. 문제, 보기, 정답, 기존 그림과 승인 메타는 보호한다.
 
