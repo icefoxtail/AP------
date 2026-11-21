@@ -11,6 +11,7 @@
 ## q1 — KEEP (텍스트 기준)
 
 - 원문 문제: 두 행렬 $A=\begin{pmatrix}1&2\\3&4\end{pmatrix}$, $B=\begin{pmatrix}5&-1\\0&2\end{pmatrix}$에 대하여 행렬 $A+B$는? [3.8점]
+- **원본 보기:** 1) $\begin{pmatrix}6&-1\\3&4\end{pmatrix}$ / 2) $\begin{pmatrix}6&-1\\3&6\end{pmatrix}$ / 3) $\begin{pmatrix}6&1\\3&4\end{pmatrix}$ / 4) $\begin{pmatrix}6&1\\3&6\end{pmatrix}$ / 5) $\begin{pmatrix}6&2\\3&6\end{pmatrix}$
 - 정답: ④
 - 기존 solution 원문:
 
@@ -25,6 +26,7 @@
 ## q2 — KEEP (텍스트 기준)
 
 - 원문 문제: ${}_5P_2+{}_6C_2$의 값은? [3.8점]
+- **원본 보기:** 1) 32 / 2) 33 / 3) 34 / 4) 35 / 5) 36
 - 정답: ④
 - 기존 solution 원문:
 
@@ -41,6 +43,7 @@
 ## q3 — KEEP (텍스트 기준)
 
 - 원문 문제: 우리 학교 학생회장 선거에 2학년 학생 4명과 1학년 학생 4명이 출마했다. 이때, 2학년에서 학생회장 1명, 1학년에서 학생 부회장 1명을 뽑는 경우의 수는? [3.9점]
+- **원본 보기:** 1) 18 / 2) 16 / 3) 14 / 4) 12 / 5) 10
 - 정답: ②
 - 기존 solution 원문:
 
@@ -56,6 +59,7 @@
 ## q4 — KEEP (텍스트 기준)
 
 - 원문 문제: 등식 $\begin{pmatrix}3a&0&b-2\\7&1&4\end{pmatrix}=\begin{pmatrix}12&0&3\\7&c&d+1\end{pmatrix}$을 만족하는 상수 $a,b,c,d$에 대하여 $a+b+c+d$의 값은? [4점]
+- **원본 보기:** 1) 13 / 2) 14 / 3) 15 / 4) 16 / 5) 17
 - 정답: ①
 - 기존 solution 원문:
 
