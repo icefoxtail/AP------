@@ -1,10 +1,10 @@
-# 2023 금당고 고1 1학기 기말 — 심층 감사 (그림 검증 보류)
+# 2023 금당고 고1 1학기 기말 — 심층 감사 (원본 그림 검증 완료)
 
 - lane30; original h1/1final; standardCourse: 수학(상), 2015 개정 고1 범위.
 - sourcePath: `archive/exams/original/high/h1/1final/23_금당고_1학기_기말_고1_기출.js`; sourceBlobSha: `02402a3a6ea327e167d35b2b9433a959cf5cc7d6`; denominator 21.
-- 실제 원본 문제·보기·정답·solution 21/21 판독. KEEP 17 / UPGRADE 1(q19) / HOLD 3(q8,q12,q15) / UNREAD 0.
-- 원본 문제 PNG 파일 3개 base64 원본 fetch 및 Git blob SHA 확인: q8 `09c34f11a8b03fa837c392f32a03d960d570f629`, q12 `b05bb6bcf6ebd4e8cc51b0cb9feb0360fb246772`, q15 `ac3b1eaffc102411d5ad107a6c210a41ff3d8768`. 시각적 픽셀 판독은 이미지 디코딩 도구 오류로 NOT_RUN. q8,q12,q15는 VISUAL_HOLD. 학생 exam/sol/ans 렌더 및 Golden/Negative 독립 calibration: NOT_RUN.
-- EXAM_AUDIT_COMPLETE=NO (그림 실물 확인 후 HOLD 해소 필요); EXAM_DRAFT_COMPLETE=YES (q19 완성 개선 풀이 작성·독립 검산); nextQid=8 (이미지 확인부터).
+- 실제 원본 문제·보기·정답·solution 21/21 판독. KEEP 20 / UPGRADE 1(q19) / HOLD 0 / UNREAD 0.
+- 원본 문제 PNG 파일 3개 base64 원본 fetch 및 Git blob SHA 확인: q8 `09c34f11a8b03fa837c392f32a03d960d570f629`, q12 `b05bb6bcf6ebd4e8cc51b0cb9feb0360fb246772`, q15 `ac3b1eaffc102411d5ad107a6c210a41ff3d8768`. GitHub base64 원본의 줄바꿈을 제거하여 PNG로 디코딩하고 세 그림 모두 실제 픽셀 판독 완료. q8 삼각형 내분선, q12 정사각형의 두 평행선 배치, q15 원의 접선·P/Q/R 배치를 확인함. 학생 exam/sol/ans 렌더 및 Golden/Negative 독립 calibration: NOT_RUN.
+- EXAM_AUDIT_COMPLETE=YES (21문항 전수 판독 및 그림 HOLD 3건 해소); EXAM_DRAFT_COMPLETE=YES (q19 완성 개선 풀이 작성·독립 검산); nextQid=NONE (다음 미완료 h1/1final 시험지로 이동).
 - 하네스/매니페스트/core 문서 조회. 실행기 preflight/read-receipt 검증: NOT_RUN. 시각·출고 PASS 아님.
 
 ## q1 — KEEP
@@ -70,14 +70,14 @@
 - 독립 계산·판정: 중점 (0,2), 원선분 기울기 2, 수직 기울기 −1/2를 구한 뒤 y=0으로 절편 4를 계산한다.
 - 그림: 문제 이미지 없음; 문제 그림 없음. 학생 렌더 NOT_RUN.
 
-## q8 — HOLD
+## q8 — KEEP
 
 - 원문 조건: 오른쪽 그림과 같이 세 점 $A(1,5)$, $B(-1,1)$, $C(7,2)$를 꼭짓점으로 하는 삼각형 $ABC$에서 $\angle A$의 이등분선이 변 $BC$와 만나는 점을 $D(a,b)$라 할 때, $a+b$의 값은? (단, $a,b$는 상수이다.) [4.2점]
 - 원문 보기: 1) $\dfrac83$ / 2) $\dfrac{18}{5}$ / 3) $\dfrac{28}{5}$ / 4) $6$ / 5) $\dfrac{28}{3}$
 - 원본 answer: ②; standardCourse: 수학(상); sourceBlobSha: `02402a3a6ea327e167d35b2b9433a959cf5cc7d6`.
 - 기존 solution 원문 발췌: [키포인트] / 각의 이등분선은 마주 보는 변을 양쪽 변의 길이의 비로 나눈다. / 먼저 두 변 $AB$, $AC$의 길이를 구한다.
-- 독립 계산·판정: AB=2√5, AC=3√5, BD:DC=2:3과 내분점 (11/5,7/5)의 계산은 수학적으로 일치한다. 다만 원본 그림의 꼭짓점·내분점 배치 미확인.
-- 그림: assets/images/23_금당고_1학기_기말_고1_기출/q8.png; 원본 PNG 실제 픽셀 미확인. GitHub archive/assets/images/23_금당고_1학기_기말_고1_기출/q8.png를 열어 점·선·배치와 조건 대조 후 KEEP/UPGRADE 재판정 필요. 학생 렌더 NOT_RUN.
+- 독립 계산·판정: AB=2√5, AC=3√5, BD:DC=2:3과 내분점 (11/5,7/5)의 계산은 수학적으로 일치한다. 실제 q8.png에서 A(1,5), B(−1,1), C(7,2), D가 BC 위에 있고 AD가 ∠A를 이등분함을 판독해 좌표·내분비와 일치함을 확인.
+- 그림: assets/images/23_금당고_1학기_기말_고1_기출/q8.png; 원본 PNG 실제 픽셀 판독 완료, 점·선·배치와 계산 일치. 학생 렌더 NOT_RUN.
 
 ## q9 — KEEP
 
@@ -106,14 +106,14 @@
 - 독립 계산·판정: 첫 조건 x≥−5는 양의 정수에서 자동 성립하고 (x+6)(x−2a)≤0에서 1≤2a<2를 유도한다.
 - 그림: 문제 이미지 없음; 문제 그림 없음. 학생 렌더 NOT_RUN.
 
-## q12 — HOLD
+## q12 — KEEP
 
 - 원문 조건: 아래 그림과 같이 평행한 두 직선 $x+(a-3)y+2=0$, $ax-2y+a^2=0$ 위에 사각형 $ABCD$가 정사각형이 되도록 네 점 $A,B,C,D$를 잡을 때, 이 정사각형의 넓이는? (단, $a$는 상수이다.) [4.4점]
 - 원문 보기: 1) $\dfrac15$ / 2) $\dfrac45$ / 3) $\dfrac75$ / 4) $\dfrac95$ / 5) $\dfrac{16}{5}$
 - 원본 answer: ①; standardCourse: 수학(상); sourceBlobSha: `02402a3a6ea327e167d35b2b9433a959cf5cc7d6`.
 - 기존 solution 원문 발췌: [키포인트] / 두 직선이 평행하다는 조건으로 $a$를 먼저 구하고, 두 평행한 직선 사이의 거리를 정사각형의 한 변의 길이로 사용한다. / 첫 번째 직선 $x+(a-3)y+2=0$의 기울기는 $-\dfrac1{a-3}$이고,
-- 독립 계산·판정: 평행 조건에서 a=1 또는 2를 얻고 일치 직선 a=2를 제외, a=1에서 평행선 거리 1/√5와 넓이 1/5를 계산한다. 다만 실제 그림의 두 변 배치 미확인.
-- 그림: assets/images/23_금당고_1학기_기말_고1_기출/q12.png; 원본 PNG 실제 픽셀 미확인. GitHub archive/assets/images/23_금당고_1학기_기말_고1_기출/q12.png를 열어 점·선·배치와 조건 대조 후 KEEP/UPGRADE 재판정 필요. 학생 렌더 NOT_RUN.
+- 독립 계산·판정: 평행 조건에서 a=1 또는 2를 얻고 일치 직선 a=2를 제외, a=1에서 평행선 거리 1/√5와 넓이 1/5를 계산한다. 실제 q12.png에서 AD가 첫 직선 위, BC가 둘째 직선 위이고 AB·DC가 두 평행선에 수직인 정사각형 배치를 확인. 한 변이 직선 사이 거리이므로 넓이 1/5가 맞음.
+- 그림: assets/images/23_금당고_1학기_기말_고1_기출/q12.png; 원본 PNG 실제 픽셀 판독 완료, 평행선·정사각형 배치 일치. 학생 렌더 NOT_RUN.
 
 ## q13 — KEEP
 
@@ -133,14 +133,14 @@
 - 독립 계산·판정: 왼쪽 조건의 최소 x²−2x=−1, 오른쪽 조건의 최대 x²−3x=4를 각각 구해 a≤−1/2,b≥4, 최솟값 5를 달성한다.
 - 그림: 문제 이미지 없음; 문제 그림 없음. 학생 렌더 NOT_RUN.
 
-## q15 — HOLD
+## q15 — KEEP
 
 - 원문 조건: 그림과 같이 $y$축과 직선 $l:y=\dfrac{\sqrt3}{3}x$에 동시에 접하는 반지름의 길이가 $r$인 원이 있다. $y$축과 원이 만나는 점을 $P$, 직선 $l$과 만나는 점을 $Q$, 두 점 $P,Q$를 지나는 직선이 $x$축과 만나는 점을 $R$이라 하자. 삼각형 $QOR$의 넓이가 $4\sqrt3$일 때, $9r^2$의 값은? (단, 원의 중심은 제1사분면 위에 있고, $O$는 원점이다.) [4.4점]
 - 원문 보기: 1) 12 / 2) 21 / 3) 30 / 4) 39 / 5) 48
 - 원본 answer: ⑤; standardCourse: 수학(상); sourceBlobSha: `02402a3a6ea327e167d35b2b9433a959cf5cc7d6`.
 - 기존 solution 원문 발췌: [키포인트] / 원의 중심은 두 접선까지의 거리가 모두 반지름과 같아야 한다. 이 조건으로 중심을 잡고, 점 $P,Q,R$의 위치를 구한다. / 원이 $y$축에 접하고 반지름이 $r$이므로 원의 중심의 $x$좌표는 $r$이다.
-- 독립 계산·판정: 중심 (r,√3r), P=(0,√3r), Q=(3r/2,√3r/2), R=(3r,0)으로 넓이 3√3r²/4=4√3을 얻는다. 다만 원이 직선 위쪽에 놓인다는 그림 조건 미확인.
-- 그림: assets/images/23_금당고_1학기_기말_고1_기출/q15.png; 원본 PNG 실제 픽셀 미확인. GitHub archive/assets/images/23_금당고_1학기_기말_고1_기출/q15.png를 열어 점·선·배치와 조건 대조 후 KEEP/UPGRADE 재판정 필요. 학생 렌더 NOT_RUN.
+- 독립 계산·판정: 중심 (r,√3r), P=(0,√3r), Q=(3r/2,√3r/2), R=(3r,0)으로 넓이 3√3r²/4=4√3을 얻는다. 실제 q15.png에서 원이 y축 오른쪽 및 기울기 양수인 직선 l의 위쪽에 있고, P는 y축 접점, Q는 l의 접점, R은 PQ의 양의 x절편임을 확인. 중심 (r,√3r), Q=(3r/2,√3r/2), R=(3r,0), 넓이 3√3r²/4=4√3에서 r²=16/3, 9r²=48=⑤와 일치.
+- 그림: assets/images/23_금당고_1학기_기말_고1_기출/q15.png; 원본 PNG 실제 픽셀 판독 완료, 접선·원·P/Q/R 위치 일치. 학생 렌더 NOT_RUN.
 
 ## q16 — KEEP
 
@@ -239,8 +239,9 @@ k&=5\quad(k>0).
 - 독립 계산·판정: 반지름 √2t, 현 AB=√6t, 필요한 높이 6√2/t에서 평행선의 원 교점 수가 0,1,2,3,4로 바뀌는 경계 t=2,2√3을 구한다. m=√3/2에서 t=4/√3,2√3,8/√3의 세 근을 직접 확인한다.
 - 그림: 문제 이미지 없음; 문제 그림 없음. 학생 렌더 NOT_RUN.
 
-## 재개 지시
+## 감사 종료 및 다음 재개
 
-- q8, q12, q15 원본 PNG를 GitHub에서 실제 fetch/시각 판독하고 원문과 해설의 기하 조건을 확인한다.
-- 확인 후 세 HOLD를 개별 판정하고 EXAM_AUDIT_COMPLETE 상태를 재평가한다. 본 시험지가 완결되기 전 다음 시험지로 이동하지 않는다.
-- 원본 JS/SVG/main 및 타 lane MD 변경 없음.
+- 21/21 판독, KEEP 20 / UPGRADE 1(q19, 학생용 완성 풀이·독립 검산 포함) / HOLD 0 / UNREAD 0.
+- q8, q12, q15 원본 PNG를 GitHub에서 base64로 재조회, 줄바꿈 제거 후 이미지 직접 표시·시각 판독하여 HOLD 해소. Git blob SHA는 머리말에 고정.
+- EXAM_AUDIT_COMPLETE=YES; EXAM_DRAFT_COMPLETE=YES; nextQid=NONE. 다음은 본인 staged/h1의 기존 완료 내역과 원본 목록을 비교해 h1/1final 최신→과거의 다음 미완료 시험지 q1부터 진행.
+- 학생 exam/sol/ans 실제 렌더·Golden/Negative 정식 검증 및 전체 해설 SVG 시각검사 NOT_RUN. 출고 PASS 아님. JS/SVG/main/타 lane 변경 없음.
