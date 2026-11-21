@@ -1,6 +1,6 @@
 # 25_효천고 고1 1학기 중간 — 문항별 감사
 
-원본 `archive/exams/original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js`, SHA `0b59ce1056ac8d6c012ee1f0af716172b0fd61c7`, 공통수학1, 23문항. KEEP 16, HOLD 7, UPGRADE 0, UNREAD 0. EXAM_AUDIT_COMPLETE=true(문항별 1차), EXAM_DRAFT_COMPLETE=false(HOLD 남음), 시각·Golden·Negative·렌더 NOT_RUN. 출고 PASS 아님.
+원본 `archive/exams/original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js`, SHA `0b59ce1056ac8d6c012ee1f0af716172b0fd61c7`, 공통수학1, 23문항. KEEP 17, HOLD 6, UPGRADE 0, UNREAD 0. EXAM_AUDIT_COMPLETE=true(문항별 1차), EXAM_DRAFT_COMPLETE=false(HOLD 남음), 시각·Golden·Negative·렌더 NOT_RUN. 출고 PASS 아님.
 
 ## q1 — KEEP
 
@@ -55,7 +55,7 @@ $k$의 계수를 비교하면 $a+1 = 2 \implies a = 1$ 이다.
 
 **독립 검산 및 판단:** k계수 a+1=2 ⇒ a=1, 상수 b=−2, 차3. 원문 계산 흐름과 결과 일치.
 
-## q4 — HOLD
+## q4 — KEEP
 
 **문제:** 다음 중 인수분해가 옳지 않은 것은?
 
@@ -71,7 +71,7 @@ $k$의 계수를 비교하면 $a+1 = 2 \implies a = 1$ 이다.
 ⑤ 세제곱의 합 인수분해 공식이므로 옳다.
 따라서 정답은 ④이다.
 
-**독립 검산 및 판단:** ④의 좌우를 각각 전개하면 불일치, 다른 보기 식도 원문에서 대조 필요. 전체 조건·선지·대수 검증 미해결로 HOLD.
+**재검증 및 판정:** 독립 검산: ① (a−2)³=a³−6a²+12a−8. ② (a+b+c)(a²+b²+c²−ab−bc−ca)=a³+b³+c³−3abc. ③ (a−2b+c)²=a²+4b²+c²−4ab−4bc+2ac. ④ (x²+x+1)(x²−x+1)=(x²+1)²−x²=x⁴+x²+1≠x⁴−x²+1. ⑤ (x+y)(x²−xy+y²)=x³+y³. 따라서 유일하게 옳지 않은 것은 ④, 정답 ④. 기존 풀이가 전 항목을 충족하므로 KEEP.
 
 ## q5 — KEEP
 
