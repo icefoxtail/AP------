@@ -1,0 +1,133 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sOR",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "R"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sRH",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "R",
+          "H"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sOR",
+      "refs": [
+        "O",
+        "R"
+      ]
+    },
+    {
+      "id": "sRH",
+      "refs": [
+        "R",
+        "H"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "R",
+    "H"
+  ],
+  "coordinateLabels": [
+    "O",
+    "R",
+    "H"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "3, 8, 원기둥",
+      "mappedTo": [
+        "O",
+        "R",
+        "H"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "반지름 3 높이 8 원기둥 양쪽 반구 입체"
+  ],
+  "caption": "반지름 3 높이 8 원기둥 양쪽 반구 입체"
+}
