@@ -3,11 +3,11 @@
 - 상태: **IN_PROGRESS / EXAM_AUDIT_COMPLETE=NO / EXAM_DRAFT_COMPLETE=NO**
 - sourcePath: `archive/exams/original/high/h2/2final/22_매산고_2학기_기말_고2_수학II.js`; source blob SHA: `8142605df32ecdfad9208d01b24c47fdb6dbcc3a`; 원본 ref: main
 - 과목: 수학II / 교육과정 2015; 문항수 20
-- 원본 JS 전 문항의 발문·보기·정답·solution 텍스트를 확보했으나, 독립 수학 검산 및 문제 PNG 판독 미완료. 아래의 KEEP은 **잠정**이며 완료 판정이 아니다.
+- 원본 JS 전 문항의 발문·보기·정답·solution 텍스트를 확보했으나, 독립 수학 검산 및 문제 PNG 판독 미완료. 아래의 미검산 KEEP은 **잠정**이며 완료 판정이 아니다.
 - Golden/Negative 독립 샘플 판독, preflight receipt, 학생 렌더: NOT_RUN. 원본 JS/SVG/main 미변경.
-- nextQid: Q01 (전 문항 독립 검산 재개). 미완료 UPGRADE: 검산 후 판정. 미완료 그림: Q03, Q19.
+- nextQid: Q03 (Q01·Q02 및 Q04·Q05·Q06·Q08·Q10 수학 검산 완료, 나머지 재개). 미완료 UPGRADE: 검산 후 판정. 미완료 그림: Q03, Q19.
 
-## Q01 — KEEP_PROVISIONAL
+## Q01 — KEEP
 
 - source ordinal/id: 1/1; sourceIdentityKey: NOT_PRESENT; 원본 blob: `8142605df32ecdfad9208d01b24c47fdb6dbcc3a`
 - **문제 원문:** 1. 함수 $f(x)=x^3-3x+5$의 극댓값은? [3.7점]
@@ -21,10 +21,10 @@
 > 따라서 $x=-1$에서 극대이고 $f(-1)=(-1)^3-3(-1)+5=7$입니다.
 > 보기 $3,5,9,11$은 계산된 극댓값 $7$과 다르므로 정답은 ③입니다.
 
-- **판정 근거 및 남은 확인:** 원문 풀이에 위의 구체적 계산 연결이 있으나, 원본 정답과 독립 대입 검산 및 조건 검증 전이므로 KEEP 잠정. 문제 이미지 필드 없음.
-- 독립 검산: NOT_RUN. 학생용 완성 개선 풀이: 아직 미판정. 상태: READ_EVIDENCED / QA_NOT_RUN.
+- **독립 수학 검산 및 KEEP 근거:** 도함수 영점 ±1에서 부호는 (+,−,+). x=-1에서 +→−, f(-1)=-1+3+5=7=③. 기존 부호표와 대입이 모두 명시되어 KEEP.
+- 독립 검산: PASS (위 식 재계산). 학생용 개선 풀이: 불필요. 상태: READ_EVIDENCED / MATH_CHECKED / RELEASE_QA_NOT_RUN.
 
-## Q02 — KEEP_PROVISIONAL
+## Q02 — KEEP
 
 - source ordinal/id: 2/2; sourceIdentityKey: NOT_PRESENT; 원본 blob: `8142605df32ecdfad9208d01b24c47fdb6dbcc3a`
 - **문제 원문:** 2. 수직선 위를 움직이는 점 $\mathrm{P}$의 시각 $t$에서의 위치 $x$가 $x=t^2-4t+2$일 때, $t=6$에서의 속도는? [3.8점]
@@ -38,8 +38,8 @@
 > $t=6$을 대입하면 $v(6)=12-4=8$입니다.
 > 다른 보기 $4,5,6,7$은 $t=6$의 미분값이 아니므로 정답은 ⑤입니다.
 
-- **판정 근거 및 남은 확인:** 원문 풀이에 위의 구체적 계산 연결이 있으나, 원본 정답과 독립 대입 검산 및 조건 검증 전이므로 KEEP 잠정. 문제 이미지 필드 없음.
-- 독립 검산: NOT_RUN. 학생용 완성 개선 풀이: 아직 미판정. 상태: READ_EVIDENCED / QA_NOT_RUN.
+- **독립 수학 검산 및 KEEP 근거:** v(t)=dx/dt=2t−4, v(6)=8=⑤. 기존 풀이가 미분→대입을 직접 연결하여 KEEP.
+- 독립 검산: PASS (위 식 재계산). 학생용 개선 풀이: 불필요. 상태: READ_EVIDENCED / MATH_CHECKED / RELEASE_QA_NOT_RUN.
 
 ## Q03 — HOLD
 
@@ -60,7 +60,7 @@
 - **판정 근거 및 남은 확인:** 그래프·조건·경우분류·고난도 전개 중 독립 검산이 끝나지 않아 HOLD. 문제 이미지 assets/images/22_매산고_2학기_기말_고2_수학II/q3.png 실물 시각 판독 NOT_RUN; VISUAL_HOLD.
 - 독립 검산: NOT_RUN. 학생용 완성 개선 풀이: 아직 미판정. 상태: READ_EVIDENCED / QA_NOT_RUN.
 
-## Q04 — KEEP_PROVISIONAL
+## Q04 — KEEP
 
 - source ordinal/id: 4/4; sourceIdentityKey: NOT_PRESENT; 원본 blob: `8142605df32ecdfad9208d01b24c47fdb6dbcc3a`
 - **문제 원문:** 4. 다항함수 $f(x)$의 한 부정적분을 $F(x)$라고 하면
@@ -80,10 +80,10 @@
 > $f(1)=0$에서 $-3+6+C=0$, 즉 $C=-3$입니다.
 > 따라서 $f(x)=-3x^2+6x-3$이므로 ⑤입니다. 다른 보기는 이 미분식과 초기조건을 동시에 만족하지 않습니다.
 
-- **판정 근거 및 남은 확인:** 원문 풀이에 위의 구체적 계산 연결이 있으나, 원본 정답과 독립 대입 검산 및 조건 검증 전이므로 KEEP 잠정. 문제 이미지 필드 없음.
-- 독립 검산: NOT_RUN. 학생용 완성 개선 풀이: 아직 미판정. 상태: READ_EVIDENCED / QA_NOT_RUN.
+- **독립 수학 검산 및 KEEP 근거:** F'=f로 미분하면 xf'=-6x²+6x; 다항식 항등식으로 f'=-6x+6, f=-3x²+6x+C, f(1)=0에서 C=-3. 원식 F=xf+2x³−3x²의 미분이 f와 일치하므로 ⑤ KEEP.
+- 독립 검산: PASS (위 식 재계산). 학생용 개선 풀이: 불필요. 상태: READ_EVIDENCED / MATH_CHECKED / RELEASE_QA_NOT_RUN.
 
-## Q05 — KEEP_PROVISIONAL
+## Q05 — KEEP
 
 - source ordinal/id: 5/5; sourceIdentityKey: NOT_PRESENT; 원본 blob: `8142605df32ecdfad9208d01b24c47fdb6dbcc3a`
 - **문제 원문:** 5. 함수 $f(x)=x^3+ax^2+ax-2$가 구간 $(-\infty, \infty)$에서 증가하도록 하는 정수 $a$의 개수는? [4.0점]
@@ -98,10 +98,10 @@
 > 따라서 $0\le a\le3$이고 가능한 정수는 $0,1,2,3$의 네 개입니다.
 > 나머지 보기 $3,5,6,7$은 가능한 정수의 수가 아니므로 정답은 ②입니다.
 
-- **판정 근거 및 남은 확인:** 원문 풀이에 위의 구체적 계산 연결이 있으나, 원본 정답과 독립 대입 검산 및 조건 검증 전이므로 KEEP 잠정. 문제 이미지 필드 없음.
-- 독립 검산: NOT_RUN. 학생용 완성 개선 풀이: 아직 미판정. 상태: READ_EVIDENCED / QA_NOT_RUN.
+- **독립 수학 검산 및 KEEP 근거:** f'=3x²+2ax+a의 전구간 비음수 조건은 판별식 4a(a−3)≤0, 0≤a≤3. 정수 0,1,2,3 네 개로 ②. 경계 D=0도 허용됨을 확인하여 KEEP.
+- 독립 검산: PASS (위 식 재계산). 학생용 개선 풀이: 불필요. 상태: READ_EVIDENCED / MATH_CHECKED / RELEASE_QA_NOT_RUN.
 
-## Q06 — KEEP_PROVISIONAL
+## Q06 — KEEP
 
 - source ordinal/id: 6/6; sourceIdentityKey: NOT_PRESENT; 원본 blob: `8142605df32ecdfad9208d01b24c47fdb6dbcc3a`
 - **문제 원문:** 6. $k \ge 0$인 임의의 정수 $k$에 대하여 다항함수 $f(x)$가
@@ -119,8 +119,8 @@
 > 즉 $1+3+5+7+9=25$입니다.
 > 다른 보기 $10,12,20,60$은 다섯 구간의 적분값 합이 아니므로 정답은 ④입니다.
 
-- **판정 근거 및 남은 확인:** 원문 풀이에 위의 구체적 계산 연결이 있으나, 원본 정답과 독립 대입 검산 및 조건 검증 전이므로 KEEP 잠정. 문제 이미지 필드 없음.
-- 독립 검산: NOT_RUN. 학생용 완성 개선 풀이: 아직 미판정. 상태: READ_EVIDENCED / QA_NOT_RUN.
+- **독립 수학 검산 및 KEEP 근거:** 적분의 가법성으로 Σ(k=0..4)(2k+1)=1+3+5+7+9=25=④. 다항함수의 구체식이 없어도 조건만으로 결정되므로 KEEP.
+- 독립 검산: PASS (위 식 재계산). 학생용 개선 풀이: 불필요. 상태: READ_EVIDENCED / MATH_CHECKED / RELEASE_QA_NOT_RUN.
 
 ## Q07 — HOLD
 
@@ -141,7 +141,7 @@
 - **판정 근거 및 남은 확인:** 그래프·조건·경우분류·고난도 전개 중 독립 검산이 끝나지 않아 HOLD. 문제 이미지 필드 없음.
 - 독립 검산: NOT_RUN. 학생용 완성 개선 풀이: 아직 미판정. 상태: READ_EVIDENCED / QA_NOT_RUN.
 
-## Q08 — KEEP_PROVISIONAL
+## Q08 — KEEP
 
 - source ordinal/id: 8/8; sourceIdentityKey: NOT_PRESENT; 원본 blob: `8142605df32ecdfad9208d01b24c47fdb6dbcc3a`
 - **문제 원문:** 8. 수직선 위를 움직이는 점 $\mathrm{P}$의 시각 $t(t \ge 0)$에서의 속도 $v(t)$와 가속도 $a(t)$가 다음 조건을 만족시킨다.
@@ -161,8 +161,8 @@
 > 따라서 $2<t\le3$에서 $v(t)>0$이고 이동거리는 $\int_2^3(6t^2+4t-32)dt=[2t^3+2t^2-32t]_2^3=16$입니다.
 > 전체 거리는 $8+16=24$이므로 정답은 ⑤입니다. $16,18,20,22$는 두 구간의 이동거리를 모두 더한 값이 아닙니다.
 
-- **판정 근거 및 남은 확인:** 원문 풀이에 위의 구체적 계산 연결이 있으나, 원본 정답과 독립 대입 검산 및 조건 검증 전이므로 KEEP 잠정. 문제 이미지 필드 없음.
-- 독립 검산: NOT_RUN. 학생용 완성 개선 풀이: 아직 미판정. 상태: READ_EVIDENCED / QA_NOT_RUN.
+- **독립 수학 검산 및 KEEP 근거:** 0≤t≤2에서 v=2t(t²−4)≤0, 거리 8. t≥2에서 v=6t²+4t−32=2(t−2)(3t+8)≥0, ∫₂³v=16. 합 24=⑤. t=2의 속도 연속성을 사용한 기존 전개가 충분하여 KEEP.
+- 독립 검산: PASS (위 식 재계산). 학생용 개선 풀이: 불필요. 상태: READ_EVIDENCED / MATH_CHECKED / RELEASE_QA_NOT_RUN.
 
 ## Q09 — HOLD
 
@@ -189,7 +189,7 @@
 - **판정 근거 및 남은 확인:** 그래프·조건·경우분류·고난도 전개 중 독립 검산이 끝나지 않아 HOLD. 문제 이미지 필드 없음.
 - 독립 검산: NOT_RUN. 학생용 완성 개선 풀이: 아직 미판정. 상태: READ_EVIDENCED / QA_NOT_RUN.
 
-## Q10 — KEEP_PROVISIONAL
+## Q10 — KEEP
 
 - source ordinal/id: 10/10; sourceIdentityKey: NOT_PRESENT; 원본 blob: `8142605df32ecdfad9208d01b24c47fdb6dbcc3a`
 - **문제 원문:** 10. 미분가능한 함수 $f(x)$가
@@ -207,8 +207,8 @@
 > 따라서 $a=0$ 또는 $a=4$인데 $a>0$이므로 $a=4$입니다.
 > 나머지 보기 $-3,-2,8,9$는 이 조건을 만족하지 않으므로 정답은 ③입니다.
 
-- **판정 근거 및 남은 확인:** 원문 풀이에 위의 구체적 계산 연결이 있으나, 원본 정답과 독립 대입 검산 및 조건 검증 전이므로 KEEP 잠정. 문제 이미지 필드 없음.
-- 독립 검산: NOT_RUN. 학생용 완성 개선 풀이: 아직 미판정. 상태: READ_EVIDENCED / QA_NOT_RUN.
+- **독립 수학 검산 및 KEEP 근거:** x=a를 대입하면 0=a²−4a=a(a−4). a>0에서 a=4=③. 기존 풀이에 경계조건과 후보 제거가 명시되어 KEEP.
+- 독립 검산: PASS (위 식 재계산). 학생용 개선 풀이: 불필요. 상태: READ_EVIDENCED / MATH_CHECKED / RELEASE_QA_NOT_RUN.
 
 ## Q11 — HOLD
 
@@ -456,7 +456,12 @@
 - **판정 근거 및 남은 확인:** 그래프·조건·경우분류·고난도 전개 중 독립 검산이 끝나지 않아 HOLD. 문제 이미지 필드 없음.
 - 독립 검산: NOT_RUN. 학생용 완성 개선 풀이: 아직 미판정. 상태: READ_EVIDENCED / QA_NOT_RUN.
 
+## 이번 실행의 추가 검산 기록
+
+- Q01, Q02, Q04, Q05, Q06, Q08, Q10은 실제 수학 계산을 독립 재검산하여 KEEP 확정. 나머지 13문항은 아직 미완료(KEEP 잠정 2, HOLD 11). 원본 PNG Q03/Q19는 시각 판독 미완료.
+- 필독 하네스 3종은 harness 브랜치에서 확인. docs-manifest.json은 해당 ref 루트에서 NOT_FOUND였고 core 전수 읽기 및 Golden/Negative는 NOT_RUN. 따라서 이 문서는 계속 IN_PROGRESS.
+
 ## 진행 집계
 
-- 읽은 원본 문항 텍스트: 20/20; KEEP 확정 0; KEEP 잠정 9; UPGRADE 확정 0; HOLD 11; UNREAD(원문 텍스트) 0.
+- 읽은 원본 문항 텍스트: 20/20; KEEP 확정 7; KEEP 잠정 2; UPGRADE 확정 0; HOLD 11; UNREAD(원문 텍스트) 0.
 - **완료 시험지 수에 산입 금지.** 원문을 읽은 것과 전 문항 수학적 독립 검산은 다르다. 다음 실행에서 이 문서를 우선 재개하고, 미해결 qid와 이미지 확인 뒤 상태 갱신.
