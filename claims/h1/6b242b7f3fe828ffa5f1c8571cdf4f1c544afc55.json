@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "solution_upgrade_exam_claim",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "ownerLane": "lane10",
   "workerBranch": "work/solution-upgrade-lane-10-20261121",
   "courseKey": "h1",
@@ -13,10 +13,21 @@
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2025_geumdang_2final_DEEP_AUDIT.md",
   "draftedQuestionIds": [],
   "remainingWork": [
-    "Read each Q1-Q22 content/choices/answer/solution and needed original assets",
-    "Write all UPGRADE student solutions, independently check, commit/readback"
+    "Release/Golden/Negative/solutionImage actual render and visual QA: NOT_RUN"
   ],
-  "nextQid": 1,
-  "stateNotes": "Source main standardCourse=공통수학2 in all 22 qids; independent create_file claim required before work.",
-  "sourcePath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js"
+  "nextQid": null,
+  "stateNotes": "22/22 qids student solution direct read, Q6/Q16 original PNG inspected, all 22 KEEP with specific math evidence. MD commit bc33dcaa5cae2f46fe3a0cd5ce86a9bce8d8d343; NOT production PASS.",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_금당고_2학기_기말_고1_기출.js",
+  "examAuditComplete": true,
+  "examDraftComplete": true,
+  "auditCounts": {
+    "total": 22,
+    "read": 22,
+    "keep": 22,
+    "upgrade": 0,
+    "hold": 0,
+    "unread": 0
+  },
+  "auditBlobSha": "6f39ce89c30cc3124e04a50404c99ec767c4cf43",
+  "finishedAtKst": "2026-11-21"
 }
