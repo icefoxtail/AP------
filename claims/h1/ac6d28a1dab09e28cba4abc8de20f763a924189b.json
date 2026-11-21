@@ -3,19 +3,49 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane10",
   "workerBranch": "work/solution-upgrade-lane-10-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2final",
   "sourceYear": 2021,
   "sourcePath": "archive/exams/original/high/h1/2final/21_효천고_2학기_기말_고1_기출.js",
   "sourceBlobSha": "ac6d28a1dab09e28cba4abc8de20f763a924189b",
-  "sourceQuestionCount": null,
+  "sourceQuestionCount": 22,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2021_hyocheon_2final_DEEP_AUDIT.md",
-  "draftedQuestionIds": [],
-  "remainingWork": [
-    "q1-qN exact originals, choices, answers and existing solutions audit; every upgrade drafted"
+  "draftedQuestionIds": [
+    11,
+    13,
+    18,
+    20,
+    22
   ],
-  "nextQid": 1,
-  "stateNotes": "Exclusive claim before new source reading; must resume if interrupted."
+  "remainingWork": [],
+  "nextQid": null,
+  "stateNotes": "All 22 qids full original read and audited; 5 complete student draft MDs read back; q16 original PNG viewed; q13 new graph only SVG_REQUEST, release/visual NOT_RUN.",
+  "readQuestionCount": 22,
+  "decisionCounts": {
+    "KEEP": 17,
+    "UPGRADE": 5,
+    "HOLD": 0,
+    "UNREAD": 0
+  },
+  "examAuditComplete": true,
+  "examDraftComplete": true,
+  "visualStatus": "VISUAL_HOLD",
+  "visualHoldQuestionIds": [
+    13
+  ],
+  "svgRequestPath": "docs/operations/solution-upgrade-reservations/staged/h1/2021_hyocheon_2final_SVG_REQUEST.md",
+  "goldenStatus": "NOT_RUN",
+  "negativeStatus": "NOT_RUN",
+  "renderStatus": "NOT_RUN",
+  "releaseStatus": "NOT_RUN",
+  "auditCommit": "58960969f382d8b753509139b1f6b7b3f6db9de2",
+  "studentPaths": [
+    "docs/operations/solution-upgrade-reservations/staged/h1/2021_hyocheon_2final_q11.md",
+    "docs/operations/solution-upgrade-reservations/staged/h1/2021_hyocheon_2final_q13.md",
+    "docs/operations/solution-upgrade-reservations/staged/h1/2021_hyocheon_2final_q18.md",
+    "docs/operations/solution-upgrade-reservations/staged/h1/2021_hyocheon_2final_q20.md",
+    "docs/operations/solution-upgrade-reservations/staged/h1/2021_hyocheon_2final_q22.md"
+  ]
 }
