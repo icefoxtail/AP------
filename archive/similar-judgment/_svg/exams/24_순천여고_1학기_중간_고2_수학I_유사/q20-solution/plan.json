@@ -1,0 +1,173 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sOX1",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "X1"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sX1X2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "X1",
+          "X2"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sX2X3",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "X2",
+          "X3"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sOX1",
+      "refs": [
+        "O",
+        "X1"
+      ]
+    },
+    {
+      "id": "sX1X2",
+      "refs": [
+        "X1",
+        "X2"
+      ]
+    },
+    {
+      "id": "sX2X3",
+      "refs": [
+        "X2",
+        "X3"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "X1",
+    "X2",
+    "X3"
+  ],
+  "coordinateLabels": [
+    "O",
+    "X1",
+    "X2",
+    "X3"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "부등식, 범위",
+      "mappedTo": [
+        "O",
+        "X1",
+        "X2",
+        "X3"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "연립부등식 지수 및 로그 부등식 공통 해 (0, 1]"
+  ],
+  "caption": "연립부등식 지수 및 로그 부등식 공통 해 (0, 1]"
+}
