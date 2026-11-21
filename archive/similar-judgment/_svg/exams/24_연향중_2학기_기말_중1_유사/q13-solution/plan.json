@@ -1,0 +1,173 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "8"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sOR1",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "R1"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sR1R2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "R1",
+          "R2"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sR2H",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "R2",
+          "H"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sOR1",
+      "refs": [
+        "O",
+        "R1"
+      ]
+    },
+    {
+      "id": "sR1R2",
+      "refs": [
+        "R1",
+        "R2"
+      ]
+    },
+    {
+      "id": "sR2H",
+      "refs": [
+        "R2",
+        "H"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "R1",
+    "R2",
+    "H"
+  ],
+  "coordinateLabels": [
+    "O",
+    "R1",
+    "R2",
+    "H"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "96, 48, 54, 198",
+      "mappedTo": [
+        "O",
+        "R1",
+        "R2",
+        "H"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "옆넓이 96 48 밑면 54 겉넓이 198파이"
+  ],
+  "caption": "옆넓이 96 48 밑면 54 겉넓이 198파이"
+}
