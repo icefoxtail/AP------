@@ -1,0 +1,173 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sOM1",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "M1"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sM1T",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "M1",
+          "T"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sTM2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "T",
+          "M2"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sOM1",
+      "refs": [
+        "O",
+        "M1"
+      ]
+    },
+    {
+      "id": "sM1T",
+      "refs": [
+        "M1",
+        "T"
+      ]
+    },
+    {
+      "id": "sTM2",
+      "refs": [
+        "T",
+        "M2"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "M1",
+    "T",
+    "M2"
+  ],
+  "coordinateLabels": [
+    "O",
+    "M1",
+    "T",
+    "M2"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "최댓값, 최솟값",
+      "mappedTo": [
+        "O",
+        "M1",
+        "T",
+        "M2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "코사인함수 최댓값 5 최솟값 -1 연속 두 최솟값 x=0, 2pi"
+  ],
+  "caption": "코사인함수 최댓값 5 최솟값 -1 연속 두 최솟값 x=0, 2pi"
+}

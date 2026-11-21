@@ -1,0 +1,213 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "sOT1",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "O",
+          "T1"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sT1T2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "T1",
+          "T2"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sT2B1",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "T2",
+          "B1"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "sB1B2",
+        "op": "SEGMENT_LENGTH",
+        "inputs": [
+          "B1",
+          "B2"
+        ],
+        "args": {},
+        "outputType": "SCALAR",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "sOT1",
+      "refs": [
+        "O",
+        "T1"
+      ]
+    },
+    {
+      "id": "sT1T2",
+      "refs": [
+        "T1",
+        "T2"
+      ]
+    },
+    {
+      "id": "sT2B1",
+      "refs": [
+        "T2",
+        "B1"
+      ]
+    },
+    {
+      "id": "sB1B2",
+      "refs": [
+        "B1",
+        "B2"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "T1",
+    "T2",
+    "B1",
+    "B2"
+  ],
+  "coordinateLabels": [
+    "O",
+    "T1",
+    "T2",
+    "B1",
+    "B2"
+  ],
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "최솟값, 교점",
+      "mappedTo": [
+        "O",
+        "T1",
+        "T2",
+        "B1",
+        "B2"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "y=5sin 2x+7 그래프와 y=t 교점 x좌표 합 g(t)"
+  ],
+  "caption": "y=5sin 2x+7 그래프와 y=t 교점 x좌표 합 g(t)"
+}
