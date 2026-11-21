@@ -1,6 +1,6 @@
 # 24_강남여고 고1 1학기 중간 — 문항별 심층 감사
 
-원본 `archive/exams/original/high/h1/1mid/24_강남여고_1학기_중간_고1_기출.js` SHA `231b8c0536cff5b6eacf47a57575f2da9542519a`; standardCourse=수학(상), 24문항. KEEP 16 / HOLD 8 / UPGRADE 0 / UNREAD 0. EXAM_AUDIT_COMPLETE=true(문항별 1차), EXAM_DRAFT_COMPLETE=false(HOLD 잔여). 시각·Golden·Negative·렌더 NOT_RUN. 출고 PASS 아님.
+원본 `archive/exams/original/high/h1/1mid/24_강남여고_1학기_중간_고1_기출.js` SHA `231b8c0536cff5b6eacf47a57575f2da9542519a`; standardCourse=수학(상), 24문항. KEEP 17 / HOLD 7 / UPGRADE 0 / UNREAD 0. EXAM_AUDIT_COMPLETE=true(문항별 1차), EXAM_DRAFT_COMPLETE=false(HOLD 잔여). 시각·Golden·Negative·렌더 NOT_RUN. 출고 PASS 아님.
 
 ## q1 — KEEP
 
@@ -169,7 +169,7 @@ $a^4\geq0$, $8a^2\geq0$, $80>0$이므로 분자의 값은 항상 양수다.
 
 **독립 검산·판정:** 첫 중근 D=0 ⇒ a²+b+5=0, 둘째 판별식 D/4=a²−b²−4b; 부호 조건 확인 필요. 조건/그림/보기 또는 독립 증명의 잔여 확인이 있어 HOLD.
 
-## q9 — HOLD
+## q9 — KEEP
 
 **원문:** 9. 다항식 $(x+1)(x+3)(x+5)(x+7)+a$가 $x$에 대하여 이차식의 완전제곱꼴로 인수분해되기 위한 상수 $a$값은? [3.8점]
 
@@ -186,7 +186,7 @@ $u^2-10u+25=(u-5)^2$이므로 완전제곱이 되려면
 $9+a=25$, 즉 $a=16$이어야 한다.
 그러므로 정답은 ②이다.
 
-**독립 검산·판정:** 곱 (x+1)(x+7)(x+3)(x+5)=[(x+4)²−9][(x+4)²−1], 완전제곱 상수 보정 계산 필요. 조건/그림/보기 또는 독립 증명의 잔여 확인이 있어 HOLD.
+**재검증 및 판정:** 독립 검산: t=x+4라 놓으면 (x+1)(x+7)(x+3)(x+5)=(t²−9)(t²−1)=t⁴−10t²+9. 여기에 a를 더한 식이 최고차항 계수 1인 이차식의 제곱이라면 (t²+c)²=t⁴+2ct²+c² 형태이며 2c=−10 ⇒ c=−5, c²=25. 따라서 9+a=25 ⇒ a=16(②). (t²−5)²로 직접 역검산. 기존 풀이 충분하여 KEEP.
 
 ## q10 — KEEP
 
