@@ -39,6 +39,8 @@
 4. Golden 2~3개 및 관련 Negative sample을 현행 calibration 문서대로 실제 판독한다. 타인 결과를 통과 근거로 삼지 않는다.
 5. 실제 source/문항/해설을 읽지 못하거나 문서 열람·교육과정 확인이 불가능하면 `PASS`가 아니라 `NOT_RUN`/`EVIDENCE_DEBT`/`HOLD`로 남기고 수정·커밋을 중단한다.
 
+**식 전개 샘플 필독:** [`BOARD_SOLUTION_SAMPLES_CURRENT.md`](BOARD_SOLUTION_SAMPLES_CURRENT.md)의 **학생용 solution 예시 5개와 앞의 작성 원칙을 실제로 읽는다.** 이 예시는 자체 Golden/Negative sample을 대체하거나 문항의 정답·수학적 권위가 되지 않는다. 한국어 코멘트는 발상·범위·조건의 이유에만 쓰고, 중요한 계산은 실제 등호 전개로 이어라.
+
 ## 4. 한 시험지 처리
 
 1. 소스 경로, Git SHA, `questionUid` 및 content/choices/image fingerprint, 수정 전 solution hash를 기록하고 전 문항을 실제로 읽는다.
