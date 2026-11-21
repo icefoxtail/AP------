@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane10",
   "workerBranch": "work/solution-upgrade-lane-10-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2final",
@@ -12,10 +12,30 @@
   "sourceBlobSha": "88b5697d4d8dfd854b7e2cb4c4bf25ebdb10eb95",
   "sourceQuestionCount": 23,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2024_maesan-girls_2final_DEEP_AUDIT.md",
-  "draftedQuestionIds": [],
-  "remainingWork": [
-    "Q1-Q23 full question audit and upgraded student explanations"
+  "draftedQuestionIds": [
+    16,
+    22
   ],
-  "nextQid": 1,
-  "stateNotes": "All 2025 2final and 2024 Gangnam Girls/Geumdang audit-draft-complete; 2024 Maesan Girls earliest unclaimed in source list."
+  "remainingWork": [],
+  "nextQid": null,
+  "stateNotes": "23/23 items fully audited with all original problem/choices/answer/solution in MD; improved Q16 and Q22 full student explanations independently checked and GitHub readback.",
+  "auditQuestionCount": 23,
+  "readQuestionCount": 23,
+  "decisionCounts": {
+    "KEEP": 21,
+    "UPGRADE": 2,
+    "HOLD": 0,
+    "UNREAD": 0
+  },
+  "studentDraftPaths": [
+    "docs/operations/solution-upgrade-reservations/staged/h1/2024_maesan-girls_2final_q16.md",
+    "docs/operations/solution-upgrade-reservations/staged/h1/2024_maesan-girls_2final_q22.md"
+  ],
+  "qualityGates": {
+    "visual": "NOT_RUN",
+    "render": "NOT_RUN",
+    "golden": "NOT_RUN",
+    "negative": "NOT_RUN",
+    "release": "NOT_PASS"
+  }
 }
