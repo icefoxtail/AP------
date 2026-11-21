@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane20",
   "workerBranch": "work/solution-upgrade-lane-20-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "1mid",
@@ -12,46 +12,33 @@
   "sourceBlobSha": "aa2d7d9a9b2170f4398bb7982a0902e6f5d7ae4b",
   "sourceQuestionCount": 23,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/22_순천여고_1학기_중간_고1_기출_DEEP_AUDIT.md",
-  "draftedQuestionIds": [],
-  "remainingWork": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
+  "draftedQuestionIds": [
     9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    20,
-    21,
-    22,
     23
   ],
-  "nextQid": 1,
-  "stateNotes": "Lane20 exclusive 2022 grade1 first-semester midterm; full q1-q23 audit starting.",
-  "readQuestionCount": 0,
+  "remainingWork": [],
+  "nextQid": null,
+  "stateNotes": "23/23 original qids read; q9 integer-sum and q23 remainder polynomial full drafts. q20 original price table and q21 graph visually unverified; both HOLD. Image assets exist under archive/assets/images. Production QA NOT_RUN.",
+  "readQuestionCount": 23,
   "decisionCounts": {
-    "KEEP": 0,
-    "UPGRADE": 0,
-    "HOLD": 0,
-    "UNREAD": 23
+    "KEEP": 19,
+    "UPGRADE": 2,
+    "HOLD": 2,
+    "UNREAD": 0
   },
-  "examAuditComplete": false,
-  "examDraftComplete": false,
-  "visualStatus": "NOT_RUN",
+  "examAuditComplete": true,
+  "examDraftComplete": true,
+  "visualStatus": "VISUAL_HOLD",
   "goldenStatus": "NOT_RUN",
   "negativeStatus": "NOT_RUN",
   "renderStatus": "NOT_RUN",
-  "releaseStatus": "NOT_RUN"
+  "releaseStatus": "NOT_RUN",
+  "visualHoldQuestionIds": [
+    20,
+    21
+  ],
+  "auditCommit": "606640e0574299bef64387dbb060721eb87076d6",
+  "studentPaths": [
+    "docs/operations/solution-upgrade-reservations/staged/h1/22_순천여고_1학기_중간_고1_기출_DEEP_AUDIT.md"
+  ]
 }
