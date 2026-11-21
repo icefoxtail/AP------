@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane10",
   "workerBranch": "work/solution-upgrade-lane-10-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2final",
@@ -12,10 +12,31 @@
   "sourceBlobSha": "90a09d9ae16c3865fc35055fa23baee3e93d4c43",
   "sourceQuestionCount": 21,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2022_geumdang_2final_DEEP_AUDIT.md",
-  "draftedQuestionIds": [],
-  "remainingWork": [
-    "q1-q21 direct problem/choices/answer/solution deep audit and all needed improved drafts"
+  "draftedQuestionIds": [
+    10,
+    13,
+    17,
+    21
   ],
-  "nextQid": 1,
-  "stateNotes": "2022 GangnamGirls completed 24/24; next unclaimed 2022 Geumdang current 2final stage."
+  "remainingWork": [],
+  "nextQid": null,
+  "stateNotes": "21/21 source qids and full solution quoted, four equation-driven student drafts committed and read back; q14/q16 PNG adjacency not verified (UnicodeDecodeError). VISUAL_HOLD, not production PASS.",
+  "readQuestionCount": 21,
+  "decisionCounts": {
+    "KEEP": 15,
+    "UPGRADE": 4,
+    "HOLD": 2,
+    "UNREAD": 0
+  },
+  "examAuditComplete": true,
+  "examDraftComplete": true,
+  "visualStatus": "VISUAL_HOLD",
+  "visualHoldQuestionIds": [
+    14,
+    16
+  ],
+  "goldenStatus": "NOT_RUN",
+  "negativeStatus": "NOT_RUN",
+  "renderStatus": "NOT_RUN",
+  "releaseStatus": "NOT_RUN"
 }
