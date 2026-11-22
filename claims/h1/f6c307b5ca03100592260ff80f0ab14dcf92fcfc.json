@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane20",
   "workerBranch": "work/solution-upgrade-lane-20-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "1mid",
@@ -13,19 +13,30 @@
   "sourceQuestionCount": 21,
   "readQuestionCount": 21,
   "decisionCounts": {
-    "KEEP": 17,
+    "KEEP": 20,
     "UPGRADE": 0,
-    "HOLD": 4,
+    "HOLD": 1,
     "UNREAD": 0
   },
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/25_순천여고_1학기_중간_고1_기출_DEEP_AUDIT.md",
-  "nextQid": 9,
-  "remainingWork": [
-    "HOLD q9,q17,q18,q20 need source/visual verification",
-    "Golden/Negative/render NOT_RUN"
-  ],
+  "nextQid": null,
+  "remainingWork": [],
   "stateNotes": "Original source transcribed; judgments not yet complete. NOT_RUN visual/Golden/Negative/render.",
   "examAuditComplete": true,
   "examDraftComplete": true,
-  "auditCommitSha": "4f67ddb6cf34acc59ed5f4ae46009bab3ec15bc4"
+  "auditCommitSha": "4f67ddb6cf34acc59ed5f4ae46009bab3ec15bc4",
+  "draftedQuestionIds": [],
+  "visualStatus": "VISUAL_HOLD",
+  "visualHoldQuestionIds": [
+    5,
+    7,
+    10,
+    18,
+    20,
+    21
+  ],
+  "sourceConditionHoldQuestionIds": [
+    20
+  ],
+  "auditCommit": "2eda46b3fd0bf1208e5f8f20f232c179779c57b3"
 }
