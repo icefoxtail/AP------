@@ -24,7 +24,8 @@ NARROW_WEDGE_MAX_DEGREES=30.0
 TICK_LABEL_ALIGNMENT_TOLERANCE=4.0
 TICK_LABEL_MAX_EDGE_GAP=16.0
 TICK_LABEL_GAPS=(8,12,16)
-TICK_CALLOUT_OFFSETS=([28,-22],[-28,-22],[28,22],[-28,22],[40,-26],[-40,-26],[40,26],[-40,26],[24,-40],[-24,-40],[24,40],[-24,40],[52,-18],[-52,-18],[52,18],[-52,18])   # the label-centre offsets a tick-label leader callout may use (the first is the authored x=-6 callout)
+TICK_CALLOUT_OFFSETS=([28,-22],[-28,-22],[28,22],[-28,22],[40,-26],[-40,-26],[40,26],[-40,26],[24,-40],[-24,-40],[24,40],[-24,40],[52,-18],[-52,-18],[52,18],[-52,18],
+    [36,-40],[-36,-40],[36,40],[-36,40],[52,-40],[-52,-40],[52,40],[-52,40])   # the label-centre offsets a tick-label leader callout may use (the first is the authored x=-6 callout)
 # The central opening at a shared x-axis crossing can be narrower than a diagonal leader.
 SHARED_ZERO_TICK_CALLOUT_OFFSETS=([8,66],[-8,66],[0,66],[8,-66],[-8,-66],[0,-66])
 TICK_LABEL_SLIDES=(-2.0,2.0,-3.5,3.5)   # px along its axis a tick label may move when no centred box is clear (inside TICK_LABEL_ALIGNMENT_TOLERANCE)
