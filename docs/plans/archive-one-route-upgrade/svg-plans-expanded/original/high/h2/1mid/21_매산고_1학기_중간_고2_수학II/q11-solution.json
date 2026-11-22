@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "-1"
+        ],
+        "domain": [
+          null,
+          -1
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          -1,
+          0
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1",
+          "-1"
+        ],
+        "domain": [
+          0,
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "-1",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": [
+        "-1",
+        "1"
+      ]
+    }
+  },
+  "caption": "원본 문제 그림 대조: x<-1에서는 y=-x-2, -1<x≤0에서는 y=1, x>0에서는 y=1-x이다. x=-1에서 좌극한 -1(열린 점), 우극한 1(열린 점), 함숫값 0(닫힌 점)을 구별한다. 따라서 f(x)g(x)가 연속이려면 g(-1)=0이어야 하므로 ㄷ만 옳고 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 그래프가 아래 그림과 같을 때, 함수 $f(x)g(x)$가 닫힌구간 $[-2,1]$에서 연속이 되도록 하는 함수 $g(x)$로 알맞은 것만을 <보기>에서 있는 대로 고른 것은?<br><div class=\"exam-img-box\"><img src=\"assets/images/21_매산고_1학기_중간_고2_수학II/q11.png\" class=\"exam-img\"></div><보기> ㄱ. $y=x$ ㄴ. $y=|2x^2-2x|$ ㄷ. $y=x^3+3x^2+2x$ [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=-1의 좌극한 -1, 우극한 1(열린 점)과 함숫값 0(닫힌 점)을 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=-1에서 왼쪽 열린 점 (-1,-1), 오른쪽 열린 점 (-1,1), 가운데 닫힌 점 (-1,0)을 보인다."
+  ],
+  "accessibilityDescription": "x=-1에서 왼쪽 가지는 아래쪽 열린 점으로, 오른쪽 가지는 위쪽 열린 점에서 시작하고, 둘 사이 높이에 닫힌 점이 따로 찍혀 있는 그래프이다."
+}

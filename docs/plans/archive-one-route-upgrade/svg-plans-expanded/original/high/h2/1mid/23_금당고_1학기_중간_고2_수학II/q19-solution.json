@@ -1,0 +1,100 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-5",
+          "1"
+        ],
+        "domain": [
+          0,
+          "5/2"
+        ],
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "4",
+          "-5",
+          "1"
+        ],
+        "domain": [
+          "5/2",
+          3
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "0",
+          "9",
+          "-1"
+        ],
+        "domain": [
+          3,
+          "9/2"
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "0",
+          "9",
+          "-1"
+        ],
+        "domain": [
+          "9/2",
+          10
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "3",
+        "9"
+      ],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "9",
+        "y": "0"
+      },
+      {
+        "id": "P",
+        "x": "3",
+        "y": "-2"
+      }
+    ]
+  },
+  "caption": "f(x)는 x≤3에서 (x-1)(x-4), x>3에서 -x(x-a)이다. f(1)=f(a)=0이므로 h가 연속이려면 g(1)=g(a)=0이고, x=3에서 f가 -2에서 3a-9로 끊기므로 g(3)=0이어야 한다. 그림은 a=9일 때 A(1,0), B(9,0)에서 f가 0이 되고 x=3에서 점 P(3,-2)와 열린 점으로 끊어지는 모습이다. g(x)=(x-1)(x-9)(x-3)이고 h(1)=-16/3이므로 3h(1)=-16이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<서술형 1>\n$a>3$인 상수 $a$에 대하여 함수 $f(x)$를\n$$f(x) = \\begin{cases} x^2-5x+4 & (x \\le 3) \\\\ -x^2+ax & (x > 3) \\end{cases}$$\n라 하자. 최고차항의 계수가 $1$인 삼차함수 $g(x)$에 대하여 함수 $h(x)$가 다음 조건을 모두 만족시킬 때, $3 \\times h(1)$의 값을 풀이과정과 함께 상세하게 서술하시오. [10점]\n\n(가) $h(x)$는 실수 전체의 집합에서 연속이다.\n\n(나) $x \\ne 1, x \\ne a$일 때, $h(x) = \\frac{g(x)}{f(x)}$\n\n(다) $h(1) = h(a)$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=9일 때 f가 x=1, 9에서 0이 되고 x=3에서 끊어짐을 보여 g의 세 근 1, 3, 9를 정한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "a=9에서 f가 x=1, 9에서 0이 되고 x=3에서 점프함을 보여 g의 근 1, 3, 9의 이유를 보인다."
+  ],
+  "accessibilityDescription": "x=3의 왼쪽은 아래로 볼록한 포물선 조각, 오른쪽은 위로 볼록한 포물선 조각으로 x=3에서 끊어지고, 가로축을 x=1과 x=9에서 지나며 x=3의 닫힌 점 P가 표시된 그래프이다."
+}

@@ -1,0 +1,87 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-3",
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "1/2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "6"
+      },
+      {
+        "id": "B",
+        "x": "-2",
+        "y": "22"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-1",
+        "6"
+      ],
+      "B": [
+        "-2",
+        "22"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "a",
+        "y": "6",
+        "intersectionX": [
+          "-1"
+        ]
+      },
+      {
+        "id": "b",
+        "y": "22",
+        "intersectionX": [
+          "-2"
+        ]
+      }
+    ]
+  },
+  "caption": "두 곡선의 교점에서 k=-x³+2x²-3x=F(x)이다. F′(x)=-3x²+4x-3은 항상 음수이므로 F는 감소하고, 그림의 수평선 y=6은 A(-1,6), y=22는 B(-2,22)에서 F와 만난다. 교점의 x좌표가 (-2,-1)에 있으려면 수평선 높이 k가 6<k<22이다. 자연수 k는 7부터 21까지 15개이고 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "모든 자연수 $k$에 대하여 두 곡선 $y=x^3+k$, $y=2x^2-3x$는 한 점에서만 만난다. 두 곡선의 교점의 $x$좌표가 열린구간 $(-2, -1)$에 속하게 하는 모든 자연수 $k$의 개수는? [4.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "감소하는 F(x)와 수평선 y=6, y=22의 교점 A, B를 보여 6<k<22를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "감소하는 F(x)=-x³+2x²-3x와 x=-1, -2에서 만나는 수평선 y=6, y=22를 보여 6<k<22를 보인다."
+  ],
+  "accessibilityDescription": "오른쪽 아래로 계속 내려가는 삼차곡선과 곡선이 점 A, B에서 만나는 높이 6, 22의 수평선 두 개가 그려져 있다."
+}

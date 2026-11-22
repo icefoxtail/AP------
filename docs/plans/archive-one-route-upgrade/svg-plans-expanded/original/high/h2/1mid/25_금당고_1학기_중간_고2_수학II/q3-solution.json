@@ -1,0 +1,71 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2,
+      4,
+      -3,
+      3
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "Q",
+        "x": "0",
+        "y": "-1"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "1",
+        "0"
+      ],
+      "Q": [
+        "0",
+        "-1"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "x=1에서 분모가 0이므로 분자가 0이어야 하고 1-2+m=0에서 m=1이다. x≠1에서 f(x)=(x-1)²/(x-1)=x-1이므로 극한은 0이고 그래프는 직선 y=x-1이다. x=1의 값 n+1이 이 극한 0과 같아야 연속이므로 점 P(1,0)이 그래프 위에 있어야 하고 n=-1이다. 따라서 m+n=0이고 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\begin{cases} \\dfrac{x^2-2x+m}{x-1} & (x \\ne 1) \\\\ n+1 & (x=1) \\end{cases}$이 모든 실수 $x$에서 연속이 되도록 상수 $m, n$의 값을 정할 때, $m+n$의 값은? [3.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "m=1일 때 x≠1의 그래프 y=x-1과 x=1의 함숫값 점 P(1,0)이 이어짐을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "m=1일 때 직선 y=x-1에서 x=1의 점 P(1,0)이 함숫값 n+1=0과 같아 그래프가 끊기지 않음을 보인다."
+  ],
+  "accessibilityDescription": "기울기가 1인 직선 위에 x=1인 점 P와 y축과 만나는 점 Q가 표시된 그래프이다."
+}

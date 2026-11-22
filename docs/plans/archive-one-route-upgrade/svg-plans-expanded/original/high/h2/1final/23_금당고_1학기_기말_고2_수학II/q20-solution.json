@@ -1,0 +1,24 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["-27/5", "0", "54/5", "-32/5", "1"],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-1, 4],
+    "viewport": [-1, 4, -8, 16],
+    "requiredPoints": [
+      { "id": "L", "x": 0, "y": -5.4 },
+      { "id": "A", "x": 1, "y": 0 },
+      { "id": "H", "x": 1.8, "y": 2.7648 },
+      { "id": "B", "x": 3, "y": 0 }
+    ],
+    "axisTickValues": { "x": ["1", "3"], "y": [] }
+  },
+  "caption": "f'(x)=4x(x-9/5)(x-3)이므로 x=0, 9/5, 3에서 극값을 갖는다. f(1)=f(3)=0이므로 x=1에서 x축을 지나고 x=3에서 접한다. 이 그래프는 반직선의 최솟값이 바뀌는 구조를 설명하며, f(4)=69/5를 얻는다.",
+  "sourceConditions": [
+    { "id": "source", "condition": "최고차항이 1인 사차함수 f의 양쪽 반직선 최솟값으로 정의한 g가 연속이고 t=1에서만 미분 불가능하며 g의 극솟값 위치 중 최댓값이 3이다. f(1)=0에서 f(4)를 구한다.", "mappedTo": "PRESERVED_ARCHIVE_BANK" },
+    { "id": "method", "condition": "f'(x)=4x(x-9/5)(x-3), f(1)=f(3)=0에서 사차함수의 형태를 정한다.", "mappedTo": "diagram" }
+  ],
+  "newVisualInformation": ["x=1의 단순근과 x=3의 중근, 양의 봉우리와 두 골의 위치를 구별한다."],
+  "accessibilityDescription": "양끝이 위로 향하는 사차함수로 x=0에서 음의 극솟값, x=9/5에서 양의 극댓값, x=3에서 0의 극솟값을 가지며 x=1을 통과한다."
+}

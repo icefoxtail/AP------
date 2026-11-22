@@ -1,0 +1,45 @@
+{
+  "scope": "미적분Ⅰ(구 수학Ⅱ) 원본 기출: 1학기 중간 → 1학기 기말, 이어서 2학기 중간 → 기말",
+  "baseMainCommit": "ce4a459ac11f660720197de6fd4c98675fe2f105",
+  "sourcePlanBranch": "data/svg-plans-20261117",
+  "inspectionDate": "2026-11-22",
+  "inspectionMethod": [
+    "원본 PNG 직접 열기 및 여섯 시험지의 문제 그림 접촉 시트 검토",
+    "기존 해설 SVG 61개를 Sharp로 PNG화해 정적 시각 검토(공식 엔진 아님)",
+    "원본 문제 JS의 image·solutionImage 경로 존재 확인",
+    "1학기 플랜 52개에 plan-lint --shallow 적용"
+  ],
+  "periods": [
+    {
+      "period": "1mid",
+      "exams": [
+        { "exam": "21_매산고_1학기_중간_고2_수학II", "questions": 20, "problemPngRefs": 4, "solutionImageRefs": 10, "plans": 13, "correctedPlans": ["q11-solution.json", "q13-solution.json", "q17-solution.json"] },
+        { "exam": "23_금당고_1학기_중간_고2_수학II", "questions": 20, "problemPngRefs": 4, "solutionImageRefs": 9, "plans": 11 },
+        { "exam": "24_금당고_1학기_중간_고2_수학II", "questions": 19, "problemPngRefs": 1, "solutionImageRefs": 9, "plans": 10 },
+        { "exam": "25_금당고_1학기_중간_고2_수학II", "questions": 20, "problemPngRefs": 2, "solutionImageRefs": 10, "plans": 12 }
+      ]
+    },
+    {
+      "period": "1final",
+      "exams": [
+        { "exam": "23_금당고_1학기_기말_고2_수학II", "questions": 20, "problemPngRefs": 9, "solutionImageRefs": 4, "plans": 4, "newPlans": ["q8-solution.json", "q18-solution.json", "q19-solution.json", "q20-solution.json"] },
+        { "exam": "25_금당고_1학기_기말_고2_수학II", "questions": 21, "problemPngRefs": 1, "solutionImageRefs": 10, "plans": 2, "holds": ["q18: 원본 그림 x 표기는 잘라내는 길이, 저장 해설의 x는 높이로 재정의되어 변수 정의가 불일치", "q21: 삼차함수의 역함수와 대칭 그래프를 공식 플랜 엔진이 지원하는지 확인 필요"] }
+      ]
+    }
+  ],
+  "firstSemesterTotals": { "exams": 6, "questions": 120, "problemPngRefs": 21, "solutionImageRefs": 52, "missingReferencedFiles": 0, "planJsonFiles": 52, "oldPlansImported": 48, "newPlansWritten": 4, "correctedPlans": 3, "shallowLintPassed": 52 },
+  "verifiedDefects": [
+    { "exam": "21_매산고_1학기_중간_고2_수학II", "no": 11, "priorDefect": "왼쪽 가지를 y=x로, 중간 상수 구간을 누락", "fix": "왼쪽 y=-x-2, 중간 y=1, 오른쪽 y=1-x의 세 조각과 고립점 f(-1)=0" },
+    { "exam": "21_매산고_1학기_중간_고2_수학II", "no": 13, "priorDefect": "처음·마지막 사선 구간을 상수로 표현", "fix": "첫 구간 y=2x+2, 마지막 구간 y=8-3x로 복원" },
+    { "exam": "21_매산고_1학기_중간_고2_수학II", "no": 17, "priorDefect": "왼쪽 사선과 오른쪽 y=2 수평선을 다른 상수로 표현, f(-1)=0 누락", "fix": "왼쪽 y=x, 오른쪽 y=2, 고립점 f(-1)=0 및 f(3)=3" }
+  ],
+  "gate": {
+    "jsonParse": "PASS",
+    "shallowPlanLint": "PASS_52_OF_52",
+    "deepPlanLint": "BLOCKED_MISSING_NOTOSANSKR_TTF",
+    "officialSvgGeneration": "NOT_RUN",
+    "browserPcMobileA4VisualValidation": "NOT_RUN",
+    "publication": "NOT_RUN"
+  },
+  "nextInOrder": ["1학기 보류 항목의 변수 의미 재확인", "2학기 중간 42종 개별 원본·플랜 시각 대조", "2학기 기말 26종 개별 원본·플랜 시각 대조"]
+}

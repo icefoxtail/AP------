@@ -1,0 +1,95 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          0,
+          "12/5"
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "4"
+        ],
+        "domain": [
+          "12/5",
+          3
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          3,
+          4
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0"
+        ],
+        "domain": [
+          4,
+          6
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "12/5",
+        "y": "3"
+      },
+      {
+        "x": "3",
+        "y": "3"
+      },
+      {
+        "x": "4",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "12/5",
+        "3",
+        "4"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    }
+  },
+  "caption": "가로축이 r, 세로축이 교점의 개수 f(r)이다. 원 x²+y²=r²과 삼각형 OAB의 세 변이 만나는 점의 수는 0<r<12/5에서 2, r=12/5(변 AB에 접함)에서 3, 12/5<r<3에서 4, r=3(꼭짓점 B)에서 3, 3<r<4에서 2, r=4(꼭짓점 A)에서 1, r>4에서 0이다. 값이 달라지는 불연속점은 12/5, 3, 4이고 합은 12/5+3+4=47/5이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위의 세 점 $\\mathrm{O}(0, 0)$, $\\mathrm{A}(4, 0)$, $\\mathrm{B}(0, 3)$을 꼭짓점으로 하는 삼각형의 세 변과 원 $x^2+y^2=r^2$ ($r>0$)이 만나는 서로 다른 점의 개수를 $f(r)$라 할 때, 함수 $f(r)$의 불연속점들의 $r$값들의 합은? [6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "반지름 r에 따른 교점의 개수 f(r)의 계단 그래프에서 불연속점 12/5, 3, 4를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "원의 반지름 r에 따른 교점의 개수 f(r)가 12/5, 3, 4에서 끊기는 계단 그래프를 보인다."
+  ],
+  "accessibilityDescription": "반지름 r에 따라 교점의 개수가 바뀌는 계단 모양의 그래프이고, r=12/5, 3, 4에서 열린 점과 닫힌 점으로 끊어진다."
+}

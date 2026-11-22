@@ -1,0 +1,207 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lQ",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "I",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "P",
+    "Q",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sPQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "sOQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    }
+  ],
+  "displayLines": [
+    "lQ"
+  ],
+  "displayCircles": [
+    "C"
+  ],
+  "coordinateLabels": [
+    "I"
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "hiddenPointNames": [
+    "X"
+  ],
+  "labelDirections": {
+    "I": "SE"
+  },
+  "rightAngles": [
+    {
+      "id": "rP",
+      "refs": [
+        "O",
+        "P",
+        "Q"
+      ]
+    }
+  ],
+  "caption": "예: t=3일 때를 그린다. P(0,3), Q(4,3)이고 삼각형 POQ는 직각삼각형(OP=3, PQ=4, OQ=5)이다. 내접원은 y축과 직선 y=t에 접하므로 중심은 (r,t-r)이고 r=(3+4-5)/2=1에서 I(1,2)이다. 일반적으로 r=t(t+1)/(2t+1+√(t²+(t+1)²))이고 g/f=(t-r)/r=(t+√(t²+(t+1)²))/(t+1)이다. t→∞에서 극한은 1+√2이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[단답형 3] 그림과 같이 $y$축과 직선 $y=x-1$이 직선 $y=t\\,(t>0)$와 만나는 점을 각각 $\\mathrm{P,Q}$라 하자. 삼각형 $\\mathrm{POQ}$에 내접하는 원의 중심이 $(f(t),g(t))$일 때 $\\lim_{t\\to\\infty}\\frac{g(t)}{f(t)}$를 구하시오.<br><div class=\"exam-img-box\"><img src=\"assets/images/21_매산고_1학기_중간_고2_수학II/q18.png\" class=\"exam-img\"></div> [6.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "t=3에서 직각삼각형 POQ와 y축·직선 y=t에 접하는 내접원의 중심 I(1,2)를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "t=3인 예에서 직각삼각형 POQ와 내접원의 중심 I(1,2)가 (r,t-r)꼴임을 보인다."
+  ],
+  "accessibilityDescription": "원점 O, 세로축 위의 점 P, 점 P와 같은 높이의 점 Q가 직각삼각형을 이루고, 삼각형 안에 변에 접하는 원이 있으며 원의 중심 I에 좌표가 표시된 그림이다."
+}

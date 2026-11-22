@@ -1,0 +1,102 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      5
+    ],
+    "viewport": [
+      -4,
+      5,
+      -3,
+      22
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-3",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "-2",
+          "y": "5",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "x": "2",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "E",
+          "x": "3",
+          "y": "9",
+          "coordinates": true
+        },
+        {
+          "id": "F",
+          "x": "4",
+          "y": "20",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "포물선 y=x²과 y=f(x)가 지나는 여섯 점 A~F를 함께 그렸다. h(x)=f(x)-x²이라 하면 A(-3,2)는 포물선 아래(h=-7)이고 B(-2,5)는 위(h=1)이므로 (-3,-2)에서 근이 있고, B에서 C(0,-1)로 가며 아래로 내려오므로 (-2,0)에서 근이 있다. E(3,9)는 포물선 위의 점이라 h(3)=0인 근이다. 따라서 열린구간 (-3,4)에서 적어도 3개의 실근을 가지며 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연속함수 $y=f(x)$의 그래프가 여섯 점 $(-3, 2), (-2, 5), (0, -1), (2, 1), (3, 9), (4, 20)$을 지날 때, 방정식 $f(x)=x^2$은 열린구간 $(-3, 4)$에서 적어도 몇 개의 실근을 갖는지 구하면? [4.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "여섯 점이 포물선 y=x²의 위아래에 놓인 위치로 h(x)=f(x)-x²의 부호 변화와 근을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "포물선 y=x²과 f가 지나는 여섯 점의 위치로 h의 부호 변화(구간 (-3,-2), (-2,0))와 근 x=3을 보인다."
+  ],
+  "accessibilityDescription": "포물선 y=x²과 그 위아래에 흩어진 여섯 개의 점 A부터 F를 나타낸 그래프이다."
+}

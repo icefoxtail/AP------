@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          0,
+          3
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          3,
+          6
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "3",
+        "y": "6"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "3"
+      ],
+      "y": [
+        "6"
+      ]
+    }
+  },
+  "caption": "a=-9이면 x≠3에서 (x²-9)/(x-3)=x+3이라 그래프는 직선 y=x+3이고 x=3에서 높이 6의 열린 점(구멍)이 생긴다. f(3)=b인 닫힌 점이 그 구멍과 같은 높이에 있어야 연속이므로 b=6이다. 따라서 |a+b|=|-9+6|=3이고 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 함수 $f(x)$가 $x=3$에서 연속이 되도록 하는 상수 $a,b$에 대하여 $|a+b|$의 값을 구하면? $$f(x)=\\begin{cases}\\frac{x^2+a}{x-3}&(x\\ne3)\\\\b&(x=3)\\end{cases}$$ [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "직선 y=x+3의 x=3 구멍의 높이 6과 닫힌 점 (3,b)가 같아야 연속임을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "직선 y=x+3의 x=3에서 높이 6의 열린 점과 닫힌 점 (3,b)가 일치해야 연속임을 보인다."
+  ],
+  "accessibilityDescription": "오르는 직선이 x=3에서 빈 점으로 끊겼다가, 같은 높이의 닫힌 점에서 이어지는 그래프이다."
+}

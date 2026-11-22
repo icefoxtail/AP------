@@ -1,0 +1,110 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "3",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      3
+    ],
+    "viewport": [
+      -1,
+      3,
+      -7,
+      11
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "2"
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "1",
+        "2"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "U",
+          "curveX": "2",
+          "coordinates": true
+        },
+        {
+          "id": "H",
+          "x": "6/5",
+          "y": "3/5"
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "3",
+          "intercept": "1",
+          "label": "l"
+        },
+        {
+          "id": "m",
+          "slope": "3",
+          "intercept": "-3",
+          "label": "m"
+        }
+      ],
+      "segments": [
+        {
+          "id": "d",
+          "from": "T",
+          "to": "H"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "V": "V",
+    "T": "T",
+    "U": "U",
+    "H": "H"
+  },
+  "caption": "f(x)=x³-3x²+3x+1=(x-1)³+2의 도함수는 3(x-1)²이고 기울기가 3이면 x=0 또는 x=2이다. 접점은 T(0,1), U(2,3)이고 접선은 l: y=3x+1, m: y=3x-3이다. T에서 m에 내린 수선의 발을 H(6/5,3/5)라 하면 두 평행선 사이의 거리 TH는 |1-(-3)|/√10=4/√10이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "곡선 $y=x^3-3x^2+3x+1$에 접하고 직선 $3x-y+1=0$에 평행한 두 직선 사이의 거리는? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "기울기 3인 두 접선 l, m과 접점 T, U, 두 접선 사이의 거리 TH를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "기울기 3인 두 접선 l, m의 접점 T(0,1), U(2,3)와 두 평행선 사이의 거리 TH를 보인다."
+  ],
+  "accessibilityDescription": "오른쪽 위로 오르는 삼차곡선과 곡선 위의 점 V,  서로 평행하게 곡선의 양쪽 점 T, U에서 접하는 두 직선 l, m, 그리고 두 직선을 잇는 수선 TH를 나타낸 그림이다."
+}

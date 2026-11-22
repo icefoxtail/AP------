@@ -1,0 +1,87 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          null,
+          -1
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-19/20",
+          1
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          1,
+          null
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "1",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "1",
+        "y": "1"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "1",
+        "1"
+      ]
+    }
+  },
+  "caption": "예: 해설의 값을 따라 그린 그래프이다. x=-1에서 왼쪽 극한 1과 오른쪽 극한 0이 달라 극한값이 없고 f(-1)도 정의되지 않아 두 열린 점 사이가 비어 있다(ㄱ은 옳지 않다). x=1에서는 좌극한과 우극한이 모두 2이므로 극한값이 있으나 f(1)=1인 닫힌 점 P(1,1)이 따로 있어 불연속이다(ㄴ, ㄷ은 옳다). f(-1)이 없으므로 ㄹ은 옳지 않다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 그래프가 아래 그림과 같을 때, 다음 보기에서 옳지 않은 것을 모두 고르면? [5.3점]\n\n<보기>\nㄱ. $\\lim_{x\\to -1} f(x)$의 값이 존재한다.\nㄴ. 함수 $f(x)$의 불연속점은 $2$개이다.\nㄷ. $\\lim_{x\\to 1} f(x)$의 값이 존재한다.\nㄹ. $f(-1)$과 $f(1)$의 값이 존재한다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=-1의 좌극한과 우극한이 달라 극한이 없고 f(-1)이 없음, x=1의 극한 2와 f(1)=1을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=-1에서 좌극한 1, 우극한 0, 함숫값 없음과 x=1에서 극한 2, 함숫값 f(1)=1이 열린 점과 닫힌 점으로 나타난다."
+  ],
+  "accessibilityDescription": "x=-1에서 두 조각이 서로 다른 높이의 열린 점으로 끊어지고, x=1에서는 높이 2의 열린 점 두 개와 높이 1의 닫힌 점 P가 있는 조각 함수의 그래프이다."
+}

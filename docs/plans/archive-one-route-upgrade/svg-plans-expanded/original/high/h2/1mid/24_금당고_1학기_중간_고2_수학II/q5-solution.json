@@ -1,0 +1,71 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -6,
+      4
+    ],
+    "viewport": [
+      -6,
+      4,
+      -2,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "2",
+        "y": "7"
+      },
+      {
+        "id": "Q",
+        "x": "0",
+        "y": "5"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "2",
+        "7"
+      ],
+      "Q": [
+        "0",
+        "5"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "x≠2에서 (x-2)(x+5)/(x-2)=x+5이므로 그래프는 직선 y=x+5이고 x→2의 극한은 7이다. 미분가능한 함수는 연속이므로 x=2의 함숫값 m+1이 7이어야 하고 점 P(2,7)이 직선 위에 채워져 이어진다. 따라서 m=6이고 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\begin{cases} \\frac{x^2+3x-10}{x-2} & (x \\neq 2) \\\\ m+1 & (x = 2) \\end{cases}$가 $x=2$에서 미분가능할 때, 상수 $m$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x≠2에서 직선 y=x+5이고 x=2의 함숫값 m+1=7인 점 P(2,7)이 직선 위에 있음을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "직선 y=x+5 위의 x=2인 점 P(2,7)이 함숫값 m+1=7로 채워져 그래프가 끊기지 않음을 보인다."
+  ],
+  "accessibilityDescription": "기울기가 1인 직선 위에 x=2인 점 P와 y축과 만나는 점 Q가 표시된 그래프이다."
+}

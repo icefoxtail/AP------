@@ -1,0 +1,101 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "2",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "3",
+          "-2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "4"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "-1",
+        "y": "4"
+      },
+      {
+        "id": "Z",
+        "x": "1",
+        "y": "0"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "-1",
+        "4"
+      ],
+      "Z": [
+        "1",
+        "0"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "4",
+        "intersectionX": [
+          "-1"
+        ]
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "tan",
+          "slope": "-4",
+          "intercept": "4",
+          "label": "l"
+        }
+      ]
+    }
+  },
+  "caption": "f는 x≤-1에서 (x+1)²+p, x>-1에서 -(x+1)²+p이고 이음점 P(-1,p)에서 기울기가 0이다. 그림은 p=4일 때이며 수평선 y=p가 P에서 두 조각에 접한다. f의 영점은 오른쪽 가지의 Z(-1+√p,0)=Z(1,0)이고 q=-1+√p=1이다. f(p)=f(4)=-21을 만족한다. 직선 l은 점 Z에서의 접선으로 기울기 f′(q)=f′(1)=-4이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 양수 $p, q$에 대하여 실수 전체의 집합에서 미분가능한 함수\n$$f(x)=\\begin{cases} x^2+ax+b & (x \\le -1) \\\\ -x^2+cx+d & (x > -1) \\end{cases}$$\n가 다음 조건을 만족시킨다.\n\n(가) 함수 $|f(x)-p|$는 실수 전체 집합에서 미분 가능하다.\n(나) 함수 $|f(x+q)|$는 $x=0$에서만 미분가능하지 않다.\n\n$f(p)=-21$일 때, $f'(q)$의 값은? (단, $a, b, c, d$는 상수) [6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "p=4, q=1일 때 이음점 P(-1,4)에서 매끄럽게 이어지고 영점 Z(1,0)에서의 접선 기울기가 -4임을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "p=4에서 f가 P(-1,4)에서 매끄럽게 이어지고 영점 Z(1,0)에서의 접선 l의 기울기 f′(1)=-4를 보인다."
+  ],
+  "accessibilityDescription": "점 P에서 위로 볼록한 부분과 아래로 볼록한 부분이 매끄럽게 이어진 곡선과 P를 지나는 수평선, 오른쪽 영점 Z에서의 접선 l을 나타낸 그래프이다."
+}

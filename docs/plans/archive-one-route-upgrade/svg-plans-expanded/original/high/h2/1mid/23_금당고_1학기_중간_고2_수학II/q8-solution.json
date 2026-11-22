@@ -1,0 +1,83 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      1,
+      5,
+      -1,
+      4
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "-4",
+          "2"
+        ],
+        "domain": [
+          "2",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "y=f(x)"
+      },
+      {
+        "id": "g",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-3",
+          "3"
+        ],
+        "denominator": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "2",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=g(x)"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "B",
+          "x": "4",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "2",
+          "y": "1",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "f(x)=√(2x-4)는 [2,4]에서 증가하므로 최댓값은 점 B(4,2)에서 M=2이다. g(x)=(3x-3)/(x+1)의 도함수 6/(x+1)²이 양수이므로 g도 [2,4]에서 증가하고 최솟값은 점 C(2,1)에서 m=1이다. 따라서 M+m=3이고 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "닫힌구간 $[2, 4]$에서 함수 $f(x)=\\sqrt{2x-4}$의 최댓값을 $M$, 함수 $g(x)=\\frac{3x-3}{x+1}$의 최솟값을 $m$이라 할 때, $M+m$의 값은? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: f와 g의 그래프를 한 좌표평면에 [2,4]에서 함께 그렸다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f가 [2,4]에서 증가해 B(4,2)에서 최대이고, g가 [2,4]에서 증가해 C(2,1)에서 최소임을 한 그림에서 보인다."
+  ],
+  "accessibilityDescription": "구간 2에서 4까지 오른쪽 위로 오르는 제곱근 곡선 f와 쌍곡선의 한 가지 g가 한 좌표평면에 그려져 있고, f 위의 점 B와 g 위의 점 C가 표시되어 있다."
+}

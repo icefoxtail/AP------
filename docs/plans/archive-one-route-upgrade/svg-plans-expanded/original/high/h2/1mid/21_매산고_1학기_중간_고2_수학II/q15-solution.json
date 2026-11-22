@@ -1,0 +1,100 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          1,
+          "sqrt(2)"
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          "sqrt(2)",
+          2
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          2,
+          "sqrt(5)"
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          "sqrt(5)",
+          3
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "2",
+        "y": "2"
+      },
+      {
+        "x": "sqrt(5)",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    }
+  },
+  "caption": "가로축이 r, 세로축이 교점의 개수 f(r)이다. 0<r<1에서 0, 1<r<√2에서 2, √2<r<2에서 1, r=2에서 2(닫힌 점), 2<r<√5에서 1, r=√5에서 0(닫힌 점)이다. 불연속점은 a1=1, a2=√2, a3=2, a4=√5이다. r→√2-에서 f=2이고 r→√5+에서 f=1이므로 합은 2+1=3이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=[x]$와 중심이 $(2,0)$이고 반지름이 $r$인 원의 교점 수를 $f(r)$이라 하자. 함수 $y=f(r)$의 불연속점의 $r$좌표를 작은 값부터 $a_1,a_2,a_3,\\ldots$라 할 때 $\\lim_{r\\to a_2^-}f(r)+\\lim_{r\\to a_4^+}f(r)$을 구하면? (단, $[x]$는 $x$보다 크지 않은 최대의 정수이다.) [5.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "교점 개수 f(r)의 계단 그래프에서 r=√2의 왼쪽 값 2와 r=√5의 오른쪽 값 1을 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "r=1, √2, 2, √5에서 끊기는 교점 개수 f(r)의 계단 그래프와 r=2의 닫힌 점, r=√5의 닫힌 점을 보인다."
+  ],
+  "accessibilityDescription": "r에 따라 0, 2, 1로 바뀌는 계단 모양의 그래프이고 r=2와 r=√5에는 수평선 높이와 다른 닫힌 점이 따로 찍혀 있다."
+}

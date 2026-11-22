@@ -1,0 +1,33 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      { "coefficients": ["0", "0", "-3", "-1"] },
+      { "coefficients": ["0", "0", "3", "1"] },
+      { "coefficients": ["0", "0", "3", "-1"] },
+      { "coefficients": ["0", "0", "-3", "1"] }
+    ],
+    "breakpoints": [
+      { "x": "-3", "y": "0" },
+      { "x": "0", "y": "0" },
+      { "x": "3", "y": "0" }
+    ],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "requiredPoints": [
+      { "id": "A", "x": -3, "y": 0 },
+      { "id": "B", "x": -2, "y": 4 },
+      { "id": "O", "x": 0, "y": 0 },
+      { "id": "C", "x": 2, "y": 4 },
+      { "id": "D", "x": 3, "y": 0 }
+    ],
+    "axisTickValues": { "x": ["-3", "-2", "2", "3"], "y": ["4"] }
+  },
+  "caption": "연속 조건과 적분 조건에서 f(x)=x²(x-3)이므로 |g(x)|=x²||x|-3|는 짝함수다. x=±3에서는 0에 닿고 x=±2에서는 4로 올라가므로, 적당한 양의 수평선과 최대 6개 지점에서 만난다. 미분 불가능점은 ±3 두 곳이어서 합은 8이다.",
+  "sourceConditions": [
+    { "id": "source", "condition": "최고차항 계수가 1인 삼차함수 f와 홀함수 형태 g(x)=f(x)(x≥0), -f(-x)(x<0)에 대해 |g|의 수평선 교점 최댓값과 미분 불가능점 수의 합이 8이며 ∫₀¹g(x)dx=-3/4이다.", "mappedTo": "PRESERVED_ARCHIVE_BANK" },
+    { "id": "method", "condition": "도출된 f(x)=x³-3x²와 |g(x)|=x²||x|-3|의 좌우 대칭 및 극값", "mappedTo": "diagram" }
+  ],
+  "newVisualInformation": ["x=±3의 뾰족한 최소점과 x=±2의 두 극대점을 함께 표시하여 6교점·2비미분점 구조를 드러낸다."],
+  "accessibilityDescription": "y축 대칭의 W형 곡선으로 x=-3,0,3에서 x축에 닿고 x=-2와 2에서 높이 4의 두 봉우리를 만든다."
+}
