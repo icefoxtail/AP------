@@ -1,5 +1,8 @@
 # 고1 2학기 기말 유사시험지 전 문항 수학 감사 — 25_제일고_2학기_기말_고1_유사3
 
+> **2026-11-22 후속 시각 QA: VISUAL_QA_PASS** — 이미지 19개 렌더·육안 검수, 결함 0개. 상세 결과는 문서 끝의 ‘후속 시각 검수’ 및 [통합 계획](./H1_2FINAL_SIMILAR_VISUAL_QA_20261122.md) 참조.
+
+
 - 감사일: 2026-11-22 (KST)
 - 대상: `archive/exams/similar/high/h1/2final/25_제일고_2학기_기말_고1_유사3.js`
 - 소스 SHA (감사 당시): `c63011fe916b781888953b9797b1cc2c27516711`
@@ -1053,3 +1056,34 @@ $0+1=1$
 - 22개 문항의 텍스트·수식에 대해 독립 계산과 원문 정답·해설 일치를 확인하고 전부 KEEP_MATH로 기록.
 - 그림 의존 문항은 해설에 적힌 좌표·화살표·그래프 특징을 수학적으로 사용했으며 **실제 시각 이미지와의 대조 완료를 뜻하지 않음**.
 - 그림 생성·수정 및 이미지 최종 검수는 이번 작업에서 제외. 원본 시험지·해설·이미지 변경 없음.
+
+
+---
+
+## 후속 시각 검수 — 2026-11-22 (최신 판정)
+
+- 결과: **VISUAL_QA_PASS**. 연결 그림 19개, 그림 포함 16문항, 결함 후보 0건.
+- 절차: 실제 `archive/assets/images/25_제일고_2학기_기말_고1_유사3/` 자산 존재 확인 → SVG/PNG 렌더 → 접촉 시트 육안 검사 → 본문·해설의 그래프, 좌표, 집합, 대응도 비교.
+- [수학·시각 통합 마감 계획 및 전체 276건 보고서](./H1_2FINAL_SIMILAR_VISUAL_QA_20261122.md) 참조.
+- 이전 본문에 기재된 `VISUAL_QA_PENDING` 또는 `NOT_RUN`은 **초기 수학 감사 당시 상태**이며, 후속 시각 검수 판정은 아래 표가 우선한다.
+
+| 문항 | 검사한 이미지(원본 `archive/assets/images/25_제일고_2학기_기말_고1_유사3/`) | 최신 판정 |
+|---:|---|---|
+| 2번 | `해설: q2-solution.svg` | VISUAL_QA_PASS |
+| 3번 | `해설: q3-solution.svg` | VISUAL_QA_PASS |
+| 4번 | `해설: q4-solution.svg` | VISUAL_QA_PASS |
+| 5번 | `해설: q5-solution.svg` | VISUAL_QA_PASS |
+| 6번 | `해설: q6-solution.svg` | VISUAL_QA_PASS |
+| 7번 | `해설: q7-solution.svg` | VISUAL_QA_PASS |
+| 9번 | `해설: q9-solution.svg` | VISUAL_QA_PASS |
+| 10번 | `문제: q10.svg`, `해설: q10-solution.svg` | VISUAL_QA_PASS |
+| 11번 | `해설: q11-solution.svg` | VISUAL_QA_PASS |
+| 12번 | `문제: q12.svg`, `해설: q12-solution.svg` | VISUAL_QA_PASS |
+| 13번 | `해설: q13-solution.svg` | VISUAL_QA_PASS |
+| 14번 | `해설: q14-solution.svg` | VISUAL_QA_PASS |
+| 17번 | `문제: q17.svg`, `해설: q17-solution.svg` | VISUAL_QA_PASS |
+| 18번 | `해설: q18-solution.svg` | VISUAL_QA_PASS |
+| 19번 | `해설: q19-solution.svg` | VISUAL_QA_PASS |
+| 20번 | `해설: q20-solution.svg` | VISUAL_QA_PASS |
+
+원본 JS·SVG·PNG는 수정하지 않았다. 결함 수정 후 해당 자산을 다시 렌더하고 문제·해설을 대조해야 최종 출고 판정이 가능하다.
