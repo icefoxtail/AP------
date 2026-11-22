@@ -444,12 +444,16 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     const style=row.style??(overRow?'ARC':'SECTOR');
     if(!['SECTOR','ARC'].includes(style))bad('ANGLE_MARK_STYLE_INVALID:'+row.id);
     if(overRow&&style!=='ARC')bad('ANGLE_OVER_STYLE_INVALID:'+row.id);
-    const kind=row.labelKind??'DEGREE';
+    const declaredKind=row.labelKind??'DEGREE';
     // DEGREE writes the value with a degree sign, NAME writes the angle by its letters (ABC -> the angle ABC) and MATH writes a symbol such as theta.
-    if(!['DEGREE','NAME','MATH'].includes(kind))bad('MARK_FIELD_INVALID:angles.labelKind:'+row.id);
+    if(!['DEGREE','NAME','MATH'].includes(declaredKind))bad('MARK_FIELD_INVALID:angles.labelKind:'+row.id);
     // A degree label names the declared value; a mark with neither a label nor `noLabel` states nothing a student can read.
     const text=labelOf(row,declared!==null?String(row.value).replace(/\.0+$/,''):(straight?'180':null),true);
     if(text===null&&row.noLabel!==true)bad('ANGLE_MARK_LABEL_REQUIRED:'+row.id);
+    // (P-B) A MATH label that is exactly the letters of the angle's own three points (ABC for refs A,B,C or C,B,A; every point drawn under its own id, no display name) names the angle: it is written as NAME (the angle sign
+    // is drawn). Any other MATH label (theta, 2x, a name that is not these points) is untouched.
+    const nameOfRefs=ids=>ids.every(id=>/^[A-Z]$/.test(id)&&plan.pointNames?.[id]===undefined)?ids.join(''):null;
+    const kind=declaredKind==='MATH'&&typeof text==='string'&&text!==''&&(text===nameOfRefs(row.refs)||text===nameOfRefs([...row.refs].reverse()))?'NAME':declaredKind;
     // A degree label is a number of degrees: pi in it is a radian measure, and the degree sign after it (pi/5 degrees) is a different, wrong value. Write it with labelKind MATH.
     if(kind==='DEGREE'&&text!==null&&PI_IN_LABEL.test(text))bad('ANGLE_DEGREE_LABEL_HAS_PI:'+row.id);
     angleInfo.set(row.id,{vertex:row.refs[1],value:declared});
