@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-0517e7ff8fa5-ab11e815",
+  "requestSha256": "ab78a788e57499f125ec12db44325c608fcf35c3f95b78357610cd97c2653c2b",
+  "examUid": "25_동산중_2학기_중간_중1_수학",
+  "sourceArchiveFile": "original/middle/m1/2mid/25_동산중_2학기_중간_중1_수학.js",
+  "sourceBlobSha1": "a984b1302f3595b09284378987a3127d14e2a52a",
+  "sourceRawSha256": "0b5eb488096c46fe55271cfb34c06affa6cf2f5aafd3ac744d669d4047d3aa93",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-0517e7ff8fa5-ab11e815.type-ledger.json",
+        "sha256": "56886055af503e9e93e3457fb15edfc7da213fa388c3ee33dc9b820aaf4ed07d"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_845fd38ec6376ee46bf813d32426ce4f31335134cd9a2d7589a687e2cb78e682",
+      "sourceArchiveFile": "original/middle/m1/2mid/25_동산중_2학기_중간_중1_수학.js",
+      "sourceOrdinal": 22,
+      "problemTypeKey": "PT_MINIMUM_FACTOR_TO_PERFECT_SQUARE",
+      "templateKey": "TPL_MINIMUM_FACTOR_TO_PERFECT_SQUARE_MULTIPLIER",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-0517e7ff8fa5-ab11e815",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "45의 홀수 지수 소인수5를 보완해 a=5k²,b=15k로 놓고 두 번째 k2에서20,30을 구한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "8ad0fdaad21afdc684aae25a81bd1496c9b017f757d1adb26207594b1ffeff29",
+        "judgedContentFingerprint": "bdb118cad7acdcf476a5e89a21c32edcc44cff66ff741320584b021f66e43fba",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "4d67aa722a800d2beaf7a7d794f1fc3f1fd6accee7b66fd7eca040d06875ca98",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-0517e7ff8fa5-ab11e815.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_M1_PRIME_FACTOR_STRUCTURE",
+          "templateKey": "TPL_M1_PRIME_FACTOR_STRUCTURE_CONSTRAINED_NUMBER_RECOVERY",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}

@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-8be6affbbaf3-3cf6946c",
+  "requestSha256": "74f70bb388c7a2bbb630fcf43776e89f9e0e1af1294ffc78b69d0781922a2641",
+  "examUid": "백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50",
+  "sourceArchiveFile": "textbooks/백발백중_공통수학2/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50.js",
+  "sourceBlobSha1": "c360b3c929910bec7250c0ff13f0ba40e80cedce",
+  "sourceRawSha256": "6eeca632777e9f84dd07d046ceeb369f1f1dfe387769cc728f0241ba1458bf58",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-w-20261122",
+      "commit": "4111b9298564d9e7095216194d47737640427bfe",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8be6affbbaf3-3cf6946c.type-ledger.json",
+        "sha256": "255f1016d0808a7724c3a4d03cf72fb1394734ab814145cff2f5e043fd481e73"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 2,
+  "registryChanges": [],
+  "typeApprovals": 2,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 2,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_6a3c6e3a5e946404a83dd0ab63a578f66fb94ee2b7cbda0129ba08e96cbdb350",
+      "sourceArchiveFile": "textbooks/백발백중_공통수학2/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50.js",
+      "sourceOrdinal": 27,
+      "problemTypeKey": "PT_SET_AGGREGATE",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-8be6affbbaf3-3cf6946c",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "조건으로 집합의 원소를 모두 구한 뒤 서로 다른 원소를 한 번씩 연산해 값을 구한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "b868577577eb7b831f3290e8f60c764ec3e6d0332dc656abfdcbc71b28aa935a",
+        "judgedContentFingerprint": "a53f87665491ca31effa28dfadb709f8e420e752556ea9ad418dab9f5d14eec8",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "2a6ee0545eecf2b85d35ef1e8142ddc563c489c3995f36fcace72a0fc86e6bfb",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8be6affbbaf3-3cf6946c.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "H22-C2-05-SET-BASICS-TYPE",
+          "templateKey": "TMPL-BV-BAKBAL-H-COM2-P105-Q09-S2-R1",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "H22-C2-05-SET-BASICS-TYPE",
+          "templateKey": "TMPL-BV-BAKBAL-H-COM2-P105-Q09-S2-R1",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_e87048688c5afbabdf58e4d1b8c79d5870c3a7df54e8df3ba1aa06695bf1e792",
+      "sourceArchiveFile": "textbooks/백발백중_공통수학2/백발백중_공통수학2_도형의이동_집합_P102-105_20261023_유사50.js",
+      "sourceOrdinal": 29,
+      "problemTypeKey": "PT_SET_AGGREGATE",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-8be6affbbaf3-3cf6946c",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "방정식의 근으로 집합의 원소를 구한 뒤 서로 다른 원소를 한 번씩 연산해 값을 구한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "b8985f4e5ee36b765ffd3b70536f1513b07728af221671edd2f3aa0f5304f146",
+        "judgedContentFingerprint": "38d8607a2df05788806d2e19b26fbcf7ced4aebf93bb3ddc9edfa7ba06b4b288",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "288d8308b311439a69c5330ceb5cd2bc8138eccce3897edf7588b75d52eba2a1",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8be6affbbaf3-3cf6946c.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "H22-C2-05-SET-BASICS-TYPE",
+          "templateKey": "TMPL-BV-BAKBAL-H-COM2-P105-Q10-S1-R1",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "H22-C2-05-SET-BASICS-TYPE",
+          "templateKey": "TMPL-BV-BAKBAL-H-COM2-P105-Q10-S1-R1",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 2,
+  "expectedQuestionCount": 50
+}
