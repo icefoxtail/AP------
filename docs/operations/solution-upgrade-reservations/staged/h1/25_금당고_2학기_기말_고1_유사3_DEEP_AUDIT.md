@@ -1,5 +1,8 @@
 # 고1 2학기 기말 유사시험지 심층 수학 감사 — 25_금당고_2학기_기말_고1_유사3
 
+> **2026-11-22 후속 시각 QA: VISUAL_QA_FINDINGS** — 이미지 16개 렌더·육안 검수, 결함 1개. 상세 결과는 문서 끝의 ‘후속 시각 검수’ 및 [통합 계획](./H1_2FINAL_SIMILAR_VISUAL_QA_20261122.md) 참조.
+
+
 - 작업 일자: 2026-11-22 (KST)
 - 원본: `archive/exams/similar/high/h1/2final/25_금당고_2학기_기말_고1_유사3.js`
 - 원본 blob SHA: `6031908ed7a242c1cd06128047cfe1fdc96fbbb5`
@@ -1052,3 +1055,36 @@ $k\le -2$
 - 원본 데이터는 편집하지 않았다. 보완 필요사항이 새롭게 발견되면 본 감사 MD에 근거와 수정안을 남기는 방식으로 이어갈 수 있다.
 - 그래프·대응도·도형 및 해설 이미지는 이번 작업에서 렌더 검사를 하지 않았다. 사용자 요청에 따라 시각 QA 별도 라인에서 수행한다.
 - 커밋 후 동일 브랜치 원격 파일을 다시 읽어 전체 텍스트 일치를 확인한다.
+
+
+---
+
+## 후속 시각 검수 — 2026-11-22 (최신 판정)
+
+- 결과: **VISUAL_QA_FINDINGS**. 연결 그림 16개, 그림 포함 14문항, 결함 후보 1건.
+- 절차: 실제 `archive/assets/images/25_금당고_2학기_기말_고1_유사3/` 자산 존재 확인 → SVG/PNG 렌더 → 접촉 시트 육안 검사 → 본문·해설의 그래프, 좌표, 집합, 대응도 비교.
+- [수학·시각 통합 마감 계획 및 전체 276건 보고서](./H1_2FINAL_SIMILAR_VISUAL_QA_20261122.md) 참조.
+- 이전 본문에 기재된 `VISUAL_QA_PENDING` 또는 `NOT_RUN`은 **초기 수학 감사 당시 상태**이며, 후속 시각 검수 판정은 아래 표가 우선한다.
+
+| 문항 | 검사한 이미지(원본 `archive/assets/images/25_금당고_2학기_기말_고1_유사3/`) | 최신 판정 |
+|---:|---|---|
+| 5번 | `해설: q05-solution.svg` | VISUAL_QA_PASS |
+| 6번 | `문제: q06-problem.svg`, `해설: q06-solution.svg` | VISUAL_QA_PASS |
+| 9번 | `해설: q09-solution.svg` | VISUAL_QA_PASS |
+| 10번 | `해설: q10-solution.svg` | VISUAL_QA_PASS |
+| 11번 | `해설: q11-solution.svg` | VISUAL_QA_FINDING (P2) |
+| 12번 | `해설: q12-solution.svg` | VISUAL_QA_PASS |
+| 14번 | `해설: q14-solution.svg` | VISUAL_QA_PASS |
+| 15번 | `해설: q15-solution.svg` | VISUAL_QA_PASS |
+| 16번 | `문제: q16-problem.svg`, `해설: q16-solution.svg` | VISUAL_QA_PASS |
+| 18번 | `해설: q18-solution.svg` | VISUAL_QA_PASS |
+| 19번 | `해설: q19-solution.svg` | VISUAL_QA_PASS |
+| 20번 | `해설: q20-solution.svg` | VISUAL_QA_PASS |
+| 21번 | `해설: q21-solution.svg` | VISUAL_QA_PASS |
+| 22번 | `해설: q22-solution.svg` | VISUAL_QA_PASS |
+
+### 확인된 시각 결함·재검수 필요
+
+- **P2 · 11번 · q11-solution.svg**: B_{12}, B_n, B_{72}가 B_12, B_n, B_72처럼 밑줄이 문자 그대로 렌더링됨. 수식 변환 필요.
+
+원본 JS·SVG·PNG는 수정하지 않았다. 결함 수정 후 해당 자산을 다시 렌더하고 문제·해설을 대조해야 최종 출고 판정이 가능하다.
