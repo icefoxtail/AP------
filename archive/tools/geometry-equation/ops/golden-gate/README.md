@@ -48,17 +48,21 @@ FIXED와 BOTH_FAIL_SAME도 분모에서 빼지 않고 개수를 그대로 출력
 - 이어 돌기: 항목마다 결과를 저장하므로 중단돼도 끝낸 항목은 캐시에서 나오고 나머지만 돈다. 프로세스가 죽거나 시간이 지나면 끝낸 항목을 거두고 나머지는 단독 재실행한다.
 - 정리: 작업 트리 스냅샷은 하루, 커밋 스냅샷은 2주 안 쓰면 다음 실행 때 지운다. 엔진이 남기는 `.tmp/archive/<runId>`는 한 시간 지난 것을 지운다.
 
-## 걸리는 시간 (2026-11-22 측정, 자산 수정 전 값이라 재측정 예정, 이 PC, 다른 렌더 작업자 5명이 함께 도는 중, 슬롯 2, 묶음 8개)
+## 걸리는 시간과 현황 (2026-11-23 실측, 커밋 d414970fd2, 이 PC, 슬롯 2, 묶음 10개, 새 캐시)
 
-- 항목 하나는 보통 25~40초(Chrome 측정 단계가 대부분). 한 종류씩 합친 시간(base+head 렌더 시간의 합 ÷ 렌더 수): stat 28초, solid 25초, set 29초, number-line 23초, composite 41초, construction 40초, ellipse 39초, graph 58초, container 10초, lattice 2초(둘 다 일찍 거절), chain 1개가 3분 47초.
-- **209 전체: 한쪽 렌더 172개 + 캐시 37개에 1시간 03분(슬롯 2).** 캐시 없이 209개를 다 렌더하면 약 1시간 15분. head만 새로 돌리면(base가 캐시에 있으면) 그 한쪽 시간이다. 두 쪽을 모두 새로 돌리면 두 배.
-- `--tests`: stat 변경 하나에 테스트 58개 파일(449 통과·23 기존 실패)을 base·head 모두 돌려 32분(슬롯 2). 테스트가 Chrome으로 렌더하는 것이 많아 오래 걸린다.
-- 종류 하나(stat 23개): head 한쪽 약 5분, base까지 새로 만들면 약 10분. 캐시가 모두 맞으면 14초.
-- 종류 표가 닿는 범위를 줄여 주는 만큼만 빨라진다. 공용 파일을 고치면 209 전체(약 1시간)다.
+- **209 전체, 한쪽 렌더: 40분 49초**(렌더 39분 53초, 21묶음, 단독 재실행 0, 시간 초과 0). 항목 하나는 보통 15~30초이고 오래 걸리는 것은 1~2분이다. 두 쪽을 새로 돌리면 이 시간의 두 배다. 캐시가 모두 맞으면 2초(209개 모두 캐시에서).
+- 결과: **그림이 나온 것(ARCHIVE_BOUND) 146개, 엔진이 거절한 것 63개, 실행 못 한 것(NOT_RUN) 0개.** 거절 63개의 코드별 개수: LAYOUT_INVENTORY_INCOMPLETE 18, UNSUPPORTED_DISPLAY_ENVELOPE 16, STAT_LABEL_OUT_OF_BOUNDS 6, ACTUAL_ARCHIVE_DISPLAY_ENVELOPE_PREFLIGHT_FAIL 5(수식을 페이지가 조판하지 못함, MATH_TYPESET_ERROR), NUMBER_LINE_LABEL_TOO_LARGE 4, TEXT_CLIPPED 2, SOLID_LABELS_NO_ROOM 2, TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL 2, 그 밖에 코드마다 1개씩 8종(NUMBER_LINE_LABELS_TOO_CLOSE, PIECEWISE_DISCONTINUOUS_FIELD_UNKNOWN:axisSqueeze, CONTAINER_LABEL_OUT_OF_BOUNDS, MARK_LEADER_NOT_ON_OWNER, SOLID_DIM_FAR_FROM_SEGMENT, OVERLAY_LINE_OUTSIDE_VIEWPORT:h, COORDINATE_LEADER_PANEL_CONFLICT, SET_ELEMENT_NO_ROOM). 이 63개는 "같은 실패가 계속된다"만 확인한다(BOTH_FAIL_SAME). 바이트 비교는 146개에서 한다.
+- 종류별 렌더 시간(이 한 번의 실행, 항목 수, 한 번 렌더 평균): graph 58개 33초, construction 55개 21초, stat 23개 16초, solid 21개 13초, composite 20개 22초, number-line 11개 12초, ellipse 9개 20초, set 8개 15초, lattice 2개 10초, container 1개 7초, chain 1개 2분. 이 표는 수치 하나의 어림이다(한 번 측정, 다른 작업이 함께 돌면 흔들린다).
+- 종류 하나(stat 23개): head 한쪽만 새로 렌더하면 3분 27초, base가 캐시에 있으면 전체 4분 8초.
+- 같은 스냅샷을 순서를 뒤집고 묶음을 바꿔 두 번(`--repeat-check --no-cache`) 렌더한 표본 28개: 11분 5초, 바이트 같음 16, 같은 실패 12, 흔들림 0.
+- 스냅샷이 전체 체크아웃과 같은지: 실패 코드마다 대표 1개(16종)와 그림이 나온 1개를 전체 체크아웃에서 production `render-plan.mjs`로 직접 렌더해 게이트의 결과와 비교했다. 17개 모두 같은 code, stage, 실패 신호, SVG 바이트였다(렌더 237초).
+- `--tests`: stat 변경 하나에 테스트 58개 파일을 base·head 모두 돌려 32분(슬롯 2, 2026-11-22 측정, 이번에 다시 재지 않았다).
+
 
 ## 못 막는 것 (한계)
 
-- 골든 중 일부는 main에서도 엔진이 거절한다(BOTH_FAIL_SAME). 그 항목은 "같은 실패가 계속된다"만 확인하고 그림 바이트는 못 본다. 개수와 종류별 현황은 작업 보고에 있다(스냅샷에 문제 그림이 빠져 가짜 실패가 났던 것은 고쳤고, 그때 센 69개는 다시 측정해야 한다).
+- 골든 209개 중 63개(30%)는 이 커밋의 엔진도 거절한다(BOTH_FAIL_SAME). 그 항목은 "같은 실패가 계속된다"만 확인하고 그림 바이트는 못 본다. 종류별로 보면 container는 1개뿐인데 그것이 그림이 안 나와 container 변경은 바이트로 보증하지 못한다(실행 끝에 `note: no byte comparison for kind(s) ...`로 알린다).
+- 수식 조판 실패(MATH_TYPESET_ERROR)는 플랜 내용에 대한 엔진 판정으로 보고 환경 오류로 세지 않는다(같은 값이 전체 체크아웃에서도 나온다). 그 밖의 PAGE_RENDER_ERROR는 계속 환경 오류(NOT_RUN)다.
 - 종류 표(`lib/kinds.mjs`)는 "이 파일은 이 종류만 바꾼다"는 판단이다. `golden-gate.test.mjs`가 표에 빠진 파일, 표와 import 관계가 어긋난 파일을 잡는다. 확신이 없으면 표에 넣지 말고 그대로 두면 전체(209)가 돈다.
 - 렌더가 `import` 아닌 방식으로 읽는 데이터 파일은 `lib/snapshot.mjs`의 `SNAPSHOT_SPECS`에 있어야 한다. 빠지면 렌더가 `ENOENT`로 죽어 NOT_RUN으로 보이고, 죽은 이유가 stderr 줄로 출력된다.
 - 같은 PC의 같은 Chrome으로만 비교한다. 다른 PC의 결과와 바이트를 맞추려 하지 않는다.

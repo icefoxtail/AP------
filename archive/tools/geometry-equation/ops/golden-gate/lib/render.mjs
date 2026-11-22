@@ -7,7 +7,7 @@ import path from 'node:path';
 import {sha256, mkdirp, readJson, writeJson, run, sleep} from './util.mjs';
 import {GE} from './kinds.mjs';
 import {resolveChrome} from './env-fingerprint.mjs';
-import {ENV_ERROR, statusChainOf} from './judge.mjs';
+import {envErrorInText, statusChainOf} from './judge.mjs';
 
 // What a solo retry can cure: the machine's timeouts and crashed processes. Load errors of the page or an image are not retried (they repeat).
 const TRANSIENT = /WORKER_TIMEOUT|WORKER_EXIT|WORKER_CANCELLED|Timeout \d+ms|timeout .*exceeded|ETIMEDOUT|ECONNRESET|Target (page|context|browser).*closed|browser has been closed|ENOMEM|EMFILE/i;
@@ -70,7 +70,7 @@ export function harvest(outDir, name) {
     detail: typeof r.detail === 'string' ? r.detail.slice(0, 300) : JSON.stringify(r.detail ?? null).slice(0, 300),
     detailFull: r.status === 'FAILED' ? String(r.detailFull ?? '').slice(0, 6000) : undefined,
     statusChain: r.status === 'FAILED' ? statusChainOf(r.detailFull ?? r.detail) : undefined,
-    envError: r.status === 'FAILED' ? (`${r.code ?? ''} ${r.detailFull ?? ''} ${typeof r.detail === 'string' ? r.detail : ''}`.match(ENV_ERROR)?.[0] ?? null) : undefined,
+    envError: r.status === 'FAILED' ? envErrorInText(`${r.code ?? ''} ${r.detailFull ?? ''} ${typeof r.detail === 'string' ? r.detail : ''}`) : undefined,
     sizeClass: r.sizeClass ?? null, solutionImageScale: r.solutionImageScale ?? null,
     capability: r.capability ?? null, svgSha: svg ? sha256(svg) : null, svgBytes: svg ? svg.length : 0
   };

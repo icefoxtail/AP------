@@ -213,6 +213,19 @@ test('environment errors (image, page, module, browser, timeout) are NOT_RUN eve
   assert.equal(compareItem('i', rec('ARCHIVE_BOUND'), failRec({code: 'ACTUAL_ARCHIVE_DISPLAY_ENVELOPE_PREFLIGHT_FAIL', detailFull: 'QUESTION_IMAGE_LOAD_FAILED'})).verdict, 'NOT_RUN');
 });
 
+test('a formula the page cannot typeset (MATH_TYPESET_ERROR) is a content verdict, not an environment error; other page render errors stay NOT_RUN', () => {
+  const typeset = (extra = '') => failRec({code: 'ACTUAL_ARCHIVE_DISPLAY_ENVELOPE_PREFLIGHT_FAIL', stage: 'measure', detailFull: '{"status":"ARCHIVE_PREFLIGHT_FAIL","detail":{"message":"ACTUAL_ARCHIVE_DISPLAY_ENVELOPE_PREFLIGHT_FAIL:{errors:[page.waitForFunction: Error: ARCHIVE_PAGE_RENDER_ERROR:MATH_TYPESET_ERROR' + extra + ']}"}}'});
+  assert.equal(compareItem('i', typeset(), typeset()).verdict, 'BOTH_FAIL_SAME');
+  assert.equal(compareItem('i', rec('ARCHIVE_BOUND'), typeset()).verdict, 'REGRESSED');
+  const other = failRec({code: 'ACTUAL_ARCHIVE_DISPLAY_ENVELOPE_PREFLIGHT_FAIL', stage: 'measure', detailFull: '{"status":"A","detail":"ARCHIVE_PAGE_RENDER_ERROR:IMAGE_BROKEN"}'});
+  assert.equal(compareItem('i', other, other).verdict, 'NOT_RUN');
+  assert.equal(compareItem('i', typeset(), other).verdict, 'NOT_RUN');
+  // a stored record made before this rule carries envError PAGE_RENDER_ERROR: it is judged again from its text
+  assert.equal(compareItem('i', {...typeset(), envError: 'PAGE_RENDER_ERROR'}, {...typeset(), envError: 'PAGE_RENDER_ERROR'}).verdict, 'BOTH_FAIL_SAME');
+  // a real environment error next to a typeset error still counts
+  assert.equal(compareItem('i', typeset(' ENOENT: no such file'), typeset(' ENOENT: no such file')).verdict, 'NOT_RUN');
+});
+
 test('the same failure means the same code, stage and nested status; a failure without a code is never the same', () => {
   assert.equal(compareItem('i', failRec(), failRec()).verdict, 'BOTH_FAIL_SAME');
   assert.equal(compareItem('i', failRec(), failRec({stage: 'capture'})).verdict, 'DIFFERENT');

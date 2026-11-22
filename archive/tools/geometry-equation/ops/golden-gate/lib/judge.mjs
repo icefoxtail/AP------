@@ -17,10 +17,19 @@ const failed = r => r.status === 'FAILED';
 
 // Load/launch errors of the page, an image, a module or the browser, and the machine's timeouts.
 export const ENV_ERROR = /QUESTION_IMAGE_LOAD_FAILED|IMAGE_LOAD|PAGE_RENDER_ERROR|ERR_MODULE_NOT_FOUND|MODULE_NOT_FOUND|Cannot find module|Cannot find package|ENOENT|EACCES|EPERM|EMFILE|ENOMEM|PLAYWRIGHT_REQUIRED|DEPENDENCY_HASH_MISMATCH|browserType\.launch|Executable doesn't exist|Failed to launch|net::ERR_|Navigation (failed|timeout)|page\.goto|SVG_MISSING|WORKER_TIMEOUT|WORKER_EXIT|WORKER_CANCELLED|Timeout \d+ms|timeout .*exceeded|ETIMEDOUT|ECONNRESET|Target (page|context|browser).*closed|browser has been closed/i;
+// The page rejected the content itself (a formula MathJax cannot typeset): the same on every machine, so an engine/plan verdict, not the machine's.
+// It carries its own marker in the failure signature below. Every other page render error stays an environment error.
+const CONTENT_PAGE_ERROR = /MATH_TYPESET_ERROR/;
+export const envErrorInText = text => {
+  const found = String(text ?? '').match(new RegExp(ENV_ERROR.source, 'gi')) ?? [];
+  const isContent = /PAGE_RENDER_ERROR/i.test(String(text)) && CONTENT_PAGE_ERROR.test(String(text));
+  return found.find(m => !(isContent && /^PAGE_RENDER_ERROR$/i.test(m))) ?? null;
+};
 export const envErrorOf = r => {
   if (!failed(r)) return null;
-  const m = `${r.code ?? ''} ${r.detailFull ?? ''} ${r.detail ?? ''}`.match(ENV_ERROR);
-  return r.envError ?? (m ? m[0] : null);
+  const text = `${r.code ?? ''} ${r.detailFull ?? ''} ${r.detail ?? ''}`;
+  if (r.envError && r.envError !== 'PAGE_RENDER_ERROR') return r.envError; // a stored marker (SVG_MISSING and the like)
+  return envErrorInText(text); // PAGE_RENDER_ERROR (also stored) is judged again from the text: a typeset error is content
 };
 export const isInfraFailure = r => envErrorOf(r) !== null;
 
@@ -29,7 +38,8 @@ export const statusChainOf = text => [...String(text ?? '').matchAll(/"status":"
 export const failureSignature = r => {
   if (!failed(r) || !r.code) return null; // a failure that carries no code cannot be told from another
   const chain = r.statusChain ?? statusChainOf(r.detailFull ?? r.detail);
-  return `${r.code}|${r.stage ?? ''}|${chain.join('>')}`;
+  const page = String(r.detailFull ?? r.detail ?? '').match(/ARCHIVE_PAGE_RENDER_ERROR:([A-Z_]+)/)?.[1];
+  return `${r.code}|${r.stage ?? ''}|${chain.join('>')}${page ? `|page:${page}` : ''}`;
 };
 
 export function compareItem(item, base, head) {
