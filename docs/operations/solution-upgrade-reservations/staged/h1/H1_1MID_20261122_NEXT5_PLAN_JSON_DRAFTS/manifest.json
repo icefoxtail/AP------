@@ -10,9 +10,9 @@
     "originalParityGaps": 24,
     "replacementExistingImages": 2,
     "draftPackets": 26,
-    "blockedEditorial": 2,
+    "blockedEditorial": 0,
     "blockedMath": 1,
-    "engineSupportChecks": 6
+    "engineSupportChecks": 7
   },
   "status": "JSON_DRAFT_READY__ENGINE_LINT_NOT_RUN__RENDER_NOT_RUN__PUBLISH_NOT_RUN",
   "items": [
@@ -31,8 +31,8 @@
       "existingImageSha": null,
       "packetDir": "docs/operations/solution-upgrade-reservations/staged/h1/H1_1MID_20261122_NEXT5_PLAN_JSON_DRAFTS/N5-01_23_매산고_q10_problem",
       "capability": "construction-spike-v1",
-      "review": "BLOCKED_EDITORIAL",
-      "blocker": "질문에 구역 배치·공유변 조건이 누락되어 3x+2y=180을 도형에서 도출할 수 없음",
+      "review": "ENGINE_SUPPORT_CHECK",
+      "blocker": "엔진 도형 치수 x/y의 symbolic label·내부 칸막이 지원 검증 필요",
       "precision": "SCHEMATIC",
       "lint": "NOT_RUN",
       "render": "NOT_RUN",
@@ -53,8 +53,8 @@
       "existingImageSha": null,
       "packetDir": "docs/operations/solution-upgrade-reservations/staged/h1/H1_1MID_20261122_NEXT5_PLAN_JSON_DRAFTS/N5-02_23_매산고_q10_solution",
       "capability": "polynomial-spike-v1",
-      "review": "BLOCKED_EDITORIAL",
-      "blocker": "구획·공유변 정의 누락 및 전체 넓이에 정사각형 x² 미포함",
+      "review": "DRAFT_NOT_LINTED",
+      "blocker": null,
       "precision": "EXACT",
       "lint": "NOT_RUN",
       "render": "NOT_RUN",

@@ -17,7 +17,7 @@
 | 7 | 곱셈 공식의 변형 | ② | 문항·해설 검독 |
 | 8 | 다항식의 나눗셈 | ② | 문항·해설 검독 |
 | 9 | 항등식의 성질 | ③ | 문항·해설 검독 |
-| 10 | 이차함수의 최대최소 | ③ | P0 MATH+EDITORIAL; 원본 문제 그림 역할 누락; 원본 해설 그림 역할 누락 |
+| 10 | 이차함수의 최대최소 | ③ | P1 FIGURE_INTERPRETATION; 원본 문제 그림 역할 누락; 원본 해설 그림 역할 누락 |
 | 11 | 이차함수와 이차방정식 | ⑤ | P0 NO_VALID_ANSWER |
 | 12 | 이차함수의 최대최소 (치환) | ⑤ | P0 ANSWER_INVALID; 원본 해설 그림 역할 누락 |
 | 13 | 이차방정식과 근과 계수의 관계 | ④ | 문항·해설 검독 |
@@ -31,7 +31,7 @@
 
 ## 오류·주의 사항
 
-- **q10, P0 MATH+EDITORIAL:** 문항에 두 구역의 공유변·구획 조건이 명시되지 않는다. 해설의 3x+2y=180과 S=xy는 전체 넓이(정사각형 x² 포함)라는 문장과도 충돌한다. 도형 및 최적화 식부터 재설계.
+- **q10, P1 FIGURE_INTERPRETATION:** 원본 구획을 높이 x·전체 가로 y인 큰 직사각형의 내부 칸막이로 읽으면 끈 3x+2y=180, 전체 넓이 S=xy가 맞다. 유사문항에는 y가 전체 가로임을 보여 주는 문제 그림이 빠져 있으므로 치수 정의와 칸막이 위치를 그림으로 명확히 해야 한다.
 - **q11, P0 NO_VALID_ANSWER:** 첫 포물선 두 교점 조건은 k>2, 둘째 포물선 접점 조건은 k=−2. 교집합이 공집합인데 ⑤=2를 정답 표시한다.
 - **q12, P0 ANSWER_INVALID:** t=(x−1)²+1∈[1,5], y=(t−2)²+1에서 m=1, M=10, 합 11. 해설 끝에서 10+2=12로 바뀌었고 보기에는 11이 없다.
 - **q18, P0 FALSE_FACTOR:** 문항 다항식은 주장한 (x−z)(x−y)²와 yz(y−z)만큼 다르다. 해설의 소수 (7,5,2)를 대입하면 요구값 20이 아닌 50.
@@ -52,8 +52,8 @@
 
 | slot | 역할 | capability | 상태/차단 | JSON |
 |---|---|---|---|---|
-| N5-01 q10 | 문제 | `construction-spike-v1` | BLOCKED_EDITORIAL: 질문에 구역 배치·공유변 조건이 누락되어 3x+2y=180을 도형에서 도출할 수 없음 | [plan.json](./H1_1MID_20261122_NEXT5_PLAN_JSON_DRAFTS/N5-01_23_매산고_q10_problem/plan.json) |
-| N5-02 q10 | 해설 | `polynomial-spike-v1` | BLOCKED_EDITORIAL: 구획·공유변 정의 누락 및 전체 넓이에 정사각형 x² 미포함 | [plan.json](./H1_1MID_20261122_NEXT5_PLAN_JSON_DRAFTS/N5-02_23_매산고_q10_solution/plan.json) |
+| N5-01 q10 | 문제 | `construction-spike-v1` | ENGINE_SUPPORT_CHECK: 엔진 도형 치수 x/y의 symbolic label·내부 칸막이 지원 검증 필요 | [plan.json](./H1_1MID_20261122_NEXT5_PLAN_JSON_DRAFTS/N5-01_23_매산고_q10_problem/plan.json) |
+| N5-02 q10 | 해설 | `polynomial-spike-v1` | DRAFT_NOT_LINTED | [plan.json](./H1_1MID_20261122_NEXT5_PLAN_JSON_DRAFTS/N5-02_23_매산고_q10_solution/plan.json) |
 | N5-03 q12 | 해설 | `polynomial-spike-v1` | BLOCKED_MATH: M+m=11인데 원문 정답 ⑤=12; 보기 11 없음 | [plan.json](./H1_1MID_20261122_NEXT5_PLAN_JSON_DRAFTS/N5-03_23_매산고_q12_solution/plan.json) |
 | N5-04 q16 | 해설 | `multi-curve-figure-v1` | DRAFT_NOT_LINTED | [plan.json](./H1_1MID_20261122_NEXT5_PLAN_JSON_DRAFTS/N5-04_23_매산고_q16_solution/plan.json) |
 | N5-05 q20 | 해설 | `multi-curve-figure-v1` | DRAFT_NOT_LINTED | [plan.json](./H1_1MID_20261122_NEXT5_PLAN_JSON_DRAFTS/N5-05_23_매산고_q20_solution/plan.json) |

@@ -7,7 +7,7 @@
 - `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`, `archive/tools/geometry-equation/ops/svg-m1/briefs/plan.md`와 `plan-current.md`를 기준으로 생성했다.
 - 각 폴더의 `item.json`은 실제 유사 JS의 `sourcePath`, `ordinal`을 가진다. `plan.json`은 capability별 계산 데이터와 `caption`, `sourceQuote`, `sourceConditions`, `newVisualInformation`을 가진다. `publish.json`은 alt/caption과 렌더 전 임시 size를 가진다.
 - 24개는 **원본 이미지가 있던 역할의 신규 SVG** 후보다. 2개(강남 q16 P, 순천 q5 S)는 기존 연결 SVG를 보며 작성한 **교체** 후보다.
-- 매산 q10 P/S는 문제의 도형 및 최적화 식 검증을 먼저 해야 하며, 매산 q12 S는 원래 정답·보기 수정이 선행되어야 한다. `ENGINE_SUPPORT_CHECK` 6건은 엔진의 타입 지원 여부와 기하 조건을 검증해야 한다.
+- 매산 q10 P는 내부 칸막이·전체 가로 y 표현을 엔진에서 검증해야 하고, 매산 q12 S는 원래 정답·보기 수정이 선행되어야 한다. `ENGINE_SUPPORT_CHECK` 7건은 엔진의 타입 지원 여부와 기하 조건을 검증해야 한다.
 
 ## 공식 엔진 실행 예
 
@@ -33,8 +33,8 @@ node archive/tools/geometry-equation/production/render-plan.mjs \
 
 | ID | 시험지/q | 역할 | 작업 | capability | 보류/검증 | JSON |
 |---|---|---|---|---|---|---|
-| N5-01 | 매산 q10 | 문제 | 신규 | `construction-spike-v1` | `BLOCKED_EDITORIAL` | [plan.json](./N5-01_23_매산고_q10_problem/plan.json) |
-| N5-02 | 매산 q10 | 해설 | 신규 | `polynomial-spike-v1` | `BLOCKED_EDITORIAL` | [plan.json](./N5-02_23_매산고_q10_solution/plan.json) |
+| N5-01 | 매산 q10 | 문제 | 신규 | `construction-spike-v1` | `ENGINE_SUPPORT_CHECK` | [plan.json](./N5-01_23_매산고_q10_problem/plan.json) |
+| N5-02 | 매산 q10 | 해설 | 신규 | `polynomial-spike-v1` | `DRAFT_NOT_LINTED` | [plan.json](./N5-02_23_매산고_q10_solution/plan.json) |
 | N5-03 | 매산 q12 | 해설 | 신규 | `polynomial-spike-v1` | `BLOCKED_MATH` | [plan.json](./N5-03_23_매산고_q12_solution/plan.json) |
 | N5-04 | 매산 q16 | 해설 | 신규 | `multi-curve-figure-v1` | `DRAFT_NOT_LINTED` | [plan.json](./N5-04_23_매산고_q16_solution/plan.json) |
 | N5-05 | 매산 q20 | 해설 | 신규 | `multi-curve-figure-v1` | `DRAFT_NOT_LINTED` | [plan.json](./N5-05_23_매산고_q20_solution/plan.json) |

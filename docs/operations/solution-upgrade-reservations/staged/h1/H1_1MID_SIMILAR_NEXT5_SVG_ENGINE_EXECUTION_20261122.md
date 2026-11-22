@@ -6,7 +6,7 @@
 
 - [JSON manifest](./H1_1MID_20261122_NEXT5_PLAN_JSON_DRAFTS/manifest.json)에서 26개 slot의 `sourceFile`, `sourceSha`, `originalImageSha`, `existingImageSha`를 확인한다. 기준 소스 commit은 `ebe97fab7ea5ea9716638d20764d66dde1d76b2e`.
 - `AUTHOR_GUIDE.md`와 `ops/svg-m1/briefs/plan.md`, `plan-current.md`를 직접 읽고 공식 CLI를 사용한다. 엔진 코드는 바꾸지 않는다.
-- `BLOCKED_EDITORIAL`(매산 q10 P/S)와 `BLOCKED_MATH`(매산 q12 S)는 문항/정답 승인 전 독립 엔진 lint를 시도할 수는 있어도 **게시하지 않는다**.
+- `BLOCKED_MATH`(매산 q12 S)는 정답과 선택지 교정 전 **게시 금지**. 매산 q10은 치수 y가 전체 가로인 구획임을 문제 그림으로 명시한 뒤 시각 QA한다.
 - 수학 오류 별도 필수 교정: 매산 q11(공통 해 없음), q18(잘못된 인수분해), 순천 q16(퇴화된 직육면체), 제일 q15(빈 해설·모호한 일반항), 팔마 q23(서논술 답 메타데이터), 제일 q18(그림 조건). 이 작업의 JSON 패킷만으로 해결되지 않는다.
 
 ## 1. 슬롯 단위 공식 입력
@@ -25,7 +25,7 @@ done
 ```
 
 - 각 slot의 `figure-result.json`에서 `ARCHIVE_BOUND` 확인. 거부 사유가 있으면 엔진 자체를 수정하지 말고 `plan.json`의 capability-specific 데이터를 보완한다.
-- `ENGINE_SUPPORT_CHECK` 여섯 건: 강남 q16P(세 직교기둥+2패널), 순천 q7S(일차식 graph), 순천 q20P(무리수 원-현 정확 좌표), 제일 q13P(계수 부호 미상 대표 포물선), 팔마 q17P(도형 표현), 팔마 q23S(문항 answer 메타 일치). 각 엔진 결과에 독립 계산을 대조한다.
+- `ENGINE_SUPPORT_CHECK` 일곱 건: 매산 q10P(내부 칸막이·전체 가로 치수), 강남 q16P(세 직교기둥+2패널), 순천 q7S(일차식 graph), 순천 q20P(무리수 원-현 정확 좌표), 제일 q13P(계수 부호 미상 대표 포물선), 팔마 q17P(도형 표현), 팔마 q23S(문항 answer 메타 일치). 각 엔진 결과에 독립 계산을 대조한다.
 - 이 저장소 기준 컨테이너는 `visual_engine` 모듈이 없어 **공식 lint/render를 성공시키지 못함**. 별도 Codex 환경에서 의존성 복원 후 전수 재시도한다.
 
 ## 2. 독립 이미지 QA
