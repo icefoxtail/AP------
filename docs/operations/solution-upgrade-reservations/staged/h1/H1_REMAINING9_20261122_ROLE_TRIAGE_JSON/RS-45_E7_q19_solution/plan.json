@@ -1,0 +1,66 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "m0",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "7"
+        ],
+        "label": "m=0: y=-3",
+        "color": "BLUE"
+      },
+      {
+        "id": "m1",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-3/4"
+        ],
+        "domain": [
+          "-2",
+          "7"
+        ],
+        "label": "m=3/4: y=-3x/4",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -2,
+      7,
+      -7,
+      4
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "Q",
+          "x": "4",
+          "y": "-3"
+        }
+      ]
+    }
+  },
+  "caption": "m=0과 m=3/4의 경계 직선",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 직선 모두 Q=(4,−3)을 지나며 제1사분면을 만나지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "이 그림은 해설 예시이며 문제의 정답 번호는 그림에 표시하지 않는다."
+  ]
+}

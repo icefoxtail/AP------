@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "최종 해",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "5",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "−3≤x≤5"
+  },
+  "caption": "||x−1|−2|≤2의 최종 해 구간",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "k=2일 때 원문의 중첩 절댓값 부등식은 −3≤x≤5이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "두 끝점을 모두 포함하고 가운데 기준값 x=1을 사용한다."
+  ]
+}

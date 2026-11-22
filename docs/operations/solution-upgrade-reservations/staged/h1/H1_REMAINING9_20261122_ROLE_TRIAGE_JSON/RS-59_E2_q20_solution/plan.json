@@ -1,0 +1,38 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "m의 범위",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2*sqrt(2)",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "3",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "2sqrt(2)<m<3"
+  },
+  "caption": "두 실근이 1과 3 사이에 존재하는 m의 범위",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "판별식 m²>8과 경곗값 조건에서 2sqrt(2)<m<3이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "근호 끝점을 반올림하지 않고 정확하게 표시한다."
+  ]
+}

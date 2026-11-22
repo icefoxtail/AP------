@@ -1,0 +1,71 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "-12",
+          "-2"
+        ],
+        "domain": [
+          "-9",
+          "1"
+        ],
+        "label": "y=-2x-12",
+        "color": "BLUE"
+      },
+      {
+        "id": "pq",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "1/2"
+        ],
+        "domain": [
+          "-9",
+          "1"
+        ],
+        "label": "y=x/2+3",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -9,
+      1,
+      -7,
+      8
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-6",
+          "y": "0"
+        },
+        {
+          "id": "Q",
+          "x": "-4",
+          "y": "1"
+        }
+      ]
+    }
+  },
+  "caption": "x축 위에서 수직으로 만나는 두 직선",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 직선의 교점은 P=(−6,0)이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "이 그림은 해설 예시이며 문제의 정답 번호는 그림에 표시하지 않는다."
+  ]
+}

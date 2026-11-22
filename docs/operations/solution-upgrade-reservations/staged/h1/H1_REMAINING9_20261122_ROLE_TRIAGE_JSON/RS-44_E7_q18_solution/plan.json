@@ -1,0 +1,71 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "label": "y=2x+1",
+        "color": "BLUE"
+      },
+      {
+        "id": "n",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "label": "y=4",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -1,
+      4,
+      -2,
+      10
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "4"
+        },
+        {
+          "id": "Q",
+          "x": "9/5",
+          "y": "18/5"
+        }
+      ]
+    }
+  },
+  "caption": "y=2x+1을 기준으로 점 P와 반사점 Q",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P=(1,4)의 반사점 Q=(9/5,18/5)이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "이 그림은 해설 예시이며 문제의 정답 번호는 그림에 표시하지 않는다."
+  ]
+}

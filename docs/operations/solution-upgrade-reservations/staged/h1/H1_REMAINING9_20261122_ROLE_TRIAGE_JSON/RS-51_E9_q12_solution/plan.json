@@ -1,0 +1,67 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-16",
+          "8",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ],
+        "label": "y=-(x-4)^2",
+        "color": "BLUE"
+      },
+      {
+        "id": "x",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      0,
+      8,
+      -18,
+      3
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "x": "4",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "y=−(x−4)^2의 x축 접점 (4,0)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x축 반사 후 위로 a=3만큼 이동시키면 y=−(x−4)²이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "접점을 식으로 검증한다."
+  ]
+}

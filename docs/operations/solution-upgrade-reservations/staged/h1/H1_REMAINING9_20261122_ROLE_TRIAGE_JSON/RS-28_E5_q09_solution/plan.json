@@ -1,0 +1,86 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "ab",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-1/2"
+        ],
+        "domain": [
+          "-3",
+          "7"
+        ],
+        "label": "y=-x/2+2",
+        "color": "BLUE"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "2"
+        ],
+        "domain": [
+          "-3",
+          "7"
+        ],
+        "label": "y=2x+2",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -3,
+      7,
+      -3,
+      12
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-2",
+          "y": "3"
+        },
+        {
+          "id": "B",
+          "x": "6",
+          "y": "-1"
+        },
+        {
+          "id": "P",
+          "x": "0",
+          "y": "2"
+        },
+        {
+          "id": "Q",
+          "x": "1",
+          "y": "4"
+        },
+        {
+          "id": "R",
+          "x": "3",
+          "y": "8"
+        }
+      ]
+    }
+  },
+  "caption": "AB에 수직이고 QR과 평행한 직선 l",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB 기울기 −1/2, l 기울기 2, P=(0,2)이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "이 그림은 해설 예시이며 문제의 정답 번호는 그림에 표시하지 않는다."
+  ]
+}

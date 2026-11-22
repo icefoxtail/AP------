@@ -1,0 +1,49 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "공통 범위",
+        "color": "BLUE",
+        "integerPoints": true,
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "5",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "−1<p<1 또는 4<p<5"
+  },
+  "caption": "−1<p<1 또는 4<p<5",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "해설의 근 부호·합·곱 조건으로 얻은 열린 구간 두 개를 표시한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "구간에 포함되는 정수는 그림을 보고 확인한다."
+  ]
+}

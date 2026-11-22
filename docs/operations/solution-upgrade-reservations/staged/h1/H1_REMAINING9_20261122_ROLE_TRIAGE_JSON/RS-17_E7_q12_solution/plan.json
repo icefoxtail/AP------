@@ -1,0 +1,81 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "bc",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "label": "y=x+3",
+        "color": "BLUE"
+      },
+      {
+        "id": "am",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "label": "y=-x+5",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -1,
+      5,
+      0,
+      9
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "4",
+          "y": "1"
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "3"
+        },
+        {
+          "id": "C",
+          "x": "4",
+          "y": "7"
+        },
+        {
+          "id": "M",
+          "x": "1",
+          "y": "4"
+        }
+      ]
+    }
+  },
+  "caption": "BC와 A에서 내린 수선의 발 M",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "BC:y=x+3, 수선 y=−x+5가 M=(1,4)에서 만난다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "이 그림은 해설 예시이며 문제의 정답 번호는 그림에 표시하지 않는다."
+  ]
+}

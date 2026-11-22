@@ -1,0 +1,74 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "-1"
+        ],
+        "domain": [
+          "-5",
+          "9"
+        ],
+        "label": "y=-x-3",
+        "color": "BLUE"
+      },
+      {
+        "id": "m1",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "-1"
+        ],
+        "domain": [
+          "-5",
+          "9"
+        ],
+        "label": "y=-x+5",
+        "color": "WARM"
+      },
+      {
+        "id": "m2",
+        "kind": "LINE",
+        "coefficients": [
+          "-11",
+          "-1"
+        ],
+        "domain": [
+          "-5",
+          "9"
+        ],
+        "label": "y=-x-11",
+        "color": "GREEN"
+      }
+    ],
+    "viewport": [
+      -5,
+      9,
+      -19,
+      14
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": []
+    }
+  },
+  "caption": "거리 4sqrt(2)를 만드는 평행선 두 경우",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "기준선 l과 m은 k=5 또는 k=−11일 때 거리가 4sqrt(2)이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "이 그림은 해설 예시이며 문제의 정답 번호는 그림에 표시하지 않는다."
+  ]
+}

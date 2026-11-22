@@ -1,0 +1,76 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "e",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-1"
+        ],
+        "domain": [
+          "-3",
+          "6"
+        ],
+        "label": "y=-x+3",
+        "color": "BLUE"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "-6",
+          "2"
+        ],
+        "domain": [
+          "-3",
+          "6"
+        ],
+        "label": "y=2x-6",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -3,
+      6,
+      -7,
+      9
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-1",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "4"
+        },
+        {
+          "id": "P",
+          "x": "3",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "두 직선의 교점으로 점 P를 결정",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P는 A,B에서 같은 거리에 있고 y=2x−6 위에 있다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "이 그림은 해설 예시이며 문제의 정답 번호는 그림에 표시하지 않는다."
+  ]
+}

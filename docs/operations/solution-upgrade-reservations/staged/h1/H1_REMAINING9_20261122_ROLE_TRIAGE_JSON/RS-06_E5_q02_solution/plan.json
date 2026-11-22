@@ -1,0 +1,71 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "-2"
+        ],
+        "domain": [
+          "-9",
+          "5"
+        ],
+        "label": "y=-2x+5",
+        "color": "BLUE"
+      },
+      {
+        "id": "m",
+        "kind": "LINE",
+        "coefficients": [
+          "11/2",
+          "1/2"
+        ],
+        "domain": [
+          "-9",
+          "5"
+        ],
+        "label": "y=x/2+11/2",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -9,
+      5,
+      -6,
+      24
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-3",
+          "y": "4"
+        },
+        {
+          "id": "B",
+          "x": "-7",
+          "y": "2"
+        }
+      ]
+    }
+  },
+  "caption": "기준 직선과 A,B를 지나는 수직 직선",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A(−3,4), B(−7,2)는 y=x/2+11/2 위에 놓인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "이 그림은 해설 예시이며 문제의 정답 번호는 그림에 표시하지 않는다."
+  ]
+}

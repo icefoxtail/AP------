@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-2",
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "label": "y=x^2-2x-2",
+        "color": "BLUE"
+      },
+      {
+        "id": "x",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "label": "y=0",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -2,
+      4,
+      -5,
+      8
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "p=−2일 때 두 실근이 −1과 3 사이에 있는 예시",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "p=−2일 때 근은 1±sqrt(3)이고 −1<α<1<β<3을 만족한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "정수 p의 모든 사례가 아니라 한 사례만 시각화한다."
+  ]
+}

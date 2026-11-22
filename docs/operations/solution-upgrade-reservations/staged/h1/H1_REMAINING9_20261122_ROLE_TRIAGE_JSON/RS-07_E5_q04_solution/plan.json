@@ -1,0 +1,71 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "o",
+        "kind": "LINE",
+        "coefficients": [
+          "7/5",
+          "-2/5"
+        ],
+        "domain": [
+          "-2",
+          "7"
+        ],
+        "label": "2x+5y-7=0",
+        "color": "BLUE"
+      },
+      {
+        "id": "t",
+        "kind": "LINE",
+        "coefficients": [
+          "6/5",
+          "-2/5"
+        ],
+        "domain": [
+          "-2",
+          "7"
+        ],
+        "label": "2x+5y-6=0",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -2,
+      7,
+      -2,
+      4
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "1"
+        },
+        {
+          "id": "B",
+          "x": "3",
+          "y": "0"
+        }
+      ]
+    }
+  },
+  "caption": "원래 직선과 (2,−1)만큼 이동한 직선",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 (1,1)은 이동 후 (3,0)이 된다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "이 그림은 해설 예시이며 문제의 정답 번호는 그림에 표시하지 않는다."
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "p",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "label": "y=x^2+2",
+        "color": "BLUE"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "4"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "label": "y=4x-2",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -1,
+      5,
+      -2,
+      28
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "x": "2",
+          "y": "6"
+        }
+      ]
+    }
+  },
+  "caption": "(a,b)=(4,2)에서 두 그래프가 한 점에서 만나는 예시",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x²+2=4x−2는 (x−2)²=0이므로 (2,6)에서 접한다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "36가지 주사위 경우 중 하나만 예시로 보인다."
+  ]
+}

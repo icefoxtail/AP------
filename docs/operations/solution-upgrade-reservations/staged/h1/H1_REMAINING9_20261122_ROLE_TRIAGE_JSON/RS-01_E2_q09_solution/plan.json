@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "해집합",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "5",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": true,
+        "color": "BLUE"
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "2<x<5의 정수 해"
+  },
+  "caption": "2<x<5의 정수 해",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "최종 해집합은 2<x<5",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "범위 안 정수점을 함께 표시한다."
+  ]
+}
