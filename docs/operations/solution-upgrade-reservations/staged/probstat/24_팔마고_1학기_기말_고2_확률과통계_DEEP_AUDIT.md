@@ -1,11 +1,14 @@
 # 확통 1학기 기말 기출 심층 감사 — 24_팔마고_1학기_기말_고2_확률과통계.js
 
+> **2026-11-22 HOLD66 재검증 — 최신 판정 우선**: 이 시험지의 기존 HOLD 8건 중 **8건 KEEP 전환**, **0건 HOLD 유지**. 원본 main JS blob `7b983b6f3076ca280e08a494a4f267fbf8745d35` 재검독; 인쇄 원본 `2024_palma_1final.pdf` 대조 완료. 현재 코드 자산의 앱 상대경로 `assets/images/...`는 저장소 `archive/assets/images/...`에 실제 존재하며 66개 전체 렌더 완료. 이전 문서 본문의 이미지 404/미존재/미렌더 근거는 **2026-11-22 철회된 과거 기록**이고 아래 개별 Q 재판정이 우선한다. 학생 화면·채점기·Gold 회귀는 **NOT_RUN**, 원본 JS·이미지 미변경.
+
+
 - lane: **lane20**; courseKey: **probstat**; 대상: 고2 / **1학기 기말** / original / 24학년도. **1학기 중간 완료분과 2학기 확통은 이번 파일에서 작업하지 않음**.
 - sourcePath: `archive/exams/original/high/h2/1final/24_팔마고_1학기_기말_고2_확률과통계.js`; sourceRef: `main`; sourceBlobSha: `7b983b6f3076ca280e08a494a4f267fbf8745d35`
 - standardCourse: **확률과 통계** (전 22문항 원본 필드 확인); 원본 ID: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22.
 - 목표 브랜치: `work/solution-upgrade-lane-20-20261121`; 상태: **EXAM_AUDIT_COMPLETE / EXAM_DRAFT_COMPLETE** (문항별 후속 수선 예약, 원본 미수정, 최종 QA 미실행).
-- 문항 판정: **KEEP 14 / UPGRADE 0 / HOLD 8 / UNREAD 0**.
-- 원본에 연결된 이미지 참조: PNG 1개, SVG 7개, 합계 8개. **해당 시험지의 `assets/images/<exam>` 폴더가 main과 lane20 양쪽에서 404 NOT_FOUND**, 따라서 실제 PNG/SVG 시각검수는 미실행. 그림이 연결된 문항은 모두 HOLD. SVG 렌더나 그림 내용 확인을 성공했다고 주장하지 않음.
+- 문항 판정: **KEEP 22 / UPGRADE 0 / HOLD 0 / UNREAD 0**.
+- **원본 연결 이미지 검증(2026-11-22 정정)**: 저장소 실제 경로 `archive/assets/images/24_팔마고_1학기_기말_고2_확률과통계/`에서 8개(해당 HOLD 연동 자산) 실물 확인·렌더 정상. 종전 `assets/images/` 루트 404 및 '이미지 미검증' 주장은 잘못된 조회 경로로 철회한다.
 - 이미지 참조 경로: `assets/images/24_팔마고_1학기_기말_고2_확률과통계/q3-solution.svg`; `assets/images/24_팔마고_1학기_기말_고2_확률과통계/q6.png`; `assets/images/24_팔마고_1학기_기말_고2_확률과통계/q12-solution.svg`; `assets/images/24_팔마고_1학기_기말_고2_확률과통계/q14-solution.svg`; `assets/images/24_팔마고_1학기_기말_고2_확률과통계/q17-solution.svg`; `assets/images/24_팔마고_1학기_기말_고2_확률과통계/q18-solution.svg`; `assets/images/24_팔마고_1학기_기말_고2_확률과통계/q21-solution.svg`; `assets/images/24_팔마고_1학기_기말_고2_확률과통계/q22-solution.svg`
 - 검토 범위: 문항 원본 텍스트, 보기, 저장 답, 기존 해설, 원문에 명시된 수학 조건에 대한 독립 검산; 그림 경로 유무 조회. 원본 PDF 직접 대조 및 화면 QA는 범위 밖.
 - 릴리스 게이트: 누락 이미지 실파일 확보 및 렌더 검사, 원문 PDF 전문 대조, 학생 화면 HTML/LaTeX 렌더, 답안 UI·채점기 실제 구동, Golden/Negative, preflight 영수증 **NOT_RUN**. **HOLD는 배포 승인 아님**.
@@ -50,7 +53,9 @@
 - **독립 검산·판정**: 31~50의 5배수 35,40,45,50: 4/20=1/5.
 - 후속 학생 화면 / 채점 엔진 / Golden / Negative: **NOT_RUN**
 
-### Q03 — HOLD
+### Q03 — KEEP
+
+- **2026-11-22 원본대조·추가검증 최종판정: KEEP**. 인쇄 원문·현재 JS 문항과 정답/해설을 대조하고 자산 `archive/assets/images/24_팔마고_1학기_기말_고2_확률과통계/q3-solution.svg`을 실물 열기·래스터 렌더·시각 검수했다. 기존 `assets/images/` 조회 404 근거는 `archive/assets/images/` 경로를 누락한 오류이므로 **철회**. 문항 수학적 검산 및 원본 조건과 해설 간 핵심 관계를 재확인함. 기존 아래쪽 HOLD 문구는 정정 전 이력이며 효력이 없다.
 
 - identity: id=`3`; sourceQuestionNo=`3`; sourceBlobSha=`7b983b6f3076ca280e08a494a4f267fbf8745d35`; 원본 단원: 확률의 뜻과 활용; questionType: `객관식`; 원본 답: `①`; standardCourse: `확률과 통계`
 - 원문 문제 조건 (HTML 개행·그림 태그만 정규화한 표시용 복사):
@@ -110,7 +115,9 @@
 - **독립 검산·판정**: 슈팅 120/400의 경험적 상대도수 3/10; 확률 추정임을 유의.
 - 후속 학생 화면 / 채점 엔진 / Golden / Negative: **NOT_RUN**
 
-### Q06 — HOLD
+### Q06 — KEEP
+
+- **2026-11-22 원본대조·추가검증 최종판정: KEEP**. 인쇄 원문·현재 JS 문항과 정답/해설을 대조하고 자산 `archive/assets/images/24_팔마고_1학기_기말_고2_확률과통계/q6.png`을 실물 열기·래스터 렌더·시각 검수했다. 기존 `assets/images/` 조회 404 근거는 `archive/assets/images/` 경로를 누락한 오류이므로 **철회**. 문항 수학적 검산 및 원본 조건과 해설 간 핵심 관계를 재확인함. 기존 아래쪽 HOLD 문구는 정정 전 이력이며 효력이 없다.
 
 - identity: id=`6`; sourceQuestionNo=`6`; sourceBlobSha=`7b983b6f3076ca280e08a494a4f267fbf8745d35`; 원본 단원: 확률의 뜻과 활용; questionType: `객관식`; 원본 답: `②`; standardCourse: `확률과 통계`
 - 원문 문제 조건 (HTML 개행·그림 태그만 정규화한 표시용 복사):
@@ -229,7 +236,9 @@
 - **독립 검산·판정**: 확률합이1이어도 교집합 미지면 합사건1 보장 안 됨; 나머지 ㄴ·ㄷ 참.
 - 후속 학생 화면 / 채점 엔진 / Golden / Negative: **NOT_RUN**
 
-### Q12 — HOLD
+### Q12 — KEEP
+
+- **2026-11-22 원본대조·추가검증 최종판정: KEEP**. 인쇄 원문·현재 JS 문항과 정답/해설을 대조하고 자산 `archive/assets/images/24_팔마고_1학기_기말_고2_확률과통계/q12-solution.svg`을 실물 열기·래스터 렌더·시각 검수했다. 기존 `assets/images/` 조회 404 근거는 `archive/assets/images/` 경로를 누락한 오류이므로 **철회**. 문항 수학적 검산 및 원본 조건과 해설 간 핵심 관계를 재확인함. 기존 아래쪽 HOLD 문구는 정정 전 이력이며 효력이 없다.
 
 - identity: id=`12`; sourceQuestionNo=`12`; sourceBlobSha=`7b983b6f3076ca280e08a494a4f267fbf8745d35`; 원본 단원: 확률의 뜻과 활용; questionType: `객관식`; 원본 답: `①`; standardCourse: `확률과 통계`
 - 원문 문제 조건 (HTML 개행·그림 태그만 정규화한 표시용 복사):
@@ -270,7 +279,9 @@
 - **독립 검산·판정**: 세 색 각2, 다른 색 2개 선택 =1−3/C(6,2)=4/5.
 - 후속 학생 화면 / 채점 엔진 / Golden / Negative: **NOT_RUN**
 
-### Q14 — HOLD
+### Q14 — KEEP
+
+- **2026-11-22 원본대조·추가검증 최종판정: KEEP**. 인쇄 원문·현재 JS 문항과 정답/해설을 대조하고 자산 `archive/assets/images/24_팔마고_1학기_기말_고2_확률과통계/q14-solution.svg`을 실물 열기·래스터 렌더·시각 검수했다. 기존 `assets/images/` 조회 404 근거는 `archive/assets/images/` 경로를 누락한 오류이므로 **철회**. 문항 수학적 검산 및 원본 조건과 해설 간 핵심 관계를 재확인함. 기존 아래쪽 HOLD 문구는 정정 전 이력이며 효력이 없다.
 
 - identity: id=`14`; sourceQuestionNo=`14`; sourceBlobSha=`7b983b6f3076ca280e08a494a4f267fbf8745d35`; 원본 단원: 확률의 뜻과 활용; questionType: `객관식`; 원본 답: `②`; standardCourse: `확률과 통계`
 - 원문 문제 조건 (HTML 개행·그림 태그만 정규화한 표시용 복사):
@@ -330,7 +341,9 @@
 - **독립 검산·판정**: 1학년 x명, 남학생 비율 조건 .6x/[.6x+.7(80−x)]=.72 →x=60.
 - 후속 학생 화면 / 채점 엔진 / Golden / Negative: **NOT_RUN**
 
-### Q17 — HOLD
+### Q17 — KEEP
+
+- **2026-11-22 원본대조·추가검증 최종판정: KEEP**. 인쇄 원문·현재 JS 문항과 정답/해설을 대조하고 자산 `archive/assets/images/24_팔마고_1학기_기말_고2_확률과통계/q17-solution.svg`을 실물 열기·래스터 렌더·시각 검수했다. 기존 `assets/images/` 조회 404 근거는 `archive/assets/images/` 경로를 누락한 오류이므로 **철회**. 문항 수학적 검산 및 원본 조건과 해설 간 핵심 관계를 재확인함. 기존 아래쪽 HOLD 문구는 정정 전 이력이며 효력이 없다.
 
 - identity: id=`17`; sourceQuestionNo=`17`; sourceBlobSha=`7b983b6f3076ca280e08a494a4f267fbf8745d35`; 원본 단원: 조건부확률; questionType: `객관식`; 원본 답: `④`; standardCourse: `확률과 통계`
 - 원문 문제 조건 (HTML 개행·그림 태그만 정규화한 표시용 복사):
@@ -352,7 +365,9 @@
 - 원본 해설 이미지 caption(검증 전): 먼저 A와 여사건 A로 나누고 각 경우에서 B가 일어날 확률을 이어 붙인다. B에 도달하는 두 경로의 결합확률을 합해 전체확률을 구한다. 정답은 15분의 14이다.
 - 후속 학생 화면 / 채점 엔진 / Golden / Negative: **NOT_RUN**
 
-### Q18 — HOLD
+### Q18 — KEEP
+
+- **2026-11-22 원본대조·추가검증 최종판정: KEEP**. 인쇄 원문·현재 JS 문항과 정답/해설을 대조하고 자산 `archive/assets/images/24_팔마고_1학기_기말_고2_확률과통계/q18-solution.svg`을 실물 열기·래스터 렌더·시각 검수했다. 기존 `assets/images/` 조회 404 근거는 `archive/assets/images/` 경로를 누락한 오류이므로 **철회**. 문항 수학적 검산 및 원본 조건과 해설 간 핵심 관계를 재확인함. 기존 아래쪽 HOLD 문구는 정정 전 이력이며 효력이 없다.
 
 - identity: id=`18`; sourceQuestionNo=`18`; sourceBlobSha=`7b983b6f3076ca280e08a494a4f267fbf8745d35`; 원본 단원: 조건부확률; questionType: `객관식`; 원본 답: `⑤`; standardCourse: `확률과 통계`
 - 원문 문제 조건 (HTML 개행·그림 태그만 정규화한 표시용 복사):
@@ -416,7 +431,9 @@
 - **독립 검산·판정**: 6명 원형 전체5!=120, 6과4 또는 6과5 인접 금지, 여사건 48+48−12=84, 유리 36/120=3/10.
 - 후속 학생 화면 / 채점 엔진 / Golden / Negative: **NOT_RUN**
 
-### Q21 — HOLD
+### Q21 — KEEP
+
+- **2026-11-22 원본대조·추가검증 최종판정: KEEP**. 인쇄 원문·현재 JS 문항과 정답/해설을 대조하고 자산 `archive/assets/images/24_팔마고_1학기_기말_고2_확률과통계/q21-solution.svg`을 실물 열기·래스터 렌더·시각 검수했다. 기존 `assets/images/` 조회 404 근거는 `archive/assets/images/` 경로를 누락한 오류이므로 **철회**. 문항 수학적 검산 및 원본 조건과 해설 간 핵심 관계를 재확인함. 기존 아래쪽 HOLD 문구는 정정 전 이력이며 효력이 없다.
 
 - identity: id=`21`; sourceQuestionNo=`21`; sourceBlobSha=`7b983b6f3076ca280e08a494a4f267fbf8745d35`; 원본 단원: 조건부확률; questionType: `서술형`; 원본 답: `(1) $\dfrac{1}{6}$, (2) $\dfrac{5}{6}$, (3) $\dfrac{8}{15}$, (4) $\dfrac{3}{8}$`; standardCourse: `확률과 통계`
 - 원문 문제 조건 (HTML 개행·그림 태그만 정규화한 표시용 복사):
@@ -441,7 +458,9 @@
 - 원본 해설 이미지 caption(검증 전): 전체 집합 U 안에서 A와 B의 합집합을 회색 음영으로 나타내고, 교집합과 바깥 여집합을 구분한다. 조건부확률 풀이의 기준 영역을 보여 준다. 정답은 (1) 6분의 1, (2) 6분의 5, (3) 15분의 8, (4) 8분의 3이다.
 - 후속 학생 화면 / 채점 엔진 / Golden / Negative: **NOT_RUN**
 
-### Q22 — HOLD
+### Q22 — KEEP
+
+- **2026-11-22 원본대조·추가검증 최종판정: KEEP**. 인쇄 원문·현재 JS 문항과 정답/해설을 대조하고 자산 `archive/assets/images/24_팔마고_1학기_기말_고2_확률과통계/q22-solution.svg`을 실물 열기·래스터 렌더·시각 검수했다. 기존 `assets/images/` 조회 404 근거는 `archive/assets/images/` 경로를 누락한 오류이므로 **철회**. 문항 수학적 검산 및 원본 조건과 해설 간 핵심 관계를 재확인함. 기존 아래쪽 HOLD 문구는 정정 전 이력이며 효력이 없다.
 
 - identity: id=`22`; sourceQuestionNo=`22`; sourceBlobSha=`7b983b6f3076ca280e08a494a4f267fbf8745d35`; 원본 단원: 조건부확률; questionType: `서술형`; 원본 답: `(1) $\dfrac{1}{9}$, (2) $\dfrac{4}{9}$, (3) $\dfrac{1}{4}$`; standardCourse: `확률과 통계`
 - 원문 문제 조건 (HTML 개행·그림 태그만 정규화한 표시용 복사):
