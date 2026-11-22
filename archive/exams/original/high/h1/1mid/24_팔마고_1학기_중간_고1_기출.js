@@ -736,7 +736,7 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "②",
-    "solution": "이차함수를 꼭짓점 꼴로 바꾼다.\n$y=x^2-4x+5=(x-2)^2+1$이다.\n$t=x-2$라 두면 구간은\n$k-4\\le t\\le k$가 되고,\n$y=t^2+1$이다.\n\n최댓값과 최솟값의 합이 $11$이므로\n구간에서 $t^2$의 최댓값과 최솟값의 합은\n$11-2=9$이다.\n\n먼저 구간이 $0$을 포함하면\n$0\\le k\\le4$이고 $t^2$의 최솟값은 $0$이다.\n따라서\n$\\max\\{(k-4)^2,k^2\\}=9$이다.\n$0\\le k\\le2$에서는 $(k-4)^2$이 더 크므로\n$(k-4)^2=9$에서 $k=1$이다.\n$2\\le k\\le4$에서는 $k^2$이 더 크므로\n$k^2=9$에서 $k=3$이다.\n\n$k<0$ 또는 $k>4$이면 구간 전체가 $0$의 한쪽에 있어 두 끝점 제곱의 합이 이미 $9$보다 커질 수밖에 없으므로 해가 없다.\n따라서 가능한 $k$는\n$1$, $3$이고 그 합은\n$1+3=4$이다.\n따라서 정답은 ②이다.",
+    "solution": "주어진 함수는\n\\[\ny=x^2-4x+5=(x-2)^2+1.\n\\]\n$t=x-2$라 두면 $k-4\\le t\\le k$이다. 이 구간에서 $t^2$의 최댓값을 $M$, 최솟값을 $m$이라 하면\n\\[\n(M+1)+(m+1)=11\\quad\\Longrightarrow\\quad M+m=9.\n\\]\n**① $0\\le k\\le4$:** 구간이 $t=0$을 포함하므로 $m=0$이다.\n- $0\\le k\\le2$에서는 $|k-4|\\ge|k|$이므로 $M=(k-4)^2$. 따라서\n\\[\n(k-4)^2=9\\Longrightarrow k-4=\\pm3\\Longrightarrow k=1\\text{ 또는 }7.\n\\]\n범위 $0\\le k\\le2$에 맞는 것은 $k=1$이다.\n- $2\\le k\\le4$에서는 $|k|\\ge|k-4|$이므로 $M=k^2$. 따라서\n\\[\nk^2=9\\Longrightarrow k=\\pm3\\Longrightarrow k=3\\quad(2\\le k\\le4).\n\\]\n**② $k<0$:** 구간 $[k-4,k]$가 음수 쪽에 있으며\n\\[\nM=(k-4)^2>16>9,\n\\]\n$m\\ge0$이므로 $M+m>9$로 불가능하다.\n\n**③ $k>4$:** 구간 $[k-4,k]$가 양수 쪽에 있으며\n\\[\nM=k^2>16>9,\n\\]\n$m\\ge0$이므로 $M+m>9$로 불가능하다.\n\n따라서 모든 실수 해는 $k=1,3$, 그 합은\n\\[\n1+3=\\boxed{4}.\n\\]",
     "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
     "subUnit": "이차방정식과 이차함수의 관계",
     "subUnitConfidence": "source_solution_semantic_resolved",
