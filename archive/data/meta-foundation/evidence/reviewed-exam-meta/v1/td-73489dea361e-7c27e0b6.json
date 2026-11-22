@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-73489dea361e-7c27e0b6",
+  "requestSha256": "b9fd1592c77a855a971e09e57411de32cd758b3ef9b6e1cc988d1294c379d9e5",
+  "examUid": "19_이수중_2학기_중간_중3_수학",
+  "sourceArchiveFile": "original/middle/m3/2mid/19_이수중_2학기_중간_중3_수학.js",
+  "sourceBlobSha1": "305edda1297eab1b8c60b1bea3d482444c02e307",
+  "sourceRawSha256": "42733de6446f3eff89dc43e6036578a143e8ba5890f7c39ba93b40517bf37c61",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-73489dea361e-7c27e0b6.type-ledger.json",
+        "sha256": "cee4b59c5c3a0e7705ee1ef879a7d405d48fae017d63cb72dffc47ba74bd117b"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_b9205ff9995f221847ddb49746137ec13f4ca103ffb320658c2922ac77d3a7f5",
+      "sourceArchiveFile": "original/middle/m3/2mid/19_이수중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 16,
+      "problemTypeKey": "PT_M1_COORD_TRIANGLE_AREA",
+      "templateKey": "TPL_M1_COORD_TRIANGLE_AREA_DIRECT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-73489dea361e-7c27e0b6",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "모눈 위 세 꼭짓점의 좌표 차를 읽고 바깥 정사각형에서 세 직각삼각형 넓이를 빼 삼각형 ABC의 넓이를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "5938e5b946514638a113bdac2d6fc38196ea00c7ccbf36a18f8d0006758f5b8a",
+        "judgedContentFingerprint": "8486586cfbbea2a6a80dd9b0d5480957b848aef343e1361a23b95bc20c916638",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "a636a429fd321a0f450ae1c3d904444a7db81a5039c195f3d0bf8a3ab5745a54",
+        "resultSource": {
+          "branch": "data/type-judgment-u-20261122",
+          "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-73489dea361e-7c27e0b6.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}

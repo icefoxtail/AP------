@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-61fb381c839f-5a1e1330",
+  "requestSha256": "989ab8431b35b29493eda32d35d3de90d0749ec843b7ff22855ca90e82d37314",
+  "examUid": "19_이수중_2학기_중간_중2_수학",
+  "sourceArchiveFile": "original/middle/m2/2mid/19_이수중_2학기_중간_중2_수학.js",
+  "sourceBlobSha1": "2784cee99e774753f5dffbe2da3c5cd7ff58efd9",
+  "sourceRawSha256": "a976d5bff72669029897c493a7e0903b2b5c36509452f52dddf436c2bfd19c8f",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-61fb381c839f-5a1e1330.type-ledger.json",
+        "sha256": "57a37a442309d8bbf8c63e06ebc87b8f5d21965d537b6f955b36650b761fe0a0"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_989c2b0cc85cce07c92e2178516dc5b8def67a8b8a3f6c65210a7d978241e621",
+      "sourceArchiveFile": "original/middle/m2/2mid/19_이수중_2학기_중간_중2_수학.js",
+      "sourceOrdinal": 13,
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-61fb381c839f-5a1e1330",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "점 P를 지나는 평행선이 만드는 작은 평행사변형의 대변 길이가 같음을 이용해 PH와 PF를 각각 구하고 더한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "3ad5530328452c705299c833104c502b25dfa3acb3221c714863a758b26669db",
+        "judgedContentFingerprint": "049ff1fc314e08e7e74c7c52307cf61a05b693dea642d62683ea58e8b87a8d33",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "9300c4d0b60bf0b552fdaa0ffd39686ee00ac9ac9b349f0df4a390470df5804e",
+        "resultSource": {
+          "branch": "data/type-judgment-u-20261122",
+          "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-61fb381c839f-5a1e1330.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+          "matchesRegistered": true
+        },
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 25
+}

@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-6a8e9dd9dfea-bf771285",
+  "requestSha256": "1b4e3d8f01189fe8195eeae429a2d71d4937d881064b52f029c187e3718e24b2",
+  "examUid": "24_조대부고_2학기_중간_고2_수학II",
+  "sourceArchiveFile": "original/high/h2/2mid/24_조대부고_2학기_중간_고2_수학II.js",
+  "sourceBlobSha1": "9126e68e72a15f7ab7b9ce06fe71897b00416284",
+  "sourceRawSha256": "bef26db627837a6a5113e48d8987d6d88ffe63f06412a6ce194c4d1993268f44",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6a8e9dd9dfea-bf771285.type-ledger.json",
+        "sha256": "de5daf0e341b878203f499bf63122aa48d9dbb4db386a45247a006f3aca27dfe"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_f257b595c84e48da4ad053bb05c19af8c9a0e7535ded37f0bca3aea6f84c788b",
+      "sourceArchiveFile": "original/high/h2/2mid/24_조대부고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 17,
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_COUNT_FUNCTION_DISCONTINUITY_FIND",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-6a8e9dd9dfea-bf771285",
+        "judge": "dots",
+        "rationale": "평균변화율 1에 맞는 두 미분계수 위치 합 3을 구하고 조각별 직선 교점 개수 변화가 발생하는 2/3와 2를 찾아 곱 8을 얻는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "c8114601b5786ce63d5553fb71b02fc732fc3a3437a85b21cb74f3fa7621beb5",
+        "judgedContentFingerprint": "43f64728e74c68d9280f4368071eb4c18571a414bd8fe36786d03bc55d8fdb7c",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "914185f9fdacc1f7631cc7d8de11d9734c4508ed98dd549f48e45e636a4b0051",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6a8e9dd9dfea-bf771285.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}
