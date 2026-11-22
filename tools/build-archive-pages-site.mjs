@@ -5,6 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
 import { buildStudentSvgRefresh } from './lib/build-student-svg-refresh.mjs';
+import { buildSimilarLinks } from './lib/build-similar-links.mjs';
 import { loadSourceQualityHolds } from '../archive/tools/source-quality-holds.mjs';
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
@@ -635,6 +636,14 @@ export function planPagesSite({
       entries.push(projection);
     }
   }
+  if (manifest.similarLinks === true) {
+    const projection = buildSimilarLinks(root);
+    if (selectedPaths.has(projection.path)) fail('similar-link projection conflicts with a packaged file');
+    for (const input of projection.similarLinkInputs) {
+      assertNoSymlinkComponents(root, resolveInside(root, input), 'similar-link projection input');
+    }
+    entries.push(projection);
+  }
   const unusedTarget = targets.find((item) => !item.used);
   if (unusedTarget) fail(`minifyJson entry matches no packaged JSON file: ${unusedTarget.path}${unusedTarget.tree ? '/' : ''}`);
   const totalBytes = entries.reduce((sum, entry) => sum + entry.bytes, 0);
@@ -695,6 +704,7 @@ export async function buildPagesSite({
       sha256: entry.content ? crypto.createHash('sha256').update(entry.content).digest('hex') : await sha256File(entry.absolute),
       reasons: entry.reasons,
       ...(entry.studentSvgInputs ? { transform: 'student-svg-refresh' }
+        : entry.similarLinkInputs ? { transform: 'similar-links' }
         : entry.content ? { transform: 'minify-json', sourceBytes: entry.sourceBytes } : {}),
     });
   }

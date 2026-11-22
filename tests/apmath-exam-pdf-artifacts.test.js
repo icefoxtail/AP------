@@ -103,7 +103,7 @@ function renderStudentScreensWithExam(overrides = {}) {
   vm.runInContext([
     'escapeHtml', 'getStudentPortalRecordedSubmission', 'buildOmrReviewUrl',
     'isOmrReviewAvailable', 'isLegacyMixedOmrReview', 'renderOmrReviewActions',
-    'renderOmrPdfAction', 'renderOmrExamCard', 'renderOmrHomeSection',
+    'renderOmrPdfAction', 'renderSimilarEntry', 'renderOmrExamCard', 'renderOmrHomeSection',
     'groupStudentPortalExams', 'geometryLabHref', 'renderGeometryLabEntry',
     'renderStudentQuickActions', 'renderOmrExamBrowser'
   ].map(studentFunction).join('\n'), context);
