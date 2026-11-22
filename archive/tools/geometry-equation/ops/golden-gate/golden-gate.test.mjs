@@ -11,7 +11,7 @@ import {
 } from './lib/kinds.mjs';
 import {buildCodeGraph} from './lib/code-graph.mjs';
 import {SNAPSHOT_SPECS, RENDER_PLAN} from './lib/snapshot.mjs';
-import {parseTapForTest, parseUnittestForTest} from './lib/tests-run.mjs';
+import {parseTapForTest, parseUnittestForTest, normalizeTestName, compareTests} from './lib/tests-run.mjs';
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../..');
 const manifest = JSON.parse(fs.readFileSync(path.join(REPO, GE, 'ops/golden.manifest.json'), 'utf8'));
@@ -172,3 +172,16 @@ test('engine test output parsers read TAP and unittest verbose lines', () => {
   const ut = parseUnittestForTest('test_one (test_mod.T.test_one) ... ok\ntest_two (test_mod.T.test_two) ... FAIL\ntest_three (test_mod.T.test_three) ... skipped \'x\'\nRan 3 tests\n');
   assert.deepEqual(ut, {'test_mod.T.test_one': 'pass', 'test_mod.T.test_two': 'fail', 'test_mod.T.test_three': 'skip'});
 });
+
+test('engine test comparison: names that hold the snapshot path match across base and head, new failures are the head-only ones', () => {
+  const BS = String.fromCharCode(92);
+  const win = (...parts) => parts.join(BS);
+  assert.equal(normalizeTestName(win('D:', 'cache', 'gate', 'snapshots', 'c-abc-1', 'archive', 'tools', 'x.test.mjs')), 'archive/tools/x.test.mjs');
+  const F = `${GE}/tests/x.test.mjs`;
+  const base = {[F]: {names: {a: 'pass', b: 'fail', c: 'pass', [win('D:', 'cache', 'snapshots', 'c-1', 'y.test.mjs')]: 'fail'}}};
+  const head = {[F]: {names: {a: 'fail', b: 'fail', c: 'pass', d: 'fail', [win('D:', 'cache', 'snapshots', 'c-2', 'y.test.mjs')]: 'fail'}}};
+  const r = compareTests(base, head, [F]);
+  assert.deepEqual(r.newFailures.sort(), ['tests/x.test.mjs :: a', 'tests/x.test.mjs :: d']);
+  assert.deepEqual(r.existingFailures.sort(), ['tests/x.test.mjs :: b', 'tests/x.test.mjs :: y.test.mjs']);
+});
+

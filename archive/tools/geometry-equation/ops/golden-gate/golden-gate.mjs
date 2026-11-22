@@ -145,7 +145,7 @@ async function main() {
 
   // ---- engine tests -------------------------------------------------------------------------------------------------
   if (args.tests) {
-    const sel = selectTests({snaps: [baseSnap, headSnap], changed, all: args.tests === 'all' || all});
+    const sel = selectTests({snaps: [baseSnap, headSnap], changed, all: args.tests === 'all' || all, kinds});
     console.log(`\nengine tests: ${sel.tests.length} files (${sel.reason})`);
     const tBase = await runTests({snap: baseSnap, files: sel.tests, resultsRoot: mkdirp(path.join(cacheRoot, 'test-results')), envKey: env.key, slots: args.slots, lockDir, cacheRoot, depsDir, log, noCache: args.noCache});
     const tHead = sameInput && !args.noCache ? tBase : await runTests({snap: headSnap, files: sel.tests, resultsRoot: path.join(cacheRoot, 'test-results'), envKey: env.key, slots: args.slots, lockDir, cacheRoot, depsDir, log, noCache: args.noCache});

@@ -8,12 +8,9 @@ import {git, gitText, nulList, sha256, mkdirp, readJson, posix, walkFiles} from 
 import {GE, classifyFile} from './kinds.mjs';
 import {buildCodeGraph} from './code-graph.mjs';
 
-const EXCLUDE = [
-  `${GE}/production/exam-figure-ledger`, `${GE}/production/plans`, `${GE}/ops/svg-m1`, `${GE}/ops/claude-batch`, `${GE}/ops/workers`
-];
 // What the render reads besides the engine: the pipeline core, the vendored Archive page the figure is measured in, fonts, dependencies' code.
 export const SNAPSHOT_SPECS = [
-  GE, ...EXCLUDE.map(e => `:(exclude)${e}`),
+  GE, // the whole engine folder (render code, golden plans, ops tools the engine tests call); only the key leaves out what cannot render
   ':(top,glob)archive/*',
   'archive/tools/pipeline-core', 'archive/tools/past-exam-pipeline/lib', 'archive/tools/past-exam-pipeline/completion-contract.json', 'archive/tools/svg-language-contract.cjs',
   'alive/runtime/provider-bridge', 'archive/vendor', 'archive/css', 'archive/js',

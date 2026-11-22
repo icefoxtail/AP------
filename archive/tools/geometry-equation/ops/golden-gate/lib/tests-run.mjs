@@ -3,10 +3,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {sha256, mkdirp, readJson, writeJson, run} from './util.mjs';
-import {GE} from './kinds.mjs';
-import {buildCodeGraph, closureOf} from './code-graph.mjs';
+import {GE, CAPABILITY_KIND, KIND_FILES} from './kinds.mjs';
+import {buildCodeGraph} from './code-graph.mjs';
 import {acquireSlot, childEnv} from './render.mjs';
 
+const RENDER_PLAN_FILE = `${GE}/production/render-plan.mjs`;
 const isNodeTest = f => /\.test\.(mjs|cjs|js)$/.test(f);
 const isPyTest = f => /\/test_[^/]+\.py$/.test(f);
 
@@ -14,20 +15,36 @@ export function listTests(snap) {
   return snap.fileList.filter(f => f.startsWith(`${GE}/`) && (isNodeTest(f) || (f.startsWith(`${GE}/tests/`) && isPyTest(f)))).sort();
 }
 
-// A test is related to a change when the test's own import closure reaches a changed file.
-// Changes to non-test files under tests/ (fixtures, helpers read by path) select every test.
-export function selectTests({snaps, changed, all}) {
+// A test is related to a change when
+//  (a) the test's own import closure reaches a changed file without going through render-plan.mjs (a test that imports the dispatcher can
+//      render anything, so the dispatcher edge alone says nothing about a kind-specific change), or
+//  (b) for a kind-specific change, the test text names a capability or kind module of the affected kinds (tests that render those plans).
+// Changes to non-test files under tests/ (fixtures, helpers read by path) select every test. `all` selects every test.
+export function selectTests({snaps, changed, all, kinds = new Set()}) {
   const universe = new Set(); for (const s of snaps) for (const t of listTests(s)) universe.add(t);
   const tests = [...universe].sort();
   if (all) return {tests, reason: 'all (shared engine file changed, or --tests all)'};
   const changedSet = new Set(changed);
   const picked = new Set();
   for (const c of changed) if (c.startsWith(`${GE}/tests/`) && !isNodeTest(c) && !isPyTest(c)) return {tests, reason: `all (non-test file under tests/ changed: ${c})`};
+  const words = [];
+  for (const [cap, kind] of Object.entries(CAPABILITY_KIND)) if (kinds.has(kind)) words.push(cap);
+  for (const [file, ks] of Object.entries(KIND_FILES)) if (ks.some(k => kinds.has(k))) words.push(path.posix.basename(file).replace(/.(mjs|py)$/, ''));
   for (const s of snaps) {
     const graph = buildCodeGraph(s.dir, listTests(s));
-    for (const t of listTests(s)) { if (changedSet.has(t)) picked.add(t); for (const f of closureOf(graph, t)) if (changedSet.has(f)) { picked.add(t); break; } }
+    for (const t of listTests(s)) {
+      if (changedSet.has(t)) { picked.add(t); continue; }
+      const seen = new Set(); const q = [t];
+      while (q.length) {
+        const f = q.pop(); if (seen.has(f)) continue; seen.add(f);
+        if (changedSet.has(f)) { picked.add(t); break; }
+        if (f === RENDER_PLAN_FILE) continue; // do not follow the dispatcher
+        for (const {to} of graph.edges.get(f) ?? []) q.push(to);
+      }
+      if (!picked.has(t) && words.length) { const text = fs.readFileSync(path.join(s.dir, t), 'utf8'); if (words.some(w => text.includes(w))) picked.add(t); }
+    }
   }
-  return {tests: tests.filter(t => picked.has(t)), reason: 'tests whose import closure reaches a changed file'};
+  return {tests: tests.filter(t => picked.has(t)), reason: 'tests reaching a changed file (not through render-plan.mjs) or naming an affected kind'};
 }
 
 export const parseTapForTest = text => parseTap(text);
@@ -103,8 +120,10 @@ export async function runTests({snap, files, resultsRoot, envKey, slots, lockDir
 }
 
 // base/head: {file: {names}} -> comparison by "file :: test name"
+// A failing file is reported under its absolute path, which holds the snapshot folder name: cut that part so base and head names match.
+export const normalizeTestName = n => n.split('\\').join('/').replace(/[A-Za-z]:\/+(?:[^/]+\/+)*?snapshots\/+[^/]+\/+/g, '');
 export function compareTests(base, head, files) {
-  const flat = res => { const m = new Map(); for (const f of files) for (const [n, s] of Object.entries(res[f]?.names ?? {})) m.set(`${f.replace(`${GE}/`, '')} :: ${n}`, s); return m; };
+  const flat = res => { const m = new Map(); for (const f of files) for (const [n, s] of Object.entries(res[f]?.names ?? {})) m.set(`${f.replace(`${GE}/`, '')} :: ${normalizeTestName(n)}`, s); return m; };
   const b = flat(base), h = flat(head);
   const out = {newFailures: [], existingFailures: [], fixed: [], removed: [], counts: {base: {}, head: {}}};
   for (const [k, s] of h) {
