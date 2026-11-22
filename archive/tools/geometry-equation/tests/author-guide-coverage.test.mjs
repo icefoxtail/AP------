@@ -123,3 +123,18 @@ test('every marked example plan passes plan-lint',{skip:pythonDeps?false:'NOT_RU
     }
   }finally{await linter.close();}
 });
+
+// piecewise-affine 의 조각은 [기울기, 상수항]이다(graph_framing.py 의 left_m,left_c). plan-lint 는 두 수의 순서를 뒤집어도 통과시키므로 예제의 뜻(x=3에서 이어짐)으로 검사한다.
+test('the piecewise-affine branch order in the guides is [slope, constant] like the engine',()=>{
+  for(const file of [path.join(prod,'AUTHOR_GUIDE.md'),path.join(here,'../ops/svg-m1/guide/guide-graph.md')]){
+    const text=fs.readFileSync(file,'utf8');
+    assert.ok(text.includes('left:[m,b],right:[m,b]'),file+': the table must state left:[m,b],right:[m,b]');
+    assert.ok(!text.includes('left:[b,m]'),file+': reversed branch order');
+  }
+  const found=examples.filter(example=>example.plan.capability==='piecewise-affine-spike-v1');
+  assert.ok(found.length>0,'the piecewise-affine example is missing');
+  for(const {plan} of found){
+    const {breakX,left,right}=plan.graphPlan.piecewise,at=([m,b])=>Number(m)*Number(breakX)+Number(b);
+    assert.equal(at(left),at(right),'the example is captioned as a joined bend, so both branches must meet at breakX');
+  }
+});
