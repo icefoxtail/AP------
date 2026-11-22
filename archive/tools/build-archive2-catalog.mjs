@@ -128,7 +128,8 @@ const hintStats = { joined: 0, row: 0, type: 0, unbound: 0,
 const unitHinter = createUnitHinter({
   bindings: foundationBindings.bindings,
   unitLabelByKey: standardUnitLabelByKey,
-  subUnitLabelByKey: new Map(subUnitFilterOptions.map((row) => [row.subUnitKey, row.subUnit])),
+  // activeTagOptions는 이름을 label에 담는다(subUnit 필드는 없다). 여기서 row.subUnit을 읽으면 소단원 이름이 비어 중등 연결이 통합 단원으로 옮겨지지 않는다.
+  subUnitLabelByKey: new Map(subUnitFilterOptions.map((row) => [row.subUnitKey, row.label])),
 });
 function buildMetaHint(meta, binding) {
   if (!meta || !binding) return {};
@@ -675,7 +676,6 @@ for (const record of records) {
   bucket[decision.reason] = (bucket[decision.reason] || 0) + 1;
   if (decision.value) { record.metaHintUnit = decision.value; hintStats.unit++; }
 }
-console.error("TMPDEBUG", JSON.stringify({ unit: hintStats.unit, byRule: hintStats.unitByRule, not: hintStats.unitNotHinted }));
 const gradeCourseRows = projectionPolicy.gradeCourseAllowlist || [];
 const canonicalBasicParents = [];
 const canonicalAdvancedPaths = [];
