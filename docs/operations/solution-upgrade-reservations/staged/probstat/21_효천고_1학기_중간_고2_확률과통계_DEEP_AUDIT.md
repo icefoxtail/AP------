@@ -1,5 +1,8 @@
 # 확통 1학기 중간 기출 심층 감사 — 21_효천고_1학기_중간_고2_확률과통계.js
 
+> **2026-11-22 HOLD66 재검증 — 최신 판정 우선**: 이 시험지의 기존 HOLD 1건 중 **0건 KEEP 전환**, **1건 HOLD 유지**. 원본 main JS blob `b82187e5272bf61121742e31e3b41ec1e9960bfb` 재검독; 인쇄 원본 `2021_hyocheon_1mid.pdf` 대조 완료. 현재 코드 자산의 앱 상대경로 `assets/images/...`는 저장소 `archive/assets/images/...`에 실제 존재하며 66개 전체 렌더 완료. 이전 문서 본문의 이미지 404/미존재/미렌더 근거는 **2026-11-22 철회된 과거 기록**이고 아래 개별 Q 재판정이 우선한다. 학생 화면·채점기·Gold 회귀는 **NOT_RUN**, 원본 JS·이미지 미변경.
+
+
 - lane: lane20; courseKey: probstat; 학년: 고2; 유형: original; 1학기 중간; 연도: 2021
 - sourcePath: `archive/exams/original/high/h2/1mid/21_효천고_1학기_중간_고2_확률과통계.js`
 - sourceRef: `main`; sourceBlobSha: `b82187e5272bf61121742e31e3b41ec1e9960bfb`
@@ -182,6 +185,8 @@
 - 후속 학생 화면 렌더 / Golden / Negative: **NOT_RUN**
 
 ### Q12 — HOLD
+
+- **2026-11-22 인쇄본·독립검산 재확인: HOLD 유지**. 원본 3/6쪽에도 '정수 r'로 적혀 있음. 방정식은 r=0 및 r=7 모두 만족하나 JS/선택지는 r=7을 전제. r≥1 조건/정오표 필요. 
 
 - identity: id=`12`; sourceQid=`12`; sourceBlobSha=`b82187e5272bf61121742e31e3b41ec1e9960bfb`; 단원: 이항정리; 원본 답: `③`
 - 원문 문제 조건 (원문 정규화):
