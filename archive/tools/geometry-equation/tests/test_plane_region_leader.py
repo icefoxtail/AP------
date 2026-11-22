@@ -86,7 +86,7 @@ class EngineTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.leader=Fixture('LEADER')
-    def test_leader_label_stands_outside_the_region_on_a_leader_from_its_boundary(self):
+    def test_leader_label_stands_outside_the_region_on_a_leader_from_a_dot_inside_it(self):
         row=self.leader.row;self.assertIsNotNone(row);self.assertTrue(row['placement'].startswith('OWNER_LEADER_'),row['placement'])
         tag=self.leader.leader();self.assertIsNotNone(tag)
         start=(float(re.search(r'\sx1="([^"]+)"',tag.group(0)).group(1)),float(re.search(r'\sy1="([^"]+)"',tag.group(0)).group(1)))
@@ -94,7 +94,12 @@ class EngineTests(unittest.TestCase):
         poly=[forward(POINTS[name]) for name in POLYGON]
         edges=list(zip(poly,poly[1:]+poly[:1]))
         near=min(regions.point_segment_distance(start,a,b) for a,b in edges)
-        self.assertLess(near,1.0,'the leader starts on the region boundary')
+        # the leader starts on a dot well INSIDE the region (a start on the boundary would read as the length of the side it touches)
+        self.assertEqual(regions.area_state(start,[poly]),1,'the leader starts inside the region')
+        self.assertGreaterEqual(near,8.0,'and well away from its boundary')
+        dot=re.search(r'<circle\s[^>]*data-role="leader-dot"[^>]*data-owner-label="rABC-label"[^>]*/>',self.leader.svg0)
+        self.assertIsNotNone(dot,'a dot marks the start')
+        self.assertAlmostEqual(float(re.search(r'\scx="([^"]+)"',dot.group(0)).group(1)),start[0],places=3)
         box=row['box'];centre=(box['x']+box['width']/2,box['y']+box['height']/2)
         self.assertEqual(regions.area_state(centre,[poly]),-1,'the label stands outside the region')
     def test_observer_accepts_the_genuine_figure(self):
@@ -132,9 +137,21 @@ class ObserverTests(unittest.TestCase):
         svg=self.fixture.svg();tag=self.fixture.leader().group(0)
         self.assertIn('REGION_LABEL_LEADER_MISSING',self.fixture.codes(svg=svg.replace(tag,'')))
         self.assertIn('REGION_LABEL_LEADER_UNEXPECTED',self.fixture.codes(marks=marks_of(labelPlacement='AUTO')))
-    def test_tamper_leader_start_off_the_boundary(self):
+    def test_tamper_leader_moved_off_its_dot(self):
         svg=self.fixture.svg();tag=self.fixture.leader().group(0)
         moved=re.sub(r'\sx1="([^"]+)"',lambda m:' x1="%.3f"'%(float(m.group(1))+30),tag,count=1)
-        self.assertIn('MARK_LEADER_NOT_ON_OWNER',self.fixture.codes(svg=svg.replace(tag,moved)))
+        self.assertIn('REGION_LEADER_DOT_MISSING',self.fixture.codes(svg=svg.replace(tag,moved)))
+    def test_tamper_leader_started_on_the_boundary_is_refused(self):
+        # the old figure: the leader (and its dot) on the boundary of the region, where it reads as the length of the side it touches
+        svg=self.fixture.svg();tag=self.fixture.leader().group(0);dot=re.search(r'<circle\s[^>]*data-role="leader-dot"[^>]*/>',svg).group(0)
+        forward=lambda q:(self.fixture.transform['originX']+q[0]*self.fixture.transform['sx'],self.fixture.transform['originY']-q[1]*self.fixture.transform['sy'])
+        a,b=forward(POINTS['A']),forward(POINTS['B']);edge=((a[0]+b[0])/2,(a[1]+b[1])/2)
+        moved=re.sub(r'\sy1="([^"]+)"',' y1="%.3f"'%edge[1],re.sub(r'\sx1="([^"]+)"',' x1="%.3f"'%edge[0],tag,count=1),count=1)
+        moved_dot=re.sub(r'\scy="([^"]+)"',' cy="%.3f"'%edge[1],re.sub(r'\scx="([^"]+)"',' cx="%.3f"'%edge[0],dot,count=1),count=1)
+        codes=self.fixture.codes(svg=svg.replace(tag,moved).replace(dot,moved_dot))
+        self.assertIn('REGION_LEADER_START_NEAR_BOUNDARY',codes)
+    def test_tamper_dot_removed(self):
+        svg=self.fixture.svg();dot=re.search(r'<circle\s[^>]*data-role="leader-dot"[^>]*/>',svg).group(0)
+        self.assertIn('REGION_LEADER_DOT_MISSING',self.fixture.codes(svg=svg.replace(dot,'')))
 
 if __name__=='__main__':unittest.main()
