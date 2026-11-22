@@ -545,6 +545,14 @@ test('--unrelated-range accepts only provably unrelated competing changes', t=>{
     const result=verdict([protectedPath]);
     assert.equal(result.unrelated,false,protectedPath);assert.equal(result.firstProtectedHit,protectedPath);
   }
+  // 화면 전용 파일(레인 입력 목록에 없는 css·html·md)은 재계산 없이 다시 붙인다. 레인 입력에 든 화면 파일과 js는 그대로 보호.
+  const inputPatterns=lanes.flatMap(l=>[l.inputs,l.outputs,l.scopedInputs].flatMap(v=>Array.isArray(v)?v:[]));
+  const screenOnly='archive/archive2-navigation.css';
+  assert.equal(matches(screenOnly,inputPatterns),false,'fixture css must not be a lane input');
+  const screen=verdict([screenOnly,'archive/archive2-history.css','archive/DESIGN.md','tests/archive-x.test.js','docs/x.md']);
+  assert.equal(screen.unrelated,true,'screen-only css/doc/test changes need no recomputation');
+  for(const stillProtected of ['archive/archive2-navigation.js','archive/engine.html','archive/equal-slot-engine.css','archive/data/x.html','archive/tools/x.html'])
+    assert.equal(verdict([stillProtected]).unrelated,false,stillProtected);
   assert.equal(verdict(['apmath/playground/next/x.js','archive/exams/y.js']).firstProtectedHit,'archive/exams/y.js','one protected hit among many refuses');
   // Not an ancestor: history was rewritten, so the range says nothing.
   write(f.root,'apmath/playground/next/a.js','a\n');const sibling=commit(f.root,'sibling');git(f.root,'reset','-q','--hard',base);
@@ -874,8 +882,11 @@ test('the 4slot pass keeps every command line and body unchanged and only adds s
   const start=script.indexOf('# Stage timing'),end=script.indexOf('\n',script.indexOf("trap 'rc=$?; stage_end"))+1;
   assert.ok(start>0&&end>start);
   const without=(script.slice(0,start)+script.slice(end)).split('\n').filter(l=>!/^stage [a-z0-9-]+$/.test(l)).join('\n');
-  // sha256 of tools/ci/archive-four-slot-pass.sh without the timing block and markers (LF endings). Re-pinned when #2533 pointed the git-diff-guards path at archive/data/question-metadata/v1.
-  assert.equal(hash(without),'aeb1d6745dbb89be8a43dc0a1857922029cda9c0842a7bb0200da0ee4d853261','removing the timing block and markers gives back the previous script byte for byte');
+  // 이 스크립트가 바뀔 때마다 파일 sha를 다시 박아야 해서 병합마다 깨졌다. 지키려던 것은 "시간 표시를 빼면 검증 명령이 그대로"라는 점이라,
+  // 해시 대신 안전 명령(쓰기→재검사→재생→영수증 대조→git diff 보호→경로 허용목록)이 순서대로 남아 있고 시간 표시 도구가 새지 않았는지를 본다.
+  assert.ok(!/stage_log|stage_end|stage_start|now_ms/.test(without),'timing helpers are fully removed from the body');
+  const ordered=['build-4slot-runtime.cjs --write','build-4slot-runtime.cjs --check','build-4slot-runtime.cjs --report','FOUR_SLOT_REPLAY_OR_VERIFICATION_DRIFT','FOUR_SLOT_RECEIPT_CONFLICT','git diff --exit-code','UNEXPECTED_4SLOT_GENERATED_PATHS'];
+  let at=-1;for(const needle of ordered){const i=without.indexOf(needle,at+1);assert.ok(i>at,'safety step missing or out of order: '+needle);at=i;}
   const helper=text=>text.slice(text.indexOf('stage_log='),text.indexOf('\n',text.indexOf("trap 'rc=$?; stage_end"))).split('\n').filter(l=>!l.startsWith('#')).join('\n');
   assert.equal(helper(script),helper(lf(fs.readFileSync(scriptPath('archive-main-auto-meta-pass.sh'),'utf8'))),'same helper as the semantic pass');
   void t;

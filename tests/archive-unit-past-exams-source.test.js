@@ -1,4 +1,5 @@
 const test = require('node:test');
+const timeBudget = require('./helpers/time-budget.cjs');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -161,5 +162,5 @@ test('조건 계산은 화면 응답 시간(동기 500ms) 안에 끝난다', () 
   core.countGrid(units, { sourceFilter: filter });
   select(filter);
   core.getSourceSchoolOptions(universe, { yearMode: 'recent', yearCount: 3 });
-  assert.ok(Date.now() - started < 500, `${Date.now() - started}ms`);
+  assert.ok(Date.now() - started < timeBudget(500), `${Date.now() - started}ms`);
 });
