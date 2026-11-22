@@ -29,7 +29,7 @@
     fillHomeFromCatalog, generate, hideErrorToast, invalidate, invalidateRecentRequests,
     isAssessmentRecipeMode, isCurrentAuthorityError, isCurrentPdfRetryAuthority, isQuickAssessmentView,
     loadRecent, lockedIndex, navViewActive, newDraft, openAssignmentOutput, openFinderOutput,
-    openOriginalAssign, openQuickAssessment, openRecentAssignmentStatus, openSavedPaperAssign,
+    openOriginalAssign, openOriginalAssignMany, multiPickedExams, toggleMultiPick, clearMultiPick, openQuickAssessment, openRecentAssignmentStatus, openSavedPaperAssign,
     openSavedPaperRevision, openSimilarList, originalIssueBusy, originalPrint, ownHistoryContext,
     pdfRetryAuthority, preparingMarkup, print, quickLoadGroups, quickProduct, quickState, recentTarget,
     reconcileFinderFilters, reconcileFinderSchool, reconcileUnifiedFilters, refreshComposeSaveContinuity,
@@ -53,7 +53,7 @@
       fillHomeFromCatalog, generate, hideErrorToast, invalidate, invalidateRecentRequests,
       isAssessmentRecipeMode, isCurrentAuthorityError, isCurrentPdfRetryAuthority, isQuickAssessmentView,
       loadRecent, lockedIndex, navViewActive, newDraft, openAssignmentOutput, openFinderOutput,
-      openOriginalAssign, openQuickAssessment, openRecentAssignmentStatus, openSavedPaperAssign,
+      openOriginalAssign, openOriginalAssignMany, multiPickedExams, toggleMultiPick, clearMultiPick, openQuickAssessment, openRecentAssignmentStatus, openSavedPaperAssign,
       openSavedPaperRevision, openSimilarList, originalIssueBusy, originalPrint, ownHistoryContext,
       pdfRetryAuthority, preparingMarkup, print, quickLoadGroups, quickProduct, quickState, recentTarget,
       reconcileFinderFilters, reconcileFinderSchool, reconcileUnifiedFilters, refreshComposeSaveContinuity,
@@ -824,6 +824,12 @@
       } else if (a === "source-issue") {
         rememberRecentExam(recentTarget(state.catalog.exams[Number(b.dataset.exam)]));
         openOriginalAssign(state.catalog.exams[Number(b.dataset.exam)]);
+      } else if (a === "multi-pick") {
+        toggleMultiPick(state.catalog.exams[Number(b.dataset.exam)]);
+      } else if (a === "multi-pick-clear") {
+        clearMultiPick();
+      } else if (a === "multi-assign") {
+        openOriginalAssignMany(multiPickedExams());
       } else if (a === "source-output-direct") {
         rememberRecentExam(recentTarget(state.catalog.exams[Number(b.dataset.exam)]));
         await openFinderOutput(state.catalog.exams[Number(b.dataset.exam)], b.dataset.mode || "exam");

@@ -160,6 +160,7 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - **학생 고르기·`아직 안 본 학생만`**: roster의 `already_submitted`는 `exam_sessions.exam_title = 요청의 exam_title AND exam_date = 요청의 exam_date`로 판정된다(`exams.js:2064-2071`). 학생이 제출하면 세션 제목은 출제 때 저장된 `exam_title`(`student-portal.js:696,717,729`)이므로 **출제 때 보내는 제목과 같은 값**을 roster에 보낸다. 옛 모달은 `getIndexExamTitle(item)`(학교+과목 조합)을 보냈는데 그 값은 출제 제목(`O.displayTitle`)과 달라 원본 시험에서는 응시 여부가 거의 맞지 않았다. 새 패널은 둘을 같은 값으로 맞췄다.
 - **옛 모달에 있었는데 새 패널에 없는 것**: 출력 설정 편집(시험지 제목·부제·오른쪽 표시·이름란·점수란·QR 포함)과 "시험지 확인" 미리보기, 학년 탭(반을 학년으로 묶어 보임), 학생 이름 검색, 선생님 필터, QR 인쇄 연결. 기본 설정(제목 = 표시 제목, 부제 = 과목, 이름란·점수란 켬, QR 끔)으로 낸다. 줄의 `시험지·해설·정답`으로 먼저 보고, 낸 뒤 결과표의 같은 버튼(`assignment-output-direct`, 옛 영수증이 쓰던 것과 같은 출제본 출력)으로 본다. 옛 영수증 상태(`state.originalReceipts`)는 옛 iframe 모달 안에서만 쓰이고 다른 화면 표시에는 연결이 없었다.
 - 서버(Worker)는 바꾸지 않았다. `archive2-history.js`·`archive2-core.js`·`archive2-output*.js`·`apmath/worker-backup/`를 건드리면 main 병합 때 Worker가 자동 재배포된다.
+- **여러 시험지 한꺼번에 출제 (2026-11-22)**: 학교별 기출 줄의 `함께 출제` 체크(원본은 제목 옆, 유사문제는 유사 칸·세트 대화상자)를 고르면 아래에 `N개 시험지 한꺼번에 출제`·`선택 지우기` 띠가 뜨고(`multiPicked`, `archive2-workspace-find.js`), 누르면 `openOriginalAssignMany`(`archive2-workspace-save.js`)가 고른 시험지를 `items[]`로 같은 패널에 넘긴다. 이유: 시험 대비 기간에 여러 학교 기출과 유사 시험지를 한 반에 한꺼번에 내야 한다. 원본과 유사 세트는 둘 다 카탈로그의 시험 파일이라 항목 모양(`kind:"original"`)이 같아 섞어도 된다(패널은 `exams/<파일>` id로만 중복을 거른다). 고른 것은 메모리에만 두고(필터·검색을 바꿔도 유지, 새로고침하면 비움) 저장소·서버에 쓰지 않는다. 한 장 출제(`openOriginalAssign`)는 그대로다. 하나라도 원본 정보(해시)를 확인할 수 없으면 아무것도 열지 않고 어느 시험지인지 알린다.
 
 ## 단원별 기출 선택 규칙 (2026-11-10 사용자 결정)
 

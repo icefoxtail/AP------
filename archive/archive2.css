@@ -4969,3 +4969,103 @@ body[data-archive-view="compose"] .cz:not(.has-result) .cz-result {
 .derive-compose-note p { margin: 4px 0 0; }
 .derive-compose-note ul { margin: 4px 0 0; padding-left: 18px; }
 .derive-dialog .derive-publisher[hidden] { display: none; }
+
+/* ---- 여러 시험지 한꺼번에 출제 (2026-11-22) ------------------------------------------------------
+   학교별 기출의 원본·유사 시험지 줄에 체크 칸(`.multi-pick`), 하나 이상 고르면 아래 띠(`.multi-assign-bar`).
+   체크 칸은 줄의 제목 옆(원본)·유사 칸·유사 세트 대화상자에 있고 높이 44px 이상이다. 띠는 `선택한 시험 N개`
+   (문항 선택) 띠와 같은 모양이며 둘이 함께 있으면(`.stacked`) 위로 쌓는다. */
+.exam-row-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.exam-row-head .exam-row-title {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+button.multi-pick {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 12px 0 8px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: 14px;
+  white-space: nowrap;
+}
+button.multi-pick::before {
+  content: "";
+  box-sizing: border-box;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--ink-2);
+  border-radius: 5px;
+  background: #fff;
+  color: #fff;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+}
+button.multi-pick.on {
+  border-color: var(--brand);
+  background: var(--brand-soft);
+  color: var(--brand-ink);
+}
+button.multi-pick.on::before {
+  content: "\2713";
+  border-color: var(--brand);
+  background: var(--brand);
+}
+.exam-row.multi-on {
+  border-color: var(--brand);
+}
+.exam-row-sim.has {
+  flex-wrap: wrap;
+}
+.exam-row-sim-actions button {
+  white-space: nowrap;
+}
+/* 목록이 넓어 제목 칸이 좁아지면(유사 칸이 옆에 붙는 배치) 줄 머리의 체크는 칸만 보이고 글자는 접근성 이름·툴팁으로 둔다. */
+@container exam-rows (min-width: 920px) {
+  .exam-row-head button.multi-pick {
+    font-size: 0;
+    gap: 0;
+    padding: 0 11px;
+  }
+}
+.find-multi-hint {
+  color: var(--ink-2);
+  font-size: 14px;
+}
+.multi-assign-bar button {
+  border: 1.5px solid var(--ink);
+  background: var(--surface);
+  color: var(--ink);
+}
+.multi-assign-bar button.primary {
+  border-color: var(--brand);
+  background: var(--brand);
+  color: #fff;
+}
+.multi-assign-slot {
+  display: contents;
+}
+.multi-assign-bar.stacked {
+  bottom: 88px;
+}
+@media (max-width: 700px) {
+  button.multi-pick {
+    padding: 0 10px 0 6px;
+    font-size: 13px;
+  }
+  .multi-assign-bar.stacked {
+    bottom: calc(var(--archive2-mobile-bottom-nav-offset, 0px) + 90px);
+  }
+  .finder-surface:has(.multi-assign-bar.stacked) {
+    padding-bottom: calc(194px + var(--archive2-mobile-bottom-nav-offset, 0px));
+  }
+}
