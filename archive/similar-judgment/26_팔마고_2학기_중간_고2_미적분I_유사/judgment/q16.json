@@ -1,0 +1,56 @@
+{
+  "qid": 16,
+  "itemFingerprint": "3ac375350134e643",
+  "solveSteps": [
+    "극한값이 존재하므로 $f(5)-g(3)=0$이다.",
+    "$$\\lim_{x\\to 3}\\frac{{f(x+2)-f(5)}-{g(x)-g(3)}}{x-3}\\cdot\\frac{1}{x+3} = \\frac{f'(5)-g'(3)}{6} = 1$$ $f'(5)=4g'(3)$을 대입하면 $3g'(3)=6 \\implies g'(3)=2,\\ f'(5)=8$이므로 $f'(5)\\times g'(3)=16$이다."
+  ],
+  "solvedAnswer": "16",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-03",
+  "subUnitKey": "H22-M1-03-DERIVATIVE_DEFINITION",
+  "unitEvidence": "두 다항함수 $f(x),\\ g(x)$에 대하여 $f'(",
+  "rpmRecordId": "H2-M2-RPM-061",
+  "rpmReason": "문항16번(토큰:16) 대상 문항16의 미분계수 단원 RPM H2-M2-RPM-061 분류 유형에 해당한다",
+  "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+  "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+  "typeReason": "문항16번(토큰:16) 대상 문항16의 미분계수 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항16번(토큰:16) 대상 문항16의 미분계수 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "5)\\times g'(3)$의 값을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "극한값이 존재하므로 $f(5)-g(3)=0$이",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항16번(토큰:16) 발문과 해설의 문항16 풀이 단계를 점검하여 최종 정답 16를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

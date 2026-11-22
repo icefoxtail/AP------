@@ -1,0 +1,62 @@
+{
+  "qid": 7,
+  "itemFingerprint": "c62201217275d941",
+  "solveSteps": [
+    "$f'(x)=-3x^2+12x-a=12-a-3(x-2)^2$이다. (ax)",
+    "ㄱ.",
+    "$a=12$이면 $f'(x)=-3(x-2)^2\\le 0$이므로 실수 전체에서 감소한다(참).",
+    "ㄴ.",
+    "$a=12$일 때 $\\dfrac{f(3)-f(0)}{3-0}=\\dfrac{-7-2}{3}=-3$이므로 $f'(c)=-3(c-2)^2=-3$에서 $c\\in(0,\\ 3)$인 값은 $c=1$뿐이다(거짓).",
+    "ㄷ.",
+    "두 극값이 $(0,\\ 3)$에 모두 있으려면 $0<\\sqrt{4-\\frac{a}{3}}<1$, 즉 $9<a<12$여야 한다(거짓).",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-05",
+  "subUnitKey": "H22-M1-05-ROLLE_MEAN_VALUE",
+  "unitEvidence": "함수 $f(x)=-x^3+6x^2-ax+2$에 대하여 ",
+  "rpmRecordId": "H2-M2-RPM-067",
+  "rpmReason": "문항7번(토큰:ax) 대상 문항7의 도함수의 활용 단원 RPM H2-M2-RPM-067 분류 유형에 해당한다",
+  "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+  "templateKey": "TPL_TANGENCY_RELATION_GEOMETRY",
+  "typeReason": "문항7번(토큰:ax) 대상 문항7의 도함수의 활용 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항7번(토큰:ax) 대상 문항7의 도함수의 활용 단원 기본 개념과 풀이 과정을 적용하는 난이도 4 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "실수 $a$의 값의 범위는 $a<12$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$f'(x)=-3x^2+12x-a=12-a-3",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항7번(토큰:ax) 발문과 해설의 문항7 풀이 단계를 점검하여 최종 정답 ②를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

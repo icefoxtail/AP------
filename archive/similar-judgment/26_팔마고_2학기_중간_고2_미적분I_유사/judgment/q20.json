@@ -1,0 +1,58 @@
+{
+  "qid": 20,
+  "itemFingerprint": "cb4c7e5b51c5b3fc",
+  "solveSteps": [
+    "제1사분면 교점 $P$는 원 위에 있으므로 $\\overline{OP}=2\\sqrt{5}$이고, 포물선 $y=x^2$과 $y=tx$의 교점은 $Q(t,\\ t^2)$이므로 $\\overline{OQ}=t\\sqrt{1+t^2}$이다. (20)",
+    "$t\\to 2^-$에서 $t<2$이므로 $l(t)=\\overline{OP}-\\overline{OQ}=2\\sqrt{5}-t\\sqrt{1+t^2}$이다.",
+    "$H(t)=t\\sqrt{1+t^2}$라 하면 $H(2)=2\\sqrt{5}$이므로 구하는 극한은 $H'(2)$와 같다.",
+    "$$H'(t)=\\sqrt{1+t^2}+\\frac{t^2}{\\sqrt{1+t^2}} \\implies H'(2)=\\sqrt{5}+\\frac{4}{\\sqrt{5}}=\\frac{9\\sqrt{5}}{5}$$."
+  ],
+  "solvedAnswer": "$\\dfrac{9\\sqrt{5}}{5}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-03",
+  "subUnitKey": "H22-M1-03-DERIVATIVE_DEFINITION",
+  "unitEvidence": "[서술형 2] 그림과 같이 좌표평면에서 원 $x^2+y",
+  "rpmRecordId": "H2-M2-RPM-061",
+  "rpmReason": "문항20번(토큰:20) 대상 문항20의 미분계수 단원 RPM H2-M2-RPM-061 분류 유형에 해당한다",
+  "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+  "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+  "typeReason": "문항20번(토큰:20) 대상 문항20의 미분계수 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 5,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항20번(토큰:20) 대상 문항20의 미분계수 단원 기본 개념과 풀이 과정을 적용하는 난이도 5 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "{2-t}$의 값을 풀이과정과 함께 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "제1사분면 교점 $P$는 원 위에 있으므로 $",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항20번(토큰:20) 발문과 해설의 문항20 풀이 단계를 점검하여 최종 정답 $\\dfrac{9\\sqrt{5}}{5}$를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "qid": 23,
+  "itemFingerprint": "c253505378a038bd",
+  "solveSteps": [
+    "$x\\to 0$ 극한에서 $f(x)$의 최저차항은 $2x^n$이다.",
+    "$n$의 값에 따라 나누면 다음과 같다.",
+    "① $n=1$: $f(x)=4x^4-6x^3+4x^2+2x \\implies f(1)=4$ ② $n=2$: $f(x)=4x^4-2x^3+2x^2 \\implies f(1)=4$ ③ $n=3$: $f(x)=8x^4+2x^3 \\implies f(1)=10$ ④ $n\\ge 4$: $f(x)=4x^{n+1}+2x^n \\implies f(1)=6$ 따라서 $f(1)$의 최댓값은 $10$이다."
+  ],
+  "solvedAnswer": "10",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-01",
+  "subUnitKey": "H22-M1-01-LIMIT_VALUE_CALC",
+  "unitEvidence": "[서술형 4] 다음 조건을 만족시키는 모든 다항함수 $",
+  "rpmRecordId": "H2-M2-RPM-049",
+  "rpmReason": "문항23번(토큰:10) 대상 문항23의 함수의 극한 단원 RPM H2-M2-RPM-049 분류 유형에 해당한다",
+  "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+  "templateKey": "TPL_LIMIT_INFINITY_LEADING_TERM",
+  "typeReason": "문항23번(토큰:10) 대상 문항23의 함수의 극한 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 5,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항23번(토큰:10) 대상 문항23의 함수의 극한 단원 기본 개념과 풀이 과정을 적용하는 난이도 5 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "}{x^n}=2$인 자연수 $n$이 존재한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$x\\to 0$ 극한에서 $f(x)$의 최저차",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항23번(토큰:10) 발문과 해설의 문항23 풀이 단계를 점검하여 최종 정답 10를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

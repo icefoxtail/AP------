@@ -1,0 +1,58 @@
+{
+  "qid": 13,
+  "itemFingerprint": "4bd124c2151af6f3",
+  "solveSteps": [
+    "$P(x)=(x^2-1)(x^2+ax)-12$라 하면 $R(2)=P(2)=3(4+2a)-12=6a=0 \\implies a=0$이다.",
+    "$P(x)=x^4-x^2-12$이므로 $P'(x)=4x^3-2x$이고 $P'(2)=32-4=28$이다.",
+    "따라서 $R(x)=28(x-2)$이고 $R(a+1)=R(1)=-28$이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-05",
+  "subUnitKey": "H22-M1-05-ROLLE_MEAN_VALUE",
+  "unitEvidence": "다항식 $(x^2-1)(x^2+ax)-12$를 $(x-",
+  "rpmRecordId": "H2-M2-RPM-067",
+  "rpmReason": "문항13번(토큰:ax) 대상 문항13의 도함수의 활용 단원 RPM H2-M2-RPM-067 분류 유형에 해당한다",
+  "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+  "templateKey": "TPL_TANGENCY_RELATION_GEOMETRY",
+  "typeReason": "문항13번(토큰:ax) 대상 문항13의 도함수의 활용 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항13번(토큰:ax) 대상 문항13의 도함수의 활용 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "+1)$의 값은? (단, $a$는 상수이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$P(x)=(x^2-1)(x^2+ax)-12$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항13번(토큰:ax) 발문과 해설의 문항13 풀이 단계를 점검하여 최종 정답 ②를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
