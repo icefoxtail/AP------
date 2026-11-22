@@ -1,5 +1,8 @@
 # 2025 효천고 고1 2학기 중간고사 — 심층 감사 (AUDIT_DRAFT_COMPLETE / VISUAL_HOLD)
 
+> **현행 판정(2026-11-22 시각 자료 재검증 우선):** 원문 23/23 판독, KEEP 23, UPGRADE 0, HOLD 0, UNREAD 0. 이전 「VISUAL_HOLD/미판독/IN_PROGRESS」와 중간 수치는 당시 감사 스냅샷이며, 아래 문항별 후속 판정 및 [이미지 대조 기록](LANE40_VISUAL_SOURCE_QA_20261122.md)이 최신이다. 학생 화면 통합 렌더·Golden/Negative·출고 검증: **NOT_RUN / PASS 아님**.
+
+
 - lane40 / 공통수학2 / original / 2mid / 2025
 - sourcePath: archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js
 - sourceBlobSha: 144b5b81770601f624355e333da25ebcda555610; total: 23; read: 23; KEEP: 22; UPGRADE: 0; HOLD: 1; UNREAD: 0; nextQid: NONE
@@ -119,7 +122,9 @@ Q7–Q23 기록은 아래에 추가. Q13 원본 문제 그림 판독이 남아 V
 - 판정/독립 검산: 원점대칭 꼭짓점 (3,-4), 평행이동 (3,-4+a), 접할 때 a=4,b=3→1.
 - 문제 이미지: 없음; 해설 이미지: assets/images/25_효천고_2학기_중간_고1_기출/q12-solution-v2.svg; 실물 시각 QA: NOT_RUN. 
 
-### Q13 — HOLD
+### Q13 — KEEP
+
+> **2026-11-22 후속 시각 판정: KEEP.** 이전의 「이미지 미판독이므로 HOLD」는 당시 상태의 기록이다. 원본 PNG/문제 SVG와 해설 SVG를 직접 렌더·대조한 좌표·음영·보기별 근거는 [lane40 원본 이미지 재검증](LANE40_VISUAL_SOURCE_QA_20261122.md)에 문항별로 적었다. Golden/Negative/학생 화면 렌더는 별도 NOT_RUN.
 
 - source ordinal/id: 13; blob `144b5b81770601f624355e333da25ebcda555610`; standardCourse: 공통수학2; identity: NOT_PRESENT.
 - 문제 원문: 두 방정식 $f(x,y)=0$, $g(x,y)=0$이 나타내는 도형이 아래 그림과 같을 때, 다음 중 옳은 것은? [4.3점]

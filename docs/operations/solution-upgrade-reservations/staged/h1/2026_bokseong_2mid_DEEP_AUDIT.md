@@ -1,5 +1,8 @@
 # 2026 복성고 2학기 중간 · 공통수학2 전 문항 심층 감사
 
+> **현행 판정(2026-11-22 시각 자료 재검증 우선):** 원문 22/22 판독, KEEP 22, UPGRADE 0, HOLD 0, UNREAD 0. 이전 「VISUAL_HOLD/미판독/IN_PROGRESS」와 중간 수치는 당시 감사 스냅샷이며, 아래 문항별 후속 판정 및 [이미지 대조 기록](LANE40_VISUAL_SOURCE_QA_20261122.md)이 최신이다. 학생 화면 통합 렌더·Golden/Negative·출고 검증: **NOT_RUN / PASS 아님**.
+
+
 - lane: lane40
 - source: `archive/exams/original/high/h1/2mid/26_복성고_2학기_중간_고1_기출.js`
 - source blob SHA (main): `c22bab9417887fe60a238440ba2733f887602a62`
@@ -347,7 +350,9 @@ $t=-7$이면 $a=13$이다.
 
 **수학·교육과정·학생용 판정 근거** 접선 거리 식에서 t²+6t-7=0, t=1,-7을 모두 a=-2t-1에 대입해 a>0인 13 선택. 핵심 조건→계산→정답의 중간식이 기존 해설에 직접 있으므로 현 단계에서 불필요한 재작성은 하지 않는다.
 
-## q9 — HOLD
+## q9 — KEEP
+
+> **2026-11-22 후속 시각 판정: KEEP.** 이전의 「이미지 미판독이므로 HOLD」는 당시 상태의 기록이다. 원본 PNG/문제 SVG와 해설 SVG를 직접 렌더·대조한 좌표·음영·보기별 근거는 [lane40 원본 이미지 재검증](LANE40_VISUAL_SOURCE_QA_20261122.md)에 문항별로 적었다. Golden/Negative/학생 화면 렌더는 별도 NOT_RUN.
 
 **문제 조건 원문** 세 상수 $a$, $b$, $c$에 대하여 직선 $ax+by+c=0$이 그림과 같다.<br>다음 중 옳은 것만을 보기에서 있는대로 고른 것은? (4.2점)<br><div class="note-box"><div style="text-align:center;font-weight:600;margin-bottom:4px;">보기</div>ㄱ. $b(c-a)>0$이다.<br>ㄴ. 직선 $bx-cy-a=0$은 제4사분면을 지나지 않는다.<br>ㄷ. $3a=-7b$인 경우 직선 $ax+by+c=0$은 직선 $y=-\dfrac{7}{3}x$와 수직이다.</div>
 

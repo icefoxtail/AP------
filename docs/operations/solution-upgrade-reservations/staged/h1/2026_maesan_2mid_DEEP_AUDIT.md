@@ -1,5 +1,8 @@
 # 2026 매산고 고1 2학기 중간고사 — 심층 감사 (진행 중)
 
+> **현행 판정(2026-11-22 시각 자료 재검증 우선):** 원문 21/21 판독, KEEP 21, UPGRADE 0, HOLD 0, UNREAD 0. 이전 「VISUAL_HOLD/미판독/IN_PROGRESS」와 중간 수치는 당시 감사 스냅샷이며, 아래 문항별 후속 판정 및 [이미지 대조 기록](LANE40_VISUAL_SOURCE_QA_20261122.md)이 최신이다. 학생 화면 통합 렌더·Golden/Negative·출고 검증: **NOT_RUN / PASS 아님**.
+
+
 - lane: lane40; course: 공통수학2; sourceKind: original; sourceTerm: 2mid; year: 2026
 - sourcePath: archive/exams/original/high/h1/2mid/26_매산고_2학기_중간_고1_기출.js
 - sourceBlobSha: e12c566f55a9f2d5c59c181a34dac741eb57c676; totalQuestions: 21; readEvidence: 21; KEEP: 18; UPGRADE: 0; HOLD: 3; UNREAD: 0
@@ -370,7 +373,9 @@
 - 판정·독립 검산: AA'=15/√5, BB'=|a-9|/√5, 비 3:2에서 |a-9|=10→a=19 또는 -1, 양수로 19. 독립 검산 15:10=3:2, 직선 대입값 -15와 10으로 선분 교차 확인. KEEP.
 - 그림: 문제 image 없음; 해설그림: assets/images/26_매산고_2학기_중간_고1_기출/q11-solution-v2.svg; 실물 시각 판독 NOT_RUN.
 
-## Q12 — HOLD (READ_EVIDENCED, VISUAL_HOLD)
+## Q12 — KEEP (READ_EVIDENCED, SOURCE_VISUAL_REVIEWED)
+
+> **2026-11-22 후속 시각 판정: KEEP.** 이전의 「이미지 미판독이므로 HOLD」는 당시 상태의 기록이다. 원본 PNG/문제 SVG와 해설 SVG를 직접 렌더·대조한 좌표·음영·보기별 근거는 [lane40 원본 이미지 재검증](LANE40_VISUAL_SOURCE_QA_20261122.md)에 문항별로 적었다. Golden/Negative/학생 화면 렌더는 별도 NOT_RUN.
 
 - sourceIdentityKey: `sha256:d8cfc9ae74b38e1fd2ead13d054b39a0802fb217581c127e6e394817888a1ac1|12`; ordinal: 12; sourceBlobSha: `e12c566f55a9f2d5c59c181a34dac741eb57c676`
 - 문제 원문: 그림과 같이 좌표평면 위에 원 $C:(x-8)^2+(y-4)^2=1$과 점 $A(2,0)$이 있다. 원 $C$ 위의 점 $P$와 직선 $y=x$ 위의 점 $Q$에 대하여 $\overline{AQ}+\overline{QP}$의 최솟값은? [4.7점]
@@ -1123,7 +1128,9 @@
 - 판정·독립 검산: a=0일 때 B={(0,0)}이고 A에 포함되지 않음. a≠0에서 직선 3x-4y+8=0과 중심(-a,a), 반지름 |a|의 접선 조건 |8-7a|=5|a|→(3a-2)(a-4)=0→2/3,4, 합14/3. 독립 대입 두 값 모두 거리=반지름 확인. KEEP.
 - 그림: 문제 image 없음; 해설그림: assets/images/26_매산고_2학기_중간_고1_기출/q14-solution-v2.svg; 실물 시각 판독 NOT_RUN.
 
-## Q15 — HOLD (READ_EVIDENCED, VISUAL_HOLD)
+## Q15 — KEEP (READ_EVIDENCED, SOURCE_VISUAL_REVIEWED)
+
+> **2026-11-22 후속 시각 판정: KEEP.** 이전의 「이미지 미판독이므로 HOLD」는 당시 상태의 기록이다. 원본 PNG/문제 SVG와 해설 SVG를 직접 렌더·대조한 좌표·음영·보기별 근거는 [lane40 원본 이미지 재검증](LANE40_VISUAL_SOURCE_QA_20261122.md)에 문항별로 적었다. Golden/Negative/학생 화면 렌더는 별도 NOT_RUN.
 
 - sourceIdentityKey: `sha256:d8cfc9ae74b38e1fd2ead13d054b39a0802fb217581c127e6e394817888a1ac1|15`; ordinal: 15; sourceBlobSha: `e12c566f55a9f2d5c59c181a34dac741eb57c676`
 - 문제 원문: 그림과 같이 좌표평면 위에 원 $C:(x-4)^2+(y-4)^2=16$, 직선 $y=mx\ (0<m<1)$이 있다.<br>원 $C$의 중심을 $A$, 점 $A$에서 직선 $y=mx$에 내린 수선의 발을 $H$, 직선 $y=mx$가 원 $C$와 만나는 두 점 중 원점 $O$에 가까운 점을 $B$라 할 때,<br>$\overline{OH}:\overline{BH}=\sqrt{3}:1$이다. 상수 $m$의 값은? [4.9점]
@@ -2602,7 +2609,9 @@
 - 판정·독립 검산: 내분점 M=(-2,6), N=(4,1), P=(4,2)를 원문이 각 좌표별 계산으로 제시한다. 무게중심 ((-2+4+4)/3,(6+1+2)/3)=(2,3). 독립 재계산 일치. KEEP.
 - 그림: 문제 image 없음; 해설그림: assets/images/26_매산고_2학기_중간_고1_기출/q17-solution-v2.svg; 실물 시각 판독 NOT_RUN.
 
-## Q18 — HOLD (READ_EVIDENCED, VISUAL_HOLD)
+## Q18 — KEEP (READ_EVIDENCED, SOURCE_VISUAL_REVIEWED)
+
+> **2026-11-22 후속 시각 판정: KEEP.** 이전의 「이미지 미판독이므로 HOLD」는 당시 상태의 기록이다. 원본 PNG/문제 SVG와 해설 SVG를 직접 렌더·대조한 좌표·음영·보기별 근거는 [lane40 원본 이미지 재검증](LANE40_VISUAL_SOURCE_QA_20261122.md)에 문항별로 적었다. Golden/Negative/학생 화면 렌더는 별도 NOT_RUN.
 
 - sourceIdentityKey: `sha256:d8cfc9ae74b38e1fd2ead13d054b39a0802fb217581c127e6e394817888a1ac1|단답형3`; ordinal: 18; sourceBlobSha: `e12c566f55a9f2d5c59c181a34dac741eb57c676`
 - 문제 원문: &lt;단답형3&gt;<br>방정식 $f(x,y)=0$이 나타내는 도형이 그림과 같다. 방정식 $f(y-1,x+1)=0$이 나타내는 도형의 그래프를 좌표를 명확히 나타내어 그리시오. (단, 좌표를 명시하지 않을 시 오답 처리함.) [6점]

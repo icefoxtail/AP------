@@ -1,5 +1,8 @@
 # 2025 팔마고 고1 2학기 중간 · 공통수학2 심층 감사
 
+> **현행 판정(2026-11-22 시각 자료 재검증 우선):** 원문 23/23 판독, KEEP 21, UPGRADE 2, HOLD 0, UNREAD 0. 이전 「VISUAL_HOLD/미판독/IN_PROGRESS」와 중간 수치는 당시 감사 스냅샷이며, 아래 문항별 후속 판정 및 [이미지 대조 기록](LANE40_VISUAL_SOURCE_QA_20261122.md)이 최신이다. 학생 화면 통합 렌더·Golden/Negative·출고 검증: **NOT_RUN / PASS 아님**.
+
+
 - lane: lane40; sourceKind: original; sourceTerm: 2mid; year: 2025
 - sourcePath: archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js
 - sourceBlobSha (main): a42fedfd90ab30920d3e20f915a59e1f019c0eda
@@ -104,7 +107,9 @@ n(A_6\cup A_9)=n(A_6)+n(A_9)-n(A_6\cap A_9)=16+11-5=22.
 
 - 수정 대상: 기존 `⌊100/k⌋ 바닥함수 표기` → 위의 직접 세기 풀이. 수학 독립 검산 기재. 최종 Golden/Negative/렌더 NOT_RUN.
 
-## Q9 — HOLD
+## Q9 — KEEP
+
+> **2026-11-22 후속 시각 판정: KEEP.** 이전의 「이미지 미판독이므로 HOLD」는 당시 상태의 기록이다. 원본 PNG/문제 SVG와 해설 SVG를 직접 렌더·대조한 좌표·음영·보기별 근거는 [lane40 원본 이미지 재검증](LANE40_VISUAL_SOURCE_QA_20261122.md)에 문항별로 적었다. Golden/Negative/학생 화면 렌더는 별도 NOT_RUN.
 
 - qid: 9; source ordinal: 9; sourceIdentityKey: NOT_PRESENT; blob: a42fedfd90ab30920d3e20f915a59e1f019c0eda
 - 문제 원문: 다음 그림과 같이 좌표평면 위의 세 점 $O(0,0)$, $A(6,0)$, $B(3,6)$에 대하여 세 선분 $OA$, $AB$, $BO$를 각각 $3:1$로 내분하는 점을 $C$, $D$, $E$라고 하자. 삼각형 $CDE$의 무게중심을 $(a,b)$라고 할 때, $a+b$의 값은? [4점]
@@ -114,7 +119,9 @@ n(A_6\cup A_9)=n(A_6)+n(A_9)-n(A_6\cap A_9)=16+11-5=22.
 - 핵심 경로·판정 및 독립 계산: 내분점 C=(9/2,0), D=(15/4,9/2), E=(3/4,3/2)와 평균 (3,2)의 계산은 맞지만, q09.png 원본 그림의 선분 방향 및 점 배치가 미확인이라 시각 HOLD.
 - 문제 그림: assets/images/25_팔마고_2학기_중간_고1_기출/q09.png; 해설 그림: assets/images/25_팔마고_2학기_중간_고1_기출/q9-solution-v3.svg; 실제 PNG/SVG 시각 검수: NOT_RUN.
 
-## Q10 — HOLD
+## Q10 — KEEP
+
+> **2026-11-22 후속 시각 판정: KEEP.** 이전의 「이미지 미판독이므로 HOLD」는 당시 상태의 기록이다. 원본 PNG/문제 SVG와 해설 SVG를 직접 렌더·대조한 좌표·음영·보기별 근거는 [lane40 원본 이미지 재검증](LANE40_VISUAL_SOURCE_QA_20261122.md)에 문항별로 적었다. Golden/Negative/학생 화면 렌더는 별도 NOT_RUN.
 
 - qid: 10; source ordinal: 10; sourceIdentityKey: NOT_PRESENT; blob: a42fedfd90ab30920d3e20f915a59e1f019c0eda
 - 문제 원문: 다음 중에서 벤다이어그램의 색칠한 부분을 나타내는 집합과 항상 같은 집합은? [4.3점]
@@ -191,7 +198,9 @@ n(A_6\cup A_9)=n(A_6)+n(A_9)-n(A_6\cap A_9)=16+11-5=22.
 - 핵심 경로·판정 및 독립 계산: 모든 x에 대한 f(x)<0의 부정은 어떤 x에서 f(x)≥0이며, 완전제곱 최댓값 a²/4-5≥0에서 경계 등호까지 설명하므로 유지.
 - 문제 그림: 없음; 해설 그림: assets/images/25_팔마고_2학기_중간_고1_기출/q14-solution.svg; 실제 PNG/SVG 시각 검수: NOT_RUN.
 
-## Q15 — HOLD
+## Q15 — KEEP
+
+> **2026-11-22 후속 시각 판정: KEEP.** 이전의 「이미지 미판독이므로 HOLD」는 당시 상태의 기록이다. 원본 PNG/문제 SVG와 해설 SVG를 직접 렌더·대조한 좌표·음영·보기별 근거는 [lane40 원본 이미지 재검증](LANE40_VISUAL_SOURCE_QA_20261122.md)에 문항별로 적었다. Golden/Negative/학생 화면 렌더는 별도 NOT_RUN.
 
 - qid: 15; source ordinal: 15; sourceIdentityKey: NOT_PRESENT; blob: a42fedfd90ab30920d3e20f915a59e1f019c0eda
 - 문제 원문: 두 방정식 $f(x,y)=0$, $g(x,y)=0$이 나타내는 도형이 각각 그림과 같은 원일 때, 보기에서 옳은 것을 모두 고른 것은? [4.5점]<br><br>〈보기〉<br>ㄱ. $g(x,y)=f(x-1,y+2)$<br>ㄴ. $g(x,y)=f(-x-1,-y)$<br>ㄷ. $g(x,y)=f(y+1,x)$
@@ -211,7 +220,9 @@ n(A_6\cup A_9)=n(A_6)+n(A_9)-n(A_6\cap A_9)=16+11-5=22.
 - 핵심 경로·판정 및 독립 계산: B⊆A∩B⇒B⊆A로 정리 후 ㄱ은 B^C, ㄹ은 B-A=∅임을 보이고 ㄴ·ㄷ의 반례 가능성도 구별하므로 유지.
 - 문제 그림: 없음; 해설 그림: 없음; 실제 PNG/SVG 시각 검수: NOT_RUN.
 
-## Q17 — HOLD
+## Q17 — KEEP
+
+> **2026-11-22 후속 시각 판정: KEEP.** 이전의 「이미지 미판독이므로 HOLD」는 당시 상태의 기록이다. 원본 PNG/문제 SVG와 해설 SVG를 직접 렌더·대조한 좌표·음영·보기별 근거는 [lane40 원본 이미지 재검증](LANE40_VISUAL_SOURCE_QA_20261122.md)에 문항별로 적었다. Golden/Negative/학생 화면 렌더는 별도 NOT_RUN.
 
 - qid: 17; source ordinal: 17; sourceIdentityKey: NOT_PRESENT; blob: a42fedfd90ab30920d3e20f915a59e1f019c0eda
 - 문제 원문: 다음 그림과 같은 원 $x^2+y^2=4$에 대하여 원과 $x$축의 교점 중 하나를 $A(2,0)$, 원과 직선 $y=x$의 교점 중 하나를 $B(\sqrt2,\sqrt2)$라고 하자. 호 $AB$ 위를 움직이는 점을 $P$, 선분 $OB$ 위를 움직이는 점을 $Q$, 선분 $OA$ 위를 움직이는 점을 $R$라고 할 때, 삼각형 $PQR$의 둘레의 길이에 대한 최솟값을 구하시오. (단, $O$는 원점) [4.8점]
@@ -231,7 +242,9 @@ n(A_6\cup A_9)=n(A_6)+n(A_9)-n(A_6\cap A_9)=16+11-5=22.
 - 핵심 경로·판정 및 독립 계산: 각의 이등분선 BH:HC=1:3, H=(2,1), G=(4/3,2/3), HC=3√2와 높이 1/√2로 넓이 3/2를 구하므로 유지.
 - 문제 그림: 없음; 해설 그림: assets/images/25_팔마고_2학기_중간_고1_기출/q18-solution-v2.svg; 실제 PNG/SVG 시각 검수: NOT_RUN.
 
-## Q19 — HOLD
+## Q19 — KEEP
+
+> **2026-11-22 후속 시각 판정: KEEP.** 이전의 「이미지 미판독이므로 HOLD」는 당시 상태의 기록이다. 원본 PNG/문제 SVG와 해설 SVG를 직접 렌더·대조한 좌표·음영·보기별 근거는 [lane40 원본 이미지 재검증](LANE40_VISUAL_SOURCE_QA_20261122.md)에 문항별로 적었다. Golden/Negative/학생 화면 렌더는 별도 NOT_RUN.
 
 - qid: 19; source ordinal: 19; sourceIdentityKey: NOT_PRESENT; blob: a42fedfd90ab30920d3e20f915a59e1f019c0eda
 - 문제 원문: 그림과 같이 좌표평면 위에 원 $x^2+y^2=16$과 반지름의 길이가 $2$인 반원 두 개로 이루어진 태극문양이 있다. 태극문양과 직선 $y=m(x+2)$이 서로 다른 다섯 개의 점에서 만나게 되는 실수 $m$의 값의 범위는? [5.2점]

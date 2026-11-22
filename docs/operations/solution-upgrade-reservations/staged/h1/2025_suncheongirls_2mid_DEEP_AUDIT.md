@@ -1,5 +1,8 @@
 # 2025 순천여고 고1 2학기 중간 공통수학2 · 전 문항 감사
 
+> **현행 판정(2026-11-22 시각 자료 재검증 우선):** 원문 16/16 판독, KEEP 15, UPGRADE 1, HOLD 0, UNREAD 0. 이전 「VISUAL_HOLD/미판독/IN_PROGRESS」와 중간 수치는 당시 감사 스냅샷이며, 아래 문항별 후속 판정 및 [이미지 대조 기록](LANE40_VISUAL_SOURCE_QA_20261122.md)이 최신이다. 학생 화면 통합 렌더·Golden/Negative·출고 검증: **NOT_RUN / PASS 아님**.
+
+
 - lane40
 - source: archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js
 - source blob: b9c6c8e5a7c6c14f23fd3771c87e6ac80ffd8c03
@@ -198,7 +201,9 @@ $k=4\sqrt5$ 또는 $k=-4\sqrt5$이다.
 
 **구체 판정 이유** 원 중심(3,-5)에서 반사 직선2x-y+9=0까지 거리4√5, k=±4√5. 핵심 변형과 조건이 원문에 드러나 KEEP.
 
-## q8 — HOLD
+## q8 — KEEP
+
+> **2026-11-22 후속 시각 판정: KEEP.** 이전의 「이미지 미판독이므로 HOLD」는 당시 상태의 기록이다. 원본 PNG/문제 SVG와 해설 SVG를 직접 렌더·대조한 좌표·음영·보기별 근거는 [lane40 원본 이미지 재검증](LANE40_VISUAL_SOURCE_QA_20261122.md)에 문항별로 적었다. Golden/Negative/학생 화면 렌더는 별도 NOT_RUN.
 
 **원문 문제** 아래 그림과 같이 $\overline{AB}=8m$, $\overline{AC}=4m$, $\overline{BC}=4\sqrt3m$일 때, 선분 $AB$를 $3:1$로 내분하는 점을 $P$라 하면 선분 $CP$의 길이는?
 
@@ -256,7 +261,9 @@ $4=\dfrac{y_A+2\cdot7}{3}$이므로 $y_A=-2$이다.
 
 **구체 판정 이유** G=(A+2M)/3에서 A=(12,-2). 핵심 변형과 조건이 원문에 드러나 KEEP.
 
-## q10 — HOLD
+## q10 — KEEP
+
+> **2026-11-22 후속 시각 판정: KEEP.** 이전의 「이미지 미판독이므로 HOLD」는 당시 상태의 기록이다. 원본 PNG/문제 SVG와 해설 SVG를 직접 렌더·대조한 좌표·음영·보기별 근거는 [lane40 원본 이미지 재검증](LANE40_VISUAL_SOURCE_QA_20261122.md)에 문항별로 적었다. Golden/Negative/학생 화면 렌더는 별도 NOT_RUN.
 
 **원문 문제** 두 집합 $A=\{x\mid x$는 $12$의 약수$\}$, $B=\{x\mid x$는 $30$ 이하의 $4$의 배수$\}$에 대하여 $A\cup X=A$와 $B\cap X=\varnothing$을 만족시키는 집합 $X$의 개수는?
 
@@ -415,7 +422,9 @@ $a^2+b^2=(-4)^2+0^2=16$이다.
 
 **구체 판정 이유** 두 원 식 차2x-(a+b)y+b-a-2=0을 2(x+2y+1)=0와 비교 a=-4,b=0. 핵심 변형과 조건이 원문에 드러나 KEEP.
 
-## q15 — HOLD
+## q15 — KEEP
+
+> **2026-11-22 후속 시각 판정: KEEP.** 이전의 「이미지 미판독이므로 HOLD」는 당시 상태의 기록이다. 원본 PNG/문제 SVG와 해설 SVG를 직접 렌더·대조한 좌표·음영·보기별 근거는 [lane40 원본 이미지 재검증](LANE40_VISUAL_SOURCE_QA_20261122.md)에 문항별로 적었다. Golden/Negative/학생 화면 렌더는 별도 NOT_RUN.
 
 **원문 문제** 점 $(-2,1)$을 직선 $y=3x+2$에 대하여 대칭이동한 점의 좌표를 $(a,b)$라 할 때, $a+b$의 값은?
 

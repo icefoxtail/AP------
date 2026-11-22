@@ -1,5 +1,8 @@
 # 2025 매산여고 고1 2학기 중간 공통수학2 · 전 문항 심층 감사
 
+> **현행 판정(2026-11-22 시각 자료 재검증 우선):** 원문 23/23 판독, KEEP 22, UPGRADE 1, HOLD 0, UNREAD 0. 이전 「VISUAL_HOLD/미판독/IN_PROGRESS」와 중간 수치는 당시 감사 스냅샷이며, 아래 문항별 후속 판정 및 [이미지 대조 기록](LANE40_VISUAL_SOURCE_QA_20261122.md)이 최신이다. 학생 화면 통합 렌더·Golden/Negative·출고 검증: **NOT_RUN / PASS 아님**.
+
+
 - lane40
 - source: archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js
 - source blob: 4e2d3a30110f6f1f5af0d3fed321edc9d4188242
@@ -344,7 +347,9 @@ $(x-5)^2+(y+2)^2=9$이다.
 
 **검토·독립 계산 근거** 원 중심 (-3,1)→(-5,2)→(5,-2), r=3. 원문에 핵심 전개식과 조건 배제가 존재하여 KEEP.
 
-## q8 — HOLD
+## q8 — KEEP
+
+> **2026-11-22 후속 시각 판정: KEEP.** 이전의 「이미지 미판독이므로 HOLD」는 당시 상태의 기록이다. 원본 PNG/문제 SVG와 해설 SVG를 직접 렌더·대조한 좌표·음영·보기별 근거는 [lane40 원본 이미지 재검증](LANE40_VISUAL_SOURCE_QA_20261122.md)에 문항별로 적었다. Golden/Negative/학생 화면 렌더는 별도 NOT_RUN.
 
 **원문 문제** 직선 $ax+by+c=0$의 그래프가 오른쪽 그림과 같을 때, 직선 $bx+cy+a=0$이 지나지 않는 사분면은? [4.0점]
 
