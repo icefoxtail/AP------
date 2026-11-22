@@ -5,25 +5,25 @@
 - sourceRef: `main`; sourceBlobSha: `0992565c4278a6cfa3f90a8f4c258d7fb4ccae7e`
 - 문항 ID: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20; **20문항**. standardCourse 원본 설정: 20/20.
 - 목표 브랜치: `work/solution-upgrade-lane-20-20261121`; 상태: **EXAM_AUDIT_COMPLETE / EXAM_DRAFT_COMPLETE** (개선 예약, 원본 미수정, 최종 QA 미실행).
-- 분류: **KEEP 14 / UPGRADE 0 / HOLD 6 / UNREAD 0**.
-- 연결 그림 경로: 7개; **원본 존재·육안 검증 1 / 연결 파일 없음 6**. 아래 경로 목록 참조.
+- 분류: **KEEP 20 / UPGRADE 0 / HOLD 0 / UNREAD 0**. (이미지 보관 경로 재확인 후 정정)
+- 연결 그림 경로: 7개; **보관 원본 존재·육안 검증 7 / 원본 파일 미발견 0**. 원본 `archive/assets/images/` 확인(문항 참조는 `assets/images/`); 앱 경로 해석 및 학생 화면 렌더는 별도 게이트.
 - 검토 범위: 8개 중 본 시험지의 문항 원문·선택지·기존 정답·solution·연결 그림 존재 여부와 수학적 계산을 교차 검토; 원본 JS·이미지는 변경하지 않음.
 - 릴리스 게이트: 원문 PDF 전문 대조, 학생 화면 HTML/LaTeX 렌더, 답안 UI·채점기 구동, Golden/Negative, preflight 영수증 **NOT_RUN**. MD 작성 완료가 출시 승인이나 결함 수정 완료를 뜻하지 않음.
 
 ## 핵심 결함·개선 예약
 
-- 링크된 이미지 6개 원본 리포지토리 main·목표 브랜치 모두에서 파일 없음. 링크별로 아래 기록; 이미지가 있는 화면의 정합성 확인 전 HOLD.
-- 원본 SVG q20_solution.svg를 Inkscape로 렌더해 실물 점검: 28개 격자점, x=0축 8개, 축별 8·6·4·6·4점, 70쌍 계수 일치.
+- **2026-11-22 재검증 정정:** 원래 문항 참조 `assets/images/…`의 실물은 `archive/assets/images/…`에 7/7개 존재. PNG는 파일을 열어, SVG는 Inkscape로 실제 렌더한 뒤 문제·해설과 육안 대조함. 이전 `MISSING` 및 이로 인한 `HOLD` 판정은 잘못된 경로 검색에서 비롯된 오판으로 취소. 다만 `assets/images/` 참조가 학생 앱에서 보관 경로로 해석되는지는 아직 실행 검증하지 않음.
+- 원본 SVG 7개를 Inkscape로 렌더해 실물 점검: 특히 q20_solution.svg의 28개 격자점, x=0축 8개, 축별 8·6·4·6·4점 및 70쌍 계수 일치.
 
 ## 연결 이미지 전수 인벤토리
 
-- **MISSING / HOLD** — `assets/images/20_매산고_1학기_기말_고2_확률과통계/q3-solution.svg`
-- **MISSING / HOLD** — `assets/images/20_매산고_1학기_기말_고2_확률과통계/q6-solution.svg`
-- **MISSING / HOLD** — `assets/images/20_매산고_1학기_기말_고2_확률과통계/q7-solution.svg`
-- **MISSING / HOLD** — `assets/images/20_매산고_1학기_기말_고2_확률과통계/q10-solution.svg`
-- **MISSING / HOLD** — `assets/images/20_매산고_1학기_기말_고2_확률과통계/q12-solution.svg`
-- **MISSING / HOLD** — `assets/images/20_매산고_1학기_기말_고2_확률과통계/q18-solution.svg`
-- **EXISTS / VISUALLY CHECKED** — `assets/images/20_매산고_1학기_기말_고2_확률과통계/q20_solution.svg`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/20_매산고_1학기_기말_고2_확률과통계/q3-solution.svg` → 실제 원본 `archive/assets/images/20_매산고_1학기_기말_고2_확률과통계/q3-solution.svg`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/20_매산고_1학기_기말_고2_확률과통계/q6-solution.svg` → 실제 원본 `archive/assets/images/20_매산고_1학기_기말_고2_확률과통계/q6-solution.svg`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/20_매산고_1학기_기말_고2_확률과통계/q7-solution.svg` → 실제 원본 `archive/assets/images/20_매산고_1학기_기말_고2_확률과통계/q7-solution.svg`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/20_매산고_1학기_기말_고2_확률과통계/q10-solution.svg` → 실제 원본 `archive/assets/images/20_매산고_1학기_기말_고2_확률과통계/q10-solution.svg`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/20_매산고_1학기_기말_고2_확률과통계/q12-solution.svg` → 실제 원본 `archive/assets/images/20_매산고_1학기_기말_고2_확률과통계/q12-solution.svg`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/20_매산고_1학기_기말_고2_확률과통계/q18-solution.svg` → 실제 원본 `archive/assets/images/20_매산고_1학기_기말_고2_확률과통계/q18-solution.svg`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/20_매산고_1학기_기말_고2_확률과통계/q20_solution.svg` → 실제 원본 `archive/assets/images/20_매산고_1학기_기말_고2_확률과통계/q20_solution.svg`
 
 ## 전 문항 판정
 
@@ -55,7 +55,7 @@
 
 - **독립 검산·판정**: (1−2x)^6의 x⁴ 계수 C(6,4)(−2)^4=240.
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
-### Q03 — HOLD
+### Q03 — KEEP
 
 - identity: id=`3`; sourceQid=`3`; sourceBlobSha=`0992565c4278a6cfa3f90a8f4c258d7fb4ccae7e`; 단원: 확률의 뜻과 활용; questionType: `객관식`; 원본 답: `②`
 - 원문 문제 조건 (원본의 HTML 행/표 구분만 정규화):
@@ -68,8 +68,8 @@
 > 합사건의 확률을 구할 때 교집합이 중복되므로 한 번 빼야 합니다. $$P(A\cup B)=P(A)+P(B)-P(A\cap B).$$ 수치를 대입하면 $$\frac23=\frac12+\frac13-P(A\cap B),$$ 따라서 $$P(A\cap B)=\frac12+\frac13-\frac23=\boxed{\frac16}.$$ ①·③·④·⑤를 대입하면 합사건의 확률 $\frac{2}{3}$이 되지 않습니다.
 
 - **독립 검산·판정**: 교집합 P(A)+P(B)-P(A∪B)=1/2+1/3−2/3=1/6.
-- 문항 연결 이미지: `assets/images/20_매산고_1학기_기말_고2_확률과통계/q3-solution.svg` — **MISSING / 원본 실물 확인 불가**
-- **결함·개선 예약**: 이미지 연결 1개가 저장소에 없어 문제/해설 그림 실물 미검증
+- 문항 연결 이미지: `assets/images/20_매산고_1학기_기말_고2_확률과통계/q3-solution.svg` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/20_매산고_1학기_기말_고2_확률과통계/q3-solution.svg`)
+
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 ### Q04 — KEEP
 
@@ -99,7 +99,7 @@
 
 - **독립 검산·판정**: 일대일 함수 5P4=120, g(a)=1 고정 함수 5³=125, 비 24/25.
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
-### Q06 — HOLD
+### Q06 — KEEP
 
 - identity: id=`6`; sourceQid=`6`; sourceBlobSha=`0992565c4278a6cfa3f90a8f4c258d7fb4ccae7e`; 단원: 조건부확률; questionType: `객관식`; 원본 답: `③`
 - 원문 문제 조건 (원본의 HTML 행/표 구분만 정규화):
@@ -112,10 +112,10 @@
 > 불량품을 뽑았다는 조건 아래 A기계 생산품일 확률이므로 조건부확률을 씁니다. $$P(A\cap D)=0.60\times0.015=0.009,\quad P(B\cap D)=0.40\times0.02=0.008.$$ 전체 불량품 확률은 $P(D)=0.017$입니다. $$P(A\mid D)=\frac{0.009}{0.017}=\boxed{\frac9{17}}.$$ 분모를 0.015나 0.02로 두는 것은 전체 불량품 중에서 고른다는 조건을 빠뜨린 것입니다. ①·②·④·⑤는 두 생산비율과 불량률을 모두 반영한 분수와 다릅니다.
 
 - **독립 검산·판정**: A불량 0.6×0.015=0.009, B불량 0.4×0.02=0.008; 조건부 9/17.
-- 문항 연결 이미지: `assets/images/20_매산고_1학기_기말_고2_확률과통계/q6-solution.svg` — **MISSING / 원본 실물 확인 불가**
-- **결함·개선 예약**: 이미지 연결 1개가 저장소에 없어 문제/해설 그림 실물 미검증
+- 문항 연결 이미지: `assets/images/20_매산고_1학기_기말_고2_확률과통계/q6-solution.svg` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/20_매산고_1학기_기말_고2_확률과통계/q6-solution.svg`)
+
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
-### Q07 — HOLD
+### Q07 — KEEP
 
 - identity: id=`7`; sourceQid=`7`; sourceBlobSha=`0992565c4278a6cfa3f90a8f4c258d7fb4ccae7e`; 단원: 순열과 조합; questionType: `객관식`; 원본 답: `②`
 - 원문 문제 조건 (원본의 HTML 행/표 구분만 정규화):
@@ -130,8 +130,8 @@
 > 각 모서리의 양옆 좌석에는 해당 부서 두 사람이 서로 자리를 바꿀 수 있으므로 $2^4=16$가지입니다. 따라서 전체는 $$6\times16=\boxed{96}$$으로 정답은 ②입니다. 나머지 ①·③·④·⑤는 회전 동치와 부서별 자리 교환을 모두 반영한 $96$과 다릅니다.
 
 - **독립 검산·판정**: 부서 모서리 배열 4!/4=6, 각 모서리 내부 둘 교환 2⁴=16, 총96; 의자 구조 그림 실물은 누락.
-- 문항 연결 이미지: `assets/images/20_매산고_1학기_기말_고2_확률과통계/q7-solution.svg` — **MISSING / 원본 실물 확인 불가**
-- **결함·개선 예약**: 이미지 연결 1개가 저장소에 없어 문제/해설 그림 실물 미검증
+- 문항 연결 이미지: `assets/images/20_매산고_1학기_기말_고2_확률과통계/q7-solution.svg` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/20_매산고_1학기_기말_고2_확률과통계/q7-solution.svg`)
+
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 ### Q08 — KEEP
 
@@ -161,7 +161,7 @@
 
 - **독립 검산·판정**: 3회 주사위 적어도 2 소수는 1/2, 5회는 26/32; 동전 가중평균 21/32.
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
-### Q10 — HOLD
+### Q10 — KEEP
 
 - identity: id=`10`; sourceQid=`10`; sourceBlobSha=`0992565c4278a6cfa3f90a8f4c258d7fb4ccae7e`; 단원: 조건부확률; questionType: `객관식`; 원본 답: `①`
 - 원문 문제 조건 (원본의 HTML 행/표 구분만 정규화):
@@ -174,8 +174,8 @@
 > $B,C$는 독립이므로 $P(B\cap C)=P(B)P(C)$입니다. $$\frac7{10}=P(B)+\frac14-\frac14P(B)=\frac34P(B)+\frac14.$$ 따라서 $\frac34P(B)=\frac9{20}$, $P(B)=\frac35$입니다. 한편 $A,B$는 배반이므로 $$P(A\cup B)=P(A)+P(B)=\frac45.$$ 따라서 $$P(A)=\frac45-\frac35=\boxed{\frac15}.$$ ②~⑤를 대입하면 배반사건 합 $\frac{4}{5}$와 독립사건 합 $\frac{7}{10}$을 동시에 만족하지 못합니다.
 
 - **독립 검산·판정**: B,C 독립으로 7/10=(3/4)P(B)+1/4 →P(B)=3/5, A,B 배반으로 P(A)=1/5.
-- 문항 연결 이미지: `assets/images/20_매산고_1학기_기말_고2_확률과통계/q10-solution.svg` — **MISSING / 원본 실물 확인 불가**
-- **결함·개선 예약**: 이미지 연결 1개가 저장소에 없어 문제/해설 그림 실물 미검증
+- 문항 연결 이미지: `assets/images/20_매산고_1학기_기말_고2_확률과통계/q10-solution.svg` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/20_매산고_1학기_기말_고2_확률과통계/q10-solution.svg`)
+
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 ### Q11 — KEEP
 
@@ -193,7 +193,7 @@
 
 - **독립 검산·판정**: (9/2)^n A_n=C(2n,n), 계산 C(4,2)-C(8,4)+C(16,8)=6−70+12870=12806.
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
-### Q12 — HOLD
+### Q12 — KEEP
 
 - identity: id=`12`; sourceQid=`12`; sourceBlobSha=`0992565c4278a6cfa3f90a8f4c258d7fb4ccae7e`; 단원: 조건부확률; questionType: `객관식`; 원본 답: `⑤`
 - 원문 문제 조건 (원본의 HTML 행/표 구분만 정규화):
@@ -213,8 +213,8 @@
 > 따라서 $$3f(A,B)+f(A^c,C^c)-2f(B^c,C)+f(B,A^c)=3+1-2(-1)+1=\boxed7.$$ 정답은 ⑤입니다. 보기 ①~④는 네 사건쌍의 독립/배반 판단 중 하나 이상을 잘못 적용한 값입니다.
 
 - **독립 검산·판정**: 배반→-1, 독립→+1로 주어진 네 쌍의 집합·교집합을 교차; 원본 풀이 결과 7(구체 네 쌍 조건 재검).
-- 문항 연결 이미지: `assets/images/20_매산고_1학기_기말_고2_확률과통계/q12-solution.svg` — **MISSING / 원본 실물 확인 불가**
-- **결함·개선 예약**: 이미지 연결 1개가 저장소에 없어 문제/해설 그림 실물 미검증 / piecewise f에서 배반과 독립의 중첩 가능성은 일반 사건에서 존재하나, 여기서는 정의한 사건쌍에 중첩 없어 결과 유일.
+- 문항 연결 이미지: `assets/images/20_매산고_1학기_기말_고2_확률과통계/q12-solution.svg` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/20_매산고_1학기_기말_고2_확률과통계/q12-solution.svg`)
+- **결함·개선 예약**: piecewise f에서 배반과 독립의 중첩 가능성은 일반 사건에서 존재하나, 여기서는 정의한 사건쌍에 중첩 없어 결과 유일.
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 ### Q13 — KEEP
 
@@ -288,7 +288,7 @@
 
 - **독립 검산·판정**: 둘 다 오답 (0.4)(0.3)=0.12이므로 적어도 한 명 정답=0.88.
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
-### Q18 — HOLD
+### Q18 — KEEP
 
 - identity: id=`18`; sourceQid=`18`; sourceBlobSha=`0992565c4278a6cfa3f90a8f4c258d7fb4ccae7e`; 단원: 확률의 뜻과 활용; questionType: `단답형`; 원본 답: `\frac{11}{12}`
 - 원문 문제 조건 (원본의 HTML 행/표 구분만 정규화):
@@ -302,8 +302,8 @@
 > $A\Delta B=(A-B)\cup(B-A)$는 두 사건 중 정확히 하나만 일어나는 사건입니다. 따라서 $(A\cup B)-(A\Delta B)=A\cap B$이므로 $$P(A\cap B)=\frac16.$$ 또 $$P(A\Delta B)=P(A\cup B)-P(A\cap B)=\frac79P(A\cup B).$$ 따라서 $\frac29P(A\cup B)=\frac16$이어서 $$P(A\cup B)=\frac34.$$ 덧셈정리 $P(A)+P(B)=P(A\cup B)+P(A\cap B)$를 적용하면 $$P(A)+P(B)=\frac34+\frac16=\boxed{\frac{11}{12}}.$$
 
 - **독립 검산·판정**: 대칭차 P=7/9 P(A∪B), 교집합=1/6이므로 합집합3/4, P(A)+P(B)=11/12.
-- 문항 연결 이미지: `assets/images/20_매산고_1학기_기말_고2_확률과통계/q18-solution.svg` — **MISSING / 원본 실물 확인 불가**
-- **결함·개선 예약**: 이미지 연결 1개가 저장소에 없어 문제/해설 그림 실물 미검증
+- 문항 연결 이미지: `assets/images/20_매산고_1학기_기말_고2_확률과통계/q18-solution.svg` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/20_매산고_1학기_기말_고2_확률과통계/q18-solution.svg`)
+
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 ### Q19 — KEEP
 
@@ -347,12 +347,12 @@
 > (3) 위 조건 아래 두 점이 모두 $y$축 위에 있으려면 $a_1=a_2=0$이어야 합니다. 이 경우는 ${}_8C_2=28$가지이므로 $$P(a_1=a_2=0\mid a_1=a_2)=\frac{28}{70}=\boxed{\frac25}.$$ 서로 다른 두 점 조건 때문에 같은 점을 두 번 고르는 경우는 세지 않습니다.
 
 - **독립 검산·판정**: 격자점은 x=0에서 8개,x=±1에서 6개,x=±2에서 4개; 같은 x 두 점 70쌍 중 y축 두 점 28쌍 →2/5; SVG 실물 축별 표기 확인.
-- 문항 연결 이미지: `assets/images/20_매산고_1학기_기말_고2_확률과통계/q20_solution.svg` — **EXISTS / 실물 육안 대조**
+- 문항 연결 이미지: `assets/images/20_매산고_1학기_기말_고2_확률과통계/q20_solution.svg` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/20_매산고_1학기_기말_고2_확률과통계/q20_solution.svg`)
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 
 ## 완료 기준 및 후속
 
 - 원본 문항 20/20개 읽음; 원본 풀이·정답·선택지/서술형 답·계산 판정 기록 완료.
-- 누락 자산 6개와 메타데이터 0문항, 독립성·균등확률·정규근사 등 개선 사항은 문항별 UPGRADE/HOLD 및 상단 목록에 예약.
+- 연결 그림 원본 7/7개 확인(실물 미발견 0). 메타데이터 0문항 및 수학적 전제·근사 정책 등 남은 개선 사항은 해당 문항의 UPGRADE 및 상단 목록에 예약. 이미지 참조 `assets/images/`의 학생 앱 로딩 경로는 아직 미검증.
 - 원본 이미지를 신규 제작·대체하거나 문제/해설을 승인 없이 고치지 않았음.
-- 후속: 원본 시험 PDF·그림 복구 및 메타 보강 → 미해결 문항 검수 → 학생 앱 렌더/채점·회귀 시험 → 릴리스 게이트 판정. 2학기 작업은 별도 lane에서 수행.
+- 후속: 원본 시험 PDF와 이미지 경로 해석 대조 → 필요한 메타·수학 조건 보강 → 학생 앱 렌더/채점·회귀 시험 → 릴리스 게이트 판정. 2학기 작업은 별도 lane에서 수행.
