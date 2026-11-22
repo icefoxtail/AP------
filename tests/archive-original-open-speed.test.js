@@ -21,6 +21,17 @@ test('engine.html turns MathJax enrichment, speech, braille and explorer off onc
   assert.match(html, /options: \{ enableMenu: false \},/);
 });
 
+test('mixed_engine.html switches the same MathJax features off in pageReady (keeps PDF before/after math markup stable)', () => {
+  const html = read('mixed_engine.html');
+  const pageReady = html.slice(html.indexOf('pageReady()'), html.indexOf('window.__AP_MATHJAX_SOURCE__'));
+  for (const key of ['enableEnrichment', 'enableSpeech', 'enableBraille', 'enableExplorer', 'enableComplexity']) {
+    assert.ok(pageReady.includes(`'${key}'`), `${key} is switched off in the pageReady hook`);
+  }
+  assert.match(pageReady, /startup\.document\.options\[key\]\s*=\s*false/);
+  assert.match(pageReady, /return startup\.defaultPageReady\(\)/);
+  assert.match(html, /options: \{ enableMenu: false \},/);
+});
+
 function loadPrintHeaderTable() {
   const frames = [];
   const observers = [];
