@@ -6,6 +6,8 @@ import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
 import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mjs';
 import {PALETTE,PALETTE_NAMES,isPaletteName} from './palette.mjs';
+import {readAccessibilityDescription} from './accessibility-description.mjs';
+import {wrapTextFragment} from './wrap-text.mjs';
 
 // A standalone statistics / probability figure (stat-chart-figure-v1): histogram, frequency polygon (also over a histogram), relative-frequency graph,
 // stem-and-leaf plot, box plot, scatter plot, the 6x6 table of two dice and a probability tree. The author gives the data exactly (class boundaries and
@@ -26,7 +28,7 @@ const ACCESSIBLE_NAMES={
   DOT_PLOT:['점도표','자료의 값마다 점을 쌓아 분포를 나타낸 그림이다.'],
   NORMAL_CURVE:['정규분포 곡선','정규분포를 나타내는 곡선과 확률에 해당하는 영역을 보여 주는 그래프이다.']
 };
-const accessibleNames=kind=>{const [title,desc]=ACCESSIBLE_NAMES[kind];return `<title id="visual-title">${title}</title><desc id="visual-desc">${desc}</desc>`;};
+const accessibleNames=(kind,custom)=>{const [title,desc]=ACCESSIBLE_NAMES[kind];return `<title id="visual-title">${title}</title><desc id="visual-desc">${custom===undefined?desc:esc(custom)}</desc>`;};   // custom: the plan's own accessibilityDescription
 export const MODEL_VERSION='STAT_CHART_MODEL_v1',SPEC_VERSION='STAT_CHART_SPEC_v1',SVG_VERSION='stat-chart-svg-v1';
 const OBSERVER_SCRIPT=fileURLToPath(new URL('stat-chart-observer-worker.py',import.meta.url));
 const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});
@@ -1005,7 +1007,7 @@ function solveTree(c){
   if(c.leafLayout!==undefined&&c.leafLayout!=='COMPACT')bad('STAT_TREE_COMPACT_INVALID');
   onlyKeys(c.root,['label','children'],'STAT_TREE_INVALID');
   const nodes=[];
-  const lab=v=>{if(typeof v!=='string'||v.length<1||v.length>6||/[\u0000-\u001f<>&"\\]/.test(v))bad('STAT_TREE_LABEL_INVALID');return v;};
+  const lab=v=>{if(typeof v!=='string'||v.length<1||v.length>14||/[\u0000-\u001f<>&"\\]/.test(v))bad('STAT_TREE_LABEL_INVALID');return v;};
   const walk=(raw,id,parent,depth,p)=>{
     if(depth>3)bad('STAT_TREE_TOO_DEEP');
     const node={id,parent,depth,label:parent===null?(raw.label===undefined?null:lab(raw.label)):lab(raw.label),p:p===null?null:p,children:[]};
@@ -1062,7 +1064,7 @@ const DEFAULT_FONT_PX=20,MEASURE_IDENTITY={visualAssetKey:'sha256:stat-chart-mea
 function labelSize(label,fontPx){
   try{
     measureTypeset??=typesetter();
-    return measureTypeset({id:'measure',owner:'measure',factRole:'DERIVED_INTERMEDIATE',fontPx,panelId:'stat-chart',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text})},MEASURE_IDENTITY).intrinsic;
+    return measureTypeset({id:'measure',owner:'measure',factRole:'DERIVED_INTERMEDIATE',fontPx,panelId:'stat-chart',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text,...(label.weight==='MATH'?{weight:'MATH'}:{})})},MEASURE_IDENTITY).intrinsic;
   }catch(error){return {width:0,height:0};}   // a label that cannot be typeset is refused by composing with its own code
 }
 const textWidth=(text,fontPx)=>labelSize({kind:'TEXT',text},fontPx).width;
@@ -1432,18 +1434,52 @@ function slotsSpec(m,ctx){
   return {size:{width,height},prims,labels};
 }
 const TREE_COLW=150,TREE_ROW=68,TREE_X0=44,TREE_TOP=58;
+// A node name of up to 6 characters is one line as it always was. A longer name (up to 14 characters) is one line when it is no wider than 6 em, else two lines broken at a space, each no wider than
+// 6 em; anything wider is refused (STAT_TREE_LABEL_TOO_WIDE). A tree with such a longer name also spaces its columns and rows by the measured label sizes; every other tree keeps the constants above.
+const TREE_LABEL_MAX_EM=6,TREE_SHORT_NAME=6,TREE_BRANCH_ROOM=72;
+const nodeWeight=m=>m.labelWeight==='MATH'?{weight:'MATH'}:{};
+function nodeFragment(typeset,identity,label,fontPx){
+  const base={id:label.id,owner:label.owner,factRole:'DERIVED_INTERMEDIATE',fontPx,panelId:'stat-chart',kind:'TEXT',text:label.text,...(label.weight==='MATH'?{weight:'MATH'}:{})};
+  const one=typeset(base,identity);
+  if(label.text.length<=TREE_SHORT_NAME||one.intrinsic.width<=TREE_LABEL_MAX_EM*fontPx+1e-6)return one;
+  const wrapped=wrapTextFragment(typeset,{id:label.id,owner:label.owner,text:label.text},identity,fontPx,2,{panelId:'stat-chart',factRole:'DERIVED_INTERMEDIATE',typesetExtra:label.weight==='MATH'?{weight:'MATH'}:{}});
+  if(!wrapped||wrapped.intrinsic.width>TREE_LABEL_MAX_EM*fontPx+1e-6)throw new Stop('STAT_TREE_LABEL_TOO_WIDE',{labelId:label.id});
+  return wrapped;
+}
+/** The drawn size of every named node of a tree at the policy font ({width,height}; a node without a name is a dot). */
+function treeNodeSizes(m,fontPx){
+  const sizes=new Map();
+  for(const n of m.nodes){
+    if(n.label===null){sizes.set(n.id,{width:8,height:8});continue;}
+    if(/^[A-Za-z0-9]{1,3}$/.test(n.label)){const s=labelSize({kind:'MATH',tex:n.label},fontPx);sizes.set(n.id,{width:s.width,height:s.height});continue;}
+    measureTypeset??=typesetter();
+    try{const f=nodeFragment(measureTypeset,MEASURE_IDENTITY,{id:'measure',owner:'measure',text:n.label,...nodeWeight(m)},fontPx);sizes.set(n.id,{width:f.intrinsic.width,height:f.intrinsic.height});}
+    catch(error){const s=labelSize({kind:'TEXT',text:n.label,...nodeWeight(m)},fontPx);sizes.set(n.id,{width:s.width,height:s.height});}   // refused later by composing with its own code
+  }
+  return sizes;
+}
+const treeHasLongName=m=>m.nodes.some(n=>n.label!==null&&n.label.length>TREE_SHORT_NAME);
+/** Column pitch and the least row pitch of a tree: the constants, unless the tree has a name longer than 6 characters. */
+function treePitch(m,fontPx){
+  if(!treeHasLongName(m))return {colw:TREE_COLW,rowMin:0};
+  const sizes=treeNodeSizes(m,fontPx),wide=[],tall=[];
+  for(const n of m.nodes){const s=sizes.get(n.id);wide[n.depth]=Math.max(wide[n.depth]??0,s.width);tall.push(s.height);}
+  let colw=TREE_COLW;
+  for(let d=0;d+1<wide.length;d++)colw=Math.max(colw,Math.ceil((wide[d]+wide[d+1])/2+TREE_BRANCH_ROOM));
+  return {colw,rowMin:Math.ceil(Math.max(...tall)+14)};
+}
 // A tree that uses the E34 marks (highlighted paths, a path column) spaces its leaves wider, and wider still with a larger font, so that the stacked fractions of neighbouring branches keep apart.
-const treeRow=(m,fontPx,scale=1)=>Math.ceil(scale*treeRowBase(m,fontPx));
+const treeRow=(m,fontPx,scale=1)=>Math.ceil(scale*Math.max(treeRowBase(m,fontPx),treePitch(m,fontPx).rowMin));
 const treeRowBase=(m,fontPx)=>m.leafLayout==='COMPACT'?Math.ceil(48*Math.max(1,fontPx/20)):m.pathColumn||m.highlightLeaves?Math.ceil(TREE_ROW*1.15*Math.max(1,fontPx/20)):TREE_ROW;
-function treeCenters(m,rowH=TREE_ROW){
+function treeCenters(m,rowH=TREE_ROW,colw=TREE_COLW){
   const byId=new Map(m.nodes.map(n=>[n.id,n])),pos=new Map();let leaf=0;
   const place=id=>{const n=byId.get(id);if(!n.children.length){pos.set(id,TREE_TOP+rowH*leaf++);return;}n.children.forEach(place);pos.set(id,(pos.get(n.children[0])+pos.get(n.children[n.children.length-1]))/2);};
   place('n0');
-  return new Map(m.nodes.map(n=>[n.id,{x:r6(TREE_X0+n.depth*TREE_COLW),y:r6(pos.get(n.id))}]));
+  return new Map(m.nodes.map(n=>[n.id,{x:r6(TREE_X0+n.depth*colw),y:r6(pos.get(n.id))}]));
 }
 function treeSpec(m,ctx){
   const fontPx=ctx?.fontPx??DEFAULT_FONT_PX;
-  const rowH=treeRow(m,fontPx,ctx?.rowScale??1),c=treeCenters(m,rowH),leaves=m.leaves.length,width0=TREE_X0+m.maxDepth*TREE_COLW+(m.showPathProbability?190:80),height=TREE_TOP*2+(leaves-1)*rowH;
+  const rowH=treeRow(m,fontPx,ctx?.rowScale??1),{colw}=treePitch(m,fontPx),c=treeCenters(m,rowH,colw),leaves=m.leaves.length,width0=TREE_X0+m.maxDepth*colw+(m.showPathProbability?190:80),height=TREE_TOP*2+(leaves-1)*rowH;
   const labels=[],prims=[],byIdNode=new Map(m.nodes.map(n=>[n.id,n])),lit=new Set(m.highlightLeaves??[]),litBranch=new Set();
   const branchColors=new Map();   // branch (by its child node) -> the colours of the highlighted leaves below it ('' for a leaf without a colour)
   for(const id of lit)for(let cur=byIdNode.get(id);cur&&cur.parent!==null;cur=byIdNode.get(cur.parent)){litBranch.add(cur.id);if(!branchColors.has(cur.id))branchColors.set(cur.id,new Set());branchColors.get(cur.id).add(m.highlightColors?.[id]??'');}
@@ -1451,11 +1487,14 @@ function treeSpec(m,ctx){
   const pathTex=n=>{const chain=[];for(let id=n.id;id;id=byIdNode.get(id).parent)chain.unshift(byIdNode.get(id));return DISPLAY+chain.slice(1).map(x=>qfrac(P(x.p))).join('\\times ')+'='+qfrac(P(n.path));};
   // a frame too narrow for a leaf's label and its path probability (a product of three fractions is wide) grows to hold them
   let need=0;
+  // a name wider than the standard frame's right end (a large policy font, a long name) grows the frame to hold it: a tree whose names fit keeps its frame
+  const nodeSizes=treeNodeSizes(m,fontPx);
+  for(const n of m.nodes)need=Math.max(need,TREE_X0+n.depth*colw+nodeSizes.get(n.id).width/2+SAFE);
   if(m.showPathProbability){
-    const leafNodes=m.nodes.filter(x=>!x.children.length),nodeWidth=n=>n.label===null?0:labelSize(/^[A-Za-z0-9]{1,3}$/.test(n.label)?{kind:'MATH',tex:n.label}:{kind:'TEXT',text:n.label},fontPx).width;
+    const longTree=treeHasLongName(m),leafNodes=m.nodes.filter(x=>!x.children.length),nodeWidth=n=>n.label===null?0:longTree?nodeSizes.get(n.id).width:labelSize(/^[A-Za-z0-9]{1,3}$/.test(n.label)?{kind:'MATH',tex:n.label}:{kind:'TEXT',text:n.label},fontPx).width;
     const pathWidth=n=>labelSize({kind:'MATH',tex:pathTex(n)},fontPx).width;
-    if(m.pathColumn)need=Math.max(...leafNodes.map(n=>TREE_X0+n.depth*TREE_COLW+nodeWidth(n)/2))+16+Math.max(...leafNodes.map(pathWidth))+SAFE;
-    else for(const n of leafNodes)need=Math.max(need,TREE_X0+n.depth*TREE_COLW+nodeWidth(n)/2+16+pathWidth(n)+SAFE);
+    if(m.pathColumn)need=Math.max(need,Math.max(...leafNodes.map(n=>TREE_X0+n.depth*colw+nodeWidth(n)/2))+16+Math.max(...leafNodes.map(pathWidth))+SAFE);
+    else for(const n of leafNodes)need=Math.max(need,TREE_X0+n.depth*colw+nodeWidth(n)/2+16+pathWidth(n)+SAFE);
   }
   const width=Math.max(width0,Math.ceil(need));
   for(const n of m.nodes){
@@ -1825,10 +1864,11 @@ function resolveNormal(spec,placed){
   }
 }
 // --- composing ----------------------------------------------------------------------------------------------------------------------------
-const PLAIN_KEYS=['capability','chart','caption','sourceConditions','newVisualInformation'];
+const PLAIN_KEYS=['capability','chart','caption','sourceConditions','newVisualInformation','accessibilityDescription'];
 export function checkStatChartPlan(plan){
   onlyKeys(plan,PLAIN_KEYS,'STAT_CHART_PLAN_INVALID');
   if(plan.capability!==FIGURE_CAPABILITY)bad('STAT_CHART_PLAN_INVALID');
+  readAccessibilityDescription(plan);
   return solveStatChart(plan.chart);
 }
 const fmt=n=>String(r6(n));
@@ -1972,7 +2012,7 @@ export async function composeStatChartFigure({plan,model,identity,typographyPoli
       const typeset=typesetter();placed=[];
       for(const label of spec.labels){
         let fragment;
-        try{fragment=typeset({id:label.id,owner:label.owner,factRole:['value','leaf','cell-value','path-probability','branch-probability'].includes(label.role)?'CONCLUSION':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'stat-chart',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text,...(label.weight==='MATH'?{weight:'MATH'}:{})})},identity);}
+        try{fragment=label.role==='node'&&label.kind==='TEXT'?nodeFragment(typeset,identity,{id:label.id,owner:label.owner,text:label.text,weight:label.weight},font):typeset({id:label.id,owner:label.owner,factRole:['value','leaf','cell-value','path-probability','branch-probability'].includes(label.role)?'CONCLUSION':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'stat-chart',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text,...(label.weight==='MATH'?{weight:'MATH'}:{})})},identity);}
         catch(error){if(!isDomainCode(error))throw error;throw new Stop('STAT_TYPESET_ERROR',{labelId:label.id,code:error.message});}
         const {width,height}=fragment.intrinsic,{x,y,ax,ay}=label.anchor;
         placed.push({label,fragment,box:{x:r6(ax==='end'?x-width:ax==='center'?x-width/2:x),y:r6(ay==='bottom'?y-height:ay==='middle'?y-height/2:y),width,height}});
@@ -1997,13 +2037,13 @@ export async function composeStatChartFigure({plan,model,identity,typographyPoli
     for(const prim of [...spec.prims].sort((a,b)=>a.layer-b.layer))body+=printPrim(prim);
     for(const {label,fragment,box} of placed){
       const extra=Object.entries(label.extra??{}).map(([k,v])=>` data-${k}="${esc(v)}"`).join('');
-      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="COORDINATE_LABEL" data-label-role="${label.role}" data-priority="0" data-font-px="${font}" data-owner="${label.owner}"${extra}${label.kind==='MATH'?` data-tex="${esc(label.tex)}"`:` data-text="${esc(label.text)}"`} data-fragment-sha="${fragment.fragmentSha256}" data-box="${box.x},${box.y},${box.width},${box.height}"${isPaletteName(label.extra?.color)?` color="${PALETTE[label.extra.color].line}"`:''} transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
+      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="COORDINATE_LABEL" data-label-role="${label.role}" data-priority="0" data-font-px="${font}" data-owner="${label.owner}"${extra}${label.kind==='MATH'?` data-tex="${esc(label.tex)}"`:` data-text="${esc(label.text)}"`} data-fragment-sha="${fragment.fragmentSha256}"${fragment.lines?` data-lines="${fragment.lines.map(l=>`${l.x},${l.y},${l.width},${l.height}`).join(';')}"`:''} data-box="${box.x},${box.y},${box.width},${box.height}"${isPaletteName(label.extra?.color)?` color="${PALETTE[label.extra.color].line}"`:''} transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
     }
-    const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="visual-title visual-desc" data-stat-chart="${FIGURE_CAPABILITY}" data-kind="${model.kind}" data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${accessibleNames(model.kind)}${body}</svg>`;
+    const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="visual-title visual-desc" data-stat-chart="${FIGURE_CAPABILITY}" data-kind="${model.kind}" data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${accessibleNames(model.kind,readAccessibilityDescription(plan))}${body}</svg>`;
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     if(process.env.APMS_DRAFT_DIR)(await import('node:fs')).writeFileSync(process.env.APMS_DRAFT_DIR+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-stat-chart-'+Date.now()+'.svg',svg);
     let response;
-    try{response=await pythonWorker({chart:plan.chart,svg,...(model.compact===true?{compact:true}:{})},{script:OBSERVER_SCRIPT});}catch(error){throw new Stop('WORKER_ERROR',{stage:'statChartAudit',code:String(error?.message??error)});}
+    try{response=await pythonWorker({chart:plan.chart,svg,...(model.compact===true?{compact:true}:{}),...(readAccessibilityDescription(plan)!==undefined?{accessibilityDescription:readAccessibilityDescription(plan)}:{})},{script:OBSERVER_SCRIPT});}catch(error){throw new Stop('WORKER_ERROR',{stage:'statChartAudit',code:String(error?.message??error)});}
     if(response?.status!=='OK')throw new Stop('WORKER_ERROR',{stage:'statChartAudit',code:response?.result?.code??null});
     const audit=response.result;lineage.staticAuditSha256=objectSha(audit);
     const errors=[...(audit.errors??[])];

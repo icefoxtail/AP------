@@ -112,10 +112,18 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
     if(authored.capability===sdg.FIGURE_CAPABILITY){
       // A standalone set diagram: the exact regions and shading derived once, composed, read back by its own observer, then the same Archive capture.
       stage='set-diagram';
-      const model=sdg.checkSetDiagramPlan(authored),size=sdg.setDiagramSize(model);
+      const model=sdg.checkSetDiagramPlan(authored);let size=sdg.setDiagramSize(model);
       stage='measure';
-      const measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
+      let measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
       if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+      // A mapping whose element rows follow the policy font (setDiagramSize with fontPx) is taller than its base size when the font is large: measure again at that size until the size the font gives is the size measured.
+      for(let again=1;again<=6;again++){
+        const exact=sdg.setDiagramSize(model,{fontPx:measured.policy.baseFontPx});
+        if(exact.width===size.width&&exact.height===size.height)break;
+        size=exact;
+        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}-r${again}`});
+        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+      }
       stage='compose';
       const composed=await sdg.composeSetDiagramFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
       if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
@@ -164,10 +172,18 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
     if(authored.capability===cfv.FIGURE_CAPABILITY){
       // A standalone vessel-and-water-height figure: the exact volumes derived once, composed, read back by its own observer, then the same Archive capture.
       stage='container-fill';
-      const model=cfv.checkContainerFillPlan(authored),size=cfv.containerFillSize(model);
+      const model=cfv.checkContainerFillPlan(authored);let size=cfv.containerFillSize(model);
       stage='measure';
-      const measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
+      let measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
       if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+      // The room the labels need (title above the axis, title beside it, label rows) follows the policy font: measure again at the size that font gives until it is the size measured.
+      for(let again=1;again<=6;again++){
+        const exact=cfv.containerFillSize(model,{fontPx:measured.policy.baseFontPx});
+        if(exact.width===size.width&&exact.height===size.height)break;
+        size=exact;
+        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}-r${again}`});
+        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+      }
       stage='compose';
       const composed=await cfv.composeContainerFillFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
       if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};

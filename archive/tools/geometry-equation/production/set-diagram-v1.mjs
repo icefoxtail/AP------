@@ -2,10 +2,12 @@ import {fileURLToPath} from 'node:url';
 import {objectSha,bytesSha} from '../../pipeline-core/canonical.mjs';
 import {pythonWorker} from './worker.mjs';
 import {typesetter} from './typography.mjs';
+import {wrapTextFragment} from './wrap-text.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
 import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mjs';
 import {PALETTE,PALETTE_NAMES,isPaletteName} from './palette.mjs';
+import {readAccessibilityDescription} from './accessibility-description.mjs';
 
 // A standalone set figure (set-diagram-figure-v1): a Venn diagram of 1-3 sets with the elements the author places and a shaded
 // region given as a set expression, and a finite mapping diagram of 2-4 columns with the declared arrows. The author gives only
@@ -21,7 +23,7 @@ const ACCESSIBLE_NAMES={
   MAPPING:['대응 그림','두 집합의 원소 사이의 대응 관계를 화살표로 나타낸 그림이다.'],
   MEMBERSHIP_TABLE:['집합의 원소 표','각 원소가 어느 집합에 속하는지 표로 나타낸 그림이다.']
 };
-const accessibleNames=kind=>{const [title,desc]=ACCESSIBLE_NAMES[kind];return `<title id="visual-title">${title}</title><desc id="visual-desc">${desc}</desc>`;};
+const accessibleNames=(kind,custom)=>{const [title,desc]=ACCESSIBLE_NAMES[kind];return `<title id="visual-title">${title}</title><desc id="visual-desc">${custom===undefined?desc:esc(custom)}</desc>`;};   // custom: the plan's own accessibilityDescription
 export const MODEL_VERSION='SET_DIAGRAM_MODEL_v1',SPEC_VERSION='SET_DIAGRAM_SPEC_v1',SVG_VERSION='set-diagram-svg-v1';
 const OBSERVER_SCRIPT=fileURLToPath(new URL('set-diagram-observer-worker.py',import.meta.url));
 const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});
@@ -447,17 +449,33 @@ function vennLayout(model,opts={}){
 const MAPPING_ROW=34,MAPPING_PAD=22,MAPPING_TOP=50,MAPPING_RX=72;
 // A two-column mapping panel of a composite (compact) is COMPACT_WIDTH wide like a Venn panel, so two of them and the gap fit the 848-unit width the Archive solution column allows;
 // a three-column mapping keeps its own width (it only stands in a one-column composite), and a standalone mapping is never compact.
+// The row pitch of a column with two or more elements follows the policy font: element labels taller than the 34 px of the base pitch would touch each other (SET_ELEMENT_NO_ROOM). With no font given,
+// or when the labels fit the base pitch, the pitch is the base one, so every figure that fits today is laid out exactly as before.
+let rowMeasure=null;
+const ROW_MEASURE_IDENTITY={visualAssetKey:'sha256:set-diagram-row-measure'};
+function mappingRowPitch(model,fontPx){
+  if(!(fontPx>0)||Math.max(...model.columns.map(c=>c.elements.length))<2)return MAPPING_ROW;
+  rowMeasure??=typesetter();
+  let tallest=0;
+  for(const column of model.columns)for(const element of column.elements){
+    try{
+      const fragment=rowMeasure({id:'measure',owner:'measure',factRole:'GIVEN',fontPx,panelId:'set-diagram',...(element.math?{kind:'MATH',tex:setDiagramTypesetTex(element.tex??element.text)}:{kind:'TEXT',text:element.text})},ROW_MEASURE_IDENTITY);
+      tallest=Math.max(tallest,fragment.intrinsic.height);
+    }catch(error){/* a label that cannot be typeset is refused by composing with its own code */}
+  }
+  return Math.max(MAPPING_ROW,Math.ceil(tallest));
+}
 function mappingLayout(model,opts={}){
-  const rows=model.columns.map(c=>c.elements.length),rowMax=Math.max(...rows);
+  const rows=model.columns.map(c=>c.elements.length),rowMax=Math.max(...rows),pitch=mappingRowPitch(model,opts.fontPx);
   const narrow=opts.compact&&model.columns.length===2;
   const four=model.columns.length===4;// X to Y to Z to W (three functions f, g, h): narrower ovals so the figure stays inside the 848-unit width
   const width=narrow?COMPACT_WIDTH:four?816:model.columns.length===2?460:660;
   const centers=narrow?[105,width-105]:four?[84,300,516,732]:model.columns.length===2?[120,width-120]:[110,width/2,width-110];
-  const ovalH=rowMax*MAPPING_ROW+2*MAPPING_PAD,top=MAPPING_TOP,height=top+ovalH+24;
-  return {size:{width,height},top,ovalH,rowMax,
+  const ovalH=(rowMax-1)*pitch+MAPPING_ROW+2*MAPPING_PAD,top=MAPPING_TOP,height=top+ovalH+24;
+  return {size:{width,height},top,ovalH,rowMax,rowPitch:pitch,
     // G17: every oval has the height of the longest column; a shorter column's elements keep the row spacing and sit centred vertically in their oval
     columns:model.columns.map((column,index)=>({cx:centers[index],cy:top+ovalH/2,ry:ovalH/2,rx:MAPPING_RX,
-      nameY:MAPPING_TOP-18,elementY:top+ovalH/2-(rows[index]-1)*MAPPING_ROW/2}))};
+      nameY:MAPPING_TOP-18,elementY:top+ovalH/2-(rows[index]-1)*pitch/2}))};
 }
 const TABLE_MARGIN=18,TABLE_HEADER=42,TABLE_ROW=40,TABLE_ELEMENT_COL=96,TABLE_SET_COL=56;
 function tableLayout(model){
@@ -764,7 +782,7 @@ function mappingSpec(model,layout){
     const g=columns[index];
     column.elements.forEach((element,k)=>{
       const id=`element-${index}-${element.index}`;
-      labels.push({...elementLabel(id,'element',`oval-${column.id}`,element,'center','middle',g.cx,g.elementY+k*MAPPING_ROW,
+      labels.push({...elementLabel(id,'element',`oval-${column.id}`,element,'center','middle',g.cx,g.elementY+k*layout.rowPitch,
         {column:index,element:element.index}),columnIndex:index,elementIndex:element.index});
     });
     const name=labelMath(column.name)
@@ -1100,7 +1118,10 @@ function resolveMapping(spec,placed){
   }
   for(const item of placed)if(item.label.role==='column-name'||item.label.role==='arrow-group-name'){
     const g=spec.layout.columns[item.label.extra.column];
-    if(item.box.y+item.box.height>spec.layout.top+2)bad('MAPPING_COLUMN_NAME_OVERLAPS_OVAL');
+    // A name taller than the 40 px the frame leaves above the ovals (a large policy font) slides up until it clears them; it is refused only when that would leave the safe margin.
+    const over=item.box.y+item.box.height-(spec.layout.top+2);
+    if(over>0)item.box={...item.box,y:r6(item.box.y-over)};
+    if(item.box.y+item.box.height>spec.layout.top+2||item.box.y<6)bad('MAPPING_COLUMN_NAME_OVERLAPS_OVAL');
   }
   for(const prim of spec.prims.filter(p=>p.t==='rect'&&p.role==='element-highlight')){
     const item=bySpot.get(`${prim.data.column}:${prim.data.element}`);
@@ -1153,10 +1174,11 @@ function segmentHitsBox(a,b,box){
 }
 
 // --- composing ------------------------------------------------------------------------------------------------------------------------------
-const PLAIN_KEYS=['capability','diagram','caption','sourceConditions','newVisualInformation'];
+const PLAIN_KEYS=['capability','diagram','caption','sourceConditions','newVisualInformation','accessibilityDescription'];
 export function checkSetDiagramPlan(plan){
   onlyKeys(plan,PLAIN_KEYS,'SET_DIAGRAM_PLAN_INVALID');
   if(plan.capability!==FIGURE_CAPABILITY)bad('SET_DIAGRAM_PLAN_INVALID');
+  readAccessibilityDescription(plan);
   return solveDiagram(plan.diagram);
 }
 function printPrim(p){
@@ -1176,29 +1198,11 @@ function printPrim(p){
 }
 // Element text with spaces, set on `lines` lines (the break chosen so that the longest line is shortest), as one fragment: the lines centred on one another, the label's box the whole block.
 // null when the text has too few words to break.
-function wrapElementFragment(typeset,label,identity,fontPx,lines){
-  const words=label.text.split(/\s+/).filter(Boolean);
-  if(words.length<2)return null;
-  const count=Math.min(lines,words.length),cache=new Map();
-  const part=(i,j)=>{const key=i+':'+j;if(!cache.has(key))cache.set(key,typeset({id:label.id,owner:label.owner,factRole:'GIVEN',fontPx,panelId:'set-diagram',occurrence:1+cache.size,kind:'TEXT',text:words.slice(i,j).join(' ')},identity));return cache.get(key);};
-  let best=null;
-  const walk=(start,left,cuts)=>{
-    if(left===1){const all=[...cuts,words.length];let from=0,widest=0;for(const to of all){widest=Math.max(widest,part(from,to).intrinsic.width);from=to;}if(!best||widest<best.widest-1e-9)best={widest,cuts:all};return;}
-    for(let cut=start+1;cut<=words.length-left+1;cut++)walk(cut,left-1,[...cuts,cut]);
-  };
-  walk(0,count,[]);
-  const rows=[];let from=0;for(const to of best.cuts){rows.push(part(from,to));from=to;}
-  const width=Math.max(...rows.map(r=>r.intrinsic.width)),height=rows.reduce((sum,r)=>sum+r.intrinsic.height,0);
-  let y=0;
-  const inner=rows.map(r=>{const g='<g transform="translate('+r6((width-r.intrinsic.width)/2)+' '+r6(y)+')">'+r.svg.replace(/^<svg[^>]*>/,'').replace(/<\/svg>$/,'')+'</g>';y+=r.intrinsic.height;return g;}).join('');
-  const svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+width+'" height="'+height+'" viewBox="0 0 '+width+' '+height+'" data-outline-width="'+width+'" data-outline-height="'+height+'" id="'+rows[0].namespace+'" data-owner="'+esc(label.owner)+'" data-fact-role="GIVEN">'+inner+'</svg>';
-  const lineRects=rows.map((r,i)=>({x:r6((width-r.intrinsic.width)/2),y:r6(rows.slice(0,i).reduce((sum,q)=>sum+q.intrinsic.height,0)),width:r6(r.intrinsic.width),height:r6(r.intrinsic.height)}));
-  return {lines:lineRects,labelId:label.id,owner:label.owner,factRole:'GIVEN',namespace:rows[0].namespace,svg,fragmentSha256:bytesSha(Buffer.from(svg)),fontSha256:rows[0].fontSha256,intrinsic:{width,height,baseline:rows[0].intrinsic.baseline},fontPx,typesetter:rows[0].typesetter};
-}
+const wrapElementFragment=(typeset,label,identity,fontPx,lines)=>wrapTextFragment(typeset,label,identity,fontPx,lines,{panelId:'set-diagram',factRole:'GIVEN'});
 // Everything composing does before it writes the SVG: the spec, every label typeset, the labels placed, the bounds and overlap checks (also what the unit tests run, without a browser).
 export function layoutSetDiagram({plan,model,identity,typeset,font,compact=false,wrap=0,variant=0,elementLeaders=false}){
     let spec,placed;
-    try{spec=setDiagramSpec(plan,model,{compact,variant});}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='SET_MODEL_MISMATCH'?error.message:'SET_SPEC_ERROR',{code:error.message});}
+    try{spec=setDiagramSpec(plan,model,{compact,variant,...(compact?{}:{fontPx:font})});}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='SET_MODEL_MISMATCH'?error.message:'SET_SPEC_ERROR',{code:error.message});}
     spec.setIds=model.kind==='VENN'?model.sets.map(s=>s.id):[];
     if(model.kind==='VENN'&&model.shade){
       const anyShade=spec.prims.some(p=>p.role==='shade');
@@ -1270,11 +1274,11 @@ export async function composeSetDiagramFigure({plan,model,identity,typographyPol
       const extra=Object.entries(label.extra??{}).map(([k,v])=>` data-${k}="${esc(v)}"`).join('');
       body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="COORDINATE_LABEL" data-label-role="${label.role}" data-priority="0" data-font-px="${font}" data-owner="${label.owner}"${extra}${label.kind==='MATH'?` data-tex="${esc(label.tex)}"`:` data-text="${esc(label.text)}"`} data-fragment-sha="${fragment.fragmentSha256}"${fragment.lines?` data-lines="${fragment.lines.map(l=>`${l.x},${l.y},${l.width},${l.height}`).join(';')}"`:''} data-box="${r6(box.x)},${r6(box.y)},${r6(box.width)},${r6(box.height)}" transform="translate(${r6(box.x)} ${r6(box.y)})">${fragment.svg}</g></g>`;
     }
-    const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="visual-title visual-desc" data-set-diagram="${FIGURE_CAPABILITY}" data-kind="${model.kind}" data-publication-profile="fragment-publication-spike-v1" data-safe-margin="6" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${accessibleNames(model.kind)}${body}</svg>`;
+    const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="visual-title visual-desc" data-set-diagram="${FIGURE_CAPABILITY}" data-kind="${model.kind}" data-publication-profile="fragment-publication-spike-v1" data-safe-margin="6" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${accessibleNames(model.kind,readAccessibilityDescription(plan))}${body}</svg>`;
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     if(process.env.APMS_DRAFT_DIR)(await import('node:fs')).writeFileSync(process.env.APMS_DRAFT_DIR+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-set-diagram-'+Date.now()+'.svg',svg);
     let response;
-    try{response=await pythonWorker({diagram:plan.diagram,svg},{script:OBSERVER_SCRIPT,timeoutMs:30000});}catch(error){throw new Stop('WORKER_ERROR',{stage:'setDiagramAudit',code:String(error?.message??error)});}
+    try{response=await pythonWorker({diagram:plan.diagram,svg,...(readAccessibilityDescription(plan)!==undefined?{accessibilityDescription:readAccessibilityDescription(plan)}:{})},{script:OBSERVER_SCRIPT,timeoutMs:30000});}catch(error){throw new Stop('WORKER_ERROR',{stage:'setDiagramAudit',code:String(error?.message??error)});}
     if(response?.status!=='OK')throw new Stop('WORKER_ERROR',{stage:'setDiagramAudit',code:response?.result?.code??null});
     const audit=response.result;lineage.staticAuditSha256=objectSha(audit);
     const errors=[...(audit.errors??[])];
