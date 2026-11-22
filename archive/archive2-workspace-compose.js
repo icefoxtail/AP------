@@ -1314,6 +1314,8 @@
           showNameLine: true, showScoreLine: true, applyToSolution: true, applyToAnswer: true },
         includeQr: false, qpp: 4, sourceType: "mixed", indexVersion: state.catalog.indexVersion,
       };
+      // 진단평가: 단원별 기출과 같은 단계 구역 제목('1단계' … )을 단계순 문항 위에 단다(core 함수 그대로, 문항의 실제 단계).
+      if (diagnostic && window.UnitPastExamsCore?.buildStepSections) meta.sections = window.UnitPastExamsCore.buildStepSections(chosen);
       const envelope = await O.publishOutputEnvelope({
         sourceKind: "archive2-compose", sourceId: crypto.randomUUID(), mode: "exam",
         questionCount: product.count, questionUids, meta, questions,
