@@ -3,6 +3,7 @@ import {objectSha,bytesSha} from '../../pipeline-core/canonical.mjs';
 import {pythonWorker} from './worker.mjs';
 import {pointNameModel} from './point-names.mjs';
 import {PALETTE,isPaletteName} from './palette.mjs';
+import {presentFields} from './composite-expand-fields.mjs';
 import {typesetter} from './typography.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
@@ -17,7 +18,9 @@ export const FIGURE_MODEL_VERSION='NUMBER_LINE_FIGURE_MODEL_v1',FIGURE_SPEC_VERS
 const OBSERVER_SCRIPT=fileURLToPath(new URL('number-line-observer-worker.py',import.meta.url));
 const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});
 const bad=code=>{throw Error(code);};
-const MAX_ROWS=4,MAX_POINTS=12,MAX_INTEGERS=25,MAX_TICK_INTEGERS=24,MAX_SUBDIVISIONS=8,MIN_TICK_GAP=6;
+// The limits are room, not a reading rule (they came with the first figure and with one 12-point plan): six rows stack under one scale, 16 points keep a name or a value each, and 40 integer dots stay
+// 9 px or more apart on the 400 px axis (crowded integer labels fall back to the two ends: integerLabels ENDS). Labels that crowd are moved by lanes or refused when they are composed.
+const MAX_ROWS=6,MAX_POINTS=16,MAX_INTEGERS=40,MAX_TICK_INTEGERS=24,MAX_SUBDIVISIONS=8,MIN_TICK_GAP=6;
 // A point may be named by one Hangul consonant letter (ㄱ..ㅎ) in place of a capital letter.
 const JAMO=/^[\u3131-\u314E]$/u,CAPITAL=/^[A-Z]$/;
 // E35: a POINTS point with no value is a letter point (a, -a, n); its id is the name written below its dot.
@@ -25,7 +28,9 @@ const SYMBOL_ID=/^-?[a-z]$/;
 // E34: a point may also be named by a short Hangul word (뉴욕, 그리니치: 1 to 5 syllables), written as plain text above its dot.
 const WORD_NAME=/^[\uAC00-\uD7A3]{2,5}$/u;
 const isTextName=name=>JAMO.test(name)||WORD_NAME.test(name);
-const pointSlug=id=>CAPITAL.test(id)?id:SYMBOL_ID.test(id)?'s'+id.replace('-','m'):'u'+id.codePointAt(0).toString(16);
+// A point whose name is not drawn (hideName) may have any short plain id (P0, p1, M2): it is only the plan's handle for the point, so a figure with more than the 26 capital letters still has distinct ids.
+const HIDDEN_ID=/^[A-Za-z][A-Za-z0-9]{0,5}$/;
+const pointSlug=id=>CAPITAL.test(id)?id:SYMBOL_ID.test(id)?'s'+id.replace('-','m'):HIDDEN_ID.test(id)?'h'+id:'u'+id.codePointAt(0).toString(16);
 const numSlug=text=>text.replace('-','m').replace('/','d');
 const isPlain=value=>!!value&&typeof value==='object'&&!Array.isArray(value);
 const onlyKeys=(value,keys,code)=>{if(!isPlain(value)||Object.keys(value).some(key=>!keys.includes(key)))bad(code);};
@@ -174,10 +179,10 @@ function solveSpans(raw,byId){
     return out;
   });
 }
-/** A row label: one short line of at most ROW_LABEL_MAX_CHARS characters, plain text. */
+/** A row label: one line of at most ROW_LABEL_MAX_CHARS characters, plain text ("<" ">" "≤" "≥" "−" are fine; & " \ $ and control characters are not), whose estimated room is at most ROW_LABEL_MAX_LEFT. */
 function rowLabelOf(raw){
   if(raw.label===undefined)return {};
-  if(typeof raw.label!=='string'||!raw.label.trim()||raw.label!==raw.label.trim()||[...raw.label].length>ROW_LABEL_MAX_CHARS||/[\u0000-\u001f<>&"\\$]/.test(raw.label))bad('NUMBER_LINE_ROW_LABEL_INVALID');
+  if(typeof raw.label!=='string'||!raw.label.trim()||raw.label!==raw.label.trim()||[...raw.label].length>ROW_LABEL_MAX_CHARS||/[\u0000-\u001f&"\\$]/.test(raw.label)||/ {2}/.test(raw.label)||SAFE+rowLabelPx(raw.label)+ROW_LABEL_GAP>ROW_LABEL_MAX_LEFT)bad('NUMBER_LINE_ROW_LABEL_INVALID');
   return {label:raw.label};
 }
 /** hideSetLabel:true (SET and RESULT rows): the inequality the engine writes over the row (-9/2<x<9/2) is left out, for a figure whose problem already names the variable or the set. */
@@ -462,7 +467,7 @@ export function solveNumberLineFigure(numberLine){
       // within: the 1-based number of an earlier SET or RESULT row; each point of this row is then classified exactly against that row's set (inside: filled and ringed, outside: crossed).
       if(row.within!==undefined&&(!Number.isInteger(row.within)||row.within<1||row.within>index||!['SET','RESULT'].includes(solved[row.within-1]?.kind)))bad('NUMBER_LINE_WITHIN_INVALID');
       if(row.band!==undefined&&typeof row.band!=='boolean')bad('NUMBER_LINE_ROWS_INVALID');
-      if(!Array.isArray(row.points)||row.points.length<2||row.points.length>MAX_POINTS)bad('NUMBER_LINE_POINTS_INVALID');
+      if(!Array.isArray(row.points)||row.points.length<1||row.points.length>MAX_POINTS)bad('NUMBER_LINE_POINTS_INVALID');
       const byId=new Map(),points=[];
       for(const raw of row.points){
         onlyKeys(raw,['id','value','divides','name','hideName','showValue','style','valueSide','between','mirrorOf'],'NUMBER_LINE_POINTS_INVALID');
@@ -475,7 +480,7 @@ export function solveNumberLineFigure(numberLine){
           if(raw.style!==undefined&&!POINT_STYLES.includes(raw.style))bad('NUMBER_LINE_POINT_STYLE_INVALID');
           point={id:raw.id,raw,symbolic:true,flags:{hideName:true,hideValue:true}};
         }else{
-          if(!(CAPITAL.test(raw.id)||JAMO.test(raw.id)))bad('NUMBER_LINE_POINTS_INVALID');
+          if(!(CAPITAL.test(raw.id)||JAMO.test(raw.id)||(HIDDEN_ID.test(raw.id)&&(raw.hideName===true||raw.name===null))))bad('NUMBER_LINE_POINTS_INVALID');
           if(raw.between!==undefined||raw.mirrorOf!==undefined)bad('NUMBER_LINE_SYMBOL_INVALID');
           point={id:raw.id,raw,flags:pointFlags(raw)};
         }
@@ -511,7 +516,7 @@ export function solveNumberLineFigure(numberLine){
           if(point.symbolic)return {id:point.id,symbol:true,tex:point.id,text:point.id,approx:num(point.v),place:ratText(point.v),...point.flags,...(style!=='FILLED'?{style}:{})};
           return {id:point.id,value:ratText(point.v),tex:isDecimalText(point.raw.value)?point.raw.value:valueTex(toReal(point.v)),text:isDecimalText(point.raw.value)?point.raw.value:valueText(toReal(point.v)),approx:num(point.v),...(point.division?{division:point.division}:{}),...point.flags,
             ...(style!=='FILLED'?{style}:{}),...(inside?{ring:true}:{})};}),
-        ...(row.band===false?{band:false}:{}),...(row.subdivisions!==undefined?{scale:solveScale(row.subdivisions,points.map(point=>point.v))}:{}),...rowLabelOf(row),...(row.within!==undefined?{within:row.within}:{}),...(spans?{spans}:{}),...(row.order!==undefined?{order:[...row.order]}:{})});
+        ...(row.band===false||points.length===1?{band:false}:{}),...(row.subdivisions!==undefined?{scale:solveScale(row.subdivisions,points.map(point=>point.v))}:{}),...rowLabelOf(row),...(row.within!==undefined?{within:row.within}:{}),...(spans?{spans}:{}),...(row.order!==undefined?{order:[...row.order]}:{})});
       pointInfo.set(solved.length,{points});
     }else bad('NUMBER_LINE_ROWS_INVALID');
   }
@@ -534,7 +539,11 @@ const DISPLAY='\\displaystyle ',END_RADIUS=5,DOT_RADIUS=3.2,TICK_HALF=6,LABEL_GA
 const HEAD_TALL=52,HEAD_SHORT=38,BELOW_TALL=48,BELOW_SHORT=34,POINT_HEAD=36,INTEGER_ZONE=64,PLAIN_ZONE=24,INTEGER_LABEL_ROW=26;
 const NAME_ROW=30,NAME_ROW_JAMO=34,VALUE_STACK_GAP=2,MINOR_TICK_HALF=3.5;
 // Row labels (E30): a short Korean word at the left of a row's axis; with any label the axes start further right, by room for the longest (an estimate per character).
-const ROW_LABEL_CHAR_PX=22,ROW_LABEL_GAP=10,ROW_LABEL_MAX_CHARS=6,ROW_LABEL_ROW_HEIGHT=34;
+const ROW_LABEL_CHAR_PX=22,ROW_LABEL_GAP=10,ROW_LABEL_MAX_CHARS=16,ROW_LABEL_ROW_HEIGHT=34;
+// A label of up to ROW_LABEL_SHORT characters keeps the estimate of 22 px per character it always had (figures drawn that way stay as they were); a longer one is estimated by the kind of character
+// (a Hangul syllable 22 px, any other glyph 14 px, a space 7 px). The room it takes may not exceed ROW_LABEL_MAX_LEFT (the axes need the rest of the 512 px); its real width is measured when it is placed (NUMBER_LINE_ROW_LABEL_TOO_WIDE).
+const ROW_LABEL_SHORT=6,ROW_LABEL_NARROW_PX=14,ROW_LABEL_SPACE_PX=7,ROW_LABEL_MAX_LEFT=240;
+const rowLabelPx=label=>{const chars=[...label];return chars.length<=ROW_LABEL_SHORT?ROW_LABEL_CHAR_PX*chars.length:chars.reduce((sum,ch)=>sum+(ch===' '?ROW_LABEL_SPACE_PX:ch.codePointAt(0)>=0x1100?ROW_LABEL_CHAR_PX:ROW_LABEL_NARROW_PX),0);};
 // Point styles (E30): FILLED (default), HOLLOW (open circle) and CROSS (two diagonal strokes, no disc); a point inside a `within` set also gets a ring.
 const POINT_STYLES=['FILLED','HOLLOW','CROSS','TICK'],CROSS_HALF=4.2,RING_RADIUS=END_RADIUS+3,TICK_MARK_HALF=7.5;
 // TICK (E35): a short bold vertical stroke through the axis, no disc: the mark of a place that is neither a value nor a member of a set (a letter point such as n).
@@ -548,7 +557,7 @@ const ARC_RISE_MAX=72,ARC_SPAN_DEG=32,ARC_MIN_RADIUS=14,ARC_HEAD=ARC_RISE_MAX+8,
 // A source grid (E35): the segment whose length is the radius, on a lattice of unit cells that stands on the number line (one cell is one unit of the line); the arc then runs from its hit to the segment's end.
 const SOURCE_RIGHT_ANGLE=9,SOURCE_MAX_CELLS=12,SOURCE_MARGIN=12,SOURCE_MAX_RISE=220,SOURCE_STROKE=2.4,LATTICE_STROKE=.8,LATTICE_COLOR='#bdbdbd';
 
-const axisLeftOf=model=>{const longest=Math.max(0,...model.rows.map(row=>row.label?[...row.label].length:0));return longest?Math.max(AXIS_LEFT,SAFE+ROW_LABEL_CHAR_PX*longest+ROW_LABEL_GAP):AXIS_LEFT;};
+const axisLeftOf=model=>{const longest=Math.max(0,...model.rows.map(row=>row.label?rowLabelPx(row.label):0));return longest?Math.max(AXIS_LEFT,SAFE+longest+ROW_LABEL_GAP):AXIS_LEFT;};
 const r6=value=>{const v=Math.round(value*1e6)/1e6;return v===0?0:v;};
 const frac=tex=>tex.includes('\\frac');
 const piecesOf=row=>row.pieces.map(piece=>({lo:piece.lower,hi:piece.upper}));
@@ -575,9 +584,11 @@ function figureMap(model){
   return {lo,hi,AXL,MAPL,unitPx:(MAP_RIGHT-MAPL)/(hi-lo)};
 }
 /** Row tops, axis heights and the total height; known before any label is typeset. */
-export function figureLayout(model){
+export const figureLayout=model=>layoutOf(model,staggerRows(model));
+// stagger: the numbers (1-based) of the rows whose value labels collide on one line (staggerRows); such a row keeps room for a second line under its labels and, when its names are not drawn, for a line over its dots.
+function layoutOf(model,stagger){
   let y=SAFE+(model.parameter&&!model.parameter.hideNote?NOTE_ROW:0);const rows=[];
-  for(const row of model.rows){
+  for(const [rowIndex,row] of model.rows.entries()){
     const points=row.kind==='POINTS',ends=points?[]:row.pieces.flatMap(piece=>[piece.lower,piece.upper]).filter(Boolean);
     const tallHead=!points&&row.pieces.some(piece=>frac(piece.lower?.tex??'')||frac(piece.upper?.tex??'')),
       tallBelow=points?row.points.some(point=>frac(point.tex)):ends.some(end=>frac(end.tex));
@@ -602,9 +613,16 @@ export function figureLayout(model){
     // spans: each takes a band of its own, under the row's labels or over its names (the head grows by the bands above)
     const spans=points?row.spans??[]:[],spanAbove=spans.filter(span=>span.side==='ABOVE').length*SPAN_BAND,spanBelow=spans.filter(span=>span.side==='BELOW').length*SPAN_BAND;
     head+=spanAbove;
+    // lanes of a staggered row: a second line under the labels (LANE_GAP below the first) and, for a POINTS row whose names are not drawn, a line over the dots
+    let lanes=null;
+    if(stagger.has(rowIndex+1)){
+      const above=points&&!!custom&&custom.nameRow===0&&custom.valueAbove===0&&!row.scale&&!row.points.some(point=>point.symbol);
+      lanes={above,below2:true,belowRow};
+      if(above)head+=belowRow+LANE_GAP;
+    }
     const axisY=y+head+zone;
-    rows.push({top:y,head,axisY,belowRow,zone,...(custom??{}),...(spanAbove||spanBelow?{spanAbove,spanBelow}:{})});
-    y=axisY+END_RADIUS+LABEL_GAP+belowRow+spanBelow+ROW_GAP;
+    rows.push({top:y,head,axisY,belowRow,zone,...(custom??{}),...(spanAbove||spanBelow?{spanAbove,spanBelow}:{}),...(lanes?{lanes}:{})});
+    y=axisY+END_RADIUS+LABEL_GAP+belowRow+(lanes?LANE_GAP+belowRow:0)+spanBelow+ROW_GAP;
   }
   return {rows,height:y-ROW_GAP+SAFE};
 }
@@ -618,8 +636,11 @@ export const figurePointNames=(plan,model)=>pointNameModel(plan,model.rows.flatM
 export function numberLineFigureSpec(plan,model){
   if(plan?.capability!==NUMBER_LINE_CAPABILITY||!plan.numberLine)bad('NUMBER_LINE_PLAN_INVALID');
   if(objectSha(solveNumberLineFigure(plan.numberLine))!==objectSha(model))bad('NUMBER_LINE_MODEL_MISMATCH');
-  const names=figurePointNames(plan,model),{lo,hi,AXL,MAPL,unitPx}=figureMap(model);
-  const px=u=>r6(MAPL+(u-lo)/(hi-lo)*(MAP_RIGHT-MAPL)),layout=figureLayout(model),v=model.variable;
+  return buildSpec(model,figurePointNames(plan,model),staggerRows(model));
+}
+function buildSpec(model,names,stagger){
+  const {lo,hi,AXL,MAPL,unitPx}=figureMap(model);
+  const px=u=>r6(MAPL+(u-lo)/(hi-lo)*(MAP_RIGHT-MAPL)),layout=layoutOf(model,stagger),v=model.variable;
   const rows=[],labels=[];
   if(model.parameter&&!model.parameter.hideNote){
     // a fraction value is written as a small (text-style) stacked fraction so that it fits the one-line note row; an integer keeps the display style
@@ -629,7 +650,7 @@ export function numberLineFigureSpec(plan,model){
   }
   for(const [r,row] of model.rows.entries()){
     const n=r+1,{axisY,head,top,belowRow}=layout.rows[r],dots=[],ticks=[],bands=[];
-    const spec={n,kind:row.kind,axis:{x1:AXL,x2:ARROW_TIP,y:axisY},bands,dots,ticks,...(row.color?{color:row.color}:{})};
+    const spec={n,kind:row.kind,axis:{x1:AXL,x2:ARROW_TIP,y:axisY},bands,dots,ticks,...(row.color?{color:row.color}:{}),...(layout.rows[r].lanes?{lanes:layout.rows[r].lanes}:{})};
     if(row.label)labels.push({id:`r${n}-row-label`,role:'row-label',owner:`r${n}-axis`,kind:'TEXT',text:row.label,plain:row.label,anchor:{x:AXL-ROW_LABEL_GAP,y:axisY,align:'left'},rowHeight:ROW_LABEL_ROW_HEIGHT,row:n});
     if(row.kind==='POINTS'){
       const placed=row.points.map(point=>({...point,x:px(point.approx)}));
@@ -776,7 +797,94 @@ export function numberLineFigureSpec(plan,model){
     if(model.axisVariable!==false)labels.push({id:`r${n}-axis-variable`,role:'variable',owner:`r${n}-axis`,kind:'MATH',tex:v,plain:v,anchor:{x:ARROW_TIP+6,y:axisY,align:'right'},rowHeight:30,row:n});
     rows.push(spec);
   }
-  return {schemaVersion:FIGURE_SPEC_VERSION,size:figurePanelSize(model),map:{unitLeft:r6(lo),unitRight:r6(hi),pxLeft:MAPL,pxRight:MAP_RIGHT},rows,labels};
+  return {schemaVersion:FIGURE_SPEC_VERSION,size:{width:WIDTH,height:layout.height},map:{unitLeft:r6(lo),unitRight:r6(hi),pxLeft:MAPL,pxRight:MAP_RIGHT},rows,labels};
+}
+
+// --- staggered labels (N08) -----------------------------------------------------------------------------------------------------------------------
+// Value labels that stand under the axis (an end of a set, a marked point's value) can collide when two places are close. A row whose labels collide on one line (measured here at STAGGER_FONT_PX, the
+// smallest base font a 512 px panel gets: a row that collides at that size cannot be composed at any size) keeps room for a second line under its labels and, when its names are not drawn, for a line over
+// its dots. When the figure is composed (with the real font) each label that does not fit on the first line takes the first lane that does: the line over its dot (right above it), or the second line
+// under, joined to its dot by a vertical leader (a leader may not cross a label). A row whose labels do not collide keeps its layout and its bytes.
+const LANE_GAP=4,LANE_PAD=1.5,LEADER_STROKE=1,LEADER_START=1.2,STAGGER_FONT_PX=21.4,STAGGER_NEAR_PX=140,STAGGER_ROLES=['endpoint','point-value'];
+const NO_STAGGER=new Set(),staggerCache=new WeakMap(),widthCache=new Map();
+let measureTypeset=null;
+function measuredWidth(label){
+  const key=(label.kind==='MATH'?'M|'+label.tex:'T|'+label.text);
+  if(!widthCache.has(key)){
+    measureTypeset??=typesetter();
+    const fragment=measureTypeset({id:'stagger-measure',owner:'stagger-measure',factRole:'DERIVED_INTERMEDIATE',fontPx:STAGGER_FONT_PX,panelId:'number-line',...(label.kind==='MATH'?{kind:'MATH',tex:label.tex}:{kind:'TEXT',text:label.text})},{visualAssetKey:'stagger-measure'});
+    widthCache.set(key,fragment.intrinsic.width);
+  }
+  return widthCache.get(key);
+}
+/** The numbers of the rows whose value labels collide on one line at the smallest font (a row with a graduated axis, spans or compass arcs is left as it is). */
+function staggerRows(model){
+  if(staggerCache.has(model))return staggerCache.get(model);
+  const out=new Set();
+  try{
+    const spec=buildSpec(model,{tex:id=>id,text:id=>id},NO_STAGGER);
+    for(const row of spec.rows){
+      const solved=model.rows[row.n-1];
+      if(solved.kind==='POINTS'&&(solved.scale||solved.spans?.length||solved.constructions?.length))continue;
+      const items=spec.labels.filter(label=>label.row===row.n&&STAGGER_ROLES.includes(label.role)&&label.anchor.align==='below').sort((a,b)=>a.anchor.x-b.anchor.x);
+      if(!items.some((item,i)=>i&&item.anchor.x-items[i-1].anchor.x<STAGGER_NEAR_PX))continue;
+      const widths=items.map(measuredWidth);
+      if(items.some((a,i)=>items.slice(i+1).some((b,j)=>Math.abs(b.anchor.x-a.anchor.x)<(widths[i]+widths[i+1+j])/2)))out.add(row.n);
+    }
+  }catch{/* a figure that cannot be specified is refused by the real specification with its own code; here it simply has no staggered rows */}
+  staggerCache.set(model,out);
+  return out;
+}
+const boxHit=(a,b,pad)=>a.x<b.x+b.width+pad&&b.x<a.x+a.width+pad&&a.y<b.y+b.height+pad&&b.y<a.y+a.height+pad;
+const LANE_SHIFT_STEP=6,LANE_SHIFT_MAX=96,LANE_TARGET_INSET=3;
+// a leader (x1,y1)-(x2,y2) meets a box when one of its points (one per px) lies within pad of it
+const leaderHitsBox=(leader,box,pad)=>{
+  const length=Math.hypot(leader.x2-leader.x1,leader.y2-leader.y1),steps=Math.max(1,Math.ceil(length));
+  for(let k=0;k<=steps;k++){const x=leader.x1+(leader.x2-leader.x1)*k/steps,y=leader.y1+(leader.y2-leader.y1)*k/steps;if(x>box.x-pad&&x<box.x+box.width+pad&&y>box.y-pad&&y<box.y+box.height+pad)return true;}
+  return false;
+};
+const orient=(ax,ay,bx,by,cx,cy)=>Math.sign((bx-ax)*(cy-ay)-(by-ay)*(cx-ax));
+const leadersCross=(a,b)=>orient(a.x1,a.y1,a.x2,a.y2,b.x1,b.y1)!==orient(a.x1,a.y1,a.x2,a.y2,b.x2,b.y2)&&orient(b.x1,b.y1,b.x2,b.y2,a.x1,a.y1)!==orient(b.x1,b.y1,b.x2,b.y2,a.x2,a.y2);
+/**
+ * For each staggered row, move every collided value label (left to right) to the first lane where it fits: the line over its dot (when the row has one), then the second line under; then the same two lines
+ * with the label slid sideways (at most LANE_SHIFT_MAX px, 6 px at a time), which a straight leader from the label's own dot to the label's edge joins to its dot. A leader crosses no label, no other leader
+ * and no other dot. A label stays where it is until it overlaps one already placed. Returns the leaders per row; the boxes in `placed` are updated.
+ */
+function assignLanes(spec,placed){
+  const leaders=new Map(),limit=WIDTH-SAFE;
+  for(const row of spec.rows){
+    if(!row.lanes)continue;
+    const axisY=row.axis.y,mine=placed.filter(item=>item.label.row===row.n&&STAGGER_ROLES.includes(item.label.role)&&item.label.anchor.align==='below').sort((a,b)=>a.label.anchor.x-b.label.anchor.x);
+    const decided=placed.filter(item=>item.label.row===row.n&&!mine.includes(item)).map(item=>item.box),rowLeaders=[],dots=row.dots;
+    const lineAbove=item=>r6(axisY-END_RADIUS-4-item.box.height),lineBelow2=r6(axisY+END_RADIUS+LABEL_GAP+row.lanes.belowRow+LANE_GAP);
+    for(const item of mine){
+      const {box,label}=item,x=label.anchor.x,candidates=[{box}];
+      const make=(lane,s)=>{
+        const y=lane==='ABOVE'?lineAbove(item):lineBelow2,moved={...box,x:r6(box.x+s),y};
+        const tx=r6(Math.min(Math.max(x,moved.x+LANE_TARGET_INSET),moved.x+moved.width-LANE_TARGET_INSET));
+        const leader=lane==='ABOVE'?{x1:x,y1:r6(axisY-END_RADIUS-LEADER_START),x2:tx,y2:r6(y+box.height+LEADER_START)}:{x1:x,y1:r6(axisY+END_RADIUS+LEADER_START),x2:tx,y2:r6(y-LEADER_START)};
+        return {box:moved,...(lane==='ABOVE'&&s===0?{}:{leader:{id:`${label.id}-leader`,row:row.n,of:label.owner,label:label.id,...leader}})};
+      };
+      if(row.lanes.above)candidates.push(make('ABOVE',0));
+      if(row.lanes.below2)candidates.push(make('BELOW2',0));
+      for(let s=LANE_SHIFT_STEP;s<=LANE_SHIFT_MAX;s+=LANE_SHIFT_STEP)for(const sign of [1,-1]){
+        if(row.lanes.above)candidates.push(make('ABOVE',sign*s));
+        if(row.lanes.below2)candidates.push(make('BELOW2',sign*s));
+      }
+      const fits=lane=>{
+        if(lane.box.x<SAFE||lane.box.x+lane.box.width>limit)return false;
+        if(decided.some(other=>boxHit(lane.box,other,LANE_PAD))||rowLeaders.some(other=>leaderHitsBox(other,lane.box,LANE_PAD)))return false;
+        const leader=lane.leader;
+        if(!leader)return true;
+        return !decided.some(other=>leaderHitsBox(leader,other,LANE_PAD))&&!rowLeaders.some(other=>leadersCross(leader,other))&&!dots.some(dot=>dot.id!==label.owner&&leaderHitsBox(leader,{x:dot.x-dot.r,y:dot.y-dot.r,width:2*dot.r,height:2*dot.r},0.5));
+      };
+      const lane=candidates.find(fits)??candidates[0];
+      item.box=lane.box;decided.push(lane.box);
+      if(lane.leader)rowLeaders.push(lane.leader);
+    }
+    if(rowLeaders.length)leaders.set(row.n,rowLeaders);
+  }
+  return leaders;
 }
 
 // --- composing --------------------------------------------------------------------------------------------------------------------------------
@@ -811,6 +919,8 @@ export async function composeNumberLineFigurePanel({plan,model,identity,typograp
       if(label.role==='row-label'&&left<SAFE-0.01)throw new Stop('NUMBER_LINE_ROW_LABEL_TOO_WIDE',{labelId:label.id,width});
       placed.push({label,fragment,box:{x:r6(left),y:r6(align==='below'?y:align==='above'||align==='above-right'||align==='above-left'?y-height:y-height/2),width,height}});
     }
+    // a row that keeps lanes (see staggerRows) moves the value labels that collide: over the dot, or on a second line under with a leader
+    const leaders=assignLanes(spec,placed);
     for(let i=0;i<placed.length;i++)for(const other of placed.slice(i+1))if(overlaps(placed[i].box,other.box)){
       const roles=[placed[i].label.role,other.label.role];
       throw new Stop(roles.every(role=>role==='integer')?'NUMBER_LINE_INTEGER_POINTS_TOO_DENSE':'NUMBER_LINE_LABELS_TOO_CLOSE',{labels:[placed[i].label.id,other.label.id]});
@@ -838,6 +948,7 @@ export async function composeNumberLineFigurePanel({plan,model,identity,typograp
       const {axis,n}=row,bandStroke=row.color?PALETTE[row.color].line:'#111';
       body+=`<g data-layer="30"><line id="r${n}-axis" data-role="axis" data-axis="x" data-row="${n}" stroke="#111" stroke-width="1.2" fill="none" x1="${axis.x1}" y1="${axis.y}" x2="${axis.x2-6}" y2="${axis.y}"/>`;
       body+=`<polygon id="r${n}-axis-arrow" data-role="arrow" data-row="${n}" fill="#111" stroke="none" points="${axis.x2},${axis.y} ${axis.x2-9},${r6(axis.y-4)} ${axis.x2-9},${r6(axis.y+4)}"/></g>`;
+      for(const leader of leaders.get(n)??[])body+=`<g data-layer="35"><line id="${leader.id}" data-role="label-leader" data-row="${n}" data-of="${leader.of}" data-label="${leader.label}" stroke="#111" stroke-width="${LEADER_STROKE}" fill="none" x1="${leader.x1}" y1="${leader.y1}" x2="${leader.x2}" y2="${leader.y2}"/></g>`;
       for(const tick of row.ticks){const minor=tick.role==='minor';body+=`<g data-layer="30"><line id="${tick.id}" data-role="${minor?'subtick':'tick'}" data-axis="x" data-row="${n}" data-value="${tick.value}"${tick.role?` data-scale="${tick.role}"`:''}${minor?` data-parts="${tick.parts}"`:''} stroke="#111" stroke-width="${minor?1:1.2}" fill="none" x1="${tick.x}" y1="${tick.y1}" x2="${tick.x}" y2="${tick.y2}"/></g>`;}
       for(const span of row.spans??[]){
         const head=`data-row="${n}" data-from="${span.from}" data-to="${span.to}" data-side="${span.side}" data-span-style="${span.style}"`,stroke=`stroke="#111" stroke-width="${SPAN_STROKE}"`;
@@ -926,5 +1037,5 @@ export function expandNumberLineFigure(plan){
   onlyKeys(plan,['capability','numberLine','pointNames','numberLineCaption','caption','accessibilityDescription','sourceConditions','newVisualInformation'],'NUMBER_LINE_FIGURE_PLAN_INVALID');
   figurePointNames(plan,solveNumberLineFigure(plan.numberLine));
   return {capability:'composite-panels-v1',chain:FIGURE_CAPABILITY,panels:[{caption:caption(plan.numberLineCaption,{text:'수직선 위의 범위'}),plan:{capability:NUMBER_LINE_CAPABILITY,numberLine:plan.numberLine,...(plan.pointNames!==undefined?{pointNames:plan.pointNames}:{})}}],
-    caption:plan.caption,...(plan.accessibilityDescription!==undefined?{accessibilityDescription:plan.accessibilityDescription}:{}),sourceConditions:plan.sourceConditions,newVisualInformation:plan.newVisualInformation};
+    caption:plan.caption,...(plan.accessibilityDescription!==undefined?{accessibilityDescription:plan.accessibilityDescription}:{}),...presentFields(plan)};
 }

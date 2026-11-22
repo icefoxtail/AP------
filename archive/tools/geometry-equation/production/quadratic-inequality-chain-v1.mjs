@@ -4,6 +4,7 @@ import {pythonWorker} from './worker.mjs';
 import {typesetter} from './typography.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
+import {presentFields} from './composite-expand-fields.mjs';
 import * as figure from './number-line-v1.mjs';
 
 // A quadratic inequality solution drawn as a fixed chain (one author plan, quadratic-inequality-chain-v1): the quadratic graph in the solution's own
@@ -188,7 +189,7 @@ export function expandInequalityChain(plan){
   return {capability:'composite-panels-v1',chain:CHAIN_CAPABILITY,
     panels:[{caption:caption(plan.graphCaption,{text:'이차함수의 그래프'}),plan:{capability:'polynomial-spike-v1',graphPlan}},
       {caption:caption(plan.numberLineCaption,{text:'해의 범위'}),plan:{capability:NUMBER_LINE_CAPABILITY,numberLine:inequality}}],
-    caption:plan.caption,...(plan.accessibilityDescription!==undefined?{accessibilityDescription:plan.accessibilityDescription}:{}),sourceConditions:plan.sourceConditions,newVisualInformation:plan.newVisualInformation};
+    caption:plan.caption,...(plan.accessibilityDescription!==undefined?{accessibilityDescription:plan.accessibilityDescription}:{}),...presentFields(plan)};
 }
 
 // --- the number-line panel -------------------------------------------------------------------------------------------------------------------

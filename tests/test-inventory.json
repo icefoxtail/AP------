@@ -505,6 +505,11 @@
    "detail": "조사 대기 — 같은 폴더 worker-*·render-plan 테스트처럼 엔진 의존성(python 패키지·Chrome)이 있는 PC에서만 돈다. 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
   },
   {
+   "match": "archive/tools/geometry-equation/tests/composite-expand-optional-fields.test.mjs",
+   "reason": "pending",
+   "detail": "브라우저 없이 도는 엔진 테스트이나 geometry 테스트 잡이 없어 엔진 라인이 직접 실행(2026-11-22: 4개 통과)."
+  },
+  {
    "match": "archive/tools/geometry-equation/tests/composite-accessible-names.test.mjs",
    "reason": "pending",
    "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
@@ -5731,6 +5736,16 @@
    },
    "reason": "pending",
    "detail": "조사 대기 — 어느 잡에서도 돌지 않음."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/number-line-lanes.test.mjs",
+   "reason": "pending",
+   "detail": "Chrome와 python 관측기를 쓰는 엔진 테스트라 어느 잡에서도 안 돌림 — 엔진 라인이 --test-concurrency=1로 직접 실행(2026-11-22: 6개 통과)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/ellipse-label-values.test.mjs",
+   "reason": "pending",
+   "detail": "python 관측기를 쓰는 엔진 테스트라 어느 잡에서도 안 돌림 — 엔진 라인이 직접 실행(2026-11-22: 4개 통과)."
   }
  ]
 }

@@ -2981,7 +2981,7 @@ def check_dim_lines(plan, ctx):
 AXIS_EXT = 0.14
 SAFE_PX = 10.0   # the figure's safe margin
 AXIS_DASH = '10 3 2 3'
-TEXT_LABEL = re.compile(r'^[가-힣A-Za-z0-9 ·()]{1,12}$')
+TEXT_LABEL = re.compile(r'^[가-힣A-Za-z0-9 ·().,=+×√]{1,20}$')   # this observer's own copy of the text-label alphabet (A11: up to 20 characters)
 TEXT_NEAR_VERTEX = 34.0   # px from the vertex to the nearest edge of its word's box
 TEXT_NEAR_SEGMENT = 34.0  # px from the segment to the nearest edge of its word's box
 

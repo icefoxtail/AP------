@@ -287,6 +287,8 @@ TICK_MARK_HALF_PX = 7.5          # E35: the TICK style, a short vertical stroke 
 SYMBOL_ID = re.compile('^-?[a-z]$')
 SYMBOL_SEPARATION_PX = 10.0
 NAME_BESIDE_ARC_PX = 12.0
+# N08 (this observer's own copies): the first line of value labels stands 5 px under its dot; a label over its dot is at most LANE_OVER_DOT_MAX_PX above it; a leader starts at the dot's edge and ends at the label's top
+LANE_FIRST_LINE_MAX_PX, LANE_OVER_DOT_MAX_PX, LEADER_END_MAX_PX, LANE_SHIFT_MAX_PX = 8.0, 6.0, 2.5, 100.0
 SOURCE_RIGHT_ANGLE_PX = 9.0          # the side of the right angle mark at the foot of a source perpendicular
 ARC_PATH = re.compile(r'^M (-?[\d.e]+) (-?[\d.e]+) A (-?[\d.e]+) (-?[\d.e]+) 0 0 ([01]) (-?[\d.e]+) (-?[\d.e]+)$')
 ARC_MIN_RISE_PX, ARC_MAX_RISE_PX, ARC_MAX_ANGLE_DEG, ARC_CLEAR_PX, ARC_SAMPLES = 8.0, 80.0, 40.0, 1.2, 48
@@ -848,6 +850,8 @@ def audit_figure(numberLine, svg, pointNames=None):
                 if element is None: continue
                 flag = flags[point_id]
                 if abs(_num(element, 'cx') - px(value)) > TOL or abs(_num(element, 'cy') - axis_y) > TOL: errors.append('NL_POINT_POSITION:' + point_id)
+                # a plain id (P0, m1) is the plan's handle for a point whose name is not drawn: any other id must be a capital letter or a Hangul consonant letter
+                if not (re.fullmatch('[A-Z]', point_id) or JAMO.fullmatch(point_id)) and not (re.fullmatch('[A-Za-z][A-Za-z0-9]{0,5}', point_id) and flag['name_hidden']): errors.append('NL_POINT_ID_NEEDS_HIDDEN_NAME:' + point_id)
                 inside = None if within_pieces is None else any(piece.contains(value) == S.true for piece in within_pieces)
                 style = flag['style'] if flag['style'] is not None else ('CROSS' if inside is False else 'FILLED')
                 if style not in POINT_STYLES: raise ValueError('NL_OBSERVER_PLAN_INVALID')
@@ -915,7 +919,7 @@ def audit_figure(numberLine, svg, pointNames=None):
             # The band spans the outermost points (unless the plan turns it off); each internal division carries its ratio parts over its two sub-segments.
             band = by_id.get('r%d-band-1' % index)
             row_bands = [element for element in lines if element.get('data-role') == 'solution-band' and in_row(element)]
-            if row['spec'].get('band') is False:
+            if row['spec'].get('band') is False or len(row['spec']['points']) == 1:   # one point has no band to draw
                 if row_bands: errors.append('NL_BAND_UNEXPECTED:%d' % index)
             elif band is None: errors.append('NL_BAND_MISSING:%d' % index)
             elif abs(_num(band, 'x1') - px(min(all_u.values()))) > TOL or abs(_num(band, 'x2') - px(max(all_u.values()))) > TOL or abs(_num(band, 'y1') - axis_y) > TOL: errors.append('NL_BAND_EXTENT:%d' % index)
@@ -1081,6 +1085,7 @@ def audit_figure(numberLine, svg, pointNames=None):
             except ValueError as error: errors.append(str(error))
     # geometry of every label: centred on its owner, on the right side of its axis, clear of each other, of every dot and of every tick
     boxes = []
+    lane_leaders = []
     for label in labels:
         role, owner, label_id = label.get('data-label-role'), label.get('data-owner'), label.get('id')
         match, inner = TRANSLATE.fullmatch(label.get('transform') or ''), label.find(NS + 'svg')
@@ -1105,10 +1110,30 @@ def audit_figure(numberLine, svg, pointNames=None):
             dot_x = _num(target, 'cx')
             beside = box[0] >= dot_x and box[0] - dot_x <= NAME_BESIDE_ARC_PX if 'RIGHT' in sides else box[0] + box[2] <= dot_x and dot_x - (box[0] + box[2]) <= NAME_BESIDE_ARC_PX
             if not beside: errors.append('NL_CONSTRUCTION_NAME_SIDE:' + str(label_id))
-        elif abs(centre - at) > 0.5: errors.append('NL_LABEL_NOT_CENTRED:' + str(label_id))
+        elif abs(centre - at) > 0.5 and not (role in ('endpoint', 'point-value') and any(l.get('data-role') == 'label-leader' and l.get('data-label') == label_id for l in lines)): errors.append('NL_LABEL_NOT_CENTRED:' + str(label_id))
         # a point's value is written below the axis, or (on a graduated axis, whose ticks use the space below) stacked above its name
         stacked = role == 'point-value' and (any(t.get('data-scale') for t in ticks if t.get('data-row') == row_n) or (row_n, target.get('data-point-id')) in value_above)
-        if stacked:
+        # N08: a value label that does not fit on the first line under its dot stands over the dot (a row whose names are not drawn) or on a second line under; slid sideways it is joined to its own dot by a straight leader
+        lane = None
+        if role in ('endpoint', 'point-value') and not stacked:
+            dot_top, dot_bottom = _num(target, 'cy') - _num(target, 'r'), _num(target, 'cy') + _num(target, 'r')
+            # over the dot only in a row that draws no point name (a value over a name is the plan's own valueSide ABOVE, checked below)
+            if box[1] + box[3] <= dot_top + 0.01 and not any(l.get('data-label-role') == 'point-name' and l.get('data-row') == row_n for l in labels): lane = 'ABOVE'
+            elif box[1] - dot_bottom > LANE_FIRST_LINE_MAX_PX: lane = 'BELOW2'
+        if lane is not None:
+            own = [l for l in lines if l.get('data-role') == 'label-leader' and l.get('data-label') == label_id]
+            shifted = abs(centre - at) > 0.5
+            if lane == 'ABOVE' and not shifted and (dot_top - (box[1] + box[3]) > LANE_OVER_DOT_MAX_PX or own): errors.append('NL_LABEL_LANE_ABOVE:' + str(label_id))
+            elif len(own) != (1 if (shifted or lane == 'BELOW2') else 0): errors.append('NL_LABEL_LANE_LEADER:' + str(label_id))
+            elif own:
+                leader = own[0]
+                x1, y1, x2, y2 = _num(leader, 'x1'), _num(leader, 'y1'), _num(leader, 'x2'), _num(leader, 'y2')
+                start_ok = abs(x1 - _num(target, 'cx')) <= TOL and (dot_bottom - 0.5 <= y1 <= dot_bottom + LEADER_END_MAX_PX if lane == 'BELOW2' else dot_top - LEADER_END_MAX_PX <= y1 <= dot_top + 0.5)
+                end_ok = box[0] - 0.01 <= x2 <= box[0] + box[2] + 0.01 and (box[1] - LEADER_END_MAX_PX <= y2 <= box[1] + 0.01 if lane == 'BELOW2' else box[1] + box[3] - 0.01 <= y2 <= box[1] + box[3] + LEADER_END_MAX_PX)
+                if leader.get('data-of') != owner or not start_ok or not end_ok or abs(centre - at) > LANE_SHIFT_MAX_PX: errors.append('NL_LABEL_LANE_LEADER:' + str(label_id))
+                else: lane_leaders.append((label_id, owner, x1, y1, x2, y2))
+        if lane is not None: pass
+        elif stacked:
             if box[1] + box[3] > _num(target, 'cy') - _num(target, 'r'): errors.append('NL_LABEL_NOT_ABOVE_DOT:' + str(label_id))
             for other in owners.get(owner, []):
                 if other.get('data-label-role') == 'point-name':
@@ -1117,6 +1142,25 @@ def audit_figure(numberLine, svg, pointNames=None):
         elif role in ('endpoint', 'tick', 'point-value', 'point-symbol') and axis_y is not None and box[1] < axis_y + 1.6: errors.append('NL_LABEL_NOT_BELOW_AXIS:' + str(label_id))
         if role in ('integer', 'point-name') and box[1] + box[3] > _num(target, 'cy') - _num(target, 'r'): errors.append('NL_LABEL_NOT_ABOVE_DOT:' + str(label_id))
         if role == 'set' and axis_y is not None and box[1] + box[3] > axis_y - 8: errors.append('NL_LABEL_NOT_ABOVE_BAND:' + str(label_id))
+    # a leader belongs to a label on the second line or a slid label, and crosses no other label, no dot of another point and no other leader
+    for leader in (element for element in lines if element.get('data-role') == 'label-leader'):
+        if leader.get('data-label') not in {item[0] for item in lane_leaders}: errors.append('NL_LEADER_UNEXPECTED:' + str(leader.get('id')))
+    def _samples(x1, y1, x2, y2):
+        steps = max(1, int(math.ceil(math.hypot(x2 - x1, y2 - y1))))
+        return [(x1 + (x2 - x1) * k / steps, y1 + (y2 - y1) * k / steps) for k in range(steps + 1)]
+    def _orient(ax, ay, bx, by, cx, cy):
+        value = (bx - ax) * (cy - ay) - (by - ay) * (cx - ax)
+        return (value > 0) - (value < 0)
+    for label_id, owner_id, x1, y1, x2, y2 in lane_leaders:
+        points = _samples(x1, y1, x2, y2)
+        for other_id, b in boxes:
+            if other_id != label_id and any(b[0] - 0.5 < x < b[0] + b[2] + 0.5 and b[1] - 0.5 < y < b[1] + b[3] + 0.5 for x, y in points): errors.append('NL_LEADER_CROSSES_LABEL:' + label_id + ':' + other_id)
+        for circle in circles:
+            if circle.get('id') != owner_id and any(math.hypot(x - _num(circle, 'cx'), y - _num(circle, 'cy')) <= _num(circle, 'r') + 0.5 for x, y in points): errors.append('NL_LEADER_CROSSES_DOT:' + label_id + ':' + str(circle.get('id')))
+    for i, first in enumerate(lane_leaders):
+        for second in lane_leaders[i + 1:]:
+            a, b = first[2:], second[2:]
+            if _orient(*a[:2], *a[2:], *b[:2]) != _orient(*a[:2], *a[2:], *b[2:]) and _orient(*b[:2], *b[2:], *a[:2]) != _orient(*b[:2], *b[2:], *a[2:]): errors.append('NL_LEADER_CROSSES_LEADER:' + first[0] + ':' + second[0])
     for i, (label_id, a) in enumerate(boxes):
         for other_id, b in boxes[i + 1:]:
             if a[0] < b[0] + b[2] and b[0] < a[0] + a[2] and a[1] < b[1] + b[3] and b[1] < a[1] + a[3]: errors.append('NL_LABEL_OVERLAP:' + label_id + ':' + other_id)

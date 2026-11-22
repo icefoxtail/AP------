@@ -41,7 +41,9 @@ test('the engine solves the labels, styles and the within classification exactly
 test('plans that cannot be drawn faithfully are refused with their codes',()=>{
   const labelled=label=>solveNumberLineFigure({rows:[set('0','5',{label})]});
   assert.doesNotThrow(()=>labelled('가능'));assert.doesNotThrow(()=>labelled('abcdef'));
-  for(const bad of ['','  ',' 가능','가능 ','일곱글자가나다','a<b','a&b','a"b','a\\b','a$b','가\n능',7,null])assert.throws(()=>labelled(bad),code('NUMBER_LINE_ROW_LABEL_INVALID'),JSON.stringify(bad));
+  // N04a: up to 16 characters; < > ≤ ≥ − are plain text; the room a label over six characters takes is estimated by the kind of character and is capped (nine Hangul syllables fit, ten do not)
+  for(const good of ['일곱글자가나다','a<b','−2≤x<5','f(x)≥−3 (x>0)','가나다라마바사아자'])assert.doesNotThrow(()=>labelled(good),good);
+  for(const bad of ['','  ',' 가능','가능 ','가나다라마바사아자차','열일곱글자를넘는라벨은안된다','abcdefghijklmnopq','a  b','a&b','a"b','a\\b','a$b','가\n능',7,null])assert.throws(()=>labelled(bad),code('NUMBER_LINE_ROW_LABEL_INVALID'),JSON.stringify(bad));
   const styled=style=>solveNumberLineFigure({rows:[pts([['A','1',{style}],['B','2']])]});
   for(const good of ['FILLED','HOLLOW','CROSS'])assert.doesNotThrow(()=>styled(good));
   for(const bad of ['OPEN','filled','',1,null,true])assert.throws(()=>styled(bad),code('NUMBER_LINE_POINT_STYLE_INVALID'),JSON.stringify(bad));

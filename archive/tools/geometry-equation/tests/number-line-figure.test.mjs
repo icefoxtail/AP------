@@ -213,5 +213,7 @@ test('labels that do not fit are refused with their codes, never squeezed',async
   const identity=assetIdentity('crowd-fixture|1','SOLUTION_VISUAL','decisive-relation');
   const crowded={parameter:{name:'a',value:'1'},rows:[set(piece(P('1','0','OPEN'),P('1','1/10','OPEN')))]};
   const composed=await composeNumberLinePanel({plan:{capability:'number-line-v1',numberLine:crowded},model:solveNumberLineFigure(crowded),identity,typographyPolicy:{baseFontPx:20,displayScale:1,fontFloorCssPx:11}});
-  assert.equal(composed.status,'NUMBER_LINE_LABELS_TOO_CLOSE');
+  // N08: two ends 1/10 apart no longer stop the figure: the second end's number stands on a second line under, joined to its own dot by a leader (the independent observer checks it; see number-line-lanes.test.mjs)
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.match(composed.svg,/data-role="label-leader"/);
 });

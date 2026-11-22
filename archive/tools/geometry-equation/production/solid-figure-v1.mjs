@@ -4,6 +4,7 @@ import {pythonWorker} from './worker.mjs';
 import {typesetter} from './typography.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
+import {presentFields} from './composite-expand-fields.mjs';
 import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mjs';
 import {sphereCutModel,arcPoint,SPHERE_PLANES,AXES as CUT_AXES} from './sphere-parts.mjs';
 import {PALETTE,isPaletteName} from './palette.mjs';
@@ -483,7 +484,9 @@ export function countedEdges(solid){
 // A short word the author writes on the figure (labels:[{text,at}], axis:{label}): Korean syllables, letters, digits, spaces, parentheses and a middle dot, no TeX.
 const WORD_LABEL=/[가-힣·]/u;// a text with a Hangul syllable is a word, not TeX
 const AXIS_LETTER=/^[A-Za-z]$/;// the text of an axis label that is one letter: a math symbol (the axis l)
-const MAX_TEXT_LABELS=6,TEXT_LABEL=/^[가-힣A-Za-z0-9 ·()]{1,12}$/u;
+// A text label is plain text: up to 20 characters of Hangul, letters, digits and the signs of a measure (. , = + × √ and the middle dot); the room it needs is measured when it is placed (SOLID_LABELS_NO_ROOM), not guessed here.
+// (They were 12 characters of Hangul, letters, digits, space, middle dot and parentheses, six labels: a size chosen with the first figures, not a reading rule.)
+const MAX_TEXT_LABELS=8,TEXT_LABEL=/^[가-힣A-Za-z0-9 ·().,=+×√]{1,20}$/u;
 const textLabelOk=text=>typeof text==='string'&&TEXT_LABEL.test(text)&&text.trim()===text&&text.length>0;
 /** The axis of a rotation solid (axis:true | axis:{label?}): drawn as a dash-dot line, extended beyond both ends of the solid, optionally with a word beside it. */
 export const AXIS_EXTENSION=0.14;// of the solid's height, above the top and below the bottom
@@ -2227,6 +2230,11 @@ function solveNet(plan){
 }
 
 // --- layout and spec ----------------------------------------------------------------------------------------------------------------------------
+// SOLID_SCALE_BOOSTS: when the labels of a thin solid find no room at the usual size (SOLID_LABELS_NO_ROOM), the caller draws it larger (the largest scale and height are multiplied) and asks the size again: the first
+// attempt is always the size the figure has always had (see render-plan).
+export const SOLID_SCALE_BOOSTS=Object.freeze([1,1.4,1.9]);
+const scaleBoost=new WeakMap();
+export const setSolidScaleBoost=(model,boost)=>{if(!SOLID_SCALE_BOOSTS.includes(boost))throw Error('SOLID_SCALE_BOOST_INVALID');scaleBoost.set(model,boost);};
 const WIDTH=480,MARGIN_X=62,MARGIN_Y=50,SAFE=10,MAX_FIG_H=300,MAX_SCALE=70,SIDE_DIM_ROOM=64,DIAMETER_ROOM=40,DIAMETER_LINE_OFFSET=22;
 // A solid panel of a composite grid (composite-panels-v1 with two columns) is narrower: two of them plus the 8 unit gap stay at 776 SVG units (the narrowest plane canvas pair: a Korean caption row still fits 44 units at the measured base font),
 // the width the Archive solution column keeps its 11 CSS px label floor at. The composite sets it (plan.panelWidth); an author never writes it.
@@ -2259,7 +2267,8 @@ export function figureFrame(model){
   const tiers=model.mode==='SOLIDS'?outsideTiers(model):new Map(),tierRoom=side=>OUTSIDE_STEP*Math.max(0,...[...tiers].filter(([id])=>outsideSide(model.dims.find(d=>d.id===id))===side).map(([,t])=>t));
   const lineRoom=side=>{const ts=model.mode==='SOLIDS'?model.dims.filter(d=>d.type==='SEGMENT'&&d.line&&d.side===side).map(d=>d.line):[];return ts.length?SIDE_DIM_ROOM+8+OUTSIDE_STEP*(Math.max(...ts)-1):0;};
   const roomL=Math.max(model.mode==='SOLIDS'&&(model.dims.some(d=>d.side==='LEFT')||model.dims.some(d=>outsideSide(d)==='LEFT'))?SIDE_DIM_ROOM+tierRoom('LEFT'):0,lineRoom('LEFT')),roomR=Math.max(model.mode==='SOLIDS'&&(model.dims.some(d=>d.side==='RIGHT')||model.dims.some(d=>outsideSide(d)==='RIGHT'))?SIDE_DIM_ROOM+tierRoom('RIGHT'):0,lineRoom('RIGHT'));
-  const scale=r6(Math.min((W-2*MX-roomL-roomR)/bw,MAX_FIG_H/bh,MAX_SCALE));
+  const boost=scaleBoost.get(model)??1;
+  const scale=r6(Math.min((W-2*MX-roomL-roomR)/bw,MAX_FIG_H*boost/bh,MAX_SCALE*boost));
   // a diameter written outside (diameter with side TOP|BOTTOM) takes room above or below the solid for its line and its label
   const roomT=model.mode==='SOLIDS'&&model.dims.some(d=>d.diameter&&d.side==='TOP')?DIAMETER_ROOM:0,roomB=model.mode==='SOLIDS'&&model.dims.some(d=>d.diameter&&d.side==='BOTTOM')?DIAMETER_ROOM:0;
   const height=Math.ceil(bh*scale+2*MARGIN_Y+roomT+roomB);
@@ -3454,5 +3463,5 @@ export function expandSolidFigure(plan){
   if(plan.panelWidth!==undefined)bad('SOLID_PLAN_INVALID');
   // the author's solidCaption stays in the panel's plan: it is what lets a figure with nothing written on it stand (the panel caption carries the text)
   const {caption,accessibilityDescription,sourceConditions,newVisualInformation,solidCaption,sourceQuote,...figure}=plan;void solidCaption;
-  return {capability:'composite-panels-v1',chain:SOLID_CAPABILITY,panels:[{caption:cap??{text:model.mode==='NET'?'전개도':model.solids.length===0?'공간도형':'입체도형'},plan:cap!==undefined?{...figure,solidCaption:cap}:figure}],caption,...(accessibilityDescription!==undefined?{accessibilityDescription}:{}),sourceConditions,newVisualInformation,...(sourceQuote!==undefined?{sourceQuote}:{})};
+  return {capability:'composite-panels-v1',chain:SOLID_CAPABILITY,panels:[{caption:cap??{text:model.mode==='NET'?'전개도':model.solids.length===0?'공간도형':'입체도형'},plan:cap!==undefined?{...figure,solidCaption:cap}:figure}],caption,...(accessibilityDescription!==undefined?{accessibilityDescription}:{}),...presentFields({sourceConditions,newVisualInformation}),...(sourceQuote!==undefined?{sourceQuote}:{})};
 }

@@ -195,12 +195,21 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
     if(authored.capability===ell.FIGURE_CAPABILITY){
       // A standalone axis-aligned ellipse figure: the exact foci/vertices/chords derived once, composed, read back by its own observer, then the same Archive capture.
       stage='ellipse';
-      const model=await ell.solveEllipseFigure(authored),size=ell.ellipseFigureSize(model);
-      stage='measure';
-      const measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
-      if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-      stage='compose';
-      const composed=await ell.composeEllipseFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
+      const model=await ell.solveEllipseFigure(authored);
+      // No room for a label at the real font: the frame is widened (24, 48, 80, 120 px each side), measured and composed again. The first attempt is the frame the figure has always had.
+      let measured,composed;
+      for(const [attempt,extra] of ell.ELLIPSE_FRAME_STEPS.entries()){
+        ell.setEllipseFrameExtra(model,extra);
+        stage='measure';
+        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:ell.ellipseFigureSize(model),runId:`pilot-measure-${tag}${attempt?`-frame${attempt}`:''}`});
+        // a widened frame the display profile cannot hold (its font would pass the largest allowed) ends the attempts: the figure fails as it failed before, with the no-room refusal
+        if(measured.status!=='MEASURED'&&attempt>0){stage='compose';ell.setEllipseFrameExtra(model,0);break;}
+        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+        stage='compose';
+        composed=await ell.composeEllipseFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
+        if(composed.status!=='ELLIPSE_LABEL_NO_ROOM'||attempt===ell.ELLIPSE_FRAME_STEPS.length-1)break;
+        (row.fallback??=[]).push({from:clip(composed.detail),to:'ELLIPSE_FRAME_WIDEN',extra:ell.ELLIPSE_FRAME_STEPS[attempt+1]});
+      }
       if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
       stage='capture';
       const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
@@ -217,6 +226,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
       // A standalone number-line figure (number-line-figure-v1) is the one-panel composite it stands for.
       stage=authored.capability===chain.CHAIN_CAPABILITY||authored.capability===nlf.FIGURE_CAPABILITY||authored.capability===sol.SOLID_CAPABILITY?'chain':stage;
       let current=authored.capability===chain.CHAIN_CAPABILITY?chain.expandInequalityChain(authored):authored.capability===nlf.FIGURE_CAPABILITY?nlf.expandNumberLineFigure(authored):authored.capability===sol.SOLID_CAPABILITY?sol.expandSolidFigure(authored):authored,checked,framedPanels,panelModels,plan,measured,composed;stage='composite-panels';
+      const solidBoost=new Map();
       for(let attempt=0;attempt<3;attempt++){
       const watch=stopwatch();
       where.plan=current;
@@ -246,7 +256,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
           framedPanels.push({caption:panel.caption,plan:panel.plan});panelModels.push(solved);panelSizes.push(scf.statChartSize(solved));continue;
         }
         if(comp.isSolidPanel(panel.plan)){
-          const solved=sol.solveSolidFigure(panel.plan);
+          const solved=sol.solveSolidFigure(panel.plan);sol.setSolidScaleBoost(solved,solidBoost.get(panel.index)??1);
           framedPanels.push({caption:panel.caption,plan:panel.plan});panelModels.push(solved);panelSizes.push(sol.figurePanelSize(solved));continue;
         }
         if(comp.isNumberLinePanel(panel.plan)){
@@ -280,6 +290,11 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
         captionRow+=(composedHeight-height)/stackLayout.rows;
       }
       log.attempt({variant:attemptVariant(''),stage,ok:composed.status==='COMPOSED',code:errorCode(composed),detail:composed.detail??composed.status,fallback:row.fallback?.map(f=>f.to),watch});
+      // A solid whose labels found no room at the usual size is drawn larger (x1.4, then x1.9) and composed again; the first attempt is always the usual size.
+      if(composed.status==='COMPOSITE_PANEL_NOT_COMPOSED'&&composed.detail?.status==='SOLID_LABELS_NO_ROOM'&&attempt<2){
+        const at=composed.detail.panel,next=sol.SOLID_SCALE_BOOSTS[sol.SOLID_SCALE_BOOSTS.indexOf(solidBoost.get(at)??1)+1];
+        if(next!==undefined){solidBoost.set(at,next);(row.fallback??=[]).push({from:clip(composed.detail),to:'SOLID_SCALE_BOOST',panel:at,boost:next});continue;}
+      }
       const failed=composed.status==='COMPOSITE_PANEL_NOT_COMPOSED'&&composed.detail?.status==='LAYOUT_INVENTORY_INCOMPLETE'?composed.detail:null;
       if(!failed||attempt===2)break;
       // A plane panel has no graph band or y-squeeze fallback: its own observer reports the label it could not place, and the panel fails as written.

@@ -519,7 +519,7 @@ test('a curve name gets a leader that ends on its own curve; a changed name or a
 test('accessible conic plans bind unique labels, titles, and descriptions to the same geometry',async()=>{
   const mixed=mixPlan();
   const chord=chordPlan();
-  chord.segments[0].label='2';
+  chord.segments[0].label='\\frac{11}{2}';   // the true length of PF' (a number written on a segment is its length: ellipse_figure_observer reads it back)
   chord.points.find(point=>point.id==='P').label=false;
   const cases=[chord,{...mixed,conics:[{...mixed.conics[0],label:'x^2/a^2+y^2/b^2=1'},
     {...mixed.conics[1],label:'y^2=4x'}]}];

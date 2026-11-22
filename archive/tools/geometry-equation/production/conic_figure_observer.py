@@ -21,6 +21,7 @@ import xml.etree.ElementTree as ET
 
 import sympy as S
 
+from conic_label_value import line_label_matches, segment_label_mismatch
 from ellipse_figure_observer import (
     Refuse,NS,PIXEL_TOLERANCE,LABEL_DISTANCE,LIGHT_FILL,MEDIUM_FILL,POINT_ID,exact_scalar,
     _find,_attr_float,_line_coords,_box_of,_point_in_box,_box_distance,_point_segment_distance,
@@ -947,6 +948,9 @@ def audit(plan,svg):
             if not key or key in leaders_by_label: errors.append('MEASURE_LEADER_DUPLICATE_OR_UNOWNED')
             else: leaders_by_label[key]=element
     named_lines={raw['id'] for raw in raw_lines if raw.get('label') and raw.get('hidden') is not True}
+    # B04: a label that states a line (y=-2x+7, x=4) is the equation of its line (a name such as l_1 states nothing and is not checked)
+    for raw in raw_lines:
+        if raw.get('label') and raw.get('id') in lines and line_label_matches(raw['label'],lines[raw['id']]) is False: errors.append('CONIC_LINE_LABEL_VALUE_MISMATCH:%s'%raw['id'])
     named_curves={cid for cid,one in pars.items() if one.get('label')}
     allowed_leader_keys={'measure-'+sid for sid in required_leaders}|{'line-'+lid for lid in named_lines}|{'curve-'+cid for cid in named_curves}|{'point-'+pid for pid in coordinate_ids}
     for key in leaders_by_label:
@@ -1017,6 +1021,8 @@ def audit(plan,svg):
         if element is None: errors.append('MEASURE_LABEL_MISSING:%s'%sid);continue
         shown=element.get('data-tex') if element.get('data-tex') is not None else element.get('data-text')
         if shown!=raw['label']: errors.append('MEASURE_LABEL_TEXT_MISMATCH:%s'%sid)
+        # B04: a label that states a number is the length of its segment (a name or a word states nothing and is not checked)
+        if segment_label_mismatch(raw['label'],points[raw['from']],points[raw['to']]): errors.append('CONIC_SEGMENT_LABEL_VALUE_MISMATCH:%s'%sid)
         box=_box_of(element)
         if box is None: continue
         (ax,ay),(bx,by)=points[raw['from']],points[raw['to']]

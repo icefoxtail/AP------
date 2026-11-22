@@ -1399,9 +1399,9 @@ test('E28c: words on a figure: a vertex, the axis, a face that faces the viewer,
   const bad=(over,expected,solids=[unnamedCuboid()])=>assert.throws(()=>solveSolidFigure(figure({solids,...over})),code(expected),expected);
   bad({labels:[]},'SOLID_LABELS_INVALID');
   bad({labels:'앞면'},'SOLID_LABELS_INVALID');
-  bad({labels:Array.from({length:7},(_,k)=>({text:'가'+k,at:'#b0'}))},'SOLID_LABELS_INVALID');
+  bad({labels:Array.from({length:9},(_,k)=>({text:'가'+k,at:'#b0'}))},'SOLID_LABELS_INVALID');
   bad({labels:[{text:'앞면',at:'#b0',size:2}]},'SOLID_LABELS_INVALID');
-  for(const text of ['','앞면 ','$x$','가나다라마바사아자차카타파','a\\b',5])bad({labels:[{text,at:'#b0'}]},'SOLID_LABEL_TEXT_INVALID');
+  for(const text of ['','앞면 ','$x$','가나다라마바사아자차카타파하거너더러머버서','a\\b',5])bad({labels:[{text,at:'#b0'}]},'SOLID_LABEL_TEXT_INVALID');
   bad({labels:[{text:'앞',at:'Z'}]},'SOLID_LABEL_AT_UNKNOWN:Z');
   bad({labels:[{text:'앞',at:'#b9'}]},'SOLID_VREF_UNKNOWN');
   bad({labels:[{text:'앞',at:7}]},'SOLID_LABEL_AT_INVALID');
@@ -1556,7 +1556,7 @@ test('E28c: net edge labels write a length, a symbol or a word at an edge of a f
   bad({edgeLabels:[{face:'top',edge:'0'}]},'SOLID_EDGE_LABEL_INVALID');
   bad({edgeLabels:[{face:7,edge:0}]},'SOLID_EDGE_LABEL_INVALID');
   bad({edgeLabels:[{face:'top',edge:0,text:5}]},'SOLID_EDGE_LABEL_INVALID');
-  bad({edgeLabels:[{face:'top',edge:0,text:'가나다라마바사아자차카타파'}]},'SOLID_EDGE_LABEL_INVALID');
+  bad({edgeLabels:[{face:'top',edge:0,text:'가나다라마바사아자차카타파하거너더러머버서'}]},'SOLID_EDGE_LABEL_INVALID');
   bad({edgeLabels:[{face:'top',edge:0,text:'밑 변 $'}]},'SOLID_EDGE_LABEL_INVALID');
   bad({edgeLabels:[{face:'nope',edge:0}]},'SOLID_NET_FACE_UNKNOWN');
   bad({edgeLabels:[{face:'top',edge:0,text:'7'}]},'SOLID_DIM_VALUE_MISMATCH:e1');
@@ -2429,7 +2429,7 @@ test('E33: a length of a solid may be labelled with a Korean word (모선, 높�
   assert.equal(cubeComposed.staticAudit.status,'PASS',JSON.stringify(cubeComposed.staticAudit.errors));
   const bad=(label,expected)=>assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],dims:[{edge:'FG',label}]})),code(expected),expected);
   bad('밑변!','SOLID_DIM_LABEL_INVALID:d1');
-  bad('아주 긴 낱말을 열두 자 넘게 쓴다','SOLID_DIM_LABEL_INVALID:d1');
+  bad('아주 긴 낱말을 스무 자가 훨씬 넘도록 길게 길게 쓴다','SOLID_DIM_LABEL_INVALID:d1');
   bad('모선^2','SOLID_DIM_LABEL_INVALID:d1');
   assert.doesNotThrow(()=>solveSolidFigure(figure({solids:[cuboid()],dims:[{edge:'FG',label:'4'}]})).dims);// a number still has to be right
   assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],dims:[{edge:'FG',label:'7'}]})),code('SOLID_DIM_VALUE_MISMATCH'));
@@ -3370,4 +3370,13 @@ test('an orthogonal prism union composes with the source square prism and its x,
   assert.ok(hidden>=0&&hidden<visible);
   assert.match(panelSvg[1],/data-vis="hidden"[^>]*stroke="#a0a0a0"[^>]*stroke-dasharray="5 4"/);
   assert.doesNotMatch(composed.svg,/⑤|겹침|부피/);
+});
+
+test('A11: a text label may carry a measure with a root, a sign and a unit (up to 20 characters, 8 labels); other symbols are still refused',()=>{
+  const labelled=labels=>solveSolidFigure(figure({solids:[unnamedCuboid()],labels}));
+  const m=labelled([{text:'높이 2√3 cm',at:{face:'top'}},{text:'밑면 = 4.5',at:{face:'side0'}},{text:'P+Q',at:{edge:['#b1','#b2']}}]);
+  assert.deepEqual(m.labels.map(l=>l.text),['높이 2√3 cm','밑면 = 4.5','P+Q']);
+  assert.equal(labelled([{text:'가'.repeat(20),at:'#b0'}]).labels.length,1);
+  for(const text of ['가'.repeat(21),'a^2','a_1','a\b','a<b','a$b','a"b'])assert.throws(()=>labelled([{text,at:'#b0'}]),code('SOLID_LABEL_TEXT_INVALID'),text);
+  assert.throws(()=>solveSolidFigure(figure({solids:[unnamedCuboid()],labels:Array.from({length:9},(_,k)=>({text:'가'+k,at:'#b0'}))})),code('SOLID_LABELS_INVALID'));
 });
