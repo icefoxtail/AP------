@@ -1,0 +1,74 @@
+{
+  "qid": 6,
+  "itemFingerprint": "189dc3ee86af9c49",
+  "solveSteps": [
+    "$z_1=a+bi$ ($a, b$는 실수)라 하면 $\\overline{z_1}=a-bi$이다.",
+    "① $z_1+\\overline{z_1}=2a$이므로 항상 실수이다.",
+    "(참) ② $\\overline{z_1}=-z_1$이면 $a-bi=-a-bi \\implies 2a=0 \\implies a=0$이므로 $z_1=bi$이다.",
+    "이때 $b=0$, 즉 $z_1=0$이면 $z_1$은 실수이지 순허수가 아니다.",
+    "(거짓) ③ $z_1\\overline{z_1}=a^2+b^2\\ge 0$이므로 항상 $0$ 이상의 실수이다.",
+    "(참) ④, ⑤ 켤레복소수의 성질에 의하여 모두 참이다.",
+    "따라서 옳지 않은 것은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "두 복소수 $z_1, z_2$와 그 켤레복소수 $\\ov",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "문항6번(토큰:bi) 대상 문항6의 복소수의 계산 단원 RPM H1-RPM-023 분류 유형에 해당한다",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+  "typeReason": "문항6번(토큰:bi) 대상 문항6의 복소수의 계산 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항6번(토큰:bi) 대상 문항6의 복소수의 계산 단원 기본 개념과 풀이 과정을 적용하는 난이도 2 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "두 복소수 $z_1, z_2$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "켤레복소수",
+        "src": "stem",
+        "quote": "그 켤레복소수 $\\overline{z_1}, \\overline{z_2}$에 대하여 다음 중 옳지 않은 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "반례",
+        "src": "solution",
+        "quote": "이때 $b=0$, 즉 $z_1=0$이면 $z_1$은 실수이지 순허수가 아니다.",
+        "evidenceType": "IMPLIED",
+        "justification": "z1=0이라는 구체적 반례를 들어 명제가 거짓임을 보임"
+      }
+    ],
+    "condition": [
+      {
+        "term": "순허수",
+        "src": "choices",
+        "quote": "$z_1$은 순허수이다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "문항6번(토큰:bi) 발문과 해설의 문항6 풀이 단계를 점검하여 최종 정답 ②를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

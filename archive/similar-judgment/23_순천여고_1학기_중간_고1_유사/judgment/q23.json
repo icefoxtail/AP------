@@ -1,0 +1,88 @@
+{
+  "qid": 23,
+  "itemFingerprint": "af9409d4d422114c",
+  "solveSteps": [
+    "(1) 이차함수 $y=x^2-16$의 그래프가 $x$축과 만나는 점의 $x$좌표는 $x^2-16=0$에서 $x=-4$ 또는 $x=4$이다.",
+    "점 $C(t, t^2-16)$이 제$4$사분면 위에 있으므로 $0 < t < 4$이다.",
+    "그래프가 $y$축에 대하여 대칭이므로 $\\overline{BC}=2t$이고, 세로의 길이는 $\\overline{CD}=0-(t^2-16)=16-t^2$이다.",
+    "따라서 직사각형 $ABCD$의 둘레의 길이 $L(t)$는 $L(t)=2(2t+16-t^2)=-2t^2+4t+32$ ($0 < t < 4$) (2) $L(t)=-2t^2+4t+32=-2(t-1)^2+34$ $0 < t < 4$에서 이차함수 $L(t)$는 위로 볼록하고 꼭짓점의 좌표 $t=1$이 범위에 속하므로 $t=1$일 때 최댓값 $34$를 갖는다."
+  ],
+  "solvedAnswer": "(1) $L(t)=-2t^2+4t+32$ ($0 < t < 4$), (2) $34$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "그림과 같이 이차함수 $y=x^2-16$의 그래프와 $",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "문항23번(토큰:16) 대상 문항23의 이차함수의 활용 단원 RPM H1-RPM-037 분류 유형에 해당한다",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+  "typeReason": "문항23번(토큰:16) 대상 문항23의 이차함수의 활용 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항23번(토큰:16) 대상 문항23의 이차함수의 활용 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=x^2-16$"
+      },
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 $ABCD$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "둘레",
+        "src": "stem",
+        "quote": "둘레의 길이 $L(t)$를"
+      },
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "둘레의 길이 $L(t)$의 최댓값을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "대칭성",
+        "src": "solution",
+        "quote": "$y$축에 대하여 대칭이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "포물선 y=x^2-16의 y축 대칭성을 이용해 가로 길이를 2t로 구함"
+      },
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "-2(t-1)^2+34",
+        "evidenceType": "IMPLIED",
+        "justification": "이차함수를 표준형으로 변형해 꼭짓점에서 최댓값을 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "사분면",
+        "src": "stem",
+        "quote": "제$4$사분면 위의 점 $C$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "문항23번(토큰:16) 발문과 해설의 문항23 풀이 단계를 점검하여 최종 정답 (1) $L(t)=-2t^2+4t+32$ ($0 < t < 4$), (2) $34$를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

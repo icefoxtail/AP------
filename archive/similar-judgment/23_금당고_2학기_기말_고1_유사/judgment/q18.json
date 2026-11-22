@@ -1,0 +1,56 @@
+{
+  "qid": 18,
+  "itemFingerprint": "a7e5074ef5256a79",
+  "solveSteps": [
+    "그림에서 $f(x) = \\begin{cases} 2x & (0 \\le x \\le 2) \\ 4 & (2 < x \\le 4) \\end{cases}$이고, $g(u)$는 $(0,0), (1,3), (2,1), (4,3)$을 차례로 선분으로 이은 함수이다.",
+    "먼저 $g(u) = 2$를 만족하는 $u$를 각 구간에서 구하면 • $0 \\le u \\le 1$: $3u = 2 \\implies u = \\dfrac{2}{3}$ • $1 < u \\le 2$: $-2u + 5 = 2 \\implies u = \\dfrac{3}{2}$ • $2 < u \\le 4$: $u - 1 = 2 \\implies u = 3$ 이제 $f(x) = \\dfrac{2}{3}, \\dfrac{3}{2}, 3$을 만족하는 $x$를 구하면 $2 < x \\le 4$에서는 $f(x) = 4$이므로 해가 없고, $0 \\le x \\le 2$에서 $2x = u$이므로 $x = \\dfrac{1}{3},; \\dfrac{3}{4},; \\dfrac{3}{2}$ $\\therefore \\dfrac{1}{3} + \\dfrac{3}{4} + \\dfrac{3}{2} = \\dfrac{4 + 9 + 18}{12} = \\dfrac{31}{12}$."
+  ],
+  "solvedAnswer": "$\\dfrac{31}{12}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-03",
+  "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+  "unitEvidence": "<단답형 1> $0 \\le x \\le 4$에서 정의된 ",
+  "rpmRecordId": "H1-RPM-102",
+  "rpmReason": "문항18번(토큰:cases) 대상 문항18의 합성함수 단원 RPM H1-RPM-102 분류 유형에 해당한다",
+  "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+  "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+  "typeReason": "문항18번(토큰:cases) 대상 문항18의 합성함수 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항18번(토큰:cases) 대상 문항18의 합성함수 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "모든 $x$값들의 합을 구하시오. [4.0점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "그림에서 $f(x) = \\begin{cases",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항18번(토큰:cases) 발문과 해설의 문항18 풀이 단계를 점검하여 최종 정답 $\\dfrac{31}{12}$를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

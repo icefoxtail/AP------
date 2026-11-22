@@ -1,0 +1,60 @@
+{
+  "qid": 7,
+  "itemFingerprint": "26999fbb1a30fabe",
+  "solveSteps": [
+    "$y = \\dfrac{3(x - 2) + k + 4}{x - 2} = 3 + \\dfrac{k + 4}{x - 2}$ 점근선이 $x = 2$, $y = 3$이므로 • $k + 4 = 0$이면 상수함수 $y = 3$이 되어 제3, 4사분면을 지나지 않는다. (3.9)",
+    "• $k + 4 < 0$이면 $x < 2$에서 $y > 3$이므로 제3, 4사분면을 지나지 않는다.",
+    "• $k + 4 > 0$이면 $x > 2$에서 제1사분면을 지나고, $x < 2$에서 $x \\to 2^-$일 때 $y \\to -\\infty$이므로 제4사분면을 지난다.",
+    "또한 $x < 0$에서 $y > 0$인 점은 $x \\to -\\infty$일 때 $y \\to 3$이므로 제2사분면을 항상 지난다.",
+    "따라서 제3사분면을 지나려면 $y$절편이 양수여야 한다.",
+    "$x = 0$일 때 $y = \\dfrac{k - 2}{-2} > 0$은 아니며(잠깐: $x < 0$에서 $y < 0$이 되려면 $x$-절편이 음수여야 함!), 즉 $3x - 2 + k = 0$의 근 $x = \\dfrac{2 - k}{3} < 0$이어야 하므로 $2 - k < 0 \\implies k > 2$ 따라서 구하는 정수 $k$의 최솟값은 $3$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-04",
+  "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+  "unitEvidence": "함수 $y = \\dfrac{3x - 2 + k}{x -",
+  "rpmRecordId": "H1-RPM-108",
+  "rpmReason": "문항7번(토큰:3.9) 대상 문항7의 유리함수의 그래프 단원 RPM H1-RPM-108 분류 유형에 해당한다",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+  "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+  "typeReason": "문항7번(토큰:3.9) 대상 문항7의 유리함수의 그래프 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항7번(토큰:3.9) 대상 문항7의 유리함수의 그래프 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "정수 $k$의 최솟값을 구하면? [3.9점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$y = \\dfrac{3(x - 2) + k",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항7번(토큰:3.9) 발문과 해설의 문항7 풀이 단계를 점검하여 최종 정답 ①를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

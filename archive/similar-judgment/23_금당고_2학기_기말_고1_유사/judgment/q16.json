@@ -1,0 +1,65 @@
+{
+  "qid": 16,
+  "itemFingerprint": "78880b1a7d272801",
+  "solveSteps": [
+    "$x \\ge p$인 무리함수 부분은 $t \\ge 0$인 모든 $t$에 대하여 직선 $y = t$와 교점을 정확히 $1$개 갖는다. (cases)",
+    "따라서 $g(t) = 2$가 되려면 $x < p$인 부분의 그래프와 $y = t$가 정확히 $1$개의 교점을 가져야 한다.",
+    "(1) $p = 0$이면 $x < 0$에서 $u = \\dfrac{1}{x} + q$의 치역은 $(-\\infty, q)$이다.",
+    "이때 $|u| = t$의 해가 정확히 $1$개인 $t > 0$의 집합은 $q > 0$이면 $[q, \\infty)$, $q \\le 0$이면 $(-q, \\infty)$가 되어 조건을 만족할 수 없다.",
+    "(2) $p > 0$이면 $x < 0$에서 $u < q$, $0 < x < p$에서 $u > q + \\dfrac{1}{p}$이므로, $u$가 가질 수 없는 구간은 $\\left[q, q + \\dfrac{1}{p}\\right]$이다.",
+    "$|u| = t$의 해가 오직 $0 < t \\le 4$에서만 $1$개가 되려면 빠진 구간의 한 끝이 $0$이고 다른 끝과의 거리(또는 대칭)가 $4$여야 한다.",
+    "• $q = 0$일 때: $u < 0$ 또는 $u > \\dfrac{1}{p}$이므로 $0 < t \\le \\dfrac{1}{p}$에서 $|u| = t$의 해가 $1$개다.",
+    "따라서 $\\dfrac{1}{p} = 4 \\implies p = \\dfrac{1}{4}$, $p - q = \\dfrac{1}{4}$.",
+    "• $q + \\dfrac{1}{p} = 0$일 때: $u < -\\dfrac{1}{p}$ 또는 $u > 0$이므로 $0 < t \\le \\dfrac{1}{p}$에서 $|u| = t$의 해가 $1$개다.",
+    "따라서 $p = \\dfrac{1}{4}$, $q = -4$, $p - q = \\dfrac{17}{4}$.",
+    "$\\therefore \\dfrac{1}{4} + \\dfrac{17}{4} = \\dfrac{18}{4} = \\dfrac{9}{2}$."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-05",
+  "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+  "unitEvidence": "실수 $p, q$ $(p \\ge 0)$에 대하여 함수 ",
+  "rpmRecordId": "H1-RPM-115",
+  "rpmReason": "문항16번(토큰:cases) 대상 문항16의 무리함수의 그래프 단원 RPM H1-RPM-115 분류 유형에 해당한다",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+  "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+  "typeReason": "문항16번(토큰:cases) 대상 문항16의 무리함수의 그래프 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 5,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항16번(토큰:cases) 대상 문항16의 무리함수의 그래프 단원 기본 개념과 풀이 과정을 적용하는 난이도 5 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "값으로 가능한 모든 수의 합은? [4.6점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$x \\ge p$인 무리함수 부분은 $t \\g",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항16번(토큰:cases) 발문과 해설의 문항16 풀이 단계를 점검하여 최종 정답 ①를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

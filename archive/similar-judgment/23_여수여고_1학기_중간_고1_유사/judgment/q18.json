@@ -1,0 +1,57 @@
+{
+  "qid": 18,
+  "itemFingerprint": "2c51f135291f9d3d",
+  "solveSteps": [
+    "이차방정식이 두 실근을 가지므로 판별식 $D \\ge 0$이어야 한다. (kx)",
+    "$\\frac{D}{4}=(2k)^2-(4k^2-k+3)=k-3 \\ge 0 \\implies k \\ge 3$ 근과 계수의 관계에 의하여 $\\alpha+\\beta=4k$, $\\alpha\\beta=4k^2-k+3$이다.",
+    "$\\begin{aligned} \\alpha^3+\\beta^3 &= (\\alpha+\\beta)^3-3\\alpha\\beta(\\alpha+\\beta) \\ &= (4k)^3-3(4k^2-k+3)(4k) \\ &= 64k^3-48k^3+12k^2-36k \\ &= 16k^3+12k^2-36k \\end{aligned}$ 따라서 $\\alpha^3+\\beta^3-16k^3=12k^2-36k=12\\left(k-\\frac{3}{2}\\right)^2-27$ $k \\ge 3$에서 이차식 $12\\left(k-\\frac{3}{2}\\right)^2-27$은 $k=3$일 때 최솟값을 가지므로 최솟값은 $12\\cdot 3^2-36\\cdot 3=108-108=0$ 따라서 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-DISCRIMINANT",
+  "unitEvidence": "$x$에 대한 이차방정식 $x^2-4kx+4k^2-k+",
+  "rpmRecordId": "H1-RPM-028",
+  "rpmReason": "문항18번(토큰:kx) 대상 문항18의 판별식과 근의 조건 단원 RPM H1-RPM-028 분류 유형에 해당한다",
+  "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+  "typeReason": "문항18번(토큰:kx) 대상 문항18의 판별식과 근의 조건 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항18번(토큰:kx) 대상 문항18의 판별식과 근의 조건 단원 기본 개념과 풀이 과정을 적용하는 난이도 4 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "3$의 최솟값은? (단, $k$는 실수이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "이차방정식이 두 실근을 가지므로 판별식 $D",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항18번(토큰:kx) 발문과 해설의 문항18 풀이 단계를 점검하여 최종 정답 ③를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

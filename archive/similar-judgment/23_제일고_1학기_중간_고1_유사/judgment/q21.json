@@ -1,0 +1,59 @@
+{
+  "qid": 21,
+  "itemFingerprint": "a928959275be0be1",
+  "solveSteps": [
+    "직선 $l$의 기울기는 $\\frac{3}{4}$, 직선 $m$의 기울기는 $-\\frac{a}{3}$이다.",
+    "두 직선이 서로 수직이므로 $\\frac{3}{4}\\left(-\\frac{a}{3}\\right)=-1 \\implies a=4$ 따라서 $m:4x+3y-12=0$이다.",
+    "두 직선 $l, m$과 $x$축의 교점을 각각 $A, B$, 두 직선 $l, m$의 교점을 $C$라 하자.",
+    "$y=0$을 대입하면 $A(-4, 0)$, $B(3, 0)$이고, $3x-4y=-12$, $4x+3y=12$를 연립하면 $C\\left(\\frac{12}{25}, \\frac{84}{25}\\right)$이다.",
+    "꼭짓점 $C$를 지나고 $\\triangle ABC$의 넓이를 이등분하는 직선은 변 $AB$의 중점 $M$을 지나므로 $M\\left(\\frac{-4+3}{2}, 0\\right)=M\\left(-\\frac{1}{2}, 0\\right)$ 두 점 $M\\left(-\\frac{1}{2}, 0\\right)$, $C\\left(\\frac{12}{25}, \\frac{84}{25}\\right)$를 지나는 직선의 기울기는 $\\frac{\\frac{84}{25}-0}{\\frac{12}{25}-\\left(-\\frac{1}{2}\\right)}=\\frac{\\frac{84}{25}}{\\frac{49}{50}}=\\frac{168}{49}=\\frac{24}{7}$ 따라서 구하는 직선의 방정식은 $y=\\frac{24}{7}\\left(x+\\frac{1}{2}\\right)$, 즉 $24x-7y+12=0$이다."
+  ],
+  "solvedAnswer": "$24x-7y+12=0$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-10",
+  "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+  "unitEvidence": "두 직선 $l:3x-4y+12=0$, $m:ax+3y-",
+  "rpmRecordId": "H1-RPM-061",
+  "rpmReason": "문항21번(토큰:12) 대상 문항21의 두 직선의 평행과 수직 단원 RPM H1-RPM-061 분류 유형에 해당한다",
+  "problemTypeKey": "PT_LINE_RELATION",
+  "templateKey": "TPL_RELATION_PERPENDICULAR_PARAMETER",
+  "typeReason": "문항21번(토큰:12) 대상 문항21의 두 직선의 평행과 수직 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 5,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항21번(토큰:12) 대상 문항21의 두 직선의 평행과 수직 단원 기본 개념과 풀이 과정을 적용하는 난이도 5 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "방정식을 구하는 과정을 서술하시오. [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "직선 $l$의 기울기는 $\\frac{3}{4}",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항21번(토큰:12) 발문과 해설의 문항21 풀이 단계를 점검하여 최종 정답 $24x-7y+12=0$를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

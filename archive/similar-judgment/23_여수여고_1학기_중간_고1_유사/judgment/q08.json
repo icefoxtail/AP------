@@ -1,0 +1,56 @@
+{
+  "qid": 8,
+  "itemFingerprint": "7a0915ddc5c07f23",
+  "solveSteps": [
+    "$P(3-x)$를 $x-3$으로 나눈 나머지가 $4$이므로 나머지정리에 의하여 $x=3$을 대입하면 $P(3-3)=P(0)=4$ $P(x)$가 최고차항의 계수가 $1$인 삼차식이고 $P(x)-x^2$이 $(x-1)(x+2)$로 나누어떨어지므로, 상수 $c$에 대하여 $P(x)-x^2=(x-1)(x+2)(x+c)$ 로 놓을 수 있다. (13)",
+    "여기에 $x=0$을 대입하면 $P(0)-0=(-1)(2)c=4 \\implies -2c=4 \\implies c=-2$ 따라서 $P(x)=(x-1)(x+2)(x-2)+x^2$이므로 $P(3)=(3-1)(3+2)(3-2)+3^2=2\\cdot 5\\cdot 1+9=19$ 그러므로 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "unitEvidence": "최고차항의 계수가 $1$인 삼차식 $P(x)$에 대하여",
+  "rpmRecordId": "H1-RPM-009",
+  "rpmReason": "문항8번(토큰:13) 대상 문항8의 나머지정리와 인수정리 단원 RPM H1-RPM-009 분류 유형에 해당한다",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+  "typeReason": "문항8번(토큰:13) 대상 문항8의 나머지정리와 인수정리 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항8번(토큰:13) 대상 문항8의 나머지정리와 인수정리 단원 기본 개념과 풀이 과정을 적용하는 난이도 4 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "로 나누어떨어진다. 이때 $P(3)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$P(3-x)$를 $x-3$으로 나눈 나머지가",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항8번(토큰:13) 발문과 해설의 문항8 풀이 단계를 점검하여 최종 정답 ④를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

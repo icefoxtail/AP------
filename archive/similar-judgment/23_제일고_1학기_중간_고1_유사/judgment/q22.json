@@ -1,0 +1,62 @@
+{
+  "qid": 22,
+  "itemFingerprint": "4a7e8648cf7bf642",
+  "solveSteps": [
+    "점 $D$가 선분 $AB$를 $3:2$로 외분하므로 $D=3B-2A \\implies B=\\frac{D+2A}{3}$이고, 점 $E$가 선분 $AC$를 $3:2$로 외분하므로 $E=3C-2A \\implies C=\\frac{E+2A}{3}$이다.",
+    "$\\overline{AB}=\\overline{AC}$이므로 $\\overline{AD}=\\overline{AE}$가 되어 점 $A$는 선분 $DE$의 수직이등분선 위에 있다.",
+    "$D(1, 5)$, $E(5, 1)$의 중점을 $H$라 하면 $H(3, 3)$이고, 직선 $DE$의 기울기가 $\\frac{1-5}{5-1}=-1$이므로 수직이등분선의 방정식은 $y-3=1(x-3)$, 즉 $y=x$이다.",
+    "한편 변 $BC$의 중점을 $M$이라 하면 무게중심의 성질 $\\overline{AG}:\\overline{GM}=2:1$에서 $\\overline{AM}=\\frac{3}{2}\\overline{AG}=\\sqrt{2}$이다.",
+    "또한 $M=\\frac{B+C}{2}=\\frac{4A+D+E}{6}=\\frac{2A+H}{3}$이므로 $M-A=\\frac{H-A}{3}$이다.",
+    "따라서 $\\overline{AH}=3\\overline{AM}=3\\sqrt{2}$이다.",
+    "점 $A$가 직선 $y=x$ 위에 있으므로 $A(t, t)$ ($t > 0$)라 하면 $\\overline{AH}=\\sqrt{(t-3)^2+(t-3)^2}=3\\sqrt{2} \\implies 2(t-3)^2=18 \\implies (t-3)^2=9$ $t=6$ 또는 $t=0$인데, 점 $A$는 제$1$사분면 위의 점이므로 $t=6$이다.",
+    "따라서 구하는 점 $A$의 좌표는 $(6, 6)$이다."
+  ],
+  "solvedAnswer": "$(6, 6)$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-09",
+  "subUnitKey": "H15-SA-09-TRIANGLE_CENTROID_AREA",
+  "unitEvidence": "$\\overline{AB}=\\overline{AC}$인",
+  "rpmRecordId": "H1-RPM-057",
+  "rpmReason": "문항22번(토큰:AB) 대상 문항22의 삼각형의 좌표와 무게중심 단원 RPM H1-RPM-057 분류 유형에 해당한다",
+  "problemTypeKey": "PT_COORD_CENTROID",
+  "templateKey": "TPL_CENTROID_APPLICATION",
+  "typeReason": "문항22번(토큰:AB) 대상 문항22의 삼각형의 좌표와 무게중심 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 5,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항22번(토큰:AB) 대상 문항22의 삼각형의 좌표와 무게중심 단원 기본 개념과 풀이 과정을 적용하는 난이도 5 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "A$는 제$1$사분면 위의 점이다.) [6점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "점 $D$가 선분 $AB$를 $3:2$로 외분",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항22번(토큰:AB) 발문과 해설의 문항22 풀이 단계를 점검하여 최종 정답 $(6, 6)$를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

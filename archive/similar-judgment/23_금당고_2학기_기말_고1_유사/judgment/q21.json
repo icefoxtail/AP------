@@ -1,0 +1,63 @@
+{
+  "qid": 21,
+  "itemFingerprint": "9157124f557044cd",
+  "solveSteps": [
+    "조건 (나)에서 $f(5) \\in {2, 3, 5, 7}$이므로 좌변 $3f(5) \\in {6, 9, 15, 21}$이다.",
+    "우변에서 $g(3) \\in {2, 3, 5, 7}$, $h(2) + 3 \\in {5, 6, 8, 10}$이므로 두 값의 곱이 ${6, 9, 15, 21}$에 속하는 경우는 $3 \\times 5 = 15$뿐이다.",
+    "따라서 $f(5) = 5$, $g(3) = 3$, $h(2) = 2$가 확정된다.",
+    "조건 (가)에서 $g(2) - f(2) = 3$을 만족하는 $X$의 원소 쌍은 $(2, 5)$와 $(3, 6)$이 아닌 $(2, 5)$뿐($f(5) = 5$이므로 $f(2) = 5$는 불가)이므로 $f(2) = 2$, $g(2) = 5$이다.",
+    "조건 (다)에서 $f(h(3)) + g(h(3)) = 10$을 만족하는 두 함수값의 순서쌍은 $(3, 7)$, $(7, 3)$, $(5, 5)$ 중 하나이다.",
+    "$f$의 남은 치역은 ${3, 7}$, $g$의 남은 치역은 ${2, 7}$이므로 가능한 경우는 $f(h(3)) = 3$, $g(h(3)) = 7$뿐이다.",
+    "$h(2) = 2$이므로 $h(3) \\ne 2$이고, $f(5) = 5 \\ne 3$, $g(3) = 3 \\ne 7$이므로 $h(3) = 7$이 확정된다.",
+    "따라서 $f(7) = 3$, $g(7) = 7$이고, 일대일대응에 의해 남은 $f(3) = 7$, $g(5) = 2$이다.",
+    "$\\therefore (h \\circ f)(7) + (h \\circ g)(5) = h(f(7)) + h(g(5)) = h(3) + h(2) = 7 + 2 = 9$."
+  ],
+  "solvedAnswer": "$9$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-03",
+  "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+  "unitEvidence": "<서술형 2> 집합 $X = {2, 3, 5, 7}$에",
+  "rpmRecordId": "H1-RPM-100",
+  "rpmReason": "문항21번(토큰:10) 대상 문항21의 함수의 뜻과 대응 단원 RPM H1-RPM-100 분류 유형에 해당한다",
+  "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+  "templateKey": "TPL_DOMAIN_CODOMAIN_RANGE_CONDITION",
+  "typeReason": "문항21번(토큰:10) 대상 문항21의 함수의 뜻과 대응 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항21번(토큰:10) 대상 문항21의 함수의 뜻과 대응 단원 기본 개념과 풀이 과정을 적용하는 난이도 4 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "3) + (g \\circ h)(3) = 10$"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "조건 (나)에서 $f(5) \\in {2, 3,",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항21번(토큰:10) 발문과 해설의 문항21 풀이 단계를 점검하여 최종 정답 $9$를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

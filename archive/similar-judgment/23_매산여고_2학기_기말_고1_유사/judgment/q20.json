@@ -1,0 +1,58 @@
+{
+  "qid": 20,
+  "itemFingerprint": "92c2f4368a64e71b",
+  "solveSteps": [
+    "조건 (가)는 $f(1), f(2), f(3), f(4)$ 중에서 $0$이 아닌 함숫값이 많아야 $1$개뿐이라는 뜻이다.",
+    "(1) $f(1) = f(2) = f(3) = f(4) = 0$인 경우: 조건 (나)를 만족하려면 $f(0) \\in {1, 2, 3, 4}$여야 하므로 $4$가지.",
+    "(2) $f(1), f(2), f(3), f(4)$ 중 정확히 $1$개만 $0$이 아닌 경우: $0$이 아닌 원소의 위치 선택 $4$가지, 그 함숫값($1,2,3,4$) $4$가지, $f(0)$의 값($0,1,2,3,4$) $5$가지이므로 $4 \\times 4 \\times 5 = 80$가지.",
+    "$\\therefore 4 + 80 = 84$."
+  ],
+  "solvedAnswer": "$84$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-01",
+  "subUnitKey": "H15-SB-01-SET_COUNT",
+  "unitEvidence": "[단답형 2] 집합 $X = {0, 1, 2, 3, 4",
+  "rpmRecordId": "H1-RPM-081",
+  "rpmReason": "문항20번(토큰:80) 대상 문항20의 집합의 원소의 개수 단원 RPM H1-RPM-081 분류 유형에 해당한다",
+  "problemTypeKey": "PT_SET_CARDINALITY",
+  "templateKey": "TPL_SET_CARDINALITY_DIRECT",
+  "typeReason": "문항20번(토큰:80) 대상 문항20의 집합의 원소의 개수 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항20번(토큰:80) 대상 문항20의 집합의 원소의 개수 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "f$의 치역의 원소의 개수는 $2$ 이상이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "조건 (가)는 $f(1), f(2), f(3)",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항20번(토큰:80) 발문과 해설의 문항20 풀이 단계를 점검하여 최종 정답 $84$를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

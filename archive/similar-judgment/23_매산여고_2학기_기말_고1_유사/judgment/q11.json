@@ -1,0 +1,58 @@
+{
+  "qid": 11,
+  "itemFingerprint": "dc2e9c288bcce5a0",
+  "solveSteps": [
+    "ㄱ. (400)",
+    "$x + y = 4$인 자연수 순서쌍은 $(1,3),(2,2),(3,1)$의 $3$개, $x + y = 5$는 $(1,4),(2,3),(3,2),(4,1)$의 $4$개이므로 $P = 3 + 4 = 7$ ㄴ.",
+    "백의 자리 숫자는 $4$ 또는 $5$ ($2$가지)이고, 십의 자리와 일의 자리는 남은 $5$개 중 $2$개를 나열하므로 $Q = 2 \\times {}_5P_2 = 2 \\times 20 = 40$ ㄷ.",
+    "$R = {}_6C_2 = \\dfrac{6 \\times 5}{2} = 15$ $\\therefore P + Q + R = 7 + 40 + 15 = 62$."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-08",
+  "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
+  "unitEvidence": "다음 보기에서 $P + Q + R$의 값을 구하면? [",
+  "rpmRecordId": "H1-RPM-128",
+  "rpmReason": "문항11번(토큰:400) 대상 문항11의 조합 단원 RPM H1-RPM-128 분류 유형에 해당한다",
+  "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+  "templateKey": "TPL_H1_BINOMIAL_PARAMETER_RELATION",
+  "typeReason": "문항11번(토큰:400) 대상 문항11의 조합 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항11번(토큰:400) 대상 문항11의 조합 단원 기본 개념과 풀이 과정을 적용하는 난이도 2 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "2$잔을 택하는 모든 경우의 수는 $R$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "ㄱ. $x + y = 4$인 자연수 순서쌍은",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항11번(토큰:400) 발문과 해설의 문항11 풀이 단계를 점검하여 최종 정답 ①를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "qid": 9,
+  "itemFingerprint": "c640bb08863621c6",
+  "solveSteps": [
+    "$0 \\le x \\le 7$에서 위쪽 경계는 $f(x) = \\sqrt{x + 2} > 0$, 아래쪽 경계는 $g(x) = -\\dfrac{3x}{x + 2} \\le 0$이다. (30)",
+    "정수 $x = 0, 1, \\ldots, 7$마다 $g(x) \\le y \\le f(x)$를 만족하는 정수 $y$의 개수를 세면 • $x = 0$: $0 \\le y \\le \\sqrt{2} \\implies y = 0, 1$ ($2$개) • $x = 1$: $-1 \\le y \\le \\sqrt{3} \\implies y = -1, 0, 1$ ($3$개) • $x = 2$: $-1.5 \\le y \\le 2 \\implies y = -1, 0, 1, 2$ ($4$개) • $x = 3$: $-1.8 \\le y \\le \\sqrt{5} \\implies y = -1, 0, 1, 2$ ($4$개) • $x = 4$: $-2 \\le y \\le \\sqrt{6} \\implies y = -2, -1, 0, 1, 2$ ($5$개) • $x = 5$: $-\\dfrac{15}{7} \\le y \\le \\sqrt{7} \\implies y = -2, -1, 0, 1, 2$ ($5$개) • $x = 6$: $-2.25 \\le y \\le \\sqrt{8} \\implies y = -2, -1, 0, 1, 2$ ($5$개) • $x = 7$: $-\\dfrac{7}{3} \\le y \\le 3 \\implies y = -2, -1, 0, 1, 2, 3$ ($6$개) $\\therefore 2 + 3 + 4 + 4 + 5 + 5 + 5 + 6 = 34$."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-05",
+  "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+  "unitEvidence": "두 함수 $f(x) = \\sqrt{x + 2}$, $g",
+  "rpmRecordId": "H1-RPM-115",
+  "rpmReason": "문항9번(토큰:30) 대상 문항9의 무리함수의 그래프 단원 RPM H1-RPM-115 분류 유형에 해당한다",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+  "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+  "typeReason": "문항9번(토큰:30) 대상 문항9의 무리함수의 그래프 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항9번(토큰:30) 대상 문항9의 무리함수의 그래프 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "모두 정수인 점의 개수를 구하면? [4.2점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$0 \\le x \\le 7$에서 위쪽 경계는",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항9번(토큰:30) 발문과 해설의 문항9 풀이 단계를 점검하여 최종 정답 ⑤를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

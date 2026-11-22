@@ -1,0 +1,69 @@
+{
+  "qid": 5,
+  "itemFingerprint": "c1f8e125abbacd98",
+  "solveSteps": [
+    "삼차방정식의 계수가 모두 유리수이고 한 근이 $\\sqrt{5}$이므로 켤레근 $-\\sqrt{5}$도 근이다. (ax)",
+    "나머지 한 근을 $\\gamma$라 하면 삼차방정식의 근과 계수의 관계에 의하여 세 근의 곱은 $\\sqrt{5}\\cdot(-\\sqrt{5})\\cdot\\gamma=5 \\implies -5\\gamma=5 \\implies \\gamma=-1$ 세 근이 $\\sqrt{5}, -\\sqrt{5}, -1$이므로 $-a=\\sqrt{5}+(-\\sqrt{5})+(-1)=-1 \\implies a=1$ $b=\\sqrt{5}(-\\sqrt{5})+(-\\sqrt{5})(-1)+(-1)\\sqrt{5}=-5$ 따라서 $a+b=1+(-5)=-4$이다.",
+    "그러므로 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_ROOT",
+  "unitEvidence": "삼차방정식 $x^3+ax^2+bx-5=0$의 한 근이 ",
+  "rpmRecordId": "H1-RPM-031",
+  "rpmReason": "문항5번(토큰:ax) 대상 문항5의 복소수와 이차방정식 단원 RPM H1-RPM-031 분류 유형에 해당한다",
+  "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+  "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+  "typeReason": "문항5번(토큰:ax) 대상 문항5의 복소수와 이차방정식 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항5번(토큰:ax) 대상 문항5의 복소수와 이차방정식 단원 기본 개념과 풀이 과정을 적용하는 난이도 2 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼차방정식",
+        "src": "stem",
+        "quote": "삼차방정식 $x^3+ax^2+bx-5=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "$a+b$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "유리수",
+        "src": "stem",
+        "quote": "유리수 $a, b$에 대하여"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "문항5번(토큰:ax) 발문과 해설의 문항5 풀이 단계를 점검하여 최종 정답 ④를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

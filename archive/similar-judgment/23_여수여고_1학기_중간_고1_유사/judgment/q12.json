@@ -1,0 +1,65 @@
+{
+  "qid": 12,
+  "itemFingerprint": "6a331ce93de271aa",
+  "solveSteps": [
+    "$z=a+bi$ ($a, b$는 $0$이 아닌 실수)라 하면 $\\overline{z}=a-bi$이다.",
+    "ㄱ.",
+    "$z\\overline{z}=(a+bi)(a-bi)=a^2+b^2 > 0$이므로 양의 실수이다.",
+    "(참) ㄴ.",
+    "$z-\\overline{z}=2bi$이므로 $\\frac{z-\\overline{z}}{z\\overline{z}}=\\frac{2b}{a^2+b^2}i$이다.",
+    "$b \\neq 0$이므로 순허수이지 실수가 아니다.",
+    "(거짓) ㄷ.",
+    "$\\omega=\\frac{-1+\\sqrt{3}i}{2}$에서 $2\\omega+1=\\sqrt{3}i$이므로 양변을 제곱하면 $4\\omega^2+4\\omega+1=-3 \\implies \\omega^2+\\omega+1=0$이다.",
+    "양변에 $\\omega-1$을 곱하면 $\\omega^3-1=0 \\implies \\omega^3=1$이다.",
+    "따라서 $\\omega^3+2\\omega^6=1+2\\cdot 1^2=3$이다.",
+    "(참) 그러므로 옳은 것은 ㄱ, ㄷ이고, 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+  "unitEvidence": "복소수 $z$와 그 켤레복소수 $\\overline{z}",
+  "rpmRecordId": "H1-RPM-001",
+  "rpmReason": "문항12번(토큰:bi) 대상 문항12의 다항식의 연산 단원 RPM H1-RPM-001 분류 유형에 해당한다",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+  "typeReason": "문항12번(토큰:bi) 대상 문항12의 다항식의 연산 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항12번(토큰:bi) 대상 문항12의 다항식의 연산 단원 기본 개념과 풀이 과정을 적용하는 난이도 1 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "a^6=3$이다. |\n| :---- |\n\n##"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$z=a+bi$ ($a, b$는 $0$이 아닌",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항12번(토큰:bi) 발문과 해설의 문항12 풀이 단계를 점검하여 최종 정답 ③를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

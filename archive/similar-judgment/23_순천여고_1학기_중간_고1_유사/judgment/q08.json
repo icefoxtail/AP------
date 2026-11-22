@@ -1,0 +1,64 @@
+{
+  "qid": 8,
+  "itemFingerprint": "40b126075b0b48db",
+  "solveSteps": [
+    "$x-y=2$의 양변을 제곱하면 $x^2-2xy+y^2=4$ 여기에 $x^2+y^2=20$을 대입하면 $20-2xy=4 \\implies xy=8$이다. (cases)",
+    "따라서 $(x+y)^2=x^2+y^2+2xy=20+2\\cdot 8=36$ 이므로 $|\\alpha+\\beta|=\\sqrt{36}=6$이다.",
+    "그러므로 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+  "unitEvidence": "연립방정식 $\\begin{cases} x-y=2 \\ x",
+  "rpmRecordId": "H1-RPM-001",
+  "rpmReason": "문항8번(토큰:cases) 대상 문항8의 다항식의 기본 연산 단원 RPM H1-RPM-001 분류 유형에 해당한다",
+  "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+  "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+  "typeReason": "문항8번(토큰:cases) 대상 문항8의 다항식의 기본 연산 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항8번(토큰:cases) 대상 문항8의 다항식의 기본 연산 단원 기본 개념과 풀이 과정을 적용하는 난이도 2 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin{cases} x-y=2 \\ x^2+y^2=20 \\end{cases}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "절댓값",
+        "src": "stem",
+        "quote": "$|\\alpha+\\beta|$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "곱셈공식",
+        "src": "solution",
+        "quote": "$(x+y)^2=x^2+y^2+2xy=20+2\\cdot 8=36$",
+        "evidenceType": "IMPLIED",
+        "justification": "x-y와 x^2+y^2에서 xy를 구하고 (x+y)^2으로 연결하는 곱셈공식 변형을 적용함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항8번(토큰:cases) 발문과 해설의 문항8 풀이 단계를 점검하여 최종 정답 ④를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

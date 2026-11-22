@@ -1,0 +1,58 @@
+{
+  "qid": 20,
+  "itemFingerprint": "8acf78305857a74a",
+  "solveSteps": [
+    "$P(1)=1^2+1$, $P(2)=2^2+1$, $P(3)=3^2+1$이므로 $P(x)-(x^2+1)$은 $x=1, 2, 3$에서 모두 $0$이다. (10)",
+    "$P(x)$는 최고차항의 계수가 $1$인 삼차식이므로 인수정리에 의하여 $P(x)-(x^2+1)=(x-1)(x-2)(x-3) \\implies P(x)=(x-1)(x-2)(x-3)+x^2+1$ 나누는 식이 $(x-1)(3x-6)=3(x-1)(x-2)$이므로 몫을 $Q(x)$, 나머지를 $ax+b$ ($a, b$는 상수)라 하면 $P(x)=3(x-1)(x-2)Q(x)+ax+b$ $x=1$을 대입하면 $a+b=P(1)=2$, $x=2$를 대입하면 $2a+b=P(2)=5$이므로 $a=3$, $b=-1$이다.",
+    "따라서 나머지는 $3x-1$이다.",
+    "또한 $\\begin{aligned} P(x)-(3x-1) &= (x-1)(x-2)(x-3)+x^2-3x+2 \\ &= (x-1)(x-2)(x-3)+(x-1)(x-2) \\ &= (x-1)(x-2)^2 \\end{aligned}$ 이므로 몫은 $Q(x)=\\frac{1}{3}(x-2)=\\frac{1}{3}x-\\frac{2}{3}$이다."
+  ],
+  "solvedAnswer": "몫: $\\frac{1}{3}x-\\frac{2}{3}$, 나머지: $3x-1$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "unitEvidence": "[서술형 2번] 최고차항의 계수가 $1$인 삼차식 $P",
+  "rpmRecordId": "H1-RPM-009",
+  "rpmReason": "문항20번(토큰:10) 대상 문항20의 나머지정리와 인수정리 단원 RPM H1-RPM-009 분류 유형에 해당한다",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+  "typeReason": "문항20번(토큰:10) 대상 문항20의 나머지정리와 인수정리 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항20번(토큰:10) 대상 문항20의 나머지정리와 인수정리 단원 기본 개념과 풀이 과정을 적용하는 난이도 4 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "누었을 때의 몫과 나머지를 구하시오. [6점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$P(1)=1^2+1$, $P(2)=2^2+1",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항20번(토큰:10) 발문과 해설의 문항20 풀이 단계를 점검하여 최종 정답 몫: $\\frac{1}{3}x-\\frac{2}{3}$, 나머지: $3x-1$를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

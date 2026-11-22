@@ -1,0 +1,93 @@
+{
+  "stem": {
+    "capability": "construction-spike-v1",
+    "mode": "PLANE_FIGURE_v1",
+    "accessibilityDescription": "각 C가 직각이고 AC=10, BC=5인 직각삼각형 ABC의 빗변 AB 위의 점 P에서 변 BC, AC에 내린 수선의 발을 각각 Q, R로 하여 만든 직사각형 PQCR",
+    "planeMarks": {
+      "rightAngles": [
+        {
+          "vertex": "C",
+          "rays": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "vertex": "Q",
+          "rays": [
+            "P",
+            "C"
+          ]
+        },
+        {
+          "vertex": "R",
+          "rays": [
+            "P",
+            "C"
+          ]
+        }
+      ],
+      "lengths": [
+        {
+          "from": "A",
+          "to": "C",
+          "label": "10"
+        },
+        {
+          "from": "B",
+          "to": "C",
+          "label": "5"
+        }
+      ]
+    },
+    "caption": "직각삼각형 ABC 내부에 내접한 직사각형 PQCR"
+  },
+  "solution": {
+    "capability": "construction-spike-v1",
+    "mode": "PLANE_FIGURE_v1",
+    "accessibilityDescription": "선분 QC의 길이를 a, PQ의 길이를 10-2a로 표시하여 직사각형 PQCR과 두 직각삼각형 PBQ, APR의 넓이를 비교하는 그림",
+    "planeMarks": {
+      "rightAngles": [
+        {
+          "vertex": "C",
+          "rays": [
+            "A",
+            "B"
+          ]
+        },
+        {
+          "vertex": "Q",
+          "rays": [
+            "P",
+            "C"
+          ]
+        },
+        {
+          "vertex": "R",
+          "rays": [
+            "P",
+            "C"
+          ]
+        }
+      ],
+      "lengths": [
+        {
+          "from": "Q",
+          "to": "C",
+          "label": "a"
+        },
+        {
+          "from": "B",
+          "to": "Q",
+          "label": "5-a"
+        },
+        {
+          "from": "P",
+          "to": "Q",
+          "label": "10-2a"
+        }
+      ]
+    },
+    "caption": "닮음비를 이용해 각 선분의 길이를 a로 나타낸 도형"
+  }
+}

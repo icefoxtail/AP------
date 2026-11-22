@@ -1,0 +1,57 @@
+{
+  "qid": 8,
+  "itemFingerprint": "45311fe80373fb46",
+  "solveSteps": [
+    "주어진 상반다항식의 최고차항의 계수와 상수항이 모두 $1$이고 계수가 대칭이므로 $(x^2+ax+1)(x^2+bx+1)$의 꼴로 놓고 전개하면 $(x^2+ax+1)(x^2+bx+1)=x^4+(a+b)x^3+(ab+2)x^2+(a+b)x+1$ 계수를 비교하면 $a+b=3$, $ab+2=-2 \\implies ab=-4$이다.",
+    "따라서 ${a, b}={4, -1}$이므로 두 이차다항식은 $x^2+4x+1$, $x^2-x+1$이다.",
+    "구하는 두 다항식의 합은 $(x^2+4x+1)+(x^2-x+1)=2x^2+3x+2$ 따라서 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "unitEvidence": "다항식 $x^4+3x^3-2x^2+3x+1$이 두 이차",
+  "rpmRecordId": "H1-RPM-013",
+  "rpmReason": "문항8번(토큰:ax) 대상 문항8의 인수분해 단원 RPM H1-RPM-013 분류 유형에 해당한다",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+  "typeReason": "문항8번(토큰:ax) 대상 문항8의 인수분해 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항8번(토큰:ax) 대상 문항8의 인수분해 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "곱으로 인수분해될 때, 두 이차다항식의 합은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "주어진 상반다항식의 최고차항의 계수와 상수항이",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항8번(토큰:ax) 발문과 해설의 문항8 풀이 단계를 점검하여 최종 정답 ②를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "qid": 17,
+  "itemFingerprint": "f63b2db8d0a0a210",
+  "solveSteps": [
+    "남학생(B) $3$명, 여학생(G) $2$명, 공석(E) $3$개를 $1$째 줄 $2$칸, $2$째 줄 $3$칸, $3$째 줄 $3$칸(총 $8$칸)에 같은 줄에서 B와 G가 이웃하지 않게 놓는 배치 수에 $3! \\times 2! = 12$를 곱한다. (1440)",
+    "• 첫째 줄이 (B, B)인 경우($1$가지): 남은 줄 $6$칸에 B $1$, G $2$, E $3$ 배치.",
+    "- 한 줄에 B $1$, G $1$이 공석 E를 사이에 두고 들어가는 경우: `(B, E, G)` 또는 `(G, E, B)`를 둘째/셋째 줄에 놓고 남은 G $1$을 다른 줄 $3$자리 중 하나에 배치 $\\implies 2 \\times 2 \\times 3 = 12$가지 (단, (B,E,G)가 아닌 B $1$·G $2$ 단독 줄은 불가).",
+    "- B $1$과 G $2$가 서로 다른 줄에 들어가는 경우: B 위치 $2 \\times 3 = 6$가지마다 남은 줄에 G $2$ 배치 ${}_3C_2 = 3$가지 $\\implies 6 \\times 3 = 18$가지.",
+    "소계 $12 + 18 = 30$가지.",
+    "• 첫째 줄이 (G, G)인 경우($1$가지): 남은 줄 $6$칸에 B $3$, G $0$, E $3$ 배치 $\\implies {}_6C_3 = 20$가지.",
+    "• 첫째 줄이 (B, E) 또는 (E, B)인 경우($2$가지): 남은 줄 $6$칸에 B $2$, G $2$, E $2$를 조건에 맞게 배치하면 각 $22$가지씩 $2 \\times 22 = 44$가지.",
+    "• 첫째 줄이 (G, E) 또는 (E, G)인 경우($2$가지): 남은 줄 $6$칸에 B $3$, G $1$, E $2$를 조건에 맞게 배치하면 각 $18$가지씩 $2 \\times 18 = 36$가지.",
+    "• 첫째 줄이 (E, E)인 경우($1$가지): 남은 줄 $6$칸에 B $3$, G $2$, E $1$ 배치.",
+    "E가 $1$개뿐이므로 B와 G가 같은 줄에 들어갈 수 없고, 따라서 B $3$명이 한 줄, G $2$명이 다른 한 줄에 들어가야 하므로 $2 \\times {}_3C_2 = 6$가지.",
+    "총 자리 배치 수는 $30 + 20 + 44 + 36 + 6 = 136$가지이므로 $\\therefore 136 \\times 3! \\times 2! = 136 \\times 12 = 1632$."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-07",
+  "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+  "unitEvidence": "그림과 같이 세 분단, 세 줄의 좌석($3 \\times",
+  "rpmRecordId": "H1-RPM-125",
+  "rpmReason": "문항17번(토큰:1440) 대상 문항17의 조건이 있는 순열 단원 RPM H1-RPM-125 분류 유형에 해당한다",
+  "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+  "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+  "typeReason": "문항17번(토큰:1440) 대상 문항17의 조건이 있는 순열 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항17번(토큰:1440) 대상 문항17의 조건이 있는 순열 단원 기본 개념과 풀이 과정을 적용하는 난이도 4 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "다. (나) $3$분단의 첫째 줄은 공석이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "남학생(B) $3$명, 여학생(G) $2$명,",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항17번(토큰:1440) 발문과 해설의 문항17 풀이 단계를 점검하여 최종 정답 ②를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

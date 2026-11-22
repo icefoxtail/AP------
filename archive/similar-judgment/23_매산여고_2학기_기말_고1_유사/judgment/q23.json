@@ -1,0 +1,56 @@
+{
+  "qid": 23,
+  "itemFingerprint": "e831032ea98e4bff",
+  "solveSteps": [
+    "꺼낸 네 수를 크기순으로 $1 \\le a < b < c < d \\le n$이라 하면, 어느 두 수도 연속되지 않으므로 $b \\ge a + 2$, $c \\ge b + 2$, $d \\ge c + 2$ $a' = a$, $b' = b - 1$, $c' = c - 2$, $d' = d - 3$으로 놓으면 $1 \\le a' < b' < c' < d' \\le n - 3$ 역으로 $1$부터 $n - 3$까지의 자연수 중 서로 다른 $4$개 $a' < b' < c' < d'$를 택하면 조건을 만족하는 $(a, b, c, d)$가 유일하게 대응된다.",
+    "따라서 구하는 경우의 수는 ${}_{n - 3}C_4$."
+  ],
+  "solvedAnswer": "${}_{n-3}C_4$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-08",
+  "subUnitKey": "H15-SB-08-COMBINATION_APPLICATION",
+  "unitEvidence": "[서술형 3] $1$부터 $n$까지의 자연수가 하나씩 ",
+  "rpmRecordId": "H1-RPM-130",
+  "rpmReason": "문항23번(토큰:3) 대상 문항23의 조합의 활용 단원 RPM H1-RPM-130 분류 유형에 해당한다",
+  "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+  "templateKey": "TPL_COMBINATION_SELECTION",
+  "typeReason": "문항23번(토큰:3) 대상 문항23의 조합의 활용 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항23번(토큰:3) 대상 문항23의 조합의 활용 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "\\ge 7$이다.) [7점] (부분점수 있음)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "꺼낸 네 수를 크기순으로 $1 \\le a <",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항23번(토큰:3) 발문과 해설의 문항23 풀이 단계를 점검하여 최종 정답 ${}_{n-3}C_4$를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

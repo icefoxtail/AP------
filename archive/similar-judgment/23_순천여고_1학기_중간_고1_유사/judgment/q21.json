@@ -1,0 +1,77 @@
+{
+  "qid": 21,
+  "itemFingerprint": "abf95c92bc2dc219",
+  "solveSteps": [
+    "조건 (가)에서 $(x-2)P(x)=(x+1)Q(x)$가 항등식이므로 $P(x)$는 $x+1$을 인수로 갖고, $Q(x)$는 $x-2$를 인수로 갖는다.",
+    "또한 두 다항식은 최고차항의 계수가 $1$인 이차다항식이므로 상수 $k$에 대하여 $P(x)=(x+1)(x-k), \\quad Q(x)=(x-2)(x-k)$ 로 놓을 수 있다.",
+    "조건 (나)에 의하여 $P(x)Q(x)=(x+1)(x-2)(x-k)^2=x^4+3x^3-2x^2-12x-8$ 여기서 $(x+1)(x-2)=x^2-x-2$이므로 $x^4+3x^3-2x^2-12x-8$을 $x^2-x-2$로 나누면 $x^4+3x^3-2x^2-12x-8=(x^2-x-2)(x^2+4x+4)=(x+1)(x-2)(x+2)^2$ 따라서 $(x-k)^2=(x+2)^2$이므로 $k=-2$이다.",
+    "즉, $P(x)=(x+1)(x+2)$, $Q(x)=(x-2)(x+2)$이므로 $P(0)=1\\cdot 2=2$, $Q(3)=1\\cdot 5=5$ 따라서 $P(0)+Q(3)=2+5=7$이다."
+  ],
+  "solvedAnswer": "$7$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "unitEvidence": "최고차항의 계수가 $1$인 두 이차다항식 $P(x), ",
+  "rpmRecordId": "H1-RPM-013",
+  "rpmReason": "문항21번(토큰:12) 대상 문항21의 인수분해 단원 RPM H1-RPM-013 분류 유형에 해당한다",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+  "typeReason": "문항21번(토큰:12) 대상 문항21의 인수분해 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항21번(토큰:12) 대상 문항21의 인수분해 단원 기본 개념과 풀이 과정을 적용하는 난이도 4 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "두 이차다항식 $P(x), Q(x)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "$P(0)+Q(3)$의 값을 구하는 과정을"
+      }
+    ],
+    "method": [
+      {
+        "term": "항등식",
+        "src": "solution",
+        "quote": "$(x-2)P(x)=(x+1)Q(x)$가 항등식이므로",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "(x+1)(x-2)(x+2)^2",
+        "evidenceType": "IMPLIED",
+        "justification": "사차식을 이차식 x^2-x-2로 나누어 완전제곱식 (x+2)^2을 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최고차항",
+        "src": "stem",
+        "quote": "최고차항의 계수가 $1$인"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "문항21번(토큰:12) 발문과 해설의 문항21 풀이 단계를 점검하여 최종 정답 $7$를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

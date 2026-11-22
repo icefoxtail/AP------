@@ -1,0 +1,56 @@
+{
+  "qid": 18,
+  "itemFingerprint": "c5a1d3b960a1dd18",
+  "solveSteps": [
+    "문항 18번 문제의 조건(24)에 맞추어 식을 세운다.",
+    "$X$에서 $Y$로의 전체 함수의 개수: $3^4 = 81$ 치역의 원소가 $2$개 이하인 함수(공역 $a, b, c$ 중 적어도 하나를 선택하지 않는 함수)의 개수를 포함·배제의 원리로 빼면\n\n- 특정 $1$개 원소를 제외하는 함수의 수: ${}_3C_1 \\times 2^4 = 3 \\times 16 = 48$  \n- 특정 $2$개 원소를 제외하는(상수) 함수의 수: ${}_3C_2 \\times 1^4 = 3 \\times 1 = 3$ $\\therefore 81 - 48 + 3 = 36$ (③)."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-01",
+  "subUnitKey": "H15-SB-01-SET_COUNT",
+  "unitEvidence": "두 집합 $X = {1, 2, 3, 4}$, $Y = ",
+  "rpmRecordId": "H1-RPM-081",
+  "rpmReason": "문항18번(토큰:24) 대상 문항18의 집합의 원소의 개수 단원 RPM H1-RPM-081 분류 유형에 해당한다",
+  "problemTypeKey": "PT_SET_CARDINALITY",
+  "templateKey": "TPL_SET_CARDINALITY_DIRECT",
+  "typeReason": "문항18번(토큰:24) 대상 문항18의 집합의 원소의 개수 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항18번(토큰:24) 대상 문항18의 집합의 원소의 개수 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$에서 $Y$로의 함수의 개수는? [4.6점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$X$에서 $Y$로의 전체 함수의 개수: $3",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항18번(토큰:24) 발문과 해설의 문항18 풀이 단계를 점검하여 최종 정답 ③를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

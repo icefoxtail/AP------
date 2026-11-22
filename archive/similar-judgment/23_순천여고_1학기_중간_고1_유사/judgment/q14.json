@@ -1,0 +1,75 @@
+{
+  "qid": 14,
+  "itemFingerprint": "492348845e9d021d",
+  "solveSteps": [
+    "$P(x)=x^3-2x^2+2x+5$라 하면 $P(-1)=-1-2-2+5=0$이므로 조립제법으로 인수분해하면 $x^3-2x^2+2x+5=(x+1)(x^2-3x+5)=0$ $\\omega$는 허근이므로 이차방정식 $x^2-3x+5=0$의 한 근이고, 다른 한 허근은 $\\overline{\\omega}$이다. (10)",
+    "근과 계수의 관계에 의하여 $\\omega+\\overline{\\omega}=3$, $\\omega\\overline{\\omega}=5$이다.",
+    "따라서 $\\begin{aligned} z+\\overline{z} &= \\frac{\\omega}{\\omega-1}+\\frac{\\overline{\\omega}}{\\overline{\\omega}-1} \\ &= \\frac{\\omega(\\overline{\\omega}-1)+\\overline{\\omega}(\\omega-1)}{(\\omega-1)(\\overline{\\omega}-1)} \\ &= \\frac{2\\omega\\overline{\\omega}-(\\omega+\\overline{\\omega})}{\\omega\\overline{\\omega}-(\\omega+\\overline{\\omega})+1} \\ &= \\frac{2\\cdot 5-3}{5-3+1}=\\frac{7}{3} \\end{aligned}$ 그러므로 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+  "unitEvidence": "삼차방정식 $x^3-2x^2+2x+5=0$의 한 허근을",
+  "rpmRecordId": "H1-RPM-039",
+  "rpmReason": "문항14번(토큰:10) 대상 문항14의 고차방정식의 풀이 단원 RPM H1-RPM-039 분류 유형에 해당한다",
+  "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+  "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+  "typeReason": "문항14번(토큰:10) 대상 문항14의 고차방정식의 풀이 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항14번(토큰:10) 대상 문항14의 고차방정식의 풀이 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼차방정식",
+        "src": "stem",
+        "quote": "삼차방정식 $x^3-2x^2+2x+5=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "$z+\\overline{z}$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "조립제법으로 인수분해하면",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여 $\\omega+\\overline{\\omega}=3$, $\\omega\\overline{\\omega}=5$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "허근",
+        "src": "stem",
+        "quote": "한 허근을 $\\omega$라 하고"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "문항14번(토큰:10) 발문과 해설의 문항14 풀이 단계를 점검하여 최종 정답 ②를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

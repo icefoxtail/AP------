@@ -1,0 +1,69 @@
+{
+  "qid": 17,
+  "itemFingerprint": "e51c194bb30ac568",
+  "solveSteps": [
+    "$f(x)=2|x-2|+|x+4|$라 하고 절댓값 안이 $0$이 되는 $x=-4, 2$를 기준으로 구간을 나누면 (i) $x < -4$일 때, $f(x)=-2(x-2)-(x+4)=-3x > 12$ (ii) $-4 \\le x < 2$일 때, $f(x)=-2(x-2)+(x+4)=-x+8$ ($6 < f(x) \\le 12$) (iii) $x \\ge 2$일 때, $f(x)=2(x-2)+(x+4)=3x \\ge 6$ 따라서 $f(x)$는 $x=2$에서 최솟값 $6$을 가지므로, 부등식 $f(x) \\ge k$가 모든 실수 $x$에 대하여 성립하려면 $k \\le 6$이어야 한다.",
+    "그러므로 실수 $k$의 최댓값은 $6$이다.",
+    "따라서 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-08",
+  "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
+  "unitEvidence": "모든 실수 $x$에 대하여 부등식 $2|x-2|+|x+",
+  "rpmRecordId": "H1-RPM-045",
+  "rpmReason": "문항17번(토큰:12) 대상 문항17의 연립부등식 단원 RPM H1-RPM-045 분류 유형에 해당한다",
+  "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+  "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+  "typeReason": "문항17번(토큰:12) 대상 문항17의 연립부등식 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항17번(토큰:12) 대상 문항17의 연립부등식 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "절댓값",
+        "src": "stem",
+        "quote": "부등식 $2|x-2|+|x+4| \\ge k$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "실수 $k$의 최댓값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "경우분류",
+        "src": "solution",
+        "quote": "기준으로 구간을 나누면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "항상성립",
+        "src": "stem",
+        "quote": "항상 성립하도록 하는"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "문항17번(토큰:12) 발문과 해설의 문항17 풀이 단계를 점검하여 최종 정답 ⑤를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

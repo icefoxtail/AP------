@@ -1,0 +1,57 @@
+{
+  "qid": 10,
+  "itemFingerprint": "49b5d56b96524389",
+  "solveSteps": [
+    "$i^4=1$이므로 $i^{13}=i$, $i^{15}=i^3=-i$, $i^{17}=i$이다.",
+    "우변을 간단히 하면 $\\frac{1}{i^{13}}+\\frac{1}{i^{15}}+\\frac{1}{i^{17}}=\\frac{1}{i}+\\frac{1}{-i}+\\frac{1}{i}=\\frac{1}{i}=-i$ 따라서 $\\frac{x+yi}{1-3i}=-i$이므로 양변에 $1-3i$를 곱하면 $x+yi=-i(1-3i)=-i+3i^2=-3-i$ $x, y$는 실수이므로 $x=-3, y=-1$이고, $x+y=-4$이다.",
+    "그러므로 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "등식 $\\frac{x+yi}{1-3i}=\\frac{1}",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "문항10번(토큰:yi) 대상 문항10의 복소수의 계산 단원 RPM H1-RPM-023 분류 유형에 해당한다",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+  "typeReason": "문항10번(토큰:yi) 대상 문항10의 복소수의 계산 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항10번(토큰:yi) 대상 문항10의 복소수의 계산 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "값은? (단, $i=\\sqrt{-1}$이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$i^4=1$이므로 $i^{13}=i$, $i",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항10번(토큰:yi) 발문과 해설의 문항10 풀이 단계를 점검하여 최종 정답 ④를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

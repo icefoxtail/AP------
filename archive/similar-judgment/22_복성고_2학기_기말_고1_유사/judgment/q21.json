@@ -1,0 +1,58 @@
+{
+  "qid": 21,
+  "itemFingerprint": "e262e4ef5f40a4a3",
+  "solveSteps": [
+    "점 $P$의 $x$좌표를 $t$ ($t \\ne 0$)라 하자. (cases)",
+    "(1) $t > 0$일 때: $P\\left(t, \\dfrac{9}{t}\\right)$, $Q(t, -t)$.",
+    "$R$의 $y$좌표가 $-t < 0$이므로 $\\dfrac{4}{x} = -t \\implies R\\left(-\\dfrac{4}{t}, -t\\right)$.",
+    "$\\overline{PQ} = t + \\dfrac{9}{t}$, $\\overline{QR} = t + \\dfrac{4}{t}$ (2) $t < 0$일 때: $u = -t > 0$이라 하면 $P\\left(-u, -\\dfrac{4}{u}\\right)$, $Q(-u, u)$, $R\\left(\\dfrac{9}{u}, u\\right)$이므로 $\\overline{PQ} = u + \\dfrac{4}{u}$, $\\overline{QR} = u + \\dfrac{9}{u}$ 따라서 두 경우 모두 $u = |t| > 0$에 대하여 $\\triangle PQR$의 넓이 $S$는 $S = \\dfrac{1}{2}\\left(u + \\dfrac{9}{u}\\right)\\left(u + \\dfrac{4}{u}\\right) = \\dfrac{1}{2}\\left(u^2 + 13 + \\dfrac{36}{u^2}\\right) = \\dfrac{u^2}{2} + \\dfrac{18}{u^2} + \\dfrac{13}{2}$ 산술평균과 기하평균의 관계에 의하여 $\\dfrac{u^2}{2} + \\dfrac{18}{u^2} \\ge 2\\sqrt{\\dfrac{u^2}{2} \\cdot \\dfrac{18}{u^2}} = 2 \\times 3 = 6$ (등호는 $u = \\sqrt{6}$일 때 성립) $\\therefore S \\ge 6 + \\dfrac{13}{2} = \\dfrac{25}{2}$ (최솟값: $\\dfrac{25}{2}$)."
+  ],
+  "solvedAnswer": "$\\dfrac{25}{2}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-04",
+  "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+  "unitEvidence": "[서술형 2] 좌표평면 위에 함수 $$f(x) = \\b",
+  "rpmRecordId": "H1-RPM-108",
+  "rpmReason": "문항21번(토큰:cases) 대상 문항21의 유리함수의 그래프 단원 RPM H1-RPM-108 분류 유형에 해당한다",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+  "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+  "typeReason": "문항21번(토큰:cases) 대상 문항21의 유리함수의 그래프 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항21번(토큰:cases) 대상 문항21의 유리함수의 그래프 단원 기본 개념과 풀이 과정을 적용하는 난이도 4 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "최솟값을 구하는 과정을 서술하시오. [7점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "점 $P$의 $x$좌표를 $t$ ($t \\ne",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항21번(토큰:cases) 발문과 해설의 문항21 풀이 단계를 점검하여 최종 정답 $\\dfrac{25}{2}$를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

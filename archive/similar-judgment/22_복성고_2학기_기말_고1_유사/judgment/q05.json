@@ -1,0 +1,57 @@
+{
+  "qid": 5,
+  "itemFingerprint": "b18813718ba8da6e",
+  "solveSteps": [
+    "$y = \\sqrt{x + 3} + 2$에서 $\\sqrt{x + 3} \\ge 0$이므로 치역은 ${y \\mid y \\ge 2}$이다. (ax)",
+    "$y - 2 = \\sqrt{x + 3}$의 양변을 제곱하면 $(y - 2)^2 = x + 3 \\implies x = y^2 - 4y + 1$ $x$와 $y$를 서로 바꾸면 $f^{-1}(x) = x^2 - 4x + 1$이고, 역함수의 정의역은 원래 함수의 치역이므로 $x \\ge 2$이다.",
+    "따라서 $a = -4$, $b = 1$, $c = 2$이므로 $\\therefore a + b + c = -4 + 1 + 2 = -1$ (②)."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-05",
+  "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+  "unitEvidence": "함수 $f(x) = \\sqrt{x + 3} + 2$의 ",
+  "rpmRecordId": "H1-RPM-115",
+  "rpmReason": "문항5번(토큰:ax) 대상 문항5의 무리함수의 그래프 단원 RPM H1-RPM-115 분류 유형에 해당한다",
+  "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+  "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_DIRECT",
+  "typeReason": "문항5번(토큰:ax) 대상 문항5의 무리함수의 그래프 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항5번(토큰:ax) 대상 문항5의 무리함수의 그래프 단원 기본 개념과 풀이 과정을 적용하는 난이도 2 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "여 $a + b + c$의 값은? [4.0점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$y = \\sqrt{x + 3} + 2$에서",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항5번(토큰:ax) 발문과 해설의 문항5 풀이 단계를 점검하여 최종 정답 ②를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

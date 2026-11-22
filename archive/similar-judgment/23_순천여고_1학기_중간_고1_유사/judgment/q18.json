@@ -1,0 +1,80 @@
+{
+  "qid": 18,
+  "itemFingerprint": "7e756129c55b57a8",
+  "solveSteps": [
+    "$\\overline{QC}=a$ ($0 < a < 5$)라 하면 $\\overline{BQ}=5-a$이다. (90)",
+    "$\\triangle PBQ \\sim \\triangle ABC$이므로 $\\overline{PQ}:\\overline{BQ}=\\overline{AC}:\\overline{BC}=10:5=2:1$이고, $\\overline{PQ}=2(5-a)=10-2a$이다.",
+    "또한 $\\overline{PR}=\\overline{QC}=a$이고 $\\overline{AR}=10-(10-2a)=2a$이다.",
+    "세 도형의 넓이를 각각 구하면 (직사각형 $PQCR$의 넓이) $=a(10-2a)=10a-2a^2$ ($\\triangle PBQ$의 넓이) $=\\frac{1}{2}(5-a)(10-2a)=(5-a)^2=a^2-10a+25$ ($\\triangle APR$의 넓이) $=\\frac{1}{2}\\cdot a\\cdot 2a=a^2$ 조건에 의하여 (i) $10a-2a^2 > a^2-10a+25 \\implies 3a^2-20a+25 < 0 \\implies (3a-5)(a-5) < 0 \\implies \\frac{5}{3} < a < 5$ (ii) $10a-2a^2 > a^2 \\implies 3a^2-10a < 0 \\implies a(3a-10) < 0 \\implies 0 < a < \\frac{10}{3}$ (i), (ii)의 공통 범위는 $\\frac{5}{3} < a < \\frac{10}{3}$이므로 $m=\\frac{5}{3}$, $n=\\frac{10}{3}$이다.",
+    "따라서 $m+n=\\frac{5}{3}+\\frac{10}{3}=5$이다.",
+    "그러므로 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-08",
+  "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
+  "unitEvidence": "그림과 같이 $\\angle C=90^\\circ$이고 $",
+  "rpmRecordId": "H1-RPM-047",
+  "rpmReason": "문항18번(토큰:90) 대상 문항18의 이차부등식 단원 RPM H1-RPM-047 분류 유형에 해당한다",
+  "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+  "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+  "typeReason": "문항18번(토큰:90) 대상 문항18의 이차부등식 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항18번(토큰:90) 대상 문항18의 이차부등식 단원 기본 개념과 풀이 과정을 적용하는 난이도 4 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "직각삼각형 $ABC$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "$m+n$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "닮음",
+        "src": "solution",
+        "quote": "\\triangle PBQ \\sim \\triangle ABC",
+        "evidenceType": "IMPLIED",
+        "justification": "두 직각삼각형의 닮음비 2:1을 이용해 선분 PQ의 길이를 구함"
+      },
+      {
+        "term": "연립부등식",
+        "src": "solution",
+        "quote": "(i), (ii)의 공통 범위는",
+        "evidenceType": "IMPLIED",
+        "justification": "두 넓이 조건에서 나온 이차부등식 두 개의 공통 범위를 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 $PQCR$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "문항18번(토큰:90) 발문과 해설의 문항18 풀이 단계를 점검하여 최종 정답 ②를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "stem": {
+    "capability": "piecewise-polynomial-spike-v1",
+    "graphPlan": {
+      "family": "piecewise-polynomial",
+      "pieces": [
+        {
+          "coefficients": [
+            "-6",
+            "-1",
+            "1"
+          ]
+        },
+        {
+          "coefficients": [
+            "6",
+            "1",
+            "-1"
+          ]
+        },
+        {
+          "coefficients": [
+            "-6",
+            "-1",
+            "1"
+          ]
+        }
+      ],
+      "breakpoints": [
+        {
+          "x": "-2",
+          "y": "0"
+        },
+        {
+          "x": "3",
+          "y": "0"
+        }
+      ],
+      "sourceDomain": {
+        "kind": "ALL_REALS"
+      },
+      "formula": "abs(x^2-x-6)",
+      "requiredPoints": [
+        {
+          "id": "A",
+          "x": -2,
+          "y": 0
+        },
+        {
+          "id": "B",
+          "x": 3,
+          "y": 0
+        }
+      ],
+      "axisTickValues": {
+        "x": [
+          -2,
+          3
+        ],
+        "y": []
+      }
+    },
+    "caption": "함수 y=f(x)의 그래프"
+  },
+  "solution": {
+    "capability": "piecewise-polynomial-spike-v1",
+    "graphPlan": {
+      "family": "piecewise-polynomial",
+      "pieces": [
+        {
+          "coefficients": [
+            "-6",
+            "-1",
+            "1"
+          ]
+        },
+        {
+          "coefficients": [
+            "6",
+            "1",
+            "-1"
+          ]
+        },
+        {
+          "coefficients": [
+            "-6",
+            "-1",
+            "1"
+          ]
+        }
+      ],
+      "breakpoints": [
+        {
+          "x": "-2",
+          "y": "0"
+        },
+        {
+          "x": "3",
+          "y": "0"
+        }
+      ],
+      "sourceDomain": {
+        "kind": "ALL_REALS"
+      },
+      "formula": "abs(x^2-x-6)",
+      "referenceLines": [
+        {
+          "id": "low",
+          "slope": "1",
+          "intercept": "2"
+        },
+        {
+          "id": "mid",
+          "slope": "1",
+          "intercept": "4"
+        },
+        {
+          "id": "high",
+          "slope": "1",
+          "intercept": "6"
+        }
+      ],
+      "requiredPoints": [
+        {
+          "id": "A",
+          "x": -2,
+          "y": 0
+        },
+        {
+          "id": "B",
+          "x": 3,
+          "y": 0
+        }
+      ],
+      "axisTickValues": {
+        "x": [
+          -2,
+          3
+        ],
+        "y": []
+      }
+    },
+    "caption": "y=x+k가 (-2,0)을 지나는 k=2와 접하는 k=6 사이에서 네 점에서 만난다."
+  }
+}

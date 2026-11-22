@@ -1,0 +1,64 @@
+{
+  "qid": 17,
+  "itemFingerprint": "b88dbd99c314d027",
+  "solveSteps": [
+    "바깥쪽은 $\\mathrm{A}-\\mathrm{B}-\\mathrm{C}-\\mathrm{D}-\\mathrm{E}-\\mathrm{F}-\\mathrm{A}$ 순으로 인접하고, 가운데 $\\mathrm{G}$는 $\\mathrm{B}, \\mathrm{D}, \\mathrm{F}$와 인접한다. (1260)",
+    "먼저 $\\mathrm{G}$에 칠할 색을 고르는 방법은 $4$가지이다.",
+    "$\\mathrm{B}, \\mathrm{D}, \\mathrm{F}$는 $\\mathrm{G}$와 다른 나머지 $3$가지 색 중 하나씩을 칠한다.",
+    "(1) $\\mathrm{B}, \\mathrm{D}, \\mathrm{F}$가 모두 같은 색인 경우: $3$가지.",
+    "이때 $\\mathrm{A}, \\mathrm{C}, \\mathrm{E}$는 양옆의 같은 색 $1$가지만 피하면 되므로 각각 $3$가지씩: $3 \\times 3^3 = 81$가지.",
+    "(2) $\\mathrm{B}, \\mathrm{D}, \\mathrm{F}$ 중 정확히 $2$개만 같은 색인 경우: 같은 색일 $2$개 영역 선택 ${}_3C_2 = 3$가지, 색 선택 $3 \\times 2 = 6$가지로 총 $18$가지.",
+    "이때 같은 두 영역 사이의 바깥 영역은 $3$가지, 나머지 두 바깥 영역은 양옆의 서로 다른 $2$색을 피하므로 각각 $2$가지씩: $18 \\times (3 \\times 2 \\times 2) = 216$가지.",
+    "(3) $\\mathrm{B}, \\mathrm{D}, \\mathrm{F}$가 모두 다른 색인 경우: $3! = 6$가지.",
+    "$\\mathrm{A}, \\mathrm{C}, \\mathrm{E}$는 각각 양옆의 서로 다른 $2$색을 피하므로 $2$가지씩: $6 \\times 2^3 = 48$가지.",
+    "$\\therefore 4 \\times (81 + 216 + 48) = 4 \\times 345 = 1380$."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SB-06",
+  "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+  "unitEvidence": "아래 그림의 영역 $\\mathrm{A}$, $\\math",
+  "rpmRecordId": "H1-RPM-122",
+  "rpmReason": "문항17번(토큰:1260) 대상 문항17의 경우의 수의 기본 원리 단원 RPM H1-RPM-122 분류 유형에 해당한다",
+  "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+  "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+  "typeReason": "문항17번(토큰:1260) 대상 문항17의 경우의 수의 기본 원리 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항17번(토큰:1260) 대상 문항17의 경우의 수의 기본 원리 단원 기본 개념과 풀이 과정을 적용하는 난이도 4 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "색으로 칠하는 모든 방법의 수는? [4.8점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "바깥쪽은 $\\mathrm{A}-\\mathrm{",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항17번(토큰:1260) 발문과 해설의 문항17 풀이 단계를 점검하여 최종 정답 ②를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

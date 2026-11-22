@@ -1,0 +1,56 @@
+{
+  "qid": 5,
+  "itemFingerprint": "da5cc39fd3a16d4e",
+  "solveSteps": [
+    "문항 5번 문제의 조건(24)에 맞추어 식을 세운다.",
+    "$i$의 거듭제곱은 주기가 $4$이므로 $4$개의 항씩 묶어 계산하면 $j=0, 1, 2, 3, 4, 5$에 대하여 $\\begin{aligned} (4j+1)i^{4j+1}+(4j+2)i^{4j+2}+(4j+3)i^{4j+3}+(4j+4)i^{4j+4} &= (4j+1)i-(4j+2)-(4j+3)i+(4j+4) \\ &= 2-2i \\end{aligned}$ 이러한 묶음이 $6$개 있으므로 구하는 합은 $6(2-2i)=12-12i$ 따라서 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "$i+2i^2+3i^3+\\cdots+24i^{24}$의",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "문항5번(토큰:24) 대상 문항5의 복소수의 계산 단원 RPM H1-RPM-023 분류 유형에 해당한다",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+  "typeReason": "문항5번(토큰:24) 대상 문항5의 복소수의 계산 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항5번(토큰:24) 대상 문항5의 복소수의 계산 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "값은? (단, $i=\\sqrt{-1}$이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$i$의 거듭제곱은 주기가 $4$이므로 $4$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항5번(토큰:24) 발문과 해설의 문항5 풀이 단계를 점검하여 최종 정답 ⑤를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
