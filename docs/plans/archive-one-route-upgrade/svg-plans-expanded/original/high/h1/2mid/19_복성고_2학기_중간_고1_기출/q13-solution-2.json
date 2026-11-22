@@ -1,0 +1,59 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "-3",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "3",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "-4",
+        "in": [
+          "B"
+        ]
+      }
+    ],
+    "shade": "(A-B)∪(B-A)"
+  },
+  "caption": "a=−2이면 A={−3,2,3}, B={−4,2,3}이므로 (A−B)∪(B−A)={−4,−3}이다. 요구한 {0,1}과 다르므로 탈락한다. 나머지 후보 중 a=2만 성립하여 ab=12이다(정답 ③).",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 집합 $A$, $B$가 $A=\\{3,a-1,a^2-2\\}$, $B=\\{2,3,a-2\\}$일 때, $(A-B)\\cup(B-A)=\\{0,1\\}$이다. 집합 $A$의 모든 원소의 합을 $b$라고 할 때, $ab$의 값은? (단, $a$, $b$는 상수이다.) [4.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원래 도식의 경우별 관계를 공식 엔진의 표시 크기에 맞추어 별도 플랜으로 보존한다. 다른 그림은 동일 문항의 나머지 solution 플랜에서 확인한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "a=−2이면 A={−3,2,3}, B={−4,2,3}이므로 (A−B)∪(B−A)={−4,−3}이다. 요구한 {0,1}과 다르므로 탈락한다. 나머지 후보 중 a=2만 성립하여 ab=12이다(정답 ③)."
+  ]
+}

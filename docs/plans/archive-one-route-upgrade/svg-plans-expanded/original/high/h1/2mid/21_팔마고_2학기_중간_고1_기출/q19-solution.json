@@ -1,100 +1,21 @@
 {
-  "capability": "composite-panels-v1",
-  "panels": [
-    {
-      "caption": {
-        "text": "첫 괄호 B(AB)는 B의"
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
       },
-      "plan": {
-        "capability": "set-diagram-figure-v1",
-        "diagram": {
-          "kind": "VENN",
-          "sets": [
-            {
-              "id": "A"
-            },
-            {
-              "id": "B"
-            },
-            {
-              "id": "C"
-            }
-          ],
-          "shade": "B∩(A∪B)"
-        }
-      }
-    },
-    {
-      "caption": {
-        "text": "두 번째 괄호 A(AC)에서"
+      {
+        "id": "B"
       },
-      "plan": {
-        "capability": "set-diagram-figure-v1",
-        "diagram": {
-          "kind": "VENN",
-          "sets": [
-            {
-              "id": "A"
-            },
-            {
-              "id": "B"
-            },
-            {
-              "id": "C"
-            }
-          ],
-          "shade": "A∩Cᶜ"
-        }
+      {
+        "id": "C"
       }
-    },
-    {
-      "caption": {
-        "text": "제거 후 A와 C의 공통"
-      },
-      "plan": {
-        "capability": "set-diagram-figure-v1",
-        "diagram": {
-          "kind": "VENN",
-          "sets": [
-            {
-              "id": "A"
-            },
-            {
-              "id": "B"
-            },
-            {
-              "id": "C"
-            }
-          ],
-          "shade": "A∩C"
-        }
-      }
-    },
-    {
-      "caption": {
-        "text": "첫 괄호의 B와 남은 AC를"
-      },
-      "plan": {
-        "capability": "set-diagram-figure-v1",
-        "diagram": {
-          "kind": "VENN",
-          "sets": [
-            {
-              "id": "A"
-            },
-            {
-              "id": "B"
-            },
-            {
-              "id": "C"
-            }
-          ],
-          "shade": "A∩B∩C"
-        }
-      }
-    }
-  ],
-  "caption": "첫 괄호 B∩(A∪B)는 B의 모든 부분이다. 흡수법칙으로 B가 남는다. 다음 그림의 A 안에서 빼는 부분과 구별한다. 두 번째 괄호 A−(A∩Cᶜ)에서 지금 색칠한 영역 A∩Cᶜ를 A로부터 뺀다. ①차집합 정의로 A∩(A∩Cᶜ)ᶜ, ②드모르간 법칙으로 A∩(Aᶜ∪C)로 바꾼다. 이 패널의 음영은 남길 부분이 아니라 제거할 부분이다. 제거 후 A와 C의 공통 부분만 남는다. ③분배법칙으로 (A∩Aᶜ)∪(A∩C), ④여집합 성질로 ∅∪(A∩C)=A∩C이다. 첫 괄호의 B와 남은 A∩C를 겹치면 세 집합의 공통부분이다. ⑤결합법칙: B∩(A∩C)=(B∩A)∩C, ⑥교환법칙: (B∩A)∩C=(A∩B)∩C. 정답: ①차집합 정의,②드모르간,③분배,④여집합 성질,⑤결합,⑥교환.",
+    ],
+    "shade": "B∩(A∪B)"
+  },
+  "caption": "첫 단계: B∩(A∪B)는 흡수법칙에 의해 B이다. 색칠한 B 영역이 첫 괄호의 결과다.",
   "sourceConditions": [
     {
       "id": "source",
@@ -103,11 +24,11 @@
     },
     {
       "id": "method",
-      "condition": "한 문항 한 장: 4개 그림을 패널로 합쳤다.",
+      "condition": "원래 도식의 경우별 관계를 공식 엔진의 표시 크기에 맞추어 별도 플랜으로 보존한다. 다른 그림은 동일 문항의 나머지 solution 플랜에서 확인한다.",
       "mappedTo": "diagram"
     }
   ],
   "newVisualInformation": [
-    "첫 괄호 B∩(A∪B)는 B의 모든 부분이다. 흡수법칙으로 B가 남는다. 다음 그림의 A 안에서 빼는 부분과 구별한다. 두 번째 괄호 A−(A∩Cᶜ)에서 지금 색칠한 영역 A∩Cᶜ를 A로부터 뺀다. ①차집합 정의로 A∩(A∩Cᶜ)ᶜ, ②드모르간 법칙으로 A∩(Aᶜ∪C)로 바꾼다. 이 패널의 음영은 남길 부분이 아니라 제거할 부분이다. 제거 후 A와 C의 공통 부분만 남는다. ③분배법칙으로 (A∩Aᶜ)∪(A∩C), ④여집합 성질로 ∅∪(A∩C)=A∩C이다. 첫 괄호의 B와 남은 A∩C를 겹치면 세 집합의 공통부분이다. ⑤결합법칙: B∩(A∩C)=(B∩A)∩C, ⑥교환법칙: (B∩A)∩C=(A∩B)∩C. 정답: ①차집합 정의,②드모르간,③분배,④여집합 성질,⑤결합,⑥교환."
+    "첫 단계: B∩(A∪B)는 흡수법칙에 의해 B이다. 색칠한 B 영역이 첫 괄호의 결과다."
   ]
 }

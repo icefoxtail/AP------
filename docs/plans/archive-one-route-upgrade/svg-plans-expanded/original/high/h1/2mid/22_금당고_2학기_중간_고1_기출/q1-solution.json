@@ -3,7 +3,7 @@
   "panels": [
     {
       "caption": {
-        "text": "경우 1"
+        "text": "①: 2에서 두 화살표"
       },
       "plan": {
         "capability": "set-diagram-figure-v1",
@@ -80,73 +80,7 @@
     },
     {
       "caption": {
-        "text": "경우 2"
-      },
-      "plan": {
-        "capability": "set-diagram-figure-v1",
-        "diagram": {
-          "kind": "MAPPING",
-          "columns": [
-            {
-              "id": "X",
-              "name": "X",
-              "elements": [
-                "1",
-                "3",
-                "5",
-                "7"
-              ]
-            },
-            {
-              "id": "Y",
-              "name": "Y",
-              "elements": [
-                "1",
-                "2"
-              ]
-            }
-          ],
-          "arrows": [
-            {
-              "from": {
-                "column": 0,
-                "element": 0
-              },
-              "to": {
-                "column": 1,
-                "element": 0
-              },
-              "style": "SOLID"
-            },
-            {
-              "from": {
-                "column": 0,
-                "element": 1
-              },
-              "to": {
-                "column": 1,
-                "element": 0
-              },
-              "style": "SOLID"
-            },
-            {
-              "from": {
-                "column": 0,
-                "element": 3
-              },
-              "to": {
-                "column": 1,
-                "element": 1
-              },
-              "style": "SOLID"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "caption": {
-        "text": "경우 3"
+        "text": "③: 각 원소에 하나씩"
       },
       "plan": {
         "capability": "set-diagram-figure-v1",
@@ -204,153 +138,6 @@
               "to": {
                 "column": 1,
                 "element": 3
-              },
-              "style": "SOLID"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "caption": {
-        "text": "경우 4"
-      },
-      "plan": {
-        "capability": "set-diagram-figure-v1",
-        "diagram": {
-          "kind": "MAPPING",
-          "columns": [
-            {
-              "id": "X",
-              "name": "X",
-              "elements": [
-                "1",
-                "2",
-                "3",
-                "4"
-              ]
-            },
-            {
-              "id": "Y",
-              "name": "Y",
-              "elements": [
-                "2",
-                "4",
-                "6",
-                "8"
-              ]
-            }
-          ],
-          "arrows": [
-            {
-              "from": {
-                "column": 0,
-                "element": 0
-              },
-              "to": {
-                "column": 1,
-                "element": 0
-              },
-              "style": "SOLID"
-            },
-            {
-              "from": {
-                "column": 0,
-                "element": 0
-              },
-              "to": {
-                "column": 1,
-                "element": 1
-              },
-              "style": "SOLID"
-            },
-            {
-              "from": {
-                "column": 0,
-                "element": 1
-              },
-              "to": {
-                "column": 1,
-                "element": 2
-              },
-              "style": "SOLID"
-            },
-            {
-              "from": {
-                "column": 0,
-                "element": 2
-              },
-              "to": {
-                "column": 1,
-                "element": 3
-              },
-              "style": "SOLID"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "caption": {
-        "text": "경우 5"
-      },
-      "plan": {
-        "capability": "set-diagram-figure-v1",
-        "diagram": {
-          "kind": "MAPPING",
-          "columns": [
-            {
-              "id": "X",
-              "name": "X",
-              "elements": [
-                "1",
-                "2",
-                "3",
-                "4",
-                "5"
-              ]
-            },
-            {
-              "id": "Y",
-              "name": "Y",
-              "elements": [
-                "-1",
-                "0",
-                "1"
-              ]
-            }
-          ],
-          "arrows": [
-            {
-              "from": {
-                "column": 0,
-                "element": 0
-              },
-              "to": {
-                "column": 1,
-                "element": 0
-              },
-              "style": "SOLID"
-            },
-            {
-              "from": {
-                "column": 0,
-                "element": 2
-              },
-              "to": {
-                "column": 1,
-                "element": 1
-              },
-              "style": "SOLID"
-            },
-            {
-              "from": {
-                "column": 0,
-                "element": 4
-              },
-              "to": {
-                "column": 1,
-                "element": 2
               },
               "style": "SOLID"
             }
@@ -359,7 +146,7 @@
       }
     }
   ],
-  "caption": "보기 1의 원래 대응을 그대로 옮겼다. 정의역 X의 각 원소에서 출발하는 화살표 수를 확인하고, 도착점이 같은지는 별개로 생각한다. 함수 여부의 판정은 표시하지 않는다. 보기 2의 원래 대응을 그대로 옮겼다. 보기 3의 원래 대응을 그대로 옮겼다. 보기 4의 원래 대응을 그대로 옮겼다. 보기 5의 원래 대응을 그대로 옮겼다.",
+  "caption": "함수는 정의역의 각 원소에서 화살표가 정확히 하나씩 나가야 한다. 왼쪽 ①은 2에서 화살표가 두 개라 함수가 아니다. 오른쪽 ③은 −1, 0, 1 모두 하나씩 대응하므로 함수이다. 원문의 나머지 도식에서 ②와 ⑤는 일부 입력에 대응이 없고, ④는 1에서 중복 대응하며 4에서 대응이 없다. 따라서 답은 ③이다.",
   "sourceConditions": [
     {
       "id": "source",
@@ -368,11 +155,12 @@
     },
     {
       "id": "method",
-      "condition": "한 문항 한 장: 5개 그림을 패널로 합쳤다.",
+      "condition": "원본 다섯 대응 중 중복 화살표 ①과 정상 함수 ③을 2패널로 선별하고 ②·④·⑤의 판정 근거를 캡션에서 정확히 유지한다. 원본 문제 그림의 나머지 도식도 함께 대조한다.",
       "mappedTo": "diagram"
     }
   ],
   "newVisualInformation": [
-    "보기 1의 원래 대응을 그대로 옮겼다. 정의역 X의 각 원소에서 출발하는 화살표 수를 확인하고, 도착점이 같은지는 별개로 생각한다. 함수 여부의 판정은 표시하지 않는다. 보기 2의 원래 대응을 그대로 옮겼다. 보기 3의 원래 대응을 그대로 옮겼다. 보기 4의 원래 대응을 그대로 옮겼다. 보기 5의 원래 대응을 그대로 옮겼다."
-  ]
+    "함수는 정의역의 각 원소에서 화살표가 정확히 하나씩 나가야 한다. 왼쪽 ①은 2에서 화살표가 두 개라 함수가 아니다. 오른쪽 ③은 −1, 0, 1 모두 하나씩 대응하므로 함수이다. 원문의 나머지 도식에서 ②와 ⑤는 일부 입력에 대응이 없고, ④는 1에서 중복 대응하며 4에서 대응이 없다. 따라서 답은 ③이다."
+  ],
+  "columns": 1
 }

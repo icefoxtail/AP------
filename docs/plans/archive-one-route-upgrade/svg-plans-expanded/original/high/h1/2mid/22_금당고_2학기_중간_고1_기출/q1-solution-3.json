@@ -1,0 +1,79 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "X",
+        "elements": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "Y",
+        "elements": [
+          "-1",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 4
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "원문 도식 ⑤에서는 X의 2와 4가 Y의 어떤 원소에도 대응하지 않으므로 함수가 아니다. 정의역의 모든 원소에서 정확히 한 화살표가 나와야 한다. 정답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 대응 중 $X$에서 $Y$로의 함수인 것은? [3.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원래 도식의 경우별 관계를 공식 엔진의 표시 크기에 맞추어 별도 플랜으로 보존한다. 다른 그림은 동일 문항의 나머지 solution 플랜에서 확인한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "원문 도식 ⑤에서는 X의 2와 4가 Y의 어떤 원소에도 대응하지 않으므로 함수가 아니다. 정의역의 모든 원소에서 정확히 한 화살표가 나와야 한다. 정답은 ③이다."
+  ]
+}
