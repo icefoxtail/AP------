@@ -1,0 +1,51 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "0",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "a의 범위",
+        "color": "BLUE"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "0",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "b의 범위",
+        "color": "WARM"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "두 수는 음수"
+  },
+  "caption": "√a√b=−√(ab)이면 a<0, b<0, ab>0이다. 따라서 Dㄱ=a²−4b와 Dㄹ=25+4ab는 항상 양수다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a,b는 0이 아닌 실수이고 √a√b=−√(ab)이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "두 수 모두 음수인 공통 범위를 부호 수직선으로 보인다."
+  ],
+  "sourceQuote": "$a<0, b<0$이고, $ab>0$이다."
+}

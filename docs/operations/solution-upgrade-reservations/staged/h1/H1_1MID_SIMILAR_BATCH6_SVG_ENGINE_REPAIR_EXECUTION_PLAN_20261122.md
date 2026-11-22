@@ -1,13 +1,19 @@
 # 고1 1학기 중간 유사 6종 — SVG 엔진 24칸 정식 수리 플랜 (Codex 인계)
 
-> **상태: PLAN_COMMITTED / ENGINE_NOT_RUN / JS_AND_SVG_NOT_CHANGED**  
+> **상태: PLAN_JSON_DRAFTS_COMMITTED / ENGINE_LINT_BLOCKED / ENGINE_NOT_RUN / JS_AND_SVG_NOT_CHANGED**  
 > 작성 2026-11-22 KST · 검수 소유 GPT · 엔진 실행 소유 별도 Codex SVG 작업자
+
+## 실제 SVG 엔진 입력 JSON 초안 — 이번 재작업의 우선 정본
+
+- [24개 `plan.json` · `item.json` · `publish.json` 실제 파일 목록](H1_1MID_20261122_PLAN_JSON_DRAFTS/README.md), [기계형 인덱스](H1_1MID_20261122_PLAN_JSON_DRAFTS/manifest.json). 24폴더 × 3개 JSON = 72개 입력 초안. 각각은 정확한 `capability`·수치·`sourceConditions`·`newVisualInformation`·`sourceQuote`를 갖는다.
+- 원본 EXEMPT/UNSUPPORTED 24개 파일은 역사 증거로 그대로 두고 **새 JSON을 직접 엔진 입력**으로 전달한다. 처음부터 새 plan을 작성하는 지시가 아니다. 실제 엔진이 거절한 필드·라벨만 수정하고 재렌더한다.
+- 이 검수 환경의 공식 린터는 `ModuleNotFoundError: No module named 'visual_engine'`로 막혔다. JSON 파싱·원문 인용·문항 경로·핵심 수학 수치만 별도로 확인했다. **24개 모두 `ENGINE_LINT_NOT_RUN`/`RENDER_NOT_RUN`**, 그중 F-12/15/21은 `ENGINE_SUPPORT_CHECK`이다. 이것은 `ARCHIVE_BOUND` 증거가 아니다.
 
 ## 0. 목표·경계와 출처
 
 - 목표: 2026년 고1 1학기 중간 유사 **6종·133문항** 수학/연결이미지 검수에서 원본 기출 이미지 1:1 계승 규칙과 충돌한 **누락 문제 이미지 6 + 해설 이미지 18 = 24칸**을 공식 SVG 엔진에서 다시 생성·연결하고, 학생 화면과 독립 검수까지 마감한다. 기존 연결 **SVG 46개는 실물 렌더 QA 통과**했고 새 결함을 발견하지 않았으므로 수정 대상에서 제외한다.
 - [동일 판본의 전수 감사 보고서](H1_1MID_SIMILAR_BATCH6_VISUAL_QA_20261122.md) 및 6개 `26_*_DEEP_AUDIT.md`가 이번 계획의 검수 인계다. 기존 고1 2학기 기말 유사 23종의 6개 SVG 결함은 **이 작업 범위 밖**, 앞선 [별도 계획](H1_2FINAL_SIMILAR_SVG_ENGINE_REPAIR_EXECUTION_PLAN_20261122.md)에서 계속 OPEN이다.
-- 감사 전용 브랜치: `work/solution-upgrade-h1-similar-1mid-20261122`. 소스 기준 커밋 `ebe97fab7ea5ea9716638d20764d66dde1d76b2e`. 이 브랜치에서는 **오직 검수 MD와 플랜만 작성**했고 JS/SVG/엔진/원본 기출을 수정하지 않았다.
+- 감사 전용 브랜치: `work/solution-upgrade-h1-similar-1mid-20261122`. 소스 기준 커밋 `ebe97fab7ea5ea9716638d20764d66dde1d76b2e`. 이 브랜치에는 **검수 MD·실행 지시서와 별도 JSON 패킷 24세트(72개)만 작성**했고 JS/SVG/엔진/원본 기출을 수정하지 않았다.
 - 실제 수정자는 최신 `origin/main` 기준 **별도 worktree + 새 수리 브랜치**(예: `work/h1-1mid-similar-svg-repair-20261122`)를 만들고, 시작 시 아래 Git blob SHA와 실제 JS 참조가 현재 main에서 달라졌는지 확인한다. 달라졌으면 해당 qid만 재검수하고 계획의 차이를 기록한다.
 - 새/교체 SVG는 `archive/tools/geometry-equation/`의 **공식 SVG 엔진만 사용**한다. 수작업 SVG, 스크립트로 직접 만든 SVG, XML 편집 대체, 다른 렌더러 산출 SVG 게시 금지. 스캔 원본 PNG는 정보 참고용이며 새로운 수정 PNG를 만드는 작업이 아니다.
 
@@ -249,11 +255,11 @@
 
 1. **격리·판본:** 최신 main 기반 작업용 `git worktree`(루트 체크아웃 변경 금지)를 만들고 해당 JS/blob 및 원본 자산 SHA, sourceQid, 기존 유사 plan 경로를 읽는다. 다른 작업 줄의 변경은 보존한다. plan 전용 브랜치에 SVG/JS를 수정하지 않는다.
 2. **엔진 복원:** `archive/tools/geometry-equation/ops/claude-batch/restore.sh`로 `.tmp/work/` 엔진을 준비하고, `ops/svg-m1/` 리소스를 `.tmp/svg-m1/`에 복원한다. 플랫폼별 실제 설치 경로(Python/Node/Chromium)는 현재 `HANDOFF_SVG_CODEX.md`에서 확인한다. 엔진 문서의 과거 모델/캠페인 예시는 이번 사용자 범위보다 우선하지 않는다.
-3. **각 슬롯 packet:** 현행 유사 JS `sourcePath`, `ordinal`을 넣은 `item.json`, 공식 엔진 `plan.json`, 결과 목표를 담은 `publish.json`을 `.tmp/` 하위의 F-ID별 작업 폴더에 만든다. 기존 `EXEMPT/UNSUPPORTED` JSON은 결과 이력으로 유지하고, 엔진이 인식하는 **새 plan**을 다시 작성한다. 필요 시 기출의 정상 plan primitive를 참조하되 수치는 반드시 새 문항에서 검산한다.
+3. **각 슬롯 packet:** [실제 JSON 초안 24세트](H1_1MID_20261122_PLAN_JSON_DRAFTS/README.md)의 F-ID별 `item.json`·`plan.json`·`publish.json`을 **먼저 읽어 그대로** 공식 린터에 넣는다. 구형 `EXEMPT/UNSUPPORTED` 기록과 혼동하지 않는다. 거절 코드가 나온 항목만 해당 capability 계약대로 plan을 수정한다. 임시 고유 run 폴더와 새 버전 SHA를 이용해 판본 충돌을 막는다.
 4. **사전 린트:** `node archive/tools/geometry-equation/ops/claude-batch/plan-lint.cjs <plan.json>`. 실패 시 수정하고 PASS 전 렌더하지 않는다.
 5. **렌더:** `node .tmp/work/render.mjs --item <item.json> --plan <plan.json> --out <out-dir>`; `figure-result.json`의 `ARCHIVE_BOUND`와 provenance를 확인한다. PNG는 공식 `node .tmp/svg-m1/svg2png.cjs <figure.svg> <figure.png> 600` 또는 공식 렌더 경로로 만든다. 결함은 plan 수정 → **실제 재렌더**, 미지원은 에러 코드 기록.
 6. **수학·눈 검수:** 생성 그림을 실제 PNG로 보고 §4의 점·기울기·곡선·값·교점·음영·개폐·각도·첨자·문장 가독성을 원문 및 해설과 대조한다. P 문제용의 해답 노출 금지. SVG `role=img/title/desc`, 라벨 최소 글씨, size/alt/caption을 확인한다. PNG/3D/두 곡선은 이전 실패 증상도 재확인한다.
-7. **독립 후보 교체 QA:** 작성자 외의 검수자가 **기존 B/신규 A**를 완전한 학생 문제·해설과 비교하고 `PASS, better=A` 판정을 제출해야 한다. `UNSUPPORTED`는 PASS 아님. SHA-256으로 최종 figure/plan/publish/QA 판본을 결속한다.
+7. **독립 QA:** **신규로 추가하는 그림은 A 단독 PASS/FAIL/MISSING 검수**, 기존 SVG를 교체하는 경우에만 **기존 B/신규 A** 비교와 `better=A` 기준을 적용한다(`HANDOFF_SVG_CODEX.md` §6). `UNSUPPORTED`는 PASS가 아니다. SHA-256으로 최종 figure/plan/publish/QA 판본을 결속한다.
 8. **정식 게시:** `archive/tools/geometry-equation/ops/svg-m1/pubflow.py`의 현행 `--batch` manifest(`exam/review/rows/triage/camp`)와 replacement의 `replace:true` 규칙을 따른다. 신규 SVG는 고유 경로에 정식 게시하고 구 자산·원본 PNG·기존 46 SVG를 보존한다. 각 JS의 지정 qid `image` 또는 `solutionImage`(필요한 alt/caption/size)만 연결한다. 기존 plan 기록이 EXEMPT인 변경은 해당 문항의 새 공식 plan 기록과 원본 증거를 같이 인계한다.
 9. **실제 학생 QA:** 해당 6개 시험지 `archive/engine.html?data=exams/similar/high/h1/1mid/<exam.js>&mode=exam|sol|ans`를 Chrome에서 열고 PC·375px·A4 출력·중요 그림 크기/잘림·표기를 검사한다. Golden/Negative 표본, 변경 문항의 유사 선택지/정답 불변 및 연동 메타·바인딩 규칙에 대한 관련 검사도 정상 실행한다.
 10. **Git 인계:** 정식 게시 SVG 최대 24개, 바뀐 시험지 JS 최대 6개, 필요한 판본증거/현행 plan만 수리 브랜치에 커밋한다. 임시 PNG/렌더 로그/스크린샷을 Git에 넣지 않고 공용 Drive 증거 규약을 따른다. PR, main 병합, 운영 배포는 독립된 승인/상태로 기록한다. GIF/새 helper/엔진 코드 변경은 이 캠페인에서 자동으로 하지 않는다.

@@ -1,0 +1,137 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      7,
+      -5,
+      12
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "1",
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "-8",
+          "10"
+        ],
+        "label": "f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "1",
+          "6",
+          "-1"
+        ],
+        "domain": [
+          "-8",
+          "10"
+        ],
+        "label": "g(x)",
+        "color": "WARM"
+      },
+      {
+        "id": "h1",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "0"
+        ],
+        "domain": [
+          "-8",
+          "10"
+        ],
+        "label": "y=-3",
+        "color": "GREEN"
+      },
+      {
+        "id": "h2",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-8",
+          "10"
+        ],
+        "label": "y=1",
+        "color": "GREEN"
+      },
+      {
+        "id": "h3",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "0"
+        ],
+        "domain": [
+          "-8",
+          "10"
+        ],
+        "label": "y=6",
+        "color": "GREEN"
+      },
+      {
+        "id": "h4",
+        "kind": "LINE",
+        "coefficients": [
+          "10",
+          "0"
+        ],
+        "domain": [
+          "-8",
+          "10"
+        ],
+        "label": "y=10",
+        "color": "GREEN"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "U",
+          "x": "0",
+          "y": "1",
+          "unnamed": true
+        },
+        {
+          "id": "V",
+          "x": "5",
+          "y": "6",
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "두 포물선 f,g의 꼭짓점 높이 −3,10과 공통점의 높이 1,6에서 수평선은 서로 다른 세 점을 지난다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f=(x−2)²−3, g=−(x−3)²+10이다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "공통점은 (0,1),(5,6)이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 곡선을 서로 다른 색·직접 라벨로, 네 수평선을 읽을 수 있게 구별한다."
+  ],
+  "sourceQuote": "가능한 $t$는"
+}

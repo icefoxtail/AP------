@@ -1,0 +1,121 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "k=1인 경우"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "2",
+            "-6",
+            "1"
+          ],
+          "domain": [
+            -2,
+            6
+          ],
+          "viewport": [
+            -3,
+            7,
+            -10,
+            7
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "lines": [
+              {
+                "id": "l",
+                "slope": "-4",
+                "intercept": "1",
+                "label": "y=-4x+1",
+                "labelAt": "END"
+              }
+            ],
+            "points": [
+              {
+                "id": "T",
+                "x": "1",
+                "y": "-3"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "k=−1인 경우"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "0",
+            "-2",
+            "-1"
+          ],
+          "domain": [
+            -4,
+            4
+          ],
+          "viewport": [
+            -5,
+            5,
+            -10,
+            7
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "lines": [
+              {
+                "id": "l",
+                "slope": "-4",
+                "intercept": "1",
+                "label": "y=-4x+1",
+                "labelAt": "END"
+              }
+            ],
+            "points": [
+              {
+                "id": "T",
+                "x": "1",
+                "y": "-3"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "k=1과 k=−1에서 포물선은 모두 직선 y=−4x+1과 T(1,−3)에서 접한다. 두 패널은 예시이며 모든 k는 k(x−1)²로 증명한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f_k(x)−(−4x+1)=k(x−1)²이고 k≠0이다.",
+      "mappedTo": "panels"
+    }
+  ],
+  "newVisualInformation": [
+    "부호가 다른 두 k에서도 공통 접점 T(1,−3)을 가진다."
+  ],
+  "sourceQuote": "따라서 $a=-4$이고"
+}

@@ -1,0 +1,56 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "0",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "5"
+      },
+      {
+        "id": "L",
+        "x": "-sqrt(5)",
+        "y": "0"
+      },
+      {
+        "id": "R",
+        "x": "sqrt(5)",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "k",
+      "y": "D/4"
+    }
+  },
+  "caption": "중근 조건 D/4=5−k²=0의 두 해 k=−√5,√5를 포물선의 x절편으로 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P=A,Q=−B 또는 P=B,Q=−A에서 동일하게 D/4=5−k²다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 실근의 부호가 반대이므로 곱이 −5임을 시각적으로 확인한다."
+  ],
+  "sourceQuote": "$5-k^2=0$"
+}

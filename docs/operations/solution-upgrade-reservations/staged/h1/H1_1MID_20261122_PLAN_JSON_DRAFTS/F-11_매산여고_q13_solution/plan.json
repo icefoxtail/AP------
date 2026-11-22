@@ -1,0 +1,114 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "k=8: 서로 다른 두 교점"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "8",
+            "1",
+            "2"
+          ],
+          "domain": [
+            -4,
+            2
+          ],
+          "viewport": [
+            -5,
+            3,
+            3,
+            25
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "lines": [
+              {
+                "id": "l",
+                "slope": "-3",
+                "intercept": "7",
+                "label": "y=-3x+7",
+                "labelAt": "END"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "k=9: 한 점에서 접함"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "9",
+            "1",
+            "2"
+          ],
+          "domain": [
+            -4,
+            2
+          ],
+          "viewport": [
+            -5,
+            3,
+            3,
+            25
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [],
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "overlays": {
+            "lines": [
+              {
+                "id": "l",
+                "slope": "-3",
+                "intercept": "7",
+                "label": "y=-3x+7",
+                "labelAt": "END"
+              }
+            ],
+            "points": [
+              {
+                "id": "T",
+                "x": "-1",
+                "y": "10"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "자연수 k=8은 서로 다른 두 교점을 만들고 경계 k=9는 한 점에서 접하므로 가능한 최댓값은 8이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "교점 방정식의 D/4=18−2k이므로 k<9다.",
+      "mappedTo": "panels"
+    }
+  ],
+  "newVisualInformation": [
+    "두 교점과 접점 사이의 경계 변화를 비교한다."
+  ],
+  "sourceQuote": "$18-2k>0$"
+}

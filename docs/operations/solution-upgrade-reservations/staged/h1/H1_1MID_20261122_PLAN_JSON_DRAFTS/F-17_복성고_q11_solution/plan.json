@@ -1,0 +1,43 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "100",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "정수 b",
+        "integerPoints": {
+          "range": [
+            "95",
+            "100"
+          ]
+        },
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "a=5이면 b≤100"
+  },
+  "caption": "D/4=(12a−60)k+4a²−b가 모든 실수 k에서 0 이상이려면 a=5이고 b≤100이어야 한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "모든 실수 k에서 판별식이 음수가 아닌 조건은 12a−60=0, 100−b≥0이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "b의 상한 100이 닫힌 끝점임을 보인다."
+  ],
+  "sourceQuote": "최댓값은"
+}

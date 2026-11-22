@@ -1,0 +1,103 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "0",
+          "-1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V1",
+        "x": "0",
+        "y": "4"
+      },
+      {
+        "id": "V2",
+        "x": "0",
+        "y": "-2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "formula": "-x^2/2+4",
+    "referenceCurves": [
+      {
+        "id": "g",
+        "coefficients": [
+          "-2",
+          "0",
+          "1"
+        ],
+        "intersectionX": [
+          "-2",
+          "2"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2/3",
+          "y": "34/9"
+        },
+        {
+          "id": "B",
+          "x": "-2/3",
+          "y": "34/9"
+        },
+        {
+          "id": "C",
+          "x": "-2/3",
+          "y": "-14/9"
+        },
+        {
+          "id": "D",
+          "x": "2/3",
+          "y": "-14/9"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "R",
+          "points": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "t=2/3에서 직사각형 ABCD의 가로는 4/3, 세로는 16/3이고 둘레가 40/3으로 최대다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "위 곡선 y=−x²/2+4, 아래 곡선 y=x²−2의 사이에 직사각형이 놓인다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "둘레는 −3t²+4t+12이며 꼭짓점 t=2/3이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "최대 상황의 네 꼭짓점을 정확한 분수 좌표로 배치한다."
+  ],
+  "sourceQuote": "둘레의 최댓값은"
+}

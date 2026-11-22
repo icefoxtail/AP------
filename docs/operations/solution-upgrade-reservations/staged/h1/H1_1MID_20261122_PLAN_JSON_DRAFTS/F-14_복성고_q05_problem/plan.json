@@ -1,0 +1,60 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 4
+      },
+      "height": 5,
+      "names": "ABCDEFGH"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "F",
+      "style": "AUTO",
+      "color": "BLUE"
+    },
+    {
+      "from": "F",
+      "to": "C",
+      "style": "AUTO",
+      "color": "BLUE"
+    },
+    {
+      "from": "C",
+      "to": "A",
+      "style": "AUTO",
+      "color": "BLUE"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "A",
+        "F",
+        "C"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "solidCaption": {
+    "text": "직육면체 ABCD–EFGH"
+  },
+  "caption": "직육면체 ABCD–EFGH에서 △AFC를 강조한다. 세 변은 각 면의 대각선이며 개별 모서리의 실제 수치는 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "서로 수직인 옆모서리 AE,BF,CG,DH가 있고 모든 모서리 길이의 합이 44다.",
+      "mappedTo": "solids"
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 AFC의 세 면 대각선 위치를 학생이 읽을 수 있게 한다."
+  ],
+  "sourceQuote": "삼각형 $AFC$의 세 변"
+}

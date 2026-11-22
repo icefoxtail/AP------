@@ -1,0 +1,41 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "15/4",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "허용 k",
+        "integerPoints": true,
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "두 조건의 공통 구간"
+  },
+  "caption": "두 이차함수가 모두 y=−x+k와 만나지 않는 조건은 −3<k<15/4이며, 정수 k는 −2부터 3까지다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫 포물선은 k<15/4, 둘째 포물선은 k>−3이 되어야 한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "열린 끝점과 가능한 여섯 정수점을 표시한다."
+  ],
+  "sourceQuote": "가능한 정수는"
+}

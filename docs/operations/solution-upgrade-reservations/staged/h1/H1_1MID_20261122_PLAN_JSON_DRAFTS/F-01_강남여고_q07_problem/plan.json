@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "formula": "x^2",
+    "referenceLines": [
+      {
+        "id": "l",
+        "slope": "2",
+        "intercept": "6",
+        "intersectionX": [
+          "1-sqrt(7)",
+          "1+sqrt(7)"
+        ],
+        "hideLabel": true
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "1-sqrt(7)"
+        },
+        {
+          "id": "Q",
+          "curveX": "1+sqrt(7)"
+        }
+      ]
+    }
+  },
+  "caption": "y=x²와 미지의 직선이 서로 다른 두 점 P, Q에서 만나는 모식도. 직선의 식과 두 번째 교점의 좌표는 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "포물선 y=x²와 직선 y=ax+b가 P,Q에서 만난다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "P의 x좌표 1−√7만 문제에서 주어진다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "P,Q의 상대 위치만 표시하고 미지수 a,b는 밝히지 않는다."
+  ],
+  "sourceQuote": "이차함수 $y=x^2$의 그래프와 직선"
+}

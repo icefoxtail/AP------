@@ -1,0 +1,50 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "4",
+      "-5",
+      "1"
+    ],
+    "domain": [
+      -1,
+      6
+    ],
+    "viewport": [
+      -2,
+      7,
+      -4,
+      8
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "5/2",
+        "y": "-9/4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        1,
+        4
+      ],
+      "y": []
+    }
+  },
+  "caption": "f(x)=(x−1)(x−4)의 두 영점 1과 4, 꼭짓점을 보여 주는 해설 그래프.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=2,b=1/4에서 새 근 2a=4, 4b=1이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 근 1과 4를 x축에 표시한다."
+  ],
+  "sourceQuote": "두 근은 $2a=4$, $4b=1$이다."
+}

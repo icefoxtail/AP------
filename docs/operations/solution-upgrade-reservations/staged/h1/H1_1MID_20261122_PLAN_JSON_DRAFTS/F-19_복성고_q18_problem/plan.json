@@ -1,0 +1,118 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-18",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "functionName": "f",
+    "viewport": [
+      -8,
+      9,
+      -22,
+      40
+    ],
+    "axisSqueeze": true,
+    "overlays": {
+      "lines": [
+        {
+          "id": "L",
+          "slope": "-3",
+          "intercept": "18",
+          "label": "y=-3x+b",
+          "labelAt": "END"
+        }
+      ],
+      "points": [
+        {
+          "id": "A",
+          "axis": "x",
+          "value": "6"
+        },
+        {
+          "id": "B",
+          "axis": "x",
+          "value": "-3"
+        },
+        {
+          "id": "D",
+          "axis": "y",
+          "value": "18"
+        },
+        {
+          "id": "C",
+          "curveX": "-6"
+        },
+        {
+          "id": "Z",
+          "x": "0",
+          "y": "0"
+        }
+      ],
+      "segments": [
+        {
+          "id": "ZC",
+          "from": "Z",
+          "to": "C",
+          "dashed": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "S1",
+          "points": [
+            "A",
+            "Z",
+            "D"
+          ],
+          "fill": "LIGHT"
+        },
+        {
+          "id": "S2",
+          "points": [
+            "B",
+            "Z",
+            "D",
+            "C"
+          ],
+          "fill": "MEDIUM"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "Z": "O"
+  },
+  "caption": "포물선과 기울기 −3인 직선의 교점 A,C 및 B,O,D를 그려 S₁=△AOD와 S₂=사각형 BODC의 영역만 구분한다. 미지수 a,b의 숫자는 표시하지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "포물선 y=(x+3)(x−a)와 직선 y=−3x+b가 A(a,0),C에서 만난다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "S₁:S₂=1:2 조건을 주었지만 a의 값을 드러내지 않는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 넓이를 다른 음영으로 표시하고 영역 경계를 보존한다."
+  ],
+  "sourceQuote": "삼각형 $AOD$의 넓이를 $S_1$"
+}

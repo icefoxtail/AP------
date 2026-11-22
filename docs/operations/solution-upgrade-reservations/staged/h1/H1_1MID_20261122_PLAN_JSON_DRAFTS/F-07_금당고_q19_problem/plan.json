@@ -1,0 +1,160 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "U"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "V"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "U",
+    "V",
+    "T"
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c1",
+    "c2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sUT",
+      "refs": [
+        "U",
+        "T"
+      ]
+    },
+    {
+      "id": "sTV",
+      "refs": [
+        "T",
+        "V"
+      ]
+    }
+  ],
+  "hiddenPointNames": [
+    "U",
+    "V",
+    "T"
+  ],
+  "planeMarks": {
+    "dimensions": [
+      {
+        "id": "d7",
+        "from": "U",
+        "to": "V",
+        "label": "7",
+        "side": "ABOVE",
+        "style": "BAR"
+      }
+    ]
+  },
+  "caption": "서로 외접하는 두 구의 중심을 지나는 단면 모식도. 중심 사이 거리 7만 표시하며 개별 반지름은 미지수다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 구는 외접하고 중심 사이 거리는 7이다.",
+      "mappedTo": "mathPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "두 구의 겉넓이 합은 100π다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "각 반지름 숫자나 부피의 결론을 그림에 적지 않는다."
+  ],
+  "sourceQuote": "서로 외접하고 있다."
+}

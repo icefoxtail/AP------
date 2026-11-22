@@ -1,0 +1,64 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "0",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "허근 조건",
+        "color": "BLUE"
+      },
+      {
+        "kind": "POINTS",
+        "label": "판별식",
+        "band": false,
+        "points": [
+          {
+            "id": "A",
+            "value": "-23",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "5",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "16",
+            "hideName": true
+          }
+        ]
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "판별식 D의 부호"
+  },
+  "caption": "판별식 D<0에서만 서로 다른 두 허근을 가지며, 다섯 보기 중 ④의 D=−23만 음수다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "보기의 판별식은 순서대로 5,0,16,−23,0이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "음의 판별식 영역과 ④의 위치가 다른 보기와 구별된다."
+  ],
+  "sourceQuote": "판별식 $D=B^2-4AC$가 음수여야 한다."
+}

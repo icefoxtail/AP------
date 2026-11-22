@@ -51,7 +51,7 @@
 | F-23 | 팔마고 9번 | 해설 | P2 | `EXEMPT` | `archive/assets/images/26_팔마고_1학기_중간_고1_기출_c/q9-solution.svg` |
 | F-24 | 팔마고 18번 | 해설 | P2 | `EXEMPT` | `archive/assets/images/26_팔마고_1학기_중간_고1_기출_c/q18-solution.svg` |
 
-정확한 학생용 도식 기대값, 기출 이미지 Blob SHA, 현행 plan SHA, 미지원 엔진 조건 및 새 SVG 인수 기준은 [Codex SVG 엔진 24칸 수정 실행 플랜](H1_1MID_SIMILAR_BATCH6_SVG_ENGINE_REPAIR_EXECUTION_PLAN_20261122.md)에 **역할별로** 작성했다. 이를 고쳤다는 뜻은 아니며 현재 24칸 모두 `OPEN`이다.
+이번 재작업의 우선 입력은 **[실제 24개 엔진 `plan.json` 초안 패킷](H1_1MID_20261122_PLAN_JSON_DRAFTS/README.md)**이다. 각 문항의 `item.json`·`publish.json`도 함께 있다. JSON 문법·원문 인용·수학 기본 관계는 확인했지만 SVG 엔진 Python `visual_engine` 모듈이 이 환경에 없어 **공식 plan-lint·렌더는 NOT_RUN**이다.\n\n정확한 학생용 도식 기대값, 기출 이미지 Blob SHA, 현행 plan SHA, 미지원 엔진 조건 및 새 SVG 인수 기준은 [Codex SVG 엔진 24칸 수정 실행 플랜](H1_1MID_SIMILAR_BATCH6_SVG_ENGINE_REPAIR_EXECUTION_PLAN_20261122.md)에 **역할별로** 작성했다. 이를 고쳤다는 뜻은 아니며 현재 24칸 모두 `OPEN`이다.
 
 ## 시각 검수 범위와 남은 문턱
 

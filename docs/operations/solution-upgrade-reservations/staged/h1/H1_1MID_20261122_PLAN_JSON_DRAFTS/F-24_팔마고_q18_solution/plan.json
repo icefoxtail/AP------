@@ -1,0 +1,54 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "12",
+          "0",
+          "-11",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "12"
+      },
+      {
+        "id": "L",
+        "x": "-sqrt(22)/2",
+        "y": "-73/4"
+      },
+      {
+        "id": "R",
+        "x": "sqrt(22)/2",
+        "y": "-73/4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "m=3일 때 y=x⁴−11x²+12는 y축 대칭이고 x축과 서로 다른 네 점에서 만나며 근은 −√u,−√v,√v,√u 순서다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "t=x²의 두 양근 u>v>0에서 네 실근은 ±√u, ±√v다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "짝수함수 대칭 및 서로 다른 네 x절편을 직접 보여 준다."
+  ],
+  "sourceQuote": "$m=3$이면"
+}

@@ -1,0 +1,60 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 4
+      },
+      "height": 5,
+      "names": "ABCDEFGH"
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "F",
+      "style": "AUTO",
+      "color": "BLUE"
+    },
+    {
+      "from": "F",
+      "to": "C",
+      "style": "AUTO",
+      "color": "WARM"
+    },
+    {
+      "from": "C",
+      "to": "A",
+      "style": "AUTO",
+      "color": "GREEN"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "A",
+        "F",
+        "C"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "solidCaption": {
+    "text": "삼각형 AFC의 면 대각선"
+  },
+  "caption": "삼각형 AFC의 AF,FC,AC를 서로 다른 색으로 구별하여 각각 a²+c², b²+c², a²+b²의 관계를 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=a, AD=b, AE=c; AF²=a²+c², FC²=b²+c², AC²=a²+b²이다.",
+      "mappedTo": "solids"
+    }
+  ],
+  "newVisualInformation": [
+    "세 면 대각선을 분리해 길이제곱의 합이 2(a²+b²+c²)가 되는 이유를 보인다."
+  ],
+  "sourceQuote": "$AF^2=a^2+c^2$"
+}

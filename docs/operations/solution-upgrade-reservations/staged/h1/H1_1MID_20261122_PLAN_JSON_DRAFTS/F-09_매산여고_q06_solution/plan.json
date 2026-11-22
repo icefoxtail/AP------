@@ -1,0 +1,89 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "k=−1: x=−1에서 접함"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "1",
+            "2",
+            "1"
+          ],
+          "domain": [
+            -4,
+            2
+          ],
+          "viewport": [
+            -5,
+            3,
+            -1,
+            11
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [],
+          "axisTickValues": {
+            "x": [
+              -1
+            ],
+            "y": []
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "k=4: x=4에서 접함"
+      },
+      "plan": {
+        "capability": "polynomial-spike-v1",
+        "graphPlan": {
+          "family": "polynomial",
+          "coefficients": [
+            "16",
+            "-8",
+            "1"
+          ],
+          "domain": [
+            1,
+            7
+          ],
+          "viewport": [
+            0,
+            8,
+            -1,
+            11
+          ],
+          "sourceDomain": {
+            "kind": "ALL_REALS"
+          },
+          "requiredPoints": [],
+          "axisTickValues": {
+            "x": [
+              4
+            ],
+            "y": []
+          }
+        }
+      }
+    }
+  ],
+  "caption": "k=−1이면 y=(x+1)², k=4이면 y=(x−4)²로 각 포물선은 x축과 한 점에서 접한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "D/4=k²−3k−4=(k+1)(k−4)=0이다.",
+      "mappedTo": "panels"
+    }
+  ],
+  "newVisualInformation": [
+    "해당 k마다 접점이 서로 다름을 두 패널로 보인다."
+  ],
+  "sourceQuote": "$k=-1$일 때 $y=x^2+2x+1=(x+1)^2$"
+}

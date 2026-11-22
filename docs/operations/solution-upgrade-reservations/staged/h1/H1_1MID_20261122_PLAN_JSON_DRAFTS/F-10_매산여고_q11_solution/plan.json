@@ -1,0 +1,41 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "43/8",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "자연수 k",
+        "integerPoints": true,
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "자연수 k가 들어가는 범위"
+  },
+  "caption": "판별식 D=8k−43<0이므로 자연수 k는 1부터 5까지다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "서로 다른 두 허근은 D=8k−43<0과 동치다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "0<k<43/8 사이의 정수점 다섯 개를 표시한다."
+  ],
+  "sourceQuote": "자연수이므로"
+}
