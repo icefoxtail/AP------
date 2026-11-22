@@ -52,3 +52,23 @@ test('x axis name inside the safe area, thin tail pointed into by a leader, obse
     assert.equal((await audit(wide,plain)).status,'PASS');
   }finally{await browser.close();}
 });
+
+// 22 팔마고 기말 q13: ticks one unit apart on a 16-unit window: the numbers 10 and 11 would touch, so every second number stands one row lower under its own tick
+const close={kind:'NORMAL_CURVE',curves:[{id:'X',mean:'10',sd:'2',meanLine:true}],ticks:[{x:'8'},{x:'9'},{x:'10'},{x:'11'},{x:'12'}],shades:[{from:'8',to:'9',color:'WARM'},{from:'9',to:'11',color:'BLUE'},{from:'11',to:'12',color:'WARM'}]};
+test('ticks whose numbers would touch take two rows, each number still centred under its own tick; spaced ticks keep one row',async()=>{
+  const browser=await launchBrowser();
+  try{
+    const compose=async chart=>{
+      const composed=await composeStatChartFigure({plan:plan(chart),model:solveStatChart(chart),identity:assetIdentity('26_테스트|9500','SOLUTION_VISUAL','decisive-relation'),typographyPolicy:{baseFontPx:24.4,displayScale:1,fontFloorCssPx:11},browser});
+      assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+      assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));assert.equal(composed.renderedLayout.status,'PASS');
+      return composed.svg;
+    };
+    const ys=svg=>[0,1,2,3,4].map(i=>boxOf(svg,`x-tick-${i}-label`)[1]);
+    const crowded=ys(await compose(close));
+    assert.deepEqual([crowded[0]===crowded[2],crowded[2]===crowded[4],crowded[1]===crowded[3],crowded[1]>crowded[0]],[true,true,true,true],'ticks 0,2,4 in the first row, 1 and 3 one row lower: '+crowded);
+    const spaced=ys(await compose({...close,span:'2.5',ticks:[{x:'8'},{x:'9'},{x:'10'},{x:'11'},{x:'12'}]}));
+    assert.equal(new Set(spaced).size,1,'with room between the numbers they all stand in one row: '+spaced);
+  }finally{await browser.close();}
+});
+function boxOf(svg,id){return svg.match(new RegExp(`<g id="${id}"[^>]*data-box="([^"]+)"`))[1].split(',').map(Number);}

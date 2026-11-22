@@ -945,7 +945,7 @@ function resolveVenn(spec,placed){
       let best=null;
       for(let y=U.y+4;y+height<=U.y+U.h-4;y+=3)for(let x=U.x+4;x+width<=U.x+U.w-4;x+=3){
         const box={x,y,width,height};
-        if(!boxInCell(box,cell,circles,U,4)||box.y<labelBand||observerMargin(box,cell,circles)<inCellMargin||occupied.some(other=>overlaps(pad(box),other)))continue;
+        if(!boxInCell(box,cell,circles,U,4)||box.y<labelBand||observerMargin(box,cell,circles)<inCellMargin||occupied.some(other=>overlaps(pad(box),other))||leaders.some(l=>segmentHitsBox(l.start,l.end,{x:box.x-1,y:box.y-1,width:box.width+2,height:box.height+2})))continue;
         const score=Math.min(cellClearance(box,cell,circles,U),30);
         if(!best||score>best.score+1e-9)best={x,y,score};
       }
@@ -964,7 +964,7 @@ function resolveVenn(spec,placed){
       let pick=null;
       for(let y=U.y+4;y+height<=U.y+U.h-4;y+=4)for(let x=U.x+4;x+width<=U.x+U.w-4;x+=4){
         const box={x,y,width,height};
-        if(box.y<labelBand||observerMargin(box,0,circles)<LABEL_CLEAR||occupied.some(other=>overlaps(pad(box),other)))continue;
+        if(box.y<labelBand||observerMargin(box,0,circles)<LABEL_CLEAR||occupied.some(other=>overlaps(pad(box),other))||leaders.some(l=>segmentHitsBox(l.start,l.end,{x:box.x-1,y:box.y-1,width:box.width+2,height:box.height+2})))continue;
         for(const dot of dots){
           const nx=Math.max(box.x,Math.min(dot.x,box.x+width)),ny=Math.max(box.y,Math.min(dot.y,box.y+height)),dx=dot.x-nx,dy=dot.y-ny,len=Math.hypot(dx,dy);
           if(len<10||len>150)continue;

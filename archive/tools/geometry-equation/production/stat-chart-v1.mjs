@@ -1537,7 +1537,7 @@ const LEADER_GAP=2,NAME_GAP=10,LABEL_APART=8; // a curve name keeps NAME_GAP px 
 const NORM_XL=44,NORM_XR=482,NORM_TIP=500,NORM_PEAK=140,NORM_PEAK_TALL=260,NORM_TOP=58,NORM_STEP_MAX=2,NORM_STEP_MIN=0.5,NORM_Z_ROW=1.5;
 // A labelled tail beyond about 3 sd is under 2 px high at the usual bell height: no value label or leader dot fits in it (the observer asks the dot for 1 px of room). Such a figure (and only such a figure)
 // draws its tallest curve NORM_PEAK_TALL high instead of NORM_PEAK, so the tail is high enough to point into. The choice depends on the model alone, so the measured size and the drawing agree.
-const NORM_THIN_TAIL=1.7;
+const NORM_THIN_TAIL=1.7,NORM_TICK_APART=8;   // tick numbers nearer than this (px) to each other stand in two rows
 function normalPeakOf(m){
   const sdOf=c=>m.framed?(c.sdScale===undefined?1:N(c.sdScale)):N(c.sd),meanOf=c=>m.framed?0:N(c.mean),sdMin=Math.min(...m.curves.map(sdOf)),byId=new Map(m.curves.map(c=>[c.id,c]));
   for(const s of m.shades){
@@ -1594,11 +1594,17 @@ function normalSpec(m,ctx){
   }
   for(const [i,c] of m.curves.entries())prims.push({t:'polyline',id:`curve-${c.id}`,role:'curve',cls:`ncurve${i}`,points:pts.get(c.id),data:{curve:c.id,mean:c.mean,sd:c.sd},layer:45});
   // ticks and their labels (and the z row)
-  const rowH=Math.ceil(fontPx*NORM_Z_ROW),zy=BASE+TICK+4+rowH;
+  // Ticks so close that their numbers would touch (marks one unit apart on a window of 16 units, two-digit numbers at the Archive font) take two rows: every second label, in the order along the axis,
+  // stands one row lower under its own tick. Only a figure whose labels are nearer than NORM_TICK_APART in one row does this, and the decision follows the font, like the size.
+  const rowH=Math.ceil(fontPx*NORM_Z_ROW);
+  const byPos=m.ticks.map(t=>{const size=labelSize({kind:'MATH',tex:t.tex},fontPx);return {t,x:px(N(t.pos)),w:size.width,h:size.height};}).sort((a,b)=>a.x-b.x);
+  const stagger=byPos.some((a,i)=>i>0&&a.x-byPos[i-1].x-(a.w+byPos[i-1].w)/2<NORM_TICK_APART);
+  const lowerRow=new Set(stagger?byPos.filter((_,i)=>i%2===1).map(e=>e.t.index):[]);
+  const lowerStep=Math.ceil(Math.max(...byPos.map(e=>e.h)))+6,zy=BASE+TICK+4+(stagger?lowerStep:0)+rowH;
   for(const t of m.ticks){
     const x=px(N(t.pos));
     prims.push(L(`x-tick-${t.index}`,'x-tick','tick',x,BASE,x,BASE+TICK,{axis:'x',index:t.index}));
-    labels.push(math(`x-tick-${t.index}-label`,'x-tick',`x-tick-${t.index}`,t.tex,t.text,'center','top',x,BASE+TICK+4,{value:t.text}));
+    labels.push(math(`x-tick-${t.index}-label`,'x-tick',`x-tick-${t.index}`,t.tex,t.text,'center','top',x,BASE+TICK+4+(lowerRow.has(t.index)?lowerStep:0),{value:t.text}));
     if(m.zAxis&&!t.hideZ)labels.push(math(`z-tick-${t.index}-label`,'z-tick',`x-tick-${t.index}`,DISPLAY+qtex(P(t.z)),t.z,'center','top',x,zy,{value:t.z}));
   }
   labels.push(math('x-label','axis-title','x-axis',m.xLabel,m.xLabel,'start','middle',NORM_TIP+8,BASE,{value:m.xLabel}));
@@ -1609,7 +1615,7 @@ function normalSpec(m,ctx){
     labels.push({...(hangul?textLabel(`curve-${c.id}-name`,'curve-name',`curve-${c.id}`,c.label,'start','top',0,0,{curve:c.id,value:c.label}):math(`curve-${c.id}-name`,'curve-name',`curve-${c.id}`,DISPLAY+normalTeX(c.label),c.label,'start','top',0,0,{curve:c.id,value:c.label})),placement:'curve'});
   }
   for(const [j,s] of m.shades.entries())if(s.label!==null)labels.push({...math(`area-${j}`,'area-value',`shade-${j}`,DISPLAY+normalTeX(s.label),s.label,'start','top',0,0,{shade:j,value:s.label}),placement:'area',...(s.labelPlacement==='LEADER'?{leader:true}:{})});
-  const H=Math.ceil((m.zAxis?zy:BASE+TICK+4)+rowH+SAFE);
+  const H=Math.ceil((m.zAxis?zy:BASE+TICK+4+(stagger?lowerStep:0))+rowH+SAFE);
   return {size:{width:W,height:H},prims,labels,normal:{base:BASE,curves:m.curves.map(c=>({id:c.id,peak:[px(meanOf(c)),yOf(c,meanOf(c))],right:[px(meanOf(c)+1.2*sdOf(c)),yOf(c,meanOf(c)+1.2*sdOf(c))],left:[px(meanOf(c)-1.2*sdOf(c)),yOf(c,meanOf(c)-1.2*sdOf(c))]})),regions}};
 }
 const SPEC_BY_KIND={HISTOGRAM:freqSpec,FREQUENCY_POLYGON:freqSpec,STEM_LEAF:stemSpec,BOX_PLOT:boxSpec,SCATTER:scatterSpec,DICE_TABLE:diceSpec,TREE:treeSpec,SLOTS:slotsSpec,DOT_PLOT:dotSpec,NORMAL_CURVE:normalSpec};
