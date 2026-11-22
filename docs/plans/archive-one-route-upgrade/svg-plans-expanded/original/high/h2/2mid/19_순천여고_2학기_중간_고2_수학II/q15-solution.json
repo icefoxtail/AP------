@@ -1,0 +1,90 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-1",
+          "6",
+          "-3"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "2"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "-1"
+      },
+      {
+        "id": "P",
+        "x": "1",
+        "y": "2"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "-1"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-2",
+        "-1"
+      ],
+      "P": [
+        "1",
+        "2"
+      ],
+      "B": [
+        "2",
+        "-1"
+      ]
+    }
+  },
+  "caption": "x=1에서 1+a=2이므로 a=1이다. 주기 4이므로 한 주기 [-2,2]의 양 끝값이 같아야 이어지는데 f(-2)=-2+a=-1이고 f(2)=b+2이므로 b=-3이다. 그림은 한 주기의 그래프로 왼쪽 직선이 P(1,2)에서 포물선으로 이어지고 양 끝점 A(-2,-1), B(2,-1)의 높이가 같다. 따라서 a-b=4이고 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)$가 다음 조건을 만족시킨다.\n<조건>\n(가) $f(x)=\\begin{cases} x+a & (-2 \\le x \\le 1) \\\\ b(x-1)^2+2 & (1 < x \\le 2) \\end{cases}$\n(나) 모든 실수 $x$에 대하여 $f(x)=f(x+4)$이다.\n함수 $f(x)$가 실수 전체의 집합에서 연속일 때, $a-b$의 값은? (단, $a, b$는 상수이다.) [4.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=1, b=-3일 때 P(1,2)에서 두 조각이 이어지고 한 주기의 양 끝점 A, B의 높이가 같음을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "한 주기의 두 조각이 P(1,2)에서 이어지고 양 끝점 A(-2,-1), B(2,-1)의 높이가 같음을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽 끝 점 A에서 올라가는 직선이 점 P에서 위로 볼록한 포물선 조각으로 이어져 내려가 오른쪽 끝 점 B에서 점 A와 같은 높이에 이르는 그래프이다."
+}

@@ -1,0 +1,79 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      2,
+      -2.5,
+      6.5
+    ],
+    "curves": [
+      {
+        "id": "lo",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "1",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=-x^2+x"
+      },
+      {
+        "id": "hi",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "1",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=x^2+x"
+      },
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "color": "GREEN",
+        "label": "f"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "예: f(x)=x일 때를 그렸다. 곡선 y=-x²+x와 y=x²+x 사이에 f가 놓인다. x>0에서 x로 나누면 1-x≤f(x)/x≤1+x이고 x→0+에서 양쪽이 모두 1로 가까워지므로 u=f(x)/x→1이다. 구하는 식은 u²/(2+u)이므로 극한은 1/3이고 p=1, q=3, p+q=4이다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)$가 모든 실수 $x$에 대하여\n$$-x^2+x \\le f(x) \\le x^2+x$$\n를 만족시킬 때, $\\lim_{x \\to 0+} \\frac{\\{f(x)\\}^2}{x\\{2x+f(x)\\}} = \\frac{p}{q}$ 이다. $p+q$의 값을 구하시오. (단, $p, q$는 서로소) [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f가 위아래 두 포물선 사이에 끼는 예를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "원점 근처에서 f가 위아래 두 포물선 사이에 끼고 세 곡선이 원점에서 같은 기울기로 만남을 보인다."
+  ],
+  "accessibilityDescription": "원점에서 만나는 아래로 볼록한 포물선과 위로 볼록한 포물선 사이에 오르는 직선이 끼어 있는 그래프이다."
+}

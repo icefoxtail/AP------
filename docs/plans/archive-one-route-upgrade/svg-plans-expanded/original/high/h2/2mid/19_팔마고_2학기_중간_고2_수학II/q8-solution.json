@@ -1,0 +1,127 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "3"
+        ]
+      },
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "2",
+          "-3"
+        ]
+      },
+      {
+        "coefficients": [
+          "-6",
+          "5"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "1"
+      },
+      {
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "x": "1",
+        "y": "-1"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "-2"
+      },
+      {
+        "id": "B",
+        "x": "-1",
+        "y": "1"
+      },
+      {
+        "id": "C",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "D",
+        "x": "1",
+        "y": "-1"
+      },
+      {
+        "id": "E",
+        "x": "2",
+        "y": "4"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-2",
+        "-2"
+      ],
+      "B": [
+        "-1",
+        "1"
+      ],
+      "C": [
+        "0",
+        "2"
+      ],
+      "D": [
+        "1",
+        "-1"
+      ],
+      "E": [
+        "2",
+        "4"
+      ]
+    }
+  },
+  "caption": "예: 다섯 점 A(-2,-2), B(-1,1), C(0,2), D(1,-1), E(2,4)를 꺾은선으로 이은 연속함수이다. A에서 B로 갈 때 -에서 +로, C에서 D로 갈 때 +에서 -로, D에서 E로 갈 때 -에서 +로 부호가 바뀌어 구간 (-2,-1), (0,1), (1,2)에서 x축을 지난다. 세 구간이 겹치지 않으므로 근은 적어도 3개이고 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 전체 집합에서 연속인 함수 $f(x)$에 대하여 $f(-2)=-2, f(-1)=1, f(0)=2, f(1)=-1, f(2)=4$를 만족한다고 하자. 이때, 방정식 $f(x)=0$이 열린구간 $(-2, 2)$에서 적어도 몇 개의 해를 가지는지 구하시오. [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "다섯 점을 잇는 연속함수가 부호가 바뀌는 세 구간 (-2,-1), (0,1), (1,2)에서 x축을 지남을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "다섯 점을 잇는 연속함수가 부호가 바뀌는 세 구간에서 각각 x축을 지남을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽 아래 점 A에서 올라 점 B와 점 C를 지나 꼭대기에 이르고 점 D로 내려갔다가 오른쪽 위의 점 E로 가파르게 올라가는 꺾은선 그래프이다."
+}

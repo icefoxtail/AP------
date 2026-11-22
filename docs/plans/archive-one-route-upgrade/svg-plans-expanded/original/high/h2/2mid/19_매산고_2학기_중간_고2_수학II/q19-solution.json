@@ -1,0 +1,114 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-2",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2.3,
+      1.5
+    ],
+    "viewport": [
+      -2.3,
+      1.5,
+      -7,
+      3
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "R",
+          "curveX": "-2",
+          "coordinates": true
+        },
+        {
+          "id": "A",
+          "curveX": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "0",
+          "y": "-1",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "1",
+          "intercept": "-1",
+          "label": "l"
+        }
+      ],
+      "segments": [
+        {
+          "id": "aq",
+          "from": "A",
+          "to": "Q"
+        },
+        {
+          "id": "ar",
+          "from": "A",
+          "to": "R"
+        }
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-sqrt(6)/3",
+        "y": "1+4*sqrt(6)/9"
+      },
+      {
+        "id": "W",
+        "x": "sqrt(6)/3",
+        "y": "1-4*sqrt(6)/9"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "W"
+      ]
+    }
+  },
+  "caption": "P(1,0)에서의 접선 l은 y=x-1이고 y축과 만나는 점이 Q(0,-1)이며 곡선과 다시 만나는 점은 R(-2,-3)이다. 그림에서 A는 R과 P 사이의 곡선 위를 움직이는 점이고 삼각형 AQR의 밑변 QR은 직선 l 위에 있다. 넓이는 S(x)=x³-3x+2이고 S′(x)=3(x-1)(x+1)이라 x=-1에서 최대이다. 그림의 A(-1,2)에서 S=4이므로 최댓값은 4이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] 아래쪽 그림과 같이 곡선 $y=x^3-2x+1$ 위의 점 $P(1, 0)$에서의 접선이 $y$축과 만나는 점을 $Q$, 이 곡선과 다시 만나는 점을 $R$라 하자. 점 $R$과 점 $P$ 사이에서 곡선 $y=x^3-2x+1$ 위를 움직이는 점을 $A$라고 할 때, 삼각형 $AQR$의 넓이의 최댓값을 구하는 과정을 서술하시오. [10.0점]\n<img src=\"assets/images/19_매산고_2학기_중간_고2_수학II/q19.png\" alt=\"19_매산고_2학기_중간_고2_수학II Q19\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "접선 l 위의 Q, R과 넓이가 최대인 곡선 위의 점 A(-1,2), 삼각형 AQR을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "접선 l 위의 Q(0,-1), R(-2,-3)와 곡선 위의 점 A(-1,2), 삼각형 AQR을 보여 넓이가 최대인 위치를 알게 한다."
+  ],
+  "accessibilityDescription": "왼쪽 아래에서 올라 꼭대기 A에 이르러 내려가다 점 P 부근에서 가로축을 지나는 삼차곡선과 점 P에서 접하는 오르는 직선 l이 있고, 직선 위의 점 Q와 R, 곡선 위의 점 A를 잇는 두 선분이 그려진 그래프이다."
+}

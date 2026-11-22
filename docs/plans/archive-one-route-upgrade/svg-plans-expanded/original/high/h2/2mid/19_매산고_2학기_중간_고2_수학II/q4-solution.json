@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "1",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2,
+      2,
+      -1,
+      8
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "curveX": "0",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "1",
+          "intercept": "1",
+          "label": "l"
+        }
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-1/2",
+        "y": "3/4"
+      }
+    ]
+  },
+  "caption": "y′=2x+1이므로 점 T(0,1)에서의 접선의 기울기는 1이고 접선 l은 y=x+1이다. 따라서 a=1, b=1이고 a+b=2이다. 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "곡선 $y=x^2+x+1$ 위의 점 $(0, 1)$에서의 접선의 방정식은 $y=ax+b$이다. 이때, $a+b$의 값은? [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "접점 T(0,1)에서의 접선 l(기울기 1, y절편 1)을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "접점 T(0,1)에서의 접선 y=x+1을 곡선과 함께 보여 a=1, b=1을 읽게 한다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선과 세로축 위의 점 T에서 접하는 오르는 직선 l이 나타난 그래프이다."
+}

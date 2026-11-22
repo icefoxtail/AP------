@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "-4",
+          "-2"
+        ],
+        "domain": [
+          null,
+          -1
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "3/2",
+          "1",
+          "-1/2"
+        ],
+        "domain": [
+          -1,
+          1
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          1,
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ]
+    },
+    "jumpValues": [
+      {
+        "x": "-1",
+        "y": "-1"
+      }
+    ]
+  },
+  "caption": "원본 PNG에 나온 왼쪽 하강 선분, 중간 상승 곡선, 오른쪽 y=1 수평선의 개형 모식도이다. 원본에 곡선의 식은 없으므로 중간 조각의 이차식은 시각적 근사로만 사용한다. x=-1에서 두 열린 점 (-1,-2), (-1,0)과 닫힌 점 f(-1)=-1을 구별한다. x=1의 왼쪽 열린 점 (1,2), 닫힌 점 (1,1)과 오른쪽 y=1을 읽으면 a=1, 이어서 x→a-의 극한은 2이고 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)$의 그래프가 다음과 같다.\n<img src=\"assets/images/19_순천고_2학기_중간_고2_수학II/q02.png\" alt=\"19_순천고_2학기_중간_고2_수학II Q02\" />\n$\\lim_{x \\to 1^+} f(x)=a$일 때, $\\lim_{x \\to a^-} f(x)$의 값은? [3.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x→1+의 극한 1(수평선)과 x→1-의 극한 2(왼쪽의 열린 점)를 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=-1의 세 점, x=1 오른쪽 수평선의 높이 1과 왼쪽 곡선이 향하는 열린 점의 높이 2를 원본의 배치대로 보인다."
+  ],
+  "accessibilityDescription": "x=-1의 낮은 열린 점까지 왼쪽 직선은 내려가며, x=-1의 원점 높이 열린 점부터 x=1의 높이 2 열린 점까지 중간 곡선이 올라간다. x=-1에는 높이 -1의 별도 닫힌 점이 있고, x=1부터 오른쪽으로 높이 1의 수평선이 닫힌 점에서 시작한다."
+}

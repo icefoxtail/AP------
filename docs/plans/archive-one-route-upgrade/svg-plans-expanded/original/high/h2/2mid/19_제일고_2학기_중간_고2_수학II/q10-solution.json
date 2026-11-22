@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      3
+    ],
+    "viewport": [
+      -1,
+      3,
+      -5,
+      7
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "curveX": "2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "3",
+          "intercept": "-4",
+          "label": "l"
+        },
+        {
+          "id": "n",
+          "slope": "-1/3",
+          "intercept": "8/3",
+          "label": "n"
+        }
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "-1/4"
+      }
+    ]
+  },
+  "caption": "예: f(x)=x²-x일 때를 그렸다. 점 T(2,2)에서의 접선 l의 기울기가 3이고 l에 수직인 직선 n의 기울기는 -1/3이다. 그래서 f′(2)=3이다. h→0에서 [f(2-3h)-f(2)]/(2h)=(-3/2)·[f(2+u)-f(2)]/u (u=-3h)이므로 극한은 (-3/2)·3=-9/2이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "곡선 $y=f(x)$ 위의 점 $(2, f(2))$에서의 접선과 수직인 직선의 기울기가 $-\\frac{1}{3}$일 때, $\\lim_{h \\to 0} \\frac{f(2-3h)-f(2)}{2h}$의 값을 구하면? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "접점 T에서의 접선 l(기울기 3)과 그에 수직인 직선 n(기울기 -1/3)을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "접점 T(2,2)에서의 접선 l(기울기 3)과 이에 수직인 직선 n(기울기 -1/3)을 곡선과 함께 보인다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선 위의 점 T에서 접하는 가파르게 오르는 직선 l과, T에서 l에 수직으로 완만하게 내려가는 직선 n이 나타난 그래프이다."
+}

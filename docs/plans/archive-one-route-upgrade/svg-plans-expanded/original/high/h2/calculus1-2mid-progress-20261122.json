@@ -43,17 +43,62 @@
           { "no": 17, "problemPng": "q17.png", "issue": "기존 플랜의 왼쪽 곡선 및 x=4 이후 곡선 높이·방향이 원본과 다름", "fix": "표시된 점·기울기를 보존하는 2차 근사 조각으로 수정; 원본에 식이 없어 공식 렌더 재현성은 보류" }
         ],
         "holds": ["q17: 원본의 실제 곡선 방정식은 제공되지 않아 정성적 개형만 근사했으며, 공식 화면 결과와 원본 곡률 비교 필요"]
+      },
+      {
+        "exam": "19_매산고_2학기_중간_고2_수학II",
+        "planCount": 8,
+        "shallowPlanLint": "PASS_8_OF_8",
+        "corrections": 0,
+        "keptOriginalProblemPng": ["q13.png", "q15.png", "q17.png", "q18.png", "q19.png", "q20.png"],
+        "note": "기존 문제 그림은 원본을 유지, q18의 해설 SVG는 원함수 f가 아닌 교점 수 g(t)의 계단함수임을 확인"
+      },
+      {
+        "exam": "19_순천고_2학기_중간_고2_수학II",
+        "planCount": 10,
+        "shallowPlanLint": "PASS_10_OF_10",
+        "corrected": [
+          { "no": 2, "problemPng": "q02.png", "issue": "기존 플랜에서 왼쪽 하강선 및 고립점 f(-1)=-1 누락, 중간 곡선이 직선", "fix": "세 구간과 닫힌 점·열린 점을 원본 기준으로 복원, 중간 곡선은 이차식 개형 근사" },
+          { "no": 6, "problemPng": "q06.png", "issue": "홀함수 조건의 실제 f(-1)=-1, f(1)=1을 고립값으로 오기하고 바깥 곡선을 상수선으로 처리", "fix": "실제 닫힌 점을 조각 끝으로 고정하고 원점 대칭인 양쪽 상승 곡선의 근사 개형을 추가" },
+          { "no": 11, "problemPng": "q11.png", "issue": "기존 플랜의 직선 조각은 원본 곡선과 다르며 원본 접근 불가 설명도 부정확", "fix": "기하 정확성은 보류하고 캡션에 개형 근사·원본 PNG 직접 확인 사실을 명시" }
+        ],
+        "holds": ["q2, q6, q11: 곡선 식이 원본에 주어지지 않은 구간의 곡률은 공식 엔진 렌더로 최종 대조"]
+      },
+      {
+        "exam": "19_순천여고_2학기_중간_고2_수학II",
+        "planCount": 13,
+        "shallowPlanLint": "PASS_13_OF_13",
+        "corrected": [
+          { "no": 2, "problemPng": "q02.png", "issue": "0<x≤1의 상승 직선을 상수로 표현하고 x=1·2의 함수값·열린 점이 잘못 지정됨", "fix": "네 원본 직선 구간, x=1·2의 닫힌 점 및 f(3)=1 고립점을 원본대로 수정" }
+        ]
+      },
+      {
+        "exam": "19_제일고_2학기_중간_고2_수학II",
+        "planCount": 11,
+        "shallowPlanLint": "PASS_11_OF_11",
+        "corrections": 0,
+        "holds": ["q16: 기존 별도 톱니 그래프 SVG의 작은 설명 글씨는 정적 썸네일에서 가독성이 낮음. 공식 엔진 재렌더·화면 크기 검증 필요"]
+      },
+      {
+        "exam": "19_팔마고_2학기_중간_고2_수학II",
+        "planCount": 14,
+        "shallowPlanLint": "PASS_14_OF_14",
+        "corrected": [
+          { "no": 5, "problemPng": "q05.png", "issue": "왼쪽 상승·가운데 하강·오른쪽 상승 구간을 잘못된 선과 수평 구간으로 표현", "fix": "왼쪽 y=x+3, 가운데 y=-x, 오른쪽 y=x-1 및 이차 상승 개형, 원본의 고립점을 추가" },
+          { "no": 16, "problemPng": "q16.png", "issue": "왼쪽 기울기와 오른쪽 하강선이 수평으로 잘못 작성되고 x=0의 열린·닫힌 점이 뒤바뀜", "fix": "원본의 연속 직선 네 조각과 x=-1·0·1의 열린·닫힌 점을 복원" }
+        ],
+        "holds": ["q5: 마지막 곡선의 정확한 식은 미제공이므로 원본 꼭짓점과 상승 개형을 맞춘 2차 근사로만 작성"]
       }
     ],
     "reviewRequired": [
-      { "exam": "19_순천고_2학기_중간_고2_수학II", "no": 11, "why": "원본에는 곡선 조각이 있으나 기존 해설 플랜은 직선 조각 근사; 원본 대체 금지, 기능 지원·시각검증 재판정 필요" }
+      { "exam": "19_순천고_2학기_중간_고2_수학II", "no": 11, "why": "원본에는 곡선 조각이 있으나 기존 해설 플랜은 직선 조각 근사; 원본 대체 금지, 기능 지원·시각검증 재판정 필요" },
+      { "exam": "19_제일고_2학기_중간_고2_수학II", "no": 16, "why": "기존 SVG의 작은 텍스트 가독성·범례를 공식 엔진 재렌더 후 PC·모바일 화면에서 검증" }
     ]
   },
   "gate": {
-    "reviewedExamsShallowPlanLint": "PASS_25_OF_25",
+    "reviewedExamsShallowPlanLint": "PASS_81_OF_81",
     "officialSvgGeneration": "NOT_RUN",
     "browserPcMobileA4VisualValidation": "NOT_RUN",
     "publication": "NOT_RUN"
   },
-  "nextInOrder": "2mid 나머지 2019년 5종의 기존 플랜 점검 후 2020→2026년 순서로 진행"
+  "nextInOrder": "2mid 2019년 7종 160문항의 1차 원본 그림 대조와 플랜 정리가 끝났으며, 다음은 2020년 4종 → 2021~2026년 순서로 진행"
 }

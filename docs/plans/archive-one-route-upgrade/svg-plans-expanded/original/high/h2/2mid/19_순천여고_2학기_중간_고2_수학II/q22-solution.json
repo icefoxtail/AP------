@@ -1,0 +1,109 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "0",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2,
+      4,
+      -18,
+      5
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "3",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "curveX": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "A",
+          "x": "1",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "M",
+          "x": "1",
+          "y": "-6",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l1",
+          "slope": "-6",
+          "intercept": "8",
+          "label": "l1"
+        },
+        {
+          "id": "l2",
+          "slope": "2",
+          "intercept": "0",
+          "label": "l2"
+        }
+      ],
+      "segments": [
+        {
+          "id": "pq",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "am",
+          "from": "A",
+          "to": "M"
+        }
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "-1"
+      }
+    ]
+  },
+  "caption": "접점의 x좌표 t가 점 A(1,2)를 지나는 조건 t²-2t-3=0에서 t=3, -1이다. 접점 P(3,-10)에서의 접선 l1은 y=-6x+8, 접점 Q(-1,-2)에서의 접선 l2는 y=2x이고 두 접선이 A에서 만난다. PQ의 중점 M(1,-6)과 A를 잇는 AM은 길이 8로 수직이고, P, Q에서 직선 x=1까지의 거리는 모두 2이다. 넓이는 (1/2)·8·2+(1/2)·8·2=16이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 4] 점 $A(1, 2)$에서 곡선 $y=-x^2-1$에 그은 두 접선의 접점을 각각 $P, Q$라 할 때, 삼각형 $APQ$의 넓이를 구하시오. [6.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "접점 P, Q와 두 접선이 만나는 점 A, 중점 M으로 삼각형 APQ를 두 삼각형으로 나누어 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "접점 P(3,-10), Q(-1,-2)와 두 접선의 교점 A(1,2), 중점 M(1,-6)을 보여 삼각형 APQ의 넓이를 읽게 한다."
+  ],
+  "accessibilityDescription": "위로 볼록한 포물선과 포물선 위쪽의 점 A가 있고, A를 지나는 두 직선이 포물선의 점 P와 점 Q에서 각각 접하며 P와 Q를 잇는 선분과 A에서 그 중점 M으로 내려가는 세로 선분이 그려진 그래프이다."
+}

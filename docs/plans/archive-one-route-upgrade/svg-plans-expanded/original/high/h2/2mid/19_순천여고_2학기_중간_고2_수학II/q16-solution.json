@@ -1,0 +1,109 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "9",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-9",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "x": "4",
+        "y": "5"
+      },
+      {
+        "x": "9",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "11"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "K",
+        "x": "4",
+        "y": "5"
+      },
+      {
+        "id": "W",
+        "x": "9",
+        "y": "0"
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "-1",
+        "0"
+      ],
+      "K": [
+        "4",
+        "5"
+      ],
+      "W": [
+        "9",
+        "0"
+      ]
+    }
+  },
+  "caption": "예: a=1일 때 g의 그래프이다. x≤a+3=4에서 g(x)=|x+1|이고 x>4에서 g(x)=|x-9|이다. 두 식이 경계 x=4에서 같은 높이 5를 가져 점 K(4,5)에서 이어지고 V(-1,0), W(9,0)에서 뾰족하게 닿는다. |a+4|=|a-6|에서 a=1이다. 따라서 g(a)=g(1)=|1+1|=2이고 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\begin{cases} x+1 & (x \\le 3) \\\\ x-9 & (x > 3) \\end{cases}$에 대하여 함수 $g(x)$를 $g(x)=|f(x-a)+a|$라 하자. 함수 $g(x)$가 실수 전체의 집합에서 연속일 때, $g(a)$의 값을 구하시오. (단, $a$는 상수이다.) [4.7점]\n<img src=\"assets/images/19_순천여고_2학기_중간_고2_수학II/q16.png\" alt=\"19_순천여고_2학기_중간_고2_수학II Q16\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=1일 때 두 식이 경계 x=4의 점 K(4,5)에서 같은 높이로 이어짐을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "a=1일 때 g가 경계 x=4의 점 K(4,5)에서 끊김없이 이어지고 V(-1,0), W(9,0)에서 뾰족하게 닿음을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽에서 내려와 점 V에서 가로축에 닿고 올라가 점 K에서 꼭대기에 이른 뒤 내려가 점 W에서 가로축에 닿고 다시 오르는 W와 M 모양이 이어진 그래프이다."
+}

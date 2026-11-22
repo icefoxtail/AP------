@@ -1,0 +1,116 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      1.6
+    ],
+    "viewport": [
+      -1.2,
+      1.8,
+      -1,
+      2
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "1/2",
+          "y": "0",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "d",
+          "slope": "1",
+          "intercept": "0",
+          "label": "y=x"
+        },
+        {
+          "id": "l",
+          "slope": "2",
+          "intercept": "-1",
+          "label": "l"
+        }
+      ],
+      "circles": [
+        {
+          "id": "C",
+          "center": [
+            "0",
+            "0"
+          ],
+          "radiusSquared": "1/5"
+        }
+      ],
+      "segments": [
+        {
+          "id": "oa",
+          "from": "O",
+          "to": "A"
+        },
+        {
+          "id": "ob",
+          "from": "O",
+          "to": "B"
+        }
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "0"
+      }
+    ]
+  },
+  "pointNames": {
+    "O": "O"
+  },
+  "caption": "예: n=1일 때를 그린다. 곡선 y=x²과 직선 y=x가 만나는 점 A(1,1)에서의 접선 l은 y=2x-1이고 x절편은 B(1/2,0)이다. 원점 중심의 원 O1은 접선 l에 접하며 반지름은 원점에서 l까지의 거리 1/√5이다. 일반적으로 S_n=π/(5n²), 삼각형 OAB의 넓이 T_n=1/(4n²)이므로 S_n/T_{n+1}=(4π/5)(n+1)²/n²이다. n→∞에서 극한은 4π/5이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 아래 그림과 같이 곡선 $y=nx^2$과 직선 $y=x$의 교점 $A_n$이라고 하고, 곡선 $y=nx^2$ 위의 점 $A_n$에서 그은 접선을 $l_n$이라고 하자. 직선 $l_n$의 $x$절편을 $B_n$, 직선 $l_n$과 접하고 중심이 원점 $O$인 원을 $O_n$이라 할 때, 원 $O_n$의 넓이를 $S_n$, 삼각형 $OA_nB_n$의 넓이를 $T_n$이라고 할 때, $\\lim_{n \\to \\infty} \\frac{S_n}{T_{n+1}}$을 구하는 과정을 서술하시오. [10.0점]\n<img src=\"assets/images/19_매산고_2학기_중간_고2_수학II/q20.png\" alt=\"19_매산고_2학기_중간_고2_수학II Q20\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "n=1에서 A, 접선 l, 절편 B, l에 접하는 원점 중심의 원, 삼각형 OAB를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "n=1인 예에서 접점 A(1,1), 접선 l, x절편 B(1/2,0), l에 접하는 원점 중심의 원과 삼각형 OAB를 보인다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선과 원점을 지나는 직선이 점 A에서 만나고, A에서 포물선에 접하는 직선 l이 가로축과 점 B에서 만나며, 원점을 중심으로 l에 접하는 작은 원과 원점 O, A, B를 잇는 선분이 그려진 그래프이다."
+}

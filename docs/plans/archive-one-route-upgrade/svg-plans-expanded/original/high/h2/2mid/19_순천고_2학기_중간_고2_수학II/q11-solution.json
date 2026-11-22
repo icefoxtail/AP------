@@ -1,0 +1,91 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "5",
+          "-2"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          2,
+          3
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          3,
+          5
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "1",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3"
+      ]
+    }
+  },
+  "caption": "원본 문제 PNG의 x=1 열린 봉우리와 닫힌 점, x=2 꺾임, x=3 두 곡선의 어긋남을 참고한 개형 모식도이다. 원문에 정확한 곡선 식이 없으므로 직선 조각의 식은 원본 함숫값의 전 구간 재현이 아니다. x=1에서 좌우극한은 모두 3이고 함숫값은 1로 달라 불연속이다. x=2에서는 뾰족하게 꺾이고 x=3에서는 점프하며, x=4에서 우측 곡선은 증가해 f′(4)>0이다. 정답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림은 $0 < x < 5$에서 정의된 함수 $y=f(x)$의 그래프를 나타낸 것이다. 함수 $f(x)$에 대한 설명 중 옳은 것은? [3.7점]\n<img src=\"assets/images/19_순천고_2학기_중간_고2_수학II/q11.png\" alt=\"19_순천고_2학기_중간_고2_수학II Q11\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=1의 열린 점과 아래 닫힌 점, x=2의 뾰족점, x=3의 점프를 구별해 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=1의 극한 3과 따로 있는 닫힌 점 1, x=2의 뾰족점, x=3의 점프를 보인다. 곡률은 원본 식 미제공으로 모식 근사다."
+  ],
+  "accessibilityDescription": "x=1에서 양쪽이 높은 열린 점으로 모이고 아래쪽에 닫힌 점이 따로 있으며, x=2에서 뾰족하게 꺾이고 x=3에서 끊어졌다가 다시 오르는 그래프이다."
+}

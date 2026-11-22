@@ -1,0 +1,107 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "441/160",
+          "0",
+          "-29/20",
+          "0",
+          "1/10"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4.8,
+      4.8
+    ],
+    "viewport": [
+      -4.8,
+      4.8,
+      -5,
+      24
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-7/2",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "-3/2",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "3/2",
+        "y": "0"
+      },
+      {
+        "id": "D",
+        "x": "7/2",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "-sqrt(29)/2",
+        "y": "-5/2"
+      },
+      {
+        "id": "W",
+        "x": "0",
+        "y": "441/160"
+      },
+      {
+        "id": "X",
+        "x": "sqrt(29)/2",
+        "y": "-5/2"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-7/2",
+        "0"
+      ],
+      "B": [
+        "-3/2",
+        "0"
+      ],
+      "C": [
+        "3/2",
+        "0"
+      ],
+      "D": [
+        "7/2",
+        "0"
+      ]
+    }
+  },
+  "caption": "예: f(x)=(x²-9/4)(x²-49/4)/10일 때를 그렸다. f(x)=f(-x)라 그래프가 y축에 대칭이다. f(-1)f(-2)<0이면 (-2,-1)에, f(-3)f(-4)<0이면 (-4,-3)에 근이 있고 대칭으로 (1,2), (3,4)에도 근이 있다. 그림은 네 근 A, B, C, D에서 x축을 지난다. 네 구간이 겹치지 않으므로 서로 다른 실근은 적어도 4개이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연속함수 $f(x)$에 대하여\n$$f(x)=f(-x), f(-1)f(-2)<0, f(-3)f(-4)<0$$\n이 성립할 때 $f(x)=0$의 실근은 적어도 몇 개인지를 구하면? [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "y축에 대칭인 그래프가 네 구간 (-4,-3), (-2,-1), (1,2), (3,4)에서 x축을 지남을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "y축 대칭인 그래프가 부호가 바뀌는 네 구간에서 각각 x축을 지나는 네 근 A, B, C, D를 보인다."
+  ],
+  "accessibilityDescription": "세로축에 대칭인 W 모양의 곡선으로, 가운데에 꼭대기가 있고 가로축을 네 점 A, B, C, D에서 지나며 양 끝은 위로 가파르게 올라간다."
+}

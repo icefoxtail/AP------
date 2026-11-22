@@ -1,0 +1,92 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "5",
+          "0",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2,
+      2,
+      -8,
+      8
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "I",
+          "x": "0",
+          "y": "4",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "-1",
+          "intercept": "4",
+          "label": "l"
+        }
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-sqrt(30)/6",
+        "y": "-5*sqrt(30)/9"
+      },
+      {
+        "id": "W",
+        "x": "sqrt(30)/6",
+        "y": "5*sqrt(30)/9"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "W"
+      ]
+    }
+  },
+  "caption": "y′=-6x²+5이므로 점 T(1,3)에서의 접선의 기울기는 -1이고 접선 l은 y-3=-(x-1), 즉 y=-x+4이다. l이 y축과 만나는 점 I(0,4)의 높이가 y절편이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "곡선 $y=-2x^3+5x$ 위의 점 $(1, 3)$에서의 접선의 $y$절편은? [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "접점 T(1,3)에서의 접선 l과 y절편 I(0,4)를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "접점 T(1,3)에서의 접선 y=-x+4와 y절편 I(0,4)를 곡선과 함께 보인다."
+  ],
+  "accessibilityDescription": "왼쪽 아래에서 올라 꼭대기를 지나 내려가는 삼차곡선과 곡선 위의 점 T에서 접하는 내려가는 직선 l, 그리고 l이 세로축과 만나는 점 I가 나타난 그래프이다."
+}

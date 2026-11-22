@@ -1,0 +1,78 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          0,
+          2
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0"
+        ],
+        "domain": [
+          2,
+          3
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          3,
+          5
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "2",
+        "y": "1"
+      },
+      {
+        "x": "3",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2",
+        "3"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    }
+  },
+  "caption": "가로축이 t, 세로축이 교점의 개수 g(t)이다. 판별식 D=4(t-2)(t-3)이므로 t<2 또는 t>3에서 2개, t=2, 3에서 접해서 1개(닫힌 점), 2<t<3에서 0개이다. g는 t=2, 3에서 끊어지고 g(t)h(t)가 연속이려면 h(2)=h(3)=0이다. 최고차항 계수가 1이므로 h(t)=(t-2)(t-3)이고 h(0)=6이다. 따라서 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림은 포물선 $f(x)=x^2-4x-2$의 그래프이다. 직선 $y=-2tx-t$와 포물선 $f(x)$와 만나서 생기는 교점의 개수를 $g(t)$라 하자. 최고차항의 계수가 1인 이차함수 $h(t)$에 대하여 $g(t)h(t)$가 모든 실수 $t$에서 연속일 때 $h(0)$의 값은? [4.5점]\n<img src=\"assets/images/19_팔마고_2학기_중간_고2_수학II/q09.png\" alt=\"19_팔마고_2학기_중간_고2_수학II Q09\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "교점 개수 g(t)의 계단 그래프에서 t=2, 3의 좌우극한과 닫힌 점을 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "t=2, 3에서 g(t)가 끊어지고 두 점에 닫힌 점(접하는 경우 교점 1개)이 따로 있음을 보인다."
+  ],
+  "accessibilityDescription": "양쪽 바깥 구간에서 높이 2의 수평선이 있고 가운데 구간에서는 가로축 위의 수평선이 있으며 두 경계에 중간 높이의 닫힌 점이 하나씩 있는 계단 모양의 그래프이다."
+}
