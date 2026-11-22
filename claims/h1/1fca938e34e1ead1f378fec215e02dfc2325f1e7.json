@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane40",
   "workerBranch": "work/solution-upgrade-lane-40-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2mid",
@@ -11,16 +11,23 @@
   "sourcePath": "archive/exams/original/high/h1/2mid/21_순천고_2학기_중간_고1_기출.js",
   "sourceBlobSha": "1fca938e34e1ead1f378fec215e02dfc2325f1e7",
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2021_suncheon_2mid_DEEP_AUDIT.md",
-  "nextQid": 1,
-  "remainingWork": [
-    "q1~q22 원문 전수 감사 및 학생용 풀이 검산"
-  ],
+  "nextQid": null,
+  "remainingWork": [],
   "sourceQuestionCount": 22,
-  "readQuestionCount": 0,
+  "readQuestionCount": 22,
   "decisionCounts": {
-    "KEEP": 0,
-    "UPGRADE": 0,
+    "KEEP": 20,
+    "UPGRADE": 2,
     "HOLD": 0,
-    "UNREAD": 22
-  }
+    "UNREAD": 0
+  },
+  "completedUpgradeQids": [
+    "q8",
+    "q21"
+  ],
+  "auditStatus": "EXAM_AUDIT_COMPLETE",
+  "draftStatus": "EXAM_DRAFT_COMPLETE",
+  "visualStatus": "VISUAL_HOLD",
+  "goldenNegativeStatus": "NOT_RUN",
+  "auditCommitSha": "4c2a4862b790bb054c6ec938b47bb4490ecd41cc"
 }
