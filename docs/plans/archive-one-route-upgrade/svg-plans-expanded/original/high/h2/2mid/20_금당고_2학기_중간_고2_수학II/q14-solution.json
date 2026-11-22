@@ -1,0 +1,114 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "8",
+          "0",
+          "-2",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2,
+      2,
+      -1,
+      18
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "S",
+          "curveX": "-sqrt(2)",
+          "coordinates": true
+        },
+        {
+          "id": "T",
+          "curveX": "sqrt(2)",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l1",
+          "slope": "4*sqrt(2)",
+          "intercept": "0",
+          "label": "l1"
+        },
+        {
+          "id": "l2",
+          "slope": "-4*sqrt(2)",
+          "intercept": "0",
+          "label": "l2"
+        }
+      ],
+      "segments": [
+        {
+          "id": "st",
+          "from": "S",
+          "to": "T"
+        }
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-1",
+        "y": "7"
+      },
+      {
+        "id": "W",
+        "x": "0",
+        "y": "8"
+      },
+      {
+        "id": "X",
+        "x": "1",
+        "y": "7"
+      }
+    ]
+  },
+  "pointNames": {
+    "O": "O",
+    "S": "S",
+    "T": "T"
+  },
+  "caption": "원점 O에서 그은 두 접선 l1, l2의 접점은 t²=2인 T(√2,8), S(-√2,8)이다. 접선의 기울기는 f′(±√2)=±4√2이다. 삼각형 OST의 밑변 ST는 y=8 위에서 길이 2√2이고 O에서 밑변까지의 높이는 8이다. 넓이는 (1/2)·2√2·8=8√2이므로 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "14. 좌표평면 위의 원점 $\\mathrm{O}$에서 곡선 $y=x^4-2x^2+8$에 그은 두 접선의 접점과 원점 $\\mathrm{O}$가 이루는 삼각형의 넓이는? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원점에서 그은 두 접선 l1, l2와 접점 S, T, 삼각형 OST의 밑변 ST를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "원점 O에서 그은 두 접선의 접점 S(-√2,8), T(√2,8)와 밑변 ST를 보여 삼각형의 밑변과 높이를 읽게 한다."
+  ],
+  "accessibilityDescription": "가운데가 낮은 W 모양의 사차곡선과 원점을 지나는 두 직선이 있고, 두 직선이 곡선의 점 S와 점 T에서 각각 접하며 S와 T를 잇는 수평 선분이 그려진 그래프이다."
+}

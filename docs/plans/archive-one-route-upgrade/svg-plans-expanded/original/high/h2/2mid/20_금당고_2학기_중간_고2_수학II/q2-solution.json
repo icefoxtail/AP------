@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-6",
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "3",
+        "0"
+      ]
+    }
+  },
+  "caption": "x→3-에서 -x+k는 k-3으로, x→3+에서 x²-x-6은 0으로 가까워진다. 극한이 존재하려면 두 값이 같아야 하므로 k-3=0, k=3이다. 그림은 k=3일 때의 그래프로 왼쪽 직선 y=-x+3과 오른쪽 곡선 y=x²-x-6이 x축 위의 점 P(3,0)에서 만난다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "2. 함수 $f(x) = \\begin{cases} x^2 - x - 6 & (x \\ge 3) \\\\ -x+k & (x < 3) \\end{cases}$ 에 대하여 극한값 $\\lim_{x \\to 3} f(x)$가 존재할 때, 상수 $k$의 값을 구하시오. [3.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "k=3일 때 왼쪽 직선과 오른쪽 곡선이 같은 점 P(3,0)에서 만나 좌우극한이 같음을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "k=3에서 x=3의 좌우극한이 모두 0으로 같아 두 조각이 점 P(3,0)에서 만남을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽의 내려가는 직선과 오른쪽의 아래로 볼록한 곡선이 가로축 위의 점 P에서 만나는 그래프이다."
+}

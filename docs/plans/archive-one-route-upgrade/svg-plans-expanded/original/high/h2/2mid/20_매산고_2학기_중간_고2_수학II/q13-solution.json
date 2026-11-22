@@ -1,0 +1,30 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      { "coefficients": ["2", "-1/2"] },
+      { "coefficients": ["2", "-1/2", "-2", "3/2"] },
+      { "coefficients": ["1"] }
+    ],
+    "breakpoints": [{ "x": "0", "y": "2" }, { "x": "1", "y": "1" }],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-3, 3],
+    "viewport": [-3, 3, 0, 4],
+    "requiredPoints": [
+      { "id": "C", "x": "-2", "y": "3" },
+      { "id": "A", "x": "0", "y": "2" },
+      { "id": "B", "x": "1", "y": "1" }
+    ],
+    "exactCoordinates": { "C": ["-2", "3"], "A": ["0", "2"], "B": ["1", "1"] },
+    "axisTickValues": { "x": ["-2", "0", "1"], "y": ["1", "2", "3"] }
+  },
+  "pointNames": { "C": "C", "A": "A", "B": "B" },
+  "caption": "원본 q13.png의 왼쪽 직선은 (-2,3), A(0,2)를 지나 기울기가 -1/2이고 오른쪽은 B(1,1)에서 시작하는 y=1이다. A와 B 사이를 미분가능하게 연결하는 3차식은 h(x)=3x³/2-2x²-x/2+2이다. 양 끝의 함수값과 기울기까지 일치하므로 a=3/2, b=-2, c=-1/2, d=2이고 (a-c)²+b+d=4이다. 가운데 곡선은 원본에 아직 없는 해설 보조 그래프이다.",
+  "sourceConditions": [
+    { "id": "source", "condition": "13. 원본 q13.png의 직선과 수평선 사이 0≤x≤1을 3차함수로 매끄럽게 연결해 (a-c)²+b+d를 구한다.", "mappedTo": "PRESERVED_ARCHIVE_BANK" },
+    { "id": "method", "condition": "A(0,2), B(1,1)에서 함수값과 미분계수가 이어지는 보간 3차식이다.", "mappedTo": "diagram" }
+  ],
+  "newVisualInformation": ["원본의 비어 있는 0≤x≤1 구간을 정확히 계산된 3차곡선으로 채운다."],
+  "accessibilityDescription": "왼쪽의 하강 직선은 A(0,2)에 닿고 그곳부터 오른쪽으로 부드럽게 내려가는 3차 곡선이 B(1,1)에서 수평선으로 이어진다."
+}

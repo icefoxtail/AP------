@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "10",
+          "12",
+          "-3",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3.5,
+      2.5
+    ],
+    "viewport": [
+      -3.5,
+      2.5,
+      -14,
+      21
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "-2",
+        "y": "-10"
+      },
+      {
+        "id": "N",
+        "x": "1",
+        "y": "17"
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "-2",
+        "-10"
+      ],
+      "N": [
+        "1",
+        "17"
+      ]
+    }
+  },
+  "caption": "f(-2)=-10과 f′(-2)=0에서 a=-3, b=12이고 f′(x)=-6(x+2)(x-1)이다. 그림에서 f′의 부호가 x=-2에서 -에서 +로 바뀌어 극소점 M(-2,-10), x=1에서 +에서 -로 바뀌어 극대점 N(1,17)이 생긴다. 극댓값은 17이므로 a+b+17=-3+12+17=26이다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "9. 함수 $f(x)=-2x^3+ax^2+bx+10$가 $x=-2$에서 극솟값 $-10$을 가질 때, 상수 $a, b$의 값과 극댓값의 합을 구하시오. [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "극소점 M(-2,-10)과 극대점 N(1,17)을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "극소점 M(-2,-10)과 극대점 N(1,17)을 지나는 삼차곡선을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽 위에서 내려와 점 M에서 가장 낮고 올라가 점 N에서 꼭대기에 이른 뒤 오른쪽 아래로 내려가는 삼차곡선 그래프이다."
+}

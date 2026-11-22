@@ -1,0 +1,25 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["1", "1", "1"] }],
+    "breakpoints": [],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-4.5, 2],
+    "viewport": [-4.5, 2, -2, 16],
+    "requiredPoints": [{ "id": "P", "x": "-3", "y": "7" }, { "id": "V", "x": "-1/2", "y": "3/4" }],
+    "exactCoordinates": { "P": ["-3", "7"], "V": ["-1/2", "3/4"] },
+    "overlays": {
+      "lines": [{ "id": "l", "slope": "-5", "intercept": "-8", "label": "y=-5x-8" }]
+    },
+    "axisTickValues": { "x": ["-3", "0"], "y": ["1", "7"] }
+  },
+  "pointNames": { "P": "P" },
+  "caption": "곡선 y=x²+x+1의 x=-3에서 접점은 P(-3,7)이고 도함수 2x+1로 구한 접선의 기울기는 -5이다. 접선은 y=-5x-8이므로 ㄱ만 가능하다. 기울기 1과 3일 때의 접선 절편은 각각 1과 0이어서 ㄴ·ㄷ은 성립하지 않는다.",
+  "sourceConditions": [
+    { "id": "source", "condition": "7. 곡선 y=x²+x+1의 접선이 될 수 있는 직선을 ㄱ. y=-5x-8, ㄴ. y=x+2, ㄷ. y=3x+5 중에서 고른다.", "mappedTo": "PRESERVED_ARCHIVE_BANK" },
+    { "id": "method", "condition": "접점 x=-3에서 포물선과 접선 y=-5x-8의 기울기 및 접점을 함께 보인다.", "mappedTo": "diagram" }
+  ],
+  "newVisualInformation": ["실제 접선 ㄱ과 포물선이 P(-3,7)에서 접함을 보여 준다."],
+  "accessibilityDescription": "위로 열린 포물선 y=x²+x+1에 기울기 -5인 하강 직선이 P(-3,7)에서 접한다."
+}

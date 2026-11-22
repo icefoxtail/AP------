@@ -1,0 +1,90 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5",
+          "6",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      0,
+      6,
+      -6,
+      5
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "curveX": "2",
+          "coordinates": true
+        },
+        {
+          "id": "R",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "S",
+          "curveX": "5",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "2",
+          "intercept": "-1",
+          "label": "l"
+        }
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "3",
+        "y": "4"
+      }
+    ]
+  },
+  "caption": "f′(1)=2이므로 점 P(1,1)에서의 접선은 l: y=2x-1이다. g′(x)=-2(x-3)=2에서 접점 Q의 x좌표는 2이고 Q(2,3)이 l 위에 있으므로 g(2)=k-1=3에서 k=4이다. 그림은 g(x)=-(x-3)²+4와 접선 l이고 g가 x축과 만나는 점은 R(1,0), S(5,0)이다. 삼각형 QRS의 밑변 RS=4, 높이 3이라 넓이는 6이고 넓이와 k의 합은 10이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "18. 두 함수 $f(x)=x^2$과 $g(x)=-(x-3)^2+k (k>0)$에 대하여 곡선 $y=f(x)$ 위의 점 $\\mathrm{P}(1, 1)$에서의 접선을 $l$이라 하자. 직선 $l$에 곡선 $y=g(x)$가 접할 때의 접점을 $\\mathrm{Q}$, 곡선 $y=g(x)$와 $x$축이 만나는 두 점을 각각 $\\mathrm{R}, \\mathrm{S}$라 할 때, 삼각형 $\\mathrm{QRS}$의 넓이와 $k$의 합을 구하여라. (단, 두 함수 $f(x), g(x)$ 그래프는 서로 만나지 않는다.) [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "접선 l이 g에 접하는 점 Q(2,3)와 g가 x축과 만나는 두 점 R, S를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "g의 접선 l과 접점 Q(2,3), x축과의 교점 R(1,0), S(5,0)로 삼각형 QRS의 밑변과 높이를 읽게 한다."
+  ],
+  "accessibilityDescription": "위로 볼록한 포물선이 가로축을 두 점 R, S에서 지나고, 왼쪽 점 P에서 시작해 오르는 직선 l이 포물선의 점 Q에서 접하는 그래프이다."
+}

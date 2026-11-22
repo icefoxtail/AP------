@@ -1,0 +1,99 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "36/5",
+          "-36/5",
+          "8/5",
+          "1/5",
+          "-1/20"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -7.5,
+      7
+    ],
+    "viewport": [
+      -7.5,
+      7,
+      -70,
+      30
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-6",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "6",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "1/2-sqrt(73)/2",
+        "y": "827/40+73*sqrt(73)/40"
+      },
+      {
+        "id": "W",
+        "x": "1/2+sqrt(73)/2",
+        "y": "827/40-73*sqrt(73)/40"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "W"
+      ]
+    },
+    "exactCoordinates": {
+      "A": [
+        "-6",
+        "0"
+      ],
+      "B": [
+        "2",
+        "0"
+      ],
+      "C": [
+        "6",
+        "0"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "기존 문제 SVG q10-problem-v2.svg를 정적 변환해 직접 확인했다. 이 그림은 f′의 그래프이며, 정확한 방정식은 주어지지 않아 영점·부호·접촉 개형을 맞춘 4차식 근사이다. f′는 A(-6,0)에서 음에서 양으로 바뀌고, B(2,0)에서는 x축에 닿았다가 양의 값으로 되돌아가며, C(6,0)에서 양에서 음으로 바뀐다. -2<x<2에서 f′>0이므로 ㄴ 참, x=2는 극대가 아니므로 ㄷ 거짓, x=-6은 극소이므로 ㄹ 참이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "10. 함수 $f(x)$의 도함수 $y=f'(x)$의 그래프가 다음 그림과 같을 때, 보기에서 옳은 것만을 있는 대로 골라라. [4.0점]\n<img src=\"assets/images/20_금당고_2학기_중간_고2_수학II/q10-problem-v2.svg\" style=\"display:block; margin:8px auto; width:290px; max-width:100%; height:auto; max-height:205px; object-fit:contain\" alt=\"도함수 y=f′(x)의 그래프\">\n\n<보기>\nㄱ. 함수 $f(x)$는 $-2 < x < 2$에서 감소한다.\nㄴ. 함수 $f(x)$는 $-2 < x < 2$에서 증가한다.\nㄷ. 함수 $f(x)$는 $x=2$에서 극대이다.\nㄹ. 함수 $f(x)$는 $x=-6$에서 극소이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f′의 영점 A(-6,0), B(2,0), C(6,0)과 B에서 부호가 바뀌지 않음을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f′가 x=-6에서 음에서 양으로, x=6에서 양에서 음으로 바뀌고 x=2에서는 x축에 닿기만 함을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽 아래에서 올라와 점 A에서 가로축을 지나 위로 솟았다가 내려와 점 B에서 가로축에 닿고 다시 올랐다가 점 C에서 가로축을 지나 아래로 내려가는 곡선 그래프이다."
+}

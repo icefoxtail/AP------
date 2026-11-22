@@ -1,0 +1,23 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      { "coefficients": ["1"], "domain": [null, -4], "end": "CLOSED" },
+      { "coefficients": ["2"], "domain": [-4, -2], "start": "OPEN", "end": "OPEN" },
+      { "coefficients": ["2"], "domain": [-2, 0], "start": "OPEN", "end": "CLOSED" },
+      { "coefficients": ["3"], "domain": [0, 2], "start": "OPEN", "end": "OPEN" },
+      { "coefficients": ["3"], "domain": [2, 4], "start": "OPEN", "end": "OPEN" },
+      { "coefficients": ["2"], "domain": [4, null], "start": "CLOSED" }
+    ],
+    "jumpValues": [{ "x": "-2", "y": "3" }, { "x": "2", "y": "4" }],
+    "axisTickValues": { "x": ["-4", "-2", "0", "2", "4"], "y": ["1", "2", "3", "4"] }
+  },
+  "caption": "가로축은 매개변수 t, 세로축은 교점 개수 g(t)이다. t≤-4에서 1개, -4<t≤0에서는 보통 2개(단, t=-2만 3개), 0<t<4에서는 보통 3개(단, t=2만 4개), t≥4에서는 2개이다. 따라서 불연속점은 t=-4,-2,0,2,4의 5개이고, g(4+)와 g(-4+)는 각각 2이므로 b=4이다. 기존 원본 문항에는 g(t)의 그림이 없으며 이 계단 그래프는 풀이로 새로 도출한 것이다.",
+  "sourceConditions": [
+    { "id": "source", "condition": "[단답형 3] f(x)=(x+2)² (x<0), f(0)=2, f(x)=-(x-3)²+t (x>0)와 y=|t|의 교점 개수 g(t)를 분석한다.", "mappedTo": "PRESERVED_ARCHIVE_BANK" },
+    { "id": "method", "condition": "x<0, x=0, x>0에서의 교점 개수를 합산해 t에 따른 계단 함수로 표시한다.", "mappedTo": "diagram" }
+  ],
+  "newVisualInformation": ["t=-2와 t=2의 일시적인 개수 증가를 고립된 닫힌 점으로 표시한다.", "t=-4,0,4에서 좌우 극한이 달라지는 모습을 보인다."],
+  "accessibilityDescription": "교점 개수가 t=-4에서 1에서 2로, t=0에서 2에서 3으로, t=4에서 3에서 2로 바뀌며 t=-2에는 3, t=2에는 4인 점이 별도로 표시된 계단 그래프이다."
+}

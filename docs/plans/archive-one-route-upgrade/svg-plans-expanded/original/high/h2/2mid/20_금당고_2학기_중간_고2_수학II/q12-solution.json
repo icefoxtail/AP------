@@ -1,0 +1,106 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "-3"
+        ],
+        "domain": [
+          -3,
+          -2
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-2",
+          "-2"
+        ],
+        "domain": [
+          -2,
+          -1
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-1",
+          "-1"
+        ],
+        "domain": [
+          -1,
+          0
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2",
+          "2"
+        ],
+        "domain": [
+          2,
+          3
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "-1",
+        "2"
+      ]
+    }
+  },
+  "caption": "(x+1)[x]의 그래프로, 구간 n≤x<n+1에서 직선 n(x+1)이고 정수마다 끊어진다. x=n에서 좌극한은 (n+1)(n-1), 우극한과 함숫값은 (n+1)n이다. 두 값이 같으려면 n+1=0이어야 하므로 x=-1에서만 열린 점과 닫힌 점이 높이 0으로 만나 이어진다. 다른 정수에서는 위아래로 어긋나 끊어진다. 따라서 정수 n은 1개이고 답은 ①이다. x=-1의 눈금 글자는 생략했다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "12. 두 함수 $f(x)=x+1, g(x)=[x]$에서 함수 $f(x)g(x)$가 $x=n$에서 연속일 때, 정수 $n$의 값의 개수를 구하시오. (단, $[x]$는 $x$보다 크지 않은 최대의 정수) [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "정수마다 끊어지는 그래프에서 x=-1만 열린 점과 닫힌 점이 같은 높이로 이어짐을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "(x+1)[x]의 그래프가 정수마다 끊어지지만 x=-1에서만 열린 점과 닫힌 점이 만나 이어짐을 보인다."
+  ],
+  "accessibilityDescription": "정수마다 끊어지는 직선 조각들의 그래프이고, x=-1에서만 열린 점과 닫힌 점이 같은 높이로 이어지며 나머지 정수에서는 위아래로 어긋난다."
+}

@@ -1,0 +1,85 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "항의 나머지",
+        "elements": [
+          "2",
+          "4",
+          "0",
+          "3"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "다음 항",
+        "elements": [
+          "4",
+          "0",
+          "3",
+          "2"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 2
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 3
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "a1=2에서 시작하면 항은 2, 4, 0, 3 다음에 다시 2가 나와 주기 4로 되풀이된다. 대응도는 현재 나머지에서 다음 나머지로 가는 규칙(2에서 4, 4에서 0, 0에서 3, 3에서 2)이다. 10=4·2+2이므로 a10=a2=4이고 100=4·24+4이므로 a100=a4=3이다. 따라서 합은 7이고 답은 ②이다.",
+  "newVisualInformation": [
+    "나머지 2, 4, 0, 3이 2에서 4, 4에서 0, 0에서 3, 3에서 2로 이어지는 주기 4의 대응을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "13. 다음과 같은 규칙을 갖는 수열 $\\{a_n\\}$이 있다. [4.2점]\n\n(i) $a_1 = 2$\n(ii) $a_{n+1}$은 $3(a_n+1)$을 $5$로 나눈 나머지이다.\n\n이 수열에서 $a_{10} + a_{100}$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

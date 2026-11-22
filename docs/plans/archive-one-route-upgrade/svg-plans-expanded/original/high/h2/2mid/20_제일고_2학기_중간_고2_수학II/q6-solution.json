@@ -1,0 +1,96 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "1", "1"
+        ],
+        "domain": [
+          null,
+          0
+        ],
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "0", "-2", "1"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0", "-2", "1"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0"
+        ],
+        "domain": [
+          2,
+          3
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-3", "1"
+        ],
+        "domain": [
+          3,
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "1",
+        "y": "-2"
+      },
+      {
+        "x": "2",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "0", "1", "2", "3"
+      ],
+      "y": [
+        "-2", "-1", "0", "1"
+      ]
+    }
+  },
+  "caption": "원본 q06.png를 직접 대조해 복원한 개형이다. x≤0의 상승 직선은 (0,1) 닫힌 점으로 끝나고, 0<x<2의 아래로 휜 U자 곡선은 (0,0)·(1,-1)·(2,0)이 모두 열린 점이며 f(1)=-2와 f(2)=1은 별도 닫힌 점이다. 2<x<3에서는 y=0이고 x≥3에서 상승 직선으로 이어진다. 원본 곡선의 정확한 식은 없어 (x-1)²-1로 개형을 근사했다. x=0은 불연속, x=1의 극한은 -1로 존재, x=2는 불연속이므로 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "6. 함수 $y=f(x)$의 그래프가 그림과 같을 때, 다음 보기 중 옳은 것은? [3.6점]\n<img src=\"assets/images/20_제일고_2학기_중간_고2_수학II/q06.png\" alt=\"20_제일고_2학기_중간_고2_수학II Q06\" />\n\n<보기>\nㄱ. $x=0$에서 함수 $f(x)$는 연속이다.\nㄴ. $x=2$에서 함수 $f(x)$는 불연속이다.\nㄷ. $\\lim_{x \\to 1} f(x)$의 값은 존재하지 않는다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=0의 좌우극한 1과 0, x=1의 극한 -1과 함숫값 -2, x=2의 극한 0과 함숫값 1을 구별해 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=0에서 좌우극한이 다르고 U자 곡선의 x=1·2 열린 점과 별도 닫힌 점이 어긋나며 x=2~3의 수평선도 있음을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽 상승 직선이 (0,1) 채운 점에서 끝난다. 원점 열린 점부터 (2,0) 열린 점까지 아래로 파인 U자 곡선이 있으며 (1,-1)은 빈 점, (1,-2)와 (2,1)은 채운 점이다. x=2부터 x=3까지 수평선이 있고 x=3 이후 상승한다."
+}

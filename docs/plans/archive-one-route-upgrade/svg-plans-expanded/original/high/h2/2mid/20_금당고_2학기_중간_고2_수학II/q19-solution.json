@@ -1,0 +1,77 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0"
+        ],
+        "domain": [
+          -15,
+          -10
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          -10,
+          0
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0"
+        ],
+        "domain": [
+          0,
+          5
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "-10",
+        "y": "1"
+      },
+      {
+        "x": "0",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-10"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    }
+  },
+  "caption": "가로축이 k, 세로축이 교점의 개수 f(k)이다. 원 (a-1)²+(b-2)²=1의 중심에서 직선 3a-4b=k까지의 거리 |k+5|/5가 1보다 작으면 2개, 1이면 접해서 1개(k=-10, 0의 닫힌 점), 1보다 크면 0개이다. 그래서 f는 k=-10, 0에서 끊어진다. f(x)g(x)의 불연속점이 정확히 1개이려면 g(-10)=0, g(0)=0 중 하나만 성립해야 하므로 g(x)=(x-1)(x+10) 또는 (x-1)x이고 g(3)=26 또는 6이다. 최솟값은 6이므로 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "19. 두 집합 $A = \\{(a, b) \\mid a^2+b^2=2a+4b-4\\}$, $B = \\{(a, b) \\mid 3a-4b=k\\}$에 대하여 $f(k)=n(A \\cap B)$라 할 때, 이차함수 $g(x)$는 다음 조건을 만족시킨다.\n\n(가) 최고차항의 계수는 $1$이다.\n(나) $g(1)=0$\n(다) 함수 $f(x)g(x)$의 불연속인 점의 개수가 $1$이다.\n\n실수 $k$에 대하여 $g(3)$의 최솟값을 구하시오. [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원과 직선의 교점 개수 f(k)가 k=-10, 0에서 2, 1, 0으로 바뀌는 계단 그래프를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "k=-10, 0에서 f(k)가 끊어지고 두 점에 닫힌 점(접하는 경우 교점 1개)이 따로 있음을 보인다."
+  ],
+  "accessibilityDescription": "가운데 구간에서 높이 2의 수평선이 열린 점으로 끝나고, 양쪽 바깥 구간에는 가로축 위의 수평선이 있으며, 두 경계에는 중간 높이의 닫힌 점이 하나씩 있는 계단 모양의 그래프이다."
+}

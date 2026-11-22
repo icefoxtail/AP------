@@ -1,0 +1,21 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [{ "coefficients": ["1", "-1"] }, { "coefficients": ["-1", "1"] }],
+    "breakpoints": [{ "x": "1", "y": "0" }],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "domain": [-1, 3],
+    "viewport": [-1, 3, -0.5, 2.5],
+    "requiredPoints": [{ "id": "V", "x": "1", "y": "0" }],
+    "exactCoordinates": { "V": ["1", "0"] },
+    "axisTickValues": { "x": ["0", "1", "2"], "y": ["0", "1"] }
+  },
+  "caption": "y=|x-1|은 x=1에서 꺾이는 V자형 그래프이다. 왼쪽 기울기는 -1, 오른쪽 기울기는 1이므로 x=1에서 미분계수가 존재하지 않는다. 다만 f(1+h)=f(1-h)=|h|이므로 원래의 대칭차분 극한은 0이다. 풀이의 ③에서는 존재하지 않는 두 미분계수의 극한을 각각 나누므로 정당하지 않다.",
+  "sourceConditions": [
+    { "id": "source", "condition": "[서술형 2] f(x)=|x-1|의 x=1에서의 미분가능성을 검토하고 대칭차분 극한 풀이의 첫 잘못된 단계 ③을 지적한다.", "mappedTo": "PRESERVED_ARCHIVE_BANK" },
+    { "id": "method", "condition": "좌우 기울기 -1과 1은 다르지만 대칭차분 분자는 항상 0이라는 사실을 대비한다.", "mappedTo": "diagram" }
+  ],
+  "newVisualInformation": ["x=1의 뾰족한 꼭짓점에서 좌우 기울기가 서로 다름을 보여 준다."],
+  "accessibilityDescription": "점 (1,0)을 꼭짓점으로 왼쪽으로 기울기 -1, 오른쪽으로 기울기 1인 두 반직선이 이어진 V자형 절댓값 그래프이다."
+}

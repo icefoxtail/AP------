@@ -1,0 +1,129 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "ㄴ  [x²]"
+      },
+      "plan": {
+        "capability": "piecewise-discontinuous-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-discontinuous",
+          "pieces": [
+            {
+              "coefficients": [
+                "3"
+              ],
+              "domain": [
+                "sqrt(3)",
+                2
+              ],
+              "start": "CLOSED",
+              "end": "OPEN"
+            },
+            {
+              "coefficients": [
+                "4"
+              ],
+              "domain": [
+                2,
+                "sqrt(5)"
+              ],
+              "start": "CLOSED",
+              "end": "OPEN"
+            }
+          ],
+          "axisTickValues": {
+            "x": [
+              "2"
+            ],
+            "y": [
+              "3",
+              "4"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "ㄷ  |x-2|"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "2",
+                "-1"
+              ]
+            },
+            {
+              "coefficients": [
+                "-2",
+                "1"
+              ]
+            }
+          ],
+          "breakpoints": [
+            {
+              "x": "2",
+              "y": "0"
+            }
+          ],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "0",
+              "4"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "requiredPoints": [
+            {
+              "id": "P",
+              "x": "2",
+              "y": "0"
+            }
+          ],
+          "exactCoordinates": {
+            "P": [
+              "2",
+              "0"
+            ]
+          },
+          "axisScale": {
+            "x": 2,
+            "y": 1
+          }
+        }
+      }
+    }
+  ],
+  "caption": "ㄴ은 x=2에서 왼쪽 높이 3, 오른쪽 높이 4로 끊어져 좌우극한이 달라 연속이 아니다. ㄷ은 점 P(2,0)에서 꺾이지만 양쪽이 모두 P로 이어지므로 연속이다. ㄱ은 다항함수라 연속이고, ㄹ은 x=2에서 분모가 0이라 함숫값이 없어 연속이 아니다. 따라서 연속인 것은 ㄱ, ㄷ이고 답은 ②이다.",
+  "accessibilityDescription": "두 패널이 나란히 있다. 첫째 패널에는 x=2에서 낮은 수평선이 열린 점으로 끝나고 높은 수평선이 닫힌 점에서 시작하는 계단이, 둘째 패널에는 점 P에서 V자로 꺾이는 그래프가 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "2. 다음 <보기> 중 $x=2$에서 연속인 함수를 모두 고른 것은? (단, $[x]$는 $x$보다 크지 않는 최대의 정수) [3.6점]\n\n<보기>\nㄱ. $f(x)=x^2+2x+3$\nㄴ. $f(x)=[x^2]$\nㄷ. $f(x)=|x-2|$\nㄹ. $f(x)=\\frac{x}{(x-2)(x+1)}$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: ㄴ의 x=2 점프와 ㄷ의 x=2 꺾임을 두 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "ㄴ이 x=2에서 끊어지고 ㄷ이 점 P(2,0)에서 끊김없이 꺾이는 차이를 보인다."
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "3"
+      ],
+      "y": [
+        "5"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "3",
+        "y": "5"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "3",
+        "5"
+      ]
+    }
+  },
+  "caption": "x=3에서 0=3+3a이므로 a=-1이고, x≠3에서 (x-3)f(x)=(x-3)(x+2)라 f(x)=x+2이다. x=3에서 식 (x²-x-6)/(x-3)은 정의되지 않아 구멍이 생기지만, 모든 실수에서 연속인 f는 그 구멍을 극한값으로 메워 점 P(3,5)를 지난다. 그림은 이렇게 이어진 직선 y=x+2이다. 따라서 f(3)=5이고 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "5. 모든 실수 $x$에서 연속인 함수 $f(x)$가 $(x-3)f(x)=x^2+ax-6$을 만족할 때, $f(3)$의 값은? (단, $a$는 상수) [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "연속성이 x=3의 구멍을 극한값 5로 메워 직선이 점 P(3,5)를 지남을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "직선 y=x+2가 x=3의 구멍 자리에서 끊김없이 점 P(3,5)를 지나는 모습을 보인다."
+  ],
+  "accessibilityDescription": "끊어지지 않고 오르는 직선 위에 점 P가 표시된 그래프이다."
+}
