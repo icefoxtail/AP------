@@ -1,0 +1,64 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "constructions": [
+      {
+        "id": "cR",
+        "center": "A",
+        "radius": {
+          "value": "sqrt(10)"
+        },
+        "arc": {
+          "side": "BOTH"
+        },
+        "hits": [
+          {
+            "id": "Q",
+            "branch": "LEFT"
+          },
+          {
+            "id": "P",
+            "branch": "RIGHT"
+          }
+        ],
+        "source": {
+          "grid": true,
+          "from": [
+            1,
+            0
+          ],
+          "to": [
+            4,
+            1
+          ],
+          "toName": "B"
+        }
+      }
+    ],
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "points": [
+          {
+            "id": "Q",
+            "value": "1-sqrt(10)",
+            "showValue": false
+          },
+          {
+            "id": "A",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "P",
+            "value": "1+sqrt(10)",
+            "showValue": false
+          }
+        ]
+      }
+    ],
+    "axisVariable": false
+  },
+  "caption": "중심 1, 가로 3·세로 1 직각삼각형의 빗변을 반지름으로 하는 수직선 위의 두 점 P, Q"
+}

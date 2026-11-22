@@ -1,0 +1,39 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ],
+      "rightAngle": "C"
+    },
+    {
+      "type": "point",
+      "id": "D",
+      "on": "BC"
+    },
+    {
+      "type": "segment",
+      "from": "A",
+      "to": "D"
+    },
+    {
+      "type": "label",
+      "target": "AD",
+      "text": "10"
+    },
+    {
+      "type": "label",
+      "target": "BD",
+      "text": "9"
+    },
+    {
+      "type": "label",
+      "target": "CD",
+      "text": "6"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ],
+      "rightAngle": "C"
+    },
+    {
+      "type": "triangle",
+      "vertices": [
+        "C",
+        "D",
+        "B"
+      ],
+      "rightAngle": "D"
+    },
+    {
+      "type": "label",
+      "target": "AB",
+      "text": "8"
+    },
+    {
+      "type": "label",
+      "target": "AC",
+      "text": "x"
+    },
+    {
+      "type": "label",
+      "target": "CD",
+      "text": "y"
+    },
+    {
+      "type": "angle",
+      "at": "A",
+      "arms": [
+        "B",
+        "C"
+      ],
+      "text": "60°"
+    },
+    {
+      "type": "angle",
+      "at": "B",
+      "arms": [
+        "C",
+        "D"
+      ],
+      "text": "45°"
+    }
+  ]
+}

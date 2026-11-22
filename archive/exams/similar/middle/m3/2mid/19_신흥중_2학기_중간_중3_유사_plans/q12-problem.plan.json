@@ -1,0 +1,36 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "square",
+      "vertices": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "side": "15"
+    },
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "E",
+        "D"
+      ],
+      "rightAngle": "E"
+    },
+    {
+      "type": "perpendicular",
+      "from": "E",
+      "to": "BC",
+      "foot": "G",
+      "intersectsADAt": "F"
+    },
+    {
+      "type": "label",
+      "target": "ED",
+      "text": "9"
+    }
+  ]
+}

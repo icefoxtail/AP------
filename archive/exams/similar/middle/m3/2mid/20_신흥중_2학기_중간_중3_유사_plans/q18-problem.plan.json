@@ -1,0 +1,43 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ],
+      "rightAngle": "B"
+    },
+    {
+      "type": "midpoint",
+      "id": "D",
+      "of": "BC"
+    },
+    {
+      "type": "segment",
+      "from": "A",
+      "to": "D"
+    },
+    {
+      "type": "label",
+      "target": "AB",
+      "text": "2"
+    },
+    {
+      "type": "label",
+      "target": "AC",
+      "text": "4"
+    },
+    {
+      "type": "angle",
+      "at": "A",
+      "arms": [
+        "B",
+        "D"
+      ],
+      "text": "x"
+    }
+  ]
+}
