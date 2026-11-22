@@ -1863,6 +1863,8 @@ def normal_plan(chart):
             if scale is None or scale <= 0: fail('STAT_NORMAL_CURVE_INVALID')
         curves.append({'id': raw['id'], 'mean': mean, 'sd': sd, 'mean_text': mean_text, 'sd_text': raw['sd'] if sd is None else (decimal_of(sd) or str(sd)), 'label': label,
                        'mean_line': raw['meanLine'] if 'meanLine' in raw else len(raw_curves) == 1, 'scale': scale, 'scaled': 'sdScale' in raw})
+    # the name Z is the standard normal variable: only the curve N(0, 1) may carry it (this observer's own copy of the rule)
+    if any(c['label'] is not None and c['label'].strip() == 'Z' and not (c['mean'] is not None and c['sd'] is not None and c['mean'] == 0 and c['sd'] == 1) for c in curves): fail('STAT_NORMAL_CURVE_NAME_Z_NOT_STANDARD')
     framed = any(c['mean'] is None or c['sd'] is None for c in curves)
     # several letter curves are only the sample-mean picture: one mean text, one letter sd, every curve after the first scaled (sdScale) relative to the first
     if framed and len(curves) > 1 and not all(c['sd'] is None and c['mean_text'] == curves[0]['mean_text'] and c['sd_text'] == curves[0]['sd_text'] and c['scaled'] == (i > 0) for i, c in enumerate(curves)): fail('STAT_NORMAL_SYMBOLIC_MULTI')

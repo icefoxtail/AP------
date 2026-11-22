@@ -14,11 +14,11 @@ const observer=fileURLToPath(new URL('../production/stat-chart-observer-worker.p
 const plan=chart=>({capability:FIGURE_CAPABILITY,chart,caption:'c',sourceConditions:[{id:'c1',condition:'c',mappedTo:'chart'}],newVisualInformation:['n']});
 const policy={baseFontPx:20,displayScale:1,fontFloorCssPx:11};
 // 22 순천고 q14: N(108, 9^2), P(X >= 135) = 0.0013, three sd out
-const thin={kind:'NORMAL_CURVE',curves:[{id:'Z',mean:'108',sd:'9',label:'Z'}],ticks:[{x:'108'},{x:'135'}],shades:[{from:'135',to:null,color:'BLUE'}],areaLabels:[{shade:0,text:'0.0013'}]};
+const thin={kind:'NORMAL_CURVE',curves:[{id:'X',mean:'108',sd:'9',label:'X'}],ticks:[{x:'108'},{x:'135'}],shades:[{from:'135',to:null,color:'BLUE'}],areaLabels:[{shade:0,text:'0.0013'}]};
 // the same with a tail two sd out: nothing changes
-const wide={kind:'NORMAL_CURVE',curves:[{id:'Z',mean:'108',sd:'9',label:'Z'}],ticks:[{x:'108'},{x:'126'}],shades:[{from:'126',to:null,color:'BLUE'}],areaLabels:[{shade:0,text:'0.0228'}]};
+const wide={kind:'NORMAL_CURVE',curves:[{id:'X',mean:'108',sd:'9',label:'X'}],ticks:[{x:'108'},{x:'126'}],shades:[{from:'126',to:null,color:'BLUE'}],areaLabels:[{shade:0,text:'0.0228'}]};
 // the same thin tail without a value on it: nothing to point into, nothing changes
-const unlabelled={kind:'NORMAL_CURVE',curves:[{id:'Z',mean:'108',sd:'9',label:'Z'}],ticks:[{x:'108'},{x:'135'}],shades:[{from:'135',to:null,color:'BLUE'}]};
+const unlabelled={kind:'NORMAL_CURVE',curves:[{id:'X',mean:'108',sd:'9',label:'X'}],ticks:[{x:'108'},{x:'135'}],shades:[{from:'135',to:null,color:'BLUE'}]};
 
 test('only a labelled thin tail makes the bell taller: the size follows the model, so the measured size and the drawing agree',()=>{
   const h=chart=>statChartSize(solveStatChart(chart)).height;
@@ -44,7 +44,7 @@ test('x axis name inside the safe area, thin tail pointed into by a leader, obse
     assert.equal(Number(svg.match(/id="x-axis"[^>]*? y1="([\d.]+)"/)[1]),58+260,'the axis stands under a 260 px bell');
     // the observer: the height is one of the two allowed; a bell drawn at any other height is refused
     assert.equal((await audit(thin,svg)).status,'PASS');
-    const wrong=svg.replace(/(id="curve-Z"[^>]*points=")([^"]*)"/,(m,head,pts)=>head+pts.split(' ').map(p=>{const [x,y]=p.split(',').map(Number);return `${x},${(318-(318-y)*0.8).toFixed(3)}`;}).join(' ')+'"');
+    const wrong=svg.replace(/(id="curve-X"[^>]*points=")([^"]*)"/,(m,head,pts)=>head+pts.split(' ').map(p=>{const [x,y]=p.split(',').map(Number);return `${x},${(318-(318-y)*0.8).toFixed(3)}`;}).join(' ')+'"');
     assert.notEqual((await audit(thin,wrong)).status,'PASS','a bell 208 px high is not drawn by this engine');
     // a plain figure keeps the old height
     const plain=await compose(wide);
@@ -72,3 +72,27 @@ test('ticks whose numbers would touch take two rows, each number still centred u
   }finally{await browser.close();}
 });
 function boxOf(svg,id){return svg.match(new RegExp(`<g id="${id}"[^>]*data-box="([^"]+)"`))[1].split(',').map(Number);}
+
+// 2026-11-22: the name Z is the standard normal variable (44 plans called a N(30, 4) or N(108, 9^2) curve Z: the axis showed 30 and 40 while the name said standard normal)
+const named=(label,curve={})=>({kind:'NORMAL_CURVE',curves:[{id:'X',mean:'30',sd:'4',label,...curve}],ticks:[{x:'30'},{x:'38'}],shades:[{from:'38',to:null,color:'BLUE'}]});
+const CODE='STAT_NORMAL_CURVE_NAME_Z_NOT_STANDARD';
+test('a curve named Z that is not N(0, 1) is refused, with numbers or letters for the mean and the sd',()=>{
+  assert.throws(()=>solveStatChart(named('Z')),error=>error.message===CODE);
+  assert.throws(()=>solveStatChart(named('Z',{mean:'0'})),error=>error.message===CODE,'mean 0 but sd 4');
+  assert.throws(()=>solveStatChart(named('Z',{sd:'1'})),error=>error.message===CODE,'sd 1 but mean 30');
+  assert.throws(()=>solveStatChart({kind:'NORMAL_CURVE',curves:[{id:'X',mean:'m',sd:'σ',label:'Z'}],ticks:[{z:'0'},{z:'1'}]}),error=>error.message===CODE,'letters');
+  assert.throws(()=>solveStatChart({kind:'NORMAL_CURVE',curves:[{id:'X',mean:'0',sd:'σ',label:'Z'}],ticks:[{z:'0'},{z:'1'}]}),error=>error.message===CODE,'sd a letter');
+});
+test('the standard normal curve may be called Z; any other name, the z row and the unnamed curve are untouched',()=>{
+  const standard={kind:'NORMAL_CURVE',curves:[{id:'Z',mean:'0',sd:'1',label:'Z'}],ticks:[{x:'0'},{x:'2'}],zAxis:true,shades:[{from:'0',to:'2',color:'BLUE'}],areaLabels:[{shade:0,text:'0.4772'}]};
+  assert.equal(solveStatChart(standard).kind,'NORMAL_CURVE');
+  assert.equal(solveStatChart({...standard,curves:[{id:'Z',mean:'0.0',sd:'1.0',label:'Z'}]}).kind,'NORMAL_CURVE','0.0 and 1.0 are the same numbers');
+  for(const label of ['X','H','Y'])assert.equal(solveStatChart(named(label)).kind,'NORMAL_CURVE',label);
+  assert.equal(solveStatChart({...named('X'),zAxis:true}).zAxis,true,'the z row of an X curve keeps its z');
+  assert.equal(solveStatChart(named(undefined)).kind,'NORMAL_CURVE');
+  assert.equal(solveStatChart({kind:'NORMAL_CURVE',curves:[{id:'A',mean:'0',sd:'1',label:'Z'},{id:'B',mean:'0',sd:'2',label:'X'}],ticks:[{x:'0'}]}).curves.length,2,'two curves: only the one called Z must be standard');
+});
+test('the independent observer refuses the same plan',async()=>{
+  const result=(await pythonWorker({chart:named('Z'),svg:'<svg xmlns="http://www.w3.org/2000/svg"/>'},{script:observer})).result;
+  assert.ok((result.errors??[result.code]).some(error=>String(error).startsWith(CODE)),JSON.stringify(result));
+});

@@ -761,6 +761,8 @@ function solveNormal(c){
     if(raw.sdScale!==undefined){scaleQ=tryQ(raw.sdScale);if(scaleQ===null||qcmp(scaleQ,ZERO)<=0)bad('STAT_NORMAL_CURVE_INVALID');}
     return {id:raw.id,meanQ,sdQ,meanText,sdText:sdQ===null?raw.sd:decimalOf(sdQ)??qstr(sdQ),label:raw.label??null,meanLine:raw.meanLine??c.curves.length===1,scaleQ,scaled:raw.sdScale!==undefined};
   });
+  // The name Z is the standard normal variable: a curve called Z with another mean or sd (a letter one included) makes the student read the figure as N(0,1) while its axis shows the real numbers.
+  if(curves.some(k=>k.label!==null&&k.label.trim()==='Z'&&!(k.meanQ!==null&&k.sdQ!==null&&qcmp(k.meanQ,ZERO)===0&&qcmp(k.sdQ,ONE)===0)))bad('STAT_NORMAL_CURVE_NAME_Z_NOT_STANDARD');
   const framed=curves.some(k=>k.meanQ===null||k.sdQ===null),byId=new Map(curves.map(k=>[k.id,k]));
   // several letter curves are only the sample-mean picture: one mean text, one letter sd, every curve after the first scaled (sdScale) relative to the first
   if(framed&&curves.length>1&&!curves.every((k,i)=>k.sdQ===null&&k.meanText===curves[0].meanText&&k.sdText===curves[0].sdText&&k.scaled===(i>0)))bad('STAT_NORMAL_SYMBOLIC_MULTI');
