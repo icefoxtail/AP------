@@ -13,7 +13,7 @@ node .../golden-gate.mjs --base <ref> --head <ref|@worktree> --families auto|all
 - `--head` 기본은 작업 트리(커밋 안 한 변경 포함). 커밋·브랜치도 된다.
 - `--families auto`(기본): 바뀐 파일 -> 닿는 종류만 렌더. 공용 파일(render-plan, worker, phase2, label_layout 등 visual_engine, pipeline-core, 측정·정책, Archive 쪽 페이지 코드)이거나 **표에 없는 엔진 파일이면 209 전체**. `all`, 종류 이름(`stat set solid number-line chain composite ellipse container lattice graph construction`), capability 이름, 골든 `fam` 이름, 항목 이름(`item21`)도 된다. `--list`는 고른 항목만 출력하고 끝낸다.
 - `--expected <파일>`: 의도한 변경 목록. 한 줄에 `항목 DIFFERENT|FIXED|REGRESSED 이유`(이유 10자 이상 필수, `#` 주석 가능). 이유 없는 줄은 오류다. 줄에 적힌 항목은 항상 비교하고, 실제로 바뀌지 않은 줄이 있으면 실패한다. 인정된 줄은 출력에 `EXPECTED ... <= expected: 이유`로 드러난다.
-- `--tests [auto|all]`: 엔진의 node(`*.test.mjs`)·python(`tests/test_*.py`, unittest) 테스트를 base와 head에서 돌려 **head에서만 실패한 이름**을 실패로 센다. 양쪽 모두 실패한 것은 "existing failure"로 그대로 출력한다(건너뛰기·격리 없음). `auto`는 바뀐 파일에 닿는 테스트(import 닫힘), 공용 파일이 바뀌면 전부.
+- `--tests [auto|all]`: 엔진의 node(`*.test.mjs`)·python(`tests/test_*.py`, unittest) 테스트를 base와 head에서 돌려 **head에서만 실패한 이름**을 실패로 센다. 양쪽 모두 실패한 것은 "existing failure"로 그대로 출력한다(건너뛰기·격리 없음; 스냅샷에 없는 저장소 파일이 필요한 테스트는 양쪽에서 같이 실패해 이 목록에 보인다). `auto`는 import 닫힘이 바뀐 파일에 닿거나(render-plan을 거치는 길은 따라가지 않음) 바뀐 종류의 capability·모듈 이름이 본문에 나오는 테스트만, 공용 파일이 바뀌면 전부.
 - `--repeat-check`: head를 두 번(순서를 뒤집고 묶음 크기를 바꿔) 렌더해 흔들림을 확인한다.
 - `--no-cache`: 캐시를 읽지 않고 양쪽을 새로 렌더(base=head여도 두 번 따로 렌더해 비교).
 - 종료 코드: 0 통과, 1 실패, 2 못 돌림(인자·의존성 없음).
@@ -45,6 +45,7 @@ FIXED와 BOTH_FAIL_SAME도 분모에서 빼지 않고 개수를 그대로 출력
 
 - 항목 하나는 보통 25~40초(Chrome 측정 단계가 대부분). 한 종류씩 합친 시간(base+head 렌더 시간의 합 ÷ 렌더 수): stat 28초, solid 25초, set 29초, number-line 23초, composite 41초, construction 40초, ellipse 39초, graph 58초, container 10초, lattice 2초(둘 다 일찍 거절), chain 1개가 3분 47초.
 - **209 전체: 한쪽 렌더 172개 + 캐시 37개에 1시간 03분(슬롯 2).** 캐시 없이 209개를 다 렌더하면 약 1시간 15분. head만 새로 돌리면(base가 캐시에 있으면) 그 한쪽 시간이다. 두 쪽을 모두 새로 돌리면 두 배.
+- `--tests`: stat 변경 하나에 테스트 58개 파일(449 통과·23 기존 실패)을 base·head 모두 돌려 32분(슬롯 2). 테스트가 Chrome으로 렌더하는 것이 많아 오래 걸린다.
 - 종류 하나(stat 23개): head 한쪽 약 5분, base까지 새로 만들면 약 10분. 캐시가 모두 맞으면 14초.
 - 종류 표가 닿는 범위를 줄여 주는 만큼만 빨라진다. 공용 파일을 고치면 209 전체(약 1시간)다.
 

@@ -121,7 +121,7 @@ export async function runTests({snap, files, resultsRoot, envKey, slots, lockDir
 
 // base/head: {file: {names}} -> comparison by "file :: test name"
 // A failing file is reported under its absolute path, which holds the snapshot folder name: cut that part so base and head names match.
-export const normalizeTestName = n => n.split('\\').join('/').replace(/[A-Za-z]:\/+(?:[^/]+\/+)*?snapshots\/+[^/]+\/+/g, '');
+export const normalizeTestName = n => n.split('\\').join('/').replace(/\/{2,}/g, '/').replace(/[A-Za-z]:\/(?:[^/]+\/)*?snapshots\/[^/]+\//g, '');
 export function compareTests(base, head, files) {
   const flat = res => { const m = new Map(); for (const f of files) for (const [n, s] of Object.entries(res[f]?.names ?? {})) m.set(`${f.replace(`${GE}/`, '')} :: ${normalizeTestName(n)}`, s); return m; };
   const b = flat(base), h = flat(head);
