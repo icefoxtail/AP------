@@ -1,0 +1,60 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "5",
+          "1"
+        ],
+        "domain": [
+          "-6",
+          "3"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-6",
+          "3"
+        ],
+        "label": "y=g(x)",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -7,
+      4,
+      -12,
+      24
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "$y=f(x)$",
+  "caption": "교점 x좌표 −4,0을 공유하는 위로 열린 f와 직선 g의 관계를 계수 미표기 개형으로 보인다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f−g는 −4,0에서 0이며 이차항 계수는 양수다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기출의 아래로 열린 f 그림을 그대로 쓰지 않는다.",
+    "예시 계수나 최댓값·최솟값 및 정답 계수 2를 노출하지 않는다."
+  ]
+}

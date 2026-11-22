@@ -1,0 +1,65 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "5",
+          "1"
+        ],
+        "domain": [
+          "-6",
+          "3"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-6",
+          "3"
+        ],
+        "label": "y=g(x)",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -7,
+      4,
+      -12,
+      24
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "$y=f(x)$",
+  "caption": "x=−4와 x=0에서 만나는 위로 열린 포물선 f와 직선 g의 형태만 나타낸다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f와 g의 교점 x좌표는 −4와 0이다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "f의 이차항 계수는 양수다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기출의 아래로 열린 f 그림을 재사용하지 않는다.",
+    "문제 그림에서 최솟값·정답을 유추하게 하는 세로 좌표나 예시 계수를 인쇄하지 않는다."
+  ]
+}

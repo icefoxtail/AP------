@@ -1,0 +1,94 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "6",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "6"
+        ],
+        "label": "f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "6"
+        ],
+        "label": "y=2x",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -2,
+      7,
+      -3,
+      15
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "vertical",
+          "x": "1"
+        }
+      ],
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "x": "4",
+          "y": "8"
+        },
+        {
+          "id": "P",
+          "x": "1",
+          "y": "5"
+        },
+        {
+          "id": "Q",
+          "x": "1",
+          "y": "2"
+        }
+      ]
+    }
+  },
+  "sourceQuote": "$y=2x$",
+  "caption": "두 곡선과 0<t<x_A의 수직선에서 만나는 P,Q의 일반 관계를 보이는 예시 배치.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f는 아래로 열린 이차함수이며 원점을 지난다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "직선 y=2x와 O,A에서 만나며 0<t<x_A의 수직선 위에 P,Q가 있다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "t의 위치, P와 Q의 세로 거리 구조만 표시한다. 문제 그림에 최대 거리 4의 성립 위치나 정답 넓이를 표기하지 않는다."
+  ]
+}

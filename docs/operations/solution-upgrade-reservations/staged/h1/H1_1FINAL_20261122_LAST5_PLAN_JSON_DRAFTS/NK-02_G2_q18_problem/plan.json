@@ -1,0 +1,100 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "-6",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "7"
+        ],
+        "label": "f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "-4",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "7"
+        ],
+        "label": "직선 ℓ",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -3,
+      8,
+      -14,
+      15
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "-5"
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "-8"
+        },
+        {
+          "id": "C",
+          "x": "5",
+          "y": "-5"
+        },
+        {
+          "id": "D",
+          "x": "2",
+          "y": "-8"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "id": "BD",
+          "from": "B",
+          "to": "D"
+        }
+      ]
+    }
+  },
+  "sourceQuote": "$f(x)=x^2-6x$",
+  "caption": "문제의 포물선 f(x)=x²−6x과 직선 ℓ의 두 교점 A,B 및 수평 대응점 C,D의 구조.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 A의 x좌표는 1이며, 두 수평선은 각각 A-C, B-D를 잇는다.",
+      "mappedTo": "graphPlan"
+    },
+    {
+      "id": "c2",
+      "condition": "삼각형 ABD 대 ABC 넓이 비 1:2다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "참고 배치 하나를 선택했지만 문제에는 m,n 및 답을 알리는 숫자·식·좌표를 쓰지 않는다."
+  ]
+}
