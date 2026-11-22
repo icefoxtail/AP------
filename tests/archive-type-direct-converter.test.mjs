@@ -182,6 +182,13 @@ test("--exclude-uids leaves a question that another pending request already carr
   assert.equal(parseCli(["--results", "r", "--exclude-uids", "f.txt"]).excludeUidsFile, "f.txt");
 });
 
+test("--only-uids plans only the listed questions; other PICK rows are neither converted nor counted as skips", () => {
+  const { requests, skipped } = plan({ onlyUids: new Set(["uid1"]) });
+  assert.deepEqual(requests.flatMap(r => r.items.map(i => i.questionUid)), ["uid1"]);
+  assert.ok(skipped.every(s => /^DECISION_/.test(s.reason))); // only NEW_KEY/HOLD lines are counted; PICK rows outside the list are not
+  assert.equal(parseCli(["--results", "r", "--only-uids", "f.txt"]).onlyUidsFile, "f.txt");
+});
+
 test("a pack that does not declare the binding course is skipped by default and widened append-only on request", () => {
   const narrow = { ...makeRegistry({ problemTypes: [{ problemTypeKey: "PT_A", status: "ACTIVE", ownerPack: "P1" }], templates: [{ templateKey: "TPL_A", status: "ACTIVE", parentProblemTypeKey: "PT_A" }],
     bindings: [{ problemTypeKey: "PT_A", curriculum: "2015", standardCourse: "중1 수학", ownerPack: "P1", status: "ACTIVE" }],

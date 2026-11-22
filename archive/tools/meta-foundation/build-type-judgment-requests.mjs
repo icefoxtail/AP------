@@ -6,6 +6,7 @@
 //        [--results-dir <local dir>] [--exams a.js,b.js | --exams-file <file>] [--limit N] [--out <repo root>] [--dry-run] [--summary-global] [--skipped-out <file>]
 //        [--allow-pack-scope-additions] [--include-receipt-rows] [--judged-base <git ref> | auto (default) | none]
 //        [--replace-draft-types]   (a draft type value (blank/manual_review_pending/projection_unmaterialized) that differs from the judgment is replaced, in separate "tr-" requests)
+//        [--only-uids <file>]   (only these question UIDs are planned; other PICK rows are neither converted nor counted as skips)
 //        [--max-requests N]   (write only the first N requests in registration order = one batch; run again on the main that holds it for the next)
 //        [--bundles <git ref> | --bundles-dir <dir>] [--bundles-only]   (new PT/TPL keys from the NEW_KEY bundle tables; implies --allow-pack-scope-additions)
 //
@@ -207,7 +208,7 @@ const gitBlob = (root, rel, bytes) => fs.existsSync(path.join(root, ".git"))
 // ---------------------------------------------------------------- planning
 const SKIP_ORDER = ["DUPLICATE_RESULT_LINE", "DECISION_NEW_KEY_NOT_HANDLED", "DECISION_HOLD", "DECISION_UNKNOWN"];
 // ctx: { records: Map uid->row, identity: Map uid->identity, identityCountBySource: Map, registry, readBank(file) -> {bank, bytes}, blobOf(file, bytes) }
-export function planRequests({ ctx, resultRows, exams = null, limit = null, approvedBy, judge = "dots", allowPackAdditions = false, includeReceiptRows = false, replaceDraft = false, approveSameDraft = false, excludeUids = null }) {
+export function planRequests({ ctx, resultRows, exams = null, limit = null, approvedBy, judge = "dots", allowPackAdditions = false, includeReceiptRows = false, replaceDraft = false, approveSameDraft = false, excludeUids = null, onlyUids = null }) {
   const skipped = [], stats = { judgedBase: { checked: 0, unverified: 0, changedKept: 0 }, gradeBindingRows: 0 };
   const aliases = ctx.aliases || makeCourseAliases(null);
   const skip = (row, reason, extra = {}) => skipped.push({ uid: row.uid, exam: row.exam ?? null, no: row.no ?? null, decision: row.decision ?? null, reason, ...extra });
@@ -221,6 +222,7 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
     if (row.decision !== "PICK") { skip(row, "DECISION_UNKNOWN"); continue; }
     const m = ctx.records.get(row.uid);
     if (!m) { skip(row, "ROW_NOT_IN_CANONICAL_METADATA"); continue; }
+    if (onlyUids && !onlyUids.has(row.uid)) continue; // --only-uids: outside the wanted questions (not a skip, not counted)
     if (excludeUids?.has(row.uid)) { skip(row, "ALREADY_IN_OTHER_REQUEST"); continue; } // --exclude-uids: a question another pending request already carries
     if (normalizeExam(row.exam) !== normalizeExam(m.sourceArchiveFile)) { skip(row, "ROW_EXAM_DIFFERS_FROM_CANONICAL"); continue; }
     const file = normalizeExam(m.sourceArchiveFile);
@@ -484,6 +486,7 @@ export function parseCli(argv) {
     else if (k === "--owner-pack") { const [b, pack] = value().split("="); if (!b || !pack) throw new Error("INVALID_OWNER_PACK"); (args.ownerPackByBundle ||= new Map()).set(b, pack); }
     else if (k === "--replace-draft-types") args.replaceDraft = true;
     else if (k === "--exclude-uids") args.excludeUidsFile = value();
+    else if (k === "--only-uids") args.onlyUidsFile = value();
     else if (k === "--max-requests") { args.maxRequests = Number(value()); if (!Number.isInteger(args.maxRequests) || args.maxRequests < 1) throw new Error("INVALID_MAX_REQUESTS"); }
     else throw new Error(`INVALID_ARGUMENT:${k}`);
   }
@@ -510,6 +513,7 @@ export function run(args) {
   planCtx = { ...planCtx, gradeBindings: createGradeBindings({ ctx: planCtx, env: { curriculumGuess, pathGrade } }) };
   const built = planRequests({ ctx: planCtx, resultRows: rows, exams: args.exams, limit: args.limit, approvedBy: args.approvedBy, judge: args.judge || "dots",
     allowPackAdditions: args.allowPackAdditions, includeReceiptRows: args.includeReceiptRows, replaceDraft: args.replaceDraft, approveSameDraft: Boolean(args.approveSameDraft),
+    onlyUids: args.onlyUidsFile ? new Set(fs.readFileSync(args.onlyUidsFile, "utf8").split(/\r?\n/).map(s => s.trim()).filter(s => s && !s.startsWith("#"))) : null,
     excludeUids: args.excludeUidsFile ? new Set(fs.readFileSync(args.excludeUidsFile, "utf8").split(/\r?\n/).map(s => s.trim()).filter(s => s && !s.startsWith("#"))) : null });
   // One batch = the first N requests in registration (file name) order; the rest are left for the next run on a main that holds this batch.
   if (args.maxRequests) {
