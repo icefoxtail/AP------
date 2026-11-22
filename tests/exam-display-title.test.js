@@ -5,6 +5,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const { readableExamTitle } = require('../archive/exam-display-title.js');
+const { assertLoads } = require('./helpers/html-asset-refs.cjs');
 
 const root = path.resolve(__dirname, '..');
 
@@ -65,7 +66,7 @@ test('원본 기출 전체: 모두 읽기 쉬운 이름으로 바뀌거나 원�
 
 test('엔진: 시험지 JS는 건드리지 않고 표시 제목만 바꾼다(examDisplayTitle 우선, 식별 제목 유지)', () => {
   const engine = fs.readFileSync(path.join(root, 'archive', 'engine.html'), 'utf8');
-  assert.match(engine, /<script src="exam-display-title\.js\?v=20261116-polish-1"><\/script>/);
+  assertLoads(engine, 'exam-display-title.js', 'engine', { tag: 'script' });
   assert.match(engine, /AppState\.identityTitle = AppState\.title;/, '식별 제목은 원래 값 그대로');
   assert.match(engine, /AppState\.displayTitle = window\.examDisplayTitle \|\| readableTitle\(AppState\.title\);/);
   // 실제로 쓰이는 길은 화면 실행기 어댑터다: 식별 제목(title)은 그대로, 표시 제목만 읽는 이름으로.

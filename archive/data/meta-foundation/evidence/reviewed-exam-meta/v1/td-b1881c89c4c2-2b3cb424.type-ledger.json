@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-b1881c89c4c2-2b3cb424",
+  "sourceArchiveFile": "types/middle/m2/RPM_중2_2-1_유리수와순환소수_01_유리수와순환소수_중2.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-u-20261122",
+    "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_00267bacdf9745d1e7c6abe198e7571f1e5f8cbfe5cf8941869e6a98d6e52839",
+      "sourceOrdinal": 33,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "순환소수의 식에서 소수 부분이 같아지도록 양변에 10의 거듭제곱을 곱해 빼서 기약분수로 나타낸다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_943ba1d5ba7636acfd05e8f579b03759f72eb4de9bc4fe826fa90f7352ccc75a",
+      "sourceOrdinal": 40,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "순환마디와 비순환 부분의 자릿수로 순환소수를 분수로 나타낼 때의 분모(9와 0의 개수)를 정한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2771ace939f60eff6b33b30952e899c3be9c0469fbdf6d20268d26150848647d",
+      "sourceOrdinal": 55,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "보기마다 순환마디를 찾아 순환소수와 순환마디가 바르게 연결된 것을 고른다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_50b3055b8f36fb7e9b8a945d14b6d19d7d5c241a8fdcc16526eb485f97443156",
+      "sourceOrdinal": 94,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "분모만 잘못 본 값에서 분자를, 분자만 잘못 본 값에서 분모를 구해 처음 기약분수를 순환소수로 나타낸다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_433d3eb4f0352377d60544c814d30b071f47fe546eaab406bfeeb035a9231732",
+      "sourceOrdinal": 95,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "분모만 잘못 본 순환소수에서 분자를, 분자만 잘못 본 순환소수에서 분모를 구해 처음 분수를 순환소수로 나타낸다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b8262fe45f43f05bbf9244201f0c8da0a4ef284e7049093ea40ef471f2eaa7cf",
+      "sourceOrdinal": 96,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "분자만 잘못 본 순환소수에서 분모를, 분모만 잘못 본 순환소수에서 분자를 구해 처음 분수를 순환소수로 나타낸다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_66e6fafe1de63cb4c461e280f2ae7f2f3e31efea1501474633f27eab7e87d17a",
+      "sourceOrdinal": 101,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "순환소수를 분수나 소수 전개로 바꾸어 두 수의 대소를 보기마다 비교한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dcc08ab68a096d6ff5b537105440f1b36766941e3cc59778d01d6ece76400107",
+      "sourceOrdinal": 110,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "순환소수 0.ab와 0.ba의 합을 분수로 나타내 a+b를 구하고 조건에 맞는 a, b를 찾는다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c6143b19084302f41dea6113c1ab7bd534a9b2e877d7d6a821baf3e58a705b0a",
+      "sourceOrdinal": 112,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "두 순환소수의 차를 분수로 나타내 b-a를 구하고 조건에 맞는 a, b로 곱을 구한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_19d020b695927fab922e3deaa26ec914aadf113db576a6b91ee569191d5c95d6",
+      "sourceOrdinal": 115,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "순환하지 않는 자리와 순환마디의 길이를 구분해 소수점 아래 99번째 숫자를 구한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9af0223952fb68ffd2ff08bd2ab77cdcb4dc2d71052f01152fc364dab58324fc",
+      "sourceOrdinal": 123,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "순환소수 1.12333…를 순환소수 표기, 분수 변환식, 순환마디 등 보기마다 판단한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d881008cb0f7c416e66307607b37558c42c9d98f818904badf50f2a67349418e",
+      "sourceOrdinal": 128,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "네 순환소수를 소수로 전개해 크기를 비교하고 두 번째 수의 소수점 아래 35번째 숫자를 순환마디 반복으로 구한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_da6ca319e37518054e9c5fa7eace214057092470b802be1724ecaf687b6fa8c7",
+      "sourceOrdinal": 132,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "분모만 잘못 본 값에서 분자를, 분자만 잘못 본 값에서 분모를 구해 처음 기약분수를 순환소수로 나타낸다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d52ea508ef6a76daf48bea3a55e9b75265c5bcc8af04fdd176c526f9dfab7224",
+      "sourceOrdinal": 136,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "0.ab+0.ba를 분수로 나타내 a+b를 구하고 a>b인 값을 찾아 두 순환소수의 차를 순환소수로 나타낸다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    }
+  ]
+}

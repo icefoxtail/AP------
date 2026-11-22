@@ -1,0 +1,362 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-7e2d16e42bba-cfaa89f8",
+  "requestSha256": "809f648e716394e0b6bd49cedcc6ae447c89ce7a8f85553cbb6480f61160eee1",
+  "examUid": "중1_1학기_일차식의계산",
+  "sourceArchiveFile": "types/middle/m1/중1_1학기_일차식의계산.js",
+  "sourceBlobSha1": "f15699a95305d97b9e60a7210fb2856c35675ccc",
+  "sourceRawSha256": "9401aa4d2812a4f60bb8870bc770ad338b465fa763a9e951d2c6aeefc2a65c73",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e2d16e42bba-cfaa89f8.type-ledger.json",
+        "sha256": "1801090866ce3ab01e287cea5e6e2ab09ec72148acf31acebf3e60ec4d35aa98"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 7,
+  "registryChanges": [],
+  "typeApprovals": 7,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 6,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_3fee8e5a1e8f032d4c0bb5c28b16aaecfa8dc0af3901e881b79ecd9523954095",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_일차식의계산.js",
+      "sourceOrdinal": 15,
+      "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+      "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-7e2d16e42bba-cfaa89f8",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "잘못 더한 식을 두 번 빼어 -x+3.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "3cdca32747bd209b09944d0e28a2c5a0ab87e4925db0606e663ea611089862be",
+        "judgedContentFingerprint": "53a032262e97746c9a0eef5855c50ea2b7fe9308029289693889e6804f4b8537",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "060f15bdb6197d4cddea246b7609771668960bd435b14afd1079e2ce78da40bb",
+        "resultSource": {
+          "branch": "data/type-judgment-t-20261116",
+          "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e2d16e42bba-cfaa89f8.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_2d86aea1c7d17156a37fb6257f83f47f5313aa2c9b4d2723456615e11178a078",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_일차식의계산.js",
+      "sourceOrdinal": 21,
+      "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+      "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-7e2d16e42bba-cfaa89f8",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "잘못 더한3x-1을 결과에서 두 번 빼어 -x-5.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "f187101a306443f2333296a27c9aee2525ebeb62582ed83e4d79febbe003d6cc",
+        "judgedContentFingerprint": "ceb870219b52e43682b64b1441c7c038497c2e0ed371acdf2d238704f6e4b0f7",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "023779fc49e3d3b364f450d365dfdba6e1636aec63b115eb95e27811db751f99",
+        "resultSource": {
+          "branch": "data/type-judgment-t-20261116",
+          "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e2d16e42bba-cfaa89f8.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_994c04abd6df93a5272c934869f79b2eb1d1066df811730dcca718ce7cbe93e9",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_일차식의계산.js",
+      "sourceOrdinal": 35,
+      "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+      "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-7e2d16e42bba-cfaa89f8",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "잘못 더한3y+1을 두 번 빼어 -y-3.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "131110a65fe4c6f57324b5c4138a0c9a5e8de00ac97ee0fd3f1e174a06567980",
+        "judgedContentFingerprint": "74e7a8ca9ac3c9ccb12b609e50f4759bf74b87d2890c84b0f7476321a2749643",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "a682550ca3cea93e459d815646e1e2ccf0d47969037b9beb845ad0f52eee40ab",
+        "resultSource": {
+          "branch": "data/type-judgment-t-20261116",
+          "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e2d16e42bba-cfaa89f8.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_0f318a25084ecf34a3913ddbd5d0c38e8d92de5c7ce571312b6abc3f8f9eeb42",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_일차식의계산.js",
+      "sourceOrdinal": 43,
+      "problemTypeKey": "PT_M1_LITERAL_VALUE",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-7e2d16e42bba-cfaa89f8",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "주어진 수를 식에 대입하고 통분하는 풀이에서 틀린 곳을 찾아 바르게 계산한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "4bf5a67edf322092c99dd50c247b921b8f16ef31e3081ee8dd6651cba0a70bc7",
+        "judgedContentFingerprint": "541ce726452eddb5706c2cb117138d6442f791d2b50cc328730a3f6318eca9fa",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "28739db51fdaca114c7d151ded0b52e81d2a83f0e16ae9254213355500e6f547",
+        "resultSource": {
+          "branch": "data/type-judgment-t-20261116",
+          "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e2d16e42bba-cfaa89f8.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_b87b22bec7f0359ed3f5c3bdd26039794cfefcf8fd5f579f24b88d845a8e9676",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_일차식의계산.js",
+      "sourceOrdinal": 45,
+      "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-7e2d16e42bba-cfaa89f8",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "(-1)^(4n-1)=-1, (-1)^(2n)=1로 정리한 뒤 분수 계수 일차식을 통분해 동류항끼리 계산한다",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "3f1fb98b90fb31d997e1e943ae0d240e0172c6b06e85ec5790ed41662d240779",
+        "judgedContentFingerprint": "e8f2fa6d915d437e0a4536ef2d456eef8960cc0b0b708fe26e358731ba594826",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "534c6aeedaea4d495be940141a97d633a27e8a885382c5aab81377089f0e9d81",
+        "resultSource": {
+          "branch": "data/type-judgment-t-20261116",
+          "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e2d16e42bba-cfaa89f8.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_d22a0b2a6a504d6e03ad4b220704798b052dcc7440afdb865305b3e8ca7a83c0",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_일차식의계산.js",
+      "sourceOrdinal": 53,
+      "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+      "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-7e2d16e42bba-cfaa89f8",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "잘못 더한 -3x+2를4에서 두 번 빼어6x.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "3fb617603f5aa76268e72d238395880448f0ecab49cd8a5be8d79c157a3358d7",
+        "judgedContentFingerprint": "d2a3ae9c40683f906882cc1258be47713c5dad8e896d3f8af08a5b23f6d3ca1a",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "32164524f37febb3fccf5b02053e4abb887ef772286eb2b2de035d59070ad60f",
+        "resultSource": {
+          "branch": "data/type-judgment-t-20261116",
+          "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e2d16e42bba-cfaa89f8.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_ce829b5136be3cfbb9b91329f6cb05c064fb82e934aacc8bdc49965b00d22d0b",
+      "sourceArchiveFile": "types/middle/m1/중1_1학기_일차식의계산.js",
+      "sourceOrdinal": 56,
+      "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-7e2d16e42bba-cfaa89f8",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "계수 a-b=-2,상수3a+2=5에서 a=1,b=3으로 목표-6.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "042368d7e8d2777f1d8f2ea71bef1884b8addbf1f6410bec41d1e0aad3c720c6",
+        "judgedContentFingerprint": "a61460823bd1265c767c032472e9e32a0ec0bc7c83f4716b86c31eb5fd685f17",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "08450b83b93a5ab0e09f9631e4eb417fb8f0929cff6295f2513d348e848934db",
+        "resultSource": {
+          "branch": "data/type-judgment-t-20261116",
+          "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e2d16e42bba-cfaa89f8.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 7,
+  "expectedQuestionCount": 58
+}

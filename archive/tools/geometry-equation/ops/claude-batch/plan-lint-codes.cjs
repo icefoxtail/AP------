@@ -180,8 +180,8 @@ rule(/^NUMBER_LINE_POINTS_INVALID$/, c => {
   const pr = rows.filter(r => r && r.kind === 'POINTS');
   const ids = pr.flatMap(r => (r.points || []).map(p => p && p.id));
   const n = pr.map(r => (r.points || []).length);
-  return { reason: `POINTS 행은 점 2~4개이고 점 id 는 영문 대문자 한 글자(또는 지정한 기호) 여야 한다. 이 plan: 점 개수 ${n.join('/')}, id ${ids.map(q).join(' ')}.`,
-    fix: 'id 를 A·B·C 처럼 대문자 한 글자로 바꾸고(P0·소문자 불가), 점이 4개를 넘으면 행을 나누거나 핵심 점만 둔다. 점 이름을 안 보이게 하려면 hideName 을 쓴다.' };
+  return { reason: `POINTS 행은 점 2~12개이고 점 id 는 영문 대문자 한 글자(또는 지정한 기호) 여야 한다. 이 plan: 점 개수 ${n.join('/')}, id ${ids.map(q).join(' ')}.`,
+    fix: 'id 를 A·B·C 처럼 대문자 한 글자로 바꾸고(P0·소문자 불가), 점이 12개를 넘으면 행을 나누거나 핵심 점만 둔다. 점 이름을 안 보이게 하려면 hideName 을 쓴다.' };
 });
 rule(/^NUMBER_LINE_(ROWS_INVALID|PIECE_INVALID)$/, c => hintOnly(c, `수직선 rows 형식 오류(${c.base}).`));
 rule(/^SOLID_MARK_RAY_NOT_DRAWN$/, c => ({ reason: `입체 marks ${c.arg} 가 가리키는 각의 두 변이 그려진 모서리·segments 가 아니다.`, fix: '직각·각 표시의 두 변을 입체의 모서리(edge)로 두거나 segments 에 그 선분을 추가한다.' })); // solid-figure-v1.mjs:1539,1596
@@ -197,6 +197,8 @@ rule(/^(ELLIPSE_POINT_INVALID|ELLIPSE_LINE_INVALID)$/, c => ({ reason: `ellipse-
 rule(/^UNSUPPORTED_DISPLAY_ENVELOPE$/, c => ({ reason: `합성 그림의 전체 크기(${c.extra && c.extra.size ? c.extra.size.width + 'x' + c.extra.size.height : '?'})가 화면 표시 한계를 넘는다. 렌더에서 폭 828 이상·높이 820 이상은 모두 거절됐다(폭 776·높이 768 이하는 통과). 이 줄은 크기만 보는 추정이다.`, fix: '패널 수를 줄이거나(위아래로 쌓이는 높이의 합), 패널 안 그래프의 viewport·축 범위를 줄여 그림 한 장의 높이를 770 이하·폭을 780 이하로 한다. 한 패널로 줄이고 나머지는 caption 에 쓴다.' })); // composite-candidate-svg-v1.mjs:43
 rule(/^COMPOSITE_PLAN_INVALID$/, () => ({ reason: 'composite-panels-v1 의 최상위·패널 구조가 형식에 맞지 않는다(패널 수·허용 필드·패널 안 plan 의 caption 금지 등).', fix: '패널 2~6개, 각 패널은 {caption:{text|math},plan:{...}}. 패널 안 plan 에는 caption·sourceConditions·newVisualInformation 을 쓰지 않는다.' }));
 rule(/^STAT_NORMAL_TICK_TEXT_MISMATCH$/, () => ({ reason: '정규분포 눈금의 text 가 숫자인데 그 눈금의 위치 x 와 다르다(예 {x:"-2",text:"430"}: -2 자리에 430 이라고 적을 수 없다).', fix: '곡선을 실제 단위로 둔다: curves[].mean·sd 를 실제 평균·표준편차(예 "450","10")로 하고 ticks 는 {x:"430"} 처럼 실제 값으로 쓴다. 표준화(z) 눈금은 {z:"-2"}.' })); // stat-chart-v1.mjs:798
+rule(/^STAT_NORMAL_CURVE_NAME_Z_NOT_STANDARD$/, () => ({ reason: '정규분포 곡선 이름이 Z인데 평균 0·표준편차 1인 표준정규분포가 아니다(평균·σ가 실제 값이나 문자인 곡선을 Z라 부르면 학생이 표준정규분포로 읽는다).', fix: '곡선 이름(label)을 문제의 변수(X, H, Y 등)로 바꾼다. z 눈금 줄이 필요하면 zAxis:true 를 쓴다(z 표기는 그대로). 평균 0·σ 1인 표준정규분포만 Z 라고 쓴다.' })); // stat-chart-v1.mjs normal curves
+rule(/^STAT_NORMAL_XLABEL_Z_NOT_STANDARD$/, () => ({ reason: '정규분포 x축 이름(xLabel)이 z(Z)인데 곡선이 평균 0·표준편차 1이 아니고 눈금이 실제 값이다(z축은 표준화한 변수의 축이다).', fix: 'xLabel 을 문제의 변수(기본 x, 또는 X, h 등)로 바꾸거나 쓰지 않는다. z 눈금 줄이 필요하면 zAxis:true 를 쓴다. 표준정규분포(평균 0, σ 1) 곡선이면 xLabel:"z" 를 쓴다.' }));
 rule(/^STAT_NORMAL_BOUNDARY_NOT_TICKED$/, () => ({ reason: 'shades 의 from/to 경계가 ticks 에 없는 위치다(경계는 눈금으로 표시된 곳이어야 한다).', fix: 'shades 의 from/to 를 ticks 의 x(또는 text) 와 같게 하고, 색칠 경계가 되는 값은 모두 ticks 에 넣는다.' })); // stat-chart-v1.mjs:809
 rule(/^STAT_NORMAL_(TICK_TEXT_INVALID|AREA_LABEL_INVALID|AREA_LABEL_MISMATCH|WINDOW_TOO_WIDE)$/, c => hintOnly(c, `정규분포 plan 의 ${c.base === 'STAT_NORMAL_WINDOW_TOO_WIDE' ? '곡선들이 한 창에 안 들어간다(평균 차이가 표준편차의 6배 이내여야 한다)' : '눈금·넓이 글 형식이 맞지 않는다'}(${c.base}).`));
 rule(/^STAT_TREE_LABEL_INVALID$/, () => ({ reason: '수형도 가지 label 이 6자를 넘거나 < > & " \\ 가 있다(label 은 1~6자).', fix: 'label 을 6자 이내 짧은 말로("A 1", "그 외")하고 설명은 caption 에 쓴다.' })); // stat-chart-v1.mjs:1003

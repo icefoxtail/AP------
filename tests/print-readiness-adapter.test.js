@@ -4,13 +4,14 @@ const fs = require('node:fs');
 const path = require('node:path');
 const root = path.join(__dirname, '..');
 const { readPrintRenderAuthorityFixture } = require('./helpers/print-render-authority-fixtures.cjs');
+const { assertLoads } = require('./helpers/html-asset-refs.cjs');
 
 test('all three adapters load the shared readiness tracker without collapsing transport capability', () => {
   const archive = fs.readFileSync(path.join(root, 'archive', 'engine.html'), 'utf8');
   const mixer = fs.readFileSync(path.join(root, 'archive', 'mixed_engine.html'), 'utf8');
   const clinic = fs.readFileSync(path.join(root, 'apmath', 'wrong_print_engine.html'), 'utf8');
   for (const [name, source] of [['archive', archive], ['mixer', mixer], ['clinic', clinic]]) {
-    assert.match(source, /print-runtime\.js\?v=20260906\.2/, `${name} loads common runtime`);
+    assertLoads(source, 'print-runtime.js', `${name} loads common runtime`);
     assert.match(source, /DATA_READY/);
     assert.match(source, /MATH_READY/);
     assert.match(source, /IMAGE_READY/);

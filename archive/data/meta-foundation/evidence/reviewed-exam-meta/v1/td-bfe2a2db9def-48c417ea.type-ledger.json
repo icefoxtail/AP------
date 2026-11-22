@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-bfe2a2db9def-48c417ea",
+  "sourceArchiveFile": "textbooks/비상교육_공통수학1/비상_공통수학1_경우의수와행렬_대단원학습평가_고1/비상_공통수학1_경우의수와행렬_대단원학습평가_고1.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-u-20261122",
+    "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_601e59431aeddca6df82850e7ce574909aed4ce68562971bf80452123593822f",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "step": "x+y=4, 5, 6의 경우로 나누어 자연수 순서쌍을 세고 합의 법칙으로 더한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7a4a5ac022787a49ec79d4f62f94f1bf9eeb87be37125d68daddb64efacf7f88",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_H1_BINOMIAL_PARAMETER_RELATION",
+      "step": "순열 등식을 (n-1)로 약분해 n의 이차방정식으로 바꾸고 n>3인 자연수 n을 구한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    }
+  ]
+}

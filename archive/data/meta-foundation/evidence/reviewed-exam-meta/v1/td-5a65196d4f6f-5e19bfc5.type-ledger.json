@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-5a65196d4f6f-5e19bfc5",
+  "sourceArchiveFile": "textbooks/백발백중_공통수학2/백발백중_공통수학2_도형의이동_P78-81_20261022_유사50.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/백발백중_공통수학2.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_8f6248b7650ae369480e8a845c3937ee71127f5844b0bce28cad9f1803934585",
+      "sourceOrdinal": 45,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_LINE_REFLECTION",
+      "templateKey": "TT_LINE_REFLECTION_EQUATION",
+      "step": "원점대칭식 y=ax−b의 기울기를3으로 놓고 (2,3)를 대입하여 a=b=3을 구한다.",
+      "note": "원문 의심: 평행을 서로 다른 직선으로 엄밀히 한정하면 결과가 기준직선과 일치하여 조건 충돌. 해설은 동일 기울기 의미로 사용하므로 의미 판정은 유지하고 검토 필요. 검사: CANONICAL_SUBUNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/백발백중_공통수학2.jsonl",
+      "stemChangedSinceJudgment": true
+    }
+  ]
+}

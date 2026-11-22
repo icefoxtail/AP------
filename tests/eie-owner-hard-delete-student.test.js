@@ -1,6 +1,7 @@
 const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
+const { assertLoads } = require('./helpers/html-asset-refs.cjs');
 
 const root = path.resolve(__dirname, '..');
 const worker = fs.readFileSync(path.join(root, 'workers/wangji-eie-worker/routes/eie.js'), 'utf8');
@@ -39,6 +40,7 @@ assert(
   timetable.includes("if (assigned.length || row?.assigned_students_resolved === true)"),
   'an empty resolved assignment list should not fall back to stale imported candidates'
 );
-assert(index.includes('eie-timetable.js?v=20260622') && index.includes('eie-students.js?v=20260622'), 'changed EIE scripts should be cache-busted');
+assertLoads(index, 'eie-timetable.js', 'index');
+assertLoads(index, 'eie-students.js', 'index');
 
 console.log('EIE owner hard-delete student test passed');

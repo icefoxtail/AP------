@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-430bb3288721-0857b926",
+  "sourceArchiveFile": "similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_c0b45cb05ec4751d70dfb2767836def325950d4b837be25a75abdcc9ec69be08",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+      "step": "반지름 OA=OB와 공통변 OM으로 두 직각삼각형의 합동조건이 RHS임을 확인한다.",
+      "note": "보기 (다)는 공통이 아닌 OM으로, (마)는 BM이 아닌 AM=BM으로 표기되어 빈칸 문법 오류 의심.",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl",
+      "stemChangedSinceJudgment": true
+    },
+    {
+      "questionUid": "qid_v1_4f41e2467ff62758236b0fafe6c7920c8d080422c334ef760dd449d81d539d93",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CIRCLE_TANGENT",
+      "templateKey": null,
+      "step": "외부점에서 원에 그은 두 접선 길이가 같음을 t로 놓고 이어 가며 AD+AF를 구한다.",
+      "note": "새 키 제안 줄을 기존 키 재사용으로 재판정 2026-11-22",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    }
+  ]
+}

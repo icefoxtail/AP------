@@ -30,9 +30,11 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 
 - **이름 주고받기**: 각 파일은 끝에서 자기 최상위 이름을 `Object.assign(WS.api, {…})`로 내놓고, 다른 파일의 이름은 맨 위 `let …;`(헤더)와 `WS.links.push(…)`로 받는다. **다른 파일의 함수를 새로 부르면 그 파일 헤더 두 곳(let 목록·구조분해)에 이름을 더한다.** `tests/archive2-workspace-parts.test.js`가 빠뜨린 이름·주인 없는 이름·로드 순서·Pages 목록 누락을 잡는다.
 - **여러 파일이 바꾸는 변수는 `V.이름`**(`WS.v`)이다(예: `V.previewTimer`, `V.classRows`). 새로 파일 사이에서 공유할 변경 가능한 변수가 생기면 `V`에 둔다.
-- **캐시 버전**: 파일마다 자기 `?v=`를 두고 그 파일을 바꾼 PR만 올린다. 코드에서 이름을 새로 내놓거나 받으면 두 파일 모두 바뀌므로 둘 다 올린다. 새 파일은 `tools/archive-pages-release-manifest.json`에도 올린다.
+- **캐시 버전 (2026-11-22 변경)**: 배포 사이트(Pages 빌드 산출물)에서는 HTML의 로컬 `<script src>`·`<link href>`의 `?v=`가 가리키는 파일 내용의 해시로 자동 대체된다(`tools/lib/stamp-html-versions.mjs`, #2543). 그래서 **스탬프되는 페이지(`archive/workspace.html`, `unit-past-exams.html`, `index.html`, `mixer.html` 등)의 `?v=`는 PR에서 올리지 않는다.** 이유: 화면 PR마다 그 한 줄을 손으로 올리다 하루에 PR 6개가 서로 충돌했다. 소스에 이미 있는 `?v=` 값은 지우지 말고 그대로 둔다(배포가 덮어쓴다). 테스트는 `?v=` 값을 고정하지 않고 `tests/helpers/html-asset-refs.cjs`(`assertLoads`: 그 페이지가 그 파일을 로드하고 한 페이지 안에서 서로 다른 `?v=`로 부르지 않는다, `assertLoadedBefore`: 로드 순서)를 쓴다. 새 파일은 `tools/archive-pages-release-manifest.json`에도 올린다.
+  - **스탬프에서 제외되는 9개 HTML은 아직 손으로 `?v=`를 올린다**(공개 검증이 Git 바이트와 같은지 대조하므로 빌드가 바꿀 수 없다; `tools/ci/student-portal-public-release.mjs` PUBLIC_ASSETS): `archive/engine.html`, `archive/mixed_engine.html`, `apmath/student/index.html`, `apmath/planner/index.html`, `apmath/homework/index.html`, `apmath/playground/index.html`, `apmath/playground/next/index.html`, `apmath/playground/next/labs/g8-triangles.html`, `apmath/wrong_print_engine.html`. 이 페이지가 부르는 파일을 고치면 그 페이지의 `?v=`를 올린다(코드에서 이름을 새로 내놓거나 받으면 두 파일 모두).
+  - JS 안의 동적 주소·`document.write` 문자열과 CSS `@import`는 자동이 아니다.
 - **compose의 "종이 만들기" 함수(`prepare/request/review/seal/pool/replace`)는 미리보기·저장도 부른다.** 서명을 바꿀 때는 호출하는 쪽 파일을 같이 고친다.
-- **테스트는 파일 이름을 직접 읽지 않는다**: `tests/helpers/archive2-workspace-source.cjs`의 `readWorkspace()`(전체 텍스트), `loadWorkspace(ctx, 훅)`(vm에 올리고 훅 실행)을 쓴다. 판본 `?v=` 값은 고정하지 않는다.
+- **테스트는 파일 이름을 직접 읽지 않는다**: `tests/helpers/archive2-workspace-source.cjs`의 `readWorkspace()`(전체 텍스트), `loadWorkspace(ctx, 훅)`(vm에 올리고 훅 실행)을 쓴다. 판본 `?v=` 값은 고정하지 않는다(위 `html-asset-refs.cjs`).
 
 ## 시험지 보관함 "26년 2학기 기말 모의고사" (2026-11-19 사용자 요청)
 
@@ -404,3 +406,17 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 실측(이 PC, 캐시 없는 새 프로필): 시험지 하나 열기가 `data/question_metadata.json`(압축 전 87.6MB, gzip 15.3MB)을 받고 해석한 뒤에야 첫 문항을 그렸다(전송 17.7MB 중 15.3MB, 20Mbps로 약 7초). 그림 그리는 데는 이 메타를 읽지 않는다: `render-authority.js` 등에 `_archiveMetadata`·`standardUnitKey` 사용이 없고, 채워지는 `standardUnitKey` 등은 반 출제 등록(`submitQr=1` / `osqr=1`)이 서버로 보내는 값뿐이다.
 - `engine.html`은 등록 주소일 때만 `question-meta.js`를 불러온다(`<script id="engine-metadata-gate">`, 같은 자리에서 `document.write`라 순서·`await window.__ARCHIVE_METADATA_READY__`는 그대로). 평소 열기(`engine.html?data=exams/<file>&mode=exam|sol|ans`)는 sidecar 요청이 없다. 이유: 믹스 리더(`output-metadata-loader.js`)가 이미 같은 규칙이다. 테스트: `tests/archive-engine-original-metadata-on-demand.test.js`.
 - 이 규칙을 되돌리지 않는다. 등록 주소에 새 이름이 생기면 위 게이트의 조건에 함께 넣는다.
+
+## 카탈로그는 두 파일: 화면이 받는 것과 검수·근거 (2026-11-22, 선생님 속도 실측 후속)
+
+- `archive/data/archive2-catalog.json`은 선생님 화면과 Worker가 받아 읽는 값만 둔다. 화면·Worker가 읽지 않는 검수·근거 값(`metadataAssignmentEvidence`의 증거 경로·해시, `metaProjection.parentBinding`·`sourceBinding`의 증거 경로·해시, `approvedSourceFingerprint`)은 `archive/data/archive2-catalog-evidence.json`으로 옮긴다. 화면은 이 파일을 받지 않는다(Pages 릴리스 목록에도 없다). 이유: 카탈로그 73MB(gzip 11.8MB) 중 이런 값이 큰 몫이었고, 선생님이 들어올 때마다 받아 해석했다.
+- 빌더(`build-archive2-catalog.mjs`)가 두 파일을 같이 쓰고 `--check`도 둘 다 본다. 쓰는 규칙은 `archive/tools/archive2-catalog-evidence.cjs` 한 곳이다. 빌더는 매번 같은 입력으로 `resolveCatalog`를 얇은 카탈로그와 전체 카탈로그에 돌려 결과가 같은지 확인하고 다르면 멈춘다. `resolveCatalog`는 등록 영수증이나 검수 덮어쓰기가 가리키는 문항에서만 `metadataAssignmentEvidence`를 통째로 읽으므로 그 문항은 전체 값을 카탈로그에 남긴다.
+- 완전한 레코드가 필요한 도구·테스트는 `archive2-catalog-evidence.cjs`의 `readCatalog({ root })`로 읽는다(증거 파일을 합쳐 준다, 표지(`catalogEvidence`)가 없는 옛 카탈로그는 그대로 돌려준다). 화면 코드가 새로 이 값들을 읽어야 하면 읽지 말고 얇은 카탈로그에 남기는 값을 먼저 늘린다(`tests/archive2-catalog-evidence.test.js`가 화면 스크립트가 옮겨진 이름을 읽는지 잡는다).
+- 손으로 카탈로그를 고치는 일회성 등록 도구(`register-target-exam.mjs`, `register-existing-target-exam-update.mjs`)는 두 파일 구조를 못 쓴다. 표지가 있는 카탈로그를 만나면 멈춘다. 등록은 등록기(빌더)로 한다.
+
+## 화면 개선 4건: 교과서 칸·진단 결과표 단계·빠른 평가 안내·단원별 기출 → 문제지 만들기 (2026-11-22)
+
+- **학교별 기출 상단 줄은 [학교 기출 | 교과서 | 기출 외 시험지 | 전체]**다(`archive2-workspace-find.js` `renderFind`). 교과서 칸은 `material=textbook`(`O.materialKind`가 이미 가르던 값)이고 "기출 외 시험지"에서 교과서를 빼지 않는다(전체·기출 외에는 그대로 섞여 나온다). 학년·과목 단추는 기존 것을 그대로 쓰고, 시험 시기 단추는 교과서에 없어 숨기며 그 자리에 **출판사 단추**(`finder-publisher`)를 둔다. 출판사 값은 새 필드가 아니라 기존 학교 조건(`state.find.school`, 카탈로그의 `school`=출판사)이다. 교과서 줄은 `textbookParts`가 카탈로그 값(`school`·`primaryStandardCourse`·`topic`)에서 출판사·과목·단원명을 읽어 "출판사 · 과목" 머리줄 → 단원명 순으로 보이고(옆 띠는 연도 대신 학년·"교과서"), 목록은 과목 → 출판사 → 단원 순이다. 단원 목차 순서는 카탈로그에 없어 가나다순이다. 이유: 교과서 약 170줄이 기출 외 시험지 370개에 섞여 찾기 어려웠다. 테스트: `tests/archive2-find-book-tab.test.js`.
+- **진단평가 결과표(`archive/assessment/diagnostic-report-view.js`)는 단계를 문항의 실제 단계 1~5로 나눠 보인다**(예전 "4~5단계" 묶음 폐지). 시험지의 "N단계" 구역 제목과 같고, 문항이 없는 단계(보통 5단계)는 줄·열·범례에서 빠진다. 계산(`diagnostic-report-data.js`)은 그대로이고 단계별 정답률·꺾은선·유형 표만 갈라 보인다. 판정은 이전과 같이 한 단계 3문항 이상일 때만 하므로(MIN_N) 5단계처럼 문항이 적은 단계는 "문항이 적어 판정하지 않습니다"로 맞은 수만 보이고, 요약 문장의 "~단계까지 안정"은 판정이 선 단계까지만 말한다. 이름은 4단계 "심화", 5단계 "최상위"(`GROUPS` 한 곳).
+- **빠른 평가 결과 칸 안내**: `FIVE_MINUTE_GUARD`는 옛 `?recipe=` 문제지 만들기 화면의 가드이지 빠른 평가(5분 테스트·소단원·중단원·종합·진단평가) 창과 무관하다. 빠른 평가가 여는 창(`mixed_engine.html`, studio=1)은 문제지 만들기 상태를 거치지 않아 보관함에 저장하거나 반에 출제할 길이 없고(저장은 compose 상태·행·청사진이 필요) 새로 만들면 새 저장 경로가 된다. 그래서 단추를 살리지 않고 안내를 "열리는 창에서 시험지·해설·정답을 출력할 수 있습니다. 보관함에 저장하거나 반에 출제하려면 문제지 만들기를 이용하세요."로 고쳤다. 테스트: `tests/archive2-quick-result-note.test.js`.
+- **단원별 기출 권 목록의 "문제지 만들기에서 열기"**(`unit-past-exams.js` `openPaperInCompose`)는 그 권의 문항 UID를 이미 있는 `workspace.html?view=compose&uid=…`(`applyUidRoute`) 길로 새 창에 넘긴다(새 전달 형식 없음, 로그인 세션은 출력 창과 같은 해시로). 열린 문제지 만들기는 "선택한 문항 N개"로 범위가 고정되고 문제지 만들기를 누르면 그 문항이 그대로 담긴다(순서는 문제지 만들기의 선정 규칙을 따르며 권의 단계 순서를 보장하지 않는다). 한 학년이 아니거나 쓸 수 없는 문항이 있으면 문제지 만들기가 한국어로 막는 이유를 보이고, 이 화면은 그 앞의 한도(UID 400개·주소 7000자)만 한국어로 알린다. 한 권 최대 80문항은 통과한다.

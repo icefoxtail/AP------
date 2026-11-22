@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-3ea9e800ca31-67adcdeb",
+  "requestSha256": "369a33f3d117f31e9c7b73070648ba08e85123debbcc3178fffa02ae23d7b62c",
+  "examUid": "23_한영고_1학기_중간_고2_대수",
+  "sourceArchiveFile": "original/high/h2/1mid/23_한영고_1학기_중간_고2_대수.js",
+  "sourceBlobSha1": "74a6321713d8689d53e3f998b7ca7e054511f108",
+  "sourceRawSha256": "27774d8d3dda00028506de892615ee5e630e3682a3f6fb8d7f57d5d7da232a02",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-3ea9e800ca31-67adcdeb.type-ledger.json",
+        "sha256": "6148e9d63fa205a7089d327cd1af9cd1329f0e9f5959ad7cfd840198c97a460b"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_5c78170e12513486f5bf6d24b72c69d21e7d09446771515ecfed6cd2cbd059a5",
+      "sourceArchiveFile": "original/high/h2/1mid/23_한영고_1학기_중간_고2_대수.js",
+      "sourceOrdinal": 21,
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-3ea9e800ca31-67adcdeb",
+        "judge": "dots",
+        "rationale": "지수·로그 그래프의 y=x-1 대칭과 교선 기울기-1을 이용해 중점(7/2,5/2)와 두끝점 간격을 구하고 원점 삼각형 넓이12를 얻는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학I",
+          "curriculumSource": "request",
+          "rowCourse": "대수",
+          "courseRelation": "successor"
+        },
+        "judgedSourceFingerprint": "b5aaa9049ee9057935c5d525120bf91adf14480f0237bacadee936a81b1b4378",
+        "judgedContentFingerprint": "09fa9b1dc64727e3af974f00bb2978147e92a2796aa94644a46a4f4dc7c9213f",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "6d9ea614bc50f34c7dc9eea76419d3b58a142e3a3d698d9b6c41ea972597d80d",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-3ea9e800ca31-67adcdeb.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 21
+}

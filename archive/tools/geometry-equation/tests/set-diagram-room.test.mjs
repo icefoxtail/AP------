@@ -44,10 +44,13 @@ test('Q19 lens: two labels fit inside the intersection of two circles, and every
   }finally{await browser.close();}
 });
 
-test('a region that cannot hold its labels even in rows is still refused, nothing is dropped',async()=>{
+test('a region that cannot hold its labels even in rows has the surplus labels led out (set-diagram-fallback.test.mjs): nothing is dropped, the observer passes',async()=>{
   const browser=await launchBrowser();
   try{
     const jam={kind:'VENN',sets:[{id:'S'}],elements:['1→4→2→1','3→5→6→3','7→8→9→7','2→3→4→2','5→6→7→5','8→9→1→8'].map(text=>({text,math:true,in:['S']}))};
-    await assert.rejects(run(jam,browser),error=>error.message==='SET_ELEMENT_NO_ROOM');
+    const composed=await run(jam,browser);
+    assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+    assert.equal(composed.staticAudit.status,'PASS');assert.equal(composed.renderedLayout.status,'PASS');
+    assert.equal(Object.keys(boxes(composed.svg)).length,6,'no element is dropped');
   }finally{await browser.close();}
 });

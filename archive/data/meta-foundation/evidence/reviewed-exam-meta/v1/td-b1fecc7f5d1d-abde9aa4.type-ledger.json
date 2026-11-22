@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-b1fecc7f5d1d-abde9aa4",
+  "sourceArchiveFile": "original/high/h2/1mid/23_부영여고_1학기_중간_고2_대수.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-w-20261122",
+    "commit": "4111b9298564d9e7095216194d47737640427bfe",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_cfb314c0273176254268f12ca339ef8fa46294346cd2a4cad2bc6fba73391460",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+      "templateKey": null,
+      "step": "π/2±θ, π-θ, -θ 변환 공식으로 a,b를 θ의 식으로 단순화한 뒤 sin²+cos²=1 적용",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 삼각함수의 성질(각 변환·관계) 정의에 해당",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    }
+  ]
+}

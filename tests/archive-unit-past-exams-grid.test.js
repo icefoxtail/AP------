@@ -1,4 +1,5 @@
 const test = require('node:test');
+const timeBudget = require('./helpers/time-budget.cjs');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -34,7 +35,7 @@ test('집계표: 단원마다 단계별 개수의 합이 그 단원의 선택 �
   const started = Date.now();
   const grid = core.countGrid(units);
   const elapsed = Date.now() - started;
-  assert.ok(elapsed < 500, `집계 ${elapsed}ms`);
+  assert.ok(elapsed < timeBudget(500), `집계 ${elapsed}ms`);
   for (const unit of units) {
     const row = grid[unit.key];
     assert.ok(row, unit.key);
@@ -197,5 +198,5 @@ test('선택 계산은 화면 응답 시간(동기 500ms) 안에 끝난다(과�
   const result = core.buildSelectionPapers(all, { units });
   const elapsed = Date.now() - started;
   assert.ok(result.total > 1000);
-  assert.ok(elapsed < 500, `${result.total}문항 계산 ${elapsed}ms`);
+  assert.ok(elapsed < timeBudget(500), `${result.total}문항 계산 ${elapsed}ms`);
 });

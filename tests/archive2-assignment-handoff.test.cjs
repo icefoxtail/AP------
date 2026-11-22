@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const { readWorkspace, workspaceFunction } = require("./helpers/archive2-workspace-source.cjs");
+const { assertLoadedBefore } = require('./helpers/html-asset-refs.cjs');
 
 const read = name => fs.readFileSync(path.join(__dirname, '../archive', name), 'utf8');
 
@@ -622,8 +623,7 @@ async function runSharedTargetPicker(classes, preferredGrade) {
 
 test('Saved Paper shared target picker exposes high3-only, mixed and fallback grades after teacher filtering', async () => {
   const index = read('index.html');
-  assert.ok(index.indexOf('<script src="archive2-history.js?v=20261110-teacher-copy-1"') <
-    index.indexOf('<script src="archive2-entry.js?'), 'shared grade resolver loads before Saved Paper entry');
+  assertLoadedBefore(index, 'archive2-history.js', 'archive2-entry.js', 'index.html', { tag: 'script' });
   const high3Only = await runSharedTargetPicker([
     { id: 'high3-explicit', name: '고3 대상반', grade: '고3', teacher_id: 'teacher-a' },
   ], '고2');

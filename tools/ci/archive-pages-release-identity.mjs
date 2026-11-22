@@ -158,6 +158,10 @@ export async function computeReleaseIdentity({ sourceRoot = process.cwd(), regis
     if (/^archive\/data\/student-svg-refresh-v1\/[a-z0-9-]+\.json$/.test(entry.path) && packageManifest.studentSvgRefresh === true) {
       if (!entry.studentSvgInputs?.every(input => registeredPaths.has(input)))
         throw new Error("student SVG projection has an input outside the registered snapshot");
+    } else if (entry.path === "archive/data/similar-links-v1.json" && packageManifest.similarLinks === true) {
+      // Derived from two registered inputs (catalog + pairing function); its bytes are in packageDigest, so a changed pair changes the identity.
+      if (!entry.similarLinkInputs?.every(input => registeredPaths.has(input)))
+        throw new Error("similar-link projection has an input outside the registered snapshot");
     } else if (entry.path === METADATA_FILE && tree.some(row => row.path.startsWith(`${SHARD_DIR}/`))) {
       // Git holds the question metadata as per-exam shards; the packaged one file is their assembly. It is accepted only
       // when its bytes equal the assembly of the registered commit's own shards (built from git objects, not the working tree).

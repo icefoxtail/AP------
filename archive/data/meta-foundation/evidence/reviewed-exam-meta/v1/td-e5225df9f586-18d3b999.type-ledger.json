@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-e5225df9f586-18d3b999",
+  "sourceArchiveFile": "types/middle/m1/중1_1학기_문자의사용.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-w-20261122",
+    "commit": "4111b9298564d9e7095216194d47737640427bfe",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_a4b277c3b7d9fdd91a23443653a64a0568ea5340ab55c7ac19077ff0bb5bb5c3",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_LITERAL",
+      "templateKey": null,
+      "step": "곱셈·나눗셈 기호를 생략한 문자식 표기 규칙을 각 보기에 적용해 옳은 것을 고른다",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 기호 생략 규칙으로 문자식을 표현하는 문항이라 문자식의 표현",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_489965fe73e6c8b571d6a11e09d55abf8e938592acf1cb2d8b970a37ac49689c",
+      "sourceOrdinal": 41,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_LITERAL",
+      "templateKey": null,
+      "step": "곱셈·나눗셈 기호 생략 규칙을 각 보기에 적용해 바르게 쓴 것을 고른다",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 분수·괄호를 쓰는 문자식 표기 규칙 판별이라 문자식의 표현",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dbf9ebf573112e2b70948aa03a932162661394474d06b87d586428d455f4ad11",
+      "sourceOrdinal": 46,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_TRANSLATION",
+      "templateKey": null,
+      "step": "출발 속력을 V로 놓고 구간별 속도 변화를 반영해 각 차량의 시간을 V에 대한 식으로 나타내 비교한다",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 수량 관계를 문자식으로 나타내 정리·비교하는 문자식의 활용",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9c780515e6f14d6347ab210286693c16870d18e09774639e9754856cb46c4e53",
+      "sourceOrdinal": 53,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_TRANSLATION",
+      "templateKey": null,
+      "step": "하루 환자 수 x에 10% 증가를 반복 적용해 이틀 합계를 x의 식으로 나타낸다",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 수량 증가 관계를 문자식으로 나타내는 문자식의 활용",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_23a503e9d690d2c9fdb0e8b11fd05af236494ffa9862f5a65c42b277121db39d",
+      "sourceOrdinal": 54,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_TRANSLATION",
+      "templateKey": null,
+      "step": "남학생 x와 여학생 a-x에 각각 증감률을 적용해 올해 전체 인원을 a와 x의 식으로 나타내고 정리한다",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 수량 관계를 문자식으로 나타내고 정리하는 문자식의 활용",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    }
+  ]
+}

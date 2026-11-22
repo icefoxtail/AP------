@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-7e2d16e42bba-cfaa89f8",
+  "sourceArchiveFile": "types/middle/m1/중1_1학기_일차식의계산.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_3fee8e5a1e8f032d4c0bb5c28b16aaecfa8dc0af3901e881b79ecd9523954095",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+      "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+      "step": "잘못 더한 식을 두 번 빼어 -x+3.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl",
+      "gradeBindingAdded": true
+    },
+    {
+      "questionUid": "qid_v1_2d86aea1c7d17156a37fb6257f83f47f5313aa2c9b4d2723456615e11178a078",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+      "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+      "step": "잘못 더한3x-1을 결과에서 두 번 빼어 -x-5.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl",
+      "gradeBindingAdded": true
+    },
+    {
+      "questionUid": "qid_v1_994c04abd6df93a5272c934869f79b2eb1d1066df811730dcca718ce7cbe93e9",
+      "sourceOrdinal": 35,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+      "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+      "step": "잘못 더한3y+1을 두 번 빼어 -y-3.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl",
+      "gradeBindingAdded": true
+    },
+    {
+      "questionUid": "qid_v1_0f318a25084ecf34a3913ddbd5d0c38e8d92de5c7ce571312b6abc3f8f9eeb42",
+      "sourceOrdinal": 43,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_LITERAL_VALUE",
+      "templateKey": null,
+      "step": "주어진 수를 식에 대입하고 통분하는 풀이에서 틀린 곳을 찾아 바르게 계산한다.",
+      "note": "새 키 제안 줄을 기존 키 재사용으로 재판정 2026-11-22",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b87b22bec7f0359ed3f5c3bdd26039794cfefcf8fd5f579f24b88d845a8e9676",
+      "sourceOrdinal": 45,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "templateKey": null,
+      "step": "(-1)^(4n-1)=-1, (-1)^(2n)=1로 정리한 뒤 분수 계수 일차식을 통분해 동류항끼리 계산한다",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 분수 계수 일차식의 덧셈·뺄셈과 동류항 정리가 핵심이라 일차식의 항·계수와 정리",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d22a0b2a6a504d6e03ad4b220704798b052dcc7440afdb865305b3e8ca7a83c0",
+      "sourceOrdinal": 53,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+      "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+      "step": "잘못 더한 -3x+2를4에서 두 번 빼어6x.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl",
+      "gradeBindingAdded": true
+    },
+    {
+      "questionUid": "qid_v1_ce829b5136be3cfbb9b91329f6cb05c064fb82e934aacc8bdc49965b00d22d0b",
+      "sourceOrdinal": 56,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+      "step": "계수 a-b=-2,상수3a+2=5에서 a=1,b=3으로 목표-6.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl",
+      "gradeBindingAdded": true
+    }
+  ]
+}

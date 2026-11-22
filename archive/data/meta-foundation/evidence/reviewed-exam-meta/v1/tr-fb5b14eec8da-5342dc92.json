@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-fb5b14eec8da-5342dc92",
+  "requestSha256": "77260ad1491a3faf3c7e76efd70f2e962ceb4a58ea574b8df79dcbbe7865ed84",
+  "examUid": "23_동산중_1학기_중간_중1_유사",
+  "sourceArchiveFile": "similar/middle/m1/1mid/23_동산중_1학기_중간_중1_유사.js",
+  "sourceBlobSha1": "82e4cd6c7f3f0662e0d8361e28628a11f4006e0f",
+  "sourceRawSha256": "1b365e1c4e26cb2f43d6dac2207014d2b46212c665c16663fbc61f2de8c29c60",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-fb5b14eec8da-5342dc92.type-ledger.json",
+        "sha256": "63bf0ccc8ae062d556c60919107306632ea20324167c5ccb7ec2626d94be82af"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_6a8567a227a6249facecb1d057463b55d0883da017d90aad61487f9811c4d100",
+      "sourceArchiveFile": "similar/middle/m1/1mid/23_동산중_1학기_중간_중1_유사.js",
+      "sourceOrdinal": 12,
+      "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+      "templateKey": "TPL_M1_RATIONAL_OPERATION_RULE_JUDGMENT_CORE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-fb5b14eec8da-5342dc92",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "교환·결합법칙과중간곱100을확인하고최종값700으로⑤의70을 반박한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "79362f20b7b8f1bc7f73a821e482f470b8ec98c64a123dafec12a30b1fdf8961",
+        "judgedContentFingerprint": "62ee41833120f33b12909b05be2d9ea37c0b0b32abca5660ce1370e7cd2647b6",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "ff8ee97a5d798846d8e2b6675787a67d154d4dc388e1cc9f2f6ea842c3f08c4c",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-fb5b14eec8da-5342dc92.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+          "templateKey": "TPL_M1_RATIONAL_OPERATION_RULE_JUDGMENT_CORE",
+          "matchesRegistered": true
+        },
+        "priorType": {
+          "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+          "templateKey": "TPL_M1_RATIONAL_OPERATION_RULE_JUDGMENT_CORE",
+          "problemTypeStatus": null,
+          "templateStatus": null
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}

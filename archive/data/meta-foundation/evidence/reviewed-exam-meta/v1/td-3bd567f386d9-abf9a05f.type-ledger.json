@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-3bd567f386d9-abf9a05f",
+  "sourceArchiveFile": "types/middle/m1/중1_중간대비_2단원_정수와유리수.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-w-20261122",
+    "commit": "4111b9298564d9e7095216194d47737640427bfe",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_f7434126cedeb5dfc284d57b3cfd5cba4c239167ab368366d4f9f4ada76d18a5",
+      "sourceOrdinal": 32,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+      "templateKey": "TPL_M1_RATIONAL_OPERATION_RULE_JUDGMENT_ORDER",
+      "step": "괄호 안과 가장 안쪽 괄호를 우선하는 계산 순서를 적용해 먼저 계산할 곳을 정한다.",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 괄호·사칙연산의 우선순위로 계산 순서를 정하는 TPL 정의와 일치한다.",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b3208bb717cf61c8ac22c21b57fe1aa30304c9d2f64d0b0a2be1cccc49272d3b",
+      "sourceOrdinal": 47,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+      "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_PRODUCT",
+      "step": "각 보기의 곱셈·나눗셈을 부호와 약분으로 계산해 값이 다른 하나를 찾는다.",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 부호와 약분을 적용한 곱셈·나눗셈 계산이다.",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    }
+  ]
+}
