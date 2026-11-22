@@ -1,5 +1,5 @@
 import fs from "node:fs";
-import { questionMetadataText } from "./question-metadata-format.mjs";
+import { questionMetadataText, assertMetadataAssembledCurrent, syncMetadataShards } from "./question-metadata-format.mjs";
 import path from "node:path";
 import vm from "node:vm";
 import crypto from "node:crypto";
@@ -252,7 +252,7 @@ outputs.set(receiptRel,jsonText(receipt));
 outputs.set(req.evidencePath,jsonText(evidence));
 
 const planned = [...outputs].filter(([rel,text])=>!fs.existsSync(path.join(root,rel)) || fs.readFileSync(path.join(root,rel),"utf8").replace(/\r\n/g,"\n")!==text).map(([rel])=>rel);
-if (write) for (const [rel,text] of outputs) { fs.mkdirSync(path.dirname(path.join(root,rel)),{recursive:true}); fs.writeFileSync(path.join(root,rel),text,"utf8"); }
+if (write) { assertMetadataAssembledCurrent(root); for (const [rel,text] of outputs) { fs.mkdirSync(path.dirname(path.join(root,rel)),{recursive:true}); fs.writeFileSync(path.join(root,rel),text,"utf8"); } syncMetadataShards(root); }
 
 console.log(JSON.stringify({
   status:"PASS", write, sourceArchiveFile:source, totalQuestions:bank.length,

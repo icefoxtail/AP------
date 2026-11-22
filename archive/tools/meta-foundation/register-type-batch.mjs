@@ -16,7 +16,7 @@
 // current) and drop() afterwards (disk may then differ from the cache): tools/ci/register-reviewed-meta-requests.mjs does.
 import fs from "node:fs";
 import path from "node:path";
-import { questionMetadataText } from "./question-metadata-format.mjs";
+import { questionMetadataText, writeMetadataText } from "./question-metadata-format.mjs";
 
 const META = "archive/data/question_metadata.json";
 const DIRECT_JUDGMENT = "DIRECT_JUDGMENT";
@@ -63,7 +63,7 @@ export function createTypeBatch(root) {
       const text = questionMetadataText(state.metadata);
       const full = path.join(root, META);
       const current = fs.existsSync(full) ? fs.readFileSync(full, "utf8").replaceAll("\r\n", "\n") : null;
-      if (current !== text) fs.writeFileSync(full, text, "utf8");
+      if (current !== text) writeMetadataText(root, text); // checks the assembled file against the shards, writes it, then syncs the shards
       state.dirty = false;
       return current !== text;
     },

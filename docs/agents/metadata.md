@@ -105,7 +105,7 @@
 - 4칸은 문항의 발문과 해설을 읽고 판정한다. PT/TPL/CC/COND 키나 라벨을 보고 치환해 채우지 않는다.
 - 신규 제작분은 해당 제작·검수 라인이 자기 역할 안에서 작성·검토한다. 기존 자료의 비교 시범·일괄 확대는 [4칸 GPT 인계](../operations/JS_Archive_4Slot_GPT_Handoff_CURRENT_v1.md)의 별도 배정·독립성·제출 형식을 따른다. 이 문서가 모델이나 예약·Git 쓰기 권한을 새로 지정하지 않는다.
 - 작성한 4칸 기록의 검수·main 반영(compact 파일 `archive/data/item-4slot/`, 도구 `tools/4slot/`, 반려 절차)은 [4칸 검수와 main 반영](../operations/JS_Archive_4Slot_Review_and_Main_Import_CURRENT_v1.md)을 따른다. 이유: 증거는 작업 브랜치에 두고 main에는 용어 번호만 올리는 분리를 지키기 위해서다.
-- 아직 운영 메타(`question_metadata.json`)·등록기·catalog·검색 화면과 연결하지 않았고 기존 승인·출제 자격에 영향이 없다. 이유: 시범 결과는 좋지만 통합은 장애 주입과 PC·휴대폰 실제 확인을 거쳐 따로 승인받기로 했다.
+- 아직 운영 메타(`question_metadata.json`, git에는 `archive/data/question-metadata/v1/`의 시험별 조각으로 있다)·등록기·catalog·검색 화면과 연결하지 않았고 기존 승인·출제 자격에 영향이 없다. 이유: 시범 결과는 좋지만 통합은 장애 주입과 PC·휴대폰 실제 확인을 거쳐 따로 승인받기로 했다.
 
 ## CURRENT — PT·TPL·CrossConcept·Condition·크로스워크 행 확장 원칙 (2026-11-02, 사용자 결정)
 
@@ -123,7 +123,7 @@
 
 ## CURRENT — 기본범위 승인 재결속 `archive-basic-scope-rebind-request-v1` (2026-11-02, 사용자 결정)
 
-- 기본범위 승인(question_metadata의 standardUnit/subUnit 승인 행 + `basic-scope-source-links.json` 부모 연결)된 문항의 그림만 바뀌어 fingerprint가 어긋나 strict 검색에서 사라졌을 때, 메타 값은 그대로 두고 원본 해시만 다시 묶는 등록 요청이다. 구현: `archive/tools/meta-foundation/register-basic-scope-rebind.mjs`, 테스트: `tests/archive-basic-scope-rebind.test.mjs`. 이유: 기존 등록기(v2)는 시험지 전체 재등록만 받아 그림 하나 때문에 전체 재검수를 해야 했고, 등록 동기화(main 등록기)는 본문 fingerprint가 달라진 부모 연결을 조용히 버린다.
+- 기본범위 승인(운영 메타 `question_metadata.json`의 standardUnit/subUnit 승인 행, 시험별 조각 `archive/data/question-metadata/v1/` + `basic-scope-source-links.json` 부모 연결)된 문항의 그림만 바뀌어 fingerprint가 어긋나 strict 검색에서 사라졌을 때, 메타 값은 그대로 두고 원본 해시만 다시 묶는 등록 요청이다. 구현: `archive/tools/meta-foundation/register-basic-scope-rebind.mjs`, 테스트: `tests/archive-basic-scope-rebind.test.mjs`. 이유: 기존 등록기(v2)는 시험지 전체 재등록만 받아 그림 하나 때문에 전체 재검수를 해야 했고, 등록 동기화(main 등록기)는 본문 fingerprint가 달라진 부모 연결을 조용히 버린다.
 - 거부 조건: 요청이 메타 값을 바꾸려 함(before/after는 두 fingerprint만), 승인 행이 아님·검토 초기화 대기, 요청 시험지에 없는 qid, 소스 blob/이전 blob/저장된 fingerprint/after 해시 불일치, 이전 blob이 승인 fingerprint를 재현하지 못함, 정답·선택지·풀이·분류 필드 변경, 본문 변경(맨 앞 `[도형필요]`/`[그래프필요]` 줄 제거와 숫자·`$`·`\` 없는 8자 이하 선언 문구 수정만 허용), 그림 파일 없음, 그림·본문이 실제로 안 바뀜, `basicParent`가 승인 소단원의 유일한 정본 부모가 아님, 기존 연결의 부모 변경. 거부 시 어떤 파일도 쓰지 않는다.
 - 추가 결속(2026-11-02 검수 반영): 새 그림(image 참조 변경, 파일 존재, 해당 문항 `assets/images/<시험지>/q<번호>.<ext>`)이 항상 필수이고 본문 수정은 그 위에서만 허용한다. 글자 수·숫자 제한만으로는 "최대→최소" 같은 뜻 뒤집기를 못 막으므로, 승인 evidenceRefs의 검토 파일(`archive-basic-scope-rebind-review-v1`)에 같은 requestId·examUid·sourceArchiveFile, 문항별 `contentEdits`(요청과 정확히 같음)와 변경 후 본문 `contentAfterSha256`이 있어야 한다. 다른 요청·시험지·문항의 검토 파일은 거부한다.
 - 이 경로는 검수를 대신하지 않는다. 그림 변경이 문항 의미를 바꾸지 않았다는 확인(문항·해설·정답·그림 직접 확인)을 `evidenceRefs`의 검토 파일에 남긴 요청만 쓴다.
@@ -194,7 +194,7 @@
 
 ## CURRENT — 소단원 묶음표: 같은 내용의 소단원 키를 하나로 보여 주고 고른다 (2026-11-11, 사용자 결정)
 
-- **무엇:** `archive/data/archive2-subunit-groups.json`. 같은 통합 단원(subject + unitKey) 안에서 한 소단원으로 보여 주고 선택하는 `subUnitKey` 묶음이다. 기존 키·정본 값(`question_metadata.json`), 크로스워크, `sealed-digests`, 카탈로그는 바꾸지 않는다. 표시와 선택에만 쓰고 표에 없는 키는 자기 자신이 하나의 묶음이다. 이유: 같은 내용이 2015·2022 키, 표기, 단원 번호 때문에 여러 풀로 갈라져 소단원 평가가 모이지 않았다.
+- **무엇:** `archive/data/archive2-subunit-groups.json`. 같은 통합 단원(subject + unitKey) 안에서 한 소단원으로 보여 주고 선택하는 `subUnitKey` 묶음이다. 기존 키·정본 값(`question_metadata.json`, git에는 `archive/data/question-metadata/v1/` 조각), 크로스워크, `sealed-digests`, 카탈로그는 바꾸지 않는다. 표시와 선택에만 쓰고 표에 없는 키는 자기 자신이 하나의 묶음이다. 이유: 같은 내용이 2015·2022 키, 표기, 단원 번호 때문에 여러 풀로 갈라져 소단원 평가가 모이지 않았다.
 - **원천과 도구:** 사람이 문항 발문을 읽고 정한 판정은 `archive/data/meta-os/subunit-group-rules.json`이 소유한다. 표는 `node archive/tools/meta-os/build-subunit-groups.mjs`로 만들고 `--check`로 같은지 본다. 표를 손으로 고치지 않는다. 새 묶음은 규칙 파일에 판정을 추가해 다시 만든다. 새 키가 정본에 생겨도 `--check`는 실패하지 않고 미분류(자기 묶음) 키 수만 센다.
 - **묶음 종류:** `subunit`(소단원, 이름은 마스터 표 `labelKo`이고 2022 체계 키가 있으면 그 이름), `unit_general`(`...-CORE` 같은 넓은 키, 쪼갠 키와 묶지 않음, 이름 "단원 일반"), `unit_other`(마스터 표에 없는 임시 키 중 분명한 마스터 소단원이 없는 것, 이름 "기타"), `moved`(다른 단원 소단원에 속하는 키, 아래), `excluded`(문제 번호가 키가 된 `...-P152-Q04` 류, 소단원 평가 제외).
 - **묶는 기준:** 이름·내용이 사실상 같을 때만 묶는다. 삼각함수 정의와 삼각함수 기본처럼 범위가 다르면 묶지 않고, 확신이 없으면 따로 둔다. 키마다 실제 문항 2~3개의 발문을 읽어 같은 내용인지 확인한 묶음만 `reviewed: true`다.

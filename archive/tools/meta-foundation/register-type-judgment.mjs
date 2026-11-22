@@ -20,7 +20,7 @@
 // same request through add-only registryChanges); `before` equals the current values; a type that is already approved is
 // never overwritten; the judgment is bound to the current source bytes (blob and per-question fingerprints).
 import fs from "node:fs";
-import { questionMetadataText } from "./question-metadata-format.mjs";
+import { questionMetadataText, assertMetadataAssembledCurrent, syncMetadataShards } from "./question-metadata-format.mjs";
 import path from "node:path";
 import { refreshRuntime } from "./reviewed-runtime-summary.mjs";
 import { loadCourseAliases } from "./course-aliases.mjs";
@@ -299,6 +299,8 @@ export function registerTypeJudgment(ctx) {
   if (changed.some(([file]) => file.startsWith("archive/exams/"))) failWith("registration must not write exam source bytes");
   if (!eq(fs.readFileSync(safePath(root, `archive/exams/${source}`)), bytes)) failWith("exam source bytes changed during registration");
   if (write) {
+    // A batch leaves question_metadata.json and its shards to flush(), which checks and writes both once.
+    if (!batch) assertMetadataAssembledCurrent(root);
     const backup = new Map();
     try {
       for (const [file, text] of changed) {
@@ -306,6 +308,7 @@ export function registerTypeJudgment(ctx) {
         backup.set(full, fs.existsSync(full) ? fs.readFileSync(full) : null);
         fs.mkdirSync(path.dirname(full), { recursive: true }); fs.writeFileSync(full, text, "utf8");
       }
+      if (!batch) syncMetadataShards(root);
     } catch (error) {
       for (const [full, original] of backup) { if (original === null) fs.rmSync(full, { force: true }); else fs.writeFileSync(full, original); }
       throw error;

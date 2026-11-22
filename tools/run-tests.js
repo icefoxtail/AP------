@@ -464,6 +464,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-reviewed-apply-bridge.test.mjs']
   },
   {
+    label: 'tests/archive-progress-metadata-shard-witness.test.mjs',
+    args: ['--test', 'tests/archive-progress-metadata-shard-witness.test.mjs']
+  },
+  {
     label: 'tests/archive-question-metadata-format.test.mjs',
     args: ['--test', 'tests/archive-question-metadata-format.test.mjs']
   },
@@ -748,6 +752,13 @@ function collectTests({ includeQuarantined = process.env.APMATH_RUN_QUARANTINE =
   return { includeQuarantined, files, tests, quarantined, requiredCommands, jsTestTimeout };
 }
 
+// The assembled question metadata is ignored by the repository (its shards are tracked): a fresh working folder has none, so build it once before any test.
+function assembleQuestionMetadata() {
+  if (!fs.existsSync(path.join(root, 'archive/data/question-metadata/v1'))) return;
+  const assemble = spawnSync(process.execPath, [path.join(root, 'archive/tools/meta-foundation/question-metadata-format.mjs'), 'assemble', '--root', root], { stdio: 'inherit' });
+  if (assemble.status !== 0) throw new Error('could not assemble archive/data/question_metadata.json from its shards');
+}
+
 async function main() {
 const argv = process.argv.slice(2);
 // Options: --ci-scope <plan>  (scoped execution, see tools/ci/run-scoped-tests.mjs)
@@ -802,9 +813,11 @@ if (args.length) {
       timeout: jsTestTimeout(file) })),
     ...requiredCommands.map(command => ({ ...command, timeout: command.timeout ?? 60000 })),
   ];
+  assembleQuestionMetadata();
   const onResult = summary => writeShardResult({ mode: 'scoped', ...summary });
   if (runScopedTests({ root, scopeFile: args[1], availableCommands, shard, onResult })) return;
 }
+assembleQuestionMetadata();
 
 // The pre-step below regenerates the catalog and its runtime readiness receipt
 // together. While the post-merge registration bot commit is pending they are

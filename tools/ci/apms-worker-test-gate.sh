@@ -18,6 +18,10 @@ W=apmath/worker-backup/worker
 run "node --check Worker entry" node --check "$W/index.js"
 run "node --check backup workflow" node --check "$W/backup-workflow.js"
 
+# The catalog build below reads archive/data/question_metadata.json, which git holds as shards (the one file is an ignored
+# assembly). Assembling here, not in the workflow file, keeps this change from re-triggering a Worker deploy by itself.
+if [ -d archive/data/question-metadata/v1 ]; then run "assemble question metadata from its shards" node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
+
 # Same generated-artifact build tools/run-tests.js performs before the source-verification tests: build from the
 # checked-out source so a code-only change does not depend on already-committed shard outputs.
 run "build canonical Archive2 test projection" node archive/tools/build-archive2-catalog.mjs

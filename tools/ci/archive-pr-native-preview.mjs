@@ -26,6 +26,7 @@ export const NATIVE_PREVIEW_HELPER = 'tools/ci/archive-pr-native-preview.mjs';
 const INBOX = '.archive-meta-register/inbox/';
 const REGISTRAR = 'archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs';
 const DIFFICULTY_REGISTRAR = 'archive/tools/meta-foundation/register-difficulty5.mjs';
+import { questionMetadataBytesAt, hasShards, assembleMetadataFile } from '../../archive/tools/meta-foundation/question-metadata-format.mjs';
 const METADATA = 'archive/data/question_metadata.json';
 const CONSUMER = 'archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs';
 const RECEIPTS = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
@@ -69,10 +70,13 @@ function fileRef(root, file) {
   const bytes = fs.readFileSync(full);
   return { path: file, sha256: sha(bytes), sizeBytes: bytes.length };
 }
+// Git holds the question metadata as per-exam shards; the native plans declare the one logical file they assemble to.
+// A changed shard therefore counts as a change of METADATA (whose recorded hash is the assembled file's).
+const METADATA_SHARDS = 'archive/data/question-metadata/v1/';
 const dirty = root => sorted([
   ...git(root, 'diff', '--name-only', '-z', 'HEAD', '--').split('\0'),
   ...git(root, 'ls-files', '--others', '--exclude-standard', '-z').split('\0'),
-].filter(Boolean));
+].filter(Boolean).map(file => file.startsWith(METADATA_SHARDS) ? METADATA : file));
 function dirtySnapshot(root) {
   return new Map(dirty(root).map(file => [file, fs.existsSync(safe(root, file)) ? fileRef(root, file).sha256 : null]));
 }
@@ -449,7 +453,7 @@ function fingerprintOnlyFinalQaReassessment(request) {
 function fixedJson(root, headSha, file, cache) {
   safe(root, file);
   if (!cache.has(file)) {
-    const raw = gitBytes(root, `${headSha}:${file}`);
+    const raw = file === METADATA ? questionMetadataBytesAt(root, headSha) : gitBytes(root, `${headSha}:${file}`);
     let value; try { value = JSON.parse(raw); } catch { fail(`INHERITED_REASSESSMENT_JSON:${file}`); }
     cache.set(file, { value, sha256: sha(raw) });
   }
@@ -1717,13 +1721,15 @@ export function rederiveNativePlans({ root, requests, run = nativeCommand }) {
     const extracted = spawnSync('tar', ['-xf', snapshotPath, '-C', shadow], { maxBuffer: 1024 * 1024 });
     if (extracted.error || extracted.status !== 0) fail('SHADOW_EXTRACT_FAILED');
     fs.unlinkSync(snapshotPath);
+    // The archive holds the metadata shards, not the ignored assembled file the registrars read and write: assemble it in the shadow.
+    if (hasShards(shadow)) assembleMetadataFile(shadow);
     const inputs = sorted([...requests.flatMap(r => [r.path, r.source.path, ...r.evidence.map(e => e.path)]),
       ...referencedNativeHeadInputs(root, headSha, requests)]);
     const attrs = git(root, 'ls-tree', '-r', '--name-only', headSha).split('\n').filter(p => path.posix.basename(p) === '.gitattributes');
     for (const file of sorted([...inputs, ...attrs])) {
       const full = safe(shadow, file);
       fs.mkdirSync(path.dirname(full), { recursive: true });
-      fs.writeFileSync(full, gitBytes(root, `${headSha}:${file}`));
+      fs.writeFileSync(full, file === METADATA ? questionMetadataBytesAt(root, headSha) : gitBytes(root, `${headSha}:${file}`));
     }
     hydrateFixedNativeServedInputs({ root, shadow, headSha: git(root, 'rev-parse', 'HEAD').trim(), requests });
     hydrateM3Q5CurrentUiInputs({ root, shadow, headSha, requests });
