@@ -52,12 +52,12 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: Assemble question metadata (git holds its shards)
-        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
       - uses: actions/setup-node@v4
         with:
           node-version: 22
       # Automation fixtures run once in CI; this existing check retains the native read-only inventory.
+      - name: Assemble question metadata (git holds its shards)
+        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
       - run: bash -n tools/ci/archive-main-auto-meta-pass.sh tools/ci/reviewed-meta-register-pass.sh tools/ci/archive-four-slot-pass.sh tools/ci/archive-pages-registration-derive.sh
       - name: Real production inventory (no writes or mathematical review)
         run: |
@@ -137,11 +137,11 @@ jobs:
         with:
           fetch-depth: 0
           ref: main
-      - name: Assemble question metadata (git holds its shards)
-        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Assemble question metadata (git holds its shards)
+        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
