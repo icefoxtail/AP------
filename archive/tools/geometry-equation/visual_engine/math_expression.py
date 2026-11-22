@@ -10,7 +10,16 @@ FUNCTIONS={'sqrt':math.sqrt,'sin':math.sin,'cos':math.cos,'tan':math.tan,
            'log':math.log,'ln':math.log,'exp':math.exp,'abs':abs}
 CALL_SYMBOLS=set('fghpq')|{'logb'}
 VECTOR_NAME=re.compile(r'[a-z]|[A-Z]{2}')
-TOKEN=re.compile(r'\s*(\d+(?:\.\d+)?|[A-Za-zαβγδθπ]+|<=|>=|!=|[+*/^_\-=<>()\x27,°√])')
+# (EXT-20261122) vocabulary of a math label: the ASCII operators and letters it always had, plus the relation / sign / unit characters a plane figure label can carry.
+# ≤ ≥ ≠ ² ³ are written as the ASCII forms before lexing (a label that says x² is x^2); ≈ ≅ ∽ ≡ ⊥ ∥ are relations, ± × ÷ : are operators, ∠ △ □ name a figure, % follows a value.
+# A Korean word is a token of its own: it is read (so the refusal can say what to do), but it cannot be typeset as math (see serialize, KOREAN_WORD_NEEDS_TEXT_LABEL).
+TOKEN=re.compile(r'\s*(\d+(?:\.\d+)?|[A-Za-zαβγδθπ]+|[\uac00-\ud7a3]+|<=|>=|!=|[+*/^_\-=<>()\x27,°√≈≅∽≡⊥∥±×÷:∠△□%])')
+RELATIONS={'=','<','>','<=','>=','!=','≈','≅','∽','≡','⊥','∥'}
+ASCII_FORMS=str.maketrans({'−':'-','′':"'",'≤':'<=','≥':'>=','≠':'!=','²':'^2','³':'^3','·':'*'})
+FIGURE_PREFIXES={'∠':r'\angle ','△':r'\triangle ','□':r'\square '}
+KOREAN_WORD=re.compile(r'[\uac00-\ud7a3]+')
+# A unit written after a value: letters (cm, kg, mL), a ratio of two (km/h, m/s), optionally squared or cubed (cm^2, m^3).
+UNIT_NOTATION=re.compile(r'([A-Za-z]{1,8}(?:/[A-Za-z]{1,8})?)(?:\^([23]))?')
 
 @dataclass(frozen=True)
 class Expr:
@@ -22,7 +31,7 @@ class Parser:
     def __init__(self,source):
         if not isinstance(source,str) or not source.strip() or len(source)>2048 or '\\' in source:
             raise ValueError('UNRESOLVED_EXPRESSION')
-        source=source.strip().replace('−','-').replace('′',"'")   # U+2032 is the prime
+        source=source.strip().translate(ASCII_FORMS)   # U+2212 is the minus, U+2032 the prime; ≤ ≥ ≠ ² ³ · are their ASCII forms
         self.tokens=[];end=0
         while end<len(source):
             hit=TOKEN.match(source,end)
@@ -42,7 +51,7 @@ class Parser:
     def expr(self,bp=0,depth=0):
         if depth>32:raise ValueError('EXPRESSION_DEPTH_LIMIT')
         token=self.take()
-        if token in ('+','-'):left=self.node('unary',token,(self.expr(25,depth+1),))
+        if token in ('+','-','±'):left=self.node('unary',token,(self.expr(25,depth+1),))
         elif token=='(':
             rows=[self.expr(0,depth+1)]
             while self.peek()==',':self.take();rows.append(self.expr(0,depth+1))
@@ -63,6 +72,12 @@ class Parser:
             self.take();name=self.take()
             if not VECTOR_NAME.fullmatch(name) or self.take()!=')':raise ValueError('VECTOR_LABEL_INVALID')
             left=self.node('vec',name)
+        elif token in FIGURE_PREFIXES:
+            # ∠ABC, △ABC, □ABCD: the sign names the figure whose letters follow it
+            name=self.take()
+            if name=='EOF' or not re.fullmatch(r'[A-Za-z]{1,6}',name) or name in FUNCTIONS:raise ValueError('FIGURE_NAME_INVALID:'+name)
+            left=self.node('prefix',token,(self.node('symbol',name),))
+        elif KOREAN_WORD.fullmatch(token):left=self.node('word',token)
         elif token.isalpha() and token!='EOF':
             if token in FUNCTIONS and self.peek()!='(':raise ValueError('FUNCTION_CALL_REQUIRED')
             left=self.node('symbol',token)
@@ -73,6 +88,10 @@ class Parser:
                 # A degree sign is a postfix on the value it follows (15° = 15 degrees): the same degree node the angle marks use.
                 self.take()
                 left=self.node('degree',args=(left,))
+                continue
+            if op=='%' and bp<=40:
+                self.take()
+                left=self.node('percent',args=(left,))
                 continue
             if op in ("'",'_') and bp<=40:
                 self.take()
@@ -86,7 +105,7 @@ class Parser:
                 self.expect(')')
                 if base.value in FUNCTIONS and len(args)!=1:raise ValueError('FUNCTION_ARITY')
                 left=self.node('call',args=(left,*args));continue
-            powers={'=':5,'<':5,'>':5,'<=':5,'>=':5,'!=':5,'+':10,'-':10,'*':20,'/':20,'^':30}
+            powers={**{relation:5 for relation in RELATIONS},':':8,'+':10,'-':10,'±':10,'*':20,'×':20,'÷':20,'/':20,'^':30}
             implicit=op=='(' or op=='√' or (op!='EOF' and (op[0].isdigit() or op.isalpha()))
             priority=20 if implicit else powers.get(op,-1)
             if priority<bp:break
@@ -114,18 +133,83 @@ def parse_list(source):
     if len(parts)==1:return parse(source)
     return Expr('list','',tuple(parse(part) for part in parts))
 
+def _walk(node):
+    yield node
+    for child in node.args:yield from _walk(child)
+
+def _is_pi(node):return node.kind in {'symbol','constant'} and node.value in {'pi','π'}
+
+def _degree_of_radian(node):
+    """True when a degree sign sits on a radian value: pi/3° (the sign is on the 3), 4pi°, (pi/3)° all name a number of degrees that is not the radian value written.
+    A formula that merely has pi and a degree value in different places (2pi*r*(60°/360°), 60°=pi/3) is not this."""
+    for part in _walk(node):
+        if part.kind=='degree' and any(_is_pi(inner) for inner in _walk(part.args[0])):return True
+        if part.kind=='binary' and part.value=='/' and part.args[1].kind=='degree' and any(_is_pi(inner) for inner in _walk(part.args[0])) and not any(inner.kind=='degree' for inner in _walk(part.args[0])):return True
+    return False
+
+def _ends_with_degree(node):
+    """The expression already ends in a degree sign (50°, x+20°, A=50°, (x+20°)): a label kind that appends the sign does not write it twice."""
+    if node.kind=='degree':return True
+    if node.kind=='binary' and node.value!='^':return _ends_with_degree(node.args[1])
+    if node.kind in {'group','unary'}:return _ends_with_degree(node.args[0])
+    return False
+
+def _sums_a_value(node,unit):
+    """A sum or difference (4+x, 12-t) that a unit is written after: the unit belongs to the whole sum, so it is bracketed (4+x) cm. A sum whose terms already name the unit is left as written."""
+    return node.kind=='binary' and node.value in {'+','-','±'} and not any(inner.kind=='symbol' and inner.value==unit for inner in _walk(node))
+
+def _unit_tail(unit,mode,escape):
+    """A unit as it is written after a value: upright letters, a ratio (km/h) as written, a power (cm^2) raised."""
+    hit=UNIT_NOTATION.fullmatch(unit)
+    if hit is None:raise ValueError('KOREAN_UNIT_NEEDS_TEXT_LABEL' if re.search('[가-힣]',unit) else 'INVALID_UNIT_NOTATION')
+    name,power=hit.groups()
+    if mode=='tex':return r'\mathrm{'+name+'}'+('^{'+power+'}' if power else '')
+    if mode=='svg':return escape(name)+('<tspan baseline-shift="super" font-size="70%">'+power+'</tspan>' if power else '')
+    return name+({'2':'²','3':'³'}[power] if power else '')
+
+def _integer_in_brackets(node):
+    """The integer of a bracketed whole number: 6 for (6), -6 for (-6) (the second as a unary minus); None for anything else."""
+    if node.kind!='group':return None
+    inner=node.args[0]
+    if inner.kind=='number' and '.' not in inner.value:return inner
+    if inner.kind=='unary' and inner.value=='-' and inner.args[0].kind=='number' and '.' not in inner.args[0].value:return inner
+    return None
+
+def _leading_letter(node):
+    while node.kind in {'binary','subscript','prime'} and node.args:node=node.args[0]
+    return node.kind in {'symbol','call','vec','constant'}
+
+def _tidy(node,lead=True):
+    """(EXT-20261122) A whole-number coefficient is not bracketed: (6)x reads 6x, (-6)x reads -6x. A negative one keeps its brackets unless the product stands where a sign may lead
+    (the start of the label, after a relation sign, a comma or an opening bracket); a fraction (1/2)x, a decimal and a sum keep theirs. Only the written label changes, never what it evaluates to."""
+    if not node.args:return node
+    if node.kind=='binary':
+        op=node.value;left,right=node.args
+        if op in {'*','implicit'} and _leading_letter(right):
+            number=_integer_in_brackets(left)
+            if number is not None and (number.kind=='number' or lead):left=number
+        return Expr('binary',op,(_tidy(left,lead),_tidy(right,op in RELATIONS)))
+    if node.kind in {'list','tuple'}:return Expr(node.kind,node.value,tuple(_tidy(child,True) for child in node.args))
+    if node.kind in {'group','call'}:return Expr(node.kind,node.value,tuple(_tidy(child,True) for child in node.args))
+    return Expr(node.kind,node.value,tuple(_tidy(child,False) for child in node.args))
+
 def serialize(node,mode='tex'):
     """TeX, readable plain notation, or SVG text runs with real super/subscripts."""
-    def s(v):return serialize(v,mode)
+    if _degree_of_radian(node):raise ValueError('DEGREE_OF_RADIAN_VALUE')
+    return _render(_tidy(node),mode)
+
+def _render(node,mode):
+    def s(v):return _render(v,mode)
     def escape(v):return html.escape(v) if mode=='svg' else v
     k=node.kind; a=node.args
     if k=='number':return node.value
     if k=='quantity':
         # A plane-mark label with a unit (cm, m, mm): the unit follows the value; after a number it is attached (3cm), after a letter one space apart (x cm).
         if len(a)!=1:raise ValueError('NOTATION_ARITY')
-        if not re.fullmatch(r'[A-Za-z]{1,8}',node.value):raise ValueError('INVALID_UNIT_NOTATION')
-        spaced=serialize(a[0],'plain')[-1:].isalpha()
-        return s(a[0])+((r'\,' if spaced else '')+r'\mathrm{'+node.value+'}' if mode=='tex' else (' ' if spaced else '')+escape(node.value))
+        tail=_unit_tail(node.value,mode,escape)
+        if _sums_a_value(a[0],node.value):return '('+s(a[0])+')'+(r'\,' if mode=='tex' else ' ')+tail
+        spaced=_render(a[0],'plain')[-1:].isalpha()
+        return s(a[0])+((r'\,' if spaced else '')+tail if mode=='tex' else (' ' if spaced else '')+tail)
     if k in {'entity','variable','constant','degree','unit'}:
         if k=='entity':
             if not re.fullmatch(r'[A-Za-z]{1,8}',node.value):raise ValueError('INVALID_ENTITY_NOTATION')
@@ -137,9 +221,9 @@ def serialize(node,mode='tex'):
             if node.value not in {'pi','π','e'}:raise ValueError('UNKNOWN_CONSTANT')
             return (r'\pi' if mode=='tex' else 'π') if node.value in {'pi','π'} else 'e'
         if len(a)!=1:raise ValueError('NOTATION_ARITY')
-        if k=='degree':return s(a[0])+(r'^{\circ}' if mode=='tex' else '°')
-        if not re.fullmatch(r'[A-Za-z]{1,8}',node.value):raise ValueError('INVALID_UNIT_NOTATION')
-        return s(a[0])+(r'\,\mathrm{'+node.value+'}' if mode=='tex' else ' '+escape(node.value))
+        if k=='degree':return s(a[0]) if _ends_with_degree(a[0]) else s(a[0])+(r'^{\circ}' if mode=='tex' else '°')
+        tail=_unit_tail(node.value,mode,escape)
+        return (('('+s(a[0])+')') if _sums_a_value(a[0],node.value) else s(a[0]))+(r'\,'+tail if mode=='tex' else ' '+tail)
     if k=='symbol':
         if mode=='svg':return '<tspan font-style="italic">'+escape(node.value)+'</tspan>'
         return {'pi':r'\pi','π':r'\pi','α':r'\alpha','β':r'\beta','γ':r'\gamma','δ':r'\delta','θ':r'\theta'}.get(node.value,node.value) if mode=='tex' else ('π' if node.value=='pi' else node.value)
@@ -148,12 +232,20 @@ def serialize(node,mode='tex'):
         if mode=='tex':return ('\\vec{'+node.value+'}') if len(node.value)==1 else ('\\overrightarrow{'+node.value+'}')
         if mode=='svg':return '<tspan font-style="italic">'+node.value+'</tspan>\u20d7'
         return node.value+'\u20d7'
+    if k=='prefix':
+        # ∠ABC, △ABC, □ABCD
+        return (FIGURE_PREFIXES[node.value] if mode=='tex' else node.value)+s(a[0])
+    if k=='percent':return s(a[0])+(r'\%' if mode=='tex' else '%')
+    if k=='word':
+        # MathJax has no Korean letters: a word typeset as math would be drawn as live text, not outlines. It is read so the refusal can name the fix.
+        if mode=='tex':raise ValueError('KOREAN_WORD_NEEDS_TEXT_LABEL:'+node.value)
+        return escape(node.value)
     if k=='list':return (',\\;' if mode=='tex' else ', ').join(s(v) for v in a)
     if k=='group':return '('+s(a[0])+')'
     if k=='tuple':return '('+','.join(s(v) for v in a)+')'
     if k=='unary':
-        child=s(a[0]);child='('+child+')' if a[0].kind=='binary' and a[0].value in {'+','-','=','<','>'} else child
-        return ('−' if node.value=='-' and mode!='tex' else node.value)+child
+        child=s(a[0]);child='('+child+')' if a[0].kind=='binary' and a[0].value in {'+','-','±','=','<','>'} else child
+        return (r'\pm ' if node.value=='±' and mode=='tex' else '−' if node.value=='-' and mode!='tex' else node.value)+child
     if k in {'prime','subscript'}:
         if k=='prime':
             base=node;count=0
@@ -179,14 +271,14 @@ def serialize(node,mode='tex'):
         return fn+'('+','.join(s(v) for v in a[1:])+')'
     if k=='binary':
         left,right=a;op=node.value
-        priorities={'=':5,'<':5,'>':5,'<=':5,'>=':5,'!=':5,'+':10,'-':10,'*':20,'implicit':20,'/':20,'^':30}
+        priorities={**{relation:5 for relation in RELATIONS},':':8,'+':10,'-':10,'±':10,'*':20,'×':20,'÷':20,'implicit':20,'/':20,'^':30}
         def operand(child,right_side=False):
             text=s(child)
             if child.kind=='unary' and op=='^' and not right_side:return '('+text+')'
             if child.kind!='binary':return text
             low=priorities.get(child.value,0)<priorities.get(op,0)
             equal=priorities.get(child.value,0)==priorities.get(op,0)
-            wrap=low or (equal and ((right_side and op in {'-','/','='}) or (op=='^' and not right_side)))
+            wrap=low or (equal and ((right_side and op in {'-','±','/','÷','='}) or (op=='^' and not right_side)))
             return '('+text+')' if wrap else text
         if op=='^':
             # A bracketed exponent that is more than a bare number (2^(x), 2^(x+1), e^(-x)) is a superscript: the brackets are not drawn (2^{x+1}).
@@ -209,7 +301,8 @@ def serialize(node,mode='tex'):
                 if right.kind=='group':right=right.args[0]
                 return sign+'{\\displaystyle\\frac{'+s(num)+'}{'+s(right)+'}}'
             return (s(left) if left.kind in {'number','symbol','group','call','prime','subscript','unary'} else '('+s(left)+')')+'/'+(s(right) if right.kind in {'number','symbol','group','call','prime','subscript'} else '('+s(right)+')')
-        mapped={'implicit':'','*':'\\cdot ' if mode=='tex' else '·','-':'-' if mode=='tex' else '−', '<=':'\\le ' if mode=='tex' else '≤','>=':'\\ge ' if mode=='tex' else '≥','!=':'\\ne ' if mode=='tex' else '≠'}
+        mapped={'implicit':'','*':'\\cdot ' if mode=='tex' else '·','-':'-' if mode=='tex' else '−', '<=':'\\le ' if mode=='tex' else '≤','>=':'\\ge ' if mode=='tex' else '≥','!=':'\\ne ' if mode=='tex' else '≠',
+                **({'≈':r'\approx ','≅':r'\cong ','∽':r'\sim ','≡':r'\equiv ','⊥':r'\perp ','∥':r'\parallel ','±':r'\pm ','×':r'\times ','÷':r'\div '} if mode=='tex' else {})}
         if op=='*' and mode!='svg' and left.kind=='group' and left.args[0].kind=='binary' and left.args[0].value=='/' and (left.args[0].args[0].kind=='number' or (left.args[0].args[0].kind=='unary' and left.args[0].args[0].value=='-' and left.args[0].args[0].args[0].kind=='number')) and right.kind in {'call','symbol'}:
             # (8/5)√10 reads 8√10 over 5: the factor goes into the numerator of the stacked fraction instead of sitting beside parentheses.
             numerator,denominator=left.args[0].args
@@ -222,6 +315,9 @@ def serialize(node,mode='tex'):
         if op=='*' and rt and not rt[0].isdigit() and rt[0] not in '.-−':
             # Implicit product (3x, 2√5, 3(x+1)): no multiplication dot after a number, a group, or (tex only) a stacked fraction.
             if left.kind in {'number','group'} or (left.kind=='unary' and left.value=='-' and left.args[0].kind=='number') or (mode=='tex' and left.kind=='binary' and left.value=='/'):return operand(left)+rt
+        if op=='implicit' and (left.kind=='number' or (left.kind=='unary' and left.value=='-' and left.args[0].kind=='number')) and rt and rt[0].isdigit():
+            # Two factors written side by side with a number second (3 2^x, x 2) would read as one number or a subscript (32^x, x2): the product sign stays.
+            return operand(left)+('\\cdot ' if mode=='tex' else '·')+rt
         return operand(left)+escape(mapped.get(op,op))+rt
     raise ValueError('UNKNOWN_AST_NODE')
 
@@ -242,8 +338,8 @@ def evaluate(node,values=None):
         l,r=e(a[0]),e(a[1]);op=node.value
         if op=='+':return l+r
         if op=='-':return l-r
-        if op in {'*','implicit'}:return l*r
-        if op=='/':return l/r
+        if op in {'*','×','implicit'}:return l*r
+        if op in {'/','÷'}:return l/r
         if op=='^':
             if abs(r)>64:raise ValueError('POWER_LIMIT')
             return l**r
