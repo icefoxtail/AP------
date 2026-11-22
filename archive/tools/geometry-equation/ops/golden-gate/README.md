@@ -16,7 +16,10 @@ node .../golden-gate.mjs --base <ref> --head <ref|@worktree> --families auto|all
 - `--tests [auto|all]`: 엔진의 node(`*.test.mjs`)·python(`tests/test_*.py`, unittest) 테스트를 base와 head에서 돌려 **head에서만 실패한 이름**을 실패로 센다. 양쪽 모두 실패한 것은 "existing failure"로 그대로 출력한다(건너뛰기·격리 없음; 스냅샷에 없는 저장소 파일이 필요한 테스트는 양쪽에서 같이 실패해 이 목록에 보인다). `auto`는 import 닫힘이 바뀐 파일에 닿거나(render-plan을 거치는 길은 따라가지 않음) 바뀐 종류의 capability·모듈 이름이 본문에 나오는 테스트만, 공용 파일이 바뀌면 전부.
 - `--repeat-check`: head를 두 번(순서를 뒤집고 묶음 크기를 바꿔) 렌더해 흔들림을 확인한다.
 - `--no-cache`: 캐시를 읽지 않고 양쪽을 새로 렌더(base=head여도 두 번 따로 렌더해 비교).
-- 종료 코드: 0 통과, 1 실패, 2 **보증 못 함**(바이트를 하나도 못 비교함, 바뀐 종류에 비교된 항목이 0개(NOT_COVERED), 인자·의존성 없음).
+- 종료 코드: **0 통과**(바이트를 비교했고 실패가 없음) 또는 **0 UNAFFECTED**(아래), **1 실패**(DIFFERENT·REGRESSED·NOT_RUN·REMOVED, `--expected` 파일 오류, 테스트 신규 실패·소실), **2 보증 못 함**(바뀐 게 없음(base=head 포함), 선택이 비었음(빈 `--families`·모르는 단어·고른 항목 0개), 바이트를 하나도 못 비교함, 바뀐 종류에 비교된 항목이 0개(NOT_COVERED), 분류 오류, 인자·의존성 없음). 종료 코드는 `lib/judge.mjs`의 `decide()` 한 곳에서 정한다.
+- **UNAFFECTED (nothing compared)**: 바뀐 파일이 있고 전부 렌더와 무관(문서·테스트 등)이며, base와 head의 공용 키(commonKey)와 모든 항목 키(itemKey)가 같을 때만 exit 0이다. "통과"라고 쓰지 않는다. 이 게이트가 PASS라고 말하면 실제로 비교한 것이다.
+- 선택은 git 파일 이름 분류에 **base와 head에서 항목 자체 입력(plan, 시험지 JS, 그 시험지가 가리키는 모든 이미지, 다른 시험지 폴더의 이미지 포함)이 다른 항목**을 합친다. 이름만으로는 안 보이는 다른 폴더 이미지 변경(예: 25_매산여고 q23.png)도 해당 항목이 선택된다.
+- `--repo <폴더>`: 다른 저장소(테스트용 임시 저장소)에서 돌린다. 기본은 이 저장소.
 - 출력 첫 줄은 `byte compared N / selected M`이다. 선택한 M개 중 양쪽이 SVG를 내서 바이트를 비교한 것이 N개다. N이 0이면 통과가 아니다(전부 같은 실패로 끝난 날 초록이 되지 않게). 실패를 허용하는 목록 파일은 없다.
 
 ## 판정
@@ -29,6 +32,8 @@ node .../golden-gate.mjs --base <ref> --head <ref|@worktree> --families auto|all
 | NOT_RUN | 실행 못 함 또는 믿을 수 없음: 프로세스 죽음, 시간 초과(단독 재실행 2번 뒤에도), **환경 오류**(문제 그림·페이지·모듈 로드 실패 `QUESTION_IMAGE_LOAD_FAILED`·`PAGE_RENDER_ERROR`·`ENOENT`, 브라우저 실행 실패 등: 양쪽이 같아도), 스냅샷에 저장소에 있는 자산이 없음, 코드 없는 실패 | **실패** |
 | FIXED | base 실패 -> head 통과 | 목록만 |
 | BOTH_FAIL_SAME | 양쪽이 **같은 실패**(code, stage, 중첩 status까지 같음) | 목록만 |
+| REMOVED | 골든 항목이 base에만 있다(분모가 줄었다) | **실패** |
+| ADDED | 골든 항목이 head에만 있다(비교할 base 없음) | 목록만 |
 
 FIXED와 BOTH_FAIL_SAME도 분모에서 빼지 않고 개수를 그대로 출력한다. 부하 때문에 나는 시간 초과(WORKER_TIMEOUT 등)는 그 항목만 단독으로 다시 돌린다(최대 2번, "solo retries"로 출력). 내용 실패는 다시 돌리지 않는다.
 
@@ -37,6 +42,7 @@ FIXED와 BOTH_FAIL_SAME도 분모에서 빼지 않고 개수를 그대로 출력
 - worktree를 만들지 않는다. base/head가 읽는 파일(엔진, pipeline-core, 렌더가 측정하는 Archive 페이지, 골든 plan, 대상 시험지와 그 시험지의 **자산 폴더 전부(PNG·JPG·SVG 등 확장자 무관)**, 시험지 JS가 이름으로 부른 다른 폴더의 이미지)만 `git archive`(작업 트리는 복사)로 캐시 폴더의 `snapshots/`에 푼다. 렌더는 그 폴더 안에서 돌고 체크아웃은 건드리지 않는다. 의존성(`.tmp/apmath-visual-engine/dependencies`)은 junction으로 연결한다.
 - 렌더는 production 실행기 그대로(`render-plan.mjs --manifest`)다. 한 프로세스가 항목 여러 개를 맡아 Chrome·python을 재사용한다. 순서·묶음에 결과가 달라지지 않는지는 `--repeat-check`가 확인한다.
 - 결과 캐시(항목별): 키 = 렌더 입력 파일 해시(엔진·공용 코드·종류 파일) + 그 항목의 plan·시험지 JS·게시된 SVG 해시 + 환경 지문(Chrome 버전, 글꼴 NotoSansKR 해시, Node, Python과 sympy·mpmath 등 패키지, playwright 버전, OS). 하나라도 달라지면 새로 렌더한다. 같은 base로 다시 돌리면 base는 캐시에서 나온다.
+- 결과 캐시 키에는 **환경 지문(Chrome·글꼴·Node·Python 패키지·OS)**이 들어 있고, 스냅샷 키에는 **종류 표 버전(KINDS_VERSION)**이 들어 있다. 종류 표가 바뀌면 옛 키를 다시 쓰지 않는다. 스냅샷은 프로세스 전용 임시 폴더(`.part`)에 만든 뒤 이름을 바꿔 자리에 놓으므로 다른 프로세스가 짓는 중인 폴더는 지우지 않고, 렌더 슬롯 잠금은 소유자 확인 뒤에만 푼다. `--tests`에서 base에서 통과하던 테스트가 head에서 skip되거나 사라져도 실패다(LOST TEST).
 - 환경변수(개인 경로를 코드에 박지 않는다): `GOLDEN_GATE_CACHE`(기본 `<저장소>/.tmp/golden-gate-cache`, C 드라이브 여유가 적으면 D로), `RENDER_LOCK_DIR`(다른 렌더 작업자와 슬롯을 공유할 폴더), `RENDER_SLOTS`(기본 1; `--slots`), `GOLDEN_GATE_DEPS`, `GEOMETRY_BROWSER_EXECUTABLE`, `GEOMETRY_PYTHON`. 자식 프로세스의 TEMP/TMP는 캐시 폴더 안으로 돌린다.
 - 렌더 슬롯 잠금: `render.mjs`와 같은 `render.lock.<n>` 디렉터리를 `RENDER_LOCK_DIR`에서 잡고(30초마다 갱신) 한 묶음이 끝나면 놓는다. 다른 작업자가 쓰는 폴더를 가리키면 그 슬롯 수를 함께 지킨다.
 - 이어 돌기: 항목마다 결과를 저장하므로 중단돼도 끝낸 항목은 캐시에서 나오고 나머지만 돈다. 프로세스가 죽거나 시간이 지나면 끝낸 항목을 거두고 나머지는 단독 재실행한다.
