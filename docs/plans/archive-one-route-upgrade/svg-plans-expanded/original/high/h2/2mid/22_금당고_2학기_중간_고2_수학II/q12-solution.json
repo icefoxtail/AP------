@@ -1,0 +1,82 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          -3,
+          0
+        ],
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "7",
+          "-1/2"
+        ],
+        "domain": [
+          0,
+          16
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "14",
+        "y": "0"
+      },
+      {
+        "id": "P",
+        "x": "0",
+        "y": "1"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-1",
+        "0"
+      ],
+      "B": [
+        "14",
+        "0"
+      ],
+      "P": [
+        "0",
+        "1"
+      ]
+    }
+  },
+  "caption": "f는 x=0에서 f(0)=1(닫힌 점 P)이고 오른쪽 극한은 7(열린 점)인 불연속함수이다. f(x)f(x-a)가 x=a에서 연속이려면 x=a에서 f(x-a)가 뛰는 크기(1에서 7)를 f(a)가 0으로 눌러야 하므로 f(a)=0이다. 그림에서 f가 0이 되는 점은 A(-1,0)과 B(14,0)이므로 a=-1, 14이고 합은 13이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "12. 함수 $f(x) = \\begin{cases} x+1 & (x \\le 0) \\\\ -\\frac{1}{2}x+7 & (x > 0) \\end{cases}$ 에 대하여 함수 $f(x)f(x-a)$가 $x=a$에서 연속이 되도록 하는 모든 실수 $a$의 값의 합은? [4.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=0에서 뛰는 f의 그래프에서 f(a)=0이 되는 두 점 A(-1,0), B(14,0)를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=0에서 끊어지는 f의 그래프와 f가 0이 되는 두 점 A(-1,0), B(14,0)를 보인다."
+  ],
+  "accessibilityDescription": "x=0에서 높이 1의 닫힌 점과 높이 7의 열린 점으로 끊어지는 두 직선 조각의 그래프이고, 가로축과 만나는 두 점 A, B가 표시되어 있다."
+}

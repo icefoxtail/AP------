@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "0",
+          "3",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      1
+    ],
+    "viewport": [
+      -2,
+      1,
+      -6,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "N",
+        "x": "0",
+        "y": "-1"
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "-1",
+        "0"
+      ],
+      "N": [
+        "0",
+        "-1"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "f′(x)=6x(x+1)의 부호는 x<-1에서 +, -1<x<0에서 -, x>0에서 +이다. 따라서 f는 x=-1에서 극대 f(-1)=0(그림의 M), x=0에서 극소 f(0)=-1(그림의 N)이다. 증감표에서 틀린 것은 ②(f′(-1)의 값은 1이 아니라 0)이므로 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=2x^3+3x^2-1$의 극값을 구하는 과정이다. 다음 증감표에 들어갈 것으로 틀린 것은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "극대점 M(-1,0)과 극소점 N(0,-1)을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "극대점 M(-1,0)과 극소점 N(0,-1)을 보여 증감표의 값을 확인하게 한다."
+  ],
+  "accessibilityDescription": "왼쪽에서 올라 점 M에서 극대가 되고 내려가 점 N에서 극소가 된 뒤 다시 오르는 삼차곡선 그래프이다."
+}

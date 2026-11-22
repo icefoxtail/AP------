@@ -1,0 +1,121 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "조건1",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "-1",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "3",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "4",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "조건2",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "-3",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "5",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "6",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "조건3",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-6",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "-5",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "7",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "8",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "근의 예",
+        "points": [
+          {
+            "id": "A",
+            "value": "-3/2"
+          },
+          {
+            "id": "B",
+            "value": "1"
+          },
+          {
+            "id": "C",
+            "value": "7/2"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "예: 근이 x=1에 대칭인 한 경우를 수직선에 나타냈다. f(1-x)=-f(1+x)이므로 f(1)=0이고 근 r이 있으면 2-r도 근이다. 조건 f(-2)f(-1)<0에서 구간 (-2,-1)에, f(5)f(6)<0에서 (5,6)에, f(7)f(8)<0에서 (7,8)에 근이 있고, 대칭인 (3,4), (-4,-3), (-6,-5)에도 근이 있다(그림의 조건1·2·3 줄은 각 조건의 구간과 그 대칭 구간이다). 여섯 구간은 겹치지 않고 1을 포함하지 않으므로 근은 서로 다른 7개 이상이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "10. 함수 $f(x)$가 구간 $(-\\infty, \\infty)$에서 연속이고 모든 실수 $x$에 대해 $f(1-x)+f(1+x)=0$이 성립한다. 함수 $f(x)$는 $f(-2)f(-1)<0$, $f(5)f(6)<0$, $f(7)f(8)<0$을 만족할 때, 방정식 $f(x)=0$의 실근은 적어도 몇 개인지 구하면? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=1에 대칭인 여섯 구간과 x=1이 서로 겹치지 않아 근이 적어도 7개임을 보인다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "x=1에 대칭인 부호 변화 여섯 구간(조건마다 한 쌍)과 근의 예(x=1과 대칭인 두 점)를 수직선에 보인다."
+  ],
+  "accessibilityDescription": "수직선 위에 x=1을 기준으로 좌우 대칭인 여섯 개의 열린 구간이 세 줄에 두 개씩 표시되어 있고, 그 아래 근의 예를 나타내는 세 점(1과 그 좌우 대칭인 두 점)이 표시된 그림이다."
+}

@@ -1,0 +1,71 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "9",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1/2",
+        "9/2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "1",
+        "y": "7"
+      },
+      {
+        "id": "N",
+        "x": "3",
+        "y": "3"
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "1",
+        "7"
+      ],
+      "N": [
+        "3",
+        "3"
+      ]
+    }
+  },
+  "caption": "f′(x)=3x²-4ax+3a의 두 근이 1, a이므로 두 근의 합 1+a=4a/3에서 a=3이다. f(x)=x³-6x²+9x+3이고 f′(x)=3(x-1)(x-3)이므로 x=1에서 극대 m=f(1)=7(그림의 M), x=3에서 극소 n=f(3)=3(그림의 N)이다. 따라서 m+n=10이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 함수 $f(x)=x^3-2ax^2+3ax+a$가 $x=1$, $x=a$에서 극값을 가질 때, 상수 $a$를 구하고 함수 $f(x)$의 극댓값 $m$과 극솟값 $n$의 합 $m+n$을 구하는 과정을 서술하시오. [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "극대점 M(1,7)과 극소점 N(3,3)을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "a=3일 때 극대점 M(1,7)과 극소점 N(3,3)을 보인다."
+  ],
+  "accessibilityDescription": "올라가 점 M에서 극대가 되고 내려가 점 N에서 극소가 된 뒤 다시 오르는 삼차곡선 그래프이다."
+}

@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          -3,
+          -1
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0"
+        ],
+        "domain": [
+          -1,
+          4
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          4,
+          6
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "-1",
+        "y": "1"
+      },
+      {
+        "x": "4",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "4"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    }
+  },
+  "caption": "가로축이 a, 세로축이 실근의 개수 f(a)이다. 판별식/4=a²-3a-4=(a+1)(a-4)이므로 a<-1 또는 a>4에서 2, a=-1, 4에서 1, -1<a<4에서 0이다. 따라서 극한과 함숫값이 달라지는 a는 -1, 4이고 곱은 -4이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집합 $\\{x\\mid x^2-2ax+3a+4=0\\}$ ($x$는 실수)의 원소의 개수를 $f(a)$라 할 때, $\\displaystyle\\lim_{x\\to a}f(x)\\ne f(a)$를 만족시키는 모든 상수 $a$값의 곱은? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a에 따른 실근의 개수 f(a)의 계단 그래프에서 극한과 함숫값이 다른 a=-1, 4를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "a에 따른 실근의 개수 f(a)의 계단 그래프에서 a=-1, 4에서 닫힌 점(값 1)이 따로 있음을 보인다."
+  ],
+  "accessibilityDescription": "가로축 a에 따라 실근의 개수가 2에서 0으로 줄었다 다시 2로 늘어나는 계단 모양의 그래프이고, a=-1과 a=4에서 높이 1의 닫힌 점이 있다."
+}

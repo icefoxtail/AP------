@@ -1,0 +1,86 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-1"
+        ],
+        "domain": [
+          -2,
+          -1
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          -1,
+          0
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "0",
+          "-1"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ]
+    }
+  },
+  "caption": "원본의 오른쪽 그래프와 조건 f(-x)=-f(x)를 사용한 원점 대칭 재구성이다. x=1에서 닫힌 점은 (1,1)이고 열린 점은 (1,-1)이며, 대칭인 x=-1의 닫힌 점은 (-1,-1), 열린 점은 (-1,1)이다. [0,2]에서 x→1-일 때 f→1, x→2-일 때 f→-2이므로 x→-1+에서는 -1, x→-2+에서는 2로 수렴한다. 합은 1, 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정의역이 $\\{x\\mid -2\\le x\\le2\\}$인 함수 $y=f(x)$의 그래프가 구간 $[0,2]$에서 그림과 같고, 정의역에 속하는 모든 실수 $x$에 대하여 $f(-x)=-f(x)$이다. $\\displaystyle\\lim_{x\\to-1+}f(x)+\\lim_{x\\to-2+}f(x)$의 값은? [3.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "오른쪽 그래프의 x=1, 2 왼쪽 극한 1, -2를 원점 대칭시켜 x=-1, -2의 오른쪽 극한 -1, 2로 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "원본의 닫힌 점 (1,1), 열린 점 (1,-1)을 보존하고 원점 대칭인 (-1,-1) 닫힌 점과 (-1,1) 열린 점을 추가하여 왼쪽 극한을 읽는다."
+  ],
+  "accessibilityDescription": "원점에 대하여 대칭이며 x=-1과 x=1에서 열린 점과 닫힌 점으로 끊어지는 직선 조각들로 이루어진 그래프이다."
+}

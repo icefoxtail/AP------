@@ -1,0 +1,97 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-6",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.5,
+      2.5
+    ],
+    "viewport": [
+      -0.5,
+      2.5,
+      -4,
+      5
+    ],
+    "requiredPoints": [
+      {
+        "id": "E",
+        "x": "sqrt(2)",
+        "y": "3-4*sqrt(2)"
+      },
+      {
+        "id": "V",
+        "x": "-sqrt(2)",
+        "y": "3+4*sqrt(2)"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "E",
+        "V"
+      ]
+    },
+    "exactCoordinates": {
+      "E": [
+        "sqrt(2)",
+        "3-4*sqrt(2)"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "sec",
+          "slope": "-2",
+          "intercept": "3",
+          "label": "l"
+        }
+      ]
+    }
+  },
+  "caption": "예: a=-6일 때의 f(x)=x³-6x+3이다. x가 0에서 2까지 변할 때의 평균변화율은 (f(2)-f(0))/2=((8+2a+3)-3)/2=4+a이고 이것이 -2이므로 a=-6이다. 그림의 직선 l은 두 점 A(0,3), B(2,-1)을 잇는 직선으로 기울기가 평균변화율 -2이다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "3. 함수 $f(x)=x^3+ax+3$에서 $x$의 값이 $0$에서 $2$까지 변할 때, 평균변화율은 $-2$이다. 이때 상수 $a$의 값은? [3.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=-6일 때 두 점 A(0,3), B(2,-1)을 잇는 직선의 기울기가 평균변화율 -2임을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "a=-6일 때 두 점 A(0,3), B(2,-1)을 잇는 직선 l의 기울기가 평균변화율 -2임을 보인다."
+  ],
+  "accessibilityDescription": "점 A에서 내려가 한 번 꺾여 다시 올라가는 삼차곡선과, 곡선 위의 두 점 A, B를 잇는 오른쪽 아래로 내려가는 직선 l이 그려진 그래프이다."
+}

@@ -1,0 +1,80 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -0.5,
+      2.5,
+      -2,
+      10
+    ],
+    "curves": [
+      {
+        "id": "lo",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-1",
+          "0",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "2x^2-1"
+      },
+      {
+        "id": "hi",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "1",
+          "0",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "2x^2+1"
+      },
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "color": "GREEN",
+        "label": "f"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "예: f(x)=2x²일 때를 그렸다. x>0에서 f는 두 포물선 y=2x²-1과 y=2x²+1 사이에 있다. u=3x를 대입하면 18x²-1<f(3x)<18x²+1이고 2x²으로 나누면 9-1/(2x²)<f(3x)/(2x²)<9+1/(2x²)이다. 양쪽이 9로 수렴하므로 샌드위치 정리에 의해 극한은 9이다(예에서는 f(3x)/(2x²)=9). 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "8. 함수 $f(x)$가 모든 양의 실수 $x$에 대하여\n$$2x^2-1 < f(x) < 2x^2+1$$\n을 만족시킬 때, 극한값 $\\lim_{x \\to \\infty} \\frac{f(3x)}{2x^2}$를 구하시오. [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f가 두 포물선 사이에 끼는 예를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x>0에서 f가 위아래 두 포물선 2x²-1, 2x²+1 사이에 끼는 예(f=2x²)를 보인다."
+  ],
+  "accessibilityDescription": "위아래로 같은 간격으로 나란히 놓인 두 포물선 사이에 가운데 포물선이 끼어 있는 그래프이고 세 곡선이 원점 가까이에서 오른쪽 위로 오른다."
+}

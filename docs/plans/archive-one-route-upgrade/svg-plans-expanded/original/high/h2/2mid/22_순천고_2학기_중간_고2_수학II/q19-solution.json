@@ -1,0 +1,130 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "0",
+          "-3",
+          "0",
+          "1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -2.5,
+      3.2
+    ],
+    "viewport": [
+      -3,
+      5.5,
+      -16,
+      25
+    ],
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "E",
+        "x": "sqrt(3)",
+        "y": "-5/2"
+      },
+      {
+        "id": "F",
+        "x": "-sqrt(3)",
+        "y": "-5/2"
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "0",
+        "2"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "-14",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "5",
+          "y": "-2",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "curveX": "2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "4",
+          "intercept": "-22",
+          "label": "l"
+        },
+        {
+          "id": "m",
+          "slope": "4",
+          "intercept": "-10",
+          "label": "m"
+        }
+      ],
+      "segments": [
+        {
+          "id": "ap",
+          "from": "A",
+          "to": "P"
+        },
+        {
+          "id": "bp",
+          "from": "B",
+          "to": "P"
+        }
+      ]
+    }
+  },
+  "caption": "직선 AB는 y=4x-22(l)이고 밑변 AB의 길이는 3√17이다. 곡선 위의 점 P에서 직선 AB까지의 거리가 최소일 때 P에서의 접선이 AB와 평행하다. f′(2)=4이므로 P(2,-2)에서의 접선 m(y=4x-10)이 AB와 평행하다. g(x)=f(x)-4x+22는 x=2에서 최솟값 12를 가지므로 넓이의 최솟값은 (3/2)×12=18이다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 두 점 $A(2,-14)$, $B(5,-2)$와 곡선 $f(x)=\\dfrac12x^4-3x^2+2$ 위의 임의의 점 $P$에 대하여 삼각형 $ABP$의 넓이의 최솟값은? [5.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "AB와 평행한 접선 m의 접점 P(2,-2)에서 삼각형 ABP의 넓이가 최소가 됨을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "직선 AB와 평행한 접선 m이 접하는 점 P(2,-2)와 삼각형 ABP를 보인다."
+  ],
+  "accessibilityDescription": "W 모양의 사차곡선과 곡선 아래쪽의 두 점 A, B를 지나는 직선 l, 곡선 위의 점 P에서 l과 평행하게 접하는 직선 m, 점 P를 A, B와 잇는 두 선분이 그려진 그래프이다."
+}

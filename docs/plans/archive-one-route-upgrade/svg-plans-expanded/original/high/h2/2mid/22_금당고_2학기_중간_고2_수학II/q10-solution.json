@@ -1,0 +1,89 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1.5,
+      1.5,
+      -0.5,
+      4.5
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "0",
+          "-1"
+        ],
+        "domain": [
+          "-3/2",
+          "3/2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "-3/2",
+          "3/2"
+        ],
+        "color": "GREEN",
+        "label": "g"
+      },
+      {
+        "id": "h",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3/2",
+          "3/2"
+        ],
+        "color": "WARM",
+        "label": "h"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "0",
+          "y": "2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "예: a=0일 때 f(x)=2-x², g(x)=2, h(x)=2+x²를 그렸다. f≤g≤h이고 x→a에서 f, h가 같은 값으로 모이면 그 사이의 g도 같은 값으로 모인다(샌드위치 정리). 조건 (나)에서 lim(f-h)=0, lim(f+h)=4이므로 lim f=lim h=2이다. 그림의 점 P(0,2)에서 세 곡선이 만나듯이 lim g=2이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "10. 세 함수 $f(x), g(x), h(x)$가 임의의 실수 $x$에 대하여 다음 조건을 만족시킬 때, $\\lim_{x \\to a} g(x)$의 값을 구하면? [4.2점]\n\n(가) $f(x) \\le g(x) \\le h(x)$\n(나) $\\lim_{x \\to a} \\{f(x)-h(x)\\} = 0, \\lim_{x \\to a} \\{f(x)+h(x)\\} = 4$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f≤g≤h인 세 곡선이 x=a에서 같은 값 2로 모이는 예를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f≤g≤h이고 f, h가 x=a에서 같은 값 2로 모이면 가운데 g도 2로 수렴하는 예를 점 P에서 보인다."
+  ],
+  "accessibilityDescription": "위로 볼록한 포물선, 수평선, 아래로 볼록한 포물선이 세 겹으로 겹쳐져 한 점 P에서 모이는 그래프이고 수평선이 가운데에 있다."
+}

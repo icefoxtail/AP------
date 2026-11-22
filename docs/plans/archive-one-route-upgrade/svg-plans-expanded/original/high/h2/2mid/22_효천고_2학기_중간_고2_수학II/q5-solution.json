@@ -1,0 +1,138 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-4",
+          "-2"
+        ],
+        "domain": [
+          "-5/2",
+          0
+        ],
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "0",
+          "-4",
+          "2"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "3",
+          "-10",
+          "5"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "5",
+          "-1"
+        ],
+        "domain": [
+          2,
+          3
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "4",
+          "-1"
+        ],
+        "domain": [
+          3,
+          4
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-48",
+          "20",
+          "-2"
+        ],
+        "domain": [
+          4,
+          7
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "1",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "3",
+        "5"
+      ],
+      "y": [
+        "-2",
+        "2"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "-1",
+        "y": "2"
+      },
+      {
+        "id": "P",
+        "x": "5",
+        "y": "2"
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "-1",
+        "2"
+      ],
+      "P": [
+        "5",
+        "2"
+      ]
+    }
+  },
+  "caption": "원본의 왼쪽 굴곡, x=1의 분리된 닫힌 점, x=2의 뾰족한 봉우리, x=3의 점프와 x=4·5의 오른쪽 곡선 굴곡을 식이 제공되지 않은 구간의 다항식으로 근사한 개형이다. 원본 해설의 핵심 읽기값을 따라 x→1+에서 -2, x→3-에서 2, f(5)=2이므로 합은 2이고 답은 ②이다. 원본 곡선의 방정식과 각 높이는 별도 시각검증 전까지 정확한 대체로 보지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 $\\displaystyle\\lim_{x\\to1+}f(x)+\\lim_{x\\to3-}f(x)+f(5)$의 값은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=1의 우극한 -2, x=3의 좌극한 2(열린 점)와 f(5)=2(닫힌 점)를 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=1의 별도 닫힌 점 f(1)=0, 양쪽 곡선의 열린 높이 -2, x=3의 왼쪽 닫힌 점 높이 2와 오른쪽 열린 점 높이 1, x=5의 곡선상 높이 2를 보인다. 식이 없는 굴곡은 정성적 근사다."
+  ],
+  "accessibilityDescription": "왼쪽 극댓점 이후 x=1의 열린 낮은 점으로 내려가는 곡선과 별도 (1,0) 닫힌 점, x=2 부근의 높은 봉우리까지 급상승하는 곡선, x=3의 높은 닫힌 점까지 내려오는 선분, 아래 열린 점에서 x=4의 최솟점으로 내려가 x=5의 극댓점을 지난 뒤 하강하는 곡선을 보여 주는 개형 근사다."
+}

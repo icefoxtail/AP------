@@ -1,0 +1,117 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "-2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-3",
+          "5"
+        ]
+      },
+      {
+        "coefficients": [
+          "7",
+          "-5"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "-3"
+      },
+      {
+        "x": "1",
+        "y": "2"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "1"
+      },
+      {
+        "id": "B",
+        "x": "-1",
+        "y": "-1"
+      },
+      {
+        "id": "C",
+        "x": "0",
+        "y": "-3"
+      },
+      {
+        "id": "D",
+        "x": "1",
+        "y": "2"
+      },
+      {
+        "id": "E",
+        "x": "2",
+        "y": "-3"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-2",
+        "1"
+      ],
+      "B": [
+        "-1",
+        "-1"
+      ],
+      "C": [
+        "0",
+        "-3"
+      ],
+      "D": [
+        "1",
+        "2"
+      ],
+      "E": [
+        "2",
+        "-3"
+      ]
+    }
+  },
+  "caption": "예: 다섯 점 A(-2,1), B(-1,-1), C(0,-3), D(1,2), E(2,-3)을 꺾은선으로 이은 연속함수이다. 부호가 +에서 -로 바뀌는 (-2,-1), -에서 +로 바뀌는 (0,1), +에서 -로 바뀌는 (1,2)에서 x축을 한 번씩 지나 근이 적어도 3개이다. (-1,0)에서는 부호가 같아 근이 보장되지 않는다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연속함수 $f(x)$에 대하여 $f(-2)=1$, $f(-1)=-1$, $f(0)=-3$, $f(1)=2$, $f(2)=-3$일 때, 방정식 $f(x)=0$은 열린구간 $(-2,2)$에서 적어도 몇 개의 실근을 갖는가? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "다섯 점을 잇는 연속함수가 부호가 바뀌는 세 구간에서 x축을 지남을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "다섯 점을 잇는 연속함수가 부호가 바뀌는 세 구간 (-2,-1), (0,1), (1,2)에서 x축을 지남을 보인다."
+  ],
+  "accessibilityDescription": "점 A에서 아래로 내려가 점 C까지 내려갔다가 점 D까지 올라가고 점 E로 내려가는 꺾은선이 가로축을 세 번 지나는 그래프이다."
+}

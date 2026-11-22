@@ -1,0 +1,93 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3.5,
+      1.5
+    ],
+    "viewport": [
+      -3.5,
+      1.5,
+      -45,
+      30
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "12",
+          "intercept": "15",
+          "label": "l"
+        }
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": "-2",
+        "y": "-9"
+      },
+      {
+        "id": "A",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "-1"
+      }
+    ],
+    "exactCoordinates": {
+      "T": [
+        "-2",
+        "-9"
+      ],
+      "A": [
+        "1",
+        "0"
+      ],
+      "B": [
+        "0",
+        "-1"
+      ]
+    }
+  },
+  "caption": "접점을 x=t라 하면 접선은 y=3t²x-2t³-1이고 y절편이 15이므로 -2t³-1=15에서 t=-2이다. 접점은 T(-2,-9)이고 기울기는 a=3t²=12이다. 곡선은 A(1,0), B(0,-1)도 지난다. 그림의 직선 l은 y=12x+15로 T에서 곡선 y=x³-1에 접한다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "9. 직선 $y=ax+15$이 곡선 $y=x^3-1$에 접할 때, 상수 $a$의 값을 구하면? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "접점 T(-2,-9)에서 기울기 12, y절편 15인 직선이 접함을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "접점 T(-2,-9)와 y절편 15인 접선 y=12x+15를 곡선과 함께 보인다."
+  ],
+  "accessibilityDescription": "원점을 지나며 오른쪽 위로 올라가는 삼차곡선과 점 T에서 접하고 y축 위쪽을 지나는 직선 l을 나타낸 그래프이다."
+}

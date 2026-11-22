@@ -1,0 +1,114 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1.5,
+      3.2
+    ],
+    "viewport": [
+      -1.5,
+      3.5,
+      -1.5,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "0",
+          "y": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "R",
+          "x": "3",
+          "y": "0",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "tan",
+          "slope": "2",
+          "intercept": "-1",
+          "label": "l"
+        },
+        {
+          "id": "nor",
+          "slope": "-1/2",
+          "intercept": "3/2",
+          "label": "n"
+        }
+      ],
+      "segments": [
+        {
+          "id": "pq",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "pr",
+          "from": "P",
+          "to": "R"
+        },
+        {
+          "id": "qr",
+          "from": "Q",
+          "to": "R"
+        }
+      ]
+    }
+  },
+  "caption": "예: t=1일 때를 그린다. P(1,1)에서의 접선 l은 y=2x-1이고 y축과 만나는 점은 Q(0,-1)이다. P를 지나 l에 수직인 직선 n은 기울기가 -1/2이고 x축과 만나는 점은 R(3,0)이다. 일반적으로 Q=(0,-t²), R=(t+2t³,0)이고 삼각형 PQR의 넓이는 S(t)=(t³+4t⁵)/2이다. 따라서 S(t)/(3t⁵+1)은 t→∞에서 (4/2)/3=2/3이고 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "14. 그림과 같이 곡선 $y=x^2$ 위의 점 $\\mathrm{P}(t, t^2)$에서의 접선이 $y$축과 만나는 점을 $\\mathrm{Q}$라 하고, 점 $\\mathrm{P}$를 지나고 이 접선에 수직인 직선이 $x$축과 만나는 점을 $\\mathrm{R}$이라 하자. 삼각형 $\\mathrm{PQR}$의 넓이를 $S(t)$라 할 때, $\\lim_{t \\to \\infty} \\frac{S(t)}{3t^5+1}$의 값은? (단, $t > 0$이다.) [4.8점]\n<img src=\"assets/images/22_매산고_2학기_중간_고2_수학II/q14.png\" alt=\"22_매산고_2학기_중간_고2_수학II Q14\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "t=1에서 접선 l과 수선 n, 점 Q, R와 삼각형 PQR을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "t=1인 예에서 접선 l, 수선 n, 두 직선이 y축, x축과 만나는 점 Q, R과 삼각형 PQR을 보인다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선 위의 점 P에서의 접선 l과 P에서 l에 수직인 직선 n이 그려져 있고, l이 y축과 만나는 점 Q, n이 x축과 만나는 점 R, 이 세 점을 잇는 삼각형 PQR이 표시된 그래프이다."
+}

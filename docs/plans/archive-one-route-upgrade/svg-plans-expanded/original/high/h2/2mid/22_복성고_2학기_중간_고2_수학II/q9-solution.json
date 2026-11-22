@@ -1,0 +1,89 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-3",
+          "1",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1/2",
+        "7/2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "E",
+        "x": "1/3",
+        "y": "-77/27"
+      },
+      {
+        "id": "F",
+        "x": "1",
+        "y": "-3"
+      },
+      {
+        "id": "A",
+        "x": "2",
+        "y": "-1"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "9"
+      }
+    ],
+    "exactCoordinates": {
+      "E": [
+        "1/3",
+        "-77/27"
+      ],
+      "F": [
+        "1",
+        "-3"
+      ],
+      "A": [
+        "2",
+        "-1"
+      ],
+      "B": [
+        "3",
+        "9"
+      ]
+    }
+  },
+  "caption": "P(x)=x³-2x²+x-3에서 P(2)=-1<0, P(3)=9>0이다. 그림에서 곡선은 A(2,-1)에서 B(3,9)로 올라가며 x축을 한 번 지난다. 연속함수의 부호가 바뀌므로 구간 (2,3)에 실근이 있고 실근이 하나뿐이므로 그 근이 이 구간에 있다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "9. 방정식 $x^3-2x^2+x-3=0$이 오직 하나의 실근을 가질 때, 다음 중 이 방정식의 실근이 속하는 구간을 고르시오. [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "P(2), P(3)의 부호 변화를 곡선 위 두 점으로 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "P(2)=-1<0, P(3)=9>0의 부호 변화로 구간 (2,3)에서 곡선이 x축을 지남을 보인다."
+  ],
+  "accessibilityDescription": "삼차곡선이 왼쪽에서 한 번 올랐다 내려오고 점 A에서 아래에 있다가 점 B로 오르며 x축을 한 번 지나는 그래프이다."
+}

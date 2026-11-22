@@ -1,0 +1,96 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      20,
+      -0.05,
+      0.55
+    ],
+    "curves": [
+      {
+        "id": "lo",
+        "kind": "RATIONAL",
+        "numerator": [
+          "0",
+          "1"
+        ],
+        "denominator": [
+          "3",
+          "5"
+        ],
+        "domain": [
+          "0",
+          "20"
+        ],
+        "color": "BLUE",
+        "label": "x/(5x+3)",
+        "hideLabels": [
+          "asymptotes"
+        ]
+      },
+      {
+        "id": "hi",
+        "kind": "RATIONAL",
+        "numerator": [
+          "2",
+          "1"
+        ],
+        "denominator": [
+          "4",
+          "5"
+        ],
+        "domain": [
+          "0",
+          "20"
+        ],
+        "color": "WARM",
+        "label": "(x+2)/(5x+4)",
+        "hideLabels": [
+          "asymptotes"
+        ]
+      },
+      {
+        "id": "lim",
+        "kind": "LINE",
+        "coefficients": [
+          "1/5",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "20"
+        ],
+        "color": "GREEN",
+        "style": "DASHED",
+        "label": "y=1/5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisScale": {
+      "x": 1,
+      "y": 20
+    }
+  },
+  "caption": "f(x)는 두 곡선 x/(5x+3)(파란색)과 (x+2)/(5x+4)(주황색) 사이에 있다. 그림처럼 x가 커질수록 두 곡선 모두 점선 y=1/5로 모이므로 두 극한이 1/5로 같다. 조임정리에 의해 f(x)의 극한도 1/5이다. 따라서 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)$가 모든 실수 $x$에 대하여 $\\dfrac{x}{5x+3}\\le f(x)\\le\\dfrac{x+2}{5x+4}$를 만족시킬 때, $\\displaystyle\\lim_{x\\to\\infty}f(x)$의 값은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "위아래 두 유리함수 곡선이 x→∞에서 같은 값 y=1/5로 모이는 것을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f를 끼우는 위아래 두 곡선이 x가 커질수록 같은 높이 y=1/5로 모이는 것을 보인다."
+  ],
+  "accessibilityDescription": "오른쪽으로 갈수록 한 점선 높이에 가까워지는 위쪽 곡선과 아래쪽 곡선 두 개와 그 점선이 그려져 있고, 두 곡선 사이가 점점 좁아진다."
+}
