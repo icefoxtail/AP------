@@ -1078,6 +1078,12 @@ def audit_figure(numberLine, svg, pointNames=None):
             except ValueError: ok_value = False
             if not ok_value: errors.append('NL_ENDPOINT_VALUE:' + element.get('id'))
             mine = [l for l in owners.get(element.get('id'), []) if l.get('data-label-role') == 'endpoint']
+            if not mine:
+                # two open dots of one row at the very same place and value (the pieces k<0 and k>0 of k!=0) share one number: the other dot of that place carries it
+                twin = [other for other in drawn_ends.values() if other is not element and abs(_num(other, 'cx') - _num(element, 'cx')) < 0.5 and abs(_num(other, 'cy') - _num(element, 'cy')) < 0.5
+                        and other.get('data-value') == element.get('data-value') and other.get('data-state') == element.get('data-state')]
+                mine = [l for other in twin for l in owners.get(other.get('id'), []) if l.get('data-label-role') == 'endpoint'] if len(twin) == 1 else []
+                if len(mine) == 1 and len([l for l in owners.get(twin[0].get('id'), []) if l.get('data-label-role') == 'endpoint']) != 1: mine = []
             if len(mine) != 1: errors.append('NL_LABEL_COUNT:' + element.get('id')); continue
             try:
                 shown = read(mine[0], free)

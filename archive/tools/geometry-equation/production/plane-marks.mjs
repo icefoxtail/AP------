@@ -134,6 +134,7 @@ export function vectorLabelIssue(text,hasPoint){
   return null;
 }
 export const textLabelKind=row=>row?.labelKind??(TEXT_LABEL_HANGUL.test(String(row?.text??''))?'TEXT':'MATH');
+const PI_IN_LABEL=/(?<![A-Za-z])pi(?![A-Za-z])|\u03c0/u;   // pi or the letter π in a label
 export const TEXT_LABEL_FUNCTIONS=/(?<![A-Za-z])(?:sqrt|abs|log|logb|ln|exp|sin|cos|tan|pi)(?![A-Za-z])/;
 /** An angle value as the sum label writes it: 15, 37.5 (at most six decimals, no trailing zeros). */
 export const angleNumberText=value=>String(Number(Number(value).toFixed(6)));
@@ -255,6 +256,31 @@ export function resolveAngleOver(rows,at){
   };
   for(const row of rows)if(row&&typeof row==='object'&&row.over!==undefined)ringOf(row);
   return out;
+}
+
+/** (NEST) The angle rows with `over` filled in where a whole angle encloses other angles at its vertex and the author wrote neither `over` nor `ring` (the arcs of a nested pair would otherwise
+ *  share one radius from their common ray, and the inner angle's label has no place to name it). Only the plane render's retry after a layout failure uses it, so a figure that composed as
+ *  written is never changed. A row is enclosed when both its rays lie inside the other's wedge and its sweep is smaller. Returns the same array when nothing changes. */
+export function inferNestedAngleOver(rows,at){
+  const usable=row=>row&&typeof row==='object'&&typeof row.id==='string'&&Array.isArray(row.refs)&&row.refs.length===3&&row.straight!==true&&(row.side??'INNER')==='INNER'&&row.ring===undefined&&row.over===undefined&&row.refs.every(id=>{try{return Array.isArray(at(id));}catch{return false;}});
+  const wedgeOf=row=>{
+    const [a,v,c]=row.refs.map(at),s=Math.atan2(a[1]-v[1],a[0]-v[0]),t=Math.atan2(c[1]-v[1],c[0]-v[0]),sweep=((t-s)%(2*Math.PI)+2*Math.PI)%(2*Math.PI);
+    return sweep>Math.PI?{start:t,sweep:2*Math.PI-sweep}:{start:s,sweep};
+  };
+  const within=(ray,wedge)=>{const off=((ray-wedge.start)%(2*Math.PI)+2*Math.PI)%(2*Math.PI);return off<=wedge.sweep+1e-6||off>=2*Math.PI-1e-6;};
+  const candidates=rows.filter(usable);let changed=false;
+  const out=rows.map(row=>{
+    if(!usable(row))return row;
+    const mine=wedgeOf(row),over=[];
+    for(const other of candidates){
+      if(other===row||other.refs[1]!==row.refs[1])continue;
+      const [a,v,c]=other.refs.map(at),inner=wedgeOf(other);
+      if(within(Math.atan2(a[1]-v[1],a[0]-v[0]),mine)&&within(Math.atan2(c[1]-v[1],c[0]-v[0]),mine)&&inner.sweep<mine.sweep-1e-6)over.push(other.id);
+    }
+    if(!over.length)return row;
+    changed=true;return {...row,over};
+  });
+  return changed?out:rows;
 }
 
 // Returns {objects, factRolesByLabel}; throws an Error whose message is an UPPER_SNAKE code (optionally ':detail').
@@ -424,6 +450,8 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     // A degree label names the declared value; a mark with neither a label nor `noLabel` states nothing a student can read.
     const text=labelOf(row,declared!==null?String(row.value).replace(/\.0+$/,''):(straight?'180':null),true);
     if(text===null&&row.noLabel!==true)bad('ANGLE_MARK_LABEL_REQUIRED:'+row.id);
+    // A degree label is a number of degrees: pi in it is a radian measure, and the degree sign after it (pi/5 degrees) is a different, wrong value. Write it with labelKind MATH.
+    if(kind==='DEGREE'&&text!==null&&PI_IN_LABEL.test(text))bad('ANGLE_DEGREE_LABEL_HAS_PI:'+row.id);
     angleInfo.set(row.id,{vertex:row.refs[1],value:declared});
     // color (C1): a palette colour for the sector and the arcs; angles of one colour must be the same size (0.5 degrees), and it replaces emphasisGroup
     if(row.color!==undefined&&!isPaletteName(row.color))bad('ANGLE_COLOR_INVALID:'+row.id);
@@ -734,6 +762,8 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     // TEXT writes the label as plain Korean text (a name such as "호 AB"); DEGREE, NAME and MATH are the angle-style math labels.
     if(!['DEGREE','NAME','MATH','TEXT'].includes(kind))bad('MARK_FIELD_INVALID:arcs.labelKind:'+row.id);
     if(kind==='TEXT'&&row.label!==undefined)plainTextOk(String(row.label),'arcs.label',row.id);
+    // The same for an arc: a length such as 4pi is a MATH label (labelKind "MATH", or a unit); the default DEGREE kind would write 4pi with a degree sign.
+    if(kind==='DEGREE'&&row.label!==undefined&&PI_IN_LABEL.test(String(row.label)))bad('ARC_DEGREE_LABEL_HAS_PI:'+row.id);
     const unit=unitOf(row,kind,row.label!==undefined,'arcs');
     if(row.dashed!==undefined&&(typeof row.dashed!=='boolean'||row.dashed&&row.highlight===false))bad('ARC_DASH_INVALID:'+row.id);
     const object={id:row.id,kind:'CIRCULAR_ARC',centerPoint:row.center,startPoint:row.from,endPoint:row.to,sweep,highlight:row.highlight!==false,...(row.dashed?{dash:true}:{})};

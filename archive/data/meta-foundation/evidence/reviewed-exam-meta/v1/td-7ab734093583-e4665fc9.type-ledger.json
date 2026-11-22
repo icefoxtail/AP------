@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-7ab734093583-e4665fc9",
+  "sourceArchiveFile": "types/high/h2/비상_대수_지수로그함수_익힘책_고2_유형심화.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_a70bdd1a1dcfe72c2fb8c252d0f95b3a8a10ddb4b3d1504c39bd13dd379ce908",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION_REFLECTION",
+      "step": "각 보기를 y=3^x의 평행이동·대칭이동으로 만들 수 있는지 확인하고 로그함수는 불가능함을 찾는다",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 평행이동·대칭이동으로 포개지는 그래프 판별이라 평행이동과 대칭이동 분기",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c930b3f540f32ee83ff9ce93d3fbfdc883a71c59a4d7e2db0a09d23cdbecdf06",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+      "step": "두 로그그래프의 높이차 절댓값 |log3(3a)|가 일정하여3|log3(3a)|=12를 푼다.",
+      "note": "원문 해설은 절댓값 누락: 정답은 a=27 또는1/243.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl",
+      "stemChangedSinceJudgment": true
+    }
+  ]
+}

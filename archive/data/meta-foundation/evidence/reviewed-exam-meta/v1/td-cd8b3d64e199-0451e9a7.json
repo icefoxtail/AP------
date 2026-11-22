@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-cd8b3d64e199-0451e9a7",
+  "requestSha256": "5625a9566aaaf429f4cb910b353f166eacce916a14893bbc1409cbd5755027f5",
+  "examUid": "17_풍덕중_1학기_기말_중3_수학",
+  "sourceArchiveFile": "original/middle/m3/1final/17_풍덕중_1학기_기말_중3_수학.js",
+  "sourceBlobSha1": "a5496f2fe41f035999fb5b6c9876cc5a71911f36",
+  "sourceRawSha256": "0d031bd581973f06ec3d526f33db191bff58eb13791927311f6555fed4b737df",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-cd8b3d64e199-0451e9a7.type-ledger.json",
+        "sha256": "92e5fb2bad89e0deb7b05150b0878727621f1de30bae5843d00f817dd88a8eb3"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_c61b45029c8d2daa692308713390590df111a13e2968dee859827b62b414b2eb",
+      "sourceArchiveFile": "original/middle/m3/1final/17_풍덕중_1학기_기말_중3_수학.js",
+      "sourceOrdinal": 12,
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_MONOTONICITY",
+      "templateKey": "TPL_M3_QUADRATIC_FUNCTION_MONOTONICITY_INTERVAL",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-cd8b3d64e199-0451e9a7",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "각 이차함수의 대칭축과 이차항 계수의 부호로 x<-2에서 증가하는 함수를 가린다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3-1",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "27101cfd61f9ce5db55eba1d1070e1e4b23f389bb8a7cb949bd12190177f3255",
+        "judgedContentFingerprint": "1e059f7a70c917304fe93e30fee1db9213b816e8c2364a75b76631b0003969d7",
+        "rowBinding": "content",
+        "textBindingFingerprint": "751842c12f3d9e9cd9f5f2ca6552836717b1f32ab301067853d1555cc2eb98d9",
+        "resultSource": {
+          "branch": "data/type-judgment-u-20261122",
+          "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-cd8b3d64e199-0451e9a7.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 25
+}

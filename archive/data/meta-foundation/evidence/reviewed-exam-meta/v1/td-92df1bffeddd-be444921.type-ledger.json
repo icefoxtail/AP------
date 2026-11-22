@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-92df1bffeddd-be444921",
+  "sourceArchiveFile": "original/middle/m3/1mid/22_연향중_1학기_중간_중3_기출c.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_2fb3f3eb901350e0048eb493d58d8891753f94428de59e6f08ce5215f91a84a9",
+      "sourceOrdinal": 20,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SURFACE_PATH",
+      "templateKey": null,
+      "step": "두 상자의 표면을 따라 감긴 한 고리의 길이28을 세고 두 고리와 매듭10을 합산.",
+      "note": "새 PT 제안: 적층 직육면체의 끈 경로 길이. 정의: 중앙에 쌓은 직육면체의 노출면과 옆면을 따라 감는 끈 경로를 구간별로 나누어 합산하고 고리 수와 매듭 길이를 반영한다. | 도구: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE, CUE_LENGTH_4_TO_60_REQUIRED, PT_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    }
+  ]
+}

@@ -27,7 +27,8 @@
     Object.freeze({ key: "1", k: "1단계", n: "기초" }),
     Object.freeze({ key: "2", k: "2단계", n: "기본" }),
     Object.freeze({ key: "3", k: "3단계", n: "응용" }),
-    Object.freeze({ key: "45", k: "4~5단계", n: "심화" }),
+    Object.freeze({ key: "4", k: "4단계", n: "심화" }),
+    Object.freeze({ key: "5", k: "5단계", n: "최상위" }),
   ]);
 
   const esc = (value) => String(value == null ? "" : value)
@@ -36,11 +37,12 @@
   const num = (value, fallback) => (Number.isFinite(value) ? value : fallback);
   const rateOf = (g) => (g && g.total ? g.correct / g.total : 0);
 
-  // ---- 단계 묶음(1 · 2 · 3 · 4~5 · 단계 정보 없음) ----
+  // ---- 단계 묶음(문항의 실제 단계 1 · 2 · 3 · 4 · 5 · 단계 정보 없음) ----
+  // 시험지 구역 제목과 같이 4단계와 5단계를 따로 보인다. 문항이 없는 단계(보통 5단계)는 줄에서 빠진다.
   function levelGroups(report) {
     const out = GROUPS.map((def, i) => ({
       key: def.key, k: def.k, n: def.n,
-      g: def.key === "45" ? report.band45 : report.byLevel[i],
+      g: report.byLevel[i],
     }));
     if (report.noLevel && report.noLevel.total) out.push({ key: "none", k: "단계 정보 없음", n: "", g: report.noLevel });
     return out.filter((x) => x.g.total > 0);
@@ -117,7 +119,7 @@
     if (row.ok === 0) return { label: "보완 권장", cls: "w" };
     return { label: "다시 확인", cls: "p" };
   }
-  const levelText = (levels) => (levels.length ? levels.map((l) => (l >= 4 ? "4~5" : String(l))).filter((v, i, a) => a.indexOf(v) === i).join("·") : "–");
+  const levelText = (levels) => (levels.length ? levels.map(String).filter((v, i, a) => a.indexOf(v) === i).join("·") : "–");
 
   // ---- 다음 4주 수업 계획: 틀린 문항을 낮은 단계 → 많이 틀린 유형 순으로 놓는다 ----
   function planOf(rows, reach, next, report) {
@@ -129,7 +131,7 @@
       .sort((a, b) => a.level - b.level || b.wrong - a.wrong || a.firstNo - b.firstNo);
     const byNo = new Map(report.questions.map((q) => [q.no, q]));
     const unitOf = (r) => { const q = byNo.get(r.items.find((it) => it.status === "wrong").no); return (q && q.unit) || ""; };
-    const levelName = (l) => (l >= 9 ? "단계 정보가 없는" : l >= 4 ? "4~5단계" : `${l}단계`);
+    const levelName = (l) => (l >= 9 ? "단계 정보가 없는" : `${l}단계`);
     const out = [];
     const first = wrongTypes[0];
     if (first) {
@@ -247,8 +249,8 @@
     const W = 340, H = 190, L = 26, R = 44, T = 12, B = 30;
     const x = (i) => L + (W - L - R) * i / Math.max(n, 1);
     const y = (v) => T + (H - T - B) * (1 - v / Math.max(n, 1));
-    const bandOf = (s) => (s.difficulty == null ? "none" : s.difficulty >= 4 ? "45" : String(s.difficulty));
-    const bandName = { 1: "1단계", 2: "2단계", 3: "3단계", 45: "4~5단계", none: "단계 없음" };
+    const bandOf = (s) => (s.difficulty == null ? "none" : String(s.difficulty));
+    const bandName = { 1: "1단계", 2: "2단계", 3: "3단계", 4: "4단계", 5: "5단계", none: "단계 없음" };
     const pts = [[x(0), y(0)]];
     let cum = 0;
     seq.forEach((s, i) => { cum += s.status === "correct" ? 1 : 0; pts.push([x(i + 1), y(cum), s]); });
@@ -292,7 +294,7 @@
     const e = pts[n];
     s += `<text x="${(e[0] + 6).toFixed(1)}" y="${(e[1] + 4).toFixed(1)}" style="fill:var(--ink);font-weight:700;font-size:11px">${cum}문항</text>`;
     const chart = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="문항 번호에 따른 누적 정답 수">${s}</svg>`;
-    const legend = `<div class="legend band-legend">${["1", "2", "3", "45", "none"].filter((k) => bandsSeen.has(k)).map((k) => `<span><i class="sw bd${k}"></i>${bandName[k]}</span>`).join("")}</div>`;
+    const legend = `<div class="legend band-legend">${["1", "2", "3", "4", "5", "none"].filter((k) => bandsSeen.has(k)).map((k) => `<span><i class="sw bd${k}"></i>${bandName[k]}</span>`).join("")}</div>`;
     const svg = chart + legend;
     const firstMiss = seq.find((q) => q.status === "wrong");
     let cap;
@@ -330,7 +332,7 @@
     const rows = vm.report.levelByUnit.rows;
     const byUnit = new Map(rows.map((row) => [row.unit, row]));
     const cols = vm.groups;
-    const colKey = (x) => (x.key === "45" ? "4-5" : x.key === "none" ? "none" : Number(x.key));
+    const colKey = (x) => (x.key === "none" ? "none" : Number(x.key));
     const head = `<tr><th>단원</th>${cols.map((x) => `<th>${esc(x.k)}</th>`).join("")}</tr>`;
     const body = vm.units.map((u) => {
       const row = byUnit.get(u.unclassified ? null : u.name);
@@ -372,7 +374,7 @@
     const list = vm.report.wrongList;
     const typeLabelByNo = new Map();
     for (const row of vm.types) for (const it of row.items) typeLabelByNo.set(it.no, row.label);
-    const levelOf = (d) => (d == null ? "–" : d >= 4 ? "4~5" : String(d));
+    const levelOf = (d) => (d == null ? "–" : String(d));
     const unitOf = (w) => w.unit || UNCLASSIFIED_UNIT;
     const cap = WRONG_DOUBLE_MAX;
     const shown = list.slice(0, cap);

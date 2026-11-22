@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-6f02e19f8675-0123db1b",
+  "requestSha256": "219bebbc0af956a094a9a96ca91d295486619d5fba0f5f394951cd566bcf5c65",
+  "examUid": "중1_1단원_소인수분해",
+  "sourceArchiveFile": "types/middle/m1/중1_1단원_소인수분해.js",
+  "sourceBlobSha1": "42ef0e0231389e85cbabce725302c6188c113ba0",
+  "sourceRawSha256": "34a99766f03700467d8341a2b54ca3b11df51363392579f7a61a015191bdc33f",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-w-20261122",
+      "commit": "4111b9298564d9e7095216194d47737640427bfe",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6f02e19f8675-0123db1b.type-ledger.json",
+        "sha256": "db62af670ec4a406bfb7b95d0f6525a03b93ea4878e8baaa2c8701efc5c0293a"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_772d872f2da084fc4ad232379a625a8aef7af01d76a01e45740b1ecd2191e816",
+      "sourceArchiveFile": "types/middle/m1/중1_1단원_소인수분해.js",
+      "sourceOrdinal": 6,
+      "problemTypeKey": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+      "templateKey": "TPL_M1_PRIME_COMPOSITE_JUDGMENT_NUMBER_CLAIM_AUDIT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-6f02e19f8675-0123db1b",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "소수·합성수·서로소·거듭제곱에 관한 보기를 하나씩 검토해 옳지 않은 진술을 고른다",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "3c0d33d8011ced92d0a2ed7a3e774ae2954455af2b2e4eb777461c48b8057e32",
+        "judgedContentFingerprint": "042fabe4ebc9b24ea1fbef0e6e6118bbde05f8b4525b0397643e6bb51db5dded",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "46a617e597f295a0bcfb2503916cb908b5f591d10d1cdbbcf2ad4c16b66696cf",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6f02e19f8675-0123db1b.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 51
+}

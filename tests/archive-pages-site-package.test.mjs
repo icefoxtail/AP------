@@ -5,10 +5,11 @@ import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
 import { spawnSync } from 'node:child_process';
-import { addMixedSourceVerificationFiles, buildPagesSite, formatPackageSummary, HEADROOM_WARNING_BYTES, planPagesSite, summarizePackageSize } from '../tools/build-archive-pages-site.mjs';
+import { addMixedSourceVerificationFiles, buildPagesSite, versionStampExclusions, formatPackageSummary, HEADROOM_WARNING_BYTES, planPagesSite, summarizePackageSize } from '../tools/build-archive-pages-site.mjs';
 import { buildMixedSourceShard, buildMixedUidBucket, mixedIndexSchemaVersion } from '../archive/tools/mixed-verification-codec.mjs';
 import { loadSourceQualityHolds } from '../archive/tools/source-quality-holds.mjs';
 import { seedSourceQualityHoldFixture } from './helpers/source-quality-hold-fixture.mjs';
+import { STAMP_LENGTH } from '../tools/lib/stamp-html-versions.mjs';
 
 function digest(value) {
   return crypto.createHash('sha256').update(value.replace(/\r\n/g, '\n')).digest('hex');
@@ -524,4 +525,107 @@ test('a tree that excludes images ships its other assets and no exam image, and 
   const shipped = planPagesSite({ sourceRoot: root, manifest: rollback }).entries.map((entry) => entry.path);
   assert.ok(shipped.includes('archive/assets/images/25_x_exam/q1.png') && shipped.includes('archive/assets/images/25_x_exam/q2.svg'),
     'removing the exclude entry ships the images again');
+});
+
+// ---- Cache-version stamping of the shipped pages (manifest "versionStamp": true) ----------------------------------
+// The release stamps each local <script src>/<link href> of the shipped HTML with a hash of the file it points at, so a
+// changed file gets a new URL and an unchanged one keeps its URL. Source HTML is untouched; no operating counts are pinned.
+const STAMP = new RegExp(`\\?v=[0-9a-f]{${STAMP_LENGTH}}`);
+const stampOf = (text) => digest(text).slice(0, STAMP_LENGTH);
+
+function stampFixture(t, versionStamp = true) {
+  const f = fixture();
+  t.after(() => fs.rmSync(f.root, { recursive: true, force: true }));
+  put(f.root, 'apmath/page.html', '<!doctype html><link rel="stylesheet" href="css/a.css?v=hand-written"><script defer src="js/student.js?v=20260101"></script><script src="../archive/runtime.js"></script>');
+  put(f.root, 'apmath/sub/deep.html', '<script src="../js/student.js"></script>');
+  put(f.root, 'apmath/other.html', '<p>no local scripts</p><script src="https://cdn.example.test/lib.js"></script>');
+  put(f.root, 'apmath/css/a.css', 'body{}');
+  const manifest = { ...f.manifest };
+  if (versionStamp) manifest.versionStamp = true;
+  return { ...f, manifest, plan: () => planPagesSite({ sourceRoot: f.root, manifest }) };
+}
+const pageText = (plan, relative) => {
+  const entry = plan.entries.find((item) => item.path === relative);
+  return entry.content ? entry.content.toString('utf8') : fs.readFileSync(entry.absolute, 'utf8');
+};
+
+test('versionStamp: shipped pages carry the hash of each referenced file, source HTML stays as written', (t) => {
+  const f = stampFixture(t);
+  const sourceBefore = fs.readFileSync(path.join(f.root, 'apmath/page.html'), 'utf8');
+  const plan = f.plan();
+  assert.equal(fs.readFileSync(path.join(f.root, 'apmath/page.html'), 'utf8'), sourceBefore, 'the source page is never edited');
+  const page = pageText(plan, 'apmath/page.html');
+  assert.ok(page.includes(`css/a.css?v=${stampOf('body{}')}"`), 'a hand-written ?v= is replaced');
+  assert.ok(page.includes(`js/student.js?v=${stampOf('student runtime')}"`));
+  assert.ok(page.includes(`../archive/runtime.js?v=${stampOf('runtime')}"`), 'a missing ?v= is added');
+  assert.equal(plan.versionStamp.pages > 0 && plan.versionStamp.references >= 4, true);
+  const entry = plan.entries.find((item) => item.path === 'apmath/page.html');
+  assert.equal(entry.transform, 'stamp-html-version');
+  assert.equal(entry.bytes, Buffer.byteLength(page));
+  assert.equal(plan.totalBytes, plan.entries.reduce((sum, item) => sum + item.bytes, 0), 'totals count the stamped bytes');
+  assert.equal(pageText(plan, 'apmath/other.html'), fs.readFileSync(path.join(f.root, 'apmath/other.html'), 'utf8'), 'a page with no local script or style is byte-identical');
+  assert.equal(plan.entries.find((item) => item.path === 'apmath/other.html').content ?? null, null);
+});
+
+test('versionStamp: deterministic, identical for every page that loads the same file, and only changed files change', (t) => {
+  const f = stampFixture(t);
+  const first = f.plan();
+  const second = f.plan();
+  assert.deepEqual(first.entries.map((e) => [e.path, e.bytes, e.content?.toString('hex') ?? null]),
+    second.entries.map((e) => [e.path, e.bytes, e.content?.toString('hex') ?? null]), 'same input, same output');
+  const shared = (plan, relative) => pageText(plan, relative).match(/student\.js\?v=([0-9a-f]+)/)[1];
+  assert.equal(shared(first, 'apmath/page.html'), shared(first, 'apmath/sub/deep.html'), 'one file, one value in every page');
+  put(f.root, 'apmath/js/student.js', 'student runtime changed');
+  const changed = f.plan();
+  assert.notEqual(shared(changed, 'apmath/page.html'), shared(first, 'apmath/page.html'), 'the changed file gets a new value');
+  assert.equal(shared(changed, 'apmath/page.html'), shared(changed, 'apmath/sub/deep.html'));
+  const unchangedRefs = (plan) => pageText(plan, 'apmath/page.html').match(/(?:a\.css|runtime\.js)\?v=[0-9a-f]+/g);
+  assert.deepEqual(unchangedRefs(changed), unchangedRefs(first), 'files that did not change keep their value');
+  assert.equal(stampOf('student runtime changed'), shared(changed, 'apmath/page.html'));
+  // line endings of the checkout do not change the value
+  put(f.root, 'apmath/js/student.js', 'student\r\nruntime changed');
+  assert.equal(shared(f.plan(), 'apmath/page.html'), stampOf('student\nruntime changed'));
+});
+
+test('versionStamp: a reference to a file that is not in the package fails the build', async (t) => {
+  const f = stampFixture(t);
+  put(f.root, 'apmath/broken.html', '<script src="js/not-there.js"></script>');
+  assert.throws(() => f.plan(), /apmath\/broken\.html references js\/not-there\.js, but apmath\/js\/not-there\.js is not in the Pages package/);
+  await assert.rejects(buildPagesSite({ sourceRoot: f.root, outputDir: path.join(f.root, '_site'), manifest: f.manifest }), /not in the Pages package/);
+});
+
+test('versionStamp: without the manifest switch nothing is rewritten, and the flag must be literally true', (t) => {
+  const off = stampFixture(t, false);
+  const plan = off.plan();
+  assert.equal(plan.entries.some((e) => e.transform === 'stamp-html-version'), false);
+  assert.equal(pageText(plan, 'apmath/page.html'), fs.readFileSync(path.join(off.root, 'apmath/page.html'), 'utf8'));
+  const bad = stampFixture(t);
+  assert.throws(() => planPagesSite({ sourceRoot: bad.root, manifest: { ...bad.manifest, versionStamp: 'yes' } }), /versionStamp must be true/);
+});
+
+test('versionStamp: pages whose public bytes are compared with the committed files are never rewritten', (t) => {
+  const f = stampFixture(t);
+  put(f.root, 'apmath/planner/index.html', '<script src="../js/student.js?v=hand"></script>');
+  const excluded = versionStampExclusions();
+  for (const bound of ['apmath/student/index.html', 'apmath/planner/index.html', 'apmath/homework/index.html', 'apmath/wrong_print_engine.html', 'archive/engine.html', 'archive/mixed_engine.html']) {
+    assert.ok(excluded.has(bound), `${bound} is byte-bound by the public student verification`);
+  }
+  const plan = f.plan();
+  assert.equal(pageText(plan, 'apmath/planner/index.html'), '<script src="../js/student.js?v=hand"></script>');
+  assert.equal(plan.entries.find((e) => e.path === 'apmath/planner/index.html').content ?? null, null);
+  assert.ok(plan.versionStamp.skippedBound >= 1);
+});
+
+test('versionStamp: the built site and its inventory carry the stamped bytes and name the transform', async (t) => {
+  const f = stampFixture(t);
+  const outputDir = path.join(f.root, '_site');
+  const report = await buildPagesSite({ sourceRoot: f.root, outputDir, manifest: f.manifest });
+  const written = fs.readFileSync(path.join(outputDir, 'apmath/page.html'), 'utf8');
+  assert.match(written, STAMP);
+  const row = report.inventory.find((item) => item.path === 'apmath/page.html');
+  assert.equal(row.transform, 'stamp-html-version');
+  assert.equal(row.sha256, crypto.createHash('sha256').update(written).digest('hex'));
+  assert.equal(row.bytes, Buffer.byteLength(written));
+  assert.equal(report.minifiedFileCount, 0, 'stamping is not counted as JSON compaction');
+  assert.ok(report.versionStamp.pages >= 1);
 });

@@ -92,7 +92,7 @@
 .sa-main {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 36px 48px 80px;
+  padding: 32px 48px 80px;
 }
 .sa-head {
   display: flex;
@@ -100,16 +100,18 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 12px 24px;
-  margin: 0 0 24px;
+  margin: 0 0 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
 }
 .sa-title,
 .sa-head h1 {
   margin: 0 0 8px;
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: 34px;
-  line-height: 1.2;
-  letter-spacing: 0;
+  font-size: 32px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
 }
 .sa-lead {
   margin: 0;
@@ -124,7 +126,7 @@
   }
   .sa-title,
   .sa-head h1 {
-    font-size: 26px;
+    font-size: 24px;
   }
 }
 @media (max-width: 700px) {

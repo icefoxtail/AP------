@@ -22,7 +22,7 @@ OWNER_LEADER_PLACEMENTS={'MEASURED_OWNER_SAFE_RELOCATION',*(prefix+d for prefix 
 def owner_label_leader_svg(leader,layout,element_id):
     """A point label relocated away from its point, tied back to it: from the point to the label box edge on the way to its center."""
     owner=next((value for value in layout['labels'] if value.get('id')==leader.get('ownerLabelId')),None)
-    if (set(leader)-{'pathLabelFallback','crossFallback'}!={'schemaVersion','id','from','to','ownerLabelId','ownerId'} or leader.get('pathLabelFallback',True) is not True or leader.get('crossFallback',True) is not True or not owner
+    if (set(leader)-{'pathLabelFallback','crossFallback','dot'}!={'schemaVersion','id','from','to','ownerLabelId','ownerId'} or leader.get('pathLabelFallback',True) is not True or leader.get('crossFallback',True) is not True or leader.get('dot',True) is not True or not owner
         or owner.get('placement') not in OWNER_LEADER_PLACEMENTS or owner.get('target')!=leader.get('ownerId')
         or list(owner.get('at',[]))!=leader.get('from') or not isinstance(owner.get('box'),dict)
         or not isinstance(leader.get('to'),list) or len(leader['to'])!=2):
@@ -34,8 +34,10 @@ def owner_label_leader_svg(leader,layout,element_id):
     expected_end=callout_leader_end(box,leader['from'],center)
     if math.hypot(expected_end[0]-x2,expected_end[1]-y2)>1e-6 or math.hypot(x2-x1,y2-y1)<=1e-6:raise ValueError('OWNER_LABEL_LEADER_ENDPOINT_INVALID')
     return (f'<line id="{element_id(leader["id"])}" data-role="leader" data-owner-label="{esc(leader["ownerLabelId"])}" '
-            f'data-owner="{esc(leader["ownerId"])}"'+(' data-path-label-fallback="1"' if leader.get("pathLabelFallback") else '')+(' data-leader-crossing="1"' if leader.get("crossFallback") else '')+f' x1="{num(x1)}" y1="{num(y1)}" x2="{num(x2)}" y2="{num(y2)}" '
-            f'stroke="#666" stroke-width="0.8" fill="none"/>')
+            f'data-owner="{esc(leader["ownerId"])}"'+(' data-path-label-fallback="1"' if leader.get("pathLabelFallback") else '')+(' data-leader-crossing="1"' if leader.get("crossFallback") else '')+(' data-region-dot="1"' if leader.get("dot") else '')+f' x1="{num(x1)}" y1="{num(y1)}" x2="{num(x2)}" y2="{num(y2)}" '
+            f'stroke="#666" stroke-width="0.8" fill="none"/>'
+            # a region value's leader starts on a small dot inside its region (REGION_LEADER_DOT_RADIUS_PX), so it reads as that region's value and never as the length of a side
+            +(f'<circle id="{element_id(leader["id"]+"-dot")}" data-role="leader-dot" data-owner-label="{esc(leader["ownerLabelId"])}" data-owner="{esc(leader["ownerId"])}" cx="{num(x1)}" cy="{num(y1)}" r="2.4" fill="#555" stroke="none"/>' if leader.get('dot') else ''))
 
 def safe_math_markup(value):
     root=ET.fromstring('<text>'+value+'</text>')
@@ -157,6 +159,7 @@ def compose(prepared,layout,viewport,fragments=None):
             validate_fragment_font(root,fragment['fontPx'])
             binding=''
             if label['kind']=='TICK_LABEL':binding=(f' data-tick-owner="{esc(label["tickId"])}" data-tick-axis="{esc(label["tickAxis"])}" data-tick-value="{esc(label["tickValue"])}" data-tick-display-value="{esc(label["tickDisplayValue"])}" data-tick-source-x="{num(label["at"][0])}" data-tick-source-y="{num(label["at"][1])}"'+(f' data-tick-pi-value="{esc(label["tickPiValue"])}"' if label.get('tickPiValue') is not None else '')+(f' data-tick-callout="{esc(label["tickLabelCallout"]["schemaVersion"])}"' if label.get('tickLabelCallout') else ''))
+            if label.get('axisValue') in ('x','y'):binding+=f' data-axis-value="{label["axisValue"]}" data-axis-source-x="{num(label["axisAnchor"][0])}" data-axis-source-y="{num(label["axisAnchor"][1])}"'   # (AXV) bound to its own value on that axis
             # A plain-text or unit label of a plane mark keeps what it says on its group, so the observer can read it back from the final SVG.
             if label.get('nearRoom')=='NONE':binding+=' data-near-room="NONE"'
             if label.get('bindText'):binding+=(f' data-tex="{esc(label["tex"])}"' if label.get('math') else f' data-text="{esc(label["text"])}"')
@@ -166,6 +169,7 @@ def compose(prepared,layout,viewport,fragments=None):
         attrs=f'id="{oid}" data-label-kind="{esc(label["kind"])}" data-priority="{label.get("priority",2)}" x="{num(x)}" y="{num(y)}" font-size="{num(font)}"'
         attrs+=owner_attrs(label)
         if label.get('nearRoom')=='NONE':attrs+=' data-near-room="NONE"'
+        if label.get('axisValue') in ('x','y'):attrs+=f' data-axis-value="{label["axisValue"]}" data-axis-source-x="{num(label["axisAnchor"][0])}" data-axis-source-y="{num(label["axisAnchor"][1])}"'
         if label['kind']=='TICK_LABEL':
             attrs+=f' data-visual-role="tick-label" data-tick-owner="{esc(label["tickId"])}" data-tick-axis="{esc(label["tickAxis"])}" data-tick-value="{esc(label["tickValue"])}" data-tick-display-value="{esc(label["tickDisplayValue"])}" data-tick-source-x="{num(label["at"][0])}" data-tick-source-y="{num(label["at"][1])}"'
             if label.get('tickPiValue') is not None:attrs+=f' data-tick-pi-value="{esc(label["tickPiValue"])}"'

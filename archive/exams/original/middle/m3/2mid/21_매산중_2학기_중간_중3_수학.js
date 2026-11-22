@@ -259,7 +259,7 @@ window.examData = {
       "image": "assets/images/21_매산중_2학기_중간_중3_수학/q6-problem-v2.svg",
       "imageSize": "tall",
       "score": 4.0,
-      "question": "【대체 문항】좌표평면에서 $O=(0,0)$이고 반지름이 $1$인 원의 오른쪽 끝점을 $A=(1,0)$, 위쪽 끝점을 $C=(0,1)$, 왼쪽 끝점을 $D=(-1,0)$이라 하자. 점 $A$를 지나고 $OA$에 수직인 직선과, 양의 $x$축에서 $x^\\circ$ 위로 기울어진 반직선이 만나는 점을 $B$라 한다($0<x<90$). $\\tan x$를 나타내는 선분은?<br><img src=\"assets/replacements/q06_tan_segment.png\" />",
+      "question": "【대체 문항】좌표평면에서 $O=(0,0)$이고 반지름이 $1$인 원의 오른쪽 끝점을 $A=(1,0)$, 위쪽 끝점을 $C=(0,1)$, 왼쪽 끝점을 $D=(-1,0)$이라 하자. 점 $A$를 지나고 $OA$에 수직인 직선과, 양의 $x$축에서 $x^\\circ$ 위로 기울어진 반직선이 만나는 점을 $B$라 한다($0<x<90$). $\\tan x$를 나타내는 선분은?",
       "choices": [
         "$\\overline{OB}$",
         "$\\overline{AB}$",

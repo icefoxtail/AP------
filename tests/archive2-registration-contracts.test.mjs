@@ -9,6 +9,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
 const core = require("../archive/archive2-core.js");
 const { catalog } = require("./helpers/archive2-scope-harness.cjs");
+const completeByUid = new Map(require("../archive/tools/archive2-catalog-evidence.cjs").readCatalog({ root }).records.map((row) => [row.questionUid, row]));
 const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
 
 test("parent-link refresh preserves valid L1/L2 evidence when release approval is unresolved", () => {
@@ -65,7 +66,8 @@ test("reviewed path-and-ordinal scope links materialize verified UID assignments
     assert.equal(record.sourceGrade, link.grade);
     assert.equal(record.assignmentFingerprint, link.sourceBodyFingerprint,
       "the reviewed L1/L2 link and current source agree on the classification fingerprint");
-    assert.equal(record.metadataAssignmentEvidence?.assignmentFingerprint, link.sourceBodyFingerprint,
+    // The approved classification's own fingerprint is evidence-file content (the downloaded catalog keeps it only where resolveCatalog reads it).
+    assert.equal(completeByUid.get(record.questionUid)?.metadataAssignmentEvidence?.assignmentFingerprint, link.sourceBodyFingerprint,
       "the approved metadata classification joins through the same source identity");
 
     const assignment = core.Canonical.validateBasicAssignment(record, catalog.canonicalAuthority);

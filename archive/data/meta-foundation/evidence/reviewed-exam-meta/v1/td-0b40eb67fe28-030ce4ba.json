@@ -1,0 +1,186 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-0b40eb67fe28-030ce4ba",
+  "requestSha256": "a4607816251ea156a55817735e7f6a831f61d25cb402b5cf78d2b5767f2dd36d",
+  "examUid": "항등식과나머지정리_고1_유형",
+  "sourceArchiveFile": "types/high/h1/항등식과나머지정리_고1_유형.js",
+  "sourceBlobSha1": "89e56920f9a4708e5d5dd8a3284def8793b3fa75",
+  "sourceRawSha256": "2fc1a7c1b0e7039c33868eb579638ce8f7e5de2909f82333aa154ca1238ac79e",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-w-20261122",
+      "commit": "4111b9298564d9e7095216194d47737640427bfe",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-0b40eb67fe28-030ce4ba.type-ledger.json",
+        "sha256": "d0826e5ff007249ed342fad5bab560195e388f7ac0a4ff3d26921a6eedcc9629"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 3,
+  "registryChanges": [],
+  "typeApprovals": 3,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 3
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_4692b7ad2dab91469c1e1c6be95c11e46d536cec1dcc91e4bd8440b194f2f8cd",
+      "sourceArchiveFile": "types/high/h1/항등식과나머지정리_고1_유형.js",
+      "sourceOrdinal": 13,
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-0b40eb67fe28-030ce4ba",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "f(x²)을 x+2로 나눈 나머지에서 x=-2를 대입해 f(4)=-18을 얻고 f의 식을 결정",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학(상)",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "79385d5c62fc1f5bf7c80265a028ca86c53b8598c642674dd0db2bee64791cd8",
+        "judgedContentFingerprint": "e2b476f5612cd259a28d8343da9246f28ac24c3c594c0cbf87b7e8c568d3ad5e",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "b0e6bc8a56fe9698e8cd3dfd16000bad9f741d40285d739e6c89788a803f0c38",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-0b40eb67fe28-030ce4ba.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_2d65c60c6068a93c5d2f01b18389ec824964cb8ac2070c4de427f1115e0a0829",
+      "sourceArchiveFile": "types/high/h1/항등식과나머지정리_고1_유형.js",
+      "sourceOrdinal": 23,
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-0b40eb67fe28-030ce4ba",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "f=(x²+1)(ax+b)+x+1로 몫·나머지 항등식을 세우고 f(0), f(1)=0으로 a,b 결정",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학(상)",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "c26e845c82782585473054878a38961e1adec4a2028f45e23775d91be35f655a",
+        "judgedContentFingerprint": "adc994d0085972b41d96a9cabc52c461f65aacf27d3b747525362331681c28c2",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "7773326ab34f39eb59a7fcf22d9c6e0441bdadb7f6805cce8e010771fb2d58d2",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-0b40eb67fe28-030ce4ba.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_6e7c31ebe1cb39c0b34c12055758c03835eaeeb3ac5a9ec11cdc21165d771cd3",
+      "sourceArchiveFile": "types/high/h1/항등식과나머지정리_고1_유형.js",
+      "sourceOrdinal": 28,
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-0b40eb67fe28-030ce4ba",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "각 나머지식에서 f(2), f(3)을 구한 뒤 (x-2)(x-3)으로 나눈 나머지 ax+b를 결정",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학(상)",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "98c1c5905a3f95506c2b0860ccde38d470e3f3c1006f5ce97cca957cafe95b17",
+        "judgedContentFingerprint": "698612d12917e229467620fee1fa6413a6f08248ede2dc5504911785f29b98ca",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "05f1a66cbea259a758d29aa291a4454adbac5744d81004c241369c9418805c50",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-0b40eb67fe28-030ce4ba.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 3,
+  "expectedQuestionCount": 32
+}

@@ -571,27 +571,21 @@ test('cross-grade sources without an approved canonical projection remain exclud
 
 test('all changed browser scripts use new cache versions', () => {
   const html = read('workspace.html');
-  for (const [file, version] of [
-    ['archive2-canonical.js', '20261119-receipt-row-binding-1'],
-    ['archive2-core.js', '20261119-pair-type-spread-1'],
-    ['meta-foundation-runtime.js', '20261110-first-paint-1'],
-    ['archive2-history.js', '20261110-teacher-copy-1'],
-    ['archive2-quick-pools.js', '20261120-diagnostic-4'],
-    ['archive2-unit-tree.js', '20261117-middle-parent-1'],
-    ['archive2-similar.js', '20261110-similar-1'],
-    ['archive2-unified-units.js', '20261122-unit-hint-2'],
+  for (const file of [
+    'archive2-canonical.js', 'archive2-core.js', 'meta-foundation-runtime.js', 'archive2-history.js',
+    'archive2-quick-pools.js', 'archive2-unit-tree.js', 'archive2-similar.js', 'archive2-unified-units.js',
   ])
-    assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
+    assertLoads(html, file, 'workspace.html');
   assertWorkspaceScriptVersions(assert);
-  assert.match(html, /problem-bank-meta\.js\?v=20261029-s14-1/);
-  assert.match(html, /archive2-source\.js\?v=20261119-verified-rename-1/);
-  assert.match(html, /archive2-library\.js\?v=20261111-assign-2/);
-  assert.match(html, /archive2\.css\?v=20261122-multi-pick-front-1/);
-  assert.match(html, /archive2-derive\.js\?v=20261120-derive-ui-1/);
-  assert.match(read('mixed_engine.html'), /archive2-derive-entry\.js\?v=20261120-derive-ui-1/);
-  assert.match(html, /archive2-tokens\.css\?v=20261110-shell-1/);
-  assert.match(html, /archive2-papers\.js\?v=20261110-teacher-copy-1/);
-  assert.match(html, /archive2-navigation\.js\?v=20261122-ui-quick-3/);
+  assertLoads(html, 'problem-bank-meta.js', 'html');
+  assertLoads(html, 'archive2-source.js', 'html');
+  assertLoads(html, 'archive2-library.js', 'html');
+  assertLoads(html, 'archive2.css', 'html');
+  assertLoads(html, 'archive2-derive.js', 'html');
+  assertLoads(read('mixed_engine.html'), 'archive2-derive-entry.js', 'mixed_engine.html');
+  assertLoads(html, 'archive2-tokens.css', 'html');
+  assertLoads(html, 'archive2-papers.js', 'html');
+  assertLoads(html, 'archive2-navigation.js', 'html');
 });
 
 test('Finder, Recent, and Saved Paper view state survives route changes and reload URLs', () => {
@@ -1526,6 +1520,7 @@ test('저장이 정본 메타 불일치(409)로 거절되면 화면에는 안내
 // ---- 저장 실패 문구: 거절 이유마다 다른 문구, 할 일 포함, 서버 원문·내부 용어 비노출 ----
 // 화면은 archive2-error-detail.js가 있을 때 문구를 만든다(워크스페이스 페이지가 함께 올린다). 하네스에도 올려 실제 경로로 본다.
 const withErrorDetail = harness => { harness.ctx.Archive2ErrorDetail = require('../archive/archive2-error-detail.js'); return harness; };
+const { assertLoads } = require('./helpers/html-asset-refs.cjs');
 test('저장 실패 문구는 이유(로그인 만료·권한 없음·너무 큼·분류 기준 갱신·분류 자료 불일치)마다 다르고 할 일이 들어 있다', async t => {
   t.mock.method(console, 'warn', () => {});
   const cases = [

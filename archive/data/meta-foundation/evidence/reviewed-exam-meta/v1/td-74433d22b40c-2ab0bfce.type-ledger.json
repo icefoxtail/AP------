@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-74433d22b40c-2ab0bfce",
+  "sourceArchiveFile": "similar/high/h2/1mid/24_금당고_1학기_중간_고2_유사.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_f894fb625c77e4e4ac9d4e1350af50f3c56c4e86017f136d58c6534deefa3797",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_INEQUALITY",
+      "templateKey": "TPL_TRIGONOMETRIC_INEQUALITY_INTERVAL_SOLVE",
+      "step": "탄젠트의 양의 단조구간에서 경계각을 찾고 입력 이동을 되돌린다.",
+      "note": "원문은 닫힌 상한 β를 요구하나 실제해는 π/12≤x<π/3으로 상한이 제외된다. 풀이 유형은 판독 가능하다. 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl",
+      "stemChangedSinceJudgment": true
+    },
+    {
+      "questionUid": "qid_v1_698bfc8df28191954b77c53b52b66e344396cdba212b3e0995259254dd307a0f",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_EQUATION",
+      "templateKey": "TPL_TRIGONOMETRIC_EQUATION_COUNT",
+      "step": "절댓값을 ±t로 분리하고 사인곡선의 두 주기에서 수평선 교점의 개수를 구간별로 센다.",
+      "note": "필요 TPL: 절댓값 삼각함수의 수준집합 개수. 정의: 수평선의 높이에 따라 절댓값 내부의 두 방정식의 유효근과 끝점을 합산한다. source f(2)=5 및 요구한 두 열린구간 형식이 실제 그래프와 모순이다. 실제 f(2)=4, t=0에서도4개이다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl",
+      "stemChangedSinceJudgment": true
+    }
+  ]
+}

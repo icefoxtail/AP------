@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-a276de574b86-c64cb975",
+  "requestSha256": "ab7acc995e57c9bc088d0f64b2d8673745a406edf91f9fd7974dac642f79f853",
+  "examUid": "21_팔마중_2학기_중간_중2_수학",
+  "sourceArchiveFile": "original/middle/m2/2mid/21_팔마중_2학기_중간_중2_수학.js",
+  "sourceBlobSha1": "e823618e19cf461d0cbc0e2843c297a616626542",
+  "sourceRawSha256": "d2705231828a902a749158574ecfa22cc456d8b9bfc7fb3f99f2ba02d5f7ade6",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a276de574b86-c64cb975.type-ledger.json",
+        "sha256": "41420710d15833fc4b63db9bf72d1a34a67cb097ce8205b6c4550cb6b90abd99"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_6c59e9e4406e0d62ed5464d02180957b75ca763b877e459ba2076249cb7e9711",
+      "sourceArchiveFile": "original/middle/m2/2mid/21_팔마중_2학기_중간_중2_수학.js",
+      "sourceOrdinal": 18,
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-a276de574b86-c64cb975",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "두 삼각형의 공통각과 대응변의 비로 SAS 닮음을 판정하고 닮음비로 길이를 구해 옳은 설명을 고른다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "156f38880f766c064c2bdb6e26c0e614bf6b305958d1dfff69acf02b13d39594",
+        "judgedContentFingerprint": "1ac591f8f8b6527cb0220696e998323961199a06dbc571474f19fd17b3ff725d",
+        "rowBinding": "content",
+        "textBindingFingerprint": "d80ef93c32d7101e43763bcdab32355d6fd0d8dbdedc4731c6beec3226305f89",
+        "resultSource": {
+          "branch": "data/type-judgment-u-20261122",
+          "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a276de574b86-c64cb975.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}

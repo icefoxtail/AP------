@@ -1,0 +1,204 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tc-dc8b252dbd98-130ef40b",
+  "requestSha256": "b5c9bcbf02991374e6efb0fa45c6b94a2048975d5f86226eeb446ff9ca81ecfb",
+  "examUid": "19_강남여고_1학기_기말_고2_수학I",
+  "sourceArchiveFile": "original/high/h2/1final/19_강남여고_1학기_기말_고2_수학I.js",
+  "sourceBlobSha1": "4301da23bebe6279b1c1331415a95efdd0338572",
+  "sourceRawSha256": "490bbf90c31171a0bcec184f66e319118c064348fa11e1ee9141313cbffe8100",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-dc8b252dbd98-130ef40b.type-ledger.json",
+        "sha256": "6dc1e10913387dd4da0c1690b227c94b666c7ee6c3cfb87fa4d6ddbf3482f09a"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+      "collection": "problemTypes",
+      "match": {
+        "problemTypeKey": "PT_M2_TRIANGLE_PROPERTY_TRUE_FALSE"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_M2_TRIANGLE_PROPERTY_TRUE_FALSE",
+        "canonicalLabelKo": "삼각형 성질의 참·거짓 판별",
+        "definition": "이등변삼각형·직각삼각형의 합동 조건·외심 등 삼각형의 성질에 관한 진술을 하나씩 참·거짓으로 판정하고 그 결과로 경로나 개수를 정한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_d263b796e661da93d9dc42c1519a0f064c1fe87d40f95c80a12e45d1e0cd7ffe"
+        ],
+        "sourceUnits": [
+          "M2-05"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "TYPE_BUNDLE_TABLE",
+            "bundle": "NPT_M2_TRIANGLE_PROPERTY_TRUE_FALSE",
+            "bundleTable": {
+              "branch": "data/type-judgment-u-20261122",
+              "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+              "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+            }
+          }
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-dc8b252dbd98-130ef40b.type-ledger.json",
+          "sha256": "6dc1e10913387dd4da0c1690b227c94b666c7ee6c3cfb87fa4d6ddbf3482f09a"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "problemTypeKey": "PT_M2_TRIANGLE_PROPERTY_TRUE_FALSE"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_M2_TRIANGLE_PROPERTY_TRUE_FALSE",
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "subUnitLabelKo": "삼각형의 성질",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_d263b796e661da93d9dc42c1519a0f064c1fe87d40f95c80a12e45d1e0cd7ffe"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE_GEOMETRY"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-dc8b252dbd98-130ef40b.type-ledger.json",
+          "sha256": "6dc1e10913387dd4da0c1690b227c94b666c7ee6c3cfb87fa4d6ddbf3482f09a"
+        }
+      ]
+    }
+  ],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_71092a387229258ee4fd6821f586284d06820439a30186cb2e0db9b4191f3eac",
+      "sourceArchiveFile": "original/high/h2/1final/19_강남여고_1학기_기말_고2_수학I.js",
+      "sourceOrdinal": 27,
+      "problemTypeKey": "PT_EXPONENT_CALCULATION",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tc-dc8b252dbd98-130ef40b",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "(2)에서 분자와 분모의 공통 다항식을 묶어 지수법칙으로 a^10을 얻는다. (1)은 특수각 삼각비 값 계산이라 지수 계산 소문항(3점)을 대표로 삼았다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학I",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "4635ed58cb19e2a0f39072fc96fd1f45956a5b6b668fa0eff7100c914a548e0d",
+        "judgedContentFingerprint": "c061b9d2694a8dc00ca71a3cda6237b8474a76c23dcb1e30508c1670ed514788",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "88083067dbcce6a5f96a66bd082b25efe5db14a1c34d54933b6f8f89a4ef2136",
+        "resultSource": {
+          "branch": "data/type-judgment-u-20261122",
+          "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-dc8b252dbd98-130ef40b.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [
+    {
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "sha256": "cfec73c6811945f7d4fc65f752fe2eec3d102e01e76c36ab8e8d99eaf138e449"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "sha256": "b494cbc091fc348735e365924e84fb533c9a07a7c2e72abfb9fa0cfc39ba49be"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+      "sha256": "427bf6c72fe494278693c7ba97ff5e2760d18887f16ffb0a409822c2d68eaafc"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/registry_index.json",
+      "sha256": "e1f41b81039e1c90a725d302be4e2da01b41cfac6c753aad1990af55effbb10d"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+      "sha256": "ad4c4374642ea2e7a52b62a5ce71530ca78f127c8a9b41353bfdd6c4a5d9ef00"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/bindings.json",
+      "sha256": "497704de5cfee92d90adc21190771013c95015fc2f868730b53c59f8196cc086"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json",
+      "sha256": "21ff09364e90256d836d6f3ad64958fd4db8429def7008f8df74726fd6b81472"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+      "sha256": "8e2b35595a45648e05191b6b9b97a8c1cefb1071389408ff602eb44645dc8853"
+    }
+  ],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 30
+}

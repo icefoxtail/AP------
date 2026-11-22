@@ -1,0 +1,155 @@
+/* 인쇄 머리글 "표 머리글": [학원명 | 제목 | 이름 | 점수] 한 줄 표 (engine.html · mixed_engine.html 공용)
+   - 선만 쓴다(색 면 없음): 바깥 1pt, 칸막이 0.6pt, 학원명 칸 오른쪽 1.75pt. 주홍 막대는 학원명 밑 장식일 뿐이라 흑백 인쇄에서도 읽힌다.
+   - 학원명이 비면 그 칸이 사라져 [제목 | 이름 | 점수]. 이름·점수 칸은 칸 자체가 쓰는 자리라 밑줄이 없다.
+   - 높이는 제목 길이와 무관하게 43.77px(칸) 일정. 제목 글자 크기·줄 수는 print-header-table.js 가 맞춘다.
+   - 화면 폭 640px 이하(휴대폰)는 archive2-preview-mobile.css 의 기존 쌓기 배치를 그대로 쓴다. */
+
+/* 눌러서 고치기 표시는 화면에서만 (인쇄에는 찍히지 않는다) */
+@media screen {
+  [data-ph-edit][contenteditable]:hover { background: rgba(207, 53, 24, 0.08); cursor: text; border-radius: 2px; }
+  [data-ph-edit][contenteditable]:focus { outline: 2px solid #cf3518; outline-offset: 2px; background: #fff8f6; border-radius: 2px; }
+  .header-max-score[contenteditable]:empty { min-width: 22px; min-height: 1em; display: inline-block; }
+}
+@media print {
+  [data-ph-edit] { outline: none !important; background: transparent !important; }
+}
+
+@media print, screen and (min-width: 641px) {
+  /* ---- 문제지(exam) ---- */
+  .page-header.page-header--exam {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    column-gap: 0;
+    align-items: stretch;
+    padding: 0;
+    border: 1pt solid #111;
+    background: transparent;
+  }
+  .page-header.page-header--exam .page-header-meta,
+  .page-header.page-header--exam .page-header-meta-right { display: contents; }
+  .page-header.page-header--exam .page-header-meta-left { display: none; }
+
+  /* 가운데: 제목 */
+  .page-header.page-header--exam .page-header-titlecell {
+    grid-column: 2; grid-row: 1;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 0 10px;
+    min-width: 0;
+    min-height: 43.77px;
+    box-sizing: border-box;
+  }
+  .page-header.page-header--exam .page-header-title {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 14.5pt;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    white-space: nowrap;
+    word-break: keep-all;          /* 낱말 중간에서 끊지 않는다 */
+    overflow-wrap: anywhere;       /* 한 낱말이 칸보다 길 때만 예외로 끊는다 */
+    text-wrap: balance;            /* 두 줄이면 줄 길이를 고르게 */
+    overflow: visible;
+  }
+  .page-header.page-header--exam .page-header-title[data-ph-lines="2"] { line-height: 1.15; }
+  .page-header.page-header--exam .page-header-subtitle {
+    text-align: center;
+    font-size: 8.5pt;
+    line-height: 1.15;
+    margin-top: 1px;
+  }
+
+  /* 왼쪽: 학원명 칸 (글자가 있을 때만 칸이 생김) */
+  .page-header-academy {
+    grid-column: 1; grid-row: 1;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    box-sizing: border-box;
+    min-height: 43.77px;
+    max-width: 170px;
+    padding: 0 14px;
+    border-right: 1.75pt solid #111;
+  }
+  .page-header-academy::after {
+    content: "";
+    position: absolute;
+    left: 14px; right: 14px; bottom: 6px;
+    height: 2px;
+    background: #cf3518;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .page-header-academy-text {
+    display: block;
+    flex: 0 1 auto;
+    min-width: 0;
+    max-width: 100%;
+    margin-bottom: 4px;
+    font-size: 12pt;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+
+  /* 오른쪽: 이름 칸 · 점수 칸 (칸 자체가 쓰는 자리) */
+  .page-header.page-header--exam .header-fill-cell {
+    grid-row: 1;
+    display: flex; align-items: center;
+    box-sizing: border-box;
+    min-height: 43.77px;
+    padding: 0 9px;
+    font-size: 9pt;
+    font-weight: 700;
+    border-left: 0.6pt solid #111;
+    white-space: nowrap;
+  }
+  .page-header.page-header--exam .header-fill-cell--name { grid-column: 3; min-width: 110px; }
+  .page-header.page-header--exam .header-fill-cell--score { grid-column: 4; min-width: 92px; }
+  .page-header.page-header--exam .header-fill-line {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 1em;
+    margin: 0;
+    border-bottom: 0;
+  }
+  .page-header.page-header--exam .header-fill-line.header-fill-line--score { min-width: 16px; margin: 0 4px 0 0; }
+  .page-header.page-header--exam .header-max-score { flex: none; }
+
+  /* ---- 해설·정답(sol/ans) ---- */
+  .page-header:not(.page-header--exam) {
+    border: 1pt solid #111;
+    padding: 0;
+    background: transparent;
+    font-size: 10.5pt;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .page-header:not(.page-header--exam) > .page-header-row { display: flex; align-items: stretch !important; gap: 0 !important; }
+  .page-header-sol-cell { flex: 1 1 auto; min-width: 0; padding: 5px 12px 4.25px; display: flex; flex-direction: column; justify-content: center; }
+  .page-header-sol-title {
+    font-size: 10.5pt;
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+  .page-header-sol-cell .page-header-subtitle { font-size: 8.5pt; }
+  .page-header-sol-tag {
+    flex: none;
+    padding: 5px 14px 4.25px;
+    border-left: 0.6pt solid #111;
+    font-size: 8.8pt;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    display: flex; align-items: center;
+  }
+  .page-header:not(.page-header--exam) .page-header-academy { min-height: 0; padding: 5px 12px 4.25px; }
+  .page-header:not(.page-header--exam) .page-header-academy::after { left: 12px; right: 12px; bottom: 2px; }
+  .page-header:not(.page-header--exam) .page-header-academy-text { font-size: 10.5pt; margin-bottom: 0; }
+}

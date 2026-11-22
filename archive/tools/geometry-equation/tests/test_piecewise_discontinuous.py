@@ -75,6 +75,23 @@ class Framing(unittest.TestCase):
                 result=refused(plan) or ''
                 self.assertTrue(result.startswith(code),result)
 
+# y=x^2-x on [-1,1) with its vertex (1/2,-1/4) marked by exact fractions, then y=x on [1,3]: a required point whose x is not an integer.
+FRACTION={'family':'piecewise-discontinuous','pieces':[{'coefficients':['0','-1','1'],'domain':['-1','1'],'end':'OPEN'},{'coefficients':['0','1'],'domain':['1','3'],'start':'CLOSED'}],
+          'requiredPoints':[{'id':'V','x':'1/2','y':'-1/4'}],'axisTickValues':{'x':[],'y':[]}}
+
+class FractionalRequiredPoint(unittest.TestCase):
+    def test_a_fractional_required_point_is_read_exactly(self):
+        g=fit_overview(copy.deepcopy(FRACTION))['graphPlan'];out=produce(g)
+        self.assertIsInstance(g['requiredPoints'][0]['x'],float)
+        result=audit(g,out['svg'],out['transform'])
+        self.assertEqual(result['status'],'PASS',result['errors'])
+    def test_a_wrong_exact_x_or_y_is_still_refused(self):
+        g=fit_overview(copy.deepcopy(FRACTION))['graphPlan'];out=produce(g)
+        wrong_x=copy.deepcopy(g);wrong_x['exactCoordinates']['V'][0]='2/3'
+        self.assertIn('PIECEWISE_DISCONTINUOUS_REQUIRED_POINT_X_MISMATCH:V',audit(wrong_x,out['svg'],out['transform'])['errors'])
+        wrong_y=copy.deepcopy(g);wrong_y['requiredPoints'][0]['y']=-0.2
+        self.assertIn('PIECEWISE_DISCONTINUOUS_REQUIRED_POINT_NOT_ON_CURVE:V',audit(wrong_y,out['svg'],out['transform'])['errors'])
+
 class Observer(unittest.TestCase):
     def framed(self,plan):
         g=fit_overview(plan)['graphPlan'];return g,produce(g)

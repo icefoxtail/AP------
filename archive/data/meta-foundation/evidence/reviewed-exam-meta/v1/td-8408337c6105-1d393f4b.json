@@ -1,0 +1,318 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-8408337c6105-1d393f4b",
+  "requestSha256": "1cf0c7756ff8abf270395d87633d1c763c9dd6d36950cea011d7ef1e09bd0976",
+  "examUid": "RPM_중2_2-2_부록_대표문제다시풀기_중2",
+  "sourceArchiveFile": "types/middle/m2/RPM_중2_2-2_부록_대표문제다시풀기_중2.js",
+  "sourceBlobSha1": "1c00dd63aa701f3414c1d605e37d8fdaf03b495e",
+  "sourceRawSha256": "79fd1b73126fb033b88c3458279731d8a3341cceceac83131a51fadcdd2bd1f5",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-w-20261122",
+      "commit": "4111b9298564d9e7095216194d47737640427bfe",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8408337c6105-1d393f4b.type-ledger.json",
+        "sha256": "53b148053e4901e49190942a6231b5bce7c201f638adbaae02d54bcfa7e0fd9c"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 6,
+  "registryChanges": [],
+  "typeApprovals": 6,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 3,
+    "content": 0,
+    "stale": 3
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_333cd5f2ed0489f2f59ff55a44b217ce859106ad51553ec10e4a2ff6720ea476",
+      "sourceArchiveFile": "types/middle/m2/RPM_중2_2-2_부록_대표문제다시풀기_중2.js",
+      "sourceOrdinal": 34,
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-8408337c6105-1d393f4b",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "물의 높이비 3/4로 닮음비를 잡아 부피비를 세제곱으로 구해 전체 부피에서 추가량을 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "a5e120fb2594f60128f40d50e294025e2e74bd4b379bb60c9851ebe5cfcc7de1",
+        "judgedContentFingerprint": "57923b6a922342f27278676ad955c9b38d60c7b676669fa099ec47a9fcb637fa",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "7b5dd86a2225551a0c83eb02ccf0802c8cfd607f73417ca2667a21e9268ae646",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8408337c6105-1d393f4b.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_10d8e3393dd6c92a80ec56e1ec2100ac11360e98b7faf8cbe4d305d56ce4d802",
+      "sourceArchiveFile": "types/middle/m2/RPM_중2_2-2_부록_대표문제다시풀기_중2.js",
+      "sourceOrdinal": 35,
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-8408337c6105-1d393f4b",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "한 각과 공통각으로 삼각형의 닮음을 세우고 대응변의 비로 AB를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "717c253f30d2240d533cccb9a158a63570816b05df9d016132d0dc0fdf7b9b36",
+        "judgedContentFingerprint": "75e8072cb940ac8fd259cb913bb04622550e2435f35cb5be02a0d2713e3e4961",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "10686e0ffeae869e3f40d9c6f7ace4b59c93fad19c0f4322f2c93445a5fb242e",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8408337c6105-1d393f4b.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_8387d210f40fa5e263ef8784441f42d7c438df1d285f285323af24fefd653825",
+      "sourceArchiveFile": "types/middle/m2/RPM_중2_2-2_부록_대표문제다시풀기_중2.js",
+      "sourceOrdinal": 45,
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-8408337c6105-1d393f4b",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "삼각형의 중점연결정리로 MN=BC/2를 써서 BC를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "9a87cc06b888b269fd28b5783a8de128a0ec5dd71e40486df468d71e71825e50",
+        "judgedContentFingerprint": "129dee5cf2a5bd926dfa1cdca87a9ae27eafcd6dc71da7cbe36bbf1d0bf1459b",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "96e962fb50e7ec8ae94a91c7845df0b5b7e05f441052e43095d13c5d38aeb578",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8408337c6105-1d393f4b.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_f2884f1600bf86c6ab75a99cd16df0f51e25c2781327e38fcf59e417ec91083f",
+      "sourceArchiveFile": "types/middle/m2/RPM_중2_2-2_부록_대표문제다시풀기_중2.js",
+      "sourceOrdinal": 46,
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-8408337c6105-1d393f4b",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "분점 구조에서 선분의 길이비를 따져 BG:GF=3:1을 얻고 GF=5로부터 BG를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "f6324c8b039f6737f7d350443e27e19bb7f2a8e42689f6de75dee5fdaf34f93d",
+        "judgedContentFingerprint": "a6c6ed4d73c443c712aae36d039b6f934938008ed6f6ac2046eeb99c95e39343",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "601f67af7142e577ede9330eb47dbacef2e53104d3ca195c230bfca947d424dc",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8408337c6105-1d393f4b.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_322b070e75a8f44887164cf15265e6b8bd960d7008d8c7935b58c92d50b81afc",
+      "sourceArchiveFile": "types/middle/m2/RPM_중2_2-2_부록_대표문제다시풀기_중2.js",
+      "sourceOrdinal": 53,
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-8408337c6105-1d393f4b",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "높이 AH를 낀 두 직각삼각형에 피타고라스 정리를 적용해 HC, BH, AB를 차례로 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "b636a39baeb592a81f371c6f54917496d6b400030b88d10e4acd3968e08e1298",
+        "judgedContentFingerprint": "73c1b6ab06d606a99468b6d60eb23d3ffa67cea267bcbaf77afa966c6c139032",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "68b5dc6ba9f743905e5e35b80d37f5e2da8c982ec124bbfdd3007b609e52a3f8",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8408337c6105-1d393f4b.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_b2d9433e914e196912ee9c0bb97dcca618683d06d43a8d1ee5adb99d4f9e36d8",
+      "sourceArchiveFile": "types/middle/m2/RPM_중2_2-2_부록_대표문제다시풀기_중2.js",
+      "sourceOrdinal": 72,
+      "problemTypeKey": "PT_M2_PROBABILITY",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-8408337c6105-1d393f4b",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "독립인 두 사건의 여사건(둘 다 불합격) 확률의 곱을 1에서 빼서 적어도 한 명 합격할 확률을 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "d94fc85d3e03f9b0ba8759982a223079b4f0e91cf6f1072f70d44626982c21ec",
+        "judgedContentFingerprint": "16613b215cbd38f1ead57decdadda6600a92637a3a613fe7242abdbc355275a4",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "30fbb538727eb82fc659dad90bba48b1e0ed17823bd2e7fda7cff826c844e2e7",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8408337c6105-1d393f4b.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 6,
+  "expectedQuestionCount": 74
+}

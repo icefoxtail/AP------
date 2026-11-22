@@ -1317,6 +1317,65 @@ def _audit_id_marker(root,element_id,point,policy,transform):
     if 2*radius*transform['displayScale']<policy['minimumReferenceMarkerDiameterCssPx']:errors.append('GRAPH_REFERENCE_MARKER_BELOW_PROFILE_FLOOR:'+element_id)
     return errors,observed
 
+def _glyph_digits(value):
+    return [format(ord(ch), 'X') for ch in str(abs(int(value)))]
+
+def _glyph_fraction(value):
+    """The glyphs of a non-negative exact number: its digits, or the numerator then the denominator of a stacked fraction."""
+    value = Fraction(abs(value))
+    return _glyph_digits(value.numerator) + (_glyph_digits(value.denominator) if value.denominator != 1 else [])
+
+def _exp_formula_glyphs(a, k, c, base, shift):
+    """(Worked out from the exact numbers, not from the engine's label text.) The glyph codes, in reading order, that the printed formula y=a*b^(k*(x-p))+c must show.
+    A factor and an integer base never touch (their digits would read as one number), so a multiplication dot stands between them; a bracketed fraction or root base,
+    or e, follows its factor directly; the exponent is a superscript without brackets (x+1, 2x, 2(x+1), x/2, -x)."""
+    X, PLUS, MINUS, DOT, OPEN, CLOSE = '1D465', '2B', '2212', '22C5', '28', '29'
+    out = ['1D466', '3D']
+    if a == -1:
+        out.append(MINUS)
+    elif a != 1:
+        out += ([MINUS] if a < 0 else []) + _glyph_fraction(a)
+    kind = base['kind']
+    if a not in (1, -1) and kind == 'INTEGER':
+        out.append(DOT)
+    if kind == 'NATURAL':
+        out.append('1D452')
+    elif kind == 'INTEGER':
+        out += _glyph_digits(base['exact'])
+    elif kind == 'RATIONAL':
+        ratio = Fraction(base['text'])
+        out += [OPEN] + _glyph_digits(ratio.numerator) + _glyph_digits(ratio.denominator) + [CLOSE]
+    else:
+        out += [OPEN] + _glyph_digits(int(base['text'][5:-1])) + ['221A', CLOSE]
+    inner = [X] if shift == 0 else [X, (PLUS if shift < 0 else MINUS)] + _glyph_fraction(shift)
+    bracketed = [OPEN] + inner + [CLOSE] if shift != 0 else inner
+    if k == 1:
+        exponent = inner
+    elif k == -1:
+        exponent = [MINUS] + bracketed
+    else:
+        magnitude = abs(k)
+        sign = [MINUS] if k < 0 else []
+        if magnitude.denominator == 1:
+            exponent = sign + _glyph_digits(magnitude.numerator) + bracketed
+        elif magnitude.numerator == 1 and k > 0:
+            exponent = inner + _glyph_digits(magnitude.denominator)
+        else:
+            exponent = sign + ([] if magnitude.numerator == 1 else _glyph_digits(magnitude.numerator)) + bracketed + _glyph_digits(magnitude.denominator)
+    out += exponent
+    if c != 0:
+        out += [PLUS if c > 0 else MINUS] + _glyph_fraction(c)
+    return out
+
+def _exp_formula_label_errors(root, label_id, a, k, c, base, shift):
+    """The drawn formula label of an exponential curve against the glyphs worked out from its exact numbers (EXPONENTIAL_FORMULA_LABEL_MISMATCH).
+    A label that is not drawn (hidden, or a name only) is not an error here."""
+    nodes = [node for node in root.iter() if node.get('id') == label_id and node.tag.split('}')[-1] == 'g']
+    if len(nodes) != 1:
+        return []
+    want = _exp_formula_glyphs(Fraction(a), Fraction(k), Fraction(c), base, Fraction(shift))
+    return [] if _ov_glyph_codes(nodes[0]) == want else ['EXPONENTIAL_FORMULA_LABEL_MISMATCH:' + label_id]
+
 def exponential_base_overview_audit(plan,svg,transform):
     errors=[];unsupported=[]
     try:
@@ -1333,7 +1392,7 @@ def exponential_base_overview_audit(plan,svg,transform):
         if plan.get('overviewPolicy')!='EXPONENTIAL_BASE_OVERVIEW_v1':errors.append('EXPONENTIAL_OVERVIEW_POLICY_REQUIRED')
         if not xmin<float(shift)<xmax:errors.append('EXPONENTIAL_REFERENCE_OUTSIDE_VIEWPORT')
         if set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not math.isfinite(value) for value in transform.values()) or min(transform['sx'],transform['sy'],transform['displayScale'])<=0:return {'status':'FAIL','errors':['INVALID_OBSERVED_TRANSFORM']}
-        root=ET.fromstring(svg);points,point_errors=_observed_svg_points(root,transform);errors.extend(point_errors)
+        root=ET.fromstring(svg);points,point_errors=_observed_svg_points(root,transform);errors.extend(point_errors);errors.extend(_exp_formula_label_errors(root,'formula',a,k,c,base,shift))
         if points:
             points=sorted(points,key=lambda point:point[0]);scale=transform['sy']*transform['displayScale'];xscale=transform['sx']*transform['displayScale'];x_tol=.35/max(1e-12,xscale)
             if abs(points[0][0]-lo)>x_tol or abs(points[-1][0]-hi)>x_tol:errors.append('EXPONENTIAL_DRAW_DOMAIN_COVERAGE_FAIL')
@@ -1521,6 +1580,8 @@ def exp_log_pair_overview_audit(plan,svg,transform,model=False):
         if set(branches)!={'REF_'+row['id'] for row in expected_rows}:errors.append('EXP_LOG_PAIR_CURVE_BRANCH_INVENTORY_MISMATCH')
         xscale=transform['sx']*transform['displayScale'];yscale=transform['sy']*transform['displayScale']
         for row in expected_rows:
+            if row['family']=='exponential-affine' and not any(isinstance(item,dict) and item.get('id')==row['id'] and item.get('formulaLabel')=='NAME' for item in plan.get('curves',[])):
+                errors.extend(_exp_formula_label_errors(root,'formula-'+str(row['id']),row['_coefficients'][0],row['_coefficients'][1],row['_coefficients'][2],row['_base'],row['_shift']))
             curves=branches.get('REF_'+row['id'],[])
             if len(curves)!=1:errors.append('EXP_LOG_PAIR_CURVE_BRANCH_MISSING_OR_DUPLICATED:'+str(row['id']));continue
             points=sorted(curves[0],key=lambda point:point[0]);lo,hi=row['domain'];x_tol=.35/max(1e-12,xscale);y_tol=.35/max(1e-12,yscale)
@@ -2701,7 +2762,14 @@ def _pd_audit_curve(plan,svg,transform,prefix='',shared_mode=False):
                 if _pd_defines(piece,value):return _pd_value(piece,value)
             return None
         for point in required:
-            at=_pp_coeff(str(point['x']));near=lambda value:abs(float(value)-point['y'])<=1e-8*max(1,abs(point['y']))
+            # A required point's x is a float in the framed plan (1/2 -> 0.5); its exact text is the plan's exactCoordinates entry (the framer checked it against the float), and the observer
+            # reads that exact value and checks the float against it, so a fraction or a root is compared exactly and never through a decimal.
+            pair=(plan.get('exactCoordinates') or {}).get(point.get('id'))
+            if isinstance(pair,list) and len(pair)==2:
+                at=_pp_coeff(str(pair[0]))
+                if abs(float(at)-point['x'])>1e-9*max(1,abs(point['x'])):errors.append('PIECEWISE_DISCONTINUOUS_REQUIRED_POINT_X_MISMATCH:'+str(point.get('id')))
+            else:at=_pp_coeff(str(point['x']))
+            near=lambda value:abs(float(value)-point['y'])<=1e-8*max(1,abs(point['y']))
             value=defined_value(at)
             if not ((value is not None and near(value)) or any(_pp_same(at,at_value) and near(declared) for at_value,declared in jumps)):errors.append('PIECEWISE_DISCONTINUOUS_REQUIRED_POINT_NOT_ON_CURVE:'+str(point.get('id')))
         for at,value,_ in extrema:
@@ -2988,7 +3056,21 @@ def _ov_label_codes(text):
     """The glyph codes (a set of acceptable hex codes per glyph, in reading order) of a free equation text: letters are themselves or their italic math code, - is the minus
     sign; spaces, * (an implicit product) and the / of a stacked fraction or the ^ of a power draw no glyph of their own. (EXT-20261109-c) A Greek letter is its italic code and
     the root sign draws its radicand first and the radical glyph U+221A after it (the brackets of sqrt(...) are not drawn)."""
-    return _ov_codes_of(_ov_drop_fraction_brackets(text.replace(' ','')))
+    return _ov_codes_of(_ov_drop_exponent_brackets(_ov_drop_fraction_brackets(text.replace(' ',''))))
+
+def _ov_drop_exponent_brackets(text):
+    """A bracketed exponent is a superscript and its brackets are not drawn (2^(x+1) is 2 with x+1 raised; e^(-x)), except a bracketed bare number (x^(2), x^(-1)),
+    which keeps them."""
+    drop=set()
+    for at,ch in enumerate(text):
+        if ch!='^' or at+1>=len(text) or text[at+1]!='(':continue
+        depth=0;close=None
+        for index in range(at+1,len(text)):
+            depth+=(text[index]=='(')-(text[index]==')')
+            if depth==0:close=index;break
+        if close is None:continue
+        if not re.fullmatch(r'[-+−]?[0-9]+(?:[.][0-9]+)?',text[at+2:close]):drop|={at+1,close}
+    return ''.join(ch for index,ch in enumerate(text) if index not in drop)
 
 def _ov_codes_of(text):
     out=[];index=0
@@ -3316,12 +3398,64 @@ def _ov_angle_marks(plan,raw,points,by_line):
         if any(not _ov_zero(members[0][0]*other[1]-other[0]*members[0][1]) for other in members[1:]):raise ValueError('GRAPH_EQUAL_ANGLES_MISMATCH')
     return rows
 
+def _ov_asymptote_values(plan):
+    """(Independent of the framing code.) The exact asymptotes, not an axis, of the exponential, logarithmic and rational curves of a plan: [('h',y)|('v',x)]."""
+    family=plan.get('family');rows=[]
+    if family in ('exponential-affine','logarithmic-affine','rational'):rows.append((family,plan))
+    elif family=='exp-log-pair':
+        rows+=[(curve.get('family'),curve) for curve in plan.get('curves') or [] if isinstance(curve,dict)]
+    elif family=='multi-curve':
+        names={'EXPONENTIAL':'exponential-affine','LOGARITHMIC':'logarithmic-affine','RATIONAL':'rational'}
+        rows+=[(names.get(curve.get('kind')),curve) for curve in plan.get('curves') or [] if isinstance(curve,dict)]
+    out=[]
+    for name,row in rows:
+        try:
+            exact=lambda items:[S.Rational(Fraction(str(value))) for value in (items or [])]
+            fold=(lambda value:abs(value)) if row.get('abs') is True else (lambda value:value)   # y=|f(x)| approaches |C|
+            if name=='exponential-affine':
+                c=exact(row.get('coefficients'))
+                if len(c)==3:out.append(('h',fold(c[2])))
+            elif name=='logarithmic-affine':
+                c=exact(row.get('coefficients'))
+                if len(c)==4 and c[1]!=0:out.append(('v',-c[2]/c[1]))
+            elif name=='rational':
+                n=exact(row.get('numerator'));d=exact(row.get('denominator'))
+                if len(d)==2 and d[1]!=0:
+                    out.append(('v',-d[0]/d[1]))
+                    if len(n)==2:out.append(('h',fold(n[1]/d[1])))
+        except (ValueError,TypeError,ZeroDivisionError):continue
+    return [item for item in out if item[1]!=0]
+
+def _ov_mark_asymptote_lines(plan,lines):
+    """An overlay line with no style and no colour that lies on an asymptote of a drawn curve is read as an asymptote line: dashed, and thinner than an axis."""
+    wanted=_ov_asymptote_values(plan)
+    for line in lines:
+        if 'style' in line or 'color' in line:continue
+        if line['kind']=='VERTICAL':hit=any(axis=='v' and value==line['x'] for axis,value in wanted)
+        else:hit=line['slope']==0 and any(axis=='h' and value==line['intercept'] for axis,value in wanted)
+        if hit:line['style']='DASHED';line['asymptote']=True
+
+def _ov_open_endpoints(plan):
+    """(Independent of the framing code.) [(x,y)]: the ends of the source interval the plan declares OPEN, with the curve's limit there."""
+    domain=plan.get('sourceDomain')
+    if not isinstance(domain,dict) or domain.get('kind')!='INTERVAL':return []
+    bounds=domain.get('range');states=domain.get('states')
+    if not (isinstance(bounds,list) and len(bounds)==2 and isinstance(states,list) and len(states)==2):return []
+    closed={**plan,'sourceDomain':{**domain,'states':['CLOSED','CLOSED']}};out=[]
+    for value,state in zip(bounds,states):
+        if state!='OPEN':continue
+        try:
+            x=_ov_reader(value);out.append((x,_ov_curve_value(closed,x)))
+        except (ValueError,TypeError,KeyError):continue
+    return out
+
 def _ov_expected(plan):
     """Every overlay element recomputed from the raw plan: points; lines; segments, guides and polygons."""
     raw=plan.get('overlays')
     if raw is None:return None
     if not isinstance(raw,dict):raise ValueError('OVERLAY_PLAN_INVALID')
     lines=[_ov_line(entry) for entry in raw.get('lines',[])]
+    _ov_mark_asymptote_lines(plan,lines)
     by_line={line['id']:line for line in lines}
     circles={};circle_fills={}
     for entry in raw.get('circles',[]) or []:
@@ -3377,6 +3511,7 @@ def _ov_expected(plan):
             ring=circles.get(entry['onCircle'])
             if ring is None or abs(float(S.N((x-ring[0])**2+(y-ring[1])**2-ring[2],40)))>1e-12:raise ValueError('OVERLAY_POINT_NOT_ON_CIRCLE')
         points[ident]=(x,y)
+        if 'marker' not in entry and any(x==end[0] and y==end[1] for end in _ov_open_endpoints(plan)):point_looks[ident]['open']=True
         if entry.get('unnamed') is True:unnamed.add(ident)
         if entry.get('coordinates') is True:
             if not (_ov_surd_form(x) and _ov_surd_form(y)):raise ValueError('COORDINATE_SURD_FORM_UNSUPPORTED')
@@ -3492,13 +3627,13 @@ def _ov_surd_terms(value):
     return ([(a,None)] if a else [])+[(int(q*d),int(radicand))],int(d)
 
 def _ov_surd_form(value):
-    value=S.sympify(value)
+    value=S.expand(S.radsimp(S.sympify(value)))   # an exact curve value such as (-3-sqrt(5))**2+6*(-3-sqrt(5))+4 is the rational 0 only once expanded
     return value.is_Rational or _ov_surd_terms(value) is not None
 
 def _ov_coordinate_codes(value):
     """(G5b) Glyph codes of a coordinate written as an integer, a fraction or p+q*sqrt(r) over a denominator: terms in reading order (+ is U+002B, - is U+2212), the radicand
     digits before the radical U+221A (MathJax draws the radicand first), then the denominator digits (a stacked fraction reads numerator first)."""
-    value=S.sympify(value)
+    value=S.expand(S.radsimp(S.sympify(value)))
     if value.is_Rational:return _ov_int_codes(value)
     rows=_ov_surd_terms(value)
     if rows is None:raise ValueError('COORDINATE_SURD_FORM_UNSUPPORTED')
@@ -3738,6 +3873,11 @@ def overlays_audit(plan,svg,transform):
                 # style (E31): a DASHED overlay line carries a stroke-dasharray, a SOLID one (the default) none
                 if (lines[obj_id].get('stroke-dasharray') is not None)!=(line.get('style')=='DASHED'):errors.append('OVERLAY_LINE_STYLE_MISMATCH:'+str(line['id']))
                 errors+=_ov_color_errors(lines[obj_id],line.get('color'),'OVERLAY_COLOR_MISMATCH:'+str(line['id']))
+                if line.get('asymptote'):
+                    # an asymptote line is thinner than an axis (1.2): it must not read as one
+                    try:weight=float(lines[obj_id].get('stroke-width'))
+                    except (TypeError,ValueError):weight=None
+                    if weight is None or weight>1.0+1e-9:errors.append('OVERLAY_ASYMPTOTE_LINE_TOO_HEAVY:'+str(line['id']))
         for ident,(x,y) in expected['points'].items():
             claimed.add(ident);got=read_circle(ident)
             if got is None:errors.append('OVERLAY_POINT_MISSING:'+ident)
@@ -6386,6 +6526,14 @@ def multi_curve_label_audit(plan,svg,transform):
     groups={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='g' and node.get('id')}
     source={entry['id']:entry for entry in plan['curves'] if isinstance(entry,dict) and isinstance(entry.get('id'),str)}
     ids=list(source)
+    for entry in source.values():
+        # An exponential curve without its own label wears the engine's formula: read it against the glyphs its exact numbers need.
+        if entry.get('kind')!='EXPONENTIAL' or entry.get('label') is not None or entry.get('abs') or not isinstance(entry.get('coefficients'),list) or len(entry['coefficients'])!=3:continue
+        try:
+            a,k,c=(_piecewise_rational(value,'INVALID_EXPONENTIAL_COEFFICIENT') for value in entry['coefficients'])
+            exp_base=_exp_log_observer_base(entry.get('base'),'EXPONENTIAL');shift=_piecewise_rational(entry.get('shiftX','0'),'INVALID_EXPONENTIAL_SHIFT')
+        except (ValueError,TypeError,KeyError):continue
+        errors.extend(_exp_formula_label_errors(root,'curve-'+entry['id']+'-equation',a,k,c,exp_base,shift))
     inventory=plan.get('multiCurveFeatures')
     rows=[row for row in (inventory.get('curves') if isinstance(inventory,dict) else None) or []
           if isinstance(row,dict) and isinstance(row.get('id'),str)]

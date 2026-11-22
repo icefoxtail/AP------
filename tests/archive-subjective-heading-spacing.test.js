@@ -13,7 +13,9 @@ const engineFiles = [
 
 function loadFormatter(engineFile) {
   const source = fs.readFileSync(path.join(root, engineFile), 'utf8');
-  const start = source.indexOf('function applyQuestionContentBreaks');
+  // 엔진마다 포매터 묶음의 맨 앞 함수가 다르다(archive/engine.html은 공용 render-text.js로 옮겨 splitSubjectiveHeadingSource부터).
+  const legacyStart = source.indexOf('function applyQuestionContentBreaks');
+  const start = legacyStart >= 0 ? legacyStart : source.indexOf('function splitSubjectiveHeadingSource');
   const end = source.indexOf('function renderQuestionImageHTML', start);
   assert.ok(start >= 0, `${engineFile}: subjective formatter section was not found`);
   assert.ok(end > start, `${engineFile}: subjective formatter section boundary was not found`);

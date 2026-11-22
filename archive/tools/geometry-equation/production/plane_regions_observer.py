@@ -20,9 +20,25 @@ HATCH_COVERAGE=0.5      # the hatch must cover at least this share of the region
 
 LEADER_BOUNDARY_TOLERANCE=1.5   # svg px: a region label's leader starts on the region's boundary (the dense outline of an arc lies a hair inside the true circle)
 LEADER_PROBE=3.0                # svg px: just beyond the start the leader is already outside its own region
+LEADER_DOT_CLEAR=8.0            # svg px: the dot a region value's leader starts on stands at least this far inside its region's boundary (the engine keeps 9; a hair of slack for the dense arc outline)
+LEADER_DOT_STROKE=5.0           # svg px: and at least this far from every drawn stroke (the engine keeps 7)
+LEADER_DOT_RADIUS=(1.5,3.5)     # svg px: the dot's radius
+LEADER_SIDE_SPAN=(0.05,0.95)    # the stretch of a drawn side beside which a value label reads as the side's length (not the region's value); past its ends it does not
+LEADER_SIDE_NEAR=48.0           # svg px: 'right beside' = the label box within this of the side
 REGION_LABEL_AT_SLACK=26.0      # svg px: a label placed at labelAt stands within this distance of it (the engine looks within 24 px)
 REGION_WEIGHT_STROKE_EM=0.06    # a plain-text name/value label is drawn with this outline stroke (em), the weight of a math label (this observer's own copy)
 REGION_UNIT_POWERS={'2':'\u00b2','3':'\u00b3'}
+
+def named_value_drawn(row,node):
+    """True when the plan gives the value a name or an area / volume unit AND the drawn label really carries that text (read from the group): then it reads as the region's value beside any boundary.
+    A bare number, a length unit (cm, m) or a letter value does not; neither does a label whose name or unit was left out of the drawing."""
+    expected=region_label_text(row)
+    if expected is None or node is None or node.get('data-text')!=expected:return False
+    powered=re.fullmatch(r'[a-z]+\^[23]',str(row.get('unit','')))is not None
+    name=row.get('labelName')
+    # a name alone: not one of a segment or arc (two capitals, AB=6\u03c0) or a length letter (l=6), which read as lengths
+    named=isinstance(name,str) and name.strip()!='' and re.fullmatch(r'[A-Z]{2}|[a-z]',name.strip()) is None
+    return named or powered
 
 def region_label_text(row):
     """The exact text of a name/unit region label as the plan says it (name=value+unit), or None for a plain region label. Written here from the declared rule."""
@@ -241,6 +257,80 @@ def audit_equal_areas(root,marks,peer_point,by_mark,errors,observations):
         for other,index in member_of.items():
             if other!=oid and drawn.get(other)==fill and member_of.get(oid)!=index:errors.append('REGION_COLOR_GROUP_AMBIGUOUS:'+oid+'&'+other)
 
+def drawn_boundaries(root):
+    """[(id, points)] every drawn boundary of the final SVG as ONE polyline: a straight line, an arc or curve (their polyline), a circle (its ring)."""
+    found=[]
+    for n in root.iter():
+        role=n.get('data-role');t=tag(n)
+        try:
+            if t=='line' and role=='line':found.append((n.get('id'),[(float(n.get('x1')),float(n.get('y1'))),(float(n.get('x2')),float(n.get('y2')))]))
+            elif t=='polyline' and role in {'circularArc','curve'}:
+                raw=[float(v) for part in n.get('points','').split() for v in part.split(',')]
+                found.append((n.get('id'),[(raw[k],raw[k+1]) for k in range(0,len(raw)-1,2)]))
+            elif t=='circle' and role=='circle':
+                cx,cy,r=float(n.get('cx')),float(n.get('cy')),float(n.get('r'))
+                found.append((n.get('id'),[(cx+r*math.cos(k*math.pi/36),cy+r*math.sin(k*math.pi/36)) for k in range(73)]))
+        except (TypeError,ValueError):continue
+    return [(sid,pts) for sid,pts in found if len(pts)>=2]
+
+LEADER_STRETCH_TOLERANCE=2.5      # svg px: a point of a drawn circle or curve lies on the region's boundary when it is this near it
+
+def closed_whole(points,polygons):
+    """True when a drawn closed curve (a circle's ring) is this region's boundary all round (a disk): no ends, so only the distance to it counts."""
+    if len(points)<=3 or norm(sub(points[0],points[-1]))>=1e-6:return False
+    edges=[(poly[i],poly[(i+1)%len(poly)]) for poly in polygons for i in range(len(poly))]
+    return bool(edges) and all(min(point_segment_distance(p,a,b) for a,b in edges)<=LEADER_STRETCH_TOLERANCE for p in points[:-1])
+
+def region_stretch(points,at,polygons):
+    """Of a drawn circle or curve, only the stretch that is THIS region's boundary and holds the point `at` (a sector's arc out of the whole circle): a closed circle has no ends, so measured whole,
+    every place beside it would lie within 5-95 % of it. A straight 2-point side stays whole."""
+    if len(points)<=2:return points
+    edges=[(poly[i],poly[(i+1)%len(poly)]) for poly in polygons for i in range(len(poly))]
+    if not edges:return points
+    closed=norm(sub(points[0],points[-1]))<1e-6
+    ring=points[:-1] if closed else list(points);n=len(ring)
+    on=[min(point_segment_distance(p,a,b) for a,b in edges)<=LEADER_STRETCH_TOLERANCE for p in ring]
+    if not any(on):return points
+    near=min((k for k in range(n) if on[k]),key=lambda k:norm(sub(ring[k],at)))
+    start=end=near
+    while on[(start-1)%n] and (start-1)%n!=end and (closed or start-1>=0):start=(start-1)%n
+    while on[(end+1)%n] and (end+1)%n!=start and (closed or end+1<n):end=(end+1)%n
+    run=[ring[start]];k=start
+    while k!=end:
+        k=(k+1)%n;run.append(ring[k])
+    return run if len(run)>=2 else [ring[near],ring[(near+1)%n] if closed or near+1<n else ring[near-1]]
+
+def boundary_position(points,p):
+    """(fraction of the boundary's length at its point nearest to p, that distance)."""
+    total=sum(norm(sub(b,a)) for a,b in zip(points,points[1:]))
+    if total<1e-9:return 0.0,norm(sub(p,points[0]))
+    best=(float('inf'),0.0);run=0.0
+    for a,b in zip(points,points[1:]):
+        length=norm(sub(b,a))
+        if length>1e-12:
+            u=max(0.0,min(1.0,((p[0]-a[0])*(b[0]-a[0])+(p[1]-a[1])*(b[1]-a[1]))/(length*length)))
+            d=norm((p[0]-a[0]-u*(b[0]-a[0]),p[1]-a[1]-u*(b[1]-a[1])))
+            if d<best[0]:best=(d,run+u*length)
+        run+=length
+    return best[1]/total,best[0]
+
+LEADER_CIRCLE_TOUCH=1.5          # svg px: a circle touching the region's boundary (an incircle) still lies inside it; a region whose boundary follows the circle all round is that circle
+
+def circles_inside(root,polygons):
+    """[(cx,cy,r)] the drawn circles (final SVG) that lie wholly inside this region and are not the region itself: a value or dot standing inside one reads as that circle's area."""
+    edges=[(poly[i],poly[(i+1)%len(poly)]) for poly in polygons for i in range(len(poly))]
+    found=[]
+    for n in root.iter():
+        if tag(n)!='circle' or n.get('data-role')!='circle':continue
+        try:cx,cy,r=float(n.get('cx')),float(n.get('cy')),float(n.get('r'))
+        except (TypeError,ValueError):continue
+        if r<=0 or not edges or area_state((cx,cy),polygons)!=1:continue
+        if min(point_segment_distance((cx,cy),a,b) for a,b in edges)<r-LEADER_CIRCLE_TOUCH:continue
+        ring=[(cx+r*math.cos(k*math.pi/18),cy+r*math.sin(k*math.pi/18)) for k in range(36)]
+        if sum(1 for q in ring if min(point_segment_distance(q,a,b) for a,b in edges)<=LEADER_CIRCLE_TOUCH)>=0.9*len(ring):continue
+        found.append((cx,cy,r))
+    return found
+
 def audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,observations,label_boxes=None,leaders=None,leader_ok=None,strokes=None):
     label_boxes=label_boxes or {}
     rows=marks.get('regions',[])
@@ -355,28 +445,63 @@ def audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,obser
         expected=region_label_text(row)
         if expected is None and row.get('labelWeight')=='MATH' and row.get('labelKind')=='TEXT':expected=str(row.get('label'))    # a plain-text region name drawn in the weight of the math labels
         if expected is not None:audit_named_label(by_id.get(oid+'-label'),oid,expected,errors)
-        if placement=='LEADER' and leader is None:errors.append('REGION_LABEL_LEADER_MISSING:'+oid)
+        if placement=='LEADER' and leader is None and not (record['ok'] and all(area_state(corner,record['polygons'])==1 for corner in corners)):errors.append('REGION_LABEL_LEADER_MISSING:'+oid)
         elif placement=='AUTO' and leader is not None:errors.append('REGION_LABEL_LEADER_UNEXPECTED:'+oid)
         if leader is not None and record['ok']:
             # the label stands outside every region; its leader starts on this region's boundary and runs away from it, never entering a region or crossing a stroke
             if any(area_state(point,other['polygons'])==1 for other in records if other['ok'] for point in probes):errors.append('REGION_LABEL_NOT_OUTSIDE:'+oid)
             a=(float(leader.get('x1')),float(leader.get('y1')));b=(float(leader.get('x2')),float(leader.get('y2')));length=norm(sub(b,a))
             boundary=lambda q:min(point_segment_distance(q,poly[i],poly[(i+1)%len(poly)]) for poly in record['polygons'] for i in range(len(poly)))<=LEADER_BOUNDARY_TOLERANCE
-            if leader_ok is not None:leader_ok(oid+'-label',box,boundary)
+            # the value's leader starts on a dot INSIDE this region (a leader from the boundary reads as the length of the side or radius it touches): the dot is drawn, lies well inside
+            # this region and in no other one, clear of every stroke; the leader leaves the region once through its boundary and never comes back, enters no other region and
+            # crosses no stroke except that boundary where it leaves
+            if leader_ok is not None:leader_ok(oid+'-label',box,lambda q:True)
+            dot=next((n for n in elements if tag(n)=='circle' and n.get('data-role')=='leader-dot' and n.get('data-owner-label')==oid+'-label'),None)
+            try:dot_ok=dot is not None and norm(sub((float(dot.get('cx')),float(dot.get('cy'))),a))<=0.3 and LEADER_DOT_RADIUS[0]<=float(dot.get('r'))<=LEADER_DOT_RADIUS[1]
+            except (TypeError,ValueError):dot_ok=False
+            if not dot_ok:errors.append('REGION_LEADER_DOT_MISSING:'+oid)
+            if area_state(a,record['polygons'],1e-6)!=1:errors.append('REGION_LEADER_NOT_FROM_INSIDE:'+oid)
+            else:
+                clearance=min(point_segment_distance(a,poly[i],poly[(i+1)%len(poly)]) for poly in record['polygons'] for i in range(len(poly)))
+                if clearance<LEADER_DOT_CLEAR:errors.append('REGION_LEADER_START_NEAR_BOUNDARY:'+oid)
+            if any(area_state(a,other['polygons'])!=-1 for other in records if other is not record and other['ok']):errors.append('REGION_LEADER_START_IN_OTHER_REGION:'+oid)
+            if any(point_segment_distance(a,q0,q1)<LEADER_DOT_STROKE for sid,pts in (strokes or []) for q0,q1 in zip(pts,pts[1:])):errors.append('REGION_LEADER_START_ON_STROKE:'+oid)
+            if any(math.dist(a,(cx,cy))<r for cx,cy,r in circles_inside(root,record['polygons'])):errors.append('REGION_LEADER_START_IN_INNER_CIRCLE:'+oid)   # the dot would read as the area of the circle inside the region
             if length>1e-9:
                 unit=((b[0]-a[0])/length,(b[1]-a[1])/length)
-                if area_state((a[0]+unit[0]*LEADER_PROBE,a[1]+unit[1]*LEADER_PROBE),record['polygons'])!=-1:errors.append('REGION_LEADER_ENTERS_REGION:'+oid)
-                steps=max(2,int(length//4))
+                steps=max(2,int(length//2));left=False;came_back=False
                 for k in range(steps+1):
                     d=length*k/steps
-                    if d<LEADER_PROBE:continue
                     point=(a[0]+unit[0]*d,a[1]+unit[1]*d)
-                    if any(area_state(point,other['polygons'])==1 for other in records if other['ok']):errors.append('REGION_LEADER_IN_REGION:'+oid);break
+                    inside_own=area_state(point,record['polygons'])==1
+                    if not inside_own and area_state(point,record['polygons'])==-1:left=True
+                    elif inside_own and left:came_back=True
+                    if d>=LEADER_PROBE and any(area_state(point,other['polygons'])==1 for other in records if other is not record and other['ok']):errors.append('REGION_LEADER_IN_REGION:'+oid);break
+                if not left:errors.append('REGION_LEADER_NOT_LEAVING:'+oid)
+                else:
+                    # where the leader leaves the region: the drawn side it crosses there must not be the one the label stands beside (middle zone)
+                    exit_at=next((p for p in ((a[0]+unit[0]*length*k/steps,a[1]+unit[1]*length*k/steps) for k in range(steps+1)) if area_state(p,record['polygons'])==-1),None)
+                    # each WHOLE drawn boundary (a straight side, an arc, a curve, a circle) is one side: its length is what a value beside it reads as
+                    for sid,pts in ([] if named_value_drawn(row,by_id.get(oid+'-label')) else drawn_boundaries(root)):
+                        if exit_at is None or boundary_position(pts,exit_at)[1]>LEADER_BOUNDARY_TOLERANCE+2.0:continue
+                        if closed_whole(pts,record['polygons']):
+                            if any(boundary_position(pts,(box[0]+box[2]*i/4,box[1]+box[3]*j/2))[1]<=LEADER_SIDE_NEAR for i in range(5) for j in range(3)):errors.append('REGION_LEADER_READS_AS_SIDE:'+oid+':'+str(sid))
+                            continue
+                        pts=region_stretch(pts,exit_at,record['polygons'])
+                        close=[t for t,d in (boundary_position(pts,(box[0]+box[2]*i/4,box[1]+box[3]*j/2)) for i in range(5) for j in range(3)) if d<=LEADER_SIDE_NEAR]
+                        if close and max(close)>LEADER_SIDE_SPAN[0] and min(close)<LEADER_SIDE_SPAN[1]:errors.append('REGION_LEADER_READS_AS_SIDE:'+oid+':'+str(sid))
+                if came_back:errors.append('REGION_LEADER_ENTERS_REGION:'+oid)
                 for sid,pts in (strokes or []):
-                    if any(properly_cross(a,b,q0,q1) for q0,q1 in zip(pts,pts[1:])):errors.append('REGION_LEADER_CROSSES:'+oid+':'+str(sid))
+                    for q0,q1 in zip(pts,pts[1:]):
+                        if not properly_cross(a,b,q0,q1):continue
+                        u=sub(b,a);v=sub(q1,q0);den=u[0]*v[1]-u[1]*v[0];w=sub(q0,a);t=(w[0]*v[1]-w[1]*v[0])/den
+                        hit=(a[0]+u[0]*t,a[1]+u[1]*t)
+                        # the one crossing allowed is the leader leaving this region through its own boundary
+                        if not boundary(hit):errors.append('REGION_LEADER_CROSSES:'+oid+':'+str(sid))
             observations.append({'id':oid,'type':'REGION_LABEL_LEADER','lengthPx':length})
         else:
             if record['ok'] and not all(area_state(corner,record['polygons'])==1 for corner in corners):errors.append('REGION_LABEL_OUTSIDE:'+oid)
+            if record['ok'] and placement in {'LEADER','AUTO_LEADER'} and any(math.dist(centre,(cx,cy))<r for cx,cy,r in circles_inside(root,record['polygons'])):errors.append('REGION_VALUE_IN_INNER_CIRCLE:'+oid)
             if record['ok']:
                 for other in records:
                     if other is record or not other['ok']:continue

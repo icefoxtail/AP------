@@ -189,6 +189,12 @@ def serialize(node,mode='tex'):
             wrap=low or (equal and ((right_side and op in {'-','/','='}) or (op=='^' and not right_side)))
             return '('+text+')' if wrap else text
         if op=='^':
+            # A bracketed exponent that is more than a bare number (2^(x), 2^(x+1), e^(-x)) is a superscript: the brackets are not drawn (2^{x+1}).
+            # A bare number in brackets (x^(2)) keeps the brackets it always had.
+            if right.kind=='group' and mode in {'tex','svg'}:
+                inner=right.args[0]
+                if inner.kind=='unary':inner=inner.args[0]
+                if inner.kind!='number':right=right.args[0]
             if mode=='tex':return operand(left)+'^{'+s(right)+'}'
             if mode=='svg':return operand(left)+'<tspan baseline-shift="super" font-size="70%">'+s(right)+'</tspan>'
             return operand(left)+'^('+s(right)+')'
