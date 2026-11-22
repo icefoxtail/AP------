@@ -1058,7 +1058,7 @@ window.questionBank = [
         "reason": "일곱 점의 합은 3이 아니라 7입니다."
       }
     ],
-    "solutionImage": "assets/solutions/19_제일고_2학기_중간_고2_수학II/q16_iteration_kinks.svg",
+    "solutionImage": "assets/images/19_제일고_2학기_중간_고2_수학II/q16_iteration_kinks.svg",
     "questionUid": "qid_v1_bbcc5921ec16e4a68f58738001d3aa9476b394f6c7cbc10c564c7f6b1b38eef9",
     "rpmL3": "미분가능성과 연속",
     "rpmL4": "그래프에서 판정"

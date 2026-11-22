@@ -862,7 +862,7 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/q17-solution.svg"
+    "solutionImage": "assets/images/20_제일고_2학기_중간_고2_확률과통계/q17-solution.svg"
   },
   {
     "id": 18,
