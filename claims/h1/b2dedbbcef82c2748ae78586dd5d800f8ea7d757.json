@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane20",
   "workerBranch": "work/solution-upgrade-lane-20-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "1mid",
@@ -13,18 +13,33 @@
   "sourceQuestionCount": 20,
   "readQuestionCount": 20,
   "decisionCounts": {
-    "KEEP": 12,
+    "KEEP": 17,
     "UPGRADE": 0,
-    "HOLD": 8,
+    "HOLD": 3,
     "UNREAD": 0
   },
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/24_매산고_1학기_중간_고1_기출_DEEP_AUDIT.md",
-  "nextQid": 5,
+  "nextQid": null,
   "examAuditComplete": true,
-  "examDraftComplete": false,
-  "remainingWork": [
-    "HOLD q5,q8,q10,q13,q14,q15,q19,q20 need verification",
-    "Golden/Negative/render NOT_RUN"
+  "examDraftComplete": true,
+  "remainingWork": [],
+  "auditCommitSha": "d958d339d2160ec99c2610e836095eea92a8507c",
+  "draftedQuestionIds": [],
+  "visualStatus": "VISUAL_HOLD",
+  "visualHoldQuestionIds": [
+    6,
+    11,
+    12,
+    14,
+    15,
+    16,
+    17,
+    20
   ],
-  "auditCommitSha": "d958d339d2160ec99c2610e836095eea92a8507c"
+  "sourceConditionHoldQuestionIds": [
+    14,
+    15,
+    20
+  ],
+  "auditCommit": "2d7d9424a0612950a7624f9c4c4dfb6c24c5066d"
 }
