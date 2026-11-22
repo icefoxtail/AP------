@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane20",
   "workerBranch": "work/solution-upgrade-lane-20-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "1mid",
@@ -12,22 +12,32 @@
   "sourceBlobSha": "df9ebf4d66419de34a62af9103005d1e787d7c3e",
   "sourceQuestionCount": 20,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2026_geumdang_1mid_DEEP_AUDIT.md",
-  "nextQid": 14,
-  "remainingWork": [
-    "VISUAL_HOLD q14 original parabola/rectangle diagram inspection",
-    "VISUAL_HOLD q19 external tangent spheres diagram inspection",
-    "Golden/Negative/student render NOT_RUN"
-  ],
+  "nextQid": null,
+  "remainingWork": [],
   "readQuestionCount": 20,
   "decisionCounts": {
-    "KEEP": 18,
+    "KEEP": 20,
     "UPGRADE": 0,
-    "HOLD": 2,
+    "HOLD": 0,
     "UNREAD": 0
   },
   "examAuditComplete": true,
   "examDraftComplete": true,
   "draftedQuestionIds": [],
   "auditCommitSha": "5ea54325e1c065665e0fe42a40737b09081a11c6",
-  "stateNotes": "Full 20 qids text-audited; q14,q19 visual HOLD. Remain IN_PROGRESS pending image verification; no production PASS."
+  "stateNotes": "Full 20 qids text-audited; q14,q19 visual HOLD. Remain IN_PROGRESS pending image verification; no production PASS.",
+  "visualStatus": "VISUAL_HOLD",
+  "visualHoldQuestionIds": [
+    4,
+    6,
+    9,
+    13,
+    14,
+    16,
+    17,
+    19,
+    20
+  ],
+  "sourceConditionHoldQuestionIds": [],
+  "auditCommit": "f900464e9ab4ce59647996ea6848db532c1fc5d5"
 }
