@@ -1,0 +1,102 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1/4",
+          "-1/2"
+        ]
+      },
+      {
+        "coefficients": [
+          "1/4",
+          "1/2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "1/4"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "formula": "abs(x)/2+1/4",
+    "functionName": "f",
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "0",
+        "y": "1/4",
+        "marker": "NONE"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "-1/2",
+        "0",
+        "1/2",
+        "1"
+      ],
+      "y": [
+        "1/4",
+        "3/4"
+      ]
+    },
+    "axisScale": {
+      "x": 1,
+      "y": 4
+    },
+    "regions": [
+      {
+        "id": "S",
+        "upper": "f",
+        "lower": "axis",
+        "from": "-1/2",
+        "to": "1/2",
+        "fill": "LIGHT"
+      }
+    ]
+  },
+  "caption": "x가 -1/2부터 1/2까지인 한 음영 전체가 확률 3/8이며, 계수 a=1/2는 영역 넓이 라벨이 아니다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "확률밀도 f(x)=a|x|+b, -1≤x≤1, a>0,b>0",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.sourceDomain"
+      ]
+    },
+    {
+      "id": "c2",
+      "condition": "정규화 a+2b=1, 중앙 확률 a/4+b=3/8 ⇒ a=1/2,b=1/4",
+      "mappedTo": [
+        "graphPlan.pieces",
+        "graphPlan.formula"
+      ]
+    },
+    {
+      "id": "c3",
+      "condition": "P(-1/2≤X≤1/2)=3/8은 구간 전체의 단일 확률",
+      "mappedTo": "graphPlan.regions"
+    }
+  ],
+  "newVisualInformation": [
+    "하나의 연속된 음영 전체가 확률 3/8임을 표시한다",
+    "계수 a=1/2를 다른 반쪽 영역의 면적으로 오독하지 않도록 그래프 내부 수치 라벨 제거"
+  ]
+}

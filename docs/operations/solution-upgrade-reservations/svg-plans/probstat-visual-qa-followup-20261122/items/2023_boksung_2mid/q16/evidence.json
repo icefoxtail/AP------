@@ -1,0 +1,23 @@
+{
+  "exam": "2023 복성고 2학기 중간",
+  "qid": 16,
+  "statusInOriginalAudit": "KEEP",
+  "findingInVisualQA": "WARN_OR_REVIEW",
+  "vqaIssue": "기존 수치 a=1 삼각밀도 예시는 전체 넓이3/2라 실제 확률밀도로 읽으면 정규화 조건 위반",
+  "mathGate": "새 그림의 u=x/a, v=f(x)/a는 비율 좌표라 면적3/2가 확률이 아님을 캡션에 명시; 정규화된 실제 밀도에서는 3a²/2=1이지만 구하는 확률은 비율 1/2로 계산.",
+  "auditPath": "docs/operations/solution-upgrade-reservations/staged/h2-probstat-2sem/2023_boksung_2mid_DEEP_AUDIT.md",
+  "auditRef": "work/solution-upgrade-lane-40-probstat-2sem-20261122",
+  "auditBlobSha": "3673a5dd5bdf172889081ca35377e5a75b66b05b",
+  "vqaReportPath": "docs/operations/solution-upgrade-reservations/staged/h2-probstat-2sem/LANE40_VISUAL_QA_2026-11-22_BATCH05_14_EXAMS_2MID_FINAL_CLOSEOUT_REPORT.md",
+  "sourcePath": "archive/exams/original/high/h2/2mid/23_복성고_2학기_중간_고2_확률과통계.js",
+  "sourceBlobShaVerifiedMain": "4d9ff79af47cc02383f27924f40fc0e81e002c36",
+  "existingSvgPath": "archive/assets/images/23_복성고_2학기_중간_고2_확률과통계/q16-solution.svg",
+  "existingSvgBlobShaVerifiedMain": "b4986aa5302c160b91ba480faa382c6f8dda0d0a",
+  "planPath": "docs/operations/solution-upgrade-reservations/svg-plans/probstat-visual-qa-followup-20261122/items/2023_boksung_2mid/q16/plan.json",
+  "codePlanLint": "NOT_RUN",
+  "engineSvgRender": "NOT_RUN",
+  "visualCheck": "NOT_RUN",
+  "jsOrSvgModified": false,
+  "sourceImageModified": false,
+  "next": "Codex/Claude Code: plan-lint → 필요 시 plan 보정 → 엔진 렌더 → PNG 시각검수 → 원본 그림 교체 승인, JS 연결·회귀검수"
+}
