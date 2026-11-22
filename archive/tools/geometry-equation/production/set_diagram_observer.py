@@ -9,6 +9,7 @@ import hashlib
 import math
 import re
 import xml.etree.ElementTree as ET
+from accessible_name_observer import audit_accessible_name
 
 NS = '{http://www.w3.org/2000/svg}'
 TOL = 0.75
@@ -1051,7 +1052,7 @@ def audit_table(plan, doc):
     return {'sets': len(sets), 'elements': len(elements), 'marks': len(marks)}
 
 
-def audit(diagram, svg):
+def audit(diagram, svg, accessibility_description=None):
     kind = diagram.get('kind') if isinstance(diagram, dict) else None
     if kind not in ('VENN', 'MAPPING', 'MEMBERSHIP_TABLE'):
         fail('SET_KIND_UNSUPPORTED')
@@ -1069,6 +1070,7 @@ def audit(diagram, svg):
             if overlap(boxes[i], boxes[j]):
                 doc.err('SD_LABEL_OVERLAP')
                 break
+    for code in audit_accessible_name(doc.root, accessibility_description): doc.err(code)
     raw = svg.encode('utf-8')
     return {'status': 'FAIL' if doc.errors else 'PASS', 'errors': doc.errors,
             'finalSvgSha256': 'sha256:' + hashlib.sha256(raw).hexdigest(), 'observed': observed}

@@ -10,6 +10,7 @@ import math
 import re
 import xml.etree.ElementTree as ET
 from fractions import Fraction
+from accessible_name_observer import audit_accessible_name
 
 NS = '{http://www.w3.org/2000/svg}'
 TOL = 0.02
@@ -1460,6 +1461,16 @@ def audit_tree(chart, doc):
         if label is None or label.get('data-label-role') != 'node': doc.err('SC_NODE_MISSING:' + n['id']); continue
         text = label.get('data-text') or label.get('data-tex')
         if text != n['label']: doc.err('SC_NODE_LABEL:' + n['id'])
+        # a name of more than 6 characters is one line no wider than 6 em or two lines (data-lines, inside the box) each no wider than 6 em; a short name is never wrapped (this observer's own copy of the rule)
+        if label.get('data-box'):
+            nb, em, raw_lines = box_of(label), float(label.get('data-font-px') or 0), label.get('data-lines')
+            if len(n['label']) > 6 and em > 0:
+                if raw_lines:
+                    try: rects = [tuple(float(v) for v in part.split(',')) for part in raw_lines.split(';')]
+                    except ValueError: rects = []
+                    if len(rects) != 2 or any(len(r) != 4 or r[2] > 6 * em + 0.5 or r[0] < -0.01 or r[1] < -0.01 or r[0] + r[2] > nb[2] + 0.01 or r[1] + r[3] > nb[3] + 0.01 for r in rects): doc.err('SC_NODE_LINES:' + n['id'])
+                elif nb[2] > 6 * em + 0.5: doc.err('SC_NODE_LABEL_TOO_WIDE:' + n['id'])
+            elif raw_lines: doc.err('SC_NODE_LINES:' + n['id'])
         c = centre(label)
         if abs(c[0] - float(label.get('data-cx'))) > LABEL_TOL or abs(c[1] - float(label.get('data-cy'))) > LABEL_TOL: doc.err('SC_NODE_CENTRE:' + n['id'])
         centres[n['id']] = c
@@ -2322,7 +2333,7 @@ def audit_slots(chart, doc):
 AUDITS = {'HISTOGRAM': audit_freq, 'FREQUENCY_POLYGON': audit_freq, 'STEM_LEAF': audit_stem, 'BOX_PLOT': audit_box, 'SCATTER': audit_scatter, 'DICE_TABLE': audit_dice, 'TREE': audit_tree, 'SLOTS': audit_slots, 'DOT_PLOT': audit_dot, 'NORMAL_CURVE': audit_normal}
 
 
-def audit(chart, svg, compact=False):
+def audit(chart, svg, compact=False, accessibility_description=None):
     kind = chart.get('kind') if isinstance(chart, dict) else None
     if kind not in AUDITS: fail('STAT_KIND_UNSUPPORTED')
     if compact and kind not in ('DOT_PLOT', 'SCATTER'): fail('STAT_PANEL_KIND_UNSUPPORTED')
@@ -2331,5 +2342,6 @@ def audit(chart, svg, compact=False):
         root = doc.root
         if abs(float(root.get('width') or 0) - PANEL_W) > TOL: doc.err('SC_PANEL_WIDTH')
     observed = AUDITS[kind](chart, doc)
+    for code in audit_accessible_name(doc.root, accessibility_description): doc.err(code)
     raw = svg.encode('utf-8')
     return {'status': 'FAIL' if doc.errors else 'PASS', 'errors': doc.errors, 'finalSvgSha256': 'sha256:' + hashlib.sha256(raw).hexdigest(), 'observed': observed}

@@ -77,6 +77,8 @@ const SHARED_PRODUCTION = [
   'coordinate-frame.mjs', 'polynomial-text.mjs',
   // added with the panels bundle (same rule)
   'number-line-run-together.mjs', 'composite-expand-fields.mjs', 'conic_label_value.py',
+  // added with S1 (same rule)
+  'accessibility-description.mjs', 'wrap-text.mjs', 'accessible_name_observer.py',
   'render-plan.mjs', 'worker.mjs', 'worker.py', 'worker_host.py', 'phase2.mjs', 'contracts.mjs', 'dependencies.mjs', 'dependency-lock.json', 'typography.mjs', 'palette.mjs',
   'store.mjs', 'fingerprint.mjs', 'attempt-log.mjs', 'error-guidance.mjs', 'hidden-curve-label.mjs', 'duplicate-key-point.mjs', 'point-name-observer.mjs',
   'point-names.mjs', 'display-envelope.mjs', 'display-profile-audit.mjs', 'construction-archive-capture-v1.mjs', 'construction-candidate-svg-v1.mjs',

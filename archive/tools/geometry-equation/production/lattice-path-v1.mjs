@@ -5,6 +5,9 @@ import {typesetter} from './typography.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
 import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mjs';
+import {readAccessibilityDescription} from './accessibility-description.mjs';
+const accessibleNamesFor=description=>description===undefined?'':`<title id="visual-title">도로망 최단 경로</title><desc id="visual-desc">${esc(description)}</desc>`;
+const labelledBy=description=>description===undefined?'':' aria-labelledby="visual-title visual-desc"';
 
 // A standalone road-network / lattice shortest-path figure (lattice-path-figure-v1): a cols x rows grid of roads, named points on grid crossings, roads
 // that may not be used (drawn broken), roads that must be used (drawn bold), an optional highlighted path and, on request, the number of shortest paths
@@ -24,7 +27,7 @@ const r6=value=>{const v=Math.round(value*1e6)/1e6;return v===0?0:v;};
 
 const MAX_COLS=10,MAX_ROWS=8,MAX_POINTS=12,MAX_VIA=3,MAX_SEGMENTS=12,MAX_PATH=40;
 const POINT_ID=/^[A-Z][0-9']?$/;
-const TOP_KEYS=['capability','lattice','caption','sourceConditions','newVisualInformation','sourceQuote'];
+const TOP_KEYS=['capability','lattice','caption','sourceConditions','newVisualInformation','sourceQuote','accessibilityDescription'];
 const LATTICE_KEYS=['grid','points','from','to','forbidden','via','viaPoints','counts','hideTargetCount','highlightPath'];
 const isInt=v=>Number.isSafeInteger(v);
 const key=(x,y)=>`${x},${y}`;
@@ -231,6 +234,7 @@ export const latticePathSize=model=>({...buildSpec(model).size});
 export function checkLatticePathPlan(plan){
   onlyKeys(plan,TOP_KEYS,'LATTICE_PLAN_INVALID');
   if(plan.capability!==FIGURE_CAPABILITY)bad('LATTICE_PLAN_INVALID');
+  readAccessibilityDescription(plan);
   return solveLattice(plan.lattice);
 }
 
@@ -308,11 +312,11 @@ export async function composeLatticePathFigure({plan,model,identity,typographyPo
       const extra=Object.entries(label.extra??{}).map(([k,v])=>` data-${k}="${esc(v)}"`).join('');
       body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="COORDINATE_LABEL" data-label-role="${label.role}" data-priority="0" data-font-px="${font}" data-owner="${label.owner}"${extra} data-tex="${esc(label.tex)}" data-fragment-sha="${fragment.fragmentSha256}" data-box="${box.x},${box.y},${box.width},${box.height}" transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
     }
-    const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img" data-lattice-path="${FIGURE_CAPABILITY}" data-cols="${model.cols}" data-rows="${model.rows}" data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${body}</svg>`;
+    const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img"${labelledBy(readAccessibilityDescription(plan))} data-lattice-path="${FIGURE_CAPABILITY}" data-cols="${model.cols}" data-rows="${model.rows}" data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${accessibleNamesFor(readAccessibilityDescription(plan))}${body}</svg>`;
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     if(process.env.APMS_DRAFT_DIR)(await import('node:fs')).writeFileSync(process.env.APMS_DRAFT_DIR+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-lattice-path-'+Date.now()+'.svg',svg);
     let response;
-    try{response=await pythonWorker({lattice:plan.lattice,svg,surface:identity?.surface},{script:OBSERVER_SCRIPT});}catch(error){throw new Stop('WORKER_ERROR',{stage:'latticePathAudit',code:String(error?.message??error)});}
+    try{response=await pythonWorker({lattice:plan.lattice,svg,surface:identity?.surface,...(readAccessibilityDescription(plan)!==undefined?{accessibilityDescription:readAccessibilityDescription(plan)}:{})},{script:OBSERVER_SCRIPT});}catch(error){throw new Stop('WORKER_ERROR',{stage:'latticePathAudit',code:String(error?.message??error)});}
     if(response?.status!=='OK')throw new Stop('WORKER_ERROR',{stage:'latticePathAudit',code:response?.result?.code??null});
     const audit=response.result;lineage.staticAuditSha256=objectSha(audit);
     const errors=[...(audit.errors??[])];
