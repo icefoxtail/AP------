@@ -148,7 +148,14 @@ const SECTIONS = {
   'ellipse-figure-v1': ['3-45'],
   'lattice-path-figure-v1': ['3-17'],
   'container-fill-figure-v1': ['3-50'],
-  'number-line-figure-v1': []
+  'number-line-figure-v1': ['3-수직선'],
+  'number-line-v1': ['3-수직선'],                       // composite-panels-v1 의 수직선 패널이 쓰는 이름(엔진 안쪽 capability)
+  'quadratic-inequality-chain-v1': ['3-이차부등식'],
+  'absolute-value-spike-v1': ['3-2-곡선별', '3-2', '3-14'],
+  'piecewise-affine-spike-v1': ['3-2-곡선별', '3-2', '3-14'],
+  'exponential-affine-spike-v1': ['3-2-곡선별', '3-2', '3-7c', '3-14'],
+  'logarithmic-affine-spike-v1': ['3-2-곡선별', '3-2', '3-7c', '3-14'],
+  'exp-log-pair-spike-v1': ['3-2-곡선별', '3-2', '3-7c', '3-14']
 };
 
 let guideCache = null;
@@ -264,4 +271,4 @@ function buildInput({ bank, rows, examRel, extra }) {
   return { text, stats: { exemplars: exemplars.length, exBytes, guideBytes: guide.bytes, guideLines: guide.lines, caps: guide.caps, secs: guide.secs, bytes: Buffer.byteLength(text), lines: text.split('\n').length }, perQ, exemplars };
 }
 
-module.exports = { buildInput, buildIndex, pickExemplars, tokens, guideExcerpt };
+module.exports = { buildInput, buildIndex, pickExemplars, tokens, guideExcerpt, SECTIONS };
