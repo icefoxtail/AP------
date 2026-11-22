@@ -3,15 +3,16 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const { readPrintRenderAuthorityFixture } = require('./helpers/print-render-authority-fixtures.cjs');
+const { assertLoads } = require('./helpers/html-asset-refs.cjs');
 const root = path.join(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'archive', 'mixed_engine.html'), 'utf8');
 const layout = fs.readFileSync(path.join(root, 'archive', 'layout-authority.js'), 'utf8');
 
 test('Mixer adapter dual-runs canonical normalization without changing storage, pack, QPP, or legacy renderer behavior', () => {
-  assert.match(html, /src="print-contract\.js\?v=20261009\.1"/);
-  assert.match(html, /src="render-authority\.js\?v=20261014-svg-alt-1"/);
-  assert.match(html, /src="data\/svg-accessibility-index\.js\?v=20261014\.1"/);
-  assert.match(html, /src="svg-accessibility\.js\?v=20261014\.1"/);
+  assertLoads(html, 'print-contract.js', 'html');
+  assertLoads(html, 'render-authority.js', 'html');
+  assertLoads(html, 'data/svg-accessibility-index.js', 'html');
+  assertLoads(html, 'svg-accessibility.js', 'html');
   assert.match(html, /function buildMixedCanonicalData\(\)/);
   assert.match(html, /AppState\.canonicalData = buildMixedCanonicalData\(\)/);
   assert.match(html, /async function recordMixedDualRun\(area\)/);
@@ -22,7 +23,7 @@ test('Mixer adapter dual-runs canonical normalization without changing storage, 
   assert.match(html, /resolveSourceRef: \(question, index\)/);
   assert.match(html, /getMixedQuestionIdentity\(q\)/);
   assert.match(html, /compareAnswerSemantics/);
-  assert.match(html, /layout-authority\.js\?v=20261009\.1/);
+  assertLoads(html, 'layout-authority.js', 'html');
   assert.match(html, /function recordMixedLayoutPromotionGate\(area\)/);
   assert.match(html, /recordMixedLayoutPromotionGate\(area\)/);
   assert.match(html, /layoutMeasurementLedger/);

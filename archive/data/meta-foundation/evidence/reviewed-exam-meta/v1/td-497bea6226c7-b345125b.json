@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-497bea6226c7-b345125b",
+  "requestSha256": "f44f7bc37e7c8ac13caad1f6e54a6c10e3373c924a294442a776fc3cb7f59d2e",
+  "examUid": "24_향림중_2학기_중간_중1_기출",
+  "sourceArchiveFile": "original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.js",
+  "sourceBlobSha1": "47a270b752ad8021cd800bcbc0a970454bac67aa",
+  "sourceRawSha256": "04682ef4c67a04b31214f6ea138b22baf1ef44cbc06da26cacd739efbcf5fb87",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-497bea6226c7-b345125b.type-ledger.json",
+        "sha256": "4f9c8f92a573d7eee679997861ad1d2af0be8d938c35ba24978373b11ef08f89"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_656d726654c8e83093c55334c07dd6857b35ecbe20e2d3fe2878d5bc467fe7bd",
+      "sourceArchiveFile": "original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 18,
+      "problemTypeKey": "PT_M2_COUNTING",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-497bea6226c7-b345125b",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "7명 중 서로 한 번씩 만나는 쌍을 겹침 없이 6+5+4+3+2+1 또는 7×6÷2로 세어 경기 수 21을 얻는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "f54c24f479e77ec36d7001135754f8fc593229cff7b80d2813643b8b86212d03",
+        "judgedContentFingerprint": "0e89c8142d1cdada6173de6e10be0ca328f37b43b06ba0935404042ce6c44507",
+        "rowBinding": "content",
+        "textBindingFingerprint": "44e7fbd4a3d4727b0fc60e7514471b523f9b2e679c47c538f87767c697d732a3",
+        "resultSource": {
+          "branch": "data/type-judgment-u-20261122",
+          "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-497bea6226c7-b345125b.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "templateKey": "TPL_COMBINATION_SELECTION",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}

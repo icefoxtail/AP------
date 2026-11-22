@@ -1,0 +1,178 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "두 직선이 한 점에서 만날 때 맞꼭지각과 이웃한 각을 나타낸 그림이다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "L1",
+    "L2",
+    "M1",
+    "M2"
+  ],
+  "hiddenPointNames": [
+    "L1",
+    "L2",
+    "M1",
+    "M2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "displaySegments": [
+    {
+      "id": "sL",
+      "refs": [
+        "L1",
+        "L2"
+      ]
+    },
+    {
+      "id": "sM",
+      "refs": [
+        "M1",
+        "M2"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "L2",
+          "O",
+          "M1"
+        ],
+        "label": "x"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "M1",
+          "O",
+          "L1"
+        ],
+        "label": "a"
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "L2",
+          "O",
+          "M2"
+        ],
+        "label": "b"
+      }
+    ]
+  },
+  "sourceQuote": "오른쪽 그림과 같이 두 직선이 한 점에서 만날",
+  "assetPath": "assets/images/23_향림중_2학기_중간_중1_유사/q03.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/23_향림중_2학기_중간_중1_유사/q03-problem-result.json",
+    "statePath": "archive/assets/images/23_향림중_2학기_중간_중1_유사/q03-problem-state.json",
+    "svgPath": "archive/assets/images/23_향림중_2학기_중간_중1_유사/q03.svg"
+  },
+  "status": "ACTIVE"
+}

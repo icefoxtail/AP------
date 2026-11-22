@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-3ea9e800ca31-67adcdeb",
+  "sourceArchiveFile": "original/high/h2/1mid/23_한영고_1학기_중간_고2_대수.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_5c78170e12513486f5bf6d24b72c69d21e7d09446771515ecfed6cd2cbd059a5",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
+      "step": "지수·로그 그래프의 y=x-1 대칭과 교선 기울기-1을 이용해 중점(7/2,5/2)와 두끝점 간격을 구하고 원점 삼각형 넓이12를 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요. 원문에 a>1 조건이 없어 a의 두 가능값을 구별해야 하나 목표81S는 둘 다972로 결정된다. 해설은 증가함수 경우 a=81/4만 제시.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl",
+      "stemChangedSinceJudgment": true
+    }
+  ]
+}

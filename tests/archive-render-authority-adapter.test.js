@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const { readPrintRenderAuthorityFixture } = require('./helpers/print-render-authority-fixtures.cjs');
+const { assertLoads } = require('./helpers/html-asset-refs.cjs');
 const root = path.join(__dirname, '..');
 const engine = fs.readFileSync(path.join(root, 'archive', 'engine.html'), 'utf8');
 const layout = fs.readFileSync(path.join(root, 'archive', 'layout-authority.js'), 'utf8');
@@ -12,11 +13,11 @@ const answerExecutor = fs.readFileSync(path.join(root, 'archive', 'answer-render
 const examExecutor = fs.readFileSync(path.join(root, 'archive', 'exam-render-executor.js'), 'utf8');
 
 test('Archive adapter records opt-in canonical dual-run evidence while retaining legacy render paths', () => {
-  assert.match(engine, /src="print-contract\.js\?v=20261009\.1"/);
-  assert.match(engine, /src="render-authority\.js\?v=20261014-svg-alt-1"/);
-  assert.match(engine, /src="data\/svg-accessibility-index\.js\?v=20261014\.1"/);
-  assert.match(engine, /src="svg-accessibility\.js\?v=20261014\.1"/);
-  assert.match(engine, /archive2-preview-mobile\.css\?v=20261117-figure-large-1/);
+  assertLoads(engine, 'print-contract.js', 'engine');
+  assertLoads(engine, 'render-authority.js', 'engine');
+  assertLoads(engine, 'data/svg-accessibility-index.js', 'engine');
+  assertLoads(engine, 'svg-accessibility.js', 'engine');
+  assertLoads(engine, 'archive2-preview-mobile.css', 'engine');
   assert.match(engine, /canonicalData: \[\]/);
   assert.match(engine, /AppState\.canonicalData = buildArchiveCanonicalData\(sourceArchiveFile\)/);
   assert.match(engine, /renderAuthorityDualRun/);
@@ -28,22 +29,11 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   assert.match(engine, /box\.dataset\.sourceRef = getArchiveQuestionSourceRef/);
   assert.match(engine, /recordArchiveDualRun\(area, ctx(?: = null)?\)/);
   for (const script of ['mathjax_render_loop', 'layout-authority', 'layout-materializer', 'solution-render-executor', 'exam-render-executor', 'render-state-normalizer', 'side-effect-ledger', 'screen-runtime', 'snapshot-contract', 'question-image-readiness', 'screen-runtime-adapter']) {
-    const version = {
-      mathjax_render_loop: '20261116-enclosed-latin',
-      'layout-materializer': '20261122-sol-fit-1',
-      'solution-render-executor': '20261122-sol-fit-1',
-      'exam-render-executor': '20261118-auto-promote-1',
-      'question-image-readiness': '20261106-output-performance-1',
-      'layout-authority': '20261009\\.1',
-      'screen-runtime-adapter': '20261116-polish-1',
-      'screen-runtime': '20261106-output-performance-2',
-      'render-state-normalizer': '20261118-auto-promote-1'
-    }[script] || (script === 'snapshot-contract' ? '20260923\\.1' : '20260911\\.5');
-    assert.match(engine, new RegExp(`${script.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\.js\\?v=${version}`));
+    assertLoads(engine, `${script}.js`, 'engine');
   }
-  assert.match(engine, /solution-render-executor\.js\?v=20261122-sol-fit-1/);
-  assert.match(engine, /answer-render-executor\.js\?v=20261029-sections-1/);
-  assert.match(engine, /exam-render-executor\.js\?v=20261118-auto-promote-1/);
+  assertLoads(engine, 'solution-render-executor.js', 'engine');
+  assertLoads(engine, 'answer-render-executor.js', 'engine');
+  assertLoads(engine, 'exam-render-executor.js', 'engine');
   assert.match(engine, /function recordArchiveLayoutPromotionGate\(area, ctx(?: = null)?\)/);
   assert.match(engine, /recordArchiveLayoutPromotionGate\(area, ctx(?: = null)?\)/);
   assert.match(engine, /function recordArchiveSolutionLayoutPromotionGate\(area, ctx(?: = null)?\)/);
@@ -87,7 +77,7 @@ test('direct mobile problem flow admits only explicitly marked inline images thr
   assert.match(mobile, /\.q-box \.q-content img\[data-archive-mobile-figure="true"\]:not\(\[hidden\]\)/);
   assert.doesNotMatch(mobile, /:has\(\.q-box \.q-content img\)/);
   const mixed = fs.readFileSync(path.join(root, 'archive', 'mixed_engine.html'), 'utf8');
-  assert.match(mixed, /archive2-preview-mobile\.css\?v=20261117-figure-large-1/);
+  assertLoads(mixed, 'archive2-preview-mobile.css', 'mixed');
   // wrapLatex 본문은 engine.html·mixed_engine.html이 같이 쓰는 render-text.js에 있다.
   const { wrapLatex } = require('../archive/render-text.js');
   const marked = '<img src="assets/images/example/q12.png" class="exam-img" alt="그림" data-archive-mobile-figure="true">';

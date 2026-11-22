@@ -1,0 +1,174 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "오목 사각형 ABOC에서 안쪽 각 x를 구하는 각도 다이어그램이다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "sCO",
+      "refs": [
+        "C",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "80"
+      },
+      {
+        "id": "aB",
+        "refs": [
+          "O",
+          "B",
+          "A"
+        ],
+        "label": "25"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "A",
+          "C",
+          "O"
+        ],
+        "label": "30"
+      },
+      {
+        "id": "aO",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "label": "x"
+      }
+    ]
+  },
+  "sourceQuote": "오른쪽 그림과 같은 오목 사각형 $ABOC$에",
+  "assetPath": "assets/images/23_향림중_2학기_중간_중1_유사/q17.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/23_향림중_2학기_중간_중1_유사/q17-problem-result.json",
+    "statePath": "archive/assets/images/23_향림중_2학기_중간_중1_유사/q17-problem-state.json",
+    "svgPath": "archive/assets/images/23_향림중_2학기_중간_중1_유사/q17.svg"
+  },
+  "status": "ACTIVE"
+}

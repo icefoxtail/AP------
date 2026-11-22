@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const { readPrintRenderAuthorityFixture } = require('./helpers/print-render-authority-fixtures.cjs');
+const { assertLoads } = require('./helpers/html-asset-refs.cjs');
 const root = path.join(__dirname, '..');
 const engine = fs.readFileSync(path.join(root, 'apmath', 'wrong_print_engine.html'), 'utf8');
 const launcher = fs.readFileSync(path.join(root, 'tests', 'fixtures', 'wrong-print-layout-launcher.html'), 'utf8');
@@ -10,10 +11,10 @@ const modeLauncher = fs.readFileSync(path.join(root, 'tests', 'fixtures', 'wrong
 const compositionHarness = fs.readFileSync(path.join(root, 'tests', 'fixtures', 'clinic-composition-harness.html'), 'utf8');
 
 test('Clinic adapter restores source identity before opt-in single-student dual-run and retains recipient legacy paths', () => {
-  assert.match(engine, /src="\.\.\/archive\/print-contract\.js\?v=20260906\.2"/);
-  assert.match(engine, /src="\.\.\/archive\/render-authority\.js\?v=20261014-svg-alt-1"/);
-  assert.match(engine, /src="\.\.\/archive\/data\/svg-accessibility-index\.js\?v=20261014\.1"/);
-  assert.match(engine, /src="\.\.\/archive\/svg-accessibility\.js\?v=20261014\.1"/);
+  assertLoads(engine, '../archive/print-contract.js', 'engine');
+  assertLoads(engine, '../archive/render-authority.js', 'engine');
+  assertLoads(engine, '../archive/data/svg-accessibility-index.js', 'engine');
+  assertLoads(engine, '../archive/svg-accessibility.js', 'engine');
   assert.match(engine, /function buildClinicCanonicalData\(\)/);
   assert.match(engine, /function recordClinicDualRun\(area\)/);
   assert.match(engine, /recipient-composition-legacy-only/);
@@ -36,7 +37,7 @@ test('Clinic adapter restores source identity before opt-in single-student dual-
   assert.match(modeLauncher, /const withRecipients = params\.get\('recipients'\) === '2';/);
   assert.match(modeLauncher, /fixture-packet-a/);
   assert.match(modeLauncher, /renderAuthorityDualRun=1/);
-  assert.match(engine, /layout-authority\.js\?v=20260906\.15/);
+  assertLoads(engine, 'layout-authority.js', 'engine');
   assert.match(engine, /function recordClinicCompositionPromotionGate\(area\)/);
   assert.match(compositionHarness, /wrong-print-layout-launcher\.html\?duplex=1&recipients=2&mode=review/);
   assert.match(compositionHarness, /scenario === 'recipient-qr'/);

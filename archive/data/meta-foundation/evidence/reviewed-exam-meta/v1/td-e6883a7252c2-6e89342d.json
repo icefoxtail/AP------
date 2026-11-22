@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-e6883a7252c2-6e89342d",
+  "requestSha256": "fe06ccc21f9f1b34d278212949b57b6f564c39abe0830a54232801fc65375bdd",
+  "examUid": "21_매산고_1학기_중간_고2_수학I",
+  "sourceArchiveFile": "original/high/h2/1mid/21_매산고_1학기_중간_고2_수학I.js",
+  "sourceBlobSha1": "3b073e714872d7aab450c186c0b82300f8b43aff",
+  "sourceRawSha256": "c76413d5d17163bde184981a27ec9005e070eef9e555d6ec11c3a2c5005e9c32",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-e6883a7252c2-6e89342d.type-ledger.json",
+        "sha256": "f2c146a3d3fadfd7599d946a58d56e23a2e0b9d8149709eb64501d0dcd90a89a"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_26f153c183c2712a2e6158766741f338ce88d480571efd23ab552e8b4c8c10eb",
+      "sourceArchiveFile": "original/high/h2/1mid/21_매산고_1학기_중간_고2_수학I.js",
+      "sourceOrdinal": 13,
+      "problemTypeKey": "PT_LOG_DEFINITION_CONDITION",
+      "templateKey": "TPL_LOG_PROPERTY_JUDGMENT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-e6883a7252c2-6e89342d",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "로그의 곱·몫·거듭제곱 성질을 적용하기 전후의 진수 조건을 비교해 두 해집합이 같은지 판정한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학I",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "72d0c4281a5fc7e51166a4ff1e69ae5cd7e4dc4f9283683bcf17d8bce0fdfdd3",
+        "judgedContentFingerprint": "a3564a39b06d081533616f7afcb5e108d43aea795be11c31d1e70cc0da90f032",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "6b33e09c46afed5e7829f2732152c5a4a8d4eff740d5b1e93b0a7def175f480c",
+        "resultSource": {
+          "branch": "data/type-judgment-u-20261122",
+          "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-e6883a7252c2-6e89342d.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 20
+}

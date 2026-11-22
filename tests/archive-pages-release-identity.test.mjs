@@ -105,6 +105,29 @@ test("student SVG projection is bound to registered source and image bytes", asy
   assert.notEqual((await f.identity()).packageDigest, initial.packageDigest);
 });
 
+test("student similar-link map is derived from registered catalog bytes, shipped, and changes the package identity", async t => {
+  const f = fixture(t);
+  f.manifest.similarLinks = true;
+  f.put("tools/archive-pages-release-manifest.json", JSON.stringify(f.manifest));
+  const exam = (file, extra) => ({ file, school: "S", grade: "G1", year: 2025, semester: "2", examType: "mid", subject: "math", qCount: 5, identityTitle: path.basename(file, ".js"), ...extra });
+  f.put("archive/archive2-similar.js", fs.readFileSync(fileURLToPath(new URL("../archive/archive2-similar.js", import.meta.url)), "utf8"));
+  const catalog = withSet => JSON.stringify({ exams: [exam("original/a/x.js", { contentType: "기출" }),
+    ...(withSet ? [exam("similar/a/x_유사.js", { contentType: "유사" })] : [])] });
+  f.put("archive/data/archive2-catalog.json", catalog(false));
+  f.put("archive/exams/original/a/x.js", "x"); f.put("archive/exams/similar/a/x_유사.js", "y");
+  f.commit();
+  const before = await f.identity();
+  f.put("archive/data/archive2-catalog.json", catalog(true)); f.commit();
+  const after = await f.identity();
+  assert.notEqual(after.packageDigest, before.packageDigest, "a newly linked similar set must be published");
+  const report = await buildPagesSite({ sourceRoot: f.root, manifest: f.manifest });
+  const built = report.inventory.find(entry => entry.path === "archive/data/similar-links-v1.json");
+  assert.equal(built.transform, "similar-links");
+  const written = JSON.parse(fs.readFileSync(path.join(f.root, "_site/archive/data/similar-links-v1.json"), "utf8"));
+  assert.deepEqual(written.map, { "original/a/x.js": [["similar/a/x_유사.js", 5]] });
+  assert.equal(fs.existsSync(path.join(f.root, "archive/data/similar-links-v1.json")), false, "the generated map is never written into the source tree");
+});
+
 test("same-path R2 image replacement and Worker changes invalidate external dependency proof", async t => {
   const f = fixture(t), before = await f.identity();
   f.put("archive/assets/images/a.png", "image-after!"); f.commit();

@@ -17,6 +17,7 @@ const ProblemBankMeta = require('../archive/problem-bank-meta.js');
 const catalogEvidence = require('../archive/tools/archive2-catalog-evidence.cjs');
 const { productionCatalog } = require('./helpers/archive2-scope-harness.cjs');
 const { loadWorkspace, assertWorkspaceScriptVersions } = require("./helpers/archive2-workspace-source.cjs");
+const { assertLoads, versionOf } = require('./helpers/html-asset-refs.cjs');
 
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, 'archive', file), 'utf8');
@@ -951,28 +952,35 @@ test('문제지 만들기: facets are counted for the whole list while no unit i
 });
 
 test('the workspace and the unit page load the new scripts with a new cache version and the changed shared modules stay loadable in APMS', () => {
-  const version = '20261029-s14-1';
-  const coreVersion = '20261119-pair-type-spread-1';
   const workspace = read('workspace.html');
-  assert.match(workspace, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
-  assert.match(workspace, /unit-past-exams-core\.js\?v=20261117-middle-parent-1/);
-  assert.match(workspace, new RegExp('problem-bank-meta\\.js\\?v=' + version));
+  assertLoads(workspace, 'archive2-core.js', 'workspace');
+  assertLoads(workspace, 'unit-past-exams-core.js', 'workspace');
+  assertLoads(workspace, 'problem-bank-meta.js', 'workspace');
   // The shared unit layer and the canonical authority moved on with the registered textbooks (S11).
-  assert.match(workspace, /archive2-unified-units\.js\?v=20261122-unit-hint-2/);
-  assert.match(workspace, /archive2-canonical\.js\?v=20261119-receipt-row-binding-1/);
+  assertLoads(workspace, 'archive2-unified-units.js', 'workspace');
+  assertLoads(workspace, 'archive2-canonical.js', 'workspace');
   // The workspace itself moved on with the final-check fixes (S10).
   assertWorkspaceScriptVersions(assert);
   const unitPage = read('unit-past-exams.html');
-  assert.match(unitPage, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
-  assert.match(unitPage, /unit-past-exams-core\.js\?v=20261117-middle-parent-1/);
-  assert.match(unitPage, /unit-past-exams\.js\?v=20261119-no-basic-1/);
-  assert.match(read('problem-bank-search.html'), new RegExp('archive2-core\\.js\\?v=' + coreVersion));
-  assert.match(read('problem-bank-search.html'), new RegExp('problem-bank-meta\\.js\\?v=' + version));
+  assertLoads(unitPage, 'archive2-core.js', 'unitPage');
+  assertLoads(unitPage, 'unit-past-exams-core.js', 'unitPage');
+  assertLoads(unitPage, 'unit-past-exams.js', 'unitPage');
+  assertLoads(read('problem-bank-search.html'), 'archive2-core.js', 'problem-bank-search.html');
+  assertLoads(read('problem-bank-search.html'), 'problem-bank-meta.js', 'problem-bank-search.html');
   const clinic = fs.readFileSync(path.join(root, 'apmath/js/clinic-print.js'), 'utf8');
   // ExamSourceReader must load before Archive2Source in the clinic print loader.
   assert.ok(clinic.indexOf("'exam-source-reader'") > 0 && clinic.indexOf("'exam-source-reader'") < clinic.indexOf("'archive2-source'"));
-  assert.match(clinic, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
-  assert.match(clinic, new RegExp('problem-bank-meta\\.js\\?v=' + version));
+  // The clinic loader builds its script addresses in JS, so the page-tag helper does not see them: they must still carry the
+  // same ?v= as the workspace and the search page, or the browser keeps two copies of the shared module.
+  const clinicQuery = (file) => {
+    const start = clinic.indexOf("'../archive/" + file);
+    assert.ok(start >= 0, 'clinic should load ' + file);
+    const address = clinic.slice(start + 1, clinic.indexOf("'", start + 1));
+    return address.includes('?') ? address.slice(address.indexOf('?') + 1) : '';
+  };
+  for (const file of ['archive2-core.js', 'problem-bank-meta.js']) {
+    assert.strictEqual(clinicQuery(file), versionOf(workspace, file, 'workspace.html'), `clinic loads ${file} with the same ?v= as workspace.html`);
+  }
   // APMS moved clinic-print.js on with the clinic workspace (M7, 2026-11-02).
-  assert.match(fs.readFileSync(path.join(root, 'apmath/index.html'), 'utf8'), /clinic-print\.js\?v=(20261102-(ws-clinic|perf)-1|20261117-reader-1|20261119-pair-type-spread-1|20261119-source-parallel-1)/);
+  assertLoads(fs.readFileSync(path.join(root, 'apmath/index.html'), 'utf8'), 'js/clinic-print.js', 'apmath/index.html');
 });
