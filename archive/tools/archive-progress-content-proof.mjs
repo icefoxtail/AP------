@@ -3,12 +3,13 @@ const HEX=/^[0-9a-f]{40}$/;
 export const REGISTRY_FILES=['archive/db.js','archive/question-index.js','archive/question-identity.js',
  'archive/question-index-report.md','archive/question-index-audit.md',
  'archive/data/archive2-catalog.json','archive/data/archive2-crosswalk-inventory.json',
- 'archive/data/question_metadata.json',
  'archive/data/archive2-canonical-input-manifest.json','archive/data/archive2-canonical-projection-policy.json',
  'archive/data/archive2-item-review-overrides.json','archive/data/basic-scope-parent-links.json'];
 export const sha256=items=>crypto.createHash('sha256').update([...items].sort().join('\n')).digest('hex');
 export function proofFromBlobs(files){
- const exams={},registryFiles=[...REGISTRY_FILES,...Object.keys(files).filter(f=>f.startsWith('archive/data/meta-foundation/runtime/')&&f.endsWith('.json'))];
+ // The question metadata is witnessed by its per-exam shards (git holds shards; the deployed one file is split into the same
+ // shard blobs by archive-progress-site-snapshot.py), so a changed metadata record still changes the registry digest.
+ const exams={},registryFiles=[...REGISTRY_FILES,...Object.keys(files).filter(f=>(f.startsWith('archive/data/meta-foundation/runtime/')||(f.startsWith('archive/data/question-metadata/v1/')&&!f.endsWith('/_head.json')))&&f.endsWith('.json'))];
  const registry=sha256(registryFiles.map(f=>f+' '+(files[f]||'MISSING')));
  for(const [f,sha] of Object.entries(files)){
   if(!HEX.test(sha))continue;

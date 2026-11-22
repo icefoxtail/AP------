@@ -365,7 +365,7 @@ window.questionBank = [
       "28"
     ],
     "answer": "④",
-    "solution": "$f(x+k)$를 전개한다.\n$f(x+k)=(x+k)^3+10(x+k)^2-5(x+k)+17$\n$=x^3+(3k+10)x^2+(3k^2+20k-5)x+(k^3+10k^2-5k+17)$이다.\n$x^2$의 계수를 비교하면\n$3k+10=-2k$이므로 $k=-2$이다.\n따라서\n$a=3(-2)^2+20(-2)-5=-33$이고\n$b=(-2)^3+10(-2)^2-5(-2)+17=59$이다.\n$k+a+b=-2-33+59=24$이므로 정답은 ④이다.",
+    "solution": "\\[\n\\begin{aligned}\nf(x+k)&=(x+k)^3+10(x+k)^2-5(x+k)+17\\\\\n&=(x^3+3kx^2+3k^2x+k^3)\\\\\n&\\quad+(10x^2+20kx+10k^2)-5x-5k+17\\\\\n&=x^3+(3k+10)x^2+(3k^2+20k-5)x\\\\\n&\\quad+(k^3+10k^2-5k+17).\n\\end{aligned}\n\\]\n주어진 항등식의 $x^2$ 계수는 $-2k$이므로\n\\[\n3k+10=-2k\\Longrightarrow 5k=-10\\Longrightarrow k=-2.\n\\]\n따라서\n\\[\n\\begin{aligned}\na&=3(-2)^2+20(-2)-5\\\\\n&=12-40-5=-33,\\\\\nb&=(-2)^3+10(-2)^2-5(-2)+17\\\\\n&=-8+40+10+17=59.\n\\end{aligned}\n\\]\n구하는 값은\n\\[\nk+a+b=-2-33+59=\\boxed{24}.\n\\]",
     "subUnitKey": "H22-C-02-CORE",
     "subUnit": "항등식과 나머지 정리",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -588,7 +588,7 @@ window.questionBank = [
       "12"
     ],
     "answer": "③",
-    "solution": "$W=\\frac{z}{2+z^2}$가 실수이므로 $W=\\overline W$이다.\n$\\frac{z}{2+z^2}=\\frac{\\overline z}{2+\\overline z^2}$에서 교차곱하면\n$z(2+\\overline z^2)=\\overline z(2+z^2)$이다.\n정리하면\n$(z-\\overline z)(2-z\\overline z)=0$이다.\n$b>0$이므로 $z\\ne\\overline z$이고, 따라서 $z\\overline z=2$이다.\n$z=a+2bi$이므로 $z\\overline z=a^2+4b^2=2$이다.\n$a=1$을 대입하면 $1+4b^2=2$, 즉 $4b^2=1$이다.\n따라서\n$2a^2-4b^2+12a-5=2-1+12-5=8$이다.\n정답은 ③이다.",
+    "solution": "$W=\\frac{z}{2+z^2}$가 실수이므로 $W=\\overline W$이다. $a=1$, $b>0$이므로 $z=1+2bi$이며 분모 $2+z^2$는 $0$이 아니다(허수부가 $4b\\ne0$).\n\\[\n\\begin{aligned}\n\\frac{z}{2+z^2}&=\\frac{\\overline z}{2+\\overline z^2}\\\\\nz(2+\\overline z^2)&=\\overline z(2+z^2)\\\\\n2z+z\\overline z^2&=2\\overline z+\\overline z z^2\\\\\n2(z-\\overline z)+z\\overline z(\\overline z-z)&=0\\\\\n2(z-\\overline z)-z\\overline z(z-\\overline z)&=0\\\\\n(z-\\overline z)(2-z\\overline z)&=0.\n\\end{aligned}\n\\]\n$b>0$이므로 $z-\\overline z=4bi\\ne0$. 따라서\n\\[\nz\\overline z=2\\Longrightarrow a^2+4b^2=2.\n\\]\n$a=1$을 대입하면\n\\[\n1+4b^2=2\\Longrightarrow4b^2=1.\n\\]\n그러므로\n\\[\n2a^2-4b^2+12a-5=2-1+12-5=\\boxed{8}.\n\\]",
     "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
     "subUnit": "복소수의 연산",
     "subUnitConfidence": "category_or_cue_inferred",

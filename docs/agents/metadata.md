@@ -14,6 +14,12 @@
 - **받는 쪽과 기존 값은 그대로다.** 화면·빌더·등록기는 옛 이름으로 들어온 값도 계속 받고, 기존 문항 값은 지우지 않는다.
 - 이유: 같은 값을 여러 칸에 쓰게 하면 칸끼리 어긋난다(2026-11-18 하/중/상 사고). 줄이는 것은 쓰게 하는 것이지 받는 것이 아니다.
 
+## CURRENT — 원본의 단원 값으로 단원을 못 정한 문항은 승인된 유형이 가리키는 통합 단원으로 묶는다 (2026-11-19 중1, 2026-11-22 중2~고2 확대)
+
+- **무엇:** 카탈로그 빌더가 승인된 유형(`metaHintPT`)이 있는 행에, 그 PT의 ACTIVE 연결(`curriculum_bindings.json`)이 같은 학년에서 통합 단원 **하나**만 가리키면 표시 전용 필드 `metaHintUnit`을 싣는다(둘 이상으로 갈리거나 하나라도 통합 단원으로 못 옮기면 싣지 않음). 중등은 통합 단원 이름, 고등은 통합 단원 키다. 규칙·학년별 켬/끔은 `archive/tools/unit-hint-lib.mjs` 한 곳이다. 통합 단원 층(`archive2-unified-units.js` `unitFor`)은 **원본의 단원 값(키·이름)으로 단원을 정하지 못한 문항에만** 이 값을 쓴다(값이 없거나, 알 수 없는 키·여러 단원에 걸친 옛 대단원 이름). 정본 RPM 판정, 문항별 중단원 지정표, 원본의 단원 값으로 정해지는 문항은 이 값을 읽지 않는다.
+- **등록·승인은 아니다:** 정본 메타 행·영수증·`fieldStatus`를 만들지 않고 새 상태값·승인 종류도 없다(`metaHint*`와 같은 표시·선택 전용 길).
+- **켜는 기준과 현재 상태(2026-11-22 측정, origin/main 카탈로그):** 학년·과목마다 "이미 단원이 정해진 문항에 같은 규칙을 적용했을 때 기존 단원과 같은 비율"이 90% 이상일 때만 켠다. 중1 97.9%, 중2 98.0%, 중3 98.5%, 고1 91.8%, 고2 95.9%. 90% 미만이라 끈 과목: 고2 미적분·공통수학1·기하와벡터(표본 작고 낮음). 고2 수학I 89.2%·기하 89.6%는 90% 미만이지만 힌트가 미분류 문항에만 쓰이고 불일치가 이웃 단원 혼동이라 사용자 기준(쉽게 넓게)으로 켰다. 그 밖에 끈 것: 고1 수학(하)·과목 공백, 고3 전체(미적분 0/22). 끈 과목은 `unit-hint-lib.mjs`의 `offSubjects`에 있고, 일치율을 다시 재서 넘으면 풀어 준다. 이유: 유형 연결은 근처 단원(예: 지수와 로그 ↔ 로그함수)과 섞이기 쉬워, 낮은 과목은 학생이 단원별 선택에서 엉뚱한 문항을 만난다.
+
 ## 난이도는 정수 1~5만 (2026-11-18 21시 KST부터 적용)
 
 - **적용 시점:** 2026-11-18 21:00 KST 이후 새로 만들거나 반입하는 모든 아카이브 문항(기출·유사·교과서·문제집·생성).
@@ -65,6 +71,7 @@
 - **유형 전용 요청의 한계(알고 쓴다):** (1) 행의 지문(stem·보기·그림)이 현재 원본과 달라 `rowBinding`이 `stale`인 행도, 판정이 현재 발문·보기에 대한 것이면(`typeApproval.textBindingFingerprint`가 현재 text-v1과 같거나 판정 당시 내용 지문이 현재와 같음) 카탈로그가 PT/TPL을 보여준다(아래 "메타 결속 지문 범위" 구현 상태). 원본의 해설·정답만 바뀐 `content` 행은 원래 보인다. (2) 영수증이 있는 행(`metadataApprovalType`이 있는 행)과 분류 HOLD 행은 이 길로 받지 않는다. (3) 학생 화면에서는 유형 필터·"승인" 표시(메타 힌트 길)로 보이고, 단원·소단원·RPM 경로 승인이 필요한 L3/L4 엄격 길은 그대로다.
 - **키의 과정이 시험지 학년 이하이면 받는다 (`reach`, 2026-11-19, 사용자 결정 "교육과정 이동 시켜서 메타 완성시켜").** 행의 과정과 키의 과정이 달라도, 키 과정의 학년이 max(행 과정 학년, 시험지 경로 학년) 이하이면 변환기(`chooseScope`)와 등록기(`course-aliases.mjs`의 `reach()`)가 받고 영수증 `typeApproval.scope`에 `rowCourse`·`courseRelation: "reach"`를 남긴다(같은 과정·별칭·후속은 전과 같고 먼저 본다). 시험지 학년보다 높은 학년의 키는 계속 거부한다(같은 학년 키로 다시 판정). 위로 옮겨 간 단원(2009 개정 중3 좌표 거리·최단거리 → 2022 공통수학2)만 `course-aliases.v1.json`의 `courseMoves`(추가 전용, PT·행 학년·키 학년·시험지 연도 상한)로 따로 받는다. 행의 과정·단원 필드는 옮기지 않는다(화면의 유형 선택은 PT만 읽고, 단원별 배치는 행의 단원 필드와 시험지 학년으로 하기 때문). 이유: 교육과정 개편으로 단원이 아래 학년으로 옮겨 가거나 시험지가 낮은 학년 내용을 쓰는 문항 약 260건이 과정 불일치로 거부되고 있었다. 주의: 이 규칙은 형식 검사만 넓히므로 천장 이하 학년의 틀린 키도 형식상 통과한다. 키가 문항에 맞는지는 내용 판정(결정 단계 근거 문장·발문·보기 결속)이 지키는 안전장치다.
 - **유형 전용 요청은 문항의 발문+보기에만 묶인다 (2026-11-18).** 요청 항목마다 `textBindingFingerprint`(text-v1: 발문+보기, 판정 시점 문항 기준)가 필수이고, 등록기는 현재 문항의 text-v1과 비교해 다르면 요청 전체를 거절한다(레인이 요청 단위로 전부-아니면-전무라서. 변환기 `build-type-judgment-requests.mjs`가 `--judged-base auto`(기본)로 바뀐 문항을 미리 뺀다; 판정 시점 원본을 못 찾은 "미확인"은 현재 문항 기준이고 요약 `judgedBaseCheck.unverified`에 건수가 나온다). 시험지 파일의 blob(`expectedSourceBlobSha1`)·`judgedFingerprints`·그림·해설·정답은 비교하지 않는다. 이미 등록된 요청의 재생(replay)은 이후 파일이 바뀌어도 깨지지 않는다. 이유: 그림 참조만 바뀐 시험지의 유형 요청이 blob 불일치로 거부되어 요청을 다시 만들어야 했다.
+- **남은 blob 비교 지점도 발문+보기로 옮김 (2026-11-20).** ① REVIEW2·FINAL_QA 검토 요청(`reviewed-exam-registration-v2.mjs`, 소비자 게이트 `verify-changed-uid-consumer-approval.mjs`, PR 미리 검증 `archive-pr-native-preview.mjs`가 같은 판정 `text-binding-lib.mjs`의 `reviewedSourceTextUnchanged`를 쓴다): `expectedSourceBlobSha1`이 현재 파일과 달라도, 요청이 다루는 문항의 text-v1(발문+보기, 그림이 곧 발문·보기인 문항은 그림 경로 포함)이 요청이 고정한 옛 blob(git에서 읽음)과 같으면 같은 문제로 보고 통과한다. 발문·보기가 다르거나 문항 수가 다르거나 옛 blob을 git에서 못 읽으면 전과 같이 `source Git blob drift`로 거절한다. META_PIPELINE_AUDIT·승인 보존·재결속 등 다른 승인 종류는 증거가 파일 전체 sha256을 직접 가리키므로 blob 비교를 그대로 둔다. ② 시험지별 부모 연결(`exam-scoped/*.parent-links.json`, 빌더 `build-basic-scope-parent-links.mjs`와 소비자 게이트): 파일 blob 비교를 없앴다. 연결은 문항마다 `sourceBodyFingerprint`(발문+보기+그림, text-v1보다 엄격)로 이미 묶여 있고 그 검사가 그대로 거절한다. `expectedSourceBlobSha1` 필드는 참고용이다. ③ diff5 테스트 픽스처는 운영 시험지 blob을 고정하지 않고 테스트가 시작할 때 현재 파일의 LF blob으로 맞춘다. 이유: 해설 그림만 게시해도 파일 blob이 바뀌어, CI가 빨개지면 사람이 세 곳(diff5 픽스처, parent-links, inbox 요청과 approval-note)의 blob을 손으로 다시 맞추는 PR을 따로 만들었다(c2ece4b76f, b4c6e60e5e, c74ed2af63 등). 막는 것은 학생이 보는 발문·보기가 바뀐 실제 결함뿐이다.
 
 ## CURRENT — PT/TPL 이름의 굵기: 단어 위주로 단순하게, 세부는 조건·결합 개념으로 (2026-11-17, 사용자 결정)
 
@@ -98,7 +105,7 @@
 - 4칸은 문항의 발문과 해설을 읽고 판정한다. PT/TPL/CC/COND 키나 라벨을 보고 치환해 채우지 않는다.
 - 신규 제작분은 해당 제작·검수 라인이 자기 역할 안에서 작성·검토한다. 기존 자료의 비교 시범·일괄 확대는 [4칸 GPT 인계](../operations/JS_Archive_4Slot_GPT_Handoff_CURRENT_v1.md)의 별도 배정·독립성·제출 형식을 따른다. 이 문서가 모델이나 예약·Git 쓰기 권한을 새로 지정하지 않는다.
 - 작성한 4칸 기록의 검수·main 반영(compact 파일 `archive/data/item-4slot/`, 도구 `tools/4slot/`, 반려 절차)은 [4칸 검수와 main 반영](../operations/JS_Archive_4Slot_Review_and_Main_Import_CURRENT_v1.md)을 따른다. 이유: 증거는 작업 브랜치에 두고 main에는 용어 번호만 올리는 분리를 지키기 위해서다.
-- 아직 운영 메타(`question_metadata.json`)·등록기·catalog·검색 화면과 연결하지 않았고 기존 승인·출제 자격에 영향이 없다. 이유: 시범 결과는 좋지만 통합은 장애 주입과 PC·휴대폰 실제 확인을 거쳐 따로 승인받기로 했다.
+- 아직 운영 메타(`question_metadata.json`, git에는 `archive/data/question-metadata/v1/`의 시험별 조각으로 있다)·등록기·catalog·검색 화면과 연결하지 않았고 기존 승인·출제 자격에 영향이 없다. 이유: 시범 결과는 좋지만 통합은 장애 주입과 PC·휴대폰 실제 확인을 거쳐 따로 승인받기로 했다.
 
 ## CURRENT — PT·TPL·CrossConcept·Condition·크로스워크 행 확장 원칙 (2026-11-02, 사용자 결정)
 
@@ -116,7 +123,7 @@
 
 ## CURRENT — 기본범위 승인 재결속 `archive-basic-scope-rebind-request-v1` (2026-11-02, 사용자 결정)
 
-- 기본범위 승인(question_metadata의 standardUnit/subUnit 승인 행 + `basic-scope-source-links.json` 부모 연결)된 문항의 그림만 바뀌어 fingerprint가 어긋나 strict 검색에서 사라졌을 때, 메타 값은 그대로 두고 원본 해시만 다시 묶는 등록 요청이다. 구현: `archive/tools/meta-foundation/register-basic-scope-rebind.mjs`, 테스트: `tests/archive-basic-scope-rebind.test.mjs`. 이유: 기존 등록기(v2)는 시험지 전체 재등록만 받아 그림 하나 때문에 전체 재검수를 해야 했고, 등록 동기화(main 등록기)는 본문 fingerprint가 달라진 부모 연결을 조용히 버린다.
+- 기본범위 승인(운영 메타 `question_metadata.json`의 standardUnit/subUnit 승인 행, 시험별 조각 `archive/data/question-metadata/v1/` + `basic-scope-source-links.json` 부모 연결)된 문항의 그림만 바뀌어 fingerprint가 어긋나 strict 검색에서 사라졌을 때, 메타 값은 그대로 두고 원본 해시만 다시 묶는 등록 요청이다. 구현: `archive/tools/meta-foundation/register-basic-scope-rebind.mjs`, 테스트: `tests/archive-basic-scope-rebind.test.mjs`. 이유: 기존 등록기(v2)는 시험지 전체 재등록만 받아 그림 하나 때문에 전체 재검수를 해야 했고, 등록 동기화(main 등록기)는 본문 fingerprint가 달라진 부모 연결을 조용히 버린다.
 - 거부 조건: 요청이 메타 값을 바꾸려 함(before/after는 두 fingerprint만), 승인 행이 아님·검토 초기화 대기, 요청 시험지에 없는 qid, 소스 blob/이전 blob/저장된 fingerprint/after 해시 불일치, 이전 blob이 승인 fingerprint를 재현하지 못함, 정답·선택지·풀이·분류 필드 변경, 본문 변경(맨 앞 `[도형필요]`/`[그래프필요]` 줄 제거와 숫자·`$`·`\` 없는 8자 이하 선언 문구 수정만 허용), 그림 파일 없음, 그림·본문이 실제로 안 바뀜, `basicParent`가 승인 소단원의 유일한 정본 부모가 아님, 기존 연결의 부모 변경. 거부 시 어떤 파일도 쓰지 않는다.
 - 추가 결속(2026-11-02 검수 반영): 새 그림(image 참조 변경, 파일 존재, 해당 문항 `assets/images/<시험지>/q<번호>.<ext>`)이 항상 필수이고 본문 수정은 그 위에서만 허용한다. 글자 수·숫자 제한만으로는 "최대→최소" 같은 뜻 뒤집기를 못 막으므로, 승인 evidenceRefs의 검토 파일(`archive-basic-scope-rebind-review-v1`)에 같은 requestId·examUid·sourceArchiveFile, 문항별 `contentEdits`(요청과 정확히 같음)와 변경 후 본문 `contentAfterSha256`이 있어야 한다. 다른 요청·시험지·문항의 검토 파일은 거부한다.
 - 이 경로는 검수를 대신하지 않는다. 그림 변경이 문항 의미를 바꾸지 않았다는 확인(문항·해설·정답·그림 직접 확인)을 `evidenceRefs`의 검토 파일에 남긴 요청만 쓴다.
@@ -187,7 +194,7 @@
 
 ## CURRENT — 소단원 묶음표: 같은 내용의 소단원 키를 하나로 보여 주고 고른다 (2026-11-11, 사용자 결정)
 
-- **무엇:** `archive/data/archive2-subunit-groups.json`. 같은 통합 단원(subject + unitKey) 안에서 한 소단원으로 보여 주고 선택하는 `subUnitKey` 묶음이다. 기존 키·정본 값(`question_metadata.json`), 크로스워크, `sealed-digests`, 카탈로그는 바꾸지 않는다. 표시와 선택에만 쓰고 표에 없는 키는 자기 자신이 하나의 묶음이다. 이유: 같은 내용이 2015·2022 키, 표기, 단원 번호 때문에 여러 풀로 갈라져 소단원 평가가 모이지 않았다.
+- **무엇:** `archive/data/archive2-subunit-groups.json`. 같은 통합 단원(subject + unitKey) 안에서 한 소단원으로 보여 주고 선택하는 `subUnitKey` 묶음이다. 기존 키·정본 값(`question_metadata.json`, git에는 `archive/data/question-metadata/v1/` 조각), 크로스워크, `sealed-digests`, 카탈로그는 바꾸지 않는다. 표시와 선택에만 쓰고 표에 없는 키는 자기 자신이 하나의 묶음이다. 이유: 같은 내용이 2015·2022 키, 표기, 단원 번호 때문에 여러 풀로 갈라져 소단원 평가가 모이지 않았다.
 - **원천과 도구:** 사람이 문항 발문을 읽고 정한 판정은 `archive/data/meta-os/subunit-group-rules.json`이 소유한다. 표는 `node archive/tools/meta-os/build-subunit-groups.mjs`로 만들고 `--check`로 같은지 본다. 표를 손으로 고치지 않는다. 새 묶음은 규칙 파일에 판정을 추가해 다시 만든다. 새 키가 정본에 생겨도 `--check`는 실패하지 않고 미분류(자기 묶음) 키 수만 센다.
 - **묶음 종류:** `subunit`(소단원, 이름은 마스터 표 `labelKo`이고 2022 체계 키가 있으면 그 이름), `unit_general`(`...-CORE` 같은 넓은 키, 쪼갠 키와 묶지 않음, 이름 "단원 일반"), `unit_other`(마스터 표에 없는 임시 키 중 분명한 마스터 소단원이 없는 것, 이름 "기타"), `moved`(다른 단원 소단원에 속하는 키, 아래), `excluded`(문제 번호가 키가 된 `...-P152-Q04` 류, 소단원 평가 제외).
 - **묶는 기준:** 이름·내용이 사실상 같을 때만 묶는다. 삼각함수 정의와 삼각함수 기본처럼 범위가 다르면 묶지 않고, 확신이 없으면 따로 둔다. 키마다 실제 문항 2~3개의 발문을 읽어 같은 내용인지 확인한 묶음만 `reviewed: true`다.

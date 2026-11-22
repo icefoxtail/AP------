@@ -1132,6 +1132,37 @@ test('diagnostic A·B: one check box opens two papers (A형 / B형) with the sam
   assert.doesNotMatch(h.w.renderQuick(), /quick-two-forms/);
 });
 
+test('diagnostic 결과표 열기: the paper just made gets a new-tab link to diagnostic-report.html?uids= in paper order (A and B each); nothing before a paper exists or in other products', async () => {
+  const data = fillCatalog([20, 20, 40, 4, 0], 12);
+  const h = harness(data, { restore: okRestore() });
+  h.w.state.view = 'diagnostic';
+  h.w.quickState.grade = '고1';
+  h.w.quickState.subject = 'COMMON_MATH_1';
+  assert.doesNotMatch(h.w.renderQuick(), /diagnostic-report\.html/, 'no link before a paper is made');
+  await h.w.openQuickAssessment('all');
+  const [a] = h.published;
+  const reportLinks = markup => [...markup.matchAll(/<a class="qk-report-link" href="([^"]*)" target="_blank" rel="noopener"[^>]*>([^<]*)<\/a>/g)];
+  let links = reportLinks(h.w.renderQuick());
+  assert.equal(links.length, 1);
+  assert.equal(links[0][2], '결과표 열기');
+  const url = new URL(links[0][1], 'https://archive.test/archive/workspace.html');
+  assert.equal(url.pathname, '/archive/assessment/diagnostic-report.html');
+  assert.deepEqual(url.searchParams.get('uids').split(','), Array.from(a.questionUids), 'the paper UIDs in paper order');
+  assert.equal(a.questionUids.length, 24);
+  // A·B: one link each, B has none of A's questions
+  await h.change({ id: 'quick-two-forms', checked: true, dataset: { quickTwoForms: '' } });
+  await h.w.openQuickAssessment('all');
+  const [, a2, b2] = h.published;
+  links = reportLinks(h.w.renderQuick());
+  assert.deepEqual(links.map(link => link[2]), ['A형 결과표 열기', 'B형 결과표 열기']);
+  const uidsOf = link => new URL(link[1], 'https://archive.test/archive/workspace.html').searchParams.get('uids').split(',');
+  assert.deepEqual(uidsOf(links[0]), Array.from(a2.questionUids));
+  assert.deepEqual(uidsOf(links[1]), Array.from(b2.questionUids));
+  // not offered for the other quick products
+  h.w.state.view = 'monthly-test';
+  assert.doesNotMatch(h.w.renderQuick(), /diagnostic-report\.html/);
+});
+
 test('diagnostic on the real catalog: 고3 미적분Ⅱ 기본 (22 originals) is built by fill from 유형·유사; the screen says so; A·B keep the cell counts', async () => {
   const data = await catalog();
   const previous = globalThis.Archive2Similar;

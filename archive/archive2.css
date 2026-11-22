@@ -2127,6 +2127,36 @@ body[data-archive-view="compose"] .compose-detail > summary .badge {
 .qk-r-after {
   font-size: 13px;
 }
+/* 진단평가 결과표 links of the paper just made; outside .qk-actions so they stay visible below 1100px. */
+.qk-report {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.qk-report-note {
+  margin: 0;
+  font-size: 13px;
+  word-break: keep-all;
+}
+.qk-report-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+.qk-report-link:hover {
+  background: var(--chip);
+  color: var(--ink);
+}
 .qk-r-fill {
   padding: 8px 10px;
   border-radius: var(--radius-field);
@@ -3703,6 +3733,19 @@ body[data-archive-view="compose"] .compose-step-number {
 .find-term[aria-pressed="true"] {
   font-weight: 700;
 }
+/* 고1~고3 subjects right under the grade buttons; they wrap (never scroll sideways) so every subject is visible. */
+.find-subjects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.find-subject {
+  padding: 0 16px;
+  font-weight: 500;
+}
+.find-subject[aria-pressed="true"] {
+  font-weight: 700;
+}
 .find-options {
   display: flex;
   flex-wrap: wrap;
@@ -3871,7 +3914,8 @@ body[data-archive-view="compose"] .compose-step-number {
     min-width: 54px;
     padding: 0 10px;
   }
-  .find-term {
+  .find-term,
+  .find-subject {
     padding: 0 14px;
     font-size: 15px;
   }
@@ -3952,6 +3996,10 @@ body[data-archive-view="compose"] .cz {
   border: 0;
   border-radius: 0;
   padding: 0 8px;
+}
+/* 둘 다 눌려 검게 칠해져도 단추가 둘로 읽히게 사이에 밝은 선을 둔다. */
+.cz-seg button + button {
+  border-left: 2px solid var(--surface);
 }
 .cz-chips {
   display: flex;
@@ -4921,3 +4969,157 @@ body[data-archive-view="compose"] .cz:not(.has-result) .cz-result {
 .derive-compose-note p { margin: 4px 0 0; }
 .derive-compose-note ul { margin: 4px 0 0; padding-left: 18px; }
 .derive-dialog .derive-publisher[hidden] { display: none; }
+
+/* ---- 여러 시험지 한꺼번에 출제 (2026-11-22) ------------------------------------------------------
+   학교별 기출의 원본·유사 시험지 줄에 체크 칸(`.multi-pick`), 하나 이상 고르면 아래 띠(`.multi-assign-bar`).
+   원본 줄(`.has-pick`)의 체크는 줄 맨 앞 칸(연도·학년 배지보다 왼쪽)에서 줄 높이의 가운데에 서고, 유사 칸·유사 세트
+   대화상자의 체크는 "함께 출제" 알약이다. 눌리는 영역은 44px 이상, 보이는 상자는 22px 둥근 네모(고르면 강조색+✓)이며
+   고른 줄은 옅은 강조 배경이 된다. 띠는 `선택한 시험 N개`(문항 선택) 띠와 같은 모양이고 둘이 함께 있으면(`.stacked`) 위로 쌓는다. */
+button.multi-pick {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 12px 0 10px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: 14px;
+  white-space: nowrap;
+}
+button.multi-pick::before {
+  content: "";
+  box-sizing: border-box;
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--ink-2);
+  border-radius: 6px;
+  background: var(--surface);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 18px;
+  text-align: center;
+}
+button.multi-pick:hover::before {
+  border-color: var(--brand);
+}
+button.multi-pick.on {
+  border-color: var(--brand);
+  background: var(--brand-soft);
+  color: var(--brand-ink);
+}
+button.multi-pick.on::before {
+  content: "\2713";
+  border-color: var(--brand);
+  background: var(--brand);
+}
+/* 줄 맨 앞 체크: 칸만 보이고(글자는 접근성 이름·툴팁), 칸 자체는 테두리·배경 없이 44px 영역 가운데에 상자만 둔다. */
+button.multi-pick.lead {
+  grid-area: pick;
+  align-self: center;
+  justify-self: center;
+  justify-content: center;
+  width: 44px;
+  min-width: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-field);
+  background: transparent;
+  font-size: 0;
+  gap: 0;
+}
+button.multi-pick.lead.on {
+  background: transparent;
+}
+button.multi-pick.lead:hover {
+  background: var(--brand-soft);
+}
+.exam-row.multi-on {
+  border-color: var(--brand);
+  background: var(--brand-soft);
+}
+/* 체크 칸이 있는 줄: 맨 앞에 체크 열을 하나 더 둔다. 배지가 맨 왼쪽이 아니므로 배지의 왼쪽 둥근 모서리는 없앤다. */
+.exam-row.has-pick {
+  grid-template-columns: 48px 56px minmax(0, 1fr);
+  grid-template-areas:
+    "pick spine main"
+    "actions actions actions"
+    "sim sim sim";
+}
+.exam-row.has-pick.no-sim {
+  grid-template-areas:
+    "pick spine main"
+    "actions actions actions";
+}
+.exam-row.has-pick .exam-row-spine,
+.exam-row.has-pick.no-sim .exam-row-spine {
+  border-radius: 0;
+}
+.exam-row-sim.has {
+  flex-wrap: wrap;
+}
+.exam-row-sim-actions button {
+  white-space: nowrap;
+}
+@container exam-rows (min-width: 560px) {
+  .exam-row.has-pick {
+    grid-template-columns: 52px 68px minmax(0, 1fr);
+    grid-template-areas:
+      "pick spine main"
+      "pick spine actions"
+      "sim sim sim";
+  }
+  .exam-row.has-pick.no-sim {
+    grid-template-areas:
+      "pick spine main"
+      "pick spine actions";
+  }
+}
+@container exam-rows (min-width: 920px) {
+  .exam-row.has-pick {
+    grid-template-columns: 52px 68px minmax(0, 1fr) auto 316px;
+    grid-template-areas: "pick spine main actions sim";
+  }
+  .exam-row.has-pick.no-sim {
+    grid-template-columns: 52px 68px minmax(0, 1fr) auto;
+    grid-template-areas: "pick spine main actions";
+  }
+  .exam-rows:has(.exam-row.has-pick) .exam-rows-head span:first-child {
+    padding-left: 136px;
+  }
+}
+.find-multi-hint {
+  color: var(--ink-2);
+  font-size: 14px;
+}
+.multi-assign-bar button {
+  border: 1.5px solid var(--ink);
+  background: var(--surface);
+  color: var(--ink);
+}
+.multi-assign-bar button.primary {
+  border-color: var(--brand);
+  background: var(--brand);
+  color: #fff;
+}
+.multi-assign-slot {
+  display: contents;
+}
+.multi-assign-bar.stacked {
+  bottom: 88px;
+}
+@media (max-width: 700px) {
+  button.multi-pick:not(.lead) {
+    padding: 0 10px 0 8px;
+    font-size: 13px;
+  }
+  .multi-assign-bar.stacked {
+    bottom: calc(var(--archive2-mobile-bottom-nav-offset, 0px) + 90px);
+  }
+  .finder-surface:has(.multi-assign-bar.stacked) {
+    padding-bottom: calc(194px + var(--archive2-mobile-bottom-nav-offset, 0px));
+  }
+}

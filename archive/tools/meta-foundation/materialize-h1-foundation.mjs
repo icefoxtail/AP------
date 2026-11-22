@@ -10,8 +10,10 @@ import vm from "node:vm";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import core from "../../archive2-core.js";
+import { refuseDirectMetadataWrite } from "./question-metadata-format.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
+refuseDirectMetadataWrite(root, "materialize-h1-foundation");
 const generatedRoot = "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint";
 const ledgerDir = `${generatedRoot}/l4-global-normalization`;
 const canonicalRoot = "archive/data/meta-foundation/canonical";

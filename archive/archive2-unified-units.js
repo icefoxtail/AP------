@@ -138,6 +138,25 @@
   // profile, legacy key and legacy label, so identical triples are classified once per page.
   const unitMemo = new Map();
   function unitFor(record, grade, rpmResolution) {
+    const fromSource = unitFromSource(record, grade, rpmResolution);
+    if (fromSource) return fromSource;
+    // 원본의 단원 값(키·이름)으로 단원을 정하지 못한 문항(값이 없거나, 알 수 없는 키·여러 단원에 걸친 옛 대단원 이름)만, 카탈로그가 승인된 유형으로
+    // 하나로 정해 싣는 통합 단원(metaHintUnit, 표시 전용)을 쓴다. 원본·정본 RPM 판정·문항별 중단원 지정표로 정해지는 문항은 이 값을 읽지 않는다.
+    // 중등은 통합 단원 이름, 고등은 통합 단원 키다(고등 단원 판정은 키로만 읽는다).
+    const hint = text(record.metaHintUnit);
+    if (!hint) return null;
+    const pid = GRADE_PROFILE[grade];
+    const profile = UnitCore.PROFILES[pid];
+    const isKey = profile.units.some(unit => unit.key === hint);
+    const memoKey = `hint\u0000${pid}\u0000${hint}`;
+    if (!unitMemo.has(memoKey)) {
+      const found = computeUnit({ sourceFile: HINT_PROBE_FILE, sourceQuestionNo: 1, sourceOrdinal: 1 }, grade, pid, profile, isKey ? hint : "", isKey ? "" : hint);
+      unitMemo.set(memoKey, found ? { unitKey: found.unitKey, reason: "meta-hint-unit" } : null);
+    }
+    return unitMemo.get(memoKey);
+  }
+  const HINT_PROBE_FILE = "original/meta-hint-unit-probe.js";
+  function unitFromSource(record, grade, rpmResolution) {
     const pid = GRADE_PROFILE[grade];
     const profile = UnitCore.PROFILES[pid];
     if (rpmResolution?.status === "EXACT" && rpmResolution.parent)

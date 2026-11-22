@@ -829,6 +829,7 @@ window.questionBank = [
     ],
     "wide": false,
     "image": "assets/images/25_신흥중_2학기_기말_중3_기출/q18.png",
+    "imageScale": 100,
     "imageSize": "tall",
     "content": "다음 중 두 변량 $x,y$에 대한 산점도를 그렸을 때, 대체로 다음 그림과 같은 모양이 되는 것은? (4점)",
     "choices": [],
@@ -918,6 +919,7 @@ window.questionBank = [
     ],
     "wide": false,
     "image": "assets/images/25_신흥중_2학기_기말_중3_기출/q20.png",
+    "imageScale": 100,
     "imageSize": "tall",
     "content": "다음 산점도는 어느 사격 동아리 학생 $30$명이 사격시험에서 $1,2$차에 쏘아 얻은 점수를 조사하여 나타낸 것이다. 아래 조건을 모두 만족시키는 학생의 비율은? (4점)",
     "choices": [
@@ -967,6 +969,7 @@ window.questionBank = [
     ],
     "wide": false,
     "image": "assets/images/25_신흥중_2학기_기말_중3_기출/q21.png",
+    "imageScale": 90,
     "imageSize": "tall",
     "content": "다음은 원 $O$에 내접하는 정오각형과 그 대각선을 이어서 그린 별 모양을 보며 두 사람이 나눈 대화이다. $\\angle CAD$의 크기를 두 사람의 방법 중 하나를 선택하여 구하고, 그 과정을 서술하시오. (4점)",
     "choices": [],

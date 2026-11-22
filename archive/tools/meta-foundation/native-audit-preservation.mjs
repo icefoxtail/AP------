@@ -1,6 +1,7 @@
 // Preserve an existing audit approval across source metadata transport and an
 // explicitly reviewed difficulty correction. This never performs a new audit.
 import fs from "node:fs";
+import { META_FILE, questionMetadataBytesAt } from "./question-metadata-format.mjs";
 import path from "node:path";
 import vm from "node:vm";
 import crypto from "node:crypto";
@@ -63,7 +64,7 @@ function commit(root, value) {
 }
 function gitJson(root, revision, relative) {
   const key = stable([path.resolve(root), revision, relative]);
-  if (!immutableJson.has(key)) immutableJson.set(key, JSON.parse(git(root, ["show", revision + ":" + relative])));
+  if (!immutableJson.has(key)) immutableJson.set(key, JSON.parse(relative === META_FILE ? questionMetadataBytesAt(root, revision).toString("utf8") : git(root, ["show", revision + ":" + relative])));
   return immutableJson.get(key);
 }
 function parseBank(bytes) {

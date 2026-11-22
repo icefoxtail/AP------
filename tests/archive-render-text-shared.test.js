@@ -112,8 +112,52 @@ test('보기 블록: 발문 중간의 [보기]는 상자로 바뀌지 않고, �
   assert.match(midOut, /<div class="question-note-box">ㄱ\. /);
   const long = 'ㄱ. 가나다라마바사아자차카타파하 가나다라마바사<br>ㄴ. 가나다라마바사아자차카타파하 가나다라마바사<br>ㄷ. 가나다라마바사';
   const lead = T.normalizeViewBlocks('다음 중 옳은 것은?<br><br>[보기]<br>' + long);
-  assert.match(lead, /<b>보기<\/b><br>/);
+  assert.match(lead, /<b>\[보기\]<\/b><br>/);
   assert.match(lead, /ㄷ\. 가나다라마바사<\/div>/);
+  assert.equal((lead.match(/class="question-note-box"/g) || []).length, 1);
+});
+
+test('이미 테두리가 있는 순천여고 4번 보기에는 줄 하나와 원래 상자만 쓴다', () => {
+  const box = '<div style="border: 1px solid #000; padding: 10px; margin: 10px 0;"><b>&lt; 보 기 &gt;</b><br>'
+    + 'ㄱ. $p$는 $q$이기 위한 충분조건이다.<br>ㄴ. 명제 $q \\to r$의 역은 참이다.<br>'
+    + 'ㄷ. 명제 $\\sim p \\to \\sim r$의 대우는 거짓이다.<br>ㄹ. $p$는 $r$이기 위한 필요충분조건이다.</div>';
+  const prompt = '일 때, &lt;보기&gt;에서 옳은 것만을 있는 대로 고른 것은? [4.7점]';
+  assert.equal(T.normalizeViewBlocks(prompt + '<br><br>' + box), prompt + '<br>' + box);
+});
+
+test('보기 제목이 든 상자를 온전히 보존하고 앞의 보기와 합치지 않는다', () => {
+  const example = '<div class="note-box"><div class="note-box-title">&lt;예시&gt;</div>별도 설명</div>';
+  const statements = 'ㄱ. 가나다라마바사아자차카타파하 가나다라마바사<br>ㄴ. 가나다라마바사아자차카타파하 가나다라마바사<br>ㄷ. 가나다라마바사';
+  assert.equal(T.normalizeViewBlocks(example.replace('별도 설명', statements)), example.replace('별도 설명', statements));
+  const rows = T.normalizeViewBlocks('다음 중 참인 것은?<br><br>' + statements + '<br><br>' + example);
+  assert.ok(rows.includes('</div>' + example) || rows.includes('</div><br>' + example), rows);
+  const reference = '&lt;보기&gt;는 아래 그래프이다. 오른쪽 그래프와 관계있는 식을 고르시오.<br><br>' + example;
+  assert.equal(T.normalizeViewBlocks(reference), reference.replace('<br><br>', '<br>'));
+  const legacy = '<div class="box-region">[보기]<br>' + statements + '</div>';
+  assert.equal(T.normalizeViewBlocks('앞<br><br>' + legacy + '<br><br>끝'), '앞<br>' + legacy + '<br>끝');
+});
+
+test('표시 수식 단위는 유지하고 서술형 소문항 앞 중복 개행만 걷는다', () => {
+  const formula = '$$p: |x|+|y|=0$$';
+  const second = '$$q: f(1)+f(2)=0$$';
+  assert.equal(T.normalizeQuestionContentBreaks('조건<br>' + formula + '<br>' + second + '<br>일 때'),
+    '조건 ' + formula + ' ' + second + ' 일 때');
+  const prompt = '다음 물음에 답하시오. [총 5점]<br><br>(1) $f(1) + (2)$를 구하시오. [2점] (2) (1)의 값을 사용하시오. [3점]';
+  assert.equal(T.normalizeQuestionContentBreaks(prompt, { subjective: true }),
+    '다음 물음에 답하시오. [총 5점]<br>(1) $f(1) + (2)$를 구하시오. [2점]<br>(2) (1)의 값을 사용하시오. [3점]');
+  assert.equal(T.normalizeQuestionContentBreaks(prompt), prompt);
+});
+
+test('표시 수식 경계의 리터럴 개행은 수식 밖에 남긴다', () => {
+  const source = '일 때\\n\\[\\n\\nabla f(x) = 0\\n\\]\\n값을 구하시오.';
+  assert.equal(T.wrapLatex(source), '일 때<br>$$\\nabla f(x) = 0$$<br>값을 구하시오.');
+  assert.equal(T.wrapLatex('계산하시오.\\n\\[\\n\\frac12\\n\\left(x+1\\right)\\n\\]'),
+    '계산하시오.<br>$$\\frac12 \\left(x+1\\right)$$');
+  assert.equal(T.wrapLatex('\\[\\n(2^x-32)\\n\\]'), '$$(2^x-32)$$');
+  assert.equal(T.wrapLatex('\\[\\nabla f(x) = 0\\]'), '$$\\nabla f(x) = 0$$');
+  const cases = '$f(n)=\\begin{cases}n/2&(n\\text{이 짝수})\\\\n+3&(n\\text{이 홀수})\\end{cases}$';
+  assert.equal(T.wrapLatex(cases), cases);
+  assert.equal(T.wrapLatex('$3x=2-1$\\\\n$3x=1$'), '$3x=2-1$<br>$3x=1$');
 });
 
 test('protectRenderSegments: 표·상자·수식을 보호하고 복원하면 원문과 같다 (토큰 노출 없음)', () => {

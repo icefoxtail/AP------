@@ -104,7 +104,12 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "metaReviewStatus": "OWNER_INCOMPLETE"
+    "metaReviewStatus": "OWNER_INCOMPLETE",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽의 내려가는 직선과 오른쪽의 아래로 볼록한 곡선이 가로축 위의 점 P에서 만나는 그래프이다.",
+    "solutionImageCaption": "x→3-에서 -x+k는 k-3으로, x→3+에서 x²-x-6은 0으로 가까워진다. 극한이 존재하려면 두 값이 같아야 하므로 k-3=0, k=3이다. 그림은 k=3일 때의 그래프로 왼쪽 직선 y=-x+3과 오른쪽 곡선 y=x²-x-6이 x축 위의 점 P(3,0)에서 만난다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 3,
@@ -208,7 +213,12 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "metaReviewStatus": "OWNER_INCOMPLETE"
+    "metaReviewStatus": "OWNER_INCOMPLETE",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 오르는 직선이 x=2에서 빈 점으로 끊겼다가, 같은 높이의 닫힌 점에서 이어지는 그래프이다.",
+    "solutionImageCaption": "분자가 x=2에서 0이어야 하므로 a=-2이고, 그러면 x≠2에서 (x²-x-2)/(x-2)=x+1이라 그래프는 직선 y=x+1에서 x=2의 높이 3인 열린 점(구멍)이 빠진 모양이다. f(2)=b인 닫힌 점이 그 구멍과 같은 높이에 있어야 연속이므로 b=3이다. 따라서 a+b=1이고 답은 ③이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 80
   },
   {
     "id": 5,
@@ -260,7 +270,12 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "metaReviewStatus": "OWNER_INCOMPLETE"
+    "metaReviewStatus": "OWNER_INCOMPLETE",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 끊어지지 않고 오르는 직선 위에 점 P가 표시된 그래프이다.",
+    "solutionImageCaption": "x=3에서 0=3+3a이므로 a=-1이고, x≠3에서 (x-3)f(x)=(x-3)(x+2)라 f(x)=x+2이다. x=3에서 식 (x²-x-6)/(x-3)은 정의되지 않아 구멍이 생기지만, 모든 실수에서 연속인 f는 그 구멍을 극한값으로 메워 점 P(3,5)를 지난다. 그림은 이렇게 이어진 직선 y=x+2이다. 따라서 f(3)=5이고 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 6,
@@ -371,7 +386,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "metaReviewStatus": "OWNER_INCOMPLETE"
+    "metaReviewStatus": "OWNER_INCOMPLETE",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선과 오르는 직선이 점 T에서 접하고 나머지 구간에서는 직선이 포물선 아래에 있는 그래프이다.",
+    "solutionImageCaption": "예: a=1이고 f(x)=x²일 때를 그렸다. 직선 g(x)=2x-1이 점 T(1,1)에서 곡선에 접한다. 접하면 접점의 높이가 같아 f(a)=g(a)이고 접선의 기울기도 같아 f′(a)=g′(a)이다. f(a)-g(a)=0이라 [f(x)-g(x)]/(x-a)의 극한은 f′(a)-g′(a)=0이므로 값 1이라는 ㄷ은 거짓이다. 따라서 ㄱ, ㄴ이 옳고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -425,7 +444,12 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "metaReviewStatus": "OWNER_INCOMPLETE"
+    "metaReviewStatus": "OWNER_INCOMPLETE",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 아래 점 A에서 시작해 한 번 내려갔다 올라 오른쪽 위의 점 B에 이르는 곡선과 A, B를 잇는 직선 l, 그리고 구간 안의 점 T에서 접하며 l과 평행한 직선 m이 나타난 그래프이다.",
+    "solutionImageCaption": "구간 [0,2]의 양 끝점 A(0,0), B(2,4)를 잇는 할선 l의 기울기는 2이다. f′(c)=3c²-2=2에서 c²=4/3이고 구간 (0,2) 안의 값은 c=2√3/3이다. 접점 T에서의 접선 m이 할선 l과 평행하다. 음수 해는 구간 밖이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 9,
@@ -702,7 +726,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "metaReviewStatus": "OWNER_INCOMPLETE"
+    "metaReviewStatus": "OWNER_INCOMPLETE",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 P에서 가로축에 매끄럽게 닿는 곡선으로, 왼쪽은 내려갔다 올라 P에 이르고 오른쪽은 P에서 내려갔다 오르는 그래프이다.",
+    "solutionImageCaption": "a=-1이면 f(x)=x(x-1)|x-1|이다. x<1에서 -x(x-1)², x≥1에서 x(x-1)²이고 점 P(1,0)에서 좌미분계수 -h(1)=0, 우미분계수 h(1)=0이 같아 곡선이 x축에 매끄럽게 닿는다. a가 -1이 아니면 P에서 좌우 기울기가 서로 달라 뾰족하게 꺾인다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -757,10 +785,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "metaReviewStatus": "OWNER_INCOMPLETE",
-    "solutionImage": "assets/images/20_금당고_2학기_중간_고2_수학II/q14-solution.svg",
-    "solutionImageAlt": "사차함수 위의 접점 두 개와 원점으로 이루어진 삼각형 및 두 접선을 정확히 표시한 그림",
-    "solutionImageCaption": "접점 A, B의 y좌표가 8이므로 밑변 AB와 원점에서의 높이를 읽는다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고2_수학II/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가운데가 낮은 W 모양의 사차곡선과 원점을 지나는 두 직선이 있고, 두 직선이 곡선의 점 S와 점 T에서 각각 접하며 S와 T를 잇는 수평 선분이 그려진 그래프이다.",
+    "solutionImageCaption": "원점 O에서 그은 두 접선 l1, l2의 접점은 t²=2인 T(√2,8), S(-√2,8)이다. 접선의 기울기는 f′(±√2)=±4√2이다. 삼각형 OST의 밑변 ST는 y=8 위에서 길이 2√2이고 O에서 밑변까지의 높이는 8이다. 넓이는 (1/2)·2√2·8=8√2이므로 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 15,
@@ -821,7 +850,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "metaReviewStatus": "OWNER_INCOMPLETE"
+    "metaReviewStatus": "OWNER_INCOMPLETE",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽의 오르는 직선과 오른쪽의 내려가는 직선 사이를 위로 볼록한 포물선이 두 점 A, B에서 매끄럽게 이어 지붕 모양을 이루는 그래프이다.",
+    "solutionImageCaption": "가운데 이차식 p(x)=ax²+bx+c가 A(-1,1), B(1,1)에서 직선과 값과 기울기가 모두 같아야 한다. 그러면 b=0, a=-1/2, c=3/2이다. 그림은 왼쪽 직선 y=x+2, 가운데 포물선 y=-x²/2+3/2, 오른쪽 직선 y=-x+2가 A와 B에서 꺾임없이 이어지는 모습이다. 20(a²+b²+c²)=20(1/4+0+9/4)=50이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -879,7 +912,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "metaReviewStatus": "OWNER_INCOMPLETE"
+    "metaReviewStatus": "OWNER_INCOMPLETE",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: x=-1에서 왼쪽 수평선이 높은 열린 점으로 끝나고 오른쪽의 오르는 직선이 낮은 열린 점에서 시작해 x=1과 x=2 근처로 이어지는 끊어진 그래프이다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다. x=-1의 왼쪽 가지는 높이 3의 열린 점으로, 오른쪽 가지는 높이 -1의 열린 점에서 시작하고, x→1-에서 f→2, x→2-에서 f→3이다. x→2-이면 1-x가 -1의 오른쪽에서 가까워지므로 f(1-x)→-1이고 첫 곱의 극한은 3·(-1)=-3이다. x→1-이면 x²-2가 -1의 왼쪽에서 가까워지므로 f(x²-2)→3이고 둘째 곱은 2·3=6이다. 합은 3이고 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -990,9 +1027,9 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "metaReviewStatus": "OWNER_INCOMPLETE",
-    "solutionImage": "assets/images/20_금당고_2학기_중간_고2_수학II/q18-solution.svg",
-    "solutionImageAlt": "공통 접선이 두 포물선에 각각 접하는 점 P,Q와 g의 두 x절편 R,S를 표시한 삼각형",
-    "solutionImageCaption": "공통 접선의 기울기와 삼각형 QRS의 밑변·높이를 연결한다.",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고2_수학II/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선이 가로축을 두 점 R, S에서 지나고, 왼쪽 점 P에서 시작해 오르는 직선 l이 포물선의 점 Q에서 접하는 그래프이다.",
+    "solutionImageCaption": "f′(1)=2이므로 점 P(1,1)에서의 접선은 l: y=2x-1이다. g′(x)=-2(x-3)=2에서 접점 Q의 x좌표는 2이고 Q(2,3)이 l 위에 있으므로 g(2)=k-1=3에서 k=4이다. 그림은 g(x)=-(x-3)²+4와 접선 l이고 g가 x축과 만나는 점은 R(1,0), S(5,0)이다. 삼각형 QRS의 밑변 RS=4, 높이 3이라 넓이는 6이고 넓이와 k의 합은 10이다. 따라서 답은 ②이다.",
     "solutionImageSize": "full"
   },
   {
@@ -1050,7 +1087,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
-    "metaReviewStatus": "R2_SEMANTIC_PINPOINT_CORRECTED_COMPATIBILITY_PENDING"
+    "metaReviewStatus": "R2_SEMANTIC_PINPOINT_CORRECTED_COMPATIBILITY_PENDING",
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 가운데 구간에서 높이 2의 수평선이 열린 점으로 끝나고, 양쪽 바깥 구간에는 가로축 위의 수평선이 있으며, 두 경계에는 중간 높이의 닫힌 점이 하나씩 있는 계단 모양의 그래프이다.",
+    "solutionImageCaption": "가로축이 k, 세로축이 교점의 개수 f(k)이다. 원 (a-1)²+(b-2)²=1의 중심에서 직선 3a-4b=k까지의 거리 |k+5|/5가 1보다 작으면 2개, 1이면 접해서 1개(k=-10, 0의 닫힌 점), 1보다 크면 0개이다. 그래서 f는 k=-10, 0에서 끊어진다. f(x)g(x)의 불연속점이 정확히 1개이려면 g(-10)=0, g(0)=0 중 하나만 성립해야 하므로 g(x)=(x-1)(x+10) 또는 (x-1)x이고 g(3)=26 또는 6이다. 최솟값은 6이므로 답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 20,

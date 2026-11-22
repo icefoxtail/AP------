@@ -94,7 +94,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
     "subUnit": "확률변수와 기댓값",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_중간_고2_확률과통계/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 오른쪽 위로 올라가 x=2에서 끝나는 선분 모양의 확률밀도함수 그래프이며 그래프 아래의 삼각형이 칠해져 있다.",
+    "solutionImageCaption": "f(x)=2ax는 0≤x≤2에서 원점에서 올라가는 선분이고 x=2에서 높이가 4a이다. 그래프와 x축 사이는 밑변 2, 높이 4a인 삼각형이며 넓이 (1/2)×2×4a=4a가 전체 확률 1이어야 한다. 따라서 a=1/4이다. 그림은 이 값으로 그렸다(x=2에서 높이 1). 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,

@@ -37,6 +37,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Assemble question metadata (git holds its shards)
+        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
       - name: Parse only changed code path
         run: |
           node --check archive/tools/meta-foundation/stage-meta-bridge.mjs

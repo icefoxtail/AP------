@@ -89,6 +89,9 @@ jobs:
         with:
           node-version: 22
 
+      - name: Assemble question metadata (git holds its shards)
+        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
+
       - name: Artifact contract v2 regression
         run: node tests/archive-stage-validator-artifact-v2.test.mjs
 
@@ -141,6 +144,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+
+      - name: Assemble question metadata of the validator authority (git holds its shards)
+        working-directory: validator-src
+        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
 
       - name: Validate target stage
         shell: bash
@@ -214,6 +221,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+
+      - name: Assemble question metadata of the validator authority (git holds its shards)
+        working-directory: validator-src
+        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
 
       - name: Validate live PR stage
         shell: bash

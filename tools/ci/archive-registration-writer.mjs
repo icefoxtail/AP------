@@ -3,6 +3,7 @@ import { BOUNDED_RENDERER_UI_INPUTS } from '../4slot/bounded-renderer-ui-inputs.
 import { sourceQualityHoldDependencyPaths } from '../../archive/tools/source-quality-holds.mjs';
 import { inferRegistrationMode, REGISTRATION_MODE_ENV } from '../../archive/tools/meta-foundation/registration-mode.mjs';
 import { canonicalParentRetryRequests, canonicalParentRetryDependencies } from '../../archive/tools/meta-foundation/canonical-parent-retry.mjs';
+import { hasShards, assembleMetadataFile } from '../../archive/tools/meta-foundation/question-metadata-format.mjs';
 // One preparation transaction for the existing registration producers. This script never commits or pushes.
 // Each successful lane stages its allowlisted output. Native `git diff`/reset guards then see that index as
 // their baseline; a single final push helper commits the consistent result, requests and cursors together.
@@ -58,6 +59,8 @@ function guardFiles(files, allowed, label) {
   const bad=files.filter(f=>!matches(f,allowed));
   if(bad.length)throw Error(`UNEXPECTED_${label}_PATHS:${bad.slice(0,15).join(',')}`);
 }
+// The assembled question metadata is ignored by git, so a restore of the tracked shards does not touch it: rebuild it from the restored shards.
+const reassembleMetadata=root=>{ if(hasShards(root))assembleMetadataFile(root); };
 function rollbackUnstaged(root, allowed) {
   const files=unstaged(root); guardFiles(files,allowed,'FAILED_LANE');
   const tracked=new Set(indexRows(root).map(r=>r.path));
@@ -65,6 +68,7 @@ function rollbackUnstaged(root, allowed) {
     if(tracked.has(file))git(root,'--literal-pathspecs','restore','--worktree','--',file);
     else fs.rmSync(path.join(root,file),{force:true});
   }
+  reassembleMetadata(root);
 }
 function rollbackStaged(root, allowed) {
   const files=changed(root); guardFiles(files,allowed,'SHARED_ROLLBACK');
@@ -78,6 +82,7 @@ function rollbackStaged(root, allowed) {
       fs.rmSync(path.join(root,file),{force:true});
     }
   }
+  reassembleMetadata(root);
 }
 
 export function nativeLanes(root) {
@@ -106,7 +111,7 @@ export function nativeLanes(root) {
     'tools/ci/archive-pages-registration-derive.sh','archive/archive2-core.js','archive/archive2-canonical.js',
     'archive/problem-bank-meta.js','archive/meta-foundation-runtime.js','archive/mixer-selector.js',
     'archive/archive2-source.js','archive/exam-source-reader.js','archive/unit-past-exams-core.js'];
-  const registration=[...sourceQualityHoldDependencyPaths(root),'archive/exams/','archive/data/question_identity_map.json','archive/data/question_metadata.json',
+  const registration=[...sourceQualityHoldDependencyPaths(root),'archive/exams/','archive/data/question_identity_map.json','archive/data/question-metadata/v1/',
     'archive/data/meta-foundation/','archive/data/master_tables/','archive/data/r2e-intake/',
     'archive/data/basic-scope-source-links.json','archive/data/basic-scope-parent-groups.json',
     'archive/data/textbook-source-manifest-v1.json','archive/data/basic-scope-parent-links.json',
@@ -171,7 +176,7 @@ export function nativeLanes(root) {
         cmd('node','archive/tools/build-archive2-extension-keys.mjs')]},
     {id:'fourSlot',inputs:[...BOUNDED_RENDERER_UI_INPUTS,'archive/exams/','archive/data/question_identity_map.json','archive/data/item-4slot/',
       '.archive-meta-register/4slot-existing-vector-continuity/',
-      '.archive-meta-register/4slot-renderer-continuity/','archive/data/question_metadata.json',
+      '.archive-meta-register/4slot-renderer-continuity/','archive/data/question-metadata/v1/',
       'archive/data/meta-foundation/evidence/reviewed-exam-meta/','.archive-meta-register/evidence/',
       'archive/data/meta-foundation/canonical/','archive/data/meta-foundation/compiled/','archive/tools/meta-foundation/',
       'archive/data/meta-foundation/runtime/',
@@ -420,7 +425,7 @@ export function checkRegistration({root=ROOT,work,lanes=nativeLanes(root),env=pr
 }
 
 export async function prepareRegistration({root=ROOT,work,execute=executeCommands,lanes=nativeLanes(root),env=process.env}={}) {
-  root=path.resolve(root);assertClean(root);
+  root=path.resolve(root);assertClean(root);reassembleMetadata(root);
   if(env.GITHUB_ACTIONS==='true'&&(env.GITHUB_EVENT_NAME==='pull_request'||env.GITHUB_REF!=='refs/heads/main'))throw Error('MAIN_ONLY_WRITER');
   if(new Set(lanes.map(l=>l.id)).size!==lanes.length||lanes.some((l,i)=>l.id==='fourSlot'&&i!==lanes.length-1))throw Error('INVALID_LANE_ORDER');
   work=evidenceDir(root,work,env);

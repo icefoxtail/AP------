@@ -1,0 +1,94 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -3,
+   11,
+   -4,
+   11
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "Y_OF_X",
+    "coefficients": [
+     "6",
+     "-6",
+     "1"
+    ],
+    "domain": [
+     "0",
+     "13/2"
+    ],
+    "color": "BLUE",
+    "label": "y=f(x)",
+    "emphasis": [
+     {
+      "from": "6",
+      "to": "13/2",
+      "color": "WARM",
+      "fromState": "CLOSED",
+      "toState": "NONE"
+     }
+    ]
+   },
+   {
+    "id": "yx",
+    "kind": "LINE",
+    "coefficients": [
+     "0",
+     "1"
+    ],
+    "domain": [
+     "-3",
+     "11"
+    ],
+    "style": "DASHED",
+    "label": "y=x"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "V",
+     "x": "3",
+     "y": "-3",
+     "coordinates": true,
+     "labelDirection": "S"
+    },
+    {
+     "id": "A",
+     "x": "1",
+     "y": "1",
+     "coordinates": true,
+     "labelDirection": "NW"
+    },
+    {
+     "id": "B",
+     "x": "6",
+     "y": "6",
+     "coordinates": true,
+     "labelDirection": "SE"
+    }
+   ]
+  }
+ },
+ "caption": "f(x)=(x-3)²-3의 꼭짓점은 (3,-3)이고 x≥3에서 증가한다. 정의역 x≥k에서 역함수가 존재하려면 k≥3이고 f(k)=k이어야 한다. k²-7k+6=0에서 k=1 또는 k=6이고 k≥3이므로 k=6이다. 굵은 부분이 x≥6인 그래프이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "X={x|x≥k}에서 f(x)=x²-6x+6의 역함수가 존재한다",
+   "mappedTo": [
+    "graphPlan"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "꼭짓점 (3,-3), 직선 y=x와의 교점 (1,1), (6,6)"
+ ]
+}

@@ -1,0 +1,458 @@
+{
+ "meta": {
+  "sourcePath": "archive/exams/original/middle/m1/2mid/24_왕운중_2학기_중간_중1_기출.js",
+  "ordinal": 1,
+  "dir": "q01-problem",
+  "tag": "q01-problem"
+ },
+ "identity": {
+  "questionUid": "24_왕운중_2학기_중간_중1_기출|1",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:e54a4e605647259ecc3b31a5c40ba9b959c9e4f36403056b0b5e952ff3d7114f",
+  "assetId": "va-930d54c3a4a05e806ae284abbc8c1c77694490865ea5db7778b8cbf288ecceff"
+ },
+ "plan": {
+  "capability": "construction-spike-v1",
+  "caption": "두 직선 l, m이 점 O에서 만나고 직선 m과 수직인 직선 n이 주어졌을 때의 각도 관계 다이어그램이다.",
+  "accessibilityDescription": "두 직선 l, m이 이루는 각 55도와 m에 수직인 직선 n, 각 x와 각 y를 나타낸 그림.",
+  "sourceQuote": "다음 그림에서 두 직선 $l$, $m$이 한 점에서 만난다",
+  "mathPlan": {
+   "schemaVersion": "construction-spike-v1",
+   "realization": {
+    "recipeId": "PLANE_FIGURE_v1",
+    "unit": "source-length",
+    "reflectionEquivalent": false
+   },
+   "nodes": [
+    {
+     "id": "O",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "0"
+       },
+       {
+        "kind": "integer",
+        "value": "0"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "L1",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "-6"
+       },
+       {
+        "kind": "integer",
+        "value": "0"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "L2",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "6"
+       },
+       {
+        "kind": "integer",
+        "value": "0"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "M1",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "-4"
+       },
+       {
+        "kind": "integer",
+        "value": "-5"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "M2",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "4"
+       },
+       {
+        "kind": "integer",
+        "value": "5"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "N1",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "-5"
+       },
+       {
+        "kind": "integer",
+        "value": "4"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "DERIVED_INTERMEDIATE"
+    }
+   ]
+  },
+  "displayPoints": [
+   "O",
+   "L1",
+   "L2",
+   "M1",
+   "M2",
+   "N1"
+  ],
+  "displaySegments": [
+   {
+    "id": "sL",
+    "refs": [
+     "L1",
+     "L2"
+    ]
+   },
+   {
+    "id": "sM",
+    "refs": [
+     "M1",
+     "M2"
+    ]
+   },
+   {
+    "id": "sN",
+    "refs": [
+     "O",
+     "N1"
+    ]
+   }
+  ],
+  "assetPath": "assets/images/24_왕운중_2학기_중간_중1_유사/q01.svg",
+  "hiddenPointNames": [
+   "L1",
+   "L2",
+   "M1",
+   "M2",
+   "N1"
+  ],
+  "hiddenPointStyle": "NONE"
+ },
+ "model": {
+  "engine": "SymPy",
+  "version": "1.14.0",
+  "points": {
+   "L1": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "-6"
+     },
+     {
+      "kind": "integer",
+      "value": "0"
+     }
+    ],
+    "approximation": [
+     -6,
+     0
+    ],
+    "precisionDigits": 17
+   },
+   "L2": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "6"
+     },
+     {
+      "kind": "integer",
+      "value": "0"
+     }
+    ],
+    "approximation": [
+     6,
+     0
+    ],
+    "precisionDigits": 17
+   },
+   "M1": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "-4"
+     },
+     {
+      "kind": "integer",
+      "value": "-5"
+     }
+    ],
+    "approximation": [
+     -4,
+     -5
+    ],
+    "precisionDigits": 17
+   },
+   "M2": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "4"
+     },
+     {
+      "kind": "integer",
+      "value": "5"
+     }
+    ],
+    "approximation": [
+     4,
+     5
+    ],
+    "precisionDigits": 17
+   },
+   "N1": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "-5"
+     },
+     {
+      "kind": "integer",
+      "value": "4"
+     }
+    ],
+    "approximation": [
+     -5,
+     4
+    ],
+    "precisionDigits": 17
+   },
+   "O": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "0"
+     },
+     {
+      "kind": "integer",
+      "value": "0"
+     }
+    ],
+    "approximation": [
+     0,
+     0
+    ],
+    "precisionDigits": 17
+   }
+  },
+  "scalars": {},
+  "lines": {},
+  "circles": {},
+  "pointSets": {},
+  "conditionAudits": [],
+  "transcript": [
+   {
+    "nodeId": "L1",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "L2",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "M1",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "M2",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "N1",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "O",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   }
+  ],
+  "order": [
+   "L1",
+   "L2",
+   "M1",
+   "M2",
+   "N1",
+   "O"
+  ],
+  "coordinateMode": "CONSTRUCTED_REALIZATION"
+ },
+ "composed": {
+  "schemaVersion": "construction-candidate-svg-v1",
+  "status": "COMPOSED",
+  "detail": null,
+  "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 384 320\" width=\"384\" height=\"320\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-labelledby=\"visual-title visual-desc\" data-engine-version=\"geometry-visual-v1\" data-geometry-style-version=\"AP_GEOMETRY_PRINT_V1_0_DRAFT\" data-geometry-preset=\"GEOMETRY_STANDARD\" data-graph-style-version=\"AP_GRAPH_PRINT_V1_1_DRAFT\" data-geometry-mode=\"COORDINATE_GEOMETRY_HYBRID\" data-axis-scale-mode=\"EQUAL_UNIT\" data-geometry-fact-hash=\"44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a\" data-visual-provenance=\"independent-facts-python\" style=\"max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round\" data-publication-profile=\"fragment-publication-spike-v1\" data-safe-margin=\"12\"><title id=\"visual-title\">두 직선 l, m이 점 O에서 만나고 직선 m과 수직인 직선 n이 주어졌을 때의 각도 관계 다이어그램이다.</title><desc id=\"visual-desc\">두 직선 l, m이 이루는 각 55도와 m에 수직인 직선 n, 각 x와 각 y를 나타낸 그림.</desc><rect width=\"384\" height=\"320\" fill=\"#fff\"/><g data-layer=\"30\"><line id=\"sL\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"57.734265734\" y1=\"160\" x2=\"326.265734266\" y2=\"160\"/></g><g data-layer=\"30\"><line id=\"sM\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"102.48951049\" y1=\"271.888111888\" x2=\"281.51048951\" y2=\"48.111888112\"/></g><g data-layer=\"30\"><line id=\"sN\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"192\" y1=\"160\" x2=\"80.111888112\" y2=\"70.48951049\"/></g><g data-layer=\"70\"><circle id=\"O\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"192\" cy=\"160\" r=\"3.2\"/></g><g data-layer=\"90\"><g id=\"O-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"22.8\" data-owner=\"O\" data-fragment-sha=\"sha256:31822b0348b6bdca83c04474febb28da0ce730da56caf1e0494aea84862f973f\" transform=\"translate(204 172)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.3964\" height=\"16.552799999999998\" viewBox=\"0 0 17.3964 16.552799999999998\" data-outline-width=\"17.3964\" data-outline-height=\"16.552799999999998\" id=\"lb-4f590bec308470c5d1e56430e037b1b8b6bf95aba8e733a42623b5b5c4b763f2\" data-owner=\"O\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 16.0512) scale(0.0228)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D442\" d=\"M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z\"></path></g></g></g></g></svg></g></g></svg>\n",
+  "lineage": {
+   "planSha256": "sha256:7261d43e11ffd86f9651ab3fb910318252a77ab84a338ec35ab17668e5424ae7",
+   "modelSha256": "sha256:138caaa98e3f4854f6fd15305536d5990acee9861b4bdab68def7fbe7552bbd8",
+   "typographyPolicySha256": "sha256:824b66bd1d2434306b93764afc4c7c5ded7355fcef4706e03ecc994c4b6bf259",
+   "specSha256": "sha256:d467eb29100b74eac6a59f59fe1b7a21318327bfcd54dc3efe8f82e1adc0cfa5",
+   "fragmentSha256s": {
+    "O-name": "sha256:31822b0348b6bdca83c04474febb28da0ce730da56caf1e0494aea84862f973f"
+   },
+   "measurementsSha256": "sha256:f064e708c97c15d809ffe49e58be4934b1f156a63aa7702f00cafbbe63770cd0",
+   "svgSha256": "sha256:bcec5b8d59e71cecad519c08fd15612ade2a5813f09735057f076dd6d14f1bc8",
+   "witnessSha256": "sha256:9d76bdbc246260cc02e05c4a189eeb283fea5b6ff34e20889ccd78fc61e5b873",
+   "staticAuditSha256": "sha256:903772691d27923159a859a3f8192cd00f34cb42bc8e9d8f37650ae01ddc6013",
+   "renderedLayoutSha256": "sha256:5838a0587e7edf57b270e4f270f98a095bc73eebe4d7d2d7f40e9f31c2d6a9e8"
+  },
+  "staticAudit": {
+   "status": "PASS",
+   "errors": []
+  },
+  "renderedLayout": {
+   "status": "PASS",
+   "display": {
+    "width": 189.671875,
+    "height": 158.05989583333334
+   },
+   "errors": []
+  },
+  "layoutRepairs": [],
+  "typographyPolicyProvenance": "CALLER_SUPPLIED_UNVERIFIED",
+  "sizeSelection": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "independentVisualReview": "NOT_RUN",
+  "productionAuthorized": false,
+  "qualification": "NOT_RUN"
+ },
+ "capture": {
+  "schemaVersion": "construction-archive-capture-v1",
+  "status": "ARCHIVE_BOUND",
+  "detail": null,
+  "lineage": {
+   "l1SvgSha256": "sha256:bcec5b8d59e71cecad519c08fd15612ade2a5813f09735057f076dd6d14f1bc8",
+   "policySha256": "sha256:824b66bd1d2434306b93764afc4c7c5ded7355fcef4706e03ecc994c4b6bf259",
+   "candidateBankSha256": "sha256:9d0331a2aff308d044d0bdb1db63ec3c213977c232030e6172dfee3749443b99",
+   "assetPath": ".tmp/archive/pilot-capture-89e73a01/24_왕운중_2학기_중간_중1_기출/assets/images/24_왕운중_2학기_중간_중1_기출/q01-solution.svg",
+   "assetResponseSha256": "sha256:bcec5b8d59e71cecad519c08fd15612ade2a5813f09735057f076dd6d14f1bc8",
+   "archiveRowSha256": "sha256:b41beee6087a8cb0c57dfc33416ea313c615541ba8a083654d0c178bfffc147c",
+   "screenshotSha256s": {
+    "image": "sha256:a295ba44c5847034e2e42d070014bcebd8f3df18cb57f9d78bbf8e2ae663f728",
+    "context": "sha256:e3cc587f500e7d8f97c1556faae69dc3b48e89a771601e0789f541652861edcf",
+    "page": "sha256:be1c744dea71d01f6ff9733c27234eeb6c41c8d53c66e553b237956d5d7532d4"
+   },
+   "matrixSha256": "sha256:d2a30aacbead7232e5ff3beb67600682ef72838a6485e4333fa8fc5d365d30b5",
+   "engineSha256": "sha256:08744d4ea9046c1de0b4d815147e7f350d745a9aceb6eff8df3d19fd3e80aac8"
+  },
+  "paths": {
+   "runRoot": ".tmp/archive/pilot-capture-89e73a01",
+   "asset": ".tmp/archive/pilot-capture-89e73a01/24_왕운중_2학기_중간_중1_기출/assets/images/24_왕운중_2학기_중간_중1_기출/q01-solution.svg",
+   "candidateBank": ".tmp/archive/pilot-capture-89e73a01/24_왕운중_2학기_중간_중1_기출/candidates/24_왕운중_2학기_중간_중1_기출.js",
+   "matrix": ".tmp/archive/pilot-capture-89e73a01/24_왕운중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render-matrix.json",
+   "archiveRow": ".tmp/archive/pilot-capture-89e73a01/24_왕운중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-930d54c3a4a05e806ae284abbc8c1c77694490865ea5db7778b8cbf288ecceff-sol-desktop.json",
+   "screenshots": {
+    "image": ".tmp/archive/pilot-capture-89e73a01/24_왕운중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-930d54c3a4a05e806ae284abbc8c1c77694490865ea5db7778b8cbf288ecceff-sol-desktop-va-930d54c3a4a05e806ae284abbc8c1c77694490865ea5db7778b8cbf288ecceff.png",
+    "context": ".tmp/archive/pilot-capture-89e73a01/24_왕운중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-930d54c3a4a05e806ae284abbc8c1c77694490865ea5db7778b8cbf288ecceff-sol-desktop-va-930d54c3a4a05e806ae284abbc8c1c77694490865ea5db7778b8cbf288ecceff-context.png",
+    "page": ".tmp/archive/pilot-capture-89e73a01/24_왕운중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-930d54c3a4a05e806ae284abbc8c1c77694490865ea5db7778b8cbf288ecceff-sol-desktop.png"
+   }
+  },
+  "protectedParity": {
+   "status": "PASS",
+   "sourceRef": {
+    "path": "archive/exams/original/middle/m1/2mid/24_왕운중_2학기_중간_중1_기출.js",
+    "bytes": 56359,
+    "sha256": "sha256:02199f2746571cd29eaf1bfec5ea9d2d3bf7d63a01eeb8bc970ab6dc9d220254"
+   },
+   "originalQuestionSha256": "sha256:14a5b5276ceb4dbf2643c6129121cf59d33cfc5e5ce1daf0f50a0e00666533e1",
+   "questionCount": 23,
+   "protectedFields": [
+    "content",
+    "choices",
+    "answer",
+    "solution",
+    "image"
+   ],
+   "changedFields": [
+    "solutionImage",
+    "solutionImageSize",
+    "solutionImageAlt"
+   ],
+   "targetOrdinal": 1
+  },
+  "sizeClass": "full",
+  "observedDisplayScale": 0.4939371744791667,
+  "expectedDisplayScale": 0.4939371744791667,
+  "displayScaleDeltaCssPx": 0,
+  "layout": {
+   "source": "ARCHIVE_ROW_ISOLATED_REPLAY",
+   "status": "PASS",
+   "errors": []
+  },
+  "checks": {
+   "network": "PASS",
+   "assetResponse": "PASS",
+   "bankResponse": "PASS",
+   "naturalSize": "PASS",
+   "sizeClass": "PASS",
+   "displayScale": "PASS",
+   "layout": "PASS"
+  },
+  "fixtureClassification": "PILOT_AUTHOR_PLAN_CANDIDATE",
+  "evidenceIntegrity": "NO_CALLER_HOOK",
+  "uidAuthority": "STRUCTURAL_ONLY",
+  "independentInverseObservation": "NOT_RUN",
+  "qualification": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false
+ }
+}

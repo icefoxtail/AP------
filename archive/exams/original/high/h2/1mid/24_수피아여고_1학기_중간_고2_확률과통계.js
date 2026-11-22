@@ -156,7 +156,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_수피아여고_1학기_중간_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "두 사건 A, B가 서로 배반이면 A∩B=∅이다. 그림은 A와 B가 겹치는 부분이 비어 있고 A 밖, B 밖에도 다른 결과가 남을 수 있음을 보인다. 색칠한 바깥 영역이 비어 있어야 A와 B가 서로 여사건이므로 P(A)=1−P(B)가 되지만, 배반이라고 해서 바깥이 반드시 비는 것은 아니다. 따라서 명제는 거짓이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -546,7 +550,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_수피아여고_1학기_중간_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "M은 남자, J는 짜장면을 시키는 사건이다. P(M∪J)=4/5이므로 바깥은 1/5이다. 덧셈정리 P(M∩J)=P(M)+P(J)−P(M∪J)=2/3+3/5−4/5=7/15이다. 그림은 M만 3/15, 겹침 7/15, J만 2/15, 바깥 3/15를 약분해 적은 것이고 색칠한 부분이 짜장면을 시킨 남자이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -690,7 +698,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_수피아여고_1학기_중간_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 줄로 이어진 아홉 개의 점이 번갈아 놓여 있고 홀수 번째 다섯 점이 빈자리, 짝수 번째 네 점이 자음의 자리인 그림이다.",
+    "solutionImageCaption": "자음 p, c, t, r 4개를 먼저 일렬로 나열하면 4!=24가지이고, 이 자음은 B, D, F, H 자리이다. 양 끝과 사이의 A, C, E, G, I 5곳이 모음이 들어갈 수 있는 빈자리이다. 모음 3개가 이웃하지 않으려면 5곳 중 3곳에 한 개씩 넣으므로 5P3=60가지이다. 따라서 이웃하지 않는 경우는 24×60=1440가지이고 전체 7!=5040가지에서 확률은 1440/5040=2/7이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -726,7 +738,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_수피아여고_1학기_중간_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "열 벌 중 3벌을 고르는 전체 경우는 10C3=120가지이다. S는 모두 치마인 경우 5C3=10가지, W는 모두 흰색인 경우 6C3=20가지이고 둘 다인 흰색 치마만 고르는 경우는 3C3=1가지이다. 그림은 S만 9, 둘 다 1, W만 19, 바깥 91이며 색칠한 바깥이 바지가 있고 청색이 있는 경우이다. 여사건은 10+20−1=29가지이므로 120−29=91가지이고 확률은 91/120이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -755,7 +771,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-PERMUTATION",
     "subUnit": "순열",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_수피아여고_1학기_중간_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 여덟 자리가 팔각형 꼭짓점으로 놓인 원탁 그림이며 자리 A와 자리 E가 지름으로 이어져 마주 보고 있고 A의 양옆에 자리 H와 B가 있다.",
+    "solutionImageCaption": "원탁의 8자리를 팔각형 꼭짓점으로 나타낸 한 배치의 예이다. A는 할머니, A와 마주 보는 E는 할아버지 자리이고 지름 AE로 이었다. (1) 할머니를 고정하면 할아버지는 맞은편 E로 정해지고 나머지 6명이 남은 6자리에 앉으므로 6!=720이다. (2) H, A, B에는 부모, 할머니, 부모가 이웃해 앉는다. 이 세 명을 한 묶음으로 보면 묶음 1개와 나머지 5명을 원탁에 앉히므로 (6−1)!=120이고 묶음 안 부모의 순서 2!를 곱해 240이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -813,7 +833,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_수피아여고_1학기_중간_고2_확률과통계/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "방정식은 (3x−n)(5x−n)=0이므로 근은 n/3, n/5이다. 정수해가 있으려면 n이 3의 배수(A) 또는 5의 배수(B)이어야 한다. 1부터 30까지에서 A는 10개, B는 6개이고 15의 배수 15, 30의 2개가 겹친다. 그림은 A만 8, 둘 다 2, B만 4, 바깥 16이다. n(A∪B)=10+6−2=14이므로 확률은 14/30=7/15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,

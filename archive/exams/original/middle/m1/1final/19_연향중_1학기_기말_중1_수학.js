@@ -290,7 +290,12 @@ window.examData = {
         "$(-9, 2)$"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_연향중_1학기_기말_중1_수학/Q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 제2사분면과 제4사분면에 걸친 두 갈래의 곡선이 있고 곡선 위에 네 점이 표시되어 있으며 곡선 바로 위쪽에 곡선 위에 있지 않은 점 (4,−3)이 표시되어 있다.",
+      "solutionImageCaption": "그래프가 점 (−3,6)을 지나므로 반비례 관계식은 y=a/x에서 a=−3×6=−18이다. 따라서 y=−18/x이다. (1,−18), (2,−9), (−3,6), (−9,2)는 xy=−18을 만족해 그래프 위에 있다. (4,−3)은 4×(−3)=−12≠−18이어서 그래프 위에 있지 않다. 따라서 답은 ③이다. 그림의 (4,−3)은 곡선 위에 있지 않은 점이다.",
+      "solutionImageSize": "full",
+      "solutionImageScale": 80
     },
     {
       "id": "Q18",
@@ -322,7 +327,12 @@ window.examData = {
         "$\\frac{17}{3}$"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_연향중_1학기_기말_중1_수학/Q19-solution.svg",
+      "solutionImageAlt": "해설 그림: 제1사분면과 제3사분면에 걸친 두 갈래의 반비례 곡선과 원점을 지나는 직선이 있고 직선과 곡선이 점 P(3,4)에서 만나며 좌표가 표시되어 있다.",
+      "solutionImageCaption": "점 (3,b)가 y=12/x 위에 있으므로 b=12/3=4이다. 또 y=ax 위에 있으므로 4=3a에서 a=4/3이다. 따라서 ab=(4/3)×4=16/3이고 답은 ④이다. 그림은 두 그래프가 점 P(3,4)에서 만나는 모습이다.",
+      "solutionImageSize": "full",
+      "solutionImageScale": 80
     },
     {
       "id": "Q20",

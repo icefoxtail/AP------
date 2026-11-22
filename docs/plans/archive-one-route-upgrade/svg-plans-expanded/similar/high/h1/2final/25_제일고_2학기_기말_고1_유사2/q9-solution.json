@@ -1,0 +1,146 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "SOURCE_COORDINATE_AXES_v1",
+   "unit": "source-coordinate",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "NORMALIZATION_ORIGIN",
+    "inputs": [],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "XU",
+    "op": "NORMALIZATION_AXIS",
+    "inputs": [],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "4"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "6"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "2"
+      },
+      {
+       "kind": "integer",
+       "value": "3"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayPoints": [
+  "O",
+  "A",
+  "B",
+  "P"
+ ],
+ "displaySegments": [
+  {
+   "id": "sOA",
+   "refs": [
+    "O",
+    "A"
+   ]
+  },
+  {
+   "id": "sOB",
+   "refs": [
+    "O",
+    "B"
+   ]
+  },
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  }
+ ],
+ "coordinateLabels": [
+  "A",
+  "B",
+  "P"
+ ],
+ "caption": "직선 x/a+y/b=1이 점 P(2, 3)을 지나므로 2/a+3/b=1이고, 산술평균과 기하평균의 관계에서 ab≥24이다. 등호는 a=4, b=6일 때 성립하므로 이때 직선이 x축, y축과 만나는 점은 A(4, 0), B(0, 6)이고 삼각형 OAB의 넓이는 (1/2)×4×6=12로 최소이다. 따라서 답은 ②이다.",
+ "sourceConditions": [
+  "직선 x/a+y/b=1은 점 (2,3)을 지나고 x축, y축과 만나는 점이 A, B이다."
+ ],
+ "newVisualInformation": [
+  "등호 성립 조건 a=4, b=6일 때의 삼각형 OAB와 점 P(2,3)이 선분 AB 위에 있음"
+ ],
+ "planeMarks": {
+  "segmentColors": [
+   {
+    "segments": [
+     "sAB"
+    ],
+    "color": "WARM"
+   }
+  ]
+ }
+}

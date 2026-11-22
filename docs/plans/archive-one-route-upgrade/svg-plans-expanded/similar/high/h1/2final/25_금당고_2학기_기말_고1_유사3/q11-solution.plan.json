@@ -1,0 +1,86 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "VENN",
+  "sets": [
+   {
+    "id": "A",
+    "name": "B_{12}"
+   },
+   {
+    "id": "B",
+    "name": "B_n"
+   },
+   {
+    "id": "C",
+    "name": "B_{72}"
+   }
+  ],
+  "elements": [
+   {
+    "text": "72",
+    "in": [
+     "A",
+     "B",
+     "C"
+    ]
+   },
+   {
+    "text": "144",
+    "in": [
+     "A",
+     "B",
+     "C"
+    ]
+   },
+   {
+    "text": "36",
+    "in": [
+     "A",
+     "B"
+    ]
+   },
+   {
+    "text": "108",
+    "in": [
+     "A",
+     "B"
+    ]
+   },
+   {
+    "text": "12",
+    "in": [
+     "A"
+    ]
+   },
+   {
+    "text": "24",
+    "in": [
+     "A"
+    ]
+   },
+   {
+    "text": "48",
+    "in": [
+     "A"
+    ]
+   }
+  ],
+  "subset": [
+   "C",
+   "B",
+   "A"
+  ]
+ },
+ "caption": "B₄∩B₆=B₁₂이므로 B₇₂⊆Bₙ⊆B₁₂이다. n은 12의 배수이고 72의 약수이므로 n=12, 24, 36, 72이고 개수는 4이다. 그림의 가운데 원은 예로 n=36일 때의 Bₙ이다. 답은 ①이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "B_72 ⊆ B_n ⊆ B_12 (예: n=36)",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "세 배수 집합이 차례로 포함되는 모양(가운데 원은 n=36의 예)"
+ ]
+}

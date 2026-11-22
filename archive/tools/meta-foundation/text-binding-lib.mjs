@@ -7,6 +7,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
+import vm from "node:vm";
+import { execFileSync } from "node:child_process";
 import { createRequire } from "node:module";
 
 const require = createRequire(import.meta.url);
@@ -28,6 +30,37 @@ export const contentFingerprint = (q) => sha256(JSON.stringify({
 // text-v1 지문(hex). 발문이 비었거나 choices 형식이 잘못된 문항은 지문을 만들 수 없으므로 null(결속 불가)을 돌려준다.
 export function textFingerprint(question) {
   try { return sha256(QuestionBinding.bindingSerialize(question)); } catch { return null; }
+}
+
+// 시험지 파일 전체 blob 대신 발문+보기로 묶는 검토 요청(REVIEW2·FINAL_QA)의 "원본 같음" 판정 한 곳.
+// 요청이 고정한 blob(expectedBlobSha1)이 현재 파일과 달라도, 요청이 다루는 문항(ordinals, 비면 전부)의 text-v1 지문이
+// 같으면 같은 문제로 본다(해설·정답·해설 그림·alt·caption만 바뀐 경우). 발문·보기(그림이 곧 발문·보기인 문항은 그림 경로 포함)가
+// 바뀌었거나 문항 수가 다르거나 옛 blob을 git에서 못 읽으면 같다고 하지 않는다(기존처럼 blob drift로 거절).
+// 이유: 해설 그림만 게시해도 파일 blob이 바뀌어 대기 중인 요청을 손으로 다시 고정해야 했다(결정: docs/agents/metadata.md).
+export const TEXT_BOUND_REVIEW_TYPES = Object.freeze(["REVIEW2", "FINAL_QA"]);
+
+function evaluateBank(bytes) {
+  const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
+  vm.runInNewContext(Buffer.isBuffer(bytes) ? bytes.toString("utf8") : String(bytes), ctx, { timeout: 5000 });
+  return ctx.window.questionBank || ctx.window.questions || ctx.questions || ctx.questionBank || ctx.window.examData?.questions;
+}
+
+export function reviewedSourceTextUnchanged({ root, expectedBlobSha1, currentBytes, ordinals = [] }) {
+  if (!/^[a-f0-9]{40}$/.test(expectedBlobSha1 || "")) return { ok: false, reason: "expectedSourceBlobSha1 missing" };
+  let reviewed, current;
+  try {
+    const old = execFileSync("git", ["cat-file", "blob", expectedBlobSha1], { cwd: root, maxBuffer: 16 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] });
+    reviewed = evaluateBank(old);
+    current = evaluateBank(currentBytes);
+  } catch { return { ok: false, reason: "reviewed source blob unavailable or invalid" }; }
+  if (!Array.isArray(reviewed) || !Array.isArray(current) || reviewed.length !== current.length) return { ok: false, reason: "question count differs" };
+  const picked = ordinals.length ? ordinals : current.map((_, i) => i + 1);
+  for (const n of picked) {
+    if (!Number.isInteger(n) || n < 1 || n > current.length) return { ok: false, reason: `ordinal out of range: ${n}` };
+    const a = textFingerprint(reviewed[n - 1]), b = textFingerprint(current[n - 1]);
+    if (a === null || a !== b) return { ok: false, reason: `stem/choices changed at question ${n}` };
+  }
+  return { ok: true };
 }
 
 const HEX64 = /^[a-f0-9]{64}$/;

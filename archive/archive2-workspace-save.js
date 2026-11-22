@@ -849,24 +849,59 @@
     if (version !== manifest.projectionVersion) throw new Error("canonical manifest digest mismatch");
     return version;
   }
+  // 출제 패널 항목 하나(원본 또는 유사 세트: 둘 다 카탈로그의 시험 파일이다). 원본 정보를 확인할 수 없으면 null.
+  function originalAssignItem(exam) {
+    const sourceHash = new Map(state.catalog.sourceHashes).get(exam.file);
+    if (!sourceHash || !state.catalog.indexVersion) return null;
+    // 쪽당 문항은 늘 4로 시작한다: 옛 모달이 기억해 둔 값(APMATH_ARCHIVE2_ORIGINAL_QPP)은 쓰지 않는다.
+    const settings = { ...originalSettingsForExam(exam), qpp: 4 };
+    return {
+      kind: "original", file: exam.file, title: O.displayTitle(exam), identityTitle: exam.identityTitle || exam.file.split("/").pop().replace(/\.js$/, ""),
+      grade: exam.grade, subject: exam.subject, count: exam.qCount, sourceHash, settings,
+    };
+  }
   function openOriginalAssign(exam) {
     const Assign = window.Archive2Assign;
     if (!Assign?.open || state.assignLegacy || Assign.useLegacy(location.search)) return openOriginalIssue(exam, "targets");
     if (Assign.isOpen()) return undefined;
-    const sourceHash = new Map(state.catalog.sourceHashes).get(exam.file);
-    if (!sourceHash || !state.catalog.indexVersion) {
+    const item = originalAssignItem(exam);
+    if (!item) {
       status("이 시험지의 원본 정보를 확인할 수 없습니다. 페이지를 새로고침한 뒤 다시 시도해 주세요.", true);
       return undefined;
     }
     state.originalReceipts = [];
-    // 쪽당 문항은 늘 4로 시작한다: 옛 모달이 기억해 둔 값(APMATH_ARCHIVE2_ORIGINAL_QPP)은 쓰지 않는다.
-    const settings = { ...originalSettingsForExam(exam), qpp: 4 };
     Assign.open({
-      items: [{
-        kind: "original", file: exam.file, title: O.displayTitle(exam), identityTitle: exam.identityTitle || exam.file.split("/").pop().replace(/\.js$/, ""),
-        grade: exam.grade, subject: exam.subject, count: exam.qCount, sourceHash, settings,
-      }],
-      original: { indexVersion: state.catalog.indexVersion, loadQuestions: (item) => Source.load(item.file, item.sourceHash), refreshIndexVersion: fetchCurrentProjectionVersion },
+      items: [item],
+      original: { indexVersion: state.catalog.indexVersion, loadQuestions: (it) => Source.load(it.file, it.sourceHash), refreshIndexVersion: fetchCurrentProjectionVersion },
+      request: assignRequest,
+      opener: document.activeElement,
+    });
+    return undefined;
+  }
+  // 학교별 기출에서 고른 여러 시험지(원본·유사 섞여도 된다)를 한 번에 같은 패널로 낸다(2026-11-22).
+  // 항목 모양과 패널의 항목별 문항 로드·중복일 제외는 한 장 출제와 같다. 하나라도 원본 정보를 확인할 수 없으면 아무것도 열지 않는다.
+  function openOriginalAssignMany(exams) {
+    const Assign = window.Archive2Assign;
+    const list = (Array.isArray(exams) ? exams : []).filter((exam) => exam?.file);
+    if (!list.length) return undefined;
+    if (!Assign?.open || state.assignLegacy || Assign.useLegacy(location.search)) {
+      status("여러 시험지를 한꺼번에 내려면 새 출제 화면이 필요합니다. 한 장씩 출제해 주세요.", true);
+      return undefined;
+    }
+    if (Assign.isOpen()) return undefined;
+    const items = [];
+    for (const exam of list) {
+      const item = originalAssignItem(exam);
+      if (!item) {
+        status(`「${O.displayTitle(exam)}」의 원본 정보를 확인할 수 없습니다. 페이지를 새로고침한 뒤 다시 시도해 주세요.`, true);
+        return undefined;
+      }
+      items.push(item);
+    }
+    state.originalReceipts = [];
+    Assign.open({
+      items,
+      original: { indexVersion: state.catalog.indexVersion, loadQuestions: (it) => Source.load(it.file, it.sourceHash), refreshIndexVersion: fetchCurrentProjectionVersion },
       request: assignRequest,
       opener: document.activeElement,
     });
@@ -1625,6 +1660,7 @@
     openSavedPaperAssign,
     fetchCurrentProjectionVersion,
     openOriginalAssign,
+    openOriginalAssignMany,
     originalIssueBusy,
     setOriginalStep,
     currentSavedPaperIds,

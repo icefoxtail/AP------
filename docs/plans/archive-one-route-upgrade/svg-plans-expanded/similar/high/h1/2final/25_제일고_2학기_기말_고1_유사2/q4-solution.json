@@ -1,0 +1,76 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -1,
+   9,
+   -1,
+   9
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "l",
+    "kind": "LINE",
+    "coefficients": [
+     "7",
+     "-1"
+    ],
+    "domain": [
+     "-1",
+     "8"
+    ],
+    "color": "BLUE",
+    "label": "y=-x+7"
+   }
+  ],
+  "regions": [
+   {
+    "id": "R",
+    "halfPlane": {
+     "x": ">",
+     "value": "2"
+    },
+    "and": {
+     "y": ">",
+     "value": "5"
+    },
+    "fill": "LIGHT"
+   }
+  ],
+  "overlays": {
+   "lines": [
+    {
+     "id": "vx",
+     "x": "2",
+     "style": "DASHED"
+    },
+    {
+     "id": "hy",
+     "slope": "0",
+     "intercept": "5",
+     "style": "DASHED"
+    }
+   ],
+   "points": [
+    {
+     "id": "P",
+     "x": "2",
+     "y": "5",
+     "coordinates": true
+    }
+   ]
+  }
+ },
+ "caption": "x>2, y>k-1인 모든 점이 x+y>7을 만족해야 한다. 색칠한 영역 x>2, y>k-1에서 x+y의 값은 꼭짓점 (2, k-1)에 가까울수록 작아지므로 이 꼭짓점이 직선 x+y=7 위(또는 위쪽)에 있어야 한다. 2+(k-1)≥7에서 k≥6이므로 k=6일 때 꼭짓점은 (2, 5)이고 최솟값은 6이다. 따라서 답은 ①이다.",
+ "sourceConditions": [
+  "명제 x>2이고 y>k-1이면 x+y>7이다가 참이 되도록 하는 k의 최솟값"
+ ],
+ "newVisualInformation": [
+  "k=6일 때 영역 x>2, y>5가 직선 x+y=7과 꼭짓점 (2,5)에서만 만남"
+ ]
+}

@@ -63,10 +63,10 @@ window.questionBank = [
     "content": "다음 그림과 같은 오각기둥에서 교점의 개수를 $a$개, 교선의 개수를 $b$개라 할 때, $b-a$의 값은? [3점]",
     "choices": [
       "$5$",
-      "$3$",
-      "$4$",
       "$6$",
-      "$7$"
+      "$7$",
+      "$8$",
+      "$9$"
     ],
     "answer": "①",
     "points": 3,
@@ -102,9 +102,9 @@ window.questionBank = [
     "choices": [
       "$15\\,\\mathrm{cm}$",
       "$18\\,\\mathrm{cm}$",
-      "$12\\,\\mathrm{cm}$",
       "$21\\,\\mathrm{cm}$",
-      "$24\\,\\mathrm{cm}$"
+      "$24\\,\\mathrm{cm}$",
+      "$27\\,\\mathrm{cm}$"
     ],
     "answer": "②",
     "points": 4,
@@ -140,9 +140,9 @@ window.questionBank = [
     "choices": [
       "$2$개",
       "$3$개",
-      "$1$개",
       "$4$개",
-      "$5$개"
+      "$5$개",
+      "$6$개"
     ],
     "answer": "②",
     "points": 3,
@@ -446,15 +446,15 @@ window.questionBank = [
     "choices": [
       "$4$",
       "$5$",
-      "$8$",
       "$6$",
+      "$8$",
       "$12$"
     ],
-    "answer": "③",
+    "answer": "④",
     "points": 4,
     "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
     "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_THIRD_SIDE_RANGE",
-    "solution": "[키포인트] 삼각형의 가장 긴 변의 길이는 나머지 두 변의 길이의 합보다 반드시 작아야 한다.\n문제에서 가장 긴 변의 길이가 $11\\,\\mathrm{cm}$이므로,\n$11 < 5 + x$\n즉 $x > 6$이어야 한다.\n또한 $11\\,\\mathrm{cm}$가 가장 긴 변이므로 $x \\le 11$이어야 한다.\n따라서 $x$의 범위는 $6 < x \\le 11$이다.\n보기 중 이 범위를 만족하는 값은 $8$뿐이다.\n- $4, 5, 6$은 $x \\le 6$이므로 두 변의 합이 $11$ 이하가 되어 삼각형이 만들어지지 않는다.\n- $12$는 가장 긴 변이 $11$이라는 조건에 모순된다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 삼각형의 가장 긴 변의 길이는 나머지 두 변의 길이의 합보다 반드시 작아야 한다.\n문제에서 가장 긴 변의 길이가 $11\\,\\mathrm{cm}$이므로,\n$11 < 5 + x$\n즉 $x > 6$이어야 한다.\n또한 $11\\,\\mathrm{cm}$가 가장 긴 변이므로 $x \\le 11$이어야 한다.\n따라서 $x$의 범위는 $6 < x \\le 11$이다.\n보기 중 이 범위를 만족하는 값은 $8$뿐이다.\n- $4, 5, 6$은 $x \\le 6$이므로 두 변의 합이 $11$ 이하가 되어 삼각형이 만들어지지 않는다.\n- $12$는 가장 긴 변이 $11$이라는 조건에 모순된다.\n따라서 정답은 ④이다.",
     "image": null,
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
@@ -750,11 +750,11 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림의 $\\triangle ABC$에서 $\\angle B$의 이등분선과 $\\angle C$의 외각의 이등분선의 교점을 $D$라 하고, 변 $BC$의 연장선 위의 점을 $E$라 하자. $\\angle A = 50^\\circ$일 때, $\\angle x$의 크기는? [5점]",
     "choices": [
+      "$10^\\circ$",
       "$15^\\circ$",
       "$20^\\circ$",
-      "$30^\\circ$",
       "$25^\\circ$",
-      "$35^\\circ$"
+      "$30^\\circ$"
     ],
     "answer": "④",
     "points": 5,

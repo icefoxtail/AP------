@@ -1,0 +1,140 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "1/2",
+     "-3/4"
+    ]
+   }
+  ],
+  "breakpoints": [],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -2,
+   6
+  ],
+  "viewport": [
+   -2,
+   6,
+   -3,
+   5
+  ],
+  "requiredPoints": [
+   {
+    "id": "V",
+    "x": 2,
+    "y": -1
+   },
+   {
+    "id": "X",
+    "x": 0.6666666666666666,
+    "y": 0
+   },
+   {
+    "id": "Y",
+    "x": 0,
+    "y": 0.5
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "lines": [
+    {
+     "id": "lx",
+     "x": "2",
+     "label": "x=2",
+     "color": "BLUE"
+    },
+    {
+     "id": "ly",
+     "slope": "0",
+     "intercept": "-1",
+     "label": "y=-1",
+     "color": "WARM"
+    }
+   ],
+   "points": [
+    {
+     "id": "v0",
+     "x": "2",
+     "y": "-1",
+     "unnamed": true
+    },
+    {
+     "id": "a1",
+     "x": "6",
+     "y": "-1",
+     "unnamed": true
+    },
+    {
+     "id": "a2",
+     "x": "6",
+     "y": "5",
+     "unnamed": true
+    },
+    {
+     "id": "a3",
+     "x": "2",
+     "y": "5",
+     "unnamed": true
+    },
+    {
+     "id": "cq",
+     "curveX": "-1",
+     "unnamed": true
+    }
+   ],
+   "polygons": [
+    {
+     "id": "R",
+     "points": [
+      "v0",
+      "a1",
+      "a2",
+      "a3"
+     ],
+     "fill": "LIGHT"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cl",
+     "point": "cq",
+     "text": "3x+4y=2",
+     "labelKind": "MATH",
+     "direction": "NE"
+    }
+   ]
+  },
+  "exactCoordinates": {
+   "X": [
+    "2/3",
+    "0"
+   ],
+   "Y": [
+    "0",
+    "1/2"
+   ]
+  }
+ },
+ "pointNames": {
+  "V": "V",
+  "X": "X",
+  "Y": "Y"
+ },
+ "caption": "대우의 조건 x>2, y>-1인 영역(색칠)의 점은 모두 직선 3x+4y=2의 위쪽에 있어 3x+4y>2이다. 직선은 영역의 꼭짓점 (2,-1)을 지나므로 k≤2이어야 하고 최댓값은 2이다. 답은 ②이다.",
+ "sourceConditions": [
+  "x>2이고 y>-1이면 3x+4y>k"
+ ],
+ "newVisualInformation": [
+  "색칠한 영역 x>2, y>-1과 직선 3x+4y=2가 꼭짓점 V(2,-1)을 지남"
+ ]
+}

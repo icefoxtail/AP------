@@ -1,0 +1,91 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -1,
+   5,
+   -1,
+   6
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f1",
+    "kind": "LINE",
+    "coefficients": [
+     "0",
+     "4"
+    ],
+    "domain": [
+     "0",
+     "1"
+    ],
+    "color": "BLUE",
+    "label": "y=f(x)"
+   },
+   {
+    "id": "f2",
+    "kind": "LINE",
+    "coefficients": [
+     "16/3",
+     "-4/3"
+    ],
+    "domain": [
+     "1",
+     "4"
+    ],
+    "color": "BLUE",
+    "hideLabel": true
+   },
+   {
+    "id": "k",
+    "kind": "LINE",
+    "coefficients": [
+     "1",
+     "0"
+    ],
+    "domain": [
+     "-1",
+     "5"
+    ],
+    "color": "WARM",
+    "label": "y=1",
+    "style": "DASHED"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "x": "1/4",
+     "y": "1",
+     "unnamed": true,
+     "coordinates": true
+    },
+    {
+     "id": "B",
+     "x": "13/4",
+     "y": "1",
+     "unnamed": true,
+     "coordinates": true
+    },
+    {
+     "id": "V",
+     "x": "1",
+     "y": "4",
+     "unnamed": true,
+     "coordinates": true
+    }
+   ]
+  }
+ },
+ "caption": "f(t)=0의 해는 t=0, 4이므로 f(f(a))는 0 또는 4이고, f(u)=4의 해는 u=1뿐이다. 따라서 f(a)는 0, 1, 4 중 하나이다. f(a)=0은 a=0, 4의 2개, f(a)=1은 직선 y=1과 만나는 a=1/4, 13/4의 2개, f(a)=4는 a=1의 1개이다. 서로 다른 값이 모두 5개이므로 답은 ②이다.",
+ "newVisualInformation": [
+  "직선 y=1과 그래프의 교점 (1/4,1), (13/4,1)과 꼭짓점 (1,4)"
+ ],
+ "accessibilityDescription": "원점과 점 (1,4)를 잇고 (4,0)까지 내려오는 파란색 꺾은선 그래프와 y=1인 주황색 점선이 그려져 있고 두 교점과 꼭짓점이 표시되어 있다."
+}

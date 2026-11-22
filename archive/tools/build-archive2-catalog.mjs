@@ -8,6 +8,7 @@ import { materializePackageShards } from "./materialize-archive-package-shards.m
 import problemBankMeta from "../problem-bank-meta.js";
 import examSourceReader from "../exam-source-reader.js";
 import { classifyMetaBinding, loadRebinds } from "./meta-foundation/text-binding-lib.mjs";
+import { createUnitHinter } from "./unit-hint-lib.mjs";
 import { isMetadataConflict } from "./metadata-conflict-field.mjs";
 import { SOURCE_QUALITY_HOLD_FIELDS, loadSourceQualityHolds, applySourceQualityHold, assertSourceQualityHoldCoverage } from "./source-quality-holds.mjs";
 import { applyAssignment, loadToc as loadMiddleToc, readAssignments as readMiddleParentAssignments } from "./middle-parent-assignments-lib.mjs";
@@ -117,8 +118,18 @@ const hintFieldStatus = (value) => /^approved(_|$)/i.test(String(value || ""))
 // 해설·정답·그림이 바뀐 것은 이유가 되지 않는다. git 이력은 보지 않는다(동결된 재결속 기록 파일만 읽는다).
 const textRebinds = loadRebinds(root);
 const hintStats = { joined: 0, row: 0, type: 0, unbound: 0,
-  pt: 0, tpl: 0, l3: 0, curriculum: 0, ptUnregistered: 0, tplUnregistered: 0, tplParentMismatch: 0 };
-function buildMetaHint(meta, binding) {
+  pt: 0, tpl: 0, l3: 0, curriculum: 0, ptUnregistered: 0, tplUnregistered: 0, tplParentMismatch: 0,
+  unit: 0, unitAmbiguous: 0 };
+// 단원 힌트(metaHintUnit): 승인된 유형(PT)이 있는 행에, 그 PT의 ACTIVE 연결(curriculum_bindings)이 같은 학년에서 통합 단원 하나만 가리키면 그 단원을
+// 표시 전용으로 싣는다(여러 단원으로 갈리면 싣지 않는다). 승인·정본 값은 만들지 않고 단원 선택·묶기만 읽는다(archive2-unified-units.js unitFor:
+// 원본의 단원 값으로 단원을 못 정한 문항에만 쓰고, 원본으로 정해지는 문항의 결과는 바꾸지 않는다). 규칙·학년별 켬/끔은 unit-hint-lib.mjs 한 곳이며,
+// 켜는 기준은 "이미 단원이 정해진 문항에 같은 규칙을 적용해 기존 단원과 90% 이상 일치"(학년·과목별, 측정은 docs/agents/metadata.md).
+const unitHinter = createUnitHinter({
+  bindings: foundationBindings.bindings,
+  unitLabelByKey: standardUnitLabelByKey,
+  subUnitLabelByKey: new Map(subUnitFilterOptions.map((row) => [row.subUnitKey, row.subUnit])),
+});
+function buildMetaHint(meta, binding, grade = "", subject = "") {
   if (!meta || !binding) return {};
   const status = meta.fieldStatus || {};
   // 값이 있으면 보인다(2026-11-20 사용자 결정): 행 전체의 HOLD(foundationTaxonomyStatus)나 유형 칸의 hold 꼬리표는 PT/TPL을 숨기는 이유가 아니다.
@@ -153,6 +164,11 @@ function buildMetaHint(meta, binding) {
     if (tpl) { out.metaHintTPL = tpl; hintStats.tpl++; }
   }
   if (curriculum) { out.metaHintCurriculum = curriculum; hintStats.curriculum++; }
+  if (pt) {
+    const unit = unitHinter.hint(pt, grade, subject);
+    if (unit) { out.metaHintUnit = unit; hintStats.unit++; }
+    else if (unitHinter.decide(pt, grade).reason === "ambiguous") hintStats.unitAmbiguous++;
+  }
   return out;
 }
 const foundationProjectionFields = new Set(["problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "foundationTaxonomyStatus", "rpmPathStatus", "metaFoundationHoldReason", "metaFoundationPackVersion", "l3Disposition", "l4Disposition", "semanticDisposition"]);
@@ -469,7 +485,7 @@ for (const exam of exams) {
       else hintStats.unbound++;
     }
     const metaBinding = bindingKind ? "text" : "";
-    const metaHint = buildMetaHint(meta, bindingKind);
+    const metaHint = buildMetaHint(meta, bindingKind, sourceGradeEvidence.grade, exam.subject);
     const assignmentResult = identityStatus === "VERIFIED" && sourceGradeEvidence.status === "VALID"
       ? verifiedBasicAssignment({
           id,

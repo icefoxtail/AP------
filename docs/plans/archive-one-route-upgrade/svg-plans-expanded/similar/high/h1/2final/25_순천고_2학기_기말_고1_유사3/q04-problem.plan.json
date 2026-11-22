@@ -1,0 +1,108 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "MAPPING",
+  "columns": [
+   {
+    "id": "X",
+    "name": "X",
+    "elements": [
+     "1",
+     "2",
+     "3"
+    ]
+   },
+   {
+    "id": "Y",
+    "name": "Y",
+    "elements": [
+     "4",
+     "5",
+     "6"
+    ]
+   },
+   {
+    "id": "Z",
+    "name": "Z",
+    "elements": [
+     "7",
+     "8",
+     "9"
+    ]
+   }
+  ],
+  "arrows": [
+   {
+    "from": {
+     "column": 0,
+     "element": 0
+    },
+    "to": {
+     "column": 1,
+     "element": 1
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 1
+    },
+    "to": {
+     "column": 1,
+     "element": 0
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 2
+    },
+    "to": {
+     "column": 1,
+     "element": 2
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 0
+    },
+    "to": {
+     "column": 2,
+     "element": 2
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 1
+    },
+    "to": {
+     "column": 2,
+     "element": 0
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 2
+    },
+    "to": {
+     "column": 2,
+     "element": 1
+    }
+   }
+  ]
+ },
+ "caption": "일대일대응 f:X→Y와 g:Y→Z의 대응도",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "f: 1→5, 2→4, 3→6, g: 4→9, 5→7, 6→8",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "두 함수의 대응"
+ ]
+}

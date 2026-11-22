@@ -6584,3 +6584,25 @@ test("rpmPrimaryRecordId absent from the crosswalk leaves rpmL1~L4 empty and is 
   for (const k of ["rpmL1", "rpmL2", "rpmL3", "rpmL4"]) assert.equal(Object.hasOwn(row, k), false, k);
   assert.deepEqual(result.reportTags, [{ questionUid: "uid1", kind: "RPM_RECORD_ID_NOT_IN_CROSSWALK", rpmPrimaryRecordId: "FIXTURE-RPM-1" }]);
 });
+
+// REVIEW2/FINAL_QA requests are bound to the stem + choices of the questions they cover (text-v1), not to the file blob:
+// publishing a solution figure changes the blob but must not need a hand repin; a changed stem or choice must still be refused.
+test("REVIEW2: a solution-figure-only source change is accepted without repinning the blob, a stem or choice change is still refused", t => {
+  const f = partialFixture(t);
+  const run = (...args) => execFileSync("git", args, { cwd: f.root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
+  run("init", "-q");
+  const reviewedBlob = run("hash-object", "-w", f.sourcePath);
+  assert.equal(reviewedBlob, f.request.expectedSourceBlobSha1);
+  const edit = change => f.put(f.sourcePath, `window.questions = ${JSON.stringify([{ ...f.q, ...change }, { ...f.q, id: 2 }])};\n`);
+  edit({ solutionImage: "assets/images/fixture-sol.svg", solutionImageAlt: "해설 그림", solutionImageCaption: "그림 설명" });
+  assert.notEqual(run("hash-object", f.sourcePath), reviewedBlob, "the file blob did change");
+  assert.equal(f.request.expectedSourceBlobSha1, reviewedBlob, "the request keeps its reviewed blob");
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).totalQuestions, 1);
+  edit({ content: f.q.content + " 조건 추가" });
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /source Git blob drift/);
+  edit({ choices: [...(f.q.choices || ["①", "②"]), "새 보기"] });
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /source Git blob drift/);
+  // A request whose reviewed blob is not in Git cannot prove the stem is unchanged and keeps the blob binding.
+  edit({ solutionImage: "assets/images/fixture-sol.svg" });
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: { ...f.request, expectedSourceBlobSha1: "b".repeat(40) } }), /source Git blob drift/);
+});

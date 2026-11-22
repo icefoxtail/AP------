@@ -36,8 +36,10 @@ on:
       - '.github/workflows/archive-reviewed-apply.yml'
       - '.github/workflows/archive-pages-release.yml'
   workflow_dispatch:
+  # Safety net only: every main push already runs this, and RETRY_EXHAUSTED queues one more run. Hourly runs held the
+  # single registration lock for 40-60 min and made each merge wait up to 30 min, so run once a day (03:43 KST).
   schedule:
-    - cron: '43 * * * *'
+    - cron: '43 18 * * *'
 permissions:
   contents: read
 jobs:
@@ -54,6 +56,8 @@ jobs:
         with:
           node-version: 22
       # Automation fixtures run once in CI; this existing check retains the native read-only inventory.
+      - name: Assemble question metadata (git holds its shards)
+        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
       - run: bash -n tools/ci/archive-main-auto-meta-pass.sh tools/ci/reviewed-meta-register-pass.sh tools/ci/archive-four-slot-pass.sh tools/ci/archive-pages-registration-derive.sh
       - name: Real production inventory (no writes or mathematical review)
         run: |
@@ -136,6 +140,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Assemble question metadata (git holds its shards)
+        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'

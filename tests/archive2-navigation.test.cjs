@@ -27,9 +27,9 @@ test('PC menu has six entries in order and the phone menu has six short ones inc
   for (const mode of ['workspace', 'unit']) {
     const html = navigation.markup(mode);
     assert.deepEqual(labelsOf(html, /<nav class="archive-navigation-tasks"[\s\S]*?<\/nav>/),
-      ['홈', '학교별 기출', '단원별 기출', '문제지 만들기', '빠른 평가', '보관함 · 출제 내역']);
+      ['홈', '학교별 기출', '단원별 기출', '문제지 만들기', '빠른 평가', '출제 내역 · 보관함']);
     assert.deepEqual(labelsOf(html, /<nav class="archive-mobile-tabs"[\s\S]*?<\/nav>/),
-      ['홈', '학교별', '단원별', '만들기', '빠른평가', '보관함']);
+      ['홈', '학교별', '단원별', '만들기', '빠른평가', '출제내역']);
   }
 });
 
@@ -38,16 +38,29 @@ test('the menu carries no icons or text symbols', () => {
   assert.doesNotMatch(html, /<svg|archive-nav-icon|•••/);
 });
 
-test('saved and recent screens both mark the one 보관함 · 출제 내역 entry as current', () => {
+test('saved and recent screens both mark the one 출제 내역 · 보관함 entry as current', () => {
   for (const view of ['saved', 'recent']) {
     const html = navigation.markup('workspace', { view });
     const sidebar = html.match(/<nav class="archive-navigation-tasks"[\s\S]*?<\/nav>/)[0];
     const current = [...sidebar.matchAll(/<button[^>]*aria-current="page"[^>]*>[\s\S]*?<span class="archive-nav-label">([^<]*)<\/span>/g)];
-    assert.deepEqual(current.map(match => match[1]), ['보관함 · 출제 내역'], view);
+    assert.deepEqual(current.map(match => match[1]), ['출제 내역 · 보관함'], view);
     assert.ok(navigation.matches('library', view));
     assert.equal(navigation.matches('library', 'find'), false);
   }
-  assert.match(navigation.libraryTabs('recent'), /data-view="saved" aria-pressed="false">보관함[\s\S]*data-view="recent" aria-pressed="true">출제 내역/);
+  // The menu entry opens 출제 내역 first (PC and phone); 보관함 stays one switch press away and keeps its own explicit links.
+  for (const mode of ['workspace', 'unit']) {
+    const html = navigation.markup(mode);
+    const sidebar = html.match(/<nav class="archive-navigation-tasks"[\s\S]*?<\/nav>/)[0];
+    const phone = html.match(/<nav class="archive-mobile-tabs"[\s\S]*?<\/nav>/)[0];
+    for (const part of [sidebar, phone]) {
+      const entry = part.match(/<(?:button|a)[^>]*data-nav-key="library"[^>]*>/)[0];
+      assert.match(entry, mode === 'workspace' ? /data-view="recent"/ : /href="workspace\.html\?view=recent"/);
+      assert.doesNotMatch(entry, /view=saved|data-view="saved"/);
+    }
+  }
+  const tabs = navigation.libraryTabs('recent');
+  assert.match(tabs, /data-view="recent" aria-pressed="true">출제 내역[\s\S]*data-view="saved" aria-pressed="false">보관함/);
+  assert.ok(tabs.indexOf('data-view="recent"') < tabs.indexOf('data-view="saved"'));
 });
 
 test('quick assessment views keep 빠른 평가 current on PC and phone, and 만들기 only for compose', () => {
@@ -213,7 +226,7 @@ test('standalone pages in a sub folder keep the menu working: base prefix, chose
   const html = navigation.markup('standalone', { view: 'saved', title: '시험지 보관함', base: '../' });
   assert.match(html, /href="\.\.\/workspace\.html\?view=home"/, 'brand');
   assert.match(html, /href="\.\.\/unit-past-exams\.html\?ready=1" data-nav-key="unit"/);
-  assert.match(html, /href="\.\.\/workspace\.html\?view=saved" data-nav-key="library" aria-current="page" class="active"/);
+  assert.match(html, /href="\.\.\/workspace\.html\?view=recent" data-nav-key="library" aria-current="page" class="active"/);
   assert.equal((html.match(/aria-current="page"/g) || []).length, 2, 'one current entry in the PC menu and one in the phone menu');
   assert.match(html, /<span class="archive-mobile-title">시험지 보관함<\/span>/);
   assert.match(html, /href="\.\.\/\.\.\/apmath\/"/, 'login link reaches AP Math OS from archive/assessment/');

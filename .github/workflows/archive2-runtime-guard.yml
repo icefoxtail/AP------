@@ -83,6 +83,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Assemble question metadata (git holds its shards)
+        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
       - name: Classify the fixed snapshot impact
         id: scope
         run: node tools/ci/archive-ci-scope.mjs --output "$RUNNER_TEMP/archive-ci-scope.json"

@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-64326f08683b-23268eb4",
+  "requestSha256": "f6e56da8ecbc41452708a056ba97881323e7ec640e9a39e8c92b94bf1bbcabf7",
+  "examUid": "23_연향중_2학기_중간_중1_기출",
+  "sourceArchiveFile": "original/middle/m1/2mid/23_연향중_2학기_중간_중1_기출.js",
+  "sourceBlobSha1": "4ae5beb89c314c4e9e8fced3f85368b3ba7003dc",
+  "sourceRawSha256": "4ffe99f4d9485cb7ef818cbfbd405dfcaa14d032216f3616bfa6315362c6227c",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-64326f08683b-23268eb4.type-ledger.json",
+        "sha256": "e4f834c3b6a5f352ab9c8813fcba35bf80a4f43b2d0e6781ef586efb50c2086b"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_6305db876ddf39640d44ae07abbf7aa2ac6c519cb285c3e66c839b03e33901fe",
+      "sourceArchiveFile": "original/middle/m1/2mid/23_연향중_2학기_중간_중1_기출.js",
+      "sourceOrdinal": 23,
+      "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+      "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-64326f08683b-23268eb4",
+        "judge": "dots",
+        "rationale": "각삼각형쌍의변·각을대응시켜SSS와ASA는합동이나(b)의변길이와SSA조건은합동을보장하지않음을 설명한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "2765fa5649ffbf2b177ae8463573d25757706a6e25bd6ea92fd3b0a1eac12625",
+        "judgedContentFingerprint": "24a08966920ff7a3ebaf60dc16e529003c1a5bebe45945f45688dc1c300decdc",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "4c272dfaacebf5bfd81c91b03652ad220d32558ffbdf29d7066a0f2ef32d259e",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-64326f08683b-23268eb4.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+          "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}

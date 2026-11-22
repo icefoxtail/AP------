@@ -314,7 +314,12 @@ window.questionBank = [
     "subUnitKey": "H22-C-11-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 0에서 2π까지 한 주기의 사인 곡선과 가로선 y=1/2이 두 점에서 만나고, 교점의 x좌표가 가로축 눈금으로 표시되어 있다.",
+    "solutionImageCaption": "(2sin x−1)(sin x+2)=0에서 sin x=−2는 y=sin x의 값이 −1 이상이라 그래프와 만날 수 없다. sin x=1/2이므로 y=sin x의 그래프와 직선 y=1/2의 교점 x=π/6, 5π/6을 구한다. 두 해의 합은 π이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 90
   },
   {
     "id": 10,
@@ -387,7 +392,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: n이 2에서 9 사이일 때 위로 볼록한 포물선이 그려져 있고, 가로축과 만나는 두 점 P, Q와 꼭짓점 V의 좌표가 표시되어 있다. 3과 8 사이에서 곡선이 가로축 위에 있다.",
+    "solutionImageCaption": "A는 n에 따른 A=−n²+11n−24=−(n−3)(n−8)의 그래프이다. 3<n<8에서 A>0이고 n=3, 8에서 A=0이다. n제곱근 중 실수의 개수는 A>0이면 홀수 n에서 1개, 짝수 n에서 2개이고 A=0이면 1개이다. 따라서 f(3)=1, f(4)=2, f(5)=1, f(6)=2, f(7)=1이어서 f(n)+f(n+1)=3인 n은 3, 4, 5, 6이고 합은 18이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -461,7 +470,12 @@ window.questionBank = [
     "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
     "subUnit": "로그함수",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 1에서 3까지 내려가는 포물선의 일부가 그려져 있고, 왼쪽 끝 점 A와 오른쪽 끝 점 B의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "h는 k=4일 때 h(x)=(x−4)²+1의 그래프를 1≤x≤3에서 본 것이다. 이 구간에서 h는 감소하므로 최솟값은 B(3, 2)의 값 2이고 최댓값은 A(1, 10)의 값 10이다. 최솟값 log₂2+2=3이므로 이 구간에서 진수의 최솟값이 2여야 하고 k=4이다. 최댓값 M=log₂10+2이므로 2의 M제곱은 40이다. 따라서 k+2의 M제곱=44이고 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 14,
@@ -498,7 +512,12 @@ window.questionBank = [
     "subUnitKey": "H22-C-10-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 시작하는 사인 곡선이 높이 a의 가로선에 두 번 닿고, 두 접점 A, B와 원점 O를 이은 삼각형이 색칠되어 있다.",
+    "solutionImageCaption": "예: 이 그림은 b=2, a=4일 때의 모양이다. 직선 y=a와 곡선 y=a sin(πx/b)는 sin(πx/b)=1에서 만나므로 A(b/2, a), B(5b/2, a)이다. 삼각형 OAB의 넓이는 (1/2)(2b)(a)=ab=4이고 기울기의 곱 4a²/(5b²)=16/5에서 a=2b이다. 따라서 b=√2, a=2√2이고 a+b=3√2이므로 답은 ⑤이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 90
   },
   {
     "id": 15,
@@ -539,9 +558,9 @@ window.questionBank = [
   },
   {
     "id": 16,
-    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q16-solution.svg",
-    "solutionImageAlt": "점 A(8,0), B(2,6), C(6,2), D(216,6)와 선분 BC, BD를 표시하고 삼각형 BCD를 색칠해 넓이 428을 나타낸 그림이다.",
-    "solutionImageCaption": "triangle_log",
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽 위로 올라가는 파란 지수 곡선 f, 완만히 올라가는 주황 로그 곡선 g, 오른쪽 아래로 내려가는 초록 직선 l과 가로 점선 y=6이 있다. 직선 위의 점 A, B, C의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "a²=6인 a=√6일 때의 그림이고 f는 y=aˣ, g는 y=logₐx, l은 y=−x+8이다. 두 곡선의 교점 B, C는 직선 위에서 좌표가 서로 바뀐 점이고 BC:CA=2:1에서 B(2, 6), C(6, 2)이다. 점 B를 지나는 수평선 y=6이 g와 만나는 점 D는 x=a⁶=216이므로 D(216, 6)이며 그림의 범위 밖에 있다. 삼각형 BCD의 넓이는 (1/2)(216−2)(6−2)=428이다. 따라서 답은 ④이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "content": "<div class=\"box\">점 A(8, 0)을 지나는 직선 $y=-x+8$이 두 곡선 $y=a^x$, $y=\\log_a x$와 만나는 점을 각각 B, C라 하고, 점 B를 지나고 $y$축에 수직인 직선이 곡선 $y=\\log_a x$와 만나는 점을 D라 하자. $\\overline{BC}:\\overline{CA}=2:1$일 때, 삼각형 BCD의 넓이는? (단, $a>1$) [4.6]</div>",
@@ -577,7 +596,8 @@ window.questionBank = [
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
     "subUnit": "지수함수",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageScale": 80
   },
   {
     "id": 17,

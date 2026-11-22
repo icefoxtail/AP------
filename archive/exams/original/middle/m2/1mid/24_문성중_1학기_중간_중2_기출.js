@@ -990,7 +990,11 @@ window.questionBank = [
     "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
     "projectionReason": "Preserve RPM semantic without inventing PT/TPL.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "RPM_ONLY_NO_ACTIVE_MAPPING"
+    "boundaryStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+    "solutionImage": "assets/images/24_문성중_1학기_중간_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 밑면이 정사각형인 직육면체이고 밑면이 색칠되어 있으며 밑면의 두 변과 높이에 길이가 적혀 있다.",
+    "solutionImageCaption": "밑면(색칠)은 한 변이 2a²b인 정사각형이라 밑넓이는 4a⁴b²이다. 부피 8a⁵b³을 밑넓이로 나누면 높이는 2ab이다. 변의 비율은 모양만 나타낸 것이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1412,7 +1416,11 @@ window.questionBank = [
     "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
     "projectionReason": "Preserve RPM semantic without inventing PT/TPL.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "RPM_ONLY_NO_ACTIVE_MAPPING"
+    "boundaryStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+    "solutionImage": "assets/images/24_문성중_1학기_중간_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: x가 −11에서 3까지인 구간에서 오른쪽 아래로 내려가는 직선 조각이 있고 왼쪽 끝 A와 오른쪽 끝 B의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "a<0이므로 y=1/3+ax는 감소하여 최댓값은 왼쪽 끝 A에서, 최솟값은 오른쪽 끝 B에서 생긴다. A에서 1/3−11a=4이므로 a=−1/3이고, B에서 b=1/3+3a=−2/3이다. a−b=−1/3+2/3=1/3이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1604,6 +1612,10 @@ window.questionBank = [
     "nullReason": "Current 2015 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
     "projectionReason": "Preserve RPM semantic without inventing PT/TPL.",
     "semanticBoundaryReason": null,
-    "boundaryStatus": "RPM_ONLY_NO_ACTIVE_MAPPING"
+    "boundaryStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+    "solutionImage": "assets/images/24_문성중_1학기_중간_중2_기출/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: x가 −1에서 3까지인 구간에서 오른쪽 아래로 내려가는 직선 조각이 있고 양 끝점 A와 B의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "y=5−x/2는 감소하므로 −1≤x≤3에서 x=−1일 때 최댓값 11/2(점 A), x=3일 때 최솟값 7/2(점 B)를 갖는다. 따라서 a=7/2, b=11/2이고 4ab=4×7/2×11/2=77이다. 따라서 답은 77이다.",
+    "solutionImageSize": "full"
   }
 ];

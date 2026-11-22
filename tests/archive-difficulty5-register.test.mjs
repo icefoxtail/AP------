@@ -13,6 +13,13 @@ const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const FIXTURE = path.join(repo, "tests/fixtures/diff5/req_diff5_17.json");
 const gemini = JSON.parse(fs.readFileSync(FIXTURE, "utf8"));
 const SOURCE = gemini.sourceArchiveFile;
+// The fixture is a derived copy of one real exam's difficulty request. Its latestBlobSha must not pin the live exam
+// file: publishing a solution figure to that exam changes the blob and would redden this test until someone repins it
+// by hand. Bind it to the current LF blob at load time; the drift and CRLF tests below still exercise real mismatches.
+{
+  const lf = Buffer.from(fs.readFileSync(path.join(repo, "archive/exams", SOURCE)).toString("utf8").replace(/\r\n/g, "\n"), "utf8");
+  gemini.latestBlobSha = crypto.createHash("sha1").update("blob " + lf.length + "\0").update(lf).digest("hex");
+}
 const META = "archive/data/question_metadata.json";
 const IDENTITY = "archive/data/question_identity_map.json";
 const sha256 = b => crypto.createHash("sha256").update(b).digest("hex");

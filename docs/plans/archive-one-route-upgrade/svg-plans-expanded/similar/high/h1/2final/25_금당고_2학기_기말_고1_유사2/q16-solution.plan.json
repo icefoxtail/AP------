@@ -1,0 +1,83 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "9",
+   "3"
+  ],
+  "denominator": [
+   "2",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -8,
+   4
+  ],
+  "viewport": [
+   -8,
+   4,
+   -6,
+   10
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "asymptoteLabelAt": "END",
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "x": "-3",
+     "y": "0",
+     "coordinates": true
+    },
+    {
+     "id": "B",
+     "x": "0",
+     "y": "9/2",
+     "unnamed": true
+    },
+    {
+     "id": "cr",
+     "curveX": "-1",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cl",
+     "point": "cr",
+     "text": "y=(3x+9)/(x+2)",
+     "labelKind": "MATH",
+     "direction": "E"
+    },
+    {
+     "id": "zB",
+     "point": "B",
+     "text": "B(0,9/2)",
+     "labelKind": "MATH",
+     "direction": "NE"
+    }
+   ]
+  },
+  "hideLabels": [
+   "formula"
+  ]
+ },
+ "pointNames": {
+  "A": "A"
+ },
+ "caption": "시작점이 (-3,2)이므로 c=2, b=3a이고 (0,5)를 지나므로 b=9, a=3이다. 유리함수 y=(3x+9)/(x+2)=3/(x+2)+3의 점근선은 x=-2, y=3이다. x=0일 때 y=9/2>0, x=-3일 때 y=0이므로 그래프는 제1, 제2, 제3사분면을 지나고 제4사분면은 지나지 않는다. 답은 ④이다.",
+ "sourceConditions": [
+  "a=3, b=9, c=2일 때 y=(3x+9)/(x+2)"
+ ],
+ "newVisualInformation": [
+  "점근선 x=-2, y=3",
+  "x절편 (-3,0)과 y절편 (0,9/2)으로 지나는 사분면 확인"
+ ]
+}

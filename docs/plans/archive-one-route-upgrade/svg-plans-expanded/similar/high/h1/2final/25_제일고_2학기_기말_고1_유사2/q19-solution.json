@@ -1,0 +1,57 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "-6",
+     "-1",
+     "1"
+    ]
+   }
+  ],
+  "breakpoints": [],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "axisScale": {
+   "x": "1",
+   "y": "1/2"
+  },
+  "requiredPoints": [
+   {
+    "id": "A",
+    "x": -2,
+    "y": 0
+   },
+   {
+    "id": "B",
+    "x": 3,
+    "y": 0
+   },
+   {
+    "id": "V",
+    "x": 0.5,
+    "y": -6.25
+   }
+  ],
+  "exactCoordinates": {
+   "V": [
+    "1/2",
+    "-25/4"
+   ]
+  },
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  }
+ },
+ "caption": "부정은 모든 실수 x에 대하여 x²+2kx+k+6>0이다. 이 이차부등식이 항상 성립하려면 판별식 D/4=k²-k-6=(k+2)(k-3)<0이어야 한다. 그림은 D/4=k²-k-6을 (가로축 k, 세로축 D/4의 값)으로 그린 그래프이며, 가로축 아래에 있는 구간이 -2<k<3이다. 이를 만족하는 정수 k는 -1, 0, 1, 2의 4개이다.",
+ "sourceConditions": [
+  "모든 실수 x에 대하여 x²+2kx+k+6>0이 성립하려면 D/4=k²-k-6<0"
+ ],
+ "newVisualInformation": [
+  "D/4=k²-k-6의 그래프가 가로축 아래에 있는 구간 -2<k<3 (가로축과의 교점 (-2,0), (3,0))"
+ ]
+}

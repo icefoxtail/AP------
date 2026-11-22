@@ -102,7 +102,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기 1인 직선에서 x=2인 점 P가 채워진 상태로 표시된 그래프이며 P의 좌표가 쓰여 있다.",
+    "solutionImageCaption": "x≠2에서 (x²+x-6)/(x-2)=x+3이므로 그래프는 직선 y=x+3이고 x=2인 점 P(2,5)만 비어 있다. x→2의 극한은 5이므로 f(2)=a가 이 빈 점을 5로 채울 때 연속이다. 따라서 a=5이고 답은 ⑤이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 80
   },
   {
     "id": 4,
@@ -168,7 +173,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수의 그래프이며 x=2의 점 A는 x축 위에, x=3의 점 B는 x축 아래에 있고 두 점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "h(x)=-x³+2x²+5는 연속이다. 점 A(2,5)에서 h(2)=5>0이고 점 B(3,-4)에서 h(3)=-4<0이므로 그래프가 구간 (2,3)에서 x축을 지난다. 그래서 중간값 정리에 의해 (2,3)에 실근이 반드시 있다. 다른 보기 구간의 양 끝에서는 값이 모두 양수라 근이 보장되지 않는다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 6,
@@ -201,7 +211,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-03-DERIVATIVE",
     "subUnit": "미분",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선과 점 T에서 접하는 직선 t, 두 점 T, S를 지나는 할선 s를 나타낸 그래프이다.",
+    "solutionImageCaption": "예: g(x)=x²-5x/4+17/4(g(1)=4, g′(1)=3/4)의 그림이다. h가 0에 가까워지면 g(1+h)-4가 0에 가까워야 하므로 g(1)=4(점 T)이고 극한은 g′(1)=3/4, 곧 접선 t의 기울기이다. 그림의 할선 s는 h=1일 때 T와 S를 지나며 h→0이면 t에 가까워진다. 따라서 g(1)g′(1)=4×3/4=3이고 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 7,
@@ -366,7 +381,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-03-DERIVATIVE",
     "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 직선, 오른쪽은 아래로 볼록한 포물선이 점 P에서 매끄럽게 이어진 그래프이며 P의 좌표와 포물선의 꼭짓점 V가 표시되어 있다.",
+    "solutionImageCaption": "x=-1에서 좌미분계수 -4와 우미분계수 2(-1)+a가 같아야 하므로 a=-2이다. 연속 조건에서 -4(-1)=4=1-a+b이므로 b=1이다. 그림은 a=-2, b=1일 때 직선 y=-4x와 포물선 y=(x-1)²이 P(-1,4)에서 기울기 -4로 매끄럽게 이어지는 모습이다. a²-b²=4-1=3이므로 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -498,7 +517,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 -2인 직선과 직선 위의 두 점 A, B가 표시된 그래프이며 두 점의 좌표가 쓰여 있다.",
+    "solutionImageCaption": "예: f′이 항상 -2인 직선 f(x)=-2x에서 x=2일 때의 그림이다. 구간 [x-5,x+3]=[-3,5]의 길이는 8이고 두 점 A(-3,6), B(5,-10)의 높이 차 f(x-5)-f(x+3)=6-(-10)=16이다. 평균값 정리에서 f(x-5)-f(x+3)=-8f′(c)이고 x→∞에서 f′(c)→-2이므로 극한은 16이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -630,7 +653,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: x축을 따라가다 점 P에서 포물선으로 이어지는 f의 그래프와 그 포물선에 점 T에서 접하는 직선을 나타낸 그림이다.",
+    "solutionImageCaption": "f는 x=2에서 값과 기울기가 모두 0으로 이어지는 점 P(2,0)에서 미분가능하므로 a=2이다. 그림의 직선은 k=7/2일 때 g(x)=6(x-k)=6x-21의 x>k 부분으로, 포물선 y=(x-2)²에 점 T(5,9)에서 접하며 이보다 오른쪽으로 옮기면 f≥g가 깨진다. 따라서 k의 최솟값은 7/2이고 p+q=2+7=9이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 20,
@@ -685,9 +713,9 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "[서술형 1] 점 $(1,-4)$에서 곡선 $y=x^2-x+5$에 그은 접선의 방정식을 구하시오. [6점]",
-    "solutionImage": "assets/images/23_순천여고_2학기_중간_고2_수학II/q21-solution.svg",
-    "solutionImageAlt": "외부점 (1,−4)에서 포물선에 그은 두 접선의 접점과 방정식을 설명하는 해설 도형",
-    "solutionImageCaption": "접점 u=4,−2를 구해 두 접선의 방정식을 얻는다.",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고2_수학II/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선과 곡선 밖의 점 A, 점 A를 지나 접점 T1, T2에서 접하는 두 접선을 나타낸 그래프이다.",
+    "solutionImageCaption": "접점을 (u,u²-u+5)라 하면 접선이 A(1,-4)를 지나는 조건에서 u²-2u-8=0, u=4 또는 -2이다. u=4이면 접점 T1(4,17)에서 접선 y=7x-11이고, u=-2이면 접점 T2(-2,11)에서 접선 y=-5x+1이다. 그림의 두 접선이 모두 점 A를 지난다. 따라서 접선은 y=7x-11, y=-5x+1이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "choices": [],
@@ -696,7 +724,8 @@ window.questionBank = [
     "subUnitKey": "H15-M2-05-TANGENT",
     "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageScale": 80
   },
   {
     "id": 22,
@@ -747,9 +776,9 @@ window.questionBank = [
     "wide": false,
     "content": "[서술형 3] 그림과 같이 곡선 $y=2x^2$ 위의 점 $P(t,2t^2)$ $(t>0)$에 대하여 $\\overline{OQ}=\\overline{PQ}$가 되도록 점 $Q$를 $y$축의 양의 방향에 잡는다. 삼각형 $POQ$의 외접원의 지름의 길이를 $A(t)$라 할 때, 다음 물음에 답하시오. [7점]\n(단, $O$는 원점이다.)\n\n(1) $\\angle POQ=\\theta$라고 할 때, $\\sin\\theta$를 $t$에 대한 식으로 나타내시오. [2점]\n(2) $A(t)$를 구하시오. [3점]\n(3) $\\displaystyle\\lim_{t\\to\\infty}\\dfrac{A(t)}{t^3}$의 값을 구하시오. [2점]",
     "image": "assets/images/23_순천여고_2학기_중간_고2_수학II/q23.png",
-    "solutionImage": "assets/images/23_순천여고_2학기_중간_고2_수학II/q23-solution.svg",
-    "solutionImageAlt": "P·Q·O의 삼각형과 OQ=PQ, 외접원 지름 공식을 설명하는 해설 도형",
-    "solutionImageCaption": "Q의 좌표와 sinθ를 이용해 A(t)와 마지막 극한을 계산한다.",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고2_수학II/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 위의 점 P, y축 위의 점 Q, 원점 O를 꼭짓점으로 하는 삼각형과 그 외접원을 나타낸 그림이며 Q에 직각 표시가 있다.",
+    "solutionImageCaption": "예: t=1/2일 때의 그림이다. P(1/2,1/2)이고 OQ=PQ에서 Q(0,t²+1/4)=Q(0,1/2)이다. 삼각형 POQ는 Q에서 직각이라 외접원의 지름은 OP이다. 일반적으로 sinθ=1/√(4t²+1), A(t)=(4t²+1)의 3/2제곱을 4로 나눈 값이고 t→∞에서 A(t)/t³→2이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
       "imageSize": "tall",

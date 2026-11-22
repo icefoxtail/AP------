@@ -1,0 +1,258 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "원 위에 놓인 8개의 점에서 두 점을 잇는 모든 선분의 개수 다이어그램이다.",
+  "accessibilityDescription": "8개의 팀 사이의 모든 경기(선분) 총 28경기를 시각화한 해설 그림.",
+  "sourceQuote": "$8$개의 팀 중 서로 다른 $2$팀을 택하는",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "P1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8"
+  ],
+  "displaySegments": [
+    {
+      "id": "s12",
+      "refs": [
+        "P1",
+        "P2"
+      ]
+    },
+    {
+      "id": "s23",
+      "refs": [
+        "P2",
+        "P3"
+      ]
+    },
+    {
+      "id": "s34",
+      "refs": [
+        "P3",
+        "P4"
+      ]
+    },
+    {
+      "id": "s45",
+      "refs": [
+        "P4",
+        "P5"
+      ]
+    },
+    {
+      "id": "s56",
+      "refs": [
+        "P5",
+        "P6"
+      ]
+    },
+    {
+      "id": "s67",
+      "refs": [
+        "P6",
+        "P7"
+      ]
+    },
+    {
+      "id": "s78",
+      "refs": [
+        "P7",
+        "P8"
+      ]
+    },
+    {
+      "id": "s81",
+      "refs": [
+        "P8",
+        "P1"
+      ]
+    },
+    {
+      "id": "d15",
+      "refs": [
+        "P1",
+        "P5"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "d26",
+      "refs": [
+        "P2",
+        "P6"
+      ],
+      "dashed": true
+    }
+  ],
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/24_향림중_2학기_중간_중1_유사/q18-solution-result.json",
+    "statePath": "archive/assets/images/24_향림중_2학기_중간_중1_유사/q18-solution-state.json",
+    "svgPath": "archive/assets/images/24_향림중_2학기_중간_중1_유사/q18-solution-solution.svg"
+  },
+  "assetPath": "assets/images/24_향림중_2학기_중간_중1_유사/q18-solution.svg"
+}

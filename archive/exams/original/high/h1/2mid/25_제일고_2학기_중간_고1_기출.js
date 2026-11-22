@@ -123,7 +123,7 @@ window.questionBank = [
       "$X\\cap(Y^C\\cup Z)$"
     ],
     "answer": "⑤",
-    "solution": "차집합을 교집합으로 바꾸고 드모르간의 법칙을 적용하여 보기들을 같은 꼴로 나타낸다.\n\n① $(X-Y)\\cap Z^C=X\\cap Y^C\\cap Z^C$이다.\n\n② $X\\cap(Y\\cup Z)^C=X\\cap Y^C\\cap Z^C$이다.\n\n③ $(X\\cap Y^C)\\cap Z^C=X\\cap Y^C\\cap Z^C$이다.\n\n④ $X-(Y\\cup Z)=X\\cap(Y\\cup Z)^C=X\\cap Y^C\\cap Z^C$이다.\n\n⑤ $X\\cap(Y^C\\cup Z)$는 $X\\cap Z$의 원소를 포함할 수 있다. 앞의 네 식은 $Z$에 속하는 원소를 모두 제외하므로 ⑤와 다르다.\n\n따라서 다른 하나는 ⑤이다.",
+    "solution": "차집합의 정의 \\(X-Y=X\\cap Y^C\\)와 드모르간 법칙 \\((Y\\cup Z)^C=Y^C\\cap Z^C\\)를 사용한다.\n\n① \\((X-Y)\\cap Z^C=(X\\cap Y^C)\\cap Z^C=X\\cap Y^C\\cap Z^C\\).\n\n② \\(X\\cap(Y\\cup Z)^C=X\\cap(Y^C\\cap Z^C)=X\\cap Y^C\\cap Z^C\\).\n\n③ \\((X\\cap Y^C)\\cap Z^C=X\\cap Y^C\\cap Z^C\\).\n\n④ \\(X-(Y\\cup Z)=X\\cap(Y\\cup Z)^C=X\\cap Y^C\\cap Z^C\\).\n\n따라서 ①~④는 모두 같은 집합이다.\n\n⑤는 \\(X\\cap(Y^C\\cup Z)=(X\\cap Y^C)\\cup(X\\cap Z)\\)이다. 앞의 네 식과 항상 같지는 않음을 실제 예로 확인한다. 전체집합 \\(U=\\{1\\}\\), \\(X=\\{1\\}\\), \\(Y=\\varnothing\\), \\(Z=\\{1\\}\\)로 잡으면\n\\[\nX\\cap Y^C\\cap Z^C=\\{1\\}\\cap\\{1\\}\\cap\\varnothing=\\varnothing,\n\\]\n\\[\nX\\cap(Y^C\\cup Z)=\\{1\\}\\cap(\\{1\\}\\cup\\{1\\})=\\{1\\}.\n\\]\n서로 다르므로 정답은 \\(\\boxed{⑤}\\)이다.",
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",

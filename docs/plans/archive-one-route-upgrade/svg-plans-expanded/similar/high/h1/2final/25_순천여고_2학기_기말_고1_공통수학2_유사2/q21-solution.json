@@ -1,0 +1,63 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -1,
+   6,
+   -1,
+   4
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "s",
+    "kind": "SQRT",
+    "radicand": [
+     "-1",
+     "1"
+    ],
+    "amplitude": "-1",
+    "offset": "2",
+    "domain": [
+     "1",
+     "6"
+    ],
+    "color": "BLUE",
+    "hideLabel": true
+   },
+   {
+    "id": "l",
+    "kind": "LINE",
+    "coefficients": [
+     "4",
+     "-1"
+    ],
+    "domain": [
+     "-1",
+     "6"
+    ],
+    "color": "WARM",
+    "label": "y=-x+4"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "P",
+     "x": "5/2+1/2*sqrt(5)",
+     "y": "3/2-1/2*sqrt(5)",
+     "unnamed": true,
+     "coordinates": true
+    }
+   ]
+  }
+ },
+ "caption": "역함수는 f^{-1}(x)=2-√(x-1) (x≥1)이다. 이를 4-x와 같다고 하면 √(x-1)=x-2이고, 제곱하면 x²-5x+5=0이다. x≥2를 만족하는 x=(5+√5)/2만 가능하므로 그래프에서도 곡선 y=2-√(x-1)과 직선 y=-x+4가 한 점에서 만난다. 구하는 값은 (5+√5)/2이다.",
+ "newVisualInformation": [
+  "역함수 그래프의 시작점 (1,2)와 직선 y=4-x와의 유일한 교점"
+ ]
+}

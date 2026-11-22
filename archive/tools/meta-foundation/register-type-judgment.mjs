@@ -20,7 +20,7 @@
 // same request through add-only registryChanges); `before` equals the current values; a type that is already approved is
 // never overwritten; the judgment is bound to the current source bytes (blob and per-question fingerprints).
 import fs from "node:fs";
-import { questionMetadataText } from "./question-metadata-format.mjs";
+import { questionMetadataText, assertMetadataAssembledCurrent, syncMetadataShards } from "./question-metadata-format.mjs";
 import path from "node:path";
 import { refreshRuntime } from "./reviewed-runtime-summary.mjs";
 import { loadCourseAliases } from "./course-aliases.mjs";
@@ -31,6 +31,7 @@ export const FIELD_SCOPE_TYPE_ONLY = "TYPE_ONLY";
 export const TYPE_FIELD_STATUS = "approved_direct_judgment";
 export const TYPE_APPROVAL_SCHEMA = "archive-type-direct-judgment-approval-v1";
 export const DECISION_DOCUMENT = "docs/agents/metadata.md";
+const META_FILE = "archive/data/question_metadata.json";
 // Statuses of an unapproved type field. Anything else (approved_*, hold, adjudicated, debt) is never overwritten.
 const OVERWRITABLE_STATUS = new Set(["", "manual_review_pending", "projection_unmaterialized"]);
 const REQUEST_KEYS = new Set(["schemaVersion", "requestId", "examUid", "sourceArchiveFile", "expectedSourceBlobSha1", "expectedQuestionCount",
@@ -148,6 +149,9 @@ const typeSlice = row => ({ questionUid: row.questionUid, sourceArchiveFile: row
 
 export function registerTypeJudgment(ctx) {
   const { root, req, write, verifyProjection, metadata, rows, ids, bank, bytes, blob, receiptPath, requestSha256, previous, scopeFields, h } = ctx;
+  // batch (register-type-batch.mjs) only for a request without registryChanges: it shares the registry tables between requests and
+  // leaves question_metadata.json for the batch to write once (the text is the same one writer, questionMetadataText).
+  const batch = ctx.batch || null;
   const { fail: failWith, eq, safePath, json, digest } = h;
   const aliases = loadCourseAliases(root);
   assertRequestShape(req, h);
@@ -182,8 +186,9 @@ export function registerTypeJudgment(ctx) {
   // Checked at first registration only: a later edit of the decision document must not invalidate an issued receipt's replay.
   checkDecisionDocument(root, req.approval.decisionRef, h);
 
+  if (batch && registryChanges.length) failWith("a batched direct judgment cannot carry registryChanges");
   const plan = registryChanges.length ? h.registryPlan(root, registryChanges, h.evidenceRefs) : null;
-  const tables = h.lookup(plan || h.registryPlan(root, [], h.evidenceRefs));
+  const tables = batch ? batch.tables(() => h.lookup(h.registryPlan(root, [], h.evidenceRefs))) : h.lookup(plan || h.registryPlan(root, [], h.evidenceRefs));
   const typeRecords = [], bindingCounts = { exact: 0, content: 0, stale: 0 };
   for (const patch of req.items.slice().sort((a, b) => a.sourceOrdinal - b.sourceOrdinal)) {
     const uid = patch.questionUid, i = patch.sourceOrdinal - 1;
@@ -278,8 +283,10 @@ export function registerTypeJudgment(ctx) {
       }
     }
   }
-  output.set("archive/data/question_metadata.json", questionMetadataText(metadata));
-  const outputDigests = [...output].filter(([file, text]) => file !== "archive/data/question_metadata.json" &&
+  // A first registration always edits rows (typeApproval carries this requestId), so the metadata file always changes; a batch builds
+  // and writes its text once at the end instead of once per request.
+  if (!batch) output.set(META_FILE, questionMetadataText(metadata));
+  const outputDigests = [...output].filter(([file, text]) => file !== META_FILE &&
     (!fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text))
     .map(([file, text]) => ({ path: file, sha256: digest(text) }));
   const receipt = { schemaVersion: "archive-reviewed-exam-meta-registration-v2", requestId: req.requestId, requestSha256, examUid: req.examUid,
@@ -292,6 +299,8 @@ export function registerTypeJudgment(ctx) {
   if (changed.some(([file]) => file.startsWith("archive/exams/"))) failWith("registration must not write exam source bytes");
   if (!eq(fs.readFileSync(safePath(root, `archive/exams/${source}`)), bytes)) failWith("exam source bytes changed during registration");
   if (write) {
+    // A batch leaves question_metadata.json and its shards to flush(), which checks and writes both once.
+    if (!batch) assertMetadataAssembledCurrent(root);
     const backup = new Map();
     try {
       for (const [file, text] of changed) {
@@ -299,13 +308,15 @@ export function registerTypeJudgment(ctx) {
         backup.set(full, fs.existsSync(full) ? fs.readFileSync(full) : null);
         fs.mkdirSync(path.dirname(full), { recursive: true }); fs.writeFileSync(full, text, "utf8");
       }
+      if (!batch) syncMetadataShards(root);
     } catch (error) {
       for (const [full, original] of backup) { if (original === null) fs.rmSync(full, { force: true }); else fs.writeFileSync(full, original); }
       throw error;
     }
+    if (batch) batch.markMetadataChanged();
   }
   return { status: "PASS", write, requestId: req.requestId, approvalType: DIRECT_JUDGMENT, totalQuestions: typeRecords.length, ...scopeFields,
     fieldScope: FIELD_SCOPE_TYPE_ONLY, registryChangeCount: registryChanges.length, typeApprovals: typeRecords.length, newMetadataApprovals: 0,
     rowBindingCounts: bindingCounts, runtimeMaterialized: 0, fingerprintRepairCount: 0, consumerSearchStatus: "NOT_RUN", replay: false,
-    plannedPaths: changed.map(([file]) => file) };
+    plannedPaths: [...(batch ? [META_FILE] : []), ...changed.map(([file]) => file)] };
 }

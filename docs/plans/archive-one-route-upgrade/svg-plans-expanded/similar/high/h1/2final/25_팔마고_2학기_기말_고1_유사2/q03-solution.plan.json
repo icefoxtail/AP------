@@ -1,0 +1,166 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "MAPPING",
+  "columns": [
+   {
+    "id": "X",
+    "elements": [
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "name": "x"
+   },
+   {
+    "id": "Y",
+    "elements": [
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "name": "f(x)"
+   },
+   {
+    "id": "Z",
+    "elements": [
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "name": "g(f(x))"
+   }
+  ],
+  "arrows": [
+   {
+    "from": {
+     "column": 0,
+     "element": 0
+    },
+    "to": {
+     "column": 1,
+     "element": 2
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 1
+    },
+    "to": {
+     "column": 1,
+     "element": 3
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 2
+    },
+    "to": {
+     "column": 1,
+     "element": 0
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 3
+    },
+    "to": {
+     "column": 1,
+     "element": 1
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 0
+    },
+    "to": {
+     "column": 2,
+     "element": 3
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 1
+    },
+    "to": {
+     "column": 2,
+     "element": 0
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 2
+    },
+    "to": {
+     "column": 2,
+     "element": 1
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 3
+    },
+    "to": {
+     "column": 2,
+     "element": 2
+    }
+   }
+  ],
+  "arrowGroups": [
+   {
+    "name": "f",
+    "from": "X",
+    "to": "Y",
+    "color": "BLUE"
+   },
+   {
+    "name": "g",
+    "from": "Y",
+    "to": "Z",
+    "color": "WARM"
+   }
+  ],
+  "highlightPaths": [
+   {
+    "path": [
+     "3",
+     "5",
+     "4"
+    ],
+    "startColumn": 0,
+    "color": "GREEN"
+   },
+   {
+    "path": [
+     "5",
+     "3"
+    ],
+    "startColumn": 0,
+    "color": "ROSE"
+   }
+  ]
+ },
+ "caption": "(g∘f)⁻¹(4)=f⁻¹(g⁻¹(4))이다. g(5)=4이므로 g⁻¹(4)=5이고, f(3)=5이므로 f⁻¹(5)=3이다. 초록색 경로 3→5→4가 이를 보여 준다. 또 f(5)=3이므로 f⁻¹(3)=5이고(분홍색 화살표), 구하는 값은 3+5=8이다. 따라서 답은 ⑤이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "f를 먼저, g를 나중에 적용한다",
+   "mappedTo": [
+    "arrows"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "f와 g를 이은 경로로 (g∘f)⁻¹(4)와 f⁻¹(3)을 읽는다."
+ ]
+}

@@ -351,10 +351,10 @@ window.questionBank = [
     "wide": false,
     "content": "$12 \\times 15 \\times 16 = 2^m \\times 3^n \\times 5$일 때, 두 자연수 $m$과 $n$의 합 $m+n$의 값은?",
     "choices": [
+      "$4$",
       "$5$",
       "$6$",
       "$7$",
-      "$9$",
       "$8$"
     ],
     "answer": "⑤",
@@ -568,8 +568,8 @@ window.questionBank = [
     "content": "$\\frac{3^{14}}{18^4 + 18^4 + 18^4}$을 계산하여 기약분수로 나타낸 것은?",
     "choices": [
       "$\\frac{81}{16}$",
-      "$\\frac{81}{8}$",
       "$\\frac{243}{32}$",
+      "$\\frac{81}{8}$",
       "$\\frac{243}{16}$",
       "$\\frac{729}{16}$"
     ],

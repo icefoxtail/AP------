@@ -194,6 +194,9 @@
         .find((candidate) => C.normalizeCourseIdentity(candidate.course) === identity)?.value ||
         C.highSemanticSubjectForCourseKey?.(next.courseKey) || "";
     }
+    // 고1 과목 목록이 4과목(공통수학1·2, 수학(상)·(하))이던 때 저장된 옛 초안의 값은 묶음 규칙(수학(상)→공통수학1, 수학(하)→공통수학2)의 과목으로 받는다.
+    if (subject && grade === "고1" && !Unified.subjectByValue(grade, subject))
+      subject = { H1_2015_MATH_UP: "COMMON_MATH_1", H1_2015_MATH_DOWN: "COMMON_MATH_2" }[subject] || subject;
     if (subject && !Unified.subjectByValue(grade, subject)) subject = "";
     next.semanticSubject = subject;
     next.curriculumKey = "";
@@ -486,6 +489,8 @@
   const quickState = { grade: "", subject: "", semester: "1", busy: false, bundle: new Set(), pick: "", shortOpen: false, levelOpen: false, groupsFailed: false,
     // 진단평가 A·B형 두 벌 (a check box, not a mode); formB: the B paper when its window could not open with A's click.
     twoForms: false, formB: null,
+    // 진단평가 결과표 link: the question UIDs of the paper(s) just made ({ title, a, b }), cleared when the next one starts.
+    report: null,
     presets: { "five-minute": "standard", "subunit-test": "standard", "unit-test": "standard", "monthly-test": "standard", diagnostic: "standard" } };
   const quickProduct = () => Quick?.PRODUCTS[state.view] || null;
   const quickPreset = () => quickState.presets[state.view] || "standard";
@@ -635,7 +640,10 @@
     // 학년은 학년 색 버튼(학교별 기출·단원별 기출과 같은 구성요소), 과목은 2과목이면 2칸 전환·그 이상이면 칩이다.
     const subjects = Unified.subjectsForGrade(filters.grade);
     const locked = state.sealed || state.derivationSource || state.receipts.length > 0 ? "disabled" : "";
-    const pressed = (value) => `aria-pressed="${String(filters.semanticSubject || "") === String(value)}"`;
+    // 과목이 둘뿐인 학년(고1: 공통수학1·공통수학2)은 눌린 단추가 목록에 들어 있는 과목이다. 과목을 따로 고르지 않은 상태(전체)는
+    // 두 단추가 모두 눌린 상태이고, 한 과목만 고르면 그 단추만 눌린다. 필터 값은 단일 값 그대로다(새 상태 없음).
+    const bothOn = subjects.length === 2 && !filters.semanticSubject;
+    const pressed = (value) => `aria-pressed="${bothOn || String(filters.semanticSubject || "") === String(value)}"`;
     const subjectButton = ({ value, label }) =>
       button("compose-subject", esc(label), `type="button" data-subject="${esc(value)}" ${pressed(value)} ${locked}`);
     const subjectField = subjects.length === 2

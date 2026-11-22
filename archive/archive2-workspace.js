@@ -29,7 +29,7 @@
     fillHomeFromCatalog, generate, hideErrorToast, invalidate, invalidateRecentRequests,
     isAssessmentRecipeMode, isCurrentAuthorityError, isCurrentPdfRetryAuthority, isQuickAssessmentView,
     loadRecent, lockedIndex, navViewActive, newDraft, openAssignmentOutput, openFinderOutput,
-    openOriginalAssign, openQuickAssessment, openRecentAssignmentStatus, openSavedPaperAssign,
+    openOriginalAssign, openOriginalAssignMany, multiPickedExams, toggleMultiPick, clearMultiPick, openQuickAssessment, openRecentAssignmentStatus, openSavedPaperAssign,
     openSavedPaperRevision, openSimilarList, originalIssueBusy, originalPrint, ownHistoryContext,
     pdfRetryAuthority, preparingMarkup, print, quickLoadGroups, quickProduct, quickState, recentTarget,
     reconcileFinderFilters, reconcileFinderSchool, reconcileUnifiedFilters, refreshComposeSaveContinuity,
@@ -53,7 +53,7 @@
       fillHomeFromCatalog, generate, hideErrorToast, invalidate, invalidateRecentRequests,
       isAssessmentRecipeMode, isCurrentAuthorityError, isCurrentPdfRetryAuthority, isQuickAssessmentView,
       loadRecent, lockedIndex, navViewActive, newDraft, openAssignmentOutput, openFinderOutput,
-      openOriginalAssign, openQuickAssessment, openRecentAssignmentStatus, openSavedPaperAssign,
+      openOriginalAssign, openOriginalAssignMany, multiPickedExams, toggleMultiPick, clearMultiPick, openQuickAssessment, openRecentAssignmentStatus, openSavedPaperAssign,
       openSavedPaperRevision, openSimilarList, originalIssueBusy, originalPrint, ownHistoryContext,
       pdfRetryAuthority, preparingMarkup, print, quickLoadGroups, quickProduct, quickState, recentTarget,
       reconcileFinderFilters, reconcileFinderSchool, reconcileUnifiedFilters, refreshComposeSaveContinuity,
@@ -770,6 +770,12 @@
         applyFinderFilterChange("grade");
         render();
         document.querySelector(`[data-action="finder-grade"][data-grade="${grade}"]`)?.focus?.({ preventScroll: true });
+      } else if (a === "finder-subject") {
+        // The subject row under the grade buttons: same state and same effect as the 과목 select in the fold.
+        state.find.semanticSubject = b.dataset.subject || "";
+        applyFinderFilterChange("semanticSubject");
+        render();
+        document.querySelector(`[data-action="finder-subject"][data-subject="${b.dataset.subject || ""}"]`)?.focus?.({ preventScroll: true });
       } else if (a === "similar-list") {
         openSimilarList(state.catalog.exams[Number(b.dataset.exam)]);
       } else if (a === "finder-reset") {
@@ -818,6 +824,12 @@
       } else if (a === "source-issue") {
         rememberRecentExam(recentTarget(state.catalog.exams[Number(b.dataset.exam)]));
         openOriginalAssign(state.catalog.exams[Number(b.dataset.exam)]);
+      } else if (a === "multi-pick") {
+        toggleMultiPick(state.catalog.exams[Number(b.dataset.exam)]);
+      } else if (a === "multi-pick-clear") {
+        clearMultiPick();
+      } else if (a === "multi-assign") {
+        openOriginalAssignMany(multiPickedExams());
       } else if (a === "source-output-direct") {
         rememberRecentExam(recentTarget(state.catalog.exams[Number(b.dataset.exam)]));
         await openFinderOutput(state.catalog.exams[Number(b.dataset.exam)], b.dataset.mode || "exam");
@@ -885,8 +897,18 @@
         if (state.sealed) return;
         const filter = a === "compose-grade" ? "grade" : "semanticSubject";
         const value = a === "compose-grade" ? b.dataset.grade : b.dataset.subject;
-        if (String(state.filters[filter] || "") === String(value ?? "")) return;
-        changeComposeFilter(filter, value ?? "");
+        let next = value ?? "";
+        if (a === "compose-subject" && value) {
+          // 과목이 둘뿐인 학년(고1): 둘 다 켜진 상태(과목 값 없음)에서 한 단추를 누르면 그 과목만 남고, 한 과목만 켜진 상태에서
+          // 다른 단추를 누르면 둘 다 켜지며, 켜진 마지막 하나를 누르면 아무 일도 없다(마지막 하나는 끌 수 없다).
+          const values = Unified.subjectsForGrade(state.filters.grade).map((subject) => subject.value);
+          if (values.length === 2) {
+            const current = state.filters.semanticSubject || "";
+            next = !current ? value : current === value ? current : "";
+          }
+        }
+        if (String(state.filters[filter] || "") === String(next)) return;
+        changeComposeFilter(filter, next);
         // 다시 그린 뒤에도 키보드 위치가 그 버튼에 남게 한다.
         document.querySelector(`[data-action="${a}"][data-${a === "compose-grade" ? "grade" : "subject"}="${value ?? ""}"]`)?.focus?.({ preventScroll: true });
       } else if (a === "count-step") {

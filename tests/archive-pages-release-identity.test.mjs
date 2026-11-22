@@ -9,6 +9,7 @@ import { createServer } from "node:http";
 import { execFileSync, spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { buildPagesSite } from "../tools/build-archive-pages-site.mjs";
+import { META_FILE, SHARD_DIR, questionMetadataText, splitMetadataFile } from "../archive/tools/meta-foundation/question-metadata-format.mjs";
 import { computeReleaseIdentity, compareReleaseIdentity, sealReleaseReceipt, validateReleaseIdentity,
   isArchiveValidatorPath, RELEASE_RECEIPT } from "../tools/ci/archive-pages-release-identity.mjs";
 import { decideDeployNeeded, latestSuccessfulDeploymentSha, probe, receiptUrl, readLiveReceipt } from "../tools/ci/archive-pages-deploy-needed.mjs";
@@ -380,4 +381,49 @@ test("older duplicate dispatch is SUPERSEDED; missing or diverged published ance
   });
   assert.equal(exit, 1, "an ancestry block is a real failed identity step for the final gate");
   assert.match(fs.readFileSync(output, "utf8"), /blocked=true\nstatus=BLOCKED\n/);
+});
+
+// Git holds the question metadata as per-exam shards; the packaged one file (archive/data/question_metadata.json) is their ignored assembly.
+test("the assembled question metadata is accepted only as the assembly of the registered shards and its identity follows them", async t => {
+  const f = fixture(t);
+  f.put(".gitignore", "_site/\nevidence/\narchive/data/question_metadata.json\n");
+  f.manifest.files.push("archive/data/question_metadata.json");
+  f.put("tools/archive-pages-release-manifest.json", JSON.stringify(f.manifest));
+  const doc = rows => ({ schemaVersion: "archive-question-metadata-v1", records: rows });
+  const row = (uid, file) => ({ questionUid: uid, sourceArchiveFile: file, difficultyBucket: 2 });
+  const writeShards = rows => {
+    fs.writeFileSync(path.join(f.root, META_FILE), questionMetadataText(doc(rows)));
+    splitMetadataFile(f.root);
+  };
+  writeShards([row("qid_a", "original/x/a.js"), row("qid_b", "original/x/b.js")]);
+  f.commit();
+  const before = await f.identity();
+  assert.equal(validateReleaseIdentity(before), true);
+
+  // an unrelated commit keeps the identity (NO_OP)
+  f.put("docs/unrelated.md", "documentation only\n"); f.commit();
+  const unrelated = await f.identity();
+  assert.equal(unrelated.packageDigest, before.packageDigest);
+  assert.equal(unrelated.archiveValidationDigest, before.archiveValidationDigest);
+  assert.equal(compareReleaseIdentity(unrelated, f.live(before)).needed, false);
+
+  // a changed shard changes the identity (package bytes and the archive inputs)
+  writeShards([row("qid_a", "original/x/a.js"), { ...row("qid_b", "original/x/b.js"), difficultyBucket: 4 }]);
+  f.commit();
+  const changed = await f.identity();
+  assert.notEqual(changed.packageDigest, before.packageDigest);
+  assert.notEqual(changed.archiveValidationDigest, before.archiveValidationDigest);
+  assert.equal(compareReleaseIdentity(changed, f.live(before)).needed, true);
+
+  // a stale or hand-edited assembled file is not an input: refused
+  const good = fs.readFileSync(path.join(f.root, META_FILE), "utf8");
+  fs.writeFileSync(path.join(f.root, META_FILE), good.replace('"difficultyBucket":4', '"difficultyBucket":5'));
+  await assert.rejects(f.identity(), /does not equal the assembly of the registered snapshot's shards/);
+  fs.writeFileSync(path.join(f.root, META_FILE), good);
+  assert.equal((await f.identity()).packageDigest, changed.packageDigest);
+
+  // the general rule is not widened: without shards in the tree, an untracked packaged file is still refused
+  fs.rmSync(path.join(f.root, SHARD_DIR), { recursive: true, force: true });
+  f.commit();
+  await assert.rejects(f.identity(), /packaged file is not in the registered snapshot.*question_metadata\.json/);
 });

@@ -51,10 +51,12 @@ jobs:
           fetch-depth: 0
           ref: ${{ inputs.registered_main_sha || github.sha }}
           persist-credentials: false
-
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+
+      - name: Assemble question metadata (git holds its shards)
+        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
 
       - name: Bind release evidence to the exact main snapshot
         id: context

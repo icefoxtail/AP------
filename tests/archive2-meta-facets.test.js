@@ -311,6 +311,95 @@ test('recorded curriculum is read as recorded (never converted) and outranks the
   assert.equal(Unified.originalCurriculum(record({ year: 2024 }), '고1').basis, 'high-year-rule');
 });
 
+// metaHintUnit(표시 전용 단원 힌트, 2026-11-22 중2~고2로 확대): 승인된 유형(PT)의 ACTIVE 연결이 같은 학년에서 통합 단원 하나만 가리키면 싣고, 갈리면 싣지 않는다.
+// 소비(unitFor)는 원본의 단원 값으로 단원을 못 정한 문항에만 쓰고, 원본으로 정해지는 문항의 결과는 바꾸지 않는다.
+const hintLib = () => import(pathToFileURL(path.join(root, 'archive/tools/unit-hint-lib.mjs')).href);
+const hinterFor = async bindings => {
+  const { createUnitHinter } = await hintLib();
+  const tags = JSON.parse(read('data/master_tables/js_archive_tag_master.json')).filter(row => row.status === 'active');
+  return createUnitHinter({
+    bindings,
+    unitLabelByKey: new Map(tags.filter(row => row.keyType === 'standardUnitKey').map(row => [row.key, row.labelKo])),
+    subUnitLabelByKey: new Map(tags.filter(row => row.keyType === 'subUnitKey').map(row => [row.key, row.subUnit])),
+  });
+};
+const bind = (problemTypeKey, standardUnitKey, subUnitKey = '', status = 'ACTIVE') => ({ problemTypeKey, standardUnitKey, subUnitKey, status });
+
+test('unit hint rule: one unit -> hinted, split or unmappable -> not hinted, other grade/inactive/off subject -> not hinted', async () => {
+  const hinter = await hinterFor([
+    bind('PT_ONE', 'M3-05', 'M3-05-TRIG_RATIO'), bind('PT_ONE', 'M3-05', 'M3-05-TRIG_RATIO_APPLICATION'),
+    bind('PT_OLDKEY', 'M2-05', 'M2-05-TRIANGLE_PROPERTIES'),
+    bind('PT_SPLIT', 'M2-05', 'M2-05-TRIANGLE_PROPERTIES'), bind('PT_SPLIT', 'M2-05', 'M2-05-QUADRILATERAL_PROPERTIES'),
+    bind('PT_OTHERGRADE', 'M1-01', 'M1-01-X'),
+    bind('PT_INACTIVE', 'M3-05', 'M3-05-TRIG_RATIO', 'RETIRED'),
+    bind('PT_H1_SAME', 'H15-SA-02'), bind('PT_H1_SAME', 'H22-C-02'),
+    bind('PT_H1_SPLIT', 'H22-C-02'), bind('PT_H1_SPLIT', 'H22-C-03'),
+    bind('PT_H2', 'H15-M2-03'),
+    bind('PT_H1_UNMAPPED', 'H22-C-02'), bind('PT_H1_UNMAPPED', 'H22-C-77'),
+  ]);
+  assert.equal(hinter.hint('PT_ONE', '중3'), '삼각비');
+  assert.equal(hinter.hint('PT_OLDKEY', '중2'), '삼각형의 성질', 'an old broad unit that no label can place is placed by its sub-unit');
+  assert.equal(hinter.hint('PT_SPLIT', '중2'), '', 'a PT that binds to two units is never guessed');
+  assert.equal(hinter.hint('PT_OTHERGRADE', '중2'), '', 'bindings of another grade do not count');
+  assert.equal(hinter.hint('PT_INACTIVE', '중3'), '');
+  assert.equal(hinter.hint('PT_H1_SAME', '고1', '공통수학1'), 'H22-C-02', 'the 2015 and 2022 keys of one unit are one unit; high school carries the unit key');
+  assert.equal(hinter.hint('PT_H1_SPLIT', '고1', '공통수학1'), '');
+  assert.equal(hinter.hint('PT_H1_UNMAPPED', '고1', '공통수학1'), '', 'a binding that cannot be placed in a unit stops the hint');
+  assert.equal(hinter.hint('PT_H1_SAME', '고2'), '', 'a 고1 unit key is not a 고2 binding');
+  assert.equal(hinter.hint('PT_H2', '고2'), 'H22-M1-03');
+  assert.equal(hinter.hint('PT_H2', '고2', '미적분I'), 'H22-M1-03');
+  assert.equal(hinter.hint('PT_H2', '고2', '미적분'), '', 'a subject whose measured agreement was under 90% stays off');
+  assert.equal(hinter.hint('PT_H1_SAME', '고1', '수학(하)'), '');
+  assert.equal(hinter.hint('PT_ONE', '고3'), '', 'grades without a measured agreement stay off');
+  assert.equal(hinter.hint('', '중3'), '');
+});
+
+test('unit hint consumer: used only when the source unit value cannot place the row', () => {
+  const place = extra => Unified.classify(record({ sourceGrade: '고1', effectiveBrowseGrade: '고1', subject: '공통수학2', ...extra })).entry;
+  // an unknown legacy key places nothing; the hint places it, and without the hint the row stays unclassified
+  const unknownKey = { legacyStandardUnitKey: 'H22-C3-01', legacyStandardUnit: '함수' };
+  assert.equal(place(unknownKey).unclassified, true);
+  const hinted = place({ ...unknownKey, metaHintUnit: 'H22-C2-07' });
+  assert.equal(hinted.unclassified, false);
+  assert.equal(hinted.unitKey, 'H22-C2-07');
+  // the source unit wins: a row the source places keeps its unit whatever the hint says
+  const sourced = { legacyStandardUnitKey: 'H22-C2-03', legacyStandardUnit: '원의 방정식' };
+  assert.equal(place(sourced).unitKey, 'H22-C2-03');
+  assert.equal(place({ ...sourced, metaHintUnit: 'H22-C2-07' }).unitKey, 'H22-C2-03');
+  // a hint that names no unit of the grade places nothing
+  assert.equal(place({ ...unknownKey, metaHintUnit: 'H22-A-01' }).unclassified, true);
+  // middle school: the old broad unit name spans several current units, the hint names one current unit
+  const middle = extra => Unified.classify(record({ sourceGrade: '중2', effectiveBrowseGrade: '중2', subject: '수학', year: 2018, ...extra })).entry;
+  const oldBroad = { legacyStandardUnitKey: 'M2-05', legacyStandardUnit: '도형의 성질' };
+  assert.equal(middle(oldBroad).unclassified, true);
+  const placed = middle({ ...oldBroad, metaHintUnit: '삼각형의 성질' });
+  assert.equal(placed.unclassified, false);
+  assert.equal(placed.unitLabel.replace(/\s+/g, ''), '삼각형의성질');
+  assert.equal(middle({ legacyStandardUnitKey: 'M2-03', legacyStandardUnit: '연립일차방정식', metaHintUnit: '삼각형의 성질' }).unitLabel.replace(/\s+/g, ''), '연립일차방정식');
+});
+
+test('metaHintUnit in the catalog equals the rule, and never changes a row the source already places', async () => {
+  const data = await catalog();
+  const bindings = JSON.parse(read('data/meta-foundation/compiled/curriculum_bindings.json')).bindings;
+  const hinter = await hinterFor(bindings);
+  const lane = data.records.filter(row => row.metaHintUnit);
+  assert.ok(lane.length > 0);
+  for (const row of lane) {
+    assert.ok(row.metaHintPT, 'a unit hint needs a usable PT: ' + row.questionUid);
+    assert.equal(row.metaHintUnit, hinter.hint(row.metaHintPT, row.sourceGrade, row.subject), 'the hint is the single unit the PT binds to: ' + row.questionUid);
+  }
+  // every record of every grade keeps its placement when the hint is removed, except the rows that only the hint places
+  let hintedRows = 0;
+  for (const row of data.records) {
+    const withHint = Unified.classify(row, { projectionPolicy: data.projectionPolicy }).entry;
+    const withoutHint = Unified.classify({ ...row, metaHintUnit: '' }, { projectionPolicy: data.projectionPolicy }).entry;
+    if (withHint.unitKey === withoutHint.unitKey) continue;
+    hintedRows++;
+    assert.ok(row.metaHintUnit && withoutHint.unclassified, 'only an unclassified row may change: ' + row.questionUid);
+  }
+  assert.ok(hintedRows > 0);
+});
+
 // ---- core facets, filters, options -------------------------------------------------------------
 
 test('facets keep a status per value and approvedOnly never counts a pending value as approved', () => {
@@ -732,7 +821,7 @@ test('the workspace and the unit page load the new scripts with a new cache vers
   assert.match(workspace, /unit-past-exams-core\.js\?v=20261117-middle-parent-1/);
   assert.match(workspace, new RegExp('problem-bank-meta\\.js\\?v=' + version));
   // The shared unit layer and the canonical authority moved on with the registered textbooks (S11).
-  assert.match(workspace, /archive2-unified-units\.js\?v=20261117-middle-parent-1/);
+  assert.match(workspace, /archive2-unified-units\.js\?v=20261122-unit-hint-2/);
   assert.match(workspace, /archive2-canonical\.js\?v=20261119-receipt-row-binding-1/);
   // The workspace itself moved on with the final-check fixes (S10).
   assertWorkspaceScriptVersions(assert);

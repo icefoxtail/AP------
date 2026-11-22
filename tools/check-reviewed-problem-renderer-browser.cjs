@@ -476,8 +476,24 @@ function createGitReader(root, expectedCommit = '') {
     const tab = row.indexOf('\t'), [mode, type, blob] = row.slice(0, tab).split(' ');
     return [row.slice(tab + 1), { mode, type, blob }];
   }));
+  // The student page fetches data/question_metadata.json. Git tracks that metadata as per-exam shards
+  // (archive/data/question-metadata/v1/); the one file is their assembly at this exact commit, built from
+  // git objects (never from the mutable working tree), so it is as immutable as any tracked file.
+  const METADATA_FILE = 'archive/data/question_metadata.json';
+  let assembledMetadata = null;
+  const readAssembledMetadata = () => {
+    if (!assembledMetadata) {
+      assembledMetadata = execFileSync(process.execPath, ['--input-type=module', '-e',
+        "import { pathToFileURL } from 'node:url'; import path from 'node:path';" +
+        "const { questionMetadataBytesAt } = await import(pathToFileURL(path.join(process.argv[1], 'archive/tools/meta-foundation/question-metadata-format.mjs')).href);" +
+        'process.stdout.write(questionMetadataBytesAt(process.argv[1], process.argv[2]));', root, commit],
+      { maxBuffer: 512 * 1024 * 1024, timeout: 120000 });
+    }
+    return assembledMetadata;
+  };
   const read = rel => {
     assert(relativePath(rel), 'UI_UNSAFE_PATH');
+    if (rel === METADATA_FILE && !tree.has(rel) && [...tree.keys()].some(file => file.startsWith('archive/data/question-metadata/v1/'))) return readAssembledMetadata();
     const entry = tree.get(rel);
     assert(entry && entry.type === 'blob' && ['100644', '100755'].includes(entry.mode), 'UI_TRACKED_FILE_REQUIRED');
     const full = path.join(root, rel);

@@ -953,10 +953,11 @@ window.questionBank = [
         "reason": "격자점 4개 선택 후 공선 퇴화를 제외하는 exact H1 geometric-degeneracy binding이 없어 active PT/TPL과 canonical path를 보존한다."
       }
     ],
-    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q16-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 좌표를 각각 2만큼 이동한 격자점 13개와 원래 좌표축.",
-    "solutionImageCaption": "좌표를 각각 2만큼 옮긴 격자점 13개와 원래 좌표축을 표시한다. 평행이동은 공선성을 보존한다. 정답은 445개이다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고1_기출/q16-solution-v3.svg",
+    "solutionImageAlt": "x²+y²≤4를 만족하는 정수 격자점 13개를 좌표축 위의 다섯 점과 네 대각선 점으로 나누어 나타낸다. 축의 점 곁에는 좌표를 쓰고 원점은 O로 표시한다.",
+    "solutionImageCaption": "두 좌표축에는 각각 다섯 점, 나머지 열 직선에는 각각 세 점이 놓인다. 715−(170+100)=445개이므로 정답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 17,

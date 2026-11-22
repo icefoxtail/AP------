@@ -1,5 +1,5 @@
 import { requireProjectionPhase, projectionInput } from './reviewed-projection-phase.mjs';
-import { questionMetadataText } from './question-metadata-format.mjs';
+import { questionMetadataText, assertMetadataAssembledCurrent, syncMetadataShards } from './question-metadata-format.mjs';
 import originalSourceError from '../../../tools/4slot/original-source-error-hold.cjs';
 import fs from "node:fs";
 import path from "node:path";
@@ -24,6 +24,7 @@ import { REVIEWED_SOURCE_BINDING_OPT_INS, reviewedSourceBindingItems, reviewedSo
 import { restoreReviewedReplayCanonicalBefore } from "./reviewed-replay-registry-context.mjs";
 import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse } from "./native-reviewed-source-reuse.mjs";
 import { loadActiveMetaRegistry } from "./active-registry.mjs";
+import { TEXT_BOUND_REVIEW_TYPES, reviewedSourceTextUnchanged } from "./text-binding-lib.mjs";
 import { activeBindingContext, nativeReviewReceipt } from "./auto-register-merged-source.mjs";
 import { loadApprovedRendererPreservation, planApprovedRendererRecord, buildApprovedRendererBinding, verifyApprovedRendererReceipt } from "./native-approved-renderer-preservation.mjs";
 import { validateRpmPrimaryProvenance, fillRpmFromRecordId } from "./reviewed-rpm-provenance.mjs";
@@ -2127,7 +2128,9 @@ export function receiptRecordMatchesRow(current, record) {
   return eq(withoutTypeLane(current), withoutTypeLane(record));
 }
 
-export function registerReviewedExamV2({ root, request: req, write = false, verifyProjection = false, projectionPhase = null }) {
+// typeBatch (register-type-batch.mjs): lets a run of DIRECT_JUDGMENT requests in one process share the parsed metadata/identity map and
+// the registry tables and write question_metadata.json once. Ignored for every other request and for dry runs/verification.
+export function registerReviewedExamV2({ root, request: req, write = false, verifyProjection = false, projectionPhase = null, typeBatch = null }) {
   if (projectionPhase !== null) requireProjectionPhase(projectionPhase, { root, write, verifyProjection });
   if (req.schemaVersion !== "archive-reviewed-exam-meta-register-request-v2") fail("request schema mismatch");
   if (isNativeAuthorityCorrection(req)) {
@@ -2170,12 +2173,17 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     ? execFileSync("git", ["hash-object", "--path", `archive/exams/${source}`, "--stdin"], { cwd: root, input: bytes, encoding: "utf8", stdio: ["pipe", "pipe", "pipe"] }).trim()
     : crypto.createHash("sha1").update(`blob ${bytes.length}\0`).update(bytes).digest("hex");
   // A direct type judgment is bound to each question's stem + choices (textBindingFingerprint, checked by its lane), not to the file blob.
-  if (req.expectedSourceBlobSha1 !== blob && req.approval.type !== DIRECT_JUDGMENT) fail("source Git blob drift");
+  // REVIEW2/FINAL_QA requests are bound to the stem + choices of the questions they cover (text-v1), not to the file blob: a changed blob
+  // is accepted below, once the bank is read, only when those texts equal the reviewed blob's. Other approval types keep the blob binding.
+  const blobDrift = req.expectedSourceBlobSha1 !== blob && req.approval.type !== DIRECT_JUDGMENT;
+  if (blobDrift && !TEXT_BOUND_REVIEW_TYPES.includes(req.approval.type)) fail("source Git blob drift");
   const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
   vm.createContext(ctx);
   vm.runInContext(bytes.toString("utf8"), ctx, { timeout: 5000 });
   const bank = ctx.window.questionBank || ctx.window.questions || ctx.questions || ctx.questionBank || ctx.window.examData?.questions;
   if (!Array.isArray(bank) || !Number.isInteger(req.expectedQuestionCount) || bank.length !== req.expectedQuestionCount || !bank.length) fail("source denominator mismatch");
+  if (blobDrift && !reviewedSourceTextUnchanged({ root, expectedBlobSha1: req.expectedSourceBlobSha1, currentBytes: bytes,
+    ordinals: req.items.map(item => item.sourceOrdinal).filter(Number.isInteger) }).ok) fail("source Git blob drift");
   const approvedRendererRequested = Object.hasOwn(req.approval, "rendererPreservation");
   const auditPreservationRequested = isAuditPreservation(req.approval);
   if ([AUDIT_PRESERVATION_SCHEMA, AUDIT_SOURCE_PRESERVATION_SCHEMA].includes(req.approval.sourceRebind?.schemaVersion) && !auditPreservationRequested)
@@ -2183,8 +2191,10 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const metaPipelineAudit = auditPreservationRequested ? null : validateMetaPipelineAudit({ root, approval: req.approval, source, sourceBytes: bytes, sourceBlobSha1: blob,
     bank, expectedQuestionCount: req.expectedQuestionCount, items: req.items, registryChanges: req.registryChanges || [],
     requestId: req.requestId, requestSha256: digest(stable(req)) });
+  const batch = typeBatch && write && !verifyProjection && req.approval.type === DIRECT_JUDGMENT && !req.registryChanges?.length ? typeBatch : null;
   const read = file => {
     const load = () => JSON.parse(fs.readFileSync(safePath(root, file), "utf8"));
+    if (batch && (file === META || file === IDENTITY)) return batch.input(file, load);
     return projectionPhase && file.startsWith("archive/data/") ? projectionInput(projectionPhase, root, "json:" + file, load) : load();
   };
   // Cache only current input definitions. Every request still executes its
@@ -2245,10 +2255,19 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (req.registrationMode === "IDENTITY_FINGERPRINT_ONLY") return registerIdentityFingerprintOnly({
     root, req, metadata, identity, rows, ids, bank, bytes, blob, receiptPath, requestSha256, previous, scopeFields, write, verifyProjection, read, projectionPhase });
   // Direct type judgment (type fields only): its own lane, replay and receipt; it shares only the registry planner and the checks above.
-  if (req.approval.type === DIRECT_JUDGMENT) return registerTypeJudgment({ root, req, write, verifyProjection, metadata, rows, ids, bank, bytes, blob, receiptPath, requestSha256, previous, scopeFields,
-    h: { fail, requireText, eq, safePath, json, digest, evidenceRefs, registryPlan, lookup, sourceFingerprints,
-      sourceUidMatches: (q, current, id, ordinal) => !q.questionUid || q.questionUid === current.questionUid || isLegacyPathFormulaUid(q.questionUid, source, ordinal) ||
-        isUnambiguousLegacySourceUidAlias({ question: q, sourceArchiveFile: source, sourceOrdinal: ordinal, identityRecord: id, identityMap: identity, bank }) } });
+  if (req.approval.type === DIRECT_JUDGMENT) {
+    // In a batch, a refused request must leave the shared rows as a fresh process would have found them.
+    const undo = batch ? batch.begin(metadata, req.items.map(item => rows[item.sourceOrdinal - 1])) : null;
+    try {
+      return registerTypeJudgment({ root, req, write, verifyProjection, metadata, rows, ids, bank, bytes, blob, receiptPath, requestSha256, previous, scopeFields, batch,
+        h: { fail, requireText, eq, safePath, json, digest, evidenceRefs, registryPlan, lookup, sourceFingerprints,
+          sourceUidMatches: (q, current, id, ordinal) => !q.questionUid || q.questionUid === current.questionUid || isLegacyPathFormulaUid(q.questionUid, source, ordinal) ||
+            isUnambiguousLegacySourceUidAlias({ question: q, sourceArchiveFile: source, sourceOrdinal: ordinal, identityRecord: id, identityMap: identity, bank }) } });
+    } catch (error) {
+      undo?.();
+      throw error;
+    }
+  }
   if (previous) {
     let preservedAudit = null;
     if (auditPreservationRequested) {
@@ -3026,6 +3045,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   // All semantic and reference checks precede the first write; restore originals
   // if an I/O failure occurs. CLI dry-run never changes production data.
   if (write) {
+    assertMetadataAssembledCurrent(root);
     const backup = new Map();
     try {
       for (const [file, text] of changed) {
@@ -3033,6 +3053,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         backup.set(full, fs.existsSync(full) ? fs.readFileSync(full) : null);
         fs.mkdirSync(path.dirname(full), { recursive: true }); fs.writeFileSync(full, text, "utf8");
       }
+      syncMetadataShards(root);
     } catch (error) {
       for (const [full, bytes] of backup) { if (bytes === null) fs.rmSync(full, { force: true }); else fs.writeFileSync(full, bytes); }
       throw error;

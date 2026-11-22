@@ -59,7 +59,7 @@
     <script src="archive-asset-base.js?v=20261110-teacher-copy-1"></script>
     <script src="student-svg-refresh.js?v=1"></script>
     <script src="js/ap-table-engine.js?v=20261109-ap-table-1"></script>
-    <script src="render-text.js?v=20261120-render-text-2"></script>
+    <script src="render-text.js?v=20261121-question-spacing"></script>
     <script src="print_image_optimizer.js?v=20261030.1"></script>
     <script src="mathjax_render_loop.js?v=20261116-enclosed-latin"></script>
     <script src="concept_map.js" onerror="console.warn('[3B-MIXED] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
@@ -147,6 +147,28 @@
            overflow:hidden/clip element. Applied only to a question the exam executor found clipped (data-ap-mjx-clip), never
            globally: contain:paint on every bar changes Chrome's painted PDF pixels, so unflagged output stays as it was. */
         [data-ap-mjx-clip] mjx-stretchy-h > mjx-ext { contain: paint; }
+        /* 반폭 칸을 가로로 넘치는 해설 상자 하나가 해설지 전체를 막지 않도록, 그 상자만 칸 안에서 줄바꿈·글자 단계·축소로 맞춘다
+           (solution-render-executor.js fitSolutionBoxHorizontally, engine.html과 같은 규칙). 넘치지 않는 상자에는 붙지 않는다. 잘라 숨기지 않는다. */
+        .q-box.sol-box.sol-fit-narrow, .q-box.sol-box.sol-fit-narrow .sol-meta { max-width: 100%; min-width: 0; }
+        .q-box.sol-box.sol-fit-narrow .sol-exp,
+        .q-box.sol-box.sol-fit-narrow .sol-ans { max-width: 100%; white-space: normal; overflow-wrap: anywhere; word-break: break-word; }
+        .q-box.sol-box.sol-fit-narrow .sol-exp mjx-container { display: inline-block; max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+        .q-box.sol-box.sol-fit-narrow .sol-exp mjx-container mjx-math { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+        .q-box.sol-box.sol-fit-narrow :is(.sol-exp, [data-semantic-content="1"]) :is(img, video, canvas):not(.sol-image-wrap *) { max-width: 100% !important; width: auto !important; height: auto !important; box-sizing: border-box; }
+        .q-box.sol-box.sol-fit-narrow :is(.sol-exp, [data-semantic-content="1"]) svg:not(mjx-container svg):not(.sol-image-wrap *) { max-width: 100% !important; height: auto; }
+        .q-box.sol-box.sol-fit-narrow :is(.sol-exp, [data-semantic-content="1"]) table { max-width: 100% !important; table-layout: fixed; box-sizing: border-box; }
+        .q-box.sol-box.sol-fit-narrow :is(.sol-exp, [data-semantic-content="1"]) :is(td, th) { overflow-wrap: anywhere; word-break: break-word; }
+        .q-box.sol-box.sol-fit-narrow :is(.sol-exp, [data-semantic-content="1"]) :is(div, p, span, figure, pre)[style*="width"] { max-width: 100% !important; box-sizing: border-box; }
+        .q-box.sol-box.sol-fit-narrow [data-semantic-content="1"] { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+        .q-box.sol-box.sol-fit-narrow[data-sol-fit="1"] .sol-exp { font-size: 8pt; }
+        .q-box.sol-box.sol-fit-narrow[data-sol-fit="2"] .sol-exp { font-size: 7.5pt; }
+        .q-box.sol-box.sol-fit-narrow[data-sol-fit="3"] .sol-exp { font-size: 7pt; }
+        .q-box.sol-box.sol-fit-narrow[data-sol-fit="4"] .sol-exp { font-size: 6.5pt; }
+        .q-box.sol-box[data-sol-shrink="1"] { zoom: 0.92; }
+        .q-box.sol-box[data-sol-shrink="2"] { zoom: 0.85; }
+        .q-box.sol-box[data-sol-shrink="3"] { zoom: 0.78; }
+        .q-box.sol-box[data-sol-shrink="4"] { zoom: 0.7; }
+        .q-box.sol-box[data-sol-shrink="5"] { zoom: 0.6; }
         /* Optional section headings (meta.sections, e.g. difficulty step). Absent => no element, no change. */
         .q-section { display: flex; align-items: baseline; gap: 8px; margin: 0 0 5px; padding: 1px 7px; border-left: 3px solid #1d4ed8; background: #eef2ff; color: #1e3a8a; font-size: 9pt; font-weight: 800; line-height: 1.35; break-after: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         .q-section-sub { color: #475569; font-size: 8.5pt; font-weight: 600; }
@@ -228,7 +250,8 @@
         /* 조건/보기/자료 박스는 .box 또는 .question-note-box를 사용한다. question-table은 행/열이 있는 실제 표에만 사용한다. */
         .question-note-box,
         .note-box,
-        .box {
+        .box,
+        .box-region {
             display: inline-block;
             max-width: 100%;
             box-sizing: border-box;
@@ -242,9 +265,7 @@
             vertical-align: top;
         }
         /* normalizeViewBlocks가 .note-box 안의 ㄱ. ㄴ. 줄을 다시 .question-note-box로 감싸 상자 안에 상자가 생긴다. 안쪽 상자는 테두리 없이 안의 글로만 취급한다. */
-        .question-note-box .question-note-box, .question-note-box .note-box, .question-note-box .box,
-        .note-box .question-note-box, .note-box .note-box, .note-box .box,
-        .box .question-note-box, .box .note-box, .box .box {
+        :is(.question-note-box, .note-box, .box, .box-region) :is(.question-note-box, .note-box, .box, .box-region) {
             display: block;
             width: auto;
             max-width: none;
@@ -258,7 +279,8 @@
            private clone only; screen and Chrome-PDF output keep the inline-block box above, pixel for pixel. */
         .ap-h2c-clone .question-note-box,
         .ap-h2c-clone .note-box,
-        .ap-h2c-clone .box { display: block; width: fit-content; }
+        .ap-h2c-clone .box,
+        .ap-h2c-clone .box-region { display: block; width: fit-content; }
         /* [Fit] Compression Classes */
         .fit-tight { font-size: 9.1pt !important; line-height: 1.45 !important; }
         .fit-tighter { font-size: 8.6pt !important; line-height: 1.35 !important; }
@@ -412,14 +434,14 @@
     <script src="question-image-readiness.js?v=20261106-output-performance-1"></script>
     <script src="figure-size.js?v=20261119-figchoice-1"></script>
     <script src="common-fast-runtime.js?v=20261106-output-performance-2"></script>
-    <script src="equal-slot-engine.js?v=20261118-auto-promote-1"></script>
+    <script src="equal-slot-engine.js?v=20261121-raster-page"></script>
     <link rel="stylesheet" href="equal-slot-engine.css?v=20261118-auto-promote-2">
-    <link rel="stylesheet" href="figure-size.css?v=20261118-figure-ratio-1">
+    <link rel="stylesheet" href="figure-size.css?v=20261121-figure-ratio-2">
     <script src="exam-render-executor.js?v=20261118-auto-promote-1"></script>
-    <script src="solution-render-executor.js?v=20261118-figure-ratio-1"></script>
+    <script src="solution-render-executor.js?v=20261122-sol-fit-1"></script>
     <script src="answer-render-executor.js?v=20261029-sections-1"></script>
     <link rel="stylesheet" href="archive2-reader-controls.css?v=20261116-output-bar-1">
-    <script src="render-feedback.js?v=20261116-output-bar-1"></script>
+    <script src="render-feedback.js?v=20261122-sol-fit-1"></script>
     <script defer src="archive2-derive-entry.js?v=20261120-derive-ui-1"></script>
     <script defer src="archive2-reader-controls.js?v=20261120-derive-ui-1"></script>
     <link rel="stylesheet" href="../apmath/css/student-navigation.css?v=2026.11.11.4">
@@ -1577,17 +1599,6 @@ function extractChoice(c) { return APRenderText.extractChoice(c); }
 function stripChoicePrefix(text) { return APRenderText.stripChoicePrefix(text); }
 function detectChoiceRenderMode(choices) { return APRenderText.detectChoiceRenderMode(choices); }
 function renderChoicesHTML(q) { return APRenderText.renderChoicesHTML(q, { formatChoice: window.GeneratedMockSelection?.formatChoiceForDisplay }); }
-function applyQuestionContentBreaks(html) {
-    if (!html) return '';
-    let count = 0;
-    return html.replace(/([\.?!]|\s|>)\s*(\(\d+\))/g, (match, p1, p2) => {
-        count++;
-        if (count === 1) return match;
-        if (p1.includes('br>') || p1.includes('\n')) return match;
-        return p1 + '<br>' + p2;
-    });
-}
-
 function splitSubjectiveHeadingSource(source) {
     const value = String(source || '');
     const locator = /(?:^|(?:<br\s*\/?>(?:\s*)?){2,}|\r?\n{2,})\s*(?=(?:\[|&lt;|<)?\s*서(?:술|논술)형(?![가-힣]))/i;
@@ -1621,13 +1632,13 @@ function formatQuestionContent(html, q) {
     if (q?.__apExamSubjectiveSpacing === true) {
         const split = splitSubjectiveHeadingSource(html);
         if (split) {
-            const prefix = applyQuestionContentBreaks(wrapLatex(split.prefix));
-            const heading = applyQuestionContentBreaks(wrapLatex(split.heading));
-            const body = applyQuestionContentBreaks(wrapLatex(split.body));
+            const prefix = APRenderText.normalizeQuestionContentBreaks(wrapLatex(split.prefix));
+            const heading = APRenderText.normalizeQuestionContentBreaks(wrapLatex(split.heading));
+            const body = APRenderText.normalizeQuestionContentBreaks(wrapLatex(split.body), { subjective: true });
             return `${prefix}<div class="subjective-heading">${heading}</div><div class="subjective-prompt">${body}</div>`;
         }
     }
-    return applyQuestionContentBreaks(html);
+    return APRenderText.normalizeQuestionContentBreaks(html, { subjective: /서(?:술|논술)형/.test(q?.questionType || '') });
 }
 
 function normalizeQuestionTables(html) {
@@ -3434,7 +3445,13 @@ if (!buildContext) window.onload = () => {
         title.textContent = '시험지 출력을 준비하지 못했습니다';
         const detail = document.createElement('p');
         detail.setAttribute('role', 'alert');
-        detail.textContent = error?.message || '출력 렌더링이 완료되지 않았습니다.';
+        const rawMessage = String(error?.message || '');
+        // 선생님 화면에는 영어 오류 원문(예: "PDF readiness failed: ...")을 그대로 보이지 않는다. 원문은 console과 data-error-code에 남는다.
+        const modeLabel = { exam: '시험지', sol: '해설', ans: '정답표' }[new URLSearchParams(window.location.search).get('mode')] || '시험지';
+        detail.textContent = !rawMessage ? '출력 렌더링이 완료되지 않았습니다.'
+            : /[가-힣]/.test(rawMessage) ? rawMessage
+                : `${modeLabel} 준비를 마치지 못했습니다. 잠시 뒤 다시 시도해 주세요. 계속되면 저장한 시험지 목록에서 다시 열어 주세요.`;
+        if (rawMessage) detail.dataset.errorCode = rawMessage.slice(0, 200);
         const reopen = document.createElement('a');
         reopen.href = 'workspace.html?view=saved';
         reopen.textContent = '저장한 시험지 목록에서 다시 열기';
@@ -3447,7 +3464,7 @@ if (!buildContext) window.onload = () => {
             panel.append(retry);
         }
         host.append(panel);
-        window.__AP_OUTPUT_RENDER_ERROR__ = detail.textContent;
+        window.__AP_OUTPUT_RENDER_ERROR__ = rawMessage || detail.textContent;
     });
 };
 
