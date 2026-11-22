@@ -926,7 +926,13 @@ async function cycle(browser, server, fixture, label, repeat, { coldSolution = f
     console.log(JSON.stringify({ fixture: fixture.id, label, repeat, network, purpose, operation: planned.failedOperation,
       pass: false, code: planned.error.code, publicFailure: failedRow?.outcome?.error || null,
       clipping: failedRow?.clippingEvidence || [], stateMode: failedRow?.mode, snapshotMode: failedRow?.snapshotMode,
-      completed: planned.completed, planned: operations.length }));
+      completed: planned.completed, planned: operations.length,
+      // Which compared field differed (and, for math markup, how many nodes and what kind of change) so a CI log alone is enough to triage.
+      field: planned.error.details?.field || null,
+      mathMarkupChangedNodes: planned.error.details?.mathMarkupDiagnostic?.changedNodeCount ?? null,
+      mathMarkupChangeKinds: [...new Set((planned.error.details?.mathMarkupDiagnostic?.nodes || []).filter(node => node.changed).flatMap(node =>
+        ['tagCountChanges', 'attributeNameCountChanges', 'elementChanges', 'attributeOrderChanges', 'childNodeTypeChanges', 'characterDataChanges']
+          .filter(key => node[key]?.length)))] }));
     // A failure poisons this mode sequence. Independent fresh contexts still
     // run, and the aggregate result remains FAIL; no missing operation passes.
   } finally { await session?.close(); writeReport(); }
