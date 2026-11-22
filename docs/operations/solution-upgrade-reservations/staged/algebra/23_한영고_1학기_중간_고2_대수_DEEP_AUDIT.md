@@ -729,3 +729,10 @@ $\log I_{10}=(3-\log2)+10(\log9.7-1)\approx(3-0.3010)+10(0.9868-1)=2.5670$이다
 - 보류: Q13; 출제 이미지/조건 복구 뒤 재감사 필요.
 - 원문 문제 그림 1개 실제 판독, 보조 해설 그림 7개 존재 검증(Q13은 시각 판독 추가). 최종 UI 출고 QA `NOT_RUN`.
 - 본 MD는 worker branch 감사 기록이며 실제 JS 교체 또는 운영 병합 상태가 아니다.
+
+## 2026-11-22 이미지 전수 시각 검수 부록 (기존 감사 상태와 별도)
+
+- 범위: 본 시험지 원본 JS가 참조하는 PNG/SVG 8개를 실제 GitHub blob으로 내려받고 PNG 원본 표시 및 SVG Inkscape 래스터 렌더를 통해 전수 육안 확인. 이미지별 증거·누적 집계는 `1MID_IMAGE_VISUAL_AUDIT_20261122.md`.
+- **Q13 `VISUAL_UPGRADE` (추가 발견):** `archive/assets/images/23_한영고_1학기_중간_고2_대수/q13-solution.svg` · blob `c5cd592558ac0512bd3e1eea2f5cd96bd51c240f`. 오른쪽 두 번째 극댓점 `x=25π/8`의 좌표 라벨과 점 일부가 SVG 우측 경계에서 잘린 상태로 렌더된다. 오른쪽 viewBox 여백 확장 또는 그래프·라벨 재배치를 권고하며 실제 학생 화면에서 재확인해야 한다.
+- **기존 `Q13 HOLD` 유지:** 원문 `content`에는 문제 해결에 필요한 그래프가 없고, 해당 SVG는 `solutionImage` 연결이므로 문제 그림 누락을 해결하지 못한다. 문제 전용 그래프를 확보·정합 확인하기 전 출고 보류.
+- 원본 JS·정답·PNG/SVG·`main` 무변경. 문항 수학 감사 집계 KEEP 20 / UPGRADE 0 / HOLD 1 유지. 운영 UI 렌더·preflight·Golden/Negative·출고 QA는 `NOT_RUN`.
