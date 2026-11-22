@@ -10,8 +10,8 @@
 // machine's, not the engine's: it is NOT_RUN even when both sides show it, because then nothing about the engine was compared.
 // A gate that compared no bytes at all vouches for nothing (see evaluate()).
 
-export const FAIL_VERDICTS = new Set(['DIFFERENT', 'REGRESSED', 'NOT_RUN']);
-export const LIST_VERDICTS = new Set(['FIXED', 'BOTH_FAIL_SAME']);
+export const FAIL_VERDICTS = new Set(['DIFFERENT', 'REGRESSED', 'NOT_RUN', 'REMOVED']);
+export const LIST_VERDICTS = new Set(['FIXED', 'BOTH_FAIL_SAME', 'ADDED']);
 const rendered = r => r.status === 'ARCHIVE_BOUND';
 const failed = r => r.status === 'FAILED';
 
@@ -80,14 +80,14 @@ export function evaluate(rows, {kinds = new Set(), kindOf = () => new Set()} = {
   return {selected: rows.length, byteCompared, notCovered, wholeUncovered, cannotVouch: rows.length > 0 && (byteCompared === 0 || notCovered.length > 0)};
 }
 
-// --expected file: `<item> <DIFFERENT|FIXED|REGRESSED> <reason>` per line (# comments and blank lines ignored). The reason is required.
+// --expected file: `<item> <DIFFERENT|FIXED|REGRESSED|REMOVED> <reason>` per line (# comments and blank lines ignored). The reason is required.
 export function parseExpected(text) {
   const entries = [], errors = [];
   text.split(/\r?\n/).forEach((raw, n) => {
     const line = raw.trim();
     if (!line || line.startsWith('#')) return;
-    const m = line.match(/^(\S+)\s+(DIFFERENT|FIXED|REGRESSED)\s+(.+)$/);
-    if (!m) { errors.push(`expected file line ${n + 1} needs "<item> <DIFFERENT|FIXED|REGRESSED> <reason>": ${line.slice(0, 80)}`); return; }
+    const m = line.match(/^(\S+)\s+(DIFFERENT|FIXED|REGRESSED|REMOVED)\s+(.+)$/);
+    if (!m) { errors.push(`expected file line ${n + 1} needs "<item> <DIFFERENT|FIXED|REGRESSED|REMOVED> <reason>": ${line.slice(0, 80)}`); return; }
     if (m[3].trim().length < 10) { errors.push(`expected file line ${n + 1}: the reason for ${m[1]} is too short (write what changed and why, at least 10 characters)`); return; }
     if (entries.some(e => e.item === m[1])) { errors.push(`expected file line ${n + 1}: ${m[1]} is listed twice`); return; }
     entries.push({item: m[1], verdict: m[2], reason: m[3].trim()});
@@ -120,4 +120,28 @@ export function summarize(rows, {accepted = [], errors = []} = {}) {
     failures: unaccepted, listed: rows.filter(r => LIST_VERDICTS.has(r.verdict)),
     pass: unaccepted.length === 0 && errors.length === 0 && byteCompared > 0
   };
+}
+
+// A golden item only the base has is a shrunk denominator: it fails. An item only the head has is new: listed, nothing to compare it with.
+export const removedRow = item => ({item, base: {status: 'PRESENT'}, head: {status: 'ABSENT'}, verdict: 'REMOVED', reason: 'the golden item exists on base but not on head (the denominator shrank)'});
+export const addedRow = (item, head) => ({item, base: {status: 'ABSENT'}, head: {status: head?.status ?? 'ABSENT'}, verdict: 'ADDED', reason: `new golden item, nothing on base to compare with (head: ${head?.status ?? 'not rendered'}${head?.code ? ' ' + head.code : ''})`});
+
+// The one place that decides the exit code. A PASS is only ever said when something was compared.
+//   exit 1 FAIL            : an expected-file error (whatever else happened), or an unaccepted DIFFERENT/REGRESSED/NOT_RUN/REMOVED
+//   exit 2 CANNOT_VOUCH    : nothing selected, nothing compared byte for byte, or a changed kind without a comparison
+//   exit 0 UNAFFECTED      : (only) changed files exist, every one of them is outside the render, and the render inputs of base and head are identical; nothing is compared
+//   exit 0 PASS            : bytes were compared and nothing failed
+export function decide({rows, cover, summary, expectedErrors = [], changedCount = 0, allChangesIgnored = false, inputsIdentical = false, explicitSelection = false}) {
+  if (expectedErrors.length) return {exit: 1, outcome: 'FAIL', reason: 'the --expected file is wrong'};
+  if (changedCount === 0) return {exit: 2, outcome: 'CANNOT_VOUCH', reason: 'base and head do not differ: nothing was changed, so a PASS would vouch for nothing'};
+  if (!rows.length) {
+    if (!explicitSelection && changedCount > 0 && allChangesIgnored && inputsIdentical) return {exit: 0, outcome: 'UNAFFECTED', reason: 'every changed file is outside the render and the render inputs are identical'};
+    const why = explicitSelection ? 'the selection is empty' : changedCount === 0 ? 'base and head do not differ' : !inputsIdentical ? 'render inputs differ but no golden item was selected' : 'nothing was selected';
+    return {exit: 2, outcome: 'CANNOT_VOUCH', reason: why};
+  }
+  if (summary.failures.length) return {exit: 1, outcome: 'FAIL', reason: 'a verdict failed'};
+  if (cover.byteCompared === 0) return {exit: 2, outcome: 'CANNOT_VOUCH', reason: 'no selected item produced an SVG on both sides'};
+  if (cover.notCovered.length) return {exit: 2, outcome: 'CANNOT_VOUCH', reason: `no byte comparison for changed kind(s) ${cover.notCovered.join(', ')}`};
+  if (!summary.pass) return {exit: 1, outcome: 'FAIL', reason: 'a verdict failed'};
+  return {exit: 0, outcome: 'PASS', reason: 'bytes compared, nothing failed'};
 }

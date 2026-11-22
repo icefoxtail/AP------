@@ -5,14 +5,17 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import os from 'node:os';
-import {compareItem, parseExpected, applyExpected, summarize, evaluate, statusChainOf} from './lib/judge.mjs';
+import {spawnSync} from 'node:child_process';
+import {compareItem, parseExpected, applyExpected, summarize, evaluate, statusChainOf, decide, bytesCompared, removedRow, addedRow} from './lib/judge.mjs';
+import {chooseItems} from './lib/select.mjs';
+import {environmentFingerprint} from './lib/env-fingerprint.mjs';
 import {
   GE, KINDS, CAPABILITY_KIND, KIND_FILES, SHARED_FILES, SHARED_PREFIXES, SHARED_EXACT, NON_RENDER_FILES, DISPATCHERS, IMPORT_EXCEPTIONS,
-  planKinds, planCapabilities, classifyFile, parseFamilies, selectItems
+  planKinds, planCapabilities, classifyFile, parseFamilies, selectItems, KINDS_VERSION, kindTableProblems
 } from './lib/kinds.mjs';
 import {buildCodeGraph} from './lib/code-graph.mjs';
-import {SNAPSHOT_SPECS, RENDER_PLAN, MANIFEST, describeSnapshot, repoFilesUnder, extractImageRefs, refCandidates} from './lib/snapshot.mjs';
-import {renderItems} from './lib/render.mjs';
+import {SNAPSHOT_SPECS, RENDER_PLAN, MANIFEST, describeSnapshot, repoFilesUnder, extractImageRefs, refCandidates, resolveTarget, ensureSnapshot, changedFiles} from './lib/snapshot.mjs';
+import {renderItems, resultKey, reusable, loadResult, storeDir, harvest, acquireSlot} from './lib/render.mjs';
 import {parseTapForTest, parseUnittestForTest, normalizeTestName, compareTests} from './lib/tests-run.mjs';
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../..');
@@ -20,6 +23,9 @@ const manifest = JSON.parse(fs.readFileSync(path.join(REPO, GE, 'ops/golden.mani
 const items = manifest.items;
 const plans = Object.fromEntries(items.map(i => [i.dir, JSON.parse(fs.readFileSync(path.join(REPO, GE, 'ops/golden', i.dir, 'plan.json'), 'utf8'))]));
 const graph = buildCodeGraph(REPO, [RENDER_PLAN]);
+// temp fixtures live inside the repo's .tmp (ignored by git), on the same drive as the checkout, never in the system temp folder
+const TMP_ROOT = path.join(REPO, '.tmp/golden-gate-test');
+fs.mkdirSync(TMP_ROOT, {recursive: true});
 const P = `${GE}/production`;
 
 const rec = (status, more = {}) => ({status, code: null, stage: null, svgSha: status === 'ARCHIVE_BOUND' ? 'a'.repeat(64) : null, svgBytes: 10, sizeClass: 'full', solutionImageScale: null, ...more});
@@ -110,18 +116,7 @@ test('files listed as non-render are really not reachable from render-plan.mjs; 
 });
 
 test('kind files are used only by their own kind, the dispatchers, or an exception that says why', () => {
-  const problems = [];
-  for (const [file, kinds] of Object.entries(KIND_FILES)) {
-    for (const {from, lazy} of graph.importers.get(file) ?? []) {
-      if (DISPATCHERS.has(from)) { if (from.endsWith('worker.py') && !lazy) problems.push(`${file} is imported at the top of ${from}, so every request kind loads it`); continue; }
-      if ((IMPORT_EXCEPTIONS[file] ?? []).includes(from)) continue;
-      const importerKinds = KIND_FILES[from];
-      if (importerKinds && importerKinds.every(k => kinds.includes(k))) continue; // the importer only runs for kinds this file already selects
-      if (importerKinds && from.endsWith('composite-candidate-svg-v1.mjs')) continue; // the panel dispatcher: panels are selected through planKinds() of the composite plan
-      problems.push(`${file} (kinds ${kinds.join('+')}) is imported by ${from}${importerKinds ? ` (kinds ${importerKinds.join('+')})` : ' (shared or unlisted)'}; list it as ALL, or add an IMPORT_EXCEPTION with the reason`);
-    }
-  }
-  assert.deepEqual(problems, []);
+  assert.deepEqual(kindTableProblems({graph}), []);
 });
 
 test('the snapshot unpacks every code root the render imports from, and the data files known to be read', () => {
@@ -228,30 +223,32 @@ test('the same failure means the same code, stage and nested status; a failure w
 });
 
 // ---- the snapshot must hold every asset the repo has -------------------------------------------------------------------------
-const mkSnap = (root, name, {pngs = {}, svgs = {}, drop = null} = {}) => {
+const mkSnap = (root, name, {pngs = {}, svgs = {}, drop = null, planA = null, srcA = null, cross = null, files = {}} = {}) => {
   const dir = path.join(root, name);
   const put = (rel, text) => { const p = path.join(dir, rel); fs.mkdirSync(path.dirname(p), {recursive: true}); fs.writeFileSync(p, text); };
   const fxItems = [{dir: 'itemA', sourcePath: 'archive/exams/original/x/aaa.js', ordinal: 1}, {dir: 'itemB', sourcePath: 'archive/exams/original/x/bbb.js', ordinal: 1}];
   put(MANIFEST, JSON.stringify({items: fxItems}));
-  for (const i of fxItems) { put(`${GE}/ops/golden/${i.dir}/plan.json`, JSON.stringify({capability: 'stat-chart-figure-v1'})); put(i.sourcePath, 'export default {};'); }
+  for (const i of fxItems) { put(`${GE}/ops/golden/${i.dir}/plan.json`, JSON.stringify(i.dir === 'itemA' && planA ? planA : {capability: 'stat-chart-figure-v1'})); put(i.sourcePath, i.dir === 'itemA' && srcA ? srcA : 'export default {};'); }
   const bySource = {};
   for (const [uid, src] of [['aaa', fxItems[0].sourcePath], ['bbb', fxItems[1].sourcePath]]) {
     bySource[src] = [`archive/assets/images/${uid}/q01.png`, `archive/assets/images/${uid}/q01-solution.svg`];
     put(bySource[src][0], pngs[uid] ?? 'png-bytes'); put(bySource[src][1], svgs[uid] ?? '<svg/>');
   }
+  if (cross) { bySource[fxItems[0].sourcePath].push(cross.path); put(cross.path, cross.bytes); } // an image another exam's folder holds, named by itemA's exam
+  for (const [rel, text] of Object.entries(files)) put(rel, text);
   put('.snapshot-assets.json', JSON.stringify({bySource}));
   if (drop) fs.rmSync(path.join(dir, drop));
   return dir;
 };
 
 test('a snapshot that lacks an asset the repo has: that item is NOT_RUN and nothing is rendered for it', async () => {
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'gg-snap-'));
+  const root = fs.mkdtempSync(path.join(TMP_ROOT, 'gg-snap-'));
   try {
     const dir = mkSnap(root, 'missing', {drop: 'archive/assets/images/aaa/q01.png'});
     const snap = describeSnapshot(dir, 'fx', {type: 'commit', sha: 'x'});
     assert.deepEqual(Object.keys(snap.blocked), ['itemA']);
     assert.deepEqual(snap.blocked.itemA, ['archive/assets/images/aaa/q01.png']);
-    const {results} = await renderItems({snap, itemDirs: ['itemA'], resultsRoot: path.join(root, 'res'), cacheRoot: path.join(root, 'cache'), depsDir: path.join(root, 'deps'), lockDir: path.join(root, 'locks')});
+    const {results} = await renderItems({snap, itemDirs: ['itemA'], resultsRoot: path.join(root, 'res'), cacheRoot: path.join(root, 'cache'), depsDir: path.join(root, 'deps'), lockDir: path.join(root, 'locks'), envKey: 'env-test'});
     assert.equal(results.get('itemA').status, 'NOT_RUN'); assert.equal(results.get('itemA').code, 'SNAPSHOT_LACKS_ASSET');
     assert.equal(compareItem('itemA', results.get('itemA'), results.get('itemA')).verdict, 'NOT_RUN');
     const whole = describeSnapshot(mkSnap(root, 'whole'), 'fx2', {type: 'commit', sha: 'y'});
@@ -260,7 +257,7 @@ test('a snapshot that lacks an asset the repo has: that item is NOT_RUN and noth
 });
 
 test('a changed raster (PNG) of one exam changes the key of that exam only, so only its items render again', () => {
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'gg-snap-'));
+  const root = fs.mkdtempSync(path.join(TMP_ROOT, 'gg-snap-'));
   try {
     const a = describeSnapshot(mkSnap(root, 'one'), 'one', {type: 'commit', sha: 'a'});
     const b = describeSnapshot(mkSnap(root, 'two', {pngs: {aaa: 'other png bytes'}}), 'two', {type: 'commit', sha: 'b'});
@@ -286,3 +283,375 @@ test('exam assets of any extension are unpacked: the repo folder of a golden exa
   assert.deepEqual(refCandidates('archive/assets/images/x/q1.jpg'), ['archive/assets/images/x/q1.jpg']);
 });
 
+
+// ==== round 3: a PASS means something was really compared =====================================================================
+// A fixture git repo with two golden items (itemA names an image of another folder, itemB two of a third), built inside the repo's .tmp.
+const GG = path.join(path.dirname(fileURLToPath(import.meta.url)), 'golden-gate.mjs');
+const sh = (cwd, ...args) => {
+  const r = spawnSync('git', ['-c', 'user.name=t', '-c', 'user.email=t@t', '-c', 'core.autocrlf=false', ...args], {cwd, encoding: 'utf8', windowsHide: true});
+  if (r.status !== 0) throw new Error(`git ${args.join(' ')}: ${r.stderr}`);
+  return r.stdout.trim();
+};
+const putFile = (root, rel, text) => { const p = path.join(root, rel); fs.mkdirSync(path.dirname(p), {recursive: true}); fs.writeFileSync(p, text); };
+const SOLID_FILE = Object.entries(KIND_FILES).find(([, k]) => k.length === 1 && k[0] === 'solid')[0];
+const STAT_FILE = `${P}/stat-chart-v1.mjs`;
+let fxCache = null;
+function fixture() {
+  if (fxCache) return fxCache;
+  const root = fs.mkdtempSync(path.join(TMP_ROOT, 'gg-git-'));
+  const repo = path.join(root, 'repo');
+  fs.mkdirSync(repo);
+  sh(repo, 'init', '-q');
+  const fxItems = [{dir: 'itemA', sourcePath: 'archive/exams/original/x/aaa.js', ordinal: 1}, {dir: 'itemB', sourcePath: 'archive/exams/original/x/bbb.js', ordinal: 1}];
+  putFile(repo, MANIFEST, JSON.stringify({items: fxItems}));
+  for (const i of fxItems) putFile(repo, `${GE}/ops/golden/${i.dir}/plan.json`, JSON.stringify({capability: 'stat-chart-figure-v1'}));
+  putFile(repo, fxItems[0].sourcePath, 'export default {img: "assets/images/other/q23.png"};');
+  putFile(repo, fxItems[1].sourcePath, 'export default {a: "assets/images/third/q14.png", b: "assets/images/third/q19.png"};');
+  for (const f of ['aaa/q01.png', 'bbb/q01.png', 'other/q23.png', 'third/q14.png', 'third/q19.png']) putFile(repo, `archive/assets/images/${f}`, `png ${f} v1`);
+  putFile(repo, STAT_FILE, 'export const v = 1;'); putFile(repo, SOLID_FILE, 'export const v = 1;');
+  putFile(repo, 'archive/engine.html', '<html></html>'); putFile(repo, 'docs/notes.md', 'v1');
+  const commit = msg => { sh(repo, 'add', '-A'); sh(repo, 'commit', '-q', '-m', msg); return sh(repo, 'rev-parse', 'HEAD'); };
+  const c = {c1: commit('base')};
+  putFile(repo, 'archive/assets/images/other/q23.png', 'png other/q23 v2'); c.c2 = commit('image in another folder');
+  putFile(repo, 'archive/assets/images/third/q14.png', 'png third/q14 v2'); putFile(repo, 'archive/assets/images/third/q19.png', 'png third/q19 v2'); c.c3 = commit('two images in a third folder');
+  putFile(repo, 'docs/notes.md', 'v2'); c.c4 = commit('docs only');
+  putFile(repo, SOLID_FILE, 'export const v = 2;'); c.c5 = commit('a kind no golden item uses');
+  const deps = path.join(root, 'deps'); fs.mkdirSync(path.join(deps, 'node_modules'), {recursive: true}); fs.mkdirSync(path.join(deps, 'python'), {recursive: true});
+  fxCache = {root, repo, c, deps, cache: path.join(root, 'cache'), locks: path.join(root, 'locks')};
+  return fxCache;
+}
+const fxSnap = (fx, name) => ensureSnapshot({repo: fx.repo, target: resolveTarget(fx.repo, fx.c[name]), cacheRoot: fx.cache, depsDir: fx.deps});
+const cli = (fx, args) => {
+  const r = spawnSync(process.execPath, [GG, '--repo', fx.repo, '--cache', fx.cache, '--deps', fx.deps, '--lock-dir', fx.locks, ...args], {encoding: 'utf8', windowsHide: true, env: {...process.env, GEOMETRY_BROWSER_EXECUTABLE: 'no-such-chrome-for-fixture'}});
+  return {code: r.status, out: r.stdout, err: r.stderr};
+};
+const sameCover = rows => evaluate(rows, {});
+const noSummary = summarize([]);
+
+// ---- 1. an empty selection never says PASS ------------------------------------------------------------------------------------
+test('1: no change, an empty or unknown selection, or an expected-file error never exit 0 with PASS text', () => {
+  const fx = fixture();
+  const run = (args, want, notWord) => { const r = cli(fx, ['--base', fx.c.c1, '--head', fx.c.c1, ...args]); assert.equal(r.code, want, `${args.join(' ')}\n${r.out}\n${r.err}`); assert.doesNotMatch(r.out, new RegExp(notWord)); return r; };
+  assert.match(run([], 2, 'GOLDEN GATE PASS').out, /CANNOT VOUCH/); // base = head
+  const empty = cli(fx, ['--base', fx.c.c1, '--head', fx.c.c2, '--families', '']);
+  assert.equal(empty.code, 2); assert.match(empty.out, /CANNOT VOUCH/); assert.doesNotMatch(empty.out, /GOLDEN GATE PASS/);
+  const unknown = cli(fx, ['--base', fx.c.c1, '--head', fx.c.c2, '--families', 'nonsense-kind']);
+  assert.equal(unknown.code, 2); assert.match(unknown.out, /unknown --families/);
+  const noKind = cli(fx, ['--base', fx.c.c4, '--head', fx.c.c5]); // a kind change that no golden item uses: nothing selected
+  assert.equal(noKind.code, 2); assert.match(noKind.out, /CANNOT VOUCH/); assert.doesNotMatch(noKind.out, /GOLDEN GATE PASS/);
+  const bad = path.join(fx.root, 'bad-expected.txt'); fs.writeFileSync(bad, 'itemA DIFFERENT x\n');
+  assert.equal(cli(fx, ['--base', fx.c.c1, '--head', fx.c.c1, '--expected', bad]).code, 1); // a wrong expected file is exit 1 whatever the rest says
+  assert.equal(cli(fx, ['--base', fx.c.c1, '--head', fx.c.c1, '--expected', path.join(fx.root, 'does-not-exist.txt')]).code, 1);
+});
+
+test('1: only "changed files all outside the render and identical render inputs" is UNAFFECTED (exit 0, never the word PASS)', () => {
+  const fx = fixture();
+  const r = cli(fx, ['--base', fx.c.c3, '--head', fx.c.c4]); // docs/notes.md only
+  assert.equal(r.code, 0, r.out + r.err);
+  assert.match(r.out, /UNAFFECTED \(nothing compared\)/); assert.doesNotMatch(r.out, /GOLDEN GATE PASS/);
+  assert.match(r.out.split('\n')[0], /byte compared 0 \/ selected 0/);
+  const d = (more) => decide({rows: [], cover: sameCover([]), summary: noSummary, changedCount: 1, allChangesIgnored: true, inputsIdentical: true, ...more});
+  assert.equal(d({}).exit, 0); assert.equal(d({}).outcome, 'UNAFFECTED');
+  assert.equal(d({inputsIdentical: false}).exit, 2); // the render inputs differ: ignoring the names is not allowed
+  assert.equal(d({allChangesIgnored: false}).exit, 2);
+  assert.equal(d({changedCount: 0}).exit, 2);
+  assert.equal(d({explicitSelection: true}).exit, 2);
+  assert.equal(d({expectedErrors: ['x']}).exit, 1);
+});
+
+test('1: decide() is the one exit-code authority: fail first, then cannot-vouch, then pass only with bytes compared', () => {
+  const same = compareItem('a', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND'));
+  const diff = compareItem('b', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND', {svgSha: 'b'.repeat(64)}));
+  const both = compareItem('c', failRec(), failRec());
+  const dec = (rows, more = {}) => decide({rows, cover: evaluate(rows, {}), summary: summarize(rows), changedCount: 1, ...more});
+  assert.equal(dec([same]).outcome, 'PASS');
+  assert.equal(dec([same, diff]).exit, 1);
+  assert.equal(dec([both]).exit, 2); // nothing compared byte for byte
+  assert.equal(dec([same, both]).exit, 0);
+  assert.equal(dec([compareItem('d', rec('NOT_RUN'), rec('ARCHIVE_BOUND'))]).exit, 1);
+});
+
+// ---- 2. an item whose own inputs differ is selected, whatever the git file names say --------------------------------------------
+test('2: an image in another exam folder, named by a golden exam, selects that exam (git file names alone select nothing)', () => {
+  const fx = fixture();
+  const b1 = fxSnap(fx, 'c1'), b2 = fxSnap(fx, 'c2'), b3 = fxSnap(fx, 'c3');
+  const tgt = n => resolveTarget(fx.repo, fx.c[n]);
+  const changed12 = changedFiles(fx.repo, tgt('c1'), tgt('c2'));
+  assert.deepEqual(changed12, ['archive/assets/images/other/q23.png']);
+  assert.equal(classifyFile(changed12[0], {renderReachable: b1.reachable, items: b1.items}).effect, 'NONE', 'the git name alone says nothing about itemA');
+  const sel12 = chooseItems({changed: changed12, baseSnap: b1, headSnap: b2});
+  assert.deepEqual(sel12.selected, ['itemA']);
+  assert.match(sel12.reasons.join('\n'), /itemA: its own inputs differ/);
+  assert.equal(b1.commonKey, b2.commonKey);
+  const changed23 = changedFiles(fx.repo, tgt('c2'), tgt('c3'));
+  assert.deepEqual(changed23, ['archive/assets/images/third/q14.png', 'archive/assets/images/third/q19.png']);
+  assert.deepEqual(chooseItems({changed: changed23, baseSnap: b2, headSnap: b3}).selected, ['itemB']);
+  // a run with --families auto does not hide it behind the empty git-name classification
+  const r = cli(fx, ['--base', fx.c.c1, '--head', fx.c.c2, '--list']);
+  assert.equal(r.code, 0, r.out + r.err); assert.match(r.out, /golden items selected: 1 of 2/); assert.match(r.out, /itemA/);
+});
+
+test('2: kind change nobody uses, with the render inputs different and nothing selected, is exit 2 (not a pass, not UNAFFECTED)', () => {
+  const fx = fixture();
+  const b4 = fxSnap(fx, 'c4'), b5 = fxSnap(fx, 'c5');
+  assert.notEqual(b4.commonKey, b5.commonKey);
+  const changed = changedFiles(fx.repo, resolveTarget(fx.repo, fx.c.c4), resolveTarget(fx.repo, fx.c.c5));
+  const sel = chooseItems({changed, baseSnap: b4, headSnap: b5});
+  assert.deepEqual(sel.selected, []);
+  const d = decide({rows: [], cover: evaluate([], {}), summary: noSummary, changedCount: changed.length, allChangesIgnored: false, inputsIdentical: false, explicitSelection: false});
+  assert.equal(d.exit, 2); assert.match(d.reason, /render inputs differ/);
+});
+
+// ---- 3. rules that had no test ---------------------------------------------------------------------------------------------
+test('3 NOT_RUN=fail: a run that could not run an item fails the gate and the exit code', () => {
+  const rows = [compareItem('a', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND')), compareItem('b', rec('NOT_RUN', {detail: 'x'}), rec('ARCHIVE_BOUND'))];
+  assert.equal(rows[1].verdict, 'NOT_RUN');
+  assert.equal(summarize(rows).pass, false); assert.equal(summarize(rows).failures.length, 1);
+  assert.equal(decide({rows, cover: evaluate(rows, {}), summary: summarize(rows), changedCount: 1}).exit, 1);
+});
+
+test('3 bytesCompared: a comparison needs an SVG on BOTH sides', () => {
+  const n = (b, h) => bytesCompared(compareItem('i', b, h));
+  assert.equal(n(rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND')), true);
+  assert.equal(n(rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND', {svgSha: 'b'.repeat(64)})), true);
+  assert.equal(n(rec('ARCHIVE_BOUND'), failRec()), false); // REGRESSED
+  assert.equal(n(failRec(), rec('ARCHIVE_BOUND')), false); // FIXED
+  assert.equal(n(failRec(), failRec()), false); // BOTH_FAIL_SAME
+  assert.equal(n(rec('EXEMPT', {detail: 'a'}), rec('EXEMPT', {detail: 'a'})), false); // SAME, but no bytes
+  assert.equal(n(rec('NOT_RUN'), rec('ARCHIVE_BOUND')), false);
+  assert.equal(bytesCompared({verdict: 'SAME', base: {status: 'ARCHIVE_BOUND'}, head: {status: 'FAILED'}}), false);
+  assert.equal(bytesCompared({verdict: 'SAME', base: {status: 'FAILED'}, head: {status: 'ARCHIVE_BOUND'}}), false);
+});
+
+test('3 itemKey covers the plan, the exam source, every asset, and an image of another exam folder the exam names', () => {
+  const root = fs.mkdtempSync(path.join(TMP_ROOT, 'gg-key-'));
+  try {
+    const d = (name, o) => describeSnapshot(mkSnap(root, name, o), name, {type: 'commit', sha: name});
+    const base = d('base', {});
+    const [iA, iB] = base.items;
+    const changedA = (o, label) => {
+      const s = d(label, o);
+      assert.notEqual(s.itemKey(iA), base.itemKey(iA), `${label}: itemA key must change`);
+      assert.equal(s.itemKey(iB), base.itemKey(iB), `${label}: itemB key must not change`);
+      assert.equal(s.commonKey, base.commonKey, `${label}: the shared key must not change`);
+    };
+    changedA({planA: {capability: 'stat-chart-figure-v1', extra: 1}}, 'plan');
+    changedA({srcA: 'export default {changed: true};'}, 'source');
+    changedA({pngs: {aaa: 'another png'}}, 'png');
+    changedA({svgs: {aaa: '<svg id="x"/>'}}, 'svg');
+    const withCross = d('cross1', {cross: {path: 'archive/assets/images/other/q23.png', bytes: 'v1'}});
+    assert.notEqual(withCross.itemKey(iA), base.itemKey(iA), 'a cross-folder image the exam names counts');
+    const crossChanged = d('cross2', {cross: {path: 'archive/assets/images/other/q23.png', bytes: 'v2'}});
+    assert.notEqual(crossChanged.itemKey(iA), withCross.itemKey(iA));
+    assert.equal(crossChanged.itemKey(iB), withCross.itemKey(iB));
+    assert.equal(crossChanged.itemOwnKey(iB), withCross.itemOwnKey(iB));
+    assert.notEqual(crossChanged.itemOwnKey(iA), withCross.itemOwnKey(iA), 'the own key (no engine) differs too: that is what selects the item');
+  } finally { fs.rmSync(root, {recursive: true, force: true}); }
+});
+
+test('3 commonKey covers the files the kind table classifies (KINDS and ALL), and ignores files that cannot render', () => {
+  const root = fs.mkdtempSync(path.join(TMP_ROOT, 'gg-key-'));
+  try {
+    const d = (name, files) => describeSnapshot(mkSnap(root, name, {files}), name, {type: 'commit', sha: name});
+    const a = d('k0', {[STAT_FILE]: 'v1'});
+    assert.notEqual(a.commonKey, d('k1', {[STAT_FILE]: 'v2'}).commonKey, 'a kind file changes the shared key');
+    assert.notEqual(a.commonKey, d('k2', {[`${P}/phase2.mjs`]: 'x'}).commonKey, 'an ALL file changes the shared key');
+    assert.equal(a.commonKey, d('k3', {[STAT_FILE]: 'v1', [`${P}/AUTHOR_GUIDE.md`]: 'doc'}).commonKey, 'a document does not');
+    assert.equal(a.commonKey, d('k4', {[STAT_FILE]: 'v1', 'docs/agents/visual-svg.md': 'doc'}).commonKey);
+  } finally { fs.rmSync(root, {recursive: true, force: true}); }
+});
+
+test('3 asset ITEM classification: a file in a golden exam asset folder selects that exam, any extension, nothing else', () => {
+  const uidOf = i => path.posix.basename(i.sourcePath, '.js');
+  const [a, b] = [items[0], items.find(i => uidOf(i) !== uidOf(items[0]))];
+  for (const ext of ['png', 'jpg', 'svg', 'webp']) {
+    const c = classifyFile(`archive/assets/images/${uidOf(a)}/q01.${ext}`, {renderReachable: graph.nodes, items});
+    assert.equal(c.effect, 'ITEM', ext); assert.ok(c.items.includes(a.dir), ext); assert.ok(!c.items.includes(b.dir), ext);
+  }
+  assert.equal(classifyFile('archive/assets/images/not-a-golden-exam/q01.png', {renderReachable: graph.nodes, items}).effect, 'NONE');
+});
+
+test('3 unknown capability: an item the table cannot map is selected by every kind run (never skipped)', () => {
+  const fx = [{dir: 'x1'}, {dir: 'x2'}];
+  const pl = {x1: {capability: 'brand-new-capability-v9'}, x2: {capability: 'stat-chart-figure-v1'}};
+  assert.ok(planKinds(pl.x1).has('unknown'));
+  assert.deepEqual(selectItems({items: fx, plans: pl, kinds: new Set(['solid'])}), ['x1']);
+  assert.deepEqual(selectItems({items: fx, plans: pl, kinds: new Set(['stat'])}), ['x1', 'x2']);
+  assert.deepEqual(selectItems({items: fx, plans: pl}), []);
+});
+
+test('3 git changes: untracked files count, and a rename is two changed paths (no rename detection)', () => {
+  const fx = fixture();
+  const repo = fx.repo;
+  const oldPath = 'archive/assets/images/aaa/q01.png', newPath = 'archive/assets/images/aaa/q02.png';
+  const head0 = sh(repo, 'rev-parse', 'HEAD');
+  fs.writeFileSync(path.join(repo, 'archive/assets/images/aaa/untracked.png'), 'new');
+  try {
+    const wt = changedFiles(repo, resolveTarget(repo, head0), {type: 'worktree'});
+    assert.deepEqual(wt, ['archive/assets/images/aaa/untracked.png']);
+  } finally { fs.rmSync(path.join(repo, 'archive/assets/images/aaa/untracked.png'), {force: true}); }
+  sh(repo, 'mv', oldPath, newPath); sh(repo, 'commit', '-q', '-m', 'rename');
+  const renamed = changedFiles(repo, resolveTarget(repo, head0), resolveTarget(repo, 'HEAD'));
+  assert.deepEqual(renamed, [oldPath, newPath], 'both the old and the new path');
+  assert.deepEqual(changedFiles(repo, resolveTarget(repo, head0), {type: 'worktree'}), [oldPath, newPath]);
+  sh(repo, 'reset', '-q', '--hard', head0);
+});
+
+test('3 SVG_MISSING: a result that says ARCHIVE_BOUND without an SVG is a failure of the machine, not a comparison', () => {
+  const dir = fs.mkdtempSync(path.join(TMP_ROOT, 'gg-harvest-'));
+  try {
+    fs.writeFileSync(path.join(dir, 'x-result.json'), JSON.stringify({status: 'ARCHIVE_BOUND', capability: 'stat-chart-figure-v1'}));
+    const h = harvest(dir, 'x');
+    assert.equal(h.rec.status, 'FAILED'); assert.equal(h.rec.code, 'SVG_MISSING'); assert.equal(h.rec.svgSha, null);
+    assert.equal(compareItem('x', h.rec, h.rec).verdict, 'NOT_RUN');
+    assert.equal(compareItem('x', rec('ARCHIVE_BOUND'), h.rec).verdict, 'NOT_RUN');
+    fs.writeFileSync(path.join(dir, 'y-result.json'), JSON.stringify({status: 'ARCHIVE_BOUND'})); fs.writeFileSync(path.join(dir, 'y-solution.svg'), '<svg/>');
+    assert.equal(harvest(dir, 'y').rec.status, 'ARCHIVE_BOUND');
+    assert.equal(harvest(dir, 'nothing-here'), null);
+  } finally { fs.rmSync(dir, {recursive: true, force: true}); }
+});
+
+test('3 cache reuse: a stored result is reused for the same inputs and environment only, and a machine failure is never reused', async () => {
+  const root = fs.mkdtempSync(path.join(TMP_ROOT, 'gg-cache-'));
+  try {
+    const snap = describeSnapshot(mkSnap(root, 's'), 's', {type: 'commit', sha: 's'});
+    const other = describeSnapshot(mkSnap(root, 's2', {planA: {capability: 'stat-chart-figure-v1', n: 2}}), 's2', {type: 'commit', sha: 's2'});
+    const [iA] = snap.items;
+    assert.notEqual(resultKey(snap, iA, 'env1'), resultKey(snap, iA, 'env2'), 'the environment is part of the key');
+    assert.notEqual(resultKey(snap, iA, 'env1'), resultKey(other, other.items[0], 'env1'), 'the render inputs are part of the key');
+    assert.equal(resultKey(snap, iA, 'env1'), resultKey(snap, iA, 'env1'));
+    const res = path.join(root, 'res');
+    const put = (key, record) => { const dir = storeDir(res, key); fs.mkdirSync(dir, {recursive: true}); fs.writeFileSync(path.join(dir, 'record.json'), JSON.stringify(record)); };
+    put(resultKey(snap, iA, 'env1'), {item: 'itemA', status: 'ARCHIVE_BOUND', svgSha: 'f'.repeat(64), svgBytes: 5});
+    const opts = {snap, itemDirs: ['itemA'], resultsRoot: res, cacheRoot: path.join(root, 'cache'), depsDir: path.join(root, 'deps'), lockDir: path.join(root, 'locks')};
+    const hit = await renderItems({...opts, envKey: 'env1'});
+    assert.equal(hit.results.get('itemA').fromCache, true); assert.equal(hit.stats.cached, 1);
+    assert.equal(loadResult(res, resultKey(snap, iA, 'env2')), null, 'another environment finds nothing');
+    assert.equal(loadResult(res, resultKey(other, other.items[0], 'env1')), null, 'other render inputs find nothing');
+    assert.equal(reusable({status: 'ARCHIVE_BOUND'}), true); assert.equal(reusable({status: 'FAILED', code: 'X', detailFull: 'plain failure'}), true);
+    assert.equal(reusable({status: 'FAILED', code: 'WORKER_TIMEOUT'}), false); assert.equal(reusable({status: 'FAILED', code: 'X', detailFull: 'Timeout 30000ms exceeded'}), false);
+    assert.equal(reusable(null), false);
+    await assert.rejects(() => renderItems({...opts}), /environment fingerprint/);
+  } finally { fs.rmSync(root, {recursive: true, force: true}); }
+});
+
+test('3 lazy import: a python import inside a function is lazy, a top-level one is not, and a dispatcher may only use a kind file lazily', () => {
+  const root = fs.mkdtempSync(path.join(TMP_ROOT, 'gg-graph-'));
+  try {
+    putFile(root, `${P}/a.mjs`, "import './b.mjs';\nexport const f = async () => import('./c.mjs');\n");
+    putFile(root, `${P}/b.mjs`, 'export const b = 1;'); putFile(root, `${P}/c.mjs`, 'export const c = 1;');
+    putFile(root, `${P}/worker.py`, 'from kmod import f\n\ndef g():\n    from lmod import h\n    return h\n');
+    putFile(root, `${P}/kmod.py`, 'f = 1\n'); putFile(root, `${P}/lmod.py`, 'h = 1\n');
+    const g = buildCodeGraph(root, [`${P}/a.mjs`, `${P}/worker.py`]);
+    const lazyOf = f => g.importers.get(f).map(e => e.lazy);
+    assert.deepEqual(lazyOf(`${P}/b.mjs`), [false]); assert.deepEqual(lazyOf(`${P}/c.mjs`), [true]);
+    assert.deepEqual(lazyOf(`${P}/kmod.py`), [false]); assert.deepEqual(lazyOf(`${P}/lmod.py`), [true]);
+    const dispatchers = new Set([`${P}/worker.py`]);
+    const problems = kindTableProblems({graph: g, kindFiles: {[`${P}/kmod.py`]: ['stat'], [`${P}/lmod.py`]: ['stat']}, dispatchers, exceptions: {}});
+    assert.equal(problems.length, 1); assert.match(problems[0], /kmod\.py is imported at the top of .*worker\.py/);
+    // a kind file used by a file of another kind, or an unlisted file, is a problem; an exception with a reason is not
+    const g2 = {importers: new Map([[`${P}/s.mjs`, [{from: `${P}/other.mjs`, lazy: false}]]])};
+    assert.equal(kindTableProblems({graph: g2, kindFiles: {[`${P}/s.mjs`]: ['stat']}, dispatchers: new Set(), exceptions: {}}).length, 1);
+    assert.equal(kindTableProblems({graph: g2, kindFiles: {[`${P}/s.mjs`]: ['stat']}, dispatchers: new Set(), exceptions: {[`${P}/s.mjs`]: [`${P}/other.mjs`]}}).length, 0);
+    assert.equal(kindTableProblems({graph: g2, kindFiles: {[`${P}/s.mjs`]: ['stat'], [`${P}/other.mjs`]: ['stat']}, dispatchers: new Set(), exceptions: {}}).length, 0);
+    assert.equal(kindTableProblems({graph: g2, kindFiles: {[`${P}/s.mjs`]: ['stat'], [`${P}/other.mjs`]: ['solid']}, dispatchers: new Set(), exceptions: {}}).length, 1);
+  } finally { fs.rmSync(root, {recursive: true, force: true}); }
+});
+
+test('3 duplicate expected: the same item twice in the expected file is an error, and an error fails the gate', () => {
+  const e = parseExpected('itemA DIFFERENT first reason that is long enough\nitemA DIFFERENT second reason that is long enough\n');
+  assert.equal(e.entries.length, 1); assert.match(e.errors.join('\n'), /itemA is listed twice/);
+  const rows = [compareItem('itemA', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND', {svgSha: 'b'.repeat(64)}))];
+  const applied = applyExpected(rows, e);
+  assert.equal(summarize(rows, applied).pass, false);
+  assert.equal(decide({rows, cover: evaluate(rows, {}), summary: summarize(rows, applied), expectedErrors: applied.errors, changedCount: 1}).exit, 1);
+});
+
+// ---- 4. the environment is part of the stored-result key -------------------------------------------------------------------------
+test('4: the environment fingerprint changes with the python packages, and a stored result key changes with it', () => {
+  const root = fs.mkdtempSync(path.join(TMP_ROOT, 'gg-env-'));
+  const old = process.env.GEOMETRY_BROWSER_EXECUTABLE; process.env.GEOMETRY_BROWSER_EXECUTABLE = 'no-such-chrome-for-fixture';
+  try {
+    const mk = (name, pkgs) => { const d = path.join(root, name); fs.mkdirSync(path.join(d, 'node_modules'), {recursive: true}); fs.mkdirSync(path.join(d, 'python'), {recursive: true}); for (const p of pkgs) fs.mkdirSync(path.join(d, 'python', p)); return d; };
+    const a = environmentFingerprint({depsDir: mk('a', ['numpy-1.0.dist-info'])});
+    assert.equal(a.key, environmentFingerprint({depsDir: mk('a2', ['numpy-1.0.dist-info'])}).key, 'the same environment gives the same key');
+    assert.notEqual(a.key, environmentFingerprint({depsDir: mk('b', ['numpy-2.0.dist-info'])}).key);
+    for (const field of ['chrome', 'node', 'python', 'os', 'fontNotoSansKR', 'pythonPackages', 'nodePackages']) assert.ok(field in a, `the fingerprint lists ${field}`);
+  } finally { if (old === undefined) delete process.env.GEOMETRY_BROWSER_EXECUTABLE; else process.env.GEOMETRY_BROWSER_EXECUTABLE = old; fs.rmSync(root, {recursive: true, force: true}); }
+});
+
+// ---- 5. a changed kind table never reuses old keys -----------------------------------------------------------------------------
+test('5: stored snapshot keys are reused only under the same kind table version', () => {
+  const root = fs.mkdtempSync(path.join(TMP_ROOT, 'gg-ver-'));
+  try {
+    assert.match(KINDS_VERSION, /^[0-9a-f]{12}$/);
+    const dir = mkSnap(root, 's');
+    const fresh = describeSnapshot(dir, 's', {type: 'commit', sha: 's'});
+    const keyFile = path.join(dir, '.snapshot-keys.json');
+    const keys = JSON.parse(fs.readFileSync(keyFile, 'utf8'));
+    assert.equal(keys.kindsVersion, KINDS_VERSION);
+    fs.writeFileSync(keyFile, JSON.stringify({...keys, commonKey: 'stale-common-key'}));
+    assert.equal(describeSnapshot(dir, 's', {type: 'commit', sha: 's'}).commonKey, 'stale-common-key', 'the same version reuses the stored keys');
+    fs.writeFileSync(keyFile, JSON.stringify({...keys, kindsVersion: 'an-older-table', commonKey: 'stale-common-key'}));
+    const again = describeSnapshot(dir, 's', {type: 'commit', sha: 's'});
+    assert.equal(again.commonKey, fresh.commonKey, 'another table version recomputes the keys');
+    assert.equal(JSON.parse(fs.readFileSync(keyFile, 'utf8')).kindsVersion, KINDS_VERSION);
+    // the version is also inside the key itself: the same files under another table give another key
+    assert.notEqual(fresh.commonKey, JSON.stringify(KINDS_VERSION));
+  } finally { fs.rmSync(root, {recursive: true, force: true}); }
+});
+
+// ---- 6. a golden item that is gone, a test that stops running -----------------------------------------------------------------------
+test('6: a golden item only on base is REMOVED and fails; an item only on head is ADDED and listed', () => {
+  const rows = [compareItem('a', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND')), removedRow('gone')];
+  assert.equal(rows[1].verdict, 'REMOVED');
+  const s = summarize(rows); assert.equal(s.pass, false); assert.equal(s.failures.length, 1);
+  assert.equal(decide({rows, cover: evaluate(rows, {}), summary: s, changedCount: 1}).exit, 1);
+  assert.equal(decide({rows: [removedRow('gone')], cover: evaluate([removedRow('gone')], {}), summary: summarize([removedRow('gone')]), changedCount: 1}).exit, 1, 'REMOVED fails even when nothing else was compared');
+  const added = [compareItem('a', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND')), addedRow('fresh', rec('ARCHIVE_BOUND'))];
+  assert.equal(added[1].verdict, 'ADDED'); assert.equal(summarize(added).pass, true); assert.equal(summarize(added).listed.length, 1);
+  const accepted = applyExpected(rows, parseExpected('gone REMOVED the item was retired on purpose in this change\n'));
+  assert.equal(accepted.errors.length, 0); assert.equal(summarize(rows, accepted).pass, true);
+});
+
+test('6: engine tests that passed on base and are skipped or deleted on head fail like a new failure', () => {
+  const F = `${GE}/tests/x.test.mjs`;
+  const base = {[F]: {names: {keep: 'pass', skipped: 'pass', deleted: 'pass', wasSkipped: 'skip', wasFailing: 'fail'}}};
+  const head = {[F]: {names: {keep: 'pass', skipped: 'skip', wasSkipped: 'skip', wasFailing: 'skip'}}};
+  const r = compareTests(base, head, [F]);
+  assert.equal(r.lost.length, 2); assert.match(r.lost.join('\n'), /skipped.*skipped on head/); assert.match(r.lost.join('\n'), /deleted.*missing on head/);
+  assert.deepEqual(r.newFailures, []);
+  assert.equal(compareTests(base, base, [F]).lost.length, 0);
+});
+
+// ---- 7. locks and snapshots: nothing of another process is deleted --------------------------------------------------------------------
+test('7: a render slot is released only by its owner (a stale lock another process took is left alone)', async () => {
+  const root = fs.mkdtempSync(path.join(TMP_ROOT, 'gg-lock-'));
+  try {
+    const lockDir = path.join(root, 'locks');
+    const mine = await acquireSlot({lockDir, slots: 1, pollMs: 10});
+    assert.ok(fs.existsSync(mine.dir));
+    fs.writeFileSync(path.join(mine.dir, 'owner'), 'someone else took this slot'); // my lock went stale and another process holds the slot now
+    mine.release();
+    assert.ok(fs.existsSync(mine.dir), 'a lock that is no longer ours is not removed');
+    fs.rmSync(mine.dir, {recursive: true, force: true});
+    const own = await acquireSlot({lockDir, slots: 1, pollMs: 10});
+    own.release();
+    assert.ok(!fs.existsSync(own.dir), 'our own lock is released');
+  } finally { fs.rmSync(root, {recursive: true, force: true}); }
+});
+
+test('7: a snapshot is built in a folder of its own and renamed into place; a folder another process is building is never touched', () => {
+  const fx = fixture();
+  const foreign = path.join(fx.cache, 'snapshots', 'c-tmp-99999-abcdef.part'); // another process, still building
+  fs.mkdirSync(foreign, {recursive: true}); fs.writeFileSync(path.join(foreign, 'half-written.txt'), 'in progress');
+  const s1 = fxSnap(fx, 'c1');
+  assert.ok(fs.existsSync(path.join(foreign, 'half-written.txt')), 'the other process folder is untouched');
+  assert.ok(fs.existsSync(path.join(s1.dir, '.snapshot-complete')));
+  assert.deepEqual(fs.readdirSync(path.join(fx.cache, 'snapshots')).filter(n => n.endsWith('.part') && n !== 'c-tmp-99999-abcdef.part'), [], 'our own part folder is gone');
+  const again = fxSnap(fx, 'c1');
+  assert.equal(again.dir, s1.dir); assert.equal(again.commonKey, s1.commonKey);
+  assert.ok(fs.existsSync(path.join(foreign, 'half-written.txt')));
+});
+
+test('zz fixture cleanup', () => { if (fxCache) { fs.rmSync(fxCache.root, {recursive: true, force: true}); fxCache = null; } });

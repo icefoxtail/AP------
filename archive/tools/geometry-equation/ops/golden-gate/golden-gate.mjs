@@ -7,11 +7,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {gitText, mkdirp, writeJson, fmtDuration} from './lib/util.mjs';
-import {classifyFile, parseFamilies, selectItems, planKinds, KINDS} from './lib/kinds.mjs';
+import {planKinds, KINDS} from './lib/kinds.mjs';
+import {chooseItems} from './lib/select.mjs';
 import {resolveTarget, ensureSnapshot, changedFiles, pruneSnapshots} from './lib/snapshot.mjs';
 import {environmentFingerprint} from './lib/env-fingerprint.mjs';
 import {renderItems, pruneSnapshotRuns} from './lib/render.mjs';
-import {compareItem, parseExpected, applyExpected, summarize, evaluate} from './lib/judge.mjs';
+import {compareItem, parseExpected, applyExpected, summarize, evaluate, decide, bytesCompared, removedRow, addedRow} from './lib/judge.mjs';
 import {listTests, selectTests, runTests, compareTests} from './lib/tests-run.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -25,7 +26,7 @@ function parseArgs(argv) {
     if (k === '--base') a.base = val(); else if (k === '--head') a.head = val(); else if (k === '--families') a.families = val();
     else if (k === '--expected') a.expected = val(); else if (k === '--slots') a.slots = Number(val()); else if (k === '--chunk-size') a.chunk = Number(val());
     else if (k === '--cache') a.cache = val(); else if (k === '--lock-dir') a.lockDir = val(); else if (k === '--deps') a.deps = val(); else if (k === '--out') a.out = val();
-    else if (k === '--retries') a.retries = Number(val());
+    else if (k === '--retries') a.retries = Number(val()); else if (k === '--repo') a.repo = val();
     else if (k === '--tests') { const n = argv[i + 1]; a.tests = n && !n.startsWith('--') ? (i++, n) : 'auto'; }
     else if (k === '--no-cache') a.noCache = true; else if (k === '--repeat-check') a.repeat = true; else if (k === '--list') a.list = true;
     else if (k === '--help' || k === '-h') a.help = true; else throw new Error(`unknown option ${k}`);
@@ -34,7 +35,7 @@ function parseArgs(argv) {
 }
 
 const USAGE = `golden-gate --base <ref> [--head <ref|@worktree>] [--families auto|all|<kind,kind|item|FAM>] [--expected <file>] [--tests [auto|all]]
-  [--slots N] [--chunk-size N] [--no-cache] [--repeat-check] [--list] [--out <report.json>] [--cache <dir>] [--lock-dir <dir>] [--deps <dir>]
+  [--slots N] [--chunk-size N] [--no-cache] [--repeat-check] [--list] [--out <report.json>] [--cache <dir>] [--repo <dir>] [--lock-dir <dir>] [--deps <dir>]
 kinds: ${KINDS.join(', ')}
 env: GOLDEN_GATE_CACHE (cache folder), RENDER_LOCK_DIR (render slot folder shared with other workers), RENDER_SLOTS, GOLDEN_GATE_DEPS, GEOMETRY_BROWSER_EXECUTABLE, GEOMETRY_PYTHON`;
 
@@ -48,6 +49,7 @@ const log = m => console.error(`[${new Date().toTimeString().slice(0, 8)}] ${m}`
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   if (args.help || !args.base) { console.log(USAGE); return args.help ? 0 : 2; }
+  const repo = path.resolve(args.repo || REPO);
   const cacheRoot = path.resolve(args.cache || process.env.GOLDEN_GATE_CACHE || path.join(REPO, '.tmp/golden-gate-cache'));
   const lockDir = path.resolve(args.lockDir || process.env.RENDER_LOCK_DIR || path.join(cacheRoot, 'render-locks'));
   const depsDir = path.resolve(args.deps || process.env.GOLDEN_GATE_DEPS || path.join(REPO, '.tmp/apmath-visual-engine/dependencies'));
@@ -59,120 +61,115 @@ async function main() {
   const resultsRoot = mkdirp(path.join(cacheRoot, 'results'));
   const t0 = Date.now();
 
-  const baseT = resolveTarget(REPO, args.base);
-  const headT = resolveTarget(REPO, args.head || '@worktree');
+  // the --expected file is read first: a wrong file is exit 1 whatever else happens
+  let expected = {entries: [], errors: []};
+  if (args.expected) {
+    try { expected = parseExpected(fs.readFileSync(args.expected, 'utf8')); } catch (e) { expected = {entries: [], errors: [`cannot read the expected file ${args.expected}: ${e.message}`]}; }
+  }
+
+  const baseT = resolveTarget(repo, args.base);
+  const headT = resolveTarget(repo, args.head || '@worktree');
   const env = environmentFingerprint({depsDir});
   log(`cache ${cacheRoot}`);
   log(`render slots: ${args.slots} in ${lockDir}`);
   log(`environment ${env.key}: chrome ${env.chrome}, node ${env.node}, ${env.python}, ${env.os}`);
   pruneSnapshots(cacheRoot);
-  const baseSnap = ensureSnapshot({repo: REPO, target: baseT, cacheRoot, depsDir, log});
-  const headSnap = ensureSnapshot({repo: REPO, target: headT, cacheRoot, depsDir, log});
+  const baseSnap = ensureSnapshot({repo, target: baseT, cacheRoot, depsDir, log});
+  const headSnap = ensureSnapshot({repo, target: headT, cacheRoot, depsDir, log});
   for (const s of [baseSnap, headSnap]) pruneSnapshotRuns(s.dir);
-  const sameInput = baseSnap.commonKey === headSnap.commonKey && baseSnap.items.every(i => baseSnap.itemKey(i) === headSnap.itemKey(i));
+  const baseDirs = new Set(baseSnap.items.map(i => i.dir)), headDirs = new Set(headSnap.items.map(i => i.dir));
+  const sameInput = baseSnap.commonKey === headSnap.commonKey && baseDirs.size === headDirs.size && headSnap.items.every(i => baseDirs.has(i.dir) && baseSnap.itemKey(i) === headSnap.itemKey(i));
   log(`base ${baseT.label} snapshot ${baseSnap.id} (render inputs ${baseSnap.commonKey.slice(0, 12)})`);
   log(`head ${headT.label} snapshot ${headSnap.id} (render inputs ${headSnap.commonKey.slice(0, 12)})${sameInput ? ' -- identical render inputs' : ''}`);
 
   // ---- which golden items -------------------------------------------------------------------------------------------
-  const changed = changedFiles(REPO, baseT, headT);
+  let changed, sel;
+  try {
+    changed = changedFiles(repo, baseT, headT);
+    sel = chooseItems({families: args.families, changed, baseSnap, headSnap, expectedItems: expected.entries.map(e => e.item)});
+  } catch (e) { headline = 'byte compared 0 / selected 0'; say(`CANNOT VOUCH: the changes could not be classified: ${e.message}`); return 2; }
+  if (sel.unknown.length) { headline = 'byte compared 0 / selected 0'; say(`CANNOT VOUCH: unknown --families word(s): ${sel.unknown.join(', ')}`); return 2; }
+  const {all, kinds, selected, plans} = sel;
   const items = headSnap.items;
-  const reachable = new Set([...baseSnap.reachable, ...headSnap.reachable]);
-  const classes = changed.map(f => ({file: f, ...classifyFile(f, {renderReachable: reachable, items})}));
-  let all = false; const kinds = new Set(); const itemDirs = new Set(); const reasons = [];
-  let familyWords = String(args.families).split(',').map(s => s.trim()).filter(Boolean);
-  const expectedText = args.expected ? fs.readFileSync(args.expected, 'utf8') : '';
-  const expected = parseExpected(expectedText);
-  if (familyWords.length === 1 && familyWords[0] === 'auto') {
-    for (const c of classes) {
-      if (c.effect === 'ALL') { all = true; reasons.push(`${c.file}: ${c.reason}`); }
-      else if (c.effect === 'KINDS') { c.kinds.forEach(k => kinds.add(k)); reasons.push(`${c.file}: kinds ${c.kinds.join('+')}`); }
-      else if (c.effect === 'ITEM') { c.items.forEach(i => itemDirs.add(i)); reasons.push(`${c.file}: ${c.reason} ${c.items.join(',')}`); }
-    }
-    for (const e of expected.entries) itemDirs.add(e.item); // an item named in --expected is always compared
-  } else {
-    const f = parseFamilies(familyWords, items);
-    if (f.unknown.length) { console.error(`unknown --families word(s): ${f.unknown.join(', ')}`); return 2; }
-    all = f.all; f.kinds.forEach(k => kinds.add(k)); f.items.forEach(i => itemDirs.add(i));
-    for (const e of expected.entries) itemDirs.add(e.item);
-    reasons.push(`--families ${args.families}`);
-  }
-  const plans = headSnap.plans;
-  for (const [d, p] of Object.entries(baseSnap.plans)) if (!(d in plans)) plans[d] = p;
-  const selected = selectItems({items, plans, all, kinds, itemDirs});
-  const noEffect = classes.filter(c => c.effect === 'NONE');
-  say(`changed files: ${changed.length} (render-relevant ${classes.filter(c => c.effect !== 'NONE').length}, ignored ${noEffect.length})`);
-  for (const r of reasons.slice(0, 40)) say(`  ${r}`);
-  if (reasons.length > 40) say(`  ... ${reasons.length - 40} more`);
-  say(`golden items selected: ${selected.length} of ${items.length}${all ? ' (whole set)' : kinds.size ? ` (kinds: ${[...kinds].join(', ')})` : ''}`);
+  const removedDirs = baseSnap.items.filter(i => !headDirs.has(i.dir)).map(i => i.dir);
+  say(`changed files: ${changed.length} (render-relevant ${sel.classes.filter(c => c.effect !== 'NONE').length}, ignored ${sel.classes.filter(c => c.effect === 'NONE').length})`);
+  for (const r of sel.reasons.slice(0, 40)) say(`  ${r}`);
+  if (sel.reasons.length > 40) say(`  ... ${sel.reasons.length - 40} more`);
+  say(`golden items selected: ${selected.length} of ${items.length}${all ? ' (whole set)' : kinds.size ? ` (kinds: ${[...kinds].join(', ')})` : ''}${removedDirs.length ? `; ${removedDirs.length} item(s) only on base` : ''}`);
   if (args.list) { say(selected.join(' ')); return 0; }
 
-  let exit = 0;
   const report = {base: baseT.label, head: headT.label, env: env.key, selected: selected.length, total: items.length};
+  const renderOpts = {resultsRoot, noCache: args.noCache, slots: args.slots, lockDir, chunkSize: args.chunk, retries: args.retries, log, cacheRoot, depsDir, envKey: env.key};
 
   // ---- repeat check: the same snapshot rendered twice, independently ----------------------------------------------------
   if (args.repeat) {
     const dirs = selected.length ? selected : items.map(i => i.dir);
-    const r1 = await renderItems({snap: headSnap, itemDirs: dirs, resultsRoot: mkdirp(path.join(cacheRoot, 'repeat', 'a')), noCache: true, slots: args.slots, lockDir, chunkSize: args.chunk, retries: args.retries, log, cacheRoot, depsDir, label: 'repeat 1'});
-    const r2 = await renderItems({snap: headSnap, itemDirs: [...dirs].reverse(), resultsRoot: mkdirp(path.join(cacheRoot, 'repeat', 'b')), noCache: true, slots: args.slots, lockDir, chunkSize: Math.max(1, args.chunk - 3), retries: args.retries, log, cacheRoot, depsDir, label: 'repeat 2 (reversed order, other chunking)'});
+    const r1 = await renderItems({...renderOpts, snap: headSnap, itemDirs: dirs, resultsRoot: mkdirp(path.join(cacheRoot, 'repeat', 'a')), noCache: true, label: 'repeat 1'});
+    const r2 = await renderItems({...renderOpts, snap: headSnap, itemDirs: [...dirs].reverse(), resultsRoot: mkdirp(path.join(cacheRoot, 'repeat', 'b')), noCache: true, chunkSize: Math.max(1, args.chunk - 3), label: 'repeat 2 (reversed order, other chunking)'});
     const rows = dirs.map(d => compareItem(d, r1.results.get(d), r2.results.get(d)));
     const bad = rows.filter(r => r.verdict !== 'SAME' && r.verdict !== 'BOTH_FAIL_SAME');
+    headline = `byte compared ${rows.filter(bytesCompared).length} / selected ${rows.length}`;
     say(`\nrepeat check on ${headT.label}: ${rows.length} items rendered twice, ${rows.filter(r => r.verdict === 'SAME').length} byte-identical, ${rows.filter(r => r.verdict === 'BOTH_FAIL_SAME').length} failed identically, ${bad.length} unstable`);
     for (const r of bad) say(`  UNSTABLE ${r.item}: ${r.verdict} ${r.reason ?? ''}`);
     report.repeat = {items: rows.length, unstable: bad.map(b => b.item), wallMs: Date.now() - t0};
     if (args.out) writeJson(args.out, report);
-    return bad.length ? 1 : 0;
+    return bad.length || !rows.some(bytesCompared) ? (bad.length ? 1 : 2) : 0;
   }
 
   // ---- render and compare -----------------------------------------------------------------------------------------
   let rows = [], stats = {};
   if (selected.length) {
-    const baseR = await renderItems({snap: baseSnap, itemDirs: selected, resultsRoot, noCache: args.noCache, slots: args.slots, lockDir, chunkSize: args.chunk, retries: args.retries, log, cacheRoot, depsDir, label: 'base'});
-    const headR = sameInput && !args.noCache ? baseR : await renderItems({snap: headSnap, itemDirs: selected, resultsRoot, noCache: args.noCache, slots: args.slots, lockDir, chunkSize: args.chunk, retries: args.retries, log, cacheRoot, depsDir, label: 'head'});
+    const baseList = selected.filter(d => baseDirs.has(d));
+    const baseR = await renderItems({...renderOpts, snap: baseSnap, itemDirs: baseList, label: 'base'});
+    const headR = sameInput && !args.noCache ? baseR : await renderItems({...renderOpts, snap: headSnap, itemDirs: selected, label: 'head'});
     stats = {base: baseR.stats, head: headR.stats};
-    rows = selected.map(d => compareItem(d, baseR.results.get(d), headR.results.get(d)));
+    rows = selected.map(d => baseDirs.has(d) ? compareItem(d, baseR.results.get(d), headR.results.get(d)) : addedRow(d, headR.results.get(d)));
   }
+  for (const d of removedDirs) rows.push(removedRow(d)); // a removed golden item always counts, selected or not
   const applied = applyExpected(rows, expected);
   const summary = summarize(rows, applied);
   const byKind = k => [...planKinds(plans[k])].sort()[0];
 
   say('');
-  const order = ['DIFFERENT', 'REGRESSED', 'NOT_RUN', 'FIXED', 'BOTH_FAIL_SAME'];
-  for (const v of order) for (const r of rows.filter(x => x.verdict === v)) say(`${r.accepted ? 'EXPECTED ' : ''}${v.padEnd(14)} ${r.item.padEnd(24)} [${byKind(r.item)}] ${r.reason ?? ''}${r.accepted ? `  <= expected: ${r.accepted}` : ''}`);
+  const order = ['DIFFERENT', 'REGRESSED', 'REMOVED', 'NOT_RUN', 'FIXED', 'ADDED', 'BOTH_FAIL_SAME'];
+  for (const v of order) for (const r of rows.filter(x => x.verdict === v)) say(`${r.accepted ? 'EXPECTED ' : ''}${v.padEnd(14)} ${r.item.padEnd(24)} [${plans[r.item] ? byKind(r.item) : '-'}] ${r.reason ?? ''}${r.accepted ? `  <= expected: ${r.accepted}` : ''}`);
   if (applied.accepted.length) say(`\nexpected changes accepted: ${applied.accepted.length}`);
   for (const e of applied.errors) say(`EXPECTED-FILE ERROR: ${e}`);
   const c = summary.counts;
-  say(`\nitems ${summary.total}: SAME ${c.SAME ?? 0}, DIFFERENT ${c.DIFFERENT ?? 0}, REGRESSED ${c.REGRESSED ?? 0}, NOT_RUN ${c.NOT_RUN ?? 0}; listed only: FIXED ${c.FIXED ?? 0}, BOTH_FAIL_SAME ${c.BOTH_FAIL_SAME ?? 0} (all stay in the denominator)`);
+  say(`\nitems ${summary.total}: SAME ${c.SAME ?? 0}, DIFFERENT ${c.DIFFERENT ?? 0}, REGRESSED ${c.REGRESSED ?? 0}, REMOVED ${c.REMOVED ?? 0}, NOT_RUN ${c.NOT_RUN ?? 0}; listed only: FIXED ${c.FIXED ?? 0}, ADDED ${c.ADDED ?? 0}, BOTH_FAIL_SAME ${c.BOTH_FAIL_SAME ?? 0} (all stay in the denominator)`);
   if (stats.base) say(`rendered base ${stats.base.rendered} (+${stats.base.cached} cached), head ${stats.head.rendered} (+${stats.head.cached} cached), solo retries ${stats.base.retried + stats.head.retried}`);
   if (stats.base) timingTable(selected, plans, stats);
   report.rows = rows; report.summary = {counts: c, accepted: applied.accepted, expectedErrors: applied.errors}; report.stats = stats;
-  const cover = evaluate(rows, {kinds, kindOf: d => planKinds(plans[d])});
+  const cover = evaluate(rows, {kinds, kindOf: d => plans[d] ? planKinds(plans[d]) : new Set()});
   headline = `byte compared ${cover.byteCompared} / selected ${cover.selected}${sameInput && !args.noCache && rows.length ? ' (base and head have identical render inputs: nothing to compare)' : ''}`;
   report.coverage = cover;
-  if (!rows.length) say('NOTHING RENDERED: no render input of the golden set differs between base and head (use --families all to render anyway).');
-  else if (cover.byteCompared === 0) { say('CANNOT VOUCH: no selected item produced an SVG on both sides, so no bytes were compared (every item failed, was not run, or hit an environment error).'); exit = 2; }
-  else if (cover.notCovered.length) { for (const k of cover.notCovered) say(`NOT_COVERED: kind ${k} changed but no golden item of that kind was compared byte for byte (they all fail or were not run): add an example plan for it.`); exit = 2; }
-  else if (!summary.pass) exit = 1;
+  const decision = decide({rows, cover, summary, expectedErrors: applied.errors, changedCount: changed.length, allChangesIgnored: sel.classes.length > 0 && sel.classes.every(c => c.effect === 'NONE'), inputsIdentical: sameInput, explicitSelection: sel.explicit});
+  let exit = decision.exit, outcome = decision.outcome;
+  if (outcome === 'CANNOT_VOUCH') for (const k of cover.notCovered) say(`NOT_COVERED: kind ${k} changed but no golden item of that kind was compared byte for byte (they all fail or were not run): add an example plan for it.`);
   if (cover.wholeUncovered.length) say(`note: no byte comparison for kind(s) ${cover.wholeUncovered.join(', ')} (every golden item of that kind fails or was not run): a change to them is not covered by this run.`);
 
   // ---- engine tests -------------------------------------------------------------------------------------------------
   if (args.tests) {
-    const sel = selectTests({snaps: [baseSnap, headSnap], changed, all: args.tests === 'all' || all, kinds});
-    say(`\nengine tests: ${sel.tests.length} files (${sel.reason})`);
-    const tBase = await runTests({snap: baseSnap, files: sel.tests, resultsRoot: mkdirp(path.join(cacheRoot, 'test-results')), envKey: env.key, slots: args.slots, lockDir, cacheRoot, depsDir, log, noCache: args.noCache});
-    const tHead = sameInput && !args.noCache ? tBase : await runTests({snap: headSnap, files: sel.tests, resultsRoot: path.join(cacheRoot, 'test-results'), envKey: env.key, slots: args.slots, lockDir, cacheRoot, depsDir, log, noCache: args.noCache});
-    const cmp = compareTests(tBase, tHead, sel.tests);
+    const tsel = selectTests({snaps: [baseSnap, headSnap], changed, all: args.tests === 'all' || all, kinds});
+    say(`\nengine tests: ${tsel.tests.length} files (${tsel.reason})`);
+    const tOpts = {files: tsel.tests, resultsRoot: mkdirp(path.join(cacheRoot, 'test-results')), envKey: env.key, slots: args.slots, lockDir, cacheRoot, depsDir, log, noCache: args.noCache};
+    const tBase = await runTests({...tOpts, snap: baseSnap});
+    const tHead = sameInput && !args.noCache ? tBase : await runTests({...tOpts, snap: headSnap});
+    const cmp = compareTests(tBase, tHead, tsel.tests);
     for (const n of cmp.newFailures) say(`NEW TEST FAILURE  ${n}`);
-    say(`tests (head): ${Object.entries(cmp.counts.head).map(([k, v]) => `${k} ${v}`).join(', ')}; failing on both sides (existing, printed): ${cmp.existingFailures.length}; fixed ${cmp.fixed.length}; removed ${cmp.removed.length}`);
+    for (const n of cmp.lost) say(`LOST TEST  ${n}`);
+    say(`tests (head): ${Object.entries(cmp.counts.head).map(([k, v]) => `${k} ${v}`).join(', ')}; failing on both sides (existing, printed): ${cmp.existingFailures.length}; fixed ${cmp.fixed.length}; lost ${cmp.lost.length}`);
     for (const n of cmp.existingFailures) say(`  existing failure ${n}`);
     for (const n of cmp.fixed) say(`  fixed ${n}`);
-    report.tests = {files: sel.tests.length, newFailures: cmp.newFailures, existingFailures: cmp.existingFailures, fixed: cmp.fixed, counts: cmp.counts};
-    if (cmp.newFailures.length && exit === 0) exit = 1;
+    report.tests = {files: tsel.tests.length, newFailures: cmp.newFailures, lost: cmp.lost, existingFailures: cmp.existingFailures, fixed: cmp.fixed, counts: cmp.counts};
+    if (cmp.newFailures.length || cmp.lost.length) { exit = 1; outcome = 'FAIL'; }
   }
 
-  report.wallMs = Date.now() - t0; report.pass = exit === 0;
+  report.wallMs = Date.now() - t0; report.pass = exit === 0 && outcome === 'PASS'; report.outcome = outcome; report.reason = decision.reason;
   const reportFile = args.out || path.join(cacheRoot, 'reports', `${new Date().toISOString().replace(/[:.]/g, '-')}.json`);
   writeJson(reportFile, report);
-  say(`\n${exit === 0 ? 'GOLDEN GATE PASS' : exit === 2 ? 'GOLDEN GATE CANNOT VOUCH' : 'GOLDEN GATE FAIL'} in ${fmtDuration(Date.now() - t0)}; report ${reportFile}`);
+  const word = outcome === 'PASS' ? 'GOLDEN GATE PASS' : outcome === 'UNAFFECTED' ? 'GOLDEN GATE UNAFFECTED (nothing compared)' : outcome === 'CANNOT_VOUCH' ? `GOLDEN GATE CANNOT VOUCH: ${decision.reason}` : 'GOLDEN GATE FAIL';
+  say(`\n${word} in ${fmtDuration(Date.now() - t0)}; report ${reportFile}`);
   return exit;
 }
 

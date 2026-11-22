@@ -21,10 +21,12 @@ export async function acquireSlot({lockDir, slots, log = () => {}, pollMs = 5000
       const dir = path.join(lockDir, `render.lock.${n}`);
       try {
         fs.mkdirSync(dir);
-        fs.writeFileSync(path.join(dir, 'owner'), `golden-gate ${process.pid}`);
+        const token = `golden-gate ${process.pid} ${Math.random().toString(36).slice(2)}`;
+        fs.writeFileSync(path.join(dir, 'owner'), token);
         const beat = setInterval(() => { try { const t = new Date(); fs.utimesSync(dir, t, t); } catch { /* released */ } }, 30000);
         beat.unref?.();
-        return {dir, release() { clearInterval(beat); fs.rmSync(dir, {recursive: true, force: true}); }};
+        // release only what is still ours: a lock that went stale and was taken by someone else is left alone
+        return {dir, token, release() { clearInterval(beat); try { if (fs.readFileSync(path.join(dir, 'owner'), 'utf8') === token) fs.rmSync(dir, {recursive: true, force: true}); } catch { /* already gone */ } }};
       } catch (e) {
         if (e.code !== 'EEXIST') throw e;
         try { if (Date.now() - fs.statSync(dir).mtimeMs > 20 * 60e3) fs.rmSync(dir, {recursive: true, force: true}); } catch { /* raced */ }
@@ -36,6 +38,10 @@ export async function acquireSlot({lockDir, slots, log = () => {}, pollMs = 5000
 }
 
 // ---- result store ---------------------------------------------------------------------------------------------------
+// A stored result is valid for one (render inputs of the item, environment) pair: the environment fingerprint is part of the key.
+export const resultKey = (snap, item, envKey) => sha256(`${snap.itemKey(item)}|env:${envKey}`);
+// A cached failure of the machine's (a timeout) is never reused.
+export const reusable = r => !!r && !(r.status === 'FAILED' && isTransientFailure(r));
 export const storeDir = (root, itemKey) => path.join(root, itemKey.slice(0, 2), itemKey);
 export function loadResult(root, itemKey) {
   const dir = storeDir(root, itemKey);
@@ -53,7 +59,7 @@ function saveResult(root, itemKey, record, svg) {
 }
 
 // Read what render-plan wrote for one item.
-function harvest(outDir, name) {
+export function harvest(outDir, name) {
   const file = path.join(outDir, `${name}-result.json`);
   if (!fs.existsSync(file)) return null;
   const r = readJson(file);
@@ -120,7 +126,8 @@ export function childEnv({cacheRoot, depsDir}) {
 }
 
 // Render `itemDirs` of a snapshot. Returns {results: Map(dir -> record), stats}.
-export async function renderItems({snap, itemDirs, resultsRoot, noCache = false, slots = 1, lockDir, chunkSize = 10, retries = 2, log = () => {}, cacheRoot, depsDir, idleMs = 20 * 60e3, totalMs = 150 * 60e3, label = 'render'}) {
+export async function renderItems({snap, itemDirs, envKey, resultsRoot, noCache = false, slots = 1, lockDir, chunkSize = 10, retries = 2, log = () => {}, cacheRoot, depsDir, idleMs = 20 * 60e3, totalMs = 150 * 60e3, label = 'render'}) {
+  if (!envKey) throw new Error('renderItems needs the environment fingerprint (envKey): a stored result is only valid for the environment that made it');
   const byDir = new Map(snap.items.map(i => [i.dir, i]));
   const results = new Map();
   const stats = {cached: 0, rendered: 0, retried: 0, wallMs: 0, itemMs: {}, chunks: 0, timedOutChunks: 0};
@@ -128,19 +135,20 @@ export async function renderItems({snap, itemDirs, resultsRoot, noCache = false,
   const todo = [];
   for (const d of itemDirs) {
     const it = byDir.get(d);
+    if (!it) { results.set(d, {item: d, status: 'NOT_RUN', code: 'ITEM_NOT_IN_SNAPSHOT', detail: 'the golden item is not in this side of the comparison'}); continue; }
     const lacking = snap.blocked?.[d];
     if (lacking?.length) { results.set(d, {item: d, status: 'NOT_RUN', code: 'SNAPSHOT_LACKS_ASSET', detail: `the repo has ${lacking.length} file(s) this exam needs that the snapshot lacks, e.g. ${lacking[0]}`}); continue; }
-    const key = snap.itemKey(it);
+    const key = resultKey(snap, it, envKey);
     const hit = noCache ? null : loadResult(resultsRoot, key);
-    if (hit && !(hit.status === 'FAILED' && isTransientFailure(hit))) { results.set(d, {...hit, fromCache: true}); stats.cached++; if (hit.durationMs) stats.itemMs[d] = hit.durationMs; }
+    if (reusable(hit)) { results.set(d, {...hit, fromCache: true}); stats.cached++; if (hit.durationMs) stats.itemMs[d] = hit.durationMs; }
     else todo.push(it);
   }
   const env = childEnv({cacheRoot, depsDir});
   const workRoot = mkdirp(path.join(cacheRoot, 'work', `${snap.id}-${Date.now().toString(36)}-${process.pid}`));
   const store = (it, rec, svg, ms) => {
     rec.durationMs = ms ?? null; if (ms) stats.itemMs[it.dir] = ms;
-    saveResult(resultsRoot, snap.itemKey(it), rec, svg);
-    results.set(it.dir, {...rec, svgPath: svg ? path.join(storeDir(resultsRoot, snap.itemKey(it)), 'solution.svg') : undefined, fromCache: false});
+    saveResult(resultsRoot, resultKey(snap, it, envKey), rec, svg);
+    results.set(it.dir, {...rec, svgPath: svg ? path.join(storeDir(resultsRoot, resultKey(snap, it, envKey)), 'solution.svg') : undefined, fromCache: false});
     stats.rendered++;
   };
   const runList = async (list, tagBase, concurrency) => {

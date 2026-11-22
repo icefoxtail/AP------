@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {git, gitText, nulList, sha256, mkdirp, readJson, posix, walkFiles} from './util.mjs';
-import {GE, classifyFile} from './kinds.mjs';
+import {GE, classifyFile, KINDS_VERSION} from './kinds.mjs';
 import {buildCodeGraph} from './code-graph.mjs';
 
 // What the render reads besides the engine: the pipeline core, the vendored Archive page the figure is measured in, fonts, dependencies' code.
@@ -33,14 +33,24 @@ export function resolveTarget(repo, ref) {
   return {type: 'commit', sha, label: `${ref} (${sha.slice(0, 10)})`};
 }
 
-const unpack = (repo, specs, dir, target) => {
-  if (target.type === 'commit') {
-    const tar = path.join(dir, '..', `.unpack-${process.pid}-${Date.now()}.tar`);
-    git(repo, ['archive', '--format=tar', '-o', tar, target.sha, '--', ...specs]);
+// git archive of some specs into dir. A plain path the commit does not have (an older base) is skipped instead of failing the whole archive.
+const archiveInto = (repo, sha, specs, dir) => {
+  const tar = path.join(dir, '..', `.unpack-${process.pid}-${Date.now()}-${Math.random().toString(36).slice(2, 6)}.tar`);
+  try {
+    git(repo, ['archive', '--format=tar', '-o', tar, sha, '--', ...specs]);
     // relative names: GNU tar reads 'D:' in an absolute path as a remote host
     const r = spawnSync('tar', ['-xf', path.basename(tar), '-C', path.basename(dir)], {cwd: path.dirname(tar), windowsHide: true});
-    fs.rmSync(tar, {force: true});
     if (r.status !== 0) throw new Error('tar failed: ' + String(r.stderr).slice(0, 300));
+  } finally { fs.rmSync(tar, {force: true}); }
+};
+const unpack = (repo, specs, dir, target) => {
+  if (target.type === 'commit') {
+    const present = specs.filter(s => s.startsWith(':') || git(repo, ['cat-file', '-e', `${target.sha}:${s}`], {allowFail: true}) !== null);
+    if (!present.length) return;
+    try { archiveInto(repo, target.sha, present, dir); } catch (e) {
+      // a magic spec that matches nothing makes git refuse the whole batch: take the specs one by one
+      for (const s of present) { try { archiveInto(repo, target.sha, [s], dir); } catch (inner) { if (!/did not match/.test(String(inner.message))) throw inner; } }
+    }
     return;
   }
   const files = nulList(git(repo, ['ls-files', '-z', '-c', '-o', '--exclude-standard', '--', ...specs]));
@@ -132,42 +142,45 @@ export function pruneSnapshots(cacheRoot, now = Date.now()) {
 const junction = (target, link) => {
   mkdirp(path.dirname(link));
   if (fs.existsSync(link)) return;
-  fs.symlinkSync(target, link, process.platform === 'win32' ? 'junction' : 'dir');
+  try { fs.symlinkSync(target, link, process.platform === 'win32' ? 'junction' : 'dir'); } catch (e) { if (e.code !== 'EEXIST') throw e; } // another process may have made it
+};
+
+// Builds the snapshot in a folder of its own (name with this process and a random part) and renames it into place only when complete:
+// another process that is still building never has its folder removed, and a finished snapshot is never half written.
+function buildInto(repo, target, dir, log) {
+  mkdirp(dir);
+  log(`unpacking ${target.label} -> ${dir}`);
+  unpack(repo, SNAPSHOT_SPECS, dir, target);
+  const manifest = readJson(path.join(dir, MANIFEST));
+  const sources = examFiles(manifest);
+  for (let i = 0; i < sources.length; i += 25) unpack(repo, sources.slice(i, i + 25).map(literal), dir, target);
+  const expected = expectedAssets({repo, target, dir, manifest});
+  for (let i = 0; i < expected.files.length; i += 60) unpack(repo, expected.files.slice(i, i + 60).map(literal), dir, target);
+  fs.writeFileSync(path.join(dir, '.snapshot-assets.json'), JSON.stringify({rule: ASSET_RULE, bySource: expected.bySource}));
+  fs.writeFileSync(path.join(dir, '.snapshot-complete'), new Date().toISOString());
+}
+const moveIntoPlace = (tmp, finalDir) => {
+  if (fs.existsSync(path.join(finalDir, '.snapshot-complete'))) { removeSnapshot(tmp); return; } // someone else finished first
+  try { fs.renameSync(tmp, finalDir); } catch (e) {
+    if (fs.existsSync(path.join(finalDir, '.snapshot-complete'))) removeSnapshot(tmp); else throw e;
+  }
 };
 
 // Returns {dir, id, target, manifest, items, plans, commonKey, itemKey(item), reachable}.
 export function ensureSnapshot({repo, target, cacheRoot, depsDir, log = () => {}}) {
   const snapRoot = mkdirp(path.join(cacheRoot, 'snapshots'));
-  let dir, id;
+  const tmp = path.join(snapRoot, `${target.type === 'commit' ? 'c' : 'w'}-tmp-${process.pid}-${Math.random().toString(36).slice(2, 8)}.part`);
+  let id, finalDir;
   if (target.type === 'commit') {
     id = `c-${target.sha.slice(0, 12)}-${SPEC_ID}`;
-    dir = path.join(snapRoot, id);
-  } else {
-    id = `w-${Date.now().toString(36)}`;
-    dir = path.join(snapRoot, id + '.part');
-  }
-  const done = path.join(dir, '.snapshot-complete');
-  if (!fs.existsSync(done)) {
-    removeSnapshot(dir);
-    mkdirp(dir);
-    log(`unpacking ${target.label} -> ${dir}`);
-    unpack(repo, SNAPSHOT_SPECS, dir, target);
-    const manifest = readJson(path.join(dir, MANIFEST));
-    const sources = examFiles(manifest);
-    for (let i = 0; i < sources.length; i += 25) unpack(repo, sources.slice(i, i + 25).map(literal), dir, target);
-    const expected = expectedAssets({repo, target, dir, manifest});
-    for (let i = 0; i < expected.files.length; i += 60) unpack(repo, expected.files.slice(i, i + 60).map(literal), dir, target);
-    fs.writeFileSync(path.join(dir, '.snapshot-assets.json'), JSON.stringify({rule: ASSET_RULE, bySource: expected.bySource}));
-    fs.writeFileSync(done, new Date().toISOString());
-  }
-  let finalDir = dir;
-  if (target.type === 'worktree') {
-    // working-tree snapshots are named by content so an unchanged tree is a cache hit
-    const manifestHash = contentHash(dir);
-    id = `w-${manifestHash.slice(0, 12)}`;
     finalDir = path.join(snapRoot, id);
-    if (fs.existsSync(path.join(finalDir, '.snapshot-complete'))) removeSnapshot(dir);
-    else { removeSnapshot(finalDir); fs.renameSync(dir, finalDir); }
+    if (!fs.existsSync(path.join(finalDir, '.snapshot-complete'))) { try { buildInto(repo, target, tmp, log); } catch (e) { removeSnapshot(tmp); throw e; } moveIntoPlace(tmp, finalDir); }
+  } else {
+    try { buildInto(repo, target, tmp, log); } catch (e) { removeSnapshot(tmp); throw e; }
+    // working-tree snapshots are named by content so an unchanged tree is a cache hit
+    id = `w-${contentHash(tmp).slice(0, 12)}-${SPEC_ID}`;
+    finalDir = path.join(snapRoot, id);
+    moveIntoPlace(tmp, finalDir);
   }
   junction(depsDir, path.join(finalDir, '.tmp/apmath-visual-engine/dependencies'));
   try { const now = new Date(); fs.utimesSync(path.join(finalDir, '.snapshot-complete'), now, now); } catch { /* marks use */ }
@@ -193,6 +206,7 @@ export function describeSnapshot(dir, id, target) {
   const reachable = graph.nodes;
   let keys = null;
   try { keys = readJson(keyFile); } catch { /* computed below */ }
+  if (keys && keys.kindsVersion !== KINDS_VERSION) keys = null; // made under another kind table: not reused
   const files = walkFiles(dir, {skip: rel => rel.startsWith('.tmp/') || rel.startsWith('.snapshot')});
   const classified = files.map(f => [f, classifyFile(f, {renderReachable: reachable, items})]);
   if (!keys) {
@@ -206,11 +220,15 @@ export function describeSnapshot(dir, id, target) {
       const list = (itemFiles[it.dir] ??= []);
       if (!list.includes(line)) list.push(line);
     }
-    keys = {commonKey: sha256(common.join('\n')), commonFiles: common.length, itemFiles: Object.fromEntries(Object.entries(itemFiles).map(([k, v]) => [k, sha256(v.sort().join('\n'))]))};
-    fs.writeFileSync(keyFile, JSON.stringify(keys));
+    keys = {kindsVersion: KINDS_VERSION, commonKey: sha256([KINDS_VERSION, ...common].join('\n')), commonFiles: common.length, itemFiles: Object.fromEntries(Object.entries(itemFiles).map(([k, v]) => [k, sha256(v.sort().join('\n'))]))};
+    const tmpKeys = `${keyFile}.${process.pid}.tmp`;
+    fs.writeFileSync(tmpKeys, JSON.stringify(keys));
+    fs.renameSync(tmpKeys, keyFile);
   }
-  const itemKey = item => sha256([keys.commonKey, item.dir, item.sourcePath, String(item.ordinal), keys.itemFiles[item.dir] ?? '', ASSET_RULE, `result-format-${RESULT_FORMAT}`].join('\n'));
-  return {dir, id, target, manifest, items, plans, blocked, assets, commonKey: keys.commonKey, commonFiles: keys.commonFiles, itemKey, reachable, graph, fileList: files};
+  // What belongs to the item itself: its plan, its exam source and every asset the exam names (any folder), without the shared engine.
+  const itemOwnKey = item => sha256([item.dir, item.sourcePath, String(item.ordinal), keys.itemFiles[item.dir] ?? '', ASSET_RULE, `result-format-${RESULT_FORMAT}`].join('\n'));
+  const itemKey = item => sha256([keys.commonKey, itemOwnKey(item)].join('\n'));
+  return {dir, id, target, manifest, items, plans, blocked, assets, commonKey: keys.commonKey, commonFiles: keys.commonFiles, itemKey, itemOwnKey, reachable, graph, fileList: files};
 }
 
 // Paths changed between two targets (repo relative, posix). Either side may be the working tree.

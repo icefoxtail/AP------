@@ -125,12 +125,14 @@ export const normalizeTestName = n => n.split('\\').join('/').replace(/\/{2,}/g,
 export function compareTests(base, head, files) {
   const flat = res => { const m = new Map(); for (const f of files) for (const [n, s] of Object.entries(res[f]?.names ?? {})) m.set(`${f.replace(`${GE}/`, '')} :: ${normalizeTestName(n)}`, s); return m; };
   const b = flat(base), h = flat(head);
-  const out = {newFailures: [], existingFailures: [], fixed: [], removed: [], counts: {base: {}, head: {}}};
+  // lost: passed on base, skipped or gone on head. A test that stops running is a test that stops protecting: it fails like a new failure.
+  const out = {newFailures: [], existingFailures: [], fixed: [], removed: [], lost: [], counts: {base: {}, head: {}}};
   for (const [k, s] of h) {
     out.counts.head[s] = (out.counts.head[s] ?? 0) + 1;
     if (s === 'fail') (b.get(k) === 'fail' ? out.existingFailures : out.newFailures).push(k);
     else if (b.get(k) === 'fail') out.fixed.push(k);
+    else if (s === 'skip' && b.get(k) === 'pass') out.lost.push(`${k} (pass on base, skipped on head)`);
   }
-  for (const [k, s] of b) { out.counts.base[s] = (out.counts.base[s] ?? 0) + 1; if (!h.has(k)) { out.removed.push(k); } }
+  for (const [k, s] of b) { out.counts.base[s] = (out.counts.base[s] ?? 0) + 1; if (!h.has(k)) { out.removed.push(k); if (s === 'pass') out.lost.push(`${k} (pass on base, missing on head)`); } }
   return out;
 }

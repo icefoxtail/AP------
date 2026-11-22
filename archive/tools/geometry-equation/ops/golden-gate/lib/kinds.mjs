@@ -195,3 +195,28 @@ export function selectItems({items, plans, all = false, kinds = new Set(), itemD
   }
   return items.map(i => i.dir).filter(d => chosen.has(d));
 }
+
+// ---- table version and the soundness rule ---------------------------------------------------------------------------------
+import crypto from 'node:crypto';
+// Changes whenever the table changes: stored keys made under another table are not reused.
+export const KINDS_VERSION = crypto.createHash('sha256').update(JSON.stringify({
+  CAPABILITY_KIND, KIND_FILES, SHARED: [...SHARED_FILES].sort(), SHARED_PREFIXES, SHARED_EXACT: [...SHARED_EXACT].sort(), NON_RENDER: [...NON_RENDER_FILES].sort(),
+  DISPATCHERS: [...DISPATCHERS].sort(), IMPORT_EXCEPTIONS, ALIASES: KIND_ALIASES
+})).digest('hex').slice(0, 12);
+
+// A kind file may only be used by its own kind, the dispatchers (a python dispatcher only through a lazy import), or a listed exception.
+// graph: a code graph (importers map file -> [{from, lazy}]). Returns the list of problems (empty = sound).
+export function kindTableProblems({graph, kindFiles = KIND_FILES, dispatchers = DISPATCHERS, exceptions = IMPORT_EXCEPTIONS}) {
+  const problems = [];
+  for (const [file, kinds] of Object.entries(kindFiles)) {
+    for (const {from, lazy} of graph.importers.get(file) ?? []) {
+      if (dispatchers.has(from)) { if (from.endsWith('.py') && !lazy) problems.push(`${file} is imported at the top of ${from}, so every request kind loads it`); continue; }
+      if ((exceptions[file] ?? []).includes(from)) continue;
+      const importerKinds = kindFiles[from];
+      if (importerKinds && importerKinds.every(k => kinds.includes(k))) continue; // the importer only runs for kinds this file already selects
+      if (importerKinds && from.endsWith('composite-candidate-svg-v1.mjs')) continue; // the panel dispatcher: panels are selected through planKinds() of the composite plan
+      problems.push(`${file} (kinds ${kinds.join('+')}) is imported by ${from}${importerKinds ? ` (kinds ${importerKinds.join('+')})` : ' (shared or unlisted)'}; list it as ALL, or add an IMPORT_EXCEPTION with the reason`);
+    }
+  }
+  return problems;
+}
