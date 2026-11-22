@@ -7,9 +7,11 @@ import path from 'node:path';
 import {sha256, mkdirp, readJson, writeJson, run, sleep} from './util.mjs';
 import {GE} from './kinds.mjs';
 import {resolveChrome} from './env-fingerprint.mjs';
+import {ENV_ERROR, statusChainOf} from './judge.mjs';
 
-const INFRA = /WORKER_TIMEOUT|WORKER_EXIT|WORKER_CANCELLED|Timeout \d+ms|timeout .*exceeded|ETIMEDOUT|ECONNRESET|Target (page|context|browser).*closed|browser has been closed|ENOMEM|EMFILE|spawn .* (EPERM|EAGAIN)/i;
-export const isInfraFailure = r => r.status === 'FAILED' && INFRA.test(`${r.code ?? ''} ${r.detailFull ?? r.detail ?? ''}`);
+// What a solo retry can cure: the machine's timeouts and crashed processes. Load errors of the page or an image are not retried (they repeat).
+const TRANSIENT = /WORKER_TIMEOUT|WORKER_EXIT|WORKER_CANCELLED|Timeout \d+ms|timeout .*exceeded|ETIMEDOUT|ECONNRESET|Target (page|context|browser).*closed|browser has been closed|ENOMEM|EMFILE/i;
+export const isTransientFailure = r => r.status === 'FAILED' && TRANSIENT.test(`${r.code ?? ''} ${r.detailFull ?? r.detail ?? ''}`);
 
 // ---- slot lock ------------------------------------------------------------------------------------------------------
 export async function acquireSlot({lockDir, slots, log = () => {}, pollMs = 5000}) {
@@ -60,11 +62,13 @@ function harvest(outDir, name) {
   const rec = {
     item: name, status: r.status, stage: r.stage ?? null, code: r.code ?? null,
     detail: typeof r.detail === 'string' ? r.detail.slice(0, 300) : JSON.stringify(r.detail ?? null).slice(0, 300),
-    detailFull: r.status === 'FAILED' ? String(r.detailFull ?? '').slice(0, 2000) : undefined,
+    detailFull: r.status === 'FAILED' ? String(r.detailFull ?? '').slice(0, 6000) : undefined,
+    statusChain: r.status === 'FAILED' ? statusChainOf(r.detailFull ?? r.detail) : undefined,
+    envError: r.status === 'FAILED' ? (`${r.code ?? ''} ${r.detailFull ?? ''} ${typeof r.detail === 'string' ? r.detail : ''}`.match(ENV_ERROR)?.[0] ?? null) : undefined,
     sizeClass: r.sizeClass ?? null, solutionImageScale: r.solutionImageScale ?? null,
     capability: r.capability ?? null, svgSha: svg ? sha256(svg) : null, svgBytes: svg ? svg.length : 0
   };
-  if (r.status === 'ARCHIVE_BOUND' && !svg) { rec.status = 'FAILED'; rec.code = 'SVG_MISSING'; rec.detail = 'result says ARCHIVE_BOUND but no svg was written'; }
+  if (r.status === 'ARCHIVE_BOUND' && !svg) { rec.status = 'FAILED'; rec.code = 'SVG_MISSING'; rec.envError = 'SVG_MISSING'; rec.detail = 'result says ARCHIVE_BOUND but no svg was written'; }
   return {rec, svg};
 }
 
@@ -124,9 +128,11 @@ export async function renderItems({snap, itemDirs, resultsRoot, noCache = false,
   const todo = [];
   for (const d of itemDirs) {
     const it = byDir.get(d);
+    const lacking = snap.blocked?.[d];
+    if (lacking?.length) { results.set(d, {item: d, status: 'NOT_RUN', code: 'SNAPSHOT_LACKS_ASSET', detail: `the repo has ${lacking.length} file(s) this exam needs that the snapshot lacks, e.g. ${lacking[0]}`}); continue; }
     const key = snap.itemKey(it);
     const hit = noCache ? null : loadResult(resultsRoot, key);
-    if (hit && !(hit.status === 'FAILED' && isInfraFailure(hit))) { results.set(d, {...hit, fromCache: true}); stats.cached++; if (hit.durationMs) stats.itemMs[d] = hit.durationMs; }
+    if (hit && !(hit.status === 'FAILED' && isTransientFailure(hit))) { results.set(d, {...hit, fromCache: true}); stats.cached++; if (hit.durationMs) stats.itemMs[d] = hit.durationMs; }
     else todo.push(it);
   }
   const env = childEnv({cacheRoot, depsDir});
@@ -162,7 +168,7 @@ export async function renderItems({snap, itemDirs, resultsRoot, noCache = false,
     await runList(todo, 'c', slots);
     // items that did not finish, or whose failure is the machine's (timeouts under load): again one at a time
     for (let attempt = 1; attempt <= retries; attempt++) {
-      const again = todo.filter(it => !results.has(it.dir) || (results.get(it.dir).status === 'FAILED' && isInfraFailure(results.get(it.dir))));
+      const again = todo.filter(it => !results.has(it.dir) || (results.get(it.dir).status === 'FAILED' && isTransientFailure(results.get(it.dir))));
       if (!again.length) break;
       log(`${label}: retrying ${again.length} item(s) alone (attempt ${attempt}): ${again.map(i => i.dir).join(' ')}`);
       for (const it of again) { stats.retried++; results.delete(it.dir); await runList([it], `r${attempt}-${it.dir}-`, 1); const r = results.get(it.dir); if (r) r.retried = attempt; }

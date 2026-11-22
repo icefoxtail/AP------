@@ -17,8 +17,13 @@ export const SNAPSHOT_SPECS = [
   'archive/data/svg-accessibility-index.js', 'archive/data/master_tables/js_archive_tag_master.json',
   'apmath/css/student-navigation.css', 'apmath/js/student-navigation.js'
 ];
-// a snapshot made with other specs is another snapshot
-const SPEC_ID = sha256(JSON.stringify(SNAPSHOT_SPECS)).slice(0, 6);
+// Which of an exam's files the snapshot carries: every file of its asset folder whatever the extension (question images are PNG/JPG, solutions SVG),
+// plus every image path the exam JS names that exists in the repo (any folder). The snapshot must lack nothing the repo has: see missingAssets().
+export const ASSET_RULE = 'exam asset folder (any extension) + image paths named in the exam JS';
+// Bump when what a stored result record holds changes: old records are then not reused.
+export const RESULT_FORMAT = 2;
+// a snapshot made with other specs or asset rules is another snapshot
+const SPEC_ID = sha256(JSON.stringify([SNAPSHOT_SPECS, ASSET_RULE])).slice(0, 6);
 export const MANIFEST = `${GE}/ops/golden.manifest.json`;
 export const RENDER_PLAN = `${GE}/production/render-plan.mjs`;
 
@@ -48,10 +53,61 @@ const unpack = (repo, specs, dir, target) => {
   }
 };
 
-function examSpecs(manifest) {
-  const files = [...new Set(manifest.items.map(i => i.sourcePath))];
-  const uids = [...new Set(files.map(f => path.posix.basename(f, '.js')))];
-  return [...files, ...uids.map(u => `:(glob)archive/assets/images/${u}/**/*.svg`)];
+const examFiles = manifest => [...new Set(manifest.items.map(i => i.sourcePath))];
+const uidOf = sourcePath => path.posix.basename(sourcePath, '.js');
+const literal = p => `:(literal)${p}`;
+
+// Files of the target (commit or working tree) under the given literal paths (directories or files), repo relative.
+export function repoFilesUnder(repo, target, paths) {
+  const out = [];
+  for (let i = 0; i < paths.length; i += 40) {
+    const specs = paths.slice(i, i + 40).map(literal);
+    if (target.type === 'commit') out.push(...nulList(git(repo, ['ls-tree', '-r', '-z', '--name-only', target.sha, '--', ...specs])));
+    else for (const f of nulList(git(repo, ['ls-files', '-z', '-c', '-o', '--exclude-standard', '--', ...specs]))) if (fs.existsSync(path.join(repo, f))) out.push(f);
+  }
+  return [...new Set(out.map(posix))];
+}
+
+// Image paths an exam JS names. A bare file name belongs to the exam's own asset folder (already carried whole); a path with a folder is looked up
+// as written, under archive/, under archive/assets/ and under archive/assets/images/.
+export function extractImageRefs(text) {
+  const refs = new Set();
+  for (const m of text.matchAll(/["'`]([^"'`\s\\]+\.(?:png|jpe?g|gif|webp|svg|bmp|avif))["'`]/gi)) refs.add(m[1]);
+  return [...refs];
+}
+export function refCandidates(ref) {
+  const r = ref.replace(/^\.?\//, '');
+  if (!r.includes('/')) return [];
+  return r.startsWith('archive/') ? [r] : [`archive/${r}`, `archive/assets/${r}`, `archive/assets/images/${r}`];
+}
+
+// Everything the repo holds for each golden exam: {item: [repo paths]}. The unpacked exam JS files must already be in `dir`.
+export function expectedAssets({repo, target, dir, manifest}) {
+  const sources = examFiles(manifest);
+  const uidFiles = repoFilesUnder(repo, target, sources.map(s => `archive/assets/images/${uidOf(s)}`));
+  const refsBySource = new Map(), allCandidates = new Set();
+  for (const s of sources) {
+    const cands = new Set();
+    for (const ref of extractImageRefs(fs.readFileSync(path.join(dir, s), 'utf8'))) for (const c of refCandidates(ref)) cands.add(c);
+    refsBySource.set(s, [...cands]); for (const c of cands) allCandidates.add(c);
+  }
+  const existing = new Set(repoFilesUnder(repo, target, [...allCandidates]));
+  const bySource = {};
+  for (const s of sources) {
+    const prefix = `archive/assets/images/${uidOf(s)}/`;
+    bySource[s] = [...new Set([...uidFiles.filter(f => f.startsWith(prefix)), ...refsBySource.get(s).filter(c => existing.has(c))])].sort();
+  }
+  return {bySource, files: [...new Set(Object.values(bySource).flat())].sort()};
+}
+
+// Expected files the snapshot does not hold. For a snapshot of a correct unpack this is empty; a folder that lost a file reports it here.
+export function missingAssets(dir, expectedBySource, items) {
+  const blocked = {};
+  for (const it of items) {
+    const lacking = (expectedBySource[it.sourcePath] ?? []).filter(p => !fs.existsSync(path.join(dir, p)));
+    if (lacking.length) blocked[it.dir] = lacking;
+  }
+  return blocked;
 }
 
 // Remove a snapshot folder without ever following the dependency junction into the shared dependencies.
@@ -97,8 +153,11 @@ export function ensureSnapshot({repo, target, cacheRoot, depsDir, log = () => {}
     log(`unpacking ${target.label} -> ${dir}`);
     unpack(repo, SNAPSHOT_SPECS, dir, target);
     const manifest = readJson(path.join(dir, MANIFEST));
-    const specs = examSpecs(manifest);
-    for (let i = 0; i < specs.length; i += 25) unpack(repo, specs.slice(i, i + 25), dir, target);
+    const sources = examFiles(manifest);
+    for (let i = 0; i < sources.length; i += 25) unpack(repo, sources.slice(i, i + 25).map(literal), dir, target);
+    const expected = expectedAssets({repo, target, dir, manifest});
+    for (let i = 0; i < expected.files.length; i += 60) unpack(repo, expected.files.slice(i, i + 60).map(literal), dir, target);
+    fs.writeFileSync(path.join(dir, '.snapshot-assets.json'), JSON.stringify({rule: ASSET_RULE, bySource: expected.bySource}));
     fs.writeFileSync(done, new Date().toISOString());
   }
   let finalDir = dir;
@@ -126,6 +185,9 @@ export function describeSnapshot(dir, id, target) {
   const items = manifest.items;
   const plans = {};
   for (const i of items) plans[i.dir] = readJson(path.join(dir, GE, 'ops/golden', i.dir, 'plan.json'));
+  let assets = {bySource: {}};
+  try { assets = readJson(path.join(dir, '.snapshot-assets.json')); } catch { /* a fixture without the list */ }
+  const blocked = missingAssets(dir, assets.bySource, items);
   const keyFile = path.join(dir, '.snapshot-keys.json');
   const graph = buildCodeGraph(dir, [RENDER_PLAN]);
   const reachable = graph.nodes;
@@ -137,11 +199,18 @@ export function describeSnapshot(dir, id, target) {
     const common = classified.filter(([, c]) => c.effect === 'ALL' || c.effect === 'KINDS').map(([f]) => f + '\0' + sha256(fs.readFileSync(path.join(dir, f))));
     const itemFiles = {};
     for (const [f, c] of classified) if (c.effect === 'ITEM') for (const it of c.items) (itemFiles[it] ??= []).push(f + '\0' + sha256(fs.readFileSync(path.join(dir, f))));
+    // every asset the exam needs counts for the keys of its items, whatever the extension or folder
+    for (const it of items) for (const p of assets.bySource[it.sourcePath] ?? []) {
+      if (!fs.existsSync(path.join(dir, p))) continue;
+      const line = p + String.fromCharCode(0) + sha256(fs.readFileSync(path.join(dir, p)));
+      const list = (itemFiles[it.dir] ??= []);
+      if (!list.includes(line)) list.push(line);
+    }
     keys = {commonKey: sha256(common.join('\n')), commonFiles: common.length, itemFiles: Object.fromEntries(Object.entries(itemFiles).map(([k, v]) => [k, sha256(v.sort().join('\n'))]))};
     fs.writeFileSync(keyFile, JSON.stringify(keys));
   }
-  const itemKey = item => sha256([keys.commonKey, item.dir, item.sourcePath, String(item.ordinal), keys.itemFiles[item.dir] ?? ''].join('\n'));
-  return {dir, id, target, manifest, items, plans, commonKey: keys.commonKey, commonFiles: keys.commonFiles, itemKey, reachable, graph, fileList: files};
+  const itemKey = item => sha256([keys.commonKey, item.dir, item.sourcePath, String(item.ordinal), keys.itemFiles[item.dir] ?? '', ASSET_RULE, `result-format-${RESULT_FORMAT}`].join('\n'));
+  return {dir, id, target, manifest, items, plans, blocked, assets, commonKey: keys.commonKey, commonFiles: keys.commonFiles, itemKey, reachable, graph, fileList: files};
 }
 
 // Paths changed between two targets (repo relative, posix). Either side may be the working tree.

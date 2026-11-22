@@ -16,7 +16,8 @@ node .../golden-gate.mjs --base <ref> --head <ref|@worktree> --families auto|all
 - `--tests [auto|all]`: 엔진의 node(`*.test.mjs`)·python(`tests/test_*.py`, unittest) 테스트를 base와 head에서 돌려 **head에서만 실패한 이름**을 실패로 센다. 양쪽 모두 실패한 것은 "existing failure"로 그대로 출력한다(건너뛰기·격리 없음; 스냅샷에 없는 저장소 파일이 필요한 테스트는 양쪽에서 같이 실패해 이 목록에 보인다). `auto`는 import 닫힘이 바뀐 파일에 닿거나(render-plan을 거치는 길은 따라가지 않음) 바뀐 종류의 capability·모듈 이름이 본문에 나오는 테스트만, 공용 파일이 바뀌면 전부.
 - `--repeat-check`: head를 두 번(순서를 뒤집고 묶음 크기를 바꿔) 렌더해 흔들림을 확인한다.
 - `--no-cache`: 캐시를 읽지 않고 양쪽을 새로 렌더(base=head여도 두 번 따로 렌더해 비교).
-- 종료 코드: 0 통과, 1 실패, 2 못 돌림(인자·의존성 없음).
+- 종료 코드: 0 통과, 1 실패, 2 **보증 못 함**(바이트를 하나도 못 비교함, 바뀐 종류에 비교된 항목이 0개(NOT_COVERED), 인자·의존성 없음).
+- 출력 첫 줄은 `byte compared N / selected M`이다. 선택한 M개 중 양쪽이 SVG를 내서 바이트를 비교한 것이 N개다. N이 0이면 통과가 아니다(전부 같은 실패로 끝난 날 초록이 되지 않게). 실패를 허용하는 목록 파일은 없다.
 
 ## 판정
 
@@ -25,15 +26,15 @@ node .../golden-gate.mjs --base <ref> --head <ref|@worktree> --families auto|all
 | SAME | SVG 바이트(와 sizeClass, solutionImageScale)가 같다 | 통과 |
 | DIFFERENT | 바이트·크기값이 바뀜, 또는 실패 코드가 바뀜 | **실패** |
 | REGRESSED | base는 그려졌는데 head는 실패(거절) | **실패** |
-| NOT_RUN | 실행 못 함(프로세스 죽음·시간 초과가 단독 재실행 2번 뒤에도 남음) | **실패** |
+| NOT_RUN | 실행 못 함 또는 믿을 수 없음: 프로세스 죽음, 시간 초과(단독 재실행 2번 뒤에도), **환경 오류**(문제 그림·페이지·모듈 로드 실패 `QUESTION_IMAGE_LOAD_FAILED`·`PAGE_RENDER_ERROR`·`ENOENT`, 브라우저 실행 실패 등: 양쪽이 같아도), 스냅샷에 저장소에 있는 자산이 없음, 코드 없는 실패 | **실패** |
 | FIXED | base 실패 -> head 통과 | 목록만 |
-| BOTH_FAIL_SAME | 양쪽이 같은 코드로 실패 | 목록만 |
+| BOTH_FAIL_SAME | 양쪽이 **같은 실패**(code, stage, 중첩 status까지 같음) | 목록만 |
 
 FIXED와 BOTH_FAIL_SAME도 분모에서 빼지 않고 개수를 그대로 출력한다. 부하 때문에 나는 시간 초과(WORKER_TIMEOUT 등)는 그 항목만 단독으로 다시 돌린다(최대 2번, "solo retries"로 출력). 내용 실패는 다시 돌리지 않는다.
 
 ## 어떻게 돌리나
 
-- worktree를 만들지 않는다. base/head가 읽는 파일(엔진, pipeline-core, 렌더가 측정하는 Archive 페이지, 골든 plan, 대상 시험지·게시된 SVG)만 `git archive`(작업 트리는 복사)로 캐시 폴더의 `snapshots/`에 푼다. 렌더는 그 폴더 안에서 돌고 체크아웃은 건드리지 않는다. 의존성(`.tmp/apmath-visual-engine/dependencies`)은 junction으로 연결한다.
+- worktree를 만들지 않는다. base/head가 읽는 파일(엔진, pipeline-core, 렌더가 측정하는 Archive 페이지, 골든 plan, 대상 시험지와 그 시험지의 **자산 폴더 전부(PNG·JPG·SVG 등 확장자 무관)**, 시험지 JS가 이름으로 부른 다른 폴더의 이미지)만 `git archive`(작업 트리는 복사)로 캐시 폴더의 `snapshots/`에 푼다. 렌더는 그 폴더 안에서 돌고 체크아웃은 건드리지 않는다. 의존성(`.tmp/apmath-visual-engine/dependencies`)은 junction으로 연결한다.
 - 렌더는 production 실행기 그대로(`render-plan.mjs --manifest`)다. 한 프로세스가 항목 여러 개를 맡아 Chrome·python을 재사용한다. 순서·묶음에 결과가 달라지지 않는지는 `--repeat-check`가 확인한다.
 - 결과 캐시(항목별): 키 = 렌더 입력 파일 해시(엔진·공용 코드·종류 파일) + 그 항목의 plan·시험지 JS·게시된 SVG 해시 + 환경 지문(Chrome 버전, 글꼴 NotoSansKR 해시, Node, Python과 sympy·mpmath 등 패키지, playwright 버전, OS). 하나라도 달라지면 새로 렌더한다. 같은 base로 다시 돌리면 base는 캐시에서 나온다.
 - 환경변수(개인 경로를 코드에 박지 않는다): `GOLDEN_GATE_CACHE`(기본 `<저장소>/.tmp/golden-gate-cache`, C 드라이브 여유가 적으면 D로), `RENDER_LOCK_DIR`(다른 렌더 작업자와 슬롯을 공유할 폴더), `RENDER_SLOTS`(기본 1; `--slots`), `GOLDEN_GATE_DEPS`, `GEOMETRY_BROWSER_EXECUTABLE`, `GEOMETRY_PYTHON`. 자식 프로세스의 TEMP/TMP는 캐시 폴더 안으로 돌린다.
@@ -41,7 +42,7 @@ FIXED와 BOTH_FAIL_SAME도 분모에서 빼지 않고 개수를 그대로 출력
 - 이어 돌기: 항목마다 결과를 저장하므로 중단돼도 끝낸 항목은 캐시에서 나오고 나머지만 돈다. 프로세스가 죽거나 시간이 지나면 끝낸 항목을 거두고 나머지는 단독 재실행한다.
 - 정리: 작업 트리 스냅샷은 하루, 커밋 스냅샷은 2주 안 쓰면 다음 실행 때 지운다. 엔진이 남기는 `.tmp/archive/<runId>`는 한 시간 지난 것을 지운다.
 
-## 걸리는 시간 (2026-11-22 측정, 이 PC, 다른 렌더 작업자 5명이 함께 도는 중, 슬롯 2, 묶음 8개)
+## 걸리는 시간 (2026-11-22 측정, 자산 수정 전 값이라 재측정 예정, 이 PC, 다른 렌더 작업자 5명이 함께 도는 중, 슬롯 2, 묶음 8개)
 
 - 항목 하나는 보통 25~40초(Chrome 측정 단계가 대부분). 한 종류씩 합친 시간(base+head 렌더 시간의 합 ÷ 렌더 수): stat 28초, solid 25초, set 29초, number-line 23초, composite 41초, construction 40초, ellipse 39초, graph 58초, container 10초, lattice 2초(둘 다 일찍 거절), chain 1개가 3분 47초.
 - **209 전체: 한쪽 렌더 172개 + 캐시 37개에 1시간 03분(슬롯 2).** 캐시 없이 209개를 다 렌더하면 약 1시간 15분. head만 새로 돌리면(base가 캐시에 있으면) 그 한쪽 시간이다. 두 쪽을 모두 새로 돌리면 두 배.
@@ -51,7 +52,7 @@ FIXED와 BOTH_FAIL_SAME도 분모에서 빼지 않고 개수를 그대로 출력
 
 ## 못 막는 것 (한계)
 
-- 골든 209개 중 2026-11-22 main에서 **69개는 이미 거절(실패)** 이다(BOTH_FAIL_SAME으로 목록에 나온다: 표시 크기 규칙 이후 안 그려지는 오래된 plan들). 이 항목들은 "같은 코드로 계속 실패"만 확인하고 그림 바이트는 못 본다. 그림이 실제로 나오는 140개와 종류별로 못 덮는 것(container·lattice·logarithmic-affine은 그려지는 골든이 0개, stat이 composite 패널 안에 든 골든 0개 등)은 작업 보고의 "골든이 못 덮는 것"에 있다(새 기능 PR은 예제 plan을 골든에 같이 넣는다). 새 기능을 넣는 PR은 그 기능의 예제 plan을 골든에 같이 넣어야 이후부터 지켜진다.
+- 골든 중 일부는 main에서도 엔진이 거절한다(BOTH_FAIL_SAME). 그 항목은 "같은 실패가 계속된다"만 확인하고 그림 바이트는 못 본다. 개수와 종류별 현황은 작업 보고에 있다(스냅샷에 문제 그림이 빠져 가짜 실패가 났던 것은 고쳤고, 그때 센 69개는 다시 측정해야 한다).
 - 종류 표(`lib/kinds.mjs`)는 "이 파일은 이 종류만 바꾼다"는 판단이다. `golden-gate.test.mjs`가 표에 빠진 파일, 표와 import 관계가 어긋난 파일을 잡는다. 확신이 없으면 표에 넣지 말고 그대로 두면 전체(209)가 돈다.
 - 렌더가 `import` 아닌 방식으로 읽는 데이터 파일은 `lib/snapshot.mjs`의 `SNAPSHOT_SPECS`에 있어야 한다. 빠지면 렌더가 `ENOENT`로 죽어 NOT_RUN으로 보이고, 죽은 이유가 stderr 줄로 출력된다.
 - 같은 PC의 같은 Chrome으로만 비교한다. 다른 PC의 결과와 바이트를 맞추려 하지 않는다.

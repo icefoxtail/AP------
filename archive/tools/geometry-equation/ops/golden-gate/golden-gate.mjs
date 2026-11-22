@@ -11,7 +11,7 @@ import {classifyFile, parseFamilies, selectItems, planKinds, KINDS} from './lib/
 import {resolveTarget, ensureSnapshot, changedFiles, pruneSnapshots} from './lib/snapshot.mjs';
 import {environmentFingerprint} from './lib/env-fingerprint.mjs';
 import {renderItems, pruneSnapshotRuns} from './lib/render.mjs';
-import {compareItem, parseExpected, applyExpected, summarize} from './lib/judge.mjs';
+import {compareItem, parseExpected, applyExpected, summarize, evaluate} from './lib/judge.mjs';
 import {listTests, selectTests, runTests, compareTests} from './lib/tests-run.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -38,6 +38,11 @@ const USAGE = `golden-gate --base <ref> [--head <ref|@worktree>] [--families aut
 kinds: ${KINDS.join(', ')}
 env: GOLDEN_GATE_CACHE (cache folder), RENDER_LOCK_DIR (render slot folder shared with other workers), RENDER_SLOTS, GOLDEN_GATE_DEPS, GEOMETRY_BROWSER_EXECUTABLE, GEOMETRY_PYTHON`;
 
+// stdout is collected and printed at the end, headline first: "byte compared N / selected M" (the number that says what the run vouches for)
+const lines = [];
+let headline = null;
+const say = m => { lines.push(m); };
+const flush = () => { if (headline) console.log(headline); for (const l of lines) console.log(l); lines.length = 0; };
 const log = m => console.error(`[${new Date().toTimeString().slice(0, 8)}] ${m}`);
 
 async function main() {
@@ -95,11 +100,11 @@ async function main() {
   for (const [d, p] of Object.entries(baseSnap.plans)) if (!(d in plans)) plans[d] = p;
   const selected = selectItems({items, plans, all, kinds, itemDirs});
   const noEffect = classes.filter(c => c.effect === 'NONE');
-  console.log(`changed files: ${changed.length} (render-relevant ${classes.filter(c => c.effect !== 'NONE').length}, ignored ${noEffect.length})`);
-  for (const r of reasons.slice(0, 40)) console.log(`  ${r}`);
-  if (reasons.length > 40) console.log(`  ... ${reasons.length - 40} more`);
-  console.log(`golden items selected: ${selected.length} of ${items.length}${all ? ' (whole set)' : kinds.size ? ` (kinds: ${[...kinds].join(', ')})` : ''}`);
-  if (args.list) { console.log(selected.join(' ')); return 0; }
+  say(`changed files: ${changed.length} (render-relevant ${classes.filter(c => c.effect !== 'NONE').length}, ignored ${noEffect.length})`);
+  for (const r of reasons.slice(0, 40)) say(`  ${r}`);
+  if (reasons.length > 40) say(`  ... ${reasons.length - 40} more`);
+  say(`golden items selected: ${selected.length} of ${items.length}${all ? ' (whole set)' : kinds.size ? ` (kinds: ${[...kinds].join(', ')})` : ''}`);
+  if (args.list) { say(selected.join(' ')); return 0; }
 
   let exit = 0;
   const report = {base: baseT.label, head: headT.label, env: env.key, selected: selected.length, total: items.length};
@@ -111,8 +116,8 @@ async function main() {
     const r2 = await renderItems({snap: headSnap, itemDirs: [...dirs].reverse(), resultsRoot: mkdirp(path.join(cacheRoot, 'repeat', 'b')), noCache: true, slots: args.slots, lockDir, chunkSize: Math.max(1, args.chunk - 3), retries: args.retries, log, cacheRoot, depsDir, label: 'repeat 2 (reversed order, other chunking)'});
     const rows = dirs.map(d => compareItem(d, r1.results.get(d), r2.results.get(d)));
     const bad = rows.filter(r => r.verdict !== 'SAME' && r.verdict !== 'BOTH_FAIL_SAME');
-    console.log(`\nrepeat check on ${headT.label}: ${rows.length} items rendered twice, ${rows.filter(r => r.verdict === 'SAME').length} byte-identical, ${rows.filter(r => r.verdict === 'BOTH_FAIL_SAME').length} failed identically, ${bad.length} unstable`);
-    for (const r of bad) console.log(`  UNSTABLE ${r.item}: ${r.verdict} ${r.reason ?? ''}`);
+    say(`\nrepeat check on ${headT.label}: ${rows.length} items rendered twice, ${rows.filter(r => r.verdict === 'SAME').length} byte-identical, ${rows.filter(r => r.verdict === 'BOTH_FAIL_SAME').length} failed identically, ${bad.length} unstable`);
+    for (const r of bad) say(`  UNSTABLE ${r.item}: ${r.verdict} ${r.reason ?? ''}`);
     report.repeat = {items: rows.length, unstable: bad.map(b => b.item), wallMs: Date.now() - t0};
     if (args.out) writeJson(args.out, report);
     return bad.length ? 1 : 0;
@@ -130,38 +135,44 @@ async function main() {
   const summary = summarize(rows, applied);
   const byKind = k => [...planKinds(plans[k])].sort()[0];
 
-  console.log('');
+  say('');
   const order = ['DIFFERENT', 'REGRESSED', 'NOT_RUN', 'FIXED', 'BOTH_FAIL_SAME'];
-  for (const v of order) for (const r of rows.filter(x => x.verdict === v)) console.log(`${r.accepted ? 'EXPECTED ' : ''}${v.padEnd(14)} ${r.item.padEnd(24)} [${byKind(r.item)}] ${r.reason ?? ''}${r.accepted ? `  <= expected: ${r.accepted}` : ''}`);
-  if (applied.accepted.length) console.log(`\nexpected changes accepted: ${applied.accepted.length}`);
-  for (const e of applied.errors) console.log(`EXPECTED-FILE ERROR: ${e}`);
+  for (const v of order) for (const r of rows.filter(x => x.verdict === v)) say(`${r.accepted ? 'EXPECTED ' : ''}${v.padEnd(14)} ${r.item.padEnd(24)} [${byKind(r.item)}] ${r.reason ?? ''}${r.accepted ? `  <= expected: ${r.accepted}` : ''}`);
+  if (applied.accepted.length) say(`\nexpected changes accepted: ${applied.accepted.length}`);
+  for (const e of applied.errors) say(`EXPECTED-FILE ERROR: ${e}`);
   const c = summary.counts;
-  console.log(`\nitems ${summary.total}: SAME ${c.SAME ?? 0}, DIFFERENT ${c.DIFFERENT ?? 0}, REGRESSED ${c.REGRESSED ?? 0}, NOT_RUN ${c.NOT_RUN ?? 0}; listed only: FIXED ${c.FIXED ?? 0}, BOTH_FAIL_SAME ${c.BOTH_FAIL_SAME ?? 0} (all stay in the denominator)`);
-  if (stats.base) console.log(`rendered base ${stats.base.rendered} (+${stats.base.cached} cached), head ${stats.head.rendered} (+${stats.head.cached} cached), solo retries ${stats.base.retried + stats.head.retried}`);
+  say(`\nitems ${summary.total}: SAME ${c.SAME ?? 0}, DIFFERENT ${c.DIFFERENT ?? 0}, REGRESSED ${c.REGRESSED ?? 0}, NOT_RUN ${c.NOT_RUN ?? 0}; listed only: FIXED ${c.FIXED ?? 0}, BOTH_FAIL_SAME ${c.BOTH_FAIL_SAME ?? 0} (all stay in the denominator)`);
+  if (stats.base) say(`rendered base ${stats.base.rendered} (+${stats.base.cached} cached), head ${stats.head.rendered} (+${stats.head.cached} cached), solo retries ${stats.base.retried + stats.head.retried}`);
   if (stats.base) timingTable(selected, plans, stats);
   report.rows = rows; report.summary = {counts: c, accepted: applied.accepted, expectedErrors: applied.errors}; report.stats = stats;
-  if (!rows.length) console.log('NOTHING RENDERED: no render input of the golden set differs between base and head (use --families all to render anyway).');
+  const cover = evaluate(rows, {kinds, kindOf: d => planKinds(plans[d])});
+  headline = `byte compared ${cover.byteCompared} / selected ${cover.selected}${sameInput && !args.noCache && rows.length ? ' (base and head have identical render inputs: nothing to compare)' : ''}`;
+  report.coverage = cover;
+  if (!rows.length) say('NOTHING RENDERED: no render input of the golden set differs between base and head (use --families all to render anyway).');
+  else if (cover.byteCompared === 0) { say('CANNOT VOUCH: no selected item produced an SVG on both sides, so no bytes were compared (every item failed, was not run, or hit an environment error).'); exit = 2; }
+  else if (cover.notCovered.length) { for (const k of cover.notCovered) say(`NOT_COVERED: kind ${k} changed but no golden item of that kind was compared byte for byte (they all fail or were not run): add an example plan for it.`); exit = 2; }
   else if (!summary.pass) exit = 1;
+  if (cover.wholeUncovered.length) say(`note: no byte comparison for kind(s) ${cover.wholeUncovered.join(', ')} (every golden item of that kind fails or was not run): a change to them is not covered by this run.`);
 
   // ---- engine tests -------------------------------------------------------------------------------------------------
   if (args.tests) {
     const sel = selectTests({snaps: [baseSnap, headSnap], changed, all: args.tests === 'all' || all, kinds});
-    console.log(`\nengine tests: ${sel.tests.length} files (${sel.reason})`);
+    say(`\nengine tests: ${sel.tests.length} files (${sel.reason})`);
     const tBase = await runTests({snap: baseSnap, files: sel.tests, resultsRoot: mkdirp(path.join(cacheRoot, 'test-results')), envKey: env.key, slots: args.slots, lockDir, cacheRoot, depsDir, log, noCache: args.noCache});
     const tHead = sameInput && !args.noCache ? tBase : await runTests({snap: headSnap, files: sel.tests, resultsRoot: path.join(cacheRoot, 'test-results'), envKey: env.key, slots: args.slots, lockDir, cacheRoot, depsDir, log, noCache: args.noCache});
     const cmp = compareTests(tBase, tHead, sel.tests);
-    for (const n of cmp.newFailures) console.log(`NEW TEST FAILURE  ${n}`);
-    console.log(`tests (head): ${Object.entries(cmp.counts.head).map(([k, v]) => `${k} ${v}`).join(', ')}; failing on both sides (existing, printed): ${cmp.existingFailures.length}; fixed ${cmp.fixed.length}; removed ${cmp.removed.length}`);
-    for (const n of cmp.existingFailures) console.log(`  existing failure ${n}`);
-    for (const n of cmp.fixed) console.log(`  fixed ${n}`);
+    for (const n of cmp.newFailures) say(`NEW TEST FAILURE  ${n}`);
+    say(`tests (head): ${Object.entries(cmp.counts.head).map(([k, v]) => `${k} ${v}`).join(', ')}; failing on both sides (existing, printed): ${cmp.existingFailures.length}; fixed ${cmp.fixed.length}; removed ${cmp.removed.length}`);
+    for (const n of cmp.existingFailures) say(`  existing failure ${n}`);
+    for (const n of cmp.fixed) say(`  fixed ${n}`);
     report.tests = {files: sel.tests.length, newFailures: cmp.newFailures, existingFailures: cmp.existingFailures, fixed: cmp.fixed, counts: cmp.counts};
-    if (cmp.newFailures.length) exit = 1;
+    if (cmp.newFailures.length && exit === 0) exit = 1;
   }
 
   report.wallMs = Date.now() - t0; report.pass = exit === 0;
   const reportFile = args.out || path.join(cacheRoot, 'reports', `${new Date().toISOString().replace(/[:.]/g, '-')}.json`);
   writeJson(reportFile, report);
-  console.log(`\n${exit === 0 ? 'GOLDEN GATE PASS' : 'GOLDEN GATE FAIL'} in ${fmtDuration(Date.now() - t0)}; report ${reportFile}`);
+  say(`\n${exit === 0 ? 'GOLDEN GATE PASS' : exit === 2 ? 'GOLDEN GATE CANNOT VOUCH' : 'GOLDEN GATE FAIL'} in ${fmtDuration(Date.now() - t0)}; report ${reportFile}`);
   return exit;
 }
 
@@ -172,9 +183,9 @@ function timingTable(selected, plans, stats) {
     const e = by[k] ?? (by[k] = {n: 0, ms: 0, known: 0});
     e.n++; for (const side of ['base', 'head']) { const ms = stats[side].itemMs[d]; if (ms) { e.ms += ms; e.known++; } }
   }
-  console.log('render time per kind (sum of base+head item times measured in the process):');
-  for (const [k, e] of Object.entries(by).sort()) console.log(`  ${k.padEnd(13)} ${String(e.n).padStart(3)} items  ${fmtDuration(e.ms)} (${e.known ? fmtDuration(e.ms / e.known) : '-'} per render)`);
-  console.log(`wall time: base ${fmtDuration(stats.base.wallMs)}, head ${fmtDuration(stats.head.wallMs)}`);
+  say('render time per kind (sum of base+head item times measured in the process):');
+  for (const [k, e] of Object.entries(by).sort()) say(`  ${k.padEnd(13)} ${String(e.n).padStart(3)} items  ${fmtDuration(e.ms)} (${e.known ? fmtDuration(e.ms / e.known) : '-'} per render)`);
+  say(`wall time: base ${fmtDuration(stats.base.wallMs)}, head ${fmtDuration(stats.head.wallMs)}`);
 }
 
-main().then(code => process.exit(code), e => { console.error(e?.stack || e); process.exit(2); });
+main().then(code => { flush(); process.exit(code); }, e => { flush(); console.error(e?.stack || e); process.exit(2); });

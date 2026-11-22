@@ -4,13 +4,15 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {compareItem, parseExpected, applyExpected, summarize} from './lib/judge.mjs';
+import os from 'node:os';
+import {compareItem, parseExpected, applyExpected, summarize, evaluate, statusChainOf} from './lib/judge.mjs';
 import {
   GE, KINDS, CAPABILITY_KIND, KIND_FILES, SHARED_FILES, SHARED_PREFIXES, SHARED_EXACT, NON_RENDER_FILES, DISPATCHERS, IMPORT_EXCEPTIONS,
   planKinds, planCapabilities, classifyFile, parseFamilies, selectItems
 } from './lib/kinds.mjs';
 import {buildCodeGraph} from './lib/code-graph.mjs';
-import {SNAPSHOT_SPECS, RENDER_PLAN} from './lib/snapshot.mjs';
+import {SNAPSHOT_SPECS, RENDER_PLAN, MANIFEST, describeSnapshot, repoFilesUnder, extractImageRefs, refCandidates} from './lib/snapshot.mjs';
+import {renderItems} from './lib/render.mjs';
 import {parseTapForTest, parseUnittestForTest, normalizeTestName, compareTests} from './lib/tests-run.mjs';
 
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../..');
@@ -183,5 +185,104 @@ test('engine test comparison: names that hold the snapshot path match across bas
   const r = compareTests(base, head, [F]);
   assert.deepEqual(r.newFailures.sort(), ['tests/x.test.mjs :: a', 'tests/x.test.mjs :: d']);
   assert.deepEqual(r.existingFailures.sort(), ['tests/x.test.mjs :: b', 'tests/x.test.mjs :: y.test.mjs']);
+});
+
+// ---- a green gate must have compared something -------------------------------------------------------------------------------
+const failRec = (more = {}) => rec('FAILED', {code: 'UNSUPPORTED_DISPLAY_ENVELOPE', stage: 'compose', detailFull: '{"status":"COMPOSITE_PANEL_NOT_COMPOSED","detail":{"status":"X"}}', ...more});
+
+test('209 identical failures are not a pass: no bytes compared means the gate cannot vouch', () => {
+  const rows = items.map(i => compareItem(i.dir, failRec(), failRec()));
+  assert.equal(rows.every(r => r.verdict === 'BOTH_FAIL_SAME'), true);
+  const s = summarize(rows);
+  assert.equal(s.total, 209); assert.equal(s.byteCompared, 0); assert.equal(s.pass, false);
+  const cover = evaluate(rows, {kindOf: d => planKinds(plans[d])});
+  assert.equal(cover.byteCompared, 0); assert.equal(cover.cannotVouch, true); assert.equal(cover.selected, 209);
+});
+
+test('a changed kind with no byte comparison is NOT_COVERED, even when other kinds were compared', () => {
+  const rows = [compareItem('item21', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND')), compareItem('item22', failRec(), failRec())];
+  const kindOf = d => d === 'item21' ? new Set(['stat']) : new Set(['solid']);
+  assert.deepEqual(evaluate(rows, {kinds: new Set(['stat', 'solid']), kindOf}).notCovered, ['solid']);
+  assert.equal(evaluate(rows, {kinds: new Set(['stat', 'solid']), kindOf}).cannotVouch, true);
+  assert.equal(evaluate(rows, {kinds: new Set(['stat']), kindOf}).cannotVouch, false);
+  assert.deepEqual(evaluate(rows, {kindOf}).wholeUncovered, ['solid']); // whole-set runs name the uncovered kinds but do not refuse
+});
+
+test('environment errors (image, page, module, browser, timeout) are NOT_RUN even when both sides show them', () => {
+  for (const text of ['QUESTION_IMAGE_LOAD_FAILED: q03.png', 'PAGE_RENDER_ERROR', "Cannot find module 'x'", 'ENOENT: no such file', 'Timeout 30000ms exceeded', "browserType.launch: Executable doesn't exist"]) {
+    const r = failRec({code: 'ACTUAL_ARCHIVE_DISPLAY_ENVELOPE_PREFLIGHT_FAIL', detailFull: `{"status":"A","detail":"${text}"}`});
+    const v = compareItem('i', r, r);
+    assert.equal(v.verdict, 'NOT_RUN', text);
+    assert.match(v.reason, /environment error/);
+  }
+  assert.equal(compareItem('i', rec('ARCHIVE_BOUND'), failRec({code: 'ACTUAL_ARCHIVE_DISPLAY_ENVELOPE_PREFLIGHT_FAIL', detailFull: 'QUESTION_IMAGE_LOAD_FAILED'})).verdict, 'NOT_RUN');
+});
+
+test('the same failure means the same code, stage and nested status; a failure without a code is never the same', () => {
+  assert.equal(compareItem('i', failRec(), failRec()).verdict, 'BOTH_FAIL_SAME');
+  assert.equal(compareItem('i', failRec(), failRec({stage: 'capture'})).verdict, 'DIFFERENT');
+  assert.equal(compareItem('i', failRec(), failRec({detailFull: '{"status":"COMPOSITE_PANEL_NOT_COMPOSED","detail":{"status":"Y"}}'})).verdict, 'DIFFERENT');
+  assert.equal(compareItem('i', failRec({code: null}), failRec({code: null})).verdict, 'NOT_RUN');
+  assert.equal(compareItem('i', failRec({code: null}), failRec()).verdict, 'NOT_RUN');
+  assert.deepEqual(statusChainOf('{"status":"A","detail":{"status":"B","detail":{"status":"C:d"}}}'), ['A', 'B', 'C:d']);
+});
+
+// ---- the snapshot must hold every asset the repo has -------------------------------------------------------------------------
+const mkSnap = (root, name, {pngs = {}, svgs = {}, drop = null} = {}) => {
+  const dir = path.join(root, name);
+  const put = (rel, text) => { const p = path.join(dir, rel); fs.mkdirSync(path.dirname(p), {recursive: true}); fs.writeFileSync(p, text); };
+  const fxItems = [{dir: 'itemA', sourcePath: 'archive/exams/original/x/aaa.js', ordinal: 1}, {dir: 'itemB', sourcePath: 'archive/exams/original/x/bbb.js', ordinal: 1}];
+  put(MANIFEST, JSON.stringify({items: fxItems}));
+  for (const i of fxItems) { put(`${GE}/ops/golden/${i.dir}/plan.json`, JSON.stringify({capability: 'stat-chart-figure-v1'})); put(i.sourcePath, 'export default {};'); }
+  const bySource = {};
+  for (const [uid, src] of [['aaa', fxItems[0].sourcePath], ['bbb', fxItems[1].sourcePath]]) {
+    bySource[src] = [`archive/assets/images/${uid}/q01.png`, `archive/assets/images/${uid}/q01-solution.svg`];
+    put(bySource[src][0], pngs[uid] ?? 'png-bytes'); put(bySource[src][1], svgs[uid] ?? '<svg/>');
+  }
+  put('.snapshot-assets.json', JSON.stringify({bySource}));
+  if (drop) fs.rmSync(path.join(dir, drop));
+  return dir;
+};
+
+test('a snapshot that lacks an asset the repo has: that item is NOT_RUN and nothing is rendered for it', async () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'gg-snap-'));
+  try {
+    const dir = mkSnap(root, 'missing', {drop: 'archive/assets/images/aaa/q01.png'});
+    const snap = describeSnapshot(dir, 'fx', {type: 'commit', sha: 'x'});
+    assert.deepEqual(Object.keys(snap.blocked), ['itemA']);
+    assert.deepEqual(snap.blocked.itemA, ['archive/assets/images/aaa/q01.png']);
+    const {results} = await renderItems({snap, itemDirs: ['itemA'], resultsRoot: path.join(root, 'res'), cacheRoot: path.join(root, 'cache'), depsDir: path.join(root, 'deps'), lockDir: path.join(root, 'locks')});
+    assert.equal(results.get('itemA').status, 'NOT_RUN'); assert.equal(results.get('itemA').code, 'SNAPSHOT_LACKS_ASSET');
+    assert.equal(compareItem('itemA', results.get('itemA'), results.get('itemA')).verdict, 'NOT_RUN');
+    const whole = describeSnapshot(mkSnap(root, 'whole'), 'fx2', {type: 'commit', sha: 'y'});
+    assert.deepEqual(whole.blocked, {});
+  } finally { fs.rmSync(root, {recursive: true, force: true}); }
+});
+
+test('a changed raster (PNG) of one exam changes the key of that exam only, so only its items render again', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'gg-snap-'));
+  try {
+    const a = describeSnapshot(mkSnap(root, 'one'), 'one', {type: 'commit', sha: 'a'});
+    const b = describeSnapshot(mkSnap(root, 'two', {pngs: {aaa: 'other png bytes'}}), 'two', {type: 'commit', sha: 'b'});
+    const c = describeSnapshot(mkSnap(root, 'three', {svgs: {bbb: '<svg x="1"/>'}}), 'three', {type: 'commit', sha: 'c'});
+    const [iA, iB] = a.items;
+    assert.equal(a.commonKey, b.commonKey);
+    assert.notEqual(a.itemKey(iA), b.itemKey(iA));
+    assert.equal(a.itemKey(iB), b.itemKey(iB));
+    assert.equal(a.itemKey(iA), c.itemKey(iA));
+    assert.notEqual(a.itemKey(iB), c.itemKey(iB));
+  } finally { fs.rmSync(root, {recursive: true, force: true}); }
+});
+
+test('exam assets of any extension are unpacked: the repo folder of a golden exam holds PNG files, and image paths in the exam JS are found', () => {
+  const uid = path.posix.basename(items.find(i => /금당고_1학기_기말_고2_수학I\.js$/.test(i.sourcePath))?.sourcePath ?? '', '.js');
+  assert.ok(uid, 'golden exam used by item18 not found');
+  const files = repoFilesUnder(REPO, {type: 'worktree'}, [`archive/assets/images/${uid}`]);
+  assert.ok(files.some(f => /\.png$/i.test(f)), 'no PNG found under the exam asset folder: rasters must be carried');
+  assert.ok(files.some(f => /\.svg$/i.test(f)));
+  assert.deepEqual(extractImageRefs('a: "q03.png", b: \'assets/images/x/q1.jpg\', c: `../y/z.webp`, d: "not an image.txt"').sort(), ['../y/z.webp', 'assets/images/x/q1.jpg', 'q03.png']);
+  assert.deepEqual(refCandidates('q03.png'), []);
+  assert.deepEqual(refCandidates('assets/images/x/q1.jpg'), ['archive/assets/images/x/q1.jpg', 'archive/assets/assets/images/x/q1.jpg', 'archive/assets/images/assets/images/x/q1.jpg']);
+  assert.deepEqual(refCandidates('archive/assets/images/x/q1.jpg'), ['archive/assets/images/x/q1.jpg']);
 });
 
