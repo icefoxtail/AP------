@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-352eb6d0beed-99d2f36d",
+  "examUid": "15_강남여고_2학기_중간_고2_기하와벡터_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/2mid/15_강남여고_2학기_중간_고2_기하와벡터_기출.js",
+  "expectedSourceBlobSha1": "2ed0d3f830cdae72b41e463a9b138ffb54c286b9",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-w-20261122",
+      "commit": "4111b9298564d9e7095216194d47737640427bfe",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-352eb6d0beed-99d2f36d.type-ledger.json",
+        "sha256": "ac518f18c49a1dd1ed3a9a9df9afaa3fb0babb78ac8b31665fae2e172c03f109"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_402cbaf9e4eee2d801efa28d190d2519f161ef414ca5b1f14f8d1141f35a0be9",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION"
+      },
+      "rationale": "음함수 관계식의 양변을 x로 미분해 dy/dx에 대해 정리한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "d619248e0bec16207ffd124f8f2bdc0534fc532e3583d285f55c38dc5b42fd75",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-352eb6d0beed-99d2f36d.type-ledger.json",
+          "sha256": "ac518f18c49a1dd1ed3a9a9df9afaa3fb0babb78ac8b31665fae2e172c03f109"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_1786ee31c996bda90eabecebc0f5e62b9d1ff7603ee057dbeb09108fcfcab666",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION"
+      },
+      "rationale": "dx/dt, dy/dt를 구해 dy/dx=(dy/dt)/(dx/dt)로 정리한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "e6f5c221f2a3d335c242d08636ce8fa7b6774d7d2832c000adfc5ac5df83b874",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-352eb6d0beed-99d2f36d.type-ledger.json",
+          "sha256": "ac518f18c49a1dd1ed3a9a9df9afaa3fb0babb78ac8b31665fae2e172c03f109"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_8393e5d1ba1c78ff3452cccff659766f8705dfbb3bc30714746335c2a800a9eb",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION"
+      },
+      "rationale": "dy/dx=(dy/dt)/(dx/dt)로 매개변수 미분을 한 뒤 t→1의 극한을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "4c7a513699c1996445f4ea59e67f7de85d8246f0a7cb016afaf88623031645bb",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-352eb6d0beed-99d2f36d.type-ledger.json",
+          "sha256": "ac518f18c49a1dd1ed3a9a9df9afaa3fb0babb78ac8b31665fae2e172c03f109"
+        }
+      ]
+    }
+  ]
+}

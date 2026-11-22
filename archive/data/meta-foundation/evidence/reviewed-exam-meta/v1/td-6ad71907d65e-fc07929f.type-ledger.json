@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-6ad71907d65e-fc07929f",
+  "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_대수.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_b0264fbeb46c1306cb3903380ddf69f97f838dbc097aab002d8d3105bc1504a4",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "templateKey": "TPL_LOG_CHANGE_BASE_TELESCOPING",
+      "step": "연속로그의 밑변환 곱에서 분자분모를 순환 소거해1을 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요. 원문 객관식 오류: 유효한 로그 밑조건 아래 보기②log_a a,③log_c c,④log_b b도⑤1과 모두 같아 정답이 유일하지 않다.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl",
+      "stemChangedSinceJudgment": true
+    }
+  ]
+}
