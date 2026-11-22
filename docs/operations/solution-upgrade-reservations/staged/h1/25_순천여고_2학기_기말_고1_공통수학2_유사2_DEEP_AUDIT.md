@@ -1,5 +1,8 @@
 # 고1 2학기 기말 유사시험지 심층 수학 감사 — 25_순천여고_2학기_기말_고1_공통수학2_유사2
 
+> **2026-11-22 후속 시각 QA: VISUAL_QA_PASS** — 이미지 16개 렌더·육안 검수, 결함 0개. 상세 결과는 문서 끝의 ‘후속 시각 검수’ 및 [통합 계획](./H1_2FINAL_SIMILAR_VISUAL_QA_20261122.md) 참조.
+
+
 - 작업 일자: 2026-11-22 (KST)
 - 원본: `archive/exams/similar/high/h1/2final/25_순천여고_2학기_기말_고1_공통수학2_유사2.js`
 - 원본 blob SHA: `ec9052cd5bff69c9ae86b36618425bee978f94f2`
@@ -1083,3 +1086,31 @@ $\dfrac{5-\sqrt{5}}{2} < 2$이므로 조건 $x \ge 2$를 만족하지 않아 제
 - 원본 데이터는 편집하지 않았다. 보완 필요사항이 새롭게 발견되면 본 감사 MD에 근거와 수정안을 남기는 방식으로 이어갈 수 있다.
 - 그래프·대응도·도형 및 해설 이미지는 이번 작업에서 렌더 검사를 하지 않았다. 사용자 요청에 따라 시각 QA 별도 라인에서 수행한다.
 - 커밋 후 동일 브랜치 원격 파일을 다시 읽어 전체 텍스트 일치를 확인한다.
+
+
+---
+
+## 후속 시각 검수 — 2026-11-22 (최신 판정)
+
+- 결과: **VISUAL_QA_PASS**. 연결 그림 16개, 그림 포함 13문항, 결함 후보 0건.
+- 절차: 실제 `archive/assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사2/` 자산 존재 확인 → SVG/PNG 렌더 → 접촉 시트 육안 검사 → 본문·해설의 그래프, 좌표, 집합, 대응도 비교.
+- [수학·시각 통합 마감 계획 및 전체 276건 보고서](./H1_2FINAL_SIMILAR_VISUAL_QA_20261122.md) 참조.
+- 이전 본문에 기재된 `VISUAL_QA_PENDING` 또는 `NOT_RUN`은 **초기 수학 감사 당시 상태**이며, 후속 시각 검수 판정은 아래 표가 우선한다.
+
+| 문항 | 검사한 이미지(원본 `archive/assets/images/25_순천여고_2학기_기말_고1_공통수학2_유사2/`) | 최신 판정 |
+|---:|---|---|
+| 4번 | `해설: q4-solution.svg` | VISUAL_QA_PASS |
+| 5번 | `해설: q5-solution.svg` | VISUAL_QA_PASS |
+| 7번 | `문제: q7.svg` | VISUAL_QA_PASS |
+| 9번 | `문제: q9.svg`, `해설: q9-solution.svg` | VISUAL_QA_PASS |
+| 11번 | `해설: q11-solution.svg` | VISUAL_QA_PASS |
+| 12번 | `해설: q12-solution.svg` | VISUAL_QA_PASS |
+| 14번 | `해설: q14-solution.svg` | VISUAL_QA_PASS |
+| 15번 | `문제: q15.svg`, `해설: q15-solution.svg` | VISUAL_QA_PASS |
+| 17번 | `해설: q17-solution.svg` | VISUAL_QA_PASS |
+| 18번 | `문제: q18.svg`, `해설: q18-solution.svg` | VISUAL_QA_PASS |
+| 19번 | `해설: q19-solution.svg` | VISUAL_QA_PASS |
+| 20번 | `해설: q20-solution.svg` | VISUAL_QA_PASS |
+| 21번 | `해설: q21-solution.svg` | VISUAL_QA_PASS |
+
+원본 JS·SVG·PNG는 수정하지 않았다. 결함 수정 후 해당 자산을 다시 렌더하고 문제·해설을 대조해야 최종 출고 판정이 가능하다.
