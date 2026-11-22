@@ -842,6 +842,10 @@ function staggerRows(model){
 }
 const boxHit=(a,b,pad)=>a.x<b.x+b.width+pad&&b.x<a.x+a.width+pad&&a.y<b.y+b.height+pad&&b.y<a.y+a.height+pad;
 const LANE_SHIFT_STEP=6,LANE_SHIFT_MAX=96,LANE_TARGET_INSET=3;
+// A value leader leaves the axis at least LEADER_MIN_ANGLE degrees steeper than the axis (a flatter one reads as an underline); the observer checks its own 30. A label whose dot overlaps the dot of another labelled point
+// (centres closer than the two radii) takes no place right over/under its dot: the left point's value goes left, the right point's value goes right, each joined to its own dot by a leader.
+const LEADER_MIN_ANGLE=35,LEADER_MIN_LENGTH=8;   // and a leader is at least LEADER_MIN_LENGTH px long (a stub of 2 px joins nothing); the observer checks its own 6
+const leaderAngle=leader=>Math.atan2(Math.abs(leader.y2-leader.y1),Math.abs(leader.x2-leader.x1))*180/Math.PI;
 // a leader (x1,y1)-(x2,y2) meets a box when one of its points (one per px) lies within pad of it
 const leaderHitsBox=(leader,box,pad)=>{
   const length=Math.hypot(leader.x2-leader.x1,leader.y2-leader.y1),steps=Math.max(1,Math.ceil(length));
@@ -862,28 +866,42 @@ function assignLanes(spec,placed){
     const axisY=row.axis.y,mine=placed.filter(item=>item.label.row===row.n&&STAGGER_ROLES.includes(item.label.role)&&item.label.anchor.align==='below').sort((a,b)=>a.label.anchor.x-b.label.anchor.x);
     const decided=placed.filter(item=>item.label.row===row.n&&!mine.includes(item)).map(item=>item.box),rowLeaders=[],dots=row.dots;
     const lineAbove=item=>r6(axisY-END_RADIUS-4-item.box.height),lineBelow2=r6(axisY+END_RADIUS+LABEL_GAP+row.lanes.belowRow+LANE_GAP);
-    for(const item of mine){
-      const {box,label}=item,x=label.anchor.x,candidates=[{box}];
+    // the dots of this row that overlap a label's dot and carry a value label of their own
+    const overlappedOf=item=>{
+      const ownDot=dots.find(dot=>dot.id===item.label.owner);
+      return ownDot?mine.filter(other=>other!==item).map(other=>({other,dot:dots.find(dot=>dot.id===other.label.owner)})).filter(({dot})=>dot&&Math.abs(dot.y-ownDot.y)<0.5&&Math.abs(dot.x-ownDot.x)<dot.r+ownDot.r):[];
+    };
+    // the labels of overlapped dots are placed first (they have the fewest places), the others then keep out of their leaders
+    const order=[...mine.filter(item=>overlappedOf(item).length),...mine.filter(item=>!overlappedOf(item).length)];
+    for(const item of order){
+      const {box,label}=item,x=label.anchor.x,candidates=[];
+      const ownDot=dots.find(dot=>dot.id===label.owner),overlapped=overlappedOf(item);
+      const leftOf=overlapped.filter(({other,dot})=>dot.x<ownDot.x||(dot.x===ownDot.x&&mine.indexOf(other)<mine.indexOf(item))).length,rightOf=overlapped.length-leftOf;
+      const outward=overlapped.length===0?0:leftOf&&rightOf?NaN:rightOf?-1:1;
+      if(!overlapped.length)candidates.push({box});
       const make=(lane,s)=>{
         const y=lane==='ABOVE'?lineAbove(item):lineBelow2,moved={...box,x:r6(box.x+s),y};
         const tx=r6(Math.min(Math.max(x,moved.x+LANE_TARGET_INSET),moved.x+moved.width-LANE_TARGET_INSET));
         const leader=lane==='ABOVE'?{x1:x,y1:r6(axisY-END_RADIUS-LEADER_START),x2:tx,y2:r6(y+box.height+LEADER_START)}:{x1:x,y1:r6(axisY+END_RADIUS+LEADER_START),x2:tx,y2:r6(y-LEADER_START)};
         return {box:moved,...(lane==='ABOVE'&&s===0?{}:{leader:{id:`${label.id}-leader`,row:row.n,of:label.owner,label:label.id,...leader}})};
       };
-      if(row.lanes.above)candidates.push(make('ABOVE',0));
-      if(row.lanes.below2)candidates.push(make('BELOW2',0));
-      for(let s=LANE_SHIFT_STEP;s<=LANE_SHIFT_MAX;s+=LANE_SHIFT_STEP)for(const sign of [1,-1]){
+      if(!overlapped.length&&row.lanes.above)candidates.push(make('ABOVE',0));
+      if(!overlapped.length&&row.lanes.below2)candidates.push(make('BELOW2',0));
+      for(let s=LANE_SHIFT_STEP;s<=LANE_SHIFT_MAX;s+=LANE_SHIFT_STEP)for(const sign of outward===0?[1,-1]:Number.isNaN(outward)?[]:[outward]){
         if(row.lanes.above)candidates.push(make('ABOVE',sign*s));
         if(row.lanes.below2)candidates.push(make('BELOW2',sign*s));
       }
       const fits=lane=>{
         if(lane.box.x<SAFE||lane.box.x+lane.box.width>limit)return false;
+        // a value of an overlapped dot stands wholly outside it: left of the left dot, right of the right dot
+        if(outward!==0&&!(outward<0?lane.box.x+lane.box.width<=x+LANE_TARGET_INSET:lane.box.x>=x-LANE_TARGET_INSET))return false;
         if(decided.some(other=>boxHit(lane.box,other,BOX_PAD))||rowLeaders.some(other=>leaderHitsBox(other,lane.box,LANE_PAD)))return false;
         const leader=lane.leader;
         if(!leader)return true;
+        if(leaderAngle(leader)<LEADER_MIN_ANGLE||Math.hypot(leader.x2-leader.x1,leader.y2-leader.y1)<LEADER_MIN_LENGTH)return false;
         return !decided.some(other=>leaderHitsBox(leader,other,LANE_PAD))&&!rowLeaders.some(other=>leadersCross(leader,other))&&!dots.some(dot=>dot.id!==label.owner&&leaderHitsBox(leader,{x:dot.x-dot.r,y:dot.y-dot.r,width:2*dot.r,height:2*dot.r},0.5));
       };
-      const lane=candidates.find(fits)??candidates[0];
+      const lane=candidates.find(fits)??{box};
       item.box=lane.box;decided.push(lane.box);
       if(lane.leader)rowLeaders.push(lane.leader);
     }

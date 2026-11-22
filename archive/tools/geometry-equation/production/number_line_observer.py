@@ -292,6 +292,8 @@ SYMBOL_SEPARATION_PX = 10.0
 NAME_BESIDE_ARC_PX = 12.0
 # N08 (this observer's own copies): the first line of value labels stands 5 px under its dot; a label over its dot is at most LANE_OVER_DOT_MAX_PX above it; a leader starts at the dot's edge and ends at the label's top
 LANE_FIRST_LINE_MAX_PX, LANE_OVER_DOT_MAX_PX, LEADER_END_MAX_PX, LANE_SHIFT_MAX_PX = 8.0, 6.0, 2.5, 100.0
+# a value leader leaves its dot at least LEADER_MIN_ANGLE_DEG degrees steeper than the axis; the value of an overlapped dot stands outside it (the label's inner edge at most OUTWARD_TOLERANCE_PX past the dot's centre)
+LEADER_MIN_ANGLE_DEG, OUTWARD_TOLERANCE_PX, LEADER_MIN_LENGTH_PX = 30.0, 4.0, 6.0
 # Run-together labels (this observer's own copies): two labels on one line read as one number or as a subtraction ("-3" "-2" -> "-3-2") when they stand closer than LABEL_GAP_MIN_PX
 # (the same meaning as SC_NORMAL_TICK_NUMBERS_CLOSE of the statistics observer, 5 px). The inequalities of neighbouring pieces of a set ("-3<x<-2" "-2<x<9") need more: under PIECE_GAP_MIN_PX they touch,
 # under PIECE_SEPARATED_PX the earlier one must end with a comma (it may stand off its band's centre, but still over its band, by at most SET_SHIFT_MAX_PX).
@@ -1055,7 +1057,7 @@ def audit_figure(numberLine, svg, pointNames=None):
             if hide_set is not None and not isinstance(hide_set, bool): raise ValueError('NL_OBSERVER_PLAN_INVALID')
             if len(mine) != (0 if hide_set else 1): errors.append('NL_SET_LABEL_COUNT:%s' % band.get('id'))
             for l in mine:
-                try: lower, lower_closed, upper, upper_closed = parse_header(re.sub(r',s*$', '', l.get('data-tex') or ''), variable, free)
+                try: lower, lower_closed, upper, upper_closed = parse_header(re.sub(r',\s*$', '', l.get('data-tex') or ''), variable, free)
                 except ValueError as error: errors.append(str(error) + ':' + str(l.get('id'))); continue
                 ok = (lower is None) == (not piece.inf.is_finite) and (upper is None) == (not piece.sup.is_finite)
                 if ok and lower is not None: ok = at_value(lower - piece.inf) == 0 and lower_closed == (not piece.left_open)
@@ -1196,6 +1198,32 @@ def audit_figure(numberLine, svg, pointNames=None):
     # a leader belongs to a label on the second line or a slid label, and crosses no other label, no dot of another point and no other leader
     for leader in (element for element in lines if element.get('data-role') == 'label-leader'):
         if leader.get('data-label') not in {item[0] for item in lane_leaders}: errors.append('NL_LEADER_UNEXPECTED:' + str(leader.get('id')))
+        # a value leader is steeper than the axis (a flatter one reads as an underline)
+        try: slope = math.degrees(math.atan2(abs(_num(leader, 'y2') - _num(leader, 'y1')), abs(_num(leader, 'x2') - _num(leader, 'x1'))))
+        except ValueError: slope = 0.0
+        if slope < LEADER_MIN_ANGLE_DEG: errors.append('NL_LEADER_TOO_SHALLOW:' + str(leader.get('id')))
+        try: length = math.hypot(_num(leader, 'x2') - _num(leader, 'x1'), _num(leader, 'y2') - _num(leader, 'y1'))
+        except ValueError: length = 0.0
+        if length < LEADER_MIN_LENGTH_PX: errors.append('NL_LEADER_TOO_SHORT:' + str(leader.get('id')))
+    # two dots of one row whose circles overlap: each value is joined to its own dot by a leader, the left dot's value stands wholly left of it and the right dot's wholly right of it (so the values keep the order of the dots)
+    box_of = dict(boxes)
+    value_of = {}
+    for label in labels:
+        if label.get('data-label-role') in ('endpoint', 'point-value') and label.get('id') in box_of: value_of.setdefault(label.get('data-owner'), label.get('id'))
+    leader_labels = {leader.get('data-label') for leader in lines if leader.get('data-role') == 'label-leader'}
+    point_dots = [circle for circle in circles if circle.get('data-dot') in ('point', 'endpoint') and circle.get('id') in value_of]
+    for i, first in enumerate(point_dots):
+        for second in point_dots[i + 1:]:
+            if first.get('data-row') != second.get('data-row') or abs(_num(first, 'cy') - _num(second, 'cy')) > 0.5: continue
+            if abs(_num(first, 'cx') - _num(second, 'cx')) >= _num(first, 'r') + _num(second, 'r'): continue
+            left, right = (first, second) if (_num(first, 'cx'), first.get('id')) <= (_num(second, 'cx'), second.get('id')) else (second, first)
+            left_label, right_label = value_of[left.get('id')], value_of[right.get('id')]
+            for dot, label_id in ((left, left_label), (right, right_label)):
+                if label_id not in leader_labels: errors.append('NL_OVERLAP_DOTS_NO_LEADER:' + label_id)
+            left_box, right_box = box_of[left_label], box_of[right_label]
+            if left_box[0] + left_box[2] > _num(left, 'cx') + OUTWARD_TOLERANCE_PX: errors.append('NL_OVERLAP_DOTS_NOT_OUTWARD:' + left_label)
+            if right_box[0] < _num(right, 'cx') - OUTWARD_TOLERANCE_PX: errors.append('NL_OVERLAP_DOTS_NOT_OUTWARD:' + right_label)
+            if left_box[0] + left_box[2] / 2 >= right_box[0] + right_box[2] / 2: errors.append('NL_OVERLAP_DOTS_VALUE_ORDER:%s:%s' % (left_label, right_label))
     def _samples(x1, y1, x2, y2):
         steps = max(1, int(math.ceil(math.hypot(x2 - x1, y2 - y1))))
         return [(x1 + (x2 - x1) * k / steps, y1 + (y2 - y1) * k / steps) for k in range(steps + 1)]
