@@ -24,7 +24,9 @@ LEADER_DOT_CLEAR=8.0            # svg px: the dot a region value's leader starts
 LEADER_DOT_STROKE=5.0           # svg px: and at least this far from every drawn stroke (the engine keeps 7)
 LEADER_DOT_RADIUS=(1.5,3.5)     # svg px: the dot's radius
 LEADER_SIDE_SPAN=(0.05,0.95)    # the stretch of a drawn side beside which a value label reads as the side's length (not the region's value); past its ends it does not
-LEADER_SIDE_NEAR=48.0           # svg px: 'right beside' = the label box within this of the side
+NAME_BESIDE_GAP_PX=24.0         # svg px: a region's bare value closer than this to a point name on one text line reads as one token with it (36 B)
+NAME_BESIDE_ROW_FRACTION=0.15   # 'one text line': the two label boxes overlap vertically by at least this fraction of the shorter one
+LEADER_SIDE_NEAR=48.0          # svg px: 'right beside' = the label box within this of the side
 REGION_LABEL_AT_SLACK=26.0      # svg px: a label placed at labelAt stands within this distance of it (the engine looks within 24 px)
 REGION_WEIGHT_STROKE_EM=0.06    # a plain-text name/value label is drawn with this outline stroke (em), the weight of a math label (this observer's own copy)
 REGION_UNIT_POWERS={'2':'\u00b2','3':'\u00b3'}
@@ -38,6 +40,8 @@ def named_value_drawn(row,node):
     name=row.get('labelName')
     # a name alone: not one of a segment or arc (two capitals, AB=6\u03c0) or a length letter (l=6), which read as lengths
     named=isinstance(name,str) and name.strip()!='' and re.fullmatch(r'[A-Z]{2}|[a-z]',name.strip()) is None
+    # (P-D) a name does not make a length unit a region's value: S=6cm still reads as a length of 6 cm beside a side
+    named=named and re.fullmatch(r'(?:mm|cm|km|m)',str(row.get('unit',''))) is None
     return named or powered
 
 def region_label_text(row):
@@ -270,8 +274,42 @@ def drawn_boundaries(root):
             elif t=='circle' and role=='circle':
                 cx,cy,r=float(n.get('cx')),float(n.get('cy')),float(n.get('r'))
                 found.append((n.get('id'),[(cx+r*math.cos(k*math.pi/36),cy+r*math.sin(k*math.pi/36)) for k in range(73)]))
+            elif t=='path' and role in {'circle','circularArc'} and 'A' in str(n.get('d','')):
+                # (P-D) a circle or an arc drawn as one <path> (M x y A r r 0 large sweep x y [A ...] [Z]) is a boundary like the polyline or <circle> forms: sampled here
+                found.append((n.get('id'),path_arc_points(str(n.get('d')))))
         except (TypeError,ValueError):continue
     return [(sid,pts) for sid,pts in found if len(pts)>=2]
+
+def path_arc_points(d,steps=36):
+    """The points of an absolute M / L / A / Z path of circular arcs (rx = ry), each arc sampled in `steps` pieces; a Z closes the loop. Written here from the SVG arc rule."""
+    tokens=re.findall(r'[MLAZ]|-?(?:\d+\.?\d*|\.\d+)(?:e-?\d+)?',d)
+    points=[];i=0;current=None;start=None
+    def num():
+        nonlocal i
+        value=float(tokens[i]);i+=1;return value
+    while i<len(tokens):
+        command=tokens[i];i+=1
+        if command=='M':current=(num(),num());start=current;points.append(current)
+        elif command=='L':current=(num(),num());points.append(current)
+        elif command=='Z':
+            if current is not None and start is not None and current!=start:points.append(start)
+            current=start
+        elif command=='A':
+            rx=num();ry=num();num();large=int(num());sweep=int(num());target=(num(),num())
+            if current is None or abs(rx-ry)>1e-6:raise ValueError('PATH_ARC_UNSUPPORTED')
+            x1p=(current[0]-target[0])/2;y1p=(current[1]-target[1])/2
+            half=math.hypot(x1p,y1p);r=max(rx,half)
+            if half<1e-12:current=target;continue
+            coef=math.sqrt(max((r*r*r*r-r*r*y1p*y1p-r*r*x1p*x1p)/(r*r*y1p*y1p+r*r*x1p*x1p),0.0))*(1 if large!=sweep else -1)
+            cxp=coef*y1p;cyp=-coef*x1p
+            centre=(cxp+(current[0]+target[0])/2,cyp+(current[1]+target[1])/2)
+            a1=math.atan2((y1p-cyp)/r,(x1p-cxp)/r);a2=math.atan2((-y1p-cyp)/r,(-x1p-cxp)/r);delta=a2-a1
+            if sweep==0 and delta>0:delta-=2*math.pi
+            elif sweep==1 and delta<0:delta+=2*math.pi
+            for k in range(1,steps+1):points.append((centre[0]+r*math.cos(a1+delta*k/steps),centre[1]+r*math.sin(a1+delta*k/steps)))
+            current=target
+        else:break
+    return points
 
 LEADER_STRETCH_TOLERANCE=2.5      # svg px: a point of a drawn circle or curve lies on the region's boundary when it is this near it
 
@@ -447,6 +485,13 @@ def audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,obser
         if expected is not None:audit_named_label(by_id.get(oid+'-label'),oid,expected,errors)
         if placement=='LEADER' and leader is None and not (record['ok'] and all(area_state(corner,record['polygons'])==1 for corner in corners)):errors.append('REGION_LABEL_LEADER_MISSING:'+oid)
         elif placement=='AUTO' and leader is not None:errors.append('REGION_LABEL_LEADER_UNEXPECTED:'+oid)
+        if leader is not None and record['ok'] and expected is None and label_boxes:
+            # (P-D) this observer's own reading: a bare value (no name=, no unit) on one text line with a point name, closer than a name's width, reads as one token (36 B)
+            for other_id,other_box in label_boxes.items():
+                if not str(other_id).endswith('-name'):continue
+                rows_overlap=min(box[1]+box[3],other_box[1]+other_box[3])-max(box[1],other_box[1])
+                if rows_overlap>=NAME_BESIDE_ROW_FRACTION*min(box[3],other_box[3]) and max(other_box[0]-(box[0]+box[2]),box[0]-(other_box[0]+other_box[2]))<NAME_BESIDE_GAP_PX:
+                    errors.append('REGION_VALUE_BESIDE_NAME:'+oid+':'+str(other_id));break
         if leader is not None and record['ok']:
             # the label stands outside every region; its leader starts on this region's boundary and runs away from it, never entering a region or crossing a stroke
             if any(area_state(point,other['polygons'])==1 for other in records if other['ok'] for point in probes):errors.append('REGION_LABEL_NOT_OUTSIDE:'+oid)
