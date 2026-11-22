@@ -5,23 +5,23 @@
 - sourceRef: `main`; sourceBlobSha: `0cfb086a25e3ca2c3e51d961bdf1136463d803e8`
 - 문항 ID: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24; **24문항**. standardCourse 원본 설정: 24/24.
 - 목표 브랜치: `work/solution-upgrade-lane-20-20261121`; 상태: **EXAM_AUDIT_COMPLETE / EXAM_DRAFT_COMPLETE** (개선 예약, 원본 미수정, 최종 QA 미실행).
-- 분류: **KEEP 21 / UPGRADE 0 / HOLD 3 / UNREAD 0**.
-- 연결 그림 경로: 5개; **원본 존재·육안 검증 2 / 연결 파일 없음 3**. 아래 경로 목록 참조.
+- 분류: **KEEP 24 / UPGRADE 0 / HOLD 0 / UNREAD 0**. (이미지 보관 경로 재확인 후 정정)
+- 연결 그림 경로: 5개; **보관 원본 존재·육안 검증 5 / 원본 파일 미발견 0**. 원본 `archive/assets/images/` 확인(문항 참조는 `assets/images/`); 앱 경로 해석 및 학생 화면 렌더는 별도 게이트.
 - 검토 범위: 8개 중 본 시험지의 문항 원문·선택지·기존 정답·solution·연결 그림 존재 여부와 수학적 계산을 교차 검토; 원본 JS·이미지는 변경하지 않음.
 - 릴리스 게이트: 원문 PDF 전문 대조, 학생 화면 HTML/LaTeX 렌더, 답안 UI·채점기 구동, Golden/Negative, preflight 영수증 **NOT_RUN**. MD 작성 완료가 출시 승인이나 결함 수정 완료를 뜻하지 않음.
 
 ## 핵심 결함·개선 예약
 
-- 링크된 이미지 3개 원본 리포지토리 main·목표 브랜치 모두에서 파일 없음. 링크별로 아래 기록; 이미지가 있는 화면의 정합성 확인 전 HOLD.
-- 원본 PNG q06.png(대진표), q23.png(정육각형) 실물 확인: 원문 상황과 핵심 배치/꼭짓점 일치.
+- **2026-11-22 재검증 정정:** 원래 문항 참조 `assets/images/…`의 실물은 `archive/assets/images/…`에 5/5개 존재. PNG는 파일을 열어, SVG는 Inkscape로 실제 렌더한 뒤 문제·해설과 육안 대조함. 이전 `MISSING` 및 이로 인한 `HOLD` 판정은 잘못된 경로 검색에서 비롯된 오판으로 취소. 다만 `assets/images/` 참조가 학생 앱에서 보관 경로로 해석되는지는 아직 실행 검증하지 않음.
+- 원본 PNG q06.png(대진표), q23.png(정육각형) 및 SVG 3개 실물 확인: 원문 상황과 핵심 배치/꼭짓점 일치.
 
 ## 연결 이미지 전수 인벤토리
 
-- **EXISTS / VISUALLY CHECKED** — `assets/images/21_제일고_1학기_기말_고2_확률과통계/q06.png`
-- **MISSING / HOLD** — `assets/images/21_제일고_1학기_기말_고2_확률과통계/q9-solution.svg`
-- **MISSING / HOLD** — `assets/images/21_제일고_1학기_기말_고2_확률과통계/q11-solution.svg`
-- **MISSING / HOLD** — `assets/images/21_제일고_1학기_기말_고2_확률과통계/q13-solution.svg`
-- **EXISTS / VISUALLY CHECKED** — `assets/images/21_제일고_1학기_기말_고2_확률과통계/q23.png`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/21_제일고_1학기_기말_고2_확률과통계/q06.png` → 실제 원본 `archive/assets/images/21_제일고_1학기_기말_고2_확률과통계/q06.png`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/21_제일고_1학기_기말_고2_확률과통계/q9-solution.svg` → 실제 원본 `archive/assets/images/21_제일고_1학기_기말_고2_확률과통계/q9-solution.svg`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/21_제일고_1학기_기말_고2_확률과통계/q11-solution.svg` → 실제 원본 `archive/assets/images/21_제일고_1학기_기말_고2_확률과통계/q11-solution.svg`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/21_제일고_1학기_기말_고2_확률과통계/q13-solution.svg` → 실제 원본 `archive/assets/images/21_제일고_1학기_기말_고2_확률과통계/q13-solution.svg`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/21_제일고_1학기_기말_고2_확률과통계/q23.png` → 실제 원본 `archive/assets/images/21_제일고_1학기_기말_고2_확률과통계/q23.png`
 
 ## 전 문항 판정
 
@@ -142,7 +142,7 @@
 > [조건부확률] C의 우승확률은 $$\frac{11}{90}+\frac2{45}+\frac2{45}=\frac{19}{90}.$$ 문제는 'C가 우승하였을 때'를 조건으로 하므로 $$P(\text{한 경기}\mid C\text{ 우승})=\frac{\frac{11}{90}}{\frac{19}{90}}=\frac{11}{19}.$$ [결론] ⑤. 분모에 $P(C\text{ 우승})$를 써야 하며, 부전승 확률 $\frac{1}{3}$만 답으로 쓰면 안 된다.
 
 - **독립 검산·판정**: C가 부전승 우승할 확률 11/90, 예선부터 우승할 확률 2/45+2/45; 조건부 (11/90)/(19/90)=11/19. 대진표 PNG 육안 대조.
-- 문항 연결 이미지: `assets/images/21_제일고_1학기_기말_고2_확률과통계/q06.png` — **EXISTS / 실물 육안 대조**
+- 문항 연결 이미지: `assets/images/21_제일고_1학기_기말_고2_확률과통계/q06.png` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/21_제일고_1학기_기말_고2_확률과통계/q06.png`)
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 ### Q07 — KEEP
 
@@ -178,7 +178,7 @@
 
 - **독립 검산·판정**: 앞면 3회 동전 X~B(3,1/2), σ=√(3/4)=√3/2.
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
-### Q09 — HOLD
+### Q09 — KEEP
 
 - identity: id=`9`; sourceQid=`9`; sourceBlobSha=`0cfb086a25e3ca2c3e51d961bdf1136463d803e8`; 단원: H15-PS-04; questionType: `객관식`; 원본 답: `③`
 - 원문 문제 조건 (원본의 HTML 행/표 구분만 정규화):
@@ -194,8 +194,8 @@
 > [결론] 서로소인 $a=102,b=7$이므로 $a+b=109$, 정답 ③.
 
 - **독립 검산·판정**: 가품 판정 중 진품은 0.7×0.03=0.021, 가품 중 가품 0.3×0.95=0.285, 조건부 7/102, 합109.
-- 문항 연결 이미지: `assets/images/21_제일고_1학기_기말_고2_확률과통계/q9-solution.svg` — **MISSING / 원본 실물 확인 불가**
-- **결함·개선 예약**: 이미지 연결 1개가 저장소에 없어 문제/해설 그림 실물 미검증
+- 문항 연결 이미지: `assets/images/21_제일고_1학기_기말_고2_확률과통계/q9-solution.svg` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/21_제일고_1학기_기말_고2_확률과통계/q9-solution.svg`)
+
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 ### Q10 — KEEP
 
@@ -213,7 +213,7 @@
 
 - **독립 검산·판정**: 앞면 수 K~B(5,1/2), 금액 X=100K, 질량함수 C(5,x/100)/32.
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
-### Q11 — HOLD
+### Q11 — KEEP
 
 - identity: id=`11`; sourceQid=`11`; sourceBlobSha=`0cfb086a25e3ca2c3e51d961bdf1136463d803e8`; 단원: H15-PS-04; questionType: `객관식`; 원본 답: `③`
 - 원문 문제 조건 (원본의 HTML 행/표 구분만 정규화):
@@ -230,8 +230,8 @@
 > [결론] 정답 ③.
 
 - **독립 검산·판정**: 수강 남 0.3m, 수강 여 0.4(100-m), 조건 0.3m/[0.3m+0.4(100-m)]=1/3 →m=40.
-- 문항 연결 이미지: `assets/images/21_제일고_1학기_기말_고2_확률과통계/q11-solution.svg` — **MISSING / 원본 실물 확인 불가**
-- **결함·개선 예약**: 이미지 연결 1개가 저장소에 없어 문제/해설 그림 실물 미검증
+- 문항 연결 이미지: `assets/images/21_제일고_1학기_기말_고2_확률과통계/q11-solution.svg` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/21_제일고_1학기_기말_고2_확률과통계/q11-solution.svg`)
+
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 ### Q12 — KEEP
 
@@ -251,7 +251,7 @@
 
 - **독립 검산·판정**: 흑구 X의 P(0,1,2)=(1,6,3)/10, E=6/5,E²=9/5,V=9/25, V(-5X+7)=9.
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
-### Q13 — HOLD
+### Q13 — KEEP
 
 - identity: id=`13`; sourceQid=`13`; sourceBlobSha=`0cfb086a25e3ca2c3e51d961bdf1136463d803e8`; 단원: H15-PS-04; questionType: `객관식`; 원본 답: `①`
 - 원문 문제 조건 (원본의 HTML 행/표 구분만 정규화):
@@ -267,8 +267,8 @@
 > [결론] 정답 ①. 교집합을 빼지 않으면 중복 계산된다.
 
 - **독립 검산·판정**: 교집합 t는 t(12/5+2)=11/15 →t=1/6; 합집합 1/2+5/12−1/6=3/4.
-- 문항 연결 이미지: `assets/images/21_제일고_1학기_기말_고2_확률과통계/q13-solution.svg` — **MISSING / 원본 실물 확인 불가**
-- **결함·개선 예약**: 이미지 연결 1개가 저장소에 없어 문제/해설 그림 실물 미검증
+- 문항 연결 이미지: `assets/images/21_제일고_1학기_기말_고2_확률과통계/q13-solution.svg` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/21_제일고_1학기_기말_고2_확률과통계/q13-solution.svg`)
+
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 ### Q14 — KEEP
 
@@ -448,7 +448,7 @@
 > [경우의 수] 공정한 동전의 전체 6회 결과는 $2^6=64$가지이고, 앞면이 $k$번 나오는 경우는 ${}_6C_k$가지다. $$P(P\text{가 A에 도착})=\frac{{}_6C_0+{}_6C_2+{}_6C_4+{}_6C_6}{2^6}=\frac{1+15+15+1}{64}=\frac12.$$ [결론] 정답 $\frac{1}{2}$. 한 바퀴를 돌아온 경우뿐 아니라 두 바퀴 또는 반대 방향 한 바퀴도 A 도착에 포함된다.
 
 - **독립 검산·판정**: 6회 앞면 k개 순이동 3k-6; 6의 배수는 k 짝수, C(6,0)+C(6,2)+C(6,4)+C(6,6)=32/64=1/2. 육각형 실물 PNG 대조.
-- 문항 연결 이미지: `assets/images/21_제일고_1학기_기말_고2_확률과통계/q23.png` — **EXISTS / 실물 육안 대조**
+- 문항 연결 이미지: `assets/images/21_제일고_1학기_기말_고2_확률과통계/q23.png` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/21_제일고_1학기_기말_고2_확률과통계/q23.png`)
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 ### Q24 — KEEP
 
@@ -480,6 +480,6 @@
 ## 완료 기준 및 후속
 
 - 원본 문항 24/24개 읽음; 원본 풀이·정답·선택지/서술형 답·계산 판정 기록 완료.
-- 누락 자산 3개와 메타데이터 0문항, 독립성·균등확률·정규근사 등 개선 사항은 문항별 UPGRADE/HOLD 및 상단 목록에 예약.
+- 연결 그림 원본 5/5개 확인(실물 미발견 0). 메타데이터 0문항 및 수학적 전제·근사 정책 등 남은 개선 사항은 해당 문항의 UPGRADE 및 상단 목록에 예약. 이미지 참조 `assets/images/`의 학생 앱 로딩 경로는 아직 미검증.
 - 원본 이미지를 신규 제작·대체하거나 문제/해설을 승인 없이 고치지 않았음.
-- 후속: 원본 시험 PDF·그림 복구 및 메타 보강 → 미해결 문항 검수 → 학생 앱 렌더/채점·회귀 시험 → 릴리스 게이트 판정. 2학기 작업은 별도 lane에서 수행.
+- 후속: 원본 시험 PDF와 이미지 경로 해석 대조 → 필요한 메타·수학 조건 보강 → 학생 앱 렌더/채점·회귀 시험 → 릴리스 게이트 판정. 2학기 작업은 별도 lane에서 수행.
