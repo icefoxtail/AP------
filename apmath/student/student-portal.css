@@ -164,6 +164,15 @@ body[data-student-view="login"] .app, body[data-student-view="boot"] .app { disp
 .omr-actions .review-btn[onclick^="downloadExamPdf"] { grid-column: 1 / -1; order: 3; border: 0; min-height: 44px; }
 .button-meta { font-size: 12px; font-weight: 400; opacity: .8; }
 .omr-review-unavailable { margin: 0 0 14px; font-size: 13px; color: var(--secondary); line-height: 1.7; }
+/* 유사문제 풀어보기: 기출 카드 안의 자습용 입구(기록·제출 없음). 같은 버튼 규격, 휴대폰에서는 한 줄 전체 폭. */
+.similar-entry { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border-soft); display: grid; gap: 10px; }
+.similar-entry-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 10px; min-width: 0; font-size: 13px; color: var(--text); }
+.similar-entry-note { font-size: 12px; color: var(--secondary); }
+.similar-set { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; min-width: 0; }
+.similar-set .btn { min-width: 0; padding-inline: 8px; font-size: 13px; }
+.similar-set .similar-open { grid-column: 1 / -1; }
+.similar-set .review-btn { border-color: var(--border); background: transparent; color: var(--secondary); }
+.similar-set .review-btn:hover { background: var(--surface-2); color: var(--text); }
 .exam-lineage { margin-top: 16px; border-top: 1px solid var(--border-soft); }
 .exam-lineage > summary { min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--secondary); font-size: 12px; list-style: none; }
 .exam-lineage > summary::-webkit-details-marker { display: none; }

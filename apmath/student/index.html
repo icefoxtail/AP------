@@ -9,30 +9,31 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="AP 학생">
   <meta name="apple-mobile-web-app-title" content="AP 학생">
-  <link rel="manifest" href="./manifest.json?v=2026.11.11.4">
-  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.11.4">
-  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.11.4">
-  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.11.4">
+  <link rel="manifest" href="./manifest.json?v=2026.11.22.1">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.11.22.1">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.11.22.1">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.11.22.1">
   <title>AP Math OS | 학생 포털</title>
   <script>try{localStorage.removeItem("ap.examImageBase.qa");}catch(e){}/* students never use the teacher-only exam image base QA override */</script>
   <script src="../../archive/archive2-output-contract.js?v=20261003-student-review-1"></script>
   <script src="../../archive/archive2-output.js?v=20261003-student-output-s4-1"></script>
   <script src="./archive-review-output.js?v=20261111-student-navigation-1"></script>
-  <script src="./clinic-lineage-view.js?v=2026.11.11.4"></script>
-  <script src="./clinic-learning-view.js?v=2026.11.11.4"></script>
-  <link rel="stylesheet" href="../css/student-navigation.css?v=2026.11.11.4">
-  <script src="../js/student-navigation.js?v=2026.11.11.4" data-student-navigation="manual"></script>
+  <script src="./clinic-lineage-view.js?v=2026.11.22.1"></script>
+  <script src="./similar-link.js?v=2026.11.22.1"></script>
+  <script src="./clinic-learning-view.js?v=2026.11.22.1"></script>
+  <link rel="stylesheet" href="../css/student-navigation.css?v=2026.11.22.1">
+  <script src="../js/student-navigation.js?v=2026.11.22.1" data-student-navigation="manual"></script>
   <!-- 글꼴은 화면을 막지 않고, 첫 화면이 그려져 한가해진 뒤에 적용한다(처음엔 시스템 글꼴, 이어서 Pretendard로 바뀜). dynamic-subset은 쓰는 글자 조각만 받는다. -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" media="print" onload="var l=this,f=function(){l.media='all'};window.requestIdleCallback?requestIdleCallback(f,{timeout:2500}):setTimeout(f,400)">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"></noscript>
-  <link rel="stylesheet" href="./student-portal.css?v=2026.11.11.4">
+  <link rel="stylesheet" href="./student-portal.css?v=2026.11.22.1">
 </head>
 <body class="student-portal-theme">
   <a class="skip-link" href="#app">본문으로 바로가기</a>
   <header class="top">
     <div class="brand">
-      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.11.4" alt="AP Math">
+      <img class="brand-logo" src="./icons/icon-192.png?v=2026.11.22.1" alt="AP Math">
       <div class="brand-copy">
         <div class="brand-main">AP Math OS</div>
         <div class="brand-sub">학생 포털</div>
@@ -55,7 +56,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.11.11.4';
+    const STUDENT_APP_VERSION = '2026.11.22.1';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -75,6 +76,7 @@
     let homeData = null;
     let homeIndex = null;
     let omrData = null;
+    let similarLinksMap = null; // past exam -> similar files (small build-time map); null until loaded, {} when absent
     let omrIndex = null;
     let omrLoadedAssignmentId = null;
     let omrDraft = null;
@@ -1625,6 +1627,22 @@
       omrIndex = null;
       return omrData;
     }
+    // 유사문제 연결 표(빌드가 만든 작은 JSON). 실패해도 목록은 그대로 나오고 유사 입구만 빠진다.
+    async function loadSimilarLinks() {
+      if (similarLinksMap) return similarLinksMap;
+      similarLinksMap = window.StudentSimilarLink
+        ? await window.StudentSimilarLink.load(window.fetch.bind(window), window.location.href)
+        : {};
+      return similarLinksMap;
+    }
+    function renderSimilarEntry(exam) {
+      if (!window.StudentSimilarLink || !similarLinksMap) return '';
+      return window.StudentSimilarLink.renderEntry(exam, similarLinksMap, {
+        baseUrl: window.location.href,
+        returnTarget: window.StudentArchiveReviewOutput?.studentReturnTarget?.(window.location.href) || '',
+        escapeHtml
+      });
+    }
     function getOmrExams() {
       return Array.isArray(omrData?.exams) ? omrData.exams : [];
     }
@@ -1879,7 +1897,7 @@
         </div>
       `;
       try {
-        await loadOmrExams(true);
+        await Promise.all([loadOmrExams(true), loadSimilarLinks()]);
         if (!isStudentRequestCurrent(request) || !isStudentViewCurrent(view, 'omr-list')) return;
         const exams = getVisibleOmrExams();
         const root = document.querySelector('.omr-browser');
@@ -1940,6 +1958,7 @@
               ${isTeacherPreview || submitted ? '' : submissionUnknown || exam.is_review_only || exam.is_cancelled || exam.is_replaced ? '' : `<button class="btn btn-primary omr-start" onclick="renderOmrInput('${escapeHtml(exam.assignment_id)}')">틀린 번호 체크 <span class="button-meta">OMR</span></button>`}
             </div>
           ` : ''}
+          ${showReview ? renderSimilarEntry(exam) : ''}
           ${lineage ? `<details class="exam-lineage"><summary>연결된 시험 보기 <span aria-hidden="true">＋</span></summary>${lineage}</details>` : ''}
         </article>
       `;
