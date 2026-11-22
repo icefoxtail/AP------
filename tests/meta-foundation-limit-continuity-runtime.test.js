@@ -18,7 +18,8 @@ const sourceKey = (file, ordinal) => C.normalizeFile(file) + "#" + Number(ordina
 
 const runtime = readJson("archive/data/meta-foundation/runtime/limit-continuity-v1.json");
 const receipt = readJson("archive/data/meta-foundation/runtime/runtime-bridge-receipt.json");
-const catalog = C.decodeCatalog(readJson("archive/data/archive2-catalog.json"));
+// complete rows: approvedSourceFingerprint and the evidence columns are in the evidence file, not the downloaded catalog
+const catalog = require("../archive/tools/archive2-catalog-evidence.cjs").readCatalog({ root });
 
 assert.strictEqual(runtime.packId, "LIMIT_CONTINUITY");
 assert.strictEqual(runtime.status, "ACTIVE");

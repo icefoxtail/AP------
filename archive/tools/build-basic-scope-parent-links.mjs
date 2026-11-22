@@ -5,6 +5,7 @@ import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import core from '../archive2-core.js';
 import sourceBank from '../archive2-source.js';
+import catalogEvidence from './archive2-catalog-evidence.cjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const read = rel => fs.readFileSync(path.join(root, rel), 'utf8').replace(/^\uFEFF/, '').replace(/\r\n/g, '\n');
@@ -166,8 +167,9 @@ vm.runInNewContext(read('archive/meta-foundation-runtime.js'), {
     return { ok: true, text: async () => body, json: async () => JSON.parse(body) };
   },
 });
-const catalogText = read('archive/data/archive2-catalog.json');
-const catalog = await window.applyArchiveMetaFoundationCatalog(core.decodeCatalog(JSON.parse(catalogText)));
+// The audit-parent rules below read metadataAssignmentEvidence (evidenceRefs, fieldStatus, ...), which the downloaded catalog no longer
+// carries for most rows; readCatalog() merges the evidence file back in.
+const catalog = await window.applyArchiveMetaFoundationCatalog(catalogEvidence.readCatalog({ root }));
 const uniqueParent = candidates => {
   const mapped = new Map(candidates.map(link => [[link.courseKey, link.L1, link.L2].join('|'), link]));
   return mapped.size === 1 ? [...mapped.values()][0] : null;

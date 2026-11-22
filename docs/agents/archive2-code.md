@@ -404,3 +404,10 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 실측(이 PC, 캐시 없는 새 프로필): 시험지 하나 열기가 `data/question_metadata.json`(압축 전 87.6MB, gzip 15.3MB)을 받고 해석한 뒤에야 첫 문항을 그렸다(전송 17.7MB 중 15.3MB, 20Mbps로 약 7초). 그림 그리는 데는 이 메타를 읽지 않는다: `render-authority.js` 등에 `_archiveMetadata`·`standardUnitKey` 사용이 없고, 채워지는 `standardUnitKey` 등은 반 출제 등록(`submitQr=1` / `osqr=1`)이 서버로 보내는 값뿐이다.
 - `engine.html`은 등록 주소일 때만 `question-meta.js`를 불러온다(`<script id="engine-metadata-gate">`, 같은 자리에서 `document.write`라 순서·`await window.__ARCHIVE_METADATA_READY__`는 그대로). 평소 열기(`engine.html?data=exams/<file>&mode=exam|sol|ans`)는 sidecar 요청이 없다. 이유: 믹스 리더(`output-metadata-loader.js`)가 이미 같은 규칙이다. 테스트: `tests/archive-engine-original-metadata-on-demand.test.js`.
 - 이 규칙을 되돌리지 않는다. 등록 주소에 새 이름이 생기면 위 게이트의 조건에 함께 넣는다.
+
+## 카탈로그는 두 파일: 화면이 받는 것과 검수·근거 (2026-11-22, 선생님 속도 실측 후속)
+
+- `archive/data/archive2-catalog.json`은 선생님 화면과 Worker가 받아 읽는 값만 둔다. 화면·Worker가 읽지 않는 검수·근거 값(`metadataAssignmentEvidence`의 증거 경로·해시, `metaProjection.parentBinding`·`sourceBinding`의 증거 경로·해시, `approvedSourceFingerprint`)은 `archive/data/archive2-catalog-evidence.json`으로 옮긴다. 화면은 이 파일을 받지 않는다(Pages 릴리스 목록에도 없다). 이유: 카탈로그 73MB(gzip 11.8MB) 중 이런 값이 큰 몫이었고, 선생님이 들어올 때마다 받아 해석했다.
+- 빌더(`build-archive2-catalog.mjs`)가 두 파일을 같이 쓰고 `--check`도 둘 다 본다. 쓰는 규칙은 `archive/tools/archive2-catalog-evidence.cjs` 한 곳이다. 빌더는 매번 같은 입력으로 `resolveCatalog`를 얇은 카탈로그와 전체 카탈로그에 돌려 결과가 같은지 확인하고 다르면 멈춘다. `resolveCatalog`는 등록 영수증이나 검수 덮어쓰기가 가리키는 문항에서만 `metadataAssignmentEvidence`를 통째로 읽으므로 그 문항은 전체 값을 카탈로그에 남긴다.
+- 완전한 레코드가 필요한 도구·테스트는 `archive2-catalog-evidence.cjs`의 `readCatalog({ root })`로 읽는다(증거 파일을 합쳐 준다, 표지(`catalogEvidence`)가 없는 옛 카탈로그는 그대로 돌려준다). 화면 코드가 새로 이 값들을 읽어야 하면 읽지 말고 얇은 카탈로그에 남기는 값을 먼저 늘린다(`tests/archive2-catalog-evidence.test.js`가 화면 스크립트가 옮겨진 이름을 읽는지 잡는다).
+- 손으로 카탈로그를 고치는 일회성 등록 도구(`register-target-exam.mjs`, `register-existing-target-exam-update.mjs`)는 두 파일 구조를 못 쓴다. 표지가 있는 카탈로그를 만나면 멈춘다. 등록은 등록기(빌더)로 한다.

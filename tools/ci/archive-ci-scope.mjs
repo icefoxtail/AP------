@@ -27,7 +27,7 @@ const CONTENT_BROWSER_DEPENDENCIES = new Set([
 export const TECHNICAL_INPUTS = Object.freeze({
   metadata: Object.freeze([
     'archive/data/question_identity_map.json',
-    'archive/data/archive2-catalog.json', 'archive/data/archive2-canonical-input-manifest.json',
+    'archive/data/archive2-catalog.json', 'archive/data/archive2-catalog-evidence.json', 'archive/data/archive2-canonical-input-manifest.json',
     'archive/data/archive2-canonical-projection-policy.json', 'archive/data/archive2-item-review-overrides.json',
     'archive/data/archive2-source-verification-index.json', 'archive/data/archive2-source-verification-index-v2.json',
     'archive/data/basic-scope-source-links.json',

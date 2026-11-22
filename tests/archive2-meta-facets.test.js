@@ -14,6 +14,7 @@ const archiveSource = require('../archive/archive2-source.js');
 const Unified = require('../archive/archive2-unified-units.js');
 const UnitCore = require('../archive/unit-past-exams-core.js');
 const ProblemBankMeta = require('../archive/problem-bank-meta.js');
+const catalogEvidence = require('../archive/tools/archive2-catalog-evidence.cjs');
 const { productionCatalog } = require('./helpers/archive2-scope-harness.cjs');
 const { loadWorkspace, assertWorkspaceScriptVersions } = require("./helpers/archive2-workspace-source.cjs");
 
@@ -699,8 +700,10 @@ test('display projection: exact bytes by default; content-bound only on opt-in a
     metaByUid.get(row.questionUid)?.sourceFingerprint !== row.sourceFingerprint && row.metaProjectionStatus === 'DISPLAY_ONLY_SOURCE_BOUND');
   assert.ok(projected, 'a content-bound record is now projected');
   assert.equal(projected.metaProjection.sourceBinding.bindingMode, 'CONTENT_BOUND_SOURCE_REVISED');
-  assert.equal(projected.metaProjection.sourceBinding.approvedSourceFingerprint, metaByUid.get(projected.questionUid).sourceFingerprint);
-  assert.notEqual(projected.metaProjection.sourceBinding.approvedSourceFingerprint, projected.sourceFingerprint);
+  // The downloaded catalog keeps only bindingMode and catalogSourceJsSha256 of sourceBinding; the approved fingerprint is in the evidence file.
+  const completeProjection = catalogEvidence.readCatalog({ root }).records.find(row => row.questionUid === projected.questionUid).metaProjection;
+  assert.equal(completeProjection.sourceBinding.approvedSourceFingerprint, metaByUid.get(projected.questionUid).sourceFingerprint);
+  assert.notEqual(completeProjection.sourceBinding.approvedSourceFingerprint, projected.sourceFingerprint);
   const exact = data.records.find(row => row.metaBinding && metaByUid.get(row.questionUid)?.sourceFingerprint === row.sourceFingerprint && row.metaProjectionStatus === 'DISPLAY_ONLY_SOURCE_BOUND');
   assert.equal(exact.metaProjection.sourceBinding.bindingMode, 'EXACT');
   const input = row => ({
