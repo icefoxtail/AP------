@@ -67,9 +67,13 @@ test('the observer reads the bracket and the single degree sign from the glyphs,
   // a degree label whose circle glyph is gone, and one that stands on a pi glyph
   assert.ok(codes(await observe(spliceLabel(composed.svg,'aBOC-label',text=>text.replace('data-c="2218"','data-c="2219"')))).includes('LABEL_DEGREE_SIGN_MISMATCH'));
   assert.ok(codes(await observe(spliceLabel(composed.svg,'aBOC-label',text=>text.replace('data-c="31"','data-c="1D70B"')))).includes('LABEL_DEGREE_OF_RADIAN_VALUE'));
-  // a sum the plan already brackets, or whose terms name the unit, is not asked to be bracketed again
+  // a sum the plan already brackets is not asked to be bracketed again
   const bracketed=JSON.parse(JSON.stringify(marks));bracketed.expressionLabels[0].text='(4+x)';
   assert.ok(!codes(await observe(composed.svg,bracketed)).includes('LABEL_UNIT_SUM_NOT_BRACKETED'));
+  // a sum whose term is spelled like the unit (cm+1 beside cm) still has to stand in brackets: the unbracketed drawing fails
+  const spelled=JSON.parse(JSON.stringify(marks));spelled.expressionLabels[0].text='cm+1';
+  const bare=spliceLabel(spliceLabel(composed.svg,'nOB',text=>text.replace('data-c="28"','data-c="5B"')),'nOB',text=>text.replace('data-c="29"','data-c="5D"'));
+  assert.ok(codes(await observe(bare,spelled)).includes('LABEL_UNIT_SUM_NOT_BRACKETED'));
 });
 
 test('a degree sign on a pi value is refused before drawing, and a degree sign already written is not doubled',async()=>{

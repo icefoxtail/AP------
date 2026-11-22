@@ -115,20 +115,31 @@ class LabelNotationTests(unittest.TestCase):
                 self.assertEqual(serialize(tree,'tex'),tex);self.assertEqual(serialize(tree,'plain'),plain)
                 self.assertEqual(''.join(ET.fromstring('<text>'+serialize(tree,'svg')+'</text>').itertext()),plain)
         self.assertEqual(serialize(Expr('unit','cm',(parse('4+x'),)),'tex'),r'(4+x)\,\mathrm{cm}')
-    def test_two_numbers_side_by_side_keep_the_product_sign(self):
-        # "3 2^x" would be drawn 32^x: a number followed by a number keeps its dot; a name such as A5 or S1 and a coefficient before a letter do not get one
-        self.assertEqual(serialize(parse('y=3 2^(x)'),'tex'),r'y=3\cdot 2^{x}')
+    def test_numbers_joined_only_by_a_space_are_refused_not_guessed(self):
+        # "x=-1 0 1" is a list of values and "3 2^x" a product: nothing tells them apart, so neither a dot nor a run-together number is drawn
+        for source in ('2 3','2 3 4','x=-1 0 1','y=2 (x=-1 0 1)','y=3 2^(x)','-2 3','x+2 3','2^3 4','1/2 3'):
+            with self.subTest(source=source),self.assertRaises(ValueError) as caught:parse(source)
+            self.assertEqual(str(caught.exception),'NUMBER_JUXTAPOSITION_UNCLEAR')
+        # written as a product (*) or as a list (commas), or with a letter / bracket between, they read as written
         self.assertEqual(serialize(parse('y=3*2^(x)'),'tex'),r'y=3\cdot 2^{x}')
-        self.assertEqual(serialize(parse('2 3'),'plain'),'2·3')
-        for source in ('A5','S1','r2','3x','2(x+1)','3e^(x)','2sqrt(3)'):
-            with self.subTest(source=source):self.assertNotIn('cdot',serialize(parse(source),'tex'))
+        self.assertEqual(serialize(parse('x=(-1,0,1)'),'plain'),'x=(−1,0,1)')
+        for source in ('A5','S1','r2','3x','2(x+1)','3e^(x)','2sqrt(3)','(2)3','x 2','2x 3','32','3.5'):
+            with self.subTest(source=source):
+                self.assertNotIn('cdot',serialize(parse(source),'tex'))
+    def test_a_label_naming_an_angle_without_a_value_is_not_a_degree_value(self):
+        for text in ('∠B','△ABC','∠ABC'):
+            with self.subTest(text=text):self.assertEqual(self.refused(self.degree(text)),'DEGREE_LABEL_NEEDS_VALUE')
+        self.assertEqual(serialize(self.degree('∠B=4x'),'plain'),'∠B=4x°')
+        self.assertEqual(serialize(parse('∠B=40°'),'plain'),'∠B=40°')
     def test_the_unit_of_an_equation_label_follows_its_right_side(self):
         # the engine wraps only the right side of "x=4+y" in the quantity (tree: x = quantity(4+y))
         tree=Expr('binary','=',(parse('x'),self.quantity('4+y','cm')))
         self.assertEqual(serialize(tree,'tex'),r'x=(4+y)\,\mathrm{cm}')
         self.assertEqual(serialize(tree,'plain'),'x=(4+y) cm')
-    def test_a_sum_whose_terms_name_the_unit_is_left_as_written(self):
-        self.assertNotIn('(',serialize(self.quantity('3cm+2cm','cm'),'tex'))
+    def test_a_unit_given_beside_a_sum_brackets_it_even_when_a_variable_is_spelled_like_the_unit(self):
+        for text,unit,plain in (('s+1','s','(s+1) s'),('m+1','m','(m+1) m'),('x+m','m','(x+m) m'),('1+g','g','(1+g) g')):
+            with self.subTest(text=text,unit=unit):self.assertEqual(serialize(self.quantity(text,unit),'plain'),plain)
+        self.assertEqual(serialize(self.quantity('s','s'),'plain'),'s s')   # a lone variable is not a sum
     def test_only_a_sum_is_bracketed(self):
         for text in ('3','x','2x','x/2','3*sqrt(3)','4*pi','(x+2)'):
             with self.subTest(text=text):self.assertEqual(serialize(self.quantity(text,'cm'),'plain').count('('),text.count('('))
@@ -180,6 +191,14 @@ class LabelNotationTests(unittest.TestCase):
         self.assertEqual(serialize(parse('a-(-2)x'),'plain'),'a−(−2)x')
         self.assertEqual(serialize(parse('(1/2)x'),'tex'),r'({\displaystyle\frac{1}{2}})x')   # a fraction keeps the notation it always had
         self.assertEqual(evaluate(parse('(6)x-1'),{'x':2}),11)   # the written label changes, not the value
+    def test_a_label_is_never_half_unbracketed(self):
+        # y=(3)+(2)x+(-1)x^2 keeps every bracket (taking them off the coefficients only would leave (3) and (-1) beside 2x); the plain forms lose all of them
+        for source in ('y=(3)+(2)*x+(-1)*x^2','y=(0)*x+(0)','y=(6)x+(3)','y=(2)x+(-3)'):
+            with self.subTest(source=source):
+                kept=serialize(parse(source),'tex')
+                import re;self.assertEqual(re.findall(r'\(-?\d+\)',kept.replace('−','-')),re.findall(r'\(-?\d+\)',source))
+        for source,plain in (('y=(6)x+3','y=6x+3'),('y=(2)x+(3)x'.replace('(3)x','3x'),'y=2x+3x'),('y=(-2)x+3','y=−2x+3')):
+            with self.subTest(source=source):self.assertEqual(serialize(parse(source),'plain'),plain)
     def test_ratio_binds_tighter_than_the_equals_sign_and_looser_than_a_sum(self):
         self.assertEqual(serialize(parse('a:b=2:3'),'tex'),'a:b=2:3')
         self.assertEqual((parse('1+2:3').value,parse('1+2:3').args[0].value),(':','+'))

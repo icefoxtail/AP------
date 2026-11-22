@@ -41,9 +41,10 @@ test('the exponent is typeset as one superscript: 2^{2x}, 2^{-x}, 2^{x/2}, never
     if(row.k==='1/2')assert.ok(source.includes('\\frac{x}{2}'),source);
   });
 });
-test('a number times a number is never written side by side: 3*2, 3 2, 1/2*3 keep a dot',()=>{
-  const texts=['y=3*2^(x)','y=3 2^(x)','y=-2*3^(2x)','y=1/2*3^(x)','y=3*4','y=2 3','x=5*7^(2)'];
+test('a number times a number written with * keeps its dot; digits joined only by a space are refused, not guessed',()=>{
+  const texts=['y=3*2^(x)','y=-2*3^(2x)','y=1/2*3^(x)','y=3*4','x=5*7^(2)'];
   const out=serializeAll(texts);
   out.forEach((row,index)=>{assert.ok(Array.isArray(row),texts[index]+' '+row);assert.ok(row[0].includes('\\cdot '),texts[index]+' => '+row[0]);assert.ok(!/\d\d/.test(row[0].replace(/\\cdot /g,'.').replace(/\^\{[^}]*\}/g,'').replace(/\\frac\{\d+\}\{\d+\}/g,'F')),row[0]);});
   assert.equal(serializeAll(['y=3x','y=2(x+1)','y=-x','y=2x^2+3x','y=3sqrt(2)'])[0][0],'y=3x');
+  assert.deepEqual(serializeAll(['y=3 2^(x)','y=2 3','x=-1 0 1','2 3 4']),Array(4).fill('ERR:NUMBER_JUXTAPOSITION_UNCLEAR'));
 });

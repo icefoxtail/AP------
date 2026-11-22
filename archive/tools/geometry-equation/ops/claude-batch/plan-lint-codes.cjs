@@ -159,6 +159,14 @@ rule(/^DEGREE_OF_RADIAN_VALUE$/, () => ({ reason: 'π 가 든 값 뒤에 도(°)
 rule(/^KOREAN_WORD_NEEDS_TEXT_LABEL$/, c => ({ reason: `수식 라벨에 한글 낱말 ${q(c.arg)} 이(가) 있다. 수식 조판(MathJax)은 한글 글자를 못 그려서 수식 라벨로는 쓸 수 없다.`,
   fix: '그 라벨을 평문으로 쓴다: expressionLabels·arcs·dimensions 등에 "labelKind":"TEXT", 자유 글은 textLabels(한글이 있으면 자동 TEXT), 공통변은 commonSides.' }));
 rule(/^KOREAN_UNIT_NEEDS_TEXT_LABEL$/, () => ({ reason: '단위가 한글(초·분·개·원 …)이다. 수식 조판은 한글 단위를 못 그린다.', fix: '값과 단위를 합쳐 평문 라벨로 쓴다("labelKind":"TEXT", "label":"12초").' }));
+rule(/^NUMBER_JUXTAPOSITION_UNCLEAR$/, c => { // visual_engine/math_expression.py (Parser.expr)
+  const body = { ...c.plan }; for (const k of ['caption', 'accessibilityDescription', 'sourceConditions', 'newVisualInformation']) delete body[k]; // 그림 안 글만 찾는다
+  const hit = findString(body, s => /\d\s+\d/.test(s) && s.length <= 60);
+  return { reason: `라벨 식에 수와 수가 공백으로만 이어져 있다${hit ? ` (plan ${hit.path}: ${q(hit.text.slice(0, 40))})` : ''}. 나열(-1 0 1)인지 곱(3 2^x)인지 글만으로는 알 수 없어서 엔진은 점을 찍거나 붙여 쓰지 않고 거절한다.`,
+    fix: '곱이면 * 로 쓴다("3*2^(x)" → 3·2^x). 값을 나열하면 쉼표로 쓰고 괄호나 textLabels 로 묶는다("(-1,0,1)", 또는 라벨 하나에 한 값씩).' };
+});
+rule(/^DEGREE_LABEL_NEEDS_VALUE$/, () => ({ reason: '도(°) 라벨에 값 없이 각 이름만 있다(∠B, △ABC). 엔진이 °를 붙이면 ∠B° 가 되어 크기가 아닌 이름에 도 기호가 붙는다.',
+  fix: '이름만 보이려면 labelKind "NAME"(angles[].label "B" → ∠B), 값을 보이려면 label 에 값을 쓴다("∠B=40" 은 ∠B=40°, 또는 숫자만 "40"). ∠ 와 °는 라벨에 직접 쓰지 않는 것이 기본이다.' }));
 rule(/^FIGURE_NAME_INVALID$/, c => ({ reason: `∠ △ □ 뒤에는 도형 이름(영문자 1~6자: ∠ABC, △ABC, □ABCD)이 와야 한다(${q(c.arg)}).`, fix: '기호 바로 뒤에 점 이름 글자를 이어 쓴다. 각 이름만 보이려면 labelKind "NAME" 도 된다("ABC" → ∠ABC).' }));
 rule(/^MATHJAX_TYPESET_ERROR$/, c => {
   const t = c.extra && c.extra.labelText ? String(c.extra.labelText) : '';

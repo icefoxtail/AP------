@@ -583,9 +583,9 @@ def audit(p):
             return
         if node.get('data-text') is not None:errors.append('LABEL_KIND_MISMATCH:'+label_id)
         vector_label_check(label_id,node,str(text))
-        # (EXT-20261122) Two numbers written as a product (3*2^x, 3 2^x) are drawn with a dot between them, never side by side as one number (32^x): this observer's own reading of the plan
+        # (EXT-20261122) Two numbers written as a product (3*2^x) are drawn with a dot between them, never side by side as one number (32^x): this observer's own reading of the plan
         # text counts the products, and the glyphs drawn must carry at least as many dot operators (MathJax code 22C5).
-        written_products=len(re.findall(r'\d\s*\*\s*\d|\d\s+\d',str(text)))
+        written_products=len(re.findall(r'\d\s*\*\s*\d',str(text)))     # a product is written with *; digits only separated by a space are refused by the engine (NUMBER_JUXTAPOSITION_UNCLEAR), never read as a product
         if written_products and codes.count('22C5')<written_products:errors.append('LABEL_PRODUCT_SIGN_MISSING:'+label_id)
         if not unit:return
         # (EXT-20261122) A unit is letters (cm), a ratio of letters (km/h) or letters with a power (cm^2): the glyphs drawn are the letters and the slash, then the power digit.
@@ -600,13 +600,13 @@ def audit(p):
             if len(codes)!=1+len(tail) or codes[0] not in code_variants(value):errors.append('LABEL_TEXT_MISMATCH:'+label_id)
         else:
             # (EXT-20261122) A sum or difference with the unit after it ("4+x" cm) is one length: this observer's own reading of the plan text says the unit follows a bracketed sum, so the
-            # drawn glyphs must open with "(" and close with ")" right before the unit (a sum already bracketed by the plan, or whose terms name the unit, is not asked again).
+            # drawn glyphs must open with "(" and close with ")" right before the unit (a sum already bracketed by the plan is not asked again; a variable spelled like the unit does not change that).
             flat=re.sub(r'\s+','',value);depth=0;bare_sum=False
             for index,ch in enumerate(flat):
                 if ch=='(':depth+=1
                 elif ch==')':depth-=1
                 elif depth==0 and index>0 and ch in '+-±' and flat[index-1] not in '(+-±*/^=<>':bare_sum=True
-            if bare_sum and not re.search(r'[=<>,]',flat) and not re.search(r'(?<![A-Za-z])'+re.escape(unit_hit.group(1) if unit_hit else unit)+r'(?![A-Za-z])',flat):
+            if bare_sum and not re.search(r'[=<>,]',flat):
                 if len(codes)<len(tail)+2 or codes[0]!='28' or codes[-len(tail)-1]!='29':errors.append('LABEL_UNIT_SUM_NOT_BRACKETED:'+label_id)
             return          # any other expression: the unit glyphs above are all this observer can read back
         if node.get('data-tex')!=value+(r'\,' if value[-1].isalpha() else '')+unit_tex:errors.append('LABEL_UNIT_SPACING_MISMATCH:'+label_id)

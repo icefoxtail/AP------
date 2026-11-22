@@ -109,11 +109,21 @@ class Parser:
             implicit=op=='(' or op=='√' or (op!='EOF' and (op[0].isdigit() or op.isalpha()))
             priority=20 if implicit else powers.get(op,-1)
             if priority<bp:break
+            if implicit and op[0].isdigit() and _number_end(left):
+                # "2 3", "x=-1 0 1": digits are one token, so a number that follows a number can only be written after a space. It may be a list or a product: nothing here may guess (and draw a dot or run the digits together)
+                raise ValueError('NUMBER_JUXTAPOSITION_UNCLEAR')
             if implicit:kind='implicit'
             else:self.take();kind=op
             right=self.expr(priority if op=='^' and not implicit else priority+1,depth+1)
             left=self.node('binary',kind,(left,right))
         return left
+
+def _number_end(node):
+    """The expression ends in a number (3, -3, x+3, 2^3): a number written right after it, with only a space between, is neither a list nor a product it can be told from."""
+    if node.kind=='number':return True
+    if node.kind=='unary':return _number_end(node.args[0])
+    if node.kind=='binary':return _number_end(node.args[1])
+    return False
 
 def parse(source):
     parser=Parser(source); result=parser.expr()
@@ -155,8 +165,8 @@ def _ends_with_degree(node):
     return False
 
 def _sums_a_value(node,unit):
-    """A sum or difference (4+x, 12-t) that a unit is written after: the unit belongs to the whole sum, so it is bracketed (4+x) cm. A sum whose terms already name the unit is left as written."""
-    return node.kind=='binary' and node.value in {'+','-','±'} and not any(inner.kind=='symbol' and inner.value==unit for inner in _walk(node))
+    """A sum or difference (4+x, 12-t) that a unit is written after: the unit belongs to the whole sum, so it is bracketed (4+x) cm, even when a variable of the sum is spelled like the unit (s+1 with unit s)."""
+    return node.kind=='binary' and node.value in {'+','-','±'}
 
 def _unit_tail(unit,mode,escape):
     """A unit as it is written after a value: upright letters, a ratio (km/h) as written, a power (cm^2) raised."""
@@ -193,10 +203,22 @@ def _tidy(node,lead=True):
     if node.kind in {'group','call'}:return Expr(node.kind,node.value,tuple(_tidy(child,True) for child in node.args))
     return Expr(node.kind,node.value,tuple(_tidy(child,False) for child in node.args))
 
+def _leftover_integer_brackets(node,exponent=False):
+    """A bracketed whole number that is still in the tree and is not an exponent (x^(2) keeps its brackets, as it always has)."""
+    if node.kind=='group' and not exponent and _integer_in_brackets(node) is not None:return True
+    for index,child in enumerate(node.args):
+        if _leftover_integer_brackets(child,node.kind=='binary' and node.value=='^' and index==1):return True
+    return False
+
 def serialize(node,mode='tex'):
     """TeX, readable plain notation, or SVG text runs with real super/subscripts."""
     if _degree_of_radian(node):raise ValueError('DEGREE_OF_RADIAN_VALUE')
-    return _render(_tidy(node),mode)
+    if any(part.kind=='degree' and part.args[0].kind=='prefix' for part in _walk(node)):raise ValueError('DEGREE_LABEL_NEEDS_VALUE')   # ∠B° : a name with no value is not a number of degrees
+    tidy=_tidy(node)
+    # A label is written either with its whole-number brackets taken off or as it was: a bracket left on another whole number ((3)+2x+(-1)x^2) means this is not the plain form,
+    # and a polynomial with half its brackets gone reads worse than either.
+    if _leftover_integer_brackets(tidy):tidy=node
+    return _render(tidy,mode)
 
 def _render(node,mode):
     def s(v):return _render(v,mode)
@@ -315,9 +337,6 @@ def _render(node,mode):
         if op=='*' and rt and not rt[0].isdigit() and rt[0] not in '.-−':
             # Implicit product (3x, 2√5, 3(x+1)): no multiplication dot after a number, a group, or (tex only) a stacked fraction.
             if left.kind in {'number','group'} or (left.kind=='unary' and left.value=='-' and left.args[0].kind=='number') or (mode=='tex' and left.kind=='binary' and left.value=='/'):return operand(left)+rt
-        if op=='implicit' and (left.kind=='number' or (left.kind=='unary' and left.value=='-' and left.args[0].kind=='number')) and rt and rt[0].isdigit():
-            # Two factors written side by side with a number second (3 2^x, x 2) would read as one number or a subscript (32^x, x2): the product sign stays.
-            return operand(left)+('\\cdot ' if mode=='tex' else '·')+rt
         return operand(left)+escape(mapped.get(op,op))+rt
     raise ValueError('UNKNOWN_AST_NODE')
 
