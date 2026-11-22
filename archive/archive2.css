@@ -3218,6 +3218,13 @@ body[data-archive-view="compose"] .compose-step-number {
   font-size: 14px;
   font-weight: 700;
 }
+/* 교과서 줄: 출판사 · 과목이 단원 이름 위에 먼저 읽힌다. */
+.exam-row-tbhead {
+  margin-bottom: -4px;
+  color: var(--brand-ink);
+  font-size: 14px;
+  font-weight: 700;
+}
 .exam-row-meta {
   display: flex;
   flex-wrap: wrap;
@@ -3891,7 +3898,7 @@ body[data-archive-view="compose"] .compose-step-number {
   }
   .find-surface .material-switch {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr) minmax(0, 1.4fr) minmax(0, 0.8fr);
   }
   .find-surface .material-switch button {
     padding: 0 4px;

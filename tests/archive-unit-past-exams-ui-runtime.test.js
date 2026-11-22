@@ -572,3 +572,32 @@ test('유형 거르기 중에 단원 칸을 풀면 나머지 소단원 칸은 �
   assert.doesNotMatch(cells, new RegExp(`~${system.key}\\|none`));
   assert.match(bar(runtime), /1문항 · 1권/);
 });
+
+test('권 목록의 "문제지 만들기에서 열기"는 그 권의 UID 목록을 기존 ?uid= 길로 새 창에 넘긴다', () => {
+  const opened = [];
+  const runtime = createRuntime({ window: { open: (url, target) => { opened.push({ url, target }); return {}; } } });
+  const api = runtime.window.UnitPastExams;
+  api.gridSelectGrade('h1');
+  api.gridToggleCell('H22-C-01', 'none');
+  api.gridShowPapers();
+  const html = runtime.getElement('unit-content').innerHTML;
+  assert.match(html, /openPaperInCompose\('__grid__', 'grid-1', this\)[^>]*>문제지 만들기에서 열기</);
+  // 시험지·해설·정답·고치기·출제는 그대로다.
+  for (const label of ['시험지', '해설', '정답', '고치기', '출제']) assert.match(html, new RegExp(`>${label}</button>`));
+
+  api.openPaperInCompose('__grid__', 'grid-1');
+  assert.equal(opened.length, 1);
+  assert.equal(opened[0].target, '_blank');
+  const url = new URL(opened[0].url, 'http://unit.test/archive/unit-past-exams.html');
+  assert.equal(url.pathname, '/archive/workspace.html');
+  assert.equal(url.searchParams.get('view'), 'compose');
+  assert.deepEqual(url.searchParams.getAll('uid'), ['runtime-uid'], '그 권의 문항 UID만, 새 전달 형식 없음');
+  assert.match(runtime.getElement('unit-status').textContent, /1문항을 문제지 만들기에서 열었습니다/);
+
+  // 한도: 문항 수와 주소 길이에 걸리면 창을 열지 않고 한국어로 알린다.
+  const many = n => ({ records: Array.from({ length: n }, (_, i) => ({ questionUid: `qid_v1_${String(i).padStart(64, '0')}` })) });
+  assert.match(api.composeEntryUrl(many(401)).error, /400문항까지만/);
+  assert.match(api.composeEntryUrl(many(120)).error, /문항이 많아 .* 넘길 수 없습니다/);
+  assert.match(api.composeEntryUrl({ records: [{}] }).error, /알아볼 수 없어/);
+  assert.ok(api.composeEntryUrl(many(80)).url, '한 권 최대 80문항은 넘길 수 있다');
+});

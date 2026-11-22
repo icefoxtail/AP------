@@ -31,7 +31,7 @@
     return uids;
   }
 
-  const levelLabel = (d) => (d == null ? "단계 없음" : d >= 4 ? "4~5단계" : `${d}단계`);
+  const levelLabel = (d) => (d == null ? "단계 없음" : `${d}단계`);
 
   async function fetchJson(rel) {
     const response = await fetch(new URL(rel, document.baseURI), { cache: "no-cache" });
