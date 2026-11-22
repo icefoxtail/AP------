@@ -31,6 +31,7 @@ import { isLegacyPathFormulaUid } from "./reviewed-exam-registration-v2.mjs";
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
 import { loadCourseAliases, makeCourseAliases } from "./course-aliases.mjs";
 import { readBundleTables, prepareNewKeys } from "./new-type-keys.mjs";
+import { createGradeBindings, GRADE_BINDING_REASONS, loadTagMaster, loadCourseGroupNames } from "./grade-bindings.mjs";
 import { classifyMetaBinding, textFingerprint } from "./text-binding-lib.mjs";
 import { createRequire } from "node:module";
 // Text binding of a question (stem + choices; archive/question-binding.js, decision "메타 결속 지문 범위"): used to see whether the
@@ -207,7 +208,7 @@ const gitBlob = (root, rel, bytes) => fs.existsSync(path.join(root, ".git"))
 const SKIP_ORDER = ["DUPLICATE_RESULT_LINE", "DECISION_NEW_KEY_NOT_HANDLED", "DECISION_HOLD", "DECISION_UNKNOWN"];
 // ctx: { records: Map uid->row, identity: Map uid->identity, identityCountBySource: Map, registry, readBank(file) -> {bank, bytes}, blobOf(file, bytes) }
 export function planRequests({ ctx, resultRows, exams = null, limit = null, approvedBy, judge = "dots", allowPackAdditions = false, includeReceiptRows = false, replaceDraft = false, approveSameDraft = false, excludeUids = null }) {
-  const skipped = [], stats = { judgedBase: { checked: 0, unverified: 0 } };
+  const skipped = [], stats = { judgedBase: { checked: 0, unverified: 0, changedKept: 0 }, gradeBindingRows: 0 };
   const aliases = ctx.aliases || makeCourseAliases(null);
   const skip = (row, reason, extra = {}) => skipped.push({ uid: row.uid, exam: row.exam ?? null, no: row.no ?? null, decision: row.decision ?? null, reason, ...extra });
   const wanted = exams ? new Set(exams.map(normalizeExam)) : null;
@@ -278,28 +279,35 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
       if (!q) { skip(row, "SOURCE_QUESTION_MISSING"); continue; }
       // The result line's own question number must be this row's ordinal (a shifted table would put a type on the wrong question).
       if (row.no !== undefined && row.no !== null && Number(row.no) !== m.sourceOrdinal) { skip(row, "RESULT_NO_DIFFERS_FROM_SOURCE_ORDINAL", { ordinal: m.sourceOrdinal }); continue; }
-      // The judgment was made on the exam as it stood at the judged base; a changed stem or choices need a new judgment.
+      // 판정 뒤 발문·보기가 바뀌었어도 유형은 그대로 쓴다(2026-11-22, 학원 원장 결정: 원문 오류 수정은 최소 수정이라 풀이 유형이 달라지지 않는다).
+      // 요청은 현재 발문·보기에 묶이고(textBindingFingerprint는 현재 문항), 바뀐 문항은 건수와 원장 줄의 stemChangedSinceJudgment로 남는다.
       // judgedQ: the question as the judge saw it when it can be found; otherwise (unverified, counted) the current one.
-      let judgedQ = q;
+      let judgedQ = q, changedSinceJudgment = false;
       if (ctx.judgedBank) {
         const old = ctx.judgedBank(row, file)?.[m.sourceOrdinal - 1];
         if (!old) stats.judgedBase.unverified++;
         else {
           stats.judgedBase.checked++;
-          if (QuestionBinding.bindingSerialize(old) !== QuestionBinding.bindingSerialize(q)) { skip(row, "STEM_OR_CHOICES_CHANGED_SINCE_JUDGMENT"); continue; }
-          judgedQ = old;
+          if (QuestionBinding.bindingSerialize(old) !== QuestionBinding.bindingSerialize(q)) { stats.judgedBase.changedKept++; changedSinceJudgment = true; }
         }
       }
       if (!id || id.sourceArchiveFile !== m.sourceArchiveFile || id.sourceOrdinal !== m.sourceOrdinal) { skip(row, "IDENTITY_DIFFERS_FROM_ROW"); continue; }
       if (q.questionUid && q.questionUid !== row.uid && !isLegacyPathFormulaUid(q.questionUid, m.sourceArchiveFile, m.sourceOrdinal) &&
           !isUnambiguousLegacySourceUidAlias({ question: q, sourceArchiveFile: m.sourceArchiveFile, sourceOrdinal: m.sourceOrdinal, identityRecord: id, identityMap: ctx.identityDoc, bank })) { skip(row, "SOURCE_UID_DIFFERS_FROM_ROW"); continue; }
       // 시험지 JS에 적힌 유형이 판정과 달라도 거절하지 않는다(2026-11-20, 등록된 판정이 우선; 적힌 값은 등록기가 typeApproval.examEmbeddedType에 기록한다).
-      const picked = chooseScope(ctx.registry, aliases, m, row.pt, { allowPackAdditions });
+      let picked = chooseScope(ctx.registry, aliases, m, row.pt, { allowPackAdditions });
+      // 같은 형태의 키가 다른 학년·교육과정에 있으면 그 키를 쓰고 이 문항의 학년 연결을 add-only로 더한다(2026-11-22, grade-bindings.mjs).
+      if (picked.skip && GRADE_BINDING_REASONS.has(picked.skip) && ctx.gradeBindings) {
+        const made = ctx.gradeBindings.plan(m, row, row.pt);
+        if (made.skip === null) { /* no tag master in this context: the old reason stands */ }
+        else if (made.skip) { skip(row, made.skip, { was: picked.skip }); continue; }
+        else { picked = made; stats.gradeBindingRows++; }
+      }
       if (picked.skip) { skip(row, picked.skip); continue; }
       const textFp = textFingerprint(judgedQ);
       if (!textFp) { skip(row, "STEM_EMPTY"); continue; }
       taken.add(row.uid);
-      items.push({ row, m, scope: picked.scope, textFp, rationale, tplKey, relation: picked.relation, packAddition: picked.packAddition || null, replace });
+      items.push({ row, m, scope: picked.scope, textFp, rationale, tplKey, relation: picked.relation, packAddition: picked.packAddition || null, gradeBinding: picked.gradeBinding || null, changedSinceJudgment, replace });
     }
     // Replacements of draft values never share a request with the blank-field registrations (they are held back as the last batch).
     for (const replace of [false, true]) {
@@ -316,8 +324,10 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
   }
   // New keys (--bundles): their add-only registryChanges ride on the request that sorts first, next to the pack scope additions.
   const keyChanges = ctx.newKeys ? ctx.newKeys.finalize(prepared.flatMap(p => p.items)) : null;
+  // Grade bindings (existing key, this row's grade): add-only bindings.json rows, carried by the same first request as the pack and key changes.
+  const gradeChanges = ctx.gradeBindings ? ctx.gradeBindings.finalize(prepared.flatMap(p => p.items)) : [];
   const fills = prepared.filter(p => !p.replace);
-  const carrierFile = keyChanges?.registryChanges.length ? fills[0]?.file : additions.size ? fills.find(p => p.items.some(i => i.packAddition))?.file : null;
+  const carrierFile = keyChanges?.registryChanges.length || gradeChanges.length ? fills[0]?.file : additions.size ? fills.find(p => p.items.some(i => i.packAddition))?.file : null;
   for (const { file, bank, bytes, items, replace: replacing } of prepared) {
     // Result source: the table file that holds most of this exam's judged lines (ties: path order).
     const bySource = new Map();
@@ -333,9 +343,11 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
     const effectiveJudge = judges.length === 1 ? judges[0] : "mixed";
     const ledger = { schemaVersion: LEDGER_SCHEMA, requestId, sourceArchiveFile: file, judge: effectiveJudge, resultSource,
       rule: "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
-      rows: items.map(({ row, m }) => ({ questionUid: row.uid, sourceOrdinal: m.sourceOrdinal, decision: row._decision ?? row.decision, problemTypeKey: row.pt, templateKey: text(row.tpl) || null,
-        step: row.step ?? null, note: row.note ?? null, figure: row.figure ?? null, check: row.check ?? null, resultFile: row._source.file })),
-      ...(carrier ? { packScopeAdditions: [...additions].sort((a, b) => (a[0] < b[0] ? -1 : 1)).map(([packId, e]) => ({ packId, curricula: [...e.curricula].sort(), standardCourses: [...e.standardCourses].sort() })) } : {}) };
+      rows: items.map(({ row, m, changedSinceJudgment, gradeBinding }) => ({ questionUid: row.uid, sourceOrdinal: m.sourceOrdinal, decision: row._decision ?? row.decision, problemTypeKey: row.pt, templateKey: text(row.tpl) || null,
+        step: row.step ?? null, note: row.note ?? null, figure: row.figure ?? null, check: row.check ?? null, resultFile: row._source.file,
+        ...(changedSinceJudgment ? { stemChangedSinceJudgment: true } : {}), ...(gradeBinding ? { gradeBindingAdded: true } : {}) })),
+      ...(carrier ? { packScopeAdditions: [...additions].sort((a, b) => (a[0] < b[0] ? -1 : 1)).map(([packId, e]) => ({ packId, curricula: [...e.curricula].sort(), standardCourses: [...e.standardCourses].sort() })),
+        ...(gradeChanges.length ? { gradeBindingAdditions: gradeChanges.map(c => ({ problemTypeKey: c.after.problemTypeKey, curriculum: c.after.curriculum, standardCourse: c.after.standardCourse, standardUnitKey: c.after.standardUnitKey, subUnitKey: c.after.subUnitKey ?? null })) } : {}) } : {}) };
     const ledgerText = json(ledger), ledgerPath = `${EVIDENCE_DIR}/${requestId}.type-ledger.json`;
     const ref = { path: ledgerPath, sha256: sha256(ledgerText) };
     files.set(ledgerPath, ledgerText);
@@ -347,7 +359,7 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
         const before = ctx.registry.packs.get(packId);
         return { path: ctx.registry.packFiles.get(packId), before: structuredClone(before),
           after: { ...structuredClone(before), curricula: [...before.curricula, ...[...e.curricula].sort()], standardCourses: [...before.standardCourses, ...[...e.standardCourses].sort()] }, evidenceRefs: [ref] };
-      }), ...(keyChanges?.registryChanges || []).map(change => ({ ...change, evidenceRefs: [ref] }))] } : {}),
+      }), ...(keyChanges?.registryChanges || []).map(change => ({ ...change, evidenceRefs: [ref] })), ...gradeChanges.map(change => ({ ...change, evidenceRefs: [ref] }))] } : {}),
       items: items.map(({ row, m, scope, textFp, rationale, tplKey }) => ({ questionUid: row.uid, sourceOrdinal: m.sourceOrdinal,
         before: { problemTypeKey: empty(m.problemTypeKey) ? "" : m.problemTypeKey, templateKey: empty(m.templateKey) ? "" : m.templateKey },
         after: { problemTypeKey: row.pt, ...(tplKey ? { templateKey: tplKey } : {}) },
@@ -434,6 +446,7 @@ export function loadContext(root) {
   if (!decisionDoc.includes(DECISION_SECTION)) throw new Error(`DECISION_SECTION_MISSING:${DECISION_DOCUMENT}`);
   return { root, records: new Map(meta.records.map(r => [r.questionUid, r])), identity: new Map(identityDoc.records.map(r => [r.questionUid, r])), identityDoc,
     rowsBySource, identityCountBySource, registry: loadRegistry(root), aliases: loadCourseAliases(root), judgedBank: null,
+    master: loadTagMaster(root), courseNames: loadCourseGroupNames(root),
     readBank(file) {
       const rel = `archive/exams/${file}`;
       const bytes = fs.readFileSync(path.join(root, rel));
@@ -493,6 +506,8 @@ export function run(args) {
     rows = newKeys.rows;
     args.allowPackAdditions = true;
   }
+  // existing key + this row's grade binding (grade-bindings.mjs): sees the registry as the new-key step left it
+  planCtx = { ...planCtx, gradeBindings: createGradeBindings({ ctx: planCtx, env: { curriculumGuess, pathGrade } }) };
   const built = planRequests({ ctx: planCtx, resultRows: rows, exams: args.exams, limit: args.limit, approvedBy: args.approvedBy, judge: args.judge || "dots",
     allowPackAdditions: args.allowPackAdditions, includeReceiptRows: args.includeReceiptRows, replaceDraft: args.replaceDraft, approveSameDraft: Boolean(args.approveSameDraft),
     excludeUids: args.excludeUidsFile ? new Set(fs.readFileSync(args.excludeUidsFile, "utf8").split(/\r?\n/).map(s => s.trim()).filter(s => s && !s.startsWith("#"))) : null });
@@ -508,7 +523,8 @@ export function run(args) {
   summary.options = { allowPackScopeAdditions: args.allowPackAdditions, includeReceiptRows: args.includeReceiptRows, judgedBase: args.judgedBase,
     bundles: args.bundles || args.bundlesDir || null, bundlesOnly: args.bundlesOnly, replaceDraftTypes: args.replaceDraft, maxRequests: args.maxRequests };
   if (newKeys) summary.newKeys = { bundleTables: bundleOrigin, bundles: { pt: newKeys.stats.ptBundles, tpl: newKeys.stats.tplBundles }, lines: newKeys.stats.lines, ...built.stats.newKeys };
-  if (args.judgedBase) summary.judgedBaseCheck = built.stats.judgedBase; // unverified = judged-time exam not found: the current question is used and counted here
+  if (args.judgedBase) summary.judgedBaseCheck = built.stats.judgedBase; // unverified = judged-time exam not found: the current question is used and counted here; changedKept = stem/choices changed since the judgment, type kept
+  summary.gradeBindingRows = built.stats.gradeBindingRows;
   const planned = new Map(built.requests.flatMap(r => r.items.map(i => [i.questionUid, { pt: i.after.problemTypeKey, tpl: i.after.templateKey || "" }])));
   summary.typeSelectable = { scope: "requested exams", estimate: "catalog metaHint gate replicated; builder not run", ...typeSelectable(planCtx, built.requests.map(r => r.sourceArchiveFile), planned) };
   if (args.summaryGlobal) summary.typeSelectableAllExams = { scope: "every exam in canonical metadata", ...typeSelectable(planCtx, [...ctx.rowsBySource.keys()].sort(), planned) };

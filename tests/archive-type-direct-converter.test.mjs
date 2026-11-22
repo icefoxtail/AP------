@@ -12,6 +12,7 @@ import {
 } from "../archive/tools/meta-foundation/build-type-judgment-requests.mjs";
 import { makeCourseAliases } from "../archive/tools/meta-foundation/course-aliases.mjs";
 import { textFingerprint } from "../archive/tools/meta-foundation/text-binding-lib.mjs";
+import { createGradeBindings } from "../archive/tools/meta-foundation/grade-bindings.mjs";
 
 const EXAM = "original/middle/m1/1mid/24_가나중_1학기_중간_중1_기출.js";
 const sha1 = bytes => crypto.createHash("sha1").update(`blob ${bytes.length}\0`).update(bytes).digest("hex");
@@ -247,24 +248,30 @@ test("a result line whose own question number differs from the row's source ordi
   assert.deepEqual(skipped.map(s => s.reason), ["RESULT_NO_DIFFERS_FROM_SOURCE_ORDINAL", "TYPE_ALREADY_PRESENT"]);
 });
 
-test("judged-base check: changed stem/choices skip the row, unchanged rows pass, an unreadable base is counted as unverified", () => {
+test("judged-base check: changed stem/choices keep the type (counted, marked in the ledger), unchanged rows pass, an unreadable base is counted as unverified", () => {
   const copy = () => JSON.parse(JSON.stringify(questions));
   const changed = copy(); changed[0].content = "다른 지문";
   const ctxFor = bank => makeCtx({ ctx: { judgedBank: () => bank } });
+  // 2026-11-22 (학원 원장): a stem or choices edited after the judgment (a minimal source fix) does not change the type; the request binds to the CURRENT text
   let r = planRequests({ ctx: ctxFor(changed), resultRows: [line(1)], approvedBy: "x" });
-  assert.equal(r.requests.length, 0);
-  assert.equal(r.skipped[0].reason, "STEM_OR_CHOICES_CHANGED_SINCE_JUDGMENT");
+  assert.equal(r.requests.length, 1);
+  assert.equal(r.skipped.length, 0);
+  assert.deepEqual(r.stats.judgedBase, { checked: 1, unverified: 0, changedKept: 1 });
+  assert.equal(r.requests[0].items[0].textBindingFingerprint, textFingerprint(questions[0]), "bound to the current text (the registrar compares it with the current question)");
+  const ledger = JSON.parse(r.files.get(r.requests[0].approval.evidenceRefs[0].path));
+  assert.equal(ledger.rows[0].stemChangedSinceJudgment, true);
   const choices = copy(); choices[0].choices = ["가", "나"];
-  assert.equal(planRequests({ ctx: ctxFor(choices), resultRows: [line(1)], approvedBy: "x" }).requests.length, 0);
+  assert.equal(planRequests({ ctx: ctxFor(choices), resultRows: [line(1)], approvedBy: "x" }).requests.length, 1);
   r = planRequests({ ctx: ctxFor(copy()), resultRows: [line(1)], approvedBy: "x" });
   assert.equal(r.requests.length, 1);
-  assert.deepEqual(r.stats.judgedBase, { checked: 1, unverified: 0 });
+  assert.deepEqual(r.stats.judgedBase, { checked: 1, unverified: 0, changedKept: 0 });
+  assert.equal(JSON.parse(r.files.get(r.requests[0].approval.evidenceRefs[0].path)).rows[0].stemChangedSinceJudgment, undefined);
   // solution/answer changes are not a change of the question text
   const sol = copy(); sol[0].solution = "고친 해설"; sol[0].answer = "2";
   assert.equal(planRequests({ ctx: ctxFor(sol), resultRows: [line(1)], approvedBy: "x" }).requests.length, 1);
   r = planRequests({ ctx: ctxFor(null), resultRows: [line(1)], approvedBy: "x" });
   assert.equal(r.requests.length, 1);
-  assert.deepEqual(r.stats.judgedBase, { checked: 0, unverified: 1 });
+  assert.deepEqual(r.stats.judgedBase, { checked: 0, unverified: 1, changedKept: 0 });
   // figure/solution changes since the judgment do not matter; the text fingerprint is that of the stem+choices
   const moved = copy(); moved[0].image = "old.png"; moved[0].solution = "옛 해설";
   r = planRequests({ ctx: ctxFor(moved), resultRows: [line(1)], approvedBy: "x" });
@@ -385,4 +392,49 @@ test("a later result line for the same question is used when the earlier one was
   assert.equal(items.length, 1);
   assert.equal(requests[0].approval.judge, "claude-sonnet-5.5");
   assert.deepEqual(skipped.map(s => s.reason).sort(), ["DECISION_HOLD", "DUPLICATE_RESULT_LINE"]);
+});
+
+// ---- grade bindings: an existing key of another grade/curriculum is used and the row's own grade binding is added (2026-11-22) -----------
+test("a key bound only to another grade is kept and the row's grade binding is added append-only (existing key reused, no key created)", () => {
+  const master = new Map([["M1-03", { key: "M1-03", keyType: "standardUnitKey" }], ["M1-03-LINEAR_EQUATION", { key: "M1-03-LINEAR_EQUATION", keyType: "subUnitKey", standardUnitKey: "M1-03", labelKo: "일차방정식" }],
+    ["H22-C-01", { key: "H22-C-01", keyType: "standardUnitKey" }]]);
+  const reg = { ...makeRegistry({ problemTypes: [{ problemTypeKey: "PT_HIGH", status: "ACTIVE", ownerPack: "P2" }], templates: [{ templateKey: "TPL_HIGH", status: "ACTIVE", parentProblemTypeKey: "PT_HIGH" }],
+    bindings: [{ problemTypeKey: "PT_HIGH", curriculum: "2015", standardCourse: "수학(상)", standardUnitKey: "H15-SA-01", ownerPack: "P2", status: "ACTIVE" }],
+    packs: new Map([["P2", { curricula: ["2015"], standardCourses: ["수학(상)"] }]]) }), packFiles: new Map([["P2", "archive/data/meta-foundation/canonical/packs/p2/pack.json"]]) };
+  const recs = [1, 2, 3, 4, 5, 6, 7].map(n => row(n, { standardUnitKey: "M1-03", subUnitKey: "M1-03-LINEAR_EQUATION", curriculum: "2015" }));
+  recs[2] = row(3, { standardUnitKey: "", subUnitKey: "", curriculum: "2015" }); // no unit the master knows
+  const mk = bindingsOn => {
+    const ctx = makeCtx({ records: recs, ctx: { registry: reg, aliases, master } });
+    return bindingsOn ? { ...ctx, gradeBindings: createGradeBindings({ ctx, env: { curriculumGuess: () => "2015", pathGrade: () => "m1" } }) } : ctx;
+  };
+  const rows = [line(1, { pt: "PT_HIGH", tpl: "TPL_HIGH" }), line(2, { pt: "PT_HIGH", tpl: null }), line(3, { pt: "PT_HIGH", tpl: null })];
+  // without the grade-binding step the lines stay skipped, as before
+  assert.deepEqual(planRequests({ ctx: mk(false), resultRows: rows, approvedBy: "x" }).skipped.map(s => s.reason), ["SCOPE_PT_BOUND_TO_OTHER_COURSE", "SCOPE_PT_BOUND_TO_OTHER_COURSE", "SCOPE_PT_BOUND_TO_OTHER_COURSE"]);
+  const { requests, skipped, stats } = planRequests({ ctx: mk(true), resultRows: rows, approvedBy: "x" });
+  assert.deepEqual(skipped.map(s => [s.uid, s.reason, s.was]), [["uid3", "GRADE_BINDING_NO_UNIT", "SCOPE_PT_BOUND_TO_OTHER_COURSE"]], "a row without any valid unit is skipped, no unit is guessed");
+  assert.equal(stats.gradeBindingRows, 2);
+  assert.equal(requests.length, 1);
+  const r = requests[0];
+  assert.ok(r.requestId.startsWith("tc-"), "the request that carries registryChanges sorts first");
+  assert.deepEqual(r.items.map(i => i.scope), [{ curriculum: "2015", standardCourse: "중1 수학" }, { curriculum: "2015", standardCourse: "중1 수학" }]);
+  // the pack gains the course (append-only), and one bindings.json row is added for the PT at the row's own unit
+  const [packChange, bindingChange, ...rest] = r.registryChanges;
+  assert.equal(rest.length, 0);
+  assert.deepEqual(packChange.after.standardCourses, ["수학(상)", "중1 수학"]);
+  assert.equal(bindingChange.path, "archive/data/meta-foundation/canonical/packs/p2/bindings.json");
+  assert.equal(bindingChange.collection, "bindings");
+  assert.equal(bindingChange.before, null);
+  assert.deepEqual(bindingChange.match, { curriculum: "2015", standardCourse: "중1 수학", standardUnitKey: "M1-03", subUnitKey: "M1-03-LINEAR_EQUATION", problemTypeKey: "PT_HIGH" });
+  assert.equal(bindingChange.after.status, "ACTIVE");
+  assert.equal(bindingChange.after.ownerPack, "P2");
+  assert.equal(bindingChange.after.supportingItemCount, 2);
+  assert.deepEqual(bindingChange.after.supportingQuestionUids, ["uid1", "uid2"]);
+  assert.equal(r.registryChanges.some(c => c.collection === "problemTypes" || c.collection === "templates"), false, "no key is created");
+  const ledger = JSON.parse(planRequests({ ctx: mk(true), resultRows: rows, approvedBy: "x" }).files.get(r.approval.evidenceRefs[0].path));
+  assert.equal(ledger.rows[0].gradeBindingAdded, true);
+  assert.equal(ledger.gradeBindingAdditions.length, 1);
+  // a unit written on the result line (`binding`) stands in for a row without a valid unit
+  const named = planRequests({ ctx: mk(true), resultRows: [line(3, { pt: "PT_HIGH", tpl: null, binding: { standardUnitKey: "M1-03", subUnitKey: "M1-03-LINEAR_EQUATION" } })], approvedBy: "x" });
+  assert.equal(named.requests.length, 1);
+  assert.equal(named.requests[0].registryChanges.at(-1).match.standardUnitKey, "M1-03");
 });
