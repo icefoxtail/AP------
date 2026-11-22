@@ -5,23 +5,23 @@
 - sourceRef: `main`; sourceBlobSha: `ba2d317b4decb928a1a310594f3b6636b63b64ec`
 - 문항 ID: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22; **22문항**. standardCourse 원본 설정: 22/22.
 - 목표 브랜치: `work/solution-upgrade-lane-20-20261121`; 상태: **EXAM_AUDIT_COMPLETE / EXAM_DRAFT_COMPLETE** (개선 예약, 원본 미수정, 최종 QA 미실행).
-- 분류: **KEEP 14 / UPGRADE 3 / HOLD 5 / UNREAD 0**.
-- 연결 그림 경로: 5개; **원본 존재·육안 검증 0 / 연결 파일 없음 5**. 아래 경로 목록 참조.
+- 분류: **KEEP 19 / UPGRADE 3 / HOLD 0 / UNREAD 0**. (이미지 보관 경로 재확인 후 정정)
+- 연결 그림 경로: 5개; **보관 원본 존재·육안 검증 5 / 원본 파일 미발견 0**. 원본 `archive/assets/images/` 확인(문항 참조는 `assets/images/`); 앱 경로 해석 및 학생 화면 렌더는 별도 게이트.
 - 검토 범위: 8개 중 본 시험지의 문항 원문·선택지·기존 정답·solution·연결 그림 존재 여부와 수학적 계산을 교차 검토; 원본 JS·이미지는 변경하지 않음.
 - 릴리스 게이트: 원문 PDF 전문 대조, 학생 화면 HTML/LaTeX 렌더, 답안 UI·채점기 구동, Golden/Negative, preflight 영수증 **NOT_RUN**. MD 작성 완료가 출시 승인이나 결함 수정 완료를 뜻하지 않음.
 
 ## 핵심 결함·개선 예약
 
-- 링크된 이미지 5개 원본 리포지토리 main·목표 브랜치 모두에서 파일 없음. 링크별로 아래 기록; 이미지가 있는 화면의 정합성 확인 전 HOLD.
+- **2026-11-22 재검증 정정:** 원래 문항 참조 `assets/images/…`의 실물은 `archive/assets/images/…`에 5/5개 존재. PNG는 파일을 열어, SVG는 Inkscape로 실제 렌더한 뒤 문제·해설과 육안 대조함. 이전 `MISSING` 및 이로 인한 `HOLD` 판정은 잘못된 경로 검색에서 비롯된 오판으로 취소. 다만 `assets/images/` 참조가 학생 앱에서 보관 경로로 해석되는지는 아직 실행 검증하지 않음.
 - Q06 리본 선택 모형·Q11 깃발 재사용·Q22 B조 균등선택/독립게임 등 원문에 없는 확률 전제 3건.
 
 ## 연결 이미지 전수 인벤토리
 
-- **MISSING / HOLD** — `assets/images/19_매산여고_1학기_기말_고2_확률과통계/q3-solution.svg`
-- **MISSING / HOLD** — `assets/images/19_매산여고_1학기_기말_고2_확률과통계/q4-solution.svg`
-- **MISSING / HOLD** — `assets/images/19_매산여고_1학기_기말_고2_확률과통계/q10-solution.svg`
-- **MISSING / HOLD** — `assets/images/19_매산여고_1학기_기말_고2_확률과통계/q14-solution.svg`
-- **MISSING / HOLD** — `assets/images/19_매산여고_1학기_기말_고2_확률과통계/q18-solution.svg`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/19_매산여고_1학기_기말_고2_확률과통계/q3-solution.svg` → 실제 원본 `archive/assets/images/19_매산여고_1학기_기말_고2_확률과통계/q3-solution.svg`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/19_매산여고_1학기_기말_고2_확률과통계/q4-solution.svg` → 실제 원본 `archive/assets/images/19_매산여고_1학기_기말_고2_확률과통계/q4-solution.svg`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/19_매산여고_1학기_기말_고2_확률과통계/q10-solution.svg` → 실제 원본 `archive/assets/images/19_매산여고_1학기_기말_고2_확률과통계/q10-solution.svg`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/19_매산여고_1학기_기말_고2_확률과통계/q14-solution.svg` → 실제 원본 `archive/assets/images/19_매산여고_1학기_기말_고2_확률과통계/q14-solution.svg`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/19_매산여고_1학기_기말_고2_확률과통계/q18-solution.svg` → 실제 원본 `archive/assets/images/19_매산여고_1학기_기말_고2_확률과통계/q18-solution.svg`
 
 ## 전 문항 판정
 
@@ -59,7 +59,7 @@
 
 - **독립 검산·판정**: X의 세 원소마다 Y의 다섯 값 자유 선택, 함수 5³=125.
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
-### Q03 — HOLD
+### Q03 — KEEP
 
 - identity: id=`3`; sourceQid=`3`; sourceBlobSha=`ba2d317b4decb928a1a310594f3b6636b63b64ec`; 단원: 순열과 조합; questionType: `객관식`; 원본 답: `④`
 - 원문 문제 조건 (원본의 HTML 행/표 구분만 정규화):
@@ -75,10 +75,10 @@
 > ③ 두 선택을 곱하면 $2\times6=12$가지이다. 여자부터 배치해도 같은 최종 배치를 세므로 별도로 2배하지 않는다. 정답은 ④이다.
 
 - **독립 검산·판정**: 남자 원순열 (3-1)!=2, 여자 세 간격의 순열 3!=6, 총12.
-- 문항 연결 이미지: `assets/images/19_매산여고_1학기_기말_고2_확률과통계/q3-solution.svg` — **MISSING / 원본 실물 확인 불가**
-- **결함·개선 예약**: 이미지 연결 1개가 저장소에 없어 문제/해설 그림 실물 미검증
+- 문항 연결 이미지: `assets/images/19_매산여고_1학기_기말_고2_확률과통계/q3-solution.svg` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/19_매산여고_1학기_기말_고2_확률과통계/q3-solution.svg`)
+
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
-### Q04 — HOLD
+### Q04 — KEEP
 
 - identity: id=`4`; sourceQid=`4`; sourceBlobSha=`ba2d317b4decb928a1a310594f3b6636b63b64ec`; 단원: 확률의 뜻과 활용; questionType: `객관식`; 원본 답: `②`
 - 원문 문제 조건 (원본의 HTML 행/표 구분만 정규화):
@@ -94,8 +94,8 @@
 > 따라서 $P(B)=\frac78-\frac14=\frac58$이다. 정답은 ②이다.
 
 - **독립 검산·판정**: 배반인 A,B의 합집합 확률 1−1/8=7/8, B=7/8−1/4=5/8.
-- 문항 연결 이미지: `assets/images/19_매산여고_1학기_기말_고2_확률과통계/q4-solution.svg` — **MISSING / 원본 실물 확인 불가**
-- **결함·개선 예약**: 이미지 연결 1개가 저장소에 없어 문제/해설 그림 실물 미검증
+- 문항 연결 이미지: `assets/images/19_매산여고_1학기_기말_고2_확률과통계/q4-solution.svg` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/19_매산여고_1학기_기말_고2_확률과통계/q4-solution.svg`)
+
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 ### Q05 — KEEP
 
@@ -199,7 +199,7 @@
 
 - **독립 검산·판정**: 6회 앞면이 뒷면보다 많은 k≥4, [C(6,4)+C(6,5)+C(6,6)]/64=11/32.
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
-### Q10 — HOLD
+### Q10 — KEEP
 
 - identity: id=`10`; sourceQid=`10`; sourceBlobSha=`ba2d317b4decb928a1a310594f3b6636b63b64ec`; 단원: 조건부확률; questionType: `객관식`; 원본 답: `④`
 - 원문 문제 조건 (원본의 HTML 행/표 구분만 정규화):
@@ -218,8 +218,8 @@
 > $0.05$는 $P(D\mid F_1)$이지 $P(F_1\mid D)$가 아니다. 정답은 ④이다.
 
 - **독립 검산·판정**: 불량 중 제1공장 비율 (0.3×0.05)/(0.3×0.05+0.7×0.04)=15/43.
-- 문항 연결 이미지: `assets/images/19_매산여고_1학기_기말_고2_확률과통계/q10-solution.svg` — **MISSING / 원본 실물 확인 불가**
-- **결함·개선 예약**: 이미지 연결 1개가 저장소에 없어 문제/해설 그림 실물 미검증
+- 문항 연결 이미지: `assets/images/19_매산여고_1학기_기말_고2_확률과통계/q10-solution.svg` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/19_매산여고_1학기_기말_고2_확률과통계/q10-solution.svg`)
+
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 ### Q11 — UPGRADE
 
@@ -280,7 +280,7 @@
 
 - **독립 검산·판정**: x=7−(y+z), 1≤y+z≤6이므로 Σ(s+1)=2+…+7=27.
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
-### Q14 — HOLD
+### Q14 — KEEP
 
 - identity: id=`14`; sourceQid=`14`; sourceBlobSha=`ba2d317b4decb928a1a310594f3b6636b63b64ec`; 단원: 조건부확률; questionType: `객관식`; 원본 답: `⑤`
 - 원문 문제 조건 (원본의 HTML 행/표 구분만 정규화):
@@ -304,8 +304,8 @@
 > 따라서 ㄱ, ㄴ, ㄹ을 고른 ⑤가 정답이다.
 
 - **독립 검산·판정**: 동전 3개에서 A는 앞면 0·1개 P=1/2, B는 모두 같은 면 P=1/4, 교집합 전체 뒤 P=1/8로 독립; ㄱㄴㄹ.
-- 문항 연결 이미지: `assets/images/19_매산여고_1학기_기말_고2_확률과통계/q14-solution.svg` — **MISSING / 원본 실물 확인 불가**
-- **결함·개선 예약**: 이미지 연결 1개가 저장소에 없어 문제/해설 그림 실물 미검증
+- 문항 연결 이미지: `assets/images/19_매산여고_1학기_기말_고2_확률과통계/q14-solution.svg` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/19_매산여고_1학기_기말_고2_확률과통계/q14-solution.svg`)
+
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 ### Q15 — KEEP
 
@@ -366,7 +366,7 @@
 
 - **독립 검산·판정**: 첫 2개에 빨강 있으면 즉시 B 빨강; 모두 검정이면 A에 검정 1개만 남아 다음 2개 반드시 빨강 포함, 확률1.
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
-### Q18 — HOLD
+### Q18 — KEEP
 
 - identity: id=`18`; sourceQid=`18`; sourceBlobSha=`ba2d317b4decb928a1a310594f3b6636b63b64ec`; 단원: 조건부확률; questionType: `단답형`; 원본 답: `$\frac{5}{12}$`
 - 원문 문제 조건 (원본의 HTML 행/표 구분만 정규화):
@@ -384,8 +384,8 @@
 > 따라서 정답은 $\boxed{\frac5{12}}$이다.
 
 - **독립 검산·판정**: 독립 P(A∩B)=1/12, 대칭차 확률 1/3+1/4−2/12=5/12.
-- 문항 연결 이미지: `assets/images/19_매산여고_1학기_기말_고2_확률과통계/q18-solution.svg` — **MISSING / 원본 실물 확인 불가**
-- **결함·개선 예약**: 이미지 연결 1개가 저장소에 없어 문제/해설 그림 실물 미검증
+- 문항 연결 이미지: `assets/images/19_매산여고_1학기_기말_고2_확률과통계/q18-solution.svg` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/19_매산여고_1학기_기말_고2_확률과통계/q18-solution.svg`)
+
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 ### Q19 — KEEP
 
@@ -476,6 +476,6 @@
 ## 완료 기준 및 후속
 
 - 원본 문항 22/22개 읽음; 원본 풀이·정답·선택지/서술형 답·계산 판정 기록 완료.
-- 누락 자산 5개와 메타데이터 0문항, 독립성·균등확률·정규근사 등 개선 사항은 문항별 UPGRADE/HOLD 및 상단 목록에 예약.
+- 연결 그림 원본 5/5개 확인(실물 미발견 0). 메타데이터 0문항 및 수학적 전제·근사 정책 등 남은 개선 사항은 해당 문항의 UPGRADE 및 상단 목록에 예약. 이미지 참조 `assets/images/`의 학생 앱 로딩 경로는 아직 미검증.
 - 원본 이미지를 신규 제작·대체하거나 문제/해설을 승인 없이 고치지 않았음.
-- 후속: 원본 시험 PDF·그림 복구 및 메타 보강 → 미해결 문항 검수 → 학생 앱 렌더/채점·회귀 시험 → 릴리스 게이트 판정. 2학기 작업은 별도 lane에서 수행.
+- 후속: 원본 시험 PDF와 이미지 경로 해석 대조 → 필요한 메타·수학 조건 보강 → 학생 앱 렌더/채점·회귀 시험 → 릴리스 게이트 판정. 2학기 작업은 별도 lane에서 수행.
