@@ -345,3 +345,14 @@
 
 - **누적 MD 초안 73장/1,630문항:** KEEP 1,539 / UPGRADE 32 / HOLD 59 / UNREAD 0 (이전 장부 68장/1,530문항에 이번 5장 추가). 이는 운영 RELEASE PASS가 아님.
 - **다음 재개:** `archive/exams/original/high/h2/1final/23_금당고_1학기_기말_고2_수학II.js`부터 1학기 기말 미감사 원본을 계속 확인. 해당 버킷 완료 전 유사·유형으로 이동 금지.
+
+## 2026-11-22 1학기 기말 마지막 1장 — 2023 금당고 전수 MD 마감
+
+- 사용자 지시: **1학기 남은 시험지 마감 후 보고**, **이미지는 별도 검수**. lane10 전담 원본 수학Ⅱ/미적분Ⅰ만 작업하며 공유 claims 확인·생성은 생략.
+- 대상: `archive/exams/original/high/h2/1final/23_금당고_1학기_기말_고2_수학II.js`, source ref `main`, blob `608a65db86f831d0cbdb62607de29911b4763129`, 실제 원문 **20문항**.
+- [감사 MD](23_금당고_1학기_기말_고2_수학II_DEEP_AUDIT.md) 1개 생성 후 GitHub 원격 전문 readback **일치**, 커밋 `0ddff3b0174a2f2acf22f64c098b9772c4b9b85d`, blob `e9979e5f56c60663156757a4b7b4d1d7b9999d23`. 판정 **KEEP 13 / UPGRADE 2 / HOLD 5 / UNREAD 0**, 전 문항 source/choices/answer/기존 solution 및 독립 검산 기록.
+- **Q15 UPGRADE**: 절댓값 다항식이 영점에서 미분 불가능하려면 *단순근*이라는 조건으로 기존 중복도 설명의 오류를 교정. $f(x)=(x-1)^2(x-3)$, $k=7/3$ 완성 학생용 해설 수록.
+- **Q20 UPGRADE**: 왼쪽/오른쪽 최소값 함수의 단조성과 $t=0,1,3$의 가지 변환 설명을 보강. $f'(x)=4x(x-9/5)(x-3)$, $f(4)=69/5$ 완성 학생용 해설 수록.
+- **VISUAL_HOLD 5문항:** Q05 보기 그래프 5개 PNG, Q09 도함수 그래프, Q10 속도 그래프, Q11 면적 그림, Q13 접기 도형. 원본 이미지 판독은 사용자 요청대로 **별도 작업**; 기존 해설 SVG Q08/Q18/Q19/Q20 렌더 **NOT_RUN**. Golden/Negative calibration, 자동 preflight receipt, 학생 화면·운영 QA, JS·SVG 수정, main 병합 **NOT_RUN/NOT_PERFORMED**.
+- **1학기 기출 텍스트 MD**: 중간 **4/4**, 기말 **2/2**, 합 **6/6 전수 기록 완료**. 원본 기출 전체(1학기+2학기) **74/74장**, 총 **1,650문항** = KEEP **1,552** + UPGRADE **34** + HOLD **64** + UNREAD **0**.
+- 다음 cursor: 기출 문항 초안 미작성 `NONE`. 후속 자료 유사→유형→교과서→문제집은 별도 대상이며 이 장부로 완료 선언하지 않음. 모든 HOLD 해소와 운영 출고 QA 전에는 **RELEASE PASS 아님**.
