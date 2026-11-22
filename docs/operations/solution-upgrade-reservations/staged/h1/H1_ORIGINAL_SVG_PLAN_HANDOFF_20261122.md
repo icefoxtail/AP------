@@ -1,5 +1,7 @@
 # 고1 기출 SVG 플랜 작성 인계 — 2026-11-22
 
+> **2026-11-22 후속:** 최신 `main`의 고1 1학기 기말 **문제 그림 112개**를 별도 시각검증했고, 2019 강남여고 q21 · 2021 팔마고 q4 · 2022 강남여고 q16에 **문제용 JSON 플랜 3건**을 신규 작성했다. 정적 `plan-lint` 3/3 OK, 실제 엔진 렌더·게시 `NOT_RUN`. 상세 결함·분모 차이는 [후속 112개 시각검증 보고서](H1_1FINAL_ORIGINAL_PROBLEM_IMAGE_QA_112_20261122.md) 참조. 아래 기존 11개 `OPEN_LAYOUT` 플랜과 별도로 계산한다.
+
 ## 범위·기준
 
 - 대상: `icefoxtail/AP------`, `archive/exams/original/high/h1/{1mid,1final,2mid,2final}/` 기출. **유사 제외**.

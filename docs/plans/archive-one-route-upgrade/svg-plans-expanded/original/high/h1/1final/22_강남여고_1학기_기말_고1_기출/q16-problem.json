@@ -1,0 +1,65 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "UnitX",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {"length": {"kind": "integer", "value": "1"}},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {"kind": "integer", "value": "1"},
+            {"kind": "integer", "value": "-2"}
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["C"],
+        "args": {
+          "radius": {"kind": "expression", "op": "sqrt", "args": [{"kind": "integer", "value": "10"}]}
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": ["O", "C"],
+  "displayCircles": ["c"],
+  "coordinateCanvas": {"width": 640, "height": 480},
+  "coordinateLabels": ["C"],
+  "caption": "주어진 원 (x-1)²+(y+2)²=10의 중심과 원주를 좌표평면에 표시한 문제 그림이다.",
+  "accessibilityDescription": "좌표평면 위 중심 (1,-2), 반지름 제곱이 10인 원이 그려져 있다. 대칭이동 후의 원이나 최대 거리를 나타내지는 않는다.",
+  "newVisualInformation": [
+    "원본 q16.png에 묻은 주변 스캔 글자와 잘린 부분을 제거한 정규 좌표 원 그림을 계획한다.",
+    "P', Q'의 반사 후 자취·최대 거리 등 풀이 결과는 문제 그림에 표시하지 않는다."
+  ],
+  "sourceConditions": [
+    {"id": "source", "condition": "원 (x-1)^2+(y+2)^2=10 위의 두 점 P, Q를 각각 y축과 y=x에 대칭시킨다.", "mappedTo": "PRESERVED_ARCHIVE_BANK"}
+  ]
+}

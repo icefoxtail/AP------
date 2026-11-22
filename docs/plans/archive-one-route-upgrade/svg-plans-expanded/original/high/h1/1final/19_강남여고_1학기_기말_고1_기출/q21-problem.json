@@ -1,0 +1,71 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "UnitX",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {"length": {"kind": "integer", "value": "1"}},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {"kind": "integer", "value": "-10"},
+            {"kind": "integer", "value": "0"}
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {"kind": "integer", "value": "0"},
+            {"kind": "integer", "value": "-6"}
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": ["O", "M", "A"],
+  "displaySegments": [
+    {"id": "west10", "refs": ["O", "M"]},
+    {"id": "south6", "refs": ["O", "A"]}
+  ],
+  "coordinateCanvas": {"width": 640, "height": 440},
+  "coordinateLabels": ["M", "A"],
+  "caption": "서쪽을 x축의 음의 방향, 북쪽을 y축의 양의 방향으로 잡는다. 출발 순간 M(메뚜기)은 O의 서쪽 10 cm, A(개미)는 남쪽 6 cm에 있다.",
+  "accessibilityDescription": "중심 O에서 왼쪽으로 10 cm 떨어진 점에 메뚜기, 아래로 6 cm 떨어진 점에 개미가 놓인 출발 위치 그림이다.",
+  "newVisualInformation": [
+    "주변 발문까지 잘린 q21.png를 대신하여 주어진 출발 위치와 방향만 표시한다.",
+    "이동 후 좌표나 거리 d, t의 정답 범위를 문제 그림에 미리 적지 않는다."
+  ],
+  "sourceConditions": [
+    {"id": "source", "condition": "규리의 십자가 판자 중심 O에서 메뚜기는 서쪽 10 cm, 개미는 남쪽 6 cm에 놓여 동시에 동쪽·북쪽으로 각각 이동한다.", "mappedTo": "PRESERVED_ARCHIVE_BANK"}
+  ]
+}

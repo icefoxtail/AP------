@@ -1,0 +1,98 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "UnitX",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {"length": {"kind": "integer", "value": "1"}},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {"kind": "integer", "value": "0"},
+            {"kind": "integer", "value": "4"}
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {"kind": "integer", "value": "-5"},
+            {"kind": "integer", "value": "-8"}
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {"kind": "integer", "value": "4"},
+            {"kind": "integer", "value": "1"}
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "DIVISION_POINT",
+        "inputs": ["B", "C"],
+        "args": {
+          "m": {"kind": "integer", "value": "13"},
+          "n": {"kind": "integer", "value": "5"},
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": ["O", "A", "B", "C", "D"],
+  "displaySegments": [
+    {"id": "AB", "refs": ["A", "B"]},
+    {"id": "AC", "refs": ["A", "C"]},
+    {"id": "BC", "refs": ["B", "C"]},
+    {"id": "AD", "refs": ["A", "D"]}
+  ],
+  "coordinateCanvas": {"width": 700, "height": 550},
+  "coordinateLabels": ["A", "B", "C"],
+  "caption": "A(0,4), B(-5,-8), C(4,1)을 이은 삼각형에서 AD는 각 A의 이등분선이며 D는 BC 위에 있다.",
+  "accessibilityDescription": "세 꼭짓점 A, B, C의 좌표가 주어지고 A에서 BC 위의 D로 각의 이등분선 AD가 그어진 좌표평면 그림이다.",
+  "newVisualInformation": [
+    "희미한 원본 q4.png의 꼭짓점·좌표를 주어진 값으로 명확히 표시한다.",
+    "D는 AB:AC=13:5에서 유도한 BC의 내분점으로 작도하되 D의 좌표와 AD의 길이는 문제 그림에 적지 않는다."
+  ],
+  "sourceConditions": [
+    {"id": "source", "condition": "A(0,4), B(-5,-8), C(4,1)의 삼각형에서 A의 각의 이등분선 AD가 BC와 만난다.", "mappedTo": "PRESERVED_ARCHIVE_BANK"}
+  ]
+}
