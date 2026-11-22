@@ -123,7 +123,7 @@ ${noMeta}
   <section class="block" aria-labelledby="h-levels"><h2 id="h-levels">난이도별 정오</h2>${simpleTable("난이도", levelRows(vm))}</section>
 </div>
 <section class="block" aria-labelledby="h-nos">
-  <h2 id="h-nos">문항 번호별 정오 <small>번호가 클수록 어려운 문항입니다</small></h2>
+  <h2 id="h-nos">문항 번호별 정오</h2>
   <div class="cells">${chips(report)}</div>
   <div class="legend"><span><i class="c o"></i>맞힌 문항</span><span><i class="c x"></i>틀린 문항</span></div>
 </section>
