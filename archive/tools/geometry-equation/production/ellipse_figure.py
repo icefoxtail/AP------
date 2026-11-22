@@ -38,7 +38,7 @@ TOP_KEYS={'capability','ellipse','ellipses','points','segments','polygons','line
 ELLIPSE_KEYS={'center','semiAxisSquared','majorAxis'}
 PAIR_ELLIPSE_KEYS=ELLIPSE_KEYS|{'id'}
 AXIS_KEYS={'major','minor'}
-POINT_KEYS={'id','kind','side','end','x','y','branch','of','label','ellipseId'}
+POINT_KEYS={'id','kind','side','end','x','y','branch','of','label','ellipseId','coordinates'}
 SEGMENT_KEYS={'id','from','to','label','dashed'}
 POLYGON_KEYS={'id','points','fill'}
 LINE_KEYS={'id','slope','intercept','label','tangent','ellipseId'}
@@ -203,7 +203,7 @@ def _produce_pair(plan):
         if not pending: break
         remaining=[]
         for raw in pending:
-            if set(raw)-{'id','kind','of','ellipseId','label'}:
+            if set(raw)-{'id','kind','of','ellipseId','label','coordinates'}:
                 _fail('ELLIPSE_POINT_INVALID')
             target=raw.get('of')
             if target not in resolved:
@@ -287,6 +287,7 @@ def _produce_pair(plan):
         pid=raw['id'];px,py=resolved[pid]
         label=raw.get('label',True)
         if label not in (True,False): _fail('ELLIPSE_POINT_INVALID')
+        if raw.get('coordinates') not in (None,True,False): _fail('ELLIPSE_POINT_INVALID')
         eid=point_shape.get(pid)
         if eid:
             shape=shapes[eid]
@@ -294,7 +295,7 @@ def _produce_pair(plan):
         else:
             on_curve=False
         points.append({'id':pid,'kind':raw['kind'],'x':_value(px),'y':_value(py),
-                       'labels':label,'onEllipse':bool(on_curve),'ellipseId':eid})
+                       'labels':label,'onEllipse':bool(on_curve),'ellipseId':eid,**({'coordinates':True} if raw.get('coordinates') is True else {})})
 
     xs=[];ys=[S.Integer(0)]
     for eid in order:
@@ -416,9 +417,10 @@ def produce(plan):
         pid=raw['id'];px,py=resolved[pid]
         label=raw.get('label',True)
         if label not in (True,False): _fail('ELLIPSE_POINT_INVALID')
+        if raw.get('coordinates') not in (None,True,False): _fail('ELLIPSE_POINT_INVALID')
         on_curve=S.simplify(((px-shape['cx'])/shape['ax'])**2+((py-shape['cy'])/shape['ay'])**2-1)==0
         points.append({'id':pid,'kind':raw['kind'],'x':_value(px),'y':_value(py),
-                       'labels':label,'onEllipse':bool(on_curve)})
+                       'labels':label,'onEllipse':bool(on_curve),**({'coordinates':True} if raw.get('coordinates') is True else {})})
 
     xs=[shape['cx']-shape['ax'],shape['cx']+shape['ax'],S.Integer(0)]
     ys=[shape['cy']-shape['ay'],shape['cy']+shape['ay'],S.Integer(0)]

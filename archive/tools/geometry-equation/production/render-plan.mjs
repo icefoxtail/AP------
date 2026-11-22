@@ -198,12 +198,21 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
     if(authored.capability===ell.FIGURE_CAPABILITY){
       // A standalone axis-aligned ellipse figure: the exact foci/vertices/chords derived once, composed, read back by its own observer, then the same Archive capture.
       stage='ellipse';
-      const model=await ell.solveEllipseFigure(authored),size=ell.ellipseFigureSize(model);
-      stage='measure';
-      const measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
-      if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
-      stage='compose';
-      const composed=await ell.composeEllipseFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
+      const model=await ell.solveEllipseFigure(authored);
+      // No room for a label at the real font: the frame is widened (24, 48, 80, 120 px each side), measured and composed again. The first attempt is the frame the figure has always had.
+      let measured,composed;
+      for(const [attempt,extra] of ell.ELLIPSE_FRAME_STEPS.entries()){
+        ell.setEllipseFrameExtra(model,extra);
+        stage='measure';
+        measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:ell.ellipseFigureSize(model),runId:`pilot-measure-${tag}${attempt?`-frame${attempt}`:''}`});
+        // a widened frame the display profile cannot hold (its font would pass the largest allowed) ends the attempts: the figure fails as it failed before, with the no-room refusal
+        if(measured.status!=='MEASURED'&&attempt>0){stage='compose';ell.setEllipseFrameExtra(model,0);break;}
+        if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+        stage='compose';
+        composed=await ell.composeEllipseFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
+        if(composed.status!=='ELLIPSE_LABEL_NO_ROOM'||attempt===ell.ELLIPSE_FRAME_STEPS.length-1)break;
+        (row.fallback??=[]).push({from:clip(composed.detail),to:'ELLIPSE_FRAME_WIDEN',extra:ell.ELLIPSE_FRAME_STEPS[attempt+1]});
+      }
       if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
       stage='capture';
       const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});

@@ -36,6 +36,7 @@ function idleSuiteCommands() {
     'archive/tools/geometry-equation/production/svg-accessibility-v1.test.mjs',
     'archive/tools/geometry-equation/tests/author-guide.test.mjs',
     'archive/tools/geometry-equation/tests/author-guide-coverage.test.mjs', // python 의존성이 없으면 plan-lint 예제 검사만 NOT_RUN(skip)
+    'archive/tools/geometry-equation/tests/composite-expand-optional-fields.test.mjs',
     'archive/tools/geometry-equation/tests/condition-review-replay-invalidation.test.mjs',
     'archive/tools/geometry-equation/tests/discontinuous-pair.test.mjs',
     'archive/tools/geometry-equation/tests/graph-multi-curves-render-plan.test.mjs',
