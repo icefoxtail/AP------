@@ -1,0 +1,98 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {
+      "id": "c1",
+      "kind": "ELLIPSE",
+      "center": [
+        "0",
+        "0"
+      ],
+      "aSquared": "15",
+      "bSquared": "1",
+      "major": "X",
+      "label": "C1"
+    },
+    {
+      "id": "c2",
+      "kind": "CIRCLE",
+      "center": [
+        "0",
+        "3"
+      ],
+      "rSquared": "1",
+      "label": "C2"
+    }
+  ],
+  "points": [
+    {
+      "id": "A",
+      "kind": "POINT",
+      "x": "0",
+      "y": "4",
+      "coordinates": true
+    },
+    {
+      "id": "S",
+      "kind": "ON_CONIC",
+      "curve": "c1",
+      "x": "-15/4",
+      "branch": "POS"
+    },
+    {
+      "id": "T",
+      "kind": "ON_CONIC",
+      "curve": "c1",
+      "x": "15/4",
+      "branch": "POS"
+    },
+    {
+      "id": "U",
+      "kind": "ON_CONIC",
+      "curve": "c2",
+      "y": "3",
+      "branch": "NEG",
+      "coordinates": true
+    },
+    {
+      "id": "V",
+      "kind": "ON_CONIC",
+      "curve": "c2",
+      "y": "3",
+      "branch": "POS",
+      "coordinates": true
+    },
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    }
+  ],
+  "lines": [
+    {
+      "id": "k1",
+      "slope": "1",
+      "intercept": "4",
+      "tangent": true,
+      "curve": "c1"
+    },
+    {
+      "id": "k2",
+      "slope": "-1",
+      "intercept": "4",
+      "tangent": true,
+      "curve": "c1"
+    }
+  ],
+  "caption": "A(0, 4)는 원 C2 위의 점이다. 직선 AP의 기울기 m이 타원과 만나려면 |m|≥1(또는 수직선)이어서 방향각 θ가 π/4≤θ≤3π/4이다. 그림의 두 접선 k1, k2는 타원에 접하는 한계의 직선으로 접점은 S, T이고 원과 만나는 점은 U(−1, 3), V(1, 3)이다. 다른 교점 Q는 (−sin2θ, 3+cos2θ)이므로 θ가 π/4에서 3π/4까지 변하면 원의 아래쪽 반원을 한 번 돈다. 길이는 π이고 답은 ④이다.",
+  "accessibilityDescription": "가로로 긴 가는 타원 C1과 그 위쪽의 작은 원 C2가 있고, 원 위의 점 A에서 타원에 접하는 두 직선이 그려져 있다. 접선이 원과 다시 만나는 점 U, V가 원의 가운데 높이에 표시되어 있다.",
+  "newVisualInformation": [
+    "A에서 타원에 그은 두 접선의 방향 한계와 원 위의 만나는 점 U(−1, 3), V(1, 3)를 보여 Q가 아래쪽 반원을 따라 움직임을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면에서 점 $A(0,4)$와 타원 $\\dfrac{x^2}{15}+y^2=1$ 위의 점 $P$에 대하여 두 점 $A$와 $P$를 지나는 직선이 $x^2+(y-3)^2=1$과 만나는 두 점 중에서 $A$가 아닌 점을 $Q$라 하자. 점 $P$가 타원 위의 모든 점을 지날 때, 점 $Q$가 나타내는 도형의 길이를 구하시오. [5.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

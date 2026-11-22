@@ -25,7 +25,7 @@ from conic_label_value import line_label_matches, segment_label_mismatch
 from ellipse_figure_observer import (
     Refuse,NS,PIXEL_TOLERANCE,LABEL_DISTANCE,LIGHT_FILL,MEDIUM_FILL,POINT_ID,exact_scalar,
     _find,_attr_float,_line_coords,_box_of,_point_in_box,_box_distance,_point_segment_distance,
-    _box_boundary_distance,_line_interior_points,audit_accessible_names)
+    _box_boundary_distance,_line_interior_points,audit_accessible_names,label_too_far)
 
 CURVE_TOLERANCE_PX=0.6
 FOOT_ANGLE_DEGREES=0.5
@@ -914,7 +914,7 @@ def audit(plan,svg):
             if (translated is None or any(abs(float(value)-box[key])>0.01 for key,value in zip(('x','y'),translated.groups()))
                 or abs(box['x']+box['width']/2-ex)>8+PIXEL_TOLERANCE or box['y']<ey):
                 errors.append('PARABOLIC_ARCH_GROUND_LABEL_DISPLACED:'+pid)
-        if _box_distance(ex,ey,box)>(POINT_LEADER_MAX if pid in coordinate_ids else LABEL_DISTANCE): errors.append('LABEL_TOO_FAR:%s'%pid)
+        if label_too_far(pid,coordinate_ids,elements,box,ex,ey): errors.append('LABEL_TOO_FAR:%s'%pid)
         for other,value in points.items():
             if other==pid: continue
             gx,gy=pixel(*value)

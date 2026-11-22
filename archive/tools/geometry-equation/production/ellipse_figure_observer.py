@@ -28,7 +28,8 @@ NS='{http://www.w3.org/2000/svg}'
 PIXEL_TOLERANCE=0.9
 UNIT_TOLERANCE=0.03
 LABEL_DISTANCE=72.0
-POINT_LEADER_MAX=120.0   # this observer's own copy: a coordinate label may stand farther from its dot than a name
+POINT_LEADER_MAX=120.0   # this observer's own copy: a coordinate label may stand farther from its dot than a name (up to this) only when a leader joins it to the dot
+LEADER_AT_LABEL_PX,LEADER_DOT_NEAR_PX,LEADER_DOT_FAR_PX=2.5,3.5,8.0   # a leader starts on the label box (<= 2.5 px off its boundary) and stops 3.5..8 px short of the dot
 LIGHT_FILL='#eeeeee'
 MEDIUM_FILL='#d8d8d8'
 POINT_ID=re.compile(r"^[A-Z][0-9']?$")
@@ -260,6 +261,23 @@ def _box_distance(x,y,box):
     dx=max(box['x']-x,0.0,x-(box['x']+box['width']))
     dy=max(box['y']-y,0.0,y-(box['y']+box['height']))
     return math.hypot(dx,dy)
+
+
+def point_leader_joins(elements,box,ex,ey):
+    """True when a leader line of the figure, measured by its coordinates (not by its data attributes), starts on `box` and stops just short of the dot at (ex,ey)."""
+    for element in elements:
+        if element.tag!=NS+'line' or element.get('data-role')!='leader': continue
+        try: x1,y1,x2,y2=[float(element.get(name)) for name in ('x1','y1','x2','y2')]
+        except (TypeError,ValueError): continue
+        if _box_boundary_distance((x1,y1),box)<=LEADER_AT_LABEL_PX and LEADER_DOT_NEAR_PX<=math.hypot(x2-ex,y2-ey)<=LEADER_DOT_FAR_PX: return True
+    return False
+
+
+def label_too_far(pid,coordinate_ids,elements,box,ex,ey):
+    """A name stands within LABEL_DISTANCE of its dot; a coordinate label may stand up to POINT_LEADER_MAX away when a leader from its own dot reaches its box."""
+    reach=_box_distance(ex,ey,box)
+    if reach<=LABEL_DISTANCE: return False
+    return not (pid in coordinate_ids and reach<=POINT_LEADER_MAX and point_leader_joins(elements,box,ex,ey))
 
 
 def _point_segment_distance(point,a,b):
@@ -586,7 +604,7 @@ def audit(plan,svg):
                 box['y']+box['height']>canvas['height']):
             errors.append('LABEL_OUT_OF_CANVAS:%s'%pid)
         ex,ey=pixel(*points[pid])
-        if _box_distance(ex,ey,box)>(POINT_LEADER_MAX if pid in coordinate_ids else LABEL_DISTANCE):
+        if label_too_far(pid,coordinate_ids,elements,box,ex,ey):
             errors.append('LABEL_TOO_FAR:%s'%pid)
         for other,(oxp,oyp) in points.items():
             if other==pid: continue
@@ -613,7 +631,7 @@ def audit(plan,svg):
             errors.append('MEASURE_LEADER_DUPLICATE_OR_UNOWNED')
         else:
             leaders_by_label[key]=element
-    expected_leader_keys={'measure-'+sid for sid in required_leaders}
+    expected_leader_keys={'measure-'+sid for sid in required_leaders}|{'point-'+pid for pid in coordinate_ids}
     for key in leaders_by_label:
         if key not in expected_leader_keys:
             errors.append('MEASURE_LEADER_UNDECLARED:%s'%key)

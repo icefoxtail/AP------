@@ -169,10 +169,12 @@ rule(/^(INVALID_ACCESSIBILITY_DESCRIPTION)$/, () => ({ reason: 'accessibilityDes
 rule(/^PLAN_CAPTION_REQUIRED$/, () => ({ reason: '최상위 caption 문자열이 없다.', fix: 'caption 에 풀이 요약을 쓴다.' }));
 
 // --- 수직선·입체·평면 도형(number-line-v1.mjs, solid-figure-v1.mjs, plane-marks.mjs)
+// number-line-v1.mjs rowLabelPx: 6자 이하는 글자당 22px, 더 길면 한글 22px·공백 7px·그 밖 14px. SAFE 12 + 폭 + 간격 10 이 240 을 넘으면 거절(= 폭 218 초과)이라 한글 없는 라벨은 15자까지.
+const rowLabelRoomPx = l => { const cs = [...l]; return cs.length <= 6 ? 22 * cs.length : cs.reduce((s, ch) => s + (ch === ' ' ? 7 : ch.codePointAt(0) >= 0x1100 ? 22 : 14), 0); };
 rule(/^NUMBER_LINE_ROW_LABEL_INVALID$/, c => { // number-line-v1.mjs (행 label: 한 줄 16자 이내, 차지하는 폭 상한)
   const rows = ((c.plan.numberLine || {}).rows) || [];
-  const bad = rows.map((r, i) => ({ i, l: r && r.label })).filter(x => typeof x.l === 'string' && ([...x.l].length > 16 || /[&"\\$<>\u0000-\u001f]/.test(x.l) || / {2}/.test(x.l) || [...x.l].filter(ch => ch.codePointAt(0) >= 0x1100).length > 9));
-  return { reason: `수직선 행 label 은 16자 이내 한 줄이고 & " \\ $ 와 제어 문자·연속 공백이 없어야 하며, 한글은 9자까지이며, < > 는 쓸 수 없다(< 가 든 부등식은 SET 행이 자동으로 쓴다; 한글 없이 ≤ ≥ = 가 든 라벨은 수식 글꼴로 조판된다)${bad.length ? '. 걸린 label: ' + bad.map(x => `rows[${x.i}] ${q(x.l)}`).join(', ') : ''}.`,
+  const bad = rows.map((r, i) => ({ i, l: r && r.label })).filter(x => typeof x.l === 'string' && ([...x.l].length > 16 || /[&"\\$<>\u0000-\u001f]/.test(x.l) || / {2}/.test(x.l) || [...x.l].filter(ch => ch.codePointAt(0) >= 0x1100).length > 9 || rowLabelRoomPx(x.l) > 218));
+  return { reason: `수직선 행 label 은 16자 이내 한 줄이고 & " \\ $ 와 제어 문자·연속 공백이 없어야 하며, 한글은 9자까지이고 한글 없는 영문·기호는 폭 상한 때문에 15자까지이며, < > 는 쓸 수 없다(< 가 든 부등식은 SET 행이 자동으로 쓴다; 한글 없이 ≤ ≥ = 가 든 라벨은 수식 글꼴로 조판된다)${bad.length ? '. 걸린 label: ' + bad.map(x => `rows[${x.i}] ${q(x.l)}`).join(', ') : ''}.`,
     fix: '행 label 에는 변수나 짧은 말("m", "범위", "x=−2")만 쓴다. < 가 든 부등식은 SET 행이 수식 글꼴로 자동으로 쓰므로 행 label 에 쓰지 않는다. 긴 문장은 caption 에 쓰고 행에는 hideSetLabel 과 짧은 label 을 쓴다.' };
 });
 rule(/^NUMBER_LINE_POINTS_INVALID$/, c => {
