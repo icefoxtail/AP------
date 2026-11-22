@@ -200,7 +200,7 @@ def dimension_label_parts(row):
     """(label, unit) of a dimension: a trailing thin-space unit written in the label ("24\\,cm") is the unit, as in the plan's own reading of it."""
     label,unit=row.get('label'),row.get('unit')
     if isinstance(label,str):
-        m=re.fullmatch(r'(.*?)\s*\\,\s*(cm|mm|m)',label)
+        m=re.fullmatch(r'(.*?)\s*\\,\s*(km/h|m/s|cm/s|m/min|(?:mm|cm|km|m)\^[23]|mm|cm|km|mg|kg|dL|mL|ha|min|m|g|s|h|L)',label)   # (P-C) this observer's own list of the units a dimension label may carry
         if m and m.group(1)!='' and unit in (None,m.group(2)):label,unit=m.group(1),m.group(2)
     return label,unit
 
@@ -596,7 +596,7 @@ def audit(p):
         # (2) a fraction times one letter or function, written (a/b)*f, is drawn stacked with f over b ((8/5)*sqrt(10) is 8 sqrt10 over 5, (1/2)*sqrt(3) is sqrt3 over 2), so the run reads
         #     a (left out when it is 1), the digits of f, then b. Anything else (a digit lost, numerator and denominator swapped, a coefficient other than 1 gone) is a mismatch.
         flat_text=re.sub(r'\s+','',str(text))
-        if not unit and codes and re.fullmatch(r"[0-9A-Za-z+\-*/^()=,.<>]+",flat_text):
+        if not unit and codes and re.fullmatch(r"[0-9A-Za-z+\-*/^()=,.<>≈]+",flat_text):
             unit_words={'mm','cm','m','km','mg','g','kg','mL','L','dL','s','min','h','ha'}
             def one_left_out(hit):
                 after=flat_text[hit.end():];word=re.match(r'[A-Za-z]+',after)

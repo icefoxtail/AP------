@@ -265,6 +265,16 @@ class LabelNotationTests(unittest.TestCase):
         self.assertEqual(serialize(parse('2 pi')),r'2\pi')
         self.assertEqual(serialize(parse('pi*r')),r'\pi\cdot r')
 
+    def test_a_label_that_only_states_a_relation_to_a_value_leads_with_the_relation(self):
+        # (P-C) written here, not derived: what a student reads
+        for source,tex,plain in (('≈0.84',r'\approx 0.84','≈0.84'),('≈ 0.84',r'\approx 0.84','≈0.84'),('<5','<5','<5'),('>=3',r'\ge 3','≥3'),('=3','=3','=3'),('!=2',r'\ne 2','≠2'),('≈1/2',r'\approx {\displaystyle\frac{1}{2}}','≈1/2')):
+            with self.subTest(source=source):
+                self.assertEqual(serialize(parse(source),'tex'),tex);self.assertEqual(serialize(parse(source),'plain'),plain)
+        for source in ('≈','< <3','x ≈≈ 3','(≈3)','≅3','⊥3','∥3'):
+            with self.subTest(source=source),self.assertRaises(ValueError):parse(source)
+        self.assertEqual(serialize(parse('x≈0.84'),'tex'),r'x\approx 0.84')           # a relation with something on its left is what it always was
+        self.assertEqual(serialize(self.quantity('≈0.84','cm'),'tex'),r'\approx 0.84\mathrm{cm}')
+
     def test_unknown_characters_are_still_refused(self):
         for source in ('x@2','x$2','x;2','x~2','x#','x&y','x|y','x?','x{2}','x[1]','x\\2','x"y"'):
             with self.subTest(source=source),self.assertRaises(ValueError):parse(source)

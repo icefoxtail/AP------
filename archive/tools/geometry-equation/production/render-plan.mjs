@@ -10,7 +10,7 @@ import {pythonWorker,closeWorkers} from './worker.mjs';
 import {enableBrowserReuse,closeSharedBrowser} from '../visual-browser-runtime.mjs';
 import {assetIdentity} from './contracts.mjs';
 import {specFor} from './phase2.mjs';
-import {isPlaneFigure,inferNestedAngleOver} from './plane-marks.mjs';
+import {isPlaneFigure,inferNestedAngleOver,defaultHangulLabelKinds} from './plane-marks.mjs';
 import {composeConstructionCandidate} from './construction-candidate-svg-v1.mjs';
 import * as cap from './construction-archive-capture-v1.mjs';
 import * as obs from './archive-inverse-observation-v1.mjs';
@@ -96,6 +96,8 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
     if(authored.capability==='piecewise-discontinuous-spike-v1'&&authored.graphPlan?.referenceCurves!==undefined)authored=expandDiscontinuousPair(authored);
     // planeMarks.vectors / vectorOps (G3) are unfolded into arrows, labels and construction points before the exact model is built.
     if(authored.capability==='construction-spike-v1')authored=expandPlaneVectors(authored);
+    // (P-C) a Hangul label that does not say MATH is a plain-text label (it used to be refused); rows that were refused before are the only ones that change.
+    if(authored.capability==='construction-spike-v1')authored=defaultHangulLabelKinds(authored);
     // A source-coordinate construction without its frame nodes (origin, unit axis) gets them added, so the plan does not fail for bookkeeping it need not carry.
     if(authored.capability==='construction-spike-v1')authored=ensureCoordinateFrame(authored);
     row.capability=authored.capability;log.setPlan(authored,meta.fam);where.plan=authored;

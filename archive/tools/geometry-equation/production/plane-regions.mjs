@@ -16,7 +16,8 @@ const LABEL_KINDS=['MATH','TEXT'];
 export const REGION_LABEL_PLACEMENTS=['AUTO','LEADER','AUTO_LEADER'];
 // labelName / unit (E32): the region's name and the unit of its value are written with it as one plain-text label, 부채꼴 AOB=40cm². The value is a short
 // expression (digits, letters, pi, + - * and brackets); a unit with a power is written cm^2.
-export const REGION_LABEL_UNITS=['cm','m','mm','kg','cm^2','m^2','mm^2','cm^3','m^3','mm^3'];
+// (P-C) grown with the same vocabulary as the other plane labels (km, g, mg, mL, L, dL, s, min, h, ha, km^2, km^3 added); a unit outside it is refused as before
+export const REGION_LABEL_UNITS=['cm','m','mm','km','kg','g','mg','mL','L','dL','s','min','h','ha','cm^2','m^2','mm^2','km^2','cm^3','m^3','mm^3','km^3'];
 const REGION_VALUE=/^[0-9A-Za-z+\-*().,\s\u03C0]{1,24}$/u;
 const SUPERSCRIPTS={2:'\u00B2',3:'\u00B3'};
 /** The value of a region label as printed text: pi -> π, - -> the minus sign, * -> ×; a slash (a fraction) is refused because the label is one text line. */
@@ -24,7 +25,7 @@ export function regionValueText(value){
   if(typeof value!=='string'||!REGION_VALUE.test(value)||!value.trim())return null;
   return value.trim().replace(/pi/gu,'\u03C0').replace(/-/gu,'\u2212').replace(/\*/gu,'\u00D7').replace(/\s+/gu,' ');
 }
-export const regionUnitText=unit=>{const m=/^([a-z]+)(?:\^([23]))?$/u.exec(String(unit));return m?m[1]+(m[2]?SUPERSCRIPTS[m[2]]:''):null;};
+export const regionUnitText=unit=>{const m=/^([A-Za-z]+)(?:\^([23]))?$/u.exec(String(unit));return m?m[1]+(m[2]?SUPERSCRIPTS[m[2]]:''):null;};
 /** The whole text of a name/unit region label: name=value+unit (a space before the unit only when the value ends in a letter), e.g. △ABC=6cm², 부채꼴 AOB=40cm². */
 export function regionLabelText(row){
   const value=regionValueText(row.label);if(value===null)return null;

@@ -34,7 +34,7 @@ def named_value_drawn(row,node):
     A bare number, a length unit (cm, m) or a letter value does not; neither does a label whose name or unit was left out of the drawing."""
     expected=region_label_text(row)
     if expected is None or node is None or node.get('data-text')!=expected:return False
-    powered=re.fullmatch(r'[a-z]+\^[23]',str(row.get('unit','')))is not None
+    powered=re.fullmatch(r'[A-Za-z]+\^[23]',str(row.get('unit','')))is not None
     name=row.get('labelName')
     # a name alone: not one of a segment or arc (two capitals, AB=6\u03c0) or a length letter (l=6), which read as lengths
     named=isinstance(name,str) and name.strip()!='' and re.fullmatch(r'[A-Z]{2}|[a-z]',name.strip()) is None
@@ -48,7 +48,7 @@ def region_label_text(row):
     text=re.sub(r'\s+',' ',value.strip().replace('pi','\u03c0').replace('-','\u2212').replace('*','\u00d7'))
     unit=''
     if row.get('unit') is not None:
-        m=re.fullmatch(r'([a-z]+)(?:\^([23]))?',str(row['unit']))
+        m=re.fullmatch(r'([A-Za-z]+)(?:\^([23]))?',str(row['unit']))
         if m is None:return None
         unit=m.group(1)+(REGION_UNIT_POWERS[m.group(2)] if m.group(2) else '')
     return (row['labelName']+'=' if row.get('labelName') is not None else '')+text+(((' ' if re.search(r'[A-Za-z\u03c0]$',text) else '')+unit) if unit else '')

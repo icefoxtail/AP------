@@ -6,6 +6,8 @@ import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
 import {pythonWorker} from '../production/worker.mjs';
 import {specFor} from '../production/phase2.mjs';
+import {defaultHangulLabelKinds,dimensionLabelParts} from '../production/plane-marks.mjs';
+import {regionLabelText} from '../production/plane-regions.mjs';
 import {reconstruct} from '../production/cindy-observer.mjs';
 import {assetIdentity} from '../production/contracts.mjs';
 import {requestedProfileTypographyPolicy} from '../production/display-envelope.mjs';
@@ -204,4 +206,68 @@ test('a digit written after a space is refused before drawing, and the observer 
   // spaces that are not between a letter or bracket and a digit change nothing
   const fine=JSON.parse(JSON.stringify(marks));fine.expressionLabels[0]={id:'nOB',ownerSegment:'sOB',text:'x + 3'};
   assert.ok(!codes(await observe(composed.svg,fine)).includes('LABEL_DIGIT_AFTER_SPACE'));
+});
+
+// ---- (P-C) the units a plane label may carry: one table, typed here, fed to the generator and (through prepare) the semantic model; the observers get the same table in test_plane_marks.py ----
+const UNITS_ACCEPTED=['cm','m','mm','km','kg','g','mg','mL','L','dL','s','min','h','ha','km/h','m/s','cm/s','m/min','cm^2','m^2','mm^2','km^2','cm^3','m^3','mm^3'];
+const UNITS_REFUSED=['','CM','cm^4','c m','초','inch','lb','sec','m^2/s','cm2'];
+test('every unit of the shared table is carried by an expression label, and a unit outside it is refused with the old code',async()=>{
+  for(const unit of UNITS_ACCEPTED){
+    const withUnit=JSON.parse(JSON.stringify(marks));withUnit.expressionLabels[1]={id:'nOC',ownerSegment:'sOC',text:'6',unit};
+    const spec=specFor(planOf(withUnit),model,identity.assetId);
+    const prepared=await pythonWorker({action:'prepare',spec});
+    assert.equal(prepared.status,'OK',unit+' '+JSON.stringify(prepared.result));
+  }
+  for(const unit of UNITS_REFUSED){
+    const withUnit=JSON.parse(JSON.stringify(marks));withUnit.expressionLabels[1]={id:'nOC',ownerSegment:'sOC',text:'6',unit};
+    let message='';try{specFor(planOf(withUnit),model,identity.assetId);message='accepted';}catch(error){message=String(error?.message??error);}
+    assert.match(message,/^MARK_UNIT_INVALID:expressionLabels:nOC$/,JSON.stringify(unit));
+  }
+});
+
+test('a km or area unit is drawn after the value and the observer reads it back from the glyphs',async()=>{
+  const km=JSON.parse(JSON.stringify(marks));km.expressionLabels[1]={id:'nOC',ownerSegment:'sOC',text:'6',unit:'km'};km.expressionLabels[2]={id:'nAO',ownerSegment:'sAO',text:'12',unit:'cm^2'};
+  const drawn=await composeConstructionCandidate({plan:planOf(km),model,identity,typographyPolicy:policy,browser});
+  assert.equal(drawn.status,'COMPOSED',JSON.stringify(drawn.detail));
+  assert.deepEqual(glyphs(drawn.svg,'nOC'),['36','6B','6D'],'6 k m');
+  assert.deepEqual((await observe(drawn.svg,km)).errors,[]);
+  assert.ok(codes(await observe(spliceLabel(drawn.svg,'nOC',text=>text.replace('data-c="6B"','data-c="63"')),km)).includes('LABEL_UNIT_MISMATCH'));
+});
+
+test('a label that only states a relation to a value (the approximate 0.84) is drawn, and the observer reads its digits',async()=>{
+  const approx=JSON.parse(JSON.stringify(marks));approx.expressionLabels[0]={id:'nOB',ownerSegment:'sOB',text:'≈0.84'};
+  const drawn=await composeConstructionCandidate({plan:planOf(approx),model,identity,typographyPolicy:policy,browser});
+  assert.equal(drawn.status,'COMPOSED',JSON.stringify(drawn.detail));
+  assert.ok(glyphs(drawn.svg,'nOB').includes('2248'),'the approximate sign is drawn');
+  assert.deepEqual((await observe(drawn.svg,approx)).errors,[]);
+  assert.ok(codes(await observe(spliceLabel(drawn.svg,'nOB',text=>text.replace('data-c="38"','data-c="39"')),approx)).includes('LABEL_TEXT_MISMATCH'));
+});
+
+test('a Hangul label that does not say MATH is a plain-text label, and one that says MATH is still refused',async()=>{
+  const kor=JSON.parse(JSON.stringify(marks));kor.expressionLabels[0]={id:'nOB',ownerSegment:'sOB',text:'공통'};
+  const plan=defaultHangulLabelKinds(planOf(kor));
+  assert.equal(plan.planeMarks.expressionLabels[0].labelKind,'TEXT');
+  const drawn=await composeConstructionCandidate({plan,model,identity,typographyPolicy:policy,browser});
+  assert.equal(drawn.status,'COMPOSED',JSON.stringify(drawn.detail));
+  assert.deepEqual((await observe(drawn.svg,plan.planeMarks)).errors,[]);
+  // the rows that were never refused do not change: no Hangul, an explicit kind, a unit
+  const same=planOf(marks);assert.equal(defaultHangulLabelKinds(same),same,'the same object comes back when nothing changes');
+  const explicit=JSON.parse(JSON.stringify(marks));explicit.expressionLabels[0]={id:'nOB',ownerSegment:'sOB',text:'공통',labelKind:'MATH'};
+  const stillMath=planOf(explicit);assert.equal(defaultHangulLabelKinds(stillMath),stillMath);
+  let message='';try{specFor(stillMath,model,identity.assetId);const prepared=await pythonWorker({action:'prepare',spec:specFor(stillMath,model,identity.assetId)});message=JSON.stringify(prepared.result);}catch(error){message=String(error?.message??error);}
+  assert.match(message,/KOREAN_WORD_NEEDS_TEXT_LABEL/);
+});
+
+test('a dimension label written with its thin-space unit reads every unit of the table, and only those',()=>{
+  const thin=String.raw`\,`;
+  for(const unit of UNITS_ACCEPTED)assert.deepEqual(dimensionLabelParts({label:'24'+thin+unit}),{label:'24',unit},unit);
+  for(const unit of ['inch','lb','CM','cm^4','x'])assert.deepEqual(dimensionLabelParts({label:'24'+thin+unit}),{label:'24'+thin+unit,unit:undefined},unit);
+  assert.equal(dimensionLabelParts({label:'24'+thin+'km',unit:'cm'}).conflict,true);
+});
+
+test('the region label units are the table minus the ratios, and a region label draws them as the observer reads them',()=>{
+  const regionUnits=UNITS_ACCEPTED.filter(unit=>!unit.includes('/'));
+  for(const unit of regionUnits)assert.equal(regionLabelText({label:'6',unit}).startsWith('6'+unit.split('^')[0]),true,unit);
+  assert.equal(regionLabelText({label:'6',unit:'km^2'}),'6km\u00B2');
+  assert.equal(regionLabelText({label:'6',unit:'mL'}),'6mL');
 });

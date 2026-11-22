@@ -99,7 +99,8 @@ const weightOf=(row,kind,where)=>{
 export const EQUAL_MARK_STYLES=['TICK','CIRCLE'];
 export const TRACE_JOIN_MAX_DEGREES=300;   // a joined trace arc (the stated intersections plus spanDeg) may sweep at most this far round its centre
 // A label's `unit` (cm, m, mm) is written after a MATH label's expression; a TEXT label is plain Korean text and takes none.
-export const LABEL_UNITS=['cm','m','mm','kg'];
+// (P-C) length, mass, volume, time, speed and area/volume powers: the units a textbook length or value label carries. The list only grew (cm m mm kg were all there was); the code for a unit not in it is unchanged.
+export const LABEL_UNITS=['cm','m','mm','km','kg','g','mg','mL','L','dL','s','min','h','ha','km/h','m/s','cm/s','m/min','cm^2','m^2','mm^2','km^2','cm^3','m^3','mm^3'];
 const bad=code=>{throw Error(code);};
 const keysOk=(row,allowed,where)=>{for(const key of Object.keys(row))if(!allowed.includes(key))bad('MARK_FIELD_UNKNOWN:'+where+'.'+key);};
 const numberOf=value=>{const n=typeof value==='string'&&value.trim()!==''?Number(value):value;return typeof n==='number'&&Number.isFinite(n)?n:null;};
@@ -119,7 +120,8 @@ const list=(value,where)=>{if(value===undefined)return [];if(!Array.isArray(valu
 // first free side without one). labelKind TEXT writes plain Korean text, MATH a formula; without labelKind a text with a Hangul syllable is TEXT, any other MATH.
 export const TEXT_LABEL_ANCHORS=['CENTER','N','NE','E','SE','S','SW','W','NW'];
 export const TEXT_LABEL_HANGUL=/[\u1100-\u11FF\u3130-\u318F\uAC00-\uD7AF]/u;
-export const TEXT_LABEL_MATH=/^[A-Za-z0-9 (),<>=+\-.\u00B0]{1,40}$/;
+// (P-C) the relation, sign and figure characters a math label may carry (the serialization reads them all): added to the letters, digits and signs it always took.
+export const TEXT_LABEL_MATH=/^[A-Za-z0-9 (),<>=+\-.\u00B0\u2248\u2245\u223D\u2261\u22A5\u2225\u2264\u2265\u2260\u00B1\u00D7\u00F7:%\u00B2\u00B3\u2220\u25B3\u25A1]{1,40}$/;
 // (G3) A vector name inside a MATH label: vec(a) (one lower-case letter) or vec(AB) (two capital letters, each a point of the figure) is the only place a label may name a vector;
 // the engine turns it into \vec{a} / \overrightarrow{AB}. A backslash or dollar sign written directly stays refused. Returns null, or the error code for the first bad name.
 export function vectorLabelIssue(text,hasPoint){
@@ -132,6 +134,24 @@ export function vectorLabelIssue(text,hasPoint){
     if(name.length===2&&!(name[0]!==name[1]&&[...name].every(ch=>hasPoint(ch))))return name[0]===name[1]?'VECTOR_LABEL_INVALID':'VECTOR_LABEL_UNKNOWN_POINT';
   }
   return null;
+}
+/**
+ * (P-C) A label with a Hangul word and no labelKind (and no unit) in expressionLabels, dimensions, pathLabels or arcs is a plain-text label: the plan did not say MATH, and a math typesetter cannot
+ * draw Hangul, so the old answer was a refusal (KOREAN_WORD_NEEDS_TEXT_LABEL). Returns the same plan object when no row changes; only rows that were refused before change.
+ */
+export function defaultHangulLabelKinds(plan){
+  const marks=plan?.planeMarks;
+  if(!marks||typeof marks!=='object')return plan;
+  const fields={expressionLabels:'text',dimensions:'label',pathLabels:'label',arcs:'label'};
+  let changed=false;const next={...marks};
+  for(const [name,key] of Object.entries(fields)){
+    if(!Array.isArray(marks[name]))continue;
+    next[name]=marks[name].map(row=>{
+      if(!row||typeof row!=='object'||row.labelKind!==undefined||row.unit!==undefined||typeof row[key]!=='string'||!TEXT_LABEL_HANGUL.test(row[key]))return row;
+      changed=true;return {...row,labelKind:'TEXT'};
+    });
+  }
+  return changed?{...plan,planeMarks:next}:plan;
 }
 export const textLabelKind=row=>row?.labelKind??(TEXT_LABEL_HANGUL.test(String(row?.text??''))?'TEXT':'MATH');
 const PI_IN_LABEL=/(?<![A-Za-z])pi(?![A-Za-z])|\u03c0/u;   // pi or the letter π in a label
@@ -194,7 +214,7 @@ const DIMENSION_SIDE_VECTORS={BELOW:[0,1],ABOVE:[0,-1],LEFT:[-1,0],RIGHT:[1,0]};
 export function dimensionLabelParts(row){
   let label=row?.label,unit=row?.unit;
   if(typeof label==='string'){
-    const m=/^(.*?)\s*\\,\s*(cm|mm|m)$/u.exec(label);
+    const m=/^(.*?)\s*\\,\s*(km\/h|m\/s|cm\/s|m\/min|(?:mm|cm|km|m)\^[23]|mm|cm|km|mg|kg|dL|mL|ha|min|m|g|s|h|L)$/u.exec(label);   // (P-C) the same units as LABEL_UNITS
     if(m&&m[1]!==''){if(unit!==undefined&&unit!==m[2])return {label,unit,conflict:true};label=m[1];unit=m[2];}
   }
   return {label,unit};

@@ -15,6 +15,7 @@ VECTOR_NAME=re.compile(r'[a-z]|[A-Z]{2}')
 # A Korean word is a token of its own: it is read (so the refusal can say what to do), but it cannot be typeset as math (see serialize, KOREAN_WORD_NEEDS_TEXT_LABEL).
 TOKEN=re.compile(r'\s*(\d+(?:\.\d+)?|[A-Za-zαβγδθπ]+|[\uac00-\ud7a3]+|<=|>=|!=|[+*/^_\-=<>()\x27,°√≈≅∽≡⊥∥±×÷:∠△□%])')
 RELATIONS={'=','<','>','<=','>=','!=','≈','≅','∽','≡','⊥','∥'}
+LEADING_RELATIONS={'≈','=','<','>','<=','>=','!='}   # (P-C) the relations that may open a label with nothing on their left
 ASCII_FORMS=str.maketrans({'−':'-','′':"'",'≤':'<=','≥':'>=','≠':'!=','²':'^2','³':'^3','·':'*'})
 FIGURE_PREFIXES={'∠':r'\angle ','△':r'\triangle ','□':r'\square '}
 KOREAN_WORD=re.compile(r'[\uac00-\ud7a3]+')
@@ -50,8 +51,12 @@ class Parser:
 
     def expr(self,bp=0,depth=0):
         if depth>32:raise ValueError('EXPRESSION_DEPTH_LIMIT')
+        first=self.i==0
         token=self.take()
-        if token in ('+','-','±'):left=self.node('unary',token,(self.expr(25,depth+1),))
+        if first and depth==0 and bp==0 and token in LEADING_RELATIONS:
+            # (P-C) a label that only states a relation to a value (≈0.84, <5, =3): the left side is the thing the label stands beside, so the relation leads
+            left=self.node('relprefix',token,(self.expr(6,depth+1),))
+        elif token in ('+','-','±'):left=self.node('unary',token,(self.expr(25,depth+1),))
         elif token=='(':
             rows=[self.expr(0,depth+1)]
             while self.peek()==',':self.take();rows.append(self.expr(0,depth+1))
@@ -257,6 +262,10 @@ def _render(node,mode):
     def escape(v):return html.escape(v) if mode=='svg' else v
     k=node.kind; a=node.args
     if k=='number':return node.value
+    if k=='relprefix':
+        if len(a)!=1:raise ValueError('NOTATION_ARITY')
+        sign={'≈':r'\approx ','<=':r'\le ','>=':r'\ge ','!=':r'\ne '}.get(node.value,node.value) if mode=='tex' else {'<=':'≤','>=':'≥','!=':'≠'}.get(node.value,node.value)
+        return escape(sign)+s(a[0])
     if k=='quantity':
         # A plane-mark label with a unit (cm, m, mm): the unit follows the value; after a number it is attached (3cm), after a letter one space apart (x cm).
         if len(a)!=1:raise ValueError('NOTATION_ARITY')
