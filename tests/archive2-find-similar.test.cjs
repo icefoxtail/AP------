@@ -337,7 +337,7 @@ test("home rows use the same row with the similar-problem cell, and the hint say
   // The same function draws a finder row: identical markup apart from range, 더보기, the day label and the 함께 출제 check (finder only).
   t.w.state.find = { material: "exam", file };
   const finderRow = rowsOf(t.w.renderFind())[0];
-  const strip = (html) => html.replace(/<button data-action="multi-pick"[^>]*>.*?<\/button>/gs, "").replace(/<div class="exam-row-head">(.*?)<\/div>/s, "$1")
+  const strip = (html) => html.replace(/<button data-action="multi-pick"[^>]*>.*?<\/button>/gs, "").replace(/ has-pick/, "")
     .replace(/<details class="finder-card-more">.*?<\/details>/s, "").replace(/<div class="exam-row-range">.*?<\/div>/s, "").replace(/ · 오늘/, "").replace(/\s+/g, " ");
   assert.equal(strip(row), strip(finderRow));
 });

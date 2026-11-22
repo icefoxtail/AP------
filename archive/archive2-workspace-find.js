@@ -505,7 +505,7 @@
     return ranges.length === 1 ? ranges[0].text : ranges.map((range) => `${range.course} ${range.text}`.trim()).join(" · ");
   }
   // ---- 여러 시험지 한꺼번에 출제 (2026-11-22) ----
-  // 학교별 기출 목록의 원본·유사 시험지 줄에 체크 칸을 두고, 고른 시험지를 한 번에 출제 패널(items[])로 넘긴다.
+  // 학교별 기출 목록의 원본 줄(맨 앞 칸)·유사 시험지 줄에 체크 칸을 두고, 고른 시험지를 한 번에 출제 패널(items[])로 넘긴다.
   // 고른 것은 이 화면(메모리)에만 있다: 필터·검색·쪽을 바꿔도 남고, 저장소·서버에는 쓰지 않는다. 고른 순서가 출제 순서다.
   const multiPicked = [];
   const multiPickedExams = () => {
@@ -531,7 +531,7 @@
       const on = multiPicked.includes(file);
       el.setAttribute("aria-checked", String(on));
       el.classList.toggle("on", on);
-      if (el.closest?.(".exam-row-head")) el.closest(".exam-row")?.classList.toggle("multi-on", on);
+      if (el.classList.contains("lead")) el.closest(".exam-row")?.classList.toggle("multi-on", on);
     });
     const slot = document.querySelector("[data-multi-slot]");
     if (slot) slot.innerHTML = multiBarMarkup();
@@ -585,9 +585,9 @@
     const more = options.more
       ? `<details class="finder-card-more"><summary>더보기</summary><div class="finder-card-more-menu">${button("source-toggle", options.selected ? "선택됨" : "문항 선택", `data-exam="${index}" aria-pressed="${!!options.selected}" class="small"`)}</div></details>`
       : "";
-    return `<article class="exam-row ${gradeClass(exam.grade)}${options.selected ? " selected" : ""}${picked ? " multi-on" : ""}${withSimilarCell ? "" : " no-sim"}" data-similar-count="${similarCount}">
-      <div class="exam-row-spine"><span class="exam-row-year">${esc(year || "–")}</span><span class="exam-row-grade">${esc(exam.grade || "")}</span></div>
-      <div class="exam-row-main">${options.multi ? `<div class="exam-row-head">${titleButton}${multiPickButton(exam, index)}</div>` : titleButton}${tag}<div class="exam-row-meta">${esc(meta)}${badges}</div>${range ? `<div class="exam-row-range">범위 ${esc(range)}</div>` : ""}</div>
+    return `<article class="exam-row ${gradeClass(exam.grade)}${options.selected ? " selected" : ""}${picked ? " multi-on" : ""}${options.multi ? " has-pick" : ""}${withSimilarCell ? "" : " no-sim"}" data-similar-count="${similarCount}">
+      ${options.multi ? multiPickButton(exam, index, " lead") : ""}<div class="exam-row-spine"><span class="exam-row-year">${esc(year || "–")}</span><span class="exam-row-grade">${esc(exam.grade || "")}</span></div>
+      <div class="exam-row-main">${titleButton}${tag}<div class="exam-row-meta">${esc(meta)}${badges}</div>${range ? `<div class="exam-row-range">범위 ${esc(range)}</div>` : ""}</div>
       <div class="exam-row-actions" role="group" aria-label="${esc(title)} 시험지·해설·정답·출제">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(direct).join("")}${button("source-issue", "출제", `type="button" class="primary" data-exam="${index}" aria-label="${esc(title)} 반에 출제"`)}${more}</div>
       ${withSimilarCell ? similarCellMarkup(exam, index, pairs, options.multi) : ""}
     </article>`;

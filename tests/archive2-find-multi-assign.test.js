@@ -87,6 +87,13 @@ test("every original row has a 함께 출제 check, and no bar shows until somet
   const rows = rowsOf(markup);
   assert.ok(rows.length > 0);
   for (const row of rows) assert.match(row, /data-action="multi-pick" type="button" role="checkbox" aria-checked="false"/);
+  // 체크는 줄 맨 앞 칸(연도·학년 배지보다 앞)에 있다.
+  for (const row of rows) {
+    assert.match(row, /has-pick/);
+    assert.ok(row.indexOf('data-action="multi-pick"') < row.indexOf('class="exam-row-spine"'), "the check comes before the year/grade badge");
+    assert.match(row.slice(0, row.indexOf('class="exam-row-spine"')), /class="multi-pick lead"/);
+  }
+  assert.doesNotMatch(markup, /exam-row-head/);
   assert.doesNotMatch(markup, /multi-assign-bar/);
   assert.match(markup, /data-multi-slot/);
   assert.match(markup, /data-action="source-issue"/, "the one-sheet 출제 button stays");
