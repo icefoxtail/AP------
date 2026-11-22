@@ -407,6 +407,13 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - `engine.html`은 등록 주소일 때만 `question-meta.js`를 불러온다(`<script id="engine-metadata-gate">`, 같은 자리에서 `document.write`라 순서·`await window.__ARCHIVE_METADATA_READY__`는 그대로). 평소 열기(`engine.html?data=exams/<file>&mode=exam|sol|ans`)는 sidecar 요청이 없다. 이유: 믹스 리더(`output-metadata-loader.js`)가 이미 같은 규칙이다. 테스트: `tests/archive-engine-original-metadata-on-demand.test.js`.
 - 이 규칙을 되돌리지 않는다. 등록 주소에 새 이름이 생기면 위 게이트의 조건에 함께 넣는다.
 
+## 카탈로그는 두 파일: 화면이 받는 것과 검수·근거 (2026-11-22, 선생님 속도 실측 후속)
+
+- `archive/data/archive2-catalog.json`은 선생님 화면과 Worker가 받아 읽는 값만 둔다. 화면·Worker가 읽지 않는 검수·근거 값(`metadataAssignmentEvidence`의 증거 경로·해시, `metaProjection.parentBinding`·`sourceBinding`의 증거 경로·해시, `approvedSourceFingerprint`)은 `archive/data/archive2-catalog-evidence.json`으로 옮긴다. 화면은 이 파일을 받지 않는다(Pages 릴리스 목록에도 없다). 이유: 카탈로그 73MB(gzip 11.8MB) 중 이런 값이 큰 몫이었고, 선생님이 들어올 때마다 받아 해석했다.
+- 빌더(`build-archive2-catalog.mjs`)가 두 파일을 같이 쓰고 `--check`도 둘 다 본다. 쓰는 규칙은 `archive/tools/archive2-catalog-evidence.cjs` 한 곳이다. 빌더는 매번 같은 입력으로 `resolveCatalog`를 얇은 카탈로그와 전체 카탈로그에 돌려 결과가 같은지 확인하고 다르면 멈춘다. `resolveCatalog`는 등록 영수증이나 검수 덮어쓰기가 가리키는 문항에서만 `metadataAssignmentEvidence`를 통째로 읽으므로 그 문항은 전체 값을 카탈로그에 남긴다.
+- 완전한 레코드가 필요한 도구·테스트는 `archive2-catalog-evidence.cjs`의 `readCatalog({ root })`로 읽는다(증거 파일을 합쳐 준다, 표지(`catalogEvidence`)가 없는 옛 카탈로그는 그대로 돌려준다). 화면 코드가 새로 이 값들을 읽어야 하면 읽지 말고 얇은 카탈로그에 남기는 값을 먼저 늘린다(`tests/archive2-catalog-evidence.test.js`가 화면 스크립트가 옮겨진 이름을 읽는지 잡는다).
+- 손으로 카탈로그를 고치는 일회성 등록 도구(`register-target-exam.mjs`, `register-existing-target-exam-update.mjs`)는 두 파일 구조를 못 쓴다. 표지가 있는 카탈로그를 만나면 멈춘다. 등록은 등록기(빌더)로 한다.
+
 ## 화면 개선 4건: 교과서 칸·진단 결과표 단계·빠른 평가 안내·단원별 기출 → 문제지 만들기 (2026-11-22)
 
 - **학교별 기출 상단 줄은 [학교 기출 | 교과서 | 기출 외 시험지 | 전체]**다(`archive2-workspace-find.js` `renderFind`). 교과서 칸은 `material=textbook`(`O.materialKind`가 이미 가르던 값)이고 "기출 외 시험지"에서 교과서를 빼지 않는다(전체·기출 외에는 그대로 섞여 나온다). 학년·과목 단추는 기존 것을 그대로 쓰고, 시험 시기 단추는 교과서에 없어 숨기며 그 자리에 **출판사 단추**(`finder-publisher`)를 둔다. 출판사 값은 새 필드가 아니라 기존 학교 조건(`state.find.school`, 카탈로그의 `school`=출판사)이다. 교과서 줄은 `textbookParts`가 카탈로그 값(`school`·`primaryStandardCourse`·`topic`)에서 출판사·과목·단원명을 읽어 "출판사 · 과목" 머리줄 → 단원명 순으로 보이고(옆 띠는 연도 대신 학년·"교과서"), 목록은 과목 → 출판사 → 단원 순이다. 단원 목차 순서는 카탈로그에 없어 가나다순이다. 이유: 교과서 약 170줄이 기출 외 시험지 370개에 섞여 찾기 어려웠다. 테스트: `tests/archive2-find-book-tab.test.js`.

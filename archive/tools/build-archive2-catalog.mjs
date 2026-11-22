@@ -6,6 +6,8 @@ import { fileURLToPath } from "node:url";
 import core from "../archive2-core.js";
 import unifiedUnits from "../archive2-unified-units.js";
 import { materializePackageShards } from "./materialize-archive-package-shards.mjs";
+import catalogEvidence from "./archive2-catalog-evidence.cjs";
+import { isDeepStrictEqual } from "node:util";
 import problemBankMeta from "../problem-bank-meta.js";
 import examSourceReader from "../exam-source-reader.js";
 import { classifyMetaBinding, loadRebinds } from "./meta-foundation/text-binding-lib.mjs";
@@ -775,27 +777,29 @@ const catalog = {
 const target = path.join(root, "archive/data/archive2-catalog.json");
 // Repeated labels and source paths dominate a full JSON projection. Column packing
 // changes transport only; decodeCatalog restores the exact field names and values.
-const columns = [...new Set(records.flatMap((record) => Object.keys(record)))];
-const strings = [],
-  stringIds = new Map();
-const encode = (value) => {
-  if (typeof value !== "string") return value ?? null;
-  if (!stringIds.has(value)) {
-    stringIds.set(value, strings.length);
-    strings.push(value);
-  }
-  return [stringIds.get(value)];
+const packRecords = (catalogHeader, packRows) => {
+  const columns = [...new Set(packRows.flatMap((record) => Object.keys(record)))];
+  const strings = [],
+    stringIds = new Map();
+  const encode = (value) => {
+    if (typeof value !== "string") return value ?? null;
+    if (!stringIds.has(value)) {
+      stringIds.set(value, strings.length);
+      strings.push(value);
+    }
+    return [stringIds.get(value)];
+  };
+  return {
+    ...catalogHeader,
+    encoding: "column-dictionary-v1",
+    columns,
+    strings,
+    records: packRows.map((record) =>
+      columns.map((column) => encode(record[column])),
+    ),
+  };
 };
-const packed = {
-  ...catalog,
-  encoding: "column-dictionary-v1",
-  columns,
-  strings,
-  records: records.map((record) =>
-    columns.map((column) => encode(record[column])),
-  ),
-};
-const packedText = JSON.stringify(packed) + "\n";
+const evidenceTarget = path.join(root, "archive", catalogEvidence.EVIDENCE_PATH);
 const overrideEvidenceDir = path.join(root, "archive/data/meta-foundation/evidence/review-overrides/v1");
 const overrideRecords = fs.existsSync(overrideEvidenceDir)
   ? fs.readdirSync(overrideEvidenceDir)
@@ -824,6 +828,20 @@ const runtimeInputPaths = core.Canonical.runtimeInputPathsFromManifest((registry
 const runtimePacks = runtimeInputPaths.map((runtimePath) =>
   JSON.parse(read("archive/" + runtimePath)),
 );
+// The catalog the screens and the Worker download keeps only what they read; the review/evidence values it drops go to
+// archive2-catalog-evidence.json (see archive2-catalog-evidence.cjs). resolveCatalog reads metadataAssignmentEvidence
+// in full only for a question a registration receipt or a review override names, so those keep the whole value.
+const fullEvidenceUids = new Set(overrideRecords.map((row) => row.questionUid).filter(Boolean));
+for (const receiptPath of core.Canonical.reviewedRegistrationProofPaths(runtimePacks)) {
+  const receipt = JSON.parse(read("archive/" + receiptPath));
+  for (const row of receipt.appliedRecords || []) if (row?.questionUid) fullEvidenceUids.add(row.questionUid);
+}
+const slimmed = catalogEvidence.slimRecords(records, { fullEvidenceUids });
+const evidenceText = catalogEvidence.evidenceTextOf(slimmed.evidence, indexVersion);
+const catalogHeader = { ...catalog };
+delete catalogHeader.records;
+const packed = packRecords({ ...catalogHeader, catalogEvidence: catalogEvidence.markerOf(evidenceText) }, slimmed.records);
+const packedText = JSON.stringify(packed) + "\n";
 const allInputPaths = [...new Set([
   ...core.Canonical.manifestInputPathsFromRuntimePacks(
     runtimePacks,
@@ -886,6 +904,37 @@ const versionBundle = await core.Canonical.loadInputBundle(
 const resolvedCatalog = core.Canonical.resolveCatalog({ versionBundle });
 if (resolvedCatalog.indexVersion !== baseProjectionVersion)
   throw new Error("Canonical source shard resolver did not use the base projection version");
+// Moving evidence out of the catalog must not change what resolveCatalog returns: resolve the same inputs with the
+// complete catalog and compare. Every field except the trimmed columns must be identical, and the trimmed columns must
+// equal the same trimming applied to the complete result.
+{
+  const fullCatalogPacked = JSON.parse(JSON.stringify(packRecords({ ...catalogHeader }, records)));
+  const fullResolved = core.Canonical.resolveCatalog({
+    versionBundle: { ...versionBundle, resources: { ...versionBundle.resources, "data/archive2-catalog.json": fullCatalogPacked } },
+  });
+  const { records: fullRows, columns: fullColumns, strings: fullStrings, ...fullRest } = fullResolved;
+  const { records: slimRows, columns: slimColumns, strings: slimStrings, catalogEvidence: slimMarker, ...slimRest } = resolvedCatalog;
+  if (!slimMarker || slimMarker.sha256 !== catalogEvidence.markerOf(evidenceText).sha256)
+    throw new Error("Catalog evidence marker is missing from the resolved catalog");
+  const changedKeys = [...new Set([...Object.keys(fullRest), ...Object.keys(slimRest)])]
+    .filter((key) => !isDeepStrictEqual(fullRest[key], slimRest[key]));
+  if (changedKeys.length)
+    throw new Error("Catalog evidence split changed a resolveCatalog field outside the records: " + changedKeys.join(", "));
+  if (fullRows.length !== slimRows.length)
+    throw new Error("Catalog evidence split changed the resolved record count");
+  const trimmedColumns = new Set([...catalogEvidence.WHOLE_COLUMNS, ...catalogEvidence.TRIMMED_COLUMNS]);
+  for (let index = 0; index < fullRows.length; index++) {
+    const fullRow = fullRows[index], slimRow = slimRows[index];
+    const expectedTrimmed = catalogEvidence.trimResolvedRecord(fullRow, { fullEvidenceUids });
+    let bad = Object.keys({ ...fullRow, ...slimRow }).find((key) => !trimmedColumns.has(key) && !isDeepStrictEqual(fullRow[key], slimRow[key]));
+    // A trimmed column is either the trimmed catalog value, or (when resolveCatalog itself builds the value) exactly
+    // what the complete catalog produces.
+    bad ??= [...trimmedColumns].find((key) => !isDeepStrictEqual(slimRow[key], expectedTrimmed[key]) && !isDeepStrictEqual(slimRow[key], fullRow[key]));
+    if (bad)
+      throw new Error("Catalog evidence split changed " + bad + " of the resolved record " + (fullRow.questionUid || index) +
+        "; resolveCatalog now reads a value that was moved to the evidence file (extend fullEvidenceUids or the kept values)");
+  }
+}
 
 const sourceShardPrefix = "data/archive2-source-verification/v1/";
 const mixedSourceShardPrefix = "data/archive2-source-verification/mixed-v1/sources/";
@@ -1181,6 +1230,7 @@ if (packageOnly) {
     root,
     registeredFiles: [
       [relative(target), packedText],
+      [relative(evidenceTarget), evidenceText],
       [relative(overrideIndexTarget), overrideIndexText],
       [relative(sourceIndexTarget), sourceIndexText],
       [relative(topIndexTarget), topIndexText],
@@ -1203,6 +1253,11 @@ if (packageOnly) {
     actual !== expected
   )
     throw new Error("Archive 2.0 catalog projection is stale");
+  const actualEvidence = fs.existsSync(evidenceTarget)
+    ? fs.readFileSync(evidenceTarget, "utf8").replace(/\r\n/g, "\n")
+    : null;
+  if (actualEvidence !== evidenceText)
+    throw new Error("Archive 2.0 catalog evidence file is stale");
   const actualOverrideIndex = fs.existsSync(overrideIndexTarget)
     ? fs.readFileSync(overrideIndexTarget, "utf8").replace(/\r\n/g, "\n")
     : null;
@@ -1267,6 +1322,7 @@ if (packageOnly) {
     throw new Error("Archive 2.0 canonical compact input manifest is stale");
 } else {
   fs.writeFileSync(target, packedText);
+  fs.writeFileSync(evidenceTarget, evidenceText);
   fs.writeFileSync(overrideIndexTarget, overrideIndexText);
   fs.mkdirSync(sourceShardDir, { recursive: true });
   fs.mkdirSync(mixedSourceShardDir, { recursive: true });
