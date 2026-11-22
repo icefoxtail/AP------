@@ -630,8 +630,8 @@ function specForFamily(plan,model,id){
     const objects=[
       {id:'f-left',kind:'FUNCTION_GRAPH',expression:linear(p.piecewise.left),domain:[lo,breakX],criticalX:[breakX],branch:'LEFT'},
       {id:'f-right',kind:'FUNCTION_GRAPH',expression:linear(p.piecewise.right),domain:[breakX,hi],criticalX:[breakX],branch:'RIGHT'},
-      {id:'left-branch-equation',kind:'EQUATION_LABEL',text:linearLabel(p.piecewise.left),at:[(lo+breakX)/2,(number(features.breakpoint.leftLimitY)+number(features.markers[0].y))/2+yOffset],math:true,priority:0},
-      {id:'right-branch-equation',kind:'EQUATION_LABEL',text:linearLabel(p.piecewise.right),at:[(breakX+hi)/2,(number(features.breakpoint.rightLimitY)+number(features.markers[1].y))/2+yOffset],math:true,priority:0}
+      {id:'left-branch-equation',kind:'EQUATION_LABEL',text:linearLabel(p.piecewise.left),at:[(lo+breakX)/2,(number(features.breakpoint.leftLimitY)+number(features.markers[0].y))/2+yOffset],math:true,priority:0,nearCurve:'left',nearAtFirst:true},
+      {id:'right-branch-equation',kind:'EQUATION_LABEL',text:linearLabel(p.piecewise.right),at:[(breakX+hi)/2,(number(features.breakpoint.rightLimitY)+number(features.markers[1].y))/2+yOffset],math:true,priority:0,nearCurve:'right',nearAtFirst:true}
     ];
     return {id,visualType:'function_graph',viewport:{xMin:v[0],xMax:v[1],yMin:v[2],yMax:v[3],width:384,height:320,panel:140},axes:{x:showX,y:showY},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{piecewiseFeatures:features,piecewiseFeaturePolicy:policy},objects};
   }
@@ -645,7 +645,7 @@ function specForFamily(plan,model,id){
       objects.push({id:(nameOnly?'f-':'curve-')+row.id,kind:'FUNCTION_GRAPH',expression:expLogExpression(row),domain:row.domain,criticalX:[number(row.referencePoint.x)],branch:'REF_'+row.id});
       const formulaX=index===0?v[0]+(v[1]-v[0])*.12:v[0]+(v[1]-v[0])*.62;
       objects.push({id:'formula-'+row.id,kind:'EQUATION_LABEL',text:nameOnly?row.id+'(x)':expLogFormulaText(row),at:[formulaX,v[3]-(v[3]-v[2])*.12],math:true,priority:0,
-        ...(nameOnly?{nearCurve:row.id}:{})});
+        ...(nameOnly?{nearCurve:row.id}:{nearCurve:row.id,nearAtFirst:true})});
       if(source?.referenceLabelPoint===undefined){
         const referenceX=number(row.referencePoint.x),referenceY=number(row.referencePoint.y),referenceAt=row.family==='exponential-affine'?[referenceX-(v[1]-v[0])*.18,referenceY+(v[3]-v[2])*.12]:[referenceX+(v[1]-v[0])*.18,referenceY-(v[3]-v[2])*.10];
         objects.push({id:'reference-'+row.id+'-value',kind:'EQUATION_LABEL',text:'('+row.referencePoint.x+','+row.referencePoint.y+')',at:referenceAt,math:true,priority:0});
@@ -660,8 +660,8 @@ function specForFamily(plan,model,id){
     if(expLogHidden(p,basePlan).size&&[...expLogHidden(p,basePlan)].some(name=>name!=='formula'))throw Error('HIDE_LABELS_INVALID');   // an exponential graph has only its formula to hide
     if(!features||!['EXPONENTIAL_AFFINE_FEATURES_v1','EXPONENTIAL_BASE_FEATURES_v1'].includes(features.schemaVersion)||!policy||!['EXPONENTIAL_AFFINE_FEATURE_POLICY_v1','EXPONENTIAL_BASE_FEATURE_POLICY_v1'].includes(policy.schemaVersion))throw Error('EXPONENTIAL_FEATURE_INVENTORY_REQUIRED');
     const [a,k,c]=p.coefficients,expression=basePlan?expLogExpression({family:'exponential-affine',base:p.base,shiftX:p.shiftX,coefficients:p.coefficients}):`(${a})*exp((${k})*x)+(${c})`,showX=v[2]<0&&v[3]>0,showY=v[0]<=0&&v[1]>=0,refX=Number(String(features.referencePoint.x).split('/')[0])/(String(features.referencePoint.x).includes('/')?Number(String(features.referencePoint.x).split('/')[1]):1),refY=Number(features.referencePoint.y.split('/')[0])/(features.referencePoint.y.includes('/')?Number(features.referencePoint.y.split('/')[1]):1);
-    const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression,domain:p.domain,criticalX:[refX]},{id:'reference-value',kind:'EQUATION_LABEL',text:'f('+features.referencePoint.x+')='+features.referencePoint.y,at:[refX,refY+(v[3]-v[2])*.08],math:true,priority:0}];
-    if(basePlan&&!expLogHidden(p,basePlan).has('formula'))objects.push({id:'formula',kind:'EQUATION_LABEL',text:expLogFormulaText({family:'exponential-affine',base:p.base,shiftX:p.shiftX,coefficients:p.coefficients}),at:[v[0]+(v[1]-v[0])*.12,v[2]+(v[3]-v[2])*.10],math:true,priority:0});
+    const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression,domain:p.domain,criticalX:[refX]},{id:'reference-value',kind:'EQUATION_LABEL',text:'f('+features.referencePoint.x+')='+features.referencePoint.y,at:[refX,refY+(v[3]-v[2])*.08],math:true,priority:0,nearCurve:'f',nearAtFirst:true}];
+    if(basePlan&&!expLogHidden(p,basePlan).has('formula'))objects.push({id:'formula',kind:'EQUATION_LABEL',text:expLogFormulaText({family:'exponential-affine',base:p.base,shiftX:p.shiftX,coefficients:p.coefficients}),at:[v[0]+(v[1]-v[0])*.12,v[2]+(v[3]-v[2])*.10],math:true,priority:0,nearCurve:'f',nearAtFirst:true});
     return {id,visualType:'function_graph',viewport:p.equalUnits===true?{...graphViewport(v,expLogEqualCanvas(p)),equalUnits:true}:basePlan?graphViewport(v):{xMin:v[0],xMax:v[1],yMin:v[2],yMax:v[3],width:384,height:320,panel:140},axes:{x:showX,y:showY},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{exponentialFeatures:features,exponentialFeaturePolicy:policy},objects};
   }
   if(plan.capability==='logarithmic-affine-spike-v1'){
@@ -670,8 +670,8 @@ function specForFamily(plan,model,id){
     if(!features||!['LOGARITHMIC_AFFINE_FEATURES_v1','LOGARITHMIC_BASE_FEATURES_v1'].includes(features.schemaVersion)||!policy||!['LOGARITHMIC_AFFINE_FEATURE_POLICY_v1','LOGARITHMIC_BASE_FEATURE_POLICY_v1'].includes(policy.schemaVersion))throw Error('LOGARITHMIC_FEATURE_INVENTORY_REQUIRED');
     const [a,k,b,c]=p.coefficients,expression=basePlan?expLogExpression({family:'logarithmic-affine',base:p.base,coefficients:p.coefficients}):`(${a})*log((${k})*x+(${b}))+(${c})`,number=value=>{const parts=String(value).split('/');return Number(parts[0])/(parts.length===2?Number(parts[1]):1);},root=number(features.naturalDomainBoundaryX),ref=number(features.referencePoint.x),refY=number(features.referencePoint.y),showX=v[2]<0&&v[3]>0,showY=v[0]<=0&&v[1]>=0;
     const hidden=expLogHidden(p,basePlan);
-    const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression,domain:p.domain,criticalX:[ref]},...(hidden.has('reference')?[]:[{id:'reference-value',kind:'EQUATION_LABEL',text:'f('+features.referencePoint.x+')='+features.referencePoint.y,at:[ref,refY+(v[3]-v[2])*.08],math:true,priority:0}]),...(hidden.has('boundary')?[]:[{id:'log-domain-boundary-label',kind:'EQUATION_LABEL',text:'x='+features.naturalDomainBoundaryX,at:[root+(k.startsWith('-')?-1:1)*(v[1]-v[0])*.1,v[3]-(v[3]-v[2])*.2],math:true,priority:0}])];
-    if(basePlan&&!expLogHidden(p,basePlan).has('formula'))objects.push({id:'formula',kind:'EQUATION_LABEL',text:expLogFormulaText({family:'logarithmic-affine',base:p.base,coefficients:p.coefficients}),at:[v[0]+(v[1]-v[0])*.55,v[2]+(v[3]-v[2])*.10],math:true,priority:0});
+    const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression,domain:p.domain,criticalX:[ref]},...(hidden.has('reference')?[]:[{id:'reference-value',kind:'EQUATION_LABEL',text:'f('+features.referencePoint.x+')='+features.referencePoint.y,at:[ref,refY+(v[3]-v[2])*.08],math:true,priority:0,nearCurve:'f',nearAtFirst:true}]),...(hidden.has('boundary')?[]:[{id:'log-domain-boundary-label',kind:'EQUATION_LABEL',text:'x='+features.naturalDomainBoundaryX,at:[root+(k.startsWith('-')?-1:1)*(v[1]-v[0])*.1,v[3]-(v[3]-v[2])*.2],math:true,priority:0}])];
+    if(basePlan&&!expLogHidden(p,basePlan).has('formula'))objects.push({id:'formula',kind:'EQUATION_LABEL',text:expLogFormulaText({family:'logarithmic-affine',base:p.base,coefficients:p.coefficients}),at:[v[0]+(v[1]-v[0])*.55,v[2]+(v[3]-v[2])*.10],math:true,priority:0,nearCurve:'f',nearAtFirst:true});
     return {id,visualType:'function_graph',viewport:p.equalUnits===true?{...graphViewport(v,expLogEqualCanvas(p)),equalUnits:true}:graphViewport(v),axes:{x:showX,y:showY},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts(p),logarithmicFeatures:features,logarithmicFeaturePolicy:policy},objects};
   }
   if(plan.capability==='trigonometric-spike-v1'&&plan.graphPlan?.overviewPolicy==='TRIGONOMETRIC_AXIS_CROSSING_PAIR_v1'){

@@ -153,5 +153,52 @@ class AsymptoteValueWrittenOnce(unittest.TestCase):
         self.assertTrue(graph_observer._ov_asymptote_twin(line,groups,'overlay-line-h-equation'))
 
 
+class CurveLabelOwner(unittest.TestCase):
+    """2c, observer side: the label of a branch / curve stands beside ITS stroke (graph_observer.curve_label_owner_audit). The owner is read from the plan, the distances from the final SVG.
+    Piecewise-affine branches that meet at one point: a label at the junction is nearer to neither branch than to the other, so it owns to neither and is refused."""
+    PLAN={'family':'piecewise-affine'}
+    LEFT='<polyline id="f-left-branch-0" data-role="curve" points="20,60 100,100"/>'
+    RIGHT='<polyline id="f-right-branch-0" data-role="curve" points="100,100 180,20"/>'
+
+    @staticmethod
+    def label(label_id,x,y,w=40,h=14,room=None):
+        extra=' data-near-room="%s"'%room if room else ''
+        return '<g id="%s" data-label-kind="equation" transform="translate(%s,%s)"%s><svg width="%s" height="%s"/></g>'%(label_id,x,y,extra,w,h)
+
+    def audit(self,left_label,right_label,plan=None):
+        svg='<svg xmlns="http://www.w3.org/2000/svg">'+self.LEFT+self.RIGHT+left_label+right_label+'</svg>'
+        return graph_observer.curve_label_owner_audit(plan or self.PLAN,svg,{})
+
+    def test_each_label_beside_its_own_branch_passes(self):
+        result=self.audit(self.label('left-branch-equation',20,38),self.label('right-branch-equation',130,26))
+        self.assertEqual(result,{'status':'PASS','errors':[]})
+
+    def test_a_label_beside_the_other_branch_is_refused(self):
+        # the old defect: the left branch's equation stood by the right branch
+        result=self.audit(self.label('left-branch-equation',130,26),self.label('right-branch-equation',20,38))
+        self.assertEqual(result['errors'],['LABEL_NEAREST_CURVE_MISMATCH:left-branch-equation','LABEL_NEAREST_CURVE_MISMATCH:right-branch-equation'])
+
+    def test_a_label_at_the_junction_owns_to_neither_branch(self):
+        result=self.audit(self.label('left-branch-equation',60,104),self.label('right-branch-equation',130,26))
+        self.assertEqual(result['errors'],['LABEL_NEAREST_CURVE_MISMATCH:left-branch-equation'])
+
+    def test_a_label_far_from_every_stroke_is_refused_unless_the_engine_found_no_room(self):
+        far=self.label('left-branch-equation',20,0)             # 46 px above the left branch
+        self.assertEqual(self.audit(far,self.label('right-branch-equation',130,26))['errors'],['LABEL_NEAREST_CURVE_MISMATCH:left-branch-equation'])
+        no_room=self.label('left-branch-equation',20,0,room='NONE')   # judged by the wider reach, ownership only
+        self.assertEqual(self.audit(no_room,self.label('right-branch-equation',130,26))['status'],'PASS')
+
+    def test_exp_log_pair_labels_belong_to_their_own_curve(self):
+        plan={'family':'exp-log-pair','curves':[{'id':'f'},{'id':'g'}]}
+        svg=('<svg xmlns="http://www.w3.org/2000/svg"><polyline id="curve-f-branch-0" data-role="curve" points="20,100 100,60"/><polyline id="curve-g-branch-0" data-role="curve" points="20,20 100,60"/>'
+             +self.label('formula-f',20,80)+self.label('formula-g',20,4)+'</svg>')
+        self.assertEqual(graph_observer.curve_label_owner_audit(plan,svg,{})['status'],'PASS')
+        swapped=svg.replace('formula-f','formula-X').replace('formula-g','formula-f').replace('formula-X','formula-g')
+        self.assertEqual(graph_observer.curve_label_owner_audit(plan,swapped,{})['status'],'FAIL')
+
+    def test_other_families_are_not_judged(self):
+        self.assertIsNone(graph_observer.curve_label_owner_audit({'family':'polynomial'},'<svg data-label-kind="x"/>',{}))
+
+
 if __name__=='__main__':
     unittest.main()

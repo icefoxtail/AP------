@@ -6812,11 +6812,64 @@ def axis_fold_audit(plan,svg,transform):
     except (KeyError,TypeError,ValueError,ET.ParseError):return {'status':'UNSUPPORTED','errors':['AXIS_FOLD_SOURCE_INVALID']}
     return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors))}
 
+OV_CL_OWN_MAX_PX=24.0           # (2c) the label of a curve of a single-curve family stands within this many px of its own stroke ...
+OV_CL_OTHER_MARGIN_PX=2.0        # ... and every other curve of the figure is farther from it than its own, by at least this much
+OV_CL_NO_ROOM_MAX_PX=64.0        # a label the engine marked data-near-room=NONE (no free spot beside its stroke) is judged by this wider reach
+
+def curve_label_owner_audit(plan,svg,transform):
+    """(2c, 2026-11-23) A curve's name or value must stand beside ITS curve: a piecewise-affine branch equation by its own branch, an exponential or logarithmic formula and reference
+    value by the curve, each curve formula of an exp-log pair by its own curve. The observer reads the owner of each label from the plan (not from the engine) and measures the
+    label box against the drawn strokes of the final SVG: within OV_CL_OWN_MAX_PX of its own stroke and not nearer to another curve, or tied to its own curve by a leader that starts
+    on that stroke and ends on the label box. Violations: LABEL_NEAREST_CURVE_MISMATCH:<label>."""
+    family=plan.get('family')
+    if family not in ('piecewise-affine','exponential-affine','logarithmic-affine','exp-log-pair') or 'data-label-kind' not in svg:return None
+    try:
+        root=ET.fromstring(svg)
+        if family=='piecewise-affine':owners=[('left-branch-equation','left',('f-left-branch-',)),('right-branch-equation','right',('f-right-branch-',))]
+        elif family=='exp-log-pair':
+            ids=[row.get('id') for row in plan.get('curves',[]) if isinstance(row,dict) and isinstance(row.get('id'),str)]
+            owners=[('formula-'+ident,ident,('curve-'+ident+'-branch-','f-'+ident+'-branch-')) for ident in ids]
+        else:owners=[('formula','f',('f-branch-',)),('reference-value','f',('f-branch-',))]
+        groups={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='g' and node.get('id') and node.get('data-label-kind')}
+        leaders={}
+        strokes={}
+        for node in root.iter():
+            tag=node.tag.split('}')[-1]
+            if tag=='line' and node.get('data-role')=='leader' and node.get('data-owner-label'):leaders.setdefault(node.get('data-owner-label'),[]).append(node)
+            elif tag=='polyline' and node.get('data-role')=='curve' and node.get('points') and node.get('id'):
+                nums=[float(value) for value in re.split(r'[\s,]+',node.get('points').strip()) if value]
+                points=list(zip(nums[0::2],nums[1::2]));strokes[node.get('id')]=list(zip(points,points[1:]))
+        errors=[]
+        def distance(box,segments):
+            return min((_ov_box_segment_distance(box,a,b) for a,b in segments),default=math.inf)
+        for label_id,ident,prefixes in owners:
+            group=groups.get(label_id)
+            if group is None:continue
+            box=_region_label_box(groups,label_id)
+            if box is None:errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id);continue
+            own=[seg for sid,segs in strokes.items() if sid.startswith(prefixes) for seg in segs]
+            others=[seg for sid,segs in strokes.items() if not sid.startswith(prefixes) for seg in segs]
+            attached=leaders.get(label_id)
+            if attached:
+                node=attached[0]
+                try:start=(float(node.get('x1')),float(node.get('y1')));end=(float(node.get('x2')),float(node.get('y2')))
+                except (TypeError,ValueError):errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id);continue
+                edges=[((box[0],box[1]),(box[0]+box[2],box[1])),((box[0]+box[2],box[1]),(box[0]+box[2],box[1]+box[3])),((box[0]+box[2],box[1]+box[3]),(box[0],box[1]+box[3])),((box[0],box[1]+box[3]),(box[0],box[1]))]
+                on_own=min((_ov_point_segment_distance(start,a,b) for a,b in own),default=math.inf)<=OV_LEADER_TOLERANCE_PX
+                on_label=min(_ov_point_segment_distance(end,a,b) for a,b in edges)<=OV_LEADER_TOLERANCE_PX
+                if len(attached)!=1 or node.get('data-owner')!=ident or not on_own or not on_label:errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id)
+                continue
+            reach=OV_CL_NO_ROOM_MAX_PX if group.get('data-near-room')=='NONE' else OV_CL_OWN_MAX_PX
+            near=distance(box,own)
+            if near>reach or distance(box,others)<near+OV_CL_OTHER_MARGIN_PX:errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id)
+    except (KeyError,TypeError,ValueError,ET.ParseError):return {'status':'UNSUPPORTED','errors':['CURVE_LABEL_OWNER_UNREADABLE']}
+    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors))}
+
 def audit(plan,svg,transform,*,model=False):
     """The family audit plus the optional graph overlays and axis titles: the observer re-derives every overlay element from the raw overlays
     field and reads the same element ids back from the model and the final SVG."""
     result=_audit_family(plan,svg,transform,model=model)
-    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform),axis_fold_audit(plan,svg,transform),axis_squeeze_audit(plan,svg,transform),curve_color_audit(plan,svg,transform),curve_name_audit(plan,svg,transform),asymptote_label_audit(plan,svg,transform),vertical_asymptote_label_audit(plan,svg,transform),single_curve_label_audit(plan,svg,transform),multi_curve_label_audit(plan,svg,transform)) if part is not None]
+    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform),axis_fold_audit(plan,svg,transform),axis_squeeze_audit(plan,svg,transform),curve_color_audit(plan,svg,transform),curve_name_audit(plan,svg,transform),asymptote_label_audit(plan,svg,transform),vertical_asymptote_label_audit(plan,svg,transform),single_curve_label_audit(plan,svg,transform),multi_curve_label_audit(plan,svg,transform),curve_label_owner_audit(plan,svg,transform)) if part is not None]
     if not parts:return result
     errors=sorted(set([*(result.get('errors') or []),*(error for part in parts for error in (part.get('errors') or []))]))
     if result.get('status')=='UNSUPPORTED' or any(part.get('status')=='UNSUPPORTED' for part in parts):status='UNSUPPORTED'

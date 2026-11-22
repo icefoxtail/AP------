@@ -1513,7 +1513,7 @@ def prepare(spec):
             for point in points[1:-1]:
                 if math.dist(point,kept[-1])>=4.0:kept.append(tuple(point))
             kept.append(tuple(points[-1]));return kept   # about one vertex per 4 px: enough to place a label, far fewer distances to measure
-        def owns(row_id,ident):return re.fullmatch(r'f-'+re.escape(ident)+r'(?:-left|-right|-positive|-negative)?-branch-\d+',row_id) is not None
+        def owns(row_id,ident):return re.fullmatch(r'(?:(?:f|curve)-)?'+re.escape(ident)+r'(?:-left|-right|-positive|-negative)?-branch-\d+',row_id) is not None   # f-<id> (multi-curve, name-only pair), curve-<id> (exp-log pair)
         def emphasis(row_id):return re.fullmatch(r'e-.+-\d+-branch-\d+',row_id) is not None
         for label in near_labels:
             if 'nearCurve' in label:

@@ -77,3 +77,21 @@ test('an overlay line that is the own asymptote of the curve does not write its 
   assert.match(svg,/id="overlay-line-h"/);   // the dashed lines themselves are still drawn
   assert.match(svg,/id="overlay-line-v"/);
 });
+
+// 2c: a branch equation stands beside its own branch. Piecewise-affine branches that meet at one point: each label keeps to its own side.
+test('piecewise-affine branch equations each stand beside their own branch',{skip:!hasBrowser,timeout:240000},async()=>{
+  const plan=wrap('piecewise-affine-spike-v1',{family:'piecewise-affine',sourceDomain:{kind:'CLOSED_INTERVAL',range:['-4','4']},domain:[-4,4],viewport:[-5,5,-8,8],
+    piecewise:{breakX:'0',owner:'RIGHT',left:['1/2','3'],right:['-3/2','2']}});
+  const {result,svg}=await renderFigure('g-bundle-pa-owner',plan);
+  assert.equal(result.status,'ARCHIVE_BOUND',JSON.stringify(result.detail));
+  assert.match(svg,/id="left-branch-equation"/);
+  assert.match(svg,/id="right-branch-equation"/);
+});
+
+test('an exp-log pair writes each formula beside its own curve',{skip:!hasBrowser,timeout:240000},async()=>{
+  const plan=wrap('exp-log-pair-spike-v1',{family:'exp-log-pair',curves:[
+    {id:'f',family:'logarithmic-affine',base:'3',coefficients:['2','1','0','0'],sourceDomain:{kind:'NATURAL_LOG_AFFINE'}},
+    {id:'g',family:'exponential-affine',base:'sqrt(3)',coefficients:['1','1','0'],sourceDomain:{kind:'ALL_REALS'}}],identityLine:true});
+  const {result}=await renderFigure('g-bundle-pair-owner',plan);
+  assert.equal(result.status,'ARCHIVE_BOUND',JSON.stringify(result.detail));
+});
