@@ -198,11 +198,17 @@ export function selectItems({items, plans, all = false, kinds = new Set(), itemD
 
 // ---- table version and the soundness rule ---------------------------------------------------------------------------------
 import crypto from 'node:crypto';
+import fs from 'node:fs';
 // Changes whenever the table changes: stored keys made under another table are not reused.
-export const KINDS_VERSION = crypto.createHash('sha256').update(JSON.stringify({
+// The classification rules are code too (classifyFile, planKinds, selectItems, chooseItems): the version covers the bytes of the files that hold them.
+export const RULE_FILES = ['kinds.mjs', 'select.mjs'];
+export const readRuleSources = () => RULE_FILES.map(f => fs.readFileSync(new URL(f, import.meta.url)).toString('utf8'));
+export const kindsVersionOf = (table, ruleSources) => crypto.createHash('sha256').update(JSON.stringify({table, ruleSources})).digest('hex').slice(0, 12);
+export const currentTable = () => ({
   CAPABILITY_KIND, KIND_FILES, SHARED: [...SHARED_FILES].sort(), SHARED_PREFIXES, SHARED_EXACT: [...SHARED_EXACT].sort(), NON_RENDER: [...NON_RENDER_FILES].sort(),
   DISPATCHERS: [...DISPATCHERS].sort(), IMPORT_EXCEPTIONS, ALIASES: KIND_ALIASES
-})).digest('hex').slice(0, 12);
+});
+export const KINDS_VERSION = kindsVersionOf(currentTable(), readRuleSources());
 
 // A kind file may only be used by its own kind, the dispatchers (a python dispatcher only through a lazy import), or a listed exception.
 // graph: a code graph (importers map file -> [{from, lazy}]). Returns the list of problems (empty = sound).

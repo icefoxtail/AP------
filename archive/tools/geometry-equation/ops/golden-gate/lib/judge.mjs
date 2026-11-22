@@ -68,8 +68,9 @@ export const bytesCompared = row => row.base.status === 'ARCHIVE_BOUND' && row.h
 
 // What the run vouches for. kinds: the kinds a changed file selected (empty for a whole-set or explicit run); kindOf(item) -> Set of kinds.
 // exitCode 2 = cannot vouch (nothing compared, or a changed kind had no byte comparison): not a pass, not a plain failure.
-export function evaluate(rows, {kinds = new Set(), kindOf = () => new Set()} = {}) {
-  const byteCompared = rows.filter(bytesCompared).length;
+// reused: the head side is the base result reused (identical render inputs): nothing was compared, whatever the rows say.
+export function evaluate(rows, {kinds = new Set(), kindOf = () => new Set(), reused = false} = {}) {
+  const byteCompared = reused ? 0 : rows.filter(bytesCompared).length;
   const notCovered = [];
   for (const k of kinds) if (!rows.filter(r => kindOf(r.item).has(k)).some(bytesCompared)) notCovered.push(k);
   const wholeUncovered = [];
@@ -134,7 +135,7 @@ export const testsFail = cmp => cmp.newFailures.length > 0 || cmp.lost.length > 
 //   exit 2 CANNOT_VOUCH    : nothing selected, nothing compared byte for byte, or a changed kind without a comparison
 //   exit 0 UNAFFECTED      : (only) changed files exist, every one of them is outside the render, and the render inputs of base and head are identical; nothing is compared
 //   exit 0 PASS            : bytes were compared and nothing failed
-export function decide({rows, cover, summary, expectedErrors = [], changedCount = 0, allChangesIgnored = false, inputsIdentical = false, explicitSelection = false}) {
+export function decide({rows, cover, summary, expectedErrors = [], changedCount = 0, allChangesIgnored = false, inputsIdentical = false, explicitSelection = false, reusedHead = false}) {
   if (expectedErrors.length) return {exit: 1, outcome: 'FAIL', reason: 'the --expected file is wrong'};
   if (changedCount === 0) return {exit: 2, outcome: 'CANNOT_VOUCH', reason: 'base and head do not differ: nothing was changed, so a PASS would vouch for nothing'};
   if (!rows.length) {
@@ -143,6 +144,7 @@ export function decide({rows, cover, summary, expectedErrors = [], changedCount 
     return {exit: 2, outcome: 'CANNOT_VOUCH', reason: why};
   }
   if (summary.failures.length) return {exit: 1, outcome: 'FAIL', reason: 'a verdict failed'};
+  if (reusedHead) return {exit: 0, outcome: 'UNAFFECTED', reason: 'base and head have identical render inputs: the head result is the base result, nothing was compared'};
   if (cover.byteCompared === 0) return {exit: 2, outcome: 'CANNOT_VOUCH', reason: 'no selected item produced an SVG on both sides'};
   if (cover.notCovered.length) return {exit: 2, outcome: 'CANNOT_VOUCH', reason: `no byte comparison for changed kind(s) ${cover.notCovered.join(', ')}`};
   if (!summary.pass) return {exit: 1, outcome: 'FAIL', reason: 'a verdict failed'};

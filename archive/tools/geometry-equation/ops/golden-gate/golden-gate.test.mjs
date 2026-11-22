@@ -11,7 +11,7 @@ import {chooseItems} from './lib/select.mjs';
 import {environmentFingerprint} from './lib/env-fingerprint.mjs';
 import {
   GE, KINDS, CAPABILITY_KIND, KIND_FILES, SHARED_FILES, SHARED_PREFIXES, SHARED_EXACT, NON_RENDER_FILES, DISPATCHERS, IMPORT_EXCEPTIONS,
-  planKinds, planCapabilities, classifyFile, parseFamilies, selectItems, KINDS_VERSION, kindTableProblems
+  planKinds, planCapabilities, classifyFile, parseFamilies, selectItems, KINDS_VERSION, kindTableProblems, RULE_FILES, readRuleSources, kindsVersionOf, currentTable
 } from './lib/kinds.mjs';
 import {buildCodeGraph} from './lib/code-graph.mjs';
 import {SNAPSHOT_SPECS, RENDER_PLAN, MANIFEST, describeSnapshot, repoFilesUnder, extractImageRefs, refCandidates, resolveTarget, ensureSnapshot, changedFiles, commonKeyOf} from './lib/snapshot.mjs';
@@ -604,6 +604,43 @@ test('5: stored snapshot keys are reused only under the same kind table version'
 });
 
 // ---- 6. a golden item that is gone, a test that stops running -----------------------------------------------------------------------
+test('1: CLI with identical render inputs and an explicit --families all: UNAFFECTED (nothing compared), byte compared 0, never PASS', () => {
+  const fx = fixture();
+  const old = process.env.GEOMETRY_BROWSER_EXECUTABLE; process.env.GEOMETRY_BROWSER_EXECUTABLE = 'no-such-chrome-for-fixture';
+  try {
+    const env = environmentFingerprint({depsDir: fx.deps});
+    const snap = fxSnap(fx, 'c3');
+    for (const it of snap.items) { // the base results are already stored, so no render is needed
+      const dir = storeDir(path.join(fx.cache, 'results'), resultKey(snap, it, env.key)); fs.mkdirSync(dir, {recursive: true});
+      fs.writeFileSync(path.join(dir, 'record.json'), JSON.stringify({item: it.dir, status: 'ARCHIVE_BOUND', code: null, stage: null, svgSha: 'c'.repeat(64), svgBytes: 9, sizeClass: 'full', solutionImageScale: null}));
+    }
+    const r = cli(fx, ['--base', fx.c.c3, '--head', fx.c.c4, '--families', 'all']);
+    assert.equal(r.code, 0, r.out + r.err);
+    assert.match(r.out.split('\n')[0], /byte compared 0 \/ selected 2/);
+    assert.match(r.out, /UNAFFECTED \(nothing compared\)/); assert.doesNotMatch(r.out, /GOLDEN GATE PASS/);
+  } finally { if (old === undefined) delete process.env.GEOMETRY_BROWSER_EXECUTABLE; else process.env.GEOMETRY_BROWSER_EXECUTABLE = old; }
+});
+
+test('5: the kind table version also covers the classification rule code (kinds.mjs, select.mjs)', () => {
+  assert.deepEqual([...RULE_FILES].sort(), ['kinds.mjs', 'select.mjs']);
+  const src = readRuleSources();
+  assert.equal(src.length, 2); assert.ok(src[0].includes('export function classifyFile')); assert.ok(src[1].includes('export function chooseItems'));
+  assert.equal(KINDS_VERSION, kindsVersionOf(currentTable(), src));
+  assert.notEqual(kindsVersionOf(currentTable(), src), kindsVersionOf(currentTable(), [src[0] + ' ', src[1]]), 'a changed classifyFile/planKinds/selectItems changes the version');
+  assert.notEqual(kindsVersionOf(currentTable(), src), kindsVersionOf(currentTable(), [src[0], src[1] + ' ']), 'a changed chooseItems changes the version');
+});
+
+test('1: a head result reused from base (identical render inputs) is UNAFFECTED, never PASS, and compares nothing, even with an explicit --families', () => {
+  const rows = [compareItem('a', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND'))];
+  assert.equal(evaluate(rows, {}).byteCompared, 1);
+  assert.equal(evaluate(rows, {reused: true}).byteCompared, 0);
+  const d = more => decide({rows, cover: evaluate(rows, {reused: more.reusedHead}), summary: summarize(rows), changedCount: 1, explicitSelection: true, inputsIdentical: true, ...more});
+  assert.equal(d({reusedHead: true}).outcome, 'UNAFFECTED'); assert.equal(d({reusedHead: true}).exit, 0);
+  assert.equal(d({reusedHead: false}).outcome, 'PASS'); // two separate renders (--no-cache) may say PASS
+  const bad = [compareItem('a', rec('NOT_RUN'), rec('NOT_RUN'))];
+  assert.equal(decide({rows: bad, cover: evaluate(bad, {reused: true}), summary: summarize(bad), changedCount: 1, reusedHead: true}).exit, 1, 'a failure still fails');
+});
+
 test('6: a golden item only on base is REMOVED and fails; an item only on head is ADDED and listed', () => {
   const rows = [compareItem('a', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND')), removedRow('gone')];
   assert.equal(rows[1].verdict, 'REMOVED');

@@ -140,10 +140,11 @@ async function main() {
   if (stats.base) say(`rendered base ${stats.base.rendered} (+${stats.base.cached} cached), head ${stats.head.rendered} (+${stats.head.cached} cached), solo retries ${stats.base.retried + stats.head.retried}`);
   if (stats.base) timingTable(selected, plans, stats);
   report.rows = rows; report.summary = {counts: c, accepted: applied.accepted, expectedErrors: applied.errors}; report.stats = stats;
-  const cover = evaluate(rows, {kinds, kindOf: d => plans[d] ? planKinds(plans[d]) : new Set()});
+  const reusedHead = sameInput && !args.noCache && rows.length > 0;
+  const cover = evaluate(rows, {kinds, kindOf: d => plans[d] ? planKinds(plans[d]) : new Set(), reused: reusedHead});
   headline = `byte compared ${cover.byteCompared} / selected ${cover.selected}${sameInput && !args.noCache && rows.length ? ' (base and head have identical render inputs: nothing to compare)' : ''}`;
   report.coverage = cover;
-  const decision = decide({rows, cover, summary, expectedErrors: applied.errors, changedCount: changed.length, allChangesIgnored: sel.classes.length > 0 && sel.classes.every(c => c.effect === 'NONE'), inputsIdentical: sameInput, explicitSelection: sel.explicit});
+  const decision = decide({rows, cover, summary, expectedErrors: applied.errors, changedCount: changed.length, allChangesIgnored: sel.classes.length > 0 && sel.classes.every(c => c.effect === 'NONE'), inputsIdentical: sameInput, explicitSelection: sel.explicit, reusedHead});
   let exit = decision.exit, outcome = decision.outcome;
   if (outcome === 'CANNOT_VOUCH') for (const k of cover.notCovered) say(`NOT_COVERED: kind ${k} changed but no golden item of that kind was compared byte for byte (they all fail or were not run): add an example plan for it.`);
   if (cover.wholeUncovered.length) say(`note: no byte comparison for kind(s) ${cover.wholeUncovered.join(', ')} (every golden item of that kind fails or was not run): a change to them is not covered by this run.`);
