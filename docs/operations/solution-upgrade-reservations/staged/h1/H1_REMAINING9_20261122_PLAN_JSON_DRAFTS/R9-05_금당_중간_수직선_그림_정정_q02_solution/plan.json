@@ -1,0 +1,67 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "given",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-1/2"
+        ],
+        "domain": [
+          "0",
+          "9"
+        ],
+        "label": "y=-x/2+3",
+        "color": "BLUE"
+      },
+      {
+        "id": "perp",
+        "kind": "LINE",
+        "coefficients": [
+          "-10",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "9"
+        ],
+        "label": "y=2x-10",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -1,
+      10,
+      -12,
+      8
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "4",
+          "y": "-2"
+        }
+      ]
+    }
+  },
+  "caption": "점 (4,−2)를 지나는 직선과 주어진 직선의 수직 관계",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주어진 점 P(4,−2)는 y=2x−10 위에 있으며 y=−x/2+3 위에는 없다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "P를 두 직선의 교점으로 그리지 않는다.",
+    "두 직선의 실제 교점 (26/5,2/5)은 P와 구분한다."
+  ]
+}

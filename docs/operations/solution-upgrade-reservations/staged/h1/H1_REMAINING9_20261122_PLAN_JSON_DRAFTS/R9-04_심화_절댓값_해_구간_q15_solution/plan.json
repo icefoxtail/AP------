@@ -1,0 +1,72 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "abs",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "1"
+        ],
+        "abs": true,
+        "domain": [
+          "-3",
+          "5"
+        ],
+        "label": "y=|x-1|",
+        "color": "BLUE"
+      },
+      {
+        "id": "limit",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "5"
+        ],
+        "label": "y=3",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -3,
+      5,
+      -1,
+      5
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "L",
+          "x": "-2",
+          "y": "3"
+        },
+        {
+          "id": "R",
+          "x": "4",
+          "y": "3"
+        }
+      ]
+    }
+  },
+  "caption": "|x−1|≤3의 양끝 교점 x=−2, 4를 보여 주는 해설 그래프",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 그래프의 교점은 (−2,3), (4,3)이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "정수 해를 그래프에 일일이 적지는 않는다."
+  ]
+}

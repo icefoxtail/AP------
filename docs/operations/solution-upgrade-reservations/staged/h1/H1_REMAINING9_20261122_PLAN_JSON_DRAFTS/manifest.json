@@ -1,0 +1,83 @@
+{
+  "date": "2026-11-22",
+  "purpose": "고1 미감사 9종 SVG 공식 엔진 인계 JSON 초안 5건",
+  "drafts": [
+    {
+      "id": "R9-01",
+      "sourcePath": "archive/exams/similar/high/h1/1final/25_금당고_1학기_기말_고1_심화.js",
+      "ordinal": 17,
+      "role": "problem",
+      "title": "심화 원 위 여덟 점",
+      "priority": "P1",
+      "reason": "원문 같은 간격의 8점 시각화; 원본 대응 문항 문제 그림 역할 차이",
+      "directory": "R9-01_심화_원_위_여덟_점_q17_problem",
+      "capability": "construction-spike-v1",
+      "planStatus": "DRAFT_NOT_LINTED",
+      "renderStatus": "NOT_RUN",
+      "publishStatus": "NOT_RUN"
+    },
+    {
+      "id": "R9-02",
+      "sourcePath": "archive/exams/similar/high/h1/1final/25_금당고_1학기_기말_고1_확인.js",
+      "ordinal": 17,
+      "role": "problem",
+      "title": "확인 정육각형",
+      "priority": "P1",
+      "reason": "원문 내접 정육각형과 원형 배치의 문제 그림 누락",
+      "directory": "R9-02_확인_정육각형_q17_problem",
+      "capability": "construction-spike-v1",
+      "planStatus": "DRAFT_NOT_LINTED",
+      "renderStatus": "NOT_RUN",
+      "publishStatus": "NOT_RUN"
+    },
+    {
+      "id": "R9-03",
+      "sourcePath": "archive/exams/similar/high/h1/1final/25_금당고_1학기_기말_고1_심화.js",
+      "ordinal": 13,
+      "role": "solution",
+      "title": "심화 이차함수 접점 예시",
+      "priority": "P2",
+      "reason": "기존 해설의 그래프 요구 메모를 제거하고 예시 (a,b)=(2,1) 하나의 정확한 접점 그림 제공",
+      "directory": "R9-03_심화_이차함수_접점_예시_q13_solution",
+      "capability": "multi-curve-figure-v1",
+      "planStatus": "DRAFT_NOT_LINTED",
+      "renderStatus": "NOT_RUN",
+      "publishStatus": "NOT_RUN"
+    },
+    {
+      "id": "R9-04",
+      "sourcePath": "archive/exams/similar/high/h1/1final/25_금당고_1학기_기말_고1_심화.js",
+      "ordinal": 15,
+      "role": "solution",
+      "title": "심화 절댓값 해 구간",
+      "priority": "P2",
+      "reason": "해설의 원문 그래프 요구 메모를 실제 y=|x−1|, y=3 그래프로 대체",
+      "directory": "R9-04_심화_절댓값_해_구간_q15_solution",
+      "capability": "multi-curve-figure-v1",
+      "planStatus": "DRAFT_NOT_LINTED",
+      "renderStatus": "NOT_RUN",
+      "publishStatus": "NOT_RUN"
+    },
+    {
+      "id": "R9-05",
+      "sourcePath": "archive/exams/similar/high/h1/2mid/25_금당고_2학기_중간_고1_유사.js",
+      "ordinal": 2,
+      "role": "solution",
+      "title": "금당 중간 수직선 그림 정정",
+      "priority": "P0",
+      "reason": "현행 SVG의 (4,−2) 라벨이 두 직선의 교점처럼 보임; 실제 교점은 (26/5,2/5), 주어진 점은 y=2x−10 위에만 위치",
+      "directory": "R9-05_금당_중간_수직선_그림_정정_q02_solution",
+      "capability": "multi-curve-figure-v1",
+      "planStatus": "DRAFT_NOT_LINTED",
+      "renderStatus": "NOT_RUN",
+      "publishStatus": "NOT_RUN"
+    }
+  ],
+  "stages": "수학 독립 블라인드 R1/R2, capability lint, SVG 엔진 render/observer/publish는 실시하지 않음",
+  "rules": [
+    "item.json / plan.json / publish.json 세 파일 모두 전달",
+    "엔진에서 capability lint → render → observer → 픽셀 육안 비교 후 publish",
+    "기존 SVG를 직접 패치하지 말고 공식 엔진으로 생성",
+    "임의의 유사 정답 수치/문제 조건 변경 금지"
+  ]
+}
