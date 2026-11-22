@@ -5,26 +5,26 @@
 - sourceRef: `main`; sourceBlobSha: `57d964d2ab48d3e3d86619bf21c96edfcf155ab4`
 - 문항 ID: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21; **21문항**. standardCourse 원본 설정: 21/21.
 - 목표 브랜치: `work/solution-upgrade-lane-20-20261121`; 상태: **EXAM_AUDIT_COMPLETE / EXAM_DRAFT_COMPLETE** (개선 예약, 원본 미수정, 최종 QA 미실행).
-- 분류: **KEEP 17 / UPGRADE 0 / HOLD 4 / UNREAD 0**.
-- 연결 그림 경로: 5개; **원본 존재·육안 검증 0 / 연결 파일 없음 5**. 아래 경로 목록 참조.
+- 분류: **KEEP 21 / UPGRADE 0 / HOLD 0 / UNREAD 0**. (이미지 보관 경로 재확인 후 정정)
+- 연결 그림 경로: 5개; **보관 원본 존재·육안 검증 5 / 원본 파일 미발견 0**. 원본 `archive/assets/images/` 확인(문항 참조는 `assets/images/`); 앱 경로 해석 및 학생 화면 렌더는 별도 게이트.
 - 검토 범위: 8개 중 본 시험지의 문항 원문·선택지·기존 정답·solution·연결 그림 존재 여부와 수학적 계산을 교차 검토; 원본 JS·이미지는 변경하지 않음.
 - 릴리스 게이트: 원문 PDF 전문 대조, 학생 화면 HTML/LaTeX 렌더, 답안 UI·채점기 구동, Golden/Negative, preflight 영수증 **NOT_RUN**. MD 작성 완료가 출시 승인이나 결함 수정 완료를 뜻하지 않음.
 
 ## 핵심 결함·개선 예약
 
-- 링크된 이미지 5개 원본 리포지토리 main·목표 브랜치 모두에서 파일 없음. 링크별로 아래 기록; 이미지가 있는 화면의 정합성 확인 전 HOLD.
+- **2026-11-22 재검증 정정:** 원래 문항 참조 `assets/images/…`의 실물은 `archive/assets/images/…`에 5/5개 존재. PNG는 파일을 열어, SVG는 Inkscape로 실제 렌더한 뒤 문제·해설과 육안 대조함. 이전 `MISSING` 및 이로 인한 `HOLD` 판정은 잘못된 경로 검색에서 비롯된 오판으로 취소. 다만 `assets/images/` 참조가 학생 앱에서 보관 경로로 해석되는지는 아직 실행 검증하지 않음.
 
 ## 연결 이미지 전수 인벤토리
 
-- **MISSING / HOLD** — `assets/images/22_순천고_1학기_기말_고2_확률과통계/q1-solution.svg`
-- **MISSING / HOLD** — `assets/images/22_순천고_1학기_기말_고2_확률과통계/q7.png`
-- **MISSING / HOLD** — `assets/images/22_순천고_1학기_기말_고2_확률과통계/q14-solution.svg`
-- **MISSING / HOLD** — `assets/images/22_순천고_1학기_기말_고2_확률과통계/q16.png`
-- **MISSING / HOLD** — `assets/images/22_순천고_1학기_기말_고2_확률과통계/q16-solution-v2.svg`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/22_순천고_1학기_기말_고2_확률과통계/q1-solution.svg` → 실제 원본 `archive/assets/images/22_순천고_1학기_기말_고2_확률과통계/q1-solution.svg`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/22_순천고_1학기_기말_고2_확률과통계/q7.png` → 실제 원본 `archive/assets/images/22_순천고_1학기_기말_고2_확률과통계/q7.png`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/22_순천고_1학기_기말_고2_확률과통계/q14-solution.svg` → 실제 원본 `archive/assets/images/22_순천고_1학기_기말_고2_확률과통계/q14-solution.svg`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/22_순천고_1학기_기말_고2_확률과통계/q16.png` → 실제 원본 `archive/assets/images/22_순천고_1학기_기말_고2_확률과통계/q16.png`
+- **ARCHIVE_EXISTS / VISUALLY_CHECKED** — 참조 `assets/images/22_순천고_1학기_기말_고2_확률과통계/q16-solution-v2.svg` → 실제 원본 `archive/assets/images/22_순천고_1학기_기말_고2_확률과통계/q16-solution-v2.svg`
 
 ## 전 문항 판정
 
-### Q01 — HOLD
+### Q01 — KEEP
 
 - identity: id=`1`; sourceQid=`1`; sourceBlobSha=`57d964d2ab48d3e3d86619bf21c96edfcf155ab4`; 단원: H15-PS-03; questionType: `객관식`; 원본 답: `②`
 - 원문 문제 조건 (원본의 HTML 행/표 구분만 정규화):
@@ -47,8 +47,8 @@
 > 따라서 정답은 ②입니다.
 
 - **독립 검산·판정**: A와 배반, Bᶜ와 배반 → C⊆B\A={2,14}, 가능한 사건 2²=4개.
-- 문항 연결 이미지: `assets/images/22_순천고_1학기_기말_고2_확률과통계/q1-solution.svg` — **MISSING / 원본 실물 확인 불가**
-- **결함·개선 예약**: 이미지 연결 1개가 저장소에 없어 문제/해설 그림 실물 미검증
+- 문항 연결 이미지: `assets/images/22_순천고_1학기_기말_고2_확률과통계/q1-solution.svg` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/22_순천고_1학기_기말_고2_확률과통계/q1-solution.svg`)
+
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 ### Q02 — KEEP
 
@@ -152,7 +152,7 @@
 
 - **독립 검산·판정**: 여사건 합 P((A∩B)ᶜ)=4/5 →교집합 1/5 →합집합 2/5+3/10-1/5=1/2.
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
-### Q07 — HOLD
+### Q07 — KEEP
 
 - identity: id=`7`; sourceQid=`7`; sourceBlobSha=`57d964d2ab48d3e3d86619bf21c96edfcf155ab4`; 단원: H15-PS-03; questionType: `객관식`; 원본 답: `④`
 - 원문 문제 조건 (원본의 HTML 행/표 구분만 정규화):
@@ -171,8 +171,8 @@
 > 유리수 길이의 선분은 $18$개이므로 확률은 $\frac{18}{36}=\frac{1}{2}$입니다. 정답은 ④입니다.
 
 - **독립 검산·판정**: 3×3 격자 9점 중 두 점 36쌍, 같은 가로/세로 9+9=18쌍, 확률 1/2; 그림은 누락.
-- 문항 연결 이미지: `assets/images/22_순천고_1학기_기말_고2_확률과통계/q7.png` — **MISSING / 원본 실물 확인 불가**
-- **결함·개선 예약**: 이미지 연결 1개가 저장소에 없어 문제/해설 그림 실물 미검증
+- 문항 연결 이미지: `assets/images/22_순천고_1학기_기말_고2_확률과통계/q7.png` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/22_순천고_1학기_기말_고2_확률과통계/q7.png`)
+
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 ### Q08 — KEEP
 
@@ -314,7 +314,7 @@
 
 - **독립 검산·판정**: 찬성∩남학생은 0.9×0.6=0.54, 남학생 0.6, 조건부 0.9.
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
-### Q14 — HOLD
+### Q14 — KEEP
 
 - identity: id=`14`; sourceQid=`14`; sourceBlobSha=`57d964d2ab48d3e3d86619bf21c96edfcf155ab4`; 단원: H15-PS-04; questionType: `객관식`; 원본 답: `②`
 - 원문 문제 조건 (원본의 HTML 행/표 구분만 정규화):
@@ -347,8 +347,8 @@
 > 합은 $\frac{41}{243}$이므로 정답은 ②입니다.
 
 - **독립 검산·판정**: 가로 이동 K~B(5,1/3); k²+4(5-k)²=25는 k=3,5, 확률 40/243+1/243=41/243.
-- 문항 연결 이미지: `assets/images/22_순천고_1학기_기말_고2_확률과통계/q14-solution.svg` — **MISSING / 원본 실물 확인 불가**
-- **결함·개선 예약**: 이미지 연결 1개가 저장소에 없어 문제/해설 그림 실물 미검증
+- 문항 연결 이미지: `assets/images/22_순천고_1학기_기말_고2_확률과통계/q14-solution.svg` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/22_순천고_1학기_기말_고2_확률과통계/q14-solution.svg`)
+
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 ### Q15 — KEEP
 
@@ -375,7 +375,7 @@
 
 - **독립 검산·판정**: 홀수합 전체 40조합에서 3배수 공을 모두 피한 홀수합 10조합 제외 30/84=5/14, p+q=19.
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
-### Q16 — HOLD
+### Q16 — KEEP
 
 - identity: id=`16`; sourceQid=`16`; sourceBlobSha=`57d964d2ab48d3e3d86619bf21c96edfcf155ab4`; 단원: H15-PS-04; questionType: `객관식`; 원본 답: `③`
 - 원문 문제 조건 (원본의 HTML 행/표 구분만 정규화):
@@ -405,9 +405,9 @@
 > 해설 그림에서 P→B를 강조한 이유는 P를 지나는 경로의 마지막 유효 이동이 반드시 이 선분이기 때문입니다.
 
 - **독립 검산·판정**: 그림 격자 4×2에서 6회 유효경로 15(통과 10), 7회 재시도 경로 26(통과 20); 조건부 (20+20)/(30+26)=5/7; 경계 그림 누락.
-- 문항 연결 이미지: `assets/images/22_순천고_1학기_기말_고2_확률과통계/q16.png` — **MISSING / 원본 실물 확인 불가**
-- 문항 연결 이미지: `assets/images/22_순천고_1학기_기말_고2_확률과통계/q16-solution-v2.svg` — **MISSING / 원본 실물 확인 불가**
-- **결함·개선 예약**: 이미지 연결 2개가 저장소에 없어 문제/해설 그림 실물 미검증
+- 문항 연결 이미지: `assets/images/22_순천고_1학기_기말_고2_확률과통계/q16.png` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/22_순천고_1학기_기말_고2_확률과통계/q16.png`)
+- 문항 연결 이미지: `assets/images/22_순천고_1학기_기말_고2_확률과통계/q16-solution-v2.svg` — **ARCHIVE_EXISTS / 육안 대조 완료** (실물 `archive/assets/images/22_순천고_1학기_기말_고2_확률과통계/q16-solution-v2.svg`)
+
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 ### Q17 — KEEP
 
@@ -539,6 +539,6 @@
 ## 완료 기준 및 후속
 
 - 원본 문항 21/21개 읽음; 원본 풀이·정답·선택지/서술형 답·계산 판정 기록 완료.
-- 누락 자산 5개와 메타데이터 0문항, 독립성·균등확률·정규근사 등 개선 사항은 문항별 UPGRADE/HOLD 및 상단 목록에 예약.
+- 연결 그림 원본 5/5개 확인(실물 미발견 0). 메타데이터 0문항 및 수학적 전제·근사 정책 등 남은 개선 사항은 해당 문항의 UPGRADE 및 상단 목록에 예약. 이미지 참조 `assets/images/`의 학생 앱 로딩 경로는 아직 미검증.
 - 원본 이미지를 신규 제작·대체하거나 문제/해설을 승인 없이 고치지 않았음.
-- 후속: 원본 시험 PDF·그림 복구 및 메타 보강 → 미해결 문항 검수 → 학생 앱 렌더/채점·회귀 시험 → 릴리스 게이트 판정. 2학기 작업은 별도 lane에서 수행.
+- 후속: 원본 시험 PDF와 이미지 경로 해석 대조 → 필요한 메타·수학 조건 보강 → 학생 앱 렌더/채점·회귀 시험 → 릴리스 게이트 판정. 2학기 작업은 별도 lane에서 수행.
