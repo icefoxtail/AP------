@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-497bea6226c7-d6c18358",
+  "examUid": "24_향림중_2학기_중간_중1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.js",
+  "expectedSourceBlobSha1": "47a270b752ad8021cd800bcbc0a970454bac67aa",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "54810e1724fa07e1b6b23d5a9717a82bf1edb718",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-497bea6226c7-d6c18358.type-ledger.json",
+        "sha256": "6c7f82ed954c6d513c6a5bc5ea712b73406e98ead02ffc9fdf32809dc396af36"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_656d726654c8e83093c55334c07dd6857b35ecbe20e2d3fe2878d5bc467fe7bd",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_PAIR_COUNTING"
+      },
+      "rationale": "7명 중 서로 한 번씩 만나는 쌍을 겹침 없이 6+5+4+3+2+1 또는 7×6÷2로 세어 경기 수 21을 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "44e7fbd4a3d4727b0fc60e7514471b523f9b2e679c47c538f87767c697d732a3",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-497bea6226c7-d6c18358.type-ledger.json",
+          "sha256": "6c7f82ed954c6d513c6a5bc5ea712b73406e98ead02ffc9fdf32809dc396af36"
+        }
+      ]
+    }
+  ]
+}

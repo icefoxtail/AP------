@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-64326f08683b-26618558",
+  "examUid": "23_연향중_2학기_중간_중1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m1/2mid/23_연향중_2학기_중간_중1_기출.js",
+  "expectedSourceBlobSha1": "4ae5beb89c314c4e9e8fced3f85368b3ba7003dc",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "54810e1724fa07e1b6b23d5a9717a82bf1edb718",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-64326f08683b-26618558.type-ledger.json",
+        "sha256": "e7c3e36fd486cef45f3623b51c4dfce9d0e48c10a5fa954d6e339baa57fa75b4"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_0d4243828ae864211f7ad293fd342424baa6c3e5f739054e7923a32d575089e8",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_PAIR_COUNTING"
+      },
+      "rationale": "다른 국적끼리의 쌍을 한국-일본 2×3, 한국-중국 2×4, 일본-중국 3×4로 곱하고 서로 겹치지 않는 경우를 더해 26회를 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "0cd9c80fcc047af6c648b1be7f6cbd2871442f357c0a404e8e638021ee819f7b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-64326f08683b-26618558.type-ledger.json",
+          "sha256": "e7c3e36fd486cef45f3623b51c4dfce9d0e48c10a5fa954d6e339baa57fa75b4"
+        }
+      ]
+    }
+  ]
+}

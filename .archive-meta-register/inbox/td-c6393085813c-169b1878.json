@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-c6393085813c-169b1878",
+  "examUid": "비상_미적분1_미분_익힘책_고2",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/비상교육_미적분1/비상_미적분1_미분_익힘책_고2/비상_미적분1_미분_익힘책_고2.js",
+  "expectedSourceBlobSha1": "3f51731980fc4e283e8900182ab0fa3a4aad9a2b",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "54810e1724fa07e1b6b23d5a9717a82bf1edb718",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c6393085813c-169b1878.type-ledger.json",
+        "sha256": "31e4ae4ce4ff151f1f98bb246f7cb4ec30ff120153c7262c2893a9d78ba6bdf5"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_4f9be82ee68adfc998137709b120248c1f98d97c833845824139d7194d5ae7e6",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+        "templateKey": "TPL_LIMIT_FINITE_CONDITION_PARAMETER"
+      },
+      "rationale": "분모가 0으로 가므로 분자도 0이어야 한다는 조건으로 n을 정하고 극한값 a를 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I"
+      },
+      "textBindingFingerprint": "609e0c3f42d0c5530d3e8b7c50064343b77a381e70f60b2d6b348f391b434518",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c6393085813c-169b1878.type-ledger.json",
+          "sha256": "31e4ae4ce4ff151f1f98bb246f7cb4ec30ff120153c7262c2893a9d78ba6bdf5"
+        }
+      ]
+    }
+  ]
+}

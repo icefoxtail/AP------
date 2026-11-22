@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-149036f1ba92-e0259f9f",
+  "sourceArchiveFile": "textbooks/동아출판_공통수학1/동아_공통수학1_경우의수와행렬_대단원평가_고1/동아_공통수학1_경우의수와행렬_대단원평가_고1.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-u-20261122",
+    "commit": "54810e1724fa07e1b6b23d5a9717a82bf1edb718",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_68691945265b83c44f485b4baa1ef96d69ea3eb2d950540af6a872ccd8d64ed2",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_H1_BINOMIAL_PARAMETER_RELATION",
+      "step": "순열 등식 6P3=6×nP2를 n(n-1)=20으로 바꾸어 자연수 n을 구한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2371f0cd612f8775a40d465c53816e2dd99d62fdd845cb1e5fb1933610ce5ecd",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_H1_BINOMIAL_PARAMETER_RELATION",
+      "step": "조합의 성질 nCa=nCb에서 a=b 또는 a+b=n의 두 경우로 r을 구한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    }
+  ]
+}

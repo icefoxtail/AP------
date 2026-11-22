@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-9805f8aa6049-91079c8c",
+  "sourceArchiveFile": "textbooks/비상교육_대수/비상_대수_지수함수와로그함수_중단원학습점검_고2/비상_대수_지수함수와로그함수_중단원학습점검_고2.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-u-20261122",
+    "commit": "54810e1724fa07e1b6b23d5a9717a82bf1edb718",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_56f60e72677e8591eb758f2cd7b170c22886f7cc8767ecda614269bac329e4e3",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_FUNCTION_INEQUALITY",
+      "templateKey": "TPL_LOG_VALUE_ORDER_COMPARISON",
+      "step": "거듭제곱수와 로그값을 같은 밑으로 통일해 지수와 진수의 크기로 두 수의 대소를 비교한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1bc40bfca98604ecf94123188f8230e0f471f6dd0826eb75bd8be56e07624746",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_02_EXP_EQUATION",
+      "templateKey": null,
+      "step": "지수방정식은 밑을 3으로 통일하고 로그방정식은 로그의 정의로 진수를 구한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_793ac10e3e9087542023bc5bcb03f1a4ff84d54a753ddf7c67dd5a83a6d14fda",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_02_EXP_INEQUALITY",
+      "templateKey": null,
+      "step": "지수부등식은 밑을 통일해 지수를 비교하고 밑이 1보다 작은 로그부등식은 진수 조건과 부등호 방향을 함께 처리한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fd9d46430cb9296682477ccf2fdd1003b86371d972661c0a0467f54e9550fb05",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_FUNCTION_INEQUALITY",
+      "templateKey": "TPL_LOG_VALUE_ORDER_COMPARISON",
+      "step": "거듭제곱근과 로그를 지수·로그로 통일하고 단조성으로 세 수의 대소를 비교한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    }
+  ]
+}

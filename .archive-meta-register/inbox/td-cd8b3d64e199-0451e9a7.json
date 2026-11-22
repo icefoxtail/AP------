@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-cd8b3d64e199-0451e9a7",
+  "examUid": "17_풍덕중_1학기_기말_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/1final/17_풍덕중_1학기_기말_중3_수학.js",
+  "expectedSourceBlobSha1": "a5496f2fe41f035999fb5b6c9876cc5a71911f36",
+  "expectedQuestionCount": 25,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "54810e1724fa07e1b6b23d5a9717a82bf1edb718",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-cd8b3d64e199-0451e9a7.type-ledger.json",
+        "sha256": "f5cecf8920be72335b34f2efdeaeff120fea956aa9f2c9c037b12eaece4a5da1"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_c61b45029c8d2daa692308713390590df111a13e2968dee859827b62b414b2eb",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_MONOTONICITY",
+        "templateKey": "TPL_M3_QUADRATIC_FUNCTION_MONOTONICITY_INTERVAL"
+      },
+      "rationale": "각 이차함수의 대칭축과 이차항 계수의 부호로 x<-2에서 증가하는 함수를 가린다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "751842c12f3d9e9cd9f5f2ca6552836717b1f32ab301067853d1555cc2eb98d9",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-cd8b3d64e199-0451e9a7.type-ledger.json",
+          "sha256": "f5cecf8920be72335b34f2efdeaeff120fea956aa9f2c9c037b12eaece4a5da1"
+        }
+      ]
+    }
+  ]
+}

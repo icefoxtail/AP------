@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-ac78a9534f1a-dbab5546",
+  "sourceArchiveFile": "original/middle/m2/1final/22_향림중_1학기_기말_중2_수학.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-u-20261122",
+    "commit": "54810e1724fa07e1b6b23d5a9717a82bf1edb718",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_bab661a5e2755465c245195237420596b13d497356da3954ff362b33943798ca",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+      "templateKey": "TPL_M2_INEQUALITY_PROPERTIES_TRUE_FALSE_RULE",
+      "step": "a>b의 양변에 음수를 곱하면 부등호 방향이 바뀌는 성질로 보기마다 부등호 방향을 확인해 옳은 것을 고른다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0e9fe4483734ae0c8eacd9a0aa4e8d796ca9041f1b36666782997e3d5377c485",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+      "templateKey": null,
+      "step": "다섯 일차부등식을 각각 풀어 해를 비교하고 해가 다른 하나를 찾는다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    }
+  ]
+}

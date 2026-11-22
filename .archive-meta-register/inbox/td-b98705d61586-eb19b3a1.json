@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-b98705d61586-eb19b3a1",
+  "examUid": "17_경북환호여중_1학기_기말_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/1final/17_경북환호여중_1학기_기말_중3_수학.js",
+  "expectedSourceBlobSha1": "3a103977718f80e4c126c2713d20ddfe14ae6e89",
+  "expectedQuestionCount": 26,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "54810e1724fa07e1b6b23d5a9717a82bf1edb718",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b98705d61586-eb19b3a1.type-ledger.json",
+        "sha256": "10fba20f7424a5cb138c35d062e371f82e2da961e45096c08fa076c33df6c836"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_f7d624a25a8da9cfb9084667e1dc31392506f0ad30c3a4465f1e23587866a790",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+        "templateKey": "TPL_M3_GRAPH_GEOMETRY_RECTANGLE"
+      },
+      "rationale": "포물선 위 대칭인 두 점의 좌표 (±t, t^2)로 정사각형의 가로 2t와 세로 15-t^2을 나타내 같게 놓고 t=3에서 넓이 36을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "8d602c9995e4fdf789c3db337a2f0d57f0dad0cced3e7cfb66c662d4c38b8602",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b98705d61586-eb19b3a1.type-ledger.json",
+          "sha256": "10fba20f7424a5cb138c35d062e371f82e2da961e45096c08fa076c33df6c836"
+        }
+      ]
+    }
+  ]
+}

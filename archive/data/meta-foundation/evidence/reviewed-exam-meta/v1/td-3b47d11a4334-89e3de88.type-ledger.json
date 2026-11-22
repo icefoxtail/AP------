@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-3b47d11a4334-89e3de88",
+  "sourceArchiveFile": "types/middle/m2/수와식_중2_유리수와순환소수_유형2.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-u-20261122",
+    "commit": "54810e1724fa07e1b6b23d5a9717a82bf1edb718",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_f23eda6d8f1662212d700cd1ab9ebde5b95e328f66132fe8eab6c5c1b80a6da2",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "순환소수의 순환마디를 찾아 처음과 끝 숫자 위에 점을 찍어 바르게 표기한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f713a190505e779c0edda195d279152a8a3006abaeaa5fa23f06eabf94a489b3",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "분수를 순환소수로 나타내 순환마디를 찾고 소수점 아래 50번째 숫자를 반복 위치로 구한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1610e07b63e097ab3928eddd36293fe79cc172a164a4bd20eb45ff4399af61c4",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+      "templateKey": null,
+      "step": "분모에 남는 소인수 3을 약분하려면 x가 3의 배수여야 한다는 유한소수 조건으로 x의 개수를 센다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e3eb8f2fd6121ca096f6c4f32f452d1623c71ee3f5e9d1972d8468e30bd179b7",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+      "templateKey": null,
+      "step": "280의 소인수분해로 n이 7의 배수여야 한다는 유한소수 조건을 쓰고 기약분수 3/k의 조건으로 n과 k를 구한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_44d47becd973a67379a391de72fa37c4e9a166b844936ce0aa673dc2ed4cecdc",
+      "sourceOrdinal": 37,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "분모만 잘못 본 값에서 분자를, 분자만 잘못 본 값에서 분모를 구해 처음 기약분수를 정한 뒤 역수에 곱할 최소 자연수를 구한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_30a273abaf1f34fe8e0001594da5df149de02cce4853f8f0cd53b28b3ade11fc",
+      "sourceOrdinal": 38,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "분모만 잘못 본 값과 분자만 잘못 본 값에서 처음 기약분수를 구해 순환소수로 나타내고 50번째 자리 숫자를 구한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1bad0bba3d647881b1d7191c4ee98a240074b1fb68fd727a36a06459ef55fccb",
+      "sourceOrdinal": 39,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "분모만 잘못 본 값과 분자만 잘못 본 값에서 처음 기약분수를 구해 순환소수로 나타내고 100번째 자리 숫자를 구한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_05fa6bd6cc1bd3343fa93e7e265b8248f80d0285ac9144aa905b232bd6c3402d",
+      "sourceOrdinal": 63,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "순환소수의 합을 분수로 나타내 a+b를 구하고 조건에 맞는 한 자리 수 a, b의 차를 구한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0381ae9719bbead8a54c79dfb44493b66c670989e8c8cd7c1ebd3fb0bcf90966",
+      "sourceOrdinal": 76,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "분모만 잘못 본 값과 분자만 잘못 본 값에서 처음 기약분수를 구해 순환소수로 나타낸다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_225f3c45886c426a7146912ff84cd013550d2802d57fc65f26c00489b069d6d6",
+      "sourceOrdinal": 78,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "분수 4/13을 순환소수로 나타내 순환마디의 반복으로 x_1부터 x_99까지의 합을 구한다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6f16eb043ef184eaaad05e276f26e06f832c41a76f6422c72785307529195422",
+      "sourceOrdinal": 79,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+      "templateKey": null,
+      "step": "순환소수 0.ab와 0.ba의 합을 분수로 나타내 a+b와 a=3b에서 a, b를 구하고 두 순환소수의 차를 순환소수로 나타낸다.",
+      "note": null,
+      "figure": null,
+      "check": null,
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    }
+  ]
+}

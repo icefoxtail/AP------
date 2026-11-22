@@ -1,0 +1,171 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tc-8e09f2a94cd3-53ff116e",
+  "examUid": "22_매산고_1학기_중간_고2_기하와벡터_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1mid/22_매산고_1학기_중간_고2_기하와벡터_기출.js",
+  "expectedSourceBlobSha1": "7f4738b603cd423386ea922e8a8414acde7b5125",
+  "expectedQuestionCount": 20,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "54810e1724fa07e1b6b23d5a9717a82bf1edb718",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-8e09f2a94cd3-53ff116e.type-ledger.json",
+        "sha256": "abc7d55d019c4a3c2e547698d3caaa64e7f72957c43e9c09fd37fb7d659f768b"
+      }
+    ]
+  },
+  "registryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry/pack.json",
+      "before": {
+        "schemaVersion": "meta-foundation-pack-v1",
+        "packId": "GEOMETRY",
+        "packVersion": "1.0.4",
+        "canonicalStatus": "ACTIVE",
+        "schemaAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+        "ownerPack": "GEOMETRY",
+        "curricula": [
+          "2022"
+        ],
+        "standardCourses": [
+          "기하"
+        ],
+        "ownedStandardUnitDomains": [
+          "H15-GV-09",
+          "H22-GE-01",
+          "H22-GE-02",
+          "H22-GE-03",
+          "H22-GE-04",
+          "H22-GE-05",
+          "H22-GE-06",
+          "H22-GE-07",
+          "H22-GE-08"
+        ],
+        "activeItemEvidenceCount": 22,
+        "problemTypeCount": 11,
+        "templateCount": 36,
+        "crossConceptReferenceCount": 6,
+        "conditionRegistryCount": 0,
+        "bindingCount": 22,
+        "aliasCount": 0,
+        "outOfGroupRoutingCount": 0,
+        "notes": [
+          "Initialized from an approved META_PIPELINE_AUDIT handoff; student-facing payload is preserved."
+        ]
+      },
+      "after": {
+        "schemaVersion": "meta-foundation-pack-v1",
+        "packId": "GEOMETRY",
+        "packVersion": "1.0.4",
+        "canonicalStatus": "ACTIVE",
+        "schemaAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+        "ownerPack": "GEOMETRY",
+        "curricula": [
+          "2022",
+          "2015"
+        ],
+        "standardCourses": [
+          "기하"
+        ],
+        "ownedStandardUnitDomains": [
+          "H15-GV-09",
+          "H22-GE-01",
+          "H22-GE-02",
+          "H22-GE-03",
+          "H22-GE-04",
+          "H22-GE-05",
+          "H22-GE-06",
+          "H22-GE-07",
+          "H22-GE-08"
+        ],
+        "activeItemEvidenceCount": 22,
+        "problemTypeCount": 11,
+        "templateCount": 36,
+        "crossConceptReferenceCount": 6,
+        "conditionRegistryCount": 0,
+        "bindingCount": 22,
+        "aliasCount": 0,
+        "outOfGroupRoutingCount": 0,
+        "notes": [
+          "Initialized from an approved META_PIPELINE_AUDIT handoff; student-facing payload is preserved."
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-8e09f2a94cd3-53ff116e.type-ledger.json",
+          "sha256": "abc7d55d019c4a3c2e547698d3caaa64e7f72957c43e9c09fd37fb7d659f768b"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2015",
+        "standardCourse": "기하",
+        "standardUnitKey": "H15-GV-06",
+        "problemTypeKey": "PT_GEO_PLANE_VECTOR"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+        "curriculum": "2015",
+        "standardCourse": "기하",
+        "standardUnitKey": "H15-GV-06",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_0b727b364435edbcd67c3d53a428d1139cad2a36acbf0e23ef93a666e37eaaed"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "GEOMETRY"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-8e09f2a94cd3-53ff116e.type-ledger.json",
+          "sha256": "abc7d55d019c4a3c2e547698d3caaa64e7f72957c43e9c09fd37fb7d659f768b"
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "questionUid": "qid_v1_0b727b364435edbcd67c3d53a428d1139cad2a36acbf0e23ef93a666e37eaaed",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+        "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION"
+      },
+      "rationale": "BC의 중점 P를 잡아 AB+AC=2AP로 AP=2√5를 얻고 이등변사다리꼴의 높이와 가로 성분으로 대각선 BD의 길이를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "7ef99874b05777159a5e1836e92860c6fd2d1c94ab0a85fe81972821607687ae",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-8e09f2a94cd3-53ff116e.type-ledger.json",
+          "sha256": "abc7d55d019c4a3c2e547698d3caaa64e7f72957c43e9c09fd37fb7d659f768b"
+        }
+      ]
+    }
+  ]
+}

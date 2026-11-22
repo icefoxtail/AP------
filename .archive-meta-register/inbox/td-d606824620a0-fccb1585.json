@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-d606824620a0-fccb1585",
+  "examUid": "25_삼산중_1학기_중간_중2_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/1mid/25_삼산중_1학기_중간_중2_수학.js",
+  "expectedSourceBlobSha1": "fe6b625aa8c36a994e7fe026c6c9d6eab827e889",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "54810e1724fa07e1b6b23d5a9717a82bf1edb718",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d606824620a0-fccb1585.type-ledger.json",
+        "sha256": "60df3516c94c2b9d59cdad8e844cfee1af3cad7e89fafb9d742d9af0b1bbe6d1"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_76d858707482bb1bc613a4a68b67d9348a11fd7f03c86b312790a416efb5d6ec",
+      "sourceOrdinal": 24,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_POLYNOMIAL"
+      },
+      "rationale": "다항식을 단항식으로 나누는 두 풀이와 부등식 풀이 두 개를 항별 나눗셈, 역수 곱, 부등호 방향, 분모 제거 단계에서 점검해 틀린 곳을 바로잡는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "eb7f0464806e12d4f3a0a561173173659a447aef4d9ecd561dec376209b8d2f1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d606824620a0-fccb1585.type-ledger.json",
+          "sha256": "60df3516c94c2b9d59cdad8e844cfee1af3cad7e89fafb9d742d9af0b1bbe6d1"
+        }
+      ]
+    }
+  ]
+}

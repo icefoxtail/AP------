@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-61fb381c839f-5a1e1330",
+  "examUid": "19_이수중_2학기_중간_중2_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/2mid/19_이수중_2학기_중간_중2_수학.js",
+  "expectedSourceBlobSha1": "2784cee99e774753f5dffbe2da3c5cd7ff58efd9",
+  "expectedQuestionCount": 25,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "54810e1724fa07e1b6b23d5a9717a82bf1edb718",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-61fb381c839f-5a1e1330.type-ledger.json",
+        "sha256": "a4b1c4a299bf89ea7fd6951bef9240a4f6a9b112e8fceb8801be3f6d4d43f974"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_989c2b0cc85cce07c92e2178516dc5b8def67a8b8a3f6c65210a7d978241e621",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES"
+      },
+      "rationale": "점 P를 지나는 평행선이 만드는 작은 평행사변형의 대변 길이가 같음을 이용해 PH와 PF를 각각 구하고 더한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "9300c4d0b60bf0b552fdaa0ffd39686ee00ac9ac9b349f0df4a390470df5804e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-61fb381c839f-5a1e1330.type-ledger.json",
+          "sha256": "a4b1c4a299bf89ea7fd6951bef9240a4f6a9b112e8fceb8801be3f6d4d43f974"
+        }
+      ]
+    }
+  ]
+}
