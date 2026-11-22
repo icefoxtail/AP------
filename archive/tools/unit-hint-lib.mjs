@@ -15,7 +15,7 @@ export const UNIT_HINT_GRADE_RULES = Object.freeze({
   "중2": { profile: "m2", keys: MIDDLE_KEYS(2), asKey: false, offSubjects: off() },
   "중3": { profile: "m3", keys: MIDDLE_KEYS(3), asKey: false, offSubjects: off() },
   "고1": { profile: "h1", keys: /^H(?:15-S[AB]|22-C2?)-\d\d$/, asKey: true, offSubjects: off("", "수학(하)") },
-  "고2": { profile: "h2", keys: HIGH2_KEYS, asKey: true, offSubjects: off("수학I", "기하", "기하와벡터", "미적분", "공통수학1") },
+  "고2": { profile: "h2", keys: HIGH2_KEYS, asKey: true, offSubjects: off("기하와벡터", "미적분", "공통수학1") },
 });
 const PROBE_FILE = "original/unit-hint-probe.js";
 

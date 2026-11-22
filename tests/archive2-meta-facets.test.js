@@ -348,7 +348,7 @@ test('unit hint rule: one unit -> hinted, split or unmappable -> not hinted, oth
   assert.equal(hinter.hint('PT_H1_SAME', '고2'), '', 'a 고1 unit key is not a 고2 binding');
   assert.equal(hinter.hint('PT_H2', '고2'), 'H22-M1-03');
   assert.equal(hinter.hint('PT_H2', '고2', '미적분I'), 'H22-M1-03');
-  assert.equal(hinter.hint('PT_H2', '고2', '수학I'), '', 'a subject whose measured agreement was under 90% stays off');
+  assert.equal(hinter.hint('PT_H2', '고2', '미적분'), '', 'a subject whose measured agreement was under 90% stays off');
   assert.equal(hinter.hint('PT_H1_SAME', '고1', '수학(하)'), '');
   assert.equal(hinter.hint('PT_ONE', '고3'), '', 'grades without a measured agreement stay off');
   assert.equal(hinter.hint('', '중3'), '');
