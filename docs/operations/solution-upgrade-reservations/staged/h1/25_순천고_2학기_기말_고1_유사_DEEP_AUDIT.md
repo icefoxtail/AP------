@@ -1,5 +1,8 @@
 # 고1 2학기 기말 유사시험지 심층 수학 감사 — 25_순천고_2학기_기말_고1_유사
 
+> **2026-11-22 후속 시각 QA: VISUAL_QA_PASS** — 이미지 10개 렌더·육안 검수, 결함 0개. 상세 결과는 문서 끝의 ‘후속 시각 검수’ 및 [통합 계획](./H1_2FINAL_SIMILAR_VISUAL_QA_20261122.md) 참조.
+
+
 - 기준일: 2026-11-22 (KST)
 - 원본: `archive/exams/similar/high/h1/2final/25_순천고_2학기_기말_고1_유사.js`
 - 원본 blob SHA: `8869a95670be8f2bc98f3ef6f562701498350969`
@@ -891,3 +894,28 @@ $$4t\le t^2+4 \iff t^2-4t+4=(t-2)^2\ge0$$
 - **수학 검산 결과**: 본 문서의 정답 변경 권고는 없다. 효천고 18번만 ‘모든 실수 a’의 충분성 증명 보강을 제안한다.
 - **시각 QA는 수행하지 않음**: 원문이 그래프나 화살표 판독에 의존하는 경우, 이 문서는 해설에 적힌 도형 정보를 전제로 계산을 검산한 것이며 이미지 원본의 정확성을 확정하지 않는다.
 - **원격 재조회**: 커밋 후 동일 브랜치 파일을 재조회하여 전문 일치 여부를 별도 검증한다.
+
+
+---
+
+## 후속 시각 검수 — 2026-11-22 (최신 판정)
+
+- 결과: **VISUAL_QA_PASS**. 연결 그림 10개, 그림 포함 10문항, 결함 후보 0건.
+- 절차: 실제 `archive/assets/images/25_순천고_2학기_기말_고1_유사/` 자산 존재 확인 → SVG/PNG 렌더 → 접촉 시트 육안 검사 → 본문·해설의 그래프, 좌표, 집합, 대응도 비교.
+- [수학·시각 통합 마감 계획 및 전체 276건 보고서](./H1_2FINAL_SIMILAR_VISUAL_QA_20261122.md) 참조.
+- 이전 본문에 기재된 `VISUAL_QA_PENDING` 또는 `NOT_RUN`은 **초기 수학 감사 당시 상태**이며, 후속 시각 검수 판정은 아래 표가 우선한다.
+
+| 문항 | 검사한 이미지(원본 `archive/assets/images/25_순천고_2학기_기말_고1_유사/`) | 최신 판정 |
+|---:|---|---|
+| 4번 | `문제: q04-problem-v2.svg` | VISUAL_QA_PASS |
+| 9번 | `해설: q09-solution.svg` | VISUAL_QA_PASS |
+| 10번 | `문제: q10-problem-v2.svg` | VISUAL_QA_PASS |
+| 13번 | `문제: q13-problem-v2.svg` | VISUAL_QA_PASS |
+| 14번 | `해설: q14-solution.svg` | VISUAL_QA_PASS |
+| 15번 | `해설: q15-solution.svg` | VISUAL_QA_PASS |
+| 17번 | `해설: q17-solution.svg` | VISUAL_QA_PASS |
+| 18번 | `해설: q18-solution.svg` | VISUAL_QA_PASS |
+| 22번 | `해설: q22-solution.svg` | VISUAL_QA_PASS |
+| 23번 | `해설: q23-solution.svg` | VISUAL_QA_PASS |
+
+원본 JS·SVG·PNG는 수정하지 않았다. 결함 수정 후 해당 자산을 다시 렌더하고 문제·해설을 대조해야 최종 출고 판정이 가능하다.
