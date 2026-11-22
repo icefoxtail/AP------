@@ -1,5 +1,8 @@
 # 확통 1학기 중간 기출 심층 감사 — 19_제일고_1학기_중간_고2_확률과통계.js
 
+> **2026-11-22 HOLD66 재검증 — 최신 판정 우선**: 이 시험지의 기존 HOLD 1건 중 **0건 KEEP 전환**, **1건 HOLD 유지**. 원본 main JS blob `8c1d47d1e3e23dba304607c66f32aeb9c6418fa3` 재검독; 인쇄 원본 `2019_jeil_1mid.pdf` 대조 완료. 현재 코드 자산의 앱 상대경로 `assets/images/...`는 저장소 `archive/assets/images/...`에 실제 존재하며 66개 전체 렌더 완료. 이전 문서 본문의 이미지 404/미존재/미렌더 근거는 **2026-11-22 철회된 과거 기록**이고 아래 개별 Q 재판정이 우선한다. 학생 화면·채점기·Gold 회귀는 **NOT_RUN**, 원본 JS·이미지 미변경.
+
+
 - lane: **lane20**; courseKey: **probstat**; 대상: 고2 / **1학기 중간** / original / 19학년도. **2학기 확통·1학기 기말은 이 일괄 작업에서 제외**.
 - sourcePath: `archive/exams/original/high/h2/1mid/19_제일고_1학기_중간_고2_확률과통계.js`
 - sourceRef: `main`; sourceBlobSha: `8c1d47d1e3e23dba304607c66f32aeb9c6418fa3`
@@ -309,6 +312,8 @@
 - 후속 학생 화면 렌더 / 답안 채점 / Golden / Negative: **NOT_RUN**
 
 ### Q18 — HOLD
+
+- **2026-11-22 인쇄본·독립검산 재확인: HOLD 유지**. 원본 5/6쪽 Q18은 복수 OMR 마킹을 명시하나 JS `questionType: 객관식`에서 다중 정답 UI/채점 동작을 검증하지 못했고, 보기 ⑤는 공정한 동전 조건 시 확률 7/8로 이론 계산 가능하여 '수학적 확률' 범위 해석이 다툼. 공식 답 `①,③` 단정·배포 보류. 
 
 - identity: id=`18`; sourceQid=`18`; sourceBlobSha=`8c1d47d1e3e23dba304607c66f32aeb9c6418fa3`; 단원: 확률의 뜻과 활용; questionType: `객관식`; 원본 답: `①, ③`
 - 원문 문제 조건 (원본 HTML 개행·이미지 태그만 정규화):
