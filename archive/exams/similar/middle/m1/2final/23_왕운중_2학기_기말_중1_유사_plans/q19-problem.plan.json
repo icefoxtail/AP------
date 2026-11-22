@@ -1,0 +1,35 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "CYLINDER",
+      "radius": 4,
+      "height": 24
+    },
+    {
+      "kind": "SPHERE",
+      "radius": 4,
+      "inside": "s1"
+    },
+    {
+      "kind": "SPHERE",
+      "radius": 4,
+      "inside": "s1"
+    },
+    {
+      "kind": "SPHERE",
+      "radius": 4,
+      "inside": "s1"
+    }
+  ],
+  "caption": "원기둥 안에 공 3개가 꼭 맞게 들어간 케이스",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원기둥 부피 384pi, 공 3개 내접",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": []
+}
