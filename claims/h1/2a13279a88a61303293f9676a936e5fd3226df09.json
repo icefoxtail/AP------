@@ -3,7 +3,7 @@
   "kind": "solution_upgrade_exam_claim",
   "ownerLane": "lane40",
   "workerBranch": "work/solution-upgrade-lane-40-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "courseKey": "h1",
   "sourceKind": "original",
   "sourceTerm": "2mid",
@@ -11,16 +11,22 @@
   "sourcePath": "archive/exams/original/high/h1/2mid/21_제일고_2학기_중간_고1_기출.js",
   "sourceBlobSha": "2a13279a88a61303293f9676a936e5fd3226df09",
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2021_jeil_2mid_DEEP_AUDIT.md",
-  "nextQid": 1,
-  "remainingWork": [
-    "q1~q22 원문 전수 감사 및 필요 UPGRADE 학생용 풀이"
-  ],
+  "nextQid": null,
+  "remainingWork": [],
   "sourceQuestionCount": 22,
-  "readQuestionCount": 0,
+  "readQuestionCount": 22,
   "decisionCounts": {
-    "KEEP": 0,
-    "UPGRADE": 0,
+    "KEEP": 21,
+    "UPGRADE": 1,
     "HOLD": 0,
-    "UNREAD": 22
-  }
+    "UNREAD": 0
+  },
+  "completedUpgradeQids": [
+    21
+  ],
+  "auditStatus": "EXAM_AUDIT_COMPLETE",
+  "draftStatus": "EXAM_DRAFT_COMPLETE",
+  "visualStatus": "VISUAL_HOLD",
+  "goldenNegativeStatus": "NOT_RUN",
+  "auditCommitSha": "b0d26a21cb8d9e7e2230c0a5aa20300ac307380f"
 }
