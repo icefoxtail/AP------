@@ -807,7 +807,7 @@
           ${openAll(`${esc(wholeName)} 전체로 시험지 열기`, verdictAll.ok)}${formsBox}`;
         const lines = `<p class="qk-r-scope">${selectedUnits.length ? `<strong>${esc(names)}</strong>` : `<strong>${esc(wholeName)} 전체</strong> <span class="muted">(고른 ${esc(noun)} 없음)</span>`}</p>
           ${selectedUnits.length ? reason(verdictSel) : reason(verdictAll)}`;
-        result = info(product.title, product.count, lines, actions);
+        result = info(product.title, product.count, lines, actions) + quickReportMarkup();
         bar = { text: selectedUnits.length ? `${product.count}문항 · ${selectedUnits.length}개 ${noun}` : `${product.count}문항 · ${diagnostic ? `${wholeName} 전체` : "과목 전체"}`,
           action: selectedUnits.length ? "quick-open-selected" : "quick-open-all",
           disabled: busy || (selectedUnits.length ? !verdictSel.ok : !verdictAll.ok) };
@@ -851,6 +851,18 @@
         </div>
         <aside class="qk-result" aria-label="만들어질 평가">${result}</aside>
       </div>${window.Archive2QuickPacks?.markup?.() || ""}${barMarkup}</div>`;
+  }
+  // 진단평가 결과표: the result sheet (assessment/diagnostic-report.html) of the paper just made. Its only input is the
+  // question UIDs in paper order, so the link is a plain new-tab anchor (no output envelope, nothing stored).
+  function quickReportHref(uids) {
+    return `assessment/diagnostic-report.html?uids=${uids.map(encodeURIComponent).join(",")}`;
+  }
+  function quickReportMarkup() {
+    const report = quickState.report;
+    if (state.view !== "diagnostic" || !report?.a?.length) return "";
+    const link = (uids, text) => `<a class="qk-report-link" href="${esc(quickReportHref(uids))}" target="_blank" rel="noopener" data-quick-report>${esc(text)}</a>`;
+    return `<div class="qk-report"><p class="muted qk-report-note">${esc(report.title)} · 학생이 푼 뒤 문항별 O/X를 눌러 결과표를 만듭니다.</p>${report.b
+      ? link(report.a, "A형 결과표 열기") + link(report.b, "B형 결과표 열기") : link(report.a, "결과표 열기")}</div>`;
   }
   function fiveMinuteShuffle(rows) {
     const result = rows.slice();
@@ -1286,6 +1298,7 @@
     if (popupB) popupB.document.body.textContent = "시험지를 준비하고 있습니다.";
     quickState.busy = true;
     quickState.formB = null;
+    quickState.report = null;
     status("선택한 문항의 원본을 확인하고 있습니다.");
     render();
     const makeForm = async (list, formPlan, suffix, blankOptions = {}) => {
@@ -1338,6 +1351,7 @@
     try {
       const formA = await makeForm(selected, plan, twoForms ? "A형" : "");
       popup.location.replace(formA.url.href);
+      if (diagnostic) quickState.report = { title: label, a: formA.chosen.map(record => record.questionUid), b: null };
       let message = `${label} · ${formA.chosen.length}문항 시험지${twoForms ? " A형" : ""}를 열었습니다.${fillSummary(formA.chosen)}`;
       const replacedBlank = formA.replaced;
       let replacedAll = replacedBlank;
@@ -1346,6 +1360,7 @@
         try {
           const formB = await makeFormB(formA);
           replacedAll += formB.replaced;
+          quickState.report.b = formB.chosen.map(record => record.questionUid);
           if (popupB) popupB.location.replace(formB.url.href);
           else quickState.formB = { url: formB.url.href, title: `${label} B형` };
           message = `${label} · A·B형 두 벌(각 ${formA.chosen.length}문항)을 ${popupB ? "열었습니다" : "만들었습니다. B형은 아래 \"B형 열기\" 단추로 여세요"}.`

@@ -31,7 +31,7 @@
     { key: "unit", label: "단원별 기출", view: "", url: "unit-past-exams.html?ready=1" },
     { key: "compose", label: "문제지 만들기", view: "compose", url: "workspace.html?view=compose" },
     { key: "quick", label: "빠른 평가", view: "five-minute", url: "workspace.html?view=five-minute" },
-    { key: "library", label: "보관함 · 출제 내역", view: "saved", url: "workspace.html?view=saved" },
+    { key: "library", label: "출제 내역 · 보관함", view: "recent", url: "workspace.html?view=recent" },
   ];
   // Phone: the same six destinations with short names (the bottom bar is six equal cells).
   const TABS = [
@@ -40,7 +40,7 @@
     { key: "unit", label: "단원별", view: "", url: "unit-past-exams.html?ready=1" },
     { key: "make", label: "만들기", view: "compose", url: "workspace.html?view=compose" },
     { key: "quick", label: "빠른평가", view: "five-minute", url: "workspace.html?view=five-minute" },
-    { key: "library", label: "보관함", view: "saved", url: "workspace.html?view=saved" },
+    { key: "library", label: "출제내역", view: "recent", url: "workspace.html?view=recent" },
   ];
   // 5분 테스트 / 소단원 평가 / 중단원 평가 / 종합평가 share the 빠른 평가 menu entry.
   const QUICK_VIEWS = ["five-minute", "subunit-test", "unit-test", "monthly-test", "diagnostic"];
@@ -165,11 +165,11 @@
     });
   }
 
-  // Two-way switch shown at the top of 보관함 and 출제 내역 (they share one menu entry).
+  // Two-way switch shown at the top of 출제 내역 and 보관함 (they share one menu entry, which opens 출제 내역 first).
   function libraryTabs(active) {
     const tab = (view, label) =>
       `<button type="button" data-view="${view}" aria-pressed="${view === active}">${label}</button>`;
-    return `<div class="view-switch" role="group" aria-label="보관함과 출제 내역">${tab("saved", "보관함")}${tab("recent", "출제 내역")}</div>`;
+    return `<div class="view-switch" role="group" aria-label="출제 내역과 보관함">${tab("recent", "출제 내역")}${tab("saved", "보관함")}</div>`;
   }
 
   function bind() {}

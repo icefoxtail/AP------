@@ -586,12 +586,12 @@ test('all changed browser scripts use new cache versions', () => {
   assert.match(html, /problem-bank-meta\.js\?v=20261029-s14-1/);
   assert.match(html, /archive2-source\.js\?v=20261119-verified-rename-1/);
   assert.match(html, /archive2-library\.js\?v=20261111-assign-2/);
-  assert.match(html, /archive2\.css\?v=20261120-h1-subjects-7/);
+  assert.match(html, /archive2\.css\?v=20261122-ui-quick-3/);
   assert.match(html, /archive2-derive\.js\?v=20261120-derive-ui-1/);
   assert.match(read('mixed_engine.html'), /archive2-derive-entry\.js\?v=20261120-derive-ui-1/);
   assert.match(html, /archive2-tokens\.css\?v=20261110-shell-1/);
   assert.match(html, /archive2-papers\.js\?v=20261110-teacher-copy-1/);
-  assert.match(html, /archive2-navigation\.js\?v=20261119-diagnostic-1/);
+  assert.match(html, /archive2-navigation\.js\?v=20261122-ui-quick-3/);
 });
 
 test('Finder, Recent, and Saved Paper view state survives route changes and reload URLs', () => {

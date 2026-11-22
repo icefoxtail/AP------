@@ -770,6 +770,12 @@
         applyFinderFilterChange("grade");
         render();
         document.querySelector(`[data-action="finder-grade"][data-grade="${grade}"]`)?.focus?.({ preventScroll: true });
+      } else if (a === "finder-subject") {
+        // The subject row under the grade buttons: same state and same effect as the 과목 select in the fold.
+        state.find.semanticSubject = b.dataset.subject || "";
+        applyFinderFilterChange("semanticSubject");
+        render();
+        document.querySelector(`[data-action="finder-subject"][data-subject="${b.dataset.subject || ""}"]`)?.focus?.({ preventScroll: true });
       } else if (a === "similar-list") {
         openSimilarList(state.catalog.exams[Number(b.dataset.exam)]);
       } else if (a === "finder-reset") {

@@ -181,9 +181,15 @@ function openAdminDiagnosticPanel() {
                 <span>진단평가 결과</span>
                 <button onclick="document.getElementById('apAdminDiagnosticModal')?.remove()" aria-label="닫기">✕</button>
             </div>
+            <div class="ap-diag-modal__guide">
+                <span>아카이브 빠른 평가에서 만든 진단평가의 결과표는 만든 화면의 "결과표 열기"에서 엽니다.</span>
+                <a href="../archive/workspace.html?view=diagnostic" target="_blank" rel="noopener">빠른 평가 열기</a>
+            </div>
             <div class="ap-diag-modal__list">${rows}</div>
         </div>
         <style>
+            #apAdminDiagnosticModal .ap-diag-modal__guide { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:6px 12px; padding:10px 18px; border-bottom:1px solid var(--border); font-size:12px; color:var(--secondary); }
+            #apAdminDiagnosticModal .ap-diag-modal__guide a { color:var(--text); font-weight:800; white-space:nowrap; }
             #apAdminDiagnosticModal { position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; }
             #apAdminDiagnosticModal .ap-diag-modal__backdrop { position:absolute; inset:0; background:rgba(0,0,0,.45); }
             #apAdminDiagnosticModal .ap-diag-modal__box { position:relative; background:var(--surface); border-radius:16px; width:min(560px,92vw); max-height:80vh; display:flex; flex-direction:column; box-shadow:0 8px 40px rgba(0,0,0,.18); }
