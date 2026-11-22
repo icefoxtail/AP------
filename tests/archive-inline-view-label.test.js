@@ -13,14 +13,16 @@ const protocol = fs.readFileSync(
 );
 
 test('view blocks are recognized only at a string or line boundary', () => {
-  assert.ok(
-    engine.includes('(^|(?:<br\\s*\\/?>\\s*)+)(?:\\[보기\\]|&lt;보기&gt;|<보기>'),
-    '보기 블록 정규화는 문자열 시작 또는 <br> 뒤에서만 시작해야 한다'
-  );
-  assert.ok(
-    !engine.includes('((?:<br\\s*\\/?>\\s*)*)(?:\\[보기\\]|&lt;보기&gt;|<보기>'),
-    '0개 줄바꿈을 허용하는 과거 정규식은 발문 중간을 오인한다'
-  );
+  // 구현 문자열이 아니라 동작을 본다: 줄 맨 앞의 [보기]는 박스가 되고, 발문 중간의 "[보기]에서"는 박스가 되지 않는다.
+  const vm = require('node:vm');
+  const context = { console };
+  vm.createContext(context);
+  vm.runInContext(engine, context, { filename: 'archive/render-text.js' });
+  const body = 'ㄱ. 첫째 설명이 충분히 길어서 박스가 되어야 한다고 생각한다 ㄴ. 둘째 설명도 충분히 길게 쓰는 것이 필요하다고 본다 ㄷ. 셋째 설명';
+  const boxed = context.APRenderText.normalizeViewBlocks('다음 물음에 답하시오.<br>[보기]<br>' + body);
+  assert.ok(boxed.includes('<div class="question-note-box"><b>[보기]</b>'), '줄 맨 앞 [보기]는 박스가 되어야 한다');
+  const inline = context.APRenderText.normalizeViewBlocks('다음 [보기]에서 옳은 것은? [보기] ' + body);
+  assert.ok(!inline.includes('<b>[보기]</b>'), '발문 중간의 [보기]를 박스 제목으로 승격하면 안 된다');
 });
 
 test('archive has no inline bracketed view labels', () => {

@@ -7,6 +7,8 @@ import { isDeepStrictEqual } from 'node:util';
 import { buildStudentSvgRefresh } from './lib/build-student-svg-refresh.mjs';
 import { buildSimilarLinks } from './lib/build-similar-links.mjs';
 import { loadSourceQualityHolds } from '../archive/tools/source-quality-holds.mjs';
+import { stampHtmlVersions, textDigest } from './lib/stamp-html-versions.mjs';
+import { PUBLIC_ASSETS } from './ci/student-portal-public-release.mjs';
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 // The compact mixed verification rows are decoded with the same function the browser and Worker loader use.
@@ -558,6 +560,46 @@ function materializeEntry(entry, targets) {
   return { ...entry, content, bytes: content.length, sourceBytes: entry.bytes };
 }
 
+// Cache-version stamping (manifest "versionStamp": true). Build output only: the source HTML keeps whatever ?v= a
+// person wrote. Pages whose published bytes are compared with the repository bytes by the public student verification
+// (tools/ci/student-portal-public-release.mjs PUBLIC_ASSETS: the student portal, planner, homework, playground
+// hubs, the wrong-note print page and both render engines) are never rewritten.
+export function versionStampExclusions() {
+  return new Set(PUBLIC_ASSETS.filter((item) => item.sourcePath.endsWith('.html')).map((item) => item.sourcePath));
+}
+
+export function stampPackageEntries(entries, manifest) {
+  if (manifest.versionStamp === undefined) return { pages: 0, references: 0, skippedBound: 0 };
+  if (manifest.versionStamp !== true) fail('versionStamp must be true when present');
+  const bound = versionStampExclusions();
+  const byPath = new Map(entries.map((entry) => [entry.path, entry]));
+  const digests = new Map();
+  const hashOf = (target, htmlPath, reference) => {
+    if (digests.has(target)) return digests.get(target);
+    const entry = byPath.get(target);
+    if (!entry) fail(`${htmlPath} references ${reference}, but ${target} is not in the Pages package`);
+    const digest = entry.content ? textDigest(entry.content.toString('utf8')) : textDigest(fs.readFileSync(entry.absolute, 'utf8'));
+    digests.set(target, digest);
+    return digest;
+  };
+  let pages = 0; let references = 0; let skippedBound = 0;
+  for (const entry of entries) {
+    if (!entry.path.endsWith('.html')) continue;
+    if (bound.has(entry.path)) { skippedBound += 1; continue; }
+    const text = entry.content ? entry.content.toString('utf8') : fs.readFileSync(entry.absolute, 'utf8');
+    const { text: stamped, refs } = stampHtmlVersions({ htmlPath: entry.path, text, hashOf });
+    if (!refs.length) continue;
+    const content = Buffer.from(stamped, 'utf8');
+    entry.sourceBytes = entry.bytes;
+    entry.content = content;
+    entry.bytes = content.length;
+    entry.transform = 'stamp-html-version';
+    entry.stampedReferences = refs.length;
+    pages += 1; references += refs.length;
+  }
+  return { pages, references, skippedBound };
+}
+
 async function sha256File(absolute) {
   const hash = crypto.createHash('sha256');
   await new Promise((resolve, reject) => {
@@ -644,6 +686,7 @@ export function planPagesSite({
     }
     entries.push(projection);
   }
+  const stamp = stampPackageEntries(entries, manifest);
   const unusedTarget = targets.find((item) => !item.used);
   if (unusedTarget) fail(`minifyJson entry matches no packaged JSON file: ${unusedTarget.path}${unusedTarget.tree ? '/' : ''}`);
   const totalBytes = entries.reduce((sum, entry) => sum + entry.bytes, 0);
@@ -657,6 +700,7 @@ export function planPagesSite({
     maxBytes,
     buildOnly: buildOnly.filter((item) => !selectedPaths.has(item.path)).sort((a, b) => a.path.localeCompare(b.path)),
     sizeSummary: summarizePackageSize(entries, maxBytes),
+    versionStamp: stamp,
   };
 }
 
@@ -681,7 +725,7 @@ export async function buildPagesSite({
     if (error.code !== 'ENOENT') throw error;
   }
   if (reportPath && isInside(output, path.resolve(reportPath))) fail('package report must be outside _site');
-  const { entries, totalBytes, maxBytes, buildOnly, sizeSummary } = planPagesSite({
+  const { entries, totalBytes, maxBytes, buildOnly, sizeSummary, versionStamp } = planPagesSite({
     sourceRoot: root, manifestPath, manifest: suppliedManifest,
   });
   if (totalBytes >= maxBytes) {
@@ -704,6 +748,7 @@ export async function buildPagesSite({
       sha256: entry.content ? crypto.createHash('sha256').update(entry.content).digest('hex') : await sha256File(entry.absolute),
       reasons: entry.reasons,
       ...(entry.studentSvgInputs ? { transform: 'student-svg-refresh' }
+        : entry.transform === 'stamp-html-version' ? { transform: 'stamp-html-version', sourceBytes: entry.sourceBytes, stampedReferences: entry.stampedReferences }
         : entry.similarLinkInputs ? { transform: 'similar-links' }
         : entry.content ? { transform: 'minify-json', sourceBytes: entry.sourceBytes } : {}),
     });
@@ -717,6 +762,7 @@ export async function buildPagesSite({
     totalMiB: Number((totalBytes / (1024 * 1024)).toFixed(2)),
     maxBytes,
     buildOnlyInputs: buildOnly,
+    versionStamp,
     minifiedFileCount: inventory.filter((item) => item.transform === 'minify-json').length,
     minifiedSavedBytes: inventory.reduce((sum, item) => sum + (item.transform === 'minify-json' ? item.sourceBytes - item.bytes : 0), 0),
     headroomBytes: sizeSummary.headroomBytes,
@@ -751,6 +797,8 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     console.log(formatPackageSummary(result));
     if (result.buildOnlyInputs.length)
       console.log(`Digest-verified but not shipped (no page fetches them): ${result.buildOnlyInputs.length} files, ${(result.buildOnlyInputs.reduce((sum, item) => sum + item.bytes, 0) / 1_000_000).toFixed(1)} MB.`);
+    if (result.versionStamp?.pages)
+      console.log(`Cache versions stamped: ${result.versionStamp.references} local script/style references in ${result.versionStamp.pages} pages (${result.versionStamp.skippedBound} byte-bound pages left as written).`);
     if (result.minifiedFileCount)
       console.log(`Compacted ${result.minifiedFileCount} runtime JSON files (whitespace only), saving ${(result.minifiedSavedBytes / 1_000_000).toFixed(1)} MB.`);
     // Early warning only (never a failure): the release is still valid, but the next large addition may not fit.

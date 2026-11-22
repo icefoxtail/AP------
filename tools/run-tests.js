@@ -35,6 +35,7 @@ function idleSuiteCommands() {
     'archive/tools/geometry-equation/ops/golden-gate/golden-gate.test.mjs',
     'archive/tools/geometry-equation/production/svg-accessibility-v1.test.mjs',
     'archive/tools/geometry-equation/tests/author-guide.test.mjs',
+    'archive/tools/geometry-equation/tests/author-guide-coverage.test.mjs', // python 의존성이 없으면 plan-lint 예제 검사만 NOT_RUN(skip)
     'archive/tools/geometry-equation/tests/condition-review-replay-invalidation.test.mjs',
     'archive/tools/geometry-equation/tests/discontinuous-pair.test.mjs',
     'archive/tools/geometry-equation/tests/graph-multi-curves-render-plan.test.mjs',
@@ -88,10 +89,14 @@ function runPlan({ root, plan }) {
   return result;
 }
 
+// 기본 제한 시간. 60초는 공용 러너 부하에서 출력 없이 시간 초과로 죽는 일이 반복돼(basic-scope-rebind·reviewed-source-candidate)
+// 3분으로 넓힌다. 무한 대기만 막으면 되므로 정상 실행 시간에는 영향이 없다.
+const DEFAULT_TEST_TIMEOUT_MS = 180000;
+const REQUIRED_COMMAND_TIMEOUT_MS = DEFAULT_TEST_TIMEOUT_MS;
 // These complete suites exceed the old 60-second child limit.
 // Keep a finite per-command limit in both the full and scoped runners.
 const jsTestTimeout = file => file === 'archive2-compose-scope.test.js' || file === 'archive2-draft-rows.test.js' ? 180000
-  : file === 'meta-foundation-middle-geometry-runtime.test.js' ? 300000 : 60000;
+  : file === 'meta-foundation-middle-geometry-runtime.test.js' ? 300000 : DEFAULT_TEST_TIMEOUT_MS;
 
 // Keep the SVG semantic regression outside the legacy CommonJS-only glob.
 // CI invokes this runner, so both the verifier syntax gate and its ESM test
@@ -737,6 +742,16 @@ const requiredCommands = [
   {
     label: 'tests/recapture-approved-renders.test.mjs',
     args: ['--test', 'tests/recapture-approved-renders.test.mjs']
+  },
+  {
+    label: 'tests/archive-pages-version-stamp.test.mjs',
+    args: ['--test', 'tests/archive-pages-version-stamp.test.mjs']
+  },
+  {
+    // Plans the real Pages package (selection and hashing, nothing written): the PR-time dry-run of the release build.
+    label: 'tests/archive-pages-version-stamp-real.test.mjs',
+    args: ['--test', 'tests/archive-pages-version-stamp-real.test.mjs'],
+    timeout: 300000
   }
 ];
 
@@ -812,7 +827,7 @@ if (args.length) {
   const availableCommands = [
     ...tests.map(file => ({ label: `tests/${file}`, args: [`tests/${file}`],
       timeout: jsTestTimeout(file) })),
-    ...requiredCommands.map(command => ({ ...command, timeout: command.timeout ?? 60000 })),
+    ...requiredCommands.map(command => ({ ...command, timeout: command.timeout ?? REQUIRED_COMMAND_TIMEOUT_MS })),
   ];
   assembleQuestionMetadata();
   const onResult = summary => writeShardResult({ mode: 'scoped', ...summary });
@@ -838,6 +853,7 @@ const outputGuard = createOutputGuard({
     'archive/data/archive2-canonical-input-manifest.json',
     'archive/data/archive2-canonical-input-manifest.compact.json',
     'archive/data/archive2-catalog.json',
+    'archive/data/archive2-catalog-evidence.json',
     'archive/data/archive2-item-review-overrides.json',
     'archive/data/archive2-source-verification-index.json',
     'archive/data/archive2-source-verification-index-v2.json',
@@ -876,7 +892,7 @@ const fullPlan = [
     failedName: command.label,
     shownName: command.label,
     args: command.args,
-    timeout: command.timeout ?? 60000,
+    timeout: command.timeout ?? REQUIRED_COMMAND_TIMEOUT_MS,
     files: command.args.includes('--check') ? [] : command.args.filter(arg => /\.(?:js|mjs|cjs)$/.test(arg)),
     quarantined: false
   }))

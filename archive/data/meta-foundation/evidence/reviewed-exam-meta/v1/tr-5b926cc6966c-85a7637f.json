@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-5b926cc6966c-85a7637f",
+  "requestSha256": "be533f6f13b3729072630ecfb2aad6129ae461cbc4bd0b37792a32411bd0d8aa",
+  "examUid": "22_팔마고_1학기_중간_고1_기출",
+  "sourceArchiveFile": "original/high/h1/1mid/22_팔마고_1학기_중간_고1_기출.js",
+  "sourceBlobSha1": "525949e6f5eee9ab9f578cef7296969ba193dbb9",
+  "sourceRawSha256": "45c26f068ee92ebd7ae9e19a31c9400c355fb7309e7d63ed412e43c3e382f305",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-5b926cc6966c-85a7637f.type-ledger.json",
+        "sha256": "6f4ddd9ebb106366850586dea216f947f9bfa8cfa41a550c47ee507259e6e905"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 2,
+  "registryChanges": [],
+  "typeApprovals": 2,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 2
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_e80d2d18c44129e52d3ebc7d47cba09825d3565355120e1c22efd02d3d2cf3dc",
+      "sourceArchiveFile": "original/high/h1/1mid/22_팔마고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 17,
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-5b926cc6966c-85a7637f",
+        "judge": "dots",
+        "rationale": "꼭짓점형에서 축까지 거리를 비교하고 길이 1인 구간 양끝의 최대값을 최소화한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학(상)",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "de038a560cba9acf7a57d5a2ac6253989138a485f5f1efcc7a249bba84181b4f",
+        "judgedContentFingerprint": "f100bc0d62a2abde5db4a58dc0ba8db2c4f3d77bd05f4e01d9ee9d844e1b4ece",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "7034f18a61f2673dc6c60b46503a823c225975a8706e7528e6ff8eef7f364a86",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-5b926cc6966c-85a7637f.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+          "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+          "matchesRegistered": true
+        },
+        "priorType": {
+          "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+          "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_7c81095e70639770de10d2fb8df925b3e93890f2525e191e481bf4b75ecafb24",
+      "sourceArchiveFile": "original/high/h1/1mid/22_팔마고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 21,
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-5b926cc6966c-85a7637f",
+        "judge": "dots",
+        "rationale": "변 길이 다항식을 c(a+b)(a²+b²-c²)로 인수분해해 직각삼각형의 넓이를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학(상)",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "ae363086a5e19a97774255627cf4855dc9d65ad89c89ebe27158296bc48197b7",
+        "judgedContentFingerprint": "df859d0c3c46a54f83625484f3e3cfbaefc97cf1cfec2de85348d33bfb6e210e",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "8b8fdcf3588ba3c74c0e3f0a5f0f3014cc459f8e22abde0c4c41863a28398362",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-5b926cc6966c-85a7637f.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+          "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+          "matchesRegistered": true
+        },
+        "priorType": {
+          "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+          "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 2,
+  "expectedQuestionCount": 22
+}

@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-49f1b8f4ef6b-78ea3ba4",
+  "requestSha256": "40ca32cd71822ab634e81c751f930cd3e86f6fb8dc640240ec18ffeb97e78a95",
+  "examUid": "미래엔_대수_지수함수와로그함수_대단원마무리_고2",
+  "sourceArchiveFile": "textbooks/미래엔_대수/미래엔_대수_지수함수와로그함수_대단원마무리_고2/미래엔_대수_지수함수와로그함수_대단원마무리_고2.js",
+  "sourceBlobSha1": "c1b67b209e7165897472c5778aad2ae6cd63a33f",
+  "sourceRawSha256": "afe126c84e54bcf7b494b2e429524e442137d1e705e1b2f075ac8df8b029c020",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-u-20261122",
+      "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-49f1b8f4ef6b-78ea3ba4.type-ledger.json",
+        "sha256": "353ea751fbfac4c649ba551e2d04ec19db90519ab9b5ce6cd968f57ed03f3892"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_ba15e3835fd722479d80b7d9ff2fc38fc4bb8d8e58d56f1719568d0c5deb8351",
+      "sourceArchiveFile": "textbooks/미래엔_대수/미래엔_대수_지수함수와로그함수_대단원마무리_고2/미래엔_대수_지수함수와로그함수_대단원마무리_고2.js",
+      "sourceOrdinal": 10,
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-49f1b8f4ef6b-78ea3ba4",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "지수 1-x 때문에 이 함수는 x가 커질수록 증가함을 이용해 정의역 끝점 x=3에서의 최댓값을 -5와 같게 놓고 상수 a를 구한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "대수",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "10b24102dadcd52526f6e37221b57fc5c0c644e4e3870ec895a9cdd70847cf43",
+        "judgedContentFingerprint": "8df8dfc287feb44303be054714a7d52f3bf948d6bb0a2894f28ca49456c62655",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "677e7bbed8261bde6dad4248e3d1621ab6563b9ec996f9588f699143508c31f5",
+        "resultSource": {
+          "branch": "data/type-judgment-u-20261122",
+          "commit": "4587587b2a3c12c4453f3c57220b754ec7e50e85",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-u/unitless75.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-49f1b8f4ef6b-78ea3ba4.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 19
+}

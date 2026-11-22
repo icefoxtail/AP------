@@ -1,0 +1,560 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-7efc2f3e0a4b-772cbe82",
+  "requestSha256": "afb11d7b33189c61393766350e805250ed01d3ed651c9033943cb7fcdc826663",
+  "examUid": "중1_2_기말대비1_입체도형_통계",
+  "sourceArchiveFile": "types/middle/m1/중1_2_기말대비1_입체도형_통계.js",
+  "sourceBlobSha1": "464350e78fd7a15b236911f3122483a27f7e9d7b",
+  "sourceRawSha256": "b8effbd297b5600a27fe178b771b49802abad50fba08a1d66aa950e1f9ec7d88",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-w-20261122",
+      "commit": "4111b9298564d9e7095216194d47737640427bfe",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.type-ledger.json",
+        "sha256": "a999648944ba5f4a8c8b5ebd566692dde8b7640495942e7070b0d4a9f4104ef2"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 11,
+  "registryChanges": [],
+  "typeApprovals": 11,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 3,
+    "content": 0,
+    "stale": 8
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_4dc98ebf09e00e6a2d062b5cede989776b5db3edc5178327fcfc85fea253a6ad",
+      "sourceArchiveFile": "types/middle/m1/중1_2_기말대비1_입체도형_통계.js",
+      "sourceOrdinal": 3,
+      "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+      "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_COUNTS",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-7efc2f3e0a4b-772cbe82",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "정다면체별 면·모서리·꼭짓점 개수 관계로 표의 빈칸 값이 옳은지 대조한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request",
+          "rowCourse": "중1",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "280157bf5b064e08482f4e80bac594fd1725cdbb4780f9d6964ad29734e085a7",
+        "judgedContentFingerprint": "912de6550c8cdbd0931566068bdd59a66ce25b85f549e7f41def33991d01a994",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "a1ba109ec3d2b65dcec33210c4150f3be7efc87e5981976f357c923f8dc30035",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_9c9bc0e98fa0d68bf164730c87d189ae83ab1ccb6d1e7c9841385a5b4efe14de",
+      "sourceArchiveFile": "types/middle/m1/중1_2_기말대비1_입체도형_통계.js",
+      "sourceOrdinal": 4,
+      "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+      "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-7efc2f3e0a4b-772cbe82",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "전개도에서 정팔면체를 식별해 면의 모양과 한 꼭짓점에 모이는 면의 수를 보기별로 판단한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request",
+          "rowCourse": "중1",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "915f15516fb5cd2ad853e706c31b61ef7c0841dab940c9633a64aa0bc50f74a5",
+        "judgedContentFingerprint": "2d0c8a23d4540b0f1750dc6739a719a0c0088f31bd402c186f98b6e875e1c9e9",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "1b90e220e3cdacef698dc443f4d652ef3e50f22174fc8d33425eb407b897dd4b",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_0708194c6af0daa501b86575ca3438936ab856d7da58a8d4d7f795738f23c053",
+      "sourceArchiveFile": "types/middle/m1/중1_2_기말대비1_입체도형_통계.js",
+      "sourceOrdinal": 5,
+      "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-7efc2f3e0a4b-772cbe82",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "그림의 회전체를 보고 입체의 종류를 판별하고 모선을 가리키는 기호를 찾는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request",
+          "rowCourse": "중1",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "b267700274b28bc8d4668893bf69b17962ff693c001620d2ddcc198466f60e21",
+        "judgedContentFingerprint": "6bcd16f9fb5fac2ea303ce57e87953a9b7d953cc8bd31d4ca2b226812d32be2a",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "d0c5538c7513714df7e4c8a97d334e9e71abea4ab6001022349ce9735fc8d3de",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_9438740245cd10b1963e068984b09dd68a5b0a8f5f3d10ef2d826eb25f3aae09",
+      "sourceArchiveFile": "types/middle/m1/중1_2_기말대비1_입체도형_통계.js",
+      "sourceOrdinal": 7,
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-7efc2f3e0a4b-772cbe82",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "원뿔 전개도에서 밑면의 원주가 부채꼴 호 BC의 길이와 같음을 연결한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request",
+          "rowCourse": "중1",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "79544eab3f86f4842359a4751fe327c73fd5da8f076ed09a684fb04a37e7a040",
+        "judgedContentFingerprint": "dde820720422a9a5e7849f0d99512dad3b4243c35e37f77f9c94bef9abab8d63",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "f281f4d3eb28513ca8578e65a222215195b6a83ed721cddce9762ecb6d0abfc1",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_c0880a1ee21aab9de11c2c3ca6f0aa4e9383763765fe93c136398760cbb469bd",
+      "sourceArchiveFile": "types/middle/m1/중1_2_기말대비1_입체도형_통계.js",
+      "sourceOrdinal": 8,
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-7efc2f3e0a4b-772cbe82",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "정육면체를 잘라 만든 입체의 각 면(밑면·옆면·사다리꼴 단면)의 넓이를 모두 합해 겉넓이를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request",
+          "rowCourse": "중1",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "529f06017d2692cebf4518f1d5afef7e1e6dc3c21d8e8c6135d1550c71b4e7c7",
+        "judgedContentFingerprint": "3c7be4874311cfa8809278920bb6f4fc31a835ff1bb4639c835a524b95c640aa",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "de3b99f249ed40ffe1f10cdefa7a055b8d8b96ce63fd32d29736bea3ef6ae802",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_bf0285a6b498d6287566f9fd5e896790d7803b9f3e74ba6a4b28cc8f74137816",
+      "sourceArchiveFile": "types/middle/m1/중1_2_기말대비1_입체도형_통계.js",
+      "sourceOrdinal": 10,
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-7efc2f3e0a4b-772cbe82",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "큰 원기둥의 부피에서 안쪽 작은 원기둥의 부피를 빼서 회전체의 부피를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request",
+          "rowCourse": "중1",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "29ee43d47a376cfd7e72cfce8f0047115d4c741b4f4ac7d3de82b2873909da3d",
+        "judgedContentFingerprint": "b37018ad9b0fa78f974efd82c3de49466a9f6733090f7ec063ac35c1f06e0b56",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "ab678dd2ee3e56f1a170db0848218515982813fc4c65d7ad6e70ff1b0633192d",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_8f165050dad54ebafcc3a9cd00bdcdd4cfa72d01b196e48012feec37bbac2091",
+      "sourceArchiveFile": "types/middle/m1/중1_2_기말대비1_입체도형_통계.js",
+      "sourceOrdinal": 13,
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-7efc2f3e0a4b-772cbe82",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "큰 원뿔의 부피에서 작은 원뿔의 부피를 빼서 회전체의 부피를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request",
+          "rowCourse": "중1",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "31b89ebc0704fc00530f4235a008046d78f92f73c459e8d654fff3cf2367b889",
+        "judgedContentFingerprint": "602fbf36d626377137b2b4e3cb376d627d4bae8e1606f80b547b40b948291e62",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "6a352a86ea6defe0c78de05539d6e7d853ce47d75a43072751583d8a240721f2",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_3b43b89aaf3395524fea5598a11d8d891cf5cfe26bb1bc2aab7b473450adde2d",
+      "sourceArchiveFile": "types/middle/m1/중1_2_기말대비1_입체도형_통계.js",
+      "sourceOrdinal": 22,
+      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-7efc2f3e0a4b-772cbe82",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "계급의 도수를 총도수로 나눈 상대도수를 두 집단에서 비교한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request",
+          "rowCourse": "중1",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "62f4399f3a113319b64c58dcc4cf74b0bc13d0c426f24e87b3b35da4698bd17c",
+        "judgedContentFingerprint": "2f219febe19affba335ffc8844b75c90f57fd96c11590641d6b00fe2ea7b247d",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "3569a4a0e14b9da3426b987fbf27fbebb84eeb064b5fb3c62c394e6248f4dd4b",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_b2c990059f5de79dec1327e716be6113b7eefd919d2b2240cf4d635c84a03311",
+      "sourceArchiveFile": "types/middle/m1/중1_2_기말대비1_입체도형_통계.js",
+      "sourceOrdinal": 23,
+      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-7efc2f3e0a4b-772cbe82",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "상대도수의 합이 1임을 이용해 빠진 계급의 상대도수와 학생 수를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request",
+          "rowCourse": "중1",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "69d5a2e5002d465e30e377c923bd38520d43dc84d21f547b3a99eedc21075f13",
+        "judgedContentFingerprint": "18cb76cb22c1df58d49defbb17e3efcad76564ffaf984d339e7dadce1ee0c90a",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "2e57c14bcde8d9b0a5388cce80034f42f9f44d10858b5e2b33c8a4788771f24e",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_73a94e59b064c99ef93a03179312d53bbf3cf1d7cb112c714c344736bbfa48d3",
+      "sourceArchiveFile": "types/middle/m1/중1_2_기말대비1_입체도형_통계.js",
+      "sourceOrdinal": 24,
+      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-7efc2f3e0a4b-772cbe82",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "상대도수=도수/전체로 전체 학생 수를 구해 빠진 계급의 상대도수와 학생 수를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request",
+          "rowCourse": "중1",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "13835cc2842bed3e4a12c3e103714744362fdb1da33daf1f6b09bb4c85b89935",
+        "judgedContentFingerprint": "4ee1449cd18087e6c642a2b21f7ac6662436a6abc5c3d0086e1fe160a9aefc0e",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "4691ddc0447459602d61635cc838c44f28760c4b814e8822504354fe0bc4a1c5",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_671bdb68cbe7a18515c3844c49d6e49881c0d744f9364909f5402a39820a1b2b",
+      "sourceArchiveFile": "types/middle/m1/중1_2_기말대비1_입체도형_통계.js",
+      "sourceOrdinal": 25,
+      "problemTypeKey": "PT_M1_FREQUENCY",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-7efc2f3e0a4b-772cbe82",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "상대도수 분포 그래프에서 계급별 상대도수·총합·넓이 관계를 읽어 보기의 참거짓을 판단한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request",
+          "rowCourse": "중1",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "dcebb9d71c0fbf0307171f8abe57166b6cb1c49ce9bc4a6d3bc43a534ffa2139",
+        "judgedContentFingerprint": "d5d3dc77aa6e42a97f25812c99b3a4e91bec366684939a3f429a1ec9a3dbb834",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "34461f3252c75e0738d39c35e06a79826838527044dabf6f8e9a8104fe143452",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7efc2f3e0a4b-772cbe82.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 11,
+  "expectedQuestionCount": 25
+}

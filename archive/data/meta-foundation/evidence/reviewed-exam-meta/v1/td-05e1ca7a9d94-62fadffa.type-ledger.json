@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-05e1ca7a9d94-62fadffa",
+  "sourceArchiveFile": "types/middle/m1/중1_중간대비_1단원_자연수의성질.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-w-20261122",
+    "commit": "4111b9298564d9e7095216194d47737640427bfe",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_6833e342770d3e0ea9e612f934642c1b8d005d9ee035fb812956099f063cd72e",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_PRIME_FACTOR",
+      "templateKey": null,
+      "step": "135를 소인수분해해 3의 지수와 남은 소인수를 읽는다.",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 자연수를 소인수분해하고 지수 관계를 읽는 정의와 일치한다.",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_aafa4c41093f97d4f1e713a1cbd627e06c1bbfe528f87e997bb02d26739d8889",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_GCD_LCM",
+      "templateKey": null,
+      "step": "두 수의 곱이 최대공약수와 최소공배수의 곱과 같음을 이용해 A를 구한다.",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 두 수의 곱 관계로 미지수를 구하는 PT 정의와 일치한다(지수 조건 PT는 아님).",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bfd4dfb84260411bb2cc48ac962a2f5ee7c1fbf6debdd7aa93ec1931a29859bd",
+      "sourceOrdinal": 29,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M1_GCD_LCM",
+      "templateKey": null,
+      "step": "공약수는 각 수와 그 최소공배수도 나누므로③도 참이고⑤도 참이다.",
+      "note": "제안: 약수·배수·서로소 성질 판별. 정의: 정의와 반례로 공약수·공배수·서로소 진술의 참거짓을 판단한다. 원문 의심: 제시 정답의 유일성 또는 최솟값이 실제 조건과 불일치. 검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl",
+      "stemChangedSinceJudgment": true
+    },
+    {
+      "questionUid": "qid_v1_14cf37bc446f98a55411793bfa71e16ea80ee41e1c729d65fbfcb5fe5110f76e",
+      "sourceOrdinal": 59,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+      "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_PARAMETER_RECOVERY",
+      "step": "소인수별로 최대공약수는 작은 지수, 최소공배수는 큰 지수라는 조건으로 a, b, c를 구한다.",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): gcd 최소 지수와 lcm 최대 지수를 함께 써서 미지 지수와 소인수를 복원하는 유형이다.",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c9b125487698a63a675f347c0c7c915acdb47756a2aa857ecb1cda39cec0bc12",
+      "sourceOrdinal": 69,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M1_GCD_LCM",
+      "templateKey": null,
+      "step": "합성수4와9는 서로소라②가 거짓이고 같은 소수2와2를 허용하면①도 거짓이다.",
+      "note": "제안: 약수·배수·서로소 성질 판별. 정의: 정의와 반례로 공약수·공배수·서로소 진술의 참거짓을 판단한다. 원문 의심: 제시 정답의 유일성 또는 최솟값이 실제 조건과 불일치. 검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl",
+      "stemChangedSinceJudgment": true
+    }
+  ]
+}

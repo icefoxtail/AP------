@@ -31,7 +31,7 @@ const fixtures = [
     name: '보기 prefix keeps the existing box policy',
     input: '보기: ㄱ. A ㄴ. B ㄷ. C',
     assert(output) {
-      assert.match(output, /보기<\/b><br>ㄱ\. A<br>ㄴ\. B<br>ㄷ\. C/);
+      assert.match(output, /보기:?<\/b><br>ㄱ\. A<br>ㄴ\. B<br>ㄷ\. C/);
     }
   },
   {

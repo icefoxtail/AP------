@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-352eb6d0beed-99d2f36d",
+  "sourceArchiveFile": "original/high/h2/2mid/15_강남여고_2학기_중간_고2_기하와벡터_기출.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-w-20261122",
+    "commit": "4111b9298564d9e7095216194d47737640427bfe",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_402cbaf9e4eee2d801efa28d190d2519f161ef414ca5b1f14f8d1141f35a0be9",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "templateKey": null,
+      "step": "음함수 관계식의 양변을 x로 미분해 dy/dx에 대해 정리한다.",
+      "note": "새 키 제안 줄을 기존 키 재사용으로 재판정 2026-11-22",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1786ee31c996bda90eabecebc0f5e62b9d1ff7603ee057dbeb09108fcfcab666",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "templateKey": null,
+      "step": "dx/dt, dy/dt를 구해 dy/dx=(dy/dt)/(dx/dt)로 정리한다.",
+      "note": "새 키 제안 줄을 기존 키 재사용으로 재판정 2026-11-22",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8393e5d1ba1c78ff3452cccff659766f8705dfbb3bc30714746335c2a800a9eb",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "templateKey": null,
+      "step": "dy/dx=(dy/dt)/(dx/dt)로 매개변수 미분을 한 뒤 t→1의 극한을 구한다.",
+      "note": "새 키 제안 줄을 기존 키 재사용으로 재판정 2026-11-22",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    }
+  ]
+}

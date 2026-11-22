@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-53aff254cb42-a3ff82d9",
+  "requestSha256": "1e4bce07264335890d18586c289c4f478236a40b02f2145f3dd5aa243cbf52e5",
+  "examUid": "23_순천고_1학기_중간_고2_수학I",
+  "sourceArchiveFile": "original/high/h2/1mid/23_순천고_1학기_중간_고2_수학I.js",
+  "sourceBlobSha1": "545a0258e842e0bf3964c4db1331fd59a7a992a3",
+  "sourceRawSha256": "0b8db08d187dbcbb743bb1189d130e032c0baae3045705535eaa77b8f4e914c9",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-53aff254cb42-a3ff82d9.type-ledger.json",
+        "sha256": "8db7300c9880e0bd854793bbf021272da79fda69aa4107a156fb33d744e32bb4"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_6c157d34e00a90d0dd2498c5b8eb684c411f997ec486cadb5871d5b6e6c89bf8",
+      "sourceArchiveFile": "original/high/h2/1mid/23_순천고_1학기_중간_고2_수학I.js",
+      "sourceOrdinal": 7,
+      "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+      "templateKey": "TPL_H22A_01_ROOT_REAL_068",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-53aff254cb42-a3ff82d9",
+        "judge": "dots",
+        "rationale": "거듭제곱근의 실수·복소수 범위를 구별하고 피제곱수 부호와 차수로 근의 진술을 판정한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "대수",
+          "curriculumSource": "row",
+          "rowCourse": "수학I",
+          "courseRelation": "successor"
+        },
+        "judgedSourceFingerprint": "48677cc89fc9292a3ba0ba3e81fae930c37f96d61512f4811f09dbe0d19ad5b5",
+        "judgedContentFingerprint": "bbc8231fcf4ee9291440f10add261d048e0ec488f38e7c8c531d31c4ce2daa59",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "938455530724869e291d58d34e4dc90b2c2d99a41e59b262a027ff676d1bc625",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-53aff254cb42-a3ff82d9.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 22
+}

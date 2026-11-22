@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-aafe5991c4b0-d22cccc9",
+  "requestSha256": "8f38ee2debacafbf23e67a46d419b91088c81f18beb6386fe5cbc5da719fb739",
+  "examUid": "19_매산여고_1학기_기말_고2_수학I",
+  "sourceArchiveFile": "original/high/h2/1final/19_매산여고_1학기_기말_고2_수학I.js",
+  "sourceBlobSha1": "d0a9ced3b32ee06e46669070bc2deeb317b610c6",
+  "sourceRawSha256": "2d636150ec81f69686f24c081dcb5bdb7e0696d2666b44b492a66f6dde2dea19",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-aafe5991c4b0-d22cccc9.type-ledger.json",
+        "sha256": "0c545553f193a1b0a60f4edd3728a6f3d1c0f030bbc28f103c3889667bdac710"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_8c08e65f0ba9643284991805f121e867739b8d731b5b9b7f04d083182d352b7a",
+      "sourceArchiveFile": "original/high/h2/1final/19_매산여고_1학기_기말_고2_수학I.js",
+      "sourceOrdinal": 16,
+      "problemTypeKey": "PT_H22A_08_MATHEMATICAL_INDUCTION",
+      "templateKey": "TPL_H22A_08_MATHEMATICAL_INDUCTION_132",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-aafe5991c4b0-d22cccc9",
+        "judge": "dots",
+        "rationale": "귀납가정에3을 곱한 하한6k²+6k+6과 n=k+1의 목표식을 비교하여 잘못된 (마)를 판별.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학I",
+          "curriculumSource": "row",
+          "rowCourse": "대수",
+          "courseRelation": "successor"
+        },
+        "judgedSourceFingerprint": "2d24145496432d8e448babffa1d8e9236bba9218d7e3c3e5ba7c47a356e320b2",
+        "judgedContentFingerprint": "e5bf9971f03f17af3e2b129c39bc5a024fe1940435652c5fbe01052286763b02",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "2e6460d39d3f55a2a23c3ad17aa8358e41783b758a99ba1385fc8a03c6816d57",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-aafe5991c4b0-d22cccc9.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 22
+}

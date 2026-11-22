@@ -8,7 +8,8 @@ const core = require('../archive/archive2-core.js');
 const root = path.resolve(__dirname, '..');
 const source = 'similar/high/h1/2final/25_팔마고_2학기_기말_고1_유사.js';
 const ledger = JSON.parse(fs.readFileSync(path.join(root, 'archive/data/legacy-similar-reviewed/25_팔마고_2학기_기말_고1_유사.review.json'), 'utf8'));
-const catalog = core.decodeCatalog(JSON.parse(fs.readFileSync(path.join(root, 'archive/data/archive2-catalog.json'), 'utf8')));
+// complete rows: metadataAssignmentEvidence is in the evidence file, not the downloaded catalog
+const catalog = require('../archive/tools/archive2-catalog-evidence.cjs').readCatalog({ root });
 const identity = JSON.parse(fs.readFileSync(path.join(root, 'archive/data/question_identity_map.json'), 'utf8'));
 const metadata = JSON.parse(fs.readFileSync(path.join(root, 'archive/data/question_metadata.json'), 'utf8'));
 const parentLinks = JSON.parse(fs.readFileSync(path.join(root, 'archive/data/basic-scope-parent-links.json'), 'utf8'));

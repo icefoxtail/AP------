@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-0b40eb67fe28-030ce4ba",
+  "sourceArchiveFile": "types/high/h1/항등식과나머지정리_고1_유형.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-w-20261122",
+    "commit": "4111b9298564d9e7095216194d47737640427bfe",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_4692b7ad2dab91469c1e1c6be95c11e46d536cec1dcc91e4bd8440b194f2f8cd",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "step": "f(x²)을 x+2로 나눈 나머지에서 x=-2를 대입해 f(4)=-18을 얻고 f의 식을 결정",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 나머지정리 대입으로 값·계수 결정",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2d65c60c6068a93c5d2f01b18389ec824964cb8ac2070c4de427f1115e0a0829",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": null,
+      "step": "f=(x²+1)(ax+b)+x+1로 몫·나머지 항등식을 세우고 f(0), f(1)=0으로 a,b 결정",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 다항식 나눗셈의 몫·나머지 항등식 설정",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6e7c31ebe1cb39c0b34c12055758c03835eaeeb3ac5a9ec11cdc21165d771cd3",
+      "sourceOrdinal": 28,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": null,
+      "step": "각 나머지식에서 f(2), f(3)을 구한 뒤 (x-2)(x-3)으로 나눈 나머지 ax+b를 결정",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 나머지정리를 확장해 이차식 나눗셈의 나머지 결정",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    }
+  ]
+}

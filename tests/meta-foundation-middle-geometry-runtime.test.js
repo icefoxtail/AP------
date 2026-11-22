@@ -23,7 +23,8 @@ const root = path.resolve(__dirname, "..");
 const readJson = (relative) => JSON.parse(fs.readFileSync(path.join(root, relative), "utf8"));
 const sourceKey = (file, ordinal) => Archive2Core.normalizeFile(file) + "#" + Number(ordinal);
 const runtimePath = "archive/data/meta-foundation/runtime/middle-geometry-v1.json";
-const catalog = Archive2Core.decodeCatalog(readJson("archive/data/archive2-catalog.json"));
+// complete rows: approvedSourceFingerprint and the evidence columns are in the evidence file, not the downloaded catalog
+const catalog = require("../archive/tools/archive2-catalog-evidence.cjs").readCatalog({ root });
 const bridge = fs.readFileSync(path.join(root, "archive/meta-foundation-runtime.js"), "utf8");
 assert(bridge.includes("data/meta-foundation/runtime/middle-geometry-v1.json"));
 assert(bridge.includes("Canonical.resolveCatalog"));
