@@ -379,7 +379,7 @@ window.questionBank = [
       "$130$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 행렬을 단위행렬과 제곱하면 $O$인 행렬의 합으로 나타낸다.\n1단계: $A=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}=I+N$, $N=\\begin{pmatrix}0&2\\\\0&0\\end{pmatrix}$이고 $N^2=O$이다.\n2단계: 따라서 $A^7=(I+N)^7=I+7N=\\begin{pmatrix}1&14\\\\0&1\\end{pmatrix}$이다.\n3단계: 성분의 합은 $1+14+0+1=16$이다.\n∴ 정답: ①",
+    "solution": "주어진 성분을 계산하면\n\n$$\nA=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}\n$$\n\n이다. 먼저 실제로 곱해 본다.\n\n$$\n\\begin{aligned}\nA^2&=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}\\\\\n&=\\begin{pmatrix}1\\cdot1+2\\cdot0&1\\cdot2+2\\cdot1\\\\0\\cdot1+1\\cdot0&0\\cdot2+1\\cdot1\\end{pmatrix}\\\\\n&=\\begin{pmatrix}1&4\\\\0&1\\end{pmatrix},\\\\\nA^3&=\\begin{pmatrix}1&4\\\\0&1\\end{pmatrix}\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}\\\\\n&=\\begin{pmatrix}1&6\\\\0&1\\end{pmatrix}.\n\\end{aligned}\n$$\n\n제곱할 때마다 오른쪽 위 성분이 2씩 커진다. 오른쪽 위가 $2k$일 때에도 $A$를 한 번 곱하면\n\n$$\n\\begin{aligned}\n\\begin{pmatrix}1&2k\\\\0&1\\end{pmatrix}A\n&=\\begin{pmatrix}1&2k\\\\0&1\\end{pmatrix}\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}\\\\\n&=\\begin{pmatrix}1\\cdot1+2k\\cdot0&1\\cdot2+2k\\cdot1\\\\0\\cdot1+1\\cdot0&0\\cdot2+1\\cdot1\\end{pmatrix}\\\\\n&=\\begin{pmatrix}1&2+2k\\\\0&1\\end{pmatrix}\\\\\n&=\\begin{pmatrix}1&2(k+1)\\\\0&1\\end{pmatrix}.\n\\end{aligned}\n$$\n\n따라서 처음 $A$의 오른쪽 위 성분 $2$에서 곱할 때마다 2씩 증가하므로\n\n$$\nA^7=\\begin{pmatrix}1&2\\cdot7\\\\0&1\\end{pmatrix}=\\begin{pmatrix}1&14\\\\0&1\\end{pmatrix}\n$$\n\n이다. 모든 성분의 합은\n\n$$1+14+0+1=16$$\n\n이므로 정답은 ①이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬과 그 연산 핵심 개념",
     "subUnitConfidence": "rule_inferred",

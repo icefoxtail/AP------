@@ -447,7 +447,7 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트]\n먼저 연립부등식의 해를 구하고, 그 해가 두 번째 부등식을 만족하도록 $m$의 조건을 찾는다.\n\n풀이 과정\n첫 번째 부등식 $2x+5\\ge-1-x$를 풀면\n$3x\\ge-6$이므로 $x\\ge-2$이다.\n두 번째 부등식은\n$x^2+4x+3<0$\n$(x+1)(x+3)<0$이므로\n$-3<x<-1$이다.\n따라서 연립부등식의 해는\n$-2\\le x<-1$이다.\n이 범위의 정수는 $x=-2$뿐이다.\n따라서 $x=-2$가 $x^2+(m-2)x-2m<0$을 만족하면 된다.\n대입하면\n$(-2)^2+(m-2)(-2)-2m<0$\n$4-2m+4-2m<0$\n$8-4m<0$이다.\n따라서 $m>2$이고, 정수 $m$의 최솟값은 $3$이다.\n\n결론\n따라서 정답은 ⑤이다.",
+    "solution": "먼저 연립부등식을 푼다.\n\\[\n\\begin{aligned}\n2x+5&\\ge-1-x\\\\\n3x&\\ge-6\\\\\nx&\\ge-2.\n\\end{aligned}\n\\]\n또\n\\[\n\\begin{aligned}\nx^2+4x+3&<0\\\\\n(x+1)(x+3)&<0\\\\\n-3&<x<-1.\n\\end{aligned}\n\\]\n따라서 두 부등식을 동시에 만족시키는 모든 실수는\n\\[\n\\boxed{-2\\le x<-1}\n\\]\n이다.\n\n문제는 이 범위의 정수만이 아니라 모든 실수 $x$가 다음 부등식도 만족해야 한다는 뜻이다.\n\\[\n\\begin{aligned}\nx^2+(m-2)x-2m&<0\\\\\n(x-2)(x+m)&<0.\n\\end{aligned}\n\\]\n\n$-2\\le x<-1$이면 언제나 $x-2<0$이므로, 곱이 음수가 되려면\n\\[\nx+m>0\n\\]\n이어야 한다. 이 구간에서 가장 작은 $x$는 $-2$이므로 모든 $x$에 대해 성립하려면\n\\[\n\\begin{aligned}\n-2+m&>0\\\\\nm&>2.\n\\end{aligned}\n\\]\n\n따라서 정수 $m$의 최솟값은 $\\boxed{3}$이다. 정답은 ⑤이다.",
     "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
     "subUnit": "연립부등식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -779,7 +779,7 @@ window.questionBank = [
     "content": "이차다항식 $P(x)$가 다음 조건을 만족시킬 때, $P(5)$를 구하시오. [7점]<br><div class='note-box'>(가) 부등식 $P(x)\\le x$의 해는 $-1\\le x\\le2$이다.<br>(나) 모든 실수 $x$에 대하여 $P(x)\\ge -1$이다.</div>",
     "choices": [],
     "answer": "$11$",
-    "solution": "[키포인트]\n조건 (가)에서 $P(x)-x$의 두 근을 정하고, 조건 (나)의 최솟값 조건으로 계수를 구한다.\n\n풀이 과정\n조건 (가)에 의해 부등식 $P(x)\\le x$의 해가 $-1\\le x\\le2$이다.\n따라서 $P(x)-x\\le0$의 해가 $-1\\le x\\le2$라는 뜻이다.\n그러므로\n$P(x)-x=a(x+1)(x-2)$로 둘 수 있고, 두 근 사이에서 음수가 되려면 $a>0$이다.\n즉\n$P(x)=a(x+1)(x-2)+x$이다.\n전개하면\n$P(x)=a(x^2-x-2)+x=ax^2+(1-a)x-2a$이다.\n조건 (나)에 의해 모든 실수 $x$에 대하여 $P(x)\\ge-1$이므로 $P(x)$의 최솟값이 $-1$이 되어야 한다.\n이차함수의 최솟값을 구하면\n$-2a-\\dfrac{(1-a)^2}{4a}$이다.\n이 최솟값이 $-1$이므로\n$-2a-\\dfrac{(1-a)^2}{4a}=-1$이다.\n양변에 $4a$를 곱하면\n$-8a^2-(1-2a+a^2)=-4a$이고,\n정리하면 $9a^2-6a+1=0$이다.\n따라서 $(3a-1)^2=0$이므로 $a=\\dfrac13$이다.\n따라서\n$P(x)=\\dfrac13(x^2-x-2)+x$이다.\n이제 $x=5$를 대입하면\n$P(5)=\\dfrac13(25-5-2)+5=6+5=11$이다.\n\n결론\n따라서 $P(5)=11$이다.",
+    "solution": "조건 (가)의 부등식은\n\\[\nP(x)-x\\le0\n\\]\n이고 해가 정확히 $-1\\le x\\le2$이므로, 최고차항 계수를 $a>0$이라고 놓으면\n\\[\n\\begin{aligned}\nP(x)-x&=a(x+1)(x-2)\\\\\nP(x)&=a(x+1)(x-2)+x\\\\\n&=a(x^2-x-2)+x\\\\\n&=ax^2+(1-a)x-2a.\n\\end{aligned}\n\\]\n\n특히 $x=-1$을 대입하면\n\\[\nP(-1)=a\\cdot0\\cdot(-3)+(-1)=-1.\n\\]\n조건 (나)는 모든 실수 $x$에서 $P(x)\\ge-1$이므로 최솟값은 정확히 $-1$이다. 즉\n\\[\nP(x)+1\\ge0\n\\]\n이 모든 실수 $x$에서 성립한다.\n\n\\[\nP(x)+1=ax^2+(1-a)x+(1-2a)\n\\]\n는 $a>0$인 이차식이므로, 모든 실수에서 음수가 되지 않으려면 판별식이 $0$ 이하여야 한다.\n\\[\n\\begin{aligned}\nD&=(1-a)^2-4a(1-2a)\\\\\n&=1-2a+a^2-4a+8a^2\\\\\n&=9a^2-6a+1\\\\\n&=(3a-1)^2.\n\\end{aligned}\n\\]\n따라서\n\\[\n(3a-1)^2\\le0\n\\]\n이고, 제곱식은 $0$ 이상이므로\n\\[\n3a-1=0\\quad\\Longrightarrow\\quad a=\\frac13.\n\\]\n이제\n\\[\n\\begin{aligned}\nP(5)&=\\frac13(5+1)(5-2)+5\\\\\n&=\\frac13\\cdot6\\cdot3+5\\\\\n&=6+5=\\boxed{11}.\n\\end{aligned}\n\\]",
     "subUnitKey": "H15-SA-05-INEQUALITY_BASIC",
     "subUnit": "부등식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
