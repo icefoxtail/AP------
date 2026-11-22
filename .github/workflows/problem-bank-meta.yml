@@ -21,11 +21,11 @@ jobs:
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
-      - name: Assemble question metadata (git holds its shards)
-        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Assemble question metadata (git holds its shards)
+        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
       - name: Meta persistence, recovery and shared consumer contracts
         id: meta_diagnostics
         continue-on-error: true

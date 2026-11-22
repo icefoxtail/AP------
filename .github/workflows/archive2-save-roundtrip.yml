@@ -66,12 +66,12 @@ jobs:
           # (a shallow checkout fails with ORIGINAL_SOURCE_ERROR_HOLD:IMMUTABLE_GIT_INPUT_UNAVAILABLE).
           fetch-depth: 0
           persist-credentials: false
-      - name: Assemble question metadata (git holds its shards)
-        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
       - uses: actions/setup-node@v4
         with:
           node-version: 22
       # Same preparation as the Worker tests in the full CI job: miniflare and esbuild come from the Worker package.
+      - name: Assemble question metadata (git holds its shards)
+        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
       - name: Install Worker test dependencies
         run: npm ci --prefix apmath/worker-backup/worker --no-audit --no-fund
       # The mixed verification shards are build output (gitignored); the Worker reads them to verify every saved question.
