@@ -323,6 +323,12 @@ def _circles_inside_region(polygons,obstacles):
         found.append((cx,cy,r))
     return found
 
+def _value_names_its_quantity(obj):
+    """True when a region's label is written with its name (부채꼴 AOB=8) or an area / volume unit (8cm²): the letters say it is the region's value, so it may stand beside a boundary (a bare number
+    beside an arc reads as the arc's length, one with a length unit as a length). A plain-text name/unit label is weighted MATH and carries '=' after the name (the value never has one)."""
+    text=obj.get('labelText')
+    return obj.get('labelKind')=='TEXT' and obj.get('labelWeight')=='MATH' and isinstance(text,str) and ('=' in text or text[-1:] in ('\u00b2','\u00b3'))
+
 def _region_inner_points(polygons,obstacles,avoid=(),limit=REGION_INNER_FIRST+REGION_INNER_MORE,exclude=()):
     """[{at, clear}] spots inside an even-odd region (screen px), the roomiest first, each at least REGION_INNER_CLEAR_PX from the boundary, REGION_INNER_STROKE_PX from every other stroke."""
     edges=[(poly[i],poly[(i+1)%len(poly)]) for poly in polygons for i in range(len(poly))]
@@ -1082,7 +1088,7 @@ def prepare(spec):
                     # LEADER / AUTO_LEADER (E32): the label outside the region on a leader from its outer boundary; the layout also needs every region's area to keep the label out of
                     # the other regions (filled in after the last object)
                     corners=[vp.screen(geometry[name]) for name in owners]
-                    label['regionLeader']={'anchors':[],'inner':[],'gaps':list(REGION_LEADER_GAPS),'polygons':polygons,'near':list(place) if place else None,'only':placement=='LEADER'}
+                    label['regionLeader']={'anchors':[],'inner':[],'gaps':list(REGION_LEADER_GAPS),'polygons':polygons,'near':list(place) if place else None,'only':placement=='LEADER','sideExempt':_value_names_its_quantity(obj)}
                     # LEADER asks for no search inside; but when no place outside the region reads as its value (every one stands beside the middle of a side it would read as the length of),
                     # the value is written inside the region (AUTO_LEADER has already tried the inside first)
                     if placement=='LEADER':label['regionLeader']['insideCentres']=_region_label_centres(polygons,obstacles,near=(place[0],place[1],REGION_LABEL_AT_RADIUS_PX) if place else None)

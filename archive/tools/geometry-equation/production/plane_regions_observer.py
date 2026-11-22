@@ -29,6 +29,15 @@ REGION_LABEL_AT_SLACK=26.0      # svg px: a label placed at labelAt stands withi
 REGION_WEIGHT_STROKE_EM=0.06    # a plain-text name/value label is drawn with this outline stroke (em), the weight of a math label (this observer's own copy)
 REGION_UNIT_POWERS={'2':'\u00b2','3':'\u00b3'}
 
+def named_value_drawn(row,node):
+    """True when the plan gives the value a name or an area / volume unit AND the drawn label really carries that text (read from the group): then it reads as the region's value beside any boundary.
+    A bare number, a length unit (cm, m) or a letter value does not; neither does a label whose name or unit was left out of the drawing."""
+    expected=region_label_text(row)
+    if expected is None or node is None or node.get('data-text')!=expected:return False
+    named=isinstance(row.get('labelName'),str) and row['labelName'].strip()!=''
+    powered=re.fullmatch(r'[a-z]+\^[23]',str(row.get('unit','')))is not None
+    return named or powered
+
 def region_label_text(row):
     """The exact text of a name/unit region label as the plan says it (name=value+unit), or None for a plain region label. Written here from the declared rule."""
     if row.get('labelName') is None and row.get('unit') is None:return None
@@ -465,7 +474,7 @@ def audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,obser
                     # where the leader leaves the region: the drawn side it crosses there must not be the one the label stands beside (middle zone)
                     exit_at=next((p for p in ((a[0]+unit[0]*length*k/steps,a[1]+unit[1]*length*k/steps) for k in range(steps+1)) if area_state(p,record['polygons'])==-1),None)
                     # each WHOLE drawn boundary (a straight side, an arc, a curve, a circle) is one side: its length is what a value beside it reads as
-                    for sid,pts in drawn_boundaries(root):
+                    for sid,pts in ([] if named_value_drawn(row,by_id.get(oid+'-label')) else drawn_boundaries(root)):
                         if exit_at is None or boundary_position(pts,exit_at)[1]>LEADER_BOUNDARY_TOLERANCE+2.0:continue
                         pts=region_stretch(pts,exit_at,record['polygons'])
                         close=[t for t,d in (boundary_position(pts,(box[0]+box[2]*i/4,box[1]+box[3]*j/2)) for i in range(5) for j in range(3)) if d<=LEADER_SIDE_NEAR]

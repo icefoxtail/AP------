@@ -40,6 +40,7 @@ def label_object(placement,**extra):
     extra.setdefault('labelText',TEXT)
     return region_object(labelKind='TEXT',labelWeight='MATH',**({'labelPlacement':placement} if placement!='AUTO' else {}),**extra)
 MARKS={'segments':None}
+def region_text(marks):return regions.region_label_text(marks['regions'][0])
 def marks_of(**extra):
     row={'id':'rABC','fill':'LIGHT','label':'6','labelName':'△ABC','unit':'cm^2','labelPlacement':'LEADER','shapes':[{'polygon':POLYGON}],**extra}
     return {'regions':[row]}
@@ -153,7 +154,7 @@ class ObserverTests(unittest.TestCase):
     def test_tamper_dot_removed(self):
         svg=self.fixture.svg();dot=re.search(r'<circle\s[^>]*data-role="leader-dot"[^>]*/>',svg).group(0)
         self.assertIn('REGION_LEADER_DOT_MISSING',self.fixture.codes(svg=svg.replace(dot,'')))
-    def tampered_beside_side(self,arc=False):
+    def tampered_beside_side(self,arc=False,text=TEXT):
         fx=self.fixture;svg=fx.svg0;box=fx.row['box'];tag=fx.leader().group(0)
         forward=lambda q:(fx.transform['originX']+q[0]*fx.transform['sx'],fx.transform['originY']-q[1]*fx.transform['sy'])
         poly=[forward(POINTS[name]) for name in POLYGON]
@@ -167,7 +168,7 @@ class ObserverTests(unittest.TestCase):
         circle=re.search(r'<circle\s[^>]*data-role="leader-dot"[^>]*/>',svg).group(0)
         moved_circle=re.sub(r'\scy="[^"]+"',' cy="%.3f"'%dot[1],re.sub(r'\scx="[^"]+"',' cx="%.3f"'%dot[0],circle))
         moved=svg.replace(tag,line).replace(circle,moved_circle)
-        moved=re.sub(r'<text\s[^>]*id="rABC-label"[^>]*>.*?</text>','',moved,flags=re.S).replace('</svg>',label_group('rABC-label',moved_box,TEXT)+'</svg>')
+        moved=re.sub(r'<text\s[^>]*id="rABC-label"[^>]*>.*?</text>','',moved,flags=re.S).replace('</svg>',label_group('rABC-label',moved_box,text)+'</svg>')
         if arc:
             # the same boundary drawn as an arc: one polyline of many pieces (a sector's arc), not a straight line
             for line_tag in re.findall(r'<line\s[^>]*data-role="line"[^>]*/>',moved):
@@ -176,15 +177,34 @@ class ObserverTests(unittest.TestCase):
                     points=' '.join('%.3f,%.3f'%(a[0]+(b[0]-a[0])*k/12,a[1]+(b[1]-a[1])*k/12) for k in range(13))
                     moved=moved.replace(line_tag,'<polyline data-role="circularArc" id="arcAB" points="'+points+'" fill="none" stroke="#111"/>')
         return moved
+    @staticmethod
+    def value_marks(**row):
+        """The region row of the fixture with only the fields given (a bare value '6' unless the row says more)."""
+        return {'regions':[{'id':'rABC','fill':'LIGHT','label':'6','labelPlacement':'LEADER','shapes':[{'polygon':POLYGON}],**row}]}
     def test_tamper_value_right_above_the_middle_of_a_side(self):
         # the first answer for the trapezoid with a height and a diagonal: the dot 10 px inside the middle of the side AE, the value right above that side's middle, a short leader:
-        # the student reads it as the length of the side. The observer refuses it on its own (not on any mark of the producer).
-        self.assertIn('REGION_LEADER_READS_AS_SIDE',self.fixture.codes(svg=self.tampered_beside_side()))
+        # the student reads it as the length of the side. The observer refuses it on its own (not on any mark of the producer). A BARE number: no name, no unit.
+        self.assertIn('REGION_LEADER_READS_AS_SIDE',self.fixture.codes(svg=self.tampered_beside_side(text='6'),marks=self.value_marks()))
         self.assertNotIn('REGION_LEADER_READS_AS_SIDE',self.fixture.codes())
     def test_tamper_value_beside_an_arc_reads_as_its_length(self):
         # a sector's value right beside its arc reads as the arc's length: the whole arc is one boundary, however many pieces it is drawn in
-        moved=self.tampered_beside_side(arc=True);self.assertIn('arcAB',moved)
-        self.assertIn('REGION_LEADER_READS_AS_SIDE',self.fixture.codes(svg=moved))
+        moved=self.tampered_beside_side(arc=True,text='6');self.assertIn('arcAB',moved)
+        self.assertIn('REGION_LEADER_READS_AS_SIDE',self.fixture.codes(svg=moved,marks=self.value_marks()))
+    def test_a_value_with_a_length_unit_is_still_a_length_beside_a_boundary(self):
+        # '6cm' reads as a length: the exemption is for a name or an area / volume unit only
+        marks=self.value_marks(unit='cm')
+        self.assertIn('REGION_LEADER_READS_AS_SIDE',self.fixture.codes(svg=self.tampered_beside_side(text='6cm'),marks=marks))
+    def test_a_value_that_names_its_region_or_its_area_unit_may_stand_beside_a_boundary(self):
+        # 부채꼴 AOB=8cm² / 6cm²: the letters say it is the region's value. Both are drawn here exactly as the plan says.
+        named=self.value_marks(labelName='\u25b3ABC',unit='cm^2');self.assertEqual(region_text(named),'\u25b3ABC=6cm\u00b2')
+        self.assertNotIn('REGION_LEADER_READS_AS_SIDE',self.fixture.codes(svg=self.tampered_beside_side(text=region_text(named)),marks=named))
+        only_unit=self.value_marks(unit='cm^2')
+        self.assertNotIn('REGION_LEADER_READS_AS_SIDE',self.fixture.codes(svg=self.tampered_beside_side(text=region_text(only_unit)),marks=only_unit))
+    def test_tamper_the_name_or_unit_erased_from_the_drawing_is_not_exempt(self):
+        # the plan names the value but the drawn label is the bare number: no exemption, the reading rule applies (and the text check fails too)
+        named=self.value_marks(labelName='\u25b3ABC',unit='cm^2')
+        codes=self.fixture.codes(svg=self.tampered_beside_side(text='6'),marks=named)
+        self.assertIn('REGION_LEADER_READS_AS_SIDE',codes);self.assertIn('LABEL_TEXT_MISMATCH',codes)
     def with_circle_and_dot(self,circle,dot):
         fx=self.fixture;svg=fx.svg();tag=fx.leader().group(0);old=re.search(r'<circle\s[^>]*data-role="leader-dot"[^>]*/>',svg).group(0)
         line=re.sub(r'\sy1="[^"]+"',' y1="%.3f"'%dot[1],re.sub(r'\sx1="[^"]+"',' x1="%.3f"'%dot[0],tag))

@@ -846,7 +846,7 @@ def region_inner_leader_placement(label,w,h,occupied,acceptable):
             if pad.x<=at[0]<=pad.right and pad.y<=at[1]<=pad.bottom:return True
         return False
     usable=lambda rows:[row for row in rows if not any(point_in_even_odd(tuple(row['at']),polygons) for polygons in others) and not under_label(row['at'])]
-    best=region_inner_best(usable(site.get('inner',[])+site.get('innerMore',[])),own,all_regions,strokes,discs,boxes_taken,site,w,h,acceptable,sides)
+    best=region_inner_best(usable(site.get('inner',[])+site.get('innerMore',[])),own,all_regions,strokes,discs,boxes_taken,site,w,h,acceptable,[] if site.get('sideExempt') else sides)   # a value that names its region or its area unit may stand beside a boundary
     if best is None:return None
     _,box,start,end=best
     theta=math.degrees(math.atan2(end[1]-start[1],end[0]-start[0]))%360

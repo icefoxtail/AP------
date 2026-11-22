@@ -108,6 +108,20 @@ TRIANGLE_6_8 = [[(60.0, 40.0), (60.0, 280.0), (240.0, 280.0)]]
 TRIANGLE_SIDES = [{'id': 's%d' % i, 'kind': 'line', 'geometry': [TRIANGLE_6_8[0][i], TRIANGLE_6_8[0][(i + 1) % 3]]} for i in range(3)]
 
 
+class ValueNamesItsQuantity(unittest.TestCase):
+    """Only a value written with its name or an area / volume unit may stand beside a boundary: a bare number is an arc's or side's length, so is one with a length unit."""
+    def test_which_labels_are_exempt(self):
+        weighted = {'labelKind': 'TEXT', 'labelWeight': 'MATH'}
+        self.assertTrue(engine._value_names_its_quantity({**weighted, 'labelText': '△ABC=6cm²'}))
+        self.assertTrue(engine._value_names_its_quantity({**weighted, 'labelText': '부채꼴 AOB=8cm²'}))
+        self.assertTrue(engine._value_names_its_quantity({**weighted, 'labelText': '6cm²'}))
+        self.assertTrue(engine._value_names_its_quantity({**weighted, 'labelText': '8m³'}))
+        self.assertFalse(engine._value_names_its_quantity({**weighted, 'labelText': '6cm'}))
+        self.assertFalse(engine._value_names_its_quantity({**weighted, 'labelText': '6'}))
+        self.assertFalse(engine._value_names_its_quantity({**weighted, 'labelText': '△ABC'}))
+        self.assertFalse(engine._value_names_its_quantity({'labelKind': 'MATH', 'labelText': 'S'}))
+
+
 class DrawnCircleInsideTheRegion(unittest.TestCase):
     """The incircle of a triangle whose area is the value (L21): nothing of the region's value stands inside it; the region's own circle and a circle across the boundary are no such circle."""
     TRIANGLE = TRIANGLE_6_8
