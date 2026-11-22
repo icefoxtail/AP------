@@ -1,5 +1,8 @@
 # 고1 2025 금당고 2학기 기말 유사시험지 — 1장 심층 감사 샘플
 
+> **2026-11-22 후속 시각 QA: VISUAL_QA_FINDINGS** — 이미지 11개 렌더·육안 검수, 결함 1개. 상세 결과는 문서 끝의 ‘후속 시각 검수’ 및 [통합 계획](./H1_2FINAL_SIMILAR_VISUAL_QA_20261122.md) 참조.
+
+
 - **scope:** `h1` / 공통수학2 / `similar` / 2학기 기말 / 2025 금당고 1장만. 원본 기출·타 과목 미변경.
 - **sourcePath:** `archive/exams/similar/high/h1/2final/25_금당고_2학기_기말_고1_유사.js` (`main`, Git blob `518239dcd17a2484de18416f2c46fd1af834cbfc`). `examTitle=25_금당고_2학기_기말_고1_유사`.
 - **worker branch:** `work/solution-upgrade-h1-similar-sample-20261122` (다른 활성 예약 lane 및 MD 브랜치와 분리).
@@ -808,3 +811,32 @@
 - **전수 텍스트 판정:** Q01~Q22 = 22/22, KEEP 22·UPGRADE 0·HOLD 0·UNREAD 0. 기존 풀이 수학 오류를 발견하지 못했고 원본 JS/정답/보기/SVG는 일절 수정하지 않음.
 - **시각 검사 별도:** 문제 그림 Q06 대응도, Q16 유리함수 좌표그래프의 육안/엔진 렌더 점검과 기존 해설 SVG 9개 렌더는 별도 작업 필요. 이 범위에 대한 최종 시각 PASS는 미선언.
 - **샘플 기준:** 최신 연도 2025 금당고 1개에 대한 텍스트 MD 완료. 다른 2학기 기말 유사시험지는 이 문서에서 완료 처리하지 않음.
+
+
+---
+
+## 후속 시각 검수 — 2026-11-22 (최신 판정)
+
+- 결과: **VISUAL_QA_FINDINGS**. 연결 그림 11개, 그림 포함 10문항, 결함 후보 1건.
+- 절차: 실제 `archive/assets/images/25_금당고_2학기_기말_고1_유사/` 자산 존재 확인 → SVG/PNG 렌더 → 접촉 시트 육안 검사 → 본문·해설의 그래프, 좌표, 집합, 대응도 비교.
+- [수학·시각 통합 마감 계획 및 전체 276건 보고서](./H1_2FINAL_SIMILAR_VISUAL_QA_20261122.md) 참조.
+- 이전 본문에 기재된 `VISUAL_QA_PENDING` 또는 `NOT_RUN`은 **초기 수학 감사 당시 상태**이며, 후속 시각 검수 판정은 아래 표가 우선한다.
+
+| 문항 | 검사한 이미지(원본 `archive/assets/images/25_금당고_2학기_기말_고1_유사/`) | 최신 판정 |
+|---:|---|---|
+| 6번 | `문제: q06-problem-v2.svg` | VISUAL_QA_PASS |
+| 9번 | `해설: q09-solution.svg` | VISUAL_QA_PASS |
+| 10번 | `해설: q10-solution.svg` | VISUAL_QA_PASS |
+| 12번 | `해설: q12-solution.svg` | VISUAL_QA_PASS |
+| 15번 | `해설: q15-solution.svg` | VISUAL_QA_PASS |
+| 16번 | `문제: q16-problem-v2.svg`, `해설: q16-solution.svg` | VISUAL_QA_PASS |
+| 18번 | `해설: q18-solution.svg` | VISUAL_QA_PASS |
+| 19번 | `해설: q19-solution.svg` | VISUAL_QA_PASS |
+| 20번 | `해설: q20-solution.svg` | VISUAL_QA_PASS |
+| 22번 | `해설: q22-solution.svg` | VISUAL_QA_FINDING (P2) |
+
+### 확인된 시각 결함·재검수 필요
+
+- **P2 · 22번 · q22-solution.svg**: 해설 그림의 B(5/4, 1/2) 좌표 글자가 파란 곡선·주황 직선과 겹쳐 판독하기 어려움. 라벨 위치를 우측/상단으로 재배치 필요.
+
+원본 JS·SVG·PNG는 수정하지 않았다. 결함 수정 후 해당 자산을 다시 렌더하고 문제·해설을 대조해야 최종 출고 판정이 가능하다.
