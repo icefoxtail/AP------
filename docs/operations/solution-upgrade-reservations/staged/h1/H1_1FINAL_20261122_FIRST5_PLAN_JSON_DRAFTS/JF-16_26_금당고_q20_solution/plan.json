@@ -1,0 +1,47 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "1",
+      "-2",
+      "1"
+    ],
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -3,
+      5,
+      -1,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "$f(x)=x^2-2x+3=(x-1)^2+2$",
+  "caption": "x²+1−2x=(x−1)²≥0이며, 등호는 x=1에서 성립한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 부등식의 합에서 (a+c)(x²+1)<4bx를 얻는다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "필요조건 2b>a+c의 AM–GM 보조 부등식을 실제 함수로 표현한다."
+  ]
+}

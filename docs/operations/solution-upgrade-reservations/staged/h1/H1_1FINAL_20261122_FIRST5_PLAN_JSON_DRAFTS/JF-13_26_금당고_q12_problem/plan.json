@@ -1,0 +1,175 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "ab",
+        "ownerSegment": "AB",
+        "text": "2"
+      },
+      {
+        "id": "ad",
+        "ownerSegment": "AD",
+        "text": "2"
+      },
+      {
+        "id": "bc",
+        "ownerSegment": "BC",
+        "text": "3"
+      },
+      {
+        "id": "bd",
+        "ownerSegment": "BD",
+        "text": "1"
+      },
+      {
+        "id": "dc",
+        "ownerSegment": "DC",
+        "text": "2"
+      }
+    ]
+  },
+  "sourceQuote": "네 지역 $A,B,C,D$를 연결하는 도로망이 있다. 두 지역 사이를 직접 잇는 도로는 $A$와 $B$ 사이에 2개, $A$와 $D$ 사이에 2개, $B$와 $C$ 사이에 3개, $B$와 $D$ 사이에 1개, $C$와 $D$ 사이에 2개이고, $A$와 $C$ 사이에는 직접 잇는 도로가 ",
+  "caption": "A–B 두 길, A–D 두 길, B–C 세 길, B–D 한 길, C–D 두 길. A–C 직결은 없다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "지역 A,B,C,D와 도로 수만 주어진다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "도로 수 2,2,3,1,2와 직접 A–C 길이 없음을 표시하며 경로 수 20은 누출하지 않는다."
+  ]
+}

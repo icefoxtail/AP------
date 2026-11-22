@@ -1,0 +1,44 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-1",
+              "state": "CLOSED"
+            }
+          },
+          {
+            "lo": {
+              "value": "6",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "label": "절댓값 해",
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "x≤−1 또는 x≥6"
+  },
+  "sourceQuote": "$|A|\\ge k$",
+  "caption": "|2x−5|≥7은 두 닫힌 반직선 x≤−1 또는 x≥6이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "−1,6은 등호로 포함한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "서로 떨어진 두 해의 방향을 확인한다."
+  ]
+}

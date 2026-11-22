@@ -1,0 +1,41 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "5",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "해집합",
+        "integerPoints": true,
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "1≤x≤5"
+  },
+  "sourceQuote": "$x<2$",
+  "caption": "2|x−2|+|x−5|≤6은 1≤x≤5다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "분기점 2,5에 따른 세 구간 결과다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "양끝 1,5의 곱 5를 읽는다."
+  ]
+}

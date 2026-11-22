@@ -1,0 +1,47 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "2",
+      "1"
+    ],
+    "domain": [
+      -4,
+      3
+    ],
+    "viewport": [
+      -5,
+      4,
+      -3,
+      18
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "$c=0$",
+  "caption": "조건을 만족하는 대표 예 a=1,b=2,c=0의 y=x²+2x. 원점 근방에서 1·3사분면을 지난다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "c=0, b>0, a≠0, a≠b인 28개의 경우다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "그림은 특정 하나의 예시이며 임의의 28개 함수를 동시에 묘사하지 않는다."
+  ]
+}

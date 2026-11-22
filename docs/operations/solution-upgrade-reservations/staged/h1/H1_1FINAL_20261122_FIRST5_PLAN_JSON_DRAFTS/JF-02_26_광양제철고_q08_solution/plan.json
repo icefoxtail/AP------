@@ -1,0 +1,41 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-7",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "-2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "정수 a",
+        "integerPoints": true,
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "a의 정수 범위: −7부터 −2까지"
+  },
+  "sourceQuote": "$ax^2-2(a+3)x-3>0$",
+  "caption": "a²+9a+9≤0, a<0의 정수해 −7,…,−2 여섯 개.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "위로 열린 이차식 a²+9a+9≤0과 a<0이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "해설 정수 6개가 실제 소수 아닌 근호 경계 사이에 있음을 확인한다."
+  ]
+}

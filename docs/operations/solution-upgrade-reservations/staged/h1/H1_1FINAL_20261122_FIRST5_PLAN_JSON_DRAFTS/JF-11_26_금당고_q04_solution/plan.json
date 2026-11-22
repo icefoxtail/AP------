@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "4",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "해집합",
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "−3<x<4"
+  },
+  "sourceQuote": "$x^2-12<x$",
+  "caption": "(x+3)(x−4)<0의 해는 두 근 사이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "계수 1>0, 영점 −3과 4이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "양끝은 열린 점이다."
+  ]
+}

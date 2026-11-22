@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "실수 a",
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "3≤a<4"
+  },
+  "sourceQuote": "$f(x)=x^2-x-6=(x+2)(x-3)$",
+  "caption": "문항의 정수해 개수가 9개가 되는 실수 a 범위는 3≤a<4이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f=(x+2)(x−3)이고 a>0이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "a=3은 포함하고 4는 미포함한다."
+  ]
+}

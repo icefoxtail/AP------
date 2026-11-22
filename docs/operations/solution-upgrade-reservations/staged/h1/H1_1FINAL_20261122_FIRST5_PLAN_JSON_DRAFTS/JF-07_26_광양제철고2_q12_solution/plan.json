@@ -1,0 +1,47 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "2",
+      "1"
+    ],
+    "domain": [
+      -4,
+      3
+    ],
+    "viewport": [
+      -5,
+      4,
+      -3,
+      18
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "$c=0$",
+  "caption": "a=1,b=2,c=0인 대표 이차함수는 원점과 1·3사분면을 지난다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "선택 집합에서 b>0인 5가지와 a 6가지로 30개다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "하나의 예시만 보여 주고 모든 함수의 실제 곡률을 대표한다고 주장하지 않는다."
+  ]
+}

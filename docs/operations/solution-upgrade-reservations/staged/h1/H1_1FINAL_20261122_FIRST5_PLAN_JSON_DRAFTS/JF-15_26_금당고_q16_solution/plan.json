@@ -1,0 +1,47 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "39",
+      "-16",
+      "8"
+    ],
+    "domain": [
+      -1,
+      3
+    ],
+    "viewport": [
+      -2,
+      4,
+      0,
+      95
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "31"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "$\\alpha+\\overline\\alpha=6$",
+  "caption": "사차식의 a+b+c+d=8(s−1)²+31 최솟값 31은 s=1에서 난다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "α=3+2i, β=s+2i로부터 최소화를 위한 s가 도출된다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "최솟값 31과 최적 s=1을 정확한 꼭짓점으로 나타낸다."
+  ]
+}

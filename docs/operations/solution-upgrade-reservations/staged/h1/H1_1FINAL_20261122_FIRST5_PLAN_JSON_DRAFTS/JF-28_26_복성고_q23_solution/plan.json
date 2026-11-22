@@ -1,0 +1,118 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "U",
+    "V"
+  ],
+  "displaySegments": [
+    {
+      "id": "UV",
+      "refs": [
+        "U",
+        "V"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "textLabels": [
+      {
+        "id": "u11",
+        "at": [
+          0,
+          1
+        ],
+        "text": "1→1:1",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "u12",
+        "at": [
+          2,
+          2
+        ],
+        "text": "1→2:1",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "u21",
+        "at": [
+          2,
+          -2
+        ],
+        "text": "2→1:2",
+        "labelKind": "MATH"
+      },
+      {
+        "id": "u22",
+        "at": [
+          5,
+          1
+        ],
+        "text": "2→2:1",
+        "labelKind": "MATH"
+      }
+    ]
+  },
+  "sourceQuote": "$1\\to1$",
+  "caption": "코스 연결 전이 A=[[1,1],[2,1]]에서 세 번 이어간 경로 수 행렬 A³=[[7,5],[10,7]]의 성분합은 29.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "코스 A,B,C,D,E의 출발·도착 표로 전이행렬이 정해진다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "1,2 지점의 방향별 코스 수와 3단계 29개라는 결론을 분리해 설명한다."
+  ]
+}

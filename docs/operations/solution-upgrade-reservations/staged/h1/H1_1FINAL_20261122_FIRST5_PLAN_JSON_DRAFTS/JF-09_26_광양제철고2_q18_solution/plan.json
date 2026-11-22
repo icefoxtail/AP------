@@ -1,0 +1,37 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4/3",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "label": "해 x",
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "x>4/3"
+  },
+  "sourceQuote": "$\\sqrt{4x^2+4x+1}=\\sqrt{(2x+1)^2}=|2x+1|$",
+  "caption": "절댓값 세 구간의 합집합은 x>4/3이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "분기점 x=−1/2,2이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "4/3은 열린 점으로 표시한다."
+  ]
+}

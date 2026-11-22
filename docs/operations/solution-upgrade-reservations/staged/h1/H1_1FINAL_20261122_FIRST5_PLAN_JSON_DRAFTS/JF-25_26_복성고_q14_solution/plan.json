@@ -1,0 +1,46 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2-2*sqrt(3)",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "2+2*sqrt(3)",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "k범위",
+        "integerPoints": {
+          "range": [
+            "-1",
+            "5"
+          ]
+        },
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "판별식 음수인 k의 열린 구간"
+  },
+  "sourceQuote": "$k=6$",
+  "caption": "D<0은 2−2√3<k<2+2√3, 정수 합 14이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "주어진 보기 (나)만 참이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "경계에 닿으면 중근 해가 생겨 OPEN이며 정수 −1부터 5를 표시한다."
+  ]
+}

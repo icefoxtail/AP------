@@ -1,0 +1,52 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "1",
+      "1",
+      "2"
+    ],
+    "domain": [
+      -3,
+      2
+    ],
+    "viewport": [
+      -4,
+      3,
+      0,
+      19
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-3",
+        "y": "16"
+      },
+      {
+        "id": "R",
+        "x": "2",
+        "y": "11"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "$x^2+x+1\\le-x^2+k$",
+  "caption": "−3≤x≤2에서 g(x)=2x²+x+1의 최대는 g(−3)=16이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "모든 x에 대해 k≥g(x)가 필요하다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "양 끝값 16,11과 꼭짓점 위치를 비교한다."
+  ]
+}

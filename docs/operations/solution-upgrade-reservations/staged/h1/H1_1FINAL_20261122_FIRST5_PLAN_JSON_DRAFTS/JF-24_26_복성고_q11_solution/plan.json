@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-8/3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "10/3",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "절댓값 해",
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "−8/3≤x≤10/3"
+  },
+  "sourceQuote": "$x\\le-\\dfrac12$",
+  "caption": "a+b=−8/3+10/3=2/3이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "해의 양 끝은 −8/3, 10/3이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "닫힌 끝점 두 개가 동일 수직선에 놓인다."
+  ]
+}

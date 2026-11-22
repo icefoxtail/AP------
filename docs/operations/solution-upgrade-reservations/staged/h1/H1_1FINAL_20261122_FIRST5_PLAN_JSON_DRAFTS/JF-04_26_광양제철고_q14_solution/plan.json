@@ -1,0 +1,258 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "UA",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "UB",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "UC",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "UD",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "11"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "VA",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "VB",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "VC",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "15"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "VD",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "15"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "UA",
+    "UB",
+    "UC",
+    "UD",
+    "VA",
+    "VB",
+    "VC",
+    "VD"
+  ],
+  "displaySegments": [
+    {
+      "id": "UAUB",
+      "refs": [
+        "UA",
+        "UB"
+      ]
+    },
+    {
+      "id": "UBUC",
+      "refs": [
+        "UB",
+        "UC"
+      ]
+    },
+    {
+      "id": "UCUD",
+      "refs": [
+        "UC",
+        "UD"
+      ]
+    },
+    {
+      "id": "UDUA",
+      "refs": [
+        "UD",
+        "UA"
+      ]
+    },
+    {
+      "id": "VAVB",
+      "refs": [
+        "VA",
+        "VB"
+      ]
+    },
+    {
+      "id": "VBVC",
+      "refs": [
+        "VB",
+        "VC"
+      ]
+    },
+    {
+      "id": "VCVD",
+      "refs": [
+        "VC",
+        "VD"
+      ]
+    },
+    {
+      "id": "VDVA",
+      "refs": [
+        "VD",
+        "VA"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "hiddenPointNames": [
+    "UA",
+    "UB",
+    "UC",
+    "UD",
+    "VA",
+    "VB",
+    "VC",
+    "VD"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceQuote": "$\\sqrt{170}$",
+  "caption": "원래 직사각형 7×11, 변경 후 3×15의 비율을 나란히 확인한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "대각선²=170, 가로−세로=−4이므로 원래 7,11이다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "변경 후 가로 3, 세로 15와 면적 45를 비교한다."
+  ]
+}

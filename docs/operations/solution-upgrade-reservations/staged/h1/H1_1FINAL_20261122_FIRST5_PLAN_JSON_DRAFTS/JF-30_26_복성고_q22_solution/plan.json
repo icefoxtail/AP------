@@ -1,0 +1,74 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "label": "k=1",
+        "points": [
+          {
+            "id": "A",
+            "value": "-1",
+            "hideName": true
+          },
+          {
+            "id": "B",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "C",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "D",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "E",
+            "value": "3",
+            "hideName": true
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "band": false,
+        "label": "k=7",
+        "points": [
+          {
+            "id": "X",
+            "value": "4",
+            "hideName": true,
+            "style": "CROSS"
+          },
+          {
+            "id": "F",
+            "value": "5",
+            "hideName": true
+          }
+        ]
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "k=1의 −1~3 및 k=7의 5를 나란히 표시"
+  },
+  "sourceQuote": "$x^2-3x-10\\le0$",
+  "caption": "정수해의 합이 5인 두 경우는 k=1과 k=7이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x∈[−2,5]와 |x−k|<3의 교집합을 정수로 계산한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 SVG의 k=0 예시를 제거하고 정답 사례 k=1·k=7만 표시한다.",
+    "k=7 행에서 x=4는 경계 제외(×), x=5만 포함(●)한다."
+  ]
+}

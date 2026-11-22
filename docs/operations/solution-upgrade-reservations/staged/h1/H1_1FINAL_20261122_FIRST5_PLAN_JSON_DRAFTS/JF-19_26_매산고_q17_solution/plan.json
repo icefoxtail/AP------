@@ -1,0 +1,63 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "0",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "2/9",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "구간①"
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2/9",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1/4",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "구간②"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "k<1/4에서 k=0,2/9 제외"
+  },
+  "sourceQuote": "$(x-2)\\{kx^2+(2k-2)x+k+2\\}=0$",
+  "caption": "세 실근을 위한 k<1/4 및 k≠0,2/9이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "k=0은 삼차식이 아니고 k=2/9는 근이 겹친다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "서로 합치는 두 구간 행이며 RESULT 공통부분 행은 만들지 않는다.",
+    "0,2/9,1/4 열린 경계가 가까우므로 레이아웃을 따로 확인한다."
+  ]
+}

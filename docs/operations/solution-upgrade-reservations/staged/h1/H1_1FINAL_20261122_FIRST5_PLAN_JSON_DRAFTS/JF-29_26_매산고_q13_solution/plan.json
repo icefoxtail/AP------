@@ -1,0 +1,94 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "-2"
+        ]
+      },
+      {
+        "coefficients": [
+          "6"
+        ]
+      },
+      {
+        "coefficients": [
+          "2",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-4",
+        "y": "6"
+      },
+      {
+        "x": "2",
+        "y": "6"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "K1",
+        "x": "-4",
+        "y": "6"
+      },
+      {
+        "id": "K2",
+        "x": "2",
+        "y": "6"
+      },
+      {
+        "id": "L",
+        "x": "-6",
+        "y": "10"
+      },
+      {
+        "id": "R",
+        "x": "4",
+        "y": "10"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        -6,
+        -4,
+        2,
+        4
+      ],
+      "y": [
+        6,
+        10
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "T",
+        "y": "10",
+        "intersectionX": [
+          "-6",
+          "4"
+        ]
+      }
+    ]
+  },
+  "sourceQuote": "$x=-4,2$",
+  "caption": "a=5일 때 2a=10인 경계선은 x=−6,4에서 절댓값 그래프와 만나 정수 11개를 포함한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "|x−2|+|x+4|≤2a이고 11개 정수가 되려면 5≤a<6이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "기존 SVG의 2a=8 예시를 삭제하고 2a=10으로 바꿔 답의 하한 경우를 정확히 묘사한다."
+  ]
+}

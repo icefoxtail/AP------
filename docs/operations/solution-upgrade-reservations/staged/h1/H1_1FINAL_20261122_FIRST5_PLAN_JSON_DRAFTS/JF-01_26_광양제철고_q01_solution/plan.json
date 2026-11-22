@@ -1,0 +1,41 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "-1",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "x범위",
+        "integerPoints": true,
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "−4<x≤−1의 정수 3개"
+  },
+  "sourceQuote": "$-2x-1<x+11$",
+  "caption": "-4<x≤-1을 만족하는 정수는 −3,−2,−1이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫째 x>−4, 둘째 x≤−1이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "열린 왼쪽 끝과 닫힌 오른쪽 끝, 정수 세 점을 일치시킨다."
+  ]
+}

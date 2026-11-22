@@ -1,0 +1,258 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "UA",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "UB",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "UC",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "UD",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "VA",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "VB",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "VC",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "17"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "VD",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "13"
+            },
+            {
+              "kind": "integer",
+              "value": "16"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "UA",
+    "UB",
+    "UC",
+    "UD",
+    "VA",
+    "VB",
+    "VC",
+    "VD"
+  ],
+  "displaySegments": [
+    {
+      "id": "UAUB",
+      "refs": [
+        "UA",
+        "UB"
+      ]
+    },
+    {
+      "id": "UBUC",
+      "refs": [
+        "UB",
+        "UC"
+      ]
+    },
+    {
+      "id": "UCUD",
+      "refs": [
+        "UC",
+        "UD"
+      ]
+    },
+    {
+      "id": "UDUA",
+      "refs": [
+        "UD",
+        "UA"
+      ]
+    },
+    {
+      "id": "VAVB",
+      "refs": [
+        "VA",
+        "VB"
+      ]
+    },
+    {
+      "id": "VBVC",
+      "refs": [
+        "VB",
+        "VC"
+      ]
+    },
+    {
+      "id": "VCVD",
+      "refs": [
+        "VC",
+        "VD"
+      ]
+    },
+    {
+      "id": "VDVA",
+      "refs": [
+        "VD",
+        "VA"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "hiddenPointNames": [
+    "UA",
+    "UB",
+    "UC",
+    "UD",
+    "VA",
+    "VB",
+    "VC",
+    "VD"
+  ],
+  "hiddenPointStyle": "NONE",
+  "sourceQuote": "$4\\sqrt{13}$",
+  "caption": "원래 직사각형 8×12, 변경 후 4×16이고 넓이는 64다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "대각선²=208, y=x+4에서 x=8,y=12다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "변경 후 두 치수와 넓이 64를 독립 검증한다."
+  ]
+}

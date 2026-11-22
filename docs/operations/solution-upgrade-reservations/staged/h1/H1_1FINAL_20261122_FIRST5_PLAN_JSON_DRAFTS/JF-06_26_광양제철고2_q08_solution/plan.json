@@ -1,0 +1,41 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "-1",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "정수 a",
+        "integerPoints": true,
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "−5≤a≤−1의 정수 5개"
+  },
+  "sourceQuote": "$a>0$",
+  "caption": "a²+6a+4≤0의 정수해 −5,…,−1은 5개다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "위로 열린 이차식 a²+6a+4≤0과 a<0이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "정수점 다섯 개를 경계 근호와 일치시킨다."
+  ]
+}

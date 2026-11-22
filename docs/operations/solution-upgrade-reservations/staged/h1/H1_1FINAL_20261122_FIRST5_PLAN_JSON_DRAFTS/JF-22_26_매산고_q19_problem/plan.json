@@ -1,0 +1,44 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "8",
+      "2",
+      "-1"
+    ],
+    "domain": [
+      -4,
+      6
+    ],
+    "viewport": [
+      -5,
+      7,
+      -3,
+      12
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        -2,
+        4
+      ],
+      "y": []
+    }
+  },
+  "sourceQuote": "$y=f(x)$",
+  "caption": "f의 계수 크기는 미상이나, x절편 −2,4를 가진 아래로 열린 대표 포물선.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(−2)=f(4)=0, 그래프가 위로 볼록하다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "문제 도식에서 원래 두 영점만 보이고 변형 후의 a=3/2를 누출하지 않는다."
+  ]
+}

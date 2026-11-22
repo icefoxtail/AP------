@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5/2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "19/2",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "x범위",
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "−5/2<x<19/2"
+  },
+  "sourceQuote": "$f(t)>0\\ \\Longleftrightarrow\\ -2<t<4$",
+  "caption": "a=3/2에서 f((x−a)/2)>0의 해는 −5/2<x<19/2이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원래 부등식 f(t)>0은 −2<t<4이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "이동/확대된 구간의 두 열린 경계를 표시한다."
+  ]
+}

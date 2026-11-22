@@ -1,0 +1,41 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-4",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "3",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "정수 a",
+        "integerPoints": true,
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "정수 a는 −4,…,3의 8개다."
+  },
+  "sourceQuote": "$(x+2)(x-12)>0$",
+  "caption": "a²+a≤12에서 −4≤a≤3이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "정수 a 범위 −4부터 3까지 양 끝 포함.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "a=−4와 3도 성립함을 보여 준다."
+  ]
+}
