@@ -114,9 +114,21 @@ export async function measureArchiveTypographyPolicy({identity,sourcePath,ordina
     };
     // The default A4 display (80% of the column = 253 css px) is always the binding side (the phone shows a canvas at that same 253 px at most, with a lower font floor), so it keeps the policy's own minimum base font; a scaled display also keeps phone labels readable.
     const derive=(measured,scale)=>requestedProfileTypographyPolicy({requestedSizeClass,intrinsicSvg,observation:measured.observation,fontFloorCssPx:11,...(scale!==undefined?{minimumBaseFontPx:phoneMinimumBaseFontPx(intrinsicSvg.width)}:{})});
-    let measured=await measureAt(undefined),policy=null,refusal=null;
-    try{policy=derive(measured,undefined);}
-    catch(error){if(!isDomainCode(error))throw error;refusal=error;}
+    // A question that already carries a valid solutionImageScale (a figure published under the 60% rule with 85 or 90) is displayed at that scale by the page, and a republished figure keeps the field
+    // (the patch only ever adds it), so the capture would show it at that scale while a default measurement assumed the 80% default: ARCHIVE_DISPLAY_SCALE_MISMATCH. Such a question is measured at
+    // its own scale first; when that scale cannot carry the figure the default path below runs as before (the capture's candidate then writes the scale it chose).
+    const carried=carriedSolutionImageScale(input.bank.find(question=>question.id===ordinal));
+    let measured=null,policy=null,refusal=null;
+    if(carried!==undefined){
+      measured=await measureAt(carried);
+      try{policy=derive(measured,carried);state.solutionImageScale=carried;}
+      catch(error){if(!isDomainCode(error))throw error;policy=null;}
+    }
+    if(!policy){
+      measured=await measureAt(undefined);
+      try{policy=derive(measured,undefined);}
+      catch(error){if(!isDomainCode(error))throw error;refusal=error;}
+    }
     // 2026-11-19 (60% then, 80% since 2026-11-21: figure-size.css --ap-fig-sol): A4 shows a solution figure at a fixed share of the column, so a wide canvas (> about 720 px at 80%) would need a base font above the cap. The default is always the page's own, measured, never assumed.
     // Instead of refusing, the question carries solutionImageScale (% of the column, the same per-figure override the page reads): the figure is measured again
     // at that scale in the real Archive, and the scale is handed to the capture and to publication. Phone layouts ignore it (they size by natural width), so their labels only get larger.
@@ -140,6 +152,8 @@ export async function measureArchiveTypographyPolicy({identity,sourcePath,ordina
 // (phone layouts ignore the scale and show the figure at 90% of the column, viewport - 94 px: measured at 360/375/390 px), and the base label font the scale aims at
 // (the policy allows 20-32 SVG units; the middle of the range keeps labels in the proportion the standard 384-wide canvases have).
 export const A4_FIGURE_COLUMN_CSS_PX=316.2;
+/** The valid per-figure A4 scale (30-100, % of the column) a bank question already carries, else undefined. */
+export const carriedSolutionImageScale=question=>Number.isFinite(question?.[SCALE_FIELD])&&question[SCALE_FIELD]>=30&&question[SCALE_FIELD]<=100?question[SCALE_FIELD]:undefined;
 export const PHONE_FIGURE_WIDTH_CSS_PX=253;
 export const PHONE_FONT_FLOOR_CSS_PX=10;// below the A4 floor (11): a phone shows a 600+ px canvas at about 250 px whatever the base font, and a base font above ~25 leaves labels no room on the canvas
 export const SOLUTION_SCALE_TARGET_BASE_FONT_PX=24;
