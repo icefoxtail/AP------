@@ -6,7 +6,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import os from 'node:os';
 import {spawnSync} from 'node:child_process';
-import {compareItem, parseExpected, applyExpected, summarize, evaluate, statusChainOf, decide, bytesCompared, removedRow, addedRow} from './lib/judge.mjs';
+import {compareItem, parseExpected, applyExpected, summarize, evaluate, statusChainOf, decide, bytesCompared, removedRow, addedRow, testsFail} from './lib/judge.mjs';
 import {chooseItems} from './lib/select.mjs';
 import {environmentFingerprint} from './lib/env-fingerprint.mjs';
 import {
@@ -14,7 +14,7 @@ import {
   planKinds, planCapabilities, classifyFile, parseFamilies, selectItems, KINDS_VERSION, kindTableProblems
 } from './lib/kinds.mjs';
 import {buildCodeGraph} from './lib/code-graph.mjs';
-import {SNAPSHOT_SPECS, RENDER_PLAN, MANIFEST, describeSnapshot, repoFilesUnder, extractImageRefs, refCandidates, resolveTarget, ensureSnapshot, changedFiles} from './lib/snapshot.mjs';
+import {SNAPSHOT_SPECS, RENDER_PLAN, MANIFEST, describeSnapshot, repoFilesUnder, extractImageRefs, refCandidates, resolveTarget, ensureSnapshot, changedFiles, commonKeyOf} from './lib/snapshot.mjs';
 import {renderItems, resultKey, reusable, loadResult, storeDir, harvest, acquireSlot} from './lib/render.mjs';
 import {parseTapForTest, parseUnittestForTest, normalizeTestName, compareTests} from './lib/tests-run.mjs';
 
@@ -597,7 +597,9 @@ test('5: stored snapshot keys are reused only under the same kind table version'
     assert.equal(again.commonKey, fresh.commonKey, 'another table version recomputes the keys');
     assert.equal(JSON.parse(fs.readFileSync(keyFile, 'utf8')).kindsVersion, KINDS_VERSION);
     // the version is also inside the key itself: the same files under another table give another key
-    assert.notEqual(fresh.commonKey, JSON.stringify(KINDS_VERSION));
+    const lines = ['a' + String.fromCharCode(0) + 'x'];
+    assert.notEqual(commonKeyOf('table-v1', lines), commonKeyOf('table-v2', lines));
+    assert.equal(commonKeyOf('table-v1', lines), commonKeyOf('table-v1', lines));
   } finally { fs.rmSync(root, {recursive: true, force: true}); }
 });
 
@@ -614,6 +616,13 @@ test('6: a golden item only on base is REMOVED and fails; an item only on head i
   assert.equal(accepted.errors.length, 0); assert.equal(summarize(rows, accepted).pass, true);
 });
 
+test('1: no change is exit 2 even when an explicit selection has rows (base = head compares a tree with itself)', () => {
+  const rows = [compareItem('a', rec('ARCHIVE_BOUND'), rec('ARCHIVE_BOUND'))];
+  const d = more => decide({rows, cover: evaluate(rows, {}), summary: summarize(rows), explicitSelection: true, inputsIdentical: true, ...more});
+  assert.equal(d({changedCount: 0}).exit, 2); assert.match(d({changedCount: 0}).reason, /do not differ/);
+  assert.equal(d({changedCount: 1}).exit, 0);
+});
+
 test('6: engine tests that passed on base and are skipped or deleted on head fail like a new failure', () => {
   const F = `${GE}/tests/x.test.mjs`;
   const base = {[F]: {names: {keep: 'pass', skipped: 'pass', deleted: 'pass', wasSkipped: 'skip', wasFailing: 'fail'}}};
@@ -622,6 +631,7 @@ test('6: engine tests that passed on base and are skipped or deleted on head fai
   assert.equal(r.lost.length, 2); assert.match(r.lost.join('\n'), /skipped.*skipped on head/); assert.match(r.lost.join('\n'), /deleted.*missing on head/);
   assert.deepEqual(r.newFailures, []);
   assert.equal(compareTests(base, base, [F]).lost.length, 0);
+  assert.equal(testsFail(r), true); assert.equal(testsFail({newFailures: ['x'], lost: []}), true); assert.equal(testsFail({newFailures: [], lost: []}), false);
 });
 
 // ---- 7. locks and snapshots: nothing of another process is deleted --------------------------------------------------------------------

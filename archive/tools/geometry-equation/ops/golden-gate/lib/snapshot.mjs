@@ -193,6 +193,9 @@ function contentHash(dir) {
   return sha256(h.join('\n'));
 }
 
+// The shared key: the kind table version plus every file the table says the whole render (or a whole kind) depends on.
+export const commonKeyOf = (kindsVersion, commonLines) => sha256([kindsVersion, ...commonLines].join('\n'));
+
 export function describeSnapshot(dir, id, target) {
   const manifest = readJson(path.join(dir, MANIFEST));
   const items = manifest.items;
@@ -220,7 +223,7 @@ export function describeSnapshot(dir, id, target) {
       const list = (itemFiles[it.dir] ??= []);
       if (!list.includes(line)) list.push(line);
     }
-    keys = {kindsVersion: KINDS_VERSION, commonKey: sha256([KINDS_VERSION, ...common].join('\n')), commonFiles: common.length, itemFiles: Object.fromEntries(Object.entries(itemFiles).map(([k, v]) => [k, sha256(v.sort().join('\n'))]))};
+    keys = {kindsVersion: KINDS_VERSION, commonKey: commonKeyOf(KINDS_VERSION, common), commonFiles: common.length, itemFiles: Object.fromEntries(Object.entries(itemFiles).map(([k, v]) => [k, sha256(v.sort().join('\n'))]))};
     const tmpKeys = `${keyFile}.${process.pid}.tmp`;
     fs.writeFileSync(tmpKeys, JSON.stringify(keys));
     fs.renameSync(tmpKeys, keyFile);

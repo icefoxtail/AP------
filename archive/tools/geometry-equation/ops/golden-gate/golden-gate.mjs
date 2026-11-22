@@ -12,7 +12,7 @@ import {chooseItems} from './lib/select.mjs';
 import {resolveTarget, ensureSnapshot, changedFiles, pruneSnapshots} from './lib/snapshot.mjs';
 import {environmentFingerprint} from './lib/env-fingerprint.mjs';
 import {renderItems, pruneSnapshotRuns} from './lib/render.mjs';
-import {compareItem, parseExpected, applyExpected, summarize, evaluate, decide, bytesCompared, removedRow, addedRow} from './lib/judge.mjs';
+import {compareItem, parseExpected, applyExpected, summarize, evaluate, decide, testsFail, bytesCompared, removedRow, addedRow} from './lib/judge.mjs';
 import {listTests, selectTests, runTests, compareTests} from './lib/tests-run.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -162,7 +162,7 @@ async function main() {
     for (const n of cmp.existingFailures) say(`  existing failure ${n}`);
     for (const n of cmp.fixed) say(`  fixed ${n}`);
     report.tests = {files: tsel.tests.length, newFailures: cmp.newFailures, lost: cmp.lost, existingFailures: cmp.existingFailures, fixed: cmp.fixed, counts: cmp.counts};
-    if (cmp.newFailures.length || cmp.lost.length) { exit = 1; outcome = 'FAIL'; }
+    if (testsFail(cmp)) { exit = 1; outcome = 'FAIL'; }
   }
 
   report.wallMs = Date.now() - t0; report.pass = exit === 0 && outcome === 'PASS'; report.outcome = outcome; report.reason = decision.reason;

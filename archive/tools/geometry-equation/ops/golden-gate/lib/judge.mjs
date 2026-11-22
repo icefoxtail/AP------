@@ -126,6 +126,9 @@ export function summarize(rows, {accepted = [], errors = []} = {}) {
 export const removedRow = item => ({item, base: {status: 'PRESENT'}, head: {status: 'ABSENT'}, verdict: 'REMOVED', reason: 'the golden item exists on base but not on head (the denominator shrank)'});
 export const addedRow = (item, head) => ({item, base: {status: 'ABSENT'}, head: {status: head?.status ?? 'ABSENT'}, verdict: 'ADDED', reason: `new golden item, nothing on base to compare with (head: ${head?.status ?? 'not rendered'}${head?.code ? ' ' + head.code : ''})`});
 
+// A lost engine test (passed on base, skipped or gone on head) fails like a new failure.
+export const testsFail = cmp => cmp.newFailures.length > 0 || cmp.lost.length > 0;
+
 // The one place that decides the exit code. A PASS is only ever said when something was compared.
 //   exit 1 FAIL            : an expected-file error (whatever else happened), or an unaccepted DIFFERENT/REGRESSED/NOT_RUN/REMOVED
 //   exit 2 CANNOT_VOUCH    : nothing selected, nothing compared byte for byte, or a changed kind without a comparison
