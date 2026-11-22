@@ -151,11 +151,71 @@
       { "exam": "20_제일고_2학기_중간_고2_수학II", "no": 7, "why": "식 없이 그려진 좌우 점근 곡선이어서 원본 PNG를 유지함" }
     ]
   },
+  "nextChronologicalBatch2021": {
+    "year": 2021,
+    "exams": [
+      "21_강남여고_2학기_중간_고2_수학II",
+      "21_금당고_2학기_중간_고2_수학II",
+      "21_매산여고_2학기_중간_고2_수학II",
+      "21_효천고_2학기_중간_고2_수학II"
+    ],
+    "questions": 96,
+    "problemImageRefs": 16,
+    "solutionImageRefs": 32,
+    "inspection": "4개 학교 원본 PNG와 기존 해설 SVG를 Sharp 정적 PNG로 변환한 학교별 접촉 시트, 오류 의심 개별 원본 확대를 직접 확인. 새 플랜 렌더·브라우저·A4 시각검증은 미실시",
+    "completedPlanReview": [
+      {
+        "exam": "21_강남여고_2학기_중간_고2_수학II",
+        "planCount": 15,
+        "shallowPlanLint": "PASS_15_OF_15",
+        "corrected": [
+          { "no": 2, "problemPng": "q02.png", "issue": "기존 플랜은 원본의 왼쪽 상승곡선을 하강선으로 표현하고 오른쪽 y=2 구간을 누락", "fix": "왼쪽 상승곡선의 이차 개형 근사와 중간 수평선·원점 하강선·오른쪽 수평선을 분리" },
+          { "no": 22, "problemPng": "q22.png", "issue": "기존 EXEMPT였지만 네 직선 조각의 값·열림 상태가 원본에 명시됨", "fix": "네 직선과 x=0의 고립값을 담은 새 q22-solution.json 작성" },
+          { "no": 27, "problemPng": "q27.png", "issue": "기존 플랜은 x=1의 실제 함수값과 1→2의 직선 계수를 틀렸고 x=3의 열린 구멍을 오차 없이 나타내지 못함", "fix": "x=1의 값 3/2와 x=2의 좌우 극한 1을 바로잡고, x=3은 원본 PNG를 기준으로 하는 3.05 근사 구간임을 명시" },
+          { "no": 5, "issue": "기존 상하 유리함수 플랜의 분모 x²+1이 multi-curve RATIONAL의 일차 분모 제약 위반", "fix": "지원 불가를 명시하고 부정확한 JSON 제외" }
+        ],
+        "holds": ["q2: 왼쪽 곡선 방정식 미제공으로 이차 개형 근사", "q5: 이차 분모 유리함수는 엔진 지원 범위 밖", "q27: x=3에 함수값이 없는 순수한 열린 구멍은 piecewise-discontinuous 경계 계약으로 완전 재현할 수 없어 구간 시작 3.05로 근사; 원본 PNG 유지"]
+      },
+      {
+        "exam": "21_금당고_2학기_중간_고2_수학II",
+        "planCount": 11,
+        "shallowPlanLint": "PASS_11_OF_11",
+        "corrected": [
+          { "no": 10, "issue": "x⁴-2x³+3x+4로 만든 기존 플랜이 PIECEWISE_POLY_ROOT_NOT_CLOSED_FORM 구조 검사를 통과하지 못함", "fix": "정확한 극한 f′(1)=1은 원문 해설로 보존하고 미지원 SVG JSON은 제외" }
+        ],
+        "holds": ["q10: 대칭할선·접선에 대한 정확한 4차함수 plan은 현 엔진의 정확근 계약 미지원"]
+      },
+      {
+        "exam": "21_매산여고_2학기_중간_고2_수학II",
+        "planCount": 15,
+        "shallowPlanLint": "PASS_15_OF_15",
+        "corrected": [
+          { "no": 11, "problemPng": "q11.png", "issue": "기존 플랜이 x=-1부터 x=1까지 잘못된 하나의 하강선으로 축약해 x=0의 높은 닫힌 점과 x=1의 별도 상승선 누락", "fix": "-2~0 상승선의 x=-1 구멍, x=0의 점프, 0~1 하강선, 1~2 상승선 및 별도 값 f(-1)=-1 복원" }
+        ]
+      },
+      {
+        "exam": "21_효천고_2학기_중간_고2_수학II",
+        "planCount": 14,
+        "shallowPlanLint": "PASS_14_OF_14",
+        "corrected": [
+          { "no": 9, "problemPng": "q09.png", "issue": "기존 플랜은 지원하지 않는 두 함수 SHARED 방식으로 그리면서 원본 곡선을 직선으로 단순화하고 decision capability도 불일치", "fix": "f·g의 극한과 고립값만 추린 STACKED 2패널 개형 근사로 수정하고 decision capability 동기화" },
+          { "no": 15, "problemPng": "q15.png", "issue": "원본을 확인하지 못했다는 초안 설명이 사실과 다르고 구간 밖 극소를 생략한 조건이 불명확", "fix": "원본 직접 확인 사실 및 [a,b] 안의 두 접선만 다루는 국소 개형 근사를 명시" },
+          { "no": 18, "problemPng": "q18.png", "issue": "도함수 원본은 내부 굴곡이 네 개인데 기존 3차식 플랜은 영점 세 개·부호만 보존", "fix": "시각적 완전 대체 불가임을 설명·인계 보류로 명시" }
+        ],
+        "holds": ["q9: 실제 두 곡선 방정식이 없으므로 x=1 주변만 직선 개형으로 근사; 공식 SVG 대조 필요", "q15: 실제 a,b 좌표와 곡선 방정식 없음, 국소 삼차식 예시", "q18: 원본 f′의 네 내부 굴곡은 기존 삼차식 근사에 누락; 원본 PNG 대체 금지"]
+      }
+    ],
+    "reviewRequired": [
+      { "exam": "21_강남여고_2학기_중간_고2_수학II", "no": 27, "why": "단순 열린 구멍과 수렴값을 양쪽 조각 그대로 렌더할 수 있는 엔진 기능 필요" },
+      { "exam": "21_금당고_2학기_중간_고2_수학II", "no": 10, "why": "정확근 계약을 충족하는 4차함수 도식 표현 방식 검토 필요" },
+      { "exam": "21_효천고_2학기_중간_고2_수학II", "no": 18, "why": "도함수의 4개 내부 굴곡까지 보존하는 다항/곡선 capability 확장 필요" }
+    ]
+  },
   "gate": {
-    "reviewedExamsShallowPlanLint": "PASS_125_OF_125",
+    "reviewedExamsShallowPlanLint": "PASS_180_OF_180",
     "officialSvgGeneration": "NOT_RUN",
     "browserPcMobileA4VisualValidation": "NOT_RUN",
     "publication": "NOT_RUN"
   },
-  "nextInOrder": "2mid 2019년 7종·2020년 4종, 총 11종 249문항의 1차 원본 그림 대조와 125개 플랜 구조 검사를 끝냈으며 다음은 2021년 2학기 중간부터 연도순으로 진행"
+  "nextInOrder": "2mid 2019년 7종·2020년 4종·2021년 4종, 총 15종 345문항의 1차 원본 그림 대조와 180개 플랜 구조 검사를 끝냈으며 다음은 2022년 2학기 중간부터 연도순으로 진행"
 }

@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "-3",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2.5,
+      2.5
+    ],
+    "viewport": [
+      -2.5,
+      2.5,
+      -5,
+      13
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "-1",
+        "y": "6"
+      },
+      {
+        "id": "N",
+        "x": "1",
+        "y": "2"
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "-1",
+        "6"
+      ],
+      "N": [
+        "1",
+        "2"
+      ]
+    }
+  },
+  "caption": "f′(x)=3(x-1)(x+1)이므로 x=-1, 1에서 f′=0이고 그림의 극대점 M(-1,6)과 극소점 N(1,2)에서 접선이 수평이다. x<-1과 x>1에서는 f′>0이라 곡선이 오르고, -1<x<1에서는 f′<0이라 M에서 N까지 곡선이 내려간다. 따라서 감소하는 구간은 [-1,1]이고 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "16. 삼차함수 $f(x) = x^3 - 3x + 4$이 감소하는 구간은? [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "극대점 M(-1,6)에서 극소점 N(1,2)까지 곡선이 내려가는 구간을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "극대점 M(-1,6)과 극소점 N(1,2) 사이에서 곡선이 내려가고 바깥에서는 오름을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽에서 올라와 점 M에서 꼭대기에 이른 뒤 점 N까지 내려가 가장 낮고, 다시 오른쪽 위로 올라가는 삼차곡선 그래프이다."
+}

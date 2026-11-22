@@ -1,0 +1,99 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0", "-4", "-2"
+        ],
+        "domain": [
+          null,
+          -1
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          -1,
+          0
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0",
+          "-1"
+        ],
+        "domain": [
+          0,
+          "3/5"
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          1,
+          null
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "-1",
+        "y": "1"
+      },
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "-1",
+        "1"
+      ],
+      "O": [
+        "0",
+        "0"
+      ]
+    }
+  },
+  "caption": "원본 q02.png를 직접 확인해 왼쪽 상승 곡선의 개형과 나머지 수평·하강 조각을 분리했다. 왼쪽 곡선의 실제 방정식은 없으므로 (-2,0)과 열린 점 (-1,2)를 지나는 이차식 개형 근사이며, 오른쪽 아래 짧은 선분과 x≈1부터의 y=2 수평선도 원본 표시 범위만 나타낸 것이다. x→0+에서는 원점에서 오른쪽 아래로 접근해 f→0이고 x→-1-에서는 열린 점 (-1,2)로 접근해 f→2이다. f(-1)=1은 극한과 다르며 합은 2이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "2. 함수 $y=f(x)$의 그래프가 그림과 같다. [2.5점]\n<img src=\"assets/images/21_강남여고_2학기_중간_고2_수학II/q02.png\" alt=\"21_강남여고_2학기_중간_고2_수학II Q02\" />\n\n$\\lim_{x \\to 0+} f(x) + \\lim_{x \\to -1-} f(x)$의 값은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=0의 우극한 0과 x=-1의 좌극한 2(열린 점), 함숫값 f(-1)=1(닫힌 점)을 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=0의 오른쪽에서 0, x=-1의 왼쪽에서 2로 가까워지는 점과 f(-1)=1인 닫힌 점을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽 아래에서 올라오는 곡선이 (-1,2)의 열린 점에서 끝나고 (-1,1) 닫힌 점부터 x=0의 열린 점까지 y=1 수평선이 있다. 원점 닫힌 점부터 오른쪽 아래로 짧은 선분이 내려가며 더 오른쪽 위에는 y=2 수평선이 있다."
+}

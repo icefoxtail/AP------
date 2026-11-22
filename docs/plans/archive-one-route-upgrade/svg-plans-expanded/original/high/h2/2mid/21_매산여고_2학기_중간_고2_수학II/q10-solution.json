@@ -1,0 +1,118 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "④ x=-3에서"
+      },
+      "plan": {
+        "capability": "piecewise-discontinuous-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-discontinuous",
+          "pieces": [
+            {
+              "coefficients": [
+                "-3",
+                "1"
+              ],
+              "domain": [
+                -5,
+                -3
+              ],
+              "end": "OPEN"
+            },
+            {
+              "coefficients": [
+                "-3",
+                "1"
+              ],
+              "domain": [
+                -3,
+                -1
+              ],
+              "start": "OPEN"
+            }
+          ],
+          "jumpValues": [
+            {
+              "x": "-3",
+              "y": "6"
+            }
+          ],
+          "axisTickValues": {
+            "x": [
+              "-3"
+            ],
+            "y": [
+              "-6",
+              "6"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "⑤ x=0에서"
+      },
+      "plan": {
+        "capability": "piecewise-discontinuous-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-discontinuous",
+          "pieces": [
+            {
+              "coefficients": [
+                "-1"
+              ],
+              "domain": [
+                -3,
+                0
+              ],
+              "end": "OPEN"
+            },
+            {
+              "coefficients": [
+                "1"
+              ],
+              "domain": [
+                0,
+                3
+              ],
+              "start": "OPEN"
+            }
+          ],
+          "jumpValues": [
+            {
+              "x": "0",
+              "y": "0"
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": [
+              "-1",
+              "1"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "끊어지는 두 보기를 그렸다. ④는 x≠-3에서 y=x-3이라 x→-3일 때 열린 점 (-3,-6)으로 가까워지지만 f(-3)=6인 점은 그 위에 따로 있어 극한과 함숫값이 다르다. ⑤는 x→0-일 때 -1, x→0+일 때 1로 좌우극한이 달라 끊어진다. ①은 x=-4, 1에서 분모가 0이고 ②는 x<-2에서 정의되지 않는다. ③만 분모 (x-2)²+1>0이라 모든 실수에서 연속이므로 답은 ③이다.",
+  "accessibilityDescription": "두 패널이 나란히 있다. 첫째 패널에는 직선이 가운데에서 열린 점으로 끊기고 위쪽에 따로 떨어진 점이 있고, 둘째 패널에는 가로축 위아래의 수평선 두 개가 원점에서 서로 어긋나 끊어진다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "10. 다음 중 모든 실수 $x$에 대해 연속인 함수를 고르면? [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 연속이 아닌 ④, ⑤의 끊어진 모양을 두 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "④의 열린 점과 따로 있는 함숫값, ⑤의 좌우극한 -1과 1이 다른 끊어짐을 보인다."
+  ]
+}

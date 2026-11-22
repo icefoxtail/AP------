@@ -1,0 +1,32 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "layout": "STACKED",
+    "xWindow": [0, 2],
+    "pieces": [
+      { "coefficients": ["-2", "1"], "domain": [0, 1], "start": "CLOSED", "end": "OPEN" },
+      { "coefficients": ["-4", "3"], "domain": [1, 2], "start": "OPEN", "end": "CLOSED" }
+    ],
+    "jumpValues": [{ "x": "1", "y": "2" }],
+    "referenceCurves": [
+      {
+        "id": "g",
+        "pieces": [
+          { "coefficients": ["0", "2"], "domain": [0, 1], "start": "CLOSED", "end": "OPEN" },
+          { "coefficients": ["3", "-1"], "domain": [1, 2], "start": "OPEN", "end": "CLOSED" }
+        ],
+        "jumpValues": [{ "x": "1", "y": "-1" }],
+        "axisTickValues": { "x": ["1"], "y": ["-1", "2"] }
+      }
+    ],
+    "axisTickValues": { "x": ["1"], "y": ["-1", "2"] }
+  },
+  "caption": "원본 q09.png의 f·g 두 그림을 직접 확인했다. 이 플랜은 x=1 주변의 좌우 극한과 고립점만 보이도록 두 패널로 그린 국소 직선 개형 근사이며, 원본의 멀리 떨어진 곡선과 곡률을 그대로 옮긴 것은 아니다. f는 x→1에서 -1로 접근하지만 f(1)=2이고, g는 x→1에서 2로 접근하지만 g(1)=-1이다. 합의 극한은 1(ㄱ 참), 차의 극한 -3은 실제 값 3과 달라 ㄴ 거짓, 곱의 극한 -2는 실제 값 -2와 같아 ㄷ 참이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    { "id": "source", "condition": "9. 원본 archive/assets/images/21_효천고_2학기_중간_고2_수학II/q09.png의 두 함수 f와 g를 사용하여 x=1에서 합의 극한 및 차·곱의 연속성을 판별한다.", "mappedTo": "PRESERVED_ARCHIVE_BANK" },
+    { "id": "method", "condition": "f(1)=2, lim(x→1)f(x)=-1, g(1)=-1, lim(x→1)g(x)=2를 위아래 독립 패널로 보여 준다.", "mappedTo": "diagram" }
+  ],
+  "newVisualInformation": ["원본의 두 함수를 서로 다른 축의 두 패널로 분리하고 x=1에서 극한과 함숫값이 어긋나는 점을 표시한다."],
+  "accessibilityDescription": "위 패널에는 f가 x=1의 높이 -1에 열린 점을 두고 높이 2에 닫힌 점을 가진다. 아래 패널에는 g가 x=1의 높이 2에 열린 점을 두고 높이 -1에 닫힌 점을 가진다. 주변 직선은 원본 곡선의 국소 개형 근사이다."
+}

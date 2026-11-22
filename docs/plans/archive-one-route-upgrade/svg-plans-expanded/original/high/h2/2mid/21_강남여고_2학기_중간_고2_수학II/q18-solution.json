@@ -1,0 +1,96 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-3",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2.2,
+      2.2
+    ],
+    "viewport": [
+      -2.2,
+      2.2,
+      -4,
+      4
+    ],
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "-1",
+        "y": "2"
+      },
+      {
+        "id": "N",
+        "x": "1",
+        "y": "-2"
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "-1",
+        "2"
+      ],
+      "N": [
+        "1",
+        "-2"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "B",
+          "curveX": "2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "sec",
+          "slope": "0",
+          "intercept": "2",
+          "label": "l"
+        },
+        {
+          "id": "tan",
+          "slope": "0",
+          "intercept": "-2",
+          "label": "m"
+        }
+      ]
+    }
+  },
+  "caption": "예: f(x)=x³-3x이다. x=-1에서 극대(점 M), x=1에서 극소(점 N)이다. x=0에서는 내려가 f′(0)<0이고 x=2에서는 올라가 f′(2)>0이므로 (가) f′(0)>f′(2)는 거짓이다. 구간 [-1,2]의 양 끝 M(-1,2), B(2,2)를 잇는 할선 l의 기울기 0과 같은 접선이 N에서 생겨 (나)가 참이고, N에서의 수평 접선 m이 f′(1)=0인 c=1로 (다)가 참이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "18. 다항함수 $y=f(x)$의 그래프가 그림과 같을 때, 다음 보기 중 옳은 것만을 있는 대로 고른 것은? [3.0점]\n<img src=\"assets/images/21_강남여고_2학기_중간_고2_수학II/q18.png\" alt=\"21_강남여고_2학기_중간_고2_수학II Q18\" />\n\n<보기>\n(가) $f'(0) > f'(2)$\n(나) $f(2)-f(-1) = 3f'(c)$인 $c$가 열린구간 $(-1, 2)$에 존재한다.\n(다) $\\lim_{h \\to 0} \\frac{f(c+h)-f(c)}{h} = 0$인 $c$가 열린구간 $(0, 2)$에 존재한다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "할선 l과 평행한 접선 m이 극소점 N에서 수평이고 f′(0)<0<f′(2)임을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "극대 M, 극소 N, 구간 [-1,2]의 양 끝을 잇는 할선 l과 N에서의 수평 접선 m을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽에서 올라 점 M에서 극대가 되고 내려가 점 N에서 극소가 된 뒤 오르는 삼차곡선과, 점 M과 오른쪽 점 B를 잇는 수평선 l, 점 N에서 접하는 수평선 m이 그려진 그래프이다."
+}

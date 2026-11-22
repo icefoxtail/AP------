@@ -1,0 +1,100 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      2.5
+    ],
+    "viewport": [
+      -2,
+      4.5,
+      -5,
+      11
+    ],
+    "requiredPoints": [
+      {
+        "id": "E",
+        "x": "-sqrt(6)/3",
+        "y": "4*sqrt(6)/9"
+      },
+      {
+        "id": "F",
+        "x": "sqrt(6)/3",
+        "y": "-4*sqrt(6)/9"
+      }
+    ],
+    "exactCoordinates": {
+      "E": [
+        "-sqrt(6)/3",
+        "4*sqrt(6)/9"
+      ],
+      "F": [
+        "sqrt(6)/3",
+        "-4*sqrt(6)/9"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "x": "4",
+          "y": "2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "1",
+          "intercept": "-2",
+          "label": "l"
+        }
+      ]
+    },
+    "axisScale": {
+      "x": 4,
+      "y": 1
+    }
+  },
+  "caption": "y′=3x²-2에서 x=1의 기울기는 1이므로 접점 T(1,-1)에서의 접선은 y=x-2(그림의 l)이다. 이 직선이 높이 2인 점 P(k,2)를 지나므로 k-2=2에서 k=4이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "7. 점 $(1, -1)$에서 곡선 $y=x^3-2x$에 그은 접선이 점 $(k, 2)$를 지날 때, $k$의 값을 구하시오. [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "접점 T(1,-1)에서의 접선 l이 점 P(4,2)를 지남을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "접점 T(1,-1)에서의 접선 y=x-2와 이 직선이 지나는 점 P(4,2)를 보인다."
+  ],
+  "accessibilityDescription": "한 번 오르고 내려갔다 다시 오르는 삼차곡선과 점 T에서 접하는 기울기 1의 직선 l, 직선 위의 오른쪽 점 P가 나타난 그래프이다."
+}

@@ -1,0 +1,202 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lT",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "lT"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "P",
+    "T",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sPT",
+      "refs": [
+        "P",
+        "T"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sPH",
+      "refs": [
+        "P",
+        "H"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": [
+    "lT"
+  ],
+  "displayCircles": [
+    "C"
+  ],
+  "coordinateLabels": [
+    "P"
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "hiddenPointNames": [
+    "X"
+  ],
+  "labelDirections": {
+    "P": "NE"
+  },
+  "rightAngles": [
+    {
+      "id": "rT",
+      "refs": [
+        "P",
+        "T",
+        "O"
+      ]
+    },
+    {
+      "id": "rH",
+      "refs": [
+        "P",
+        "H",
+        "O"
+      ]
+    }
+  ],
+  "caption": "예: t=1일 때를 그린다. 중심 P(1,3)이고 y축에 접하므로 반지름은 1이고, 접점 T는 (0,3)이다. 원점을 지나는 y축이 아닌 접선은 y=mx이고 중심에서 직선까지의 거리가 반지름과 같다는 조건 |m-3|/√(m²+1)=1에서 m=4/3이다. 그림의 직선 y=(4/3)x가 점 H에서 원에 접한다. 일반적으로 m=(9t²-1)/(6t)=(3/2)t-1/(6t)이므로 f(t)/t→3/2이다. 답은 3/2이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[주관식1 (단답형)] 그림과 같이 곡선 $y=3x^2$ 위의 원점이 아닌 점 $P(t, 3t^2)$을 중심으로 하고 $y$축에 접하는 원을 $C$라 하자. 원점을 지나고 원 $C$에 접하는 직선 중에서 $y$축이 아닌 직선의 기울기를 $f(t)$라 할 때, $\\lim_{t \\to \\infty} \\frac{f(t)}{t}$의 값을 구하여라. [4.0점]\n<img src=\"assets/images/21_매산여고_2학기_중간_고2_수학II/q19.png\" alt=\"21_매산여고_2학기_중간_고2_수학II Q19\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "t=1에서 중심 P(1,3)이고 y축에 접하는 원과 원점을 지나는 접선 y=(4/3)x, 접점 H를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "t=1인 예에서 중심 P(1,3)의 원이 y축의 점 T와 원점을 지나는 직선의 점 H에 접하고 두 반지름이 접선에 수직임을 보인다."
+  ],
+  "accessibilityDescription": "제1사분면에 중심 P인 원이 있고, 원이 세로축의 점 T에 접하며 원점을 지나는 오르는 직선이 점 H에서 원에 접한다. P에서 T와 H로 점선 반지름이 그어져 있고 두 접점에 직각 표시가 있다."
+}

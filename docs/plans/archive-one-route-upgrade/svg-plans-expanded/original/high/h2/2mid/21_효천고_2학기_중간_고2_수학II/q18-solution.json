@@ -1,0 +1,98 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "24",
+          "-10",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      5
+    ],
+    "viewport": [
+      -4,
+      5,
+      -50,
+      30
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-3",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "4",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "1-sqrt(39)/3",
+        "y": "12+26*sqrt(39)/9"
+      },
+      {
+        "id": "W",
+        "x": "1+sqrt(39)/3",
+        "y": "12-26*sqrt(39)/9"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "V",
+        "W"
+      ]
+    },
+    "exactCoordinates": {
+      "A": [
+        "-3",
+        "0"
+      ],
+      "B": [
+        "2",
+        "0"
+      ],
+      "C": [
+        "4",
+        "0"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "원본 q18.png를 직접 대조했다. f′의 원본은 x=-2,-1,1,3에서 네 번 굴곡이 생기지만, 이 플랜은 세 영점과 부호만 보존한 3차식 개형 근사이므로 원본 곡선의 시각적 대체본이 아니다. f′가 x축을 지나며 부호가 바뀌는 점은 A(-3,0), B(2,0), C(4,0)이다. A와 C에서 f′는 음에서 양으로 바뀌어 f가 극솟값을 갖고 B에서는 양에서 음으로 바뀌어 극댓값을 갖는다. [-2,1]에서는 f′>0, (2,4)에서는 f′<0이다. f의 극값은 3개이므로 ⑤가 옳지 않다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "18. 함수 $f(x)$의 도함수 $y=f'(x)$의 그래프가 다음 그림과 같을 때, 옳지 않은 것은? [5.0점]\n<img src=\"assets/images/21_효천고_2학기_중간_고2_수학II/q18.png\" alt=\"21_효천고_2학기_중간_고2_수학II Q18\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f′가 x축을 지나며 부호가 바뀌는 세 점 A, B, C와 그 앞뒤의 부호를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f′가 x=-3, 4에서 음에서 양으로, x=2에서 양에서 음으로 바뀌는 세 점 A, B, C를 보여 f의 극값 3개를 알게 한다."
+  ],
+  "accessibilityDescription": "왼쪽 아래에서 올라와 점 A에서 가로축을 지나 꼭대기에 이르렀다가 점 B에서 가로축을 지나 내려가고 점 C에서 다시 가로축을 지나 오른쪽 위로 오르는 곡선 그래프이다."
+}

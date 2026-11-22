@@ -1,0 +1,127 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0"
+        ],
+        "domain": [
+          -6,
+          -4
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          -4,
+          "-2/3"
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "4"
+        ],
+        "domain": [
+          "-2/3",
+          0
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "4"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          1,
+          6
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0"
+        ],
+        "domain": [
+          6,
+          8
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "-4",
+        "y": "1"
+      },
+      {
+        "x": "-2/3",
+        "y": "3"
+      },
+      {
+        "x": "0",
+        "y": "3"
+      },
+      {
+        "x": "1",
+        "y": "3"
+      },
+      {
+        "x": "6",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4",
+        "-2/3",
+        "1",
+        "6"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    }
+  },
+  "caption": "가로축이 t, 세로축이 교점의 개수 f(t)이다. 원의 중심 (t,0)에서 두 직선까지의 거리가 반지름 2와 같을 때(t=6, -2/3, 1, -4) 접해서 개수가 바뀐다. 또 두 직선의 교점 (0,2)가 원 위에 오는 t=0에서 4점 중 두 점이 겹쳐 3개가 된다. 불연속인 t는 -4, -2/3, 0, 1, 6이고 합은 7/3이다. 따라서 답은 7/3이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[단답형 2] 실수 $t$에 대하여 원 $(x-t)^2+y^2=4$가 두 직선 $3x+4y-8=0$, $4x-3y+6=0$과 만나는 서로 다른 점의 개수를 $f(t)$라 하자. 함수 $f(t)$가 $t=a$에서 불연속이라 할 때, 모든 $a$값의 합을 구하여라. [5.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "t에 따른 교점의 개수 f(t)의 계단 그래프에서 불연속점 -4, -2/3, 0, 1, 6을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "t에 따른 교점의 개수 f(t)가 t=-4, -2/3, 0, 1, 6에서 끊기는 계단 그래프를 보인다."
+  ],
+  "accessibilityDescription": "t에 따라 교점의 개수가 0, 2, 4, 2, 0으로 오르내리는 계단 모양의 그래프이고, t=-4, -2/3, 0, 1, 6에서 열린 점과 닫힌 점으로 끊어진다."
+}

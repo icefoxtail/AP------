@@ -1,0 +1,79 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "4",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-3",
+        "y": "6"
+      },
+      {
+        "id": "V",
+        "x": "-1",
+        "y": "-2"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "16"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-3",
+        "6"
+      ],
+      "V": [
+        "-1",
+        "-2"
+      ],
+      "B": [
+        "2",
+        "16"
+      ]
+    }
+  },
+  "caption": "t에 관한 극한을 계산하면 f(x)=2x(x+2)=2(x+1)²-2이다. 그림은 닫힌구간 [-3,2]에서의 이 포물선이고 꼭짓점 V(-1,-2)가 구간 안에 있어 최솟값은 -2이다. 양 끝점은 A(-3,6), B(2,16)이고 B가 더 높아 최댓값은 16이다. 따라서 합은 16+(-2)=14이고 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "12. 닫힌구간 $[-3, 2]$에서 정의된 함수 $f(x)$가\n$$f(x) = \\lim_{t \\to -\\infty} \\frac{2xt^2}{x+t^2}(x+2)$$\n일 때, 닫힌구간 $[-3, 2]$에서 함수 $f(x)$의 최댓값과 최솟값의 합을 구하면? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "포물선의 꼭짓점 V와 구간 양 끝점 A, B의 높이를 비교한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "구간 [-3,2]에서 꼭짓점 V(-1,-2)와 양 끝점 A(-3,6), B(2,16)의 높이를 보인다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선의 구간으로, 왼쪽 끝 점 A에서 내려가 꼭짓점 V에서 가장 낮고 오른쪽 끝 점 B로 가파르게 올라가는 그래프이다."
+}
