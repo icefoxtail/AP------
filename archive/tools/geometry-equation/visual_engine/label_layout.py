@@ -837,6 +837,7 @@ def region_inner_leader_placement(label,w,h,occupied,acceptable):
             cx,cy,r=g[:3];ring=[(cx+r*math.cos(k*math.pi/36),cy+r*math.sin(k*math.pi/36)) for k in range(73)];strokes+=list(zip(ring,ring[1:]))
     discs=[tuple(o['geometry']) for o in occupied if o.get('kind')=='point' and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=3]
     boxes_taken=[o['geometry'] if isinstance(o.get('geometry'),Box) else Box(**o['geometry']) for o in occupied if o.get('kind') in {'label','conditionBox','rectangle'} and (isinstance(o.get('geometry'),Box) or (isinstance(o.get('geometry'),dict) and {'x','y','width','height'}<=set(o['geometry'])))]
+    sides=[pair for o in occupied if o.get('kind') in {'line','axis','auxiliary'} and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2 for pair in zip(o['geometry'],o['geometry'][1:])]
     near=site.get('near')
     def under_label(at):
         for box in boxes_taken:
@@ -845,15 +846,31 @@ def region_inner_leader_placement(label,w,h,occupied,acceptable):
         return False
     usable=lambda rows:[row for row in rows if not any(point_in_even_odd(tuple(row['at']),polygons) for polygons in others) and not under_label(row['at'])]
     best=None
-    for dots in (usable(site.get('inner',[])),usable(site.get('innerMore',[]))):
+    for tier,dots in enumerate((usable(site.get('inner',[])),usable(site.get('innerMore',[])))):
         if best is not None:break
-        best=region_inner_best(dots,own,all_regions,strokes,discs,boxes_taken,site,w,h,acceptable)
+        best=region_inner_best(dots,own,all_regions,strokes,discs,boxes_taken,site,w,h,acceptable,sides=sides if tier else None)
     if best is None:return None
     _,box,start,end=best
     theta=math.degrees(math.atan2(end[1]-start[1],end[0]-start[0]))%360
     return box,start,end,('E','SE','S','SW','W','NW','N','NE')[int(((theta+22.5)%360)//45)]
 
-def region_inner_best(dots,own,all_regions,strokes,discs,boxes_taken,site,w,h,acceptable):
+REGION_SIDE_ZONE=(0.2,0.8)             # the middle of a drawn side, where a label beside it reads as that side's length
+REGION_SIDE_NEAR_PX=48.0                # 'beside': the label's box within this of the side
+
+def label_reads_as_side(box,exit_point,sides):
+    """True when the label stands right beside the middle of the drawn side its leader crosses (it would read as that side's length, not as the value of the region)."""
+    centre=(box.x+box.width/2,box.y+box.height/2)
+    for a,b in sides:
+        if point_segment_distance(exit_point,a,b)>REGION_INNER_EXIT_TOLERANCE_PX:continue
+        dx,dy=b[0]-a[0],b[1]-a[1];l2=dx*dx+dy*dy
+        if l2<1e-9:continue
+        t=((centre[0]-a[0])*dx+(centre[1]-a[1])*dy)/l2
+        if REGION_SIDE_ZONE[0]<=t<=REGION_SIDE_ZONE[1] and box_segment_distance(box,a,b)<=REGION_SIDE_NEAR_PX:return True
+    return False
+
+def region_inner_best(dots,own,all_regions,strokes,discs,boxes_taken,site,w,h,acceptable,sides=None):
+    """The best (score, box, start, end). With sides (the further spots, tried when the roomiest ones fail) the deepest dot wins, then the shortest leader, and a label that would stand
+    beside the middle of the side its leader crosses is refused: such a place reads as the length of that side, and no place at all is better than that."""
     best=None
     for row in dots:
         start=tuple(row['at'])
@@ -872,10 +889,11 @@ def region_inner_best(dots,own,all_regions,strokes,discs,boxes_taken,site,w,h,ac
                 for box in [Box(center[0]-w/2,center[1]-h/2,w,h)]:
                     if not acceptable(box,owner_check=False) or not box_outside_regions(box,all_regions):continue
                     end=owner_leader_endpoint(box,start,(box.x+box.width/2,box.y+box.height/2))
+                    if sides is not None and label_reads_as_side(box,exit_point,sides):continue
                     if region_inner_leader_ok(start,end,exit_point,u,own,all_regions,strokes,discs,boxes_taken):found=(box,end)
                 if found is not None:
                     box,end=found;length=math.dist(start,end)
-                    score=(round(length,1),-row['clear'])
+                    score=(round(length,1),-row['clear']) if sides is None else (-round(row['clear'],1),round(length,1))
                     if best is None or score<best[0]:best=(score,box,start,end)
                     break
     return best

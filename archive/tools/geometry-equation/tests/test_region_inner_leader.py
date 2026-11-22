@@ -128,6 +128,16 @@ class PieceCutOffByStrokes(unittest.TestCase):
         self.assertFalse(130.0 - 7 < start[0] < 240.0 + 7 and 120.0 - 7 < start[1] < 200.0 + 7, 'the dot stands in the free strip outside the box')
         self.assertGreaterEqual(boundary_distance(start, SQUARE), engine.REGION_INNER_CLEAR_PX - 1e-6)
 
+    def test_a_label_beside_the_middle_of_the_side_its_leader_crosses_is_refused_in_the_further_tier(self):
+        side = [((100.0, 100.0), (260.0, 100.0))]
+        exit_point = (180.0, 100.0)
+        above_middle = Box(160.0, 62.0, 40.0, 18.0)       # right above the middle of the side: reads as its length
+        beyond_the_end = Box(268.0, 66.0, 40.0, 18.0)     # past the end of the side
+        far_away = Box(160.0, 20.0, 40.0, 18.0)           # a long leader away from it
+        self.assertTrue(label_layout.label_reads_as_side(above_middle, exit_point, side))
+        self.assertFalse(label_layout.label_reads_as_side(beyond_the_end, (255.0, 100.0), side))
+        self.assertFalse(label_layout.label_reads_as_side(far_away, exit_point, side))
+
     def test_the_first_thirty_spots_and_their_order_do_not_change(self):
         spots = engine._region_inner_points(SQUARE, self.OCCUPIED)
         self.assertEqual(spots[:engine.REGION_INNER_FIRST], engine._region_inner_points(SQUARE, self.OCCUPIED, (), engine.REGION_INNER_FIRST))

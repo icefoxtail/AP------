@@ -85,3 +85,29 @@ test('a region wholly inside another has no spot of its own: refused with REGION
   const {result}=await render('nested',nested);
   assert.equal(result.status,'FAILED');assert.equal(result.code,'REGION_LEADER_NO_INNER_SPOT',JSON.stringify(result).slice(0,500));
 });
+
+// The trapezoid ABCE of a drawing with a height AG and a diagonal AD (the roomiest dots lie in the big closed piece, whose leader would cross strokes): the dot comes from the further spots.
+// Its value 12 must not read as the length of the side AE (the first answer put it right above the middle of AE with the dot 10 px inside): the dot stands deep in its piece and the label
+// is not beside the middle of the side the leader crosses.
+test('a region cut by strokes: the value 12 reads as the region (a long leader from a deep dot), never as the length of the side it stands beside',{timeout:900000},async()=>{
+  const nodes=[node('B','SOURCE_POINT',[],'POINT',{coordinates:[int(0),int(0)]},'GIVEN'),
+    ...[['C',4,0],['D',6,0],['A',1,4],['E',3,4],['G',1,0]].map(([id,dx,dy])=>node(id,'TRANSLATE_POINT',['B'],'POINT',{dx:int(dx),dy:int(dy)},'DERIVED_INTERMEDIATE')),
+    node('lAD','LINE_THROUGH',['A','D'],'LINE',{},'DERIVED_INTERMEDIATE'),node('lEC','LINE_THROUGH',['E','C'],'LINE',{},'DERIVED_INTERMEDIATE'),node('F','LINE_INTERSECTION',['lAD','lEC'],'POINT',{},'DERIVED_INTERMEDIATE')];
+  const pairs=[['AB','A','B'],['BG','B','G'],['GC','G','C'],['CD','C','D'],['AE','A','E'],['EF','E','F'],['FC','F','C'],['AF','A','F'],['FD','F','D'],['AG','A','G']];
+  const trapezoid={capability:'construction-spike-v1',caption:'사다리꼴 ABCE의 넓이.',mathPlan:{...mathPlan,nodes},displayPoints:['A','B','G','C','D','E','F'],displayLines:[],displayCircles:[],
+    displaySegments:pairs.map(([id,a,b])=>segment(id,a,b)),coordinateLabels:[],rightAngles:[{id:'r0',refs:['A','G','B']}],equalLengths:[{id:'eq0',count:1,segments:['AE','CD']}],
+    planeMarks:{expressionLabels:[{id:'vAG',ownerSegment:'AG',text:'4',factRole:'GIVEN'}],regions:[{id:'rg0',fill:'LIGHT',label:'12',labelPlacement:'LEADER',shapes:[{polygon:['A','B','C','E']}]}],
+      dimensions:[{id:'d0',from:'B',to:'D',label:'6',unit:'cm',side:'BELOW',value:6}]}};
+  const {result,svg}=await render('trapezoid-cut',trapezoid);assert.equal(result.status,'ARCHIVE_BOUND',JSON.stringify(result).slice(0,500));
+  checkLeader(svg,'rg0');
+  const polygon=regionPolygon(svg,'rg0'),leader=tagOf(svg,'<line\\s[^>]*data-role="leader"[^>]*data-owner-label="rg0-label"[^>]*/>');
+  const start=[Number(attr(leader,'x1')),Number(attr(leader,'y1'))],end=[Number(attr(leader,'x2')),Number(attr(leader,'y2'))];
+  const distance=(p,a,b)=>{const dx=b[0]-a[0],dy=b[1]-a[1],l2=dx*dx+dy*dy,t=Math.max(0,Math.min(1,((p[0]-a[0])*dx+(p[1]-a[1])*dy)/l2));return Math.hypot(p[0]-a[0]-t*dx,p[1]-a[1]-t*dy);};
+  // the side the leader crosses: the polygon edge nearest to the point where it leaves the region
+  let exit=start;for(let k=1;k<=400;k++){const q=[start[0]+(end[0]-start[0])*k/400,start[1]+(end[1]-start[1])*k/400];if(!insidePolygon(q,polygon)){exit=q;break;}}
+  const edges=polygon.map((p,i)=>[p,polygon[(i+1)%polygon.length]]);
+  const [a,b]=edges.reduce((best,edge)=>distance(exit,...edge)<distance(exit,...best)?edge:best);
+  const dx=b[0]-a[0],dy=b[1]-a[1],t=((end[0]-a[0])*dx+(end[1]-a[1])*dy)/(dx*dx+dy*dy);
+  const beside=t>=0.2&&t<=0.8&&distance(end,a,b)<=48;
+  assert.ok(!(beside&&distance(start,a,b)<=14),'the label stands beside the middle of the side its leader crosses, tied to a dot that hugs it: it reads as that side\'s length (t='+t.toFixed(2)+')');
+});
