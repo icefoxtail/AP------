@@ -7,6 +7,7 @@ const crypto = require("node:crypto");
 const library = require("../archive/archive2-library.js");
 const output = require("../archive/archive2-output.js");
 const contract = require("../archive/archive2-output-contract.js");
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 function storage(initial = {}, maxBytes = Infinity) {
   const values = new Map(Object.entries(initial));
@@ -690,7 +691,7 @@ test("Saved Library outstanding render is invalidated when workspace leaves the 
     assert.equal(await render, false, "stale success resolves as a non-render result");
     assert.equal(host.innerHTML, "Finder screen");
     assert.equal(global.history.state?.archive2SavedLibrary, undefined);
-    const workspaceSource = fs.readFileSync(path.join(__dirname, "..", "archive", "archive2-workspace.js"), "utf8");
+    const workspaceSource = readWorkspace();
     assert.match(workspaceSource, /state\.view !== "saved"\) window\.Archive2Library\?\.invalidatePendingRequests\?\.\(\);/);
     // A successful load is not announced on screen (2026-11-10); only failures are.
     assert.doesNotMatch(workspaceSource, /status\("저장한 시험지를 불러왔습니다\."\)/);
@@ -1305,5 +1306,48 @@ test("detail mutations invalidate the previous Saved Library list cache before B
     if (previous.localStorage === undefined) delete global.localStorage; else global.localStorage = previous.localStorage;
     if (previous.document === undefined) delete global.document; else global.document = previous.document;
     if (previous.confirm === undefined) delete global.confirm; else global.confirm = previous.confirm;
+  }
+});
+
+test("saved paper snapshot verification allows qpp 2 and rejects qpp 3 and 5", async () => {
+  const { readAndVerifySavedSnapshot, stableStringify } = await import("../apmath/worker-backup/worker/helpers/archive-saved-papers.js");
+  const baseSnapshot = {
+    questions: [{ questionUid: "uid_1" }],
+    meta: { title: "qpp test", grade: "고1", qpp: 2, questionUids: ["uid_1"] },
+    bridgeRows: [{ question_uid: "uid_1" }],
+    selectionFilters: {},
+    verifiedAt: new Date().toISOString(),
+  };
+
+  async function makeRow(qpp) {
+    const snap = { ...baseSnapshot, meta: { ...baseSnapshot.meta, qpp } };
+    const json = stableStringify(snap);
+    const hash = crypto.createHash("sha256").update(json).digest("hex");
+    return {
+      schema_version: "archive-saved-paper-v1",
+      question_count: 1,
+      title: "qpp test",
+      grade: "고1",
+      snapshot_json: json,
+      snapshot_hash: hash,
+    };
+  }
+
+  // qpp 2 저장/검증 성공
+  const verified2 = await readAndVerifySavedSnapshot(await makeRow(2));
+  assert.equal(verified2.meta.qpp, 2);
+
+  // qpp 4, 6, 8 도 계속 성공
+  for (const validQpp of [4, 6, 8]) {
+    const v = await readAndVerifySavedSnapshot(await makeRow(validQpp));
+    assert.equal(v.meta.qpp, validQpp);
+  }
+
+  // qpp 3, 5는 여전히 거절
+  for (const invalidQpp of [3, 5]) {
+    await assert.rejects(
+      async () => readAndVerifySavedSnapshot(await makeRow(invalidQpp)),
+      (err) => err && err.status === 409 && err.message === "저장한 시험지 snapshot 검증에 실패했습니다.",
+    );
   }
 });

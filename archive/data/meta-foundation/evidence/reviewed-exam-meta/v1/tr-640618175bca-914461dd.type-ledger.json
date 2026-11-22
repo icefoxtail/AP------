@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-640618175bca-914461dd",
+  "sourceArchiveFile": "similar/high/h1/1final/26_순천고_1학기_기말_고1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_cd6803271d192681d58723bd86831f114cc74cb92e4eb79c7ad3450d6fad84a3",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+      "templateKey": "TPL_H1_MATRIX_EQUATION_LINEAR",
+      "step": "미지 행렬의 네 성분을 문자로 놓고 행렬곱의 대응 성분을 연립한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bb5ede3f965c4779ad02549dd06492132568aaf669c343589a62b41817e69d54",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "step": "직위가 다른 전체 두 사람 선택에서 둘 다 남학생인 여사건을 뺀다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_91a743760f78bcf4768dc9329e09a1a1ee8cd850b1b40c05e0f0188fe79e7007",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_PERMUTATION_COMBINATION_CALCULATION",
+      "templateKey": "TPL_H1_PERMUTATION_COMBINATION_CALCULATION_FACTORIAL",
+      "step": "순열을 연속 정수의 곱으로 풀어 공통인수를 묶고 증가성을 이용해 자연수 n을 결정한다.",
+      "note": "새 TPL 제안: 순열을 연속 정수의 곱으로 풀어 공통인수를 묶고 증가성을 이용해 자연수 n을 결정한다. 정의: 순열을 연속 정수의 곱으로 풀어 공통인수를 묶고 증가성을 이용해 자연수 n을 결정한다. check-ledger: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5e37362c6075d547a6f3d0b1d4457829b83115b5d7522ddef7f464b6c2dd8c89",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_INEQUALITY_APPLICATION",
+      "templateKey": "TPL_H1_INEQUALITY_APPLICATION_QUANTITY",
+      "step": "한 식품의 무게를 변수로 열량 상한과 단백질 하한을 부등식으로 세워 공통범위의 최솟값을 구한다.",
+      "note": "새 TPL 제안: 한 식품의 무게를 변수로 열량 상한과 단백질 하한을 부등식으로 세워 공통범위의 최솟값을 구한다. 정의: 한 식품의 무게를 변수로 열량 상한과 단백질 하한을 부등식으로 세워 공통범위의 최솟값을 구한다. check-ledger: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_62ce417b1261a795efd424197ebaab33dd494dfac2f1693c8a59b0d5129d9ad6",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "step": "가장 큰 수가 짝수인 경우를 나누고 그보다 작은 수 두 개를 조합으로 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2068085cdfc2428f2d4fef8959fcf98d358f81136588e1dae35213d489c9ccb6",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "step": "나머지 팀 선택 후 전체 배열에서 A와 B를 묶어 세는 인접 배열을 뺀다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a6152c1d5291eae1f30b15014809749a059658845e4dc98a049e7b0cb5010d22",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_EQUATION_APPLICATION",
+      "templateKey": "TPL_H1_EQUATION_APPLICATION_SUM_SQUARE",
+      "step": "내접 직사각형의 대각선이 지름임을 이용해 변의 비에 비례상수를 놓고 피타고라스 방정식을 푼다.",
+      "note": "새 TPL 제안: 내접 직사각형의 대각선이 지름임을 이용해 변의 비에 비례상수를 놓고 피타고라스 방정식을 푼다. 정의: 내접 직사각형의 대각선이 지름임을 이용해 변의 비에 비례상수를 놓고 피타고라스 방정식을 푼다. check-ledger: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_229ff26a0720537cd1dc3994baf039103d4cc6c0479f3c769143b9072309955f",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+      "templateKey": "TPL_H1_SYSTEM_BRANCH_COMMON_ROOT",
+      "step": "제곱차를 인수분해하여 y=x와 y=-x로 나누어 대입하고 양수 해만 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_abea45889c43ad2f5ddcc1d029616d67838a323d14049d2961aad408afe54546",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": "TPL_H1_POLY_DIVISION_IDENTITY",
+      "step": "나머지 차수 제한으로 g의 이차항을 결정하고 몫·나머지 항등식과 정수근 조건으로 남은 계수를 정한다.",
+      "note": "새 TPL 제안: 나머지 차수 제한으로 g의 이차항을 결정하고 몫·나머지 항등식과 정수근 조건으로 남은 계수를 정한다. 정의: 나머지 차수 제한으로 g의 이차항을 결정하고 몫·나머지 항등식과 정수근 조건으로 남은 계수를 정한다. check-ledger: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_51079f0e7d67e461fce348c40e4415fe903730ef42310bf6ca4de52255955f78",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "step": "물건 두 개를 받는 학생과 그 구성별로 나누어 서로 다른 주스의 배치와 같은 빵의 배치를 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    }
+  ]
+}

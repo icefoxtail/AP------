@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-bde9a70553ec-77fc1bdb",
+  "sourceArchiveFile": "original/high/h2/1mid/22_금당고_1학기_중간_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_6f5a8fd9e836fdf58b9e572057ec3fa6f221572af0ae6b83d36fc8e6cf4fdea0",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": null,
+      "step": "8^10=(7+1)^10,2⁹=8³=(7+1)³에서7배수항을 버리면 모두나머지1이므로 같은 요일 월요일을 얻는다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결. 필요한 TPL 제안명: 이항전개를 이용한 요일 나머지. 정의:7의 배수를 포함하는 고차항을 제거하여 경과일수의 나머지를 비교. 구별 단서: 특정 계수 아닌 거듭제곱 일수 전체의 나머지. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-0860f9dd517a-9412e48a",
+  "sourceArchiveFile": "original/middle/m2/1final/22_연향중_1학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_4dae217ef42855e9388e3c6ab6c463d4c0c305389fa61d0599206501473b298d",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
+      "templateKey": "TPL_M2_SELECT_REQUIRED_OPERATION_FOR_VARIABLE_ELIMINATION",
+      "step": "x계수 2와 3의 최소공배수 6을 만들어 ㉠×3-㉡×2로 x항을 소거한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4658bab402d9e4bbf7546f7d041926082dd20b531416a454f4fe3bd76d8b9cbc",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+      "templateKey": "TPL_M2_SOLVE_DECIMAL_SYSTEM_AND_LINEAR_COMBINATION",
+      "step": "분수식에 12, 소수식에 100을 곱하여 3x-2y=8,3x+y=14를 만들고 해 (4,2)의 차 2를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_67aafa8792070e1350e85add229276104c435502282b7424899568b5a2310f47",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+      "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+      "step": "계수 없는 두 식으로 공통해 (-2,5)를 구하고 다른 두 식에 대입하여 a=-4,b=3 및 ab=-12를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bf73519ee8c86e25805ec66ca2db0cd33bffdc238dddd8f3b6fa4d75bfb99684",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+      "templateKey": "TPL_M2_FIND_PARAMETER_FOR_NO_SOLUTION_SYSTEM",
+      "step": "x,y계수비는 -2로 같고 상수비는 달라야 하므로 a=-6,b≠-3/4를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ab5d9589a308e2a677554096654f13f57aa0a3096ddab9eaed985a6331dda98b",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
+      "templateKey": null,
+      "step": "각 승리 횟수 x,y에 대해 3x-2y=5,-2x+3y=10을 세워 B의 승리 횟수 y=8을 구한다.",
+      "note": "새 TPL 제안: 계단 이동으로 특정인의 승리 횟수 구하기. 정의: 각 승리 횟수 x,y에 대해 3x-2y=5,-2x+3y=10을 세워 B의 승리 횟수 y=8을 구한다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e76a3f32ea5c9a3aef03158e10fb1b433464cf8194e512d82ccc765032643bcb",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "입력 x마다 출력 y가 하나로 정해지는지 확인하여 y=3x인 정삼각형 둘레 관계만 고른다.",
+      "note": "새 TPL 제안: 대응 관계의 함수 여부 판별. 정의: 입력 x마다 출력 y가 하나로 정해지는지 확인하여 y=3x인 정삼각형 둘레 관계만 고른다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_301bb8438f9c973866743ba14ada009b0ee70e1e04a1519eea1d7199e839f298",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": null,
+      "step": "y=ax를 -2만큼 수직 이동하여 y=ax-2로 나타내고 (3,-1)을 대입하여 a=1/3을 구한다.",
+      "note": "새 TPL 제안: 수직 이동 후 지나는 점으로 기울기 결정. 정의: y=ax를 -2만큼 수직 이동하여 y=ax-2로 나타내고 (3,-1)을 대입하여 a=1/3을 구한다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9c58658a15c462b85060acd0dba7c6153be1f99a3135474642750daa4fbf600f",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+      "step": "y=-4x+2의 절편,감소 방향,사분면을 확인하고 기울기 4인 y=4x와 평행하다는 진술을 거른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_49e36e2eb2e7cacc9e0b24eeaccde9a71785ad38266d2b6130cff7e01dfeed3f",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_GRAPH_INTERSECTION_APPLICATION",
+      "templateKey": "TPL_M2_SOLVE_MOTION_GRAPH_INTERSECTION_WORD_PROBLEM_DESCRIPTIVE",
+      "step": "거리 그래프에서 동생 y=20x,형 y=30(x-10)을 세워 교점 시각 x=30을 구하고 형 출발 후 시간 20분으로 환산한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

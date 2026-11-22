@@ -1470,9 +1470,9 @@ window.questionBank = [
     "questionUid": "qid_v1_3f7255c2d69d7a2d4f298ec2b96ce24eb7aa39bb4efbbf46a8181dbd8313b52f",
     "sourceArchiveFile": "original/high/h2/1mid/22_팔마고_1학기_중간_고2_수학I.js",
     "sourceOrdinal": 16,
-    "solutionImage": "assets/images/22_팔마고_1학기_중간_고2_수학I/q16-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 아래로 열린 두 포물선의 꼭짓값은 y=9보다 크고 y=27보다 작다. 각 곡선은 y=3과 y=9에서 각각 두 점과 만나며, y=27에서는 만나지 않는다.",
-    "solutionImageCaption": "각 포물선은 높이 3과 9에서 두 교점을 갖고 27에서는 만나지 않는다. 가능한 자연수 a의 합은 7이고 정답은 ③이다.",
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고2_수학I/q16-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 두 포물선이 있고, 파란 곡선에는 a=3, 주황 곡선에는 a=4 라벨이 붙어 있다. 파란 곡선의 꼭짓점은 y=9보다 높고 주황 곡선의 꼭짓점은 y=27보다 낮으며, 두 곡선 모두 y=3, y=9와 두 점씩 만나고 y=27과는 만나지 않는다.",
+    "solutionImageCaption": "a=3(파란 곡선)과 a=4(주황 곡선)일 때 두 포물선은 모두 y=3, y=9와 두 점씩 만나고 y=27과는 만나지 않는다. 가능한 자연수 a의 합은 7이고 정답은 ③이다.",
     "solutionImageSize": "full",
     "sourceChoices": [
       "① 3",

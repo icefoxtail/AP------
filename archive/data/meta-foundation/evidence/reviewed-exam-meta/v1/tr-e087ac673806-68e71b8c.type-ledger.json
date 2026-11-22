@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-e087ac673806-68e71b8c",
+  "sourceArchiveFile": "original/high/h2/2final/21_효천고_2학기_기말_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_3b454a8276ab5a8f772a0ac47a098a11f09253ac5ca15269c0a6c2ae3f68a778",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+      "step": "질량함수를 B(16,1/4)로 읽고 이차적률을 분산 3과 평균 제곱 16의 합으로 구한다.",
+      "note": "ACTIVE 키·TPL 상위관계 직접 확인; 연결 없음(NEEDS_BINDING).",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8b19c5a6eb0694c464f2a417727312287dbc8782ac484a9a19a3a747d31edb27",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_STANDARDIZATION",
+      "step": "540을 (540-450)/60=1.5로 표준화해 오른쪽 꼬리확률을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5ff09ccc0df080282d8859dcebdc01e414596e65be6ea3cff36d9902b7376505",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "step": "한 번 추출의 분산 5/9를 표본크기 3으로 나눈 뒤 선형변환 계수 9의 제곱을 곱한다.",
+      "note": "ACTIVE 키·TPL 상위관계 직접 확인; 연결 없음(NEEDS_BINDING).",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c4815f04c3717b815fea4a929f1c523abc3f74dda0a7871d9e0585510e4fe8c6",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+      "step": "첫 신뢰구간 오차한계에서 σ=10을 얻고 두 번째 구간 길이로 n=64를 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_53f4ba01e470b389875cbd385dc50723ad802f3b8180091e975e2b8ab83d5b99",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+      "step": "한 시행 A의 성공확률 24/36=2/3과 B의 1/3에 15회를 곱하여 기대득점 차를 구한다.",
+      "note": "ACTIVE 키·TPL 상위관계 직접 확인; 연결 없음(NEEDS_BINDING).",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_76e7396f895549d7ad89ebf690b2642a4e16048d157d4e4ff16c9a6791013631",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+      "step": "고정 신뢰도의 구간 길이는 σ/√n에 비례하므로 다섯 비율을 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_58b34ec1dff6edcbfe6f2b8aedbd6ca32854568f7adfe2f8d441b7f978d570f5",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_NORMAL_RELATION",
+      "step": "판별식 조건을 X≤15 또는 X≥18로 바꾸고 B(48,1/4)의 정규근사로 두 꼬리확률을 더한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5bfcbc21730d1cd626d5990c8e48a151814f8038bf86dc4b882a4ce986d06048",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "step": "한 번 추출의 평균 5/2·분산 1/2에서 200개 표본합의 평균 500·분산 100을 얻어 정규근사한다.",
+      "note": "ACTIVE 키·TPL 상위관계 직접 확인; 연결 없음(NEEDS_BINDING).",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    }
+  ]
+}

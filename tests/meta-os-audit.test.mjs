@@ -227,7 +227,7 @@ test("catalog difficulty rule follows difficultyEligible in general mode", () =>
   const base = { sourceStatus: "VERIFIED", difficultyBucket: 3, difficultyConfidence: "medium", difficultyBoundaryFlag: "B23", legacyLevelCompatibility: "STRONG_CONFLICT" };
   assert.equal(catalogDifficultyUsable(base), true);
   assert.equal(catalogDifficultyUsable({ ...base, sourceStatus: "HOLD" }), false);
-  assert.equal(catalogDifficultyUsable({ ...base, sourceStatus: "HOLD", metaBinding: "content" }), true);
+  assert.equal(catalogDifficultyUsable({ ...base, sourceStatus: "HOLD", metaBinding: "text" }), true);
   assert.equal(catalogDifficultyUsable({ ...base, difficultyConfidence: "HIGH" }), false);
   assert.equal(catalogDifficultyUsable({ ...base, legacyLevelCompatibility: "BORDERLINE_REVIEW" }), false);
   assert.equal(catalogDifficultyUsable({ ...base, difficultyBucket: "UNKNOWN" }), false);

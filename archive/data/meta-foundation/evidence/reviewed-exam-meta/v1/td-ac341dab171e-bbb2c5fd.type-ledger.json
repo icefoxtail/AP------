@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-ac341dab171e-bbb2c5fd",
+  "sourceArchiveFile": "original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_936677bd380ed2ca24ecd556a5e559142af276bc12d4c0f3341037d20763276f",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_RELATIONS_POSITION",
+      "step": "중심각 80도의 현을 보는 기준 원주각 40도와 42도·38도를 비교하여 원 위·안·밖을 판정하면 ①④이다.",
+      "note": "필요 TPL: 같은 현을 보는 각과 원의 안팎 판정; 기준 원주각보다 크거나 작은 각으로 점의 위치와 중심까지 거리를 비교한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_88df42bfe42ca3ea7e4f82e7fe256ccb0d4c29c35fe44b81614db1798903f203",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "step": "원주각에서 호 AB=BC=60도와 DC=134도를 얻고 나머지 AD=106도의 절반으로 ABD=53도를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d25432f163f75c5da045c0522b5fb2d5f08213dd67bf52105e16da23579cd5fd",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_RELATIONS_CONCYCLIC",
+      "step": "수선의 발에서 생기는 직각 두 개가 마주 보는지 확인하면 FDCE만 대각의 합 180도를 보장하지 못한다.",
+      "note": "필요 TPL: 원 내접사각형 판정; 맞은각의 합 180도 또는 같은 선분을 보는 직각 조건으로 네 점의 공원성을 판별한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e02ac097d7b53d941b75261ebcfc2059c66b87ae008d70887d543c07c0bfb794",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_RELATIONS_CONCYCLIC",
+      "step": "120도 외각에 인접한 내각은 60도이고 맞은각 110도와의 합이 170도이므로 원에 내접하지 않는다.",
+      "note": "필요 TPL: 원 내접사각형 판정; 맞은각의 합이 180도인지로 공원성을 판별한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ee1f13e625dbbceaa53719dcc0ff1dc4de65323d3e314c0a5c300db4623a4f80",
+      "sourceOrdinal": 22,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "다섯 배차간격의 평균 7을 구하고 편차 제곱합 20을 5로 나누어 분산 4, 그 양의 제곱근 2를 표준편차로 구한다.",
+      "note": "새 PT 제안: 원자료의 분산·표준편차 직접 계산; 개별 변량의 평균을 구한 뒤 편차 제곱합을 자료 수로 나누고 제곱근을 취한다. 미지 편차 복원이나 계급별 도수분포가 없는 직접 계산을 구별한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

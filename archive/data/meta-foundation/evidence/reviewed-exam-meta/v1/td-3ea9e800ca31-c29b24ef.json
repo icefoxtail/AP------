@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-3ea9e800ca31-c29b24ef",
+  "requestSha256": "5007a683f170734319aa51d68bddce9225c87a77aa8bee44bc968069029228d3",
+  "examUid": "23_한영고_1학기_중간_고2_대수",
+  "sourceArchiveFile": "original/high/h2/1mid/23_한영고_1학기_중간_고2_대수.js",
+  "sourceBlobSha1": "05dc98d3f26d0f18ffdb12b6b749c4e6923a17fe",
+  "sourceRawSha256": "7073128ca2d430c96c30a2516f8c75c543d6734b83394c4a5bebec5899aaec14",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-3ea9e800ca31-c29b24ef.type-ledger.json",
+        "sha256": "5ef7bff7fa6f3dd533e2959c6eed9cbbb868b20f52957bce0876d8ae73fd7169"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_84ba1809c8971d5a41a9b95435b6dc3e731a76a924872f50da040667d77f1168",
+      "sourceArchiveFile": "original/high/h2/1mid/23_한영고_1학기_중간_고2_대수.js",
+      "sourceOrdinal": 14,
+      "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+      "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_EXTREMUM",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-3ea9e800ca31-c29b24ef",
+        "judge": "dots",
+        "rationale": "지수로그 교환식으로 t=3^(log₅x)에 통일하고1≤t≤27에서(t-9)²-81의 최대243·최소-81을 구한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request",
+          "rowCourse": "대수",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "b6b570b1b12982efeadb7c477ce987eea56557c24afa88a9019a29b146da5d1c",
+        "judgedContentFingerprint": "b076feab88af759dcaf3bf3b5b3bd62ad7dc9b5de8d0550d1c5ffcf272e97959",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "9678a521181cf7024264ef03d8a2413671ee48bfd4604317984a1d9070293905",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-3ea9e800ca31-c29b24ef.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 21
+}

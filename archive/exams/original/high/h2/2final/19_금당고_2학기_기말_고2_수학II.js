@@ -119,7 +119,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=x²+x와 그 위의 점 (1,2)에서 접하는 직선 l이 그려져 있고, 포물선의 꼭짓점 (−1/2,−1/4)에도 점과 좌표가 표시되어 있다.",
+    "solutionImageCaption": "접선 y=ax−1의 기울기 a는 x=1에서의 미분계수 f′(1)=2·1+1=3이다. 따라서 답은 ③ 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -159,7 +163,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=x²−1의 0≤x≤1 부분이 그려져 있고, 두 끝점 (0,−1)과 (1,0)을 잇는 직선 l, 구간 안에서 l과 나란한 접선 m이 점 T에서 포물선에 닿아 있다.",
+    "solutionImageCaption": "평균변화율 (f(1)−f(0))/(1−0)=1이고 f′(x)=2x이므로 2c=1, c=1/2이다. 따라서 답은 ② 1/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -199,7 +207,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 속도 그래프가 (1,2)에서 (3,−2)까지 곧게 내려가고, 가로축과 만나는 곳을 기준으로 위쪽 영역 P와 아래쪽 영역 N이 각각 회색으로 칠해져 있다.",
+    "solutionImageCaption": "위치변화량은 속도를 1부터 3까지 적분한 값으로, 가로축 위 영역 P의 넓이와 아래 영역 N의 넓이가 같아 서로 상쇄된다. 따라서 답은 ③ 0이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -240,7 +252,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 사차 곡선이 (−3,14)에서 시작해 (−2,−11)까지 내려갔다가 (0,5)에서 봉우리를 이루고 (1,−2)에서 끝나는 모습이 그려져 있으며, 네 점에 좌표가 표시되어 있다.",
+    "solutionImageCaption": "닫힌구간 [−3,1]에서 최댓값은 x=−3일 때 14, 최솟값은 x=−2일 때 −11이므로 그 합은 3이다. 따라서 답은 ⑤ 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -280,7 +296,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수 곡선이 원점 (0,0)에서 가로축에 접한 뒤 (2,−16)까지 내려갔다가 (3,0)에서 가로축을 지나 오른쪽 위로 올라가는 모습이 그려져 있고, 곡선 곁에 y=f′(x)라는 이름과 세로축에 −16 눈금이 있다.",
+    "solutionImageCaption": "f′(x)=4x²(x−3)는 x=0에서 가로축에 접해 부호가 바뀌지 않고, x=3에서 음에서 양으로 바뀐다. 따라서 극값은 x=3의 극솟값 f(3)=−25 하나뿐이고 답은 ④ −25이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -448,7 +468,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 사차 곡선이 원점 (0,0)에서 시작해 (1,7)까지 올라간 뒤 (3,−9)까지 내려가는 구간 그래프가 그려져 있고, 세 점에 좌표가 표시되어 있다.",
+    "solutionImageCaption": "0≤x≤3에서 곡선의 최댓값은 7, 최솟값은 −9이므로 −10≤p(x)+k≤10을 모든 x에서 만족하려면 −1≤k≤3이다. 따라서 정수 k의 최댓값은 3이고 답은 ① 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -528,7 +552,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: a=−1/2일 때의 ∩ 모양 포물선 y=−3x²−2x−1/2이 가로축 아래에 그려져 있고, 꼭짓점 (−1/3,−1/6)에 지시선이 달린 좌표와 왼쪽 위에 a=−1/2가 표시되어 있다.",
+    "solutionImageCaption": "예: a=−1/2일 때 도함수가 항상 음수라 f가 감소한다. f′(x)=−3x²+4ax+a가 모든 x에서 0 이하이려면 판별식 16a²+12a≤0, 즉 −3/4≤a≤0이다. 따라서 답은 ⑤ −3/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -765,7 +793,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=−x+4와 포물선 y=(x−2)²이 두 점 (0,4), (3,1)에서 만나고, 두 곡선 사이의 영역 S가 회색으로 칠해져 있다. 포물선의 꼭짓점 (2,0)도 표시되어 있다.",
+    "solutionImageCaption": "두 교점이 x=0, 3이고 그 사이에서 직선이 포물선 위에 있으므로 넓이는 ∫₀³(−x²+3x)dx=9/2이다. 따라서 답은 9/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -799,7 +831,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: a=3/2일 때 삼차 곡선이 두 극값 지점에서 방향을 바꾸고, 수평선 y=a가 곡선과 세 점에서 만나는 모습이 그려져 있다.",
+    "solutionImageCaption": "예: a=3/2일 때 수평선 y=a가 곡선과 세 점에서 만난다. 접선의 개수는 수평선 y=a와 A(t)=−2t³+3t²+1의 교점 수와 같고, 두 극값 1과 2 사이에서 세 점이 된다. 따라서 답은 1<a<2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -834,6 +870,10 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_금당고_2학기_기말_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 닫힌구간의 양 끝 (0,0)과 (2,0)에서 가로축과 만나고 그 사이에서 한 번 내려갔다 올라오는 사차 곡선이 그려져 있으며, 가장 낮은 점에 좌표가 표시되어 있다. 가로축에 1, 세로축에 −1 눈금이 있다.",
+    "solutionImageCaption": "u=r−1로 두면 0≤u≤2에서 f(1)f′(1)=−u³(2−u)이고, 양 끝 u=0, 2에서 0, u=3/2에서 −27/16을 갖는다. 따라서 답은 최댓값 0, 최솟값 −27/16이다.",
+    "solutionImageSize": "full"
   }
 ];

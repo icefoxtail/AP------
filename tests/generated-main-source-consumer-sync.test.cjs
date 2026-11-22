@@ -137,13 +137,22 @@ test('single writer owns complete source projection; Pages requires its exact ve
  assert.match(registration,/contents: read/);
  assert.doesNotMatch(registration,/^  push:/m,'main source registration belongs to the serialized writer');
  assert.doesNotMatch(registration,/contents:\s*write|pull-requests:\s*write|gh pr (?:create|merge)|git push/);
- const prepare=writerWorkflow.indexOf('node tools/ci/archive-registration-writer.mjs --work-dir');
- const persist=writerWorkflow.indexOf('node tools/ci/git-push-derived-with-retry.mjs');
- const persistedCheck=writerWorkflow.indexOf('node tools/ci/archive-registration-writer.mjs --check');
- const dispatch=writerWorkflow.indexOf('gh workflow run archive-pages-release.yml');
- assert.ok(prepare>=0&&prepare<persist&&persist<persistedCheck&&persistedCheck<dispatch,
-  'only the writer prepares, commits, verifies the persisted snapshot and then dispatches publication');
- assert.equal((writerWorkflow.match(/git-push-derived-with-retry\.mjs \\/g)||[]).length,1,'one controlled persistence path');
+ // The register job saves twice (required lanes, then the full pass); each save is prepared by the writer, checked, then published.
+ const register=writerWorkflow.slice(writerWorkflow.search(/^  register:/m));
+ const at=(text,from=0)=>register.indexOf(text,from);
+ const prepareRequired=at('archive-registration-writer.mjs --required-only --work-dir');
+ const persistRequired=at('node tools/ci/git-push-derived-with-retry.mjs',prepareRequired);
+ const requiredCheck=at('node tools/ci/archive-registration-writer.mjs --check',persistRequired);
+ const requiredDispatch=at('gh workflow run archive-pages-release.yml',requiredCheck);
+ const prepare=at('node tools/ci/archive-registration-writer.mjs --work-dir',requiredDispatch);
+ const persist=at('node tools/ci/git-push-derived-with-retry.mjs',prepare);
+ const persistedCheck=at('node tools/ci/archive-registration-writer.mjs --check',persist);
+ const dispatch=at('gh workflow run archive-pages-release.yml',persistedCheck);
+ assert.ok(prepareRequired>=0&&prepareRequired<persistRequired&&persistRequired<requiredCheck&&requiredCheck<requiredDispatch&&requiredDispatch<prepare&&
+  prepare<persist&&persist<persistedCheck&&persistedCheck<dispatch,
+  'only the writer prepares, commits, verifies each persisted snapshot and then dispatches publication');
+ assert.equal((writerWorkflow.match(/git-push-derived-with-retry\.mjs \\/g)||[]).length,2,'two controlled persistence paths: required lanes, then the full pass');
+ assert.match(writerWorkflow,/registered_main_sha="\$FIRST_SAVE_SHA"/,'the first publication also receives the persisted SHA explicitly');
  assert.match(writerWorkflow,/registered_main_sha="\$REGISTERED_MAIN_SHA"/,'Pages receives the persisted SHA explicitly');
 
  const build=release.slice(release.indexOf('\n  build:\n'),release.indexOf('\n  deploy:\n'));

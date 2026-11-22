@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-2fd18302f017-cb509c68",
+  "sourceArchiveFile": "original/high/h1/1mid/19_효천고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_47ee606b1b98308363d0365916e7f41a12ffef43eb7e12d97c4a39ff9f3f7de7",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+      "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+      "step": "보기의 다항식을 각각 전개하여 계수와 부호가 일치하는 식을 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2b3f303b6e6308420c03f965edb6871322137c47ed5aba939fa0cd2d8274c62e",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": "TPL_H1_POLY_DIVISION_SCALE",
+      "step": "제수를 2배 하면 나눗셈 항등식의 몫은 1/2배가 되고 나머지는 그대로임을 확인한다.",
+      "note": "새 TPL 제안: 상수배 제수의 몫과 나머지. 정의: 제수를 0 아닌 상수배할 때 몫을 역비례 조정하여 나눗셈 항등식을 유지한다. 새 TPL 제안: 제수를 2배 하면 나눗셈 항등식의 몫은 1/2배가 되고 나머지는 그대로임을 확인한다. 정의: 제수를 2배 하면 나눗셈 항등식의 몫은 1/2배가 되고 나머지는 그대로임을 확인한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6dca7afe98d3a82ba84f35a4b1be3dc608eeb97dac2df1ccfe82e630ac33bd7e",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "step": "제곱차와 세제곱차를 인수분해하여 두 분수의 공통인수를 약분한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6f9cc399c7fe2a9fe54ea2e1e59cac0a0417bb2bc139dec29633d39dfc88205e",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+      "step": "실계수의 켤레근 1+i를 이용해 m+n=2,mn=-1을 정하고 세제곱합을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_29783e6cd45d4ef2bc3d117804584d59fec8a8aeeb1170a1f2e630e7706b2add",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "step": "높이식을 -4(t-3)²+64로 고쳐 꼭짓점을 구하고 높이 0인 양의 시각을 선택한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dda13ce55005d501dc65a366210f7b41daa0e20fab4fd456c6543d3852f0d8ff",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+      "step": "켤레곱이 실수 제곱합이라는 성질과 성분비교로 각 복소수 방정식의 해 존재성을 확인한다.",
+      "note": "원본 보기의 세 명제 직접 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_10eee74922a0c6e2336afa98280b4020895323f9c1e3a9060672732889924401",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER",
+      "step": "완전제곱식의 전역 최솟값 k-4가 양수여야 하므로 k>4로 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c4e3718051be5d2ca3e35cb09223346ba1cb78188a3caeea35bcb6bf59e93255",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+      "step": "세제곱합을 전개한 뒤 혼합항을 묶어 3(x+y)(y+z)(z+x)로 인수분해한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_019bfd82fd6c633fcb458ae23a10fc3923bd5282c6a39a9aaee97e655be4aa3b",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+      "step": "나눗셈 항등식과 ω²=-1로 f,g를 복원한 뒤 x(f+g)를 이차식으로 직접 나눠 몫과 나머지를 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

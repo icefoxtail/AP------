@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-cbd66fd11224-49c0276d",
+  "sourceArchiveFile": "similar/high/h1/1mid/26_강남여고_1학기_중간_고1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_1236bece5b052c3f70a36b05d72b0ce6b18927a68c94f18edee650284acd9581",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+      "step": "복소수의 실수부를 0으로 놓고 허수부가 0이 아닌지 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_21b373a5849470340c00a748105bbcd54aa32518cb993b1ba0886e12bacb64b8",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "step": "아래로 열린 포물선의 꼭짓점 최댓값이 음수여야 x축과 만나지 않음을 이용한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6d0e998b04866449fbf62dfdb12aa5e992f64489d567ecb72cd434e6787dac3e",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_ROOT_COEFFICIENT_RELATION_EQUATION",
+      "step": "유리수계수 방정식의 무리근 짝을 정하고 두 근의 합과 곱으로 직선 계수를 구한다.",
+      "note": "새 TPL 제안: 유리수계수 방정식의 무리근 짝을 정하고 두 근의 합과 곱으로 직선 계수를 구한다. 정의: 유리수계수 방정식의 무리근 짝을 정하고 두 근의 합과 곱으로 직선 계수를 구한다. check-ledger: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ba5d0922f2e786a64096a100d4ebff7ca4a364a99db43cd412f75b6723d618d0",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "step": "두 항씩 묶어 (x+y)²(x-y)로 인수분해하고 근호의 합과 차를 대입한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3044b7057662d92c9c4050b75776002351665d94f0aa2d98c957213d7e0d19f0",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+      "step": "근의 차의 제곱을 근의 합의 제곱에서 곱의 네 배를 뺀 식으로 바꾸어 k를 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_eca1d82c1c2627bd376b13f1a049aad52600f07cf405105f49a7d86b0777ae00",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": "TPL_H1_POLY_DIVISION_SCALE",
+      "step": "제수의 상수배 관계를 나눗셈 항등식에 반영해 몫의 배율을 구한다.",
+      "note": "새 TPL 제안: 제수의 상수배 관계를 나눗셈 항등식에 반영해 몫의 배율을 구한다. 정의: 제수의 상수배 관계를 나눗셈 항등식에 반영해 몫의 배율을 구한다. check-ledger: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fafaeb04425a12374ea56e8c8743f8967e6ba8e1702233f8ba6b6b762f4cfc08",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_GRAPH_INTERSECTION_ROOT_LOCATION",
+      "step": "작은 근은 1과 3 사이이고 큰 근은 3보다 큰 조건을 f(1)>0과 f(3)<0으로 나타낸다.",
+      "note": "새 TPL 제안: 작은 근은 1과 3 사이이고 큰 근은 3보다 큰 조건을 f(1)>0과 f(3)<0으로 나타낸다. 정의: 작은 근은 1과 3 사이이고 큰 근은 3보다 큰 조건을 f(1)>0과 f(3)<0으로 나타낸다. check-ledger: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c351bcd94511ab772845dcd693021266321f39bafb5791386dd11a99427c00b4",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "step": "교점 두 x좌표를 차함수의 근으로 놓아 인수형을 만들고 완전제곱식으로 최고점을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_07c01c63b9ccc908aca2cfa05687fce111996e76d86060e786e62a96f0ed7fb5",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "templateKey": "TPL_H1_FACTOR_THEOREM_RESTORE",
+      "step": "삼차식에서 일차식을 빼 세 영점을 갖게 만든 뒤 인수정리와 최고차항 계수로 함수를 복원한다.",
+      "note": "새 TPL 제안: 삼차식에서 일차식을 빼 세 영점을 갖게 만든 뒤 인수정리와 최고차항 계수로 함수를 복원한다. 정의: 삼차식에서 일차식을 빼 세 영점을 갖게 만든 뒤 인수정리와 최고차항 계수로 함수를 복원한다. check-ledger: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_08c839e579d477f98a3b11bc0858c1377e4887e656d88a68342426eaaa640d00",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY",
+      "step": "그래프가 모든 k에서 한 점에서 만나므로 판별식이 k에 대한 영항등식이 되도록 계수를 정한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    }
+  ]
+}

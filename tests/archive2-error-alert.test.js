@@ -7,6 +7,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const core = require('../archive/archive2-core.js');
 const archiveSource = require('../archive/archive2-source.js');
+const { readWorkspace, loadWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, 'archive', file), 'utf8');
@@ -41,7 +42,7 @@ class FakeElement {
   click() { (this.listeners.click || []).forEach(fn => fn({ target: this })); }
 }
 
-function load() {
+function load({ detail = false } = {}) {
   const nodes = new Map();
   const body = new FakeElement('body');
   const documentListeners = {};
@@ -89,14 +90,12 @@ function load() {
     Archive2Papers: require('../archive/archive2-papers.js'),
     Archive2History: require('../archive/archive2-history.js'),
     Archive2Source: archiveSource,
+    ...(detail ? { Archive2ErrorDetail: require('../archive/archive2-error-detail.js') } : {}),
   });
   ctx.window = ctx;
-  const source = read('archive2-workspace.js');
-  const startup = source.lastIndexOf('  (async () => {');
-  assert.ok(startup > 0);
-  vm.runInContext(source.slice(0, startup) + `
+  loadWorkspace(ctx, `
     globalThis.alertTest = { status };
-  })();`, ctx);
+  `);
   return {
     status: ctx.alertTest.status,
     body,
@@ -183,7 +182,7 @@ test('the alert is styled to be seen: >=14px text, >=44px close target, above ba
 });
 
 test('teacherErrorMessage drops a leading CODE: but keeps the Korean reason behind it', () => {
-  const source = read('archive2-workspace.js');
+  const source = readWorkspace();
   const start = source.indexOf('  const HANGUL = ');
   const end = source.indexOf('  // Errors also get a fixed, dismissible alert');
   assert.ok(start > 0 && end > start, 'teacherErrorMessage block found');
@@ -193,4 +192,64 @@ test('teacherErrorMessage drops a leading CODE: but keeps the Korean reason behi
   assert.equal(teacherErrorMessage(new Error('Failed to fetch'), '다시 시도해 주세요.'), '다시 시도해 주세요.');
   assert.equal(teacherErrorMessage(new Error('SERVER_ERROR: internal'), '다시 시도해 주세요.'), '다시 시도해 주세요.');
   assert.match(teacherErrorMessage(null), /다시 시도/);
+});
+
+// ---- 어느 시험지 몇 번 문항인지 (archive2-error-detail.js) ------------------------------------------------------
+test('with the detail module: English text moves into a folded detail, the headline stays one Korean sentence', () => {
+  const h = load({ detail: true });
+  h.status('Failed to fetch', true, new Error('Failed to fetch'));
+  const toast = toastOf(h.body);
+  assert.match(toast.firstChild.textContent, /다시 시도하고, 계속되면 관리자에게 알려 주세요/);
+  assert.doesNotMatch(toast.firstChild.textContent, /Failed|fetch/);
+  const slot = toast.children[1];
+  assert.match(slot.innerHTML, /data-ap-error-toggle[^>]*aria-expanded="false"/);
+  const detailApi = require('../archive/archive2-error-detail.js');
+  const entry = detailApi.lookup(/aria-controls="([^"]+)"/.exec(slot.innerHTML)[1]);
+  assert.match(entry.detailText, /원문: Failed to fetch/, 'the original text is in the detail, not lost');
+  assert.doesNotMatch(slot.innerHTML, /Failed to fetch/, 'and it is not in the page HTML until the teacher opens it');
+  assert.match(entry.copyText, /화면: /);
+});
+
+test('with the detail module: a located error says which exam and question in the alert', () => {
+  const h = load({ detail: true });
+  const detailApi = require('../archive/archive2-error-detail.js');
+  const error = detailApi.annotate(new Error('문항의 source fingerprint가 일치하지 않습니다.'),
+    { file: 'original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js', questionNo: 23, code: 'QUESTION_NOT_FOUND' });
+  h.status(error.message, true, error);
+  const toast = toastOf(h.body);
+  assert.match(toast.firstChild.textContent, /금당중/);
+  assert.match(toast.firstChild.textContent, /23번 문항/);
+  const located = detailApi.lookup(/aria-controls="([^"]+)"/.exec(toast.children[1].innerHTML)[1]);
+  assert.match(located.detailText, /문항 번호: 23/);
+  assert.equal(h.statusLine.textContent, toast.firstChild.textContent, 'the status line says the same one line');
+});
+
+test('a plain Korean message keeps a one-line alert: no detail block', () => {
+  const h = load({ detail: true });
+  h.status('저장 결과를 먼저 확인해 주세요.', true);
+  assert.equal(toastOf(h.body).children[1].innerHTML, '');
+});
+
+test('a Korean sentence the caller wrote stays the headline when the caught error adds the location', () => {
+  const h = load({ detail: true });
+  const detailApi = require('../archive/archive2-error-detail.js');
+  const error = detailApi.annotate(new Error('Network down'), { file: 'a/24_금당중_2학기_중간_중3_수학.js', questionNo: 4, code: 'SOURCE_FETCH_FAILED' });
+  h.status('시험지를 준비하지 못했습니다.', true, error);
+  assert.match(toastOf(h.body).firstChild.textContent, /^시험지를 준비하지 못했습니다. — .*4번 문항/);
+});
+
+test('로그인이 없거나 만료돼 막힌 오류(요청 전 로그인 없음, 401)에는 "선생님 로그인" 단추가 붙고, 403과 일반 오류에는 붙지 않는다', () => {
+  const h = load();
+  const loginOf = () => toastOf(h.body).children.find(child => child.className.includes('error-toast-login'));
+  h.status('시험지를 저장하지 못했습니다. 로그인이 필요합니다.', true, Object.assign(new Error('x'), { requestNotSent: true }));
+  assert.equal(loginOf().hidden, false, '요청 전 로그인 없음');
+  assert.equal(loginOf().textContent, '선생님 로그인');
+  assert.equal(loginOf().href, '../apmath/', '보관함·출제 패널의 로그인 안내와 같은 길(APMS 로그인)');
+  assert.equal(loginOf().target, '_blank', '새 탭이라 이 화면의 초안이 그대로 남는다');
+  h.status('시험지를 저장하지 못했습니다. 로그인이 만료됐습니다.', true, Object.assign(new Error('x'), { status: 401 }));
+  assert.equal(loginOf().hidden, false, '401');
+  h.status('시험지를 저장하지 못했습니다. 권한이 없습니다.', true, Object.assign(new Error('x'), { status: 403 }));
+  assert.equal(loginOf().hidden, true, '403은 권한 없음이라 로그인 단추가 없다');
+  h.status('시험지를 저장하지 못했습니다.', true);
+  assert.equal(loginOf().hidden, true, '일반 오류');
 });

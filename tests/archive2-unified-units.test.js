@@ -11,6 +11,7 @@ const archiveSource = require('../archive/archive2-source.js');
 const Unified = require('../archive/archive2-unified-units.js');
 const UnitCore = require('../archive/unit-past-exams-core.js');
 const { productionCatalog } = require('./helpers/archive2-scope-harness.cjs');
+const { loadWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, 'archive', file), 'utf8');
@@ -70,16 +71,14 @@ function harness(data) {
     Archive2Source: archiveSource,
   });
   ctx.window = ctx;
-  const source = read('archive2-workspace.js');
-  const startup = source.lastIndexOf('  (async () => {');
-  vm.runInContext(source.slice(0, startup) + `
+  loadWorkspace(ctx, `
     render = () => {};
     save = () => {};
     globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderHealth, unifiedHealth, unifiedIndex, planRows, request, pool,
       draft, applyDraft, generate, review, applySourceRoute, filterMarkup, reconcileUnifiedFilters, compactSaveFilters,
       selectedScopeOptions, workspaceMatches, workspaceEligibility, applySavedPaperRevision,
       findExams, reconcileFinderFilters, finderMoreFiltersMarkup, renderComposition};
-  })();`, ctx);
+  `);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
   w.state.useMode = 'general';
@@ -420,9 +419,14 @@ test('drafts from the per-curriculum list restore their questions and drop old s
   assert.deepEqual(plain(w.state.scopes), []);
   assert.match(w.state.scopeNotice, /제외/);
   assert.equal(w.state.selected.length, fresh.selected.length, 'the frozen paper itself is kept');
-  assert.equal(w.state.filters.semanticSubject, '', 'an unknown old subject is dropped');
+  assert.equal(w.state.filters.semanticSubject, 'COMMON_MATH_1', '옛 4과목 목록의 수학(상)은 묶음 규칙의 공통수학1로 받는다(초안이 열리고 과목이 이어진다)');
   assert.equal(w.state.filters.originalCurriculum, '2015');
   assert.match(w.renderScopes(), /제외/);
+  // 수학(하) 옛 값은 공통수학2로, 어느 쪽에도 없는 값은 전체(비움)로 열린다.
+  w.applyDraft({ ...plain(old), filters: { ...old.filters, semanticSubject: 'H1_2015_MATH_DOWN' } });
+  assert.equal(w.state.filters.semanticSubject, 'COMMON_MATH_2');
+  w.applyDraft({ ...plain(old), filters: { ...old.filters, semanticSubject: 'SOMETHING_ELSE' } });
+  assert.equal(w.state.filters.semanticSubject, '', 'a value no list knows is still dropped');
 });
 
 test('compose list stays fast on the real catalog (cold 500 ms budget)', async () => {

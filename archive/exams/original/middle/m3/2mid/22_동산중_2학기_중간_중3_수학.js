@@ -1853,7 +1853,7 @@ window.questionBank =[
     "sourceExamId": "22_동산중_2학기_중간_중3_수학",
     "provenance": "ORIGINAL",
     "score": 6,
-    "content": "그림에서 $\\square ABCD$는 원 $O$에 외접하고 두 대각선이 직교한다. $\\overline{BC} = 9$, $\\overline{CD} = 6$, $x$와 $y$는 선분 $AB$와 $AD$의 길이이며, 대응 순서는 무관하다. $x+y$의 값을 구하여라. (6점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/s03.png\" alt=\"서술형 3번 그림\" style=\"max-width: 250px;\">",
+    "content": "그림에서 $\\square ABCD$는 원 $O$에 외접하고 두 대각선이 직교한다. $\\overline{BC} = 9$, $\\overline{CD} = 6$, $x$와 $y$는 선분 $AB$와 $AD$의 길이이며, 대응 순서는 무관하다. $x+y$의 값을 구하여라. (6점)<br><img src=\"assets/images/22_동산중_2학기_중간_중3_수학/q25-problem-v2.svg\" alt=\"원 O에 외접하는 사각형 ABCD와 서로 수직인 두 대각선 AC, BD를 그린 예시 그림이다. 변 BC=9, CD=6이고 AB=x, AD=y이다.\" style=\"max-width: 270px;\">",
     "choices": [],
     "answer": "15",
     "solution": "접점에서 같은 외부점에 그은 두 접선의 길이는 같으므로 각 꼭짓점에서 접점까지의 길이를 각각 a,b,c,d라 놓으면 AB=a+b, BC=b+c, CD=c+d, AD=d+a이다. 따라서 AB+CD=BC+AD이다. 두 미지 변을 \\(u=AB, v=AD\\)라 두면 \\(u+6=9+v\\), 즉 \\(u-v=3\\)이다. 대각선의 교점을 P라 하자. 두 대각선이 직교하므로 네 삼각형에 피타고라스 정리를 쓰면 \\(AB^2+CD^2=(AP^2+BP^2)+(CP^2+DP^2)=(BP^2+CP^2)+(AP^2+DP^2)=BC^2+AD^2\\). 따라서 \\(u^2-v^2=9^2-6^2=45\\). \\((u-v)(u+v)=45\\)와 \\(u-v=3\\)에서 \\(u+v=15\\). x,y는 이 두 변의 길이이므로 \\(x+y=15\\)이다.",

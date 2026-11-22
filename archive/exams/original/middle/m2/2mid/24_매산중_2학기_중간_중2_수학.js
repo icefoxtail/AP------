@@ -13,7 +13,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -61,7 +61,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -109,7 +109,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -157,7 +157,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -205,7 +205,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -255,7 +255,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -303,7 +303,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -351,7 +351,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -400,7 +400,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -447,7 +447,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -492,7 +492,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -540,7 +540,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -588,7 +588,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -640,7 +640,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -734,7 +734,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -782,7 +782,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -832,7 +832,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -880,7 +880,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -929,7 +929,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -979,7 +979,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -990,6 +990,7 @@ window.questionBank = [
     "answer": "(1) $72^\\circ$ (2) $48^\\circ$",
     "solution": "[키포인트] (1)은 두 이등변삼각형의 각을 차례로 구하고, (2)는 접힌 점까지의 거리가 같다는 성질을 이용한다.\n(1) $AB=AC$이므로 $\\angle BCA=\\angle ABC=24^\\circ$이고 $\\angle BAC=132^\\circ$이다. $B,A,D$가 한 직선 위에 있으므로 $\\angle CAD=180^\\circ-132^\\circ=48^\\circ$이다. $AC=CD$이므로 삼각형 $ACD$에서 $\\angle CDA=\\angle CAD=48^\\circ$이다. 삼각형 $BCD$에서 $\\angle DCE$는 외각이므로 $\\angle DCE=\\angle CBD+\\angle BDC=24^\\circ+48^\\circ=72^\\circ$이다.\n(2) $\\angle A=x$라 하자. $E$는 $AC$ 위에 있으므로 $\\angle EAB=x$이다. $EA=EB$이므로 $\\angle ABE=\\angle EAB=x$이다. 따라서 $\\angle ABC=\\angle ABE+\\angle EBC=x+18^\\circ$이다. 한편 $AB=AC$이므로 $\\angle ABC=(180^\\circ-x)\\div2$이다. 따라서 $x+18^\\circ=(180^\\circ-x)\\div2$이고, $2x+36^\\circ=180^\\circ-x$에서 $3x=144^\\circ$, $x=48^\\circ$이다.\n따라서 (1) $72^\\circ$, (2) $48^\\circ$이다.",
     "image": "assets/images/24_매산중_2학기_중간_중2_수학/q21-problem-visual-v2.svg",
+    "imageScale": 100,
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -1023,7 +1024,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -1034,6 +1035,7 @@ window.questionBank = [
     "answer": "(1) $35^\\circ$ (2) $16\\pi-32$",
     "solution": "[키포인트] (1)은 내심의 각 이등분 성질을, (2)는 같은 원의 반지름으로 만든 이등변삼각형과 부채꼴의 넓이를 이용한다.\n(1) $\\angle A=2x$, $\\angle B=50^\\circ$, $\\angle C=60^\\circ$이다. 따라서 $2x+50^\\circ+60^\\circ=180^\\circ$이므로 $2x=70^\\circ$, $x=35^\\circ$이다.\n(2) $OA=OB$이므로 $\\angle ABO=\\angle BAO=27^\\circ$이다. $OB=OC$이므로 $\\angle OBC=\\angle BCO=18^\\circ$이다. 따라서 $\\angle ABC=27^\\circ+18^\\circ=45^\\circ$이다. $OA=OB$이므로 $\\angle AOB=180^\\circ-27^\\circ-27^\\circ=126^\\circ$이고, $OB=OC$이므로 $\\angle BOC=180^\\circ-18^\\circ-18^\\circ=144^\\circ$이다. 점 $O$ 둘레의 각의 합은 $360^\\circ$이므로 $\\angle AOC=360^\\circ-126^\\circ-144^\\circ=90^\\circ$이다. 부채꼴 $AOC$의 넓이는 $\\pi\\times8^2\\times\\dfrac{90}{360}=16\\pi$이다. 삼각형 $AOC$는 두 변의 길이가 $8$이고 끼인각이 $90^\\circ$인 직각삼각형이므로 넓이는 $\\dfrac{1}{2}\\times8\\times8=32$이다. 따라서 색칠된 부분의 넓이는 $16\\pi-32$이다.\n따라서 (1) $35^\\circ$, (2) $16\\pi-32$이다.",
     "image": "assets/images/24_매산중_2학기_중간_중2_수학/q22-problem-visual-v2.svg",
+    "imageScale": 100,
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -1068,7 +1070,7 @@ window.questionBank = [
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -1079,6 +1081,7 @@ window.questionBank = [
     "answer": "(1) $120\\mathrm{cm}^2$ (2) $50\\mathrm{cm}^2$",
     "solution": "[키포인트] 마름모의 넓이는 두 대각선의 길이의 곱의 절반이며, 같은 높이를 가진 삼각형의 넓이는 밑변의 길이에 비례한다.\n(1) $AC=2\\times10=20\\mathrm{cm}$, $BD=2\\times6=12\\mathrm{cm}$이다. 따라서 마름모의 넓이는 $\\dfrac{1}{2}\\times20\\times12=120\\mathrm{cm}^2$이다.\n(2) 마름모 $ABCD$의 넓이는 $\\dfrac{1}{2}\\times16\\times20=160\\mathrm{cm}^2$이다. 대각선 $BD$는 마름모를 넓이가 같은 두 삼각형으로 나누므로 $\\triangle DBC$의 넓이는 $160\\div2=80\\mathrm{cm}^2$이다. 삼각형 $DBP$와 $DPC$는 높이가 같으므로 넓이의 비는 밑변의 비 $BP:PC=5:3$과 같다. 따라서 $\\triangle DBP$의 넓이는 $80\\times\\dfrac{5}{8}=50\\mathrm{cm}^2$이다.\n따라서 (1) $120\\mathrm{cm}^2$, (2) $50\\mathrm{cm}^2$이다.",
     "image": "assets/images/24_매산중_2학기_중간_중2_수학/q23-problem-visual-v2.svg",
+    "imageScale": 100,
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
@@ -1112,7 +1115,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "도형"

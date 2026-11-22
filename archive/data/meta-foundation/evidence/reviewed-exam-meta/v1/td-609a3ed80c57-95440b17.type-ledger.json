@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-609a3ed80c57-95440b17",
+  "sourceArchiveFile": "textbooks/비상교육_미적분1/비상_미적분1_부정적분과정적분_중단원학습점검_고2/비상_미적분1_부정적분과정적분_중단원학습점검_고2.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_b8c17245c26e0daf81e4b12e2d33877d3325409c88e15950638e6cf47a9e8b61",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+      "step": "피적분식을 전개하고 항별 원시함수를 구해 적분상수를 붙인다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_aefe7ee57e10624360e5c7c8d2aba763be1c02a8825ede3977e78dec33de6296",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "templateKey": "TPL_DEFINITE_EVALUATION",
+      "step": "다항식 원시함수의 위끝과 아래끝 차를 계산하고 합쳐진 구간을 정리한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_55dbfe8b6b0ac9f5aadc2eb18e8fcaf0c5b1044e9078045a02dfba94471cfe2a",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_DERIVATIVE_TO_FUNCTION",
+      "step": "도함수를 적분해 f=x+x²+⋯+xⁿ+C를 얻어 두 함수값 조건을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cb91f723e2b8e41b1e47c8798203775504155b01c016e603ae7bf01afc618437",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_DERIVATIVE_TO_FUNCTION",
+      "step": "접선 기울기를 적분하고 f(-2)=1로 적분상수를 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5b082d6947c89a6e93b84836f0a91a421021b61706b482de1601ddbb08d7ca8a",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_DERIVATIVE_TO_FUNCTION",
+      "step": "도함수를 적분한 뒤 극대점 0과 극소점 1에서 값을 맞춰 계수와 상수를 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fafb28481813fe0cb9e982b6195edebdbe514e2dced2e697c4f6202309db60f7",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+      "step": "F′=f를 이용해 관계식을 미분하여 xf′=12x³-6x²를 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_73958add426a8abe4c85c7837cf36d24cd26fcd5607abb03be38a94d49799689",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_DIFFERENTIATE_INTEGRAL_RELATION",
+      "step": "등식에 x=a를 대입해 a를 정하고 미분해 f(x)=12x+1을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_10d5d3e7e5fbf88ab4e4b68a454512936098dae6911d2cb97c1f70a783ca8c45",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "templateKey": "TPL_DEFINITE_EVALUATION",
+      "step": "x에 대해 정적분한 2a²-8a+5를 완전제곱식으로 바꾸어 최소화한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ead2a9eea1a4bb74f3c5ef6d3b880e152204493c235c3c866e11d61742c67aa4",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM",
+      "step": "두 정적분을 각각 미지수로 놓고 선형성으로 연립한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ab1e67062821c42c3f3774cdacce3402ee127783ac894d30d495d5dbb3bcbc97",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM",
+      "step": "적분구간을 분할하여 목표값을 3+(9-5)로 나타낸다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_43b2ae5215ca506d9c05b4e647080e55a2aded9e04448aba42afceec4719475c",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "templateKey": "TPL_DEFINITE_EVALUATION",
+      "step": "절댓값 부호가 바뀌는 0에서 적분을 나누어 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_be45ad1f45fc7b95f92bee7ad5551ced2d4c35b0dc2df4c5a463b1ebff6078b2",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_DERIVATIVE_TO_FUNCTION",
+      "step": "구간별로 도함수를 적분하고 x=1의 연속성으로 두 적분상수를 연결한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e68e9fdeff3091cc7cb45f29c3b57f78c572845fb290eaac5c28d5141fae5a9b",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_INTEGRAL_VALUE_SYSTEM_FUNCTION_DETERMINATION",
+      "step": "고정구간 정적분을 k로 놓고 적분식에 다시 대입해 k=2+k/2를 푼다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1fae22307d9225489dbbc22fac93bc45291492849465be91e7b7ebfb9fd2473d",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_DIFFERENTIATE_INTEGRAL_RELATION",
+      "step": "첫 관계식을 미분해 g′=f,g(0)=0을 얻고 곱의 식과 연립한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    }
+  ]
+}

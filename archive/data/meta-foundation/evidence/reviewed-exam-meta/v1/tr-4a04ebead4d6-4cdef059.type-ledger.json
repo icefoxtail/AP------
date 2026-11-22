@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-4a04ebead4d6-4cdef059",
+  "sourceArchiveFile": "original/high/h2/2mid/20_매산여고_2학기_중간_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_27b933841f8005e6ddd1f3d8af91e58e7665617624f17b3feb8ef72848bcd469",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+      "step": "평균을 빼고 표준편차로 나눈 변수의 평균 0·표준편차 1로 T의 평균과 표준편차를 구한다.",
+      "note": "ACTIVE 키·TPL 상위관계 직접 확인; 연결 없음(NEEDS_BINDING).",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b21b9cb6e4567ce0aa84d306714c654b71a1b2ec8714dfd12fe4ae0e147c83f0",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+      "step": "Y=10X-2.21로 분포를 -1,0,1로 옮겨 확률을 정하고 분산의 100배 변환을 적용한다.",
+      "note": "ACTIVE 키·TPL 상위관계 직접 확인; 연결 없음(NEEDS_BINDING).",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_700097aa62f6813653b673ba6eab531a1099a432939d4e1fb6ba24093e7a3315",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+      "step": "비복원 두 추출이 모두 홀수일 조건부확률의 곱을 구하고 1에서 뺀다.",
+      "note": "ACTIVE 키·TPL 상위관계 직접 확인; 연결 없음(NEEDS_BINDING).",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1cd1f7b2c47b283336bb69fa7fb81258a923230a97b7dbc86faaa60fe0556161",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "step": "실제 공을 구별한 전체 5P4와 숫자 비감소 순서 8개를 세어 등확률 비율을 계산한다.",
+      "note": "ACTIVE 키·TPL 상위관계 직접 확인; 연결 없음(NEEDS_BINDING).",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}

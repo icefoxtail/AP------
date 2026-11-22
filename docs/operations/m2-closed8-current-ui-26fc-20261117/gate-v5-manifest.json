@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "m2-closed8-gate-navigation-publication-v5",
+  "status": "FROZEN_FOCUSED_PASS_PENDING_INDEPENDENT_AND_ACTUAL_GATE",
+  "baseCommit": "22cdc0c3be1548db4a2f43448a9a6d4bbe4e2302",
+  "operationalFiles": [
+    {
+      "path": "tools/4slot/check-m2-closed8-current-ui-scoped.cjs",
+      "before": {
+        "gitBlobSha1": "421dcf5e33f53b6081c2538f33441f3c112dcec2",
+        "sha256": "b04b4adcb72e57f04ee5c89b9a6e61fbb9fd9b3024899515d917e9f2d4b547ed",
+        "bytes": 48757
+      },
+      "candidate": {
+        "gitBlobSha1": "fb9f50d3e73138dad92f42b54a33b27d1fc2a9af",
+        "sha256": "f4ef050dce38ba9aa51abe96299e5e4db3fe69ba4fee6938fb4d980faaf2990c",
+        "bytes": 49046
+      }
+    },
+    {
+      "path": "tests/m2-closed8-scoped-input-paths.test.cjs",
+      "before": {
+        "gitBlobSha1": "ebe3a2ed35a5b9c16997ce23f6058637e7ab19bc",
+        "sha256": "397d6340e1e945214734500fbe966f6bcae1d54dcdbf26d2e6cc064d33374fcd",
+        "bytes": 3376
+      },
+      "candidate": {
+        "gitBlobSha1": "d1b8e4026225b9c5f62628fe6e1c01847e0530db",
+        "sha256": "9e2ae651cb612d3e062b87ef9f4af55ed135631506e1260397d937593a06a83d",
+        "bytes": 5112
+      }
+    }
+  ],
+  "proofs": [
+    {
+      "path": "exact-two-input-diagnostic-v5.json",
+      "gitBlobSha1": "7d23e54debfdae0df879486d65e429c4caa8d4d5",
+      "sha256": "ecd5c35b576e42a22261b4333e9e1e57d006fac3d0e35f7c614b42a169540cba",
+      "bytes": 3222
+    },
+    {
+      "path": "repair-proof-v5.json",
+      "gitBlobSha1": "c5a6392df2b72312a9a11ace9a73958389d9eebb",
+      "sha256": "695cc792d46eb620fd880aad19868b28aacf3d0ad4a03f0ab6bf948ad5c4728a",
+      "bytes": 2735
+    },
+    {
+      "path": "current-navigation-only-v5.patch",
+      "gitBlobSha1": "fe0d25859a66b2819809f92493f4d12b49917eb2",
+      "sha256": "a7a67b7868add2ed86656a89f0f783f2e4a548d5f36081fcd76fd1e5d6bf2201",
+      "bytes": 2907
+    },
+    {
+      "path": "focused-v5.log",
+      "gitBlobSha1": "17d81ff2482659cdd149f627a07583861c9bb970",
+      "sha256": "cef1e567ebd688f0668dffe5b443d60b7cbe3d743a674fbcfe85624ea89b522a",
+      "bytes": 1764
+    }
+  ],
+  "requiredProductionUnchanged": {
+    "path": "archive/tools/meta-foundation/m2-problem21-current-ui-continuity.mjs",
+    "gitBlobSha1": "0fcbb1be605cd1418bd71fa91b24acd3bda0fc87",
+    "sha256": "b9485fb7db68ea6f15b9e2b4d0f7c0567c9457faa5ab82dfceba903e1a5a6c0b",
+    "bytes": 65666
+  },
+  "actualCiRequired": true,
+  "newRegistrationOrApproval": false
+}

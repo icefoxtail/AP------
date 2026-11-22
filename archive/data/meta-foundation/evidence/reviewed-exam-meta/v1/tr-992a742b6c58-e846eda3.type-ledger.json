@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-992a742b6c58-e846eda3",
+  "sourceArchiveFile": "similar/middle/m1/1mid/19_연향중_1학기_중간_중1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_4deb9ca236f704fe02094a744f0b7cb12539dd895a4fbe0dda0bee9d65524a64",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+      "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_EVALUATE_AND_RANK",
+      "step": "각 덧셈뺄셈 값을14,8,-9,3,-15로 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3f81cd5cc996f28a7531052c40811391a6f183c4619b3c8c2dbdb58c86d2548f",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RECOVER_VALUE_BY_INVERSE_OPERATION",
+      "templateKey": "TPL_M1_RECOVER_VALUE_BY_INVERSE_OPERATION_RECIPROCAL_RELATION",
+      "step": "역수x=-1/2,y=4를 구하고 나누어-1/8을 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_859dfd74d583e67b5800609a6faccb35c5ecd0934168549a50b2282d26d01998",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+      "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_PRODUCT",
+      "step": "나눗셈을 역수의 곱으로 바꾸고 세 음수의 부호를 반영해-1을 구한다.",
+      "note": "새 TPL 제안: 유리수의 혼합연산·규칙합: 부호, 역수와 거듭제곱을 연산순서에 따라 적용하거나 반복항을 짝지어 계산한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4c6a20b2cb731215233785a2f60228835f286578dc9c17157837ed88776d5a2f",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+      "templateKey": "TPL_M1_LITERAL_EXPRESSION_EVALUATION_COMPARE",
+      "step": "주어진x,y를 각 거듭제곱·분수식에 대입해최댓값82/9를 비교한다.",
+      "note": "새 TPL 제안: 거듭제곱·분수식의 수치 대입: 주어진 수를 거듭제곱·분수의 문자식에 대입하고 연산 순서에 따라 값을 계산한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    }
+  ]
+}

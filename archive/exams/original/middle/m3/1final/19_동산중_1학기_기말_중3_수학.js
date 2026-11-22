@@ -161,7 +161,6 @@ window.examData = {
     },
     {
       "id": 12,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_동산중_1학기_기말_중3_수학/q12-solution.svg",
       "solutionImageAlt": "왼쪽은 원래 종이와 오려낸 띠이다. 오른쪽은 남은 네 색 조각을 밀어 붙인 직사각형이며 폭과 높이가 각각 x만큼 줄었다.",
       "solutionImageCaption": "남은 넓이는 (18−x)(10−x)=128이다. 0<x<10에서 x=2 cm이며 정답은 ②이다.",
@@ -180,7 +179,6 @@ window.examData = {
     },
     {
       "id": 13,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_동산중_1학기_기말_중3_수학/q13-solution.svg",
       "solutionImageAlt": "오른쪽 그림에는 아래 직사각형만 각 변의 길이를 유지한 채 90도 돌려 놓았다. 큰 직사각형의 긴 변 1과 작은 직사각형의 긴 변 x가 대응한다.",
       "solutionImageCaption": "닮음에서 1/x=x/(1−x)이다. 양수인 근은 (−1+√5)/2이며 정답은 ⑤이다.",
@@ -249,7 +247,6 @@ window.examData = {
     },
     {
       "id": 17,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_동산중_1학기_기말_중3_수학/q17-solution.svg",
       "solutionImageAlt": "아래로 열린 파란 포물선의 꼭짓점을 지나는 점선이 가로축의 1을 지난다. 세로축의 −2에도 파란 점이 놓인다.",
       "solutionImageCaption": "꼭짓점은 (1,0)이며 y절편은 −2이다. 두 조건을 모두 만족하는 것은 ③이다.",
@@ -304,7 +301,6 @@ window.examData = {
     },
     {
       "id": 20,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_동산중_1학기_기말_중3_수학/q20-solution.svg",
       "solutionImageAlt": "위 그림에서 x가 1인 세로 점선은 파랑과 주황 경계를 잇는다. 아래 수직선에서 계수 −1과 3 사이의 초록 구간을 보고 네 후보 계수를 비교한다.",
       "solutionImageCaption": "−x²≤ax²≤3x²에서 −1≤a≤3이다. 들어가는 계수는 −1/2, 2, 1/3이고 정답은 ⑤이다.",
@@ -323,7 +319,6 @@ window.examData = {
     },
     {
       "id": 21,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_동산중_1학기_기말_중3_수학/q21-solution.svg",
       "solutionImageAlt": "주황 꼭짓점에서 가로축과 세로축으로 보라 점선을 연결했다. 가로 좌표 p는 원점 왼쪽이고 세로 좌표 q는 원점 위쪽이다.",
       "solutionImageCaption": "아래로 열려 a<0이고, 꼭짓점이 y축 왼쪽이며 x축 위이므로 p<0, q>0이다. 정답은 ①이다.",
@@ -374,7 +369,6 @@ window.examData = {
     },
     {
       "id": 25,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_동산중_1학기_기말_중3_수학/q25-solution.svg",
       "solutionImageAlt": "P에서 Q와 S에서 R로 내린 선이 평행하다. 가로 QR은 3이며, 주황 길이 PQ는 2이고 초록 길이 RS는 8이다.",
       "solutionImageCaption": "P=(−1,2), S=(2,8)이다. 사다리꼴 넓이는 (2+8)×3/2=15이다.",

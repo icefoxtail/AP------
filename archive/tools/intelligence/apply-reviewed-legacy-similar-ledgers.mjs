@@ -5,6 +5,7 @@ import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { canonicalJson, safePath } from '../pipeline-core/canonical.mjs';
+import { questionMetadataText, writeMetadataText } from '../meta-foundation/question-metadata-format.mjs';
 
 const archive = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const repo = path.resolve(archive, '..');
@@ -304,6 +305,6 @@ export function applyReviewedLegacySimilarLedgers({ prepareSourceLinksFor } = {}
   };
   delete metadata.digest;
   metadata.digest = sha(JSON.stringify(metadata));
-  fs.writeFileSync(metadataPath, JSON.stringify(metadata, null, 2) + '\n');
+  writeMetadataText(path.resolve(archive, '..'), questionMetadataText(metadata));
   return { status: 'BOUND_REVIEWED_EXISTING_UIDS', uidCount: touched.size, updated };
 }

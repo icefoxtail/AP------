@@ -22,7 +22,6 @@ window.questionBank = [
   },
   {
     "id": 2,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "원래 직사각형 ABCD의 윗변 AD는 6 cm이고 왼쪽 AB는 10 cm이다. 가로로 더 넓고 아래쪽 높이는 낮아진 직사각형의 오른쪽과 밑변이 점선이다.",
     "questionNumber": 2,
@@ -105,7 +104,6 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "위로 열린 y=x²와 같은 높이의 직선 y=9이다. y축과 이 직선이 만나는 점은 A이며 오른쪽 곡선과 만나는 점은 B이다. 그 사이에 D, C가 이 순서로 놓인다.",
     "questionNumber": 6,
@@ -148,7 +146,6 @@ window.questionBank = [
   },
   {
     "id": 8,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "위로 열린 파란 포물선의 오른쪽 가지에 점 B와 D가 있다. 녹색 정사각형 ABCD의 네 변은 두 좌표축과 평행하고 B는 왼쪽 아래, D는 오른쪽 위이다.",
     "questionNumber": 8,
@@ -171,7 +168,6 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "파란 곡선은 위로 열린다. 원점을 지나고 오른쪽 아래에 꼭짓점이 있다. 오른쪽 가지가 양의 부분에서 x축을 지난다.",
     "questionNumber": 9,
@@ -194,7 +190,6 @@ window.questionBank = [
   },
   {
     "id": 10,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "파랑과 주황 두 포물선이 원점을 공통 꼭짓점으로 한다. y=9인 가로선이 두 곡선을 A, B, C, D의 순서로 만난다. 바깥쪽 두 점은 y=x² 위에 놓인다.",
     "questionNumber": 10,
@@ -297,7 +292,6 @@ window.questionBank = [
   },
   {
     "id": 15,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "아래로 열린 포물선의 최고점은 (1, 5)이다. 포물선은 세로축의 3을 지난다. 두 점의 위치를 점선과 눈금으로 표시했다.",
     "questionNumber": 15,
@@ -342,7 +336,6 @@ window.questionBank = [
   },
   {
     "id": 17,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "아래로 열린 곡선의 꼭짓점은 A이다. B는 세로축의 높이 6이며, C와 D는 가로축의 −2와 6에 놓인다. 네 점으로 둘러싸인 영역을 칠했다.",
     "questionNumber": 17,
@@ -453,7 +446,6 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "윗줄에는 세로 방향 타일 네 개가 이어 붙어 있다. 아랫줄에는 같은 타일 두 개를 가로로 돌려 왼쪽부터 붙였다. 아랫줄 오른쪽에 폭 2 cm의 빈 직사각형이 남았다.",
     "questionNumber": 23,
@@ -470,7 +462,6 @@ window.questionBank = [
   },
   {
     "id": 24,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "위로 열린 y=x²−4x−5가 가로축을 A와 B에서 지난다. 축 아래 꼭짓점은 C이고 세 점을 이은 녹색 삼각형이 있다.",
     "questionNumber": 24,
@@ -487,7 +478,6 @@ window.questionBank = [
   },
   {
     "id": 25,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "원점을 지나는 파란 포물선은 아래로 열리고 x=6인 세로 점선에 대칭이다. A와 D는 곡선 위, B와 C는 x축 위 꼭짓점이다.",
     "questionNumber": 25,

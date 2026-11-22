@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-ee86dbbe4b06-a7f70af9",
+  "sourceArchiveFile": "original/high/h1/1mid/24_금당고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_cb04ccb9facb41163291614aa9839c5ca8417b7f1fc503dffb06a9d89842a22d",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "step": "제수 x−1의 근 1을 다항식에 대입한다.",
+      "note": "",
+      "figure": null,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dc7efe351ce17217224ced73621c7e5e675d0e332e20d1618ada79bf835669f7",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "step": "이차식을 인수분해해 두 실근을 크기순으로 정하고 근의 차와 곱을 계산한다.",
+      "note": "",
+      "figure": null,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1e12be5b28d59ab8c7e2873fea8b0e1ed7e542697976fa7ab7e25facaf761b66",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+      "step": "음수 제곱근을 양수 제곱근과 i의 곱으로 바꿔 실수부와 허수부를 정리한다.",
+      "note": "",
+      "figure": null,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4bd32573dc7ff65b7df7e396cdd1e5fd7405f0215ac4c4ffc7c26ebbe3140086",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+      "step": "x=1+2y를 대입하여 y에 대한 항등식의 계수를 비교한다.",
+      "note": "",
+      "figure": null,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_14f0418f84f78de1f75d21f6740d58ecfa973d5bea4349313550b7eedfa0a9b4",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+      "step": "t=x+1로 놓은 다항식에서 홀수차 계수의 합을 (P(1)−P(−1))/2로 구한다.",
+      "note": "",
+      "figure": null,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b17df9195bc55c8820a68cda9ea15fe93d1f18f84fbf57137322cc5603311ffe",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+      "step": "그림의 두 교점의 x좌표를 이용해 f−g를 −(x+a+2)(x−3a−2)로 복원하고 꼭짓점 값을 구한다.",
+      "note": "",
+      "figure": null,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_10d5767a77cc2eba2c0a59d4f51a0403d921f0f51440b08049104b445c87cf10",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+      "step": "x+3=t로 치환하고 t² 미만의 계수를 비교해 반복 일차인수로 나눈 나머지 조건을 적용한다.",
+      "note": "",
+      "figure": null,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

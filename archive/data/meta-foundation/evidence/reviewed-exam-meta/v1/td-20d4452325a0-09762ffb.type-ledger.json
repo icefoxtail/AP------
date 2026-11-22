@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-20d4452325a0-09762ffb",
+  "sourceArchiveFile": "textbooks/비상교육_미적분1/비상_미적분1_함수의극한과연속_대단원학습평가_고2/비상_미적분1_함수의극한과연속_대단원학습평가_고2.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_b53574e9ab0378402ef6b030e440914000988cfe7838168eab7c5ad676af0dba",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_OPERATION_LAWS",
+      "step": "곱의 극한에서 α=-2를 구해 3·3+2α를 계산한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_081492db461112187764f9dde858d105fce15a0447cc49287555ada357a4cf44",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_MULTI_METHOD_CHECK",
+      "step": "⑤를 유리화하면 극한은 -1이므로 제시한 1과 다르다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dc4cb867ddc9c39825378cdac1beb06513b28683770e14a342837cc8eb0b9dc6",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+      "templateKey": "TPL_LIMIT_FINITE_CONDITION_PARAMETER",
+      "step": "f(1)=0으로 f=a(x-1)로 놓고 약분한 극한 a/2=2를 푼다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_354e51ef31d63620132f41e88db0f51b00c2a695ff3f9274ec7420fbf9fc970f",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_GEOMETRY_PARAMETERIZATION",
+      "step": "u=x²에 대해 u+u²=a²이고 OQ/OC=1-u/a로 바꾸어 극한을 구한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dc8519a6f58d6a85e3ca9a1a904b84fa4455350990df4e44470f1a74871661f9",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_SQUEEZE",
+      "step": "x>0에서 부등식을 x로 나누어 f(x)/x→2를 얻어 목표식을 계산한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_44d83d69055656276095c1e34ed685d8cd2375faa350bb194e4f211394167f8a",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONTINUITY_POINT_JUDGMENT",
+      "step": "함숫값의 정의와 좌우극한 일치를 각 함수에 확인한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0f68ac5a9aa97fec74b0ebc587a4acde754f6903c3d672351685d2de779d3963",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_FACTOR_CONDITION",
+      "step": "우변을 (x²-1)(ax+b)로 인수분해해 연속성으로 f= ax+b를 연장한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8e6f725e57d6be40b8ca6460a09b98555edd5c5da93e1ba032ef22ab86bba165",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "step": "x=-2의 수직점근선으로 앞 두 구간의 비유계성을 확인하고 [0,2]의 연속성을 사용한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f2a1a9abf8caf1796d15d6f98e5667b8126dbae64bd3bdbcc89ef1a197584ad7",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+      "templateKey": "TPL_LIMIT_POLYNOMIAL_RECONSTRUCTION",
+      "step": "무한대 조건으로 이차 최고항을 결정하고 f(1)=0 및 약분 극한 2를 맞춘다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e9bc032cdbddcc32e35a7da9a6c4e54e33ab984831b82fabe83845248ab3a2de",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_ASYMPTOTIC_RELATION",
+      "step": "4f-2g→1과 f→∞에서 g/f→2를 얻는다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1f9e37050eedcadde3d9fed1c3633f58a7931bc51760a8cca6e907d2e35d13e8",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_DENOMINATOR_NONZERO",
+      "step": "정의역 전체에서 분모 x²+ax+9가 0이 아니도록 판별식 a²-36<0을 둔다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2ff09b0954aeb6f848da088e9584e5514ac38327240e4f2672d1d3bb2c73dc8f",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION",
+      "step": "그림의 유일한 점프 x=1에서 보정인수 x-a가 0이어야 한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_74c9759e3692194c5154acb08944575f0a9ceab66a544db1daa49dce87cf5253",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_VALUE_EXISTENCE_INTERVAL",
+      "step": "h=f-x³의 끝값 a+1과 a-5가 반대 부호가 되게 -1<a<5로 제한한다.",
+      "note": " 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_미적분1.jsonl"
+    }
+  ]
+}

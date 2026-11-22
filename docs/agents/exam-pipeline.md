@@ -5,7 +5,8 @@
 
 ## 공통 메타 작성·검토·인계
 
-기출·유사·교과서·문제집·교재/평가 문항의 신규 제작은 [확장 메타·4칸·기록 메타 공통 요건](../architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md)을 적용한다. CREATE가 JS와 동반 메타/기록을 함께 작성하고, R1은 blind 동결 뒤 의미·4칸을 검토하며, R2는 최종 해설과 메타를 맞춘다. R3는 누락·최종 판본 결속 및 changed/open/direct-dependency만 확인한다. 이유: 4칸 시범과 별개로 신규 제작의 메타 누락을 막기 위해서다. 단계별 역할·인계/저장 경계·SOURCE_ONLY 예외는 링크의 정본을 따른다.
+기출·유사·교과서·문제집·교재/평가 문항의 신규 제작은 [확장 메타·4칸·기록 메타 공통 요건](../architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md)을 적용한다. CREATE가 JS와 동반 메타/기록을 함께 작성하고, R1은 blind 동결 뒤 의미·4칸을 검토하며, R2는 최종 해설과 메타를 맞춘다. R3는 누락·최종 판본 결속 및 changed/open/direct-dependency만 확인한다. 이유: 4칸 시범과 별개로 신규 제작의 메타 누락을 막기 위해서다. 단계별 역할·인계/저장 경계·SOURCE_ONLY 예외는 링크의 정본을 따른다. 메타는 [metadata.md "최소 한 벌"](metadata.md)대로 작성자가 키·레코드 번호·정수만 고르고 `rpmL1~L4`는 등록기가 채우며, R1~R3은 사본 칸이 비었다는 이유로 반려하지 않는다(2026-11-19).
+유사·생성 문항의 보기 구성과 정답 번호 배열은 [유사문항 보기·정답 번호 정본](similar-choices.md)을 따른다. 이유: 2026-11-19 학생 신고(혼자 순서가 어긋난 보기가 정답임이 드러남).
 
 ## CURRENT HARD — Codex 시험지 FAST LANE / 중복 검수·도구 수정 금지 (2026-10-12 사용자 직접 지시)
 

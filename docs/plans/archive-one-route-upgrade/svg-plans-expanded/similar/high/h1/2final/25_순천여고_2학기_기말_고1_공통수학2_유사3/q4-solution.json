@@ -1,0 +1,49 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "VENN",
+  "sets": [
+   {
+    "id": "P",
+    "name": "P"
+   },
+   {
+    "id": "R",
+    "name": "R"
+   }
+  ],
+  "subset": [
+   "P",
+   "R"
+  ],
+  "labelGap": 10,
+  "elements": [
+   {
+    "text": "(1,1)",
+    "math": true,
+    "in": [
+     "P",
+     "R"
+    ]
+   },
+   {
+    "text": "(2,-1)",
+    "math": true,
+    "in": [
+     "R"
+    ]
+   }
+  ]
+ },
+ "caption": "q에서 x와 y는 같은 부호이고 x+y>0이므로 P=Q이다. p이면 r이므로 P⊂R이지만 (2,-1)은 R의 원소이면서 P의 원소가 아니므로 P=Q⊊R이다. 따라서 ㄱ, ㄷ, ㄹ이 옳고 답은 ⑤이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "p: x>0 이고 y>0, q: x+y>0 이고 xy>0, r: x+y>0 또는 xy>0 의 진리집합 P, Q, R",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "P와 Q가 같은 집합이고 R 안에 포함되며, (2,-1)이 R에만 속함을 보여 준다."
+ ]
+}

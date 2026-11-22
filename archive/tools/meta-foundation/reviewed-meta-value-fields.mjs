@@ -7,7 +7,7 @@ export const REVIEWED_SOURCE_FIELDS = Object.freeze([
 ]);
 export const REVIEWED_META_VALUE_FIELDS = Object.freeze([
   ...REVIEWED_SOURCE_FIELDS, 'sourceFingerprint', 'contentFingerprint', 'curriculum', 'curriculumKey', 'courseKey', 'L1', 'L2', 'L3', 'L4',
-  'rpmL1', 'rpmL2', 'rpmL3', 'rpmL4', 'rpmPrimaryId', 'rpmPrimaryPath', 'rpmSemanticStatus', 'semanticSourceScope', 'semanticScopeRelation',
+  'rpmL1', 'rpmL2', 'rpmL3', 'rpmL4', 'rpmPrimaryId', 'rpmPrimaryRecordId', 'rpmPrimaryPath', 'rpmSemanticStatus', 'semanticSourceScope', 'semanticScopeRelation',
   'primaryMethod', 'decisiveStep', 'integrationReason', 'conceptClusterKey', 'secondaryConceptKeys',
   'difficultyConfidence', 'difficultyBoundaryFlag', 'legacyLevelCompatibility', 'curriculumApplicability', 'defaultSelectable',
 ]);

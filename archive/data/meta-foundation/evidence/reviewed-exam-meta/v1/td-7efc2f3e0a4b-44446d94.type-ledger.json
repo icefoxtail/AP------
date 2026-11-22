@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-7efc2f3e0a4b-44446d94",
+  "sourceArchiveFile": "types/middle/m1/중1_2_기말대비1_입체도형_통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_fcfd7e95b5c51aa7d4e29818cd187dd6876710952fd1a201a786e6db1d71926c",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+      "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+      "step": "다면체는 다각형 면으로 둘러싸인 입체이므로 평면 오각형과 곡면 원뿔은 제외한다.",
+      "note": "검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_01fb6c9ac66b13454632ff03c82e101ce3f8de8a31bf87a1786f8db983d65603",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+      "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+      "step": "기둥·뿔·뿔대의 옆면 정의를 대조하면 오각기둥의 직사각형 옆면만 맞는다.",
+      "note": "검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8c5817dfce90c08a3cb9307d86189244a744cefd62fbe3704acf8b30032bc8dc",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+      "templateKey": "TPL_M1_ROTATION_SOLID_PROPERTIES_CLAIM_AUDIT",
+      "step": "회전축 수직인 비퇴화 단면은 모두 원이므로 다른 모양인 것은 없다.",
+      "note": "모양은 크기가 아닌 원이라는 형태로 해석하고 끝점의 퇴화단면은 제외한다. 검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cc959c649207a19c4d28a75d8c4639c08ca2101e2e5169d2b00ce44879be807c",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+      "step": "해설의 사다리꼴 밑넓이(3+7)×3/2=15로 부피90을 나누어 높이6이다.",
+      "note": " 원문 의심: 발문 표·그림은 누락되었으나 해설에 제시된 수치·표로 결정적 풀이를 판정함; 원그림과의 일치 검증 NOT_RUN. 검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_eac5b91a4e47bf01b415ddfd0beb11a01d96ef446a7b51c91513a33be6316b9c",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+      "step": "해설의 반지름3·모선5를 원뿔 겉넓이πr²+πrl에 대입하여24π이다.",
+      "note": " 원문 의심: 발문 표·그림은 누락되었으나 해설에 제시된 수치·표로 결정적 풀이를 판정함; 원그림과의 일치 검증 NOT_RUN. 검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f4bd01eb8739666c7950766d24c7e58d524b56bdc864851957d9c9e5675b7f28",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+      "step": "해설의 밑변10·높이12로 각뿔 부피(1/3)×100×12=400이다.",
+      "note": " 원문 의심: 발문 표·그림은 누락되었으나 해설에 제시된 수치·표로 결정적 풀이를 판정함; 원그림과의 일치 검증 NOT_RUN. 검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fb7c884dc6911da3194f6dc4db86f0d927e93141b5a7a1d17ff045c7ca6ee82b",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_MEASURE_SPHERE",
+      "step": "구 겉넓이4πr²에 반지름7을 대입하여196π이다.",
+      "note": "필요 TPL: 구·반구의 표면적과 부피. 정의: 구 공식과 바닥 포함 여부,지름으로 결정되는 외접 정육면체의 부피를 계산한다. 검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_80c2d63c01c5ccaf31d4ed59634904c241c5e1dc0d674154cc8c6f0f80d78a89",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_MEASURE_SPHERE",
+      "step": "반구의 곡면과 바닥 원 넓이를 합하면48π,구부피 절반은128π/3이다.",
+      "note": "필요 TPL: 구·반구의 표면적과 부피. 정의: 구 공식과 바닥 포함 여부,지름으로 결정되는 외접 정육면체의 부피를 계산한다. 검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_77129fd2e0433e3896d1c2c25b79a474dad8db515981a6dab031200366306155",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_MEASURE_RATIO",
+      "step": "정육면체 모서리는 구 지름10이므로(500π/3):1000=π:6이다.",
+      "note": "필요 TPL: 구·반구의 표면적과 부피. 정의: 구 공식과 바닥 포함 여부,지름으로 결정되는 외접 정육면체의 부피를 계산한다. 검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c594f3712f1724183935d2048e28e34a1eaa074ed13a5ae7db57bf4d33096ad8",
+      "sourceOrdinal": 17,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M1_STEM_LEAF",
+      "templateKey": null,
+      "step": "해설의 줄기잎 표에서33 초과는30대5명과40대4명으로9명이다.",
+      "note": "제안: 줄기잎 자료의 범위 도수. 정의: 줄기와 잎을 원래 수로 읽고 주어진 경계보다 큰 자료 수를 센다. 원문 의심: 발문 표·그림은 누락되었으나 해설에 제시된 수치·표로 결정적 풀이를 판정함; 원그림과의 일치 검증 NOT_RUN. 검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5501bfc933fe61f0aca7bd9d9ada73e6b869ec9dc5c0b1d8911f9c0107af7825",
+      "sourceOrdinal": 18,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M1_FREQUENCY",
+      "templateKey": null,
+      "step": "해설의 총도수25에서 알려진 도수합19를 빼A=6,B=25이므로 합31이다.",
+      "note": "제안: 도수·상대도수 합의 누락값 복원. 정의: 도수합 또는 상대도수합1과 전체 도수의 관계로 누락 도수·비율을 복원한다. 원문 의심: 발문 표·그림은 누락되었으나 해설에 제시된 수치·표로 결정적 풀이를 판정함; 원그림과의 일치 검증 NOT_RUN. 검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c383f18d205cf5fac2439b59798c674c23d6d175be831f19443759cbb42623e8",
+      "sourceOrdinal": 19,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M1_FREQUENCY",
+      "templateKey": null,
+      "step": "계급값58에서 계급크기6의 절반3을 빼고 더해55이상61미만이다.",
+      "note": "제안: 계급값·크기로 계급 구간 복원. 정의: 계급값에 계급크기의 절반을 더하고 빼어 양 끝을 구한다. 검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6bc7fc0d6d6ba992d98aa77184dd1054d9b0ad2c1470fd653db95c8983fb1494",
+      "sourceOrdinal": 20,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M1_FREQUENCY",
+      "templateKey": null,
+      "step": "히스토그램 높이는 도수에 비례하므로 각 직사각형 넓이가 모두 같다는③은 틀리다.",
+      "note": "제안: 히스토그램·도수다각형 면적 성질. 정의: 계급 폭과 도수 높이의 의미 및 삼각형 분할로 그래프의 넓이 성질을 판단한다. 검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2227845f30a8b1f46c31aeb5d8e3a4642383ce919411407d102a59aabe192442",
+      "sourceOrdinal": 21,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M1_FREQUENCY",
+      "templateKey": null,
+      "step": "동일 계급에서 다각형의 삼각형 조각 넓이가 직사각형 합을 보존하므로1:1이다.",
+      "note": "제안: 히스토그램·도수다각형 면적 성질. 정의: 계급 폭과 도수 높이의 의미 및 삼각형 분할로 그래프의 넓이 성질을 판단한다. 검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    }
+  ]
+}

@@ -213,7 +213,11 @@ window.questionBank = [
     "sourceQid": 4,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q04-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q04-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q04-solution.plan.json",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_유사/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 아래로 볼록한 포물선이 그려져 있고, x축과 만나는 두 점이 표시되어 있다.",
+    "solutionImageCaption": "y=(x+2)(x−7)에서 두 x절편은−2,7이다. 정답 a+b=5.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -242,14 +246,14 @@ window.questionBank = [
     "wide": false,
     "content": "두 이차함수 $y=f(x)$, $y=g(x)$의 그래프가 다음 그림과 같을 때, 이차부등식 $f(x)\\lt g(x)$를 만족시키는 정수 $x$의 개수는? [3점]",
     "choices": [
-      "$1$개",
-      "$2$개",
       "$3$개",
       "$4$개",
-      "$5$개"
+      "$5$개",
+      "$6$개",
+      "$7$개"
     ],
-    "answer": "④",
-    "solution": "$f(x)<g(x)$는 같은 $x$에서 $y=f(x)$의 그래프가 $y=g(x)$의 그래프보다 아래에 있다는 뜻이다.\n그림에서 두 그래프는 $x=-4$, $x=1$에서 만난다.\n두 교점 사이에서는 $g(x)$의 그래프가 위에 있으므로\n$$-4<x<1$$\n이다.\n이 범위에 속하는 정수는 $-3,-2,-1,0$으로 모두 4개이다.\n정답은 ④이다.",
+    "answer": "②",
+    "solution": "$f(x)<g(x)$는 같은 $x$에서 $y=f(x)$의 그래프가 $y=g(x)$의 그래프보다 아래에 있다는 뜻이다.\n그림에서 두 그래프는 $x=-4$, $x=1$에서 만난다.\n두 교점 사이에서는 $g(x)$의 그래프가 위에 있으므로\n$$-4<x<1$$\n이다.\n이 범위에 속하는 정수는 $-3,-2,-1,0$으로 모두 4개이다.\n정답은 ②이다.",
     "image": "assets/images/26_효천고_1학기_기말_고1_유사/q05-problem-readable-v2.svg",
     "imageSize": "full",
     "score": 3,
@@ -301,14 +305,14 @@ window.questionBank = [
     "wide": false,
     "content": "$z=\\dfrac{1+i}{\\sqrt2}$일 때, $z+z^2+z^3+\\cdots+z^{38}+z^{39}$의 값을 구하면? [3.5점]",
     "choices": [
+      "$-3$",
       "$-2$",
       "$-1$",
       "$0$",
-      "$1$",
-      "$2$"
+      "$1$"
     ],
-    "answer": "②",
-    "solution": "먼저 $z^2$를 차례로 계산한다.\n$z^2=\\left(\\dfrac{1+i}{\\sqrt2}\\right)^2$\n$=\\dfrac{(1+i)(1+i)}{2}$\n$=\\dfrac{1+2i+i^2}{2}$\n$=\\dfrac{2i}{2}$\n$=i$\n따라서\n$z^4=i^2$\n$=-1$\n이고,\n$z^8=(-1)^2$\n$=1$\n이다.\n$z^4=-1$이므로 네 쌍씩 묶으면\n$z+z^5=z(1+z^4)=z(1-1)=0$\n$z^2+z^6=z^2(1+z^4)=0$\n$z^3+z^7=z^3(1+z^4)=0$\n$z^4+z^8=z^4(1+z^4)=0$\n이다.\n그러므로 연속한 여덟 항의 합은\n$z+z^2+\\cdots+z^8=0$\n이다.\n$z^8=1$이므로 $z^{m+8}=z^m$이고, 여덟 항마다 같은 합이 반복된다.\n$39=8\\cdot4+7$이므로 처음 $32$항은 여덟 항 묶음 네 개의 합이라 $0$이다.\n남은 일곱 항은\n$z^{33}+z^{34}+\\cdots+z^{39}=z^{32}(z+z^2+\\cdots+z^7)$\n$=z+z^2+\\cdots+z^7$\n이다.\n여덟 항의 합이 $0$이므로\n$z+z^2+\\cdots+z^7=(z+z^2+\\cdots+z^8)-z^8$\n$=0-1$\n$=-1$\n이다.\n따라서 정답은 ②이다.",
+    "answer": "③",
+    "solution": "먼저 $z^2$를 차례로 계산한다.\n$z^2=\\left(\\dfrac{1+i}{\\sqrt2}\\right)^2$\n$=\\dfrac{(1+i)(1+i)}{2}$\n$=\\dfrac{1+2i+i^2}{2}$\n$=\\dfrac{2i}{2}$\n$=i$\n따라서\n$z^4=i^2$\n$=-1$\n이고,\n$z^8=(-1)^2$\n$=1$\n이다.\n$z^4=-1$이므로 네 쌍씩 묶으면\n$z+z^5=z(1+z^4)=z(1-1)=0$\n$z^2+z^6=z^2(1+z^4)=0$\n$z^3+z^7=z^3(1+z^4)=0$\n$z^4+z^8=z^4(1+z^4)=0$\n이다.\n그러므로 연속한 여덟 항의 합은\n$z+z^2+\\cdots+z^8=0$\n이다.\n$z^8=1$이므로 $z^{m+8}=z^m$이고, 여덟 항마다 같은 합이 반복된다.\n$39=8\\cdot4+7$이므로 처음 $32$항은 여덟 항 묶음 네 개의 합이라 $0$이다.\n남은 일곱 항은\n$z^{33}+z^{34}+\\cdots+z^{39}=z^{32}(z+z^2+\\cdots+z^7)$\n$=z+z^2+\\cdots+z^7$\n이다.\n여덟 항의 합이 $0$이므로\n$z+z^2+\\cdots+z^7=(z+z^2+\\cdots+z^8)-z^8$\n$=0-1$\n$=-1$\n이다.\n따라서 정답은 ③이다.",
     "score": 3.5,
     "points": 3.5,
     "difficultyBucket": 3,
@@ -438,7 +442,11 @@ window.questionBank = [
     "sourceQid": 8,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q08-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q08-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q08-solution.plan.json",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_유사/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 a, 세로축 m인 좌표평면에 왼쪽에서 오른쪽으로 내려가다가 꺾인 점을 지나 다시 올라가는 그래프가 그려져 있다. 시작점은 빈 원으로, 그래프가 가로축과 만나는 점은 채운 점으로 표시되어 있다.",
+    "solutionImageCaption": "a>0에서 최소함수 m(a)는0<a≤3일 때−a−9, a>3일 때a²−7a이다. 첫 구간은 음수, 둘째 구간의 영점 중 허용되는 것은7이다. x와 매개변수 a를 구분한다. 정답 a=7. 왼쪽 a=0 및 음수로 이어지는 보조곡선은 비교용 연장이며 실제 최소함수의 정의역은 a>0뿐이며 a=0은 제외한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -634,14 +642,14 @@ window.questionBank = [
     "wide": false,
     "content": "밴드 1팀, 노래 2팀, 댄스 3팀의 서로 다른 6개 공연팀의 순서를 정하려고 한다. 댄스 공연은 모두 밴드 공연 후에 오도록 순서를 정하는 경우의 수를 구하면? [3.8점]",
     "choices": [
+      "$60$",
       "$90$",
       "$120$",
       "$150$",
-      "$180$",
-      "$240$"
+      "$180$"
     ],
-    "answer": "④",
-    "solution": "공연팀 6개는 서로 다르므로 전체 순서 배열은\n$6!=720$\n가지이다.\n밴드팀과 세 댄스팀 네 팀만의 상대 순서를 보면\n$4!=24$\n가지가 모두 같은 횟수로 나타난다.\n이 중 밴드팀이 세 댄스팀보다 앞서는 상대 순서는\n$3!=6$\n가지이다.\n따라서 조건을 만족하는 순서의 비율은\n$\\dfrac{6}{24}=\\dfrac14$\n이고, 구하는 경우의 수는\n$720\\cdot\\dfrac14=180$\n이다.\n따라서 정답은 ④이다.",
+    "answer": "⑤",
+    "solution": "공연팀 6개는 서로 다르므로 전체 순서 배열은\n$6!=720$\n가지이다.\n밴드팀과 세 댄스팀 네 팀만의 상대 순서를 보면\n$4!=24$\n가지가 모두 같은 횟수로 나타난다.\n이 중 밴드팀이 세 댄스팀보다 앞서는 상대 순서는\n$3!=6$\n가지이다.\n따라서 조건을 만족하는 순서의 비율은\n$\\dfrac{6}{24}=\\dfrac14$\n이고, 구하는 경우의 수는\n$720\\cdot\\dfrac14=180$\n이다.\n따라서 정답은 ⑤이다.",
     "score": 3.8,
     "points": 3.8,
     "difficultyBucket": 2,
@@ -714,7 +722,11 @@ window.questionBank = [
     "sourceQid": 13,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q13-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q13-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q13-solution.plan.json",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_유사/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 x, 세로축 h인 좌표평면에 아래로 볼록한 포물선이 그려져 있고, x축과 만나는 두 점과 꼭짓점이 점으로 표시되어 있다.",
+    "solutionImageCaption": "h=f−g의 최고차항 계수는2이다. h≤0의 경계−1,3에서 h=2(x+1)(x−3). h(1)=−8이므로 정답 g(1)−f(1)=8.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -910,14 +922,14 @@ window.questionBank = [
     "wide": false,
     "content": "두 이차정사각행렬 $A,B$에 대하여 $A-B=E$, $A^3-B^3=\\begin{pmatrix}7&0\\\\9&19\\end{pmatrix}$일 때, 행렬 $AB$의 모든 성분의 합은? (단, $E$는 단위행렬이다.) [4.2점]",
     "choices": [
+      "$8$",
       "$9$",
       "$10$",
       "$11$",
-      "$12$",
-      "$13$"
+      "$12$"
     ],
-    "answer": "③",
-    "solution": "먼저 $A-B=E$에서\n$A=B+E$\n를 얻는다.\n$AB=(B+E)B$\n$=B^2+EB$\n$=B^2+B$\n이다. 여기서 $EB=B$인 단위행렬 성질을 썼다.\n또한\n$BA=B(B+E)$\n$=B^2+BE$\n$=B^2+B$\n이다. $BE=B$도 단위행렬 성질이다.\n따라서 $AB=BA$이고, 교환하는 행렬의 세제곱 차 공식에 따라\n$A^3-B^3=(A-B)(A^2+AB+B^2)$\n$=E(A^2+AB+B^2)$\n$=A^2+AB+B^2$\n이다.\n여기에 $A=B+E$를 대입하면\n$A^2+AB+B^2$\n$=(B+E)^2+(B+E)B+B^2$\n$=(B^2+2B+E)+(B^2+B)+B^2$\n$=3B^2+3B+E$\n$=3(B^2+B)+E$\n$=3AB+E$\n이다.\n주어진 행렬을 $N$이라 두면\n$3AB+E=N$\n$3AB=N-E$\n이다.\n그러므로\n$AB=\\dfrac13\\left(\\begin{pmatrix}7&0\\\\9&19\\end{pmatrix}-\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}\\right)$\n$=\\dfrac13\\begin{pmatrix}6&0\\\\9&18\\end{pmatrix}$\n$=\\begin{pmatrix}2&0\\\\3&6\\end{pmatrix}$\n이다.\n모든 성분의 합은\n$2+0+3+6=11$\n이므로 정답은 ③이다.",
+    "answer": "④",
+    "solution": "먼저 $A-B=E$에서\n$A=B+E$\n를 얻는다.\n$AB=(B+E)B$\n$=B^2+EB$\n$=B^2+B$\n이다. 여기서 $EB=B$인 단위행렬 성질을 썼다.\n또한\n$BA=B(B+E)$\n$=B^2+BE$\n$=B^2+B$\n이다. $BE=B$도 단위행렬 성질이다.\n따라서 $AB=BA$이고, 교환하는 행렬의 세제곱 차 공식에 따라\n$A^3-B^3=(A-B)(A^2+AB+B^2)$\n$=E(A^2+AB+B^2)$\n$=A^2+AB+B^2$\n이다.\n여기에 $A=B+E$를 대입하면\n$A^2+AB+B^2$\n$=(B+E)^2+(B+E)B+B^2$\n$=(B^2+2B+E)+(B^2+B)+B^2$\n$=3B^2+3B+E$\n$=3(B^2+B)+E$\n$=3AB+E$\n이다.\n주어진 행렬을 $N$이라 두면\n$3AB+E=N$\n$3AB=N-E$\n이다.\n그러므로\n$AB=\\dfrac13\\left(\\begin{pmatrix}7&0\\\\9&19\\end{pmatrix}-\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}\\right)$\n$=\\dfrac13\\begin{pmatrix}6&0\\\\9&18\\end{pmatrix}$\n$=\\begin{pmatrix}2&0\\\\3&6\\end{pmatrix}$\n이다.\n모든 성분의 합은\n$2+0+3+6=11$\n이므로 정답은 ④이다.",
     "score": 4.2,
     "points": 4.2,
     "difficultyBucket": 4,
@@ -1185,7 +1197,11 @@ window.questionBank = [
     "sourceQid": 22,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q22-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q22-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q22-solution.plan.json",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_유사/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 가운데가 수평인 V자 모양의 그래프와, 높이 7을 지나는 점선 y=7이 그려져 있다. 점선과 그래프가 만나는 두 점이 표시되어 있다.",
+    "solutionImageCaption": "절댓값의 합은−3,2에서 식이 바뀌고 중간 높이는5이다. 수평선 y=7보다 아래인 x범위는−4<x<3, 따라서 a=−4,b=3, 정답 a−b=−7.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1290,7 +1306,11 @@ window.questionBank = [
     "sourceQid": 24,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q24-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q24-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q24-solution.plan.json",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_유사/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 x, 세로축 h인 좌표평면에 아래로 볼록한 포물선의 0≤x≤5 부분이 그려져 있고, 양 끝점과 꼭짓점, x축과 만나는 두 점이 표시되어 있다.",
+    "solutionImageCaption": "원본 f와 g 그림은 유지하고 차이 h만 따로 그렸다. h=c(x−1)(x−7),h(4)=−9에서 c=1. 구간0≤x≤5에서 꼭짓점 최소−9, 두 끝점 높이7,−8을 비교하면 정답 x=0에서 최댓값7.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,

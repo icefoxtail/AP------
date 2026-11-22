@@ -181,10 +181,10 @@ window.questionBank = [
       "$32$"
     ],
     "answer": "③",
-    "solutionImage": "assets/images/21_매산여고_1학기_중간_고2_수학I/q5-solution-v2.svg",
+    "solutionImage": "assets/images/21_매산여고_1학기_중간_고2_수학I/q5-solution-v3.svg",
     "solution": "점선이 직선 $y=x$와 만나는 점이 $(2,2)$이므로 점선의 높이는 $y=2$이다.\n같은 점선이 로그함수 $y=\\log_4(2x)$와 만나는 점의 $x$좌표가 $a$이므로 $\\log_4(2a)=2$이다.\n로그의 정의에 따라 $2a=4^2=16$이고, 따라서 $a=8$이다.\n정답은 ③이다.",
-    "solutionImageAlt": "해설 그림: 직선 y=x와 로그곡선 y=log₄(2x)가 그려져 있다. y=2 수평 점선은 직선 y=x와 점 (2,2)에서 만나고, 로그곡선과 만나는 점에서 x축으로 내린 수직 점선의 x좌표를 a로 표시한다.",
-    "solutionImageCaption": "y=2와 로그곡선의 교점에서 x축으로 내린 수직 투영의 x좌표를 읽는다. 정답은 ③이다.",
+    "solutionImageAlt": "해설 그림: 좌표평면에 주황 직선 y=x와 파란 로그곡선 y=log₄(2x), 가로 점선 y=2가 그려져 있다. 점선 y=2는 직선 y=x와 점 (2,2)에서 만나고, 같은 점선이 로그곡선과 만나는 점에서 x축으로 내린 수선의 발의 x좌표를 a로 표시한다.",
+    "solutionImageCaption": "점선 y=2가 직선 y=x와 만나는 점은 (2,2)이므로 점선의 높이는 2이고, 같은 점선이 로그곡선 y=log₄(2x)와 만나는 점의 x좌표가 a이다. log₄(2a)=2에서 2a=16이므로 a=8이다. 정답은 ③이다.",
     "solutionImageSize": "full"
   },
   {

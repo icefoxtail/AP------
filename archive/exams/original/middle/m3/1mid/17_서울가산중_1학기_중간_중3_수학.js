@@ -159,7 +159,7 @@ window.examData = {
       "standardUnit": "제곱근과 실수",
       "standardUnitOrder": 1,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "subjective-2up",
       "tags": [],
       "wide": false,
       "question": "<p>5. 다음 중 유리수는 모두 몇 개인가? [4점]</p><p>$$\\sqrt{0.25},\\quad \\sqrt{8},\\quad \\sqrt{3}-1,\\quad 8.\\dot{3},\\quad \\sqrt{\\frac{9}{16}}$$</p>",
@@ -201,7 +201,7 @@ window.examData = {
       "standardUnit": "제곱근과 실수",
       "standardUnitOrder": 1,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "subjective-2up",
       "tags": [
         "도형"
       ],
@@ -245,7 +245,7 @@ window.examData = {
       "standardUnit": "제곱근과 실수",
       "standardUnitOrder": 1,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "tags": [
         "도형"
       ],
@@ -361,7 +361,7 @@ window.examData = {
       "standardUnit": "제곱근과 실수",
       "standardUnitOrder": 1,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "tags": [
         "도형"
       ],

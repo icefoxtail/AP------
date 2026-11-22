@@ -118,9 +118,9 @@ function memoryStorage(initial = {}) {
   const map = new Map(Object.entries(initial));
   return { getItem: (k) => (map.has(k) ? map.get(k) : null), setItem: (k, v) => map.set(k, String(v)), removeItem: (k) => map.delete(k), map };
 }
-async function build({ items = [unitItem(1)], api = makeApi(), load = loader(), storage = memoryStorage(), recentCache = Assign.createRecentCache(), uuid = () => UUID, onDone = () => {}, outputLinks = false } = {}) {
+async function build({ items = [unitItem(1)], api = makeApi(), load = loader(), storage = memoryStorage(), recentCache = Assign.createRecentCache(), uuid = () => UUID, onDone = () => {}, outputLinks = false, original = undefined } = {}) {
   const model = Assign.createModel({
-    items, request: api.request, storage, now: () => NOW, onDone, recentCache, uuid, unit: { load },
+    items, request: api.request, storage, now: () => NOW, onDone, recentCache, uuid, unit: { load }, ...(original ? { original } : {}),
   });
   model.state.outputLinks = outputLinks;
   await model.load();
@@ -658,6 +658,17 @@ test("반 전체 + 502(assignment)는 제외를 보내지 않고, 취소된 건�
   await second.model.start();
   assert.equal(cancelled.excludes().length, 0);
   assert.equal(second.model.state.jobs[0].status, "cancelled");
+});
+
+test("단원별 출제는 서버가 index_version을 읽지 않으므로 기준 갱신 거절이 와도 새 기준으로 다시 보내지 않는다", async () => {
+  const api = makeApi({ post: () => { throw httpError(409, { success: false, error: "분류 기준이 갱신되었습니다. 문항 목록을 새로고침하세요." }); } });
+  let refreshes = 0;
+  const { model } = await build({ api, original: { indexVersion: "idx", refreshIndexVersion: async () => { refreshes += 1; return "idx-new"; } } });
+  await pick(model, "c1");
+  await model.start();
+  assert.equal(api.posts().length, 1);
+  assert.equal(refreshes, 0);
+  assert.equal(model.results().stale, 1);
 });
 
 test("이미 낸 출제가 있어 바꿀 수 없는 409는 같은 본문을 다시 보내도 같으므로 '다시 시도'를 주지 않는다", async () => {

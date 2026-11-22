@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-056be82afd35-bc6726ad",
+  "sourceArchiveFile": "original/high/h1/1mid/24_순천고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_c73d0e541cae5650615bd69f0df8db92b019882354eff6e61a38b8a73f1a52ba",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+      "step": "x²+x−1=0을 x로 나누어 x−1/x=−1을 얻고 세제곱 차 항등식을 적용한다.",
+      "note": "",
+      "figure": null,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1bdb8dd74c4d99a5a950851a59ce10f027901a302e7c0fb3feaaefdd762b910f",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+      "step": "음수 제곱근의 곱과 몫의 부호 조건으로 변수의 범위를 정한 뒤 절댓값을 푼다.",
+      "note": "해설 의심: 복소수 문맥에서 √x가 실수여야 한다고 하여 x≥0으로 좁힌 단계는 불필요하다. −1<x≤1에서도 최종 절댓값 결과는 동일하다.",
+      "figure": null,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1aabb5da952b793de858b550333f30709fc8b0086020b422bcd7b6efc70b335d",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+      "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+      "step": "z=a(1−i)를 얻어 계수를 결정한 뒤 z⁴=−4를 이용해 z의 100제곱을 계산한다.",
+      "note": "",
+      "figure": null,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e846305ce8cd661d5a454140b3272f26a91c9b6200da4afe248e9b83429eef60",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+      "step": "서로 다른 일차인수의 중복도를 맞추어 남은 이차식이 각각 완전제곱이 되도록 계수를 비교한다.",
+      "note": "",
+      "figure": null,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_17fee78e3e0c62db0ff6993d60fb5507b276840deadefa1ddfc185c7f801d4bb",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+      "step": "나눗셈 등식의 차수와 계수를 비교해 몫과 나머지의 형태를 구한 뒤 다시 나누어떨어지는 조건을 적용한다.",
+      "note": "",
+      "figure": null,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a10051d2ca58fd7fd8589dec924a0180d2a5629f9d60fe37907e988c6313505a",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_NESTED_DIVISION",
+      "step": "두 나눗셈 등식에서 같은 몫으로 나눈 합동식을 구하고 곱의 나머지는 차수 제한을 추가 확인한다.",
+      "note": "",
+      "figure": null,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c793446a5fde9e933b9def078a68fa01edde74a6bbd4c3b3c4d38db6849c4cf7",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+      "step": "변수 두 개가 같으면 소거되는 교대식의 일차인수들을 찾고 차수와 계수로 전체 인수분해를 결정한다.",
+      "note": "",
+      "figure": null,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

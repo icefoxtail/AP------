@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-aefdf0271fb4-d25eff27",
+  "sourceArchiveFile": "original/high/h2/1mid/22_효천고_1학기_중간_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_16369f0d38ec8fe26316eb755ddb990fe46221151af32e131d36f93d74e799ff",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "step": "조부모를 한 블록으로 묶어 다섯 대상의 원순열4!에 블록내 순서2를 곱한다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fe0e8aa11c2c730b5e1e34feb9e7279fc53050f17edb2dd18c193d82cfc327a6",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "step": "양끝 p,n 순서2와 가운데 a,s,s,i,o의 중복순열5!/2!을 곱해120을 센다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6033516cafc383cc6b16324e02a78dfaca090fa2c015521a6fe3f2ef2667febc",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "step": "그림에서 경유 전 오른쪽2·위2, 후 오른쪽3·위2를 읽어 같은 방향 이동의 순열4C2·5C2=60을 구한다.",
+      "note": "문항·해설 직접 판독. 필수 원본 그림 시각 확인. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d8bd350ebf1f11044cd05c94ec7ebd07ad149b9b046dbafd11c1f37df65836f4",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "step": "정삼각형 자리 배치를 보존하는 회전은120도씩3개이므로 서로 다른 사람의6! 배치를3으로 나눠240을 구한다.",
+      "note": "문항·해설 직접 판독. 필수 원본 그림 시각 확인. 해설의 꼭짓점3자리·변중간3자리 표현은 실제 그림의 각변2자리와 다르지만120도 회전대칭 및 계산은 동일. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_52dfb2a65b4a0d2113ad972ed114f93cc2886ee08714e1ced5c6e451938b3ef8",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "step": "일반항에서 x³ 계수6C3·2³·(-a)³=-160a³를 -4320에 맞춰 a=3을 얻는다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7262747cfcfcd2fc1f3b8f49aa87b2015aec8c6cd77097b22e2c80cb80567a1f",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": null,
+      "step": "89=(90-1)로 전개하면90² 이상 항이810의 배수이므로 -1+21·90의 나머지269만 남는다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결. 필요한 TPL 제안명: 이항전개 고차항 소거 나머지. 정의: 제수의 배수가 되는 거듭제곱 이상 항을 버리고 남는 저차항을 계산. 구별 단서: 특정항 계수나 계수항등식이 아닌 전체 정수의 나머지. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE, TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0a9e639692b0b4fc42db7e9b3cd86d9bb99df87e543924cc60e4547d9420c2d7",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "step": "짝수끼리 인접불가로 홀짝 교대를 강제하고1을 고정한 홀수배열3!에3과 이웃하지 않는6의 위치2와 나머지짝수3!을 곱한다.",
+      "note": "문항·해설 직접 판독. 필수 원본 그림 시각 확인. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_65055105e0562b9d4fe16cb6b514dcf540700272cd8e46d2ba46e7b0775dfa33",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "step": "같은 숫자의 사용한도를 지키고 선행0을 제외하여1~4자리 수144개를 센 뒤 최소5자리10112의 순위145를 얻는다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3e871c7f99cdab6d8b87f87c47e69fcc5f43bde2886da8a37bf73a0a1f67feaa",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "step": "메뉴수별 합Σn·7Cn을 쿠폰 메뉴 하나 먼저 고르는 이중계수로 바꿔7·2⁶=448을 구한다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b61810874fac47a34c00d194eed2e0aaf31a393881e04688892ebe3794433198",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "step": "a+2b=7의 네 해마다 걸음열에서 두단걸음 위치를 (a+b)Cb로 골라1+6+10+4=21을 합한다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3e643935317aefbe229144e83b0d703a8623f481c0a759033534638a543314d8",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "step": "(1+1)^(2n)과(1-1)^(2n)을 더해 짝수항합을 얻고 상수항1을 빼면2^(2n-1)-1≡1 mod3이라 해당n이 없다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

@@ -77,7 +77,6 @@ window.examData = {
     },
     {
       "id": 6,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/20_이수중_1학기_기말_중3_수학/q6-solution.svg",
       "solutionImageSize": "full",
       "solutionImageAlt": "0, 1, 2, 3의 수직선 위에 A와 B가 놓인다. 초록 대각선 AC와 BD의 길이를 원호로 각각 Q와 P까지 옮겼다.",
@@ -152,7 +151,6 @@ window.examData = {
     },
     {
       "id": 11,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/20_이수중_1학기_기말_중3_수학/q11-solution.svg",
       "solutionImageSize": "full",
       "solutionImageAlt": "왼쪽의 큰 정사각형에서 작은 칸을 뺀 뒤 남은 두 조각을 서로 다른 색으로 구분하였다. 오른쪽 직사각형에는 같은 두 조각이 들어간다.",
@@ -171,7 +169,6 @@ window.examData = {
     },
     {
       "id": 12,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/20_이수중_1학기_기말_중3_수학/q12-solution.svg",
       "solutionImageSize": "full",
       "solutionImageAlt": "파란 정사각형 옆에 주황 직사각형 띠를 붙이고 오른쪽 아래에 초록 단위 정사각형을 3줄과 6칸으로 모았다.",
@@ -204,7 +201,6 @@ window.examData = {
     },
     {
       "id": 14,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/20_이수중_1학기_기말_중3_수학/q14-solution.svg",
       "solutionImageSize": "full",
       "solutionImageAlt": "책상과 문이 있던 직사각형을 같은 크기인 넓이 모형으로 나타냈다. 가로 5a와 2의 경계를 기준으로 네 부분 넓이를 본다.",

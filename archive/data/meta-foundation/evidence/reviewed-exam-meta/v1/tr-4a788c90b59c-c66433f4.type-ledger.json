@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-4a788c90b59c-c66433f4",
+  "sourceArchiveFile": "original/high/h1/1mid/20_순천고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_4a9b22b78110a4694f7131afd726597eec7e32119a64a251bfe86096fb8e547b",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT",
+      "step": "일차인수 후보의 영점 x=a+1을 대입해 P(a+1)=0임을 확인한다.",
+      "note": "새 TPL 제안: 일차인수의 영점 대입. 정의: 일차식의 영점을 다항식에 대입해 인수 여부를 판정한다. 새 TPL 제안: 일차인수 후보의 영점 x=a+1을 대입해 P(a+1)=0임을 확인한다. 정의: 일차인수 후보의 영점 x=a+1을 대입해 P(a+1)=0임을 확인한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8baf05675604c23187ec97bc3a64cccbf99efcb2464442670d6b66bdaac33df9",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+      "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+      "step": "ω³=1과 1+ω+ω²=0을 이용해 켤레합·역수·연속 거듭제곱합을 판정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ee6c3ae1385bc29ddede310b7addaa90e0af5fff26287316fcbce332b698598f",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY",
+      "step": "판별식 (2a+4)k+a²+2a가 모든 k에서 0이도록 두 계수를 0으로 둔다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e38b2a30cb423aefdad04a45530c7aeb13c0ad224def86700f9b9ee955355bca",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+      "step": "두 음수근의 제곱근 곱에 음의 부호가 생김을 확인하고 근의 합·곱으로 목표식을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_de49801da1bb9b08c979cd10be4ee049611534ab35d6300ddad69bda6aa629f1",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+      "templateKey": "TPL_H1_SYSTEM_DIRECT",
+      "step": "y=x+2를 제곱합 식에 대입하여 두 해쌍을 구한다.",
+      "note": " 검사 오류: [{\"code\":\"CANONICAL_SUBUNIT_INVALID\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d712fb57d7ec10c041c32e53efc13cb9e606dd06b31108e485e297d5a643aee2",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+      "step": "부호 경계 -1,3으로 구간을 나눠 절댓값을 풀고 해 -2<x<4의 정수 양 끝값을 읽는다.",
+      "note": " 검사 오류: [{\"code\":\"CANONICAL_SUBUNIT_INVALID\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_50222d08e2420cdbd48eca39374212ee4857f044180216fd09bc71e3dabc49b9",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "templateKey": "TPL_H1_ABSOLUTE_DIRECT_INTERVAL",
+      "step": "√((2x-1)²)를 |2x-1|로 바꿔 x+4>±(2x-1)의 공통범위를 구한다.",
+      "note": " 검사 오류: [{\"code\":\"CANONICAL_SUBUNIT_INVALID\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b8617c4c6e72dd76c32a9812b0536da881b99e95b1c521c0510cc24f0ab8a697",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+      "step": "이차식을 인수분해한 해구간 [-4,-1]과 일차부등식 x>-2의 교집합을 취한다.",
+      "note": " 검사 오류: [{\"code\":\"CANONICAL_SUBUNIT_INVALID\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5b22a9184fbb0e1068d37a56e48a5bbd829588c3bf74b3bfcf4c6a3b2677a58d",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_INEQUALITY_APPLICATION",
+      "templateKey": "TPL_H1_INEQUALITY_APPLICATION_QUANTITY",
+      "step": "완료 일수의 조건을 203<N≤210 및 198<N≤207로 모델링하여 새 생산속도의 완료 일수를 정한다.",
+      "note": "새 TPL 제안: 마지막 날 부분 생산의 일수 역산. 정의: 완료 일수에 따른 총량의 반열린 구간을 교집합하여 새로운 생산속도의 완료 일수를 정한다. 새 TPL 제안: 완료 일수의 조건을 203<N≤210 및 198<N≤207로 모델링하여 새 생산속도의 완료 일수를 정한다. 정의: 완료 일수의 조건을 203<N≤210 및 198<N≤207로 모델링하여 새 생산속도의 완료 일수를 정한다. 검사 오류: [{\"code\":\"CANONICAL_SUBUNIT_INVALID\"},{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_538e8c010fc3387b53b316a5d23604104992e4546ad9d3f298985dcb9ded08d1",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+      "templateKey": "TPL_INTERSECTION_GRAPH_COUNT",
+      "step": "절댓값 포물선을 세 구간으로 나누어 수평선 k와의 교점 개수를 세고 끝점 중복과 접점을 제외한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5ba594831454d9a447451fa711df881efd4d3df7c14465ec8e7ac7b916ee6d68",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+      "step": "t=x+2로 근의 위치를 양수 조건으로 바꾸어 판별식 양수와 근의 합·곱 양수를 결합한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

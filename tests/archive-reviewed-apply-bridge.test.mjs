@@ -721,6 +721,6 @@ test("T17 transient packet is absent from final target tree", (t) => {
 
 test("T18 R2 production asset copy has a main-only automatic push trigger", () => {
   const workflow = fs.readFileSync(path.join(projectRoot, ".github/workflows/r2-archive-assets-copy.yml"), "utf8");
-  assert.match(workflow, /workflow_dispatch:\s*\n\s*push:\s*\n\s*branches:\s*\[main\]/);
+  assert.match(workflow, /workflow_dispatch:\n(?: {4,}[^\n]*\n)*  push:\n\s*branches:\s*\[main\]/);
   assert.match(workflow, /archive\/assets\/images\/\*\*/);
 });

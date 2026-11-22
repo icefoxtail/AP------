@@ -796,7 +796,7 @@ window.questionBank = [
       "두 지점의 앙각과 공통 높이"
     ],
     "wide": true,
-    "content": "그림과 같이 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$에서 하늘에 떠 있는 열기구를 올려본각의 크기가 각각 $45^\\circ$와 $60^\\circ$이다. 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$ 사이의 거리가 $100\\,\\text{m}$일 때, 지면에서 열기구까지의 높이는?<br><img src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q15.png\" />",
+    "content": "그림과 같이 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$에서 하늘에 떠 있는 열기구를 올려본각의 크기가 각각 $45^\\circ$와 $60^\\circ$이다. 두 지점 $\\mathrm{A}$와 $\\mathrm{B}$ 사이의 거리가 $100\\,\\text{m}$일 때, 지면에서 열기구까지의 높이는?<br><img data-scale=\"70\" src=\"assets/images/21_왕운중_2학기_중간_중3_수학/q15.png\" />",
     "choices": [
       "$50(2-\\sqrt{2})$",
       "$50(3-\\sqrt{3})$",

@@ -24,7 +24,7 @@ freeze 이후에만 원본 답과 비교하고 오류는 별도 adjudication으�
 1회 deep review에서 전 qid의 META 축을 판정한다.
 1회 deep review에서 전 qid의 VISUAL_SVG 축을 판정한다.
 수학, source fidelity, curriculum, 정답/해설 및 조판을 독립 검수한다. 완전한 학생 입력/그림을 확인해 전 qid 답과 reasoning을 정답·해설 열람 전에 기록·동결하고 그 뒤 비교한다. 현재 해설의 중간 계산·조건 사용 이유·보조선 목적·논리 연결을 검토하며 필요한 교육과정 내 개선을 한다. qid마다 부족점, 실제 수정 전후와 학생 이점 또는 무수정 충분성 이유를 누적 기록하고, concepts/formulas/notations/methods 교육과정 판단을 실제 최종 해설 ID+revision 또는 실바이트 SHA-256에 결속한다. 실제 미검수·UNCERTAIN은 완료로 수납하지 않는다. validator PASS는 의미검수를 대신하지 않는다.
-UID/source/provenance, standardUnit/subUnit, RPM L1-L4, CrossConcept/Condition/Integration/PT/TPL 및 난이도 근거를 대조한다. legacy level 하/중/상은 보존하고 difficultyBucket 1-5와 구분한다.
+UID/source/provenance, standardUnit/subUnit, RPM L1-L4, CrossConcept/Condition/Integration/PT/TPL 및 난이도 근거를 대조한다. 난이도는 difficultyBucket 1-5만 판정한다. 새 문항에 level 하/중/상은 쓰지 않고 기존 값은 지우지 않는다(2026-11-18 사용자 결정).
 불확실한 Meta 근거는 EVIDENCE_DEBT로 적고 추정 또는 가짜 NONE을 채우지 않는다.
 문제용/해설용 시각자료 필요성을 따로 판정하고 실제 SVG·asset 결속을 확인한다.
 해설 작성이 필요할 때 실제 대표 Golden/Negative sample 두 문항을 한 번 확인한다.

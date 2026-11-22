@@ -1,0 +1,133 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -1,
+   13,
+   -1,
+   6
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "SQRT",
+    "radicand": [
+     "0",
+     "3"
+    ],
+    "domain": [
+     "0",
+     "27/4"
+    ],
+    "color": "BLUE",
+    "hideLabels": [
+     "start"
+    ],
+    "hideLabel": true
+   },
+   {
+    "id": "g",
+    "kind": "SQRT",
+    "radicand": [
+     "0",
+     "1"
+    ],
+    "domain": [
+     "0",
+     "49/4"
+    ],
+    "color": "WARM",
+    "hideLabels": [
+     "start"
+    ],
+    "hideLabel": true
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "x": "3",
+     "y": "3"
+    },
+    {
+     "id": "B",
+     "x": "3",
+     "y": "0"
+    },
+    {
+     "id": "C",
+     "x": "9",
+     "y": "0"
+    },
+    {
+     "id": "D",
+     "x": "9",
+     "y": "3"
+    },
+    {
+     "id": "PF",
+     "x": "27/4",
+     "y": "9/2",
+     "unnamed": true
+    },
+    {
+     "id": "PG",
+     "x": "49/4",
+     "y": "7/2",
+     "unnamed": true
+    }
+   ],
+   "segments": [
+    {
+     "id": "ab",
+     "from": "A",
+     "to": "B"
+    },
+    {
+     "id": "bc",
+     "from": "B",
+     "to": "C"
+    },
+    {
+     "id": "cd",
+     "from": "C",
+     "to": "D"
+    },
+    {
+     "id": "da",
+     "from": "D",
+     "to": "A"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "c1",
+     "point": "PF",
+     "text": "y=√(3x)",
+     "labelKind": "MATH",
+     "direction": "N"
+    },
+    {
+     "id": "c2",
+     "point": "PG",
+     "text": "y=√(x)",
+     "labelKind": "MATH",
+     "direction": "E"
+    }
+   ]
+  }
+ },
+ "caption": "두 무리함수 y=√(3x), y=√x의 그래프와, y=√(3x) 위의 점 A, y=√x 위의 점 D, x축에 내린 수선의 발 B, C로 이루어진 직사각형 ABCD를 나타낸 그림이다.",
+ "sourceConditions": [
+  "점 A는 y=√(3x) 위, 점 D는 y=√x 위에 있고 AD는 x축에 평행하며 AD=2AB이다."
+ ],
+ "newVisualInformation": [
+  "두 무리함수의 그래프와 직사각형 ABCD의 위치 관계"
+ ]
+}

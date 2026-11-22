@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-f8355b5fcb78-168cd93f",
+  "sourceArchiveFile": "original/middle/m2/2final/21_이수중_2학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_d93db03d7e1b988abb49905a36d7e97cb97699f6dc92ebbf8182f7750492385e",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_EXISTENCE",
+      "step": "직각삼각형은 한 직각 외 두 예각이 달라질 수 있어 다른 네 종류와 달리 항상 닮지 않음을 구별한다.",
+      "note": " 새 TPL 제안: 닮은 도형의 직접 풀이. 정의: 직각삼각형은 한 직각 외 두 예각이 달라질 수 있어 다른 네 종류와 달리 항상 닮지 않음을 구별한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d508c9e588a18e2dc025e540e6580af9c03846c99188e87a8ca1edce282639a8",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "step": "닮음 기호의 대응순서로 AB:DE=15:5=3:1을 AC:DF에 적용해3을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_69cae8b887be07d6259c1c4ec22411aaaccff5e052b6b1d7243b2441b9da8118",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_AREA_LENGTH",
+      "step": "합동 직각삼각형의 빗변제곱100과 두 빗변의 사이각90도로 목표넓이를100/2로 구한다.",
+      "note": " 새 TPL 제안: 피타고라스 정리·역 및 도형 활용의 직접 풀이. 정의: 합동 직각삼각형의 빗변제곱100과 두 빗변의 사이각90도로 목표넓이를100/2로 구한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    }
+  ]
+}

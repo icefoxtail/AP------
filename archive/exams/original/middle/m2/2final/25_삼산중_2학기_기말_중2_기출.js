@@ -13,7 +13,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -125,7 +125,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -184,7 +184,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -243,7 +243,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -302,7 +302,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -351,7 +351,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -412,7 +412,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -474,7 +474,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형"
     ],
@@ -535,7 +535,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형"
     ],
@@ -596,7 +596,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형"
     ],
@@ -655,7 +655,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형"
     ],
@@ -1018,7 +1018,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형"
     ],
@@ -1079,7 +1079,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형",
       "표"
@@ -1097,6 +1097,7 @@ window.questionBank = [
     "solution": "사각형 $DBEA$의 넓이를 두 가지 방법으로 나타낸 뒤 두 식을 같게 둔다.\n$\\triangle DBC$, $\\triangle ACE$가 직각이등변삼각형이므로 $DC=BC=a$, $CE=AC=b$이다.\n방법 1에서 $[DBEA]=[DBC]+[ACE]=\\dfrac{a^2}{2}+\\dfrac{b^2}{2}=\\dfrac{a^2+b^2}{2}$이다.\n$AC=CE=b$, $BC=CD=a$, $\\angle ACB=\\angle ECD=90^\\circ$이므로 $\\triangle ABC\\cong\\triangle EDC$이고 합동 조건은 SAS이다. 따라서 $DE=AB=c$이다.\n합동에서 $\\angle ABC=\\angle EDC$이다. 그런데 $BC\\perp DC$이므로 같은 크기의 두 각을 각각 서로 수직인 $BC$, $DC$에서 재면 $AB\\perp DE$가 된다.\n그림에서 $H$는 $AB$의 연장선과 $DE$의 교점이므로 $BH=BA+AH=c+AH$이다.\n방법 2에서 $DE$를 공통 밑변으로 보면 $[DBEA]=[DBE]-[AED]=\\dfrac12DE\\cdot BH-\\dfrac12DE\\cdot AH=\\dfrac12DE(BH-AH)=\\dfrac12c\\cdot c=\\dfrac{c^2}{2}$이다.\n따라서 $(A),(B),(C)$는 각각 $\\dfrac{a^2+b^2}{2}$, SAS, $\\dfrac{c^2}{2}$이므로 정답은 ②이다.",
     "solutionImage": "assets/images/25_삼산중_2학기_기말_중2_기출/q20-solution-v2.svg",
     "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q20-problem-visual-v2.svg",
+    "imageScale": 85,
     "imageSize": "tall",
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
@@ -1186,7 +1187,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -1233,7 +1234,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -1289,7 +1290,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 7,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"

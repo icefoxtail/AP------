@@ -1,7 +1,7 @@
 import puppeteer from '@cloudflare/puppeteer';
 import outputContract from '../../../../archive/archive2-output-contract.js';
 
-const PDF_RENDER_REVISION = 'exam-pdf-output-envelope-v2-20261002';
+const PDF_RENDER_REVISION = 'exam-pdf-question-number-dedupe-v1-20261120';
 const DEFAULT_ARCHIVE_BASE_URL = 'https://icefoxtail.github.io/AP------/archive';
 const PDF_STATUS_READY = 'ready';
 

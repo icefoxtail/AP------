@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-q16-engine-negative-current-policy-repair-v1",
+  "author": "/root/m3s2_release",
+  "status": "TEST_ONLY_STATIC_CANDIDATE_UNEXECUTED",
+  "path": "tests/archive-m3s2-current-ui-reuse.test.cjs",
+  "before": {
+    "gitBlobSha1": "28ba356add45f8620c18eb68189037506e01b8e7",
+    "sha256": "07255f9d2036c99af4966f730080bb0a9ed28bc614e41654760a59ac85bc77b1",
+    "bytes": 10741
+  },
+  "after": {
+    "gitBlobSha1": "4679eaa3bd8c11589babe4d2f1a741f976063fa7",
+    "sha256": "f6ca2113f54ac97d06954e7c3234ae7c093a35a3dc41e229b90f73e012f598e7",
+    "bytes": 11069
+  },
+  "delta": {
+    "gitBlobSha1": "6bee4bea77d35caba27fa8f7da3505fbd4cbd168",
+    "sha256": "01168aed99a2eb89bcf84af57bbd540caac85a9911615061ac1ac8713a04d428",
+    "bytes": 1756
+  },
+  "wholeInverseExact": true,
+  "productionBasis": {
+    "module": "tools/4slot/m3s2-layout-continuity.cjs",
+    "gitBlobSha1": "ba7f9dd3772cf0a40d1110618b1fd6be2f3bb130",
+    "sha256": "c811ffdff4e2cfe98c476e7f84d23185a18c43e6e5824d0fae0df21fe2f3fcf1",
+    "bytes": 44099,
+    "oldBase": "ac7eb5ebf99620ea5e9620f3e592e1342add30d7",
+    "defaultEngineAndPrivateCurrentEngineBoth": "226342544e896cd6a6f35aa946947b89ef3c893e",
+    "compositionReview": {
+      "gitBlobSha1": "2cdc140023a199ba3b261f9c33b780e6b9ae905a",
+      "sha256": "c19073ab0fb694b57d237c6a2497c8e6a327a89081bc7fae3c1f9b5a67548169",
+      "bytes": 4485
+    }
+  },
+  "reason": "The unchanged test treated the valid current engine as an invalid default-engine input. Main2378 updated the default pin to that same engine, so an exact current engine no longer proves this negative case.",
+  "changes": {
+    "oneTestOnly": true,
+    "originalDefaultPrivateEngineGuardUnchanged": true,
+    "engineGitAndShaNowUnknownZeroDigest": true,
+    "omittedTrueObjectTokenArgumentsAllRequireSameUiEngineRefusal": true,
+    "refusalAssertionsRetained": 3,
+    "existingRemainingTestBytesExact": true,
+    "definedFocusedCasesBefore": 43,
+    "definedFocusedCasesAfter": 43,
+    "withActualAuthorityExpected": 44
+  },
+  "additionalBoundary": "The unexported token remains private. Genuine current UI authorization still requires assertCurrentUiReuse's exact sealed evidence, source and execution/producer guards; this negative does not assert that an omitted token accepts the current UI path.",
+  "validation": {
+    "syntax": "NOT_RUN",
+    "focusedTests": "NOT_RUN",
+    "actualQ16Authority": "NOT_RUN",
+    "existingSource49Q16Execution": "NOT_REACHED_IN_22CDC_Q5_FAILURE",
+    "noExistingFailureFabricated": true
+  },
+  "limits": {
+    "productionChanges": 0,
+    "sourceChanges": 0,
+    "approvalChanges": 0,
+    "currentTechnicalChanges": 0,
+    "NativeCalls": 0,
+    "newUiReview": 0,
+    "remoteRefWrites": 0
+  },
+  "rootIntegration": {
+    "source49ConfigFile": "tests/archive-m3s2-current-ui-reuse.test.cjs",
+    "newRequiredPin": {
+      "gitBlobSha1": "4679eaa3bd8c11589babe4d2f1a741f976063fa7",
+      "sha256": "f6ca2113f54ac97d06954e7c3234ae7c093a35a3dc41e229b90f73e012f598e7",
+      "bytes": 11069
+    },
+    "scope49CountOrCommandsChanged": false
+  },
+  "nextAction": "Root independently reads this single literal delta, checks syntax and the one unknown-engine case, then binds the test pin into the official gate. No duplicate completed61/44 Q5 metadata run is requested."
+}

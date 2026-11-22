@@ -4,7 +4,6 @@ window.examData = {
   "questions": [
     {
       "id": 1,
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "오른쪽 그림과 같은 직각삼각형 $\\mathrm{ABC}$에 대하여 다음 중 항상 옳은 것은?(4점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q1-problem-visual-v2.svg\" alt=\"B와 C는 수평한 직각변의 양끝이다. C에서 올린 수직변은 A까지 이어지고, A와 B를 이은 선이 빗변이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -77,6 +76,7 @@ window.examData = {
   },
     {
       "id": 3,
+      "layoutTag": "subjective-2up",
       "score": 4.0,
       "question": "다음에서 옳지 않은 것은?(4점)",
       "choices": [
@@ -115,7 +115,7 @@ window.examData = {
   },
     {
       "id": 4,
-      "layoutTag": "fullwidth",
+      "layoutTag": "subjective-2up",
       "score": 4.0,
       "question": "오른쪽 그림과 같이 $\\angle \\mathrm{C} = 90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\angle \\mathrm{B} = 60^\\circ$, $\\overline{\\mathrm{BC}} = 3\\text{ cm}$이고 $\\mathrm{I}$는 $\\triangle \\mathrm{ABC}$의 내심이다. 내접원의 반지름의 길이를 구하면?(4점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q4-problem-visual-v2.svg\" alt=\"오른쪽 C가 직각이다. B와 C 사이의 밑변은 3 cm이고 각 ABC는 60도이다. 삼각형 ABC 안의 원은 세 변에 붙고 중심은 I이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -153,7 +153,6 @@ window.examData = {
   },
     {
       "id": 5,
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "오른쪽 그림과 같이 수평면과 $25^\\circ$만큼 기울어진 비탈길의 $\\mathrm{C}$지점에서 지면까지의 거리가 $10\\text{ m}$이다. $\\mathrm{A}$지점에서 출발하여 $\\overline{\\mathrm{AC}}$를 초속 $2\\text{ m}$의 속력으로 걸을 때, $\\mathrm{C}$지점까지 가는 데 걸리는 시간을 구하면? (단, $\\sin 25^\\circ = 0.4$, $\\cos 25^\\circ = 0.9$로 계산한다.)(4점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q5-problem-visual-v2.svg\" alt=\"수평 지면 위의 A에서 비탈길 AC가 출발한다. 비탈길과 지면의 각은 25도이다. C에서 지면으로 내린 수선은 B에 닿고 높이는 10 m이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -190,7 +189,6 @@ window.examData = {
   },
     {
       "id": 6,
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "오른쪽 그림과 같이 $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AC}}$인 이등변삼각형 $\\mathrm{ABC}$에 대하여 $\\overline{\\mathrm{AB}} = 12\\text{ cm}$, $\\angle \\mathrm{B} = 75^\\circ$일 때, 삼각형 $\\mathrm{ABC}$의 넓이는?(4점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q6-problem-visual-v2.svg\" alt=\"꼭짓점 A에서 밑변의 B와 C로 이어지는 두 변에 같은 눈금을 썼다. 왼쪽 AB는 12 cm이고, 밑변 왼쪽 B에서의 안쪽 각은 75도이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -229,7 +227,6 @@ window.examData = {
   },
     {
       "id": 7,
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "오른쪽 평행사변형 $\\mathrm{ABCD}$의 넓이는?(4점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q7-problem-visual-v2.svg\" alt=\"수평인 두 변 AD와 BC 사이에 두 사선 AB와 CD가 나란하다. AB는 4 cm이고 BC는 √3 cm이다. A의 안쪽 각은 150도이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -268,7 +265,6 @@ window.examData = {
   },
     {
       "id": 8,
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "오른쪽 그림과 같은 사각형 $\\mathrm{ABCD}$의 넓이를 구하면?(4점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q8-problem-visual-v2.svg\" alt=\"사각형 ABCD에서 대각선 AC와 BD를 색으로 구분했다. AC는 8 cm, BD는 6 cm이다. 각 DBC와 BCA는 40도와 80도이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -307,7 +303,7 @@ window.examData = {
   },
     {
       "id": 9,
-      "layoutTag": "fullwidth",
+      "layoutTag": "subjective-2up",
       "score": 4.0,
       "question": "오른쪽 그림과 같이 원 $\\mathrm{O}$에서 $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{OM}}$, $\\overline{\\mathrm{CD}} \\perp \\overline{\\mathrm{ON}}$이고 $\\overline{\\mathrm{AM}} = \\overline{\\mathrm{DN}}$이다. 다음 중 옳지 않은 것을 보기에서 모두 고르면?(4점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q9-problem-visual-v2.svg\" alt=\"원 O의 가로 현 AB와 아래쪽의 비스듬한 현 CD에 각각 수선을 내렸다. 발은 M과 N이다. AM과 DN에 같은 길이를 나타내는 눈금이 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><br><div style=\"border: 1px solid #333; padding: 10px; margin: 10px 0;\"><보기><br>(ㄱ) $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{CD}}$ &nbsp;&nbsp;&nbsp;&nbsp; (ㄴ) $\\overline{\\mathrm{OM}} = \\overline{\\mathrm{BM}}$<br>(ㄷ) $\\stackrel{\\frown}{\\mathrm{AB}} = \\stackrel{\\frown}{\\mathrm{CD}}$ &nbsp;&nbsp;&nbsp;&nbsp; (ㄹ) $\\stackrel{\\frown}{\\mathrm{AC}} = \\stackrel{\\frown}{\\mathrm{BD}}$<br>(ㅁ) $\\angle \\mathrm{AOC} = \\angle \\mathrm{BOD}$ &nbsp;&nbsp;&nbsp;&nbsp; (ㅂ) $\\triangle \\mathrm{OAB} \\equiv \\triangle \\mathrm{OCD}$</div>",
       "choices": [
@@ -346,7 +342,7 @@ window.examData = {
   },
     {
       "id": 10,
-      "layoutTag": "fullwidth",
+      "layoutTag": "subjective-2up",
       "score": 4.0,
       "question": "오른쪽 그림에서 $\\overline{\\mathrm{AB}}$는 반지름의 길이가 $8\\text{ cm}$인 원의 일부분이다. $\\overline{\\mathrm{AH}} = \\overline{\\mathrm{BH}}$, $\\overline{\\mathrm{AB}} \\perp \\overline{\\mathrm{HP}}$이고 $\\overline{\\mathrm{HP}} = 2\\text{ cm}$일 때, $\\triangle \\mathrm{APB}$의 넓이는?(4점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q10-problem-visual-v2.svg\" alt=\"가로 현 AB의 중점 H에서 아래로 내린 수선은 원호 위의 P에 닿는다. HP 길이는 2 cm이다. A와 B에서 P를 연결했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -385,7 +381,6 @@ window.examData = {
   },
     {
       "id": 11,
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "오른쪽 그림에서 원 $\\mathrm{O}$는 삼각형 $\\mathrm{ABC}$의 내접원이다. $\\overline{\\mathrm{DE}}$가 원 $\\mathrm{O}$에 접할 때, 삼각형 $\\mathrm{BDE}$의 둘레의 길이는?(4점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q11-problem-visual-v2.svg\" alt=\"윗 꼭짓점 B, 왼쪽 아래 A, 오른쪽 아래 C인 삼각형에 원 O가 내접한다. 가로로 원에 닿는 직선 DE가 위쪽 작은 삼각형 BDE의 밑변이다. AB, BC, AC 길이는 8 cm, 10 cm, 7 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -423,7 +418,6 @@ window.examData = {
   },
     {
       "id": 12,
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "오른쪽 그림에서 직선 $\\mathrm{PA}$, $\\mathrm{PB}$는 원 $\\mathrm{O}$의 접선이고, 점 $\\mathrm{A}$, $\\mathrm{B}$는 접점이다. $\\overline{\\mathrm{OB}} = 5\\text{ cm}$이고 $\\angle \\mathrm{AOB} = 120^\\circ$일 때, $\\overline{\\mathrm{PA}}$의 길이를 구하면?(4점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q12-problem-visual-v2.svg\" alt=\"원 O의 왼쪽에서 두 접선 PA와 PB가 만난다. A와 B는 접점이다. 중심각 AOB는 120도이며 반지름 OB의 길이는 5 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -462,7 +456,6 @@ window.examData = {
   },
     {
       "id": 13,
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "오른쪽 그림에서 $\\overline{\\mathrm{AB}}$는 반원 $\\mathrm{O}$의 지름이고 $\\angle \\mathrm{APB} = \\angle \\mathrm{COD}$, $\\angle \\mathrm{DBO} = 65^\\circ$일 때, $\\angle \\mathrm{ACO}$의 크기는?(4점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q13-problem-visual-v2.svg\" alt=\"O는 반원 지름 AB의 중점이다. P에서 내린 두 직선은 각각 C를 거쳐 A, D를 거쳐 B에 닿는다. 호 위의 C와 D를 중심과 연결했다. P와 O에 같은 각 표시가 있고 B에서 65도이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -501,7 +494,6 @@ window.examData = {
   },
     {
       "id": 14,
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "오른쪽 그림에서 원의 반지름의 길이가 $2\\text{ cm}$일 때, $\\stackrel{\\frown}{\\mathrm{AB}} + \\stackrel{\\frown}{\\mathrm{CD}}$의 값은?(4점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q14-problem-visual-v2.svg\" alt=\"원의 맨 위 P에서 왼쪽 D와 C, 아래 B, 오른쪽 A를 이었다. DPC는 20도, CPB는 30도, BPA는 55도이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -539,7 +531,6 @@ window.examData = {
   },
     {
       "id": 15,
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "오른쪽 그림에서 $\\angle \\mathrm{E} = 24^\\circ$, $\\angle \\mathrm{D} = 28^\\circ$일 때, $\\angle x$의 크기를 구하면?(4점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q15-problem-visual-v2.svg\" alt=\"원 위 E에서 A와 B를 잇는 선은 24도를 이룬다. D에서 B와 C를 이은 선은 28도를 이룬다. 중심 O에서 A와 C를 잇는 두 반지름 사이의 각을 x로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -578,7 +569,6 @@ window.examData = {
   },
     {
       "id": 16,
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "오른쪽 그림에서 네 점 $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$, $\\mathrm{D}$가 한 원 위에 있을 때, $x + y$의 값을 구하면?(4점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q16-problem-visual-v2.svg\" alt=\"왼쪽 위 A와 중간 위 D, 아래 B와 C가 사각형을 이룬다. AC와 BD는 P에서 만난다. 각 DAC는 40도, ABD는 30도, BCA는 20도이다. C에서 밑변을 오른쪽으로 잇는 바깥각이 x, 각 DPC는 y이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -617,7 +607,7 @@ window.examData = {
   },
     {
       "id": 17,
-      "layoutTag": "fullwidth",
+      "layoutTag": "subjective-2up",
       "score": 4.0,
       "question": "다음 중 네 점 $\\mathrm{A}$, $\\mathrm{B}$, $\\mathrm{C}$, $\\mathrm{D}$가 한 원 위에 있는 것을 모두 고르면? (정답 2개)(4점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q17-problem-visual-v2.svg\" alt=\"①은 A와 D에서 아래 변 BC를 바라보는 각이 각각 48도이다. ②는 선분 AB를 바라보는 D와 C의 각이 45도와 47도이다. ③의 주어진 각은 A에서 35도, C에서 40도이며 대각선 교점의 아래각은 80도이다. ④의 주어진 각은 A에서 40도, C에서 50도이며 교점의 왼쪽 각은 100도이다. ⑤의 두 직선은 바깥 점 P에서 만나 35도를 이루며 B와 C에서 각각 50도와 15도가 표시돼 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -654,7 +644,7 @@ window.examData = {
   },
     {
       "id": 18,
-      "layoutTag": "fullwidth",
+      "layoutTag": "subjective-2up",
       "score": 4.0,
       "question": "다음 그림과 같이 반지름의 길이가 $4\\text{ cm}$인 원 $\\mathrm{O}$의 지름 $\\overline{\\mathrm{AB}}$와 현 $\\overline{\\mathrm{CD}}$가 만나는 점을 $\\mathrm{P}$라고 할 때, $\\overline{\\mathrm{CP}} = 3\\text{ cm}$, $\\overline{\\mathrm{DP}} = 2\\text{ cm}$이다. 이때 $\\overline{\\mathrm{OP}}$의 길이는?(4점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q18-problem-visual-v2.svg\" alt=\"원의 중심 O는 가로 지름 AB의 가운데에 있다. C와 D를 이은 현이 O 오른쪽의 P에서 지름을 만난다. 반지름은 4 cm이고 CP, DP의 길이는 각각 3 cm와 2 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -691,7 +681,6 @@ window.examData = {
   },
     {
       "id": 19,
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "오른쪽 그림에서 $\\overline{\\mathrm{CD}}$는 원 $\\mathrm{O}$의 지름이고 $\\overline{\\mathrm{PA}} = 3$, $\\overline{\\mathrm{AB}} = 5$, $\\overline{\\mathrm{PC}} = 2$일 때, 원 $\\mathrm{O}$의 넓이는?(4점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q19-problem-visual-v2.svg\" alt=\"아래 할선은 P에서 C, 중심 O, D 순서로 지나고 위 할선은 P에서 A, B 순서로 간다. PA=3, AB=5, PC=2를 각각 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -728,7 +717,6 @@ window.examData = {
   },
     {
       "id": 20,
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "오른쪽 그림에서 $\\overline{\\mathrm{PT}}$는 원의 접선이고 $\\angle \\mathrm{APT} = \\angle \\mathrm{PBT}$이다. $\\overline{\\mathrm{AB}} = 10$, $\\overline{\\mathrm{AT}} = 6$일 때, $\\overline{\\mathrm{TP}}$의 길이는?(4점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q20-problem-visual-v2.svg\" alt=\"P에서 오른쪽으로 낸 접선은 T에서 원에 닿는다. 사선은 P, A, B 순서로 간다. AB의 길이는 10, AT의 길이는 6이다. 각 APT와 PBT에 같은 호를 그렸다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -767,7 +755,7 @@ window.examData = {
   },
     {
       "id": 21,
-      "layoutTag": "fullwidth",
+      "layoutTag": "subjective-2up",
       "score": 5.0,
       "question": "[서술형 1] 오른쪽 그림과 같이 연못의 가장자리에 있는 두 지점 $\\mathrm{A}$, $\\mathrm{B}$와 지점 $\\mathrm{A}$에서 떨어진 지점 $\\mathrm{C}$에 대하여 $\\angle \\mathrm{BAC} = 75^\\circ$, $\\angle \\mathrm{ABC} = 45^\\circ$일 때, 다음을 구하시오. (풀이과정과 답을 모두 쓰시오.)(5점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q21-problem-visual-v2.svg\" alt=\"연못의 두 끝 A와 B가 가로 방향에 놓이고 C는 A에서 8 m 떨어져 있다. 각 BAC는 75도, 각 ABC는 45도이다. A에서 BC에 내린 수선이 H에 닿는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><br>(1) $\\angle \\mathrm{BAH}$의 크기를 구하시오.(1점)<br>(2) $\\angle \\mathrm{CAH}$의 크기를 구하시오.(1점)<br>(3) $\\overline{\\mathrm{AH}}$의 길이를 구하시오.(1점)<br>(4) $\\overline{\\mathrm{AB}}$의 길이를 구하시오.(2점)",
       "choices": [],
@@ -800,6 +788,7 @@ window.examData = {
   },
     {
       "id": 22,
+      "layoutTag": "subjective-2up",
       "score": 5.0,
       "question": "[서술형 2] 오른쪽 그림과 같이 원 $\\mathrm{O}$에 외접하는 $\\square \\mathrm{ABCD}$에서 $\\overline{\\mathrm{BC}}$와 원 $\\mathrm{O}$의 접점을 $\\mathrm{E}$라고 하자. $\\angle \\mathrm{B} = 90^\\circ$이고 $\\overline{\\mathrm{AB}} = 6\\text{ cm}$, $\\overline{\\mathrm{AD}} = 8\\text{ cm}$, $\\overline{\\mathrm{CD}} = 10\\text{ cm}$, $\\overline{\\mathrm{CE}} = 4\\text{ cm}$일 때, 원 $\\mathrm{O}$의 넓이를 구하시오. (풀이과정과 답을 모두 쓰시오.)(5점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/s02.png\" /><br>(1) $\\overline{\\mathrm{BE}}$의 길이를 구하시오.(3점)<br>(2) 원 $\\mathrm{O}$의 넓이를 구하시오.(2점)",
       "choices": [],
@@ -830,7 +819,7 @@ window.examData = {
   },
     {
       "id": 23,
-      "layoutTag": "fullwidth",
+      "layoutTag": "subjective-2up",
       "score": 5.0,
       "question": "[서술형 3] 오른쪽 그림과 같이 $\\square \\mathrm{ABCD}$가 원에 내접할 때, $\\angle x + \\angle y$의 크기를 구하시오. (풀이과정과 답을 모두 쓰시오.)(5점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q23-problem-visual-v2.svg\" alt=\"원의 내접사각형 ABCD에서 A와 C, B와 D를 이었다. 각 BAC는 40도, 각 ADB는 50도이고 C의 안쪽 각은 95도이다. A의 남은 각 x와 B의 바깥각 y가 표시되어 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><br>(1) $\\angle x$의 크기를 구하시오.(2점)<br>(2) $\\angle y$의 크기를 구하시오.(2점)<br>(3) $\\angle x + \\angle y$의 크기를 구하시오.(1점)",
       "choices": [],
@@ -861,7 +850,7 @@ window.examData = {
   },
     {
       "id": 24,
-      "layoutTag": "fullwidth",
+      "layoutTag": "subjective-2up",
       "score": 5.0,
       "question": "[서술형 4] 오른쪽 그림에서 직선 $\\mathrm{PT}$는 원 $\\mathrm{O}$의 접선이고 $\\overline{\\mathrm{PB}}$는 원 $\\mathrm{O}$의 중심을 지난다. $\\angle \\mathrm{P} = 30^\\circ$일 때, $\\angle \\mathrm{BTC}$의 크기를 구하시오. (풀이과정과 답을 모두 쓰시오.)(5점)<br><img src=\"assets/images/17_팔마중_2학기_기말_중3_수학/q24-problem-visual-v2.svg\" alt=\"P에서 나온 직선은 A와 중심 O를 지나 B에 닿고 가로 접선은 T에서 원에 닿는다. P에서 할선과 접선이 30도를 이룬다. B와 T를 이은 선과 접선 위 점 C가 보인다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [],

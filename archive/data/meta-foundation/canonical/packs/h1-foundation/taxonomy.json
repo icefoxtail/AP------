@@ -4,7 +4,7 @@
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
   "problemTypeCount": 36,
-  "templateCount": 67,
+  "templateCount": 101,
   "problemTypes": [
     {
       "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
@@ -4280,6 +4280,1068 @@
       "supportingItemCount": 1,
       "supportingQuestionUids": [
         "qid_v1_e8aad31278a192d027ee73c50fd412041306ef13e437247afdf2f21eda82aff0"
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_COMPLEX_CONDITION_EQUATION_SIGN",
+      "parentProblemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "canonicalLabelKo": "음수 근호 조건",
+      "definition": "음수 제곱근의 곱·몫의 부호 규칙으로 변수의 범위를 나누고 절댓값·켤레를 정리한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_7937ebaaa43b91f1170b5119169f207ba89ae933552647189638c4de834451ca",
+        "qid_v1_98eacdf7fb55c083dd9e028fea8920255033526694f086d80229592f3ca0f74a",
+        "qid_v1_b5aeaacde4367d5bafdb2b21d5dd6bcbe1531e525d5ac739381525e1c36439c7",
+        "qid_v1_cb6dfdd3ef6fdb114fcffcede6a86a62edbd58c3d689acaa5b87b6fb70aeead4"
+      ],
+      "sourceUnits": [
+        "H15-SA-04"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_COMPLEX_CONDITION_EQUATION_SIGN",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_COMPLEX_OPERATION_AUDIT",
+      "parentProblemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "canonicalLabelKo": "복소 연산 판별",
+      "definition": "음수 제곱근의 곱·몫, i의 주기, 켤레 성질을 계산하거나 반례로 확인하여 잘못된 등식을 판별한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 6,
+      "supportingQuestionUids": [
+        "qid_v1_1f1d196ff9f74e0ba03e97bb7fe638b894ece950e593815c599b782790b1ea40",
+        "qid_v1_4483892ad2a662dfe2c0e46e22cb2ae7fa01d075565e2f1e0a4bb0c8ca0ff804",
+        "qid_v1_b79d2fe73bc8eca477f7e4bd0d53b2b3d0e284596e16fa79b902d28018199385",
+        "qid_v1_be4ba685f89324e336e3d700c2046c07d08e8acfac3b5f396ed886808c2df8e4",
+        "qid_v1_e9d9ef04225f97355f92b8117cd2bf0c037f6001414f8c419a041a1af3f2db30",
+        "qid_v1_f4c9bc3e46c7ca70abb01a1671a3d8350607de687fb1a68a9be99cb39df52e23"
+      ],
+      "sourceUnits": [
+        "H15-SA-04",
+        "H22-C-04"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_COMPLEX_OPERATION_AUDIT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_COMPLEX_OPERATION_NEGATIVE_ROOT",
+      "parentProblemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "canonicalLabelKo": "음수 제곱근",
+      "definition": "음수 제곱근을 i배 양수 근호로 나타내어 곱·몫의 부호와 조건에 따른 연산을 계산한다. 유한한 입력 후보의 개수는 조건 꼬리표로 분리한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_4747aa9bcbcba1cfd685b82aca0de88d6c80f90d61213d19350946e4c73df79d",
+        "qid_v1_4d004315009396829248c4e9672389528ca20480e30ffda6e73ab29cca2d4d86",
+        "qid_v1_9d4bb70c885da4816a8890ed77eb47c9b181e9b423e8b30c02f61628c0ef6e02",
+        "qid_v1_e4d18a6657e3c6fc4984b8e8a521c26c9c07ab53f52dcb3c54a50045658a57f5",
+        "qid_v1_f5017834c488202e40305751486a87541b2d573f389329eb1e2678d9c88c9e5b"
+      ],
+      "sourceUnits": [
+        "H15-SA-04",
+        "H22-C-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_COMPLEX_OPERATION_NEGATIVE_ROOT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_COUNTING_PRINCIPLE_GENERAL_COMPLEMENT",
+      "parentProblemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "canonicalLabelKo": "여사건 경우의 수",
+      "definition": "전체 선택 또는 배열 경우의 수에서 조건을 만족하지 않는 경우를 빼어 센다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_1daf2c13fa1285ce75a1d490a3af840b266b7b885c9d6c8c2c3efd7717419476",
+        "qid_v1_40666443c2d95d4f38d125d830b5368bef6698dc2e1777d4fc7b73062609e27f"
+      ],
+      "sourceUnits": [],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_COUNTING_PRINCIPLE_GENERAL_COMPLEMENT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_EQUATION_APPLICATION_SUM_SQUARE",
+      "parentProblemTypeKey": "PT_H1_EQUATION_APPLICATION",
+      "canonicalLabelKo": "도형 연립방정식",
+      "definition": "도형의 두 길이 관계를 식으로 나타내고 연립방정식으로 길이를 구한다. 닮음·내접·피타고라스는 선행 결합 개념으로 구분한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_13e4413971a2216114f677a823e2acae074ab3dc7ae9098ed838a770dc2baba8",
+        "qid_v1_2579df4dfcc65781282ce1b413b3883d75977492c510c260cb76c6fba012a418",
+        "qid_v1_a6152c1d5291eae1f30b15014809749a059658845e4dc98a049e7b0cb5010d22"
+      ],
+      "sourceUnits": [
+        "H22-C-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_EQUATION_APPLICATION_SUM_SQUARE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_FACTOR_THEOREM_FACTOR",
+      "parentProblemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "canonicalLabelKo": "인수분해",
+      "definition": "확인한 영점의 일차인수를 추출하고 남은 몫을 인수분해하거나 항등식의 공통인수를 약분해 다항식을 정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 6,
+      "supportingQuestionUids": [
+        "qid_v1_128dfc6ff19a68bf21b5823c73b4c9c655739b33450724d2e01f1848d9af8bbe",
+        "qid_v1_399f685e2917b6aee98af528c0f4d6aa6a77265d7e5264699e00f298fee63747",
+        "qid_v1_5270bbcbb426ec02605d4fb711a26ee4be411c0c0473fde38b56878a25c68659",
+        "qid_v1_5aa78888505e507ab53293eae7fc13bc6c7717a08094ee8f71df5123d6e79989",
+        "qid_v1_a07caec16fed8769d97b410c47611d9e7a5e79c68a5936df42063a5452e2f314",
+        "qid_v1_b879cbffa61b73db97a2adc1fb871f6e05dd4a766acd92eee148b49c6031577e"
+      ],
+      "sourceUnits": [
+        "H15-SA-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_FACTOR_THEOREM_FACTOR",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_FACTOR_THEOREM_REPEATED",
+      "parentProblemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "canonicalLabelKo": "중복인수",
+      "definition": "반복 나눗셈이나 근의 대칭 관계로 중복인수를 확인하여 다항식 계수를 정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 9,
+      "supportingQuestionUids": [
+        "qid_v1_1c20b60a57be451ea93b805599e4fe73bcfbf654420aa1d8c53ed9c0e0f85684",
+        "qid_v1_5681cf08c8a318706e80377a3cfc5f70cca47fd33603728c64dde802953fbb34",
+        "qid_v1_64fe8687916683fea9e4afccc1d799703125807fe12890f1e14c144c1c93666a",
+        "qid_v1_88be04cbef0040f5b0b9e630531d9b5e9ef1bf1f6b5c5edece242ee37c302739",
+        "qid_v1_89df23508353c5d831a697a188bb12517202d2e6a3e26284937db3aa836a0a00",
+        "qid_v1_8df2dbd5c5ded65f49456b82909f975843d13b0288b4be2c12fdbcc07620507a",
+        "qid_v1_96bf4c5622efeca7fd035c54b770eca9297d2bb08e7249c2cfafcac0aeeb259c",
+        "qid_v1_9a5fba8e46d6416f41aad4928817dbc42c325c6b321d6ead7005c9c90be15445",
+        "qid_v1_af6abac870e85fdb42b8c80e64ed9e67e9dfb3275b9c3e80510ca233b0081e5d"
+      ],
+      "sourceUnits": [
+        "H15-SA-02",
+        "H15-SA-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_FACTOR_THEOREM_REPEATED",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_FACTOR_THEOREM_RESTORE",
+      "parentProblemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "canonicalLabelKo": "다항식 복원",
+      "definition": "서로 다른 영점의 일차인수와 최고차항 계수를 이용하여 다항식을 복원하고 요구값을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 6,
+      "supportingQuestionUids": [
+        "qid_v1_07c01c63b9ccc908aca2cfa05687fce111996e76d86060e786e62a96f0ed7fb5",
+        "qid_v1_0bfe488539d9ea5c31a4ba71ca44d9a6958f1f45fdc834a458f66d5d05b6bf98",
+        "qid_v1_1a4fae3faa717f1bde335be899bc2b9387949cab209800b1e54e74e67719bf6d",
+        "qid_v1_2c0df9c80e4fbba0c9d0bed62a9dca25c38a6ee6766cd106635e3101b438e8b6",
+        "qid_v1_4dee60498959040499ac64a1489dbe5e75568eca7feab036a74e1c7108bf9195",
+        "qid_v1_7e3119cb6c49c1d52ea7bb7a418616270dc305bed5a0bac1fb41e84af4de348a"
+      ],
+      "sourceUnits": [
+        "H15-SA-02",
+        "H15-SA-03",
+        "H22-C-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_FACTOR_THEOREM_RESTORE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT",
+      "parentProblemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "canonicalLabelKo": "인수 조건",
+      "definition": "일차인수의 영점을 다항식에 대입하여 영이 되는 조건으로 계수를 구하거나 인수 여부를 판별한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 21,
+      "supportingQuestionUids": [
+        "qid_v1_05b6f55ee76e6ae2f1e397d0bce4e3125aa02f210cdd87a219e673f55e086ba5",
+        "qid_v1_0cf171d9f53c938aac5922fab2f112990cbe6bf06d7cfb4e5959c878027ad3f6",
+        "qid_v1_22c4eb14dc8da1a45dd91fdc6d1f1ee09c44b44d41af7cd392c0ccad1c0dce44",
+        "qid_v1_2d33b0fb116491ad096b9d28c77abf841bb06464124ed6c537fd3905185bd820",
+        "qid_v1_2f6a3a7f503f49a02f189e876a4b1660600f5aeb5b13c1b0c988a25233d9e35a",
+        "qid_v1_325dd8053f8fd27a8fdbef1586c24467dd5b48f3306acbbab51f86be12006f1f",
+        "qid_v1_32f85a47116c70c796bea059f86c7a82c1db93bbce2f52e119925eed60fcdd73",
+        "qid_v1_3cab7858366e2eb5e035d1126fe50e1c7596cc055683dd7142565f5d8e518dd2",
+        "qid_v1_40a46e41da8af700115e245643c673f6f31e74ff54aad55cadf243c374d511a9",
+        "qid_v1_4a9b22b78110a4694f7131afd726597eec7e32119a64a251bfe86096fb8e547b",
+        "qid_v1_660b4c6fc5e4cdefbbb3f78b76fb1b518993e0d7cb49d0a130bbd48c8aab47e4",
+        "qid_v1_71822e354410f2f9fd1bc818d28f71095215ffe43bff0d7de4dbcb2724bc8702",
+        "qid_v1_78bcb53a00b86875dd214866969979dafd991c00d3f5d2ef7ebe2eb6cf22e4f9",
+        "qid_v1_83b40692c8bc09f7813bb8e08d4a875b1fccd88f26f2bda3c6d6d1c8f2819b24",
+        "qid_v1_a311c10b6a369cb9b3f7b2a2a17cb51a409fbdbf7403810b18b2ae7488147198",
+        "qid_v1_a5e9fbcfa20b2de7813bce594f204b6ab3c805f93226a47af70e34392d3edc62",
+        "qid_v1_cb0d3489048eb45465480021f14abe8a405e97583dc8aeeed08fafb97eeafd29",
+        "qid_v1_cc1253778875102ee48d25e969688159e77c0475574b6154edd1a9f8167d4b5e",
+        "qid_v1_d3225d010f045fccc73d496f14772f83efa8e372c5a4b8ec1fd2bedb4a6b84d3",
+        "qid_v1_ed47de2dd0c57d188f8bf8ef1af44624d81840f0b311b1da8034fdb035bc8916",
+        "qid_v1_ee3c81deb7839e5a155590fd3b940cce3b9a8b109ed6c1d3c0c4c055d824177d"
+      ],
+      "sourceUnits": [
+        "H15-SA-02",
+        "H15-SA-03",
+        "H22-C-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_FACTOR_THEOREM_ROOT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
+      "parentProblemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "canonicalLabelKo": "영점으로 다항식 복원",
+      "definition": "다항식에서 기준식을 뺀 식의 여러 영점으로 인수곱 표현을 만들어 남은 계수를 정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_a5d38f777f52752346cea6e89b6f80d54abcf7db3b945c02cf3f034dc8b51ce2",
+        "qid_v1_fb651261b2e1d8c3266f9bf80f780580a7bf9918879cc5ae932d2e31316b2e3e"
+      ],
+      "sourceUnits": [
+        "H22-C-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_HIGHER_DEGREE_EQUATION_ROOT",
+      "parentProblemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "canonicalLabelKo": "근 조건",
+      "definition": "알려진 근 대입 또는 구간 끝점 부호 비교로 계수와 서로 다른 실근 존재를 정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_27d3b8619fae2a0b284bc08e81cb94a098c15bf5ce3ba939c9cfb799fe01ef21",
+        "qid_v1_4a3116325d9ee6db8e257cf33c8eb5cb8cec9adc2d50702310b28f8a6020b262"
+      ],
+      "sourceUnits": [
+        "H15-SA-07",
+        "H22-C-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_HIGHER_DEGREE_EQUATION_ROOT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_HIGHER_DEGREE_EQUATION_TRANSFORM",
+      "parentProblemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "canonicalLabelKo": "근 변환",
+      "definition": "역수 대입이나 변수 부호 반전으로 변환된 근을 갖는 고차방정식을 구성한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_5c255e8574af4c688708441868edabab9f7c45af63d2880edbd05a8bd5cce6be",
+        "qid_v1_e66454992f798fa246779fce724b7cb03ead3c887516083bfcb5f74a1b6f8691"
+      ],
+      "sourceUnits": [
+        "H15-SA-06",
+        "H22-C-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_HIGHER_DEGREE_EQUATION_TRANSFORM",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_INEQUALITY_APPLICATION_GEOMETRY",
+      "parentProblemTypeKey": "PT_H1_INEQUALITY_APPLICATION",
+      "canonicalLabelKo": "도형 부등식",
+      "definition": "움직이는 점의 거리·길이비·넓이·삼각형 조건을 이차부등식으로 세워 허용범위를 정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_51ed9ddc29d49ca9befac3de4a8e43185469e64f8de31584a9992039b73a3e4c",
+        "qid_v1_5e51ca8dc60c24f52474a367657664498451e6fb87ad096e6eba13eb1706069f",
+        "qid_v1_970b92aa822e949aa5d8f01592926ea23aa09aa1641f37dae81112b238f27da4",
+        "qid_v1_bcb299207b989456506817240509a86f7b950353036f7c8ba8d5ba217da106da",
+        "qid_v1_c44424442b48771d5a22afcf10e40e9a0a9d4ae2ca4c13d7ea846f3fbbdd90db"
+      ],
+      "sourceUnits": [
+        "H15-SA-08",
+        "H15-SA-09"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_INEQUALITY_APPLICATION_GEOMETRY",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_INEQUALITY_APPLICATION_MODEL_BOUND",
+      "parentProblemTypeKey": "PT_H1_INEQUALITY_APPLICATION",
+      "canonicalLabelKo": "수량 제한 이차부등식",
+      "definition": "총액이나 거리 모형에 제한값을 대입해 이차부등식을 풀고 양수·자연수 조건을 적용한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_7e33e529dabc665120f423a8a72d3805b3eb62aeb6d1caf13005a1ea2ba87ab3",
+        "qid_v1_cc5ceeaa20e62622f09ff7f70071f62f6954383d81c1f7264e9539ec1ec8c1cc"
+      ],
+      "sourceUnits": [],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_INEQUALITY_APPLICATION_MODEL_BOUND",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_INEQUALITY_APPLICATION_QUANTITY",
+      "parentProblemTypeKey": "PT_H1_INEQUALITY_APPLICATION",
+      "canonicalLabelKo": "수량 부등식",
+      "definition": "자리·생산일수·영양·비용 조건을 부등식으로 나타내고 교집합에서 가능한 정수 범위나 극값을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_34e0b72c90fc3b2e60da171a307fda560e4453e83b4983c1290750adccfda2ac",
+        "qid_v1_400fea62f6bc09f37fdcc7b64e9ac170ba5a8e8213d360f3f7a14884d115854f",
+        "qid_v1_5b22a9184fbb0e1068d37a56e48a5bbd829588c3bf74b3bfcf4c6a3b2677a58d",
+        "qid_v1_5e37362c6075d547a6f3d0b1d4457829b83115b5d7522ddef7f464b6c2dd8c89",
+        "qid_v1_753e14457601806c774f1015060dfdd86c7cee58e210e73fe4d3d7a2b4c3161d"
+      ],
+      "sourceUnits": [
+        "H15-SA-05",
+        "H15-SA-09",
+        "H22-C-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_INEQUALITY_APPLICATION_QUANTITY",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_MATRIX_BASIC_OPERATION_REPRESENT",
+      "parentProblemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+      "canonicalLabelKo": "자료의 행렬 표현",
+      "definition": "그림이나 표의 범주별 수를 행과 열에 맞게 배열하고 성분의 뜻을 읽는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_3c5324dfdb5114b6935b199cf4d612eab23a13e1b67f6287c55e5f3b8cf8ce3c",
+        "qid_v1_6fd913df8abac46f0159bda4c7571e10318df0658f8fdc33b4ab69c78a9468a3"
+      ],
+      "sourceUnits": [],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_MATRIX_BASIC_OPERATION_REPRESENT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_MATRIX_EQUATION_COMMUTE",
+      "parentProblemTypeKey": "PT_H1_MATRIX_EQUATION",
+      "canonicalLabelKo": "행렬 관계와 교환성",
+      "definition": "한 행렬의 다항식 표현에 따른 교환성과 영인자 반례로 행렬 관계 진술을 판정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_3e1cac29267979402c3382ef5234cb0d40ce0ae573340641597b78ac1dce6ed4",
+        "qid_v1_af61e193a852e4b3076a95871304cdb0c9b876e7c37961d4d570082226fbb975"
+      ],
+      "sourceUnits": [
+        "H22-C-09"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_MATRIX_EQUATION_COMMUTE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_MATRIX_MULTIPLICATION_DIMENSION",
+      "parentProblemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
+      "canonicalLabelKo": "행렬곱 정의 조건",
+      "definition": "앞 행렬 열 수와 뒤 행렬 행 수가 같은지 확인해 곱의 정의 가능성을 판단한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_4e77b7858b065d998e8964569ed9a2b2a38074e0e0e6beb69e156ab6096019d8",
+        "qid_v1_9436d66a79627abbe641baee7dd91c1401fc73151bda687b5cb74eaa33a6908d"
+      ],
+      "sourceUnits": [
+        "H22-C-09"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_MATRIX_MULTIPLICATION_DIMENSION",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_MATRIX_MULTIPLICATION_LINEARITY",
+      "parentProblemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
+      "canonicalLabelKo": "행렬작용 선형결합",
+      "definition": "입력벡터를 알려진 벡터의 선형결합으로 나타내 분배법칙으로 출력을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_3e80e79fbdfc600a56891acefe319acc3891b2a1b38f039834bbf1ef28db79fe",
+        "qid_v1_4e9f8cbd829bd6e0d6b45b8a5f9c921573218bf46a519631834d1a4cc84e767b",
+        "qid_v1_5dd58551d68bdbd57199fb1f20a5d74d45046d4252cbe62ecbddda1a6a1eeef7",
+        "qid_v1_7d7c2854a8371faf634c2c2aa650b305b12c914090f290668218b6d93be0d81e",
+        "qid_v1_ca5e2d16d6e41ce14b0af68dd8269e3e2d9f23569fbc9d38089680db0a2020f5"
+      ],
+      "sourceUnits": [
+        "H22-C-09"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_MATRIX_MULTIPLICATION_LINEARITY",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_MATRIX_POWER_IDENTITY_DIAGONAL_POWER",
+      "parentProblemTypeKey": "PT_H1_MATRIX_POWER_IDENTITY",
+      "canonicalLabelKo": "대각행렬 거듭제곱",
+      "definition": "대각성분을 각각 거듭제곱하여 행렬 또는 성분합 조건을 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_197c0d963a132ed83428ecf7781e8253d2db4546437bb0574b468dd5f8881f4f",
+        "qid_v1_f99bbdd52ba6c80c9902b7aec08449cf406f14f5986a54a7ea8fe2f3a8a103e5"
+      ],
+      "sourceUnits": [
+        "H22-C-09"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_MATRIX_POWER_IDENTITY_DIAGONAL_POWER",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_MATRIX_POWER_IDENTITY_POWER_CLAIMS",
+      "parentProblemTypeKey": "PT_H1_MATRIX_POWER_IDENTITY",
+      "canonicalLabelKo": "행렬 거듭제곱 명제",
+      "definition": "항등행렬과 제곱영행렬 반례 및 거듭제곱 관계로 행렬 명제를 판정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_6541ccbdf5d2e8e8f689e3beace2b6af6d0026aaed89b9b18944e09b78195f9f",
+        "qid_v1_bc603edce8e25c3a62df8c19f270a10d8765cde869d64eed2d5088c915d3e42e",
+        "qid_v1_c7ece7e948b6392a67c095bc973bbe3bf1ddaed205d0f5c77a8b851c9075233f"
+      ],
+      "sourceUnits": [
+        "H22-C-09"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_MATRIX_POWER_IDENTITY_POWER_CLAIMS",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_MATRIX_POWER_IDENTITY_SHEAR_POWER",
+      "parentProblemTypeKey": "PT_H1_MATRIX_POWER_IDENTITY",
+      "canonicalLabelKo": "비대각 거듭제곱",
+      "definition": "대각성분이 1인 삼각행렬의 거듭제곱에서 비대각성분이 지수에 비례하는 규칙을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_7c7dbe407d5ec9bada5d7467e8c6c2902d1c27c33340a53dcd0c6cd8a12aea16",
+        "qid_v1_9a6c13fad43bbd22cf72a3e0c912f88ff1e5327082053b0dbf8e40e37eef24c9"
+      ],
+      "sourceUnits": [
+        "H22-C-09"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_MATRIX_POWER_IDENTITY_SHEAR_POWER",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_PERMUTATION_COMBINATION_CALCULATION_CALCULATE",
+      "parentProblemTypeKey": "PT_H1_PERMUTATION_COMBINATION_CALCULATION",
+      "canonicalLabelKo": "공식 계산",
+      "definition": "팩토리얼·순열·조합의 정의식을 전개하거나 약분하여 값을 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 12,
+      "supportingQuestionUids": [
+        "qid_v1_018562b23aa4baed8371efe6e3d8a1b0ec2dc9d22713d19146cde5f1d34ab486",
+        "qid_v1_3aa922c0f7b24ff603c64f6acb34b385fe46258e298d33ba79b93706290f99ca",
+        "qid_v1_4e8c645625491e1f764b01423b3662f6e4c57c55196e594066932baf103017a1",
+        "qid_v1_66e473d2443f4dc3b74cfc356717b363bd2318332fd7e9c59ea84f29dbd09607",
+        "qid_v1_78f2584c533f4f483f6428ede4defbf04b3a6f2ee19d96112fe6a1ba03f4c68b",
+        "qid_v1_861f9f7549d50401ee54e7d9d7a0a55d808573166e835e7e81cfd628171e9f9f",
+        "qid_v1_a975c787af9b82f4a8def9aa06d6221b5c8ec9733684f4b8c80cafc29d8badcb",
+        "qid_v1_bce3ca66eefec00eafeb42467937303069c6541164c9e11b43844fc985110cdf",
+        "qid_v1_c0f224525eaaf6d5332b88436a0d9dab466a6f1ca049532050ce7dc12e35d206",
+        "qid_v1_c2c08a210d535e8cdc629804794470b02bb5f715a02f16a67257ad7b62e500d9",
+        "qid_v1_dcad0dafdaaa1d7a18bb25a6e096cc97ca15b3e11ae75385e9bf15a58997fc4a",
+        "qid_v1_e73a98fb0b854a4f5bfd69128f9a34c3c4c8b5d893c6c0079b0b62df86a6d63a"
+      ],
+      "sourceUnits": [
+        "H15-SB-07",
+        "H15-SB-08",
+        "H22-C-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_PERMUTATION_COMBINATION_CALCULATION_CALCULATE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_PERMUTATION_COMBINATION_CALCULATION_FACTORIAL",
+      "parentProblemTypeKey": "PT_H1_PERMUTATION_COMBINATION_CALCULATION",
+      "canonicalLabelKo": "팩토리얼 변형",
+      "definition": "순열·조합을 팩토리얼로 전개하고 공통인수나 분모를 정리해 항등식 또는 미지수를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_0cd27dd5fa09c5e32b2f96148ef8e660a6c3977206a3cf98d6fa7d88759ecd91",
+        "qid_v1_3c6e7bc8fb7c56bdfab76af3deafb3643a06ff0197382a8cf5453aa2d78d2d1f",
+        "qid_v1_7d0f0d7b5700eb36fbd09a792b09947a08916dde2a40a6c6512c7c0faf51bf3b",
+        "qid_v1_91a743760f78bcf4768dc9329e09a1a1ee8cd850b1b40c05e0f0188fe79e7007"
+      ],
+      "sourceUnits": [
+        "H15-SB-07",
+        "H22-C-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_PERMUTATION_COMBINATION_CALCULATION_FACTORIAL",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_PERMUTATION_COMBINATION_CALCULATION_IDENTITY",
+      "parentProblemTypeKey": "PT_H1_PERMUTATION_COMBINATION_CALCULATION",
+      "canonicalLabelKo": "성질 판별",
+      "definition": "조합의 대칭성·선택 후 배열 관계·영 개 선택을 적용하여 등식의 참거짓을 판정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_7979dcb9c001d56781c1da3bc9d582aef08d390583e826b6fab9bedf730c2da4",
+        "qid_v1_b50b369492421e3747ec4e066b1bbcda617d4b0adf7ddcf8d24d9510f1198a75"
+      ],
+      "sourceUnits": [
+        "H22-C-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_PERMUTATION_COMBINATION_CALCULATION_IDENTITY",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_POLY_DIVISION_IDENTITY",
+      "parentProblemTypeKey": "PT_H1_POLY_DIVISION",
+      "canonicalLabelKo": "나눗셈 항등식",
+      "definition": "피제수=제수×몫+나머지와 나머지 차수 제한을 이용하여 나눗셈 관계를 판별하거나 계수와 다항식을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 16,
+      "supportingQuestionUids": [
+        "qid_v1_12f3cdb3043f6d0f7129213d5ab46befafadbe4fa71a53c6782466eed51823b8",
+        "qid_v1_1fe4d4107b8979778f93b644e540580457dab3f75d6fc21e03b46be27119689b",
+        "qid_v1_4c8d9a4dab62635811def2c360fef2984aa1074700b44ffb589bc0c6fd5cb755",
+        "qid_v1_5aa945292d968f0aaabba753a3076cae26a36932c40273df2689dc7c6e334adf",
+        "qid_v1_652fa26716a878bfec68fa30a8d775650ece981ab1d3fee0681989ebfb8de505",
+        "qid_v1_6945a05f45448c90a05544c6c28039ced527790b5d3964128b9a4786c9650a62",
+        "qid_v1_6c439614d887fb6e1911f59cf245d0c8559ec60267f64711716bf57ae0ebbf6f",
+        "qid_v1_75aae600fa26c4c026bf13a58bc0a6611f16687d071fdd9bb33a8ed4e42658ef",
+        "qid_v1_825c0e1ac53b509eaac03a5e5b572569cf2833769a9491317cfd89ee678fa138",
+        "qid_v1_90751a88fb893b6516eade15b014d4db589ca9c248406d1ce06f66a5dc5fdd0b",
+        "qid_v1_93067347eab124304d3de92ad8d62d8f078903df4ca5fa0412084ac5adf9fdec",
+        "qid_v1_aba5a512247958fe8c30062db35e20a9f0d0403bfa722576f07103b8c8fcead7",
+        "qid_v1_abea45889c43ad2f5ddcc1d029616d67838a323d14049d2961aad408afe54546",
+        "qid_v1_c803cae521210a078ecd91f3a273a05484109060da0de9d7cf69d113e68afa41",
+        "qid_v1_cbf5a536cf77b26e020c6846d8d88b60d425165fa94ec5b4e11ecc54e7a919ac",
+        "qid_v1_e8d482dce9b2aa507cc63d9fe100c25c77986b4be0a64f43ec7f0fe14a289ddb"
+      ],
+      "sourceUnits": [
+        "H15-SA-01",
+        "H15-SA-02",
+        "H22-C-01",
+        "H22-C-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_POLY_DIVISION_IDENTITY",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_POLY_DIVISION_REDUCTION",
+      "parentProblemTypeKey": "PT_H1_POLY_DIVISION",
+      "canonicalLabelKo": "차수 낮추기",
+      "definition": "이미 얻은 다항식 관계 또는 제수의 관계식으로 높은 차수 항을 낮은 차수로 치환해 식의 값이나 나머지를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_203490aa8bc4fb9ffa22b577975d6e6551d5c65d2815bc7629ec29799078ed4a",
+        "qid_v1_73ac2113c484349750a407cc69f1420cdd704debe17fd3448a290f4ae97d16a2"
+      ],
+      "sourceUnits": [
+        "H22-C-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_POLY_DIVISION_REDUCTION",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_POLY_DIVISION_SCALE",
+      "parentProblemTypeKey": "PT_H1_POLY_DIVISION",
+      "canonicalLabelKo": "제수 배율",
+      "definition": "제수가 상수배가 되면 몫은 역수배가 되고 나머지는 그대로임을 나눗셈 항등식에서 읽는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_2b3f303b6e6308420c03f965edb6871322137c47ed5aba939fa0cd2d8274c62e",
+        "qid_v1_5399033c7c762afe3ea86501d89e45cdce417d1aaa5f3571f0b4161413ce296c",
+        "qid_v1_95d080bb69e3199180914440f23357737cf93128c429c8eafc3858a780567085",
+        "qid_v1_b00cbd174eb53eefca09b06b0b683f5628789c9271725763c06302f8e98dd103",
+        "qid_v1_eca1d82c1c2627bd376b13f1a049aad52600f07cf405105f49a7d86b0777ae00"
+      ],
+      "sourceUnits": [
+        "H15-SA-01",
+        "H22-C-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_POLY_DIVISION_SCALE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_POLY_FACTORIZATION_COEFFICIENT",
+      "parentProblemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "canonicalLabelKo": "인수와 계수 비교",
+      "definition": "인수분해 형태를 놓고 계수를 비교해 미정계수나 다항식을 구한다. 기약인수·정수 조건은 조건 꼬리표로 분리한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_98467cbe6ed27d39cf010165cbf5eb813321d102a281c59217687991524678db",
+        "qid_v1_f8736c9db5d5c7424117739d29d57b98ef5ef3409dbe800eb6974c2075013c71"
+      ],
+      "sourceUnits": [
+        "H15-SA-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_POLY_FACTORIZATION_COEFFICIENT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_QUADRATIC_DISCRIMINANT_INTERVAL_ROOT",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "canonicalLabelKo": "구간근 조건",
+      "definition": "판별식·축·끝점의 함수값과 경계를 비교해 지정 구간에 필요한 근이 있거나 지정 입력이 두 근 사이에 있을 조건을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_1f9a7ee01366b75a02ed2a8a62e11701c2231a00fc63fc309ac108bdc465c0b9",
+        "qid_v1_4caa684479ed765c6e973d351e4eaf77fdaf67f473d1373f07c9b1dab33b7dc3",
+        "qid_v1_58414230d3f09b69e7ebb1dd64d63e527d3955d1c614f733f418db816c7cd980",
+        "qid_v1_7006768acc230dbdffc0ec921eee5548cc4f0bff385f39ac48075269abbf87c2"
+      ],
+      "sourceUnits": [
+        "H15-SA-05",
+        "H22-C-05",
+        "H22-C-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_QUADRATIC_DISCRIMINANT_INTERVAL_ROOT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_QUADRATIC_GRAPH_INTERSECTION_ROOT_LOCATION",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "canonicalLabelKo": "교점의 구간 위치",
+      "definition": "직선과 포물선 교점을 이차방정식으로 바꾸고 판별식·축·끝값 부호로 근의 위치를 제한한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_b3f62d4de9bc21094f933a788cf8982477907eabbb92eb6c7dee301112bd07b6",
+        "qid_v1_fafaeb04425a12374ea56e8c8743f8967e6ba8e1702233f8ba6b6b762f4cfc08"
+      ],
+      "sourceUnits": [
+        "H15-SA-05",
+        "H22-C-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_QUADRATIC_GRAPH_INTERSECTION_ROOT_LOCATION",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_REMAINDER_THEOREM_REDUCE",
+      "parentProblemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "canonicalLabelKo": "나머지 환원",
+      "definition": "제수의 관계식으로 고차항이나 거듭제곱의 나머지를 반복 환원한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_24fb8b623aa15e3afcbb054326a07bc4a53ab7432bdf65b594ebb5b43ba22bb4",
+        "qid_v1_bb0309508d1e831e30b34be5e9606b025fcd2134f02428330178f05b94579804",
+        "qid_v1_c087d2035f8e785d48c535ecbdd1d5c2139c9a46ee191b486967f71df8fec959"
+      ],
+      "sourceUnits": [
+        "H15-SA-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_REMAINDER_THEOREM_REDUCE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_ROOT_COEFFICIENT_RELATION_EQUATION",
+      "parentProblemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "canonicalLabelKo": "근에서 방정식",
+      "definition": "주어진 근들의 합·곱 또는 기본대칭식을 계수로 옮겨 방정식을 구성하고 필요한 근·계수·값을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 7,
+      "supportingQuestionUids": [
+        "qid_v1_534ea3844f3bf08f7abbea6b3595345906fe07722327e392d1c237b005420270",
+        "qid_v1_67b671ad192d2b04f6758cf17154bf38edb53c061def8d7ef63167053f03d321",
+        "qid_v1_6d0e998b04866449fbf62dfdb12aa5e992f64489d567ecb72cd434e6787dac3e",
+        "qid_v1_9f58c0e84b240dd86826736eacc0ba27bda858ab53984ec42c7e187320d95d43",
+        "qid_v1_b06dec1ce93ebddf3cf8168becabe22eaea70b7dd6851dca9689ca122ee4601a",
+        "qid_v1_c82fd05989e00689197bd875774ae42df0cb74794d797f734b2b2759c14ea3d1",
+        "qid_v1_ea0fbdec0cddc38ba4494fa2549f5eed895c30cdd9faa9655e55ab59bf7063ad"
+      ],
+      "sourceUnits": [
+        "H15-SA-04",
+        "H15-SA-05",
+        "H15-SA-06",
+        "H15-SA-07",
+        "H22-C-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_ROOT_COEFFICIENT_RELATION_EQUATION",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+      "parentProblemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "canonicalLabelKo": "인수 조건과 몫의 값",
+      "definition": "인수정리로 계수를 정하고 알려진 일차인수를 나눈 뒤 남은 몫 또는 인수의 함숫값을 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "H1_FOUNDATION",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_2c107f88430fa3af5dcb5f20770e2abbe1f86f721dbddacfe0d90982a1caf970"
+      ],
+      "sourceUnits": [
+        "H22-C-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
       ]
     }
   ],

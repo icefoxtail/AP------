@@ -3,8 +3,8 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
-  "problemTypeCount": 16,
-  "templateCount": 33,
+  "problemTypeCount": 17,
+  "templateCount": 45,
   "problemTypes": [
     {
       "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
@@ -339,6 +339,32 @@
         "qid_v1_83f1ce3a00383b4b57f6f007c689f34a7c6ab091b1c3ad5297765b48f295ec74"
       ],
       "supportingItemCount": 1
+    },
+    {
+      "problemTypeKey": "PT_MATH1_SYSTEM_INEQUALITY",
+      "canonicalLabelKo": "연립부등식",
+      "definition": "각 부등식의 정의역과 단조성을 반영하여 해구간을 구한 뒤 공통해를 교집합으로 결정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_eb4c12e59e16a54bf1c7a623b3040fc7431914b4b44b0cc4cd5a810950c26aff"
+      ],
+      "sourceUnits": [
+        "H15-M1-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_MATH1_SYSTEM_INEQUALITY",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
     }
   ],
   "templates": [
@@ -937,6 +963,370 @@
       ],
       "supportingSourceQuestionRefs": [
         "21_순천고_1학기_중간_고2_수학I:q06"
+      ]
+    },
+    {
+      "templateKey": "TPL_EXPONENTIAL_DECAY_RATE",
+      "parentProblemTypeKey": "PT_EXPONENTIAL_DECAY",
+      "canonicalLabelKo": "잔존율",
+      "definition": "일정한 감소율을 반복 곱의 지수모형으로 세우고 남은 양·거리·최소 횟수를 로그나 지수 비교로 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "supportingItemCount": 6,
+      "supportingQuestionUids": [
+        "qid_v1_055757f0647fb654cdea2ededc64f8fb7a015de4dfad3a22286ef405d9083693",
+        "qid_v1_57f5794b471bb6c432d8f681efe5900de49e233bc05c4e02fcc11edc12d8f11e",
+        "qid_v1_5bbab82fd12d67bda1a61147ad7a8fc39b873a53f6d5835953bb9f766b50a4a2",
+        "qid_v1_772f9722bf9500060a10e536aeeb7e21f4fc29324d49b1ce152e7cd0a9d5f79c",
+        "qid_v1_7b9e8eddfe05c503158b64964f840fa80c2c7dd1ed4ec1798bac3add3cb69a68",
+        "qid_v1_7ba23292f70b3c21d8bd0908a2d3d3abab83f8c989d0a0a9a00cf489e3379377"
+      ],
+      "sourceUnits": [
+        "H15-M1-02",
+        "H15-M1-03",
+        "H22-A-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_EXPONENTIAL_DECAY_RATE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_EXPONENTIAL_DECAY_SCALE",
+      "parentProblemTypeKey": "PT_EXPONENTIAL_DECAY",
+      "canonicalLabelKo": "반복 축소비 복원",
+      "definition": "반복 축소의 거듭제곱 조건으로 양의 축소비를 구하고 지정 횟수 후 크기를 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_288618286ddf036a2d77e77aa16c851d5611dc6d66bc048fee1235eb174a23ce",
+        "qid_v1_568088353410a90c96bc25e8eb569945a4c3c0fce5eeb491d5e7e8b8639650ad"
+      ],
+      "sourceUnits": [
+        "H22-A-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_EXPONENTIAL_DECAY_SCALE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_EXPONENTIAL_EQUATION_SUBSTITUTION_ABS_ROOTCOUNT",
+      "parentProblemTypeKey": "PT_EXPONENTIAL_EQUATION_SUBSTITUTION",
+      "canonicalLabelKo": "지수 절댓값 근 개수",
+      "definition": "양수 지수치환 뒤 절댓값 그래프와 수평선의 교점 또는 인수별 해 개수를 합산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_8440ae04f0ed086ab7a9f55df5a08c75b66b631f1d62b825df77e996432b82a5",
+        "qid_v1_a483ffd8783b55e66cf347ff6dda400fc48449203503337ec336114bf60e3513"
+      ],
+      "sourceUnits": [
+        "H22-A-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_EXPONENTIAL_EQUATION_SUBSTITUTION_ABS_ROOTCOUNT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_LOG_APPLICATION_GROWTH",
+      "parentProblemTypeKey": "PT_LOG_APPLICATION",
+      "canonicalLabelKo": "증가와 감쇠",
+      "definition": "시간에 따른 거듭제곱 변화에 로그를 취하거나 역변환하여 기간·비율·양을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_01da163c345808f30b49a77db1f18a56e1faa8d78e07bb5f25e39c524c6055b3",
+        "qid_v1_0471644ed1c72d0f9634a77c5df98007b742d088806ebabed91451a95f3cb9b9",
+        "qid_v1_62b89819120619ecef060847c29891d1af154b3575cdfd06ecbc8620e455a23c",
+        "qid_v1_93d2e6d7feab4158752d7320ebf38de9b398011e9d2aaaa1354a7cb923e33b33"
+      ],
+      "sourceUnits": [
+        "H15-M1-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_LOG_APPLICATION_GROWTH",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_LOG_APPLICATION_LOG_MODEL",
+      "parentProblemTypeKey": "PT_LOG_APPLICATION",
+      "canonicalLabelKo": "로그 모형 비교",
+      "definition": "두 조건의 로그식을 빼 비율 관계로 바꾸고 모형 계수나 새로운 시점의 양을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "supportingItemCount": 6,
+      "supportingQuestionUids": [
+        "qid_v1_0de46bba86cf03065029eb0c41491e88f1198f8619b4aa2137bd5f262af8307b",
+        "qid_v1_321f55ba1bf3f8a77de84c3136fab8342482f80bd6762c2187be13fe6c0e01b6",
+        "qid_v1_50e4fbace0006f8d257cc456330f2f0e5601003aacd0aa4815a063c761a376d9",
+        "qid_v1_7a5af9bacc1edd538fc9bae89ea8abe74a9b2ac0d344d790cfd8a1b25de51030",
+        "qid_v1_d3a4ad6640bdfb4c76a6e1703bc3ab84b3bbdea5a84ba9ae8b0e6952201f884c",
+        "qid_v1_e6dfee219ef1ffb96b209d2b412cdcda9f792bf2b2accf749ed458f64546f9aa"
+      ],
+      "sourceUnits": [
+        "H22-A-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_LOG_APPLICATION_LOG_MODEL",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_LOG_APPLICATION_SCALE",
+      "parentProblemTypeKey": "PT_LOG_APPLICATION",
+      "canonicalLabelKo": "로그 척도",
+      "definition": "소음·감각·지진의 로그모형에서 기준값으로 계수를 정하고 로그차를 세기나 진폭 비로 변환한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_0c7796a07746fd5a44befe46e0c934395c10ca497709ed2a02b81e274fde4939",
+        "qid_v1_5ec2fcf023014138cee41fd99a430f468adb95f84f9bb17d0c4037219ce2b32b"
+      ],
+      "sourceUnits": [
+        "H15-M1-02",
+        "H22-A-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_LOG_APPLICATION_SCALE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_LOG_FUNCTION_INEQUALITY_RANGE",
+      "parentProblemTypeKey": "PT_LOG_FUNCTION_INEQUALITY",
+      "canonicalLabelKo": "로그 치역",
+      "definition": "진수의 범위와 밑의 크기에 따른 로그함수 증감으로 치역·극값 또는 대소를 정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_42302e7d00ca40c1247e7801e7e7618011854f3efa52351963072cfc82d69880",
+        "qid_v1_4f05bc3efdb2165a06ebc73ae3080a7ea66557e1995fd09a85e6016d68c0ebf5",
+        "qid_v1_81e6897bed834dfcd95bc20bec2a25a995159bc39b7a2519bcc5dd6ea83b1b3f",
+        "qid_v1_ce175256f285f376d8e7e686eba669d7a615468b834ed24ee329fde457875ebf"
+      ],
+      "sourceUnits": [
+        "H15-M1-02",
+        "H22-A-01",
+        "H22-A-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_LOG_FUNCTION_INEQUALITY_RANGE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_LOG_IDENTITY_OPERATIONS_INTEGER_DIFF",
+      "parentProblemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "canonicalLabelKo": "로그차 정수",
+      "definition": "소수부분 일치 등을 로그차가 정수라는 조건으로 바꾸어 주어진 구간에서 로그값을 결정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_47f161b0d17ffbf29fd2e5bee424a0eb1284a5a35f979ad5f7a5b06713ab5e61",
+        "qid_v1_932388d655c52251506981d42b7cc14aead52e0ca51cf23def44c404ab9bfe75",
+        "qid_v1_f71f19cb1df4e7ae495d8180a3711a60852907a5565233794b77d567f3a7a67d"
+      ],
+      "sourceUnits": [
+        "H15-M1-02",
+        "H22-A-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_LOG_IDENTITY_OPERATIONS_INTEGER_DIFF",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_LOG_IDENTITY_OPERATIONS_INTEGER_POWER",
+      "parentProblemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "canonicalLabelKo": "로그 정수쌍",
+      "definition": "로그 등식을 정수 지수 거듭제곱 관계로 바꾸고 자연수·집합 범위에서 가능한 쌍이나 원소를 센다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_096a074a945fb99d4164401e9f492181be38e50f7df565c1eebfd5237257fe77",
+        "qid_v1_73a4c1127679316b7cdb48186e3f83cd180e8679a8b32abe3eb2a0d94cf88107"
+      ],
+      "sourceUnits": [
+        "H22-A-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_LOG_IDENTITY_OPERATIONS_INTEGER_POWER",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_LOG_IDENTITY_OPERATIONS_SYMMETRIC",
+      "parentProblemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "canonicalLabelKo": "로그 대칭식",
+      "definition": "로그값의 합·곱이나 이차방정식의 근 관계를 밑변환식에 적용하여 대칭식 값을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_6575c47339440f5a66fb893eb3e2056f7417e17d70f31538bf2505cbf21d03d8",
+        "qid_v1_a99e98a25726cfad85abca90fa36b4b6e9f13227657f6dd905fd745174dbda42",
+        "qid_v1_c4dceeb1a95adca4a83754cba1fcf8b42015198bf78e30fcb9854c7fa29b2571",
+        "qid_v1_e755324c0bcab404b5a69c7ddd514d1fe7e920df133a9a3b4ab4c6578896f3b2"
+      ],
+      "sourceUnits": [
+        "H15-M1-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_LOG_IDENTITY_OPERATIONS_SYMMETRIC",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_LOG_IDENTITY_OPERATIONS_TELESCOPING",
+      "parentProblemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "canonicalLabelKo": "로그합 소거",
+      "definition": "로그의 합을 연속 분수 곱의 로그로 합쳐 중간 인수를 소거하고 미지 항을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_3f70af0f65606dcbc6b54ce75f74743395b8075184a569452babd4c95491684f",
+        "qid_v1_48f5018020cacb5b0e67e3fffe0256d3bc4569c458be75442f00aac25969edb5",
+        "qid_v1_882b1cde44095ff7b22a452a6316a91a6bfaf01d2fa042014b1af3c05b4e529b"
+      ],
+      "sourceUnits": [
+        "H15-M1-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_LOG_IDENTITY_OPERATIONS_TELESCOPING",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_ROOT_INTEGER_FEASIBILITY_EXPONENT",
+      "parentProblemTypeKey": "PT_ROOT_INTEGER_FEASIBILITY",
+      "canonicalLabelKo": "지수 배수 조건",
+      "definition": "근호를 유리수 지수로 나타내고 소인수 지수의 합동·배수 조건으로 가능한 자연수 또는 최소값을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "supportingItemCount": 6,
+      "supportingQuestionUids": [
+        "qid_v1_0aa2429aa7b04cefaf910b386793602e14f46a955ffcc71e80210e68f481f05c",
+        "qid_v1_30ebf237763e9c7ba4ec7dd98b69f80d1abf8c982a4fbef9c02281fa4643a494",
+        "qid_v1_6c215b64f2c4f019691284c5da71ccdaa5f54eca1604ccd941b5f0b525e8d120",
+        "qid_v1_a18968cffe2044100b94c5ea7114ff2dbc9bfd153e9f8d4ba4c1ba03d253d821",
+        "qid_v1_e42ed7908b521ae1aa3a99df6e7d52e11e10f3defe804bf55b08573a4da4ec0d",
+        "qid_v1_ffd2f59a73a49a1d1a866ea8b43290dd5126c2402fab970cf964ece963157dd2"
+      ],
+      "sourceUnits": [
+        "H15-M1-01",
+        "H15-M1-02",
+        "H22-A-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_ROOT_INTEGER_FEASIBILITY_EXPONENT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
       ]
     }
   ],

@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
+import { createRequire } from 'node:module';
 import { spawnSync } from 'node:child_process';
 import { readScope } from './archive-ci-scope.mjs';
 
@@ -23,12 +24,9 @@ const registrationContracts = [
   /^tests\/native-approved-renderer-(?:consumer|preservation|preview)\.test\.mjs$/,
   /^tests\/archive-(?:source-quality-holds|native-authority-correction)\.test\.mjs$/,
   /^tests\/archive-m2s1-original-source-error-hold\.test\.cjs$/,
-  /^tests\/archive-m2-problem-renderer-continuity\.test\.js$/,
-  /^tests\/archive-m2-e006-problem-continuity\.test\.mjs$/,
   /^tests\/archive-m2-e017-rhs-continuity\.test\.js$/,
   /^tests\/archive-existing-registered-vector-svg7-derived-continuity\.test\.cjs$/,
   /^tests\/archive-existing-vector-svg-index-continuity\.test\.cjs$/,
-  /^tests\/archive-svg7-named-problem-continuity\.test\.cjs$/,
   /^tests\/archive-m2s1-text3-fragment-ui\.test\.cjs$/,
   /^tests\/archive-m3-e052-q5-existing-vector\.test\.mjs$/,
   /^tests\/archive-reviewed-exam-registration-v2\.test\.mjs$/,
@@ -41,10 +39,7 @@ const registrationContracts = [
   /^tests\/(?:git-push-derived-with-retry\.|ci-signal-hygiene\.|run-tests-output-guard\.|apms-worker-deploy\.)/,
   /^tests\/archive-basic-scope-rebind\.test\.mjs$/,
   /^tests\/archive-(?:source-metadata-materializer|reviewed-source-candidate)\.test\.mjs$/,
-  /^tests\/archive-m2s1-svg7-image-pointer\.test\.mjs$/,
   /^tests\/archive-m3-e052-q5-complete-given\.test\.mjs$/,
-  /^tests\/archive-svg7-existing-vector-ui\.test\.cjs$/,
-  /^tests\/archive-e041-original-choice-correction\.test\.mjs$/,
 ];
 const outputConsumers = [
   // Common output modules serve originals, Generated, saved papers and APMS
@@ -157,7 +152,26 @@ export function commandsForScope(scope, availableCommands) {
   ];
 }
 
-export function runScopedTests({ root, scopeFile, availableCommands, run = spawnSync }) {
+// A scoped run can be split across CI shards (tools/ci/test-shard.cjs): the test commands are shared out
+// deterministically, shard 1 also runs the (cheap) syntax checks, and a shard that has a test to run prepares
+// the package shards itself because every shard is a separate checkout.
+export function shardScopedCommands(commands, shard, durations) {
+  if (!shard || shard.total <= 1) return commands;
+  const { selectShard, loadDurations } = createRequire(import.meta.url)('./test-shard.cjs');
+  const known = durations || loadDurations();
+  const isSyntax = args => args[0] === '--check';
+  const nameOf = args => {
+    const file = filesInCommand(args)[0] || args.join(' ');
+    return known.seconds[file] !== undefined ? file : file.replace(/^tests\//, '');
+  };
+  const syntax = commands.filter(isSyntax);
+  const packages = commands.filter(isPackageCommand);
+  const tests = commands.filter(args => !isSyntax(args) && !isPackageCommand(args));
+  const mine = selectShard(tests.map(args => ({ name: nameOf(args), args })), shard, known).map(item => item.args);
+  return [...(shard.index === 1 ? syntax : []), ...(mine.length ? packages : []), ...mine];
+}
+
+export function runScopedTests({ root, scopeFile, availableCommands, run = spawnSync, shard = null, onResult = () => {} }) {
   const scope = readScope(scopeFile, root);
   let commands = commandsForScope(scope, availableCommands);
   console.log(`CI scope: ${scope.mode}; ${scope.reason}. Excluded suites are NOT_APPLICABLE, not verified PASS.`);
@@ -177,20 +191,29 @@ export function runScopedTests({ root, scopeFile, availableCommands, run = spawn
       console.log(`Package generation NO_OP: ${packages.fileCount} existing files match the manifest-bound index SHA and exact bytes.`);
     }
   }
+  const totalCommands = commands.length;
+  commands = shardScopedCommands(commands, shard);
+  if (shard) console.log(`Shard ${shard.index}/${shard.total}: ${commands.length} of ${totalCommands} selected commands.`);
   const failures = [];
+  const durationsMs = {};
+  const report = () => onResult({ passed: commands.length - failures.length, failed: failures, knownFailed: [], fixedKnown: [],
+    total: commands.length, fullTotal: totalCommands, durationsMs });
   for (const original of commands) {
     const args = original.at(-1) === '--scope' ? [...original, path.resolve(scopeFile)] : original;
     const registered = availableCommands?.find(command => JSON.stringify(command.args) === JSON.stringify(original));
     const timeout = registered?.timeout || (scope.groups?.length ? 60000 : 180000);
+    const startedAt = Date.now();
     const result = run(process.execPath, args, { cwd: root, stdio: 'inherit', timeout });
+    durationsMs[filesInCommand(original)[0] || original.join(' ')] = Date.now() - startedAt;
     if (result.error) console.error(result.error.message);
     if (result.error || result.status !== 0) failures.push(original[0] === '--test' ? original[1] : original[0]);
     if (isPackageCommand(original)) {
-      if (result.error || result.status !== 0) throw new Error('Scoped package preparation failed');
-      if (!packageShardsReady(root).ready) throw new Error('Scoped package preparation did not produce the indexed bytes');
+      if (result.error || result.status !== 0) { report(); throw new Error('Scoped package preparation failed'); }
+      if (!packageShardsReady(root).ready) { report(); throw new Error('Scoped package preparation did not produce the indexed bytes'); }
     }
   }
   console.log(`Selected scope ${scope.mode}: ${commands.length - failures.length} passed / ${failures.length} failed (${commands.length} executed commands).`);
+  report();
   if (failures.length) throw new Error('Scoped checks failed: ' + failures.join(', '));
   return true;
 }

@@ -6,7 +6,12 @@ import { fileURLToPath } from "node:url";
 import core from "../archive2-core.js";
 import { materializePackageShards } from "./materialize-archive-package-shards.mjs";
 import problemBankMeta from "../problem-bank-meta.js";
+import examSourceReader from "../exam-source-reader.js";
+import { classifyMetaBinding, loadRebinds } from "./meta-foundation/text-binding-lib.mjs";
+import { createUnitHinter } from "./unit-hint-lib.mjs";
+import { isMetadataConflict } from "./metadata-conflict-field.mjs";
 import { SOURCE_QUALITY_HOLD_FIELDS, loadSourceQualityHolds, applySourceQualityHold, assertSourceQualityHoldCoverage } from "./source-quality-holds.mjs";
+import { applyAssignment, loadToc as loadMiddleToc, readAssignments as readMiddleParentAssignments } from "./middle-parent-assignments-lib.mjs";
 import {
   buildMixedSourceShard,
   buildMixedUidBucket,
@@ -30,6 +35,11 @@ if (refreshingCanonicalProjection && process.argv.includes("--check"))
 const metadata = JSON.parse(read("archive/data/question_metadata.json"));
 const identity = JSON.parse(read("archive/data/question_identity_map.json"));
 const sourceQualityHolds = loadSourceQualityHolds({ root, identity });
+// 문항별 중단원 지정표(정본)에서 카탈로그 필드 reviewedMiddleParentKey를 파생한다. 본문 지문(assignmentFingerprint)이
+// 판정 당시와 같은 문항에만 싣고, 달라진 문항은 싣지 않는다(예전 규칙으로 떨어진다).
+const middleParentAssignments = readMiddleParentAssignments(root);
+const middleToc = loadMiddleToc();
+const reviewedMiddleStats = { assigned: middleParentAssignments ? middleParentAssignments.byUid.size : 0, applied: 0, stale: 0 };
 const basicScopeLinks = JSON.parse(read("archive/data/basic-scope-parent-links.json"));
 const projectionPolicy = JSON.parse(read("archive/data/archive2-canonical-projection-policy.json"));
 const foundationTaxonomy = JSON.parse(read("archive/data/meta-foundation/compiled/taxonomy_registry.json"));
@@ -97,20 +107,33 @@ const foundationBindingKeys = new Set(foundationBindings.bindings.map((r) => [r.
 // is bound to the question's CONTENT fingerprint (stem + choices + image, i.e. what the
 // classification describes) and (c) PT/TPL are ACTIVE labelled keys of the compiled taxonomy
 // registry with a consistent PT->TPL parent. Each facet keeps its own status code: A = approved
-// field status, P = recorded but not approved (검토 대기). Explicit field HOLDs are not exposed.
+// field status, P = recorded but not approved (검토 대기), H = the field carries a hold tag (shown all the same: a value that exists is visible).
 const hintActiveProblemTypes = new Map(foundationTaxonomy.problemTypes
   .filter((row) => row.status === "ACTIVE").map((row) => [row.problemTypeKey, row]));
 const hintActiveTemplates = new Map(foundationTaxonomy.templates
   .filter((row) => row.status === "ACTIVE").map((row) => [row.templateKey, row]));
 const hintFieldStatus = (value) => /^approved(_|$)/i.test(String(value || ""))
   ? "A" : /hold/i.test(String(value || "")) ? "H" : "P";
-const hintStats = { joined: 0, exact: 0, content: 0, changedContent: 0,
+// 메타 힌트를 보여 줄 근거는 하나: 행(또는 유형 판정)이 지금과 같은 발문+보기에 대한 것인가(text-binding-lib.mjs classifyMetaBinding).
+// 해설·정답·그림이 바뀐 것은 이유가 되지 않는다. git 이력은 보지 않는다(동결된 재결속 기록 파일만 읽는다).
+const textRebinds = loadRebinds(root);
+const hintStats = { joined: 0, row: 0, type: 0, unbound: 0,
   pt: 0, tpl: 0, l3: 0, curriculum: 0, ptUnregistered: 0, tplUnregistered: 0, tplParentMismatch: 0,
-  holdSkipped: 0 };
-function buildMetaHint(meta, binding) {
+  unit: 0, unitAmbiguous: 0 };
+// 단원 힌트(metaHintUnit): 승인된 유형(PT)이 있는 행에, 그 PT의 ACTIVE 연결(curriculum_bindings)이 같은 학년에서 통합 단원 하나만 가리키면 그 단원을
+// 표시 전용으로 싣는다(여러 단원으로 갈리면 싣지 않는다). 승인·정본 값은 만들지 않고 단원 선택·묶기만 읽는다(archive2-unified-units.js unitFor:
+// 원본의 단원 값으로 단원을 못 정한 문항에만 쓰고, 원본으로 정해지는 문항의 결과는 바꾸지 않는다). 규칙·학년별 켬/끔은 unit-hint-lib.mjs 한 곳이며,
+// 켜는 기준은 "이미 단원이 정해진 문항에 같은 규칙을 적용해 기존 단원과 90% 이상 일치"(학년·과목별, 측정은 docs/agents/metadata.md).
+const unitHinter = createUnitHinter({
+  bindings: foundationBindings.bindings,
+  unitLabelByKey: standardUnitLabelByKey,
+  subUnitLabelByKey: new Map(subUnitFilterOptions.map((row) => [row.subUnitKey, row.subUnit])),
+});
+function buildMetaHint(meta, binding, grade = "", subject = "") {
   if (!meta || !binding) return {};
   const status = meta.fieldStatus || {};
-  const hold = meta.foundationTaxonomyStatus === "HOLD";
+  // 값이 있으면 보인다(2026-11-20 사용자 결정): 행 전체의 HOLD(foundationTaxonomyStatus)나 유형 칸의 hold 꼬리표는 PT/TPL을 숨기는 이유가 아니다.
+  // hold 사유(L4_HOLD·난이도 보류·자료 문제)는 그 칸들의 일이고, 판정된 유형은 발문·보기가 같으면 그대로 보인다. 숨김은 발문·보기 결속 실패뿐(binding)이다.
   const l3Value = String(meta.L3 || meta.nativeL3 || "").trim();
   const l3State = hintFieldStatus(status.concept);
   const l3Held = l3State === "H" || ["HOLD", "ROUTE_OUT"].includes(meta.l3Disposition);
@@ -120,21 +143,19 @@ function buildMetaHint(meta, binding) {
   let pt = "", tpl = "";
   if (ptKey) {
     if (!hintActiveProblemTypes.has(ptKey)) hintStats.ptUnregistered++;
-    else if (hold || ptState === "H") hintStats.holdSkipped++;
     else pt = ptKey;
   }
   if (tplKey) {
     const row = hintActiveTemplates.get(tplKey);
     if (!row) hintStats.tplUnregistered++;
-    else if (hold || tplState === "H") hintStats.holdSkipped++;
     else if (!pt || row.parentProblemTypeKey !== pt) hintStats.tplParentMismatch++;
     else tpl = tplKey;
   }
-  const l3 = l3Value && !l3Held ? l3Value : "";
+  const l3 = l3Value && !l3Held && binding !== "type" ? l3Value : "";
   const approvedStandard = String(meta.metadataStatus || "").startsWith("approved_") &&
     /^approved(_|$)/i.test(String(status.standardUnit || ""));
   const recordedCurriculum = String(meta.curriculumKey || meta.curriculum || "").trim();
-  const curriculum = approvedStandard && ["2015", "2022"].includes(recordedCurriculum) ? recordedCurriculum : "";
+  const curriculum = approvedStandard && binding !== "type" && ["2015", "2022"].includes(recordedCurriculum) ? recordedCurriculum : "";
   const out = {};
   if (l3 || pt || tpl) {
     out.metaHintStatus = (l3 ? l3State : "-") + (pt ? ptState : "-") + (tpl ? tplState : "-");
@@ -143,6 +164,11 @@ function buildMetaHint(meta, binding) {
     if (tpl) { out.metaHintTPL = tpl; hintStats.tpl++; }
   }
   if (curriculum) { out.metaHintCurriculum = curriculum; hintStats.curriculum++; }
+  if (pt) {
+    const unit = unitHinter.hint(pt, grade, subject);
+    if (unit) { out.metaHintUnit = unit; hintStats.unit++; }
+    else if (unitHinter.decide(pt, grade).reason === "ambiguous") hintStats.unitAmbiguous++;
+  }
   return out;
 }
 const foundationProjectionFields = new Set(["problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "foundationTaxonomyStatus", "rpmPathStatus", "metaFoundationHoldReason", "metaFoundationPackVersion", "l3Disposition", "l4Disposition", "semanticDisposition"]);
@@ -231,7 +257,7 @@ const gradeCourseAllowlist = new Set(
 const taxonomyVersion = canonicalMasterSha;
 const approvedFieldStatus = (value) => /^approved(?:_|$)/i.test(String(value || ""));
 const reviewedMetadataStatuses = new Set(["MOTHER_FINAL"]);
-function verifiedBasicAssignment({ id, meta, sourceFile, sourceOrdinal, sourceGrade, assignmentFp }) {
+function verifiedBasicAssignment({ id, meta, sourceFile, sourceOrdinal, sourceGrade, assignmentFp, rowBound = false }) {
   const fail = (reason) => ({ assignment: null, reason });
   if (!id || !meta || id.questionUid !== meta.questionUid) return fail("assignment_identity_unverified");
   if (
@@ -240,7 +266,8 @@ function verifiedBasicAssignment({ id, meta, sourceFile, sourceOrdinal, sourceGr
     Number(id.sourceOrdinal) !== sourceOrdinal ||
     Number(meta.sourceOrdinal) !== sourceOrdinal
   ) return fail("assignment_identity_mismatch");
-  if (!sourceGrade || !assignmentFp || meta.contentFingerprint !== assignmentFp)
+  // 행의 발문·보기 결속(rowBound: classifyMetaBinding "row")이 확인된 행만 통과한다. 해설·정답·그림이 바뀐 것은 이유가 되지 않는다.
+  if (!sourceGrade || !assignmentFp || !rowBound)
     return fail("assignment_fingerprint_mismatch");
   const metadataStatus = String(meta.metadataStatus || "");
   const candidates = (sourceParentsByUid.get(id.questionUid) || []).filter((link) =>
@@ -361,12 +388,7 @@ for (const exam of exams) {
   const scope = { window: {}, console: { log() {}, warn() {}, error() {} } };
   vm.createContext(scope);
   vm.runInContext(source, scope, { filename: file, timeout: 3000 });
-  const bank = [
-    scope.window.questions,
-    scope.window.questionBank,
-    scope.window.questionBank?.questions,
-    scope.window.examData?.questions,
-  ].find(Array.isArray);
+  const bank = examSourceReader.readQuestionArray(scope.window);
   exam.identityTitle = scope.window.examTitle || file.split('/').pop().replace(/\.js$/,'');
   if (!Array.isArray(bank)) throw new Error("source bank unavailable: " + file);
   if (bank.length !== Number(exam.qCount))
@@ -424,14 +446,8 @@ for (const exam of exams) {
       if (!foundationScoped && !reviewedLegacySimilar && foundationProjectionFields.has(field)) continue;
       const sourceValue = question[field],
         value = validJoin ? meta[field] : undefined;
-      if (
-        sourceValue !== undefined &&
-        sourceValue !== null &&
-        String(sourceValue).trim() !== "" &&
-        value !== undefined &&
-        JSON.stringify(sourceValue) !== JSON.stringify(value) &&
-        !metaV2Sidecar
-      )
+      // 유형(PT/TPL)은 시험지 JS에 적힌 값과 달라도 충돌이 아니다(metadata-conflict-field.mjs). 다른 필드의 충돌 판정은 그대로다.
+      if (isMetadataConflict(field, sourceValue, value, { metaV2Sidecar }))
         metadataConflicts.push(field);
       if (value !== undefined) semantic[field] = value;
     }
@@ -454,6 +470,22 @@ for (const exam of exams) {
     });
     const registrationPending = meta?.registrationUpdateState?.schemaVersion === "JS_ARCHIVE_EXISTING_TARGET_META_DELTA_POLICY_V1" &&
       ["PHYSICAL_META_UPDATED_REVIEW_RESET_PENDING", "R1_RPM_DEBT_EVIDENCE_BOUND_REVIEW_PENDING"].includes(meta.registrationUpdateState.disposition);
+    // Binding of the metadata row to this question (S14). "exact": the row was approved against
+    // exactly these bytes. "content": only the answer/solution bytes changed after approval; the
+    // stem, choices and image the classification describes are byte-identical (assignment
+    // fingerprint), so the recorded values still describe this question. Anything else is not
+    // provably safe and stays out of meta-based filtering (the question itself stays usable).
+    // metaBinding: 이 행의 메타가 지금과 같은 발문+보기에 대한 것인가(있으면 "text", 없으면 비움). 판정은 text-binding-lib.mjs 한 곳.
+    // 유형 판정만 묶인 행("type")은 행의 나머지 값(L3·교육과정)을 힌트에서 뺀다(buildMetaHint).
+    let bindingKind = "";
+    if (validJoin) {
+      hintStats.joined++;
+      bindingKind = classifyMetaBinding({ meta, question, assignmentFingerprint, rebinds: textRebinds });
+      if (bindingKind) hintStats[bindingKind]++;
+      else hintStats.unbound++;
+    }
+    const metaBinding = bindingKind ? "text" : "";
+    const metaHint = buildMetaHint(meta, bindingKind, sourceGradeEvidence.grade, exam.subject);
     const assignmentResult = identityStatus === "VERIFIED" && sourceGradeEvidence.status === "VALID"
       ? verifiedBasicAssignment({
           id,
@@ -462,22 +494,9 @@ for (const exam of exams) {
           sourceOrdinal: ordinal,
           sourceGrade: sourceGradeEvidence.grade,
           assignmentFp: assignmentFingerprint,
+          rowBound: bindingKind === "row",
         })
       : { assignment: null, reason: sourceGradeEvidence.status };
-    // Binding of the metadata row to this question (S14). "exact": the row was approved against
-    // exactly these bytes. "content": only the answer/solution bytes changed after approval; the
-    // stem, choices and image the classification describes are byte-identical (assignment
-    // fingerprint), so the recorded values still describe this question. Anything else is not
-    // provably safe and stays out of meta-based filtering (the question itself stays usable).
-    let metaBinding = "";
-    if (validJoin) {
-      hintStats.joined++;
-      if (meta.contentFingerprint === assignmentFingerprint) {
-        metaBinding = meta.sourceFingerprint === fingerprint ? "exact" : "content";
-        hintStats[metaBinding]++;
-      } else hintStats.changedContent++;
-    }
-    const metaHint = buildMetaHint(meta, metaBinding);
     const record = {
       sourceFile: file,
       sourceOrdinal: ordinal,
@@ -511,6 +530,15 @@ for (const exam of exams) {
       sourceIntegrityStatus: identityStatus === "VERIFIED" ? "VERIFIED" : "UNRESOLVED",
       sourceFingerprint: fingerprint,
       assignmentFingerprint,
+      ...(() => {
+        const applied = middleParentAssignments
+          ? applyAssignment(middleParentAssignments.byUid.get(id?.questionUid || ""), { effectiveBrowseGrade: sourceGradeEvidence.grade, assignmentFingerprint }, middleToc)
+          : null;
+        if (applied?.stale) reviewedMiddleStats.stale += 1;
+        if (!applied?.key) return {};
+        reviewedMiddleStats.applied += 1;
+        return { reviewedMiddleParentKey: applied.key };
+      })(),
       rawQuestionHash: hash(JSON.stringify(question)),
       approvedSourceFingerprint: registrationPending ? "" : (meta?.sourceFingerprint || ""),
       metadataAssignmentEvidence: meta ? {
@@ -538,8 +566,9 @@ for (const exam of exams) {
             ? "R1_RPM_DEBT_EVIDENCE_BOUND_REVIEW_PENDING" : "PHYSICAL_META_VALUES_BOUND_REVIEW_RESET_PENDING",
         } } : {}),
       } : null,
+      // 전체 지문이 같거나, 행의 발문·보기 결속이 확인되면 VERIFIED. 유형 판정만 묶인 행("type")은 행 자체의 발문·보기 일치가 확인되지 않아 HOLD 그대로.
       sourceStatus:
-        validJoin && meta.sourceFingerprint === fingerprint
+        validJoin && (meta.sourceFingerprint === fingerprint || bindingKind === "row")
           ? "VERIFIED"
           : "HOLD",
       // RPM Primary semantic confirmation is independent of PT/TPL projection materialization.
@@ -581,6 +610,7 @@ for (const exam of exams) {
         scopeParents: basicScopeLinks.records || [],
         canonicalParents: uniqueCanonicalParents,
         allowContentBoundRevision: true,
+        textBound: bindingKind === "row",
       });
       record.metaProjectionStatus = displayResult.projection
         ? "DISPLAY_ONLY_SOURCE_BOUND"
@@ -778,7 +808,7 @@ const allInputPaths = [...new Set([
   ),
   coreMetaFilterAuthorityPath,
   ...sourceQualityHolds.manifestPaths,
-])].sort();
+])].filter((inputPath) => inputPath !== core.Canonical.COMPACT_INPUT_MANIFEST_PATH).sort();
 const manifestFiles = allInputPaths.map((inputPath) => {
   const bytes = inputPath === "data/archive2-catalog.json"
     ? Buffer.from(packedText, "utf8")
@@ -840,6 +870,10 @@ const sourceShardDir = path.join(root, "archive", sourceShardPrefix);
 const mixedSourceShardDir = path.join(root, "archive", mixedSourceShardPrefix);
 const mixedUidBucketDir = path.join(root, "archive", mixedUidBucketPrefix);
 const sourceIndexTarget = path.join(root, "archive", sourceIndexPath);
+const topIndexPath = core.Canonical.SOURCE_VERIFICATION_TOP_INDEX_PATH;
+const indexBucketPrefix = core.Canonical.SOURCE_VERIFICATION_INDEX_BUCKET_PREFIX;
+const indexBucketDir = path.join(root, "archive", indexBucketPrefix);
+const topIndexTarget = path.join(root, "archive", topIndexPath);
 const recordsBySource = new Map();
 for (const record of resolvedCatalog.records) {
   const sourceFile = core.normalizeFile(record.sourceFile);
@@ -984,11 +1018,54 @@ if (sourceShardQuestionCount !== resolvedCatalog.records.length ||
     sourceIndexRows.length !== resolvedCatalog.exams.length)
   throw new Error("Canonical source shard coverage is incomplete");
 
+// Sharded file list used by original-source verification (Worker/browser: archive2-canonical.js
+// loadSourceVerificationShard): a small top index plus SOURCE_VERIFICATION_INDEX_BUCKET_COUNT buckets keyed by the
+// first hex digit of sha256(sourceFile). One original check reads the manifest, the top index, ONE bucket and ONE
+// source shard, so the bytes it needs do not grow with the number of registered exams. The top index commits to the
+// bucket bytes; the manifest commits to the top index.
+const indexBucketCount = core.Canonical.SOURCE_VERIFICATION_INDEX_BUCKET_COUNT;
+const indexBucketFiles = new Map(Array.from({ length: indexBucketCount }, (_, i) => [i.toString(16), []]));
+for (const row of sourceIndexRows) indexBucketFiles.get(hash(row.sourceFile).slice(0, 1)).push(row);
+const indexBucketTexts = new Map();
+const topIndexBucketRows = [];
+for (const [prefix, files] of indexBucketFiles) {
+  const bucketText = JSON.stringify({
+    schemaVersion: core.Canonical.SOURCE_VERIFICATION_INDEX_BUCKET_SCHEMA,
+    prefix,
+    files,
+  }) + "\n";
+  indexBucketTexts.set(indexBucketPrefix + prefix + ".json", bucketText);
+  topIndexBucketRows.push({
+    prefix,
+    sha256: hash(bucketText),
+    byteLength: Buffer.byteLength(bucketText),
+    fileCount: files.length,
+  });
+}
+const topIndex = {
+  schemaVersion: core.Canonical.SOURCE_VERIFICATION_TOP_INDEX_SCHEMA,
+  resolverVersion: core.Canonical.RESOLVER_VERSION,
+  generatedFromCatalogIndexVersion: indexVersion,
+  // The version of the manifest WITHOUT the flat index and without this file (neither can be committed to by it).
+  baseProjectionVersion,
+  fileCount: sourceIndexRows.length,
+  buckets: topIndexBucketRows,
+};
+const topIndexText = JSON.stringify(topIndex) + "\n";
+// COMPAT: the flat index, the mixed lookup and the mixed context/UID buckets are read by Workers deployed before the
+// sharded file list existed. Those Workers compute their base version as "the manifest without the flat index", which
+// now also contains the top index, so everything they read must carry that version. Remove this (and the flat index,
+// once the mixed lookup has moved to the sharded layout) after the Worker redeploy is confirmed.
+const flatIndexBaseProjectionVersion = await core.Canonical.computeProjectionVersion(
+  [...manifestFiles, { path: topIndexPath, sha256: hash(topIndexText) }],
+  core.Canonical.RESOLVER_VERSION,
+);
+
 const resolvedAuthorityContext = resolvedCatalog.canonicalAuthority;
 const mixedContext = {
   schemaVersion: "archive2-mixed-source-verification-context-v1",
   resolverVersion: core.Canonical.RESOLVER_VERSION,
-  baseProjectionVersion,
+  baseProjectionVersion: flatIndexBaseProjectionVersion,
   authority: {
     taxonomyVersion: resolvedAuthorityContext.taxonomyVersion,
     gradeCourses: resolvedAuthorityContext.gradeCourses || [],
@@ -1035,11 +1112,11 @@ const sourceIndex = {
   schemaVersion: "archive2-source-verification-index-v1",
   resolverVersion: core.Canonical.RESOLVER_VERSION,
   generatedFromCatalogIndexVersion: indexVersion,
-  baseProjectionVersion,
+  baseProjectionVersion: flatIndexBaseProjectionVersion,
   mixedLookup: {
     schemaVersion: mixedIndexSchemaVersion(mixedEmitSchema),
     resolverVersion: core.Canonical.RESOLVER_VERSION,
-    baseProjectionVersion,
+    baseProjectionVersion: flatIndexBaseProjectionVersion,
     context: {
       path: mixedContextPath,
       sha256: hash(mixedContextText),
@@ -1054,6 +1131,9 @@ const sourceIndexText = JSON.stringify(sourceIndex) + "\n";
 const manifestFilesWithSourceIndex = [...manifestFiles, {
   path: sourceIndexPath,
   sha256: hash(sourceIndexText),
+}, {
+  path: topIndexPath,
+  sha256: hash(topIndexText),
 }].sort((a, b) => a.path.localeCompare(b.path));
 const manifest = {
   schemaVersion: "archive2-canonical-input-manifest-v1",
@@ -1063,6 +1143,11 @@ const manifest = {
   files: manifestFilesWithSourceIndex,
 };
 const manifestTarget = path.join(root, "archive/data/archive2-canonical-input-manifest.json");
+const compactManifest = core.Canonical.encodeCompactInputManifest(manifest);
+if (JSON.stringify(core.Canonical.decodeCompactInputManifest(compactManifest)) !== JSON.stringify(manifest))
+  throw new Error("Canonical compact input manifest did not preserve the original manifest exactly");
+const compactManifestText = JSON.stringify(compactManifest) + "\n";
+const compactManifestTarget = path.join(root, "archive", core.Canonical.COMPACT_INPUT_MANIFEST_PATH);
 if (packageOnly) {
   const relative = file => path.relative(root, file).split(path.sep).join('/');
   materializePackageShards({
@@ -1071,8 +1156,10 @@ if (packageOnly) {
       [relative(target), packedText],
       [relative(overrideIndexTarget), overrideIndexText],
       [relative(sourceIndexTarget), sourceIndexText],
+      [relative(topIndexTarget), topIndexText],
       [relative(manifestTarget), JSON.stringify(manifest) + "\n"],
-      ...[...shardTexts].map(([file, text]) => ['archive/' + file, text]),
+      [relative(compactManifestTarget), compactManifestText],
+      ...[...shardTexts, ...indexBucketTexts].map(([file, text]) => ['archive/' + file, text]),
     ],
     packageFiles: [
       [relative(mixedContextTarget), mixedContextText],
@@ -1099,6 +1186,19 @@ if (packageOnly) {
     : null;
   if (actualSourceIndex !== sourceIndexText)
     throw new Error("Archive 2.0 canonical source verification index is stale");
+  const actualTopIndex = fs.existsSync(topIndexTarget)
+    ? fs.readFileSync(topIndexTarget, "utf8").replace(/\r\n/g, "\n")
+    : null;
+  if (actualTopIndex !== topIndexText)
+    throw new Error("Archive 2.0 canonical source verification top index is stale");
+  for (const [bucketPath, expected] of indexBucketTexts) {
+    const targetPath = path.join(root, "archive", bucketPath);
+    const actualBucket = fs.existsSync(targetPath)
+      ? fs.readFileSync(targetPath, "utf8").replace(/\r\n/g, "\n")
+      : null;
+    if (actualBucket !== expected)
+      throw new Error(`Archive 2.0 canonical source verification index bucket is stale: ${bucketPath}`);
+  }
   const actualMixedContext = fs.existsSync(mixedContextTarget)
     ? fs.readFileSync(mixedContextTarget, "utf8").replace(/\r\n/g, "\n")
     : null;
@@ -1133,12 +1233,21 @@ if (packageOnly) {
     : null;
   if (actualManifest !== JSON.stringify(manifest) + "\n")
     throw new Error("Archive 2.0 canonical input manifest is stale");
+  const actualCompactManifest = fs.existsSync(compactManifestTarget)
+    ? fs.readFileSync(compactManifestTarget, "utf8").replace(/\r\n/g, "\n")
+    : null;
+  if (actualCompactManifest !== compactManifestText)
+    throw new Error("Archive 2.0 canonical compact input manifest is stale");
 } else {
   fs.writeFileSync(target, packedText);
   fs.writeFileSync(overrideIndexTarget, overrideIndexText);
   fs.mkdirSync(sourceShardDir, { recursive: true });
   fs.mkdirSync(mixedSourceShardDir, { recursive: true });
   fs.mkdirSync(mixedUidBucketDir, { recursive: true });
+  fs.mkdirSync(indexBucketDir, { recursive: true });
+  for (const [bucketPath, bucketText] of indexBucketTexts)
+    fs.writeFileSync(path.join(root, "archive", bucketPath), bucketText);
+  fs.writeFileSync(topIndexTarget, topIndexText);
   for (const [shardPath, shardText] of shardTexts)
     fs.writeFileSync(path.join(root, "archive", shardPath), shardText);
   for (const [shardPath, shardText] of mixedSourceShardTexts)
@@ -1148,6 +1257,7 @@ if (packageOnly) {
   fs.writeFileSync(mixedContextTarget, mixedContextText);
   fs.writeFileSync(sourceIndexTarget, sourceIndexText);
   fs.writeFileSync(manifestTarget, JSON.stringify(manifest) + "\n");
+  fs.writeFileSync(compactManifestTarget, compactManifestText);
 }
 console.log(JSON.stringify({
   indexVersion,
@@ -1159,5 +1269,6 @@ console.log(JSON.stringify({
   mixedLookupRecordCount: mixedRecordsByUid.size,
   mixedLookupContextBytes: Buffer.byteLength(mixedContextText),
   metaHint: hintStats,
+  reviewedMiddleParent: reviewedMiddleStats,
   ...catalog.health,
 }, null, 2));

@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-d228c3fdbdad-5253a612",
+  "sourceArchiveFile": "original/high/h2/1mid/23_금당고_1학기_중간_고2_수학I.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_b0bd64dc5eb74c391e212b36dc79686372424b16406ca02450fd7f07a85d708a",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_CALCULATION",
+      "templateKey": "TPL_EXPONENT_RATIONAL_POWER_OPERATION",
+      "step": "음의 지수를 역수 밑의 양의 지수로 바꿔 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4ff8ad5d52058dfb73eda552d9e771b164d52345b83bb6956de7e162098584e6",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_LOG_DEFINITION",
+      "templateKey": "TPL_H22A_01_LOG_DEFINITION_073",
+      "step": "각 밑의 거듭제곱이 진수가 되는 지수를 구하여 두 로그값을 뺀다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c89de9d968409783cf3ffa41d9b4d4659d037b541b6dece548fc51280fb9b998",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_03_LOG_INEQUALITY",
+      "templateKey": "TPL_H22A_03_LOG_INEQUALITY_092",
+      "step": "로그값 치환으로 이차부등식을 푼 뒤 증가하는 지수함수로 자연수 구간을 복원한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_97cb8f93642b8f606219d3e7951bb587873e405160d56a9486c956c56e9aa49f",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+      "step": "그림의 수평·수직 점선을 따라 로그와 지수의 역관계를 차례로 적용해 연결된 좌표들을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_804cd89973bfa76a72861e4e025ad0df40e2069e0ad9f6ba71ce388f64dd29a6",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_DEFINITION",
+      "templateKey": "TPL_H22A_04_TRIG_DEFINITION_098",
+      "step": "코사인과 탄젠트의 곱을 사인으로 바꾸어 y좌표를 정하고 원의 방정식으로 x좌표 절댓값을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a99e98a25726cfad85abca90fa36b4b6e9f13227657f6dd905fd745174dbda42",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "templateKey": null,
+      "step": "밑변환으로 로그의 역수 제곱합을 만들고 합·곱의 관계로 양수 곱을 구하여 세제곱합을 계산한다.",
+      "note": "필요 TPL: 로그 역수합의 기본대칭식 환원; 밑변환으로 역수합·제곱합을 만들고 양수 조건으로 곱을 결정해 대칭식을 계산한다. 검사: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_055757f0647fb654cdea2ededc64f8fb7a015de4dfad3a22286ef405d9083693",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENTIAL_DECAY",
+      "templateKey": null,
+      "step": "전하량 로그차가 시간에 비례함을 이용하여 같은 시간간격마다 같은 비율로 감소함을 도출한다.",
+      "note": "필요 TPL: 로그차 시간비례의 감소배율; 로그량의 차이가 일정한 시간 증가에 비례할 때 원량의 비가 일정함으로 원하는 두 시점 비를 구한다. 검사: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cf58a1585abcbe181411dff60023f431e7d63e13aa5b389587b79fd445a9f283",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_EQUATION",
+      "templateKey": "TPL_TRIGONOMETRIC_EQUATION_SUBSTITUTION_ROOTS",
+      "step": "각 이동과 제곱합으로 사인의 이차방정식을 만든 뒤 두 사인값 각각의 주기구간 근을 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b27a28572e5daf4967fad77f2aaf7a32966c179a8a0c3e93b35f8fdf0c7f5a93",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_IDENTITY_RELATIONS",
+      "templateKey": "TPL_TRIG_IDENTITY_ROOT_FEASIBILITY",
+      "step": "근호 안을 사인·코사인의 합차 제곱으로 인수분해하고 각 구간으로 절댓값 부호를 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_30d54bd3d88fb2d6ea704513a9bea6b21f051db474b52e2e40e5d43f36f46760",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENTIAL_MONOTONIC_INEQUALITY",
+      "templateKey": "TPL_EXP_BASE_BELOW_ONE_COMPARISON",
+      "step": "밑이 1보다 큰 항과 작은 항을 1 기준으로 나누고 역수 밑에서는 지수 크기와 함수값 순서를 뒤집는다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e85ca9e55e72e0ecec565ec795956e650bce4f06ff8431e3244a61a2996a68ad",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_03_LOG_INEQUALITY",
+      "templateKey": null,
+      "step": "로그 차의 절댓값을 m=8 기준으로 나누어 자연수 곱·비 부등식으로 환원하고 두 영역의 정수쌍을 중복 보정해 센다.",
+      "note": "필요 TPL: 절댓값 로그부등식의 자연수쌍 계수; 절댓값 부호별 곱·비 부등식을 만들고 변수별 가능한 자연수 개수를 합산하여 경계중복을 제외한다. 검사: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e8dbbdbe58cc51bb54001d713ea7794ee6f29196f6a68b680f478d339121d408",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_IDENTITY_RELATIONS",
+      "templateKey": "TPL_TRIG_RATIONAL_IDENTITY_RECOVERY",
+      "step": "각 변환으로 분수식들을 sec²와 -tan²로 바꾸어 피타고라스 항등식으로 값을 구한다.",
+      "note": "원문 해설의 tan(π-θ)=tanθ는 부호 오류로 실제 -tanθ이다. 해당 항은 제곱이므로 최종값1은 유지된다.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

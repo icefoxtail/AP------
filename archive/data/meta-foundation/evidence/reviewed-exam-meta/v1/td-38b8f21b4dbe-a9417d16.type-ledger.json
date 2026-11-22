@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-38b8f21b4dbe-a9417d16",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_왕운중_2학기_중간_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_e9e054cb9ca8ee41521ffbb65f8f88a99efc4a358b4286fc6fc4615fb66f5a2f",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_M3_QUADRATIC_PROPERTIES_GRAPH_MATCH",
+      "step": "완전제곱꼴-3(x-2)²/4-6에서꼭짓점(2,-6)을확인해②를고른다.",
+      "note": "필요 TPL: 표준형으로 일반형 그래프 진술 검토. 정의: 완전제곱꼴-3(x-2)²/4-6에서꼭짓점(2,-6)을확인해②를고른다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4d0a85b5ce2c3062d86754f51266ca321c77f20c4516d4a1d884219f98f73e85",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_MONOTONICITY",
+      "templateKey": "TPL_M3_QUADRATIC_FUNCTION_MONOTONICITY_INTERVAL",
+      "step": "완전제곱꼴-5(x+2)²+13의축-2와음의계수로증가구간x<-2이다.",
+      "note": "필요 TPL: 아래로 열린 포물선의 증가구간. 정의: 완전제곱꼴-5(x+2)²+13의축-2와음의계수로증가구간x<-2이다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f286abd795449daf74361ac44667f45ea481396ad681be94e0a48e11c97350b7",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "templateKey": "TPL_M3_VERTEX_FORM_VERTEX_LOCUS",
+      "step": "같은함숫값의x중점-1을축으로하고직선위꼭짓점(-1,2),이차항계수-2로f(1)=-6이다.",
+      "note": "필요 TPL: 대칭 함숫값과 꼭짓점의 직선 조건. 정의: 같은함숫값의x중점-1을축으로하고직선위꼭짓점(-1,2),이차항계수-2로f(1)=-6이다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e2d305f4f083789e07602b52ceb759edcf63988b78fbf001453b9f09214da589",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_M3_FIND_COEFFICIENT_FROM_TRIANGLE_AREA_WITH_VERTEX",
+      "step": "완전제곱꼴에서꼭짓점(-2,k+2),y절편k를얻어넓이|k|=4와그림B가양수인조건으로k=4이다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    }
+  ]
+}

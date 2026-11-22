@@ -16,14 +16,14 @@ window.questionBank = [
     "wide": false,
     "content": "다음 중 옳은 말을 한 사람은?",
     "choices": [
+      "철중: 자연수는 1, 소수, 합성수로 이루어져 있어.",
       "승준: 1은 약수가 1과 자기 자신 밖에 없기 때문에 소수야.",
       "민정: 자연수 중에서 약수의 개수가 3개인 수를 소수라고 해.",
       "수민: 소수는 모두 홀수야.",
-      "상우: 서로 다른 두 소수는 약수의 개수도 달라.",
-      "철중: 자연수는 1, 소수, 합성수로 이루어져 있어."
+      "상우: 서로 다른 두 소수는 약수의 개수도 달라."
     ],
-    "answer": "⑤",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
+    "answer": "①",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "rule_inferred",
@@ -45,13 +45,13 @@ window.questionBank = [
     "content": "162를 소인수분해 하면?",
     "choices": [
       "$2\\times3^2$",
-      "$2\\times3^3$",
       "$2\\times3^4$",
+      "$2\\times3^3$",
       "$2^2\\times3^2$",
       "$2^2\\times3^3$"
     ],
-    "answer": "③",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
+    "answer": "②",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -156,14 +156,14 @@ window.questionBank = [
     "wide": false,
     "content": "두 수 $2^a\\times3^2\\times5$, $2\\times3\\times5^b$의 최소공배수가 $2^4\\times3^c\\times5^2$일 때, 자연수 $a$, $b$, $c$에 대하여 $a+b-c$의 값은?",
     "choices": [
-      "0",
-      "2",
       "4",
       "6",
-      "8"
+      "8",
+      "10",
+      "12"
     ],
-    "answer": "③",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
+    "answer": "①",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "rule_inferred",
@@ -296,14 +296,14 @@ window.questionBank = [
     "wide": false,
     "content": "다음 중 계산 결과가 가장 작은 것은?",
     "choices": [
-      "$(-5)+(-3)$",
       "$(+4)+(-10)$",
       "$(+3)+(-5)$",
       "$\\left(+\\dfrac{7}{5}\\right)+\\left(-\\dfrac{14}{3}\\right)$",
-      "$\\left(-\\dfrac{5}{8}\\right)+\\left(+\\dfrac{8}{3}\\right)$"
+      "$\\left(-\\dfrac{5}{8}\\right)+\\left(+\\dfrac{8}{3}\\right)$",
+      "$(-5)+(-3)$"
     ],
-    "answer": "①",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
+    "answer": "⑤",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -324,14 +324,14 @@ window.questionBank = [
     "wide": false,
     "content": "수직선 위에서 $-\\dfrac{8}{3}$에 가장 가까운 정수를 $a$, $\\dfrac{7}{4}$에 가장 가까운 정수를 $b$라 할 때, $a-b$의 값은?",
     "choices": [
+      "$-7$",
+      "$-6$",
       "$-5$",
       "$-4$",
-      "$-3$",
-      "$-2$",
-      "$-1$"
+      "$-3$"
     ],
-    "answer": "①",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
+    "answer": "③",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -529,14 +529,14 @@ window.questionBank = [
     "wide": false,
     "content": "$a=1$, $b=-3$일 때, 다음 중 식의 값이 가장 큰 것은?",
     "choices": [
+      "$a+b^2-2b$",
       "$3a+b$",
       "$a^2-b^2$",
       "$-2a-5b$",
-      "$a+b^2-2b$",
       "$a^2+b$"
     ],
-    "answer": "④",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
+    "answer": "①",
+    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",

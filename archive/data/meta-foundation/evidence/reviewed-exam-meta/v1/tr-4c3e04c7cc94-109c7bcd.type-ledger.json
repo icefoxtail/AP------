@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-4c3e04c7cc94-109c7bcd",
+  "sourceArchiveFile": "original/high/h1/1mid/21_효천고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_5399033c7c762afe3ea86501d89e45cdce417d1aaa5f3571f0b4161413ce296c",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": "TPL_H1_POLY_DIVISION_SCALE",
+      "step": "제수가 세 배가 된 나눗셈 항등식에서 몫은 1/3배이고 나머지는 같음을 확인한다.",
+      "note": "TPL 제안: 제수 상수배에 따른 몫·나머지 변환; 나눗셈 항등식의 배율만 바꿔 몫과 나머지를 결정한다. 새 TPL 제안: 제수가 세 배가 된 나눗셈 항등식에서 몫은 1/3배이고 나머지는 같음을 확인한다. 정의: 제수가 세 배가 된 나눗셈 항등식에서 몫은 1/3배이고 나머지는 같음을 확인한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_44251ab23f08c25fe19ad8b1f82e18a93d32a588ff77c32359cb39d7f7009247",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+      "step": "분모의 켤레복소수를 곱해 분모를 실수화한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_534ea3844f3bf08f7abbea6b3595345906fe07722327e392d1c237b005420270",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_ROOT_COEFFICIENT_RELATION_EQUATION",
+      "step": "주어진 켤레복소수 두 근의 합과 곱을 구해 이차방정식을 만든다.",
+      "note": "TPL 제안: 두 근으로 이차방정식 구성; 변환이 없는 두 근의 합과 곱으로 방정식을 정한다. 새 TPL 제안: 주어진 켤레복소수 두 근의 합과 곱을 구해 이차방정식을 만든다. 정의: 주어진 켤레복소수 두 근의 합과 곱을 구해 이차방정식을 만든다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8a9ebd84f1d2946763ec39f16dbcb9a1fef24fe9f6ec708e4d5f8963604b628b",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+      "step": "선수 높이 이차식을 -(x-1)²+5로 정리하여 가능한 시간의 꼭짓점에서 최고 높이를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_87c137269af6abaf75ca7d7f83c201da30023d785fe4feef179c5892001c3ad8",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+      "step": "두 교점과 축 조건으로 함수를 정한 뒤 절댓값 안 이차식의 부호별 방정식을 풀어 해당 구간의 해만 센다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c087d2035f8e785d48c535ecbdd1d5c2139c9a46ee191b486967f71df8fec959",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_THEOREM_REDUCE",
+      "step": "제수 x²-x-1에서 x²≡x+1로 고차항의 나머지를 반복 환원하고 두 계수를 0으로 놓는다.",
+      "note": "TPL 제안: 이차제수 거듭제곱 나머지 점화; 이차관계로 높은 차수의 일차 나머지를 반복 환원한다. 새 TPL 제안: 제수 x²-x-1에서 x²≡x+1로 고차항의 나머지를 반복 환원하고 두 계수를 0으로 놓는다. 정의: 제수 x²-x-1에서 x²≡x+1로 고차항의 나머지를 반복 환원하고 두 계수를 0으로 놓는다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bb0309508d1e831e30b34be5e9606b025fcd2134f02428330178f05b94579804",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_THEOREM_REDUCE",
+      "step": "f의 이차인수를 먼저 반영하고 x²≡1로 합성식의 나머지를 일차식으로 줄여 계수를 비교한다.",
+      "note": "TPL 제안: 합성 다항식의 나머지 환원; 제수의 이차관계로 합성 입력과 출력의 차수를 낮춘다. 새 TPL 제안: f의 이차인수를 먼저 반영하고 x²≡1로 합성식의 나머지를 일차식으로 줄여 계수를 비교한다. 정의: f의 이차인수를 먼저 반영하고 x²≡1로 합성식의 나머지를 일차식으로 줄여 계수를 비교한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b41165642c1e6cc0f24975ffd694d241d09f66b433d9d3b444a462d1ba664fdc",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+      "templateKey": null,
+      "step": "xz를 새 변수로 두어 합과 곱을 표현하고 약수 후보별 이차방정식의 정수근 조건을 검사한다.",
+      "note": "TPL 제안: 자연수 연립식의 약수 후보 판정; 곱 조건으로 유한한 후보를 만들고 근의 합·곱과 순서조건으로 거른다. 새 TPL 제안: xz를 새 변수로 두어 합과 곱을 표현하고 약수 후보별 이차방정식의 정수근 조건을 검사한다. 정의: xz를 새 변수로 두어 합과 곱을 표현하고 약수 후보별 이차방정식의 정수근 조건을 검사한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5aa945292d968f0aaabba753a3076cae26a36932c40273df2689dc7c6e334adf",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": "TPL_H1_POLY_DIVISION_IDENTITY",
+      "step": "u=x-1로 놓고 몫과 나머지가 같다는 항등식으로 f를 구성하여 u³으로 나눈 나머지를 구한다.",
+      "note": "TPL 제안: 몫·나머지 동일 조건 복원; 공통 몫·나머지를 저차식으로 놓아 원식을 복원하고 다른 제수의 나머지를 구한다. 새 TPL 제안: u=x-1로 놓고 몫과 나머지가 같다는 항등식으로 f를 구성하여 u³으로 나눈 나머지를 구한다. 정의: u=x-1로 놓고 몫과 나머지가 같다는 항등식으로 f를 구성하여 u³으로 나눈 나머지를 구한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

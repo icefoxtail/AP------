@@ -7,6 +7,12 @@ on:
     branches: [main]
     paths: ['archive/**', 'tests/*meta*', 'tests/archive-original-exam-access.browser.cjs', '.github/workflows/problem-bank-meta.yml']
   workflow_dispatch:
+# A newer push to the same pull request cancels that PR's older run (runner capacity: 20 concurrent jobs).
+# main and manual runs keep one group per run and are never cancelled, so every main commit keeps its verdict.
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('problem-bank-meta-pr-{0}', github.event.pull_request.number) || format('problem-bank-meta-{0}-{1}', github.event_name, github.run_id) }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 permissions:
   contents: read
 jobs:
@@ -18,6 +24,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Assemble question metadata (git holds its shards)
+        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
       - name: Meta persistence, recovery and shared consumer contracts
         id: meta_diagnostics
         continue-on-error: true

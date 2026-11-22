@@ -1,0 +1,262 @@
+/* 빈 풀이노트 screen: controls, preview tiles and the print switch. Only what is specific to this page;
+   the frame, buttons and fields come from archive2-standalone.css and every color/radius from archive2-tokens.css
+   (no color numbers here, white text on ink aside). The A4 paper itself is note-sheet-paper.css. */
+
+[hidden] { display: none !important; }
+
+.ns-controls,
+.ns-preview-wrap {
+  margin-top: 20px;
+  padding: 24px 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+}
+.ns-section-title {
+  margin: 0 0 16px;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.ns-hint {
+  margin: 12px 0 0;
+  color: var(--ink-2);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.ns-preview-wrap .ns-hint {
+  margin: -8px 0 16px;
+}
+
+/* Form picker: one card per sheet form (check + name on the left, count on the right). */
+.ns-kinds {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.ns-kind {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 12px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+}
+.ns-kind.is-on {
+  padding: 11px 17px;
+  border: 2px solid var(--ink);
+  background: var(--selected);
+}
+.ns-pick {
+  flex: 1 1 200px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  cursor: pointer;
+}
+.ns-pick input {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+}
+.ns-pick-text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.ns-pick-text strong {
+  font-size: 17px;
+  line-height: 1.4;
+  font-weight: 700;
+}
+.ns-pick-text small {
+  color: var(--ink-2);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.ns-count {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ns-count-label {
+  color: var(--ink-2);
+  font-size: 14px;
+  font-weight: 700;
+}
+.ns-count input {
+  width: 64px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.ns-count input::-webkit-outer-spin-button,
+.ns-count input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.ns-count input:disabled {
+  background: var(--chip);
+  color: var(--muted);
+}
+
+/* Step buttons: the minus and plus are drawn with CSS (no icon glyphs). */
+.ns-step {
+  position: relative;
+  flex: 0 0 auto;
+  width: 44px;
+  padding: 0;
+}
+.ns-step::before,
+.ns-step.is-plus::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 2px;
+  margin: -1px 0 0 -7px;
+  background: currentColor;
+}
+.ns-step.is-plus::after {
+  transform: rotate(90deg);
+}
+
+.ns-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
+}
+.ns-summary {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+.ns-print-button {
+  min-height: 50px;
+  padding: 0 32px;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+/* Preview: one page of each selected form, scaled to the tile width (the script sets --ns-scale). */
+.ns-preview {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 320px));
+  gap: 24px 20px;
+}
+.ns-thumb-card {
+  margin: 0;
+}
+.ns-thumb {
+  position: relative;
+  aspect-ratio: 210 / 297;
+  overflow: hidden;
+  border: 1px solid var(--control-line);
+  border-radius: 4px;
+  background: var(--surface);
+}
+.ns-thumb > .ns-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  transform: scale(var(--ns-scale, 0.33));
+  pointer-events: none;
+  user-select: none;
+}
+.ns-thumb-card figcaption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+  font-size: 14px;
+}
+.ns-thumb-card figcaption span {
+  color: var(--ink-2);
+  font-weight: 700;
+}
+
+.ns-print {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .ns-kinds {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 660px) {
+  .ns-controls,
+  .ns-preview-wrap {
+    margin-top: 16px;
+    padding: 20px 16px;
+  }
+  .ns-kind {
+    padding: 8px 14px 14px;
+  }
+  .ns-kind.is-on {
+    padding: 7px 13px 13px;
+  }
+  .ns-count {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .ns-count-label {
+    margin-right: auto;
+  }
+  .ns-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .ns-print-button {
+    width: 100%;
+  }
+  .ns-preview {
+    grid-template-columns: minmax(0, 360px);
+  }
+}
+
+/* Print: only the sheets. The menu, controls and preview are hidden and every sheet is exactly one A4 page. */
+@page {
+  size: A4;
+  margin: 0;
+}
+@media print {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--surface);
+  }
+  body.archive2-shell {
+    padding: 0 !important;
+  }
+  .archive-navigation,
+  .sa-main {
+    display: none !important;
+  }
+  .ns-print {
+    display: block;
+  }
+  .ns-print .ns-page {
+    break-after: page;
+    page-break-after: always;
+  }
+  .ns-print .ns-page:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+}

@@ -1,0 +1,163 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "-23/45",
+     "253/90",
+     "-29/90",
+     "1/45"
+    ]
+   }
+  ],
+  "breakpoints": [],
+  "sourceDomain": {
+   "kind": "INTERVAL",
+   "range": [
+    "1",
+    "7"
+   ],
+   "states": [
+    "CLOSED",
+    "CLOSED"
+   ]
+  },
+  "domain": [
+   1,
+   7
+  ],
+  "viewport": [
+   0,
+   12,
+   0,
+   12
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "lines": [
+    {
+     "id": "L",
+     "slope": "1",
+     "intercept": "0",
+     "label": "y=x"
+    }
+   ],
+   "points": [
+    {
+     "id": "a",
+     "x": "1",
+     "y": "1"
+    },
+    {
+     "id": "b",
+     "x": "2",
+     "y": "2"
+    },
+    {
+     "id": "c",
+     "x": "4",
+     "y": "4"
+    },
+    {
+     "id": "d",
+     "x": "7",
+     "y": "7"
+    },
+    {
+     "id": "e",
+     "x": "11",
+     "y": "11"
+    },
+    {
+     "id": "ca",
+     "curveX": "1",
+     "unnamed": true
+    },
+    {
+     "id": "cb",
+     "curveX": "2",
+     "unnamed": true
+    },
+    {
+     "id": "cc",
+     "curveX": "4",
+     "unnamed": true
+    },
+    {
+     "id": "cd",
+     "curveX": "7",
+     "unnamed": true
+    }
+   ],
+   "segments": [
+    {
+     "id": "h0",
+     "from": "ca",
+     "to": "b",
+     "color": "WARM"
+    },
+    {
+     "id": "h1",
+     "from": "cb",
+     "to": "c",
+     "color": "WARM"
+    },
+    {
+     "id": "h2",
+     "from": "cc",
+     "to": "d",
+     "dashed": true
+    },
+    {
+     "id": "h3",
+     "from": "cd",
+     "to": "e",
+     "dashed": true
+    }
+   ],
+   "guides": [
+    {
+     "id": "v0",
+     "from": "ca",
+     "axis": "x"
+    },
+    {
+     "id": "v1",
+     "from": "cb",
+     "axis": "x"
+    },
+    {
+     "id": "v2",
+     "from": "cc",
+     "axis": "x"
+    },
+    {
+     "id": "v3",
+     "from": "cd",
+     "axis": "x"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cf",
+     "point": "cd",
+     "text": "y=f(x)",
+     "direction": "W",
+     "labelKind": "MATH"
+    }
+   ]
+  }
+ },
+ "caption": "f(a)=b, f(b)=c이므로 f⁻¹(c)=b, f⁻¹(b)=a이다. (f⁻¹∘f⁻¹)(c)=f⁻¹(f⁻¹(c))=f⁻¹(b)=a이다. 그림의 색 점선은 a→b→c로 가는 두 걸음이고 이를 거꾸로 따라가면 c에서 b를 거쳐 a에 이른다. 답은 ①이다.",
+ "sourceConditions": [
+  "f(a)=b, f(b)=c"
+ ],
+ "newVisualInformation": [
+  "a→b→c의 두 걸음(색 점선)을 거꾸로 읽어 c→b→a"
+ ]
+}

@@ -1,0 +1,213 @@
+{
+  "schemaVersion": "archive-q16-q5-current-renderer-producer-publication-v2",
+  "status": "FROZEN_AWAIT_INDEPENDENT_REVIEW_AND_ACTUAL_CAPTURE",
+  "owner": "/root/m3s2_release",
+  "date": "2026-11-17",
+  "currentMainRead": "a3ef35dd8886d82a230044efa063fa754b2124c3",
+  "intendedOpsRef": "refs/heads/ops/middle-protected9-current-renderer-26fc-20261117",
+  "scope": "THIS_PACKET_EXACT_Q16_AND_Q5_ONLY_FOUR_LOGICAL_VIEWS; ROOT_COORDINATES_M1_TYPED7_FOURTEEN_ADDITIONAL_VIEWS_SEPARATELY",
+  "independentReviewer": "/root/ci_m2s2",
+  "publisher": "/root",
+  "operations": [
+    {
+      "path": "tools/check-m3s2-q16-layout-browser.cjs",
+      "beforeGitBlobSha": "849de1ab8881bb3c8715f08dc87a57dd25351bcf",
+      "gitBlobSha": "f7426f61f7cd783b52cfe5c279fcee8cb8200ee7",
+      "rawSha256": "71f2cab9234d4a80ada7e79c7b03df288079fd39f8e806a6fce1255324951958",
+      "bytes": 26602,
+      "fullStringReadback": true,
+      "kind": "UPDATE",
+      "changes": [
+        "engine Git and SHA256 pins only",
+        "exact review-branch push provenance; preserve previous PR and local branches"
+      ]
+    },
+    {
+      "path": "tools/check-m3-e052-q5-problem-browser.cjs",
+      "beforeGitBlobSha": null,
+      "absence": "Actual a3ef GitHub contents API404",
+      "historicalOrigin": {
+        "commit": "c29e1cc63c1d55b9c049c254908e466dad23a086",
+        "gitBlobSha": "5937d98954764d79bf8efc2b528cd3a5b791c573",
+        "rawSha256": "0386a00334a011de691a2d298f1822f8d9894e60090d8020fc7e01a10e62762d",
+        "bytes": 59715
+      },
+      "gitBlobSha": "c59ca5c001e007e7fa123089f306a54bba8ee796",
+      "rawSha256": "43067702c2eb2ca062aa73c0551a5fb5d3ad9a35bcf409452778b41c01f0e6a7",
+      "bytes": 59715,
+      "fullStringReadback": true,
+      "kind": "RESTORE_HISTORICAL_PRODUCER_WITH_RENDERER_PINS_ONLY",
+      "changes": [
+        "engine and screen runtime Git/SHA256/size refs only; all other original bytes preserved"
+      ]
+    },
+    {
+      "path": "tests/fixtures/archive-m3-e052-q5-problem-ui.json",
+      "beforeGitBlobSha": null,
+      "absence": "Actual a3ef GitHub contents API404",
+      "gitBlobSha": "6a130b5af0bde204ede90211ae779b92ff74022f",
+      "rawSha256": "1ad5d743e74665f42ba8abc3213a81e7c768eb771a8575314c6e9404e851b9cb",
+      "bytes": 1807,
+      "fullStringReadback": true,
+      "kind": "RESTORE_EXACT_ORIGINAL_FIXTURE",
+      "changes": []
+    },
+    {
+      "path": "tests/archive-m3s2-q16-current-renderer-provenance.test.cjs",
+      "beforeGitBlobSha": null,
+      "gitBlobSha": "ca7bed52e0f8e5ef76a847f3aac6dd8e6a9d6cea",
+      "rawSha256": "0716ca8570649148dd8323507a3cacb0abf26cfd1d8132754733ae0b5cbca12b",
+      "bytes": 4788,
+      "syntheticDefined": 13,
+      "execution": "NOT_RUN",
+      "syntax": "NOT_RUN",
+      "kind": "ADD_SCOPED_SYNTHETIC_EVENT_CONTRACT_TEST"
+    }
+  ],
+  "exactDelta": {
+    "gitBlobSha": "941cfba72dabb08c1b710e709adaf83880473bea",
+    "rawSha256": "df7d7d3f865b6abb243d64a6d36d051e7f63b458067d3b2bd8907190e1c2e4c4",
+    "bytes": 5761
+  },
+  "unchangedFixtures": [
+    {
+      "path": "tests/fixtures/archive-m3s2-q16-layout-ui.json",
+      "gitBlobSha": "e694b6723add49a8b7695e059b07e5a089a19d65",
+      "rawSha256": "4f0474664d32ee2fdaf18c8ff9cb61566ea8a70bf0a2a2040116ddca6c2d2957",
+      "bytes": 1069,
+      "edits": 0
+    }
+  ],
+  "selectedSourceAndAssetMetadata": {
+    "observedCommit": "a3ef35dd8886d82a230044efa063fa754b2124c3",
+    "directGitHubDirectoryMetadataOnly": true,
+    "sources": [
+      {
+        "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+        "sha": "82c627bacb59105e9bd3a5397d4828757308d587",
+        "size": 66658,
+        "type": "file"
+      },
+      {
+        "path": "archive/exams/original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",
+        "sha": "80043be4a26d379664740f0846720bba38f31d5a",
+        "size": 63188,
+        "type": "file"
+      }
+    ],
+    "assets": [
+      {
+        "path": "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q05-problem-source-v2.png",
+        "sha": "716c4228fd5e2ab0ad995eae9b498f8b57a8eb88",
+        "size": 57270,
+        "type": "file"
+      }
+    ],
+    "originalFixedBindingsMatch": true,
+    "sourceBodiesDownloadedOrInspected": 0,
+    "imagesOpened": 0
+  },
+  "renderInputs": [
+    {
+      "path": "archive/engine.html",
+      "gitBlobSha": "226342544e896cd6a6f35aa946947b89ef3c893e",
+      "rawSha256": "671f89999fe07b0f5695bb088ef9d262d7d2da95947689117241bb6f3b633ce5",
+      "bytes": 196085,
+      "currentRawVerifiedAt": "9fbcf190fd8abaa03f330def331afc7c7c27ba60"
+    },
+    {
+      "path": "archive/screen-runtime-adapter.js",
+      "gitBlobSha": "fb0ee7afc7eed48b30975874c5536eb283f308c9",
+      "rawSha256": "ed0b267dc3b27675c2c0ed0aa985991a0aad3d3863ce5bcd43f0acb28033d709",
+      "bytes": 53393,
+      "currentRawVerifiedAt": "9fbcf190fd8abaa03f330def331afc7c7c27ba60"
+    }
+  ],
+  "evidenceBoundary": {
+    "expectedCheckout": "Root must CAS current renderer/code/fixture pins at exact ops head before capture. Source/UID/asset/payload/MD/ID preflight guards remain as before and may not be relaxed.",
+    "q16Event": "New push accepted only exact fixed review ref, actual HEAD=expected=GITHUB_SHA=event.after, event.ref and repository exact; run/job/event provenance recorded. Original PR permits its separate merge event SHA and exact PR head as before. Local isolation unchanged.",
+    "q16ExecutionOwner": "Existing generic GITHUB_ACTIONS_SUPPORTED_CHROME retained; eventName is actual push or pull_request and headCommit is actual event head. No push is labelled PR.",
+    "q5Event": "Historical Q5 producer records expected/actual/GitHub event SHA but only validates event SHA format. The new ops workflow/transport must enforce push SHA equality and actual run/job externally; no run/job fabricated into raw proof.",
+    "noApprovalChange": "Only fresh capture producers. Existing issued receipts, Native/UI authority helpers, sidecars, MD/ID/runtime, source banks, assets, scope, geometry/font/capture/lifecycle gates remain unmodified.",
+    "previousUi": "Old renderer screenshots/visual acceptance are not re-used as current-renderer display approval."
+  },
+  "runtimeContract": {
+    "q16": {
+      "command": "node tools/check-m3s2-q16-layout-browser.cjs --output ABSOLUTE_OUTSIDE_REPOSITORY",
+      "expectedEnv": "ARCHIVE_M3S2_LAYOUT_UI_EXPECTED_SHA",
+      "output": "technical-proof.json",
+      "schemaVersion": "archive-m3s2-q16-layout-raw-ui-v2",
+      "head": "checkoutCommit",
+      "execution": "executionProvenance.checkout",
+      "refs": "top-level checkerRef/manifestRef/captureHelperRef",
+      "views": 2,
+      "assets": 0
+    },
+    "q5": {
+      "command": "node --max-old-space-size=512 tools/check-m3-e052-q5-problem-browser.cjs --output ABSOLUTE_OUTSIDE_REPOSITORY",
+      "expectedEnv": "ARCHIVE_M3_E052_Q5_UI_EXPECTED_SHA",
+      "output": "technical-proof.json",
+      "schemaVersion": "archive-m3-e052-q5-student-ui-preview-v1",
+      "head": "checkoutCommit",
+      "execution": "checkout; run/job external transport only",
+      "refs": "top-level checkerRef/manifestRef/captureHelperRef",
+      "views": 2,
+      "assets": 1
+    },
+    "shared": {
+      "chromeEnv": "CHROME_BIN",
+      "viewports": [
+        {
+          "name": "desktop",
+          "width": 1365,
+          "height": 1000
+        },
+        {
+          "name": "mobile",
+          "width": 390,
+          "height": 844
+        }
+      ],
+      "results": "top-level results with per-result screenshots; top screenshotArtifacts",
+      "resultSurfaceAndMode": "Neither producer writes per-result surface/mode. Q16 writes top.surface='PROBLEM' and top.mode='exam'. Q5 has no top.surface; validate its top.mode, problemOnlyScreenshots, screenshotsScope and solutionsOpened flags plus each technical.mode='exam'/solutionNodes=0. Do not add or alter fields in raw technical JSON.",
+      "status": "TECHNICAL_PASS_VISUAL_REVIEW_PENDING is not independent visual acceptance"
+    },
+    "testCommand": "node --test tests/archive-m3s2-q16-current-renderer-provenance.test.cjs",
+    "syntheticDefined": 13,
+    "requiredFreshEvidence": "Original technical JSON and every original tile for two subjects x two viewports; independent current visual review before any activation."
+  },
+  "verification": {
+    "wholeProducerInverseExact": true,
+    "candidateImmutableFullStringReadback": true,
+    "pureStringAndMetadataOnly": true,
+    "nodeSyntax": "NOT_RUN",
+    "nodeTests": "NOT_RUN",
+    "browser": "NOT_RUN",
+    "sourceEvaluation": 0,
+    "sourceBodiesRead": 0,
+    "mathReview": 0,
+    "visualReview": 0,
+    "newApproval": 0,
+    "registrarExecution": 0,
+    "localShellCalls": 0,
+    "remoteRefWrites": 0
+  },
+  "limitations": [
+    "Q16 selected MD/ID hashes remain original guarded values; no current full-data preflight is claimed here.",
+    "New synthetic test before-absence must be confirmed by root final integration CAS.",
+    "Independent author cannot self-approve final producer changes; CI reviewer and actual ops execution remain required."
+  ],
+  "supersedesMetadataOnly": {
+    "gitBlobSha": "cfa104792df089aa4d27e83c038f8d806a145daa",
+    "rawSha256": "a881001b8f9bf4ff695f9739fc7d9367ca464ece47a2c349671aafedf1824bb4",
+    "reason": "Disambiguate Q5 absence of top.surface; all four operation bytes unchanged."
+  },
+  "independentReview": {
+    "gitBlobSha": "502c8ee23467dcb392458e0c7c0843dbcf7f812b",
+    "rawSha256": "510e9d3048f6d90ff6f25fea0c58f984b4bc4e5b924e9b5132c55811a8c80512",
+    "bytes": 7427,
+    "decision": "STATIC_ACCEPT",
+    "codeOperationsUnchanged": true,
+    "actualCapture": "NOT_RUN"
+  }
+}

@@ -5,6 +5,7 @@ import crypto from 'node:crypto';
 import { createRequire } from 'node:module';
 import { execFileSync } from 'node:child_process';
 import {validateRegistrationPackage} from './target-registration-contract.mjs';
+import {syncMetadataShards,assertMetadataAssembledCurrent} from './meta-foundation/question-metadata-format.mjs';
 
 const args={};
 for(let i=2;i<process.argv.length;i++){const key=process.argv[i];if(key==='--apply')args.apply=true;else if(['--root','--assignment','--proposal','--catalog-candidate','--evidence-root'].includes(key))args[key.slice(2)]=process.argv[++i];else throw Error('UNKNOWN_ARGUMENT:'+key);}
@@ -40,7 +41,7 @@ const now=new Date().toISOString();
 const backup=new Map(allowed.map(rel=>[rel,fs.readFileSync(abs(rel))]));
 const before=Object.fromEntries(allowed.map(rel=>[rel,sha(backup.get(rel))]));
 let writesStarted=false;
-const restore=()=>{if(writesStarted)for(const [rel,bytes] of backup)fs.writeFileSync(abs(rel),bytes);};
+const restore=()=>{if(writesStarted){for(const [rel,bytes] of backup)fs.writeFileSync(abs(rel),bytes);syncMetadataShards(root);}};
 try {
   validateRegistrationPackage({proposal,allowed,questionCount,targetFile});
   if(!['JS_ARCHIVE_TARGET_REGISTRATION_PACKAGE_V1','MASTER_TARGET_ONLY_REGISTRATION_PROPOSAL_V1'].includes(proposal.schemaVersion))throw Error('proposal schema mismatch');
@@ -230,7 +231,7 @@ try {
   for(const rel of allowed)if(shaFile(abs(rel))!==before[rel])throw Error('BASELINE_CHANGED_DURING_PREPARATION:'+rel);
   if(shaFile(abs(assignment.productionRelativePath))!==assignment.artifactRawSha256)throw Error('SOURCE_CHANGED_DURING_PREPARATION');
   for(const asset of assignment.releaseAssets)if(shaFile(safe('archive/'+asset.ref))!==asset.sha256)throw Error('ASSET_CHANGED_DURING_PREPARATION');
-  if(args.apply){writesStarted=true;for(const rel of allowed)fs.writeFileSync(abs(rel),outputs[rel]);}
+  if(args.apply){assertMetadataAssembledCurrent(root);writesStarted=true;for(const rel of allowed)fs.writeFileSync(abs(rel),outputs[rel]);syncMetadataShards(root);}
   const actualOut=Object.fromEntries(allowed.map(rel=>[rel,sha(Buffer.from(outputs[rel],'utf8'))]));
   const receipt={schemaVersion:'JS_ARCHIVE_TARGET_ONLY_REGISTRATION_APPLICATION_V1',status:args.apply?'APPLIED_PENDING_VALIDATORS':'PLAN_VALIDATED_NOT_APPLIED',runId:assignment.runId,examUid:assignment.examUid,head:assignment.expectedHead,sourceArtifactSha256:assignment.artifactRawSha256,sourceArtifactBlobSha1:assignment.validatorRawBufferBlobSha1,targetQidSet:targetQids,targetCounts:{identity:targetIds.length,metadata:targetMeta.length,index:targetIndex.length,catalog:targetCatalog.length,db:1},nonTargetInvariant:{dbExamRows:dbBase.mainDB.exams.length,identityRows:identityBase.records.length,metadataRows:metadataBase.records.length,indexRows:indexBase.questionIndex.length,catalogRows:catalogBase.records.length,allPreservedByDeepComparison:true,identityRuntimeTuplesPreserved:true},metaProjection:{targetFieldStatusCounts:metadataNext.records.filter(x=>x.sourceArchiveFile===targetFile).reduce((o,x)=>{for(const [k,v] of Object.entries(x.fieldStatus||{}))o[k+'='+v]=(o[k+'='+v]||0)+1;return o;},{}),targetNullProblemType:targetMeta.filter(x=>x.problemTypeKey==null||x.problemTypeKey==='').length,targetNullTemplate:targetMeta.filter(x=>x.templateKey==null||x.templateKey==='').length,semanticFieldsCopiedUnchanged:true},catalog:{records:catalogFinal.records.length,exams:catalogFinal.exams.length,identityDigest:identityNext.identityDigest,indexVersion:catalogFinal.indexVersion,projectionVersion:manifest.projectionVersion,targetAutomaticCount:targetResults.filter(x=>x.ok).length},assets:assignment.releaseAssets.map(x=>({ref:x.ref,sha256:shaFile(safe('archive/'+x.ref)),expectedSha256:x.sha256})),changedFiles:allowed.map(rel=>({path:rel,beforeSha256:before[rel],afterSha256:actualOut[rel]})),checks:{baselineSnapshotExact:true,targetOrdinalCoverage:true,nonTargetRowsUnchanged:true,sourceAssetHashesMatch:true,sourceStatusVerified:true,manifestGeneratedFromCurrentCatalog:true},createdAt:now};
   fs.writeFileSync(path.join(evidence,'target-registration.receipt.json'),JSON.stringify(receipt,null,2)+'\n');

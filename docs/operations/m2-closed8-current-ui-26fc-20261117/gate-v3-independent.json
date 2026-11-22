@@ -1,0 +1,241 @@
+{
+  "schemaVersion": "archive-independent-closed8-hydration-gate-review-v3",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "reviewer": "m3s2_release",
+  "author": "m1_release_closeout",
+  "decision": "STATIC_ACCEPT_GATE_PATH_AND_FIXED_HISTORY_INPUT_REPAIR_ACTUAL_NATIVE47_PENDING",
+  "inputs": {
+    "manifest": {
+      "gitBlobSha1": "a1a65111d3b446ae31bde046ae6425c68728909f",
+      "sha256": "0ae3722d936f3d2563c3d5a33b5b15e8a8eab9cd1844ace62a15386e9b735eae",
+      "bytes": 10927
+    },
+    "delta": {
+      "gitBlobSha1": "a7bbb41dbcd4586b08873027366af39525f94af8",
+      "sha256": "23d2e8083f11d79894854a0fdb463017d8fc1164348b4e1903c0f554e45e2d9d",
+      "bytes": 5292
+    },
+    "evidence": {
+      "gitBlobSha1": "924243c4c366b45f88177cad9a3fded7259a82df",
+      "sha256": "8cfa6465d6c6f3d3b2760343953e4f7126b8c4bba9ecd74a7f27fce867231da3",
+      "bytes": 19531
+    },
+    "gate": {
+      "gitBlobSha1": "096bdd8b920f917b75821aad70cc2c453fac5f6b",
+      "sha256": "4060bb43bf0cd4add0d39bfda2f3528904ad73d8a7428d9b87b41de47e2f05bb",
+      "bytes": 48757
+    },
+    "test": {
+      "gitBlobSha1": "ebe3a2ed35a5b9c16997ce23f6058637e7ab19bc",
+      "sha256": "397d6340e1e945214734500fbe966f6bcae1d54dcdbf26d2e6cc064d33374fcd",
+      "bytes": 3376
+    }
+  },
+  "priorReview": {
+    "gitBlobSha1": "abe5672794420185ffdc801835a5d448bda08179",
+    "sha256": "b1fa9e8f62c0d28fb187a6c7764ff2f1a9f2e548b0112c9cd2270e037ac3e89b",
+    "bytes": 10531
+  },
+  "verified": {
+    "exactRawGitAndBytes": 5,
+    "wholeGateDelta": {
+      "hunks": 4,
+      "fullBeforeGit": "f8a2f22b5c0d03325f791f42785028d7c603e5d9",
+      "fullAfterGit": "096bdd8b920f917b75821aad70cc2c453fac5f6b",
+      "wholePatchExact": true
+    },
+    "priorProductionAndSidecarsAndFocusedTestAndRestoredStatic17Exact": [
+      {
+        "path": "archive/tools/meta-foundation/m2-problem21-current-ui-continuity.mjs",
+        "current": "a3ae3747c5381c58b5554875f599013085d3152e",
+        "prior": "a3ae3747c5381c58b5554875f599013085d3152e",
+        "equal": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+        "current": "ecdb4e5f371fa6209ded457875b3825266fe3d6d",
+        "prior": "ecdb4e5f371fa6209ded457875b3825266fe3d6d",
+        "equal": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/native-reviewed-source-reuse.mjs",
+        "current": "616f7882d8891b7a28369fe29292448d1c853b1b",
+        "prior": "616f7882d8891b7a28369fe29292448d1c853b1b",
+        "equal": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+        "current": "02549be443e029f094ae9e0213865b91063d6930",
+        "prior": "02549be443e029f094ae9e0213865b91063d6930",
+        "equal": true
+      },
+      {
+        "path": "archive/tools/meta-foundation/reviewed-m2-problem21-continuity.mjs",
+        "current": "6ccd3d6206066b3bf92ff8efd5325caac6eb8a4a",
+        "prior": "6ccd3d6206066b3bf92ff8efd5325caac6eb8a4a",
+        "equal": true
+      },
+      {
+        "path": "tools/4slot/registered-renderer-continuity.mjs",
+        "current": "7e158a33f81f251f1121f1ba5f049a1a32cb3995",
+        "prior": "7e158a33f81f251f1121f1ba5f049a1a32cb3995",
+        "equal": true
+      },
+      {
+        "path": "tools/4slot/registered-renderer-continuity.cjs",
+        "current": "22ab86e4198ed84612296b25983d9831424abb39",
+        "prior": "22ab86e4198ed84612296b25983d9831424abb39",
+        "equal": true
+      },
+      {
+        "path": ".archive-meta-register/4slot-renderer-continuity/m2s2-problem21-issued-eight-20261116-e017-q04.json",
+        "current": "b0c1aa4f63623f9dfa823a8757e3b70739b3a451",
+        "prior": "b0c1aa4f63623f9dfa823a8757e3b70739b3a451",
+        "equal": true
+      },
+      {
+        "path": ".archive-meta-register/4slot-renderer-continuity/m2s2-problem21-issued-eight-20261116-e017-q05.json",
+        "current": "206d489d2ea9d733dc7eca1c311f342f3937bd79",
+        "prior": "206d489d2ea9d733dc7eca1c311f342f3937bd79",
+        "equal": true
+      },
+      {
+        "path": ".archive-meta-register/4slot-renderer-continuity/m2s2-problem21-issued-eight-20261116-e017-q09.json",
+        "current": "db6ed5eb4c67c82f963dc63119650580a3a5ff9a",
+        "prior": "db6ed5eb4c67c82f963dc63119650580a3a5ff9a",
+        "equal": true
+      },
+      {
+        "path": ".archive-meta-register/4slot-renderer-continuity/m2s2-problem21-issued-eight-20261116-e017-q18.json",
+        "current": "03647587169a9341581b7896e8b4382ec0677211",
+        "prior": "03647587169a9341581b7896e8b4382ec0677211",
+        "equal": true
+      },
+      {
+        "path": ".archive-meta-register/4slot-renderer-continuity/m2s2-problem21-issued-eight-20261116-e017-q20.json",
+        "current": "26df64265146e0dd7eb2e9a7eed0f340a6782980",
+        "prior": "26df64265146e0dd7eb2e9a7eed0f340a6782980",
+        "equal": true
+      },
+      {
+        "path": ".archive-meta-register/4slot-renderer-continuity/m2s2-problem21-issued-eight-20261116-e017-q23.json",
+        "current": "9efd42692ade9230e6cf5aa66a5bbfbf2f6a9e8f",
+        "prior": "9efd42692ade9230e6cf5aa66a5bbfbf2f6a9e8f",
+        "equal": true
+      },
+      {
+        "path": ".archive-meta-register/4slot-renderer-continuity/m2s2-problem21-issued-eight-20261116-e023-q06.json",
+        "current": "07d087288ef915ada881a02651ec12b1ee65707d",
+        "prior": "07d087288ef915ada881a02651ec12b1ee65707d",
+        "equal": true
+      },
+      {
+        "path": ".archive-meta-register/4slot-renderer-continuity/m2s2-problem21-issued-eight-20261116-e023-q10.json",
+        "current": "594010ff306345d8ab5205df5be6be6bc0483d01",
+        "prior": "594010ff306345d8ab5205df5be6be6bc0483d01",
+        "equal": true
+      },
+      {
+        "path": "tests/archive-m2-problem21-current-ui-continuity.test.mjs",
+        "current": "669ffa1f7172d54c86ae787da0a317aae2f6c410",
+        "prior": "669ffa1f7172d54c86ae787da0a317aae2f6c410",
+        "equal": true
+      },
+      {
+        "path": "docs/operations/m2-problem-image8-repair-20261116/independent-static-v2.json",
+        "current": "e639a869d01437e872c9355b57df69065ed30d65",
+        "prior": "e639a869d01437e872c9355b57df69065ed30d65",
+        "equal": true
+      }
+    ],
+    "fixedHistoryTableMatchesOwnerEvidenceExactly": true,
+    "fixedHistoryRefs": [
+      {
+        "commit": "e0c968d539ea5d76ce134c38956a32bc280989fe",
+        "path": "docs/operations/m2-problem-image8-repair-20261116/independent-static-v1.json",
+        "gitBlobSha1": "c37c57e7b5993d2431b6e1399529c86b3bdd06b6",
+        "sha256": "f608d253890e072e79ed6bc4dcabfb98e9058fcfc4dc60641bf57736f8eff7fb",
+        "bytes": 4127
+      },
+      {
+        "commit": "c28641f67d91bfb27352b11faaef4552f46c45be",
+        "path": "archive/data/meta-review/m2-s2-20261114/exams/E023/review.json",
+        "gitBlobSha1": "eb54e18c3146e611f20018859e48bdb3e74cf970",
+        "sha256": "7da03aa90ef0e8e7f363dab0e8dc482291683471a6087cde27c650fa4abc6e07",
+        "bytes": 118816
+      },
+      {
+        "commit": "1244785eb4889e9c6a6ebdbca3b57c5e9ef53a67",
+        "path": "docs/operations/m2-s2-e023-solution-display6-continuity-20261116/independent-static-v1.json",
+        "gitBlobSha1": "245578b48da7b0cc0a5c3a4e0048e7e2590080a5",
+        "sha256": "458cbdde5842e97dc8f542fe03d74da36ab4c1bde95d2b1e8e274c7e6a109be7",
+        "bytes": 17215
+      },
+      {
+        "commit": "6d011ffd05eb2581c41a4119121cdc0009dcfc99",
+        "path": "docs/operations/m2-s2-e023-solution-ui-20261116/student-ui-technical-r4.json",
+        "gitBlobSha1": "b0829009e77805a070e6771939b5efa98ce1cec2",
+        "sha256": "2059ecf6f667676bbd07a1b04e3928ed219ba578dd3a6c7ceb33bc1d04b408ed",
+        "bytes": 22874
+      },
+      {
+        "commit": "4c7227ba795225da1d389f6852793bbe0f1bf54c",
+        "path": "docs/operations/m2-s2-e023-solution-ui-20261116/student-ui-independent-r4.json",
+        "gitBlobSha1": "968135fc29dfa64d3c9b3300c9e8b6eeb0ab599f",
+        "sha256": "82934951f72d9b35c4ba785c3fd1eda35daddc2cba4e0de6450b2450bea1ba20",
+        "bytes": 4824
+      }
+    ],
+    "fullNewTestBodyRead": true
+  },
+  "boundaries": {
+    "diagnosticPath": "Only unrequired plain path values outside existing repository dependency namespaces are ignored. Strong immutable refs still call unchanged refShape/safeRelative and immutable Git/raw/size verification before any queue classification.",
+    "requiredAndCurrent": "Required repository paths retain original current-file copying, regular-path validation and missing-current refusal. Current v2 static proof is not in the historical allow-table and remains a CONFIG-required HEAD input.",
+    "exactHistory": "Exactly five complete commit/path/Git/raw/size tuples may omit current-path copying. Same historical path with another commit/digest/size is rejected. No general historical-path or missing-current exception.",
+    "childClosure": "After immutable authentication, historical JSON is traversed once for its declared nested dependencies; original outputDigests recursion exclusion stays unchanged.",
+    "liveAlias": "The current E023 native-review alias remains an ordinary current queued dependency. Owner evidence binds its current HEAD Git eb54e18c3146e611f20018859e48bdb3e74cf970; this review does not replace original Native validation.",
+    "authority": "All original production/Native/renderer/identity/runtime/ACTIVE/source/asset checks are unchanged. Missing a production-required file will still refuse the actual Native/gate result.",
+    "currentOutside39": "Existing original-index whole outside39 comparisons, source47 selected8, same-source scope and delete/cold/token refusals remain byte unchanged."
+  },
+  "testCoverage": {
+    "finalDefinitions": 13,
+    "meaningfulCases": [
+      "actual absolute diagnostic PNG path excluded from plain metadata queue",
+      "current Q10 independent proof still required",
+      "strong-ref and explicitly-required absolute paths reject",
+      "repository namespace malformed/control/traversal paths reject",
+      "Korean source and sidecar paths preserved",
+      "five exact history tuples accepted",
+      "same-path commit/Git/raw/size substitution rejects",
+      "unknown history/current static-v2 receive no exemption"
+    ],
+    "ownerObserved": {
+      "unchangedPathCasesReused": 9,
+      "correctedLiteralNewlineCase": 1,
+      "newHistoricalCases": 3,
+      "totalUnique": 13,
+      "fullFinalRerun": false
+    },
+    "reviewerExecution": 0,
+    "actualNative8": "NOT_RUN_CURRENT_V3",
+    "source47": "NOT_RUN_CURRENT_V3"
+  },
+  "actualFailureBasis": {
+    "head": "deb5606c7398c7f42a5acedfbdafdd02427e3474",
+    "run": "44034956098",
+    "job": "133875494764",
+    "phase": "AUTHENTICATED_ACTUAL_INPUTS",
+    "code": "M2_CURRENT8_SCOPE_PATH",
+    "causePointer": "docs/operations/m2-problem21-continuity-20261116/q10-independent-ui-v1.json /images/0/path",
+    "meaning": "The observed value is local capture provenance, not a declared immutable repository dependency."
+  },
+  "readLimits": {
+    "sourceBodyInspection": 0,
+    "mathReview": 0,
+    "visualReview": 0,
+    "repoProgramExecution": 0,
+    "codeMutation": 0,
+    "refsOrMainWrites": 0
+  },
+  "nextAction": "Root reruns the exact scoped gate after this input-only repair; independent static acceptance does not establish Native8, source47, Consumer, current registration or Pages success."
+}

@@ -9,6 +9,7 @@ const vm = require("node:vm");
 const root = path.resolve(__dirname, "..");
 const read = (...parts) => fs.readFileSync(path.join(root, ...parts), "utf8");
 const Assign = require("../archive/archive2-assign.js");
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 const P1 = "00000000-0000-4000-8000-000000000001";
 const P2 = "00000000-0000-4000-8000-000000000002";
@@ -81,8 +82,8 @@ function memoryStorage(initial = {}) {
 let uuidCounter = 0;
 const uuid = () => `11111111-1111-4111-8111-${String(++uuidCounter).padStart(12, "0")}`;
 const NOW = Date.parse("2026-11-10T03:00:00Z"); // 한국 시간 2026-11-10 12:00
-async function build({ papers = [paper(P1)], api = makeApi(), history = null, storage = memoryStorage(), onDone = () => {}, now = () => NOW } = {}) {
-  const model = Assign.createModel({ papers, request: api.request, history, storage, uuid, now, onDone });
+async function build({ papers = [paper(P1)], api = makeApi(), history = null, storage = memoryStorage(), onDone = () => {}, now = () => NOW, original = undefined } = {}) {
+  const model = Assign.createModel({ papers, request: api.request, history, storage, uuid, now, onDone, ...(original ? { original } : {}) });
   await model.load();
   return { model, api, storage };
 }
@@ -309,6 +310,79 @@ test("409는 그 건만 실패하고 나머지는 계속 진행하며 서버 문
   assert.match(Assign.friendlyMessage(httpError(409, { error: "대상 반보다 높은 학년의 source 문항은 기본 출제할 수 없습니다." }), 409), /반 학년보다 높은/);
 });
 
+test("문항 목록 기준 갱신(409)은 모든 경로에서 새로고침 안내로 바뀌고 다시 시도 대상에서 빠진다", async () => {
+  const STALE = "분류 기준이 갱신되었습니다. 문항 목록을 새로고침하세요.";
+  const MSG = /문항 목록 기준이 새로 바뀌었습니다\. 페이지를 새로고침/;
+  for (const ctx of [{}, { original: true }, { unit: true }]) {
+    const info = Assign.classifyError(httpError(409, { error: STALE }), ctx);
+    assert.equal(info.kind, "failed");
+    assert.equal(info.stale, true);
+    assert.match(info.message, MSG);
+    assert.doesNotMatch(info.message, /관리자/);
+    assert.match(Assign.friendlyMessage(httpError(409, { error: `CANONICAL_STALE: ${STALE}` }), 409, ctx), MSG);
+  }
+  assert.equal(Assign.classifyError(httpError(409, { error: "SOMETHING_ELSE broke" })).stale, undefined, "다른 실패는 그대로");
+  const post = (call) => {
+    if (call.body.class_id === "c1") throw httpError(409, { error: STALE });
+    return okAssignment(call);
+  };
+  const { model, api } = await build({ api: makeApi({ post }) });
+  await pick(model, "c1");
+  await pick(model, "c2");
+  await model.start();
+  assert.deepEqual(model.state.jobs.map((j) => j.status), ["failed", "ok"]);
+  assert.match(model.state.jobs[0].message, MSG);
+  assert.equal(model.results().stale, 1);
+  assert.equal(model.results().retryable, 0, "같은 요청은 다시 보내도 또 거절되므로 다시 시도 대상이 아니다");
+  const foot = Assign.renderFoot(model);
+  assert.match(foot, /data-assign-action="refresh-page"/);
+  assert.match(foot, />페이지 새로고침</);
+  assert.doesNotMatch(foot, /data-assign-action="retry"/);
+  const before = api.posts().length;
+  assert.equal(await model.retryFailed(), false);
+  assert.equal(api.posts().length, before, "자동 POST 0회");
+});
+
+test("저장본 출제는 서버가 index_version을 읽지 않으므로 새 기준을 받는 방법이 있어도 다시 보내지 않는다", async () => {
+  const post = () => { throw httpError(409, { error: "분류 기준이 갱신되었습니다. 문항 목록을 새로고침하세요." }); };
+  let refreshes = 0;
+  const { model, api } = await build({ api: makeApi({ post }), original: { indexVersion: "idx", refreshIndexVersion: async () => { refreshes += 1; return "idx-new"; } } });
+  await pick(model, "c1");
+  await model.start();
+  assert.equal(api.posts().length, 1);
+  assert.equal(refreshes, 0);
+  assert.equal(model.results().stale, 1);
+  assert.match(Assign.renderFoot(model), /data-assign-action="refresh-page"/);
+});
+
+test("기준 갱신이 아닌 실패는 계속 다시 시도할 수 있고 새로고침 버튼이 없다", async () => {
+  const post = (call, n) => { if (n === 1) throw httpError(409, { error: "기존 Assignment의 고정 roster는 변경할 수 없습니다." }); return okAssignment(call); };
+  const { model } = await build({ api: makeApi({ post }) });
+  await pick(model, "c1");
+  await model.start();
+  assert.equal(model.results().retryable, 1);
+  assert.equal(model.results().stale, 0);
+  const foot = Assign.renderFoot(model);
+  assert.match(foot, /data-assign-action="retry"/);
+  assert.doesNotMatch(foot, /refresh-page/);
+});
+
+test("패널 화면: 페이지 새로고침 버튼은 location.reload를 부른다", async () => {
+  const dom = fakeDom();
+  let reloads = 0;
+  dom.win.location = { href: "https://t.test/archive/workspace.html", reload() { reloads += 1; } };
+  const api = makeApi({ post: () => { throw httpError(409, { error: "분류 기준이 갱신되었습니다. 문항 목록을 새로고침하세요." }); } });
+  const handle = Assign.open({ document: dom.doc, papers: [paper(P1)], request: api.request, uuid, now: () => NOW, storage: memoryStorage() });
+  await tick(); await tick();
+  await handle.model.toggleClass("c1", true);
+  dom.fire("click", clickOn("submit"));
+  for (let i = 0; i < 8; i += 1) await tick();
+  assert.match(dom.regions.foot.innerHTML, /data-assign-action="refresh-page"/);
+  dom.fire("click", clickOn("refresh-page"));
+  assert.equal(reloads, 1);
+  dom.fire("click", clickOn("close"));
+});
+
 test("취소된 출제와 같은 키(409)는 자동으로 다시 보내지 않고, 교사가 '새로 출제'를 누르면 새 번호로 한 번 보낸다", async () => {
   const post = (call, n) => { if (n === 1 && call.body.class_id === "c1") throw httpError(409, { error: "취소된 Assignment는 RETRY로 다시 배포할 수 없습니다." }); return okAssignment(call); };
   const { model, api } = await build({ api: makeApi({ post }) });
@@ -369,6 +443,14 @@ test("반 목록: 401은 로그인 안내, 담당 반 없음, 불러오기 실�
   built = await build({ api: makeApi({ classesError: networkError() }) });
   assert.equal(built.model.state.phase, "error");
   assert.match(Assign.renderBody(built.model), /data-assign-action="reload"/);
+});
+
+test("반 목록: 403은 로그인 안내가 아니라 권한 없음 문구(다시 로그인해도 풀리지 않는다)", async () => {
+  const built = await build({ api: makeApi({ classesError: httpError(403, { error: "Forbidden" }) }) });
+  assert.equal(built.model.state.phase, "error");
+  const body = Assign.renderBody(built.model);
+  assert.match(body, /권한이 없습니다/);
+  assert.doesNotMatch(body, /선생님 로그인/);
 });
 
 test("같은 날 이미 낸 반은 기본으로 체크되지 않고, 문제지가 여러 권이면 그 건만 빠진다", async () => {
@@ -764,7 +846,7 @@ function sliceBetween(source, start, end) {
   return source.slice(from, to);
 }
 function workspaceDispatch({ search = "", papersFromApi = null, assign = true }) {
-  const source = read("archive", "archive2-workspace.js");
+  const source = readWorkspace();
   const code = sliceBetween(source, "function assignRequest(route, opt = {}) {", "function originalIssueBusy() {");
   const opened = [];
   const legacy = [];
@@ -820,7 +902,7 @@ test("workspace: 패널 요청은 로그인이 없으면 401로 알리고, 헤�
   assert.equal(JSON.stringify(h.requests[0]), JSON.stringify({ route: "/class-exam-assignments", body: { a: 1 }, method: "POST", options: { headers: { "X-Archive2-Contract": "archive2-v1" }, timeoutMs: 150000 } }));
   h.context.teacherSessionOk = () => false;
   await assert.rejects(() => h.context.assignRequest("/qr-classes"), (error) => error.status === 401);
-  const workspace = read("archive", "archive2-workspace.js");
+  const workspace = readWorkspace();
   assert.match(workspace, /if \(window\.Archive2Assign\?\.handlePopState\?\.\(\)\) return;/);
   assert.match(workspace, /else if \(a === "saved-paper-issue"\) await openSavedPaperAssign\(b\.dataset\.paperId\);/);
   assert.match(workspace, /window\.Archive2WorkspaceSavedPaperIssue = openSavedPaperAssign;/);
@@ -885,7 +967,7 @@ test("배포 꾸러미와 workspace.html에 새 파일이 같은 버전으로 �
   assert.ok(manifest.archiveRootFiles.includes("archive2-assign.css"));
   const html = read("archive", "workspace.html");
   assert.match(html, /archive2-assign\.css\?v=20261116-polish-1/);
-  assert.match(html, /archive2-assign\.js\?v=20261116-polish-1/);
+  assert.match(html, /archive2-assign\.js\?v=20261119-small-fixes-1/);
   assert.ok(html.indexOf("archive2-assign.js") < html.indexOf("archive2-library.js"), "패널은 보관함보다 먼저 올라온다");
   for (const file of ["archive2-assign.js", "archive2-assign.css"]) assert.ok(fs.existsSync(path.join(root, "archive", file)));
   const css = read("archive", "archive2-assign.css");

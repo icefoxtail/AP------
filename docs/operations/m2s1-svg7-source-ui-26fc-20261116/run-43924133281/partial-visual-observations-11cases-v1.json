@@ -1,0 +1,951 @@
+{
+  "schemaVersion": "archive-partial-existing-vector-display-observation-v1",
+  "status": "PARTIAL_VISUAL_OBSERVATIONS_FROZEN_OVERALL_TECHNICAL_RUN_FAILED",
+  "reviewer": "GPT_ROOT_26FC_M3S2_INDEPENDENT",
+  "frozenAtUtc": "2026-11-16T17:19:00.613410+00:00",
+  "scope": "11_COMPLETED_LOGICAL_CASES_13_ORIGINAL_PNG_TILES_ONLY",
+  "execution": {
+    "provider": "GITHUB_ACTIONS",
+    "eventName": "pull_request",
+    "repository": "icefoxtail/AP------",
+    "workflow": "M2S1 SVG7 Problem Chrome",
+    "job": "m2s1-svg7-problem",
+    "runId": "43915213725",
+    "runAttempt": 1,
+    "pullRequest": 2330,
+    "headSha": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+    "baseSha": "d7111057c89ad4f4a418e2805eeeb1b04447f99f",
+    "eventSha": "acc7484c5f1346df84c9b70b0b9da4c8698221f2",
+    "runUrl": "https://github.com/icefoxtail/AP------/actions/runs/43915213725"
+  },
+  "jobId": 133467388099,
+  "checkoutCommit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+  "technicalRef": {
+    "provider": "GITHUB_ACTIONS_ARTIFACT",
+    "runId": 43915213725,
+    "artifactId": 14250560068,
+    "artifactRelativePath": "technical-proof.json",
+    "sha256": "dd8cb0c5e3cfb6ac2e9a7de09ae5bf7889c16bc810569b72b9dcd6265c4cb75d",
+    "bytes": 175990
+  },
+  "artifactZipRef": {
+    "artifactId": 14250560068,
+    "sha256": "85a025440254e84e6c9dc3494d5259fbd86636d9cf882f5dc3101e4c93c599ad",
+    "bytes": 436924
+  },
+  "expectedDisplayMetadataRef": {
+    "path": "selected7-expected-display-metadata-v2.json",
+    "sha256": "ff76bf825242777300159eb8b4da0e6638003070918958908a4b25ccda42fe6d",
+    "bytes": 12900
+  },
+  "manifestRef": {
+    "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+    "path": "tests/fixtures/archive-m2s1-svg7-problem-ui.json",
+    "gitBlobSha1": "7557df94d518fe36dde9426ec928eb880747c07e",
+    "sha256": "2723900e7f2868a6cc034fd09b8faa449c7e04056732e713c7caccb9e433700f",
+    "bytes": 11980
+  },
+  "checkerRef": {
+    "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+    "path": "tools/check-m2s1-svg7-problem-browser.cjs",
+    "gitBlobSha1": "9fe85dcf3bead8621b29c7bb6a137b8b0d41b770",
+    "sha256": "fbca885a482757bb9666c5a8fdd2713d4c547c9c7d1fa476c19ba1822309d161",
+    "bytes": 30624
+  },
+  "captureHelperRef": {
+    "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+    "path": "tools/check-reviewed-problem-renderer-browser.cjs",
+    "gitBlobSha1": "56c80b40d53fa88e8054a16f7b7267f968696f3f",
+    "sha256": "e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673",
+    "bytes": 56735
+  },
+  "surfaceHelperRef": {
+    "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+    "path": "tools/capture-m1s2-problem-surface.cjs",
+    "gitBlobSha1": "ffeb072d7b94df6491ab7eeacb73ed1750f598ca",
+    "sha256": "86b0e6761544480a688930928484e1f944e9e47e0ab2347aa22a35331891f5cf",
+    "bytes": 10218
+  },
+  "summary": {
+    "expectedLogicalCases": 14,
+    "technicalCompleted": 11,
+    "directlyViewedLogicalCases": 11,
+    "directlyViewedOriginalPngFiles": 13,
+    "partialDisplayAcceptedLogicalCases": 11,
+    "notReviewedLogicalCases": 3,
+    "overallTechnicalStatus": "FAIL",
+    "failureCode": "UI_NATIVE_SURFACE_COMPLETENESS",
+    "overallFourteenCaseVisualAcceptance": "INCOMPLETE",
+    "newMathematicalQa": 0,
+    "newSemanticApproval": 0,
+    "newFourSlotVector": 0,
+    "newRegistrationAuthority": 0
+  },
+  "method": {
+    "directOriginalPngsViewed": true,
+    "rerendered": false,
+    "recaptured": false,
+    "imageEditingOrCompositing": false,
+    "sourceBodiesOpenedForThisReview": 0,
+    "answersOrSolutionsReviewed": false,
+    "wholeProblemValuesReproducedInReport": false,
+    "scopeOfJudgment": [
+      "READABILITY",
+      "CLIPPING",
+      "READING_OBSCURING_OVERLAP",
+      "DUPLICATE_FIGURE",
+      "DECLARED_CHOICE_VISIBILITY"
+    ]
+  },
+  "records": [
+    {
+      "technicalResultIndex": 0,
+      "key": "E037-Q3",
+      "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+      "sourceOrdinal": 3,
+      "surface": "PROBLEM",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/exams/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "9283d798bb19ebdb498ff91d5d8d7d219d3baf27",
+        "sha256": "890c15ac7d12aae4e432828b0eedbecea9df0faa6b44706433ece4145831854c",
+        "bytes": 43819
+      },
+      "assetRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q3-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "27caa8994a054468dd026f6b8ae47ec0dd408d97",
+        "sha256": "af71f9ee6722aeb6987a73c722ba21df63fe9f33955f51003bad340e08175e4d",
+        "bytes": 4820
+      },
+      "assetRefs": [
+        {
+          "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+          "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q3-problem-visual-v2-source-repair-r1.svg",
+          "gitBlobSha1": "27caa8994a054468dd026f6b8ae47ec0dd408d97",
+          "sha256": "af71f9ee6722aeb6987a73c722ba21df63fe9f33955f51003bad340e08175e4d",
+          "bytes": 4820
+        }
+      ],
+      "questionSha256": "6a22975575ea6cdf3b1187d200d757454ce46ca25ebaa15413af801ecd1ebfe3",
+      "captureDomSha256": "fe7ae47b30f65e284218d3a807e70ca64b8a91d802db7414d83eef985e81ee95",
+      "captureMethod": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+      "originalTileCount": 1,
+      "expectedChoices": {
+        "count": 5,
+        "embeddedInImage": false,
+        "basis": "SOURCE_METADATA_NOT_MATHEMATICAL_REVIEW"
+      },
+      "directObservation": {
+        "visibleChoiceCount": 5,
+        "allDeclaredChoicesVisible": true,
+        "problemFigureOccurrences": 1,
+        "clippingObserved": false,
+        "readingObscuringOverlapObserved": false,
+        "readability": "ACCEPTABLE_AT_CAPTURED_VIEWPORT",
+        "notes": [
+          "문장과 단일 그림 및 선택지 5개가 화면 안에 완전히 보인다.",
+          "그림 표기와 선택지에 경계 잘림이나 읽기를 막는 겹침이 보이지 않는다."
+        ]
+      },
+      "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+      "authorityBoundary": "EXISTING_VECTOR_STATIC_PHASE_AND_UI_AUTHORITY_STILL_REQUIRED",
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E037-Q3-desktop-tile-01.png",
+          "sha256": "aac21a97166ebe69b6acd513b5ca429fd54e79ac6534f51dab3f686dd6f9bded",
+          "bytes": 36757,
+          "pixelWidth": 664,
+          "pixelHeight": 555,
+          "directOriginalPngViewed": true,
+          "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+          "observation": "VISIBLE_PROBLEM_SURFACE"
+        }
+      ]
+    },
+    {
+      "technicalResultIndex": 1,
+      "key": "E037-Q15",
+      "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+      "sourceOrdinal": 15,
+      "surface": "PROBLEM",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/exams/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "9283d798bb19ebdb498ff91d5d8d7d219d3baf27",
+        "sha256": "890c15ac7d12aae4e432828b0eedbecea9df0faa6b44706433ece4145831854c",
+        "bytes": 43819
+      },
+      "assetRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q15-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "a90c300439e84fce81d9e297da5ffc6830d8feff",
+        "sha256": "02cd1d0cb64f3a233c4557290c6705aac512e1a957f2b7d3518bb66dde2ef659",
+        "bytes": 4496
+      },
+      "assetRefs": [
+        {
+          "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+          "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q15-problem-visual-v2-source-repair-r1.svg",
+          "gitBlobSha1": "a90c300439e84fce81d9e297da5ffc6830d8feff",
+          "sha256": "02cd1d0cb64f3a233c4557290c6705aac512e1a957f2b7d3518bb66dde2ef659",
+          "bytes": 4496
+        }
+      ],
+      "questionSha256": "356fcdae61dadad8ec8ddee2b7c3c2508392738a0460e8015802cf7b8b4cda4e",
+      "captureDomSha256": "af1f8547af4480cbf38b53ff162e4009baa86014c4f545e66c177502bbe39798",
+      "captureMethod": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+      "originalTileCount": 1,
+      "expectedChoices": {
+        "count": 5,
+        "embeddedInImage": false,
+        "basis": "SOURCE_METADATA_NOT_MATHEMATICAL_REVIEW"
+      },
+      "directObservation": {
+        "visibleChoiceCount": 5,
+        "allDeclaredChoicesVisible": true,
+        "problemFigureOccurrences": 1,
+        "clippingObserved": false,
+        "readingObscuringOverlapObserved": false,
+        "readability": "ACCEPTABLE_AT_CAPTURED_VIEWPORT",
+        "notes": [
+          "단일 그림과 세로로 배치된 선택지 5개가 모두 보인다.",
+          "표기와 선택지의 읽기성을 막는 겹침 또는 경계 잘림이 보이지 않는다."
+        ]
+      },
+      "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+      "authorityBoundary": "EXISTING_VECTOR_STATIC_PHASE_AND_UI_AUTHORITY_STILL_REQUIRED",
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E037-Q15-desktop-tile-01.png",
+          "sha256": "c90a802923f038733d4aa97f14e02f50ea0d3e50308b1888d985a4f411aa233a",
+          "bytes": 50526,
+          "pixelWidth": 664,
+          "pixelHeight": 539,
+          "directOriginalPngViewed": true,
+          "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+          "observation": "VISIBLE_PROBLEM_SURFACE"
+        }
+      ]
+    },
+    {
+      "technicalResultIndex": 2,
+      "key": "E048-Q11",
+      "questionUid": "qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec",
+      "sourceOrdinal": 11,
+      "surface": "PROBLEM",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+        "gitBlobSha1": "4a20adbce9e5a7f07744143cef611d453e454250",
+        "sha256": "bb0904139d63eee938b33add6a9b48e1129bfa7d7e9dd9d6939045f66c50f88b",
+        "bytes": 40797
+      },
+      "assetRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q11-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "1f7d7e789339248ae3b45d8d45f292fbb9170077",
+        "sha256": "8b31d959fdd7a6530f41fe27b118c6a7e4fb6c965c4fe83d3e89581a399edb18",
+        "bytes": 3708
+      },
+      "assetRefs": [
+        {
+          "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+          "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q11-problem-visual-v2-source-repair-r1.svg",
+          "gitBlobSha1": "1f7d7e789339248ae3b45d8d45f292fbb9170077",
+          "sha256": "8b31d959fdd7a6530f41fe27b118c6a7e4fb6c965c4fe83d3e89581a399edb18",
+          "bytes": 3708
+        }
+      ],
+      "questionSha256": "204df6ce83ba0c3b0c7c0f2b36b6b727d22629017e57d20a74810abfb19583fa",
+      "captureDomSha256": "d628aa7ad996ea2f0b0ed6de83080f3d4e26c22bf3d3be7dc20e9940d1d2c2f3",
+      "captureMethod": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+      "originalTileCount": 1,
+      "expectedChoices": {
+        "count": 5,
+        "embeddedInImage": false,
+        "basis": "SOURCE_METADATA_NOT_MATHEMATICAL_REVIEW"
+      },
+      "directObservation": {
+        "visibleChoiceCount": 5,
+        "allDeclaredChoicesVisible": true,
+        "problemFigureOccurrences": 1,
+        "clippingObserved": false,
+        "readingObscuringOverlapObserved": false,
+        "readability": "ACCEPTABLE_AT_CAPTURED_VIEWPORT",
+        "notes": [
+          "문장, 단일 그림, 가로 선택지 5개가 모두 보인다.",
+          "그림 바깥 표기까지 화면 안에 있으며 잘림이나 중복 그림이 보이지 않는다."
+        ]
+      },
+      "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+      "authorityBoundary": "EXISTING_VECTOR_STATIC_PHASE_AND_UI_AUTHORITY_STILL_REQUIRED",
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E048-Q11-desktop-tile-01.png",
+          "sha256": "7d3396f64e5a953a1e020fcd667b8f2fadf84b94e457a7848573f1980983fcc7",
+          "bytes": 32775,
+          "pixelWidth": 664,
+          "pixelHeight": 561,
+          "directOriginalPngViewed": true,
+          "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+          "observation": "VISIBLE_PROBLEM_SURFACE"
+        }
+      ]
+    },
+    {
+      "technicalResultIndex": 3,
+      "key": "E048-Q13",
+      "questionUid": "qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637",
+      "sourceOrdinal": 13,
+      "surface": "PROBLEM",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+        "gitBlobSha1": "4a20adbce9e5a7f07744143cef611d453e454250",
+        "sha256": "bb0904139d63eee938b33add6a9b48e1129bfa7d7e9dd9d6939045f66c50f88b",
+        "bytes": 40797
+      },
+      "assetRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q13-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "e28d5f2f62da3197ea2fd2a1571288e6023d479a",
+        "sha256": "81346a2433a587cb88772e20fa4c6f164c0a6fb96fd07c118d49b34192642639",
+        "bytes": 1715
+      },
+      "assetRefs": [
+        {
+          "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+          "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q13-problem-visual-v2-source-repair-r1.svg",
+          "gitBlobSha1": "e28d5f2f62da3197ea2fd2a1571288e6023d479a",
+          "sha256": "81346a2433a587cb88772e20fa4c6f164c0a6fb96fd07c118d49b34192642639",
+          "bytes": 1715
+        }
+      ],
+      "questionSha256": "d9d927d29c120afda98c485b2e17853602c8061f01312e5043060a7972d22918",
+      "captureDomSha256": "6032c579982e72f1dd6a6b19bcf11a9077ef23f084514f01468393c9e99bcfc6",
+      "captureMethod": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+      "originalTileCount": 1,
+      "expectedChoices": {
+        "count": 5,
+        "embeddedInImage": false,
+        "basis": "SOURCE_METADATA_NOT_MATHEMATICAL_REVIEW"
+      },
+      "directObservation": {
+        "visibleChoiceCount": 5,
+        "allDeclaredChoicesVisible": true,
+        "problemFigureOccurrences": 1,
+        "clippingObserved": false,
+        "readingObscuringOverlapObserved": false,
+        "readability": "ACCEPTABLE_AT_CAPTURED_VIEWPORT",
+        "notes": [
+          "문장과 단일 수직선 그림, 선택지 5개가 모두 보인다.",
+          "선택지의 작은 위아래 표기까지 화면 안에 있으며 잘림이 보이지 않는다."
+        ]
+      },
+      "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+      "authorityBoundary": "EXISTING_VECTOR_STATIC_PHASE_AND_UI_AUTHORITY_STILL_REQUIRED",
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E048-Q13-desktop-tile-01.png",
+          "sha256": "967f3071f6f730c11bd2a3d735f9fe6d00fec5b7ab97607f69d4f6f859c84b9b",
+          "bytes": 16786,
+          "pixelWidth": 664,
+          "pixelHeight": 227,
+          "directOriginalPngViewed": true,
+          "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+          "observation": "VISIBLE_PROBLEM_SURFACE"
+        }
+      ]
+    },
+    {
+      "technicalResultIndex": 4,
+      "key": "E048-Q24",
+      "questionUid": "qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad",
+      "sourceOrdinal": 24,
+      "surface": "PROBLEM",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+        "gitBlobSha1": "4a20adbce9e5a7f07744143cef611d453e454250",
+        "sha256": "bb0904139d63eee938b33add6a9b48e1129bfa7d7e9dd9d6939045f66c50f88b",
+        "bytes": 40797
+      },
+      "assetRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q24-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "e77c366e63ffa891cb53ccd3b8b334e4c541a57a",
+        "sha256": "2b6aa6539acbc4f713ef09d9c1968825b1138416dc953449bb0392209ea28ca0",
+        "bytes": 3555
+      },
+      "assetRefs": [
+        {
+          "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+          "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q24-problem-visual-v2-source-repair-r1.svg",
+          "gitBlobSha1": "e77c366e63ffa891cb53ccd3b8b334e4c541a57a",
+          "sha256": "2b6aa6539acbc4f713ef09d9c1968825b1138416dc953449bb0392209ea28ca0",
+          "bytes": 3555
+        }
+      ],
+      "questionSha256": "6af32349e8c99b6a75b05aae09dec93eb95cf45b28399e1cfc5d897494440d7a",
+      "captureDomSha256": "d859289dc572b4b38f819eadef2b10304e1e116ea365016d6c3aef509c18c571",
+      "captureMethod": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+      "originalTileCount": 2,
+      "expectedChoices": {
+        "count": 0,
+        "embeddedInImage": false,
+        "basis": "SOURCE_METADATA_NOT_MATHEMATICAL_REVIEW"
+      },
+      "directObservation": {
+        "visibleChoiceCount": 0,
+        "allDeclaredChoicesVisible": "NOT_APPLICABLE_SUBJECTIVE_ZERO_CHOICES",
+        "problemFigureOccurrences": 1,
+        "clippingObserved": false,
+        "readingObscuringOverlapObserved": false,
+        "readability": "ACCEPTABLE_AT_CAPTURED_VIEWPORT",
+        "notes": [
+          "첫 타일에 문장, 단일 그림, 두 하위 문항이 모두 보인다.",
+          "두 번째 원본 타일은 빈 하단 영역이다. 두 타일을 각각 직접 열어 확인했다.",
+          "선언된 선택지 수는 0이며 객관식 선택지의 추가 노출을 요구하지 않는다."
+        ]
+      },
+      "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+      "authorityBoundary": "EXISTING_VECTOR_STATIC_PHASE_AND_UI_AUTHORITY_STILL_REQUIRED",
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E048-Q24-desktop-tile-01.png",
+          "sha256": "697295115a924f136ebd948a00281c440923285b56e8fbbd3f80549208021187",
+          "bytes": 75512,
+          "pixelWidth": 664,
+          "pixelHeight": 868,
+          "directOriginalPngViewed": true,
+          "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+          "observation": "VISIBLE_PROBLEM_SURFACE"
+        },
+        {
+          "tileIndex": 2,
+          "path": "E048-Q24-desktop-tile-02.png",
+          "sha256": "30ed33504255916ee09a0fd785fd7b6272ec8bb9fbd4d443f2ed8cad912b2bc5",
+          "bytes": 652,
+          "pixelWidth": 664,
+          "pixelHeight": 142,
+          "directOriginalPngViewed": true,
+          "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+          "observation": "BLANK_LOWER_TAIL"
+        }
+      ]
+    },
+    {
+      "technicalResultIndex": 5,
+      "key": "E045-Q24",
+      "questionUid": "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd",
+      "sourceOrdinal": 24,
+      "surface": "PROBLEM",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/exams/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "c8945961f52f7efca83d66ea045d070e74718de6",
+        "sha256": "c1d8ce4c3de70c67d7a3ecf02031fd48327103785fec40505e1576043625618a",
+        "bytes": 44656
+      },
+      "assetRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q24-problem-visual-v2-source-repair-r2.svg",
+        "gitBlobSha1": "6ddf55bc8a7575124342f996cd654b6df3ca5013",
+        "sha256": "a7f34be6ce3556987911922fe8df74cfca412de47f8ce1af3d0dd4bccc8c3749",
+        "bytes": 10634
+      },
+      "assetRefs": [
+        {
+          "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+          "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q24-problem-visual-v2-source-repair-r2.svg",
+          "gitBlobSha1": "6ddf55bc8a7575124342f996cd654b6df3ca5013",
+          "sha256": "a7f34be6ce3556987911922fe8df74cfca412de47f8ce1af3d0dd4bccc8c3749",
+          "bytes": 10634
+        }
+      ],
+      "questionSha256": "6bbba32d209bd4dedfd6b154d86c986a059e69ac883b52bc963b67db17a36ae8",
+      "captureDomSha256": "b9b1714d6490bc1c556233e2785d514d555e4e0d0e3898b6607482632ac4a3fb",
+      "captureMethod": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+      "originalTileCount": 2,
+      "expectedChoices": {
+        "count": 0,
+        "embeddedInImage": false,
+        "basis": "SOURCE_METADATA_NOT_MATHEMATICAL_REVIEW"
+      },
+      "directObservation": {
+        "visibleChoiceCount": 0,
+        "allDeclaredChoicesVisible": "NOT_APPLICABLE_SUBJECTIVE_ZERO_CHOICES",
+        "problemFigureOccurrences": 1,
+        "clippingObserved": false,
+        "readingObscuringOverlapObserved": false,
+        "readability": "ACCEPTABLE_AT_CAPTURED_VIEWPORT",
+        "notes": [
+          "첫 타일에 문장, 단일 그래프, 세 하위 문항이 모두 보인다.",
+          "r2의 O 표기는 화면 안에서 식별 가능하며 축의 다른 표기에 가려지지 않는다.",
+          "두 번째 원본 타일은 빈 하단 영역이다. 두 타일을 각각 직접 열어 확인했다.",
+          "선언된 선택지 수는 0이며 객관식 선택지의 추가 노출을 요구하지 않는다."
+        ]
+      },
+      "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+      "authorityBoundary": "EXISTING_E045_EXTRA_FIELDS_HOLD_UNCHANGED",
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E045-Q24-desktop-tile-01.png",
+          "sha256": "549bc45c2aaf2123700bdb1a1ace16afbee47b4d008923aa18b4efe537ba4b0f",
+          "bytes": 69036,
+          "pixelWidth": 664,
+          "pixelHeight": 868,
+          "directOriginalPngViewed": true,
+          "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+          "observation": "VISIBLE_PROBLEM_SURFACE"
+        },
+        {
+          "tileIndex": 2,
+          "path": "E045-Q24-desktop-tile-02.png",
+          "sha256": "30ed33504255916ee09a0fd785fd7b6272ec8bb9fbd4d443f2ed8cad912b2bc5",
+          "bytes": 652,
+          "pixelWidth": 664,
+          "pixelHeight": 142,
+          "directOriginalPngViewed": true,
+          "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+          "observation": "BLANK_LOWER_TAIL"
+        }
+      ]
+    },
+    {
+      "technicalResultIndex": 6,
+      "key": "E045-Q15",
+      "questionUid": "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569",
+      "sourceOrdinal": 15,
+      "surface": "PROBLEM",
+      "viewport": {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      "sourceRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/exams/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "c8945961f52f7efca83d66ea045d070e74718de6",
+        "sha256": "c1d8ce4c3de70c67d7a3ecf02031fd48327103785fec40505e1576043625618a",
+        "bytes": 44656
+      },
+      "assetRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q15-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "a132105374964cd92b36c935fdd0aa97666acfe5",
+        "sha256": "909e5d8728f7035e2eabf89671372e18d9d4c0c72a7bd43f09feb6cf1462c4af",
+        "bytes": 12366
+      },
+      "assetRefs": [
+        {
+          "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+          "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q15-problem-visual-v2-source-repair-r1.svg",
+          "gitBlobSha1": "a132105374964cd92b36c935fdd0aa97666acfe5",
+          "sha256": "909e5d8728f7035e2eabf89671372e18d9d4c0c72a7bd43f09feb6cf1462c4af",
+          "bytes": 12366
+        }
+      ],
+      "questionSha256": "2db11d3dcd68f9aaf35c5d68e69d30f2e550ed3b42b956797fc81b41a62365fb",
+      "captureDomSha256": "27e1944a5636430bf68d7870fe9083c28cc8ef7fa8dbfabd9e3df4c035968a2d",
+      "captureMethod": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+      "originalTileCount": 1,
+      "expectedChoices": {
+        "count": 5,
+        "embeddedInImage": true,
+        "basis": "SOURCE_METADATA_NOT_MATHEMATICAL_REVIEW"
+      },
+      "directObservation": {
+        "visibleChoiceCount": 5,
+        "allDeclaredChoicesVisible": true,
+        "problemFigureOccurrences": 1,
+        "clippingObserved": false,
+        "readingObscuringOverlapObserved": false,
+        "readability": "ACCEPTABLE_AT_CAPTURED_VIEWPORT",
+        "notes": [
+          "단일 내장 그림 안의 선택지 패널 ①–⑤가 모두 완전히 노출된다.",
+          "각 패널의 가장자리와 표기가 화면 안에 있으며 읽기를 막는 겹침이나 잘림이 보이지 않는다.",
+          "한 패널의 표기와 사선이 인접한 부분은 동일 원본 PNG를 다시 확인했으며 글자 가림은 관찰되지 않았다.",
+          "별도 선택지 DOM이 없다는 사실만으로 수용하지 않고 실제 다섯 패널을 직접 확인했다."
+        ]
+      },
+      "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+      "authorityBoundary": "EXISTING_E045_EXTRA_FIELDS_HOLD_UNCHANGED",
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E045-Q15-desktop-tile-01.png",
+          "sha256": "7c977efa2b997f1300aa1bbd00d777653a0c174bec0ba99b33e0c8033c97f2f7",
+          "bytes": 40071,
+          "pixelWidth": 664,
+          "pixelHeight": 548,
+          "directOriginalPngViewed": true,
+          "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+          "observation": "VISIBLE_PROBLEM_SURFACE"
+        }
+      ]
+    },
+    {
+      "technicalResultIndex": 7,
+      "key": "E037-Q3",
+      "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+      "sourceOrdinal": 3,
+      "surface": "PROBLEM",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "sourceRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/exams/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "9283d798bb19ebdb498ff91d5d8d7d219d3baf27",
+        "sha256": "890c15ac7d12aae4e432828b0eedbecea9df0faa6b44706433ece4145831854c",
+        "bytes": 43819
+      },
+      "assetRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q3-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "27caa8994a054468dd026f6b8ae47ec0dd408d97",
+        "sha256": "af71f9ee6722aeb6987a73c722ba21df63fe9f33955f51003bad340e08175e4d",
+        "bytes": 4820
+      },
+      "assetRefs": [
+        {
+          "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+          "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q3-problem-visual-v2-source-repair-r1.svg",
+          "gitBlobSha1": "27caa8994a054468dd026f6b8ae47ec0dd408d97",
+          "sha256": "af71f9ee6722aeb6987a73c722ba21df63fe9f33955f51003bad340e08175e4d",
+          "bytes": 4820
+        }
+      ],
+      "questionSha256": "6a22975575ea6cdf3b1187d200d757454ce46ca25ebaa15413af801ecd1ebfe3",
+      "captureDomSha256": "fe7ae47b30f65e284218d3a807e70ca64b8a91d802db7414d83eef985e81ee95",
+      "captureMethod": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+      "originalTileCount": 1,
+      "expectedChoices": {
+        "count": 5,
+        "embeddedInImage": false,
+        "basis": "SOURCE_METADATA_NOT_MATHEMATICAL_REVIEW"
+      },
+      "directObservation": {
+        "visibleChoiceCount": 5,
+        "allDeclaredChoicesVisible": true,
+        "problemFigureOccurrences": 1,
+        "clippingObserved": false,
+        "readingObscuringOverlapObserved": false,
+        "readability": "ACCEPTABLE_AT_CAPTURED_VIEWPORT",
+        "notes": [
+          "문장이 여러 줄로 감기며 단일 그림이 화면 너비 안에 보인다.",
+          "선택지 5개가 모두 보이며 마지막 선택지는 다음 줄에 배치되어 경계에 잘리지 않는다."
+        ]
+      },
+      "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+      "authorityBoundary": "EXISTING_VECTOR_STATIC_PHASE_AND_UI_AUTHORITY_STILL_REQUIRED",
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E037-Q3-mobile-tile-01.png",
+          "sha256": "7a411b8b3b53f26154a60cbe2629d6fbbaabe237c67865941bee1a22282ea2e8",
+          "bytes": 28592,
+          "pixelWidth": 334,
+          "pixelHeight": 447,
+          "directOriginalPngViewed": true,
+          "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+          "observation": "VISIBLE_PROBLEM_SURFACE"
+        }
+      ]
+    },
+    {
+      "technicalResultIndex": 8,
+      "key": "E037-Q15",
+      "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+      "sourceOrdinal": 15,
+      "surface": "PROBLEM",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "sourceRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/exams/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+        "gitBlobSha1": "9283d798bb19ebdb498ff91d5d8d7d219d3baf27",
+        "sha256": "890c15ac7d12aae4e432828b0eedbecea9df0faa6b44706433ece4145831854c",
+        "bytes": 43819
+      },
+      "assetRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q15-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "a90c300439e84fce81d9e297da5ffc6830d8feff",
+        "sha256": "02cd1d0cb64f3a233c4557290c6705aac512e1a957f2b7d3518bb66dde2ef659",
+        "bytes": 4496
+      },
+      "assetRefs": [
+        {
+          "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+          "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q15-problem-visual-v2-source-repair-r1.svg",
+          "gitBlobSha1": "a90c300439e84fce81d9e297da5ffc6830d8feff",
+          "sha256": "02cd1d0cb64f3a233c4557290c6705aac512e1a957f2b7d3518bb66dde2ef659",
+          "bytes": 4496
+        }
+      ],
+      "questionSha256": "356fcdae61dadad8ec8ddee2b7c3c2508392738a0460e8015802cf7b8b4cda4e",
+      "captureDomSha256": "af1f8547af4480cbf38b53ff162e4009baa86014c4f545e66c177502bbe39798",
+      "captureMethod": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+      "originalTileCount": 1,
+      "expectedChoices": {
+        "count": 5,
+        "embeddedInImage": false,
+        "basis": "SOURCE_METADATA_NOT_MATHEMATICAL_REVIEW"
+      },
+      "directObservation": {
+        "visibleChoiceCount": 5,
+        "allDeclaredChoicesVisible": true,
+        "problemFigureOccurrences": 1,
+        "clippingObserved": false,
+        "readingObscuringOverlapObserved": false,
+        "readability": "ACCEPTABLE_AT_CAPTURED_VIEWPORT",
+        "notes": [
+          "문장과 단일 그림 및 세로 선택지 5개가 모두 보인다.",
+          "작은 그림 표기는 식별 가능하며 경계 잘림이나 읽기를 막는 겹침이 보이지 않는다."
+        ]
+      },
+      "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+      "authorityBoundary": "EXISTING_VECTOR_STATIC_PHASE_AND_UI_AUTHORITY_STILL_REQUIRED",
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E037-Q15-mobile-tile-01.png",
+          "sha256": "e2fa4affd2543ca3058bbda316f97a0ee86ff78927070dec5b7b6955d07f5206",
+          "bytes": 35289,
+          "pixelWidth": 334,
+          "pixelHeight": 429,
+          "directOriginalPngViewed": true,
+          "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+          "observation": "VISIBLE_PROBLEM_SURFACE"
+        }
+      ]
+    },
+    {
+      "technicalResultIndex": 9,
+      "key": "E048-Q11",
+      "questionUid": "qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec",
+      "sourceOrdinal": 11,
+      "surface": "PROBLEM",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "sourceRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+        "gitBlobSha1": "4a20adbce9e5a7f07744143cef611d453e454250",
+        "sha256": "bb0904139d63eee938b33add6a9b48e1129bfa7d7e9dd9d6939045f66c50f88b",
+        "bytes": 40797
+      },
+      "assetRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q11-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "1f7d7e789339248ae3b45d8d45f292fbb9170077",
+        "sha256": "8b31d959fdd7a6530f41fe27b118c6a7e4fb6c965c4fe83d3e89581a399edb18",
+        "bytes": 3708
+      },
+      "assetRefs": [
+        {
+          "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+          "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q11-problem-visual-v2-source-repair-r1.svg",
+          "gitBlobSha1": "1f7d7e789339248ae3b45d8d45f292fbb9170077",
+          "sha256": "8b31d959fdd7a6530f41fe27b118c6a7e4fb6c965c4fe83d3e89581a399edb18",
+          "bytes": 3708
+        }
+      ],
+      "questionSha256": "204df6ce83ba0c3b0c7c0f2b36b6b727d22629017e57d20a74810abfb19583fa",
+      "captureDomSha256": "d628aa7ad996ea2f0b0ed6de83080f3d4e26c22bf3d3be7dc20e9940d1d2c2f3",
+      "captureMethod": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+      "originalTileCount": 1,
+      "expectedChoices": {
+        "count": 5,
+        "embeddedInImage": false,
+        "basis": "SOURCE_METADATA_NOT_MATHEMATICAL_REVIEW"
+      },
+      "directObservation": {
+        "visibleChoiceCount": 5,
+        "allDeclaredChoicesVisible": true,
+        "problemFigureOccurrences": 1,
+        "clippingObserved": false,
+        "readingObscuringOverlapObserved": false,
+        "readability": "ACCEPTABLE_AT_CAPTURED_VIEWPORT",
+        "notes": [
+          "줄바꿈된 문장, 단일 그림, 선택지 5개가 모두 화면 안에 보인다.",
+          "그림 바깥 표기와 마지막 선택지에 경계 잘림이 보이지 않는다."
+        ]
+      },
+      "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+      "authorityBoundary": "EXISTING_VECTOR_STATIC_PHASE_AND_UI_AUTHORITY_STILL_REQUIRED",
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E048-Q11-mobile-tile-01.png",
+          "sha256": "b3e952e7bdebc6db6c4a96b6263cdb9a537bd586715cefea30a8e14d5a8ceef5",
+          "bytes": 25221,
+          "pixelWidth": 334,
+          "pixelHeight": 418,
+          "directOriginalPngViewed": true,
+          "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+          "observation": "VISIBLE_PROBLEM_SURFACE"
+        }
+      ]
+    },
+    {
+      "technicalResultIndex": 10,
+      "key": "E048-Q13",
+      "questionUid": "qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637",
+      "sourceOrdinal": 13,
+      "surface": "PROBLEM",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "sourceRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+        "gitBlobSha1": "4a20adbce9e5a7f07744143cef611d453e454250",
+        "sha256": "bb0904139d63eee938b33add6a9b48e1129bfa7d7e9dd9d6939045f66c50f88b",
+        "bytes": 40797
+      },
+      "assetRef": {
+        "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+        "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q13-problem-visual-v2-source-repair-r1.svg",
+        "gitBlobSha1": "e28d5f2f62da3197ea2fd2a1571288e6023d479a",
+        "sha256": "81346a2433a587cb88772e20fa4c6f164c0a6fb96fd07c118d49b34192642639",
+        "bytes": 1715
+      },
+      "assetRefs": [
+        {
+          "commit": "d77911d67d4c95a8e3d244f92df72dc33ca11759",
+          "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q13-problem-visual-v2-source-repair-r1.svg",
+          "gitBlobSha1": "e28d5f2f62da3197ea2fd2a1571288e6023d479a",
+          "sha256": "81346a2433a587cb88772e20fa4c6f164c0a6fb96fd07c118d49b34192642639",
+          "bytes": 1715
+        }
+      ],
+      "questionSha256": "d9d927d29c120afda98c485b2e17853602c8061f01312e5043060a7972d22918",
+      "captureDomSha256": "6032c579982e72f1dd6a6b19bcf11a9077ef23f084514f01468393c9e99bcfc6",
+      "captureMethod": "UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES",
+      "originalTileCount": 1,
+      "expectedChoices": {
+        "count": 5,
+        "embeddedInImage": false,
+        "basis": "SOURCE_METADATA_NOT_MATHEMATICAL_REVIEW"
+      },
+      "directObservation": {
+        "visibleChoiceCount": 5,
+        "allDeclaredChoicesVisible": true,
+        "problemFigureOccurrences": 1,
+        "clippingObserved": false,
+        "readingObscuringOverlapObserved": false,
+        "readability": "ACCEPTABLE_AT_CAPTURED_VIEWPORT",
+        "notes": [
+          "문장과 단일 수직선 그림이 화면 너비 안에 보인다.",
+          "선택지 5개가 두 줄에 걸쳐 모두 노출되며 잘림이나 읽기를 막는 겹침이 보이지 않는다."
+        ]
+      },
+      "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+      "authorityBoundary": "EXISTING_VECTOR_STATIC_PHASE_AND_UI_AUTHORITY_STILL_REQUIRED",
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E048-Q13-mobile-tile-01.png",
+          "sha256": "d7b40cd8dd9123214916894e9c38a566bda554f231763a73381372ff39af5634",
+          "bytes": 15263,
+          "pixelWidth": 334,
+          "pixelHeight": 218,
+          "directOriginalPngViewed": true,
+          "decision": "ACCEPT_DISPLAY_CONTINUITY_ONLY",
+          "observation": "VISIBLE_PROBLEM_SURFACE"
+        }
+      ]
+    }
+  ],
+  "notReviewed": [
+    {
+      "key": "E048-Q24",
+      "questionUid": "qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad",
+      "sourceOrdinal": 24,
+      "viewport": "mobile",
+      "status": "TECHNICAL_FAILURE_NO_CAPTURE",
+      "visualObserved": false,
+      "decision": "NOT_REVIEWED"
+    },
+    {
+      "key": "E045-Q24",
+      "questionUid": "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd",
+      "sourceOrdinal": 24,
+      "viewport": "mobile",
+      "status": "NOT_EXECUTED_AFTER_FAILURE",
+      "visualObserved": false,
+      "decision": "NOT_REVIEWED"
+    },
+    {
+      "key": "E045-Q15",
+      "questionUid": "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569",
+      "sourceOrdinal": 15,
+      "viewport": "mobile",
+      "status": "NOT_EXECUTED_AFTER_FAILURE",
+      "visualObserved": false,
+      "decision": "NOT_REVIEWED"
+    }
+  ],
+  "unchangedBoundaries": [
+    "E045 Q15 and Q24 legacy extra-field authority holds remain unchanged.",
+    "The unrecovered hash-only expectedDisplay original is not reconstructed or replaced by this UI observation.",
+    "This document does not claim an overall 14-case technical PASS, complete UI acceptance, original-static phase completion, registration, or Pages publication.",
+    "Source, assets, metadata, approval, vectors, production code, and remote state were not modified."
+  ],
+  "reuseConditions": [
+    "Reuse only a record whose UID, ordinal, whole question SHA, source path/raw SHA/Git blob, asset refs, viewport, and complete ordered PNG path/bytes/SHA set are identical.",
+    "Later capture technical evidence and current renderer dependencies must still pass their own exact gates.",
+    "Review newly completed or changed PNG tiles; do not infer unseen mobile results from desktop observations."
+  ],
+  "nextAction": "Repair the failed mobile capture boundary, obtain the remaining three logical cases, and compare exact record and PNG bindings before reusing these eleven observations."
+}

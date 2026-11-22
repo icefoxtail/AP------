@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-57d594777f89-75addb4c",
+  "sourceArchiveFile": "original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_6d3ecec0345d0b9d1fb01142cc955a67c29ca96f42f08576058d8337b2a3841b",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
+      "step": "240이4회로 가장 자주 나타나 최빈값240이다.",
+      "note": "검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6921d3a96340c518f0ebd2e5ff635da7f3f4322c6210077e21ccedf21360d3c7",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
+      "step": "정렬된7개 자료의네번째 값12가 중앙값이다.",
+      "note": "검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a5943b957627d06a11c90ad93a6af125ce4301f912a5797d2a6078fb524a7560",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": "TPL_M3_DISPERSION_DEVIATION_PROPERTIES_ZERO_SUM",
+      "step": "편차합x+y+z-3m=0이므로0이 아닌a로 나눈 세수의 평균도0이다.",
+      "note": "필요 TPL: 편차합0의 공통배율 평균. 정의: 편차합x+y+z-3m=0이므로0이 아닌a로 나눈 세수의 평균도0이다. 검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_05ebd824aeb9cb66da2e26085e048be2e1b04cc412f3c1c563efbceb09b9a1db",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": "TPL_M3_DISPERSION_DEVIATION_PROPERTIES_RESTORE",
+      "step": "편차합0에서D편차-2를 얻고 평균72를 더해70이다.",
+      "note": "필요 TPL: 평균과 편차합으로 누락 점수 복원. 정의: 편차합0에서D편차-2를 얻고 평균72를 더해70이다. 검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0f983ac6aa03550dc423d1e6f1a7f55f83d0da9b1bdbc6bcfca9314b19d0424b",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": "TPL_M3_DISPERSION_DEVIATION_PROPERTIES_PARAMETER",
+      "step": "평균에서x+y=12,분산에서xy=35를 복원하여 역수합12/35이다.",
+      "note": "필요 TPL: 평균·분산으로 미지수의 합곱 복원. 정의: 평균에서x+y=12,분산에서xy=35를 복원하여 역수합12/35이다. 검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d16f3363516fe494e67303a2597fee03a6a3da07697d063449a63d9c9b7f33e5",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+      "templateKey": "TPL_M3_LINEAR_TRANSFORMATION_STATISTICS_TRANSLATION",
+      "step": "모든점수와 평균에5가 함께 더해져 편차가 그대로이므로 표준편차S는 불변이다.",
+      "note": "필요 TPL: 상수이동 자료의 산포도 불변. 정의: 모든점수와 평균에5가 함께 더해져 편차가 그대로이므로 표준편차S는 불변이다. 검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_659dd7508f4a6cc9e661654cd4e8a64c1684857893b8303ca07e1aa15c2fd218",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "step": "30·60·90도에서AC=3,BC=3√3이고 다음45도 직각삼각형에서CD=3√6/2이다.",
+      "note": "검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9b55ab3e12d5214cdd0e07c0e63a62c82145c916a06112f88b616913042a0236",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": "TPL_M3_DISPERSION_DEVIATION_PROPERTIES_COMPARE",
+      "step": "두평균은71이고 편차제곱평균A=5,B=8이므로A가 더 고르다.",
+      "note": "필요 TPL: 두 집단의 평균·분산 직접비교. 정의: 두평균은71이고 편차제곱평균A=5,B=8이므로A가 더 고르다. 검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    }
+  ]
+}

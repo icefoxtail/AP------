@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-771f1bc9907f-336efaac",
+  "sourceArchiveFile": "textbooks/미래엔_대수/미래엔_대수_수학적귀납법_중단원마무리_고2/미래엔_대수_수학적귀납법_중단원마무리_고2.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_대수.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_d23a59aaa85059cd3641dcbc89b10c157d914150c1ba8a22be0938295241ebce",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_08_RECURSIVE_SEQUENCE",
+      "templateKey": "TPL_H22A_08_RECURSIVE_SEQUENCE_129",
+      "step": "각 점화식에 n=1,2,3,4를 순서대로 대입하여 제5항을 계산한다.",
+      "note": " 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_529fe49d80c31e1ba940e34bdc26a8b9c75741511f04cb464bb8ca18fc96ef49",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_08_MATHEMATICAL_INDUCTION",
+      "templateKey": "TPL_H22A_08_MATHEMATICAL_INDUCTION_131",
+      "step": "n=1의 양변을 확인한 뒤 k까지의 세제곱합을 귀납가정으로 대체한다.",
+      "note": " 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_76141cdc816366470d8488b30b2a7065adab9dfad14b9c8a07713155f077dc15",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_08_RECURSIVE_SEQUENCE",
+      "templateKey": "TPL_H22A_08_RECURSIVE_SEQUENCE_130",
+      "step": "a_(n+1)/a_n=n/(n+1)을 곱하면 중간 인수가 소거되어 a_n=1/n이다.",
+      "note": " 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f6b028aedb36517a93c7f41760f729e4ad1efd16ee9751f4f4b22dba32aa28ed",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_08_RECURSIVE_SEQUENCE",
+      "templateKey": "TPL_H22A_08_RECURSIVE_SEQUENCE_129",
+      "step": "점화식으로 a_3=4a_1이므로 a_1=1이고 2^(n-1)≥200인 첫 n을 구한다.",
+      "note": " 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_32820e37dc39f734c8c7b5980577e02aa29dcb4e5925af1b471f06e169de2de3",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_08_RECURSIVE_SEQUENCE",
+      "templateKey": "TPL_H22A_08_RECURSIVE_SEQUENCE_130",
+      "step": "점화식을 연속 두 항의 차가 같은 식으로 바꿔 공차 3, 첫째항 -7인 등차수열임을 보인다.",
+      "note": " 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f8cc05c1efd4c8616ba1b79cfdaa8e37dfb9761f888fd031679d1bb6aec37051",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_08_RECURSIVE_SEQUENCE",
+      "templateKey": "TPL_H22A_08_RECURSIVE_SEQUENCE_129",
+      "step": "수열이 1,2,4,8,16의 주기 5를 가지며 한 주기 합 31이므로 10주기 뒤 네 항을 더한다.",
+      "note": " 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1cb7f63fd78d18000469f4c27fc905cc40e912ec449f509a6177161d62b032cf",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_08_MATHEMATICAL_INDUCTION",
+      "templateKey": "TPL_H22A_08_MATHEMATICAL_INDUCTION_132",
+      "step": "배수 명제는 다음 항을 가정한 배수와 상수로 분해하고, 부등식은 귀납가정에 1/(k+1)을 더해 다음 목표와 비교한다.",
+      "note": " 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_대수.jsonl"
+    }
+  ]
+}

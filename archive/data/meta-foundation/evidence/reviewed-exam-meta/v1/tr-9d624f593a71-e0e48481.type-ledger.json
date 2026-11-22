@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-9d624f593a71-e0e48481",
+  "sourceArchiveFile": "original/high/h1/1mid/21_복성고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_2d33b0fb116491ad096b9d28c77abf841bb06464124ed6c537fd3905185bd820",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT",
+      "step": "x-3으로 나누어떨어지므로 P(3)=0을 적용한다.",
+      "note": " 새 TPL 제안: x-3으로 나누어떨어지므로 P(3)=0을 적용한다. 정의: x-3으로 나누어떨어지므로 P(3)=0을 적용한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c82fd05989e00689197bd875774ae42df0cb74794d797f734b2b2759c14ea3d1",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_ROOT_COEFFICIENT_RELATION_EQUATION",
+      "step": "주어진 두 근에 대응하는 일차인수의 곱을 전개해 최고차항 계수 1인 이차방정식을 만든다.",
+      "note": "TPL 제안: 두 근으로 이차방정식 구성; 변환이 없는 두 수에서 근의 합·곱 또는 일차인수 곱으로 방정식을 만든다. 새 TPL 제안: 주어진 두 근에 대응하는 일차인수의 곱을 전개해 최고차항 계수 1인 이차방정식을 만든다. 정의: 주어진 두 근에 대응하는 일차인수의 곱을 전개해 최고차항 계수 1인 이차방정식을 만든다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f22e45864262bb8777a46f9499910686baf821e5c4cb2ab520a8e434f049e84a",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "step": "포물선이 x축에 접하도록 대응 이차방정식 판별식을 0으로 둔다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_07c9f4d18272dc40f0b104135830a6cdebf0ee7e93b36399e31f63eddfdc16bb",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+      "step": "세 일차식 곱의 x²항과 x항 계수를 비교해 a+b와 ab를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_17b52ddce4bb2b88e4e586d3df2155230e10f8b50e431c461dfd9ba0b0fe711e",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "step": "분자에서 공통인수 99를 묶어 큰 수의 곱셈을 간단한 차로 바꾼다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fcac08da357c12ab0f4e0bc24cac9dbd804d87f1ce2d9325c7a73c7b351057e2",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+      "step": "두 이차인수의 판별식과 두 인수 일치 경우를 구분해 서로 다른 허근 수를 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_acccf5eefadbead1c7fc6b167f2c1f408b06ac747867e9325c4bc35e680e6aa2",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+      "step": "두 교점으로 f와 직선의 차를 인수식으로 놓고 구간 최솟값으로 a를 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_aa4379d7c382694977633b60e23742fe8c2876c078f89792f9bd4cc9af26f901",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+      "step": "두 근의 방정식으로 f의 근 대입값을 일차식으로 낮추어 두 조건과 f(0)에서 계수를 복원한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fb0d1da8f3a263b87ccc89a49a28f7470743004b17e361a6cf32ca17fae600d8",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "step": "변의 길이 다항식을 인수분해해 이등변 관계를 얻고 추가 비율과 높이로 둘레를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

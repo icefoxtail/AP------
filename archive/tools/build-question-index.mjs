@@ -3,6 +3,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import examSourceReader from '../exam-source-reader.js';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const archiveDir = path.resolve(process.env.GEOMETRY_ARCHIVE_ROOT || path.resolve(scriptDir, '..'));
@@ -389,8 +390,7 @@ for (const file of examFiles) {
         const code = fs.readFileSync(file, 'utf8');
         report.examBytes += Buffer.byteLength(code, 'utf8');
         const context = runArchiveScript(file, code);
-        const questions = context.window.questions || context.window.questionBank || context.questions || context.questionBank
-            || context.window.examData?.questions;
+        const questions = examSourceReader.readQuestionArray(context.window, context);
         if (!Array.isArray(questions)) {
             report.failures.push({ sourceFile, error: 'questions array not found' });
             continue;

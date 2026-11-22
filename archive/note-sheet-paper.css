@@ -1,0 +1,53 @@
+/* 빈 풀이노트 종이(.ns-page): the A4 body that is printed. Approved layout; sizes, ruling and the dot grid must not change.
+   Like every printed paper it does not use the screen tokens (archive/DESIGN.md "단독 페이지": 출력 본문은 이 디자인과 무관하다).
+   Every rule is scoped under .ns-page so nothing here leaks into the menu or the controls. */
+.ns-page, .ns-page * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+/* paper box: same text defaults the sheet had as a bare document */
+.ns-page { color: #111; font-family: "Noto Sans KR", "Malgun Gothic", sans-serif; font-size: 16px; line-height: normal; font-weight: 400; text-align: left; letter-spacing: normal; }
+.ns-page { width: 210mm; height: 297mm; padding: 13mm 15mm 11mm; display: flex; flex-direction: column; gap: 3mm; page-break-after: always; overflow: hidden; }
+.ns-page .head { display: flex; align-items: flex-end; justify-content: space-between; border-bottom: 1.2pt solid #111; padding-bottom: 2mm; }
+.ns-page .ttl { font-size: 13pt; font-weight: 700; letter-spacing: -0.2pt; }
+.ns-page .ttl .sub { font-weight: 500; font-size: 10.5pt; color: #333; margin-left: 2.5mm; padding-left: 2.5mm; border-left: 0.8pt solid #111; }
+.ns-page .fill { display: flex; gap: 5mm; font-size: 8.5pt; color: #444; }
+.ns-page .fill i, .ns-page .ref i, .ns-page .u { display: inline-block; border-bottom: 0.5pt solid #777; margin-left: 1.5mm; vertical-align: bottom; }
+.ns-page .foot { display: flex; justify-content: space-between; font-size: 7.5pt; color: #777; }
+.ns-page .grid { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; column-gap: 7mm; row-gap: 1.8mm; position: relative; }
+.ns-page .grid::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; border-left: 0.8pt solid #111; }
+.ns-page .grid.tall { grid-template-rows: auto auto auto minmax(0, 1fr) auto auto; }
+.ns-page .grid.quad { grid-template-rows: auto auto minmax(0, 1fr) auto; }
+.ns-page .grid.desc { grid-template-rows: auto minmax(0, 1fr) auto auto; }
+.ns-page .grid.back { grid-template-rows: minmax(0, 1fr); }
+.ns-page .hr { border-top: 0.8pt solid #111; }
+.ns-page .ref { display: flex; align-items: flex-end; gap: 4mm; font-size: 8.5pt; color: #333; height: 8mm; }
+.ns-page .box { border: 0.6pt solid #555; border-radius: 1.2mm; min-height: 0; }
+.ns-page .lab { font-size: 8pt; color: #333; font-weight: 700; padding: 1.2mm 2mm 0; display: flex; gap: 2mm; align-items: baseline; }
+.ns-page .lab em { font-style: normal; font-weight: 400; color: #888; font-size: 7.5pt; }
+.ns-page .thin { height: 14mm; }
+.ns-page .two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8mm; }
+.ns-page .dots { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50'%3E%3Ccircle cx='25' cy='25' r='2.4' fill='%23b4b4b4'/%3E%3C/svg%3E"); background-size: 5mm 5mm; }
+.ns-page .dots .lab { display: inline-flex; background: #fff; padding: 0.6mm 2mm 0.6mm 1.6mm; margin: 0.6mm; border-radius: 1mm; }
+.ns-page .workwrap { display: flex; flex-direction: column; }
+.ns-page .work { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 27mm; }
+.ns-page .work > div + div { border-left: 0.6pt dashed #888; }
+.ns-page .selfchk { border-top: 0.6pt solid #999; font-size: 7.5pt; color: #333; padding: 1mm 2mm; display: flex; gap: 3mm; align-items: center; background: #fff; border-radius: 0 0 1.2mm 1.2mm; }
+.ns-page .cb { display: inline-block; width: 2.6mm; height: 2.6mm; border: 0.6pt solid #333; margin-right: 1mm; vertical-align: -0.4mm; }
+.ns-page .ans { height: 10mm; display: flex; align-items: center; justify-content: space-between; padding-right: 2mm; }
+.ns-page .ans .lab { padding-top: 0; }
+.ns-page .mark { font-size: 8pt; color: #555; display: flex; gap: 1.6mm; align-items: center; }
+.ns-page .mark span { display: inline-flex; width: 5mm; height: 5mm; border: 0.6pt solid #777; border-radius: 50%; align-items: center; justify-content: center; font-size: 7.5pt; }
+.ns-page .retry { border: 0.9pt dashed #333; border-radius: 1.2mm; height: 44mm; display: flex; flex-direction: column; min-height: 0; }
+.ns-page .retry .rl { font-size: 8pt; padding: 1.2mm 2mm 0.8mm; display: flex; flex-wrap: wrap; column-gap: 3mm; row-gap: 0.6mm; align-items: center; }
+.ns-page .retry .rl strong { margin-right: 1mm; }
+.ns-page .retry .rl span { font-size: 7.5pt; color: #333; white-space: nowrap; }
+.ns-page .retry .dots { flex: 1; }
+.ns-page .back .retry { height: auto; }
+.ns-page .back .retry .rl strong { font-size: 10pt; flex-basis: 100%; }
+.ns-page .endrow { border: 0.9pt dashed #333; border-radius: 1.2mm; padding: 1.2mm 2mm; display: flex; justify-content: space-between; align-items: center; font-size: 7.5pt; }
+.ns-page .endrow strong { font-size: 8pt; }
+.ns-page .endrow span { white-space: nowrap; }
+.ns-page .endrow .why { display: flex; gap: 2.2mm; }
+.ns-page .steps { display: flex; flex-direction: column; gap: 1.5mm; min-height: 0; }
+.ns-page .st { flex: var(--f, 1); min-height: 0; border: 0.6pt solid #555; border-radius: 1.2mm; display: flex; flex-direction: column; }
+.ns-page .st .sh { padding: 1.2mm 2mm 0.2mm; font-size: 8.5pt; font-weight: 700; }
+.ns-page .st .hint { font-size: 7.5pt; color: #666; padding: 0 2mm 0.8mm; }
+.ns-page .st .dots { flex: 1; }

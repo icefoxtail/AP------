@@ -327,7 +327,7 @@ window.questionBank = [
       "$4+2i$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 복잡한 연분수는 $\\dfrac1a$를 기준으로 각 항을 먼저 간단히 한다.\n조건 정리: 첫째 항은 $\\dfrac{1}{1-1/(1-\\frac{1}{a})}$, 둘째 항은 $\\dfrac{1}{1-1/(1+\\frac{1}{a})}$이다.\n풀이 방향: 각 항을 $a$에 대한 일차식으로 정리한 뒤 $a=2+i$를 대입한다.\n정석 풀이: 첫째 항의 분모는 $1-\\dfrac{1}{1-\\frac{1}{a}}=\\dfrac{-\\frac{1}{a}}{1-\\frac{1}{a}}$이므로 첫째 항은 $1-a$이다. 둘째 항의 분모는 $1-\\dfrac{1}{1+\\frac{1}{a}}=\\dfrac{\\frac{1}{a}}{1+\\frac{1}{a}}$이므로 둘째 항은 $a+1$이다. 따라서 전체 값은 $(1-a)-(a+1)=-2a=-2(2+i)=-4-2i$이다.\n따라서 정답은 ①이다.",
+    "solution": "첫째 연분수와 둘째 연분수를 각각 안쪽부터 계산한다. $a=2+i$이므로 $a\\ne0,1,-1$이고 모든 분모가 0이 되지 않는다.\n\n$$\n\\begin{aligned}\n\\frac{1}{1-\\frac{1}{1-\\frac1a}}\n&=\\frac{1}{1-\\frac{a}{a-1}}\\\\\n&=\\frac{1}{\\frac{a-1-a}{a-1}}\\\\\n&=\\frac{1}{-\\frac1{a-1}}\\\\\n&=-(a-1)=1-a.\n\\end{aligned}\n$$\n\n$$\n\\begin{aligned}\n\\frac{1}{1-\\frac{1}{1+\\frac1a}}\n&=\\frac{1}{1-\\frac{a}{a+1}}\\\\\n&=\\frac{1}{\\frac{a+1-a}{a+1}}\\\\\n&=\\frac{1}{\\frac1{a+1}}\\\\\n&=a+1.\n\\end{aligned}\n$$\n\n따라서\n\n$$\n\\begin{aligned}\n(1-a)-(a+1)&=1-a-a-1\\\\\n&=-2a\\\\\n&=-2(2+i)=-4-2i.\n\\end{aligned}\n$$\n\n정답은 ①이다.",
     "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
     "subUnit": "복소수의 뜻과 표현",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -635,7 +635,7 @@ window.questionBank = [
       "$\\dfrac32$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 접선 조건은 직선과 무리함수의 교점 방정식이 중근을 갖는다는 뜻으로 처리한다.\n조건 정리: $A=(-a,0)$, $B=(0,2a)$이다. 접점 C에서는 $2\\sqrt{a(x+a)}=2x+b$가 한 해만 갖는다.\n풀이 방향: 양변을 제곱해 얻은 이차방정식의 판별식을 $0$으로 두어 $b$와 접점 좌표를 구한다.\n정석 풀이: 제곱하면 $(2x+b)^2=4a(x+a)$이므로 $x^2+(b-a)x+\\dfrac{b^2-4a^2}{4}=0$이다. 접하므로 판별식이 $0$이고, $(b-a)^2-(b^2-4a^2)=a(5a-2b)=0$이다. $a\\gt0$이므로 $b=\\dfrac52a$이다. 중근은 $x_C=-\\dfrac{b-a}{2}=-\\dfrac{3a}{4}$이고 $y_C=2x_C+b=a$이다. 삼각형 $ABC$의 넓이는 좌표를 이용하면 $\\dfrac{a^2}{4}$이므로 $\\dfrac{a^2}{4}=\\dfrac14$에서 $a=1$이다. 따라서 $b=\\dfrac52$이고 $b-a=\\dfrac32$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "$a>0$이므로 $f(x)=2\\sqrt{a(x+a)}$의 시작점은 $A=(-a,0)$, $x=0$일 때 $B=(0,2a)$이다.\n\n접선 $y=2x+b$와 만나는 점의 $x$좌표는\n\n$$\n2\\sqrt{a(x+a)}=2x+b\n$$\n\n를 만족한다. 접점에서는 $2x+b\\ge0$이고, 양변을 제곱하면\n\n$$\n\\begin{aligned}\n4a(x+a)&=(2x+b)^2\\\\\n4ax+4a^2&=4x^2+4bx+b^2\\\\\n0&=4x^2+4(b-a)x+b^2-4a^2\\\\\n0&=x^2+(b-a)x+\\frac{b^2-4a^2}{4}.\n\\end{aligned}\n$$\n\n한 점에서 접하므로 중근 조건은\n\n$$\n\\begin{aligned}\n0&=(b-a)^2-(b^2-4a^2)\\\\\n&=b^2-2ab+a^2-b^2+4a^2\\\\\n&=a(5a-2b).\n\\end{aligned}\n$$\n\n$a>0$이므로 $b=\\frac52a$. 중근과 접점은\n\n$$\nx_C=-\\frac{b-a}{2}=-\\frac{3a}{4},\n\\qquad\ny_C=2\\left(-\\frac{3a}{4}\\right)+\\frac{5a}{2}=a.\n$$\n\n$2x_C+b=a>0$이므로 제곱 과정의 부호 조건도 만족한다. 따라서 $C=(-3a/4,a)$는 실제 접점이다.\n\n$A$를 기준으로 $\\overrightarrow{AB}=(a,2a)$, $\\overrightarrow{AC}=(a/4,a)$이다. 삼각형의 넓이는\n\n$$\n\\begin{aligned}\n[ABC]&=\\frac12\\left|a\\cdot a-2a\\cdot\\frac a4\\right|\\\\\n&=\\frac12\\left|a^2-\\frac{a^2}{2}\\right|\\\\\n&=\\frac{a^2}{4}.\n\\end{aligned}\n$$\n\n따라서 $a^2/4=1/4$, $a^2=1$, $a>0$이므로 $a=1$. $b=5/2$이므로\n\n$$\nb-a=\\frac52-1=\\frac32.\n$$\n\n정답은 ⑤이다.",
 
     "solutionImage": "assets/images/23_강남여고_2학기_기말_고1_기출/q19-solution-v2.svg",
 

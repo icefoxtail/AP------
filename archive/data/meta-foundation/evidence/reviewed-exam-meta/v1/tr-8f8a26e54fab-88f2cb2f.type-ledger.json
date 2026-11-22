@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-8f8a26e54fab-88f2cb2f",
+  "sourceArchiveFile": "original/high/h2/1final/19_매산여고_1학기_기말_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_c5fecec7bd0ec9b3cadc056c55afc7cdb705f7c3e049f4b12bec5bd6dd26a62c",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": "TPL_BASIC_FUNCTION_TYPE_COUNT",
+      "step": "정의역 세 원소의 함수값을 각각5가지로 선택하여 5³=125이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7f15961cde35eb5eaf09e6df10beb68b612c37707eb55abaabe078b2299fc46b",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "step": "각 교집합 확률과 주변확률의 곱을 비교하면 A,C만1/6=1/2×1/3이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b00c5c0305bbedbe05964bd9e22b5d15bb3f09b7286d269199dd8b23fe7bc72c",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "step": "색 개수구성21개 중 노랑0인6개를 빼15/21=5/7이다.",
+      "note": "원문은 색 구성 균등모형을 명시하지 않는다. 해설의 구성 균등 전제로 판정, 독립추출 모형과 구분.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6b8e22a18387f70ea2c13737d239fce7f4e76a0c5e132d92c1fba5cf03002705",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+      "step": "선택상자별 노랑2개 확률을 상자선택확률1/2씩 가중합하여4/15이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5fb67718efbae6048e090fd42aa1aacc9c0dd310a6cd239b12cebc1dd93922f4",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "step": "A확률1/2,B확률1/4,교집합1/8에서 곱조건을 확인하여 독립이고 ㄱㄴㄹ이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d103120767b3cef6c6da98fffb9c28a4adc839f1ad069f60e1de76aa22da38ee",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "step": "독립 교집합1/12를 양쪽 확률에서 각각 빼고 배반합을 취해5/12이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f6da789607176421cb6a3bac6e6131a9dcdb8bdb95566f8ff507ac08ddf7125a",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+      "step": "공색 다름4/7이면3회중2회 성공2/9, 같음3/7이면2회성공1/9를 가중합해11/63이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    }
+  ]
+}

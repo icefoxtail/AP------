@@ -67,6 +67,113 @@ function registryDependencyFixture(t, { providerBehavior = 'ok' } = {}) {
   return f;
 }
 
+const GEOMETRY_PACK = 'archive/data/meta-foundation/canonical/packs/geometry-equations';
+const GEOMETRY_KEY = { curriculum: '2015', standardCourse: 'geometry fixture', standardUnitKey: 'GEOM',
+  subUnitKey: 'GEOM-EXISTING', problemTypeKey: 'PT_EXISTING_GEOMETRY' };
+function geometryDependencyFixture(t, { providerBehavior = 'ok', secondProviderBehavior, auditConsumer = false } = {}) {
+  const behaviors = { '00-consumer': 'ok', '10-unrelated': 'ok', '99-provider': providerBehavior,
+    ...(secondProviderBehavior ? { '98-second-provider': secondProviderBehavior } : {}) };
+  const f = fixture(t, behaviors);
+  const put = (rel, value) => {
+    const file = path.join(f.dir, rel); fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file, JSON.stringify(value, null, 2) + '\n');
+  };
+  const consumerPath = '.archive-meta-register/inbox/00-consumer.json', providerPath = '.archive-meta-register/inbox/99-provider.json';
+  const provider = { schemaVersion: 'archive-reviewed-exam-meta-register-request-v2', behavior: providerBehavior,
+    items: [{ questionUid: 'geometry-provider', sourceOrdinal: 1, after: { ...GEOMETRY_KEY, standardCourse: 'other fixture' } }],
+    registryChanges: [{ path: `${GEOMETRY_PACK}/taxonomy.json`, collection: 'templates',
+      match: { templateKey: 'TPL_NEW' }, before: null,
+      after: { templateKey: 'TPL_NEW', parentProblemTypeKey: GEOMETRY_KEY.problemTypeKey, status: 'ACTIVE' } }] };
+  put(consumerPath, { schemaVersion: 'archive-reviewed-exam-meta-register-request-v2', behavior: 'ok',
+    ...(auditConsumer ? { approval: { type: 'META_PIPELINE_AUDIT' } } : {}),
+    items: [{ questionUid: 'geometry-consumer', sourceOrdinal: 1, after: GEOMETRY_KEY }] });
+  put(providerPath, provider);
+  const secondProviderPath = '.archive-meta-register/inbox/98-second-provider.json';
+  if (secondProviderBehavior) {
+    const second = structuredClone(provider); second.behavior = secondProviderBehavior;
+    second.items[0].questionUid = 'second-provider';
+    second.registryChanges[0].match.templateKey = second.registryChanges[0].after.templateKey = 'TPL_SECOND';
+    put(secondProviderPath, second);
+  }
+  put(`${GEOMETRY_PACK}/pack.json`, { packId: 'GEOMETRY_EQUATIONS', canonicalStatus: 'ACTIVE', packVersion: '1.0.2' });
+  put(`${GEOMETRY_PACK}/bindings.json`, { ownerPack: 'GEOMETRY_EQUATIONS', status: 'ACTIVE',
+    bindings: [{ ...GEOMETRY_KEY, ownerPack: 'GEOMETRY_EQUATIONS', status: 'ACTIVE' }] });
+  git(f.dir, 'add', '-A'); git(f.dir, 'commit', '-qm', 'immutable geometry provider and existing consumer');
+  return { ...f, put, consumerPath, providerPath, secondProviderPath };
+}
+
+test('main geometry version attaches the fixed context to ordering and the applied-dependency graph', t => {
+  const f = geometryDependencyFixture(t), r = f.run();
+  assert.equal(r.status, 0, r.stderr);
+  assert.deepEqual(r.applied, ['.archive-meta-register/inbox/10-unrelated.json', f.providerPath, f.consumerPath]);
+  assert.deepEqual(r.rejected, []);
+});
+
+for (const auditConsumer of [false, true]) test(`main geometry version provider refusal prevents consumer execution: audit=${auditConsumer}`, t => {
+  const f = geometryDependencyFixture(t, { providerBehavior: 'fail', auditConsumer }), r = f.run();
+  assert.equal(r.status, 0, r.stderr);
+  assert.deepEqual(r.applied, ['.archive-meta-register/inbox/10-unrelated.json']);
+  assert.deepEqual(r.rejected, [f.providerPath, f.consumerPath]);
+  assert.equal(f.exists('derived/00-consumer.out'), false);
+  assert.equal(f.exists('.archive-meta-register/pending-supplement'), false);
+  assert.match(f.readJson('.archive-meta-register/rejected/00-consumer.rejection.json').error, /REGISTRY_DEPENDENCY_NOT_APPLIED/);
+});
+
+test('main geometry version waits for all providers and preserves refusal isolation', t => {
+  const good = geometryDependencyFixture(t, { secondProviderBehavior: 'ok' }), passed = good.run();
+  assert.equal(passed.status, 0, passed.stderr);
+  assert.deepEqual(passed.applied, ['.archive-meta-register/inbox/10-unrelated.json', good.secondProviderPath, good.providerPath, good.consumerPath]);
+  const bad = geometryDependencyFixture(t, { secondProviderBehavior: 'fail' }), refused = bad.run();
+  assert.equal(refused.status, 0, refused.stderr);
+  assert.deepEqual(refused.applied, ['.archive-meta-register/inbox/10-unrelated.json', bad.providerPath]);
+  assert.deepEqual(refused.rejected, [bad.secondProviderPath, bad.consumerPath]);
+  assert.equal(bad.exists('derived/00-consumer.out'), false);
+});
+
+test('main geometry version ordering uses immutable HEAD despite generated worktree changes', t => {
+  const f = geometryDependencyFixture(t);
+  f.put(`${GEOMETRY_PACK}/pack.json`, { packId: 'GEOMETRY_EQUATIONS', canonicalStatus: 'ACTIVE', packVersion: '1.0.3' });
+  f.put(`${GEOMETRY_PACK}/bindings.json`, { ownerPack: 'GEOMETRY_EQUATIONS', status: 'ACTIVE', bindings: [] });
+  const r = f.run(); assert.equal(r.status, 0, r.stderr);
+  assert.deepEqual(r.applied, ['.archive-meta-register/inbox/10-unrelated.json', f.providerPath, f.consumerPath]);
+});
+
+test('main geometry version rejects missing immutable canonical inputs before any registrar', t => {
+  const f = geometryDependencyFixture(t);
+  git(f.dir, 'rm', '-q', `${GEOMETRY_PACK}/bindings.json`); git(f.dir, 'commit', '-qm', 'remove canonical binding input');
+  f.put(`${GEOMETRY_PACK}/bindings.json`, { ownerPack: 'GEOMETRY_EQUATIONS', status: 'ACTIVE',
+    bindings: [{ ...GEOMETRY_KEY, ownerPack: 'GEOMETRY_EQUATIONS', status: 'ACTIVE' }] });
+  const r = f.run(); assert.equal(r.status, 1);
+  assert.deepEqual(r.applied, []); assert.equal(f.exists('derived'), false);
+  assert.match(r.stderr, /PR_NATIVE_PREVIEW:GIT_INPUT_MISSING:/);
+});
+
+test('main geometry version retains cycle refusal across an ordinary binding dependency', t => {
+  const f = geometryDependencyFixture(t), consumer = f.readJson(f.consumerPath), provider = f.readJson(f.providerPath);
+  const key = { ...GEOMETRY_KEY, standardCourse: 'other fixture' };
+  consumer.registryChanges = [{ path: 'archive/data/meta-foundation/canonical/packs/middle2/bindings.json',
+    collection: 'bindings', match: key, before: null, after: { ...key, status: 'ACTIVE', ownerPack: 'MIDDLE2' } }];
+  f.put(f.consumerPath, consumer); f.put(f.providerPath, provider);
+  git(f.dir, 'add', '-A'); git(f.dir, 'commit', '-qm', 'mixed binding and geometry version cycle');
+  const r = f.run(); assert.equal(r.status, 1); assert.match(r.stderr, /REGISTRY_DEPENDENCY_CYCLE/);
+  assert.deepEqual(r.applied, []); assert.equal(f.exists('derived'), false);
+});
+
+test('main geometry version rejects ambiguous immutable ACTIVE bindings before any registrar', t => {
+  const f = geometryDependencyFixture(t), bindings = f.readJson(`${GEOMETRY_PACK}/bindings.json`);
+  bindings.bindings.push(structuredClone(bindings.bindings[0])); f.put(`${GEOMETRY_PACK}/bindings.json`, bindings);
+  git(f.dir, 'add', '-A'); git(f.dir, 'commit', '-qm', 'ambiguous immutable geometry binding');
+  const r = f.run(); assert.equal(r.status, 1); assert.match(r.stderr, /REGISTRY_VERSION_AMBIGUOUS/);
+  assert.deepEqual(r.applied, []); assert.equal(f.exists('derived'), false);
+});
+
+test('main provider-free ordering retains its non-Git synthetic path', async t => {
+  const f = fixture(t, { a: 'ok', b: 'ok' }); fs.rmSync(path.join(f.dir, '.git'), { recursive: true, force: true });
+  const { orderedRequestPaths } = await import(require('node:url').pathToFileURL(script).href);
+  const requests = ['.archive-meta-register/inbox/b.json', '.archive-meta-register/inbox/a.json'];
+  assert.deepEqual(orderedRequestPaths({ root: f.dir, requests }), requests);
+});
+
 test('main add-only binding provider executes before its exact dependent request', t => {
   const f = registryDependencyFixture(t), r = f.run();
   assert.equal(r.status, 0, r.stderr);

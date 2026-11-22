@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "archive-root-current-navigation-input-and-q16-negative-review-v1",
+  "base": "22cdc0c3be1548db4a2f43448a9a6d4bbe4e2302",
+  "q5": {
+    "path": "tools/4slot/m3-e052-q5-complete-given-continuity.mjs",
+    "before": {
+      "gitBlobSha1": "4c87d6dc27cf7530c75304817853bbde2c6601a1",
+      "sha256": "b96bbf3a1389c6c898158169f1135aad4c39bbc5d6e55181660f4db0fa034aff",
+      "bytes": 15920
+    },
+    "after": {
+      "gitBlobSha1": "d0f424928ccca3905055bbac0569f0460cfbe376",
+      "sha256": "2cf2b87e7f0dab41a0073edf392e41d8d28c41f18e5463042730685650c2ee42",
+      "bytes": 16035
+    },
+    "independent": "eee8e7e4f1a486e5f575a77363786b40afb0b538",
+    "actual": {
+      "command": [
+        "node",
+        "--test-name-pattern=^actual Q5 original",
+        "tests/archive-m3-e052-q5-current-ui-reuse.test.mjs",
+        "--actual-native"
+      ],
+      "exitCode": 0,
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "stdoutSha256": "9117600b0d10e40fe14e25d0c446754ae8ca50d0c7fd5154d20dfeb421282dec",
+      "stdoutBytes": 222,
+      "seconds": 13.787733554840088,
+      "unchangedMetadata44Reruns": 0,
+      "originalNativeModule": "616f7882d8891b7a28369fe29292448d1c853b1b",
+      "testBodyUnchanged": true,
+      "observedWorktreeDeltaOnly": "tools/4slot/m3-e052-q5-complete-given-continuity.mjs",
+      "restoredClean": true
+    }
+  },
+  "q16": {
+    "path": "tests/archive-m3s2-current-ui-reuse.test.cjs",
+    "before": {
+      "gitBlobSha1": "28ba356add45f8620c18eb68189037506e01b8e7",
+      "sha256": "07255f9d2036c99af4966f730080bb0a9ed28bc614e41654760a59ac85bc77b1",
+      "bytes": 10741
+    },
+    "after": {
+      "gitBlobSha1": "4679eaa3bd8c11589babe4d2f1a741f976063fa7",
+      "sha256": "f6ca2113f54ac97d06954e7c3234ae7c093a35a3dc41e229b90f73e012f598e7",
+      "bytes": 11069
+    },
+    "oneCaseDeltaReviewed": true,
+    "wholeInverseExact": true,
+    "actual": {
+      "command": [
+        "node",
+        "--test-name-pattern=^Q16 rejects an unrecognized engine",
+        "tests/archive-m3s2-current-ui-reuse.test.cjs"
+      ],
+      "syntaxExit": 0,
+      "exit": 0,
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "refusalAssertions": 3,
+      "toolChunk": "edeff5",
+      "rawLogFileCreated": false,
+      "remainingCasesReexecuted": 0
+    },
+    "actualNative44": "PENDING"
+  },
+  "closed8": {
+    "manifest": "033c5fe6b3e5ece6d20039b3cb66379671a3f698",
+    "independent": "12c66be29bee9dc5c2e6331d6e52d3da573f2dfd",
+    "additionalIndependent": "d475f63cad8c7a3652ff9bf093e369167f6ad30b",
+    "twoFileDeltaReviewed": true,
+    "reusedFocusedCases19": true,
+    "actual47": "PENDING"
+  },
+  "m3gate": {
+    "before": "e538edc8ab1b9530ef61f70d91ed554671572aca",
+    "after": "53fb919e8f6112394a931bca73b61d148c2a0a6b",
+    "onlyTwoPinRecordsChanged": true,
+    "wholeInverseExact": true
+  },
+  "sourceEdits": 0,
+  "newApprovals": 0,
+  "guardWeakening": 0,
+  "mainMerge": "NOT_PERFORMED"
+}

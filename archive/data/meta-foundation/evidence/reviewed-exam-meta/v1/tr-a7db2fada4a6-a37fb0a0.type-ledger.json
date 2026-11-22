@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-a7db2fada4a6-a37fb0a0",
+  "sourceArchiveFile": "similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_0348b871a0a82d48db5be74cac0fc39152f7863f2e1027a1a9744822bb5abac0",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "step": "x축과 만나지 않는 조건을 판별식 17-2k<0으로 옮겨 정수 k의 최솟값을 구한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_512831108ed51bd0dd4597eba3ba1f1c9c0581155fa1faf4d6637fe5207a4fab",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+      "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+      "step": "네 일차인수 곱에서 x³항의 계수가 2(a+b+c+d)임을 이용하여 -3과 비교한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_79ce74f178ff04caa79f52f31c10f260784142d0790a0cd1896a8545f1d5fecc",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "step": "항등식을 (3P+1)²=(3x²-2x)²로 완전제곱하여 두 부호 중 최고차항 계수가 양수인 다항식을 선택한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. 도구 후보 밖이지만 ACTIVE 정의와 직접 읽은 풀이 단계가 일치하여 판정함.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4c8d9a4dab62635811def2c360fef2984aa1074700b44ffb589bc0c6fd5cb755",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": "TPL_H1_POLY_DIVISION_IDENTITY",
+      "step": "서로 다른 두 나눗셈 항등식을 연결하여 삼차식의 배수가 일차 이하가 되는 부분을 영다항식으로 놓고 나머지 계수를 정한다.",
+      "note": "PT는 적합하지만 정확히 대응하는 ACTIVE TPL이 없어 tpl=null로 PICK. 제안 TPL 이름: 서로 다른 나눗셈 항등식 연결과 차수 소거. 정의: 하나의 다항식을 서로 다른 제수로 나눈 항등식들을 연결하고, 고차 제수의 배수가 더 낮은 차수와 같으면 영다항식이어야 함을 이용하여 나머지 또는 몫의 미정계수를 정한다. 검사 TPL_NOT_ACTIVE는 null 템플릿에 대한 확인 결과로 판정과 분리함.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b2cc288ca3c631475ded5a79bb74e888b26a242eae992ecc9079fcbd71fbc078",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "step": "제수의 근 x=3/4에서 f,g의 곱과 비를 연결해 f(3/4)=±5를 얻고 목표 제수의 근 7/8을 대입해 나머지를 최소화한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d8924ab72bd5bd6723313c316e4b41a365edbfb9d48dab5a5b5921180ecf7ad9",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+      "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+      "step": "ω³=1로 지수를 3주기로 묶고 ω²=-ω-1로 합을 3+7ω로 줄인다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e0506624e03f2811d47977b2cef077d315c500a4ce4bb70915e047ec692d5f54",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+      "step": "수평선 교점으로 f=a(x+1)(x-5)-6을 놓고 대칭축에서 먼 구간 끝점의 최댓값으로 a=2를 정한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. 도구 후보 밖이지만 ACTIVE 정의와 직접 읽은 풀이 단계가 일치하여 판정함.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fbf13274f219abcc212aa22c198df3036d91d4be6f1ddc98dcaa9e67ddd5c786",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+      "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+      "step": "ζ=(1+i)/√2의 8주기와 i의 4주기를 이용해 합이 ±(1+i)가 되는 나머지 조합을 나누고 m+n을 최대화한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_05d3b342fc4d873f1cf6e24b0131851918101a9ad11631b077843372ceacdebb",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "step": "실수 일차식에는 실근 없는 이차인수가 들어갈 수 없음을 이용해 P의 인수구조를 정한 뒤 Q의 계수와 부호조건을 적용한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. 도구 후보 밖이지만 ACTIVE 정의와 직접 읽은 풀이 단계가 일치하여 판정함.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_16d5f1520d97044724ed461014a38762ec6be013ae8199921530d9f694d2b4d3",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+      "step": "조각별 이차식과 직선의 교점방정식 근을 각 정의구간에 제한하여 세고 총 세 교점이 되는 m=-3,-2√2를 고른다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. 도구 후보 밖이지만 ACTIVE 정의와 직접 읽은 풀이 단계가 일치하여 판정함.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    }
+  ]
+}

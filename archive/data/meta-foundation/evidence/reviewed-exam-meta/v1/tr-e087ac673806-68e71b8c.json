@@ -1,0 +1,446 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-e087ac673806-68e71b8c",
+  "requestSha256": "6f66161d8394f1d5f06d6eb578726bc371615e7382dfd7275ed032de0b1b1cbe",
+  "examUid": "21_효천고_2학기_기말_고2_확률과통계",
+  "sourceArchiveFile": "original/high/h2/2final/21_효천고_2학기_기말_고2_확률과통계.js",
+  "sourceBlobSha1": "6e871b6b17a3f3bcf4f494709ca536cc8f09bf7b",
+  "sourceRawSha256": "8608fd008ea3fd4b4b3e243f4a2ee0c9b55d3ecb426728bf6e61f02cc0dcc848",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-e087ac673806-68e71b8c.type-ledger.json",
+        "sha256": "a70fbb440a8e7e06c6996ea030534e6931a343eea744734ea33128b568b42d58"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 8,
+  "registryChanges": [],
+  "typeApprovals": 8,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 3,
+    "content": 5,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_3b454a8276ab5a8f772a0ac47a098a11f09253ac5ca15269c0a6c2ae3f68a778",
+      "sourceArchiveFile": "original/high/h2/2final/21_효천고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 5,
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-e087ac673806-68e71b8c",
+        "judge": "dots",
+        "rationale": "질량함수를 B(16,1/4)로 읽고 이차적률을 분산 3과 평균 제곱 16의 합으로 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "90d942b231e93e39dcdab93c90278426f13d95c0c3bf1f950444caceadc0d890",
+        "judgedContentFingerprint": "c5554dd0cc60873e4be1e056553588f963d93d0558c9de6f3e845c316b4b8a6b",
+        "rowBinding": "content",
+        "textBindingFingerprint": "ca9d2a99f54017180be32e9330af468549d4fdd61d9f39b2d24f7ae523bb4355",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-e087ac673806-68e71b8c.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+          "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+          "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_8b19c5a6eb0694c464f2a417727312287dbc8782ac484a9a19a3a747d31edb27",
+      "sourceArchiveFile": "original/high/h2/2final/21_효천고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 6,
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_STANDARDIZATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-e087ac673806-68e71b8c",
+        "judge": "dots",
+        "rationale": "540을 (540-450)/60=1.5로 표준화해 오른쪽 꼬리확률을 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "5743c8b0a047afa5c50bb04d3ffc775d5d3365b70f0848e5f3f0482260b97056",
+        "judgedContentFingerprint": "8db8e8df364e1ca1768285a3596dcfdfc04dd8ff8d4be694456d9d6de51bd88a",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "5061644b94b9b53ce609f3b63c38d2e6061130ef4d874011dff4d987d5744bb9",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-e087ac673806-68e71b8c.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+          "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+          "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_5ff09ccc0df080282d8859dcebdc01e414596e65be6ea3cff36d9902b7376505",
+      "sourceArchiveFile": "original/high/h2/2final/21_효천고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 10,
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-e087ac673806-68e71b8c",
+        "judge": "dots",
+        "rationale": "한 번 추출의 분산 5/9를 표본크기 3으로 나눈 뒤 선형변환 계수 9의 제곱을 곱한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "12d4e3feecd62930f8a1926eae6c6cc06f4d1e940624bba70d11ecc6bc830ccf",
+        "judgedContentFingerprint": "34554db960a0a2f492bf51c663a505758c765c88de61280ede2d10f4cb91dc26",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "7e095cdc456d9e5737ad8fdbd0dd8e0efefcb7dd93cf538a62e48addcff83c9d",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-e087ac673806-68e71b8c.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+          "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+          "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_c4815f04c3717b815fea4a929f1c523abc3f74dda0a7871d9e0585510e4fe8c6",
+      "sourceArchiveFile": "original/high/h2/2final/21_효천고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 16,
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-e087ac673806-68e71b8c",
+        "judge": "dots",
+        "rationale": "첫 신뢰구간 오차한계에서 σ=10을 얻고 두 번째 구간 길이로 n=64를 정한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "7324395aacdca18af8780379e0c59d1e403a27652076ad9ffe19fe82b9e83d90",
+        "judgedContentFingerprint": "ae97de544ee1d3f785e4ce0390b3dbbf3219d1642e6991c34c820d56dfb36aed",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "434a09bc7ea14eb4f8a777ee15d1394af06b5023bf77d4fa36cd64a8332f428a",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-e087ac673806-68e71b8c.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+          "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+          "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_53f4ba01e470b389875cbd385dc50723ad802f3b8180091e975e2b8ab83d5b99",
+      "sourceArchiveFile": "original/high/h2/2final/21_효천고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 17,
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-e087ac673806-68e71b8c",
+        "judge": "dots",
+        "rationale": "한 시행 A의 성공확률 24/36=2/3과 B의 1/3에 15회를 곱하여 기대득점 차를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "ef63f4d5361545aa049aaf4126ab2c891a44fb4a1096dc63ed5a03f8ccceb552",
+        "judgedContentFingerprint": "86cdd7fc1119884a036cec729b941a3adbbb4d692e393a20878b68ab8f5a4aa1",
+        "rowBinding": "content",
+        "textBindingFingerprint": "7f5d00a56616b6e71395aeb40d5311ed127ac568fac0beb6706da0af02a5d0ba",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-e087ac673806-68e71b8c.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+          "templateKey": "TPL_EXPECTATION_TRANSFORM",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+          "templateKey": "TPL_EXPECTATION_TRANSFORM",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_76e7396f895549d7ad89ebf690b2642a4e16048d157d4e4ff16c9a6791013631",
+      "sourceArchiveFile": "original/high/h2/2final/21_효천고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 20,
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-e087ac673806-68e71b8c",
+        "judge": "dots",
+        "rationale": "고정 신뢰도의 구간 길이는 σ/√n에 비례하므로 다섯 비율을 비교한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "12537aa33ecc9b7fff04e222ba0baf5ff5b7309fee3e26258bf0ed66179ce89e",
+        "judgedContentFingerprint": "80e9dc82ad1c90ade937ca9996fe270b45d6fe8954c18784f3bbef1328a2fbd2",
+        "rowBinding": "content",
+        "textBindingFingerprint": "57fcbff4d82ce5bf52c8e28e3cbb6c4986df555b048a3b0a12281a90de04cfae",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-e087ac673806-68e71b8c.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+          "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+          "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_58b34ec1dff6edcbfe6f2b8aedbd6ca32854568f7adfe2f8d441b7f978d570f5",
+      "sourceArchiveFile": "original/high/h2/2final/21_효천고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 22,
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_NORMAL_RELATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-e087ac673806-68e71b8c",
+        "judge": "dots",
+        "rationale": "판별식 조건을 X≤15 또는 X≥18로 바꾸고 B(48,1/4)의 정규근사로 두 꼬리확률을 더한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "badc35ac431928aa296f36297390e8c1ad3633409eeeae6a60dc6e43bbfc871e",
+        "judgedContentFingerprint": "c2ccc3981a2ddf5258f88bd239ab9ad00cc124860886e2cbec88d5b9eda120d6",
+        "rowBinding": "content",
+        "textBindingFingerprint": "4cad6d0ddd0d5e9829e5a08e16f2d52304d5b87b4dcfe69ff3a3ee50739c3221",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-e087ac673806-68e71b8c.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+          "templateKey": "TPL_BINOMIAL_PROBABILITY",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+          "templateKey": "TPL_BINOMIAL_PROBABILITY",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_5bfcbc21730d1cd626d5990c8e48a151814f8038bf86dc4b882a4ce986d06048",
+      "sourceArchiveFile": "original/high/h2/2final/21_효천고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 23,
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-e087ac673806-68e71b8c",
+        "judge": "dots",
+        "rationale": "한 번 추출의 평균 5/2·분산 1/2에서 200개 표본합의 평균 500·분산 100을 얻어 정규근사한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "e1ff9d6def4c54963e0fff902259c4e6f154b4098a1c52dc9aad488dc2b4c022",
+        "judgedContentFingerprint": "061af29f792248dc96a7cb3f31aa76ce08975f6ee76fbb5ebc70e9f16b63f139",
+        "rowBinding": "content",
+        "textBindingFingerprint": "33d0e4841122f4f64b3f6a72dacd9ca17607505bbf32d874a9f1242d167a9ca0",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-e087ac673806-68e71b8c.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+          "templateKey": "TPL_EXPECTATION_TRANSFORM",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+          "templateKey": "TPL_EXPECTATION_TRANSFORM",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 8,
+  "expectedQuestionCount": 24
+}

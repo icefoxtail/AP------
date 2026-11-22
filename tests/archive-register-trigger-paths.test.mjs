@@ -34,7 +34,7 @@ test("one writer retries the complete native transaction while Pages and compati
   const register = read(".github/workflows/archive-main-auto-meta.yml");
   const compatibility = read(".github/workflows/archive-reviewed-exam-meta-register.yml");
   const pages = read(".github/workflows/archive-pages-release.yml");
-  assert.equal((register.match(/node tools\/ci\/git-push-derived-with-retry\.mjs/g) || []).length, 1);
+  assert.equal((register.match(/node tools\/ci\/git-push-derived-with-retry\.mjs/g) || []).length, 2, 'required-lane save, then the full save');
   assert.match(register, /--regenerate 'node tools\/ci\/archive-registration-writer\.mjs --work-dir "\$WRITER_WORK_DIR"'/);
   assert.doesNotMatch(register, /git push origin HEAD:main|--force|HEAD\^ HEAD/);
   for (const [name, text] of [["compatibility", compatibility], ["pages", pages]]) {
@@ -42,7 +42,7 @@ test("one writer retries the complete native transaction while Pages and compati
     assert.doesNotMatch(text, /archive-pages-registration-derive\.sh|reviewed-meta-register-pass\.sh|archive\/build_db\.py/);
   }
   assert.deepEqual(nativeLanes(repo).find(lane => lane.id === "reviewed").commands,
-    [{ program: "bash", args: ["tools/ci/reviewed-meta-register-pass.sh"], timeoutMs: 55 * 60000 }]);
+    [{ program: "bash", args: ["tools/ci/reviewed-meta-register-pass.sh"], timeoutMs: 120 * 60000 }]);
 });
 
 test("the writer reuses preserved request copies for its final Consumer check before the atomic commit", t => {

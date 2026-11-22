@@ -10,6 +10,7 @@ on:
       - 'archive/generated/lite/v1/**'
       - 'archive/problem-bank-meta.js'
       - 'archive/archive2-source.js'
+      - 'archive/exam-source-reader.js'
       - 'archive/problem-bank-search.html'
       - 'archive/tools/generated-meta/rebuild-main-source-consumer.mjs'
       - 'tests/archive2-generated-bank-registration.test.js'
@@ -24,9 +25,11 @@ on:
 permissions:
   contents: read
 
+# A newer push to the same pull request cancels that PR's older run (runner demand).
+# Manual runs keep one group per run and are never cancelled.
 concurrency:
-  group: generated-consumer-browser-smoke-${{ github.ref }}
-  cancel-in-progress: false
+  group: ${{ github.event_name == 'pull_request' && format('generated-consumer-browser-smoke-pr-{0}', github.event.pull_request.number) || format('generated-consumer-browser-smoke-{0}-{1}', github.event_name, github.run_id) }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   browser-smoke:
@@ -40,6 +43,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Assemble question metadata (git holds its shards)
+        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
       - name: Derive the branch Consumer from every main-resident Generated source
         run: |
           node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --write

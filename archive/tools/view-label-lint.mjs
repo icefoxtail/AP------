@@ -12,6 +12,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
+import examSourceReader from '../exam-source-reader.js';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const archiveDir = path.resolve(scriptDir, '..');
@@ -70,13 +71,14 @@ for (const file of walk(examsDir)) {
     continue;
   }
 
-  const bank = sandbox.window.questionBank;
+  // 문항 배열 찾기·발문 읽기 규칙은 exam-source-reader.js 한 곳에 있다(examData 형식, question 필드 포함).
+  const bank = examSourceReader.readQuestionArray(sandbox.window);
   if (!Array.isArray(bank)) continue;
   fileCount++;
 
   for (const question of bank) {
     questionCount++;
-    const content = String(question.content || '');
+    const content = String(examSourceReader.readQuestionBody(question) || '');
     const matches = findInlineViewLabels(content);
     for (const match of matches) {
       failures.push({

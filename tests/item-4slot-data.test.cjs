@@ -119,6 +119,11 @@ for (const file of files) {
   const isStale = gitBlob(examFile) !== d.sourceGitBlobSha;
   let exam;
   try { exam = loadExam(examFile); } catch (e) { bad('cannot load exam: ' + e.message); continue; }
+  // 부분 제출 4칸은 영수증 사슬(원본 blob·원문 인용 해시)이 4칸을 만든 시점의 원본에 묶여 있다.
+  // 원본이 그 뒤 정상 수정되어 blob가 달라졌으면 그 사슬을 현재 원본에 대고 재검증하지 않는다(실패가 아니라 STALE 안내).
+  // blob가 같은 파일은 아래에서 사슬 전체를 그대로 검증한다. 메타 결속은 발문+보기 하나라는 사용자 기준
+  // (docs/agents/metadata.md)이지만 4칸 파일은 문항별 지문을 싣지 않아 blob를 발문+보기 지문으로 바꾸려면 형식 변경이 필요하다.
+  if (partial.hasScope(d) && isStale) { stale.push(`${rel}: partial 4slot made from an older exam text (receipt chain not rechecked)`); continue; }
   // Explicit native holds keep the full denominator and all ordinary slot checks.
   // A hold must name the existing canonical UID/ordinal and the exact original review.
   const nativeBank = runtime.loadBank(fs.readFileSync(examFile));

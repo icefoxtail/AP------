@@ -1,6 +1,6 @@
 [루나 구현자 — 고1 2학기 기말 해설 SVG 렌더]
 작업 트리 절대경로: <WORKTREE> (이하 상대경로는 모두 이 기준, 모든 셸 명령은 먼저 이 경로로 cd). 이 프롬프트가 저장소 AGENTS.md·HANDOFF_SVG_CODEX.md의 대기열·잠금·원장·ROOT 조율 절차보다 우선한다. QUEUE.md, 공유 원장, 시도 이력 재구성, 문항별 브랜치, DOM/qualification/publication 검사는 하지 않는다.
-위임 금지(사용자 지시 2026-11-08, ~/.codex/AGENTS.md의 OpenCode·deepseek 위임 규칙보다 우선): OpenCode·deepseek·다른 모델·하위 에이전트에 작업이나 검수를 넘기지 않는다. deepseek은 그림을 볼 수 없다. 루나 자신이 PNG를 직접 열어 보고 판단·수정한다. 최종 마무리는 항상 Claude 쪽 Sonnet이 한다.
+위임 금지(사용자 지시 2026-11-08, ~/.codex/AGENTS.md의 OpenCode·deepseek 위임 규칙보다 우선): OpenCode·deepseek·다른 모델·하위 에이전트에 작업이나 검수를 넘기지 않는다. 루나 자신이 PNG를 직접 열어 보고 판단·수정한다. 최종 마무리는 항상 Claude 쪽 Sonnet이 한다.
 파일 쓰기: REVIEW.md·SUMMARY.md·plan/publish JSON은 UTF-8로 쓴다(PowerShell Set-Content/Out-File 기본 인코딩 금지, node나 python으로 쓴다). 한글이 ?로 깨지면 다시 쓴다.
 
 먼저 읽기(필요한 만큼): docs/agents/visual-svg.md의 공통 프롬프트 블록(그림 기준), .tmp/svg-m1/briefs/plan-current.md, .tmp/svg-m1/guide/guide-tips.md, guide-graph.md(또는 해당 형태), 계약 원문 archive/tools/geometry-equation/production/AUTHOR_GUIDE.md.
@@ -12,9 +12,9 @@ PNG 확인: node .tmp/svg-m1/svg2png.cjs <svg> <png> 600 로 만들어 직접 �
 
 할 일: 아래 시험지의 지정 문항마다
  1) 시험지 JS에서 문항 원문·정답·해설·기존 그림(solutionImage*)을 읽는다. 입력 초안(root-inputs/qNN의 item/plan/publish)은 출발점일 뿐이며 틀리면 고친다.
- 2) 함수·유리·무리함수 그래프는 학생 이해에 조금이라도 도움이 되면 만든다. 기존 그림이 있다는 이유만으로 건너뛰지 않는다. 단, 기존 그림이 이미 새 엔진으로 결함 없이(정답 노출 없음, 틀린 값 없음, 라벨 정상) 만들어져 있으면 재작업하지 않고 STATUS에 KEEP_EXISTING과 이유를 적는다.
+ 2) 함수·유리·무리함수 그래프는 학생 이해에 조금이라도 도움이 되면 만든다. 기존 그림이 있다는 이유만으로 건너뛰지 않는다. 단, 기존 그림이 이미 새 엔진으로 결함 없이(과정 정보 충실, 정답 노출은 해설 그림에서 결함 아님, 틀린 값 없음, 라벨 정상) 만들어져 있으면 재작업하지 않고 STATUS에 KEEP_EXISTING과 이유를 적는다.
  3) 출력 폴더 <OUT>/qNN/에 item.json, plan.json, publish.json, figure.png를 두고, 렌더는 --out <OUT>/qNN/out 으로 한다(최종 성공본이 out/에 있게).
- 4) publish.json: {"alt": 그림 설명(정답 없음), "caption": 풀이 요약 + 끝에 정답(예시 값이면 "예:"로 시작), "size": 렌더 결과 out/figure-result.json의 sizeClass와 같은 값}
+ 4) publish.json: {"alt": 그림 설명(정답은 있어도 없어도 됨), "caption": 풀이 요약 + 끝에 정답(예시 값이면 "예:"로 시작), "size": 렌더 결과 out/figure-result.json의 sizeClass와 같은 값}
  5) <OUT>/SUMMARY.md에 문항별 한 줄: qNN | ARCHIVE_BOUND/KEEP_EXISTING/UNSUPPORTED/CONTENT | 렌더 수 | 메모.
 
 금지: 손으로 SVG 작성·수정, 정답·보기 번호를 그림/alt에 넣기, 원본 시험지 JS·archive/assets 수정, 엔진 코드 수정, git commit/push/병합, 검사 완화. 엔진 공백이면 UNSUPPORTED와 빠진 기능을 적고 다음 문항으로 간다. 문제·해설·정답이 서로 맞지 않으면 CONTENT로 적고 그리지 않는다.

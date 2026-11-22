@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-33aeb6d8bfd9-0cbbdf63",
+  "sourceArchiveFile": "original/high/h2/1mid/23_팔마고_1학기_중간_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_fdfafe9881a521b0ef0062acd8ad37c19f081ec8675eec10d298ef2fe2ebfea8",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "step": "파스칼 항등식으로 kC5=(k+1)C6-kC6을 합해 중간항을 소거하여12C6을 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_521f595a9ed08ecc0aa6663cb8db5cc1b5b8062810289ff18bb8de99b50c46ca",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "step": "두 경로가 중앙선에 C 전에 함께 들어오면 먼저 만남을 이용해 적어도 한쪽이 C에서만 진입하는 경로10개를 포함배제하여10·20+20·10-10²=300을 센다.",
+      "note": "문항·해설 직접 판독. 필수 원본 그림 Git blob 추출 후 시각 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_665ddd37f576e0056078333eb0777c511351bfa0224268208dbf187f1eb11c13",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "step": "홀수행 이항계수의 대칭 절반합에서 상수항1을 빼2^(2n)-1=1023을 얻어 n=5를 정한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9bf16bc9930d62ee70677bfc1ea346d1665b579d797b26cdf1597956d3f5c83c",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": null,
+      "step": "제약별 자유배정·일대일·엄격증가·비감소 함수수를 구하고 비감소 조건 아래 곱18인30개를252개로 나눠5/42를 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요. 필요한 TPL 제안명: 여러 함수 조건의 계수와 제한표본비. 정의: 자유·일대일·단조 함수수를 비교하고 단조 함수에서 추가 제약의 비율 계산. 구별 단서: 단일 조건 하나가 아닌 네 함수종류 계수와 조건부비의 결합. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

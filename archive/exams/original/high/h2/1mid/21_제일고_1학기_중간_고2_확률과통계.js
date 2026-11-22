@@ -41,7 +41,11 @@ window.questionBank = [
       "확률과통계",
       "순열과 조합",
       "원순열의 묶음"
-    ]
+    ],
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 여섯 개의 점이 육각형 꼭짓점으로 놓인 원탁 그림이며 점 A는 두 사람의 묶음, 나머지 다섯 점은 다른 회원의 자리이다.",
+    "solutionImageCaption": "원탁의 6개 대상을 육각형 꼭짓점으로 나타낸 그림이다. 점 A는 두 사람 A, B를 한 묶음으로 본 자리이고 나머지 다섯 점은 다른 회원 5명의 자리이다. 6개 대상의 원순열은 (6−1)!=5!가지이고 묶음 안의 순서가 2가지이므로 2×5!=240이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -702,7 +706,11 @@ window.questionBank = [
       "확률과통계",
       "확률의 뜻과 활용",
       "배반사건의 집합"
-    ]
+    ],
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "C가 A, B와 모두 배반이면 A∪B={1, 2, 5}의 원소를 포함할 수 없고 색칠한 바깥 영역 {3, 4, 6}에서만 원소를 고른다. 원소 3개에서 부분집합을 고르는 방법은 2의 3제곱=8가지이고 공집합도 사건이므로 모두 센다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

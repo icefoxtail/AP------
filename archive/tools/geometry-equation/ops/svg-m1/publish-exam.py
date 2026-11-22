@@ -74,11 +74,16 @@ def main():
         size=result.get('sizeClass')
         if result.get('status')!='ARCHIVE_BOUND' or not isinstance(result.get('identity'),dict) or result['identity'].get('questionUid')!=f'{exam}|{o}': raise ValueError(f'q{o}: invalid render status or identity')
         if size not in ('small','medium','large','full') or pj.get('size')!=size: raise ValueError(f'q{o}: publish size differs from validated render size')
+        # 2026-11-19: a render that needed a larger A4 display records solutionImageScale (% of the column, 30-100); it goes to the exam beside solutionImageSize. publish.json may repeat it but never differ.
+        scale=result.get('solutionImageScale')
+        if scale is not None and (isinstance(scale,bool) or not isinstance(scale,(int,float)) or not 30<=scale<=100): raise ValueError(f'q{o}: invalid solutionImageScale in render result')
+        if pj.get('scale') is not None and pj.get('scale')!=scale: raise ValueError(f'q{o}: publish scale differs from validated render scale')
         state_path=d/'out/figure-state.json'
         if state_path.exists():
             lineage=read(state_path).get('capture',{}).get('lineage',{}).get('l1SvgSha256')
             if lineage is not None: require_hash(staged,lineage)
         obj={'src':src,'ord':o,'svg':str(staged),'sha256':digest,'reviewPng':str(png),'pngSha256':a['pngSha256'],'reviewPublish':str(publish_path),'publishSha256':publish_digest,'reviewReplacement':is_replace,'key':f'{fam.lower()}-{o}','fam':fam,'alt':alt if alt.startswith('해설 그림') else '해설 그림: '+alt,'caption':caption,'size':size}
+        if scale is not None: obj['scale']=scale
         if is_replace:
             k=2
             while (adir/asset_name(o,f'-v{k}')).exists(): k+=1

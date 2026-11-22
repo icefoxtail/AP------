@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-a6bd27a942aa-bdbad87d",
+  "sourceArchiveFile": "original/high/h2/1mid/18_금당고_1학기_중간_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_65793489e226d281cb97c54b9d918285da628569e28580170bb7213deebda422",
+      "sourceOrdinal": 1,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_PROB_COUNTING",
+      "templateKey": null,
+      "step": "두 배수 집합의 공배수가 범위에 없음을 확인하고 개수를 더한다.",
+      "note": "후보의 확률 사건 성질은 확률을 구하는 구조이며 이 문항의 배수 개수 합집합 계수에 대응하는 후보가 없음. 해당 과목 ACTIVE 정의 전체 대조 후 적합한 PT 없음. 필요한 유형: 두 배수 집합의 공배수가 범위에 없음을 확인하고 개수를 더한다. 제안 유형명: 배수 집합의 합집합 계수. 구별 단서: 배수의 개수를 세고 공배수 중복을 조정하며 확률비 계산과 구별. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6d29aad4547c93ca480d10a06debbb67f8151a937e825cd7a7dfcbccf2f4bb2d",
+      "sourceOrdinal": 2,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_PROB_COUNTING",
+      "templateKey": null,
+      "step": "소인수분해 후 각 소인수 지수의 선택 가짓수를 곱한다.",
+      "note": "약수 개수를 지수 선택의 곱으로 구하는 구조를 담는 후보 PT/TPL이 없음. 해당 과목 ACTIVE 정의 전체 대조 후 적합한 PT 없음. 필요한 유형: 소인수분해 후 각 소인수 지수의 선택 가짓수를 곱한다. 제안 유형명: 소인수 지수 선택에 의한 약수 개수. 구별 단서: 소인수의 지수 범위별 독립 선택이 핵심이며 순열·조합 배열과 구별. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_402349b0a4d0f33f07d5cd62b6e71e4a100ce80d008dc93acbc76f1b65d3714b",
+      "sourceOrdinal": 10,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_PROB_INTEGER_PARTITION",
+      "templateKey": null,
+      "step": "각 짝수 부분을 2로 나누어 작은 정수의 순서 없는 분할을 나열한다.",
+      "note": "동일한 수의 순서 없는 정수 분할이며 구별되는 상자에 대한 중복조합과 달라 후보에 억지 배정하지 않음. 해당 과목 ACTIVE 정의 전체 대조 후 적합한 PT 없음. 필요한 유형: 각 짝수 부분을 2로 나누어 작은 정수의 순서 없는 분할을 나열한다. 제안 유형명: 정수의 순서 없는 분할. 구별 단서: 부분들의 순서를 구분하지 않으며 구별된 상자에 대한 중복조합과 구별. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c4ac9d83b4f4519f8b9030c69f56c740d771dabb14b131a67bb1a0afeb1b0332",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "step": "직각삼각형의 빗변인 지름과 세 번째 꼭짓점을 택한 경우를 전체 세 점 선택 수로 나눈다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_27f2a801846302e6bb8681e97a12d75010bd4fa1048daf264964a8a6e998aaca",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "step": "나머지정리로 양의 정수 방정식을 세우고 두 변수의 합별 정수해 수를 합한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d48fd069e065759d143420b9261008746850fce8fff27c3f66b1e9687b79d9db",
+      "sourceOrdinal": 21,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_PROB_COUNTING",
+      "templateKey": null,
+      "step": "세 점의 공선식을 정수 곱 조건으로 바꾸어 약수쌍을 세고 중복점을 제외한다.",
+      "note": "후보의 조합·중복조합이나 배열 정의에는 공선 정수 방정식의 약수쌍 열거가 맞지 않음. 해당 과목 ACTIVE 정의 전체 대조 후 적합한 PT 없음. 필요한 유형: 세 점의 공선식을 정수 곱 조건으로 바꾸어 약수쌍을 세고 중복점을 제외한다. 제안 유형명: 공선 정수 좌표의 약수쌍 계수. 구별 단서: 공선 조건을 정수 곱으로 바꾼 약수쌍 열거와 중복점 제외가 핵심. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

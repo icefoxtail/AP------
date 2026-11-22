@@ -1,0 +1,1187 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/middle/m2/2mid/26_팔마중_2학기_중간_중2_유사.js",
+  "sourceGitBlobSha": "6485b71b8e6179ad23f3b1693f728d4d00750cb5",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "similar-import-draft",
+    "at": "2026-11-18"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "단일 모델 초안(UNREVIEWED). 인용은 check-judgment 로 원문 포함을 확인했다."
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "둘레의 길이가 $36$인 평행사변형 $ABCD$"
+          },
+          {
+            "term": "비",
+            "src": "stem",
+            "quote": "$\\overline{AB} : \\overline{BC} = 1 : 2$"
+          },
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "둘레의 길이가 $36$인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{BC}$의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "$2(a + 2a) = 36 \\implies 6a = 36",
+            "evidenceType": "IMPLIED",
+            "justification": "둘레 36 을 변의 비로 둔 2(a+2a)=36 이라는 일차방정식으로 세워 a=6 을 구하는 단계이다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "평행사변형의 둘레를 a 로 나타내 6a=36 을 푸는 것이 풀이의 전부다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "인 사각형 $ABCD$에 대하여"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "두 대각선 $AC$, $BD$의 교점은 $O$이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "가 평행사변형이 되지 않는 경우는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "각 평행하므로 평행사변형이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "등변사다리꼴",
+            "src": "solution",
+            "quote": "인 사각형은 등변사다리꼴일 수 있으므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "평행사변형의 5가지 판정 조건과 등변사다리꼴 반례를 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형 $ABCD$의 내부의 한 점 $P$"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle APB$의 넓이가 $17$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이의 합은?"
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "넓이의 합은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "\\triangle APB + \\triangle CPD = \\dfrac{1}{2}\\square ABCD",
+            "evidenceType": "IMPLIED",
+            "justification": "내부 점이 나눈 마주 보는 두 삼각형 넓이의 합이 평행사변형 넓이의 절반이라는 평행사변형의 넓이 성질을 쓰는 단계이다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "17+29=46 은 내부 점의 넓이 성질을 한 번 쓴 결과다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형 $ABDE$의 두 대각선"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle ABE$의 넓이가 $14$이면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "사각형 $BCDO$의 넓이는?"
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "사각형 $BCDO$의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "한 쌍의 대변이 평행하고 길이가 같아 평행사변형이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대각선",
+            "src": "solution",
+            "quote": "대각선 $BD$가 평행사변형 $BCDO$의 넓이를 이등분하고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "대변 평행과 길이로 평행사변형을 밝히고 높이가 같음을 이용해 넓이를 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형 $ABCD$의 두 대각선의"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "두 대각선의 교점을 $O$라 하자"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$x + y$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "직사각형",
+            "src": "solution",
+            "quote": "직사각형 $ABCD$에서",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "\\overline{OA} = \\overline{OB} = \\overline{OC} = \\overline{OD}",
+            "evidenceType": "IMPLIED",
+            "justification": "대각선 교점 O에 대해 OA=OB=OC=OD이므로 생기는 삼각형이 이등변삼각형이 되어 x=90-28=62를 구하는 단계이다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "대각선 길이 절반으로 y=7, 이등변삼각형 각으로 x=62를 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형 $ABCD$를 변"
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle AEB = 54^\\circ$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle EFD$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "접기",
+            "src": "solution",
+            "quote": "접은 각은 서로 같으므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "평행",
+            "src": "solution",
+            "quote": "$\\overline{AD} \\parallel \\overline{BC}$이므로 동측내각의 합에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "접은 각이 같음으로 63° 를, 평행선의 동측내각으로 117° 를 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "마름모",
+            "src": "stem",
+            "quote": "마름모 $ABCD$의 두 대각선의 교점을"
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "점 $P$는 변 $BC$의 중점이다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "이때 $\\triangle ABP$의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "마름모",
+            "src": "solution",
+            "quote": "마름모의 두 대각선은 서로 다른 것을 이등분하므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "점 $P$는 $\\overline{BC}$의 중점이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "대각선의 길이로 마름모 넓이를 구하고 중점 조건으로 절반을 취한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "choices",
+            "quote": "평행사변형의 두 변의 길이가 같으면 마름모이다."
+          },
+          {
+            "term": "마름모",
+            "src": "choices",
+            "quote": "마름모의 네 내각의 크기가 모두 같으면 정사각형이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "정사각형",
+            "src": "choices",
+            "quote": "모두 같으면 정사각형이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "정의",
+            "src": "solution",
+            "quote": "각 사각형의 정의 및 성립 조건",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "조건",
+            "src": "solution",
+            "quote": "정의 및 성립 조건으로 참이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "각 사각형의 정의와 성립 조건을 대조한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "대각선",
+            "src": "choices",
+            "quote": "평행사변형의 두 대각선은 서로 다른 것을 이등분한다."
+          },
+          {
+            "term": "마름모",
+            "src": "choices",
+            "quote": "마름모의 두 대각선이 서로 수직이등분하면 정사각형이다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "정사각형",
+            "src": "choices",
+            "quote": "서로 수직으로 만나면 정사각형이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "마름모",
+            "src": "solution",
+            "quote": "마름모는 원래 두 대각선이 서로 다른 것을 수직이등분하므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "이 조건만으로는 내각이 $90^\\circ$인 정사각형이 되지 않는다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "사각형별 대각선의 성질과 조건을 대조한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "인 이등변삼각형 $ABC$에서"
+          },
+          {
+            "term": "이등분선",
+            "src": "stem",
+            "quote": "$\\angle A$의 이등분선"
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{BD} = 4.5\\text{ cm}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "$\\overline{AC}$의 길이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형의 꼭짓각 $A$의 이등분선",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "수직이등분선",
+            "src": "solution",
+            "quote": "밑변 $BC$를 수직이등분하므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정삼각형",
+            "src": "solution",
+            "quote": "인 정삼각형이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "BD=4.5 에서 BC=9 를 얻고 정삼각형이라 AC=9 가 된다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "인 이등변삼각형 $ABC$에서"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "\\angle DCE$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "\\angle B = \\angle ACB = \\dfrac{180^\\circ - 36^\\circ}{2} = 72^\\circ",
+            "evidenceType": "IMPLIED",
+            "justification": "AB=AC인 이등변삼각형의 밑각의 크기가 같음을 이용해 밑각을 72°로 구하는 단계이다."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "\\angle DCE = 180^\\circ - (72^\\circ + 72^\\circ) = 36^\\circ",
+            "evidenceType": "IMPLIED",
+            "justification": "삼각형 CDE의 세 내각의 합이 180°임을 이용해 각 DCE를 36°로 계산하는 단계이다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "이등변삼각형 밑각 성질과 삼각형 내각의 합을 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "인 이등변삼각형이 되도록 하는"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$x + y$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "인 이등변삼각형이 되려면 $\\angle B = \\angle C$여야 하므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "삼각형의 세 내각의 합은 $180^\\circ$이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "밑각의 일치 조건과 삼각형의 세 내각의 합을 연립한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각이등변삼각형",
+            "src": "stem",
+            "quote": "인 직각이등변삼각형 $ABC$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle BDE$의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "보조선",
+            "src": "solution",
+            "quote": "보조선 $CD$를 그으면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "인 이등변삼각형이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "보조선을 그어 합동 또는 이등변삼각형 성질로 변의 길이를 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "한 직선 위의 세 점 $A$, $B$, $C$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle ABE$의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "($\\text{RHA}$ 합동)",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "정리",
+            "src": "solution",
+            "quote": "피타고라스 정리에 의해",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "RHA 합동으로 변을 대응시키고 피타고라스 정리와 곱셈공식을 쓴다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "예각삼각형 $ABC$의 외심을 $O$라 하자"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle OCB$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "점 $O$는 $\\triangle ABC$의 외심이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "$\\triangle OBC$는 이등변삼각형이고",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "예각",
+            "src": "stem",
+            "quote": "예각삼각형 $ABC$의 외심"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "외심의 중심각 성질과 꼭짓점까지의 거리가 같음을 이용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이등변삼각형",
+            "src": "stem",
+            "quote": "인 이등변삼각형 $ABC$의 내심을"
+          },
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "$ABC$의 내심을 $I$라 하자"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle AIB$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "이등분선",
+            "src": "solution",
+            "quote": "$\\overline{AI}$는 $\\angle A$의 이등분선이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내심",
+            "src": "solution",
+            "quote": "점 $I$는 내심이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "내심의 각의 이등분선 성질과 내심과 꼭짓점이 이루는 각의 공식을 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "예각삼각형 $ABC$의 외심을 $O$라 하고"
+          },
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "$\\triangle OBC$의 내심을 $I$라 하자"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle BIC$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "외심",
+            "src": "solution",
+            "quote": "점 $O$는 $\\triangle ABC$의 외심이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "내심",
+            "src": "solution",
+            "quote": "점 $I$는 $\\triangle OBC$의 내심이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "예각",
+            "src": "stem",
+            "quote": "예각삼각형 $ABC$의 외심"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "외심의 각 성질과 내심의 각 성질을 순서대로 적용한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "인 직각삼각형 $ABC$의 외심을"
+          },
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "$ABC$의 외심을 $D$, $\\triangle ACD$의 외심을 $E$라 하자"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle ACE$의 크기는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "빗변 $BC$의 중점이므로",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "중심각",
+            "src": "solution",
+            "quote": "에 대한 작은 중심각은 $\\angle AEC =",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "직각삼각형의 외심이 빗변의 중점임과 둔각삼각형의 외심 중심각 성질을 쓴다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사다리꼴",
+            "src": "stem",
+            "quote": "사다리꼴 $ABCD$와 사다리꼴 $EFGH$는"
+          },
+          {
+            "term": "대응",
+            "src": "stem",
+            "quote": "에 대응하는 꼭짓점이 각각"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$x + y$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "두 사다리꼴의 닮음비는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대응각",
+            "src": "solution",
+            "quote": "대응각의 크기는 같으므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "대응변의 비로 닮음비를 구해 길이를 찾고 대응각의 크기가 같음을 쓴다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "원뿔",
+            "src": "stem",
+            "quote": "원뿔 모양의 그릇에 위에서부터"
+          },
+          {
+            "term": "모선",
+            "src": "stem",
+            "quote": "수면과 모선 $TB$가 만나는 점을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "채워진 부분의 부피의 비는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "은 서로 닮은 도형이며 닮음비는",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부피",
+            "src": "solution",
+            "quote": "부피의 비는 닮음비의 세제곱이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "닮음비의 세제곱으로 부피비를 구하고 차를 이용해 부분 부피를 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "세 직각삼각형 $ABC$, $DEF$, $PQR$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "① 서로 합동인 두 삼각형을 찾아 합동 기호로"
+          }
+        ],
+        "method": [
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "$\\angle A = 90^\\circ - 32^\\circ = 58^\\circ$",
+            "evidenceType": "IMPLIED",
+            "justification": "직각 B 와 ∠C=32° 에서 삼각형의 내각의 합으로 나머지 예각 ∠A=58° 를 구하는 단계이다."
+          },
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "($\\text{RHA}$ 합동)이다.",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "직각삼각형의 빗변과 한 예각이 같음을 보여 RHA 합동을 서술한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "단답",
+      "slots": {
+        "given": [
+          {
+            "term": "외심",
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 외심이면서 동시에"
+          },
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "이면서 동시에 내심일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\angle C + \\angle OAB$의 크기를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "정삼각형",
+            "src": "solution",
+            "quote": "$\\triangle ABC$는 정삼각형이다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등분선",
+            "src": "solution",
+            "quote": "각 $\\angle A$, $\\angle B$, $\\angle C$의 이등분선이다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "외심과 내심의 성질로 세 각이 같음을 보여 정삼각형과 각의 합을 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형 $ABCD$의 두 대각선"
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "대각선 $BD$ 위의 두 점 $E$, $F$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "사각형 $AECF$가 어떤 사각형인지"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행사변형",
+            "src": "solution",
+            "quote": "사각형 $AECF$는 평행사변형이다.",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "이등분선",
+            "src": "solution",
+            "quote": "서로 다른 것을 이등분하므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "대소비교",
+            "src": "stem",
+            "quote": "($\\overline{BE} < \\overline{BO}$)"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "대각선 이등분 성질을 이용하여 새로운 사각형이 평행사변형임을 증명한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "한 변의 길이가 $9$인 정사각형 $A$"
+          },
+          {
+            "term": "정육면체",
+            "src": "stem",
+            "quote": "한 모서리의 길이가 $15$인 정육면체 $C$"
+          },
+          {
+            "term": "닮음비",
+            "src": "stem",
+            "quote": "닮음비가 $3 : 4$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "정사각형 $B$의 넓이를 구하고"
+          },
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "정육면체 $D$의 부피를 구하고"
+          }
+        ],
+        "method": [
+          {
+            "term": "비례식",
+            "src": "solution",
+            "quote": "$9 : x = 3 : 4 \\implies x = 12$",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "$15 : y = 5 : 2 \\implies y = 6$",
+            "evidenceType": "IMPLIED",
+            "justification": "정육면체 C:D 의 닮음비 5:2 로 모서리 y=6 을 구한 뒤 세제곱해 부피 216 을 얻는 단계이다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "닮음비로 비례식을 세워 길이를 구한 뒤 넓이와 부피를 계산한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ]
+}

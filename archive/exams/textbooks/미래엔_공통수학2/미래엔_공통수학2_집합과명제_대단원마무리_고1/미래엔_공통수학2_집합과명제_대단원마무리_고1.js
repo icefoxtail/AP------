@@ -364,8 +364,8 @@ window.questionBank = [
       "$r$은 $\\sim p$이기 위한 필요충분조건이다.",
       "$\\sim r$은 $\\sim q$이기 위한 필요조건이다."
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "④",
+    "solution": "그림에서 $Q\\subset P$이고, $R$은 전체집합 $U$에서 $P$를 제외한 부분이므로 $R=P^C$이다.\n① $P\\not\\subset Q$이므로 거짓이다.\n② $Q^C\\not\\subset P$이므로 거짓이다.\n③ $R^C=P\\not\\subset Q$이므로 거짓이다.\n④ $R=P^C$이므로 $r$은 $\\sim p$이기 위한 필요충분조건이다. (참)\n⑤ $\\sim q$의 진리집합 $Q^C$는 $R^C=P$의 부분집합이 아니므로 거짓이다.\n따라서 옳은 것은 ④이다."
   },
   {
     "id": 13,

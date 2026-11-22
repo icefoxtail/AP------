@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-76306ddfed24-3c161c77",
+  "sourceArchiveFile": "original/high/h2/2mid/20_매산고_2학기_중간_고2_수학II.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_172c39e41ab198dd8a18b5b311c76cd47323f40c9fb5a8f962587494784fa2ba",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_GRAPH_DIRECTION_READ",
+      "step": "2-x와 f(x)의 접근 방향을 추적해 그래프의 2 좌우 극한을 읽는다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d97c27bc76b922c0937d7488f22d8d347c3dd3a34220154c3f4aa52bea0f3b73",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+      "templateKey": "TPL_LIMIT_POLYNOMIAL_RECONSTRUCTION",
+      "step": "두 영점에서의 극한값 조건이 이차식과 모순임을 확인하고 최소 삼차식의 계수를 복원한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7f8634f2487a61edd036c4082248a75b8fc5082b056c8c9c1ffe96de514a5f76",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONT_DIFF_DEFINITION_PROOF",
+      "step": "좌우 미분계수가 다름을 확인하고 존재하지 않는 개별 극한을 분리한 오류를 지적한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}

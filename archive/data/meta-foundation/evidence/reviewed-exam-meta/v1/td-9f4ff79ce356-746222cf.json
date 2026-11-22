@@ -1,0 +1,318 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-9f4ff79ce356-746222cf",
+  "requestSha256": "6a56ae568ebbf1c7deab1c122f572844225d9ca41e4d398fa56ddcfc6ccd0ae5",
+  "examUid": "25_매산고_1학기_중간_고2_확률과통계",
+  "sourceArchiveFile": "original/high/h2/1mid/25_매산고_1학기_중간_고2_확률과통계.js",
+  "sourceBlobSha1": "2160603be8bf9f6d439e4e355b5f6be6e0f23d4b",
+  "sourceRawSha256": "8e2fd2bc236e3d08c0c099d063db853a8165d6a9a01b2eace7ee0571ca2a192c",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9f4ff79ce356-746222cf.type-ledger.json",
+        "sha256": "1b99a645230e17f7386c4cedd42a14489ce401d80029135f84e72cd0e8af2597"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 6,
+  "registryChanges": [],
+  "typeApprovals": 6,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 6,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_848064a6f96108197632cfb085c359164f519252abcf38e953bd29fdcc7baae3",
+      "sourceArchiveFile": "original/high/h2/1mid/25_매산고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 1,
+      "problemTypeKey": "PT_PROB_PERMUTATION_COMBINATION",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-9f4ff79ce356-746222cf",
+        "judge": "dots",
+        "rationale": "중복순열 4³과 중복조합 C(7,2)를 더하여 64+21=85.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "a746f159c82816dbcc73c9a79697eb6d586103a689d8e62bc13eb05e89c29487",
+        "judgedContentFingerprint": "2cfb7fd86868becee789a7e967fec0ad910592939b46b3dd1cae45d946bea478",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "7b0b68abb374442c15fbc091fa537a6a32e290f265d4f6e46aa7fc0c02c1af19",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9f4ff79ce356-746222cf.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_4259109a2dccde0564fcb440ac36a7ae24a2e9738c762f790721b7bbe665e541",
+      "sourceArchiveFile": "original/high/h2/1mid/25_매산고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 3,
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-9f4ff79ce356-746222cf",
+        "judge": "dots",
+        "rationale": "서로소인 두 사건이 전사건을 이루므로 P(B)=1−2/3=1/3.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "c3d49f1a0c7661d39acdef704541053ac21ea405e736fa227c2223f82d1ca603",
+        "judgedContentFingerprint": "9a2903ae419de811757cfcf1b39c3823f0d82ecc5999241170092301d9bc5e58",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "37dcec1db2c866c4719b87f416a3e63e4c886c78e830d9c3169bf35858dbf27e",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9f4ff79ce356-746222cf.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_782850966aa7e68888ffa67088d76ba2f1dfc4be62c2ac01c7701bf8a9b29b0a",
+      "sourceArchiveFile": "original/high/h2/1mid/25_매산고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 4,
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-9f4ff79ce356-746222cf",
+        "judge": "dots",
+        "rationale": "3 또는5의 배수 개수는25+15−5=35이므로 확률35/75=7/15.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "a55a962bb01a38e7879860803d9f0a7394714e3108051b5f17175d7a46b90383",
+        "judgedContentFingerprint": "92e349ae33568eaf3e7bbbe3cb8191640bd15dde104207b68bbc5cfdeca3eaf7",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "3307ea52bee968344a58306b9114f32e58ac8348a0cf2430a5098fc928c953ab",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9f4ff79ce356-746222cf.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_f80811a77e0a75c8857db00f0947db38c23dafa3179304df20ad5db7ce25583f",
+      "sourceArchiveFile": "original/high/h2/1mid/25_매산고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 14,
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-9f4ff79ce356-746222cf",
+        "judge": "dots",
+        "rationale": "밑면6색 선택 후 인접면 색이 다른 오각 순환 색칠1020개를 회전5로 나누어6·1020/5=1224.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "a1121c4720499f1dae7df665a84bc7edda843a1a76269173f8ac6c05577f331b",
+        "judgedContentFingerprint": "2c5cc2066a6af8f65624253812b4782546ab72c1a50919e5af62b864c592c3f7",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "9e1b6d4b4aa2427c192b0d58f4b574a3089a9edd8517abf7a298cf56f46605e5",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9f4ff79ce356-746222cf.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_a2722f0dc54fc2b1cf18401a613064a538289e1d5380f5cf007ee750a107058e",
+      "sourceArchiveFile": "original/high/h2/1mid/25_매산고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 19,
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-9f4ff79ce356-746222cf",
+        "judge": "dots",
+        "rationale": "가운데 네 함수값 합2의 배열68개와 합−2의 대칭68개에 양끝 자유값25개를 곱해3400.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "b7a4e9014b2c335be46ea3e9d04743c04fb413e654d079970d5ad52ea587f654",
+        "judgedContentFingerprint": "051dc4795c0520ffd478a04fd944d364730db7a56f007ec0247a9815fd9b8fd9",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "2943e8fc841a9cbe4c4ce005aea60db567f45e12fc4d5ab95672188137c58699",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9f4ff79ce356-746222cf.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_ece303a03ea776172139909697da1984ee94305ece8b5fd03659c785266aaf2b",
+      "sourceArchiveFile": "original/high/h2/1mid/25_매산고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 20,
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-9f4ff79ce356-746222cf",
+        "judge": "dots",
+        "rationale": "전체6⁴에서3인수 없음256과2인수 지수합3미만621을 빼고 교집합104를 더해523.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "d1c37b9a4818315a134866b81da80195370b117458dd61f1a38fc868a0c11e16",
+        "judgedContentFingerprint": "9666e3b7e2d1521c7189b609be8d203ea4a6a0d1855f1caf2167ffa00a6a46e5",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "1d7e294323ac408ece493a280fa2ac13f47de31e2b5f45e9e28268d3cddf3f64",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9f4ff79ce356-746222cf.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 6,
+  "expectedQuestionCount": 20
+}

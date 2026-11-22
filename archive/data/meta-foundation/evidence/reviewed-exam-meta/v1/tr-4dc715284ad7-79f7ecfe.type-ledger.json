@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-4dc715284ad7-79f7ecfe",
+  "sourceArchiveFile": "original/high/h2/2final/22_순천고_2학기_기말_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_3c989272c31a47e81a108440ddfddd3d791d4af4ae6a2fefad8883f94fe4f2ca",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+      "step": "성공확률 1/3의 이항분포 B(90,1/3)에서 평균 30과 분산 20으로 E(X²)를 구한다.",
+      "note": "ACTIVE 키·TPL 상위관계 직접 확인; 연결 없음(NEEDS_BINDING).",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_575cb2d57baab394b62d438ff481f04e7102fbfdca1a7eb790d79a713144746f",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_EXPECTATION_TRANSFORM",
+      "step": "확률합 1에서 k=1을 정한 뒤 x의 확률가중합으로 평균 2를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2be705be3dab46cbb5e72b5ad54cee1b246ec196322cf1ecc29e71f1d620beb6",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_NORMAL_RELATION",
+      "step": "운동시간의 정규꼬리에서 성공률 0.02를 얻고 인원수 B(2500,0.02)를 N(50,49)로 근사한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f7b3b4c152dc71bbb31226d2b2ec7644bb316fef791238dc96c6feac5db42e99",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "step": "A,B를 묶은 이웃 배열 2·5!의 비를 1에서 빼 비이웃 확률을 구한다.",
+      "note": "ACTIVE 키·TPL 상위관계 직접 확인; 연결 없음(NEEDS_BINDING).",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_96bcd07f23bccf18bc861afe00e8cfa9205b266d489f250ee313885f16aaaec1",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EVENT_INDEPENDENCE",
+      "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
+      "step": "독립으로 P(B|A)=P(B)와 P(Aᶜ∩B)=P(Aᶜ)P(B)를 사용해 합집합을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6367d6e153215a27b8630a037ac398bd67b955a2bf987273fc7b2d321e2aefe5",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "step": "선택한 오름차순 네 수에서 0,1,2,3을 차감해 유리한 경우를 7C4로 세어 10C4로 나눈다.",
+      "note": "ACTIVE 키·TPL 상위관계 직접 확인; 연결 없음(NEEDS_BINDING).",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_50575c56ae1664a06023f0ea51b322f4c2bcec5656eb41b7d73616caea6e9867",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "step": "최댓값 정확히 4인 사건을 모든 눈 4 이하에서 모든 눈 3 이하를 뺀 사건으로 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8d7680c12fa315469cf06b40f1317e6dea95d424cc81cbcc122534f250bfbe93",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "step": "네 번 이내 도달을 가상 네 번 이동의 2칸 이동횟수 K≥2로 바꾸어 독립시행 확률을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4417d187af95ba70baffd4241c3db38885efb1e5ea7c4834523f0609d2c7e3cc",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "step": "가운데 세 함수값의 가능한 다섯 조합별로 양쪽 비내림차순 함수를 세어 36을 전체 4⁸로 나눈다.",
+      "note": "ACTIVE 키·TPL 상위관계 직접 확인; 연결 없음(NEEDS_BINDING).",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    }
+  ]
+}

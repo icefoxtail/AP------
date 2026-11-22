@@ -2125,7 +2125,7 @@ window.questionBank = [
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "canonical_rpm_semantic_candidate",
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "그래프 조건으로 식 구하기"

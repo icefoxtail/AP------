@@ -265,7 +265,7 @@ function getSubjectFromPath(path) {
 ================================================================ */
 function detectWarnings(q) {
   const warnings = [];
-  if (!['하','중','상'].includes(q.level)) warnings.push('level이 하/중/상이 아님');
+  if (q.level != null && q.level !== '' && !['하','중','상'].includes(q.level)) warnings.push('level이 하/중/상이 아님');
   if (!q.tags || q.tags.length === 0)       warnings.push('tags 없음');
   if (!q.answer || String(q.answer).trim() === '') warnings.push('answer 없음');
   if (!q.solution || String(q.solution).trim() === '') warnings.push('solution 없음');

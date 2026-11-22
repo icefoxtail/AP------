@@ -441,6 +441,10 @@ window.questionBank = [
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/22_팔마중_1학기_중간_중3_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 가로가 a+b, 세로가 a−b인 직사각형이, 오른쪽에는 한 변이 a인 정사각형에서 한 변이 b인 정사각형을 뺀 모양이 그려져 있다. 변마다 a, b, a−b가 적혀 있고, 오른쪽 작은 정사각형의 두 변은 점선이며, 직각 표시가 있다.",
+    "solutionImageCaption": "왼쪽 직사각형은 가로a+b,세로a−b이므로 넓이(a+b)(a−b)이다. 같은 절단선으로 나눈 두 조각을 재배열하면 오른쪽처럼 한 변a의 정사각형에서 한 변b의 점선 정사각형을 뺀 도형이 된다. 두 도형은 같은 단위로 그렸고 조각을 뒤집어 옮길 뿐 넓이는 그대로다. 따라서(a+b)(a−b)=a²−b². 정답②. 배치에는a=5,b=2의 비율을 예시로 사용했으며 일반식은모든a>b>0에서성립한다.",
+    "solutionImageSize": "full",
   },
   {
     "id": 14,

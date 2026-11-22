@@ -106,7 +106,11 @@ window.questionBank = [
     "sourceQid": 2,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_금당고_1학기_기말_고1_유사_plans/q02-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_금당고_1학기_기말_고1_유사_plans/q02-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_금당고_1학기_기말_고1_유사_plans/q02-solution.plan.json",
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고1_유사/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 개의 수직선을 위아래로 놓고, 위 수직선에는 3보다 오른쪽인 부분이, 아래 수직선에는 7보다 왼쪽인 부분이 굵은 선으로 표시된 그림이다.",
+    "solutionImageCaption": "3x-4>5에서 x>3, 2x+5<19에서 x<7이므로 두 조건을 함께 만족하는 범위는 3<x<7이고 두 끝점은 포함하지 않는다. 따라서 답은 ⑤ 3<x<7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -540,7 +544,11 @@ window.questionBank = [
     "sourceQid": 10,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_금당고_1학기_기말_고1_유사_plans/q10-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_금당고_1학기_기말_고1_유사_plans/q10-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_금당고_1학기_기말_고1_유사_plans/q10-solution.plan.json",
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고1_유사/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 n 위에 11과 13을 양 끝으로 하는 열린 구간이 굵은 선으로 표시된 그림이다.",
+    "solutionImageCaption": "가장 작은 자연수를 n이라 하면 네 수의 합은 4n+6이고, 50<4n+6<58에서 11<n<13이므로 n=12이다. 가장 큰 수는 n+3=15이므로, 답은 ② 15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -652,7 +660,11 @@ window.questionBank = [
     "sourceQid": 12,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_금당고_1학기_기말_고1_유사_plans/q12-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_금당고_1학기_기말_고1_유사_plans/q12-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_금당고_1학기_기말_고1_유사_plans/q12-solution.plan.json",
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고1_유사/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 지역 A, B, C, D가 선으로 이어진 그림으로, A와 B 사이에 2, A와 D 사이에 2, B와 C 사이에 3, B와 D 사이에 1, C와 D 사이에 2가 적혀 있고 A와 C 사이에는 선이 없다.",
+    "solutionImageCaption": "지나는 지역의 순서로 나누면 A→B→C는 2×3=6가지, A→D→C는 2×2=4가지, A→B→D→C는 2×1×2=4가지, A→D→B→C는 2×1×3=6가지이다. 네 경우는 겹치지 않으므로 합은 20이고, 답은 ① 20이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,

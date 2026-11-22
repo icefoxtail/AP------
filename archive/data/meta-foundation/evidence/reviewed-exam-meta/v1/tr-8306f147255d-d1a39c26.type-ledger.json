@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-8306f147255d-d1a39c26",
+  "sourceArchiveFile": "original/high/h2/1mid/21_제일고_1학기_중간_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_bdf6dcf55bd64873d83a10a6fcd2f0ef726faaf11a7fe1eadf18cd027a0fe2b1",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_COUNTING_ARRANGEMENT_ROTATION",
+      "step": "직사각형 좌석의 회전대칭은0·180도뿐이므로10!을2로나누어5×9!이다.",
+      "note": "필요 TPL: 유한 회전대칭 자리배정. 정의: 서로다른대상의 배치를 도형의 회전대칭 수로 나눈다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9d5102150d31abd7f1cd3abf57f588ee2333d66330d47f85f946ebc4134cb976",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "step": "w를1개 선배정한 네지수합2의10경우에 앞인수항5를 곱해50이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0f436da7ad4140f0a313d41b2d26f3dfdcf0bf889d62def8b42ce7f7d0c15805",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_THEOREM_REMAINDER",
+      "step": "(1+10)^48에서100배수항을 제외한1+480의 나머지81이다.",
+      "note": "필요 TPL: 이항전개를 이용한 나머지. 정의: 각 항의 약수 인자를 비교해 법의 배수항을 제거한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a5116bec6a39ac74a1b9db030438fe411248b91f5359a093feb2cfab36d736ef",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": "TPL_FUNCTION_COUNT_VALUE_RESTRICTION_AND_ORDER",
+      "step": "곱조건·대소조건으로f1=1,f6=6을 정하고 f5=2~5별 앞세단조값을1+4+10+20=35로 센다.",
+      "note": "소문항(1)(2)가 별도 배점이나 해설은 두 조건 동시충족으로 처리한다. 본문에 조건을 만족이라고 되어 있어 동시해석 기록, 독립문항 의도 여부는 원문 검토 필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_aa8d98928110dee7b44a54111f80d00328ec61da9fb27f1595b05dd843bba5fb",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "step": "근n/3,n/4중 정수존재는3또는4배수로10+7-2=15개를30으로 나누어1/2이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

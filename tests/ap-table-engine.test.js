@@ -264,17 +264,18 @@ test('engine.html and mixed_engine.html load the module and stylesheet and call 
     const html = fs.readFileSync(path.join(root, 'archive', name), 'utf8');
     assert.match(html, /<script src="js\/ap-table-engine\.js\?v=[^"]+"><\/script>/, name);
     assert.match(html, /<link rel="stylesheet" href="css\/ap-table\.css\?v=[^"]+">/, name);
-    assert.match(html, /globalThis\.ApTableEngine\.renderApTables\(s\)/, name);
-    assert.match(html, /typeof globalThis !== 'undefined' && globalThis\.ApTableEngine/, name);
+    assert.match(html, /<script src="render-text\.js\?v=[^"]+"><\/script>/, name);
   }
+  // wrapLatex 본문은 두 엔진이 같이 쓰는 archive/render-text.js 한 곳에 있고, 거기서 표 엔진을 부른다.
+  const shared = fs.readFileSync(path.join(root, 'archive', 'render-text.js'), 'utf8');
+  assert.match(shared, /globalThis\.ApTableEngine/);
+  assert.match(shared, /tables\.renderApTables\(s\)/);
   assert.ok(fs.existsSync(path.join(root, 'archive', 'js', 'ap-table-engine.js')));
   assert.ok(fs.existsSync(path.join(root, 'archive', 'css', 'ap-table.css')));
 });
 
-test('wrapLatex (engine.html) with the engine loaded: pipe table survives typesetting prep and math stays intact', () => {
-  const engine = fs.readFileSync(path.join(root, 'archive', 'engine.html'), 'utf8');
-  const start = engine.indexOf('function wrapLatex(');
-  const wrapLatex = new Function(engine.slice(start, engine.indexOf('\nfunction ', start + 1)) + '; return wrapLatex;')();
+test('wrapLatex (shared render-text.js) with the engine loaded: pipe table survives typesetting prep and math stays intact', () => {
+  const { wrapLatex } = require('../archive/render-text.js');
   const before = globalThis.ApTableEngine;
   globalThis.ApTableEngine = { renderApTables };
   try {

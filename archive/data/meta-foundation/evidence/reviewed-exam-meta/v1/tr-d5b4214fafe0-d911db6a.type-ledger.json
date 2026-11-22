@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-d5b4214fafe0-d911db6a",
+  "sourceArchiveFile": "original/high/h1/1mid/19_매산고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_83b40692c8bc09f7813bb8e08d4a875b1fccd88f26f2bda3c6d6d1c8f2819b24",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT",
+      "step": "x-1이 인수이므로 x=1을 대입한 값 4-k가 0이다.",
+      "note": "새 TPL 제안: 일차인수의 영점 대입. 정의: 일차식이 인수인 조건을 해당 영점의 함수값 0으로 바꾸어 계수를 구한다. 새 TPL 제안: x-1이 인수이므로 x=1을 대입한 값 4-k가 0이다. 정의: x-1이 인수이므로 x=1을 대입한 값 4-k가 0이다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d3aac736c77b051b9db0399adb9aef53a0fd2c9a18bbabf958bea1b4e040e6dc",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "step": "두 그래프를 연립한 이차방정식의 판별식 4(a+3)이 0 이상인 조건을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7ff4d2a4117b7c59508c37048f663ab1fdd6da58d76ace5b4f1028f19b9ebc40",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+      "step": "합성식의 두 근을 (7-α)/2,(7-β)/2로 나타내 원래 근의 합 4를 대입한다.",
+      "note": "원본 그래프 직접 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_91b0ff1c9104d10fc54058fd7622f501a7794019aa89a6dbe9c0223d06bbc843",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+      "step": "z=a+bi와 켤레·역수의 허수부를 각각 계산하여 네 등식의 진위를 비교한다.",
+      "note": "원본 보기 직접 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0bfe488539d9ea5c31a4ba71ca44d9a6958f1f45fdc834a458f66d5d05b6bf98",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "templateKey": "TPL_H1_FACTOR_THEOREM_RESTORE",
+      "step": "P(x)+x-5가 1,2,3,4를 영점으로 갖는 최고차항 1의 사차식임을 이용해 네 일차인수의 곱으로 복원한다.",
+      "note": "새 TPL 제안: 보조다항식 다중 영점 복원. 정의: 주어진 함수값을 없애는 저차식을 더해 영점을 만들고 차수와 최고차항으로 다항식을 복원한다. 새 TPL 제안: P(x)+x-5가 1,2,3,4를 영점으로 갖는 최고차항 1의 사차식임을 이용해 네 일차인수의 곱으로 복원한다. 정의: P(x)+x-5가 1,2,3,4를 영점으로 갖는 최고차항 1의 사차식임을 이용해 네 일차인수의 곱으로 복원한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_93067347eab124304d3de92ad8d62d8f078903df4ca5fa0412084ac5adf9fdec",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": "TPL_H1_POLY_DIVISION_IDENTITY",
+      "step": "나머지가 같은 두 다항식의 차를 (x²+2)(4x+t)로 놓고 D(2)=0으로 t를 정한다.",
+      "note": "새 TPL 제안: 동일 나머지의 차다항식. 정의: 두 다항식의 동일 나머지를 소거해 차를 제수의 배수로 나타내고 차수·함숫값으로 몫을 정한다. 새 TPL 제안: 나머지가 같은 두 다항식의 차를 (x²+2)(4x+t)로 놓고 D(2)=0으로 t를 정한다. 정의: 나머지가 같은 두 다항식의 차를 (x²+2)(4x+t)로 놓고 D(2)=0으로 t를 정한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e24fc5e406986b81aa740e2395de87bf9800a4093077d35814559c252ed80c8b",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ITERATED_COMPOSITION",
+      "templateKey": "TPL_ITERATION_PERIOD",
+      "step": "복소수 변환 T(z)=1/(1-z)를 세 번 합성하면 z로 돌아옴을 확인하고 2018번째 항을 두 번째 항으로 환원한다.",
+      "note": "복소수 영역에서의 분수 변환 반복이며 거듭제곱의 주기와 구분.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_192f7ae2f03f8ad3b1a8a5f5776174658df913e69c7f1cf328a7add8534db6fb",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+      "step": "f=ax²+bx+c를 함수 항등식에 대입해 계수를 비교한 뒤 양의 최솟값 조건으로 후보를 제외한다.",
+      "note": "원본 조건 이미지 직접 확인.",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4dee60498959040499ac64a1489dbe5e75568eca7feab036a74e1c7108bf9195",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "templateKey": "TPL_H1_FACTOR_THEOREM_RESTORE",
+      "step": "f-3의 서로 다른 네 정수근으로 인수곱을 만들고 f(7)-3=210의 약수 조건으로 근과 최소차수를 정한다.",
+      "note": "새 TPL 제안: 정수계수 다중 영점과 약수 조건. 정의: 여러 정수 영점의 인수곱이 특정 함숫값을 나누는 성질로 영점과 최소차수를 결정한다. 원본 조건 이미지 직접 확인. 새 TPL 제안: f-3의 서로 다른 네 정수근으로 인수곱을 만들고 f(7)-3=210의 약수 조건으로 근과 최소차수를 정한다. 정의: f-3의 서로 다른 네 정수근으로 인수곱을 만들고 f(7)-3=210의 약수 조건으로 근과 최소차수를 정한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

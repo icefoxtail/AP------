@@ -1,0 +1,670 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-b14051244875-5595daf5",
+  "requestSha256": "59479e2189c8e5bdb9e919d4fdcc56fde5d42f04c8a29b5c7865915a1045231e",
+  "examUid": "23_제일고_2학기_중간_고2_수학II",
+  "sourceArchiveFile": "original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+  "sourceBlobSha1": "058cf080a75c4f3a85c22ba7e2ff5b354cf8dddf",
+  "sourceRawSha256": "cefd0bb930766ec8ce5e5db8645a5d0054b2d1ec89892e3d377fd91709e35b74",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b14051244875-5595daf5.type-ledger.json",
+        "sha256": "84804e75740f80cb3f97706e907e9dd6ad7ca9869bbc15f8ae60e0c96e406333"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 14,
+  "registryChanges": [],
+  "typeApprovals": 14,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 14,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_578cfbeb36e52d4e590045f60b70606a238eddc96a300af4ffd859c8de0cdfd8",
+      "sourceArchiveFile": "original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 2,
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_SQUEEZE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-b14051244875-5595daf5",
+        "judge": "dots",
+        "rationale": "위아래 경계식을 각각 정리하면 모두 4에 수렴하므로 샌드위치 정리로 f의 극한은 4이다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "2c927cf7b01979fe32eacffadeead5ca5e93fc88f69ee32cbd8f3d7a06ae92fd",
+        "judgedContentFingerprint": "0fa468ae7c9d2f60b2fff30b8e5043f9487c12e056c9950b64d2407303c83ba1",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "1fb118235990a00bb98ffc09263a0e10bcb5541369dfc98f0fabb97953eced49",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b14051244875-5595daf5.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_c65a0101ee34f8bb9581cf2e7c0347503dd7e7b10623605af70b55846311ecd5",
+      "sourceArchiveFile": "original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 5,
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-b14051244875-5595daf5",
+        "judge": "dots",
+        "rationale": "주어진 증분을 h로 나누어 h²−2h−2의 0에서 극한을 취하면 f′(2)=−2이다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "4264d22c6747d29422bb4a87ad0d39f9162745b7b39f66ca9b656821b2e866b6",
+        "judgedContentFingerprint": "8e40309ebe84a8df777f55ef5fdd49c936753dde034b945520d6689540573e68",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "dec3ab840278ce792a41e6f2b9b3d9ea926b1390708b8a7eb2ad91a6bcb8d5be",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b14051244875-5595daf5.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_de36ac1e0bdcd3683931f5f943735f16af969311378590e78ddf014d2292791b",
+      "sourceArchiveFile": "original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 6,
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-b14051244875-5595daf5",
+        "judge": "dots",
+        "rationale": "입력 증분 −2h를 맞추어 극한을 −2f′(1)로 바꾸고 곱미분으로 f′(1)=−8을 얻어 16을 계산한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "ca1c0ca342bff2690a46d2832449c18db571a96cacf62198772c0d908341579b",
+        "judgedContentFingerprint": "6388d922b338aab85716fad08c105a5f11e7eb5f4a0bb8add3fb20431691b4d1",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "77f9df78672c463113c6057ae6faa9f1e41cf1e75ff2bff5005172e905692174",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b14051244875-5595daf5.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_9183c710c97adb2c298a7393c3e088f35812176f5cf5017da7d8dee27947ec80",
+      "sourceArchiveFile": "original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 8,
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_INFORMATION_SYSTEM",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-b14051244875-5595daf5",
+        "judge": "dots",
+        "rationale": "입력 t=x−2를 치환하면 유한성과 차분몫에서 f(1)=6,f′(1)=5를 얻어 a=−1,b=4를 정한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "c516116ae99fe86e9c32f6a51bd99dab32a25d8f135508d8bcb28fa9d2012465",
+        "judgedContentFingerprint": "0b1216817f5996d6bb9c25554a4d2238f3772470c1848cf8de0e06b05b62e29e",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "98dedb3d4762f4ccbf860cf3b33f77f81095342f501b4db14ae95d480e0752cc",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b14051244875-5595daf5.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_38c5d7b02582b68be1cdd909c06d242df2960422fb63c2bf156632189973bf10",
+      "sourceArchiveFile": "original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 12,
+      "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+      "templateKey": "TPL_NONDIFFERENTIABILITY_STRUCTURE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-b14051244875-5595daf5",
+        "judge": "dots",
+        "rationale": "그래프의 구멍·점프·꺾임을 나누어 극한존재 5곳, 연속 4곳, 미분가능 2곳으로 세어 합 11을 얻는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "fb71e68f41f21007164ab8caa57d0f15457dae3c7f18b7f9b4d41bcbb939fb95",
+        "judgedContentFingerprint": "0d5174370cf111adfbc2750e6211b27eeedba778be2c0abec180664c63c34a18",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "f27798b8117f5b12058914ccbeb8f5c425f9f68675621d3531cda53c48409694",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b14051244875-5595daf5.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_620d4237f6b429941926076fd3b46665ac2978f25046cfd1b2639a76b6003813",
+      "sourceArchiveFile": "original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 13,
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-b14051244875-5595daf5",
+        "judge": "dots",
+        "rationale": "F=f²−x²의 F(3)=0을 확인하여 극한을 F′(3)=2f(3)f′(3)−6=6으로 바꾼다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "642027a823a5ae334b81313b21ab56c542b9bfdc5e92d20eacaa4aec14c7c4ca",
+        "judgedContentFingerprint": "38bf14b95203fbe4e2833dba6ee239108b9f5000308239c48dcd1d0c04bb1c45",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "9c23c97f24272315460bcb6e936b2c1bd77c34d9cff6ba9f8bb00bb5719b766b",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b14051244875-5595daf5.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_301b63d68e8242c432e5b846d2cee0d3fc2108f1f6ec10b2ddbccfc96a67b1a3",
+      "sourceArchiveFile": "original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 16,
+      "problemTypeKey": "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+      "templateKey": "TPL_LOCAL_DERIVATIVE_CONSTRAINT_FUNCTION_DETERMINE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-b14051244875-5595daf5",
+        "judge": "dots",
+        "rationale": "기함수 조건으로 f=px³+qx를 놓고 f(1)=3,f′(1)=1로 f=−x³+4x를 정하여 2에서 접선 −8x+16을 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "adbc1daab985deed15218da5244c4470e03c6efa174fb989efeb6f1aac42b4c5",
+        "judgedContentFingerprint": "fa1e80c262bec3c286ebd4108555c53abffe269bef19d1c1ac99a08c6882e138",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "c77b13bae743a66418bd4104b32042dbc16b966f63d35e97787668087a1ebc8b",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b14051244875-5595daf5.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_5a25e56887d9264b368e41819e0fe8e7c9d9a5d02366f9e878c7844934578680",
+      "sourceArchiveFile": "original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 17,
+      "problemTypeKey": "PT_MEAN_VALUE_THEOREM",
+      "templateKey": "TPL_MVT_BOUND_LIMIT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-b14051244875-5595daf5",
+        "judge": "dots",
+        "rationale": "평균값 정리로 f(3)−2=4f′(c)를 얻어 2≤f(3)≤18로 제한하고 상수·일차함수로 끝값 달성을 확인한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "c9fb40525a195fdfa5bf382531fc7a846966b6825dd2c496b72c111fa9215856",
+        "judgedContentFingerprint": "2b26f39e9cf1ea1a6086b30ca55c4b90372e4450b1947a18dd9f14037fcb02b3",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "0fb30b40ed3fd47fe4b7dd14cbf8a96e5d971b6d6bf9f08c43c32db51cecd5a1",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b14051244875-5595daf5.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_4b3ccc41bf6db0a7279d36a72ac79c0f4b243be4beb10555698a929f2c0b76ef",
+      "sourceArchiveFile": "original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 18,
+      "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+      "templateKey": "TPL_MODELED_QUANTITY_OPTIMIZATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-b14051244875-5595daf5",
+        "judge": "dots",
+        "rationale": "원점 연결 기울기를 a²−3a+27/a로 함수화하여 도함수 부호가 a=3에서 음에서 양으로 바뀜을 확인하고 b−a=24를 얻는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "8a6acf8466de1c7ac3007744b909d75ea7c16754f5dd778a8ef3876cdbefb8f8",
+        "judgedContentFingerprint": "6d53778367bb36f06b8be5d157f9492642f8cff3f102029d14e56b81da103c92",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "ababecabcfc75873e22e880855f02b1864118d38d461de51434740d87da90708",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b14051244875-5595daf5.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_106c5037f0724e6104b33041a9251115854904e2dfda7dcc4b8dceaf81fcba7c",
+      "sourceArchiveFile": "original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 19,
+      "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+      "templateKey": "TPL_NONDIFFERENTIABILITY_STRUCTURE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-b14051244875-5595daf5",
+        "judge": "dots",
+        "rationale": "절댓값의 단순 영점 0,2에서 나머지 인수가 0이면 꺾임이 상쇄되므로 g(0)=g(2)=1, 그 밖은 2로 나눈다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "c3a0530c28639a851f84fd0f868a5a4d3c453bba9f68c03f55283136bb7c0cc9",
+        "judgedContentFingerprint": "63fb35656e844fd8bb0f79fb07ddafaee9c472ebaad0fbd50c9ea8c3aea24392",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "95e37d95cb9f3f688aea66f3f38a672138a6802c666c38a4ce9bfd6230fade3d",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b14051244875-5595daf5.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_9880068142a8ebb83f6adb52c644105b5b05adc505816b746cf71093a8c408e2",
+      "sourceArchiveFile": "original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 20,
+      "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+      "templateKey": "TPL_LIMIT_POLYNOMIAL_RECONSTRUCTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-b14051244875-5595daf5",
+        "judge": "dots",
+        "rationale": "무한대 조건으로 f=x³+4x²+cx+d를 정하고 1에서 영점과 도함숫값 7을 적용하여 c=−4,d=−1을 얻는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "f6405445e0d733a4ba58c3ba941493d6e28040293caa92277e37e746143e7c90",
+        "judgedContentFingerprint": "2504ac980ce2f3666f46171ae5397cf4de03d9d8dcc03c1842c37cd44a9fe11e",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "a492b51a56c082b3c2da99eca972d2e6aed83d04e4d12a842c6d8e57158669e0",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b14051244875-5595daf5.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_43cb02af7d4e982facff9d17c75c7cd855a9831da0750f93dac20ca8f46e7d2d",
+      "sourceArchiveFile": "original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 21,
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_INFORMATION_SYSTEM",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-b14051244875-5595daf5",
+        "judge": "dots",
+        "rationale": "두 극한에서 f(1)=1,f′(1)=3,g(1)=−2,g′(1)=2를 얻고 곱미분에 대입하면 10이다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "f48b46a97c7a58a5171082992a95e92686f0a951fc36b8d84d6ca86fcfd2f97e",
+        "judgedContentFingerprint": "ed8ac21d9f79334acaf597f1165ca52323495350a4600b85ac3cb75920365a22",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "98c5293c872e7641d4547a19777acf4a2d325e35d82e2296bf306af23362b0b0",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b14051244875-5595daf5.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_b405aba15c967ea9971e104d648bb8366e18fc57dbdb2171d90f8a40be9c1ccc",
+      "sourceArchiveFile": "original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 22,
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONT_DIFF_DEFINITION_PROOF",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-b14051244875-5595daf5",
+        "judge": "dots",
+        "rationale": "h=x|x−2|의 좌우극한이 함숫값 0과 같음을 보이고 정의 차분몫의 좌우극한 −2와 2가 달라 미분불가능임을 증명한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "f0e7c8062174de1c0b36f0b67707a7156c6631bd70cbe2b727fbc765c4215847",
+        "judgedContentFingerprint": "c3e6429bbc22332705a1799ec46866eb05ce571f236b8b369020bdb29671264b",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "7205c91ad489ffdcc2327805b34f043d4126ca58f1b858ad309e3a76b3555578",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b14051244875-5595daf5.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_2d36e5b82d974541335f8bd2502d7aea0f23b8c6e37c642b26bec5d47e1cb380",
+      "sourceArchiveFile": "original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 23,
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_GEOMETRY_PARAMETERIZATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-b14051244875-5595daf5",
+        "judge": "dots",
+        "rationale": "절편 A(0,2),B(2,0)과 점직선 거리로 넓이 S=a+1+3/(a−3)을 구하고 목표 극한 −S′(4)=2를 계산한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "983e6940b02ce03a2e3152cc03bcaddce125317b869047f618f804eac0d411c8",
+        "judgedContentFingerprint": "da6bff9023785b79b271d997d583a08a3863d82f1325933fc7c01f4fb5e881c5",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "e48f3c05120e7ab9e64cde191556e0d2401330de322c87e18f1bffb342c74870",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b14051244875-5595daf5.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 14,
+  "expectedQuestionCount": 23
+}

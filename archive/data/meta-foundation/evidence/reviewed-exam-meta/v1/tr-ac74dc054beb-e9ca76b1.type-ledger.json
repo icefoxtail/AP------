@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-ac74dc054beb-e9ca76b1",
+  "sourceArchiveFile": "original/high/h2/2mid/21_매산여고_2학기_중간_고2_수학II.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_1697b5df792dcfd49a11f3bcd21b66653fa499faa0241b36e0d7192bab6099c1",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONT_DIFF_DEFINITION_PROOF",
+      "step": "각 식의 원점 연속성을 확인하고 좌우 차분몫이 일치하는지 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_256f70fc7aa4d7e52d5b7ee8e3a077cd099e5a06975f2cd1543c798769150e7c",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "step": "오른쪽 무리식을 유리화한 극한을 왼쪽 상수 함수값 a와 일치시킨다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6734f43b4c6fde6da82999f4aacb05fd31410d6158478a07b1c9a21eb6175a2a",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONTINUITY_ABSOLUTE_SQUARE_TRANSFORM",
+      "step": "(f+|f|)/2를 양수부분 함수로 바꾼 뒤 두 경계의 양수부분 극한을 일치시킨다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}

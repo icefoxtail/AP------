@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-c78f1a722a98-053f85c8",
+  "sourceArchiveFile": "similar/high/h1/2final/24_강남여고_2학기_기말_고1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_9222e139272844b0b679d702e413c833ad123c2a51f17b4000c3e9cab57cf05b",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_GRAPH_TRANSLATION",
+      "templateKey": "TT_GRAPH_TRANSLATION_CONDITION",
+      "step": "x를 x+3으로 치환하고 함수값에 4를 더하여 평행이동한 식을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_abf5267a3b4c8b80dd0b06ddbb7430ba63320d30cd121c439e9e75733c49face",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
+      "step": "모든 일대일대응 6!에서 3을 고정하는 5!을 뺀다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b1303b196e9b0106cecde1648dde0abfb636687f93e7269649dea0c561a7f41d",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_IRRATIONAL_EXPRESSION_SIMPLIFICATION",
+      "templateKey": "TPL_H1_CONJUGATE_DENOMINATOR_RATIONALIZATION",
+      "step": "x를 유리화하고 t=√x로 치환하여 두 분수의 합을 2(x+1)/(x-1)로 정리한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d9a0bad61d3e2658286094102597f6a8c32ad6047bce34e5210c5351ae205834",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+      "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_PARAMETER",
+      "step": "증가하는 무리함수의 구간 양 끝 함숫값을 최솟값·최댓값에 대응시켜 a,m을 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d7529e85af7bd94f8413d7b45f309baad50bba422b26665e13a1cc6070c7b5e8",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_COMPOSITION",
+      "templateKey": "TPL_INVERSE_COMPOSITION_FORMULA",
+      "step": "역함수 등식에 원함수를 역순으로 적용하여 a=g(f(3)), b=f(g(3))을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-82d50544bedf-ac8e047b",
+  "sourceArchiveFile": "original/high/h2/1mid/23_중앙여고_1학기_중간_고2_대수.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_a18968cffe2044100b94c5ea7114ff2dbc9bfd153e9f8d4ba4c1ba03d253d821",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ROOT_INTEGER_FEASIBILITY",
+      "templateKey": null,
+      "step": "세제곱근a와 제곱근b의 합이 정수라는 조건을 거듭제곱 정수조건으로 바꾸고 주어진 구간에서 a=125,b=9를 골라 차116을 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요. 필요한 TPL 제안명: 서로 다른 차수 근의 정수합 조건. 정의: 세제곱근과 제곱근의 합이 정수일 때 각 근의 유리성으로 완전거듭제곱 후보를 제한. 구별 단서: 단일근 정수해 계수가 아니라 두 근 합의 유리성. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c8878a6fa28d183938218a28f797577f9b7d14b26c36f3f402d2796853a05fe3",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+      "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+      "step": "거듭제곱근 조건에서 xy=m^{3n}, x+y=m을 얻고 x²y+xy²=xy(x+y)=m^{3n+1}로 변형하여 log_m(m^{3n+1})=3n+1.",
+      "note": "root fresh 독립 판정 인계. 원판정 없이 source UID·본문·해설 정답① 결속확인, ACTIVE/parent 별도검사. 그림불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_279c15abd169f69633fdf4b555370408474230c3e4207ee3f8a6c154564174e6",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENTIAL_INEQUALITY",
+      "templateKey": null,
+      "step": "t=log₂x로 치환해 t²-2t-log₂k≥0의 모든실수 조건에서 최소값 -1-log₂k≥0을 얻어0<k≤1/2를 구한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요. 필요한 TPL 제안명: 로그지수 절대부등식 매개변수. 정의: 로그를 취해 이차식으로 바꾸고 모든실수에서 성립할 최솟값·판별식 조건 적용. 구별 단서: 자연수해 개수 아닌 전구간 성립. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_367af95ddff5f5511a2ed5c6fc3259584fe235c17cb6088fd8a8461f0c165ebb",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_03_LOG_EQUATION",
+      "templateKey": "TPL_H22A_03_LOG_EQUATION_090",
+      "step": "t=log₃x로 치환한 근합2에서 x근 곱9를 얻고 한 t근이(-1,0)에 들도록(k+3)k<0을 적용한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

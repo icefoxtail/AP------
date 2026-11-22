@@ -584,7 +584,7 @@ window.questionBank = [
       "$\\dfrac{1}{6}$"
     ],
     "answer": "①",
-    "solution": "$x^2-2x+4=0$의 두 근은 $\\alpha=1+\\sqrt3 i$, $\\beta=1-\\sqrt3 i$이다.\n각 분모를 계산하면\n$\\alpha^2-3\\alpha+6=1-\\sqrt3 i$, $\\beta^2-3\\beta+6=1+\\sqrt3 i$이다.\n따라서\n$\\dfrac1{1-\\sqrt3 i}+\\dfrac1{1+\\sqrt3 i}=\\dfrac{1+\\sqrt3 i}{4}+\\dfrac{1-\\sqrt3 i}{4}=\\dfrac12$이다.\n정답은 ①이다.",
+    "solution": "주어진 두 근 \\(\\alpha,\\beta\\)는\n\\[\n\\alpha^2-2\\alpha+4=0,\\qquad\n\\beta^2-2\\beta+4=0\n\\]\n을 각각 만족한다. 그러므로\n\\[\n\\begin{aligned}\n\\alpha^2-3\\alpha+6\n&=(2\\alpha-4)-3\\alpha+6\\\\\n&=2-\\alpha,\\\\\n\\beta^2-3\\beta+6\n&=(2\\beta-4)-3\\beta+6\\\\\n&=2-\\beta.\n\\end{aligned}\n\\]\n두 근의 합·곱은 근과 계수 관계에 의해\n\\[\n\\alpha+\\beta=2,\\qquad \\alpha\\beta=4.\n\\]\n분모가 \\(0\\)이면 \\(\\alpha=2\\) 또는 \\(\\beta=2\\)인데, 원래 식 \\(2^2-2\\cdot2+4=4\\ne0\\)이므로 분모는 모두 \\(0\\)이 아니다.\n\n따라서 통분하면\n\\[\n\\begin{aligned}\n\\frac1{\\alpha^2-3\\alpha+6}+\\frac1{\\beta^2-3\\beta+6}\n&=\\frac1{2-\\alpha}+\\frac1{2-\\beta}\\\\\n&=\\frac{(2-\\beta)+(2-\\alpha)}{(2-\\alpha)(2-\\beta)}\\\\\n&=\\frac{4-(\\alpha+\\beta)}{4-2(\\alpha+\\beta)+\\alpha\\beta}\\\\\n&=\\frac{4-2}{4-2\\cdot2+4}\\\\\n&=\\frac24\\\\\n&=\\boxed{\\frac12}.\n\\end{aligned}\n\\]\n정답은 **①**이다.",
     "standardCourse": "공통수학1",
     "standardUnitKey": "H22-C-05",
     "standardUnit": "이차방정식과 이차함수",

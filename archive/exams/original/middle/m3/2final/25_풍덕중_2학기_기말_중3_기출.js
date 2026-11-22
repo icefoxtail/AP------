@@ -893,6 +893,7 @@ window.questionBank=[
     "answer": "④",
     "solution": "음의 상관관계는 한 변량이 증가할수록 다른 변량이 감소하는 경향이다. 또 점들이 한 직선 주변에 더 가깝게 모일수록 상관관계가 강하다.\n④는 점들이 오른쪽 아래 방향의 한 직선 주변에 가장 좁게 모여 있다. ⑤도 음의 상관관계이지만 ④보다 점들이 더 넓게 흩어져 있다.\n따라서 가장 강한 음의 상관관계가 있는 것은 ④이다.",
     "image": "assets/images/25_풍덕중_2학기_기말_중3_기출/q19.png",
+    "imageScale": 100,
     "imageSize": "tall",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",

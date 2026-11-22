@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-c2f44d11e924-5a940689",
+  "sourceArchiveFile": "original/high/h2/2mid/26_강남여고_2학기_중간_고2_미적분I.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_5acba78ad7d6ff56d1e4a3797a0079e55e8c156211e8bc927d4cae358fd0ccbb",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_RATE_RELATION",
+      "templateKey": "TPL_AVERAGE_RATE_ANALYSIS",
+      "step": "끝점 함수값 차를 입력차로 나누어 평균변화율 조건을 푼다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bf5e4d81ee205fc9975fe5896bd231dbbe277d190f61e40c70f02bd02c3d71f5",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+      "templateKey": "TPL_MONOTONICITY_DIRECT",
+      "step": "각 함수의 도함수 부호로 증가감소 진술을 판정한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c3957e3f935156b96fdaea326233d4d56e973acc8af79a7c4ce346df32e352d5",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+      "templateKey": "TPL_FUNCTION_DOMAIN_OPTIMIZATION",
+      "step": "불연속점 양쪽 발산과 정의역의 단조성을 이용하여 최대최소 존재를 판정한다.",
+      "note": "분모 영점은 정의역에서 제외하고 구간 내 정의되는 부분에서 해석한다.",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a585daab0836c578e3fdb15f2b514afd249a061afbc524a51d992e603bfa369d",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_GRAPH_ANALYSIS",
+      "templateKey": "TPL_DERIVATIVE_GRAPH_QUALITATIVE_ANALYSIS",
+      "step": "도함수그래프의 부호와 부호전환을 읽어 원함수 증감과 극값을 판정한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d10b4fd40e6ca18d081a4a8c46419e5294a76f73fec858d18f285fc8cd4546dd",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MEAN_VALUE_THEOREM",
+      "templateKey": "TPL_MVT_ROLLE_DIRECT",
+      "step": "평균값정리의 할선기울기를 지정 내부점의 도함수값과 맞춘다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}

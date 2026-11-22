@@ -15,6 +15,28 @@
   function escapeHtml(value) {
     return String(value ?? '').replace(/[&<>'"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[ch]));
   }
+
+  function parseQuestionNo(value) {
+    if (core && typeof core.parseQuestionNo === 'function') return core.parseQuestionNo(value);
+    if (typeof value === 'number') {
+      return Number.isInteger(value) && value > 0 ? value : null;
+    }
+    if (typeof value === 'string') {
+      const match = value.match(/\d+/);
+      if (match) {
+        const n = Number(match[0]);
+        return Number.isInteger(n) && n > 0 ? n : null;
+      }
+    }
+    return null;
+  }
+
+  function matchQuestionNo(questionId, targetNo) {
+    if (core && typeof core.matchQuestionNo === 'function') return core.matchQuestionNo(questionId, targetNo);
+    const a = parseQuestionNo(questionId);
+    const b = parseQuestionNo(targetNo);
+    return a !== null && b !== null && a === b;
+  }
   function getSession() {
     try {
       const stored = JSON.parse(localStorage.getItem('APMATH_SESSION') || 'null');
@@ -131,11 +153,18 @@
     for (const meta of sidecar?.records || []) {
       const file = String(meta.sourceArchiveFile || '').replace(/\\/g, '/');
       bySource.set(`${file}#${meta.sourceOrdinal}`, meta);
-      if (meta.sourceQuestionNo !== undefined) bySource.set(`${file}#id:${meta.sourceQuestionNo}`, meta);
+      if (meta.sourceQuestionNo !== undefined) {
+        const qNo = parseQuestionNo(meta.sourceQuestionNo);
+        if (qNo !== null) bySource.set(`${file}#id:${qNo}`, meta);
+        bySource.set(`${file}#id:${meta.sourceQuestionNo}`, meta);
+      }
     }
     return (Array.isArray(records) ? records : []).map(record => {
       const file = String(record.sourceFile || record._sourceFile || '').replace(/\\/g, '/');
-      const meta = bySource.get(`${file}#${record.sourceOrdinal}`) || bySource.get(`${file}#id:${record.id || record.sourceQuestionNo}`);
+      const recordQNo = parseQuestionNo(record.id ?? record.sourceQuestionNo);
+      const meta = bySource.get(`${file}#${record.sourceOrdinal}`) ||
+        (recordQNo !== null ? bySource.get(`${file}#id:${recordQNo}`) : undefined) ||
+        bySource.get(`${file}#id:${record.id || record.sourceQuestionNo}`);
       const useGate = generalUse
         ? generalUse.check(core.getQuestionUid(meta || {}) || core.getQuestionUid(record), file, record.sourceOrdinal)
         : null;
@@ -190,26 +219,33 @@
       };
     });
   }
+  // 문항 배열 찾기 규칙(questions → questionBank → examData)은 exam-source-reader.js 한 곳에 있다.
+  function requireSourceReader() {
+    if (!window.ExamSourceReader) throw new Error('exam-source-reader.js를 불러오지 못했습니다. 새로고침해 다시 시도해 주세요.');
+    return window.ExamSourceReader;
+  }
+  // 어느 시험지 몇 번 문항에서 막혔는지 오류에 실어 출제 패널이 그대로 말하게 한다(archive2-error-detail.js, 없어도 동작).
+  const markError = (error, detail) => (window.Archive2ErrorDetail ? window.Archive2ErrorDetail.annotate(error, detail) : error);
   function loadQuestionFile(sourceFile) {
     if (state.fileCache.has(sourceFile)) return state.fileCache.get(sourceFile);
     const promise = (async () => {
+      const reader = requireSourceReader();
       const candidates = core.getSourceFileCandidates(sourceFile);
       const failures = [];
       for (const candidate of candidates) {
-        delete window.questions;
-        delete window.questionBank;
+        for (const name of reader.SOURCE_GLOBALS) delete window[name];
         try {
           await loadScript(`exams/${candidate}?v=20260827b`);
         } catch (error) {
           failures.push(`${candidate}: ${error.message || error}`);
           continue;
         }
-        const data = Array.isArray(window.questions) ? window.questions : window.questionBank;
+        const data = reader.readQuestionArray(window);
         if (Array.isArray(data)) return data.map(question => ({ ...question }));
-        failures.push(`${candidate}: questionBank 배열 없음`);
+        failures.push(`${candidate}: 문항 배열(questions/questionBank/examData) 없음`);
       }
       const attempted = failures.length > 1 ? ` 시도 경로: ${candidates.join(', ')}` : '';
-      throw new Error(`${sourceFile}에서 문항 배열을 찾지 못했습니다.${attempted}`);
+      throw markError(new Error(`${sourceFile}에서 문항 배열을 찾지 못했습니다.${attempted}`), { file: sourceFile, code: 'SOURCE_BANK_MISSING' });
     })().catch(error => { state.fileCache.delete(sourceFile); throw error; });
     state.fileCache.set(sourceFile, promise);
     return promise;
@@ -224,8 +260,10 @@
     for (const [sourceFile, records] of grouped.entries()) {
       const questions = await loadQuestionFile(sourceFile);
       for (const record of records) {
-        const original = questions.find(question => Number(question?.id) === Number(record.sourceQuestionNo));
-        if (!original) throw new Error(`${sourceFile}의 ${record.sourceQuestionNo}번 문항을 찾지 못했습니다.`);
+        const original = questions.find(question => matchQuestionNo(question?.id, record.sourceQuestionNo));
+        if (!original) throw markError(new Error(`${sourceFile}의 ${record.sourceQuestionNo}번 문항을 찾지 못했습니다.`), {
+          file: sourceFile, questionNo: record.sourceQuestionNo, ordinal: record.sourceOrdinal, uid: core.getQuestionUid(record), code: 'QUESTION_NOT_FOUND',
+        });
         restoredByIdentity.set(`${sourceFile}#${record.sourceQuestionNo}`, {
           ...original, _sourceFile: sourceFile, _sourceQuestionNo: record.sourceQuestionNo,
           _qKey: `${sourceFile}_${record.sourceQuestionNo}`, questionUid: core.getQuestionUid(record),
@@ -509,19 +547,14 @@
   function assignAuthHeader() {
     const session = getSession();
     if (session && session.session_token) return { Authorization: 'Bearer ' + session.session_token };
-    const memory = window.__APMATH_AUTH_MEMORY || {};
-    const login = memory.login_id || (session && (session.login_id || session.loginId));
-    const secret = memory.raw_password || (session && session.raw_password);
-    if (login && secret) return { Authorization: 'Basic ' + btoa(unescape(encodeURIComponent(login + ':' + secret))) };
-    return null;
+    return null; // 토큰이 없으면 헤더가 없다(비밀번호로 대신하지 않는다): 호출한 쪽이 로그인 안내를 낸다.
   }
   // 패널에 꽂는 request(route, {method, headers, body, timeoutMs}). archive2-workspace.js api()와 같은 방식이다:
   // 같은 서버 주소, 같은 세션 인증, 로그인이 없으면 요청 없이 status=401, 제한 시간이 지나면 timeout=true,
   // 오류 응답은 error.status/error.data를 달아 던진다. 읽기 30초·쓰기 150초는 패널이 timeoutMs로 정한다.
   function assignRequest(route, opt = {}) {
     const rule = window.Archive2Session;
-    const memory = window.__APMATH_AUTH_MEMORY || {};
-    const loggedIn = !rule || !rule.state || (memory.login_id && memory.raw_password) || rule.state(getSession()).loggedIn;
+    const loggedIn = !rule || !rule.state || rule.state(getSession()).loggedIn;
     const auth = loggedIn ? assignAuthHeader() : null;
     if (!auth) return Promise.reject(Object.assign(new Error('교사 로그인이 필요합니다.'), { status: 401 }));
     const method = opt.method || (opt.body ? 'POST' : 'GET');

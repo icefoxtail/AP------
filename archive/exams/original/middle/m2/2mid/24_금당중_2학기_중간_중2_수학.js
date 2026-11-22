@@ -13,7 +13,7 @@ window.questionBank=[
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "삼각형의 닮음",
       "도형"
@@ -121,7 +121,7 @@ window.questionBank=[
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "삼각형의 중점연결정리",
       "도형"
@@ -177,7 +177,7 @@ window.questionBank=[
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "닮은 입체도형의 부피비",
       "도형"
@@ -233,7 +233,7 @@ window.questionBank=[
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "평행선과 닮음",
       "도형"
@@ -289,7 +289,7 @@ window.questionBank=[
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "평행선 사이의 선분의 길이의 비",
       "도형"
@@ -345,7 +345,7 @@ window.questionBank=[
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "삼각형의 무게중심",
       "복수정답",
@@ -402,7 +402,7 @@ window.questionBank=[
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "삼각형의 무게중심",
       "도형"
@@ -460,7 +460,7 @@ window.questionBank=[
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "삼각형의 무게중심",
       "도형"
@@ -523,7 +523,7 @@ window.questionBank=[
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "피타고라스 정리의 활용",
       "도형"
@@ -580,7 +580,7 @@ window.questionBank=[
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "피타고라스 정리",
       "도형"
@@ -1128,7 +1128,7 @@ window.questionBank=[
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "닮음의 활용",
@@ -1182,7 +1182,7 @@ window.questionBank=[
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "평행선과 닮음",

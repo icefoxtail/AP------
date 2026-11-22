@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "archive-original-issued3330-observer-independent-review-v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "reviewer": "/root/m3s2_release",
+  "author": "ci_m2s2",
+  "decision": "STATIC_ACCEPT_READONLY_ORIGINAL_FIELDS_AND_CURRENT_PAGE_BINDING_OBSERVER_ACTUAL3330_PENDING",
+  "inputs": {
+    "manifest": {
+      "gitBlobSha1": "05717de8394ac9aa57caceb5a114ffbe2ce66ca7",
+      "sha256": "9613fdc512dd275047c0825645a36e1f562291953fbb3b9852303d29ae0d16a3",
+      "bytes": 2654
+    },
+    "code": {
+      "gitBlobSha1": "2836ea9b8191533871749b78d596a881b6c6909a",
+      "sha256": "244d7a03ddea33e2f99e1fa948a60d993ae01630beccac3ee0bf0a03965766db",
+      "bytes": 47670
+    },
+    "workflow": {
+      "gitBlobSha1": "4437bc53d2278a0106b4d66d3c15db6ff22ed57c",
+      "sha256": "0a2798b5913151eead11a81da6ea44463032dc172cc4a43d242b37ead74f03ff",
+      "bytes": 2648
+    },
+    "delta": {
+      "gitBlobSha1": "4c8d071d578fdbbd6a2189bafe5f5fe16d250458",
+      "sha256": "da5942a235af38245da5f72471805331c0904ee56dc771de11a5e82de4943c8b",
+      "bytes": 6611
+    },
+    "authorProof": {
+      "gitBlobSha1": "b75645f6cd06c397d9e000aa45ba1743423d51e0",
+      "sha256": "ca217e609664e0480a836954d8734f66cc4aa7e4b002e0a2e783c006f634d391",
+      "bytes": 7276
+    },
+    "originalMembership": {
+      "gitBlobSha1": "34d33edda213f63b9fd11cdf5f36b9952f5b31d3",
+      "sha256": "5b16b7203a7915373971d1f9849e496dafbedf020ed7360605cb1023f6e8ed73",
+      "bytes": 730713
+    },
+    "officialConsumer": {
+      "gitBlobSha1": "568c0918843e52e5eb6b55bc1ece59bd25b67054",
+      "sha256": "8eb6bc7486e8b461ca7a95896cabd5dcccee43de23787bab656053d3b6c1616e",
+      "bytes": 67295
+    },
+    "officialD5Binding": {
+      "gitBlobSha1": "33d45e24e26a713f61dca91d9526372c60ea996f",
+      "sha256": "681e30501e9a9f0df7ac78c560a868cba8564864f8ab1468220223d28d360d6e",
+      "bytes": 27878
+    }
+  },
+  "directIndependentChecks": {
+    "fullCodeAndWorkflowRead": true,
+    "fullRawGitHashes": true,
+    "fullDeltaInverse": {
+      "statusDeltaInverse": true,
+      "labelInverse": true,
+      "fullFinalToOriginal": true,
+      "membershipCounts": {
+        "byPr": {
+          "2075": 464,
+          "2080": 1299,
+          "2103": 1567
+        },
+        "byAxis": {
+          "D5": 2866,
+          "ORIGINAL_FINAL_QA_FIELDS": 464
+        }
+      },
+      "unique": {
+        "uids": 3330,
+        "joins": 3330,
+        "sources": 160
+      }
+    },
+    "originalRequestSample": {
+      "gitBlobSha1": "d2fd53d0d6e2811bbb3506f64bb69545df8e3ef8",
+      "pr": 2075,
+      "rows": 5,
+      "keysOnlyInspection": true
+    },
+    "originalNativeLoaderBoundary": "Official loadConsumer calls loadResolvedConsumerCatalog and ProblemBankMeta.buildIndex/query. No registrar replay/Native/plan/registration function is invoked by the observer.",
+    "sourceEvaluation": "Canonical resolver consumes authenticated JSON resources; selected source bytes are hashed and optionally LF-normalized by the official byte-only D5 binding helper. No independent source VM evaluation is invoked.",
+    "currentCanonicalManifestInspection": {
+      "commit": "90ba4c2c3ce042b0bee4d68588ce83aa37e3f95f",
+      "declaredFiles": 662,
+      "sourcePathsWithinManifest": 1,
+      "excludedM3S1SourcePathCount": 0,
+      "otherCurrentSourceReads": "Only the fixed160 membership sources within M2fourterms/M3S2."
+    }
+  },
+  "resolvedFindings": [
+    {
+      "id": "OBS3330_NATIVE_PAGE_LABEL_ALIAS",
+      "before": "A literal page L1-L4 property could shadow an exact resolved/nativeL field and falsely report a changed approved label.",
+      "resolution": "Require exact resolved label, exact actual page L1-L4 or nativeL1-nativeL4 representation and real query through the chosen key; missing or different values still fail.",
+      "newChecks": 6
+    },
+    {
+      "id": "OBS3330_RAW_MD_TAG_STATUS",
+      "before": "Raw FINAL_QA metadata was incorrectly required to have tagStatus FINAL, a display representation.",
+      "resolution": "Raw metadataApprovalType FINAL_QA plus reviewStatus and tagStatus reviewed_pass are required; FINAL is not accepted as raw status. Existing approval field hashes remain exact.",
+      "directAuthorityBasis": {
+        "officialRegistrarLiteral": "tagStatus: preserveManualStatus ? current.tagStatus : reviewed_pass",
+        "issuedReceiptGit": "c6adebb40b637af3dd5e05be835041a5a88b7e60",
+        "issuedRows": 20,
+        "issuedTagStatus": "reviewed_pass",
+        "currentRowsInferred": false
+      },
+      "newChecks": 2
+    }
+  ],
+  "acceptedBoundaries": [
+    "Exact immutable membership commit/path/raw/Git binds160 original request blobs,3330 unique UID/source-ordinal rows, D5 2866 and original FINAL_QA field464.",
+    "Original after-field hashes stay literal and unchanged; missing, ambiguous or changed current fields are findings.",
+    "D5 remains a separate field-retention axis and grants no semantic or four-slot authority.",
+    "FINAL_QA observations require the raw stored status, unique current runtime join, original after-values and official ACTIVE PT/TPL/owner checks. They are not original Native approval validation.",
+    "Official current Consumer load and page queries are used; absence or supported-facet mismatch fails. Unexposed/non-query fields remain separate from literal stored-field comparison.",
+    "Current source hashes, metadata/identity joins, resolved binding or authenticated registration projection, page current source hash, direct selectability and query UID membership are required.",
+    "Known old original Consumer fingerprint is not recovered or reused. Query cache only reuses identical filters within this current observation.",
+    "Exact current HEAD regular file hashes, canonical/ACTIVE declarations, post-read input hashes and both clean checkout HEAD/status are verified.",
+    "Workflow is exact closed ops push, contents:read, code SHA separate from actual main data checkout, no registration/replay/build job and output only external artifact plus bounded metadata frames.",
+    "Git immutable object hydration uses exact SHA inputs and no destination ref/FETCH_HEAD write; it does not mutate tracked data."
+  ],
+  "validation": {
+    "authorNodeSyntax": "PASS_REPORTED_BOUND_TO_FINAL_CODE",
+    "authorPureProtocol": "36 checks accumulated as23+5+6+2; unchanged groups not rerun",
+    "reviewerNodeExecutions": 0,
+    "reviewerConsumerCalls": 0,
+    "actual3330": "NOT_RUN",
+    "newApprovals": 0,
+    "registration": 0,
+    "sourceMathOrUiReview": 0
+  },
+  "limits": {
+    "actualConsumerAuthorityPass": false,
+    "currentNativePass": false,
+    "currentFourSlotPass": false,
+    "currentGlobalFinalQaApproval": false,
+    "expectedActualOutcome": "Observed debt is retained in the report and yields a nonzero job status; static acceptance does not predict actual3330 success.",
+    "rootLaunchCondition": "Run after the desired persisted main writer and record the actual data checkout commit; source-only main movement is not automatically a registered snapshot."
+  },
+  "nextAction": "Root publishes the exact observer2 on its closed ops branch and runs against actual current main. Interpret source, original-field retention, Page binding and D5/FINAL_QA axes separately."
+}

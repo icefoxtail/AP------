@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-fdc8b0b978c8-945db9a9",
+  "sourceArchiveFile": "textbooks/비상교육_공통수학2/비상_공통수학2_함수_중단원학습점검_고1.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_ab398a43c7cf423e233a35ff47c00328ba61e8a6924b591c7d99866c0f593acc",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+      "templateKey": "TPL_DOMAIN_CODOMAIN_RANGE_CONDITION",
+      "step": "대응도의 출발집합·도착집합과 실제 화살표가 도달하는 원소를 각각 읽는다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3f120c75d8ad9858fdbdd517c558afe7b329e3255f69bfb0c8fb76cf2e5def42",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SPECIAL_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_FUNCTION_DIRECT",
+      "step": "함숫값 중복 여부와 f(x)=x 또는 상수라는 정의로 함수 종류를 분류한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_465dfa9d96d5bbc787a641b59952cb1d3577af4588eb6e3e07d901773d4a2cc3",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+      "step": "안쪽 함수의 값이나 식을 바깥 함수의 입력에 순서대로 대입한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d33a5f16e62ccaf6b4ffe99cc05829f6c70afff7ff614f0c33bd2fe9b597fad4",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "templateKey": "TPL_INVERSE_FUNCTION_FORM",
+      "step": "x와 y를 교환한 식을 y에 대해 풀어 역함수를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5d3c6c18619249ca37595e4c4c65904b868ab214ffcc726c2ec24bf3ed7f0b1b",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+      "step": "오른쪽 조각의 치역 [-1,∞)을 제외한 (-∞,-1)를 왼쪽 조각이 정확히 덮도록 기울기를 양수로 둔다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2861415e567d8e13f4427d138d28a2fefde36c11145584c0744dd98721e1a552",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_RECOVERY",
+      "templateKey": "TPL_RECOVER_FUNCTION_FROM_COMPOSITION",
+      "step": "알려진 일차함수와의 합성관계를 풀거나 입력 t=2x+1로 치환해 미지 f의 식을 복원한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d9ec59a65c948bad3616d2f38a3e60a7a087fb408792da608d0d3d22bc37910f",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_COMPOSITION",
+      "templateKey": "TPL_INVERSE_COMPOSITION_VALUE",
+      "step": "대응도에서 정방향·역방향 화살표를 합성 순서대로 추적한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bfe582795b5c6463e5b716a75bcd9f13ffb7c857cc079baf773a0524f541596d",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "templateKey": "TPL_INVERSE_VALUE_DIRECT",
+      "step": "역함숫값 f⁻¹(3)=2를 f(2)=3으로 바꾸고 f(1)=2와 연립한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f4560ac551e71c239ed8620ccb8614d866d124180e9d8e0796dca3c33ef79f8a",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_COMPOSITION",
+      "templateKey": "TPL_INVERSE_IDENTITY_RELATION",
+      "step": "f⁻¹(g(a))=2의 양변에 f를 적용하여 g(a)=f(2)로 단순화한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c670613b7bee732c0ee641e911d16a7ece545376f50fd7b800eaf0d830a66090",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_VALUE",
+      "templateKey": null,
+      "step": "그림의 점선을 따라 함숫값·두 번 합성값을 읽고 목표 y에 대응하는 x를 역으로 찾는다.",
+      "note": "새 TPL 제안: 그래프 함수값·역대응 혼합 읽기: 그래프와 보조 점선에서 정방향 함숫값·합성값 및 역방향 대응을 읽는다. / check-ledger: TPL_NOT_ACTIVE(null template; 선택 PT는 ACTIVE)",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b06d09752228a0800b47a997f51b5c144988d313bb2d280e9c63099aedb188e8",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_AFFINE_INTERVAL_BIJECTION",
+      "step": "증가와 감소 두 경우에서 정의역 양끝값의 상을 공역 양끝값에 맞춘다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_304a30a15909154a711fb4ec32056e837ed9606ea7ceb6dbf74bc5c364f03979",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_INVERSE_EQUATION",
+      "step": "자기역함수 조건을 f(f(x))=x로 바꾸어 계수를 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    }
+  ]
+}

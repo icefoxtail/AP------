@@ -6,9 +6,10 @@ const path = require("node:path");
 const vm = require("node:vm");
 const { chromium } = require(process.env.AP_PLAYWRIGHT_MODULE || "playwright");
 const Archive2Output = require("../archive/archive2-output.js");
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 const root = path.resolve(__dirname, "..");
-const archive2Workspace = fs.readFileSync(path.join(root, "archive/archive2-workspace.js"), "utf8");
+const archive2Workspace = readWorkspace();
 const unitPastFixtureFile = "original/high/h1/1final/unit-past-preview-regression.js";
 const unitPastFixtureData = Array.from({ length: 12 }, (_, index) => ({
   id: index + 1,

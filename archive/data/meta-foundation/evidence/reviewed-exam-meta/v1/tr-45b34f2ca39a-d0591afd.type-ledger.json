@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-45b34f2ca39a-d0591afd",
+  "sourceArchiveFile": "similar/high/h1/1final/26_복성고_1학기_기말_고1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_3aa922c0f7b24ff603c64f6acb34b385fe46258e298d33ba79b93706290f99ca",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_PERMUTATION_COMBINATION_CALCULATION",
+      "templateKey": "TPL_H1_PERMUTATION_COMBINATION_CALCULATION_CALCULATE",
+      "step": "4!과 8C3를 정의식으로 계산하여 합한다.",
+      "note": "새 TPL 제안: 팩토리얼·순열·조합 직접 값 계산 — 정의식으로 각각 계산한 값을 합하거나 단일 값을 구한다. check-ledger: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_be2c6bd3e72608e8a1f062fc25049a33e48979f14eb5f3e13051904c55d4247c",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "step": "각 괄호에서 한 문자씩 고르면 서로 다른 한 항이 되므로 세 독립 선택 수를 곱한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_16c698c08b92d3a0a3a14288b111d5258dac940bdbe5e35cd8d5370af0e51cfb",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "step": "장르별 지정 편수를 조합으로 선택한 후 다섯 영화의 시청 순열을 곱한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7c4bf3c77d66f541b3ebcab25dca00dd9f2bdc368cbc711d0ca63da46ffcd623",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+      "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+      "step": "세제곱 단위근의 켤레 합·곱으로 분수합을 정리하고 w¹²=1을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8611166d5dd6bc5b5cc1c48472d48127eee6e4858abc4628495cb2df22f60a8a",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER",
+      "step": "위로 열린 이차식의 비양수 해 존재를 판별식 비음수 조건으로 바꾸어 매개변수 진술을 검증한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9273f53657585641a2206f70cd65c0641182ba48f7a8ae0d295d5f0e7dfc4123",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_POWER_IDENTITY",
+      "templateKey": "TPL_H1_MATRIX_POWER_POLYNOMIAL",
+      "step": "행렬을 한 번 더 곱할 때 왼쪽 아래 성분이 2씩 증가함을 이용해 Aᵐ의 성분식을 구하여 합한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_73b825f387e75d2b8883d46f69defb51200fa658c1fe351600194eb8acd1fe50",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+      "templateKey": "TPL_H1_SYSTEM_DIRECT",
+      "step": "겉넓이를 2a(a+b)π+2b²로 세우고 유리수 계수와 π의 무리성을 이용해 두 식을 분리하여 양의 길이를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3bbe801271774771574128a2a58c52529c7cca492412b1968e2ee4f9c17ac49b",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+      "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT",
+      "step": "행렬합의 성분합은 각각의 성분합의 합이므로 알려진 B의 성분합을 빼서 C의 성분합을 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7402a5ba14276cad38410a244b1b76e491aefc9451ed73fa8385c8fec4c521b9",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "templateKey": "TPL_H1_ABSOLUTE_DIRECT_INTERVAL",
+      "step": "절댓값 조건의 정수 구간 [k-2,k+2]와 이차부등식 구간 [-2,5]를 교차해 정수합이 5인 k를 찾는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    }
+  ]
+}

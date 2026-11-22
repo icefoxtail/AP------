@@ -1,3 +1,4 @@
+import { readE015IssuedSourceContinuation } from './native-e015-source-cc-continuity.mjs';
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
@@ -131,6 +132,10 @@ function immutable(ctx, ref, read = false) {
   if (bytes.length !== ref.bytes || sha(bytes) !== ref.sha256 || blob(bytes) !== ref.gitBlobSha1) fail("IMMUTABLE_RAW_DIGEST");
   return bytes;
 }
+// Render engine files may change after the capture; only their captured Git bytes are authenticated (user decision 2026-11-18).
+const isRenderEngineFile = p => p === "archive/engine.html" || p === "archive/mixed_engine.html" || p === "apmath/wrong_print_engine.html" ||
+  /^archive\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p) || /^archive\/(?:css|js)\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p) ||
+  /^apmath\/(?:css|js)\/student-navigation\.(?:css|js)$/.test(p);
 function live(ctx, ref, code = "LIVE_REF_DRIFT") {
   let fd;
   try {
@@ -285,7 +290,7 @@ function validateUi(ctx, bound, current) {
     if (ref.commit !== UI_COMMIT) fail("SERVED_CHECKOUT_REF"); immutable(ctx, ref);
     if (ref.path === SVG_INDEX_PATH) verifySvgIndexFootprint({ frozenBytes: immutable(ctx, ref, true), root: ctx.root,
       indexPath: ref.path, assetRefs: indexAssetRefs, safe, fail });
-    else if (!dynamic.has(ref.path)) live(ctx, ref, "LIVE_SERVED_CODE_DRIFT");
+    else if (!dynamic.has(ref.path) && !isRenderEngineFile(ref.path)) live(ctx, ref, "LIVE_SERVED_CODE_DRIFT");
   }
   const fonts = new Map();
   for (const font of technical.studentFontResources) {
@@ -371,7 +376,11 @@ export function validateM2Family3ProblemContinuity(args) {
       row.sourceOrdinal !== patch.sourceOrdinal || PROBLEM_FIELDS.some(field => Object.hasOwn(patch.after || {}, field))) fail("NATIVE_IDENTITY_OR_METADATA_ONLY_SCOPE");
   const bound = evidence(ctx), validated = validateStatic(ctx, bound.documents.staticRef), ui = validateUi(ctx, bound, validated);
   let bytes;
-  try { bytes = fs.readFileSync(safe(ctx.root, validated.current.ref.path)); } catch { fail("LIVE_SOURCE_UNAVAILABLE"); }
+  try {
+    bytes = readE015IssuedSourceContinuation({ context:ctx.e015IssuedSourceContinuation, root:ctx.root,
+      request, patch, current:ctx.final, question, relativePath:validated.current.ref.path })
+      ?? fs.readFileSync(safe(ctx.root, validated.current.ref.path));
+  } catch { fail("LIVE_SOURCE_UNAVAILABLE"); }
   if (blob(bytes) !== request.expectedSourceBlobSha1) fail("LIVE_SOURCE_CAS");
   const bank = ctx.bankFromBytes(bytes), n = patch.sourceOrdinal - 1;
   if (!Array.isArray(bank) || bank.length !== request.expectedQuestionCount || !same(projection(bank[n]), projection(question))) fail("LIVE_ARGUMENT_OR_DENOMINATOR");

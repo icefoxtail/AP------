@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-8d6316861901-3b800d91",
+  "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_aee304e0166d9a224cdc5ef0dc11e2316d54980a37c266926ece2dff25828c32",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+      "step": "반지름쌍의 이등변삼각형으로 ABO80,OBC25를 얻어 ABC55도를 복원한 뒤 대각합180도에서 ADC125도를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_690395490ab4839711ebc978843b846c0b97bce7959cc47d8386ccd805100e78",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": null,
+      "step": "줄기잎 자료16개의8번째76과9번째80의 평균78,최다80을 구하여 최빈값-중앙값2를 얻는다.",
+      "note": "필요 TPL: 짝수 개 자료의 중앙값과 최빈값 계산 | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5dfd15408f4888df594a58cd0cf17b0e04e229f71a93cbf7750ed1fae033ad7f",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": null,
+      "step": "8회 관측값의 평균4,중앙값4.5,최빈값5와 편차제곱합26의 표준편차√13/2를 계산하여ㄱㄷㄹ을 고른다.",
+      "note": "필요 TPL: 실제 자료의 대푯값과 산포도 계산 진술 검증 | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_986b7a314c55656e4ed15b796b315e61e93ea23a59f75aea6fb039a36df65df2",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+      "templateKey": null,
+      "step": "모든 변량에3을 더하면 평균은 M+3이고 새 평균 기준 편차는 같으므로 분산 S²가 보존됨을 확인한다.",
+      "note": "필요 TPL: 일정량 평행이동한 자료의 평균과 분산 | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1a102e3237e9403bf1ffdf75fcf8548047e39617f36191f3f2aacf9d740987c7",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+      "templateKey": null,
+      "step": "3배 후2를 더한 평균14,분산81/4를 역변환하여 원평균4,분산9/4를 얻고 제곱편차합을 전개해 네 변량 제곱합73을 구한다.",
+      "note": "필요 TPL: 일차변환 평균·분산의 역산과 제곱합 복원 | 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-bc67dc6c0538-9a1853f9",
+  "sourceArchiveFile": "original/middle/m3/2final/23_순여중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_b387917356c7533097b35dc5fee74cb1f16179f0d94156a1dfc861c82bfdc1a2",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+      "step": "삼각형 BCD에서 x80도를 구하고 내접사각형의 대각합180도로 y100도를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3d749d5cddf8f2f01b67bbae6189e95c98f6aa73a4ee9ce4011e81b0db2a4a18",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+      "step": "왼쪽 대각합180도로 x110,y80을, 오른쪽 내접사각형의 외각과 맞은편 내각이 같아 x95,y60을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5c17c3b717e10f6e5782d619b477e3eaeefbb7ef3c33274bd7a2fab9c70b70f8",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+      "step": "외부삼각형의 각합과 내접사각형 대각합으로 A105,C75,D125를 얻어 B55도를 결정한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_00171f1c311c9d8ce5c68ee9b69129bbcefb018371f497b15897592273e25427",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": "TPL_M3_DISPERSION_DEVIATION_PROPERTIES_ZERO_SUM",
+      "step": "모든 변량에서 같은 자료의 평균을 뺀 편차의 합은0이라는 성질로 실제 평균 계산 없이 답0을 얻는다.",
+      "note": "필요 TPL: 편차합의 영 성질 직접 적용 | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9aedba234551d6781758f00168481a7cb7285af14dfb02b56ef00c428d3cd8be",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "step": "평균7로부터 미지 편차 x-7이3이 되어 x10을 얻고 편차제곱합40을8로 나누어 분산5를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0db28b88ddabc0c8006df587c69277014f07c790183638c640027d978fe5529c",
+      "sourceOrdinal": 18,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "평균4에서 편차-2,1,2,-1,0을 얻고 제곱합10/5=2의 제곱근√2를 구한다.",
+      "note": "새 PT 제안: 원자료의 분산·표준편차 직접 계산; 개별 변량의 평균을 구한 뒤 편차 제곱합을 자료 수로 나누고 제곱근을 취한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c8a5a0685a57713a539a9148f01114c7ce302ccd776afcd15b7b8692c4f52cc6",
+      "sourceOrdinal": 19,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "그림의 높은 두 점을 지운 나머지 점들이 일정한 증가·감소 경향 없이 흩어져 있음을 읽어 무상관⑤를 고른다.",
+      "note": "새 PT 제안: 상관관계의 방향과 유무 판정; 두 변량의 동반 증가·감소 경향을 산점도 또는 생활 맥락에서 읽어 양·음·무상관을 구별한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6818ecc503cc66de9892475cba832e4dcc0fba8c63d6da94068ef43de739ecb1",
+      "sourceOrdinal": 20,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "실기가 필기보다 높은 점을 y=x 위쪽에서 세면2개이므로 전체10개 대비20%를 구한다.",
+      "note": "새 PT 제안: 산점도의 조건별 점 개수와 비율; 산점도의 각 점을 두 변량의 부등식 조건으로 선별하여 개수 또는 전체 대비 비율을 구한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9b9df4bbe6ff731a2054ad6b25b03c1a6380a05e49228b6aee12c124487af7f8",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "step": "마주 보는 원주각이 각각 보는 두 호의 합360도를 사용하여 두 원주각의 합은 그 절반180도임을 두 쌍에 대해 증명한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ca1174572f5e881c776fd53d41314819a5655ba2a3dc535951e7b490d3ed0a73",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "step": "편차합0에서 누락편차-1을 복원한 뒤 여섯 편차제곱합46을6으로 나누고 제곱근을 취해 표준편차√69/3을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

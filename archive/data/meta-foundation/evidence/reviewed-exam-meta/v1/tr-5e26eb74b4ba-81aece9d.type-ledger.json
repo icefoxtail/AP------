@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-5e26eb74b4ba-81aece9d",
+  "sourceArchiveFile": "original/high/h2/1final/20_제일고_1학기_기말_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_9d626f9803508c30230311cd636b7c5af14542c354944c203bd69d091c7ab6ef",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+      "step": "A,B상자에서 흰흰 likelihood1/7,2/5를 사전1/2로 가중하고 A경로를 전체로 나누어5/19이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8ac59065790980c6039cfd0407a8475c3bdacdfb55978907d8b5d82714f8e263",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "step": "독립 Bc,C에서 PB2/3을 구하고 배반 A,B와 여합집합2/9로 PA1/9이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dd6288ff19115ca9e44532e28f10fa9d722382a569df6a3c9f9740ae5edb4294",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+      "step": "감염·비감염별 양성경로를0.1×0.8+0.9×0.05로 합해1/8이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_903eee38e88988b6ce429abf240e614be0bca84e3acbe6dd0fd418f781e239f1",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+      "step": "B산불량의 역조건확률2p/(12+2p)=1/4를 풀어p2이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8691e4ddd2a93f3bfcb41f35b3d18c03fd2ede9be636ea77912bdc7fcdf6fe3c",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+      "step": "언어별 안경 결합비율0.15,0.20,0.05를 합쳐 일본어안경0.15를 나누어3/8이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3dc318f07268595edef9870b95507c43c2062be6d803d88740190c2ef64deb09",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_THEOREM_REMAINDER",
+      "step": "(1+20)^40에서 상수항 외에는 모두400의 배수임을 보여 나머지1이다.",
+      "note": "필요 TPL: 이항전개를 이용한 나머지. 정의: 각 항의 약수 인자를 비교해 법의 배수항을 제거한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_52b9cc6c18097b76e536850149fb4ee56cba3c82264df49dd561b6cf99bf71e0",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "step": "유한등확률 조건에서 배반·독립·조건확률·여사건 관계를 검토하여②③⑤이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_045d88a7036af97aaf3ef7193eb4a935a7cc639241d4c015996db1d9e0dcd87e",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "step": "차집합확률등식과 포함·독립으로 ㄱㄴ을 증명하고 배반사건 반례로 ㄷ을 부정한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0be3762cb402fe78c3e0862fdf5da10abe761dc391177e00d637a2c4fb2a8ed9",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_PROPERTIES_APPLICATION_DEFINITION",
+      "step": "가능 결과1,2,3을 표본공간으로 모으고 각 단일원소 집합을 근원사건으로 적는다.",
+      "note": "필요 TPL: 표본공간과 근원사건 구분. 정의: 시행 결과 전체와 하나의 결과로 이루어진 사건을 구별해 나열한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9254e22d4cafd73ecaa6757ed16aab8c2c81ff3d3e6e85b3728ee5562f9d430f",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "step": "독립 교집합 조건10/(40+x)=30(10+x)/(40+x)²를 풀어 여학생5명이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    }
+  ]
+}

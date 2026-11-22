@@ -4,10 +4,11 @@ const path = require("node:path");
 const vm = require("node:vm");
 const { test } = require("node:test");
 const output = require("../archive/archive2-output.js");
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 test("original QPP 8 stays identical from preview URL through assignment snapshot and PDF identity", async () => {
   const entry = fs.readFileSync(path.join(__dirname, "../archive/archive2-entry.js"), "utf8");
-  const workspace = fs.readFileSync(path.join(__dirname, "../archive/archive2-workspace.js"), "utf8");
+  const workspace = readWorkspace();
   const projectionVersion = "archive2-canonical-v1:current-catalog-version";
   const previewStart = workspace.indexOf("async function buildOriginalSourceOutput(");
   const previewEnd = workspace.indexOf("async function originalOutputUrl(", previewStart);
@@ -80,7 +81,7 @@ test("original QPP 8 stays identical from preview URL through assignment snapsho
 });
 
 test("original assignment iframe carries the loaded catalog projection version", () => {
-  const workspace = fs.readFileSync(path.join(__dirname, "../archive/archive2-workspace.js"), "utf8");
+  const workspace = readWorkspace();
   const start = workspace.indexOf("function openOriginalIssue(exam, step = \"review\") {");
   const end = workspace.indexOf("function openSavedPaperIssue(id) {", start);
   assert.notEqual(start, -1);

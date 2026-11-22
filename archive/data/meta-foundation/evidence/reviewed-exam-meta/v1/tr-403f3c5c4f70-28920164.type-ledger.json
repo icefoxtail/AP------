@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-403f3c5c4f70-28920164",
+  "sourceArchiveFile": "similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_5549296643d896d5e08245aa694646aeb22ed55275e1d19bd78dac631e688166",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+      "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+      "step": "세 항의 제곱을 전개하여 x²계수 36과 순수 y항 계수 −6a를 같게 둔다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9476a5a4e410dace32d328a8474d93eaffc46e5c64752e9f2e7c16293cebead4",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "step": "x축과 한 교점이라는 조건을 이차방정식의 판별식 0으로 바꿔 k를 구한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6973bfe11668c7970a94d36381708e9aa68d183183b651f5ef2d8b81402f091e",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+      "step": "f가 일차식이라 x²항이 없음을 이용해 인수분해식의 x²계수를 0으로 두고 f를 복원한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. 도구 후보 밖이지만 ACTIVE 정의와 직접 읽은 풀이 단계가 일치하여 판정함.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ed710509965fb43cfe6441ed79ab8a8c2e2595d48b3f8dc5a3b9c467f38a742f",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY",
+      "step": "교점 방정식 판별식이 모든 k에서 0인 항등식이 되도록 k의 계수와 상수항을 각각 0으로 둔다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6d37b6cda2640143ee19d9197d5a82e789e941688969d2aeefeac514cfca9c00",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+      "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+      "step": "제곱이 음의 실수인 조건으로 z를 정하고 w³=i에서 얻은 12주기로 w의 거듭제곱이 −1인 지수를 센다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7163c1cbbb4818c6e083f8782b84db61bd5c04d12704f32c169e205b2e5d098a",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+      "step": "조각별 함수의 각 구간에서 방정식의 실근과 경계 포함 여부를 나누어 세 교점인 매개변수 구간을 센다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. 도구 후보 밖이지만 ACTIVE 정의와 직접 읽은 풀이 단계가 일치하여 판정함.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    }
+  ]
+}

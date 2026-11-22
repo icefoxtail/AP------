@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-cc66ad4294f3-0db7da43",
+  "requestSha256": "b3d04b0f84456bc3e6fb8fc231a78b2bb43394750342a83b95cc31a238d905e2",
+  "examUid": "23_복성고_1학기_중간_고2_확률과통계",
+  "sourceArchiveFile": "original/high/h2/1mid/23_복성고_1학기_중간_고2_확률과통계.js",
+  "sourceBlobSha1": "8d74e9d1e2a826a3d33186ba5a2ba98f5da2b76b",
+  "sourceRawSha256": "9bc5188499d232715827a3c8bd96bd604421b3d6a6e291095cedfa2c1c524823",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-cc66ad4294f3-0db7da43.type-ledger.json",
+        "sha256": "d8b59e4098f82c9707a11183eca7b76c6b2648fa10b3ee7f38086ced2ecc4648"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_230a7dad99eec8712b9dd1f6ece2225a06b19d73485b79184254b7706a6a07e5",
+      "sourceArchiveFile": "original/high/h2/1mid/23_복성고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 9,
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": "TPL_FUNCTION_COUNT_VALUE_RESTRICTION_AND_ORDER",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-cc66ad4294f3-0db7da43",
+        "judge": "dots",
+        "rationale": "두 치역 값을 고르고 비감소 배열의 경계 위치를 정한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "dc4d03e955b86332f468ac9fd011b297239d56e128d0ae116259a2aee2b132da",
+        "judgedContentFingerprint": "12d9b4a6f662a09b4996f2cd1d7e98501bc7888b497b5eb0db768a7fd2eeaf14",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "8280543d26968f4fa51110d7c9cfde326a1c7ecaa2745f20d4e77956611653c9",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-cc66ad4294f3-0db7da43.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_FUNCTION_COUNTING",
+          "templateKey": "TPL_MONOTONE_FUNCTION_COUNT",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_FUNCTION_COUNTING",
+          "templateKey": "TPL_MONOTONE_FUNCTION_COUNT",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 20
+}

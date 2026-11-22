@@ -8,8 +8,12 @@ import os from "node:os";
 import crypto from "node:crypto";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
-import { registerReviewedExamV2 } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+import { registerReviewedExamV2, receiptRecordMatchesRow } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 import { DIRECT_JUDGMENT, TYPE_FIELD_STATUS, DECISION_DOCUMENT } from "../archive/tools/meta-foundation/register-type-judgment.mjs";
+import { textFingerprint } from "../archive/tools/meta-foundation/text-binding-lib.mjs";
+import { createTypeBatch, isTypeBatchRequest } from "../archive/tools/meta-foundation/register-type-batch.mjs";
+import { registerRequests, loadTypeBatchRuntime } from "../tools/ci/register-reviewed-meta-requests.mjs";
+import { isMetadataConflict } from "../archive/tools/metadata-conflict-field.mjs";
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CANON = "archive/data/meta-foundation/canonical";
@@ -83,7 +87,7 @@ function fixture(t, { rowMutations = {} } = {}) {
     return { questionUid: `uid${n}`, sourceOrdinal: n,
       before: { problemTypeKey: current.problemTypeKey || null, templateKey: current.templateKey || null },
       after, rationale: "해설의 결정적 단계: 도함수의 정의를 극한으로 바꾼다", judge: "dots",
-      scope: { curriculum: "2022", standardCourse: COURSE }, judgedFingerprints: fingerprints(q), evidenceRefs, ...over };
+      scope: { curriculum: "2022", standardCourse: COURSE }, textBindingFingerprint: textFingerprint(q), evidenceRefs, ...over };
   };
   const request = (items, over = {}) => ({ schemaVersion: "archive-reviewed-exam-meta-register-request-v2", requestId: "type-judgment-test", examUid: "exam1",
     sourceArchiveFile: SOURCE, expectedSourceBlobSha1: blob(text), expectedQuestionCount: 5, scope: "PARTIAL_UIDS", fieldScope: "TYPE_ONLY",
@@ -160,6 +164,16 @@ test("explicit hold counters are recomputed, row-level counters are not touched"
   assert.equal(after.counts.records, 5);
 });
 
+test("a type judgment without a template key replays and verifies (absent key is not drift)", t => {
+  const f = fixture(t);
+  const req = f.request([f.item(1, { problemTypeKey: "PT_A" })]);
+  const meta = f.read(META);
+  delete meta.records[0].templateKey; // real rows without a template have no such key
+  f.put(META, meta);
+  f.run(req, { write: true });
+  assert.equal(f.run(req, { verifyProjection: true }).consumerSearchStatus, "TYPE_FIELDS_VERIFIED");
+});
+
 test("a re-run is an idempotent replay and verifies; later drift of a registered type is detected", t => {
   const f = fixture(t);
   const req = f.request([f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" })]);
@@ -192,18 +206,105 @@ test("an already approved type is never overwritten, and no file is written", t 
   assert.equal(fs.existsSync(path.join(f.root, "archive/data/meta-foundation/evidence")), false);
 });
 
-test("statuses other than an unapproved type are not overwritten (hold, adjudicated)", t => {
+test("statuses other than an unapproved type are not overwritten while the field holds a value (hold, adjudicated)", t => {
   for (const status of ["meta_semantic_hold", "r2e_adjudicated", "EVIDENCE_DEBT"]) {
-    const f = fixture(t, { rowMutations: { 1: { fieldStatus: { problemType: status, template: "manual_review_pending" } } } });
+    const f = fixture(t, { rowMutations: { 1: { problemTypeKey: "PT_B", fieldStatus: { problemType: status, template: "manual_review_pending" } } } });
     assert.throws(() => f.run(f.request([f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" })]), { write: true }), /type field status is not overwritable/);
   }
 });
 
-test("rows with a receipt-backed approval and rows with a foundation HOLD are refused", t => {
-  const withApproval = fixture(t, { rowMutations: { 1: { metadataApprovalType: "REVIEW2" } } });
-  assert.throws(() => withApproval.run(withApproval.request([withApproval.item(1, { problemTypeKey: "PT_A" })])), /receipt-backed REVIEW2 approval/);
+// A status is a tag on a value: a field with no value has nothing to protect (decision: value present -> use it; only real defects block).
+for (const [label, blank] of [["empty string", ""], ["null", null]]) {
+  test(`an approved_semantic_review row whose type and template values are blank (${label}) is filled, and only then`, t => {
+    const sem = { problemType: "approved_semantic_review", template: "approved_semantic_review" };
+    const f = fixture(t, { rowMutations: { 1: { problemTypeKey: blank, templateKey: blank, fieldStatus: { ...sem } } } });
+    const others = f.rows()[0];
+    f.run(f.request([f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" })]), { write: true });
+    const row = f.rows()[0];
+    assert.equal(row.problemTypeKey, "PT_A");
+    assert.equal(row.templateKey, "TPL_A");
+    assert.equal(row.fieldStatus.problemType, TYPE_FIELD_STATUS);
+    assert.equal(row.fieldStatus.template, TYPE_FIELD_STATUS);
+    assert.equal(row.typeApproval.priorType.problemTypeStatus, "approved_semantic_review", "the old tag is kept in the approval record");
+    assert.equal(row.standardUnitKey, others.standardUnitKey);
+    // PT-only: the template stays blank and keeps its old tag
+    const g = fixture(t, { rowMutations: { 1: { problemTypeKey: blank, templateKey: blank, fieldStatus: { ...sem } } } });
+    g.run(g.request([g.item(1, { problemTypeKey: "PT_A" })]), { write: true });
+    assert.equal(g.rows()[0].fieldStatus.problemType, TYPE_FIELD_STATUS);
+    assert.equal(g.rows()[0].fieldStatus.template, "approved_semantic_review");
+  });
+}
+
+test("an approved row that holds a value is still never overwritten; a blank field does not open the field that holds one", t => {
+  const sem = "approved_semantic_review";
+  // type value present, approved
+  const a = fixture(t, { rowMutations: { 1: { problemTypeKey: "PT_B", fieldStatus: { problemType: sem, template: sem } } } }), aBefore = a.bytes();
+  assert.throws(() => a.run(a.request([a.item(1, { problemTypeKey: "PT_A" })]), { write: true }), /type already approved: uid1\.problemType=approved_semantic_review/);
+  assert.deepEqual(a.bytes(), aBefore);
+  // type blank, template value present and approved: the template field stays final, so the request is refused as a whole
+  const b = fixture(t, { rowMutations: { 1: { problemTypeKey: "", templateKey: "TPL_B", fieldStatus: { problemType: sem, template: sem } } } }), bBefore = b.bytes();
+  assert.throws(() => b.run(b.request([b.item(1, { problemTypeKey: "PT_B", templateKey: "TPL_B" })]), { write: true }), /type already approved: uid1\.template=approved_semantic_review/);
+  assert.deepEqual(b.bytes(), bBefore);
+  // a request that claims "blank" for a field that actually holds a value
+  const c = fixture(t, { rowMutations: { 1: { problemTypeKey: "PT_B", fieldStatus: { problemType: sem, template: sem } } } });
+  assert.throws(() => c.run(c.request([c.item(1, { problemTypeKey: "PT_A" }, { before: { problemTypeKey: "", templateKey: "" } })])), /before mismatch: uid1\.problemTypeKey/);
+});
+
+test("a type field that holds a key the registry does not have is not protected: an approved old key is replaced and kept in priorType; an ACTIVE registered key stays protected", t => {
+  const sem = "approved_semantic_review";
+  const a = fixture(t, { rowMutations: { 1: { problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL", fieldStatus: { problemType: sem, template: sem } } } });
+  a.run(a.request([a.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, { before: { problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL" } })]), { write: true });
+  const row = a.read("archive/data/question_metadata.json").records.find(r => r.questionUid === "uid1");
+  assert.equal(row.problemTypeKey, "PT_A");
+  assert.equal(row.fieldStatus.problemType, "approved_direct_judgment");
+  assert.deepEqual(row.typeApproval.priorType, { problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL", problemTypeStatus: sem, templateStatus: sem });
+  // the old value must still be named in `before`
+  const b = fixture(t, { rowMutations: { 1: { problemTypeKey: "OLD_KEY", fieldStatus: { problemType: sem, template: sem } } } });
+  assert.throws(() => b.run(b.request([b.item(1, { problemTypeKey: "PT_A" }, { before: { problemTypeKey: "", templateKey: "" } })]), { write: true }), /before mismatch: uid1\.problemTypeKey/);
+  // an ACTIVE registered key with an approved status is final (PT_B is ACTIVE in the fixture registry)
+  const c = fixture(t, { rowMutations: { 1: { problemTypeKey: "PT_B", fieldStatus: { problemType: sem, template: sem } } } });
+  assert.throws(() => c.run(c.request([c.item(1, { problemTypeKey: "PT_A" })]), { write: true }), /type already approved: uid1\.problemType=approved_semantic_review/);
+});
+
+test("filling a blank approved row still needs every other check: course, registry and the judged text", t => {
+  const blankRow = { problemTypeKey: "", templateKey: "", fieldStatus: { problemType: "approved_semantic_review", template: "approved_semantic_review" } };
+  const f = fixture(t, { rowMutations: { 1: blankRow } });
+  assert.throws(() => f.run(f.request([f.item(1, { problemTypeKey: "PT_A" }, { scope: { curriculum: "2022", standardCourse: "중2 수학" } })])), /course mismatch/);
+  assert.throws(() => f.run(f.request([f.item(1, { problemTypeKey: "PT_C" })])), /ACTIVE curriculum binding missing/);
+  const req = f.request([f.item(1, { problemTypeKey: "PT_A" })]);
+  editSource(f, 1, { content: "다른 발문" });
+  assert.throws(() => f.run(req, { write: true }), /stem or choices differ from the judged text.*uid1/);
+});
+
+test("a row with a receipt on its other fields takes a type while its type is still empty; a taxonomy HOLD row is refused", t => {
+  const withReceipt = fixture(t, { rowMutations: { 1: { metadataApprovalType: "REVIEW2" } } });
+  withReceipt.run(withReceipt.request([withReceipt.item(1, { problemTypeKey: "PT_A" })]), { write: true });
+  assert.equal(withReceipt.rows()[0].problemTypeKey, "PT_A");
+  assert.equal(withReceipt.rows()[0].metadataApprovalType, "REVIEW2", "the other fields' approval type is untouched");
+  // the same row with an already approved type is still final
+  const approved = fixture(t, { rowMutations: { 1: { metadataApprovalType: "REVIEW2", problemTypeKey: "PT_B", templateKey: "TPL_B", fieldStatus: { problemType: "approved_review2", template: "approved_review2" } } } });
+  assert.throws(() => approved.run(approved.request([approved.item(1, { problemTypeKey: "PT_A" })])), /type already approved/);
+  // a row-level taxonomy HOLD is no reason to refuse a judged type (the hold stays on the row's other fields)
   const held = fixture(t, { rowMutations: { 1: { foundationTaxonomyStatus: "HOLD" } } });
-  assert.throws(() => held.run(held.request([held.item(1, { problemTypeKey: "PT_A" })])), /foundation taxonomy HOLD/);
+  held.run(held.request([held.item(1, { problemTypeKey: "PT_A" })]), { write: true });
+  assert.equal(held.rows()[0].problemTypeKey, "PT_A");
+  assert.equal(held.rows()[0].foundationTaxonomyStatus, "HOLD", "the hold on the row is untouched");
+});
+
+test("receipt replay ignores the type fields a DIRECT_JUDGMENT added to a row whose receipt recorded no type, and nothing else", () => {
+  const recorded = { questionUid: "u", problemTypeKey: "", templateKey: "", standardUnitKey: "U1", metadataApprovalType: "REVIEW2",
+    fieldStatus: { standardUnit: "approved_review2", problemType: "manual_review_pending", template: "manual_review_pending" } };
+  const typed = { ...structuredClone(recorded), problemTypeKey: "PT_A", templateKey: "TPL_A",
+    fieldStatus: { ...recorded.fieldStatus, problemType: "approved_direct_judgment", template: "approved_direct_judgment" }, typeApproval: { approvalType: "DIRECT_JUDGMENT" } };
+  assert.equal(receiptRecordMatchesRow(recorded, recorded), true);
+  assert.equal(receiptRecordMatchesRow(typed, recorded), true);
+  assert.equal(receiptRecordMatchesRow({ ...typed, standardUnitKey: "U2" }, recorded), false, "any other drift still fails");
+  assert.equal(receiptRecordMatchesRow({ ...typed, fieldStatus: { ...typed.fieldStatus, standardUnit: "manual_review_pending" } }, recorded), false);
+  assert.equal(receiptRecordMatchesRow({ ...typed, typeApproval: { approvalType: "OTHER" } }, recorded), false, "only a DIRECT_JUDGMENT type is excused");
+  assert.equal(receiptRecordMatchesRow({ ...recorded, problemTypeKey: "PT_A" }, recorded), false, "a type without a DIRECT_JUDGMENT is drift");
+  const withOwnType = { ...recorded, problemTypeKey: "PT_B", fieldStatus: { ...recorded.fieldStatus, problemType: "approved_review2" } };
+  assert.equal(receiptRecordMatchesRow({ ...withOwnType, problemTypeKey: "PT_A", typeApproval: { approvalType: "DIRECT_JUDGMENT" } }, withOwnType), false, "a receipt's own type is never replaced");
+  assert.equal(receiptRecordMatchesRow(undefined, recorded), false);
 });
 
 test("registry checks stay strict: unknown or inactive PT, TPL of another PT, missing binding, wrong curriculum or course", t => {
@@ -227,16 +328,13 @@ test("before must equal the current type values (empty forms are equivalent)", t
   assert.equal(f.run(f.request([f.item(1, { problemTypeKey: "PT_A" }, { before: { problemTypeKey: "", templateKey: "" } })])).totalQuestions, 1);
 });
 
-test("the judgment is bound to the current source bytes and per-question fingerprints", t => {
+test("the judgment is bound to each question's stem and choices, not to the file blob", t => {
   const f = fixture(t);
   const ok = f.item(1, { problemTypeKey: "PT_A" });
-  assert.throws(() => f.run({ ...f.request([ok]), expectedSourceBlobSha1: "0".repeat(40) }), /source Git blob drift/);
-  const changed = f.text.replace("학생용 해설 1", "학생용 해설 1 수정");
-  f.put(`archive/exams/${SOURCE}`, changed);
-  assert.throws(() => f.run(f.request([ok])), /source Git blob drift/, "a source edit after the judgment is refused by the blob");
-  f.put(`archive/exams/${SOURCE}`, f.text);
-  assert.throws(() => f.run(f.request([{ ...ok, judgedFingerprints: { ...ok.judgedFingerprints, contentFingerprint: "1".repeat(64) } }])), /judged fingerprints differ/);
-  assert.throws(() => f.run(f.request([{ ...ok, judgedFingerprints: undefined }])), /judged fingerprints differ/);
+  // a wrong or absent file blob is not a reason to refuse; a wrong or absent text fingerprint is
+  assert.equal(f.run({ ...f.request([ok]), expectedSourceBlobSha1: "0".repeat(40) }).totalQuestions, 1);
+  assert.throws(() => f.run(f.request([{ ...ok, textBindingFingerprint: "1".repeat(64) }])), /stem or choices differ from the judged text/);
+  assert.throws(() => f.run(f.request([{ ...ok, textBindingFingerprint: undefined }])), /stem or choices differ from the judged text/);
 });
 
 test("stale and content-bound rows are tagged with their binding; their own fingerprints are never rewritten", t => {
@@ -249,6 +347,7 @@ test("stale and content-bound rows are tagged with their binding; their own fing
     assert.equal(rows[i].sourceFingerprint, rowsBefore[i].sourceFingerprint);
     assert.equal(rows[i].contentFingerprint, rowsBefore[i].contentFingerprint);
     assert.equal(rows[i].typeApproval.judgedContentFingerprint, fingerprints(f.questions[i]).contentFingerprint);
+    assert.equal(rows[i].typeApproval.textBindingFingerprint, textFingerprint(f.questions[i]));
   }
 });
 
@@ -346,11 +445,15 @@ test("dry run on the real repository data plans only the metadata file and the r
     const bound = JSON.parse(fs.readFileSync(path.join(repo, `${dir}/bindings.json`), "utf8")).bindings.filter(b => b.status === "ACTIVE");
     for (const b of bound) if (!bindings.has(`${b.curriculum}|${b.standardCourse}`)) bindings.set(`${b.curriculum}|${b.standardCourse}`, b);
   }
-  const wanted = meta.records.find(r => !r.problemTypeKey && !r.metadataApprovalType && r.metadataStatus === "registration_pending_semantic_review" &&
-    r.fieldStatus?.problemType === "manual_review_pending" && r.fieldStatus?.template === "manual_review_pending" &&
-    (r.curriculum || r.curriculumKey) && bindings.has(`${r.curriculum || r.curriculumKey}|${r.standardCourse}`) &&
-    !String(r.foundationTaxonomyStatus || "").startsWith("HOLD"));
-  assert.ok(wanted, "the real data has a pending, typeless row of a bound course");
+  const boundTypeless = r => !r.problemTypeKey && !r.metadataApprovalType && (r.curriculum || r.curriculumKey) &&
+    bindings.has(`${r.curriculum || r.curriculumKey}|${r.standardCourse}`) && !String(r.foundationTaxonomyStatus || "").startsWith("HOLD");
+  // Prefer the original sample (pending semantic review, both type fields pending). The registrations of the type data batches
+  // consume such rows, so fall back to any other typeless, receipt-less row of a bound course (the lane fills an empty type field
+  // whatever its status tag says). With no such row left there is nothing to dry-run on the real data: skip, never relax the assertions below.
+  const wanted = meta.records.find(r => boundTypeless(r) && r.metadataStatus === "registration_pending_semantic_review" &&
+    r.fieldStatus?.problemType === "manual_review_pending" && r.fieldStatus?.template === "manual_review_pending") ||
+    meta.records.find(boundTypeless);
+  if (!wanted) { t.skip("the real data has no typeless, receipt-less row of a bound course left (the type data batches filled them); the lane is covered by the fixture tests above"); return; }
   const binding = bindings.get(`${wanted.curriculum || wanted.curriculumKey}|${wanted.standardCourse}`);
   const bytes = fs.readFileSync(path.join(repo, "archive/exams", wanted.sourceArchiveFile));
   const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
@@ -367,7 +470,7 @@ test("dry run on the real repository data plans only the metadata file and the r
       evidenceRefs: [{ path: "docs/agents/metadata.md", sha256: hash(fs.readFileSync(approvalRef)) }] },
     items: [{ questionUid: wanted.questionUid, sourceOrdinal: wanted.sourceOrdinal, before: { problemTypeKey: wanted.problemTypeKey ?? null, templateKey: wanted.templateKey ?? null },
       after: { problemTypeKey: binding.problemTypeKey }, rationale: "실제 데이터 모의 실행용 근거 문장",
-      scope: { curriculum: wanted.curriculum || wanted.curriculumKey, standardCourse: wanted.standardCourse }, judgedFingerprints: fingerprints(q),
+      scope: { curriculum: wanted.curriculum || wanted.curriculumKey, standardCourse: wanted.standardCourse }, textBindingFingerprint: textFingerprint(q),
       evidenceRefs: [{ path: "docs/agents/metadata.md", sha256: hash(fs.readFileSync(approvalRef)) }] }] };
   const metaBefore = fs.readFileSync(path.join(repo, META));
   const result = registerReviewedExamV2({ root: repo, request });
@@ -376,4 +479,258 @@ test("dry run on the real repository data plans only the metadata file and the r
   assert.deepEqual(result.plannedPaths.sort(), [META, `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/type-judgment-real-dry-run.json`].sort());
   assert.deepEqual(fs.readFileSync(path.join(repo, META)), metaBefore, "a dry run changes nothing");
   t.diagnostic(`dry run row: ${wanted.sourceArchiveFile}#${wanted.sourceOrdinal} -> ${binding.problemTypeKey} (${result.rowBindingCounts && JSON.stringify(result.rowBindingCounts)})`);
+});
+
+// ---- course aliases (archive/data/meta-foundation/course-aliases.v1.json) --------------------------------------------------------
+const ALIASES = "archive/data/meta-foundation/course-aliases.v1.json";
+const aliasDoc = {
+  schemaVersion: "course-aliases-v1",
+  spellingGroups: [{ id: "A", grade: "중1", members: [COURSE, "중1"], evidence: ["fixture"] }, { id: "B", grade: "고1", members: ["수학(상)"], evidence: ["fixture"] },
+    { id: "C", grade: "중2", members: ["중2 수학"], evidence: ["fixture"] }],
+  successorGroups: [{ id: "S", curricula: { "2015": ["수학(상)"], "2022": [COURSE] }, evidence: ["fixture"] }]
+};
+const typeRequest = f => f.request([f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" })]);
+
+test("a row whose course is another spelling of the binding course registers, and the relation is recorded", t => {
+  const f = fixture(t, { rowMutations: { 1: { standardCourse: "중1" } } });
+  f.put(ALIASES, aliasDoc);
+  f.run(typeRequest(f), { write: true });
+  const row = f.rows()[0];
+  assert.equal(row.problemTypeKey, "PT_A");
+  assert.deepEqual(row.typeApproval.scope, { curriculum: "2022", standardCourse: COURSE, curriculumSource: "request", rowCourse: "중1", courseRelation: "alias" });
+  assert.equal(f.run(typeRequest(f), { verifyProjection: true }).consumerSearchStatus, "TYPE_FIELDS_VERIFIED");
+});
+
+test("without the alias data the same spelling difference is refused (unchanged strict behaviour)", t => {
+  const f = fixture(t, { rowMutations: { 1: { standardCourse: "중1" } } });
+  assert.throws(() => f.run(typeRequest(f)), /course mismatch: uid1 row=중1 judged=중1 수학/);
+});
+
+test("a key of a higher grade than the row's course is refused even with the alias data", t => {
+  const f = fixture(t, { rowMutations: { 1: { standardCourse: "중1" } } });
+  f.put(ALIASES, aliasDoc);
+  const higher = f.request([f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, { scope: { curriculum: "2022", standardCourse: "중2 수학" } })]);
+  assert.throws(() => f.run(higher), /course mismatch: uid1 row=중1 judged=중2 수학/);
+});
+
+test("a key of a lower grade than the row's course registers as reach, the relation is recorded, and the row curriculum is not compared", t => {
+  const f = fixture(t, { rowMutations: { 1: { standardCourse: "중2 수학", curriculum: "2015" } } });
+  assert.throws(() => f.run(typeRequest(f)), /course mismatch: uid1 row=중2 수학 judged=중1 수학/, "without the alias data a grade cannot be told");
+  f.put(ALIASES, aliasDoc);
+  f.run(typeRequest(f), { write: true });
+  const row = f.rows()[0];
+  assert.equal(row.problemTypeKey, "PT_A");
+  assert.deepEqual(row.typeApproval.scope, { curriculum: "2022", standardCourse: COURSE, curriculumSource: "row", rowCourse: "중2 수학", courseRelation: "reach" });
+  assert.equal(f.run(typeRequest(f), { verifyProjection: true }).consumerSearchStatus, "TYPE_FIELDS_VERIFIED", "the receipt replays");
+  // a wrongly filed higher row course lifts the ceiling, it does not refuse the key
+  const g = fixture(t, { rowMutations: { 1: { standardCourse: "수학(상)" } } });
+  g.put(ALIASES, { ...aliasDoc, successorGroups: [] });
+  g.run(typeRequest(g), { write: true });
+  assert.equal(g.rows()[0].typeApproval.scope.courseRelation, "reach");
+});
+
+test("the same subject of the other curriculum is accepted only through a successor group, and the row curriculum may differ then", t => {
+  const f = fixture(t, { rowMutations: { 1: { standardCourse: "수학(상)", curriculum: "2015", curriculumKey: "2015" } } });
+  assert.throws(() => f.run(typeRequest(f)), /course mismatch: uid1 row=수학\(상\)/);
+  f.put(ALIASES, aliasDoc);
+  f.run(typeRequest(f), { write: true });
+  assert.equal(f.rows()[0].typeApproval.scope.courseRelation, "successor");
+  // an alias relation still compares the curriculum of the row
+  const g = fixture(t, { rowMutations: { 1: { standardCourse: "중1", curriculum: "2015" } } });
+  g.put(ALIASES, aliasDoc);
+  assert.throws(() => g.run(typeRequest(g)), /curriculum mismatch: uid1 row=2015 judged=2022/);
+});
+
+// ---- pack scope: values may be added, nothing else about a pack -----------------------------------------------------------------
+function packScopeFixture(t) {
+  // The row is a 2015 question; the only binding of PT_A is 2015 too, but the owner pack declares only 2022: the binding is out of scope.
+  const f = fixture(t, { rowMutations: { 1: { curriculum: "2015", curriculumKey: "2015" } } });
+  f.put("archive/data/meta-foundation/runtime/test-pack-v1.json", { packId: "TEST_PACK", packVersion: "1.0.0", runtimeVersion: "TEST_PACK@1.0.0/reviewed-exam-v2", counts: { records: 0 }, records: [] });
+  const bindings = f.read(`${f.base}/bindings.json`);
+  bindings.bindings.push({ curriculum: "2015", standardCourse: COURSE, standardUnitKey: "UNIT_X", subUnitKey: "SUB_X", problemTypeKey: "PT_A", status: "ACTIVE" });
+  f.put(`${f.base}/bindings.json`, bindings);
+  const pack = f.read(`${f.base}/pack.json`);
+  const packChange = after => ({ path: `${f.base}/pack.json`, before: pack, after, evidenceRefs: f.evidenceRefs });
+  const item = f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, { scope: { curriculum: "2015", standardCourse: COURSE } });
+  return { f, pack, packChange, item };
+}
+
+test("a binding outside the owner pack's declared scope is refused until the same request widens the pack (values appended only)", t => {
+  const { f, pack, packChange, item } = packScopeFixture(t);
+  assert.throws(() => f.run(f.request([item])), /binding ownerPack scope missing: 2015\/중1 수학\/PT_A/);
+  const req = f.request([item], { registryChanges: [packChange({ ...pack, curricula: [...pack.curricula, "2015"] })] });
+  f.run(req, { write: true });
+  assert.deepEqual(f.read(`${f.base}/pack.json`).curricula, ["2022", "2015"]);
+  assert.equal(f.read(`${f.base}/pack.json`).packVersion, "1.0.1", "the planner bumps the pack version");
+  assert.equal(f.read("archive/data/meta-foundation/runtime/test-pack-v1.json").packVersion, "1.0.1");
+  assert.equal(f.rows()[0].problemTypeKey, "PT_A");
+  assert.equal(f.run(req, { verifyProjection: true }).consumerSearchStatus, "TYPE_FIELDS_VERIFIED");
+});
+
+test("pack changes that remove, replace, reorder or touch another field are refused", t => {
+  const { f, pack, packChange, item } = packScopeFixture(t);
+  const attempts = [
+    { ...pack, curricula: [] },
+    { ...pack, curricula: ["2015"] },
+    { ...pack, curricula: ["2015", "2022"] },
+    { ...pack, curricula: ["2022", "2022"] },
+    { ...pack, standardCourses: [COURSE, ""] },
+    { ...pack, curricula: [...pack.curricula, "2015"], canonicalStatus: "RETIRED" },
+    { ...pack, curricula: [...pack.curricula, "2015"], packVersion: "9.9.9" },
+    { ...pack, curricula: [...pack.curricula, "2015"], ownedStandardUnitDomains: ["X"] },
+    { ...pack }
+  ];
+  for (const after of attempts) assert.throws(() => f.run(f.request([item], { registryChanges: [packChange(after)] })), /may only add values to a pack's curricula\/standardCourses/);
+  const before = f.read(`${f.base}/pack.json`);
+  assert.deepEqual(before, pack, "a refused request leaves the pack untouched");
+});
+
+// ---- the lane binds to stem + choices (textBindingFingerprint), not to the exam file blob ----
+function editSource(f, n, change) {
+  const bank = f.questions.map(q => ({ ...q }));
+  Object.assign(bank[n - 1], change);
+  f.put(`archive/exams/${SOURCE}`, `window.questions = ${JSON.stringify(bank)};
+`);
+}
+const withText = (f, items) => items.map(item => ({ ...item, textBindingFingerprint: textFingerprint(f.questions[item.sourceOrdinal - 1]) }));
+
+test("a request still registers after the exam file changed elsewhere (figure, solution, answer); the receipt records the actual file", t => {
+  const f = fixture(t);
+  const req = f.request(withText(f, [f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" }), f.item(2, { problemTypeKey: "PT_A" })]));
+  editSource(f, 1, { solution: "다듬은 해설", image: "recut.png", answer: "2" }); // blob drift, same stem and choices
+  const result = f.run(req, { write: true });
+  assert.equal(result.status, "PASS");
+  assert.equal(f.rows()[0].problemTypeKey, "PT_A");
+  assert.equal(f.rows()[0].typeApproval.textBindingFingerprint, textFingerprint(f.questions[0]));
+  const receipt = f.read(`archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${req.requestId}.json`);
+  assert.notEqual(receipt.sourceBlobSha1, req.expectedSourceBlobSha1, "the receipt records the file as it was registered");
+  editSource(f, 2, { solution: "또 고친 해설" }); // replay of a registered request is history: later file edits do not break it
+  assert.equal(f.run(req).replay, true);
+});
+
+test("a request is refused when a stem or the choices changed, or when an item has no text fingerprint; nothing is written", t => {
+  for (const change of [{ content: "다른 발문" }, { choices: ["가", "나"] }]) {
+    const f = fixture(t), before = f.bytes();
+    const req = f.request(withText(f, [f.item(1, { problemTypeKey: "PT_A" }), f.item(2, { problemTypeKey: "PT_A" })]));
+    editSource(f, 2, change);
+    assert.throws(() => f.run(req, { write: true }), /stem or choices differ from the judged text.*uid2/);
+    assert.deepEqual(f.bytes().meta, before.meta, "nothing written");
+  }
+  const f = fixture(t);
+  assert.throws(() => f.run(f.request([{ ...f.item(1, { problemTypeKey: "PT_A" }), textBindingFingerprint: undefined }]), { write: true }), /stem or choices differ from the judged text.*uid1/);
+});
+
+// ---- one process, many requests (register-type-batch.mjs): same files, same refusals, the metadata written once ----
+const treeOf = root => {
+  const out = new Map();
+  const walk = dir => { for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) walk(full); else out.set(path.relative(root, full).split(path.sep).join("/"), hash(fs.readFileSync(full)));
+  } };
+  walk(root);
+  return out;
+};
+// R2 changes row 3 and then refuses on row 4 (type already approved): a request that edited rows before it was refused.
+// R3 needs row 3 clean again. R4 repeats a row R1 registered (refused).
+const batchRequests = f => [
+  f.request([f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" }), f.item(2, { problemTypeKey: "PT_B" })], { requestId: "batch-r1" }),
+  f.request([f.item(3, { problemTypeKey: "PT_A" }), f.item(4, { problemTypeKey: "PT_B", templateKey: "TPL_B" })], { requestId: "batch-r2" }),
+  f.request([f.item(3, { problemTypeKey: "PT_B", templateKey: "TPL_B" }), f.item(5, { problemTypeKey: "PT_A", templateKey: "TPL_A" })], { requestId: "batch-r3" }),
+  f.request([f.item(1, { problemTypeKey: "PT_B" })], { requestId: "batch-r4" })
+];
+const attempt = run => { try { run(); return "PASS"; } catch (error) { return `${error.name}: ${error.message}`; } };
+
+test("a batch writes the same bytes and gives the same answers as one registrar run per request (refused requests included)", t => {
+  const alone = fixture(t), batched = fixture(t);
+  const aloneAnswers = batchRequests(alone).map(req => attempt(() => alone.run(req, { write: true })));
+  const batch = createTypeBatch(batched.root);
+  const batchedAnswers = batchRequests(batched).map(req => attempt(() => batched.run(req, { write: true, typeBatch: batch })));
+  batch.flush();
+  assert.deepEqual(aloneAnswers.map(answer => answer.slice(0, 5)), ["PASS", "Error", "PASS", "Error"], aloneAnswers.join(" | "));
+  assert.deepEqual(batchedAnswers, aloneAnswers);
+  assert.deepEqual(treeOf(batched.root), treeOf(alone.root), "every file of the tree is byte-identical");
+  assert.equal(alone.read(META).records[2].problemTypeKey, "PT_B", "row 3 carries R3's value, not the refused R2's");
+});
+
+test("the batch writes question_metadata.json once, at flush; receipts are written per request", t => {
+  const f = fixture(t), before = f.bytes(), batch = createTypeBatch(f.root);
+  const [r1, , r3] = batchRequests(f);
+  f.run(r1, { write: true, typeBatch: batch });
+  assert.equal(fs.existsSync(path.join(f.root, `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${r1.requestId}.json`)), true);
+  assert.deepEqual(f.bytes().meta, before.meta, "metadata is still the old file");
+  f.run(r3, { write: true, typeBatch: batch });
+  assert.equal(batch.dirty, true);
+  assert.equal(batch.flush(), true);
+  assert.equal(batch.dirty, false);
+  assert.notDeepEqual(f.bytes().meta, before.meta);
+  assert.equal(batch.flush(), false, "nothing left to write");
+  assert.equal(f.rows()[0].typeApproval.requestId, "batch-r1");
+  assert.equal(f.rows()[4].typeApproval.requestId, "batch-r3");
+});
+
+test("dry runs and verification leave the batch alone; only plain type judgments qualify for it", t => {
+  const f = fixture(t), before = f.bytes(), batch = createTypeBatch(f.root);
+  const req = f.request([f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" })]);
+  f.run(req, { typeBatch: batch }); // dry run
+  assert.deepEqual(f.bytes(), before);
+  assert.equal(batch.dirty, false);
+  f.run(req, { write: true });
+  assert.equal(f.run(req, { verifyProjection: true, typeBatch: batch }).consumerSearchStatus, "TYPE_FIELDS_VERIFIED");
+  assert.equal(batch.dirty, false);
+  assert.equal(isTypeBatchRequest(req), true);
+  assert.equal(isTypeBatchRequest({ ...req, registryChanges: [{ path: "x" }] }), false);
+  assert.equal(isTypeBatchRequest({ ...req, approval: { ...req.approval, type: "REVIEW2" } }), false);
+  assert.equal(isTypeBatchRequest({ ...req, registrationMode: "IDENTITY_FINGERPRINT_ONLY" }), false);
+  assert.equal(isTypeBatchRequest(null), false);
+  batch.markMetadataChanged();
+  assert.throws(() => batch.drop(), /flush\(\) first/, "cached inputs are never dropped while the metadata is unwritten");
+});
+
+test("the isolator runs plain type judgments in one process: same applied/rejected answers and the same metadata as one run per request", async t => {
+  const inbox = ".archive-meta-register/inbox";
+  const batched = fixture(t), alone = fixture(t);
+  const names = batchRequests(batched).map((req, i) => { const rel = `${inbox}/0${i + 1}-${req.requestId}.json`; batched.put(rel, req); return rel; });
+  const options = { root: batched.root, registrar: "archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs", rejectedDir: ".archive-meta-register/rejected",
+    guardPathsFile: "tools/ci/missing.paths", stage: "registrar", requests: names, typeBatchRuntime: await loadTypeBatchRuntime() };
+  const result = registerRequests(options, { log() {} });
+  assert.deepEqual(result.applied.map(a => a.name), ["01-batch-r1.json", "03-batch-r3.json"]);
+  assert.deepEqual(result.rejected.map(r => r.name), ["02-batch-r2.json", "04-batch-r4.json"]);
+  assert.match(result.rejected[0].error, /^Error: type already approved: uid4\.problemType=approved_review2/);
+  assert.equal(result.dirtied, null);
+  for (const req of batchRequests(alone)) attempt(() => alone.run(req, { write: true }));
+  assert.deepEqual(batched.bytes().meta, alone.bytes().meta, "the metadata is on disk when the isolator returns");
+  for (const name of ["02-batch-r2", "04-batch-r4"]) {
+    assert.equal(fs.existsSync(path.join(batched.root, `.archive-meta-register/rejected/${name}.rejection.json`)), true);
+    assert.equal(fs.existsSync(path.join(batched.root, inbox, `${name}.json`)), false, "a refused request leaves the inbox");
+  }
+});
+
+test("an exception in the isolator loop still writes the metadata of the requests already applied (no receipt without its metadata), and nothing of the refused one", async t => {
+  const inbox = ".archive-meta-register/inbox";
+  const crashed = fixture(t), alone = fixture(t);
+  const [r1, r2] = batchRequests(crashed);
+  const names = [r1, r2].map((req, i) => { const rel = `${inbox}/0${i + 1}-${req.requestId}.json`; crashed.put(rel, req); return rel; });
+  // R2 is refused after it edited row 3; recording the refusal then throws (the rejected dir's parent is a file), i.e. the loop dies mid-run.
+  crashed.put("blocker", "not a directory");
+  const options = { root: crashed.root, registrar: "archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs", rejectedDir: "blocker/rejected",
+    guardPathsFile: "tools/ci/missing.paths", stage: "registrar", requests: names, typeBatchRuntime: await loadTypeBatchRuntime() };
+  assert.throws(() => registerRequests(options, { log() {} }));
+  alone.run(batchRequests(alone)[0], { write: true });
+  assert.deepEqual(crashed.bytes().meta, alone.bytes().meta, "R1's rows are on disk, R2's edit of row 3 is not");
+  assert.equal(fs.existsSync(path.join(crashed.root, `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${r1.requestId}.json`)), true);
+});
+
+test("catalog conflict rule: the two type fields never count as a conflict, every other field keeps the old rule", () => {
+  // 유형 두 필드: 시험지 JS에 적힌 값과 행 값이 달라도 충돌이 아니다(등록 판정 유무와 무관, 값은 행 그대로 보인다).
+  assert.equal(isMetadataConflict("problemTypeKey", "PT_A", "PT_B"), false);
+  assert.equal(isMetadataConflict("templateKey", "TPL_A", "TPL_B"), false);
+  // 다른 필드: 둘 다 값이 있고 다르면 충돌.
+  assert.equal(isMetadataConflict("difficultyBucket", "하", "상"), true);
+  assert.equal(isMetadataConflict("reviewStatus", "reviewed_pass", "review_required"), true);
+  // 같거나, 시험지 쪽이 비었거나, 행 쪽 값이 없거나, 사이드카 행이면 충돌이 아니다.
+  assert.equal(isMetadataConflict("difficultyBucket", "상", "상"), false);
+  assert.equal(isMetadataConflict("difficultyBucket", "", "상"), false);
+  assert.equal(isMetadataConflict("difficultyBucket", null, "상"), false);
+  assert.equal(isMetadataConflict("difficultyBucket", "하", undefined), false);
+  assert.equal(isMetadataConflict("difficultyBucket", "하", "상", { metaV2Sidecar: true }), false);
 });

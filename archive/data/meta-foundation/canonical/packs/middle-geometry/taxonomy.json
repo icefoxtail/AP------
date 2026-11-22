@@ -3,8 +3,8 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
-  "problemTypeCount": 26,
-  "templateCount": 56,
+  "problemTypeCount": 34,
+  "templateCount": 73,
   "problemTypes": [
     {
       "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
@@ -1461,6 +1461,324 @@
           },
           "sourceOrdinal": 21,
           "newMathematicalQa": false
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M2_CENTROID",
+      "canonicalLabelKo": "삼각형의 무게중심",
+      "definition": "중선의 교점이 각 중선을 꼭짓점 쪽에서 2:1로 나누는 성질과 중선에 따른 넓이 분할을 이용한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 59,
+      "supportingQuestionUids": [
+        "qid_v1_037d44f238b398d6460218cbb1e8246d112f769c319b244074ffa947d22dfb9c",
+        "qid_v1_04c3d102a777b46c2697761d8705a9914d436b993e7dbd615255b5f5fec48afb",
+        "qid_v1_0f74382334e61fd52916037090006ce76c90e6937e9e9f8f7d96447bdd67b11b",
+        "qid_v1_1bd38d319596bd53d3cf63517f7e0fcdcb3f943689c22e48a6a5155388c6e18c",
+        "qid_v1_2059ebafbbed9f1ba83f04ed2d369bc9fae5b581783a4a5a7a45b7499fe7fe06",
+        "qid_v1_24f150ba2cf882f7840a26390035c5e060b825592e34ceaf98ececb03d90069f",
+        "qid_v1_2511f0878121eb0f2506b8d0cbb8b2f400ef8585bf2a8945e8349d0ead9dc258",
+        "qid_v1_3020187f0f9569e2e4e66b35c983eaa5901a6ac9cd50d42911621d9b2af60cca",
+        "qid_v1_30c513832a16cca07e200b7faab4962e79f5086701f6df4c0c286e1af0ca117a",
+        "qid_v1_32442fcacdcebbdd71c9ab623a7e2fb5cfa7a8ce5af4d70b2373406cad202bd1",
+        "qid_v1_368f810d881435db0a297e62291c54dea71d750e7c2b7ffa8b7ed547a5cc4f95",
+        "qid_v1_39d8117846b4f90aa0324a084694153a16a445097d2732572b3b5905ef778448",
+        "qid_v1_3ace257ad3afd1bde0589c7d9c45a52309a789010770032226a28a7816be50ab",
+        "qid_v1_42d25ef98ce95f7183115288be7697b96fcc5c340990b0754a6b4878b2fa4729",
+        "qid_v1_4da0a248fa4694f7998b1b211d519f8276c4c61d1005a9bd15a271b38a483421",
+        "qid_v1_4fa54a59fb9c5574bc981fafc5f29cb8ff960159a6c8bbf69b35ce555b66602b",
+        "qid_v1_51a14de06bf7de273aaa6b3fc37896007f3b73ec106d885b4eaff7d96d203b8a",
+        "qid_v1_628aed5392a5d7b744d6776237dd0ae5026dcf1f5f302a950b17965d193bcdae",
+        "qid_v1_6be4b6d4a09ab6b5326832d9715545a99bfd95950a9f8a359be0fae45e3c9e9b",
+        "qid_v1_76cc5f2bcf09893753cf4fbbf0b2c69ce9904ebbf4b3bd1a9806fd9978610710",
+        "qid_v1_7a9f3def72e05d1e9a16f1ed74c4e7db0a9b78f886f55dca5ffd7b33e0c72938",
+        "qid_v1_7f697ff018536656f34ef98cbfc91a9fcc01939127225bb3d2f10d7f6aea5513",
+        "qid_v1_84db4068188ca46cfde122762a625b2e23ad10458dbfc0e6817bd8e54af2d65d",
+        "qid_v1_8a14443a6c8ffd200ee56deccc6b008268eb6426a51dd728d35934f6235a4d53",
+        "qid_v1_8cb17e84b83a3fe5882540582b3d52c6fd82d57489d10ff15e7a17af49605a96",
+        "qid_v1_8d0cb4f585ba62009a164165d22de2cafb62e78ac7a76359ea75af07c4e58420",
+        "qid_v1_8fc002950b5f6174b586682bb31ed651a2c8bc1f3d5e2d32dba9027443221b0e",
+        "qid_v1_90048500149139b197e35e9e60856c103b93483334c91d6ecebab249fac635b5",
+        "qid_v1_957261df9ed7d3469d02efef1f19f156a8e644cd605096c5d1ebb9e511e70791",
+        "qid_v1_96696642205a69d965be9bb57f289e3e5463bc02e07a9e38533aac1de70103df",
+        "qid_v1_9753d60533c0747e832a674827088b42fb76e5311a96cb4b686408b6d02bb2eb",
+        "qid_v1_98e21adc5ec3cde4c873a72430550208f098fd6df18f99d150a797759c237195",
+        "qid_v1_9ecdf6b114dd7b085688428b08abadda08902c06c5a98c309386552f4d2085f2",
+        "qid_v1_a4d7e220919b6440ebc6490d001a80dc50d74e42447f724ca48b34d85bb0dd9e",
+        "qid_v1_a62222272d6a5ff38a026f06e54376ec91f234beff6eb28555ef4f01dd16c939",
+        "qid_v1_aaa151978fdd692262dad4377577bb5ee6e5b89c725920ab21afae3ea603f5c8",
+        "qid_v1_aeeef04907a18157e25f242f8ad3b8f890e0e73dce637e3cc34f9d6c3ee4d8ba",
+        "qid_v1_af5c1006fc1222e02224417f7f9c16ebbf866e7bb978d09cee5be07c5e272d5b",
+        "qid_v1_b8fab302ea87df1fa815b356f19da50df5307911873c970f6939b4871612f5b0",
+        "qid_v1_b9db94764c0956085a0efedd60466f5b4460a952601ea9d9b6dd20678aa6e38f",
+        "qid_v1_c1664d29a222f1d196046d594a82433cdd3e83627fd3436f848d1fe254fb3333",
+        "qid_v1_c2936d3e13a7ee8b780cc83178e56f89225992769f99c3763e82d68c94b07be1",
+        "qid_v1_c3c9b687de09ad4514521df9d17efd09b7f98e0a9b741a149d8752dc3e1c65dc",
+        "qid_v1_c3dd8d1abf599cf05433a686dad70f9c0f4234c9e7e13fbbd21c920286d6203e",
+        "qid_v1_c58990bad3896bc031d9451c90bba15cacaa60937622c040a40c0a8ec5e77208",
+        "qid_v1_c77f3b22e877bcaef89e0d7f2517370c3a6f83f238f8db0957f46e2ed8a585fe",
+        "qid_v1_c84aa7760dcafd87451578a35c119cc993638921852c3eab20c77069277477c4",
+        "qid_v1_ccffa94b67603b7dea6b2fa4b10ee7fdc617b99235f8bf634ae043fed7991d0c",
+        "qid_v1_d4cdaca8700004600c80cd728c21d51350ddee0bb48c2cc41667d76ea26194da",
+        "qid_v1_d77a16975dfbe74a005fa9e92092fd854a79afc64f4818ce261e101d881e93f2",
+        "qid_v1_dc3b610ff0d490346effbe0eba6f4ee043df8388f74907a473488548b7ddc966",
+        "qid_v1_e02598c434b9d49814cbab6efbeabd18bdf650cebed153bd15b6d4f6ad899023",
+        "qid_v1_e508d239885fcbaa6aea9aca83486cb7411ce21d4c25c947e3b9005528237d39",
+        "qid_v1_e9057e100f07611b5141aecc426b5ff67031d6c1f73401e52ca5c1cdb16c428f",
+        "qid_v1_e998d50d674d20ae1aaa9a7f70eb94fd979710065d24ff37fe1fc0cc3771c0d0",
+        "qid_v1_f31255f738adf570fbd46af8334c3af794e1b40e76c0bd39a145a8181f15b052",
+        "qid_v1_f833211db4f6db8cac467cef0f4b06390519b0c18d9f4002b84baebb2066d552",
+        "qid_v1_f9ae00d34287887c218bb2e0a7980129f84ee11db0bbfff56eeacd7ffb0ba33b",
+        "qid_v1_fcabae322dd08650f3b65ac5555c456133452249b452e7baa63bee9d207d6b16"
+      ],
+      "sourceUnits": [
+        "M2-05",
+        "M2-06",
+        "M2-07",
+        "M2-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_M2_CENTROID",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M2_FIGURE_AREA",
+      "canonicalLabelKo": "도형의 넓이",
+      "definition": "밑변과 높이, 같은 높이의 넓이비 및 등적변형으로 평면도형의 넓이와 분할 관계를 판단한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 9,
+      "supportingQuestionUids": [
+        "qid_v1_138ebcaa6468ff5225baa67336226b408f53503bc83696ef593756ec898f5226",
+        "qid_v1_27b21aa822ef8d05977de2ec4d9a391923420e29ca921af936b7e79276e469ff",
+        "qid_v1_4c730f115259eadb33b9ae1084dcf97a1baf7fa4ceb3dd6a8b7528bd158ec40d",
+        "qid_v1_585f68a002a5178588d50a8c288e4bde43cbd9a7b9da81c1346da57ec22b9281",
+        "qid_v1_8d6c70aeed917af7a5e254ff863edd99807ab5fe7e79ac351f3c66521c3f3d89",
+        "qid_v1_a9a4562b79627d7afeaee2c3c085200a6e7012ab47ce92cec5b54417f793d52f",
+        "qid_v1_de06ac7db6ab2ef3ec5cc805bfbe5e9ff0b1fedfdaf9ef67c5ac5146c46e60cd",
+        "qid_v1_ee7fcd759ed8e80c1d82757090629edf89b113b9c10327d3896e71ee80187a8d",
+        "qid_v1_ff7c626f2bcf6542b6e12a90adbaf568549ad4d0a396b5a8346843a1050809aa"
+      ],
+      "sourceUnits": [
+        "M2-04",
+        "M2-05",
+        "M2-06",
+        "M2-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_M2_FIGURE_AREA",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M2_TRIANGLE_ANGLE",
+      "canonicalLabelKo": "삼각형의 각",
+      "definition": "삼각형의 내각의 합과 외각의 관계를 이용하여 각의 크기를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_ba6cebd0f26be6a84eb48eb4d2b0d1b0877c964b8e5e3575d703db07364d60ba"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_M2_TRIANGLE_ANGLE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M2_TRIANGLE_CONGRUENCE",
+      "canonicalLabelKo": "삼각형의 합동",
+      "definition": "두 삼각형의 합동 조건을 확인하고 대응하는 변과 각의 성질을 이용한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_44526e40b95a0c60ce2ab35b0ccac014fee406bc3258b51be536d26fa86bf9c6",
+        "qid_v1_545e439586cd1bb8898a9ed1c954ea19f92a8d78fc999fd2836a6de5ffc914d4",
+        "qid_v1_70174116e724056293081a26029ce9b4afb81da812c5e7dccc4ff558782d23aa",
+        "qid_v1_c6aa15c8202fa57e3133542c899034d7efcbd9133d93775c9b09d1deb950f0ae",
+        "qid_v1_c77422ce406149a936915cb04bc0fe5105f8624956a142f9d6fb2d2eff20df46"
+      ],
+      "sourceUnits": [
+        "M2-05",
+        "M2-07"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_M2_TRIANGLE_CONGRUENCE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M3_CIRCLE_CHORD",
+      "canonicalLabelKo": "원의 현",
+      "definition": "현의 수직이등분선이 원의 중심을 지나며 중심과 현 사이 거리와 현 길이가 대응하는 성질을 이용한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_3f53be2e8404e9cd09850c890b711aa24d64feb12aef155674df7de99243d583",
+        "qid_v1_479b72f93f7dd44f3cdc971558676e95c97cc14dfe82e99a29273f6e4424044c",
+        "qid_v1_6815f796e498c5cfd86cdc12aa296103db16926ce06587c449741ec3165b6086",
+        "qid_v1_94c9c65baee9735aacab48cdc21366d22c95b70b33bc265a98ee97263ad8b851",
+        "qid_v1_de621b49bed9fe35bbf843c113bfa49987088222f8f65d8bc480fd57b4a016a5"
+      ],
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_M3_CIRCLE_CHORD",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M3_CIRCLE_POWER",
+      "canonicalLabelKo": "원의 방멱",
+      "definition": "교차하는 현의 선분 곱 또는 외부점의 할선 길이 곱과 접선 길이 제곱의 관계를 이용한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 7,
+      "supportingQuestionUids": [
+        "qid_v1_222b49fb43cb87f0e14d92eb141e17d1907f0f17478e902154063f1283951327",
+        "qid_v1_89a07183d2bce7f2e58e8385d70573a0dc677f08784be1b0233aa9a02a1a0872",
+        "qid_v1_bd880e4e61dc11a5b7cba891fbc30cf411f830ff884388abdbb5bf1dbe80ee5f",
+        "qid_v1_c59919cbca8eeac7a3d7d1056745dedc96debd9e8e3388346f30777f77bbaf23",
+        "qid_v1_d1e879818ec69d25a8543636cff882b68d4bd69b847023b52bfa0a515e78b6b2",
+        "qid_v1_f3de90f3cdd001953e3d039829a105da1ab3a4143b692e31e3d205dcd0ec105e",
+        "qid_v1_fe72231199a4937b7db5e7e5e4448a9c1b7010bcadd5598046ae1f7469e6c666"
+      ],
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_M3_CIRCLE_POWER",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M3_CIRCLE_TANGENT",
+      "canonicalLabelKo": "원의 접선",
+      "definition": "한 외부점의 두 접선 길이가 같고 반지름이 접선에 수직인 성질을 이용하여 길이·둘레·반지름과 넓이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 22,
+      "supportingQuestionUids": [
+        "qid_v1_0a14a4b01b36140d1d0c215b248a8434df5576dc339254678e6921b06de8fc16",
+        "qid_v1_0f3870476c113bf45e413f9d1d7bbb8519ea6ea923810a6978f2a66fbd7b5070",
+        "qid_v1_1cd5187c5d3adbe128b62bdc99dc0703f089083ad0a0a4f37c6c53a88d181977",
+        "qid_v1_2f68180cd5f5ad2a5e5c7cbb9bd83bf7f5f5bcb69f66efd36fdd770ad28a5a0d",
+        "qid_v1_4c49ca0509fc4f8b75e8470d9dd242fb9fe7219daee69dc02f7eedac212bd048",
+        "qid_v1_54330f817eee82ae8d1363e348c699689df38f52cd6bd734bcfd4a8e5f1c627d",
+        "qid_v1_5588c2822520056649549e0c6fa285438e6a9c423148a9e8bfafc7061f18fe0e",
+        "qid_v1_5c66e6373f46466f99f0d4c75f3a9603833b709dbd56db379b2c0425b4be4740",
+        "qid_v1_84c9a0359ca207f99002c2fe61e8ba24657964e30645a0e8177a20d0680ee8a2",
+        "qid_v1_8d0df2fa64f1db68961421e7157a18e0a0d73d513ce6df0abd154535a6ace2a9",
+        "qid_v1_9864680c5fb4eca03bfc2b0031774729ba40c1987cb2728fa186ecdfceeb9f24",
+        "qid_v1_9d116d200d33d6a47ade3c25151e8e93150d27b22cad4e70d80510cd9f9e4957",
+        "qid_v1_9e98f21766ebf673ce88a70da46f503adb5cb8711c32aa7114a726759eb4af44",
+        "qid_v1_9ff97dd556c2935804606724bfe58887571a412c853f93fd52e1ce015f540bc2",
+        "qid_v1_b9b426bedbbfe1377f11ca7676199f30025208895826aab4a29c15f7c241628a",
+        "qid_v1_c44a5dc381f65eec92694b6ff5e70f5b3a370e1b743c5910ff004dd00a03f506",
+        "qid_v1_c58fecaac831de051f57a1b3ab4ba809e506ca9bd2aaae0901d110bd0303d47d",
+        "qid_v1_c6bda5a967fc9d9a39b1ce6342e9266b17e30bf0646537e79886d270d1928f53",
+        "qid_v1_d46ccffb19aec6adedd93938ca03bceb33f07504362b211890ff3608e6f72514",
+        "qid_v1_d6d5d616e92f2a7a7a77fed886c32f4c10859ad2b39ba14e5189faa0cf77e325",
+        "qid_v1_e00fb5c921c2668e50c8f99f85f058cde430d2ab273cddbf15167f1d44711b75",
+        "qid_v1_e20baf4ef82156c717db31272dec95a3d324f624b4024e56c1fdd32d585768d7"
+      ],
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_M3_CIRCLE_TANGENT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M3_FIGURE_AREA",
+      "canonicalLabelKo": "도형의 넓이",
+      "definition": "평면도형의 넓이 공식을 적용하거나 부분 넓이의 합과 차로 길이·높이·넓이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_2b25d750b024536d5f3897d843c4c16bb24768e4866d6327e3b41dc2fdd8b3da",
+        "qid_v1_5428c0c4677aaf7bcaaa2f77bed68217416892d1ebf100e8fa92a9bd424b5609",
+        "qid_v1_92b13ad02eb38a3298d946d6b4d38e45bffb39c50974272174814424f27891d1"
+      ],
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_M3_FIGURE_AREA",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
         }
       ]
     }
@@ -3424,6 +3742,534 @@
           9
         ]
       }
+    },
+    {
+      "templateKey": "TPL_CIRCLE_ANGLE_RELATIONS_CLAIMS",
+      "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "canonicalLabelKo": "성질 판별",
+      "definition": "원주각·중심각·호·현의 대응 및 내접 성질에 관한 진술을 구별하여 참거짓을 판정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_0879dc94586121402538bd51be7193eae497aadd9e5d02e58b8028662529251c",
+        "qid_v1_247f16215f9798c0da10d00d7a98c329d91f0d24268650ab1566b40f1fe9255a"
+      ],
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_CIRCLE_ANGLE_RELATIONS_CLAIMS",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_CIRCLE_ANGLE_RELATIONS_CONCYCLIC",
+      "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "canonicalLabelKo": "공원점 판별",
+      "definition": "같은 현을 보는 각의 일치 또는 사각형 대각합 180도 조건으로 네 점이 같은 원 위에 있는지 판별한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 12,
+      "supportingQuestionUids": [
+        "qid_v1_008cc63f23e60f21a423438119a659a8af896f4d1c4d6b3b77fdc2b6bac030de",
+        "qid_v1_1011cf7e8758501ddb962a191efff932dba614d6b22343d53c6614340b2b8fad",
+        "qid_v1_387ffe604b7ef71f88f4edb5c177f7f5e30a163b91ec8bead9cb236a58d55100",
+        "qid_v1_4220d2886651ba4286315f32694f3db3bafe122768a39617b468bebbadb468a5",
+        "qid_v1_4a6221e20913b382b1359a16eac474056843795659df21a232b938749078cd52",
+        "qid_v1_4fcc3e6c6d4cfc76de09b72cc95b796b368de563a6cc82aac81f56c5147b421b",
+        "qid_v1_522aad4369ca7f25ac37dbc4cc3784efadda3b57f3b3aac880f3e20f7c36ceba",
+        "qid_v1_b1be8d6f7368365dc3c28bb8adcee35f9da0417245a20f6aed01295e4971616e",
+        "qid_v1_cc7a02e5b43abdc08090ae419119967056e57fec90398ddf3114be3355370ee1",
+        "qid_v1_d25432f163f75c5da045c0522b5fb2d5f08213dd67bf52105e16da23579cd5fd",
+        "qid_v1_df5b7b296527adb4e3bd517d03989557172eb09d7f3769e228799f7cce76b6f4",
+        "qid_v1_e02ac097d7b53d941b75261ebcfc2059c66b87ae008d70887d543c07c0bfb794"
+      ],
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_CIRCLE_ANGLE_RELATIONS_CONCYCLIC",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_CIRCLE_ANGLE_RELATIONS_POSITION",
+      "parentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "canonicalLabelKo": "원 안팎",
+      "definition": "같은 현을 보는 기준 원주각과 관찰각을 비교하여 점의 원 위·안·밖 위치를 판별한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_195e1ea3b2f697df53d577a8a8228b73dce5d4ccc8d3b20a59f1b7132059ee9e",
+        "qid_v1_936677bd380ed2ca24ecd556a5e559142af276bc12d4c0f3341037d20763276f"
+      ],
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_CIRCLE_ANGLE_RELATIONS_POSITION",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_ISOSCELES_TRIANGLE_CLAIMS",
+      "parentProblemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "canonicalLabelKo": "이등변삼각형 성질 판정",
+      "definition": "정의·역·밑각·꼭지각 이등분선 성질과 반례로 진술의 참거짓을 판정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_93095e2318d0cd68869efb187be83b57714143bd73a75724fac03865607cad1c",
+        "qid_v1_e51ded53387626449a84e4fa650545d68868fdfcdea6e647a4948194c756905d"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_ISOSCELES_TRIANGLE_CLAIMS",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_ANGLE_TYPE",
+      "parentProblemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "canonicalLabelKo": "삼각형 판별",
+      "definition": "최장변의 제곱과 나머지 두 변의 제곱합을 비교하여 예각·직각·둔각 여부나 가능한 범위를 정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_35fcd0ff2cc375c91a9eb9fb17403ead0eb314de34654e3cbf861f6169c6c34e",
+        "qid_v1_387a2835258c9fcfd47f91616c20358c6c66601528f1a6bfdcb90563b4f40c6f",
+        "qid_v1_af12722da5154df3c7fcbba0ac27aadff482406b4f1a96d7c3cea7fa4b7ddc01",
+        "qid_v1_bd3aab7e5d981ad5f29b6f39680e53b026f06225d1d962de884539341c24404c",
+        "qid_v1_ead67e9d9f3d828cd08c634d9c4768c136cb33e39eb7b194a3ab1abdd69b5e32"
+      ],
+      "sourceUnits": [
+        "M2-05",
+        "M2-07"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_M2_PYTHAGOREAN_RELATION_ANGLE_TYPE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_AREA_LENGTH",
+      "parentProblemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "canonicalLabelKo": "넓이와 높이",
+      "definition": "피타고라스로 길이 또는 제곱값을 구하고 같은 삼각형 넓이의 두 표현으로 높이·넓이를 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 7,
+      "supportingQuestionUids": [
+        "qid_v1_5856a216a8220180337579455b3678ebb27d958cdef0a044f8391fbbf0b02344",
+        "qid_v1_69cae8b887be07d6259c1c4ec22411aaaccff5e052b6b1d7243b2441b9da8118",
+        "qid_v1_6c676ab2dbf66fb9a8178de6c67883b23ceac6156fa033ab94da19f3fcf65d8f",
+        "qid_v1_7230d68d7dce6829a25410f6cc87acc8d5f6073571f73352663e39e2247d2aca",
+        "qid_v1_8b1bf4c848643c42093be4aed27147eceb6542d5d639d77c0c6335eb0fe0bbaa",
+        "qid_v1_973b6fe163d097d8450b0f1dcb49027f5b7fc74d422132d9aa16101be414fbcb",
+        "qid_v1_d218eb11c94b10b5bd21e0e0a6e34c9fb90b70681acc4d8fc4ce5874ad706fec"
+      ],
+      "sourceUnits": [
+        "M2-05",
+        "M2-07"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_M2_PYTHAGOREAN_RELATION_AREA_LENGTH",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_ELIMINATION",
+      "parentProblemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "canonicalLabelKo": "제곱식 소거",
+      "definition": "공통 변을 갖는 여러 직각삼각형의 제곱식을 연립하거나 빼서 미지 길이나 제곱합 관계를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 6,
+      "supportingQuestionUids": [
+        "qid_v1_1d21626dc4960cb27defc33053099ba00da279218a56d2afd8e702c89c2affc1",
+        "qid_v1_458be970f43b9948c20e9e92978ba579dfcb2fb511bf15dc877bee20db0bd8ed",
+        "qid_v1_9dd7d4ee26a8a5a665285048dd98b653c66f4d56fda1c3b2cf80cdcd66918221",
+        "qid_v1_b881fc2ad796f2496dcd50617c288ed52deabb373456f28ff2c66c026c6c84b7",
+        "qid_v1_de7c41c228ab675b0862239cdcfac8a6b86e685111af18ee3dfa4ef9ea111701",
+        "qid_v1_f8c9e64bb8ef6969258441d22088cabd385b69edd831a176d6e3906c10a305e4"
+      ],
+      "sourceUnits": [
+        "M2-07"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_M2_PYTHAGOREAN_RELATION_ELIMINATION",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_PROOF",
+      "parentProblemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "canonicalLabelKo": "넓이 증명",
+      "definition": "합동 삼각형과 직각이등변삼각형의 넓이를 비교하여 피타고라스 제곱 관계를 증명한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_2bb48c65f60d7e9d6a70bf62492fd45be4a6ecc026b6306bb12466c6258bb5ee"
+      ],
+      "sourceUnits": [
+        "M2-07"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_M2_PYTHAGOREAN_RELATION_PROOF",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT_BISECTOR",
+      "parentProblemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+      "canonicalLabelKo": "각이등분선 길이",
+      "definition": "평행선과 각 이등분선으로 이등변삼각형을 찾아 같은 변 관계로 미지 길이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_43100c677921e57a90799b99e024c2c0f99a81d42cf424f62988557c88b88032",
+        "qid_v1_b1f42e39aee464c5f72e0cdbab9f91dcd4a31d67b9e5c2c23d46d84f849c4d6c"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT_BISECTOR",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MG_RHOMBUS_DIAGONAL_AND_ANGLES_DIAGONAL_ANGLE",
+      "parentProblemTypeKey": "PT_MG_RHOMBUS_DIAGONAL_AND_ANGLES",
+      "canonicalLabelKo": "마름모 대각선과 각",
+      "definition": "대각선의 수직성과 이등변삼각형 성질을 결합해 표시된 각의 합을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_0b053045999ddfcc4913ccadb97ff9dfe86f8b3355eb71b481fa5f6f6939f1c8",
+        "qid_v1_180bfbe5ffc2354610968090b0ad77cee10887acf49c4efba4925f9802fc270f"
+      ],
+      "sourceUnits": [],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_MG_RHOMBUS_DIAGONAL_AND_ANGLES_DIAGONAL_ANGLE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_MIDPOINT",
+      "parentProblemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "canonicalLabelKo": "중점연결 삼각형 성질",
+      "definition": "세 변의 중점을 이은 삼각형의 길이비·넓이비와 중선 관계를 이용해 성질을 판단한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_826a35829c515296d28c799f17e8610d2ece6e8ea45c812778822d082b9efee1",
+        "qid_v1_b5d0b5b71b6df8b92dc6e1c4573644fdd7ba822da2d24a990b0c50674c4eacb2"
+      ],
+      "sourceUnits": [
+        "M2-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_PARALLEL_SEGMENT_RATIO_MIDPOINT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES_PROOF",
+      "parentProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "canonicalLabelKo": "대변 증명",
+      "definition": "평행사변형의 대각선 양쪽에서 엇각과 공통변으로 합동을 증명해 대변이 같음을 얻는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_06ba19327af78e760b26248cd76fb73e8162c3c511e2e7b49ee52f703aa8712e",
+        "qid_v1_7b4fb51db266430f5b14e3d97220ccb9772d9598c7ee1029c85150268b3b51af"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_QUADRILATERAL_PROPERTIES_PROOF",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_RIGHT_TRIANGLE_CONGRUENCE_CRITERIA",
+      "parentProblemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "canonicalLabelKo": "합동 조건 판별",
+      "definition": "RHS·RHA·SAS·ASA 조건과 각만 같은 닮음 조건을 비교하여 직각삼각형의 합동 여부를 판별한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 10,
+      "supportingQuestionUids": [
+        "qid_v1_0470b0ba25a19e99470b089e9f52a53a202d917588dfd25044f8c0a54b8869a1",
+        "qid_v1_252b34f5565095908f6aa06790c00991a0cefb0e1036539e57c3b3297a93192a",
+        "qid_v1_3e2915ca0d650e815da2c14f7c485556b1de06fa1ccbe31f4a62be4ac9e3f50e",
+        "qid_v1_56c5f277704364fcb88c70d76244b3349874a1fff9e5737d53ecb346de3d56c0",
+        "qid_v1_5a599e48be721a4b9edc16f246bb6f85985eee343ba1515fb681f4ddda4ceefc",
+        "qid_v1_6e08c7bf0c40a3778b33a07adba3104e62ede62f51621efffdf2cc88b08c4d18",
+        "qid_v1_842210b8cb13f092a4ba105fecf209695b6d507a286dd0cb01e9a7c7fcf9de0f",
+        "qid_v1_981709e2eb38bd7aedf038b2613d9dff491ab1b772f6b62e89670add08288332",
+        "qid_v1_c5b07c11f914f9d6addd00cf47bf1b6449d1f21d5ae5d98bbd23dafe2d41d6d4",
+        "qid_v1_e59850cd1471015c82d8e4dbe04b4a11185f97a73b11023d7933de18dc6bdf46"
+      ],
+      "sourceUnits": [
+        "M2-05",
+        "M2-07"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_RIGHT_TRIANGLE_CONGRUENCE_CRITERIA",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_SIMILAR_FIGURES_EXISTENCE",
+      "parentProblemTypeKey": "PT_SIMILAR_FIGURES",
+      "canonicalLabelKo": "닮음 판별",
+      "definition": "도형 종류에서 대응각과 변의 비가 항상 고정되는지 또는 반례가 있는지 살펴 항상 닮음을 판별한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 16,
+      "supportingQuestionUids": [
+        "qid_v1_022afe09d59386528a914f8a05d729644bb0e837d454285f1ed02e9f7f3df26f",
+        "qid_v1_1f697ed8c4214ab17daa2ce432748dcb219e472c4254a08111e8ad8229a92241",
+        "qid_v1_47128a6f70167e5be057df9b362aa62766c5b5dca75fa2e217519b0d62540914",
+        "qid_v1_47bef6dc41ad02ca963e72d60e56880bf22e4ef03f260d4f7bbdb8b1d8bf775b",
+        "qid_v1_5fb92573cd4fad31d895058a13c357324a46674f19b1579073e7c9b8806136bc",
+        "qid_v1_61f8306124f15611df8697a5d535f9a3c44246cc7765ab17dc22e16de2e92470",
+        "qid_v1_6b4450d53b3d5e496fe65d965f01d607ce5fbcac1db596560cfac8551ae849af",
+        "qid_v1_6d708744e72be8771922b1944821dac468fa19eb8590e37720cb8bf060256d49",
+        "qid_v1_73036163f616b1c24d8b841bdc40314d96c94b7ab215ad966d0553342d7e92e1",
+        "qid_v1_89ec12d7aedc6d0dffd6de046a19c870af7184270ea7abee4f894f8fee76813e",
+        "qid_v1_ac4b1e15bc214e9bf15040ae0bc244703d15a0123d96f8e5867296ca6acb39e6",
+        "qid_v1_ae9d5c40e2fdcbad6a23e1fea44b70da9871497895a708e3448b4e6d48e6ed0d",
+        "qid_v1_cd6d35a7c21bc99be28e5b8c72b373fe999a0e83c95531d487762b8e2a73a863",
+        "qid_v1_d93db03d7e1b988abb49905a36d7e97cb97699f6dc92ebbf8182f7750492385e",
+        "qid_v1_e6cc209ef364d70c19dd4cd38e27cca67a22637e816b31fca8280eb8e9686274",
+        "qid_v1_ea373a3a0fc11cfa898972a903148f3e4eb7f2c910bcf04461aa840e03954ecc"
+      ],
+      "sourceUnits": [
+        "M2-06",
+        "M2-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_SIMILAR_FIGURES_EXISTENCE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_TRIANGLE_CENTERS_INCIRCLE",
+      "parentProblemTypeKey": "PT_TRIANGLE_CENTERS",
+      "canonicalLabelKo": "내접원",
+      "definition": "넓이=반둘레×내접반지름과 같은 접선 길이 관계로 반지름·길이·부분넓이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_370368264ef7901f07f04dd543d867aea2b77a067f4841d8a6ad4e06db1862bf",
+        "qid_v1_82dc683c910fada2ae58952c36b18b9beb80ced6f715643551607a7b493e20cc",
+        "qid_v1_9922fdb0d30c265378a8f2f73ab4fb0d6ce20236cfe56b7ba8629752aeeb2072"
+      ],
+      "sourceUnits": [
+        "M2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_TRIANGLE_CENTERS_INCIRCLE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_TRIG_RATIO_MONOTONIC",
+      "parentProblemTypeKey": "PT_TRIG_RATIO",
+      "canonicalLabelKo": "예각 삼각비 대소관계",
+      "definition": "사인·코사인·탄젠트의 증감과 특수각값으로 값의 크기 또는 진술을 판정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_195e9a7b8156905b4f3ffa0fa2498acee6603ee024368f3adc2c9e9fca63f4e4",
+        "qid_v1_cb33224931a0ceadd35f213c7d297d506be95e9c6760cfd2c41b037e5992d487",
+        "qid_v1_fc104847bb2e46b183e1a975913f348c950866eed5c358b82f6aee8446701d02"
+      ],
+      "sourceUnits": [],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_TRIG_RATIO_MONOTONIC",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_CIRCLE_LENGTH",
+      "parentProblemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "canonicalLabelKo": "반지름과 현",
+      "definition": "반지름·접선·현의 수직 관계로 직각삼각형을 만들고 제곱식 방정식으로 반지름·길이·넓이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 9,
+      "supportingQuestionUids": [
+        "qid_v1_1860d0a9e596a101016c42139217d6ecd482209e87a3137ed9eea78f6728db95",
+        "qid_v1_21d63a9e9bc6b47608c3cb9c22a5e9943b3118b1b7e9240958605d52b3a7b24c",
+        "qid_v1_2e139761a3219a8d493129b08d4d26866eae617586f605ec72cffc586886d563",
+        "qid_v1_695a4f7ba271112e7c6b9646d4d740eaa405ba0255d91b2b518012577388fa97",
+        "qid_v1_88bc733b9c131543daf257062711c6d623d1890db0d58df4adc34410a20e6414",
+        "qid_v1_98254ca4e48810015fa935f5adc121379ea82507740d508f1705b98e398e9894",
+        "qid_v1_b0748ddad1adbd87f9f86767c54e2cdb23764f692a0b848ab6f601506acfd72f",
+        "qid_v1_df0d572b86b671ec55d9b1a01bcfc8e698cacb59cd1c80fca3b3a8c0006ad495",
+        "qid_v1_e228cdc936628e84fce5ae7d0083eae3bc0d7cde9ce846813d33639fdfe7cb28"
+      ],
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_M2_PYTHAGOREAN_RELATION_CIRCLE_LENGTH",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
     }
   ],
   "droppedTemplates": [],

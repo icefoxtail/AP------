@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-53ef07d7c850-6fb11799",
+  "sourceArchiveFile": "original/high/h2/2final/22_매산고_2학기_기말_고2_수학II.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_877701c8a692b9ce69987b13d0e24122c453259db283681c9ae45e134d00ec57",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_DERIVATIVE_TO_FUNCTION",
+      "step": "그래프의 두 영점과 꼭짓점으로 도함수를 정하고 적분한 함수값 차를 이용한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1127b88a031b55238ad15867fd74a0b47b89c40c34425fd6b3736992b63edbe3",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+      "templateKey": "TPL_MONOTONICITY_CONDITION",
+      "step": "도함수 이차식이 전 실수에서 비음수이도록 판별식 조건을 세운다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_58e09945bca239bf7b174df26dc2ac8c1e536dcdbe7b756c00348cd5fc27ac3b",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM",
+      "step": "0부터 5까지 정적분을 단위 구간별 주어진 값의 합으로 분할한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e89606117a34f94f2dee023181135de0597f04273e4e11633a41bab62e3c2e2f",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+      "templateKey": "TPL_AREA_FROM_INTEGRAL_DATA",
+      "step": "평행이동 관계로 목표 구간의 정적분을 복원하고 단조성으로 함수가 양수임을 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_97ddc783298d5b287ee740d3b814f0831910043789647adaea774111de9eec0d",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM",
+      "step": "상한과 하한이 같은 x=a에서 적분이 0인 성질로 a(a-4)=0을 푼다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_de602e60bec5f6993516b8024bedefc3dd25804099f6342f7cfec3282bc478c4",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_INTEGRAL_VALUE_SYSTEM_FUNCTION_DETERMINATION",
+      "step": "상수 A=∫|f|를 두고 영점으로 절댓값 적분을 분할해 A의 방정식을 푼다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4c45b74ab90590187dd47cdec9e4bb1970dd36000a8173fd56bbd76640f995ee",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+      "templateKey": "TPL_MOTION_CONDITION_PARAMETER",
+      "step": "속도 차를 적분한 위치 차가 두 양의 근을 갖도록 삼차식의 극값을 매개변수로 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a920f65872a3603415bbfb24a7625345838852384e09e9da11a03333a200c2bd",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM",
+      "step": "역함수 존재를 도함수 부호로 확인하고 역함수 적분을 원함수 넓이로 변환한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d7fe72d7cf96db936365bce56aa996323392d8eec823f48682ecc305ed997f6b",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+      "templateKey": "TPL_NONDIFFERENTIABILITY_STRUCTURE",
+      "step": "절댓값의 미분불가능점 개수가 바뀌는 높이로 도함수의 단순근·중근 위치를 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_82f1b17660171ebb1e6fdc8b1f9b8f23763c578cb53089edc4dc9c087755db66",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_INTEGRAL_VALUE_SYSTEM_FUNCTION_DETERMINATION",
+      "step": "근으로 인수분해한 이차식의 정적분 조건을 풀어 계수를 복원한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f3b9b9f18be7c5bdcb8085066a7dd50242182290d394a8919e44eb94be97caa1",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_MOTION",
+      "templateKey": "TPL_DERIVATIVE_MOTION_GEOMETRIC_RATE",
+      "step": "닮음으로 물의 반지름을 높이와 연결하여 V(t)를 세우고 시간 미분으로 부피 변화율을 구한다.",
+      "note": "필요 TPL: 기하적 양의 시간 변화율 — 닮음으로 길이와 시간의 관계를 세우고 넓이·부피를 시간 미분한다. check-ledger: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    }
+  ]
+}

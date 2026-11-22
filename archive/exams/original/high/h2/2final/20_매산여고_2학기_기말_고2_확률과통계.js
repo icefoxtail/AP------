@@ -471,7 +471,11 @@ window.questionBank = [
     "wide": false,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 46.08과 53.92에 채워진 점이 있고, 두 점 사이가 파란 구간 46.08 ≤ x ≤ 53.92로 표시되어 있다.",
+    "solutionImageCaption": "모표준편차는 √100 = 10이고 표본평균의 표준오차는 10 ÷ 5 = 2이다. 95% 신뢰구간의 길이는 2 × 1.96 × 2 = 7.84. 따라서 답은 ③ 7.84이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -839,7 +843,11 @@ window.questionBank = [
     "wide": false,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 16과 64에 채워진 점이 있고, 두 점 사이가 파란 구간 16 ≤ x ≤ 64로 표시되어 있다.",
+    "solutionImageCaption": "신뢰구간의 길이는 2 × 2 × 8 ÷ √n = 32 ÷ √n이고, 4 ≤ 32 ÷ √n ≤ 8에서 16 ≤ n ≤ 64이다. 양 끝을 포함해 세면 64 - 16 + 1 = 49개. 따라서 답은 ④ 49이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -897,7 +905,11 @@ window.questionBank = [
     "wide": false,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: S로 이름 붙은 정규분포 곡선에서 1368의 오른쪽 꼬리가 칠해져 있고, 아래에 0과 2가 적힌 z축이 함께 그려져 있다.",
+    "solutionImageCaption": "16개의 총수명 S는 평균 16 × 85 = 1360, 표준편차 √16 = 4인 정규분포를 따르고, 1368을 표준화하면 2이다. P(Z ≥ 2) = 0.5 - 0.4772 = 0.0228. 따라서 답은 ① 0.0228이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1078,7 +1090,11 @@ window.questionBank = [
     "wide": false,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선의 왼쪽 -1.5 바깥과 오른쪽 1.5 바깥 넓이가 각각 p로 표시되어 있고, 가로축에 -1.5, 0, 1, 1.5가 적혀 있다.",
+    "solutionImageCaption": "X̄의 표준편차는 4 ÷ 2 = 2이므로 P(X̄ ≤ 33) = P(Z ≤ 1.5) = 0.9332이고, 합이 1이므로 P(Ȳ ≤ 69) = P(Z ≤ -1.5)이다. (69-75) ÷ (σ ÷ 3) = -1.5에서 σ = 12이므로 Ȳ의 표준편차는 4이고, P(Ȳ ≤ 79) = 0.5 + 0.3413 = 0.8413. 따라서 답은 ③ 0.8413이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1239,7 +1255,11 @@ window.questionBank = [
     "wide": false,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로에 첫째 표본 2, 4, 6, 세로에 둘째 표본 2, 4, 6이 적힌 표로, 각 칸에 두 값의 합 4, 6, 8, 10, 12가 들어 있다. 합이 10인 칸 두 개와 12인 칸 하나가 진하게 칠해져 있다.",
+    "solutionImageCaption": "확률의 합이 1이므로 b = 4분의 3 - a이고, 표본평균이 4 이하인 것은 두 값의 합이 8 이하인 것과 같다. 여사건인 (4,6), (6,4), (6,6)의 확률 ab + ab + b² = 16분의 9 - a²이므로 P(X̄ ≤ 4) = a² + 16분의 7. 따라서 답은 a² + 16분의 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1350,6 +1370,10 @@ window.questionBank = [
     "wide": false,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산여고_2학기_기말_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선의 가운데 -1.96과 1.96 사이가 칠해져 있고, 0을 지나는 세로 점선이 그려져 있다.",
+    "solutionImageCaption": "표본평균은 250 ÷ 50 = 5이고, 편차 제곱합 750에서 표본분산은 15, 표본표준편차는 √15이다. 오차한계는 1.96 × √15 ÷ √50 = 1.96 × √30 ÷ 10 = 0.98이므로 5 ± 0.98. 따라서 답은 4.02 ≤ m ≤ 5.98이다.",
+    "solutionImageSize": "full"
   }
 ];

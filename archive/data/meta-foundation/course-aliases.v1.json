@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "course-aliases-v1",
+  "policy": "Course names that denote the same course (spellingGroups) and the same subject across the 2015 and 2022 curricula (successorGroups). Only correspondences with evidence in this repository are listed; nothing is inferred from similar-looking names. Courses of different grades are never in one group. Append-only: add a member or a group, never move or delete one.",
+  "evidencePolicy": "Each group names the repository file that shows the same course/subject under these names. A spelling listed only because question_metadata.json carries it as a row's standardCourse states the grade or course explicitly in the text.",
+  "spellingGroups": [
+    {
+      "id": "MIDDLE1",
+      "grade": "중1",
+      "members": ["중1 수학", "中1 수학", "중1", "M1-1", "M1-2", "중학 수학"],
+      "evidence": ["archive/data/meta-foundation/canonical/packs/middle1/pack.json (standardCourses: 중1 수학, M1-2, M1-1)", "archive/data/meta-foundation/canonical/packs/middle1/bindings.json (中1 수학 bindings)", "archive/data/meta-foundation/compiled/curriculum_bindings.json (中1 수학 next to 중1 수학)", "archive/data/question_metadata.json (row standardCourse 중1)", "archive/data/question_metadata.json (row standardCourse 중학 수학: all 221 rows have a middle/m1 exam path, none elsewhere; counted 2026-11-18)"]
+    },
+    {
+      "id": "MIDDLE2",
+      "grade": "중2",
+      "members": ["중2 수학", "중2", "중2-1", "중2-2", "M2-1", "M2-2", "중학교 2학년", "중학교 수학 2 (2009 개정 교육과정)"],
+      "evidence": ["archive/data/meta-foundation/canonical/packs/middle2/pack.json (standardCourses: 중2, M2-1, 중2-1, 중2 수학)", "archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json (중2-2, M2-2)", "archive/data/question_metadata.json (row standardCourse values naming 중2 explicitly)"]
+    },
+    {
+      "id": "MIDDLE3",
+      "grade": "중3",
+      "members": ["중3 수학", "중3", "중3-1", "중3-2", "M3-1", "M3-2", "M3", "중학교 3학년", "중학교 수학 3 (2009 개정 교육과정)"],
+      "evidence": ["archive/data/meta-foundation/canonical/packs/middle3/pack.json (standardCourses: 중3-1, M3-1, 중3 수학, M3-2)", "archive/data/question_metadata.json (row standardCourse values naming 중3 explicitly)"]
+    },
+    {
+      "id": "H15_COMMON_SANG",
+      "grade": "고1",
+      "members": ["수학(상)", "수학_상"],
+      "evidence": ["archive/archive2-canonical.js:106 (courseAliases 수학_상 -> 수학(상))", "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs:1850 (normalizedScope)", "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json (scope 수학_상)"]
+    },
+    {
+      "id": "H15_COMMON_HA",
+      "grade": "고1",
+      "members": ["수학(하)", "수학_하"],
+      "evidence": ["archive/archive2-canonical.js:106 (courseAliases 수학_하 -> 수학(하))", "archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs:1850 (normalizedScope)", "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json (scope 수학_하)"]
+    },
+    {
+      "id": "H22_COMMON1",
+      "grade": "고1",
+      "members": ["공통수학1"],
+      "evidence": ["archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json (scope 공통수학1)"]
+    },
+    {
+      "id": "H22_COMMON2",
+      "grade": "고1",
+      "members": ["공통수학2"],
+      "evidence": ["archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json (scope 공통수학2)"]
+    },
+    {
+      "id": "H15_MATH1",
+      "grade": "고2",
+      "members": ["수학I", "수학Ⅰ"],
+      "evidence": ["archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json (scope 수학I)", "archive/data/question_metadata.json (row standardCourse 수학Ⅰ)"]
+    },
+    {
+      "id": "H15_MATH2",
+      "grade": "고2",
+      "members": ["수학II", "수학Ⅱ"],
+      "evidence": ["archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json (scope 수학II)", "archive/data/question_metadata.json (row standardCourse 수학Ⅱ)"]
+    },
+    {
+      "id": "H22_ALGEBRA",
+      "grade": "고2",
+      "members": ["대수"],
+      "evidence": ["archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json (scope 대수)"]
+    },
+    {
+      "id": "H22_CALCULUS1",
+      "grade": "고2",
+      "members": ["미적분I", "미적분1", "미적분Ⅰ"],
+      "evidence": ["archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json (scope 미적분I)", "archive/data/question_metadata.json (textbook 비상교육_미적분1 rows carry 미적분1)"]
+    },
+    {
+      "id": "H15_CALCULUS",
+      "grade": "고3",
+      "members": ["미적분"],
+      "evidence": ["archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json (2015 scope 미적분)"]
+    },
+    {
+      "id": "H22_CALCULUS2",
+      "grade": "고3",
+      "members": ["미적분II", "미적분Ⅱ"],
+      "evidence": ["archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json (2022 scope 미적분II)"]
+    },
+    {
+      "id": "PROBABILITY_STATISTICS",
+      "grade": "고2",
+      "members": ["확률과 통계", "확률과통계"],
+      "evidence": ["archive/data/meta-foundation/canonical/packs/probability-statistics/pack.json (standardCourses: 확률과 통계, 확률과통계)", "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-probability-statistics.json (both curricula)"]
+    },
+    {
+      "id": "GEOMETRY",
+      "grade": "고2",
+      "members": ["기하", "기하와 벡터", "기하와벡터"],
+      "evidence": ["archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json (2015 and 2022 both scope 기하)", "archive/data/question_metadata.json (row standardCourse 기하와 벡터)"]
+    }
+  ],
+  "successorGroups": [
+    {
+      "id": "HIGH1_COMMON",
+      "subject": "고1 공통 수학",
+      "curricula": { "2015": ["수학(상)", "수학(하)"], "2022": ["공통수학1", "공통수학2"] },
+      "evidence": ["archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json (one crosswalk, grade H1, scopes 수학_상/수학_하/공통수학1/공통수학2)"]
+    },
+    {
+      "id": "HIGH2_MATH1",
+      "subject": "수학I / 대수",
+      "curricula": { "2015": ["수학I"], "2022": ["대수"] },
+      "evidence": ["archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json (subjectFamily MATH1_ALGEBRA, scopes 수학I and 대수)"]
+    },
+    {
+      "id": "HIGH2_MATH2",
+      "subject": "수학II / 미적분I",
+      "curricula": { "2015": ["수학II"], "2022": ["미적분I"] },
+      "evidence": ["archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json (scopes 수학II and 미적분I)"]
+    },
+    {
+      "id": "HIGH3_CALCULUS",
+      "subject": "미적분 / 미적분II",
+      "curricula": { "2015": ["미적분"], "2022": ["미적분II"] },
+      "evidence": ["archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json (scopes 미적분 and 미적분II)"]
+    }
+  ],
+  "courseMoves": [
+    {
+      "id": "M3_COORD_DISTANCE_TO_HIGH1",
+      "subject": "좌표평면 두 점 사이의 거리·반사 최단거리 (2009 개정 중3 2학기 중간고사 단원, 2022 공통수학2)",
+      "problemTypeKeys": ["PT_COORD_DISTANCE", "PT_MOVE_REFLECTION_SHORTEST"],
+      "rowGrades": ["중3"],
+      "bindingGrades": ["고1"],
+      "maxExamYear": 2019,
+      "evidence": ["archive/data/meta-foundation/canonical/packs/geometry-equations/bindings.json (these PTs are bound to 수학(상) and 공통수학2 only)"]
+    }
+  ]
+}

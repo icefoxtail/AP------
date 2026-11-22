@@ -5,6 +5,7 @@ const vm = require("node:vm");
 const crypto = require("node:crypto");
 const core = require("../archive/archive2-core.js");
 const Similar = require("../archive/archive2-similar.js");
+const { loadWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 const catalog = core.decodeCatalog(JSON.parse(fs.readFileSync("archive/data/archive2-catalog.json")));
 const pairs = Similar.pairSimilarSets(catalog.exams);
@@ -15,7 +16,7 @@ const originalWithout = () =>
   catalog.exams.find((exam) => exam.contentType === "기출" && !pairs.setsFor(exam.file).length);
 
 // Loads the real workspace script (minus its network bootstrap) against the real catalog.
-function load(search = "?view=find&material=exam") {
+function load(search = "?view=find&material=exam", { unified = false } = {}) {
   const events = new Map(), nodes = new Map(), storage = new Map(), opened = [];
   const node = (id) => {
     if (!nodes.has(id)) nodes.set(id, {
@@ -57,17 +58,15 @@ function load(search = "?view=find&material=exam") {
     Archive2History: require("../archive/archive2-history.js"),
     Archive2Source: require("../archive/archive2-source.js"),
     Archive2Similar: Similar,
+    ...(unified ? { Archive2UnifiedUnits: require("../archive/archive2-unified-units.js") } : {}),
   };
   context.window = context;
   const ctx = vm.createContext(context);
-  const source = fs.readFileSync("archive/archive2-workspace.js", "utf8");
-  const startup = source.lastIndexOf("  (async () => {");
-  assert.ok(startup > 0);
-  vm.runInContext(source.slice(0, startup) + `
+  loadWorkspace(ctx, `
     render = () => {};
     globalThis.workspaceTest = { state, findExams, renderFind, renderHome, renderUnlinkedSimilar, routeUrl, readUrl,
       rememberRecentExam, findSummaryText };
-  })();`, ctx);
+  `);
   const w = ctx.workspaceTest;
   w.state.catalog = catalog;
   w.state.finderIndex = core.buildFinderIndex(catalog);
@@ -211,6 +210,47 @@ test("grade buttons set the grade filter and a second press clears it; terms sti
   assert.equal(t.w.state.find.axis, "");
 });
 
+test("the subjects of 고1~고3 show right under the grade buttons and share state with the 과목 select", async () => {
+  const t = load("?view=find&material=exam", { unified: true });
+  const subjectButtons = (markup) => [...markup.matchAll(/data-action="finder-subject"[^>]*data-subject="([^"]*)" aria-pressed="(true|false)"/g)]
+    .map((match) => [match[1], match[2]]);
+  const fold = (markup) => markup.slice(markup.indexOf('<details class="find-more"'), markup.indexOf("</details>", markup.indexOf('<details class="find-more"')));
+  // No grade, or middle school (one subject): no subject row.
+  assert.deepEqual(subjectButtons(t.w.renderFind()), []);
+  await t.click({ action: "finder-grade", grade: "중1" });
+  assert.deepEqual(subjectButtons(t.w.renderFind()), []);
+  await t.click({ action: "finder-grade", grade: "중1" });
+  for (const grade of ["고1", "고2", "고3"]) {
+    await t.click({ action: "finder-grade", grade });
+    const markup = t.w.renderFind();
+    const row = subjectButtons(markup);
+    assert.ok(row.length >= 3 && row[0][0] === "" && row[0][1] === "true", grade + ": 전체 first and chosen");
+    assert.ok(markup.indexOf('class="find-subjects"') > markup.indexOf('class="find-grades"'), "below the grade buttons");
+    assert.ok(markup.indexOf('class="find-subjects"') < markup.indexOf('<details class="find-more"'), "outside the fold");
+    // Press a subject: the filter, the exam list and the fold's select all follow the same state.
+    const pick = row[1][0];
+    const before = t.w.findExams().length;
+    await t.click({ action: "finder-subject", subject: pick });
+    assert.equal(t.w.state.find.semanticSubject, pick, grade);
+    assert.deepEqual(subjectButtons(t.w.renderFind()).filter(([, pressed]) => pressed === "true").map(([value]) => value), [pick]);
+    assert.match(fold(t.w.renderFind()), new RegExp(`<option value="${pick}" selected>`), "the select in the fold shows the same subject");
+    assert.ok(t.w.findExams().length <= before);
+    assert.doesNotMatch(t.w.renderFind(), /<details class="find-more" open>/, "choosing with the buttons does not pop the fold open");
+    // Changing the select moves the buttons; 전체 clears.
+    const other = row[2][0];
+    await t.change("semanticSubject", other);
+    assert.deepEqual(subjectButtons(t.w.renderFind()).filter(([, pressed]) => pressed === "true").map(([value]) => value), [other]);
+    await t.click({ action: "finder-subject", subject: "" });
+    assert.equal(t.w.state.find.semanticSubject, "");
+    assert.deepEqual(subjectButtons(t.w.renderFind()).filter(([, pressed]) => pressed === "true").map(([value]) => value), [""]);
+    // Changing the grade resets the subject.
+    await t.click({ action: "finder-subject", subject: pick });
+    await t.click({ action: "finder-grade", grade });
+    assert.equal(t.w.state.find.grade, "");
+    assert.equal(t.w.state.find.semanticSubject, "");
+  }
+});
+
 test("the filters that moved into the fold still work: curriculum, subject, school, year range", async () => {
   const t = load();
   const markup = t.w.renderFind();
@@ -294,10 +334,11 @@ test("home rows use the same row with the similar-problem cell, and the hint say
   assert.match(row, /class="exam-row-sim has"/);
   assert.match(row, /오늘/);
   assert.doesNotMatch(row, /finder-card-more/, "the 더보기 menu belongs to 학교별 기출 only");
-  // The same function draws a finder row: identical markup apart from range, 더보기 and the day label.
+  // The same function draws a finder row: identical markup apart from range, 더보기, the day label and the 함께 출제 check (finder only).
   t.w.state.find = { material: "exam", file };
   const finderRow = rowsOf(t.w.renderFind())[0];
-  const strip = (html) => html.replace(/<details class="finder-card-more">.*?<\/details>/s, "").replace(/<div class="exam-row-range">.*?<\/div>/s, "").replace(/ · 오늘/, "").replace(/\s+/g, " ");
+  const strip = (html) => html.replace(/<button data-action="multi-pick"[^>]*>.*?<\/button>/gs, "").replace(/ has-pick/, "")
+    .replace(/<details class="finder-card-more">.*?<\/details>/s, "").replace(/<div class="exam-row-range">.*?<\/div>/s, "").replace(/ · 오늘/, "").replace(/\s+/g, " ");
   assert.equal(strip(row), strip(finderRow));
 });
 

@@ -435,9 +435,9 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "A에서 시작해 각 교점의 경로 수를 왼쪽·아래쪽 수의 합으로 적고 P,Q는 0으로 둔다.\n아래 행부터 값은\n$1,1,1,1,1,1,1$;\n$1,2,3,4,5,6,7$;\nP를 뺀 행은 $1,3,0,4,9,15,22$;\nQ를 뺀 행은 $1,4,4,8,0,15,37$이다.\n맨 위 실제 교점에서 오른쪽으로 진행하면 B의 값은 64이다.\n따라서 정답은 ①이다.",
-    "solutionImage": "assets/images/17_효천고_1학기_중간_고2_확률과통계/q10-solution.svg",
-    "solutionImageAlt": "불규칙한 도로망의 각 교점에 최단 경로 수를 표시하고 P, Q를 0으로 둔 그림",
-    "solutionImageCaption": "왼쪽 교점과 아래 교점의 수를 더해 맨 위 행의 B=64를 얻는다.",
+    "solutionImage": "assets/images/17_효천고_1학기_중간_고2_확률과통계/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 격자 모양의 길에서 출발점 A부터 각 교차점까지 가는 최단 경로의 수를 적은 그림이다.",
+    "solutionImageCaption": "각 교차점에 A에서 오는 최단 경로 수를 적는다. 한 점의 수는 왼쪽 점과 아래쪽 점의 수를 더한 값이고, 지나면 안 되는 P와 Q는 0으로 두어 더하지 않으며 맨 윗줄은 왼쪽 두 점이 없다. 이렇게 채우면 B에 64가 적힌다. 따라서 최단 경로는 64가지이고 답은 ①이다.",
     "solutionImageSize": "full",
     "solutionReminderImagePolicy": "STRIP_INLINE",
     "solutionImageLayout": "fullwidth",
@@ -934,7 +934,11 @@ window.questionBank = [
     "imageStatus": "none",
     "answerStatus": "generated_pending",
     "solutionStatus": "generated_pending",
-    "reviewStatus": "manual_review"
+    "reviewStatus": "manual_review",
+    "solutionImage": "assets/images/17_효천고_1학기_중간_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 여섯 개의 점이 육각형 꼭짓점으로 놓인 원탁 그림이며 점 A와 마주 보는 점 D, 점 B와 점 E, 점 C와 점 F의 마주 보는 세 쌍이 구분되어 있다.",
+    "solutionImageCaption": "원탁의 6자리를 육각형 꼭짓점으로 나타낸 그림이다. 부부끼리 이웃하는 경우는 세 부부를 세 묶음으로 보아 (3−1)!=2가지이고 묶음 안의 순서가 2의 3제곱=8가지이므로 m=16이다. 부부끼리 마주 보는 경우는 한 사람을 점 A에 고정하면 배우자가 마주 보는 점 D로 정해지고, 남은 두 부부가 마주 보는 두 쌍 B와 E, C와 F에 앉는 방법이 2!×2의 제곱=8가지이므로 n=8이다. 따라서 m+n=24이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

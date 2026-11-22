@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-970062a5d6e8-0a02e652",
+  "sourceArchiveFile": "original/high/h2/2mid/22_효천고_2학기_중간_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_f7d1fab8c933a63c7132c56267bc9081c6de628b050711b532e1c4275a38aa90",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "step": "독립 두 번 동전던지기에서 앞면0회의 여사건 확률을 구한다.",
+      "note": "ACTIVE 키·TPL 상위관계 직접 확인; 연결 없음(NEEDS_BINDING).",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bda390c1f0f729d90f3829e1454a61f6619e6a9ab20326636c36781961cc184a",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_STANDARDIZATION",
+      "step": "분산25의 제곱근5로 X≤5를 표준정규 왼쪽꼬리 z≤-1로 바꾼다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_85ab50e6148dcabc6264743f06e28b47451d272d5eab3e2ba6f8a2a691fd5e2e",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_NORMAL_RELATION",
+      "step": "안경쓴 학생수 B(400,0.1)를 평균40 표준편차6인 정규분포로 근사한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2993c684dc518bd7104104c83ed86113183b86b517ce13e446e6f74d35fa1ebe",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+      "step": "36회 성공횟수 H~B(36,1/3)에 대해 좌표를5H-72로 나타내 이항분산을 변환한다.",
+      "note": "ACTIVE 키·TPL 상위관계 직접 확인; 연결 없음(NEEDS_BINDING).",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8ea0705b1914a3de683dc1014a048c54383fc1840c3e7918c6fdccb513b37fbe",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+      "step": "이항질량의 가중합을 E(X²+X)로 읽고 이항평균·분산으로 계산한다.",
+      "note": "ACTIVE 키·TPL 상위관계 직접 확인; 연결 없음(NEEDS_BINDING).",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}

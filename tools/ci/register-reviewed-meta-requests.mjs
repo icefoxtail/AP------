@@ -3,7 +3,13 @@
 //
 //   node tools/ci/register-reviewed-meta-requests.mjs --applied-file <f> --rejected-file <f> \
 //     [--root <repo>] [--registrar <script>] [--rejected-dir <dir>] [--guard-paths-file <f>] \
-//     [--summary-file <md>] -- <request.json>...
+//     [--summary-file <md>] [--type-batch] -- <request.json>...
+//
+// With --type-batch, plain direct type judgments (DIRECT_JUDGMENT without registryChanges, default registrar only) run in
+// THIS process through a TypeBatch (archive/tools/meta-foundation/register-type-batch.mjs): the 75 MB metadata, the identity map
+// and the registry tables are read once and question_metadata.json is written once, instead of once per request (about nine
+// seconds each). The files written, the receipts, the refusals and their messages are the same as with one process per request.
+// Any other request first gets the metadata flushed to disk and runs in its own registrar process as below.
 //
 // Every request is registered by its own registrar invocation. A request that the registrar
 // refuses (stale `before`, drifted evidence, ...) is fail-closed for THAT request only: the
@@ -23,6 +29,7 @@
 // 2 = a refused request left the working tree changed (isolation cannot be proven) - fatal.
 // Nothing is committed or pushed here. Run it from the repository root (or pass --root).
 import crypto from "node:crypto";
+import { hasShards, assembleMetadataFile } from "../../archive/tools/meta-foundation/question-metadata-format.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -31,7 +38,7 @@ import { fileURLToPath } from "node:url";
 import { verifyStudentAccess } from '../../archive/tools/meta-foundation/verify-meta-pipeline-student-access.mjs';
 import { AUDIT_PRESERVATION_SCHEMA, AUDIT_SOURCE_PRESERVATION_SCHEMA, DIFFICULTY_REQUEST_SCHEMA, auditPreservationDependency,
   basicPreservationDescriptor, difficultyBeforeBindings, nativeRegistryDependencyDescriptor,
-  nativeRegistryDependencies, orderNativeRequests } from './archive-pr-native-preview.mjs';
+  nativeRegistryDependencies, orderNativeRequests, attachNativeRegistryVersionDependencies } from './archive-pr-native-preview.mjs';
 
 export function acceptPendingSupplement(opt, requestAbs, error) {
   const bytes=fs.readFileSync(requestAbs),doc=JSON.parse(bytes.toString('utf8'));
@@ -79,6 +86,7 @@ function parseArgs(argv) {
   let i = 0;
   for (; i < argv.length && argv[i] !== "--"; i += 2) {
     if (argv[i] === "--reset-derived") { opt.resetDerived = true; i -= 1; continue; }
+    if (argv[i] === "--type-batch") { opt.typeBatch = true; i -= 1; continue; }
     const key = names[argv[i]];
     if (!key || argv[i + 1] === undefined) throw new Error(`unknown or valueless argument: ${argv[i]}`);
     opt[key] = argv[i + 1];
@@ -96,6 +104,22 @@ const jsonText = value => JSON.stringify(value, null, 2) + "\n";
 // projection/shadow replay. Main supplies the current immutable source bytes;
 // ordinary unrelated request order and per-request refusal handling are kept.
 export function orderedRequestPaths(opt, { onDependencyError } = {}) {
+  return orderedRequestPathsForHead(opt, { onDependencyError }, {});
+}
+
+// One private HEAD context is shared by ordering and the prewrite dependency
+// graph. Taxonomy-free batches retain their existing no-extra-Git-read path.
+function attachMainRegistryVersionDependencies(opt, descriptors, context) {
+  if(!descriptors.some(row=>row.registryDependency?.geometryPackProvider))return descriptors;
+  if(context.headSha===undefined) {
+    const head=spawnSync('git',['rev-parse','HEAD'],{cwd:opt.root,encoding:'utf8',stdio:['ignore','pipe','pipe']});
+    if(head.status!==0)throw Error('REGISTRY_VERSION_CONTEXT');
+    context.headSha=head.stdout.trim();
+  }
+  return attachNativeRegistryVersionDependencies({root:opt.root,headSha:context.headSha,requests:descriptors});
+}
+
+function orderedRequestPathsForHead(opt, { onDependencyError } = {}, registryContext) {
   if(onDependencyError) {
     const auditArgs=opt.requests.filter(requestArg=>{
       const absolute=path.resolve(opt.root,requestArg);if(!fs.existsSync(absolute))return false;
@@ -106,12 +130,12 @@ export function orderedRequestPaths(opt, { onDependencyError } = {}) {
     });
     const rejected=[];
     for(const requestArg of auditArgs) {
-      try {orderedRequestPaths({...opt,requests:opt.requests.filter(p=>p===requestArg||!auditArgs.includes(p))});}
+      try {orderedRequestPathsForHead({...opt,requests:opt.requests.filter(p=>p===requestArg||!auditArgs.includes(p))},{},registryContext);}
       catch(error) {rejected.push(requestArg);onDependencyError(posix(path.relative(opt.root,path.resolve(opt.root,requestArg))),error);}
     }
     // Invalid declarations have no executable dependency edge. They are rejected
     // without invoking a registrar; unrelated requests retain their normal order.
-    return [...rejected,...orderedRequestPaths({...opt,requests:opt.requests.filter(p=>!rejected.includes(p))})];
+    return [...rejected,...orderedRequestPathsForHead({...opt,requests:opt.requests.filter(p=>!rejected.includes(p))},{},registryContext)];
   }
   const descriptors=opt.requests.map(requestArg=>{
     const absolute=path.resolve(opt.root,requestArg),rel=posix(path.relative(opt.root,absolute));
@@ -168,6 +192,7 @@ export function orderedRequestPaths(opt, { onDependencyError } = {}) {
     if(row.kind!=='difficulty5-ratings'&&payload.expectedQuestionCount!==bank.length)
       throw Error('AUDIT_DEPENDENCY_SOURCE_DENOMINATOR');
   }
+  attachMainRegistryVersionDependencies(opt,descriptors,registryContext);
   return orderNativeRequests(descriptors).map(row=>row.requestArg);
 }
 
@@ -197,6 +222,8 @@ export function resetDerived(opt) {
     const clean = git(["clean", "-fdq", "--", spec]);
     if (clean.status !== 0) throw new Error(`clean failed for ${spec}: ${clean.stderr.trim()}`);
   }
+  // The assembled question_metadata.json is ignored by git, so the restore above did not touch it: rebuild it from the restored shards.
+  if (hasShards(opt.root)) assembleMetadataFile(opt.root);
 }
 
 // Moves a request out of the inbox into the rejected dir and writes its deterministic rejection record.
@@ -214,6 +241,32 @@ export function recordRejection(opt, requestAbs, { error, exitCode = null, stage
   log(`[register] REJECTED (${stage}) ${rel}: ${error}`);
   // Workflow annotation: visible on the run page even though the run itself stays green (see archive-pages-release.yml).
   if (process.env.GITHUB_ACTIONS) console.log(`::error title=Reviewed meta request rejected (${stage})::${name}: ${error.replace(/[\r\n%]/g, " ")}`);
+}
+
+// The parsed request when it is a plain direct type judgment (see isTypeBatchRequest), else null.
+function typeBatchDocument(runtime, requestAbs) {
+  try {
+    const doc = JSON.parse(fs.readFileSync(requestAbs, "utf8"));
+    return runtime.isTypeBatchRequest(doc) ? doc : null;
+  } catch (error) { if (error instanceof SyntaxError) return null; throw error; }
+}
+
+// Runs one request in this process and answers like the registrar process would: status 0, or status 1 with the error text
+// on stderr (summarizeFailure keeps the one `Error: <message>` line of it, as for a crashed registrar).
+function runTypeBatchRequest(runtime, batch, root, request) {
+  try {
+    runtime.registerReviewedExamV2({ root, request, write: true, typeBatch: batch });
+    return { status: 0, stderr: "", stdout: "" };
+  } catch (error) {
+    return { status: 1, stderr: String(error?.stack || error), stdout: "" };
+  }
+}
+
+// The registrar module is heavy, so it is only imported when --type-batch asks for it (registerRequests itself stays synchronous).
+export async function loadTypeBatchRuntime() {
+  const { registerReviewedExamV2 } = await import("../../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs");
+  const { createTypeBatch, isTypeBatchRequest } = await import("../../archive/tools/meta-foundation/register-type-batch.mjs");
+  return { registerReviewedExamV2, createTypeBatch, isTypeBatchRequest };
 }
 
 export function registerRequests(opt, { log = console.log } = {}) {
@@ -236,8 +289,10 @@ export function registerRequests(opt, { log = console.log } = {}) {
 
   const applied = [], rejected = [], pendingSupplement = [];
   let dirtied = null;
-  const dependencyErrors=new Map();
-  const requestOrder=orderedRequestPaths(opt,{onDependencyError:(rel,error)=>dependencyErrors.set(rel,error.message)});
+  // Only with the default registrar: a caller-chosen registrar script is always its own process.
+  const batch = opt.typeBatchRuntime && registrar === path.resolve(root, DEFAULT_REGISTRAR) ? opt.typeBatchRuntime.createTypeBatch(root) : null;
+  const dependencyErrors=new Map(),registryContext={};
+  const requestOrder=orderedRequestPathsForHead(opt,{onDependencyError:(rel,error)=>dependencyErrors.set(rel,error.message)},registryContext);
   // Keep the selected basic owners before a failed request is moved away.
   // A dependent D5 request must not execute after its rebind was refused.
   const basicOwners=new Map(),registryRequests=[];
@@ -249,10 +304,18 @@ export function registerRequests(opt, { log = console.log } = {}) {
         for(const item of doc.items||[])basicOwners.set(item.questionUid,posix(path.relative(root,absolute)));
     }catch(error){if(!(error instanceof SyntaxError))throw error;}
   }
+  attachMainRegistryVersionDependencies(opt,registryRequests,registryContext);
   const registryDependencies=nativeRegistryDependencies(registryRequests);
+  // The batch's metadata is written even when something in the loop throws: a request already applied has its receipt on disk, and a
+  // refused or crashed in-process request has already had its rows put back (register-type-batch.mjs begin()/undo), so what is flushed
+  // is exactly the applied requests - never a receipt without its metadata.
+  try {
   for (const requestArg of requestOrder) {
     const requestAbs = path.resolve(root, requestArg), rel = posix(path.relative(root, requestAbs)), name = path.basename(requestAbs);
     if (!fs.existsSync(requestAbs)) { rejected.push({ request: rel, name, error: "request file not found", exitCode: null }); continue; }
+    // Anything but a plain type judgment reads (or writes) the metadata on disk: bring it up to date before the fingerprint is taken.
+    const typeDoc = batch ? typeBatchDocument(opt.typeBatchRuntime, requestAbs) : null;
+    if (batch && !typeDoc) { batch.flush(); batch.drop(); }
     const before = fingerprint();
     let conflicts=[],dependencyError=dependencyErrors.has(rel)?'Error: '+dependencyErrors.get(rel):'';
     const metadataFile=path.join(root,'archive/data/question_metadata.json');
@@ -273,6 +336,7 @@ export function registerRequests(opt, { log = console.log } = {}) {
     } catch(error){if(!(error instanceof SyntaxError))throw error;}
     const run = dependencyError ? {status:1,stderr:dependencyError,stdout:''}
       : conflicts.length ? {status:1,stderr:'Error: PRESERVE_CURRENT_DIFFICULTY: '+conflicts.join(', '),stdout:''}
+      : typeDoc ? runTypeBatchRequest(opt.typeBatchRuntime, batch, root, typeDoc)
       : spawnSync(process.execPath, [registrar, "--request", rel, "--write"], { cwd: root, encoding: "utf8", maxBuffer: 1 << 28 });
     if (run.status === 0) {
       applied.push({ request: rel, name });
@@ -291,6 +355,7 @@ export function registerRequests(opt, { log = console.log } = {}) {
     recordRejection(opt, requestAbs, { error, exitCode: run.status }, { log });
     rejected.push({ request: rel, name, error, exitCode: run.status });
   }
+  } finally { batch?.flush(); }
   return { applied, rejected, pendingSupplement, dirtied };
 }
 
@@ -327,6 +392,9 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     process.exit(0);
   }
   if (!opt.appliedFile || !opt.rejectedFile) { console.error("usage error: --applied-file and --rejected-file are required"); process.exit(1); }
+  // Load the heavy registrar only when some request is a direct type judgment (the exact test is isTypeBatchRequest, per request).
+  const mentionsTypeJudgment = requestArg => { try { return JSON.parse(fs.readFileSync(path.resolve(opt.root, requestArg), "utf8")).approval?.type === "DIRECT_JUDGMENT"; } catch { return false; } };
+  if (opt.typeBatch && opt.requests.some(mentionsTypeJudgment)) opt.typeBatchRuntime = await loadTypeBatchRuntime();
   const result = registerRequests(opt);
   const list = items => items.map(i => i.request).join("\n") + (items.length ? "\n" : "");
   fs.writeFileSync(opt.appliedFile, list(result.applied));

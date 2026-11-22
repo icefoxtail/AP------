@@ -164,6 +164,7 @@ window.questionBank = [
     "visualAssetType": "source_page_diagram",
     "visualAssetStatus": "cropped_for_manual_cleanup",
     "image": "assets/images/26_팔마고_1학기_기말_고2_대수/q05.png",
+    "imageScale": 100,
     "subUnitKey": "H22-A-08-CORE",
     "subUnit": "수학적 귀납법 핵심 개념",
     "subUnitConfidence": "rule_inferred",

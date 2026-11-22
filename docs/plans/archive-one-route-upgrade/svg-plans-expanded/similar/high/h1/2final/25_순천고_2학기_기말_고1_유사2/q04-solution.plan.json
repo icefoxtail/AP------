@@ -1,0 +1,124 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "MAPPING",
+  "columns": [
+   {
+    "id": "X",
+    "name": "X",
+    "elements": [
+     "1",
+     "2",
+     "3"
+    ]
+   },
+   {
+    "id": "Y",
+    "name": "Y",
+    "elements": [
+     "4",
+     "5",
+     "6"
+    ]
+   },
+   {
+    "id": "Z",
+    "name": "Z",
+    "elements": [
+     "7",
+     "8",
+     "9"
+    ]
+   }
+  ],
+  "arrows": [
+   {
+    "from": {
+     "column": 0,
+     "element": 0
+    },
+    "to": {
+     "column": 1,
+     "element": 2
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 1
+    },
+    "to": {
+     "column": 1,
+     "element": 0
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 2
+    },
+    "to": {
+     "column": 1,
+     "element": 1
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 0
+    },
+    "to": {
+     "column": 2,
+     "element": 1
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 1
+    },
+    "to": {
+     "column": 2,
+     "element": 2
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 2
+    },
+    "to": {
+     "column": 2,
+     "element": 0
+    }
+   }
+  ],
+  "highlight": {
+   "elements": [
+    {
+     "column": 0,
+     "element": 2
+    },
+    {
+     "column": 1,
+     "element": 1
+    },
+    {
+     "column": 2,
+     "element": 2
+    }
+   ]
+  }
+ },
+ "caption": "g의 대응에서 g(5)=9이므로 f(a)=5이다. f의 대응에서 f(3)=5이므로 a=3이다. 따라서 a+f(a)=3+5=8이므로 답은 ④이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "f: 1→6, 2→4, 3→5, g: 4→8, 5→9, 6→7",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "g(5)=9, f(3)=5로 이어지는 경로"
+ ]
+}

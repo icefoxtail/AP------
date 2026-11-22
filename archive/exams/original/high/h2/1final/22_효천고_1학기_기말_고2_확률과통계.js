@@ -669,7 +669,12 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "primaryMethod": "전체확률",
-    "decisiveStep": "화요일 비·맑음 두 가지로 나누어 계산"
+    "decisiveStep": "화요일 비·맑음 두 가지로 나누어 계산",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "월요일에 비가 왔으므로 화요일에 비가 올 확률은 0.7, 오지 않을 확률은 0.3이다. 수요일에 비가 오지 않는 두 경로는 화요일 비 0.7×0.3=0.21과 화요일 안 비 0.3×0.8=0.24이고 합은 0.45이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 13,

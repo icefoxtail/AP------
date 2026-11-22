@@ -6,7 +6,7 @@
     const DEFAULT_DPI = 300;
     const DEFAULT_THRESHOLD = 220;
     const DEFAULT_INSTALLER_URL = 'https://raw.githubusercontent.com/icefoxtail/AP------/main/tools/native-print-agent/APMath-Print-Agent-Installer.zip';
-    const REQUIRED_AGENT_VERSION = '20260824.3';
+    const REQUIRED_AGENT_VERSION = '20261118.1';
     const encoder = new TextEncoder();
 
     function finitePositive(value, fallback) {
@@ -184,8 +184,9 @@
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-AP-Printer': printer,
-                    'X-AP-Agent-Version': REQUIRED_AGENT_VERSION
+                    // 설치된 도우미(20260824.3 포함)의 CORS 허용 헤더는 Content-Type, X-AP-Printer, X-AP-Document-Name, X-AP-Copies뿐이다.
+                    // 그 밖의 헤더를 보내면 브라우저 사전 요청이 거절되어 자동 업데이트가 시작도 못 한다(2026-11-19 핫픽스).
+                    'X-AP-Printer': printer
                 },
                 body: '{}'
             }, 120000);

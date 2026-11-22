@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-e29f104913e1-a9b744e4",
+  "sourceArchiveFile": "original/high/h2/2mid/25_제일고_2학기_중간_고2_수학II.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_9a89780b15d1973bb73ba4b9edc518ef8e6824639f1651f0d64dd6e4075c648d",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_SQUEEZE",
+      "step": "양수 3x²로 부등식을 나누어 양끝의 공통 극한 2/3으로 f/(3x²)를 압축한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f50e24721a09567c451a4052a4be7b641cdb2caaacbe78e6e21a4bb58da09b80",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_RATE_RELATION",
+      "templateKey": "TPL_AVERAGE_RATE_ANALYSIS",
+      "step": "양끝 함숫값 차 28−4를 구간길이 4−1로 나누어 평균변화율 8을 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e5fc0f70f776aba01210569ebe4df7c647db63b63c5caccbdbadb3fe54407c18",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+      "templateKey": "TPL_LIMIT_POLYNOMIAL_RECONSTRUCTION",
+      "step": "비영 극한으로 f(3)=0과 f′(3)=2를 얻어 f=(x−2)²−1을 복원하고 구간 안 꼭짓점에서 최솟값 −1을 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_27874b8a4be09da88d418c26b6ba5a051f5cb250e11d6ff077e22746ed8a18a5",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_RATIONALIZATION",
+      "step": "근호차 1−√(1−x²)를 유리화하여 x²를 약분하면 식이 1/(1+√(1−x²))−x가 되어 극한 1/2이다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ece6b79475de1df60ad290538f6ef19723d3bcca8aac2d3d0d40cc1cec7c9ae8",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_MINIMUM_ROOT_COUNT",
+      "step": "부호가 바뀌는 양의 두 구간의 근을 보장하고 기함수 대칭의 음의 두 근 및 원점 근을 더하여 최소 5개를 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d8edf9a0344423cd637fc32bfa5d20816372459ae7252e20b61ff7d423ff4e21",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+      "step": "치환한 첫 차분비에서 f′(1)=−6을 얻고 기함수 도함수의 짝대칭으로 f′(−1)=−6을 적용해 제곱차 극한 4f′(−1)=−24를 구한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f26fc113b5bd9555f73a96ce261c5f16996af3749f1213c6c51b19cae2a35258",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+      "templateKey": "TPL_DIFFERENTIABILITY_POINT_CONDITION",
+      "step": "경계에서 기울기 2=2a−2를 맞춰 a=2를 정하고 연속값을 맞춰 b=1을 구한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3f1daeab5a911cad3a3ae8c25f4a67e4fc11af4d861df0cacc6ca2de1927e43c",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_FUNCTION_BRANCH_SELECTION",
+      "step": "두 후보식 교점 1,3에서만 연속 가지 전환이 가능하며 각 전환이 꺾임을 만들므로 정확히 한 번 전환하는 네 경우의 합을 비교한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a01537eb1c71c1688490947f35f9b9fbef7c7070e44dc2cf95a06065b8916a37",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_GEOMETRY_PARAMETERIZATION",
+      "step": "접선과 중심의 거리로 반지름 1/(a√2)를 구하고 최대거리 OC+r를 a로 나누어 극한 √2를 얻는다.",
+      "note": "문항·해설 직접 판독. 필수 원본 그림 Git blob 추출 후 시각 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6dcb90b5f1cde1637d27d7b17d20c21e005c1cd7b96f23ad0848af334b0c55b7",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+      "templateKey": "TPL_DERIVATIVE_RELATION_FUNCTION_DETERMINE",
+      "step": "도함수 항등식의 최고차항 비교로 차수≤2를 얻고 이차식 계수를 비교하여 f=x²+x+1을 정한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_33f25128c09dd4e1342a5b99ff67927c82c007bd8a070602915af00fe7f926f2",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+      "templateKey": "TPL_TANGENT_CONSTRUCTION",
+      "step": "도함수 3(x−1)²−3의 최소 기울기 −3과 그 접점 (1,0)을 구하여 접선 y=−3x+3을 구성한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}

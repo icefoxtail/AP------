@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-c897c8b20414-2905c4f5",
+  "sourceArchiveFile": "textbooks/비상교육_공통수학2/비상_공통수학2_유리함수와무리함수_중단원학습점검_고1.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_4eef0c0a644dd8d62be75708c45ecaf8fe2379ed3b10ce24d237b11e54767ffd",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+      "templateKey": "TPL_RATIONAL_EXPRESSION_SIMPLIFY",
+      "step": "통분과 인수분해 약분으로 두 유리식 연산을 간단히 한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8ab346fa69d1bab42af201bf69fc95bcce80ed696580e068b3d68489b2131042",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+      "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+      "step": "유리함수를 k/(x-p)+q 꼴로 고쳐 점근선 x=p,y=q와 제외되는 정의역·치역을 읽는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7806326d4158583f033882eb5ec9ecadb7d0d1f67032038828e6e86bb4bdc1f6",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RADICAL_EXPRESSION",
+      "templateKey": "TPL_RADICAL_EXPRESSION_SIMPLIFY",
+      "step": "근호의 합차 공식과 통분으로 제곱근 곱을 없애 식을 정리한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a277b0416bc5c2e9f853dad2375eb3621d9e8f07ce87579c269d8b1509750d5d",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+      "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_DIRECT",
+      "step": "근호 안 비음수 조건과 제곱근 부호로 정의역·치역 및 그래프 끝점과 방향을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ec69ed677566c94cd5d74a90d12cd3af1b3e133e91d766674bdc283e08ebbeda",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "step": "두 유리함수를 같은 분자1의 점근선 꼴로 정리해 수평·수직 점근선의 이동량을 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6b9e57d708d4001aa024a1d0d5194f0016d90dcd65549ef8858c17ae5665b3ba",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_RECOVERY",
+      "templateKey": "TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT",
+      "step": "수직·수평점근선에서 a,b를 정하고 통과점 원점을 대입해 c를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dfb62ae83cf0aacb354d62dca75bab1ea6b80b621950583c76cb2b163b0a6e45",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_LATTICE",
+      "step": "자연수 y를 위해 홀수 2x-1이 18의 약수가 되어야 하므로 1,3,9를 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_35c368dd66256c654dbc6c8e465e5e56c71270cb3f736a14ecced51362bb9c5a",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_RECOVERY",
+      "templateKey": "TPL_FUNCTION_FORM_FROM_GRAPH",
+      "step": "그래프 끝점 (3,-1)으로 시작점 형태를 정하고 통과점 (0,2)를 넣어 근호 계수를 결정한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_035a0f8323f18139a2cde7f78c4fbd5a5800910c93bb6b8babffe60668b224f6",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "step": "증가함수의 왼쪽 끝점 최솟값으로 a를 정한 뒤 오른쪽 끝점의 최댓값을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_840098ad907fc5959b71d9cafd29974778f9ab190d18960da627baf3fc4965b8",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "templateKey": "TPL_INVERSE_VALUE_DIRECT",
+      "step": "역함숫값 g(3)=1을 f(1)=3으로 바꾸어 f(3)=1과 연립한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f15075a887b08e01423d8ee926c92d2b09e8c13012e5e5cbedc482e3e4d72af9",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "templateKey": "TPL_AMGM_RECIPROCAL_MINIMUM",
+      "step": "좌표 길이합을 (t-2)+3/(t-2)+3으로 정리해 양수와 역수항에 산술기하평균을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_df6cbe66bb90ee358e667e892086d008827c569f73e8299b4c5e5092f2d2e80b",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "step": "무리함수의 시작점과 감소 방향을 양의 기울기 직선과 비교해 m=1의 교점과 m=2의 비교차를 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    }
+  ]
+}

@@ -427,7 +427,7 @@ window.questionBank = [
       "$A&lt;C&lt;B$"
     ],
     "answer": "②",
-    "solution": "[키포인트]\n각 수를 비교하기 쉬운 소수의 근삿값으로 바꾸어 대소를 판단한다.\n조건 정리\n$\\sqrt3\\approx1.732$, $\\sqrt5\\approx2.236$이다.\n풀이 과정\n$A=\\dfrac{\\sqrt3+\\sqrt5}{2}\\approx\\dfrac{1.732+2.236}{2}=1.984$이다.\n$B=\\dfrac{3\\sqrt5-\\sqrt3}{2}\\approx\\dfrac{3\\cdot2.236-1.732}{2}=\\dfrac{4.976}{2}=2.488$이다.\n$C=\\dfrac{2\\sqrt5+3\\sqrt3}{5}\\approx\\dfrac{2\\cdot2.236+3\\cdot1.732}{5}=\\dfrac{9.668}{5}=1.9336$이다.\n따라서 작은 것부터 나열하면\n$C&lt;A&lt;B$이다.\n결론\n따라서 정답은 ②이다.",
+    "solution": "먼저 세 수의 식을 분모만 정리해 적는다.\n\\[\nA=\\frac{\\sqrt3+\\sqrt5}{2},\\qquad\nB=\\frac{3\\sqrt5-\\sqrt3}{2},\\qquad\nC=\\frac{2\\sqrt5+3\\sqrt3}{5}.\n\\]\n\n근삿값을 계산하지 않고 두 수의 차를 비교한다.\n\n먼저 $A$와 $C$의 차는\n\\[\n\\begin{aligned}\nA-C\n&=\\frac{\\sqrt3+\\sqrt5}{2}-\\frac{2\\sqrt5+3\\sqrt3}{5}\\\\\n&=\\frac{5(\\sqrt3+\\sqrt5)-2(2\\sqrt5+3\\sqrt3)}{10}\\\\\n&=\\frac{5\\sqrt3+5\\sqrt5-4\\sqrt5-6\\sqrt3}{10}\\\\\n&=\\frac{\\sqrt5-\\sqrt3}{10}>0.\n\\end{aligned}\n\\]\n따라서 $C<A$이다.\n\n다음 $B$와 $A$의 차는\n\\[\n\\begin{aligned}\nB-A\n&=\\frac{3\\sqrt5-\\sqrt3}{2}-\\frac{\\sqrt3+\\sqrt5}{2}\\\\\n&=\\frac{3\\sqrt5-\\sqrt3-\\sqrt3-\\sqrt5}{2}\\\\\n&=\\frac{2\\sqrt5-2\\sqrt3}{2}\\\\\n&=\\sqrt5-\\sqrt3>0.\n\\end{aligned}\n\\]\n따라서 $A<B$이다.\n\n$5>3>0$이므로 $\\sqrt5>\\sqrt3$이 확실하다. 결국\n\\[\n\\boxed{C<A<B}\n\\]\n이므로 정답은 ②이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",

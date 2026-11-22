@@ -26,7 +26,7 @@ Use with [README_CURRENT.md](README_CURRENT.md). ROLE 바인딩: `role=R2, campa
 
 ## 3. 전 qid 정밀 Meta 독립 재점검 및 필요한 직접 수정
 
-- source+현재 R2 final solution으로 qid별 primaryMethod/decisiveStep, curriculum standardUnitKey/subUnitKey, RPM Primary L1~L4 current + lower-only prerequisite, correct grade/curriculum crosswalk, GLOBAL ACTIVE PT/TPL canonical owner/aliases, exact binding, 실제 CrossConcept/Condition/IntegrationPattern, level=하|중|상와 difficultyBucket=1..5 각각 근거를 검토. 이전 CREATE/R1 Meta를 채점 정답으로 복사 금지.
+- source+현재 R2 final solution으로 qid별 primaryMethod/decisiveStep, curriculum standardUnitKey/subUnitKey, RPM Primary L1~L4 current + lower-only prerequisite, correct grade/curriculum crosswalk, GLOBAL ACTIVE PT/TPL canonical owner/aliases, exact binding, 실제 CrossConcept/Condition/IntegrationPattern, difficultyBucket=1..5 근거를 검토(새 문항에 level 하|중|상은 쓰지 않음. [규칙](../../../agents/metadata.md#난이도는-정수-15만-2026-11-18-21시-kst부터-적용)). 이전 CREATE/R1 Meta를 채점 정답으로 복사 금지.
 - 문항별 `META_LOOKUP_EVIDENCE`에 authority URL/path/mainSHA/blobSHA, source/solution SHA, RPM current/prerequisite L3/L4, crosswalk/ownerPack/ACTIVE/binding 조회 결과, 선택한 key와 NONE/[]/null 사유 및 변경 전후를 기록. 유효한 기존 canonical key는 KEEP, 확인된 오류·누락은 같은 R2에서 qid 한정 CORRECT. UNKNOWN을 가짜 NONE이나 GENERATED 확장 키로 바꾸지 않는다. ACTIVE exact 가능한 null은 직접 수리.
 - 업스트림 메타 조회 자체가 전 qid 안 되었으면 원래 CREATE/R1 `OWNER_INCOMPLETE`로 추적하고, R2 자신도 확인·수정 없이 다시 넘기면 R2 추가 OWN_AND_FIX 실패가 된다. 진짜 authority gap은 실제 exhaustive lookup/attemptedAction 후 **개별 qid/필드** `EVIDENCE_DEBT`에 exact reason/firstMissingStep/originalOwner/nextExecutor를 남긴다. 메타 작업 때문에 R2 해설 심화를 건너뛰지 않는다.
 

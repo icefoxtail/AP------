@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-9bf7c357f724-3318b9ca",
+  "sourceArchiveFile": "textbooks/미래엔_공통수학2/미래엔_공통수학2_도형의이동_중단원마무리_고1/미래엔_공통수학2_도형의이동_중단원마무리_고1.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_ce7ccd02447bba895ea7d1c8f91e239eb2c11289c6998ebd589a5e660cfcdb4b",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_POINT_TRANSLATION",
+      "templateKey": "TT_POINT_TRANSLATION_COORD",
+      "step": "대응 좌표의 차를 계산하여 이동벡터 (-7,3)을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_342117d5a20dbea4019aaae89c5d6abb10c10737d819abe44d1d686d599d3e6f",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+      "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+      "step": "두 원식 모두 x를 x-6,y를 y+2로 치환하여 이동한 도형의 식을 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a301ab117f03f4e15af12b820cc2b47bd218e349efae02ccf318c9ba86dce403",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_POINT_REFLECTION",
+      "templateKey": "TT_POINT_REFLECTION_BASIC",
+      "step": "축·원점 반사의 부호변환과 y=x 반사의 좌표교환을 각각 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e73dc3d640e1eb7f4cf6b51f58320c4caecf5d989af95dea2a0ef745eccfe04d",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_CIRCLE_REFLECTION",
+      "templateKey": "TT_CIRCLE_REFLECTION_CENTER_RELATION",
+      "step": "반지름을 유지하고 중심 (-5,4)에 네 대칭 규칙을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_71349c9cc41e4c22c69ea47bc1dddaab605e32f2abc488d9f036fece07182f1f",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_POINT_TRANSLATION",
+      "templateKey": "TT_POINT_TRANSLATION_COORD",
+      "step": "이동한 점 (2,-1)을 x-ay+3=0에 대입하여 a=-5를 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_683af72de537ea45fb30057df897a4d8fa98e0adb273453e51b90a9927dbd5f6",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_COMPOSITE",
+      "templateKey": "TT_COMPOSITE_CIRCLE",
+      "step": "원의 중심 (1,6)을 (6,5)로 평행이동한 뒤 y=x에 반사해 (5,6)으로 바꾼다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d029bb2307046c513e1424a76eaf43dd56d24a1bf08ad0e18c97826c5eef5ca4",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_PERPENDICULAR",
+      "step": "x축 반사 후 기울기는 -2이므로 수직인 직선의 기울기 1/2와 점 (-2,3)을 사용한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1851a0a22d39785ca225bc293156986edb77bc37f0d32ac8a9bc9adca4c3143d",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_POINT_REFLECTION",
+      "templateKey": "TT_POINT_REFLECTION_MULTI",
+      "step": "대칭점 B=(-2,-1),C=(1,2)를 구하고 세 꼭짓점 좌표의 행렬식으로 넓이를 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9667f0ba175c69f6021f956aef008215bb925d2526e8590226c7cb4f2fb22ca4",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_LINE_POSITION",
+      "step": "반사한 직선 3x+y-4=0과 중심 (1,0)의 거리 1/√10이 반지름 2보다 작다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c53a90f9d99649b3e2f0f233544c62e6d634d884781675467a33a31b155fa245",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_GRAPH_TRANSLATION",
+      "templateKey": "TT_GRAPH_TRANSLATION_CONDITION",
+      "step": "꼭짓점 (2,-4)에서 (6,-9)로의 이동 (4,-5)을 직선에 적용하여 상수항 차 3을 법선 길이 √5로 나눈다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_73ebeba4b7336d1ae260a7dab0078fbb81faed5143c7e95cd08b85039de1ce33",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_CIRCLE_REFLECTION",
+      "templateKey": "TT_CIRCLE_REFLECTION_TANGENCY",
+      "step": "반사한 중심 (-4,-5)에서 y=mx까지의 거리를 √13으로 놓아 3m²-40m+12=0의 근의 합을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    }
+  ]
+}

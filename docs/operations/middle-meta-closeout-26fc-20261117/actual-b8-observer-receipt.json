@@ -1,0 +1,1553 @@
+{
+  "schemaVersion": "MIDDLE_META_ACTUAL_OBSERVER_RECEIPT_v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "owner": "GPT_ROOT_26FC42390A50",
+  "observation": {
+    "snapshot": "b8eadbb7ef254e4d0a3326e57b2c9d491b62a4b4",
+    "runId": 44007448812,
+    "runAttempt": 2,
+    "jobId": 133805314818,
+    "jobConclusion": "failure",
+    "reportStatus": "FAIL_OBSERVATION_CHECKS",
+    "reportEncoding": "LOG_DERIVED_JSON_PRETTY_LF",
+    "reportGitBlobSha1": "553f905f4411065c5e1a64a512956404e78de351",
+    "reportRawSha256": "2cdf5e06b01e652e9c2f7561ff59484c54b1a47d58c944fa8f2ff812e8be0a34",
+    "reportBytes": 3211247,
+    "fullStringReadback": true,
+    "artifactId": 14297422237,
+    "artifactZipSha256": "5926f075a742ca7ac4953203c9b49f8a4b4cc9041fb8c153796da906993124a6",
+    "artifactZipNotDownloaded": true
+  },
+  "scope": {
+    "targetCount": 6389,
+    "denominators": {
+      "M1S1": 286,
+      "M1S2": 761,
+      "M2S1": 1780,
+      "M2S2": 1604,
+      "M3S2": 1958
+    },
+    "identityMembershipExact": true,
+    "baselineMembershipSha256": "046b02108c3d7fcd162b4eeec194ce7da7c393a87b8dd367b22b54019c23ca97",
+    "currentMembershipSha256": "046b02108c3d7fcd162b4eeec194ce7da7c393a87b8dd367b22b54019c23ca97",
+    "excludedSemester": "M3S1"
+  },
+  "officialFourSlotReceipt": {
+    "verificationRef": {
+      "commit": "b8eadbb7ef254e4d0a3326e57b2c9d491b62a4b4",
+      "path": ".archive-meta-register/auto/4slot/last-verification.json",
+      "gitBlobSha1": "60526b99e8818d21f08d3d84dd283d8c66237ea1",
+      "sha256": "9a1183b469f52aa8d2aaff8cc4da3d0ada287ebede67ff43fc7899227e3a0e37",
+      "bytes": 623
+    },
+    "receiptRef": {
+      "commit": "b8eadbb7ef254e4d0a3326e57b2c9d491b62a4b4",
+      "path": ".archive-meta-register/auto/4slot/receipts/a921e89c5694d009baf18bff11e6ebb1b5ab1bd88cadb9462f6c47f6ffd0ffd8.json",
+      "gitBlobSha1": "61076179abd1e207db7c36afd0db2c7d527187e9",
+      "sha256": "bddf184f1b2fe4e2a35104b2c699f979ecb2fb9378b757b22c2c9b8dcb800a5b",
+      "bytes": 685
+    },
+    "status": "PASS",
+    "reportedStatus": "PASS_WITH_SUPPLEMENTS",
+    "sourceCommit": "a3ef35dd8886d82a230044efa063fa754b2124c3",
+    "sourceCommitIsAncestorOfSnapshot": true,
+    "indexSha256": "a921e89c5694d009baf18bff11e6ebb1b5ab1bd88cadb9462f6c47f6ffd0ffd8",
+    "inputDigest": "6ebf94df5fcbcf9ec2badbcad36514ca23b4e9cf07aba6549242467b3749013d",
+    "consumerVerified": 18367,
+    "counts": {
+      "files": 954,
+      "items": 21699,
+      "registered": 18367,
+      "pending": 3427,
+      "withCandidates": 754,
+      "identityFingerprintHistorical": 6153
+    },
+    "replayChanged": false,
+    "sourceMutation": 0,
+    "authored4SlotMutation": 0,
+    "semanticApprovalMutation": 0,
+    "independentReviewClaim": false,
+    "currentScopedConsumerExecutionIsSeparate": true
+  },
+  "consumer": {
+    "status": "PASS_STORED_FOUR_SLOT_CONSUMER_ONLY",
+    "selectedIdentityCount": 6389,
+    "registered": 5449,
+    "wholeRecordGets": 5449,
+    "pendingGetExclusions": 940,
+    "exactTermPostingQueries": 33841,
+    "sourceFreshnessRevalidation": false,
+    "newApproval": false
+  },
+  "physical": {
+    "registered": 5449,
+    "remaining": 940,
+    "semesters": {
+      "M1S1": {
+        "total": 286,
+        "registered": 243,
+        "remaining": 43,
+        "notSubmitted": 43,
+        "pendingReasonMemberships": {
+          "NOT_SUBMITTED": 43
+        },
+        "reasonCountsMayOverlap": true
+      },
+      "M1S2": {
+        "total": 761,
+        "registered": 750,
+        "remaining": 11,
+        "notSubmitted": 0,
+        "pendingReasonMemberships": {
+          "M1S2_PROBLEM_CONTINUITY_GIT_PATH_BINDING": 7,
+          "STALE_STUDENT_PAYLOAD": 4
+        },
+        "reasonCountsMayOverlap": true
+      },
+      "M2S1": {
+        "total": 1780,
+        "registered": 1725,
+        "remaining": 55,
+        "notSubmitted": 0,
+        "pendingReasonMemberships": {
+          "STALE_STUDENT_PAYLOAD": 47,
+          "EXISTING_REGISTERED_VECTOR_LIVE_BYTES_CHANGED": 7,
+          "EXPLICIT_REVIEW_HOLD:ORIGINAL_SOURCE_CONTRADICTION_UNRESOLVED": 1
+        },
+        "reasonCountsMayOverlap": true
+      },
+      "M2S2": {
+        "total": 1604,
+        "registered": 1030,
+        "remaining": 574,
+        "notSubmitted": 0,
+        "pendingReasonMemberships": {
+          "STALE_STUDENT_PAYLOAD": 523,
+          "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED": 27,
+          "SOURCE_UID_CONFLICT": 24
+        },
+        "reasonCountsMayOverlap": true
+      },
+      "M3S2": {
+        "total": 1958,
+        "registered": 1701,
+        "remaining": 257,
+        "notSubmitted": 52,
+        "pendingReasonMemberships": {
+          "STALE_STUDENT_PAYLOAD": 203,
+          "NOT_SUBMITTED": 52,
+          "M3S2_LAYOUT_UI_CURRENT_RENDER_DEPENDENCY": 1,
+          "M3_Q5_VECTOR_ISSUED_PROOF_REJECTED:M3_Q5_VECTOR_ORIGINAL_NATIVE_GIVEN_UI_AND_ANCESTOR_REQUIRED": 1
+        },
+        "reasonCountsMayOverlap": true
+      }
+    }
+  },
+  "storedAxes": {
+    "M1S1": {
+      "target": 286,
+      "metadataRowsPresent": 286,
+      "metadataRowsMissing": 0,
+      "storedFinalQa": 1,
+      "storedMainMerge": 0,
+      "storedReviewStatusCounts": {
+        "review_required": 193,
+        "REDACTED_9f7c9551c340e6a5c44084c2f701c9bddb63c6fb31b3faa71470a091b224b8ee": 92,
+        "reviewed_pass": 1
+      },
+      "storedMetadataStatusCounts": {
+        "REDACTED_87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15": 193,
+        "REDACTED_1d36ee12152ba91fa668c1ae423d74c69d6d013531889978b84e8ea922392295": 92,
+        "REDACTED_7eae22724f31a0cd76551ce23328daec663c925b3bb20af6a06004a4499531cf": 1
+      },
+      "storedDifficultyBucketCounts": {
+        "1": 94,
+        "2": 147,
+        "3": 41,
+        "4": 4
+      },
+      "storedDifficultyFieldPresence": {
+        "difficultyBucket": 286,
+        "difficultyConfidence": 286,
+        "difficultyBoundaryFlag": 286,
+        "legacyLevelCompatibility": 286
+      },
+      "issuedD5RequestCount": "NOT_EVALUATED",
+      "currentNativeOrSemanticApprovalCount": "NOT_EVALUATED"
+    },
+    "M1S2": {
+      "target": 761,
+      "metadataRowsPresent": 761,
+      "metadataRowsMissing": 0,
+      "storedFinalQa": 121,
+      "storedMainMerge": 6,
+      "storedReviewStatusCounts": {
+        "reviewed_pass": 447,
+        "REDACTED_9f7c9551c340e6a5c44084c2f701c9bddb63c6fb31b3faa71470a091b224b8ee": 160,
+        "review_required": 46,
+        "NULL_OR_MISSING": 104,
+        "REDACTED_2214dfd2d2c9ba44ab3f08b5af7d6b921013c795ac34a2919c984dd4016505cf": 4
+      },
+      "storedMetadataStatusCounts": {
+        "REDACTED_84b2f6c911691f4cb417adc83844ed450f7ac343a0bb7d9cbaa95f4dad9a3afe": 203,
+        "REDACTED_217ff69f3cd412490290e66a9fbf143e6f14e03fb9795eb4e9cdd9d61d0e7289": 124,
+        "REDACTED_7eae22724f31a0cd76551ce23328daec663c925b3bb20af6a06004a4499531cf": 143,
+        "REDACTED_87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15": 40,
+        "REDACTED_ba12de23ecf5e9f8003fb985172984502fecd050f23870f29a21f4b8dc3db4d6": 105,
+        "REDACTED_1d36ee12152ba91fa668c1ae423d74c69d6d013531889978b84e8ea922392295": 124,
+        "REDACTED_5db1dc3cdfc457c5d2cc4c374e0766c1a6fc07b62ed4102816ffa1296b42645e": 14,
+        "REDACTED_2214dfd2d2c9ba44ab3f08b5af7d6b921013c795ac34a2919c984dd4016505cf": 2,
+        "registered_merged_source": 6
+      },
+      "storedDifficultyBucketCounts": {
+        "1": 131,
+        "2": 335,
+        "3": 196,
+        "4": 81,
+        "5": 4,
+        "REDACTED_0f15dc23249e5ae41849d7f070b24f8aea5d052fe3d20972b004e8b9e07349ba": 14
+      },
+      "storedDifficultyFieldPresence": {
+        "difficultyBucket": 761,
+        "difficultyConfidence": 725,
+        "difficultyBoundaryFlag": 701,
+        "legacyLevelCompatibility": 701
+      },
+      "issuedD5RequestCount": "NOT_EVALUATED",
+      "currentNativeOrSemanticApprovalCount": "NOT_EVALUATED"
+    },
+    "M2S1": {
+      "target": 1780,
+      "metadataRowsPresent": 1780,
+      "metadataRowsMissing": 0,
+      "storedFinalQa": 9,
+      "storedMainMerge": 0,
+      "storedReviewStatusCounts": {
+        "NULL_OR_MISSING": 802,
+        "review_required": 901,
+        "REDACTED_dcb47b5c0ec1da53cdbeb694cf5a216fe032d0a1ebf62d1cd8310604f10894e9": 45,
+        "reviewed_pass": 12,
+        "pending": 20
+      },
+      "storedMetadataStatusCounts": {
+        "REDACTED_ba12de23ecf5e9f8003fb985172984502fecd050f23870f29a21f4b8dc3db4d6": 859,
+        "REDACTED_87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15": 852,
+        "REDACTED_7eae22724f31a0cd76551ce23328daec663c925b3bb20af6a06004a4499531cf": 69
+      },
+      "storedDifficultyBucketCounts": {
+        "1": 451,
+        "2": 1141,
+        "3": 174,
+        "4": 14
+      },
+      "storedDifficultyFieldPresence": {
+        "difficultyBucket": 1780,
+        "difficultyConfidence": 1768,
+        "difficultyBoundaryFlag": 1768,
+        "legacyLevelCompatibility": 1768
+      },
+      "issuedD5RequestCount": "NOT_EVALUATED",
+      "currentNativeOrSemanticApprovalCount": "NOT_EVALUATED"
+    },
+    "M2S2": {
+      "target": 1604,
+      "metadataRowsPresent": 1604,
+      "metadataRowsMissing": 0,
+      "storedFinalQa": 172,
+      "storedMainMerge": 0,
+      "storedReviewStatusCounts": {
+        "review_required": 855,
+        "reviewed_pass": 172,
+        "NULL_OR_MISSING": 577
+      },
+      "storedMetadataStatusCounts": {
+        "REDACTED_87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15": 855,
+        "REDACTED_7eae22724f31a0cd76551ce23328daec663c925b3bb20af6a06004a4499531cf": 190,
+        "REDACTED_ba12de23ecf5e9f8003fb985172984502fecd050f23870f29a21f4b8dc3db4d6": 559
+      },
+      "storedDifficultyBucketCounts": {
+        "1": 336,
+        "2": 856,
+        "3": 357,
+        "4": 55
+      },
+      "storedDifficultyFieldPresence": {
+        "difficultyBucket": 1604,
+        "difficultyConfidence": 1575,
+        "difficultyBoundaryFlag": 1575,
+        "legacyLevelCompatibility": 1575
+      },
+      "issuedD5RequestCount": "NOT_EVALUATED",
+      "currentNativeOrSemanticApprovalCount": "NOT_EVALUATED"
+    },
+    "M3S2": {
+      "target": 1958,
+      "metadataRowsPresent": 1958,
+      "metadataRowsMissing": 0,
+      "storedFinalQa": 895,
+      "storedMainMerge": 0,
+      "storedReviewStatusCounts": {
+        "review_required": 537,
+        "reviewed_pass": 1282,
+        "NULL_OR_MISSING": 136,
+        "REDACTED_547303a2186d762adfa695f4cdadd2740366cd6df6854a5841fc6a3c7fc01f8c": 2,
+        "REDACTED_d82791e477f7b6777f6379a5109065c732f59e6231f32caaf8fc654a85ad55ae": 1
+      },
+      "storedMetadataStatusCounts": {
+        "REDACTED_7eae22724f31a0cd76551ce23328daec663c925b3bb20af6a06004a4499531cf": 987,
+        "REDACTED_6d333350b332da07476b5d4bf16702532fabbcaa8720fd2d0fc2112b25f842a8": 135,
+        "REDACTED_77f1e3aff9c15c5cdc5921a9a09d834cf08b4e70def4ee4f50569b60437a8d15": 271,
+        "REDACTED_87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15": 533,
+        "REDACTED_ba12de23ecf5e9f8003fb985172984502fecd050f23870f29a21f4b8dc3db4d6": 17,
+        "REDACTED_31746bf91ab837435ae37903e2a370360bae74c74e0e37a0dd505a785a952e95": 14,
+        "REDACTED_ba21457d9c54b1ac9fb9c95ce5e24d788934736ca280b0a8db8bb9e9a8e27041": 1
+      },
+      "storedDifficultyBucketCounts": {
+        "1": 326,
+        "2": 805,
+        "3": 613,
+        "4": 205,
+        "5": 9
+      },
+      "storedDifficultyFieldPresence": {
+        "difficultyBucket": 1958,
+        "difficultyConfidence": 1546,
+        "difficultyBoundaryFlag": 1543,
+        "legacyLevelCompatibility": 1543
+      },
+      "issuedD5RequestCount": "NOT_EVALUATED",
+      "currentNativeOrSemanticApprovalCount": "NOT_EVALUATED"
+    }
+  },
+  "delta": {
+    "changedUids": 204,
+    "changedFields": [
+      "fourSlotRecord"
+    ],
+    "metadataIdentityWholeRowsUnchanged": true,
+    "remainingThreeStoredRowCas": "PASS"
+  },
+  "failedChecks": [
+    {
+      "code": "PROTECTED_REGISTERED_VECTOR_PRESERVED",
+      "pass": false,
+      "details": {
+        "group": "m2s1SvgSeven",
+        "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6"
+      }
+    },
+    {
+      "code": "PROTECTED_REGISTERED_VECTOR_PRESERVED",
+      "pass": false,
+      "details": {
+        "group": "m2s1SvgSeven",
+        "questionUid": "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569"
+      }
+    },
+    {
+      "code": "PROTECTED_REGISTERED_VECTOR_PRESERVED",
+      "pass": false,
+      "details": {
+        "group": "m2s1SvgSeven",
+        "questionUid": "qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec"
+      }
+    },
+    {
+      "code": "PROTECTED_REGISTERED_VECTOR_PRESERVED",
+      "pass": false,
+      "details": {
+        "group": "m2s1SvgSeven",
+        "questionUid": "qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad"
+      }
+    },
+    {
+      "code": "PROTECTED_REGISTERED_VECTOR_PRESERVED",
+      "pass": false,
+      "details": {
+        "group": "m2s1SvgSeven",
+        "questionUid": "qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637"
+      }
+    },
+    {
+      "code": "PROTECTED_REGISTERED_VECTOR_PRESERVED",
+      "pass": false,
+      "details": {
+        "group": "m2s1SvgSeven",
+        "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5"
+      }
+    },
+    {
+      "code": "PROTECTED_REGISTERED_VECTOR_PRESERVED",
+      "pass": false,
+      "details": {
+        "group": "m2s1SvgSeven",
+        "questionUid": "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd"
+      }
+    },
+    {
+      "code": "PROTECTED_REGISTERED_VECTOR_PRESERVED",
+      "pass": false,
+      "details": {
+        "group": "m3Q5Q12",
+        "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1"
+      }
+    },
+    {
+      "code": "PROTECTED_REGISTERED_VECTOR_PRESERVED",
+      "pass": false,
+      "details": {
+        "group": "m3LayoutQ16",
+        "questionUid": "qid_v1_0ec5ac5da3b680c3a3e688406be0da91045d4ea581a83b6ec224927defe57bdf"
+      }
+    }
+  ],
+  "subgroups": {
+    "originalM2ReviewHolds36": {
+      "count": 36,
+      "rows": [
+        {
+          "questionUid": "qid_v1_04c3d102a777b46c2697761d8705a9914d436b993e7dbd615255b5f5fec48afb",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_0d87a02b59f98a9f543e1be29489a0bc43e7febd4017d67d9bcba9b27fb62bf9",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_16d7f39f001c81db4788b40d7f16b55ff87a124b24e334570872b58338ab717f",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_1ae6c0b27056dacf0e5048181adcccd478d8171f924d467e3600b7bd54dfdf7c",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_1bd38d319596bd53d3cf63517f7e0fcdcb3f943689c22e48a6a5155388c6e18c",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_22a9ffd4f499d05ed3de7ed12f4de48231c166d790d8be65b445569cc62a9845",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_2cc9c4780dca8975f92ba7ed5d3306628554a28088350e533f8fa1b58a7d7583",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_367e012776642d6e80755d48a5fb420cbc1af507280a4627110830e2dab502f4",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_39d8117846b4f90aa0324a084694153a16a445097d2732572b3b5905ef778448",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_3ace257ad3afd1bde0589c7d9c45a52309a789010770032226a28a7816be50ab",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_3e2915ca0d650e815da2c14f7c485556b1de06fa1ccbe31f4a62be4ac9e3f50e",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_4ceb0bdbddacfe4d9737f943b966a542e296123fa20cdae9498e7cfbc2accfac",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_4daa03572ff93ccfa7b90ccfd12808e7004cca4b0ec93ec0e6d9ebe3617ffb91",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_55fd6b255eeb5b4ce5e8c1d25ff545ab5f17252e219e17c55c2542fbe8d8e14f",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_5ea7778dbac6e3f48afc272885bbd1807cd92b8ddb2dbd79e4f55f6dc85f02ce",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_6083ec375d3b2a9f0e432de61c84a533c239a2b21aa5fe3f978d37416e3bc273",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_6c59e9e4406e0d62ed5464d02180957b75ca763b877e459ba2076249cb7e9711",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_6eeb88c697961f3b4f2f00395f4c4928483ef2107108f9a1267d4dbc6b94b3da",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_7b6f35220efcfae2fddf05cff7c60ea79ef54b66e0de4d1c98d9d772da7e6835",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_80e416719b9c305445c7ca0a408aa6b501a43c2cbb0c1d13dd9fb717b6e23111",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_815dd58f2f0e0b1ff1d4917a740e6ba23e6d7c45310a862bcf3f5059f3c6fdb1",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_84b8f337f11de70b4e5f78556667435b68bc7c497c81341cf06b8cf84a5a40d6",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_8a8022ea4db53d559711e09960cdae09bccae92129b0877d05c83e9bc986d945",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_951164b70d75fc3e2b5f83343b70d96f4789fc3c16761ec67cf4c54857093182",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_9e97e29e22c5ef6dfa1fe87a9145ec59a2cf6e8bee436ae79d194590ed8daa2b",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_b91045524e4a13e5c4465bd497aa69622ba0186ca58aab74fc4204dbdcb6c519",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_bc40c0b577c15f8114402fd7fcd3e55180927bba6fc8ebc36b57098c68b15a75",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_be9cc27468f94662d3ca96dcfa280b43ff18b1ef239bd54f83c1b90306e65203",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_cf74a1f77b263aedd61c770a11a203584da72439041b23a6316c682c16774665",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_d5a7d623d9a356650d37df03955161e82aea38b1ad8303c41e6c4c0921c93d3b",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_e00d7e23c46a1468b70b358ae7ccf2d1511974039c2571072d0f5ec79bf42af0",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_f0d437ed043c09185f9beb639a6e6a92ad5703ea65f67f330e3acb4ca472dd80",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_f25f0903341857fdfee45f1c3e5b0a0e2d1d3e335098a90bb7be676940701111",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_f738345d75348c9f769b8120c8aeb7b384dbea0fe8606a2e0e2c13c822bbc7d5",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_fd38acbc6175aaf889113ee736396df076128e008d2984a3ff169bc4d2831fcf",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_ff5129c97cc92f71068cf6ad1c43c8a0613fc67b46bade77a17cc7033b522a0a",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        }
+      ]
+    },
+    "hyangrimQ5": {
+      "count": 1,
+      "rows": [
+        {
+          "questionUid": "qid_v1_d3998bfef5cb06a7fa4f1c95a69a433064b76b872f2fd9da0690d9e5b97b12b8",
+          "currentRegistered": true,
+          "baselineRegistered": true,
+          "existingVectorEqual": true,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        }
+      ]
+    },
+    "m2ClosedEight": {
+      "count": 8,
+      "rows": [
+        {
+          "questionUid": "qid_v1_aa3c1ee5ab7ec90917755d06c8c44c1b8d06b3a14fde0c985c4fc769572eb51b",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_ef2f75003ed913b20f7bb4d1482589a1566675e22862440bf9c035c2da9b8490",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_7d1571b986962c1d131481898b66de1a5f13030e0a5c19a4435ccda48b68f1ad",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_e13b9dba98304967b524525611b6af91ed51580938601d9986ea7335cb415c67",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_ea8f9602a6a276cbaafa321190b673abbc47deafe5eae964c6d3caf81a3bfdb7",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_59226ef933e59db710d0814eb8f94bfc56270f061f29a306a03837395c1b7472",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_a14cd28d820b2cb2aabe1fc601fc72ebd6679b7eeaf1451c6773b3727ea77758",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_54940cea5cf2027a3c3cbc2fc16025f7ccb632d5bd8ee0cff0eb747e108537c9",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        }
+      ]
+    },
+    "m1RestorationTwelve": {
+      "count": 12,
+      "rows": [
+        {
+          "questionUid": "qid_v1_cee13b386e463414b43c2b70cd54cf16f32d671aa80d8b0cd34728e0f9413f90",
+          "currentRegistered": true,
+          "baselineRegistered": true,
+          "existingVectorEqual": true,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_f396d65be774ad30b02478c81036d0c742e9a26db49362a463356d6bc8fe66b4",
+          "currentRegistered": true,
+          "baselineRegistered": true,
+          "existingVectorEqual": true,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_dda907fccf6844e209f2f909dacdb1ea30f2d76c258a72b76fd246c3655f4140",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_9194f2667ed473c402677062a770c695c172fb4b15542a27a6f981b00539bb27",
+          "currentRegistered": true,
+          "baselineRegistered": true,
+          "existingVectorEqual": true,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_3fd69cfc2c3ccb74b00dcf9a3d8f100ea3c92eed09c007523934726f071afcc1",
+          "currentRegistered": true,
+          "baselineRegistered": true,
+          "existingVectorEqual": true,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_b0046185c909143e8665ec134015703f04e8b0d17904e06717055b7771e63e15",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_0e2c7aa4fc34b42aa0782b80ff5c5085f2eaa97a6f6d143d51ce7e1ec39c29d4",
+          "currentRegistered": true,
+          "baselineRegistered": true,
+          "existingVectorEqual": true,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_a989f82a87d00dc1ec8c7d552fa21572235abfe58518c41fc7f95001ec9d689e",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_7f4235f2620956516dfafbb36f1947f7edfe47aef1292379105eb747ba511fe3",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_04a3307fa2f22f54255d293e5f2159fec8ae31d99a2c3188c242dd96b710d6e6",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        }
+      ]
+    },
+    "m1TypedSeven": {
+      "count": 7,
+      "rows": [
+        {
+          "questionUid": "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_04a3307fa2f22f54255d293e5f2159fec8ae31d99a2c3188c242dd96b710d6e6",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_7f4235f2620956516dfafbb36f1947f7edfe47aef1292379105eb747ba511fe3",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_a989f82a87d00dc1ec8c7d552fa21572235abfe58518c41fc7f95001ec9d689e",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_b0046185c909143e8665ec134015703f04e8b0d17904e06717055b7771e63e15",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_dda907fccf6844e209f2f909dacdb1ea30f2d76c258a72b76fd246c3655f4140",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        }
+      ]
+    },
+    "m1ContentHoldsFour": {
+      "count": 4,
+      "rows": [
+        {
+          "questionUid": "qid_v1_957c3b3bfe04be724b389d76145bd21ccf7cfa6289d7d3188cf2612ddc37ef0a",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_f498f0a348a7c01027483e35fad90b8059a6243c26167ad801c30d4f45326a67",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_7ee583a6f035d52d87cbee33e22094ec767345471ceca06fdf3660f137ea314f",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_94b9edd5af5208527e7259ed4dcf08fc04febf24cd888ddbdb30740819639294",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        }
+      ]
+    },
+    "m1DocumentaryPending43": {
+      "count": 43,
+      "rows": [
+        {
+          "questionUid": "qid_v1_b9d7d447afbcfd599462717c77fbe38f00f172a60b100880b1ffd5d1b8bf07d8",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_484e6d95ce96d3634950b7de620d866e15b2d2d1e7e93fcaf11f932de4731fd7",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_cdabb11b2a4e461389781a8132e50d726250357b740393e40af02559df852259",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_e6f671fb5c42ec9c26acf7ab8e7d99a4820ef4ff37e14b8bd7d8bea5caa4da67",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_b9d33f2b5b9a55cc413dbb9fd52399075d8c44581aa3191fe8badcac3e68dc50",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_c52522288ff65425f7f7ff23a2de2ef59f039524cba13128449f78536ea3ba09",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_cb7a537436ae8fd42eb85518e6acbc1b001afb645baaeae7bba127846eed525a",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_ad709943a1a6e3f2e5bc6e0b84896555274cf143b8a858213c0b5457110e368f",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_0b40b2cbc98bc9435d0e78ce3690c7799ef5446a333a70fba544d1e37cad8ab5",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_36a9c3aae1c92e4996800e96d3a74a94778839d5cab92145cbabe227b31b7222",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_2e57de2c53204013dd96317d274069537db1672516e0797707dc13f55167161f",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_8ef5ba063705db6f671d5e21c33aa4a97ed7c810900890d9f8fe0b33ca04523d",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_8aaf2fd741c5b73ac02e21f63a17bc06fe1de7f06fc3f1174ef18cb3a369e187",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_a83d7815861b1fbae504b39ebad15a6816c8a12580e96ed0c995a6d5092c83c1",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_a2b0cce70d4bdacb7349d01c0cd0972d38e8a2be5ea93fac8232b4f71222027e",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_e5c6c39a303f03299f61f46ad735e90e05c224fef51c619dd0ee5c9db2fce109",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_49ccafc9fb4fd2cb7a0c8a92eeed51bc0b82243c184f000f731c545267b2aa43",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_480baed40d0cab463401e14466227872bcab7e46e23e756718b8e20808e36cc9",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_546fa738b36a4c08a612fa69f963ccc184639925057461b268906a3def839687",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_cfd95d786b0c6ebdd73ae922cf0848876b672c813654245de48cd86b50417cdd",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_31240c14148ac835d5fa413a2c1f2ddec761cc97e08d619a850effa20044a39e",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_af43fa6f95f310083fca054f5078763dd5a352f7c096ee3dabd2cb7323bc4d43",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_166fa40c76545fe976ba0662a7b8f71eb8b7c27414071ea3bb51ee3c28ad2daa",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_adb80c7886a9d65a0600241849cc4636953bbacc415e7da81ea98c463f577499",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_d1d8d1f29d81896f68ad20120f073f7e366fc96a1dafdd59777f03fff1ed0072",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_1e4df329a2bd739a060fe2d1f93211a63f7749f4f3b2ef843779762e9e6a5bf5",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_c23862f44cc5d4cb982877460c7ca53b991276d0ec1185604ce88324a4f6259d",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_45933b226dd4980c877d5ea83b49ca98825968c60f758222c963c3ae757c9887",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_61ca901eb7d7028acbb19974851cf36a7590659077392d15dd1fc3a61e8a21fe",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_54c6820c76afd2705802ae22a3ede27a4ad9f7665693b7c8a3eee0d23382a38c",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_0def22a114a45b0d6f241af682c8bfef74f17ce31718254e837462adf17a58a8",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_adc6eadf8ff6805ad0e8c0576b866dc8ad8d28f89a95d4baae0c017c292ab891",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_d3a543e6e33d17c184230397e9da97fa64a7551927a66cd140c26c0e317c4f78",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_466c40d150769a114cea911b41ac66c5792568a4a8503a3dea4b66a5652a5077",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_b7758a8c3c9680b0d4002de238cf6841dcd9386c06774572e3f78b3e80e1e61a",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_d57c23d646907fcd575778df6c6771c9b8f380ef2562df7e8ef08a416e89c220",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_722cc10a5815f1e876b30555e0c3e6e90e72af2f7c303706eb5ddd3ae9862142",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_2235d90110c0d0d1d945c4f7ff7698f9476bdf3679a9790b483f37f11111eaaa",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_55a647567a90db17015d22feaeda97999920b92d7c79b56a24b777f7939513a2",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_0bb62569df556fa2b64b7b9a77d2bd3f5e4a77e52e9303e1fe47d4e408cb4813",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_40fd398616d8da954d3398e977a61f7fa1d6f2b24bd230f2ef85e170ddf0ded9",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_8e9e6ecb3b33aa09c0248754042a54120df462426a3e8ccdf7032525137b31d4",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_a711da3a9b6e12bd4b11c2ba27df1f774a36bb1cdbcbe293bb42c262efb1792b",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        }
+      ]
+    },
+    "m1ParentSix": {
+      "count": 6,
+      "rows": [
+        {
+          "questionUid": "qid_v1_412754443f85747ce4890e8afc74aeb5d0ad694ce29aa65e1291f9c480f21418",
+          "currentRegistered": true,
+          "baselineRegistered": true,
+          "existingVectorEqual": true,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_deee38d5b788ac6e915dbad15defbb555f74f983d513849c7eb1ad227a9d3f07",
+          "currentRegistered": true,
+          "baselineRegistered": true,
+          "existingVectorEqual": true,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_26ab5e93f881b70d55b8517d61e1c779c737157a7306f28cd6f70bd28b86aed6",
+          "currentRegistered": true,
+          "baselineRegistered": true,
+          "existingVectorEqual": true,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_bce899674693d26cd6cb08ce76c09d9bfeb8845bc519f43f7f2c7a05dd478b46",
+          "currentRegistered": true,
+          "baselineRegistered": true,
+          "existingVectorEqual": true,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_8bfafdeba785feb2052349ea5279d59dfb74bfacc5ccdc8e0a0161c3c9357729",
+          "currentRegistered": true,
+          "baselineRegistered": true,
+          "existingVectorEqual": true,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_930f72bdad783a8a1f7a0f12e1a4cbe0eb244d9024cfa5ff15a55756ad8cc849",
+          "currentRegistered": true,
+          "baselineRegistered": true,
+          "existingVectorEqual": true,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        }
+      ]
+    },
+    "m2s1SvgSeven": {
+      "count": 7,
+      "rows": [
+        {
+          "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+          "currentRegistered": false,
+          "baselineRegistered": true,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569",
+          "currentRegistered": false,
+          "baselineRegistered": true,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec",
+          "currentRegistered": false,
+          "baselineRegistered": true,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad",
+          "currentRegistered": false,
+          "baselineRegistered": true,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637",
+          "currentRegistered": false,
+          "baselineRegistered": true,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+          "currentRegistered": false,
+          "baselineRegistered": true,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd",
+          "currentRegistered": false,
+          "baselineRegistered": true,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        }
+      ]
+    },
+    "m3Q5Q12": {
+      "count": 2,
+      "rows": [
+        {
+          "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+          "currentRegistered": false,
+          "baselineRegistered": true,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_1aac12db1a167973138e8dc51afcd5e0b19fcf73d4bb030ea406701acd0b8c4a",
+          "currentRegistered": true,
+          "baselineRegistered": true,
+          "existingVectorEqual": true,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        }
+      ]
+    },
+    "m3LayoutQ16": {
+      "count": 1,
+      "rows": [
+        {
+          "questionUid": "qid_v1_0ec5ac5da3b680c3a3e688406be0da91045d4ea581a83b6ec224927defe57bdf",
+          "currentRegistered": false,
+          "baselineRegistered": true,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        }
+      ]
+    },
+    "m3D5HoldsTwo": {
+      "count": 2,
+      "rows": [
+        {
+          "questionUid": "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+          "currentRegistered": true,
+          "baselineRegistered": true,
+          "existingVectorEqual": true,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+          "currentRegistered": true,
+          "baselineRegistered": true,
+          "existingVectorEqual": true,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        }
+      ]
+    },
+    "m3RemainingThree": {
+      "count": 3,
+      "rows": [
+        {
+          "questionUid": "qid_v1_1cf3d85ff4d544dc0a3e559c81a1fe06863b63152549eaa68eef1b06415ac34f",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_5500746079d438e07f5bfdada0a10468f60c1bd571d20536e7059d277697913b",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        },
+        {
+          "questionUid": "qid_v1_eb3225d943fd75e92d94862dc752a32c94bdaed14dcd5111028f8a89e0a7587b",
+          "currentRegistered": false,
+          "baselineRegistered": false,
+          "existingVectorEqual": null,
+          "metadataWholeEqual": true,
+          "identityWholeEqual": true
+        }
+      ]
+    }
+  },
+  "public": {
+    "status": "PENDING_PUBLIC",
+    "registeredMainSHA": "f9e49a0e0c18f18c63f31d7547bd504f07a821c6",
+    "markerStable": true,
+    "checkedPathCount": 9,
+    "globalDeploymentApprovalInferred": false
+  },
+  "subsequentMain": {
+    "sha": "8c5b782f706f7c47bbbce56129844899c1697075",
+    "parent": "b8eadbb7ef254e4d0a3326e57b2c9d491b62a4b4",
+    "changedPaths": [
+      ".archive-meta-register/auto/state.json",
+      ".archive-meta-register/auto/writer-state.json"
+    ],
+    "metadataIdentitySourceRuntimeAndManifestChanged": false
+  },
+  "boundaries": {
+    "quality": "UNKNOWN",
+    "globalSemanticApproval": "NOT_VERIFIED",
+    "sourceWrites": 0,
+    "metadataWrites": 0,
+    "identityWrites": 0,
+    "approvalWrites": 0,
+    "m3s1Writes": 0
+  },
+  "nextAction": "Repair exact CI dependency catalog and current UI evidence; rerun actual writer/Consumer/public observation after merge."
+}

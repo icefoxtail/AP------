@@ -162,6 +162,7 @@ window.questionBank = [
       "(라) $2x^2-2x+6$",
       "(마) $-4$"
     ],
+    "imageScale": 85,
     "image": "assets/images/21_제일고_1학기_중간_고1_기출/q4.png"
   },
   {

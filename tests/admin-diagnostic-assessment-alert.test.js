@@ -36,6 +36,13 @@ assert(
   'diagnostic report URL should be built with encoded query params'
 );
 
+// The old report link stays; a guide line points to the archive 빠른 평가 진단평가 where the new 결과표 is opened.
+assert(
+  adminJs.includes('assessment-analysis.html?') &&
+    /ap-diag-modal__guide[\s\S]*href="\.\.\/archive\/workspace\.html\?view=diagnostic"[\s\S]*ap-diag-modal__list/.test(adminJs),
+  'diagnostic modal should keep the old report link and guide to the archive quick diagnostic'
+);
+
 assert(
   /updatedAt[\s\S]*completedAt|completedAt[\s\S]*updatedAt/.test(adminJs),
   'diagnostic list ordering should consider updatedAt/completedAt'

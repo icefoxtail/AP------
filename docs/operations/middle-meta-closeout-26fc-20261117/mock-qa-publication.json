@@ -1,0 +1,212 @@
+{
+  "schemaVersion": "archive-pages-mock-qa-copy-contract-repair-v1",
+  "owner": "/root/m3s2_release",
+  "repository": "icefoxtail/AP------",
+  "status": "CANDIDATE_FROZEN_REQUIRED_CHROME_NOT_RUN",
+  "failure": {
+    "reportedBy": "/root",
+    "snapshot": "9fbcf190fd8abaa03f330def331afc7c7c27ba60",
+    "runId": "44004159980",
+    "jobId": "133775268361",
+    "code": "GENERATED_MOCK_REAL_CHROME_QA_FAIL",
+    "assertionLine": 372,
+    "independentLogDownload": false,
+    "observedCoverage": "기준 시험지 23문항 · 목적별 유사문항 준비 16/23개 원본 문항",
+    "observedMissingSourceNumbers": [
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ]
+  },
+  "operation": {
+    "path": "tools/check-generated-mock-qa.cjs",
+    "rawSha256": "8115cfa523d17dde40add227bb129a24ccc4f5be8d0782955aa4a200def61796",
+    "bytes": 61539,
+    "baseline": {
+      "path": "tools/check-generated-mock-qa.cjs",
+      "commit": "9fbcf190fd8abaa03f330def331afc7c7c27ba60",
+      "gitBlobSha": "4f029f42e55bd9d306a9784dc3ebc4165de379df",
+      "rawSha256": "cc675ab07fd20f063d33500147d20f32cc7f2d35175c3e7b9d85fbea89d7d2c6",
+      "bytes": 60036
+    },
+    "inverseExact": true,
+    "changeBlocks": 3,
+    "sourceOrProductionWrites": 0,
+    "nodeSyntax": "NOT_RUN",
+    "chrome": "NOT_RUN",
+    "gitBlobSha": "4513a5b0404938c26a455fc1197aab46eea4fd58",
+    "remoteFullStringReadback": true
+  },
+  "producer": {
+    "path": "archive/generated-bank.html",
+    "commit": "9fbcf190fd8abaa03f330def331afc7c7c27ba60",
+    "gitBlobSha": "27b67d7e19b10d31ac19e92cc690fdfab504d1ba",
+    "rawSha256": "db9d4c0fc55a85f12b87123585d01f1793f9a294b89a615537ee8efd3d5bd69d",
+    "bytes": 72814,
+    "readScope": [
+      "renderSourceSelection display coverage and missing-source list",
+      "renderMockSummary covered-source count and missing-source list"
+    ]
+  },
+  "reason": "Both QA assertions searched internal qN tokens although the current display contract emits N번. The sparse fixed-difficulty branch contains the same stale assertion as the reported partial-state failure.",
+  "changes": [
+    {
+      "scope": "pure QA helper functions",
+      "contract": "Parse one colon-separated N번 list, require unique in-range positive integers, and compare exactly the expected source-number set; validate one exact source total and covered/total ratio."
+    },
+    {
+      "scope": "simulated partial source coverage",
+      "sourceCount": 23,
+      "coveredSourceCount": 16,
+      "missingSourceNumbers": [
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ]
+    },
+    {
+      "scope": "fixed-difficulty sparse coverage",
+      "contract": "Require the current summary's exact source total and covered-source count, plus the exact complement of selected source numbers."
+    }
+  ],
+  "invariants": {
+    "otherCheckerBytesExactByInverse": true,
+    "existingChecksRemoved": 0,
+    "sourceCountChanged": false,
+    "sourceDataWrites": 0,
+    "productionCodeWrites": 0,
+    "approvalWrites": 0,
+    "sourceMathReview": 0,
+    "uiVisualReview": 0,
+    "remoteRefsWritten": 0
+  },
+  "verification": {
+    "kind": "REVIEWER_AUTHORED_PURE_METADATA_LOGIC_ONLY",
+    "checks": [
+      {
+        "name": "actual partial missing set",
+        "expected": true,
+        "actual": true
+      },
+      {
+        "name": "fixed mode exact different set",
+        "expected": true,
+        "actual": true
+      },
+      {
+        "name": "numeric set order independent",
+        "expected": true,
+        "actual": true
+      },
+      {
+        "name": "missing last source",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "unexpected extra source",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "duplicate source",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "wrong member same count",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "out of range source",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "zero source",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "old q token is not actual display",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "extra trailing prose",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "empty missing list",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "second list separator",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "duplicate expected set",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "actual coverage",
+        "expected": true,
+        "actual": true
+      },
+      {
+        "name": "wrong total",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "wrong denominator",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "substring count trap",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "wrong covered count",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "extra conflicting ratio",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "extra conflicting source total",
+        "expected": false,
+        "actual": false
+      },
+      {
+        "name": "missing coverage ratio",
+        "expected": false,
+        "actual": false
+      }
+    ],
+    "count": 22,
+    "allPassed": true,
+    "nodeSyntax": "NOT_RUN",
+    "browser": "NOT_RUN",
+    "repositoryCodeEvaluation": false
+  },
+  "requiredNextAction": "Independent code review and the existing real-Chrome Pages QA on the exact published candidate. This proof is not a new UI, Native, Consumer, registration, or deployment PASS."
+}

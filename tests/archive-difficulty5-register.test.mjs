@@ -13,6 +13,13 @@ const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const FIXTURE = path.join(repo, "tests/fixtures/diff5/req_diff5_17.json");
 const gemini = JSON.parse(fs.readFileSync(FIXTURE, "utf8"));
 const SOURCE = gemini.sourceArchiveFile;
+// The fixture is a derived copy of one real exam's difficulty request. Its latestBlobSha must not pin the live exam
+// file: publishing a solution figure to that exam changes the blob and would redden this test until someone repins it
+// by hand. Bind it to the current LF blob at load time; the drift and CRLF tests below still exercise real mismatches.
+{
+  const lf = Buffer.from(fs.readFileSync(path.join(repo, "archive/exams", SOURCE)).toString("utf8").replace(/\r\n/g, "\n"), "utf8");
+  gemini.latestBlobSha = crypto.createHash("sha1").update("blob " + lf.length + "\0").update(lf).digest("hex");
+}
 const META = "archive/data/question_metadata.json";
 const IDENTITY = "archive/data/question_identity_map.json";
 const sha256 = b => crypto.createHash("sha256").update(b).digest("hex");
@@ -171,7 +178,8 @@ test("student-facing source and identity map unchanged after write", t => {
   assert.equal(after[2], idBefore[2]);
   const rec = x.rec(1);
   assert.equal(rec.standardUnitKey, slice.meta.records.find(r => r.sourceOrdinal === 1).standardUnitKey);
-  assert.equal(rec.templateKey, "");
+  // 난이도 등록기는 templateKey를 건드리지 않는다: 등록 전 값과 같아야 한다(운영 자료의 값 자체는 유형 묶음 등록으로 바뀔 수 있다).
+  assert.equal(rec.templateKey, slice.meta.records.find(r => r.sourceOrdinal === 1).templateKey);
 });
 
 test("latestBlobSha drift rejects the whole file", t => {
@@ -426,7 +434,7 @@ test("wrap --normalize: a fenced Drive export is unwrapped, repairs go to stderr
 });
 
 // ---- question id comparison (number in the exam file vs string in the identity map) ----
-function makeNumericIdFixture(t, { idrNo = n => String(1000 + n), qId = n => 1000 + n } = {}) {
+function makeNumericIdFixture(t, { idrNo = n => String(1000 + n), qId = n => 1000 + n, staleFingerprints = false } = {}) {
   const bank = Array.from({ length: 23 }, (_, i) => ({ id: qId(i + 1), content: "문항 " + (i + 1), choices: ["1", "2"], answer: 1, solution: "해설" }));
   const bytes = Buffer.from("window.questionBank = " + JSON.stringify(bank) + ";\n", "utf8");
   const blobSha = crypto.createHash("sha1").update("blob " + bytes.length + "\0").update(bytes).digest("hex");
@@ -435,8 +443,10 @@ function makeNumericIdFixture(t, { idrNo = n => String(1000 + n), qId = n => 100
   const x = make(t, { sourceOverride: bytes });
   const metaPath = path.join(x.root, META), idsPath = path.join(x.root, IDENTITY);
   const meta = JSON.parse(fs.readFileSync(metaPath, "utf8")), ids = JSON.parse(fs.readFileSync(idsPath, "utf8"));
-  for (const r of meta.records) r.sourceFingerprint = fp(bank[r.sourceOrdinal - 1]);
-  for (const r of ids.records) { r.sourceFingerprint = fp(bank[r.sourceOrdinal - 1]); r.sourceQuestionNo = idrNo(r.sourceOrdinal); }
+  // staleFingerprints: the registered fingerprints are those of an older answer/solution (the exam's stem and choices are the same).
+  const recorded = q => staleFingerprints ? sha256(Buffer.from("older answer/solution of " + q.content)) : fp(q);
+  for (const r of meta.records) r.sourceFingerprint = recorded(bank[r.sourceOrdinal - 1]);
+  for (const r of ids.records) { r.sourceFingerprint = recorded(bank[r.sourceOrdinal - 1]); r.sourceQuestionNo = idrNo(r.sourceOrdinal); }
   fs.writeFileSync(metaPath, JSON.stringify(meta, null, 2) + "\n");
   fs.writeFileSync(idsPath, JSON.stringify(ids, null, 2) + "\n");
   const g = structuredClone(gemini);
@@ -455,6 +465,24 @@ test("projection verify: a genuinely different id is still refused", t => {
   const { x, g } = makeNumericIdFixture(t, { idrNo: n => String(n === 5 ? 9999 : 1000 + n) });
   registerDifficulty5({ root: x.root, request: x.req(g), write: true });
   assert.throws(() => registerDifficulty5({ root: x.root, request: x.req(g), verifyProjection: true }), /source question id mismatch #5/);
+});
+
+test("projection verify: an answer/solution edit after registration (different fingerprints) does not refuse a question whose id matches", t => {
+  const { x, g } = makeNumericIdFixture(t, { staleFingerprints: true });
+  registerDifficulty5({ root: x.root, request: x.req(g), write: true });
+  const v = registerDifficulty5({ root: x.root, request: x.req(g), verifyProjection: true });
+  assert.equal(v.summary.VERIFIED, 23);
+  // The consumer binding is still reported as stale debt (the registered fingerprints differ from the content); it is not a refusal.
+  assert.ok(v.items.every(row => row.consumerBinding === "stale" || row.consumerBinding === "content"));
+});
+
+test("projection verify: with different fingerprints a different id or a duplicate id in the exam is still refused", t => {
+  const other = makeNumericIdFixture(t, { staleFingerprints: true, idrNo: n => String(n === 5 ? 9999 : 1000 + n) });
+  registerDifficulty5({ root: other.x.root, request: other.x.req(other.g), write: true });
+  assert.throws(() => registerDifficulty5({ root: other.x.root, request: other.x.req(other.g), verifyProjection: true }), /source question id mismatch #5/);
+  const dup = makeNumericIdFixture(t, { staleFingerprints: true, qId: n => n === 6 ? 1005 : 1000 + n });
+  registerDifficulty5({ root: dup.x.root, request: dup.x.req(dup.g), write: true });
+  assert.throws(() => registerDifficulty5({ root: dup.x.root, request: dup.x.req(dup.g), verifyProjection: true }), /source question id mismatch #5/);
 });
 
 test("projection verify: surrounding whitespace in the identity map id is tolerated, a different id is not", t => {

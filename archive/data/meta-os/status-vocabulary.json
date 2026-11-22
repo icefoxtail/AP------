@@ -309,6 +309,16 @@
           "grade": "source_declared",
           "note": "원본 선언값을 받아들임(승인이라는 이름이지만 판정이 아님)"
         },
+        "approved_direct_judgment": {
+          "canonical": "approved_direct_judgment",
+          "grade": "judged_once",
+          "note": "유형(PT/TPL) 직접 판정 등록기(register-type-judgment.mjs)가 problemType·template 칸에만 쓰는 값. 문항마다 한 번의 직접 판정(결정 풀이 한 문장)이 정본이고 독립 재판정은 요구하지 않음. 근거는 같은 줄의 typeApproval"
+        },
+        "draft_single_model": {
+          "canonical": "draft_single_model",
+          "grade": "judged_once",
+          "note": "단일 모델 초안 등급: 비어 있던 칸을 모델 하나(opencode-go/deepseek-v4.1-flash)가 교차 검증 없이 채운 값. 검수 전 초안이며 선정·필터·화면에는 그대로 쓴다(꼬리표일 뿐 사용을 막는 조건이 아님). 현재 난이도 칸(register-difficulty5.mjs, 요청의 승인 종류 DRAFT_SINGLE_MODEL)만 쓴다"
+        },
         "manual_review_pending": {
           "canonical": "manual_review_pending",
           "grade": "pending",
@@ -733,6 +743,11 @@
           "canonical": "MAIN_MERGE",
           "grade": "source_declared",
           "note": "병합 자동 등록. 승인이 아님"
+        },
+        "DRAFT_SINGLE_MODEL": {
+          "canonical": "DRAFT_SINGLE_MODEL",
+          "grade": "judged_once",
+          "note": "단일 모델 초안 등급 요청의 승인 종류(요청 단계의 이름). 행의 metadataApprovalType에는 쓰지 않고 fieldStatus.<칸>=draft_single_model로만 남는다"
         }
       }
     },

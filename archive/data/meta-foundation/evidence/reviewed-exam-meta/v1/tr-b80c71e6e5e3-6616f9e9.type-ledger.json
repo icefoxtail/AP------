@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-b80c71e6e5e3-6616f9e9",
+  "sourceArchiveFile": "original/high/h1/1mid/23_순천고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_4ea7cae9fabedd7478c3bb08756fbaf91ba9500a87558588695f0635ba74e9fc",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "step": "제수 x+1의 영점 -1을 다항식에 대입하여 나머지를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b00cbd174eb53eefca09b06b0b683f5628789c9271725763c06302f8e98dd103",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": "TPL_H1_POLY_DIVISION_SCALE",
+      "step": "제수 5x-1이 기존 제수의 5배임을 나눗셈 항등식에 반영하여 몫만 1/5로 바꾼다.",
+      "note": "TPL 제안: 제수의 상수배 변환에 따른 몫과 나머지 관계. 새 TPL 제안: 제수 5x-1이 기존 제수의 5배임을 나눗셈 항등식에 반영하여 몫만 1/5로 바꾼다. 정의: 제수 5x-1이 기존 제수의 5배임을 나눗셈 항등식에 반영하여 몫만 1/5로 바꾼다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_94bbfce0661ccaeecc79897824f3925e130db3d118f3a8c89d5f34888570a540",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_FAMILY_COMMON_POINT",
+      "templateKey": "TPL_LINE_FAMILY_COMMON_POINT_APPLICATION",
+      "step": "매개변수 k의 계수를 0으로 놓아 모든 직선이 지나는 고정점을 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7937ebaaa43b91f1170b5119169f207ba89ae933552647189638c4de834451ca",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "templateKey": "TPL_H1_COMPLEX_CONDITION_EQUATION_SIGN",
+      "step": "음수 제곱근의 곱과 몫의 부호 조건으로 a,b,c의 부호를 정한 뒤 허수부분만 반전시킨다.",
+      "note": "TPL 제안: 제곱근 곱·몫 등식의 부호 조건을 이용한 복소수 표현. 새 TPL 제안: 음수 제곱근의 곱과 몫의 부호 조건으로 a,b,c의 부호를 정한 뒤 허수부분만 반전시킨다. 정의: 음수 제곱근의 곱과 몫의 부호 조건으로 a,b,c의 부호를 정한 뒤 허수부분만 반전시킨다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9f58c0e84b240dd86826736eacc0ba27bda858ab53984ec42c7e187320d95d43",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_ROOT_COEFFICIENT_RELATION_EQUATION",
+      "step": "직각삼각형의 높이 정리에서 두 선분의 곱 b²와 합 a를 구해 이차방정식을 구성한다.",
+      "note": "TPL 제안: 두 근의 기하적 합과 곱을 구하여 이차방정식을 직접 구성한다. 새 TPL 제안: 직각삼각형의 높이 정리에서 두 선분의 곱 b²와 합 a를 구해 이차방정식을 구성한다. 정의: 직각삼각형의 높이 정리에서 두 선분의 곱 b²와 합 a를 구해 이차방정식을 구성한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5270bbcbb426ec02605d4fb711a26ee4be411c0c0473fde38b56878a25c68659",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "templateKey": "TPL_H1_FACTOR_THEOREM_FACTOR",
+      "step": "주어진 인수의 영점으로 상수를 정하고 나눈 몫의 추가 영점을 찾아 인수분해한다.",
+      "note": "TPL 제안: 인수정리로 미정계수를 정한 뒤 몫을 계속 인수분해한다. 새 TPL 제안: 주어진 인수의 영점으로 상수를 정하고 나눈 몫의 추가 영점을 찾아 인수분해한다. 정의: 주어진 인수의 영점으로 상수를 정하고 나눈 몫의 추가 영점을 찾아 인수분해한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

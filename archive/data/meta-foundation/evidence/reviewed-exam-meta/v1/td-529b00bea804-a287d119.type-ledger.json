@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-529b00bea804-a287d119",
+  "sourceArchiveFile": "original/middle/m1/2final/25_연향중_2학기_기말_중1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_4645375fc8d91e4a879bc3a19c5d48db2a0f3789bde9dee9d7360d13fb3218d6",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT",
+      "step": "정팔각형의 외각45도 내각135도와 대각선20개를 검산한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a94ccfc2dd22bf72606b84f2284aecfc83018bd9d9dc2d547614576d4f754196",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+      "templateKey": null,
+      "step": "육각뿔대의 꼭짓점12와 정십이면체 모서리30을 합한다.",
+      "note": "필요 TPL: 각뿔대와 정다면체의 구성요소 수를 결합한다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f37124d064bc58716515294d2299d077f71db938c78e70532b833154e5fef9db",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_STEM_LEAF_PLACEHOLDER_EVALUATION",
+      "templateKey": "TPL_M1_STEM_LEAF_PLACEHOLDER_EVALUATION_CORE",
+      "step": "원자료를 십의 자리로 분류해 빠진 잎5,8,7을 복원하고 합20을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_355e74d9f609e333c2940cdb78799a0b31689ad41d5e1a7ad02c251d863c1d7d",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+      "step": "30미만 도수3+16+15=34를 전체50으로 나누어68%임을 확인한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6b1b1ca5a079ec503132ad4834946469bfa7e36bb50dc6b92dd36973d819ebf7",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+      "step": "누락 도수를a와a+2로 두고10a=30+2a+2에서a=4를 구해18이상7명을 계산한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_67eb2d2f33f50a13c3ca2f82f8eccb73051fc85492458f4258234c4e0bbd3af9",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS",
+      "step": "대각선n-3개와 삼각형n-2개의 합35에서n=20을 구해 내각합3240도를 계산한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2final.jsonl"
+    }
+  ]
+}

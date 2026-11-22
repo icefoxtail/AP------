@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-efe3205b8bf7-371cb6b6",
+  "sourceArchiveFile": "original/middle/m2/1final/24_삼산중_1학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_cbd58c7be4e2428f337f712c21c6309581462ec30aa9fd6a7578207ba047a2fe",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "각 자연수에 대응하는 소인수는 여러 개일 수 있어 함수가 아님을 판별한다.",
+      "note": "새 TPL 제안: 대응 관계의 함수 여부 판별. 정의: 각 자연수에 대응하는 소인수는 여러 개일 수 있어 함수가 아님을 판별한다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_07c4cdefdc463cc1f4caac31074a94ed93027f2756ce8e5adb34d1faabfe2d94",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "y=ax+b에서 a가 0이 아닌 식만 일차함수이므로 y=3x+1을 고른다.",
+      "note": "새 TPL 제안: 식의 형태로 일차함수 여부 판별. 정의: y=ax+b에서 a가 0이 아닌 식만 일차함수이므로 y=3x+1을 고른다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_28de336343d70f363fcc4dfe528e1ce840504c06023511fe22aed2bb14e2c3c9",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": "TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT",
+      "step": "이동한 직선 y=-4x+k에 (2,-6)을 대입하여 k=2를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9cc35e1ac5017675be1a1bf37f4cdea23455715fc12fd67c2dc3bfb79c96bf64",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+      "templateKey": "TPL_M2_FIND_INTERSECTION_COORDINATE_SUM_FROM_SYSTEM",
+      "step": "수직선 x=-5를 x+2y=5에 대입하여 교점(-5,5)의 좌표합0을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5dd1db3df854add05f4b65f58caeadddf2b51cd1c4b918e21e5656ffee523883",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_GAME",
+      "templateKey": "TPL_M2_SOLVE_ROCK_PAPER_SCISSORS_STAIR_PROBLEM",
+      "step": "승리 횟수 x,y에 대해 3x-2y=5,-2x+3y=10을 세워 x+y=15를 구하고 무승부5회를 더해 총20회를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

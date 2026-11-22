@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-7515fa0ca4ff-a40bab1e",
+  "sourceArchiveFile": "original/high/h2/1mid/21_금당고_1학기_중간_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_85326705171cc919b6d63f66c8438ee7dcae743b3c9b9b7b71b7b431f94aaee8",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "step": "세 자리마다 네 숫자 중 하나를 중복 허용 선택하여 4³을 구한다.",
+      "note": "발문·해설을 직접 읽고 결정 단계에 따라 독립 판정했다. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_99eb175b650d25030a5c027dd7edd99f96265bd4c3d349533ba9f711614af6a8",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": "TPL_BASIC_FUNCTION_TYPE_COUNT",
+      "step": "모든 함수 수는 4⁴, 일대일대응은 4!로 계산하여 합한다.",
+      "note": "발문·해설을 직접 읽고 결정 단계에 따라 독립 판정했다. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d5737c9c4b03dcfaf2ec34e3196d59129c0acbb2d64407d013f44892c400b5bb",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "step": "짝수 계수의 전체 합 2¹⁰에서 문제에 없는 C(11,0)=1을 제외한다.",
+      "note": "발문·해설을 직접 읽고 결정 단계에 따라 독립 판정했다. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ed1e290bbf4ddf340c229ca47fd07648b7622410a702b3a2eb7ba970ce3afbc8",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_COUNTING_ARRANGEMENT_PATH",
+      "step": "끊긴 도로를 제외하고 각 격자점 경로수를 왼쪽과 아래의 합으로 누적하여 제한 경로를 센다.",
+      "note": "발문·해설·필수 원본 그림을 직접 읽고 결정 단계에 따라 독립 판정했다. 필요한 TPL: 끊긴 도로를 제외하고 각 격자점 경로수를 왼쪽과 아래의 합으로 누적하여 제한 경로를 센다. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE, TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ae1573bfe0f3e0952cba144d6a6f9b03b90c97af179fad1ab9728e2034b42492",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_COUNTING_ARRANGEMENT_ROTATION",
+      "step": "정육면체 여섯 면의 서로 다른 색 순열을 24개 공간 회전 동치로 나눈다.",
+      "note": "발문·해설·필수 원본 그림을 직접 읽고 결정 단계에 따라 독립 판정했다. 필요한 TPL: 정육면체 여섯 면의 서로 다른 색 순열을 24개 공간 회전 동치로 나눈다. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE, TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_505fe9afd81812da036ae70ea66e1ff1611590c6399732c8ca590d5710e99324",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "step": "일반항 x지수 4-2k=0을 풀고 상수항 10a²=90에서 양수 a를 구한다.",
+      "note": "발문·해설을 직접 읽고 결정 단계에 따라 독립 판정했다. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c494d05d3e3958fb99eadc39248575ce7950abf313868d3e7f47a5af748a5b21",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "step": "최고 높이를 정하여 고정된 U…UD…D 사이 칸에 오른쪽 이동3회를 중복조합으로 분배한다.",
+      "note": "발문·해설·필수 원본 그림을 직접 읽고 결정 단계에 따라 독립 판정했다. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e81bcd93816875c432a47d3583575da1fcc041c65f3bab6e351b380fdecb68a6",
+      "sourceOrdinal": 18,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_PROB_EXPONENT_LAWS",
+      "templateKey": null,
+      "step": "15의 7로 나눈 나머지1을 거듭제곱에 적용하여 요일 주기의 나머지를 구한다.",
+      "note": "발문·해설을 직접 읽고 결정 단계에 따라 독립 판정했다. 해당 과목 ACTIVE PT에 대응 없음. 필요한 유형: 15의 7로 나눈 나머지1을 거듭제곱에 적용하여 요일 주기의 나머지를 구한다. 제안 유형명: 거듭제곱의 나머지 계산. 구별 단서: 합동관계를 거듭제곱에 적용하여 주기7인 요일의 나머지를 구하는 구조. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE, PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b46053376ee9bf5dfb1d83800fff96d83c5d1da7738046df8931e61fbc571bfe",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_COUNTING_ARRANGEMENT_ROTATION",
+      "step": "사각뿔의 반복색이 밑면에 있는지 나누고 옆면 배열의 4회전 동치를 제거한다.",
+      "note": "발문·해설·필수 원본 그림을 직접 읽고 결정 단계에 따라 독립 판정했다. 필요한 TPL: 사각뿔의 반복색이 밑면에 있는지 나누고 옆면 배열의 4회전 동치를 제거한다. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE, TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6508d6ffbb064f246857734f6708df627d5e9c4548d7e5768f55e4cc01db2572",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "step": "(1-1)^n과 (1+1)^n을 전개하여 교대합과 홀수 계수 합 항등식을 증명한다.",
+      "note": "발문·해설을 직접 읽고 결정 단계에 따라 독립 판정했다. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7b0902f20e2f1b5c51b09b46736b9a839116b7bc5acd3e9eab1fc7066d6a0948",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "step": "전체3⁶배정에서 한 상자 합이18이상인 경우를 바깥 공 합3이하로 세어 제외한다.",
+      "note": "발문·해설을 직접 읽고 결정 단계에 따라 독립 판정했다. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

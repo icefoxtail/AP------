@@ -1,0 +1,210 @@
+{
+  "schemaVersion": "archive-m3-current-ui-source49-scoped-gate-v1",
+  "status": "FAIL",
+  "phase": "FOCUSED_AND_ORIGINAL_AUTHORITY",
+  "sourceQuestionCount": 49,
+  "selectedQuestionCount": 2,
+  "outsideQuestionCount": 47,
+  "newMathematicalQa": 0,
+  "newSemanticApprovals": 0,
+  "newFourSlotVectors": 0,
+  "newNativeApprovals": 0,
+  "globalBuilderRun": false,
+  "mainWrites": 0,
+  "sourceWrites": 0,
+  "trackedCheckoutWrites": 0,
+  "ChromeRuns": 0,
+  "execution": {
+    "provider": "GITHUB_ACTIONS",
+    "repository": "icefoxtail/AP------",
+    "eventName": "push",
+    "ref": "refs/heads/ops/m3-current-ui-registration-26fc-20261117",
+    "checkoutCommit": "13d5f0e78a4b0227ecd6a348a736f8b1b78cfa10",
+    "eventCommit": "13d5f0e78a4b0227ecd6a348a736f8b1b78cfa10",
+    "runId": "44037299371",
+    "runAttempt": 1,
+    "job": "m3-current-authority",
+    "integrationAncestor": "6d8819debc1aa33b6bb0a41dcb8c6cb852c1e458",
+    "visualAncestor": "e371e50ba8cb3e317c32cf1d1478b832bb0444c2"
+  },
+  "actualBaseline": {
+    "index": {
+      "path": "archive/data/item-4slot-index.json",
+      "gitBlobSha1": "278bdc2631a3f8681cc74f726986857c9455ec58",
+      "sha256": "9242e81afa544accfce88d629b85e5a13eb822f69060f03ce0a29308cb4648df",
+      "bytes": 20297653
+    },
+    "selectedRegistered": 0,
+    "selectedPending": 2,
+    "outsideRegistered": 47,
+    "outsidePending": 0,
+    "outsideWholeStateSha256": "35e73740d7ed9e9e194d83368a82a9d1c5bfa500a3eb76ca067fedeae69a89c9",
+    "selectedWholeStateSha256": "28d37958cb481bc7267a6344d040adc36ca0fb8a126b936d1db3b93a539f304b"
+  },
+  "originalNativeSourceHydration": {
+    "applicationRef": {
+      "commit": "1dbeaaa687d48f74b381c1dc5d2c330f1bfe4ea2",
+      "path": "docs/operations/m3-e052-q5-complete-given-20261116/application-basis-v1.json",
+      "gitBlobSha1": "f2a96c282b365405c05ae7ad78c04c710ed635bc",
+      "sha256": "5c1cca89666988ba8e5f500c1eddac525d6dcc4f5ad01f17eb4c6e7bbf7a025a",
+      "bytes": 9022
+    },
+    "nativeReviewRef": {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.meta.json",
+      "gitBlobSha1": "5b7b2a3ff2fc8322e2e16b056479e71ea37a9bfa",
+      "sha256": "f4951ba45960245c7197e5f36ab35e2444bdcbc0bdbfc89fdf2166fe227a900a",
+      "bytes": 205465
+    },
+    "sourceRef": {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+      "gitBlobSha1": "2011de7254193dddb99c157992d8e22f2a435d1c",
+      "sha256": "38ca8a9b20b389181c3b7d7f67d436211f6e602aa7f5d237589a91ed2a8a9261",
+      "bytes": 57523
+    },
+    "contract": "EXACT_APPLICATION_NATIVE_REVIEW_COMMIT",
+    "originalNativeAuthorityExecuted": false
+  },
+  "authenticatedFourFieldReferences": [
+    {
+      "owner": {
+        "commit": "13d5f0e78a4b0227ecd6a348a736f8b1b78cfa10",
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m3-current-target/e052-after-issued-source-continuity-4b504e10b1ce.json",
+        "gitBlobSha1": "1893482704d0a57c3e7acb2deceeed3199e1c666",
+        "sha256": "fdd5a03136bafc83e08869c85cc738ddf8de72481a4ffcbd6009091c4e06b5fb",
+        "bytes": 6031
+      },
+      "pointer": "$.beforeSourceRef",
+      "reference": {
+        "commit": "4b504e10b1ce7a90576486663b3862ef99922325",
+        "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+        "gitBlobSha1": "5a9e25d32e96a19bb6bb2f2f8265446cb92fee34",
+        "sha256": "ccab19ec3a0546078515c3a5d0da6396d18bb7f134c9e53847d7b7fc7f7cadb9",
+        "bytes": 66266
+      }
+    },
+    {
+      "owner": {
+        "commit": "13d5f0e78a4b0227ecd6a348a736f8b1b78cfa10",
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m3-current-target/e052-after-issued-source-continuity-4b504e10b1ce.json",
+        "gitBlobSha1": "1893482704d0a57c3e7acb2deceeed3199e1c666",
+        "sha256": "fdd5a03136bafc83e08869c85cc738ddf8de72481a4ffcbd6009091c4e06b5fb",
+        "bytes": 6031
+      },
+      "pointer": "$.actualPriorReceipts[0].inputRef",
+      "reference": {
+        "commit": "b645719341bc7deae6ed3b21a78f878109dc7789",
+        "path": ".archive-meta-register/inbox/m3s2-e052-preserve2-current-source-20261116.json",
+        "gitBlobSha1": "2b80a243176fe3168f360ce72572184fdcfd0641",
+        "sha256": "79ad2bdcff426007be3f3b4035f366e37e2bb070a47f7696e52e1c160c281338",
+        "bytes": 2257
+      }
+    },
+    {
+      "owner": {
+        "commit": "13d5f0e78a4b0227ecd6a348a736f8b1b78cfa10",
+        "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m3-current-target/e052-after-issued-source-continuity-4b504e10b1ce.json",
+        "gitBlobSha1": "1893482704d0a57c3e7acb2deceeed3199e1c666",
+        "sha256": "fdd5a03136bafc83e08869c85cc738ddf8de72481a4ffcbd6009091c4e06b5fb",
+        "bytes": 6031
+      },
+      "pointer": "$.actualPriorReceipts[0].receiptRef",
+      "reference": {
+        "commit": "4b504e10b1ce7a90576486663b3862ef99922325",
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e052-preserve2-current-source-20261116.json",
+        "gitBlobSha1": "4405ebae958741e97c4e24639655780ab1ff8441",
+        "sha256": "0148fc582202473ca7a5d78d1f9c75f259aab7ab611192d5cb70a7b3e5e5c325",
+        "bytes": 15777
+      }
+    }
+  ],
+  "closure": {
+    "currentFileCount": 513,
+    "immutableRefCount": 403,
+    "declaredMetadataDocuments": 36,
+    "scope": "source2/current canonical+runtime metadata; fixed original Q5 receipt/binding and exact UI refs; no outputDigests recursion"
+  },
+  "focused": [
+    {
+      "name": "Q5_SHADOW_READONLY61",
+      "exitCode": 0,
+      "tests": 61,
+      "pass": 61,
+      "fail": 0,
+      "stdoutSha256": "6232fba4d0fa0aba53ae1e729be81e608aecaa5b4789ea9c9a52d9196013a0b6",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": null
+    },
+    {
+      "name": "Q5_FOCUSED44_AND_ORIGINAL_NATIVE1",
+      "exitCode": 1,
+      "tests": 45,
+      "pass": 44,
+      "fail": 1,
+      "stdoutSha256": "bcdcb710d824d5f920ffacdcc41aaa325068f328e2acc244246cf753e2d0c31e",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": null,
+      "failureDiagnostics": {
+        "schemaVersion": "archive-focused-test-failure-metadata-v1",
+        "observedFailureHeaders": 1,
+        "reportedFailureHeaders": 1,
+        "truncated": false,
+        "failed": [
+          {
+            "testNumber": 45,
+            "testName": "actual Q5 original GIVEN/UI/ancestor and issued vector25 resolver remains mandatory",
+            "testNameSha256": "0eb1fb62de0370e6cb444ccb14bba2af30e0f760d7b27b341b233a3691817ecf",
+            "failureType": "testCodeFailure",
+            "code": "ERR_TEST_FAILURE",
+            "guardTokens": [
+              "M3_Q5_VECTOR_ORIGINAL_NATIVE_GIVEN_UI_AND_ANCESTOR_REQUIRED",
+              "ERR_TEST_FAILURE"
+            ],
+            "locations": [
+              {
+                "path": "tests/archive-m3-e052-q5-current-ui-reuse.test.mjs",
+                "line": 94,
+                "column": 45
+              },
+              {
+                "path": "tools/4slot/m3-e052-q5-complete-given-continuity.mjs",
+                "line": 21,
+                "column": 27
+              },
+              {
+                "path": "tools/4slot/m3-e052-q5-complete-given-continuity.mjs",
+                "line": 22,
+                "column": 38
+              },
+              {
+                "path": "tools/4slot/m3-e052-q5-complete-given-continuity.mjs",
+                "line": 186,
+                "column": 3
+              },
+              {
+                "path": "tests/archive-m3-e052-q5-current-ui-reuse.test.mjs",
+                "line": 98,
+                "column": 15
+              }
+            ],
+            "blockSha256": "2733ffacf5c9c655dce0d7890b7fdd2772feff1d017a3e20d7a75f50fbf276d4"
+          }
+        ],
+        "stderrGuardTokens": [],
+        "freeErrorTextIncluded": false,
+        "actualExpectedValuesIncluded": false,
+        "sourcePayloadIncluded": false
+      }
+    }
+  ],
+  "error": {
+    "code": "M3_SOURCE49_FOCUSED_Q5_FOCUSED44_AND_ORIGINAL_NATIVE1",
+    "sha256": "003984a6fb21ca55793c0493eac6a523e3dd690c086f091b7b48a2fca54e722b"
+  },
+  "actualMainRegistration": "NOT_PERFORMED",
+  "rootHeadUnchanged": true,
+  "rootStatusUnchanged": true,
+  "currentInputCount": 513,
+  "immutableRefCount": 403
+}

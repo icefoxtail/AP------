@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-6bf79ebf7e4c-b1feda6a",
+  "sourceArchiveFile": "original/middle/m3/2final/22_향림중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_1011cf7e8758501ddb962a191efff932dba614d6b22343d53c6614340b2b8fad",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_RELATIONS_CONCYCLIC",
+      "step": "②에서 삼각형 ADC의 각합으로 DAC=65도를 얻으면 DBC=65도와 같은 선분 DC를 보므로 네 점이 공원이다.",
+      "note": "필요 TPL: 같은 선분을 보는 각으로 공원성 판정; 원주각 정리의 역으로 네 점이 한 원 위에 있는지를 판별한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_527166303c9841af44127b71bc754609536d9afa164597e9cf2319bd0c7538aa",
+      "sourceOrdinal": 13,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "기온이 오르면 도시가스 사용량이 줄고 수심이 깊어질수록 산소함유량이 줄어드는 ㄹㅁ을 음의 상관으로 고른다.",
+      "note": "새 PT 제안: 상관관계의 방향과 유무 판정; 두 변량의 동반 증가·감소 경향을 산점도 또는 생활 맥락에서 읽어 양·음·무상관을 구별한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3beb0392eba5132e9ad7fd013c779fedb504294a09850e963dfc83a208419a9c",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": "TPL_M3_CENTRAL_TENDENCY_MEDIAN_MODE_DIRECT",
+      "step": "줄기잎에서 열째29와 열한째31의 평균30을 중앙값으로, 세 번 반복되는38을 최빈값으로 구한다.",
+      "note": "필요 TPL: 짝수 자료 중앙값과 최빈값 계산; 줄기잎의 순서로 가운데 두 자료 평균과 최고빈도 자료값을 구한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e0a897b66189145ed590a05380ac88796e0eba395e8c4873e8619769c8030e13",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": "TPL_M3_DISPERSION_DEVIATION_PROPERTIES_RESTORE",
+      "step": "편차합2+a-4+1+0+3=0에서 a=-2를 구하고 평균10에 더해 화요일 안타8개를 복원한다.",
+      "note": "필요 TPL: 편차 합으로 원자료 복원; 편차합0으로 빈 편차를 정하고 평균에 더하여 원자료를 구한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_328bd81661f928cecddfbe977438e1edfe6f846797b7d95c44ea4a7ab4ed2436",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": "TPL_M3_STATISTICS_CONCEPTS_TRUE_FALSE_COMPARE",
+      "step": "표준편차가 작을수록 고르다는 성질로 정국1과 윤기2.5를 비교하여⑤를 참으로 고른다.",
+      "note": "필요 TPL: 집단별 평균·표준편차 해석; 평균과 고름의 역할을 구별하고 작은 표준편차의 집단을 비교한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7618bfdd5a4e24caf13b741c9a29e2b496a6751b1e4208771e17efa3bbec2f62",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": "TPL_M3_IDENTIFY_FALSE_STATEMENTS_ON_DEVIATION_AND_VARIANCE",
+      "step": "편차는 변량-평균, 분산은 편차제곱 평균이라는 정의로 ㄱㄷ을 배제하고 편차합0 및 큰 분산의 넓은 분포인 ㄴㄹ을 고른다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f7c847cdc7e4306cb60215bd2d3af2070bf0fbcee0591c4cd5159559ab02d8f7",
+      "sourceOrdinal": 19,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "표시점 국어점수 A60,B50,C70,D95,E80을 가로축에서 읽으면 최저는 B이므로 E가 최저라는④가 거짓이다.",
+      "note": "새 PT 제안: 산점도 좌표와 진술 판정; 산점도의 좌표·점 개수·변량 비교·분포 추세를 읽어 제시된 진술의 참거짓을 확인한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3c47a624ab154909bf644fbcf7b3f1a9d2d0884d582a0d92e043ff70f3bb8af6",
+      "sourceOrdinal": 20,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "평균6에서 a+b=7, 편차제곱합48에서 a²+b²=25를 얻어2ab=7²-25=24를 구한다.",
+      "note": "새 PT 제안: 분산 조건으로 미지 변량 결정; 매개변수를 포함한 원자료의 평균과 편차 제곱합을 식으로 세워 주어진 분산에서 미지수를 결정한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6156ed8395ca83e7cf028b580468717996b8a899ed9a2f4fd935e1eb46f868fc",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TPL_CIRCLE_TANGENT_EQUAL_LENGTH",
+      "step": "등접선으로 직각변을 t+2,t+3과 빗변5로 나타내어 피타고라스 방정식의 양근 t=1을 구하고 직각 꼭짓점의 접선길이와 같은 반지름1로 둘레2π를 얻는다.",
+      "note": "필요 TPL: 직각삼각형 내접원과 접선 길이; 등접선으로 변을 표현하여 피타고라스 관계에서 내접원 반지름을 결정한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_65fdeab23c90845d224da91e8b056c9930575313197c1d512757f79e6534891a",
+      "sourceOrdinal": 24,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "두 사람의 평균95,96에서 편차제곱합20,10을 각각5로 나누어 표준편차2,√2를 얻고 더 작은 해린을 선택한다.",
+      "note": "새 PT 제안: 원자료의 분산·표준편차 직접 계산; 개별 변량의 평균을 구한 뒤 편차 제곱합을 자료 수로 나누고 제곱근을 취한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

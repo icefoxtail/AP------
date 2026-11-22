@@ -1,0 +1,630 @@
+{
+  "schemaVersion": "archive-independent-m2-closed8-mobile-six-visual-v1",
+  "reviewer": "GPT_M3S2_RELEASE_26FC42390A50_DIRECT_PNG_REVIEW",
+  "decision": "ACCEPT_SIX_CURRENT_MOBILE_PROBLEM_DISPLAYS_ONLY",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "scope": {
+    "logicalCases": 6,
+    "originalPngTiles": 6,
+    "viewedKeys": [
+      "E017-Q04",
+      "E017-Q05",
+      "E017-Q09",
+      "E017-Q18",
+      "E017-Q20",
+      "E017-Q23"
+    ],
+    "viewport": {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    },
+    "originalBytesOnly": true,
+    "imageEdits": 0,
+    "oldTenImageReinspection": 0
+  },
+  "technicalRef": {
+    "commit": "e1a5b882fa9e4d16a75c3bf2039dc6768bbdbdeb",
+    "path": "docs/operations/m2-closed8-current-ui-26fc-20261117/run-44023454159/technical-proof.json",
+    "gitBlobSha1": "2d01823b17d93e807239b263b11fbfb20273b57c",
+    "sha256": "2ff5f0d1079803774961cb116c19f25b06b594cedd02fd29b0a2959f28ab2640",
+    "bytes": 212726
+  },
+  "actualCapture": {
+    "checkoutCommit": "de634386a46b5fb081acd24813382a6a616f8d8b",
+    "execution": {
+      "provider": "GITHUB_ACTIONS",
+      "repository": "icefoxtail/AP------",
+      "eventName": "push",
+      "ref": "refs/heads/ops/m2-closed8-current-renderer-26fc-20261117",
+      "headSha": "de634386a46b5fb081acd24813382a6a616f8d8b",
+      "capturedHead": "de634386a46b5fb081acd24813382a6a616f8d8b",
+      "eventSha": "de634386a46b5fb081acd24813382a6a616f8d8b",
+      "runId": "44023454159",
+      "runAttempt": 1,
+      "workflow": "M2 Closed Eight Current Renderer",
+      "job": "current-ui",
+      "pullRequest": null,
+      "baseSha": null
+    },
+    "status": "TECHNICAL_PASS_VISUAL_REVIEW_PENDING",
+    "expectedLogicalCases": 16,
+    "completedLogicalCases": 16,
+    "screenshotArtifactCount": 18,
+    "checkerRef": {
+      "commit": "de634386a46b5fb081acd24813382a6a616f8d8b",
+      "path": "tools/check-m2s2-closed-eight-current-browser.cjs",
+      "gitBlobSha1": "f6d89ef3faff1ef981a3e03397d5446754d3cc93",
+      "sha256": "f6821eb217557167a1ee6da68e893fc72985bd5e99477ecb3f756bb88f901621",
+      "bytes": 30657
+    },
+    "manifestRef": {
+      "commit": "de634386a46b5fb081acd24813382a6a616f8d8b",
+      "path": "tests/fixtures/archive-m2s2-closed-eight-current-ui.json",
+      "gitBlobSha1": "b99a66bcc5bbf09b7df10e308922e490ff08df12",
+      "sha256": "06218ea59314203aba78313669a569e929337e68287da5c2b417bf7246824f1d",
+      "bytes": 8384
+    },
+    "captureHelperRef": {
+      "commit": "de634386a46b5fb081acd24813382a6a616f8d8b",
+      "path": "tools/check-reviewed-problem-renderer-browser.cjs",
+      "gitBlobSha1": "56c80b40d53fa88e8054a16f7b7267f968696f3f",
+      "sha256": "e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673",
+      "bytes": 56735
+    }
+  },
+  "byteVerification": {
+    "method": "GitHub fetch_file base64 at the immutable evidence commit; independent base64 decode and raw SHA256/Git blob digest/byte count/PNG signature/IHDR dimensions checked before rendering the unmodified data URL.",
+    "publicCommitPathsConfirmed": [
+      {
+        "name": "technical-proof.json",
+        "count": 1,
+        "gitMatches": true,
+        "size": 212726,
+        "type": "file"
+      },
+      {
+        "name": "E017-Q04-mobile-tile-01.png",
+        "count": 1,
+        "gitMatches": true,
+        "size": 31813,
+        "type": "file"
+      },
+      {
+        "name": "E017-Q05-mobile-tile-01.png",
+        "count": 1,
+        "gitMatches": true,
+        "size": 31544,
+        "type": "file"
+      },
+      {
+        "name": "E017-Q09-mobile-tile-01.png",
+        "count": 1,
+        "gitMatches": true,
+        "size": 21885,
+        "type": "file"
+      },
+      {
+        "name": "E017-Q18-mobile-tile-01.png",
+        "count": 1,
+        "gitMatches": true,
+        "size": 34537,
+        "type": "file"
+      },
+      {
+        "name": "E017-Q20-mobile-tile-01.png",
+        "count": 1,
+        "gitMatches": true,
+        "size": 34782,
+        "type": "file"
+      },
+      {
+        "name": "E017-Q23-mobile-tile-01.png",
+        "count": 1,
+        "gitMatches": true,
+        "size": 35869,
+        "type": "file"
+      }
+    ],
+    "rawTechnicalVerified": true,
+    "actualFixtureManifestVerified": true,
+    "sourceAndAssetRefsMatchActualFixtureForSelectedSix": true,
+    "selectedSourceCommitIsActualCapture": true,
+    "selectedSourceBlob": "35d1f2446122393d7bff665d131d9bb3d01d404f",
+    "failedTextOnlyBinaryEndpoint": {
+      "attempted": 6,
+      "result": "UTF8_ONLY_ENDPOINT_REJECTED",
+      "bytesObtained": 0,
+      "followup": "Successful explicit base64 file reads"
+    },
+    "totalViewedPngBytes": 190430
+  },
+  "records": [
+    {
+      "key": "E017-Q04",
+      "questionUid": "qid_v1_aa3c1ee5ab7ec90917755d06c8c44c1b8d06b3a14fde0c985c4fc769572eb51b",
+      "sourceOrdinal": 4,
+      "surface": "PROBLEM",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "decision": "ACCEPT_PROBLEM_DISPLAY_ONLY",
+      "sourceRef": {
+        "commit": "de634386a46b5fb081acd24813382a6a616f8d8b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "35d1f2446122393d7bff665d131d9bb3d01d404f",
+        "sha256": "3ab178dbf42bfdaacdb2796327e68e020034805236acb687cca810c0771449dc",
+        "bytes": 66857
+      },
+      "assetRef": {
+        "commit": "de634386a46b5fb081acd24813382a6a616f8d8b",
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q4-problem-visual-v4.svg",
+        "gitBlobSha1": "8ceb67213019d19a316f585046f4dfb2a3866770",
+        "sha256": "536b894d4b9c78180125ec685816040271a46e8c297e4b025ba5570efbafde7c",
+        "bytes": 4426
+      },
+      "problemPayloadSha256": "9425fc57e6154ccd067e0a2a78fad85b1f1a7554dd8230315a3064a11eede4b3",
+      "problemFieldsSha256": "373e3735952f62b92f3020d268ff9f9babb2c82abc7e55ffb5a8a745ba2d8c8a",
+      "presentationSha256": "aac3b9623073b1323f41aa03987cafc796c073db11af8ff0e91da2b47bb81291",
+      "captureSha256": "2f552b651efe5099aa7a751b49d147c5fbd25a41b768a55c045f1b6d5d03c38e",
+      "geometrySha256": "74b06fe65f95a3b4d724cabb77616587c497f4e57f387c558a6c884335b5a8b2",
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E017-Q04-mobile-tile-01.png",
+          "sha256": "7ef90797cf31e91a100a1ed4529b6387333a8d65aee662a415f78a43a8ed0423",
+          "bytes": 31813,
+          "width": 334,
+          "height": 406,
+          "immutableRef": {
+            "commit": "e1a5b882fa9e4d16a75c3bf2039dc6768bbdbdeb",
+            "path": "docs/operations/m2-closed8-current-ui-26fc-20261117/run-44023454159/E017-Q04-mobile-tile-01.png",
+            "gitBlobSha1": "eb1f197a74ad3664a7d58bbdca17c42d7e259643",
+            "sha256": "7ef90797cf31e91a100a1ed4529b6387333a8d65aee662a415f78a43a8ed0423",
+            "bytes": 31813
+          },
+          "actualDirectVisualInspection": true,
+          "decision": "ACCEPT_PROBLEM_DISPLAY_ONLY"
+        }
+      ],
+      "displayObservations": {
+        "observedChoiceMarkerCount": 5,
+        "observedSubquestionCount": null,
+        "figureArrangement": "ONE_DIAGRAM",
+        "choicePresentation": "TEXT_CHOICES_BELOW_FIGURE",
+        "notes": "Question number, complete stem, one diagram with labels, and all five choice markers are visible. Figure and choice lines remain separated.",
+        "questionNumberVisible": true,
+        "stemVisible": true,
+        "allDisplayedFigurePartsContained": true,
+        "labelsReadable": true,
+        "unintendedDuplicateFigureObserved": false,
+        "croppedContentObserved": false,
+        "overlappingContentObserved": false,
+        "readableAtCapturedMobileScale": true,
+        "solutionOrAnswerPanelObserved": false
+      },
+      "technicalMetadataBinding": {
+        "caseStatus": "PASS",
+        "renderReadiness": "RENDER_READY",
+        "imagesComplete": true,
+        "solutionNodes": 0,
+        "fontStatus": "loaded",
+        "coverageComplete": true,
+        "tileCount": 1,
+        "pageErrors": 0,
+        "requestFailures": 0,
+        "externalRequests": 0
+      }
+    },
+    {
+      "key": "E017-Q05",
+      "questionUid": "qid_v1_ef2f75003ed913b20f7bb4d1482589a1566675e22862440bf9c035c2da9b8490",
+      "sourceOrdinal": 5,
+      "surface": "PROBLEM",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "decision": "ACCEPT_PROBLEM_DISPLAY_ONLY",
+      "sourceRef": {
+        "commit": "de634386a46b5fb081acd24813382a6a616f8d8b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "35d1f2446122393d7bff665d131d9bb3d01d404f",
+        "sha256": "3ab178dbf42bfdaacdb2796327e68e020034805236acb687cca810c0771449dc",
+        "bytes": 66857
+      },
+      "assetRef": {
+        "commit": "de634386a46b5fb081acd24813382a6a616f8d8b",
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q5-problem-visual-v4.svg",
+        "gitBlobSha1": "28c9d60eee441984ce81ed941a477d661a556f3e",
+        "sha256": "2c7fd8f8cbebe68fc21b52c3927382e609ae4238f5cd601ddfe6c58c9dd5a87e",
+        "bytes": 17139
+      },
+      "problemPayloadSha256": "fb6fa950c21c85414e9732144e6fa7e06fae71bf2296be16300adfa1899365a4",
+      "problemFieldsSha256": "1212c40c73f5ebf9e0331033f729d2c012509f322f7b1464b076440a2404faa6",
+      "presentationSha256": "7f46b4ca67c888c7872ae42b1d997789e616cb02e7f5e128faf07f71ce7be660",
+      "captureSha256": "6d886d59096f0643337171a0e457fbe4a96208735c66f7550298ed94183c3b66",
+      "geometrySha256": "76501df0eab2cbf228368f58630a47c8039a6172762214f40886da1c93048fea",
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E017-Q05-mobile-tile-01.png",
+          "sha256": "82986bc18cf10f6e468b12d86d08fa404da8576071cb5d24bebb495e9c6c0282",
+          "bytes": 31544,
+          "width": 334,
+          "height": 399,
+          "immutableRef": {
+            "commit": "e1a5b882fa9e4d16a75c3bf2039dc6768bbdbdeb",
+            "path": "docs/operations/m2-closed8-current-ui-26fc-20261117/run-44023454159/E017-Q05-mobile-tile-01.png",
+            "gitBlobSha1": "83a8d76a0035eb51c8d6195401c9e255d5f8b617",
+            "sha256": "82986bc18cf10f6e468b12d86d08fa404da8576071cb5d24bebb495e9c6c0282",
+            "bytes": 31544
+          },
+          "actualDirectVisualInspection": true,
+          "decision": "ACCEPT_PROBLEM_DISPLAY_ONLY"
+        }
+      ],
+      "displayObservations": {
+        "observedChoiceMarkerCount": 5,
+        "observedSubquestionCount": null,
+        "figureArrangement": "FIVE_LABELED_OPTION_PANELS",
+        "choicePresentation": "FIVE_FIGURE_OPTIONS_IN_ASSET",
+        "notes": "Complete stem and five individually labeled figure options are visible. The two upper rows and the centered final option are fully contained and distinct.",
+        "questionNumberVisible": true,
+        "stemVisible": true,
+        "allDisplayedFigurePartsContained": true,
+        "labelsReadable": true,
+        "unintendedDuplicateFigureObserved": false,
+        "croppedContentObserved": false,
+        "overlappingContentObserved": false,
+        "readableAtCapturedMobileScale": true,
+        "solutionOrAnswerPanelObserved": false
+      },
+      "technicalMetadataBinding": {
+        "caseStatus": "PASS",
+        "renderReadiness": "RENDER_READY",
+        "imagesComplete": true,
+        "solutionNodes": 0,
+        "fontStatus": "loaded",
+        "coverageComplete": true,
+        "tileCount": 1,
+        "pageErrors": 0,
+        "requestFailures": 0,
+        "externalRequests": 0
+      }
+    },
+    {
+      "key": "E017-Q09",
+      "questionUid": "qid_v1_7d1571b986962c1d131481898b66de1a5f13030e0a5c19a4435ccda48b68f1ad",
+      "sourceOrdinal": 9,
+      "surface": "PROBLEM",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "decision": "ACCEPT_PROBLEM_DISPLAY_ONLY",
+      "sourceRef": {
+        "commit": "de634386a46b5fb081acd24813382a6a616f8d8b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "35d1f2446122393d7bff665d131d9bb3d01d404f",
+        "sha256": "3ab178dbf42bfdaacdb2796327e68e020034805236acb687cca810c0771449dc",
+        "bytes": 66857
+      },
+      "assetRef": {
+        "commit": "de634386a46b5fb081acd24813382a6a616f8d8b",
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q9-problem-visual-v4.svg",
+        "gitBlobSha1": "1c2b78a81b3e5a34be0ac1a7163bbfb19ca4b85e",
+        "sha256": "b1378acc43d6a968bade6c4b4ab15a55cfd4738252fc044857093fffe1fdff20",
+        "bytes": 4802
+      },
+      "problemPayloadSha256": "2bae619d5a5a331043875340c4d151ad7ed811748060af71efc3b82d5ab7a6b2",
+      "problemFieldsSha256": "f9c334968706beed2e091186f89d47010a54bbc823cb168f07896cdec55880d1",
+      "presentationSha256": "fa8f3719ff2ae4f369877bd8f84677acb323c97e332a722b347e3c25ead01173",
+      "captureSha256": "8009c2403896b472a8af82dd2eae2f32790dca4c6ce9feb34db6582a7768b893",
+      "geometrySha256": "790b484a1e058b060acd1b88aef89ba9e51c200147d68d74c5b417b82756a9fb",
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E017-Q09-mobile-tile-01.png",
+          "sha256": "8c2f16a0359f26ccbb2eae3d960fa354589f9daf0527a689bf8773a8a30efdd8",
+          "bytes": 21885,
+          "width": 334,
+          "height": 369,
+          "immutableRef": {
+            "commit": "e1a5b882fa9e4d16a75c3bf2039dc6768bbdbdeb",
+            "path": "docs/operations/m2-closed8-current-ui-26fc-20261117/run-44023454159/E017-Q09-mobile-tile-01.png",
+            "gitBlobSha1": "3da75d7ff5e953633375f0d0e46761fd0afe0aff",
+            "sha256": "8c2f16a0359f26ccbb2eae3d960fa354589f9daf0527a689bf8773a8a30efdd8",
+            "bytes": 21885
+          },
+          "actualDirectVisualInspection": true,
+          "decision": "ACCEPT_PROBLEM_DISPLAY_ONLY"
+        }
+      ],
+      "displayObservations": {
+        "observedChoiceMarkerCount": 5,
+        "observedSubquestionCount": null,
+        "figureArrangement": "ONE_DIAGRAM",
+        "choicePresentation": "FIVE_CHOICES_IN_ONE_ROW",
+        "notes": "Question number, complete stem, one complete diagram, labels, and all five choices are visible; the lower diagram endpoint and bottom choice row are contained.",
+        "questionNumberVisible": true,
+        "stemVisible": true,
+        "allDisplayedFigurePartsContained": true,
+        "labelsReadable": true,
+        "unintendedDuplicateFigureObserved": false,
+        "croppedContentObserved": false,
+        "overlappingContentObserved": false,
+        "readableAtCapturedMobileScale": true,
+        "solutionOrAnswerPanelObserved": false
+      },
+      "technicalMetadataBinding": {
+        "caseStatus": "PASS",
+        "renderReadiness": "RENDER_READY",
+        "imagesComplete": true,
+        "solutionNodes": 0,
+        "fontStatus": "loaded",
+        "coverageComplete": true,
+        "tileCount": 1,
+        "pageErrors": 0,
+        "requestFailures": 0,
+        "externalRequests": 0
+      }
+    },
+    {
+      "key": "E017-Q18",
+      "questionUid": "qid_v1_e13b9dba98304967b524525611b6af91ed51580938601d9986ea7335cb415c67",
+      "sourceOrdinal": 18,
+      "surface": "PROBLEM",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "decision": "ACCEPT_PROBLEM_DISPLAY_ONLY",
+      "sourceRef": {
+        "commit": "de634386a46b5fb081acd24813382a6a616f8d8b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "35d1f2446122393d7bff665d131d9bb3d01d404f",
+        "sha256": "3ab178dbf42bfdaacdb2796327e68e020034805236acb687cca810c0771449dc",
+        "bytes": 66857
+      },
+      "assetRef": {
+        "commit": "de634386a46b5fb081acd24813382a6a616f8d8b",
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q18-problem-visual-v3.svg",
+        "gitBlobSha1": "2cae8726c373f5c728f010860ae288e103982212",
+        "sha256": "a301b3ff21f2f371ec0220600757e74b4473c5cad5f084494a233f16506ad37c",
+        "bytes": 4257
+      },
+      "problemPayloadSha256": "4862d8e3cf5c65b13717b69252f2aa1e8b5a5872eeafe3caa256942ff47c419d",
+      "problemFieldsSha256": "9a20ba1b3eceff3454901ba22ecf58e86ba5eff0b096c9a7f217e76d394f2c89",
+      "presentationSha256": "eb930a92f1ffb18aeb882f6b7e5a42d4bba8bcc6843b1d796a66518bda6b2e6d",
+      "captureSha256": "5ecaea0067e8b90580d2fa379587436eb3e0067d2ec04ac0251aada11af6347d",
+      "geometrySha256": "3b48487ba6e0d47a445fd6f85198670db463c3cb73e206fea91ce7aa3a351625",
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E017-Q18-mobile-tile-01.png",
+          "sha256": "ecd3cf924b5b852a62e3aa907cd1ccc78858a1dc9a20b8cf9d6d8d725ddbc4d9",
+          "bytes": 34537,
+          "width": 334,
+          "height": 419,
+          "immutableRef": {
+            "commit": "e1a5b882fa9e4d16a75c3bf2039dc6768bbdbdeb",
+            "path": "docs/operations/m2-closed8-current-ui-26fc-20261117/run-44023454159/E017-Q18-mobile-tile-01.png",
+            "gitBlobSha1": "9cb8d94b8f48aa9a424f3b0be89d8caef6f74512",
+            "sha256": "ecd3cf924b5b852a62e3aa907cd1ccc78858a1dc9a20b8cf9d6d8d725ddbc4d9",
+            "bytes": 34537
+          },
+          "actualDirectVisualInspection": true,
+          "decision": "ACCEPT_PROBLEM_DISPLAY_ONLY"
+        }
+      ],
+      "displayObservations": {
+        "observedChoiceMarkerCount": 5,
+        "observedSubquestionCount": null,
+        "figureArrangement": "ONE_DIAGRAM",
+        "choicePresentation": "FIVE_CHOICES_WITH_FRACTIONS",
+        "notes": "Full stem and one complete diagram are visible. Dimension labels and all five choice markers, including fraction numerators and denominators, remain inside the tile.",
+        "questionNumberVisible": true,
+        "stemVisible": true,
+        "allDisplayedFigurePartsContained": true,
+        "labelsReadable": true,
+        "unintendedDuplicateFigureObserved": false,
+        "croppedContentObserved": false,
+        "overlappingContentObserved": false,
+        "readableAtCapturedMobileScale": true,
+        "solutionOrAnswerPanelObserved": false
+      },
+      "technicalMetadataBinding": {
+        "caseStatus": "PASS",
+        "renderReadiness": "RENDER_READY",
+        "imagesComplete": true,
+        "solutionNodes": 0,
+        "fontStatus": "loaded",
+        "coverageComplete": true,
+        "tileCount": 1,
+        "pageErrors": 0,
+        "requestFailures": 0,
+        "externalRequests": 0
+      }
+    },
+    {
+      "key": "E017-Q20",
+      "questionUid": "qid_v1_ea8f9602a6a276cbaafa321190b673abbc47deafe5eae964c6d3caf81a3bfdb7",
+      "sourceOrdinal": 20,
+      "surface": "PROBLEM",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "decision": "ACCEPT_PROBLEM_DISPLAY_ONLY",
+      "sourceRef": {
+        "commit": "de634386a46b5fb081acd24813382a6a616f8d8b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "35d1f2446122393d7bff665d131d9bb3d01d404f",
+        "sha256": "3ab178dbf42bfdaacdb2796327e68e020034805236acb687cca810c0771449dc",
+        "bytes": 66857
+      },
+      "assetRef": {
+        "commit": "de634386a46b5fb081acd24813382a6a616f8d8b",
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q20-problem-visual-v3.svg",
+        "gitBlobSha1": "c1c73664336bdbdd83136ea58773b1c23b189b90",
+        "sha256": "a156e3687d04197ee3dff3dd65710e833908432b3c3d6440b854526b57145fe6",
+        "bytes": 4437
+      },
+      "problemPayloadSha256": "a575879fa614faa4bcb954da513289d7bb8af65b3f4c77c2b04543ab0ec7630b",
+      "problemFieldsSha256": "13221beb4c6b3b5a2054860eab3937aff67204d838e57820a002826a974b435a",
+      "presentationSha256": "85a2607cf31517ed0bc9ef12ed328f665d7ae95eb65b028df76da5e9a28d4e13",
+      "captureSha256": "6f3dec1853ea9b6b495c3e90af4634b6fcc150227673b5ef153f5315d3add5e4",
+      "geometrySha256": "3af57012997140bf661a921af2bba5b25352bc1e1a51201f527b872836f8e2de",
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E017-Q20-mobile-tile-01.png",
+          "sha256": "981fd9c40d17bbd69114751d1122643070f6b79bc39cee8b42bb4b048cdc6142",
+          "bytes": 34782,
+          "width": 334,
+          "height": 432,
+          "immutableRef": {
+            "commit": "e1a5b882fa9e4d16a75c3bf2039dc6768bbdbdeb",
+            "path": "docs/operations/m2-closed8-current-ui-26fc-20261117/run-44023454159/E017-Q20-mobile-tile-01.png",
+            "gitBlobSha1": "c380d2b334f2581732822644e984ca6416c80298",
+            "sha256": "981fd9c40d17bbd69114751d1122643070f6b79bc39cee8b42bb4b048cdc6142",
+            "bytes": 34782
+          },
+          "actualDirectVisualInspection": true,
+          "decision": "ACCEPT_PROBLEM_DISPLAY_ONLY"
+        }
+      ],
+      "displayObservations": {
+        "observedChoiceMarkerCount": 5,
+        "observedSubquestionCount": null,
+        "figureArrangement": "ONE_DIAGRAM",
+        "choicePresentation": "FIVE_CHOICES_WITH_FRACTIONS",
+        "notes": "Full stem, one complete diagram and labels, and all five choices are visible. Fraction choices and the last choice have no visible clipping.",
+        "questionNumberVisible": true,
+        "stemVisible": true,
+        "allDisplayedFigurePartsContained": true,
+        "labelsReadable": true,
+        "unintendedDuplicateFigureObserved": false,
+        "croppedContentObserved": false,
+        "overlappingContentObserved": false,
+        "readableAtCapturedMobileScale": true,
+        "solutionOrAnswerPanelObserved": false
+      },
+      "technicalMetadataBinding": {
+        "caseStatus": "PASS",
+        "renderReadiness": "RENDER_READY",
+        "imagesComplete": true,
+        "solutionNodes": 0,
+        "fontStatus": "loaded",
+        "coverageComplete": true,
+        "tileCount": 1,
+        "pageErrors": 0,
+        "requestFailures": 0,
+        "externalRequests": 0
+      }
+    },
+    {
+      "key": "E017-Q23",
+      "questionUid": "qid_v1_59226ef933e59db710d0814eb8f94bfc56270f061f29a306a03837395c1b7472",
+      "sourceOrdinal": 23,
+      "surface": "PROBLEM",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "decision": "ACCEPT_PROBLEM_DISPLAY_ONLY",
+      "sourceRef": {
+        "commit": "de634386a46b5fb081acd24813382a6a616f8d8b",
+        "path": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "gitBlobSha1": "35d1f2446122393d7bff665d131d9bb3d01d404f",
+        "sha256": "3ab178dbf42bfdaacdb2796327e68e020034805236acb687cca810c0771449dc",
+        "bytes": 66857
+      },
+      "assetRef": {
+        "commit": "de634386a46b5fb081acd24813382a6a616f8d8b",
+        "path": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q23-problem-visual-v3.svg",
+        "gitBlobSha1": "2f865edf92807075f5ab0bb7fa36009a8b28693c",
+        "sha256": "82f2b31b9133062ce50c6332a7668a7ce228c4bb21f6ba512103e9ad5ce94f1d",
+        "bytes": 3713
+      },
+      "problemPayloadSha256": "85bfa07188830df408249b00912acca4a5acadfdff17ad1b59125ab96ab0ffe5",
+      "problemFieldsSha256": "03cfbbd89ab1bd84bae680282966f27508405f4caf6e3b70562b7209c17df27b",
+      "presentationSha256": "52fb9ac857cd34d4ae60cd9a31bde5184321fb81012533ac5f1d5ae53311f8b0",
+      "captureSha256": "bfb788c92114277ada744dcd5066793e5b80625fac0b212679432c6749aac8e6",
+      "geometrySha256": "5e639bd7b07fa0d3ee7b24a87818ab9d39e30d92e4fdc30b5148e645b4230f19",
+      "screenshots": [
+        {
+          "tileIndex": 1,
+          "path": "E017-Q23-mobile-tile-01.png",
+          "sha256": "c683ceb1cb7f2d86209c95f77b3eebbd5e08b6c37e0841151ecc922c5a9bff96",
+          "bytes": 35869,
+          "width": 334,
+          "height": 445,
+          "immutableRef": {
+            "commit": "e1a5b882fa9e4d16a75c3bf2039dc6768bbdbdeb",
+            "path": "docs/operations/m2-closed8-current-ui-26fc-20261117/run-44023454159/E017-Q23-mobile-tile-01.png",
+            "gitBlobSha1": "04070905618c20cd5cea36827da5856d5dd156b6",
+            "sha256": "c683ceb1cb7f2d86209c95f77b3eebbd5e08b6c37e0841151ecc922c5a9bff96",
+            "bytes": 35869
+          },
+          "actualDirectVisualInspection": true,
+          "decision": "ACCEPT_PROBLEM_DISPLAY_ONLY"
+        }
+      ],
+      "displayObservations": {
+        "observedChoiceMarkerCount": 0,
+        "observedSubquestionCount": 2,
+        "figureArrangement": "ONE_DIAGRAM",
+        "choicePresentation": "SUBJECTIVE_TWO_PART",
+        "notes": "Question and subjective-section labels, both subquestion blocks, and the complete diagram are visible. The diagram has clear separation from the text and fits inside the tile.",
+        "questionNumberVisible": true,
+        "stemVisible": true,
+        "allDisplayedFigurePartsContained": true,
+        "labelsReadable": true,
+        "unintendedDuplicateFigureObserved": false,
+        "croppedContentObserved": false,
+        "overlappingContentObserved": false,
+        "readableAtCapturedMobileScale": true,
+        "solutionOrAnswerPanelObserved": false
+      },
+      "technicalMetadataBinding": {
+        "caseStatus": "PASS",
+        "renderReadiness": "RENDER_READY",
+        "imagesComplete": true,
+        "solutionNodes": 0,
+        "fontStatus": "loaded",
+        "coverageComplete": true,
+        "tileCount": 1,
+        "pageErrors": 0,
+        "requestFailures": 0,
+        "externalRequests": 0
+      }
+    }
+  ],
+  "authorityBoundary": {
+    "newMathematicalQa": 0,
+    "newAnswerOrSolutionReview": 0,
+    "newMetadataApprovals": 0,
+    "newDifficultyJudgments": 0,
+    "newNativeApprovals": 0,
+    "newFourSlotApprovals": 0,
+    "changedApprovalOrSourceBytes": 0,
+    "sourceCodeExecutedByReviewer": false,
+    "sourceBodiesReopenedByReviewer": false,
+    "currentNativeOrRegistrationPassClaimed": false,
+    "existingSemanticHoldsRemainInForce": true
+  },
+  "reuseBoundary": {
+    "otherTenLogicalCases": "Not viewed in this review. Their prior visual acceptance may be combined only through a separately authenticated exact PNG/capture reuse proof.",
+    "fullSixteenVisualAcceptanceClaimedByThisDocument": false,
+    "originalSourceAndAssetCorrectness": "Prior independent evidence remains required; this review observes current display only."
+  }
+}

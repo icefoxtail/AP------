@@ -12,6 +12,8 @@ const engineFiles = [
 ];
 
 function loadNormalizer(engineFile) {
+  // archive 쪽 두 엔진은 render-text.js(APRenderText) 하나를 같이 쓴다. 오답 엔진(apmath)만 자기 복사본을 가진다.
+  if (engineFile.startsWith('archive/')) return require('../archive/render-text.js').normalizeConditionMarkerBreaks;
   const source = fs.readFileSync(path.join(root, engineFile), 'utf8');
   const start = source.indexOf('function normalizeConditionMarkerBreaks');
   const end = source.indexOf('function normalizeViewBlocks', start);

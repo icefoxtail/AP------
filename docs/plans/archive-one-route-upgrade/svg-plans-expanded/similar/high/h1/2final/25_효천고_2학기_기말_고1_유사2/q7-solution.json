@@ -1,0 +1,72 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "MEMBERSHIP_TABLE",
+  "sets": [
+   {
+    "id": "P"
+   },
+   {
+    "id": "Q"
+   }
+  ],
+  "elements": [
+   {
+    "text": "(1,2)",
+    "math": true,
+    "in": [
+     "P",
+     "Q"
+    ]
+   },
+   {
+    "text": "(0,3)",
+    "math": true,
+    "in": [
+     "Q"
+    ]
+   },
+   {
+    "text": "(3,3)",
+    "math": true,
+    "in": [
+     "P",
+     "Q"
+    ]
+   },
+   {
+    "text": "(-3,-3)",
+    "math": true,
+    "in": [
+     "Q"
+    ]
+   },
+   {
+    "text": "3",
+    "math": true,
+    "in": [
+     "P",
+     "Q"
+    ]
+   },
+   {
+    "text": "4",
+    "math": true,
+    "in": [
+     "Q"
+    ]
+   }
+  ]
+ },
+ "caption": "표는 보기 ㄱ, ㄴ, ㄷ에서 p, q의 진리집합 P, Q에 속하는 원소의 예이다. 위에서부터 두 줄씩 ㄱ(1,2)·(0,3), ㄴ(3,3)·(-3,-3), ㄷ 3·4이다. 세 보기 모두 P에 속하는 원소는 Q에도 속하므로 p→q는 참이고, Q에만 속하는 원소 (0,3), (-3,-3), 4가 있으므로 q→p는 거짓이다. 따라서 p는 q이기 위한 충분조건이지만 필요조건은 아니다. 따라서 답은 ⑤이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "ㄱ·ㄴ·ㄷ 모두 P⊂Q, P≠Q",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "P에 속하는 원소는 모두 Q에 속하고 Q에만 속하는 반례 원소가 있다는 것"
+ ]
+}

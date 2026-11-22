@@ -544,7 +544,7 @@ window.questionBank = [
     "rpmL4": "중심거리와 현의 길이",
     "primaryMethod": "RHS 합동으로 반현 두 개가 같음을 보인 뒤 중심의 수선이 현을 이등분함을 써 전체현의 같음을 결론내린다.",
     "decisiveStep": "RHS 합동으로 반현 두 개가 같음을 보인 뒤 중심의 수선이 현을 이등분함을 써 전체현의 같음을 결론내린다.",
-    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q08.png",
+    "image": "assets/images/24_왕운중_2학기_기말_중3_수학/q08-student-clean.png",
     "solutionImage": "assets/images/24_왕운중_2학기_기말_중3_수학/q8-solution.svg",
     "solutionImageAlt": "해설 그림: 원 O에서 OM⊥AB, ON⊥CD이고 OM=ON(파랑), OA=OC(초록)이며 합동인 직각삼각형 OAM, OCN(주황)과 AM=MB=CN=ND(분홍) 표시가 있는 그림.",
     "solutionImageCaption": "△OAM≡△OCN(RHS 합동)이므로 AM=CN이다. 중심에서 현에 내린 수선은 현을 이등분하므로 AB=2AM, CD=2CN이다. 따라서 AB=CD이므로 (㉮)에는 AB=2AM, CD=2CN이므로 AB=CD가 들어간다. 정답 ③.",

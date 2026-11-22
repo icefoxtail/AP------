@@ -1,0 +1,106 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -8,
+   8,
+   -4,
+   12
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f1",
+    "kind": "LINE",
+    "coefficients": [
+     "5",
+     "-2"
+    ],
+    "domain": [
+     "-7/2",
+     "-2"
+    ],
+    "color": "BLUE",
+    "hideLabel": true
+   },
+   {
+    "id": "f2",
+    "kind": "Y_OF_X",
+    "coefficients": [
+     "5",
+     "-4",
+     "-1"
+    ],
+    "domain": [
+     "-2",
+     "8/5"
+    ],
+    "color": "WARM",
+    "hideLabel": true
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "B",
+     "x": "-2",
+     "y": "9",
+     "coordinates": true,
+     "labelDirection": "NE"
+    },
+    {
+     "id": "Y",
+     "x": "0",
+     "y": "5",
+     "coordinates": true,
+     "labelDirection": "NE"
+    },
+    {
+     "id": "F1",
+     "x": "-3",
+     "y": "11",
+     "unnamed": true
+    },
+    {
+     "id": "F2",
+     "x": "-1",
+     "y": "8",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "c1",
+     "point": "F1",
+     "text": "y=-2x+5",
+     "labelKind": "MATH",
+     "direction": "NW"
+    },
+    {
+     "id": "c2",
+     "point": "F2",
+     "text": "y=-(x+2)^2+9",
+     "labelKind": "MATH",
+     "direction": "NE"
+    }
+   ]
+  }
+ },
+ "caption": "예: a=-1, c=5일 때 f(x)는 x<-2에서 -2x+5(파란색), x≥-2에서 -(x+2)²+9(주황색)이다. 두 조각이 점 (-2,9)에서 이어지고 둘 다 감소하므로 일대일대응이 되어 역함수가 존재한다. b의 최솟값은 t=-2이고 이때 4+c=-4a+5에서 4a+c=1이다. 따라서 답은 ⑤이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "b=-2일 때 두 조각이 점 (-2,9)에서 이어지는 예",
+   "mappedTo": [
+    "graphPlan"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "두 조각이 만나는 점 (-2,9)와 y절편 (0,5)"
+ ]
+}

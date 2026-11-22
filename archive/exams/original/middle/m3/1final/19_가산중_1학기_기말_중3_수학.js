@@ -633,7 +633,7 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 4,
       "questionType": "서술형",
-      "layoutTag": "fullwidth",
+      "layoutTag": "text",
       "tags": [],
       "wide": false,
       "content": "<p>※ 여기서부터는 서술형 문제입니다. 서술형 답지에 작성하시기 바랍니다.</p><p><b>[서술형 1번]</b> 아래의 이차함수 $y=ax^2+bx+c$의 그래프를 보고 물음에 답하여라. (1)번 ~ (6)번. [총 20점]</p><p><img src=\"assets/images/19_가산중_1학기_기말_중3_수학/q20-problem-v3.svg\" alt=\"파란 포물선은 아래쪽 꼭짓점에서 두 가지가 위로 올라간다. 점선은 꼭짓점을 가로축의 1과 세로축의 −2에 각각 연결한다. 세로축 눈금 1에서 포물선이 축을 지난다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\"></p><p>(1) 꼭짓점의 좌표를 구하여라. (3점)<br>(2) 축의 방정식을 구하여라. (3점)<br>(3) 최댓값 또는 최솟값을 구하여라. (3점)<br>(4) $a, b, c$의 값을 구하여라. (풀이과정을 쓰시오.) (6점)<br>(5) 위에 주어진 이차함수 $y=ax^2+bx+c$의 그래프를 $x$축 방향으로 $-2$만큼, $y$축 방향으로 $3$만큼 평행이동하면 점 $(-3, k)$를 지난다. 이 때 $k$의 값을 구하여라. (풀이과정을 쓰시오.) (3점)<br>(6) 위에 주어진 이차함수 $y=ax^2+bx+c$ 그래프의 $x \\le 1$ 부분과 이 부분을 $x$축 방향으로 $-3$만큼 평행이동한 그래프 및 $y=1, y=-2$로 둘러싸인 부분의 넓이를 구하여라. (풀이과정을 쓰시오.) (2점)</p>",

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-0bd6936ebd0e-c1d5027b",
+  "sourceArchiveFile": "original/high/h2/1final/21_매산고_1학기_기말_고2_수학I.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_aa255b8da75f4ea3732334f526b0b2dac6832b7a3c3dfe87aabaf8457d8d2ae1",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_TRIG_ABSOLUTE_PERIOD_COMBINATION",
+      "step": "3|sin πx|−1로 바꾸면 치역은 [−1,2]이고 절댓값으로 최소주기가 1이 되어 M+m+n=2이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_728c8220b58a0aeef56f35393b053191d8dd05f273d732ec3bb7368f27a6c70c",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT",
+      "step": "t=sin x∈[−1,1]로 치환한 1−t²−4t의 최댓값 4를 이용하면 항상 성립할 조건은 a≤−4이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_55ced987bdc5b8ba331aafb22b916fe3e21f9dc601ed6f2ed10dfa3632f3bfbf",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ITERATED_COMPOSITION",
+      "templateKey": "TPL_ITERATION_FIXED_POINT_PREIMAGE",
+      "step": "전사인 멱등함수 h=f∘f는 항등함수이므로 f(k)=k(k≥3)이고 f(1),f(2)는 1,2를 바꾸어 놓을 뿐이어서 합은 2043231이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    }
+  ]
+}

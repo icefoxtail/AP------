@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-a9acd85c63d4-cc1860c4",
+  "sourceArchiveFile": "original/high/h2/2mid/26_매산고_2학기_중간_고2_미적분I.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_e901e36f4e5a102c2360df69b3f94c14d0cb1df48d316ce2fdb17884155ea546",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MEAN_VALUE_THEOREM",
+      "templateKey": "TPL_MVT_ROLLE_DIRECT",
+      "step": "양 끝값이 같음을 확인하고 내부의 도함수영점을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8745c894c748c5511e3a87964b94422c1160885e9262ad61097b2c540fc85a3c",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "step": "이차함수 꼭짓점과 닫힌구간 끝점 값을 비교한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d6af9bfeecad0498eb6a07640bbcbc18b5137e74ad8f6929a5d90090a4c0d05a",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_STATEMENT_LOGIC",
+      "templateKey": "TPL_LIMIT_STATEMENT_COUNTEREXAMPLE",
+      "step": "극한 사칙연산과 상수함수 반례로 세 명제를 판정한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 // Read source schemas without changing their raw IDs or inventing display numbers.
 const fs = require('fs'), vm = require('vm');
+const examSourceReader = require('../../archive/exam-source-reader.js');
 function sourceNumber(q) {
   const positive = v => (typeof v === 'number' || (typeof v === 'string' && /^\d+$/.test(v))) && Number.isInteger(Number(v)) && Number(v) > 0 ? Number(v) : null;
   const id = positive(q.id), number = positive(q.number);
@@ -13,7 +14,7 @@ function loadExam(file) {
   const ctx = { window: {}, console: { log(){},warn(){},error(){} } };ctx.globalThis=ctx;
   vm.createContext(ctx,{codeGeneration:{strings:false,wasm:false}});
   vm.runInContext(fs.readFileSync(file,'utf8'),ctx,{filename:file,timeout:3000});
-  const w=ctx.window, bank=w.questionBank||w.questions||ctx.questionBank||ctx.questions||w.examData?.questions;
+  const w=ctx.window, bank=examSourceReader.readQuestionArray(w, ctx);
   if(!Array.isArray(bank))throw Error('UNKNOWN_EXAM_SCHEMA '+file);
   const seen=new Set();
   return bank.map(q=>{

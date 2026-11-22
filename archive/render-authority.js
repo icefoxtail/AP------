@@ -139,7 +139,7 @@
 
         const image = firstPresent(raw, ['image', 'imageUrl', 'img', 'imageTag', 'imagePath', 'image_path']);
         if (image !== undefined) question.image = text(image).trim();
-        for (const field of ['imageSize', 'solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'solutionImageSize', 'solutionImageLayout', 'layoutTag']) {
+        for (const field of ['imageSize', 'imageSizeOverride', 'solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'solutionImageSize', 'solutionImageSizeOverride', 'solutionImageLayout', 'layoutTag']) {
             const value = optionalString(raw, field);
             if (value !== undefined) question[field] = value;
         }
@@ -255,7 +255,10 @@
         const url = requireContract().callAssetResolver(resolve, assetRef, question, question.sourceRef);
         const sizeField = field === 'solutionImage' ? 'solutionImageSize' : 'imageSize';
         const size = optionalString(question, sizeField);
-        const sizeClass = size ? ` image-${size}` : '';
+        const overrideField = field === 'solutionImage' ? 'solutionImageSizeOverride' : 'imageSizeOverride';
+        const sizeOverride = optionalString(question, overrideField);
+        const overrideAllowed = field === 'solutionImage' ? ['full'] : ['full', 'tall'];
+        const sizeClass = (size ? ` image-${size}` : '') + (overrideAllowed.includes(sizeOverride) ? ` image-override-${sizeOverride}` : '');
         const solutionLayout = field === 'solutionImage' ? optionalString(question,'solutionImageLayout') : '';
         if (solutionLayout && solutionLayout !== 'fullwidth') throw new Error('INVALID_SOLUTION_IMAGE_LAYOUT');
         const layoutClass = solutionLayout ? ` layout-${solutionLayout}` : '';

@@ -28,7 +28,7 @@ Use with [README_CURRENT.md](README_CURRENT.md). ROLE 바인딩: `role=R3, campa
 
 ## 3. Meta/난이도/Golden 검수도 R3 본업이다
 
-- 각 검수 대상 qid에서 실제 최종 source/solution→primaryMethod/decisiveStep→course standardUnitKey/subUnitKey→RPM L1/L2/L3/L4 current+allowed lower-only prerequisite→exact grade crosswalk→GLOBAL ACTIVE PT/TPL ownerPack/alias→curriculum binding을 확인하고 CrossConcept/Condition/Integration·level 하|중|상 + separate difficultyBucket 1..5가 실제 학생 풀이와 맞는지 판단. 기존 Meta 임의 PASS/복사 금지. qid별 `META_LOOKUP_EVIDENCE`에 조회 path+blob SHA, 결과·변경 전후, true gap 이유 기록.
+- 각 검수 대상 qid에서 실제 최종 source/solution→primaryMethod/decisiveStep→course standardUnitKey/subUnitKey→RPM L1/L2/L3/L4 current+allowed lower-only prerequisite→exact grade crosswalk→GLOBAL ACTIVE PT/TPL ownerPack/alias→curriculum binding을 확인하고 CrossConcept/Condition/Integration·difficultyBucket 1..5(새 문항에 level 하|중|상은 쓰지 않음. [규칙](../../../agents/metadata.md#난이도는-정수-15만-2026-11-18-21시-kst부터-적용))가 실제 학생 풀이와 맞는지 판단. 기존 Meta 임의 PASS/복사 금지. qid별 `META_LOOKUP_EVIDENCE`에 조회 path+blob SHA, 결과·변경 전후, true gap 이유 기록.
 - 이미 ACTIVE 정확한 PT/TPL이 존재하는데 null/binding 오류는 직접 핀포인트 수정하고 결과를 최종 JS/sidecar와 대응. 없는 키를 임의 생성하지 않고 미확정 개별 필드만 진짜 lookup/수리 시도에 근거한 `EVIDENCE_DEBT`. 전 qid 메타 전면 미조회 후 `CANONICAL_UNVERIFIED`이면 해당 owner `OWNER_INCOMPLETE`이며 R3 스스로도 검수 생략 불가.
 - Golden 2~3 및 관련 Negative의 실제 sample source/solution/SVG SHA와 관찰, 학생 작은칠판 재현·밀도·Visual 의미/가독성 5축을 해당 stage 판정 전에 calibrate한다. 공식 validator/Node/asset path/SVG XML·actual browser가 실행 가능한 경우 관련 규칙대로 실행하고 run/명령+결과/검증 SHA 결속. 수행하지 않은 검사는 `NOT_RUN`과 도구/실패/firstMissingStep, **quality PASS=false**. 이전 유효한 같은 artifact 결과는 재사용 가능하나 없는 결과 추정 금지.
 

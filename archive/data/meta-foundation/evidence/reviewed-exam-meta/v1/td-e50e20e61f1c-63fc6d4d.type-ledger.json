@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-e50e20e61f1c-63fc6d4d",
+  "sourceArchiveFile": "original/middle/m3/2final/23_향림중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_4b39c2b1e92cafde0d0a4132b8cb0f1ad1a7e1b4677c0aed6e8d400d74a20581",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+      "step": "등접선으로 반둘레2+7+5=14를 구하고 접점 직각삼각형에서 내접원 반지름√(3²-2²)=√5를 얻어 넓이14√5를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c0e25ff6d408ae5c0bb078a8317efa8044020a83ccc15fcd8565891ad473f489",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": null,
+      "step": "가장 고른 성적은 표준편차가 가장 작은 자료라는 성질로 표의 최소0.79인 평행봉을 선택한다.",
+      "note": "필요 TPL: 집단별 평균·표준편차 해석 | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_141483d409b985ceb32a0b2fbe6558e706a90762a6b0348a5bb3f0a58133f381",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": null,
+      "step": "8개 자료를 정렬하여 가운데3,5의 평균4를 중앙값으로,각각2회 등장하는1,6을 최빈값으로 구한다.",
+      "note": "필요 TPL: 짝수 자료 중앙값과 최빈값 계산 | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2a5ed0417f797b51231978ed34e2b9f5f974f2b8c1ed5702e65c945eb913263a",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": "TPL_M3_IDENTIFY_FALSE_STATEMENTS_ON_DEVIATION_AND_VARIANCE",
+      "step": "편차=변량-평균으로①의 부호를 배제하고 편차합0 및 평균과 산포도의 독립성을 확인하여 분산 정의④를 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bc39fbe80c7887e6ca2fa10a5376215dd71694a57cd7e3bf3e4d0a29e1a9d7b5",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "step": "편차합0에서 x=-3을 얻고 제곱합20/5=4로 분산을 구하며 편차차4와 최소편차 학생C를 확인해 ㄱㄷㄹ을 고른다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

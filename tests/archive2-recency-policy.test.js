@@ -3,6 +3,7 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 const core = require("../archive/archive2-core.js");
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 const root = path.resolve(__dirname, "..");
 const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
@@ -19,7 +20,7 @@ test("the current exam year is defined once, in archive2-core", () => {
 });
 
 test("workspace quick assessments and compose text follow the recency order", () => {
-  const workspace = read("archive/archive2-workspace.js");
+  const workspace = readWorkspace();
   assert.match(workspace, /function recencyShuffle\(rows\)/);
   assert.match(workspace, /fiveMinuteShuffle\(rows\)\.sort\(C\.compareRecency\)/);
   // Every quick-assessment pool shuffle goes through the recency-aware shuffle.

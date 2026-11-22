@@ -1,6 +1,7 @@
 // Rebind only still-current members of an already issued FULL audit preservation.
 // The original FULL audit and its reviewed difficulty intake are replayed intact.
 import fs from 'node:fs';
+import { META_FILE, questionMetadataBytesAt } from './question-metadata-format.mjs';
 import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
@@ -40,7 +41,7 @@ function git(root,commit,rel){
  return immutable.get(key);
 }
 function gitJson(root,commit,rel){
- const value=JSON.parse(git(root,commit,rel));
+ const value=JSON.parse(rel===META_FILE?questionMetadataBytesAt(root,commit).toString('utf8'):git(root,commit,rel));
  // The complete public document is parsed and checked once, but only the
  // immutable selected-row result survives in historicalContexts. Do not retain
  // another whole-bank metadata/identity copy beside the live Consumer catalog.

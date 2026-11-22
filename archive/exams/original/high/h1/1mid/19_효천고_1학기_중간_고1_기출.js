@@ -1472,7 +1472,7 @@ window.questionBank = [
     "content": "서술형 2.\n다항식 $(x+y+z)^3-x^3-y^3-z^3$을 인수분해 하시오. (7점)",
     "choices": [],
     "answer": "3(x+y)(y+z)(z+x)",
-    "solution": "먼저 합의 세제곱을 전개하고 $x^3,y^3,z^3$을 뺀다.\n$(x+y+z)^3-x^3-y^3-z^3$\n$=3x^2y+3x^2z+3xy^2+3xz^2+3y^2z+3yz^2+6xyz$이다.\n한편\n$3(x+y)(y+z)(z+x)$\n$=3(x^2y+xy^2+x^2z+xz^2+y^2z+yz^2+2xyz)$\n$=3x^2y+3x^2z+3xy^2+3xz^2+3y^2z+3yz^2+6xyz$이다.\n두 식의 전개가 같으므로\n$(x+y+z)^3-x^3-y^3-z^3=3(x+y)(y+z)(z+x)$이다.\n따라서 인수분해한 결과는 $3(x+y)(y+z)(z+x)$이다.",
+    "solution": "주어진 식을 한 번에 전개하지 말고 $x+y$를 하나의 수로 생각한다.\n\n두 수에 대한 세제곱 공식\n\n$$\n(u+v)^3-u^3-v^3=3uv(u+v)\n$$\n\n을 이용한다.\n\n먼저 주어진 식을 두 부분으로 나눈다.\n\n$$\n\\begin{aligned}\n&(x+y+z)^3-x^3-y^3-z^3\\\\\n&=\\bigl\\{(x+y+z)^3-(x+y)^3-z^3\\bigr\\}\\\\\n&\\quad+\\bigl\\{(x+y)^3-x^3-y^3\\bigr\\}.\n\\end{aligned}\n$$\n\n첫 번째 중괄호에는 $u=x+y$, $v=z$를 넣으면\n\n$$\n(x+y+z)^3-(x+y)^3-z^3\n=3(x+y)z(x+y+z)\n$$\n\n이다.\n\n두 번째 중괄호에는 $u=x$, $v=y$를 넣으면\n\n$$\n(x+y)^3-x^3-y^3=3xy(x+y)\n$$\n\n이다.\n\n두 결과를 더한 다음 공통인수 $3(x+y)$를 묶는다.\n\n$$\n\\begin{aligned}\n&(x+y+z)^3-x^3-y^3-z^3\\\\\n&=3(x+y)z(x+y+z)+3xy(x+y)\\\\\n&=3(x+y)\\bigl\\{z(x+y+z)+xy\\bigr\\}\\\\\n&=3(x+y)(xz+yz+z^2+xy)\\\\\n&=3(x+y)(xy+xz+yz+z^2)\\\\\n&=3(x+y)(x+z)(y+z).\n\\end{aligned}\n$$\n\n따라서 인수분해 결과는\n\n$$\n\\boxed{3(x+y)(y+z)(z+x)}\n$$\n\n이다.",
     "score": 7,
     "level": "중",
     "difficultyBucket": 3,

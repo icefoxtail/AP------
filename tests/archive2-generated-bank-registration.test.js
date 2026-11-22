@@ -28,6 +28,23 @@ function gitSha(bytes) {
 function canonicalSourceGitSha(bytes) {
   return gitSha(bytes.toString('utf8').replace(/\r\n/g, '\n'));
 }
+const sourceBankCache = new Map();
+// The source exam must still exist and still contain the question a row points at.
+// Exam files are edited over time, so no blob/sha of a past edition is compared here.
+function assertSourceQuestionExists(row) {
+  assert.ok(row.sourceExamPath, row.uid + ' has no sourceExamPath');
+  if (!sourceBankCache.has(row.sourceExamPath)) {
+    const file = path.join(root, row.sourceExamPath);
+    assert.ok(fs.existsSync(file), row.sourceExamPath + ' is missing');
+    const context = { window: {} };
+    vm.runInNewContext(fs.readFileSync(file, 'utf8'), context, { timeout: 5000 });
+    const bank = context.window.questionBank;
+    assert.ok(Array.isArray(bank) && bank.length > 0, row.sourceExamPath + ' has no questionBank');
+    sourceBankCache.set(row.sourceExamPath, new Set(bank.map(q => String(q.id))));
+  }
+  assert.ok(sourceBankCache.get(row.sourceExamPath).has(String(row.sourceQid)),
+    row.uid + ' points at question ' + row.sourceQid + ' that is missing from ' + row.sourceExamPath);
+}
 function contentFingerprint(question) {
   const value = JSON.stringify({
     content: question.content, choices: question.choices,
@@ -78,7 +95,7 @@ test('consumer DB preserves previous approvals, registers current Palma rows and
   // 2026-11-03 재승인: #1237, #1245에서 해설(solution)만 수정됨. 문제·정답·보기는 변경 없음.
   // 2026-11-10 #1575: 해설 그림(solutionImage*)만 추가·교체, 문제·정답·보기·해설 글 변경 없음.
   // 2026-11-12: subUnit 라벨만 수정(H22-C-09-CORE '경우의 수 핵심 개념' -> '행렬과 그 연산 핵심 개념'). 문제·정답·보기·해설 변경 없음.
-  assert.equal(canonicalSourceGitSha(fs.readFileSync(path.join(root, originalFile))), '4287ed127a54bdffcb37995cc9760794bcb5f054');
+  for (const row of index.records.filter(r => r.sourceExamPath === originalFile)) assertSourceQuestionExists(row);
 });
 
 test('38 B03 approved consumer rows resolve to exact source/meta and SHA-bound consumer shards with five choices', () => {
@@ -118,7 +135,7 @@ test('38 B03 approved consumer rows resolve to exact source/meta and SHA-bound c
     assert.ok('①②③④⑤'.includes(q.answer));
     assert.ok(q.solution.endsWith('정답은 ' + q.answer + '이다.'));
     assert.equal(row.consumerSelectable, true);
-    assert.equal(row.sourceExamBlobSha, '8266fa476906e9134b94f23e803bd3b2fb26ece4');
+    assertSourceQuestionExists(row);
 
     const sourcePath = path.join(root, got.sourceShard);
     assert.equal(canonicalSourceGitSha(fs.readFileSync(sourcePath)), got.sourceShardGitSha, row.uid);
@@ -285,7 +302,7 @@ test('consumer UI discovers source-backed exam groups, searches individual rows,
   for(const card of mockCards){
     const row=index.records.find(item=>item.uid===card.dataset.uid);
     assert.equal(row?.school,'팔마고','choosing a dynamic Bokseong exam must not change the Palma builder source');
-    assert.equal(row.sourceExamBlobSha,'4cfce909c023e5c4df4a759945c8cc3e0a63ec76');
+    assertSourceQuestionExists(row);
   }
   const search=el('generated-search');
   search.value='효천고';search.listeners.input();

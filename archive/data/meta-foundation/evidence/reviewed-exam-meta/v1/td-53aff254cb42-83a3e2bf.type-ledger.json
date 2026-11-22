@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-53aff254cb42-83a3e2bf",
+  "sourceArchiveFile": "original/high/h2/1mid/23_순천고_1학기_중간_고2_수학I.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_18e04199b95fbf06405943aacd921ac81ec47de92c518c50302b79675a7f6d06",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_02_EXP_INEQUALITY",
+      "templateKey": "TPL_H22A_02_EXP_INEQUALITY_083",
+      "step": "변수인 밑이 0~1·1·1초과인 경우를 나누어 지수 비교 방향을 적용한다.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_afe392bd125390b51d93c4b16fd9ae840c3ba283920333f292f9dcc0b2d19183",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "step": "표의 온도·압력 증가관계와 분수식의 단조성으로 계수 부호를 결정하고 로그의 증가성으로 범위 진술을 검증한다.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3d39a8bccd834a4792b776e2b47b2d764b73678d141cde9ac0b69aeb5cea95d5",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENTIAL_DECAY",
+      "templateKey": "TPL_EXPONENTIAL_DECAY_HALF_LIFE",
+      "step": "반감기의 지수감소 모형에 잔존비를 대입하고 상용로그로 경과시간을 역산한다.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

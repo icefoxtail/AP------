@@ -250,6 +250,8 @@ claude_*_files_*/
 /archive/_generated/**
 # Mixed verification shards are build inputs for Pages release, not Git source.
 /archive/data/archive2-source-verification/mixed-v1/
+# Archive 2.0 shard builder output (build artifact of the release build, not Git source).
+/archive/data/archive2-shards/
 # HS quadratic SVG candidate/evidence workspace is local-only; retain only handoff summaries.
 /reports/hs-quadratic-svg-upgrade-20260908/*
 /reports/hs-quadratic-svg-upgrade-20260908/**
@@ -394,3 +396,6 @@ backup_before_*.sql
 
 # impeccable skill output (third-party skill, not committed)
 .impeccable/
+
+# Assembled question metadata: built from the tracked shards in archive/data/question-metadata/v1/ (docs/agents/git-evidence.md)
+/archive/data/question_metadata.json

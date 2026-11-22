@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "archive-middle-primary-merge-observation-v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "owner": "GPT_ROOT_26FC42390A50",
+  "repository": "icefoxtail/AP------",
+  "pr": 2330,
+  "head": "02a634765f2947f34c8ce4193ee6da4143c515e4",
+  "mainBefore": "384c559626ae17b87e8d4410a59df4372107ba1b",
+  "mergeCommit": "ca5644a44f62d8917c2df9a1b7d95353491589cc",
+  "merged": true,
+  "mergedAt": "2026-11-17T09:23:16Z",
+  "readback": "PR_API_MATCHED_MERGE_RESULT",
+  "sourceMetadataIdentityAndM3s1OwnDiffPaths": 0,
+  "reviewedSameEditionEvidenceReused": true,
+  "ci": {
+    "runId": 44048899976,
+    "head": "22cdc0c3be1548db4a2f43448a9a6d4bbe4e2302",
+    "conclusion": "failure",
+    "pass": 426,
+    "fail": 7,
+    "rawLogDriveId": "1LFwUokMYIFTzut1I-gxN8ILsN32rFjBS",
+    "rawLogSha256": "0b631e025d347da75ca62b4c4cefdf3f90e157b43ebb5520f2b0d62b1b4f6dab",
+    "rawLogBytes": 4184100,
+    "mergeRule": "docs/agents/common.md CURRENT 2026-11-17 preserves independent review and scoped tests; CI failures repaired after merge without weakening guards"
+  },
+  "currentGateResults": {
+    "m3source49": {
+      "runId": 44052082242,
+      "shadowPass": 61,
+      "q5Pass": 45,
+      "q16Pass": 44,
+      "sourceCount": 49,
+      "registered": 48,
+      "pending": 1,
+      "q16Recovered": true,
+      "q5OriginalNativePrivateFixturePending": true,
+      "wholeOutside47Unchanged": true
+    },
+    "m2closed8": {
+      "runId": 44052078894,
+      "status": "FAIL",
+      "failureCode": "M2_NATIVE_RPM_COURSE:EXACT_SOURCE_BANK_OR_AFTER_BLOB_REQUIRED",
+      "wholeOutside39Unchanged": true
+    },
+    "palma2": {
+      "runId": 44054906969,
+      "jobId": 133941657714,
+      "chrome": "SUCCESS",
+      "captureAndCleanAndArtifactSteps": "SUCCESS",
+      "artifactId": 14314533640,
+      "artifactSha256": "edd0441952a3df0fcd977047528bc538ec19b7e5c9ec4980d4976ffd3191700c",
+      "rawCaptureAndVisualReadback": "PENDING"
+    }
+  },
+  "mainWriter": {
+    "runId": 44055115637,
+    "status": "QUEUED_OBSERVED"
+  },
+  "mainCI": {
+    "runId": 44055115383,
+    "status": "QUEUED_OBSERVED"
+  },
+  "consumer": "NOT_RUN_AFTER_MERGE",
+  "pages": "NOT_VERIFIED_AFTER_MERGE",
+  "globalQuality": "UNKNOWN",
+  "fullSemanticApproval": "NOT_VERIFIED",
+  "nextAction": "Observe actual main writer; read original 3330 stored fields/Consumer; compare public Pages bytes; continue only failed scoped closure repairs."
+}

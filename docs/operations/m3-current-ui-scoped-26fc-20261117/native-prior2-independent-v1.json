@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "archive-m3-q5-original-publication-native-independent-v1",
+  "reviewer": "ci_m2s2",
+  "owner": "m3s2_release",
+  "status": "STATIC_ACCEPT_EXACT_ORIGINAL_PUBLICATION_DELTA_DYNAMIC_PENDING",
+  "candidate": {
+    "bytes": 51020,
+    "sha256": "489a8089bd53ca5ca3823c932561381d40971b15038c13a8bd3ef8dc6cf8f5d3",
+    "gitBlobSha1": "a725d9af4e25f4c118a6e743ad95cb01bec5cf8c"
+  },
+  "before": {
+    "bytes": 50755,
+    "sha256": "695298b878666f01aafbce21378f991b82b865e8b359849df0627200fd255b7d",
+    "gitBlobSha1": "71eb98b06f359f1f1a18f62fa281b01e1ea94eec"
+  },
+  "manifest": {
+    "bytes": 3912,
+    "sha256": "5882caf383957bb5096aa956bae822d3fc472d160cc99680a9d52d99165e29a5",
+    "gitBlobSha1": "1f873895c34378d863618c84445cd10fd4ba4cbd"
+  },
+  "checks": {
+    "singleEditInverseWholeByteExact": true,
+    "unchangedFunctions": [
+      {
+        "name": "reference",
+        "bytes": 1972,
+        "sha256": "1080c9ae0ee998a6f6ad6e513564043c74457c2199877b35587ef99a512a8101",
+        "gitBlobSha1": "86075986dcf90988a5da6c627af52ab97e584449",
+        "wholeByteExact": true
+      },
+      {
+        "name": "evidence",
+        "bytes": 482,
+        "sha256": "e49aa2d3e5bfd989101155d9ffcc257ad2396dc60aa8cf5cf21721dcb690aa4a",
+        "gitBlobSha1": "fe3be5b7cb67d8327e568b90e8b7fc6de890b086",
+        "wholeByteExact": true
+      }
+    ],
+    "priorTechnicalAndVisualBoundBeforeCurrentUi": [
+      "Exact ctx.spec-to-frozen-current-profile equality",
+      "evidence requires the same short path/raw pin once in both request approval and selected item evidence",
+      "reference requires exact commit, 100644 path/blob, object bytes/Git/raw SHA and live bytes"
+    ],
+    "currentAncestryUnchangedFor": [
+      "technical",
+      "visual",
+      "witness",
+      "frames",
+      "both PNG artifacts"
+    ],
+    "currentHeadEvidenceAndLiveCodeGuards": "UNCHANGED",
+    "originalApplicationGivenNativeAncestorAuthority": "UNCHANGED",
+    "originalTests": "UNCHANGED"
+  },
+  "reviewBoundary": {
+    "sourceContentReviewed": false,
+    "mathematicalReview": 0,
+    "imagesViewed": 0,
+    "nodeSyntax": "NOT_RUN",
+    "native": "NOT_RUN",
+    "builder": "NOT_RUN",
+    "consumer": "NOT_RUN",
+    "approvalChanges": 0
+  },
+  "requiredNextAction": "Root combines the disjoint preview2 fix and reruns the actual source49 readonly gate. The old publication branch's missing ancestry is not accepted as Native approval; original Native must still succeed."
+}

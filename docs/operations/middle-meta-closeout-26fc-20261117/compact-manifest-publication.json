@@ -1,0 +1,194 @@
+{
+  "schemaVersion": "archive-selected-source-compact-manifest-publication-v1",
+  "status": "FROZEN_CANDIDATE_INDEPENDENT_AND_OFFICIAL_CI_REQUIRED",
+  "owner": "/root/m1_release_closeout",
+  "baseCommit": "9fbcf190fd8abaa03f330def331afc7c7c27ba60",
+  "files": [
+    {
+      "path": "archive/archive2-canonical.js",
+      "beforeGitBlobSha1": "733bede611518556c0b7eebf0680e30cf8d56afd",
+      "gitBlobSha1": "093b678432351748b620725b193443e620d065f0",
+      "sha256": "018e6f6021703b99808cedb2ab15ea0807b8d151af23631b0cbc6c07346ae874",
+      "bytes": 104308,
+      "remoteReadback": "FULL_BYTES_EXACT"
+    },
+    {
+      "path": "archive/tools/build-archive2-catalog.mjs",
+      "beforeGitBlobSha1": "72a9babc8bb30ed99a1dcb545a47722662e76403",
+      "gitBlobSha1": "adbde493e5ebb455e4802df59183e1bc92693a79",
+      "sha256": "f46fa99c9184eb9709be9cd1b4f0f46f6fca63e30c9a5ac9523497a591ccba85",
+      "bytes": 58060,
+      "remoteReadback": "FULL_BYTES_EXACT"
+    },
+    {
+      "path": "tests/archive2-original-source-verification-shard.test.mjs",
+      "beforeGitBlobSha1": "ff25d98dec98828fd6b370208fae3ec1e7fd3f56",
+      "gitBlobSha1": "e0fbe355e154d65ef9d05007caca9d44736baaff",
+      "sha256": "fc9e3e91170566938aca8cd1b011f15431b1f81aef2e8828535022e44ec0ec97",
+      "bytes": 39297,
+      "remoteReadback": "FULL_BYTES_EXACT"
+    },
+    {
+      "path": "archive/data/archive2-canonical-input-manifest.compact.json",
+      "beforeGitBlobSha1": null,
+      "gitBlobSha1": "60c10074678d49f3e2b2b239affd2b555f556530",
+      "sha256": "b941a0299a5d20baa8752e5568b22272433258b3cec3c25859319c2342c83211",
+      "bytes": 64411,
+      "remoteReadback": "FULL_BYTES_EXACT"
+    }
+  ],
+  "rootOwnedIntegrationPrerequisites": [
+    {
+      "path": "tools/ci/archive-pages-registration.paths",
+      "beforeGitBlobSha1": "c7d1e582e2e5999bf2b74ef161d87fd44267c8f4",
+      "gitBlobSha1": "e2eda50d16c840409e80196b115024f7f7488f94",
+      "change": "ONE_EXPLICIT_COMPANION_OUTPUT_PATH_ADDITION",
+      "candidateAuthor": "/root",
+      "m1Edits": 0,
+      "rootReportedFrozen": true
+    },
+    {
+      "path": "tools/ci/archive-meta-register-commit.paths",
+      "beforeGitBlobSha1": "8ce2c4b04446e8d131608feee518629878642530",
+      "gitBlobSha1": "7de1fd84d9c7272a58a794ae1a95800a3266268a",
+      "change": "ONE_EXPLICIT_COMPANION_OUTPUT_PATH_ADDITION",
+      "candidateAuthor": "/root",
+      "m1Edits": 0,
+      "rootReportedFrozen": true
+    },
+    {
+      "path": "tools/archive-pages-release-manifest.json",
+      "beforeGitBlobSha1": "c25912e627ce086a269ac6308af50422cf17d2ca",
+      "gitBlobSha1": "ccb5efeffb1a0ad352b07813ef70b03018e54778",
+      "change": "ONE_EXPLICIT_COMPANION_OUTPUT_PATH_ADDITION",
+      "candidateAuthor": "/root",
+      "m1Edits": 0,
+      "rootReportedFrozen": true
+    }
+  ],
+  "exactDelta": {
+    "gitBlobSha1": "dab9bd08369f22e6a89dcab5fb005967b60c28c7",
+    "sha256": "b0122fc008077a6a19d803c8c3621743caeec73dde8434bb6afe0e17594ac0f9",
+    "bytes": 27572,
+    "remoteReadback": "FULL_BYTES_EXACT"
+  },
+  "currentActualInput": {
+    "originalManifest": {
+      "path": "archive/data/archive2-canonical-input-manifest.json",
+      "gitBlobSha1": "2ac148a5ec48eca6799557f7d606f9eab4ee1ecf",
+      "sha256": "09e1f6a04eed7e3acfa6bd9c699f5324c0120ab5dc15c23d2c005682d8675853",
+      "bytes": 96997
+    },
+    "sourceIndex": {
+      "path": "archive/data/archive2-source-verification-index.json",
+      "gitBlobSha1": "0eebeb7677cb47aec6c1fb7612374d21261e4b80",
+      "sha256": "f8cfea28e234a63dfd9934726067f081fa22510c984d0dab46366f484ee9c842",
+      "bytes": 386244
+    },
+    "selectedShard": {
+      "sourceFile": "original/high/h2/1final/25_제일고_1학기_기말_고2_대수c.js",
+      "path": "archive/data/archive2-source-verification/v1/7cf2d32d67d07da7f480aa21bccc04da7e693e6297c07bc18a5348f4ae587f8f.json",
+      "expectedSha256": "2f2e8ee936b79bdbfc3525ad7e0bf3a8bcf4daf2ffe30ac036cfda82844f86cc",
+      "gitBlobSha1": "4f89c5e4b4471e55f8e4d3968c7b479f87dc7045",
+      "sha256": "2f2e8ee936b79bdbfc3525ad7e0bf3a8bcf4daf2ffe30ac036cfda82844f86cc",
+      "bytes": 21382
+    },
+    "sourceQuestionBodiesRead": 0,
+    "sourceEvaluation": 0
+  },
+  "measuredTransport": {
+    "existingTotalBytes": 504623,
+    "companionBytes": 64411,
+    "currentSourceIndexBytes": 386244,
+    "selectedShardBytes": 21382,
+    "selectedTotalBytes": 472037,
+    "bytesSaved": 32586,
+    "marginBelow500000": 27963,
+    "unchangedBudgetAssertion": "selected total < 500_000",
+    "unchangedAggregateGuard": "selected total < 67_058_078 / 100",
+    "primaryRequests": [
+      "archive/data/archive2-canonical-input-manifest.compact.json",
+      "archive/data/archive2-source-verification-index.json",
+      "archive/data/archive2-source-verification/v1/7cf2d32d67d07da7f480aa21bccc04da7e693e6297c07bc18a5348f4ae587f8f.json"
+    ],
+    "primaryExpectedRequestCount": 3,
+    "measurement": "ACTUAL_9F_IMMUTABLE_INPUT_BYTES_PLUS_PURE_LOSSLESS_JSON_DERIVATION; NODE_FETCH_TEST_NOT_RUN",
+    "legacy404Compatibility": "Old manifest fallback preserves the old transport cost; no new under-budget claim is made when the companion is absent."
+  },
+  "losslessDataDerivation": {
+    "files": 544,
+    "directories": 34,
+    "compactSchema": "archive2-canonical-input-manifest-compact-v1",
+    "tupleFields": [
+      "directoryIndex",
+      "basename",
+      "sha256"
+    ],
+    "directoryOrder": "FIRST_APPEARANCE_IN_ORIGINAL_FILE_ORDER",
+    "originalFileOrderPreserved": true,
+    "originalHeadersPreserved": true,
+    "originalWholeRoundtripBytes": 96997,
+    "originalWholeRoundtripSha256": "09e1f6a04eed7e3acfa6bd9c699f5324c0120ab5dc15c23d2c005682d8675853",
+    "exactOriginalJsonStringifyPlusLfRoundtrip": true,
+    "projectionVersion": "archive2-canonical-v1:a4add592ed70fbd4af07327c97159ae955fe7e598bec759ae90fc390684ccd6b",
+    "projectionVersionUnchanged": true,
+    "originalManifestChanged": false,
+    "sourceIndexOrMixedFormatChanged": false,
+    "companionInManifestFiles": false,
+    "allInputPathsExplicitlyExcludeCompanion": true,
+    "encoderRejectsSelfInput": true,
+    "officialNodeBuild": "NOT_RUN"
+  },
+  "loaderBoundary": {
+    "modifiedLoader": "loadSourceVerificationShard",
+    "fullLoaderBodyUnchanged": true,
+    "mixedLoaderBodyUnchanged": true,
+    "projectionAndIndexAndShardVerificationBodyUnchanged": true,
+    "oldReadersContinueUsingOriginalManifest": true,
+    "companionPreference": true,
+    "legacyFallbackOnlyExactHttp404": true,
+    "invalidJsonSchemaDigestTupleOrHeaderFallback": false,
+    "networkOrNon404HttpFallback": false,
+    "strictIntegerDirectoryIndex": true,
+    "uniqueDirectoryAndReconstructedPath": true,
+    "existingDocsParentNamespacePreserved": "../docs/ ONLY",
+    "unknownHeaderOrOriginalFileFieldsRejected": true,
+    "noRawSourceEvaluation": true
+  },
+  "builderBoundary": {
+    "derivationAfterFinalAuthorityManifest": true,
+    "regularWrite": true,
+    "checkDetectsMissingOrDriftedCompanion": true,
+    "packageOnlyVerifiesRegisteredCompanionBeforeTemporaryShardWrites": true,
+    "originalManifestGenerationAndSerializationUnchanged": true,
+    "outputsAuthorizedOnlyWithRootOwnedThreePathDeltas": true
+  },
+  "verification": {
+    "canonicalWholeInverseExact": true,
+    "builderWholeInverseExact": true,
+    "testWholeInverseExact": true,
+    "currentOriginalAll544CodecShapeAndPathValid": true,
+    "officialBuildOrTestsExecuted": 0,
+    "codeSyntax": {
+      "canonical": "PARSE_ONLY_NO_BODY_EXECUTION",
+      "builder": "PARSE_ONLY_NO_BODY_EXECUTION",
+      "test": "PARSE_ONLY_NO_BODY_EXECUTION",
+      "nodeBuild": "NOT_RUN",
+      "nodeTests": "NOT_RUN",
+      "builderInverseExact": true,
+      "testInverseExact": true
+    },
+    "candidateFullRemoteReadback": "EXACT_FOUR_FILES",
+    "existingCorruptionFixtures": "Rebased source fixtures override the actually used companion; legacy fixtures explicitly return 404.",
+    "coldThreeRequestAndFixedBudgetTest": "PENDING_OFFICIAL_CI",
+    "newContractTests": "PENDING_OFFICIAL_CI",
+    "officialNodeBuilder": "NOT_RUN",
+    "packageCheck": "NOT_RUN",
+    "independentReview": "REQUESTED_M3",
+    "productionRegistration": 0,
+    "newApproval": 0,
+    "newMathReview": 0,
+    "newVisualReview": 0,
+    "remoteRefWrites": 0
+  }
+}

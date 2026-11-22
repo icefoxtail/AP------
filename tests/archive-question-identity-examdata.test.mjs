@@ -53,37 +53,27 @@ test('pending metadata loader accepts questions on the root window.examData obje
   assert.equal(questions[1].id, 2);
 });
 
-function selector(source, variableName) {
-  const expression = source.match(new RegExp(`const ${variableName} = ([^;]+);`))?.[1];
-  assert.ok(expression, `${variableName} source-array selector exists`);
-  return new Function('context', 'scope', `return (${expression})`);
-}
-
 const indexSource = fs.readFileSync(path.join(root, 'archive/tools/build-question-index.mjs'), 'utf8');
 const catalogSource = fs.readFileSync(path.join(root, 'archive/tools/build-archive2-catalog.mjs'), 'utf8');
+const sharedReader = (await import('../archive/exam-source-reader.js')).default;
 
-test('question-index source loader uses examData only after existing globals and keeps array guard', () => {
-  const getQuestions = selector(indexSource, 'questions');
-  const fallback = [{ id: 1 }, { id: 2 }];
-  const context = { window: { examData: { questions: fallback } } };
-  assert.equal(getQuestions(context), fallback);
-
-  const preferred = [{ id: 'preferred' }];
-  assert.equal(getQuestions({ window: { questions: preferred, examData: { questions: fallback } } }), preferred);
-  assert.equal(Array.isArray(getQuestions({ window: { questions: {}, examData: { questions: fallback } } })), false);
+// 읽기 규칙(questions → questionBank → examData, 배열이 아닌 값은 건너뜀)은 공용 exam-source-reader.js 한 곳에 있다.
+test('question-index source loader uses the shared exam-source reader and keeps array guard', () => {
+  assert.match(indexSource, /import examSourceReader from '\.\.\/exam-source-reader\.js';/);
+  assert.match(indexSource, /const questions = examSourceReader\.readQuestionArray\(context\.window, context\);/);
   assert.match(indexSource, /if \(!Array\.isArray\(questions\)\)/);
+  const fallback = [{ id: 1 }, { id: 2 }];
+  assert.equal(sharedReader.readQuestionArray({ examData: { questions: fallback } }), fallback);
+  const preferred = [{ id: 'preferred' }];
+  assert.equal(sharedReader.readQuestionArray({ questions: preferred, examData: { questions: fallback } }), preferred);
 });
 
-test('catalog source loader uses examData only after existing globals and keeps array guard', () => {
-  const getBank = selector(catalogSource, 'bank');
-  const fallback = [{ id: 1 }, { id: 2 }];
-  const scope = { window: { examData: { questions: fallback } } };
-  assert.equal(getBank(undefined, scope), fallback);
-
-  const preferred = [{ id: 'preferred' }];
-  assert.equal(getBank(undefined, { window: { questions: preferred, examData: { questions: fallback } } }), preferred);
-  assert.equal(getBank(undefined, { window: { questions: {}, examData: { questions: fallback } } }), fallback);
-  const wrappedBank = { title: 'sample', questions: fallback };
-  assert.equal(getBank(undefined, { window: { questionBank: wrappedBank, examData: wrappedBank } }), fallback);
+test('catalog source loader uses the shared exam-source reader and keeps array guard', () => {
+  assert.match(catalogSource, /import examSourceReader from "\.\.\/exam-source-reader\.js";/);
+  assert.match(catalogSource, /const bank = examSourceReader\.readQuestionArray\(scope\.window\);/);
   assert.match(catalogSource, /if \(!Array\.isArray\(bank\)\)/);
+  const fallback = [{ id: 1 }, { id: 2 }];
+  assert.equal(sharedReader.readQuestionArray({ questions: {}, examData: { questions: fallback } }), fallback);
+  const wrappedBank = { title: 'sample', questions: fallback };
+  assert.equal(sharedReader.readQuestionArray({ questionBank: wrappedBank, examData: wrappedBank }), fallback);
 });

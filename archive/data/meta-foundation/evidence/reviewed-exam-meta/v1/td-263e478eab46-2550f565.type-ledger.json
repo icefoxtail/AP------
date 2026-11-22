@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-263e478eab46-2550f565",
+  "sourceArchiveFile": "original/high/h2/2mid/26_효천고_2학기_중간_고2_미적분I.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_b899a49397f1f286cdc8ac133d6392f5767ee63f023cd6115aa24800d26c062d",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MEAN_VALUE_THEOREM",
+      "templateKey": "TPL_MVT_ROLLE_DIRECT",
+      "step": "롤의 정리의 양끝값 일치 조건 f(-k)=f(0)을 풀어 양수 k를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6a6132cb74cc5d66cc3b1c0ac819c6c0402a0b9e8fb4f003a593217352148c6a",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "step": "극한으로 이차함수를 확정한 후 꼭짓점과 구간 끝점의 값을 비교한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c048c53204fd020d1c41a5a4c373475eccc3d21c58db70c732f714c9100e858f",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+      "step": "포물선 위 점과 직선의 거리를 완전제곱식으로 만들어 최소화한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6dfe547e535270a353e0beee1894b176345e775a6b010be722dfd61e0bbceae6",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MEAN_VALUE_THEOREM",
+      "templateKey": "TPL_MVT_BOUND_LIMIT",
+      "step": "평균값 정리로 도함수 하한 2를 끝점 함수값 차이의 하한으로 옮기고 등호 함수를 구성한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}

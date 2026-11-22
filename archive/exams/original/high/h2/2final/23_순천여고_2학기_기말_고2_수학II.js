@@ -579,7 +579,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 구간 0부터 3까지 그린 꺾은선 그래프가 (0, 0)에서 (1, 1)까지 올라가고 x=4/3에서 x축을 지나 (2, −2)까지 내려간 뒤 (3, 0)으로 올라오며, x축과 그래프 사이가 S₁, S₂, S₃, S₄ 네 영역으로 나뉘어 칠해진 그림이다.",
+    "solutionImageCaption": "g(x)=f(x)/a의 한 주기 [0,3]이다(부호는 x=4/3에서 바뀐다). 넓이는 S₁=1/2, S₂=1/6, S₃=2/3, S₄=7/6이므로 ∫₀³|g|=5/2이고, 주기 3에 의해 [3,5]는 [0,2]와 같아 ∫₃⁵|g|=S₁+S₂+S₃=4/3이다. 따라서 ∫₀⁵|f|dx=a(5/2+4/3)=23a/6=23에서 a=6이다 (정답 ②).",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

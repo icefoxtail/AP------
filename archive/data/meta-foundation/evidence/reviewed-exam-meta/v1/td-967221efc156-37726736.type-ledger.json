@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-967221efc156-37726736",
+  "sourceArchiveFile": "textbooks/미래엔_공통수학1/미래엔_공통수학1_순열과조합_중단원마무리_고1/미래엔_공통수학1_순열과조합_중단원마무리_고1.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_81ecff3f4acb5b45ed2e67e2f4e35006acd7bf164b9b5963550c871b2376ea39",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "step": "8의 약수 {1,2,4,8}과 3의 배수 {3,6,9}는 겹치지 않아 4+3이다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_82c906ed9072e627adc32379aa895f88a2c824555b331bcc1d28459a31b749d3",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "step": "첫 눈 {2,3,5}와 둘째 눈 {1,5}의 독립 선택을 곱한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e73a98fb0b854a4f5bfd69128f9a34c3c4c8b5d893c6c0079b0b62df86a6d63a",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_PERMUTATION_COMBINATION_CALCULATION",
+      "templateKey": "TPL_H1_PERMUTATION_COMBINATION_CALCULATION_CALCULATE",
+      "step": "순열·팩토리얼·조합의 정의에 수를 대입하여 계산한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인. 필요한 TPL: 순열·조합·팩토리얼 직접 값 — 공식에 수를 대입하여 독립적인 값을 계산한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a10b998ccc262cd811ba5428bf477d689aef4336541bcc89040593a362911c08",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "step": "순서 있는 선택은 4P3, 전체 배열은 5!, 순서 없는 선택은 8C4로 계산한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_539ddc5b3307f6e3c5204d1d176f37fea4fa5d5991f2cf1b3c5223d9b4b55456",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "step": "두 눈이 같은 6가지와 차가 1인 순서쌍 10가지를 합한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b0398686e3d98a2ae432aa90b9f60d77ed84053cad922fe661f27cc47924660f",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "step": "공약수는 최대공약수 144=2⁴3²의 약수이므로 지수 선택 수는 5×3이다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3f4aafbad1a8156a71ab8e6bd70484d679510b6920006137884272091e6797dd",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_H1_BINOMIAL_PARAMETER_RELATION",
+      "step": "⑴ 공통 팩토리얼을 소거하여 4n=5(n−3), ⑵ n(n−1)/2=n+5를 푼다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f1a0b7e81a524dfb6b1f4a6f6a1f7b26fcfeb0c90878d7248fed1add4a1479bc",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "step": "⑴ 부모 앞자리 배열 2!와 뒷자리 3!를 곱하고 ⑵ 운전자 2가지와 남은 좌석 4!를 곱한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dce549bbd29ad00b52c8604cb873a157b62fcb8046c7c64711facf7a412be7d4",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "step": "ab가 홀수인 9가지에는 짝수 c 3가지, 나머지 27가지에는 홀수 c 3가지를 결합한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7f365a5c27cccd75ef4197bad4a40dacbab43b3a2c93b0e5192f536bab2a1588",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "step": "그림의 일렬 7깃발에서 두 사람의 배정 7P2 중 이웃한 6쌍의 두 방향 12가지를 뺀다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_57227590c44b7ee643ac631147f4b04d3db5df98ee0c085b2ff29a82f48779f9",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_H1_SELECTION_GEOMETRIC_DEGENERACY",
+      "step": "3행4열 격자의 전체 12C3에서 가로 공선 12, 세로 4, 양 대각 공선 4를 제외한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    }
+  ]
+}

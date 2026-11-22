@@ -11,6 +11,7 @@ const root = path.resolve(__dirname, "..");
 const read = (...parts) => fs.readFileSync(path.join(root, ...parts), "utf8");
 const Assign = require("../archive/archive2-assign.js");
 const Output = require("../archive/archive2-output.js");
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 const tick = () => new Promise((resolve) => setImmediate(resolve));
 const NOW = Date.parse("2026-11-10T03:00:00Z"); // 한국 시간 2026-11-10 12:00
@@ -114,10 +115,10 @@ function memoryStorage(initial = {}) {
   const map = new Map(Object.entries(initial));
   return { getItem: (k) => (map.has(k) ? map.get(k) : null), setItem: (k, v) => map.set(k, String(v)), removeItem: (k) => map.delete(k), map };
 }
-async function build({ items = [examItem()], api = makeApi(), history = null, storage = memoryStorage(), now = () => NOW, loadQuestions = async () => QUESTIONS.map((q) => ({ ...q })), recentCache = Assign.createRecentCache(), onDone = () => {} } = {}) {
+async function build({ items = [examItem()], api = makeApi(), history = null, storage = memoryStorage(), now = () => NOW, loadQuestions = async () => QUESTIONS.map((q) => ({ ...q })), recentCache = Assign.createRecentCache(), onDone = () => {}, refreshIndexVersion = undefined } = {}) {
   const model = Assign.createModel({
     items, request: api.request, history, storage, now, onDone, recentCache,
-    original: { indexVersion: INDEX_VERSION, loadQuestions },
+    original: { indexVersion: INDEX_VERSION, loadQuestions, ...(refreshIndexVersion ? { refreshIndexVersion } : {}) },
   });
   await model.load();
   await tick();
@@ -410,6 +411,132 @@ test("서버가 '이미 배부된 시험'(내용 다름)이나 자료 불일치�
   await pick(model, "c1");
   await model.start();
   assert.match(model.state.jobs[0].message, /너무 커서/);
+});
+
+// ---- 문항 목록 기준(index_version) 갱신 409: 원본 출제는 새 기준을 받아 건당 한 번만 자동 재전송한다 ----------------------------
+const STALE_RAW = "분류 기준이 갱신되었습니다. 문항 목록을 새로고침하세요.";
+const NEW_VERSION = "idx-2026-11-17-new";
+const staleUnlessNew = (call, server) => {
+  if (call.body.index_version !== NEW_VERSION) throw httpError(409, { error: STALE_RAW });
+  return server.handle(call.body);
+};
+
+test("기준 갱신 409를 받으면 새 기준을 받아 index_version만 바꿔 한 번 다시 보내고 성공한다", async () => {
+  let refreshes = 0;
+  const { model, api } = await build({ api: makeApi({ post: staleUnlessNew }), refreshIndexVersion: async () => { refreshes += 1; return NEW_VERSION; } });
+  await pick(model, "c1");
+  await model.start();
+  assert.equal(refreshes, 1);
+  assert.deepEqual(api.posts().map((c) => c.body.index_version), [INDEX_VERSION, NEW_VERSION]);
+  assert.equal(model.state.jobs[0].status, "ok");
+  assert.equal(model.results().failed, 0);
+  assert.equal(model.results().stale, 0);
+  const [first, second] = api.posts();
+  const strip = (body) => { const { index_version, ...rest } = body; return rest; };
+  assert.deepEqual(strip(second.body), strip(first.body), "기준 말고는 같은 본문(문항·batch 이름·학생 구성 그대로)이다");
+  assert.deepEqual(Object.keys(second.body), Object.keys(first.body), "키 순서도 같다");
+  assert.deepEqual(second.headers, first.headers);
+  assert.equal(api.server.created(), 1, "서버가 첫 요청을 저장 전에 거절하므로 출제는 한 번만 만들어진다");
+  assert.doesNotMatch(Assign.renderFoot(model), /refresh-page/);
+});
+
+test("재전송하는 동안 선생님 화면에는 새 기준으로 다시 보내는 중이라고 보인다", async () => {
+  let release;
+  const gate = new Promise((resolve) => { release = resolve; });
+  const { model } = await build({ api: makeApi({ post: staleUnlessNew }), refreshIndexVersion: async () => { await gate; return NEW_VERSION; } });
+  await pick(model, "c1");
+  const run = model.start();
+  for (let i = 0; i < 20 && !model.state.jobs[0]?.resending; i += 1) await tick();
+  assert.equal(model.state.jobs[0].resending, true);
+  assert.match(Assign.renderBody(model), /문항 목록 기준이 바뀌어 새 기준으로 다시 보내는 중/);
+  release();
+  await run;
+  assert.equal(model.state.jobs[0].status, "ok");
+  assert.equal(model.state.jobs[0].resending, false);
+  assert.doesNotMatch(Assign.renderBody(model), /다시 보내는 중/);
+});
+
+test("다시 보내도 또 기준 갱신 409이면 한 번만 다시 보내고 새로고침 안내로 끝난다(무한 반복 없음)", async () => {
+  const post = () => { throw httpError(409, { error: STALE_RAW }); };
+  let refreshes = 0;
+  const { model, api } = await build({ api: makeApi({ post }), refreshIndexVersion: async () => { refreshes += 1; return NEW_VERSION; } });
+  await pick(model, "c1");
+  await model.start();
+  assert.equal(api.posts().length, 2, "처음 한 번 + 재전송 한 번");
+  assert.equal(refreshes, 1);
+  assert.equal(model.state.jobs[0].status, "failed");
+  assert.match(model.state.jobs[0].message, /페이지를 새로고침한 뒤 다시 출제/);
+  assert.equal(model.results().stale, 1);
+  assert.equal(model.results().retryable, 0);
+  assert.match(Assign.renderFoot(model), /data-assign-action="refresh-page"/);
+  assert.equal(await model.retryFailed(), false);
+  assert.equal(api.posts().length, 2, "다시 시도로도 자동 전송 없음");
+});
+
+test("새 기준을 받지 못하거나 기준이 그대로면 다시 보내지 않고 새로고침 안내를 낸다", async () => {
+  for (const refresh of [async () => { throw new Error("offline"); }, async () => "", async () => INDEX_VERSION]) {
+    const post = () => { throw httpError(409, { error: STALE_RAW }); };
+    const { model, api } = await build({ api: makeApi({ post }), refreshIndexVersion: refresh });
+    await pick(model, "c1");
+    await model.start();
+    assert.equal(api.posts().length, 1);
+    assert.equal(model.state.jobs[0].status, "failed");
+    assert.equal(model.results().stale, 1);
+    assert.equal(model.state.jobs[0].resending, false);
+  }
+});
+
+test("새 기준을 받는 방법이 주어지지 않으면 다시 보내지 않는다", async () => {
+  const post = () => { throw httpError(409, { error: STALE_RAW }); };
+  const { model, api } = await build({ api: makeApi({ post }) });
+  await pick(model, "c1");
+  await model.start();
+  assert.equal(api.posts().length, 1);
+  assert.equal(model.results().stale, 1);
+});
+
+test("기준 갱신이 아닌 거절은 기준을 받지 않고 다시 보내지도 않는다", async () => {
+  const cases = [
+    [409, "기존 Assignment의 고정 roster는 변경할 수 없습니다."],
+    [409, "원본 내용 또는 문항 순서가 변경되었습니다. 목록을 새로고침하세요."],
+    [409, "current projection index_version required"],
+    [503, STALE_RAW],
+  ];
+  for (const [status, raw] of cases) {
+    const post = () => { throw httpError(status, { error: raw }); };
+    let refreshes = 0;
+    const { model, api } = await build({ api: makeApi({ post }), refreshIndexVersion: async () => { refreshes += 1; return NEW_VERSION; } });
+    await pick(model, "c1");
+    await model.start();
+    assert.equal(api.posts().length, 1, raw);
+    assert.equal(refreshes, 0, raw);
+    assert.equal(model.state.jobs[0].status, "failed", raw);
+  }
+});
+
+test("반이 여럿이면 건마다 한 번씩만 다시 보내고 동시에 둘 이상 보내지 않는다", async () => {
+  const { model, api } = await build({ api: makeApi({ post: staleUnlessNew }), refreshIndexVersion: async () => NEW_VERSION });
+  for (const id of ["c1", "c2"]) await pick(model, id);
+  await model.start();
+  assert.equal(api.posts().length, 4);
+  assert.deepEqual(model.state.jobs.map((job) => job.status), ["ok", "ok"]);
+  assert.equal(api.maxPostInflight(), 1);
+});
+
+test("서버 소스 대조: 원본 출제만 문항 내용을 새 기준으로 다시 검증하고, 저장본·단원별은 index_version을 읽지 않는다", () => {
+  const questions = read("apmath", "worker-backup", "worker", "helpers", "archive2-questions.js");
+  const route = read("apmath", "worker-backup", "worker", "routes", "archive2.js");
+  const exams = read("apmath", "worker-backup", "worker", "routes", "exams.js");
+  const original = questions.slice(questions.indexOf("export async function validateOriginalSnapshot"), questions.indexOf("export async function buildQuestionSnapshot"));
+  assert.match(original, /requireProjectionVersion\(input\)/);
+  assert.match(original, /rawQuestionHash/, "문항 원문 해시를 새 기준의 값과 대조한다");
+  assert.match(original, /raw\.length !== exam\.qCount/, "문항 수");
+  assert.match(original, /원본 내용 또는 문항 순서가 변경/);
+  assert.match(original, /sourceFingerprint: r\.sourceFingerprint/, "메타는 새 기준의 값으로 덮어쓴다");
+  const savedBranch = route.slice(route.indexOf("if (savedPaperMode) {"), route.indexOf("} else if (original) {"));
+  assert.ok(savedBranch.length > 500, "저장본 분기를 잘라 냈다");
+  assert.doesNotMatch(savedBranch, /index_version|requireProjectionVersion|loadCanonicalCatalog/);
+  assert.doesNotMatch(exams, /requireProjectionVersion|index_version/, "단원별(헤더 없는 경로)은 기준 버전을 보지 않는다");
 });
 
 test("취소된 건과 같은 키(409)는 자동으로 다시 보내지 않고, 새 번호로 내는 길이 없으니 '새로 출제'도 주지 않는다", async () => {
@@ -706,7 +833,7 @@ function sliceBetween(source, start, end) {
   return source.slice(from, to);
 }
 function workspaceHarness({ search = "", assign = true, catalog = null } = {}) {
-  const source = read("archive", "archive2-workspace.js");
+  const source = readWorkspace();
   const code = sliceBetween(source, "function assignRequest(route, opt = {}) {", "function originalIssueBusy() {");
   const opened = [];
   const legacy = [];
@@ -767,8 +894,33 @@ test("workspace: 학교 기출·유사문제·홈의 출제는 원본 항목으�
   assert.equal(h.notices[0][1], true);
 });
 
+test("workspace: 패널에 현재 배포된 기준 버전을 다시 읽는 함수를 넘기고, 실제 매니페스트에서 서버와 같은 projectionVersion을 계산한다", async () => {
+  const Canon = require("../archive/archive2-canonical.js");
+  const manifestText = read("archive", "data", "archive2-canonical-input-manifest.json");
+  const manifest = JSON.parse(manifestText);
+  const h = workspaceHarness({ search: "?view=find" });
+  const requests = [];
+  h.context.document.baseURI = "https://t.test/archive/workspace.html";
+  h.context.window.Archive2Canonical = Canon;
+  h.context.URL = URL;
+  h.context.fetch = async (url, init) => { requests.push([url, init]); return { ok: true, status: 200, text: async () => manifestText }; };
+  h.context.openOriginalAssign(EXAM);
+  const refresh = h.opened[0].original.refreshIndexVersion;
+  assert.equal(typeof refresh, "function");
+  assert.equal(await refresh(), manifest.projectionVersion, "브라우저 로더(loadInputBundle)와 같은 계산이다");
+  assert.deepEqual(requests.map((r) => r[0]), ["https://t.test/archive/data/archive2-canonical-input-manifest.json"]);
+  assert.equal(requests[0][1].cache, "no-cache");
+  // 매니페스트를 읽지 못하거나 변조·다른 resolver면 새 기준을 만들어 내지 않고 실패한다(패널은 새로고침 안내로 끝낸다).
+  h.context.fetch = async () => ({ ok: false, status: 404, text: async () => "" });
+  await assert.rejects(refresh());
+  h.context.fetch = async () => ({ ok: true, status: 200, text: async () => JSON.stringify({ ...manifest, projectionVersion: "archive2-canonical-v1:" + "0".repeat(64) }) });
+  await assert.rejects(refresh());
+  h.context.fetch = async () => ({ ok: true, status: 200, text: async () => JSON.stringify({ ...manifest, resolverVersion: "0.0.0" }) });
+  await assert.rejects(refresh());
+});
+
 test("workspace: source-issue는 새 패널 함수로 가고, 단원별 기출·옛 iframe 함수는 그대로 남아 있다", () => {
-  const workspace = read("archive", "archive2-workspace.js");
+  const workspace = readWorkspace();
   assert.match(workspace, /a === "source-issue"\) \{[\s\S]{0,200}openOriginalAssign\(state\.catalog\.exams\[Number\(b\.dataset\.exam\)\]\);/);
   assert.match(workspace, /function openOriginalIssue\(exam, step = "review"\)/);
   assert.match(workspace, /function openSavedPaperIssue\(id\)/);
@@ -778,7 +930,7 @@ test("workspace: source-issue는 새 패널 함수로 가고, 단원별 기출·
 });
 
 test("버튼 글자: 줄에는 '출제', 패널 제목은 '반에 출제', 스크린리더 이름은 풀어 쓴다", () => {
-  const workspace = read("archive", "archive2-workspace.js");
+  const workspace = readWorkspace();
   assert.match(workspace, /button\("source-issue", "출제", `type="button" class="primary" data-exam="\$\{index\}" aria-label="\$\{esc\(title\)\} 반에 출제"`\)/);
   assert.match(workspace, /button\("source-issue", "출제", `type="button" class="primary" data-exam="\$\{setIndex\}" aria-label="\$\{esc\(setTitle\)\} 반에 출제"`\)/);
   assert.match(workspace, /alreadySaved \? "저장한 문제지 출제" : "저장하고 출제"/);
@@ -798,7 +950,7 @@ test("버튼 글자: 줄에는 '출제', 패널 제목은 '반에 출제', 스�
 });
 
 test("한 화면 안내문: 홈 줄·유사 세트 대화상자·학교별 기출이 모두 source-issue 하나로 새 패널에 닿는다", () => {
-  const workspace = read("archive", "archive2-workspace.js");
+  const workspace = readWorkspace();
   const handlers = workspace.match(/a === "source-issue"/g) || [];
   assert.equal(handlers.length, 1, "출제 진입은 한 곳");
   assert.equal((workspace.match(/button\("source-issue"/g) || []).length, 3, "시험 줄, 유사문제 칸, 유사 세트 대화상자");

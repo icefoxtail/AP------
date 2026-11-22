@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-0381c02968df-3cd5a1cc",
+  "sourceArchiveFile": "original/high/h2/2mid/19_순천고_2학기_중간_고2_수학II.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_005e2464ca848c9a1b1b2dbf42a511740c838bc40be36e0b150477fdd44f1672",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_OPERATION_LAWS",
+      "step": "t=x-1로 치환하고 t/f(t)의 주어진 극한에 t+4의 극한을 곱한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_650ce60f381066dd6069d3316ec26bf95ba3fb4f8b1ebdb1e20bc17f84a28795",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+      "step": "홀함수 대칭으로 좌우극한을 읽고 영인수가 곱의 점프를 상쇄하는지 판정한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ced472a392cdab009fff78a9b6f9cc4c174f0a0ad94b42b65bc669fc23571680",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONTINUITY_POINT_JUDGMENT",
+      "step": "연속 경계로 a=1을 구하고 정수부분이 바뀌는 양쪽 구간의 정수 도달점을 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_11ab0d8f910fe362ac23412852cca6986424aee7fe5eb55c567b5b36e1abde6d",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+      "templateKey": "TPL_NONDIFFERENTIABILITY_STRUCTURE",
+      "step": "그래프의 제거 가능한 불연속·점프·모서리를 구분하여 극한과 미분가능성을 판정한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8c29037a1a3fa72a4753504e62a611153fbff6c8c069d693f31f395dda379ae6",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_RATE_RELATION",
+      "templateKey": "TPL_AVERAGE_RATE_DERIVATIVE_LINK",
+      "step": "함수와 y=x의 위치로 할선 기울기를 비교하고 접선 기울기의 감소를 읽는다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b269896539e23e043d7a4ea73f6c88f99ece8dbdd415c387ea49201b8c39da7c",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONT_DIFF_DEFINITION_PROOF",
+      "step": "절댓값을 좌우로 풀어 연속성 및 서로 다른 좌우 미분계수를 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}

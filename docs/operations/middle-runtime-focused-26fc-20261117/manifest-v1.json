@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "archive-middle-geometry-rhs-issued-retention-test-manifest-v1",
+  "taskId": "26fc42390a50",
+  "owner": "/root/ci_m2s2",
+  "status": "STATIC_ACCEPTED_TEST_ONLY_DYNAMIC_PENDING",
+  "beforeCodeCommit": "55768e7fe4c3cba8e30a814fed65c384abe24838",
+  "currentSourceObservationCommit": "5a20d765998a2101899572ba84a359fef751ecfb",
+  "operations": [
+    {
+      "path": "tests/helpers/middle-geometry-issued-approval.cjs",
+      "bytes": 60901,
+      "sha256": "faea3ed904d3341f0a2ef06454eae775bfe81ded2de1d660d829f8209bf0a79a",
+      "gitBlobSha1": "1a14104093e8b5e1aa81ddcc6d1cfef852227afc",
+      "expectedBeforeGitBlobSha1": "103319f7eadfed7518c8d917cae1e83dc4c390d2",
+      "fullRemoteReadbackExact": true
+    },
+    {
+      "path": "tests/meta-foundation-middle-geometry-runtime.test.js",
+      "bytes": 62331,
+      "sha256": "a3c9b16ed47d82d2b8b5a2267de630c0698d39042a019a4f7b20dd576ae8905d",
+      "gitBlobSha1": "9184cec336850364a72474bea52a84fb05289566",
+      "expectedBeforeGitBlobSha1": "f8643e0f94fa3d33117073d726214d6dcb7be8f9",
+      "fullRemoteReadbackExact": true
+    }
+  ],
+  "exactDelta": {
+    "bytes": 35797,
+    "sha256": "7c0f786203e70fdfc23fc13e9badf85d94019cf082f13f0608e72a081104abcd",
+    "gitBlobSha1": "c077be1eeddd820fea2f040bca909f8bd7462afb"
+  },
+  "independentStaticReview": {
+    "bytes": 9790,
+    "sha256": "daa8aa9680cae7058477fe46f878dde5cfd61ecb421dea36cadd1d491df46731",
+    "gitBlobSha1": "f066bc48cddcc34694e32435d47c38e743a72ffa"
+  },
+  "sourceAndCurrentInputProof": {
+    "bytes": 218726,
+    "sha256": "e6b63ae249d89150c2681d330484b9b6b69cd305971acc5b8a6321ce9ecc9d3f",
+    "gitBlobSha1": "7670f15c1787d4cac337f5bbd7cf096b8ba76978"
+  },
+  "scope": {
+    "fixedUid": "qid_v1_3f70e51fcbb651f7504dcf0e38089c9f103e4a361cb99d3b8ec9d3c0e9547bc9",
+    "sourceOrdinal": 2,
+    "retainedIssuedReceipt": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-display21-current626-e017-existing-rhs1-20261116.json",
+      "bytes": 26178,
+      "sha256": "5aa6d34e837537778e9f228f889f512658abc7f2cdfe5e7cf6deaae5b67ca740",
+      "gitBlobSha1": "310ad0cb7f1ccbba4835c961360941661513181c"
+    },
+    "retainedIssuedBinding": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-display21-current626-e017-existing-rhs1-20261116.source-review-binding.json",
+      "bytes": 9069,
+      "sha256": "b5586ffc169d8309a7e1fd917b8ccebe1d3cbc45512abd68b08c75551b6859a3",
+      "gitBlobSha1": "b0f2b4244e08e3cc9b561f1a73e51f9517fcb273"
+    },
+    "originalRhsUi": "IMMUTABLE_SOLUTION_ONE_ISSUED_AUTHORITY_ONLY",
+    "closedCurrentSourceEditions": [
+      "2b9a077f00f0fc3ec6ee5c03ae5037076ecf88cb",
+      "35d1f2446122393d7bff665d131d9bb3d01d404f"
+    ],
+    "sourceEditionMeaning": "AUTHENTICATED_OBSERVED_BLOCKED_STATE_NOT_SOURCE_APPROVAL",
+    "expectedCurrentNativeReceipt": null,
+    "expectedCurrentPlan": "SUPPLEMENT_PENDING",
+    "unknownNullOrDependencyChange": "FAIL",
+    "currentDisplayQuality": "NOT_REVIEWED"
+  },
+  "constraints": {
+    "productionFilesChanged": 0,
+    "sourceEdits": 0,
+    "metadataIdentityRuntimeEdits": 0,
+    "approvalOrRegistryEdits": 0,
+    "sharedRefsChanged": 0,
+    "existingNativeFunction": {
+      "bytes": 3571,
+      "sha256": "bc114f8009a23f1031acbce92e193bfaaa5fde80eb2ed2f15a4c7ed26cc8d8a7",
+      "gitBlobSha1": "034e4e29ab618a9123744c9ae81fdd9e30f9d121",
+      "wholeByteUnchanged": true
+    },
+    "priorTestsWholeBytePreserved": true,
+    "currentNativePositiveCannotCountAsBlocked": true,
+    "noNewApprovalOrAlreadyRegisteredFallback": true,
+    "noMathOrScreenshotReview": true
+  },
+  "verification": {
+    "exactCodeInverse": true,
+    "immutableBlobFullReadback": true,
+    "declaredPathMetadataPrecheck": {
+      "current5aPaths": 234,
+      "priorUiPaths": 227,
+      "priorUiExact": 224,
+      "unknownReadonlyCodeFontAssetDrifts": 0,
+      "changedPaths": [
+        "archive/data/question_metadata.json",
+        "archive/data/svg-accessibility-index.js",
+        "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js"
+      ]
+    },
+    "newNegativeDefinitions": 30,
+    "nodeSyntax": "NOT_RUN",
+    "runtime": "NOT_RUN",
+    "fullCI": "NOT_RUN",
+    "actualNative": "NOT_RUN"
+  },
+  "integration": {
+    "owner": "/root",
+    "requiredOrder": [
+      "Preserve latest main and existing approved overlays",
+      "Use unchanged official primary prepare/generated-input stages; do not treat committed small SVG index as regenerated proof",
+      "Run node tests/meta-foundation-middle-geometry-runtime.test.js at exact next tree",
+      "Only after actual focused success run remaining required PR gates"
+    ],
+    "commands": [
+      "node --check tests/helpers/middle-geometry-issued-approval.cjs",
+      "node --check tests/meta-foundation-middle-geometry-runtime.test.js",
+      "node tests/meta-foundation-middle-geometry-runtime.test.js"
+    ],
+    "checkoutHistory": "FULL_IMMUTABLE_HISTORY_REQUIRED",
+    "reuse": "Existing 420 passed files are evidence of the prior557 edition only; no new whole-suite or current Native PASS is claimed."
+  }
+}

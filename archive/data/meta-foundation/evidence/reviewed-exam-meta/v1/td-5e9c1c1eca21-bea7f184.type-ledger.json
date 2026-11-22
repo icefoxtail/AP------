@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-5e9c1c1eca21-bea7f184",
+  "sourceArchiveFile": "original/middle/m3/2mid/22_신흥중_2학기_중간_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_10fc9d1dc968a0e20fde379e56e557f1e7f07577047dfde09e5c80592348801c",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_M3_EVALUATE_PARABOLA_PROPERTIES_STATEMENTS",
+      "step": "음의 계수와 절댓값 2에서 아래로 열리고 y=x²보다 폭이 좁으므로 거짓은 ③④이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5e27d63034ed133c94f5fe3e0ab0cab6bbb5943a809c39f75c0ede7b394477dd",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+      "templateKey": "TPL_M3_TRANSLATION_POINT",
+      "step": "이동식 y=ax²+5에 (1,-8)을 대입하여 a=-13이다.",
+      "note": "필요 TPL: 평행이동식의 통과점으로 계수 결정.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_24c0be9cec1973f9bb8eb4c3c533adf803fcf22abcd01fc7b347363025c7be44",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_M3_QUADRATIC_PROPERTIES_GRAPH_MATCH",
+      "step": "꼭짓점 (4,-1), 위로 열린 개구, y절편 3을 만족하는 보기 ①을 고른다.",
+      "note": "필요 TPL: 표준형 포물선과 그림 대응. 보기 이미지 일부 잘림을 확인했으나 ①의 축·꼭짓점·절편은 판독 가능하다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1c578a13d628f910ac9be2bba624862a045ccc56e2f6a06857c654887921bc24",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+      "step": "꼭짓점 (-3,-2)에서 p=3,q=-2이고 y절편 2로 a=4/9, apq=-8/3이다.",
+      "note": "그림 수식은 x-p로 보이지만 본문 x+p와 꼭짓점 좌표를 기준으로 p를 결정했다.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_edd4d341db49154f68d83e371dda8f668b896692bab42f218cdc47029fcbca7b",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+      "templateKey": "TPL_M3_TRANSLATION_DISPLACEMENT",
+      "step": "-2(x+1)²의 수평이동량과 대칭축은 모두 -1이므로 합 -2이다.",
+      "note": "필요 TPL: 표준형에서 수평이동량과 축 읽기.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_78f5f984e0aef8f82ba883bb069da738dffa8e0772a9968065a19ee553ff351b",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+      "templateKey": "TPL_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS_READ",
+      "step": "위로 열린 개구로 a>0, 축이 y축 왼쪽이므로 b>0, y절편이 음수라 c<0이다.",
+      "note": "필요 TPL: 개구·축·y절편으로 이차함수 계수 부호 판별.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9f2f91924cd6ae8c3e87ba22d036a85f9f7c48a36375674589bc898c3c22a04e",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_M3_QUADRATIC_PROPERTIES_STATEMENTS",
+      "step": "(x-4)²+1에서 꼭짓점 (4,1), 축 x=4, 이동량 (4,1), y절편 17과 개구를 읽는다.",
+      "note": "필요 TPL: 이동된 포물선의 성질 종합 확인.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_420f418f6d1f8f3544cfd9d06ffcc68ec4f0820caebcbe22d1126e6b93a107ca",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "templateKey": "TPL_M3_VERTEX_FORM_READ_VERTEX",
+      "step": "선택①은 2(x-4)²-1, 선택②는 -1/2(x+3)²+5로 완전제곱하여 꼭짓점을 구한다.",
+      "note": "두 선택갈래 모두 판독. 필요 TPL: 일반형을 완전제곱하여 표준형·꼭짓점 산출.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    }
+  ]
+}

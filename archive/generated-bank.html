@@ -47,9 +47,11 @@ img.math-figure{display:block;max-width:100%;max-height:410px;object-fit:contain
 .q-image-wrap.image-small img.math-figure{width:50%;max-width:50%;max-height:95px;margin-left:auto;margin-right:auto}
 .q-image-wrap.image-half img.math-figure{width:65%;max-width:65%;max-height:125px;margin-left:auto;margin-right:auto}
 .q-image-wrap.image-medium img.math-figure{width:80%;max-width:80%;max-height:150px;margin-left:auto;margin-right:auto}
-.q-image-wrap.image-large img.math-figure{width:94%;max-width:94%;max-height:190px;margin-left:auto;margin-right:auto}
-.q-image-wrap.image-full img.math-figure{width:100%;max-width:100%;max-height:240px;margin-left:auto;margin-right:auto}
-.q-image-wrap.image-tall img.math-figure{width:100%;max-width:100%;max-height:320px;margin-left:auto;margin-right:auto}
+/* 2026-11-17: large·full·tall 기본 상한은 폭 90%·높이 240px(가운데). imageSizeOverride "full"/"tall"로 명시한 문항만 크게. */
+.q-image-wrap.image-large img.math-figure,.q-image-wrap.image-full img.math-figure{width:90%;max-width:90%;max-height:240px;margin-left:auto;margin-right:auto}
+.q-image-wrap.image-tall img.math-figure{width:90%;max-width:90%;max-height:280px;margin-left:auto;margin-right:auto}
+.q-image-wrap.image-override-full img.math-figure{width:100%;max-width:100%;max-height:240px;margin-left:auto;margin-right:auto}
+.q-image-wrap.image-override-tall img.math-figure{width:100%;max-width:100%;max-height:320px;margin-left:auto;margin-right:auto}
 .answer{margin:12px 0;border-top:1px solid var(--line);padding:12px 0;white-space:pre-wrap}
 
 /* Search + manual picking */
@@ -152,9 +154,12 @@ img.math-figure{display:block;max-width:100%;max-height:410px;object-fit:contain
 var AP_VENDOR_BASE=new URL('vendor/',document.baseURI).href;
 window.MathJax={loader:{paths:{mathjax:AP_VENDOR_BASE+'mathjax','mathjax-tex':AP_VENDOR_BASE+'mathjax-tex-font'},load:['[tex]/boldsymbol']},tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']],packages:{'[+]':['ams','boldsymbol']}},output:{font:'mathjax-tex',displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:.2}},options:{enableMenu:false},startup:{typeset:false}};
 </script>
+<script src="mathjax-atomic-inline.js?v=20261117-atomic-inline-1"></script>
 <script defer src="vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js"></script>
 <script src="archive-asset-base.js?v=20261110-teacher-copy-1"></script>
 <script src="problem-bank-meta.js?v=20261029-s14-1"></script>
+<script src="exam-display-title.js?v=20261116-polish-1"></script>
+<script src="archive2-error-detail.js?v=20261118-error-detail-1"></script>
 <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
 <script src="archive2-output.js?v=20261010-sol-qpp1-atomicmath-2"></script>
 <script src="generated-mock-selection.js?v=20261030-s9-1"></script>
@@ -164,8 +169,8 @@ window.MathJax={loader:{paths:{mathjax:AP_VENDOR_BASE+'mathjax','mathjax-tex':AP
 <body class="archive2-standalone archive2-shell">
 <header data-archive-navigation="standalone" data-archive-view="five-minute" data-archive-title="모의고사 만들기" class="archive-navigation"></header>
 <!-- 메뉴는 작은 스크립트라 첫 화면 전에 붙인다. 로그인 판정(session)이 먼저다. -->
-<script src="archive2-session.js?v=20261110-library-2"></script>
-<script src="archive2-navigation.js?v=20261116-standalone-1"></script>
+<script src="archive2-session.js?v=20261119-small-fixes-1"></script>
+<script src="archive2-navigation.js?v=20261122-ui-quick-3"></script>
 <main class="sa-main">
 <div class="intro sa-head"><div><h1>모의고사 만들기</h1><p class="subtitle sa-lead">기준 시험지를 고른 뒤 학습 목적과 난이도를 정하고, 문항을 확인해 한 회분을 구성합니다.</p></div></div>
 <section class="section" aria-labelledby="source-heading">
@@ -278,7 +283,15 @@ const UNIT_LABELS=Object.freeze({});
 let rows=[],selectableRows=[],searchableRows=[],sourcePurposeRows=[],userDisabledUids=new Set(),examChoice=null,sourceExamChoice=null,busy=false,generatedBusy=false,generatedPreviewToken=0,mockBusy=false,mockItems=[],mockPreviewToken=0,generatedConfigKey=null,generatedConfigSnapshot=null,indexReady=false;
 const selectedGenerated=new Map();
 const $=id=>document.getElementById(id),positions="①②③④⑤",cache=new Map();
-const status=message=>$("message").textContent=message;
+const status=message=>{$("message").textContent=message;};
+// 실패 문구: 일반 문구 + (어느 시험지 몇 번 문항인지) + 접힌 상세. 문구는 archive2-error-detail.js 한 곳에서 만든다.
+function failStatus(prefix,error){
+ const detailApi=window.Archive2ErrorDetail;
+ const info=detailApi&&error&&typeof error==="object"?detailApi.describe(error,{headline:prefix,screen:"모의고사 만들기"}):null;
+ const line=info&&info.where?info.message:prefix+": "+((error&&error.message)||"오류");
+ const host=$("message");
+ if(info&&info.hasDetail)host.innerHTML=detailApi.esc(line)+detailApi.markup(info);else host.textContent=line;
+}
 const unique=items=>new Set(items).size===items.length;
 const mockSelection=window.GeneratedMockSelection;
 // Six reviewed Palma B05/B06 historical source UIDs are preserved, not reissued.
@@ -330,7 +343,21 @@ async function typesetPaper(panel){
   if(previousStyle===null)panel.removeAttribute("style");else panel.setAttribute("style",previousStyle);
  }
 }
+// 어느 시험지의 원본 몇 번을 바탕으로 만든 유사 문항에서 막혔는지 오류에 싣는다. 한글 문구는 그대로 이유가 된다.
 async function questionFor(row){
+ try{return await questionForChecked(row);}
+ catch(error){
+  const detailApi=window.Archive2ErrorDetail;
+  if(!detailApi||!error||typeof error!=="object")throw error;
+  const message=String(error.message||"");
+  throw detailApi.annotate(error,{
+   file:row&&row.sourceExamPath,title:row&&row.sourceExamPath?detailApi.fileLabel(row.sourceExamPath)+" 유사 문항":"",
+   questionNo:row&&row.sourceQid,uid:row&&(row.uid||row.questionUid),code:"GENERATED_QUESTION_UNAVAILABLE",
+   reason:/[가-힣]/.test(message)?message:"유사 문항 자료를 불러오지 못했습니다.",
+  });
+ }
+}
+async function questionForChecked(row){
  if(row?.technicalStatus==="ERROR")throw Error("문항 기술 오류: "+(row.technicalIssues||[]).join(" · "));
  if(!isSelectable(row))throw Error("사용자가 비활성화했거나 사용할 수 없는 문항입니다.");
  if(!cache.has(row.shard)){
@@ -353,7 +380,8 @@ function figure(parent,q){
  if(!q.image)return;
  if(!validProblemImagePath(q.image))throw Error("문제 이미지 경로 오류");
  const size=["small","half","medium","large","full","tall"].includes(q.imageSize)?q.imageSize:"";
- const wrap=document.createElement("div");wrap.className="q-image-wrap"+(size?" image-"+size:"");
+ const wrap=document.createElement("div");const sizeOverride=["full","tall"].includes(q.imageSizeOverride)?q.imageSizeOverride:"";
+ wrap.className="q-image-wrap"+(size?" image-"+size:"")+(sizeOverride?" image-override-"+sizeOverride:"");
  const img=document.createElement("img");img.src=window.resolveExamImageUrl?resolveExamImageUrl(q.image):q.image;img.alt=q.imageAlt||"문항 수학 시각자료";img.className="math-figure";wrap.appendChild(img);parent.appendChild(wrap);
 
 }
@@ -664,7 +692,8 @@ function renderMockQuestions(){
  syncMockQuestionTools();
 }
 async function loadMockQuestions(token){
- const questions=await Promise.all(mockItems.map(item=>questionFor(item.row)));
+ const settle=window.Archive2ErrorDetail?window.Archive2ErrorDetail.allOrReport:(promises=>Promise.all(promises));
+ const questions=await settle(mockItems.map(item=>questionFor(item.row)));
  if(token!==mockPreviewToken)return;
  for(let index=0;index<mockItems.length;index++)mockItems[index].question=questions[index];
  renderMockQuestions();await math();
@@ -679,7 +708,7 @@ async function generateMock(){
  mockItems=result.items.map(item=>({...item,question:null}));
  renderMockSummary(result);renderMockQuestions();status(result.items.length+"개 승인 문항의 문제 미리보기를 불러옵니다.");
  try{await loadMockQuestions(token);if(token===mockPreviewToken){$("regenerate-unlocked").disabled=false;$("print-mock").disabled=false;status("문항을 확인한 뒤 고정하거나 교체할 수 있습니다.");}}
- catch(error){if(token===mockPreviewToken){mockItems=[];$("mock-questions").replaceChildren();renderMockSummary(null);status("문항을 불러오지 못했습니다: "+(error.message||"오류"));}}
+ catch(error){if(token===mockPreviewToken){mockItems=[];$("mock-questions").replaceChildren();renderMockSummary(null);failStatus("문항을 불러오지 못했습니다",error);}}
  finally{mockBusy=false;setBuilderBusy(false);if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)updateBuilderReadiness();else syncMockActions(Boolean(result.ok));}
 }
 async function replaceMockQuestion(index){
@@ -692,7 +721,7 @@ async function replaceMockQuestion(index){
  mockBusy=true;setBuilderBusy(true);$("print-mock").disabled=true;$("regenerate-unlocked").disabled=true;
  status("원본 "+current.row.sourceQid+"번의 대체 후보를 불러옵니다.");
  try{const question=await questionFor(result.row);if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)return;mockItems[index]={...current,row:result.row,question};renderMockQuestions();await math();status("원본 "+result.row.sourceQid+"번 문항을 교체했습니다.");}
- catch(error){status("문항을 교체하지 못했습니다: "+(error.message||"오류"));}
+ catch(error){failStatus("문항을 교체하지 못했습니다",error);}
  finally{mockBusy=false;setBuilderBusy(false);if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)updateBuilderReadiness();else syncMockActions(true);}
 }
 async function regenerateUnlocked(){
@@ -704,7 +733,7 @@ async function regenerateUnlocked(){
  mockItems=result.items.map(item=>({...item,question:null}));
  renderMockQuestions();renderMockSummary(result);status("고정하지 않은 문항을 다시 구성하고 있습니다.");
  try{await loadMockQuestions(token);if(token===mockPreviewToken)status(result.unchangedSourceQids.length?"대체 후보가 없는 "+result.unchangedSourceQids.map(qid=>qid+"번").join(", ")+" 문항은 유지했습니다.":"고정 문항을 유지하고 나머지 문항을 다시 구성했습니다.");}
- catch(error){if(token===mockPreviewToken)status("문항을 다시 불러오지 못했습니다: "+(error.message||"오류"));}
+ catch(error){if(token===mockPreviewToken)failStatus("문항을 다시 불러오지 못했습니다",error);}
  finally{mockBusy=false;setBuilderBusy(false);if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)updateBuilderReadiness();else syncMockActions(true);}
 }
 async function printMock(){return openMockOutput("exam");}
@@ -718,7 +747,7 @@ async function openMockOutput(mode){
  if(!popup){status("팝업을 허용한 뒤 출력 미리보기를 열어 주세요.");return;}
  let envelope=null;mockBusy=true;setBuilderBusy(true);renderTeacherMockControls();status(mode==="exam"?"모의고사 시험지를 준비합니다.":mode==="ans"?"교사용 정답표를 준비합니다.":"교사용 해설지를 준비합니다.");
  try{
-  const loaded=await Promise.all(chosen.map(questionFor));
+  const loaded=await (window.Archive2ErrorDetail?window.Archive2ErrorDetail.allOrReport:(promises=>Promise.all(promises)))(chosen.map(row=>questionFor(row)));
   if(popup.closed)return;
   if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)throw Error("현재 모의고사 구성이 바뀌었습니다. 다시 생성해 주세요.");
   if(mode!=="exam"&&!isTeacherSession())throw Error("교사 로그인을 확인한 뒤 다시 시도해 주세요.");
@@ -737,7 +766,7 @@ async function openMockOutput(mode){
  }catch(error){
   if(envelope)try{await window.Archive2Output?.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);}catch{}
   try{if(!popup.closed)popup.close();}catch{}
-  status("교사용 자료를 열지 못했습니다: "+(error.message||"오류"));
+  failStatus("교사용 자료를 열지 못했습니다",error);
  }finally{mockBusy=false;setBuilderBusy(false);if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)updateBuilderReadiness();else syncMockActions(true);}
 }
 function bindMockBuilder(){
@@ -850,7 +879,7 @@ async function openGeneratedSolution(row){
  }catch(error){
   if(envelope)try{await window.Archive2Output?.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);}catch{}
   try{if(!popup.closed)popup.close();}catch{}
-  status("해설 미리보기를 열지 못했습니다: "+(error.message||"오류"));
+  failStatus("해설 미리보기를 열지 못했습니다",error);
  }
 }
 function addGeneratedQuestion(row){
@@ -877,7 +906,7 @@ async function printGeneratedSelection(){
   if(!unique(selected.map(row=>row.uid))||selected.some(row=>!isSelectable(row)))throw Error("선택 문항의 기술 상태 또는 사용자 비활성화 상태를 확인하지 못했습니다.");
   popup=window.open("about:blank","_blank");if(!popup)throw Error("팝업을 허용한 뒤 선택 문항 미리보기를 여세요.");
   status("선택한 "+selected.length+"개 문항을 준비하고 있습니다.");
-  const questions=await Promise.all(selected.map(questionFor));
+  const questions=await (window.Archive2ErrorDetail?window.Archive2ErrorDetail.allOrReport:(promises=>Promise.all(promises)))(selected.map(row=>questionFor(row)));
   if(popup.closed)throw Error("미리보기 창이 닫혔습니다.");
   const output=window.Archive2Output;
   if(!output?.publishOutputEnvelope||!output?.outputEnvelopeUrl)throw Error("문항 출력 미리보기 엔진을 불러오지 못했습니다.");
@@ -891,7 +920,7 @@ async function printGeneratedSelection(){
  }catch(error){
   if(envelope)try{await window.Archive2Output?.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);}catch{}
   try{if(popup&&!popup.closed)popup.close();}catch{}
-  status("선택 문항 미리보기를 열지 못했습니다: "+(error.message||"오류"));
+  failStatus("선택 문항 미리보기를 열지 못했습니다",error);
  }
  finally{generatedBusy=false;renderGeneratedSelection();updateSelection();}
 }
@@ -905,7 +934,7 @@ async function printExam(){
  try{
   const chosen=chooseVariants(pool,e.count),questionUids=chosen.map(row=>row.uid);
   if(chosen.length!==e.count||!unique(questionUids))throw Error("문항 수 또는 문항 구성 오류");
-  const questions=await Promise.all(chosen.map(questionFor));
+  const questions=await (window.Archive2ErrorDetail?window.Archive2ErrorDetail.allOrReport:(promises=>Promise.all(promises)))(chosen.map(row=>questionFor(row)));
   if(popup.closed)return;
   const output=window.Archive2Output;
   if(!output?.publishOutputEnvelope||!output?.outputEnvelopeUrl)throw Error("출력 엔진을 불러오지 못했습니다.");
@@ -916,7 +945,7 @@ async function printExam(){
  }catch(error){
   if(envelope)try{await window.Archive2Output?.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);}catch{}
   try{if(!popup.closed)popup.close();}catch{}
-  status("출력을 준비하지 못했습니다: "+error.message);
+  failStatus("출력을 준비하지 못했습니다",error);
  }finally{busy=false;updateSelection();}
 }
 $("print").addEventListener("click",printExam);

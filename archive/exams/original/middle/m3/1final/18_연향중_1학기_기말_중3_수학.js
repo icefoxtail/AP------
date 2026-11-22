@@ -131,7 +131,6 @@ window.examData = {
       "solutionImageCaption": "두 도로의 넓이는 40x와 30x이고 겹친 넓이는 x²이다. 따라서 1200−(40x+30x−x²)=600에서 가능한 폭은 10 m이다. 정답은 ①이다.",
       "solutionImageAlt": "가로 40 m, 세로 30 m인 땅에 수평 도로와 비스듬한 도로가 만난다. 수평 도로의 세로 폭과 비스듬한 도로의 가로 폭을 각각 x m로 표시했다. 도로 밖 네 부분이 녹색이다. 두 길의 겹친 부분은 주황색이다.",
       "solutionImage": "assets/images/18_연향중_1학기_기말_중3_수학/q9-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "다음 그림과 같이 가로, 세로의 길이가 각각 $40\\,\\text{m}, 30\\,\\text{m}$인 직사각형 모양의 땅에 폭이 $x\\,\\text{m}$로 일정한 도로를 만들었다. 도로를 제외한 땅의 넓이가 $600\\,\\text{m}^2$일 때, 도로의 폭을 구하여라. (4점)<br><br><img src=\"assets/images/18_연향중_1학기_기말_중3_수학/q9-problem-visual-v2.svg\" alt=\"가로 40 m, 세로 30 m인 땅에 수평 도로와 비스듬한 도로가 만난다. 수평 도로의 세로 폭과 비스듬한 도로의 가로 폭을 각각 x m로 표시했다. 도로 밖 네 부분이 녹색이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -182,7 +181,6 @@ window.examData = {
       "solutionImageCaption": "a>b>0이고 x축 대칭에서 d=−a, c=−b이다. 네 계수의 합은 0이고 곱은 a²b²>0이다. 옳은 것은 ㄱ, ㄷ이므로 정답은 ②이다.",
       "solutionImageAlt": "같은 색의 포물선 두 개는 x축에 서로 대칭이다. 좁은 파랑 쌍은 위가 y=ax², 아래가 y=dx²이다. 넓은 주황 쌍은 위가 y=bx², 아래가 y=cx²이다. 같은 높이에서 두 색의 가로 폭을 점선으로 비교했다.",
       "solutionImage": "assets/images/18_연향중_1학기_기말_중3_수학/q12-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "아래 그림과 같이 이차함수 $y=ax^2$과 $y=dx^2$, $y=bx^2$과 $y=cx^2$의 그래프는 각각 $x$축에 서로 대칭이다. 다음 &lt;보기&gt; 중 옳은 것을 모두 골라라. (4점)<br><br><img src=\"assets/images/18_연향중_1학기_기말_중3_수학/q12-problem-visual-v2.svg\" alt=\"같은 색의 포물선 두 개는 x축에 서로 대칭이다. 좁은 파랑 쌍은 위가 y=ax², 아래가 y=dx²이다. 넓은 주황 쌍은 위가 y=bx², 아래가 y=cx²이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><br><br>&lt;보기&gt;<br>ㄱ. $a+b+c+d=0$<br>ㄴ. $|b| > |d|$<br>ㄷ. $abcd > 0$<br>ㄹ. $a, b, c, d$ 중 가장 큰 값은 $b$이다.",
       "choices": [
@@ -237,7 +235,6 @@ window.examData = {
       "solutionImageCaption": "x좌표를 t라 하면 PQ=(2t+3)−(−4t²−1)=4(t+1/4)²+15/4이다. t=−1/4에서 최솟값 15/4를 가지므로 정답은 ④이다.",
       "solutionImageAlt": "주황색 점선은 직선 y=2x+3이고, 파란 그래프는 아래로 열린 포물선 y=−4x²−1이다. 같은 x에서 P와 Q를 수직선으로 이었다. t=−1/4에서 잰 세로 길이는 초록 실선이다. 양옆의 옅은 세로선과 비교할 수 있다.",
       "solutionImage": "assets/images/18_연향중_1학기_기말_중3_수학/q15-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 5.0,
       "question": "다음 그림과 같이 이차함수 $y=-4x^2-1$의 그래프 위의 한 점 $\\mathrm{P}$에서 $y$축과 평행한 직선을 그어 직선 $y=2x+3$과 만나는 점을 $\\mathrm{Q}$라고 하자. 이때, $\\overline{\\mathrm{PQ}}$의 길이의 최솟값을 구하여라. (5점)<br><br><img src=\"assets/images/18_연향중_1학기_기말_중3_수학/q15-problem-visual-v2.svg\" alt=\"주황색 점선은 직선 y=2x+3이고, 파란 그래프는 아래로 열린 포물선 y=−4x²−1이다. 같은 x에서 P와 Q를 수직선으로 이었다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -256,7 +253,6 @@ window.examData = {
       "solutionImageCaption": "주어진 그래프는 위로 열려 a>0이고, 원점을 지나므로 c=0이다. 축 b/(2a)가 y축 왼쪽이므로 b<0이다. 구하는 y=bx²+a는 아래로 열리고 꼭짓점 (0,a)가 x축보다 높으므로 정답은 ②이다.",
       "solutionImageAlt": "왼쪽은 주어진 위로 열린 포물선이다. 원점과 왼쪽 꼭짓점으로부터 a>0, b<0, c=0이다. 오른쪽의 구하는 포물선은 y축에 대칭이며 꼭짓점이 x축보다 높고 아래로 열린다.",
       "solutionImage": "assets/images/18_연향중_1학기_기말_중3_수학/q16-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "이차함수 $y=ax^2-bx-c$의 그래프가 아래 그림과 같을 때, 다음 중 이차함수 $y=bx^2+cx+a$의 그래프로 알맞은 것은? (4점)<br><br><img src=\"assets/images/18_연향중_1학기_기말_중3_수학/q16-problem-visual-v2.svg\" alt=\"위의 주어진 포물선은 원점을 지나고 꼭짓점이 y축 왼쪽에 있으며 위로 열린다. 아래 ①과 ②는 y축 대칭이며 꼭짓점이 x축 위에 있다. ①은 위로, ②는 아래로 열린다. ③·④·⑤는 원점을 지나며 꼭짓점이 차례로 오른쪽 아래, 오른쪽 위, 왼쪽 위에 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -329,7 +325,6 @@ window.examData = {
       "solutionImageCaption": "A의 x좌표를 u, C의 x좌표를 v라 두면 v²=4u²이므로 v=2u이다. 정사각형에서 v−u=v²−u²이므로 v+u=1이다. 따라서 B=(2/3, 1/9)이고 정답은 ①이다.",
       "solutionImageAlt": "원점에서 올라가는 두 포물선의 오른쪽 가지가 보인다. 파란 y=x² 위에 A와 C, 주황색 점선 y=4x² 위에 D가 있다. 각 변이 좌표축과 평행한 정사각형 ABCD의 B는 오른쪽 아래이다. A에서 x축의 u로, B와 C에서 x축의 v로 이어지는 점선을 그렸다.",
       "solutionImage": "assets/images/18_연향중_1학기_기말_중3_수학/q20-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 5.0,
       "question": "다음 그림에서 사각형 $\\mathrm{ABCD}$는 정사각형이고, 각 변은 각각 $x$축, $y$축에 평행하다. 두 점 $\\mathrm{A, C}$는 포물선 $y=x^2$ 위의 점이고 점 $\\mathrm{D}$는 포물선 $y=4x^2$ 위의 점이다. 이때 점 $\\mathrm{B}$의 좌표를 구하여라. (단, 점 $\\mathrm{A}$의 $x$좌표는 양수이다.) (5점)<br><br><img src=\"assets/images/18_연향중_1학기_기말_중3_수학/q20-problem-visual-v2.svg\" alt=\"원점에서 올라가는 두 포물선의 오른쪽 가지가 보인다. 파란 y=x² 위에 A와 C, 주황색 점선 y=4x² 위에 D가 있다. 각 변이 좌표축과 평행한 정사각형 ABCD의 B는 오른쪽 아래이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [

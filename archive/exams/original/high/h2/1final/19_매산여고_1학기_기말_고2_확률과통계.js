@@ -181,7 +181,11 @@ window.questionBank = [
       "midUnit": "순열과 조합",
       "l3": "순열",
       "l4": "중복·원순열"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_1학기_기말_고2_확률과통계/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 여섯 개의 점이 육각형 꼭짓점으로 놓인 원탁 그림이며 남자 자리 A, C, E와 그 사이의 여자 자리 B, D, F가 번갈아 있다.",
+    "solutionImageCaption": "원탁의 6자리를 육각형 꼭짓점으로 나타낸 그림이다. 점 A, C, E는 남자 3명을 먼저 앉힌 자리이고 B, D, F는 남자 사이의 세 자리로 여자가 앉는다. 남자 3명의 원순열은 (3−1)!=2가지이고 사이 세 자리에 여자 3명을 앉히는 방법은 3!=6가지이다. 따라서 2×6=12이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -241,7 +245,11 @@ window.questionBank = [
       "midUnit": "확률의 뜻과 활용",
       "l3": "확률의 덧셈정리",
       "l4": "배반사건"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_1학기_기말_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "A와 B가 서로 배반이므로 그림의 겹침은 0이다. A의 여사건과 B의 여사건의 교집합은 바깥 영역이고 확률이 1/8이므로 P(A∪B)=1−1/8=7/8이다. 합집합이 A와 B로만 이루어지므로 P(B)=7/8−1/4=5/8이고 이것이 색칠한 B이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -603,7 +611,12 @@ window.questionBank = [
       "midUnit": "조건부확률",
       "l3": "조건부확률",
       "l4": "조건부확률 계산"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_1학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "불량품이 되는 두 경로는 제1공장이 0.30×0.05=0.015(파랑)이고 제2공장이 0.70×0.04=0.028(주황)이다. 전체 불량 확률은 0.043이다. 불량품이 제1공장 제품일 확률은 분자 0.015를 분모 0.043으로 나눈 15/43이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 11,
@@ -848,7 +861,11 @@ window.questionBank = [
       "midUnit": "조건부확률",
       "l3": "사건의 독립",
       "l4": "독립 판정"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_1학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "동전 3개의 8가지 결과에서 A는 앞면이 1개 이하인 4가지(P=1/2), B는 모두 같은 면인 2가지(P=1/4)이다. 그림은 A만 3/8, 겹침 1/8(모두 뒷면), B만 1/8(모두 앞면), 바깥 3/8이다. P(A)P(B)=1/2×1/4=1/8=P(A∩B)이므로 두 사건은 독립이다. 따라서 ㄱ, ㄴ, ㄹ이 옳고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1087,7 +1104,11 @@ window.questionBank = [
       "midUnit": "조건부확률",
       "l3": "사건의 독립",
       "l4": "독립사건의 확률"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_1학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "A와 B가 독립이므로 겹침은 1/3×1/4=1/12이다. 그림은 A만 1/3−1/12=1/4, 겹침 1/12, B만 1/4−1/12=1/6, 바깥 1/2이다. 색칠한 A만과 B만은 서로 겹치지 않으므로 합은 1/4+1/6=5/12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

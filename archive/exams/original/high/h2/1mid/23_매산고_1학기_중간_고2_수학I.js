@@ -154,7 +154,7 @@ window.questionBank = [
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "그래프"
     ],
@@ -592,7 +592,7 @@ window.questionBank = [
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "그래프"
     ],

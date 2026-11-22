@@ -47,9 +47,9 @@ const document={createElement(tag){
 }};
 const chunkContext=vm.createContext({document,Node:{TEXT_NODE:3,ELEMENT_NODE:1}});
 const makeSolutionHtmlChunks=vm.runInContext(`(${chunkerSource})`,chunkContext,{timeout:2000});
-const wrapBegin=mixed.indexOf('function wrapLatexPreserveBlocks(text) {');
-const wrapEnd=mixed.indexOf('\nfunction wrapLatex(text)',wrapBegin);
-const wrapLatexPreserveBlocks=vm.runInNewContext(`(${mixed.slice(wrapBegin,wrapEnd)})`,{}, {timeout:2000});
+// wrapLatex 본문은 engine.html·mixed_engine.html이 같이 쓰는 archive/render-text.js에 있고, mixed의 wrapLatexPreserveBlocks는 그 위임이다.
+assert.match(mixed,/function wrapLatexPreserveBlocks\(text\) \{ return APRenderText\.wrapLatex\(text\); \}/);
+const wrapLatexPreserveBlocks=require('../archive/render-text.js').wrapLatex;
 
 test('source newline inside inline TeX stays one complete formula before prose wrapping',()=>{
  const formula="$G'=\\left(\\dfrac{4+2}{3},\\dfrac{6+\\frac{9}{k+1}}{3}\\right)\n=\\left(2,2+\\dfrac{3}{k+1}\\right)$";

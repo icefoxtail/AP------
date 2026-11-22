@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-d4cd450ae19e-70bacf53",
+  "sourceArchiveFile": "original/middle/m2/1final/26_왕의중_1학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_7584d163a97bbedf4b355f08e49154692f8542fef10595212f204529f7f7fe15",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+      "templateKey": "TPL_M2_SOLVE_DECIMAL_SYSTEM_AND_LINEAR_COMBINATION",
+      "step": "분수·소수를 없애4x-3y=6,3x+2y=13을 가감하여(3,2)를 구하고2a+b=8을 계산한다.",
+      "note": " 검사 오류: [{\"code\":\"CUE_NOT_IN_SOURCE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b67b40eef9a05633ca8c5cb5c0fd31b5952a944ab54f113b152f808075938029",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "같은 절댓값·키는 여러 출력이 가능하고 작은 자연수 개수·5개 가격은 유일하므로 ㄷㄹ을 고른다.",
+      "note": "새 TPL 제안: 대응 관계의 함수 여부 판별. 정의: 같은 절댓값·키는 여러 출력이 가능하고 작은 자연수 개수·5개 가격은 유일하므로 ㄷㄹ을 고른다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_29ce12590a8fe792af888f39a0e4317c4b46c4876d2184b84fdd28082f8444a3",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": "TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT",
+      "step": "이동한 식y=3x-3+k에(-2,-7)을 대입하여 k=2를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6b684ba54f12db90bee313213abccfac0180bba36c1699d86f3818078a6f2ea3",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
+      "templateKey": "TPL_M2_FIND_UNKNOWN_COORDINATE_FROM_PARALLEL_SLOPE",
+      "step": "기준 두 점의 기울기3을 구하고(14-a)/2=3을 세워 a=8을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cd6290f9fd5899dcbb15d2a10c39c376b5246cef992c46d162c7c00b2ccf245c",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+      "step": "통과점·사분면·방향·평행을 확인하고 x증가6의 y변화가-9/2이므로8만큼 감소한다는⑤를 거른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d421053d75356fdceb9f146132c465b7a9aa1933ff58873786ff517ed04bac14",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+      "templateKey": null,
+      "step": "일치 조건으로 a=b=2,곱4를 구하고 서로 다른 평행선 조건ab=4의 정수쌍6개에서(2,2)를 제외해 해 없는5쌍을 센다.",
+      "note": "새 TPL 제안: 해가 없는 정수 계수쌍 개수 결정. 정의: 일치 조건으로 a=b=2,곱4를 구하고 서로 다른 평행선 조건ab=4의 정수쌍6개에서(2,2)를 제외해 해 없는5쌍을 센다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

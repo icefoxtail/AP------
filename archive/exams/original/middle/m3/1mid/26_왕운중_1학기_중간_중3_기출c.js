@@ -694,6 +694,7 @@ window.questionBank = [
     "wide": false,
     "content": "사각형 ACDE의 넓이와 사각형 ABDE의 넓이를 각각 구하고, 사각형 ACDE의 넓이는 사각형 ABDE의 넓이의 몇 배인지 구하시오. (6점)\n(사각형의 넓이를 구하는 과정 각각 2점, 사각형 ACDE의 넓이는 사각형 ABDE의 넓이의 몇 배인지 구하는 과정 2점)",
     "image": "assets/images/26_왕운중_1학기_중간_중3_기출/q22.png",
+    "imageScale": 70,
     "choices": [],
     "answer": "사각형 ACDE의 넓이: $\\sqrt{6}+1$, 사각형 ABDE의 넓이: $\\dfrac{3\\sqrt{6}+2}{2}$, 배수: $\\dfrac{16+\\sqrt{6}}{25}$배",
     "solution": "[키포인트] 직사각형 ACDF에서 높이를 먼저 구한 뒤 두 사다리꼴의 넓이를 계산한다.\n$AF=CD=\\sqrt3$이고 직사각형 ACDF의 넓이가 $\\sqrt6$이므로 $AC=\\sqrt2$이다.\n또 $AE=\\sqrt3+\\sqrt2$, $BD=2\\sqrt3$이다.\n$[ACDE]=\\frac12(AE+CD)AC=\\sqrt6+1$,\n$[ABDE]=\\frac12(AE+BD)AC=\\frac{3\\sqrt6+2}{2}$이다.\n따라서 $\\frac{[ACDE]}{[ABDE]}=\\frac{2(\\sqrt6+1)}{3\\sqrt6+2}=\\frac{16+\\sqrt6}{25}$이다.\n따라서 넓이는 각각 $\\sqrt6+1$, $\\frac{3\\sqrt6+2}{2}$이고 배수는 $\\frac{16+\\sqrt6}{25}$배이다.",

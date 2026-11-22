@@ -2,6 +2,7 @@
 // restores only a finite semantic/authority projection and creates no approval.
 // Original receipts, source bytes, identity, difficulty and shared registries are immutable.
 import fs from 'node:fs';
+import { META_FILE, questionMetadataBytesAt, questionMetadataText, assertMetadataAssembledCurrent, syncMetadataShards } from './question-metadata-format.mjs';
 import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
@@ -67,7 +68,7 @@ function commit(root, value) {
   assert(/^[a-f0-9]{40}$/.test(value || ''), 'full immutable commit required');
   assert(git(root, ['rev-parse', '--verify', value + '^{commit}']).toString().trim() === value, 'commit identity');
 }
-function gitBytes(root, ref, file) { safe(root, file); return git(root, ['show', `${ref}:${file}`]); }
+function gitBytes(root, ref, file) { safe(root, file); if (file === META_FILE) return questionMetadataBytesAt(root, ref); return git(root, ['show', `${ref}:${file}`]); }
 function read(root, file) { return JSON.parse(fs.readFileSync(safe(root, file), 'utf8')); }
 function bound(root, ref, refs) {
   assert(ref && /^[a-f0-9]{64}$/.test(ref.sha256 || '') && refs?.some(r => equal(r, ref)), 'bound evidence reference');
@@ -259,7 +260,7 @@ export function registerNativeAuthorityCorrection({ root, request: req, write = 
     metadataRegistrationStatus: 'UNSUPPORTED_AUTHORITY_WITHDRAWN', newMetadataApprovals: 0,
     withdrawnMetadataApprovals: applied.length, sourceHold: false, identityChanged: false, difficultyChanged: false,
     restoredFieldAllowlist: AUTHORITY_RESTORABLE_FIELDS, applied };
-  const receiptText = json(receipt), outputs = new Map([[META, json(metadata)], [receiptPath, receiptText]]);
+  const receiptText = json(receipt), outputs = new Map([[META, questionMetadataText(metadata)], [receiptPath, receiptText]]);
   for (const file of touched) { const rt = runtime.docs.get(file); refreshRuntime(rt); outputs.set(file, json(rt)); }
   for (const row of applied) outputs.set(authorityHoldSealPath(row.questionUid), json({ schemaVersion: AUTHORITY_HOLD_SCHEMA,
     questionUid: row.questionUid, sourceArchiveFile: req.sourceArchiveFile, sourceOrdinal: row.sourceOrdinal,
@@ -268,9 +269,11 @@ export function registerNativeAuthorityCorrection({ root, request: req, write = 
   assert(fs.readFileSync(safe(root, IDENTITY)).equals(identityRaw), 'identity changed during validation');
   assert(fs.readFileSync(safe(root, 'archive/exams/' + req.sourceArchiveFile)).equals(c.sourceBytes), 'source changed during validation');
   if (write) {
+    assertMetadataAssembledCurrent(root);
     const backups = new Map();
     try { for (const [file, value] of outputs) { const full = safe(root, file); backups.set(full, fs.existsSync(full) ? fs.readFileSync(full) : null);
-      fs.mkdirSync(path.dirname(full), { recursive: true }); fs.writeFileSync(full, value); } }
+      fs.mkdirSync(path.dirname(full), { recursive: true }); fs.writeFileSync(full, value); }
+      syncMetadataShards(root); }
     catch (error) { for (const [file, bytes] of backups) { if (bytes === null) fs.rmSync(file, { force: true }); else fs.writeFileSync(file, bytes); } throw error; }
   }
   return { status: 'PASS', write, replay: false, requestId: req.requestId, registrationMode: req.registrationMode,

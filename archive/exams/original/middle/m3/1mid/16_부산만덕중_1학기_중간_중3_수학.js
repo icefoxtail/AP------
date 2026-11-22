@@ -53,7 +53,7 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "tags": [
         "도형"
       ],
@@ -154,7 +154,7 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "grid",
+      "layoutTag": "subjective-2up",
       "tags": [],
       "wide": false,
       "content": "5. 보기 중에서 무리수인 것을 모두 찾으면? [3.0점]\n\n| 보기 |\n| :--- |\n| ㄱ. $\\sqrt{9}$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ㄴ. $\\sqrt{0.\\dot{4}}$ |\n| ㄷ. $2\\sqrt{3}$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ㄹ. $\\sqrt{3.\\dot{6}}$ |\n| ㅁ. $\\sqrt{5}-1$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ㅂ. $\\sqrt{12}-2\\sqrt{3}$ |",
@@ -187,7 +187,7 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 1,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "subjective-2up",
       "tags": [
         "도형"
       ],
@@ -321,7 +321,7 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 3,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "tags": [
         "도형"
       ],
@@ -488,7 +488,7 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 3,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "tags": [
         "도형"
       ],
@@ -857,7 +857,7 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 4,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "tags": [
         "도형"
       ],

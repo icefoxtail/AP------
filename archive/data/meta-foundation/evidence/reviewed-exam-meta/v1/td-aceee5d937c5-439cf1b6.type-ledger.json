@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-aceee5d937c5-439cf1b6",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_풍덕중_2학기_중간_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_ee4ce749f801671b0ec3e428505fd7212de6b1ef80ede2e0b8c45614fd6b88b5",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "step": "접선등장으로AS=x,DR=8-x,CR=CQ=x+2,BQ=6을써x+8=11에서x=3이다.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0c7bffa4447358075b1d3a457265ee307a006340f836b6b67750d14e846a072d",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "step": "접선등장으로PA=PB=10,CE=3,DE=DB=1을얻어PD=9이다.",
+      "note": "그림 일부가 잘렸으나 본문에 점순서와 모든 길이가 명시되어 판정 가능. 검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_887e6a2a5eb2b13195ff2815c981fe4b9014e38358880dab7116c41ea0a41c92",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "step": "sinx=1/2로AD=8,AC=4√3,AB=4√7을구하고동일높이삼각형넓이8√3=16√7siny를써√21/14이다.",
+      "note": "원본그림 하단이 잘렸으나 직각·점D위치·x,y정의·길이가 본문에 명시되어 있음. 검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_43fe0b2c88da3c3c19b16525f649496891ea08a0d2020e651201216930a60930",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "step": "접선등장으로EF=EB=x,DF=8이므로(x+8)²=8²+(8-x)²를풀어x=2이다.",
+      "note": "원본그림 하단이 잘렸으나 본문 정사각형·반원지름·접선 조건으로 복원 가능. 검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7c00a8131e1705ac2b5d8870f17d35f6825578babc464a1adedbc65ab47e6de9",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "step": "반지름이등변△BOC로중심각120도를구하고부채꼴3π에서삼각형9√3/4를뺀다.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    }
+  ]
+}

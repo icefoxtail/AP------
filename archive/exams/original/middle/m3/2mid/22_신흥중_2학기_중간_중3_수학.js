@@ -889,7 +889,7 @@ window.questionBank = [
       "삼각형 넓이"
     ],
     "wide": true,
-    "content": "다음 그림은 세로의 길이가 $6\\text{ cm}$인 직사각형 모양의 종이를 접은 것이다. $\\angle\\mathrm{ABC}=45^\\circ$일 때, $\\triangle\\mathrm{ABC}$의 넓이를 구하면? (4점)<br><img src=\"assets/images/22_신흥중_2학기_중간_중3_수학/q15.png\" alt=\"문제 15번 그림\" style=\"max-width: 250px;\">",
+    "content": "다음 그림은 세로의 길이가 $6\\text{ cm}$인 직사각형 모양의 종이를 접은 것이다. $\\angle\\mathrm{ABC}=45^\\circ$일 때, $\\triangle\\mathrm{ABC}$의 넓이를 구하면? (4점)<br><img data-scale=\"70\" src=\"assets/images/22_신흥중_2학기_중간_중3_수학/q15.png\" alt=\"문제 15번 그림\" style=\"max-width: 250px;\">",
     "choices": [
       "$10\\sqrt{2}\\text{ cm}^2$",
       "$12\\sqrt{2}\\text{ cm}^2$",
@@ -1165,7 +1165,7 @@ window.questionBank = [
       "삼각비 값 읽기"
     ],
     "wide": true,
-    "content": "【서술형 5】 오른쪽 그림과 같이 반지름의 길이가 $1$인 사분원에서 다음 삼각비의 값을 구하시오. (6점 : 각 2점)<br>(1) $\\sin 55^\\circ$<br>(2) $\\sin 35^\\circ$<br>(3) $\\tan 55^\\circ$<br><img src=\"assets/images/22_신흥중_2학기_중간_중3_수학/s05.png\" alt=\"서술형 5번 그림\" style=\"max-width: 250px;\">",
+    "content": "【서술형 5】 오른쪽 그림과 같이 반지름의 길이가 $1$인 사분원에서 다음 삼각비의 값을 구하시오. (6점 : 각 2점)<br>(1) $\\sin 55^\\circ$<br>(2) $\\sin 35^\\circ$<br>(3) $\\tan 55^\\circ$<br><img data-scale=\"85\" src=\"assets/images/22_신흥중_2학기_중간_중3_수학/s05.png\" alt=\"서술형 5번 그림\" style=\"max-width: 250px;\">",
     "choices": [],
     "answer": "(1) $0.8192$; (2) $0.5736$; (3) $1.4281$",
     "solution": "[풀이] 반지름이 1인 사분원에서 55°인 반지름의 끝점 A의 세로 좌표가 $\\sin55^\\circ=0.8192$이고 가로 좌표가 $\\cos55^\\circ=0.5736$이다. $35^\\circ$와 $55^\\circ$는 여각이므로 $\\sin35^\\circ=\\cos55^\\circ=0.5736$이다. 또 $x=1$인 직선과 55° 반직선의 교점 높이가 $\\tan55^\\circ=1.4281$이다.",

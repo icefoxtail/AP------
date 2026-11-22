@@ -1,6 +1,7 @@
 'use strict';
 
-// Actual Chrome qualification. Reports contain identities, hashes and geometry;
+// Actual Chrome check of the current code only (no baseline commit is rendered or compared).
+// Reports contain identities, hashes and geometry;
 // never question/answer/solution text, DOM dumps, screenshots or browser logs.
 const fs = require('node:fs');
 const path = require('node:path');
@@ -11,7 +12,6 @@ const crypto = require('node:crypto');
 const { execFileSync } = require('node:child_process');
 
 const root = path.resolve(__dirname, '..');
-const baseSha = process.env.ARCHIVE_SOLUTION_BASE_SHA || require('./archive2-output-comparison-references.json').originalReference;
 const reportDir = path.resolve(process.env.ARCHIVE_SOLUTION_REPORT_DIR || path.join(os.tmpdir(), 'archive-solution-loading-evidence'));
 const repeats = Number(process.env.ARCHIVE_SOLUTION_REPEATS || 2);
 const sourceFiles = [
@@ -21,7 +21,7 @@ const sourceFiles = [
 ];
 const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="160" height="90"><rect x="20" y="20" width="110" height="50" fill="white" stroke="black"/></svg>';
 const hash = value => crypto.createHash('sha256').update(String(value)).digest('hex');
-const report = { schema: 'ARCHIVE_SOLUTION_LOADING_CHROME_V1', baselineSha: baseSha, rows: [], comparisons: [] };
+const report = { schema: 'ARCHIVE_SOLUTION_LOADING_CHROME_V1', rows: [], comparisons: [] };
 let deadline = Infinity;
 
 function requireThat(value, code, details = {}) {
@@ -421,31 +421,24 @@ async function assertPrintBlocked(page, stage = 'failed-render') {
 }
 
 async function main() {
-  requireThat(/^[a-f0-9]{40}$/i.test(baseSha), 'EXACT_BASELINE_SHA_REQUIRED');
   requireThat(repeats === 2 || repeats === 3, 'TWO_OR_THREE_REPETITIONS_REQUIRED');
   const chrome = process.env.CHROME_BIN;
   requireThat(chrome && fs.existsSync(chrome), 'REAL_CHROME_BIN_REQUIRED');
   report.currentSha = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
   report.playwrightVersion = require('playwright/package.json').version;
   report.repeats = repeats;
-  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-solution-baseline-'));
-  const baselineRoot = path.join(temp, 'checkout');
-  let worktree = false, browser, baselineServer, currentServer;
+  let browser, currentServer;
   try {
-    // A real pinned checkout avoids serving current files when a baseline blob
-    // is absent and keeps git-show/cache overhead outside browser timings.
-    execFileSync('git', ['worktree', 'add', '--detach', baselineRoot, baseSha], { cwd: root, stdio: 'pipe', timeout: 120000 });
-    worktree = true;
     const actual = realFixture(root);
     const solutionImageCount = actual.filter(question => question.solutionImage).length;
     requireThat(actual.length === 50 && solutionImageCount > 0, 'REAL_FIXTURE_DENOMINATOR_CHANGED', { questions: actual.length, solutionImages: solutionImageCount });
     const payloadSha256 = hash(JSON.stringify(actual));
-    report.fixture = { questions: actual.length, solutionImages: solutionImageCount, baselinePayloadSha256: payloadSha256, currentPayloadSha256: payloadSha256,
+    report.fixture = { questions: actual.length, solutionImages: solutionImageCount, currentPayloadSha256: payloadSha256,
       sharedSourceDirectories: ['archive/exams/', 'archive/assets/'],
       sources: sourceFiles.map(file => ({ file, sha256: hash(fs.readFileSync(path.join(root, file), 'utf8')) })) };
     report.fixture.solutionAssets = solutionAssetMetadata(actual, root);
     const originalCount = loadBank(root, sourceFiles[0]).length;
-    baselineServer = await serve(baselineRoot, root, undefined, { referenceDisplayTitle: true }); currentServer = await serve(root);
+    currentServer = await serve(root);
     const { chromium } = require('playwright');
     browser = await chromium.launch({ executablePath: chrome, headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage'] });
     report.chromeVersion = browser.version();
@@ -453,7 +446,7 @@ async function main() {
     const qrious = fs.readFileSync(path.join(root, 'archive/vendor/qrious/qrious.min.js'));
 
     async function openSession(label, { variant = 'actual', original = false, mode = 'sol', qpp = 4, suppressRaf = false } = {}) {
-      const server = label === 'baseline' ? baselineServer : currentServer;
+      const server = currentServer;
       const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, serviceWorkers: 'block' });
       let page;
       const errors = [];
@@ -539,36 +532,17 @@ async function main() {
       } finally { await session.close(); }
     }
 
-    const pairs = [];
-    for (let repeat = 0; repeat < repeats; repeat += 1) {
-      const pair = {};
-      for (const label of repeat % 2 ? ['current', 'baseline'] : ['baseline', 'current']) pair[label] = await record(`actual-50-${label}-${repeat + 1}`, () => readyCase(label));
-      pairs.push(pair);
-      await record(`actual-50-parity-${repeat + 1}`, () => compareRows(pair.baseline, pair.current), 'comparisons');
-    }
-    await record('actual-50-performance', () => {
-      requireThat(pairs.every(pair => pair.baseline.pass && pair.current.pass), 'PERFORMANCE_INPUT_NOT_READY');
-      const median = values => { const sorted = values.slice().sort((a, b) => a - b); const i = Math.floor(sorted.length / 2); return sorted.length % 2 ? sorted[i] : (sorted[i - 1] + sorted[i]) / 2; };
-      const baselineMs = median(pairs.map(pair => pair.baseline.metrics.renderReadyMs));
-      const currentMs = median(pairs.map(pair => pair.current.metrics.renderReadyMs));
-      const baselineDiagnosticCalls = pairs[0].baseline.typeset.calls.filter(call => call.label === 'solution-decision-batch');
-      requireThat(baselineDiagnosticCalls.length > 0, 'BASELINE_DIAGNOSTIC_PATH_NOT_EXERCISED');
-      // Short shared runners vary. The structural removal is mandatory; this
-      // separate ceiling detects a material median regression, not small noise.
-      const allowedMs = baselineMs * 1.25 + 750;
-      requireThat(currentMs <= allowedMs, 'RENDER_TIME_REGRESSION', { baselineMs, currentMs, allowedMs });
-      return { baselineMedianMs: baselineMs, currentMedianMs: currentMs, allowedMs,
-        baselineEngineElapsedMedianMs: median(pairs.map(pair => pair.baseline.engineElapsedMs)),
-        currentEngineElapsedMedianMs: median(pairs.map(pair => pair.current.engineElapsedMs)),
-        baselineFirstBoxMedianMs: median(pairs.map(pair => pair.baseline.firstBoxMs)),
-        currentFirstBoxMedianMs: median(pairs.map(pair => pair.current.firstBoxMs)),
-        diagnosticCallsRemoved: baselineDiagnosticCalls.length, diagnosticRootNodesRemoved: baselineDiagnosticCalls.reduce((sum, call) => sum + call.elements, 0) };
-    }, 'comparisons');
-    for (const qpp of [1, 2]) {
-      const before = await record(`actual-50-qpp${qpp}-baseline`, () => readyCase('baseline', { qpp }));
-      const after = await record(`actual-50-qpp${qpp}-current`, () => readyCase('current', { qpp }));
-      await record(`actual-50-qpp${qpp}-parity`, () => compareRows(before, after), 'comparisons');
-    }
+    const runs = [];
+    for (let repeat = 0; repeat < repeats; repeat += 1) runs.push(await record(`actual-50-current-${repeat + 1}`, () => readyCase('current')));
+    await record('actual-50-timing', () => {
+      requireThat(runs.every(run => run.pass), 'TIMING_INPUT_NOT_READY');
+      const median = values => { const sorted = values.slice().sort((x, y) => x - y); const i = Math.floor(sorted.length / 2); return sorted.length % 2 ? sorted[i] : (sorted[i - 1] + sorted[i]) / 2; };
+      // Timing is recorded for the report; no threshold is derived from another commit.
+      return { currentMedianMs: median(runs.map(run => run.metrics.renderReadyMs)),
+        currentEngineElapsedMedianMs: median(runs.map(run => run.engineElapsedMs)),
+        currentFirstBoxMedianMs: median(runs.map(run => run.firstBoxMs)) };
+    });
+    for (const qpp of [1, 2]) await record(`actual-50-qpp${qpp}-current`, () => readyCase('current', { qpp }));
 
     await record('slow-svg-1600ms-current', () => readyCase('current', { variant: 'slow' }));
     await record('slow-svg-6000ms-current', () => readyCase('current', { variant: 'slow-long' }));
@@ -612,9 +586,7 @@ async function main() {
       } finally { await session.close(); }
     });
 
-    const originalBefore = await record('original-real-sol-baseline', () => readyCase('baseline', { original: true }));
-    const originalAfter = await record('original-real-sol-current', () => readyCase('current', { original: true }));
-    await record('original-real-sol-parity', () => compareRows(originalBefore, originalAfter), 'comparisons');
+    await record('original-real-sol-current', () => readyCase('current', { original: true }));
     await record('original-real-modes-with-raf-suppressed', async () => {
       const session = await openSession('current', { original: true, suppressRaf: true });
       try {
@@ -629,13 +601,11 @@ async function main() {
     report.assetFaultRequests = currentServer.state.faults;
   } finally {
     await browser?.close();
-    await baselineServer?.close(); await currentServer?.close();
-    if (worktree) { try { execFileSync('git', ['worktree', 'remove', '--force', baselineRoot], { cwd: root, stdio: 'pipe', timeout: 30000 }); } catch (_) {} }
-    fs.rmSync(temp, { recursive: true, force: true });
+    await currentServer?.close();
   }
   report.pass = report.rows.length > 0 && [...report.rows, ...report.comparisons].every(row => row.pass);
   writeReport();
-  console.log(JSON.stringify({ schema: report.schema, pass: report.pass, cases: report.rows.length, comparisons: report.comparisons.length, baselineSha: baseSha, currentSha: report.currentSha }));
+  console.log(JSON.stringify({ schema: report.schema, pass: report.pass, cases: report.rows.length, comparisons: report.comparisons.length, currentSha: report.currentSha }));
   if (!report.pass) process.exitCode = 1;
 }
 

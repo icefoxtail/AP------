@@ -55,7 +55,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_사인코사인법칙_고2_유형심화/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 사인비를 변의 길이 비로 바꾸고 가장 긴 변에 마주 보는 각을 선택한다.",
+    "solutionImageCaption": "사인비를 변의 길이 비로 바꾸고 가장 긴 변에 마주 보는 각을 선택한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -99,7 +103,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_사인코사인법칙_고2_유형심화/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 대각선 AC로 나눈 두 삼각형에서 마주 보는 두 각의 합이 평각임을 이용한다.",
+    "solutionImageCaption": "대각선 AC로 나눈 두 삼각형에서 마주 보는 두 각의 합이 평각임을 이용한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -143,7 +151,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_사인코사인법칙_고2_유형심화/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼사오 변의 비로 생긴 직각삼각형에서 빗변이 외접원의 지름임을 확인한다.",
+    "solutionImageCaption": "삼사오 변의 비로 생긴 직각삼각형에서 빗변이 외접원의 지름임을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -165,7 +177,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_사인코사인법칙_고2_유형심화/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 현 AB를 보는 원주각 C와 외접원의 반지름으로 작은 호 AB의 길이를 연결한다.",
+    "solutionImageCaption": "현 AB를 보는 원주각 C와 외접원의 반지름으로 작은 호 AB의 길이를 연결한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -275,7 +291,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_사인코사인법칙_고2_유형심화/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 넓이와 예각 조건으로 끼인각 C를 정하고 현 AB와 외접원을 연결한다.",
+    "solutionImageCaption": "넓이와 예각 조건으로 끼인각 C를 정하고 현 AB와 외접원을 연결한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -341,7 +361,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_사인코사인법칙_고2_유형심화/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 같은 삼각형의 외접원과 내접원을 함께 놓고 공통 넓이로 두 반지름을 연결한다.",
+    "solutionImageCaption": "같은 삼각형의 외접원과 내접원을 함께 놓고 공통 넓이로 두 반지름을 연결한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -363,7 +387,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_사인코사인법칙_고2_유형심화/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육각형의 중점 M에서 대각선 DF에 수선을 내려 길이를 구할 직각삼각형을 만든다.",
+    "solutionImageCaption": "정육각형의 중점 M에서 대각선 DF에 수선을 내려 길이를 구할 직각삼각형을 만든다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -385,7 +413,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_사인코사인법칙_고2_유형심화/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 둔각 A의 이등분선 AD로 나뉜 두 삼각형의 넓이 합을 원래 넓이와 비교한다.",
+    "solutionImageCaption": "둔각 A의 이등분선 AD로 나뉜 두 삼각형의 넓이 합을 원래 넓이와 비교한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -407,6 +439,10 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_사인코사인법칙_고2_유형심화/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 대각선 AC로 나눈 두 삼각형에서 마주 보는 두 각의 합이 평각임을 이용한다.",
+    "solutionImageCaption": "대각선 AC로 나눈 두 삼각형에서 마주 보는 두 각의 합이 평각임을 이용한다.",
+    "solutionImageSize": "full"
   }
 ];

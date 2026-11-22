@@ -43,8 +43,14 @@
     const SOLUTION_SVG_SCALED_MIN_WIDTH = 384;
     const solutionSvgDisplayFactor = natural => (natural >= SOLUTION_SVG_SCALED_MIN_WIDTH ? SOLUTION_SVG_DISPLAY_K : 1);
     const SVG_SOURCE_PATTERN = /(?:\.svg(?:[?#]|$)|^data:image\/svg\+xml)/i;
+    // 2026-11-18: A4 쪽 배치에서는 해설 그림 크기를 figure-size.css(단 폭의 60%, 변수 --ap-fig-sol)가 정하므로 인라인 width를 넣지 않고
+    // 그림에 data 속성만 붙인다. 이 규칙이 없는 화면(휴대폰 읽기 배치, figure-size.js를 안 부르는 오답 엔진)은 아래 옛 계산(자연 폭 x 0.6)을 그대로 쓴다.
     function applySolutionSvgDisplayWidth(scope) {
         if (!scope?.querySelectorAll) return 0;
+        if (root.APFigureSize?.isActive?.()) {
+            root.APFigureSize.classify(scope);
+            return 0;
+        }
         const images = Array.from(scope.querySelectorAll('.sol-image-wrap:not(.layout-fullwidth) img'));
         if (scope.matches?.('.sol-image-wrap:not(.layout-fullwidth)')) images.push(...Array.from(scope.querySelectorAll('img')));
         let applied = 0;
@@ -56,6 +62,71 @@
             applied += 1;
         });
         return applied;
+    }
+
+    // A rescued continuation shell holds only the tail of a solution, so without a heading a student cannot tell which
+    // question it belongs to. Put "<number>. (이어짐)" at its top. Only shells created by the rescue path are labelled;
+    // ordinary continuation shells keep their original DOM.
+    function labelContinuationShell(shell, sourceBox, qNo, doc) {
+        if (!shell || !doc || typeof shell.querySelector !== 'function' || typeof shell.insertBefore !== 'function' || shell.querySelector('.sol-cont-label')) return shell;
+        const numNode = typeof sourceBox?.querySelector === 'function' ? sourceBox.querySelector('.q-num') : null;
+        const num = String(numNode?.textContent || '').trim().replace(/\.\s*$/, '') || (Number(qNo) > 0 ? String(qNo) : '');
+        if (!num) return shell;
+        const label = doc.createElement('div');
+        label.className = 'sol-cont-label';
+        label.style.cssText = 'font-size:8.5pt;font-weight:700;color:#555;margin:0 0 3px 0;line-height:1.4;';
+        label.textContent = `${num}. (이어짐)`;
+        shell.insertBefore(label, shell.firstChild);
+        return shell;
+    }
+
+    // 2026-11-22: 해설 상자 하나가 칸(83mm)을 가로로 넘쳐도 해설지 전체가 실패하지 않게 한다. 이 렌더러(문제지 만들기·mixed_engine)는 예전에
+    // 가로 넘침을 아예 다루지 않아, 넘친 상자가 칸 잘림(.grid-col overflow:hidden)으로 잡혀 "PDF readiness failed: content clipped"로 전체가 막혔다.
+    // layout-materializer.js(engine.html)와 같은 순서: 늘임표 공백 가두기 -> 줄바꿈·글자 단계(sol-fit-narrow, data-sol-fit 1~4) -> 축소(data-sol-shrink 1~5).
+    // 잘림 감지(archive2-pdf-readiness.js)는 그대로 둔다. 넘치지 않는 상자는 손대지 않는다.
+    // readiness(archive2-pdf-readiness.js)가 잘림으로 보는 기준(3px 초과)과 같다. 그 밑으로 넘치는 상자는 지금까지처럼 손대지 않는다.
+    const SOL_OVERFLOW_TOLERANCE = 3;
+    const SOL_FIT_MAX_LEVEL = 4;
+    const SOL_SHRINK_MAX_LEVEL = 5;
+    function hasHorizontalSolutionOverflow(node, container) {
+        const nodeWidth = Number(node?.clientWidth || 0);
+        const containerWidth = Number(container?.clientWidth || 0);
+        return (nodeWidth > 0 && Number(node.scrollWidth || 0) > nodeWidth + SOL_OVERFLOW_TOLERANCE)
+            || (containerWidth > 0 && Number(container.scrollWidth || 0) > containerWidth + SOL_OVERFLOW_TOLERANCE);
+    }
+    function hasVerticalSolutionOverflow(container) {
+        return Number(container?.clientHeight || 0) > 0 && Number(container.scrollHeight || 0) > Number(container.clientHeight) + SOL_OVERFLOW_TOLERANCE;
+    }
+    // MathJax 늘임표(\overline 등)의 안 보이는 공백(mjx-spacer)이 상자 오른쪽으로 몇 px 삐져나와 가로 넘침으로 잡히는 경우를 먼저 푼다.
+    function clipStretchySpacers(box) {
+        if (typeof box?.setAttribute !== 'function' || typeof box.querySelector !== 'function') return false;
+        if (box.getAttribute?.('data-ap-mjx-clip') || !box.querySelector('mjx-stretchy-h')) return false;
+        box.setAttribute('data-ap-mjx-clip', '1');
+        return true;
+    }
+    // 넘치지 않으면 'none'(손대지 않음), 맞췄으면 'fit', 끝내 안 맞으면 'failed'(넘친 채로 둔다, 실패시키지 않음).
+    function fitSolutionBoxHorizontally(box, column) {
+        if (!hasHorizontalSolutionOverflow(box, column)) return 'none';
+        if (clipStretchySpacers(box) && !hasHorizontalSolutionOverflow(box, column)) return 'fit';
+        box.classList.add('sol-fit-narrow');
+        let level = Number(box.dataset.solFit || 0);
+        let shrink = Number(box.dataset.solShrink || 0);
+        while (hasHorizontalSolutionOverflow(box, column)) {
+            if (level < SOL_FIT_MAX_LEVEL) { level += 1; box.dataset.solFit = String(level); continue; }
+            if (shrink >= SOL_SHRINK_MAX_LEVEL) return 'failed';
+            shrink += 1;
+            box.dataset.solShrink = String(shrink);
+        }
+        return 'fit';
+    }
+    // 학생에게 "줄여서 표시했습니다"를 알릴 상자: 글자 단계 1 이상 또는 축소가 걸린 해설.
+    function solutionWasShrunk(box) {
+        return Number(box?.dataset?.solFit || 0) >= 1 || Number(box?.dataset?.solShrink || 0) >= 1;
+    }
+    function notifySolutionShrunk(numbers) {
+        const list = [...new Set(numbers.filter(Number.isFinite))].sort((a, b) => a - b);
+        if (!list.length) return;
+        try { root?.APArchiveRenderFeedback?.notice?.(`${list.join('번, ')}번 해설이 칸을 넘어 줄여서 표시했습니다.`); } catch (error) { /* 알림 실패가 출력을 막지 않는다 */ }
     }
 
     async function measureSolutionBatch(boxes, staging, deps, document) {
@@ -247,6 +318,8 @@
             let targetCol = cols[colIdx];
             targetCol.appendChild(shell);
             markSolutionPlacement(shell, false);
+            let primaryShell = true;
+            let rescued = false;
 
             for (let chunkIndex = 0; chunkIndex < preparedChunks.length; chunkIndex += 1) {
                 const chunk = preparedChunks[chunkIndex];
@@ -269,6 +342,9 @@
                         : [];
                     targetCol = advanceColumn();
                     shell = deps.makeLongSolutionShell(sourceBox, qNo, true);
+                    // Only after a rescue (below) are the following shells labelled too, so layouts that were
+                    // fine before keep their exact DOM.
+                    if (rescued) labelContinuationShell(shell, sourceBox, qNo, document);
                     exp = shell.querySelector('.sol-exp');
                     targetCol.appendChild(shell);
                     markSolutionPlacement(shell, true);
@@ -279,11 +355,39 @@
                     exp.appendChild(chunk);
                     if (deps.rendererMode() === 'legacy') await deps.raf();
                     else if (deps.rendererMode() === 'batch') await yieldSolutionLayout();
+                    primaryShell = false;
                 }
                 if (targetCol.scrollHeight > targetCol.clientHeight + 2) {
                     deps.autoCompress(shell);
                     if (deps.rendererMode() === 'batch') await yieldSolutionLayout();
                     else await deps.raf();
+                    // Rescue: the first shell carries the question reminder, figures and answer, so its only chunk
+                    // can still clip the column after compression (readiness: more than 3px). Hand that chunk to a
+                    // labelled continuation shell, but only when the header alone fits. Anything that fit before
+                    // (including after the compression above) is laid out exactly as it always was.
+                    if (primaryShell && exp.children.length === 1 && targetCol.scrollHeight > targetCol.clientHeight + 3) {
+                        exp.removeChild(chunk);
+                        if (deps.rendererMode() === 'legacy') await deps.raf();
+                        if (targetCol.scrollHeight <= targetCol.clientHeight + 2) {
+                            rescued = true;
+                            targetCol = advanceColumn();
+                            shell = labelContinuationShell(deps.makeLongSolutionShell(sourceBox, qNo, true), sourceBox, qNo, document);
+                            exp = shell.querySelector('.sol-exp');
+                            targetCol.appendChild(shell);
+                            markSolutionPlacement(shell, true);
+                            exp.appendChild(chunk);
+                            if (deps.rendererMode() === 'legacy') await deps.raf();
+                            else if (deps.rendererMode() === 'batch') await yieldSolutionLayout();
+                            primaryShell = false;
+                            if (targetCol.scrollHeight > targetCol.clientHeight + 2) {
+                                deps.autoCompress(shell);
+                                if (deps.rendererMode() === 'batch') await yieldSolutionLayout();
+                                else await deps.raf();
+                            }
+                        } else {
+                            exp.appendChild(chunk);
+                        }
+                    }
                 }
             }
         };
@@ -296,6 +400,8 @@
                 if (deps.rendererMode() === 'legacy') await deps.typesetMath('solution-box', [box]);
                 if (deps.rendererMode() === 'batch') await yieldSolutionLayout();
                 else await deps.raf();
+                // 가로로 넘치는 상자만 칸에 맞춘다(넘치지 않으면 아무것도 바꾸지 않음). 아래 높이 검사가 줄어든 높이를 그대로 본다.
+                fitSolutionBoxHorizontally(box, targetCol);
                 if (targetCol.scrollHeight <= targetCol.clientHeight + 2) return;
 
                 deps.autoCompress(box);
@@ -336,7 +442,8 @@
             const box = document.createElement('div');
             box.className = 'q-box sol-box';
             box.dataset.sourceRef = deps.getArchiveQuestionSourceRef(q, i);
-            box.dataset.solutionFullWidth = q.solutionImageLayout === 'fullwidth' ? 'true' : 'false';
+            // 2026-11-18: 그림 크기 규칙을 쓰는 엔진(figure-size.js 로드)은 해설 그림을 쪽 전체 폭으로 놓지 않는다. 오답 엔진은 옛 동작.
+            box.dataset.solutionFullWidth = q.solutionImageLayout === 'fullwidth' && !root.APFigureSize ? 'true' : 'false';
             box.dataset.solutionHtml = solutionHtml;
             const sectionHtml = typeof deps.getSectionHeadingHtml === 'function' ? deps.getSectionHeadingHtml(q, i, 'box') : '';
             box.innerHTML = `${sectionHtml}<div class="q-num">${i + 1}.</div><div data-semantic-content="1" style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${deps.wrapLatex(q.answer ?? '-')}</div>${solutionImageHtml}<div class="sol-exp">${solutionHtml}</div></div>`;
@@ -466,6 +573,31 @@
             }
         }
         deps.onSolutionProgress?.({ phase: 'layout', completed: solutionBoxes.length, total: solutionBoxes.length });
+
+        // 안전망: 쪽을 다 만든 뒤에도 칸을 가로로 넘치는 해설(이어짐 상자 포함)은 그 상자만 줄여서, 해설지 전체가 readiness의 "칸 잘림"으로
+        // 실패하지 않게 한다. 넘치지 않는 상자는 그대로 두므로 정상 문제지의 출력은 바뀌지 않는다.
+        const numberBySourceRef = new Map(solutionBoxes.map((box, index) => [box.dataset.sourceRef, index + 1]));
+        const shrunkNumbers = [];
+        (area.querySelectorAll?.('.sol-box') || []).forEach(node => {
+            const column = typeof node.closest === 'function' ? node.closest('.grid-col') : null;
+            if (!column) return;
+            const verticalBefore = hasVerticalSolutionOverflow(column);
+            const result = fitSolutionBoxHorizontally(node, column);
+            if (result === 'none') return;
+            if (result === 'failed') {
+                try { console.warn('[archive-solution] horizontal fit failed; keeping this solution as is', { sourceRef: node.dataset.sourceRef }); } catch (error) { /* diagnostics only */ }
+            }
+            // 줄바꿈 맞춤이 세로로 길이를 늘려 칸 아래가 잘리면 한 단계씩 더 줄여 높이를 지킨다.
+            let shrink = Number(node.dataset.solShrink || 0);
+            while (!verticalBefore && hasVerticalSolutionOverflow(column) && shrink < SOL_SHRINK_MAX_LEVEL) {
+                shrink += 1;
+                node.dataset.solShrink = String(shrink);
+            }
+        });
+        (area.querySelectorAll?.('.sol-box') || []).forEach(node => {
+            if (solutionWasShrunk(node)) shrunkNumbers.push(numberBySourceRef.get(node.dataset?.sourceRef));
+        });
+        notifySolutionShrunk(shrunkNumbers);
 
         if (appState) {
             const chunkCounts = solutionDecisionBlocks.map(block => Number.isInteger(block.actualChunkCount)
@@ -720,5 +852,5 @@ async function renderComposed({ area, items, deps }) {
     }
 }
 
-    return Object.freeze({ render, renderComposed, applySolutionSvgDisplayWidth, SOLUTION_SVG_DISPLAY_K, SOLUTION_SVG_SCALED_MIN_WIDTH });
+    return Object.freeze({ render, renderComposed, applySolutionSvgDisplayWidth, fitSolutionBoxHorizontally, SOLUTION_SVG_DISPLAY_K, SOLUTION_SVG_SCALED_MIN_WIDTH });
 });

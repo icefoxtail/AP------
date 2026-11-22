@@ -1,55 +1,46 @@
 'use strict';
 
-// Recover only the five source JS blobs used by measurable output qualification.
-// Report hashes are computed from recovered bytes and loaded questions. The
-// release gate's existing fixtureSpecs remain the authority for expected hashes.
-const crypto = require('node:crypto');
-const { execFileSync } = require('node:child_process');
-const { qualificationSourceRevision } = require('./archive2-output-comparison-references.json');
-const { fixtureSpecs } = require('./archive2-output-release-qualification.cjs');
+// Inputs for the measurable output harness, taken from the CURRENT checkout.
+// No exam file hash, question hash or past commit is pinned: exam sources are
+// edited over time, and this harness only needs real questions to render.
 const H = require('./archive2-solution-loading-browser.cjs');
 
-const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
-const sourceSpecs = new Map(fixtureSpecs.flatMap(fixture => fixture.sources.map(source => [source.file, source])));
+const SOURCE_FILES = [
+  'archive/exams/original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js',
+  'archive/exams/original/middle/m1/2final/25_팔마중_2학기_기말_중1_기출.js',
+  'archive/exams/original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js',
+  'archive/exams/original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js',
+  'archive/exams/test-fixtures/render-authority-golden.js'
+];
+// id, kind, questions per page, how many mixed questions an envelope/legacy fixture takes, source files
+const FIXTURE_SPECS = [
+  ['envelope50', 'envelope', 4, 50, [0, 1, 2]],
+  ['envelope50-qpp1', 'envelope', 1, 50, [0, 1, 2]],
+  ['images24', 'original', 4, 0, [1]],
+  ['long23', 'original', 4, 0, [3]],
+  ['ordinary', 'original', 4, 0, [0]],
+  ['envelope8', 'envelope', 4, 8, [0]],
+  ['legacy50', 'legacy', 4, 50, [0, 1, 2]],
+  ['continuation-golden', 'original', 4, 0, [4]]
+].map(([id, kind, qpp, take, sources]) => ({ id, kind, qpp, take, sources: sources.map(i => SOURCE_FILES[i]) }));
 
 function requireThat(condition, code, details) {
   if (!condition) throw Object.assign(new Error(code), { code, details });
 }
 
-function loadQualificationFixtures(root, { readBlob = file => execFileSync('git', ['show', qualificationSourceRevision + ':' + file], {
-  cwd: root, stdio: ['ignore', 'pipe', 'pipe'], timeout: 30_000,
-}) } = {}) {
-  requireThat(/^[a-f0-9]{40}$/.test(qualificationSourceRevision), 'QUALIFICATION_SOURCE_REVISION_INVALID');
-  const sourceBytes = new Map();
-  for (const [file, expected] of sourceSpecs) {
-    let bytes;
-    try { bytes = readBlob(file); }
-    catch { requireThat(false, 'QUALIFICATION_SOURCE_BLOB_MISSING', { file }); }
-    requireThat(Buffer.isBuffer(bytes) && hash(bytes) === expected.sha256,
-      'QUALIFICATION_SOURCE_HASH_MISMATCH', { file });
-    sourceBytes.set(file, Buffer.from(bytes));
-  }
-  const readSource = file => {
-    const bytes = sourceBytes.get(file);
-    requireThat(bytes, 'QUALIFICATION_SOURCE_UNEXPECTED', { file });
-    return bytes;
-  };
-  const mixed = H.realFixture(root, readSource);
-  const fixtures = fixtureSpecs.map(spec => {
-    const questions = spec.kind === 'original' ? H.loadBank(root, spec.sources[0].file, readSource) : mixed.slice(0, spec.questions);
-    const inputSha256 = hash(JSON.stringify(questions));
-    requireThat(questions.length === spec.questions && inputSha256 === spec.inputSha256,
-      'QUALIFICATION_INPUT_HASH_MISMATCH', { fixture: spec.id });
+function loadQualificationFixtures(root) {
+  const mixed = H.realFixture(root);
+  const fixtures = FIXTURE_SPECS.map(spec => {
+    const questions = spec.kind === 'original' ? H.loadBank(root, spec.sources[0]) : mixed.slice(0, spec.take);
+    requireThat(questions.length > 0 && (spec.kind === 'original' || questions.length === spec.take),
+      'OUTPUT_FIXTURE_QUESTIONS_MISSING', { fixture: spec.id });
     return {
       id: spec.id, kind: spec.kind, qpp: spec.qpp, questions,
-      sources: spec.sources.map(({ file }) => ({ file, sha256: hash(readSource(file)) })),
-      inputSha256,
+      sources: spec.sources.map(file => ({ file }))
     };
   });
-  return {
-    fixtures,
-    sourceOverlay: pathname => pathname.startsWith('/') ? sourceBytes.get(pathname.slice(1)) : undefined,
-  };
+  // Current files are served as they are; there is no source overlay.
+  return { fixtures, sourceOverlay: undefined };
 }
 
 module.exports = { loadQualificationFixtures };

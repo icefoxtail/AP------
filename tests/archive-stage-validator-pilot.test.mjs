@@ -46,7 +46,9 @@ const controlEvidence = path.resolve('archive/data/r2e-intake/m2/25_매산중_1�
 // byte binding deterministically without rewriting production or old PASS evidence.
 const staleDir = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-stale-control-'));
 try {
-  const staleExam = path.join(staleDir, path.basename(controlExam));
+  // The validator locates the repository root from an /archive/ path segment, so mirror that inside the temp folder.
+  const staleExam = path.join(staleDir, 'archive', 'exams', path.basename(controlExam));
+  fs.mkdirSync(path.dirname(staleExam), {recursive:true});
   fs.writeFileSync(staleExam, fs.readFileSync(controlExam,'utf8') + '\n// intentionally stale regression bytes\n');
   const control = validateStageEvidence({examFile:staleExam,evidenceFile:controlEvidence,stage:'R2'});
   assert.equal(control.validatorMode,'FULL');

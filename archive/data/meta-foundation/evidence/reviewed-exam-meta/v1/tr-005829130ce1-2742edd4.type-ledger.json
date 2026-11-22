@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-005829130ce1-2742edd4",
+  "sourceArchiveFile": "original/high/h2/2final/22_금당고_2학기_기말_고2_수학II.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_6d2fd604eadd7967c11b7e3dbb3b3527c1920863be5bf332f32ca0aa289deff3",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+      "step": "미분과 부정적분의 역관계로 f=x²-3x+C를 얻고 근의 곱으로 C를 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_97fb586400c0a3699fcf41c65885dba5a1cd1541527af9f803d301f81f97145a",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_INTEGRAL_VALUE_SYSTEM_FUNCTION_DETERMINATION",
+      "step": "f=ax+b를 정적분 조건에 대입하고 대칭구간의 홀수항 소거로 계수를 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    }
+  ]
+}

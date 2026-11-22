@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-257f7fc13feb-982c1618",
+  "requestSha256": "63334780531519626621b31447549e1f3a7cf7ebccc2ddf595a7b845f247dac9",
+  "examUid": "22_동산중_2학기_중간_중3_수학",
+  "sourceArchiveFile": "original/middle/m3/2mid/22_동산중_2학기_중간_중3_수학.js",
+  "sourceBlobSha1": "689d39aa080ac952058095bde76d957433122b2d",
+  "sourceRawSha256": "33ba7c4bc93772759cb631d8664bc5db97e3792a9bfe5d173acd96276de631fa",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-257f7fc13feb-982c1618.type-ledger.json",
+        "sha256": "1d08412ed8fb64495facbb607227e8c797c58aefb713967bd632c7c3b91f971d"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_cffc61f8b140a52ccbd49c883f033748a63535aef18f922665b3befcf8325493",
+      "sourceArchiveFile": "original/middle/m3/2mid/22_동산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 12,
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-257f7fc13feb-982c1618",
+        "judge": "dots",
+        "rationale": "반지름1과여각관계로사인·코사인선분을대응시키며tanz=OD/CD=1/CD이므로OD라한⑤가거짓이다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "e5e5dd1e4fda7c1c4fb67b1d40c963ee3e4214db49d0dec2dc3daa4903cf1620",
+        "judgedContentFingerprint": "f274aca2c83cbe23b9078ffd6ca5609d215755b0ce7623edfc6f1b36d478d0f4",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "be9ccbc5c5282a9d351261c2bdcb4b04f182edc92f379f4ce26ed4bee1bfd7c2",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-257f7fc13feb-982c1618.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_TRIG_RATIO",
+          "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 25
+}

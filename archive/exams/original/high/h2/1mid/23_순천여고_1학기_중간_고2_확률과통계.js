@@ -432,7 +432,11 @@ window.questionBank = [
       "원순열"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 여섯 자리가 육각형 꼭짓점으로 놓인 원탁 그림이며 자리 A의 양옆에 자리 B와 F가 있고 나머지 세 자리 C, D, E가 있다.",
+    "solutionImageCaption": "원탁의 6자리를 육각형 꼭짓점으로 나타낸 한 배치의 예이다. A는 지휘자 자리이고 양옆 자리 B와 F에 제1바이올린과 제2바이올린이 앉는다. 지휘자를 고정하면 양옆 자리에 두 바이올린을 앉히는 방법은 2!=2가지이다. 나머지 세 연주자는 남은 세 자리 C, D, E에 3!=6가지로 앉는다. 따라서 2×6=12이므로 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 8,
@@ -558,7 +562,11 @@ window.questionBank = [
       "원순열"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형의 세 모서리 근처에 자리가 두 개씩, 모두 여섯 자리가 놓인 탁자 그림이다.",
+    "solutionImageCaption": "정삼각형 탁자의 세 모서리 무리에 자리가 두 개씩 있어 모두 6자리이다. 그림의 점 A, B는 한 모서리 무리, C, D는 다른 무리, E, F는 나머지 무리의 자리이다. 남자 2명이 서로 다른 모서리 무리에 앉도록 두 무리를 고르는 방법은 3C2=3가지이고, 각 무리에서 자리를 하나씩 고르고 두 남자를 배정하는 방법은 2×2×2!=8가지이다. 여자 4명은 남은 4자리에 4!=24가지로 앉는다. 회전 3가지를 같게 보아 3으로 나누면 3×8×24/3=192이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 10,

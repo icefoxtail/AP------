@@ -13,7 +13,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "이등변삼각형",
       "도형"
@@ -56,7 +56,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "이등변삼각형",
       "도형",
@@ -103,7 +103,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "이등변삼각형",
       "도형"
@@ -148,7 +148,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "이등변삼각형",
       "도형"
@@ -193,7 +193,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "이등변삼각형",
       "도형"
@@ -238,7 +238,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "직각삼각형의 합동",
       "도형"
@@ -284,7 +284,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "직각삼각형의 합동",
       "도형"
@@ -372,7 +372,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "삼각형의 외심",
       "도형"
@@ -417,7 +417,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "삼각형의 외심",
       "도형"
@@ -463,7 +463,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "삼각형의 외심과 내심",
       "도형"
@@ -552,7 +552,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "평행사변형의 성질",
       "도형"
@@ -600,7 +600,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "평행사변형의 성질",
       "도형"
@@ -647,7 +647,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "평행사변형의 성질",
       "도형"
@@ -691,7 +691,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "평행사변형이 되는 조건",
       "도형"
@@ -817,7 +817,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "삼각형의 외심",
@@ -858,7 +858,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "삼각형의 내심",
@@ -901,7 +901,7 @@ window.questionBank=[
     "standardUnit": "도형의 성질",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "평행사변형의 성질",

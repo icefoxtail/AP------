@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "archive-m3-source49-two-validated-dependency-pins-publication-v8",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "owner": "GPT_M3S2_RELEASE",
+  "status": "Q5_ACTUAL_NATIVE_PASS_FINAL_SOURCE49_GATE_PENDING",
+  "supersedesUnpublishedGateV7": {
+    "gitBlobSha1": "9208e041b975eb8638266c42693fe9e90afd2b28",
+    "sha256": "f66f809e4d7bd6e4ce464d444c85590365bc33f14cdc72935d7c52981afcc9fa",
+    "bytes": 7228
+  },
+  "previousPublishedV6": {
+    "gitBlobSha1": "e99532b7c986e8ca86ecc2f393084d81b037e6ea",
+    "sha256": "573a7981f56808b74f810bc8e04a699aa26f70726b56cdde87770a37c4bd98e1",
+    "bytes": 12816
+  },
+  "operations": [
+    {
+      "path": "tools/4slot/check-m3-current-ui-scoped.cjs",
+      "before": {
+        "gitBlobSha1": "d112e971f28df83df70f40df6658b08d3106bca8",
+        "sha256": "7603414f0db45c56afa75dad050cea55815f0464b4c852a5f1085f0000fd45f3",
+        "bytes": 53316
+      },
+      "after": {
+        "gitBlobSha1": "e538edc8ab1b9530ef61f70d91ed554671572aca",
+        "sha256": "9396294a70ccfc412f14f11792f17a6c9318396f2b72b5d2c21f22568f755362",
+        "bytes": 53316
+      }
+    }
+  ],
+  "requiredCurrentProduction": [
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m3-e052-q5-complete-given.mjs",
+      "gitBlobSha1": "9395012e8c6c7af8cae33586b3e39f3081ffea04",
+      "sha256": "904f664a60ffb4c6e5503916a8a3f60d664318633018fec8f8d35a7d4c6a64e2",
+      "bytes": 50976
+    },
+    {
+      "path": "tools/4slot/m3s2-layout-continuity.cjs",
+      "gitBlobSha1": "ba7f9dd3772cf0a40d1110618b1fd6be2f3bb130",
+      "sha256": "c811ffdff4e2cfe98c476e7f84d23185a18c43e6e5824d0fae0df21fe2f3fcf1",
+      "bytes": 44099
+    }
+  ],
+  "exactGateDelta": {
+    "edits": [
+      {
+        "path": "archive/tools/meta-foundation/reviewed-m3-e052-q5-complete-given.mjs",
+        "old": "      \"path\": \"archive/tools/meta-foundation/reviewed-m3-e052-q5-complete-given.mjs\",\n      \"gitBlobSha1\": \"a725d9af4e25f4c118a6e743ad95cb01bec5cf8c\",\n      \"sha256\": \"489a8089bd53ca5ca3823c932561381d40971b15038c13a8bd3ef8dc6cf8f5d3\",\n      \"bytes\": 51020",
+        "replacement": "      \"path\": \"archive/tools/meta-foundation/reviewed-m3-e052-q5-complete-given.mjs\",\n      \"gitBlobSha1\": \"9395012e8c6c7af8cae33586b3e39f3081ffea04\",\n      \"sha256\": \"904f664a60ffb4c6e5503916a8a3f60d664318633018fec8f8d35a7d4c6a64e2\",\n      \"bytes\": 50976"
+      },
+      {
+        "path": "tools/4slot/m3s2-layout-continuity.cjs",
+        "old": "      \"path\": \"tools/4slot/m3s2-layout-continuity.cjs\",\n      \"gitBlobSha1\": \"ac7eb5ebf99620ea5e9620f3e592e1342add30d7\",\n      \"sha256\": \"9683ec12b0253d6c2f7bd7feadb800833e6a4a7798e02178dafc53788621030c\",\n      \"bytes\": 44099",
+        "replacement": "      \"path\": \"tools/4slot/m3s2-layout-continuity.cjs\",\n      \"gitBlobSha1\": \"ba7f9dd3772cf0a40d1110618b1fd6be2f3bb130\",\n      \"sha256\": \"c811ffdff4e2cfe98c476e7f84d23185a18c43e6e5824d0fae0df21fe2f3fcf1\",\n      \"bytes\": 44099"
+      }
+    ],
+    "inverseWholePublishedD112Exact": true,
+    "onlyTwoCodePinsChanged": true,
+    "assertionsCommandsAndAllOtherPinsUnchanged": true
+  },
+  "independentBindings": {
+    "q5": {
+      "gitBlobSha1": "83c2693cd321e66b525a203803d3cc43ba9ea2c7",
+      "sha256": "b6132f76fbc89680bf4b1a05301682b7dac75ba54c153ba4085799510ed202a3",
+      "bytes": 2446
+    },
+    "q16": {
+      "gitBlobSha1": "2cdc140023a199ba3b261f9c33b780e6b9ae905a",
+      "sha256": "c19073ab0fb694b57d237c6a2497c8e6a327a89081bc7fae3c1f9b5a67548169",
+      "bytes": 4485
+    }
+  },
+  "originalQ5FailureEvidence": {
+    "gitBlobSha1": "b5a54bc4f9828165c7164a923d2c4529f030ddf0",
+    "sha256": "c2643d18c9919e36d2b9ff98fa2c72f48b3a06045b549f2dc6d5daf667743c16",
+    "bytes": 6386
+  },
+  "actualQ5": {
+    "observedBy": "ROOT_UNINSTRUMENTED_EXISTING_CLI",
+    "head": "fd837d79dbf1730ca76ef6110e0ff1a3ced5f00a",
+    "nativeWrapper": "616f7882d8891b7a28369fe29292448d1c853b1b",
+    "q5Helper": "9395012e8c6c7af8cae33586b3e39f3081ffea04",
+    "status": "PASS",
+    "existingVectorCount": 25,
+    "outside24WholeUnchanged": true,
+    "originalNativeExactlyTrue": true,
+    "issuedSourceReviewWholeEquality": true,
+    "currentUiAllGuards": true,
+    "observedInputs": 240,
+    "exactHistoricalTypedSourceHydrated": true,
+    "worktreeClean": true,
+    "stdout": {
+      "bytes": 33550,
+      "sha256": "16eee599d085ebf21c8da3f53a0c98d756632cc6eddf56d97361c96ac2ab5847",
+      "localPath": "/workspace/scratch/26fc42390a50/q5-localdiag/native939-hydrated.stdout",
+      "gitBlobSha1": "PENDING_ROOT_RAW_PUBLICATION"
+    },
+    "sourceOrApprovalEdits": 0,
+    "rawIndependentReadByAuthor": false
+  },
+  "reused": {
+    "shadow61": {
+      "status": "PASS",
+      "run": "44037299371",
+      "preview": "5960a0744db1e3979c95b1108856d56a834ab118",
+      "test": "132b230ab813a07659f0b07d11f3ae8bffccb2f3"
+    },
+    "q5Metadata44": {
+      "status": "PASS",
+      "run": "44037299371",
+      "test": "a11402180c3b1f5a124905dbdb5e1ff78c34d600"
+    },
+    "newFull45Or61RunClaimed": false
+  },
+  "commandsUnchanged": {
+    "shadow": [
+      "--test",
+      "tests/archive-pr-q5-current-ui-shadow.test.mjs"
+    ],
+    "shadowExpected": 61,
+    "q5": [
+      "tests/archive-m3-e052-q5-current-ui-reuse.test.mjs",
+      "--actual-native"
+    ],
+    "q5Expected": 45,
+    "q16": [
+      "tests/archive-m3s2-current-ui-reuse.test.cjs",
+      "--actual-authority"
+    ],
+    "q16Expected": 44,
+    "scopedGate": "node tools/4slot/check-m3-current-ui-scoped.cjs --root <root-fixed-exact-integrated-checkout> --output <external-report>"
+  },
+  "unchanged": {
+    "workflowGitBlobSha1": "088a98d86f76a630481d554f77b86e6cfa1bcb59",
+    "builderConsumer": [
+      {
+        "path": "tools/4slot/build-4slot-runtime.cjs",
+        "gitBlobSha1": "9fb98cdddc54bd5474ccf81b68d589617396de1c",
+        "sha256": "1a84c4543209fb842065093fa05aa35c02fb2216e3fb6482745c91f3dc435873",
+        "bytes": 41001
+      },
+      {
+        "path": "archive/item-4slot.js",
+        "gitBlobSha1": "249e0af23b6a011d1247399ef487a635222e1e27",
+        "sha256": "0845bd881541a0b3f8faaf709b12274d09f29805bc36870bc245d12f4bfdab7d",
+        "bytes": 8639
+      }
+    ],
+    "nonselectedScope": 47,
+    "selected": 2,
+    "totalSourceRows": 49,
+    "sourceCompactDictionaryUiRefs": 0,
+    "shadowAndTests": 0,
+    "productionGuardWeakening": 0
+  },
+  "remainingRequired": {
+    "exactIntegrationAllPins": "ROOT_FRESH_CAS",
+    "q16ActualAuthority": "PENDING",
+    "source49BuilderConsumerOutside47ColdDeletion": "PENDING"
+  },
+  "limits": {
+    "newMathQa": 0,
+    "newVisualReview": 0,
+    "newMetadataApprovals": 0,
+    "receiptWrites": 0,
+    "sourceWrites": 0,
+    "authorNodeRuns": 0,
+    "authorNativeRuns": 0,
+    "authorBuilderRuns": 0,
+    "remoteRefWrites": 0
+  },
+  "publicationOwner": "ROOT_ONLY"
+}

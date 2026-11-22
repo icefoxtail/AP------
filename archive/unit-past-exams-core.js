@@ -326,9 +326,29 @@
     return [...new Set(candidates)];
   }
 
+  function parseQuestionNo(value) {
+    if (typeof value === 'number') {
+      return Number.isInteger(value) && value > 0 ? value : null;
+    }
+    if (typeof value === 'string') {
+      const match = value.match(/\d+/);
+      if (match) {
+        const n = Number(match[0]);
+        return Number.isInteger(n) && n > 0 ? n : null;
+      }
+    }
+    return null;
+  }
+
+  function matchQuestionNo(questionId, targetNo) {
+    const a = parseQuestionNo(questionId);
+    const b = parseQuestionNo(targetNo);
+    return a !== null && b !== null && a === b;
+  }
+
   function getQuestionNo(record) {
-    const direct = Number(record && (record.id || record._sourceQuestionNo || record.source_question_no));
-    if (Number.isInteger(direct) && direct > 0) return direct;
+    const direct = parseQuestionNo(record && (record.id ?? record._sourceQuestionNo ?? record.source_question_no));
+    if (direct !== null) return direct;
     const match = String(record && (record.qKey || record._qKey) || '').match(/\.js_(\d+)$/);
     return match ? Number(match[1]) : 0;
   }
@@ -377,7 +397,26 @@
       record?.metadataAssignmentEvidence?.rpmMetadata?.rpmCurriculum || record?.rpmPrimaryPath?.curriculum ||
       archive2Core.middleCurriculumFromYear(grade, getExamYear(record)) || '').trim();
     // This object is a read-only classification input. Source metadata and saved paths stay intact.
-    return middleToc.resolveRecord({ ...record, curriculumKey }, grade);
+    const resolution = middleToc.resolveRecord({ ...record, curriculumKey }, grade);
+    // The status stays what the canonical resolver said. A reviewed middle parent rides along as an extra field.
+    const reviewedParent = resolution.status === 'EXACT' ? null : reviewedMiddleParent(record, profile || grade);
+    return reviewedParent ? { ...resolution, reviewedParent } : resolution;
+  }
+  // 문항별 중단원 지정표(archive/data/archive2-middle-parent-assignments.json)에서 파생된 카탈로그 필드
+  // reviewedMiddleParentKey가 가리키는 정본 중단원. 지문이 판정 당시와 같은지는 카탈로그 빌더가 이미 걸러서
+  // 값이 남아 있는 문항만 쓴다. 정본 중단원이 아니거나 문항 학년과 다르면 쓰지 않는다(예전 규칙으로 떨어진다).
+  // 정본 판정(EXACT)을 대신하지 않으므로 호출하는 쪽이 판정이 EXACT가 아닐 때만 쓴다.
+  function reviewedMiddleParent(record, profileOrId) {
+    if (!middleToc || !record) return null;
+    const key = String(record.reviewedMiddleParentKey || '').trim();
+    if (!key) return null;
+    const parent = middleToc.parent(key);
+    if (!parent) return null;
+    const profile = profileOrId && typeof profileOrId === 'object' ? profileOrId : null;
+    const grade = (profile && profile.grade) || (typeof profileOrId === 'string' && /^중[123]$/.test(profileOrId) ? profileOrId : '') ||
+      (profileOrId ? getProfile(profileOrId).grade : '') || record.effectiveBrowseGrade || record.sourceGrade || '';
+    const gradeKey = middleToc.gradeKey(grade);
+    return gradeKey && parent.gradeKey === gradeKey ? parent : null;
   }
   function highSemanticSubjectOptions() {
     return archive2Core.highSemanticSubjectOptions();
@@ -410,6 +449,8 @@
     const resolution = record.rpmParentResolution || resolveRpmParent(record, profile);
     if (resolution.status === 'EXACT' && resolution.parent)
       return { status: 'classified', unitKey: resolution.parent.unitKey, reason: 'rpm-current-parent', rpmParent: resolution.parent };
+    if (resolution.reviewedParent)
+      return { status: 'classified', unitKey: resolution.reviewedParent.unitKey, reason: 'reviewed-middle-parent', rpmParent: resolution.reviewedParent };
     if (hasIdentityRule(record, profile)) {
       const legacy = classifyLegacyRecord(record, { ...profile, units: profile.legacyUnits });
       const unitKey = currentMiddleUnitKey(profile, legacy.unitKey);
@@ -802,6 +843,10 @@
     if (resolution.status === 'EXACT' && resolution.parent) return {
       key: resolution.parent.parentKey, label: resolution.parent.L2,
       order: resolution.parent.order, parent: resolution.parent,
+    };
+    if (resolution.reviewedParent) return {
+      key: resolution.reviewedParent.parentKey, label: resolution.reviewedParent.L2,
+      order: resolution.reviewedParent.order, parent: resolution.reviewedParent,
     };
     // Broad 2022 keys cannot stand in for a single official chapter. Historical groups keep
     // their own key and an explicit label; raw metadata and saved source paths are unchanged.
@@ -2202,10 +2247,13 @@
     isHighSemanticProfile,
     resolveUnitKeyAlias,
     resolveRpmParent,
+    reviewedMiddleParent,
     highSemanticSubjectOptions,
     highSemanticSubjectForCourseKey,
     normalizePath,
     getSourceFileCandidates,
+    parseQuestionNo,
+    matchQuestionNo,
     getQuestionNo,
     getQuestionUid,
     getPeriod,

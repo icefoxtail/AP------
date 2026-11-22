@@ -134,7 +134,7 @@ window.examData = {
       "difficultyBucket": 2,
       "level": "중",
       "score": 3.5,
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "wide": false,
       "tags": [
         "중3",
@@ -326,7 +326,7 @@ window.examData = {
       "difficultyBucket": 2,
       "level": "중",
       "score": 4.0,
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "wide": false,
       "tags": [
         "중3",
@@ -364,7 +364,7 @@ window.examData = {
       "difficultyBucket": 2,
       "level": "하",
       "score": 3.5,
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "wide": false,
       "tags": [
         "중3",
@@ -480,7 +480,7 @@ window.examData = {
       "difficultyBucket": 3,
       "level": "중",
       "score": 4.0,
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "wide": false,
       "tags": [
         "중3",
@@ -1074,7 +1074,7 @@ window.examData = {
       "difficultyBucket": 2,
       "level": "하",
       "score": 2.5,
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "wide": false,
       "tags": [
         "중3",

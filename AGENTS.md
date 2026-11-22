@@ -13,17 +13,20 @@
 
 - **목표·방법 재검토:** 사용자의 결과·명시 고정 요구와 제안된 실행 방법을 구분한다. 방법을 정답으로 전제하지 말고 실제 근거로 더 나은 선택을 검토한다. 이유: 사용자는 기술적 작업 설계까지 책임질 필요가 없다. [공통 판단 계약](docs/agents/outcome-method-review.md) 본문을 읽고 적용한다. 이미 읽은 판본은 재사용하고 접근 실패는 미적용으로 기록한다.
 - **학생 결과 우선:** 문항·정답·해설·이미지/SVG 검수는 현행 JS와 실제 자산으로 학생이 문제를 풀고 해설을 이해할 수 있는지, 수학·교육적 정확도를 우선 판단한다. 원본은 필요할 때 사실·출처를 대조하는 근거이지 동일성 자체가 합격 기준은 아니다. 차이는 실제 내용·자산, 승인 범위와 정해진 교정·검수 근거로 판단하며, 승인된 교정·생성본은 원본과 다르다는 이유만으로 되돌리지 않는다.
+- **난이도는 정수 1~5만 쓴다:** 새 문항에 하/중/상(`level`)을 쓰지 않는다. 이유: 두 칸이 어긋나게 채워졌다. 상세: [docs/agents/metadata.md](docs/agents/metadata.md#난이도는-정수-15만-2026-11-18-21시-kst부터-적용)
 - **해시와 검수 유지:** SHA·해시는 버전·출처·검증 대상을 잇는 근거로 유지하되 승인된 변경으로 값이 바뀔 수 있으므로, 차이만으로 오류를 확정하지 않는다. 각 영역의 승인·보호 필드·무결성·필수 자산 요구를 지킨다. 실제 오류·필수 자산 누락은 검수 범위에 두고, 검증·검수·보안 기준은 삭제·우회·완화하지 않는다.
 - 이유: 모든 라인이 기계적 동일성보다 학생이 실제로 풀고 이해할 수 있는 정확한 결과를 우선 판단하도록 하기 위해서다.
 - **범위:** 최신 지시의 대상과 종료 조건을 따른다. 한정 수정은 지정한 대상과 꼭 필요한 직접 의존 부분만 고친다. 범위 밖에서 발견한 것은 보고만 하고, 범위를 넓히려면 사용자 승인을 받는다.
 - **정직한 기록:** 실행하지 않은 검사는 `NOT_RUN`, 근거가 부족한 판단은 `EVIDENCE_DEBT`로 남긴다. 근거 없는 PASS, 추정 메타값, 가짜 `NONE`을 쓰지 않는다.
 - **아카이브 결과물 메타:** 기출·유사·ALIVE·교과서·문제집·교재/평가 문항을 작성·검수할 때는 [메타 안내](docs/agents/metadata.md)의 공통 계약에 따라 JS·확장 메타·4칸·작성/검토 기록을 함께 인계한다. 이유: 제작 경로별 메타 누락을 막기 위해서다.
 - **검사를 약하게 만들지 않는다:** 테스트·검사를 생략하거나 격리하지 않고, 분모를 줄이거나 기준을 완화해 통과시키지 않는다.
+- **새 테스트 파일은 목록의 한 칸에 둔다:** `tests/test-inventory.json`의 run(`tests/` 바로 아래 *.test.js는 자동)·elsewhere·notRun 중 하나여야 한다(`docs/agents/token-efficiency.md` §11). 이유: 이름이 실행기에 없는 테스트가 수백 개 꺼진 채 있었다.
 - **병합과 배포는 따로 기록한다:** `main` 반영은 사용자 승인 범위와 해당 작업의 필수 검사·병합 조건을 지킨다. CI·Pages·학생 배포 결과는 사실대로 따로 남긴다. 보호 규칙 우회, 강제 push, 다른 사람 브랜치의 이력 재작성은 하지 않는다.
 - **Git에는 운영물만 둔다:** 운영 소스·자산·런타임·빌드/테스트 도구·현행 계약만 커밋한다. 원시 이력·캡처·로그·렌더 출력 같은 증거는 Drive에 둔다(허용된 cold root와 절차: `docs/agents/git-evidence.md`).
 - **루트 폴더는 main 전용:** 저장소 루트 폴더(워크트리가 아닌 본 체크아웃)에서는 커밋·브랜치 전환·파일 작업을 하지 않고, 작업은 자기 워크트리에서 한다(상세: `docs/agents/git-evidence.md`). 이유: 루트에서 직접 작업한 라인 때문에 루트가 main보다 1,679커밋 뒤처진 다른 브랜치가 됐다.
 - **워크트리 정리:** 내 PR이 `main`에 병합되면 그 작업 워크트리는 바로 지운다. 남의 것·미병합 커밋이 있는 것은 지우지 않고 보고한다(절차: `docs/agents/git-evidence.md`). 이유: 워크트리 하나가 약 7GB라 C 드라이브가 가득 차 작업이 멈춘 일이 있었다.
 - **공유 데이터 고정값:** 원본 시험지 JS·공유 크로스워크·생성문항 Meta를 바꾸면 `docs/agents/common.md` "공유 데이터 고정값" 절을 따르고, PR CI의 실패는 병합을 막지 않고 수리 목록으로 넘긴다(먼저 병합, 수리는 마지막에 관제가: 같은 문서 맨 위 절). 이유: 다른 세션의 정상 수정이 해시 고정값을 깨 main CI·배포가 막힌 일이 있었다.
+- **새 SVG는 엔진으로만:** 문제·해설 그림을 새로 만들 때는 어떤 작업이든 저장소 SVG 엔진으로 만들고, 손·스크립트 조립 SVG는 넣지 않는다. 엔진이 못 그리면 그림 보류로 보고한다(`docs/agents/visual-svg.md` 맨 위 절). 이유: 직접 조립한 그림은 품질이 다르고 검증되지 않는다.
 - **Archive 2.0 코드:** 화면·검색·출력·저장 코드를 바꾸면 먼저 `docs/rules/01_CANONICAL/Archive2_Runtime_Responsiveness_and_Original_Source_Contract_v1.md`를 읽는다. 병합 전에 `node tools/check-archive2-runtime.cjs`를 통과시키고, 흐름을 바꿨으면 실제 Chrome으로 확인한다. 원본 기출은 `engine.html?data=exams/<file>&mode=exam|sol|ans`로 바로 열리게 유지한다.
 
 ## 토큰 효율
@@ -41,6 +44,7 @@
 
 | 작업 | 먼저 읽을 문서 |
 | --- | --- |
+| 현행 규칙 한 권 (우선 적용) | [docs/rules/RULEBOOK_CURRENT.md](docs/rules/RULEBOOK_CURRENT.md) |
 | 작업 지시서 작성·방법 검토 (모든 작업자 공통) | [공통 판단 계약](docs/agents/outcome-method-review.md) |
 | 시험지 제작·검수 (CREATE·R1·R2·R3, Codex·ROOT) | [docs/agents/exam-pipeline.md](docs/agents/exam-pipeline.md) |
 | 시험지 출고, `main` 운영병합 | [docs/agents/exam-release.md](docs/agents/exam-release.md) |
@@ -48,7 +52,9 @@
 | GPT 예약 라인 프롬프트 개설·수정 | [docs/agents/gpt-reservation.md](docs/agents/gpt-reservation.md) |
 | 문항 메타데이터 | [docs/agents/metadata.md](docs/agents/metadata.md) |
 | ALIVE Generated 제작·출시 | [docs/agents/alive-generated.md](docs/agents/alive-generated.md) |
+| 유사·생성 문항 보기와 정답 번호 | [docs/agents/similar-choices.md](docs/agents/similar-choices.md) |
 | 문제·해설 그림 (Visual·SVG), SVG 엔진 | [docs/agents/visual-svg.md](docs/agents/visual-svg.md) |
+| Google AI Studio 유사 생성·반입 | [docs/agents/aistudio-similar.md](docs/agents/aistudio-similar.md) |
 | 시험지 표 (AP Table Engine) | [docs/agents/table-engine.md](docs/agents/table-engine.md) |
 | Archive 2.0 화면·엔진 코드 | [docs/agents/archive2-code.md](docs/agents/archive2-code.md) |
 | Git 저장 범위, Drive 증거, 이력 정리 | [docs/agents/git-evidence.md](docs/agents/git-evidence.md) |

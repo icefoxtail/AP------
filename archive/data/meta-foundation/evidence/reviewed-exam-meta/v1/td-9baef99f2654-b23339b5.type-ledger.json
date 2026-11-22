@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-9baef99f2654-b23339b5",
+  "sourceArchiveFile": "original/high/h2/1mid/22_순천고_1학기_중간_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_213e5dce57245cb205ff24e5204d234706a4b8328b05837b30eb5d8dbeb5643f",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
+      "step": "f(2)를 고정한 뒤 남은 세 입력마다 다섯 출력 중 하나를 독립 선택하여5³=125를 센다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d8311aaabf8051752fcd6f0543822ec0e6f2b5075bce663136c5af7429190a48",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "step": "P 전후 최단 이동의 같은 방향 순열을 각각6C2와4C2로 세어 곱90을 구한다.",
+      "note": "문항·해설 직접 판독. 필수 원본 그림 시각 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_066651c820d93f84a1c4f1ed3f32e64a30c5ae5276b2754290e650a10cd61637",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "step": "무기명은 후보별 득표수의 비음수 정수해6C2=15, 기명은 독립 투표3⁴=81로 구별하여96을 얻는다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f63524597168dfed58436ad492482b24437ef35a3248b2280e8109f00521f4ba",
+      "sourceOrdinal": 14,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_PROB_EXPONENT_LAWS",
+      "templateKey": null,
+      "step": "5⁶과7⁶이 모두36으로 나눈 나머지1이므로 각 제곱의 합 나머지는2이다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결. 새 유형 제안명: 거듭제곱의 나머지 주기. 정의: 밑의 거듭제곱이 법에 대해1이 되는 지수를 찾아 큰 지수의 나머지를 환원. 구별 단서: 이항전개나 이항계수 없이 합동식의 주기로 계산하며 해당 과목 ACTIVE 정의에 맞는 PT 없음. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

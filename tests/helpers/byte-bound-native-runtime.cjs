@@ -4,6 +4,7 @@ const path = require("node:path");
 const crypto = require("node:crypto");
 const { pathToFileURL } = require("node:url");
 const { execFileSync } = require("node:child_process");
+const { sourceChangedSinceReview } = require("./source-changed-since-review.cjs");
 
 // Prove an existing registration through the production Consumer assignment and
 // its exact receipt, source, metadata, runtime and evidence bytes. This does not
@@ -55,7 +56,7 @@ async function createNativeRuntimeVerifier(root, canonicalCatalog) {
     };
   }
 
-  function assertInput(input, label = input.current?.questionUid) {
+  function assertInputStrict(input, label = input.current?.questionUid) {
     const { question, previous, current, identity, source, ordinal } = input;
     assert(current && identity, label);
     assert(["FINAL_QA", "REVIEW2"].includes(current.metadataApprovalType), label);
@@ -174,7 +175,18 @@ async function createNativeRuntimeVerifier(root, canonicalCatalog) {
     return relative;
   }
 
-  return { inputFor, assertInput, verify: (row, owner) => assertInput(inputFor(row, owner)) };
+  // 영수증 이후 원본 시험지가 정상 수정된 문항은 실패가 아니라 재등록 대기다({ stale: true }).
+  // 영수증이 현재 원본과 같은데 어긋나는 것은 그대로 실패한다. 변조 음성 사례는 assertInputStrict를 쓴다.
+  function classifyInput(input, label = input.current?.questionUid) {
+    try { return { stale: false, relative: assertInputStrict(input, label) }; }
+    catch (error) {
+      if (error instanceof assert.AssertionError && sourceChangedSinceReview(input)) return { stale: true, relative: null };
+      throw error;
+    }
+  }
+
+  return { inputFor, assertInput: assertInputStrict, assertInputStrict, classifyInput,
+    verify: (row, owner) => assertInputStrict(inputFor(row, owner)) };
 }
 
 module.exports = { createNativeRuntimeVerifier };

@@ -1,8 +1,9 @@
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const { test } = require("node:test");
+const { readWorkspace, workspaceFunction } = require("./helpers/archive2-workspace-source.cjs");
 
-const workspace = fs.readFileSync("archive/archive2-workspace.js", "utf8");
+const workspace = readWorkspace();
 
 test("Archive2 Finder exposes one-click exam, solution, and answer outputs beside separate issue/select actions", () => {
   // Finder and home rows are drawn by one function (examRowMarkup); renderFind only passes rows to it.
@@ -10,7 +11,7 @@ test("Archive2 Finder exposes one-click exam, solution, and answer outputs besid
   const end = workspace.indexOf("function openSimilarList(", start);
   const finder = workspace.slice(start, end);
   assert.notEqual(start, -1);
-  assert.match(workspace.slice(workspace.indexOf("function renderFind()"), workspace.indexOf("function renderScopes()")), /examRowMarkup\(e, examIndexOf\(e\), \{[\s\S]*?more: true/);
+  assert.match(workspaceFunction(workspace, "function renderFind()"), /examRowMarkup\(e, examIndexOf\(e\), \{[\s\S]*?more: true/);
   assert.match(finder, /\[\["exam", "시험지"\], \["sol", "해설"\], \["ans", "정답"\]\]/);
   assert.match(finder, /button\("source-output-direct", label,[\s\S]*?data-mode="\$\{mode\}"/);
   assert.match(finder, /button\("source-issue", "출제"/);
@@ -26,11 +27,9 @@ test("Archive2 Finder exposes one-click exam, solution, and answer outputs besid
 });
 
 test("Finder direct output opens a current-source envelope in the existing engine", () => {
-  const start = workspace.indexOf("async function openFinderOutput(");
-  const end = workspace.indexOf("let quickPoolCache", start);
-  const action = workspace.slice(start, end);
-  assert.notEqual(start, -1);
-  assert.ok(end > start && action.length < 2500, "함수 하나만 자른다");
+  const action = workspaceFunction(workspace, "async function openFinderOutput(");
+  assert.notEqual(action, "");
+  assert.ok(action.length < 2500, "함수 하나만 자른다");
   // 원본 직접 열기 계약(Archive2_Runtime_Responsiveness_and_Original_Source_Contract_v1): engine.html?data=exams/<파일>&mode=...
   // 로 바로 연다. 문항 목록·봉투(envelope)를 먼저 만들지 않는다.
   assert.match(action, /new URL\("engine\.html", location\.href\)/);

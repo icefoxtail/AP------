@@ -8,6 +8,7 @@ const os = require("os");
 const crypto = require("crypto");
 const { createNativeRuntimeVerifier } = require("./helpers/byte-bound-native-runtime.cjs");
 const C = require("../archive/archive2-core.js");
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 async function main() {
 const root = path.resolve(__dirname, "..");
@@ -88,7 +89,7 @@ const indexEntries = entries => {
 const byRuntimeUid = indexEntries(globalEntries);
 const nativeInputs = new Map();
 function verifyHistorical(index, remember = false) {
-  let unchanged = 0, reviewedTransitions = 0;
+  let unchanged = 0, reviewedTransitions = 0, staleSource = 0;
   for (const [uid, old] of historicalByUid) {
     const entries = index.get(uid) || [];
     assert.strictEqual(entries.length, 1, "historical UID missing/duplicated: " + uid);
@@ -99,18 +100,20 @@ function verifyHistorical(index, remember = false) {
       continue;
     }
     const input = verifier.inputFor(row, entry);
-    verifier.assertInput(input, "historical reviewed transition: " + uid);
+    // 영수증 이후 원본이 정상 수정된 문항은 재등록 대기다(실패 아님). 나머지는 기존처럼 증명한다.
+    const verdict = verifier.classifyInput(input, "historical reviewed transition: " + uid);
+    if (verdict.stale) { staleSource += 1; continue; }
     if (remember) nativeInputs.set(uid, input);
     reviewedTransitions += 1;
   }
-  assert.strictEqual(unchanged + reviewedTransitions, 184);
-  return { unchanged, reviewedTransitions };
+  assert.strictEqual(unchanged + reviewedTransitions + staleSource, 184);
+  return { unchanged, reviewedTransitions, staleSource };
 }
 const preserved = verifyHistorical(byRuntimeUid, true);
 const additions = runtime.records.filter(row => !historicalByUid.has(row.questionUid));
 for (const row of additions) {
   const input = verifier.inputFor(row, runtime);
-  verifier.assertInput(input, "reviewed addition: " + row.questionUid);
+  if (verifier.classifyInput(input, "reviewed addition: " + row.questionUid).stale) { preserved.staleSource += 1; continue; }
   nativeInputs.set(row.questionUid, input);
 }
 assert.strictEqual(runtime.records.filter(row => historicalByUid.has(row.questionUid)).length + additions.length, total);
@@ -141,7 +144,8 @@ verifyTaxonomy(runtime.taxonomyRows, runtime.records);
 assert.strictEqual(runtime.counts.taxonomyRows, runtime.taxonomyRows.length);
 assert.strictEqual(runtime.usage.records, total);
 
-const historicalUid = historicalRows[0].questionUid;
+// 음성 사례는 영수증이 현재 원본과 맞는(재등록 대기가 아닌) 문항으로 건다. 재등록 대기 문항은 분류가 거절되지 않는다.
+const historicalUid = [...nativeInputs.keys()].find(uid => historicalByUid.has(uid)) || historicalRows[0].questionUid;
 const entry = byRuntimeUid.get(historicalUid)[0];
 for (const [label, entries] of [
   ["deleted historical UID", []],
@@ -178,10 +182,10 @@ if (nativeInputs.size) {
     ["inactive runtime", { nativeSource: { ...input.nativeSource, runtimeStatus: "INACTIVE" } }],
     ["missing canonical approval", { canonicalCatalog: { canonicalAuthority: { advancedAssignmentsByUid: {} } } }]
   ];
-  for (const [label, change] of cases) assert.throws(() => verifier.assertInput({ ...input, ...change }, label), /AssertionError/, label);
+  for (const [label, change] of cases) assert.throws(() => verifier.assertInputStrict({ ...input, ...change }, label), /AssertionError/, label);
   const copyRoot = fs.mkdtempSync(path.join(os.tmpdir(), "limit-native-proof-"));
   try {
-    const relative = verifier.assertInput(input);
+    const relative = verifier.assertInputStrict(input);
     const proof = readJson(relative);
     for (const file of [relative, ...proof.approval.evidenceRefs.map(ref => ref.path)]) {
       const target = path.join(copyRoot, file);
@@ -189,15 +193,15 @@ if (nativeInputs.size) {
       fs.copyFileSync(path.join(root, file), target);
     }
     const copied = { ...input, nativeSource: { ...input.nativeSource, root: copyRoot } };
-    verifier.assertInput(copied, "unchanged native evidence copy");
+    verifier.assertInputStrict(copied, "unchanged native evidence copy");
     fs.appendFileSync(path.join(copyRoot, proof.approval.evidenceRefs[0].path), "\n");
-    assert.throws(() => verifier.assertInput(copied, "evidence SHA drift"), /evidence bytes drifted/);
+    assert.throws(() => verifier.assertInputStrict(copied, "evidence SHA drift"), /evidence bytes drifted/);
   } finally {
     fs.rmSync(copyRoot, { recursive: true, force: true });
   }
   console.log(`PASS ${nativeInputs.size} byte-bound registered native approvals and ${cases.length + 1} negative provenance cases`);
 }
-console.log(`PASS historical limit/continuity cohort: ${preserved.unchanged} unchanged + ${preserved.reviewedTransitions} reviewed transitions; ${additions.length} reviewed additions; 9 cohort/taxonomy rejections`);
+console.log(`PASS historical limit/continuity cohort: ${preserved.unchanged} unchanged + ${preserved.reviewedTransitions} reviewed transitions, ${preserved.staleSource} awaiting re-registration after a source edit; ${additions.length} reviewed additions; 9 cohort/taxonomy rejections`);
 
 const compiledTaxonomy = readJson("archive/data/meta-foundation/compiled/taxonomy_registry.json");
 const compiledConcepts = readJson("archive/data/meta-foundation/compiled/concept_registry.json");
@@ -272,7 +276,7 @@ assert.strictEqual(C.finderCourseGrade("수학II", "2015"), "고2");
 assert.strictEqual(C.finderCourseGrade("수학II", "2022"), "고3");
 assert(C.finderCourseKeys(runtime.taxonomyRows, { grade: "고2", curriculumKey: "2015" }).has("수학II"));
 
-const workspace = readText("archive/archive2-workspace.js");
+const workspace = readWorkspace();
 assert(/C\.subjectProjectionOptions\(filters\.grade\)/.test(workspace));
 assert(/C\.finderMatches\(/.test(workspace));
 

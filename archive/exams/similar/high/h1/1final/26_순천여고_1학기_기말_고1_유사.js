@@ -270,7 +270,11 @@ window.questionBank = [
     "sourceQid": 5,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q05-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q05-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q05-solution.plan.json",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_유사/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 x 위에 −7과 5를 양 끝으로 하는 열린 구간이 굵은 선으로 표시되고, 그 사이에 0이 표시된 그림이다.",
+    "solutionImageCaption": "|x+1|<6은 중심−1에서 거리가6보다 작은 범위이다. 정답: −6부터4까지 정수11개.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -325,7 +329,11 @@ window.questionBank = [
     "sourceQid": 6,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q06-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q06-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q06-solution.plan.json",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_유사/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선이 x축과 (−3, 0), (4, 0)에서 만나고, 꼭짓점 (1/2, −49/4)이 표시된 그림이다.",
+    "solutionImageCaption": "원문 이차식의 두 근은−3,4이다. 두 x절편에서 근의 합1과 곱−12를 읽고 원문 계수와 대응시킨다. 정답: 두 근−3,4에서 b=−3,a=−1, 따라서 a+b=−4.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -437,7 +445,11 @@ window.questionBank = [
     "sourceQid": 8,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q08-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q08-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q08-solution.plan.json",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_유사/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 개의 수직선을 위아래로 놓고, 위 수직선에는 −4와 3을 양 끝으로 하는 닫힌 구간이, 아래 수직선에는 −1/2 이하인 왼쪽 부분과 3 이상인 오른쪽 부분이 굵은 선으로 표시된 그림이다.",
+    "solutionImageCaption": "첫 행은 절댓값 부등식, 둘째 행은 이차식의 부호를 정리한 결과이다. x=3은 두 조건에서 모두 등호를 만족하므로 겹치는 한 점도 빠뜨리지 않는다. 정답: 공통 정수−4,−3,−2,−1,3의 합은−7.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -960,7 +972,11 @@ window.questionBank = [
     "sourceQid": 17,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q17-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q17-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q17-solution.plan.json",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_유사/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 개의 수직선 a를 위아래로 놓고, 위 수직선에는 1부터 3까지, 아래 수직선에는 1부터 5까지의 닫힌 구간이 굵은 선으로 표시된 그림이다.",
+    "solutionImageCaption": "판별식은 (a−b)²−8이다. a,b가1부터6까지의 정수이므로 허근 조건은 정수 차이의 절댓값이2 이하인 경우로 세면 된다. 첫 행은 b=1일 때, 둘째 행은 b=3일 때 허용되는 a의 경계 비교이다. 연속 구간 전체가 주사위 결과가 아니라 각 행 안의 정수 점만 센다. b가 가장자리인지 가운데인지에 따라 경우 수가 달라짐을 비교하고 나머지 b도 같은 방식으로 조사한다. 정답: 차이가0,1,2인 순서쌍은6,10,8개이므로 합24개.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1137,7 +1153,11 @@ window.questionBank = [
     "sourceQid": 20,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q20-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q20-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q20-solution.plan.json",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_유사/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선이 (1, 1)과 (6, 6)을 지나고 꼭짓점 (3, −3)이 표시되며, k=3일 때의 그림이라고 적힌 그림이다.",
+    "solutionImageCaption": "삼차식에서 고정근−1을 분리한 뒤 남은 이차식 g(x)=x²−2kx+6을 조사한다. 이 패널은 k=3인 정확한 비교 예시다. 두 끝점1,6에서는 양수이고 축이 안쪽이며 꼭짓점은 음수여야 서로 다른 두 근이 열린 구간 안에 들어간다. 이 예시만으로 모든 k를 확정하지 않고 네 조건을 일반적으로 결합한다. 정답: √6<k<7/2이므로 정수 k=3 하나, 정답1개.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1242,7 +1262,11 @@ window.questionBank = [
     "sourceQid": 22,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q22-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q22-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사_plans/q22-solution.plan.json",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_유사/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 개의 수직선을 위아래로 놓고, 위 수직선에는 2부터 7까지의 닫힌 구간이, 아래 수직선에는 3 이하인 왼쪽 부분과 6 이상인 오른쪽 부분이 굵은 선으로 표시된 그림이다.",
+    "solutionImageCaption": "첫 행의 고정 구간에는 정수가 여섯 개 있다. 둘째 행은 n=6인 예시이며 두 근 n−3,n 사이의 열린 구간만 제외된다. 일반 n에서 제외되는 정수는 n−2,n−1이므로 둘 다 첫 구간 안에 있는 조건을 세운다. 정답: n−2,n−1이2..7에 모두 속해야 하므로 n=4,5,6,7,8.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

@@ -64,7 +64,12 @@ jobs:
       run:
         shell: bash
     steps:
+      # Full history: the test projection build (archive/tools/build-archive2-catalog.mjs) reads pinned historical
+      # git blobs through tools/4slot/original-source-error-hold.cjs (git rev-parse <commit>:<path>); a depth-1
+      # checkout fails it with ORIGINAL_SOURCE_ERROR_HOLD:IMMUTABLE_GIT_INPUT_UNAVAILABLE (Worker deploy 44040306357).
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Require Cloudflare credentials (fail closed)
         env:

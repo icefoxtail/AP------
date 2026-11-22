@@ -32,7 +32,7 @@ assert.notEqual(widthStart, -1, 'solution horizontal overflow helper exists');
 assert.notEqual(widthEnd, -1, 'solution horizontal overflow helper ends before image readiness');
 const widthWarnings = [];
 const widthContext = { console: { warn: (...args) => widthWarnings.push(args) } };
-vm.runInNewContext(source.slice(widthStart, widthEnd) + '\nthis.hasHorizontalSolutionOverflow = hasHorizontalSolutionOverflow; this.fitSolutionToNarrowColumn = fitSolutionToNarrowColumn; this.SOL_FIT_MAX_LEVEL = SOL_FIT_MAX_LEVEL; this.promoteSolutionToFullWidth = promoteSolutionToFullWidth;', widthContext);
+vm.runInNewContext(source.slice(widthStart, widthEnd) + '\nthis.hasHorizontalSolutionOverflow = hasHorizontalSolutionOverflow; this.fitSolutionToNarrowColumn = fitSolutionToNarrowColumn; this.SOL_FIT_MAX_LEVEL = SOL_FIT_MAX_LEVEL; this.SOL_SHRINK_MAX_LEVEL = SOL_SHRINK_MAX_LEVEL; this.promoteSolutionToFullWidth = promoteSolutionToFullWidth;', widthContext);
 
 test('solution overflow detection flags only blocks that do not fit their column', () => {
   const regularColumn = { clientWidth: 340, scrollWidth: 644 };
@@ -65,8 +65,12 @@ test('overflow never promotes a block to full width except in the explicit last-
   assert.equal(assignments, calls, 'every fullWidth = true accompanies a promoteSolutionToFullWidth() call');
   assert.equal(guarded, calls, 'promotion happens only in the else branch of a failed fitSolutionToNarrowColumn()');
   assert.match(solutionSource, /fitSolutionToNarrowColumn\(box, cols\[0\]\)/);
-  // A block that is already full width and still overflows the full-width column keeps failing loudly.
-  assert.match(solutionSource, /SOLUTION_HORIZONTAL_OVERFLOW_FULL_WIDTH/);
+  // 2026-11-22 (user rule: one question must never fail the whole print): a block that is already full width and
+  // still overflows the full-width column is fitted/shrunk on its own instead of throwing. Detection stays.
+  assert.doesNotMatch(solutionSource, /SOLUTION_HORIZONTAL_OVERFLOW_FULL_WIDTH/);
+  assert.match(solutionSource, /const fitFullWidthBox = \(box, column, block\) => \{\s*if \(!hasHorizontalSolutionOverflow\(box, column\)\) return false;/);
+  assert.equal([...solutionSource.matchAll(/fitFullWidthBox\(box, wideCol, blocks\[index\]\)/g)].length, 3, 'all three former throw sites fit the box instead');
+  assert.match(solutionSource, /notifySolutionShrunk\(shrunkNumbers\);/);
 });
 
 test('last-resort promotion restores the box, marks only that block full width and leaves a warning', () => {
@@ -126,6 +130,67 @@ test('narrow-column fit adds wrapping first, then steps the font down, without c
 
   const untouched = { dataset: {}, classList: { add() { assert.fail('a box that already fits must not be modified'); } }, clientWidth: 316, scrollWidth: 316 };
   assert.equal(widthContext.fitSolutionToNarrowColumn(untouched, column), true);
+});
+
+// 2026-11-22: 늘임표(\overline) 공백 몇 px 때문에 넘친 상자는 글자·모양을 건드리지 않고 공백만 가둔다. 그래도 안 맞으면 줄바꿈 -> 글자 단계 -> 축소 순서이고,
+// 끝내 안 맞아도 예외를 던지지 않는다(false만 돌려준다).
+function barredBox({ clipFixes = false, needsFit = 0, needsShrink = 0 } = {}) {
+  const classes = new Set();
+  const attrs = new Map();
+  const box = { dataset: {}, classList: { add: name => classes.add(name), has: name => classes.has(name) },
+    setAttribute: (name, value) => attrs.set(name, String(value)), getAttribute: name => attrs.get(name) ?? null,
+    querySelector: selector => (selector === 'mjx-stretchy-h' ? {} : null), clientWidth: 316,
+    get scrollWidth() {
+      if (clipFixes && attrs.has('data-ap-mjx-clip')) return 316;
+      const fitted = classes.has('sol-fit-narrow') && Number(this.dataset.solFit || 0) >= needsFit && Number(this.dataset.solShrink || 0) >= needsShrink;
+      return fitted ? 316 : 320;
+    } };
+  return { box, classes, attrs };
+}
+
+test('a few px of stretchy-bar spacer overflow is fixed by clipping the spacer only', () => {
+  const column = { clientWidth: 340, scrollWidth: 340 };
+  const spacer = barredBox({ clipFixes: true });
+  assert.equal(widthContext.fitSolutionToNarrowColumn(spacer.box, column), true);
+  assert.equal(spacer.attrs.get('data-ap-mjx-clip'), '1');
+  assert.equal(spacer.classes.size, 0, 'no wrapping class or font step is added when the clip is enough');
+  assert.equal(spacer.box.dataset.solFit, undefined);
+  assert.equal(spacer.box.dataset.solShrink, undefined);
+});
+
+test('a box that font steps cannot fit is shrunk in its own column, never thrown', () => {
+  const column = { clientWidth: 340, scrollWidth: 340 };
+  const needsShrink = barredBox({ needsFit: 4, needsShrink: 3 });
+  assert.equal(widthContext.fitSolutionToNarrowColumn(needsShrink.box, column), true);
+  assert.equal(needsShrink.box.dataset.solFit, '4');
+  assert.equal(needsShrink.box.dataset.solShrink, '3');
+  const hopeless = barredBox({ needsFit: 99 });
+  assert.equal(widthContext.fitSolutionToNarrowColumn(hopeless.box, column), false);
+  assert.equal(hopeless.box.dataset.solShrink, String(widthContext.SOL_SHRINK_MAX_LEVEL));
+});
+
+test('the shared executor fit leaves a fitting box untouched and reports the outcome', () => {
+  const executor = require('../archive/solution-render-executor.js');
+  const column = { clientWidth: 340, scrollWidth: 340 };
+  const fits = { clientWidth: 316, scrollWidth: 316, dataset: {}, classList: { add() { assert.fail('a fitting box must not be modified'); } } };
+  assert.equal(executor.fitSolutionBoxHorizontally(fits, column), 'none');
+  const spacer = barredBox({ clipFixes: true });
+  assert.equal(executor.fitSolutionBoxHorizontally(spacer.box, column), 'fit');
+  assert.equal(spacer.classes.size, 0);
+  const shrunk = barredBox({ needsFit: 4, needsShrink: 2 });
+  assert.equal(executor.fitSolutionBoxHorizontally(shrunk.box, column), 'fit');
+  assert.equal(shrunk.box.dataset.solShrink, '2');
+  const hopeless = barredBox({ needsFit: 99 });
+  assert.equal(executor.fitSolutionBoxHorizontally(hopeless.box, column), 'failed');
+});
+
+test('both engines carry the shrink and clip rules, and the mixed engine now has the narrow-fit rules too', () => {
+  for (const file of ['engine.html', 'mixed_engine.html']) {
+    const html = fs.readFileSync(path.join(__dirname, '../archive', file), 'utf8');
+    assert.match(html, /\.q-box\.sol-box\.sol-fit-narrow :is\(\.sol-exp, \[data-semantic-content="1"\]\) :is\(div, p, span, figure, pre\)\[style\*="width"\]/, file);
+    assert.match(html, /\.q-box\.sol-box\[data-sol-shrink="5"\] \{ zoom: 0\.6; \}/, file);
+    assert.match(html, /\[data-ap-mjx-clip\] mjx-stretchy-h > mjx-ext \{ contain: paint; \}/, file);
+  }
 });
 
 const capacityStart = source.indexOf('    function measuredSolutionCapacity(document, probePage) {');

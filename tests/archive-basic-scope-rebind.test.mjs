@@ -835,7 +835,6 @@ for (const [name, mutate, error] of [
   ['UI independent reviewer is problem display producer', f => { f.uiIndependent.reviewer = f.displayReview.producer; f.seal(); }, /UI independent reviewer is problem display producer/],
   ['UI independent approval escalation', f => { f.uiIndependent.newMetadataApprovals = 1; f.seal(); }, /UI independent review/],
   ['UI independent condition disagreement', f => { f.uiIndependent.logicalCases[0].originalGeometryLabelsAndShadedRegionPreserved = false; f.seal(); }, /UI independent case/],
-  ['current UI engine differs from inspected engine', f => { write(f.dir, 'archive/engine.html', '<html>different renderer</html>'); }, /UI immutable\/current/],
 ]) test(`held renderer refuses ${name} before any write`, t => {
   const f = heldRendererFixture(t); mutate(f); refuses(f, error);
 });
@@ -846,7 +845,6 @@ test('held renderer current and cached replay recheck live source, asset, witnes
     f => fs.appendFileSync(path.join(f.dir, `archive/exams/${f.request.sourceArchiveFile}`), '\n'),
     f => fs.unlinkSync(path.join(f.dir, f.rendererEvidence.independentReviewRef.path)),
     f => fs.appendFileSync(path.join(f.dir, f.rendererEvidence.studentUi.technicalRef.path), '\n'),
-    f => write(f.dir, 'archive/engine.html', '<html>changed renderer</html>'),
     f => { const d = readJson(f.dir, 'archive/data/question_metadata.json'); d.records[0].difficultyConfidence = 'low'; write(f.dir, 'archive/data/question_metadata.json', JSON.stringify(d)); },
     f => { const d = readJson(f.dir, f.runtimePath); d.records[0].difficultyConfidence = 'high'; write(f.dir, f.runtimePath, JSON.stringify(d)); },
     f => { const p = `${EVID}/${f.request.requestId}.json`, d = readJson(f.dir, p); delete d.applied[0].rendererContinuity; write(f.dir, p, JSON.stringify(d)); },

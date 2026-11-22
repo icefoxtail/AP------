@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-ac166eb2dd4b-9660dedd",
+  "sourceArchiveFile": "original/high/h1/2mid/19_팔마고_2학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_6b5c7f8a5b934f247f887712970bfe283965cb4282832a8b4cf28cc25c49439e",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SET_ELEMENT_RELATION",
+      "templateKey": "TPL_NESTED_SET_RELATION",
+      "step": "집합 자체인 원소와 부분집합을 구별하여 a,b의 소속을 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_272f4e2ea8ea1cdc0809e5d52f2c14ad0c67b3d590f6760a8d152b08726311c9",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+      "templateKey": "TPL_PROPOSITION_DIRECT_SUBSTITUTION_PARAMETER",
+      "step": "역명제가 주는 Q⊆P에서 16과 a+1이 모두 P에 들어가도록 a 후보를 걸러낸다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_aaef63c9cbf8fc8e4dea156743eb9a075bd77be7a576f021af09e954f8301ca2",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOGIC_CHAIN",
+      "templateKey": "TPL_IMPLICATION_CHAIN",
+      "step": "첫 명제의 대우 q→¬p를 두 번째 r→q와 이어 r→¬p를 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_807c696e1db904358a209c2929ba7dfd655440224156b58bc7971fe0c7de3a16",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_BISECTING_LINE",
+      "step": "평행이동한 직선의 식에 원의 넓이를 이등분하는 중심 통과 조건을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e8edae432789cda03fad3be5e817f60b1a86580414fe187d9bf854fb83adf5d7",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "templateKey": "TPL_AMGM_RECIPROCAL_MINIMUM",
+      "step": "a>0을 확인하고 식을 t+9/t-10으로 바꾸어 산술기하평균 하한과 등호 조건을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0fd5199d99352151df50b1e2f89ff5658a55d1e27993abe514d79818c134d3d3",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_NEC_SUFF_RELATION",
+      "templateKey": "TPL_NEC_SUFF_DIRECT_JUDGMENT",
+      "step": "q→p의 성립을 확인하고 p→q에는 서로 다른 두 집합의 반례를 든다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_95424cbe9d6a391911144a68f09dbf1cfcfedaa98590bc5ee25c0aa8c11fc59b",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_LINE_POSITION",
+      "step": "접선 ax+by=9와 다른 원의 중심 사이 거리가 반지름보다 작도록 제한한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a60e282e7998479087230096b3a336aab75b7fca9b04e10e36e352aecfd0d752",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_POINT_LINE_DISTANCE",
+      "step": "고정 밑변의 삼각형 넓이를 최대화하려면 원 위 점이 밑변 직선에서 가장 멀어야 함을 쓴다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f7185d3f597c212d133b50a31ce1208f38c4b09c099e49dc675a99ee47f6b957",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+      "templateKey": "TT_SHORTEST_ONE_LINE",
+      "step": "고정점을 x축에 반사하여 꺾인 경로를 직선거리로 만들고 반사점에서 원까지의 최소거리를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3f9b2a26fe11639a62da8d095488b6add3cf7389e45c33710debbfadbc87c849",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+      "templateKey": "TT_EQUATION_RELATION",
+      "step": "그림의 대응 꼭짓점으로 새 좌표와 옛 좌표 관계를 구해 원래 방정식에 역치환한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_334124637d09851371206ef5b7e5e18ea94ec7d4d3561474d9b8f20ddd4b5df8",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_NEC_SUFF_RELATION",
+      "templateKey": "TPL_NEC_SUFF_POLYNOMIAL_PARAMETER",
+      "step": "항상 존재하는 근으로 b를 고정하고 나머지 이차식의 실근이 허용된 두 값에만 속하도록 한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_94e61842a904e31705387f8a557a1ba7b4b23ed3fc6a333757ef3e8b30a5e0db",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SUBSET_COUNT",
+      "templateKey": "TPL_RELATED_SUBSET_PAIR_COUNT",
+      "step": "첫 명제로 A의 후보를 정하고 각 A와 교집합이 비지 않는 B를 여사건으로 센다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    }
+  ]
+}

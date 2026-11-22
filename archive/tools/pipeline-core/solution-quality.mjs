@@ -44,7 +44,8 @@ export function validateSolutionQuality(contract, question = null) {
     for (const key of SOLUTION_STUDENT_PRESENTATION_CHECKS) required.add(key);
   }
   if (question && /\b(?:OCR|ChatGPT|Gemini|PASS|FAIL|pre-live)\b|원문 오류|원문 확인|검수 필요|재검산|내부 계산/.test(String(question.solution || ''))) errors.push('SOLUTION_FORBIDDEN_OPERATIONAL_TEXT');
-  if (question?.level === '상') required.add('highLevelEnhanced');
+  // 2026-11-18: new items carry no level; difficultyBucket 4-5 (= 상) then requires the same enhancement. Items that still have level keep the level rule.
+  if (question?.level === '상' || (question && question.level === undefined && Number(question.difficultyBucket) >= 4)) required.add('highLevelEnhanced');
   if (question && /경우|경우의 수|나누어|분류|조합|순열/.test(question.solution || '')) required.add('caseSplitComplete');
   // Constructed responses require reproducible scoring steps, even when an old
   // questionType is blank. This does not grant any special layout permission.

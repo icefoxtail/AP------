@@ -1,12 +1,10 @@
 #!/usr/bin/env node
-const { spawnSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const { spawnSync } = require('child_process');
+// ./ci/test-shard.cjs is required lazily inside main(): tests/archive-ci-scope.test.mjs evaluates the head of this file in a vm that only resolves built-in modules.
 
 const root = path.resolve(__dirname, '..');
-async function main() {
-const args = process.argv.slice(2);
-if (args.length && (args.length !== 2 || args[0] !== '--ci-scope')) throw new Error('usage: run-tests.js [--ci-scope <plan>]');
 const testsDir = path.join(root, 'tests');
 
 const quarantined = new Map([
@@ -20,39 +18,103 @@ const quarantined = new Map([
   ['archive-latex-escapes.test.js', 'an in-progress Visang textbook solution contains two JS-unescaped \\dfrac commands; do not edit archived student math without freezing and checking the official source page']
 ]);
 
-const includeQuarantined = process.env.APMATH_RUN_QUARANTINE === '1';
+// archive/·tools/ 아래 .mjs/.cjs 테스트 중 이전에 어느 잡에서도 안 돌던 것(tests/test-inventory.json notRun, pending)을 켠 목록.
+// 각각 로컬에서 두 번 통과·10초 미만이고, 네트워크·운영 자료 개수·python 같은 외부 명령에 기대지 않는 것만 넣었다.
+function idleSuiteCommands() {
+  const plainScripts = ['archive/tools/shape-movement-line-equation.test.mjs'];
+  return [
+    'archive/prototypes/ap-galaxy/tests/galaxy-all-profiles.test.cjs',
+    'archive/prototypes/ap-galaxy/tests/galaxy-core-volume.test.cjs',
+    'archive/prototypes/ap-galaxy/tests/galaxy-differential-rotation.test.cjs',
+    'archive/prototypes/ap-galaxy/tests/galaxy-integration-corrections.test.cjs',
+    'archive/prototypes/ap-galaxy/tests/galaxy-orbit-plane.test.cjs',
+    'archive/textbook/tools/textbook-pipeline/tests/pipeline-stage-contract.test.mjs',
+    'archive/tools/archive-publication-checkpoint.test.mjs',
+    'archive/tools/archive-source-reference-policy.test.mjs',
+    'archive/tools/generated-meta/auto-register-source-rebind.test.mjs',
+    'archive/tools/geometry-equation/production/svg-accessibility-v1.test.mjs',
+    'archive/tools/geometry-equation/tests/author-guide.test.mjs',
+    'archive/tools/geometry-equation/tests/condition-review-replay-invalidation.test.mjs',
+    'archive/tools/geometry-equation/tests/discontinuous-pair.test.mjs',
+    'archive/tools/geometry-equation/tests/graph-multi-curves-render-plan.test.mjs',
+    'archive/tools/geometry-equation/tests/native-solution-overlay.test.mjs',
+    'archive/tools/geometry-equation/tests/number-line-surd-ends.test.mjs',
+    'archive/tools/geometry-equation/tests/phase4-cubic-quartic-spec.test.mjs',
+    'archive/tools/geometry-equation/tests/publication-layout.test.mjs',
+    'archive/tools/geometry-equation/tests/record-visual-browser-evidence.test.mjs',
+    'archive/tools/geometry-equation/tests/repair-budget-replay.test.mjs',
+    'archive/tools/geometry-equation/tests/solid-tetra-parallel-sections.test.mjs',
+    'archive/tools/geometry-equation/tests/verification-replay-invalidation.test.mjs',
+    'archive/tools/js-bank-cleanup/tests/advanced-meta-audit.test.mjs',
+    'archive/tools/meta-foundation/semantic-authority-guard.test.mjs',
+    'archive/tools/pipeline-core/tests/authority-repair.test.mjs',
+    'archive/tools/pipeline-core/tests/capability-registry.test.mjs',
+    'archive/tools/pipeline-core/tests/execution-recovery.test.mjs',
+    'archive/tools/pipeline-core/tests/gold-contract.test.mjs',
+    'archive/tools/pipeline-core/tests/machine-evidence.test.mjs',
+    'archive/tools/pipeline-core/tests/resume-continuity.test.mjs',
+    'archive/tools/pipeline-core/tests/resume-runner.test.mjs',
+    'archive/tools/pipeline-core/tests/review-only-recheck.test.mjs',
+    'archive/tools/pipeline-core/tests/rulepack.test.mjs',
+    'archive/tools/pipeline-core/tests/source-recovery.test.mjs',
+    'archive/tools/pipeline-core/tests/v2.test.mjs',
+    'archive/tools/pipeline-core/tests/work-batch-lock.test.mjs',
+    'archive/tools/scan_dynamic_intake_v1/tests/scan-dispatch.test.mjs',
+    'archive/tools/shape-movement-line-equation.test.mjs',
+    'archive/tools/tag-enrichment/tests/tag-candidates.test.mjs',
+    'tools/harness/gpt-book-handoff.test.mjs'
+  ].map(file => ({ label: file, args: plainScripts.includes(file) ? [file] : ['--test', file] }));
+}
 
-const files = fs.readdirSync(testsDir)
-  .filter(name => name.endsWith('.test.js'))
-  .sort();
+// 격리(quarantined) 목록의 파일은 실패해도 막지 않고, 통과하면 FIXED 안내를 낸다. 그 밖의 실패는 그대로 실패로 센다.
+// (서명으로 알려진 실패를 허용하던 KNOWN-FAIL 장치는 2026-11-18 삭제했다: docs/agents/token-efficiency.md §12)
+function runPlan({ root, plan }) {
+  const result = { passed: 0, failed: [], knownFailed: [], fixedKnown: [], durationsMs: {} };
+  for (const item of plan) {
+    const startedAt = Date.now();
+    const run = spawnSync(process.execPath, item.args, { cwd: root, timeout: item.timeout, stdio: 'inherit' });
+    result.durationsMs[item.failedName] = Date.now() - startedAt;
+    if (run.status === 0) {
+      result.passed += 1;
+      if (item.quarantined) result.fixedKnown.push(item.failedName);
+    } else if (item.quarantined) {
+      result.knownFailed.push(item.failedName);
+    } else {
+      result.failed.push(item.failedName);
+      console.error(`Test failed: ${item.shownName}`);
+    }
+  }
+  return result;
+}
 
-const tests = includeQuarantined
-  ? files
-  : files.filter(name => !quarantined.has(name));
-
-// These complete suites exceed the old 60-second child limit (the M2 renderer
-// suite measures 85–107 seconds with actual Git, writer and replay fixtures).
+// These complete suites exceed the old 60-second child limit.
 // Keep a finite per-command limit in both the full and scoped runners.
-const jsTestTimeout = file => file === 'archive-m2-problem-renderer-continuity.test.js' ? 180000
-  : file === 'archive2-compose-scope.test.js' ? 180000
+const jsTestTimeout = file => file === 'archive2-compose-scope.test.js' || file === 'archive2-draft-rows.test.js' ? 180000
   : file === 'meta-foundation-middle-geometry-runtime.test.js' ? 300000 : 60000;
 
 // Keep the SVG semantic regression outside the legacy CommonJS-only glob.
 // CI invokes this runner, so both the verifier syntax gate and its ESM test
 // become blocking checks on every normal test run.
 const requiredCommands = [
+  { label: 'tests/m2-closed8-issued-rpm-view.test.cjs', args: ['--test', 'tests/m2-closed8-issued-rpm-view.test.cjs'], timeout: 60000 },
+  { label: 'tests/archive-m3-e052-q5-current-ui-reuse.test.mjs', args: ['--test', 'tests/archive-m3-e052-q5-current-ui-reuse.test.mjs'], timeout: 180000 },
+  { label: 'tests/archive-m3s2-current-ui-reuse.test.cjs', args: ['--test', 'tests/archive-m3s2-current-ui-reuse.test.cjs'], timeout: 60000 },
+  { label: 'tests/archive-m3s2-q16-current-renderer-provenance.test.cjs', args: ['--test', 'tests/archive-m3s2-q16-current-renderer-provenance.test.cjs'], timeout: 60000 },
+  { label: 'tests/archive-pr-q5-current-ui-shadow.test.mjs', args: ['--test', 'tests/archive-pr-q5-current-ui-shadow.test.mjs'], timeout: 180000 },
+  { label: 'tests/item-4slot-svg7-current-ui-binding.test.cjs', args: ['--test', 'tests/item-4slot-svg7-current-ui-binding.test.cjs'], timeout: 60000 },
+  { label: 'tests/protected-current-ui-log-transport.test.cjs', args: ['--test', 'tests/protected-current-ui-log-transport.test.cjs'], timeout: 60000 },
+  { label: 'tests/protected9-ui-log-transport.test.cjs', args: ['--test', 'tests/protected9-ui-log-transport.test.cjs'], timeout: 60000 },
   { label: 'tests/archive-completion-check.test.mjs', args: ['--test', 'tests/archive-completion-check.test.mjs'] },
+  { label: 'tests/archive-similar-md-to-js.test.mjs', args: ['--test', 'tests/archive-similar-md-to-js.test.mjs'] },
+  { label: 'tests/archive-similar-import-harness.test.mjs', args: ['--test', 'tests/archive-similar-import-harness.test.mjs'] },
   { label: 'tests/archive-m1s2-problem-surface.test.cjs', args: ['--test', 'tests/archive-m1s2-problem-surface.test.cjs'] },
   { label: 'tests/archive-m3s2-q16-layout-browser.test.cjs', args: ['--test', 'tests/archive-m3s2-q16-layout-browser.test.cjs'] },
   { label: 'tests/item-4slot-m1s2-problem-continuity.test.cjs', args: ['--test', 'tests/item-4slot-m1s2-problem-continuity.test.cjs'] },
   { label: 'tests/item-4slot-m1s2-ui-provenance.test.cjs', args: ['--test', 'tests/item-4slot-m1s2-ui-provenance.test.cjs'] },
   { label: 'tests/item-4slot-m1-m3-transport.test.cjs', args: ['--test', 'tests/item-4slot-m1-m3-transport.test.cjs'] },
   { label: 'tests/archive-m3s2-layout-continuity.test.cjs', args: ['--test', 'tests/archive-m3s2-layout-continuity.test.cjs'] },
+  { label: 'tests/archive-assignment-board-direct-output.test.cjs', args: ['--test', 'tests/archive-assignment-board-direct-output.test.cjs'] },
   { label: 'tests/archive-renderer-continuity-writer-inputs.test.mjs', args: ['--test', 'tests/archive-renderer-continuity-writer-inputs.test.mjs'] },
-  {
-    label: 'tests/archive-reviewed-m2-problem21-continuity.test.mjs',
-    args: ['--test', 'tests/archive-reviewed-m2-problem21-continuity.test.mjs']
-  },
   {
     label: 'tests/native-approved-renderer-consumer.test.mjs',
     args: ['--test', 'tests/native-approved-renderer-consumer.test.mjs']
@@ -131,6 +193,18 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-reviewed-native-scope-fields.test.mjs']
   },
   {
+    label: 'tests/archive-question-binding.test.mjs',
+    args: ['--test', 'tests/archive-question-binding.test.mjs']
+  },
+  {
+    label: 'tests/archive-text-binding-rebinds.test.mjs',
+    args: ['--test', 'tests/archive-text-binding-rebinds.test.mjs']
+  },
+  {
+    label: 'tests/archive-similar-choice-order.test.mjs',
+    args: ['--test', 'tests/archive-similar-choice-order.test.mjs']
+  },
+  {
     label: 'tests/archive-source-delta.test.mjs',
     args: ['--test', 'tests/archive-source-delta.test.mjs']
   },
@@ -160,10 +234,6 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-mathjax-enclosed-latin-font.test.cjs']
   },
   {
-    label: 'tests/archive-e013-q20-enclosed-latin-ui.test.cjs',
-    args: ['--test', 'tests/archive-e013-q20-enclosed-latin-ui.test.cjs']
-  },
-  {
     label: 'tests/item-4slot-public-reviewed-rebind.test.cjs',
     args: ['--test', 'tests/item-4slot-public-reviewed-rebind.test.cjs']
   },
@@ -180,16 +250,8 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-existing-vector-svg-index-continuity.test.cjs']
   },
   {
-    label: 'tests/archive-svg7-named-problem-continuity.test.cjs',
-    args: ['--test', 'tests/archive-svg7-named-problem-continuity.test.cjs']
-  },
-  {
     label: 'tests/archive-m2s1-text3-fragment-ui.test.cjs',
     args: ['--test', 'tests/archive-m2s1-text3-fragment-ui.test.cjs']
-  },
-  {
-    label: 'tests/item-4slot-text3-fragment-ui.test.cjs',
-    args: ['--test', 'tests/item-4slot-text3-fragment-ui.test.cjs']
   },
   {
     label: 'tests/archive-m3-e052-q5-existing-vector.test.mjs',
@@ -200,11 +262,6 @@ const requiredCommands = [
     label: 'tests/item-4slot-existing-original-text-solution3.test.cjs',
     args: ['--test', 'tests/item-4slot-existing-original-text-solution3.test.cjs'],
     timeout: 60000
-  },
-  {
-    label: 'tests/item-4slot-existing-vector-continuity.test.cjs',
-    args: ['--test', 'tests/item-4slot-existing-vector-continuity.test.cjs'],
-    timeout: 180000
   },
   {
     label: 'tests/item-4slot-m3-renderer-hold.test.cjs',
@@ -237,6 +294,10 @@ const requiredCommands = [
   {
     label: 'tests/archive2-preview-feedback.test.cjs',
     args: ['--test', 'tests/archive2-preview-feedback.test.cjs']
+  },
+  {
+    label: 'tests/archive2-preview-stable.test.cjs',
+    args: ['--test', 'tests/archive2-preview-stable.test.cjs']
   },
   {
     label: 'tests/archive2-output-memory-bridge.test.cjs',
@@ -339,8 +400,16 @@ const requiredCommands = [
     args: ['--test', 'tests/apms-worker-deploy.test.mjs']
   },
   {
+    label: 'tests/apms-exam-blueprint-examdata-sync.test.mjs',
+    args: ['--test', 'tests/apms-exam-blueprint-examdata-sync.test.mjs']
+  },
+  {
     label: 'tests/archive-pages-image-r2-gate.test.mjs',
     args: ['--test', 'tests/archive-pages-image-r2-gate.test.mjs']
+  },
+  {
+    label: 'tests/r2-archive-assets-copy-workflow.test.mjs',
+    args: ['--test', 'tests/r2-archive-assets-copy-workflow.test.mjs']
   },
   {
     label: 'tests/archive-pages-release-reg-commit.test.mjs',
@@ -349,6 +418,14 @@ const requiredCommands = [
   {
     label: 'tests/ci-signal-hygiene.test.mjs',
     args: ['--test', 'tests/ci-signal-hygiene.test.mjs']
+  },
+  {
+    label: 'tests/ci-pr-run-cancel.test.mjs',
+    args: ['--test', 'tests/ci-pr-run-cancel.test.mjs']
+  },
+  {
+    label: 'tests/archive2-save-roundtrip-source-only-pr.test.mjs',
+    args: ['--test', 'tests/archive2-save-roundtrip-source-only-pr.test.mjs']
   },
   {
     label: 'tests/archive-ci-scope.test.mjs',
@@ -387,24 +464,17 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-reviewed-apply-bridge.test.mjs']
   },
   {
+    label: 'tests/archive-progress-metadata-shard-witness.test.mjs',
+    args: ['--test', 'tests/archive-progress-metadata-shard-witness.test.mjs']
+  },
+  {
+    label: 'tests/archive-question-metadata-format.test.mjs',
+    args: ['--test', 'tests/archive-question-metadata-format.test.mjs']
+  },
+  {
     label: 'tests/archive-reviewed-exam-registration-v2.test.mjs',
     args: ['--test', 'tests/archive-reviewed-exam-registration-v2.test.mjs'],
     timeout: 300000
-  },
-  {
-    label: 'tests/archive-m2-e006-problem-continuity.test.mjs',
-    args: ['--max-old-space-size=256', '--test', 'tests/archive-m2-e006-problem-continuity.test.mjs'],
-    timeout: 60000
-  },
-  {
-    label: 'tests/archive-reviewed-m2-family3-problem-continuity.test.mjs',
-    args: ['--max-old-space-size=256', '--test', 'tests/archive-reviewed-m2-family3-problem-continuity.test.mjs'],
-    timeout: 240000
-  },
-  {
-    label: 'tests/archive-reviewed-m2-family7-rpm-row-continuity.test.mjs',
-    args: ['--max-old-space-size=256', '--test', 'tests/archive-reviewed-m2-family7-rpm-row-continuity.test.mjs'],
-    timeout: 240000
   },
   {
     label: 'tests/archive-reviewed-retained-scope-transport.test.mjs',
@@ -452,13 +522,11 @@ const requiredCommands = [
   },
   {
     label: 'tests/archive2-worker-validation.test.mjs (Grade/browse contracts)',
-    args: [
-      '--test',
-      '--test-name-pattern',
-      'grade-only canonical path filters pass mixed-question validation|Worker accepts an approved high2 source in the shared high3 semantic browse pool without rewriting its grade|shared browse grade cannot replace saved snapshot source grades at deployment|target-only grade validation accepts every supported class grade and preserves fail-closed fallbacks',
-      'tests/archive2-worker-validation.test.mjs'
-    ]
+    // The whole file runs (it was a 4-test name filter); it loads the 28k-record catalog and takes about 30-60 s.
+    args: ['--test', 'tests/archive2-worker-validation.test.mjs'],
+    timeout: 180000
   },
+  ...idleSuiteCommands(),
   {
     label: 'tests/archive2-saved-paper-namespace.test.mjs',
     args: ['--test', 'tests/archive2-saved-paper-namespace.test.mjs']
@@ -535,9 +603,14 @@ const requiredCommands = [
     label: 'tests/item-4slot-data.test.cjs',
     args: ['tests/item-4slot-data.test.cjs']
   },
+  { label: 'tests/item-4slot-index-format.test.cjs', args: ['--test', 'tests/item-4slot-index-format.test.cjs'] },
   {
     label: 'tests/archive2-canonical-projection.test.mjs',
     args: ['--test', 'tests/archive2-canonical-projection.test.mjs']
+  },
+  {
+    label: 'tests/archive2-shards-builder.test.mjs',
+    args: ['--test', 'tests/archive2-shards-builder.test.mjs']
   },
   {
     // The register workflow runs this only when a diff5 request is in the inbox; a PR that changes the tool needs it too.
@@ -545,9 +618,29 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-difficulty5-register.test.mjs']
   },
   {
+    // Single-model draft difficulty: ledger -> diff5 request converter and the lane's draft label; fixture-only.
+    label: 'tests/archive-draft-difficulty.test.mjs',
+    args: ['--test', 'tests/archive-draft-difficulty.test.mjs']
+  },
+  {
     // The register pass runs this only when a DIRECT_JUDGMENT (type-only) request is in the inbox; a PR that changes the lane needs it too.
     label: 'tests/archive-type-judgment-registration.test.mjs',
     args: ['--test', 'tests/archive-type-judgment-registration.test.mjs']
+  },
+  {
+    // Converter from the carrier branch result tables to DIRECT_JUDGMENT requests; fixture-only, runs when the tool changes.
+    label: 'tests/archive-type-direct-converter.test.mjs',
+    args: ['--test', 'tests/archive-type-direct-converter.test.mjs']
+  },
+  {
+    // Course-name alias data (spelling groups and 2015/2022 successor groups) used by the type-judgment lane and its converter.
+    label: 'tests/archive-course-aliases.test.mjs',
+    args: ['--test', 'tests/archive-course-aliases.test.mjs']
+  },
+  {
+    // New PT/TPL keys generated from the dots bundle tables; fixture-only, deterministic key names.
+    label: 'tests/archive-new-type-keys.test.mjs',
+    args: ['--test', 'tests/archive-new-type-keys.test.mjs']
   },
   {
     label: 'tests/archive-difficulty5-missing-list.test.mjs',
@@ -625,22 +718,6 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-reviewed-source-candidate.test.mjs']
   },
   {
-    label: 'tests/archive-svg7-existing-vector-ui.test.cjs',
-    args: ['--max-old-space-size=128', '--test', 'tests/archive-svg7-existing-vector-ui.test.cjs'],
-    timeout: 60000
-  },
-  {
-    label: 'tests/archive-m2s1-svg7-image-pointer.test.mjs',
-    // Immutable Git fixtures measured 116 seconds; cap heap and total runtime.
-    args: ['--max-old-space-size=256', 'tests/archive-m2s1-svg7-image-pointer.test.mjs'],
-    timeout: 240000
-  },
-  {
-    label: 'tests/archive-e041-original-choice-correction.test.mjs',
-    args: ['--max-old-space-size=256', '--test', 'tests/archive-e041-original-choice-correction.test.mjs'],
-    timeout: 120000
-  },
-  {
     label: 'tests/archive-m3-e052-q5-original-diagram-transport.test.mjs',
     // Bound the immutable Git fixture like the neighboring SVG7 contract.
     args: ['--max-old-space-size=256', 'tests/archive-m3-e052-q5-original-diagram-transport.test.mjs'],
@@ -651,8 +728,59 @@ const requiredCommands = [
     // Exact public Git evidence and source views; no global data generation.
     args: ['--max-old-space-size=384', 'tests/archive-m3-e052-q5-complete-given.test.mjs'],
     timeout: 180000
+  },
+  {
+    label: 'tests/edition-ledger.test.mjs',
+    args: ['--test', 'tests/edition-ledger.test.mjs']
+  },
+  {
+    label: 'tests/recapture-approved-renders.test.mjs',
+    args: ['--test', 'tests/recapture-approved-renders.test.mjs']
   }
 ];
+
+// The collection is exported so tests/test-inventory.test.js can prove every test
+// file is either run here, run by another job, or listed (with a reason) as not run.
+// Order and membership are exactly what the runner used inline before.
+function collectTests({ includeQuarantined = process.env.APMATH_RUN_QUARANTINE === '1' } = {}) {
+  const files = fs.readdirSync(testsDir)
+    .filter(name => name.endsWith('.test.js'))
+    .sort();
+  const tests = includeQuarantined
+    ? files
+    : files.filter(name => !quarantined.has(name));
+  return { includeQuarantined, files, tests, quarantined, requiredCommands, jsTestTimeout };
+}
+
+// The assembled question metadata is ignored by the repository (its shards are tracked): a fresh working folder has none, so build it once before any test.
+function assembleQuestionMetadata() {
+  if (!fs.existsSync(path.join(root, 'archive/data/question-metadata/v1'))) return;
+  const assemble = spawnSync(process.execPath, [path.join(root, 'archive/tools/meta-foundation/question-metadata-format.mjs'), 'assemble', '--root', root], { stdio: 'inherit' });
+  if (assemble.status !== 0) throw new Error('could not assemble archive/data/question_metadata.json from its shards');
+}
+
+async function main() {
+const argv = process.argv.slice(2);
+// Options: --ci-scope <plan>  (scoped execution, see tools/ci/run-scoped-tests.mjs)
+//          --shard <i>/<n>    (run only the i-th of n deterministic shares; see tools/ci/test-shard.cjs)
+const usage = 'usage: run-tests.js [--ci-scope <plan>] [--shard <index>/<total>]';
+let scopeFile = null;
+let shard = null;
+for (let i = 0; i < argv.length; i += 2) {
+  if (argv[i] === '--ci-scope' && argv[i + 1] && !scopeFile) scopeFile = argv[i + 1];
+  else if (argv[i] === '--shard' && argv[i + 1] && !shard) shard = require('./ci/test-shard.cjs').parseShardArg(argv[i + 1]);
+  else throw new Error(usage);
+}
+const args = scopeFile ? ['--ci-scope', scopeFile] : [];
+const shardLabel = shard ? ` [shard ${shard.index}/${shard.total}]` : '';
+const { tests, includeQuarantined } = collectTests();
+// A CI shard writes its counts (and per-test durations, the input of tools/ci/test-durations.json) here for the
+// aggregate `test` job. Without --shard nothing changes.
+const writeShardResult = summary => {
+  const file = process.env.ARCHIVE_TEST_SHARD_RESULT;
+  if (!shard || !file) return;
+  fs.writeFileSync(file, JSON.stringify({ schema: 'archive-test-shard-result-v1', shard: shard.index, of: shard.total, ...summary }, null, 1) + '\n');
+};
 
 // Reuse only a proof produced in this exact CI runner after its native projection
 // stabilized. A remote proof alone cannot supply local generated bytes.
@@ -685,8 +813,11 @@ if (args.length) {
       timeout: jsTestTimeout(file) })),
     ...requiredCommands.map(command => ({ ...command, timeout: command.timeout ?? 60000 })),
   ];
-  if (runScopedTests({ root, scopeFile: args[1], availableCommands })) return;
+  assembleQuestionMetadata();
+  const onResult = summary => writeShardResult({ mode: 'scoped', ...summary });
+  if (runScopedTests({ root, scopeFile: args[1], availableCommands, shard, onResult })) return;
 }
+assembleQuestionMetadata();
 
 // The pre-step below regenerates the catalog and its runtime readiness receipt
 // together. While the post-merge registration bot commit is pending they are
@@ -704,9 +835,11 @@ const outputGuard = createOutputGuard({
   root,
   outputFiles: [
     'archive/data/archive2-canonical-input-manifest.json',
+    'archive/data/archive2-canonical-input-manifest.compact.json',
     'archive/data/archive2-catalog.json',
     'archive/data/archive2-item-review-overrides.json',
     'archive/data/archive2-source-verification-index.json',
+    'archive/data/archive2-source-verification-index-v2.json',
     ...READINESS_OUTPUT_FILES
   ],
   outputPrefixes: ['archive/data/archive2-source-verification/'],
@@ -728,53 +861,36 @@ try {
   outputGuard.afterPrestep();
 }
 
-let passed = 0;
-const failed = [];
-const knownFailed = [];
-const fixedKnown = [];
-
-for (const file of tests) {
-  const testPath = path.join('tests', file);
-  const result = spawnSync(process.execPath, [testPath], {
-    cwd: root,
-    stdio: 'inherit',
+const fullPlan = [
+  ...tests.map(file => ({
+    failedName: file,
+    shownName: path.join('tests', file),
+    args: [path.join('tests', file)],
     // Full canonical Compose inventory now covers all grades and runtime packs.
-    timeout: jsTestTimeout(file)
-  });
-
-  if (result.status === 0) {
-    passed += 1;
-    if (quarantined.has(file)) fixedKnown.push(file);
-    continue;
-  }
-
-  if (quarantined.has(file)) {
-    knownFailed.push(file);
-  } else {
-    failed.push(file);
-    console.error(`Test failed: ${testPath}`);
-  }
-}
-
-for (const command of requiredCommands) {
-  const result = spawnSync(process.execPath, command.args, {
-    cwd: root,
-    stdio: 'inherit',
-    timeout: command.timeout ?? 60000
-  });
-  if (result.status === 0) {
-    passed += 1;
-    continue;
-  }
-  failed.push(command.label);
-  console.error(`Test failed: ${command.label}`);
-}
+    timeout: jsTestTimeout(file),
+    files: [`tests/${file}`],
+    quarantined: quarantined.has(file)
+  })),
+  ...requiredCommands.map(command => ({
+    failedName: command.label,
+    shownName: command.label,
+    args: command.args,
+    timeout: command.timeout ?? 60000,
+    files: command.args.includes('--check') ? [] : command.args.filter(arg => /\.(?:js|mjs|cjs)$/.test(arg)),
+    quarantined: false
+  }))
+];
+// With --shard only this share runs; the shares are disjoint and together cover fullPlan exactly.
+const plan = shard ? require('./ci/test-shard.cjs').selectShard(fullPlan.map(item => ({ ...item, name: item.failedName })), shard) : fullPlan;
+if (shard) console.log(`Shard ${shard.index}/${shard.total}: ${plan.length} of ${fullPlan.length} test commands.`);
+const { passed, failed, knownFailed, fixedKnown, durationsMs } = runPlan({ root, plan });
 
 if (!includeQuarantined && quarantined.size > 0) {
   console.log(`${quarantined.size} quarantined test file(s) skipped; set APMATH_RUN_QUARANTINE=1 to include them`);
 }
 
-console.log(`PASS ${passed} / FAIL ${failed.length} / KNOWN-FAIL ${knownFailed.length} (total ${tests.length + requiredCommands.length})`);
+console.log(`PASS ${passed} / FAIL ${failed.length} / QUARANTINED-FAIL ${knownFailed.length} (total ${plan.length})${shardLabel}`);
+writeShardResult({ mode: 'full', passed, failed, knownFailed, fixedKnown, total: plan.length, fullTotal: fullPlan.length, durationsMs });
 
 if (failed.length > 0) {
   console.error('\nBlocking failures:');
@@ -800,4 +916,5 @@ if (failed.length > 0) {
   process.exit(1);
 }
 }
-main().catch(error => { console.error(error.message); process.exitCode = 1; });
+module.exports = { collectTests, quarantined, requiredCommands, jsTestTimeout };
+if (require.main === module) main().catch(error => { console.error(error.message); process.exitCode = 1; });

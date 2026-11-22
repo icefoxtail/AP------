@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-784d52ee750c-97c246db",
+  "sourceArchiveFile": "textbooks/미래엔_공통수학2/미래엔_공통수학2_원의방정식_중단원마무리_고1/미래엔_공통수학2_원의방정식_중단원마무리_고1.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_da1c61668c060e1dc5910496f54b71b4b35b299da3ebc1e35718e8857c72c90b",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_DIAMETER_ENDPOINTS",
+      "step": "첫 원에는 중심·반지름을 직접 대입하고 둘째 원은 지름의 중점 (2,2)와 반지름 제곱 10을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cdbf8fd7ef55abaedf46c997f3379eee9c916b7105dea0486b89491cf739d0aa",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_CENTER_RADIUS",
+      "step": "(x+3)²+(y-4)²=16으로 완전제곱하여 a=-3,b=4,r=4를 읽는다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_14895f9c0b148521da1b8360a8073ad1bef103c65303c22612f908a9e18eef04",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_LINE_POSITION",
+      "step": "중심에서 직선까지의 거리 |k|/√10과 반지름 √5를 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dca174a9788868518bbcec0e95b0e2780acde2fcfc0f933e63b3c09214b21787",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TPL_CIRCLE_TANGENT_TANGENT_FORMULA",
+      "step": "첫 접선은 원점에서의 거리 6으로 절편을 구하고 둘째 접선은 접점 공식 x₁x+y₁y=r²를 적용한다.",
+      "note": "TPL_TANGENT_MULTI_BASIC_CONDITIONS: 한 문항의 독립 소문항에서 주어진 기울기의 접선과 접점의 접선을 각각 결정한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2b6c919f775e92f2a54e6814a1b493653a7e19bb8e317856389d57a82731fde5",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_EXISTENCE_CONDITION",
+      "step": "반지름 제곱 5-k≥2에서 자연수 k=1,2,3을 센다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a5f4cb1a1fb2827fe76e3cb7ad7696115d06050789788ff9551729aa26be0c33",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_AXIS_TANGENT",
+      "step": "두 축 접촉 조건으로 중심을 (±r,±r)로 두고 (2,1)을 대입하면 양의 중심에서 r=1,5만 가능하다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6d681ee9219db20a8612e2c348def4fefed43556d19aabeae45496161e864342",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_POINT_LINE_DISTANCE",
+      "step": "중심 (2,5)에서 직선까지 거리 4에 반지름 2를 더하고 뺀다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_eaf087d46de8cebd69d9d7b45d53f71541d8b8874d2b1751fdf24178fefeddd1",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENCY_CONDITION",
+      "step": "첫 원의 접선 x+3y=10과 둘째 원의 중심 (8,4)의 거리 √10을 반지름 √(80-k)와 같게 놓는다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9c4972586a52f01b9eeec21c7e5278cb18327f87b7415487856d8ab2cca6e83e",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_FROM_EXTERNAL_POINT",
+      "step": "접선 y=m(x+2)+4의 거리 조건에서 m=-1,-7을 구해 y절편 2,-10과 높이 2로 삼각형 넓이를 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4b7ff9036d058987722236157db23b700db427749bdb3c49116a4c3a642e1b28",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "step": "y=0에서 x²-6x+k=0의 두 근의 차가 8이므로 36-4k=64를 푼다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e6a02612759f754faa470cf28b9efc41293e7636fc8d9e93e080b7f50f835138",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_POINT_LINE_DISTANCE",
+      "step": "그림의 정삼각형 높이는 점 A와 y=x+6의 거리이므로 범위 √2부터 5√2를 구하고 넓이 h²/√3을 적용한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학2.jsonl"
+    }
+  ]
+}

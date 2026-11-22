@@ -1,0 +1,249 @@
+{
+  "schemaVersion": "middle-runtime-original-eleven-issued-approval-independent-review-v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "reviewer": "GPT_M3S2_RELEASE_26FC42390A50",
+  "decision": "STATIC_ACCEPT_TEST_ONLY_CLOSED_ORIGINAL_ELEVEN_ACTUAL_RUNTIME_PENDING",
+  "candidateManifest": {
+    "gitBlobSha1": "783dd340027f1066ebffe1f7e40cafc518776158",
+    "sha256": "e823ea996d8d7be51de2edf307f9abac61af75cf9c17a831aab30bfba32adb8e",
+    "bytes": 2765
+  },
+  "authorEvidence": {
+    "gitBlobSha1": "094b45d54d3cc65504708a9900599661e622e302",
+    "sha256": "883e7b8822dfe5f02fc198965cb02a96c3b86eda5b16f6f55323e8660b79e8d7",
+    "bytes": 25538
+  },
+  "literalDelta": {
+    "gitBlobSha1": "4de99f286755b67dc840eb3d5f0c2d5bf45da2d0",
+    "sha256": "b79be67d3cd447d879481602d76a26770f6cffdaad78fd64c7e9df6e37c45247",
+    "bytes": 52877
+  },
+  "actualReadonlyProbe": {
+    "gitBlobSha1": "3806aeae18d0112ad93b848df2411c9775d690b6",
+    "sha256": "1643e7eb9c55739ff1933addcb8a9a00e6b2e1e8fca41e0b77c3ee38cc993b3e",
+    "bytes": 57929,
+    "execution": {
+      "provider": "GITHUB_ACTIONS",
+      "eventName": "push",
+      "repository": "icefoxtail/AP------",
+      "ref": "refs/heads/ops/middle-retained-issued-producer-probe-26fc-20261117",
+      "codeCommit": "658d3225266c2c237c9eeaec672229b1de95966f",
+      "snapshotCommit": "b4dc3bf65c37106ef2661173a0d1b83dc0e0417b",
+      "runId": "44031397094",
+      "runAttempt": "1",
+      "job": "observe-current-main"
+    },
+    "status": "READONLY_OBSERVED",
+    "completedSubjects": 11,
+    "unchanged": {
+      "head": true,
+      "worktree": true,
+      "inputFiles": 121,
+      "issuedRows": 11
+    },
+    "probeDidNotApplyOrGrantApproval": true
+  },
+  "code": [
+    {
+      "path": "tests/helpers/middle-geometry-issued-approval.cjs",
+      "before": {
+        "gitBlobSha1": "1a14104093e8b5e1aa81ddcc6d1cfef852227afc",
+        "sha256": "faea3ed904d3341f0a2ef06454eae775bfe81ded2de1d660d829f8209bf0a79a",
+        "bytes": 60901
+      },
+      "after": {
+        "gitBlobSha1": "fa42fee9e8ea485a240c004d1a68d9f09daf90cf",
+        "sha256": "c7597fac19a5d24210738db3b4ee41dfc6b1270e7098ff714977637cafb1b057",
+        "bytes": 95547
+      },
+      "edits": 12,
+      "wholeInverseExact": true
+    },
+    {
+      "path": "tests/meta-foundation-middle-geometry-runtime.test.js",
+      "before": {
+        "gitBlobSha1": "9184cec336850364a72474bea52a84fb05289566",
+        "sha256": "a3c9b16ed47d82d2b8b5a2267de630c0698d39042a019a4f7b20dd576ae8905d",
+        "bytes": 62331
+      },
+      "after": {
+        "gitBlobSha1": "b5c9b77bc742240d54a0a6cb984ebd419f1361b6",
+        "sha256": "fe1386eee8af21fe84382b8a4593b21e82bf6799a1d51c92904fab3f4baf6329",
+        "bytes": 73516
+      },
+      "edits": 2,
+      "wholeInverseExact": true
+    }
+  ],
+  "originalNativeFunction": {
+    "gitBlobSha1": "034e4e29ab618a9123744c9ae81fdd9e30f9d121",
+    "sha256": "bc114f8009a23f1031acbce92e193bfaaa5fde80eb2ed2f15a4c7ed26cc8d8a7",
+    "bytes": 3571,
+    "wholeBytesUnchanged": true
+  },
+  "independentChecks": {
+    "allFourteenEditsRead": true,
+    "wholeInverseExact": true,
+    "codeFixedProfileJsonEqualsEvidence": true,
+    "actualSubjectUidSourceOrdinalJoinUnique": 11,
+    "observedMdIdRuntimeQuestionHashesEqual": 44,
+    "observedReasons": {
+      "CANONICAL_LABELS_MISSING": 9,
+      "IDENTITY_SOURCE_FINGERPRINT_MISMATCH": 2
+    },
+    "actualReasonAndNullChecks": [
+      {
+        "questionUid": "qid_v1_a26c7d6f842a730adcaa3d42d71cbe72075494e97bab0468f3a4203f82bee4d6",
+        "sourceOrdinal": 1,
+        "metadataIdentityRuntimeQuestionHashesEqual": true,
+        "wholeIssuedRowsPreserved": true,
+        "nativeNull": true,
+        "planStatus": "SUPPLEMENT_PENDING",
+        "reason": "CANONICAL_LABELS_MISSING",
+        "generatedFinal": false
+      },
+      {
+        "questionUid": "qid_v1_7066d139739ae9c4b2fb16b4a772e952fa8f6143475934c317643980919abc8b",
+        "sourceOrdinal": 2,
+        "metadataIdentityRuntimeQuestionHashesEqual": true,
+        "wholeIssuedRowsPreserved": true,
+        "nativeNull": true,
+        "planStatus": "SUPPLEMENT_PENDING",
+        "reason": "CANONICAL_LABELS_MISSING",
+        "generatedFinal": false
+      },
+      {
+        "questionUid": "qid_v1_5b5b90743fb6bec35ef5986475b04e9a14a689b472da9757ccfa92732b4678c0",
+        "sourceOrdinal": 3,
+        "metadataIdentityRuntimeQuestionHashesEqual": true,
+        "wholeIssuedRowsPreserved": true,
+        "nativeNull": true,
+        "planStatus": "SUPPLEMENT_PENDING",
+        "reason": "IDENTITY_SOURCE_FINGERPRINT_MISMATCH",
+        "generatedFinal": false
+      },
+      {
+        "questionUid": "qid_v1_0bdbb9d2ce4f341a9d117bcf188d05e143790a9637d0a50d598f0e15dbafe4a6",
+        "sourceOrdinal": 4,
+        "metadataIdentityRuntimeQuestionHashesEqual": true,
+        "wholeIssuedRowsPreserved": true,
+        "nativeNull": true,
+        "planStatus": "SUPPLEMENT_PENDING",
+        "reason": "CANONICAL_LABELS_MISSING",
+        "generatedFinal": false
+      },
+      {
+        "questionUid": "qid_v1_7c79820d88c11aef337163cec75f347205403c7f8e7b67035dcc91e0e02a0122",
+        "sourceOrdinal": 5,
+        "metadataIdentityRuntimeQuestionHashesEqual": true,
+        "wholeIssuedRowsPreserved": true,
+        "nativeNull": true,
+        "planStatus": "SUPPLEMENT_PENDING",
+        "reason": "CANONICAL_LABELS_MISSING",
+        "generatedFinal": false
+      },
+      {
+        "questionUid": "qid_v1_c32668aa2b2154aa78729796280b217d09bd39192ef30100931b02dd96efc488",
+        "sourceOrdinal": 6,
+        "metadataIdentityRuntimeQuestionHashesEqual": true,
+        "wholeIssuedRowsPreserved": true,
+        "nativeNull": true,
+        "planStatus": "SUPPLEMENT_PENDING",
+        "reason": "CANONICAL_LABELS_MISSING",
+        "generatedFinal": false
+      },
+      {
+        "questionUid": "qid_v1_55930b3d0fc2a8cce684c54cc2471649b40dbba7fff48e8cc721e86f82290d41",
+        "sourceOrdinal": 8,
+        "metadataIdentityRuntimeQuestionHashesEqual": true,
+        "wholeIssuedRowsPreserved": true,
+        "nativeNull": true,
+        "planStatus": "SUPPLEMENT_PENDING",
+        "reason": "CANONICAL_LABELS_MISSING",
+        "generatedFinal": false
+      },
+      {
+        "questionUid": "qid_v1_7a5833ac5d37d022a6e5491e026b6905e36ce9af61437cd7e93700646f61c876",
+        "sourceOrdinal": 9,
+        "metadataIdentityRuntimeQuestionHashesEqual": true,
+        "wholeIssuedRowsPreserved": true,
+        "nativeNull": true,
+        "planStatus": "SUPPLEMENT_PENDING",
+        "reason": "CANONICAL_LABELS_MISSING",
+        "generatedFinal": false
+      },
+      {
+        "questionUid": "qid_v1_c0e1f59be8499e6f2f4fd0d4bf07911c922b5ab3861139c80cd91fd8d6dff631",
+        "sourceOrdinal": 10,
+        "metadataIdentityRuntimeQuestionHashesEqual": true,
+        "wholeIssuedRowsPreserved": true,
+        "nativeNull": true,
+        "planStatus": "SUPPLEMENT_PENDING",
+        "reason": "CANONICAL_LABELS_MISSING",
+        "generatedFinal": false
+      },
+      {
+        "questionUid": "qid_v1_64661daf2fea0bc0430a163d82c8fbb7340274320504caa149dc5927fd0411c6",
+        "sourceOrdinal": 23,
+        "metadataIdentityRuntimeQuestionHashesEqual": true,
+        "wholeIssuedRowsPreserved": true,
+        "nativeNull": true,
+        "planStatus": "SUPPLEMENT_PENDING",
+        "reason": "CANONICAL_LABELS_MISSING",
+        "generatedFinal": false
+      },
+      {
+        "questionUid": "qid_v1_f3fba2de253b38cab38675605796ab01f17928228c1a099b7ba27b4e0f6b1a6b",
+        "sourceOrdinal": 5,
+        "metadataIdentityRuntimeQuestionHashesEqual": true,
+        "wholeIssuedRowsPreserved": true,
+        "nativeNull": true,
+        "planStatus": "SUPPLEMENT_PENDING",
+        "reason": "IDENTITY_SOURCE_FINGERPRINT_MISMATCH",
+        "generatedFinal": false
+      }
+    ],
+    "actualTwoReceiptAndSourceMetadataPinsMatchProfiles": true
+  },
+  "acceptedBoundaries": [
+    "Only two exact original receipt request IDs and eleven pinned UID/source/ordinal subjects can use the new branch. A different no-binding receipt retains the original failure.",
+    "The f9 immutable registered receipt and current regular receipt bytes must be identical. Current complete metadata, identity and runtime rows must equal the issued receipt rows and fixed actual observed hashes.",
+    "The original approval type, original evidence references and current ACTIVE owner/binding are rechecked; every declared canonical/compiled digest and the f9 MASTER bytes remain required.",
+    "A source-review-binding is not fabricated. Its absence is allowed only when the exact original issued receipt does not declare it and the current row evidence does not claim it.",
+    "E034 ordinary FINAL_QA10 preserves the complete per-UID reassessment hash, fixed original Native review commit/path/live SHA and original source object. Q22 is absent from this closed set.",
+    "Hyangrim Q5 preservation1 requires its exact original FINAL_QA prior receipt, whole classification rows except existing revision/evidence transport fields, exact evidence append, original prior evidence and both original source objects.",
+    "The current source must match the pinned actual observed commit and current HEAD. Full source count and exact changed-ordinal/field/whole-question hash inventory are required; unknown editions and restored old sources are refused.",
+    "The original Native function is called again and must return null; original planQuestion must return SUPPLEMENT_PENDING with exactly the one actual observed reason and no additional keys/generated final.",
+    "The eleven are counted as retained historical issued approvals with current Native readiness BLOCKED. They are not counted as current Native PASS or newly registered approvals.",
+    "The original typed UI, source-only Q11/Q15 and RHS code bodies remain byte-identical after inverse edits; unknown null or post-anchor unissued authority still fails."
+  ],
+  "newNegativeDefinitions": {
+    "authorReportedCount": 64,
+    "reviewedAsDefinitionsOnly": true,
+    "coverage": [
+      "complete MD/ID/runtime mutation, different owner or unissued revision",
+      "a different member of the same receipt changing its stored approval",
+      "missing/changed/symlink original and inherited evidence, forged binding output, MASTER drift",
+      "unknown/missing/symlink/restored old source and missing/tampered original Git object",
+      "positive Native value, unknown/additional/other known reason, APPLY, ALREADY_REGISTERED or generated final"
+    ]
+  },
+  "validationLimits": {
+    "authorNodeCheck": {
+      "version": "v24.22.1",
+      "files": 2,
+      "status": "PASS_REPORTED_IN_FROZEN_AUTHOR_EVIDENCE",
+      "reviewerDidNotRerun": true
+    },
+    "newFocusedOrRuntimeTestExecution": "NOT_RUN",
+    "newNativeAfterCandidate": "NOT_RUN",
+    "reviewerRepoJsExecuted": false,
+    "reviewerSourceContentOrMathReview": false,
+    "reviewerUiReview": false,
+    "productionFileChanges": 0,
+    "sourceMetadataIdentityRuntimeWrites": 0,
+    "newApprovals": 0,
+    "remoteRefWrites": 0
+  },
+  "nextAction": "Root may compose these exact two test files and run the required current runtime test. Preserve current Native/plan refusals as BLOCKED; do not turn a historical retained-state assertion into a production approval or source/UI acceptance."
+}

@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-ee7e3c8afa18-3de640f3",
+  "sourceArchiveFile": "original/high/h1/1final/20_매산고_1학기_기말_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_d66b75d1b78ba4bf9764549f542caa6379bde90d6cf33fa5ddc9f7f4950c8f60",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_DISTANCE",
+      "templateKey": "TPL_DISTANCE_UNKNOWN",
+      "step": "두 점 사이 거리 제곱이 5인 식을 세워 양수 a를 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3ddf26feeddfb7868ef49017ae0e4dca67c4c81bc46758b9f0423c9bb7b03a95",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_PERPENDICULAR",
+      "step": "x축에 수직인 직선은 x가 일정하므로 주어진 점의 x좌표 3을 사용한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f3099b66ee65834104c4564ca4ec32515df9bef864f32926ad44cd0c3255b6b3",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_LINE_POSITION",
+      "step": "지름 양 끝점으로 중심·반지름을 정하고 중심과 직선 사이 거리<반지름을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5a7ac90b73477b17c9adf93c74aaf105baadef29ee1df73c9993941ce2a95c0f",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_BISECTING_LINE",
+      "step": "y=x 대칭한 직선이 원의 중심을 지나는 조건을 사용한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dec8fdc81ae156b0f778026452bc50b9c3c9906c4ac3ac363af0f10d88037e3c",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_MULTI_CONDITION",
+      "step": "여러 중점의 좌표를 구한 뒤 각 두 점을 잇는 직선의 기울기와 절편을 결정한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0a20ea12cc97973bf6c63feaeaa8d4e5384e493a3d9d03def8b5341713700fd3",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_DISTANCE_OPTIMIZATION",
+      "templateKey": "TPL_COORD_DISTANCE_OPTIMIZATION_REVERSE_TRIANGLE",
+      "step": "역삼각부등식의 등호가 성립하는 직선 AB의 바깥쪽과 y축의 교점을 찾는다.",
+      "note": "새 TPL 제안: 거리 차의 절댓값 최대. 정의: 역삼각부등식과 일직선 등호 조건을 이용한다. 새 TPL 제안: 역삼각부등식의 등호가 성립하는 직선 AB의 바깥쪽과 y축의 교점을 찾는다. 정의: 역삼각부등식의 등호가 성립하는 직선 AB의 바깥쪽과 y축의 교점을 찾는다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_13dae52a2e4b2127c0b32dcddb4b1b20d6f10fccefc8ada5dbaac0cbad2b24fc",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_LINE_POSITION",
+      "step": "두 원 각각에서 중심과 직선 거리가 반지름보다 큰 조건을 세워 자연수 기울기를 센다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_41e19eac3cb477a534114d992c0eff06041e7aded35ed163e35675fe5d690ab8",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_FIGURE_PROPERTIES",
+      "templateKey": "TPL_COORD_FIGURE_PROPERTIES_SQUARE",
+      "step": "정사각형의 대각선 중점 M=((a+b)/2,(a+b)/2)과 ab=2로 자취의 위치와 범위를 정한다.",
+      "note": "새 TPL 제안: 정사각형 중심의 자취. 정의: 인접변·중점 좌표 관계와 매개변수 조건으로 중심 자취 및 범위를 구한다. 새 TPL 제안: 정사각형의 대각선 중점 M=((a+b)/2,(a+b)/2)과 ab=2로 자취의 위치와 범위를 정한다. 정의: 정사각형의 대각선 중점 M=((a+b)/2,(a+b)/2)과 ab=2로 자취의 위치와 범위를 정한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    }
+  ]
+}

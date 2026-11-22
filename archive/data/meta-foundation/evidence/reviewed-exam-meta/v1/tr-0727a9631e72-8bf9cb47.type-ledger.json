@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-0727a9631e72-8bf9cb47",
+  "sourceArchiveFile": "similar/middle/m3/2mid/25_금당중_2학기_중간_중3_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_d19dde628752e2258e52bd1eb0b6afa4dc73be552127facc205355c2f5cd7188",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+      "step": "사분원의 근삿값 0.57,0.82,0.70을 식에 대입해 0.45를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_03f7594dded53d5707edfdba8df6de14c828521101f7a2fb8e01a713a9480a58",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "step": "높이로 나뉜 직각삼각형의 대응각을 이용해 sin x=cos y=6/10임을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b97eb244afa2071f81dd96574e76eff2a830d31ccb1dcb567ad1e5a111b611a3",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+      "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO",
+      "step": "특수각으로 AB:AC=2:1을 구하고 각의 이등분선 정리로 BD=(2/3)BC=4√3을 얻는다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_db3f09266def6b82dbde03161d71d5fd642b6b9645c37a2eb82bebe55c8643ac",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "step": "45도 삼각형에서 공통변 BC=8을 구한 뒤 60도 삼각형에서 BD=8cos60°=4를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e1dc54b242ceac903add7b0650b048837b3ef7817e9002873a7b23adf33bffdb",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "step": "두 변과 둔각의 보각으로 높이를 구해 넓이 (1/2)·8·10·sin60°=20√3을 계산한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d195938a94727b296246c95e82de8315b4fc6c94e68d05f1b9b1c99400664c51",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "step": "135도의 보각으로 높이를 구하여 평행사변형 넓이 6·8·sin45°=24√2를 얻는다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3f53be2e8404e9cd09850c890b711aa24d64feb12aef155674df7de99243d583",
+      "sourceOrdinal": 14,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_CIRCLE_CHORD",
+      "templateKey": null,
+      "step": "중심으로부터의 거리가 같아 두 현 길이가 같고 현의 절반 AM=5이므로 CD=10이다.",
+      "note": "원의 현 길이와 중심으로부터의 거리: 중심에서 현에 내린 수선의 이등분 성질과 같은 거리의 현 길이 관계를 이용한다. |  | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_93ee5997c334f3ba0fdb23bf1d0f0b153a5cd36e8b10c8fafbef4bfb7d3bb59a",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "step": "세 직선 부분의 합 24와 중심각 합360도의 세 호 길이 8π를 합한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e00fb5c921c2668e50c8f99f85f058cde430d2ab273cddbf15167f1d44711b75",
+      "sourceOrdinal": 17,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_CIRCLE_TANGENT",
+      "templateKey": null,
+      "step": "CA=CT,DB=DT와 PA=PB를 이용해 삼각형 둘레를 PA+PB=24로 바꾼다.",
+      "note": "원의 접선 길이의 같음과 접다각형: 원 밖의 한 점에서 그은 두 접선 길이의 같음을 이용해 선분·둘레·접다각형의 길이 관계를 구한다. |  | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_54330f817eee82ae8d1363e348c699689df38f52cd6bd734bcfd4a8e5f1c627d",
+      "sourceOrdinal": 18,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_CIRCLE_TANGENT",
+      "templateKey": null,
+      "step": "접점까지 같은 길이를 짝지어 접사각형의 대변 합 AB+CD=AD+BC에서 AD=6을 얻는다.",
+      "note": "원의 접선 길이의 같음과 접다각형: 원 밖의 한 점에서 그은 두 접선 길이의 같음을 이용해 선분·둘레·접다각형의 길이 관계를 구한다. |  | 도구: PT_NOT_ACTIVE, DUPLICATE_PROPOSED_NAME",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_10e63713edc92796cc6851e7cb6fd81c0fa4407adf1590176085a7294c98a5c4",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "step": "직각삼각형 두 개의 넓이 4√3과 중심각60도의 부채꼴 넓이 8π/3을 합한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d142a1fd998d7e8d0b487612b80cb199628a75399aeebb4ba3f2210c6ef83128",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "step": "그래프의 두 절편으로 6:8:10 직각삼각형을 복원해 세 삼각비의 결합값 1/15을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    }
+  ]
+}

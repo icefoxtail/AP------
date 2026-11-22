@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-91370309338b-19aa14a5",
+  "sourceArchiveFile": "types/high/h2/비상_대수_지수로그함수_중단원_고2_유형심화.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_501b8db8edd0dca041c83b82d0203c0a90d13eca7dba1274165631f05710aade",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_03_LOG_EQUATION",
+      "templateKey": "TPL_H22A_03_LOG_EQUATION_089",
+      "step": "로그 소문항을4x−1=27로 고쳐 진수양수를 확인하고, 지수 소문항은 밑2로 통일한다.",
+      "note": "지수방정식과 로그방정식의 독립 소문항 혼합. 로그 정의역 확인을 대표 결정단계로 선택.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4b3ee7e41154e8987021fdb0fe827553beeb000c81e69deb652168a5fb1271e5",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_03_LOG_INEQUALITY",
+      "templateKey": "TPL_H22A_03_LOG_INEQUALITY_091",
+      "step": "로그부등식은 진수조건x>1과 상한x<9를 교차하고 지수부등식은 감소밑을 역전한다.",
+      "note": "지수·로그 부등식 독립 소문항 혼합. 진수조건을 포함하는 로그 분기를 대표로 선택.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_51ec8f2a7cc427b015ee77405eec13ed2fb6dad528f4081c011150c28021da01",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_03_LOG_INEQUALITY",
+      "templateKey": "TPL_H22A_03_LOG_INEQUALITY_091",
+      "step": "감소밑을 역전한 x²−x≤2와 진수x²−x>0을 교차하여 정수−1,2를 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_776624c9af82297c5f2ae7e3e8c276ca8187c02b10bdbb2fefd13925e5e98bf4",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+      "step": "교점x좌표 −log2k,−(log2k)/3의 차와 높이k로 넓이 k log2k/3을 세운다.",
+      "note": "k log2k=18의 유일근으로 성립하나 제시답은 초등함수 수치값이 아닌 암시식.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_be5c300b16f936dd534fcd52c9104ad0c36839eda0281110da5a7e44ee48086f",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_LOG_DEFINITION",
+      "templateKey": "TPL_H22A_01_LOG_DEFINITION_073",
+      "step": "A의 높이3에서 x=2³=8을 구하고 수선·직선y=x의 좌표동일성을 쓴다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1d53fadd5038fed718203781e91d9b426cbc8d6c06bd4f5b65b1f5df5b726a48",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENTIAL_INEQUALITY",
+      "templateKey": "TPL_EXPONENTIAL_DECAY_INVERSE_BOUND",
+      "step": "0.92^n≤1/3에 주어진 근사로그를 적용하고 음수로그로 나눠 n≥12를 구한다.",
+      "note": "주어진 근사값 사용조건의 답12. 실제 로그값으로는 최소14년이므로 근사정밀도가 정수경계를 바꾸는 원문상 주의점.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_50e4fbace0006f8d257cc456330f2f0e5601003aacd0aa4815a063c761a376d9",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_APPLICATION",
+      "templateKey": "TPL_LOG_APPLICATION_LOG_MODEL",
+      "step": "거리30에서 c=15를 정한 뒤 거리75에서 농도비1/243을 역산한다.",
+      "note": "새 TPL 제안: 로그 선형 비례모형의 변화 비율. 문항의 몇% 이하는 상한의 유일성 표현이 부정확하나 정확한 비율100/243%를 계산할 수 있다. 검사: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    }
+  ]
+}

@@ -6,8 +6,9 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 const { workspaceHarness, okJson } = require("./helpers/archive2-workspace-ui-harness.cjs");
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
-const source = fs.readFileSync(path.join(__dirname, "../archive/archive2-workspace.js"), "utf8");
+const source = readWorkspace();
 const raw = (id, extra = {}) => ({
   id, class_id: "c1", class_name: "고2 A반", class_grade: "고2", exam_title: `시험 ${id}`, exam_date: "2026-11-03",
   question_count: 20, recipient_count: 24, submitted_count: 0, pdf_status: "ready", saved_paper_id: null,

@@ -231,8 +231,51 @@ function addSourceVerificationShards(selection, root, config) {
       fail(`source verification shard digest mismatch: ${relative}`);
     addFile(selection, root, relative, `source verification index (${config.index})`);
   }
+  if (config.topIndex !== undefined) addSourceVerificationIndexBuckets(selection, root, config, index);
   if (Object.prototype.hasOwnProperty.call(index, 'mixedLookup'))
     addMixedSourceVerificationFiles(selection, root, index, config.index);
+}
+
+// The sharded file list the Worker reads for original-source verification (archive2-canonical.js
+// loadSourceVerificationShard): the top index lists hash-prefix buckets, each bucket lists { sourceFile, sha256, qCount }.
+// Every bucket is verified against the top index and the rows against the flat index (same exams, same shard digests,
+// each row in the bucket named by its source file hash), then shipped. The top index itself ships as archive data.
+function addSourceVerificationIndexBuckets(selection, root, config, flatIndex) {
+  if (typeof config.bucketPrefix !== 'string' || !config.bucketPrefix.endsWith('/'))
+    fail('source verification index buckets need a bucketPrefix');
+  const top = readJson(root, config.topIndex, 'source verification top index');
+  if (top.schemaVersion !== canonicalResolver.SOURCE_VERIFICATION_TOP_INDEX_SCHEMA || !Array.isArray(top.buckets) ||
+      top.buckets.length !== canonicalResolver.SOURCE_VERIFICATION_INDEX_BUCKET_COUNT)
+    fail('source verification top index has an unsupported schema');
+  const flatByFile = new Map(flatIndex.files.map((row) => [row.sourceFile, row]));
+  const seenPrefixes = new Set();
+  const seenFiles = new Set();
+  for (const row of top.buckets) {
+    if (!/^[0-9a-f]$/.test(String(row?.prefix)) || seenPrefixes.has(row.prefix) || !SHA256_RE.test(String(row?.sha256 || '')))
+      fail(`source verification top index contains an invalid bucket reference: ${row?.prefix}`);
+    seenPrefixes.add(row.prefix);
+    const relative = normalizeRelative(`archive/${config.bucketPrefix}${row.prefix}.json`, 'source verification index bucket path');
+    const absolute = resolveInside(root, relative, 'source verification index bucket path');
+    assertNoSymlinkComponents(root, absolute, 'source verification index bucket path');
+    if (normalizedTextSha256(absolute) !== row.sha256.toLowerCase())
+      fail(`source verification index bucket digest mismatch: ${relative}`);
+    if (normalizedTextByteLength(absolute) !== Number(row.byteLength))
+      fail(`source verification index bucket byteLength mismatch: ${relative}`);
+    const bucket = readJson(root, relative, 'source verification index bucket');
+    if (bucket.schemaVersion !== canonicalResolver.SOURCE_VERIFICATION_INDEX_BUCKET_SCHEMA || bucket.prefix !== row.prefix ||
+        !Array.isArray(bucket.files) || bucket.files.length !== Number(row.fileCount))
+      fail(`source verification index bucket does not match the top index: ${relative}`);
+    for (const file of bucket.files) {
+      const flat = flatByFile.get(file?.sourceFile);
+      if (!flat || seenFiles.has(file.sourceFile) || flat.sha256 !== file.sha256 || Number(flat.qCount) !== Number(file.qCount) ||
+          sha256Text(file.sourceFile).slice(0, 1) !== row.prefix)
+        fail(`source verification index bucket row does not match the flat index: ${file?.sourceFile}`);
+      seenFiles.add(file.sourceFile);
+    }
+    addFile(selection, root, relative, `source verification top index (${config.topIndex})`);
+  }
+  if (seenFiles.size !== flatByFile.size || Number(top.fileCount) !== flatByFile.size)
+    fail('source verification index buckets do not cover every flat index row');
 }
 
 function readMixedReference(root, pathValue, expectedPrefix, reference, label) {

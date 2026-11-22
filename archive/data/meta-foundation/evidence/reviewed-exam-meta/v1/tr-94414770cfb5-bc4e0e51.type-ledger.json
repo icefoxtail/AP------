@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-94414770cfb5-bc4e0e51",
+  "sourceArchiveFile": "original/high/h1/1mid/24_매산여고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_e20e7e679c460bc86fbc3283b44e75000de97f9949f24ce344d59ec651c47902",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "step": "다항식에 x=−1을 대입하여 일차식 나눗셈의 나머지를 구한다.",
+      "note": "",
+      "figure": null,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3e357497da2694dbf872e422ee4db2861aa6bc70ff9aa565b8cfe65f4d3c9521",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+      "step": "사차식을 (x−2)(x−1)²(x+1)로 분해하여 인수가 아닌 식을 찾는다.",
+      "note": "",
+      "figure": null,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d40dae76c69137e2f84ffcf69de23d82de36a881f4dc0f877de168b0802adfae",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+      "step": "나눗셈 등식에서 나머지를 뺀 다항식을 제수로 나누어 몫을 구한다.",
+      "note": "",
+      "figure": null,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_da51e6ce79e49d871b5bc52167d12955d410ac0fcf9d0ca826001b358eaef439",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+      "step": "매개변수와 무관한 고정점을 찾고 그 점이 꼭짓점이라는 조건으로 포물선을 확정한다.",
+      "note": "",
+      "figure": null,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

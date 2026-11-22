@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-91236248905d-07eb4efa",
+  "sourceArchiveFile": "original/high/h1/1final/20_금당고_1학기_기말_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_4195e3e04e35b4d85f92def92a488fb001f663c869ec24620a91cd909fa5924d",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_LINE_POSITION",
+      "step": "중심에서 직선까지 거리 |k|/√5가 반지름보다 작은 범위를 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0cbdee7a4ef8c9dd4b749e256bbe3080570f4680ef8dc3d71e3cb768312a1164",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+      "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+      "step": "ω²-ω+1=0과 켤레근의 곱 1로 보기를 정리한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d675b8a63afcf4453c299ff6921f3852f2fca66d8f716b827b36a292f2a3a636",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+      "templateKey": "TPL_LINE_INTERSECTION_CONDITION_QUADRANT",
+      "step": "두 직선 교점의 두 좌표가 양수인 조건으로 매개변수 범위를 정한다.",
+      "note": "새 TPL 제안: 교점의 사분면 조건. 정의: 매개변수 두 직선의 교점 좌표 부호로 지정 사분면 조건을 정한다. 새 TPL 제안: 두 직선 교점의 두 좌표가 양수인 조건으로 매개변수 범위를 정한다. 정의: 두 직선 교점의 두 좌표가 양수인 조건으로 매개변수 범위를 정한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f7495b866dd1cd6ccb0d89e08fa974b89aca155816a0035a65565b32d899113b",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_FIGURE_PROPERTIES",
+      "templateKey": "TPL_COORD_FIGURE_PROPERTIES_SQUARE",
+      "step": "인접변의 수직·동일 길이와 AB 중점의 y좌표 0 조건을 좌표로 연립한다.",
+      "note": "새 TPL 제안: 정사각형 좌표 조건 결정. 정의: 인접변의 수직·길이 같음과 중점 위치를 좌표식으로 정한다. 새 TPL 제안: 인접변의 수직·동일 길이와 AB 중점의 y좌표 0 조건을 좌표로 연립한다. 정의: 인접변의 수직·동일 길이와 AB 중점의 y좌표 0 조건을 좌표로 연립한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5cc6e6f3bccc8bfb002b9617765cbd6bdc0b5c692e81301b1c6305b88fe7cead",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_AT_POINT",
+      "step": "접선-반지름 수직과 직각이등변 조건으로 r²를 정하고 접점 접선식에서 a+b를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    }
+  ]
+}

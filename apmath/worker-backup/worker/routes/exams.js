@@ -1,6 +1,7 @@
 import { sha256hex } from '../helpers/admin-db.js';
 import { canAccessClass, canAccessStudent, getAllowedClassIds, isAdminUser, isStaffUser } from '../helpers/foundation-db.js';
 import { jsonResponse } from '../helpers/response.js';
+import { extractArchiveQuestionsFromText, resolveArchiveQuestionNo } from '../helpers/archive-question-bank.js';
 import { createAssignmentPdfDownloadResponse, ensureAssignmentPdf } from './exam-pdf.js';
 import { handleArchive2 } from './archive2.js';
 import {
@@ -231,29 +232,9 @@ function getAssignmentArchiveCandidates(value) {
 // 아카이브는 GitHub Pages 정적 URL이라 워커에서 바로 fetch 가능하다.
 const EXAM_ARCHIVE_BASE_URL = 'https://icefoxtail.github.io/AP------/archive/';
 
-function extractQuestionBankFromArchiveText(jsText) {
-  const sandboxWindow = { questionBank: null, __questionBank: null };
-  const sandboxDocument = {
-    createElement: () => ({ style: {}, setAttribute() {}, appendChild() {}, innerHTML: '' }),
-    head: { appendChild() {} },
-    body: { appendChild() {} },
-    addEventListener() {},
-    querySelector: () => null,
-    querySelectorAll: () => []
-  };
-  try {
-    const fn = new Function('window', 'document', `${jsText}\n;return window.questionBank || window.__questionBank || (typeof questionBank !== 'undefined' ? questionBank : null);`);
-    const bank = fn(sandboxWindow, sandboxDocument);
-    return Array.isArray(bank) ? bank : [];
-  } catch (e) {
-    console.warn('[exams] archive questionBank parse failed:', e);
-    return [];
-  }
-}
-
 // Archive metadata revision/hash가 같을 때만 기존 blueprint 동기화를 건너뛴다.
 // Phase 2A migration 전 원격 DB도 계속 읽을 수 있도록 신규 컬럼은 동적으로 감지한다.
-async function syncExamBlueprintsFromArchive(env, archiveFile) {
+export async function syncExamBlueprintsFromArchive(env, archiveFile) {
   const file = normalizeAssignmentArchiveFile(archiveFile);
   if (!file || file.startsWith('MIXED:') || /^https?:\/\//i.test(file)) return;
   try {
@@ -261,7 +242,7 @@ async function syncExamBlueprintsFromArchive(env, archiveFile) {
     const res = env.ARCHIVE2_ASSETS ? await env.ARCHIVE2_ASSETS.fetch(url) : await fetch(url);
     if (!res.ok) return;
     const jsText = await res.text();
-    const bank = extractQuestionBankFromArchiveText(jsText);
+    const { questions: bank, format: bankFormat } = extractArchiveQuestionsFromText(jsText);
     if (!bank.length) return;
 
     const blueprintColumns = await getTableColumnSet(env, 'exam_blueprints');
@@ -283,7 +264,7 @@ async function syncExamBlueprintsFromArchive(env, archiveFile) {
       const metadata = buildArchiveQuestionMetadata(q);
       return {
         sourceOrdinal: index + 1,
-        questionNo: Number(String(q?.id ?? '').match(/\d+/)?.[0] || 0),
+        questionNo: resolveArchiveQuestionNo(q, index, bankFormat),
         metadata,
         metadataHash: await buildArchiveMetadataHash(metadata)
       };
@@ -330,7 +311,7 @@ async function syncExamBlueprintsFromArchive(env, archiveFile) {
     }
 
     const stmts = (await Promise.all(bank.map(async (q, index) => {
-      const questionNo = Number(String(q?.id ?? '').match(/\d+/)?.[0] || 0);
+      const questionNo = resolveArchiveQuestionNo(q, index, bankFormat);
       if (!questionNo) return null;
       const sourceOrdinal = index + 1;
       const priorBlueprint = existingByOrdinal.get(sourceOrdinal) || existingByQuestionNo.get(questionNo);
@@ -379,7 +360,7 @@ async function syncExamBlueprintsFromArchive(env, archiveFile) {
             sourceArchiveFile: file,
             sourceQuestionUid,
             sourceQuestionOrdinal: sourceOrdinal,
-            sourceQuestionNo: q?.id ?? null,
+            sourceQuestionNo: q?.id ?? (bankFormat === 'examData' ? q?.number ?? null : null),
             sourceFingerprint: canonicalRecord?.sourceFingerprint || null,
             projectionVersion: preservePriorMeta
               ? priorSnapshot?.sourceProjectionVersion || null

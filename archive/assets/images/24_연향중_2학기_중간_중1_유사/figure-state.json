@@ -1,0 +1,334 @@
+{
+ "meta": {
+  "sourcePath": "archive/exams/similar/middle/m1/2mid/24_연향중_2학기_중간_중1_유사.js",
+  "ordinal": 2
+ },
+ "identity": {
+  "questionUid": "24_연향중_2학기_중간_중1_유사|2",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:54069ca47549bce6744d6dd06dece6cbfc825c827bb0bdd9bf1ec10478982a37",
+  "assetId": "va-4318c32d48299848584ed6a0882f3143db8b6a961ed3f128f8aad79f06b1300d"
+ },
+ "plan": {
+  "capability": "construction-spike-v1",
+  "sourceQuote": "네 점 $A$, $B$, $C$, $D$로 서로 다른 선분을 그릴 때",
+  "caption": "평면 위에 놓인 네 점 A, B, C, D의 위치 관계 다이어그램이다.",
+  "mathPlan": {
+   "schemaVersion": "construction-spike-v1",
+   "realization": {
+    "recipeId": "PLANE_FIGURE_v1",
+    "unit": "source-length",
+    "reflectionEquivalent": false
+   },
+   "nodes": [
+    {
+     "id": "A",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "-4"
+       },
+       {
+        "kind": "integer",
+        "value": "3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "B",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "-5"
+       },
+       {
+        "kind": "integer",
+        "value": "-3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "C",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "4"
+       },
+       {
+        "kind": "integer",
+        "value": "-3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "D",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "3"
+       },
+       {
+        "kind": "integer",
+        "value": "2"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    }
+   ]
+  }
+ },
+ "model": {
+  "engine": "SymPy",
+  "version": "1.14.0",
+  "points": {
+   "A": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "-4"
+     },
+     {
+      "kind": "integer",
+      "value": "3"
+     }
+    ],
+    "approximation": [
+     -4,
+     3
+    ],
+    "precisionDigits": 17
+   },
+   "B": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "-5"
+     },
+     {
+      "kind": "integer",
+      "value": "-3"
+     }
+    ],
+    "approximation": [
+     -5,
+     -3
+    ],
+    "precisionDigits": 17
+   },
+   "C": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "4"
+     },
+     {
+      "kind": "integer",
+      "value": "-3"
+     }
+    ],
+    "approximation": [
+     4,
+     -3
+    ],
+    "precisionDigits": 17
+   },
+   "D": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "3"
+     },
+     {
+      "kind": "integer",
+      "value": "2"
+     }
+    ],
+    "approximation": [
+     3,
+     2
+    ],
+    "precisionDigits": 17
+   }
+  },
+  "scalars": {},
+  "lines": {},
+  "circles": {},
+  "pointSets": {},
+  "conditionAudits": [],
+  "transcript": [
+   {
+    "nodeId": "A",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "B",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "C",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "D",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   }
+  ],
+  "order": [
+   "A",
+   "B",
+   "C",
+   "D"
+  ],
+  "coordinateMode": "CONSTRUCTED_REALIZATION"
+ },
+ "composed": {
+  "schemaVersion": "construction-candidate-svg-v1",
+  "status": "COMPOSED",
+  "detail": null,
+  "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 384 320\" width=\"384\" height=\"320\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-labelledby=\"visual-title visual-desc\" data-engine-version=\"geometry-visual-v1\" data-geometry-style-version=\"AP_GEOMETRY_PRINT_V1_0_DRAFT\" data-geometry-preset=\"GEOMETRY_STANDARD\" data-graph-style-version=\"AP_GRAPH_PRINT_V1_1_DRAFT\" data-geometry-mode=\"COORDINATE_GEOMETRY_HYBRID\" data-axis-scale-mode=\"EQUAL_UNIT\" data-geometry-fact-hash=\"44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a\" data-visual-provenance=\"independent-facts-python\" style=\"max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round\" data-publication-profile=\"fragment-publication-spike-v1\" data-safe-margin=\"12\"><title id=\"visual-title\">평면 위에 놓인 네 점 A, B, C, D의 위치 관계 다이어그램이다.</title><desc id=\"visual-desc\">점과 도형의 관계를 확인한다.</desc><rect width=\"384\" height=\"320\" fill=\"#fff\"/><g data-layer=\"70\"><circle id=\"A\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"80.888888889\" cy=\"64.761904762\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"B\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"49.142857143\" cy=\"255.238095238\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"C\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"334.857142857\" cy=\"255.238095238\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"D\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"303.111111111\" cy=\"96.507936508\" r=\"3.2\"/></g><g data-layer=\"90\"><g id=\"A-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"22.8\" data-owner=\"A\" data-fragment-sha=\"sha256:8879c5290c07053b2327d61f2038f9a9b531fff151bcc5f4249b8317091fb159\" transform=\"translate(72.338888889 36.437104762)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.1\" height=\"16.3248\" viewBox=\"0 0 17.1 16.3248\" data-outline-width=\"17.1\" data-outline-height=\"16.3248\" id=\"lb-22bd68eb9b728daae3b054526b2817e46a3ac41b9a5f949a532c48fce4eaf984\" data-owner=\"A\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 16.3248) scale(0.0228)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D434\" d=\"M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"B-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"22.8\" data-owner=\"B\" data-fragment-sha=\"sha256:cf6036f76cb09f4e9d489ef44f5bb4a6e6142e9338a8515734f483c930a5ff78\" transform=\"translate(40.490257143 227.665695238)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.3052\" height=\"15.5724\" viewBox=\"0 0 17.3052 15.5724\" data-outline-width=\"17.3052\" data-outline-height=\"15.5724\" id=\"lb-d664c988ac8e17cb5938306561ab26678c110cafe694610fbbd48d3c48634756\" data-owner=\"B\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 15.5724) scale(0.0228)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D435\" d=\"M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"C-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"22.8\" data-owner=\"C\" data-fragment-sha=\"sha256:5a7d4578ca723af36c48498e89563997fb10277ad9f7aa12f05091f92868dcd2\" transform=\"translate(326.193142857 226.662495238)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.328\" height=\"16.5756\" viewBox=\"0 0 17.328 16.5756\" data-outline-width=\"17.328\" data-outline-height=\"16.5756\" id=\"lb-bd5a6237eee8e79fd5f3139f0dbdfae80579ade64fa358b3058b9d8ee64f82ba\" data-owner=\"C\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 16.074) scale(0.0228)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D436\" d=\"M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"D-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"22.8\" data-owner=\"D\" data-fragment-sha=\"sha256:2812bcd9c1af90e0f6447429b8cedfa198cf15af3787a3a81dee02cc9431beb3\" transform=\"translate(293.671911111 68.935536508)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18.878400000000003\" height=\"15.5724\" viewBox=\"0 0 18.878400000000003 15.5724\" data-outline-width=\"18.878400000000003\" data-outline-height=\"15.5724\" id=\"lb-82f5e000b14b0f1bebf194c02addcf448988dab9207a8f6b0b29a69f5c341835\" data-owner=\"D\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 15.5724) scale(0.0228)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D437\" d=\"M287 628Q287 635 230 637Q207 637 200 638T193 647Q193 655 197 667T204 682Q206 683 403 683Q570 682 590 682T630 676Q702 659 752 597T803 431Q803 275 696 151T444 3L430 1L236 0H125H72Q48 0 41 2T33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM703 469Q703 507 692 537T666 584T629 613T590 629T555 636Q553 636 541 636T512 636T479 637H436Q392 637 386 627Q384 623 313 339T242 52Q242 48 253 48T330 47Q335 47 349 47T373 46Q499 46 581 128Q617 164 640 212T683 339T703 469Z\"></path></g></g></g></g></svg></g></g></svg>\n",
+  "lineage": {
+   "planSha256": "sha256:914f898248ef87ab9c40e289cc3526f4497cd22944e5a97818b1799915d7145f",
+   "modelSha256": "sha256:fb05bf94bc16340f59e2a32e7be0d6f1ef8a62c9e4ae6960b6e9ea4c5bf2fb88",
+   "typographyPolicySha256": "sha256:824b66bd1d2434306b93764afc4c7c5ded7355fcef4706e03ecc994c4b6bf259",
+   "specSha256": "sha256:0bafbe8515ee89f640b36b24597e97832ed7a535862229d230fb77c5fd742456",
+   "fragmentSha256s": {
+    "A-name": "sha256:8879c5290c07053b2327d61f2038f9a9b531fff151bcc5f4249b8317091fb159",
+    "B-name": "sha256:cf6036f76cb09f4e9d489ef44f5bb4a6e6142e9338a8515734f483c930a5ff78",
+    "C-name": "sha256:5a7d4578ca723af36c48498e89563997fb10277ad9f7aa12f05091f92868dcd2",
+    "D-name": "sha256:2812bcd9c1af90e0f6447429b8cedfa198cf15af3787a3a81dee02cc9431beb3"
+   },
+   "measurementsSha256": "sha256:a01154996350b74c8c0bebf211cf4f3976b1583596fb553acc55af2d893d3fbf",
+   "svgSha256": "sha256:fd98ae9d4ace92734f7c6c496c6ba0ddd524c988f3901316c315e4916d9de096",
+   "witnessSha256": "sha256:508e3d9f139e8f949662b9e940f5c95fc627542c53212dde0def4593a3943094",
+   "staticAuditSha256": "sha256:2ba15ac2adde5ca5124d24bc13b5a07663188c2f9da1c5a2a9f8159c9d3cd751",
+   "renderedLayoutSha256": "sha256:e8b423793c771440161ca4e5e245e4c88a9108e04f814d565a7df7e403824ac8"
+  },
+  "staticAudit": {
+   "status": "PASS",
+   "errors": []
+  },
+  "renderedLayout": {
+   "status": "PASS",
+   "display": {
+    "width": 189.671875,
+    "height": 158.05989583333334
+   },
+   "errors": []
+  },
+  "layoutRepairs": [],
+  "typographyPolicyProvenance": "CALLER_SUPPLIED_UNVERIFIED",
+  "sizeSelection": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "independentVisualReview": "NOT_RUN",
+  "productionAuthorized": false,
+  "qualification": "NOT_RUN"
+ },
+ "capture": {
+  "schemaVersion": "construction-archive-capture-v1",
+  "status": "ARCHIVE_BOUND",
+  "detail": null,
+  "lineage": {
+   "l1SvgSha256": "sha256:fd98ae9d4ace92734f7c6c496c6ba0ddd524c988f3901316c315e4916d9de096",
+   "policySha256": "sha256:824b66bd1d2434306b93764afc4c7c5ded7355fcef4706e03ecc994c4b6bf259",
+   "candidateBankSha256": "sha256:62056c8d0d895c2d8380e31ad5b30bbd5571c216f6d1813b18684aa55a64fdcf",
+   "assetPath": ".tmp/archive/pilot-capture-e4ca29fc/24_연향중_2학기_중간_중1_유사/assets/images/24_연향중_2학기_중간_중1_유사/q02-solution.svg",
+   "assetResponseSha256": "sha256:fd98ae9d4ace92734f7c6c496c6ba0ddd524c988f3901316c315e4916d9de096",
+   "archiveRowSha256": "sha256:385cf1f91d8299b525d490b20152063a1187544056e6721c6df3c716c7abfd54",
+   "screenshotSha256s": {
+    "image": "sha256:0417928ab1aae7b4a6206f39a5a5af3c08d74c976d800d4acd3ad4eaaa3bbbb4",
+    "context": "sha256:5aac4394f391b3db778104ffeb10589db67c7124b36b860e6e2a9a0257e12a7f",
+    "page": "sha256:e2ec1fafb213c06d2600168d0380941a46ec1da7ade698d87e62bd3318eff34e"
+   },
+   "matrixSha256": "sha256:f48054bf472e308f9b11a0a7dd28bc8c3ff177e21c353dad745ef41446b1fac7",
+   "engineSha256": "sha256:08744d4ea9046c1de0b4d815147e7f350d745a9aceb6eff8df3d19fd3e80aac8"
+  },
+  "paths": {
+   "runRoot": ".tmp/archive/pilot-capture-e4ca29fc",
+   "asset": ".tmp/archive/pilot-capture-e4ca29fc/24_연향중_2학기_중간_중1_유사/assets/images/24_연향중_2학기_중간_중1_유사/q02-solution.svg",
+   "candidateBank": ".tmp/archive/pilot-capture-e4ca29fc/24_연향중_2학기_중간_중1_유사/candidates/24_연향중_2학기_중간_중1_유사.js",
+   "matrix": ".tmp/archive/pilot-capture-e4ca29fc/24_연향중_2학기_중간_중1_유사/visual-engine/production/archive-capture/archive-render-matrix.json",
+   "archiveRow": ".tmp/archive/pilot-capture-e4ca29fc/24_연향중_2학기_중간_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-4318c32d48299848584ed6a0882f3143db8b6a961ed3f128f8aad79f06b1300d-sol-desktop.json",
+   "screenshots": {
+    "image": ".tmp/archive/pilot-capture-e4ca29fc/24_연향중_2학기_중간_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-4318c32d48299848584ed6a0882f3143db8b6a961ed3f128f8aad79f06b1300d-sol-desktop-va-4318c32d48299848584ed6a0882f3143db8b6a961ed3f128f8aad79f06b1300d.png",
+    "context": ".tmp/archive/pilot-capture-e4ca29fc/24_연향중_2학기_중간_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-4318c32d48299848584ed6a0882f3143db8b6a961ed3f128f8aad79f06b1300d-sol-desktop-va-4318c32d48299848584ed6a0882f3143db8b6a961ed3f128f8aad79f06b1300d-context.png",
+    "page": ".tmp/archive/pilot-capture-e4ca29fc/24_연향중_2학기_중간_중1_유사/visual-engine/production/archive-capture/archive-render/attempt-01/va-4318c32d48299848584ed6a0882f3143db8b6a961ed3f128f8aad79f06b1300d-sol-desktop.png"
+   }
+  },
+  "protectedParity": {
+   "status": "PASS",
+   "sourceRef": {
+    "path": "archive/exams/similar/middle/m1/2mid/24_연향중_2학기_중간_중1_유사.js",
+    "bytes": 48856,
+    "sha256": "sha256:ad26492c92acecc9fc25d4f0bcbb30e077e0740ba26b12bffedf594bf18b54b6"
+   },
+   "originalQuestionSha256": "sha256:7db73c3bcfe0b6cc608d3e33da2166ae3511aec32dfdb6ea3a10fd13cd32828e",
+   "questionCount": 22,
+   "protectedFields": [
+    "content",
+    "choices",
+    "answer",
+    "solution",
+    "image"
+   ],
+   "changedFields": [
+    "solutionImage",
+    "solutionImageSize",
+    "solutionImageAlt"
+   ],
+   "targetOrdinal": 2
+  },
+  "sizeClass": "full",
+  "observedDisplayScale": 0.4939371744791667,
+  "expectedDisplayScale": 0.4939371744791667,
+  "displayScaleDeltaCssPx": 0,
+  "layout": {
+   "source": "ARCHIVE_ROW_ISOLATED_REPLAY",
+   "status": "PASS",
+   "errors": []
+  },
+  "checks": {
+   "network": "PASS",
+   "assetResponse": "PASS",
+   "bankResponse": "PASS",
+   "naturalSize": "PASS",
+   "sizeClass": "PASS",
+   "displayScale": "PASS",
+   "layout": "PASS"
+  },
+  "fixtureClassification": "PILOT_AUTHOR_PLAN_CANDIDATE",
+  "evidenceIntegrity": "NO_CALLER_HOOK",
+  "uidAuthority": "STRUCTURAL_ONLY",
+  "independentInverseObservation": "NOT_RUN",
+  "qualification": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false
+ }
+}

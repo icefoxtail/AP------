@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-b13474effec3-d9123c60",
+  "sourceArchiveFile": "original/middle/m2/2final/20_팔마중_2학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_89ee5aee743adae3ab7f18e97a72e9cf7d0423c2cd5017147717073dfc5dd27c",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_CONVERSE",
+      "step": "각 세 변의 최대값 제곱과 나머지 제곱합을 비교해7·24·25와10·24·26만 직각임을 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7d543780e2e1bb514694e9f9e25c5ca12605577d5982bafb435a131562d26236",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "step": "밑변 차2와 높이3으로 직각삼각형을 구성해 빗변제곱13을 구한다.",
+      "note": "원문의심: 해설의 직사각형 표현과 달리 원문 그림은 직각사다리꼴이다. 실제 계산은 그림에 맞는다.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8b1c182d21a7ba480ee1763e13cf1bdc94abb013c3813a6ec828817bf87ee88c",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "step": "대각선10에 대한 직각삼각형 사영관계 BP=36/10와 BQ=64/10을 구해 차14/5를 얻는다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9dd7d4ee26a8a5a665285048dd98b653c66f4d56fda1c3b2cf80cdcd66918221",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_ELIMINATION",
+      "step": "빗변 수선의 발을 두고 MC와NC 및 전체 직각삼각형의 제곱관계식을 연립해 삼등분 길이제곱5를 구한다.",
+      "note": " 새 TPL 제안: 피타고라스 정리·역 및 도형 활용의 직접 풀이. 정의: 빗변 수선의 발을 두고 MC와NC 및 전체 직각삼각형의 제곱관계식을 연립해 삼등분 길이제곱5를 구한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_74c9b90424c6c8c7063af01676048515f96505e756d6f3db5cd41ae29eb7fbfa",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "step": "빗변중점으로 AM=5를 얻고 높이관계 AG제곱=8곱하기2 및 AG제곱=AH곱하기AM을 연속 적용한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8a14443a6c8ffd200ee56deccc6b008268eb6426a51dd728d35934f6235a4d53",
+      "sourceOrdinal": 23,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_CENTROID",
+      "templateKey": null,
+      "step": "무게중심으로 AD=3GD=15를 복원하고 직각삼각형의 빗변중점 성질로 BC=30을 얻어 피타고라스로 넓이216을 구한다.",
+      "note": " 새 PT 제안: 무게중심의 중선비와 넓이 분할. 무게중심이 각 중선을 꼭짓점에서2:1로 나누는 성질과 중선·중점선에 의한 길이비 및 넓이 분할을 이용한다. 도구 오류: PT_NOT_ACTIVE,DUPLICATE_PROPOSED_NAME",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    }
+  ]
+}

@@ -295,7 +295,7 @@ window.examData = {
     "difficultyBucket": 1,
     "level": "하",
     "score": 3,
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid_1col",
     "wide": true,
     "tags": [
       "닮은다면체",
@@ -352,7 +352,7 @@ window.examData = {
     "difficultyBucket": 2,
     "level": "하",
     "score": 3,
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid_2col",
     "wide": false,
     "tags": [
       "닮은회전체",
@@ -409,7 +409,7 @@ window.examData = {
     "difficultyBucket": 2,
     "level": "하",
     "score": 4,
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid_2col",
     "wide": false,
     "tags": [
       "AA닮음",
@@ -466,7 +466,7 @@ window.examData = {
     "difficultyBucket": 2,
     "level": "하",
     "score": 4,
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid_2col",
     "wide": false,
     "tags": [
       "AA닮음",
@@ -523,7 +523,7 @@ window.examData = {
     "difficultyBucket": 2,
     "level": "하",
     "score": 3,
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid_2col",
     "wide": false,
     "tags": [
       "사다리꼴",
@@ -580,7 +580,7 @@ window.examData = {
     "difficultyBucket": 2,
     "level": "하",
     "score": 4,
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "wide": true,
     "tags": [
       "내각의이등분선",
@@ -637,7 +637,7 @@ window.examData = {
     "difficultyBucket": 3,
     "level": "중",
     "score": 4,
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid_2col",
     "wide": false,
     "tags": [
       "삼각형과평행선",
@@ -694,7 +694,7 @@ window.examData = {
     "difficultyBucket": 3,
     "level": "중",
     "score": 4,
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid_2col",
     "wide": false,
     "tags": [
       "사다리꼴",
@@ -751,7 +751,7 @@ window.examData = {
     "difficultyBucket": 1,
     "level": "하",
     "score": 4,
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid_2col",
     "wide": false,
     "tags": [
       "평행선",
@@ -808,7 +808,7 @@ window.examData = {
     "difficultyBucket": 1,
     "level": "최하",
     "score": 3,
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid_2col",
     "wide": false,
     "tags": [
       "무게중심",
@@ -865,7 +865,7 @@ window.examData = {
     "difficultyBucket": 2,
     "level": "하",
     "score": 4,
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid_2col",
     "wide": false,
     "tags": [
       "무게중심",
@@ -1132,7 +1132,7 @@ window.examData = {
     "difficultyBucket": 1,
     "level": "최하",
     "score": 4,
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid_2col",
     "wide": false,
     "tags": [
       "확률의성질",
@@ -1245,7 +1245,7 @@ window.examData = {
     "difficultyBucket": 2,
     "level": "하",
     "score": 5,
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid_1col",
     "wide": true,
     "tags": [
       "이등변삼각형",
@@ -1300,7 +1300,7 @@ window.examData = {
     "difficultyBucket": 2,
     "level": "하",
     "score": 5,
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid_1col",
     "wide": true,
     "tags": [
       "SAS닮음",
@@ -1351,7 +1351,7 @@ window.examData = {
     "difficultyBucket": 3,
     "level": "하",
     "score": 5,
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid_1col",
     "wide": true,
     "tags": [
       "평행사변형",
@@ -1404,7 +1404,7 @@ window.examData = {
     "difficultyBucket": 2,
     "level": "하",
     "score": 5,
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid_1col",
     "wide": true,
     "tags": [
       "확률의곱셈",

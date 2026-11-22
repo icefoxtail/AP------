@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-e06108974676-426b2cf8",
+  "sourceArchiveFile": "textbooks/동아출판_공통수학1/동아_공통수학1_이차방정식과이차함수_중단원연습_고1/동아_공통수학1_이차방정식과이차함수_중단원연습_고1.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_116c9905effc696bf11a8157f7fb6b13d03e0b02bdb49c6cde48d73af2e93743",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "step": "각 식을0으로 놓은 판별식이8,0,-15이므로 x축과 각각 두 점,한 점,영 점에서 만난다.",
+      "note": " 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ae6593682298e1f2a727fdad86039ecd5d075e41a623f01a0c92710dee37d5db",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "step": "각 직선식을 대입한 이차방정식의 판별식이-16,9,0이므로 교점 수는0,2,1이다.",
+      "note": " 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5fd514f052593506cba87de8cdcbdec45c40aa8addb782ddd90ad16321dbbea6",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "step": "x축에 접하므로 판별식의1/4인 a²-4a+3=0을 풀어 a=1 또는3이다.",
+      "note": " 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ccbcf5e8341b9c49f5de7275f6f39c54ac3344b1e754f0ccd566d3c6f7935d47",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "step": "직선을 y=mx+2로 놓으면 교점식 x²-(m+4)x+4=0의 중근조건(m+4)²-16=0에서 m=0,-8을 얻는다.",
+      "note": " 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_08efee9678f7c9f79c47d19d458a7519e2f4fd33990e9685a4aefdb2be0a5746",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "step": "두 x축 교점은 판별식 a²-4b>0과 동치이고 b<0이면 이를 보장하지만 f(1)>0은 보장하지 않아 ㄱㄴ이다.",
+      "note": " 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a8dff93361e6453ce989939cd5dc08aeca8e352a86c5cd7363d3b25bddbee6fc",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "step": "교점식(x+1)²=n+1-k에서 교점개수는 우변의 부호에 따라0,1,2이며 네 개의 합5는(0,1,2,2)일 때이므로 k=3이다.",
+      "note": "좌표평면 그림 직접 확인; 단계별 직선은 y=x-1,x,x+1,x+2이다. 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}]",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_883e96dd2df8b4779ea816fa75e2bae1111f51e122def4d029e928d6c006681f",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "step": "⑴ (x-1)²+4의 꼭짓점과 양끝을 비교하면 최소4,최대13이며⑵ -2(x+1)²+2는 주어진 구간에서 감소하여 최대-6,최소-30이다.",
+      "note": " 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_83b96a2e3cd52bfc2ed0cf6bb4a725f08395e80c91de598e7a476e2fbaa92bac",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "step": "(x-2)²+k-4의 구간 최소는 k-4,최대는 x=4의 k이므로2k-4=10에서 k=7이다.",
+      "note": " 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_419f44527e4aaffc8f243ca15d698dd0a67c8f8b94f1195280c5d2820304ad5b",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "step": "x에 대한 최솟값 f(a)=-a²-a=-(a+1/2)²+1/4이고 a=-1/2가 구간에 포함되어 최댓값1/4이다.",
+      "note": " 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e907b6697e3c91cefaea72bbc17705e00dc5c33a1094ae4806b8bb1d936c9d35",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+      "step": "수직거리 AB=-2t²+6t+8=-2(t-3/2)²+25/2를0≤t≤2에서 비교해 최대25/2,최소8을 얻는다.",
+      "note": " 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cebe9ee9e9a9ff202a20ad82d69d2e31b196f10953eb929d74a87eb105c6d8b1",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+      "step": "전체 가로W,세로h로 두면 두 합동직사각형의 공통 칸막이를 한 번 세어2W+3h=60,전체넓이 Wh=30h-3h²/2이므로 h=10,W=15에서150이다.",
+      "note": "그림 하단은 잘렸으나 발문의 두 합동 직사각형과 상단·세 세로 테이프로 공통 칸막이 구조가 확인된다. 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}]",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_efbb08167e0bc9bd9489417c3106efce61b54f50b1a3071adefc94f3a128d77a",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+      "step": "대칭축 x=6에서 C의 좌표a는0<a<6이고 가로12-2a,높이-a²+12a여서 둘레-2a²+20a+24=-2(a-5)²+74의 최대74를 구한다.",
+      "note": "그림 하단은 잘렸으나 발문이 두 아래 꼭짓점은 x축 위임을 명시하여 길이식 결정 가능. 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}]",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    }
+  ]
+}

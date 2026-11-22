@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const navigation = require('../archive/archive2-navigation.js');
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 const read = name => fs.readFileSync(path.join(__dirname, '../archive', name), 'utf8');
 
 const labelsOf = (html, sectionPattern) =>
@@ -26,9 +27,9 @@ test('PC menu has six entries in order and the phone menu has six short ones inc
   for (const mode of ['workspace', 'unit']) {
     const html = navigation.markup(mode);
     assert.deepEqual(labelsOf(html, /<nav class="archive-navigation-tasks"[\s\S]*?<\/nav>/),
-      ['홈', '학교별 기출', '단원별 기출', '문제지 만들기', '빠른 평가', '보관함 · 출제 내역']);
+      ['홈', '학교별 기출', '단원별 기출', '문제지 만들기', '빠른 평가', '출제 내역 · 보관함']);
     assert.deepEqual(labelsOf(html, /<nav class="archive-mobile-tabs"[\s\S]*?<\/nav>/),
-      ['홈', '학교별', '단원별', '만들기', '빠른평가', '보관함']);
+      ['홈', '학교별', '단원별', '만들기', '빠른평가', '출제내역']);
   }
 });
 
@@ -37,16 +38,29 @@ test('the menu carries no icons or text symbols', () => {
   assert.doesNotMatch(html, /<svg|archive-nav-icon|•••/);
 });
 
-test('saved and recent screens both mark the one 보관함 · 출제 내역 entry as current', () => {
+test('saved and recent screens both mark the one 출제 내역 · 보관함 entry as current', () => {
   for (const view of ['saved', 'recent']) {
     const html = navigation.markup('workspace', { view });
     const sidebar = html.match(/<nav class="archive-navigation-tasks"[\s\S]*?<\/nav>/)[0];
     const current = [...sidebar.matchAll(/<button[^>]*aria-current="page"[^>]*>[\s\S]*?<span class="archive-nav-label">([^<]*)<\/span>/g)];
-    assert.deepEqual(current.map(match => match[1]), ['보관함 · 출제 내역'], view);
+    assert.deepEqual(current.map(match => match[1]), ['출제 내역 · 보관함'], view);
     assert.ok(navigation.matches('library', view));
     assert.equal(navigation.matches('library', 'find'), false);
   }
-  assert.match(navigation.libraryTabs('recent'), /data-view="saved" aria-pressed="false">보관함[\s\S]*data-view="recent" aria-pressed="true">출제 내역/);
+  // The menu entry opens 출제 내역 first (PC and phone); 보관함 stays one switch press away and keeps its own explicit links.
+  for (const mode of ['workspace', 'unit']) {
+    const html = navigation.markup(mode);
+    const sidebar = html.match(/<nav class="archive-navigation-tasks"[\s\S]*?<\/nav>/)[0];
+    const phone = html.match(/<nav class="archive-mobile-tabs"[\s\S]*?<\/nav>/)[0];
+    for (const part of [sidebar, phone]) {
+      const entry = part.match(/<(?:button|a)[^>]*data-nav-key="library"[^>]*>/)[0];
+      assert.match(entry, mode === 'workspace' ? /data-view="recent"/ : /href="workspace\.html\?view=recent"/);
+      assert.doesNotMatch(entry, /view=saved|data-view="saved"/);
+    }
+  }
+  const tabs = navigation.libraryTabs('recent');
+  assert.match(tabs, /data-view="recent" aria-pressed="true">출제 내역[\s\S]*data-view="saved" aria-pressed="false">보관함/);
+  assert.ok(tabs.indexOf('data-view="recent"') < tabs.indexOf('data-view="saved"'));
 });
 
 test('quick assessment views keep 빠른 평가 current on PC and phone, and 만들기 only for compose', () => {
@@ -68,13 +82,13 @@ test('quick assessment views keep 빠른 평가 current on PC and phone, and 만
 test('the three tool addresses are hidden from the menus but still open by address', () => {
   // The health screen is still a workspace route and a menu-less view, and the two pages still exist.
   assert.equal(navigation.currentView('workspace'), 'home');
-  const route = read('archive2-workspace.js').match(/state\.view = \[([^\]]*)\]\.includes\(p\.get\("view"\)\)/);
+  const route = readWorkspace().match(/state\.view = \[([^\]]*)\]\.includes\(p\.get\("view"\)\)/);
   assert.ok(route && /"health"/.test(route[1]), 'workspace still routes ?view=health');
   assert.equal(navigation.currentKey('workspace'), 'home');
   for (const name of ['index.html', 'problem-bank-search.html', 'workspace.html'])
     assert.ok(fs.existsSync(path.join(__dirname, '../archive', name)), name);
-  assert.match(read('archive2-workspace.js'), /view === "health"|\["find", "compose", "health"\]/);
-  const shown = read('archive2-workspace.js');
+  assert.match(readWorkspace(), /view === "health"|\["find", "compose", "health"\]/);
+  const shown = readWorkspace();
   assert.doesNotMatch(shown, /href="problem-bank-search\.html"|href="index\.html\?legacy=1"|기존 아카이브/);
   assert.match(shown, /data-boot-wait="failed"[^`]*다시 시도/);
 });
@@ -116,8 +130,8 @@ test('only a teacher session shows 로그인됨; any other account is asked for 
     ['admin role', { role: 'admin', session_token: 't' }, true],
     ['owner role', { role: 'owner', session_token: 't' }, true],
     ['nested user role', { user: { role: 'Teacher ' }, session_token: 't' }, true],
-    ['built-in admin id', { id: 't_admin' }, true],
-    ['admin login id', { login_id: 'admin' }, true],
+    ['built-in admin id', { id: 't_admin', session_token: 't' }, true],
+    ['admin login id', { login_id: 'admin', session_token: 't' }, true],
     ['student', { role: 'student', session_token: 't', login_id: 's1' }, false],
     ['parent', { role: 'parent', session_token: 't' }, false],
     ['token without a role', { session_token: 't', name: '김선생' }, false],
@@ -133,6 +147,14 @@ test('only a teacher session shows 로그인됨; any other account is asked for 
       assert.match(html, /선생님 계정으로 로그인해 주세요/, label);
       assert.match(html, /data-login="teacher" href="\.\.\/apmath\/"/, label);
     }
+  }
+  // 토큰이 없는 옛 교사 세션은 요청을 보낼 수 없으므로 로그인됨으로 보이지 않고, 다른 계정 안내도 아닌 "로그인 필요"다.
+  for (const value of [{ role: 'teacher', name: '김선생' }, { id: 't_admin' }, { login_id: 'admin' }, { role: 'teacher', session_token: '' }]) {
+    const state = navigation.loginState(value);
+    assert.deepEqual([state.loggedIn, state.needsTeacher], [false, false], JSON.stringify(value));
+    const html = navigation.markup('workspace', { session: value });
+    assert.doesNotMatch(html, /로그인됨/, JSON.stringify(value));
+    assert.match(html, /data-login="out"/, JSON.stringify(value));
   }
   // Expired, empty and broken values are plain "logged out", not "wrong account".
   for (const value of [null, undefined, {}, [], 'text', 42, true, { role: 'teacher', expires_at: '2020-01-01T00:00:00Z' }]) {
@@ -204,7 +226,7 @@ test('standalone pages in a sub folder keep the menu working: base prefix, chose
   const html = navigation.markup('standalone', { view: 'saved', title: '시험지 보관함', base: '../' });
   assert.match(html, /href="\.\.\/workspace\.html\?view=home"/, 'brand');
   assert.match(html, /href="\.\.\/unit-past-exams\.html\?ready=1" data-nav-key="unit"/);
-  assert.match(html, /href="\.\.\/workspace\.html\?view=saved" data-nav-key="library" aria-current="page" class="active"/);
+  assert.match(html, /href="\.\.\/workspace\.html\?view=recent" data-nav-key="library" aria-current="page" class="active"/);
   assert.equal((html.match(/aria-current="page"/g) || []).length, 2, 'one current entry in the PC menu and one in the phone menu');
   assert.match(html, /<span class="archive-mobile-title">시험지 보관함<\/span>/);
   assert.match(html, /href="\.\.\/\.\.\/apmath\/"/, 'login link reaches AP Math OS from archive/assessment/');

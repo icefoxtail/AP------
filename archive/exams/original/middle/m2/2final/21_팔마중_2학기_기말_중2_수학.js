@@ -17,7 +17,7 @@ window.examData = {
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -81,7 +81,7 @@ window.examData = {
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -103,9 +103,9 @@ window.examData = {
     "hasVisual": true,
     "images": ["assets/images/21_팔마중_2학기_기말_중2_수학/q2-problem-visual-v2.svg"],
     "accessibility": "삼각형 ABC의 세 변의 중점 D, E, F를 연결하여 만든 삼각형 DEF",
-    "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q2-solution-visual-v2.svg",
-    "solutionImageAlt": "BC=15 cm, AC=17 cm이며 세 중점 D, E, F를 연결했다. EF는 6 cm이다. 세 안쪽 변의 각각의 대응 길이는 같은 색과 눈금으로 표시했다.",
-    "solutionImageCaption": "DE=17÷2=8.5 cm, DF=15÷2=7.5 cm이고 EF=6 cm이다. 따라서 둘레는 22 cm이고 정답은 ③이다.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q2-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 세 변의 중점 D, E, F를 이어 만든 삼각형 DEF가 회색으로 칠해져 있다. 삼각형 ABC의 변에 12, 15, 17이, 삼각형 DEF의 변에 8.5, 7.5, 6이 적혀 있다.",
+    "solutionImageCaption": "중점연결정리에 의해 DE는 AC의 절반인 8.5, DF는 BC의 절반인 7.5, EF는 AB의 절반인 6이므로 삼각형 DEF의 둘레는 8.5+7.5+6=22 cm이다. 따라서 답은 ③ 22 cm이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
@@ -145,7 +145,7 @@ window.examData = {
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -209,7 +209,7 @@ window.examData = {
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -265,7 +265,7 @@ window.examData = {
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -331,7 +331,7 @@ window.examData = {
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -397,7 +397,7 @@ window.examData = {
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 9,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -464,7 +464,7 @@ window.examData = {
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 9,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -486,9 +486,9 @@ window.examData = {
     "hasVisual": true,
     "images": ["assets/images/21_팔마중_2학기_기말_중2_수학/q8-problem-visual-v2.svg"],
     "accessibility": "직각삼각형 ABC에서 두 직각변이 16과 12일 때 빗변 AC",
-    "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q8-solution-visual-v2.svg",
-    "solutionImageAlt": "B는 직각이다. AB=15, AD=17, DC=12이고 AC가 x이다. 작은 직각삼각형 ABD에서 BD가 8임을 표시했다.",
-    "solutionImageCaption": "ABD에서 BD=√(17²−15²)=8이고 BC=8+12=20이다. ABC에서 AC=√(15²+20²)=25이므로 정답은 ⑤이다.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: ∠B가 직각인 삼각형 ABC에서 변 BC 위의 점 D와 A를 이은 선분 AD가 그어져 있다. AB=15, BD=8, DC=12, AD=17, AC=25가 적혀 있다.",
+    "solutionImageCaption": "직각삼각형 ABD에서 BD=√(17²−15²)=8이므로 BC=8+12=20이고, 직각삼각형 ABC에서 AC=√(15²+20²)=25이다. 따라서 답은 ⑤ 25이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
@@ -528,7 +528,7 @@ window.examData = {
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 9,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -594,7 +594,7 @@ window.examData = {
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 9,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -616,9 +616,9 @@ window.examData = {
     "hasVisual": true,
     "images": ["assets/images/21_팔마중_2학기_기말_중2_수학/q10-problem-visual-v2.svg"],
     "accessibility": "직사각형 ABCD를 선분 AF를 접는 선으로 하여 꼭짓점 D를 선분 BC 위의 점 E로 접은 그림",
-    "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q10-solution-visual-v2.svg",
-    "solutionImageAlt": "AB=9 cm, AD=15 cm인 직사각형이다. AF가 접는 선이고 D가 E로 옮겨진다. AEF만 색칠했다. 대응하는 두 쌍은 같은 색과 눈금이다.",
-    "solutionImageCaption": "AE=AD=15 cm이므로 BE=12 cm, EC=3 cm이다. FC=x라 하면 EF=DF=9−x이므로 3²+x²=(9−x)²에서 x=4 cm이다. 정답은 ④이다.",
+    "solutionImage": "assets/images/21_팔마중_2학기_기말_중2_수학/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD에서 꼭짓점 D가 변 BC 위의 점 E로 옮겨지고, 접는 선 AF와 AE, EF가 그어져 삼각형 AEF가 회색으로 칠해져 있다. AB=9, AD=15, EC=3, DF=5, FC=4, EF=5가 적혀 있다.",
+    "solutionImageCaption": "접은 도형에서 AE=AD=15, EF=DF이므로 직각삼각형 ABE에서 BE=√(15²−9²)=12이고 EC=15−12=3이다. FC=x, EF=DF=9−x로 두면 (9−x)²=3²+x²에서 x=4 cm이므로 답은 ④ 4 cm이다.",
     "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
@@ -1161,7 +1161,7 @@ window.examData = {
     "standardUnit": "확률",
     "standardUnitOrder": 11,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -1279,7 +1279,7 @@ window.examData = {
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 8,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "도형"
@@ -1338,7 +1338,7 @@ window.examData = {
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 8,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "도형"
@@ -1399,7 +1399,7 @@ window.examData = {
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 9,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "도형"
@@ -1458,7 +1458,7 @@ window.examData = {
     "standardUnit": "확률",
     "standardUnitOrder": 11,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "그래프"

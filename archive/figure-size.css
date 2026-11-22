@@ -1,0 +1,93 @@
+/*
+ * 그림 크기 규칙 — "단 폭 비율 하나" (2026-11-18 사용자 결정)
+ *
+ * 적용 범위: A4 쪽 배치 = PC 화면의 쪽 보기 + 인쇄 + PDF. 휴대폰 읽기 배치(<=640px 화면)에는 변수를 주지 않아
+ * engine.html·mixed_engine.html·archive2-preview-mobile.css에 남아 있는 옛 규칙이 그대로 쓰인다(학생이 확대해서 봄).
+ * 인쇄는 화면에서 만든 쪽 DOM을 그대로 찍으므로 @media print가 아니라 "휴대폰이 아닌 모든 곳"에 건다.
+ *
+ * 값은 아래 변수 다섯 개만 고치면 된다. 비율은 "그림이 놓인 단 폭"(--ap-col-w) 대비이고 폭·높이 모두 같은 단 폭을 쓴다.
+ *   --ap-fig-q       문제 그림 폭·높이 상한                  (기본 0.75)
+ *   --ap-fig-sol     해설 그림 폭·높이 상한                  (기본 0.80)
+ *   --ap-fig-wide-w  가로로 긴 그림(자연 폭:높이 >= 2:1) 폭  (기본 0.88)
+ *   --ap-fig-wide-h  가로로 긴 그림 높이                     (기본 0.30)
+ *   --ap-col-w       단 폭(A4 쪽의 한 칸 안쪽 폭 83.65mm = 316px. 높이 상한을 길이로 계산하는 분모)
+ * 그림 하나 단위 덮어쓰기: 문항 필드 imageScale / solutionImageScale, 본문 인라인 <img data-scale="70"> (30~100, 단 폭 %).
+ *
+ * 옛 등급(imageSize·imageSizeOverride·solutionImageSize·solutionImageSizeOverride·solutionImageLayout)은 이 화면에서 크기에
+ * 영향을 주지 않는다(데이터는 그대로이고 클래스도 붙지만 이 규칙이 읽지 않는다). 그림 속 글자 크기 때문에 줄이기를 멈추지 않는다.
+ *
+ * @layer 안의 !important 선언은 레이어 밖의 !important(해설 칸 맞춤 sol-fit-narrow, 해설 다시보기 이미지 규칙, 휴대폰 규칙)와
+ * 인라인 style의 max-width:Npx보다 우선한다. 그래서 인라인 고정 폭이 칸을 넘기는 그림도 같은 비율로 들어온다.
+ */
+@media not screen and (max-width: 640px) {
+  :root {
+    --ap-col-w: 83.65mm; /* 한 칸 안쪽 폭: (210mm - 쪽 여백 30mm) / 2 - 칸 좌우 padding 12px x 2 = 316px */
+    --ap-fig-q: 0.75;
+    --ap-fig-sol: 0.8;
+    --ap-fig-wide-w: 0.88;
+    --ap-fig-wide-h: 0.3;
+  }
+
+  @layer ap-figure-size {
+    /* 문제 그림(필드 그림, 본문 인라인 img·svg, 해설지의 문제 다시보기 그림) — 기본값. 특이도 0이라 아래 덮어쓰기가 항상 이긴다. */
+    :where(.q-content, .q-image-wrap, [data-semantic-content="1"], .choices, .sol-image-wrap, .sol-exp, .sol-chunk)
+    :where(img, svg:not(mjx-container svg, .katex svg, svg svg)) {
+      --ap-fw: var(--ap-fig-q);
+      --ap-fh: var(--ap-fig-q);
+      --ap-fig-mw: min(100%, calc(var(--ap-col-w) * var(--ap-fw) * var(--ap-fig-k, 1)));
+      --ap-fig-mh: calc(var(--ap-col-w) * var(--ap-fh) * var(--ap-fig-k, 1));
+      height: auto !important;
+      max-width: var(--ap-fig-mw) !important;
+      max-height: var(--ap-fig-mh) !important;
+    }
+
+    /* html2canvas(기본 인쇄 경로)는 object-fit을 지원하지 않고 그림을 CSS 상자 크기대로 늘려 그린다. 그래서 폭과 높이 상한을 함께 걸고
+       object-fit으로 맞추지 않고, 그림 상자 자체가 그림 비율을 지키게 한다: 줄일 그림은 width:auto, height:auto에 max-width·max-height만 건다.
+       묶음 그림(높이 상한 없음)은 작성자가 정한 width가 있으면 그대로 둔다(max-height가 없어 비율이 깨지지 않는다). */
+    :where(.q-content, .q-image-wrap, [data-semantic-content="1"], .sol-image-wrap, .sol-exp, .sol-chunk) :where(img:not([data-ap-fig="bundle"])) {
+      width: auto !important;
+    }
+
+    /* 그림 필드 그림(.q-image-wrap, .sol-image-wrap)은 묶음이어도 옛 등급이 정한 width:50~90%를 버리고 자연 크기에서 상한까지만 줄인다. */
+    :where(.q-image-wrap, .sol-image-wrap) :where(img) {
+      width: auto !important;
+    }
+
+    /* 해설 그림(해설 그림 필드, 해설 본문 인라인) */
+    :where(.sol-image-wrap, .sol-exp, .sol-chunk) :where(img, svg:not(mjx-container svg, .katex svg, svg svg)) {
+      --ap-fw: var(--ap-fig-sol);
+      --ap-fh: var(--ap-fig-sol);
+    }
+
+    /* 선택지 안의 그림은 묶음: JS가 못 돌아도 단 폭 전체까지(줄이지 않음) */
+    :where(.choices) :where(img, svg:not(mjx-container svg, .katex svg, svg svg)) {
+      --ap-fig-mw: calc(100% * var(--ap-fig-k, 1));
+      --ap-fig-mh: none;
+    }
+
+    /* 가로로 긴 그림 (자연 폭:높이 >= 2:1): 폭 88% 이하, 높이 단 폭의 30% 이하 */
+    [data-ap-fig="wide"] {
+      --ap-fw: var(--ap-fig-wide-w);
+      --ap-fh: var(--ap-fig-wide-h);
+    }
+
+    /* 묶음 그림(선택지 안, 한 문항 본문에 2개 이상, 보기가 그림 안에 든 문항): 줄이지 않고 단 폭 전체까지 */
+    [data-ap-fig="bundle"] {
+      --ap-fig-mw: calc(100% * var(--ap-fig-k, 1));
+      --ap-fig-mh: none;
+    }
+
+    /* 그림 하나 단위 덮어쓰기: 있으면 위 모든 값보다 우선 */
+    [data-ap-fig="scaled"] {
+      --ap-fw: var(--ap-fig-scale);
+      --ap-fh: var(--ap-fig-scale);
+      --ap-fig-mw: min(100%, calc(var(--ap-col-w) * var(--ap-fw) * var(--ap-fig-k, 1)));
+      --ap-fig-mh: calc(var(--ap-col-w) * var(--ap-fh) * var(--ap-fig-k, 1));
+    }
+
+    /* 칸이 넘칠 때 fitQuestionBox가 단계적으로 붙이는 마지막 수단(예전 img-fit-*): 같은 비율을 곱해서 더 줄인다 */
+    img.img-fit-tight { --ap-fig-k: 0.85; }
+    img.img-fit-tighter { --ap-fig-k: 0.7; }
+    img.img-fit-micro { --ap-fig-k: 0.55; }
+  }
+}

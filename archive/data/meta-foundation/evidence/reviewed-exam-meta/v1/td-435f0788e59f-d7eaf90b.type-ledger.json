@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-435f0788e59f-d7eaf90b",
+  "sourceArchiveFile": "original/high/h2/2mid/25_금당고_2학기_중간_고2_미적분.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_88b1649ecb20b608e2043158733837a90eeb25f4d7ec936c1391fea6ba1352f2",
+      "sourceOrdinal": 1,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+      "templateKey": null,
+      "step": "다항식과 지수항의 지배항 및 극한 사칙연산으로 다섯 진술을 확인한다.",
+      "note": "정의: 무한 수열의 일반항을 정리하거나 공비·부호·지배항에 따라 수렴값과 수렴조건을 결정한다. 구별: ACTIVE 함수극한 유형은 실수입력 접근을 다루며 수열의 이산 지표 무한대 수렴 및 진동 판정이 명시되지 않는다. 검사 오류: [{\"code\":\"PT_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cb03de37db4943f15b3f6ed6d5d1328a1988344f776e226889b380927f5ce9fd",
+      "sourceOrdinal": 2,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "부분분수로 만든 망원부분합의 극한을 구한다.",
+      "note": "정의: 무한급수의 부분합 극한 또는 수렴정리를 이용해 수렴 여부와 합을 구한다. 구별: ACTIVE 대수 수열의 합은 유한합 범위이며 무한급수 수렴과 합을 포함하지 않는다. 검사 오류: [{\"code\":\"PT_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f53c9b0245ff4305459edd22950ccd7ed795b1f0fad545d7d8bfb604df2a1f2b",
+      "sourceOrdinal": 3,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "두 수렴하는 등비급수로 분리하여 합을 더한다.",
+      "note": "정의: 무한급수의 부분합 극한 또는 수렴정리를 이용해 수렴 여부와 합을 구한다. 구별: ACTIVE 대수 수열의 합은 유한합 범위이며 무한급수 수렴과 합을 포함하지 않는다. 검사 오류: [{\"code\":\"PT_NOT_ACTIVE\"},{\"code\":\"DUPLICATE_PROPOSED_NAME\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d973836e758061961292e34ea0960047b5c3067f2747ea0f422f9fe745065ee0",
+      "sourceOrdinal": 7,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "코사인 주기로 영이 아닌 짝수항을 모아 등비급수를 합한다.",
+      "note": "정의: 무한급수의 부분합 극한 또는 수렴정리를 이용해 수렴 여부와 합을 구한다. 구별: ACTIVE 대수 수열의 합은 유한합 범위이며 무한급수 수렴과 합을 포함하지 않는다. 검사 오류: [{\"code\":\"PT_NOT_ACTIVE\"},{\"code\":\"DUPLICATE_PROPOSED_NAME\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8cdd0392d3f496f3cc561f170b282a8372b6c821495c12e56124ac592faaed21",
+      "sourceOrdinal": 14,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+      "templateKey": null,
+      "step": "연속 부분합 차로 일반항을 구한 뒤 n제곱 가중항의 극한을 계산한다.",
+      "note": "정의: 무한 수열의 일반항을 정리하거나 공비·부호·지배항에 따라 수렴값과 수렴조건을 결정한다. 구별: ACTIVE 함수극한 유형은 실수입력 접근을 다루며 수열의 이산 지표 무한대 수렴 및 진동 판정이 명시되지 않는다. 검사 오류: [{\"code\":\"PT_NOT_ACTIVE\"},{\"code\":\"DUPLICATE_PROPOSED_NAME\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c46f5f6cc87c2a3ee01d4c98f88c7bd48a332d1be5c5b6ccef7f931e7f5ca226",
+      "sourceOrdinal": 16,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "순환마디 세 항을 묶어 공비 1/8의 등비급수를 합한다.",
+      "note": "정의: 무한급수의 부분합 극한 또는 수렴정리를 이용해 수렴 여부와 합을 구한다. 구별: ACTIVE 대수 수열의 합은 유한합 범위이며 무한급수 수렴과 합을 포함하지 않는다. 검사 오류: [{\"code\":\"PT_NOT_ACTIVE\"},{\"code\":\"DUPLICATE_PROPOSED_NAME\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4ec2da9885f7687c4b1c478efd0ec993e11b70118a87e179b10bebc35bf33171",
+      "sourceOrdinal": 17,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "대칭과 사인 주기로 교점수 일반항을 얻고 부분분수 망원급수를 합한다.",
+      "note": "정의: 무한급수의 부분합 극한 또는 수렴정리를 이용해 수렴 여부와 합을 구한다. 구별: ACTIVE 대수 수열의 합은 유한합 범위이며 무한급수 수렴과 합을 포함하지 않는다. 검사 오류: [{\"code\":\"PT_NOT_ACTIVE\"},{\"code\":\"DUPLICATE_PROPOSED_NAME\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_887d2dacc50db69bfc4ca66d03b69ae7d2fd1413d3f3044c88ac564b77982a94",
+      "sourceOrdinal": 20,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "내외접반지름비로 둘레와 넓이의 공비를 정해 각각 무한합을 구한다.",
+      "note": "정의: 무한급수의 부분합 극한 또는 수렴정리를 이용해 수렴 여부와 합을 구한다. 구별: ACTIVE 대수 수열의 합은 유한합 범위이며 무한급수 수렴과 합을 포함하지 않는다. 검사 오류: [{\"code\":\"PT_NOT_ACTIVE\"},{\"code\":\"DUPLICATE_PROPOSED_NAME\"}]",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}

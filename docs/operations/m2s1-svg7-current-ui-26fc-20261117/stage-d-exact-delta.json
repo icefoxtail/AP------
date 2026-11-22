@@ -1,0 +1,764 @@
+{
+  "schemaVersion": "archive-svg7-current-ui-reader-reversible-delta-v1",
+  "baselineMain": "b8eadbb7ef254e4d0a3326e57b2c9d491b62a4b4",
+  "special": {
+    "before": {
+      "gitBlobSha1": "e53f1b703531632694708c00737a1b6815a2bd41",
+      "sha256": "3e808a596b090ad93d95514fdc74454df68bb5ebbea1f690f6783f8e279d5426",
+      "bytes": 37068
+    },
+    "after": {
+      "path": "tools/4slot/existing-registered-vector-svg7-ui.cjs",
+      "gitBlobSha1": "ca4f1d36a6c758a5984226c9091e9bb01b38157f",
+      "sha256": "b97aedb8e2752bbebc8feaf324ec1254b07cbde41e5f115daaf2b80cb1a63a90",
+      "bytes": 57228
+    },
+    "edits": [
+      {
+        "old": "const {verifySvg7DerivedContinuity} = require('./existing-registered-vector-svg7-derived-continuity.cjs');",
+        "next": "const {verifySvg7DerivedContinuity,projectTableRows} = require('./existing-registered-vector-svg7-derived-continuity.cjs');"
+      },
+      {
+        "old": "function verifySvg7Ui({technical,visual,technicalRef,readRef,readLiveRef,readCurrentFile,questionUid,sourceOrdinal,surface,sourceRef,assetRefs,validateCapture}){\n",
+        "next": "function verifySvg7Ui({technical,visual,technicalRef,readRef,readLiveRef,readCurrentFile,questionUid,sourceOrdinal,surface,sourceRef,assetRefs,validateCapture}){\n  if(technical?.schemaVersion===CURRENT_SCHEMA)return verifyCurrentSvg7Ui({technical,visual,technicalRef,readRef,readLiveRef,readCurrentFile,\n    questionUid,sourceOrdinal,surface,sourceRef,assetRefs,validateCapture});\n"
+      },
+      {
+        "old": "module.exports={SCHEMA,TECHNICAL_REF,VISUAL_REF,MANIFEST_REF,verifySvg7Ui,embeddedChoiceContinuity,inlineFigureContinuity};",
+        "next": "\n// A separately named current capture binding. The historical SVG7 contract and\n// both original source-continuity lanes above remain unchanged. This path\n// transports display evidence only; the caller still verifies prior REGISTERED\n// vectors, native authority, static review, selected metadata and source bytes.\nconst CURRENT_SCHEMA = 'archive-m2s1-svg7-current-ui-binding-v1';\nconst CURRENT_CAPTURE = 'a57c51f633c937da15d1fac766631b413e02bd55';\nconst CURRENT_PUBLIC = '30d0245666fc6d85c73f2ef25fe6796560c64843';\nconst CURRENT_PREFIX = 'docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/';\nconst CURRENT_TECHNICAL_REF = Object.freeze({\"commit\":\"0b7ec9534ca10422fd87fad65dc967a1b8a15ac8\",\"path\":\"docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/technical-ui14-current-v1.json\",\"gitBlobSha1\":\"d3392daf54a0c6ebe338f3fd6f575e4feb6d3cf6\",\"sha256\":\"79ea9e7c8d3060c96177945903b262c099e1f945753aa74a711b7912085e6159\",\"bytes\":74569});\nconst CURRENT_VISUAL_REF = Object.freeze({\"commit\":\"d8c5d6c3a81b20838ec8dc1102120dc7ddac0c28\",\"path\":\"docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/visual-ui14-current-binding-v1.json\",\"gitBlobSha1\":\"a82aa350f2913d86ea02810e9261bc05e3abbfda\",\"sha256\":\"8fae8365f9fb93ce347161f9b9500ba31fec800a2ed1d50d0b24bd5c6840eaad\",\"bytes\":20912});\nconst CURRENT_DATA_PATHS = Object.freeze({\n  metadata:'archive/data/question_metadata.json',\n  identity:'archive/data/question_identity_map.json',\n  svg:'archive/data/svg-accessibility-index.js'\n});\nconst {parseIndex:parseCurrentSvgIndex,selectEntries:selectCurrentSvgEntries} = require('./existing-vector-svg-index-continuity.cjs');\nconst currentTableCache = new WeakMap();\nfunction currentPinned(read,ref){\n  exact(ref,REF_KEYS,'CURRENT_REF_KEYS');\n  need(/^[a-f0-9]{40}$/.test(ref.commit||'')&&/^[a-f0-9]{40}$/.test(ref.gitBlobSha1||'')&&\n    /^[a-f0-9]{64}$/.test(ref.sha256||'')&&Number.isSafeInteger(ref.bytes)&&ref.bytes>0,'CURRENT_REF_PIN');\n  const raw=read(ref);\n  need(Buffer.isBuffer(raw)&&raw.length===ref.bytes&&sha(raw)===ref.sha256&&blob(raw)===ref.gitBlobSha1,'CURRENT_REF_BYTES');\n  return raw;\n}\nfunction currentProject(raw,schema){\n  need(Buffer.isBuffer(raw)&&raw.length>0,'CURRENT_TABLE_BYTES');\n  const digest=sha(raw),cached=currentTableCache.get(raw);\n  if(cached&&cached.digest===digest&&cached.schema===schema)return cached;\n  const projected=projectTableRows(raw,schema);\n  need(projected.globalRecordCount>=75,'CURRENT_GLOBAL_TABLE_COUNT');\n  const result={...projected,schema,digest,wholeBankSha256:sha(stable(projected.rows))};\n  currentTableCache.set(raw,result);\n  return result;\n}\nfunction currentTablesAndSvg(raw,manifest,readRef,readCurrentFile){\n  // Only these generated data paths may differ from their captured whole file.\n  // projectTableRows preserves all 75 rows and counts their UIDs globally.\n  const tableBindings=[];\n  for(const [path,schema] of [[CURRENT_DATA_PATHS.metadata,'archive-question-metadata-v1'],\n    [CURRENT_DATA_PATHS.identity,'question-identity-map-v1']]){\n    const ref=path===CURRENT_DATA_PATHS.identity?raw.identityRef:one(raw.servedFiles,r=>r.path===path,'CURRENT_METADATA_REF');\n    need(ref.path===path&&ref.commit===CURRENT_CAPTURE,'CURRENT_TABLE_REF');\n    const before=currentProject(currentPinned(readRef,ref),schema);\n    const after=currentProject(readCurrentFile(path),schema);\n    need(eq(before.rows,after.rows)&&before.wholeBankSha256===after.wholeBankSha256,'CURRENT_WHOLE_75_TABLE_ROWS_CHANGED');\n    for(const item of manifest.items){\n      const row=one(after.rows,r=>r.questionUid===item.questionUid,'CURRENT_SELECTED_ROW');\n      need(row.sourceOrdinal===item.sourceOrdinal&&row.sourceArchiveFile===item.sourcePath.replace(/^archive\\/exams\\//,''),'CURRENT_SELECTED_ROW_SCOPE');\n      if(path===CURRENT_DATA_PATHS.identity)need(sha(stable(row))===item.identityRowSha256,'CURRENT_SELECTED_IDENTITY_HASH');\n    }\n    tableBindings.push({path,capturedRawSha256:before.digest,currentRawSha256:after.digest,wholeBankSha256:after.wholeBankSha256});\n  }\n  const indexRef=one(raw.servedFiles,r=>r.path===CURRENT_DATA_PATHS.svg,'CURRENT_SVG_REF');\n  need(indexRef.commit===CURRENT_CAPTURE,'CURRENT_SVG_COMMIT');\n  const capturedBytes=currentPinned(readRef,indexRef),currentBytes=readCurrentFile(CURRENT_DATA_PATHS.svg);\n  need(Buffer.isBuffer(currentBytes)&&currentBytes.length>0,'CURRENT_SVG_BYTES');\n  const captured=parseCurrentSvgIndex(capturedBytes),current=parseCurrentSvgIndex(currentBytes);\n  const assets=raw.items.map(item=>item.assetRef);\n  const before=selectCurrentSvgEntries(captured,assets),after=selectCurrentSvgEntries(current,assets);\n  need(eq(before,after),'CURRENT_CONSUMED_SVG_RECORDS_CHANGED');\n  return {wholeMetadataRows:75,wholeIdentityRows:75,selectedIdentityRows:7,tableBindings,\n    svgPath:CURRENT_DATA_PATHS.svg,currentSvgSha256:sha(currentBytes),consumedSvgRecordCount:after.length};\n}\nfunction verifyCurrentSvg7Ui({technical,visual,technicalRef,readRef,readLiveRef,readCurrentFile,\n  questionUid,sourceOrdinal,surface,sourceRef,assetRefs,validateCapture}){\n  need(surface==='PROBLEM'&&ITEMS.some(row=>row[1]===questionUid&&row[2]===sourceOrdinal),'CURRENT_EXACT_SEVEN_PROBLEMS');\n  need(typeof readRef==='function'&&typeof readLiveRef==='function'&&typeof readCurrentFile==='function'&&\n    typeof validateCapture==='function','CURRENT_READERS_REQUIRED');\n  need(eq(technicalRef,CURRENT_TECHNICAL_REF),'CURRENT_PUBLIC_TECHNICAL_REF');\n  const t=document(readRef,CURRENT_TECHNICAL_REF,technical),v=document(readRef,CURRENT_VISUAL_REF,visual);\n  need(t.schemaVersion===CURRENT_SCHEMA&&t.checkoutCommit===CURRENT_CAPTURE&&\n    t.status==='TECHNICAL_PASS_VISUAL_REVIEW_PENDING'&&t.executionOwner==='GITHUB_ACTIONS_CHROMIUM_EXACT_PR_HEAD'&&\n    t.sourceOverlayCount===0&&t.domWrites===0&&t.cssWrites===0&&t.newMathQa===0&&t.newSemanticApproval===0&&t.newFourSlotVector===0&&\n    t.expectedLogicalCases===14&&t.completedLogicalCases===14&&t.screenshotArtifactCount===16&&\n    t.items.length===7&&t.results.length===14&&t.screenshotArtifacts.length===16&&t.screenshotFileRefs.length===16,'CURRENT_TYPED_SCOPE');\n  need(t.rawTechnicalRef.commit===CURRENT_PUBLIC&&t.rawTechnicalRef.path===CURRENT_PREFIX+'technical-proof.json'&&\n    t.rawTechnicalRef.gitBlobSha1==='c18655b38cb8adef217781e6b6bbf65ba8570758','CURRENT_RAW_REF');\n  const raw=document(readRef,t.rawTechnicalRef);\n  need(raw.schemaVersion==='archive-m2s1-svg7-problem-github-ui-raw-v1'&&raw.checkoutCommit===CURRENT_CAPTURE&&\n    raw.executionOwner===t.executionOwner&&eq(raw.execution,t.execution)&&\n    raw.execution.provider==='GITHUB_ACTIONS'&&raw.execution.eventName==='pull_request'&&\n    raw.execution.repository==='icefoxtail/AP------'&&raw.execution.headSha===CURRENT_CAPTURE&&\n    raw.execution.runId==='44011127748'&&raw.execution.runAttempt===1&&raw.execution.pullRequest===2330&&\n    raw.execution.workflow==='M2S1 SVG7 Problem Chrome'&&raw.execution.job==='m2s1-svg7-problem'&&\n    raw.status==='TECHNICAL_PASS_VISUAL_REVIEW_PENDING'&&raw.mode==='exam'&&raw.problemOnlyScreenshots===true&&\n    raw.sourceOverlay===false&&raw.sourceOverlayCount===0&&raw.sourceWrites===0&&raw.solutionsOpened===false&&\n    raw.newFullMathematicalQa===false&&raw.newMetadataApprovals===0&&raw.newDifficultyJudgments===0&&\n    raw.newReviewPassCount===0&&raw.newFourSlotApprovals===0&&raw.expectedLogicalCases===14&&raw.completedLogicalCases===14&&\n    raw.items.length===7&&raw.results.length===14&&raw.screenshotArtifactCount===16&&\n    eq(raw.screenshotArtifacts,t.screenshotArtifacts)&&raw.failures.length===0&&raw.externalFontResources.length===0,'CURRENT_RAW_SCOPE');\n  const receipt=document(readRef,t.artifactReceiptRef),transport=document(readRef,t.transportManifestRef);\n  const rootProof=document(readRef,t.rootByteEquivalenceRef);\n  need(receipt.head===CURRENT_CAPTURE&&String(receipt.runId)===raw.execution.runId&&receipt.jobId===133798119021&&\n    receipt.files===17&&receipt.logicalCases===14&&receipt.originalPngTiles===16&&\n    receipt.rawTechnical.gitBlob===t.rawTechnicalRef.gitBlobSha1&&receipt.rawTechnical.sha256===t.rawTechnicalRef.sha256&&\n    receipt.downloadedAndUnpacked===false&&transport.technicalJsonSha256===t.rawTechnicalRef.sha256&&\n    transport.logicalCases===14&&transport.pngFiles===16&&transport.files.length===17&&\n    rootProof.execution.head===CURRENT_CAPTURE&&rootProof.execution.conclusion==='success'&&\n    rootProof.currentTechnical.gitBlob===t.rawTechnicalRef.gitBlobSha1&&rootProof.currentTechnical.sha256===t.rawTechnicalRef.sha256,\n    'CURRENT_ACTUAL_RUN_TRANSPORT');\n  need(v.schemaVersion==='archive-m2s1-svg7-current-visual-binding-v1'&&v.decision==='ACCEPT_DISPLAY_CONTINUITY_ONLY'&&\n    eq(v.technicalRef,CURRENT_TECHNICAL_REF)&&eq(v.rawTechnicalRef,t.rawTechnicalRef)&&\n    eq(v.rootByteEquivalenceRef,t.rootByteEquivalenceRef)&&v.checkoutCommit===CURRENT_CAPTURE&&v.runId===raw.execution.runId&&\n    v.logicalCases===14&&v.originalPngTiles===16&&v.newMathQa===0&&v.newSemanticApproval===0&&v.newFourSlotVector===0&&\n    v.currentDirectVisualInspection===false&&v.currentImagesOpened===0&&v.currentImagesEdited===0&&v.priorVisualBytesModified===false,\n    'CURRENT_VISUAL_SCOPE');\n  const prior=document(readRef,v.priorVisualRef),priorTyped=document(readRef,v.priorTypedTechnicalRef);\n  const independent=document(readRef,v.independentEquivalenceRef);\n  need(prior.schemaVersion==='archive-independent-four-slot-display-ui-review-v1'&&\n    prior.decision==='ACCEPT_DISPLAY_CONTINUITY_ONLY'&&eq(prior.technicalRef,v.priorTypedTechnicalRef)&&\n    prior.newMathQa===0&&prior.newSemanticApproval===0&&prior.newFourSlotVector===0&&\n    eq(prior.records,v.records)&&prior.records.length===14&&priorTyped.results.length===14&&\n    independent.decision==='ACCEPT_CURRENT_CAPTURE_DISPLAY_CONTINUITY_BY_EXACT_PRIOR_OBSERVATION_REUSE'&&\n    independent.currentExecution.headSha===CURRENT_CAPTURE&&independent.currentExecution.runId===raw.execution.runId&&\n    independent.independentByteVerification.currentTechnicalBytesExact===true&&\n    independent.independentByteVerification.previousPublishedPngFilesExact===16&&\n    independent.independentCaseVerification.cases===14&&independent.independentCaseVerification.overallFailures===0&&\n    independent.boundaries.newMathQa===0&&independent.boundaries.newSemanticApproval===0&&independent.boundaries.newFourSlotVector===0&&\n    eq(v.reuseScope.additionalLegacyAuthorityHoldsPreserved,['E045-Q15','E045-Q24'])&&\n    v.reuseScope.newRegistrationOrApprovalGranted===false,'CURRENT_PRIOR_OBSERVATION_REUSE');\n  const manifest=document(readRef,raw.manifestRef);\n  need(manifest.schemaVersion==='archive-m2s1-svg7-problem-ui-manifest-v1'&&\n    manifest.scope==='M2S1_SVG7_EXISTING_SOURCE_REPAIR_DISPLAY_ONLY'&&manifest.expectedCases===14&&\n    manifest.selectedQuestionCount===7&&manifest.sourceQuestionCount===75&&manifest.outsideQuestionCount===68&&\n    manifest.sourceOverlay===false&&manifest.sourceWrites===0&&manifest.newMathQa===0&&manifest.newMetadataApprovals===0&&\n    manifest.newDifficultyJudgments===0&&manifest.newFourSlotApprovals===0&&manifest.items.length===7&&\n    eq(manifest.viewports,VIEWPORTS),'CURRENT_MANIFEST_SCOPE');\n  // Every actual producer/runtime/font/asset stays both immutable and live exact.\n  // A source-only checkout-continuity claim does not replace this validation.\n  for(const key of ['manifestRef','checkerRef','captureHelperRef','surfaceHelperRef','scopedSurfaceHelperRef','fontLicenseRef']){\n    need(raw[key].commit===CURRENT_CAPTURE,'CURRENT_CHECKOUT_REF');\n    currentPinned(readRef,raw[key]);currentPinned(readLiveRef,raw[key]);\n  }\n  const generated=new Set(Object.values(CURRENT_DATA_PATHS));\n  need(raw.servedFiles.length===99&&new Set(raw.servedFiles.map(ref=>ref.path)).size===99,'CURRENT_SERVED_INVENTORY');\n  for(const ref of raw.servedFiles){\n    need(ref.commit===CURRENT_CAPTURE,'CURRENT_SERVED_COMMIT');\n    currentPinned(readRef,ref);\n    if(!generated.has(ref.path))currentPinned(readLiveRef,ref);\n  }\n  need(raw.mirroredAssets.length===22&&new Set(raw.mirroredAssets.map(ref=>ref.path)).size===22,'CURRENT_MIRRORED_INVENTORY');\n  for(const ref of raw.mirroredAssets){\n    need(ref.commit===CURRENT_CAPTURE&&ref.path.startsWith('archive/assets/'),'CURRENT_MIRRORED_REF');\n    currentPinned(readRef,ref);currentPinned(readLiveRef,ref);\n  }\n  const fonts=new Map();\n  need(raw.studentFontResources.length===37,'CURRENT_FONT_COUNT');\n  for(const font of raw.studentFontResources){\n    need(font.commit===CURRENT_CAPTURE&&font.status===200&&['STYLESHEET','FONT'].includes(font.kind)&&\n      /^[a-f0-9]{64}$/.test(font.resourceId||'')&&!fonts.has(font.resourceId),'CURRENT_FONT_REF');\n    fonts.set(font.resourceId,font);currentPinned(readRef,refOnly(font));currentPinned(readLiveRef,refOnly(font));\n  }\n  need(new Set(raw.studentFontResources.map(font=>font.path)).size===37,'CURRENT_FONT_PATH_DUPLICATE');\n  for(const item of ITEMS){\n    const observed=one(raw.items,row=>row.questionUid===item[1]&&row.sourceOrdinal===item[2],'CURRENT_ITEM');\n    const declared=one(manifest.items,row=>row.questionUid===item[1]&&row.sourceOrdinal===item[2],'CURRENT_DECLARED_ITEM');\n    const typed=one(t.items,row=>row.questionUid===item[1]&&row.sourceOrdinal===item[2],'CURRENT_TYPED_ITEM');\n    need(observed.key===item[0]&&declared.key===item[0]&&declared.expectedBankCount===item[3]&&\n      eq(typed,{...observed,expectedBankCount:declared.expectedBankCount,identityRowSha256:declared.identityRowSha256})&&\n      observed.sourceRef.commit===CURRENT_CAPTURE&&observed.assetRef.commit===CURRENT_CAPTURE&&\n      observed.sourceRef.path===declared.sourcePath&&observed.sourceRef.gitBlobSha1===declared.sourceGitBlobSha1&&\n      observed.sourceRef.sha256===declared.sourceSha256&&observed.sourceRef.bytes===declared.sourceBytes&&\n      observed.assetRef.path===declared.assetPath&&observed.assetRef.gitBlobSha1===declared.assetGitBlobSha1&&\n      observed.assetRef.sha256===declared.assetSha256&&observed.assetRef.bytes===declared.assetBytes&&\n      ['questionSha256','problemPayloadSha256','presentationSha256'].every(key=>observed[key]===declared[key]),'CURRENT_ITEM_PINS');\n    currentPinned(readRef,observed.sourceRef);currentPinned(readLiveRef,observed.sourceRef);\n    currentPinned(readRef,observed.assetRef);currentPinned(readLiveRef,observed.assetRef);\n  }\n  const data=currentTablesAndSvg(raw,manifest,readRef,readCurrentFile);\n  const screenshotRefs=[],seenCases=new Set();\n  for(const item of ITEMS)for(const viewport of VIEWPORTS){\n    const row=one(raw.results,r=>r.questionUid===item[1]&&r.sourceOrdinal===item[2]&&r.viewport.name===viewport.name,'CURRENT_RAW_CASE');\n    const typed=one(t.results,r=>r.questionUid===item[1]&&r.sourceOrdinal===item[2]&&r.viewport.name===viewport.name,'CURRENT_TYPED_CASE');\n    const observed=one(raw.items,r=>r.questionUid===item[1],'CURRENT_CASE_ITEM'),state=row.technical,font=state.fontReadiness;\n    const ids=state.fontResourceIds;\n    need(Array.isArray(ids)&&ids.length>0&&new Set(ids).size===ids.length&&ids.every(id=>fonts.has(id)),'CURRENT_CASE_FONT_IDS');\n    const selectedFonts=ids.map(id=>fonts.get(id)).sort((a,b)=>a.resourceId.localeCompare(b.resourceId));\n    const expected={key:row.key,questionUid:row.questionUid,sourceOrdinal:row.sourceOrdinal,surface:'PROBLEM',mode:'exam',\n      viewport:row.viewport,sourceRef:row.sourceRef,assetRefs:row.assetRefs,status:row.status,\n      fonts:{ready:true,expectedFamilyLoaded:true,responseInventorySha256:sha(stable(selectedFonts))},\n      capture:row.capture,screenshots:row.screenshots};\n    need(eq(typed,expected)&&row.key===item[0]&&row.status==='PASS'&&row.visualReview==='PENDING'&&\n      row.surface==='PROBLEM'&&row.mode==='exam'&&eq(row.viewport,viewport)&&eq(row.sourceRef,observed.sourceRef)&&\n      eq(row.assetRef,observed.assetRef)&&eq(row.assetRefs,[observed.assetRef]),'CURRENT_CASE_BINDING');\n    need(state.mode==='exam'&&state.questions===item[3]&&state.readiness==='RENDER_READY'&&state.imagesComplete===true&&\n      state.mathErrors===0&&state.unrenderedMath===0&&state.mathJaxSource==='local'&&state.solutionNodes===0&&\n      font.status==='loaded'&&font.family==='Nanum Myeongjo'&&eq(font.weights.map(weight=>weight.weight),[400,700,800])&&\n      font.weights.every(weight=>weight.loadedFaces>0&&weight.allLoaded===true&&weight.checked===true)&&\n      row.geometry.imageInsideQuestion===true&&row.geometry.naturalWidth>0&&row.geometry.naturalHeight>0&&\n      [row.pageErrors,row.requestFailures,row.externalRequests].every(list=>Array.isArray(list)&&list.length===0),'CURRENT_CASE_READINESS');\n    const priorRow=one(prior.records,r=>r.questionUid===item[1]&&r.sourceOrdinal===item[2]&&r.viewport.name===viewport.name,'CURRENT_PRIOR_CASE');\n    const oldTyped=one(priorTyped.results,r=>r.questionUid===item[1]&&r.sourceOrdinal===item[2]&&r.viewport.name===viewport.name,'CURRENT_PRIOR_TYPED_CASE');\n    const independentCase=one(independent.independentCaseVerification.caseChecks,r=>r.questionUid===item[1]&&\n      r.sourceOrdinal===item[2]&&r.viewport.name===viewport.name,'CURRENT_INDEPENDENT_CASE');\n    need(priorRow.surface==='PROBLEM'&&eq(priorRow.viewport,viewport)&&priorRow.decision==='ACCEPT_DISPLAY_CONTINUITY_ONLY'&&\n      priorRow.captureSha256===sha(stable(row.capture))&&eq(oldTyped.capture,row.capture)&&\n      eq(priorRow.screenshots.map(({decision,...shot})=>shot),row.screenshots)&&\n      priorRow.screenshots.every(shot=>shot.decision==='ACCEPT_DISPLAY_CONTINUITY_ONLY')&&\n      independentCase.captureSha256===sha(stable(row.capture))&&independentCase.failures.length===0,'CURRENT_PRIOR_CASE_BYTES');\n    validateCapture(row.capture,row.screenshots,viewport,{row:typed,checkoutCommit:CURRENT_CAPTURE,readRef});\n    const key=row.questionUid+':'+viewport.name;need(!seenCases.has(key),'CURRENT_CASE_DUPLICATE');seenCases.add(key);\n    screenshotRefs.push(...row.screenshots.map(({tileIndex,...ref})=>ref));\n  }\n  const sorted=list=>list.slice().sort((a,b)=>a.path.localeCompare(b.path,'en'));\n  need(seenCases.size===14&&screenshotRefs.length===16&&new Set(screenshotRefs.map(ref=>ref.path)).size===16&&\n    eq(sorted(screenshotRefs),sorted(t.screenshotArtifacts))&&eq(v.originalScreenshotRefs,t.screenshotFileRefs),'CURRENT_TILE_INVENTORY');\n  const seenPng=new Set();\n  for(const entry of t.screenshotFileRefs){\n    exact(entry,['artifactPath','ref'],'CURRENT_PNG_REF_KEYS');\n    const original=one(t.screenshotArtifacts,row=>row.path===entry.artifactPath,'CURRENT_PNG_ARTIFACT');\n    const independentPng=one(independent.independentByteVerification.results,row=>row.path===entry.artifactPath,'CURRENT_PNG_INDEPENDENT');\n    need(/^[A-Za-z0-9_-]+\\.png$/.test(entry.artifactPath)&&!seenPng.has(entry.artifactPath)&&\n      entry.ref.commit===CURRENT_PUBLIC&&entry.ref.path===CURRENT_PREFIX+entry.artifactPath&&\n      entry.ref.sha256===original.sha256&&entry.ref.bytes===original.bytes&&\n      independentPng.gitBlobSha1===entry.ref.gitBlobSha1&&independentPng.sha256===entry.ref.sha256&&\n      independentPng.bytes===entry.ref.bytes&&independentPng.previousCapturePngBytesSameSha256AndGit===true,'CURRENT_ORIGINAL_PNG');\n    seenPng.add(entry.artifactPath);currentPinned(readRef,entry.ref);\n  }\n  const selected=t.results.filter(row=>row.questionUid===questionUid&&row.sourceOrdinal===sourceOrdinal);\n  need(selected.length===2&&selected.every(row=>eq(row.sourceRef,sourceRef)&&eq(row.assetRefs,assetRefs)),'CURRENT_SELECTED_INPUT_BINDING');\n  return {logicalCases:2,originalTiles:selected.reduce((count,row)=>count+row.screenshots.length,0),currentCaptureBinding:{\n    schemaVersion:CURRENT_SCHEMA,checkoutCommit:CURRENT_CAPTURE,rawTechnicalSha256:t.rawTechnicalRef.sha256,\n    displayObservation:'EXACT_PRIOR_ORIGINAL_BYTES_REUSED',newMathQa:0,newSemanticApproval:0,newFourSlotVector:0,...data}};\n}\n\nmodule.exports={SCHEMA,TECHNICAL_REF,VISUAL_REF,MANIFEST_REF,verifySvg7Ui,embeddedChoiceContinuity,inlineFigureContinuity,\n  CURRENT_SCHEMA,CURRENT_TECHNICAL_REF,CURRENT_VISUAL_REF};"
+      }
+    ],
+    "inverseByteExact": true
+  },
+  "generic": {
+    "before": {
+      "gitBlobSha1": "78d61d0005999cbb789563c146e93d04d173ad6f",
+      "sha256": "dd822aaf21560fdae61cdefb4544cd6319bfdbe7dd9314d28f1ff722c05f0b35",
+      "bytes": 19489
+    },
+    "after": {
+      "path": "tools/4slot/existing-registered-vector-ui.cjs",
+      "gitBlobSha1": "118b051856ae773e3209d2c1cffdd836ffaf3fcd",
+      "sha256": "b7e02e16d03c1bafe7c77ad42be9d6c81d9b7623dbc10508c17f7a72536d0162",
+      "bytes": 19543
+    },
+    "edits": [
+      {
+        "old": "if (technical?.schemaVersion === svg7Ui.SCHEMA) return svg7Ui.verifySvg7Ui(",
+        "next": "if (technical?.schemaVersion === svg7Ui.SCHEMA || technical?.schemaVersion === svg7Ui.CURRENT_SCHEMA) return svg7Ui.verifySvg7Ui("
+      }
+    ],
+    "inverseByteExact": true
+  },
+  "sidecars": [
+    {
+      "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6.json",
+      "beforeGit": "5f997e86a464ac67216987dc7e56d7d8b7bc572c",
+      "gitBlobSha1": "28d269a294b015c70d32c196ec7989b9b5857af5",
+      "sha256": "fd84b83888c2046b6557a1a59335e5fa47327e99087c6d7e3c8020f5a91e9ae8",
+      "bytes": 11473,
+      "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+      "sourceOrdinal": 3,
+      "beforeDisplayReviews": [
+        {
+          "surface": "PROBLEM",
+          "independentRef": {
+            "commit": "798e3261198dc70fd9eb86e388aa80245252b228",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/existing-vector-independent-v1.json",
+            "gitBlobSha1": "755d9290dfdd9847009ed32c95c789a893c13778",
+            "sha256": "f5c247a867f4741a3dd1ae64c05c2b899c3891efcb54262f29e64fd5dcd9ad8f",
+            "bytes": 3867
+          },
+          "technicalRef": {
+            "commit": "b9bd24223d4e523db6577682c1a30e74c11d25db",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/student-ui-technical-v3.json",
+            "gitBlobSha1": "06cf5c2b0e38e4113ddf1fdd519a31cfa5196f39",
+            "sha256": "c96dcff0275aeac68bb1cd527594ebf000b0ea36e7e7be4cec943e00d9303864",
+            "bytes": 303157
+          },
+          "visualRef": {
+            "commit": "b9bd24223d4e523db6577682c1a30e74c11d25db",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/student-ui-independent-v3.json",
+            "gitBlobSha1": "e7c7b463065f0e6cd25e8e58101c999045f2e341",
+            "sha256": "072f7eb06db26f18728ca3cb142154956baf9ae2916b0805f18e14a41d63732e",
+            "bytes": 5966
+          }
+        }
+      ],
+      "afterDisplayReviews": [
+        {
+          "surface": "PROBLEM",
+          "independentRef": {
+            "commit": "798e3261198dc70fd9eb86e388aa80245252b228",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/existing-vector-independent-v1.json",
+            "gitBlobSha1": "755d9290dfdd9847009ed32c95c789a893c13778",
+            "sha256": "f5c247a867f4741a3dd1ae64c05c2b899c3891efcb54262f29e64fd5dcd9ad8f",
+            "bytes": 3867
+          },
+          "technicalRef": {
+            "commit": "0b7ec9534ca10422fd87fad65dc967a1b8a15ac8",
+            "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/technical-ui14-current-v1.json",
+            "gitBlobSha1": "d3392daf54a0c6ebe338f3fd6f575e4feb6d3cf6",
+            "sha256": "79ea9e7c8d3060c96177945903b262c099e1f945753aa74a711b7912085e6159",
+            "bytes": 74569
+          },
+          "visualRef": {
+            "commit": "d8c5d6c3a81b20838ec8dc1102120dc7ddac0c28",
+            "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/visual-ui14-current-binding-v1.json",
+            "gitBlobSha1": "a82aa350f2913d86ea02810e9261bc05e3abbfda",
+            "sha256": "8fae8365f9fb93ce347161f9b9500ba31fec800a2ed1d50d0b24bd5c6840eaad",
+            "bytes": 20912
+          },
+          "uiCheckoutContinuity": {
+            "schemaVersion": "archive-existing-vector-ui-checkout-continuity-v1",
+            "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6",
+            "sourceOrdinal": 3,
+            "surface": "PROBLEM",
+            "capturedSourceRef": {
+              "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+              "path": "archive/exams/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+              "gitBlobSha1": "9283d798bb19ebdb498ff91d5d8d7d219d3baf27",
+              "sha256": "890c15ac7d12aae4e432828b0eedbecea9df0faa6b44706433ece4145831854c",
+              "bytes": 43819
+            },
+            "capturedAssetRefs": [
+              {
+                "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+                "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q3-problem-visual-v2-source-repair-r1.svg",
+                "gitBlobSha1": "27caa8994a054468dd026f6b8ae47ec0dd408d97",
+                "sha256": "af71f9ee6722aeb6987a73c722ba21df63fe9f33955f51003bad340e08175e4d",
+                "bytes": 4820
+              }
+            ],
+            "currentSourceRef": {
+              "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+              "path": "archive/exams/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+              "gitBlobSha1": "9283d798bb19ebdb498ff91d5d8d7d219d3baf27",
+              "sha256": "890c15ac7d12aae4e432828b0eedbecea9df0faa6b44706433ece4145831854c",
+              "bytes": 43819
+            },
+            "currentAssetRefs": [
+              {
+                "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+                "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q3-problem-visual-v2-source-repair-r1.svg",
+                "gitBlobSha1": "27caa8994a054468dd026f6b8ae47ec0dd408d97",
+                "sha256": "af71f9ee6722aeb6987a73c722ba21df63fe9f33955f51003bad340e08175e4d",
+                "bytes": 4820
+              }
+            ]
+          }
+        }
+      ],
+      "otherWholeDocumentExact": true
+    },
+    {
+      "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569.json",
+      "beforeGit": "d48c040c8eea1fec49287703a37b5b74a61128d5",
+      "gitBlobSha1": "2115da491383d19f093e93a130b29c30215133a5",
+      "sha256": "ce6ef1a851f8fa0aa2950621acda706d6ac48c07eff1059d19eaacdf4e84c6c7",
+      "bytes": 14605,
+      "questionUid": "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569",
+      "sourceOrdinal": 15,
+      "beforeDisplayReviews": [
+        {
+          "surface": "PROBLEM",
+          "independentRef": {
+            "commit": "798e3261198dc70fd9eb86e388aa80245252b228",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/existing-vector-independent-v1.json",
+            "gitBlobSha1": "755d9290dfdd9847009ed32c95c789a893c13778",
+            "sha256": "f5c247a867f4741a3dd1ae64c05c2b899c3891efcb54262f29e64fd5dcd9ad8f",
+            "bytes": 3867
+          },
+          "technicalRef": {
+            "commit": "b9bd24223d4e523db6577682c1a30e74c11d25db",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/student-ui-technical-v3.json",
+            "gitBlobSha1": "06cf5c2b0e38e4113ddf1fdd519a31cfa5196f39",
+            "sha256": "c96dcff0275aeac68bb1cd527594ebf000b0ea36e7e7be4cec943e00d9303864",
+            "bytes": 303157
+          },
+          "visualRef": {
+            "commit": "b9bd24223d4e523db6577682c1a30e74c11d25db",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/student-ui-independent-v3.json",
+            "gitBlobSha1": "e7c7b463065f0e6cd25e8e58101c999045f2e341",
+            "sha256": "072f7eb06db26f18728ca3cb142154956baf9ae2916b0805f18e14a41d63732e",
+            "bytes": 5966
+          }
+        }
+      ],
+      "afterDisplayReviews": [
+        {
+          "surface": "PROBLEM",
+          "independentRef": {
+            "commit": "798e3261198dc70fd9eb86e388aa80245252b228",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/existing-vector-independent-v1.json",
+            "gitBlobSha1": "755d9290dfdd9847009ed32c95c789a893c13778",
+            "sha256": "f5c247a867f4741a3dd1ae64c05c2b899c3891efcb54262f29e64fd5dcd9ad8f",
+            "bytes": 3867
+          },
+          "technicalRef": {
+            "commit": "0b7ec9534ca10422fd87fad65dc967a1b8a15ac8",
+            "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/technical-ui14-current-v1.json",
+            "gitBlobSha1": "d3392daf54a0c6ebe338f3fd6f575e4feb6d3cf6",
+            "sha256": "79ea9e7c8d3060c96177945903b262c099e1f945753aa74a711b7912085e6159",
+            "bytes": 74569
+          },
+          "visualRef": {
+            "commit": "d8c5d6c3a81b20838ec8dc1102120dc7ddac0c28",
+            "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/visual-ui14-current-binding-v1.json",
+            "gitBlobSha1": "a82aa350f2913d86ea02810e9261bc05e3abbfda",
+            "sha256": "8fae8365f9fb93ce347161f9b9500ba31fec800a2ed1d50d0b24bd5c6840eaad",
+            "bytes": 20912
+          },
+          "uiCheckoutContinuity": {
+            "schemaVersion": "archive-existing-vector-ui-checkout-continuity-v1",
+            "questionUid": "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569",
+            "sourceOrdinal": 15,
+            "surface": "PROBLEM",
+            "capturedSourceRef": {
+              "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+              "path": "archive/exams/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
+              "gitBlobSha1": "c8945961f52f7efca83d66ea045d070e74718de6",
+              "sha256": "c1d8ce4c3de70c67d7a3ecf02031fd48327103785fec40505e1576043625618a",
+              "bytes": 44656
+            },
+            "capturedAssetRefs": [
+              {
+                "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+                "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q15-problem-visual-v2-source-repair-r1.svg",
+                "gitBlobSha1": "a132105374964cd92b36c935fdd0aa97666acfe5",
+                "sha256": "909e5d8728f7035e2eabf89671372e18d9d4c0c72a7bd43f09feb6cf1462c4af",
+                "bytes": 12366
+              }
+            ],
+            "currentSourceRef": {
+              "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+              "path": "archive/exams/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
+              "gitBlobSha1": "c8945961f52f7efca83d66ea045d070e74718de6",
+              "sha256": "c1d8ce4c3de70c67d7a3ecf02031fd48327103785fec40505e1576043625618a",
+              "bytes": 44656
+            },
+            "currentAssetRefs": [
+              {
+                "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+                "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q15-problem-visual-v2-source-repair-r1.svg",
+                "gitBlobSha1": "a132105374964cd92b36c935fdd0aa97666acfe5",
+                "sha256": "909e5d8728f7035e2eabf89671372e18d9d4c0c72a7bd43f09feb6cf1462c4af",
+                "bytes": 12366
+              }
+            ]
+          }
+        }
+      ],
+      "otherWholeDocumentExact": true
+    },
+    {
+      "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec.json",
+      "beforeGit": "a7069890d93453194b7f172971344c66c02cc027",
+      "gitBlobSha1": "df107391e2c68df5871e01c777060d1fc0eaef95",
+      "sha256": "23eb8659d6c99bc9e0f5f0fabc6ff00f8a98ae2d221674ec4fb291eab29a122b",
+      "bytes": 13929,
+      "questionUid": "qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec",
+      "sourceOrdinal": 11,
+      "beforeDisplayReviews": [
+        {
+          "surface": "PROBLEM",
+          "independentRef": {
+            "commit": "798e3261198dc70fd9eb86e388aa80245252b228",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/existing-vector-independent-v1.json",
+            "gitBlobSha1": "755d9290dfdd9847009ed32c95c789a893c13778",
+            "sha256": "f5c247a867f4741a3dd1ae64c05c2b899c3891efcb54262f29e64fd5dcd9ad8f",
+            "bytes": 3867
+          },
+          "technicalRef": {
+            "commit": "b9bd24223d4e523db6577682c1a30e74c11d25db",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/student-ui-technical-v3.json",
+            "gitBlobSha1": "06cf5c2b0e38e4113ddf1fdd519a31cfa5196f39",
+            "sha256": "c96dcff0275aeac68bb1cd527594ebf000b0ea36e7e7be4cec943e00d9303864",
+            "bytes": 303157
+          },
+          "visualRef": {
+            "commit": "b9bd24223d4e523db6577682c1a30e74c11d25db",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/student-ui-independent-v3.json",
+            "gitBlobSha1": "e7c7b463065f0e6cd25e8e58101c999045f2e341",
+            "sha256": "072f7eb06db26f18728ca3cb142154956baf9ae2916b0805f18e14a41d63732e",
+            "bytes": 5966
+          }
+        }
+      ],
+      "afterDisplayReviews": [
+        {
+          "surface": "PROBLEM",
+          "independentRef": {
+            "commit": "798e3261198dc70fd9eb86e388aa80245252b228",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/existing-vector-independent-v1.json",
+            "gitBlobSha1": "755d9290dfdd9847009ed32c95c789a893c13778",
+            "sha256": "f5c247a867f4741a3dd1ae64c05c2b899c3891efcb54262f29e64fd5dcd9ad8f",
+            "bytes": 3867
+          },
+          "technicalRef": {
+            "commit": "0b7ec9534ca10422fd87fad65dc967a1b8a15ac8",
+            "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/technical-ui14-current-v1.json",
+            "gitBlobSha1": "d3392daf54a0c6ebe338f3fd6f575e4feb6d3cf6",
+            "sha256": "79ea9e7c8d3060c96177945903b262c099e1f945753aa74a711b7912085e6159",
+            "bytes": 74569
+          },
+          "visualRef": {
+            "commit": "d8c5d6c3a81b20838ec8dc1102120dc7ddac0c28",
+            "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/visual-ui14-current-binding-v1.json",
+            "gitBlobSha1": "a82aa350f2913d86ea02810e9261bc05e3abbfda",
+            "sha256": "8fae8365f9fb93ce347161f9b9500ba31fec800a2ed1d50d0b24bd5c6840eaad",
+            "bytes": 20912
+          },
+          "uiCheckoutContinuity": {
+            "schemaVersion": "archive-existing-vector-ui-checkout-continuity-v1",
+            "questionUid": "qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec",
+            "sourceOrdinal": 11,
+            "surface": "PROBLEM",
+            "capturedSourceRef": {
+              "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+              "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+              "gitBlobSha1": "4a20adbce9e5a7f07744143cef611d453e454250",
+              "sha256": "bb0904139d63eee938b33add6a9b48e1129bfa7d7e9dd9d6939045f66c50f88b",
+              "bytes": 40797
+            },
+            "capturedAssetRefs": [
+              {
+                "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+                "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q11-problem-visual-v2-source-repair-r1.svg",
+                "gitBlobSha1": "1f7d7e789339248ae3b45d8d45f292fbb9170077",
+                "sha256": "8b31d959fdd7a6530f41fe27b118c6a7e4fb6c965c4fe83d3e89581a399edb18",
+                "bytes": 3708
+              }
+            ],
+            "currentSourceRef": {
+              "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+              "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+              "gitBlobSha1": "4a20adbce9e5a7f07744143cef611d453e454250",
+              "sha256": "bb0904139d63eee938b33add6a9b48e1129bfa7d7e9dd9d6939045f66c50f88b",
+              "bytes": 40797
+            },
+            "currentAssetRefs": [
+              {
+                "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+                "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q11-problem-visual-v2-source-repair-r1.svg",
+                "gitBlobSha1": "1f7d7e789339248ae3b45d8d45f292fbb9170077",
+                "sha256": "8b31d959fdd7a6530f41fe27b118c6a7e4fb6c965c4fe83d3e89581a399edb18",
+                "bytes": 3708
+              }
+            ]
+          }
+        }
+      ],
+      "otherWholeDocumentExact": true
+    },
+    {
+      "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad.json",
+      "beforeGit": "77ba241dcc1c1937501e1b234415e7b52e668903",
+      "gitBlobSha1": "406f3c44b5a30d6f45f771a1ba38ec28614bb269",
+      "sha256": "f23ff4a001221eeefd336b947ac0ac0926dc7ca01837d0c4640cb945db51ae68",
+      "bytes": 13931,
+      "questionUid": "qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad",
+      "sourceOrdinal": 24,
+      "beforeDisplayReviews": [
+        {
+          "surface": "PROBLEM",
+          "independentRef": {
+            "commit": "798e3261198dc70fd9eb86e388aa80245252b228",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/existing-vector-independent-v1.json",
+            "gitBlobSha1": "755d9290dfdd9847009ed32c95c789a893c13778",
+            "sha256": "f5c247a867f4741a3dd1ae64c05c2b899c3891efcb54262f29e64fd5dcd9ad8f",
+            "bytes": 3867
+          },
+          "technicalRef": {
+            "commit": "b9bd24223d4e523db6577682c1a30e74c11d25db",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/student-ui-technical-v3.json",
+            "gitBlobSha1": "06cf5c2b0e38e4113ddf1fdd519a31cfa5196f39",
+            "sha256": "c96dcff0275aeac68bb1cd527594ebf000b0ea36e7e7be4cec943e00d9303864",
+            "bytes": 303157
+          },
+          "visualRef": {
+            "commit": "b9bd24223d4e523db6577682c1a30e74c11d25db",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/student-ui-independent-v3.json",
+            "gitBlobSha1": "e7c7b463065f0e6cd25e8e58101c999045f2e341",
+            "sha256": "072f7eb06db26f18728ca3cb142154956baf9ae2916b0805f18e14a41d63732e",
+            "bytes": 5966
+          }
+        }
+      ],
+      "afterDisplayReviews": [
+        {
+          "surface": "PROBLEM",
+          "independentRef": {
+            "commit": "798e3261198dc70fd9eb86e388aa80245252b228",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/existing-vector-independent-v1.json",
+            "gitBlobSha1": "755d9290dfdd9847009ed32c95c789a893c13778",
+            "sha256": "f5c247a867f4741a3dd1ae64c05c2b899c3891efcb54262f29e64fd5dcd9ad8f",
+            "bytes": 3867
+          },
+          "technicalRef": {
+            "commit": "0b7ec9534ca10422fd87fad65dc967a1b8a15ac8",
+            "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/technical-ui14-current-v1.json",
+            "gitBlobSha1": "d3392daf54a0c6ebe338f3fd6f575e4feb6d3cf6",
+            "sha256": "79ea9e7c8d3060c96177945903b262c099e1f945753aa74a711b7912085e6159",
+            "bytes": 74569
+          },
+          "visualRef": {
+            "commit": "d8c5d6c3a81b20838ec8dc1102120dc7ddac0c28",
+            "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/visual-ui14-current-binding-v1.json",
+            "gitBlobSha1": "a82aa350f2913d86ea02810e9261bc05e3abbfda",
+            "sha256": "8fae8365f9fb93ce347161f9b9500ba31fec800a2ed1d50d0b24bd5c6840eaad",
+            "bytes": 20912
+          },
+          "uiCheckoutContinuity": {
+            "schemaVersion": "archive-existing-vector-ui-checkout-continuity-v1",
+            "questionUid": "qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad",
+            "sourceOrdinal": 24,
+            "surface": "PROBLEM",
+            "capturedSourceRef": {
+              "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+              "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+              "gitBlobSha1": "4a20adbce9e5a7f07744143cef611d453e454250",
+              "sha256": "bb0904139d63eee938b33add6a9b48e1129bfa7d7e9dd9d6939045f66c50f88b",
+              "bytes": 40797
+            },
+            "capturedAssetRefs": [
+              {
+                "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+                "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q24-problem-visual-v2-source-repair-r1.svg",
+                "gitBlobSha1": "e77c366e63ffa891cb53ccd3b8b334e4c541a57a",
+                "sha256": "2b6aa6539acbc4f713ef09d9c1968825b1138416dc953449bb0392209ea28ca0",
+                "bytes": 3555
+              }
+            ],
+            "currentSourceRef": {
+              "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+              "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+              "gitBlobSha1": "4a20adbce9e5a7f07744143cef611d453e454250",
+              "sha256": "bb0904139d63eee938b33add6a9b48e1129bfa7d7e9dd9d6939045f66c50f88b",
+              "bytes": 40797
+            },
+            "currentAssetRefs": [
+              {
+                "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+                "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q24-problem-visual-v2-source-repair-r1.svg",
+                "gitBlobSha1": "e77c366e63ffa891cb53ccd3b8b334e4c541a57a",
+                "sha256": "2b6aa6539acbc4f713ef09d9c1968825b1138416dc953449bb0392209ea28ca0",
+                "bytes": 3555
+              }
+            ]
+          }
+        }
+      ],
+      "otherWholeDocumentExact": true
+    },
+    {
+      "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637.json",
+      "beforeGit": "556908100f09236210831b8d86ce8b2a2faf37c3",
+      "gitBlobSha1": "8bb003fd3eb01ed8e2f9af66532537e7fac3d35b",
+      "sha256": "931256a612d871214f0f4c70ae12fd3e945ab72bab089da3f748792143d0e1cb",
+      "bytes": 13928,
+      "questionUid": "qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637",
+      "sourceOrdinal": 13,
+      "beforeDisplayReviews": [
+        {
+          "surface": "PROBLEM",
+          "independentRef": {
+            "commit": "798e3261198dc70fd9eb86e388aa80245252b228",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/existing-vector-independent-v1.json",
+            "gitBlobSha1": "755d9290dfdd9847009ed32c95c789a893c13778",
+            "sha256": "f5c247a867f4741a3dd1ae64c05c2b899c3891efcb54262f29e64fd5dcd9ad8f",
+            "bytes": 3867
+          },
+          "technicalRef": {
+            "commit": "b9bd24223d4e523db6577682c1a30e74c11d25db",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/student-ui-technical-v3.json",
+            "gitBlobSha1": "06cf5c2b0e38e4113ddf1fdd519a31cfa5196f39",
+            "sha256": "c96dcff0275aeac68bb1cd527594ebf000b0ea36e7e7be4cec943e00d9303864",
+            "bytes": 303157
+          },
+          "visualRef": {
+            "commit": "b9bd24223d4e523db6577682c1a30e74c11d25db",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/student-ui-independent-v3.json",
+            "gitBlobSha1": "e7c7b463065f0e6cd25e8e58101c999045f2e341",
+            "sha256": "072f7eb06db26f18728ca3cb142154956baf9ae2916b0805f18e14a41d63732e",
+            "bytes": 5966
+          }
+        }
+      ],
+      "afterDisplayReviews": [
+        {
+          "surface": "PROBLEM",
+          "independentRef": {
+            "commit": "798e3261198dc70fd9eb86e388aa80245252b228",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/existing-vector-independent-v1.json",
+            "gitBlobSha1": "755d9290dfdd9847009ed32c95c789a893c13778",
+            "sha256": "f5c247a867f4741a3dd1ae64c05c2b899c3891efcb54262f29e64fd5dcd9ad8f",
+            "bytes": 3867
+          },
+          "technicalRef": {
+            "commit": "0b7ec9534ca10422fd87fad65dc967a1b8a15ac8",
+            "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/technical-ui14-current-v1.json",
+            "gitBlobSha1": "d3392daf54a0c6ebe338f3fd6f575e4feb6d3cf6",
+            "sha256": "79ea9e7c8d3060c96177945903b262c099e1f945753aa74a711b7912085e6159",
+            "bytes": 74569
+          },
+          "visualRef": {
+            "commit": "d8c5d6c3a81b20838ec8dc1102120dc7ddac0c28",
+            "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/visual-ui14-current-binding-v1.json",
+            "gitBlobSha1": "a82aa350f2913d86ea02810e9261bc05e3abbfda",
+            "sha256": "8fae8365f9fb93ce347161f9b9500ba31fec800a2ed1d50d0b24bd5c6840eaad",
+            "bytes": 20912
+          },
+          "uiCheckoutContinuity": {
+            "schemaVersion": "archive-existing-vector-ui-checkout-continuity-v1",
+            "questionUid": "qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637",
+            "sourceOrdinal": 13,
+            "surface": "PROBLEM",
+            "capturedSourceRef": {
+              "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+              "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+              "gitBlobSha1": "4a20adbce9e5a7f07744143cef611d453e454250",
+              "sha256": "bb0904139d63eee938b33add6a9b48e1129bfa7d7e9dd9d6939045f66c50f88b",
+              "bytes": 40797
+            },
+            "capturedAssetRefs": [
+              {
+                "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+                "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q13-problem-visual-v2-source-repair-r1.svg",
+                "gitBlobSha1": "e28d5f2f62da3197ea2fd2a1571288e6023d479a",
+                "sha256": "81346a2433a587cb88772e20fa4c6f164c0a6fb96fd07c118d49b34192642639",
+                "bytes": 1715
+              }
+            ],
+            "currentSourceRef": {
+              "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+              "path": "archive/exams/original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+              "gitBlobSha1": "4a20adbce9e5a7f07744143cef611d453e454250",
+              "sha256": "bb0904139d63eee938b33add6a9b48e1129bfa7d7e9dd9d6939045f66c50f88b",
+              "bytes": 40797
+            },
+            "currentAssetRefs": [
+              {
+                "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+                "path": "archive/assets/images/21_금당중_1학기_중간_중2_기출/q13-problem-visual-v2-source-repair-r1.svg",
+                "gitBlobSha1": "e28d5f2f62da3197ea2fd2a1571288e6023d479a",
+                "sha256": "81346a2433a587cb88772e20fa4c6f164c0a6fb96fd07c118d49b34192642639",
+                "bytes": 1715
+              }
+            ]
+          }
+        }
+      ],
+      "otherWholeDocumentExact": true
+    },
+    {
+      "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5.json",
+      "beforeGit": "d3cf525329e1c767b867179651187937d56b5186",
+      "gitBlobSha1": "14628a32fa0c60d0412c082c4fb53fe2fe37e7d1",
+      "sha256": "ec2dc71cfe34a9f1cf56df2ed0d37d80cf7d3883a34686c4677257ca61a4ff98",
+      "bytes": 11479,
+      "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+      "sourceOrdinal": 15,
+      "beforeDisplayReviews": [
+        {
+          "surface": "PROBLEM",
+          "independentRef": {
+            "commit": "798e3261198dc70fd9eb86e388aa80245252b228",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/existing-vector-independent-v1.json",
+            "gitBlobSha1": "755d9290dfdd9847009ed32c95c789a893c13778",
+            "sha256": "f5c247a867f4741a3dd1ae64c05c2b899c3891efcb54262f29e64fd5dcd9ad8f",
+            "bytes": 3867
+          },
+          "technicalRef": {
+            "commit": "b9bd24223d4e523db6577682c1a30e74c11d25db",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/student-ui-technical-v3.json",
+            "gitBlobSha1": "06cf5c2b0e38e4113ddf1fdd519a31cfa5196f39",
+            "sha256": "c96dcff0275aeac68bb1cd527594ebf000b0ea36e7e7be4cec943e00d9303864",
+            "bytes": 303157
+          },
+          "visualRef": {
+            "commit": "b9bd24223d4e523db6577682c1a30e74c11d25db",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/student-ui-independent-v3.json",
+            "gitBlobSha1": "e7c7b463065f0e6cd25e8e58101c999045f2e341",
+            "sha256": "072f7eb06db26f18728ca3cb142154956baf9ae2916b0805f18e14a41d63732e",
+            "bytes": 5966
+          }
+        }
+      ],
+      "afterDisplayReviews": [
+        {
+          "surface": "PROBLEM",
+          "independentRef": {
+            "commit": "798e3261198dc70fd9eb86e388aa80245252b228",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/existing-vector-independent-v1.json",
+            "gitBlobSha1": "755d9290dfdd9847009ed32c95c789a893c13778",
+            "sha256": "f5c247a867f4741a3dd1ae64c05c2b899c3891efcb54262f29e64fd5dcd9ad8f",
+            "bytes": 3867
+          },
+          "technicalRef": {
+            "commit": "0b7ec9534ca10422fd87fad65dc967a1b8a15ac8",
+            "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/technical-ui14-current-v1.json",
+            "gitBlobSha1": "d3392daf54a0c6ebe338f3fd6f575e4feb6d3cf6",
+            "sha256": "79ea9e7c8d3060c96177945903b262c099e1f945753aa74a711b7912085e6159",
+            "bytes": 74569
+          },
+          "visualRef": {
+            "commit": "d8c5d6c3a81b20838ec8dc1102120dc7ddac0c28",
+            "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/visual-ui14-current-binding-v1.json",
+            "gitBlobSha1": "a82aa350f2913d86ea02810e9261bc05e3abbfda",
+            "sha256": "8fae8365f9fb93ce347161f9b9500ba31fec800a2ed1d50d0b24bd5c6840eaad",
+            "bytes": 20912
+          },
+          "uiCheckoutContinuity": {
+            "schemaVersion": "archive-existing-vector-ui-checkout-continuity-v1",
+            "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5",
+            "sourceOrdinal": 15,
+            "surface": "PROBLEM",
+            "capturedSourceRef": {
+              "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+              "path": "archive/exams/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+              "gitBlobSha1": "9283d798bb19ebdb498ff91d5d8d7d219d3baf27",
+              "sha256": "890c15ac7d12aae4e432828b0eedbecea9df0faa6b44706433ece4145831854c",
+              "bytes": 43819
+            },
+            "capturedAssetRefs": [
+              {
+                "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+                "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q15-problem-visual-v2-source-repair-r1.svg",
+                "gitBlobSha1": "a90c300439e84fce81d9e297da5ffc6830d8feff",
+                "sha256": "02cd1d0cb64f3a233c4557290c6705aac512e1a957f2b7d3518bb66dde2ef659",
+                "bytes": 4496
+              }
+            ],
+            "currentSourceRef": {
+              "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+              "path": "archive/exams/original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+              "gitBlobSha1": "9283d798bb19ebdb498ff91d5d8d7d219d3baf27",
+              "sha256": "890c15ac7d12aae4e432828b0eedbecea9df0faa6b44706433ece4145831854c",
+              "bytes": 43819
+            },
+            "currentAssetRefs": [
+              {
+                "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+                "path": "archive/assets/images/22_풍덕중_1학기_기말_중2_수학/q15-problem-visual-v2-source-repair-r1.svg",
+                "gitBlobSha1": "a90c300439e84fce81d9e297da5ffc6830d8feff",
+                "sha256": "02cd1d0cb64f3a233c4557290c6705aac512e1a957f2b7d3518bb66dde2ef659",
+                "bytes": 4496
+              }
+            ]
+          }
+        }
+      ],
+      "otherWholeDocumentExact": true
+    },
+    {
+      "path": ".archive-meta-register/4slot-existing-vector-continuity/qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd.json",
+      "beforeGit": "cc6274ec9ba5dccb85f115d793aba4547824fb62",
+      "gitBlobSha1": "f476cec42037470f1a1ad6ba61d56e6f624c1495",
+      "sha256": "b2070ffb9505a7011029560b75485322e69deade7b4b5d87cf64b976ffcc5e4e",
+      "bytes": 10870,
+      "questionUid": "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd",
+      "sourceOrdinal": 24,
+      "beforeDisplayReviews": [
+        {
+          "surface": "PROBLEM",
+          "independentRef": {
+            "commit": "798e3261198dc70fd9eb86e388aa80245252b228",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/existing-vector-independent-v1.json",
+            "gitBlobSha1": "755d9290dfdd9847009ed32c95c789a893c13778",
+            "sha256": "f5c247a867f4741a3dd1ae64c05c2b899c3891efcb54262f29e64fd5dcd9ad8f",
+            "bytes": 3867
+          },
+          "technicalRef": {
+            "commit": "b9bd24223d4e523db6577682c1a30e74c11d25db",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/student-ui-technical-v3.json",
+            "gitBlobSha1": "06cf5c2b0e38e4113ddf1fdd519a31cfa5196f39",
+            "sha256": "c96dcff0275aeac68bb1cd527594ebf000b0ea36e7e7be4cec943e00d9303864",
+            "bytes": 303157
+          },
+          "visualRef": {
+            "commit": "b9bd24223d4e523db6577682c1a30e74c11d25db",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/student-ui-independent-v3.json",
+            "gitBlobSha1": "e7c7b463065f0e6cd25e8e58101c999045f2e341",
+            "sha256": "072f7eb06db26f18728ca3cb142154956baf9ae2916b0805f18e14a41d63732e",
+            "bytes": 5966
+          }
+        }
+      ],
+      "afterDisplayReviews": [
+        {
+          "surface": "PROBLEM",
+          "independentRef": {
+            "commit": "798e3261198dc70fd9eb86e388aa80245252b228",
+            "path": "docs/operations/m2s1-svg7-source-repair-20261116/existing-vector-independent-v1.json",
+            "gitBlobSha1": "755d9290dfdd9847009ed32c95c789a893c13778",
+            "sha256": "f5c247a867f4741a3dd1ae64c05c2b899c3891efcb54262f29e64fd5dcd9ad8f",
+            "bytes": 3867
+          },
+          "technicalRef": {
+            "commit": "0b7ec9534ca10422fd87fad65dc967a1b8a15ac8",
+            "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/technical-ui14-current-v1.json",
+            "gitBlobSha1": "d3392daf54a0c6ebe338f3fd6f575e4feb6d3cf6",
+            "sha256": "79ea9e7c8d3060c96177945903b262c099e1f945753aa74a711b7912085e6159",
+            "bytes": 74569
+          },
+          "visualRef": {
+            "commit": "d8c5d6c3a81b20838ec8dc1102120dc7ddac0c28",
+            "path": "docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/visual-ui14-current-binding-v1.json",
+            "gitBlobSha1": "a82aa350f2913d86ea02810e9261bc05e3abbfda",
+            "sha256": "8fae8365f9fb93ce347161f9b9500ba31fec800a2ed1d50d0b24bd5c6840eaad",
+            "bytes": 20912
+          },
+          "uiCheckoutContinuity": {
+            "schemaVersion": "archive-existing-vector-ui-checkout-continuity-v1",
+            "questionUid": "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd",
+            "sourceOrdinal": 24,
+            "surface": "PROBLEM",
+            "capturedSourceRef": {
+              "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+              "path": "archive/exams/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
+              "gitBlobSha1": "c8945961f52f7efca83d66ea045d070e74718de6",
+              "sha256": "c1d8ce4c3de70c67d7a3ecf02031fd48327103785fec40505e1576043625618a",
+              "bytes": 44656
+            },
+            "capturedAssetRefs": [
+              {
+                "commit": "a57c51f633c937da15d1fac766631b413e02bd55",
+                "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q24-problem-visual-v2-source-repair-r2.svg",
+                "gitBlobSha1": "6ddf55bc8a7575124342f996cd654b6df3ca5013",
+                "sha256": "a7f34be6ce3556987911922fe8df74cfca412de47f8ce1af3d0dd4bccc8c3749",
+                "bytes": 10634
+              }
+            ],
+            "currentSourceRef": {
+              "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+              "path": "archive/exams/original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
+              "gitBlobSha1": "c8945961f52f7efca83d66ea045d070e74718de6",
+              "sha256": "c1d8ce4c3de70c67d7a3ecf02031fd48327103785fec40505e1576043625618a",
+              "bytes": 44656
+            },
+            "currentAssetRefs": [
+              {
+                "commit": "45e976a5981701bef9c755d50c11636116ee788f",
+                "path": "archive/assets/images/21_팔마중_1학기_기말_중2_수학/q24-problem-visual-v2-source-repair-r2.svg",
+                "gitBlobSha1": "6ddf55bc8a7575124342f996cd654b6df3ca5013",
+                "sha256": "a7f34be6ce3556987911922fe8df74cfca412de47f8ce1af3d0dd4bccc8c3749",
+                "bytes": 10634
+              }
+            ]
+          }
+        }
+      ],
+      "otherWholeDocumentExact": true
+    }
+  ],
+  "newTest": {
+    "path": "tests/item-4slot-svg7-current-ui-binding.test.cjs",
+    "gitBlobSha1": "1c219cf8e38e983a83dd70efb8021404b498e944",
+    "sha256": "236d3c11a507dcec04cc8e391ec5d6f3535c9a3e9fc62c86fcf05da456ca91a1",
+    "bytes": 16919
+  },
+  "productionExecution": "NOT_RUN",
+  "sourceEdits": 0,
+  "newSemanticApproval": 0,
+  "newFourSlotVector": 0
+}

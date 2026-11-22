@@ -15,6 +15,7 @@ const Quick = require('../archive/archive2-quick-pools.js');
 const Tree = require('../archive/archive2-unit-tree.js');
 const Toc = require('../archive/rpm-middle-toc.js');
 const { catalog, withTestAssignments } = require('./helpers/archive2-scope-harness.cjs');
+const { loadWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, 'archive', file), 'utf8');
@@ -67,15 +68,12 @@ function harness() {
     Archive2Source: archiveSource,
   });
   ctx.window = ctx;
-  const source = read('archive2-workspace.js');
-  const startup = source.lastIndexOf('  (async () => {');
-  assert.ok(startup > 0);
-  vm.runInContext(source.slice(0, startup) + `
+  loadWorkspace(ctx, `
     render = () => {};
     save = () => {};
     globalThis.workspaceTest = {state, scopeOptions, renderScopes, planRows, request, pool, draft, applyDraft, newDraft, invalidate,
       selectedScopeOptions, composeMetaFacets, scopeUnitMarkup};
-  })();`, ctx);
+  `);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
   w.state.byUid = new Map(data.records.map(row => [row.questionUid, row]));

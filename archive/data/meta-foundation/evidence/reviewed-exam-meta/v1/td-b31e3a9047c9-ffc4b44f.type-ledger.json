@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-b31e3a9047c9-ffc4b44f",
+  "sourceArchiveFile": "original/middle/m3/2final/20_연향중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_e04def690e30bb1446fab43b8d865b54ef643b40aee08364e876417e33e93c51",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": "TPL_M3_STATISTICS_CONCEPTS_TRUE_FALSE_DEFINITION",
+      "step": "편차평균0와대푯값정의를대조하고평균에모일수록산포도가작다는성질에반하는다섯째선택.",
+      "note": "필요 TPL: 산포도의 크기와 집중도 판정: 평균 주위에 자료가 집중될수록 산포도가 작고 멀리 퍼질수록 커짐을 진술에 적용한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b61a6612903afb95ccbbeb73f0f238c22c77c5a8c796461fbd30789cb90097c1",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
+      "step": "각값도수를세어5가5회로가장많아최빈값5.",
+      "note": "도구: CUE_LENGTH_4_TO_60_REQUIRED",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_28d6f79d7bd4ceb8c89afb550413959d8f0aff6618ea0be553cc90ec157f9717",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": "TPL_M3_CENTRAL_TENDENCY_MEDIAN_MODE_ORDER_POSITION",
+      "step": "홀수자료중앙값10에서a≥10,짝수자료중앙두값평균16에서a≤15,공통범위밖16선택.",
+      "note": "필요 TPL: 중앙값 조건에 따른 미지 변량 범위: 미지수의 삽입 순서를 나누어 홀수·짝수 자료의 중앙값 조건을 만족하는 범위를 정한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0a444aeaecab857af3a841dd4d47fa7fb6338beb9cb02e911c59726ec934cb13",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": "TPL_M3_DISPERSION_DEVIATION_PROPERTIES_RESTORE",
+      "step": "편차합0에서c=-2,평균12를더해자료값10.",
+      "note": "필요 TPL: 미지 편차와 원래 변량 복원: 편차 합이 0임을 이용해 빠진 편차를 구하고 평균을 더하여 원래 자료값을 복원한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f0bde221853ee198a566930c4612fb94f1bfecb1245f7752c7450fb56b57c9c9",
+      "sourceOrdinal": 14,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "동일평균0의두집단제곱편차합6+9를여섯자료로나누어분산5/2.",
+      "note": "새 PT 제안: 여러 집단의 평균과 분산 통합. 정의: 각 집단의 크기·평균·분산에서 합과 제곱합을 구한 뒤 전체 자료의 평균과 분산을 계산한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, PT_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_650189505a048e90981eb6b02a8a48cf06054b0b963fdae3f1116c66088a3739",
+      "sourceOrdinal": 15,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "평균에서a+b8,분산4에서전체제곱합100을얻어고정제곱합56을빼a²+b²44.",
+      "note": "새 PT 제안: 평균·분산으로 대칭식 계산. 정의: 평균과 분산에서 자료의 합과 제곱합을 복원하고 곱셈공식으로 두 변량 곱의 합 등 대칭식을 계산한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: PT_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_768d2d13586699f6e256f4e505db7a89bd423ff1245d58b10251510931e75cf5",
+      "sourceOrdinal": 16,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "산점도의양의방향·상관강도·수평수직예외를대조하여첫째진술선택.",
+      "note": "새 PT 제안: 산점도와 상관관계 개념 판정. 정의: 산점도의 점 배열 방향과 직선 주변 집중도로 상관관계의 방향·강도를 해석하고 관련 진술의 참거짓을 판단한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: PT_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f32726fad84f7b7680aa7b0e77b337cfefc3a369d7f9d7fbfb580a54b552357a",
+      "sourceOrdinal": 17,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "우하향산점도는음의상관이므로낮과밤길이,이동거리와남은연료를대응.",
+      "note": "새 PT 제안: 산점도의 상관 방향과 실생활 대응. 정의: 산점도의 우상향·우하향·무방향 배열을 양·음·무상관으로 분류하고 같은 경향의 실생활 두 변량을 고른다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: PT_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_af2b98435a45a532a88fef39ec135a60a0184e846eea39d1edbecd53f0a83ebe",
+      "sourceOrdinal": 18,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "가로왼쪽눈과세로오른쪽눈을비교해y>x인네점만세고전체15명으로나눠4/15.",
+      "note": "새 PT 제안: 산점도에서 조건을 만족하는 자료 비율. 정의: 산점도의 두 좌표를 비교하거나 주어진 영역 조건을 적용하여 해당 점의 개수를 세고 전체 자료에 대한 비율을 구한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, PT_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4f334ad53d776db21095dfeda46001e3a34f2bdbb3165a18b394026c2ef30d9b",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": "TPL_M3_DISPERSION_DEVIATION_PROPERTIES_COMPARE",
+      "step": "두자료평균5와편차제곱합10,50을구해표준편차√2,√10,더작은연이를선택.",
+      "note": "필요 TPL: 자료별 표준편차 계산과 균일성 비교: 각 자료의 평균과 편차 제곱의 평균을 구해 표준편차로 바꾸고 더 작은 집단을 고르게 분포한 집단으로 판단한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

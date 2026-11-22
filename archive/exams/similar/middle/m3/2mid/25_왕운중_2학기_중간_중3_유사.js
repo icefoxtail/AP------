@@ -24,8 +24,8 @@ window.questionBank = [
     "content": "다음 그림과 같은 직각삼각형 $ABC$에서 $\\sin A$의 값을 구하면? [3점]",
     "choices": [
       "$\\dfrac{5}{13}$",
-      "$\\dfrac{12}{13}$",
       "$\\dfrac{5}{12}$",
+      "$\\dfrac{12}{13}$",
       "$\\dfrac{12}{5}$",
       "$\\dfrac{13}{5}$"
     ],
@@ -62,11 +62,11 @@ window.questionBank = [
     "wide": false,
     "content": "$\\angle B=90^\\circ$인 직각삼각형 $ABC$에서 $\\tan A=\\dfrac{4}{3}$일 때, $\\cos A$의 값을 구하면? [3점]",
     "choices": [
+      "$\\dfrac{5}{4}$",
       "$\\dfrac{4}{5}$",
       "$\\dfrac{3}{4}$",
-      "$\\dfrac{5}{3}$",
       "$\\dfrac{3}{5}$",
-      "$\\dfrac{5}{4}$"
+      "$\\dfrac{1}{2}$"
     ],
     "answer": "④",
     "solution": "$\\tan A = \\dfrac{BC}{AB} = \\dfrac{4}{3}$이므로\n$AB = 3k, BC = 4k$ ($k>0$)로 둔다.\n\n피타고라스 정리에 의해\n$AC = \\sqrt{(3k)^2 + (4k)^2} = \\sqrt{25k^2} = 5k$\n\n$\\cos A = \\dfrac{AB}{AC} = \\dfrac{3k}{5k} = \\dfrac{3}{5}$\n\n정답은 ④이다.",
@@ -352,8 +352,8 @@ window.questionBank = [
     "choices": [
       "$\\dfrac{\\sqrt{5}}{5}$",
       "$\\dfrac{1}{2}$",
-      "$\\dfrac{\\sqrt{3}}{2}$",
       "$\\dfrac{3}{5}$",
+      "$\\dfrac{\\sqrt{3}}{2}$",
       "$\\dfrac{2\\sqrt{5}}{5}$"
     ],
     "answer": "⑤",
@@ -738,7 +738,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 4개의 원은 각각 네 삼각형의 내접원이고, $AB, AC, AD, AE, AF$는 접선이며 $AC, AD, AE$는 공통접선이다. $AB=30, BC=24, CD=20, DE=14, EF=10$일 때, $AD+AF$의 길이를 구하면? [4점]",
+    "content": "다음 그림과 같이 4개의 원은 각각 네 삼각형의 내접원이고, $AB, AC, AD, AE, AF$는 접선이며 $AC, AD, AE$는 공통접선이다. 이웃한 두 원은 서로 접한다. $AB=30, BC=24, CD=20, DE=14, EF=10$일 때, $AD+AF$의 길이를 구하면? [4점]",
     "choices": [
       "40",
       "42",
@@ -788,9 +788,9 @@ window.questionBank = [
     "choices": [
       "$\\dfrac{3}{5}$",
       "$\\dfrac{4}{5}$",
-      "$\\dfrac{3}{4}$",
-      "$\\dfrac{4}{3}$",
-      "1"
+      "$1$",
+      "$\\dfrac{5}{4}$",
+      "$\\dfrac{4}{3}$"
     ],
     "answer": "②",
     "solution": "직각삼각형 $ABC$에서\n$AC = \\sqrt{6^2 + 8^2} = 10$\n\n$M$은 빗변의 중점이므로 외심이다.\n$BM = \\dfrac{AC}{2} = 5$\n\n$MH \\parallel AB$이고 $M$이 $AC$의 중점이므로\n$BH = \\dfrac{BC}{2} = 4$\n\n직각삼각형 $BHM$에서\n$\\sin x = \\dfrac{BH}{BM} = \\dfrac{4}{5}$\n\n정답은 ②이다.",

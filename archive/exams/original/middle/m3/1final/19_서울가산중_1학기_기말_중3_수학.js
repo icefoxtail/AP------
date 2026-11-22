@@ -382,8 +382,8 @@ window.questionBank = [
   },
   {
     "id": 20,
+    "layoutTag": "subjective-2up",
     "imageSize": "large",
-    "layoutTag": "fullwidth",
     "questionNumber": 20,
     "number": 20,
     "questionType": "서술형",

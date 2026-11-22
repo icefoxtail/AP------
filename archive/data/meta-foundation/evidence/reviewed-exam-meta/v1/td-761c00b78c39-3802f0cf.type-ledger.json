@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-761c00b78c39-3802f0cf",
+  "sourceArchiveFile": "original/middle/m2/1final/25_연향중_1학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_b635728d2f53c19f1e735cf98fc5bc187f625b98a69a2259551363f32dc6b82f",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "자연수 x와12의 공배수는 하나의 x에 여러 y가 대응하므로 함수가 아닌③을 고른다.",
+      "note": "새 TPL 제안: 대응 관계의 함수 여부 판별. 정의: 자연수 x와12의 공배수는 하나의 x에 여러 y가 대응하므로 함수가 아닌③을 고른다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_26a7e17a594bc0e516af881986a22e20f322090aa4aec08dc334df00729a0196",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "각 관계를 y식으로 정리하여 y=6x+1만 일차함수이고 이차·반비례·상수식은 제외한다.",
+      "note": "새 TPL 제안: 식의 형태로 일차함수 여부 판별. 정의: 각 관계를 y식으로 정리하여 y=6x+1만 일차함수이고 이차·반비례·상수식은 제외한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_470511c9c916f4322e73e0b17ae4601a70c7a7e13b372c7c67a0965f92d63d3c",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": null,
+      "step": "아래로4 옮긴 y=2x+k-4에(-1,2)를 대입하여 k=8을 구한다.",
+      "note": "새 TPL 제안: 수직 평행이동과 지나는 점으로 원래 절편 결정. 정의: 아래로4 옮긴 y=2x+k-4에(-1,2)를 대입하여 k=8을 구한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9d385ee53fd1daf75ae94d28a4ccddb162aa8c0f6c2a8dc0c52e591d269ae438",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+      "step": "기울기 -3/2,절편4와6,지나는 사분면을 대조하여 x축 교점(4,0)이라는④만 참임을 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bc83c0294fe12892f849196298da14eb23612cf7bdbda4d2aa194825f8b0a679",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": null,
+      "step": "이동한 두 식 y=-3x+1+p,y=3ax-5의 기울기와 절편을 비교해 a=-1,p=-6,a-p=5를 구한다.",
+      "note": "새 TPL 제안: 수직 평행이동한 두 직선의 일치 조건. 정의: 이동한 두 식 y=-3x+1+p,y=3ax-5의 기울기와 절편을 비교해 a=-1,p=-6,a-p=5를 구한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

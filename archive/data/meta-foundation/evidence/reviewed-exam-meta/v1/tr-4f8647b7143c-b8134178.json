@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-4f8647b7143c-b8134178",
+  "requestSha256": "fad97ecb2cc5c13c9eaa40d82ffb95f24e81afdd30d0688335508841199a3620",
+  "examUid": "19_순천여고_2학기_중간_고2_수학II",
+  "sourceArchiveFile": "original/high/h2/2mid/19_순천여고_2학기_중간_고2_수학II.js",
+  "sourceBlobSha1": "3d6ae98fed14da5871a3e6f530a25adec70140ea",
+  "sourceRawSha256": "c14d1df5726bb40130af97401186f54de3cc92ce357c0ecacdbaf5bda87f8827",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-4f8647b7143c-b8134178.type-ledger.json",
+        "sha256": "976d0dcfd5f2e7cad148d5035487f0f83e2c3919901f3150af60183dd256218e"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_73313916713a3e9590f10a0605dd8b0e27cb433d5cdc94f1df4e7b41b7222d07",
+      "sourceArchiveFile": "original/high/h2/2mid/19_순천여고_2학기_중간_고2_수학II.js",
+      "sourceOrdinal": 19,
+      "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+      "templateKey": "TPL_TANGENT_CONSTRUCTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-4f8647b7143c-b8134178",
+        "judge": "dots",
+        "rationale": "곱의 미분법으로 접점에서 도함수값을 계산해 접선 기울기를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "a3780ae2511dd3a46c59bcf74baea3ce5fec7aa437881f4341b925fad4439a66",
+        "judgedContentFingerprint": "6dc0ba4646f24daf07eb1a4242b047688877d4444d87b03e125a3b57e66ec0b7",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "afe701aa412eba7e939ef489945bbe3d546d2cc1626279ee86a7ff6295e4e1d4",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-4f8647b7143c-b8134178.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+          "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+          "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 22
+}

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-7ab734093583-071ae957",
+  "sourceArchiveFile": "types/high/h2/비상_대수_지수로그함수_익힘책_고2_유형심화.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_1018a593082d408dcd8cede49408dc81b5c1bf80b5ec6a5e6a07300834033b80",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "step": "지수식의 양수성·증감과 절편 대입으로 치역y<4,x절편3을 판정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b1ce3197b29be6a67337b551afcc260e889f9c642010a3ace4378faaf4372571",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_FUNCTION_INEQUALITY",
+      "templateKey": "TPL_LOG_VALUE_ORDER_COMPARISON",
+      "step": "C를log_(1/2)7로 바꾸고 감소밑의 진수순서6<7<8을 역전한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7926f484b423f517155bfbbaffa945bee7f2bc39fd2e9800a6618672d4487065",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_03_LOG_INEQUALITY",
+      "templateKey": "TPL_H22A_03_LOG_INEQUALITY_091",
+      "step": "지수방정식으로 a=2,b=3을 얻고 감소밑의 진수조건과 부등호 역전으로 c=5를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6a08183db3e8abe3ddbb8739a5ea76621f6828c41c7f6db96993504317c8e9a7",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_02_EXP_EQUATION",
+      "templateKey": "TPL_H22A_02_EXP_EQUATION_082",
+      "step": "t=a^x의 두 근4,9를 구하여 x근의 차log_a(9/4)=2를 쓴다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_13f77cddfb61db8758c5d7cdc75d8cc788aba8c8c07fd02fca2013071be1f197",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_02_EXP_INEQUALITY",
+      "templateKey": "TPL_H22A_02_EXP_INEQUALITY_083",
+      "step": "밑1/3의 감소성으로2x−1>x²−4를 풀어 정수0,1,2를 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ff4a073454ea54a85f63a4ac360b6daa3c670c083d70311c8a23d042430830cb",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+      "step": "평행사변형 좌표 D=B+C−A와 로그 일대일성을 결합하여 b−a=a=5를 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b754a965f5cd48e16e41eda2588da9c8d8d5e5d5b26a374a9d57843e5a4434d6",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_03_LOG_EQUATION",
+      "templateKey": "TPL_H22A_03_LOG_EQUATION_090",
+      "step": "로그치환 두 근의 합6,차3을 실제근의 곱64,비8에서 구하고 곱m을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_32285828b74e5ccc3d6b467d0b9592601913eaef222e0cfc3ede71e43a513dc4",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_02_EXP_EQUATION",
+      "templateKey": "TPL_H22A_02_EXP_EQUATION_081",
+      "step": "두 시점 함수비16=2^(8/a)로 a=2를 얻고 목표비128에서 시각17을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e1504ffcf531861ec3a75fedbfd3ee03d7cfe11e5f512bb3fce60854225a319f",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DISTANCE_LENGTH",
+      "step": "같은 높이의 지수를 비교하여 x좌표t,3t,3t,9t를 구하고 수평길이비3을 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ba611b9ca9839996ee4531a6fe21ad848130f711e739200351cc15f753e5f1c9",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_03_LOG_INEQUALITY",
+      "templateKey": "TPL_H22A_03_LOG_INEQUALITY_091",
+      "step": "A의 진수조건과 상한2^k−5를 구하고 B의 두 정수구간과 교차하여5≤2^k<10을 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    }
+  ]
+}

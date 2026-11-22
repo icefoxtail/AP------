@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-4b1b091efb73-0e0109ca",
+  "requestSha256": "877256ab0cbafa11cbcc3af1e84b51ac75f03bd6fb3539d87f6e73d0cdc88227",
+  "examUid": "25_금당고_1학기_기말_고2_수학I",
+  "sourceArchiveFile": "original/high/h2/1final/25_금당고_1학기_기말_고2_수학I.js",
+  "sourceBlobSha1": "5b3c097c17201927a278c9fe9519d68b4f72945b",
+  "sourceRawSha256": "1af8d1397ec893af294a246723e89c5150fde221554f734c5bf5623876c39d0b",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4b1b091efb73-0e0109ca.type-ledger.json",
+        "sha256": "8b344dcebdad11cf08923998f82d891e83e4c33882b36039502d5c4e038388de"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_ee920290dc6e07fe75fe004f21f0c0e752a1e40796ebfcd24194d6788539510a",
+      "sourceArchiveFile": "original/high/h2/1final/25_금당고_1학기_기말_고2_수학I.js",
+      "sourceOrdinal": 20,
+      "problemTypeKey": "PT_TRIGONOMETRIC_INEQUALITY",
+      "templateKey": "TPL_TRIGONOMETRIC_INEQUALITY_INTERVAL_SOLVE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-4b1b091efb73-0e0109ca",
+        "judge": "dots",
+        "rationale": "부등식을 cos(πk/2)>1/2로 줄여4의배수항만 합하면4r(r+1)=440,40≤n≤43이므로 합83이다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학I",
+          "curriculumSource": "request",
+          "rowCourse": "대수",
+          "courseRelation": "successor"
+        },
+        "judgedSourceFingerprint": "f428daea95664ea4dbf22a655d0fa3be3c4794ce09de0b21cbcd56fa82c2dc21",
+        "judgedContentFingerprint": "3830ddc3e701d93a7a43f3721dd56328c0a26eb62b93fd72448a3dbed0c59582",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "a336e3ff1e2c9b573dfe91e6d50af6fd52c0f24f0c9eff4c157857b0f87f92f7",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4b1b091efb73-0e0109ca.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 21
+}

@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-e67d615fb671-e79c8c66",
+  "sourceArchiveFile": "original/high/h2/1mid/25_순천여고_1학기_중간_고2_대수.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_8f64744d2b9bfcf9dc22b374b0998dc18fe53a0de346106848aba7a069b26374",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+      "templateKey": "TPL_H22A_01_EXPONENT_LAWS_071",
+      "step": "같은 밑의 곱에서 지수를 더하면 무리수항이 소거되어2³=8.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_23092da18fee393dcca9359e1f4caa3f6bdd449750a754501edefa717cce00a1",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_EQUATION_DOMAIN",
+      "templateKey": "TPL_LOG_EQUATION_ARGUMENT_FILTER",
+      "step": "로그합을 곱으로 합쳐 x²−9=16에서±5를 얻고 진수조건 x>3으로5만 남긴다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ab27def02c4b5c28f88ece77bc3cbc0d1b3491e651d09b04922b71b747b238b3",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+      "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+      "step": "로그정의·밑변환 및4^(log₂3)=3²로 보기−2,3/2,9,3/2,6을 계산하여 최댓값③.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요. 독립성 복구: root fresh 판정자가 안전 원문·ACTIVE 정의만으로 새로 판정한 결과를 인계받음. 원판정은 폐기하고 비교하지 않음. source92dd 문항·해설·정답③ 결속 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c6e3a75ac0142cb8aa6bd7be80b435dc4e2c29a9b43a645bdcaceaed14a748dc",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+      "templateKey": "TPL_EXPONENT_LAW_RECIPROCAL_POWER",
+      "step": "분모분자에 a^x를 곱하여 a^(2x)=3을 얻고 역수1/3을 대입하여5/4.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5bd6aa9a273ba2a50d824a9b6aa6af3e044430ef4eb09dffdb2489b2c7a9a08a",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_QUADRANT_EVALUATION",
+      "templateKey": "TPL_TRIG_SIGN_PYTHAGOREAN_RATIO",
+      "step": "2사분면 부호로 두 절댓값을 풀어 sinθ=1/2,음의 코사인은−√3/2.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요. 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e724eae29bf8a612ef280ed8c24ba7e52e8b14c31bbe36f0b699482b2cf4fd81",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_CALCULATION",
+      "templateKey": "TPL_EXPONENT_RATIONAL_POWER_OPERATION",
+      "step": "겹근호를 유리수 지수로 바꾸면 a^(1/6−1/8+1/48−1/8)=a^(−1/16)이므로 n16.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bc1fd0ad66bc161e18a3866cd04635b83704f186edd64a652b1fda72b482e85b",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+      "templateKey": "TPL_SECTOR_FIXED_PERIMETER_MAX_AREA",
+      "step": "l=20−2r를 넓이rl/2에 넣으면−(r−5)²+25,최대시 중심각l/r=2로 합27.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b35cf4cf4dedd3174ffaaef375f09f402e035e74891c8620f3b7479fa062ebb9",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_03_LOG_INEQUALITY",
+      "templateKey": "TPL_H22A_03_LOG_INEQUALITY_092",
+      "step": "k>0에서 판별식 부등식을 t=log₂k의(t−3)(t+2)≥0로 바꾸어0<k≤1/4 또는 k≥8.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2a36bdf6e00bf660b21ea29bbb786a8981f07b78937dffbf5713d0829ecaac7c",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+      "templateKey": "TPL_H22A_01_ROOT_REAL_068",
+      "step": "n홀짝과(n−5)(n−10)의 부호에 따라 실수근 개수0,1,2를 나누어 조건은 n11,13,합24.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b8d7f1c899f853734ab092eb75b319f6c5e310cebb1f1ba9de96e7c480f00c32",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_APPLICATION",
+      "templateKey": "TPL_LOG_EXPONENTIAL_EQUATION_SYSTEM_SOLVE",
+      "step": "상호역수 로그조건과1<a<b로 b=a²,ab=2⁹에서 a8,b64이므로 목표2/3,p+q5.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fbbe23495aea06b3c59a9288a3a668970194ce4dbd834c21e155ec55a38aaaad",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+      "step": "주기2 삼각파의 내부 봉우리마다 두 교점,첫 하강구간 한 교점과 마지막 꼭짓점 한 교점을 세어3n−1=98,n33.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요. 원문 해설의 x=1 교점 주장은 오류: f(1)=1,log(1)=0이다. 첫 교점은1<x<2에 있고 최종98 및 n33은 유지된다.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7f8194f290b3f722c3afda90655d0789f608080656780939c0654608ecbb26fb",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+      "step": "평행사변형 중점조건을 밑변환하여 k=1/3,높이8/3와 넓이8/3에서 AB=1,log_a3=2이므로 ak=3^(−1/2).",
+      "note": "문항·해설 직접 판독. 필수 원본 그림 Git blob 추출 후 시각 확인.",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5bbab82fd12d67bda1a61147ad7a8fc39b873a53f6d5835953bb9f766b50a4a2",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENTIAL_DECAY",
+      "templateKey": null,
+      "step": "매 장 잔존비0.95로20장 후0.95²⁰이며 상용로그−0.446=log3.581−1로0.3581배.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요. 필요 TPL명: 일정 감소율 누적 후 상용로그 역산. 정의: 반감기가 아닌 한 단계 잔존비를 거듭제곱하고 주어진 상용로그값으로 양을 계산한다. 구별 단서: 매 장5퍼센트 감소와20번 반복. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_19ede3754c62acce8d3d0ab80f1ae77050bbdc7db7c251e9c2b5665d5181bbed",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "templateKey": "TPL_LOG_CHANGE_BASE_TELESCOPING",
+      "step": "연속 로그곱1을 이용해 공통값k=−5,b=a,c=a^(−1/5)로 환원하고 a=m⁵,m⁴≤200에서 a32,243의 합275.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

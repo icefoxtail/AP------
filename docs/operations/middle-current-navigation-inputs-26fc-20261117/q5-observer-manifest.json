@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-q5-exact-observed-apmath-two-v1",
+  "path": "tools/4slot/m3-e052-q5-complete-given-continuity.mjs",
+  "before": {
+    "gitBlobSha1": "4c87d6dc27cf7530c75304817853bbde2c6601a1",
+    "sha256": "b96bbf3a1389c6c898158169f1135aad4c39bbc5d6e55181660f4db0fa034aff",
+    "bytes": 15920
+  },
+  "after": {
+    "gitBlobSha1": "d0f424928ccca3905055bbac0569f0460cfbe376",
+    "sha256": "2cf2b87e7f0dab41a0073edf392e41d8d28c41f18e5463042730685650c2ee42",
+    "bytes": 16035
+  },
+  "exactAddedPaths": [
+    "apmath/css/student-navigation.css",
+    "apmath/js/student-navigation.js"
+  ],
+  "delta": {
+    "before": "/^(?:archive\\/|docs\\/|tools\\/|\\.archive-meta-register\\/)/.test(value.path)",
+    "after": "(/^(?:archive\\/|docs\\/|tools\\/|\\.archive-meta-register\\/)/.test(value.path) ||\n       value.path === 'apmath/css/student-navigation.css' || value.path === 'apmath/js/student-navigation.js')"
+  },
+  "inverseWholeExact": true,
+  "productionNativeUnchanged": true,
+  "sourceOrApprovalEdits": 0,
+  "actual45": "PENDING"
+}

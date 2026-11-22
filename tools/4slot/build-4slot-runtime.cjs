@@ -14,6 +14,7 @@ const m1Problem = require('./m1s2-problem-renderer-continuity.cjs');
 const m3Layout = require('./m3s2-layout-continuity.cjs');
 const q5CompleteGiven = require('./m3-e052-q5-complete-given-continuity.cjs');
 const { sourceNumber, sourceIdentityNumber } = require('./exam-items.cjs');
+const { item4SlotIndexText } = require('./item-4slot-index-format.cjs');
 const ROOT = path.resolve(__dirname, '../..');
 const INPUT = 'archive/data/item-4slot/';
 const OUTPUT = 'archive/data/item-4slot-index.json';
@@ -393,7 +394,7 @@ function stableContinuityClaimPosition(file){
   const {m1ProblemContinuityClaims,m3LayoutContinuityClaims,q5CompleteGivenContinuityClaims,...ordinary}=file;
   return {...ordinary,...(own(file,'m1ProblemContinuityClaims')?{m1ProblemContinuityClaims}:{}),...(own(file,'m3LayoutContinuityClaims')?{m3LayoutContinuityClaims}:{}),...(own(file,'q5CompleteGivenContinuityClaims')?{q5CompleteGivenContinuityClaims}:{})};
 }
-function serialize(x){return JSON.stringify(x)+'\n';}
+function serialize(x){return item4SlotIndexText(x);}
 function verify(index) {
   for(const row of index.records)originalSourceError.assertNotSubject(row);
   const api=consumer.createIndex(index);

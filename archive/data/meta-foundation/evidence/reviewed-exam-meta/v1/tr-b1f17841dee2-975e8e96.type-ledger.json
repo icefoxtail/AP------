@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-b1f17841dee2-975e8e96",
+  "sourceArchiveFile": "similar/high/h2/1mid/26_제일고_1학기_중간_고2_기하_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_6d1d290a0d40764e3d323dc55c659b77042be70649434a165f4bf6353e98be15",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_PARABOLA",
+      "templateKey": "TPL_GEO_PARABOLA_STANDARD_EQUATION",
+      "step": "포물선 표준식 y²=4px와 계수를 비교하여 초점의 x좌표 p=−4를 구한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3343d05d59d89f4c1c8fc67feac73fed8ce1e37ffba5164bccba856ef5d31301",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": "TPL_GEO_SPACE_FIGURE_RELATION",
+      "step": "공간의 평면 결정 조건을 대조해 꼬인 두 직선을 함께 포함하는 평면이 없음을 판정한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. PT 정의에는 맞지만 활성 TPL의 세부 골격과 정확히 일치하지 않아 tpl=null. TPL_NOT_ACTIVE 검사는 null에 따른 결과로 별도 보존. 필요한 TPL 이름: 공간에서 평면의 결정 조건 판별; 정의: 주어진 점과 직선들의 공선성·교차·평행·꼬인 위치를 확인하여 이를 포함하는 평면이 유일한지, 무수히 많은지, 존재하지 않는지를 구분한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_45ee1aa81819ba277a6315bdf0d8f7d57678ba2dcfcc95ff93deafe0ccba4cbd",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_ELLIPSE",
+      "templateKey": "TPL_GEO_ELLIPSE_FOCAL",
+      "step": "두 초점까지 거리합을 근호식으로 표현하고 두 차례 제곱하여 타원 표준식을 유도한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. PT 정의에는 맞지만 활성 TPL의 세부 골격과 정확히 일치하지 않아 tpl=null. TPL_NOT_ACTIVE 검사는 null에 따른 결과로 별도 보존. 필요한 TPL 이름: 초점 거리합 정의에서 타원 방정식 유도; 정의: 두 초점까지 거리합이 일정하다는 정의를 좌표의 근호식으로 세우고 반복 제곱하여 반축·초점 관계 및 타원의 표준방정식을 유도한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b25cb688c246022c5f3e72378a0ca1901ed1242b13ac29b939ef5f124f9adff8",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_HYPERBOLA",
+      "templateKey": "TPL_GEO_HYPERBOLA_FOCAL_DISTANCE",
+      "step": "지름에 대한 원주각의 직각조건과 넓이로 두 초점 거리의 제곱합·곱을 구해 거리차인 주축 길이를 계산한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. PT 정의에는 맞지만 활성 TPL의 세부 골격과 정확히 일치하지 않아 tpl=null. TPL_NOT_ACTIVE 검사는 null에 따른 결과로 별도 보존. 필요한 TPL 이름: 직각 초점삼각형의 거리차로 주축 길이 결정; 정의: 두 초점을 지름 끝점으로 하는 원 위의 점이 만드는 직각삼각형에서 거리 제곱합과 넓이로 거리곱을 구하고 그 차의 제곱을 이용해 쌍곡선 주축 길이를 결정한다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_aeb4dd5df1197d3e4c110667c3aaffaeb1b8b6a1a78e4be94f2e533a1b0c019d",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "templateKey": "TPL_GEO_CONIC_TANGENT_DISCRIMINANT",
+      "step": "주어진 직선에 평행한 타원 접선을 판별식으로 찾고 가까운 접선과의 평행선 거리를 구한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. PT 정의에는 맞지만 활성 TPL의 세부 골격과 정확히 일치하지 않아 tpl=null. TPL_NOT_ACTIVE 검사는 null에 따른 결과로 별도 보존. 필요한 TPL 이름: 평행한 접선을 이용한 타원과 직선의 최소거리; 정의: 주어진 직선과 기울기가 같은 타원 접선을 판별식으로 구하고 가까운 접선과 주어진 직선 사이 거리로 최소거리를 결정한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a9eaf3808e62a94ba732da81d7b07c21baa2e8ef94bdb5ccbd48c7bafb5d0de9",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+      "step": "쌍곡선 접선과 원점에서의 수선을 구해 수선 발과 쌍곡선 교점 좌표 사이 거리를 계산한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a009089df533f079672e9c8115f900a5df35b15cf2abd8f456ddce20819c6cc4",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_PARABOLA",
+      "templateKey": "TPL_GEO_PARABOLA_STANDARD_EQUATION",
+      "step": "준선과 수선 발의 좌표 차를 10|p|로 나타내고 x=9p를 포물선에 대입해 수직 길이를 구한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ef62c0ff75a8519fbb84ec3d235a258fa151013cd0b5ea7a999aab7ff1ebebbc",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_ELLIPSE",
+      "templateKey": "TPL_GEO_ELLIPSE_FOCAL",
+      "step": "초점 거리합으로 P 좌표를 구하고 내분점 Q가 새 타원 위에 있다는 조건과 초점 관계를 연립한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. PT 정의에는 맞지만 활성 TPL의 세부 골격과 정확히 일치하지 않아 tpl=null. TPL_NOT_ACTIVE 검사는 null에 따른 결과로 별도 보존. 필요한 TPL 이름: 초점 거리와 내분점을 이용한 타원 계수 연립; 정의: 첫 타원의 초점 거리합과 개별 거리로 점의 좌표를 구하고 내분점 좌표를 두 번째 타원의 초점 관계 및 통과점 조건에 대입하여 반축을 결정한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1473df7d627f0c644daeddcb7eacecf4fa4b34b081b3a1a1ae2f71bdf4f85595",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+      "step": "쌍곡선의 일반 접점에서 접선과 법선의 x절편을 구해 절댓값 거리의 곱에서 접점 좌표가 소거됨을 보인다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ef2fd6f81b3771285d9503800122ad223cf6bfb2b6c2bfce3b6f59e152ee3842",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_HYPERBOLA",
+      "templateKey": "TPL_GEO_HYPERBOLA_FOCAL_DISTANCE",
+      "step": "같은 초점의 쌍곡선 거리차와 타원 거리합을 연립한 뒤 두 거리식의 차로 교점 높이를 구한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. PT 정의에는 맞지만 활성 TPL의 세부 골격과 정확히 일치하지 않아 tpl=null. TPL_NOT_ACTIVE 검사는 null에 따른 결과로 별도 보존. 필요한 TPL 이름: 공통 초점 타원·쌍곡선의 거리합·차 연립; 정의: 동일한 두 초점에 대한 타원의 거리합과 쌍곡선의 거리차를 연립해 두 거리를 구한 뒤 거리 방정식으로 교점 좌표와 초점삼각형의 넓이를 구한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    }
+  ]
+}

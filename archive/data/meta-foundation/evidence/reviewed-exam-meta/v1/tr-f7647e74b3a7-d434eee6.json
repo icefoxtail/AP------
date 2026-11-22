@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-f7647e74b3a7-d434eee6",
+  "requestSha256": "6aa541b62aaa9243a2f5e451e7431d30493c503a3a381bdcd9265002cd00dd29",
+  "examUid": "22_효천고_1학기_기말_고2_수학I",
+  "sourceArchiveFile": "original/high/h2/1final/22_효천고_1학기_기말_고2_수학I.js",
+  "sourceBlobSha1": "9912e0881c64071733772605278691a3396e1f3c",
+  "sourceRawSha256": "3986165713f76156cbf832d640e18d4cb164b77b072a6514c5f16f0fc10e2a6e",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f7647e74b3a7-d434eee6.type-ledger.json",
+        "sha256": "16dd5cf4a208640ad6c5d6698dae636ee7342c23704589f1d6054580e2283028"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_0e32aa504c59a7f4f390349b358d04f28b61b0b3c1251b6d4b084ca3edfee9a7",
+      "sourceArchiveFile": "original/high/h2/1final/22_효천고_1학기_기말_고2_수학I.js",
+      "sourceOrdinal": 18,
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_SINE_HORIZONTAL_PHASE_INTERSECTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-f7647e74b3a7-d434eee6",
+        "judge": "dots",
+        "rationale": "네 수평 교점의 위상 합이 4π이므로 cos(4π/(3k))=1/2이고 최소 양의 각 π/3을 택할 때 k의 최댓값은 4이다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학I",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "458bc85d54490d9b096b92cbcba3132129ce10a7d43dd296e3e2721ce6662fd6",
+        "judgedContentFingerprint": "d6adac338ca831cf5827bdc39de14cd5841463fb5bba36ab3c328f4d5532a8f9",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "f5a4ac29b665f1445b25912e064d517838e47d2403c395952ff0da0b9a8ae2e1",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f7647e74b3a7-d434eee6.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 25
+}

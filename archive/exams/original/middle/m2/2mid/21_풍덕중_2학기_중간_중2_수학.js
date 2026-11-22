@@ -434,7 +434,7 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -515,7 +515,7 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -561,7 +561,7 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -607,7 +607,7 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -653,7 +653,7 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -691,7 +691,7 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -729,7 +729,7 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -767,7 +767,7 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -805,7 +805,7 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -843,7 +843,7 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -956,7 +956,7 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "도형"
@@ -999,7 +999,7 @@ window.examData = {
     "subUnitConfidence": "high",
     "subUnitClassificationDepth": "complete_category",
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "도형"

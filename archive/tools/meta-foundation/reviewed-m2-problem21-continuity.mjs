@@ -1,3 +1,4 @@
+import { readM2Problem21CurrentUiContinuation } from "./m2-problem21-current-ui-continuity.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
@@ -52,6 +53,116 @@ export const M2_PROBLEM21_ITEMS = Object.freeze(IDENTITIES.map(([key, sourceOrdi
   expectedQuestionCount: key.startsWith("E017") ? 23 : 24,
   callerAction: key === "E017-Q02" ? "EXISTING_E017_RHS_ONLY" : "NORMALIZE_EXACT_PROBLEM_FIELDS" })));
 const fail = code => { throw new Error(`M2_PROBLEM21:${code}`); };
+
+// The reviewed derivation table identifies the existing-vector worker. It does
+// not replace the current generic SVG footprint or grant new authority.
+export const M2_PROBLEM21_DERIVED_SVG8_ITEMS = Object.freeze([
+  {
+    "key": "E017-Q04",
+    "questionUid": "qid_v1_aa3c1ee5ab7ec90917755d06c8c44c1b8d06b3a14fde0c985c4fc769572eb51b",
+    "sourceOrdinal": 4,
+    "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+    "sourceGitBlobSha1": "f417b7e4e993ceb1a70c1b85de1e292a52d2b551",
+    "sourceSha256": "18caddd4282a3121e51eb6c2fe2e047c3a6e8e11074336b10a6098566529a68a",
+    "assetPath": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q4-problem-visual-v4.svg",
+    "assetGitBlobSha1": "8ceb67213019d19a316f585046f4dfb2a3866770",
+    "assetSha256": "536b894d4b9c78180125ec685816040271a46e8c297e4b025ba5570efbafde7c",
+    "staticRecordSha256": "480c26de564d4a32fc4be4c1e80e0dfdd99450efce15c70ad913ded05ff6b465",
+    "derivedRecordSha256": "a72a163f5babe53d35a96ab48dce28a0c1188e50b47b09fcf85c6893124c2118"
+  },
+  {
+    "key": "E017-Q05",
+    "questionUid": "qid_v1_ef2f75003ed913b20f7bb4d1482589a1566675e22862440bf9c035c2da9b8490",
+    "sourceOrdinal": 5,
+    "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+    "sourceGitBlobSha1": "f417b7e4e993ceb1a70c1b85de1e292a52d2b551",
+    "sourceSha256": "18caddd4282a3121e51eb6c2fe2e047c3a6e8e11074336b10a6098566529a68a",
+    "assetPath": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q5-problem-visual-v4.svg",
+    "assetGitBlobSha1": "28c9d60eee441984ce81ed941a477d661a556f3e",
+    "assetSha256": "2c7fd8f8cbebe68fc21b52c3927382e609ae4238f5cd601ddfe6c58c9dd5a87e",
+    "staticRecordSha256": "6d02ce59a84d5bbac4be9794c1055da5becb4020638a78b266871c026ef37b60",
+    "derivedRecordSha256": "8eb2aeec34bb12550c0662dacc4a25b0f88022c0eebcdb3d852617edb59eb83d"
+  },
+  {
+    "key": "E017-Q09",
+    "questionUid": "qid_v1_7d1571b986962c1d131481898b66de1a5f13030e0a5c19a4435ccda48b68f1ad",
+    "sourceOrdinal": 9,
+    "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+    "sourceGitBlobSha1": "f417b7e4e993ceb1a70c1b85de1e292a52d2b551",
+    "sourceSha256": "18caddd4282a3121e51eb6c2fe2e047c3a6e8e11074336b10a6098566529a68a",
+    "assetPath": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q9-problem-visual-v4.svg",
+    "assetGitBlobSha1": "1c2b78a81b3e5a34be0ac1a7163bbfb19ca4b85e",
+    "assetSha256": "b1378acc43d6a968bade6c4b4ab15a55cfd4738252fc044857093fffe1fdff20",
+    "staticRecordSha256": "5c2708c9e666bb9de014234a5777aeee8668ab5d8925a3e16b21d276b9b3c3d1",
+    "derivedRecordSha256": "d48ab8301815c5182badd68ce374a27a3a1f506a2d3e829592b92726b03872cf"
+  },
+  {
+    "key": "E017-Q18",
+    "questionUid": "qid_v1_e13b9dba98304967b524525611b6af91ed51580938601d9986ea7335cb415c67",
+    "sourceOrdinal": 18,
+    "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+    "sourceGitBlobSha1": "f417b7e4e993ceb1a70c1b85de1e292a52d2b551",
+    "sourceSha256": "18caddd4282a3121e51eb6c2fe2e047c3a6e8e11074336b10a6098566529a68a",
+    "assetPath": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q18-problem-visual-v3.svg",
+    "assetGitBlobSha1": "2cae8726c373f5c728f010860ae288e103982212",
+    "assetSha256": "a301b3ff21f2f371ec0220600757e74b4473c5cad5f084494a233f16506ad37c",
+    "staticRecordSha256": "85a2eaf5601124eaa99e1c350904d9e2850d481e60933e38cc1f0ea358f6441d",
+    "derivedRecordSha256": "a4326f07972ea013fe76241e5f5646ea0aa9cc69eb2bf208348794b371689d0b"
+  },
+  {
+    "key": "E017-Q20",
+    "questionUid": "qid_v1_ea8f9602a6a276cbaafa321190b673abbc47deafe5eae964c6d3caf81a3bfdb7",
+    "sourceOrdinal": 20,
+    "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+    "sourceGitBlobSha1": "f417b7e4e993ceb1a70c1b85de1e292a52d2b551",
+    "sourceSha256": "18caddd4282a3121e51eb6c2fe2e047c3a6e8e11074336b10a6098566529a68a",
+    "assetPath": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q20-problem-visual-v3.svg",
+    "assetGitBlobSha1": "c1c73664336bdbdd83136ea58773b1c23b189b90",
+    "assetSha256": "a156e3687d04197ee3dff3dd65710e833908432b3c3d6440b854526b57145fe6",
+    "staticRecordSha256": "00bf0e4adc24f8c2f073ed782d1500d453e9819d59dd3aa80b59f7ffa193d938",
+    "derivedRecordSha256": "53ebb6687d4c348b7e92b3c4adf8a4cfafcd7738c2bc7db6cf1ab01d0b94df84"
+  },
+  {
+    "key": "E017-Q23",
+    "questionUid": "qid_v1_59226ef933e59db710d0814eb8f94bfc56270f061f29a306a03837395c1b7472",
+    "sourceOrdinal": 23,
+    "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+    "sourceGitBlobSha1": "f417b7e4e993ceb1a70c1b85de1e292a52d2b551",
+    "sourceSha256": "18caddd4282a3121e51eb6c2fe2e047c3a6e8e11074336b10a6098566529a68a",
+    "assetPath": "archive/assets/images/24_연향중_2학기_중간_중2_수학/q23-problem-visual-v3.svg",
+    "assetGitBlobSha1": "2f865edf92807075f5ab0bb7fa36009a8b28693c",
+    "assetSha256": "82f2b31b9133062ce50c6332a7668a7ce228c4bb21f6ba512103e9ad5ce94f1d",
+    "staticRecordSha256": "98fd751a166ecc36c2b7a0bbc624002acdcd31834be546c00602c0e68ee87a50",
+    "derivedRecordSha256": "56cf0a1077398d100fc758bb9634add014072e481dbffab6d6fbe4b0c85949be"
+  },
+  {
+    "key": "E023-Q06",
+    "questionUid": "qid_v1_a14cd28d820b2cb2aabe1fc601fc72ebd6679b7eeaf1451c6773b3727ea77758",
+    "sourceOrdinal": 6,
+    "sourceArchiveFile": "original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
+    "sourceGitBlobSha1": "a0aaefbea3f6c695d515dbdb873c1e1f3304d5c7",
+    "sourceSha256": "8a8cb1f63ca99513962e4191fe308efc552be0c8bf9f8befaf8008157d0c9d82",
+    "assetPath": "archive/assets/images/23_연향중_2학기_기말_중2_기출/q6-problem-visual-v4.svg",
+    "assetGitBlobSha1": "c42e846519c266ef9f30389c03e71d6f33c81d72",
+    "assetSha256": "a92041578869d2121a0524f79dec4cb77d1711a59b530bbc2f1ca4e2cb860482",
+    "staticRecordSha256": "e4cddc02b62ccedfcb9ff65b1ba844bd7934b3f006fd921418ab5e64953118b9",
+    "derivedRecordSha256": "5aa1b61e413007f5fe9a7cdbf8fdfb6a0b5052d1777305a56fc327a0271bde59"
+  },
+  {
+    "key": "E023-Q10",
+    "questionUid": "qid_v1_54940cea5cf2027a3c3cbc2fc16025f7ccb632d5bd8ee0cff0eb747e108537c9",
+    "sourceOrdinal": 10,
+    "sourceArchiveFile": "original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
+    "sourceGitBlobSha1": "a0aaefbea3f6c695d515dbdb873c1e1f3304d5c7",
+    "sourceSha256": "8a8cb1f63ca99513962e4191fe308efc552be0c8bf9f8befaf8008157d0c9d82",
+    "assetPath": "archive/assets/images/23_연향중_2학기_기말_중2_기출/q10-problem-visual-v4.svg",
+    "assetGitBlobSha1": "56a4c294c7dcadb0271a9b13e4222afc2a764e8f",
+    "assetSha256": "ad5ef51883df950f9b12f28083921b98b87547b382edc9326365a21fdf33a3f7",
+    "staticRecordSha256": "e4b7a82b8e32db870d29f36b447f15c22f3a10e039f159024d36b322e596d707",
+    "derivedRecordSha256": "d189af9942d54187e6a31b2b3922b99c0cecc8a94cc66b2ed7edd81f55e23fc1"
+  }
+].map(row=>Object.freeze(row)));
+
 const SHA1 = /^[a-f0-9]{40}$/, SHA256 = /^[a-f0-9]{64}$/;
 const stable = value => JSON.stringify(value, (_, v) => v && typeof v === "object" && !Array.isArray(v)
   ? Object.fromEntries(Object.keys(v).sort().map(key => [key, v[key]])) : v);
@@ -117,6 +228,10 @@ function immutable(ctx, ref, read = false) {
   if (bytes.length !== ref.bytes || sha(bytes) !== ref.sha256 || blob(bytes) !== ref.gitBlobSha1) fail("IMMUTABLE_RAW_DIGEST");
   return bytes;
 }
+// Render engine files may change after the capture; only their captured Git bytes are authenticated (user decision 2026-11-18).
+const isRenderEngineFile = p => p === "archive/engine.html" || p === "archive/mixed_engine.html" || p === "apmath/wrong_print_engine.html" ||
+  /^archive\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p) || /^archive\/(?:css|js)\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p) ||
+  /^apmath\/(?:css|js)\/student-navigation\.(?:css|js)$/.test(p);
 function live(ctx, ref, code = "LIVE_REF_DRIFT") {
   let fd;
   try {
@@ -247,7 +362,7 @@ function svgIndexFootprint(ctx, ref, assetRefs) {
 // Exposed so the test can corrupt the frozen-index authentication directly; the
 // sealed evidence capsule cannot be edited and resealed through the public path.
 export { svgIndexFootprint as verifyFrozenSvgIndexFootprint };
-function validateUi(ctx, bound, current) {
+function validateUi(ctx, bound, current, authenticatedCurrentUi = false) {
   const { studentUiTechnicalRef: technical, studentUiObservedRef: visual, q10IndependentRef: q10 } = bound.documents;
   if (technical.schemaVersion !== "archive-m2-problem24-student-ui-preview-v1" || technical.checkoutCommit !== UI_COMMIT ||
       technical.status !== "TECHNICAL_PASS_VISUAL_REVIEW_PENDING" || technical.executionOwner !== "GITHUB_ACTIONS_SUPPORTED_CHROME" ||
@@ -277,13 +392,13 @@ function validateUi(ctx, bound, current) {
   for (const ref of technical.servedFiles) {
     if (ref.commit !== UI_COMMIT) fail("SERVED_CHECKOUT_REF"); immutable(ctx, ref);
     if (ref.path === SVG_INDEX_PATH) svgIndexFootprint(ctx, ref, indexAssetRefs);
-    else if (!dynamic.has(ref.path)) live(ctx, ref, "LIVE_SERVED_CODE_DRIFT");
+    else if (!dynamic.has(ref.path) && !authenticatedCurrentUi && !isRenderEngineFile(ref.path)) live(ctx, ref, "LIVE_SERVED_CODE_DRIFT");
   }
   const fonts = new Map();
   for (const font of technical.studentFontResources) {
     if (font.status !== 200 || font.commit !== UI_COMMIT || !SHA256.test(font.resourceId || "") || fonts.has(font.resourceId) ||
         !["STYLESHEET", "FONT"].includes(font.kind)) fail("STUDENT_FONT_BINDING");
-    immutable(ctx, refOnly(font)); live(ctx, font, "LIVE_STUDENT_FONT_DRIFT"); fonts.set(font.resourceId, font);
+    immutable(ctx, refOnly(font)); if (!authenticatedCurrentUi) live(ctx, font, "LIVE_STUDENT_FONT_DRIFT"); fonts.set(font.resourceId, font);
   }
   const shots = [];
   for (const item of M2_PROBLEM21_ITEMS) for (const viewport of ["desktop", "mobile"]) {
@@ -351,9 +466,15 @@ export function validateM2ProblemRenderer21Continuity(args) {
       !["schemaVersion", "reviewCommit", "reviewPath", "reviewRef"].every(key => same(sourceReview[key], native.spec?.[key]))) fail("EXACT_SOURCE_REVIEW_OPTIONS");
   if (request.expectedQuestionCount !== supported.expectedQuestionCount || row.questionUid !== patch.questionUid || row.sourceOrdinal !== patch.sourceOrdinal ||
       PROBLEM_FIELDS.some(field => Object.hasOwn(patch.after || {}, field))) fail("NATIVE_IDENTITY_OR_METADATA_ONLY_SCOPE");
-  const bound = evidence(ctx), validated = validateStatic(ctx, bound.documents.staticRef), ui = validateUi(ctx, bound, validated);
+  const bound = evidence(ctx), validated = validateStatic(ctx, bound.documents.staticRef);
+  const originalView = readM2Problem21CurrentUiContinuation({context:ctx.m2Problem21CurrentUiContinuation,
+    root:ctx.root,request,patch,current:ctx.final,question,relativePath:validated.current.ref.path});
+  // Old 48/51, all original static authority and Q10's separate observer remain
+  // mandatory. The private token already checked fresh full 16/18 evidence and
+  // its actual live code/font closure before choosing these current live checks.
+  const ui = validateUi(ctx, bound, validated, originalView !== null);
   let bytes;
-  try { bytes = fs.readFileSync(safe(ctx.root, validated.current.ref.path)); } catch { fail("LIVE_SOURCE_UNAVAILABLE"); }
+  try { bytes = originalView ?? fs.readFileSync(safe(ctx.root, validated.current.ref.path)); } catch { fail("LIVE_SOURCE_UNAVAILABLE"); }
   if (blob(bytes) !== request.expectedSourceBlobSha1) fail("LIVE_SOURCE_CAS");
   const bank = ctx.bankFromBytes(bytes), n = patch.sourceOrdinal - 1;
   if (!Array.isArray(bank) || bank.length !== request.expectedQuestionCount || !same(projection(bank[n]), projection(question))) fail("LIVE_ARGUMENT_OR_DENOMINATOR");

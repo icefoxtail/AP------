@@ -1,7 +1,7 @@
 #!/bin/bash
 # usage: [OUT=…] [EXTRA="…"] [INPUT_KEYS="k1 k2"] [DS_TIMEOUT=7200] ds-launch-exam.sh <tablekey> <시험지 JS 저장소 상대경로>
 # 시험지 하나 전체를 DeepSeek(opencode-go/deepseek-v4.1-flash)에 넣어 모든 문항을 판정하고 FIGURE/REPLACE 문항을 렌더까지 초안으로 만든다.
-# DeepSeek은 그림을 볼 수 없다(사용자 결정 2026-11-10: 이 PC에서만 허용). PNG 판단은 다음 단계 Sonnet A(prompts/sonnet-exam-impl.md)가 한다.
+# DeepSeek도 그림을 본다(2026-11-16 실측). PNG를 만들어 직접 보고 1차 수정하고, 최종 검수·마감은 Sonnet(prompts/sonnet-exam-impl.md)이 한다.
 # 출력: 기본 .tmp/work/runs/<key>/ds-draft (이미 있으면 ds-draft2, ds-draft3 …). TABLE.md·SUMMARY.md·qNN/ 이 생기고, 끝나면 last.txt, 로그는 ds.log.
 # 실행 방식: 저장소 밖의 빈 폴더(DS_CWD_BASE/run-XXXX)에서 `opencode run --standalone --auto -m opencode-go/deepseek-v4.1-flash` 를 띄우고
 #   지시는 표준입력(UTF-8)으로 준다. --auto = 명시적으로 거부되지 않은 권한(저장소 절대경로 읽기·쓰기, node 실행)을 자동 승인한다.

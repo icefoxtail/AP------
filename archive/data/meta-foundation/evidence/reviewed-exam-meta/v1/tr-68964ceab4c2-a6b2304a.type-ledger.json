@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-68964ceab4c2-a6b2304a",
+  "sourceArchiveFile": "original/high/h1/1mid/24_매산고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_56abaf7e1f4838de0b3ac4e6cd83a666ce1d8d61ebe6fddcafa97980b41208ff",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "step": "두 일차제수의 영점을 각각 다항식에 대입하여 나머지를 더한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d3225d010f045fccc73d496f14772f83efa8e372c5a4b8ec1fd2bedb4a6b84d3",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT",
+      "step": "제수의 영점 2와 -1에서 피제수가 0인 두 식을 연립한다.",
+      "note": " 새 TPL 제안: 제수의 영점 2와 -1에서 피제수가 0인 두 식을 연립한다. 정의: 제수의 영점 2와 -1에서 피제수가 0인 두 식을 연립한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_548c5b457036a26cc3dac36e4af50790e531c0a065becd524049623ec44eceb8",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+      "step": "부호가 반대이고 절댓값이 같은 두 근의 합을 0으로 놓고 실제 서로 다른 실근 조건을 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_78a2544ebfb9bffc799d38e12e6f211fee7281539f0a10f875cbf455e18d3324",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "step": "x축과 한 점에서 만나는 판별식 0 조건을 풀고 자연수 m에서 양의 k의 최솟값을 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_12f3cdb3043f6d0f7129213d5ab46befafadbe4fa71a53c6782466eed51823b8",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": "TPL_H1_POLY_DIVISION_IDENTITY",
+      "step": "몫과 나머지를 같은 일차식으로 놓고 치환 후 제곱제수 미만 차수의 계수를 맞춘다.",
+      "note": "TPL 제안: 몫과 나머지가 같다는 항등식과 치환한 제수의 차수 조건으로 미정계수를 결정한다. 새 TPL 제안: 몫과 나머지를 같은 일차식으로 놓고 치환 후 제곱제수 미만 차수의 계수를 맞춘다. 정의: 몫과 나머지를 같은 일차식으로 놓고 치환 후 제곱제수 미만 차수의 계수를 맞춘다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_67b671ad192d2b04f6758cf17154bf38edb53c061def8d7ef63167053f03d321",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_ROOT_COEFFICIENT_RELATION_EQUATION",
+      "step": "세 수의 기본대칭식을 연립해 구하고 이를 계수로 하는 삼차방정식에서 세 수를 복원한다.",
+      "note": "TPL 제안: 세 근의 기본대칭식 조건으로 삼차방정식을 구성해 근을 복원한다. 새 TPL 제안: 세 수의 기본대칭식을 연립해 구하고 이를 계수로 하는 삼차방정식에서 세 수를 복원한다. 정의: 세 수의 기본대칭식을 연립해 구하고 이를 계수로 하는 삼차방정식에서 세 수를 복원한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9221588bc89099989f3be38d9d39adc0979cb2800acc80870c30c855ea69db9b",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "step": "면적과 꼭짓점 조건으로 두 함수를 정한 뒤 선형결합 이차식의 구간 내 꼭짓점과 끝값을 비교한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3b013a7ea88e80f53d25b2294731db045aa080e76af8f5c52b62b4cf3a10dd76",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_NESTED_DIVISION",
+      "step": "원래 나눗셈 항등식에서 몫의 1과 -1에서의 값을 구해 확장 제수의 나머지를 구성한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b3f62d4de9bc21094f933a788cf8982477907eabbb92eb6c7dee301112bd07b6",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_GRAPH_INTERSECTION_ROOT_LOCATION",
+      "step": "두 점으로 포물선을 정하고 직선과의 두 교점이 제한구간 안에 있도록 판별식·축·끝값 조건을 결합한다.",
+      "note": "TPL 제안: 이차함수와 직선의 두 교점 위치를 제한구간 안에 두는 매개변수 조건. 새 TPL 제안: 두 점으로 포물선을 정하고 직선과의 두 교점이 제한구간 안에 있도록 판별식·축·끝값 조건을 결합한다. 정의: 두 점으로 포물선을 정하고 직선과의 두 교점이 제한구간 안에 있도록 판별식·축·끝값 조건을 결합한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

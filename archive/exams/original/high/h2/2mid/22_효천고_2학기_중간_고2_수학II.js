@@ -94,7 +94,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선이 가로축을 두 점 A, B에서 지나고 꼭짓점 V에서 수평선 t가 접하는 그래프이다.",
+    "solutionImageCaption": "f(1)=f(3)=0이므로 구간 양 끝 A(1,0), B(3,0)의 높이가 같아 롤의 정리를 쓸 수 있다. f′(c)=2c-4=0에서 c=2이고 그림의 꼭짓점 V(2,-1)에서 접선 t가 수평이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -148,10 +152,10 @@ window.questionBank = [
     "wide": false,
     "image": "assets/images/22_효천고_2학기_중간_고2_수학II/q5.png",
     "content": "다음 그림에서 $\\displaystyle\\lim_{x\\to1+}f(x)+\\lim_{x\\to3-}f(x)+f(5)$의 값은? [3점]",
-    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_수학II/q5-solution.svg",
-    "solutionImageAlt": "x=1의 우극한, x=3의 좌극한, f(5)의 높이를 표시한 해설 그래프",
-    "solutionImageCaption": "−2+2+2=2를 방향별 그래프 값으로 확인한다.",
-    "solutionImageSize": "full",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_수학II/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: x=1과 x=3에서 끊어지는 세 조각의 그래프이고, 가운데 직선은 두 끝이 열린 점이며 오른쪽 끝에 닫힌 점 P가 있다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다. x→1+에서 오른쪽 직선이 열린 점 (1,-2)에서 시작하므로 우극한은 -2이고, x→3-에서 열린 점 (3,2)로 가까워지므로 좌극한은 2이다. f(5)=2는 닫힌 점 P의 높이이다. 따라서 합은 -2+2+2=2이고 답은 ②이다.",
+    "solutionImageSize": "medium",
     "solutionImageStatus": "asset_verified",
     "choices": [
       "1",
@@ -257,9 +261,9 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "곡선 $y=x^3-2x^2+1$ 위의 점 $(1,a)$에서의 접선의 방정식이 $y=mx+n$일 때, 세 상수 $a,m,n$에 대하여 $a+m+n$의 값은? [3.5점]",
-    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_수학II/q8-solution.svg",
-    "solutionImageAlt": "곡선 위 점 (1,0)에서 기울기 −1인 접선을 표시한 해설 그래프",
-    "solutionImageCaption": "a=0, m=−1, n=1을 접선 y=−x+1에서 읽는다.",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_수학II/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 한 번 오르고 내려갔다 다시 오르는 삼차곡선과 가로축 위의 점 T에서 접하는 오른쪽 아래로 내려가는 직선 l을 나타낸 그래프이다.",
+    "solutionImageCaption": "f(1)=0이므로 a=0이다. f′(x)=3x²-4x에서 m=f′(1)=-1이고 접선은 점 T(1,0)을 지나 y=-(x-1)=-x+1이므로 n=1이다(그림의 직선 l). a+m+n=0-1+1=0이므로 답은 ③이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "choices": [
@@ -339,7 +343,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 A에서 아래로 내려가 점 C까지 내려갔다가 점 D까지 올라가고 점 E로 내려가는 꺾은선이 가로축을 세 번 지나는 그래프이다.",
+    "solutionImageCaption": "예: 다섯 점 A(-2,1), B(-1,-1), C(0,-3), D(1,2), E(2,-3)을 꺾은선으로 이은 연속함수이다. 부호가 +에서 -로 바뀌는 (-2,-1), -에서 +로 바뀌는 (0,1), +에서 -로 바뀌는 (1,2)에서 x축을 한 번씩 지나 근이 적어도 3개이다. (-1,0)에서는 부호가 같아 근이 보장되지 않는다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -426,9 +434,9 @@ window.questionBank = [
     "wide": false,
     "image": "assets/images/22_효천고_2학기_중간_고2_수학II/q13.png",
     "content": "곡선 $y=x^2+x$ 위의 점 $(1,2)$에서 접하는 접선의 기울기를 구하는 과정이다. 다음 중 옳지 않은 것은? [4점]",
-    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_수학II/q13-solution.svg",
-    "solutionImageAlt": "f(1)=2를 반영한 미분계수 정의의 올바른 분자와 잘못된 −1을 비교한 해설 도식",
-    "solutionImageCaption": "두 번째 등식의 −1이 틀렸고 f(1)=2를 빼야 한다.",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_수학II/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 위의 점 T에서 접하는 직선 l과, 점 T와 오른쪽의 점 S를 지나는 더 가파른 직선 m을 나타낸 그래프이다.",
+    "solutionImageCaption": "미분계수는 f(1+Δx)-f(1)을 Δx로 나눈 할선의 기울기의 극한이다. 그림은 Δx=1일 때로, 할선 m은 T(1,2)와 S(2,6)을 지나 기울기 4이고 Δx를 0에 가까이 하면 기울기가 접선 l의 기울기 3에 가까워진다. 분자는 {(1+Δx)²+(1+Δx)}-2=3Δx+(Δx)²이어야 하므로 -1로 쓴 두 번째 등식이 틀렸고 답은 ②이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "choices": [
@@ -529,19 +537,14 @@ window.questionBank = [
     ],
     "wide": false,
     "image": "assets/images/22_효천고_2학기_중간_고2_수학II/q16.png",
+    "imageScale": 100,
     "content": "다항함수 $f(x)$는 극솟값과 최솟값이 모두 존재하고 그 값이 일치한다. 다음 중 함수 $y=f'(x)$의 그래프가 될 수 있는 것은? (정답 2개) [4.5점]",
     "solutionImage": "assets/images/22_효천고_2학기_중간_고2_수학II/q16-solution.svg",
     "solutionImageAlt": "도함수 후보 중 극솟값과 최솟값이 일치할 수 있는 ①과 ④의 부호 변화를 비교한 해설 도식",
     "solutionImageCaption": "f′의 −→+ 전환과 양끝 거동을 함께 보아 ①, ④를 선택한다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
-    "choices": [
-      "첫 번째 그래프",
-      "두 번째 그래프",
-      "세 번째 그래프",
-      "네 번째 그래프",
-      "다섯 번째 그래프"
-    ],
+    "choices": [],
     "answer": "①, ④",
     "solution": "[키포인트] $f'(x)$의 부호 변화로 극소의 존재를 확인하고, 다항함수의 양끝 거동으로 최솟값의 존재를 확인한다.\n조건 정리: 극솟값과 최솟값이 같으려면 극소점이 전 구간의 최솟점이어야 한다.\n풀이 방향: 각 도함수 그래프의 부호 변화와 최고차항의 부호를 판정한다.\n정석 풀이: ①은 $f'(x)$가 음수에서 양수로 한 번 바뀌므로 $f$는 한 점까지 감소한 뒤 계속 증가한다. 따라서 그 극솟값이 곧 최솟값이다. ②와 ③은 $f'$가 이차함수이므로 $f$는 삼차함수이며 한쪽에서 $-\\infty$로 발산하여 최솟값이 존재하지 않는다. ④는 왼쪽의 단순근에서 $f'$가 음수에서 양수로 바뀌고 오른쪽의 중근에서는 부호가 바뀌지 않는다. 또한 $f'$의 최고차항 계수가 양수인 삼차식이므로 $f$는 양의 최고차항을 갖는 사차함수이고, 왼쪽의 극소가 전 구간의 최솟값이다. ⑤는 $f'$의 최고차항 계수가 음수인 삼차식이므로 $f$가 양끝에서 $-\\infty$로 내려가 최솟값이 없다.\n따라서 정답은 ①, ④이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
@@ -620,7 +623,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 a에 따라 실근의 개수가 2에서 0으로 줄었다 다시 2로 늘어나는 계단 모양의 그래프이고, a=-1과 a=4에서 높이 1의 닫힌 점이 있다.",
+    "solutionImageCaption": "가로축이 a, 세로축이 실근의 개수 f(a)이다. 판별식/4=a²-3a-4=(a+1)(a-4)이므로 a<-1 또는 a>4에서 2, a=-1, 4에서 1, -1<a<4에서 0이다. 따라서 극한과 함숫값이 달라지는 a는 -1, 4이고 곱은 -4이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -679,9 +686,9 @@ window.questionBank = [
       "구간별 함수"
     ],
     "wide": false,
-    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_수학II/q20-solution.svg",
-    "solutionImageAlt": "접선 y절편 함수 g(t)와 t=1에서 접합되는 일차식 at+b의 해설 그래프",
-    "solutionImageCaption": "g(1)=−1, g′(1)=−4를 맞춰 a=−4, b=3, ab=−12를 얻는다.",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_수학II/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 점 E에서 극소가 되고 점 F에서 극대가 되는 삼차곡선 조각이 점 P에서 오른쪽 아래로 내려가는 직선 조각과 부드럽게 이어진 그래프이다.",
+    "solutionImageCaption": "접선의 y절편은 g(t)=f(t)-tf′(t)=-2t³+t²이고 g(1)=-1, g′(1)=-4이다. h가 t=1에서 미분가능하려면 a=g′(1)=-4이고 a+b=g(1)=-1이어서 b=3이다. 그림은 -2t³+t² (t<1)과 직선 -4t+3 (t≥1)이 P(1,-1)에서 값과 기울기(-4)가 같게 이어지는 모습이다. ab=-12이므로 답은 ⑤이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "content": "함수 $f(x)=x^3-x^2-2x$ 위의 점 $(t,f(t))\\,(t\\lt1)$에서의 접선의 $y$절편을 $g(t)$라 하자. 함수 $h(t)=\\begin{cases}g(t)&(t\\lt1)\\\\ at+b&(t\\ge1)\\end{cases}$가 실수 전체의 집합에서 미분가능하도록 하는 두 상수 $a,b$의 곱 $ab$의 값은? [5점]",
@@ -697,7 +704,8 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageScale": 80
   },
   {
     "id": 21,
@@ -791,7 +799,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_효천고_2학기_중간_고2_수학II/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 올라가 점 M에서 극대가 되고 내려가 점 N에서 극소가 된 뒤 다시 오르는 삼차곡선 그래프이다.",
+    "solutionImageCaption": "f′(x)=3x²-4ax+3a의 두 근이 1, a이므로 두 근의 합 1+a=4a/3에서 a=3이다. f(x)=x³-6x²+9x+3이고 f′(x)=3(x-1)(x-3)이므로 x=1에서 극대 m=f(1)=7(그림의 M), x=3에서 극소 n=f(3)=3(그림의 N)이다. 따라서 m+n=10이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 24,

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "archive-closed8-current-navigation-gate-independent-v5",
+  "owner": "GPT_CI_M2S2",
+  "status": "STATIC_ACCEPT_EXACT_TWO_REQUIRED_INPUTS_ACTUAL_SOURCE47_PENDING",
+  "manifestGitBlobSha1": "033c5fe6b3e5ece6d20039b3cb66379671a3f698",
+  "candidateGate": "fb9f50d3e73138dad92f42b54a33b27d1fc2a9af",
+  "candidateTest": "d1b8e4026225b9c5f62628fe6e1c01847e0530db",
+  "beforeGate": "421dcf5e33f53b6081c2538f33441f3c112dcec2",
+  "beforeTest": "ebe3a2ed35a5b9c16997ce23f6058637e7ab19bc",
+  "patch": "fe0d25859a66b2819809f92493f4d12b49917eb2",
+  "mechanical": {
+    "gateInverse": true,
+    "testPrefixExact": true,
+    "testDeltaBytes": 1736
+  },
+  "authenticatedCapture": {
+    "gitBlobSha1": "2d01823b17d93e807239b263b11fbfb20273b57c",
+    "servedCount": 99,
+    "selectedRefs": [
+      {
+        "commit": "de634386a46b5fb081acd24813382a6a616f8d8b",
+        "path": "apmath/css/student-navigation.css",
+        "gitBlobSha1": "afaddbc2f19f8c9507d592dc610adac9adce6abf",
+        "sha256": "845ec493b33bb82b93accc6036850595f3870ddcb0594055b741c5799bf5ad55",
+        "bytes": 4432
+      },
+      {
+        "commit": "de634386a46b5fb081acd24813382a6a616f8d8b",
+        "path": "apmath/js/student-navigation.js",
+        "gitBlobSha1": "0530727c087b526cb10ad9a76f04e03c9ecbefcf",
+        "sha256": "05ea337bc52311fb8acd13ff6fdd3a9d437cb28594a69696f5da29d47ecebe95",
+        "bytes": 7463
+      }
+    ]
+  },
+  "findings": [
+    "Only the exact two navigation paths with required=true gain hydration admission; optional diagnostic paths, directory-wide paths, suffix variants and unknown files stay excluded.",
+    "refsIn first authenticates immutable refShape, regular commit:path, raw SHA, Git blob and byte count, then calls enqueue(path,true). Current HEAD bytes are still read and verified before writing only the private fixture.",
+    "The unchanged safeRelative check rejects absolute/traversal/duplicate slash/control/backslash substitutions. Neither added path receives the historical-only exemption.",
+    "Removing the single gate expression/comment addition recovers the complete prior gate bytes. Existing test prefix is exact; appended six definitions cover exact positives, optional refusal, namespace/suffix, unsafe path and historical-exemption refusal.",
+    "Production current UI/Native guards, source/MD/ID/runtime and sidecars are unchanged. This fixes private fixture input transport only."
+  ],
+  "focusedEvidence": {
+    "logGitBlobSha1": "17d81ff2482659cdd149f627a07583861c9bb970",
+    "sha256": "cef1e567ebd688f0668dffe5b443d60b7cbe3d743a674fbcfe85624ea89b522a",
+    "pass": 19,
+    "fail": 0,
+    "independentlyReexecuted": 0
+  },
+  "diagnosticBoundary": "The original actual failure did not report the filename. The exact missing pair is identified by authenticated capture refs and the previous queue filter, not falsely presented as a filename printed by that failure.",
+  "limits": {
+    "reviewerNativeRuns": 0,
+    "reviewerBuilderRuns": 0,
+    "reviewerUiRuns": 0,
+    "newApprovals": 0,
+    "productionChanges": 0,
+    "sourceChanges": 0,
+    "refWrites": 0
+  }
+}

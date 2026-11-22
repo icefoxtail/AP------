@@ -1,15 +1,22 @@
 import fs from "node:fs";
+import { questionMetadataText, writeMetadataText } from "./question-metadata-format.mjs";
 import path from "node:path";
 import vm from "node:vm";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { verifyPreservedAuditDifficulty } from "./native-audit-preservation.mjs";
+import { textFingerprint } from "./text-binding-lib.mjs";
 
 // Registers Gemini's already-decided 5-level difficulty (req_diff5_*.json) into the canonical
 // question metadata. No re-judging: Gemini's `after` value is written as-is, subject only to
 // format validation and a "never overwrite an existing 1~5 number" guard.
 export const SCHEMA = "archive-difficulty5-register-request-v1";
 export const REVIEWED_CORRECTION_SCHEMA = "archive-difficulty5-reviewed-correction-v1";
+// Single-model draft grade (docs/agents/metadata.md, "단일 모델 초안 등급"): a request with approvalType DRAFT_SINGLE_MODEL fills
+// the same four fields as an ordinary request and, in the same write, marks fieldStatus.difficulty of the filled rows only.
+// The mark is a label: selection, filters and screens read difficultyBucket exactly as before.
+export const DRAFT_SINGLE_MODEL = "DRAFT_SINGLE_MODEL";
+export const DRAFT_FIELD_STATUS = "draft_single_model";
 const META = "archive/data/question_metadata.json";
 const IDENTITY = "archive/data/question_identity_map.json";
 const CONFIDENCE = new Set(["high", "medium", "low"]);
@@ -42,6 +49,16 @@ export function bindDifficulty5Source(sourceBytes, expectedSha) {
     if (blobSha(lfBytes) === expectedSha) { bytes = lfBytes; sha = expectedSha; }
   }
   return { bytes, sha };
+}
+
+// A draft request whose every item carries the stem+choices fingerprint (textBindingFingerprint, text-v1) is bound per question, so the
+// whole-file Git blob (latestBlobSha) is not compared: another question's solution or figure being edited must not refuse the request.
+// Any other request (another approvalType, a reviewed correction, an item without the fingerprint) keeps the whole-file blob binding.
+// The registrar, the PR preview and the consumer gate all use this one predicate.
+export function isTextBoundDraft(request) {
+  const items = request?.gemini?.items;
+  return request?.approvalType === DRAFT_SINGLE_MODEL && !request.reviewedCorrection && Array.isArray(items) && items.length > 0 &&
+    items.every(item => typeof item?.textBindingFingerprint === "string" && /^[a-f0-9]{64}$/.test(item.textBindingFingerprint));
 }
 
 // 1 = 하, 2·3 = 중, 4·5 = 상
@@ -193,7 +210,7 @@ function registerReviewedCorrection({ root, request, source, sha, bank, doc, ids
   if (write && metadataChanged) {
     delete doc.digest;
     doc.digest = sha256(JSON.stringify(doc));
-    fs.writeFileSync(path.join(root, META), JSON.stringify(doc, null, 2) + "\n", "utf8");
+    writeMetadataText(root, questionMetadataText(doc));
     wrote = true;
   }
   return { status: "PASS", mode: write ? "write-reviewed-correction" : "dry-run-reviewed-correction", requestId: gemini.requestId,
@@ -215,6 +232,10 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
   if (!request || request.schemaVersion !== SCHEMA) fail("schemaVersion must be " + SCHEMA);
   if (verifyProjection && write) fail("--verify-projection is read-only");
   const g = request.gemini;
+  const draft = request.approvalType === DRAFT_SINGLE_MODEL;
+  if (request.approvalType !== undefined && !draft) fail("unsupported approvalType: " + String(request.approvalType));
+  if (draft && request.reviewedCorrection) fail("a draft request cannot carry a reviewed correction");
+  if (draft && !(typeof request.judge === "string" && request.judge.trim())) fail("DRAFT_SINGLE_MODEL requires the judge (model) name");
   if (!g || g.schemaVersion !== "v1" || !Array.isArray(g.items) || !g.items.length) fail("gemini v1 payload with items required");
   if (typeof g.requestId !== "string" || !g.requestId) fail("gemini.requestId required");
   const source = String(g.sourceArchiveFile || "").normalize("NFC");
@@ -222,7 +243,7 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
   const sourcePath = path.join(root, "archive/exams", source);
   if (!fs.existsSync(sourcePath)) fail("source exam file not found: " + source);
   const { bytes: sourceBytes, sha } = bindDifficulty5Source(fs.readFileSync(sourcePath), g.latestBlobSha);
-  if (sha !== g.latestBlobSha) fail("source Git blob drift (expected " + g.latestBlobSha + ", actual " + sha + ")");
+  if (sha !== g.latestBlobSha && !isTextBoundDraft(request)) fail("source Git blob drift (expected " + g.latestBlobSha + ", actual " + sha + ")");
 
   const doc = read(root, META);
   const ids = read(root, IDENTITY);
@@ -254,6 +275,11 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
     if (item.questionUid !== rec.questionUid || item.questionUid !== idr.questionUid ||
         ordinalByUid.get(item.questionUid) !== n) fail("ordinal/questionUid mismatch #" + n);
     if (n < 1 || n > bank.length) fail("ordinal outside question bank #" + n);
+    // A request that carries the stem+choices fingerprint the grade was judged on (draft requests do) is bound to exactly that text:
+    // a changed stem or choices means the grade belongs to another problem. Answer/solution/figure edits do not change it (text-v1).
+    // An item without the field is judged as before (older requests, other approval types).
+    if (Object.hasOwn(item, "textBindingFingerprint") && textFingerprint(bank[n - 1]) !== item.textBindingFingerprint)
+      fail("stem or choices changed since judged (textBindingFingerprint) #" + n);
     if (verifyProjection) {
       const q = bank[n - 1];
       if (q?.id !== undefined && q.id !== n) {
@@ -262,12 +288,12 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
         const stringId = typeof q.id === "string" && q.id.length > 0;
         const legacyStringBinding = stringId && q.number === n && typeof idr.sourceQuestionNo === "string" &&
           sameId(q.id, idr.sourceQuestionNo) && bank.filter(row => sameId(row?.id, q.id)).length === 1;
-        // Extra binding is deliberately exact; stale/content-only fingerprints are not enough.
+        // The question id, number, in-exam id uniqueness and UID uniqueness are what tie the value to the right question.
+        // The full fingerprint (answer/solution included) is not compared: a solution-only edit is not a defect here.
         const identityBinding = ((typeof q.id === "number" && Number.isFinite(q.id)) || stringId) &&
           (q.number === undefined || q.number === n) && sameId(q.id, idr.sourceQuestionNo) &&
           bank.filter(row => sameId(row?.id, q.id)).length === 1 &&
-          (ids.records || []).filter(row => row.sourceArchiveFile === source && row.questionUid === item.questionUid).length === 1 &&
-          idr.sourceFingerprint === fingerprint(q) && rec.sourceFingerprint === fingerprint(q);
+          (ids.records || []).filter(row => row.sourceArchiveFile === source && row.questionUid === item.questionUid).length === 1;
         if (!legacyStringBinding && !identityBinding) fail("source question id mismatch #" + n);
       }
       // Same binding rule as build-archive2-catalog: "exact" = row approved against these bytes; "content" = only
@@ -279,7 +305,7 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
   }
 
   const items = [], counts = { APPLY: 0, ALREADY_REGISTERED: 0, SKIP_INVALID: 0, CONFLICT: 0, VERIFIED: 0 };
-  let changedFields = 0;
+  let changedFields = 0, draftMarked = 0;
   for (const item of g.items) {
     const rec = byOrdinal.get(item.ordinal), a = item.after || {};
     const cur = {
@@ -294,9 +320,11 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
     else if (!CONFIDENCE.has(conf)) reason = "difficultyConfidence must be high/medium/low";
     else if (!BOUNDARY.has(a.difficultyBoundaryFlag)) reason = "difficultyBoundaryFlag must be NONE/B12/B23/B34/B45/UNKNOWN";
     if (reason) { out.decision = "SKIP_INVALID"; out.reason = reason; counts.SKIP_INVALID++; items.push(out); continue; }
+    // Only a question that still carries a legacy 하/중/상 label gets a compatibility value; without one the field is not written.
+    const existingLevel = existingLevelOf(rec, item);
     const next = {
       difficultyBucket: a.difficultyBucket, difficultyConfidence: conf, difficultyBoundaryFlag: a.difficultyBoundaryFlag,
-      legacyLevelCompatibility: computeLegacyCompat(existingLevelOf(rec, item), a.difficultyBucket)
+      ...(existingLevel ? { legacyLevelCompatibility: computeLegacyCompat(existingLevel, a.difficultyBucket) } : {})
     };
     out.after = next;
     if (verifyProjection) {
@@ -310,20 +338,25 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
     }
     out.decision = "APPLY"; counts.APPLY++;
     for (const [f, v] of Object.entries(next)) if (!equal(rec[f], v)) { rec[f] = v; changedFields++; }
+    // The label is not a value change: it is not counted in changedFields (that count is bounded to the four difficulty fields).
+    if (draft) { rec.fieldStatus = { ...(rec.fieldStatus || {}), difficulty: DRAFT_FIELD_STATUS }; draftMarked++; }
     items.push(out);
   }
 
+  if (draft && draftMarked && doc.counts && Object.hasOwn(doc.counts, "explicitDifficultyHolds"))
+    doc.counts.explicitDifficultyHolds = doc.records.filter(r => r.fieldStatus?.difficulty === "manual_review_pending").length;
   if (write && counts.APPLY) {
     // Preserve the shared sidecar digest convention (same as the pinpoint registrar).
     delete doc.digest;
     doc.digest = crypto.createHash("sha256").update(JSON.stringify(doc)).digest("hex");
-    fs.writeFileSync(path.join(root, META), JSON.stringify(doc, null, 2) + "\n", "utf8");
+    writeMetadataText(root, questionMetadataText(doc));
   }
   return {
     status: "PASS", mode: verifyProjection ? "verify-projection" : write ? "write" : "dry-run",
     requestId: g.requestId, driveFileId: request.driveFileId ?? null, driveSha256: request.driveSha256 ?? null,
     sourceArchiveFile: source, sourceBlobSha: sha, items,
     summary: { total: items.length, ...counts, changedFields, written: Boolean(write && counts.APPLY),
+      ...(draft ? { approvalType: DRAFT_SINGLE_MODEL, draftMarked } : {}),
       ...(verifyProjection ? { consumerBinding: Object.values(binding).reduce((m, b) => (m[b] = (m[b] || 0) + 1, m), {}) } : {}) },
     ptTpl: "UNTOUCHED_NOT_IN_SCOPE"
   };

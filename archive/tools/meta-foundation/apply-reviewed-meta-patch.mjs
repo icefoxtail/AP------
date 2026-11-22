@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import fs from "node:fs";
+import { META_FILE, questionMetadataBytesAt, questionMetadataText, assertMetadataAssembledCurrent, syncMetadataShards } from "./question-metadata-format.mjs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
@@ -79,7 +80,7 @@ function validateSharedResolution(patch, current, finalQuestion) {
   return checked.recomputed;
 }
 
-const gitShow = (commit, repoPath) => execFileSync("git", ["-C", root, "show", `${commit}:${repoPath}`], {
+const gitShow = (commit, repoPath) => repoPath === META_FILE ? questionMetadataBytesAt(root, commit) : execFileSync("git", ["-C", root, "show", `${commit}:${repoPath}`], {
   encoding: null,
   maxBuffer: 64 * 1024 * 1024,
   stdio: ["ignore", "pipe", "pipe"]
@@ -387,13 +388,14 @@ if (metadataMutationCount) {
   };
   delete metadata.digest;
   metadata.digest = sha256(JSON.stringify(metadata));
-  outputFiles.set("archive/data/question_metadata.json", jsonText(metadata));
+  outputFiles.set("archive/data/question_metadata.json", questionMetadataText(metadata));
 }
 
 const plannedPaths = [...outputFiles.keys()].filter((relative) => {
   const file = rel(root, ...relative.split("/"));
   return !fs.existsSync(file) || fs.readFileSync(file, "utf8").replace(/\r\n/g, "\n") !== outputFiles.get(relative);
 });
+if (write) assertMetadataAssembledCurrent(root);
 for (const [relative, text] of outputFiles) {
   const file = rel(root, ...relative.split("/"));
   const current = fs.existsSync(file) ? fs.readFileSync(file, "utf8").replace(/\r\n/g, "\n") : null;
@@ -404,6 +406,7 @@ for (const [relative, text] of outputFiles) {
     fs.renameSync(temp, file);
   }
 }
+if (write) syncMetadataShards(root);
 
 if (check && metadataMutationCount) {
   // --check is a validation/preflight operation: it reports the exact write plan and

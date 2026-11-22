@@ -853,8 +853,8 @@ window.questionBank = [
     "id": 18,
     "questionType": "객관식",
     "content": "1보다 큰 실수 $a$에 대하여 함수 $y=a^x+3$의 그래프가 $y$축과 만나는 점을 $\\mathrm{A}$라 하고, 함수 $y=\\log_a(x-1)$의 그래프가 $x$축과 만나는 점을 $\\mathrm{B}$라 하자. 점 $\\mathrm{A}$를 지나고 $y$축에 수직인 직선이 함수 $y=\\log_a(x-1)$의 그래프와 만나는 점을 $\\mathrm{C}$, 점 $\\mathrm{B}$를 지나고 $x$축에 수직인 직선이 함수 $y=a^x+3$의 그래프와 만나는 점을 $\\mathrm{D}$라 하자. 사각형 $\\mathrm{ABCD}$의 넓이가 30일 때, $\\overline{\\mathrm{CD}}^2$의 값은? [5.3점]",
-    "image": "assets/images/22_제일고_1학기_중간_고2_수학I/q18-problem-v1.svg",
-    "imageAlt": "좌표평면에서 지수곡선 y=a^x+3의 세로축 교점이 A이고, 로그곡선 y=logₐ(x−1)의 가로축 교점이 B이다. A에서 오른쪽으로 그은 수평선이 로그곡선과 만나는 점이 C, B에서 위로 그은 수직선이 지수곡선과 만나는 점이 D이다. 네 점을 이은 사각형 ABCD가 표시되어 있다.",
+    "image": "assets/images/22_제일고_1학기_중간_고2_수학I/q18-problem-v2.svg",
+    "imageAlt": "좌표평면의 개형이다. 지수곡선 y=aˣ+3이 세로축과 만나는 점이 A, 로그곡선 y=logₐ(x−1)이 가로축과 만나는 점이 B이다. A에서 오른쪽으로 그은 수평선이 로그곡선과 만나는 점이 C이고, B에서 위로 그은 수직선이 지수곡선과 만나는 점이 D이다. 네 점을 이은 사각형 ABCD와 오른쪽 위의 '개형' 표시가 보인다.",
     "imageSize": "tall",
     "choices": [
       "67",

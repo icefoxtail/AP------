@@ -65,6 +65,25 @@
 - 규칙에는 이유를 한 줄 붙이고, 사고에서 얻은 교훈은 원칙 한 단락으로 남긴다.
 - 문서 구조는 검사기로 지킨다(`tests/agents-md-budget.test.js`). 원인보다 결과(실제로 무엇이 읽히는지)를 직접 재는 검사가 더 튼튼하다.
 
+## 11. 테스트 목록 (돌지 않는 테스트를 보이게)
+
+- 모든 테스트 파일은 `tests/test-inventory.json`의 한 칸에 속해야 한다. 칸은 `run`(전체 test 잡에서 돎), `elsewhere`(다른 워크플로·스크립트가 돎 — 잡 이름을 적음), `notRun`(안 돎 — 이유를 적음)이다. `tests/test-inventory.test.js`가 "목록에도 없고 돌지도 않는 테스트"를 막는다.
+- 대상: git이 추적하는 `*.test.{js,mjs,cjs}`, `*.e2e.{js,mjs,cjs}` 전부(어느 폴더든)와 `tests/test_*.py`. `tests/` 최상위에서 이름에 `.test.`가 없는 스크립트(`*-browser.cjs`, 하네스 등)는 테스트 진입점이 아니라 대상이 아니다.
+- `run`은 규칙이다. `tests/` 바로 아래 `이름.test.js`는 실행기(`tools/run-tests.js`의 `collectTests()`)가 자동으로 모으므로 목록을 고치지 않아도 된다. `.mjs`/`.cjs` 등은 `requiredCommands`에 명령을 추가해야 `run`이 된다(목록 검사는 실행기에서 직접 읽는다).
+- `notRun`의 `reason`은 사실만 적는다: `pending`(조사 대기), `finished-campaign`(끝난 캠페인 — 근거 적기), `fails-now`(지금 돌리면 실패 — `local`에 결과·실패 문구, 환경 요인이면 `envFactor`), `quarantined`(실행기 격리 목록). "안 돌려도 됨" 같은 판단은 적지 않는다.
+- 안 돌던 테스트를 켤 때는 `notRun`에서 지우고 `requiredCommands`(또는 `.test.js` 이름)로 옮긴다. 로컬·CI에서 통과를 확인하고, 실패하면 고치는 것이 기본이다. `local` 결과는 어느 PC·어느 날짜의 한 번 실행이라 근거이지 판정이 아니다.
+- 이유: 이름이 실행기에 없는 `.mjs`/`.cjs` 테스트가 수백 개 꺼진 채였고(고1 문제지 저장이 3주간 전면 실패해도 잡는 검사가 없었다), "있는데 안 도는 검사"는 지켜 주는 것이 없는 것과 같다.
+
+## 12. 알려진 실패 (KNOWN-FAIL 서명) — 삭제됨
+
+- 2026-11-18 삭제했다(`tests/known-failures.json`, `tools/lib/known-failures.js`, 실행기의 KNOWN-FAIL 처리). 이유: 대상이던 고정 비교(현재 원본·판본을 과거 영수증·상수와 대조하는 검사)를 없앴고, 실패를 서명으로 허용하는 장치가 남으면 새 실패가 묻힌다. 이제 `tools/run-tests.js`는 실패를 실패로 그대로 센다(파일 단위 `quarantined` 목록만 따로 남아 있다).
+
+## 13. CI `test`는 샤드로 나눠 돈다
+
+- PR·push CI의 전체 테스트는 `test-shards` 매트릭스(`node tools/run-tests.js --shard i/n`)로 나뉘어 돌고, 이름이 `test`인 집계 잡 하나가 모든 샤드의 PASS/FAIL을 모아 판정한다(`tools/ci/aggregate-test-shards.mjs`). 샤드가 실패·취소·누락이면 `test`는 실패한다. 체크 이름 `test`는 바꾸지 않는다.
+- 분할은 결정적이고(`tools/ci/test-shard.cjs`, 소요 시간 힌트 `tools/ci/test-durations.json`) 힌트에 없는 테스트도 어느 샤드엔가 자동으로 들어간다. 시간 힌트는 CI 샤드 결과 artifact(`test-shard-*`)에서 `node tools/ci/refresh-test-durations.mjs --dir <artifacts>`로 새로 만든다. 낡아도 테스트가 빠지지는 않고 균형만 흐트러진다.
+- 이유: 샤드마다 체크아웃·준비(약 8분)를 다시 하지만, 직렬 440개로 30~40분 기다리던 것을 줄이기 위해서다. 새 테스트는 그대로 `tests/이름.test.js`나 `requiredCommands`에 더하면 된다.
+
 ## 운영 교훈 (2026-10)
 
 - Pages 등록 커밋이 main 경쟁에서 지면 실패가 아니라 경고다. 다음 main의 배포가 등록을 이어받는다.

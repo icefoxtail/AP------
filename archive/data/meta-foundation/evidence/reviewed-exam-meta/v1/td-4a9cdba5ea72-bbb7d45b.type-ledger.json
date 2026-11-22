@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-4a9cdba5ea72-bbb7d45b",
+  "sourceArchiveFile": "textbooks/미래엔_대수/미래엔_대수_지수함수와로그함수_중단원마무리_고2/미래엔_대수_지수함수와로그함수_중단원마무리_고2.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_대수.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_180208dafc24ad0c8b85d7c20fa669201906ee4be9a8e3a2edc8627be5575240",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION_REFLECTION",
+      "step": "첫 함수는 y=5^x를 x축 대칭, 둘째는 y=log₂x를 y축 대칭하여 그래프와 점근선을 정한다.",
+      "note": "ACTIVE 정의를 직접 확인하여 과목 연결 후보 밖의 일반 함수 유형을 선택. 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_58a96cccafbd53d2a55e9e863974fb27d7fee0b79aef367a19b74e6b8fd060e5",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "step": "평행이동식 y=2^(x-3)+m에 원점 좌표를 대입한다.",
+      "note": "ACTIVE 정의를 직접 확인하여 과목 연결 후보 밖의 일반 함수 유형을 선택. 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_688ee9d2be5c234e98c6861d9991314ec23bcd9b8599e0a5aa0c894ebe39ec71",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_02_EXP_EQUATION",
+      "templateKey": "TPL_H22A_02_EXP_EQUATION_081",
+      "step": "그림의 사다리꼴 넓이는 3(1+a³)/2=2이므로 a³=1/3이다.",
+      "note": " 검사: CANONICAL_UNIT_INVALID",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_986c88cb2d91ecdeee57dc7191f1e08c73008e86264ed1d38356fcb6f2a86873",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "step": "그림에서 점근선 x=-3과 y절편 2를 읽어 a=3,log₃3+b=2를 적용한다.",
+      "note": "ACTIVE 정의를 직접 확인하여 과목 연결 후보 밖의 일반 함수 유형을 선택. 검사: CANONICAL_UNIT_INVALID",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f0c199d9941ade422dfc26dbece5df63b339986e86addabe6affece1891014ba",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "step": "증가함수와 역함수의 교점은 y=x 위에 있으므로 b=1,log_a3+1=3을 푼다.",
+      "note": "ACTIVE 정의를 직접 확인하여 과목 연결 후보 밖의 일반 함수 유형을 선택. 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_de0120429d54a7ce3aabee3acadddff08a568340309c45792411648953cfc23f",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_03_LOG_EQUATION",
+      "templateKey": "TPL_H22A_03_LOG_EQUATION_089",
+      "step": "첫 온도 조건에서 k=210을 얻고 log(8t+1)=2에서 t를 구한다.",
+      "note": " 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7b4ea2d6269ea73e7b478b3b11c43fd6f4f8377bdd13cdb2d16667db208386ca",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DISTANCE_LENGTH",
+      "step": "그림 순서에서 P=(4/k,1),Q=(4k,1)이고 간격 6으로 k=2를 구해 R=(2,0),S=(8,2)의 거리를 계산한다.",
+      "note": "ACTIVE 정의를 직접 확인하여 과목 연결 후보 밖의 일반 함수 유형을 선택. 검사: CANONICAL_UNIT_INVALID",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_be0fe9667f4308b0f44616faabaf50d39307dd21ea9b58e408e0a51d9c05e403",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_02_EXP_INEQUALITY",
+      "templateKey": "TPL_H22A_02_EXP_INEQUALITY_084",
+      "step": "모든 x에 대한 양수 조건 D<0을 t=3^a>0으로 바꾸면 (t-9)(t+3)<0이므로 3^a<9이다.",
+      "note": " 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_대수.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2c6f814d437a113d0075663e9323e43e393e8d2cffae8b59726b3ae5b7958e8a",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_03_LOG_INEQUALITY",
+      "templateKey": "TPL_H22A_03_LOG_INEQUALITY_091",
+      "step": "그림의 근 2,4와 y절편 4에서 f(x)=(x-2)(x-4)/2를 얻어 0<f(x)≤4를 만족하는 정수를 센다.",
+      "note": " 검사: CANONICAL_UNIT_INVALID",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_대수.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-aa9625824a52-6ba37058",
+  "sourceArchiveFile": "original/high/h1/1mid/22_복성고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_ff1591ce9760cdc2868c8da8c12d072a94ac2c060da1fb777d542dc2345ade90",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_DISTANCE",
+      "templateKey": "TPL_COORD_DISTANCE_DIRECT",
+      "step": "두좌표차2,1의제곱합에제곱근을취해거리√5.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4f30698b59b488a265b36ea5bb701302dd28d9259a1cf4be05e787e62a6fb1a3",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_CENTER_RADIUS",
+      "step": "중심(−1,4),반지름2를표준형에대입해(x+1)²+(y−4)²=4.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8e5e87ceedc5e8dddb777c5c738f8d498884460941ed6fd9972839ff4125a86c",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_POINT_SLOPE",
+      "step": "기울기2와점(−1,5)로y−5=2(x+1),f1=9.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_df6cd130817c037391e93b131ff0c3ff0b8c6ada41b66ec81056d97e939991d3",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_CENTROID",
+      "templateKey": "TPL_CENTROID_APPLICATION",
+      "step": "순환2:1내분점D(5/3,4/3),E(11/3,7/3),F(2/3,7/3)의좌표평균G(2,2),합4.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_520c7e2eb0a81ebed0cbceb41368a1b39ef2803d1a1e42c5f90dc12fa86c6246",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+      "templateKey": "TPL_DISTANCE_PARALLEL_LINES",
+      "step": "동일법선(3,4)의평행선거리|k+1|/5=2, k9또는−11,합−2.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a66e31fecb9916579c1a1cca1f7fb7dd0de29920e081151aa59daf50be0ecb0f",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_SECTION",
+      "templateKey": "TPL_SECTION_INTERNAL",
+      "step": "P(a,2a−1),Q(b,2b+5)의1:2내분점((2a+b)/3,(4a+2b+3)/3),지정대입합1+3+3=7.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fc6a83a19e2cf7dccd72679cee81dcb384e37b961439371e9696a2e10708529c",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_RELATION",
+      "templateKey": "TPL_RELATION_PERPENDICULAR_PARAMETER",
+      "step": "두점직선기울기(a−2)/5와다른직선기울기−3/a의곱−1에서3(a−2)=5a, a=−3(a0수평수직조건불가).",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b7ace4451bedb91b2133e2cf654918ee2bcd75b96649b2bcf9077ebaa6715e12",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+      "templateKey": "TPL_AREA_SECTION",
+      "step": "P(t,t²/4),Q(t/2,0),QA의3:2외분점R(−t,3)를포물선에대입해t=2√3. PR=4√3,높이3으로넓이6√3.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_65e0821f6f1b7e972cfad51a403ce074af9dd9441ddb5894f1a622db4dd9d8a6",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_SECTION",
+      "templateKey": "TPL_SECTION_BOTH",
+      "step": "수직선A0,B3로놓으면2:1내분P2,외분Q6. 따라서A−P−B−Q이며B는PQ를1:3내분.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9e608e67e78eb1bdddeaa190f24787a1d5ef818a81cac7073be66b62cba8c608",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_DISTANCE",
+      "templateKey": "TPL_DISTANCE_UNKNOWN",
+      "step": "두축역할직선은수직,이등변조건OA=OB. 교점좌표를거리식에대입해|3−m|=|1+3m|,m1/2또는−2중양수1/2.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

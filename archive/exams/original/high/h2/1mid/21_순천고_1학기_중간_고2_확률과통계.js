@@ -41,7 +41,11 @@ window.questionBank = [
       "확률과통계",
       "순열과 조합",
       "원순열 묶음"
-    ]
+    ],
+    "solutionImage": "assets/images/21_순천고_1학기_중간_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 다섯 개의 점이 오각형 꼭짓점으로 놓인 원탁 그림이며 점 A는 부모 묶음, 나머지는 가족 네 명의 자리이다.",
+    "solutionImageCaption": "원탁의 5개 대상을 오각형 꼭짓점으로 나타낸 그림이다. 점 A는 아버지와 어머니를 한 묶음으로 본 자리이고 B, C, D, E는 나머지 가족 네 명의 자리이다. 5개 대상의 원순열은 (5−1)!=24가지이고 묶음 안의 순서가 2가지이므로 24×2=48이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -81,7 +85,11 @@ window.questionBank = [
       "확률과통계",
       "순열과 조합",
       "격자 최단 경로"
-    ]
+    ],
+    "solutionImage": "assets/images/21_순천고_1학기_중간_고2_확률과통계/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 격자 모양의 길에서 출발점 A부터 각 교차점까지 가는 최단 경로의 수를 적은 그림이다.",
+    "solutionImageCaption": "각 교차점에 A에서 오는 최단 경로 수를 적는다. 한 점의 수는 왼쪽 점과 아래쪽 점의 수를 더한 값이다. 이렇게 채우면 B에 20이 적힌다. 이는 오른쪽 3번과 위쪽 3번을 늘어놓는 6C3=20과 같다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,

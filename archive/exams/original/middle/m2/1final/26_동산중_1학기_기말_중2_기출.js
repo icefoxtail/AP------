@@ -1408,7 +1408,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 두 직선 y=2x−1과 y=−x+5가 그려져 있고, 두 직선의 교점 (2,3)과 y절편 (0,−1), (0,5)가 표시되어 있다.",
+    "solutionImageCaption": "교점 (2,3)이 두 식의 해이므로 x+y=a에서 a=5이고, bx−y=1에서 2b−3=1이므로 b=2이다. a+b=7이므로 답은 ③ 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

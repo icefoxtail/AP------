@@ -25,20 +25,22 @@
         };
     </script>
     <script>window.__AP_MATHJAX_SOURCE__='local';window.__AP_MATHJAX_READY__=new Promise(resolve=>{window.__AP_MATHJAX_RESOLVE__=resolve;});window.__AP_LOAD_MATHJAX_CDN__=failed=>{window.__AP_MATHJAX_SOURCE__='cdn-fallback';const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-chtml.js';script.onload=()=>window.__AP_MATHJAX_RESOLVE__?.(true);script.onerror=()=>window.__AP_MATHJAX_RESOLVE__?.(false);failed?.remove();document.head.appendChild(script);};</script>
+    <script src="mathjax-atomic-inline.js?v=20261117-atomic-inline-1"></script>
     <script id="MathJax-script" defer src="vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js" onload="window.__AP_MATHJAX_RESOLVE__?.(true)" onerror="window.__AP_LOAD_MATHJAX_CDN__?.(this)"></script>
 <script src="archive-asset-base.js?v=20261110-teacher-copy-1"></script>
 <script src="js/ap-table-engine.js?v=20261109-ap-table-1"></script>
 <link rel="stylesheet" href="css/ap-table.css?v=20261109-ap-table-1">
 <script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b" onerror="console.warn('[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행')"></script>
 <script src="mixer-selector.js?v=20261009-meta1" onerror="console.warn('[mixer] selector contract 로드 실패 — legacy selector로 제한')"></script>
-<script src="archive2-canonical.js?v=20261104-source-meta-approval-1"></script>
+<script src="archive2-canonical.js?v=20261119-receipt-row-binding-1"></script>
 <script src="rpm-middle-toc.js?v=20261115-m1-dongsan-current-1"></script>
-<script src="archive2-core.js?v=20261111-one-lane-difficulty-1"></script>
+<script src="archive2-core.js?v=20261119-pair-type-spread-1"></script>
 <script src="meta-foundation-runtime.js?v=20261110-first-paint-1" onerror="console.error('[meta-foundation] runtime bridge 로드 실패')"></script>
 <script src="question-identity.js?v=20260820.2" onerror="console.warn('[identity] question-identity.js 로드 실패 — legacy lookup으로 제한')"></script>
 <!-- Phase 4 fingerprint bridge: loaded for contract use only; no preset UI exposure before Gate 4. -->
 <script src="mixer-school-fingerprint.js?v=20260825.1" onerror="console.warn('[mixer] school fingerprint bridge 로드 실패 — fingerprint preset 비활성화')"></script>
 <script src="mixer-school-fingerprint-runtime.js?v=20260825.1" onerror="console.warn('[mixer] school fingerprint runtime 로드 실패 — fingerprint preset 비활성화')"></script>
+<script src="exam-source-reader.js?v=20261118-body-1"></script>
     <style>
         :root {
             --navy: #111113; --navy-2: #18181b; --navy-3: #202024;
@@ -677,8 +679,12 @@ function getStandardizedUnit(q) {
  * 이미지/시각요소 판정 공통 헬퍼
  * 구형 문항은 별도 image 필드 없이 content 내부에 <img>/<svg>/<table>로 시각요소를 담는 경우가 있다.
  */
+// 발문은 content 또는(중등 일부 원본) question 필드에 있다. 표시·검색 전용 읽기이며 지문 계산에는 쓰지 않는다.
+function mixerQuestionBody(q) {
+    return window.ExamSourceReader.readQuestionBody(q);
+}
 function hasVisualAsset(q) {
-    const content = String(q?.content || '');
+    const content = String(mixerQuestionBody(q) || '');
     return Boolean(
         q?.image ||
         /<img\b/i.test(content) ||
@@ -805,7 +811,7 @@ function normalizeForFilter(q, sourceMode, sourceMeta = {}) {
     const unitOrder = Number.isFinite(Number(std.order)) ? Number(std.order) : Number(raw.unitOrder || 999);
     const standardUnitKey = String(raw.standardUnitKey || findStandardUnitKey(course, standardUnit, unitOrder) || '').trim();
     const tags = normalizeTags(raw.tags);
-    const content = String(raw.content || raw.contentText || '');
+    const content = String(mixerQuestionBody(raw) || raw.contentText || '');
     const choices = Array.isArray(raw.choices) ? raw.choices.join(' ') : String(raw.choicesText || '');
     const hasImage = Boolean(raw.hasImage || raw.image || /<img\b/i.test(content) || /<svg\b/i.test(content) || /<table\b/i.test(content));
     const sourceTitle = String(raw._sourceTitle || meta.school || meta.topic || sourceFile || '').trim();
@@ -1976,13 +1982,14 @@ function fetchQuestionData(file) {
         .then(source => {
             // 파일마다 별도 Function scope에서 실행해 서로 다른 archive JS의
             // 동일한 top-level const/let 선언이 전역에서 충돌하지 않게 한다.
-            delete window.questions;
-            delete window.questionBank;
+            // 문항 배열 찾기 규칙은 exam-source-reader.js 한 곳에 있다.
+            const reader = window.ExamSourceReader;
+            if (!reader) throw new Error('exam-source-reader.js를 불러오지 못했습니다.');
+            reader.SOURCE_GLOBALS.forEach(name => { delete window[name]; });
             const executeArchiveSource = new Function('window', 'document', source);
             executeArchiveSource(window, document);
-            const data = window.questions || window.questionBank;
-            delete window.questions;
-            delete window.questionBank;
+            const data = reader.readQuestionArray(window);
+            reader.SOURCE_GLOBALS.forEach(name => { delete window[name]; });
             if (!Array.isArray(data)) throw new Error('문항 배열이 없습니다.');
             return data;
         });
@@ -2052,7 +2059,7 @@ function createQuestionIndexItem(record) {
             ${record.hasImage ? '<span class="q-unit-tag" style="background:#ecfdf5; color:#047857;">이미지 있음</span>' : ''}
         </div><span class="q-num">${escapeMixerHtml(q.id)}번</span><span style="font-size:11px; color:#999; margin-left:10px;" class="q-source-file">${escapeMixerHtml(record.sourceFile)}</span></div>
         <button class="btn-add-cart ${isAdded ? 'in' : ''}" onclick='toggleIndexCart(${safeKey})'><i class="fa-solid ${isAdded ? 'fa-check' : 'fa-plus'}"></i>${isAdded ? '담김' : '담기'}</button></div>
-        <div class="q-content">${escapeMixerHtml(summarizeIndexText(q.contentText || q.content))}</div>`;
+        <div class="q-content">${escapeMixerHtml(summarizeIndexText(q.contentText || mixerQuestionBody(q)))}</div>`;
     return div;
 }
 
@@ -2097,7 +2104,7 @@ function createQuestionItem(record) {
     const safeKey = JSON.stringify(key);
     div.innerHTML = `<div class="q-header"><div><div class="q-tag-line"><span class="q-unit-tag">${escapeMixerHtml(record.course || '기타')}</span><span class="q-unit-tag" style="background:#eee; color:#666;">${escapeMixerHtml(record.standardUnit || '미분류')}</span><span class="q-unit-tag" style="background:#f8fafc; color:#475569;">${escapeMixerHtml(q.level || '미')}</span></div><span class="q-num">${escapeMixerHtml(q.id)}번</span><span style="font-size:11px; color:#999; margin-left:10px;">${escapeMixerHtml(record.sourceTitle)}</span></div>
         <button class="btn-add-cart ${isAdded ? 'in' : ''}" onclick='toggleCart(${safeKey})'><i class="fa-solid ${isAdded ? 'fa-check' : 'fa-plus'}"></i>${isAdded ? '담김' : '담기'}</button></div>
-        <div class="q-content">${mixerExamHtml(mixerApTables(q.content || ''))}</div>${q.image ? mixerExamImageTag(q.image) : ''}${choicesHTML}`;
+        <div class="q-content">${mixerExamHtml(mixerApTables(mixerQuestionBody(q) || ''))}</div>${q.image ? mixerExamImageTag(q.image) : ''}${choicesHTML}`;
     return div;
 }
 
@@ -2247,15 +2254,7 @@ function renderMixerClassSelectByTeacher() {
     }).join('');
 }
 
-function encodeMixerBasicAuth(value) {
-    const str = String(value || '');
-    try {
-        return btoa(unescape(encodeURIComponent(str)));
-    } catch (e) {
-        return btoa(str);
-    }
-}
-
+// 인증은 토큰(Bearer)뿐이다. 토큰이 없는 세션은 null(호출한 쪽이 로그인 안내를 낸다): 비밀번호로 대신하지 않는다.
 function getMixerAssignmentAuthHeader() {
     try {
         const session = getApmathSession();
@@ -2264,13 +2263,7 @@ function getMixerAssignmentAuthHeader() {
         if (session.session_token) {
             return { 'Authorization': 'Bearer ' + session.session_token };
         }
-
-        const mem = window.__APMATH_AUTH_MEMORY || {};
-        const loginId = mem.login_id || session.login_id || session.loginId;
-        const rawPassword = mem.raw_password || session.raw_password;
-
-        if (!loginId || !rawPassword) return null;
-        return { 'Authorization': 'Basic ' + encodeMixerBasicAuth(`${loginId}:${rawPassword}`) };
+        return null;
     } catch (e) {
         return null;
     }

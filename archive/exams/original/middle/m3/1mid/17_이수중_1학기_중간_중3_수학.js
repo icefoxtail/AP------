@@ -395,7 +395,6 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "A, B, C의 아래쪽 변을 한 수평선에 맞춰 큰 것부터 작은 것 순서로 붙였다. 안쪽 두 세로 점선은 옆 정사각형과 겹치는 변이다.",
     "image": "assets/images/17_이수중_1학기_중간_중3_수학/q22-problem-visual-v2.svg",

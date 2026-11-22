@@ -194,7 +194,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_2학기_중간_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 여섯 자리가 육각형 꼭짓점으로 놓인 원탁 배치 그림이다. 교사 자리 T와 U가 변으로 이어져 이웃해 있다.",
+    "solutionImageCaption": "원탁의 6자리를 육각형 꼭짓점으로 나타낸 한 배치의 예이다. T, U는 교사 두 명, P, Q는 1학년, R, S는 2학년이며 변으로 이어진 자리가 이웃이다. 이 예는 T와 U가 이웃한 경우이고, 이웃하는 경우는 두 교사를 한 묶음으로 보아 (5−1)!×2!=48가지이다. 전체 (6−1)!=120가지 중 이웃하지 않는 경우는 120−48=72가지이므로 확률은 72/120=3/5이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -294,7 +298,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-COMBINATION",
     "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_2학기_중간_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로세로 3칸 격자 도로망에서 A는 왼쪽 아래, B는 오른쪽 위이고, 만남 후보 P, Q, R, S가 A에서 3칸 떨어진 대각선 위에 있다. A에서 각 점까지의 경로 수 1, 3, 3, 1이 적혀 있다.",
+    "solutionImageCaption": "A에서 3걸음 떨어진 만남 후보 P, Q, R, S는 B에서도 3걸음 떨어져 있다. A에서 각 점까지의 최단 경로 수는 1, 3, 3, 1이고, 형과 동생이 각각 같은 수의 경로를 가지므로 점마다 경우의 수는 1, 3, 3, 1의 네제곱 꼴이다. 1+81+81+1=164이므로 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -492,7 +500,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
     "subUnit": "경우의 수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_2학기_중간_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 여덟 자리가 팔각형 꼭짓점으로 놓이고 마주 보는 네 쌍이 지름으로 이어진 그림이다.",
+    "solutionImageCaption": "8개의 자리를 원형으로 놓고 마주 보는 자리를 지름으로 이은 그림이다. 자리 A와 E, B와 F, C와 G, D와 H가 마주 보는 네 쌍이므로 각 쌍의 두 수가 서로소여야 한다. 1은 짝수와만 짝이 되어 서로소인 짝짓기는 4+4+6+4=18가지이고, 한 짝짓기마다 네 쌍을 네 지름에 놓는 4!과 쌍 안 순서 2의 네제곱을 곱해 회전 8로 나누면 48가지이다. 따라서 18×48=864이므로 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -518,7 +530,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
     "subUnit": "경우의 수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_2학기_중간_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 여섯 자리가 육각형 꼭짓점으로 놓인 원탁 그림이며 부모의 마주 보는 자리 M과 N이 지름으로 이어져 있다.",
+    "solutionImageCaption": "원탁 6자리를 육각형 꼭짓점으로 나타낸 그림이다. M과 N은 부모의 마주 보는 자리를 지름으로 이은 예이다. 마주 보는 경우는 한 부모를 고정하면 다른 부모의 자리가 맞은편 한 곳으로 정해지고 나머지 4명을 배열하므로 b=4!=24이다. 이웃하는 경우는 부모를 한 묶음으로 보아 (5−1)!×2!=48이므로 a=48이다. a+b=72이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -571,7 +587,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_2학기_중간_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 3의 배수 8개, 둘 다 2개, 5의 배수 4개와 바깥 16개로 나눈 포함배제 구조를 보인다.",
+    "solutionImageCaption": "A는 3의 배수, B는 5의 배수인 카드의 모임이다. 3의 배수는 10개, 5의 배수는 6개이고 둘 다인 15의 배수는 15, 30의 2개이므로 A만 8개, 둘 다 2개, B만 4개이다. 3의 배수 또는 5의 배수는 10+6−2=14개이고 전체 30장이므로 확률은 14/30=7/15이다. 따라서 답은 7/15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -625,6 +645,10 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
     "subUnit": "경우의 수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_금당고_2학기_중간_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 짝수 크기 부분집합 128개를 X, Y 두 모임의 포함배제로 나누어 바깥 92개가 답임을 보인다.",
+    "solutionImageCaption": "짝수 개의 원소를 갖는 부분집합 C는 모두 128개이다. X는 A와 만나지 않는 C의 모임으로 8개, Y는 B와 만나지 않는 C의 모임으로 32개이고, 둘 다인 X∩Y는 4개이다. 그림은 X만 4개, 둘 다 4개, Y만 28개, 바깥 92개이며 색칠한 바깥이 조건 (나)를 만족하는 경우이다. 128−8−32+4=92이다.",
+    "solutionImageSize": "full"
   }
 ];

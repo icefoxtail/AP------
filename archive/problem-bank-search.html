@@ -48,11 +48,14 @@ body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#
 <script src="js/ap-table-engine.js?v=20261109-ap-table-1"></script>
 <script src="archive-asset-base.js?v=20261110-teacher-copy-1"></script>
 <script src="mixer-selector.js?v=20261009-meta1"></script>
-<script src="archive2-canonical.js?v=20261104-source-meta-approval-1"></script>
+<script src="archive2-canonical.js?v=20261119-receipt-row-binding-1"></script>
 <script src="rpm-middle-toc.js?v=20261115-m1-dongsan-current-1"></script>
-<script src="archive2-core.js?v=20261111-one-lane-difficulty-1"></script>
+<script src="archive2-core.js?v=20261119-pair-type-spread-1"></script>
 <script src="problem-bank-meta.js?v=20261029-s14-1"></script>
-<script src="archive2-source.js?v=20261029-source-meta-conflict-1"></script>
+<script src="exam-source-reader.js?v=20261118-body-1"></script>
+<script src="exam-display-title.js?v=20261116-polish-1"></script>
+<script src="archive2-error-detail.js?v=20261118-error-detail-1"></script>
+<script src="archive2-source.js?v=20261119-verified-rename-1"></script>
 <script src="archive2-key-resolver.js?v=20261030-s14b-1"></script>
 <script>
 'use strict';
@@ -229,7 +232,8 @@ async function previewOriginal(row,button){
   if(!record||!restoreCatalog)throw Error('문항 정보를 찾을 수 없습니다.');
   const [q]=await Archive2Source.restore([record],restoreCatalog,{requireSourceHash:true});
   if(request!==previewRequest)return;
-  el('preview').replaceChildren();const stem=document.createElement('div');safeStem(stem,q.content);el('preview').append(stem);
+  // 중등 일부 원본은 발문이 content가 아니라 question에 있다(공용 읽기: exam-source-reader.js).
+  el('preview').replaceChildren();const stem=document.createElement('div');safeStem(stem,ExamSourceReader.readQuestionBody(q));el('preview').append(stem);
   for(const [i,value] of (q.choices||[]).entries()){const p=document.createElement('p');p.textContent='①②③④⑤'[i]+' '+value;el('preview').append(p);}
   if(q.image){if(!validOriginalImage(q.image))throw Error('문항 이미지 경로 오류');const img=document.createElement('img');img.src=window.resolveExamImageUrl?resolveExamImageUrl(q.image):q.image;img.alt='문제 그림';el('preview').append(img);}
   if(window.MathJax?.typesetPromise)await MathJax.typesetPromise([el('preview')]);

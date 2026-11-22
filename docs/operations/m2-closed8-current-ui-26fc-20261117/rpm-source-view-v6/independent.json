@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "archive-closed8-issued-rpm-view-independent-review-v6",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "reviewer": "GPT_M3S2_RELEASE_INDEPENDENT",
+  "author": "GPT_M1_RELEASE_CLOSEOUT",
+  "decision": "STATIC_ACCEPT_SCOPED_PRIVATE_ISSUED_RPM_VIEW",
+  "manifest": {
+    "gitBlobSha1": "276007a11b467d0691330999ddd0fb0364f9e7a2",
+    "sha256": "95954fda035c125fd198856d9d30a8a63766dbda16351cf84875ecf66d0a1172",
+    "bytes": 5669
+  },
+  "baseCommit": "e0533cb4b9f5b371165eac6d5efd2e8d95a7c0d7",
+  "files": [
+    {
+      "path": "archive/tools/meta-foundation/m2-problem21-current-ui-continuity.mjs",
+      "before": "0fcbb1be605cd1418bd71fa91b24acd3bda0fc87",
+      "after": "7a2cc6c166deef9d2664f8d4ff29835c3854ea3d",
+      "edits": 1,
+      "inverseExact": true,
+      "afterPin": {
+        "gitBlobSha1": "7a2cc6c166deef9d2664f8d4ff29835c3854ea3d",
+        "sha256": "c1fcd1eacfcb5a1737396bbf3433028a60af6346ef4fe24e0b3d2c04e4615079",
+        "bytes": 68629
+      }
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+      "before": "02549be443e029f094ae9e0213865b91063d6930",
+      "after": "67a469c022bf3e04049723098d659b025eaa9c88",
+      "edits": 4,
+      "inverseExact": true,
+      "afterPin": {
+        "gitBlobSha1": "67a469c022bf3e04049723098d659b025eaa9c88",
+        "sha256": "9efe04730bf2e2d54081a9c255c0d1d6e6de6926826cddf7db28e36b8658da46",
+        "bytes": 37364
+      }
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m2-native-rpm-course.mjs",
+      "before": "df188f7e3666cfa71c7ec9caaed21ee138734bcf",
+      "after": "8a5fce2336624f24866ba32133a92aabdc25b52e",
+      "edits": 3,
+      "inverseExact": true,
+      "afterPin": {
+        "gitBlobSha1": "8a5fce2336624f24866ba32133a92aabdc25b52e",
+        "sha256": "f4a4581b14aa3c370fc288184b7876e7493a2340fa1ce570365572f6cac8d09d",
+        "bytes": 42180
+      }
+    },
+    {
+      "path": "tools/4slot/check-m2-closed8-current-ui-scoped.cjs",
+      "before": "fb9f50d3e73138dad92f42b54a33b27d1fc2a9af",
+      "after": "c4f4afbd79e645e05db27f570d7b2dcc31d6bb52",
+      "edits": 8,
+      "inverseExact": true,
+      "afterPin": {
+        "gitBlobSha1": "c4f4afbd79e645e05db27f570d7b2dcc31d6bb52",
+        "sha256": "97077a1dee8c77c82dbdbb9073601f3487a5cdda2dc680bc8cd51c1da0164b25",
+        "bytes": 52517
+      }
+    }
+  ],
+  "newTest": {
+    "path": "tests/m2-closed8-issued-rpm-view.test.cjs",
+    "gitBlobSha1": "22ddd20f8699332e108d7dffe6aa090c18076744",
+    "sha256": "d34e4be65db6f56ae3e21b2b3e569e2a36da6dd81c7e77d99f4aaa0924eed1d2",
+    "bytes": 8063
+  },
+  "evidence": {
+    "productionDelta": {
+      "gitBlobSha1": "5c21b42a7773214f4365c157c9dfeda19f8a13cc",
+      "sha256": "3ed6893b29fc658c1da50c07417a1ccb4171bb6e0a9a7a5726cd490e14575d91",
+      "bytes": 6788
+    },
+    "gateDelta": {
+      "gitBlobSha1": "0706cdc3e76539b30c7325741a8cb50fd89547a6",
+      "sha256": "f8540f3fde2ac5b1aef3f951937942df19e92194ae283beee21833e830668cad",
+      "bytes": 16546
+    },
+    "ownerScopeProof": {
+      "gitBlobSha1": "3d741375fbd441c9e7f4ea50d3b751b52121f2d7",
+      "sha256": "8824ba3b954f838d49313b4833f7746a1f9c9ca03f356dfbd72c854d072d217a",
+      "bytes": 4716
+    },
+    "ownerFocused36Log": {
+      "gitBlobSha1": "e6174c7b17d37e6c48dd3ad52eed5406b19fb548",
+      "sha256": "f9dda8524c2dcf6ce1ce4150a4fe25fb6b9a7449a3bab0d9ca98261ec2f63cc3",
+      "bytes": 2570
+    },
+    "sourceRequestBoundary": {
+      "gitBlobSha1": "a1bfc3ef8a074618e9dbe0757e9477e4da5d84da",
+      "sha256": "60b243d2da168be64e9210ce5533dec7a85bcf8ffcd57b4ea727e00bb7f6b824",
+      "bytes": 7849
+    }
+  },
+  "directChecks": {
+    "allCandidateAndBeforeGitRawAndBytePins": true,
+    "productionEightHunksInverseWholeExact": true,
+    "gateEightHunksInverseWholeExact": true,
+    "ordinaryNoContextReturnsNullBeforeAnyPrivateRead": true,
+    "ordinaryRpmStillReadsLocalBytes": true,
+    "actualCurrentFullSourceGitShaSizeAndBytesRequired": true,
+    "returnedIssuedBytesAreDefensiveCopy": true,
+    "privateTokenMintingApiAdded": false,
+    "selectedEightUidSourceOrdinalAndExactRequestBinding": true,
+    "selectedOriginalPatchExceptAuthenticatedDisplayOptionsWholeExact": true,
+    "metadataBeforeOverlayAndCurrentFinalWholeExact": true,
+    "originalIssuedRpmProofWholeExactRequired": true,
+    "originalBankFingerprintMasterCanonicalAndProofGuardsUnchanged": true,
+    "originalSynchronousCallbackMandatory": true,
+    "contextInvalidatedInFinally": true,
+    "liveHeadRuntimeInventoryAndInputRehashPreserved": true,
+    "unchangedAutoNativeWorkerCollectorAndSidecars": true
+  },
+  "compositionFinding": {
+    "entryReplay": "The reassessment first authenticates the original P21 and E023 display witnesses, then one shared loop removes both validated options before the recursive call. The new RPM reader therefore receives exactly the normalized original patch expected by its closed guard; it does not accept an intermediate partially normalized E023 patch.",
+    "sourceView": "The RPM leaf reads the actual current source first. A valid private context may return only the already authenticated issued source bytes for the existing replay comparison; current file bytes remain authenticated. With no context the original local source path and all old equality guards are unchanged.",
+    "authority": "The new reader cannot mint a token or bypass the ordinary Native result. The original issued RPM proof equality still determines whether the replay succeeds."
+  },
+  "validation": {
+    "reviewerExecution": 0,
+    "ownerFocusedArgumentContract": {
+      "tests": 36,
+      "pass": 36,
+      "fail": 0,
+      "logDirectlyRead": true,
+      "limitation": "The owner test executes the reader body with test-only seeded contexts and actual immutable request/source inputs. It does not execute the full production context-authentication or original Native8 path."
+    },
+    "scopedGateDefinitions": {
+      "positiveIssuedViews": 8,
+      "argumentAndOutside39Refusals": 50,
+      "expiredTokens": 8,
+      "asyncEscape": 1
+    },
+    "actualNative8": "NOT_RUN_IN_THIS_REVIEW",
+    "actualSource47": "NOT_RUN_IN_THIS_REVIEW",
+    "actualConsumer8": "NOT_RUN_IN_THIS_REVIEW",
+    "newNodeSyntaxByReviewer": "NOT_RUN",
+    "oldTestsRerunByReviewer": 0
+  },
+  "limits": {
+    "newMathReview": false,
+    "newVisualReview": false,
+    "newSemanticApproval": false,
+    "newFourSlotApproval": false,
+    "sourceMutation": false,
+    "currentNativePassClaimed": false,
+    "approvalGuardRelaxed": false,
+    "remoteRefWrites": 0
+  },
+  "nextAction": "Root composes exact candidate pins, including reassessment67a in dependent scoped fixtures, then runs the bounded original Native8/source47 gate. Only the actual result can establish current readiness."
+}

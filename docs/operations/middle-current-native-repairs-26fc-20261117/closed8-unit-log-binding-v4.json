@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-independent-closed8-v4-raw-log-binding-v1",
+  "reviewer": "GPT_M3S2_RELEASE_26FC42390A50",
+  "decision": "BIND_ACTUAL_FOCUSED_LOGS_TO_UNCHANGED_STATIC_ACCEPTANCE",
+  "staticReview": {
+    "gitBlobSha1": "e45662e55e2638da43fd87919d3c03f26b0df854",
+    "sha256": "365f5e4f0573fc730e1f1c0e28d70baf23d4d8130c3f62fccbe0f9ba7fd3c39f",
+    "bytes": 15049
+  },
+  "codeUnchanged": [
+    {
+      "path": "archive/tools/meta-foundation/m2-problem21-current-ui-continuity.mjs",
+      "before": {
+        "gitBlobSha1": "a3ae3747c5381c58b5554875f599013085d3152e",
+        "sha256": "77745782e18a5ae63f64d0cfce54f0f8a19db890714e67b349fc2cbee33e49c3",
+        "bytes": 65233
+      },
+      "after": {
+        "gitBlobSha1": "0fcbb1be605cd1418bd71fa91b24acd3bda0fc87",
+        "sha256": "b9485fb7db68ea6f15b9e2b4d0f7c0567c9457faa5ab82dfceba903e1a5a6c0b",
+        "bytes": 65666
+      }
+    },
+    {
+      "path": "tests/archive-m2-problem21-current-ui-continuity.test.mjs",
+      "before": {
+        "gitBlobSha1": "669ffa1f7172d54c86ae787da0a317aae2f6c410",
+        "sha256": "73b658c2cefac10794babf0f634a3cc08d88d41629d367e6f5ab632cd3cf037a",
+        "bytes": 12627
+      },
+      "after": {
+        "gitBlobSha1": "47d418ff6b52b7d098721b76241124df5946d62a",
+        "sha256": "c029c80f97efa011f49a8107f797db7dec56dde23df1aa50855872628c87bf76",
+        "bytes": 15742
+      }
+    }
+  ],
+  "rawLogs": [
+    {
+      "key": "log-initial",
+      "pin": {
+        "gitBlobSha1": "91d7317c6649db5fe70bd83c89659b24f1c49ccb",
+        "sha256": "f754af8faca0c5c2516474560faba76454969f6d3686054fc891cf49d1d4aa01",
+        "bytes": 2438
+      },
+      "lines": [
+        "ℹ tests 1",
+        "ℹ suites 0",
+        "ℹ pass 0",
+        "ℹ fail 1",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 482.934739"
+      ],
+      "errorCodes": []
+    },
+    {
+      "key": "log-main",
+      "pin": {
+        "gitBlobSha1": "1310f24b3b4fe92c90ff38f61969ec63f7ec8018",
+        "sha256": "d337089ee00cfad1462923da42411469bc76c3dea0fbb5740f04612617187596",
+        "bytes": 10382
+      },
+      "lines": [
+        "ℹ tests 88",
+        "ℹ suites 0",
+        "ℹ pass 86",
+        "ℹ fail 2",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 1062.027919"
+      ],
+      "errorCodes": []
+    },
+    {
+      "key": "log-targeted",
+      "pin": {
+        "gitBlobSha1": "bcdbc303c203b1ae1a4012245ae89a0a4fe06ea9",
+        "sha256": "54bd73eb1c6c8b5bc72e84a7bf385e3863af3a474aa62ac85323ab3388afdff1",
+        "bytes": 267
+      },
+      "lines": [
+        "ℹ tests 2",
+        "ℹ suites 0",
+        "ℹ pass 2",
+        "ℹ fail 0",
+        "ℹ cancelled 0",
+        "ℹ skipped 0",
+        "ℹ todo 0",
+        "ℹ duration_ms 390.047935"
+      ],
+      "errorCodes": []
+    }
+  ],
+  "actualInterpretation": {
+    "initial": {
+      "fileLoadTest": 1,
+      "pass": 0,
+      "fail": 1,
+      "reason": "Missing immutable SVG object 20f6bffe2a1a4d20bc23fba01545a8cbf9742b25 before definitions ran"
+    },
+    "complete": {
+      "tests": 88,
+      "pass": 86,
+      "fail": 2,
+      "reason": "Missing immutable E017 source object f417b7e4e993ceb1a70c1b85de1e292a52d2b551"
+    },
+    "targeted": {
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "names": [
+        "exact issued/current bank metadata transport: E017",
+        "changed source bytes cannot be normalized through a valid old pin"
+      ]
+    },
+    "distinctPassedDefinitions": 88,
+    "fullSingleClean88Run": false,
+    "newMetadataAndNegativeDefinitions15": "PASS in the complete 88-definition attempt",
+    "rawLogsIndependentlyRetrievedAndExact": true
+  },
+  "supersedesOnly": "The raw-log remote404 availability limitation in e45662 is resolved after author published exact original bytes. No new code review or test execution.",
+  "limits": {
+    "reviewerNodeRuns": 0,
+    "reviewerSourceReview": 0,
+    "reviewerImageInspection": 0,
+    "currentNativeEight": "NOT_RUN",
+    "currentSource47": "NOT_RUN",
+    "newApprovals": 0,
+    "remoteRefWrites": 0
+  }
+}

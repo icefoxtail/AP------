@@ -13,12 +13,39 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 이 검사를 생략·격리하거나 데이터 분모를 줄이고, 시간 상한·검증 조건을 완화하여 통과시키지 않는다. 구조 변경이 필요해도 기존 동작·응답성·내용 검증을 먼저 보존한다. 이 계약 자체의 변경은 명시적인 사용자 지시와 근거를 필요로 한다.
 - 시험지 source만 수정하는 CREATE/R1/R2/R3 작업은 기존 시험지 품질 절차를 따른다. 런타임 흐름도 바꾸는 경우에는 이 계약을 함께 적용한다.
 
+## 교사 화면 코드(`archive2-workspace*.js`) 파일 지도 (2026-11-19)
+
+- 이유: 388KB 파일 하나를 고치는 PR이 한 번에 하나만 갈 수 있어 네 줄기(자료 로딩·저장/오류 문구·미리보기/인쇄·선정 결과 표시)가 서로 기다렸다. 함수 본문은 한 글자도 바꾸지 않고 파일만 나눴다(동작·출력 불변). 이 문서 아래 본문의 `archive2-workspace.js` 언급은 아래 표에서 그 함수가 있는 파일을 뜻한다.
+- 일곱 파일은 `workspace.html`에 **core → find → compose → preview → save → recent → main** 순서로 로드하고, 모두 `window.Archive2Workspace` 하나를 공유한다(번들러·모듈 없음).
+
+| 파일 | 담는 것 |
+| --- | --- |
+| `archive2-workspace-core.js` | 공용: `state`, `$ esc button`, API 클라이언트(`api`·`headers`), 필터·매칭 규칙, `showDialog`. 다른 파일을 부르지 않는 말단 |
+| `archive2-workspace-find.js` | 자료 로딩 뒤 홈, 학교별 기출 찾기, 유사문제 목록, 자료 점검 |
+| `archive2-workspace-compose.js` | 문제지 구성·선정·교체: 단원 트리, 빠른 평가, 선정 결과 표시, `generate/replace/prepare/request/review/seal` |
+| `archive2-workspace-preview.js` | 미리보기·인쇄: `updatePreview/outputUrl/print/finalGate/download`, 원본 출력 |
+| `archive2-workspace-save.js` | 저장·초안·출제 연결·오류 문구: `savePapers`, 초안 저장·복원, 저장본 수정, 출제 패널 열기, `status/teacherErrorMessage` |
+| `archive2-workspace-recent.js` | 출제 내역 화면·취소·PDF 재시도 |
+| `archive2-workspace.js` (main) | `render` 분기, URL 쓰기·읽기, **이벤트 리스너(클릭 처리기 포함)**, 부팅. 맨 마지막에 로드 |
+
+- **이름 주고받기**: 각 파일은 끝에서 자기 최상위 이름을 `Object.assign(WS.api, {…})`로 내놓고, 다른 파일의 이름은 맨 위 `let …;`(헤더)와 `WS.links.push(…)`로 받는다. **다른 파일의 함수를 새로 부르면 그 파일 헤더 두 곳(let 목록·구조분해)에 이름을 더한다.** `tests/archive2-workspace-parts.test.js`가 빠뜨린 이름·주인 없는 이름·로드 순서·Pages 목록 누락을 잡는다.
+- **여러 파일이 바꾸는 변수는 `V.이름`**(`WS.v`)이다(예: `V.previewTimer`, `V.classRows`). 새로 파일 사이에서 공유할 변경 가능한 변수가 생기면 `V`에 둔다.
+- **캐시 버전**: 파일마다 자기 `?v=`를 두고 그 파일을 바꾼 PR만 올린다. 코드에서 이름을 새로 내놓거나 받으면 두 파일 모두 바뀌므로 둘 다 올린다. 새 파일은 `tools/archive-pages-release-manifest.json`에도 올린다.
+- **compose의 "종이 만들기" 함수(`prepare/request/review/seal/pool/replace`)는 미리보기·저장도 부른다.** 서명을 바꿀 때는 호출하는 쪽 파일을 같이 고친다.
+- **테스트는 파일 이름을 직접 읽지 않는다**: `tests/helpers/archive2-workspace-source.cjs`의 `readWorkspace()`(전체 텍스트), `loadWorkspace(ctx, 훅)`(vm에 올리고 훅 실행)을 쓴다. 판본 `?v=` 값은 고정하지 않는다.
+
+## 시험지 보관함 "26년 2학기 기말 모의고사" (2026-11-19 사용자 요청)
+
+- 원장·선생님이 학생에게 바로 출력하는 중1 2학기 기말 모의고사 1~5회(각 객관식 20 + 서술형 4)를 옛 원클릭 보관함(`archive/assessment/assessment-mvp.html`)의 맨 앞 탭에 둔다. 자료는 `archive/assessment/assessment-packs-2sem-final-mock.generated.js`(`window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL`)이고, `mixed_engine.html`의 `packId` 대체 경로가 이 파일도 읽는다. 진입은 APMS 기존 "시험지 보관함"(원장 대시보드 카드, 선생님 서랍)이며 첫 탭이 모의고사다. `?category=<탭 이름>`으로 탭을 지정할 수도 있다.
+- 자료 파일은 손으로 고치지 않는다. 선정 목록(`archive/tools/assessment-mock/selection-m1-2final-mock.json`: 회차·번호·출처 파일·원 문항 번호·단원·세부 유형)을 고치고 `node archive/tools/assessment-mock/build-m1-2final-mock.cjs`로 원본 시험지 JS에서 다시 조립한다(`--check`는 일치 검사, `--tsv <경로>`는 목록 출력). 이유: 문항·정답·해설·그림 참조는 원본 그대로 복사해야 하고, 바뀌는 것은 서술형 앞머리의 원 시험지 번호 표기("[서술형3]" 등) 제거뿐이다.
+- 선정 규칙: 2024·2025년 기출 우선(부족한 칸만 2023), 2026년 시험지 제외, 한 회차 안에 같은 세부 유형 없음, 한 회차 안 같은 시험지 최대 3문항, 5회 사이 문항 겹침 없음. `tests/assessment-mock-2sem-final-packs.test.js`가 결함 조건을 검사한다.
+
 ## 화면 디자인 (2026-11-10 사용자 결정)
 
 - 화면 디자인은 `archive/DESIGN.md`를 따른다. 색·글꼴·모양은 `archive/archive2-tokens.css` 한 곳에서 정의하고, 화면 CSS에 색 숫자를 직접 쓰지 않는다. 메뉴는 `archive2-navigation.js`(PC 6칸 / 휴대폰 6칸)가 `workspace.html`과 `unit-past-exams.html`에 같이 그린다. 이유: 화면마다 모양이 달라 완성도가 낮아 보인다는 사용자 지적이 있었다.
 - `apmath/DESIGN.md`는 APMS용이라 별개다.
 - 출력 창(`engine.html`·`mixed_engine.html`) 위 조작줄은 `archive/archive2-output-bar.css`가 맡는다(화면 전용 `@media screen`, 토큰은 layer로 불러 종이 글꼴·바탕을 바꾸지 않는다, 웹 글꼴은 부르지 않는다). 자세한 규칙은 `archive/DESIGN.md` "출력 창 조작줄". 이유: 웹 글꼴이 늦게 도착하면 런타임이 종이를 다시 그리고, 토큰의 `:root` 글꼴·바탕이 종이에 번지면 인쇄가 바뀐다.
-- 원본 기출 머리글 제목(시험지·해설·정답)은 읽기 쉬운 이름이다(`archive/exam-display-title.js`, 예: `2022 강남여고 고1 1학기 중간`). CI 출력 비교(`archive2-output-performance-browser.cjs`, `archive2-solution-loading-browser.cjs`)의 기준 렌더러는 이 규칙보다 앞선 불변 커밋이라, 기준 쪽 서버만 시험지 JS 끝에 같은 해석 함수를 붙여 엔진의 기존 입력 `window.examDisplayTitle`로 같은 제목을 받게 한다(`serve(..., { referenceDisplayTitle: true })`). 비교 필드·허용 오차·케이스는 그대로라 본문 해시·블록 좌표·인쇄 픽셀은 전부 계속 엄격하게 비교한다. 이유: 기준 커밋을 새로 만들면 push 가능한 기준 브랜치가 따로 필요하고, 비교 때 제목 줄을 무시하면 머리글 결함까지 가린다.
+- 원본 기출 머리글 제목(시험지·해설·정답)은 읽기 쉬운 이름이다(`archive/exam-display-title.js`, 예: `2022 강남여고 고1 1학기 중간`). CI 출력 확인(`archive2-output-performance-browser.cjs`, `archive2-solution-loading-browser.cjs`)은 2026-11-18부터 현재 코드만 렌더해 오류·미렌더·시간을 본다. 기준 커밋과 쪽수·본문 해시·블록 좌표를 비교하는 장치(OUTPUT_PARITY, `archive2-output-comparison-references.json`, 릴리스 자격 게이트)는 뺐다. 이유: 렌더러·그림 크기 규칙을 일부러 바꿀 때마다 기준 커밋을 옮겨야 해서 모든 엔진 PR이 막혔다. 수동 비교가 필요하면 `ARCHIVE_PERFORMANCE_BASE_SHA`를 직접 줄 수 있고, 기준 쪽 서버만 시험지 JS 끝에 같은 해석 함수를 붙여 같은 제목을 받게 하는 `serve(..., { referenceDisplayTitle: true })`가 그대로 남아 있다.
 
 ## 시험지 끝 제출 QR (2026-11-01 사용자 결정)
 
@@ -30,7 +57,16 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 
 - 해설 상자가 83mm 반폭 칸을 가로로 넘쳐도 **자동으로 전폭 승격하지 않는다.** 먼저 `sol-fit-narrow`(줄바꿈·인라인 고정폭 이미지/표를 칸 폭에 맞춤)와 글자 단계 축소(`data-sol-fit` 1~4)로 칸 안에서 해결한다(`archive/layout-materializer.js` `fitSolutionToNarrowColumn`). 잘라 숨기는 `overflow:hidden`은 쓰지 않는다. 이유: 사용자 PC에서 4번 해설 하나가 2px 넘쳤다고 판정되어 그 쪽 전체가 1단이 되고 쪽 수가 늘었다(강남여고 고1 공통수학2).
 - 어떤 수단으로도 안 맞을 때만 마지막 수단으로 그 상자를 전폭 승격하고 `[archive-solution]` 경고를 남긴다. 완전히 없애지 않는 이유: 인라인 `max-width:400px` 이미지가 있는 시험(강남여고 고2 대수, 순천여고 고1 공통수학2)에서 승격이 없으면 가로 넘침 게이트(S12)가 렌더 전체를 막아 해설지가 안 열린다.
-- 명시적 전폭(`solutionImageLayout:'fullwidth'`)은 그대로 유지한다.
+- 명시적 전폭(`solutionImageLayout:'fullwidth'`)은 2026-11-18부터 배치에 쓰지 않는다(아래 "그림 크기는 단 폭 비율 하나").
+- **해설 한 문항이 가로로 넘쳐도 해설지 전체를 실패시키지 않는다 (2026-11-22, 사용자 원칙 "한 문항 때문에 인쇄가 실패되는 경우는 없어야")**: 넘친 상자 하나만 ① MathJax 늘임표(`\overline` 등)의 안 보이는 공백(`mjx-stretchy-h > mjx-ext > mjx-spacer`)을 `data-ap-mjx-clip`으로 가두고(왕의중 중2 2중간 9번, 왕운중 10번 같은 "몇 px 넘침"의 실제 원인), ② 줄바꿈(`sol-fit-narrow`) → ③ 글자 단계(`data-sol-fit` 1~4) → ④ 줄여 넣기(`data-sol-shrink` 1~5, CSS zoom 0.92~0.6)로 칸에 맞춘다. 글자 단계 이상 줄였으면 같은 알림 자리(`render-feedback.js` `APArchiveRenderFeedback.notice`)에 "N번 해설이 칸을 넘어 줄여서 표시했습니다."를 한 줄 보이고, 전폭 칸에서도 안 맞던 때의 `SOLUTION_HORIZONTAL_OVERFLOW_FULL_WIDTH` 예외는 없앴다(경고만 남기고 그린다). 잘림 감지(`archive2-pdf-readiness.js`)는 그대로이고, 칸을 3px 이하로 넘는 상자는 예전처럼 손대지 않는다. 같은 규칙이 `layout-materializer.js`(engine.html)와 `solution-render-executor.js`(mixed_engine.html = 문제지 만들기 해설)에 있다. 이유: mixed_engine.html에는 가로 넘침 처리가 아예 없고 `sol-fit-narrow` CSS도 없어서, 같은 문항이 engine.html에서는 열리는데 문제지 만들기 해설에서는 "PDF readiness failed: content clipped"로 통째로 실패했다. 선생님 화면에는 영어 오류 원문 대신 한국어 안내가 나온다(원문은 console과 `data-error-code`).
+
+## 문항 하나가 칸에 안 맞아도 시험지 전체를 막지 않는다 (2026-11-17)
+
+- 시험지(`archive/exam-render-executor.js` `render`): 글자·그림을 가장 작은 단계(`fit-micro`)로 줄여도 칸 안에서 잘리는 문항(readiness와 같은 기준: 잘림 overflow + 스크롤 크기 > 칸 크기 + 3px)은 그 문항만 단계적으로 키워 다시 쪽 나누기를 한다. 순서: ① 같은 열에서 세로로 길게(칸 2개 높이 … 열 전체, `data-ap-fallback="tall-N"`) → ② 한 줄 전체 폭 칸(`row`) → ③ 쪽 전체(`page`, 진짜 특별한 경우만). 맞는 문항의 배치는 그대로이고, 넘치는 문항이 없으면 한 번만 배치한다. readiness 검사·허용값은 건드리지 않는다. 사용자 결정(2026-11-17): 쪽 전체는 특별한 경우만, 세로로 길게가 기본. 이유: 단원별 기출 「원의 성질 › 원과 직선 · 2단계 · 1권」에서 문항 하나(4번·41번)가 8~170px 넘쳐 `PDF readiness failed: content clipped`로 시험지 전체가 출력되지 않았다.
+- 수식 공백(`mjx-stretchy-h > mjx-ext` 안 `mjx-spacer`)이 상자 오른쪽으로 몇 px 삐져나와 가로 넘침으로 잡히는 경우(향림중 5번)는 칸을 키우지 않고, 그 문항에 한해 `data-ap-mjx-clip`을 달아 `mixed_engine.html` CSS `[data-ap-mjx-clip] mjx-stretchy-h > mjx-ext { contain: paint }`로 처리한다(잘린 문항만, 폴백 단계보다 먼저 한 번). `overflow:clip/hidden`은 readiness가 잘림으로 보므로 쓰지 않는다. 전역 `contain: paint`는 쓰지 않는다. 이유: 처음에 전역으로 넣었더니 Chrome PDF 인쇄 픽셀 parity(Archive printed pixel parity)가 8건 깨졌다.
+- 조건/보기 상자(`.box`)를 `display:block`으로 바꾸는 CSS는 전역으로 두지 않는다. 페이지 이미지 인쇄(html2canvas)의 `onclone`이 클론 문서에 `ap-h2c-clone` 클래스를 달 때만 적용한다. 이유: 전역 변경은 평소 Chrome PDF·화면의 줄 높이를 바꿔 인쇄 픽셀 parity를 깬다.
+- 해설지(`archive/solution-render-executor.js` `renderSplitSolutionBox`): 첫 상자(문제 다시보기+그림+정답)의 풀이 조각 하나가 기존 `autoCompress`(글자 축소) 뒤에도 칸을 3px 넘게 잘라 먹으면(readiness 기준), 그 조각을 "{번호}. (이어짐)" 라벨이 붙은 다음 칸 이어짐 상자로 보낸다(머리가 칸에 들어갈 때만). 이어짐 라벨은 이 구제 경로로 만든 상자(와 그 뒤 이어지는 상자)에만 붙이고, 기존 경로로 잘 나오던 해설은 main과 DOM·높이가 그대로다. 이유: 같은 1권 해설지 4번이 칸보다 50px 커서 해설지 전체가 열리지 않았고, 처음 구현이 모든 이어짐 상자에 라벨을 달고 구제 전 축소 없이 쪼개 50문항 해설 parity(bodyHash·블록 높이)를 깼다. `mixed_engine.html`의 "상자 안 상자는 한 테두리" CSS도 기존 해설 블록 높이를 23~24px 줄여 같은 parity를 깨므로 이 변경에서 뺐다(필요하면 parity 기준 정정과 함께 따로 한다).
+- 같은 흐름의 `renderComposed`(반 합성·클리닉 출력)와 권위 배치(`layout-authority`)는 이 폴백이 없다. 같은 증상이 나오면 같은 방식으로 옮긴다.
 
 ## 해설·정답 열람은 잠그지 않는다 (2026-11-10 사용자 결정)
 
@@ -39,17 +75,41 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 
 ## 해설 SVG는 라벨 크기 기준으로 표시 (2026-11-11 사용자 결정)
 
+> 2026-11-18: A4 쪽 배치에서는 아래 계산(자연 폭 x 0.6, 칸 90%·340px)을 "그림 크기는 단 폭 비율 하나" 절의 규칙이 대체한다. 아래 계산은 휴대폰 읽기 배치와 오답 엔진에서만 쓰인다.
+
 - 해설 그림이 `.svg`이면 저장된 `solutionImageSize`(small·medium·large·full)와 무관하게 **표시 폭 = 자연 폭 × k(k=0.6), 칸 폭이 상한, 높이 auto**로 보인다(자연 폭이 384 미만인 옛 수제 SVG는 1:1로 그려졌으므로 ×1, 칸 폭 상한만 적용. 상수 `SOLUTION_SVG_SCALED_MIN_WIDTH`). 스크립트는 `solution-render-executor.js`의 `applySolutionSvgDisplayWidth`이고, 해설 그림이 모두 불러와진 뒤 쪽 나누기 전에 `img` 폭을 정한다(추가 요청 없음). CSS(`engine.html`·`mixed_engine.html`·`apmath/wrong_print_engine.html`)에는 스크립트가 못 돌 때도 SVG가 105·145·180px 높이 상한에 눌리지 않게 하는 대비 규칙이 있다. 래스터(png/jpg)는 기존 상한(48%·105px / 72%·145px / 92%·180px)을 그대로 쓰고 `layout-fullwidth`(640px 상한)도 그대로다. 휴대폰(640px 이하)은 읽기 모드 CSS가 그대로 칸 폭으로 푼다. 저장된 크기 등급과 시험지 파일은 바꾸지 않는다.
 - 이유: 라벨 글자가 화면에서 약 12 CSS px이어야 학생이 읽는다. 그림 엔진의 라벨 기본 글자는 20 SVG 단위이므로 20 × 0.6 = 12px이다. 게시된 medium 그림은 145px 상한에 눌려 라벨이 6~7px이었다(표본 40개 중 39개가 11px 미만). 그림이 화면에서 차지하는 크기는 **캔버스 크기**가 정하므로, 단순한 그림은 작은 캔버스로 그린다.
 - 해설 그림이 문항 머리(번호·문제·정답)와 첫 해설 조각과 함께 한 칸에 들어가지 않으면, 그림을 머리에서 떼어 **해설 마지막 조각 뒤**로 옮겨 다음 칸·쪽으로 흘린다(`layout-materializer.js`의 `moveSolutionImageToTail`, 문항당 1회). 그래도 넘치면 기존처럼 `MEASURED_SOLUTION_CHUNK_EXCEEDS_PAGE`로 실패한다. 이유: 그림이 머리에 묶여 있어 긴 문제+큰 그림 문항이 쪽 나눔에 실패했고, 그 때문에 해설 그림을 게시에서 빼야 했다(2026-11-11 사용자 지적: 해설이 몇 쪽이든 그림을 빼지 않는다).
 - 인쇄도 같은 A4 화면을 쓰므로 쪽 나누기가 함께 바뀐다(그림이 큰 시험은 쪽이 늘 수 있다). 사용자가 쪽 수보다 해설 가독성이 먼저라고 정했다. 화면 전용 CSS로 인쇄만 되돌리려 하지 않는다: 쪽 나누기는 화면에서 `scrollHeight`로 정하고 래스터·네이티브 인쇄가 그 화면을 찍는다.
 - 그림 엔진은 이 실제 페이지로 크기 등급별 표시 크기를 재서 글자 크기를 정한다(`measureArchiveDisplayEnvelope`, `record-visual-browser-evidence.mjs`의 측정은 같은 `applySolutionSvgDisplayWidth`를 불러 쓴다). 새 규칙에서는 모든 등급이 같은 크기로 재져 요청 등급이 기본 글자 크기를 바꾸지 않는다. k·상한을 바꾸면 엔진 측정과 `tests/archive-solution-image.test.js`·`tests/archive-solution-svg-size.test.cjs`를 함께 확인한다.
 
+## 그림 크기는 단 폭 비율 하나 (2026-11-18 도입, 2026-11-21 일반 그림 확대)
+
+- 적용 범위는 **A4 쪽 배치** = PC 화면의 쪽 보기 + 인쇄 + PDF다. 인쇄는 화면에서 만든 쪽 DOM을 그대로 찍으므로 `@media print`가 아니라 "휴대폰이 아닌 모든 곳"(`@media not screen and (max-width: 640px)`)에 건다. **휴대폰 읽기 배치(<=640px 화면)는 옛 규칙(`engine.html`·`mixed_engine.html`의 등급 CSS, `archive2-preview-mobile.css`)이 그대로**다(학생이 확대해서 봄). 이유: 학생은 문제지를 거의 A4로 뽑아 푸는데 그림이 한 단 폭의 90%로 칸을 채워 풀이 쓸 자리가 없었고, 크기 규칙이 등급 클래스·인라인 max-width·선택지(규칙 없음)·해설 SVG x0.6·균등 칸 78%/150px로 흩어져 서로 다퉜다.
+- 값과 규칙은 `archive/figure-size.css`(변수 `--ap-col-w` 83.65mm, `--ap-fig-q` 0.75, `--ap-fig-sol` 0.8, `--ap-fig-wide-w` 0.88, `--ap-fig-wide-h` 0.3)에 있고 숫자 하나만 바꾸면 된다. 규칙은 `@layer ap-figure-size`의 `!important`라서 해설 칸 맞춤(`sol-fit-narrow`)·인라인 `style="max-width:Npx"`·옛 등급보다 이긴다. 문제 그림(필드 그림, 본문 인라인 img·svg, 해설지의 문제 다시보기 그림)은 폭·높이 모두 단 폭의 75% 이하, 해설 그림(필드, 해설 본문 인라인)은 80% 이하다. 일반 그림을 확대해 라벨과 정보를 읽기 쉽게 한다. 가로로 긴 그림(자연 폭:높이 >= 2:1)은 폭 88%·높이 30% 이하다. **묶음 그림은 줄이지 않고 단 폭 전체까지**: 선택지 안 그림, 한 문항 본문에 그림 2개 이상, 보기가 전부 비었거나 번호 기호뿐인데 그림이 있는 문항(보기 2개 이상), 보기 칸이 아예 없거나 빈 배열인데 답이 ①~⑤ 꼴이고 그림이 있으며 발문 글자에 ①·②가 함께 없는 객관식(2026-11-19 `emptyChoicesAreFigure`, 크기 판정 전용이라 문항 결속 `question-binding.js`와 무관), `choicesEmbeddedInImage === true`. 작성자가 정한 width가 있는 묶음 그림은 그 크기를 그대로 둔다.
+- 그림 하나 덮어쓰기: 문항 필드 `imageScale`·`solutionImageScale`(단 폭 대비 %, 30~100), 본문 인라인 `<img data-scale="70">`. 범위 밖·숫자 아님은 무시하고, 있으면 위 기본값·가로로 긴 규칙·묶음 규칙보다 우선한다. 두 필드는 `render-state-normalizer.js`의 `RENDER_FIELDS`를 지난다.
+- 가로로 긴지·묶음인지·배율은 CSS가 알 수 없어서 `archive/figure-size.js`(`APFigureSize.classify`)가 그림이 모두 불러와진 뒤 쪽 배치 측정 전에 한 번 `data-ap-fig`(wide|bundle|scaled)를 붙인다(`applyAutoImageSizeClasses`와 `applySolutionSvgDisplayWidth`가 부른다). 값은 이 파일에 쓰지 않는다. 보기가 그림인 문항은 박스를 만들 때 `data-ap-fig-bundle`을 붙인다.
+- **옛 등급은 A4에서 크기에 영향이 없다**: `imageSize`·`imageSizeOverride`·`solutionImageSize`·`solutionImageSizeOverride`·`solutionImageLayout`는 데이터와 클래스는 그대로이고(휴대폰 규칙이 읽는다) 이 규칙이 읽지 않는다. 해설 SVG의 자연 폭 x0.6 인라인 width도 이 규칙이 켜진 화면에서는 넣지 않는다(`APFigureSize.isActive()`가 CSS 변수 `--ap-fig-sol` 유무로 판정, 휴대폰·오답 엔진은 옛 계산). 해설은 2단 안에서만 놓이고 `solutionImageLayout: "fullwidth"`로 쪽 전체 폭을 쓰지 않는다(`solution-render-executor.js`는 `APFigureSize`가 있을 때 무시, 오답 엔진은 옛 동작). 해설 칸 맞춤이 끝내 안 될 때의 마지막 수단 전폭 승격(위 "해설지 반폭 칸 넘침 처리")은 그대로다.
+- **html2canvas(기본 인쇄 경로)는 `object-fit`을 지원하지 않고 그림을 CSS 상자 크기대로 늘려 그린다.** 그래서 폭과 높이 상한을 함께 걸고 object-fit으로 맞추는 방식을 쓰지 않는다. 줄일 그림은 `width:auto; height:auto` + `max-width`·`max-height`만 걸어 그림 상자 자체가 그림 비율을 지킨다(표본에서 상자 폭÷높이가 자연 비율과 ±2% 이내).
+- 칸이 넘칠 때 `fitQuestionBox`가 붙이는 `img-fit-*`는 같은 비율에 0.85·0.7·0.55를 곱하는 변수(`--ap-fig-k`)로 바뀌었고, 균등 칸 엔진의 `images` 프로파일(옛 78%·150px)은 0.8을 곱한다(묶음 그림 제외). "단 폭"은 한 칸 안쪽 폭 83.65mm 상수로 둔다(측정용 staging과 최종 칸이 같은 크기를 쓰게). 전폭 칸에서도 같은 값이다.
+- 오답 엔진(`apmath/wrong_print_engine.html`)과 편집기(`internal-review-engine.js`)의 크기 선택지, `generated-bank.html`은 이번 범위가 아니다.
+
+## 모든 문항을 칸에 먼저 놓고, 안 들어가는 문항만 한 단 전체로 올린다 (2026-11-18 사용자 결정, 같은 날 앞선 "전폭 표시는 한 단 전체로 읽는다"를 대체)
+
+- 배치는 "기본 칸(grid)"과 "한 단 전체(`subjective-2up`)" 둘뿐이고 기본은 2단 칸이다. 문제 모드 렌더 입구(`engine.html`·`mixed_engine.html`의 `renderExam`, `APRenderStateNormalizer.renderQuestionLayout`)는 시험지 데이터의 `layoutTag`(fullwidth·wide·full·subjective-2up·subjective-4up 등)와 `wide:true`를 처음 배치에서 **무시**한다(데이터는 고치지 않고 렌더용 사본만). 이유: 이 태그는 그림이 크던 시절 사람이 붙인 것이라 과해서, 짧은 보기 5개와 그림 하나뿐인 문항(금당중 중3 2학기 중간 23·24번)이 한 단을 통째로 차지했다. 해설 모드는 건드리지 않는다.
+- 쪽당 4문항(`archive/equal-slot-engine.js`)에서는 `finalize`가 칸에 놓고 잰 뒤, 실효 글자 크기(글자 x 칸 배율)가 **10.8px(8.1pt, `MIN_EFFECTIVE_FONT_PX`) 미만**이 되는 문항만 한 단 전체(span 2)로 올려 쪽을 다시 만든다(`state.spans`, 최대 6회). 읽는 순서는 위 "번호 오름차순" 규칙 그대로이고, 한 단 전체는 통째로 빈 단 맨 위에 놓이며 연달아 나오면 한 쪽에 짝이 된다. 한 문항이 올라가도 시험지 전체가 옛 갈래로 넘어가지 않는다(예전에는 2up·wide가 하나라도 있으면 전체가 옛 갈래였다). 쪽을 다시 만들면 마지막 쪽 QR을 다시 달아야 해서 호출부가 `finalize(area, { afterRelayout })`로 넘긴다.
+- 한 단 전체로도 안 맞으면 그림만 단계적으로 줄인다(`tight images`·`floor images` 프로파일, 하한은 단 폭의 35%). 그래도 안 맞으면 글자는 10.8px로 두고 `LAYOUT_OVERFLOW`를 감사 결과(`area.dataset.equalSlotAudit`의 `warnings`·`layoutOverflow`)와 console 경고에 남기고, 교사 화면(PC 화면 전용)에는 그 문항에 빨간 점선과 문구를 보인다(인쇄·PDF·인쇄 이미지에는 안 넣음). 세로로만 넘치는 문항은 글자 10.8px를 지키고, **가로로 넘치는 문항(칸보다 넓은 표·한 줄 긴 글)은 가로가 들어가는 배율까지만 줄인다**(`overflowReason: "width"`, 글자가 10.8px 밑이 될 수 있고 같은 LAYOUT_OVERFLOW로 보고). 이유: 가로 넘침은 렌더 공통 게이트 S12에 걸려 시험지가 통째로 안 열리고, 칸을 키워도(한 단 전체) 폭은 그대로다. 오른쪽 단으로 문항을 이어 쓰는 경로는 아직 없다.
+- 작성자가 꼭 한 단 전체를 원하면 문항에 `layoutForce: "subjective-2up"`(렌더 전용 필드, `RENDER_FIELDS`·`RENDER_ONLY_FIELDS`)을 쓴다. 기존 데이터에는 없으므로 전부 자동 판정이다.
+- 자동 승격과 글자 하한은 시험지 렌더(`APExamRenderExecutor.render`가 `autoPromote`를 켬)에만 있다. 반 합성·오답 엔진(`renderComposed`)과 쪽당 4문항이 아닌 시험지(옛 갈래: 칸을 넘치면 `fallbackLadder`로 그 문항만 키움)는 이전 동작이다. 아직 그대로인 것: 해설 쪽의 전폭 승격(맞춤 실패 마지막 수단), 옛 갈래의 `autoCompress` 글자 축소.
+- 회귀 테스트: `tests/equal-slot-engine.test.js`(plan span·selectFit 하한), `tests/archive-layout-hint-demotion.test.js`(입구 정리).
+
 ## 연도는 항상 최신부터 (2026-11-10 사용자 결정)
 
 - 문제지 만들기·단원별 기출·빠른 평가의 연도 순서는 **항상 최신 연도가 먼저**(2026 → 2025 → 2024 …)이고 연도를 알 수 없는 자료는 마지막이다(`Archive2Core.recencyRank` 한 곳). 이유: 26·27·28년 시험지가 계속 쌓이고, 수학도 출제 경향이 있어 최신 연도 기출을 먼저 풀어 보는 것이 학생에게 도움이 된다.
 - 2026-10-29의 "완결된 최근 연도(2025, 2024 …)를 먼저, 올해 자료는 그다음" 결정을 **대체**한다. "올해 자료는 뒤로" 규칙을 다시 넣지 않는다.
 - 단원별 기출은 먼저 최신 연도 순으로 문제지를 자르므로 **문제지 1이 가장 최신 연도**이고, **한 문제지 안에서는** 쉬운 단계부터(1→5→단계 미지정) 정리해 단계 제목을 붙인다(`buildStepPapers`). 한 시험(같은 원본 파일)은 한 문제지에 함께 두고 목표 50·최대 80문항 규칙은 그대로다.
+- **자동 선정은 "같은 유형이면 최신 것"이다 (2026-11-18 사용자·관제 결정, `archive2-core.js` `selectBlueprint`).** 최신 연도부터 보되, 같은 유형을 겹쳐 넣기 전에 문제지에 아직 없는 유형을 이전 연도에서라도 먼저 채우고(유형 상한 1 → 2 → 3 … 순), 유형을 모르는 문항은 새 유형 다음(상한 2)에 들어간다. 유형이 하나뿐이면 그 유형 안에서 최신 연도가 먼저다. 요청 문항 수는 풀이 모자라지 않는 한 늘 채운다. 이유: 이전에는 연도 안에서만 유형을 분산해 고1 다항식+인수분해 20문항이 유형 6가지·중복 13문항·전부 2026년으로 나왔다.
+- **원본–유사 짝은 한 문제지에 같이 넣지 않는다(교사가 직접 고른 고정 문항은 예외, 둘 다 고정하면 둘 다 남는다).** 짝 = 유사 세트의 n번 문항과, `archive2-similar.js`가 정한 그 세트의 원본 시험의 n번 문항(위치 기준: 같은 번호 문장 유사도 0.58, 무작위 위치 0.08). 한 원본에 유사 세트가 둘이면 셋 모두 한 가족이다. 가족당 하나만 자동으로 뽑고, 다른 방법으로 문항 수를 채울 수 없을 때만 마지막에 짝을 허용한다. 짝은 카탈로그 값이 아니라 선정 시점에 레코드에서 시험 행을 다시 만들어 `archive2-similar.js`로 계산한다(`familyResolver`, 시험 행 기반 계산과 전수 일치를 `tests/archive2-selection-pairs.test.js`가 확인). `archive2-similar.js`는 워크스페이스가 `archive2-core.js` 뒤에 부르는 전역이라 선정 때 찾고, 없으면 짝 규칙만 빠진다. `archive2-core.js`에 새 `require`를 넣지 않는다(Worker 번들 모듈 집합이 바뀌어 배포 검증이 걸린다). 연결 못 한 유사 세트(연도 없음 등)는 짝으로 보지 않는다. 교체(다른 문항으로 바꾸기)는 교사가 직접 고르는 경로라 건드리지 않았다.
 - 이 순서가 바뀌면 문제지 구성과 `snapshotKey`가 달라진다. 이미 출제·저장한 문제지는 저장 당시 내용으로 고정되어 있어야 하므로, 번호나 키로 과거 출제를 다시 찾는 코드를 새로 만들지 않는다.
 
 ## 유사문제는 기출 옆에 (2026-11-10 사용자 요청)
@@ -101,6 +161,7 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - **학생 고르기·`아직 안 본 학생만`**: roster의 `already_submitted`는 `exam_sessions.exam_title = 요청의 exam_title AND exam_date = 요청의 exam_date`로 판정된다(`exams.js:2064-2071`). 학생이 제출하면 세션 제목은 출제 때 저장된 `exam_title`(`student-portal.js:696,717,729`)이므로 **출제 때 보내는 제목과 같은 값**을 roster에 보낸다. 옛 모달은 `getIndexExamTitle(item)`(학교+과목 조합)을 보냈는데 그 값은 출제 제목(`O.displayTitle`)과 달라 원본 시험에서는 응시 여부가 거의 맞지 않았다. 새 패널은 둘을 같은 값으로 맞췄다.
 - **옛 모달에 있었는데 새 패널에 없는 것**: 출력 설정 편집(시험지 제목·부제·오른쪽 표시·이름란·점수란·QR 포함)과 "시험지 확인" 미리보기, 학년 탭(반을 학년으로 묶어 보임), 학생 이름 검색, 선생님 필터, QR 인쇄 연결. 기본 설정(제목 = 표시 제목, 부제 = 과목, 이름란·점수란 켬, QR 끔)으로 낸다. 줄의 `시험지·해설·정답`으로 먼저 보고, 낸 뒤 결과표의 같은 버튼(`assignment-output-direct`, 옛 영수증이 쓰던 것과 같은 출제본 출력)으로 본다. 옛 영수증 상태(`state.originalReceipts`)는 옛 iframe 모달 안에서만 쓰이고 다른 화면 표시에는 연결이 없었다.
 - 서버(Worker)는 바꾸지 않았다. `archive2-history.js`·`archive2-core.js`·`archive2-output*.js`·`apmath/worker-backup/`를 건드리면 main 병합 때 Worker가 자동 재배포된다.
+- **여러 시험지 한꺼번에 출제 (2026-11-22)**: 학교별 기출 줄의 `함께 출제` 체크(원본은 제목 옆, 유사문제는 유사 칸·세트 대화상자)를 고르면 아래에 `N개 시험지 한꺼번에 출제`·`선택 지우기` 띠가 뜨고(`multiPicked`, `archive2-workspace-find.js`), 누르면 `openOriginalAssignMany`(`archive2-workspace-save.js`)가 고른 시험지를 `items[]`로 같은 패널에 넘긴다. 이유: 시험 대비 기간에 여러 학교 기출과 유사 시험지를 한 반에 한꺼번에 내야 한다. 원본과 유사 세트는 둘 다 카탈로그의 시험 파일이라 항목 모양(`kind:"original"`)이 같아 섞어도 된다(패널은 `exams/<파일>` id로만 중복을 거른다). 고른 것은 메모리에만 두고(필터·검색을 바꿔도 유지, 새로고침하면 비움) 저장소·서버에 쓰지 않는다. 한 장 출제(`openOriginalAssign`)는 그대로다. 하나라도 원본 정보(해시)를 확인할 수 없으면 아무것도 열지 않고 어느 시험지인지 알린다.
 
 ## 단원별 기출 선택 규칙 (2026-11-10 사용자 결정)
 
@@ -169,6 +230,8 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - **모자라도 막지 않는다**(단원별 기출과 같은 원칙, 사용자 결정). `generate()`는 `selectBlueprint`의 `errors`만 거절로 다루고 `shortages`는 거절로 보지 않는다. 뽑힌 만큼으로 `req.rows[].count`를 줄이고 0인 행은 뺀 것을 `state.rows`로 둔다. 이렇게 해야 `C.review`가 "요청한 문항 수가 충족되지 않았습니다"(HARD_BLOCK)로 막지 않는다(`archive2-core.js`는 고치지 않았다). 모자란 행은 `state.composeShortage`(요청·넣은 수)에 두고 결과 위 `data-compose-shortage` 안내로 보인다. 뽑힌 문항이 0개일 때만 상태 줄로 알리고 아무것도 바꾸지 않는다(`rebuildUnissued`는 출제한 권을 보존해야 해서 예전처럼 부족하면 막는다).
 - **저장하고 출제**(`saveAndAssign`, 버튼 글자는 2026-11-11부터 `저장하고 출제`, aria-label은 `저장하고 반에 출제`): 현재 편집본이 이미 저장되어 있으면(`currentSavedPaperIds`) 다시 저장하지 않고 그 저장본으로, 아니면 `savePapers()`를 부른 뒤 **저장이 확인되었을 때만**(`saveResultState === "SAVED"`이고 저장 서명이 현재 편집본과 같음) 출제 패널(`openSavedPaperAssign`)을 연다. 저장이 실패했거나 결과를 모르면(`RESULT_UNKNOWN`) 열지 않는다. 한 권이면 id만 넘겨 패널이 서버에서 읽고, 여러 권이면 `GET /archive-saved-papers/save-batches/{batch}`로 권 정보를 받아 **저장된 권 전체**를 `papers[]`로 한 패널에 넘긴다(하나라도 확인되지 않으면 일부만 열지 않고 알린다).
 - **빠른 평가 가드**(`applyFiveMinuteViewGuard`)는 `FIVE_MINUTE_GUARD`의 선택자(`#distribution`, `#count`, `count-step`, 저장·저장하고 출제·백업·불러오기·새 작업 버튼, `[data-cz-empty-guide]`, `[data-cz-result-title]`, `.cz-more`)에 의존한다. 예전에는 `.inspector p.muted` 같은 선택자가 조용히 맞지 않게 될 수 있었고 테스트가 없었다. 마크업을 바꾸면 `tests/archive2-compose-one-screen.test.js`가 선택자가 마크업에 실제로 있는지 지킨다.
+- **미리보기는 문제지 내용 서명(`previewSignature` = `prepareSignature` + 보는 권·출력 종류·영수증·카탈로그 판)이 바뀔 때만 다시 그린다.** 서명은 `#preview-host`의 `data-preview-signature`에 남고, `render()`는 `setContentKeepingPreview`로 같은 서명의 칸과 iframe을 그대로 둔 채 곁가지만 바꾼다(iframe은 DOM에서 빠졌다 들어오면 다시 불러오므로 칸에 이르는 조상은 유지). 그래서 인쇄·저장 성공/실패·상태줄 갱신은 iframe을 다시 만들지 않는다. 이유: 클릭할 때마다 미리보기가 "준비 중"으로 되돌아가 깜박이고 50문항을 다시 복원·검증했다. 같은 서명의 `prepare()`는 진행 중인 Promise를 같이 기다리고(복원 1회), 서명이 바뀌면 늦게 끝난 옛 준비는 결과를 버린다. 문항 교체·되돌리기는 `state.prepared`를 비우지 않아, 바뀐 문항만 `Source.restore`하고 나머지는 원본 파일 SHA·지문·UID를 다시 확인(`stillRestorable`)한 뒤 재사용한다. 확인이 어긋나면 그 문항은 처음부터 복원한다(재사용은 검증을 건너뛰는 길이 아니다). 테스트: `tests/archive2-preview-stable.test.cjs`.
+- **조건을 바꿔 지워진 문제지는 한 단계 되살릴 수 있다**(`방금 문제지 되돌리기`, `data-compose-restore`). `invalidate()`가 선정 결과(문항·순서·rows·고정·교체 이력·준비된 문제지)를 compose 부품의 `lastCleared`에 한 개만 메모리에 둔다. 조건은 `invalidate()`가 불릴 때 이미 바뀌어 있으므로 main의 click/change/input 처리기가 이벤트 시작 때 `rememberComposeConditions()`로 바뀌기 전 조건을 적어 둔다. 초안·localStorage·서버 형식에는 쓰지 않는다. 새로 만들기(`generate`), 새 작업·다른 초안(`draftId`가 다름), 출제 시작, 카탈로그 변경, 결과가 다시 생기면 버린다. 이유: 고정·교체까지 손본 50문항이 조건 하나를 실수로 건드리면 통째로 사라졌다. 버튼 글은 `교체 되돌리기`(문항 하나)와 겹치지 않게 `방금 문제지 되돌리기`다. 테스트: `tests/archive2-compose-restore.test.js`.
 - 미리보기는 접으면(`state.previewOpen`) 그리지 않는다. 숨은 iframe은 폭이 0이라 출력 엔진이 배치를 못 하기 때문이다. 출력 설정 접힘은 `toggle` 이벤트로 `state.outputSettingsOpen`에 기억한다.
 - 뽑은 뒤 화면 상태 줄에는 "N문항 선택 · 중복 없음 · 처리 시간(ms)"을 내지 않는다. 오른쪽 결과 요약과 겹치고 처리 시간은 교사에게 필요 없어서다. 화면 읽기 프로그램용 숨은 live 영역(`data-cz-announce`)에만 "N문항을 선택했습니다."를 두고, 처리 시간은 콘솔과 `?perf=1`에서만 상태 줄에 보인다(오류는 그대로 보인다).
 - **"모자라도 막지 않음"은 새로 만들 때만이다.** `문제지 만들기`와 `같은 조건으로 다시 뽑기`(`generate(false)`)는 지금 문항을 후보에서 빼지 않으므로 있는 만큼만 넣고 모자람을 알린다. `고정 외 다시 만들기`(`generate(true)`)는 지금 문항(고정 외)을 후보에서 빼고 뽑기 때문에 새 문항이 모자라면 결과가 조용히 줄어든다(6문항 → 3문항으로 줄고 되돌리기도 꺼진 일이 있었다). 그래서 결과가 지금보다 적으면 적용하지 않고 지금 문제지를 그대로 두며 결과 위에 한 줄(`state.composeNotice`, `data-compose-notice`)로 알린다.
@@ -235,6 +298,17 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 시험지 제목·`scopeKeys`는 범위 키(`u:<학년>:<과목>:<단원>` 또는 `…~<중단원 키>`)와 범위 이름을 쓴다. 이 값을 읽는 다른 코드는 없다(`scopeKeys`는 출력 창 meta에만 담긴다).
 - 테스트: `tests/archive2-quick-pools.test.js`가 결함 조건을 본다 — 중등 중단원 목록 = 정본 L2(누락 0, 순서 일치), "이전 분류"·영문·"핵심 개념" 이름 0, 같은 대단원 안 중복 이름 0, 범위의 문항이 그 대단원 소속(다른 단원 0), 자식 합 = 대단원. "five-minute first render 500ms" 항목은 이 PC 부하에서 변경 전부터 느려(변경 전 0.9~1.1초, 변경 후 0.9~1.0초) 기준은 그대로 두고 전후만 같은 조건으로 비교했다.
 
+## 빠른 평가 "진단평가" 상품과 출력 순서 (2026-11-19 사용자 결정)
+
+- 진단평가는 신규 학생 첫 학부모 상담용이다. 결과표가 "단원 × 단계"와 단계별 성취를 보여 주므로 진단지는 ① 쉬운 단계부터 올라가고 ② 범위의 모든 단원이 들어가고 ③ 학부모에게 "실제 학교 기출"이라고 말할 수 있어야 한다. 이유: 학생이 어디서 막히는지를 단계·단원으로 읽는다.
+- 상품은 `archive2-quick-pools.js` `PRODUCTS.diagnostic` 한 곳이다(수를 다른 곳에 두지 않는다). 24문항, 프리셋 3종 — 기초 1·2·3·4~5단계 5·5·10·4, 기본(선택값) 3·5·10·6, 심화 2·4·10·8. "진단평가는 기본적으로 어려운 형태로 나가는 게 중요"(사용자)라 기본이 기초보다 어렵다.
+- 풀은 `Core.difficultyEligible` + **원본 기출만**(`original/`; 유사·교과서·유형·생성 제외 — 원본–유사 짝 문제를 구조로 없앤다). 4~5단계 칸은 5단계를 합친 진단평가 전용 풀이고(`mergeTop`), 다른 네 상품은 5단계를 계속 뺀다. **학기 단추 = 그 학기의 과목·단원 범위이지 시험지 학기가 아니다 (2026-11-20 사용자 결정: "과목이 우선", "학교마다 2학기 책인데 1학기에 나가는 경우도 있다")**. `buildPools`의 `semesterAllows`: 고2·고3은 문항을 학기로 거르지 않는다(단원 미분류도 과목이 정해져 있으니 과목 전체가 풀, 세 학기 단추의 문항 수가 같다), 고1도 풀은 안 자르고 화면이 학기 단추와 과목 단추를 짝짓는다(1학기 = 공통수학1, 2학기 = 공통수학2, `syncDiagnosticSemester`; 과목 단추가 우선, "1·2학기"는 과목 유지), 중등은 문항의 대단원이 속한 교재 학기(단원 표 `courseKey` M1-1·M1-2 …)로 가른다. 시험지 학기(`examAxis`)를 따르는 것은 과목 구분이 없는 중등의 단원 미분류 문항뿐이다. 고2·고3 문서·표시는 학기를 말하지 않는다("대수 전체"). 학기 단추 자체는 남겨 두었다(사용자 결정 대기). 학기 단추는 진단평가에만 있고 나머지 네 탭은 학기와 무관한 공용 풀을 쓴다(`quickState.semester`, 진단평가 전용 풀 캐시 `quickDiagCache`).
+- 선정(`archive2-workspace-compose.js` `diagnosticSelection`): 고른 단원(고르지 않으면 학기 전체)마다 최소 문항 = floor(24 / 문항 있는 단원 수)와 3 중 작은 값, 남는 자리는 풀 크기 비례. 단계마다 단원을 돌려 가며(최소에 가장 못 미친 단원 먼저) 단원 × 단계 칸이 비지 않게 하고, 그 단원에 그 단계 문항이 없으면 건너뛴다. 유형(`metaFacetsOf().pt`, 문제지 만들기와 같은 출처)이 겹치면 벌점만 주고 빼지 않는다(유형 없는 문항도 풀에 남는다).
+- **부족 단계 보충 (2026-11-20 사용자 결정)**: 원본 기출이 프리셋보다 모자란 단계만, 모자란 수만큼 같은 학년·같은 단원(학기가 정해진 유사 문항은 같은 학기)의 유형(`types/`)·유사(`similar/`) 문항으로 채운다(`PRODUCTS.diagnostic.fillFrom`, 풀의 `unit.fillBuckets`; 원본이 있는 단원에만 붙는다). 원본이 먼저이고, 단원을 돌려 가며 고르고, 이미 뽑힌 원본과 같은 시험의 원본–유사 짝(`Core.familyResolver`)은 다른 문항이 남아 있는 한 뺀다. 화면 결과 카드에 한 줄("4~5단계 2문항은 원본 기출이 모자라 유형·유사 문항으로 채웁니다."), 연 뒤 상태 줄에 실제 유형·유사 수를 보인다. 새 상태값·단추는 없다. 채워도 모자라면 기존 안내("N단계 M문항 필요 · K문항 가능", K는 원본+보충)를 그대로 쓴다. 조용히 다른 단계로 채우지 않는다.
+- 정답·해설 빈 문항: 카탈로그에 그 값이 없어서 선정 단계에서는 거르지 못한다. 출력 준비(`Source.restore`) 뒤 정답이나 해설(글·그림)이 빈 문항이 있으면 **같은 단계의 안 뽑힌 문항(같은 단원 먼저)** 으로 바꾼다(`replaceBlankQuestions`). 바꿀 문항이 없으면 시험지를 만들지 않고 이유를 알린다. 이유: 상담용 시험지에 답이 없는 문항이 들어가면 안 된다.
+- 출력 순서: 모든 빠른 평가 상품이 선정 직후 `Quick.orderByStep`으로 (기록된 난이도 단계, 단원 순서) 안정 정렬해서 낸다(`openQuickAssessment`). 선정된 문항 집합은 바뀌지 않고 순서만 명시적이다. 문항 순서는 `Source.restore` → 출력 봉투 → `mixed_engine`까지 그대로 유지된다.
+- **A·B형 두 벌 (2026-11-20)**: "A·B형 두 벌" 체크 하나(`quickState.twoForms`, 열기 단추 옆과 하단 띠). B형(`diagnosticMirror`)은 A형과 단원 × 단계 칸별 문항 수가 같고 A형 문항을 쓰지 않는다. A형은 두 벌일 때 칸마다 절반까지만 먼저 가져가 B형 몫을 남기고(`pair`), B형은 칸에 안 쓴 원본이 없으면(A형이 모자란 단계의 원본을 다 가져간 경우) 같은 칸의 안 쓴 유형·유사로 채운다. 그래도 없는 칸만 A형 문항을 다시 쓰고, 상태 줄에 겹친 수를 적는다. B형은 A형을 만들고 난 뒤 A형의 최종 구성(빈 문항을 바꾼 뒤)을 기준으로 짠다. 정답·해설이 빈 문항은 `Source.restore` 뒤에야 알 수 있어, A형에서 빈 것으로 확인된 문항(`knownBlank`)은 B형 후보에서 처음부터 빠지고, B형 후보가 바닥나면 A형의 같은 단계 문항을 다시 쓴다(겹침으로 센다). B형만 실패하면 A형 창은 그대로 두고 B형 창만 닫으며 상태 줄에 "B형은 만들지 못했습니다"와 이유를 적는다. 상태 줄의 유형·유사 수는 벌마다("A형은 … B형은 …") 센다. 창은 클릭 안에서 둘을 연다(`window.open` 두 번). 둘째가 막히면 B형을 만들어 두고 "B형 열기" 단추로 연다(`quick-open-b`). 객관식 지정은 하지 않았다: 카탈로그 행에 문항 유형·보기가 없어 선정 때 알 수 없고(`Source.restore` 뒤에야 보인다), 보기가 없는 문항을 거르려면 선정 뒤 재선정이 필요해 단계·단원 구성 보장과 부딪힌다. 선정 난수는 `crypto.getRandomValues`라 seed 고정이 안 된다.
+
 ## 문제지 만들기: 대단원 → 중단원 2단 목록 (2026-11-16, 계획 작업 3b)
 
 - 문제지 만들기 단원 목록은 단원별 기출·빠른 평가와 같은 공용 모듈 `archive2-unit-tree.js`로 대단원 아래 중단원(고등은 소단원 묶음)을 보여 준다. 이유: 세 화면의 단원 이름·순서·소속이 같아야 하고, 선생님은 교과서 목차대로 "원과 부채꼴"만 따로 내고 싶어 한다(학기 구분은 넣지 않는다). 문항을 어느 중단원에 넣는지는 빠른 평가와 같은 규칙(`Archive2QuickPools.wrapRecord` + `tree.childKeyOf`)을 그대로 쓴다. 새 규칙은 없다.
@@ -243,3 +317,90 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 마크업 `scopeUnitMarkup`: 대단원 줄 끝 `data-action="scope-expand"` 단추(44px), 펼치면 `.scope-subs` 안에 `.scope-sub` 줄(0문항 `is-zero` 흐림·고를 수 없음, 대단원을 체크하면 `is-implied` "포함됨", 문항이 없는 "중단원 미지정"/"기타" 줄은 숨김). 펼침은 `state.scopeUnitOpen`(없으면 고른 자식이 있을 때만 펼침). `render()`는 목록 안쪽 스크롤 위치를 보존한다.
 - `settleIndexesForView`가 문제지 만들기 화면에서도 기록된 메타 색인을 미리 만든다(빠른 평가와 같은 소속 판정에 필요). 메타 거르기(`composeMetaFacets`)는 고른 중단원의 문항을 따라간다.
 - 테스트: `tests/archive2-compose-tree.test.js`가 결함 조건을 본다 — 중등 중단원 목록 = 정본 L2(누락 0, 순서 일치), 중단원 합 + 미지정 = 대단원 문항 수, 자식 키 안정, 옛 대단원 키 초안이 같은 문항 수로 복원, 중단원만 고르면 그 문항만, 메타 후보가 따라감, 마크업(접힘·0문항·포함됨).
+
+## 원본 확인 파일 목록은 조각으로 (2026-11-17, 원본 출제 CI 상한 대응)
+
+- 원본 하나를 확인할 때 Worker는 manifest + 최상위 index(`archive/data/archive2-source-verification-index-v2.json`, 약 3KB) + 해시 접두어 조각 1개(`archive/data/archive2-source-verification/index-v2/<0-f>.json`, 16개) + 시험지 조각 1개만 받는다. 이유: 통짜 index(`archive2-source-verification-index.json`)가 등록마다 커져 `tests/archive2-original-source-verification-shard.test.mjs`의 500,000 바이트 상한을 넘나들었다. 상한과 단언은 그대로 두고 구조로 풀었다.
+- 해시 사슬: manifest → 최상위 index → 조각 → 시험지 조각. 한 단계가 늘어 대조는 더 강하다. 조각은 `sha256(sourceFile)` 첫 글자로 정하므로 새 시험지가 어느 조각에 가는지 빌더가 알아서 정한다(`archive/tools/build-archive2-catalog.mjs`가 재생성, 자동 등록기도 같은 빌더를 쓴다).
+- 통짜 index는 지우지 않았다. 이미 배포된 옛 Worker가 읽고, 단체 출제(mixed) 조회가 아직 이것을 쓰기 때문이다. 빌더 주석 `COMPAT`에도 적었다. 옛 Worker가 계산하는 기준 버전에는 새 최상위 index가 들어가므로, 통짜 index·mixed 자료는 그 버전을 박아 만든다(순환 해시를 피하려고 최상위 index는 통짜 index와 자기 자신을 뺀 버전을 쓴다).
+- 정리 순서: Worker 재배포가 확인되면 옛 Worker 호환 목적의 통짜 index 생성을 지운다. 그 전에 mixed 조회(`loadMixedVerificationRecords`)를 최상위 index 구조로 옮겨야 한다(그때는 순환 문제가 없어진다).
+
+## 빈 풀이노트 인쇄 쪽 (2026-11-17)
+
+- `archive/note-sheet.html`(+ `note-sheet.css` 화면, `note-sheet-paper.css` 종이, `note-sheet.js`)은 문제 없이 교재·쪽·번호 줄과 풀이 칸만 있는 A4 양식(풀이노트 2문항·4문항, 서술형 풀이노트 2문항, 다시 풀기 4문항)을 뽑는 단독 페이지다. 양식 선택(여러 개)·양식별 장수(1~30)·인쇄 버튼이 위에 있고 아래에 양식마다 한 장씩 축소 미리보기가 나온다. 인쇄할 때는 `#ns-print`에 고른 장수만큼 만들어 `@page { size: A4; margin: 0 }`로 쪽마다 한 장씩 나온다. 문항·카탈로그·저장소를 읽거나 쓰지 않는다. 이유: 선생님이 기존 문제집으로 수업할 때 학생이 풀이를 쓰는 양식을 아카이브에서 바로 뽑기 위해서다.
+- 종이(`.ns-page` 안쪽)의 칸 이름·문구·치수·점 격자는 사용자가 시안으로 확정한 값이라 바꾸지 않는다. 종이 CSS는 인쇄 본문이라 화면 토큰을 쓰지 않고(색 숫자가 있다), 화면 조작 영역 CSS만 토큰을 쓴다. 모든 종이 규칙은 `.ns-page` 아래에 묶여 메뉴·조작 영역으로 새지 않는다.
+- 들어가는 길: 메뉴 6개는 늘리지 않았고 홈 "빠른 평가" 칸과 `HOME_PRODUCT_REGISTRY`에도 넣지 않았다(평가가 아니라 양식이다). 대신 홈 맨 아래(휴대폰은 맨 끝)에 "수업 양식" 칸을 두고 `archive2-workspace.js`의 `HOME_FORMS` 목록으로 정적 링크(`<a href="note-sheet.html">`, 클릭 처리 코드·카탈로그 의존 없음)를 그린다. 나중에 다른 인쇄 양식이 생기면 `HOME_FORMS`에 한 줄만 더한다. 이 칸은 선생님 판별 없이 모두에게 보인다(홈의 다른 칸도 판별하지 않고, 빈 양식은 노출될 정보가 없다). 직접 주소로도 열린다.
+- 확인 도구 주의: CDP `Page.printToPDF`를 base64 한 메시지로 받으면 PDF가 약 5MB를 넘을 때 응답이 오지 않아 멈춘 것처럼 보인다(8장 이상). `transferMode: "ReturnAsStream"` + `IO.read`로 받는다. 30장 PDF는 약 13MB다(점 격자 배경 때문에 쪽당 약 0.4~0.8MB).
+
+## 시험지 쪽 안 읽는 순서는 번호 오름차순 (2026-11-18 사용자 결정)
+
+- 한 쪽 안의 읽는 순서(왼쪽 단 위→아래, 오른쪽 단 위→아래)는 항상 문항 번호 오름차순이다. 칸 배정은 **열 우선·단조 증가**: 마지막에 놓은 칸 뒤만 쓰고, 한 단 전체를 쓰는 `subjective-2up`은 통째로 빈 단의 맨 위에만 놓는다(현재 단에 문항이 있으면 다음 단, 오른쪽 단도 못 쓰면 다음 쪽). 뒤 문항은 앞의 빈 칸을 채우지 않으므로 빈 자리와 쪽 수 증가는 감수한다. 코드는 두 벌이고 같은 규칙이다: `archive/layout-authority.js` `planLegacyProductionLayout`의 `findSlot`(원본 열기 쪽 배치 계획)과 `archive/exam-render-executor.js` `buildSlotPages`의 `findSlot`/`commitSlot`(문제지 만들기·단원별 기출·서버 PDF). 특수 칸이 없는 쪽의 번호순 ceil(n/2) 균등 분할은 그대로다. 회귀 테스트: `tests/exam-layout-reading-order.test.js`.
+- 이유: 일반 문항 사이에 서술형이 끼면 행 우선 배정이 서술형 아래 빈 칸을 뒤 문항으로 채워 21→23→22로 읽혔다(동산중 1학기 중간 중3 6쪽 등). 사용자: "그냥 번호 순대로 가게", "쪽수는 전혀 고려 대상이 아니야". `subjective-4up`(데이터 0건)은 쪽당 6·8문항에서 배치가 달라질 수 있다(번호순은 유지).
+
+## 시험지 문자열 처리는 공용 파일 하나 (2026-11-18, 렌더러 모듈화 첫 조각)
+
+- `engine.html`(원본 시험지)과 `mixed_engine.html`(문제지 만들기·단원별 기출)이 같은 이름의 문자열 함수를 따로 복사해 두어, 한쪽만 고친 사고가 쌓여 같은 문항이 화면마다 다르게 나왔다(보기 값이 틀리게 나옴, `$<br>$` 글자 노출, 발문 중간 [보기] 상자, 표 안 `<보기>` 소실). 이제 `wrapLatex`·`normalizeSolutionLineBreaks`·`extractChoice`·`stripChoicePrefix`·`detectChoiceRenderMode`·`renderChoicesHTML`·`protectRenderSegments`·`normalizeViewBlocks`·`formatGridAnswer`(와 이들이 부르는 `normalizeHangulStatementBreaks`·`normalizeConditionMarkerBreaks`)는 `archive/render-text.js`(`APRenderText`) 한 곳에만 있고, 두 HTML에는 같은 이름의 한 줄 위임만 남는다. 이 함수를 고칠 때는 `render-text.js`만 고친다. DOM·window·MathJax에 닿는 코드를 넣지 않는다(표 엔진만 `globalThis.ApTableEngine`을 호출 시점에 읽고, 보기 변환은 `renderChoicesHTML(q, { formatChoice })` 훅으로 받는다).
+- `wrapLatex`는 engine 방식(표·`question-table-wrap`을 통째로 보호, 리터럴 `\n`은 TeX 명령이 아님)에 mixed가 지켜 오던 것을 더했다: 보호한 블록 안에서도 한글 `<이름표>`와 수식 안 `<`·`>`는 글자로, `$` 없는 TeX 명령은 수식으로 바꾼다(`repairStructuralBlock`). 그리고 수식 밖 TeX 명령 바로 뒤의 `__HTMLTAG_n__` 표지를 하위 첨자로 먹지 않는다(`wrapBareLatex`).
+- 회귀 테스트: `tests/archive-render-text-shared.test.js`(사고별 실제 문항 표본 + 두 HTML에 본문 복사가 없는지 구조 검사). 오답 엔진(`apmath/wrong_print_engine.html`)은 아직 자기 복사본을 가진다.
+
+## 렌더 엔진 파일을 바이트·해시로 고정하는 검사 금지 (2026-11-18 사용자 결정)
+
+- 렌더 엔진 파일(`archive/engine.html`, `mixed_engine.html`, `apmath/wrong_print_engine.html`, 이들이 싣는 `archive/*.js|css`·`archive/css|js/`·학생 내비 CSS/JS)의 현재 바이트·git blob·sha256·줄수·크기를 고정 상수와 비교해 다르면 실패하는 검사를 만들지 않는다. 승인 기록(영수증·픽스처)은 "그 판본으로 승인했다"는 과거 기록으로 두고 기록 안의 해시는 그 시점 git 객체와만 대조한다. 현재 엔진이 그 판본과 같아야 한다는 요구는 두지 않는다. 대신 문항 수, 렌더 준비 완료, 수식 오류 0, 넘침 없음 같은 결함 조건을 검사한다. 글꼴·벤더 라이브러리·원본 시험지·그림 자산의 바이트 고정은 이 규칙의 대상이 아니다.
+- 이유: 인쇄 눌림 핫픽스의 `?v=` 한 줄까지 CI를 깨뜨려 엔진을 고칠 때마다 known-failure가 쌓였다. 사용자: "이런 거 없애버려. 쓸데없는 거다. 이런 것 때문에 계속 문제가 생기는 거야."
+
+## 계속 바뀌는 원본·자료를 과거 기록과 비교해 실패시키는 검사 금지 (2026-11-18 사용자 결정)
+
+- 계속 바뀌는 원본 시험지·자료의 현재 바이트·blob·sha·판본을 과거 기록(영수증·4칸 파일·고정 상수)과 비교해 다르면 실패하는 검사를 만들지 않는다. 결함 조건(누락·중복·깨진 참조·수식 오류·넘침 0 등)과 설계상 불변인 것(봉인 문서 해시, 크로스워크 추가만, 4칸 사전 번호, 발급된 영수증 자체의 무결성)만 검사한다. 영수증이 옛 원본에 대한 것이면 재등록 대기로 세고 실패로 치지 않는다(`tests/helpers/source-changed-since-review.cjs`).
+- 이유: 다른 세션의 정상 수정이 이런 비교를 깨 main CI가 막히고 known-failure 목록이 쌓였다. 사용자: "변할 수 있는 것들에 대한 검사들은 다 없애버려", "계속 변하는 아카이브랑 자료들인데 CI 때문에 작업들이 늘어지면 과감히 정리해야 됨".
+
+## 옛 믹서(`archive/mixer.html`) 진입 링크 숨김 (2026-11-18 사용자 결정)
+
+- `archive/index.html`의 "믹서 출제" 버튼은 "문제지 만들기"(`workspace.html?view=compose`)로 바꿨고, 리포트센터(`apmath/js/report-center.js`)의 "믹서 열기" 버튼과 MIXED 출제물의 열기 링크(믹서 주소)는 없앴다. `mixer.html`·`mixer-selector.js`는 다른 화면이 모듈을 쓰고 저장된 주소로 열 수 있어 지우지 않았다.
+- 이유: 아카이브 난이도는 정수 1~5만 쓰는데, 옛 믹서는 상/중/하 필터를 쓰는 유일한 화면이다. 고치지 않고 입구를 숨기며(옛 화면 제거 계획과 같은 방향), 같은 기능은 문제지 만들기가 제공한다.
+
+## 기준 시험지로 다시 만들기: 선정 모듈 (2026-11-20, 화면 연결 전 본체)
+
+- `archive/archive2-derive.js`(브라우저·node 겸용 순수 함수)가 "같은 유형 / 다른 유형" × "기본 / 응용 / 심화"로 기준 시험지(빠른 평가·저장 문제지·출제본·학교 기출·교과서 단원)에서 한 벌을 다시 뽑는다. 화면은 아직 부르지 않는다(`?v=` 변경 없음). 진입: `buildDeriveIndex(records, {unified?, projectionPolicy, manifest, isBlank?})`로 색인을 한 번 만들고, `deriveFromPaper(baseItems, {typeMode, level, sources, exclude, seed, includeBlank}, index)` → `{items, perItem[{baseUid, pickedUid, rung, hintOnly, levelDelta, relaxed}], summary}`.
+- 문항 층 사다리: 세부 유형(templateKey, 없으면 metaHintTPL) → 유형(problemTypeKey / metaHintPT) → L4·conceptClusterKey → 소단원(subUnitKey) → 대단원(통합 단원 층 `unitKey`) → 범위 안 그 밖(`none`). 같은 칸 안에서 정식 일치가 힌트 일치보다 앞서고 힌트 일치는 `hintOnly`로 기록한다. CrossConcept·Condition은 같은 칸 안 동점 깨기 가산점이다.
+- 시험지 층: 난이도 목표(same = 기준 분포, up-some = 5가 아닌 문항의 절반쯤 +1, up-one = 전부 +1, 5는 5)를 맞춘다. 세부 유형 칸에서만 ±1을 허용하고 누적 편차가 줄어드는 쪽을 택해 전체에서 상쇄한다. 같은 원본 파일 몰림은 감점한다.
+- 필수 경계: 기준 문항들이 놓인 (학년·통합 과목)과 그 안에서 기준이 덮는 통합 대단원(시험 범위) 집합 밖은 어느 단에서도 뽑지 않는다. **교육과정(2015/2022)은 경계가 아니다**: 통합 단원 층이 같은 단원에 놓은 2015·2022 문항(고1 수학(상)(하)↔공통수학1·2, 고2·고3 대응 과목, 중등 2015/2022)은 모두 후보다(사용자 2026-11-20, 학교는 대수·수학I을 한 시험 범위로 본다). 이유: 교육과정으로 나누면 2015 시험지는 2022 문항을 쓰지 못해 후보가 반토막이 난다. 후보가 없어도 문항 수를 유지하려고 범위 안 다른 단원에서 `none`으로 채우고, 범위 안에 아무것도 없으면 빈 자리로 두고 `summary.shortfall`에 알린다.
+- 제외: 기준 문항 자체와 `exclude`로 받은 UID만. **기준 문항의 유사 사본은 제외하지 않는다**(사용자 2026-11-20 정정, 같은 세부 유형 칸의 정상 후보). 이유: 학생이 풀어 본 유형을 다시 풀어도 괜찮다.
+- 다른 유형 모드: 기준에 나온 세부 유형(없으면 유형)을 피하고 같은 단원·난이도 구성을 유지한다. 모자라면 자기 문항의 유형만 피하도록 완화한다. 완화하면 시험지 안 다른 문항과 유형이 겹칠 수 있고(그 문항 자신의 유형은 피한다), `relaxed`·`summary.notes`에 그렇게 기록한다.
+- 빈 문항 제외: 정답이 없거나 해설·해설 그림이 모두 없는 문항(빠른 진단평가의 빈 문항 제외와 같은 기준, `isBlankQuestion`)은 기본 후보에서 뺀다. `buildDeriveIndex`의 `isBlank(record)`로 판정을 받고(카탈로그에는 정답·해설이 없어 호출자가 원문을 읽어 준다; node 쪽은 `archive/tools/derive-blank-check.cjs`), `includeBlank: true`로 포함할 수 있다. `isBlank`를 주지 않으면 빈 문항을 가리지 않는다(`index.blankKnown=false`). 이유: 교과서 문항 상당수가 정답·해설이 없어 그대로 뽑으면 학생이 풀 수 없는 시험지가 된다.
+- 출처(`sources`): all / school(학교 기출) / similar(유사) / textbook(출판사별 `publisher`) / workbook(교재·유형: `types/`와 백발백중). 판정은 기존 `Archive2Output.materialKind`와 `textbooks/<폴더>` 폴더 표(textbook-source-manifest-v1.json의 folders)를 그대로 쓰고, 새 판정 규칙을 만들지 않았다(교재 구분만 `WORKBOOK_PUBLISHERS`).
+- 같은 seed + 같은 입력 → 같은 결과(후보별 (seed, uid) 해시로 동점 처리, 입력 순서 무관). summary 문구는 단 이름("같은 세부 유형·같은 유형·같은 개념·같은 단원")과 "기준보다 쉬움·같음·어려움"뿐이고 내부 키 이름은 넣지 않는다. 일치율은 `summary.match`: `templateFormal`(세부 유형, 정식만) · `template`(정식+힌트) · `type`(유형) · `level`(난이도) · `unit` · `hintRate`(힌트로 고른 비율) · `noTypeInfoRate`(기준 문항 중 유형 정보 없는 비율). 유형 정보(세부 유형·유형)가 없는 기준 문항은 해당 유형 일치율의 분모에서 빼고 그 비율을 `noTypeInfoRate`로 따로 낸다. 여러 지표를 평균한 한 숫자는 만들지 않는다(어느 지표가 약한지 가려지기 때문).
+- 읽는 필드는 정본 필드뿐이다(사본 필드 `rpmPrimary*` 안 읽음): questionUid, sourceFile, contentType, problemTypeKey, templateKey, metaHintPT/TPL, difficultyBucket, L4, conceptClusterKey, subUnitKey, crossConceptKeys, conditionKeys와 통합 단원 층의 배치.
+- 부족 주문서: `node archive/tools/derive-coverage-report.mjs --out <저장소 밖 폴더>`가 원본 시험지 전체에 same 유형 × (same, up-one)을 돌려 (과정, 세부 유형, 목표 난이도)별 "후보가 모자란 칸 × 그 칸을 요구하는 시험지 수"와 학년·학기·난이도 모드별 일치율 중앙값 (a)~(f)(위 `summary.match` 지표별로 따로)를 낸다(유사·교재 문항 생성의 우선순위). 빈 문항은 후보·공급 수에서 뺀다(`--include-blank`로 포함). 저장소에는 쓰지 않는다.
+
+## 진단평가 결과표 화면 (2026-11-20, 첫 상담용 A4 2쪽)
+
+- `archive/assessment/diagnostic-report.html`(+ `diagnostic-report.js`·`diagnostic-report-view.js`·`diagnostic-report.css`)는 진단평가 결과지다. 계산은 `diagnostic-report-data.js`(순수 집계)가, 문구·그림 문자열은 `diagnostic-report-view.js`(순수, DOM 없음)가, 읽어 오기·입력 칸·쪽 맞춤·인쇄는 `diagnostic-report.js`가 맡는다. 시안과 같은 구성: 1쪽 총평·단계·흐름·단원·단원×단계, 2쪽 유형·틀린 문항·다음 4주 수업 계획·선생님 의견. 학원명은 `diagnostic-report.js`의 상수 `ORG_NAME`("AP 수학학원") 한 곳이고 입력 칸이 없다. "선생님 의견"은 입력 없이 빈 상자로 인쇄해 상담 때 손으로 적는다(자동 문구·화면 입력 없음, 이유: 원장님이 상담하면서 말하고 시범 수업 시간 등을 적는다).
+- 입력은 주소의 `?uids=문항UID,문항UID,…`(시험지 식별값, 순서 = 문항 번호)와 선생님이 누르는 문항별 O/X다. 이유: 진단평가를 만드는 화면이 `questionUids`를 이미 갖고 있고, 만든 시험지의 출력 봉투(IndexedDB)는 30분이면 사라져 다시 여는 길로 못 쓴다. 문항의 단원·단계·유형은 교사 작업공간과 같은 자료 층(`applyArchiveMetaFoundationCatalog` → `Archive2UnifiedUnits`·`Archive2Core.metaFacetsOf`·`createLabelOf`)에서 읽는다. 자료 읽기 길(`data/…`)은 `document.baseURI`를 `archive/` 기준으로 읽는다. 이 html은 `assessment/` 안에 있어 `<base>` 태그를 쓰지 않고(배포 검사 `archive-pages-site-reach`가 src·href를 파일 위치 기준으로 풀기 때문에 `<base>`와 어긋난다), 맨 앞 인라인 스크립트가 `document.baseURI`만 한 칸 위(`archive/`)로 맞춘다. 파일 주소(src·href)는 모두 이 파일 위치 기준(`../archive2-boot.js`, `diagnostic-report.css`)이다.
+- **저장하지 않는다**: 학생 이름·O/X는 서버·localStorage·sessionStorage·URL·`document.title` 어디에도 남기지 않는다. 새로고침하면 사라지는 것이 맞다(이유: 학생 정보를 아카이브가 보관하지 않는다). 문항을 모두 입력하기 전에는 결과표를 그리지 않는다(일부만 계산한 결과지가 학부모에게 나가지 않게).
+- 작은 표본: 문항 3개 미만인 칸(단계·단원·단원×단계·유형)은 판정 문구·색 없이 맞은 수/문항 수만 쓴다. 단원 강약은 약한 단원 문항 수로 환산해 2문항 이상 차이일 때만 말한다. 이름 없는 유형은 "유형 미분류"로 묶고 키 글자(PT·TPL)·UID는 화면·인쇄물에 내지 않는다. 문구는 평가가 아니라 "학원이 이렇게 진행한다" 톤이다.
+- A4 2쪽은 쪽 맞춤으로 고정한다: 인쇄 폭(794px)에서 따로 높이를 재 `data-fit` 0~5 중 한 쪽에 들어가는 가장 여유 있는 단계를 고르고(4·5단계는 단원이 6~8개 넘게 많을 때 단원×단계 표 칸·도넛·그래프를 줄이며, 5단계로도 넘치면 푸터를 뺀 본문을 `--shrink` 비율로 줄여 쪽 아래가 잘리지 않게 한다. 비율 0.55까지 줄여도 넘치는 극단만 화면 경고), 입력 칸의 "입력 N / M" 표시는 스크롤해도 붙어 있게 sticky다. 전부 정답이면 총평의 "틀린 문항이 있는 부분…" 꼬리 문장을 빼고, 전부 오답이면 도넛 호를 그리지 않는다. 유형 표는 10행(나머지는 한 줄 요약), 틀린 문항은 8개 넘으면 두 열로 둔다. 휴대폰 규칙은 `@media`가 아니라 `@container`(폭 640 이하)라 화면 폭과 상관없이 측정·인쇄가 같은 배치다. 색만으로 구분하지 않는다(O/X 채움·테두리, 단원×단계 농도·빗금·숫자, 판단 글자 태그). 꺾은선의 단계 띠는 글자를 찍지 않고(단계가 번갈아 나오면 글자가 겹친다) x축은 문항 번호 눈금(1·6·12·18·24번 꼴, 눈금 간격 34 이상 보장)과 그래프 아래 범례 한 줄이 맡는다. 결과표 본문은 `word-break: keep-all`(어절 단위 줄바꿈, 칸보다 긴 낱말만 `overflow-wrap: break-word`로 끊김).
+- 여는 길(2026-11-22): 빠른 평가 > 진단평가에서 시험지를 만들면 결과 칸(`.qk-report`, `archive2-workspace-compose.js` `quickReportMarkup`)에 "결과표 열기" 링크가 생긴다(A·B형 두 벌이면 "A형/B형 결과표 열기"). `diagnostic-report.html?uids=` 뒤에 만든 시험지의 `questionUids`(최종 문항 순서, 빈 문항 교체 반영)를 쉼표로 이어 붙인 새 탭 링크이고 저장하는 값은 없다(`quickState.report`, 다음 시험지를 만들 때 지워진다). APMS 원장 대시보드의 "진단평가 결과" 창(`openAdminDiagnosticPanel`)에는 옛 결과표 링크는 그대로 두고 "아카이브 빠른 평가에서 만든 진단평가의 결과표는 만든 화면의 결과표 열기에서 엽니다" 안내와 빠른 평가(`workspace.html?view=diagnostic`) 링크를 더했다. 이유: 아카이브가 만든 진단평가는 APMS 쪽 기록(`diagnosticId`)이 없어 목록에서 결과표로 갈 수 없다. `?uids` 없이 열면 문항 목록이 필요하다는 안내 한 줄만 나온다.
+
+## 평가팩 공용 코드와 빠른 평가 "준비된 평가지" (2026-11-19)
+
+- 시험지 보관함(`archive/assessment/assessment-mvp.html`)과 빠른 평가의 "준비된 평가지" 구역(`archive/archive2-quick-packs.js`, 전역 `Archive2QuickPacks`)이 **`archive/assessment/assessment-pack-core.js`(전역 `AssessmentPackCore`) 하나**를 같이 쓴다. 이유: 둘 다 "준비된 문항으로 평가 한 장을 뽑아 출제"하는 같은 일이라, 팩 → MIXED 키·`pack_id`·`pack_hash`·출제 패널 항목·엔진 주소·평가 전달 자료 정리를 두 벌로 두면 한쪽만 고쳐져 출제 건이 갈라진다.
+- 키는 한 글자도 바꾸지 않는다: 팩 `id`, MIXED 키 `assessment_<팩번호>_<문항구성해시>`, localStorage `mixedQuestions_/mixedMeta_assessment_…`. 구역은 닫힌 채로 시작하고 열 때만 공용 코드와 팩 자료 파일 2개를 받는다(첫 화면 요청 0). 구역은 작업공간 상태에 값을 더하지 않고(상태는 `archive2-quick-packs.js` 안), `archive2-workspace-compose.js renderQuick`이 `Archive2QuickPacks.markup()`을 끼워 넣는다.
+- 탭은 중간·기말평가·모의고사뿐이다(사용자 결정 2026-11-19): 단원평가는 즉석 조립과 겹치고, 진단평가는 즉석 조립 상품으로 따로 만든다. 팩 자료 파일에서는 지우지 않는다(옛 보관함 화면과 이미 나간 출제·학생 복습이 packId로 연다). 목록은 팩 수·문항 구성을 고정하지 않고 자료에서 읽는다.
+- 테스트: `tests/archive2-quick-packs.test.js`(구역·공용 코드), `tests/assessment-assign-panel.test.js`·`tests/assessment-open-resilience.test.js`(공용 코드를 보관함 스크립트와 함께 vm에서 실행).
+
+## 기준 시험지로 다시 만들기: 화면 연결 (2026-11-20, PR1)
+
+- 화면 코드는 `archive/archive2-workspace-derive.js`(작업 화면 여덟째 파일, recent 뒤·main 앞), 선정은 `archive2-derive.js`(순수 함수), 출력 창의 단추는 `archive/archive2-derive-entry.js`다. 이유: 선정 규칙을 화면과 섞으면 진단평가·빠른 평가가 같이 쓰지 못한다.
+- 진입 셋: (1) 출력 창(`mixed_engine.html`, 빠른 평가 결과·출제 내역에서 연 작은 창)의 "이 시험지로 다시 만들기"(PC는 도구줄, 휴대폰은 ⋯ 메뉴) (2) 출제 내역 줄의 "다시 만들기"(서버가 돌려주는 출제 당시 시험지의 UID로) (3) 문제지 만들기 결과 요약의 "다시 뽑기". 출력 창에는 카탈로그가 없어서 문항 식별자(UID·원본 파일·번호, 문제 내용은 아님)만 `postMessage`로 이 창을 연 작업 화면에 보내고, 작업 화면이 대화 상자를 연다. 응답이 없으면(작업 화면이 닫힘) `workspace.html?derive=<uid>…`를 새 창으로 연다. 이유: 작은 창에서 카탈로그를 다시 받으면 분 단위로 걸린다.
+- 선택은 유형(같은/다른) · 난이도(기본/응용/심화) · 어디서 뽑을지(전체/학교 기출/유사/교과서(출판사)/교재). 결과는 단 이름 문구(`같은 세부 유형 15 · 같은 유형 6 …`, `기준보다 쉬움 n · 같음 n · 어려움 n`)와 모자람·완화 안내로 보여 주고 막지 않는다. 내부 키는 화면에 내지 않는다.
+- 뽑는 단계는 원본 시험 파일을 열지 않는다(요청 0). 빈 문항 제외도 하지 않는다(`includeBlank: true`): 필드는 채워질 예정이고, 뽑힌 문항을 열어 확인하느라 첫 실행이 분 단위로 걸렸다(사용자 결정 2026-11-20). 원본은 "시험지 열기"·"문제지 만들기에서 이어서"를 눌렀을 때 고른 문항 것만 읽고, 그때 시험지 순서를 정한다: 객관식 먼저·서술형 뒤, 각 묶음 안은 뽑은(기준 시험지의 자리) 순서 그대로(객관식 여부는 카탈로그에 없어 원본 문항의 보기·정답으로 본다). 요약 안내는 선생님이 할 수 있는 것만 낸다: 유형 정보가 확정 전인지(참고용) 구분은 내부 지표로만 두고 화면에 내지 않는다. 걸러내는 조건은 설계에 있던 것(기준 문항·앞서 뽑은 문항 제외, 학년·과목 경계)뿐이다.
+- UID가 없는 옛 출제본: 원본 파일 + 문항 순번(없으면 번호)으로 카탈로그에서 UID를 되찾는다. 하나도 못 찾으면 "옛 형식 출제본이라 다시 뽑기를 지원하지 않습니다"를 보이고 대화 상자는 열지 않는다.
+- 문제지 만들기로 넘길 때는 새 길을 만들지 않고 이미 있는 "고른 문항 UID 목록" 범위(`?uid=` 경로, `applyUidRoute`)를 쓴다. 서버가 같은 목록으로 `selection_filters`를 재검증하므로 새 조건 키가 없다(`tests/archive2-draft-rows.test.js` "다시 뽑은 문제지 → 실제 저장 요청 범위 → 서버 재현 통과": Worker 소스의 FILTER_KEYS를 읽고 `core.matches`·`generalUseEligibility`로 재현). 넘기기 전에 만들던 문제지는 저장하고 작업 화면을 새로 연다.
+- 초안에는 `derive`({baseUids, typeMode, level, source, publisher, seed, exclude, resultUids, 요약 문구})를 같이 저장한다. 다시 열면 같은 문항과 같은 안내가 보이고, "다시 뽑기"는 새 seed에 앞서 준 문항(`exclude`+`resultUids`)을 빼고 뽑는다. 선택 문항이 `resultUids`와 달라지면(문항 교체 등) 안내는 숨긴다. 이유: 고친 문제지를 "다시 만든 그대로"라고 말하면 틀린 안내가 된다.
+- 대응 과목(대수↔수학I 등)은 `archive2-derive.js`가 통합 단원 층으로 한 묶음으로 보고, 학기는 과목 문항을 거르지 않는다(#2594와 같은 규칙).
+
+## 원본 시험지·해설·정답 열기는 승인 메타 sidecar를 기다리지 않는다 (2026-11-20, 선생님 속도 실측 1순위)
+
+- 실측(이 PC, 캐시 없는 새 프로필): 시험지 하나 열기가 `data/question_metadata.json`(압축 전 87.6MB, gzip 15.3MB)을 받고 해석한 뒤에야 첫 문항을 그렸다(전송 17.7MB 중 15.3MB, 20Mbps로 약 7초). 그림 그리는 데는 이 메타를 읽지 않는다: `render-authority.js` 등에 `_archiveMetadata`·`standardUnitKey` 사용이 없고, 채워지는 `standardUnitKey` 등은 반 출제 등록(`submitQr=1` / `osqr=1`)이 서버로 보내는 값뿐이다.
+- `engine.html`은 등록 주소일 때만 `question-meta.js`를 불러온다(`<script id="engine-metadata-gate">`, 같은 자리에서 `document.write`라 순서·`await window.__ARCHIVE_METADATA_READY__`는 그대로). 평소 열기(`engine.html?data=exams/<file>&mode=exam|sol|ans`)는 sidecar 요청이 없다. 이유: 믹스 리더(`output-metadata-loader.js`)가 이미 같은 규칙이다. 테스트: `tests/archive-engine-original-metadata-on-demand.test.js`.
+- 이 규칙을 되돌리지 않는다. 등록 주소에 새 이름이 생기면 위 게이트의 조건에 함께 넣는다.

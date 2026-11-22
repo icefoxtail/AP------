@@ -345,7 +345,11 @@ window.questionBank = [
       "examUid": "20_매산여고_2학기_중간_고2_확률과통계",
       "sourceQid": 7,
       "sourceOnlySha256": "6e49425cc7437ccb44adec68d2ff85493daa9068e94c74eeacec11307b4ebf6b"
-    }
+    },
+    "solutionImage": "assets/images/20_매산여고_2학기_중간_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 올라가 x=1에서 꼭짓점을 찍고 x=2에서 내려오는 삼각형 모양의 확률밀도함수 그래프이며 x=0부터 1/2까지는 연하게, 1/2부터 2까지는 진하게 칠해져 있다.",
+    "solutionImageCaption": "전체 넓이는 밑변 2, 높이 a인 삼각형이어서 a=1이고, 그림은 이 값으로 그렸다. 구하는 P(1/2≤X≤2)는 진한 부분이고, 전체 1에서 연한 부분 0≤x≤1/2의 넓이를 뺀 값이다. 연한 부분은 밑변 1/2, 높이 1/2인 삼각형이므로 넓이가 1/8이다. 따라서 1−1/8=7/8이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -598,7 +602,11 @@ window.questionBank = [
       "examUid": "20_매산여고_2학기_중간_고2_확률과통계",
       "sourceQid": 12,
       "sourceOnlySha256": "6e49425cc7437ccb44adec68d2ff85493daa9068e94c74eeacec11307b4ebf6b"
-    }
+    },
+    "solutionImage": "assets/images/20_매산여고_2학기_중간_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: x=2에서 0이 되고 양쪽으로 올라가는 V자 모양의 확률밀도함수 그래프이며 x=3부터 x=4까지 아래쪽이 사다리꼴로 칠해져 있다.",
+    "solutionImageCaption": "전체 넓이는 밑변 2, 높이 2a인 삼각형 두 개의 합 4a=1이어서 a=1/4이고, 그림은 이 값으로 그렸다. 색칠한 3≤x≤4는 높이 f(3)=1/4와 f(4)=1/2, 폭 1인 사다리꼴이다. 넓이는 (1/4+1/2)/2×1=3/8이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -1077,7 +1085,11 @@ window.questionBank = [
       "examUid": "20_매산여고_2학기_중간_고2_확률과통계",
       "sourceQid": 22,
       "sourceOnlySha256": "6e49425cc7437ccb44adec68d2ff85493daa9068e94c74eeacec11307b4ebf6b"
-    }
+    },
+    "solutionImage": "assets/images/20_매산여고_2학기_중간_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 겹침 1/5를 한 번만 세는 합집합이 보여 덧셈정리에서 교집합을 빼는 이유와 11/15가 확인된다.",
+    "solutionImageCaption": "A와 B가 독립이면 B의 여사건과도 독립이므로 P(A|B의 여사건)=P(A)=3/5이다. P(A∩B)=P(A)P(B)=1/5에서 P(B)=1/3이다. 그림은 A만 3/5−1/5=2/5, 겹침 1/5, B만 1/3−1/5=2/15, 바깥 4/15이다. 색칠한 합집합은 겹침을 한 번만 세어 2/5+1/5+2/15=11/15이고 P(A∪B)=3/5+1/3−1/5=11/15와 같다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

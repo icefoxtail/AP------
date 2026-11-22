@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-c1d77457666d-1b422357",
+  "sourceArchiveFile": "original/high/h2/2mid/22_금당고_2학기_중간_고2_수학II.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_97a353f1b5a77831ea911c542538ccdd4da1c4ad5e32aaad4d568318ccf152c8",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_GRAPH_DIRECTION_READ",
+      "step": "그래프에서 -1의 양쪽 접근 높이와 2의 오른쪽 접근 높이를 더한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_61873694109bd75d3d034f6a3756dc3c29d59fe5477eb8e3de078149f086884a",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+      "templateKey": "TPL_LOCAL_DERIVATIVE_CONSTRAINT_FUNCTION_DETERMINE",
+      "step": "다항식을 미분하여 f'(1)=8이라는 한 점의 미분계수 조건으로 a를 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6137fb645e4c289db3f009a46e889976ee36e86bfbc33b5ebba3d2bd8c2629c1",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_OPERATION_LAWS",
+      "step": "t=x-3으로 치환하고 분모를 인수분해하여 주어진 f(t)/t의 극한에 연산 법칙을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_81708c78aba422fbe6c356fed671496e1d150e540d92b8d2d3fd32b4e08766a5",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_SQUEEZE",
+      "step": "양 끝 함수의 합과 차의 극한을 이용해 같은 극한 2를 구하고 샌드위치 정리를 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ce0defa9f0a22a2e85c9382b1afad588d0b8cd1072b333c5acea29e5d8579517",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+      "templateKey": "TPL_IVT_MINIMUM_ROOT_COUNT",
+      "step": "f(x)-x의 표본값 부호가 교대로 바뀌는 세 독립 구간마다 근을 보장한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7acf2af1f7f659108eb264c2512c96980c4c9b71e4ef65a5e7f087b564905573",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION",
+      "step": "이동된 함수의 점프가 생기는 x=a에서 다른 인수 f(a)가 0이어야 함을 적용하고 a=0은 따로 제외한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_07b0eab75058d94aa530b962fa439cf784c35e7987d3947cd9aa95842a6d7609",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+      "templateKey": "TPL_LIMIT_POLYNOMIAL_RECONSTRUCTION",
+      "step": "무한대의 성장률로 f-x³의 차수를 정하고 경계의 유한 극한 및 연속 조건으로 계수를 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_daa5aab065b554f70f9fe03fd307d4eac777cdee736a401f9cb19ca8e11c0238",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+      "templateKey": "TPL_DERIVATIVE_RELATION_FUNCTION_DETERMINE",
+      "step": "f와 xf'의 항등식에서 차수를 제한하고 이차식의 계수를 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1a5f1b0b9e7960c30b85cc8ff278f7c9ab18e9127c27c4f65dd2bc477a2233e7",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_GEOMETRY_PARAMETERIZATION",
+      "step": "중점과 수직 기울기로 CD의 길이를 t의 일차식으로 구한 뒤 공통인수 t-4를 약분한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a3302807d4d4d41619e9fd3bb9b97a70d298185a69ba3f1259ccfc1fa31fe1ea",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+      "templateKey": "TPL_LIMIT_ZERO_MULTIPLICITY",
+      "step": "비의 극한이 0인 점에서 분자 영점의 중복도가 더 높아야 함을 이용해 삼차식을 인수화한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_aa8cb4e8a935b3bf91133e8206f130deb91b80ee0a3b1fac72c89ba7d7c5c0e5",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+      "templateKey": "TPL_DERIVATIVE_RELATION_FUNCTION_DETERMINE",
+      "step": "(f')²=f의 차수와 계수를 비교하고 주어진 f'(0)으로 이차함수를 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_71221432010436d536ad1f4b4b01f76b5e49a174577985272f4a01c92a79141d",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION",
+      "step": "두 원의 위치관계로 얻은 접선 개수 함수의 점프를 이차함수의 영점으로 상쇄한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}

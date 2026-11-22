@@ -436,7 +436,11 @@ window.questionBank = [
     "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "metaDebtFields": []
+    "metaDebtFields": [],
+    "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 개의 수직선에 95% 구간 31.02 ≤ x ≤ 32.98과 99% 구간 30.71 ≤ x ≤ 33.29가 각각 양 끝에 점으로 표시되어 있다.",
+    "solutionImageCaption": "표본 64개의 표준오차는 4 ÷ √64 = 2분의 1이다. 95% 구간은 32 ± 0.98, 99% 구간은 32 ± 1.29이므로 a-b+c-d = -1.96 - 2.58 = -4.54. 따라서 답은 ① -4.54이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -474,7 +478,11 @@ window.questionBank = [
     "metaDebtFields": [],
     "questionType": "객관식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 표준정규분포 곡선의 왼쪽 -1.5 바깥과 오른쪽 1.5 바깥 꼬리가 서로 다른 색으로 칠해져 있고, 아래 패널은 -1의 오른쪽 넓이가 칠해져 있다. 두 패널 모두 0에 세로 점선이 있고 가로축에 표준화 경계가 표시되어 있다.",
+    "solutionImageCaption": "두 꼬리의 넓이가 같다는 조건에서 표준화 경계를 비교한다. X̄의 표준편차는 8÷4=2이므로 P(X̄≤43)=P(Z≤1.5)이고, 두 확률의 합이 1이라 P(Ȳ≤64)=P(Z≤-1.5)이다. (64-70)÷(σ÷5)=-1.5에서 σ=20, Ȳ의 표준편차는 4이다. 66을 표준화하면 (66-70)÷4=-1이므로 P(Ȳ≥66)=0.5+0.3413=0.8413. 따라서 답은 ① 0.8413이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -687,9 +695,9 @@ window.questionBank = [
     "image": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q18.png",
     "solutionImageStatus": "asset_verified",
     "solutionImageSize": "full",
-    "solutionImageCaption": "자료 1의 두 곡선과 자료 2의 표 값을 풀이에서 참조한다.",
-    "solutionImageAlt": "두 학교의 정규분포 곡선과 표준정규분포표 자료.",
-    "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q18.png",
+    "solutionImageCaption": "매산고 표본 25명의 표본평균 표준편차는 10÷5=2이므로 43분부터 47분은 표준화하면 -1부터 1이다. 매산여고의 49분부터 51분도 같은 확률이어야 하므로 1÷(σ÷4)=1에서 σ=4분이고, 64명일 때 표준편차는 2분의 1이다. 2500분의 57=P(Z≥2)를 풀면 (x-50)÷(2분의 1)=2에서 X̄=51분. 따라서 답은 ① 매산고, ② 매산여고, 0<σ<10, σ=4분, X̄=51분이다.",
+    "solutionImageAlt": "해설 그림: 위 패널은 표준정규분포 곡선의 -1과 1 사이가 칠해져 있고, 아래 패널은 2의 오른쪽 꼬리가 칠해져 있다. 두 패널 모두 0에 세로 점선이 있다.",
+    "solutionImage": "assets/images/2019_매산고_2학기_기말_고2_확률과통계/q18-solution-v2.svg",
     "level": "상",
     "category": "통계적 추정",
     "originalCategory": "통계적 추정",

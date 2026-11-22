@@ -182,7 +182,6 @@ window.questionBank = [
   },
   {
     "id": 10,
-    "layoutTag": "fullwidth",
     "imageSize": "full",
     "imageAlt": "파란 위쪽 경계 y=3x²와 주황 아래쪽 경계 y=−x²가 원점에서 만난다. 각 x에서 두 곡선 사이에 해당하는 영역을 연두색과 옅은 빗금으로 표시했다.",
     "questionNumber": 10,
@@ -225,7 +224,6 @@ window.questionBank = [
   },
   {
     "id": 12,
-    "layoutTag": "fullwidth",
     "imageSize": "full",
     "imageAlt": "위로 열린 포물선은 가로축의 −6과 2에서 만난다. 세로축에서의 교점은 −4이고 꼭짓점은 왼쪽 아래로 내려간다.",
     "questionNumber": 12,
@@ -249,7 +247,6 @@ window.questionBank = [
   {
     "id": 13,
     "choiceColumns": 2,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "직선 y=ax+b는 오른쪽으로 갈수록 높아진다. 직선은 y축의 양의 부분과 x축의 음의 부분을 지난다.",
     "questionNumber": 13,
@@ -266,7 +263,6 @@ window.questionBank = [
   },
   {
     "id": 14,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "아래에 수면을 나타낸 파란 평면이 있다. 그 왼쪽 위에는 다이빙대가 있고, 출발하는 사람과 수면 사이의 수직 높이를 15 m라고 표시했다.",
     "questionNumber": 14,
@@ -289,7 +285,6 @@ window.questionBank = [
   },
   {
     "id": 15,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "왼쪽의 파랑 직사각형 ABCD는 가로 4 cm, 세로 6 cm이다. 주황 점선으로 오른쪽으로 확장되고 아래쪽이 줄어든 직사각형을 표시했다.",
     "questionNumber": 15,
@@ -312,7 +307,6 @@ window.questionBank = [
   },
   {
     "id": 16,
-    "layoutTag": "fullwidth",
     "imageSize": "full",
     "imageAlt": "위로 열린 포물선이 x축을 왼쪽에서 A, 오른쪽에서 B로 만난다. 두 점의 가운데보다 아래쪽에 꼭짓점이 놓인다.",
     "questionNumber": 16,
@@ -335,7 +329,6 @@ window.questionBank = [
   },
   {
     "id": 17,
-    "layoutTag": "fullwidth",
     "imageSize": "full",
     "imageAlt": "위로 열린 y=x²에는 A와 B가 있다. 두 점의 높이는 같다. B에서 같은 세로선을 내려 주황 점선 y=−2x²/3 위의 C에 닿는다.",
     "questionNumber": 17,
@@ -400,7 +393,6 @@ window.questionBank = [
   },
   {
     "id": 21,
-    "layoutTag": "fullwidth",
     "imageSize": "full",
     "imageAlt": "위로 열린 포물선은 x축의 2에서 꼭짓점을 이루고 세로축의 4를 지난다.",
     "questionNumber": 21,

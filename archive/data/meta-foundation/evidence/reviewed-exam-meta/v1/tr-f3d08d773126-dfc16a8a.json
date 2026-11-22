@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-f3d08d773126-dfc16a8a",
+  "requestSha256": "90a965cf6a73e0cff532bf5464eff9536f2c772a9bf268073fc70857799cedd4",
+  "examUid": "22_향림중_1학기_기말_중3_수학",
+  "sourceArchiveFile": "original/middle/m3/1final/22_향림중_1학기_기말_중3_수학.js",
+  "sourceBlobSha1": "3066db3d794c0f03b5e389e7d8c33b06d5932d68",
+  "sourceRawSha256": "855c867be1017e2e150474ab47dd5fec9b22d1d89a8d98c7dc81a320cf9c5451",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f3d08d773126-dfc16a8a.type-ledger.json",
+        "sha256": "0e74cca94b40bac6e6f700440fba07970361ff9193b6060cdff190c457c62ed8"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_a60bcab59572c2a5b49567354a4307ddabf304267272dbb1192de2f9036f5a4e",
+      "sourceArchiveFile": "original/middle/m3/1final/22_향림중_1학기_기말_중3_수학.js",
+      "sourceOrdinal": 22,
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_VALUE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-f3d08d773126-dfc16a8a",
+        "judge": "dots",
+        "rationale": "분모를 유리화하여 x-y=√5-2를 얻고 합차공식과 대입으로 목표식 값을 계산한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "233ad1f5be3f5746018e54e4718e3be62d5c06f9c1e324fad3b04d9fb745c04c",
+        "judgedContentFingerprint": "482753fda6192b4a929dc1281943900671f7fcf0040d0020f7fd3cf8bd63ff47",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "47201ebd856b8cd1ccb5526443bb7001d83a70aebee3f1fbac89ecf8331bfb2e",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f3d08d773126-dfc16a8a.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_RADICAL_EXPRESSION",
+          "templateKey": "TPL_RADICAL_EXPRESSION_SIMPLIFY",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "PT_RADICAL_EXPRESSION",
+          "templateKey": "TPL_RADICAL_EXPRESSION_SIMPLIFY",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}

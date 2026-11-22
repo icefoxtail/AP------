@@ -51,7 +51,6 @@ window.examData = {
     },
     {
       "id": 4,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/20_신흥중_1학기_기말_중3_수학/q4-solution.svg",
       "solutionImageSize": "full",
       "solutionImageAlt": "파랑 정사각형 테두리와 오른쪽의 가로 한 칸·세로 두 칸 수선이 보인다. 같은 반지름의 두 초록 호가 수직선 양쪽에 닿는다.",
@@ -306,7 +305,6 @@ window.examData = {
     },
     {
       "id": 21,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/20_신흥중_1학기_기말_중3_수학/q21-solution.svg",
       "solutionImageSize": "full",
       "solutionImageAlt": "사다리꼴의 윗변은 √8−1, 아랫변은 √8+1이고 두 변과 직각을 이루는 왼쪽의 높이는 √3이다.",

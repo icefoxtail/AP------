@@ -519,7 +519,7 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 3,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "tags": [
         "그래프"
       ],
@@ -614,7 +614,7 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 3,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "tags": [
         "그래프"
       ],
@@ -647,7 +647,7 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 4,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "tags": [
         "도형",
         "그래프"
@@ -710,7 +710,7 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "서술형",
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "tags": [
         "도형"
       ],

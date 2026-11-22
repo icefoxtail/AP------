@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-91f40dff4b96-e08297c4",
+  "sourceArchiveFile": "similar/middle/m1/1mid/17_삼산중_1학기_중간_중1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_03f095c5abcdc79783d74eb89eae59d38db89dc24bcaaafeec568f1a7ecfa3de",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_FINITE_LIST_PRIME_COUNT",
+      "templateKey": "TPL_M1_FINITE_LIST_PRIME_COUNT_CORE",
+      "step": "제시된 여덟 수 각각의 소수 여부를 검사해2,7,13,31 네 개를 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bb2a3030a4f2fb277ead7c3ee11a0b32104d157a7513cd4e19f0cb5a7ece9c09",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
+      "templateKey": "TPL_M1_PRIME_FACTORIZATION_JUDGMENT_PRIME_POWER_PARAMETER",
+      "step": "96을2로 반복 나누어2⁵·3으로 나타내 지수5를 읽는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fb329142bc8503986c185d16ccf9987eed02b632dffb2d7c7131479cb60ae68e",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+      "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_EVALUATED_OUTLIER",
+      "step": "네 식은4,마지막만 -4이므로 다른 값을 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4fbdb738c14d6c7e70d270e2290f738936ff317f566d85e02383a275c98436a8",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+      "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_CALCULATE",
+      "step": "각 소인수의 최대지수를 골라 최소공배수2²·3²·5²·7을 만든다.",
+      "note": "새 TPL 제안: 최대공약수·최소공배수 직접 계산: 소인수별 지수의 최소·최대를 사용하여 최대공약수와 최소공배수를 구한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_76656b64d74de9973ccfa3c544f8489e9eeaed0335bc07f026a5d6dba2fe619d",
+      "sourceOrdinal": 5,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M1_RATIONAL_CLASS",
+      "templateKey": null,
+      "step": "-3에서 오른쪽2/3 이동한 B가 -7/3임을 읽는다.",
+      "note": "새 PT 제안: 수직선 등간격 좌표 복원. 수직선의 두 기준값과 등간격 조건으로 한칸의 차를 구하고 미지 좌표를 복원한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_84667bdb9bc84fc366fdc707ed3783c8ccb526fcbb3e0469f66d1cda90980932",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
+      "step": "현재 합 -4에 더해0 또는4가 되는4,8 중 보기4를 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2a3b51d465262afd50675d7d43e6e3dddaa358eb0fa0ddb26ed8ca7f20735c57",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+      "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_EVALUATE_AND_RANK",
+      "step": "절댓값 최대인 수 -8과 최소인 수2/3을 찾아 합 -22/3을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c977dc54fb45f7589934cb843d95e54f02fba1fa419f4e610e2c004e300f3262",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+      "templateKey": "TPL_M1_RATIONAL_OPERATION_RULE_JUDGMENT_ORDER",
+      "step": "괄호 안 곱셈·나눗셈·덧셈 후 바깥 곱셈과 뺄셈 순서를 정한다.",
+      "note": "새 TPL 제안: 연산법칙·계산순서 판정: 각 식 변형을 교환·결합·분배법칙이나 연산 우선순위에 대응한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c92d570c088ec1e6beb31594e840073c857896a2379a6e16f11760414ae4dcd6",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_COMMON_DIVISIBILITY_FILTER",
+      "templateKey": "TPL_M1_COMMON_DIVISIBILITY_FILTER_COMMON_DIVISOR_CHECK",
+      "step": "세 길이의 최대공약수42의 약수가 아닌8을 골라 절단 불가능을 판단한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0b6261aff5ddda8e3f15cd0375a297761eb2063aa397fb717240f0c44ec7e212",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
+      "templateKey": "TPL_M1_DIVISOR_MULTIPLE_EXPONENT_DIVISOR_MULTIPLE",
+      "step": "약수표의 행·열 거듭제곱을 곱해 빈칸27,36의 합63을 구한다.",
+      "note": "새 TPL 제안: 약수조건 적용: 나누어떨어짐 또는 약수배열의 곱구조를 적용해 값을 구한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bd60e7b4a8cbd124248f7407daeeaef3d2c3998cae07dd0de6d0831e86491593",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+      "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_DISTRIBUTION",
+      "step": "48을 두 분수항에 분배해30-28=2를 계산한다.",
+      "note": "새 TPL 제안: 유리수의 혼합연산·규칙합: 부호, 역수와 거듭제곱을 연산순서에 따라 적용하거나 반복항을 짝지어 계산한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c17c6b2d809cf32eeb1c6fe4e480107a2a3147809b697f379384bc6862ef2041",
+      "sourceOrdinal": 23,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M1_PATTERN",
+      "templateKey": null,
+      "step": "여섯 개 묶음의 주기와 검은돌3개를 읽고150=6·25로 색과 개수를 구한다.",
+      "note": "새 PT 제안: 반복 배열의 주기와 개수. 배열의 반복 주기를 파악하고 전체 개수를 주기로 나눈 몫과 나머지로 색과 개수를 결정한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    }
+  ]
+}

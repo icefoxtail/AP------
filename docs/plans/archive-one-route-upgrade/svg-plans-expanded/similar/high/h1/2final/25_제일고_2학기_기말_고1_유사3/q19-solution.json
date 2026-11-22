@@ -1,0 +1,42 @@
+{
+ "capability": "polynomial-spike-v1",
+ "graphPlan": {
+  "family": "polynomial",
+  "coefficients": [
+   "-9",
+   "6",
+   "-1"
+  ],
+  "domain": [
+   -1,
+   7
+  ],
+  "viewport": [
+   -2,
+   8,
+   -18,
+   3
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "requiredPoints": [
+   {
+    "id": "V",
+    "x": 3,
+    "y": 0
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  }
+ },
+ "caption": "부정은 \"모든 실수 x에 대하여 −x²+6x−k≤0이다.\"이므로 y=−x²+6x−k의 그래프가 x축과 접하거나 그 아래에 있어야 한다. 이 포물선의 꼭짓점의 y좌표는 9−k이므로 9−k≤0, 즉 k≥9이다. 그림은 k=9일 때 y=−(x−3)²으로 꼭짓점 (3,0)에서 x축에 접한다. 따라서 k의 최솟값은 9이다.",
+ "sourceConditions": [
+  "모든 실수 x에 대하여 −x²+6x−k≤0이 성립해야 한다."
+ ],
+ "newVisualInformation": [
+  "k=9일 때 위로 볼록한 포물선이 꼭짓점 (3,0)에서 x축에 접하고 x축 위로 올라가지 않음"
+ ]
+}

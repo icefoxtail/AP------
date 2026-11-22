@@ -1,0 +1,293 @@
+{
+  "schemaVersion": "middle-runtime-m2-e006-two-observer-repair-proof-v1",
+  "status": "TEST_ONLY_INPUT31_AND_ORIGINAL_PLAN1_VERIFIED_FULL_RUNTIME_PENDING",
+  "scope": {
+    "source": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+    "ordinals": [
+      3,
+      21
+    ],
+    "productionFilesChanged": 0,
+    "newApprovals": 0,
+    "sourceEdits": 0,
+    "metadataEdits": 0,
+    "canonicalEdits": 0,
+    "priorOriginalReceiptCohort23Changed": false,
+    "e070RepeatedNativeCalls": 0
+  },
+  "actualFailure": {
+    "candidate": "22cdc0c3be1548db4a2f43448a9a6d4bbe4e2302",
+    "runId": 44048890473,
+    "jobId": 133921399686,
+    "log": {
+      "gitBlobSha1": "a38bfc1a85103c95885ee37f4c0f90a1ae5f8ee5",
+      "sha256": "4e41268732a9d68094eed959ca220bcd355f5bda44dea0a88e3ebf766fd66f8f",
+      "bytes": 329185
+    },
+    "message": "known typed UI obligation required",
+    "questionUid": "qid_v1_77bdb41803d8e38bf819ade572a121911b9ef1bf783541203c671df15ec0985f",
+    "classification": "M2 E006 two-item evidence-pair UI profile absent from test observer; distinct from M3 E00612 and E07020"
+  },
+  "operations": [
+    {
+      "path": "tests/helpers/middle-geometry-issued-approval.cjs",
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-e006-q3-22/candidate/tests/helpers/middle-geometry-issued-approval.cjs",
+      "gitBlobSha1": "e5227df7a41da27c1620bf91ee004e67fe097ca7",
+      "sha256": "d15fb66d2ab8e7c813845423e21d24be7f7e799c73611141f9189e2813f206bf",
+      "bytes": 116130,
+      "expectedBeforeGitBlobSha1": "9317117d747304c4ad314538a41035fc87e22a31"
+    },
+    {
+      "path": "tests/meta-foundation-middle-geometry-runtime.test.js",
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-e006-q3-22/candidate/tests/meta-foundation-middle-geometry-runtime.test.js",
+      "gitBlobSha1": "9a204fb7075a02fb8e1ec733a5357c2c8ddacfd9",
+      "sha256": "3da516a6b538b53cc909e8cafbb6e5fba5fb918a1086878f1812dc9b1c603882",
+      "bytes": 79724,
+      "expectedBeforeGitBlobSha1": "2ac1caca326c9b08935640e13566b97ef724e3ef"
+    }
+  ],
+  "inverse": [
+    {
+      "path": "tests/helpers/middle-geometry-issued-approval.cjs",
+      "edits": 11,
+      "inverseWholeExact": true,
+      "before": {
+        "gitBlobSha1": "9317117d747304c4ad314538a41035fc87e22a31",
+        "sha256": "63d0e2669d6fd5314cbecdddc7d330b1e1001d5fa1b1505b2b4627e883285555",
+        "bytes": 107417
+      },
+      "after": {
+        "gitBlobSha1": "e5227df7a41da27c1620bf91ee004e67fe097ca7",
+        "sha256": "d15fb66d2ab8e7c813845423e21d24be7f7e799c73611141f9189e2813f206bf",
+        "bytes": 116130
+      }
+    },
+    {
+      "path": "tests/meta-foundation-middle-geometry-runtime.test.js",
+      "edits": 2,
+      "inverseWholeExact": true,
+      "before": {
+        "gitBlobSha1": "2ac1caca326c9b08935640e13566b97ef724e3ef",
+        "sha256": "ea06eeb8585f4f0a0171956571d4f4c86ac7c6227a35acdb4016463437995f55",
+        "bytes": 74400
+      },
+      "after": {
+        "gitBlobSha1": "9a204fb7075a02fb8e1ec733a5357c2c8ddacfd9",
+        "sha256": "3da516a6b538b53cc909e8cafbb6e5fba5fb918a1086878f1812dc9b1c603882",
+        "bytes": 79724
+      }
+    }
+  ],
+  "unchangedBlocks": {
+    "originalNative": {
+      "byteExact": true,
+      "gitBlobSha1": "034e4e29ab618a9123744c9ae81fdd9e30f9d121",
+      "sha256": "bc114f8009a23f1031acbce92e193bfaaa5fde80eb2ed2f15a4c7ed26cc8d8a7",
+      "bytes": 3571
+    },
+    "issuedWholeRetention": {
+      "byteExact": true,
+      "gitBlobSha1": "e5a4cc653e147d92b98ead1c8ba045b3f8a3e027",
+      "sha256": "7d1bb72b41885a51050f0a18aa092d6109886e6390a85a77a3e4a6356ae37f1e",
+      "bytes": 12327
+    },
+    "originalBlockedProducerGuard": {
+      "byteExact": true,
+      "gitBlobSha1": "04b803f72697f60440db17c45840fb0eedf569bc",
+      "sha256": "c384d6cd8251f608ed85bcb5d428364e0ca59962c75bbc40065a11e2a83058f9",
+      "bytes": 2623
+    },
+    "ordinaryOriginal23Config": {
+      "byteExact": true,
+      "gitBlobSha1": "dc23ff1bfef98e166c6b7a9d2bf5f31fce4b97c8",
+      "sha256": "68a216a764ea54583dfbef26d178d7ae37d74e0284c17845301aa5989d391b84",
+      "bytes": 41324
+    }
+  },
+  "validation": {
+    "syntaxFiles": 2,
+    "newInputProfiles": 2,
+    "newNegativeAssertions": 31,
+    "fullRuntime": "NOT_RUN",
+    "scopedCommandExit": 1,
+    "scopedCommandBoundary": "All new assertions completed; postcheck incorrectly compared entire generated SVG and failed",
+    "postcheckRecovery": "Separate selected-footprint CAS and original one-UID plan, exit0; no repeated31 tests",
+    "requiredLiveReadonlyFilesUnchanged": 212,
+    "codeFilesUnchanged": 81,
+    "originalPlan": {
+      "status": "SUPPLEMENT_PENDING",
+      "reasons": [
+        "NATIVE_SOURCE_REVIEW_REVALIDATION_FAILED"
+      ],
+      "keys": [
+        "questionUid",
+        "reasons",
+        "sourceArchiveFile",
+        "sourceOrdinal",
+        "status"
+      ],
+      "questionUid": "qid_v1_77bdb41803d8e38bf819ade572a121911b9ef1bf783541203c671df15ec0985f",
+      "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+      "sourceOrdinal": 3
+    },
+    "selectedSvg": [
+      {
+        "label": "f9-issued",
+        "commit": "f9e49a0e0c18f18c63f31d7547bd504f07a821c6",
+        "global": {
+          "gitBlobSha1": "b5c174cce6838a5f575b15eac289c5076912e0d8",
+          "sha256": "dcea67e94dc4c6de5ae18a6a933ca16ea5eb0e26f2c061c633a13e40401bdee6",
+          "bytes": 5553969
+        },
+        "selectedRecords": 2,
+        "selectedWholeSha256": "a06c9dd5c746afc4329c5ba9692fab3cc6cf2d8ad6fd26b0d412d4cff996ba35"
+      },
+      {
+        "label": "e5-probe",
+        "commit": null,
+        "global": {
+          "gitBlobSha1": "ee7ff859bb4de64265afa3489dc7ac129b752c6e",
+          "sha256": "4d3f87f16f951c5b6617cfd4f23e692efa9997eea8ee7235b83d17d2fdddf658",
+          "bytes": 5689821
+        },
+        "selectedRecords": 2,
+        "selectedWholeSha256": "a06c9dd5c746afc4329c5ba9692fab3cc6cf2d8ad6fd26b0d412d4cff996ba35"
+      },
+      {
+        "label": "candidate22",
+        "commit": "22cdc0c3be1548db4a2f43448a9a6d4bbe4e2302",
+        "global": {
+          "gitBlobSha1": "e673fdf898cfd9aea26f544cc11890cacbdaf800",
+          "sha256": "4eb677f1bb275190d74e2a1c3c6aeae3b83bb4b22383e096fcdd9b853084db4d",
+          "bytes": 5689821
+        },
+        "selectedRecords": 2,
+        "selectedWholeSha256": "a06c9dd5c746afc4329c5ba9692fab3cc6cf2d8ad6fd26b0d412d4cff996ba35"
+      }
+    ],
+    "headWorktreeUnchanged": true
+  },
+  "limits": {
+    "nativeApprovalPass": false,
+    "currentUiPass": false,
+    "firstInternalNativeFailureSite": "NOT_INFERRED",
+    "currentSourceMathReevaluation": false,
+    "fullSuiteExecuted": false,
+    "actualPlanCount": 1,
+    "standaloneNativeCount": 0,
+    "applyCalls": 0,
+    "serverRefWrites": 0
+  },
+  "fixtureFailures": [
+    {
+      "attempt": 1,
+      "stage": "ORIGINAL_IMMUTABLE_INPUT",
+      "reason": "missing cached historical RPM object b473778",
+      "guardChanged": false
+    },
+    {
+      "attempt": 2,
+      "stage": "ISSUED_SELECTED_SVG",
+      "reason": "missing cached f9 SVG object b5c174",
+      "guardChanged": false
+    },
+    {
+      "attempt": 3,
+      "stage": "DIAGNOSTIC_POSTCHECK",
+      "reason": "global generated SVG mismatch; selected2 subsequently whole-exact",
+      "guardChanged": false
+    }
+  ],
+  "evidence": [
+    {
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-e006-q3-22/edits-v1.json",
+      "gitBlobSha1": "fa2b6e866d9681ebad77db8d282bf3454c999664",
+      "sha256": "494201e74f18fb0d06589cde63fb8ca056d7815f714a7ab9903b167a226b1cc9",
+      "bytes": 17433
+    },
+    {
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-e006-q3-22/code-closure-v1.json",
+      "gitBlobSha1": "0259b83b62aa89a8ab81054fd3e33663e1f85953",
+      "sha256": "17185d5e690aabdaf7f81d198b5f10b2bbc7ff92097a37eefb73c09a54b65518",
+      "bytes": 20881
+    },
+    {
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-e006-q3-22/immutable-preflight-v1.json",
+      "gitBlobSha1": "27f34ea6972b4599f04a07a2a4252a4ec8c9c95a",
+      "sha256": "014ea2ca89dea143a4650d93fc4e9b9fcbf624c2247cdbe7a268723537ed3b26",
+      "bytes": 46812
+    },
+    {
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-e006-q3-22/declared-input-precheck-v1.json",
+      "gitBlobSha1": "8e8e0122adf36d15ef923a68f5ecddc568e12aec",
+      "sha256": "5923093df8b76a99340cc017ad7875e0fa48b36642cd2a8c7b79bc678efc3bfe",
+      "bytes": 38072
+    },
+    {
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-e006-q3-22/scoped-inputs-and-negatives.cjs",
+      "gitBlobSha1": "d21d75c9ab6f8afb741455889a06b4059232cc21",
+      "sha256": "85d340d97a9128505d3c8c3bd984dd58cb411644785a76f94c20e8ce534184e3",
+      "bytes": 6940
+    },
+    {
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-e006-q3-22/scoped-inputs.stdout.log",
+      "gitBlobSha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-e006-q3-22/scoped-inputs.stderr.log",
+      "gitBlobSha1": "fb46c938096fcff06c69b6ad7ff69ad92b38fb85",
+      "sha256": "7644ecac6224ae24bcf24af1c2a50b7fd96d07d0f7235aeb39db78aea0152d77",
+      "bytes": 1212
+    },
+    {
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-e006-q3-22/scoped-inputs-v2.stdout.log",
+      "gitBlobSha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-e006-q3-22/scoped-inputs-v2.stderr.log",
+      "gitBlobSha1": "712590aea104b8b47f31a6fb60ba4d32c930198c",
+      "sha256": "fe1cb6c4c3cd17b84c9a02f0c914a27a53025ef8a1cbc0fb149bef9d6df265ff",
+      "bytes": 911
+    },
+    {
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-e006-q3-22/scoped-inputs-v3.stdout.log",
+      "gitBlobSha1": "cf0f5936f12428fd4a5c7dcb9a0e492bf5afeaed",
+      "sha256": "8f59a80942b5f33e6f00d07fc1e54ded3a92d5730a9a5571a847b5e6d5532dd9",
+      "bytes": 142
+    },
+    {
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-e006-q3-22/scoped-inputs-v3.stderr.log",
+      "gitBlobSha1": "7602a913dd6063ab7e0c15c70d783e0273361b98",
+      "sha256": "8373eb1e71aeb9df8a700bb7d9730caaa5a949bcdab11bc709bd34f881668d76",
+      "bytes": 463
+    },
+    {
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-e006-q3-22/postcheck-and-plan-one.cjs",
+      "gitBlobSha1": "bde6ab35fe981da58af96f11065c31a8d2ff3d20",
+      "sha256": "3cda284535b6a4e941138291b59fbbaa41c8f3d2a0ee1010c9b3a510176e17ba",
+      "bytes": 7681
+    },
+    {
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-e006-q3-22/postcheck-plan-one-result-v1.json",
+      "gitBlobSha1": "f0c7c61b73dae2752faeb358c101dac98a8512a4",
+      "sha256": "ddaf2086e2b9a4ff0f4aebca53e1993e7377893e84d1219d8e4336e4ee54b3ab",
+      "bytes": 84749
+    },
+    {
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-e006-q3-22/postcheck-plan.stdout.log",
+      "gitBlobSha1": "662e9e779db392c694c35af57c1aa684dd8872c1",
+      "sha256": "fb49c4920442a7121576b461eaab88df09a03f97785cb746a2fa968e62debd99",
+      "bytes": 468
+    },
+    {
+      "localPath": "/tmp/ap-middle-meta-26fc-runtime21/ci-m2/runtime-e006-q3-22/postcheck-plan.stderr.log",
+      "gitBlobSha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ]
+}

@@ -286,7 +286,11 @@ window.questionBank = [
       "crosswalkRecordId": "H2-PS-RPM-027",
       "semanticSourceScope": "CURRENT_SCOPE",
       "semanticStatus": "CURRENT_SCOPE"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_2학기_기말_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선 두 개가 위아래로 놓여 있고, 각 곡선의 왼쪽 꼬리 넓이가 같은 색으로 칠해져 있다. 위 패널에는 P(X≤130)=P(Z≤5/σ), 아래 패널에는 P(Y≥k)=P(Z≤(100−k)/(3σ))가 적혀 있고, 가로축 z의 1 위치에 경계선이 서 있다.",
+    "solutionImageCaption": "X를 표준화하면 P(X≤130)=P(Z≤5/σ)이고, Y의 오른쪽 확률은 대칭에 의해 P(Y≥k)=P(Z≤(100−k)/(3σ))인 왼쪽 누적확률과 같다. 두 경계가 같아야 하므로 5/σ=(100−k)/(3σ), 즉 100−k=15에서 k=85이다. 그림은 예: σ=5일 때 경계가 z=1인 경우이다. 따라서 답은 ② 85이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -342,7 +346,11 @@ window.questionBank = [
       "crosswalkRecordId": "H2-PS-RPM-022",
       "semanticSourceScope": "CURRENT_SCOPE",
       "semanticStatus": "CURRENT_SCOPE"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_2학기_기말_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 주사위 결과를 '배수'와 '그외'로 나눈 수형도로, 배수 가지는 확률 3분의 1에서 동전 두 번의 앞·뒤로, 그외 가지는 3분의 2에서 동전 한 번의 앞·뒤로 갈라진다. 오른쪽에 각 잎의 경로확률 12분의 1과 3분의 1이 계산되어 있다.",
+    "solutionImageCaption": "3의 배수일 때는 동전을 두 번 던져 앞면 수의 평균이 1이고, 그 외에는 한 번 던져 평균이 2분의 1이므로 E(X) = 3분의 1 + 3분의 1 = 3분의 2이다. E(3X+4) = 3 × 3분의 2 + 4 = 6. 따라서 답은 ⑤ 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -398,7 +406,11 @@ window.questionBank = [
       "crosswalkRecordId": "H2-PS-RPM-023",
       "semanticSourceScope": "CURRENT_SCOPE",
       "semanticStatus": "CURRENT_SCOPE"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_2학기_기말_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 왼쪽부터 L(-1), O(0), R(3) 세 점이 찍혀 있고, O에서 L까지 1만큼 가는 왼쪽 화살표와 O에서 R까지 3만큼 가는 오른쪽 화살표가 그려져 있다.",
+    "solutionImageCaption": "한 번 던질 때 짝수는 -1, 홀수는 3만큼 움직이고 확률은 각각 2분의 1이므로 E(Y) = 1, E(Y²) = 5, V(Y) = 4이다. 20번의 이동은 서로 독립이므로 V(X) = 20 × 4 = 80. 따라서 답은 ④ 80이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -454,7 +466,11 @@ window.questionBank = [
       "crosswalkRecordId": "H2-PS-RPM-030",
       "semanticSourceScope": "CURRENT_SCOPE",
       "semanticStatus": "CURRENT_SCOPE"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_2학기_기말_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선의 가운데 -1.96과 1.96 사이가 칠해져 있고, 0을 지나는 세로 점선이 그려져 있다.",
+    "solutionImageCaption": "모표준편차는 √4 = 2이고 √1600 = 40이므로 표준오차는 40분의 2이다. 95% 신뢰구간의 길이는 2 × 1.96 × 40분의 2 = 0.196. 따라서 답은 ③ 0.196이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -744,7 +760,11 @@ window.questionBank = [
       "crosswalkRecordId": "H2-PS-RPM-031",
       "semanticSourceScope": "CURRENT_SCOPE",
       "semanticStatus": "CURRENT_SCOPE"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_2학기_기말_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 665.64에 채워진 점이 있고, 그 점에서 오른쪽으로 뻗는 파란 반직선이 x ≥ 665.64로 표시되어 있다.",
+    "solutionImageCaption": "99% 신뢰구간의 길이 2 × 2.58 × σ ÷ √n = 5.16σ ÷ √n이 σ ÷ 5 이하이려면 √n ≥ 25.8이고, 제곱하면 n ≥ 665.64이다. n은 자연수이므로 최솟값은 666. 따라서 답은 ④ 666이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -800,7 +820,11 @@ window.questionBank = [
       "crosswalkRecordId": "H2-PS-RPM-019",
       "semanticSourceScope": "PREREQUISITE_SAME_GRADE_LOWER_ONLY",
       "semanticStatus": "PREREQUISITE_SAME_GRADE_RPM_SEMANTIC_FINAL_ACTIVE_REUSE"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_2학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 점에서 갈라지는 수형도로, 첫 가지는 1과 3으로 나뉘고 각 가지가 다시 1과 3으로 갈라진다. 1 다음의 3과 3 다음의 1이 각각 파란색과 주황색 가지로 이어지며 동그라미로 강조되어 있다.",
+    "solutionImageCaption": "두 번 꺼낸 수의 평균이 2가 되려면 두 수의 합이 4이므로 (1,3)과 (3,1) 두 경우뿐이다. 두 확률을 더하면 2 × 2 ÷ (n+2) × n ÷ (n+2) = 4n ÷ (n+2)²이고 이것이 2분의 1이므로 (n-2)² = 0, n = 2. 따라서 답은 ① 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -979,7 +1003,11 @@ window.questionBank = [
       "crosswalkRecordId": "H2-PS-RPM-031",
       "semanticSourceScope": "CURRENT_SCOPE",
       "semanticStatus": "CURRENT_SCOPE"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_2학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선의 가운데 -0.875와 0.875 사이가 칠해져 있고, 0에 세로 점선이 그려져 있다.",
+    "solutionImageCaption": "표본 4개일 때 신뢰구간의 길이는 2z × σ ÷ 2 = zσ이므로 z = 8분의 7이다. 중앙확률은 경계가 커질수록 커지므로 √n ÷ 8 = 8분의 7, √n = 7, n = 49. 따라서 답은 ② 49이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1180,7 +1208,11 @@ window.questionBank = [
       "crosswalkRecordId": "H2-PS-RPM-030",
       "semanticSourceScope": "CURRENT_SCOPE",
       "semanticStatus": "CURRENT_SCOPE"
-    }
+    },
+    "solutionImage": "assets/images/19_매산여고_2학기_기말_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 개의 수직선에 파란 구간 30.2 ≤ x ≤ 49.8과 주황 구간 27.1 ≤ x ≤ 52.9가 각각 양 끝에 채워진 점으로 표시되어 있다.",
+    "solutionImageCaption": "95% 구간의 중심은 (30.2 + 49.8) ÷ 2 = 40이고 반길이가 9.8이므로 표준오차는 9.8 ÷ 1.96 = 5이다. 99%의 반길이는 2.58 × 5 = 12.9이므로 구간은 27.1 ≤ m ≤ 52.9이고, 그 안의 자연수는 28부터 52까지 25개. 따라서 답은 25이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

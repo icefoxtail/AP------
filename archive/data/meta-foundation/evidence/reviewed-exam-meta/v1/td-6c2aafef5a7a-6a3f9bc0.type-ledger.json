@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-6c2aafef5a7a-6a3f9bc0",
+  "sourceArchiveFile": "original/high/h1/1mid/19_복성고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_7e3119cb6c49c1d52ea7bb7a418616270dc305bed5a0bac1fb41e84af4de348a",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "templateKey": null,
+      "step": "f−a는1,2,3을근으로갖는일계수삼차식, f(x)−a=(x−1)(x−2)(x−3),x0대입8−a=−6으로a14.",
+      "note": "필요 TPL: 같은함숫값의다항식 인수복원. 정의: 같은함숫값을빼서여러근을갖는식으로바꾸고차수·선도계수·추가함숫값으로상수를정한다. 검사: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_22c4eb14dc8da1a45dd91fdc6d1f1ee09c44b44d41af7cd392c0ccad1c0dce44",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "templateKey": null,
+      "step": "x²−1의두근±1에서영이어야하므로f1=−(n−1)(n−4)로후보1,4를얻고f(−1)도확인해합5.",
+      "note": "필요 TPL: 여러 일차인수의 동시 영점조건. 정의: 제수의서로다른근을대입해동시에영이되는정수매개변수를결정한다. 검사: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

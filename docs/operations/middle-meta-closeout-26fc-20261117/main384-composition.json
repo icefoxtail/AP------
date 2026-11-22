@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "archive-main384-root-composition-v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "owner": "GPT_ROOT_26FC42390A50",
+  "base": "e0533cb4b9f5b371165eac6d5efd2e8d95a7c0d7",
+  "incorporatedMain": "384c559626ae17b87e8d4410a59df4372107ba1b",
+  "mainFrom": "1cebc07e058364ac39d3150b2464db2772ca5325",
+  "conflict": {
+    "path": "tools/check-generated-mock-qa.cjs",
+    "base": "4f029f42e55bd9d306a9784dc3ebc4165de379df",
+    "main": "87d73ecc5e2d2fd70fbc593153ee376fb88985b6",
+    "kept": "4513a5b0404938c26a455fc1197aab46eea4fd58",
+    "resolution": "Keep reviewed strict exact-number parsing, duplicate and range rejection, full source coverage check; it already implements the same 17-number UI migration as main."
+  },
+  "runner": {
+    "before": "18a95393618487a3021655a3aa7db7cd6f7b2726",
+    "after": "5b2b5f52e894103d943440bf7aa9f8e4288c30c4",
+    "sha256": "4ea0813fbbfdd669310f6532978d11ae4bf9df15a7a8e70bf390e63efc10a128",
+    "bytes": 33935,
+    "singleInsertionInverseExact": true,
+    "addedCommand": "tests/archive-assignment-board-direct-output.test.cjs",
+    "allPriorCommandsTimeoutsFiltersAndOutputGuardsUnchanged": true,
+    "nodeSyntax": "PASS"
+  },
+  "otherMainPathsCopiedWhole": 5,
+  "sourceEdits": 0,
+  "metadataIdentityEdits": 0,
+  "m3s1Edits": 0,
+  "globalQuality": "UNKNOWN"
+}

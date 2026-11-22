@@ -1,0 +1,79 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -1,
+   7,
+   -1,
+   7
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "SQRT",
+    "radicand": [
+     "-2",
+     "1"
+    ],
+    "offset": "2",
+    "domain": [
+     "2",
+     "6"
+    ],
+    "color": "BLUE",
+    "label": "y=f(x)"
+   },
+   {
+    "id": "g",
+    "kind": "Y_OF_X",
+    "coefficients": [
+     "6",
+     "-4",
+     "1"
+    ],
+    "domain": [
+     "2",
+     "4"
+    ],
+    "color": "WARM",
+    "label": "y=g(x)"
+   },
+   {
+    "id": "d",
+    "kind": "LINE",
+    "coefficients": [
+     "0",
+     "1"
+    ],
+    "domain": [
+     "-1",
+     "7"
+    ],
+    "style": "DASHED",
+    "label": "y=x"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "Q",
+     "x": "3",
+     "y": "3",
+     "coordinates": true
+    }
+   ]
+  }
+ },
+ "caption": "f(x)=√(x-2)+2는 증가하므로 f와 역함수 g의 그래프의 교점은 직선 y=x 위에 있다. √(x-2)+2=x에서 x=2 또는 x=3이므로 두 교점은 (2, 2), (3, 3)이고 그 사이의 거리는 √(1²+1²)=√2이다.",
+ "sourceConditions": [
+  "f(x)=sqrt(x-2)+2와 그 역함수 g(x)의 그래프의 두 교점 사이의 거리"
+ ],
+ "newVisualInformation": [
+  "f와 역함수 g가 직선 y=x에 대하여 대칭이고 두 교점 (2,2), (3,3)이 y=x 위에 있음"
+ ]
+}

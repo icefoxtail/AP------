@@ -51,7 +51,11 @@ window.questionBank = [
     "sourceQid": 1,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사2_plans/q01-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사2_plans/q01-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사2_plans/q01-solution.plan.json",
+    "solutionImage": "assets/images/26_광양제철고_1학기_기말_고1_유사2/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 개의 수직선을 위아래로 놓고, 위 수직선에는 -3보다 오른쪽인 부분이, 아래 수직선에는 3 이하인 왼쪽 부분이 굵은 선으로 표시된 그림이다.",
+    "solutionImageCaption": "첫째 부등식에서 -4x<12이므로 x>-3, 둘째 부등식에서 2x≤6이므로 x≤3이다. 공통 범위는 -3<x≤3이고 그 안의 정수는 -2, -1, 0, 1, 2, 3의 6개이므로, 답은 ④ 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -367,7 +371,11 @@ window.questionBank = [
     "sourceQid": 7,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사2_plans/q07-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사2_plans/q07-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사2_plans/q07-solution.plan.json",
+    "solutionImage": "assets/images/26_광양제철고_1학기_기말_고1_유사2/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 개의 수직선을 위아래로 놓고, 위 수직선에는 13 이상인 오른쪽 부분이, 아래 수직선에는 17 미만인 왼쪽 부분이 굵은 선으로 표시된 그림이다.",
+    "solutionImageCaption": "텐트 수를 t라 하면 학생 수는 6t+10이고, 마지막 사용 텐트에 학생이 있어야 하므로 8(t-3)<6t+10≤8(t-2)에서 13≤t≤16이다. 학생 수는 t=13일 때 88로 최소, t=16일 때 106으로 최대이므로 그 합은 194이고, 답은 ① 194이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -684,7 +692,11 @@ window.questionBank = [
     "sourceQid": 13,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사2_plans/q13-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사2_plans/q13-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사2_plans/q13-solution.plan.json",
+    "solutionImage": "assets/images/26_광양제철고_1학기_기말_고1_유사2/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형이 첫째 줄 6개, 둘째 줄 5개, 셋째 줄 3개로 왼쪽에 맞추어 놓인 도형에서 둘째 줄의 위와 아래 경계선이 굵게 표시된 그림이다.",
+    "solutionImageCaption": "높이 1칸 직사각형은 21+15+6=42개, 높이 2칸은 15+6=21개, 높이 3칸은 6개로 모두 69개이고, 여기서 1×1 정사각형 14개와 2×2 정사각형 6개, 3×3 정사각형 1개를 빼면 48개이다. 따라서 답은 ③ 48이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

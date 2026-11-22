@@ -98,7 +98,9 @@ test("ci.yml: fixed event planning retains check names and never starts a derive
   const header = ci.slice(0, ci.indexOf("\njobs:\n"));
   assert.doesNotMatch(header, /^\s+workflow_run:/m);
   assert.match(header, /group: .*github\.run_id/);
-  assert.match(header, /\n  cancel-in-progress: false\n/);
+  // Only a pull request's superseded run is cancelled; push and manual runs keep a per-run group (never cancelled).
+  assert.match(header, /\n  cancel-in-progress: \$\{\{ github\.event_name == 'pull_request' \}\}\n/);
+  assert.match(header, /group: .*github\.event_name == 'pull_request' && format\('ci-pr-\{0\}', github\.event\.pull_request\.number\) \|\| format\('ci-\{0\}-\{1\}', github\.event_name, github\.run_id\)/);
   const planner = ci.slice(ci.indexOf("\n  plan:\n"), ci.indexOf("\n  test:\n"));
   assert.match(planner, /sparse-checkout: tools\/ci/);
   assert.match(planner, /persist-credentials: false/);

@@ -4,7 +4,6 @@ window.examData = {
   "questions": [
     {
       "id": 1,
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "<p>아래 그림의 $\\triangle \\mathrm{ABC}$에서 $\\cos x$의 값은?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q1-problem-visual-v2.svg\" alt=\"왼쪽 B에서 오른쪽 C까지 아래 변이 있고 위쪽 A는 직각이다. AB는 12, AC는 5이다. AB의 D에서 아래 BC에 수선을 내린 발은 E이다. 각 BDE에는 x가 적혀 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
@@ -81,7 +80,7 @@ window.examData = {
   },
     {
       "id": 3,
-      "layoutTag": "fullwidth",
+      "layoutTag": "subjective-2up",
       "score": 4,
       "question": "<p>그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\angle x$의 삼각비에 대한 다음 설명 중 옳지 않은 것은?<br>(단, $0^\\circ < x < 90^\\circ$)</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q3-problem-visual-v2.svg\" alt=\"아래 왼쪽 B를 중심으로 하는 사분원이다. 사선은 B에서 호 위의 A를 거쳐 E까지 뻗는다. A와 E에서 가로선 BD에 내린 수선은 C와 D에서 만난다. 사선과 가로선의 각은 x이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
@@ -156,7 +155,6 @@ window.examData = {
   },
     {
       "id": 5,
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "<p>그림의 $\\triangle \\mathrm{ABC}$에서 $\\overline{\\mathrm{CA}}=6$, $\\overline{\\mathrm{AB}}=9$, $\\angle\\mathrm{A}=60^\\circ$일 때, $\\overline{\\mathrm{CB}}$의 길이는?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q5-problem-visual-v2.svg\" alt=\"삼각형 ABC의 왼쪽 밑각 A가 60도이다. 왼쪽 사선 AC는 6, 아래 가로변 AB는 9이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
@@ -195,7 +193,6 @@ window.examData = {
   },
     {
       "id": 6,
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "<p>그림의 $\\triangle \\mathrm{ABC}$에서 $\\overline{\\mathrm{AH}}$의 길이를 구하면?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q6-problem-visual-v2.svg\" alt=\"밑변 BC는 12 cm이다. 왼쪽 B의 각은 30도, 오른쪽 C의 각은 45도이다. 위쪽 A에서 내린 수선은 H에서 밑변에 닿는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
@@ -234,7 +231,6 @@ window.examData = {
   },
     {
       "id": 7,
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "<p>아래 그림과 같은 $\\square\\mathrm{ABCD}$의 넓이를 구하면?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q7-problem-visual-v2.svg\" alt=\"왼쪽 AB와 아래 BC는 각각 6 cm이다. 짧은 두 변 AD와 DC는 각각 2√3 cm이다. 사각형의 B와 D에서 각각 60도와 120도를 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
@@ -271,7 +267,6 @@ window.examData = {
   },
     {
       "id": 8,
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "<p>그림에서 $\\overline{\\mathrm{AM}}=4\\text{ cm}$, $\\overline{\\mathrm{CM}}=3\\text{ cm}$이고 $\\overline{\\mathrm{AM}}=\\overline{\\mathrm{BM}}$이다. 원의 반지름의 길이를 $x$라고 할 때, $6x$의 값은?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q8-problem-visual-v2.svg\" alt=\"원의 가로 현 AB의 가운데는 M이다. AM과 BM에 같은 눈금을 썼고 AM은 4 cm이다. 중심 O, 중점 M, 원 위 C가 같은 세로선 위에 있으며 MC는 3 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
@@ -310,7 +305,7 @@ window.examData = {
   },
     {
       "id": 9,
-      "layoutTag": "fullwidth",
+      "layoutTag": "subjective-2up",
       "score": 4,
       "question": "<p>보기의 각 원에 대한 성질로 바르지 않은 것은?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q9-problem-visual-v2.svg\" alt=\"① 원 안의 현 AB와 수선 OM, ② 두 현에 내린 같은 길이의 수선 OM과 ON, ③ 현 AB를 보는 원주각과 중심각, ④ 원에 외접한 사각형의 네 접점, ⑤ 원 밖 P에서 그은 두 접선이 있다. 보기의 O는 원의 중심이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
@@ -347,7 +342,7 @@ window.examData = {
   },
     {
       "id": 10,
-      "layoutTag": "fullwidth",
+      "layoutTag": "subjective-2up",
       "score": 4,
       "question": "<p>보기의 각 원에 대한 성질로 바르지 않은 것은?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q10-problem-visual-v2.svg\" alt=\"① 지름 AB와 원 위의 P, ② 같은 길이의 두 호에 대한 각 P와 Q, ③ 원에 내접한 사각형, ④ A에서 원에 접하는 AT와 두 원주각, ⑤ 원에 내접한 사각형과 C의 바깥각이 있다. 보기의 O는 원의 중심이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
@@ -385,7 +380,6 @@ window.examData = {
   },
     {
       "id": 11,
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "<p>그림에서 $\\square\\mathrm{ABCD}$는 원에 외접하고 $\\overline{\\mathrm{AD}}=14\\text{ cm}$, $\\overline{\\mathrm{BC}}=10\\text{ cm}$이다. $\\overline{\\mathrm{AB}} : \\overline{\\mathrm{CD}} = 3 : 5$일 때, $\\overline{\\mathrm{CD}}$의 길이는?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q11-problem-visual-v2.svg\" alt=\"중심 O인 원이 사각형 ABCD의 네 변에 닿는다. 위쪽 AD는 14 cm, 아래쪽 BC는 10 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
@@ -423,7 +417,6 @@ window.examData = {
   },
     {
       "id": 12,
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "<p>그림에서 $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}$가 원 위의 점이고 $\\angle\\mathrm{BOC}=160^\\circ$일 때, $\\angle\\mathrm{A}=x$의 값은?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q12-problem-visual-v2.svg\" alt=\"원 위의 B와 C에서 중심 O로 두 선을 이었다. 아래를 향한 중심각 BOC는 160도이다. 아래쪽 원 위 A에서 B와 C를 이은 두 현 사이의 각은 x이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
@@ -462,7 +455,6 @@ window.examData = {
   },
     {
       "id": 13,
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "<p>$\\overline{\\mathrm{AC}}$와 $\\overline{\\mathrm{BD}}$의 교점은 $\\mathrm{P}$이고 $\\overparen{\\mathrm{AB}}$는 원둘레 길이의 $\\frac{1}{5}$이고 $\\overparen{\\mathrm{CD}}$는 원둘레 길이의 $\\frac{1}{6}$일 때, $\\angle\\mathrm{APB}=x$의 크기는?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q13-problem-visual-v2.svg\" alt=\"왼쪽 A와 오른쪽 C를 잇는 현, 위쪽 D와 아래쪽 B를 잇는 현이 P에서 교차한다. 왼쪽 아래에서 PA와 PB가 이루는 각은 x이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
@@ -501,7 +493,6 @@ window.examData = {
   },
     {
       "id": 14,
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "<p>그림에서 $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}, \\mathrm{D}$가 원 위의 점이고 $\\overline{\\mathrm{AT}}$는 원의 접선, $\\overline{\\mathrm{CD}}$는 원의 지름이다. $\\angle\\mathrm{ABC}=120^\\circ$일 때, $\\angle\\mathrm{ACD}=x$의 크기는?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q14-problem-visual-v2.svg\" alt=\"아래의 가로선은 A에서 원에 접한다. 왼쪽 D와 오른쪽 위 C를 잇는 지름은 중심 O를 지난다. B에서의 각 ABC는 120도이고 C에서 CA와 CD 사이 각은 x이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
@@ -540,7 +531,6 @@ window.examData = {
   },
     {
       "id": 15,
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "<p>그림에서 $\\overline{\\mathrm{AT}}$는 원의 접선, $\\overparen{\\mathrm{AC}}=\\overparen{\\mathrm{BC}}$, $\\angle\\mathrm{CAT}=55^\\circ$일 때, $\\angle\\mathrm{C}$의 크기는?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q15-problem-visual-v2.svg\" alt=\"원의 아래 A에서 그은 접선 위에 오른쪽 T가 있다. 오른쪽 C와 A, B를 이었다. 호 AC와 BC는 길이가 같다. 각 CAT는 55도, ACB는 x이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
@@ -579,7 +569,6 @@ window.examData = {
   },
     {
       "id": 16,
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "<p>다음 그림에서 네 점 $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}, \\mathrm{D}$가 한 원 위에 있는 것을 모두 찾은 것은?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q16-problem-visual-v2.svg\" alt=\"가의 두 선은 교차하고 50도, 100도, 50도를 표시했다. 나의 교차점은 직각이고 A에는 60도, C에는 30도가 있다. 다에서는 D와 C의 각이 각각 55도이다. 라에는 B의 85도와 C의 95도가 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
@@ -616,7 +605,6 @@ window.examData = {
   },
     {
       "id": 17,
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "<p>그림에서 $\\mathrm{A}, \\mathrm{B}, \\mathrm{C}, \\mathrm{D}$가 원 위의 점이고 $\\overline{\\mathrm{AB}}$와 $\\overline{\\mathrm{CD}}$의 연장선의 교점은 $\\mathrm{P}$, $\\overline{\\mathrm{AD}}$와 $\\overline{\\mathrm{BC}}$의 연장선의 교점은 $\\mathrm{Q}$이다. $\\angle\\mathrm{P}=23^\\circ$, $\\angle\\mathrm{Q}=41^\\circ$일 때, $\\angle\\mathrm{C}=x$의 값은?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q17-problem-visual-v2.svg\" alt=\"원 위에는 A, B, C, D가 있다. AB와 DC를 연장한 위쪽 교점 P의 각은 23도, AD와 BC를 연장한 왼쪽 교점 Q의 각은 41도이다. C에서 CB와 CD 사이가 x이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
@@ -653,7 +641,6 @@ window.examData = {
   },
     {
       "id": 18,
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "<p>$\\overline{\\mathrm{AB}}$와 $\\overline{\\mathrm{CD}}$의 교점은 $\\mathrm{P}$이고, $\\overline{\\mathrm{AP}}=6\\text{ cm}$, $\\overline{\\mathrm{CP}}=4\\text{ cm}$, $\\overline{\\mathrm{DP}}=3\\text{ cm}$일 때, $\\overline{\\mathrm{BP}}=x$의 값은?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q18-problem-visual-v2.svg\" alt=\"원 위 A와 B를 잇는 현, C와 D를 잇는 현이 P에서 교차한다. AP는 6, CP는 4, DP는 3이고 PB는 x이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
@@ -691,7 +678,6 @@ window.examData = {
   },
     {
       "id": 19,
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "<p>$\\overline{\\mathrm{AB}}=10\\text{ cm}$, $\\overline{\\mathrm{BP}}=6\\text{ cm}$, $\\overline{\\mathrm{DP}}=4\\text{ cm}$이고 $\\square\\mathrm{ABCD}$가 원에 내접할 때, $\\overline{\\mathrm{AC}}$의 길이는?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q19-problem-visual-v2.svg\" alt=\"사각형 ABCD의 세로 대각선 AC와 가로 대각선 BD는 P에서 직각으로 만난다. 왼쪽 사선 AB는 10 cm, BP는 6 cm, PD는 4 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
@@ -729,7 +715,6 @@ window.examData = {
   },
     {
       "id": 20,
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "<p>그림의 원에서 $\\overparen{\\mathrm{AM}}=\\overparen{\\mathrm{BM}}$이고 $\\overline{\\mathrm{PM}}=3\\text{ cm}$, $\\overline{\\mathrm{PQ}}=5\\text{ cm}$일 때, $\\overline{\\mathrm{BM}}$의 길이는?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q20-problem-visual-v2.svg\" alt=\"원 위의 위쪽 Q와 아래쪽 M을 이은 현이 현 AB와 P에서 교차한다. PQ는 5 cm, PM은 3 cm이다. 왼쪽 호 AM과 아래쪽 호 MB에 같은 표시를 넣었다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
@@ -767,7 +752,6 @@ window.examData = {
   },
     {
       "id": 21,
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "<p>(서술형 1) 다음 직각삼각형 $\\mathrm{ABC}$에서 $\\angle\\mathrm{A}=30^\\circ$, $\\angle\\mathrm{DBC}=45^\\circ$, $\\overline{\\mathrm{BC}}=20$일 때, $\\overline{\\mathrm{AD}}$의 길이를 구하여라. ($\\overline{\\mathrm{CD}}$, $\\overline{\\mathrm{CA}}$, $\\overline{\\mathrm{AD}}$의 길이를 구할 것. 단, $\\overline{\\mathrm{CA}}$는 삼각비를 이용하여 나타낼 것.) [4점]</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q21-problem-visual-v2.svg\" alt=\"가로 BC는 20이고 C는 직각이다. 세로 CA 위에 D가 있으며 B와 D를 이었다. 꼭짓점 A의 각은 30도, DBC는 45도이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [],
@@ -800,7 +784,6 @@ window.examData = {
   },
     {
       "id": 22,
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "<p>(서술형 2) 그림의 $\\triangle\\mathrm{ABC}$에서 $\\angle\\mathrm{B}=45^\\circ$, $\\angle\\mathrm{C}=75^\\circ$이다. $\\overline{\\mathrm{BC}}=6\\sqrt{2}\\text{ cm}$일 때, 다음을 구하여라. [총 4점]</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q22-problem-visual-v2.svg\" alt=\"삼각형 ABC의 밑변은 가로의 AB이다. 오른쪽 B의 각은 45도, 위쪽 C의 각은 75도이고 사선 BC는 6√2 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>(1) 삼각형의 둘레의 길이(3점)<br>(반드시 $\\overline{\\mathrm{AC}}$와 $\\overline{\\mathrm{AB}}$의 길이를 삼각비를 이용하여 구한다음 둘레의 길이를 구할 것.)<br>(2) 삼각형의 넓이(1점) (풀이과정이 아무것도 없고 답만 있는 경우 0점 처리)</p>",
       "choices": [],
@@ -833,7 +816,6 @@ window.examData = {
   },
     {
       "id": 23,
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "<p>(서술형 3) 그림에서 $\\triangle\\mathrm{ABC}$가 원에 외접하고, 세 점 $\\mathrm{D}, \\mathrm{E}, \\mathrm{F}$는 접점이다. $\\overline{\\mathrm{AB}}=7\\text{ cm}$, $\\overline{\\mathrm{BC}}=8\\text{ cm}$, $\\overline{\\mathrm{CA}}=5\\text{ cm}$일 때, $\\overline{\\mathrm{BF}}=x$의 값을 구하여라. [총 4점]</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q23-problem-visual-v2.svg\" alt=\"삼각형 ABC의 AB는 7 cm, AC는 5 cm, BC는 8 cm이다. 내접원 O는 AB에 D, AC에 E, BC에 F에서 접한다. B와 F 사이에 x cm가 적혀 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>(1) 식 세우기(2점) ($\\leftarrow$조건은 생략하고, 변 $\\mathrm{AC}$에 대하여 등식을 기재하시오)<br>(2) 답 구하기(2점)</p>",
       "choices": [],
@@ -866,7 +848,6 @@ window.examData = {
   },
     {
       "id": 24,
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "<p>(서술형 4) 그림에서 점 $\\mathrm{P}$는 $\\overline{\\mathrm{AB}}$와 $\\overline{\\mathrm{CD}}$의 연장선의 교점이고, $\\overline{\\mathrm{AB}}=7\\text{ cm}$, $\\overline{\\mathrm{PA}}=5\\text{ cm}$, $\\overline{\\mathrm{PC}}=4\\text{ cm}$일 때, $\\overline{\\mathrm{CD}}=x$의 값을 구하여라. [총 4점]</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q24-problem-visual-v2.svg\" alt=\"원 밖 P에서 올라가는 선은 A와 B, 가로선은 C와 D를 차례로 지난다. PA는 5 cm, AB는 7 cm, PC는 4 cm, CD는 x cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>(1) 식 세우기(2점) ($\\leftarrow$조건은 생략하고, $x$에 관한 등식을 기재하시오)<br>(2) 답 구하기(2점)</p>",
       "choices": [],
@@ -897,7 +878,6 @@ window.examData = {
   },
     {
       "id": 25,
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "<p>(서술형 5) 그림에서 $\\triangle\\mathrm{ABC}$가 원에 외접하고, 세 점 $\\mathrm{P}, \\mathrm{Q}, \\mathrm{R}$은 접점이다. $\\overline{\\mathrm{AB}}=10\\text{ cm}$, 반지름 $\\overline{\\mathrm{OQ}}=2\\text{ cm}$일 때, $\\overline{\\mathrm{AP}}=x$의 길이를 구하여라. (단, $\\overline{\\mathrm{AP}} > \\overline{\\mathrm{BP}}$) [총 4점]</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q25-problem-visual-v2.svg\" alt=\"아래 오른쪽 C가 직각이다. 빗변 AB는 10 cm, AP는 x cm이다. 내접원 O의 접점은 P, Q, R이고 아래로 내린 반지름 OQ는 2 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>(1) 식 세우기(2점) ($\\leftarrow$조건은 생략하고, $\\triangle\\mathrm{ABC}$의 세 변에 관한 등식을 기재하시오)<br>(2) 답 구하기(2점)</p>",
       "choices": [],

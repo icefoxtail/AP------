@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-23c87bc99e29-a9c172b2",
+  "sourceArchiveFile": "original/high/h1/1mid/23_팔마고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_e832f372b50c4f6a797e588ef3fdf79dd90cc1566ee96147d494494b4b692e37",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "step": "제수 x+1의 근 −1을 다항식에 대입해 나머지를 구한다.",
+      "note": "",
+      "figure": null,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5c255e8574af4c688708441868edabab9f7c45af63d2880edbd05a8bd5cce6be",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "templateKey": "TPL_H1_HIGHER_DEGREE_EQUATION_TRANSFORM",
+      "step": "계수 역순은 근의 역수 변환, 홀수차 부호 반전은 근의 부호 변환임을 확인하고 다항식의 상수배 가능성을 점검한다.",
+      "note": "필요 TPL 이름: 고차방정식 근 변환 진술 판정; 정의: 계수 역순·부호 치환·상수배에 따른 근 집합의 변화를 비교하여 명제의 참거짓을 판정한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": null,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_04a5694afd926844640147acd4b0a6f6ae51de3c7f6201218751c97288827c9a",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+      "step": "나머지를 4x+3+A(x−2)²로 놓고 x=−1의 값을 대입해 A를 구한다.",
+      "note": "",
+      "figure": null,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

@@ -553,14 +553,14 @@ window.questionBank = [
     "wide": false,
     "content": "$x$에 대한 이차방정식 $x^2-3x+13-2k=0$이 서로 다른 두 허근을 갖도록 하는 자연수 $k$의 개수를 구하면? [3.8점]",
     "choices": [
-      "$1$",
       "$2$",
       "$3$",
       "$4$",
-      "$5$"
+      "$5$",
+      "$6$"
     ],
-    "answer": "⑤",
-    "solution": "서로 다른 두 허근을 가지려면 판별식이 $0$보다 작아야 한다.\n\n$x^2-3x+13-2k=0$에서\n$D=(-3)^2-4\\cdot1\\cdot(13-2k)$\n$=9-52+8k$\n$=8k-43$\n서로 다른 두 허근을 가지므로\n$D<0$\n$8k-43<0$\n$8k<43$\n$k<\\dfrac{43}{8}$\n$\\dfrac{43}{8}=5.375$이고 $k$는 자연수이므로\n$k=1,2,3,4,5$\n따라서 가능한 자연수 $k$의 개수는\n$5$개\n정답은 ⑤이다.",
+    "answer": "④",
+    "solution": "서로 다른 두 허근을 가지려면 판별식이 $0$보다 작아야 한다.\n\n$x^2-3x+13-2k=0$에서\n$D=(-3)^2-4\\cdot1\\cdot(13-2k)$\n$=9-52+8k$\n$=8k-43$\n서로 다른 두 허근을 가지므로\n$D<0$\n$8k-43<0$\n$8k<43$\n$k<\\dfrac{43}{8}$\n$\\dfrac{43}{8}=5.375$이고 $k$는 자연수이므로\n$k=1,2,3,4,5$\n따라서 가능한 자연수 $k$의 개수는\n$5$개\n정답은 ④이다.",
     "points": 3.8,
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -750,7 +750,11 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js#q14",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q14-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q14-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q14-solution.plan.json",
+    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_유사/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: 수직선 위에 0부터 4까지의 닫힌 구간이 표시되어 있고, 그 안에 점 3이 있다.",
+    "solutionImageCaption": "f(x)=(x−3)²−2이므로 최솟값이 −2이려면 폭 4인 구간 [t,t+4]가 x=3을 포함해야 한다. t≤3≤t+4에서 −1≤t≤3이므로 답은 ② −1≤t≤3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1080,7 +1084,11 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js#q20",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q20-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q20-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사_plans/q20-solution.plan.json",
+    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_유사/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: 수직선 두 줄에 각각 1, 3/2, 3, 7과 1, 3, 5, 7이 표시되어 있고, 첫째 줄에는 3/2과 3 사이의 거리가 표시되어 있다.",
+    "solutionImageCaption": "예: a=3/2일 때 두 구간의 최댓값과 최솟값이 같아지고, a=5이면 조건 (나)를 만족하지 못한다. 1≤a≤2이고 f(−1)=(a+1)²의 최댓값 9와 최솟값 4의 합은 13이므로 답은 ④ 13이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

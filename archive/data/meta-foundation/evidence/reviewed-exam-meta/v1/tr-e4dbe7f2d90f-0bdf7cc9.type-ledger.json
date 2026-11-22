@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-e4dbe7f2d90f-0bdf7cc9",
+  "sourceArchiveFile": "similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사2.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_214e9e0124a13293caf6f4b6ea97fa701e6debe44806fc2c250495adf9404638",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+      "step": "각 일차부등식을 풀어 -3<x≤3의 교집합을 얻고 그 안의 정수 여섯 개를 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6a42592c9a579765a2f226a3476bfcca4617f8395b9080d7e20aebb7fe1599ac",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+      "templateKey": "TPL_H1_MATRIX_EQUATION_LINEAR",
+      "step": "두 색 상의 생산량에서 2x+y=13,x+2y=11을 세워 작업일을 구하고 하의 생산량을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2f9470914e46d3612f181fdb57106160e5b76b556309dc6f5cedc2cef9213248",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+      "templateKey": "TPL_H1_MATRIX_EQUATION_LINEAR",
+      "step": "행렬 연립식의 가감으로 A와 B를 구한 후 AB를 직접 곱해 성분합을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e95caf28d9e7f46208b15dc29552dfcb349927d7167fc35152e62a36698f896a",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "step": "세 수의 가운데가 나머지 둘의 평균이라는 조건을 등차수열로 해석해 공차별 선택 후 순열을 곱한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e2f2ed5e5b9b179b7b53e8eb4d5ba8e6edd81e26644a3a371c578171c0e6a3ac",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_POWER_IDENTITY",
+      "templateKey": "TPL_H1_MATRIX_POWER_POLYNOMIAL",
+      "step": "N²=O인 A=E+N 구조로 Aⁿ의 오른쪽 위 성분이 na임을 얻고 na=36의 양의 약수를 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_caf2e58deaed1dafb3d20b5ce2b16c0dd2d503a51cbdbeef92ec319b7a267a75",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER",
+      "step": "최고차항이 음수이고 판별식이 0 이하인 조건을 연립하여 정수 a의 범위를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8114c5fc549bec9c8799039ea55f11637a640f6e45cc7eeaf29e54bca4ff9985",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+      "templateKey": "TPL_H1_SYSTEM_DIRECT",
+      "step": "합과 차 s,d로 치환하여 d=±2√3의 두 경우에서 s의 이차방정식을 풀고 최댓값을 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e4a9954b8ec9cae478af337ed7f83ba0629abc967c58612170446fe4436b91e8",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_H1_BINOMIAL_PARAMETER_RELATION",
+      "step": "7P4와 7C5를 계산하여 목표 순열 값 6720을 얻고 nP5=6720의 자연수 n을 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e7d8d9adb5ccbaef26b913076811c88b94130511d165a862bda44c86e02e5bd5",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+      "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+      "step": "w²=w-1로 z=w-1의 세제곱이 1임을 얻어 연속 세 항씩 소거하고 나머지 한 항을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3dcea30ea689569a14b75e67ea90b02547209a2006240eb2169479a12fd5a071",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+      "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
+      "step": "c=0에서 두 지정 사분면을 모두 통과하는 조건 b>0을 판별한 뒤 a와 b의 비중복 선택 수를 곱한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2ab20c3c42d7be93288a5b1c1dc8fb035742041daef04d2dcc3e64e89574f3e6",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_GRAPH_PATH_COLOR",
+      "step": "행 길이가 6,5,3인 격자의 연속 행 구간별 직사각형 수에서 크기별 정사각형 수를 제외한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_65a4a872cb08d6dc909aa760f33763155f5b287eb29a84d208348744ab86ebcf",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "step": "a1=1,2,3으로 나누어 남은 합 조건의 순서쌍 수와 더 큰 두 수의 조합 수를 곱해 합한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_15ce50565d4b1f79d071f1a27cacb31c67f65e8d7b34d937fe8dde7050d2cb1a",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+      "step": "제곱근을 |2x+1|로 바꾸고 x=-1/2,2에서 구간을 나누어 부등식의 해를 합친다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    }
+  ]
+}

@@ -322,7 +322,11 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 왼쪽부터 A, M, B가 찍혀 있고 각각 165.5, 168.5, 171.5가 적혀 있다. A에서 M까지와 M에서 B까지에 각각 3이라는 중괄호 표시가 붙어 있다.",
+    "solutionImageCaption": "99% 신뢰구간의 반길이는 (171.5 - 165.5) ÷ 2 = 3이고, 주어진 표에서 z = 3.0을 쓴다. 3 = 3 × 16 ÷ √n이므로 √n = 16, n = 256. 따라서 답은 ④ 256이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -690,7 +694,11 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축이 z인 정규분포 곡선의 가운데 -1.5부터 0까지가 파란색, 0부터 1.5까지가 초록색으로 칠해져 있다.",
+    "solutionImageCaption": "표본평균의 표준편차는 1.2 ÷ √n이므로 7.76과 8.24는 표준화하면 ±0.2√n이 된다. 표에서 P(|Z| ≤ 1.5) = 2 × 0.43 = 0.86이므로 0.2√n ≥ 1.5, n ≥ 56.25이고 최소 자연수는 57. 따라서 답은 ② 57이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -735,7 +743,11 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 위 패널은 평균 350인 정규분포 곡선에서 330의 왼쪽 꼬리가 칠해져 있고, 아래 패널은 평균 200인 곡선에서 228의 오른쪽 꼬리가 칠해져 있다. 두 패널 모두 아래에 z축이 있다.",
+    "solutionImageCaption": "한 병의 부피를 표준화하면 330은 Z=-2이므로 불량 확률은 0.5-0.48=0.02이다. 불량품 수는 평균 200, 표준편차 14인 이항분포를 따르고 228을 표준화하면 2이므로 P(Z≥2)=0.5-0.48=0.02. 따라서 답은 ⑤ 0.02이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -869,7 +881,11 @@ window.questionBank = [
     "standardUnitOrder": 5,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_매산여고_2학기_기말_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선에 14와 16이 빈 동그라미로 표시되고 그 사이 구간이 굵게 칠해져 있으며, 축 이름이 m이다.",
+    "solutionImageCaption": "f(11) > f(21)은 11이 21보다 평균에 가깝다는 뜻이므로 m < 16이고, f(3) < f(25)는 m > 14이다. 14 < m < 16인 자연수는 15 하나. 따라서 답은 15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import crypto from "node:crypto";
+import { questionMetadataText, writeMetadataText } from "./question-metadata-format.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -52,7 +53,7 @@ function envelope(m,applied,at){m.generatedAt=at;m.reviewedPassCount=m.records.f
 function materialize(root,write=false){
   const mp=path.join(root,"archive/data/question_metadata.json"),m=JSON.parse(fs.readFileSync(mp,"utf8")),by=new Map();for(const r of m.records||[]){const k=`${norm(r.sourceArchiveFile)}#${+r.sourceOrdinal}`;if(by.has(k))throw new Error(`duplicate metadata ${k}`);by.set(k,r);}let mut=0,latest=null;const applied=[],stale=[];
   for(const f of payloads(root)){const rel=path.relative(root,f).split(path.sep).join("/"),p=JSON.parse(fs.readFileSync(f,"utf8"));if(!validate(p,rel))continue;const src=norm(p.sourceArchiveFile),sp=path.join(root,"archive/exams",src),bytes=fs.readFileSync(sp),expected=p.inputExamBlobSha||p.sourceExamBlobSha||p.sourceExamBlobSha1||"";if(expected&&blobSha(bytes)!==expected){stale.push(rel);continue;}if(qCount(bytes,sp)!==p.rows.length)throw new Error(`denominator drift ${rel}`);for(const r of p.rows){const k=`${src}#${+r.sourceOrdinal}`,cur=by.get(k);if(!cur)throw new Error(`metadata row missing ${k}`);const n=applyRow(cur,r,p,rel);if(!same(cur,n)){m.records[m.records.indexOf(cur)]=n;by.set(k,n);mut++;}}applied.push(rel);if(p.reviewedAtKst&&(!latest||p.reviewedAtKst>latest))latest=p.reviewedAtKst;}
-  if(mut)envelope(m,applied,latest||new Date().toISOString());const next=json(m),cur=fs.readFileSync(mp,"utf8").replace(/\r\n/g,"\n"),changed=next!==cur;if(write&&changed)fs.writeFileSync(mp,next,"utf8");return {status:changed?(write?"UPDATED":"STALE"):"PASS",mode:write?"WRITE":"CHECK",payloadCount:applied.length,metadataMutationCount:mut,stalePayloadCount:stale.length,stalePayloads:stale,questionMetadataChanged:changed};
+  if(mut)envelope(m,applied,latest||new Date().toISOString());const next=questionMetadataText(m),cur=fs.readFileSync(mp,"utf8").replace(/\r\n/g,"\n"),changed=next!==cur;if(write&&changed)writeMetadataText(root,next);return {status:changed?(write?"UPDATED":"STALE"):"PASS",mode:write?"WRITE":"CHECK",payloadCount:applied.length,metadataMutationCount:mut,stalePayloadCount:stale.length,stalePayloads:stale,questionMetadataChanged:changed};
 }
 function main(){const a=process.argv.slice(2),write=a.includes("--write"),check=a.includes("--check"),i=a.indexOf("--repo-root"),root=path.resolve(i>=0?a[i+1]:path.join(path.dirname(fileURLToPath(import.meta.url)),"../../.."));if(write===check)throw new Error("use exactly one of --write/--check");const r=materialize(root,write);console.log(JSON.stringify(r,null,2));if(check&&r.questionMetadataChanged)throw new Error("META_V2 production metadata is stale");}
 if(process.argv[1]&&pathToFileURL(path.resolve(process.argv[1])).href===import.meta.url)main();

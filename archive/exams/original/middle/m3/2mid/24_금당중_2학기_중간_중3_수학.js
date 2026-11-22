@@ -794,6 +794,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "반지름은 접점에서 접선과 수직이므로\n$OA\\perp PA$, $OB\\perp PB$, $OC\\perp QC$이다.\n\n점 $P$에서 그은 두 접선의 길이는 같으므로 $PA=PB$이다.\n또 $OA=OB$이고 두 삼각형 $OAP$, $OBP$는 직각삼각형이므로 합동이다.\n따라서\n$\\angle AOP=\\angle BOP$이고\n$\\angle BOP=\\dfrac12\\angle AOB$이다.\n그러므로 $(가)=\\angle BOP$이다.\n\n같은 방법으로 점 $Q$에서\n$\\angle BOQ=\\angle COQ$\n이므로\n$\\angle BOQ=\\dfrac12\\angle BOC$이다.\n\n따라서\n$x=\\angle BOP+\\angle BOQ$\n$=\\dfrac12(\\angle AOB+\\angle BOC)$이다.\n\n$A$, $O$, $C$는 한 직선 위에 있으므로\n$\\angle AOB+\\angle BOC=180^\\circ$이다.\n따라서\n$x=90^\\circ$이다.\n\n그러므로 $(가),(나),(다)$는\n$\\angle BOP,\\ \\dfrac12,\\ 90^\\circ$이고 정답은 ①이다.",
     "image": "assets/images/24_금당중_2학기_중간_중3_수학/q17.png",
+    "imageScale": 100,
     "imageSize": "tall",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",

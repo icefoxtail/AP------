@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-6a8e9dd9dfea-7b9c4efc",
+  "sourceArchiveFile": "original/high/h2/2mid/24_조대부고_2학기_중간_고2_수학II.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_21f297b71881feca7d80af975005dd691437ea50ebf379e3654112d99aa8f427",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_CONDITION_COMPOSITION",
+      "step": "그림의 좌우값 6과 −2를 읽고 제곱함수 연속 조건 (6−a)²=(−2−a)²로 a=2를 얻는다.",
+      "note": "문항·해설 직접 판독. 필수 원본 그림 Git blob 추출 후 시각 확인. PT만 적용. 제안 세부명: 평행이동 제곱으로 점프 상쇄. 불연속 좌우값의 중점을 이동량으로 정해 제곱된 값이 일치하도록 한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_da620c2daa2620404a090337054ec7c9564aca958e3471b8e7a1846e61ecf540",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+      "step": "증분 3h의 차분몫에서 f′(1)=2를 얻고 목표식을 h와 −2h 차분몫으로 나누어 3f′(1)=6을 구한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cf003a5be15068dba100eddd24180182c5d0ea856f29a5fe44af39e4fef50915",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+      "step": "그래프에서 좌우값을 각각 곱하고 빼어 1에서 곱극한 −1은 존재하지만 차는 불연속이며 −1에서 곱극한도 없음을 판정한다.",
+      "note": "문항·해설 직접 판독. 필수 원본 그림 Git blob 추출 후 시각 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bca528e4b8f84fc679d826621dd70224bb20fa6b63628d76423264ea258960ac",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MEAN_VALUE_THEOREM",
+      "templateKey": "TPL_MVT_ROLLE_DIRECT",
+      "step": "양끝 평균변화율 a+2를 도함수 6k²+a와 맞추어 두 내부점 ±1/√3의 곱 −1/3을 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e7603ce0455ea3584a4c241ad1df7ccae2a04072b1ebacecd4df9d968810fce7",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+      "templateKey": "TPL_LIMIT_POLYNOMIAL_RECONSTRUCTION",
+      "step": "무한대 최고차항과 −1의 이중근으로 f=(x+1)²(x+5)/4를 정하고 −3에서 접선 y=−x−1을 구한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9c35c7a69f16d83a49ff4cb19c5f4645636f6f5c252c76674cd71185308a8847",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+      "templateKey": "TPL_DIFFERENTIABILITY_POINT_CONDITION",
+      "step": "접선 절편 g=f−tf′=−2t³+3t²를 만든 뒤 2에서 값 −4와 기울기 −12를 오른쪽 직선에 맞춘다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9e2e2da38b13f9a09e63058e85dc8fdc53455e898057a31193cd70ce6b7c629b",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONT_DIFF_DEFINITION_PROOF",
+      "step": "2에서 양쪽 극한과 함숫값이 0임을 보인 뒤 정의 차분몫의 좌미분계수 2와 우미분계수 −2가 달라 미분불가능함을 증명한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_eaf119753935e52b4135c8c0490e7ddb0ae18325b40b6fbb78a330eeac520279",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+      "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+      "step": "도함수 3(x+1)(x−1)의 부호로 극대 −1,극소 1을 정하고 극댓값 조건으로 k=−1 및 극솟값 −3을 구한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a3d4333f115d6da3ee56ba80ab4eb89ab5a017a67f980f7a1422a732b9d29bc9",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_INFORMATION_SYSTEM",
+      "step": "차분비 극한으로 f와 g의 2에서 값과 도함수가 같음을 얻고 주어진 합의 값 16,도함수 6을 반분하여 일차함수 f를 정한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_529857075b99b9ceb06a10421aef2279457a2b084e2dad1f8124095a36496c2c",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+      "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+      "step": "극점 조건 b=−12−4a와 f−8x의 서로 다른 근 두 개 조건에서 기존 영점 0의 중복을 강제하여 a=−5,b=8을 구한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d5232165e61657c118129c67c752b4ecb0cdaab83e35b793cfded00c10ecb2a8",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_INFORMATION_SYSTEM",
+      "step": "f/x,g/x의 극한을 도함숫값 A,B로 바꾸어 같은 이차방정식 z²+(2k−1)z−4k=0을 얻고 서로 다른 두 근의 곱 −1=−4k를 적용한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}

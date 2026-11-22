@@ -1,0 +1,107 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -20.8,
+   24.8,
+   -20.8,
+   24.8
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "RATIONAL",
+    "numerator": [
+     "4",
+     "2"
+    ],
+    "denominator": [
+     "-2",
+     "1"
+    ],
+    "color": "BLUE",
+    "hideLabel": true
+   },
+   {
+    "id": "l1",
+    "kind": "LINE",
+    "coefficients": [
+     "4",
+     "-1"
+    ],
+    "domain": [
+     "-6",
+     "10"
+    ],
+    "style": "DASHED",
+    "color": "GREEN",
+    "label": "y=-x+4"
+   },
+   {
+    "id": "l2",
+    "kind": "LINE",
+    "coefficients": [
+     "0",
+     "1"
+    ],
+    "domain": [
+     "-6",
+     "10"
+    ],
+    "style": "DASHED",
+    "color": "WARM",
+    "label": "y=x"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "C",
+     "x": "2",
+     "y": "2",
+     "unnamed": true
+    },
+    {
+     "id": "F",
+     "x": "-4",
+     "y": "2/3",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cf",
+     "point": "F",
+     "text": "y=(2x+4)/(x-2)",
+     "labelKind": "MATH",
+     "direction": "W"
+    },
+    {
+     "id": "zC",
+     "point": "C",
+     "text": "(2,2)",
+     "labelKind": "MATH",
+     "direction": "NE"
+    }
+   ]
+  }
+ },
+ "caption": "y=(ax+b)/(x−2)=a+(2a+b)/(x−2)이므로 점근선은 x=2, y=a이고 대칭의 중심은 C(2,a)이다. 직선 y=−x+4(초록색 점선)가 C를 지나므로 a=2이다. y=8/x와 겹치므로 2a+b=8에서 b=4이다. 그림은 이 값으로 그린 y=(2x+4)/(x−2)이고, 주황색 점선 y=x도 C를 지난다. 따라서 a+b=6이고 답은 ①이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "a=2, b=4일 때 y=(2x+4)/(x−2)=2+8/(x−2)",
+   "mappedTo": "graphPlan.curves"
+  }
+ ],
+ "accessibilityDescription": "점근선 x=2, y=2를 가지는 파란색 유리함수 그래프이고 두 점근선의 교점을 기울기 −1, 1인 두 점선이 지난다.",
+ "newVisualInformation": [
+  "점근선 x=2, y=2와 중심 C(2,2)",
+  "중심을 지나는 두 대칭축"
+ ]
+}

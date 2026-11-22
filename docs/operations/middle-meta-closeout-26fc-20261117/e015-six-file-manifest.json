@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "e015-closed-two-publication-manifest-recovery-v1",
+  "status": "READY_FOR_ROOT_INTEGRATION_REQUIRED_PR_CI_REMAINS",
+  "baseCommit": "d40792bfd31aeab4d104bdde4b81dbbfbb088dd5",
+  "dependencyTree": "5dadbefbcd9eefe5eabcf31bedbf9a9c29527aab",
+  "frozenDraftManifestSha256": "2f2f57d9d339e1384d17559d4d475716e0f1901cf9d9f612ee0fb41f42fc7991",
+  "immutableCodeBackupSha256": "9822168147f8e9585686b56887d976447086c395ba0efb3d180e87f8c38b6666",
+  "repository": "icefoxtail/AP------",
+  "files": [
+    {
+      "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+      "beforeGit": "dfc382f28643fd5fe9e2ca6a719beddd42fc0c55",
+      "gitBlobSha1": "e99bbc85588ed42923aa5eb7b37b4a873c7e336d",
+      "sha256": "1ce9a82b73f048c557d42668f78a65b1135bbf7152846e971d4c8e98ac97a91b",
+      "bytes": 61532
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-e015-source-cc-continuity.mjs",
+      "beforeGit": null,
+      "gitBlobSha1": "b7360d81cac36c6aa98fff096fe2c99ff097a884",
+      "sha256": "642e52d64dfc463762696415fe78ad34da035ac934249624664120b5bd05ecde",
+      "bytes": 15616
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-source-reuse.mjs",
+      "beforeGit": "ba6d4fbde000817132f8ae3a53872450dffae601",
+      "gitBlobSha1": "6592154de3c976482637e1353c4a029fb74e5910",
+      "sha256": "506f6425a1533c1fe4bcf52270796468a026aba3d97ef5b34fd1fd17f8ada3fe",
+      "bytes": 57738
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m2-family3-problem-continuity.mjs",
+      "beforeGit": "a5c99894b705eac5a87a8e83dcdaa5d32d697d00",
+      "gitBlobSha1": "bb79804751f1bc925f2a75f8469702b79c9480d2",
+      "sha256": "2430a8e7a30762b8e1187a84c612c4c2672b4f60abc05d7ec54abb3c2cb2c295",
+      "bytes": 34003
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+      "beforeGit": "baa28462a9ba71555e7fffdaac1ab99418d90ec3",
+      "gitBlobSha1": "3e22cae3576ecd8c82f4669493e45f99b9bec421",
+      "sha256": "7530933b05b189e2b5ca8ebcc2c3ed593dd0e19982e86b534772c564e1c63893",
+      "bytes": 36630
+    },
+    {
+      "path": "tests/archive-e015-issued-source-continuity.test.mjs",
+      "beforeGit": null,
+      "gitBlobSha1": "28ee7c6bec9424898908228d581e3eb7c520ea74",
+      "sha256": "3e7405f55445b701bb9b1a951560fd7c13cc8e8acb2889a178c15decefefe57a",
+      "bytes": 10439
+    }
+  ],
+  "requiredCommands": [
+    {
+      "command": "node tests/archive-e015-issued-source-continuity.test.mjs",
+      "timeoutMs": 60000,
+      "owner": "root"
+    }
+  ],
+  "validation": {
+    "focusedPrivateTokenCases": {
+      "passed": 32,
+      "failed": 0,
+      "ordinaryNativeExecutions": 0
+    },
+    "ordinaryNative": {
+      "passed": 2,
+      "selectedUids": [
+        "qid_v1_3c72535bb4d43798192918e723d32bd646b2415bde8c5e8ad872b445496b7bfd",
+        "qid_v1_76b2be613350f59166e128170c6f38b6150078c9ed44e727733d5de0bbf76942"
+      ],
+      "nonselectedQ10TamperRejected": true,
+      "observedOutcomeWitness": {
+        "gitBlobSha1": "647c6aa1869f773b5c738a33301a0612d258ccaf",
+        "sha256": "61e0f9a14b96b91bec65c84cbd6a8c725afc45eee4af2f2f692e4ceec24b6035",
+        "originalRawProofRecovered": false
+      }
+    },
+    "independentStaticReview": {
+      "owner": "/root/m3s2_release",
+      "sha256": "fa6f22694127288ee0c0e6c3609995a5b164f7baa6d048d68bdb94029476d64f",
+      "status": "STATIC_ACCEPT",
+      "newExecution": 0
+    },
+    "sourceClaimScope": {
+      "sha256": "271cf83514b974e7d346fc2ea37ed91a32e07e716aa880a9c80c7bac78305377",
+      "banks": 4,
+      "questionCount": 93,
+      "alreadyIssuedClaims": 2,
+      "scopeExpanded": false
+    }
+  },
+  "inputBoundaries": {
+    "selectedMetadataIdentityRuntimeExact": true,
+    "wholeSourceChangedOnlyQ10CcAppend": true,
+    "transportApprovalEffect": "NONE",
+    "privateTokenExpiresAfterSynchronousCallback": true,
+    "originalOrdinaryNativeAndRendererGuardsRetained": true,
+    "fixtureMissingReviewWasNotMainMissing": true,
+    "correctCurrentReviewGitBlobSha1": "ef208dcb4f0f0ebb6a6297c843099441c90bc679",
+    "rawReviewPublished": false,
+    "generatedSvgInput": "Private exact official function projection of three already-approved asset records; not actual persisted whole index",
+    "separateFinalWholeFixturePostHashManifest": "NOT_COMPLETED_BEFORE_ENVIRONMENT_DISCONNECTION"
+  },
+  "historyReachability": {
+    "inputCommit": "0352ae93718e3ffa0d456d545dfe9c85c306fdc5",
+    "verifiedRemoteHead": "refs/heads/archive-meta-source-input/m2s2-public4-source-cc-currentc57-r3-20261116",
+    "normalCiAndWriterFetchDepth": 0,
+    "independentRootConfirmation": true
+  },
+  "authority": {
+    "newApprovals": 0,
+    "newRegistrations": 0,
+    "newMathReviews": 0,
+    "newVisualReviews": 0,
+    "sourceEdits": 0,
+    "canonicalEdits": 0
+  },
+  "publication": {
+    "immutableCodeBlobsCreatedAndReadBack": true,
+    "branchWrites": 0,
+    "refWrites": 0,
+    "prWrites": 0,
+    "mainWrites": 0,
+    "remotePublisher": "root"
+  },
+  "remaining": [
+    "Root integrates the six exact blobs and its test runner entry into the final reviewed PR tree.",
+    "Required PR CI and eventual main writer determine current deployed behavior; no publication claim is inferred from local validation.",
+    "Recover M1S1 pending43 documentary metadata separately without rerunning 286 questions or claiming the old lost raw proof hash."
+  ]
+}

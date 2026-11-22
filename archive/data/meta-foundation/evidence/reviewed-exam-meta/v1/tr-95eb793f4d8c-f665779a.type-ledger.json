@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-95eb793f4d8c-f665779a",
+  "sourceArchiveFile": "original/high/h1/1mid/20_순천여고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_20b950fc462ee740376876547569ac0eb86a3040c5f572a9b0600a5bdc752599",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "step": "꼭짓점의 위치와 최솟값으로 완전제곱식의 계수를 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_51e7d4327c6ddce5c0d70eaa2a6477c20d771443928d4179d650b3be7f1980db",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+      "step": "실근 1을 인수로 뽑은 이차식에서 두 허근의 합과 곱을 얻어 세제곱합을 계산한다.",
+      "note": " 검사 오류: [{\"code\":\"CANONICAL_SUBUNIT_INVALID\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c9e02de19a138a6b766733fd77c0ac387cf73e40b322a7980ad50953e304f3f8",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "templateKey": "TPL_ABSOLUTE_INEQUALITY_EXTREMUM_SQUARE_BOUND",
+      "step": "조건을 대입한 식을 y⁴+2y²-1로 정리하고 비음수 항이 동시에 0인 경우 최솟값을 얻는다.",
+      "note": "TPL 제안: 제곱합 비음수에 의한 최솟값; 조건 소거 후 비음수 항들의 합으로 하한과 등호조건을 구한다. 새 TPL 제안: 조건을 대입한 식을 y⁴+2y²-1로 정리하고 비음수 항이 동시에 0인 경우 최솟값을 얻는다. 정의: 조건을 대입한 식을 y⁴+2y²-1로 정리하고 비음수 항이 동시에 0인 경우 최솟값을 얻는다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b8b7862808618fc86dfb6aaf027a7ca93957a2292fc1f683ee50ed64a6f8014c",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+      "step": "삼각형 넓이로 두 x절편 사이 거리를 구하고 대칭축으로 각각의 절편과 함수식을 복원한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

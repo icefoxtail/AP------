@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-2846f9ff1650-d460b0cd",
+  "sourceArchiveFile": "original/middle/m3/2mid/20_이수중_2학기_중간_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_1ab69506a82e75efce94f2bbd1eb5f0de9deb7b24c7b4d13ed0f7c5897856594",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "step": "45도직각삼각형의두직각변은8이므로빗변8√2이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8c02172e11eeec689111fe1c50134b19ff3ca61c7f22d256db267573570bf0b1",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "step": "tan60=√3>1이라는반례로탄젠트최댓값1주장을배제하며90도는미정의이다.",
+      "note": "원문 주의: 범위에90도를포함하지만tan90은미정의.⑤의단조진술은탄젠트가정의되는0≤A<90에서해석해야한다.②의최댓값1주장은반례로명백히거짓이므로판정은가능.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_944f8c2544014dc9e9c71d87e6c9c75a8d8e0090f948f5362dcea265ffc11d6d",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP",
+      "step": "표에서사인12=0.2079,코사인15=0.9659,탄젠트11=0.1944를읽어0.9794이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    }
+  ]
+}

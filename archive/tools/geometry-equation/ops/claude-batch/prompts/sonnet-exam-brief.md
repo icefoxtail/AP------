@@ -2,7 +2,7 @@
 - 결과 폴더는 rev가 아니라 .tmp/work/runs/<key>/exam-rev (루나 검수 보고 REVIEW.md, 판정표 TABLE.md, 시험지 엔진 공백 ENGINE_GAPS.md가 있으면 참고; 구현 원본 exam-impl).
 - 원문은 node로 읽고 파일은 UTF-8로 쓴다(PowerShell Get-Content 금지). OpenCode·deepseek·다른 모델 위임 금지. 손으로 SVG 작성 금지, 렌더는 render.mjs로만. 원본 JS·archive/assets·엔진 코드·git 수정 금지.
 - 각 qNN: figure-result.json status=ARCHIVE_BOUND, identity.questionUid = "<JS 파일명(확장자 제외)>|<id>" 먼저 확인.
-- 정답·보기 번호는 그림·alt에 넣지 않는다(그림 속 값이 곧 정답이어도 노출). caption 끝 "정답은 …이다." 형식 유지. 빗금 분수·영어 단어·겹친 라벨·틀린 축척은 고친다. caption·alt의 수식은 기호로(x, y, √, ², −, ≤; "엑스·와이·루트·곱하기·제곱"처럼 소리로 풀어 쓴 것은 고친다). $ LaTeX 금지.
+- 문제 그림은 정답·보기 번호를 그림·alt에 넣지 않는다. 해설 그림은 정답이 있어도 반려하지 않고 과정 정보를 최대한 넣는다(2026-11-17 사용자 결정). caption 끝 "정답은 …이다." 형식 유지. 빗금 분수·영어 단어·겹친 라벨·틀린 축척은 고친다. caption·alt의 수식은 기호로(x, y, √, ², −, ≤; "엑스·와이·루트·곱하기·제곱"처럼 소리로 풀어 쓴 것은 고친다). $ LaTeX 금지.
 - 구형 해설 그림(OLD_SVG/OLD_PNG)은 예외 없이 신형으로 재작업. KEEP_EXISTING은 기존 그림이 신형(NEW)일 때만. `node .tmp/work/exam-figs.cjs <JS>`로 분류를 뽑아 OLD 문항이 모두 REPLACE(못 그리면 UNSUPPORTED+빠진 엔진 기능)인지 확인. UPGRADE 문항은 qNN/compare.png를 열어 구형의 핵심 관계가 신형에 다 있는지 본다. 빠졌으면 plan을 고쳐 재렌더하고 compare를 다시 만든다(`PYTHONIOENCODING=utf-8 python .tmp/work/compare.py <구형 archive 경로> <qNN/out/figure-solution.svg> <qNN/compare.png>`).
 - 1학기 시험지(1mid·1final)는 함수 위주: 일차·이차함수(그래프, 꼭짓점·축, 최대·최소, 교점, 판별식과 직선의 위치 관계, 이차부등식 해 구간 등) 문항이 EXEMPT인데 그래프가 학생에게 도움이 되면 그림을 만든다(exam-impl의 qNN 구조를 본보기로 exam-rev/qNN에 item/plan/publish를 만들고 render.mjs로 렌더, figure.png 생성). 2학기 중간도 도형의 방정식(점·직선·원·이동) 문항에 그림이 도움이 되는데 빠진 것이 있으면 같은 방식으로 만든다.
 - 판정을 바꾸거나 문항을 추가·제외하면 exam-rev/TABLE.md 해당 행을 반드시 고친다(게시 스크립트가 읽는다. 형식 `| Q05 | REPLACE | 이유 |`, 판정 FIGURE/REPLACE/KEEP_EXISTING/EXEMPT/UNSUPPORTED/CONTENT). 게시에서 빼는 폴더는 `x-qNN-<사유>`로 이름을 바꾼다.

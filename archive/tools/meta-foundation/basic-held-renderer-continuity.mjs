@@ -105,6 +105,10 @@ function staticSvg(raw) {
       /url\s*\(/iu.test(svg.replace(/url\(\s*["']?#[A-Za-z0-9_.:-]+["']?\s*\)/giu, ''))) fail('unsupported SVG dependency');
 }
 
+// Render engine files may change after the capture; only their captured Git bytes are authenticated (user decision 2026-11-18).
+const isRenderEngineFile = p => p === "archive/engine.html" || p === "archive/mixed_engine.html" || p === "apmath/wrong_print_engine.html" ||
+  /^archive\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p) || /^archive\/(?:css|js)\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p) ||
+  /^apmath\/(?:css|js)\/student-navigation\.(?:css|js)$/.test(p);
 function uiReference(root, ref, expectedPath, checkout, live = false) {
   if (!exact(ref, ['commit', 'path', 'gitBlobSha1', 'sha256', 'bytes']) || ref.path !== expectedPath ||
       (checkout && ref.commit !== checkout) || !Number.isSafeInteger(ref.bytes) || ref.bytes <= 0) fail('UI immutable reference shape/checkout differs');
@@ -159,7 +163,7 @@ function studentUi(root, request, item, current, identity, evidence, afterImage)
   if (!Array.isArray(technical.servedFiles) || new Set(technical.servedFiles.map(r => r.path)).size !== technical.servedFiles.length ||
       technical.servedFiles.filter(r => r.path === 'archive/engine.html').length !== 1) fail('UI renderer code inventory differs');
   const codeRefs = technical.servedFiles.filter(r => !r.path.startsWith('archive/data/') && !r.path.startsWith('archive/exams/') && /\.(?:html|css|js|mjs|cjs|woff2?|ttf)$/u.test(r.path));
-  for (const ref of codeRefs) uiReference(root, ref, ref.path, technical.checkoutCommit, true);
+  for (const ref of codeRefs) uiReference(root, ref, ref.path, technical.checkoutCommit, !isRenderEngineFile(ref.path));
   const screenshots = [];
   for (const [index, result] of technical.results.entries()) {
     const capture = result.capture, state = result.technical, height = capture?.content?.height;

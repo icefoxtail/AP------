@@ -3,6 +3,37 @@
 set -euo pipefail
 work="${RUNNER_TEMP:-/tmp}/archive-four-slot"
 mkdir -p "$work"
+# Stage timing (instrumentation only; never changes what runs). One JSON line per stage in stage-times.jsonl, a
+# copy on stderr, so stdout that later steps parse is untouched. The writer reads
+# the file; a failing command still records its stage through the EXIT trap.
+stage_log="$work/stage-times.jsonl"
+: > "$stage_log" 2>/dev/null || true
+stage_name=''
+stage_start=0
+stage_rc=''
+now_ms() {
+  local t
+  t=$(date +%s%3N 2>/dev/null) || t=''
+  [[ "$t" =~ ^[0-9]+$ ]] || t=$(( $(date +%s 2>/dev/null || echo 0) * 1000 ))
+  printf '%s' "$t"
+}
+# Recording is best effort: nothing in here may fail the script or change its exit code, even when $work is
+# not writable. A failing command still records its own exit code through the EXIT trap.
+stage_end() {
+  [[ -n "$stage_name" ]] || return 0
+  local code="${stage_rc:-${1:-0}}" ms=0 adj=''
+  ms=$(( $(now_ms) - stage_start )) 2>/dev/null || ms=0
+  # The wall clock can be stepped back mid-stage (runner clock sync). A negative duration is meaningless: record 0 and
+  # mark it so the number is not mistaken for a real zero.
+  if (( ms < 0 )) 2>/dev/null; then ms=0; adj=',"clockAdjusted":true'; fi
+  { printf '{"stage":"%s","durationMs":%s,"exitCode":%s%s}\n' "$stage_name" "$ms" "$code" "$adj" >> "$stage_log"; } 2>/dev/null || true
+  printf '[stage-time] %s %sms exit=%s\n' "$stage_name" "$ms" "$code" >&2 2>/dev/null || true
+  stage_name=''
+  stage_rc=''
+  return 0
+}
+stage() { stage_end 0; stage_name="$1"; stage_start=$(now_ms) || stage_start=0; return 0; }
+trap 'rc=$?; stage_end "$rc"; exit "$rc"' EXIT
 cat > "$work/commit.paths" <<'PATHS'
 archive/data/item-4slot-index.json
 .archive-meta-register/auto/4slot/last-verification.json
@@ -12,10 +43,14 @@ if [[ "$(node -p "JSON.parse(require('fs').readFileSync('.archive-meta-register/
   echo '4slot registration disabled; authored data and existing outputs preserved.'
   exit 0
 fi
+stage build-write
 node tools/4slot/build-4slot-runtime.cjs --write --report "$work/report.json" > "$work/build.log"
 # Re-derive from source inputs, not just from cached generated rows.
+stage check-full-rebuild
 node tools/4slot/build-4slot-runtime.cjs --check --report "$work/verify.json" > "$work/verify.log"
+stage replay-reuse-cache
 node tools/4slot/build-4slot-runtime.cjs --report "$work/replay.json" > "$work/replay.log"
+stage receipt-proof
 node - "$work" <<'JS'
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const {execFileSync}=require('node:child_process');
@@ -37,8 +72,10 @@ if(fs.existsSync(receipt)){
 }
 console.log(JSON.stringify(proof,null,2));
 JS
+stage git-diff-guards
 git diff --check
-git diff --exit-code -- archive/exams archive/data/item-4slot archive/data/question_metadata.json archive/data/meta-foundation/runtime
+git diff --exit-code -- archive/exams archive/data/item-4slot archive/data/question-metadata/v1 archive/data/meta-foundation/runtime
+stage path-allowlist
 python - "$work/commit.paths" <<'PY'
 import fnmatch,subprocess,sys
 patterns=[x.strip() for x in open(sys.argv[1]) if x.strip() and not x.startswith('#')]

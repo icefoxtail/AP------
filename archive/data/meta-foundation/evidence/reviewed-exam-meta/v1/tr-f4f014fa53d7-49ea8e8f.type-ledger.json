@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-f4f014fa53d7-49ea8e8f",
+  "sourceArchiveFile": "original/high/h1/1mid/20_금당고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_ed47de2dd0c57d188f8bf8ef1af44624d81840f0b311b1da8034fdb035bc8916",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT",
+      "step": "x+1이 인수이므로 P(-1)=6-a=0을 적용한다.",
+      "note": "새 TPL 제안: 일차인수의 영점 대입. 정의: 일차인수 조건을 영점의 함수값 0으로 바꾸어 계수를 결정한다. 새 TPL 제안: x+1이 인수이므로 P(-1)=6-a=0을 적용한다. 정의: x+1이 인수이므로 P(-1)=6-a=0을 적용한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a8b7743ae7c91466734c25f5237a39bf5a40aa8b1ba1c5e835eb8e86628d2e84",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "step": "전역 최솟값 위치로 축 x=6을 정하고 근 20의 대칭근 -8로 f=a(x-20)(x+8)을 복원한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

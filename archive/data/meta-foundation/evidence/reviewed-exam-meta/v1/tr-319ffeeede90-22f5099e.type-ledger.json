@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-319ffeeede90-22f5099e",
+  "sourceArchiveFile": "similar/high/h1/1mid/26_매산고_1학기_중간_고1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_5da80ebb683392babd2ee76e462b3e3af348396b1f3b120971bb4f96e01e4b3e",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "step": "나눗셈 항등식에 제수의 근 x=3을 대입해 R을 구한 뒤 x=2를 대입해 Q(2)를 구한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. 도구 후보 밖이지만 ACTIVE 정의와 직접 읽은 풀이 단계가 일치하여 판정함.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e0f4827513abf9f1f97895a2037e7fe2e80f1fe1a6dc6bf9404cce2313b8af4b",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "step": "f(4)=0으로 인수정리를 적용해 a를 구하고 남은 이차인수가 실수에서 기약임을 확인해 두 인수를 정한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. 도구 후보 밖이지만 ACTIVE 정의와 직접 읽은 풀이 단계가 일치하여 판정함.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_42ff85f6a1be4a9c9024529c7fe9c1a8d6d402de7ae671607b5772ecf3d704af",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "step": "x축과 교점이 있다는 조건을 판별식 0 이상으로 바꾸어 m의 상한을 구한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0f939c814cd8169cbdc5a6d5a90abbb44029c4a5686b9718a81058925d9068ac",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "step": "교점의 두 x좌표와 최고차항 계수로 f−g를 인수형으로 복원하고 완전제곱형의 꼭짓점을 구한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. 도구 후보 밖이지만 ACTIVE 정의와 직접 읽은 풀이 단계가 일치하여 판정함.",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_07fd7988cb56d583d380cd7f6bc35a6f47bb45b698c9f0b71ee46f0679ed65e0",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+      "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+      "step": "분모를 실수화한 z에서 z²=i를 얻고 식을 √2 z의 n+1제곱으로 바꾸어 실수가 되는 주기적 지수를 센다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e5e741e605c4d2d0e754f34963481c2427c22a467a2f3d9a5ccc167ee7c0c5d1",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+      "step": "두 포물선이 수평선과 각각 두 교점을 갖는 높이 범위를 구하고 공통 교점 높이는 제외한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. 도구 후보 밖이지만 ACTIVE 정의와 직접 읽은 풀이 단계가 일치하여 판정함.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9a91b0012242517c3bcc0841284369b4b6a576b1e0081a2a1784a1ca971b9818",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+      "step": "세 실근 조건을 두 수평선 중 하나가 꼭짓점에 접하는 조건으로 바꾸고 t의 두 값 대칭성과 높이로 함수를 복원한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    }
+  ]
+}

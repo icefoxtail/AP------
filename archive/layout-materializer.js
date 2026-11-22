@@ -33,16 +33,39 @@
     // SNAPSHOT_COMMON_HARD_GATE:S12 and the whole exam renders nothing, which is
     // worse for students than one 1-column page.
     const SOL_FIT_MAX_LEVEL = 4;
+    // 2026-11-22: 글자 단계(1~4)로도 안 맞는 해설 하나 때문에 해설지 전체가 실패하지 않도록, 그 상자만 data-sol-shrink 1~5단계
+    // (CSS zoom 0.92~0.6)로 칸 안에 줄여 넣는다. 스타일 속성이 아니라 data 속성이라 상자 스타일을 되돌려도 남는다.
+    const SOL_SHRINK_MAX_LEVEL = 5;
+    // MathJax 늘임표(\overline 등)의 안 보이는 공백(mjx-spacer)이 상자 오른쪽으로 몇 px 삐져나와 가로 넘침으로 잡히는 경우가 많다
+    // (오른쪽 끝에서 줄이 끝나는 \overline). 그 상자에 한해 공백을 paint 안에 가둔다(보이는 선은 그대로, 시험지 쪽 data-ap-mjx-clip과 같은 규칙).
+    function clipStretchySpacers(box) {
+        if (typeof box?.setAttribute !== 'function' || typeof box.querySelector !== 'function') return false;
+        if (box.getAttribute?.('data-ap-mjx-clip') || !box.querySelector('mjx-stretchy-h')) return false;
+        box.setAttribute('data-ap-mjx-clip', '1');
+        return true;
+    }
     function fitSolutionToNarrowColumn(box, column) {
         if (!hasHorizontalSolutionOverflow(box, column)) return true;
+        if (clipStretchySpacers(box) && !hasHorizontalSolutionOverflow(box, column)) return true;
         box.classList.add('sol-fit-narrow');
         let level = Number(box.dataset.solFit || 0);
+        let shrink = Number(box.dataset.solShrink || 0);
         while (hasHorizontalSolutionOverflow(box, column)) {
-            if (level >= SOL_FIT_MAX_LEVEL) return false;
-            level += 1;
-            box.dataset.solFit = String(level);
+            if (level < SOL_FIT_MAX_LEVEL) { level += 1; box.dataset.solFit = String(level); continue; }
+            if (shrink >= SOL_SHRINK_MAX_LEVEL) return false;
+            shrink += 1;
+            box.dataset.solShrink = String(shrink);
         }
         return true;
+    }
+    // 학생 화면에 "줄여서 표시했습니다"를 알릴 상자: 글자 단계 1 이상 또는 zoom 축소가 걸린 해설.
+    function solutionWasShrunk(box) {
+        return Number(box?.dataset?.solFit || 0) >= 1 || Number(box?.dataset?.solShrink || 0) >= 1;
+    }
+    function notifySolutionShrunk(numbers) {
+        const list = [...new Set(numbers.filter(Number.isFinite))].sort((a, b) => a - b);
+        if (!list.length) return;
+        try { global.APArchiveRenderFeedback?.notice?.(`${list.join('번, ')}번 해설이 칸을 넘어 줄여서 표시했습니다.`); } catch (error) { /* 알림 실패가 출력을 막지 않는다 */ }
     }
     function describeHorizontalOverflow(box, column) {
         const boxRight = box.getBoundingClientRect().right;
@@ -61,6 +84,7 @@
         } catch (error) { /* diagnostics must never break rendering */ }
         box.classList.remove('sol-fit-narrow');
         delete box.dataset.solFit;
+        delete box.dataset.solShrink;
         box.style.cssText = originalStyle;
         block.fullWidth = true;
     }
@@ -85,6 +109,19 @@
         if (Number.isFinite(activeCapacity) && activeCapacity > 0) return activeCapacity;
         throw new Error('INVALID_MEASURED_SOLUTION_HEIGHT');
     }
+    // 글자·그림을 가장 작게(fit-micro) 해도 칸 안에서 잘리는 문항(readiness와 같은 기준: 잘림 overflow + 스크롤 크기 > 칸 크기 + 3px).
+    function clippedExamBoxes(page) {
+        const view = page.ownerDocument?.defaultView || global;
+        const clips = value => value === 'hidden' || value === 'clip';
+        return [...page.querySelectorAll('.q-box')].filter(box => [box, ...box.querySelectorAll('*')].some(element => {
+            const tooTall = element.scrollHeight > element.clientHeight + 3, tooWide = element.scrollWidth > element.clientWidth + 3;
+            if (!tooTall && !tooWide) return false;
+            const style = view.getComputedStyle(element);
+            return (tooWide && clips(style.overflowX)) || (tooTall && clips(style.overflowY));
+        }));
+    }
+    // 2026-11-18: 배치 힌트(layoutTag·wide)를 입구에서 지우므로 모든 문항이 먼저 칸에 놓인다. 칸에 안 들어가 잘리는 문항만 한 단 전체로 올려
+    // 다시 쪽을 나눈다(글자는 fit-micro 10.8px 밑으로 내리지 않음). 한 단 전체로도 잘리면 잘린 채 숨기지 않고 LAYOUT_OVERFLOW로 보고하고 교사 화면에 표시한다.
     async function exam({ area, items, usableHeight, deps }) {
         const document = area.ownerDocument;
         items.forEach(item => assertQuestionImagesReady(item.box, deps));
@@ -92,32 +129,56 @@
             measurements: { raw: item.profile.proxyHeight_raw, tight: item.profile.proxyHeight_tight },
             layoutTag: ['fullwidth', 'subjective-2up', 'subjective-4up'].includes(item.q.layoutTag) ? item.q.layoutTag : '',
             columnSpan: item.q.layoutTag === 'fullwidth' ? 2 : 1 }));
-        const plan = global.APLayoutAuthority.planLegacyProductionLayout({ pageGeometry: { usableHeight, columns: 2, qpp: deps.appState.qpp, blockGap: deps.SE_BLOCK_GAP }, blocks });
         const byId = new Map(blocks.map((block, index) => [block.blockId, items[index].box]));
-        for (const pagePlan of plan.pages) {
-            const page = deps.makePage(area, 'exam', pagePlan.pageNo);
-            if (pagePlan.itemPlacements.some(item => item.columnSpan > 1)) {
-                const wide = document.createElement('div'); wide.style.cssText = 'flex:1; display:flex; flex-direction:column; padding:0 8px; min-height:0; overflow:hidden;';
-                for (const item of pagePlan.itemPlacements) wide.appendChild(byId.get(item.blockId));
-                page.body.appendChild(wide);
-            } else {
-                const cols = columns(page, document, '1 1 0');
-                const slots = pagePlan.itemPlacements.some(item => item.slotRowStart !== null && item.slotSpanRows > 1);
-                pagePlan.columns.forEach((column, index) => {
-                    if (!slots) { column.items.forEach(item => cols[index].appendChild(byId.get(item.blockId))); return; }
-                    for (let row = 0; row < plan.slotRows;) {
-                        const item = column.items.find(item => item.slotRowStart === row);
-                        if (item) { const node = byId.get(item.blockId); node.style.flex = `${item.slotSpanRows} 1 0`; cols[index].appendChild(node); row += item.slotSpanRows; }
-                        else { const spacer = document.createElement('div'); spacer.style.flex = '1 1 0'; cols[index].appendChild(spacer); row += 1; }
-                    }
-                });
+        const indexByBox = new Map(items.map((item, index) => [item.box, index]));
+        const promoted = new Set();
+        let plan, builtPages, overflow = [];
+        for (let pass = 0; ; pass += 1) {
+            promoted.forEach(index => { blocks[index].layoutTag = 'subjective-2up'; });
+            plan = global.APLayoutAuthority.planLegacyProductionLayout({ pageGeometry: { usableHeight, columns: 2, qpp: deps.appState.qpp, blockGap: deps.SE_BLOCK_GAP }, blocks });
+            builtPages = [];
+            items.forEach(item => {
+                item.box.classList.remove('fit-tight', 'fit-tighter', 'fit-micro');
+                item.box.querySelectorAll('img').forEach(img => img.classList.remove('img-fit-tight', 'img-fit-tighter', 'img-fit-micro'));
+                item.box.style.fontSize = ''; item.box.style.lineHeight = ''; item.box.style.flex = '';
+            });
+            for (const pagePlan of plan.pages) {
+                const page = deps.makePage(area, 'exam', pagePlan.pageNo);
+                builtPages.push(page);
+                if (pagePlan.itemPlacements.some(item => item.columnSpan > 1)) {
+                    const wide = document.createElement('div'); wide.style.cssText = 'flex:1; display:flex; flex-direction:column; padding:0 8px; min-height:0; overflow:hidden;';
+                    for (const item of pagePlan.itemPlacements) wide.appendChild(byId.get(item.blockId));
+                    page.body.appendChild(wide);
+                } else {
+                    const cols = columns(page, document, '1 1 0');
+                    const slots = pagePlan.itemPlacements.some(item => item.slotRowStart !== null && item.slotSpanRows > 1);
+                    pagePlan.columns.forEach((column, index) => {
+                        if (!slots) { column.items.forEach(item => cols[index].appendChild(byId.get(item.blockId))); return; }
+                        for (let row = 0; row < plan.slotRows;) {
+                            const item = column.items.find(item => item.slotRowStart === row);
+                            if (item) { const node = byId.get(item.blockId); node.style.flex = `${item.slotSpanRows} 1 0`; cols[index].appendChild(node); row += item.slotSpanRows; }
+                            else { const spacer = document.createElement('div'); spacer.style.flex = '1 1 0'; cols[index].appendChild(spacer); row += 1; }
+                        }
+                    });
+                }
+                if (deps.rendererMode() === 'legacy') await deps.typesetMath('exam-authority-page', [page]);
+                await deps.raf();
+                const boxes = [...page.querySelectorAll('.q-box')]; boxes.forEach(deps.fitQuestionBox);
+                if (page.body.scrollHeight > usableHeight + deps.SE_PAGE_TOLERANCE) { boxes.forEach(deps.autoCompress); await deps.raf(); }
             }
-            if (deps.rendererMode() === 'legacy') await deps.typesetMath('exam-authority-page', [page]);
-            await deps.raf();
-            const boxes = [...page.querySelectorAll('.q-box')]; boxes.forEach(deps.fitQuestionBox);
-            if (page.body.scrollHeight > usableHeight + deps.SE_PAGE_TOLERANCE) { boxes.forEach(deps.autoCompress); await deps.raf(); }
+            const clipped = builtPages.flatMap(clippedExamBoxes).map(box => indexByBox.get(box)).filter(index => index !== undefined);
+            const next = clipped.filter(index => !promoted.has(index));
+            if (next.length && pass < 3) {
+                next.forEach(index => promoted.add(index));
+                builtPages.forEach(page => page.remove());
+                continue;
+            }
+            overflow = clipped.map(index => ({ blockId: blocks[index].blockId, number: (items[index].box.querySelector('.q-num')?.textContent || '').trim() }));
+            clipped.forEach(index => { items[index].box.dataset.layoutOverflow = '1'; });
+            break;
         }
-        deps.onLayoutPlan?.({ mode: 'exam', planner: plan.planner, pages: plan.pages.length, measuredBeforePlacement: true, canonicalCloneCount: 0, plan });
+        overflow.forEach(entry => console.warn('[archive-layout] LAYOUT_OVERFLOW: 한 단 전체로도 잘리는 문항', entry));
+        deps.onLayoutPlan?.({ mode: 'exam', planner: plan.planner, pages: plan.pages.length, measuredBeforePlacement: true, canonicalCloneCount: 0, plan, promotedBlocks: [...promoted].map(index => blocks[index].blockId), layoutOverflow: overflow });
         return area;
     }
     function continuationBox(box, document) {
@@ -156,6 +217,17 @@
         const capacity = measuredSolutionCapacity(document, probePage);
         const records = [];
         let succeeded = false;
+        const shrunkNumbers = [];
+        // 전폭 칸에서도 넘치는 해설 하나가 해설지 전체를 막지 않게 한다(2026-11-22): 그 상자만 늘임표 공백 가두기 -> 줄바꿈·글자 단계 -> 축소로 맞추고,
+        // 그래도 남으면 경고만 남기고 그린다(감지는 그대로 두고 처리만 바꿈). 줄였으면 true(높이를 다시 잰다).
+        const fitFullWidthBox = (box, column, block) => {
+            if (!hasHorizontalSolutionOverflow(box, column)) return false;
+            fitSolutionToNarrowColumn(box, column);
+            if (hasHorizontalSolutionOverflow(box, column)) {
+                try { console.warn('[archive-solution] full-width fit failed; keeping this solution as is', { sourceRef: box.dataset.sourceRef, blockId: block.blockId, ...describeHorizontalOverflow(box, column) }); } catch (error) { /* diagnostics only */ }
+            }
+            return true;
+        };
         const flowHeight = (node, wide = false) => {
             const host = wide ? wideCol : cols[0];
             host.replaceChildren(node, marker);
@@ -170,9 +242,7 @@
                     if (fitSolutionToNarrowColumn(box, cols[0])) rawHeight = flowHeight(box, false);
                     else { promoteSolutionToFullWidth(box, cols[0], blocks[index], originalStyle); fullWidth = true; rawHeight = flowHeight(box, true); }
                 }
-                if (fullWidth && hasHorizontalSolutionOverflow(box, wideCol)) {
-                    throw new Error(`SOLUTION_HORIZONTAL_OVERFLOW_FULL_WIDTH:${blocks[index].blockId}`);
-                }
+                if (fullWidth && fitFullWidthBox(box, wideCol, blocks[index])) rawHeight = flowHeight(box, true);
                 deps.autoCompress(box);
                 let compressedHeight = flowHeight(box, fullWidth);
                 let compressedStyle = box.style.cssText;
@@ -188,17 +258,14 @@
                         promoteSolutionToFullWidth(box, cols[0], blocks[index], originalStyle);
                         fullWidth = true;
                         rawHeight = flowHeight(box, true);
-                        if (hasHorizontalSolutionOverflow(box, wideCol)) {
-                            throw new Error(`SOLUTION_HORIZONTAL_OVERFLOW_FULL_WIDTH:${blocks[index].blockId}`);
-                        }
+                        if (fitFullWidthBox(box, wideCol, blocks[index])) rawHeight = flowHeight(box, true);
                         deps.autoCompress(box);
                         compressedHeight = flowHeight(box, true);
                         compressedStyle = box.style.cssText;
                     }
                 }
-                if (fullWidth && hasHorizontalSolutionOverflow(box, wideCol)) {
-                    throw new Error(`SOLUTION_HORIZONTAL_OVERFLOW_FULL_WIDTH:${blocks[index].blockId}`);
-                }
+                if (fullWidth && fitFullWidthBox(box, wideCol, blocks[index])) { compressedHeight = flowHeight(box, true); compressedStyle = box.style.cssText; }
+                if (solutionWasShrunk(box)) shrunkNumbers.push(index + 1);
                 box.style.cssText = originalStyle; deps.stagingHost.appendChild(box);
                 const sourceRef = box.dataset.sourceRef;
                 const measurement = { raw: rawHeight, tight: compressedHeight };
@@ -325,6 +392,7 @@
             }
             deps.onLayoutPlan?.({ mode: 'sol', planner: plan.planner, pages: plan.pages.length, measuredBeforePlacement: true, canonicalCloneCount: 0, plan });
             succeeded = true;
+            notifySolutionShrunk(shrunkNumbers);
             return { usableHeight: capacity, placements };
         } finally {
             if (!succeeded) records.forEach(record => { if (record.chunks) deps.clearMath?.(record.chunks); });

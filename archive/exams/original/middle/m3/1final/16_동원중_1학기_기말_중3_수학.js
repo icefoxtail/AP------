@@ -608,7 +608,7 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "tags": [],
       "wide": false,
       "content": "<p>20. $a>0$, $p>0$, $q<0$일 때, 이차함수 $y=a(x-p)^2+q$의 그래프는? [4점]</p><p><img src=\"assets/images/16_동원중_1학기_기말_중3_수학/q20-problem-visual-v2.svg\" alt=\"①은 왼쪽 위쪽, ②는 오른쪽 위쪽 꼭짓점에서 위로 열린다. ③은 오른쪽 위에 꼭짓점이 있고 아래로, ④는 오른쪽 아래에서 아래로 열린다. ③과 ④는 x축 아래에서 y축을 지난다. ⑤는 오른쪽 아래에서 위로 열리고 y축의 양의 부분을 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",

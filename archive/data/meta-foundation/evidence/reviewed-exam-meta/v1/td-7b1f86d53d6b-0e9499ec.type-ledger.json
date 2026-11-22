@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-7b1f86d53d6b-0e9499ec",
+  "sourceArchiveFile": "original/high/h2/1mid/26_순천고_1학기_중간_고2_대수.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_06ad679322062e75d5fafb0712ec83bb422face1180d814e82899bd12945351c",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_CALCULATION",
+      "templateKey": "TPL_EXPONENT_RATIONAL_POWER_OPERATION",
+      "step": "밑을 2로 통일하여 유리수 지수의 곱을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_88246ef1385ea221a96f6a3b066840b946d45eab30c7eaf3d1ee15f6e9844394",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_CALCULATION",
+      "templateKey": "TPL_EXPONENT_RATIONAL_POWER_OPERATION",
+      "step": "켤레식의 곱을 세제곱근 안에서 계산하고 아홉제곱근을 같은 차수로 바꾼다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f7342a873d63a6b9f64ec4ba5f17ef2f74b5f8825a194f756305f8c14a31702e",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_DEFINITION",
+      "templateKey": "TPL_RADIAN_DEGREE_QUADRANT_JUDGMENT",
+      "step": "각도 단위를 변환하고 동경 대칭과 사분면을 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_314e714c042c9caf130b65f7cd4251cc61f81de379a17250e2975fa62321c017",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_DEFINITION",
+      "templateKey": "TPL_RADIAN_DEGREE_QUADRANT_JUDGMENT",
+      "step": "삼각함수의 합·곱 부호로 제4사분면을 정하고 각을 한 회전 안으로 환원한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c0b4444af48a980c89f56460e4c6ba5de85ba836aabfb9e1062a10b6bcd7125f",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_DOMAIN_ELIGIBILITY",
+      "templateKey": "TPL_LOG_BASE_ARGUMENT_INTEGER_DOMAIN",
+      "step": "진수 양수와 밑 양수·1 제외 조건의 교집합에서 정수를 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cca77078930483f5cb9bd8ad23de41af099ddcf3c0e500b8cc9436ce9dec7cab",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENTIAL_MONOTONIC_INEQUALITY",
+      "templateKey": "TPL_EXP_BASE_BELOW_ONE_COMPARISON",
+      "step": "음수 지수에서 함수값이 1보다 크려면 밑이 0과 1 사이임을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7e71a91b47010316c3e38672801ce58919136dc95eea44aae444b91a9056f4fd",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_IDENTITY_RELATIONS",
+      "templateKey": "TPL_TRIG_RATIONAL_IDENTITY_RECOVERY",
+      "step": "분자와 분모의 공통인자를 약분해 탄젠트값을 얻고 사분면 부호로 값을 복원한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2058ae022c8319b5710356b79ae216f2fc46610228016a7f82ebfe6d2cb1d025",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+      "templateKey": "TPL_RADIAN_SECTOR_GEOMETRY_COMPOSITE",
+      "step": "같은 중심각의 넓이 관계에서 피타고라스 삼각형을 정하고 호 길이 합으로 중심각과 넓이를 구한다.",
+      "note": "필요 TPL: 동일 중심각 부채꼴 넓이·호 길이 연립; 같은 중심각의 여러 부채꼴 넓이 관계와 반지름 조건을 결합해 호 길이 합에서 중심각·넓이를 결정한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5da35eb5792add5c1a40d9f694712263bb6b20efa0c03257b1e45bc2e1e6406a",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ROOT_INTEGER_FEASIBILITY",
+      "templateKey": "TPL_ROOT_INTEGER_EXPONENT_CASE_COUNT",
+      "step": "서로 다른 소수의 지수가 정수이려면 n이 분모 3,5,9의 공배수임을 이용한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

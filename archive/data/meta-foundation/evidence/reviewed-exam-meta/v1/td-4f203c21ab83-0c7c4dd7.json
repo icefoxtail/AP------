@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-4f203c21ab83-0c7c4dd7",
+  "requestSha256": "49aceb93032a88ff7b9fae709c9aea665fe0ad03b6d6d3df72bf8d6d7546f0aa",
+  "examUid": "24_여수고_1학기_중간_고1_기출",
+  "sourceArchiveFile": "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js",
+  "sourceBlobSha1": "8bd88ccb299eda7f954925d5e4bf9f05bf44b5dc",
+  "sourceRawSha256": "2ec4a2c8572b9a53fb298e5bcb73184345ef24bf8dc2426035b3927ef17847b6",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4f203c21ab83-0c7c4dd7.type-ledger.json",
+        "sha256": "6f1bc16728fd4c8cf251d03a36423a2039976c8f65cf911bd914c071b1d56b8e"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_364477db6e7b3c4402e9665516b486b7c2c3274821bec40a83efecfe54e79647",
+      "sourceArchiveFile": "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 23,
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-4f203c21ab83-0c7c4dd7",
+        "judge": "dots",
+        "rationale": "대칭축 x=5/2가 구간 오른쪽이므로 M=b, m=b−6이고 M=2m에서 b=12, 2a+b=17.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학1",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "9319c6da8577cb122c2ab22eb1c9da938a787ec518393abf53dc6cb9aef3f9bb",
+        "judgedContentFingerprint": "a41ffec2aab375269b8b0683811c4917af8a7eb169ba25f19237ac7706baa179",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "6255c33637068dc9d70573abf6b5846417ba3f78330d0ddeaee2132197bb46e5",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4f203c21ab83-0c7c4dd7.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+          "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+          "matchesRegistered": true
+        },
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}

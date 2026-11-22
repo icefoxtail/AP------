@@ -10,6 +10,7 @@ const core = require('../archive/archive2-core.js');
 const archiveSource = require('../archive/archive2-source.js');
 const Unified = require('../archive/archive2-unified-units.js');
 const { catalog, withTestAssignments } = require('./helpers/archive2-scope-harness.cjs');
+const { loadWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, 'archive', file), 'utf8');
@@ -66,10 +67,7 @@ function harness() {
     Archive2Source: archiveSource,
   });
   ctx.window = ctx;
-  const source = read('archive2-workspace.js');
-  const startup = source.lastIndexOf('  (async () => {');
-  assert.ok(startup > 0);
-  vm.runInContext(source.slice(0, startup) + `
+  loadWorkspace(ctx, `
     render = () => {};
     save = () => {};
     globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderComposition, renderCompose, renderResult, renderResultSummary,
@@ -80,7 +78,7 @@ function harness() {
         if (hooks.openSavedPaperAssign) openSavedPaperAssign = hooks.openSavedPaperAssign;
         if (hooks.api) api = hooks.api;
       }};
-  })();`, ctx);
+  `);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
   w.state.byUid = new Map(data.records.map(row => [row.questionUid, row]));
@@ -134,6 +132,34 @@ test('한 화면: 왼쪽은 조건(학년·과목·단원·단계·문항 수·�
   assert.doesNotMatch(right, /data-action="print"|data-action="save-paper"/);
 });
 
+test('고1 과목 두 단추: 처음에는 둘 다 켜져 있고(전체), 누른 과목이 남으며, 다른 단추로 둘 다 켜고, 마지막 하나는 끌 수 없다', async () => {
+  const { w, click } = harness();
+  w.state.filters = { grade: '고1', semanticSubject: '' };
+  const pressedOf = () => ['COMMON_MATH_1', 'COMMON_MATH_2'].map(subject =>
+    new RegExp(`data-subject="${subject}" aria-pressed="true"`).test(w.filterMarkup(w.state.filters, 'compose', 'primary')));
+  assert.deepEqual(pressedOf(), [true, true], '과목을 따로 고르지 않은 전체는 두 단추가 모두 눌린 상태');
+  // 처음 화면에서 한 단추를 누르면 그 과목이 결과에 남는다(누른 과목이 빠지면 결함).
+  await click({ action: 'compose-subject', subject: 'COMMON_MATH_1' });
+  assert.equal(w.state.filters.semanticSubject, 'COMMON_MATH_1', '둘 다 켜진 처음 화면에서 공통수학1을 누르면 공통수학1이 남는다');
+  assert.deepEqual(pressedOf(), [true, false]);
+  await click({ action: 'compose-subject', subject: 'COMMON_MATH_1' });
+  assert.equal(w.state.filters.semanticSubject, 'COMMON_MATH_1', '마지막 하나는 끌 수 없다: 누르면 아무 일도 없다');
+  assert.deepEqual(pressedOf(), [true, false]);
+  await click({ action: 'compose-subject', subject: 'COMMON_MATH_2' });
+  assert.equal(w.state.filters.semanticSubject, '', '공통수학1만 켜진 상태에서 공통수학2를 누르면 둘 다 켜진다(1년 전체)');
+  assert.deepEqual(pressedOf(), [true, true]);
+  await click({ action: 'compose-subject', subject: 'COMMON_MATH_2' });
+  assert.equal(w.state.filters.semanticSubject, 'COMMON_MATH_2', '둘 다 켜진 상태에서 공통수학2를 누르면 공통수학2만 남는다');
+  assert.deepEqual(pressedOf(), [false, true]);
+  await click({ action: 'compose-subject', subject: 'COMMON_MATH_2' });
+  assert.equal(w.state.filters.semanticSubject, 'COMMON_MATH_2', '공통수학2만 켜진 상태에서 그 단추를 다시 눌러도 그대로다');
+  await click({ action: 'compose-subject', subject: 'COMMON_MATH_1' });
+  assert.equal(w.state.filters.semanticSubject, '', '공통수학2만 켜진 상태에서 공통수학1을 누르면 둘 다 켜진다');
+  // 둘 다 켠 상태의 단원 목록은 두 과목 묶음을 모두 담는다.
+  const groups = new Set(w.scopeOptions().map(scope => scope.L1));
+  assert.ok(groups.size >= 2, '전체는 두 과목 묶음');
+});
+
 test('고2·고3 여러 과목은 칩, 학년 버튼은 학년을 바꾸고 단원 선택을 비운다', async () => {
   const { w, click } = harness();
   w.state.filters = { grade: '고2', semanticSubject: 'ALGEBRA' };
@@ -146,7 +172,7 @@ test('고2·고3 여러 과목은 칩, 학년 버튼은 학년을 바꾸고 단�
   assert.equal(w.state.filters.grade, '고1');
   assert.deepEqual(plain(w.state.scopes), [], 'changing the grade clears the unit choice like the old select');
   await click({ action: 'compose-subject', subject: 'COMMON_MATH_2' });
-  assert.equal(w.state.filters.semanticSubject, 'COMMON_MATH_2');
+  assert.equal(w.state.filters.semanticSubject, 'COMMON_MATH_2', '둘 다 켜진 고1에서 공통수학2를 누르면 공통수학2가 남는다');
 });
 
 test('모자라도 막지 않는다: 버튼은 눌리고, 있는 만큼만 넣고, 어디가 얼마나 모자랐는지 알리며, 검증이 막지 않는다', () => {
@@ -651,7 +677,77 @@ test('K5b 모자라게 뽑은 문제지를 초안에서 복원해도 모자람 �
   assert.deepEqual(plain(w.state.composeShortage), []);
 });
 
+test('고1 과목 두 단추 사이에 밝은 구분선이 있어 둘 다 켜져도 단추 둘로 읽힌다', () => {
+  const css = fs.readFileSync(path.resolve(__dirname, '..', 'archive', 'archive2.css'), 'utf8');
+  assert.match(css, /\.cz-seg button \+ button \{\s*border-left: 2px solid var\(--surface\);/);
+});
+
 test('the tests above shared one catalog and none of them changed it', () => {
   harness();
   assert.equal(catalogDigest(sharedCatalog), sharedCatalogDigest);
+});
+
+// 고1 과목 단추: 문제지를 만들기 전에 고른 단원은 새 과목 범위 안에 있으면 남고, 범위 밖이 된 것만 알림과 함께 빠진다.
+// 이유: 단원만 고른 상태에서 과목 단추를 바꾸면 고른 단원이 안내 없이 전부 사라졌다(2026-11-20 검수).
+function h1UnitsBySubject(w) {
+  w.state.filters = { grade: '고1', semanticSubject: '' };
+  const bySubject = value => w.scopeOptions().filter(scope => !scope.unclassified && scope.count > 0 && scope.key.split(':')[2] === value);
+  const first = bySubject('COMMON_MATH_1'), second = bySubject('COMMON_MATH_2');
+  assert.ok(first.length >= 2 && second.length >= 1, 'the test catalog lists units of both 고1 subjects');
+  return { first, second };
+}
+
+test('고1 과목 단추: 새 과목 범위 안에 있는 단원 선택은 남는다(둘 다 켜진 상태에서 한 과목을 눌러도, 다시 둘 다 켜도)', async () => {
+  const { w, click } = harness();
+  const { first } = h1UnitsBySubject(w);
+  w.state.scopes = [first[0].key, first[1].key];
+  await click({ action: 'compose-subject', subject: 'COMMON_MATH_1' });
+  assert.equal(w.state.filters.semanticSubject, 'COMMON_MATH_1');
+  assert.deepEqual(JSON.parse(JSON.stringify(w.state.scopes)), [first[0].key, first[1].key], '공통수학1 단원은 공통수학1만 켠 뒤에도 남는다');
+  assert.equal(w.state.scopeNotice, '', '뺀 것이 없으면 알리지 않는다');
+  await click({ action: 'compose-subject', subject: 'COMMON_MATH_2' });
+  assert.equal(w.state.filters.semanticSubject, '', '둘 다 켜짐');
+  assert.deepEqual(JSON.parse(JSON.stringify(w.state.scopes)), [first[0].key, first[1].key], '둘 다 켜도 고른 단원은 그대로');
+  assert.equal(w.state.scopeNotice, '');
+});
+
+test('고1 과목 단추: 범위 밖이 된 단원만 빼고, 뺀 개수를 기존 안내 자리(scopeNotice)로 알린다', async () => {
+  const { w, click } = harness();
+  const { first, second } = h1UnitsBySubject(w);
+  w.state.scopes = [first[0].key, first[1].key, second[0].key];
+  await click({ action: 'compose-subject', subject: 'COMMON_MATH_1' });
+  assert.deepEqual(JSON.parse(JSON.stringify(w.state.scopes)), [first[0].key, first[1].key], '공통수학2 단원만 범위 밖이라 빠진다');
+  assert.match(w.state.scopeNotice, /공통수학2 단원 1개는 .*범위 밖.*해제/);
+});
+
+test('고2 과목 칩·학년 버튼 전환은 지금처럼 단원 선택을 모두 비운다(알림 없음)', async () => {
+  const { w, click } = harness();
+  w.state.filters = { grade: '고2', semanticSubject: '' };
+  const units = w.scopeOptions().filter(scope => !scope.unclassified && scope.count > 0);
+  assert.ok(units.length > 0, 'a 고2 unit exists');
+  w.state.scopes = [units[0].key];
+  await click({ action: 'compose-subject', subject: units[0].key.split(':')[2] });
+  assert.deepEqual(JSON.parse(JSON.stringify(w.state.scopes)), [], '고2 전환은 기존 동작대로 비운다');
+  assert.equal(w.state.scopeNotice, '');
+  w.state.scopes = [h1UnitsBySubject(w).first[0].key];
+  await click({ action: 'compose-grade', grade: '중3' });
+  assert.deepEqual(JSON.parse(JSON.stringify(w.state.scopes)), []);
+});
+
+test('고1 과목을 좁혀 단원이 해제됐다는 안내가 뜬 뒤 "방금 문제지 되돌리기"를 누르면 단원이 돌아오고 안내는 사라진다', async () => {
+  const { w, click } = harness();
+  const { first, second } = h1UnitsBySubject(w);
+  w.state.view = 'compose';
+  w.state.scopes = [first[0].key, second[0].key];
+  w.state.distribution = 'pool';
+  w.state.count = 4;
+  w.generate();
+  assert.ok(w.state.selected.length > 0, 'a paper was built from both subjects');
+  await click({ action: 'compose-subject', subject: 'COMMON_MATH_1' });
+  assert.equal(w.state.selected.length, 0, '과목을 좁히면 결과가 지워진다');
+  assert.match(w.state.scopeNotice, /공통수학2 단원 1개는 .*범위 밖.*해제/);
+  await click({ action: 'restore-cleared' });
+  assert.deepEqual(JSON.parse(JSON.stringify(w.state.scopes)), [first[0].key, second[0].key], '되돌리면 두 과목의 단원이 모두 돌아온다');
+  assert.ok(w.state.selected.length > 0, '문제지도 돌아온다');
+  assert.equal(w.state.scopeNotice, '', '단원이 돌아왔으므로 해제 안내는 지운다');
 });

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-74433d22b40c-78c5e5c7",
+  "sourceArchiveFile": "similar/high/h2/1mid/24_금당고_1학기_중간_고2_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_1f184ba0b9e6eb92b07a16ee6f521312b318ea086cebc0f91e7a2a15c89aaa4e",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+      "templateKey": "TPL_H22A_01_ROOT_REAL_067",
+      "step": "세 번 곱하여 -27이 되는 실수 -3을 찾는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_67292de8351be37752ef75526812f1de811bc05c804ee13a1edf647c235ad434",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_EQUATION_DOMAIN",
+      "templateKey": "TPL_LOG_EQUATION_ARGUMENT_FILTER",
+      "step": "밑이 같은 로그의 진수를 같게 놓고 x=6의 양의 진수 조건을 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_99365f4641f46bb08083b392edcca39bcf6ae3c0500fe8b1ec2a6c623b908791",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_INEQUALITY_DOMAIN",
+      "templateKey": "TPL_LOG_QUADRATIC_INTERVAL_INTERSECTION",
+      "step": "로그를 t로 치환한 이차부등식의 해 1<t<3을 2<x<8로 복원해 자연수를 센다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8a4bc8529c9bcaaba5b85afd2bc269e8bdf1cc589816c34b22dd8b091107e7b8",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_EQUATION",
+      "templateKey": "TPL_TRIGONOMETRIC_EQUATION_SUBSTITUTION_ROOTS",
+      "step": "코사인의 이차식을 인수분해하고 주어진 구간의 각을 복원한다.",
+      "note": "검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1c0bcc7290ee5120b448019877694bcf703c353c2e70ee1234af3ea7c983e190",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+      "templateKey": "TPL_H22A_01_ROOT_REAL_068",
+      "step": "피제곱근의 부호와 n의 홀짝에 따라 실수 n제곱근의 개수를 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c5af3f13fd5e4139864e67edb92096d9a3fa811c7e72dcb4d294b1e6a9296987",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+      "step": "최대높이 수평선과의 두 교점 x=b/2,5b/2를 써 넓이와 기울기곱으로 a,b를 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cf74e4cf41e0a8545a6b81b08ea698b19b0e2d7eadd6894ac0156ebac6f91270",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_EQUATION",
+      "templateKey": "TPL_TRIGONOMETRIC_EQUATION_SUBSTITUTION_ROOTS",
+      "step": "각변환 후 코사인의 두 근에 대응하는 양의 해를 순서대로 세어 대칭구간에 여섯 근이 들어오는 경계를 구한다.",
+      "note": "source 해설의 4번째 양수근 표현은 3번째 양수근 4π/3의 오기이다. 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3659078e43ce6f172dd2a240dc982eb0e9a49181893dbf0c3f35114730262f28",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
+      "step": "지수와 로그의 대칭 및 기울기 -1인 직선의 내분관계로 B,C를 정하고 수평 교점 D와의 넓이를 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_79c167b579cdf0bad7f9e8910e04a3913f25c99f487f2d2b1b8c84d98047b6df",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+      "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+      "step": "밑을 5로 통일하여 a+b=2,a-b=1을 얻고 log₅5^(ab)=ab를 계산한다.",
+      "note": "source 실제값3/4인데 보기75 및 정답④와 표기가 불일치한다.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7d0d083324899e7dca4505643b98bbc2264187d70c1c4b474e88f5106026d664",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+      "step": "이동된 지수·로그 곡선의 대칭축과 기울기 -1 직선의 중점 및 삼각형 넓이 조건을 좌표식으로 연결한다.",
+      "note": "source 해설은 대칭축 y=x-3의 중점을 (3.5,3.5)로 잘못 정하고 직선을 임의 조정한다. 유형은 그래프 대칭·중점·넓이 관계로 판독 가능하다.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    }
+  ]
+}

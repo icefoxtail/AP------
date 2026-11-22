@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tc-0d4992d09dc0-7b5a9d38",
+  "requestSha256": "135898783a7da9e0f351ea36ae47fd602e7fc87bcbd3114803baf10cb5e0c75e",
+  "examUid": "23_부영여고_1학기_중간_고1_기출",
+  "sourceArchiveFile": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js",
+  "sourceBlobSha1": "da2b6088a9f03c04af2c36c63a0624b634611dfa",
+  "sourceRawSha256": "a2c794d62b72e85748d235b649bd450556010338c7ec3738cbcce6ee01c217e9",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-0d4992d09dc0-7b5a9d38.type-ledger.json",
+        "sha256": "8871c38677999cda3408539d963ef56ea897a07b256265727323d085caa0f6d8"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE"
+      },
+      "before": null,
+      "after": {
+        "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+        "parentProblemTypeKey": "PT_H1_FACTOR_THEOREM",
+        "canonicalLabelKo": "인수 조건과 몫의 값",
+        "definition": "인수정리로 계수를 정하고 알려진 일차인수를 나눈 뒤 남은 몫 또는 인수의 함숫값을 계산한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "H1_FOUNDATION",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_2c107f88430fa3af5dcb5f20770e2abbe1f86f721dbddacfe0d90982a1caf970"
+        ],
+        "sourceUnits": [
+          "H22-C-03"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "TYPE_BUNDLE_TABLE",
+            "bundle": "NTPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+            "bundleTable": {
+              "branch": "data/type-bundles-20261117",
+              "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+              "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+            }
+          }
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-0d4992d09dc0-7b5a9d38.type-ledger.json",
+          "sha256": "8871c38677999cda3408539d963ef56ea897a07b256265727323d085caa0f6d8"
+        }
+      ]
+    }
+  ],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_cea33bc611f1ffd65076b3c694623b847b40189ba73d8cac02852703639a56b6",
+      "sourceArchiveFile": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 22,
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tc-0d4992d09dc0-7b5a9d38",
+        "judge": "dots",
+        "rationale": "꼭짓점 x=k의 구간 [0,4] 안팎을 나누어 최솟값 6 조건을 적용하면 k=2,3만 남는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학(상)",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "35751f880da2520b6a78c8b7dc69250ad6cdb20ae9602bd383b288371fd3b46d",
+        "judgedContentFingerprint": "a65c8ac5a574f30fb909d639c107ac599dcefd09028afbff948cb209f3619159",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "b56fcf25632093ef79879ff800c54a458af06d011d1156b48d718a2cf02ca312",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-0d4992d09dc0-7b5a9d38.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+          "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+          "matchesRegistered": true
+        },
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "approved_semantic_review",
+          "templateStatus": "approved_semantic_review"
+        }
+      }
+    }
+  ],
+  "outputDigests": [
+    {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "sha256": "5c93b87bd5a22b7a6495ef38998d520b23e492cf0603398904e790d48720d435"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+      "sha256": "865f75ca7e8fa038e53005b8754d17c774cd69abc51fc19c6f278e7a7bc45983"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/registry_index.json",
+      "sha256": "f75af6ab5291c03d5a9b3183a4d477711dddd0f15b610cf08487f86976b9cc86"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json",
+      "sha256": "a23fd0c437461f3540bbe32c10270fbeabda06f393fe59880ddd67f1a4c030e3"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/h1-foundation/pack.json",
+      "sha256": "184a66c67a8676226c7864ba6856829e0c1ff6bac7965f1df026310b87a8a3fb"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/h1-foundation-v1.json",
+      "sha256": "2bbf1c53adecac090783e66bce011fe023e997a69d8b9196219362bae6e06f01"
+    }
+  ],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 22
+}

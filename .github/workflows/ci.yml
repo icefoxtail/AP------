@@ -15,10 +15,11 @@ on:
         required: true
         type: string
 
-# Keep each actual event's check names and verdict; newer events never cancel it.
+# A newer push to the same pull request cancels that PR's older run (runner capacity: 20 concurrent jobs).
+# main and manual runs keep one group per run and are never cancelled, so every main commit keeps its verdict.
 concurrency:
-  group: ${{ format('ci-{0}-{1}', github.event_name, github.run_id) }}
-  cancel-in-progress: false
+  group: ${{ github.event_name == 'pull_request' && format('ci-pr-{0}', github.event.pull_request.number) || format('ci-{0}-{1}', github.event_name, github.run_id) }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   plan:
@@ -43,9 +44,45 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
         run: node tools/ci/ci-tip-plan.mjs
 
+  # The single verdict named `test`. The full test scope runs as the `test-shards` matrix below (three
+  # deterministic shares of the same registry, tools/ci/test-shard.cjs); this job is the only one that keeps
+  # the old check name, and it fails when any shard failed, was cancelled/skipped or left no result.
   test:
+    needs: [plan, test-shards]
+    if: ${{ always() && needs.plan.outputs.run == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout the fixed aggregator
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.plan.outputs.checkout_ref }}
+          sparse-checkout: tools/ci
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+      - name: Download the shard results
+        if: always()
+        # A shard that died before writing its result leaves nothing to download; the aggregate step then names the gap.
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: test-shard-*
+          path: ${{ runner.temp }}/test-shard-results
+      - name: Aggregate the shard results into one verdict
+        env:
+          SHARDS_RESULT: ${{ needs.test-shards.result }}
+        run: node tools/ci/aggregate-test-shards.mjs --dir "$RUNNER_TEMP/test-shard-results" --shards-result "$SHARDS_RESULT"
+
+  test-shards:
     needs: plan
     if: needs.plan.outputs.run == 'true'
+    name: test (shard ${{ matrix.shard }}/3)
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
     runs-on: ubuntu-latest
     # Source PRs generate and verify their temporary projection, including one
     # bounded builder recovery, before running the unchanged full test scope.
@@ -62,11 +99,13 @@ jobs:
           ref: ${{ needs.plan.outputs.checkout_ref }}
           fetch-depth: 0
           persist-credentials: false
-
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
+
+      - name: Assemble question metadata (git holds its shards)
+        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
 
       - name: Classify the fixed snapshot impact
         id: scope
@@ -100,6 +139,7 @@ jobs:
             'eie/js/**/*.js' \
             'archive/unit-past-exams-core.js' \
             'archive/unit-past-exams.js' \
+            'archive/exam-source-reader.js' \
             'archive/tools/build-question-index.mjs' \
             'shared/js/*.js' \
             'tools/run-tests.js')
@@ -146,7 +186,7 @@ jobs:
           fs.appendFileSync(process.env.GITHUB_OUTPUT, `needed=${needed}\n`);
           NODE
 
-      - name: Prepare and verify PR registration data once
+      - name: Prepare and verify PR registration data (once per shard)
         if: github.event_name == 'pull_request' && steps.registration_scope.outputs.needed == 'true'
         id: registration_proof
         run: node tools/ci/archive-pr-registration-proof.mjs produce --proof-file "$RUNNER_TEMP/archive-pr-registration-proof/proof.json"
@@ -247,4 +287,16 @@ jobs:
       - name: Run tests
         env:
           ARCHIVE_PR_REGISTRATION_PROOF: ${{ steps.registration_proof.outputs.proof_file }}
-        run: node tools/run-tests.js --ci-scope "$RUNNER_TEMP/archive-ci-scope.json"
+          ARCHIVE_TEST_SHARD_RESULT: ${{ runner.temp }}/test-shard-result.json
+        run: node tools/run-tests.js --ci-scope "$RUNNER_TEMP/archive-ci-scope.json" --shard "${{ matrix.shard }}/${{ strategy.job-total }}"
+
+      - name: Upload this shard's result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-shard-${{ matrix.shard }}
+          path: ${{ runner.temp }}/test-shard-result.json
+          if-no-files-found: warn
+          retention-days: 7
+          # "Re-run failed jobs" uploads this name again in the same run; without this the upload would be refused.
+          overwrite: true

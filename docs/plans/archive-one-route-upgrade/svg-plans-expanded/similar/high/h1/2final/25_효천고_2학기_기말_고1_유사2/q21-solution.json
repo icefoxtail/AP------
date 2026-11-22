@@ -1,0 +1,41 @@
+{
+ "capability": "number-line-figure-v1",
+ "numberLine": {
+  "rows": [
+   {
+    "kind": "SET",
+    "pieces": [
+     {
+      "lo": {
+       "value": "0",
+       "state": "OPEN"
+      },
+      "hi": {
+       "value": "5",
+       "state": "OPEN"
+      }
+     }
+    ],
+    "integerPoints": true
+   }
+  ],
+  "variable": "a"
+ },
+ "numberLineCaption": {
+  "text": "a의 값의 범위"
+ },
+ "caption": "부정은 모든 실수 x에 대하여 x²−2(a−1)x+3a+1>0이고, 이는 판별식 D/4=a²−5a<0일 때 성립한다. a(a−5)<0에서 0<a<5이므로 수직선(그림의 x는 a를 뜻한다)에서 0과 5 사이의 정수 a는 1, 2, 3, 4이다. 따라서 정수 a는 4개이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "D/4=a²−5a<0, 0<a<5",
+   "mappedTo": [
+    "numberLine.rows"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "부정이 참이 되는 범위 0<a<5",
+  "범위 안의 정수 a 네 개"
+ ]
+}

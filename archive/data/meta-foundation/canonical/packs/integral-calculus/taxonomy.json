@@ -3,7 +3,7 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "problemTypeCount": 5,
-  "templateCount": 15,
+  "templateCount": 16,
   "problemTypes": [
     {
       "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
@@ -561,6 +561,35 @@
       ],
       "sourceUnit": "MATH2_INTEGRAL",
       "singleEvidence": false
+    },
+    {
+      "templateKey": "TPL_DEFINITE_INTEGRAL_OPERATION_INVERSE_AREA",
+      "parentProblemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "canonicalLabelKo": "역함수 적분 영역 합",
+      "definition": "원함수와 역함수의 그래프 대칭을 이용해 두 정적분의 합을 직사각형 넓이로 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "INTEGRAL_CALCULUS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_e7ba6e040854009b71c5cc6463455209d89d7f150a011ea9cfea4f29a6faf397",
+        "qid_v1_e7d525f1c2419341176d46f9049e971932d776692829a1ca29f45f999f4a4060"
+      ],
+      "sourceUnits": [
+        "H15-M2-08",
+        "H15-M2-09"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_DEFINITE_INTEGRAL_OPERATION_INVERSE_AREA",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
     }
   ],
   "foundationPack": "INTEGRAL_CALCULUS",

@@ -164,7 +164,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고1_유사/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 대칭축 T=2는 구간 [−1,1]의 오른쪽에 있다. 왼쪽 끝점 L은 축에서3, 오른쪽 끝점 R은1만큼 떨어져 있다. 위로 볼록한 포물선이므로 축에 가까운 쪽 값이 더 크다.",
+    "solutionImageCaption": "대칭축 T=2는 구간 [−1,1]의 오른쪽에 있다. 왼쪽 끝점 L은 축에서3, 오른쪽 끝점 R은1만큼 떨어져 있다. 위로 볼록한 포물선이므로 축에 가까운 쪽 값이 더 크다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -283,7 +287,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "<div>[중] 이차 정사각행렬 $A$ 의 성분이 $a_{ij} = \\begin{cases} i+j & (i=j) \\\\ i-j^{2} & (i \\n eq j) \\end{cases}$ 일 때, 보기 중 옳은 것만을 고른 것은? [4.5점]<br><div class='box'>&lt;보 기&gt;<br>ㄱ. 제 2열의 모든 성분의 합은 1이다.<br>ㄴ. 제 1행은 $(2, -3)$ 이다.<br>ㄷ. $a_{12}-2a_{11} = a_{21}$ 이다.</div></div>",
+    "content": "<div>[중] 이차 정사각행렬 $A$ 의 성분이 $a_{ij} = \\begin{cases} i+j & (i=j) \\\\ i-j^{2} & (i \\neq j) \\end{cases}$ 일 때, 보기 중 옳은 것만을 고른 것은? [4.5점]<br><div class='box'>&lt;보 기&gt;<br>ㄱ. 제 2열의 모든 성분의 합은 1이다.<br>ㄴ. 제 1행은 $(2, -3)$ 이다.<br>ㄷ. $a_{12}-2a_{11} = a_{21}$ 이다.</div></div>",
     "choices": [
       "ㄱ",
       "ㄴ, ㄷ",
@@ -292,7 +296,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "③",
-    "solution": "<b>[Logical Anchor]</b> 행렬 성분 정의에 따른 전개<br>$\\because a_{11}=2, a_{12}=1-4=-3, a_{21}=2-1=1, a_{22}=4$<br>$\\implies A = \\begin{pmatrix} 2 & -3 \\\\ 1 & 4 \\end{pmatrix}$<br>$\\implies ㄱ.  -3+4=1  (참)$<br>$\\implies ㄴ.  (2, -3)  (참)$<br>$\\implies ㄷ.  -3-2(2)=-7 \\n eq 1  (거짓)$<br>$\\therefore ㄱ, ㄴ$",
+    "solution": "<b>[Logical Anchor]</b> 행렬 성분 정의에 따른 전개<br>$\\because a_{11}=2, a_{12}=1-4=-3, a_{21}=2-1=1, a_{22}=4$<br>$\\implies A = \\begin{pmatrix} 2 & -3 \\\\ 1 & 4 \\end{pmatrix}$<br>$\\implies ㄱ.  -3+4=1  (참)$<br>$\\implies ㄴ.  (2, -3)  (참)$<br>$\\implies ㄷ.  -3-2(2)=-7 \\neq 1  (거짓)$<br>$\\therefore ㄱ, ㄴ$",
     "subUnitKey": "H22-A-09-MATRIX_BASIC",
     "subUnit": "행렬의 뜻과 표현",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -659,7 +663,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-05-EQUATION_APPLICATION",
     "subUnit": "방정식과 부등식의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고1_유사/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 지름 AB와 현 CD가 P에서 만난다. CP=10, DP=8이고 AB=26이다. 두 현의 교점 관계로 AP와 PB의 곱을 구하고, 두 길이의 합은 지름과 같다.",
+    "solutionImageCaption": "지름 AB와 현 CD가 P에서 만난다. CP=10, DP=8이고 AB=26이다. 두 현의 교점 관계로 AP와 PB의 곱을 구하고, 두 길이의 합은 지름과 같다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

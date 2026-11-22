@@ -724,7 +724,7 @@
       "sameMeaningAs": [
         "legacyLevel"
       ],
-      "note": "옛 3단계 난이도(하·중·상)"
+      "note": "옛 3단계 난이도(하·중·상). 새 문항에는 쓰지 않음(2026-11-18 사용자 결정), 기존 값은 보존"
     },
     {
       "name": "legacyLevel",
@@ -1047,7 +1047,14 @@
       "layer": "상태",
       "kind": "상태",
       "sameMeaningAs": [],
-      "note": "등록 요청의 승인 종류(META_PIPELINE_AUDIT·FINAL_QA·MAIN_MERGE)"
+      "note": "등록 요청의 승인 종류(META_PIPELINE_AUDIT·FINAL_QA·MAIN_MERGE). 단일 모델 초안 요청의 DRAFT_SINGLE_MODEL은 요청 단계의 이름이고 행에는 fieldStatus.<칸>=draft_single_model로 남는다"
+    },
+    {
+      "name": "typeApproval",
+      "layer": "기록·증거",
+      "kind": "증거",
+      "sameMeaningAs": [],
+      "note": "유형(PT/TPL) 전용 직접 판정 등록기(register-type-judgment.mjs, 승인 종류 DIRECT_JUDGMENT)만 쓰는 승인 기록 객체. 문항 한 줄에 하나이며 schemaVersion(archive-type-direct-judgment-approval-v1), approvalType, reviewPassCount, requestId, judge, rationale, scope{curriculum, standardCourse, curriculumSource, 필요하면 rowCourse·courseRelation}, judgedSourceFingerprint, judgedContentFingerprint, textBindingFingerprint(판정이 본 발문+보기의 text-v1 지문), rowBinding(exact·content·stale), resultSource, decisionRef, receipt, 시험지가 유형을 직접 적었으면 examEmbeddedType, priorType{problemTypeKey, templateKey, problemTypeStatus, templateStatus}를 담는다. problemTypeKey·templateKey와 fieldStatus.problemType·template(approved_direct_judgment)만 이 승인에 해당하며 단원·난이도·연결 개념 등 다른 칸의 승인이 아니다"
     },
     {
       "name": "semanticDisposition",

@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-09b3e71a5577-f29a6486",
+  "requestSha256": "603590ded7a8aafec1cfc82dc4772b5b6f18856d4f5c7fd219d138d91ac6b490",
+  "examUid": "23_금당고_1학기_기말_고2_수학II",
+  "sourceArchiveFile": "original/high/h2/1final/23_금당고_1학기_기말_고2_수학II.js",
+  "sourceBlobSha1": "608a65db86f831d0cbdb62607de29911b4763129",
+  "sourceRawSha256": "e0c84bb243fed42c4cada253f1a4ffbb0fb704e6a4177cb5f4e837edc9f0588f",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-09b3e71a5577-f29a6486.type-ledger.json",
+        "sha256": "778fac64eb957b96a3ca616b25790716ec36ecd7845b2a81c4e5760da4149ef6"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_8d08bae1168f634624304a231a6d5f3d569c45a55717b2761731229145ca5b33",
+      "sourceArchiveFile": "original/high/h2/1final/23_금당고_1학기_기말_고2_수학II.js",
+      "sourceOrdinal": 15,
+      "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+      "templateKey": "TPL_NONDIFFERENTIABILITY_STRUCTURE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-09b3e71a5577-f29a6486",
+        "judge": "dots",
+        "rationale": "절댓값 곱의 단순 영점에서만 미분불가능하므로 f의 중복근 구조를 결정하고 f'의 단순근을 찾는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "f32731c9c0d2af622206ae149ace16533e814309c25fcc8fc41a829737012704",
+        "judgedContentFingerprint": "af967fc70a2bf76d3e95acfebeb50002ead5f10e6f323a3de682b130fd133d80",
+        "rowBinding": "content",
+        "textBindingFingerprint": "ad8ec38b1ffdce37acd782fee60208c60b0626e0b9c063e39a6b844516cad7e8",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-09b3e71a5577-f29a6486.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 20
+}

@@ -20,7 +20,7 @@ PDF routine 대조, 재전사, OCR는 하지 않는다.
 전 qid의 source fidelity, 발문/보기/수식/질문 조판과 선택지 정합을 확인한다.
 모든 문항의 계산, 답, 해설을 확인하고 해설에서 필요한 추론을 명시한다.
 UID/sourceQid/provenance, standardUnit/subUnit과 source 연결을 확인한다.
-RPM L1-L4, CrossConcept/Condition/Integration/PT/TPL 및 난이도 근거를 확인한다. legacy level 하/중/상은 보존하고 difficultyBucket 1-5와 구분한다.
+RPM L1-L4, CrossConcept/Condition/Integration/PT/TPL 및 난이도 근거를 확인한다. 난이도는 difficultyBucket 1-5만 판정한다. 새 문항에 level 하/중/상은 쓰지 않고 기존 값은 지우지 않는다(2026-11-18 사용자 결정).
 근거가 미확정이면 정확한 EVIDENCE_DEBT를 기록하고 추정 키/NONE을 만들지 않는다.
 각 qid의 문제용 시각자료와 해설용 시각자료 필요성을 독립 판정한다.
 필요한 SVG는 기존 지원 renderer로 제작하고 geometry/semantic/asset 결속을 확인한다.

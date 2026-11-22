@@ -1,0 +1,4882 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "26_강남여고_1학기_2차_고2_대수_유사-candidate-v1",
+  "examUid": "26_강남여고_1학기_2차_고2_대수_유사",
+  "sourceArchiveFile": "archive/exams/similar/high/h2/1final/26_강남여고_1학기_2차_고2_대수_유사.js",
+  "expectedSourceBlobSha1": "aa838d1326031517f05e1ce7610aa50d4c2dd653",
+  "expectedQuestionCount": 25,
+  "approval": {
+    "type": "INDEPENDENT_REVIEW_GATE",
+    "metadataReviewed": true,
+    "approvedBy": "claude-similar-high-reviewer",
+    "reviewStatus": "reviewed_pass",
+    "reviewPassCount": 1,
+    "evidenceRefs": [
+      "archive/exams/similar/high/h2/1final/26_강남여고_1학기_2차_고2_대수_유사.review-receipt.json"
+    ]
+  },
+  "pipelineState": "INDEPENDENT_REVIEW_PASS",
+  "registryChanges": [
+    {
+      "registryPath": "archive/data/meta-foundation/extensions/similar-high/26_강남여고_1학기_2차_고2_대수_유사.registry.json",
+      "registrySha256": "734ef3a985e113d3dbb2b1ecfef81c94b5cc03177bb2966223bcf99f5c4bcbc1",
+      "keys": [
+        "EXT-L4-ALG-SEQUENCE-PARTIAL-SUM-GENERAL-TERM",
+        "EXT-CROSS-ARC-RATIO-CENTRAL-ANGLE-AREA-SUM",
+        "EXT-CROSS-CYCLIC-QUADRILATERAL-OPPOSITE-ANGLE-COSINE",
+        "EXT-CROSS-ARITHMETIC-ABSOLUTE-TERM-NEAREST-ZERO",
+        "EXT-CROSS-PARTIAL-SUM-CONSTANT-PAIR-TERM-ZERO",
+        "EXT-CROSS-ANNUITY-DUE-COMPOUND-TOTAL",
+        "EXT-CROSS-SINE-LINE-INTERSECTION-PERIODIC-X-COORDINATES",
+        "EXT-CROSS-SIGN-PATTERN-PERIOD-FOUR-BLOCK-SUM"
+      ],
+      "details": {
+        "generatedL4": [
+          {
+            "key": "EXT-L4-ALG-SEQUENCE-PARTIAL-SUM-GENERAL-TERM",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "부분합 S_n에서 일반항 구하기(a_1=S_1, n≥2에서 S_n−S_{n−1})",
+            "definition": "첫째항부터 제n항까지의 합 S_n이 n의 식으로 주어질 때 a_1=S_1, n≥2에서 a_n=S_n−S_{n−1}로 일반항을 구하고, 첫째항이 같은 식에 포함되는지 확인한 뒤 항의 값·부호·합을 구하는 유형.",
+            "parentRpmRecordId": "H2-M1-RPM-128",
+            "parentRpmL1": "수열",
+            "parentRpmL2": "수열의 합",
+            "parentRpmL3": "계차수열",
+            "parentRpmL4": "일반항 구하기",
+            "parentProblemTypeKey": "PT_H22A_07_DIFFERENCE_SEQUENCE",
+            "parentTemplateKey": "TPL_H22A_07_DIFFERENCE_SEQUENCE_128",
+            "standardUnitKey": "H22-A-07",
+            "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+            "standardCourse": "대수",
+            "curriculum": "2022",
+            "basis": "RPM \"계차수열 > 일반항 구하기\"는 계차 b_n=a_{n+1}−a_n으로 a_n을 구하는 유형이다. 부분합 S_n에서 S_n−S_{n−1}로 일반항을 구하고 n≥2 구분과 a_1=S_1을 따로 확인하는 유형을 구분하지 못하며, 마스터 RPM 대수에 부분합에서 일반항을 구하는 리프가 없다.",
+            "firstUsed": {
+              "stem": "26_강남여고_1학기_2차_고2_대수_유사",
+              "qid": 14
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-17",
+              "reviewRequired": true
+            },
+            "aliases": []
+          }
+        ],
+        "generatedCrossConcepts": [
+          {
+            "key": "EXT-CROSS-ARC-RATIO-CENTRAL-ANGLE-AREA-SUM",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "호의 길이의 비로 중심각을 구해 외심에서 나눈 세 삼각형의 넓이 합 구하기",
+            "definition": "원 위의 세 점이 나누는 호의 길이의 비가 주어지면 호의 길이가 중심각에 비례함을 이용해 360°를 그 비로 나누어 중심각을 구하고, 세 중심각이 모두 180°보다 작을 때 외심과 두 꼭짓점이 이루는 세 삼각형의 넓이 (1/2)r^2 sinθ를 더해 삼각형의 넓이를 구하는 개념.",
+            "parentKey": "CC_CIRCUMCIRCLE",
+            "parentLabelKo": "외접원",
+            "standardUnitKey": "H22-A-05",
+            "subUnitKey": "H22-A-05-CORE",
+            "standardCourse": "대수",
+            "curriculum": "2022",
+            "basis": "CC_CIRCUMCIRCLE은 외접원을 쓰는 것까지만 다루며, 호의 길이의 비를 중심각으로 바꾸는 단계와 중심각을 이용해 넓이를 세 부분으로 나누어 합하는 단계를 포함하지 않는다.",
+            "firstUsed": {
+              "stem": "26_강남여고_1학기_2차_고2_대수_유사",
+              "qid": 11
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-17",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-CROSS-CYCLIC-QUADRILATERAL-OPPOSITE-ANGLE-COSINE",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "원에 내접하는 사각형의 마주 보는 두 각의 코사인 값이 서로 반대임을 이용하기",
+            "definition": "원에 내접하는 사각형 ABCD에서 B+D=180°이므로 cosD=−cosB이다. 대각선으로 나눈 두 삼각형에 각각 코사인법칙을 적용한 식을 이 관계로 연립해 대각선의 길이와 각을 구하는 개념.",
+            "parentKey": "CC_QUADRILATERAL_AREA_TRIG",
+            "parentLabelKo": "사각형의 대각선 분할과 삼각비 넓이",
+            "standardUnitKey": "H22-A-05",
+            "subUnitKey": "H22-A-05-CORE",
+            "standardCourse": "대수",
+            "curriculum": "2022",
+            "basis": "CC_QUADRILATERAL_AREA_TRIG는 사각형을 대각선으로 나눈 삼각비 넓이를 다루며, 내접 사각형의 마주 보는 두 각의 코사인 관계로 대각선을 구하는 단계를 포함하지 않는다.",
+            "firstUsed": {
+              "stem": "26_강남여고_1학기_2차_고2_대수_유사",
+              "qid": 12
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-17",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-CROSS-ARITHMETIC-ABSOLUTE-TERM-NEAREST-ZERO",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "등차수열의 절댓값이 최소가 되는 항을 영점에 가장 가까운 자연수로 찾기",
+            "definition": "등차수열의 일반항이 a_n=p−qn 꼴일 때 |a_n|은 a_n=0이 되는 실수 n에 가장 가까운 자연수에서 최소가 되므로, 그 양쪽 두 자연수의 절댓값을 비교해 n을 정하는 개념.",
+            "parentKey": "CC_GENERAL_TERM",
+            "parentLabelKo": "일반항",
+            "standardUnitKey": "H22-A-06",
+            "subUnitKey": "H22-A-06-SEQUENCE_APPLICATION",
+            "standardCourse": "대수",
+            "curriculum": "2022",
+            "basis": "CC_GENERAL_TERM은 임의의 항을 나타내는 식 자체를 다루며, 절댓값의 최소를 영점에 가장 가까운 자연수 후보의 비교로 판정하는 단계를 포함하지 않는다.",
+            "firstUsed": {
+              "stem": "26_강남여고_1학기_2차_고2_대수_유사",
+              "qid": 16
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-17",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-CROSS-PARTIAL-SUM-CONSTANT-PAIR-TERM-ZERO",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "부분합이 일정하면 이웃한 두 항의 합이 0임을 이용하기",
+            "definition": "모든 자연수 n에 대하여 S_{2n}이 일정한 값이면 n≥2에서 S_{2n}−S_{2n−2}=a_{2n−1}+a_{2n}=0이므로 짝수 번째 항이 직전 홀수 번째 항의 부호를 바꾼 값이 된다. n=1일 때는 a_1+a_2=S_2로 따로 둔다는 개념.",
+            "parentKey": "CC_GENERAL_TERM",
+            "parentLabelKo": "일반항",
+            "standardUnitKey": "H22-A-06",
+            "subUnitKey": "H22-A-06-SEQUENCE_APPLICATION",
+            "standardCourse": "대수",
+            "curriculum": "2022",
+            "basis": "CC_GENERAL_TERM은 일반항 표현을 다루며, 두 부분합의 차로 이웃한 두 항의 합이 0이라는 관계를 읽어 내는 단계를 포함하지 않는다.",
+            "firstUsed": {
+              "stem": "26_강남여고_1학기_2차_고2_대수_유사",
+              "qid": 17
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-17",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-CROSS-ANNUITY-DUE-COMPOUND-TOTAL",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "복리로 매월 초에 적립하는 적금의 원리합계를 등비수열의 합으로 구하기",
+            "definition": "월 이율 r로 매월 초 일정액 P를 n개월 적립하면 각 납입금에 한 달씩 더 이자가 붙어 첫 항이 P(1+r), 공비가 1+r인 등비수열의 합 P(1+r){(1+r)^n−1}/r이 원리합계가 된다는 개념.",
+            "parentKey": "CC_GEOMETRIC_SEQUENCE",
+            "parentLabelKo": "등비수열",
+            "standardUnitKey": "H22-A-06",
+            "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+            "standardCourse": "대수",
+            "curriculum": "2022",
+            "basis": "CC_GEOMETRIC_SEQUENCE는 등비수열의 항 사이 관계를 다루며, 복리 적립에서 납입 시점마다 이자가 붙는 개월 수를 등비수열의 합으로 모델링하는 단계를 포함하지 않는다.",
+            "firstUsed": {
+              "stem": "26_강남여고_1학기_2차_고2_대수_유사",
+              "qid": 19
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-17",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-CROSS-SINE-LINE-INTERSECTION-PERIODIC-X-COORDINATES",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "사인곡선과 수평선 교점의 x좌표를 주기마다 반복되는 두 계열로 나타내기",
+            "definition": "y=sin(πx)와 y=c(0<c<1)의 교점의 x좌표는 주기 2마다 반복되는 x=2k+α, x=2k+(1−α) 두 계열이므로, 작은 것부터 나열한 a_n의 홀수 번째·짝수 번째 항을 각각 등차수열의 일반항으로 나타내는 개념.",
+            "parentKey": "CC_TRIGONOMETRIC_EQUATION",
+            "parentLabelKo": "삼각방정식",
+            "standardUnitKey": "H22-A-04",
+            "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+            "standardCourse": "대수",
+            "curriculum": "2022",
+            "basis": "CC_TRIGONOMETRIC_EQUATION은 삼각방정식의 기본 해법이며, 교점을 크기순으로 나열한 수열의 홀수·짝수 번째 항을 두 등차수열로 정리하는 단계를 포함하지 않는다. 기존 EXT-CROSS-SINE-NEGATIVE-HALF-PERIOD-LINE-INTERSECTION은 y<0 반주기에서 교점의 개수를 세는 개념이라 의미가 다르다.",
+            "firstUsed": {
+              "stem": "26_강남여고_1학기_2차_고2_대수_유사",
+              "qid": 20
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-17",
+              "reviewRequired": true
+            },
+            "aliases": []
+          },
+          {
+            "key": "EXT-CROSS-SIGN-PATTERN-PERIOD-FOUR-BLOCK-SUM",
+            "status": "GENERATED_ACTIVE",
+            "canonicalRpmPromotion": false,
+            "labelKo": "지수가 연속합인 (−1)의 거듭제곱의 부호가 4항 주기로 반복됨을 이용한 묶음 합",
+            "definition": "(−1)^{1+2+…+n}=(−1)^{n(n+1)/2}의 부호가 n=1,2,3,4에서 −,−,+,+이고 4항마다 반복됨을 찾아, 가중합 Σ n·a_n을 4항 묶음의 합과 남은 항의 합으로 나누어 구하는 개념.",
+            "parentKey": "CC_CYCLIC_EXPONENT_REDUCTION",
+            "parentLabelKo": "주기성을 이용한 지수 축약",
+            "standardUnitKey": "H22-A-07",
+            "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+            "standardCourse": "대수",
+            "curriculum": "2022",
+            "basis": "CC_CYCLIC_EXPONENT_REDUCTION은 지수를 주기로 줄이는 개념이며, 연속합 지수의 홀짝으로 부호 규칙을 찾고 n이 곱해진 묶음 합으로 시그마를 나누는 단계를 포함하지 않는다.",
+            "firstUsed": {
+              "stem": "26_강남여고_1학기_2차_고2_대수_유사",
+              "qid": 21
+            },
+            "provenance": {
+              "sourceExam": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+              "generator": "claude-similar-high-gen",
+              "createdAt": "2026-11-17",
+              "reviewRequired": true
+            },
+            "aliases": []
+          }
+        ]
+      }
+    }
+  ],
+  "items": [
+    {
+      "questionUid": 1,
+      "sourceOrdinal": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-05",
+        "standardUnit": "사인법칙과 코사인법칙",
+        "subUnitKey": "H22-A-05-CORE",
+        "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+        "conceptClusterKey": "H22-A-05-CORE",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-109"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각함수",
+          "l2": "삼각함수의 활용",
+          "l3": "사인법칙",
+          "l4": "외접원 반지름",
+          "recordId": "H2-M1-RPM-109",
+          "l3Label": "사인법칙",
+          "l4Label": "외접원 반지름",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-109"
+        },
+        "rpmPrimaryL1": "삼각함수",
+        "rpmPrimaryL2": "삼각함수의 활용",
+        "rpmPrimaryL3": "사인법칙",
+        "rpmPrimaryL4": "외접원 반지름",
+        "rpmPrimaryRecordId": "H2-M1-RPM-109",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "L3": "사인법칙",
+        "L4": "외접원 반지름",
+        "rpmL3": "사인법칙",
+        "rpmL4": "외접원 반지름",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_05_SINE_LAW",
+        "templateKey": "TPL_H22A_05_SINE_LAW_109",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 1,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "외접원 반지름이 주어진 사인법칙을 한 번 적용하는 기본 계산이라 하",
+        "difficultyBasis": "각 하나를 구하고 사인법칙에 한 번 대입하는 직접 적용형이라 1로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 원의 반지름·두 각의 크기를 글로 모두 주어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 내각의 합과 사인법칙의 식 전개로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "세 각 중 둘이 주어진 삼각형에서 나머지 각을 구하고 외접원의 지름을 이용해 사인법칙으로 한 변의 길이를 구한다.",
+          "crossConcept": "삼각형의 세 내각의 합이 180°임을 이용해 사인법칙에 필요한 각 B를 먼저 구한다.",
+          "condition": "별도 제한 조건 없음(근거: 발문·풀이에 수 범위 제약 없음).",
+          "integration": "각 B 구하기 → 사인법칙 적용으로 이어지는 SEQUENTIAL.",
+          "curriculum": "2022 개정 대수 삼각함수의 활용 > 사인법칙: 크로스워크 H2-M1-RPM-109(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 1,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 R=4, A=40°, C=80°, CA=4√3을 R=3, A=70°, C=50°, CA=3√3으로 바꿨다. 오답은 지름 대신 반지름 사용(√3), 사인값 오독, 각 B 계산 오류에서 만들었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "삼각형의 내각의 합으로 나머지 한 각을 구한 뒤, 외접원의 지름과 사인법칙 CA/sinB=2R로 변의 길이를 구한다.",
+      "decisiveStep": "$\\dfrac{CA}{\\sin B}=2R=6$에서 $CA=6\\sin60^\\circ$",
+      "variationNote": "원본 R=4, A=40°, C=80°, CA=4√3을 R=3, A=70°, C=50°, CA=3√3으로 바꿨다. 오답은 지름 대신 반지름 사용(√3), 사인값 오독, 각 B 계산 오류에서 만들었다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "각 하나를 구하고 사인법칙에 한 번 대입하는 직접 적용형이라 1로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_05_SINE_LAW",
+        "templateKey": "TPL_H22A_05_SINE_LAW_109"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "원",
+              "src": "stem",
+              "quote": "반지름의 길이가 $3$인 원"
+            },
+            {
+              "term": "반지름",
+              "src": "stem",
+              "quote": "반지름의 길이가"
+            },
+            {
+              "term": "삼각형",
+              "src": "stem",
+              "quote": "삼각형 $ABC$"
+            },
+            {
+              "term": "내접",
+              "src": "stem",
+              "quote": "내접하는"
+            },
+            {
+              "term": "각",
+              "src": "stem",
+              "quote": "\\angle A = 70^\\circ"
+            }
+          ],
+          "goal": [
+            {
+              "term": "길이",
+              "src": "stem",
+              "quote": "\\overline{CA}"
+            }
+          ],
+          "method": [
+            {
+              "term": "사인법칙",
+              "src": "solution",
+              "quote": "사인법칙에서",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "외접",
+              "src": "solution",
+              "quote": "외접원의 지름은",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "내각",
+              "src": "solution",
+              "quote": "\\angle B=180^\\circ-70^\\circ-50^\\circ",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "삼각비",
+              "src": "solution",
+              "quote": "\\sin60^\\circ",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "세 내각의 합으로 B를 구하고 외접원 지름과 사인법칙으로 CA를 정한다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q1: 원본 Q1의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-109",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 세 각 중 둘이 주어진 삼각형에서 나머지 각을 구하고 외접원의 지름을 이용해 사인법칙으로 한 변의 길이를 구한다. → 사인법칙>외접원 반지름; PT/TPL(PT_H22A_05_SINE_LAW,TPL_H22A_05_SINE_LAW_109)이 크로스워크 H2-M1-RPM-109의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 2,
+      "sourceOrdinal": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-05",
+        "standardUnit": "사인법칙과 코사인법칙",
+        "subUnitKey": "H22-A-05-CORE",
+        "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+        "conceptClusterKey": "H22-A-05-CORE",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-109"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각함수",
+          "l2": "삼각함수의 활용",
+          "l3": "사인법칙",
+          "l4": "외접원 반지름",
+          "recordId": "H2-M1-RPM-109",
+          "l3Label": "사인법칙",
+          "l4Label": "외접원 반지름",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-109"
+        },
+        "rpmPrimaryL1": "삼각함수",
+        "rpmPrimaryL2": "삼각함수의 활용",
+        "rpmPrimaryL3": "사인법칙",
+        "rpmPrimaryL4": "외접원 반지름",
+        "rpmPrimaryRecordId": "H2-M1-RPM-109",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "L3": "사인법칙",
+        "L4": "외접원 반지름",
+        "rpmL3": "사인법칙",
+        "rpmL4": "외접원 반지름",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_05_SINE_LAW",
+        "templateKey": "TPL_H22A_05_SINE_LAW_109",
+        "crossConceptKeys": [
+          "CC_CIRCLE_CIRCUMFERENCE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 2,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "원의 넓이 공식과 사인법칙을 각각 한 번씩만 쓰는 기본형이라 하",
+        "difficultyBasis": "원의 넓이로 반지름을 구한 뒤 사인법칙 한 번이면 끝나는 두 단계 직접 적용이라 1로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 외접원의 넓이와 변의 길이를 글로 완결하게 주어 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 원의 넓이와 사인법칙의 식 전개로 완결되어 그림 없이 따라갈 수 있다."
+        },
+        "metaRationale": {
+          "problemType": "외접원의 넓이로 반지름을 구하고 사인법칙으로 한 각의 사인값을 구한다.",
+          "crossConcept": "원의 넓이 πR²에서 외접원의 반지름 R을 역산한다.",
+          "condition": "별도 제한 조건 없음(근거: 풀이에 수 범위 제약 없음).",
+          "integration": "원의 넓이로 R 구하기 → 사인법칙의 순서로 SEQUENTIAL.",
+          "curriculum": "2022 개정 대수 삼각함수의 활용 > 사인법칙: 크로스워크 H2-M1-RPM-109(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 2,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 넓이 16π, BC=4, sinA=1/2를 넓이 25π, BC=8, sinA=4/5로 바꿨다. 오답은 R 대신 2R 혼동(2/5), 넓이를 2πR로 오용, 변과 지름 비 뒤집기에서 만들었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "외접원의 넓이 πR²에서 반지름 R을 구하고 사인법칙 a/sinA=2R로 sinA를 구한다.",
+      "decisiveStep": "$\\pi R^2=25\\pi$에서 $R=5$, $\\dfrac{BC}{\\sin A}=10$",
+      "variationNote": "원본 넓이 16π, BC=4, sinA=1/2를 넓이 25π, BC=8, sinA=4/5로 바꿨다. 오답은 R 대신 2R 혼동(2/5), 넓이를 2πR로 오용, 변과 지름 비 뒤집기에서 만들었다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "원의 넓이로 반지름을 구한 뒤 사인법칙 한 번이면 끝나는 두 단계 직접 적용이라 1로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_05_SINE_LAW",
+        "templateKey": "TPL_H22A_05_SINE_LAW_109"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "외접",
+              "src": "stem",
+              "quote": "외접원"
+            },
+            {
+              "term": "넓이",
+              "src": "stem",
+              "quote": "넓이가 $25\\pi$"
+            },
+            {
+              "term": "삼각형",
+              "src": "stem",
+              "quote": "삼각형 $ABC$"
+            },
+            {
+              "term": "길이",
+              "src": "stem",
+              "quote": "\\overline{BC} = 8"
+            }
+          ],
+          "goal": [
+            {
+              "term": "사인",
+              "src": "stem",
+              "quote": "\\sin A"
+            }
+          ],
+          "method": [
+            {
+              "term": "사인법칙",
+              "src": "solution",
+              "quote": "사인법칙에서",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "원",
+              "src": "solution",
+              "quote": "\\pi R^2=25\\pi",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "외접",
+              "src": "solution",
+              "quote": "\\dfrac{BC}{\\sin A}=2R=10",
+              "evidenceType": "IMPLIED",
+              "justification": "사인법칙의 비 a/sinA가 외접원의 지름 2R과 같음을 이용해 R과 sinA를 연결한다"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "원의 넓이에서 R을 정하고 사인법칙으로 sinA를 구한다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q2: 원본 Q2의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-109",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 외접원의 넓이로 반지름을 구하고 사인법칙으로 한 각의 사인값을 구한다. → 사인법칙>외접원 반지름; PT/TPL(PT_H22A_05_SINE_LAW,TPL_H22A_05_SINE_LAW_109)이 크로스워크 H2-M1-RPM-109의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 3,
+      "sourceOrdinal": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-05",
+        "standardUnit": "사인법칙과 코사인법칙",
+        "subUnitKey": "H22-A-05-CORE",
+        "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+        "conceptClusterKey": "H22-A-05-CORE",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-113"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각함수",
+          "l2": "삼각함수의 활용",
+          "l3": "삼각형의 넓이",
+          "l4": "두 변과 끼인각",
+          "recordId": "H2-M1-RPM-113",
+          "l3Label": "삼각형의 넓이",
+          "l4Label": "두 변과 끼인각",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-113"
+        },
+        "rpmPrimaryL1": "삼각함수",
+        "rpmPrimaryL2": "삼각함수의 활용",
+        "rpmPrimaryL3": "삼각형의 넓이",
+        "rpmPrimaryL4": "두 변과 끼인각",
+        "rpmPrimaryRecordId": "H2-M1-RPM-113",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "L3": "삼각형의 넓이",
+        "L4": "두 변과 끼인각",
+        "rpmL3": "삼각형의 넓이",
+        "rpmL4": "두 변과 끼인각",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+        "templateKey": "TPL_H22A_05_TRIANGLE_AREA_113",
+        "crossConceptKeys": [
+          "EXT-CROSS-TRIG-ANGLE-REDUCTION-PI-HALF-PI"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 3,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "두 변과 끼인각 공식 한 번과 특수각 사인값 변환만 쓰는 기본형이라 하",
+        "difficultyBasis": "그림의 값을 읽어 넓이 공식에 넣는 직접 적용이고 둔각의 사인값만 한 번 변환하므로 1로 본다.",
+        "visualNecessity": {
+          "problem": "RENDERED",
+          "problemReason": "발문이 그림을 가리키고 두 변의 길이와 끼인각의 크기가 그림에만 있어 학생이 읽을 값을 공식 엔진(PLANE_FIGURE_v1)으로 렌더했다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설 그림 별도 작업 예정. 해설 본문이 그림에서 읽은 AB=6, BC=8, 각 B의 크기를 글로 다시 적어 그림 없이도 읽힌다."
+        },
+        "metaRationale": {
+          "problemType": "두 변의 길이와 끼인각의 크기를 그림에서 읽고 삼각형의 넓이 공식 (1/2)ab sinC에 넣어 넓이를 구한다.",
+          "crossConcept": "끼인각이 5π/6처럼 π보다 작은 둔각이면 sin(π−θ)=sinθ로 사인값을 구한다.",
+          "condition": "별도 제한 조건 없음(근거: 풀이에 수 범위 제약 없음).",
+          "integration": "그림에서 값 읽기 → 사인값 변환 → 넓이 공식의 SEQUENTIAL.",
+          "curriculum": "2022 개정 대수 삼각함수의 활용 > 삼각형의 넓이: 크로스워크 H2-M1-RPM-113(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 3,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 AB=7, BC=4√2, B=3π/4, 넓이 14를 AB=6, BC=8, B=5π/6, 넓이 12로 바꿨다. 오답은 1/2 누락(24), 사인값 √3/2 사용(12√3), 둘 다 오류(24√3)에서 만들었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "그림에서 읽은 두 변과 끼인각으로 삼각형의 넓이 (1/2)ab sinC를 쓰고, sin(5π/6)을 π−θ 꼴로 바꿔 값을 구한다.",
+      "decisiveStep": "$\\sin\\dfrac{5\\pi}{6}=\\sin\\left(\\pi-\\dfrac{\\pi}{6}\\right)=\\dfrac12$",
+      "variationNote": "원본 AB=7, BC=4√2, B=3π/4, 넓이 14를 AB=6, BC=8, B=5π/6, 넓이 12로 바꿨다. 오답은 1/2 누락(24), 사인값 √3/2 사용(12√3), 둘 다 오류(24√3)에서 만들었다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "그림의 값을 읽어 넓이 공식에 넣는 직접 적용이고 둔각의 사인값만 한 번 변환하므로 1로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+        "templateKey": "TPL_H22A_05_TRIANGLE_AREA_113"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "삼각형",
+              "src": "stem",
+              "quote": "삼각형 $ABC$"
+            },
+            {
+              "term": "길이",
+              "src": "solution",
+              "quote": "AB=6"
+            },
+            {
+              "term": "각",
+              "src": "solution",
+              "quote": "\\angle ABC=\\dfrac{5\\pi}{6}"
+            }
+          ],
+          "goal": [
+            {
+              "term": "넓이",
+              "src": "stem",
+              "quote": "넓이를 구하면"
+            }
+          ],
+          "method": [
+            {
+              "term": "삼각형넓이공식",
+              "src": "solution",
+              "quote": "\\dfrac12\\cdot AB\\cdot BC\\cdot\\sin\\angle ABC",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "삼각함수의성질",
+              "src": "solution",
+              "quote": "\\sin\\left(\\pi-\\dfrac{\\pi}{6}\\right)",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "호도법",
+              "src": "solution",
+              "quote": "\\dfrac{5\\pi}{6}",
+              "evidenceType": "IMPLIED",
+              "justification": "각을 호도법(라디안)으로 읽고 π−π/6으로 바꿔 사인값을 정한다"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "그림에서 읽은 두 변과 끼인각을 삼각형 넓이 공식에 대입하고 사인값은 각 변환으로 구한다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q3: 원본 Q3의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-113",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 두 변의 길이와 끼인각의 크기를 그림에서 읽고 삼각형의 넓이 공식 (1/2)ab sinC에 넣어 넓이를 구한다. → 삼각형의 넓이>두 변과 끼인각; PT/TPL(PT_H22A_05_TRIANGLE_AREA,TPL_H22A_05_TRIANGLE_AREA_113)이 크로스워크 H2-M1-RPM-113의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 4,
+      "sourceOrdinal": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-06",
+        "standardUnit": "등차수열과 등비수열",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "conceptClusterKey": "H22-A-06-SEQUENCE_BASIC",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-115"
+        ],
+        "rpmPrimary": {
+          "l1": "수열",
+          "l2": "등차수열과 등비수열",
+          "l3": "등차수열",
+          "l4": "일반항",
+          "recordId": "H2-M1-RPM-115",
+          "l3Label": "등차수열",
+          "l4Label": "일반항",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-115"
+        },
+        "rpmPrimaryL1": "수열",
+        "rpmPrimaryL2": "등차수열과 등비수열",
+        "rpmPrimaryL3": "등차수열",
+        "rpmPrimaryL4": "일반항",
+        "rpmPrimaryRecordId": "H2-M1-RPM-115",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "L3": "등차수열",
+        "L4": "일반항",
+        "rpmL3": "등차수열",
+        "rpmL4": "일반항",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 4,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "등차수열 일반항 공식만 쓰는 기본 계산이라 하",
+        "difficultyBasis": "일반항 공식을 두 번 쓰고 함숫값을 더하는 기본 계산이라 1로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 수열의 첫째항·공차와 항의 나열을 식으로 주어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 두 일반항의 식 전개와 함숫값 계산으로 완결되어 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "첫째항과 공차 또는 두 항의 차로 등차수열의 일반항을 세우고 지정한 항의 값을 구해 더한다.",
+          "crossConcept": "보조 개념 없음(일반항 공식만 사용).",
+          "condition": "별도 제한 조건 없음(근거: 발문에 수 범위 제약 없음).",
+          "integration": "두 일반항을 따로 구해 함숫값만 더하므로 연쇄가 없는 NONE.",
+          "curriculum": "2022 개정 대수 등차수열과 등비수열 > 등차수열: 크로스워크 H2-M1-RPM-115(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 4,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 (가) 첫째항 -5·공차 3, (나) 3, 1, ... 의 f(3)+g(2)=2를 (가) 첫째항 -3·공차 4, (나) 6, 3, ... 의 f(3)+g(2)=8로 바꿨다. 오답은 공차 부호 오류, n-1 대신 n 곱하기에서 만들었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "등차수열의 일반항 a_n=a+(n-1)d를 (가)는 주어진 첫째항·공차로, (나)는 두 항의 차로 공차를 구해 세운 뒤 함숫값을 더한다.",
+      "decisiveStep": "(나)에서 공차 $3-6=-3$을 구해 $g(n)=9-3n$",
+      "variationNote": "원본 (가) 첫째항 -5·공차 3, (나) 3, 1, ... 의 f(3)+g(2)=2를 (가) 첫째항 -3·공차 4, (나) 6, 3, ... 의 f(3)+g(2)=8로 바꿨다. 오답은 공차 부호 오류, n-1 대신 n 곱하기에서 만들었다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "일반항 공식을 두 번 쓰고 함숫값을 더하는 기본 계산이라 1로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_115"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "등차수열",
+              "src": "stem",
+              "quote": "등차수열의 일반항"
+            },
+            {
+              "term": "첫째항",
+              "src": "stem",
+              "quote": "첫째항이 $-3$"
+            },
+            {
+              "term": "공차",
+              "src": "stem",
+              "quote": "공차가 $4$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "함숫값",
+              "src": "stem",
+              "quote": "f(3) + g(2)"
+            }
+          ],
+          "method": [
+            {
+              "term": "일반항",
+              "src": "solution",
+              "quote": "f(n)=-3+4(n-1)",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "공차",
+              "src": "solution",
+              "quote": "공차가 $3-6=-3$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "대입",
+              "src": "solution",
+              "quote": "g(2)=3",
+              "evidenceType": "IMPLIED",
+              "justification": "구한 일반항 식에 n=3, n=2를 넣어 함숫값을 정한다"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "일반항 공식으로 f, g를 세우고 값을 대입해 더한다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q4: 원본 Q4의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-115",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 첫째항과 공차 또는 두 항의 차로 등차수열의 일반항을 세우고 지정한 항의 값을 구해 더한다. → 등차수열>일반항; PT/TPL(PT_H22A_06_ARITHMETIC_SEQUENCE,TPL_H22A_06_ARITHMETIC_SEQUENCE_115)이 크로스워크 H2-M1-RPM-115의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 5,
+      "sourceOrdinal": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-06",
+        "standardUnit": "등차수열과 등비수열",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "conceptClusterKey": "H22-A-06-SEQUENCE_BASIC",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-118"
+        ],
+        "rpmPrimary": {
+          "l1": "수열",
+          "l2": "등차수열과 등비수열",
+          "l3": "등비수열",
+          "l4": "일반항",
+          "recordId": "H2-M1-RPM-118",
+          "l3Label": "등비수열",
+          "l4Label": "일반항",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-118"
+        },
+        "rpmPrimaryL1": "수열",
+        "rpmPrimaryL2": "등차수열과 등비수열",
+        "rpmPrimaryL3": "등비수열",
+        "rpmPrimaryL4": "일반항",
+        "rpmPrimaryRecordId": "H2-M1-RPM-118",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "L3": "등비수열",
+        "L4": "일반항",
+        "rpmL3": "등비수열",
+        "rpmL4": "일반항",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_118",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 5,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "등비수열 제n항 공식만 대입하는 기본 계산이라 하",
+        "difficultyBasis": "등비수열 일반항을 두 번 대입하는 기본 계산이라 1로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 두 등비수열의 첫째항과 공비를 식으로 주어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 두 제5항의 계산으로 완결되어 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "첫째항과 공비가 주어진 두 등비수열의 제5항을 일반항 공식으로 각각 구해 합한다.",
+          "crossConcept": "보조 개념 없음(일반항 공식만 사용).",
+          "condition": "별도 제한 조건 없음(근거: 발문에 수 범위 제약 없음).",
+          "integration": "두 항을 따로 구해 더하므로 연쇄가 없는 NONE.",
+          "curriculum": "2022 개정 대수 등차수열과 등비수열 > 등비수열: 크로스워크 H2-M1-RPM-118(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 5,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 16, -1/2, 1/9, 3의 합 10을 32, -1/2, 2/27, 3의 합 8로 바꿨다. 오답은 제5항에 r^5 사용, 공비 부호 누락에서 만들었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "등비수열의 일반항 ar^{n-1}에 첫째항과 공비를 넣어 두 수열의 제5항을 각각 구해 더한다.",
+      "decisiveStep": "제5항 $=ar^4$에서 $32\\left(-\\dfrac12\\right)^4=2$, $\\dfrac2{27}\\cdot3^4=6$",
+      "variationNote": "원본 16, -1/2, 1/9, 3의 합 10을 32, -1/2, 2/27, 3의 합 8로 바꿨다. 오답은 제5항에 r^5 사용, 공비 부호 누락에서 만들었다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "등비수열 일반항을 두 번 대입하는 기본 계산이라 1로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_118"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "등비수열",
+              "src": "stem",
+              "quote": "등비수열의 제$5$항"
+            },
+            {
+              "term": "첫째항",
+              "src": "stem",
+              "quote": "첫째항이 $32$"
+            },
+            {
+              "term": "공비",
+              "src": "stem",
+              "quote": "공비가 $-\\dfrac{1}{2}$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "합",
+              "src": "stem",
+              "quote": "제$5$항의 합은?"
+            }
+          ],
+          "method": [
+            {
+              "term": "등비수열",
+              "src": "solution",
+              "quote": "첫째 등비수열의 제5항",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "일반항",
+              "src": "solution",
+              "quote": "\\dfrac{2}{27}\\cdot3^4=6",
+              "evidenceType": "IMPLIED",
+              "justification": "제5항을 첫째항×공비의 4제곱으로 나타내는 등비수열 일반항 ar^{n-1}"
+            },
+            {
+              "term": "합",
+              "src": "solution",
+              "quote": "2+6=8",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "두 등비수열의 제5항을 일반항으로 구해 더한다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q5: 원본 Q5의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-118",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 첫째항과 공비가 주어진 두 등비수열의 제5항을 일반항 공식으로 각각 구해 합한다. → 등비수열>일반항; PT/TPL(PT_H22A_06_GEOMETRIC_SEQUENCE,TPL_H22A_06_GEOMETRIC_SEQUENCE_118)이 크로스워크 H2-M1-RPM-118의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 6,
+      "sourceOrdinal": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-06",
+        "standardUnit": "등차수열과 등비수열",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "conceptClusterKey": "H22-A-06-SEQUENCE_BASIC",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-117"
+        ],
+        "rpmPrimary": {
+          "l1": "수열",
+          "l2": "등차수열과 등비수열",
+          "l3": "등차수열",
+          "l4": "합",
+          "recordId": "H2-M1-RPM-117",
+          "l3Label": "등차수열",
+          "l4Label": "합",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-117"
+        },
+        "rpmPrimaryL1": "수열",
+        "rpmPrimaryL2": "등차수열과 등비수열",
+        "rpmPrimaryL3": "등차수열",
+        "rpmPrimaryL4": "합",
+        "rpmPrimaryRecordId": "H2-M1-RPM-117",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "L3": "등차수열",
+        "L4": "합",
+        "rpmL3": "등차수열",
+        "rpmL4": "합",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_117",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 6,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "공차·첫째항·끝항을 차례로 구한 뒤 합 공식을 쓰는 두세 단계 계산이라 중",
+        "difficultyBasis": "공차→첫째항→제20항→합으로 네 단계를 잇는 계산형이라 2로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 두 항의 값과 합의 범위를 글로 주어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 공차·첫째항·끝항·합의 식 전개로 완결되어 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "서로 다른 두 항의 값으로 공차와 첫째항을 구한 뒤 등차수열의 합 공식으로 첫째항부터 제n항까지의 합을 구한다.",
+          "crossConcept": "보조 개념 없음(등차수열의 항과 합 공식만 사용).",
+          "condition": "별도 제한 조건 없음(근거: 발문에 수 범위 제약 없음).",
+          "integration": "공차 구하기 → 첫째항·끝항 구하기 → 합 공식의 SEQUENTIAL.",
+          "curriculum": "2022 개정 대수 등차수열과 등비수열 > 등차수열: 크로스워크 H2-M1-RPM-117(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 6,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 a3=8, a10=29, S20=610을 a4=3, a12=27, S20=450으로 바꿨다. 오답은 S20의 1/2(225), 공차 오계산, 합 공식에서 2로 나누기 누락(900)에서 만들었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "두 항의 차 a_12-a_4=8d로 공차를 구하고 첫째항과 제20항을 정해 합 공식 S_n=n(a_1+a_n)/2를 적용한다.",
+      "decisiveStep": "$a_{12}-a_4=8d=24$에서 $d=3$, $a_1=-6$",
+      "variationNote": "원본 a3=8, a10=29, S20=610을 a4=3, a12=27, S20=450으로 바꿨다. 오답은 S20의 1/2(225), 공차 오계산, 합 공식에서 2로 나누기 누락(900)에서 만들었다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "공차→첫째항→제20항→합으로 네 단계를 잇는 계산형이라 2로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_117"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "등차수열",
+              "src": "stem",
+              "quote": "등차수열"
+            },
+            {
+              "term": "항",
+              "src": "stem",
+              "quote": "제$4$항이 $3$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "수열의합",
+              "src": "stem",
+              "quote": "첫째항부터 제$20$항까지의 합 $S_{20}$"
+            }
+          ],
+          "method": [
+            {
+              "term": "공차",
+              "src": "solution",
+              "quote": "a_{12}-a_4=8d=27-3=24",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "일반항",
+              "src": "solution",
+              "quote": "a_{20}=-6+19\\cdot3=51",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "수열의합",
+              "src": "solution",
+              "quote": "S_{20}=\\dfrac{20}{2}(a_1+a_{20})",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "두 항의 차로 공차를 구하고 첫째항·끝항을 정해 합 공식을 쓴다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q6: 원본 Q6의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-117",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 서로 다른 두 항의 값으로 공차와 첫째항을 구한 뒤 등차수열의 합 공식으로 첫째항부터 제n항까지의 합을 구한다. → 등차수열>합; PT/TPL(PT_H22A_06_ARITHMETIC_SEQUENCE,TPL_H22A_06_ARITHMETIC_SEQUENCE_117)이 크로스워크 H2-M1-RPM-117의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 7,
+      "sourceOrdinal": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-06",
+        "standardUnit": "등차수열과 등비수열",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "conceptClusterKey": "H22-A-06-SEQUENCE_BASIC",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-120"
+        ],
+        "rpmPrimary": {
+          "l1": "수열",
+          "l2": "등차수열과 등비수열",
+          "l3": "등비수열",
+          "l4": "합",
+          "recordId": "H2-M1-RPM-120",
+          "l3Label": "등비수열",
+          "l4Label": "합",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-120"
+        },
+        "rpmPrimaryL1": "수열",
+        "rpmPrimaryL2": "등차수열과 등비수열",
+        "rpmPrimaryL3": "등비수열",
+        "rpmPrimaryL4": "합",
+        "rpmPrimaryRecordId": "H2-M1-RPM-120",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "L3": "등비수열",
+        "L4": "합",
+        "rpmL3": "등비수열",
+        "rpmL4": "합",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_120",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 7,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "합의 비를 이용한 관계식과 부호 조건에 따른 경우 가르기가 있어 중",
+        "difficultyBasis": "S_8=S_4(1+r^4) 관찰, 두 공비 후보 분기, 양수 조건 판정까지 필요해 3으로 보되 계산은 단순해 경계로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 두 부분합의 값과 조건을 글로 주어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 합의 관계식과 두 경우의 판정으로 완결되어 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "등비수열의 S_n과 S_2n의 관계로 공비의 후보를 구하고 첫째항의 부호 조건으로 하나를 고른 뒤 첫째항과 공비의 합을 구한다.",
+          "crossConcept": "보조 개념 없음(등비수열의 합 공식 범위 안에서 풀린다).",
+          "condition": "첫째항이 양수라는 조건이 r=-2일 때 a=-2<0을 제외하는 결정적 판정에 쓰인다.",
+          "integration": "공비 후보가 둘로 갈려 조건으로 하나를 선택하는 CASE_BRANCH.",
+          "curriculum": "2022 개정 대수 등차수열과 등비수열 > 등비수열: 크로스워크 H2-M1-RPM-120(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 7,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 S4=5, S8=85, 답 7/3을 S4=10, S8=170, 답 8/3으로 바꿨다. 두 후보 r=±2와 첫째항 양수 조건 구조는 유지했고 오답은 a만 쓴 값(2/3), r=-2 후보의 합 등에서 만들었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "S_8=S_4(1+r^4)로 r^4을 구해 r=±2의 두 경우로 나누고, 첫째항이 양수라는 조건으로 r=-2를 걸러낸 뒤 a를 구한다.",
+      "decisiveStep": "$r=-2$이면 $a=-2<0$이므로 제외하고 $r=2$, $a=\\dfrac23$",
+      "variationNote": "원본 S4=5, S8=85, 답 7/3을 S4=10, S8=170, 답 8/3으로 바꿨다. 두 후보 r=±2와 첫째항 양수 조건 구조는 유지했고 오답은 a만 쓴 값(2/3), r=-2 후보의 합 등에서 만들었다.",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": true,
+      "difficultyReason": "S_8=S_4(1+r^4) 관찰, 두 공비 후보 분기, 양수 조건 판정까지 필요해 3으로 보되 계산은 단순해 경계로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_120"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "등비수열",
+              "src": "stem",
+              "quote": "등비수열"
+            },
+            {
+              "term": "수열의합",
+              "src": "stem",
+              "quote": "S_4$가 $10"
+            },
+            {
+              "term": "첫째항",
+              "src": "stem",
+              "quote": "첫째항과 공비의 합"
+            }
+          ],
+          "goal": [
+            {
+              "term": "공비",
+              "src": "stem",
+              "quote": "공비의 합"
+            }
+          ],
+          "method": [
+            {
+              "term": "수열의합",
+              "src": "solution",
+              "quote": "S_8=S_4(1+r^4)",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "경우분류",
+              "src": "solution",
+              "quote": "r=2$ 또는 $r=-2",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "등비수열",
+              "src": "solution",
+              "quote": "a(1+2+4+8)=15a=10",
+              "evidenceType": "IMPLIED",
+              "justification": "공비 2일 때 첫째항부터 제4항까지의 합을 a(1+r+r^2+r^3)으로 써서 a를 정한다"
+            }
+          ],
+          "condition": [
+            {
+              "term": "양수",
+              "src": "stem",
+              "quote": "첫째항은 양수이다"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "합의 관계로 공비 후보를 얻고 첫째항 양수 조건으로 후보를 가려낸다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q7: 원본 Q7의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-120",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 등비수열의 S_n과 S_2n의 관계로 공비의 후보를 구하고 첫째항의 부호 조건으로 하나를 고른 뒤 첫째항과 공비의 합을 구한다. → 등비수열>합; PT/TPL(PT_H22A_06_GEOMETRIC_SEQUENCE,TPL_H22A_06_GEOMETRIC_SEQUENCE_120)이 크로스워크 H2-M1-RPM-120의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 8,
+      "sourceOrdinal": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-07",
+        "standardUnit": "수열의 합",
+        "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "conceptClusterKey": "H22-A-07-SEQUENCE_BASIC",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-124"
+        ],
+        "rpmPrimary": {
+          "l1": "수열",
+          "l2": "수열의 합",
+          "l3": "합의 기호 Σ",
+          "l4": "성질",
+          "recordId": "H2-M1-RPM-124",
+          "l3Label": "합의 기호 Σ",
+          "l4Label": "성질",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-124"
+        },
+        "rpmPrimaryL1": "수열",
+        "rpmPrimaryL2": "수열의 합",
+        "rpmPrimaryL3": "합의 기호 Σ",
+        "rpmPrimaryL4": "성질",
+        "rpmPrimaryRecordId": "H2-M1-RPM-124",
+        "L1": "수열",
+        "L2": "수열의 합",
+        "L3": "합의 기호 Σ",
+        "L4": "성질",
+        "rpmL3": "합의 기호 Σ",
+        "rpmL4": "성질",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_07_SIGMA_NOTATION",
+        "templateKey": "TPL_H22A_07_SIGMA_NOTATION_124",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 8,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "시그마의 성질을 보기마다 적용하고 하나를 반례로 가려내는 판정형이라 중",
+        "difficultyBasis": "보기 다섯 개를 선형성으로 판정하고 곱의 합만 반례로 가려내는 판정형이라 2로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문과 보기가 시그마 식으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 시그마의 성질과 반례의 수치로 완결되어 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "두 수열의 합이 주어질 때 시그마의 선형성으로 각 보기의 값을 판정하고, 곱의 합은 정해지지 않음을 찾아 고른다.",
+          "crossConcept": "보조 개념 없음(시그마의 성질과 반례 판단만 사용).",
+          "condition": "별도 제한 조건 없음(근거: 발문에 수 범위 제약 없음).",
+          "integration": "보기 각각을 독립적으로 판정하므로 연쇄가 없는 NONE.",
+          "curriculum": "2022 개정 대수 수열의 합 > 합의 기호 Σ: 크로스워크 H2-M1-RPM-124(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 8,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 합 -5, 10, 7항을 합 4, -9, 6항으로 바꾸고 틀린 보기(곱의 합)의 구조는 유지했다. 틀린 보기의 위치만 ③에서 ①로 옮겼다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "시그마의 선형성(합·차·상수배·상수의 합)을 각 보기에 적용하고, 곱의 합은 두 합만으로 정해지지 않음을 반례로 보인다.",
+      "decisiveStep": "$\\sum a_kb_k$는 $\\sum a_k$, $\\sum b_k$로 정해지지 않으므로 반례 $a_1=4$, $b_2=-9$",
+      "variationNote": "원본 합 -5, 10, 7항을 합 4, -9, 6항으로 바꾸고 틀린 보기(곱의 합)의 구조는 유지했다. 틀린 보기의 위치만 ③에서 ①로 옮겼다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "보기 다섯 개를 선형성으로 판정하고 곱의 합만 반례로 가려내는 판정형이라 2로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_07_SIGMA_NOTATION",
+        "templateKey": "TPL_H22A_07_SIGMA_NOTATION_124"
+      },
+      "item4slot": {
+        "format": "옳지 않은 것 고르기",
+        "slots": {
+          "given": [
+            {
+              "term": "시그마",
+              "src": "stem",
+              "quote": "\\sum_{k=1}^6 a_k = 4"
+            },
+            {
+              "term": "합",
+              "src": "stem",
+              "quote": "\\sum_{k=1}^6 b_k = -9"
+            }
+          ],
+          "goal": [
+            {
+              "term": "판정",
+              "src": "stem",
+              "quote": "옳지 <u>않은</u> 것은?"
+            }
+          ],
+          "method": [
+            {
+              "term": "시그마",
+              "src": "solution",
+              "quote": "합의 성질에 따라",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "반례",
+              "src": "solution",
+              "quote": "예를 들어 $a_1=4$, $b_2=-9$이고 나머지는 $0$이면",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "상수",
+              "src": "solution",
+              "quote": "\\sum_{k=1}^6 5=6\\cdot5=30",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "시그마의 성질로 보기를 판정하고 곱의 합은 반례로 가린다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q8: 원본 Q8의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "수열",
+        "L2": "수열의 합",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-124",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 두 수열의 합이 주어질 때 시그마의 선형성으로 각 보기의 값을 판정하고, 곱의 합은 정해지지 않음을 찾아 고른다. → 합의 기호 Σ>성질; PT/TPL(PT_H22A_07_SIGMA_NOTATION,TPL_H22A_07_SIGMA_NOTATION_124)이 크로스워크 H2-M1-RPM-124의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 9,
+      "sourceOrdinal": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-06",
+        "standardUnit": "등차수열과 등비수열",
+        "subUnitKey": "H22-A-06-SEQUENCE_APPLICATION",
+        "subUnit": "수열의 활용",
+        "conceptClusterKey": "H22-A-06-SEQUENCE_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-121"
+        ],
+        "rpmPrimary": {
+          "l1": "수열",
+          "l2": "등차수열과 등비수열",
+          "l3": "수열의 활용",
+          "l4": "조건으로 수열 결정",
+          "recordId": "H2-M1-RPM-121",
+          "l3Label": "수열의 활용",
+          "l4Label": "조건으로 수열 결정",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-121"
+        },
+        "rpmPrimaryL1": "수열",
+        "rpmPrimaryL2": "등차수열과 등비수열",
+        "rpmPrimaryL3": "수열의 활용",
+        "rpmPrimaryL4": "조건으로 수열 결정",
+        "rpmPrimaryRecordId": "H2-M1-RPM-121",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "L3": "수열의 활용",
+        "L4": "조건으로 수열 결정",
+        "rpmL3": "수열의 활용",
+        "rpmL4": "조건으로 수열 결정",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+        "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_121",
+        "crossConceptKeys": [
+          "CC_GEOMETRIC_SEQUENCE"
+        ],
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 9,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "등차·등비 두 성질을 연결해 식을 세우고 조건으로 약분하는 단계가 있어 중",
+        "difficultyBasis": "등비중항 관계로 이차식을 세우고 인수분해한 뒤 공차 비영 조건으로 약분하는 세 단계라 3으로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 항의 번호와 등비 관계를 글로 주어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 등비중항 식의 전개와 인수분해로 완결되어 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "등차수열의 세 항이 등비수열을 이룰 때 등비중항 관계로 첫째항과 공차의 관계를 구해 두 항의 비를 구한다.",
+          "crossConcept": "세 수가 등비수열을 이루면 가운데 수의 제곱이 양 끝 수의 곱과 같다는 등비중항 관계를 쓴다.",
+          "condition": "공차가 0이 아니라는 조건으로 d로 나누어 a=2d를 얻는 데 쓰인다.",
+          "integration": "항을 a, d로 표현 → 등비중항 식 → 약분 → 비 계산의 SEQUENTIAL.",
+          "curriculum": "2022 개정 대수 등차수열과 등비수열 > 수열의 활용: 크로스워크 H2-M1-RPM-121(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 9,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 a2, a4, a7이 등비(a=3d, 답 2)를 a2, a5, a11이 등비(a=2d), 답 a15/a3=4로 바꿨다. 오답은 a=3d 혼동, 항 번호 오독에서 만들었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "등차수열의 세 항을 a, d로 나타내고 등비중항 관계 (가운데 항)^2=(앞 항)(뒤 항)로 a와 d의 비를 구해 항의 비를 계산한다.",
+      "decisiveStep": "$(a+4d)^2=(a+d)(a+10d)$에서 $d\\neq0$이므로 $a=2d$",
+      "variationNote": "원본 a2, a4, a7이 등비(a=3d, 답 2)를 a2, a5, a11이 등비(a=2d), 답 a15/a3=4로 바꿨다. 오답은 a=3d 혼동, 항 번호 오독에서 만들었다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "등비중항 관계로 이차식을 세우고 인수분해한 뒤 공차 비영 조건으로 약분하는 세 단계라 3으로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+        "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_121"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "등차수열",
+              "src": "stem",
+              "quote": "등차수열 $\\{a_n\\}$"
+            },
+            {
+              "term": "등비수열",
+              "src": "stem",
+              "quote": "등비수열을 이룰 때"
+            },
+            {
+              "term": "항",
+              "src": "stem",
+              "quote": "a_2, a_5, a_{11}"
+            }
+          ],
+          "goal": [
+            {
+              "term": "비",
+              "src": "stem",
+              "quote": "\\dfrac{a_{15}}{a_3}"
+            },
+            {
+              "term": "값",
+              "src": "stem",
+              "quote": "의 값은?"
+            }
+          ],
+          "method": [
+            {
+              "term": "등비중항",
+              "src": "solution",
+              "quote": "(a+4d)^2=(a+d)(a+10d)",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "일반항",
+              "src": "solution",
+              "quote": "a_5=a+4d",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "인수분해",
+              "src": "solution",
+              "quote": "3d(2d-a)=0",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "공차",
+              "src": "stem",
+              "quote": "공차가 $0$이 아닌"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "등비중항 관계식으로 a=2d를 얻고 항의 비를 계산한다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q9: 원본 Q9의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-121",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 등차수열의 세 항이 등비수열을 이룰 때 등비중항 관계로 첫째항과 공차의 관계를 구해 두 항의 비를 구한다. → 수열의 활용>조건으로 수열 결정; PT/TPL(PT_H22A_06_SEQUENCE_APPLICATION,TPL_H22A_06_SEQUENCE_APPLICATION_121)이 크로스워크 H2-M1-RPM-121의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 10,
+      "sourceOrdinal": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-05",
+        "standardUnit": "사인법칙과 코사인법칙",
+        "subUnitKey": "H22-A-05-CORE",
+        "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+        "conceptClusterKey": "H22-A-05-CORE",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-111"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각함수",
+          "l2": "삼각함수의 활용",
+          "l3": "코사인법칙",
+          "l4": "변·각 계산",
+          "recordId": "H2-M1-RPM-111",
+          "l3Label": "코사인법칙",
+          "l4Label": "변·각 계산",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-111"
+        },
+        "rpmPrimaryL1": "삼각함수",
+        "rpmPrimaryL2": "삼각함수의 활용",
+        "rpmPrimaryL3": "코사인법칙",
+        "rpmPrimaryL4": "변·각 계산",
+        "rpmPrimaryRecordId": "H2-M1-RPM-111",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "L3": "코사인법칙",
+        "L4": "변·각 계산",
+        "rpmL3": "코사인법칙",
+        "rpmL4": "변·각 계산",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_05_COSINE_LAW",
+        "templateKey": "TPL_H22A_05_COSINE_LAW_111",
+        "crossConceptKeys": [
+          "CC_SINE_LAW",
+          "CC_RADIAN_DEGREE_CONVERSION",
+          "CC_TRIANGLE_ANGLE_SUM"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 10,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "서로 다른 두 법칙을 두 삼각형에 나누어 쓰고 이차식 해를 가려야 해 중",
+        "difficultyBasis": "호도법 변환·사인법칙·코사인법칙 이차방정식·양수 판정을 이어 두 삼각형을 모두 처리해야 해 3으로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 두 삼각형의 변과 각을 글로 모두 주어 학생이 풀 때 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 두 삼각형의 법칙 적용과 이차식 풀이로 완결되어 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "한 삼각형에는 사인법칙, 다른 삼각형에는 코사인법칙을 적용해 두 변의 길이를 각각 구하고 합한다.",
+          "crossConcept": "라디안으로 준 각을 도로 바꾸고 내각의 합으로 나머지 각을 구해 사인법칙을 쓴다.",
+          "condition": "변의 길이는 양수이므로 코사인법칙의 이차방정식에서 음의 근을 버린다.",
+          "integration": "첫째·둘째 삼각형의 값을 차례로 구한 뒤 합하는 SEQUENTIAL.",
+          "curriculum": "2022 개정 대수 삼각함수의 활용 > 코사인법칙: 크로스워크 H2-M1-RPM-111(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 10,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 AB=2√6, A=π/4, B=5π/12 (a=4)와 DF=2√2, EF=√13, D=45° (b=5)를 AB=3√2, B=7π/12 (a=6)와 DF=3√2, EF=5 (b=7)로 바꿨다. 오답은 코사인법칙 부호 오류, 음의 근 포함에서 만들었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "첫째 삼각형은 호도법의 각을 도로 바꾸고 내각의 합과 사인법칙으로 a를, 둘째 삼각형은 코사인법칙의 이차식을 풀어 양의 근 b를 구해 합한다.",
+      "decisiveStep": "코사인법칙 $25=b^2+18-6b$에서 $(b-7)(b+1)=0$, 길이이므로 $b=7$",
+      "variationNote": "원본 AB=2√6, A=π/4, B=5π/12 (a=4)와 DF=2√2, EF=√13, D=45° (b=5)를 AB=3√2, B=7π/12 (a=6)와 DF=3√2, EF=5 (b=7)로 바꿨다. 오답은 코사인법칙 부호 오류, 음의 근 포함에서 만들었다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "호도법 변환·사인법칙·코사인법칙 이차방정식·양수 판정을 이어 두 삼각형을 모두 처리해야 해 3으로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_05_COSINE_LAW",
+        "templateKey": "TPL_H22A_05_COSINE_LAW_111"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "삼각형",
+              "src": "stem",
+              "quote": "삼각형 $ABC$"
+            },
+            {
+              "term": "길이",
+              "src": "stem",
+              "quote": "\\overline{AB} = 3\\sqrt{2}"
+            },
+            {
+              "term": "각",
+              "src": "stem",
+              "quote": "\\angle A = \\dfrac{\\pi}{4}"
+            },
+            {
+              "term": "호도법",
+              "src": "stem",
+              "quote": "\\angle B = \\dfrac{7}{12}\\pi"
+            }
+          ],
+          "goal": [
+            {
+              "term": "길이",
+              "src": "stem",
+              "quote": "\\overline{BC}"
+            },
+            {
+              "term": "합",
+              "src": "stem",
+              "quote": "a + b$의 값은?"
+            }
+          ],
+          "method": [
+            {
+              "term": "사인법칙",
+              "src": "solution",
+              "quote": "사인법칙에 따라",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "코사인법칙",
+              "src": "solution",
+              "quote": "코사인법칙을 적용하면",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "호도법",
+              "src": "solution",
+              "quote": "\\dfrac{7\\pi}{12}=105^\\circ",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "이차방정식",
+              "src": "solution",
+              "quote": "=b^2+18-6b",
+              "evidenceType": "IMPLIED",
+              "justification": "코사인법칙으로 얻은 b에 대한 식을 이차방정식으로 정리해 푼다"
+            }
+          ],
+          "condition": [
+            {
+              "term": "양수",
+              "src": "solution",
+              "quote": "b=DE>0"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "한 삼각형은 사인법칙, 다른 삼각형은 코사인법칙으로 길이를 정한다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q10: 원본 Q10의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-111",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 한 삼각형에는 사인법칙, 다른 삼각형에는 코사인법칙을 적용해 두 변의 길이를 각각 구하고 합한다. → 코사인법칙>변·각 계산; PT/TPL(PT_H22A_05_COSINE_LAW,TPL_H22A_05_COSINE_LAW_111)이 크로스워크 H2-M1-RPM-111의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 11,
+      "sourceOrdinal": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-05",
+        "standardUnit": "사인법칙과 코사인법칙",
+        "subUnitKey": "H22-A-05-CORE",
+        "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+        "conceptClusterKey": "H22-A-05-CORE",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-114"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각함수",
+          "l2": "삼각함수의 활용",
+          "l3": "삼각형의 넓이",
+          "l4": "복합도형",
+          "recordId": "H2-M1-RPM-114",
+          "l3Label": "삼각형의 넓이",
+          "l4Label": "복합도형",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-114"
+        },
+        "rpmPrimaryL1": "삼각함수",
+        "rpmPrimaryL2": "삼각함수의 활용",
+        "rpmPrimaryL3": "삼각형의 넓이",
+        "rpmPrimaryL4": "복합도형",
+        "rpmPrimaryRecordId": "H2-M1-RPM-114",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "L3": "삼각형의 넓이",
+        "L4": "복합도형",
+        "rpmL3": "삼각형의 넓이",
+        "rpmL4": "복합도형",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+        "templateKey": "TPL_H22A_05_TRIANGLE_AREA_114",
+        "crossConceptKeys": [
+          "EXT-CROSS-ARC-RATIO-CENTRAL-ANGLE-AREA-SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 11,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "원과 삼각형의 관계를 여러 단계로 잇고 특수각 사인값을 합하는 계산이라 중",
+        "difficultyBasis": "호의 비→중심각→외심 위치 확인→세 삼각형 넓이 합→p, q 읽기의 다섯 단계라 3으로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 원의 반지름과 호의 비를 글로 완결하게 주어 필요한 그림이 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설 그림 별도 작업 예정. 해설 본문이 세 중심각과 내각의 크기를 글로 적어 그림 없이도 읽힌다."
+        },
+        "metaRationale": {
+          "problemType": "원 위의 세 점이 나누는 호의 비로 중심각을 구하고 외심과 세 꼭짓점이 이루는 세 삼각형의 넓이를 합해 삼각형 ABC의 넓이를 구한다.",
+          "crossConcept": "호의 길이는 중심각에 비례하므로 호의 비를 360°의 분할로 바꿔 중심각을 얻는다.",
+          "condition": "별도 제한 조건 없음(근거: 세 중심각이 모두 180° 미만이라 외심이 내부에 있음을 풀이에서 확인할 뿐 발문의 제약은 없다).",
+          "integration": "호의 비 → 중심각 → 넓이 합 → p/q 읽기의 SEQUENTIAL.",
+          "curriculum": "2022 개정 대수 삼각함수의 활용 > 삼각형의 넓이: 크로스워크 H2-M1-RPM-114(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 11,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 R=2, 호의 비 5:5:2 (넓이 2+√3, p/q=2)를 R=4, 호의 비 3:4:5 (넓이 12+4√3, p/q=3)로 바꿨다. 오답은 p/q 역수, √3 계수를 q로 읽지 않은 값에서 만들었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "호의 길이가 중심각에 비례함으로 세 중심각을 구하고 외심이 삼각형 내부에 있음을 확인한 뒤 세 부분 삼각형의 넓이 (1/2)r^2 sinθ를 더한다.",
+      "decisiveStep": "중심각 $90^\\circ,120^\\circ,150^\\circ$에서 $[ABC]=\\dfrac12\\cdot16(\\sin90^\\circ+\\sin120^\\circ+\\sin150^\\circ)$",
+      "variationNote": "원본 R=2, 호의 비 5:5:2 (넓이 2+√3, p/q=2)를 R=4, 호의 비 3:4:5 (넓이 12+4√3, p/q=3)로 바꿨다. 오답은 p/q 역수, √3 계수를 q로 읽지 않은 값에서 만들었다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "호의 비→중심각→외심 위치 확인→세 삼각형 넓이 합→p, q 읽기의 다섯 단계라 3으로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+        "templateKey": "TPL_H22A_05_TRIANGLE_AREA_114"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "원",
+              "src": "stem",
+              "quote": "원 위의 세 점"
+            },
+            {
+              "term": "반지름",
+              "src": "stem",
+              "quote": "반지름의 길이가 $4$"
+            },
+            {
+              "term": "호",
+              "src": "stem",
+              "quote": "\\text{호 } AB : \\text{호 } BC : \\text{호 } CA = 3 : 4 : 5"
+            }
+          ],
+          "goal": [
+            {
+              "term": "넓이",
+              "src": "stem",
+              "quote": "삼각형 $ABC$의 넓이"
+            },
+            {
+              "term": "비",
+              "src": "stem",
+              "quote": "\\dfrac{p}{q}"
+            }
+          ],
+          "method": [
+            {
+              "term": "비례",
+              "src": "solution",
+              "quote": "세 호의 길이의 비가 $3:4:5$이므로",
+              "evidenceType": "IMPLIED",
+              "justification": "호의 길이가 중심각에 비례함을 이용해 호의 비를 중심각의 비로 바꾼다"
+            },
+            {
+              "term": "중심각",
+              "src": "solution",
+              "quote": "대응하는 중심각",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "외심",
+              "src": "solution",
+              "quote": "외심 $O$는 내부에 있다",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "분할",
+              "src": "solution",
+              "quote": "[ABC]=[OAB]+[OBC]+[OCA]",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "삼각형넓이공식",
+              "src": "solution",
+              "quote": "\\dfrac12\\cdot4^2(\\sin90^\\circ+\\sin120^\\circ+\\sin150^\\circ)",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "호의 비로 중심각을 구하고 외심에서 나눈 세 삼각형의 넓이를 합한다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q11: 원본 Q11의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-114",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 원 위의 세 점이 나누는 호의 비로 중심각을 구하고 외심과 세 꼭짓점이 이루는 세 삼각형의 넓이를 합해 삼각형 ABC의 넓이를 구한다. → 삼각형의 넓이>복합도형; PT/TPL(PT_H22A_05_TRIANGLE_AREA,TPL_H22A_05_TRIANGLE_AREA_114)이 크로스워크 H2-M1-RPM-114의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 12,
+      "sourceOrdinal": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-05",
+        "standardUnit": "사인법칙과 코사인법칙",
+        "subUnitKey": "H22-A-05-CORE",
+        "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+        "conceptClusterKey": "H22-A-05-CORE",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-114"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각함수",
+          "l2": "삼각함수의 활용",
+          "l3": "삼각형의 넓이",
+          "l4": "복합도형",
+          "recordId": "H2-M1-RPM-114",
+          "l3Label": "삼각형의 넓이",
+          "l4Label": "복합도형",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-114"
+        },
+        "rpmPrimaryL1": "삼각함수",
+        "rpmPrimaryL2": "삼각함수의 활용",
+        "rpmPrimaryL3": "삼각형의 넓이",
+        "rpmPrimaryL4": "복합도형",
+        "rpmPrimaryRecordId": "H2-M1-RPM-114",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "L3": "삼각형의 넓이",
+        "L4": "복합도형",
+        "rpmL3": "삼각형의 넓이",
+        "rpmL4": "복합도형",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+        "templateKey": "TPL_H22A_05_TRIANGLE_AREA_114",
+        "crossConceptKeys": [
+          "EXT-CROSS-CYCLIC-QUADRILATERAL-OPPOSITE-ANGLE-COSINE"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 12,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "내접 사각형의 성질과 코사인법칙을 연립해 대각선을 구하고 넓이를 합하는 복합 단계라 중",
+        "difficultyBasis": "두 삼각형의 코사인법칙을 하나의 식으로 묶어 x를 구한 뒤 각을 읽고 두 넓이를 더하는 연결형이라 3으로 보고, 계산량이 커 4와의 경계로 본다.",
+        "visualNecessity": {
+          "problem": "RENDERED",
+          "problemReason": "발문이 그림을 가리키고 내접 사각형의 모양과 네 변의 길이를 그림으로 보이도록 공식 엔진(PLANE_FIGURE_v1)으로 렌더했다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설 그림 별도 작업 예정. 해설 본문이 대각선 AC=x를 두고 두 삼각형의 변과 각을 모두 글로 적어 그림 없이도 읽힌다."
+        },
+        "metaRationale": {
+          "problemType": "원에 내접하는 사각형의 대각선으로 두 삼각형을 나누고 코사인법칙과 마주 보는 두 각의 합 180°로 대각선과 각을 구해 두 삼각형의 넓이를 합한다.",
+          "crossConcept": "원에 내접하는 사각형의 마주 보는 두 각의 합이 180°이므로 두 코사인 값의 부호가 반대라는 관계를 쓴다.",
+          "condition": "대각선의 길이 x는 양수여야 하므로 x^2=147에서 양의 값만 쓴다.",
+          "integration": "두 삼각형의 코사인법칙이 cosD=-cosB로 서로 묶여 x를 정하는 INTERDEPENDENT.",
+          "curriculum": "2022 개정 대수 삼각함수의 활용 > 삼각형의 넓이: 크로스워크 H2-M1-RPM-114(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 12,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 AB=5, BC=3, CD=DA=7 (AC=7, 넓이 16√3)을 AB=11, BC=13, CD=DA=7 (AC=7√3, 넓이 48√3)로 바꿨다. 오답은 한 삼각형의 넓이만 구한 값, 각을 120°로 바꾼 값에서 만들었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "대각선 AC를 x로 두고 두 삼각형에 코사인법칙을 적용한 뒤, 내접 사각형의 마주 보는 두 각의 합이 180°임을 이용해 cosD=-cosB로 x를 구하고 두 삼각형의 넓이를 합한다.",
+      "decisiveStep": "$\\cos D=-\\cos B$에서 $\\dfrac{98-x^2}{98}=-\\dfrac{290-x^2}{286}$, $x^2=147$",
+      "variationNote": "원본 AB=5, BC=3, CD=DA=7 (AC=7, 넓이 16√3)을 AB=11, BC=13, CD=DA=7 (AC=7√3, 넓이 48√3)로 바꿨다. 오답은 한 삼각형의 넓이만 구한 값, 각을 120°로 바꾼 값에서 만들었다.",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": true,
+      "difficultyReason": "두 삼각형의 코사인법칙을 하나의 식으로 묶어 x를 구한 뒤 각을 읽고 두 넓이를 더하는 연결형이라 3으로 보고, 계산량이 커 4와의 경계로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+        "templateKey": "TPL_H22A_05_TRIANGLE_AREA_114"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "원에내접하는사각형",
+              "src": "stem",
+              "quote": "원에 내접하는 사각형 $ABCD$"
+            },
+            {
+              "term": "길이",
+              "src": "stem",
+              "quote": "\\overline{AB} = 11"
+            }
+          ],
+          "goal": [
+            {
+              "term": "넓이",
+              "src": "stem",
+              "quote": "사각형 $ABCD$의 넓이는?"
+            }
+          ],
+          "method": [
+            {
+              "term": "코사인법칙",
+              "src": "solution",
+              "quote": "두 삼각형에 코사인법칙을 적용하면",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "원에내접하는사각형",
+              "src": "solution",
+              "quote": "원에 내접하는 사각형에서 $B+D=180^\\circ$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "대각선",
+              "src": "solution",
+              "quote": "대각선 $AC=x>0$이라 두자",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "삼각형넓이공식",
+              "src": "solution",
+              "quote": "[ABC]=\\dfrac12\\cdot11\\cdot13\\cdot\\dfrac{\\sqrt3}{2}",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "분할",
+              "src": "solution",
+              "quote": "[ABCD]=\\dfrac{143\\sqrt3+49\\sqrt3}{4}",
+              "evidenceType": "IMPLIED",
+              "justification": "대각선 AC로 사각형을 두 삼각형으로 나누어 넓이를 더한다"
+            }
+          ],
+          "condition": [
+            {
+              "term": "양수",
+              "src": "solution",
+              "quote": "x>0"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "내접 사각형의 마주 보는 두 각의 합으로 대각선을 구하고 두 삼각형의 넓이를 더한다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q12: 원본 Q12의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-114",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 원에 내접하는 사각형의 대각선으로 두 삼각형을 나누고 코사인법칙과 마주 보는 두 각의 합 180°로 대각선과 각을 구해 두 삼각형의 넓이를 합한다. → 삼각형의 넓이>복합도형; PT/TPL(PT_H22A_05_TRIANGLE_AREA,TPL_H22A_05_TRIANGLE_AREA_114)이 크로스워크 H2-M1-RPM-114의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 13,
+      "sourceOrdinal": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-06",
+        "standardUnit": "등차수열과 등비수열",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "conceptClusterKey": "H22-A-06-SEQUENCE_BASIC",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-117"
+        ],
+        "rpmPrimary": {
+          "l1": "수열",
+          "l2": "등차수열과 등비수열",
+          "l3": "등차수열",
+          "l4": "합",
+          "recordId": "H2-M1-RPM-117",
+          "l3Label": "등차수열",
+          "l4Label": "합",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-117"
+        },
+        "rpmPrimaryL1": "수열",
+        "rpmPrimaryL2": "등차수열과 등비수열",
+        "rpmPrimaryL3": "등차수열",
+        "rpmPrimaryL4": "합",
+        "rpmPrimaryRecordId": "H2-M1-RPM-117",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "L3": "등차수열",
+        "L4": "합",
+        "rpmL3": "등차수열",
+        "rpmL4": "합",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_117",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 13,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "등차수열의 합 공식을 두 번 쓰고 조건식으로 묶어 대입하는 정형 계산이라 중",
+        "difficultyBasis": "합 공식 두 번과 공통인수로 묶기라 계산은 길지만 구조가 정해진 2단계로 2로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 항의 합 조건과 부분합을 식으로 주어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 항과 부분합의 식 전개로 완결되어 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "등차수열에서 두 항의 합 조건을 2a+9d로 정리하고 두 부분합을 a, d로 나타내 같은 꼴로 묶어 값을 구한다.",
+          "crossConcept": "보조 개념 없음(등차수열의 항과 합 공식만 사용).",
+          "condition": "별도 제한 조건 없음(근거: 발문에 수 범위 제약 없음).",
+          "integration": "항의 합 정리 → 두 부분합 전개 → 묶어 대입의 SEQUENTIAL.",
+          "curriculum": "2022 개정 대수 등차수열과 등비수열 > 등차수열: 크로스워크 H2-M1-RPM-117(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 13,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 a3+a8=13, S6+S12=9(2a+9d)=117을 a2+a9=14, S4+S12=8(2a+9d)=112로 바꿨다. 오답은 묶는 계수를 다르게 잡은 값(113~116)에서 만들었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "주어진 두 항의 합을 2a+9d로 정리하고, 두 합 S_4, S_12를 a, d로 나타내 합이 2a+9d의 상수배로 묶임을 이용해 값을 구한다.",
+      "decisiveStep": "$S_4+S_{12}=16a+72d=8(2a+9d)$에 $2a+9d=14$ 대입",
+      "variationNote": "원본 a3+a8=13, S6+S12=9(2a+9d)=117을 a2+a9=14, S4+S12=8(2a+9d)=112로 바꿨다. 오답은 묶는 계수를 다르게 잡은 값(113~116)에서 만들었다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "합 공식 두 번과 공통인수로 묶기라 계산은 길지만 구조가 정해진 2단계로 2로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_117"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "등차수열",
+              "src": "stem",
+              "quote": "등차수열 $\\{a_n\\}$"
+            },
+            {
+              "term": "수열의합",
+              "src": "stem",
+              "quote": "첫째항부터 제$n$항까지의 합을 $S_n$"
+            },
+            {
+              "term": "항",
+              "src": "stem",
+              "quote": "a_2 + a_9 = 14"
+            }
+          ],
+          "goal": [
+            {
+              "term": "수열의합",
+              "src": "stem",
+              "quote": "S_4 + S_{12}"
+            }
+          ],
+          "method": [
+            {
+              "term": "수열의합",
+              "src": "solution",
+              "quote": "S_n=\\dfrac n2\\{2a+(n-1)d\\}",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "일반항",
+              "src": "solution",
+              "quote": "a_2=a+d",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "공통인수",
+              "src": "solution",
+              "quote": "S_4+S_{12}=8(2a+9d)",
+              "evidenceType": "IMPLIED",
+              "justification": "16a+72d를 8로 묶어 조건식 2a+9d의 꼴로 만든다"
+            },
+            {
+              "term": "대입",
+              "src": "solution",
+              "quote": "주어진 $2a+9d=14$를 대입하면",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "두 부분합을 a, d로 나타내 조건식 꼴로 묶어 대입한다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q13: 원본 Q13의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-117",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 등차수열에서 두 항의 합 조건을 2a+9d로 정리하고 두 부분합을 a, d로 나타내 같은 꼴로 묶어 값을 구한다. → 등차수열>합; PT/TPL(PT_H22A_06_ARITHMETIC_SEQUENCE,TPL_H22A_06_ARITHMETIC_SEQUENCE_117)이 크로스워크 H2-M1-RPM-117의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 14,
+      "sourceOrdinal": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-07",
+        "standardUnit": "수열의 합",
+        "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "conceptClusterKey": "H22-A-07-SEQUENCE_BASIC",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-128"
+        ],
+        "rpmPrimary": {
+          "l1": "수열",
+          "l2": "수열의 합",
+          "l3": "계차수열",
+          "l4": "부분합 S_n에서 일반항 구하기(a_1=S_1, n≥2에서 S_n−S_{n−1})",
+          "recordId": "H2-M1-RPM-128",
+          "l3Label": "계차수열",
+          "l4Label": "부분합 S_n에서 일반항 구하기(a_1=S_1, n≥2에서 S_n−S_{n−1})",
+          "l4Source": "GENERATED_EXTENSION",
+          "generatedL4Key": "EXT-L4-ALG-SEQUENCE-PARTIAL-SUM-GENERAL-TERM",
+          "parentRpmL4": "일반항 구하기",
+          "mappingNote": "canonical RPM L3 하위의 Generated L4 확장; parent record H2-M1-RPM-128"
+        },
+        "rpmPrimaryL1": "수열",
+        "rpmPrimaryL2": "수열의 합",
+        "rpmPrimaryL3": "계차수열",
+        "rpmPrimaryL4": "부분합 S_n에서 일반항 구하기(a_1=S_1, n≥2에서 S_n−S_{n−1})",
+        "rpmPrimaryRecordId": "H2-M1-RPM-128",
+        "L1": "수열",
+        "L2": "수열의 합",
+        "L3": "계차수열",
+        "L4": "부분합 S_n에서 일반항 구하기(a_1=S_1, n≥2에서 S_n−S_{n−1})",
+        "rpmL3": "계차수열",
+        "rpmL4": "부분합 S_n에서 일반항 구하기(a_1=S_1, n≥2에서 S_n−S_{n−1})",
+        "rpmGeneratedL4Key": "EXT-L4-ALG-SEQUENCE-PARTIAL-SUM-GENERAL-TERM",
+        "problemTypeKey": "PT_H22A_07_DIFFERENCE_SEQUENCE",
+        "templateKey": "TPL_H22A_07_DIFFERENCE_SEQUENCE_128",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 14,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "부분합과 일반항의 관계 한 번과 지수 정리가 필요한 정형 계산이라 중",
+        "difficultyBasis": "부분합의 차로 일반항을 얻고 세 항을 구해 더하는 두세 단계 계산이라 2로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 부분합 식과 구하는 항을 식으로 주어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 부분합의 차로 일반항을 구하는 식 전개로 완결되어 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "부분합 S_n이 n의 식으로 주어질 때 n≥2에서 S_n-S_{n-1}로 일반항 a_n을 구하고 지정한 항들의 합을 계산한다.",
+          "crossConcept": "보조 개념 없음(부분합과 일반항의 관계 자체가 풀이의 중심이라 Primary 확장 L4로 둔다).",
+          "condition": "별도 제한 조건 없음(근거: n≥2 구분은 풀이 안의 사용 범위이고 발문의 제약이 아니다).",
+          "integration": "일반항 구하기 → 세 항 계산 → 합의 SEQUENTIAL.",
+          "curriculum": "2022 개정 대수 수열의 합 > 계차수열: 크로스워크 H2-M1-RPM-128(DIRECT_ACTIVE)에 Generated L4 확장"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 14,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 S_n=3×2^{n+1}-6, a_2+a_4+a_6=252를 S_n=5×2^{n+1}-10, a_2+a_4+a_6=420으로 바꿨다. 오답은 S_2, S_4, S_6을 그대로 더한 값, a_n 공식에 2^{n+1} 사용에서 만들었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "n≥2에서 a_n=S_n-S_{n-1}로 일반항을 구하고 지수식을 정리한 뒤 짝수 번째 세 항을 구해 더한다.",
+      "decisiveStep": "$n\\ge2$에서 $a_n=S_n-S_{n-1}=5\\cdot2^n$",
+      "variationNote": "원본 S_n=3×2^{n+1}-6, a_2+a_4+a_6=252를 S_n=5×2^{n+1}-10, a_2+a_4+a_6=420으로 바꿨다. 오답은 S_2, S_4, S_6을 그대로 더한 값, a_n 공식에 2^{n+1} 사용에서 만들었다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "부분합의 차로 일반항을 얻고 세 항을 구해 더하는 두세 단계 계산이라 2로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_07_DIFFERENCE_SEQUENCE",
+        "templateKey": "TPL_H22A_07_DIFFERENCE_SEQUENCE_128"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "수열",
+              "src": "stem",
+              "quote": "수열 $\\{a_n\\}$"
+            },
+            {
+              "term": "수열의합",
+              "src": "stem",
+              "quote": "S_n=5\\times2^{n+1}-10"
+            }
+          ],
+          "goal": [
+            {
+              "term": "합",
+              "src": "stem",
+              "quote": "a_2+a_4+a_6"
+            }
+          ],
+          "method": [
+            {
+              "term": "수열의합",
+              "src": "solution",
+              "quote": "a_n=S_n-S_{n-1}",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "일반항",
+              "src": "solution",
+              "quote": "a_n=(5\\cdot2^{n+1}-10)-(5\\cdot2^n-10)=5\\cdot2^n",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "지수법칙",
+              "src": "solution",
+              "quote": "5\\cdot2^{n+1}-10)-(5\\cdot2^n-10)=5\\cdot2^n",
+              "evidenceType": "IMPLIED",
+              "justification": "2^{n+1}=2·2^n으로 두 항을 합쳐 5·2^n을 얻는다"
+            }
+          ],
+          "condition": [
+            {
+              "term": "범위",
+              "src": "solution",
+              "quote": "n\\ge2$일 때"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "부분합의 차로 일반항을 얻어 필요한 항을 더한다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q14: 원본 Q14의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "수열",
+        "L2": "수열의 합",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-128",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 부분합 S_n이 n의 식으로 주어질 때 n≥2에서 S_n-S_{n-1}로 일반항 a_n을 구하고 지정한 항들의 합을 계산한다. → 계차수열>일반항 구하기; PT/TPL(PT_H22A_07_DIFFERENCE_SEQUENCE,TPL_H22A_07_DIFFERENCE_SEQUENCE_128)이 크로스워크 H2-M1-RPM-128의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 15,
+      "sourceOrdinal": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-07",
+        "standardUnit": "수열의 합",
+        "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "conceptClusterKey": "H22-A-07-SEQUENCE_BASIC",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-123"
+        ],
+        "rpmPrimary": {
+          "l1": "수열",
+          "l2": "수열의 합",
+          "l3": "합의 기호 Σ",
+          "l4": "Σ 계산",
+          "recordId": "H2-M1-RPM-123",
+          "l3Label": "합의 기호 Σ",
+          "l4Label": "Σ 계산",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-123"
+        },
+        "rpmPrimaryL1": "수열",
+        "rpmPrimaryL2": "수열의 합",
+        "rpmPrimaryL3": "합의 기호 Σ",
+        "rpmPrimaryL4": "Σ 계산",
+        "rpmPrimaryRecordId": "H2-M1-RPM-123",
+        "L1": "수열",
+        "L2": "수열의 합",
+        "L3": "합의 기호 Σ",
+        "L4": "Σ 계산",
+        "rpmL3": "합의 기호 Σ",
+        "rpmL4": "Σ 계산",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_07_SIGMA_NOTATION",
+        "templateKey": "TPL_H22A_07_SIGMA_NOTATION_123",
+        "crossConceptKeys": [
+          "CC_GEOMETRIC_SEQUENCE"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 15,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "치환된 항 번호의 일반항을 새로 세워 두 종류의 합을 구하고 주어진 꼴로 읽어야 해 중",
+        "difficultyBasis": "항 번호를 바꿔 일반항을 다시 세우고 등차·등비 두 합을 따로 구해 꼴을 맞춰 읽는 세 단계라 3으로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 일반항과 시그마 식으로 완결되어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 두 시그마의 계산과 등비수열 합 공식으로 완결되어 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "항 번호가 바뀐 두 수열의 합을 시그마로 계산하되, 등차 부분은 자연수의 합으로, 등비 부분은 새 일반항의 등비수열 합으로 구해 주어진 꼴의 p, q, r을 읽는다.",
+          "crossConcept": "b_{3k}=12·8^{k-1}이 첫째항 12, 공비 8인 등비수열임을 알아보고 등비수열의 합 공식을 쓴다.",
+          "condition": "별도 제한 조건 없음(근거: 발문에 수 범위 제약 없음).",
+          "integration": "두 일반항 정리 → 두 합 계산 → 꼴 맞춰 읽기의 SEQUENTIAL.",
+          "curriculum": "2022 개정 대수 수열의 합 > 합의 기호 Σ: 크로스워크 H2-M1-RPM-123(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 15,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 a_n=2n-1, b_n=2·3^{n-1}, Σ_{k=1}^5(a_{3k}+b_{2k})=85+3/4(9^5-1)을 a_n=3n-2, b_n=3·2^{n-1}, Σ_{k=1}^6(a_{2k}+b_{3k})=114+12/7(8^6-1)로 바꿨다. 오답은 항 수 5, 첫 항 계수 누락, 공비를 2로 읽기에서 만들었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "시그마를 등차 부분과 등비 부분으로 나누어, 등차 부분은 자연수의 합으로, 등비 부분은 b_{3k}를 12·8^{k-1}로 정리해 등비수열의 합 공식으로 구한다.",
+      "decisiveStep": "$b_{3k}=12\\cdot8^{k-1}$로 정리해 $\\dfrac{12(8^6-1)}{8-1}$",
+      "variationNote": "원본 a_n=2n-1, b_n=2·3^{n-1}, Σ_{k=1}^5(a_{3k}+b_{2k})=85+3/4(9^5-1)을 a_n=3n-2, b_n=3·2^{n-1}, Σ_{k=1}^6(a_{2k}+b_{3k})=114+12/7(8^6-1)로 바꿨다. 오답은 항 수 5, 첫 항 계수 누락, 공비를 2로 읽기에서 만들었다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "항 번호를 바꿔 일반항을 다시 세우고 등차·등비 두 합을 따로 구해 꼴을 맞춰 읽는 세 단계라 3으로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_07_SIGMA_NOTATION",
+        "templateKey": "TPL_H22A_07_SIGMA_NOTATION_123"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "수열",
+              "src": "stem",
+              "quote": "두 수열 $\\{a_n\\}, \\{b_n\\}$"
+            },
+            {
+              "term": "일반항",
+              "src": "stem",
+              "quote": "일반항이 $a_n = 3n - 2"
+            },
+            {
+              "term": "시그마",
+              "src": "stem",
+              "quote": "\\sum_{k=1}^6 (a_{2k} + b_{3k})"
+            }
+          ],
+          "goal": [
+            {
+              "term": "결정",
+              "src": "stem",
+              "quote": "$p, q, r$을 순서대로"
+            }
+          ],
+          "method": [
+            {
+              "term": "시그마",
+              "src": "solution",
+              "quote": "\\sum_{k=1}^6a_{2k}",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "일반항",
+              "src": "solution",
+              "quote": "a_{2k}=3(2k)-2=6k-2",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "지수법칙",
+              "src": "solution",
+              "quote": "3\\cdot2^{3k-1}=12\\cdot8^{k-1}",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "등비수열",
+              "src": "solution",
+              "quote": "12\\cdot\\dfrac{8^6-1}{8-1}",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "항 번호를 바꾼 일반항으로 등차·등비 두 합을 구해 주어진 꼴로 읽는다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q15: 원본 Q15의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "수열",
+        "L2": "수열의 합",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-123",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 항 번호가 바뀐 두 수열의 합을 시그마로 계산하되, 등차 부분은 자연수의 합으로, 등비 부분은 새 일반항의 등비수열 합으로 구해 주어진 꼴의 p, q, r을 읽는다. → 합의 기호 Σ>Σ 계산; PT/TPL(PT_H22A_07_SIGMA_NOTATION,TPL_H22A_07_SIGMA_NOTATION_123)이 크로스워크 H2-M1-RPM-123의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 16,
+      "sourceOrdinal": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-06",
+        "standardUnit": "등차수열과 등비수열",
+        "subUnitKey": "H22-A-06-SEQUENCE_APPLICATION",
+        "subUnit": "수열의 활용",
+        "conceptClusterKey": "H22-A-06-SEQUENCE_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-121"
+        ],
+        "rpmPrimary": {
+          "l1": "수열",
+          "l2": "등차수열과 등비수열",
+          "l3": "수열의 활용",
+          "l4": "조건으로 수열 결정",
+          "recordId": "H2-M1-RPM-121",
+          "l3Label": "수열의 활용",
+          "l4Label": "조건으로 수열 결정",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-121"
+        },
+        "rpmPrimaryL1": "수열",
+        "rpmPrimaryL2": "등차수열과 등비수열",
+        "rpmPrimaryL3": "수열의 활용",
+        "rpmPrimaryL4": "조건으로 수열 결정",
+        "rpmPrimaryRecordId": "H2-M1-RPM-121",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "L3": "수열의 활용",
+        "L4": "조건으로 수열 결정",
+        "rpmL3": "수열의 활용",
+        "rpmL4": "조건으로 수열 결정",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+        "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_121",
+        "crossConceptKeys": [
+          "EXT-CROSS-ARITHMETIC-ABSOLUTE-TERM-NEAREST-ZERO"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 16,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "일반항을 세운 뒤 절댓값의 최소를 후보 비교로 정하는 정형 풀이라 중",
+        "difficultyBasis": "일반항을 세우고 0에 가까운 자연수 후보 두 개를 비교하는 두세 단계라 2로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 첫째항과 한 항의 값을 글로 주어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 일반항과 후보 두 항의 절댓값 비교로 완결되어 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "등차수열의 일반항을 세워 절댓값 |a_n|이 최소가 되는 자연수 n을 부호가 바뀌는 지점 근처의 두 후보 비교로 구한다.",
+          "crossConcept": "|a_n|의 최솟값은 a_n이 0에 가장 가까운 항에서 생기므로 a_n=0의 해 근처 두 자연수를 비교한다.",
+          "condition": "n이 자연수라는 조건 때문에 실수 해 45/7 대신 주변 자연수 6, 7만 후보가 된다.",
+          "integration": "공차 → 일반항 → 후보 비교의 SEQUENTIAL.",
+          "curriculum": "2022 개정 대수 등차수열과 등비수열 > 수열의 활용: 크로스워크 H2-M1-RPM-121(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 16,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 a_1=41, a_7=11 (a_n=46-5n, 답 9)를 a_1=38, a_5=10 (a_n=45-7n, 답 6)으로 바꿨다. 0에 가까운 후보가 위쪽이 아니라 아래쪽 정수(6.43→6)가 되도록 설계했다. 오답은 올림한 7, 부호 변화 항 등에서 만들었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "두 항으로 공차와 일반항을 구하고, |a_n|이 a_n=0에 가장 가까운 항에서 최소임을 이용해 자연수 n 후보 둘의 절댓값을 비교한다.",
+      "decisiveStep": "$|a_n|=7\\left|n-\\dfrac{45}{7}\\right|$에서 $n=6,7$의 $|a_6|=3$, $|a_7|=4$ 비교",
+      "variationNote": "원본 a_1=41, a_7=11 (a_n=46-5n, 답 9)를 a_1=38, a_5=10 (a_n=45-7n, 답 6)으로 바꿨다. 0에 가까운 후보가 위쪽이 아니라 아래쪽 정수(6.43→6)가 되도록 설계했다. 오답은 올림한 7, 부호 변화 항 등에서 만들었다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "일반항을 세우고 0에 가까운 자연수 후보 두 개를 비교하는 두세 단계라 2로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+        "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_121"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "등차수열",
+              "src": "stem",
+              "quote": "등차수열 $\\{a_n\\}$"
+            },
+            {
+              "term": "첫째항",
+              "src": "stem",
+              "quote": "첫째항이 $38$"
+            },
+            {
+              "term": "항",
+              "src": "stem",
+              "quote": "a_5 = 10"
+            }
+          ],
+          "goal": [
+            {
+              "term": "최솟값",
+              "src": "stem",
+              "quote": "최소가 되는"
+            }
+          ],
+          "method": [
+            {
+              "term": "공차",
+              "src": "solution",
+              "quote": "d=\\dfrac{a_5-a_1}{4}",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "일반항",
+              "src": "solution",
+              "quote": "a_n=38-7(n-1)=45-7n",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "절댓값",
+              "src": "solution",
+              "quote": "|a_n|=7\\left|n-\\dfrac{45}{7}\\right|",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "대소비교",
+              "src": "solution",
+              "quote": "|a_6|=3$, $|a_7|=4",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "자연수",
+              "src": "stem",
+              "quote": "자연수 $n$"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "일반항을 세우고 0에 가까운 자연수 후보의 절댓값을 비교한다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q16: 원본 Q16의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-121",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 등차수열의 일반항을 세워 절댓값 |a_n|이 최소가 되는 자연수 n을 부호가 바뀌는 지점 근처의 두 후보 비교로 구한다. → 수열의 활용>조건으로 수열 결정; PT/TPL(PT_H22A_06_SEQUENCE_APPLICATION,TPL_H22A_06_SEQUENCE_APPLICATION_121)이 크로스워크 H2-M1-RPM-121의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 17,
+      "sourceOrdinal": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-06",
+        "standardUnit": "등차수열과 등비수열",
+        "subUnitKey": "H22-A-06-SEQUENCE_APPLICATION",
+        "subUnit": "수열의 활용",
+        "conceptClusterKey": "H22-A-06-SEQUENCE_APPLICATION",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-121"
+        ],
+        "rpmPrimary": {
+          "l1": "수열",
+          "l2": "등차수열과 등비수열",
+          "l3": "수열의 활용",
+          "l4": "조건으로 수열 결정",
+          "recordId": "H2-M1-RPM-121",
+          "l3Label": "수열의 활용",
+          "l4Label": "조건으로 수열 결정",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-121"
+        },
+        "rpmPrimaryL1": "수열",
+        "rpmPrimaryL2": "등차수열과 등비수열",
+        "rpmPrimaryL3": "수열의 활용",
+        "rpmPrimaryL4": "조건으로 수열 결정",
+        "rpmPrimaryRecordId": "H2-M1-RPM-121",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "L3": "수열의 활용",
+        "L4": "조건으로 수열 결정",
+        "rpmL3": "수열의 활용",
+        "rpmL4": "조건으로 수열 결정",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+        "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_121",
+        "crossConceptKeys": [
+          "CC_GEOMETRIC_SEQUENCE",
+          "EXT-CROSS-PARTIAL-SUM-CONSTANT-PAIR-TERM-ZERO"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 17,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "부분합 조건을 항의 관계로 바꾸는 추론과 등비수열 정보를 연결해야 해 중",
+        "difficultyBasis": "부분합이 일정하다는 조건에서 항 사이의 관계를 읽어 내고 두 수열 정보를 엮어야 해 3으로 보되, 읽어 내는 추론이 낯설어 4와의 경계로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 수열의 조건을 식과 글로 모두 주어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 홀수 번째 항과 부분합 조건의 식 전개로 완결되어 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "홀수 번째 항이 등비수열이고 모든 n에서 S_{2n}이 일정할 때, n≥2에서 연속한 두 항의 합이 0임을 이용해 짝수 번째 항을 구하고 차를 계산한다.",
+          "crossConcept": "부분합이 같은 두 시점의 차가 0이라는 사실로 이웃한 두 항의 합이 0이 되는 관계를 얻는다.",
+          "condition": "모든 자연수 n에 대하여 S_{2n}=5라는 조건이 n≥2에서 항 사이의 관계를 만든다(n=1은 a_2=2로 별도).",
+          "integration": "등비수열 정보와 부분합 조건이 서로 맞물려 짝수 번째 항을 정하는 INTERDEPENDENT.",
+          "curriculum": "2022 개정 대수 등차수열과 등비수열 > 수열의 활용: 크로스워크 H2-M1-RPM-121(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 17,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 a_1=2, 공비 2, S_{2n}=3, a_10-a_14=96을 a_1=3, 공비 2, S_{2n}=5, a_8-a_12=72로 바꿨다. n=1일 때는 a_2=2로 예외가 되는 구조(n≥2에서만 소거)를 유지했다. 오답은 a_{2n}=a_{2n-1} 부호 오류, 합으로 읽기에서 만들었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "홀수 번째 항의 등비수열로 a_7, a_11을 구하고, 모든 n에서 S_{2n}이 같음을 이용해 n≥2에서 a_{2n-1}+a_{2n}=0으로 짝수 번째 항을 홀수 번째 항으로 바꿔 차를 구한다.",
+      "decisiveStep": "$S_{2n}=S_{2n-2}=5$에서 $a_{2n-1}+a_{2n}=0$, 즉 $a_8=-a_7$, $a_{12}=-a_{11}$",
+      "variationNote": "원본 a_1=2, 공비 2, S_{2n}=3, a_10-a_14=96을 a_1=3, 공비 2, S_{2n}=5, a_8-a_12=72로 바꿨다. n=1일 때는 a_2=2로 예외가 되는 구조(n≥2에서만 소거)를 유지했다. 오답은 a_{2n}=a_{2n-1} 부호 오류, 합으로 읽기에서 만들었다.",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": true,
+      "difficultyReason": "부분합이 일정하다는 조건에서 항 사이의 관계를 읽어 내고 두 수열 정보를 엮어야 해 3으로 보되, 읽어 내는 추론이 낯설어 4와의 경계로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+        "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_121"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "수열",
+              "src": "stem",
+              "quote": "수열 $\\{a_n\\}$"
+            },
+            {
+              "term": "수열의합",
+              "src": "stem",
+              "quote": "S_{2n} = 5"
+            },
+            {
+              "term": "등비수열",
+              "src": "stem",
+              "quote": "공비가 $2$인 등비수열"
+            },
+            {
+              "term": "첫째항",
+              "src": "stem",
+              "quote": "a_1 = 3"
+            }
+          ],
+          "goal": [
+            {
+              "term": "차",
+              "src": "stem",
+              "quote": "a_8 - a_{12}"
+            }
+          ],
+          "method": [
+            {
+              "term": "등비수열",
+              "src": "solution",
+              "quote": "첫째항 $3$, 공비 $2$인 등비수열",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "수열의합",
+              "src": "solution",
+              "quote": "S_{2n}=S_{2n-2}=5",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "규칙",
+              "src": "solution",
+              "quote": "a_{2n-1}+a_{2n}=0",
+              "evidenceType": "IMPLIED",
+              "justification": "이웃한 두 항의 합이 0이라는 항 사이의 관계로 짝수 번째 항을 홀수 번째 항으로 바꾼다"
+            }
+          ],
+          "condition": [
+            {
+              "term": "자연수",
+              "src": "stem",
+              "quote": "모든 자연수 $n$에 대하여"
+            },
+            {
+              "term": "항상성립",
+              "src": "stem",
+              "quote": "모든 자연수 $n$에 대하여"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "부분합이 일정하다는 조건으로 이웃한 항의 합이 0임을 얻고 등비수열의 항으로 바꾼다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q17: 원본 Q17의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-121",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 홀수 번째 항이 등비수열이고 모든 n에서 S_{2n}이 일정할 때, n≥2에서 연속한 두 항의 합이 0임을 이용해 짝수 번째 항을 구하고 차를 계산한다. → 수열의 활용>조건으로 수열 결정; PT/TPL(PT_H22A_06_SEQUENCE_APPLICATION,TPL_H22A_06_SEQUENCE_APPLICATION_121)이 크로스워크 H2-M1-RPM-121의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 18,
+      "sourceOrdinal": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-06",
+        "standardUnit": "등차수열과 등비수열",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "conceptClusterKey": "H22-A-06-SEQUENCE_BASIC",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-120"
+        ],
+        "rpmPrimary": {
+          "l1": "수열",
+          "l2": "등차수열과 등비수열",
+          "l3": "등비수열",
+          "l4": "합",
+          "recordId": "H2-M1-RPM-120",
+          "l3Label": "등비수열",
+          "l4Label": "합",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-120"
+        },
+        "rpmPrimaryL1": "수열",
+        "rpmPrimaryL2": "등차수열과 등비수열",
+        "rpmPrimaryL3": "등비수열",
+        "rpmPrimaryL4": "합",
+        "rpmPrimaryRecordId": "H2-M1-RPM-120",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "L3": "등비수열",
+        "L4": "합",
+        "rpmL3": "등비수열",
+        "rpmL4": "합",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_120",
+        "crossConceptKeys": [
+          "CC_LOG_RULES"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 18,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "수열의 성질과 로그를 연결하고 양수 조건으로 근을 고르는 복합 풀이라 중",
+        "difficultyBasis": "공비 결정(이차방정식과 양수 조건), 합 공식, 로그 계산을 이어야 하는 세 단계라 3으로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 항 사이의 관계와 로그 식을 글로 주어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 공비 결정과 합·로그 계산으로 완결되어 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "등비수열의 항 사이 관계식으로 공비를 정하고 등비수열의 합 S_n+1이 거듭제곱 꼴이 됨을 이용해 로그 값을 구한다.",
+          "crossConcept": "로그의 정의 log_a a^n=n을 이용해 S_{12}+1=4^{12}에서 로그 값을 읽는다.",
+          "condition": "모든 항이 양수이므로 공비가 양수여야 하고 r^2-r-12=0의 두 근 중 4만 가능하다.",
+          "integration": "공비 결정 → 합 공식 → 로그 계산의 SEQUENTIAL.",
+          "curriculum": "2022 개정 대수 등차수열과 등비수열 > 등비수열: 크로스워크 H2-M1-RPM-120(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 18,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 a_1=2, a_4=6a_2+a_3 (r=3), log_3(S_15+1)+5=20을 a_1=3, a_4=12a_2+a_3 (r=4), log_4(S_12+1)+6=18로 바꿨다. a_1=r-1이라 S_n+1=r^n이 되는 구조를 유지했다. 오답은 r=-3 채택, +6 누락(12) 등에서 만들었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "항 사이의 관계로 공비의 이차방정식을 세워 모든 항이 양수라는 조건으로 공비를 정하고, 등비수열의 합을 4^n-1 꼴로 정리해 로그의 값을 구한다.",
+      "decisiveStep": "$r^2-r-12=0$에서 $r>0$이므로 $r=4$, $S_{12}=4^{12}-1$",
+      "variationNote": "원본 a_1=2, a_4=6a_2+a_3 (r=3), log_3(S_15+1)+5=20을 a_1=3, a_4=12a_2+a_3 (r=4), log_4(S_12+1)+6=18로 바꿨다. a_1=r-1이라 S_n+1=r^n이 되는 구조를 유지했다. 오답은 r=-3 채택, +6 누락(12) 등에서 만들었다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "공비 결정(이차방정식과 양수 조건), 합 공식, 로그 계산을 이어야 하는 세 단계라 3으로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_120"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "등비수열",
+              "src": "stem",
+              "quote": "등비수열 $\\{a_n\\}$"
+            },
+            {
+              "term": "첫째항",
+              "src": "stem",
+              "quote": "a_1 = 3"
+            },
+            {
+              "term": "로그",
+              "src": "stem",
+              "quote": "\\log_4"
+            },
+            {
+              "term": "수열의합",
+              "src": "stem",
+              "quote": "a_1 + a_2 + a_3 + \\cdots + a_{12}"
+            }
+          ],
+          "goal": [
+            {
+              "term": "값",
+              "src": "stem",
+              "quote": "6$의 값은?"
+            }
+          ],
+          "method": [
+            {
+              "term": "공비",
+              "src": "solution",
+              "quote": "공비를 $r$라 하면",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "이차방정식",
+              "src": "solution",
+              "quote": "r^2-r-12=0",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "인수분해",
+              "src": "solution",
+              "quote": "(r-4)(r+3)=0",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "수열의합",
+              "src": "solution",
+              "quote": "S_{12}=3\\cdot\\dfrac{4^{12}-1}{4-1}",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "로그",
+              "src": "solution",
+              "quote": "\\log_4(S_{12}+1)+6=12+6=18",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "양수",
+              "src": "stem",
+              "quote": "모든 항이 양수인"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "공비를 이차방정식으로 정하고 합을 4의 거듭제곱 꼴로 만들어 로그 값을 읽는다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q18: 원본 Q18의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-120",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 등비수열의 항 사이 관계식으로 공비를 정하고 등비수열의 합 S_n+1이 거듭제곱 꼴이 됨을 이용해 로그 값을 구한다. → 등비수열>합; PT/TPL(PT_H22A_06_GEOMETRIC_SEQUENCE,TPL_H22A_06_GEOMETRIC_SEQUENCE_120)이 크로스워크 H2-M1-RPM-120의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 19,
+      "sourceOrdinal": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-06",
+        "standardUnit": "등차수열과 등비수열",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "conceptClusterKey": "H22-A-06-SEQUENCE_BASIC",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-120"
+        ],
+        "rpmPrimary": {
+          "l1": "수열",
+          "l2": "등차수열과 등비수열",
+          "l3": "등비수열",
+          "l4": "합",
+          "recordId": "H2-M1-RPM-120",
+          "l3Label": "등비수열",
+          "l4Label": "합",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-120"
+        },
+        "rpmPrimaryL1": "수열",
+        "rpmPrimaryL2": "등차수열과 등비수열",
+        "rpmPrimaryL3": "등비수열",
+        "rpmPrimaryL4": "합",
+        "rpmPrimaryRecordId": "H2-M1-RPM-120",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "L3": "등비수열",
+        "L4": "합",
+        "rpmL3": "등비수열",
+        "rpmL4": "합",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_120",
+        "crossConceptKeys": [
+          "EXT-CROSS-ANNUITY-DUE-COMPOUND-TOTAL"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 19,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "복리 적립 상황을 등비수열의 합으로 모델링하고 근삿값으로 계산해야 해 중",
+        "difficultyBasis": "매월 초 적립의 합 공식을 두 번 세우고 주어진 근삿값으로 계산해 차를 구하는 문장제 세 단계라 3으로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 두 학생의 적립 조건을 글 상자로 모두 주어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 두 원리합계의 식과 수치 계산으로 완결되어 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "복리로 매월 초에 일정 금액을 적립할 때의 원리합계를 등비수열의 합으로 세워 두 경우를 비교한다.",
+          "crossConcept": "매월 초 적립은 각 납입금에 한 달씩 더 이자가 붙어 첫 항이 a(1+r)인 등비수열의 합이 된다.",
+          "condition": "별도 제한 조건 없음(근거: 근삿값은 계산 편의로 제시된 값이며 해 선택 조건이 아니다).",
+          "integration": "두 원리합계를 각각 세워 계산한 뒤 차를 구하는 SEQUENTIAL.",
+          "curriculum": "2022 개정 대수 등차수열과 등비수열 > 등비수열: 크로스워크 H2-M1-RPM-120(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 19,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 A 월 0.5%·20만 원·12개월, B 월 0.6%·10만 원·24개월(차 103000원)을 A 월 0.5%·10만 원·18개월, B 월 0.4%·20만 원·10개월(차 199000원)로 바꿨다. 오답은 매월 말 적립 공식 사용, 이자 한 달 누락 등에서 만들었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "매월 초 적립은 각 납입금에 한 달씩 더 이자가 붙어 첫 항이 P(1+r)인 등비수열의 합 P(1+r){(1+r)^n-1}/r임을 세워 두 학생의 원리합계를 구하고 차의 절댓값을 계산한다.",
+      "decisiveStep": "$100000\\cdot1.005\\cdot\\dfrac{1.005^{18}-1}{0.005}$ 꼴의 원리합계 식 세우기",
+      "variationNote": "원본 A 월 0.5%·20만 원·12개월, B 월 0.6%·10만 원·24개월(차 103000원)을 A 월 0.5%·10만 원·18개월, B 월 0.4%·20만 원·10개월(차 199000원)로 바꿨다. 오답은 매월 말 적립 공식 사용, 이자 한 달 누락 등에서 만들었다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "매월 초 적립의 합 공식을 두 번 세우고 주어진 근삿값으로 계산해 차를 구하는 문장제 세 단계라 3으로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_120"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "지수성장",
+              "src": "stem",
+              "quote": "복리로"
+            },
+            {
+              "term": "비율",
+              "src": "stem",
+              "quote": "월 이율이 $0.5\\%$"
+            },
+            {
+              "term": "근삿값",
+              "src": "stem",
+              "quote": "1.005^{18} = 1.09"
+            }
+          ],
+          "goal": [
+            {
+              "term": "차",
+              "src": "stem",
+              "quote": "|a - b|"
+            },
+            {
+              "term": "절댓값",
+              "src": "stem",
+              "quote": "|a - b|"
+            }
+          ],
+          "method": [
+            {
+              "term": "수열의합",
+              "src": "solution",
+              "quote": "100000\\cdot1.005\\cdot\\dfrac{1.005^{18}-1}{0.005}",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "등비수열",
+              "src": "solution",
+              "quote": "\\dfrac{1.004^{10}-1}{0.004}",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "지수성장",
+              "src": "solution",
+              "quote": "각 납입금은 한 달 더 이자가 붙는다",
+              "evidenceType": "IMPLIED",
+              "justification": "납입 시점마다 복리 거듭제곱의 지수가 1씩 달라지는 것을 등비수열로 모델링한다"
+            },
+            {
+              "term": "차",
+              "src": "solution",
+              "quote": "|a-b|=2008000-1809000=199000",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "복리 적립을 등비수열의 합으로 세워 두 원리합계의 차를 구한다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q19: 원본 Q19의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-120",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 복리로 매월 초에 일정 금액을 적립할 때의 원리합계를 등비수열의 합으로 세워 두 경우를 비교한다. → 등비수열>합; PT/TPL(PT_H22A_06_GEOMETRIC_SEQUENCE,TPL_H22A_06_GEOMETRIC_SEQUENCE_120)이 크로스워크 H2-M1-RPM-120의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 20,
+      "sourceOrdinal": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+        "subUnit": "삼각함수의 그래프",
+        "conceptClusterKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-107"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각함수",
+          "l2": "삼각함수의 그래프",
+          "l3": "그래프 활용",
+          "l4": "교점",
+          "recordId": "H2-M1-RPM-107",
+          "l3Label": "그래프 활용",
+          "l4Label": "교점",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-107"
+        },
+        "rpmPrimaryL1": "삼각함수",
+        "rpmPrimaryL2": "삼각함수의 그래프",
+        "rpmPrimaryL3": "그래프 활용",
+        "rpmPrimaryL4": "교점",
+        "rpmPrimaryRecordId": "H2-M1-RPM-107",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 그래프",
+        "L3": "그래프 활용",
+        "L4": "교점",
+        "rpmL3": "그래프 활용",
+        "rpmL4": "교점",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "crossConceptKeys": [
+          "EXT-CROSS-SINE-LINE-INTERSECTION-PERIODIC-X-COORDINATES",
+          "CC_TRIGONOMETRIC_EQUATION"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 20,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "삼각방정식의 해를 수열로 정리하고 합을 구하는 영역 통합 계산이라 중",
+        "difficultyBasis": "그래프에서 교점의 주기 규칙을 읽어 일반항을 만들고 시그마까지 이어야 하는 세 단계라 3으로 보되, 규칙 발견이 필요해 4와의 경계로 본다.",
+        "visualNecessity": {
+          "problem": "RENDERED",
+          "problemReason": "발문이 사인곡선과 직선의 교점을 그림으로 보이도록 공식 엔진(삼각함수 그래프)으로 렌더했다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설 그림 별도 작업 예정. 해설 본문이 교점의 x좌표 두 계열을 식으로 모두 적어 그림 없이도 읽힌다."
+        },
+        "metaRationale": {
+          "problemType": "사인곡선과 수평선의 교점 x좌표가 주기마다 두 계열로 나타남을 이용해 일반항을 정하고 홀수·짝수 번째 항의 합을 시그마로 구한다.",
+          "crossConcept": "sinπx=√3/2의 해를 주기 2마다 반복되는 두 계열 2k+1/3, 2k+2/3로 쓴다.",
+          "condition": "x≥0으로 정의역이 제한되어 k=0부터 시작하는 교점만 센다.",
+          "integration": "교점의 x좌표 → 일반항 → 시그마 합의 SEQUENTIAL.",
+          "curriculum": "2022 개정 대수 삼각함수의 그래프 > 그래프 활용: 크로스워크 H2-M1-RPM-107(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 20,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 y=sinπx와 y=1/2 (교점 2k+1/6, 2k+5/6, 합 118)를 y=√3/2 (교점 2k+1/3, 2k+2/3, 합 128)로 바꿨다. 그림은 교점 5개가 보이도록 0≤x≤9/2 구간으로 그렸다. 오답은 두 계열을 바꿔 읽기, 항 번호 오류에서 만들었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "사인함수의 주기성으로 교점의 x좌표를 2k+1/3, 2k+2/3 두 계열의 등차수열로 나타내고 일반항을 시그마에 대입해 합을 구한다.",
+      "decisiveStep": "$a_{2n-1}=2(n-1)+\\dfrac13$, $a_{2n}=2(n-1)+\\dfrac23$로 두고 $3a_{2n-1}-2a_{2n}=2(n-1)-\\dfrac13$",
+      "variationNote": "원본 y=sinπx와 y=1/2 (교점 2k+1/6, 2k+5/6, 합 118)를 y=√3/2 (교점 2k+1/3, 2k+2/3, 합 128)로 바꿨다. 그림은 교점 5개가 보이도록 0≤x≤9/2 구간으로 그렸다. 오답은 두 계열을 바꿔 읽기, 항 번호 오류에서 만들었다.",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": true,
+      "difficultyReason": "그래프에서 교점의 주기 규칙을 읽어 일반항을 만들고 시그마까지 이어야 하는 세 단계라 3으로 보되, 규칙 발견이 필요해 4와의 경계로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "사인",
+              "src": "stem",
+              "quote": "\\sin \\pi x"
+            },
+            {
+              "term": "그래프",
+              "src": "stem",
+              "quote": "그래프와 직선"
+            },
+            {
+              "term": "직선",
+              "src": "stem",
+              "quote": "직선 $y = \\dfrac{\\sqrt{3}}{2}$"
+            },
+            {
+              "term": "교점",
+              "src": "stem",
+              "quote": "만나는 점"
+            },
+            {
+              "term": "수열",
+              "src": "stem",
+              "quote": "a_1, a_2, a_3, \\cdots"
+            }
+          ],
+          "goal": [
+            {
+              "term": "합",
+              "src": "stem",
+              "quote": "\\sum_{n=1}^{12} (3a_{2n-1} - 2a_{2n})"
+            }
+          ],
+          "method": [
+            {
+              "term": "삼각방정식",
+              "src": "solution",
+              "quote": "\\sin\\pi x=\\dfrac{\\sqrt3}{2}",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "주기",
+              "src": "solution",
+              "quote": "x=2k+\\dfrac13$ 또는 $x=2k+\\dfrac23",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "일반항",
+              "src": "solution",
+              "quote": "a_{2n-1}=2(n-1)+\\dfrac13",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "시그마",
+              "src": "solution",
+              "quote": "\\sum_{n=1}^{12}(3a_{2n-1}-2a_{2n})",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "정의역제한",
+              "src": "stem",
+              "quote": "x \\ge 0"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "사인곡선 교점의 주기 규칙으로 일반항을 세워 시그마 합을 구한다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q20: 원본 Q20의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 그래프",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-107",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 사인곡선과 수평선의 교점 x좌표가 주기마다 두 계열로 나타남을 이용해 일반항을 정하고 홀수·짝수 번째 항의 합을 시그마로 구한다. → 그래프 활용>교점; PT/TPL(PT_FUNCTION_GRAPH_INTERSECTION,TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS)이 크로스워크 H2-M1-RPM-107의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 21,
+      "sourceOrdinal": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-07",
+        "standardUnit": "수열의 합",
+        "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "conceptClusterKey": "H22-A-07-SEQUENCE_BASIC",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-123"
+        ],
+        "rpmPrimary": {
+          "l1": "수열",
+          "l2": "수열의 합",
+          "l3": "합의 기호 Σ",
+          "l4": "Σ 계산",
+          "recordId": "H2-M1-RPM-123",
+          "l3Label": "합의 기호 Σ",
+          "l4Label": "Σ 계산",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-123"
+        },
+        "rpmPrimaryL1": "수열",
+        "rpmPrimaryL2": "수열의 합",
+        "rpmPrimaryL3": "합의 기호 Σ",
+        "rpmPrimaryL4": "Σ 계산",
+        "rpmPrimaryRecordId": "H2-M1-RPM-123",
+        "L1": "수열",
+        "L2": "수열의 합",
+        "L3": "합의 기호 Σ",
+        "L4": "Σ 계산",
+        "rpmL3": "합의 기호 Σ",
+        "rpmL4": "Σ 계산",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_07_SIGMA_NOTATION",
+        "templateKey": "TPL_H22A_07_SIGMA_NOTATION_123",
+        "crossConceptKeys": [
+          "EXT-CROSS-SIGN-PATTERN-PERIOD-FOUR-BLOCK-SUM"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 21,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "연속합 공식으로 부호 규칙을 찾아 주기 묶음으로 합을 나누는 시그마 계산이라 중",
+        "difficultyBasis": "지수의 홀짝에서 주기를 찾고 묶음 합과 남은 항을 분리하는 세 단계라 3으로 보되, 규칙 발견이 중심이라 4와의 경계로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 수열의 정의식과 합을 식으로 주어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 부호 규칙과 묶음 합의 식 전개로 완결되어 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "지수가 연속한 자연수의 합인 거듭제곱의 부호가 4항 주기로 반복됨을 찾아 묶음의 가중합과 남은 항의 합으로 시그마를 계산한다.",
+          "crossConcept": "(-1)^{n(n+1)/2}의 부호가 n을 4로 나눈 나머지에 따라 -,-,+,+로 반복되는 규칙을 이용한다.",
+          "condition": "모든 자연수 n에 대하여 정의된 수열이라는 조건 아래 n=1,2,3,4의 부호를 따져 주기를 정한다.",
+          "integration": "부호 규칙 찾기 → 묶음 합 → 남은 항 합의 SEQUENTIAL.",
+          "curriculum": "2022 개정 대수 수열의 합 > 합의 기호 Σ: 크로스워크 H2-M1-RPM-123(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 21,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 Σ_{n=1}^{30} n a_n=-31(28항 묶음+남은 2항)을 Σ_{n=1}^{26} n a_n=-27(24항 묶음+남은 2항)로 바꿨다. 부호 패턴 -,-,+,+와 나머지 2항 구조를 유지했다. 오답은 남은 항 누락(24), 남은 항 부호 반대(75) 등에서 만들었다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "지수 1+2+…+n=n(n+1)/2의 홀짝으로 부호가 -,-,+,+로 4항마다 반복됨을 찾아 네 항을 한 묶음으로 합하고 남은 항을 따로 더한다.",
+      "decisiveStep": "부호가 $-,-,+,+$로 반복되어 한 묶음의 합 $-1-2+3+4=4$, 남은 $n=25,26$은 $-51$",
+      "variationNote": "원본 Σ_{n=1}^{30} n a_n=-31(28항 묶음+남은 2항)을 Σ_{n=1}^{26} n a_n=-27(24항 묶음+남은 2항)로 바꿨다. 부호 패턴 -,-,+,+와 나머지 2항 구조를 유지했다. 오답은 남은 항 누락(24), 남은 항 부호 반대(75) 등에서 만들었다.",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": true,
+      "difficultyReason": "지수의 홀짝에서 주기를 찾고 묶음 합과 남은 항을 분리하는 세 단계라 3으로 보되, 규칙 발견이 중심이라 4와의 경계로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_07_SIGMA_NOTATION",
+        "templateKey": "TPL_H22A_07_SIGMA_NOTATION_123"
+      },
+      "item4slot": {
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "수열",
+              "src": "stem",
+              "quote": "수열 $\\{a_n\\}$"
+            },
+            {
+              "term": "지수",
+              "src": "stem",
+              "quote": "(-1)^{1+2+3+\\cdots+n}"
+            }
+          ],
+          "goal": [
+            {
+              "term": "합",
+              "src": "stem",
+              "quote": "\\sum_{n=1}^{26} n a_n"
+            }
+          ],
+          "method": [
+            {
+              "term": "수열의합",
+              "src": "solution",
+              "quote": "1+2+\\cdots+n=\\dfrac{n(n+1)}2",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "홀짝",
+              "src": "solution",
+              "quote": "지수 $325,351$이 홀수이므로",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "주기",
+              "src": "solution",
+              "quote": "이 부호가 $4$항마다 반복된다",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "묶음",
+              "src": "solution",
+              "quote": "한 묶음의 가중합은 $-1-2+3+4=4$",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "자연수",
+              "src": "stem",
+              "quote": "모든 자연수 $n$에 대하여"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "지수의 홀짝으로 부호가 4항마다 반복됨을 찾아 묶음 합과 남은 항을 더한다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q21: 원본 Q21의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "수열",
+        "L2": "수열의 합",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-123",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 지수가 연속한 자연수의 합인 거듭제곱의 부호가 4항 주기로 반복됨을 찾아 묶음의 가중합과 남은 항의 합으로 시그마를 계산한다. → 합의 기호 Σ>Σ 계산; PT/TPL(PT_H22A_07_SIGMA_NOTATION,TPL_H22A_07_SIGMA_NOTATION_123)이 크로스워크 H2-M1-RPM-123의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 22,
+      "sourceOrdinal": 22,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-05",
+        "standardUnit": "사인법칙과 코사인법칙",
+        "subUnitKey": "H22-A-05-CORE",
+        "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+        "conceptClusterKey": "H22-A-05-CORE",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-112"
+        ],
+        "rpmPrimary": {
+          "l1": "삼각함수",
+          "l2": "삼각함수의 활용",
+          "l3": "코사인법칙",
+          "l4": "삼각형 판정",
+          "recordId": "H2-M1-RPM-112",
+          "l3Label": "코사인법칙",
+          "l4Label": "삼각형 판정",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-112"
+        },
+        "rpmPrimaryL1": "삼각함수",
+        "rpmPrimaryL2": "삼각함수의 활용",
+        "rpmPrimaryL3": "코사인법칙",
+        "rpmPrimaryL4": "삼각형 판정",
+        "rpmPrimaryRecordId": "H2-M1-RPM-112",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "L3": "코사인법칙",
+        "L4": "삼각형 판정",
+        "rpmL3": "코사인법칙",
+        "rpmL4": "삼각형 판정",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_05_COSINE_LAW",
+        "templateKey": "TPL_H22A_05_COSINE_LAW_112",
+        "crossConceptKeys": [
+          "CC_SINE_LAW",
+          "CC_RIGHT_TRIANGLE_CRITERION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 22,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "두 법칙을 연결해 변의 관계식을 세우고 삼각형의 종류를 판정하는 서술형이라 중",
+        "difficultyBasis": "사인법칙과 코사인법칙을 함께 써서 변 사이의 관계식을 만들고 도형의 종류까지 판정하는 세 단계라 3으로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 사인과 코사인의 비 조건을 식으로 주어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 사인법칙·코사인법칙의 식 전개로 완결되어 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "각의 사인 비를 사인법칙으로 변의 비로 바꾸고 코사인법칙과 연립해 변 사이의 관계식을 얻어 삼각형의 모양을 판정한다.",
+          "crossConcept": "변의 길이 사이에 a^2+b^2=c^2이 성립하면 c의 맞은편 각이 직각이라는 피타고라스 정리의 역으로 삼각형을 판정한다.",
+          "condition": "변의 길이는 양수이므로 약분과 대소 판단이 가능하다.",
+          "integration": "사인법칙 → 코사인법칙 대입 → 피타고라스 역의 SEQUENTIAL.",
+          "curriculum": "2022 개정 대수 삼각함수의 활용 > 코사인법칙: 크로스워크 H2-M1-RPM-112(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 22,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 sinA/sinB=cosC (답 ∠B=90°)를 sinB/sinC=cosA (답 ∠C=90°)로 바꿨다. 문자 역할만 돌려 풀이 구조는 같고, 직각이 생기는 꼭짓점이 달라진다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "사인법칙으로 sinB/sinC를 변의 비로 바꾸고, cosA를 코사인법칙으로 변으로 표현해 변 사이의 식을 만든 뒤 피타고라스 정리의 역으로 직각 위치를 정한다.",
+      "decisiveStep": "$\\cos A=\\dfrac bc$를 코사인법칙에 넣어 $a^2=c^2-b^2$, 즉 $a^2+b^2=c^2$",
+      "variationNote": "원본 sinA/sinB=cosC (답 ∠B=90°)를 sinB/sinC=cosA (답 ∠C=90°)로 바꿨다. 문자 역할만 돌려 풀이 구조는 같고, 직각이 생기는 꼭짓점이 달라진다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "사인법칙과 코사인법칙을 함께 써서 변 사이의 관계식을 만들고 도형의 종류까지 판정하는 세 단계라 3으로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_05_COSINE_LAW",
+        "templateKey": "TPL_H22A_05_COSINE_LAW_112"
+      },
+      "item4slot": {
+        "format": "서술",
+        "slots": {
+          "given": [
+            {
+              "term": "삼각형",
+              "src": "stem",
+              "quote": "삼각형 $ABC$"
+            },
+            {
+              "term": "사인",
+              "src": "stem",
+              "quote": "\\dfrac{\\sin B}{\\sin C}"
+            },
+            {
+              "term": "코사인",
+              "src": "stem",
+              "quote": "\\cos A"
+            }
+          ],
+          "goal": [
+            {
+              "term": "판정",
+              "src": "stem",
+              "quote": "어떤 삼각형인지"
+            }
+          ],
+          "method": [
+            {
+              "term": "사인법칙",
+              "src": "solution",
+              "quote": "사인법칙에 따라",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "코사인법칙",
+              "src": "solution",
+              "quote": "코사인법칙을 $\\angle A$에 적용하면",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "대입",
+              "src": "solution",
+              "quote": "\\cos A=\\dfrac bc$를 대입하면",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "약분",
+              "src": "solution",
+              "quote": "약분하여",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "피타고라스정리",
+              "src": "solution",
+              "quote": "피타고라스 정리의 역에 따라",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "양수",
+              "src": "solution",
+              "quote": "b,c>0$이므로"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "사인법칙과 코사인법칙으로 변의 관계식을 만들어 피타고라스 정리의 역으로 직각을 찾는다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q22: 원본 Q22의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-112",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 각의 사인 비를 사인법칙으로 변의 비로 바꾸고 코사인법칙과 연립해 변 사이의 관계식을 얻어 삼각형의 모양을 판정한다. → 코사인법칙>삼각형 판정; PT/TPL(PT_H22A_05_COSINE_LAW,TPL_H22A_05_COSINE_LAW_112)이 크로스워크 H2-M1-RPM-112의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 23,
+      "sourceOrdinal": 23,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-07",
+        "standardUnit": "수열의 합",
+        "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "conceptClusterKey": "H22-A-07-SEQUENCE_BASIC",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-128"
+        ],
+        "rpmPrimary": {
+          "l1": "수열",
+          "l2": "수열의 합",
+          "l3": "계차수열",
+          "l4": "부분합 S_n에서 일반항 구하기(a_1=S_1, n≥2에서 S_n−S_{n−1})",
+          "recordId": "H2-M1-RPM-128",
+          "l3Label": "계차수열",
+          "l4Label": "부분합 S_n에서 일반항 구하기(a_1=S_1, n≥2에서 S_n−S_{n−1})",
+          "l4Source": "GENERATED_EXTENSION",
+          "generatedL4Key": "EXT-L4-ALG-SEQUENCE-PARTIAL-SUM-GENERAL-TERM",
+          "parentRpmL4": "일반항 구하기",
+          "mappingNote": "canonical RPM L3 하위의 Generated L4 확장; parent record H2-M1-RPM-128"
+        },
+        "rpmPrimaryL1": "수열",
+        "rpmPrimaryL2": "수열의 합",
+        "rpmPrimaryL3": "계차수열",
+        "rpmPrimaryL4": "부분합 S_n에서 일반항 구하기(a_1=S_1, n≥2에서 S_n−S_{n−1})",
+        "rpmPrimaryRecordId": "H2-M1-RPM-128",
+        "L1": "수열",
+        "L2": "수열의 합",
+        "L3": "계차수열",
+        "L4": "부분합 S_n에서 일반항 구하기(a_1=S_1, n≥2에서 S_n−S_{n−1})",
+        "rpmL3": "계차수열",
+        "rpmL4": "부분합 S_n에서 일반항 구하기(a_1=S_1, n≥2에서 S_n−S_{n−1})",
+        "rpmGeneratedL4Key": "EXT-L4-ALG-SEQUENCE-PARTIAL-SUM-GENERAL-TERM",
+        "problemTypeKey": "PT_H22A_07_DIFFERENCE_SEQUENCE",
+        "templateKey": "TPL_H22A_07_DIFFERENCE_SEQUENCE_128",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "level": "중",
+        "difficultyBucket": 3,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 23,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "첫째항을 따로 처리하는 경우 가르기와 부등식 풀이가 결합된 서술형이라 중",
+        "difficultyBasis": "첫째항과 n≥2의 두 경우로 나눠 일반항을 구하고 부등식으로 자연수를 가려야 하는 세 단계라 3으로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 부분합 식과 조건을 글로 주어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 부분합의 차와 부등식 풀이로 완결되어 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "부분합이 n의 이차식으로 주어질 때 a_1=S_1과 n≥2의 S_n-S_{n-1}로 일반항을 나누어 구하고 항이 양수가 되는 자연수 m을 구한다.",
+          "crossConcept": "보조 개념 없음(부분합과 일반항의 관계가 풀이의 중심이라 Primary 확장 L4로 둔다).",
+          "condition": "m이 자연수라는 조건과 a_1이 공식에서 예외라는 점이 m=1의 제외 판정에 쓰인다.",
+          "integration": "첫째항과 n≥2의 일반항을 나누는 CASE_BRANCH.",
+          "curriculum": "2022 개정 대수 수열의 합 > 계차수열: 크로스워크 H2-M1-RPM-128(DIRECT_ACTIVE)에 Generated L4 확장"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 23,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 S_n=-n^2+9n-10 (a_n=10-2n, m=2,3,4)를 S_n=-n^2+11n-14 (a_n=12-2n, m=2,3,4,5)로 바꿨다. a_1=-4가 일반항 공식(10)과 달라 별도 판정이 필요한 구조를 유지했다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "a_1=S_1과 n≥2에서 a_n=S_n-S_{n-1}을 나누어 일반항을 구하고, 부등식 a_n>0을 풀어 자연수 m의 범위를 정한다.",
+      "decisiveStep": "$a_1=S_1=-4<0$이라 제외하고 $n\\ge2$에서 $a_n=12-2n>0$",
+      "variationNote": "원본 S_n=-n^2+9n-10 (a_n=10-2n, m=2,3,4)를 S_n=-n^2+11n-14 (a_n=12-2n, m=2,3,4,5)로 바꿨다. a_1=-4가 일반항 공식(10)과 달라 별도 판정이 필요한 구조를 유지했다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "첫째항과 n≥2의 두 경우로 나눠 일반항을 구하고 부등식으로 자연수를 가려야 하는 세 단계라 3으로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_07_DIFFERENCE_SEQUENCE",
+        "templateKey": "TPL_H22A_07_DIFFERENCE_SEQUENCE_128"
+      },
+      "item4slot": {
+        "format": "서술",
+        "slots": {
+          "given": [
+            {
+              "term": "수열",
+              "src": "stem",
+              "quote": "수열 $\\{a_n\\}$"
+            },
+            {
+              "term": "수열의합",
+              "src": "stem",
+              "quote": "S_n = -n^2 + 11n - 14"
+            }
+          ],
+          "goal": [
+            {
+              "term": "결정",
+              "src": "stem",
+              "quote": "자연수 $m$을 모두 구하시오"
+            }
+          ],
+          "method": [
+            {
+              "term": "수열의합",
+              "src": "solution",
+              "quote": "a_n=S_n-S_{n-1}",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "경우분류",
+              "src": "solution",
+              "quote": "m=1$은 제외한다",
+              "evidenceType": "IMPLIED",
+              "justification": "첫째항 a_1=S_1은 n≥2의 공식과 달라 따로 판정해 m=1을 제외한다"
+            },
+            {
+              "term": "일차부등식",
+              "src": "solution",
+              "quote": "12-2n>0",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "자연수",
+              "src": "stem",
+              "quote": "자연수 $m$"
+            },
+            {
+              "term": "범위",
+              "src": "solution",
+              "quote": "n\\ge2"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "첫째항과 n≥2를 나누어 일반항을 얻고 양수가 되는 자연수를 가린다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q23: 원본 Q23의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "수열",
+        "L2": "수열의 합",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-128",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 부분합이 n의 이차식으로 주어질 때 a_1=S_1과 n≥2의 S_n-S_{n-1}로 일반항을 나누어 구하고 항이 양수가 되는 자연수 m을 구한다. → 계차수열>일반항 구하기; PT/TPL(PT_H22A_07_DIFFERENCE_SEQUENCE,TPL_H22A_07_DIFFERENCE_SEQUENCE_128)이 크로스워크 H2-M1-RPM-128의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 24,
+      "sourceOrdinal": 24,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-07",
+        "standardUnit": "수열의 합",
+        "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+        "subUnit": "수열의 합",
+        "conceptClusterKey": "H22-A-07-SEQUENCE_SUM",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-126"
+        ],
+        "rpmPrimary": {
+          "l1": "수열",
+          "l2": "수열의 합",
+          "l3": "여러 가지 수열의 합",
+          "l4": "부분분수·망원급수형",
+          "recordId": "H2-M1-RPM-126",
+          "l3Label": "여러 가지 수열의 합",
+          "l4Label": "부분분수·망원급수형",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-126"
+        },
+        "rpmPrimaryL1": "수열",
+        "rpmPrimaryL2": "수열의 합",
+        "rpmPrimaryL3": "여러 가지 수열의 합",
+        "rpmPrimaryL4": "부분분수·망원급수형",
+        "rpmPrimaryRecordId": "H2-M1-RPM-126",
+        "L1": "수열",
+        "L2": "수열의 합",
+        "L3": "여러 가지 수열의 합",
+        "L4": "부분분수·망원급수형",
+        "rpmL3": "여러 가지 수열의 합",
+        "rpmL4": "부분분수·망원급수형",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_07_SEQUENCE_SUM",
+        "templateKey": "TPL_H22A_07_SEQUENCE_SUM_126",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "하",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 24,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "부분분수 망원합의 대표 정형이라 하",
+        "difficultyBasis": "부분분수 변형과 소거 규칙을 알면 정형 계산으로 끝나고 서술량이 많지 않아 2로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 일반항과 합의 조건을 식으로 주어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 부분분수 분해와 소거의 식 전개로 완결되어 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "분모가 두 일차식의 곱인 일반항을 부분분수로 나누어 망원급수로 합을 구하고 기약분수로 나타내 분자와 분모의 합을 구한다.",
+          "crossConcept": "보조 개념 없음(부분분수 망원합이 Primary 자체다).",
+          "condition": "p, q는 서로소인 자연수라는 조건으로 약분이 끝난 분수에서 p와 q를 읽는다.",
+          "integration": "부분분수 변형 → 소거 → 기약분수 읽기의 SEQUENTIAL.",
+          "curriculum": "2022 개정 대수 수열의 합 > 여러 가지 수열의 합: 크로스워크 H2-M1-RPM-126(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 24,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 a_n=1/((2n-1)(2n+1)), Σ_{k=1}^{10}=10/21, p+q=31을 a_n=1/((3n-1)(3n+2)), Σ_{k=1}^{8}=2/13, p+q=15로 바꿨다. 두 인수의 차가 2에서 3으로 바뀌어 앞의 계수가 1/3이 된다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "일반항을 부분분수로 나누어 이웃한 항이 소거되는 망원급수로 합을 구한 뒤 기약분수의 분자·분모를 읽어 p+q를 구한다.",
+      "decisiveStep": "$a_k=\\dfrac13\\left(\\dfrac1{3k-1}-\\dfrac1{3k+2}\\right)$로 나누어 $\\dfrac13\\left(\\dfrac12-\\dfrac1{26}\\right)$",
+      "variationNote": "원본 a_n=1/((2n-1)(2n+1)), Σ_{k=1}^{10}=10/21, p+q=31을 a_n=1/((3n-1)(3n+2)), Σ_{k=1}^{8}=2/13, p+q=15로 바꿨다. 두 인수의 차가 2에서 3으로 바뀌어 앞의 계수가 1/3이 된다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "부분분수 변형과 소거 규칙을 알면 정형 계산으로 끝나고 서술량이 많지 않아 2로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_07_SEQUENCE_SUM",
+        "templateKey": "TPL_H22A_07_SEQUENCE_SUM_126"
+      },
+      "item4slot": {
+        "format": "서술",
+        "slots": {
+          "given": [
+            {
+              "term": "일반항",
+              "src": "stem",
+              "quote": "일반항이 $a_n = \\dfrac{1}{(3n-1)(3n+2)}$"
+            },
+            {
+              "term": "시그마",
+              "src": "stem",
+              "quote": "\\sum_{k=1}^{8} a_k = \\dfrac{p}{q}"
+            }
+          ],
+          "goal": [
+            {
+              "term": "합",
+              "src": "stem",
+              "quote": "p + q$의 값을 구하시오"
+            }
+          ],
+          "method": [
+            {
+              "term": "부분분수",
+              "src": "solution",
+              "quote": "부분분수로 나누면",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "망원합",
+              "src": "solution",
+              "quote": "망원급수로 소거되어",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "기약분수",
+              "src": "solution",
+              "quote": "서로소인 자연수는 $p=2$, $q=13$",
+              "evidenceType": "IMPLIED",
+              "justification": "약분이 끝난 분수에서 분자와 분모를 p, q로 읽는다"
+            }
+          ],
+          "condition": [
+            {
+              "term": "서로소",
+              "src": "stem",
+              "quote": "서로소인 자연수"
+            },
+            {
+              "term": "자연수",
+              "src": "stem",
+              "quote": "서로소인 자연수"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "부분분수로 나누어 망원합을 구하고 기약분수에서 p, q를 읽는다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q24: 원본 Q24의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "수열",
+        "L2": "수열의 합",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-126",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 분모가 두 일차식의 곱인 일반항을 부분분수로 나누어 망원급수로 합을 구하고 기약분수로 나타내 분자와 분모의 합을 구한다. → 여러 가지 수열의 합>부분분수·망원급수형; PT/TPL(PT_H22A_07_SEQUENCE_SUM,TPL_H22A_07_SEQUENCE_SUM_126)이 크로스워크 H2-M1-RPM-126의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    },
+    {
+      "questionUid": 25,
+      "sourceOrdinal": 25,
+      "before": null,
+      "after": {
+        "standardCourse": "대수",
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardUnitKey": "H22-A-08",
+        "standardUnit": "수학적 귀납법",
+        "subUnitKey": "H22-A-08-CORE",
+        "subUnit": "수학적 귀납법 핵심 개념",
+        "conceptClusterKey": "H22-A-08-CORE",
+        "rpmPrimaryRecordIds": [
+          "H2-M1-RPM-131"
+        ],
+        "rpmPrimary": {
+          "l1": "수열",
+          "l2": "수학적 귀납법",
+          "l3": "수학적 귀납법",
+          "l4": "등식 증명",
+          "recordId": "H2-M1-RPM-131",
+          "l3Label": "수학적 귀납법",
+          "l4Label": "등식 증명",
+          "l4Source": "CROSSWALK_RECORD",
+          "generatedL4Key": null,
+          "parentRpmL4": null,
+          "mappingNote": "high2-math1-algebra crosswalk record H2-M1-RPM-131"
+        },
+        "rpmPrimaryL1": "수열",
+        "rpmPrimaryL2": "수학적 귀납법",
+        "rpmPrimaryL3": "수학적 귀납법",
+        "rpmPrimaryL4": "등식 증명",
+        "rpmPrimaryRecordId": "H2-M1-RPM-131",
+        "L1": "수열",
+        "L2": "수학적 귀납법",
+        "L3": "수학적 귀납법",
+        "L4": "등식 증명",
+        "rpmL3": "수학적 귀납법",
+        "rpmL4": "등식 증명",
+        "rpmGeneratedL4Key": null,
+        "problemTypeKey": "PT_H22A_08_MATHEMATICAL_INDUCTION",
+        "templateKey": "TPL_H22A_08_MATHEMATICAL_INDUCTION_131",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "level": "중",
+        "difficultyBucket": 2,
+        "rpmSemanticStatus": "SELF_CHECKED",
+        "sourceQid": 25,
+        "variationType": "STRICT_VARIANT",
+        "levelBasis": "수학적 귀납법의 표준 틀에 분수 계산이 더해진 정형 증명이라 중",
+        "difficultyBasis": "기초 단계, 귀납 가정, 귀납 단계의 정해진 틀에 통분·인수분해가 한 번 들어가는 정형 증명이라 2로 본다.",
+        "visualNecessity": {
+          "problem": "EXEMPT",
+          "problemReason": "발문이 증명할 등식과 귀납법의 틀을 글 상자로 주어 그림이 필요 없다.",
+          "solution": "EXEMPT",
+          "solutionReason": "해설이 귀납법 단계별 식 전개로 완결되어 그림이 필요 없다."
+        },
+        "metaRationale": {
+          "problemType": "자연수 n에 대한 합의 등식을 수학적 귀납법의 기초 단계, 귀납 가정, 귀납 단계 순서로 증명한다.",
+          "crossConcept": "보조 개념 없음(수학적 귀납법과 분수의 통분·인수분해만 사용).",
+          "condition": "모든 자연수 n에 대해 성립함을 보이는 명제이므로 자연수 조건이 증명의 범위가 된다.",
+          "integration": "기초 단계 → 귀납 가정 → 귀납 단계의 SEQUENTIAL.",
+          "curriculum": "2022 개정 대수 수학적 귀납법 > 수학적 귀납법: 크로스워크 H2-M1-RPM-131(DIRECT_ACTIVE)의 PT/TPL 그대로"
+        },
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "26_강남여고_1학기_2차_고2_대수",
+          "sourceArchiveFile": "archive/exams/original/high/h2/1final/26_강남여고_1학기_2차_고2_대수.js",
+          "sourceQid": 25,
+          "generator": "claude-similar-high-gen",
+          "createdAt": "2026-11-17",
+          "variationNote": "원본 Σ1/(j(j+1))=n/(n+1)을 Σ1/((2j-1)(2j+1))=n/(2n+1)로 바꿨다. 증명 순서(기초·가정·귀납)는 같고 통분 뒤 분자가 (2k+1)(k+1)로 인수분해되어 약분되는 구조를 유지했다.",
+          "originalMetaSeed": {
+            "source": "archive/data/question_metadata.json (read-only)",
+            "usedAs": "starting point only; re-judged against the generated item's final solution (original unit/PT/TPL not copied)"
+          },
+          "status": "READY_FOR_INDEPENDENT_REVIEW"
+        }
+      },
+      "primaryMethod": "n=1일 때 성립을 확인하고, n=k일 때 성립한다고 가정해 n=k+1일 때 통분과 인수분해로 우변의 꼴 (k+1)/(2k+3)을 얻어 수학적 귀납법을 완성한다.",
+      "decisiveStep": "귀납 가정에 $\\dfrac{1}{(2k+1)(2k+3)}$을 더해 $\\dfrac{(2k+1)(k+1)}{(2k+1)(2k+3)}=\\dfrac{k+1}{2k+3}$",
+      "variationNote": "원본 Σ1/(j(j+1))=n/(n+1)을 Σ1/((2j-1)(2j+1))=n/(2n+1)로 바꿨다. 증명 순서(기초·가정·귀납)는 같고 통분 뒤 분자가 (2k+1)(k+1)로 인수분해되어 약분되는 구조를 유지했다.",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": false,
+      "difficultyReason": "기초 단계, 귀납 가정, 귀납 단계의 정해진 틀에 통분·인수분해가 한 번 들어가는 정형 증명이라 2로 본다.",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_H22A_08_MATHEMATICAL_INDUCTION",
+        "templateKey": "TPL_H22A_08_MATHEMATICAL_INDUCTION_131"
+      },
+      "item4slot": {
+        "format": "증명",
+        "slots": {
+          "given": [
+            {
+              "term": "등식",
+              "src": "stem",
+              "quote": "다음 등식이 성립함을"
+            },
+            {
+              "term": "수학적귀납법",
+              "src": "stem",
+              "quote": "수학적 귀납법으로 증명하시오"
+            }
+          ],
+          "goal": [
+            {
+              "term": "증명",
+              "src": "stem",
+              "quote": "증명하시오"
+            }
+          ],
+          "method": [
+            {
+              "term": "수학적귀납법",
+              "src": "solution",
+              "quote": "수학적 귀납법에 의해",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "가정",
+              "src": "solution",
+              "quote": "귀납 가정: 자연수 $k$에 대하여",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "통분",
+              "src": "solution",
+              "quote": "공통분모 $(2k+1)(2k+3)$로 나타내면",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "전개",
+              "src": "solution",
+              "quote": "분자를 전개하면",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "인수분해",
+              "src": "solution",
+              "quote": "=\\dfrac{(2k+1)(k+1)}{(2k+1)(2k+3)}",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "약분",
+              "src": "solution",
+              "quote": "약분할 수 있다",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "자연수",
+              "src": "stem",
+              "quote": "모든 자연수 $n$에 대하여"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "기초·가정·귀납 단계로 나누고 통분과 인수분해로 우변의 꼴을 얻는다"
+        },
+        "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+        "judgedBy": {
+          "agent": "claude-similar-high-gen",
+          "at": "2026-11-17"
+        },
+        "review": {
+          "status": "UNREVIEWED"
+        }
+      },
+      "hold": [],
+      "reason": "26_강남여고_1학기_2차_고2_대수_유사 Q25: 원본 Q25의 유사문항 1:1 생성 후 최종 풀이 기준으로 메타 재판정(생성 단계, 독립 검수 전)",
+      "evidenceRefs": [],
+      "parentAssignment": {
+        "schemaVersion": "similar-high-parent-assignment-v1",
+        "L1": "수열",
+        "L2": "수학적 귀납법",
+        "curriculum": "2022",
+        "scope": "대수",
+        "parentRefMode": "CROSSWALK_EXACT",
+        "crosswalkRecordId": "H2-M1-RPM-131",
+        "method": "CROSSWALK_PT_TPL_EXACT",
+        "basis": "결정 단계 확인(문항·해설 대조): 자연수 n에 대한 합의 등식을 수학적 귀납법의 기초 단계, 귀납 가정, 귀납 단계 순서로 증명한다. → 수학적 귀납법>등식 증명; PT/TPL(PT_H22A_08_MATHEMATICAL_INDUCTION,TPL_H22A_08_MATHEMATICAL_INDUCTION_131)이 크로스워크 H2-M1-RPM-131의 DIRECT_ACTIVE 행과 정확히 일치",
+        "confidence": "HIGH",
+        "assignedBy": "claude-similar-high-gen",
+        "assignedAt": "2026-11-17",
+        "fieldChanges": []
+      }
+    }
+  ],
+  "openDefects": [
+    {
+      "qid": 3,
+      "kind": "visual-solution-figure",
+      "severity": "low",
+      "summary": "해설 그림은 사용자 결정(2026-11-17)에 따라 이번 라인에서 만들지 않고 별도 일괄 작업으로 넘긴다. 해설 본문이 필요한 값을 글로 적어 그림 없이 읽힌다(해설 SVG 별도 작업)."
+    },
+    {
+      "qid": 11,
+      "kind": "visual-solution-figure",
+      "severity": "low",
+      "summary": "해설 그림은 사용자 결정(2026-11-17)에 따라 이번 라인에서 만들지 않고 별도 일괄 작업으로 넘긴다. 해설 본문이 필요한 값을 글로 적어 그림 없이 읽힌다(해설 SVG 별도 작업)."
+    },
+    {
+      "qid": 12,
+      "kind": "visual-solution-figure",
+      "severity": "low",
+      "summary": "해설 그림은 사용자 결정(2026-11-17)에 따라 이번 라인에서 만들지 않고 별도 일괄 작업으로 넘긴다. 해설 본문이 필요한 값을 글로 적어 그림 없이 읽힌다(해설 SVG 별도 작업)."
+    },
+    {
+      "qid": 20,
+      "kind": "visual-solution-figure",
+      "severity": "low",
+      "summary": "해설 그림은 사용자 결정(2026-11-17)에 따라 이번 라인에서 만들지 않고 별도 일괄 작업으로 넘긴다. 해설 본문이 필요한 값을 글로 적어 그림 없이 읽힌다(해설 SVG 별도 작업)."
+    }
+  ]
+}

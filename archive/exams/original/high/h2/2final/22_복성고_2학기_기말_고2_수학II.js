@@ -35,7 +35,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "rpmSemanticStatus": "EVIDENCE_UNVERIFIED_VALIDATOR_NOT_RUN",
-    "metaProjectionStatus": "PROJECTION_REUSE"
+    "metaProjectionStatus": "PROJECTION_REUSE",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선이 x축에 접하는 점과, 곡선 위의 점 (1,4)에서 그은 접선 l이 그려져 있다.",
+    "solutionImageCaption": "접점 (1,4)에서 미분계수가 4이므로 접선은 y−4=4(x−1), 즉 y=4x이다. 따라서 답은 ④ y=4x이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -72,7 +76,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "rpmSemanticStatus": "EVIDENCE_UNVERIFIED_VALIDATOR_NOT_RUN",
-    "metaProjectionStatus": "PROJECTION_REUSE"
+    "metaProjectionStatus": "PROJECTION_REUSE",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에 극솟점, 오른쪽에 극댓점이 있는 삼차곡선이 그려져 있고 두 극점에 각각 좌표가 표시되어 있다. 예: a=7.",
+    "solutionImageCaption": "예: a=7일 때 f(2)=3이 극댓값이고, f′(x)=−6(x−1)(x−2)이므로 x=1에서 극솟값 f(1)=2를 갖는다. 따라서 답은 ② 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -300,7 +308,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
     "rpmSemanticStatus": "EVIDENCE_UNVERIFIED_VALIDATOR_NOT_RUN",
-    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED"
+    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 곡선 y=x⁴+2 위의 두 접점 (−1,3), (1,3)과 외부점 (0,−1)이 표시되어 있고, 두 접점에서 그은 접선 l, m과 두 접점을 잇는 수평선분이 그려져 있다.",
+    "solutionImageCaption": "두 접점이 B(−1,3), C(1,3)이므로 BC=2이고 A에서 BC까지의 높이는 4이다. 따라서 삼각형 ABC의 넓이는 4이므로 답은 ④ 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -417,7 +429,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "CASE_BRANCH",
     "rpmSemanticStatus": "EVIDENCE_UNVERIFIED_VALIDATOR_NOT_RUN",
-    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED"
+    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 극댓점과 극솟점을 가진 삼차곡선 위에 두 수평선 y=t와 y=−t가 그어져 있고, 곡선이 두 수평선과 만나는 점들이 모두 보인다. 예: t=14.",
+    "solutionImageCaption": "예: t=14일 때 두 수평선이 곡선과 만나는 점은 6개이고, t가 극댓값 15가 되면 위쪽 수평선이 극점에 접해 교점이 5개가 된다. 따라서 답은 ② 15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -493,7 +509,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
     "rpmSemanticStatus": "EVIDENCE_UNVERIFIED_VALIDATOR_NOT_RUN",
-    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED"
+    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선과 x축의 두 교점 사이에 수직 점선 두 개가 있고, 그 사이에서 곡선 위쪽이 S로 칠해져 있다. 왼쪽 점선과 곡선의 교점은 L, 곡선의 꼭짓점은 R로 표시되어 있다.",
+    "solutionImageCaption": "예: 구간의 왼쪽 끝이 3/2인 그림에서 g′(x)=f(x+1)−f(x)=k(2x−4)이므로 g는 x=2에서 최소이다. 따라서 답은 ② g(2)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -571,7 +591,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
     "rpmSemanticStatus": "EVIDENCE_UNVERIFIED_VALIDATOR_NOT_RUN",
-    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED"
+    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_수학II/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 좌표축 위에 곡선 y=f(x)가 원점에서 x축에 접한 뒤 다시 축과 만나며 그려져 있다. 원점 오른쪽 x축 위쪽 영역에 A, 그 오른쪽 x축 아래쪽 영역에 B가 칠해져 있고, 곡선의 극값 위치에 점이 표시되어 있다.",
+    "solutionImageCaption": "축 위 영역과 축 아래 영역의 넓이가 같으면 부호 있는 정적분에서 서로 상쇄된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -688,7 +712,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
     "rpmSemanticStatus": "EVIDENCE_UNVERIFIED_VALIDATOR_NOT_RUN",
-    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED"
+    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선의 극댓점 A와 극솟점 B를 잇는 선분이 있고, A와 B에서 축에 평행한 변을 그린 직사각형 ABCD가 표시되어 있다. 예: k=2.",
+    "solutionImageCaption": "예: k=2인 대표형에서 A, B의 x좌표 차는 2/√3이고 y좌표 차는 4/(3√3)이다. 따라서 직사각형 ABCD의 넓이는 8/9이므로 답은 ⑤ 8/9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -727,7 +755,11 @@ window.questionBank = [
     ],
     "integrationPattern": "CASE_BRANCH",
     "rpmSemanticStatus": "EVIDENCE_UNVERIFIED_VALIDATOR_NOT_RUN",
-    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED"
+    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 x축에 접하는 극대를 가진 사차곡선이 좌우 대칭으로 뻗고, 그 위아래에 y=k와 y=−k 두 수평선이 그어져 있다. 예: k=1/2.",
+    "solutionImageCaption": "예: k=1/2일 때 두 수평선과 곡선의 교점은 6개이고, 아래 수평선이 두 극솟점에 닿는 k=1에서 교점이 4개가 된다. 따라서 답은 ① 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -764,7 +796,11 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "INTERDEPENDENT",
     "rpmSemanticStatus": "EVIDENCE_UNVERIFIED_VALIDATOR_NOT_RUN",
-    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED"
+    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=x²과 수평선 y=1이 만나는 두 점 (−1,1), (1,1) 사이의 영역이 칠해져 있고, 그 넓이는 4/3로 적혀 있다. 중점 (0,1)도 표시되어 있다.",
+    "solutionImageCaption": "예: 두 점의 x좌표가 −1과 1일 때 할선과 포물선 사이의 넓이는 4/3이고 두 점 사이 간격은 2이다. 중점의 자취가 y=x²+1임을 얻으면 f(2)=5이므로 답은 ④ 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -797,7 +833,11 @@ window.questionBank = [
     ],
     "integrationPattern": "INTERDEPENDENT",
     "rpmSemanticStatus": "EVIDENCE_UNVERIFIED_VALIDATOR_NOT_RUN",
-    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED"
+    "metaProjectionStatus": "PROJECTION_UNMATERIALIZED",
+    "solutionImage": "assets/images/22_복성고_2학기_기말_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 원기둥의 전개도로, 가로가 2πr, 세로가 h인 직사각형 위아래에 반지름 r인 두 밑면 원이 붙어 있다.",
+    "solutionImageCaption": "겉넓이 24π에서 2πr²+2πrh=24π이므로 h=(12−r²)/r이고 V=π(12r−r³)이다. V′=3π(4−r²)에서 r=2일 때 부피가 최대이므로 답은 (1) V=π(12r−r³), (2) 16π이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

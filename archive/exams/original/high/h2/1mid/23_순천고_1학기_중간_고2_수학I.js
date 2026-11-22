@@ -69,7 +69,6 @@ window.questionBank = [
     "id": 3,
     "questionType": "객관식",
     "content": "오른쪽 그림은 함수 $y=\\log_{\\frac{1}{2}}x$의 그래프와 직선 $y=x$이다. 이때 실수 $a$의 값은? [3.5점]<br><div class=\"exam-img-box\"><img src=\"assets/images/23_순천고_1학기_중간_고2_수학I/q03-engine-upgrade.svg\" alt=\"로그함수 y=log 밑 1/2 x와 직선 y=x의 그래프. 점선은 같은 높이 y=1과 y=1/2에서 두 그래프의 점을 이어, 구하는 x좌표를 a로 나타낸다.\" class=\"exam-img\"></div>",
-    "layoutTag": "fullwidth",
     "choices": [
       "$\\frac{1}{2}$",
       "$\\frac{2}{3}$",

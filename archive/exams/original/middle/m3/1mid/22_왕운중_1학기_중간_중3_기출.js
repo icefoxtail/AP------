@@ -146,7 +146,11 @@ window.questionBank = [
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/22_왕운중_1학기_중간_중3_기출/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 큰 정사각형의 윗변과 오른쪽 변이 x와 2a로 나뉘어 있고, 오른쪽 세로 띠와 아래쪽 가로 띠가 사선 무늬로 칠해져 있으며, 오른쪽 아래 모서리의 한 변이 2a인 정사각형 자리가 점선으로 비어 있는 그림이다. 큰 정사각형의 한 변에는 A=x+2a가 적혀 있다.",
+    "solutionImageCaption": "직사각형 타일 하나를 옮긴 뒤의 배치이다. 사선 무늬 두 타일은 각각 x×2a이고 흰 모서리는 한 변2a의 정사각형이다. 바깥 정사각형의 한 변을 A, 빈 모서리의 한 변을 B로 대응시켜 채워진 넓이를 A²−B²로 읽는다. 그림은 x:2a=3:1인 모양의 예시이며 실제 비를 제한하지 않는다. 세 타일의 넓이 합은 x²+4ax이고, A=x+2a, B=2a이므로 x²+4ax=(x+2a)²−(2a)²이다. 따라서 A−B=x이다. 정답 x.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,

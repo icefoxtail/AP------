@@ -233,7 +233,7 @@
 
         const slotPolicy = blocks.some(block => block.placementKind === 'subjective-2up' || block.placementKind === 'subjective-4up');
         if (slotPolicy) {
-            let slotPage = { page: createPlannerPage(), occupied: Array.from({ length: slotRows }, () => Array(columns).fill(false)), placements: [] };
+            let slotPage = { page: createPlannerPage(), occupied: Array.from({ length: slotRows }, () => Array(columns).fill(false)), placements: [], cursor: 0 };
             const materializeSlotPage = () => {
                 if (!slotPage.placements.length) return;
                 const hasSpecialPlacement = slotPage.placements.some(placement => placement.span > 1);
@@ -252,26 +252,19 @@
                 }
                 flush(slotPage.page);
             };
-            const flushSlot = () => { materializeSlotPage(); slotPage = { page: createPlannerPage(), occupied: Array.from({ length: slotRows }, () => Array(columns).fill(false)), placements: [] }; };
+            const flushSlot = () => { materializeSlotPage(); slotPage = { page: createPlannerPage(), occupied: Array.from({ length: slotRows }, () => Array(columns).fill(false)), placements: [], cursor: 0 }; };
+            // Reading-order slot assignment: a page is read column by column (left column top to bottom, then
+            // the right one), so a slot may only be taken AFTER the last one placed. A subjective block that
+            // spans a whole column therefore starts a fresh column (the rest of the current column stays empty)
+            // and a later block never back-fills a gap above it. Question numbers always read in ascending order.
             const findSlot = span => {
-                for (let row = 0; row <= slotRows - span; row += 1) {
-                    for (let column = 0; column < columns; column += 1) {
-                        if (Array.from({ length: span }, (_, offset) => !slotPage.occupied[row + offset][column]).every(Boolean)) return { row, column, span };
-                    }
+                for (let position = slotPage.cursor; position < slotRows * columns; position += 1) {
+                    const column = Math.floor(position / slotRows);
+                    const row = position % slotRows;
+                    if (row + span > slotRows) { position += slotRows - row - 1; continue; }
+                    if (Array.from({ length: span }, (_, offset) => !slotPage.occupied[row + offset][column]).every(Boolean)) return { row, column, span };
                 }
                 return null;
-            };
-            const repackForFullHeight = () => {
-                const usedSpan = slotPage.placements.reduce((sum, placement) => sum + placement.span, 0);
-                if (usedSpan > slotRows) return false;
-                slotPage.occupied = Array.from({ length: slotRows }, () => Array(columns).fill(false));
-                let row = 0;
-                slotPage.placements.forEach(placement => {
-                    placement.row = row; placement.column = 0;
-                    for (let offset = 0; offset < placement.span; offset += 1) slotPage.occupied[row + offset][0] = true;
-                    row += placement.span;
-                });
-                return true;
             };
             for (const block of blocks) {
                 if (block.columnSpan > 1) {
@@ -283,9 +276,9 @@
                 }
                 const span = Math.min(slotRows, block.slotSpanRows);
                 let placement = findSlot(span);
-                if (!placement && span === slotRows && repackForFullHeight()) placement = findSlot(span);
                 if (!placement) { flushSlot(); placement = findSlot(span); }
                 for (let offset = 0; offset < span; offset += 1) slotPage.occupied[placement.row + offset][placement.column] = true;
+                slotPage.cursor = placement.column * slotRows + placement.row + span;
                 slotPage.placements.push({ block, ...placement });
             }
             materializeSlotPage();

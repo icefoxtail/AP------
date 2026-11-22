@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-11e60754a467-9e5f736b",
+  "sourceArchiveFile": "similar/middle/m3/2mid/26_삼산중_2학기_중간_중3_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_7fcae5c7ffabe498f444e84d4b39837708726a46cdfea39bbdc88e652814939e",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "step": "두 경로의 높이차를 각각 sin30°,sin45°로 나누어 이동거리2+2√2를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6815f796e498c5cfd86cdc12aa296103db16926ce06587c449741ec3165b6086",
+      "sourceOrdinal": 15,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_CIRCLE_CHORD",
+      "templateKey": null,
+      "step": "길이가 같은 현은 중심거리가 같으므로 CD=12,높이8로 삼각형 넓이48을 구한다.",
+      "note": "원의 현 길이와 중심으로부터의 거리: 중심에서 현에 내린 수선의 이등분 성질과 같은 거리의 현 길이 관계를 이용한다. |  | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_479b72f93f7dd44f3cdc971558676e95c97cc14dfe82e99a29273f6e4424044c",
+      "sourceOrdinal": 16,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_CIRCLE_CHORD",
+      "templateKey": null,
+      "step": "같은 길이의 평행현 쌍은 중심에 대칭이므로 중심거리4,6을 구하고 공통 반지름 제곱80으로 EF=4√11을 계산한다.",
+      "note": "원의 현 길이와 중심으로부터의 거리: 중심에서 현에 내린 수선의 이등분 성질과 같은 거리의 현 길이 관계를 이용한다. |  | 도구: PT_NOT_ACTIVE, DUPLICATE_PROPOSED_NAME",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9e98f21766ebf673ce88a70da46f503adb5cb8711c32aa7114a726759eb4af44",
+      "sourceOrdinal": 17,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_CIRCLE_TANGENT",
+      "templateKey": null,
+      "step": "접선 길이의 같음으로 BE=CE=5를 구해 BC=10을 얻고 끼인각60도 넓이공식에 대입한다.",
+      "note": "원의 접선 길이의 같음과 접다각형: 원 밖의 한 점에서 그은 두 접선 길이의 같음을 이용해 선분·둘레·접다각형의 길이 관계를 구한다. |  | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4e5b92a09f439391a4462c97bf271c45b3acd712b69d85e2f96bb554aa401a84",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "step": "36도 이등변삼각형의 닮음에서 x(x−1)=1을 얻고 빗변 중점으로 cos36°=(1+√5)/4를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8d0df2fa64f1db68961421e7157a18e0a0d73d513ce6df0abd154535a6ace2a9",
+      "sourceOrdinal": 20,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_CIRCLE_TANGENT",
+      "templateKey": null,
+      "step": "같은 접선 길이로 두 직각변을 r+3,r+10으로 나타내 r=2를 구하고 세 꼭짓점까지 거리를 합한다.",
+      "note": "원의 접선 길이의 같음과 접다각형: 원 밖의 한 점에서 그은 두 접선 길이의 같음을 이용해 선분·둘레·접다각형의 길이 관계를 구한다. |  | 도구: PT_NOT_ACTIVE, DUPLICATE_PROPOSED_NAME",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fa8c2b11d0e1b6fc253a98524751ffabb326fe5927487dc2076da0621842c94b",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+      "step": "공통 높이 h에 대해 AD=h,BD=h/11을 세워 h+h/11=48에서 h=44를 얻는다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    }
+  ]
+}

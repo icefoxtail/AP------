@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-c1289606cb38-c776c162",
+  "sourceArchiveFile": "original/high/h2/1mid/18_강남여고_1학기_중간_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_0f53d1488a181e9c9eb098d0bb7967c8e7cf28a4c6517d953d9e92cc1b0d6abd",
+      "sourceOrdinal": 2,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_PROB_COUNTING",
+      "templateKey": null,
+      "step": "각 괄호에서 한 항씩 택하는 독립 선택의 수를 곱한다.",
+      "note": "후보에는 서로 다른 선택지 집합에 대한 곱의 법칙 자체를 담는 PT/TPL이 없어 순열·중복순열에 억지 배정하지 않음. 해당 과목 ACTIVE 정의 전체 대조 후 적합한 PT 없음. 필요한 유형: 각 괄호에서 한 항씩 택하는 독립 선택의 수를 곱한다. 제안 유형명: 독립 선택 곱의 법칙. 구별 단서: 자리마다 서로 다른 선택 집합을 허용하며 동일한 선택지를 반복하는 중복순열과 구별. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c6b88aa6916f95eb0cbd7b73d963f46eb513ad51d300ad9c0a538fbf73359b00",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "step": "두 번째 하향 이동의 연결 열별로 동일 방향 이동의 배열을 세어 합한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-6ad71907d65e-3a3e281e",
+  "sourceArchiveFile": "original/high/h2/1mid/24_금당고_1학기_중간_고2_대수.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_5bf3db1d93b831d7924dee7dffe0bb143653bbbead22fa1a51ed7e910bf2cf33",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+      "templateKey": "TPL_H22A_01_ROOT_REAL_067",
+      "step": "(-2)⁵=-32에서 음수의 홀수제곱근 -2를 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c8a258289153832598e2f1f6ab45728f1b68e36b064a6aa785c873037bbfe99b",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_CALCULATION",
+      "templateKey": "TPL_EXPONENT_RATIONAL_POWER_OPERATION",
+      "step": "같은밑 거듭제곱 곱의 지수를10/3-1/3=3으로 합쳐27을 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b3da4dea5b1dee8d3820c5cd94803364c91703528a2aabc3d1d20e8b45cc7c5c",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_EQUATION_DOMAIN",
+      "templateKey": "TPL_LOG_EQUATION_ARGUMENT_FILTER",
+      "step": "진수조건 x>-1/2를 유지하고 같은밑 로그의 일대일성으로 x+5=2x+1을 풀어 x=4를 검토한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_da75e92cb1839ac8e79f7e867846ba32ac8763062c4029789e34e5fbe987dcdd",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_03_LOG_INEQUALITY",
+      "templateKey": "TPL_H22A_03_LOG_INEQUALITY_092",
+      "step": "t=log₃x로 치환해(t-1)(t-2)<0을 풀어3<x<9의 자연수5개를 센다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2e4536f77f544483ff7984e9f153260e7b6b51c7716673e18ba5f7abbeda735e",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_EQUATION",
+      "templateKey": "TPL_TRIGONOMETRIC_EQUATION_SUBSTITUTION_ROOTS",
+      "step": "sin 치환 이차식을 인수분해해 불가능값-2를 제외하고 sinx=1/2의 두근합π를 구한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요. 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d550856b09b5f7eb951ed15a274ed4f4a30255707fb39e29b506be94e18674e3",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_INEQUALITY",
+      "templateKey": "TPL_TRIGONOMETRIC_INEQUALITY_INTERVAL_SOLVE",
+      "step": "각y=x+π/6의 범위에서 tan점근선을 제외하고π/3≤y<π/2를 얻어 해경계차π/6의 탄젠트를 계산한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요. 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f170f03895e0eefe5182af0d3eeb4eb49f7f612e83fd21332e4799dc8c3e6afa",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+      "templateKey": "TPL_H22A_01_ROOT_REAL_068",
+      "step": "-(n-3)(n-8)의 부호와 n짝홀별 실수근개수0,1,2를 적용해 인접합3인 n=3,4,5,6을 찾는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6c215b64f2c4f019691284c5da71ccdaa5f54eca1604ccd941b5f0b525e8d120",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ROOT_INTEGER_FEASIBILITY",
+      "templateKey": "TPL_ROOT_INTEGER_FEASIBILITY_EXPONENT",
+      "step": "(3/2)^(m/4)의 유리성에서 m=4k를 얻고 정수화를 위해2^k|n이어야 하므로 최소k1,n2에서 합6을 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요. 필요한 TPL 제안명: 유리수지수 정수화 최소합. 정의: 소인수 지수의 정수성을 강제하고 분모를 소거하는 최소 승수를 선택해 변수합 최소화. 구별 단서: 정수해의 개수 아닌 최소합. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cb4af0d7b26e19768bec99c3316091033942396ae127811bcda8db028e01e043",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+      "step": "사인최대점 A(b/2,a),B(5b/2,a)로 넓이ab=4와 기울기곱4a²/(5b²)=16/5를 세워 a=2b를 얻는다.",
+      "note": "문항·해설 직접 판독. 원문 inline SVG를 그대로 추출·렌더하여 A,B 최대점과 삼각형 시각 확인. 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_595206120738ba5070858fc5c9ef5c334a416b8eaa708e5293f1d21eb73b711d",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_EQUATION",
+      "templateKey": "TPL_TRIGONOMETRIC_EQUATION_BASIC_ROOTS",
+      "step": "제곱합과 두배각으로 cosx=±1/2를 얻고 원점에서 가까운 대칭근을 차례로 세어 여섯근을 처음 포함하는 a=4π/3을 정한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요. 도구 오류: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_83db9e61b6437c685a8591ac901574dcd8d163b90b62af4ef5dfc6a872d86995",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
+      "step": "지수·로그 역함수 대칭과 길이비로 B(2,6),C(6,2)를 정하고 a²=6에서 D(216,6)을 얻어 삼각형넓이428을 구한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7c2b7c579a4cf577e9726c5b60832a8d9cc2710b62a0ac892b43625683bb587c",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_APPLICATION",
+      "templateKey": "TPL_LOG_EXPONENTIAL_EQUATION_SYSTEM_SOLVE",
+      "step": "두 지수식에 로그를 취해 a=3log₇2,b=log₇2를 얻고 목표식에서 공통로그를 약분하여4를 구한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-root-closed8-gate-v3-review-v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "owner": "GPT_ROOT_26FC42390A50",
+  "baseCommit": "13d5f0e78a4b0227ecd6a348a736f8b1b78cfa10",
+  "status": "STATIC_AND_LOCAL_PATH_TEST13_PASS_ACTUAL_NATIVE47_REQUIRED",
+  "manifest": {
+    "gitBlobSha1": "a1a65111d3b446ae31bde046ae6425c68728909f",
+    "sha256": "0ae3722d936f3d2563c3d5a33b5b15e8a8eab9cd1844ace62a15386e9b735eae"
+  },
+  "independent": {
+    "gitBlobSha1": "87b4d18b635005a8c59879378709b442ab9278fe",
+    "sha256": "95625b9ffb502087fac462c77f64670717f094f2785e8749895323a842cc797b",
+    "decision": "STATIC_ACCEPT_GATE_PATH_AND_FIXED_HISTORY_INPUT_REPAIR_ACTUAL_NATIVE47_PENDING"
+  },
+  "files": [
+    {
+      "path": "tools/4slot/check-m2-closed8-current-ui-scoped.cjs",
+      "gitBlobSha1": "096bdd8b920f917b75821aad70cc2c453fac5f6b",
+      "sha256": "4060bb43bf0cd4add0d39bfda2f3528904ad73d8a7428d9b87b41de47e2f05bb",
+      "bytes": 48757,
+      "before": {
+        "gitBlobSha1": "f8a2f22b5c0d03325f791f42785028d7c603e5d9",
+        "sha256": "e34c1eb810a827417c07e18fdfc580c2327b56dc65d5d209b00c26feffe1ab6a",
+        "bytes": 45938
+      }
+    },
+    {
+      "path": "tests/m2-closed8-scoped-input-paths.test.cjs",
+      "gitBlobSha1": "ebe3a2ed35a5b9c16997ce23f6058637e7ab19bc",
+      "sha256": "397d6340e1e945214734500fbe966f6bcae1d54dcdbf26d2e6cc064d33374fcd",
+      "bytes": 3376,
+      "before": null
+    }
+  ],
+  "verification": {
+    "wholeRawAndByteReadback": true,
+    "beforeGateAtActualBase": "f8a2f22b5c0d03325f791f42785028d7c603e5d9",
+    "focusedPathTests": {
+      "exitCode": 0,
+      "tests": 13,
+      "pass": 13,
+      "fail": 0,
+      "logPath": "/workspace/scratch/26fc42390a50/closed8-v3-local/unit13.tap"
+    },
+    "reviewedDeltaHunks": 4,
+    "production17Unchanged": true,
+    "historicalFiveExactImmutableAuthenticationRequired": true,
+    "originalIndependentCurrentHeadRequired": true,
+    "originalNativeTrueRequired": true
+  },
+  "priorActualFailure": {
+    "runId": 44034956098,
+    "jobId": 133875494764,
+    "gitBlobSha1": "11a350ba14b51ed2c403af5f4300bb2195d4c31b",
+    "guard": "M2_CURRENT8_SCOPE_PATH",
+    "selectedPending": 8,
+    "outsideRegistered": 36,
+    "outsidePending": 3
+  },
+  "scope": {
+    "sourceQuestionCount": 47,
+    "selected": 8,
+    "outside": 39
+  },
+  "limits": {
+    "actualRegistration": "NOT_RUN",
+    "consumer": "NOT_RUN",
+    "newApprovals": 0,
+    "sourceWrites": 0,
+    "metadataWrites": 0,
+    "mainWrites": 0
+  }
+}

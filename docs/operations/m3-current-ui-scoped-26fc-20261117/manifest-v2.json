@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "archive-m3-source49-native-source-hydration-repair-manifest-v2",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "owner": "GPT_M3S2_RELEASE_26FC42390A50",
+  "status": "GATE_ONLY_STATIC_REPAIR_DYNAMIC_PENDING",
+  "actualFailure": {
+    "runId": "44026464501",
+    "jobId": "133847879302",
+    "head": "09d63dbe08925f3811f8c7149d2ea5209af73c65",
+    "phase": "AUTHENTICATED_INPUTS",
+    "code": "M3_SOURCE49_IMMUTABLE_PATH",
+    "currentFileCount": 508,
+    "immutableRefCount": 399,
+    "rootUnchanged": true,
+    "source": "Root supplied actual parsed report metadata; raw report not yet independently fetched",
+    "reportedReport": {
+      "gitBlobSha1": "58529f7b422b350127458b3b7b85bf1ee55f3c31",
+      "sha256": "ad8d34fe240f178a9783474d089fed2517b2335e39f0cbec84b7cec21f736a2c",
+      "bytes": 1866
+    },
+    "firstFailingRef": "NOT_RECORDED_IN_ORIGINAL_REPORT"
+  },
+  "file": {
+    "path": "tools/4slot/check-m3-current-ui-scoped.cjs",
+    "before": {
+      "gitBlobSha1": "5868dad02eec45e9dd35ec36b364d8538c1e36ba",
+      "sha256": "086c2d57f08cde9edb587a6d639fe95f5b0dc8c19e2ba258c691d5cad1e02cc5",
+      "bytes": 45539
+    },
+    "after": {
+      "gitBlobSha1": "79d35e79b07f5901936ce847af171afb8d7c76d7",
+      "sha256": "07c9e8342a6df86f3312aa03ff9b98f746ac29e6393704d65c364b373e78bfb8",
+      "bytes": 46576
+    },
+    "fullRemoteReadbackExact": true
+  },
+  "delta": {
+    "gitBlobSha1": "1af10a6fb4a62a9714e50782a3538fc76a85f476",
+    "sha256": "2e89113c0b535bcbcfc2a1b90fb5da81ae42cb490179ee92be51d36cf7071877",
+    "bytes": 3930,
+    "fullRemoteReadbackExact": true
+  },
+  "originalProductionContract": {
+    "nativeCode": {
+      "path": "archive/tools/meta-foundation/reviewed-m3-e052-q5-complete-given.mjs",
+      "gitBlobSha1": "71eb98b06f359f1f1a18f62fa281b01e1ea94eec",
+      "sha256": "695298b878666f01aafbce21378f991b82b865e8b359849df0627200fd255b7d",
+      "bytes": 50755
+    },
+    "basisRef": {
+      "commit": "1dbeaaa687d48f74b381c1dc5d2c330f1bfe4ea2",
+      "path": "docs/operations/m3-e052-q5-complete-given-20261116/application-basis-v1.json",
+      "gitBlobSha1": "f2a96c282b365405c05ae7ad78c04c710ed635bc",
+      "sha256": "5c1cca89666988ba8e5f500c1eddac525d6dcc4f5ad01f17eb4c6e7bbf7a025a",
+      "bytes": 9022
+    },
+    "nativeReviewRef": {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "docs/operations/m3-s2-meta-full-20261114/exams/E052.meta.json",
+      "gitBlobSha1": "5b7b2a3ff2fc8322e2e16b056479e71ea37a9bfa",
+      "sha256": "f4951ba45960245c7197e5f36ab35e2444bdcbc0bdbfc89fdf2166fe227a900a",
+      "bytes": 205465
+    },
+    "nativeSourceRef": {
+      "commit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+      "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+      "gitBlobSha1": "2011de7254193dddb99c157992d8e22f2a435d1c",
+      "sha256": "38ca8a9b20b389181c3b7d7f67d436211f6e602aa7f5d237589a91ed2a8a9261",
+      "bytes": 57523
+    },
+    "originalCommitSourceTreeGit": "2011de7254193dddb99c157992d8e22f2a435d1c",
+    "actualOpsSourceTreeGit": "82c627bacb59105e9bd3a5397d4828757308d587",
+    "treeMetadataDirectlyFetched": true,
+    "sourceBodyRereview": false
+  },
+  "finding": {
+    "confirmed": "The original production validator uses basis.nativeReviewRef.commit for the original Native source. The old gate additionally inferred this relationship from every traversed semantic-review document's publication commit, which is not a declared source version.",
+    "actualFirstFailureAttribution": "UNCONFIRMED_WITHOUT_REFERENCE_TRACE",
+    "repair": "Hydrate the exact original Native source from the authenticated fixed application/nativeReviewRef chain. Keep all declared strong-ref checks unchanged and record expected/observed Git metadata on any IMMUTABLE_PATH failure."
+  },
+  "verification": {
+    "inverseWholeBeforeExact": true,
+    "edits": [
+      "exact-immutable-path-diagnostic",
+      "native-source-only-from-authenticated-application",
+      "hydrate-declared-original-native-before-drain"
+    ],
+    "realStrongReferenceGuardPreserved": true,
+    "originalNativeTrueRequirementPreserved": true,
+    "source49Outside47ChecksPreserved": true,
+    "focused87AndShadow54CommandsPreserved": true,
+    "sourceOnlyBanks2": true,
+    "otherSourcesOpened": 0,
+    "sourceMathematicalRereview": 0,
+    "Node": "NOT_RUN",
+    "syntax": "NOT_RUN",
+    "actualNative": "NOT_RUN",
+    "builderConsumer": "NOT_RUN",
+    "candidateExpectedToResolveFirstFailure": "NOT_CLAIMED_BEFORE_ACTUAL_RERUN"
+  },
+  "unchanged": {
+    "production7": true,
+    "shadowAdapter2": true,
+    "workflow": true,
+    "authority": true,
+    "source": true,
+    "compact": true,
+    "metadata": true,
+    "identity": true,
+    "runtime": true,
+    "registeredVector": true
+  },
+  "remote": {
+    "refsWritten": 0,
+    "mainWrites": 0
+  },
+  "nextAction": "Independent delta read then root publishes only the gate file and reruns the authorized exact source49 ops. Any further genuine strong-ref mismatch remains fatal with exact metadata."
+}

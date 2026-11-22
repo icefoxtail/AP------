@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-cffe4722feb8-be0f5743",
+  "sourceArchiveFile": "original/high/h2/1final/25_금당고_1학기_기말_고2_수학II.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_9835160de5c4b1eb77756b3cef21523ff5cf8d76d78f4aca75ffa50f92653683",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM",
+      "step": "같은 구간의 두 적분을 합치고 제곱의 차를 16x로 정리한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ec6d2b7c9d631a196da5843269575a3cecf70065a71ceba972ef9e9bc7f0a3fa",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_INTEGRAL_DEFINED_FUNCTION_ANALYSIS",
+      "step": "적분함수의 도함수 부호가 x=-2에서 양에서 음으로 바뀜을 확인하고 함수값을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_126a6d2137c29607c7b3f16fcdd99708ca02b78e0ad0095c69292c99b2162858",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+      "templateKey": "TPL_EXTREMA_STRUCTURE_COUNT",
+      "step": "도함수 이차식이 서로 다른 두 근을 갖지 않도록 판별식이 0 이하인 조건을 세운다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ba7fd5b606829aea2dc7d7186ed5d54ece494d0087ed3b266167a485327baf8d",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+      "step": "같은 함수의 두 원시함수 차는 상수라는 성질로 h를 일차식으로 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_429a1970c6cbb613cad27e3b2120fc176454d8ef7b1bb4c3562f5832025f5742",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+      "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE",
+      "step": "가속·등속·감속 구간별 속도를 적분하여 세 구간 이동거리를 더한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_73632de8ea9ff5ad0131761fcd89da119e93cd96e43c2f0bc18dcea5f4f05b0f",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+      "templateKey": "TPL_TANGENT_CONSTRUCTION",
+      "step": "접점 t의 접선에 주어진 점을 대입한 K(t)의 극값으로 접선 세 개 조건을 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e67225d6cfcfc6a9942401e6da2a2aaf12e7f94f8e2602cc353eaeb226986d4d",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+      "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+      "step": "도함수의 서로 다른 두 근이 열린구간 안에 있도록 꼭짓점과 양끝 부호 조건을 쓴다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1e5465802deb3f5ccfa1879195001709989abab0439daf25c020e339bd690507",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM",
+      "step": "역함수 그래프와 원함수 그래프의 넓이 보완 관계로 정적분을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    }
+  ]
+}

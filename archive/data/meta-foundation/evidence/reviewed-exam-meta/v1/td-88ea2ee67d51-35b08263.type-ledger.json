@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-88ea2ee67d51-35b08263",
+  "sourceArchiveFile": "original/middle/m2/1final/23_향림중_1학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_54776c8d11df004ac8b5b89b297fe116f61dab212924ae61e1a9835d664b62be",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+      "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+      "step": "항을 정리해 변수가 없어지는 ㄴㅂ과 등식 ㄷ을 제외하고 일차항이 남는 ㄱㄹㅁ을 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9a6590b7b1a17f58a9f135d46a7c7c6f7ab2618208f20d66a56dc962d8811763",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+      "templateKey": null,
+      "step": "왕복 시간 x/3+x/3과 구매시간 10분=1/6시간을 합쳐 1시간 이하라는 부등식 x/3+1/6+x/3≤1을 고른다.",
+      "note": "새 TPL 제안: 왕복 시간 제한의 일차부등식 세우기. 정의: 왕복 시간 x/3+x/3과 구매시간 10분=1/6시간을 합쳐 1시간 이하라는 부등식 x/3+1/6+x/3≤1을 고른다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ac25f60c0aa233c8ae4f84dc4bb1125d92812ea4b442ed8206bb9eb7e46bd2b7",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
+      "templateKey": "TPL_M2_SELECT_REQUIRED_OPERATION_FOR_VARIABLE_ELIMINATION",
+      "step": "x계수 3,2를 6으로 맞춰 ㉠×2-㉡×3으로 x를 소거한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5a33e2606f85bef873030f47907d48df041e8cef9b5e43521b4433f643bebc6d",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+      "templateKey": "TPL_M2_SOLVE_DECIMAL_SYSTEM_AND_LINEAR_COMBINATION",
+      "step": "두 식에 10을 곱해 5x+2y=10,x-2y=14를 더하여 x=4,y=-5와 합 -1을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a25cc01189a7d7965d1adefde9a04a3e1f4c513147a865186bc76e80964a7ee0",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "출력 유일성을 확인하여 x보다 큰 짝수는 여러 개이므로 ④만 함수가 아님을 판정한다.",
+      "note": "새 TPL 제안: 대응 관계의 함수 여부 판별. 정의: 출력 유일성을 확인하여 x보다 큰 짝수는 여러 개이므로 ④만 함수가 아님을 판정한다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_58e1eea0bc80e051e30a923fdb9ee1f7a543b994843f0cfb38a5575634589178",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+      "step": "기울기 -4,절편2로 점과 이동·사분면 설명을 확인하고 제3사분면을 지난다는 ③을 거른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f04c668dbc67c32d3d0a878144ba4d831d3a1e1641d008be8ac439c5b97be882",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": null,
+      "step": "이동식 y=-x+a+3에 (1,4)를 넣어 a=2를 구하고 (2,b)를 넣어 b=3과 합5를 구한다.",
+      "note": "새 TPL 제안: 수직 이동한 직선의 계수와 미지 좌표 결정. 정의: 이동식 y=-x+a+3에 (1,4)를 넣어 a=2를 구하고 (2,b)를 넣어 b=3과 합5를 구한다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

@@ -4,7 +4,6 @@ window.examData = {
   "questions": [
   {
     "id": 1,
-    "layoutTag": "fullwidth",
     "score": 3,
     "question": "<p>1. 오른쪽 그림과 같이 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 직각삼각형 $\\mathrm{ABC}$에서 $\\angle x$의 크기는?(3점)</p><p><img src=\"assets/images/21_연향중_2학기_중간_중2_수학/q1-problem-visual-v2.svg\" alt=\"AB와 AC가 같은 길이여서 청록색과 같은 눈금을 붙였다. A의 각은 직각이고 B의 각은 x이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
@@ -77,7 +76,6 @@ window.examData = {
   },
   {
     "id": 3,
-    "layoutTag": "fullwidth",
     "score": 4,
     "question": "<p>3. 다음 직각삼각형 중에서 서로 합동인 것끼리 짝 지어 보고, 각각의 합동조건으로 올바른 것은?(4점)</p><p><img src=\"assets/images/21_연향중_2학기_중간_중2_수학/q3-problem-visual-v2.svg\" alt=\"ㄱ은 빗변 4 cm와 50°, ㄴ은 빗변 5 cm와 직각변 4 cm이다. ㄷ은 빗변 5 cm와 50°·40°, ㄹ은 40°와 닿는 직각변 5 cm와 50°를 보여 준다. ㅁ은 빗변 4 cm와 40°, ㅂ은 빗변 5 cm와 직각변 4 cm이다.\" style=\"display:block;width:min(100%,360px);height:auto;margin:0 auto;\"></p>",
     "choices": [
@@ -164,7 +162,6 @@ window.examData = {
   },
   {
     "id": 6,
-    "layoutTag": "fullwidth",
     "score": 4,
     "question": "<p>6. 오른쪽 평행사변형 $\\mathrm{ABCD}$에서 두 대각선의 교점을 $\\mathrm{O}$라고 하자. $\\angle\\mathrm{OAB}=\\angle\\mathrm{OBA}$일 때, 다음 중에서 옳은 것은?(4점)</p><p><img src=\"assets/images/21_연향중_2학기_중간_중2_수학/q6-problem-visual-v2.svg\" alt=\"AC와 BD가 O에서 만나는 평행사변형 도식이다. 문제에서 같은 각 OAB와 OBA에 같은 호를 붙였다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
@@ -209,7 +206,6 @@ window.examData = {
   },
   {
     "id": 7,
-    "layoutTag": "fullwidth",
     "score": 4,
     "question": "<p>7. 다음 그림에서 $\\square\\mathrm{ABCD}$와 $\\square\\mathrm{EFGH}$는 평행사변형이고 $\\square\\mathrm{ABCD} \\sim \\square\\mathrm{EFGH}$이다. 닮은비가 $3 : 4$일 때, $\\overline{\\mathrm{AB}}$, $\\overline{\\mathrm{EH}}$의 길이로 옳은 것은?(4점)</p><p><img src=\"assets/images/21_연향중_2학기_중간_중2_수학/q7-problem-visual-v2.svg\" alt=\"작은 평행사변형 ABCD에서 BC는 6 cm이다. 큰 평행사변형 EFGH에서 GH는 12 cm이다. 두 대응 방향의 변은 같은 색이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
@@ -253,7 +249,6 @@ window.examData = {
   },
   {
     "id": 8,
-    "layoutTag": "fullwidth",
     "score": 4,
     "question": "<p>8. 다음 그림에서 $\\triangle\\mathrm{ABC} \\sim \\triangle\\mathrm{DEF}$일 때, $\\overline{\\mathrm{DF}}$의 길이를 구하면?(4점)</p><p><img src=\"assets/images/21_연향중_2학기_중간_중2_수학/q8-problem-visual-v2.svg\" alt=\"왼쪽 ABC와 오른쪽 DEF는 닮음이다. 각 A와 D가 65°이고 AB=15 cm, AC=9 cm, DE=5 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
@@ -295,7 +290,6 @@ window.examData = {
   },
   {
     "id": 9,
-    "layoutTag": "fullwidth",
     "score": 5,
     "question": "<p>9. 다음 그림에서 $\\overline{\\mathrm{CA}}$의 길이는?(5점)</p><p><img src=\"assets/images/21_연향중_2학기_중간_중2_수학/q9-problem-visual-v2.svg\" alt=\"B에서 H까지 7, H에서 A까지 9이다. C에서 AB로 내린 CH와 C의 각에 직각 표시가 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
@@ -337,7 +331,6 @@ window.examData = {
   },
   {
     "id": 10,
-    "layoutTag": "fullwidth",
     "score": 5,
     "question": "<p>10. 다음 그림에서 점 $\\mathrm{I}$는 직각삼각형 $\\mathrm{ABC}$의 내심이고 두 점 $\\mathrm{D}$와 $\\mathrm{E}$는 접점일 때, $\\square\\mathrm{DBEI}$의 넓이는?(5점)</p><p><img src=\"assets/images/21_연향중_2학기_중간_중2_수학/q10-problem-visual-v2.svg\" alt=\"직각삼각형의 세 변 AB, BC, AC는 13 cm, 12 cm, 5 cm이다. 내심 I에서 접점 D와 E까지 같은 반지름을 표시했다. DBEI만 옅게 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
@@ -382,7 +375,6 @@ window.examData = {
   },
   {
     "id": 11,
-    "layoutTag": "fullwidth",
     "score": 5,
     "question": "<p>11. 다음 그림에서 점 $\\mathrm{I}$가 $\\triangle\\mathrm{ABC}$의 내심이고, $\\angle\\mathrm{B}=68^\\circ$일 때, $\\angle x+\\angle y$의 크기는?(5점)</p><p><img src=\"assets/images/21_연향중_2학기_중간_중2_수학/q11-problem-visual-v2.svg\" alt=\"삼각형 ABC에서 B의 각은 68°이다. 내심 I에서 만나는 두 이등분선이 AB와 BC에 닿는 점은 D와 E이며, 그 곳의 x와 y를 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
@@ -424,7 +416,6 @@ window.examData = {
   },
   {
     "id": 12,
-    "layoutTag": "fullwidth",
     "score": 5,
     "question": "<p>12. 오른쪽 그림에서 점 $\\mathrm{O}$는 $\\triangle\\mathrm{ABC}$의 외심이다. $\\angle\\mathrm{OAB}=43^\\circ$, $\\angle\\mathrm{OBC}=20^\\circ$일 때, $\\angle x-\\angle y$의 크기는?(5점)</p><p><img src=\"assets/images/21_연향중_2학기_중간_중2_수학/q12-problem-visual-v2.svg\" alt=\"삼각형 ABC의 외심이 O이다. 각 OAB는 43°, 각 OBC는 20°이고, AOC에 x, ACO에 y를 붙였다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
@@ -507,7 +498,6 @@ window.examData = {
   },
   {
     "id": 14,
-    "layoutTag": "fullwidth",
     "score": 5,
     "question": "<p>14. 다음 그림의 평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AE}}+\\overline{\\mathrm{EC}}$의 길이는?(5점)</p><p><img src=\"assets/images/21_연향중_2학기_중간_중2_수학/q14-problem-visual-v2.svg\" alt=\"AB의 길이는 10 cm, AD와 DF의 길이는 각각 18 cm이다. B의 각은 60°이다. 선분 AF가 BC 위의 E를 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
@@ -594,7 +584,6 @@ window.examData = {
   },
   {
     "id": 16,
-    "layoutTag": "fullwidth",
     "score": 5,
     "question": "<p>16. 오른쪽 그림의 정사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{EC}}=\\overline{\\mathrm{FD}}$이고 점 $\\mathrm{G}$는 $\\overline{\\mathrm{AF}}$와 $\\overline{\\mathrm{DE}}$의 교점이다. $\\angle\\mathrm{GFC}=110^\\circ$일 때, $\\angle\\mathrm{EDC}$의 크기는?(5점)</p><p><img src=\"assets/images/21_연향중_2학기_중간_중2_수학/q16-problem-visual-v2.svg\" alt=\"EC와 FD가 같은 길이여서 같은 색과 눈금을 붙였다. AF와 DE가 G에서 만난다. 각 GFC는 110°이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
@@ -636,7 +625,6 @@ window.examData = {
   },
   {
     "id": 17,
-    "layoutTag": "fullwidth",
     "score": 5,
     "question": "<p>17. 다음 그림에서 $x$의 값은?(5점)</p><p><img src=\"assets/images/21_연향중_2학기_중간_중2_수학/q17-problem-visual-v2.svg\" alt=\"삼각형의 변 AB 위에 D가 있다. 선분 BD=2 cm, DA=6 cm이다. BC는 4 cm, DC는 3 cm이고 AC는 x cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
@@ -678,7 +666,6 @@ window.examData = {
   },
   {
     "id": 18,
-    "layoutTag": "fullwidth",
     "score": 5,
     "question": "<p>18. 다음 그림에서 두 원기둥 $\\mathrm{A}$, $\\mathrm{B}$가 서로 닮은 도형일 때, 원기둥 $\\mathrm{B}$의 밑면의 넓이는?(5점)</p><p><img src=\"assets/images/21_연향중_2학기_중간_중2_수학/q18-problem-visual-v2.svg\" alt=\"작은 A의 높이는 4 cm, 반지름은 2 cm이다. 큰 B의 높이는 6 cm이다. 두 바닥의 보이지 않는 부분을 점선으로 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [
@@ -722,7 +709,6 @@ window.examData = {
   },
   {
     "id": 19,
-    "layoutTag": "fullwidth",
     "score": 7,
     "question": "<p>서술형1. 오른쪽 그림과 같이 $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{BC}}$인 이등변삼각형 $\\mathrm{ABC}$에서 두 점 $\\mathrm{O}$와 $\\mathrm{I}$는 각각 $\\triangle\\mathrm{ABC}$의 외심과 내심이다. $\\angle\\mathrm{C}=40^\\circ$일 때, 다음을 구하시오. (7점)</p><p><img src=\"assets/images/21_연향중_2학기_중간_중2_수학/q19-problem-visual-v2.svg\" alt=\"AC와 BC가 같은 길이이고 C의 각은 40°이다. A와 B에서 내심 I로 가는 두 선, 외심 O로 가는 두 선을 색으로 구분했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>(1) $\\angle\\mathrm{OBC}$의 크기(3점)</p><p>(2) $\\angle\\mathrm{IBC}$의 크기(2점)</p><p>(3) $\\angle\\mathrm{IBO}$의 크기(2점)</p>",
     "choices": [],
@@ -760,7 +746,6 @@ window.examData = {
   },
   {
     "id": 20,
-    "layoutTag": "fullwidth",
     "score": 6,
     "question": "<p>서술형2. 오른쪽 직사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}}=2\\overline{\\mathrm{AB}}$이고 $\\mathrm{M}$과 $\\mathrm{N}$은 각각 $\\overline{\\mathrm{AD}}$와 $\\overline{\\mathrm{BC}}$의 중점일 때, $\\square\\mathrm{MPNQ}$는 어떤 사각형인지 설명하시오. (6점)</p><p><img src=\"assets/images/21_연향중_2학기_중간_중2_수학/q20-problem-visual-v2.svg\" alt=\"가로가 세로의 두 배인 직사각형이다. M과 N은 위와 아래의 중점이고 내부 사선들의 교점은 P와 Q이다. 사각형 MPNQ만 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [],
@@ -796,7 +781,6 @@ window.examData = {
   },
   {
     "id": 21,
-    "layoutTag": "fullwidth",
     "score": 7,
     "question": "<p>서술형3. 다음 그림에서 $\\mathrm{ABCD}$는 직사각형이다. $\\overline{\\mathrm{PQ}}$가 대각선 $\\mathrm{AC}$를 수직이등분할 때, $x$의 값을 구하시오. (7점)</p><p><img src=\"assets/images/21_연향중_2학기_중간_중2_수학/q21-problem-visual-v2.svg\" alt=\"AB=6 cm, BC=8 cm이다. PQ가 AC를 중점 O에서 수직으로 만나고 OC=5 cm이다. AP=x cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>(1) $\\triangle\\mathrm{APO}$와 닮음인 삼각형을 모두 찾으시오. (3점)</p><p>(2) $x$의 값을 구하시오. (4점)</p>",
     "choices": [],

@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "archive-m3-source49-four-field-preparation-reference-repair-v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "author": "GPT_M3S2_RELEASE_26FC42390A50",
+  "status": "FROZEN_GATE_ONLY_CANDIDATE_ACTUAL_RUN_PENDING",
+  "operation": {
+    "path": "tools/4slot/check-m3-current-ui-scoped.cjs",
+    "before": {
+      "gitBlobSha1": "dec28db6283f318bec99dca6c30a6f8328a8b0b5",
+      "sha256": "abb5fae96125d37ea8c51f9499b9ba5620dfea5fae9fc16c701d7a5a3d3711d2",
+      "bytes": 48010
+    },
+    "after": {
+      "gitBlobSha1": "c2b6aa55f1ba0c5400b13eea2b2aaf5702ef948a",
+      "sha256": "ce03a7624ed25f541c18c4509417d5501b84e199a7cebd2cf0c6e19df32e1838",
+      "bytes": 51278
+    }
+  },
+  "workflowUnchanged": {
+    "gitBlobSha1": "088a98d86f76a630481d554f77b86e6cfa1bcb59"
+  },
+  "actualFailure": {
+    "runId": "44029754033",
+    "jobId": "133858562372",
+    "code": "M3_SOURCE49_IMMUTABLE_REF",
+    "phase": "AUTHENTICATED_INPUTS",
+    "rootReported": {
+      "reportGit": "d12eb94a4f3d11a356796ae1e4236f430e2f7ca3",
+      "reportSha256": "18ad3fea0df842f6ec383bcc9de568ffbfcbfa662531be5daa03aefb47e585d0",
+      "bytes": 4208,
+      "ownerCommitPrefix": "273e458",
+      "pointer": "$.beforeSourceRef",
+      "currentInputCount": 508,
+      "immutableInputCount": 399,
+      "rootUnchanged": true
+    },
+    "independentRawReportFetch": "ONE_404_NOT_RECOVERED_NO_RETRY"
+  },
+  "directMetadataEvidence": {
+    "referenceCommit": "2c06ec048d62b96ea446d2136cd264c17ae57f0c",
+    "owner": {
+      "path": ".archive-meta-register/evidence/middle-audit-repair-34c2-m3-current-target/e052-after-issued-source-continuity-4b504e10b1ce.json",
+      "gitBlobSha1": "1893482704d0a57c3e7acb2deceeed3199e1c666",
+      "sha256": "fdd5a03136bafc83e08869c85cc738ddf8de72481a4ffcbd6009091c4e06b5fb",
+      "bytes": 6031
+    },
+    "schemaVersion": "archive-issued-source-continuity-preparation-v1",
+    "observedReferences": {
+      "$.beforeSourceRef": {
+        "commit": "4b504e10b1ce7a90576486663b3862ef99922325",
+        "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+        "gitBlobSha1": "5a9e25d32e96a19bb6bb2f2f8265446cb92fee34",
+        "sha256": "ccab19ec3a0546078515c3a5d0da6396d18bb7f134c9e53847d7b7fc7f7cadb9"
+      },
+      "$.actualPriorReceipts[0].inputRef": {
+        "commit": "b645719341bc7deae6ed3b21a78f878109dc7789",
+        "path": ".archive-meta-register/inbox/m3s2-e052-preserve2-current-source-20261116.json",
+        "gitBlobSha1": "2b80a243176fe3168f360ce72572184fdcfd0641",
+        "sha256": "79ad2bdcff426007be3f3b4035f366e37e2bb070a47f7696e52e1c160c281338"
+      },
+      "$.actualPriorReceipts[0].receiptRef": {
+        "commit": "4b504e10b1ce7a90576486663b3862ef99922325",
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e052-preserve2-current-source-20261116.json",
+        "gitBlobSha1": "4405ebae958741e97c4e24639655780ab1ff8441",
+        "sha256": "0148fc582202473ca7a5d78d1f9c75f259aab7ab611192d5cb70a7b3e5e5c325"
+      }
+    }
+  },
+  "productionContractBoundary": {
+    "nativeQ5StrongFiveFieldReferenceGuard": "UNCHANGED",
+    "registrar": {
+      "gitBlobSha1": "bbff0735c92824e163281208160d5bea47196747",
+      "function": "evidenceRefs",
+      "behavior": "Requires safe existing file and exact SHA-256 for declared approval/item evidence; does not impose bytes on every nested preparation reference."
+    },
+    "nativePreservedReuse": {
+      "gitBlobSha1": "30cb24374f2f1ff89cc9a60129db82628563fd3e",
+      "function": "evidence",
+      "behavior": "Requires nonempty SHA-bound local evidence without a blanket nested five-field reference requirement."
+    },
+    "scope": "No generic four-field authority schema was introduced. The gate only authenticates the one exact preparation document and its three declared reference tuples; production approval remains in unchanged Native."
+  },
+  "repair": {
+    "allowedPointers": [
+      "$.beforeSourceRef",
+      "$.actualPriorReceipts[0].inputRef",
+      "$.actualPriorReceipts[0].receiptRef"
+    ],
+    "ownerFullRawAndCommitPathAuthentication": true,
+    "exactFourKeysAndTuple": true,
+    "explicitBytesUsesUnchangedStrictRefShape": true,
+    "unknownOwnerOrPointerUsesUnchangedStrictRefShape": true,
+    "referenceTreeRegularGitMatch": true,
+    "catFileSizeBounded": true,
+    "actualObjectGitAndSha256Match": true,
+    "missingSizeOnly": "Derived from authenticated immutable Git object metadata, then actual bytes are pinned and passed through unchanged immutable validation.",
+    "candidateSourceWithoutCommit": "Not guessed or converted into an immutable reference.",
+    "diagnosticPreserved": true
+  },
+  "verification": {
+    "inverseWholeBeforeExact": true,
+    "remoteFullStringReadbackExact": true,
+    "syntax": "NOT_RUN",
+    "focusedTests": "NOT_RUN",
+    "native2": "NOT_RUN",
+    "builder49": "NOT_RUN",
+    "outside47": "NOT_RUN",
+    "consumer": "NOT_RUN",
+    "coldAndDelete": "NOT_RUN",
+    "referenceObjectsSizeAuthentication": "PENDING_ACTUAL_GATE"
+  },
+  "unchanged": {
+    "productionFiles7": 7,
+    "q5ShadowFiles2": 2,
+    "nativeAuthority": true,
+    "sourceBytes": true,
+    "metadataIdentityRuntime": true,
+    "newApprovals": 0,
+    "remoteRefWrites": 0
+  },
+  "reversibleEdits": [
+    {
+      "label": "Propagate optional exact declared-reference resolver",
+      "before": "function refsIn(value,out=[],pointer='$',owner=null){\n if(Array.isArray(value)){for(let i=0;i<value.length;i++)refsIn(value[i],out,pointer+'['+i+']',owner);}\n else if(value&&typeof value==='object'){\n  if(Object.hasOwn(value,'commit')&&Object.hasOwn(value,'gitBlobSha1')&&Object.hasOwn(value,'path')){\n   try{out.push(refShape(value));}\n   catch(error){\n    if(error.referenceShapeFailure)error.referenceShapeFailure.location={\n     document:owner?{commit:owner.commit||null,path:owner.path||null}:null,\n     pointer:pointer.length<=2048?pointer:null,pointerSha256:sha(pointer)};\n    throw error;\n   }\n  }else for(const[k,x]of Object.entries(value))if(k!=='outputDigests')refsIn(x,out,pointer+'.'+k,owner);\n }\n return out;\n}\n",
+      "after": "function refsIn(value,out=[],pointer='$',owner=null,resolveDeclared=null){\n if(Array.isArray(value)){for(let i=0;i<value.length;i++)refsIn(value[i],out,pointer+'['+i+']',owner,resolveDeclared);}\n else if(value&&typeof value==='object'){\n  if(Object.hasOwn(value,'commit')&&Object.hasOwn(value,'gitBlobSha1')&&Object.hasOwn(value,'path')){\n   try{out.push(refShape(resolveDeclared?resolveDeclared(value,owner,pointer):value));}\n   catch(error){\n    if(error.referenceShapeFailure)error.referenceShapeFailure.location={\n     document:owner?{commit:owner.commit||null,path:owner.path||null}:null,\n     pointer:pointer.length<=2048?pointer:null,pointerSha256:sha(pointer)};\n    throw error;\n   }\n  }else for(const[k,x]of Object.entries(value))if(k!=='outputDigests')refsIn(x,out,pointer+'.'+k,owner,resolveDeclared);\n }\n return out;\n}\n"
+    },
+    {
+      "label": "Authenticate the one pinned preparation document and its exact three four-field references",
+      "before": "  function hydrateDocument(value,owner=null){\n   for(const ref of refsIn(value,[],'$',owner))hydrateRef(ref);",
+      "after": "  function declaredFourFieldRef(ref,owner,pointer){\n   // One authenticated preparation document declares four-field references.\n   // Do not generalize absence of bytes to any other document or reference.\n   const spec={\n     \"schemaVersion\": \"archive-issued-source-continuity-preparation-v1\",\n     \"owner\": {\n       \"path\": \".archive-meta-register/evidence/middle-audit-repair-34c2-m3-current-target/e052-after-issued-source-continuity-4b504e10b1ce.json\",\n       \"gitBlobSha1\": \"1893482704d0a57c3e7acb2deceeed3199e1c666\",\n       \"sha256\": \"fdd5a03136bafc83e08869c85cc738ddf8de72481a4ffcbd6009091c4e06b5fb\",\n       \"bytes\": 6031\n     },\n     \"references\": {\n       \"$.beforeSourceRef\": {\n         \"commit\": \"4b504e10b1ce7a90576486663b3862ef99922325\",\n         \"path\": \"archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js\",\n         \"gitBlobSha1\": \"5a9e25d32e96a19bb6bb2f2f8265446cb92fee34\",\n         \"sha256\": \"ccab19ec3a0546078515c3a5d0da6396d18bb7f134c9e53847d7b7fc7f7cadb9\"\n       },\n       \"$.actualPriorReceipts[0].inputRef\": {\n         \"commit\": \"b645719341bc7deae6ed3b21a78f878109dc7789\",\n         \"path\": \".archive-meta-register/inbox/m3s2-e052-preserve2-current-source-20261116.json\",\n         \"gitBlobSha1\": \"2b80a243176fe3168f360ce72572184fdcfd0641\",\n         \"sha256\": \"79ad2bdcff426007be3f3b4035f366e37e2bb070a47f7696e52e1c160c281338\"\n       },\n       \"$.actualPriorReceipts[0].receiptRef\": {\n         \"commit\": \"4b504e10b1ce7a90576486663b3862ef99922325\",\n         \"path\": \"archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-e052-preserve2-current-source-20261116.json\",\n         \"gitBlobSha1\": \"4405ebae958741e97c4e24639655780ab1ff8441\",\n         \"sha256\": \"0148fc582202473ca7a5d78d1f9c75f259aab7ab611192d5cb70a7b3e5e5c325\"\n       }\n     }\n   };\n   if(Object.hasOwn(ref,'bytes')||owner?.path!==spec.owner.path||!Object.hasOwn(spec.references,pointer))return ref;\n   const expected=spec.references[pointer];\n   need(Object.keys(ref).length===4&&stable(ref)===stable(expected),'DECLARED_FOUR_FIELD_REF');\n   const ownerRef={commit:owner.commit,...spec.owner};\n   const ownerBytes=immutable(ownerRef);need(json(ownerBytes).schemaVersion===spec.schemaVersion,'DECLARED_FOUR_FIELD_SCHEMA');\n   ensureCommit(ref.commit);\n   const entry=git(root,['ls-tree','-z',ref.commit,'--',ref.path]).toString();\n   const match=/^(100644|100755) blob ([a-f0-9]{40})\\t([^\\0]+)\\0$/.exec(entry);\n   need(match&&match[2]===ref.gitBlobSha1&&match[3]===ref.path,'DECLARED_FOUR_FIELD_TREE');\n   const size=Number(git(root,['cat-file','-s',ref.gitBlobSha1]).toString().trim());\n   need(Number.isSafeInteger(size)&&size>0&&size<=128*1024*1024,'DECLARED_FOUR_FIELD_SIZE');\n   const authenticated={...expected,bytes:size};pin(object(ref.gitBlobSha1),authenticated,'DECLARED_FOUR_FIELD');\n   const observed={owner:ownerRef,pointer,reference:authenticated};\n   report.authenticatedFourFieldReferences??=[];\n   if(!report.authenticatedFourFieldReferences.some(row=>row.owner.commit===ownerRef.commit&&row.pointer===pointer))\n    report.authenticatedFourFieldReferences.push(observed);\n   return authenticated;\n  }\n  function hydrateDocument(value,owner=null){\n   for(const ref of refsIn(value,[],'$',owner,declaredFourFieldRef))hydrateRef(ref);"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
+import examSourceReader from '../exam-source-reader.js';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {gitBlobSha} from './archive-stage-validator-compat-v1.mjs';
@@ -9,7 +10,7 @@ export const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
 export function readExam(file) {
   const bytes=fs.readFileSync(file),box={window:{}};
   vm.runInNewContext(bytes.toString('utf8'),box,{timeout:5000,filename:file});
-  const questions=box.window.questionBank||box.window.questions;
+  const questions=examSourceReader.readQuestionArray(box.window);
   if(!Array.isArray(questions)||!questions.length)throw Error('QUESTION_BANK_REQUIRED');
   return {bytes,questions,rawSha256:sha256(bytes),rawBufferGitBlobSha1:gitBlobSha(bytes)};
 }

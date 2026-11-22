@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-895bd21e4901-6a923e2d",
+  "requestSha256": "6b93d575eccee445638a23da9addfd98fdfaf1d6c06e5c75f064eb78219b74fc",
+  "examUid": "24_향림중_2학기_기말_중2_기출",
+  "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+  "sourceBlobSha1": "2e5c6dfa390ff329c4982e3dfc5b3df3429c2b05",
+  "sourceRawSha256": "12fe8f1e2f4970a8c9cae76b0f558e80b92cda4258c94d300afe30c6e638fd23",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-r-20261120",
+      "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-895bd21e4901-6a923e2d.type-ledger.json",
+        "sha256": "bb7bce474d9ed2280655d7f7675e4e5b0f280178da8630ef377759eab5337f3e"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_bdda93986d1b0de288ccd4b929cf4c17b0cc1285b10e74b7e7e4f6e067bff19f",
+      "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+      "sourceOrdinal": 16,
+      "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+      "templateKey": "TPL_M2_BASIC_COUNTING_CASE_SPLIT_SUM_PRODUCT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-895bd21e4901-6a923e2d",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "A에서 C로 직접 가는 3가지와 B를 거치는 2×2가지를 합해 7가지를 얻는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "7cefeb5e57dd4d82adccdbb271a3220256a25619ccc47b1d17b299abbe6f1ac5",
+        "judgedContentFingerprint": "b82d970b1095940fa37f9a055b85c60a46c70f8fa5da4b4f9493dd267e50d16c",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "615d83bdd380b8b9e2c1e530d26c3da6a28537e78d6bfc84dfff62a9961b2092",
+        "resultSource": {
+          "branch": "data/type-judgment-r-20261120",
+          "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-895bd21e4901-6a923e2d.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+          "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}

@@ -2,6 +2,7 @@ const { test } = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const core = require("../archive/archive2-core.js");
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 const projectionPolicy = JSON.parse(
   fs.readFileSync("archive/data/archive2-canonical-projection-policy.json", "utf8"),
 );
@@ -395,7 +396,7 @@ test("stale URL filter state is reconciled after parsing", () => {
 });
 
 test("workspace readUrl and popstate paths reconcile parsed Finder state", () => {
-  const workspace = fs.readFileSync("archive/archive2-workspace.js", "utf8");
+  const workspace = readWorkspace();
   assert.match(
     workspace,
     /Object\.assign\(state\.find,\s*reconcileFinderFilters\(state\.find\)\)/s,

@@ -2,7 +2,7 @@
 // The already observed SVG7 problem surface has its own sealed capture and
 // original root observation. This does not approve a vector or metadata row.
 const crypto = require('node:crypto');
-const {verifySvg7DerivedContinuity} = require('./existing-registered-vector-svg7-derived-continuity.cjs');
+const {verifySvg7DerivedContinuity,projectTableRows} = require('./existing-registered-vector-svg7-derived-continuity.cjs');
 const SCHEMA = 'archive-m2s1-svg7-problem-ui-preview-v1';
 const COMMIT = '45e976a5981701bef9c755d50c11636116ee788f';
 const PUBLIC = 'b9bd24223d4e523db6577682c1a30e74c11d25db';
@@ -74,7 +74,11 @@ function closedRoles(value,row,technical,manifest,readRef){
     readRef(b.beforeSourceRef);readRef(b.oldAssetRef);
   }
 }
+// Render engine files may change after the capture; only their captured Git bytes are authenticated (user decision 2026-11-18).
+const isRenderEngineFile=p=>p==='archive/engine.html'||p==='archive/mixed_engine.html'||p==='apmath/wrong_print_engine.html'||/^archive\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p)||/^archive\/(?:css|js)\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p)||/^apmath\/(?:css|js)\/student-navigation\.(?:css|js)$/.test(p);
 function verifySvg7Ui({technical,visual,technicalRef,readRef,readLiveRef,readCurrentFile,questionUid,sourceOrdinal,surface,sourceRef,assetRefs,validateCapture}){
+  if(technical?.schemaVersion===CURRENT_SCHEMA)return verifyCurrentSvg7Ui({technical,visual,technicalRef,readRef,readLiveRef,readCurrentFile,
+    questionUid,sourceOrdinal,surface,sourceRef,assetRefs,validateCapture});
   need(surface==='PROBLEM'&&ITEMS.some(x=>x[1]===questionUid&&x[2]===sourceOrdinal),'EXACT_SEVEN_PROBLEMS');
   need(typeof readRef==='function'&&typeof readLiveRef==='function'&&typeof validateCapture==='function','READERS_REQUIRED');
   need(eq(technicalRef,TECHNICAL_REF),'PUBLIC_TECHNICAL_REF');
@@ -106,7 +110,7 @@ function verifySvg7Ui({technical,visual,technicalRef,readRef,readLiveRef,readCur
     need(ref.commit===COMMIT,'SERVED_COMMIT');readRef(ref);
     if(!dynamic.has(ref.path)){
       if(derivedContinuity&&ref.path===derivedContinuity.indexPath)derivedContinuity.assertCapturedIndexRef(ref);
-      else readLiveRef(ref);
+      else if(!isRenderEngineFile(ref.path))readLiveRef(ref);
     }
   }
   const fontIds=new Set();
@@ -523,5 +527,233 @@ function verify({claim:input,questionUid,sourceOrdinal,boundState,nativeSourceRe
 }
 return Object.freeze({OPTION,SCHEMA,claim,state,verify});
 })();
-module.exports={SCHEMA,TECHNICAL_REF,VISUAL_REF,MANIFEST_REF,verifySvg7Ui,embeddedChoiceContinuity,inlineFigureContinuity};
+
+// A separately named current capture binding. The historical SVG7 contract and
+// both original source-continuity lanes above remain unchanged. This path
+// transports display evidence only; the caller still verifies prior REGISTERED
+// vectors, native authority, static review, selected metadata and source bytes.
+const CURRENT_SCHEMA = 'archive-m2s1-svg7-current-ui-binding-v1';
+const CURRENT_CAPTURE = 'a57c51f633c937da15d1fac766631b413e02bd55';
+const CURRENT_PUBLIC = '30d0245666fc6d85c73f2ef25fe6796560c64843';
+const CURRENT_PREFIX = 'docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/';
+const CURRENT_TECHNICAL_REF = Object.freeze({"commit":"0b7ec9534ca10422fd87fad65dc967a1b8a15ac8","path":"docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/technical-ui14-current-v1.json","gitBlobSha1":"d3392daf54a0c6ebe338f3fd6f575e4feb6d3cf6","sha256":"79ea9e7c8d3060c96177945903b262c099e1f945753aa74a711b7912085e6159","bytes":74569});
+const CURRENT_VISUAL_REF = Object.freeze({"commit":"d8c5d6c3a81b20838ec8dc1102120dc7ddac0c28","path":"docs/operations/m2s1-svg7-current-ui-26fc-20261117/run-44011127748/visual-ui14-current-binding-v1.json","gitBlobSha1":"a82aa350f2913d86ea02810e9261bc05e3abbfda","sha256":"8fae8365f9fb93ce347161f9b9500ba31fec800a2ed1d50d0b24bd5c6840eaad","bytes":20912});
+const CURRENT_DATA_PATHS = Object.freeze({
+  metadata:'archive/data/question_metadata.json',
+  identity:'archive/data/question_identity_map.json',
+  svg:'archive/data/svg-accessibility-index.js'
+});
+const {parseIndex:parseCurrentSvgIndex,selectEntries:selectCurrentSvgEntries} = require('./existing-vector-svg-index-continuity.cjs');
+const currentTableCache = new WeakMap();
+function currentPinned(read,ref){
+  exact(ref,REF_KEYS,'CURRENT_REF_KEYS');
+  need(/^[a-f0-9]{40}$/.test(ref.commit||'')&&/^[a-f0-9]{40}$/.test(ref.gitBlobSha1||'')&&
+    /^[a-f0-9]{64}$/.test(ref.sha256||'')&&Number.isSafeInteger(ref.bytes)&&ref.bytes>0,'CURRENT_REF_PIN');
+  const raw=read(ref);
+  need(Buffer.isBuffer(raw)&&raw.length===ref.bytes&&sha(raw)===ref.sha256&&blob(raw)===ref.gitBlobSha1,'CURRENT_REF_BYTES');
+  return raw;
+}
+function currentProject(raw,schema){
+  need(Buffer.isBuffer(raw)&&raw.length>0,'CURRENT_TABLE_BYTES');
+  const digest=sha(raw),cached=currentTableCache.get(raw);
+  if(cached&&cached.digest===digest&&cached.schema===schema)return cached;
+  const projected=projectTableRows(raw,schema);
+  need(projected.globalRecordCount>=75,'CURRENT_GLOBAL_TABLE_COUNT');
+  const result={...projected,schema,digest,wholeBankSha256:sha(stable(projected.rows))};
+  currentTableCache.set(raw,result);
+  return result;
+}
+function currentTablesAndSvg(raw,manifest,readRef,readCurrentFile){
+  // Only these generated data paths may differ from their captured whole file.
+  // projectTableRows preserves all 75 rows and counts their UIDs globally.
+  const tableBindings=[];
+  for(const [path,schema] of [[CURRENT_DATA_PATHS.metadata,'archive-question-metadata-v1'],
+    [CURRENT_DATA_PATHS.identity,'question-identity-map-v1']]){
+    const ref=path===CURRENT_DATA_PATHS.identity?raw.identityRef:one(raw.servedFiles,r=>r.path===path,'CURRENT_METADATA_REF');
+    need(ref.path===path&&ref.commit===CURRENT_CAPTURE,'CURRENT_TABLE_REF');
+    const before=currentProject(currentPinned(readRef,ref),schema);
+    const after=currentProject(readCurrentFile(path),schema);
+    need(eq(before.rows,after.rows)&&before.wholeBankSha256===after.wholeBankSha256,'CURRENT_WHOLE_75_TABLE_ROWS_CHANGED');
+    for(const item of manifest.items){
+      const row=one(after.rows,r=>r.questionUid===item.questionUid,'CURRENT_SELECTED_ROW');
+      need(row.sourceOrdinal===item.sourceOrdinal&&row.sourceArchiveFile===item.sourcePath.replace(/^archive\/exams\//,''),'CURRENT_SELECTED_ROW_SCOPE');
+      if(path===CURRENT_DATA_PATHS.identity)need(sha(stable(row))===item.identityRowSha256,'CURRENT_SELECTED_IDENTITY_HASH');
+    }
+    tableBindings.push({path,capturedRawSha256:before.digest,currentRawSha256:after.digest,wholeBankSha256:after.wholeBankSha256});
+  }
+  const indexRef=one(raw.servedFiles,r=>r.path===CURRENT_DATA_PATHS.svg,'CURRENT_SVG_REF');
+  need(indexRef.commit===CURRENT_CAPTURE,'CURRENT_SVG_COMMIT');
+  const capturedBytes=currentPinned(readRef,indexRef),currentBytes=readCurrentFile(CURRENT_DATA_PATHS.svg);
+  need(Buffer.isBuffer(currentBytes)&&currentBytes.length>0,'CURRENT_SVG_BYTES');
+  const captured=parseCurrentSvgIndex(capturedBytes),current=parseCurrentSvgIndex(currentBytes);
+  const assets=raw.items.map(item=>item.assetRef);
+  const before=selectCurrentSvgEntries(captured,assets),after=selectCurrentSvgEntries(current,assets);
+  need(eq(before,after),'CURRENT_CONSUMED_SVG_RECORDS_CHANGED');
+  return {wholeMetadataRows:75,wholeIdentityRows:75,selectedIdentityRows:7,tableBindings,
+    svgPath:CURRENT_DATA_PATHS.svg,currentSvgSha256:sha(currentBytes),consumedSvgRecordCount:after.length};
+}
+function verifyCurrentSvg7Ui({technical,visual,technicalRef,readRef,readLiveRef,readCurrentFile,
+  questionUid,sourceOrdinal,surface,sourceRef,assetRefs,validateCapture}){
+  need(surface==='PROBLEM'&&ITEMS.some(row=>row[1]===questionUid&&row[2]===sourceOrdinal),'CURRENT_EXACT_SEVEN_PROBLEMS');
+  need(typeof readRef==='function'&&typeof readLiveRef==='function'&&typeof readCurrentFile==='function'&&
+    typeof validateCapture==='function','CURRENT_READERS_REQUIRED');
+  need(eq(technicalRef,CURRENT_TECHNICAL_REF),'CURRENT_PUBLIC_TECHNICAL_REF');
+  const t=document(readRef,CURRENT_TECHNICAL_REF,technical),v=document(readRef,CURRENT_VISUAL_REF,visual);
+  need(t.schemaVersion===CURRENT_SCHEMA&&t.checkoutCommit===CURRENT_CAPTURE&&
+    t.status==='TECHNICAL_PASS_VISUAL_REVIEW_PENDING'&&t.executionOwner==='GITHUB_ACTIONS_CHROMIUM_EXACT_PR_HEAD'&&
+    t.sourceOverlayCount===0&&t.domWrites===0&&t.cssWrites===0&&t.newMathQa===0&&t.newSemanticApproval===0&&t.newFourSlotVector===0&&
+    t.expectedLogicalCases===14&&t.completedLogicalCases===14&&t.screenshotArtifactCount===16&&
+    t.items.length===7&&t.results.length===14&&t.screenshotArtifacts.length===16&&t.screenshotFileRefs.length===16,'CURRENT_TYPED_SCOPE');
+  need(t.rawTechnicalRef.commit===CURRENT_PUBLIC&&t.rawTechnicalRef.path===CURRENT_PREFIX+'technical-proof.json'&&
+    t.rawTechnicalRef.gitBlobSha1==='c18655b38cb8adef217781e6b6bbf65ba8570758','CURRENT_RAW_REF');
+  const raw=document(readRef,t.rawTechnicalRef);
+  need(raw.schemaVersion==='archive-m2s1-svg7-problem-github-ui-raw-v1'&&raw.checkoutCommit===CURRENT_CAPTURE&&
+    raw.executionOwner===t.executionOwner&&eq(raw.execution,t.execution)&&
+    raw.execution.provider==='GITHUB_ACTIONS'&&raw.execution.eventName==='pull_request'&&
+    raw.execution.repository==='icefoxtail/AP------'&&raw.execution.headSha===CURRENT_CAPTURE&&
+    raw.execution.runId==='44011127748'&&raw.execution.runAttempt===1&&raw.execution.pullRequest===2330&&
+    raw.execution.workflow==='M2S1 SVG7 Problem Chrome'&&raw.execution.job==='m2s1-svg7-problem'&&
+    raw.status==='TECHNICAL_PASS_VISUAL_REVIEW_PENDING'&&raw.mode==='exam'&&raw.problemOnlyScreenshots===true&&
+    raw.sourceOverlay===false&&raw.sourceOverlayCount===0&&raw.sourceWrites===0&&raw.solutionsOpened===false&&
+    raw.newFullMathematicalQa===false&&raw.newMetadataApprovals===0&&raw.newDifficultyJudgments===0&&
+    raw.newReviewPassCount===0&&raw.newFourSlotApprovals===0&&raw.expectedLogicalCases===14&&raw.completedLogicalCases===14&&
+    raw.items.length===7&&raw.results.length===14&&raw.screenshotArtifactCount===16&&
+    eq(raw.screenshotArtifacts,t.screenshotArtifacts)&&raw.failures.length===0&&raw.externalFontResources.length===0,'CURRENT_RAW_SCOPE');
+  const receipt=document(readRef,t.artifactReceiptRef),transport=document(readRef,t.transportManifestRef);
+  const rootProof=document(readRef,t.rootByteEquivalenceRef);
+  need(receipt.head===CURRENT_CAPTURE&&String(receipt.runId)===raw.execution.runId&&receipt.jobId===133798119021&&
+    receipt.files===17&&receipt.logicalCases===14&&receipt.originalPngTiles===16&&
+    receipt.rawTechnical.gitBlob===t.rawTechnicalRef.gitBlobSha1&&receipt.rawTechnical.sha256===t.rawTechnicalRef.sha256&&
+    receipt.downloadedAndUnpacked===false&&transport.technicalJsonSha256===t.rawTechnicalRef.sha256&&
+    transport.logicalCases===14&&transport.pngFiles===16&&transport.files.length===17&&
+    rootProof.execution.head===CURRENT_CAPTURE&&rootProof.execution.conclusion==='success'&&
+    rootProof.currentTechnical.gitBlob===t.rawTechnicalRef.gitBlobSha1&&rootProof.currentTechnical.sha256===t.rawTechnicalRef.sha256,
+    'CURRENT_ACTUAL_RUN_TRANSPORT');
+  need(v.schemaVersion==='archive-m2s1-svg7-current-visual-binding-v1'&&v.decision==='ACCEPT_DISPLAY_CONTINUITY_ONLY'&&
+    eq(v.technicalRef,CURRENT_TECHNICAL_REF)&&eq(v.rawTechnicalRef,t.rawTechnicalRef)&&
+    eq(v.rootByteEquivalenceRef,t.rootByteEquivalenceRef)&&v.checkoutCommit===CURRENT_CAPTURE&&v.runId===raw.execution.runId&&
+    v.logicalCases===14&&v.originalPngTiles===16&&v.newMathQa===0&&v.newSemanticApproval===0&&v.newFourSlotVector===0&&
+    v.currentDirectVisualInspection===false&&v.currentImagesOpened===0&&v.currentImagesEdited===0&&v.priorVisualBytesModified===false,
+    'CURRENT_VISUAL_SCOPE');
+  const prior=document(readRef,v.priorVisualRef),priorTyped=document(readRef,v.priorTypedTechnicalRef);
+  const independent=document(readRef,v.independentEquivalenceRef);
+  need(prior.schemaVersion==='archive-independent-four-slot-display-ui-review-v1'&&
+    prior.decision==='ACCEPT_DISPLAY_CONTINUITY_ONLY'&&eq(prior.technicalRef,v.priorTypedTechnicalRef)&&
+    prior.newMathQa===0&&prior.newSemanticApproval===0&&prior.newFourSlotVector===0&&
+    eq(prior.records,v.records)&&prior.records.length===14&&priorTyped.results.length===14&&
+    independent.decision==='ACCEPT_CURRENT_CAPTURE_DISPLAY_CONTINUITY_BY_EXACT_PRIOR_OBSERVATION_REUSE'&&
+    independent.currentExecution.headSha===CURRENT_CAPTURE&&independent.currentExecution.runId===raw.execution.runId&&
+    independent.independentByteVerification.currentTechnicalBytesExact===true&&
+    independent.independentByteVerification.previousPublishedPngFilesExact===16&&
+    independent.independentCaseVerification.cases===14&&independent.independentCaseVerification.overallFailures===0&&
+    independent.boundaries.newMathQa===0&&independent.boundaries.newSemanticApproval===0&&independent.boundaries.newFourSlotVector===0&&
+    eq(v.reuseScope.additionalLegacyAuthorityHoldsPreserved,['E045-Q15','E045-Q24'])&&
+    v.reuseScope.newRegistrationOrApprovalGranted===false,'CURRENT_PRIOR_OBSERVATION_REUSE');
+  const manifest=document(readRef,raw.manifestRef);
+  need(manifest.schemaVersion==='archive-m2s1-svg7-problem-ui-manifest-v1'&&
+    manifest.scope==='M2S1_SVG7_EXISTING_SOURCE_REPAIR_DISPLAY_ONLY'&&manifest.expectedCases===14&&
+    manifest.selectedQuestionCount===7&&manifest.sourceQuestionCount===75&&manifest.outsideQuestionCount===68&&
+    manifest.sourceOverlay===false&&manifest.sourceWrites===0&&manifest.newMathQa===0&&manifest.newMetadataApprovals===0&&
+    manifest.newDifficultyJudgments===0&&manifest.newFourSlotApprovals===0&&manifest.items.length===7&&
+    eq(manifest.viewports,VIEWPORTS),'CURRENT_MANIFEST_SCOPE');
+  // Every actual producer/runtime/font/asset stays both immutable and live exact.
+  // A source-only checkout-continuity claim does not replace this validation.
+  for(const key of ['manifestRef','checkerRef','captureHelperRef','surfaceHelperRef','scopedSurfaceHelperRef','fontLicenseRef']){
+    need(raw[key].commit===CURRENT_CAPTURE,'CURRENT_CHECKOUT_REF');
+    currentPinned(readRef,raw[key]);currentPinned(readLiveRef,raw[key]);
+  }
+  const generated=new Set(Object.values(CURRENT_DATA_PATHS));
+  need(raw.servedFiles.length===99&&new Set(raw.servedFiles.map(ref=>ref.path)).size===99,'CURRENT_SERVED_INVENTORY');
+  for(const ref of raw.servedFiles){
+    need(ref.commit===CURRENT_CAPTURE,'CURRENT_SERVED_COMMIT');
+    currentPinned(readRef,ref);
+    if(!generated.has(ref.path)&&!isRenderEngineFile(ref.path))currentPinned(readLiveRef,ref);
+  }
+  need(raw.mirroredAssets.length===22&&new Set(raw.mirroredAssets.map(ref=>ref.path)).size===22,'CURRENT_MIRRORED_INVENTORY');
+  for(const ref of raw.mirroredAssets){
+    need(ref.commit===CURRENT_CAPTURE&&ref.path.startsWith('archive/assets/'),'CURRENT_MIRRORED_REF');
+    currentPinned(readRef,ref);currentPinned(readLiveRef,ref);
+  }
+  const fonts=new Map();
+  need(raw.studentFontResources.length===37,'CURRENT_FONT_COUNT');
+  for(const font of raw.studentFontResources){
+    need(font.commit===CURRENT_CAPTURE&&font.status===200&&['STYLESHEET','FONT'].includes(font.kind)&&
+      /^[a-f0-9]{64}$/.test(font.resourceId||'')&&!fonts.has(font.resourceId),'CURRENT_FONT_REF');
+    fonts.set(font.resourceId,font);currentPinned(readRef,refOnly(font));currentPinned(readLiveRef,refOnly(font));
+  }
+  need(new Set(raw.studentFontResources.map(font=>font.path)).size===37,'CURRENT_FONT_PATH_DUPLICATE');
+  for(const item of ITEMS){
+    const observed=one(raw.items,row=>row.questionUid===item[1]&&row.sourceOrdinal===item[2],'CURRENT_ITEM');
+    const declared=one(manifest.items,row=>row.questionUid===item[1]&&row.sourceOrdinal===item[2],'CURRENT_DECLARED_ITEM');
+    const typed=one(t.items,row=>row.questionUid===item[1]&&row.sourceOrdinal===item[2],'CURRENT_TYPED_ITEM');
+    need(observed.key===item[0]&&declared.key===item[0]&&declared.expectedBankCount===item[3]&&
+      eq(typed,{...observed,expectedBankCount:declared.expectedBankCount,identityRowSha256:declared.identityRowSha256})&&
+      observed.sourceRef.commit===CURRENT_CAPTURE&&observed.assetRef.commit===CURRENT_CAPTURE&&
+      observed.sourceRef.path===declared.sourcePath&&observed.sourceRef.gitBlobSha1===declared.sourceGitBlobSha1&&
+      observed.sourceRef.sha256===declared.sourceSha256&&observed.sourceRef.bytes===declared.sourceBytes&&
+      observed.assetRef.path===declared.assetPath&&observed.assetRef.gitBlobSha1===declared.assetGitBlobSha1&&
+      observed.assetRef.sha256===declared.assetSha256&&observed.assetRef.bytes===declared.assetBytes&&
+      ['questionSha256','problemPayloadSha256','presentationSha256'].every(key=>observed[key]===declared[key]),'CURRENT_ITEM_PINS');
+    currentPinned(readRef,observed.sourceRef);currentPinned(readLiveRef,observed.sourceRef);
+    currentPinned(readRef,observed.assetRef);currentPinned(readLiveRef,observed.assetRef);
+  }
+  const data=currentTablesAndSvg(raw,manifest,readRef,readCurrentFile);
+  const screenshotRefs=[],seenCases=new Set();
+  for(const item of ITEMS)for(const viewport of VIEWPORTS){
+    const row=one(raw.results,r=>r.questionUid===item[1]&&r.sourceOrdinal===item[2]&&r.viewport.name===viewport.name,'CURRENT_RAW_CASE');
+    const typed=one(t.results,r=>r.questionUid===item[1]&&r.sourceOrdinal===item[2]&&r.viewport.name===viewport.name,'CURRENT_TYPED_CASE');
+    const observed=one(raw.items,r=>r.questionUid===item[1],'CURRENT_CASE_ITEM'),state=row.technical,font=state.fontReadiness;
+    const ids=state.fontResourceIds;
+    need(Array.isArray(ids)&&ids.length>0&&new Set(ids).size===ids.length&&ids.every(id=>fonts.has(id)),'CURRENT_CASE_FONT_IDS');
+    const selectedFonts=ids.map(id=>fonts.get(id)).sort((a,b)=>a.resourceId.localeCompare(b.resourceId));
+    const expected={key:row.key,questionUid:row.questionUid,sourceOrdinal:row.sourceOrdinal,surface:'PROBLEM',mode:'exam',
+      viewport:row.viewport,sourceRef:row.sourceRef,assetRefs:row.assetRefs,status:row.status,
+      fonts:{ready:true,expectedFamilyLoaded:true,responseInventorySha256:sha(stable(selectedFonts))},
+      capture:row.capture,screenshots:row.screenshots};
+    need(eq(typed,expected)&&row.key===item[0]&&row.status==='PASS'&&row.visualReview==='PENDING'&&
+      row.surface==='PROBLEM'&&row.mode==='exam'&&eq(row.viewport,viewport)&&eq(row.sourceRef,observed.sourceRef)&&
+      eq(row.assetRef,observed.assetRef)&&eq(row.assetRefs,[observed.assetRef]),'CURRENT_CASE_BINDING');
+    need(state.mode==='exam'&&state.questions===item[3]&&state.readiness==='RENDER_READY'&&state.imagesComplete===true&&
+      state.mathErrors===0&&state.unrenderedMath===0&&state.mathJaxSource==='local'&&state.solutionNodes===0&&
+      font.status==='loaded'&&font.family==='Nanum Myeongjo'&&eq(font.weights.map(weight=>weight.weight),[400,700,800])&&
+      font.weights.every(weight=>weight.loadedFaces>0&&weight.allLoaded===true&&weight.checked===true)&&
+      row.geometry.imageInsideQuestion===true&&row.geometry.naturalWidth>0&&row.geometry.naturalHeight>0&&
+      [row.pageErrors,row.requestFailures,row.externalRequests].every(list=>Array.isArray(list)&&list.length===0),'CURRENT_CASE_READINESS');
+    const priorRow=one(prior.records,r=>r.questionUid===item[1]&&r.sourceOrdinal===item[2]&&r.viewport.name===viewport.name,'CURRENT_PRIOR_CASE');
+    const oldTyped=one(priorTyped.results,r=>r.questionUid===item[1]&&r.sourceOrdinal===item[2]&&r.viewport.name===viewport.name,'CURRENT_PRIOR_TYPED_CASE');
+    const independentCase=one(independent.independentCaseVerification.caseChecks,r=>r.questionUid===item[1]&&
+      r.sourceOrdinal===item[2]&&r.viewport.name===viewport.name,'CURRENT_INDEPENDENT_CASE');
+    need(priorRow.surface==='PROBLEM'&&eq(priorRow.viewport,viewport)&&priorRow.decision==='ACCEPT_DISPLAY_CONTINUITY_ONLY'&&
+      priorRow.captureSha256===sha(stable(row.capture))&&eq(oldTyped.capture,row.capture)&&
+      eq(priorRow.screenshots.map(({decision,...shot})=>shot),row.screenshots)&&
+      priorRow.screenshots.every(shot=>shot.decision==='ACCEPT_DISPLAY_CONTINUITY_ONLY')&&
+      independentCase.captureSha256===sha(stable(row.capture))&&independentCase.failures.length===0,'CURRENT_PRIOR_CASE_BYTES');
+    validateCapture(row.capture,row.screenshots,viewport,{row:typed,checkoutCommit:CURRENT_CAPTURE,readRef});
+    const key=row.questionUid+':'+viewport.name;need(!seenCases.has(key),'CURRENT_CASE_DUPLICATE');seenCases.add(key);
+    screenshotRefs.push(...row.screenshots.map(({tileIndex,...ref})=>ref));
+  }
+  const sorted=list=>list.slice().sort((a,b)=>a.path.localeCompare(b.path,'en'));
+  need(seenCases.size===14&&screenshotRefs.length===16&&new Set(screenshotRefs.map(ref=>ref.path)).size===16&&
+    eq(sorted(screenshotRefs),sorted(t.screenshotArtifacts))&&eq(v.originalScreenshotRefs,t.screenshotFileRefs),'CURRENT_TILE_INVENTORY');
+  const seenPng=new Set();
+  for(const entry of t.screenshotFileRefs){
+    exact(entry,['artifactPath','ref'],'CURRENT_PNG_REF_KEYS');
+    const original=one(t.screenshotArtifacts,row=>row.path===entry.artifactPath,'CURRENT_PNG_ARTIFACT');
+    const independentPng=one(independent.independentByteVerification.results,row=>row.path===entry.artifactPath,'CURRENT_PNG_INDEPENDENT');
+    need(/^[A-Za-z0-9_-]+\.png$/.test(entry.artifactPath)&&!seenPng.has(entry.artifactPath)&&
+      entry.ref.commit===CURRENT_PUBLIC&&entry.ref.path===CURRENT_PREFIX+entry.artifactPath&&
+      entry.ref.sha256===original.sha256&&entry.ref.bytes===original.bytes&&
+      independentPng.gitBlobSha1===entry.ref.gitBlobSha1&&independentPng.sha256===entry.ref.sha256&&
+      independentPng.bytes===entry.ref.bytes&&independentPng.previousCapturePngBytesSameSha256AndGit===true,'CURRENT_ORIGINAL_PNG');
+    seenPng.add(entry.artifactPath);currentPinned(readRef,entry.ref);
+  }
+  const selected=t.results.filter(row=>row.questionUid===questionUid&&row.sourceOrdinal===sourceOrdinal);
+  need(selected.length===2&&selected.every(row=>eq(row.sourceRef,sourceRef)&&eq(row.assetRefs,assetRefs)),'CURRENT_SELECTED_INPUT_BINDING');
+  return {logicalCases:2,originalTiles:selected.reduce((count,row)=>count+row.screenshots.length,0),currentCaptureBinding:{
+    schemaVersion:CURRENT_SCHEMA,checkoutCommit:CURRENT_CAPTURE,rawTechnicalSha256:t.rawTechnicalRef.sha256,
+    displayObservation:'EXACT_PRIOR_ORIGINAL_BYTES_REUSED',newMathQa:0,newSemanticApproval:0,newFourSlotVector:0,...data}};
+}
+
+module.exports={SCHEMA,TECHNICAL_REF,VISUAL_REF,MANIFEST_REF,verifySvg7Ui,embeddedChoiceContinuity,inlineFigureContinuity,
+  CURRENT_SCHEMA,CURRENT_TECHNICAL_REF,CURRENT_VISUAL_REF};
 

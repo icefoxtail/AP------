@@ -112,7 +112,11 @@ window.examData = {
       ],
       "answer": "",
       "solution": "",
-      "score": 3.0
+      "score": 3.0,
+      "solutionImage": "assets/images/17_매산중_1학기_중간_중1_수학/q8-solution.svg",
+      "solutionImageAlt": "해설 그림: 수직선 위에 같은 간격으로 다섯 점 A, B, C, D, E가 있고 값은 차례로 −4, −2, 0, 2, 4이다.",
+      "solutionImageCaption": "점 B가 −2, 점 E가 4이므로 B에서 E까지 6이고 그 사이에 간격이 3개이다. 간격은 모두 같으므로 한 간격은 6÷3=2이다. 따라서 점 C는 0, 점 D는 2이고 점 A는 B의 왼쪽으로 2만큼 간 −4이다. 그러므로 A=−4, D=2이고 답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 9,
@@ -182,11 +186,15 @@ window.examData = {
       ],
       "answer": "",
       "solution": "",
-      "score": 4.0
+      "score": 4.0,
+      "solutionImage": "assets/images/17_매산중_1학기_중간_중1_수학/q13-solution.svg",
+      "solutionImageAlt": "해설 그림: 수직선 위에 점 P는 −3, 점 Q는 −5에 있고 Q는 P의 왼쪽으로 2만큼 떨어져 있다.",
+      "solutionImageCaption": "수직선에서 왼쪽은 수가 작아지는 방향이다. −3이 나타내는 점 P에서 왼쪽으로 2만큼 이동하면 −3−2=−5이므로 점 Q가 −5를 나타낸다. 따라서 답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 14,
-      "question": "오른쪽 그림에서 각 줄에 놓인 네 정수의 합이 모두 같을 때 $A-B$의 값을 구하면? (5점)<br><img src=\"assets/images/17_매산중_1학기_중간_중1_수학/17_매산중_1학기_중간_중1_수학_q14_img01.png\">",
+      "question": "오른쪽 그림에서 각 줄에 놓인 네 정수의 합이 모두 같을 때 $A-B$의 값을 구하면? (5점)<br><img src=\"assets/images/17_매산중_1학기_중간_중1_수학/q14-problem-visual-v2.svg\" alt=\"삼각형의 세 변을 따라 원 안에 수가 놓여 있다. 위 꼭짓점은 3, 왼쪽 변에는 3, A, −7, 5, 오른쪽 변에는 3, B, 1, −4, 아래 변에는 5, 2, −6, −4가 있다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">",
       "choices": [
         "$7$",
         "$1$",
@@ -194,8 +202,8 @@ window.examData = {
         "$-1$",
         "$-7$"
       ],
-      "answer": "",
-      "solution": "",
+      "answer": "④",
+      "solution": "아래 변의 네 수의 합은 $5+2+(-6)+(-4)=-3$이므로 각 줄의 합은 $-3$이다.\n왼쪽 줄: $3+A+(-7)+5=-3$에서 $A=-4$\n오른쪽 줄: $3+B+1+(-4)=-3$에서 $B=-3$\n따라서 $A-B=-4-(-3)=-1$",
       "score": 5.0
     },
     {

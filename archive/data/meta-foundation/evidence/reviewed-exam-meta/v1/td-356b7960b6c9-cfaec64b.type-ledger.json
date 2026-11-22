@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-356b7960b6c9-cfaec64b",
+  "sourceArchiveFile": "original/high/h2/2mid/20_매산여고_1학기_기말_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_4b55f023e43d9465c597199ce70fbad50df113b5478cfdf04303bf7c3ed06621",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "step": "중복조합3H5를7C5로 바꾸고 중복순열·순열 기호를 각각 계산한다.",
+      "note": "순열·중복순열 연산이 함께 있으나 중복조합의 조합식 환원이 구별 단계이다.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_00142195303c2f134bff009857e29486be9b4e7881f0ce7f57de57e5bb9daf5e",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "step": "배반과 여사건의 정의를 적용해 합사건 확률1과 곱을 구별한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_becfd230b90881de2ed25efae0a452364ed8e7ce4b07bc7b804d6b3fc5c93e5c",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "step": "중복 허용4종3개 선택을6C3으로 바꾸어 잘못된 기호 진술을 판정한다.",
+      "note": "불가능사건과5! 진술도 결합된 기본개념 종합문항이다.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c95ebf9c36ad16bf0b1365d2402c387c6767b95890ac3d738540fc55b930f3c0",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EVENT_INDEPENDENCE",
+      "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
+      "step": "독립 조건P(A∩B)=P(A)P(B)로 유일하게 참인 진술을 확인한다.",
+      "note": "조건부확률과 경우수비의 다른 진술도 각각 검산하는 종합문항이다.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}

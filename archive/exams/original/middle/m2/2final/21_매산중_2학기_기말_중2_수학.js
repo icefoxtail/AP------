@@ -5,7 +5,6 @@ window.examData = {
   questions: [
   {
     "id": 1,
-    "layoutTag": "fullwidth",
     "score": 4,
     "question": "1. 다음 그림에서 $\\overline{BC} // \\overline{DE}$ 일 때, $x$의 값은? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q1-problem-visual-v2.svg\" alt=\"A에서 뻗은 두 사선이 서로 평행한 BC와 DE에서 잘린다. 왼쪽 위와 아래 길이는 x와 8 cm, 오른쪽은 6 cm와 12 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
@@ -41,7 +40,6 @@ window.examData = {
   },
   {
     "id": 2,
-    "layoutTag": "fullwidth",
     "score": 4,
     "question": "2. 다음 사다리꼴 ABCD에서 $\\overline{AD} // \\overline{EF} // \\overline{BC}$일 때, $\\overline{BC}$의 길이는? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q2-problem-visual-v2.svg\" alt=\"윗변 AD는 8 cm, 중간 EF는 10 cm, 아랫변은 BC이다. 왼쪽 AE는 4 cm, EB는 6 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
@@ -79,7 +77,6 @@ window.examData = {
   },
   {
     "id": 3,
-    "layoutTag": "fullwidth",
     "score": 4,
     "question": "3. 오른쪽 삼각형 ABC에서 세 변 AB, BC, AC의 중점을 각각 D, E, F라고 할 때, 삼각형 DEF의 넓이가 $12\\text{ cm}^2$일 때, 다음 중 옳지 않은 것은? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q3-problem-visual-v2.svg\" alt=\"AB의 중점 D, BC의 중점 E, AC의 중점 F를 연결했다. 각 변의 두 반쪽은 같은 눈금과 색으로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
@@ -117,7 +114,6 @@ window.examData = {
   },
   {
     "id": 4,
-    "layoutTag": "fullwidth",
     "score": 4,
     "question": "4. 오른쪽 평행사변형 ABCD에서 두 변 BC, CD의 중점을 각각 E, F라 하고 대각선 BD가 세 선분 AE, AC, AF와 만나는 점을 각각 P, O, Q이고 $\\overline{\\text{BP}}=12\\text{ cm}$일 때, $\\overline{\\text{EF}}$의 길이는? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q4-problem-visual-v2.svg\" alt=\"BC의 중점 E와 CD의 중점 F를 표시했다. 대각선 BD가 AE, AC, AF와 차례로 P, O, Q에서 만나고 BP는 12 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
@@ -156,7 +152,6 @@ window.examData = {
   },
   {
     "id": 5,
-    "layoutTag": "fullwidth",
     "score": 4,
     "question": "5. 구 모양인 축구공과 농구공은 닮음비가 $3:4$인 닮은 도형이다. 농구공의 부피가 $128\\text{ cm}^3$일 때, 축구공의 부피는? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q5-problem-visual-v2.svg\" alt=\"왼쪽은 오각형 무늬가 있는 축구공, 오른쪽은 굽은 선이 있는 농구공이다. 지름의 비 3:4를 실제 그림 크기로 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
@@ -192,7 +187,6 @@ window.examData = {
   },
   {
     "id": 6,
-    "layoutTag": "fullwidth",
     "score": 3,
     "question": "6. 오른쪽 그림과 같이 가로의 길이가 $80\\text{ cm}$, 세로의 길이가 $60\\text{ cm}$인 직사각형 모양의 대형 모니터 화면이 있다. 이 대형 모니터 화면의 대각선의 길이는? (3점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q6-problem-visual-v2.svg\" alt=\"직사각형 화면의 가로는 80 cm, 세로는 60 cm이다. 왼쪽 아래에서 오른쪽 위로 이어지는 청록색 선이 대각선이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
@@ -265,7 +259,6 @@ window.examData = {
   },
   {
     "id": 8,
-    "layoutTag": "fullwidth",
     "score": 4,
     "question": "8. 오른쪽 정사각형 ABCD에서 $a^2 + b^2 = 49$일 때, 사각형 EFGH에 대한 설명으로 옳지 않은 것은? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q8-problem-visual-v2.svg\" alt=\"정사각형 ABCD의 각 변을 a와 b 두 길이로 나눈다. 안쪽의 E, F, G, H를 서로 이었다. 길이 a는 검정, b는 청록으로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
@@ -304,7 +297,6 @@ window.examData = {
   },
   {
     "id": 9,
-    "layoutTag": "fullwidth",
     "score": 4,
     "question": "9. 오른쪽 그림에서 삼각형 $\\triangle\\text{ABE} \\equiv \\triangle\\text{ECD}$이고 세 점 B, E, C는 한 직선 위에 있다. $\\overline{\\text{AB}}=12\\text{ cm}$, $\\overline{\\text{CD}}=16\\text{ cm}$일 때, 삼각형 AED의 넓이는? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q9-problem-visual-v2.svg\" alt=\"B, E, C가 한 수평선에 있고 B와 C에서 수직으로 올린 길이는 각각 12 cm와 16 cm이다. 꼭짓점 A, E, D를 서로 이었다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
@@ -343,7 +335,6 @@ window.examData = {
   },
   {
     "id": 10,
-    "layoutTag": "fullwidth",
     "score": 4,
     "question": "10. 오른쪽 그림과 같이 $\\angle\\text{C} = \\angle\\text{D} = 90^\\circ$인 사다리꼴 ABCD에서 $\\overline{\\text{AD}}=5\\text{ cm}$, $\\overline{\\text{BC}}=8\\text{ cm}$일 때, 사다리꼴 ABCD의 둘레의 길이는? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q10-problem-visual-v2.svg\" alt=\"윗변 AD는 5 cm, 아랫변 BC는 8 cm이며 높이 CD는 4 cm이다. C와 D에서 각각 직각 표시가 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
@@ -381,7 +372,6 @@ window.examData = {
   },
   {
     "id": 11,
-    "layoutTag": "fullwidth",
     "score": 4,
     "question": "11. 오른쪽 그림과 같이 $\\angle\\text{A} = 90^\\circ$, $\\overline{\\text{BC}}=18\\text{ cm}$인 직각삼각형 ABC의 각 변을 지름으로 하는 세 반원 $P, Q, R$의 넓이의 합을 구하면? (4점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q11-problem-visual-v2.svg\" alt=\"직각삼각형 ABC의 세 변을 지름으로 하는 반원은 AB 바깥쪽 P, AC 바깥쪽 Q, BC 아래쪽 R이다. BC는 18 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
@@ -417,7 +407,6 @@ window.examData = {
   },
   {
     "id": 12,
-    "layoutTag": "fullwidth",
     "score": 5,
     "question": "12. 오른쪽 그림과 같이 가로, 세로의 길이가 각각 $13\\text{ cm}, 12\\text{ cm}$인 직사각형 모양의 종이를 접어서 점 D가 선분 BC와 만나는 점을 P라고 할 때, 삼각형 APQ의 넓이는? (5점)<br><br><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q12-problem-visual-v2.svg\" alt=\"13 cm와 12 cm인 직사각형 종이에서 D가 밑변 위 점 P로 옮겨진다. 오른쪽 변 위 Q와 A를 접는 선으로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [
@@ -748,7 +737,6 @@ window.examData = {
   },
   {
     "id": 21,
-    "layoutTag": "fullwidth",
     "score": 9,
     "question": "<p>【서답형 1】【서술형】</p><p>【수준별 1-①】 아래 그림에서 점 G는 삼각형 ABC의 무게중심이다. 삼각형 ABC의 넓이가 $60\\text{ cm}^2$일 때, 삼각형 GDC의 넓이를 구하는 풀이과정과 답을 쓰시오. (4점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q21-problem-visual-v2.svg\" alt=\"삼각형 ABC의 중선 AD, BE, CF가 G에서 만난다. D는 아래쪽 밑변의 중점이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>【수준별 1-②】 아래 그림의 $\\angle\\text{A} = 90^\\circ$인 직각삼각형 ABC에서 점 G는 삼각형 ABC의 무게중심, 점 E는 삼각형 ABD의 무게중심, 점 F는 삼각형 ADC의 무게중심이다. $\\overline{\\text{AB}}=15\\text{ cm}$, $\\overline{\\text{AC}}=8\\text{ cm}$일 때, 삼각형 AEF의 넓이를 구하는 풀이과정과 답을 쓰시오. (5점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q21-stem-2-problem-visual-v2.svg\" alt=\"A에서 직각을 이루는 AB와 AC는 각각 15 cm와 8 cm이다. 아래쪽 D의 좌우와 중앙의 세 삼각형 무게중심 E, G, F가 같은 가로선 위에 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [],
@@ -781,7 +769,6 @@ window.examData = {
   },
   {
     "id": 22,
-    "layoutTag": "fullwidth",
     "score": 9,
     "question": "<p>【서답형 2】【서술형】</p><p>【수준별 2-①】 아래 그림과 같이 직각삼각형 ABC의 세 변을 각각 한 변으로 하고 사각형 BCGF의 넓이가 $169\\text{ cm}^2$, 사각형 AIHC의 넓이가 $25\\text{ cm}^2$인 두 정사각형이 있을 때, 색칠한 부분의 정사각형 ABED의 넓이를 구하는 풀이과정과 답을 쓰시오. (4점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q22-problem-visual-v2.svg\" alt=\"빗변 BC에 붙인 정사각형의 넓이는 169 cm², AC에 붙인 것은 25 cm²이다. AB에 붙인 정사각형 ABED만 옅게 색칠했다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\"></p><p>【수준별 2-②】 아래 그림과 같은 $\\overline{\\text{OA}}=1$이고 나머지 한 변의 길이가 $1$인 직각이등변삼각형을 기준으로 하여 테오도로스 나선을 그렸을 때 $\\overline{\\text{OB}}^2$의 값을 구하는 풀이과정과 답을 쓰시오. (5점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q22-stem-2-problem-visual-v2.svg\" alt=\"OA에 길이 1인 선분을 수직으로 잇는 것부터 시작한다. 다섯 번 이어서 끝점 B를 표시했다. 바깥쪽 다섯 변의 길이는 모두 1이다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\"></p>",
     "choices": [],
@@ -811,7 +798,6 @@ window.examData = {
   },
   {
     "id": 23,
-    "layoutTag": "fullwidth",
     "score": 9,
     "question": "<p>【서답형 3】【서술형】</p><p>【수준별 3-①】 현지는 500원짜리 동전 5개, 100원짜리 동전 10개가 있다. 이 동전으로 2500원짜리 공책 한 권을 사려고 할 때, 공책값을 지불하는 경우의 수를 구하는 풀이과정과 답을 쓰시오. (4점)</p><p>【수준별 3-②】 좌표평면 위를 움직이는 점 P가 있다. 주사위를 던져서 나오는 눈의 수 $a$가 홀수이면 $x$축의 양의 방향으로 $a$만큼 나아가고, $a$가 짝수이면 $y$축의 양의 방향으로 $a$만큼 나아간다고 한다. 이러한 시행을 몇 번 반복하여 원점에서 출발한 점 P가 점 $(3, 2)$에 도달하게 되는 경우의 수를 구하는 풀이과정과 답을 쓰시오. (5점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q23-problem-visual-v2.svg\" alt=\"가로축과 세로축의 1, 2, 3이 표시된 빈 모눈이다. 점 P가 이동할 경로는 그려져 있지 않다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [],
@@ -846,7 +832,6 @@ window.examData = {
   },
   {
     "id": 24,
-    "layoutTag": "fullwidth",
     "score": 9,
     "question": "<p>【서답형 4】【서술형】</p><p>【수준별 4-①】 태양계 행성과 그 표면 온도가 하나씩 적힌 8장의 카드가 있다. 이 중에서 임의로 한 장의 카드를 뽑을 때, 표면온도가 영상인 행성의 카드가 뽑힐 확률을 구하는 풀이과정과 답을 쓰시오. (4점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q24-problem-visual-v2.svg\" alt=\"수성 +179°C, 금성 +467°C, 지구 +17°C, 화성 −80°C, 목성 −148°C, 토성 −176°C, 천왕성 −215°C, 해왕성 −214°C를 각각 원문 카드 순서로 나타냈다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p><p>【수준별 4-②】 아래 그림과 같이 한 변의 길이가 1인 정육각형의 꼭짓점 A에 점 P가 있다. 점 P는 주사위를 던질 때 나오는 눈의 수만큼의 길이를 정육각형의 변을 따라 시곗바늘이 도는 반대 방향으로 움직인다. 한 개의 주사위를 두 번 던질 때, 점 P가 꼭짓점 D에 놓일 확률을 구하는 풀이과정과 답을 쓰시오. (5점)</p><p><img src=\"assets/images/21_매산중_2학기_기말_중2_수학/q24-stem-2-problem-visual-v2.svg\" alt=\"정육각형 A, B, C, D, E, F의 각 변은 길이 1이다. 점 P는 위쪽 A에서 출발해서 반시계 방향인 B 쪽으로 움직인다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
     "choices": [],

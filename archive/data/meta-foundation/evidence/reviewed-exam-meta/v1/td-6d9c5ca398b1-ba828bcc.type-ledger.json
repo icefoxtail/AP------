@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-6d9c5ca398b1-ba828bcc",
+  "sourceArchiveFile": "textbooks/비상교육_공통수학1/비상_공통수학1_조합_중단원학습점검_고1/비상_공통수학1_조합_중단원학습점검_고1.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_2032d0bcca1496f12a61eb9727473f4dbabb8010980e9eeefb8e53f5dd49ac07",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "step": "동시에 고르므로 순서를 고려하지 않고 6C3=20,10C2=45를 계산한다.",
+      "note": "원문 해설·정답 공란: 직접 풀이. 원문 단원키는 도구에서 INVALID_CANONICAL_SCOPE.",
+      "figure": null,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c00ade19facef5bba559f2d12a0b58d720388fcedfc1768fa659c24459b80261",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "step": "전체 9C4에서 주스만 고르는 5C4와 차만 고르는 4C4를 빼면 120이다.",
+      "note": "원문 해설·정답 공란: 직접 풀이. 원문 단원키는 도구에서 INVALID_CANONICAL_SCOPE.",
+      "figure": null,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dc85ae5562a8a59024c919f775fd731196b069738b01492fdb275e35d289de0f",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "step": "종류별로 4C2×3C2가지 선택한 뒤 선택한 네 체험의 순서 4!를 곱하여 432이다.",
+      "note": "원문 해설·정답 공란: 직접 풀이. 원문 단원키는 도구에서 INVALID_CANONICAL_SCOPE.",
+      "figure": null,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_db4a5a7943fe6f7952d2d7507842a9bd120654cb0fd294b5de6654a61b155365",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "step": "높이 4를 0.5씩 나눈 여덟 단의 양의 정수 폭 합이 10이므로 경계 일곱 개를 아홉 내부 위치에서 고르는 9C7=36이다.",
+      "note": "원문 해설·정답 공란: 직접 풀이. 원문 단원키는 도구에서 INVALID_CANONICAL_SCOPE.",
+      "figure": "q04.png 여덟 높이와 전체 높이4m·폭10m 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학1.jsonl"
+    }
+  ]
+}

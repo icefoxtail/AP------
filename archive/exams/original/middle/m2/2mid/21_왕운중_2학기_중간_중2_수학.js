@@ -63,7 +63,7 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 1,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -147,7 +147,7 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 1,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -243,7 +243,7 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 2,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -289,7 +289,7 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 1,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -327,7 +327,7 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 1,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -373,7 +373,7 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 2,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -419,7 +419,7 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 2,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -508,7 +508,7 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 3,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -638,7 +638,7 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 2,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -686,7 +686,7 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 2,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -732,7 +732,7 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 2,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -819,7 +819,7 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 2,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -868,7 +868,7 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 3,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -916,7 +916,7 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 1,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "도형"
@@ -957,7 +957,7 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 2,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "도형"
@@ -998,7 +998,7 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 2,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "도형"
@@ -1041,7 +1041,7 @@ window.examData = {
     "subUnitClassificationDepth": "complete_category",
     "difficultyBucket": 3,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "도형"

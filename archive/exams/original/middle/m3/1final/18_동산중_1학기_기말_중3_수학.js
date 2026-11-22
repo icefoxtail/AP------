@@ -141,7 +141,6 @@ window.examData = {
       "solutionImageCaption": "폭을 x m라 두면 길을 제외한 넓이는 (30−x)(25−x)=594이다. x=3 또는 52에서 가능한 폭은 3 m이다. 정답은 ①이다.",
       "solutionImageAlt": "가로 30 m, 세로 25 m인 직사각형 꽃밭에 가로로 뻗은 길과 오른쪽의 세로 길이 만난다. 네 구역이 녹색 꽃밭이다. 두 길의 겹친 부분은 주황색이다.",
       "solutionImage": "assets/images/18_동산중_1학기_기말_중3_수학/q10-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "다음 그림과 같이 가로의 길이가 $30\\text{m}$이고 세로의 길이가 $25\\text{m}$인 직사각형 모양의 꽃밭에 폭이 일정한 길을 만들었다. 길을 제외한 나머지 부분의 넓이가 $594\\text{m}^2$일 때, 길의 폭을 구하면? (4점)<br><br><img src=\"assets/images/18_동산중_1학기_기말_중3_수학/q10-problem-visual-v2.svg\" alt=\"가로 30 m, 세로 25 m인 직사각형 꽃밭에 가로로 뻗은 길과 오른쪽의 세로 길이 만난다. 네 구역이 녹색 꽃밭이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -174,7 +173,6 @@ window.examData = {
       "solutionImageCaption": "색칠한 넓이는 π[12²−x²−(12−x)²]/8이다. 8π와 같게 두면 x=4 또는 8이고 AC<BC이므로 4 cm이다. 정답은 ③이다.",
       "solutionImageAlt": "A, C, B가 이 순서로 한 직선 위에 있다. AB에 접하는 큰 반원 아래에 AC와 CB를 각각 지름으로 하는 작은 반원 두 개가 있다. 그 사이 주황 부분을 칠했다. 세 반원의 지름을 12 cm, x, 12−x로 표시했다.",
       "solutionImage": "assets/images/18_동산중_1학기_기말_중3_수학/q12-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "다음 그림은 세 개의 반원으로 둘러싸인 도형이다. 옛 그리스의 구두장이가 사용한 칼과 모양이 비슷하여 '아벨로스'라고 불리우는 도형이다. $\\overline{\\mathrm{AB}}=12\\text{cm}$이고 색칠한 부분의 넓이가 $8\\pi\\text{cm}^2$일 때, $\\overline{\\mathrm{AC}}$의 길이를 구하면? (단, $\\overline{\\mathrm{AC}} < \\overline{\\mathrm{BC}}$) (4점)<br><br><img src=\"assets/images/18_동산중_1학기_기말_중3_수학/q12-problem-visual-v2.svg\" alt=\"A, C, B가 이 순서로 한 직선 위에 있다. AB에 접하는 큰 반원 아래에 AC와 CB를 각각 지름으로 하는 작은 반원 두 개가 있다. 그 사이 주황 부분을 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -311,7 +309,6 @@ window.examData = {
       "solutionImageCaption": "꼭짓점이 (2,−1)이므로 y=a(x−2)²−1이다. y절편 3에서 3=4a−1이어서 a=1이다. 식은 y=x²−4x+3이고 정답은 ③이다.",
       "solutionImageAlt": "위로 열린 파란 포물선은 세로축의 3을 지나고 꼭짓점은 (2, −1)이다. 초록 점선이 꼭짓점에서 가로축의 2와 세로축의 −1을 잇는다.",
       "solutionImage": "assets/images/18_동산중_1학기_기말_중3_수학/q20-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "다음 포물선이 나타내는 이차함수의 식을 구하면? (4점)<br><br><img src=\"assets/images/18_동산중_1학기_기말_중3_수학/q20-problem-visual-v2.svg\" alt=\"위로 열린 파란 포물선은 세로축의 3을 지나고 꼭짓점은 (2, −1)이다. 초록 점선이 꼭짓점에서 가로축의 2와 세로축의 −1을 잇는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -374,7 +371,6 @@ window.examData = {
       "solutionImageCaption": "AB:FC=BC:CD이고 AB=CD=1이다. 따라서 x(x−1)=1이다. x>1이므로 BC=(1+√5)/2이다.",
       "solutionImageAlt": "큰 직사각형 ABCD 안에 작은 직사각형 FCDE가 있다. E와 F로 이은 세로선으로 두 부분을 나눴다. 왼쪽 AB와 아래 첫 구간 BF는 각각 1이고 밑변 BC를 x로 표시했다. 작은 직사각형의 가로 FC는 x−1이다. 길이가 1인 AB, BF, CD에 같은 색과 눈금을 썼다.",
       "solutionImage": "assets/images/18_동산중_1학기_기말_중3_수학/q24-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "[서술형 2] 다음 그림에서 $\\square\\mathrm{ABCD}$와 $\\square\\mathrm{FCDE}$가 닮음일 때 $\\overline{\\mathrm{BC}}$의 길이를 구하시오. (4점)<br><br><img src=\"assets/images/18_동산중_1학기_기말_중3_수학/q24-problem-visual-v2.svg\" alt=\"큰 직사각형 ABCD 안에 작은 직사각형 FCDE가 있다. E와 F로 이은 세로선으로 두 부분을 나눴다. 왼쪽 AB와 아래 첫 구간 BF는 각각 1이고 밑변 BC를 x로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><br><br>① 풀이과정 (3점)<br><br>② 정답 (1점)",
       "choices": [],

@@ -32,7 +32,9 @@ function syntheticRef(p,b){return{commit:'a'.repeat(40),path:p,gitBlobSha1:gitBl
 function syntheticReader(files){const captured=new Map([...files].map(([p,b])=>[p,Buffer.from(b)])),current=new Map([...files].map(([p,b])=>[p,Buffer.from(b)]));return{currentFiles:current,ref(r){const b=captured.get(r.path);assert(b);assert.equal(gitBlob(b),r.gitBlobSha1);assert.equal(sha(b),r.sha256);return b;},current(p){assert(current.has(p));return current.get(p);},generated(p){assert(current.has(p));return current.get(p);}};}
 for(const p of ['archive/vendor/nanum-myeongjo/test.woff2','archive/example.css','archive/vendor/mathjax/example.js','archive/assets/images/25_풍덕중_2학기_기말_중3_기출/test.png']){
  test('capture/current exact dependency passes: '+p,()=>{const b=Buffer.from('exact '+p),read=syntheticReader(new Map([[p,b]]));H.assertLiveRenderRef(syntheticRef(p,b),read);});
- test('single current render dependency drift is refused: '+p,()=>{const b=Buffer.from('exact '+p),read=syntheticReader(new Map([[p,b]]));read.currentFiles.set(p,Buffer.from('changed'));assert.throws(()=>H.assertLiveRenderRef(syntheticRef(p,b),read),/UI_CURRENT_RENDER_DEPENDENCY/);});
+ // Render engine files (archive/*.css, archive/*.js, ...) may change later; fonts, vendor libraries and assets stay exact.
+ if(p==='archive/example.css')test('later render engine file edits are not refused: '+p,()=>{const b=Buffer.from('exact '+p),read=syntheticReader(new Map([[p,b]]));read.currentFiles.set(p,Buffer.from('changed'));H.assertLiveRenderRef(syntheticRef(p,b),read);});
+ else test('single current render dependency drift is refused: '+p,()=>{const b=Buffer.from('exact '+p),read=syntheticReader(new Map([[p,b]]));read.currentFiles.set(p,Buffer.from('changed'));assert.throws(()=>H.assertLiveRenderRef(syntheticRef(p,b),read),/UI_CURRENT_RENDER_DEPENDENCY/);});
 }
 test('capture dependency digest tampering is refused',()=>{const p='archive/example.css',b=Buffer.from('exact'),read=syntheticReader(new Map([[p,b]])),r=syntheticRef(p,b);r.sha256='f'.repeat(64);assert.throws(()=>H.assertLiveRenderRef(r,read));});
 function dataRow(){return{questionUid:H.UID,sourceArchiveFile:H.SOURCE,sourceOrdinal:H.ORDINAL,revision:'synthetic-approved-row'};}
@@ -45,7 +47,14 @@ test('global SVG data can change unrelated asset rows only under the empty selec
 for(const [name,make]of [['executable trailer',()=>Buffer.concat([svgData(),Buffer.from('globalThis.changed=true;')])],['executable assignment',()=>Buffer.from('globalThis.changed=true;'+svgData())],['duplicate asset role',()=>svgData([{assetRef:'assets/a.svg',visualRole:'problem'},{assetRef:'assets/a.svg',visualRole:'problem'}])],['traversal key',()=>svgData([{assetRef:'assets/../a.svg',visualRole:'problem'}])],['unknown role',()=>svgData([{assetRef:'assets/a.svg',visualRole:'unreviewed'}])]])test('SVG data projection rejects '+name,()=>assert.throws(()=>H.assertEmptySvgProjection(make())));
 function dependencyFixture(){
  const commit='a'.repeat(40),md='archive/data/question_metadata.json',id='archive/data/question_identity_map.json',svg='archive/data/svg-accessibility-index.js',css='archive/vendor/nanum-myeongjo/nanum-myeongjo.css',mj='archive/vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js',accessibility='archive/svg-accessibility.js';
- const engine=fs.readFileSync(path.join(ROOT,'archive/engine.html'));
+ // Exercise isolated dependency negatives against the immutable renderer that
+ // this closed UI contract authenticates. The current live renderer is tested
+ // separately below and must still be rejected when its bytes have changed.
+ // Main #2378 default renderer; all dependency mutations and refusal assertions stay exact.
+ const engine=execFileSync('git',['-C',ROOT,'cat-file','blob','022b230a7bd19afba3e9fb4a55d55e528e3e9803'],{env:{...process.env,GIT_NO_LAZY_FETCH:'1'},maxBuffer:1024*1024,stdio:['ignore','pipe','pipe']});
+ assert.equal(engine.length,198587);
+ assert.equal(gitBlob(engine),'022b230a7bd19afba3e9fb4a55d55e528e3e9803');
+ assert.equal(sha(engine),'8310d7ee0f01a9eb98e8aa1952d39ba416f53ec24db59ba7a07f39dcd3edd36e');
  const files=new Map([['archive/engine.html',engine],[css,Buffer.from('synthetic css')],[mj,Buffer.from('synthetic mathjax')],[accessibility,Buffer.from('synthetic accessibility')],[FIXED.refs.currentSourceRef.path,Buffer.from('synthetic bank')],[md,recordBytes([])],[id,recordBytes([])],[svg,svgData()]]);
  const fonts=[{path:css,kind:'STYLESHEET',mime:'text/css',weight:null}];for(const weight of[400,700,800]){const p=`archive/vendor/nanum-myeongjo/synthetic-${weight}.woff2`;files.set(p,Buffer.from('font '+weight));fonts.push({path:p,kind:'FONT',mime:'font/woff2',weight});}
  const resources=fonts.map((f,i)=>({...syntheticRef(f.path,files.get(f.path)),...f,resourceId:sha('resource '+i),status:200})),fontResourceIds=resources.map(f=>f.resourceId);
@@ -65,3 +74,16 @@ for(const[name,alter]of[
  ['another UID',t=>t.id.questionUid='qid_v1_'+'0'.repeat(64)],
  ['duplicate UID use',t=>t.uidUses.set(H.UID,2)]
 ])test('exact raw identity rejects '+name,()=>{const t=actualTuple();alter(t);assert.throws(()=>H.assertCurrentTuple(t),/CURRENT_TUPLE/);});
+
+// Render engine files may change after the capture: the live engine bytes are not compared with fixed bytes,
+// while a captured record that names a different engine than the issued contract is still rejected.
+test('current renderer bytes are not pinned by the live dependency validator',()=>{
+ const currentEngine=fs.readFileSync(path.join(ROOT,'archive/engine.html'));
+ const f=dependencyFixture(),engineRef=f.technical.servedFiles.find(r=>r.path==='archive/engine.html');
+ f.read.currentFiles.set('archive/engine.html',Buffer.concat([currentEngine,Buffer.from('\n<!-- later renderer edit -->\n')]));
+ H.assertLiveRenderRef(engineRef,f.read);
+ const rebound=dependencyFixture();
+ const changedRef=syntheticRef('archive/engine.html',currentEngine);
+ rebound.technical.servedFiles=rebound.technical.servedFiles.map(r=>r.path==='archive/engine.html'?changedRef:r);
+ assert.throws(()=>H.assertUiRenderDependencies(rebound.technical,rebound.read),/UI_ENGINE/);
+});

@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-e645a56b0983-5593fe2d",
+  "sourceArchiveFile": "textbooks/비상교육_공통수학2/비상_공통수학2_함수와그래프_익힘책_고1.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_6bfc67ada5655546edd15e613d1e0494dc9562cee823df018ad75f557bde43ad",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EQUALITY",
+      "templateKey": "TPL_EQUAL_FUNCTION_FINITE_DOMAIN",
+      "step": "정의역 -1,0,1의 각 원소에서 세 함수값을 비교하여 모든 값이 같은 쌍을 찾는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f30ab360c8ed9f3506cfa53c2be39da5baea99160e6a59d5a30b3c6248fc7639",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_DEFINITION_JUDGMENT",
+      "templateKey": "TPL_FUNCTION_JUDGMENT_GRAPH",
+      "step": "각 x에 정확히 하나의 y가 대응하는지 수직선 검사와 열린점·닫힌점 표시로 판정한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_030c74de361f19a190b6af4e39106492c75b5880fea70287863e4e219376d3bc",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_VALUE",
+      "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+      "step": "홀수3의 분기식으로 a를 정한 뒤 짝수4의 분기식에 대입한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2b9346630391f9d80ea91a7bd721c346a155b25d8f0c402486e8755ae2ec86ff",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": "TPL_IDENTITY_DOMAIN_COUNT",
+      "step": "항등조건 f(x)=x의 해 -1,3을 구해 그 해집합의 비어 있지 않은 부분집합 수를 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_32895e60bd3867e6a77150d73e1178cd8d121c9bbca3fc25f488cac7f78f404b",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+      "step": "각 출력값의 부호에 맞는 분기식을 다음 입력에 적용하여 3→-2→-1→0을 추적한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1b4593315c7b815bc25d65bbd6f491b8b742704a7488b3a9cbb0497da4ff3b97",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+      "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+      "step": "결합법칙으로 (h∘g)∘f를 만든 뒤 알려진 식 -2x+3에 x+a를 넣어 계수를 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fc67c5a0c7ce05f5c2ba44184b4762063132783607422a196f5f850af669787a",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ITERATED_COMPOSITION",
+      "templateKey": "TPL_ITERATION_PERIOD",
+      "step": "나머지 함수의 2↔3 대응에서 주기2를 읽어 세 번·네 번 합성값을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6f068b44614ebb6ffe3beac5f7dd6c1a841cdcf0d66392559ee48d3c4938fe1d",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_COMPOSITION",
+      "templateKey": "TPL_INVERSE_IDENTITY_RELATION",
+      "step": "양변 왼쪽에 g∘f를 합성하여 역함수를 소거하고 h=g∘f∘f로 만든다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4f77ade9f401c36b3492957173ccaf2a2f844c48071303b16125315fbb5c13ed",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+      "templateKey": "TPL_RATIONAL_EXPRESSION_SIMPLIFY",
+      "step": "병렬저항 공식에 값을 넣어 1/4+1/x를 통분하고 역수를 취한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8890ed30a4b60422e4310853a9bd3b1eb1f871fc42ae99ce07e7db50dd34a43f",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+      "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
+      "step": "이동식 k/(x+1)-3이 x>0에서 양수가 되지 않도록 k의 부호와 상한3을 나눈다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4497dc8b90c7ed9960b64bc28dbb4f08220996c6107ed3ee7b6a5c1db534da01",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+      "templateKey": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+      "step": "네 점근선이 만드는 직사각형 넓이를 ",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_95b8a4a4e2ab1fca9e52225ee412ba4d83f080c83e7c976bc0c8d39887f5f0d7",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_COMPOSITION",
+      "templateKey": "TPL_INVERSE_COMPOSITION_VALUE",
+      "step": "합성 역함수를 f∘g⁻¹로 바꾸어 g⁻¹(2√2)=3 뒤 f(3)을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8feb2fd54272c635068d419fddbc10d1faf7cdd5a705e208a9e50f409eedd46b",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+      "step": "같은 높이의 A=(a²,2a),D=(4a²,2a)를 놓고 정사각형 변 조건 2a=3a²을 세운다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    }
+  ]
+}

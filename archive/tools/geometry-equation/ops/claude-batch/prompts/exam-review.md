@@ -1,6 +1,6 @@
 [루나 검수자 — 2학기 기말 시험지 한 개 전체 해설 SVG 검수]
 작업 트리 절대경로: <WORKTREE> (이하 상대경로는 모두 이 기준, 모든 셸 명령은 먼저 이 경로로 cd). 이 프롬프트가 저장소 AGENTS.md·HANDOFF_SVG_CODEX.md의 대기열·잠금·원장·ROOT 조율 절차보다 우선한다. QUEUE.md, 공유 원장, 시도 이력 재구성, 문항별 브랜치, DOM/qualification/publication 검사는 하지 않는다.
-위임 금지(사용자 지시 2026-11-08, ~/.codex/AGENTS.md의 OpenCode·deepseek 위임 규칙보다 우선): OpenCode·deepseek·다른 모델·하위 에이전트에 작업이나 검수를 넘기지 않는다. deepseek은 그림을 볼 수 없다. 루나 자신이 PNG를 직접 열어 보고 판단·수정한다. 최종 마무리는 항상 Claude 쪽 Sonnet이 한다.
+위임 금지(사용자 지시 2026-11-08, ~/.codex/AGENTS.md의 OpenCode·deepseek 위임 규칙보다 우선): OpenCode·deepseek·다른 모델·하위 에이전트에 작업이나 검수를 넘기지 않는다. 루나 자신이 PNG를 직접 열어 보고 판단·수정한다. 최종 마무리는 항상 Claude 쪽 Sonnet이 한다.
 원문 읽기 확인: 판정 전에 node로 시험지 JS를 읽어(global.window={}; eval(파일); window.questionBank) Q01 content 앞부분을 REVIEW.md 첫 줄에 옮겨 적는다. CONTENT(원문과 구현 불일치)가 3건 이상 나오면 원문을 잘못 읽은 것으로 보고 다시 읽은 뒤 판정한다(2026-11-09: 23 팔마 수학II 검수자가 다른 문제를 읽고 전부 CONTENT로 판정).
 파일 쓰기: REVIEW.md·TABLE.md·plan/publish JSON은 UTF-8로 쓴다(PowerShell Set-Content/Out-File 기본 인코딩 금지, node나 python으로 쓴다). 한글이 ?로 깨지면 다시 쓴다. 줄끝은 LF.
 
@@ -13,7 +13,7 @@
 할 일:
 A. 전 문항 판정의 타당성(<IMPL>/TABLE.md와 실행 끝의 "기존 해설 그림 분류표"를 대조):
    - 분류표가 OLD_SVG/OLD_PNG인 문항은 모두 REPLACE(또는 정당한 UNSUPPORTED/CONTENT)여야 한다. 구형이 그대로 남은 채 KEEP_EXISTING이면 오류다(구형 SVG는 예외 없이 신형으로 재작업).
-   - 분류표가 NEW인 문항은 결함(정답·보기 번호 노출, 틀린 값, 빗금 분수, 영어, 라벨 문제, 교육과정 밖)이 있으면 REPLACE(FIX), 없으면 KEEP_EXISTING. 기존 신형 그림을 직접 열어 확인했는지 본다.
+   - 분류표가 NEW인 문항은 결함((문제 그림의) 정답·보기 번호 노출, 해설 그림은 정답이 있어도 결함 아님, 틀린 값, 빗금 분수, 영어, 라벨 문제, 교육과정 밖)이 있으면 REPLACE(FIX), 없으면 KEEP_EXISTING. 기존 신형 그림을 직접 열어 확인했는지 본다.
    - **빠뜨린 NEW 기회**: EXEMPT 문항의 원문·해설을 node로 직접 읽고, 함수·그래프·도형·통계 단원에서 해설 그림이 학생에게 조금이라도 도움이 되는데 EXEMPT로 둔 것이 없는지 본다. 있으면 직접 plan/publish를 만들어 렌더하고 FIGURE로 바꾼다(item.json은 구현 폴더의 다른 문항 것을 참고하되 questionUid·sourcePath가 그 문항 것이어야 한다).
    - **약한 EXEMPT 이유**: "원문에 그림이 있다", "간단하다"만으로는 약하다. 해설 그림이 원문 그림을 넘어서는 정보가 있으면 만든다. 진짜 순수 계산(순열·조합 계산, 복소수 사칙 등)만 EXEMPT로 남긴다. 이유가 약한 EXEMPT는 구체 이유로 고쳐 쓰거나 FIGURE로 바꾼다.
    - UNSUPPORTED/CONTENT는 근거를 의심한다. 시도한 방법·오류 코드가 구체적인지, CONTENT가 정말 원문 오류인지 원문으로 직접 확인한다. 가능하면 plan을 고쳐 다시 그려 본다.

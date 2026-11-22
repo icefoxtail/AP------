@@ -83,7 +83,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_1학기_중간_고1_유사/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: k의 허용 범위는 열린 구간이다. 양 끝점은 −2√5와 2√5이며 끝점은 포함하지 않는다. 이 안의 정수를 센다.",
+    "solutionImageCaption": "판별식을 4로 나눈 값이 −a²−ka−5이므로 모든 실수 a에 대하여 a²+ka+5>0이어야 하고, 그 판별식 k²−20<0에서 −2√5<k<2√5이다. 이 범위의 정수는 −4부터 4까지 9개이므로, 답은 ④ 9개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,

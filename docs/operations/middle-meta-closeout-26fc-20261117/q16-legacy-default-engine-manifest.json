@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "m3-q16-legacy-default-engine-test-repair-v1",
+  "path": "tests/archive-m3s2-layout-continuity.test.cjs",
+  "before": {
+    "gitBlobSha1": "9e92316828fefd06f09ccd3f36a62f2cd6d827df",
+    "sha256": "6908f5aa84eeaa03d8ee3148baaa9b8ec36b76bb2a695d0ecd370e08a6dd537a",
+    "bytes": 21906
+  },
+  "after": {
+    "gitBlobSha1": "128795874942edc0b60ec4897509968f2562d3b5",
+    "sha256": "6e9a68625e1729197cc8e1aec12e94185a5cb3c2b8254d3404958e44c0699020",
+    "bytes": 21999
+  },
+  "changes": [
+    {
+      "before": " const engine=execFileSync('git',['-C',ROOT,'cat-file','blob','905952ae39138e1f6dc0aa2d7c7c8a64403f527b'],{env:{...process.env,GIT_NO_LAZY_FETCH:'1'},maxBuffer:1024*1024,stdio:['ignore','pipe','pipe']});\n assert.equal(engine.length,201060);\n assert.equal(gitBlob(engine),'905952ae39138e1f6dc0aa2d7c7c8a64403f527b');\n assert.equal(sha(engine),'a963c562478b96f7f9d8ae09ad6e5c85b3262296d734e7abd001836e1c3f317b');\n",
+      "after": " // Main #2378 default renderer; all dependency mutations and refusal assertions stay exact.\n const engine=execFileSync('git',['-C',ROOT,'cat-file','blob','226342544e896cd6a6f35aa946947b89ef3c893e'],{env:{...process.env,GIT_NO_LAZY_FETCH:'1'},maxBuffer:1024*1024,stdio:['ignore','pipe','pipe']});\n assert.equal(engine.length,196085);\n assert.equal(gitBlob(engine),'226342544e896cd6a6f35aa946947b89ef3c893e');\n assert.equal(sha(engine),'671f89999fe07b0f5695bb088ef9d262d7d2da95947689117241bb6f3b633ce5');\n"
+    }
+  ],
+  "wholeInverseExact": true,
+  "scope": "Synthetic dependency negative fixture engine edition only; production code and all refusal assertions unchanged.",
+  "expectedCases": 8,
+  "base": "e0533cb4b9f5b371165eac6d5efd2e8d95a7c0d7"
+}

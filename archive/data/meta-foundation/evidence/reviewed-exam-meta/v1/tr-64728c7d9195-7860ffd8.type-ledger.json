@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-64728c7d9195-7860ffd8",
+  "sourceArchiveFile": "original/high/h1/1final/21_고흥고_1학기_기말_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_a43b6d85a5b76ae8ee6e7261fecab62adba417b4f0bb322257281250f9ba873b",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+      "templateKey": "TPL_AREA_DIRECT",
+      "step": "직선의 두 절편을 구하여 좌표축과 이루는 삼각형 넓이를 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e318415bfa31211c832abf0c4a6ebaea35758e81f232519da6bb8d5fd0d89734",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_LINE_POSITION",
+      "step": "원의 중심과 직선 사이 거리 |k|/5가 반지름 2보다 작은 정수 k를 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8f4ad9fe71a4aafc8be4b1c6af65bb233426312a2715303531794393649a0a4c",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+      "templateKey": "TPL_H1_SYSTEM_DIRECT",
+      "step": "공통해의 합과 곱으로 순서쌍을 구하고 계수 조건 a>b로 한 가지를 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_958082938003b3e3c922a9614e996acdc0d1083689f70c36f7cdd5192b936bad",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+      "templateKey": "TPL_H1_SYSTEM_BRANCH_COMMON_ROOT",
+      "step": "두 식의 차를 인수형 y(2x-y)=3으로 바꾸어 정수 약수 경우를 대입한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9345b2a42580daa45990df9daadd467654b54e32912458add6accab4f57ee7a2",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_POINT_DISTANCE",
+      "step": "거리 제곱합을 2OP²+2로 바꾸고 원점과 원 사이 최소 거리 d-r을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6192047d6f229988bb9f6f4a066f9b45ac6933e68cca30a093f3b6691818f8db",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+      "templateKey": null,
+      "step": "빗변 고정 직각삼각형 넓이가 두 직각변이 같을 때 최대임을 이용해 꼭짓점과 무게중심을 정한다.",
+      "note": "새 TPL 제안: 빗변 고정 직각삼각형 넓이 최대. 정의: u²+v² 고정에서 uv≤(u²+v²)/2로 최대 넓이 꼭짓점을 정한다. 새 TPL 제안: 빗변 고정 직각삼각형 넓이가 두 직각변이 같을 때 최대임을 이용해 꼭짓점과 무게중심을 정한다. 정의: 빗변 고정 직각삼각형 넓이가 두 직각변이 같을 때 최대임을 이용해 꼭짓점과 무게중심을 정한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    }
+  ]
+}

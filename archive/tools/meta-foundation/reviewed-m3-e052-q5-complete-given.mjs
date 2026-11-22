@@ -175,9 +175,18 @@ function svgIndexFootprint(ctx, ref, technical) {
     SvgIndexContinuity.selectEntries(current, assetRefs)), 'SVG_INDEX_CONSUMED_FOOTPRINT_DRIFT');
 }
 
+// Render engine files may change after the capture. Their captured Git bytes stay authenticated,
+// but the current bytes are not compared with the captured ones (user decision 2026-11-18).
+const isRenderEngineFile = p => p === 'archive/engine.html' || p === 'archive/mixed_engine.html' || p === 'apmath/wrong_print_engine.html' ||
+  /^archive\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p) || /^archive\/(?:css|js)\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p) ||
+  /^apmath\/(?:css|js)\/student-navigation\.(?:css|js)$/.test(p);
+
 function uiEvidence(ctx, basis) {
-  const technical = evidence(ctx, ctx.spec.technicalRef, DIR + 'student-ui-technical-v1.json');
+  const originalTechnical = evidence(ctx, ctx.spec.technicalRef, DIR + 'student-ui-technical-v1.json');
   const visual = evidence(ctx, ctx.spec.visualRef, DIR + 'student-ui-independent-v1.json');
+  const currentUi = currentM3Q5Ui(ctx, originalTechnical, visual);
+  const technical = currentUi ? currentUi.technical : originalTechnical;
+  const uiCode = currentUi ? CURRENT_Q5_UI.code : UI_CODE;
   ensure(technical.schemaVersion === 'archive-m3-e052-q5-student-ui-preview-v1' &&
     technical.executionOwner === 'GITHUB_ACTIONS_SUPPORTED_CHROME' && technical.status === 'TECHNICAL_PASS_VISUAL_REVIEW_PENDING' &&
     technical.releaseGate === 'PENDING_INDEPENDENT_VISUAL_REVIEW' && SHA1.test(technical.checkoutCommit || '') &&
@@ -205,13 +214,15 @@ function uiEvidence(ctx, basis) {
     Array.isArray(visual.records) && visual.records.length === 2, 'INDEPENDENT_ALL_TILES_VISUAL_REQUIRED');
   const atCheckout = (ref, opts = {}) => {
     ensure(ref?.commit === technical.checkoutCommit, 'UI_CHECKOUT_REF_DRIFT');
+    if (isRenderEngineFile(ref.path)) opts = { ...opts, live: false };
+    if (currentUi && opts.live) ensure(git(ctx, ['rev-parse', 'HEAD:' + ref.path]).toString().trim() === ref.gitBlobSha1, 'CURRENT_UI_HEAD_RENDER_DRIFT');
     return reference(ctx, ref, opts);
   };
-  for (const [ref, pin] of [[technical.manifestRef, UI_CODE[0]], [technical.checkerRef, UI_CODE[1]],
-    [technical.captureHelperRef, UI_CODE[2]]]) {
-    ensure(same(noCommit(ref || {}), pin), 'UI_EXECUTED_CODE_DRIFT'); atCheckout(ref, { live: pin.path === UI_CODE[2].path });
+  for (const [ref, pin] of [[technical.manifestRef, uiCode[0]], [technical.checkerRef, uiCode[1]],
+    [technical.captureHelperRef, uiCode[2]]]) {
+    ensure(same(noCommit(ref || {}), pin), 'UI_EXECUTED_CODE_DRIFT'); atCheckout(ref, { live: pin.path === uiCode[2].path });
   }
-  ensure(Array.isArray(technical.surfaceRefs) && same(technical.surfaceRefs.map(noCommit), UI_CODE.slice(5)), 'UI_SURFACE_INVENTORY');
+  ensure(Array.isArray(technical.surfaceRefs) && same(technical.surfaceRefs.map(noCommit), uiCode.slice(5)), 'UI_SURFACE_INVENTORY');
   technical.surfaceRefs.forEach(ref => atCheckout(ref, { live: true }));
   ensure(technical.identityRef?.path === 'archive/data/question_identity_map.json', 'UI_IDENTITY_REFERENCE');
   atCheckout(technical.identityRef); // Issued identity changes are checked by the ordinary registrar, not a stale whole DB equality.
@@ -247,7 +258,7 @@ function uiEvidence(ctx, basis) {
       } else atCheckout(ref, { live: ref.path !== 'archive/data/question_metadata.json' });
     }
   }
-  for (const pin of UI_CODE.slice(3)) ensure(same(noCommit(served.get(pin.path) || {}), pin), 'UI_REQUIRED_SERVED_CODE_MISSING');
+  for (const pin of uiCode.slice(3)) ensure(same(noCommit(served.get(pin.path) || {}), pin), 'UI_REQUIRED_SERVED_CODE_MISSING');
   ensure(same(served.get(item.sourceRef.path), item.sourceRef) && same(served.get(item.assetRef.path), item.assetRef), 'UI_REQUIRED_INPUT_NOT_SERVED');
   const inventory = [];
   for (const viewport of VIEWPORTS) {
@@ -274,7 +285,7 @@ function uiEvidence(ctx, basis) {
     ensure(same(c?.equalSlotRoles, ROLE_PROOF) && c.visibleChildren === 1 && c.visibleRoleDescendants === 4 && c.measuredEnvelopeRects === 5 &&
       Array.isArray(c.equalSlotEvidence) && c.equalSlotEvidence.length === 7 &&
       same(c.equalSlotEvidence.slice(0, 2), [item.sourceRef, item.assetRef]) &&
-      same(c.equalSlotEvidence.slice(2).map(noCommit), UI_CODE.slice(0, 5)), 'UI_EXACT_EQUAL_SLOT_ROLES_REQUIRED');
+      same(c.equalSlotEvidence.slice(2).map(noCommit), uiCode.slice(0, 5)), 'UI_EXACT_EQUAL_SLOT_ROLES_REQUIRED');
     c.equalSlotEvidence.forEach(ref => atCheckout(ref));
     const common = { ...c };
     for (const key of ['equalSlotRoles', 'equalSlotEvidence', 'visibleRoleDescendants', 'measuredEnvelopeRects']) delete common[key];
@@ -287,9 +298,120 @@ function uiEvidence(ctx, basis) {
   ensure(new Set(inventory.map(row => row.path)).size === inventory.length &&
     same(inventory.slice().sort((a, b) => a.path.localeCompare(b.path)),
       technical.screenshotArtifacts.slice().sort((a, b) => a.path.localeCompare(b.path))), 'UI_COMPLETE_ORIGINAL_PNG_INVENTORY');
-  return { technicalRef: ctx.spec.technicalRef, visualRef: ctx.spec.visualRef, checkoutCommit: technical.checkoutCommit,
+  // The live current UI has been fully authenticated above. This return belongs
+  // to the already-issued source-review proof, whose whole representation must
+  // remain unchanged; current UI provenance is verified, not newly issued here.
+  return { technicalRef: ctx.spec.technicalRef, visualRef: ctx.spec.visualRef,
+    checkoutCommit: originalTechnical.checkoutCommit,
     reviewer: visual.reviewer, logicalCases: 2, screenshotArtifactCount: inventory.length, screenshots: inventory,
     originalTilesOnly: true, newMathematicalQa: false, newNativeApprovals: 0 };
+}
+
+// Exact current display reuse. The original request/item evidence and every
+// GIVEN/source/complete-review/ancestor condition are checked by the original
+// application path. This clause only replaces its stale live UI evidence.
+const CURRENT_Q5_UI = freezeQ5CurrentUi({"head":"48d18ccdc7eafffe3d1d8ae32e65a4dc23437502","technicalRef":{"commit":"90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3","path":"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/technical-proof.json","gitBlobSha1":"0cd74ab0be77a70badcabc655b811bb02cbb9209","sha256":"9248d818ec7c44d3f8f4273526c4af1d70624385d185b63db3270e1324b2c279","bytes":76724},"visualRef":{"commit":"e371e50ba8cb3e317c32cf1d1478b832bb0444c2","path":"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/visual-current-reuse-v1.json","gitBlobSha1":"c12986521a343b4d4ea3dac5fb5282617c5cc69f","sha256":"f7b575307f2105c5e03a96b4b601e8c22953263723810843338a30c043a7ebf3","bytes":7372},"priorTechnicalRef":{"commit":"1dbeaaa687d48f74b381c1dc5d2c330f1bfe4ea2","path":"docs/operations/m3-e052-q5-complete-given-20261116/student-ui-technical-v1.json","gitBlobSha1":"e3acc11099e73b7b8cf7d9d1f5d975a3acc10ccb","sha256":"c96b586c177b4958620c658a0d135e04c3e66d66e4374a4e2b6941c847d44e2f","bytes":76825},"priorVisualRef":{"commit":"1dbeaaa687d48f74b381c1dc5d2c330f1bfe4ea2","path":"docs/operations/m3-e052-q5-complete-given-20261116/student-ui-independent-v1.json","gitBlobSha1":"ba2b198f2e8876f2667f29e12e595556714460c5","sha256":"d3a1eaa44d2801af173f7721d634cc6788ecfad46428ac80693f9fccbb2bf95e","bytes":1736},"witnessRef":{"commit":"006e6455f69c092c3251d440daf0c4b07da7a469","path":"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m3/current-four-display-equivalence-v1.json","gitBlobSha1":"56ec9409ca900e94a46d6562e6e9189aedac7d43","sha256":"07632bee16334ab68a80b3433db7b32daa145053b68156b68244b9145ebeaa7e","bytes":37970},"framesRef":{"commit":"90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3","path":"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/producer-frames.jsonl","gitBlobSha1":"439b8fc9187f3907a63a16af5841251952024533","sha256":"c822e4bac3fb2ba1a21657f89f838d35bedbe08820d418021ec75c72c666d628","bytes":197175},"artifacts":[{"commit":"90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3","path":"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/E052-Q5-desktop-tile-01.png","gitBlobSha1":"9d96646282e97104a032c81c03451bda8794eb1b","sha256":"600ad7c79c86889cc1f1bba376c929d67fc942aa495a08dcb77c2a48f612aa1f","bytes":28776},{"commit":"90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3","path":"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/q5/E052-Q5-mobile-tile-01.png","gitBlobSha1":"a977c9c35a5b2a5bb4fd90c23ffbc16d30e9d908","sha256":"d83399fdf70d554a7505310b038b490ca55730d962f040e83bbf2606e614ccab","bytes":30805}],"code":[{"path":"tests/fixtures/archive-m3-e052-q5-problem-ui.json","gitBlobSha1":"6a130b5af0bde204ede90211ae779b92ff74022f","sha256":"1ad5d743e74665f42ba8abc3213a81e7c768eb771a8575314c6e9404e851b9cb","bytes":1807},{"path":"tools/check-m3-e052-q5-problem-browser.cjs","gitBlobSha1":"c59ca5c001e007e7fa123089f306a54bba8ee796","sha256":"43067702c2eb2ca062aa73c0551a5fb5d3ad9a35bcf409452778b41c01f0e6a7","bytes":59715},{"path":"tools/check-reviewed-problem-renderer-browser.cjs","gitBlobSha1":"56c80b40d53fa88e8054a16f7b7267f968696f3f","sha256":"e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673","bytes":56735},{"path":"archive/equal-slot-engine.js","gitBlobSha1":"c826512ff61d4969c7ce45ba8f4ee002286bcf10","sha256":"4979ccfd129470e076965bf93bb86e089d53c4ea875a17b011760886f967177a","bytes":20518},{"path":"archive/exam-render-executor.js","gitBlobSha1":"583a72ae2c960d485cdcd1c1aec1329f204067b6","sha256":"e4ac35518351fd89d16222df4221e64a32121213f5b99c831407a61d90b573d7","bytes":24896},{"path":"archive/engine.html","gitBlobSha1":"226342544e896cd6a6f35aa946947b89ef3c893e","sha256":"671f89999fe07b0f5695bb088ef9d262d7d2da95947689117241bb6f3b633ce5","bytes":196085},{"path":"archive/screen-runtime-adapter.js","gitBlobSha1":"fb0ee7afc7eed48b30975874c5536eb283f308c9","sha256":"ed0b267dc3b27675c2c0ed0aa985991a0aad3d3863ce5bcd43f0acb28033d709","bytes":53393}],"transportManifest":{"schemaVersion":"archive-protected9-original-ui-log-transport-v1","profile":"q5","execution":{"provider":"GITHUB_ACTIONS","repository":"icefoxtail/AP------","eventName":"push","ref":"refs/heads/ops/middle-protected9-current-renderer-26fc-20261117","pullRequest":null,"baseSha":null,"checkoutCommit":"48d18ccdc7eafffe3d1d8ae32e65a4dc23437502","eventCommit":"48d18ccdc7eafffe3d1d8ae32e65a4dc23437502","runId":"44015662986","runAttempt":1,"workflow":"Middle Protected Current Renderer","job":"current-ui"},"captureStatus":"TECHNICAL_PASS_VISUAL_REVIEW_PENDING","logicalCases":2,"expectedLogicalCases":2,"pngFiles":2,"uncompletedCasePngFiles":0,"totalBytes":136305,"technicalJsonSha256":"9248d818ec7c44d3f8f4273526c4af1d70624385d185b63db3270e1324b2c279","files":[{"path":"technical-proof.json","mimeType":"application/json","bytes":76724,"sha256":"9248d818ec7c44d3f8f4273526c4af1d70624385d185b63db3270e1324b2c279","gitBlobSha1":"0cd74ab0be77a70badcabc655b811bb02cbb9209","captureCaseCompleted":null},{"path":"E052-Q5-desktop-tile-01.png","sha256":"600ad7c79c86889cc1f1bba376c929d67fc942aa495a08dcb77c2a48f612aa1f","bytes":28776,"mimeType":"image/png","gitBlobSha1":"9d96646282e97104a032c81c03451bda8794eb1b","dimensions":{"width":316,"height":287},"captureCaseCompleted":true},{"path":"E052-Q5-mobile-tile-01.png","sha256":"d83399fdf70d554a7505310b038b490ca55730d962f040e83bbf2606e614ccab","bytes":30805,"mimeType":"image/png","gitBlobSha1":"a977c9c35a5b2a5bb4fd90c23ffbc16d30e9d908","dimensions":{"width":350,"height":299},"captureCaseCompleted":true}],"visualReview":"NOT_PERFORMED_BY_TRANSPORT","newApprovals":0,"sourceWrites":0,"transportDigest":"9e6be5e5b318adedc4cd9e83c4e3af6a26b12f5eb255cf6c0129a04c14b5fdcf","transportRef":{"commit":"48d18ccdc7eafffe3d1d8ae32e65a4dc23437502","path":"tools/emit-protected9-ui-log-transport.cjs","gitBlobSha1":"66e822cd012fc8744afc8af3124d39ff9319b20c","sha256":"606a2008bb34a2cd363b16099a32eb0288781592d99ee1ede41cd8977360850b","bytes":24695},"producerRefs":[{"commit":"48d18ccdc7eafffe3d1d8ae32e65a4dc23437502","path":"tools/check-m3-e052-q5-problem-browser.cjs","gitBlobSha1":"c59ca5c001e007e7fa123089f306a54bba8ee796","sha256":"43067702c2eb2ca062aa73c0551a5fb5d3ad9a35bcf409452778b41c01f0e6a7","bytes":59715},{"commit":"48d18ccdc7eafffe3d1d8ae32e65a4dc23437502","path":"tests/fixtures/archive-m3-e052-q5-problem-ui.json","gitBlobSha1":"6a130b5af0bde204ede90211ae779b92ff74022f","sha256":"1ad5d743e74665f42ba8abc3213a81e7c768eb771a8575314c6e9404e851b9cb","bytes":1807},{"commit":"48d18ccdc7eafffe3d1d8ae32e65a4dc23437502","path":"tools/check-reviewed-problem-renderer-browser.cjs","gitBlobSha1":"56c80b40d53fa88e8054a16f7b7267f968696f3f","sha256":"e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673","bytes":56735}]},"oldCaptureHead":"c29e1cc63c1d55b9c049c254908e466dad23a086","omittedFontResourceId":"cf3f7bcae01e00f44158a8856b11c7c8a30174647e6181b4dc402c6121b6a20c"});
+function freezeQ5CurrentUi(value) { for (const x of Object.values(value)) if (x && typeof x === 'object') freezeQ5CurrentUi(x); return Object.freeze(value); }
+const stripUiCommit = ({commit, ...r}) => r;
+export function currentM3Q5UiRefs() { return structuredClone(CURRENT_Q5_UI); }
+export function assertM3Q5CurrentUiDocuments({ prior, visual, technical, currentVisual, witness, transport }) {
+  const c = CURRENT_Q5_UI;
+  ensure(technical.checkoutCommit === c.head && same(technical.checkout, {
+    expectedCheckoutCommit: c.head, actualCheckoutCommit: c.head, githubEventCommit: c.head
+  }), 'CURRENT_UI_CHECKOUT');
+  ensure(same(transport, c.transportManifest), 'CURRENT_UI_TRANSPORT');
+  ensure(witness.decision === 'ACCEPT_EXACT_CURRENT_FOUR_PNG_DISPLAY_BY_PRIOR_OBSERVATION_REUSE_ONLY' &&
+    witness.actualCapture?.head === c.head && witness.actualCapture?.publicationCommit === c.technicalRef.commit &&
+    same(witness.priorEvidence?.q5?.technical, c.priorTechnicalRef) &&
+    same(witness.priorEvidence?.q5?.visual, c.priorVisualRef), 'CURRENT_UI_INDEPENDENT_REUSE');
+  ensure(currentVisual.schemaVersion === 'archive-independent-m3-e052-q5-current-ui-reuse-v1' &&
+    currentVisual.scope === 'EXACT_E052_Q5_COMPLETE_GIVEN_CURRENT_DISPLAY_ONLY' &&
+    currentVisual.decision === visual.decision && currentVisual.reviewer === visual.reviewer &&
+    currentVisual.derivationAuthor === 'GPT_M3S2_RELEASE' &&
+    currentVisual.decisionOrigin === 'IMMUTABLE_PRIOR_SEPARATE_VISUAL_INSPECTION_REUSED_FOR_IDENTICAL_CURRENT_PNG_BYTES' &&
+    same(currentVisual.technicalRef, c.technicalRef) && same(currentVisual.priorTechnicalRef, c.priorTechnicalRef) &&
+    same(currentVisual.priorVisualRef, c.priorVisualRef) && same(currentVisual.displayEquivalenceRef, c.witnessRef) &&
+    same(currentVisual.currentProducerFramesRef, c.framesRef) && same(currentVisual.records, visual.records) &&
+    same(currentVisual.artifactRefs, c.artifacts) && currentVisual.oldVisualRecordsCopiedExactly === true &&
+    currentVisual.currentRawTechnicalUnchanged === true && currentVisual.originalPngBytesUnmodified === true &&
+    ['newVisualInspection','newMathematicalQa','newSemanticApproval','newNativeApproval','newMetadataApproval','newDifficultyApproval','newFourSlotVector']
+      .every(k => currentVisual[k] === 0) &&
+    currentVisual.sharedRendererCodeEquivalenceClaimed === false && currentVisual.currentFullLiveCodeFontAssetGuardsRequired === true &&
+    currentVisual.officialCurrentNativeBuilderConsumer === 'NOT_RUN_CURRENT_UI_BINDING', 'CURRENT_UI_VISUAL_REUSE');
+  ensure(prior.schemaVersion === technical.schemaVersion && prior.status === 'TECHNICAL_PASS_VISUAL_REVIEW_PENDING' &&
+    prior.checkoutCommit === c.oldCaptureHead && Array.isArray(prior.results) && prior.results.length === 2 &&
+    Array.isArray(technical.results) && technical.results.length === 2 &&
+    same(prior.screenshotArtifacts, technical.screenshotArtifacts), 'CURRENT_UI_CAPTURE_INVENTORY');
+  const stripItem = x => ({...x, sourceRef: stripUiCommit(x.sourceRef), assetRef: stripUiCommit(x.assetRef)});
+  ensure(same(prior.items.map(stripItem), technical.items.map(stripItem)) &&
+    same(prior.mirroredAssets.map(stripUiCommit), technical.mirroredAssets.map(stripUiCommit)), 'CURRENT_UI_APPROVED_INPUTS');
+  const beforeFonts = new Map(prior.studentFontResources.map(f => [f.resourceId, f]));
+  const afterFonts = new Map(technical.studentFontResources.map(f => [f.resourceId, f]));
+  ensure(beforeFonts.size === 31 && afterFonts.size === 30 && beforeFonts.size === prior.studentFontResources.length &&
+    afterFonts.size === technical.studentFontResources.length &&
+    same([...beforeFonts.keys()].filter(id => !afterFonts.has(id)), [c.omittedFontResourceId]) &&
+    [...afterFonts].every(([id, f]) => beforeFonts.has(id) && same(stripUiCommit(f), stripUiCommit(beforeFonts.get(id)))), 'CURRENT_UI_FONT_REUSE');
+  for (let i = 0; i < 2; i++) {
+    const a = prior.results[i], b = technical.results[i], before = {...a.capture}, after = {...b.capture};
+    delete before.equalSlotEvidence; delete after.equalSlotEvidence;
+    ensure(a.questionUid === M3_Q5_UID && b.questionUid === M3_Q5_UID && a.sourceOrdinal === 5 && b.sourceOrdinal === 5 &&
+      same(a.viewport, b.viewport) && same(stripUiCommit(a.sourceRef), stripUiCommit(b.sourceRef)) &&
+      same(stripUiCommit(a.assetRef), stripUiCommit(b.assetRef)) && same(before, after) &&
+      ['screenshots','geometry','pageErrors','requestFailures','externalRequests'].every(k => same(a[k], b[k])), 'CURRENT_UI_CAPTURE_CHANGED');
+    ensure(Array.isArray(a.capture.equalSlotEvidence) && a.capture.equalSlotEvidence.length === 7 &&
+      Array.isArray(b.capture.equalSlotEvidence) && b.capture.equalSlotEvidence.length === 7, 'CURRENT_UI_CAPTURE_PROVENANCE');
+    for (let j = 0; j < 7; j++) {
+      const x = a.capture.equalSlotEvidence[j], y = b.capture.equalSlotEvidence[j];
+      ensure(x.commit === c.oldCaptureHead && y.commit === c.head &&
+        (j === 3 ? same(noCommit(x), UI_CODE[1]) && same(noCommit(y), c.code[1]) : same(noCommit(x), noCommit(y))),
+        'CURRENT_UI_CAPTURE_PROVENANCE');
+    }
+    const at = {...a.technical}, bt = {...b.technical}; delete at.fontResourceIds; delete bt.fontResourceIds;
+    ensure(same(at, bt) && Array.isArray(b.technical.fontResourceIds) &&
+      new Set(b.technical.fontResourceIds).size === b.technical.fontResourceIds.length &&
+      b.technical.fontResourceIds.every(id => a.technical.fontResourceIds.includes(id) && afterFonts.has(id)), 'CURRENT_UI_CASE_FONT_REUSE');
+    const binding = currentVisual.captureBindings?.[i];
+    ensure(binding?.questionUid === M3_Q5_UID && binding.sourceOrdinal === 5 && binding.viewport === b.viewport.name &&
+      binding.priorCaptureSha256 === sha(stable(a.capture)) && binding.currentCaptureSha256 === sha(stable(b.capture)) &&
+      binding.originalScreenshotsExactlyReused === true && binding.wholeCaptureExactlyReused === false, 'CURRENT_UI_CAPTURE_BINDING');
+  }
+  const delta = currentVisual.captureProvenanceDelta;
+  ensure(delta?.entireCaptureEqual === false && delta.exceptEqualSlotEvidenceWholeEqual === true &&
+    same(delta.exactlySevenImmutableRefCommits, {before: c.oldCaptureHead, after: c.head}) &&
+    same(delta.producerOnlyPinChange, {path: UI_CODE[1].path, beforeGitBlobSha1: UI_CODE[1].gitBlobSha1, afterGitBlobSha1: c.code[1].gitBlobSha1}) &&
+    delta.measurementAndCoverageFieldsChanged === 0, 'CURRENT_UI_CAPTURE_PROVENANCE');
+  return true;
+}
+function currentM3Q5Ui(ctx, prior, visual) {
+  const c = CURRENT_Q5_UI;
+  // The current binding is used when its files are present; the current engine bytes
+  // are not compared with a fixed edition.
+  const requested = [c.technicalRef, c.visualRef].some(ref => fs.existsSync(safe(ctx.root, ref.path)));
+  if (!requested) return null;
+  ensure(same(ctx.spec.technicalRef, c.priorTechnicalRef) && same(ctx.spec.visualRef, c.priorVisualRef), 'CURRENT_UI_ORIGINAL_AUTHORITY_REF');
+  // Original publication refs are fixed above and already authenticated by
+  // evidence()/reference() against their immutable trees and current live bytes.
+  // Their publication commits need not be ancestors of this checkout. Current
+  // UI evidence still requires ancestry from the actual checkout.
+  for (const ref of [c.technicalRef, c.visualRef, c.witnessRef, c.framesRef, ...c.artifacts])
+    git(ctx, ['merge-base', '--is-ancestor', ref.commit, 'HEAD']);
+  for (const ref of [c.technicalRef, c.visualRef, c.witnessRef, c.framesRef, ...c.artifacts])
+    ensure(git(ctx, ['rev-parse', 'HEAD:' + ref.path]).toString().trim() === ref.gitBlobSha1, 'CURRENT_UI_HEAD_EVIDENCE_DRIFT');
+  const technical = jsonReference(ctx, c.technicalRef, {live: true});
+  const currentVisual = jsonReference(ctx, c.visualRef, {live: true});
+  const witness = jsonReference(ctx, c.witnessRef, {live: true});
+  const frames = reference(ctx, c.framesRef, {live: true, data: true}).toString('utf8').trim().split('\n');
+  let start, end;
+  try { start = JSON.parse(frames[0]); end = JSON.parse(frames[frames.length - 1]); }
+  catch { fail('CURRENT_UI_TRANSPORT_JSON'); }
+  ensure(start.kind === 'bundle-begin' && end.kind === 'bundle-end' && start.bundle === end.bundle &&
+    start.manifest?.technicalJsonSha256 === c.technicalRef.sha256, 'CURRENT_UI_TRANSPORT_BOUNDARY');
+  assertM3Q5CurrentUiDocuments({prior, visual, technical, currentVisual, witness, transport: start.manifest});
+  for (const ref of c.artifacts) {
+    const bytes = reference(ctx, ref, {live: true, data: true});
+    ensure(bytes.length >= 8 && bytes.subarray(0, 8).equals(Buffer.from('89504e470d0a1a0a','hex')), 'CURRENT_UI_PNG_BYTES');
+  }
+  return {technical, technicalRef: c.technicalRef, visualRef: c.visualRef, witnessRef: c.witnessRef};
 }
 
 function currentDefinitions(ctx, basis) {

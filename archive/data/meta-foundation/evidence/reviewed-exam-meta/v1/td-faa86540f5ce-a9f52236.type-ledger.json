@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-faa86540f5ce-a9f52236",
+  "sourceArchiveFile": "textbooks/미래엔_공통수학1/미래엔_공통수학1_행렬과연산_중단원마무리_고1/미래엔_공통수학1_행렬과연산_중단원마무리_고1.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_95e2ea6cb8c8f03445af8a6d1e0711737c0f09598ecf28e522bbe93034b5daf9",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+      "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT",
+      "step": "행과 열의 순서대로 첫 행 둘째 성분과 둘째 행 셋째 성분을 읽는다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d2731a8c754dcaba6acd7f177032f7f46f5392450d8e6257c1ec803ba82e6de0",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+      "templateKey": "TPL_H1_MATRIX_BASIC_EQUALITY",
+      "step": "대응 성분 1−a=1,2b−1=5,4=c+3을 푼다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4b1228f24e726c8cbfea62422a65da1045427b3e4faa638daa776c13591d31bc",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+      "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT",
+      "step": "각 대응 성분을 더하거나 빼고 스칼라배를 수행한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0ea11700cf95382b7acc3a539b735e656a957b12e6b6bb9fc5987f3c10a9ba59",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
+      "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
+      "step": "행과 열을 내적하여 결과 행렬의 성분을 계산한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8fa86f0c87965b4595920fb58e862b4bcc43b6f6b9ad2c14a659057144a698fe",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+      "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT",
+      "step": "둘째 행을 읽고 행이 3개임을 확인하며 셋째 열 7+6+3=16을 합한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e67e664ac1c73c43ccca3d54a627a68f733b2d9f6907036e6be574943dcf09dc",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+      "templateKey": "TPL_H1_MATRIX_BASIC_EQUALITY",
+      "step": "상등으로 a−b=−1,ab=2이므로 a²+b²=(a−b)²+2ab=5이다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ee5bcb176a461a873750f9813fe0d2e42e3fc1696f6c67fa9ff719074b1f1b80",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+      "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT",
+      "step": "A=(A+B)−B를 구해 2A−B=2(A+B)−3B를 계산한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_293e3f6358fcb6046169a10e1386c543b354e131cb72924c8d063ad97cda6449",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+      "templateKey": "TPL_H1_MATRIX_EQUATION_LINEAR",
+      "step": "각 성분에서 B의 값은 ((i+2j)−(2i−j+1))/2=(−i+3j−1)/2이다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_15671756e5f05cdd798325f6d991bb6b0116b4c55651f43e1589277e2757c054",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
+      "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
+      "step": "A²의 성분합 k²−3k+2=0의 두 근 1,2의 합을 구한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_49f60b1d723764699748aa8d693e4cbd76f66f0b239026aa956b69050a45ffc1",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+      "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT",
+      "step": "그림에서 2번 신길역은 1번 여의도와 3번 대방에 직접 연결되어 둘째 행에 1이 두 개이다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d85547e6b8e7ae5886afff29a6da04ace9bcae36c6df7dc2f0e1867f37dfe839",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
+      "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
+      "step": "두 조건으로 A의 첫째·둘째 열을 읽고 첫 열의 3배에 둘째 열을 더한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    }
+  ]
+}

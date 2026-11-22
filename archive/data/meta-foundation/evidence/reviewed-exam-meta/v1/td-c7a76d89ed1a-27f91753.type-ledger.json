@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-c7a76d89ed1a-27f91753",
+  "sourceArchiveFile": "original/high/h2/1mid/25_순천여고_1학기_중간_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_1084447a34cefe6a8b70b56f73808f6261ed7af817c9cf087a692d77e05f56e6",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "step": "정삼각형 회전중복3을 나눈 전체6!/3에서 남자 같은 변의3·2!·4!/3을 빼면192이다.",
+      "note": "문항의 모서리는 그림에서 한 변의 두 좌석을 뜻한다.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_37bf59a6fb3428b127092be87995a38450447225db1c4e68df79c5582659b2cc",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "step": "n이2개 중복이므로8!/2!=4·7!에서 k=4이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_341c44e047cfd7307c9369271db78f7dc29c23a0300ec3253faa6f6acfe27643",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "step": "전체3⁴에서 연속2를 갖는 경우21을 빼면60이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_31417c1f99a1d4d62f0f337fd4b91e52454a849bf62bcac1214a3e816869662c",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "step": "파스칼 항등식을 연쇄 적용하여₃C₀+₄C₁+…+₇C₄=₈C₄를 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b4fa613e3bbb5ce7574487bc6b17c0ec405750190f0ec09a87f3419b07912256",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_THEOREM_REMAINDER",
+      "step": "(30+1)^17 전개에서30² 이상 항은90배수여서1+17·30=511의 나머지61만 남는다.",
+      "note": "필요 TPL: 이항정리를 이용한 정수 거듭제곱의 나머지. 정의: 전개 고차항의 약수배수성을 이용해 낮은차수 항만 남겨 나머지를 구한다. 검사: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_940f24b66f4b31e4d594671bff86b6d02dc63f0bec9657da213b97592e1c3b6b",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_COUNTING_ARRANGEMENT_PATH",
+      "step": "끊어진 변을 제외한 최단경로 누적값은 B에서62, P에서5이며 P→B6가지이므로62−5·6=32이다.",
+      "note": "필요 TPL: 결손 격자 최단경로 누적. 정의: 허용된 단조 이동의 앞 교차점 경로수를 누적하고 지정 통과점의 경로를 제외한다. 검사: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2ee8923f6aaef67c47cd2ca4d2373e461d3e64e5930bfb51763e5419e5eb9782",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
+      "step": "8의 원상1개를7가지로 택한 뒤 나머지 원상 개수 제한에 따라 다항계수 합41+156을 곱해1379이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4435d6ecc8d1af0f83234bb79bda880452bd5db6ea9ea7361d92b2396034a0d4",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "step": "각 원소를 A전용,B전용,교집합 세 영역에 배정한3⁵에서 교집합 없는2⁵를 빼면211이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2a80882181e7ce82df562058ca42f250b7ac3eb8afcae6a45bc56f9f85b0521b",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "step": "회전동일 원배열에서 같은학년 이웃·맞은편을 제외해 학년배치와 학년별 순열을 세면144이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0088a4661314e8e80d615d8d4673008dc12ae4b5f3841367d56a108793801836",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "step": "사용색₆C₅와 밑면색5를 고른 뒤 옆면4색 원순열3!을 곱해180이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_301fdc6fb6b9bf6be0a60682f58dc7e4cdedd111f80bf2e0011173bcef0b0e89",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "step": "끝 두자리4배수 중0포함3개는4!,0미포함4개는3·3!로 앞자리 제약을 적용하여144이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

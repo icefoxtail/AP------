@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-d03bbbb42b45-8fe4a624",
+  "sourceArchiveFile": "original/high/h1/2mid/19_금당고_2학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_cc569eec237a94b2b1d58e79afa9db9b80dc9e04d39f3b4a4b772c299729f8dc",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SET_ELEMENT_RELATION",
+      "templateKey": "TPL_ELEMENT_MEMBERSHIP_BASIC",
+      "step": "10 미만 소수를 열거하고 각 보기의 수가 집합에 속하는지 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_76153aff1272416baa1f86bfed66d627bd6b947281e3f5ebddf4e7f73ff97725",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SET_OPERATION_LAW",
+      "templateKey": "TPL_OPERATION_LAW_COMPOSITE",
+      "step": "합집합의 결합법칙으로 이미 알려진 B∪C를 먼저 묶어 원소를 합친다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b283268d84e9d43e9b6477fafbd0d2c560df39e4c512ca707b7d5b1236259784",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "templateKey": "TPL_INVERSE_VALUE_DIRECT",
+      "step": "역함숫값 g(5)=4를 f(4)=5로 바꾸어 주어진 함수값과 연결한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1f372295901c4aada3c82104f2458375a020b3580857a9c097cd2faabef82fdf",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+      "step": "그래프에서 출력 3/2와 2에 대응하는 입력을 차례로 찾아 역함수를 두 번 적용한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_eb1415bb913b5a6af32f990aeb7c500b6e52634a5686fa377887b250a387f162",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+      "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_ROOT_PARAMETER",
+      "step": "대우로 x=a이면 이차식이 0이어야 하므로 a를 두 근으로 제한한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7910a9019e4b62b20b6e15d1989c9ada2e268dde5fe2b4bd4ae1b86ec4fcf44e",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "templateKey": "TPL_AMGM_MINIMUM",
+      "step": "고정된 합을 사용해 식을 16+64/(ab)로 바꾼 뒤 ab의 상한과 등호 조건을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1c2e38046460ef0451100cc62be5a86e84d9236ef68f1f42d64b9e57ce3763a7",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_COMPOSITION",
+      "templateKey": "TPL_INVERSE_COMPOSITION_FORMULA",
+      "step": "중간 합성의 역함수를 구하고 지정 순서로 합성하여 일차식 계수를 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_56b472b50392d40f4ee1623a7b626273b44591a4ee6851ca2ee8c45369e8a257",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SET_AGGREGATE",
+      "templateKey": "TPL_SET_ELEMENT_SUM",
+      "step": "배수 집합의 포함관계로 식을 6의 배수 집합으로 줄여 원소를 더한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1be16d9653b9040eba2ed834f19d3aaf179209c5b5d4ae1b3f885ffcb8fba8b2",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SET_AGGREGATE",
+      "templateKey": "TPL_SUBSET_AGGREGATE_BY_ROLE_FREQUENCY",
+      "step": "필수 원소는 모든 부분집합에, 자유 원소는 절반에 포함된다는 횟수로 총합을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b324c9c86a8ba7e1f90b0dae612fa38f3e2c032ff16dbe09acb447823ea33d68",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+      "templateKey": "TPL_IMPLICATION_TRUTH_VALUE",
+      "step": "R={1}과 Q가 비지 않으면 1∈Q임을 증명하고 나머지 함의에는 계수 반례를 든다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ccdfee28dff22780d09ac577cf9ff43933035c34e574389ace7512be8a1aca9f",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "templateKey": "TPL_ABSOLUTE_INEQUALITY_EXTREMUM_SQUARE_BOUND",
+      "step": "부분삼각형 넓이로 거리의 가중합을 고정하고 거리와 2의 차의 가중 제곱합을 전개해 하한을 얻는다.",
+      "note": "새 TPL 제안: 가중 제곱합 완전제곱 하한 — 고정된 선형합을 이용해 가중 제곱합을 비음수 제곱합과 상수로 분해하고 등호 실현을 확인한다. check-ledger: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dc253e89f23bac6fcb91d52cc91e129a98a6498bf9c7a1ea1ba3a7e8e66fc407",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_INVERSE_EQUATION",
+      "step": "조각함수를 두 번 합성하면 항등함수임을 확인해 f⁻¹=f로 바꾸고 필요한 입력을 대입한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    }
+  ]
+}

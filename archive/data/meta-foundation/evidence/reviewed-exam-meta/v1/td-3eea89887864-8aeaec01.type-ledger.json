@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-3eea89887864-8aeaec01",
+  "sourceArchiveFile": "original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_cc7a02e5b43abdc08090ae419119967056e57fec90398ddf3114be3355370ee1",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_RELATIONS_CONCYCLIC",
+      "step": "①의 대각합180도와③의 같은 DC선분을 보는 두 각60도 일치로 원에 내접함을 판정한다.",
+      "note": "필요 TPL: 대각합과 원주각 정리의 역으로 공원성 판정 | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_85d315752a738ff7f0efb4607cbee67d2aaa6f12fd6a4a6937872ca0c693b07c",
+      "sourceOrdinal": 15,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "상수합25로 평균5를 얻고 분산4.8에서 편차제곱합24를 세워 x²-6x+8=0의 근2,4의 합6을 구한다.",
+      "note": "새 PT 제안: 분산 조건으로 미지 변량 결정; 매개변수를 포함한 원자료의 평균과 편차 제곱합을 식으로 세워 주어진 분산에서 미지수를 결정한다. | 도구: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_94146dbc4381d9fbfbd33d20f9d710751908e4e50fa564d0846b4b8e9c987f2b",
+      "sourceOrdinal": 16,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "동일평균 두 집단의 편차제곱합20×100+30×90=4700을 전체50으로 나눠분산94를 구한다.",
+      "note": "새 PT 제안: 여러 집단을 합친 자료의 분산; 집단별 자료수·평균·분산으로 전체 평균과 편차제곱합을 합성하여 전체 분산 또는 표준편차를 구한다. | 도구: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_64364a0ceed8adf1bdccdbdf66697537cd35ecfdb7936ba5b1dd4e16e487f98f",
+      "sourceOrdinal": 17,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "우상향 산점도와 같이 여름기온이 오를수록 냉방비가 늘어나는②의 양의 상관을 고른다.",
+      "note": "새 PT 제안: 상관관계의 방향과 유무 판정; 두 변량의 동반 증가·감소 경향을 산점도 또는 생활 맥락에서 읽어 양·음·무상관을 구별한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8123e37c3ae65e30fb2f518d71e4c085949715186f75d99de41b2cd587ca250d",
+      "sourceOrdinal": 18,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "우하향인③⑤ 중 감소직선에 점들이 더 밀집한⑤를 가장 강한 음의 상관으로 고른다.",
+      "note": "새 PT 제안: 산점도의 상관관계 강도 비교; 산점도의 증가·감소 방향과 직선 주변 밀집 정도를 비교하여 상관의 부호와 강약을 판정한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e5317ee1417e70956abe2825371bdfb6d71da82f3bda01d36eb9b2aae29992cf",
+      "sourceOrdinal": 19,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "중간80이상인 점의 기말값60,70,80,90의 평균75를 구하여 평균70이라는④를 배제한다.",
+      "note": "새 PT 제안: 산점도 좌표와 진술 판정; 산점도의 좌표·점 개수·변량 비교·분포 추세를 읽어 제시된 진술의 참거짓을 확인한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e6a3b47748cc6c56cc20106953fe7605fef3e2507df4f874068dd646d670a20a",
+      "sourceOrdinal": 20,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "두 점수 평균7이상을 x+y≥14로 바꿔 조건만족7점을 세고 전체15명 대비7/15를 구한다.",
+      "note": "새 PT 제안: 산점도의 조건별 점 개수와 비율; 산점도의 각 점을 두 변량의 부등식 조건으로 선별하여 개수 또는 전체 대비 비율을 구한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ea54d4de580aa038ed971c46902e27cf8b8a72529784fc6906318c4344933a0a",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "step": "원주각54도로 중심각108도를 얻고 접점의 두 직각을 이용해 사각형 내각합에서 외부 두 접선각72도를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b9251ef4bd9d64e448fbef136f9e6aa35273811c06e4f95f0984df88f458311c",
+      "sourceOrdinal": 24,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "우상향 경향으로 용돈이 많으면 저축도 많다는 진술로 고치고 E가 같은 용돈의 학생보다 아래임을 읽어 저축이 적다고 수정하며 D의 두 값이 큼을 서술한다.",
+      "note": "새 PT 제안: 산점도 좌표와 진술 판정; 산점도의 좌표·점 개수·변량 비교·분포 추세를 읽어 제시된 진술의 참거짓을 확인한다. | 도구: PT_NOT_ACTIVE, DUPLICATE_PROPOSED_NAME",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-a91a02bc58a8-810b3722",
+  "sourceArchiveFile": "original/middle/m2/1final/22_매산중_1학기_기말_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_8acc50158546a106523f29c8849c2afa30028451192b7e285b425ed0007f9a33",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+      "templateKey": null,
+      "step": "소수 계수 식에 10을 곱해 정수 계수로 바꾼 후 소거하여 x=4,y=-2를 구한다.",
+      "note": "새 TPL 제안: 소수 계수 연립방정식의 해 구하기. 정의: 소수 계수 식에 10을 곱해 정수 계수로 바꾼 후 소거하여 x=4,y=-2를 구한다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_aeb96f0704e46d732c1bdf9528ead783786436be7af398c500a9a81d8fdf285d",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "각 관계식을 y에 관하여 정리하여 x의 일차식인 y=1000-10x를 고른다.",
+      "note": "새 TPL 제안: 식의 형태로 일차함수 여부 판별. 정의: 각 관계식을 y에 관하여 정리하여 x의 일차식인 y=1000-10x를 고른다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b06a724a9f750a126a088b88c56461d10ab988da9664bad84fb39df33aa510a5",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": "TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT",
+      "step": "이동한 직선에 점 (1,4)를 대입하여 수직 이동량 k=2를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0efa43ccc8bfd6f9dd84134deba89f254a2fb27ccd3f66a6e04a58b5e00cc872",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+      "step": "y=3x+6의 기울기와 절편을 읽어 제1,2,3사분면을 지나므로 사분면 진술의 참거짓을 판정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6fcff10e38e421f99c9d3112595d431c94ea6bd7135a6f70a9cdc72f2d871aec",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_TO_LINEAR_FUNCTION_STANDARD_FORM",
+      "templateKey": null,
+      "step": "4x-2y=6을 y에 관하여 풀어 y=2x-3으로 변환한다.",
+      "note": "새 TPL 제안: 일차방정식을 일차함수 식으로 변환. 정의: 4x-2y=6을 y에 관하여 풀어 y=2x-3으로 변환한다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7ab481a5dacdd09c4839371deaa15d2a77c6eb98108f01f56ce157a69d1aa30c",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
+      "templateKey": "TPL_M2_FIND_VERTICAL_LINE_EQUATION_FROM_POINT",
+      "step": "주어진 점의 x좌표 3이 일정한 y축 평행선의 방정식 x=3을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e22ddf3ee846136ebfdfbeb6934e89e20479132b84d48d5e96351a510c6bebaa",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+      "templateKey": "TPL_M2_FIND_PARAMETER_FOR_NO_SOLUTION_SYSTEM",
+      "step": "두 직선의 기울기 a/3과 -2가 같고 절편은 다르므로 a=-6을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2edafdf033d6a467b4ea8277e157b53689cc70be69dd524e7ba35d7c1be6b205",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COEFFICIENT_SWAP",
+      "templateKey": "TPL_M2_SOLVE_ORIGINAL_SYSTEM_AFTER_COEFFICIENT_SWAP_DESCRIPTIVE",
+      "step": "수준별 2-1은 주어진 x+y=5를 읽는다. 수준별 2-2는 바꾼 식에 (-2,-1)을 넣어 a=0,b=-3을 복원하고 원래 해 (-1,-2)를 구한다.",
+      "note": " 한 UID에 수준별 두 문항이 있어 모두 읽고 높은 수준의 핵심 전략으로 판정.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-4da8b05c57dc-8f8922b7",
+  "sourceArchiveFile": "textbooks/비상교육_기하/비상_기하_벡터_대단원학습평가_고2/비상_기하_벡터_대단원학습평가_고2.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_544d621ebfce5d038c0f5970b262a1823bdf2faf592b9bec703c31e0ef5cf7f7",
+      "sourceOrdinal": 1,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_GEO_VECTOR",
+      "templateKey": null,
+      "step": "정팔면체의 대칭 좌표로 AC=EF·AB=−FD를 비교하고 정사각형 대각선 CE=√2와 BD⊥CE를 확인한다.",
+      "note": "공간벡터 기본 연산: 공간 벡터의 상등·합차·실수배·성분·크기 관계로 벡터 또는 도형 조건을 결정한다. 검사: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_250d9745de5603067294d963096b1bf6ee1bd4ae03fc755179b9f43b0fccb622",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+      "step": "CD=AF로 치환하여 a+b−c=AC−AF=FC로 정리하고 정육각형 주대각선 길이 2를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cd65cb247d35847e3e53ec8052a867c9fcd05a6e051346dda3d42cc51216aa5f",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+      "step": "OC=(1−t)OA+tOB에서 독립인 a·b의 계수를 비교해 k/3+k/2=1을 푼다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_aada4b62390ed8a0a6248a15686d42d4b67c61f66a8325aafe9279f73ea084f8",
+      "sourceOrdinal": 4,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_GEO_VECTOR",
+      "templateKey": null,
+      "step": "벡터 방정식을 x=(3a−b)/2=(3,0,4)로 정리하고 크기 5로 나누어 단위벡터를 구한다.",
+      "note": "공간벡터 기본 연산: 공간 벡터의 상등·합차·실수배·성분·크기 관계로 벡터 또는 도형 조건을 결정한다. 검사: PT_NOT_ACTIVE, DUPLICATE_PROPOSED_NAME",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_62d7b1e5a6734d0f3f4a96cbfd23aba9857bb841cc66e8ba14bd815e26e2da79",
+      "sourceOrdinal": 5,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_GEO_VECTOR",
+      "templateKey": null,
+      "step": "직육면체의 AD=FG를 위치벡터 d−a=g−f로 바꾸어 d=a−f+g를 얻는다.",
+      "note": "공간벡터 기본 연산: 공간 벡터의 상등·합차·실수배·성분·크기 관계로 벡터 또는 도형 조건을 결정한다. 검사: PT_NOT_ACTIVE, DUPLICATE_PROPOSED_NAME",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fa4c223fa47c049efddce2a0ed597b18885deb061ec688964b2e3904ec6c137f",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "templateKey": "TPL_GEO_PLANE_VECTOR_DOT_ZERO",
+      "step": "a+kc=(k−2,3+7k)와 c−b=(5,2)의 내적을 0으로 두어 19k−4=0을 푼다.",
+      "note": "벡터 내적 수직조건: 성분 내적이 0인 조건으로 미지수를 결정하는 TPL 필요. 검사: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b3faaa73f3cabc98e1327efa59c8ecbd4d902b6d3c874a132f69526e1d8d791e",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "templateKey": "TPL_GEO_PLANE_VECTOR_DOT",
+      "step": "내분점 좌표 E=(1,0)·F=(3,0)에서 AF=(3,−3)·DE=(−3,−3)을 구해 성분 내적을 계산한다.",
+      "note": "벡터 내적 계산: 성분곱의 합 또는 크기곱과 사잇각의 코사인으로 내적을 계산하는 TPL 필요. 검사: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f984434aae97d6e6abd5fc371c4693f7031abed6e2c1548ec9a17b671b554ada",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "templateKey": "TPL_GEO_PLANE_VECTOR_DOT",
+      "step": "|a−2b|²=|a|²−4a·b+4|b|²에서 a·b=−2를 구해 a·(a+b)=9−2를 계산한다.",
+      "note": "벡터 내적 전개: 벡터 길이 제곱의 전개와 내적의 분배법칙으로 내적·크기를 결정하는 TPL 필요. 검사: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0556663892534f55154f09752248f6ab60b8b5833d516112b2a272205a59435e",
+      "sourceOrdinal": 10,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_GEO_SPHERE",
+      "templateKey": null,
+      "step": "구 중심 C=(0,−1,2)에서 접점 A로 향하는 (1,−2,3)을 법선으로 잡아 접평면 x−2y+3z−22=0을 쓴다.",
+      "note": "구의 접평면: 구의 중심과 접점을 잇는 반지름 벡터를 법선으로 사용해 접평면의 방정식을 결정한다. 검사: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_546d2b8bf277477f0eb2c4e2849fce8da7592efa3beae711a13da56ecb1a54f0",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+      "step": "접평면 법선 OP·OQ의 내적 14와 길이곱 21로 cosθ=2/3을 구해 넓이 6에 곱한다.",
+      "note": "정사영 넓이: 평면도형의 정사영 넓이 S′=S cosθ를 이용하는 TPL 필요. 검사: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0f0795ce607a6161c87eafb2024e8540347223a01455b23a5355c0b6099521ae",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+      "step": "정오각형 대각선의 길이비 φ=(1+√5)/2와 EC∥AB를 이용해 EC=φa·AC=φa+b로 나타낸다.",
+      "note": "해설 첫 단계의 AP=1과 사각형 APED 평행사변형 주장은 부정확하다(AP=φ−1). 문항과 최종 벡터식은 정합.",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9679a72b202fde989ff72540d6a985c2dfab30fc2cf5790b5c43819c0b61faac",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "templateKey": "TPL_GEO_PLANE_VECTOR_DOT",
+      "step": "무게중심 거리 2√3/3 및 사잇각 30°·120°를 구해 각각 크기곱×cosθ로 내적을 계산한다.",
+      "note": "벡터 내적 계산: 성분곱의 합 또는 크기곱과 사잇각의 코사인으로 내적을 계산하는 TPL 필요. 검사: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e7dfcbfe8fd187fb9d9a6c0b071d40b86d470f190c5ee608e53fe5bb9d63cd0d",
+      "sourceOrdinal": 14,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_GEO_SPACE_LINE",
+      "templateKey": null,
+      "step": "두 공간 직선을 t·s로 매개화하여 x·y 일치에서 t=1·s=2를 구하고 z도 일치하는 교점 (8,4,−2)을 확인한다.",
+      "note": "공간 직선의 교점: 두 직선의 매개변수식을 연립하고 세 좌표의 일치를 확인해 교점을 구한다. 검사: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9911cc67c8d8895280528e4161bcb4b8ea93e3311b786bb8fd4b4d1a6f998b3d",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+      "step": "P의 평면 수선의 발 H=(2,5,2)를 구하고 PH²=11·AH=√10을 써 최소거리제곱 11+(√10−2)²를 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-2ebe42a315ac-a7c1e6a1",
+  "sourceArchiveFile": "original/middle/m3/2final/21_왕운중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_7e323419cc565fd5885d2d45b0e0df54c68a51ea96ffe4c43fbe40b3fa84e000",
+      "sourceOrdinal": 2,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_REPRESENTATIVE",
+      "templateKey": null,
+      "step": "극단값391이 평균을 크게 끌어올리므로 해당 자료는 평균을 대푯값으로 쓰기 부적절.",
+      "note": "새 PT 제안: 대푯값의 정의와 선택 기준. 정의: 평균·중앙값·최빈값의 정의와 극단값 또는 자료의 성격을 고려하여 진술의 참거짓이나 적합한 대푯값을 결정한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: PT_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_76e1d921b42d1fc297d5f1840a198e71bb52956fe22491d5750602e4792c1a65",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": "TPL_M3_CENTRAL_TENDENCY_MEDIAN_MODE_ORDER_POSITION",
+      "step": "(79+여섯째)/2=83에서87, 추가91은 뒤에 놓여11개의 여섯째87 유지.",
+      "note": "필요 TPL: 자료 추가 전후의 중앙값 변화: 기존 짝수 자료의 두 중앙값과 추가 자료의 위치를 이용하여 홀수 개가 된 자료의 중앙값을 구한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fac6b2aef731fd85052894f2b47eb88398cf7ddd5b81ec9b4f23c690bcd6a162",
+      "sourceOrdinal": 5,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "실제11점과 대각선 위5점, 아래2점을 세고 우상향 분포를 대조하여 태도>실험2명만 참.",
+      "note": "새 PT 제안: 산점도와 상관관계 개념 판정. 정의: 산점도의 방향과 좌표별 조건을 직접 확인하여 인원수·두 변량의 크기 관계·변화 경향에 관한 진술을 판단한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, PT_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9ee50440f9c73cf511c973ff24ac9727785a5ddb77a123f950b323a499945be1",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": "TPL_M3_DISPERSION_DEVIATION_PROPERTIES_STATEMENTS",
+      "step": "평균8에서 편차-5,-1,-1,0,1,2,4를 계산하여 최대4, 제곱평균48/7과 대푯값 검토.",
+      "note": "필요 TPL: 원자료의 대푯값과 편차·분산 종합 검토: 평균과 정렬한 자료에서 중앙값·최빈값을 구하고 각 편차 및 제곱평균으로 관련 진술을 확인한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e00fdb34aaf3b5eb4a0698e96eec27f37902d01673f289e516617beda709def6",
+      "sourceOrdinal": 12,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "공통평균70 유지, 분산은 학생수 가중(26×4+24×9)/50=6.4, 합76.4.",
+      "note": "새 PT 제안: 여러 집단의 평균과 분산 통합. 정의: 집단별 인원과 평균·분산으로 합과 제곱합을 복원하여 자료를 합치거나 추가한 전체 집단의 평균과 분산을 계산한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, PT_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fa140229d3c7d7812c2297217a3ae1ce42229071d112741dd9a9633676e4de66",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": "TPL_M3_CENTRAL_TENDENCY_MEDIAN_MODE_PARAMETER",
+      "step": "x의 정렬 위치에 따라 중앙값12,x,15를 나누고 평균(56+x)/5와 같게 하여4,14,19 합37.",
+      "note": "필요 TPL: 평균과 중앙값 일치 조건의 경우 분류: 미지 변량의 정렬 위치에 따른 중앙값 구간별 식을 평균과 연립하고 범위에 맞는 해만 선택한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_81fc01a464eb66464e0c139d0e87f1849740ab2e42469f26969827f3d58d2d2a",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "step": "편차합0으로 x²1, 음수조건 x-1, C=7+4=11, 제곱편차 평균10의 제곱근√10.",
+      "note": "도구: CUE_LENGTH_4_TO_60_REQUIRED",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

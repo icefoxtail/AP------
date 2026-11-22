@@ -261,7 +261,7 @@ window.questionBank = [
       "표준편차"
     ],
     "wide": false,
-    "content": "다음은 $\\mathrm{A, B, C}$ 세 반 학생들이 가지고 있는 공책의 권수를 조사하여 나타낸 막대그래프이다. 다음에서 옳은 것을 모두 고르면? (4점)<br><img src=\"assets/images/19_이수중_2학기_중간_중3_수학/q5-problem-v3.svg\" alt=\"A반, B반, C반 각각의 가로축은 공책 권수 3부터 7까지이다. 각 그래프에서 세로축의 숫자는 해당 권수를 가진 학생 수를 나타낸다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
+    "content": "다음은 $\\mathrm{A, B, C}$ 세 반 학생들이 가지고 있는 공책의 권수를 조사하여 나타낸 막대그래프이다. 다음에서 옳은 것을 모두 고르면? (4점)<br><img data-scale=\"85\" src=\"assets/images/19_이수중_2학기_중간_중3_수학/q5-problem-v3.svg\" alt=\"A반, B반, C반 각각의 가로축은 공책 권수 3부터 7까지이다. 각 그래프에서 세로축의 숫자는 해당 권수를 가진 학생 수를 나타낸다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
     "choices": [
       "$\\mathrm{C}$ 반의 평균이 가장 높다.",
       "$\\mathrm{A}$ 반의 표준편차가 가장 작다.",

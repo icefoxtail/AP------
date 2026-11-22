@@ -1,0 +1,230 @@
+{
+  "schemaVersion": "archive-protected-current-renderer-ops18-publication-v2",
+  "status": "STATIC_ACCEPT_ACTUAL_OPS_CI_PENDING",
+  "date": "2026-11-17",
+  "owner": "/root/ci_m2s2",
+  "publisher": "/root",
+  "exactOpsRef": "refs/heads/ops/middle-protected9-current-renderer-26fc-20261117",
+  "rootMustCas": "Actual ops base/ref and all expected-before blobs; absent additions must remain absent",
+  "operations": [
+    {
+      "path": "tools/emit-protected9-ui-log-transport.cjs",
+      "expectedBeforeGitBlobSha1": "2ec7712541ee6977e6482fb94d474d21d85c97ae",
+      "bytes": 24695,
+      "sha256": "606a2008bb34a2cd363b16099a32eb0288781592d99ee1ede41cd8977360850b",
+      "gitBlobSha1": "66e822cd012fc8744afc8af3124d39ff9319b20c"
+    },
+    {
+      "path": "tests/protected9-ui-log-transport.test.cjs",
+      "expectedBeforeGitBlobSha1": "50a0b085dd39133a0729302cf85657fd3fa818b5",
+      "bytes": 9094,
+      "sha256": "89100c489366ef745f5ffc5599df59afeb50b1962281bda86b3e659b6399d411",
+      "gitBlobSha1": "99db769e531d531d0450a83f34f9ebd5a1c5df2a"
+    },
+    {
+      "path": "tests/protected-current-ui-log-transport.test.cjs",
+      "expectedBeforeGitBlobSha1": null,
+      "bytes": 11149,
+      "sha256": "ab5efddc292f74c61d6672145e2003b36cafc746cc46683734f5676a1b6ae184",
+      "gitBlobSha1": "942d546f42ecb611a5d5b2b25e9a61093df27bb8"
+    },
+    {
+      "path": ".github/workflows/middle-protected-current-renderer-chrome.yml",
+      "expectedBeforeGitBlobSha1": null,
+      "bytes": 7280,
+      "sha256": "10181ece0724cdd6d06623b4e28fd2bb72dd2b389e2e68c2af1eeb6bfcbabd4b",
+      "gitBlobSha1": "da21239efd932a32fa9936fb22b1c4e42b17d3d5"
+    },
+    {
+      "path": "tools/check-m1s2-problem-seven-browser.cjs",
+      "expectedBeforeGitBlobSha1": "6427cf59a178a208e0ed2c302480630837b07171",
+      "gitBlobSha1": "b575897d190a512b48b04e03719bd3cc0cc02654",
+      "sha256": "130fcab0be811c537ddce05f5c1f17a26e18cf9862ea690dbefcea419bde73e9",
+      "bytes": 25233
+    },
+    {
+      "path": "tools/check-m3s2-q16-layout-browser.cjs",
+      "expectedBeforeGitBlobSha1": "849de1ab8881bb3c8715f08dc87a57dd25351bcf",
+      "gitBlobSha1": "f7426f61f7cd783b52cfe5c279fcee8cb8200ee7",
+      "sha256": "71f2cab9234d4a80ada7e79c7b03df288079fd39f8e806a6fce1255324951958",
+      "bytes": 26602
+    },
+    {
+      "path": "tools/check-m3-e052-q5-problem-browser.cjs",
+      "expectedBeforeGitBlobSha1": null,
+      "gitBlobSha1": "c59ca5c001e007e7fa123089f306a54bba8ee796",
+      "sha256": "43067702c2eb2ca062aa73c0551a5fb5d3ad9a35bcf409452778b41c01f0e6a7",
+      "bytes": 59715
+    },
+    {
+      "path": "tests/fixtures/archive-m3-e052-q5-problem-ui.json",
+      "expectedBeforeGitBlobSha1": null,
+      "gitBlobSha1": "6a130b5af0bde204ede90211ae779b92ff74022f",
+      "sha256": "1ad5d743e74665f42ba8abc3213a81e7c768eb771a8575314c6e9404e851b9cb",
+      "bytes": 1807
+    },
+    {
+      "path": "tests/archive-m3s2-q16-current-renderer-provenance.test.cjs",
+      "expectedBeforeGitBlobSha1": null,
+      "gitBlobSha1": "ca7bed52e0f8e5ef76a847f3aac6dd8e6a9d6cea",
+      "sha256": "0716ca8570649148dd8323507a3cacb0abf26cfd1d8132754733ae0b5cbca12b",
+      "bytes": 4788
+    }
+  ],
+  "profiles": {
+    "m1": {
+      "subjects": 7,
+      "logicalViews": 14,
+      "fixture": {
+        "bytes": 7830,
+        "sha256": "a315e169b8b4666f54c81a68a2579ccab1fa85d4de8521b7002373e82f8802ef",
+        "gitBlobSha1": "15b517839daec65eff8fc401b1c5a7fd1be9c3f5"
+      }
+    },
+    "q16": {
+      "subjects": 1,
+      "logicalViews": 2,
+      "fixture": {
+        "gitBlobSha1": "e694b6723add49a8b7695e059b07e5a089a19d65",
+        "sha256": "4f0474664d32ee2fdaf18c8ff9cb61566ea8a70bf0a2a2040116ddca6c2d2957",
+        "bytes": 1069
+      }
+    },
+    "q5": {
+      "subjects": 1,
+      "logicalViews": 2,
+      "fixture": {
+        "bytes": 1807,
+        "sha256": "1ad5d743e74665f42ba8abc3213a81e7c768eb771a8575314c6e9404e851b9cb",
+        "gitBlobSha1": "6a130b5af0bde204ede90211ae779b92ff74022f"
+      }
+    }
+  },
+  "execution": {
+    "workflow": ".github/workflows/middle-protected-current-renderer-chrome.yml",
+    "pushOnly": true,
+    "exactOpsBranch": true,
+    "checkout": "github.sha=actual Git HEAD=event.after=EXPECTED for each producer",
+    "permissions": "contents:read",
+    "contractJobOnce": true,
+    "contractsCommand": "node --test tests/protected9-ui-log-transport.test.cjs tests/protected-current-ui-log-transport.test.cjs tests/archive-m3s2-q16-current-renderer-provenance.test.cjs",
+    "syntheticDefinitions": {
+      "existingTransport": 20,
+      "newTransportAndM1Provenance": 43,
+      "q16Provenance": 13,
+      "total": 76
+    },
+    "captureProfiles": [
+      "m1",
+      "q16",
+      "q5"
+    ],
+    "failFast": false,
+    "logicalViews": 18,
+    "svg7RepeatedViews": 0,
+    "checkoutDepth": 1,
+    "depthReason": "All three producers and common Git reader authenticate actual HEAD/tree only; M1 baseCommit is historical descriptive fixture ancestry and is not read",
+    "matrixInputs": "Exact profile source bank paths and corresponding mirror directories; shared renderer/font/H/MD/ID/SVG inputs",
+    "noContinueOnError": true,
+    "alwaysTransportAndArtifact": true,
+    "normalCaptureFailureRemainsFailure": true,
+    "rawJsonNotModified": true,
+    "originalPngNotModified": true,
+    "partialFailureLabelled": true,
+    "outputOutsideRepository": true
+  },
+  "evidence": {
+    "transportDelta": {
+      "bytes": 15053,
+      "sha256": "4dd49e871b78a1f9be72a3f2beef15f0c649fc08ea07433c1a8253c0e8c4fbb0",
+      "gitBlobSha1": "087868af887033b8cf987fc5ce0dd271c78bd691"
+    },
+    "primaryTransportReviewedAndActuallyExecuted": {
+      "bytes": 5861,
+      "sha256": "4c763c6979b90476c7c7e58a59a885eb41c4e5cfc2db42ac152697ca2841c904",
+      "gitBlobSha1": "938359de31c98b81d25ea1618ad48cdbe00cb1f9"
+    },
+    "primaryActualRun": {
+      "runId": "44011127748",
+      "jobId": "133798119021",
+      "technicalRaw": {
+        "bytes": 204380,
+        "sha256": "576c49a84a24ea53412817d8ab19868b59b8b4ac5f9775bc93e3619e747e4e03",
+        "gitBlobSha1": "c18655b38cb8adef217781e6b6bbf65ba8570758"
+      },
+      "observedCompletedCases": 14,
+      "observedOriginalPngs": 16,
+      "duplicateCaptureRequested": false
+    },
+    "m1ProducerOwner": {
+      "bytes": 11277,
+      "sha256": "5d6129d32e99bc56d6b69cbfae7bfd5a6221304cb230dd655516bf725db45b4f",
+      "gitBlobSha1": "45d2c374cb8261c1eea558e7f90befc4238c02fd"
+    },
+    "m1ProducerIndependent": {
+      "bytes": 2327,
+      "sha256": "cfe677fa79854e0828e638764e6c2c58b153f12b8503685dce462c57c3e017b3",
+      "gitBlobSha1": "5745ae4c5262e21e6bd1b69ff65ac68ccd5aaa42"
+    },
+    "q16Q5OwnerManifest": {
+      "bytes": 9681,
+      "sha256": "b5eda259dd89ba6315b97ec7cbc4abbe92d4647a63e824fd5c29e02faff58215",
+      "gitBlobSha1": "96edcf64e155a902b9cda5c1a36db1737444a22a"
+    },
+    "q16Q5Independent": {
+      "bytes": 7427,
+      "sha256": "510e9d3048f6d90ff6f25fea0c58f984b4bc4e5b924e9b5132c55811a8c80512",
+      "gitBlobSha1": "502c8ee23467dcb392458e0c7c0843dbcf7f812b"
+    },
+    "primaryTransportIndependent": {
+      "gitBlobSha1": "f44e460ca38f23196d144d807ee5c8bf73a33124",
+      "sha256": "87a400a0b3cb2ae4a8fb527379af09b8bdcdcbffdef9b79955f5770e7fa4dccf",
+      "bytes": 7074
+    },
+    "transportIndependent": {
+      "bytes": 7973,
+      "sha256": "4525d7bec377e7017fddc507733b6c5999598e6e4ef719401e31f910fc59b445",
+      "gitBlobSha1": "b13193ad2b02beadac0d813483fad59cb2370641"
+    },
+    "draftManifest": {
+      "bytes": 8980,
+      "sha256": "709291b79247849105c9657418c8d212c3a7fffb971b65ded1276abb63538962",
+      "gitBlobSha1": "33e6989d2c47a63afe043332d739ade442e567fd"
+    }
+  },
+  "boundaries": {
+    "transportOnly": "No rendering, source mutation, image editing or approval in transport; a technical pass is still visual-review pending",
+    "q5RawShape": "No top.surface or raw run/job. mode/problemOnly/screenshotsScope/solutionNodes remain original; actual run/job lives only in external transport receipt",
+    "q16RawShape": "Original top.surface PROBLEM; no per-result mode/surface",
+    "m1RawShape": "Original per-result mode/surface, new truthful fixed ops push owner/provenance",
+    "svg7Branch": "Existing profile and original execution checks retained; workflow excludes it",
+    "oldUi": "No old visual evidence automatically treated as current; byte-equivalence reuse requires separate independent proof",
+    "existingAuthority": "Issued receipts, Native and current display sidecars remain unchanged until actual capture and independent review",
+    "sourceFilesChanged": 0,
+    "assetsChanged": 0,
+    "metadataChanged": 0,
+    "identityChanged": 0,
+    "runtimeChanged": 0,
+    "canonicalChanged": 0,
+    "productionAuthorityGuardsChanged": 0,
+    "sourceBodiesRead": 0,
+    "imagesViewed": 0,
+    "repoExecution": 0,
+    "refWrites": 0
+  },
+  "verification": {
+    "immutableBlobsCreated": true,
+    "fullStringReadback": true,
+    "helperInverseToPrimaryExact": true,
+    "oldTransportTestOnlyChange": "Unknown profile fixture literal changed q5 to not-a-profile since q5 becomes an explicit profile",
+    "nodeSyntax": "NOT_RUN",
+    "newNodeTests": "NOT_RUN",
+    "actualOpsChrome": "NOT_RUN",
+    "newVisualReview": "NOT_RUN",
+    "independentTransportReview": "STATIC_ACCEPT_NO_NEW_BLOCKER",
+    "independentTransportReviewer": "/root/m3s2_release"
+  },
+  "reviewedBase": "a57c51f633c937da15d1fac766631b413e02bd55",
+  "publicationBase": "ROOT_SELECTS_FRESH_INTEGRATION_AND_CAS_ALL_EXPECTED_BEFORE_BLOBS",
+  "nextAction": "Root integrates exact nine immutable blobs into the one fixed ops branch; actual contract job and fresh eighteen logical captures run there, followed by lossless frame recovery and independent visual review."
+}

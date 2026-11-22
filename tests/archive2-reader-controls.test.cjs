@@ -1,6 +1,7 @@
 const assert = require("node:assert/strict");
 const { readFileSync } = require("node:fs");
 const { test } = require("node:test");
+const { readWorkspace, assertWorkspaceScriptVersions } = require("./helpers/archive2-workspace-source.cjs");
 
 const read = (path) => readFileSync(path, "utf8");
 const controls = read("archive/archive2-reader-controls.js");
@@ -8,7 +9,7 @@ const css = read("archive/archive2-reader-controls.css");
 const engine = read("archive/engine.html");
 const mixed = read("archive/mixed_engine.html");
 const library = read("archive/archive2-library.js");
-const workspace = read("archive/archive2-workspace.js");
+const workspace = readWorkspace();
 const fastRuntime = read("archive/common-fast-runtime.js");
 const browserSmoke = read("tests/fixtures/archive2-output-browser-smoke.html");
 const workspaceHtml = read("archive/workspace.html");
@@ -21,21 +22,21 @@ test("standalone readers expose only the compact mobile back/mode/more controls"
   assert.match(css, /grid-template-columns: 98px minmax\(0, 1fr\) 48px/);
   assert.match(css, /min-height: 44px/);
   assert.match(css, /max-width: 640px/);
-  assert.match(engine, /archive2-reader-controls\.js\?v=20261111-student-navigation-1/);
-  assert.match(mixed, /archive2-reader-controls\.js\?v=20261111-student-navigation-1/);
+  assert.match(engine, /archive2-reader-controls\.js\?v=20261120-derive-ui-1/);
+  assert.match(mixed, /archive2-reader-controls\.js\?v=20261120-derive-ui-1/);
   assert.match(controls, /studentReview/);
   assert.match(controls, /studentReturnTo/);
   assert.match(controls, /target\.origin === location\.origin/);
   assert.match(controls, /new URL\("\.\.\/apmath\/student\/", location\.href\)\.pathname/);
   assert.match(controls, /\[portalPath, portalPath \+ "index\.html"\]\.includes\(target\.pathname\)/);
-  assert.match(engine, /solution-render-executor\.js\?v=20261111-svg-k-2/);
-  assert.match(mixed, /solution-render-executor\.js\?v=20261111-svg-k-2/);
+  assert.match(engine, /solution-render-executor\.js\?v=20261122-sol-fit-1/);
+  assert.match(mixed, /solution-render-executor\.js\?v=20261122-sol-fit-1/);
   assert.match(engine, /outputUrl\.searchParams\.set\('outputRequestId', envelope\.outputRequestId\)/);
   assert.match(engine, /payload: \{ printHeaderOptions, outputEnvelope: runtimeEnvelope, outputUrl: outputUrl\.href \}/);
   assert.match(read("archive/screen-runtime-adapter.js"), /history\[method\]\(null, '', ctx\.intent\?\.payload\?\.outputUrl \|\| ctx\.candidate\.environment\.url\)/);
   assert.match(mixed, /common-fast-runtime\.js\?v=20261106-output-performance-2/);
   assert.match(workspaceHtml, /archive2-library\.js\?v=20261111-assign-2/);
-  assert.match(workspaceHtml, /archive2-workspace\.js\?v=20261116-polish-1/);
+  assertWorkspaceScriptVersions(assert);
 });
 
 test("preview stays embedded and mode actions do not reset an iframe", () => {

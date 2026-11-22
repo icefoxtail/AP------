@@ -1,0 +1,155 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -21.35,
+   41.35,
+   -9.4,
+   13.4
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "SQRT",
+    "radicand": [
+     "-2",
+     "2"
+    ],
+    "offset": "-2",
+    "abs": true,
+    "domain": [
+     "1",
+     "21"
+    ],
+    "color": "BLUE",
+    "hideLabel": true
+   },
+   {
+    "id": "a",
+    "kind": "LINE",
+    "coefficients": [
+     "-3/4",
+     "1/4"
+    ],
+    "domain": [
+     "1",
+     "21"
+    ],
+    "color": "WARM",
+    "hideLabel": true
+   },
+   {
+    "id": "b",
+    "kind": "LINE",
+    "coefficients": [
+     "-1/4",
+     "1/4"
+    ],
+    "domain": [
+     "1",
+     "21"
+    ],
+    "color": "GREEN",
+    "style": "DASHED",
+    "hideLabel": true
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "x": "3",
+     "y": "0",
+     "unnamed": true
+    },
+    {
+     "id": "B",
+     "x": "19",
+     "y": "4",
+     "unnamed": true
+    },
+    {
+     "id": "T",
+     "x": "9",
+     "y": "2",
+     "unnamed": true
+    },
+    {
+     "id": "Ec",
+     "unnamed": true,
+     "x": "27/2",
+     "y": "3"
+    },
+    {
+     "id": "Ea",
+     "unnamed": true,
+     "x": "7",
+     "y": "1"
+    },
+    {
+     "id": "Eb",
+     "unnamed": true,
+     "x": "21",
+     "y": "5"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cc",
+     "point": "Ec",
+     "text": "y=f(x)",
+     "direction": "NE",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "ca",
+     "point": "Ea",
+     "text": "y=x/4-3/4",
+     "direction": "SW",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "cb",
+     "point": "Eb",
+     "text": "y=x/4-1/4",
+     "direction": "NE",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "zA",
+     "point": "A",
+     "text": "A(3,0)",
+     "labelKind": "MATH",
+     "direction": "NE"
+    },
+    {
+     "id": "zB",
+     "point": "B",
+     "text": "B(19,4)",
+     "labelKind": "MATH",
+     "direction": "NE"
+    },
+    {
+     "id": "zT",
+     "point": "T",
+     "text": "T(9,2)",
+     "labelKind": "MATH",
+     "direction": "NE"
+    }
+   ]
+  }
+ },
+ "pointNames": {},
+ "caption": "k=-3/4이면 직선 y=x/4-3/4이 곡선과 (3,0), (19,4)의 두 점에서 만나고, k=-1/4이면 직선 y=x/4-1/4이 곡선의 오른쪽 가지에 점 (9,2)에서 접하고 왼쪽 가지와 한 점에서 만나 두 점이 된다. 따라서 k=-3/4, -1/4이고 합은 -1이므로 답은 ②이다. (곡선은 y=f(x)=|√(2x-2)-2|이다.)",
+ "sourceConditions": [
+  "y=|√(2x-2)-2|와 y=x/4+k가 서로 다른 두 점에서 만나는 k"
+ ],
+ "newVisualInformation": [
+  "k=-3/4일 때의 두 교점 (3,0), (19,4)와 k=-1/4일 때의 접점 (9,2)"
+ ]
+}

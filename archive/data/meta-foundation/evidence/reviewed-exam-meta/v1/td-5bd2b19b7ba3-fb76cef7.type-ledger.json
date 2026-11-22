@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-5bd2b19b7ba3-fb76cef7",
+  "sourceArchiveFile": "original/middle/m2/2mid/26_신흥중_2학기_중간_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_cf9cf0b09cd73d05964e66d24769fd144e4a3231dabb51b21fa7f055da4d1475",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "step": "이웃각합180도를3:7로 나누면 C=126도이며 맞은편 A도126도이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4c8b2f647ef5070ecbf97005f20baa33e99005e69a60a15c8a7ea9b5bc93070b",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "step": "직사각형의 등길이 대각선과 이등분으로 OA=OB=5,AB=6이어서 둘레16이다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ff7c626f2bcf6542b6e12a90adbaf568549ad4d0a396b5a8346843a1050809aa",
+      "sourceOrdinal": 8,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_FIGURE_AREA",
+      "templateKey": null,
+      "step": "AD∥EC로 ADE=ADC이므로 ABDE=ABC이며 직각삼각형넓이16×24/2=192이다.",
+      "note": "새 PT 제안: 평행선 사이 같은 밑변 삼각형의 등적 변환. 평행선 사이 같은 밑변의 삼각형 넓이를 옮겨 사각형 넓이를 계산. 기존 평행 조건 찾기 PT와 목표가 다름. 검사 오류: [{\"code\":\"PT_NOT_ACTIVE\"}]",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e34e43f633ef6a06566f4c6c82e6d985abea30548c6f165d747a1b91ba65f3c4",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "step": "마름모 대각선 수직이등분으로 ABD넓이240을 얻고 BE:BA=2:5의 같은 높이 넓이비를 적용해96이다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f5bf3281b65931528e98f8e01329584e9891e6319b92d342e091ce2f3829cf1b",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+      "templateKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
+      "step": "평행선과 각이등분으로 BE=CF=18이며 BC=24이므로 겹친 FE=18+18-24=12이다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0dc6c72590cba892423263717adfad82ef03ba7dde7b2b7c2f81a4ee24e15e13",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+      "templateKey": "TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE",
+      "step": "직사각형에 대각선 수직 조건을 더하면 정사각형이므로㉣의④만 옳다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_73f441a5e0135603bea906739fb899ed83d7c9fa1ccdd647bbf432f9d7c1b7b9",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_CONDITIONS_IDENTIFICATION",
+      "templateKey": "TPL_MG_IDENTIFY_INVALID_PARALLELOGRAM_CONDITION",
+      "step": "한 쌍의 대변평행과 다른쌍 등길이는 등변사다리꼴도 가능하여⑤는 평행사변형 충분조건이 아니다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6f1d3171996bbe3818f7847a3e392740209d4492a70a1b6a7b4f6a83a4b57ce6",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "step": "정사각형의 마름모 포함,이웃각 같은 평행사변형의 직각,등대각선 마름모의 정사각형은 참이나 대각선 수직만으로 마름모는 아니어서 ㄱㄴㄹ이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e763b17dbf0449df924277491c475f47dd759ec252a31f3054296a115b2a5339",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+      "step": "BM=CM,DM=EM으로 BDM과 CEM가 RHS합동이어서 B=C=56도이고 BMD=34도이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e6084626f0a98db0f896f010e0e2e026f1166c3d702c896393abdcc5245dcc82",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "step": "AOE와 COF의 합동으로 대각선AC와EF가 서로를 이등분하고 등길이이므로 AECF가 직사각형이다. AEF=55도이므로 CEF=35도이다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    }
+  ]
+}

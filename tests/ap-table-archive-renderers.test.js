@@ -17,7 +17,7 @@ const cssQuery = queryOf(engineHtml, /<link rel="stylesheet" href="css\/ap-table
 const pages = {
   'generated-bank.html': { call: /function questionStem\(parent,value\)\{[\s\S]*?apNormalizeTables\(raw\)[\s\S]*?\n\}/, guard: /globalThis\.ApTableEngine\?[^;]*renderApTables\(raw\)/ },
   'problem-bank-search.html': { call: /function safeStem\(host,content\)\{[\s\S]*?apNormalizeTables\(raw\)[\s\S]*?\n\}/, guard: /globalThis\.ApTableEngine\?[^;]*renderApTables\(raw\)/ },
-  'mixer.html': { call: /function createQuestionItem\(record\)[\s\S]*?mixerExamHtml\(mixerApTables\(q\.content \|\| ''\)\)/, guard: /function mixerApTables\(html\)[\s\S]*?globalThis\.ApTableEngine\)[^;]*renderApTables\(html\)/ },
+  'mixer.html': { call: /function createQuestionItem\(record\)[\s\S]*?mixerExamHtml\(mixerApTables\(mixerQuestionBody\(q\) \|\| ''\)\)/, guard: /function mixerApTables\(html\)[\s\S]*?globalThis\.ApTableEngine\)[^;]*renderApTables\(html\)/ },
 };
 
 test('engine.html cache-bust queries are readable (reference for the pages below)', () => {

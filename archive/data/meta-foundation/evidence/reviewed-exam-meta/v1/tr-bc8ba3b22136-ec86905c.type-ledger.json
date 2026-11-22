@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-bc8ba3b22136-ec86905c",
+  "sourceArchiveFile": "original/middle/m2/2final/20_왕의중_2학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_4b01196922408cbb7e6ba3aa877d26ff8698eff804767fd18dbaca58d554892a",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+      "step": "종이를 네번반으로 접어 넓이비16:1을 얻고 닮음비가 넓이비의 제곱근이므로4:1을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_02305dfffcdd9d8d959993b5ee532b350d2c6f0f44e1192ed4d3355bc1bfb5de",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "step": "AD:AB=9:21과 AF:AC=6:14가 모두3:7이므로 DF와BC가평행이다. 따라서 동위각 ADF=ABC를 고른다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_24f150ba2cf882f7840a26390035c5e060b825592e34ceaf98ececb03d90069f",
+      "sourceOrdinal": 15,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_CENTROID",
+      "templateKey": null,
+      "step": "무게중심으로 BGM이전체1/6이고 N이BG중점이라 GNM이그절반1/12이다. 넓이4를12배해48을 구한다.",
+      "note": " 새 PT 제안: 무게중심의 중선비와 넓이 분할. 무게중심이 각 중선을 꼭짓점에서2:1로 나누는 성질과 중선·중점선에 의한 길이비 및 넓이 분할을 이용한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7b01af4ce920dadac1349f7b6b48012f8b2f94b38a1044be21a4c94f8c78dc8d",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+      "step": "한변7의큰정사각형넓이49에서 직각변3·4의 삼각형 네개넓이24를 빼 내부사각형넓이25를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6b4450d53b3d5e496fe65d965f01d607ce5fbcac1db596560cfac8551ae849af",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_EXISTENCE",
+      "step": "대응각과 대응변비가 모양을 고정하는 정사각형·원·정삼각형만 항상 닮음이며 나머지는 각이나 변비가 달라질 수 있음을 판별한다.",
+      "note": " 새 TPL 제안: 닮은 도형의 직접 풀이. 정의: 대응각과 대응변비가 모양을 고정하는 정사각형·원·정삼각형만 항상 닮음이며 나머지는 각이나 변비가 달라질 수 있음을 판별한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    }
+  ]
+}

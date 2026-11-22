@@ -5,6 +5,7 @@ const path = require("path");
 const core = require("../archive/archive2-core.js");
 const { catalog: canonicalCatalog } = require("./helpers/archive2-scope-harness.cjs");
 const { assertCanonicalRuntimeGate, runtimeRecordCount } = require("./helpers/meta-runtime-gate.cjs");
+const { bindingKindOf } = require("./helpers/meta-row-binding.cjs");
 
 const root = path.resolve(__dirname, "..");
 const readJson = (relative) => JSON.parse(fs.readFileSync(path.join(root, relative), "utf8"));
@@ -68,7 +69,8 @@ assert.strictEqual(sourceHold, runtime.counts.sourceHold);
 assert.strictEqual(sourceHold, runtime.counts.currentCatalogSourceHoldDirect);
 assert.strictEqual(repaired, runtime.counts.currentCatalogSourceIdentityRepairJoin);
 
-const newlyHeld = [
+// Rows whose explanation/answer was edited after approval but whose stem and choices are confirmed unchanged (row binding): released, not held.
+const solutionEditedReleased = [
   {
     uid: "qid_v1_cca898b87f798e75221648cd0c5625c658a4df38e58dbff3f2eabfa0f60694c2",
     sourceFile: "original/high/h2/2final/25_매산여고_2학기_기말_고2_수학II.js",
@@ -94,20 +96,32 @@ const readiness = receipt.checked.currentCanonicalSourceReadinessV1;
 assert.strictEqual(readiness.packs.DERIVATIVE.sourceHoldCount, sourceHold);
 assert.strictEqual(readiness.packs.DERIVATIVE.automaticEligibleExpected, sourceReady);
 assert.strictEqual(readiness.packs.DERIVATIVE.heldRecords.length, sourceHold);
-for (const item of newlyHeld) {
+for (const item of solutionEditedReleased) {
   const base = bySource.get(sourceKey(item.sourceFile, item.ordinal));
   assert(base);
   assert.strictEqual(base.questionUid, item.uid);
   assert.strictEqual(base.identityStatus, "VERIFIED");
   assert.strictEqual(base.sourceIntegrityStatus, "VERIFIED");
-  assert.strictEqual(base.sourceStatus, "HOLD");
-  assert.notStrictEqual(base.sourceFingerprint, base.approvedSourceFingerprint);
+  assert.notStrictEqual(base.sourceFingerprint, base.approvedSourceFingerprint, "the approved full fingerprint still lags the edit");
+  assert.strictEqual(bindingKindOf(base), "row", "stem and choices are confirmed unchanged");
+  assert.strictEqual(base.sourceStatus, "VERIFIED");
   const overlay = runtime.records.find((row) => row.questionUid === item.uid);
   assert(overlay);
   const gate = assertCanonicalRuntimeGate(overlay, canonicalCatalog);
+  assert(!gate.reasons.includes("source_release"));
+  assert(!readiness.packs.DERIVATIVE.heldRecords.some((row) => row.questionUid === item.uid));
+}
+// Every row that is still held has no confirmed stem+choices binding: held, blocked by source_release and listed in the readiness receipt.
+for (const held of readiness.packs.DERIVATIVE.heldRecords) {
+  const base = bySource.get(sourceKey(held.sourceArchiveFile, held.sourceOrdinal));
+  assert(base);
+  assert.strictEqual(base.questionUid, held.questionUid);
+  assert.strictEqual(base.sourceStatus, "HOLD");
+  assert.notStrictEqual(bindingKindOf(base), "row", "a row whose stem and choices are confirmed must not stay held: " + held.questionUid);
+  const overlay = runtime.records.find((row) => row.questionUid === held.questionUid);
+  assert(overlay);
+  const gate = assertCanonicalRuntimeGate(overlay, canonicalCatalog);
   assert(gate.reasons.includes("source_release"));
-  assert(readiness.packs.DERIVATIVE.heldRecords.some((row) => row.questionUid === item.uid &&
-    row.sourceArchiveFile === item.sourceFile && row.sourceOrdinal === item.ordinal));
 }
 
 const corrected = runtime.records.find((row) => row.questionUid === "qid_v1_9e2e2da38b13f9a09e63058e85dc8fdc53455e898057a31193cd70ce6b7c629b");

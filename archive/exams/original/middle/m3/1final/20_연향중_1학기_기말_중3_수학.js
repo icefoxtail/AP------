@@ -135,7 +135,6 @@ window.examData = {
     },
     {
       "id": 10,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/20_연향중_1학기_기말_중3_수학/q10-solution.svg",
       "solutionImageSize": "full",
       "solutionImageAlt": "세 포물선의 꼭짓점은 모두 원점이며 세 그래프가 아래로 열린다. 파랑 그래프가 가장 좁고 초록 그래프가 가장 넓으며 주황 그래프가 가운데이다.",
@@ -172,7 +171,6 @@ window.examData = {
     },
     {
       "id": 12,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/20_연향중_1학기_기말_중3_수학/q12-solution.svg",
       "solutionImageSize": "full",
       "solutionImageAlt": "포물선은 위로 열리고 왼쪽에서 x축의 −1을 지난다. 꼭짓점은 x=1에 해당하는 점선 위와 x축 아래에 있다.",
@@ -297,7 +295,6 @@ window.examData = {
     },
     {
       "id": 20,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/20_연향중_1학기_기말_중3_수학/q20-solution.svg",
       "solutionImageSize": "full",
       "solutionImageAlt": "왼쪽 조각의 겹치지 않는 부분을 주황으로 칠하고 x=1에서 자른 경계를 점선으로 표시했다. 아래 직사각형은 원래 색과 이동한 색이 합쳐진 모습을 보여 준다.",

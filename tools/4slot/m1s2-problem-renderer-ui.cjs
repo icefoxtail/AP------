@@ -21,6 +21,7 @@ function object(x){return !!x&&typeof x==='object'&&!Array.isArray(x);}
 function exact(x,keys,code){if(!object(x)||!eq(Object.keys(x).sort(),[...keys].sort()))fail(code+'_KEYS');}
 function integer(x,min=0){return Number.isSafeInteger(x)&&x>=min;}
 function unique(rows,match,code){const found=(rows||[]).filter(match);if(found.length!==1)fail(code);return found[0];}
+const isRenderEngineFile=p=>p==='archive/engine.html'||p==='archive/mixed_engine.html'||p==='apmath/wrong_print_engine.html'||/^archive\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p)||/^archive\/(?:css|js)\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p)||/^apmath\/(?:css|js)\/student-navigation\.(?:css|js)$/.test(p);
 function capturedRef(reader,ref,checkoutCommit,live=false){
  if(!ref||ref.commit!==checkoutCommit||!OID.test(checkoutCommit))fail('CAPTURE_COMMIT');
  // The historical Git tree is authenticated before comparing current bytes.
@@ -53,8 +54,11 @@ function svgRecords(bytes,assets){
  return selected.sort((a,b)=>a.assetRef.localeCompare(b.assetRef));
 }
 function currentData(reader,p){
- const bytes=reader.local(p),ref={path:p,gitBlobSha1:crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+bytes.length+'\0'),bytes])).digest('hex'),sha256:sha(bytes),bytes:bytes.length};
- reader.read(ref,true);return bytes;
+ if(p!==SVG_INDEX)fail('GENERATED_DATA_PATH');
+ // The writer generates this data before fourSlot and commits it afterwards.
+ // Keep the captured whole file Git-authenticated; the current regular file
+ // is checked by the fixed JSON wrapper and exact selected-record comparison.
+ return reader.local(SVG_INDEX);
 }
 function svgContinuity(before,after,assets){if(!eq(svgRecords(before,assets),svgRecords(after,assets)))fail('SELECTED_SVG_INDEX_DRIFT');}
 function capturedArtifacts(reader,refs,artifacts,ancestor){
@@ -101,23 +105,29 @@ function coverage(c,screenshots,viewport){
 }
 function verify({reader,doc,current,subjects,ancestor}){
  const t=reader.json(doc.uiTechnicalRef,true),v=reader.json(doc.uiVisualRef,true);
- if(t.schemaVersion!=='archive-m1s2-problem-seven-github-ui-raw-v1'||t.status!=='TECHNICAL_PASS_VISUAL_REVIEW_PENDING'||t.executionOwner!=='GITHUB_ACTIONS_CHROMIUM_EXACT_PR_HEAD'||
+ const currentBinding=currentReuseRequested(doc,t,v);
+ if(currentBinding)verifyCurrentVisualReuse({reader,doc,t,v,ancestor});
+ if(t.schemaVersion!=='archive-m1s2-problem-seven-github-ui-raw-v1'||t.status!=='TECHNICAL_PASS_VISUAL_REVIEW_PENDING'||t.executionOwner!==(currentBinding?CURRENT_OWNER:'GITHUB_ACTIONS_CHROMIUM_EXACT_PR_HEAD')||
     !OID.test(t.checkoutCommit)||!OID.test(t.baseCommit)||!String(t.browserVersion||'').trim()||t.mode!=='exam'||t.studentReview!==true||t.problemOnlyScreenshots!==true||
     t.sourceOverlay!==false||t.sourceOverlayCount!==0||t.sourceWrites!==0||t.solutionsOpened!==false||t.productionCdnTest!==false||t.newFullMathematicalQa!==false||
     t.newMetadataApprovals!==0||t.newDifficultyJudgments!==0||t.newReviewPassCount!==0||t.newFourSlotApprovals!==0||
     t.expectedLogicalCases!==14||t.completedLogicalCases!==14||!Array.isArray(t.results)||t.results.length!==14||!Array.isArray(t.screenshotArtifacts)||t.screenshotArtifactCount!==t.screenshotArtifacts.length||
     !Array.isArray(t.failures)||t.failures.length||!Array.isArray(t.externalFontResources)||t.externalFontResources.length)fail('TECHNICAL');
+ if(currentBinding)verifyCurrentCaptureExecution(t);
+ else{
  exact(t.execution,['provider','eventName','repository','workflow','job','runId','runAttempt','pullRequest','headSha','baseSha','eventSha','runUrl'],'CI_EXECUTION');
  if(t.execution.provider!=='GITHUB_ACTIONS'||t.execution.eventName!=='pull_request'||t.execution.repository!=='icefoxtail/AP------'||
     !String(t.execution.workflow||'').trim()||t.execution.job!=='m1s2-problem-seven'||!/^[1-9][0-9]*$/.test(t.execution.runId||'')||
     !integer(t.execution.runAttempt,1)||!integer(t.execution.pullRequest,1)||t.execution.headSha!==t.checkoutCommit||
     !OID.test(t.execution.baseSha||'')||!OID.test(t.execution.eventSha||'')||
     t.execution.runUrl!=='https://github.com/icefoxtail/AP------/actions/runs/'+t.execution.runId)fail('CI_EXECUTION');
- if(v.schemaVersion!=='archive-independent-m1s2-problem-seven-ui-review-v1'||v.decision!==DECISION||!String(v.reviewer||'').trim()||v.reviewer===doc.author||v.reviewer===t.executionOwner||
+ }
+ if(v.schemaVersion!==(currentBinding?CURRENT_VISUAL_SCHEMA:'archive-independent-m1s2-problem-seven-ui-review-v1')||v.decision!==DECISION||!String(v.reviewer||'').trim()||v.reviewer===doc.author||v.reviewer===t.executionOwner||
     v.newMathQa!==0||v.newSemanticApproval!==0||v.newFourSlotVector!==0||!Array.isArray(v.records)||v.records.length!==14)fail('VISUAL');
  visualTechnicalRef(reader,v.technicalRef,doc.uiTechnicalRef,ancestor);
  ancestor(doc.reviewedSourceRef.commit,t.baseCommit);ancestor(t.baseCommit,t.checkoutCommit);ancestor(t.checkoutCommit,reader.head);
- for(const[ref,pin]of[[t.checkerRef,PINS.checker],[t.captureHelperRef,PINS.capture],[t.surfaceHelperRef,PINS.surface],[t.manifestRef,PINS.manifest]]){
+ const implementationPins=currentBinding?CURRENT_PINS:PINS;
+ for(const[ref,pin]of[[t.checkerRef,implementationPins.checker],[t.captureHelperRef,implementationPins.capture],[t.surfaceHelperRef,implementationPins.surface],[t.manifestRef,implementationPins.manifest]]){
   if(ref?.commit!==t.checkoutCommit||ref.path!==pin.path||ref.sha256!==pin.sha256)fail('IMPLEMENTATION');capturedRef(reader,ref,t.checkoutCommit,true);
  }
  const manifest=reader.json(withoutCommit(t.manifestRef),true);
@@ -135,7 +145,7 @@ function verify({reader,doc,current,subjects,ancestor}){
  for(const ref of t.servedFiles){if(ref.commit!==t.checkoutCommit||runtimePaths.has(ref.path))fail('RUNTIME_INVENTORY');runtimePaths.add(ref.path);
   // Own source/assets are checked by each selected sidecar. Recheck the exact
   // shared student runtime without coupling one UID to another exam's bytes.
-  if(![MD,ID,SVG_INDEX].includes(ref.path))capturedRef(reader,ref,t.checkoutCommit,!ref.path.startsWith('archive/exams/')&&!ref.path.startsWith('archive/assets/images/'));
+  if(![MD,ID,SVG_INDEX].includes(ref.path))capturedRef(reader,ref,t.checkoutCommit,!ref.path.startsWith('archive/exams/')&&!ref.path.startsWith('archive/assets/images/')&&!isRenderEngineFile(ref.path));
   if(ref.path==='archive/engine.html')engine++;
  }if(engine!==1)fail('ENGINE_REQUIRED');
  const mirroredPaths=new Set();for(const ref of t.mirroredAssets){if(!ref.path?.startsWith('archive/assets/images/')||mirroredPaths.has(ref.path))fail('MIRRORED_INVENTORY');mirroredPaths.add(ref.path);capturedRef(reader,ref,t.checkoutCommit);}
@@ -177,4 +187,110 @@ function verify({reader,doc,current,subjects,ancestor}){
  capturedArtifacts(reader,v.artifactRefs,artifacts,ancestor);
  return{logicalCases:2,newSemanticApproval:0,newFourSlotVector:0};
 }
-module.exports={verify,coverage,PINS,DECISION,capturedRef,visualTechnicalRef,selectedDataRows,svgRecords,svgContinuity,capturedArtifacts,surfaceTopology};
+
+// One immutable current ops capture reuses exactly the prior accepted pixels.
+const CURRENT_OWNER="GITHUB_ACTIONS_CHROMIUM_CLOSED_OPS_PUSH_HEAD";
+const CURRENT_VISUAL_SCHEMA="archive-independent-m1s2-current-ui-reuse-v1";
+const CURRENT_CAPTURE_HEAD="48d18ccdc7eafffe3d1d8ae32e65a4dc23437502";
+const CURRENT_BASE_COMMIT="a66a389b96525f67e2868a000184039e08627e9f";
+const CURRENT_EXECUTION=Object.freeze({"provider":"GITHUB_ACTIONS","eventName":"push","repository":"icefoxtail/AP------","workflow":"Middle Protected Current Renderer","job":"current-ui","runId":"44015662986","runAttempt":1,"pullRequest":null,"headSha":"48d18ccdc7eafffe3d1d8ae32e65a4dc23437502","baseSha":null,"eventSha":"48d18ccdc7eafffe3d1d8ae32e65a4dc23437502","runUrl":"https://github.com/icefoxtail/AP------/actions/runs/44015662986","ref":"refs/heads/ops/middle-protected9-current-renderer-26fc-20261117","capturedHead":"48d18ccdc7eafffe3d1d8ae32e65a4dc23437502"});
+const CURRENT_ARTIFACT_PREFIX="docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/";
+const CURRENT_TECHNICAL_REF=Object.freeze({"commit":"90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3","path":"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/technical-proof.json","gitBlobSha1":"82fe4a6929e1d7b800bbba4f3a2634ffea04cc77","sha256":"6d7281d12281f6ceb454d3cc79244a66a8a5013327120a4b5bfde98671d8fa42","bytes":222310});
+const CURRENT_VISUAL_REF=Object.freeze({"commit":"d3d625ceb7315ffddbcd4a0a8c9960527fe0c9ed","path":"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/visual-current-reuse-v1.json","gitBlobSha1":"e626233f7aeaddf7d7d81bab5daf59e7ed2996bc","sha256":"ca40535462ab65d42ddac642fe640dbcb49dee9ae03dd3f611813aab778d6807","bytes":18296});
+const CURRENT_EQUIVALENCE_REF=Object.freeze({"commit":"d22e6702b1a8cb5e06f658bd3d3bf8a1a7b3a543","path":"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/exact-display-equivalence-v1.json","gitBlobSha1":"7b299baaa116756e2527a77c5181ed03ec1ae91d","sha256":"873fabbec304705ea3e12ff4621849b040fdd4f7096006bfd8b00f07d2f55dec","bytes":53093});
+const CURRENT_INDEPENDENT_REF=Object.freeze({"commit":"d22e6702b1a8cb5e06f658bd3d3bf8a1a7b3a543","path":"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/root-independent-equivalence-v1.json","gitBlobSha1":"2cb1d70d666c5742ef57b0bce2b4dbf9231c5afe","sha256":"83bb6258be37609abfda71527f65165f1658b5caf5da572ee93fe1f60bc7f4ac","bytes":16257});
+const CURRENT_REASSEMBLY_REF=Object.freeze({"commit":"90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3","path":"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/root-reassembly-v1.json","gitBlobSha1":"f07ff335d4abab50048d700d5a526d3f9fa68790","sha256":"fa841847643c673948650c4d70a1ae00fc578e3ee627ccfc820d2b2fda081910","bytes":7306});
+const PRIOR_TECHNICAL_REF=Object.freeze({"commit":"a019663b1c3940b57a47a3b8abc025a56e2673c3","path":"docs/operations/m1s2-problem-seven-ui-26fc-20261116/technical-proof.json","gitBlobSha1":"1dfbe22d89b9d8f229724796dc559fe3799483b8","sha256":"d379e5f05e1e59e74b635452e535fc676fec502542ff7a25c0d77cb63a898f9a","bytes":222136});
+const PRIOR_VISUAL_REF=Object.freeze({"commit":"c4e1838e9245c877c98c96e7cb9d8b4c6b426758","path":"docs/operations/m1s2-problem-seven-ui-26fc-20261116/independent-visual-review.json","gitBlobSha1":"77f810ff113e15ee894d21c8bab591ab8132539b","sha256":"7f30419f07e71faf441418ed07b30366037413fb99f9448b39a7ba208bb646a9","bytes":15105});
+const CURRENT_PINS=Object.freeze({...PINS,checker:Object.freeze({path:"tools/check-m1s2-problem-seven-browser.cjs",sha256:"130fcab0be811c537ddce05f5c1f17a26e18cf9862ea690dbefcea419bde73e9"})});
+
+function currentReuseRequested(doc,t,v){
+ return doc.uiTechnicalRef?.path===CURRENT_TECHNICAL_REF.path||
+  t.executionOwner===CURRENT_OWNER||v.schemaVersion===CURRENT_VISUAL_SCHEMA;
+}
+function verifyCurrentCaptureExecution(t){
+ exact(t.execution,['provider','eventName','repository','workflow','job','runId','runAttempt','pullRequest','headSha','baseSha','eventSha','runUrl','ref','capturedHead'],'CURRENT_CI_EXECUTION');
+ if(t.executionOwner!==CURRENT_OWNER||t.checkoutCommit!==CURRENT_CAPTURE_HEAD||t.baseCommit!==CURRENT_BASE_COMMIT||
+    !eq(t.execution,CURRENT_EXECUTION))fail('CURRENT_CI_EXECUTION');
+}
+function verifyCurrentVisualReuse({reader,doc,t,v,ancestor}){
+ if(!eq(doc.uiTechnicalRef,withoutCommit(CURRENT_TECHNICAL_REF))||
+    !eq(doc.uiVisualRef,withoutCommit(CURRENT_VISUAL_REF)))fail('CURRENT_REF_SCOPE');
+ for(const ref of[CURRENT_TECHNICAL_REF,CURRENT_VISUAL_REF,CURRENT_EQUIVALENCE_REF,CURRENT_INDEPENDENT_REF,
+   CURRENT_REASSEMBLY_REF,PRIOR_TECHNICAL_REF,PRIOR_VISUAL_REF])ancestor(ref.commit,reader.head);
+ // Authenticate immutable publication paths and current regular-file bytes;
+ // the raw push result is never relabelled or projected into PR provenance.
+ const sealedTechnical=reader.json(CURRENT_TECHNICAL_REF,true),sealedVisual=reader.json(CURRENT_VISUAL_REF,true);
+ if(!eq(t,sealedTechnical)||!eq(v,sealedVisual))fail('CURRENT_RAW_BINDING');
+ verifyCurrentCaptureExecution(t);
+ exact(v,['schemaVersion','reviewer','derivationAuthor','decision','reviewMethod','technicalRef','priorTechnicalRef',
+  'priorVisualRef','equivalenceRef','rootReassemblyRef','actualExecution','newMathQa','newSemanticApproval','newFourSlotVector',
+  'newVisualInspection','priorVisualRecordsCopiedExactly','currentRawTechnicalUnchanged','sharedCodeEquivalenceClaimed',
+  'currentRuntimeAndFontLiveGuardsRequired','records','artifactRefs','continuingContentHolds','officialAuthorityBuilderConsumerStatus',
+  'independentEquivalenceRef','currentCaptureFilesWereModified'],'CURRENT_VISUAL');
+ if(v.schemaVersion!==CURRENT_VISUAL_SCHEMA||v.derivationAuthor!=='GPT_M1_RELEASE_CLOSEOUT'||v.decision!==DECISION||
+    v.reviewMethod!=='EXACT_ORIGINAL_PNG_AND_CAPTURE_REUSE_OF_PRIOR_SEPARATE_VISUAL_INSPECTION'||
+    !eq(v.technicalRef,CURRENT_TECHNICAL_REF)||!eq(v.priorTechnicalRef,PRIOR_TECHNICAL_REF)||!eq(v.priorVisualRef,PRIOR_VISUAL_REF)||
+    !eq(v.equivalenceRef,CURRENT_EQUIVALENCE_REF)||!eq(v.independentEquivalenceRef,CURRENT_INDEPENDENT_REF)||
+    !eq(v.rootReassemblyRef,CURRENT_REASSEMBLY_REF)||!eq(v.actualExecution,CURRENT_EXECUTION)||
+    v.newMathQa!==0||v.newSemanticApproval!==0||v.newFourSlotVector!==0||v.newVisualInspection!==0||
+    v.priorVisualRecordsCopiedExactly!==true||v.currentRawTechnicalUnchanged!==true||v.currentCaptureFilesWereModified!==false||
+    v.sharedCodeEquivalenceClaimed!==false||v.currentRuntimeAndFontLiveGuardsRequired!==true||
+    v.continuingContentHolds!=='FOUR_PREEXISTING_CONTENT_OR_SOLUTION_HOLDS_UNCHANGED'||
+    v.officialAuthorityBuilderConsumerStatus!=='CURRENT_BINDING_NOT_RUN')fail('CURRENT_VISUAL');
+ const prior=reader.json(PRIOR_TECHNICAL_REF),oldVisual=reader.json(PRIOR_VISUAL_REF);
+ const witness=reader.json(CURRENT_EQUIVALENCE_REF),independent=reader.json(CURRENT_INDEPENDENT_REF),assembly=reader.json(CURRENT_REASSEMBLY_REF);
+ if(witness.schemaVersion!=='archive-m1s2-current-fourteen-byte-equivalence-v1'||
+    witness.status!=='EXACT_CURRENT_DISPLAY_BYTES_PRIOR_VISUAL_RECORDS_REUSABLE_INDEPENDENT_REVIEW_REQUIRED'||
+    witness.currentCapture?.commit!==CURRENT_CAPTURE_HEAD||!eq(witness.refs?.currentTechnical,CURRENT_TECHNICAL_REF)||
+    !eq(witness.refs?.priorTechnical,PRIOR_TECHNICAL_REF)||!eq(witness.refs?.priorVisual,PRIOR_VISUAL_REF)||
+    independent.decision!=='ACCEPT_REUSE_OF_IDENTICAL_EXISTING_DISPLAY_OBSERVATIONS_ONLY'||
+    independent.currentEvidenceCommit!==CURRENT_TECHNICAL_REF.commit)fail('CURRENT_EQUIVALENCE');
+ if(oldVisual.schemaVersion!=='archive-independent-m1s2-problem-seven-ui-review-v1'||oldVisual.decision!==DECISION||
+    oldVisual.newMathQa!==0||oldVisual.newSemanticApproval!==0||oldVisual.newFourSlotVector!==0||
+    !eq(oldVisual.technicalRef,PRIOR_TECHNICAL_REF)||v.reviewer!==oldVisual.reviewer||
+    !Array.isArray(oldVisual.records)||oldVisual.records.length!==14||!eq(v.records,oldVisual.records))fail('CURRENT_PRIOR_VISUAL');
+ if(prior.schemaVersion!=='archive-m1s2-problem-seven-github-ui-raw-v1'||
+    prior.status!=='TECHNICAL_PASS_VISUAL_REVIEW_PENDING'||!Array.isArray(prior.results)||prior.results.length!==14||
+    !Array.isArray(t.results)||t.results.length!==14||!eq(prior.screenshotArtifacts,t.screenshotArtifacts))fail('CURRENT_CAPTURE_REUSE');
+ const stripItem=x=>({...x,sourceRef:withoutCommit(x.sourceRef),assetRef:withoutCommit(x.assetRef)});
+ if(!Array.isArray(t.items)||!Array.isArray(prior.items)||!eq(t.items.map(stripItem),prior.items.map(stripItem))||
+    !eq(withoutCommit(t.manifestRef),withoutCommit(prior.manifestRef))||
+    !Array.isArray(t.mirroredAssets)||!eq(t.mirroredAssets.map(withoutCommit),prior.mirroredAssets.map(withoutCommit)))fail('CURRENT_APPROVED_INPUTS');
+ const oldFonts=new Map((prior.studentFontResources||[]).map(f=>[f.resourceId,f]));
+ const newFonts=new Map((t.studentFontResources||[]).map(f=>[f.resourceId,f]));
+ if(oldFonts.size!==prior.studentFontResources?.length||newFonts.size!==t.studentFontResources?.length||
+    oldFonts.size!==newFonts.size||[...newFonts].some(([id,f])=>!oldFonts.has(id)||!eq(withoutCommit(f),withoutCommit(oldFonts.get(id)))))fail('CURRENT_FONT_INVENTORY');
+ for(let i=0;i<14;i++){
+  const a=prior.results[i],b=t.results[i];
+  if(a.questionUid!==b.questionUid||a.sourceOrdinal!==b.sourceOrdinal||!eq(a.viewport,b.viewport)||
+     a.surface!==b.surface||a.mode!==b.mode||a.questionSha256!==b.questionSha256||
+     !eq(withoutCommit(a.sourceRef),withoutCommit(b.sourceRef))||
+     !eq(a.assetRefs.map(withoutCommit),b.assetRefs.map(withoutCommit))||
+     !['capture','screenshots','geometry','surfaceStructure','pageErrors','requestFailures','externalRequests'].every(k=>eq(a[k],b[k])))fail('CURRENT_CAPTURE_REUSE');
+  const before={...a.technical},after={...b.technical};delete before.fontResourceIds;delete after.fontResourceIds;
+  if(!eq(before,after)||!Array.isArray(b.technical.fontResourceIds)||
+     new Set(b.technical.fontResourceIds).size!==b.technical.fontResourceIds.length||
+     b.technical.fontResourceIds.some(id=>!a.technical.fontResourceIds.includes(id)||!newFonts.has(id)))fail('CURRENT_FONT_CASE_REUSE');
+ }
+ if(!Array.isArray(oldVisual.artifactRefs)||oldVisual.artifactRefs.length!==14)fail('CURRENT_PRIOR_PNG');
+ const expectedArtifacts=oldVisual.artifactRefs.map(ref=>({...ref,commit:CURRENT_TECHNICAL_REF.commit,
+  path:CURRENT_ARTIFACT_PREFIX+path.posix.basename(ref.path)}));
+ const byPath=refs=>refs.slice().sort((a,b)=>a.path.localeCompare(b.path));
+ if(!Array.isArray(v.artifactRefs)||new Set(v.artifactRefs.map(r=>r.path)).size!==14||!eq(byPath(v.artifactRefs),byPath(expectedArtifacts)))fail('CURRENT_PNG_REUSE');
+ const profile=unique(assembly.profileReceipts,x=>x.profile==='m1','CURRENT_TRANSPORT_PROFILE');
+ if(assembly.checkoutCommit!==CURRENT_CAPTURE_HEAD||String(assembly.runId)!==CURRENT_EXECUTION.runId||
+    profile.logical!==14||profile.png!==14||profile.files!==15||profile.technicalGit!==CURRENT_TECHNICAL_REF.gitBlobSha1||
+    profile.technicalRaw!==CURRENT_TECHNICAL_REF.sha256||assembly.checks?.pngFullRemoteReadback!==true)fail('CURRENT_TRANSPORT');
+ for(const ref of oldVisual.artifactRefs){
+  const bytes=reader.read(ref),name=path.posix.basename(ref.path);
+  if(bytes.length<PNG_SIGNATURE.length||!bytes.subarray(0,PNG_SIGNATURE.length).equals(PNG_SIGNATURE))fail('CURRENT_PRIOR_PNG');
+  const rb=unique(assembly.pngReadbacks,x=>x.profile==='m1'&&x.path===name,'CURRENT_TRANSPORT_PNG');
+  if(rb.git!==ref.gitBlobSha1||rb.raw!==ref.sha256||rb.bytes!==ref.bytes||rb.readback!==true)fail('CURRENT_TRANSPORT_PNG');
+ }
+ return true;
+}
+
+module.exports={verify,coverage,PINS,DECISION,capturedRef,visualTechnicalRef,selectedDataRows,svgRecords,svgContinuity,capturedArtifacts,surfaceTopology,currentData,
+ currentReuseRequested,verifyCurrentCaptureExecution,verifyCurrentVisualReuse,CURRENT_OWNER,CURRENT_VISUAL_SCHEMA,CURRENT_CAPTURE_HEAD,CURRENT_PINS,
+ CURRENT_TECHNICAL_REF,CURRENT_VISUAL_REF,CURRENT_EQUIVALENCE_REF,CURRENT_INDEPENDENT_REF,CURRENT_REASSEMBLY_REF,PRIOR_TECHNICAL_REF,PRIOR_VISUAL_REF};

@@ -36,8 +36,10 @@ on:
       - '.github/workflows/archive-reviewed-apply.yml'
       - '.github/workflows/archive-pages-release.yml'
   workflow_dispatch:
+  # Safety net only: every main push already runs this, and RETRY_EXHAUSTED queues one more run. Hourly runs held the
+  # single registration lock for 40-60 min and made each merge wait up to 30 min, so run once a day (03:43 KST).
   schedule:
-    - cron: '43 * * * *'
+    - cron: '43 18 * * *'
 permissions:
   contents: read
 jobs:
@@ -54,6 +56,8 @@ jobs:
         with:
           node-version: 22
       # Automation fixtures run once in CI; this existing check retains the native read-only inventory.
+      - name: Assemble question metadata (git holds its shards)
+        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
       - run: bash -n tools/ci/archive-main-auto-meta-pass.sh tools/ci/reviewed-meta-register-pass.sh tools/ci/archive-four-slot-pass.sh tools/ci/archive-pages-registration-derive.sh
       - name: Real production inventory (no writes or mathematical review)
         run: |
@@ -69,10 +73,55 @@ jobs:
           path: ${{ runner.temp }}/auto-meta-preview/
           if-no-files-found: warn
           retention-days: 14
+  classify:
+    # Runs outside the register lock. A push whose tree is already fully registered (writer --check:
+    # nothing needed) goes straight to Pages; anything else or any error leaves it to register.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # Main-only job: repository variable MAIN_RUNNER selects the runner (unset = GitHub-hosted).
+    runs-on: ${{ vars.MAIN_RUNNER || 'ubuntu-latest' }}
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      actions: write
+    outputs:
+      skip_register: ${{ steps.handoff.outputs.dispatched }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Hand an already registered push straight to the single Pages entrypoint
+        id: handoff
+        continue-on-error: true
+        timeout-minutes: 10
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PUSH_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          [[ "$PUSH_SHA" =~ ^[a-f0-9]{40}$ ]]
+          out="$RUNNER_TEMP/archive-registration-classify"
+          node tools/ci/archive-registration-writer.mjs --check --work-dir "$out" > /dev/null
+          # publishable (required lanes current) is the release condition: send it now, even while a long reviewed/inbox pass runs.
+          if [[ "$(node -p "const r=require(process.argv[1]);r.publishable===true" "$out/report.json")" != true ]]; then
+            echo 'Required registration is needed for this push; the register job handles it.'
+            exit 0
+          fi
+          gh workflow run archive-pages-release.yml --ref main -f registered_main_sha="$PUSH_SHA"
+          echo "Pages dispatched for $PUSH_SHA (required lanes current)." >> "$GITHUB_STEP_SUMMARY"
+          # Nothing else needed: the register job has no work for this push.
+          if [[ "$(node -p "const r=require(process.argv[1]);r.needed===false" "$out/report.json")" == true ]]; then
+            printf 'dispatched=true\n' >> "$GITHUB_OUTPUT"
+          fi
   register:
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    timeout-minutes: 150
+    needs: classify
+    if: ${{ !cancelled() && github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && needs.classify.outputs.skip_register != 'true' }}
+    # Main-only job: repository variable MAIN_RUNNER selects the runner (unset = GitHub-hosted).
+    runs-on: ${{ vars.MAIN_RUNNER || 'ubuntu-latest' }}
+    # reviewed inbox lane 120 + other lanes; persist may redo one full prepare.
+    timeout-minutes: 345
     permissions:
       contents: write
       actions: write
@@ -91,17 +140,57 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Assemble question metadata (git holds its shards)
+        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      # First save: only the lanes publication needs (publishable), so a long reviewed/inbox pass cannot hold a release back.
+      - name: Prepare only the required lanes first
+        id: prepare_required
+        timeout-minutes: 40
+        run: node tools/ci/archive-registration-writer.mjs --required-only --work-dir "$WRITER_WORK_DIR"
+      - name: Persist the required lanes before the long pass
+        id: persist_required
+        if: steps.prepare_required.outputs.safe_to_persist == 'true'
+        timeout-minutes: 60
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          node tools/ci/git-push-derived-with-retry.mjs \
+            --paths-file "$WRITER_WORK_DIR/commit.paths" \
+            --message 'chore(archive): register main snapshot [skip ci]' \
+            --regenerate 'node tools/ci/archive-registration-writer.mjs --required-only --work-dir "$WRITER_WORK_DIR"' \
+            --verify-command 'node tools/check-git-growth.mjs --base "$DERIVED_BASE_SHA" --head "$DERIVED_HEAD_SHA"' \
+            --reapply-check 'node tools/ci/archive-registration-writer.mjs --unrelated-range "$DERIVED_BASE_SHA" "$COMPETITOR_HEAD_SHA"' \
+            --remote origin --branch main --max-attempts 4 \
+            --race-fetch-scope all-heads \
+            --summary-file "$GITHUB_STEP_SUMMARY" --label 'required Archive registration lanes'
+      - name: Publish the required-lane snapshot before the long pass
+        if: steps.persist_required.outcome == 'success'
+        timeout-minutes: 10
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FIRST_SAVE_SHA: ${{ steps.persist_required.outputs.registered_sha }}
+          FIRST_SAVE_RESULT: ${{ steps.persist_required.outputs.result }}
+        run: |
+          set -euo pipefail
+          [[ "$FIRST_SAVE_SHA" =~ ^[a-f0-9]{40}$ ]]
+          git checkout --detach "$FIRST_SAVE_SHA"
+          out="$WRITER_WORK_DIR/persisted-required"
+          node tools/ci/archive-registration-writer.mjs --check --work-dir "$out" > /dev/null
+          if [[ "$(node -p "const r=require(process.argv[1]);r.publishable===true" "$out/report.json")" == true && ( "$FIRST_SAVE_RESULT" == PUSHED || "$GITHUB_EVENT_NAME" != schedule ) ]]; then
+            gh workflow run archive-pages-release.yml --ref main -f registered_main_sha="$FIRST_SAVE_SHA"
+          fi
       - name: Prepare only changed native registration lanes in one transaction
         id: prepare
-        timeout-minutes: 70
+        timeout-minutes: 150
         run: node tools/ci/archive-registration-writer.mjs --work-dir "$WRITER_WORK_DIR"
       - name: Persist verified lanes, native cursors and receipts once with race-safe regeneration
         id: persist
         if: steps.prepare.outputs.safe_to_persist == 'true'
-        timeout-minutes: 90
+        timeout-minutes: 170
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
@@ -112,9 +201,17 @@ jobs:
             --regenerate 'node tools/ci/archive-registration-writer.mjs --work-dir "$WRITER_WORK_DIR"' \
             --verify-command 'node tools/check-git-growth.mjs --base "$DERIVED_BASE_SHA" --head "$DERIVED_HEAD_SHA"' \
             --reapply-check 'node tools/ci/archive-registration-writer.mjs --unrelated-range "$DERIVED_BASE_SHA" "$COMPETITOR_HEAD_SHA"' \
-            --remote origin --branch main --max-attempts 6 \
+            --remote origin --branch main --max-attempts 4 \
             --race-fetch-scope all-heads \
             --summary-file "$GITHUB_STEP_SUMMARY" --label 'single Archive registration writer'
+      # RETRY_EXHAUSTED means nothing was pushed because main kept moving. Queue one more run now instead of waiting for the next push
+      # or the hourly cron (which may be an hour away); concurrency keeps one pending run, and it re-reads main when it starts.
+      - name: Queue another registration run when main kept moving
+        if: always() && (steps.persist_required.outputs.result == 'RETRY_EXHAUSTED' || steps.persist.outputs.result == 'RETRY_EXHAUSTED')
+        timeout-minutes: 5
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run archive-main-auto-meta.yml --ref main
       - name: Bind the persisted snapshot before any publication handoff
         id: registered
         if: steps.persist.outcome == 'success'

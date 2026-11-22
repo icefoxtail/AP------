@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-327c7a91d2f1-f078f254",
+  "sourceArchiveFile": "original/high/h2/2final/22_팔마고_2학기_기말_고2_수학II.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_bc8e1389b746afcc1321378ca60c8d286eecb330b980bf719f8799b1e4141d94",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+      "templateKey": "TPL_EXTREMA_STRUCTURE_COUNT",
+      "step": "도함수 그래프의 네 영점에서 부호가 바뀌는 방향으로 극대·극소를 판정한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b4709ad4bbfa0806f4556d16c2a1a358828630ba1660458565186a759749c3d0",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
+      "step": "미분과 적분의 역관계로 F를 쓴 후 F'=f의 계수를 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6da9fdf18f434b7d783daf9f7eb06066de6c09c618871f66ace24d6bff8ba304",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+      "templateKey": "TPL_MOTION_CONDITION_PARAMETER",
+      "step": "초기 위치에 속도 적분을 더한 위치식이 0인 양의 시각을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8423aee814620bdaef97c2c1d4ab4ee0135bddf24b7e0dfefe802be83c5af492",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+      "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+      "step": "도함수의 영점 0,4와 두 극값 차를 적분 조건으로 사용해 도함수 계수를 정한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_caaa42dccd424ef27e2fa0f316f3338d4c71602af9a62709d7c67b88cc2940d0",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+      "step": "적분함수의 짧은 구간 차분비로 바꾸어 미분계수 정의를 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b2440cc0d78f5509490f3e6386f3abb5e9180b07625b2a630bbd03396579a9d2",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+      "step": "음영 넓이를 원시함수 차 F(x)-F(a)로 바꾸어 우미분계수 극한을 취한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    }
+  ]
+}

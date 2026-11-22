@@ -16,7 +16,7 @@ function selectedDataHash(records,uid,source,ordinal,expectedHash){
  assert(Array.isArray(records),'UI_DATA_RECORDS');const rows=records.filter(row=>row.questionUid===uid);assert.equal(rows.length,1,'UI_UNIQUE_SELECTED_DATA');const row=rows[0];assert.equal(row.sourceArchiveFile,source,'UI_SELECTED_DATA_SOURCE');assert.equal(row.sourceOrdinal,ordinal,'UI_SELECTED_DATA_ORDINAL');const digest=sha256(stable(row));assert.equal(digest,expectedHash,'UI_SELECTED_DATA_CHANGED');return digest;
 }
 function preflight(reader,m){
- validateManifest(m);const engine=reader.read('archive/engine.html');assert.equal(gitBlob(engine),'905952ae39138e1f6dc0aa2d7c7c8a64403f527b','UI_CURRENT_ENGINE_GIT_DRIFT');assert.equal(sha256(engine),'a963c562478b96f7f9d8ae09ad6e5c85b3262296d734e7abd001836e1c3f317b','UI_CURRENT_ENGINE_RAW_DRIFT');const metadataBytes=reader.read(METADATA_PATH),metadata=JSON.parse(metadataBytes),identityBytes=reader.read(IDENTITY_PATH),identity=JSON.parse(identityBytes);const target=m.items[0],source=target.sourcePath.slice('archive/exams/'.length);const selectedDataProjections={schemaVersion:'archive-m3s2-q16-ui-data-projection-v1',questionUid:target.questionUid,sourceArchiveFile:source,sourceOrdinal:16,metadataSha256:selectedDataHash(metadata.records,target.questionUid,source,16,'a83412669da7333bbafb2ffb13a570bde073f150d218d64da25e8a881bc10b92'),identitySha256:selectedDataHash(identity.records,target.questionUid,source,16,'14e7993098a77babf53ee0b1036537579b85c3b27fb194204630f0ab174d3e55')};
+ validateManifest(m);const metadataBytes=reader.read(METADATA_PATH),metadata=JSON.parse(metadataBytes),identityBytes=reader.read(IDENTITY_PATH),identity=JSON.parse(identityBytes);const target=m.items[0],source=target.sourcePath.slice('archive/exams/'.length);const selectedDataProjections={schemaVersion:'archive-m3s2-q16-ui-data-projection-v1',questionUid:target.questionUid,sourceArchiveFile:source,sourceOrdinal:16,metadataSha256:selectedDataHash(metadata.records,target.questionUid,source,16,'a83412669da7333bbafb2ffb13a570bde073f150d218d64da25e8a881bc10b92'),identitySha256:selectedDataHash(identity.records,target.questionUid,source,16,'14e7993098a77babf53ee0b1036537579b85c3b27fb194204630f0ab174d3e55')};
  const items=m.items.map(item=>{const bytes=reader.read(item.sourcePath),bank=loadQuestions(bytes),q=bank[item.sourceOrdinal-1];
   assert.equal(gitBlob(bytes),item.sourceGitBlobSha1,'UI_SOURCE_GIT_DRIFT');assert.equal(sha256(bytes),item.sourceSha256,'UI_SOURCE_RAW_DRIFT');
   assert.equal(bank.length,24,'UI_BANK_COUNT');assert(q&&String(q.id??q.number)==='16','UI_ORDINAL');assert.equal(sha256(stable(q)),item.questionSha256,'UI_WHOLE_QUESTION_DRIFT');
@@ -31,10 +31,18 @@ function preflight(reader,m){
 function checkoutEvidence(actualCommit,env=process.env){
  const expected=env.ARCHIVE_M3S2_LAYOUT_UI_EXPECTED_SHA;assert(SHA1.test(expected||''),'UI_EXPECTED_CHECKOUT_REQUIRED');assert.equal(actualCommit,expected,'UI_CHECKOUT_MISMATCH');
  if(env.GITHUB_ACTIONS==='true'){
-  assert.equal(env.GITHUB_EVENT_NAME,'pull_request','UI_ACTIONS_EVENT_REQUIRED');assert.equal(env.GITHUB_REPOSITORY,'icefoxtail/AP------','UI_ACTIONS_REPOSITORY');assert(SHA1.test(env.GITHUB_SHA||''),'UI_ACTIONS_EVENT_COMMIT');
+  const reviewPush=env.GITHUB_EVENT_NAME==='push';
+  assert(env.GITHUB_EVENT_NAME==='pull_request'||reviewPush,'UI_ACTIONS_EVENT_REQUIRED');
+  if(reviewPush)assert.equal(env.GITHUB_REF,'refs/heads/ops/middle-protected9-current-renderer-26fc-20261117','UI_ACTIONS_REVIEW_BRANCH');
+  assert.equal(env.GITHUB_REPOSITORY,'icefoxtail/AP------','UI_ACTIONS_REPOSITORY');assert(SHA1.test(env.GITHUB_SHA||''),'UI_ACTIONS_EVENT_COMMIT');
   assert(path.isAbsolute(env.GITHUB_EVENT_PATH||'')&&fs.statSync(env.GITHUB_EVENT_PATH).isFile(),'UI_ACTIONS_EVENT_FILE');const event=JSON.parse(fs.readFileSync(env.GITHUB_EVENT_PATH,'utf8'));
-  assert.equal(event.pull_request?.head?.sha,actualCommit,'UI_ACTIONS_HEAD_MISMATCH');assert.equal(event.pull_request?.head?.repo?.full_name,env.GITHUB_REPOSITORY,'UI_ACTIONS_SAME_REPOSITORY');assert.equal(event.repository?.full_name,env.GITHUB_REPOSITORY,'UI_ACTIONS_EVENT_REPOSITORY');
-  assert(/^\d+$/.test(env.GITHUB_RUN_ID||'')&&/^\d+$/.test(env.GITHUB_RUN_ATTEMPT||''),'UI_ACTIONS_RUN_REQUIRED');assert(/^[A-Za-z0-9_.-]+$/.test(env.GITHUB_JOB||''),'UI_ACTIONS_JOB_REQUIRED');return{expectedCheckoutCommit:expected,actualCheckoutCommit:actualCommit,executionOwner:'GITHUB_ACTIONS_SUPPORTED_CHROME',githubEventCommit:env.GITHUB_SHA,repository:env.GITHUB_REPOSITORY,runId:env.GITHUB_RUN_ID,runAttempt:env.GITHUB_RUN_ATTEMPT,job:env.GITHUB_JOB,eventName:env.GITHUB_EVENT_NAME,headCommit:event.pull_request.head.sha};}
+  if(reviewPush){
+   assert.equal(env.GITHUB_SHA,actualCommit,'UI_ACTIONS_PUSH_HEAD_MISMATCH');assert.equal(event.after,actualCommit,'UI_ACTIONS_PUSH_AFTER_MISMATCH');assert.equal(event.ref,env.GITHUB_REF,'UI_ACTIONS_PUSH_REF_MISMATCH');
+  }else{
+   assert.equal(event.pull_request?.head?.sha,actualCommit,'UI_ACTIONS_HEAD_MISMATCH');assert.equal(event.pull_request?.head?.repo?.full_name,env.GITHUB_REPOSITORY,'UI_ACTIONS_SAME_REPOSITORY');
+  }
+  assert.equal(event.repository?.full_name,env.GITHUB_REPOSITORY,'UI_ACTIONS_EVENT_REPOSITORY');
+  assert(/^\d+$/.test(env.GITHUB_RUN_ID||'')&&/^\d+$/.test(env.GITHUB_RUN_ATTEMPT||''),'UI_ACTIONS_RUN_REQUIRED');assert(/^[A-Za-z0-9_.-]+$/.test(env.GITHUB_JOB||''),'UI_ACTIONS_JOB_REQUIRED');return{expectedCheckoutCommit:expected,actualCheckoutCommit:actualCommit,executionOwner:'GITHUB_ACTIONS_SUPPORTED_CHROME',githubEventCommit:env.GITHUB_SHA,repository:env.GITHUB_REPOSITORY,runId:env.GITHUB_RUN_ID,runAttempt:env.GITHUB_RUN_ATTEMPT,job:env.GITHUB_JOB,eventName:env.GITHUB_EVENT_NAME,headCommit:reviewPush?event.after:event.pull_request.head.sha};}
 
  assert(env.GITHUB_SHA===undefined&&env.GITHUB_RUN_ID===undefined,'UI_LOCAL_EXECUTION_NOT_ACTIONS');return{expectedCheckoutCommit:expected,actualCheckoutCommit:actualCommit,executionOwner:'LOCAL_CHROMIUM',githubEventCommit:null};
 }

@@ -15,6 +15,29 @@ const SOURCE_SHA = '4cfce909c023e5c4df4a759945c8cc3e0a63ec76';
 const SOURCE_COUNT = 23;
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const normalize = value => String(value ?? '').replace(/\s+/g, ' ').trim();
+function missingSourceNumbersMatch(value, expected) {
+  const text = normalize(value);
+  const colon = text.indexOf(':');
+  if (colon <= 0 || text.indexOf(':', colon + 1) !== -1) return false;
+  const body = text.slice(colon + 1).trim();
+  if (!/^[1-9]\d*번(?:,\s*[1-9]\d*번)*$/.test(body)) return false;
+  const actual = body.split(/,\s*/).map(token => Number(token.slice(0, -1)));
+  const valid = numbers => Array.isArray(numbers) && numbers.length > 0 &&
+    numbers.every(number => Number.isSafeInteger(number) && number >= 1 && number <= SOURCE_COUNT) &&
+    new Set(numbers).size === numbers.length;
+  if (!valid(actual) || !valid(expected) || actual.length !== expected.length) return false;
+  const ordered = [...expected].sort((a, b) => a - b);
+  return [...actual].sort((a, b) => a - b).every((number, index) => number === ordered[index]);
+}
+
+function sourceCoverageMatches(value, covered) {
+  const text = normalize(value);
+  const totals = [...text.matchAll(/(?:^|\s)([1-9]\d*)문항(?=\s|$)/g)];
+  const ratios = [...text.matchAll(/(?:^|\s)(0|[1-9]\d*)\/([1-9]\d*)개(?=\s|$)/g)];
+  return totals.length === 1 && Number(totals[0][1]) === SOURCE_COUNT &&
+    ratios.length === 1 && Number(ratios[0][1]) === covered && Number(ratios[0][2]) === SOURCE_COUNT;
+}
+
 function mathAudit(items) {
   const perQuestion = items.map(({ qid, uid, mathSources, renderedMathSources }) => ({
     qid, uid, sourceMathCount: mathSources, renderedMathCount: renderedMathSources,
@@ -369,7 +392,9 @@ async function main() {
 
     // Simulate the previously incomplete 16/23 data state without changing files.
     const partial = await evaluate(`(()=>{const prior=selectableRows;selectableRows=prior.filter(row=>Number(row.sourceQid)<=16);renderSourceSelection();const out={coverage:document.getElementById('source-coverage').textContent,missing:document.getElementById('source-missing-qids').textContent};selectableRows=prior;renderSourceSelection();return out;})()`);
-    assert(partial.coverage.includes('16/23') && ['q17','q18','q19','q20','q21','q22','q23'].every(qid=>partial.missing.includes(qid)), 'Incomplete source coverage message omitted q17–q23.', partial);
+    const partialMissing = Array.from({ length: SOURCE_COUNT - 16 }, (_, index) => index + 17);
+    assert(sourceCoverageMatches(partial.coverage, 16) && missingSourceNumbersMatch(partial.missing, partialMissing),
+      'Incomplete source coverage must report exactly 16 of 23 and missing source numbers 17–23.', partial);
     check('incomplete coverage names every missing source question', partial);
 
     const yearOptions = await evaluate("[...document.querySelectorAll('#source-year option')].map(option=>option.value)");
@@ -484,8 +509,9 @@ async function main() {
       missing:document.getElementById('mock-missing-qids').textContent
     }))()`);
     const fixedMissing = Array.from({ length: SOURCE_COUNT }, (_, index) => index + 1).filter(qid => !fixedExpected.includes(qid));
-    assert(fixedExpected.length < SOURCE_COUNT && fixedCoverage.summary.includes(`${fixedExpected.length}개`) &&
-      fixedMissing.every(qid => fixedCoverage.missing.includes('q' + qid)), 'Fixed difficulty did not make sparse source coverage explicit.', { fixedPair, fixedCoverage, fixedMissing });
+    assert(fixedExpected.length < SOURCE_COUNT &&
+      normalize(fixedCoverage.summary).includes(`기준 시험지 ${SOURCE_COUNT}문항 중 원본 번호 ${fixedExpected.length}개를 사용합니다.`) &&
+      missingSourceNumbersMatch(fixedCoverage.missing, fixedMissing), 'Fixed difficulty did not report the exact source coverage and missing-number set.', { fixedPair, fixedCoverage, fixedMissing });
     check('fixed numeric difficulty uses metadata and reports sparse coverage', { purpose: fixedPair.purpose, bucket: fixedPair.bucket, qids: fixedExpected, missing: fixedMissing });
 
     // Mixed quotas: choose two buckets with candidates on distinct source questions.

@@ -10,25 +10,34 @@
 // reviewStatus, tags, fingerprints and the identity map are neither read for approval nor written. No runtime row is
 // created. The receipt keeps the registrar's v2 receipt schema (registry lineage reads it) with fieldScope TYPE_ONLY.
 //
+// Course names: the row's course and the binding's course may differ in spelling or be the same subject of the other curriculum when
+// archive/data/meta-foundation/course-aliases.v1.json says so (never across grades or subjects); the judgment records the relation.
+//
+// A request may also widen a pack's declared scope (append curricula/standardCourses values only) next to its new bindings.
+//
 // What stays strict (the type fields themselves): the PT is ACTIVE; a TPL is ACTIVE and its parent is the chosen PT; an
 // ACTIVE binding of the PT exists for the question's curriculum and course (a new key and its binding may be added by the
 // same request through add-only registryChanges); `before` equals the current values; a type that is already approved is
 // never overwritten; the judgment is bound to the current source bytes (blob and per-question fingerprints).
 import fs from "node:fs";
+import { questionMetadataText, assertMetadataAssembledCurrent, syncMetadataShards } from "./question-metadata-format.mjs";
 import path from "node:path";
 import { refreshRuntime } from "./reviewed-runtime-summary.mjs";
+import { loadCourseAliases } from "./course-aliases.mjs";
+import { textFingerprint } from "./text-binding-lib.mjs";
 
 export const DIRECT_JUDGMENT = "DIRECT_JUDGMENT";
 export const FIELD_SCOPE_TYPE_ONLY = "TYPE_ONLY";
 export const TYPE_FIELD_STATUS = "approved_direct_judgment";
 export const TYPE_APPROVAL_SCHEMA = "archive-type-direct-judgment-approval-v1";
 export const DECISION_DOCUMENT = "docs/agents/metadata.md";
+const META_FILE = "archive/data/question_metadata.json";
 // Statuses of an unapproved type field. Anything else (approved_*, hold, adjudicated, debt) is never overwritten.
 const OVERWRITABLE_STATUS = new Set(["", "manual_review_pending", "projection_unmaterialized"]);
 const REQUEST_KEYS = new Set(["schemaVersion", "requestId", "examUid", "sourceArchiveFile", "expectedSourceBlobSha1", "expectedQuestionCount",
   "scope", "fieldScope", "approval", "registryChanges", "items"]);
 const APPROVAL_KEYS = new Set(["type", "metadataReviewed", "reviewPassCount", "approvedBy", "judge", "decisionRef", "resultSource", "evidenceRefs"]);
-const ITEM_KEYS = new Set(["questionUid", "sourceOrdinal", "before", "after", "rationale", "judge", "scope", "judgedFingerprints", "evidenceRefs", "reason"]);
+const ITEM_KEYS = new Set(["questionUid", "sourceOrdinal", "before", "after", "rationale", "judge", "scope", "judgedFingerprints", "textBindingFingerprint", "evidenceRefs", "reason"]);
 const TYPE_FIELDS = ["problemTypeKey", "templateKey"];
 const PLACEHOLDER = /^(?:-|none|null|n\/a|tbd|todo|\?+)$/i;
 const compact = value => String(value ?? "").normalize("NFC").replace(/\s/g, "");
@@ -39,7 +48,16 @@ const ADDABLE_REGISTRY = [
   [/^archive\/data\/meta-foundation\/canonical\/packs\/[a-z0-9-]+\/bindings\.json$/, new Set(["bindings"])],
 ];
 
+// 유형 칸에 든 값이 등록부의 ACTIVE 키일 때만 "지킬 값"이다(2026-11-20, 값이 있으면 보인다). 등록부에 없는 옛 키로 채워진 칸은 값이 없는 칸과 같아
+// approved 상태여도 채울 수 있고, 옛 키와 옛 상태는 typeApproval.priorType에 그대로 남는다. 등록부의 ACTIVE 키가 든 approved 값은 그대로 보호한다.
+// registry는 { pt: Map, tpl: Map } (변환기의 ctx.registry, 등록기의 tables 모두 같은 모양). 변환기와 등록기가 이 함수 하나를 쓴다.
+export const typeFieldHoldsRegisteredValue = (registry, field, key) =>
+  !empty(key) && (field === "problemType" ? registry.pt : registry.tpl).get(key)?.status === "ACTIVE";
 export const isDirectJudgmentRequest = req => req?.approval?.type === DIRECT_JUDGMENT;
+// The judgment is bound to the stem and choices of each question (text-v1 fingerprint `textBindingFingerprint`), nothing else: the
+// exam file's blob, figures, solution and answer may change after the judge looked. The lane is atomic per request, so one question
+// whose stem or choices differ refuses the whole request (the converter leaves such questions out beforehand).
+// `judgedFingerprints` is still accepted in old requests but no longer compared.
 
 function assertRequestShape(req, h) {
   const { fail, requireText } = h;
@@ -69,8 +87,35 @@ function checkDecisionDocument(root, ref, h) {
   if (!fs.readFileSync(full, "utf8").includes(ref.section)) h.fail(`decision section not found in ${ref.document}`);
 }
 
+// A pack document may only GROW its declared scope: values are appended to curricula / standardCourses, nothing is removed,
+// reordered or changed, and no other field differs. (The pack version is bumped by the registry planner as for any pack change.)
+const PACK_FILE = /^archive\/data\/meta-foundation\/canonical\/packs\/[a-z0-9-]+\/pack\.json$/;
+const PACK_SCOPE_FIELDS = ["curricula", "standardCourses"];
+export function isPackScopeAddition(change) {
+  if (!PACK_FILE.test(change?.path || "") || change.collection) return false;
+  const { before, after } = change;
+  const plain = v => v && typeof v === "object" && !Array.isArray(v);
+  if (!plain(before) || !plain(after)) return false;
+  const keys = new Set([...Object.keys(before), ...Object.keys(after)]);
+  let added = 0;
+  for (const key of keys) {
+    if (!PACK_SCOPE_FIELDS.includes(key)) { if (JSON.stringify(before[key] ?? null) !== JSON.stringify(after[key] ?? null)) return false; continue; }
+    const a = before[key], b = after[key];
+    if (!Array.isArray(a) || !Array.isArray(b) || b.length < a.length) return false;
+    if (!a.every((value, i) => b[i] === value)) return false;
+    const appended = b.slice(a.length);
+    if (appended.some(v => typeof v !== "string" || !v.trim()) || new Set(b).size !== b.length) return false;
+    added += appended.length;
+  }
+  return added > 0;
+}
+
 function checkRegistryChanges(changes, h) {
   for (const change of changes) {
+    if (PACK_FILE.test(change.path || "")) {
+      if (!isPackScopeAddition(change)) h.fail(`direct judgment may only add values to a pack's curricula/standardCourses: ${change.path}`);
+      continue;
+    }
     const allowed = ADDABLE_REGISTRY.find(([pattern]) => pattern.test(change.path || ""));
     if (!allowed || !allowed[1].has(change.collection) || !change.match || change.before !== null || !change.after || change.after.status !== "ACTIVE")
       h.fail(`direct judgment registryChanges may only add ACTIVE problemTypes/templates/bindings: ${change.path}`);
@@ -78,7 +123,7 @@ function checkRegistryChanges(changes, h) {
 }
 
 // PT/TPL/binding checks that depend only on the registry and the question's curriculum/course (never on its unit).
-function checkTypeKeys(tables, { problemTypeKey, templateKey, scope }, h) {
+function checkTypeKeys(tables, { problemTypeKey, templateKey, scope }, h, aliases) {
   const pt = tables.pt.get(problemTypeKey);
   if (!pt || pt.status !== "ACTIVE") h.fail(`inactive/missing PT: ${problemTypeKey}`);
   if (templateKey) {
@@ -86,8 +131,10 @@ function checkTypeKeys(tables, { problemTypeKey, templateKey, scope }, h) {
     if (!tpl || tpl.status !== "ACTIVE") h.fail(`inactive/missing TPL: ${templateKey}`);
     if (tpl.parentProblemTypeKey !== problemTypeKey) h.fail(`TPL parent mismatch: ${templateKey}`);
   }
+  // A binding course that is another spelling of the judged scope course is the same course (successors are a row-vs-scope matter only).
+  const sameCourse = (a, b) => ["same", "alias"].includes(aliases.relation(a, b));
   const bindings = [...tables.bindings.values()].filter(b => b.curriculum === scope.curriculum &&
-    compact(b.standardCourse) === compact(scope.standardCourse) && b.problemTypeKey === problemTypeKey);
+    sameCourse(b.standardCourse, scope.standardCourse) && b.problemTypeKey === problemTypeKey);
   const inScope = bindings.some(b => {
     const pack = tables.packs.get(b.ownerPack || pt.ownerPack);
     return pack && pack.meta.curricula.includes(scope.curriculum) && pack.meta.standardCourses.includes(b.standardCourse);
@@ -102,7 +149,11 @@ const typeSlice = row => ({ questionUid: row.questionUid, sourceArchiveFile: row
 
 export function registerTypeJudgment(ctx) {
   const { root, req, write, verifyProjection, metadata, rows, ids, bank, bytes, blob, receiptPath, requestSha256, previous, scopeFields, h } = ctx;
+  // batch (register-type-batch.mjs) only for a request without registryChanges: it shares the registry tables between requests and
+  // leaves question_metadata.json for the batch to write once (the text is the same one writer, questionMetadataText).
+  const batch = ctx.batch || null;
   const { fail: failWith, eq, safePath, json, digest } = h;
+  const aliases = loadCourseAliases(root);
   assertRequestShape(req, h);
   const registryChanges = req.registryChanges || [];
   checkRegistryChanges(registryChanges, h);
@@ -113,7 +164,7 @@ export function registerTypeJudgment(ctx) {
   if (previous) {
     if (previous.schemaVersion !== "archive-reviewed-exam-meta-registration-v2" || previous.fieldScope !== FIELD_SCOPE_TYPE_ONLY ||
         previous.approval?.type !== DIRECT_JUDGMENT || previous.metadataRegistrationStatus !== "REGISTERED" ||
-        previous.sourceArchiveFile !== source || previous.sourceBlobSha1 !== blob || previous.sourceRawSha256 !== digest(bytes) ||
+        previous.sourceArchiveFile !== source ||
         previous.scope !== req.scope || previous.expectedQuestionCount !== req.expectedQuestionCount ||
         previous.partialUidCount !== patches.size || previous.totalQuestions !== patches.size ||
         !Array.isArray(previous.typeRecords) || previous.typeRecords.length !== patches.size ||
@@ -123,8 +174,8 @@ export function registerTypeJudgment(ctx) {
     for (const record of previous.typeRecords) {
       const patch = patches.get(record.questionUid);
       const current = rows.find(row => row.questionUid === record.questionUid);
-      if (!patch || !current || !eq(typeSlice(current), record)) failWith(`registered type metadata drift: ${record.questionUid}`);
-      checkTypeKeys(tables, { problemTypeKey: record.problemTypeKey, templateKey: textOf(record.templateKey), scope: record.typeApproval.scope }, h);
+      if (!patch || !current || !eq(JSON.parse(JSON.stringify(typeSlice(current))), record)) failWith(`registered type metadata drift: ${record.questionUid}`);
+      checkTypeKeys(tables, { problemTypeKey: record.problemTypeKey, templateKey: textOf(record.templateKey), scope: record.typeApproval.scope }, h, aliases);
     }
     return { status: "PASS", requestId: req.requestId, totalQuestions: patches.size, ...scopeFields, fieldScope: FIELD_SCOPE_TYPE_ONLY, replay: true,
       plannedPaths: [], typeApprovals: patches.size, newMetadataApprovals: 0,
@@ -135,8 +186,9 @@ export function registerTypeJudgment(ctx) {
   // Checked at first registration only: a later edit of the decision document must not invalidate an issued receipt's replay.
   checkDecisionDocument(root, req.approval.decisionRef, h);
 
+  if (batch && registryChanges.length) failWith("a batched direct judgment cannot carry registryChanges");
   const plan = registryChanges.length ? h.registryPlan(root, registryChanges, h.evidenceRefs) : null;
-  const tables = h.lookup(plan || h.registryPlan(root, [], h.evidenceRefs));
+  const tables = batch ? batch.tables(() => h.lookup(h.registryPlan(root, [], h.evidenceRefs))) : h.lookup(plan || h.registryPlan(root, [], h.evidenceRefs));
   const typeRecords = [], bindingCounts = { exact: 0, content: 0, stale: 0 };
   for (const patch of req.items.slice().sort((a, b) => a.sourceOrdinal - b.sourceOrdinal)) {
     const uid = patch.questionUid, i = patch.sourceOrdinal - 1;
@@ -160,39 +212,46 @@ export function registerTypeJudgment(ctx) {
       if (was !== claimed) failWith(`before mismatch: ${uid}.${key}`);
     }
     // A type that is already approved is final for this lane; an unapproved (draft/pending) value is replaced.
+    // A field with no value has nothing to protect: its status is only a tag, so an empty field is filled whatever the tag says.
     for (const field of ["problemType", "template"]) {
+      if (!typeFieldHoldsRegisteredValue(tables, field, current[`${field}Key`])) continue;
       const status = String(current.fieldStatus?.[field] ?? "");
       if (/^approved/i.test(status)) failWith(`type already approved: ${uid}.${field}=${status}`);
       if (!OVERWRITABLE_STATUS.has(status)) failWith(`type field status is not overwritable: ${uid}.${field}=${status}`);
     }
-    // A held taxonomy row is not shown by the catalog, so a type registered on it could never be verified in the consumer.
-    if (current.foundationTaxonomyStatus === "HOLD") failWith(`row has a foundation taxonomy HOLD; its type cannot be displayed: ${uid}`);
-    // Rows whose other fields carry a receipt-backed approval keep that receipt replayable; they use the full v2 path.
-    if (current.metadataApprovalType) failWith(`row carries a receipt-backed ${current.metadataApprovalType} approval; register its type through the full v2 path: ${uid}`);
+    // A row-level taxonomy HOLD is not a reason to refuse (2026-11-20, "값이 있으면 보인다"): the catalog shows a judged type on a held row too;
+    // the hold stays on the row's other fields (L4, difficulty, source issue) and this lane never touches them.
+    // A receipt on the row's OTHER fields stays replayable: receiptRecordMatchesRow (reviewed-exam-registration-v2.mjs) leaves the type fields
+    // out of that comparison when the receipt recorded no type. A row whose type is already approved was refused above.
     const scope = patch.scope;
     if (!scope || !["2015", "2022"].includes(scope.curriculum) || !textOf(scope.standardCourse)) failWith(`scope.curriculum (2015|2022) and scope.standardCourse required: ${uid}`);
     const rowCurriculum = textOf(current.curriculum) || textOf(current.curriculumKey);
-    if (rowCurriculum && rowCurriculum !== scope.curriculum) failWith(`curriculum mismatch: ${uid} row=${rowCurriculum} judged=${scope.curriculum}`);
     const rowCourse = textOf(current.standardCourse) || textOf(current.courseKey);
-    if (rowCourse && compact(rowCourse) !== compact(scope.standardCourse)) failWith(`course mismatch: ${uid} row=${rowCourse} judged=${scope.standardCourse}`);
-    checkTypeKeys(tables, { problemTypeKey, templateKey, scope }, h);
+    // Row course vs judged course: equal, another spelling of it, the same subject of the other curriculum, or (alias data) a key of a grade
+    // at or below the exam's ("reach": units moved between grades, prerequisite content; never a key above the exam's grade).
+    const courseRelation = rowCourse ? aliases.relation(rowCourse, scope.standardCourse) ||
+      aliases.reach(rowCourse, scope.standardCourse, { sourceArchiveFile: current.sourceArchiveFile, problemTypeKey }) : "";
+    if (rowCourse && !courseRelation) failWith(`course mismatch: ${uid} row=${rowCourse} judged=${scope.standardCourse}`);
+    // A successor course lives in the other curriculum, so the row's own curriculum is not compared with the binding's then.
+    if (rowCurriculum && rowCurriculum !== scope.curriculum && !["successor", "reach"].includes(courseRelation)) failWith(`curriculum mismatch: ${uid} row=${rowCurriculum} judged=${scope.curriculum}`);
+    checkTypeKeys(tables, { problemTypeKey, templateKey, scope }, h, aliases);
     // Source binding: the judgment was made on the current question text; the row's own fingerprints are tagged, not rewritten.
-    const fp = h.sourceFingerprints(q), judged = patch.judgedFingerprints;
-    if (judged?.sourceFingerprint !== fp.sourceFingerprint || judged?.contentFingerprint !== fp.contentFingerprint) failWith(`judged fingerprints differ from the current source: ${uid}`);
+    const fp = h.sourceFingerprints(q), judgedText = textFingerprint(q);
+    if (!judgedText || patch.textBindingFingerprint !== judgedText) failWith(`stem or choices differ from the judged text (textBindingFingerprint): ${uid}`);
     const rowBinding = current.contentFingerprint !== fp.contentFingerprint ? "stale" : current.sourceFingerprint === fp.sourceFingerprint ? "exact" : "content";
     bindingCounts[rowBinding]++;
     const embedded = { problemTypeKey: q.problemTypeKey ?? null, templateKey: q.templateKey ?? null };
     const hasEmbedded = !empty(q.problemTypeKey) || !empty(q.templateKey);
-    // The catalog compares an exam-embedded type with the registered one only for meta-foundation scoped rows.
-    if (String(current.metadataRevision || "").startsWith("meta-foundation:"))
-      for (const key of TYPE_FIELDS) {
-        const value = key === "problemTypeKey" ? problemTypeKey : templateKey;
-        if (!empty(q[key]) && q[key] !== value) failWith(`exam-embedded ${key} differs from the judged value on a meta-foundation row: ${uid}`);
-      }
+    // 시험지 JS에 적힌 유형이 판정과 다른 것은 거절 사유가 아니다(2026-11-20): 등록된 판정이 우선이고 적힌 값은 아래 typeApproval.examEmbeddedType에 기록으로 남는다.
+    // 카탈로그도 유형 필드의 불일치를 충돌로 세지 않는다(build-archive2-catalog.mjs).
     const typeApproval = { schemaVersion: TYPE_APPROVAL_SCHEMA, approvalType: DIRECT_JUDGMENT, reviewPassCount: 1, requestId: req.requestId, judge, rationale,
       // curriculumSource: "row" = the row itself names the curriculum (cross-checked); "request" = only the judgment names it.
-      scope: { curriculum: scope.curriculum, standardCourse: scope.standardCourse, curriculumSource: rowCurriculum ? "row" : "request" },
+      scope: { curriculum: scope.curriculum, standardCourse: scope.standardCourse, curriculumSource: rowCurriculum ? "row" : "request",
+        ...(["alias", "successor", "reach"].includes(courseRelation) ? { rowCourse, courseRelation } : {}) },
       judgedSourceFingerprint: fp.sourceFingerprint, judgedContentFingerprint: fp.contentFingerprint, rowBinding,
+      // 판정이 본 발문·보기의 지문(text-v1). 이후 해설·정답·그림이 바뀌어도 발문·보기가 같으면 이 판정이 유효하다는 근거다
+      // (docs/agents/metadata.md "메타 결속 지문 범위"). 발문이 비어 지문을 만들 수 없는 문항은 필드를 쓰지 않는다.
+      textBindingFingerprint: judgedText,
       resultSource: req.approval.resultSource, decisionRef: req.approval.decisionRef, receipt: receiptPath,
       ...(hasEmbedded ? { examEmbeddedType: { ...embedded, matchesRegistered: embedded.problemTypeKey === problemTypeKey && (empty(embedded.templateKey) || embedded.templateKey === templateKey) } } : {}),
       priorType: { problemTypeKey: current.problemTypeKey ?? null, templateKey: current.templateKey ?? null,
@@ -224,8 +283,10 @@ export function registerTypeJudgment(ctx) {
       }
     }
   }
-  output.set("archive/data/question_metadata.json", json(metadata));
-  const outputDigests = [...output].filter(([file, text]) => file !== "archive/data/question_metadata.json" &&
+  // A first registration always edits rows (typeApproval carries this requestId), so the metadata file always changes; a batch builds
+  // and writes its text once at the end instead of once per request.
+  if (!batch) output.set(META_FILE, questionMetadataText(metadata));
+  const outputDigests = [...output].filter(([file, text]) => file !== META_FILE &&
     (!fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text))
     .map(([file, text]) => ({ path: file, sha256: digest(text) }));
   const receipt = { schemaVersion: "archive-reviewed-exam-meta-registration-v2", requestId: req.requestId, requestSha256, examUid: req.examUid,
@@ -238,6 +299,8 @@ export function registerTypeJudgment(ctx) {
   if (changed.some(([file]) => file.startsWith("archive/exams/"))) failWith("registration must not write exam source bytes");
   if (!eq(fs.readFileSync(safePath(root, `archive/exams/${source}`)), bytes)) failWith("exam source bytes changed during registration");
   if (write) {
+    // A batch leaves question_metadata.json and its shards to flush(), which checks and writes both once.
+    if (!batch) assertMetadataAssembledCurrent(root);
     const backup = new Map();
     try {
       for (const [file, text] of changed) {
@@ -245,13 +308,15 @@ export function registerTypeJudgment(ctx) {
         backup.set(full, fs.existsSync(full) ? fs.readFileSync(full) : null);
         fs.mkdirSync(path.dirname(full), { recursive: true }); fs.writeFileSync(full, text, "utf8");
       }
+      if (!batch) syncMetadataShards(root);
     } catch (error) {
       for (const [full, original] of backup) { if (original === null) fs.rmSync(full, { force: true }); else fs.writeFileSync(full, original); }
       throw error;
     }
+    if (batch) batch.markMetadataChanged();
   }
   return { status: "PASS", write, requestId: req.requestId, approvalType: DIRECT_JUDGMENT, totalQuestions: typeRecords.length, ...scopeFields,
     fieldScope: FIELD_SCOPE_TYPE_ONLY, registryChangeCount: registryChanges.length, typeApprovals: typeRecords.length, newMetadataApprovals: 0,
     rowBindingCounts: bindingCounts, runtimeMaterialized: 0, fingerprintRepairCount: 0, consumerSearchStatus: "NOT_RUN", replay: false,
-    plannedPaths: changed.map(([file]) => file) };
+    plannedPaths: [...(batch ? [META_FILE] : []), ...changed.map(([file]) => file)] };
 }

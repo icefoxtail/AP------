@@ -98,7 +98,12 @@ window.examData = {
         "$y=3x-5$"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중2_수학/q7-solution.svg",
+      "solutionImageAlt": "해설 그림: 오른쪽 아래로 향하는 두 평행한 직선이 있다. 점선은 원점을 지나는 y=−2x이고 실선은 y절편 −3인 y=−2x−3이며 y축 위의 두 점이 표시되어 있다.",
+      "solutionImageCaption": "y축의 방향으로 −3만큼 평행이동하면 직선 전체가 아래로 3만큼 내려가므로 y=−2x−3이다. 기울기 −2는 그대로이고 y절편이 0에서 −3으로 바뀐다. 따라서 답은 ④이다.",
+      "solutionImageSize": "full",
+      "solutionImageScale": 80
     },
     {
       "id": 8,
@@ -126,7 +131,12 @@ window.examData = {
         "$y$축의 방향으로 3만큼 평행이동하면 일차함수 $y=-\\dfrac{3}{2}x$의 그래프가 된다."
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중2_수학/q9-solution.svg",
+      "solutionImageAlt": "해설 그림: 오른쪽 아래로 향하는 실선 직선이 x축과 (−2,0), y축과 (0,−3)에서 만나 제3사분면을 지나고, 원점을 지나는 점선 직선이 평행하게 함께 있다.",
+      "solutionImageCaption": "y=−(3/2)x−3에서 y=0이면 x=−2이므로 x절편은 −2이고 y절편은 −3이다. 기울기가 −3/2이고 y절편이 음수이므로 제2, 3, 4사분면을 지난다. 따라서 제3사분면을 지나지 않는다는 설명이 옳지 않다. y축의 방향으로 3만큼 평행이동하면 y=−(3/2)x가 된다. 답은 ②이다.",
+      "solutionImageSize": "full",
+      "solutionImageScale": 80
     },
     {
       "id": 10,
@@ -140,7 +150,12 @@ window.examData = {
         "$y=\\dfrac{1}{3}x-5$"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중2_수학/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 오른쪽 위로 향하는 평행한 두 직선이 있다. 점선은 y=3x−5이고 실선은 x축과 (2,0)에서 만나는 y=3x−6이다.",
+      "solutionImageCaption": "3x−y=5는 y=3x−5이므로 기울기가 3이다. 평행한 직선은 기울기가 3이고 x절편이 2이므로 점 (2,0)을 지난다. 0=3×2+b에서 b=−6이므로 y=3x−6이다. 따라서 답은 ②이다.",
+      "solutionImageSize": "full",
+      "solutionImageScale": 80
     },
     {
       "id": 11,
@@ -252,7 +267,12 @@ window.examData = {
         "$\\dfrac{11}{5}$"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_이수중_1학기_기말_중2_수학/q18-solution.svg",
+      "solutionImageAlt": "해설 그림: 오른쪽 아래로 향하는 직선과 오른쪽 위로 향하는 직선이 점 P에서 만나고 각각 x축과 (4,0), (1,0)에서 만나 x축과 함께 삼각형을 이룬다. 세 점의 좌표가 표시되어 있다.",
+      "solutionImageCaption": "두 직선의 교점은 x+y=4와 3x−2y=3을 연립하여 구하며 x=11/5, y=9/5이므로 P(11/5, 9/5)이다. x축과의 교점은 x+y=4에서 (4,0), 3x−2y=3에서 (1,0)이다. 밑변은 4−1=3이고 높이는 9/5이므로 넓이는 (1/2)×3×9/5=27/10이다. 답은 ③이다.",
+      "solutionImageSize": "full",
+      "solutionImageScale": 80
     },
     {
       "id": 19,

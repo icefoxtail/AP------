@@ -3,8 +3,8 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
-  "problemTypeCount": 36,
-  "templateCount": 127,
+  "problemTypeCount": 37,
+  "templateCount": 160,
   "problemTypes": [
     {
       "problemTypeKey": "PT_AREA_BISECTING_LINE",
@@ -943,6 +943,32 @@
       "sourceUnit": "CIRCLE_EQUATION",
       "status": "ACTIVE",
       "ownerPack": "GEOMETRY_EQUATIONS"
+    },
+    {
+      "problemTypeKey": "PT_H1_LOCUS",
+      "canonicalLabelKo": "자취",
+      "definition": "움직이는 점의 거리 조건을 좌표식으로 나타내어 자취의 방정식을 결정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_e0a5e44a2f00b3911f94f96c6425eaa429368eb7b48ff1287dd977f374bbf609"
+      ],
+      "sourceUnits": [
+        "H22-C2-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_H1_LOCUS",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
     }
   ],
   "templates": [
@@ -3176,6 +3202,1028 @@
           },
           "sourceOrdinal": 14,
           "newMathematicalQa": false
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_CIRCLE_EQUATION_CENTER_LOCUS",
+      "parentProblemTypeKey": "PT_CIRCLE_EQUATION",
+      "canonicalLabelKo": "원의 중심 자취",
+      "definition": "두 고정점까지 등거리인 원의 중심이 수직이등분선 위에 있음을 이용한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_0e5d40fcb5747be53691a5b6ea61bc2473d438d9662925c0506f310f5cf98e49",
+        "qid_v1_89c67abb9e060cfcfab195dd65547154ac397a1c8084906ffe622aee5b51f3ec"
+      ],
+      "sourceUnits": [
+        "H22-C2-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_CIRCLE_EQUATION_CENTER_LOCUS",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_CIRCLE_EQUATION_LOCUS",
+      "parentProblemTypeKey": "PT_CIRCLE_EQUATION",
+      "canonicalLabelKo": "거리 제곱합 원 자취",
+      "definition": "고정점까지 거리 제곱합을 좌표로 전개하고 완전제곱해 원의 자취를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_6702bb4c390143c2c2a6e006e82461ace7e51c29802d1d4737ac6726fd7fd5d3",
+        "qid_v1_9a978d6289b2ce2653fefbcbfb79520286a91525d25726a487f5cffba15fcede",
+        "qid_v1_f7907bc535b93e39fdb06c87fedb604780892af290041f8c13f42a3438f3999a"
+      ],
+      "sourceUnits": [
+        "H22-C2-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_CIRCLE_EQUATION_LOCUS",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_CIRCLE_EQUATION_RADIUS_EXTREMA",
+      "parentProblemTypeKey": "PT_CIRCLE_EQUATION",
+      "canonicalLabelKo": "반지름 극값",
+      "definition": "원의 반지름 제곱을 매개변수 이차식으로 나타내 완전제곱으로 극값과 중심을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 7,
+      "supportingQuestionUids": [
+        "qid_v1_48614aa775df97d8195af35850d67b26c88fde2ca28e23285db87a0004820e19",
+        "qid_v1_7b0cae76aff1b2bf5b53ecb5c351daf9ce0ebda14a5f5c1093dcaa367597d66a",
+        "qid_v1_82b2b5b9938ba030c765d30807cbd5135d80cac8daf1b645ebdb9c24c2b0a9d4",
+        "qid_v1_85bb707bce83560c0dd905e465f42db9df94986dc17954eb08b9d5c034934f3c",
+        "qid_v1_90c338a6fa234b4a46dec7e2fee9fea6147f67387c4035995d063dd2faa35840",
+        "qid_v1_ba26fc5168ec255c80eaae8e3cf1302f49c2df8b33691942233c1e5f96f5e8e3",
+        "qid_v1_f8db882d81bbe69d74e995d30b27f67951d900999f98f2828ce74ca21c6f1e85"
+      ],
+      "sourceUnits": [
+        "H22-C2-03",
+        "H22-C2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_CIRCLE_EQUATION_RADIUS_EXTREMA",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_CIRCLE_EQUATION_STANDARD",
+      "parentProblemTypeKey": "PT_CIRCLE_EQUATION",
+      "canonicalLabelKo": "원 표준형 구성",
+      "definition": "중심·반지름 또는 지름 양 끝점의 중점과 거리로 원의 방정식을 정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_6d61028680263dddb330631283b990d579c8a6ecb06520ae256e4d8268f4890e"
+      ],
+      "sourceUnits": [
+        "H22-C2-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_CIRCLE_EQUATION_STANDARD",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD",
+      "parentProblemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "canonicalLabelKo": "등거리 현",
+      "definition": "같은 원에서 중심까지 거리가 같은 현은 길이가 같음을 이용해 이등변·정삼각형의 각·넓이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 6,
+      "supportingQuestionUids": [
+        "qid_v1_272e954bf28a86f8f498b22a76c2aeebfa4f365fb2e58ccf48cb6278955d6eb7",
+        "qid_v1_54a487e541c2014b57841aa0e5805f0a6d6c100bccfdddfece82e9dc0d7195ea",
+        "qid_v1_73b8510d5fc947e981a8a6170487ffe099ee4aa46cc8d1c84de1a1a64ed794a0",
+        "qid_v1_ad99f1a3300eda9217d5100391a103a5ce42b8de77af98e3ae264f07cb6247dd",
+        "qid_v1_b01f72d8909716a91ba833b9b017aa01d18dac8cbf1ea6e822aa97313058d02b",
+        "qid_v1_bbe02e6833be413735e75692b08d1b8f551d00fe6d23f02be5aff507e9fb92c6"
+      ],
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_CIRCLE_LINE_RELATION_EQUAL_CHORD",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_CIRCLE_TANGENT_APOLLONIUS",
+      "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+      "canonicalLabelKo": "거리비와 시야각",
+      "definition": "거리비로 아폴로니오스 원을 정하고 최대 시야각의 접선 조건으로 직각삼각형을 만든다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_1c166491e49d2b452842c28898c8ce1842962d8f5b185e3a3835aaa6b90a554a",
+        "qid_v1_a9083a41fd3902272047627abfe51910e9b2ae3751e97c655038dfc1fa0f479b",
+        "qid_v1_b4fb1db4d9b6ac3a58495b6711d08b44cb8451825ef398f72dbcb446712daad5"
+      ],
+      "sourceUnits": [
+        "H22-C2-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_CIRCLE_TANGENT_APOLLONIUS",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_CIRCLE_TANGENT_ARC_AREA",
+      "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+      "canonicalLabelKo": "호와 넓이",
+      "definition": "접점 직각과 접선 대칭에서 반지름·중심각을 구하여 호 길이나 부채꼴과 삼각형의 넓이를 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_247da2260d033bf29214cd6a268a9c0ec58a4f9c54df2fcdff375332e8799e90",
+        "qid_v1_8ade55894bec14e81d3bdd214fdce2a4f6c1406be813f1f7d9ddcd68978a65e3"
+      ],
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_CIRCLE_TANGENT_ARC_AREA",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_CIRCLE_TANGENT_EQUAL_LENGTH",
+      "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+      "canonicalLabelKo": "등접선",
+      "definition": "같은 외점에서 그은 접선 길이가 같음을 이용하여 선분·둘레·반지름 조건을 방정식으로 세운다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 11,
+      "supportingQuestionUids": [
+        "qid_v1_6156ed8395ca83e7cf028b580468717996b8a899ed9a2f4fd935e1eb46f868fc",
+        "qid_v1_7e4aa07247570caab785677161982d36ebdf98ba8c7963a1cb05c1f3ce67b4dd",
+        "qid_v1_82d18262065792d036c2659bccea11e9959b335de14577df1772cc2e38a79a68",
+        "qid_v1_a70f2e2989e65c7cc9b68cec040af2ffd699f03af0d7f62061cd0ac7b5d29575",
+        "qid_v1_b5db42055bd2b3bf6625d23f9bad19cfa6e55b7025e701a2abc6bb215bf708dd",
+        "qid_v1_c422d9f951827804f4dbd3755d7433887e39c63eb040d0bd7e8850c8be213ab3",
+        "qid_v1_d20e5fb44065d096b9131a559220b2bb48e1cfc62ea67c162a04b132df167149",
+        "qid_v1_e2bce161f96df13c9ef4fb435d7f88f7680778276768923b01777bb3fd33fd30",
+        "qid_v1_e4b0163ab6052f03c469ac70b1d2e3d2cd84e0544b866e48e4b9097c8a6ea27f",
+        "qid_v1_f0fae6e4811f93eff8f17c4ffa0d1ede0917587ad651ea204321572c3a528452",
+        "qid_v1_fa486507ca3c763ed47823dbd925ab089ed42d138391b6064bc55e024ee080c1"
+      ],
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_CIRCLE_TANGENT_EQUAL_LENGTH",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_CIRCLE_TANGENT_HALF_ANGLE",
+      "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+      "canonicalLabelKo": "두 접선 사잇각 반각",
+      "definition": "중심선이 두 접선 사잇각을 이등분하는 직각삼각형에서 반각의 삼각비로 중심거리·반지름·자취를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 15,
+      "supportingQuestionUids": [
+        "qid_v1_0437d3fbb16fb1dcd9a857dc7b229e14a63a62f5092df7b0860cec6c40384f47",
+        "qid_v1_090db4704fed0758236f9ff736e83edc96cda18a21f6dbd717ebe31a8086cae3",
+        "qid_v1_0e29e3c61a4c8d5d95aeb0d088f73cdc896d0bdae8d9d169438f14df97b353c6",
+        "qid_v1_206e7e2e4b743d28da70d319003fe9cfbdc6ab6d4d48acd35310a09adff8b49b",
+        "qid_v1_4738b2f59a4aef654282b4ad70c882499e321916f792e9c54e0a0e7addaa44d8",
+        "qid_v1_4d2dd908b956edbbeaa224257cd7d395e9fc319f56ef763db649e807a1466ff8",
+        "qid_v1_4df5d52bcc7189da5abf7e575ca1cdf6b89bbb4fc67758f737449e1ca0f76975",
+        "qid_v1_54c51db104e5f31166829fb1948f8cc5be6b5f9cf02a6e6a77e523dcf0918002",
+        "qid_v1_bcac87f711a324e958b5a4b386bb8effc4741c764c767aef3a2c1e6eaad8eebf",
+        "qid_v1_d71be4bd61e9c6a19eddaa94265fbb9fbe213721b5b3c2ccebf7f8b568de4e46",
+        "qid_v1_e2725b3c31d0489891efb0aee4638405ebd8d49d07be82946d0f6bb476bff78a",
+        "qid_v1_f5f3d7cd144cf2e4c129a6f35047827471ebcbda380e39ea6f7378450f3f3a95",
+        "qid_v1_f9dc01b6ff21bcf6dcd801f314e5c939dcd5cbb5bb7b75e0189eefc461e955da",
+        "qid_v1_fd7321583cefcfc73d9e6097d3d1683107be545c36d6ce1488723901aba066f1",
+        "qid_v1_ff171b5295e782ff43d925f166de719961a6d3d9437db4050146c8f949016cd2"
+      ],
+      "sourceUnits": [
+        "H22-C2-03",
+        "H22-C2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_CIRCLE_TANGENT_HALF_ANGLE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_CIRCLE_TANGENT_POWER",
+      "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+      "canonicalLabelKo": "접선 할선 방멱",
+      "definition": "접선 길이 제곱과 할선 두 길이의 곱 및 선분합 관계를 연립한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_7500b0c9b1cc7a70964be9171ed3b39bfb0268bac8ae7fd6a5999e4d2b188d82",
+        "qid_v1_c9bd2aaf37cc09cc4899d9f023152d1d149c18ec17a082348da40da26cd7625f",
+        "qid_v1_d276b2804247f38edacb33e114b9df02c2c03b2ac20074047eb51ef3162929b0"
+      ],
+      "sourceUnits": [
+        "H22-C2-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_CIRCLE_TANGENT_POWER",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_CIRCLE_TANGENT_RIGHT_TRIANGLE",
+      "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+      "canonicalLabelKo": "접점 직각",
+      "definition": "접선과 반지름의 직각 및 두 접선의 대칭으로 직각삼각형을 구성하여 반지름·거리·각을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_09408a4741c7f5b97f42d0b52a8f9c8e57a26893183ae05801b6e21990ac503c",
+        "qid_v1_113084bf2b39019a620eba2125d5183b5f4f2f1b3348f22c44611f5aead38e1b",
+        "qid_v1_16c6e9acbbb92665f42ec7cdb9097faecafe8d116f7001de42440ec6b537db5a",
+        "qid_v1_4bbb452eda460bbfc6fa1647e98c96da6611e42d0db1fe265d79379e3b264697",
+        "qid_v1_b787d9bab647db310fb29e812b7fbc540a9f37f96e11e4ea028cb38020b6cc9e"
+      ],
+      "sourceUnits": [
+        "H15-SA-11",
+        "M3-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_CIRCLE_TANGENT_RIGHT_TRIANGLE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_CIRCLE_TANGENT_TANGENT_FORMULA",
+      "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+      "canonicalLabelKo": "원의 접선 방정식",
+      "definition": "기울기 지정 접선에는 중심거리=반지름을, 접점 지정 접선에는 접점 공식을 적용한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_297596ade0665dcc3c44acabd29245c4c3f7ad6f660dd71e950972c8a1493c0d",
+        "qid_v1_dca174a9788868518bbcec0e95b0e2780acde2fcfc0f933e63b3c09214b21787"
+      ],
+      "sourceUnits": [
+        "H22-C2-01",
+        "H22-C2-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_CIRCLE_TANGENT_TANGENT_FORMULA",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_CIRCLE_TANGENT_TANGENT_RATIO",
+      "parentProblemTypeKey": "PT_CIRCLE_TANGENT",
+      "canonicalLabelKo": "접선 길이비와 내분",
+      "definition": "대칭인 접선의 같은 길이와 선분 차로 비를 구하고 교점 내분좌표에 연결해 기울기를 정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_294f46cc8f9514331816a72a3c137a0fd3ba57f9b51aab41e7d1f18df4722c8a",
+        "qid_v1_32c4e13881f2df411325e3979215e1a11533ca25c2b89f4087d4b47b6b9f1bc0",
+        "qid_v1_9bf604e2a498581b1ccfb39a0f442aeb65a121fb98a94d1d3e747b4f13da21a9"
+      ],
+      "sourceUnits": [
+        "H22-C2-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_CIRCLE_TANGENT_TANGENT_RATIO",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_COORD_CENTROID_MEDIAN",
+      "parentProblemTypeKey": "PT_COORD_CENTROID",
+      "canonicalLabelKo": "중선 분할",
+      "definition": "무게중심의 중선 2:1 분할과 여섯 등넓이 삼각형 성질로 길이 또는 진술을 판정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_59ab3ab753058cfde3673dd5ccedd50b50cf77b38f77621a0253689671ce702a",
+        "qid_v1_71687acc853cbe3c3b8f1b393dc8ef03537ee91bdd813a9d69fa141e0feb06d1",
+        "qid_v1_c864233b4efacfd2761b77937754d8c923321cff193ade18ac5c55628ab82ac3",
+        "qid_v1_fc4b845acbedac9832b4dd132457352095c2e7487b04cde5f1e71b02d8d03f9e"
+      ],
+      "sourceUnits": [
+        "M2-05",
+        "M2-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_COORD_CENTROID_MEDIAN",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_COORD_DISTANCE_OPTIMIZATION_CIRCLE_DISTANCE",
+      "parentProblemTypeKey": "PT_COORD_DISTANCE_OPTIMIZATION",
+      "canonicalLabelKo": "두 원 거리 극값",
+      "definition": "중심거리와 반지름 합으로 원주점 사이 거리의 극값을 구하고 중심선 위 등호 조건을 확인한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_031d812bef004131a8f393f7935bf6449e40166a33814352c540a1610b64a5f9",
+        "qid_v1_25232867c3d29d11ae45646d47e6a89babec6fe6dd94d88640f1869c45cd98e9"
+      ],
+      "sourceUnits": [
+        "H22-C2-04"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_COORD_DISTANCE_OPTIMIZATION_CIRCLE_DISTANCE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_COORD_DISTANCE_OPTIMIZATION_POLYGON_DISTANCE",
+      "parentProblemTypeKey": "PT_COORD_DISTANCE_OPTIMIZATION",
+      "canonicalLabelKo": "다각형 거리 극값",
+      "definition": "최대는 꼭짓점 거리 비교로, 최소는 선분 안 수선발 또는 끝점 거리로 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 12,
+      "supportingQuestionUids": [
+        "qid_v1_20e4a6e21c19901e9e19e800128ec86082060f4759d13d485fcee54ca022f7fb",
+        "qid_v1_4b041b2b32c62a5ce1da2ff2da3aaecc8bc5bea20a4480f68eb8edda88c557a3",
+        "qid_v1_4f22caf8e459b5d528693cea43fbd4e499e41a3f8d635d4ea68d712f432a4145",
+        "qid_v1_62b2e14c72fdc0dddb2e24ed131b073425387d4277dbaabb00a9a9a69bbb2b8c",
+        "qid_v1_699ec44ddd8b5e6cfedb23013e2ba5ec5046d8d0b8a27f993473aae663470737",
+        "qid_v1_7dbda2b8ed9a70cb7ac5f36776fe2f2a67f77f2159a6f656ed7c64e1aa6e9f98",
+        "qid_v1_863aefb426b6df1a0eb9ef3bb173e9642da4b4264999c7fa448e6683ec29a73e",
+        "qid_v1_8a61aee2956954512593865116e31fab17688daeb076d5d8198743c467163153",
+        "qid_v1_be67c60abcd45127fba4eab54397a3cf0e908636c49f9f22398a5809e8bad7f1",
+        "qid_v1_cbe4e62800e65bb3fc57383ac4520c929f9d7233bf376acbdb8fe66327e989c7",
+        "qid_v1_d680ccf7d7995cc13e35506cbb5f49e4e4ceb1694a5bd14fc6f1fc5c0de7f467",
+        "qid_v1_f7fa14e51da301db256da9980be02c3df30a8a564bebb30b02e66929d5b1af8c"
+      ],
+      "sourceUnits": [
+        "H22-C2-01",
+        "H22-C2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_COORD_DISTANCE_OPTIMIZATION_POLYGON_DISTANCE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_COORD_DISTANCE_OPTIMIZATION_PROJECTION",
+      "parentProblemTypeKey": "PT_COORD_DISTANCE_OPTIMIZATION",
+      "canonicalLabelKo": "정사영 거리 극값",
+      "definition": "중심의 정사영 거리와 반지름 합으로 정사영 구간의 분리 여부를 확인하고 거리의 극값을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 12,
+      "supportingQuestionUids": [
+        "qid_v1_2fe9f35122fb8208fe26e198556446712cedb810a0335d6faa8fac0a137a8634",
+        "qid_v1_540870d81706e501267a4d52aa151a4d8b9f532812232332407f366a6dc614d6",
+        "qid_v1_577ad610838b3fe62fde6bc3c2bdd0b8556679c9c99a92d4af632a672c7da311",
+        "qid_v1_641462f145717e77dfb12ff090e50f41725dd67a348a2db538a50a1761b7d751",
+        "qid_v1_8279677a3b9e8e1ba14fce3e78f5a3b298410ea84bfcee4b478a545da367d72e",
+        "qid_v1_909b3f896994d5d9f6adbce91e83d5be837adb2b6dfd9005de1f872e16b77b8a",
+        "qid_v1_9cc4db9b7a9b61e82d2589404a5232edce83280b6befa3231da5f0c0d66a5b59",
+        "qid_v1_aee29f4ad0bc566597690c441e3bb08570a5a4563278b45df94a705d26519377",
+        "qid_v1_c3b5880e6bba986736127323da11157ba98f6ea3eb8f141caf4e999db442f5c6",
+        "qid_v1_c9be180cbf6e98e7ba09940c8543217da0f39a5cd686e992e4a88bf78dc6386a",
+        "qid_v1_ddb443442dc300295cc801ff2f4e80a2848489759ca2354cb370a327f10d6215",
+        "qid_v1_f03803a7afb9ffbbd9664f35377c36a070484de8b0be58359ad710edb0da0482"
+      ],
+      "sourceUnits": [
+        "H22-C2-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_COORD_DISTANCE_OPTIMIZATION_PROJECTION",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_COORD_DISTANCE_OPTIMIZATION_REVERSE_TRIANGLE",
+      "parentProblemTypeKey": "PT_COORD_DISTANCE_OPTIMIZATION",
+      "canonicalLabelKo": "거리차 최대 등호 조건",
+      "definition": "역삼각부등식의 등호가 성립하는 두 점 연결 직선의 바깥쪽과 지정 축의 교점을 찾는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_0a20ea12cc97973bf6c63feaeaa8d4e5384e493a3d9d03def8b5341713700fd3",
+        "qid_v1_d83c161c36b55a1c6e686d3270d254b551c7ca895416c293cf28070b3f46348f"
+      ],
+      "sourceUnits": [
+        "H15-SA-09"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_COORD_DISTANCE_OPTIMIZATION_REVERSE_TRIANGLE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_COORD_FIGURE_PROPERTIES_SQUARE",
+      "parentProblemTypeKey": "PT_COORD_FIGURE_PROPERTIES",
+      "canonicalLabelKo": "정사각형 좌표",
+      "definition": "인접변 수직·등길이와 대각선 중점으로 정사각형 꼭짓점 또는 자취를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_41e19eac3cb477a534114d992c0eff06041e7aded35ed163e35675fe5d690ab8",
+        "qid_v1_def6b17cc902f33f092ab6b5968d4826dbb4915dcb770bf4046e97210308da8e",
+        "qid_v1_f7495b866dd1cd6ccb0d89e08fa974b89aca155816a0035a65565b32d899113b"
+      ],
+      "sourceUnits": [
+        "H15-SA-09",
+        "H15-SA-10",
+        "H22-C2-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_COORD_FIGURE_PROPERTIES_SQUARE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_LINE_EQUATION_SLOPE",
+      "parentProblemTypeKey": "PT_LINE_EQUATION",
+      "canonicalLabelKo": "평행·수직 직선",
+      "definition": "주어진 직선과 평행하거나 수직인 기울기를 정하고 한 점을 대입해 직선식을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_2a0f8b69753fb02cf50eac2973dddda1d18f91be13da4214026e66312e7f8def",
+        "qid_v1_d37faf51014c980cc085be4e7c4c5ba15ad2a78464de49250c16d758312a583f"
+      ],
+      "sourceUnits": [
+        "H22-C2-01",
+        "H22-C2-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_LINE_EQUATION_SLOPE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_LINE_INTERSECTION_CONDITION_QUADRANT",
+      "parentProblemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+      "canonicalLabelKo": "교점 사분면",
+      "definition": "연립한 교점 좌표를 매개변수로 나타내 두 성분의 부호 조건을 함께 푼다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_2b84026e6e01e0d2a46fce60284acf87f31aa4cc6aa2e6df01d401e8195398a3",
+        "qid_v1_5370aa924566ebd489b16f8f59bb5e4cdc5532c24de6bf7fa9b8111e3e6cda87",
+        "qid_v1_a2bc916589fbce4587ded738761cd2b63327e1a7d287e71376285e05eeacdb97",
+        "qid_v1_d675b8a63afcf4453c299ff6921f3852f2fca66d8f716b827b36a292f2a3a636"
+      ],
+      "sourceUnits": [
+        "H15-SA-10",
+        "H22-C2-01",
+        "H22-C2-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_LINE_INTERSECTION_CONDITION_QUADRANT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_LINE_INTERSECTION_CONDITION_TRIANGLE_AVOID",
+      "parentProblemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+      "canonicalLabelKo": "직선과 삼각형 비접촉",
+      "definition": "직선식에 삼각형의 세 꼭짓점을 대입한 값이 모두 같은 엄격한 부호가 되도록 매개변수를 제한한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_933092151192609309962b878490dd54b8a85d1bc1c7a10f55843c2471fa7121",
+        "qid_v1_b37dd844f6c08167f575c0cf032eb791e3a22ef2ec271198f65f14561cc5a53a"
+      ],
+      "sourceUnits": [
+        "H22-C2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_LINE_INTERSECTION_CONDITION_TRIANGLE_AVOID",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_LINE_RELATION_COLLINEAR",
+      "parentProblemTypeKey": "PT_LINE_RELATION",
+      "canonicalLabelKo": "세 점 공선 조건",
+      "definition": "두 기울기 일치 또는 방향벡터 행렬식 0으로 세 점이 한 직선 위에 있을 조건을 세운다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_1d6230452985c78e4d6d8ad02d12172d2679505be0ed336eeefd51bc5e6e2ef5",
+        "qid_v1_d645d364ce40e4d1633ad4b5f148b252751273ed1d574574e21f36d6f07ad7a5"
+      ],
+      "sourceUnits": [
+        "H15-SA-10"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_LINE_RELATION_COLLINEAR",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MOVE_CIRCLE_REFLECTION_ARC",
+      "parentProblemTypeKey": "PT_MOVE_CIRCLE_REFLECTION",
+      "canonicalLabelKo": "대칭 원호 길이",
+      "definition": "원호의 끝점과 중심으로 중심각을 판정해 대칭으로 반복되는 호의 전체 길이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_2dd46671b88092d2bf04bdaa91e3acdb2168c82075e9f3b45fbce50cfcd54c34",
+        "qid_v1_4dce9e9e3f49eff1e4b3b70501bc0ff20c17d3521cb52cd41efb1dc4755f9653"
+      ],
+      "sourceUnits": [
+        "H22-C2-04"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_MOVE_CIRCLE_REFLECTION_ARC",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MOVE_CIRCLE_TRANSLATION_RADIUS",
+      "parentProblemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
+      "canonicalLabelKo": "원이동 반지름 보존",
+      "definition": "평행이동 전후 원의 반지름이 같음을 완전제곱한 식에서 비교한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_136d8d5728f9f7780246d74bb35a10972d2899ba6a146db225b0b9381aeab5ac",
+        "qid_v1_a03bb7671cf62f3ca7cb72505cf0afa18e0de6ed451c8a58612f8b8a6bfb3721"
+      ],
+      "sourceUnits": [
+        "H22-C2-04"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_MOVE_CIRCLE_TRANSLATION_RADIUS",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MOVE_CIRCLE_TRANSLATION_STRIP_AREA",
+      "parentProblemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
+      "canonicalLabelKo": "이동 원호 상쇄 넓이",
+      "definition": "평행이동으로 대응하는 활꼴 넓이를 상쇄해 현 길이와 수직 이동거리의 곱으로 영역 넓이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 7,
+      "supportingQuestionUids": [
+        "qid_v1_0a7abe299cdc1e7aeae6ab84cddba48857ab85e734ff527f9dc2f755249d0c47",
+        "qid_v1_0f614b0e91362decf6838461cf2e65afb4dd23fb803cb62fce6ae1e546ae01cd",
+        "qid_v1_1979b8f5d5eb413affb158f30ebe19396b1a9c5f2d0500d08c1f289791a0e353",
+        "qid_v1_2c4a73781363fa030aff6ac96049dc8a1e5b8934371073401077af81dbb9f31b",
+        "qid_v1_882f8d7fdf09a8292d8324a180f2648fbaa25be5c5c8e5576a8e1d7d24aaa9b8",
+        "qid_v1_aee7f9aa35d1bef4771263811fb22659e1ebc0779c19d740229abbd2ab3d8d8d",
+        "qid_v1_f6b734f91dfbd1aa064af645063dc9a32010198fb1667de593a38b87c1774449"
+      ],
+      "sourceUnits": [
+        "H22-C2-04",
+        "H22-C2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_MOVE_CIRCLE_TRANSLATION_STRIP_AREA",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MOVE_COMPOSITE_PERIOD",
+      "parentProblemTypeKey": "PT_MOVE_COMPOSITE",
+      "canonicalLabelKo": "반복 대칭 주기",
+      "definition": "대칭 좌표를 차례로 추적해 반복 주기를 확인하고 나머지로 지정 번째 점을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_bcb46b3ba1805bcb9d88bf33eee3fdc2339584d3680be889864caa8471e37463",
+        "qid_v1_e729cf2c721c6b13cb285afc89efc620cb24eee7a47102737352a0bbebb10acf"
+      ],
+      "sourceUnits": [
+        "H22-C2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_MOVE_COMPOSITE_PERIOD",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MOVE_FOLDING_REFLECTION_REFLECTION_EXISTING",
+      "parentProblemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
+      "canonicalLabelKo": "접기 각",
+      "definition": "접는 선을 대칭축·각의 이등분선으로 보고 평행선과 삼각형 각을 옮겨 미지각을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_04d460523474bde5e66c5977e374147a512963886f4d2d263a911e70b3a5daed",
+        "qid_v1_51a4558c07d35612841b34baa16f53cb7a9680a8aa9968a7d44884e07b32a8f1",
+        "qid_v1_a4f7a3197dfa69d2170bdc3a46757e9ccd026dc21b294d5e69de3b5f7fdacb8b"
+      ],
+      "sourceUnits": [
+        "M1-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_MOVE_FOLDING_REFLECTION_REFLECTION_EXISTING",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_MOVE_POINT_REFLECTION_CENTER",
+      "parentProblemTypeKey": "PT_MOVE_POINT_REFLECTION",
+      "canonicalLabelKo": "대칭중심 중점 좌표",
+      "definition": "대칭중심이 두 점의 중점임을 이용해 대칭점 좌표를 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_51ba07bac7b71f1c6cc1d2a99af2de03448529dd4c5097aa7df2fb6fcb071cdb",
+        "qid_v1_9b8f0a7e0036cb48d5b6a39878100cfc4514611d280a30b3cf02143b9d97c71f"
+      ],
+      "sourceUnits": [
+        "H22-C2-04"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_MOVE_POINT_REFLECTION_CENTER",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_TWO_CIRCLES_CENTER_TRIANGLE",
+      "parentProblemTypeKey": "PT_TWO_CIRCLES",
+      "canonicalLabelKo": "접하는 원 중심삼각형",
+      "definition": "내접·외접의 중심거리와 배치의 직각삼각형으로 반지름 또는 길이 방정식을 세운다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_90ae56eed6029cb817a5d760d30ef3a4c4847e6076f996cc1eed1bc0c07d3e22",
+        "qid_v1_99e08e35d9f55ead1415695ae02d1e92bc608ae65086c0e26b0d35885703f3b2"
+      ],
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_TWO_CIRCLES_CENTER_TRIANGLE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_TWO_CIRCLES_COMMON_TANGENT",
+      "parentProblemTypeKey": "PT_TWO_CIRCLES",
+      "canonicalLabelKo": "공통접선 길이",
+      "definition": "중심거리와 반지름의 차 또는 합으로 직각삼각형을 구성해 공통접선의 접점 사이 거리를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 15,
+      "supportingQuestionUids": [
+        "qid_v1_09ff24ed942d840d04f46fbfc26e118b7a39f051113b6c948f276c6f4ac6ff6c",
+        "qid_v1_1efcd8a6a9ba3f8e7f7c0da2b676603173f3a92b479aa82de12d8e3e8e609edf",
+        "qid_v1_4b3a6f4da233c8450ac53729fe860ca61d39e28cae143db8623d55a105904bd7",
+        "qid_v1_56e02f3f460c652db30ffce4dc1e49a07bbfc8cab5c1ece90d99bd94dcae358e",
+        "qid_v1_5d47e95366f00381291029788fa80df9c7ea94bd16ea54b59513cbd729f9ccfa",
+        "qid_v1_5f86b2ac74a74f484fca05a661a5c9769a4cbecd4d7f2e73948377428d02f324",
+        "qid_v1_7694d329742f703c475e2aab800f5cb12b335cd3989f0b06f71de9820714ce9a",
+        "qid_v1_80bf1cdf33f407c228446e1b2d66c2d5fb7512814ef0c9b76de2882cc75bbec5",
+        "qid_v1_8625eb6a0e80f39527067e55fdb3f479c99b68473981e18483f75f3bc5759480",
+        "qid_v1_933bd202024f0d61932d8cf5ee052abc5c0951d0c9d088f7e71f82b2c85222d6",
+        "qid_v1_b3e60f55b58b233785674154134ac24acdbb34554a7f8c48d9c0f28a186c2f82",
+        "qid_v1_b9edbc44815663a07023784f2bfb33e58175a3efcc11d57e260dd3a3c869fa94",
+        "qid_v1_c5ff3408d857788b2090179750c21974320107044940aaa59b4fb7d020f0d71d",
+        "qid_v1_dbe2a272c1bcee550f967e425aeb49809236ac06d04f0e4bda71f3fca67f35f3",
+        "qid_v1_e8359833c1ae4955ea9d13237bd8bf1a3f9c655afbaf33b9e5310295723ab39c"
+      ],
+      "sourceUnits": [
+        "H22-C2-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_TWO_CIRCLES_COMMON_TANGENT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_TWO_CIRCLES_POSITION",
+      "parentProblemTypeKey": "PT_TWO_CIRCLES",
+      "canonicalLabelKo": "두 원 위치",
+      "definition": "중심거리를 반지름 합·차와 비교해 두 원의 위치 관계와 공통접선 개수를 판단한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 7,
+      "supportingQuestionUids": [
+        "qid_v1_01e848c47c27f3025c080ee4d38d836f8ee31402bb3fa7d6e9b34a2c3ed71226",
+        "qid_v1_8c89e13e98a61f19454796c4000cc45b9d3488acd721ef5962ee2f1d7419b584",
+        "qid_v1_94859bf4594688376699b4cbafe517202b3d466ebc89c718ff2580294aca385b",
+        "qid_v1_98ae73480ce861dda6ae1d3660b58adce431cf8691d1bf14e000de7c81903bb5",
+        "qid_v1_a13bab22d356f602fc87c774c739d0def0e3f1cfb0f1f41ef26ed9ed26e8fcd7",
+        "qid_v1_bceb66d280bf9315bcc507e01dbb605732ffcd40b0c9f9a3c29d6d8bbc2e8fb7",
+        "qid_v1_fee3c62243915b1baea4a7df891b47c031c6a6f3211c2cf72765a82d87f1668a"
+      ],
+      "sourceUnits": [
+        "H22-C2-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_TWO_CIRCLES_POSITION",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+      "parentProblemTypeKey": "PT_LINE_EQUATION",
+      "canonicalLabelKo": "점과 방향벡터 직선식",
+      "definition": "주어진 점과 방향벡터로 직선의 매개식 또는 일반식을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_dd7ce575b8a6593b9dd3c2c90d648cf46bc26afbc2cacb60fd675c43ae162edc",
+        "qid_v1_feb1fd3a0f89caafaf0cfd5f51d8c50023232be7b11dbc5ae07b811988e6d294"
+      ],
+      "sourceUnits": [
+        "H22-GE-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_LINE_EQUATION_DIRECTION",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
         }
       ]
     }

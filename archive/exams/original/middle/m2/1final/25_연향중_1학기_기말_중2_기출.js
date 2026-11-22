@@ -1137,7 +1137,7 @@ window.questionBank = [
       "y절편"
     ],
     "wide": false,
-    "content": "$ab \\lt 0, a-b \\gt 0$일 때, 다음 중 일차함수 $y=ax+b$의 그래프로 알맞은 것은? [4점]<br><img src=\"assets/images/25_연향중_1학기_기말_중2_기출/q17-problem-visual-v2.svg\" alt=\"① 오른쪽 위로 올라가며 세로축의 원점 위를 지난다. ② 올라가며 세로축의 원점 아래를 지난다. ③ 올라가며 원점을 지난다. ④ 오른쪽 아래로 내려가며 세로축의 원점 위를 지난다. ⑤ 내려가며 세로축의 원점 아래를 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
+    "content": "$ab \\lt 0, a-b \\gt 0$일 때, 다음 중 일차함수 $y=ax+b$의 그래프로 알맞은 것은? [4점]<br><img data-scale=\"100\" src=\"assets/images/25_연향중_1학기_기말_중2_기출/q17-problem-visual-v2.svg\" alt=\"① 오른쪽 위로 올라가며 세로축의 원점 위를 지난다. ② 올라가며 세로축의 원점 아래를 지난다. ③ 올라가며 원점을 지난다. ④ 오른쪽 아래로 내려가며 세로축의 원점 위를 지난다. ⑤ 내려가며 세로축의 원점 아래를 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
     "choices": [],
     "answer": "②",
     "solution": "조건 분석에 의해 $a \\gt 0, b \\lt 0$이다.\n기울기가 양수이므로 오른쪽 위로 증가하는 형태이며, $y$절편이 음수이므로 원점 아래에서 $y$축과 교점을 가진다. 이 개형을 만족하는 그래프는 ②번이다.\n따라서 정답은 ②이다.",

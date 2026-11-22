@@ -76,6 +76,7 @@ test("deploy workflow: tests and bundle check run before wrangler deploy; creden
   const checkout = idx(/actions\/checkout@/), creds = idx(/Require Cloudflare credentials/), install = idx(/npm ci --prefix apmath\/worker-backup\/worker/);
   const gate = idx(/bash tools\/ci\/apms-worker-test-gate\.sh/), dry = idx(/wrangler deploy --dry-run/), real = idx(/npx wrangler deploy --keep-vars/);
   assert.ok(checkout >= 0 && checkout < creds && creds < install && install < gate && gate < dry && dry < real, "order: checkout, credentials, npm ci, test gate, dry-run, deploy");
+  assert.match(steps[checkout].text, /fetch-depth: 0/, "full history: the test projection build reads pinned historical git blobs (original-source-error-hold)");
   assert.ok(steps.slice(real + 1).every(s => !/wrangler deploy/.test(s.text)), "deploy is the last wrangler call");
   for (const s of steps) {
     const usesToken = /secrets\.CLOUDFLARE_API_TOKEN/.test(s.text);

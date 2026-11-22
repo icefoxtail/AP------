@@ -947,7 +947,11 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js#q17",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q17-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q17-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_복성고_1학기_중간_고1_유사_plans/q17-solution.plan.json",
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_유사/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 복소평면에 원점 O를 중심으로 하는 반지름 2인 원이 그려져 있고, 그 위의 네 점 A(√3, 1), B(√3, −1), C(−√3, 1), D(−√3, −1)이 표시되어 있다. 실수부가 같은 A와 B, C와 D를 각각 잇는 세로 점선이 있고, 가로 방향은 실수축, 세로 방향은 허수축이다.",
+    "solutionImageCaption": "z=a+bi라 하면 조건 나에서 a²+b²=4, 조건 가에서 2a²−2b²=4이므로 a²=3, b²=1이고, 근과 계수의 관계에서 m=−2a, n=4이므로 m²+n²=4×3+16=28이다. 따라서 답은 ⑤ 28이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

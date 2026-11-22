@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-caf3dd92f78c-7a61330e",
+  "sourceArchiveFile": "original/high/h1/1mid/19_금당고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_a8a4d1312b7790dc10571e28a200acf7ef7a1a89972934ea0a9647ce9a0e7935",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "step": "x-1의 근 1을 P에 대입하여 나머지 3을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0008be687dfed646e1991519dd43b1ebd99b4785b8c9349ef4a6f279420fa720",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+      "step": "x²에 관한 이차식으로 인수분해한 뒤 제곱차를 분해하여 네 일차인수의 상수를 정렬한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_02ee3ef8121f7a6a7af4da24bf12c099050295ede516946bd0509172fe737a59",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+      "step": "두 근이 모두 음수임을 확인하고 제곱근의 곱이 -√(αβ)=-1임을 반영해 대칭식을 계산한다.",
+      "note": "음수 제곱근 곱의 부호가 선행 핵심 조건.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b20d0aaa81e27681ed133dc4df12e67705223381a56a7b6cca3c90282d6d2214",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+      "step": "iz와 켤레 z의 실수부·허수부를 비교하여 a=-b를 얻고 각 명제에 대입한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fcca910517ff01509e8df789d747c8d646f6b12878a26c6e9573af8cb66a4b88",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+      "step": "g=f-2x+5를 근의 합·곱으로 t(x²-3x+7)로 쓰고 f(-1)=4로 t를 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_af7a13635a4d01ee3796be6f48099f0d00179df2f7b0162ae8dbeb84e5837ac0",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "step": "차이 다항식 h=c(x-1)²에 h(2)=-3을 대입해 c를 정하고 h(-1)을 구한다.",
+      "note": "원본 조건 이미지 직접 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_34e0b72c90fc3b2e60da171a307fda560e4453e83b4983c1290750adccfda2ac",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_INEQUALITY_APPLICATION",
+      "templateKey": "TPL_H1_INEQUALITY_APPLICATION_QUANTITY",
+      "step": "생산 일수를 (일수-1)·일생산량<N≤일수·일생산량으로 모델링해 계약량 범위를 구한다.",
+      "note": "새 TPL 제안: 마지막 날 부분 생산의 일수 역산. 정의: 완료 일수에 따른 총량의 반열린 구간을 교집합하여 새로운 생산속도의 완료 일수를 정한다. 새 TPL 제안: 생산 일수를 (일수-1)·일생산량<N≤일수·일생산량으로 모델링해 계약량 범위를 구한다. 정의: 생산 일수를 (일수-1)·일생산량<N≤일수·일생산량으로 모델링해 계약량 범위를 구한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8443476f68d98daf808d3ac05a37a27f44bf4b0ca7fa4d59f622b42e6cf7d29f",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "step": "교점 조건으로 f=a((x-1)²+4)-10을 복원하고 허용 구간 꼭짓점에서의 최솟값으로 a를 정한다.",
+      "note": "원본 조건 이미지 직접 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9b3cb84788ef99817dd5e45c3735a4f08e822c40e512b25459bb54aee4ea1fe8",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+      "step": "실계수 이차식의 두 근이 z와 켤레 z임을 이용해 합 1/3과 곱 2를 세제곱합에 대입한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

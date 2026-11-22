@@ -302,7 +302,6 @@ window.questionBank = [
   },
   {
     "id": 16,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "위로 열린 포물선의 꼭짓점은 (−1, −3)이다. 포물선은 세로축의 −1을 지나며 꼭짓점에 점선을 맞췄다.",
     "questionNumber": 16,
@@ -325,7 +324,6 @@ window.questionBank = [
   },
   {
     "id": 17,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "아래로 열린 파란 포물선의 꼭짓점은 A, x절편은 B와 D이다. C는 y축 위의 절편이고 E는 C와 같은 높이에 있다. 세 점 A, C, E를 이었다.",
     "questionNumber": 17,
@@ -388,7 +386,6 @@ window.questionBank = [
   },
   {
     "id": 20,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "위로 열린 파란 y=ax² 위에 A와 B가 있고, 아래로 열린 주황 y=−x² 위에 C와 D가 있다. 두 그래프의 꼭짓점은 원점이다. 오른쪽 변 AD가 가로축과 만나는 점은 E이다.",
     "questionNumber": 20,
@@ -431,7 +428,6 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "위로 열린 파란 포물선에서 A는 음의 x절편, B는 아래쪽 꼭짓점, C는 y절편이다. 세 점과 원점 O를 이은 연두색 사각형을 칠했다.",
     "questionNumber": 22,
@@ -474,7 +470,6 @@ window.questionBank = [
   },
   {
     "id": 24,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "직사각형 ABCD는 가로 14 cm와 세로 8 cm이다. P는 왼쪽 변에서 A에서 B 쪽으로 내리고, Q는 밑변의 점 E에서 C 쪽으로 움직인다. BE는 4 cm이며 삼각형 PBQ를 색칠했다.",
     "questionNumber": 24,

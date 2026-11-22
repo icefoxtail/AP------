@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-32e21164d0bd-165511ac",
+  "sourceArchiveFile": "original/middle/m3/2mid/22_매산중_2학기_중간_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_224c400ffa9f2f629de6a65961fcb6dc962972a3d63e0bf7bfb4539a0380fc6a",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
+      "templateKey": "TPL_M3_QUADRATIC_FUNCTION_DEFINITION_POLYNOMIAL",
+      "step": "각식을최고차항2인ax²+bx+c꼴인지검토하면5x²만이차함수이다.",
+      "note": "필요 TPL: 함수식의 차수 판별. 정의: 주어진식의 다항식여부와 최고차수를 확인하여 이차함수를 고른다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_266496bb12069d27636569749d7c66c473d5e04abbe8e6e8907197ce72f56380",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
+      "templateKey": "TPL_M3_SELECT_QUADRATIC_FUNCTION_WORD_PROBLEM",
+      "step": "상황식을세우면직사각형넓이x(x+2)만최고차수2이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c704061b6da9a53b7e8564ac3f6cf5a04b7279f7db107e9d4bb53017307fde0f",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_M3_EVALUATE_PARABOLA_PROPERTIES_STATEMENTS",
+      "step": "y=-x²는꼭짓점원점·대칭축y축·아래로열림이므로ㄴㄷ이다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_64c2b6e9d8a09ce1e9e10faddc872bc13f3c77adf1e20400f737b83adeb6708c",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_M3_QUADRATIC_PROPERTIES_WIDTH",
+      "step": "점선이아래로열리고폭이좁으므로a<0,|a|>1에서a=-2를고른다.",
+      "note": "필요 TPL: 기본포물선의 폭과 계수. 정의: 개구방향으로 부호,폭으로 계수절댓값의 범위를 결정한다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f8162b8361a6d5e2ac83a6c99002f52b82ae632c6a8e11243e7f112921cabef6",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+      "templateKey": "TPL_M3_TRANSLATION_POINT",
+      "step": "수직이동식-4x²+3+k에(1/2,5)를대입하여k=3이다.",
+      "note": "필요 TPL: 지나는점으로 수직이동량. 정의: 이동식의 상수 증가분을 점대입으로 구한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9116b10c6731be09e38b2ac81ded708d1f6248cd7a29f80ad43c497b8f1697b9",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_M3_QUADRATIC_PROPERTIES_STATEMENTS",
+      "step": "이동식3(x+4)²의꼭짓점은(-4,0)이므로③이거짓이다.",
+      "note": "필요 TPL: 이동된 포물선 성질 검토. 정의: 축·꼭짓점·통과점·증감 진술을 비교한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3174d986ce619079700f71f70c58e3ba6071dfa231817182bcfc83bc7042d05e",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+      "step": "꼭짓점(2,6)과y절편2로2=4a+6에서a=-1,apq=-12이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8fcd599fce6db2ae6ff21a384a339a119cc288a541fb0fd6c2fcf9ff17c40b84",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+      "templateKey": "TPL_M3_TRANSLATION_POINT",
+      "step": "이동량을역으로적용해원꼭짓점(-1,2),통과점(1,10)을얻고a=2를구해계수결합2이다.",
+      "note": "필요 TPL: 평행이동 역산 후 계수 복원. 정의: 이동된 꼭짓점·통과점을 원위치로 되돌려 함수식을 정한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7235d5e5dd21ac3c5b7929db8c9b82b500a73afa26279431d92436e5e053cc0e",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "templateKey": "TPL_M3_VERTEX_FORM_INTERSECTION",
+      "step": "첫포물선의축-2와수평현길이6에서p=-5,q=18,서로꼭짓점통과조건에서a=-2를구해합11이다.",
+      "note": "필요 TPL: 두포물선의 꼭짓점 상호통과와 수평현. 정의: 대칭축·수평현길이로 꼭짓점을 복원한 뒤 상호통과조건으로 계수를 정한다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5e9ea6eaeb8d2a94f97f080339b2da07c15586a11e220e6c17f3ea3ee766183e",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "templateKey": null,
+      "step": "선택①은꼭짓점(3,-2)와(4,3)으로a5,선택②는축p2와동일y절편5로q=-7,합-5이다.",
+      "note": "필요 TPL: 표준형 꼭짓점·축·통과조건. 정의: 꼭짓점 또는 축과 함숫값 조건을 표준형에 대입한다. 두 선택갈래를 모두 판독.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f309fc18fd6cf18c004c2af01398ca91fa305f55980696e7af93ad5197eeca11",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": null,
+      "step": "선택①은y절편과두점대입으로-4x²+7x-3,선택②는축-3과근-9로다른근3및계수-1/3을복원해두삼각형넓이합135/2이다.",
+      "note": "필요 TPL: 축·절편으로 복원한 그래프의 사각형 넓이. 정의: 대칭인두근과 절편에서 함수를 구하고 꼭짓점·절편 사각형을 삼각형으로 나눈다. 선택①세점복원도 step에 보존,②를 대표판정.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    }
+  ]
+}

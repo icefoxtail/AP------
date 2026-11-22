@@ -532,9 +532,9 @@ window.questionBank = [
     "originalCategory": "로그함수",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "pending_R2",
-    "solutionImage": "assets/images/21_순천여고_1학기_중간_고2_수학I/q19-solution-v2.svg",
-    "solutionImageAlt": "해설 그림. 두 패널은 전체 구간의 주기 4 로그 곡선 f(x)와 감소하는 y=3^(−x)를 보여 준다. 왼쪽은 0≤x≤8, 오른쪽은 8≤x≤12이다. x=4와 x=8 경계의 양쪽 교점은 서로 다른 로그 가지 구간에 나뉘어 있다.",
-    "solutionImageCaption": "전체 개형과 부호 비교표를 함께 보면 주기 경계 양쪽의 교점을 각각 확인할 수 있다. 가능한 자연수 a의 합은 30이며 정답은 ③이다.",
+    "solutionImage": "assets/images/21_순천여고_1학기_중간_고2_수학I/q19-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 위아래 두 패널의 좌표평면 그래프이다. 파란 곡선은 주기가 4인 로그함수 f(x)(0≤f(x)≤1), 주황 곡선은 감소하는 지수함수 y=3⁻ˣ이다. 위 패널은 0≤x≤8로 x=4, 8 눈금이, 아래 패널은 4≤x≤12로 x=8, 12 눈금이 보이며 아래 패널은 x=4부터 이어 본 것이다. f(x)는 x=4, 8, 12에서 0이 되고 그 부근에서 y=3⁻ˣ와 만난다.",
+    "solutionImageCaption": "f는 주기 4이고 0≤f(x)≤1이므로 상승 구간과 하강 구간마다 y=3⁻ˣ와 한 번씩 만난다. [0,8]의 네 교점에 이어 8<x<9에서 다섯째, 11<x<12에서 여섯째 교점이 생긴다. |x|<a 안에 교점이 정확히 다섯 개인 자연수 a는 9, 10, 11이므로 그 합은 30이고 정답은 ③이다.",
     "solutionImageSize": "full"
   },
   {

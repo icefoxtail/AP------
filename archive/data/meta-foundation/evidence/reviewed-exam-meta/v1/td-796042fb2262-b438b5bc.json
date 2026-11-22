@@ -1,0 +1,816 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-796042fb2262-b438b5bc",
+  "requestSha256": "638aee0a2396baffc21b590f04fe2823999c24a31ff4dedf8eef5b485f1bed08",
+  "examUid": "22_팔마중_1학기_기말_중3_기출c",
+  "sourceArchiveFile": "original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+  "sourceBlobSha1": "be333bf7117375265e256f145249d546777c7658",
+  "sourceRawSha256": "909345a654d5681552d3b36c25bfbb4581e783a55d6fd5ee7a5ce53b18a49fa6",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-796042fb2262-b438b5bc.type-ledger.json",
+        "sha256": "3c0526d3f40a0b3b737e312fa3261817e2a314b1c4a54b5b583b83075343bf36"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 17,
+  "registryChanges": [],
+  "typeApprovals": 17,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 17,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_d58b7ab88f213cc8b2897d7dcad2a53d629ad1790ccbf9cdffcd2409e6488bb6",
+      "sourceArchiveFile": "original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 1,
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "projection_unmaterialized"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-796042fb2262-b438b5bc",
+        "judge": "dots",
+        "rationale": "각 등식을 이항하여 최고차수가2인지 확인한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "c45dbce3b6d7ee7c40f29a9d12b65172fc01335305edb8bbd29c93fd2c7b85a5",
+        "judgedContentFingerprint": "a7c8b61680d6de88cc0729b6138179252e12ac26c9949cc7eb74a01f7757056a",
+        "rowBinding": "content",
+        "textBindingFingerprint": "619009dd8b0ab5d6123dcb8650099c7cc761b4df778bcb73ab495411a8a6de9f",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-796042fb2262-b438b5bc.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_3c4ee4c036397c455faad7be681056042c018d152f89973476757821a5d7af16",
+      "sourceArchiveFile": "original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 2,
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT",
+      "templateKey": "TPL_M3_ZERO_PRODUCT_COMMON_ROOT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-796042fb2262-b438b5bc",
+        "judge": "dots",
+        "rationale": "첫 식을 (x+3)(x+4)=0으로 풀고 두번째 식의 근±3과 공통인 A를 계산에 쓴다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3-1",
+          "curriculumSource": "row",
+          "rowCourse": "중3 수학",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "f94e6a3f3cc274b7d59157c26cdef36762f17472f5aaf25f4afbfe83b13ef570",
+        "judgedContentFingerprint": "e20d46e15674f3e787a33ee9ebd1576ab01cbffe7757c7b09c87f4299e844b21",
+        "rowBinding": "content",
+        "textBindingFingerprint": "f64baa990830519f69e9c380bbe70ec33b512715cf9f81d7e60224c1bbfb8429",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-796042fb2262-b438b5bc.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_56fabd7ab6956c3a80a4537c9c0e6fe50e346e6c945378c4ad8cf166ecdec09f",
+      "sourceArchiveFile": "original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 3,
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
+      "templateKey": "TPL_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD_ROOT_PARAMETER",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-796042fb2262-b438b5bc",
+        "judge": "dots",
+        "rationale": "제곱근을 취한 x=p±√q/2와 주어진 두 근을 비교하여 p,q를 정한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3-1",
+          "curriculumSource": "row",
+          "rowCourse": "중3 수학",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "4e1fb7a96af8293d0c2576fc40e54cb22662e347310e54ba80f0c6bebf624a14",
+        "judgedContentFingerprint": "8ef0cd5d7defac6a6a75249b4f96b3ea57f439b0606dc4a0ba8372dd1fb87da2",
+        "rowBinding": "content",
+        "textBindingFingerprint": "e59abf2ab4dc100f4935de8c3af7a01cedf4b8eb928e6891071da8a1f3a4caa2",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-796042fb2262-b438b5bc.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_14dd1e7d3d609c2a2110f9e5b7ad2dc5d085a47336396d8b291d5556d1ba7e8f",
+      "sourceArchiveFile": "original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 4,
+      "problemTypeKey": "PT_M3_QUADRATIC_ROOT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "projection_unmaterialized"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-796042fb2262-b438b5bc",
+        "judge": "dots",
+        "rationale": "근-2 대입으로 a=-6을 정하고 인수분해하여 다른 근을 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "391784e401a5c6561c5ed2fc32c6dbef4443db0b071e78528e5e1616dca258ed",
+        "judgedContentFingerprint": "374306c9d9ca176ba38678017e47263905f768cab70f71226c87da046454fad7",
+        "rowBinding": "content",
+        "textBindingFingerprint": "8a2358e6bee6c175b0ac63eb8c4054ae2213c7b30c1ef429a1d40fa14c9a8fba",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-796042fb2262-b438b5bc.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_a9423e032b303ad854ca17b8cb2e93c0a1a6845435807d9ff916110bc76bf280",
+      "sourceArchiveFile": "original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 5,
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT",
+      "templateKey": "TPL_M3_ZERO_PRODUCT_SOLVE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-796042fb2262-b438b5bc",
+        "judge": "dots",
+        "rationale": "인수분해 (x+5)(x-1)=0에서 두 일차인수를0으로 놓는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3-1",
+          "curriculumSource": "row",
+          "rowCourse": "중3 수학",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "b701e6e7aa6e9ffb0138b24642d30c19d142c4360c32e28799c9bd9ac0118dbb",
+        "judgedContentFingerprint": "402399ad92755f62cb11f07917e7169bae9fca9731f674ab315fb8716d44cedf",
+        "rowBinding": "content",
+        "textBindingFingerprint": "16633b75d9e5b7c0b9e53b95f6dc052a55c72d345f3c19454cb7df302dd01c7e",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-796042fb2262-b438b5bc.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_3f0d272dbdafa0bda9ab6f262d59b134da0c4539a71ec271a66045e5765be183",
+      "sourceArchiveFile": "original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 6,
+      "problemTypeKey": "PT_M3_ROOT_COEFFICIENT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "projection_unmaterialized"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-796042fb2262-b438b5bc",
+        "judge": "dots",
+        "rationale": "두 근-1,2를 대입한 연립방정식으로 a,b를 정한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "df77292152b19de44f74e968c857479443b3286f291286e8e1881051e7e093b3",
+        "judgedContentFingerprint": "203e7adcc91a9ec0b5d10f92c6daa92e2e034481b52ddbcf4b0f007e02cfb4b0",
+        "rowBinding": "content",
+        "textBindingFingerprint": "682a458dd82582d55600268d08f8deaf53b8376b9db4eeb8e5b33e631d49baf8",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-796042fb2262-b438b5bc.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_f3a832580d34cfafc3e7fb1c218b08a84bcf25f4a7ad6018d516b4b28c539e08",
+      "sourceArchiveFile": "original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 7,
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
+      "templateKey": "TPL_M3_CALCULATE_PARAMETER_DIFFERENCE_FROM_DOUBLE_ROOT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-796042fb2262-b438b5bc",
+        "judge": "dots",
+        "rationale": "완전제곱식 우변을0으로 놓아 a를 정하고 그때 중근을 구해 합한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3-1",
+          "curriculumSource": "row",
+          "rowCourse": "중3 수학",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "449428ac23a9490f7be2b00e80c38c0531ddde14dca0eaddcc0d4e3d4ad471fa",
+        "judgedContentFingerprint": "07f8c49b14fe6b9d0b80373d73a5c31f392919f0d1aa3b356a5599ad20580593",
+        "rowBinding": "content",
+        "textBindingFingerprint": "257e728f7060f8c25b54e4a7f47a0922d664ced8e10ea66c94c65ed8ca11af05",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-796042fb2262-b438b5bc.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_91f2b11f5ab41ed254dab3c313499ef531fce4f0e07970536abc6338fc3c55fd",
+      "sourceArchiveFile": "original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 8,
+      "problemTypeKey": "PT_M3_ROOT_FORMULA",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "projection_unmaterialized"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-796042fb2262-b438b5bc",
+        "judge": "dots",
+        "rationale": "근의 공식의 유리수부-2와 근호4+5A를 주어진 근과 비교한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "d91efeac0202be0b3113c7b646a4348fb2c431a0141165b79253d2180b95e336",
+        "judgedContentFingerprint": "7e2000d780431529808000f7f1a9fbbce7ffd2fea82f5d44892edb2600684871",
+        "rowBinding": "content",
+        "textBindingFingerprint": "d2c056c6d23a59f038722dc5361dd4867f6720327152210fc42c8a357ffd1876",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-796042fb2262-b438b5bc.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_72f82743ed2df9034191f67aaf4876b7755f9ef790b37389f2a8e873ae56a7b5",
+      "sourceArchiveFile": "original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 9,
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DISCRIMINANT",
+      "templateKey": "TPL_M3_QUADRATIC_EQUATION_DISCRIMINANT_RATIONAL_ROOT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-796042fb2262-b438b5bc",
+        "judge": "dots",
+        "rationale": "판별식41-8a가 음이 아닌 제곱수가 되는 자연수 a를 찾아 더한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3-1",
+          "curriculumSource": "row",
+          "rowCourse": "중3 수학",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "b811a7ff379de3a02a002f2c5683314f1b2387cbf1916fdb7c95a585c6d04379",
+        "judgedContentFingerprint": "217beb8a77a6ca8933575c501e55cabaab3702c3e6b69f7ee4ffd427108e6e01",
+        "rowBinding": "content",
+        "textBindingFingerprint": "6593fcaa6103d4e88694575208f7d95de3b0a7bc173d4aec8f100dc0d30d2f28",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-796042fb2262-b438b5bc.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_6cb46c936634371bc50d96cbc6e1b27b173ddd70a3fe2ea6153cdc419054f214",
+      "sourceArchiveFile": "original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 10,
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "projection_unmaterialized"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-796042fb2262-b438b5bc",
+        "judge": "dots",
+        "rationale": "바깥 직사각형 넓이(8+2x)(5+2x)에서40을 뺀 값이48인 방정식을 푼다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "8a83aa414e97714a06b1ed19ab764a6f3a1dee5896e8fc7c2ef2725d04d19f6c",
+        "judgedContentFingerprint": "ff1e54e24a34fb73a3ede708cc25072c1e0071953c0bc05f8e24de2b48d03557",
+        "rowBinding": "content",
+        "textBindingFingerprint": "baa1e02622d34c76d3fb5a3773b6726c983e3738baab29e40cc4180f89c5e032",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-796042fb2262-b438b5bc.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_63bc6ac46064ec89a9f4e756ef669f070e883847aed6b5ec3f35217e2b567004",
+      "sourceArchiveFile": "original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 11,
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_M3_QUADRATIC_PROPERTIES_WIDTH",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-796042fb2262-b438b5bc",
+        "judge": "dots",
+        "rationale": "음의 이차항 계수 중 절댓값이 가장 작은 식을 가장 넓은 그래프로 고른다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3-1",
+          "curriculumSource": "row",
+          "rowCourse": "중3 수학",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "ba973bb9656fd73634be62e5a71bf9550c531f6d4d5f537017c062dc93e7a029",
+        "judgedContentFingerprint": "7320bc287715f73100b27c59cd58669af33b220c4feefa94718a5fe81bfed83b",
+        "rowBinding": "content",
+        "textBindingFingerprint": "f5593bc4a6162240e742d1cd333ca994cdc7d3c2c2721dcb8bf8dd0147ff8550",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-796042fb2262-b438b5bc.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_cd66265c124cf64c5e4fcabc1df2f663c4dd224b473930f09a2b85439dab2665",
+      "sourceArchiveFile": "original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 12,
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_M3_EVALUATE_PARABOLA_PROPERTIES_STATEMENTS",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-796042fb2262-b438b5bc",
+        "judge": "dots",
+        "rationale": "계수1/3의 볼록성·사분면·대칭과 왼쪽 감소 성질을 진술에 적용한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3-1",
+          "curriculumSource": "row",
+          "rowCourse": "중3 수학",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "bea6a2eff91d58fe08bb0ff5fb8011ac169331e22e165eff577a7748a42971b6",
+        "judgedContentFingerprint": "aa9ea3aed2e78086e8176d26752b0acab1bfb5cd1bf51b0e005e4a5435fcdae9",
+        "rowBinding": "content",
+        "textBindingFingerprint": "7d68b43b5787dde84cb2f63a942477b4648f125b094ede86ebe22523253f629b",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-796042fb2262-b438b5bc.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_d016443d09de8f31602ffde7bd4a1c73e59737102ab07ddfbe40a0621895a08f",
+      "sourceArchiveFile": "original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 13,
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_M3_QUADRATIC_PROPERTIES_REFLECTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-796042fb2262-b438b5bc",
+        "judge": "dots",
+        "rationale": "x축 대칭으로 y=-3x²를 만든 뒤 x=2의 값을 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3-1",
+          "curriculumSource": "row",
+          "rowCourse": "중3 수학",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "71eb546cbcaf63c2188ca0aaa07e82a7a963da9ac7c92f10bdbbdd25df9b0e7a",
+        "judgedContentFingerprint": "e6d4b47e5fb750bc2b72017e8c68d58b37c96eff7c925003e4ca9f6143cc3ce7",
+        "rowBinding": "content",
+        "textBindingFingerprint": "58f6eed1eabc245527655dd368c504965d5dcee2acca1fe02fd04efd966788f1",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-796042fb2262-b438b5bc.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_ad3740e49fc84bb0e6dc74f99abae0e10b1e2750a001219f224b10cefd3d6279",
+      "sourceArchiveFile": "original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 14,
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "templateKey": "TPL_M3_VERTEX_FORM_VERTEX_LOCUS",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-796042fb2262-b438b5bc",
+        "judge": "dots",
+        "rationale": "각 표준형의 꼭짓점 y좌표가0인 식을 고른다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "3f071cbc5d50922cfdc923ece16e5a7f4325896319a45d86cfc04e5446d93053",
+        "judgedContentFingerprint": "37285f229c7bb352a002267464baf19e131b4970a554be0f8ca64b55f6b8c876",
+        "rowBinding": "content",
+        "textBindingFingerprint": "60a9211fea252548c586bbff11a66e418ffc32cc8adba38f2bfa41b92b0ddcf7",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-796042fb2262-b438b5bc.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_ffd8b406541dec4405ac6e941b2bba87dbc37c9ba312579e3ce5824de5e96745",
+      "sourceArchiveFile": "original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 17,
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+      "templateKey": "TPL_M3_CALCULATE_SUM_OF_TRANSLATION_PARAMETERS",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-796042fb2262-b438b5bc",
+        "judge": "dots",
+        "rationale": "완전제곱형 -5(x-2)²+4에서 a=-5,m=2,n=4를 읽어 더한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3-1",
+          "curriculumSource": "row",
+          "rowCourse": "중3 수학",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "4ffd35f9290f8211bb8ea84d597fd28455e6a25ba700974abc839358357a575f",
+        "judgedContentFingerprint": "be03d80337dd04dbc21979c9ae56c2f0908ea08b95ad2704dccc8447f818e2dc",
+        "rowBinding": "content",
+        "textBindingFingerprint": "f0c5a0ba6a48a6d82e5a26247c5d3b9d40a81965811ca7d3583e9ae7264fa8b2",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-796042fb2262-b438b5bc.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_bc3121dac6d727d2df2b4b7fd4725bf92a2f0f675d4e834db3dc9e29ac194329",
+      "sourceArchiveFile": "original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 19,
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+      "templateKey": "TPL_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS_READ",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-796042fb2262-b438b5bc",
+        "judge": "dots",
+        "rationale": "볼록방향·대칭축의 음의 위치·양의 y절편으로 a,b,c 부호를 정한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3-1",
+          "curriculumSource": "row",
+          "rowCourse": "중3 수학",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "126c28407af0dad97dea72452c8417a3fddcd5b7f5d5a15aa445e721933250df",
+        "judgedContentFingerprint": "538c1697b97caee8551aa7b24b340a73986d70d035b9a94fa7b05e1461389240",
+        "rowBinding": "content",
+        "textBindingFingerprint": "bd5c6d0d9bdfee352146705e3effac2ceed08da698f4141038a5d206c5a4f09e",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-796042fb2262-b438b5bc.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_eda99b8395b1f67abdebecb8ac91b7e48919d49cdf63525d4a18732d48e90b73",
+      "sourceArchiveFile": "original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 23,
+      "problemTypeKey": "PT_M3_ROOT_COEFFICIENT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "projection_unmaterialized"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-796042fb2262-b438b5bc",
+        "judge": "dots",
+        "rationale": "원래 두 근의 합과 곱에서 새 근4,-5를 얻고 (x-4)(x+5)=0을 전개한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "1461ebd0c7f2f7202048bb50bd22300c9abc075dcc76f334f83657d5f9786c93",
+        "judgedContentFingerprint": "0732c9b2e6a7bac12a8b5af83a7ebaa0f4bc4225c6b85e8ce40dbc2c72e6efcc",
+        "rowBinding": "content",
+        "textBindingFingerprint": "374b90dafa4fa9f9c5f95d9ce9ca04716f36c9852b39bb057c3dc258a2e82df0",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-796042fb2262-b438b5bc.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 17,
+  "expectedQuestionCount": 25
+}

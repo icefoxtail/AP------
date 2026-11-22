@@ -1,4 +1,5 @@
 import originalSourceError from '../../../tools/4slot/original-source-error-hold.cjs';
+import { questionMetadataText, writeMetadataText, assertMetadataAssembledCurrent } from './question-metadata-format.mjs';
 // Main-merge metadata registration. It applies declared metadata, never invents a semantic review.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -17,6 +18,8 @@ import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse, native
 import { hasAuditSourcePreservationClaim } from './native-audit-source-preservation.mjs';
 import { nativeReviewedM2CcRendererRebind } from './reviewed-m2-cc-renderer-continuity.mjs';
 import { hasNativeSourcePreservationClaim, nativePreservedSourceRebind } from './native-preserved-source-reuse.mjs';
+import { replayE015IssuedSourceContinuation, assertE015IssuedSourceContinuationLeaf } from './native-e015-source-cc-continuity.mjs';
+import { replayM2Problem21CurrentUiContinuation, assertM2Problem21CurrentUiLeaf } from './m2-problem21-current-ui-continuity.mjs';
 import { assertIssuedRpmHistoricalLeaf, readIssuedRpmHistoricalEvidence } from './native-issued-rpm-history.mjs';
 import { assertIssuedSolutionRpmHistoricalLeaf, readIssuedSolutionRpmHistoricalEvidence } from './native-issued-solution-rpm-history.mjs';
 import { hasApprovedRendererPreservationClaim, verifyApprovedRendererReceipt } from './native-approved-renderer-preservation.mjs';
@@ -24,6 +27,8 @@ import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,plan
   readAuditPreservationRequest,assertAuditPreservationReceipt,assertPreservedAuditRepair } from './native-audit-preservation.mjs';
 
 import { nativeAuthorityHoldState } from './native-authority-correction.mjs';
+import { explicitRegistrationMode } from './registration-mode.mjs';
+import { classifyMetaBinding, loadRebinds } from './text-binding-lib.mjs';
 
 export const VERSION = 'archive-main-merge-meta-v1';
 export const AUTO = '.archive-meta-register/auto';
@@ -51,7 +56,7 @@ const pick = (v, keys) => Object.fromEntries(keys.map(k => [k, v?.[k] ?? null]))
 const json = v => JSON.stringify(v, null, 2) + '\n';
 const git = (root, ...args) => execFileSync('git', args, {cwd:root, encoding:'utf8', maxBuffer:64*1024*1024, stdio:['pipe','pipe','pipe']});
 const read = (root, rel, fallback) => fs.existsSync(path.join(root,rel)) ? JSON.parse(fs.readFileSync(path.join(root,rel),'utf8')) : fallback;
-const write = (root, rel, value) => { const f=path.join(root,rel); fs.mkdirSync(path.dirname(f),{recursive:true}); fs.writeFileSync(f,json(value)); };
+const write = (root, rel, value) => { if(rel===META){writeMetadataText(root,questionMetadataText(value));return;} const f=path.join(root,rel); fs.mkdirSync(path.dirname(f),{recursive:true}); fs.writeFileSync(f,json(value)); };
 export const sourceFingerprint = q => sha256(JSON.stringify({content:q.content??null,choices:Array.isArray(q.choices)?q.choices:null,answer:q.answer??null,solution:q.solution??null,image:q.image??null}));
 export const contentFingerprint = q => sha256(JSON.stringify({content:q.content??null,choices:Array.isArray(q.choices)?q.choices:null,image:q.image??null}));
 export function sourcePath(value) {
@@ -187,6 +192,33 @@ export function nativeReviewReceipt({nativeSource,question,previous,current,iden
     ||current.metaFoundationStatus!=='ACTIVE'||current.metaFoundationPackId!==ownerPack
     ||!String(current.L1||'').trim()||!String(current.L2||'').trim()
     ||current.L3!==pt.canonicalLabelKo||current.L4!==tpl.canonicalLabelKo)return null;
+  // A private exact-source view is available only for the two original E015
+  // receipts after the authenticated Q10-only metadata transport. The recursive
+  // call retains every ordinary Native, current ACTIVE and renderer check.
+  if(Object.hasOwn(nativeSource,'e015IssuedSourceContinuation')) {
+    try { assertE015IssuedSourceContinuationLeaf({context:nativeSource.e015IssuedSourceContinuation,
+      nativeSource,current,identity,source,ordinal,question}); } catch { return null; }
+  } else {
+    try {
+      const replayed=replayE015IssuedSourceContinuation({nativeSource,question,previous,current,identity,source,ordinal,
+        revalidateLeaf:leaf=>nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,
+          pt,tpl,registry,ownerPack,...leaf})});
+      if(replayed!==null)return replayed;
+    } catch { return null; }
+  }
+  // Only a live private token can present the original issued bank. The
+  // recursive leaf still runs the unmodified receipt and current ACTIVE guards.
+  if(Object.hasOwn(nativeSource,'m2Problem21CurrentUiContinuation')) {
+    try { assertM2Problem21CurrentUiLeaf({context:nativeSource.m2Problem21CurrentUiContinuation,
+      nativeSource,current,identity,source,ordinal,question}); } catch { return null; }
+  } else {
+    try {
+      const replayed=replayM2Problem21CurrentUiContinuation({nativeSource,question,previous,current,identity,source,ordinal,
+        revalidateLeaf:leaf=>nativeReviewReceipt({nativeSource,question,previous,current,identity,source,ordinal,
+          pt,tpl,registry,ownerPack,...leaf})});
+      if(replayed!==null)return replayed;
+    } catch { return null; }
+  }
   const boundRead=relative=>{
     if(typeof relative!=='string'||path.isAbsolute(relative)||relative.includes('\\')
       ||relative.split('/').some(p=>!p||p==='.'||p==='..'))throw Error('NATIVE_EVIDENCE_PATH_INVALID');
@@ -278,7 +310,7 @@ export function activeBindingContext({candidate,check,registry,runtimeOwner}) {
 }
 
 // The official ACTIVE validator is supplied by loadContext; fixtures use the same public interface.
-export function planQuestion({question:q, previous, current, identity, registry, validate, source, ordinal, runtimeOwner, priorReceipt, nativeSource, canonicalParentRetry}) {
+export function planQuestion({question:q, previous, current, identity, registry, validate, source, ordinal, runtimeOwner, priorReceipt, nativeSource, canonicalParentRetry, textRebinds}) {
   const reject = (...reasons) => ({status:'SUPPLEMENT_PENDING',reasons,questionUid:identity?.questionUid||current?.questionUid||null,sourceArchiveFile:source,sourceOrdinal:ordinal});
   if (!identity || !current || identity.questionUid!==current.questionUid || identity.sourceArchiveFile!==source || current.sourceArchiveFile!==source || Number(identity.sourceOrdinal)!==ordinal || Number(current.sourceOrdinal)!==ordinal) return reject('UID_JOIN_MISMATCH');
   if(originalSourceError.isSubject({questionUid:identity.questionUid,source,ordinal}))return reject(originalSourceError.REASON);
@@ -292,8 +324,14 @@ export function planQuestion({question:q, previous, current, identity, registry,
   const questionNo=String(q.sourceQuestionNo??q.id??'');
   if(previous&&String(previous.sourceQuestionNo??previous.id??'')!==questionNo)return reject('SOURCE_ORDINAL_CHANGED');
   const fp=sourceFingerprint(q), cf=contentFingerprint(q);
-  if(identity.sourceFingerprint!==fp) return reject('IDENTITY_SOURCE_FINGERPRINT_MISMATCH');
-  if(current.sourceFingerprint!==fp && (!previous||current.sourceFingerprint!==sourceFingerprint(previous))) return reject('METADATA_SOURCE_FINGERPRINT_CONFLICT');
+  // 결속은 발문+보기(text-v1)만 본다(docs/agents/metadata.md "메타 결속 지문 범위"). 전체 지문(해설·정답·그림 포함)이 어긋나도
+  // 이 행이 지금과 같은 발문·보기에 묶여 있음이 확인되면(행의 내용 지문 일치 또는 동결된 재결속 기록, 카탈로그와 같은 판정)
+  // 통과한다. 확인되지 않거나 유형 판정만 묶인 행은 기존 사유로 그대로 거절한다. 이유: identity의 전체 지문은 감사용이라
+  // 해설 한 줄만 고쳐도 자동 등록이 영구히 막혔다. 지문이 전부 일치하는 행은 이전과 똑같이 통과한다.
+  let textBound;
+  const rowTextBound=()=>textBound??=classifyMetaBinding({meta:current,question:q,assignmentFingerprint:cf,rebinds:textRebinds})==='row';
+  if(identity.sourceFingerprint!==fp && !rowTextBound()) return reject('IDENTITY_SOURCE_FINGERPRINT_MISMATCH');
+  if(current.sourceFingerprint!==fp && (!previous||current.sourceFingerprint!==sourceFingerprint(previous)) && !rowTextBound()) return reject('METADATA_SOURCE_FINGERPRINT_CONFLICT');
   const coreChanged=Boolean(previous&&!equal(pick(previous,CORE),pick(q,CORE)));
   const sourceMetaChanged=Boolean(!previous||!equal(semantic(previous),semantic(q)));
   if(current.metadataStatus==='SOURCE_HOLD')return reject('EXPLICIT_SOURCE_HOLD');
@@ -383,7 +421,9 @@ export function planQuestion({question:q, previous, current, identity, registry,
   if(current.metadataStatus==='approved_partial_with_explicit_holds'
     &&['problemType','template'].some(k=>current.fieldStatus?.[k]==='manual_review_pending'))
     return reject('EXPLICIT_PARTIAL_REVIEW_HOLD');
-  const final={...candidate,sourceFingerprint:fp,contentFingerprint:cf,curriculum:check.curriculum,curriculumKey:check.curriculum,
+  // identity의 전체 지문이 낡은 행은 행의 전체 지문도 그대로 둔다(내용 지문 cf만 현재로). 이 등록기는 identity를 고치지 않으므로
+  // 행만 현재 지문으로 바꾸면 행≠identity 어긋남이 새로 생겨 다른 등록 길(FINAL_QA·난이도)이 "divergence"로 거절한다.
+  const final={...candidate,sourceFingerprint:identity.sourceFingerprint===fp?fp:(current.sourceFingerprint??fp),contentFingerprint:cf,curriculum:check.curriculum,curriculumKey:check.curriculum,
     courseKey:check.curriculum===current.curriculumKey&&current.courseKey?current.courseKey:candidate.standardCourse,
     L1:parentLabels.L1,L2:parentLabels.L2,L3:pt.canonicalLabelKo,L4:tpl.canonicalLabelKo,
     foundationTaxonomyStatus:'CONFIRMED',projectionStatus:'REUSE',metaFoundationStatus:'ACTIVE',
@@ -433,24 +473,86 @@ async function context(root) {
   return {registry,validate:validateActiveMetaFields,refreshRuntime,metadata,metaByUid,identityMap:identity,identityByJoin,runtimes,owners};
 }
 
-export function selectTargets(root, state, config, head) {
+// Read-only run instrumentation. It is written only into the (uncommitted) run report outside `replayBatch`,
+// so no committed output, cursor, replay digest or planner decision depends on it.
+export const INSTRUMENTATION_VERSION = 'archive-main-merge-meta-instrumentation-v1';
+const TOP_N = 20;
+const byName = (a,b) => a<b?-1:a>b?1:0;
+export function topCounts(counts, limit=TOP_N) {
+  const rows=[...counts.entries()].sort((a,b)=>b[1]-a[1]||byName(a[0],b[0]));
+  const rest=rows.slice(limit);
+  return {top:rows.slice(0,limit).map(([name,count])=>({name,count})),otherNames:rest.length,otherCount:rest.reduce((n,[,c])=>n+c,0)};
+}
+function topFileRows(files, limit=TOP_N) {
+  const rows=[...files.entries()].sort((a,b)=>b[1].total-a[1].total||byName(a[0],b[0])),rest=rows.slice(limit);
+  return {top:rows.slice(0,limit).map(([name,v])=>({name,...v})),otherFiles:rest.length,otherCount:rest.reduce((n,[,v])=>n+v.total,0)};
+}
+// Oldest pending baseCommit by committer date; null when Git cannot resolve it (never fatal for a report).
+function oldestBase(root, counts) {
+  const shas=[...counts.keys()].filter(c=>/^[a-f0-9]{40}$/.test(c));
+  if(!shas.length)return null;
+  try {
+    const rows=execFileSync('git',['log','--no-walk=sorted','--stdin','--format=%H %cI'],{cwd:root,input:shas.join('\n')+'\n',encoding:'utf8',
+      maxBuffer:16*1024*1024,stdio:['pipe','pipe','pipe']}).trim().split('\n').filter(Boolean);
+    const [commit,committedAt]=rows[rows.length-1].split(' ');
+    return {commit,committedAt,count:counts.get(commit)};
+  } catch { return null; }
+}
+export function summarizeBacklog(root, pending) {
+  const entries=Object.values(pending||{}),bases=new Map(),atoms=new Map(),kinds=new Map();
+  const out={pendingTotal:entries.length,withoutAttemptSignature:0,attemptedRefused:0,neverTried:0,entriesWithMultipleReasons:0,
+    reasonAtomTotal:0,reasonsNote:'one pending entry may carry several reasons, so reason counts sum to at least attemptedRefused'};
+  for(const e of entries) {
+    if(!e||typeof e!=='object'){out.malformedEntries=(out.malformedEntries||0)+1;continue;}
+    if(!e.attemptSignature)out.withoutAttemptSignature++;
+    if(Array.isArray(e.lastReasons)&&e.lastReasons.length) {
+      out.attemptedRefused++;
+      if(e.lastReasons.length>1)out.entriesWithMultipleReasons++;
+      for(const reason of e.lastReasons) {
+        const atom=String(reason).slice(0,120),kind=atom.split(':')[0];
+        out.reasonAtomTotal++;atoms.set(atom,(atoms.get(atom)||0)+1);kinds.set(kind,(kinds.get(kind)||0)+1);
+      }
+    } else if(!e.attemptSignature)out.neverTried++;
+    if(e.baseCommit)bases.set(e.baseCommit,(bases.get(e.baseCommit)||0)+1);
+  }
+  return {...out,reasons:topCounts(atoms,25),reasonKinds:topCounts(kinds,25),distinctBaseCommits:bases.size,oldestBaseCommit:oldestBase(root,bases)};
+}
+
+// mode 'digest' (default, also every caller that does not pass one) keeps the whole queued backlog as targets.
+// mode 'merge' returns only what changed between the durable cursor and HEAD, plus pilots; queued entries are
+// neither targets nor touched. Entries a merge run could not reach carry origin:'merge' (see registerMergedSource)
+// and are tried first by a digest run. Entries without that field are plain backlog (older state files).
+export function selectTargets(root, state, config, head, stats, mode='digest') {
+  if(!['merge','digest'].includes(mode))throw Error('REGISTRATION_MODE_INVALID');
   const base=state.lastProcessedCommit||config.bootstrapBase;
   if(!/^[a-f0-9]{40}$/.test(base||''))throw Error('BOOTSTRAP_BASE_REQUIRED');
   git(root,'merge-base','--is-ancestor',base,head);
   const files=git(root,'diff','--name-only','-z',base,head,'--','archive/exams/').split('\0').filter(p=>p.endsWith('.js'));
-  const selected=new Map(Object.entries(structuredClone(state.pending||{})));
+  const selected=new Map(mode==='merge'?[]:Object.entries(structuredClone(state.pending||{})));
+  // Optional, read-only origin bookkeeping for the run report; the returned targets are unaffected.
+  if(stats){stats.diffKeys=new Set();stats.pilotKeys=new Set();stats.pendingBefore=Object.keys(state.pending||{}).length;stats.diffFiles=files.length;stats.diffAlsoPending=0;}
   for(const rel of files) {
     const source=sourcePath(rel.slice('archive/exams/'.length));
     if(!fs.existsSync(path.join(root,rel)))continue; // Native identity sync owns deletions; never invent a UID relocation.
     const now=loadBank(fs.readFileSync(path.join(root,rel),'utf8'),rel),before=archived(root,base,source);
-    for(let i=0;i<now.length;i++)if(!equal(now[i],before[i])) selected.set(`${source}#${i+1}`,{sourceArchiveFile:source,sourceOrdinal:i+1,baseCommit:base});
+    for(let i=0;i<now.length;i++)if(!equal(now[i],before[i])) {
+      const key=`${source}#${i+1}`;
+      if(stats){stats.diffKeys.add(key);if(selected.has(key))stats.diffAlsoPending++;}
+      selected.set(key,{sourceArchiveFile:source,sourceOrdinal:i+1,baseCommit:base});
+    }
   }
   for(const seed of config.pilotTargets||[]) {
     const key=`${sourcePath(seed.sourceArchiveFile)}#${seed.sourceOrdinal}`;
-    if(!state.completedPilots?.includes(key))selected.set(key,{...seed,baseCommit:seed.baseCommit||base,pilot:true});
+    if(!state.completedPilots?.includes(key)){if(stats)stats.pilotKeys.add(key);selected.set(key,{...seed,baseCommit:seed.baseCommit||base,pilot:true});}
   }
-  return [...selected.entries()].sort(([a],[b])=>a.localeCompare(b,'en'));
+  // Digest runs try the merge-originated leftovers before the older backlog; without markers the order is unchanged.
+  const rank=([,t])=>t?.origin==='merge'&&mode==='digest'?0:1;
+  return [...selected.entries()].sort((x,y)=>rank(x)-rank(y)||x[0].localeCompare(y[0],'en'));
 }
+
+// Fields that mark an entry as "left over from a merge run". They never survive an attempt.
+const settled=t=>{const rest={...t};delete rest.origin;delete rest.mergeHead;return rest;};
+export const backlogCounts=pending=>{const all=Object.values(pending||{});return {backlogRemaining:all.length,mergeBacklog:all.filter(e=>e?.origin==='merge').length};};
 
 function replayBatch(root, file, {config,state,head}) {
   const original=JSON.parse(fs.readFileSync(file,'utf8')),binding=original.replayBatch;
@@ -487,8 +589,35 @@ function replayBatch(root, file, {config,state,head}) {
   return binding;
 }
 
-export async function registerMergedSource({root=ROOT,write:doWrite=false,reportPath,replayReportPath,canonicalParentRetryRequestPath,canonicalParentRetryRequestSha256}={}) {
+// Instrumentation must never decide whether a registration run succeeds: any failure only drops the numbers.
+export function safeInstrumentation(build) {
+  try { return build(); }
+  catch(error) { return {schemaVersion:INSTRUMENTATION_VERSION,error:String(error?.message||error).slice(0,160)}; }
+}
+const newTally = targets => ({targets,attempted:0,applied:0,alreadyRegistered:0,refused:0,unchangedSkipped:0,notReachedBudget:0});
+function buildInstrumentation({root,max,originStats,pendingBefore,pendingAfter,tally,origins,files,unchangedFiles,outputs,touched,mode,mergeNotReached=0}) {
+  const o=name=>({targets:0,attempted:0,unchangedSkipped:0,notReachedBudget:0,...origins.get(name)});
+  const origin=originStats?{available:true,
+    thisMergeDiff:{changedExamFiles:originStats.diffFiles,questions:o('diff').targets,attempted:o('diff').attempted,unchangedSkipped:o('diff').unchangedSkipped,
+      notReachedBudget:o('diff').notReachedBudget,alsoQueuedBefore:originStats.diffAlsoPending},
+    queuedBacklog:{questions:o('backlog').targets,attempted:o('backlog').attempted,unchangedSkipped:o('backlog').unchangedSkipped,notReachedBudget:o('backlog').notReachedBudget},
+    pilot:{questions:o('pilot').targets,attempted:o('pilot').attempted},
+    thisMergeQuestionsNotReachedBecauseOfBudget:o('diff').notReachedBudget}:{available:false};
+  const paths=[...outputs.keys()];
+  return {schemaVersion:INSTRUMENTATION_VERSION,
+    run:{batchLimit:max,...tally,registeredUids:touched,requestFiles:paths.filter(p=>p.startsWith(`${AUTO}/requests/`)).length,
+      receiptFiles:paths.filter(p=>p.startsWith(`${AUTO}/receipts/`)).length},
+    attemptedByFile:topFileRows(files),unchangedSkippedByFile:topCounts(new Map([...unchangedFiles].map(([f,v])=>[f,v.total]))),
+    origin,pendingBeforeRun:pendingBefore,backlogAfterRun:summarizeBacklog(root,pendingAfter),
+    registration:{mode,...backlogCounts(pendingAfter),mergeNotReached}};
+}
+
+// plan:true stops after target selection (read-only, no registry context, no writes) so a caller can tell cheaply whether
+// a run has any work; with zero targets it returns the same NO_CHANGE report a full run would.
+export async function registerMergedSource({root=ROOT,write:doWrite=false,reportPath,replayReportPath,canonicalParentRetryRequestPath,canonicalParentRetryRequestSha256,mode=explicitRegistrationMode(process.env),plan=false,contextLoader=context}={}) {
   root=path.resolve(root);
+  if(!['merge','digest'].includes(mode))throw Error('REGISTRATION_MODE_INVALID');
+  if(plan&&(doWrite||replayReportPath||canonicalParentRetryRequestPath))throw Error('AUTO_META_PLAN_READ_ONLY');
   if(replayReportPath&&doWrite)throw Error('AUTO_META_REPLAY_READ_ONLY');
   const config=read(root,CONFIG); if(config?.enabled!==true){const r={status:'DISABLED',processed:0,results:[]};if(reportPath)fs.writeFileSync(reportPath,json(r));return r;}
   const head=git(root,'rev-parse','HEAD').trim();
@@ -499,23 +628,33 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
   const retryRef=replay?.targets?.[0]?.[1]?.canonicalParentRetry || (canonicalParentRetryRequestPath?{path:canonicalParentRetryRequestPath,sha256:canonicalParentRetryRequestSha256}:null);
   const parentRetry=retryRef?loadCanonicalParentRetry(root,retryRef.path,retryRef.sha256):null;
   if(canonicalParentRetryRequestSha256&&!parentRetry)throw Error('CANONICAL_PARENT_RETRY:REQUEST_REQUIRED');
-  const targets=replay?structuredClone(replay.targets):parentRetry?canonicalParentRetryTargets(parentRetry):selectTargets(root,state,config,head);
+  const originStats=replay||parentRetry?null:{};
+  const targets=replay?structuredClone(replay.targets):parentRetry?canonicalParentRetryTargets(parentRetry):selectTargets(root,state,config,head,originStats,mode);
   if(parentRetry&&!equal(targets,canonicalParentRetryTargets(parentRetry)))throw Error('CANONICAL_PARENT_RETRY:TARGET_SCOPE');
   if(parentRetry)for(const [key,target]of targets) {
     const queued=state.pending?.[key],item=parentRetry.request.items.find(r=>r.sourceOrdinal===target.sourceOrdinal);
     if(queued&&queued.baseCommit!==target.baseCommit)throw Error('CANONICAL_PARENT_RETRY:PENDING_BASE_CONFLICT');
     if(!queued&&!state.latestReceipts?.[item.questionUid])throw Error('CANONICAL_PARENT_RETRY:PENDING_TARGET_REQUIRED');
   }
-  const report={schemaVersion:VERSION,head,base:state.lastProcessedCommit,write:doWrite,results:[],studentFilesChanged:0,unrelatedMetadataChanged:0,...(parentRetry?{canonicalParentRetryRequest:{path:parentRetry.path,sha256:parentRetry.requestSha256},selectedUidCount:parentRetry.request.items.length}:{})};
+  const report={schemaVersion:VERSION,head,base:state.lastProcessedCommit,write:doWrite,mode,...backlogCounts(state.pending),mergeNotReached:0,results:[],studentFilesChanged:0,unrelatedMetadataChanged:0,...(parentRetry?{canonicalParentRetryRequest:{path:parentRetry.path,sha256:parentRetry.requestSha256},selectedUidCount:parentRetry.request.items.length}:{})};
   if(!targets.length){
-    if(replay?.registrySha&&(await context(root)).registry.registrySha!==replay.registrySha)throw Error('AUTO_META_REPLAY_REGISTRY_DRIFT');
+    if(replay?.registrySha&&(await contextLoader(root)).registry.registrySha!==replay.registrySha)throw Error('AUTO_META_REPLAY_REGISTRY_DRIFT');
     const batch={schemaVersion:REPLAY_VERSION,head,configSha256:hash(config),registrySha:null,targets:[],results:[],rowBindings:[],sourceHashes:{},immutableOutputs:{}};
-    report.status='NO_CHANGE';report.applied=0;report.plannedPaths=[];
+    report.status='NO_CHANGE';report.applied=0;report.plannedPaths=[];report.targetCount=0;
+    if(mode==='merge')report.note='NO_TARGETS: this merge changed no exam question; queued backlog is left for the scheduled or manual digest run';
     if(replay){report.replayVerified=true;report.replayed=0;report.replayOf=replay.sha256;}
     else report.replayBatch={...batch,sha256:hash(batch),stateAfterSha256:hash(state)};
+    if(!replay)report.instrumentation=safeInstrumentation(()=>buildInstrumentation({root,max:config.maxQuestionsPerRun||100,originStats,pendingBefore:Object.keys(state.pending||{}).length,
+      pendingAfter:state.pending,tally:newTally(0),origins:new Map(),files:new Map(),unchangedFiles:new Map(),outputs:new Map(),touched:0,mode}));
     if(reportPath)fs.writeFileSync(reportPath,json(report));return report;
   }
-  const c=await context(root),banks=new Map(),sourceBindings=new Map(),previousBanks=new Map(),changedPacks=new Set(),outputs=new Map();
+  if(plan) {
+    report.status='PLAN';report.targetCount=targets.length;report.applied=0;report.plannedPaths=[];
+    if(reportPath)fs.writeFileSync(reportPath,json(report));
+    return report;
+  }
+  const textRebinds=loadRebinds(root);
+  const c=await contextLoader(root),banks=new Map(),sourceBindings=new Map(),previousBanks=new Map(),changedPacks=new Set(),outputs=new Map();
   if(replay&&c.registry.registrySha!==replay.registrySha)throw Error('AUTO_META_REPLAY_REGISTRY_DRIFT');
   const rowBinding=key=>{
     const identity=c.identityByJoin.get(key),current=c.metaByUid.get(identity?.questionUid);
@@ -529,10 +668,21 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
   if(!Number.isInteger(max)||max<1||max>500)throw Error('BATCH_LIMIT_INVALID');
   if(parentRetry&&targets.length>max)throw Error('CANONICAL_PARENT_RETRY:BATCH_LIMIT');
   const sourceDelta=git(root,'diff','--name-only',state.lastProcessedCommit,head,'--','archive/exams/').trim();
-  let acted=0;
+  let acted=0,mergeNotReached=0;
+  const tally=newTally(targets.length),origins=new Map(),fileTally=new Map(),unchangedFiles=new Map();
+  const originOf=key=>!originStats?'unknown':originStats.diffKeys.has(key)?'diff':originStats.pilotKeys.has(key)?'pilot':'backlog';
+  const count=(name,field)=>{const row=origins.get(name)||{targets:0,attempted:0,unchangedSkipped:0,notReachedBudget:0};row[field]++;origins.set(name,row);};
+  const fileRow=(map,file)=>{let row=map.get(file);if(!row){row={total:0,registered:0,alreadyRegistered:0,refused:0};map.set(file,row);}return row;};
   for(let ti=0;ti<targets.length;ti++) {
     const [key,target]=targets[ti];
-    if(acted>=max){nextState.pending[key]=target;continue;}
+    count(originOf(key),'targets');
+    if(acted>=max) {
+      // A merge run never lets this merge's own questions fall back into the anonymous backlog: mark them so the
+      // next digest run tries them first and the reports can count them separately.
+      const fromMerge=mode==='merge'&&originOf(key)==='diff';
+      nextState.pending[key]=fromMerge?{...target,origin:'merge',mergeHead:head}:target;
+      tally.notReachedBudget++;if(fromMerge)mergeNotReached++;count(originOf(key),'notReachedBudget');continue;
+    }
     const attemptedTarget=structuredClone(target);
     const source=sourcePath(target.sourceArchiveFile),ordinal=Number(target.sourceOrdinal),rel=`archive/exams/${source}`;
     if(!Number.isInteger(ordinal)||ordinal<1)throw Error('INVALID_TARGET_ORDINAL');
@@ -553,13 +703,16 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
       const attemptSignature=hash({source:sourceHashes.get(rel),metadata:current,registry:c.registry.registrySha,...(parentRetry?{canonicalParentRetry:{requestSha256:parentRetry.requestSha256,masterSha256:parentRetry.request.masterRef.sha256}}:{})});
       if(!replay&&state.pending?.[key]?.attemptSignature===attemptSignature) {
         report.results.push({status:'SUPPLEMENT_PENDING_UNCHANGED',sourceArchiveFile:source,sourceOrdinal:ordinal,reasons:state.pending[key].lastReasons});
+        tally.unchangedSkipped++;count(originOf(key),'unchangedSkipped');fileRow(unchangedFiles,source).total++;
+        // An entry that was already attempted is no longer an unvisited merge leftover (an older writer keeps stale marks).
+        if(state.pending[key].origin!==undefined||state.pending[key].mergeHead!==undefined)nextState.pending[key]=settled(state.pending[key]);
         continue;
       }
       acted++;attempted=true;target.attemptSignature=attemptSignature;
       const runtimeOwner=c.owners.get(id?.questionUid),nativeSource=sourceBindings.get(source);
       if(['FINAL_QA','REVIEW2','META_PIPELINE_AUDIT'].includes(current?.metadataApprovalType)&&!nativeSource.blobSha1)
         nativeSource.blobSha1=execFileSync('git',['hash-object','--path',rel,'--stdin'],{cwd:root,input:nativeSource.bytes,encoding:'utf8',stdio:['pipe','pipe','pipe']}).trim();
-      result=planQuestion({question:q,previous:previousBanks.get(prevKey)[ordinal-1],current,identity:id,registry:c.registry,validate:c.validate,source,ordinal,runtimeOwner,priorReceipt:prior,canonicalParentRetry:parentRetry,
+      result=planQuestion({question:q,previous:previousBanks.get(prevKey)[ordinal-1],current,identity:id,registry:c.registry,validate:c.validate,source,ordinal,runtimeOwner,priorReceipt:prior,canonicalParentRetry:parentRetry,textRebinds,
         nativeSource:{...nativeSource,...(parentRetry?{previousSourceBytes:execFileSync('git',['show',`${target.baseCommit}:${rel}`],{cwd:root,maxBuffer:16*1024*1024,stdio:['pipe','pipe','pipe']})}:{}),identityMap:c.identityMap,identityByJoin:c.identityByJoin,runtimeRecord:c.runtimes.get(runtimeOwner)?.data.records.find(r=>r.questionUid===id?.questionUid),
           runtimeStatus:c.runtimes.get(runtimeOwner)?.data.status}});
       if(result.status==='APPLY') {
@@ -595,8 +748,13 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
       if(['APPLY','ALREADY_REGISTERED'].includes(result.status)) {
         delete nextState.pending[key];
         if(target.pilot&&!nextState.completedPilots.includes(key))nextState.completedPilots.push(key);
-      } else nextState.pending[key]={...target,lastReasons:result.reasons};
-    }catch(e) { if(!attempted)acted++;result={status:'SUPPLEMENT_PENDING',sourceArchiveFile:source,sourceOrdinal:ordinal,reasons:[String(e.message)]};nextState.pending[key]={...target,lastReasons:result.reasons}; }
+      } else nextState.pending[key]={...settled(target),lastReasons:result.reasons};
+    }catch(e) { if(!attempted)acted++;result={status:'SUPPLEMENT_PENDING',sourceArchiveFile:source,sourceOrdinal:ordinal,reasons:[String(e.message)]};nextState.pending[key]={...settled(target),lastReasons:result.reasons}; }
+    tally.attempted++;count(originOf(key),'attempted');
+    {const row=fileRow(fileTally,source);row.total++;
+      if(result.status==='APPLY'){tally.applied++;row.registered++;}
+      else if(result.status==='ALREADY_REGISTERED'){tally.alreadyRegistered++;row.alreadyRegistered++;}
+      else{tally.refused++;row.refused++;}}
     attemptedTargets.push([key,attemptedTarget]);attemptedResults.push(structuredClone(result));
     if(replay) {
       const before=replay.results[ti],expected=before.status==='APPLY'?'ALREADY_REGISTERED':before.status;
@@ -642,7 +800,10 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
   report.unrelatedMetadataDigest=hash(c.metadata.records.filter(r=>!touched.has(r.questionUid)).sort((a,b)=>a.questionUid.localeCompare(b.questionUid,'en')));
   report.sourceHashes=Object.fromEntries(sourceHashes);
   report.applied=touched.size;report.pending=Object.keys(nextState.pending).length;report.plannedPaths=[...outputs.keys()];
-  if(doWrite)for(const [rel,obj]of outputs)write(root,rel,obj);
+  Object.assign(report,backlogCounts(nextState.pending),{mergeNotReached,targetCount:targets.length});
+  if(!replay)report.instrumentation=safeInstrumentation(()=>buildInstrumentation({root,max,originStats,pendingBefore:Object.keys(state.pending||{}).length,pendingAfter:nextState.pending,
+    tally,origins,files:fileTally,unchangedFiles,outputs,touched:touched.size,mode,mergeNotReached}));
+  if(doWrite){assertMetadataAssembledCurrent(root);for(const [rel,obj]of outputs)write(root,rel,obj);}
   if(reportPath)fs.writeFileSync(reportPath,json(report));
   return report;
 }
@@ -668,7 +829,7 @@ export async function verifyMergedSource({root=ROOT,reportPath}) {
     const ctpl=consumer.templateKey||consumer.metaHintTPL;
     if(cpt!==row.problemTypeKey||ctpl!==row.templateKey)throw Error('CONSUMER_PT_TPL_MISMATCH:'+r.questionUid+':'+JSON.stringify({cpt,ctpl,metaBinding:consumer.metaBinding,keys:Object.keys(consumer).filter(k=>/meta|ype|emplate/i.test(k))}));
     if(consumer.sourceFile!==r.sourceArchiveFile||Number(consumer.sourceOrdinal)!==r.sourceOrdinal)throw Error('CONSUMER_UID_JOIN_MISMATCH');
-    if(!(consumer.problemTypeKey&&consumer.templateKey)&&!['exact','content'].includes(consumer.metaBinding))throw Error('CONSUMER_METADATA_NOT_SOURCE_BOUND');
+    if(!(consumer.problemTypeKey&&consumer.templateKey)&&!consumer.metaBinding)throw Error('CONSUMER_METADATA_NOT_SOURCE_BOUND');
     if(Number(consumer.difficultyBucket)!==Number(row.difficultyBucket))throw Error('CONSUMER_DIFFICULTY_MISMATCH');
     for(const field of ['crossConceptKeys','conditionKeys'])if(Object.hasOwn(consumer,field)&&!equal(consumer[field],row[field]))throw Error('CONSUMER_'+field+'_MISMATCH');
     verified.push({questionUid:r.questionUid,sourceOrdinal:r.sourceOrdinal,problemTypeKey:cpt,templateKey:ctpl,metaBinding:consumer.metaBinding||null});
@@ -682,7 +843,7 @@ async function runCli() {
   const a=process.argv.slice(2),get=k=>a.includes(k)?a[a.indexOf(k)+1]:undefined;
   try {
     const root=get('--root')||ROOT,reportPath=get('--report')||path.join(process.env.RUNNER_TEMP||'/tmp','archive-auto-meta-report.json');
-    const result=a.includes('--verify')?await verifyMergedSource({root,reportPath}):await registerMergedSource({root,write:a.includes('--write'),reportPath,replayReportPath:get('--replay-report'),canonicalParentRetryRequestPath:get('--canonical-parent-retry-request'),canonicalParentRetryRequestSha256:get('--canonical-parent-retry-sha256')});
+    const result=a.includes('--verify')?await verifyMergedSource({root,reportPath}):await registerMergedSource({root,write:a.includes('--write'),reportPath,replayReportPath:get('--replay-report'),canonicalParentRetryRequestPath:get('--canonical-parent-retry-request'),canonicalParentRetryRequestSha256:get('--canonical-parent-retry-sha256'),plan:a.includes('--plan')});
     console.log(JSON.stringify(result,null,2));
   }catch(e){console.error('AUTO_META_FAILED:',e.stack||e);process.exitCode=1;}
 }

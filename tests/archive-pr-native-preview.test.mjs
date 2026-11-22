@@ -6,13 +6,16 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { NATIVE_REQUEST_SCHEMA, DIFFICULTY_REQUEST_SCHEMA, selectNativeRequests, orderNativeRequests, applyNativeRequests,
-  validateNativePreview, verifyNativeRequests, selectPendingNativeRequests, pendingNativeRequestPaths } from '../tools/ci/archive-pr-native-preview.mjs';
+  validateNativePreview, verifyNativeRequests, selectPendingNativeRequests, pendingNativeRequestPaths, SHADOW_RESTORE_PATHS } from '../tools/ci/archive-pr-native-preview.mjs';
+import { DECISION_DOCUMENT } from '../archive/tools/meta-foundation/register-type-judgment.mjs';
+const DECISION_SECTION = 'CURRENT fixture decision section';
 import { CI_WORKFLOW_PATH, REGISTRATION_CHECKS, prRegistrationProofNeeded,
   producePrRegistrationProof, validateLocalRegistrationProof,
 } from '../tools/ci/archive-pr-registration-proof.mjs';
 
 import { preparePrRegistration } from '../tools/ci/archive-pr-registration-prepare.mjs';
 import { registerDifficulty5 } from '../archive/tools/meta-foundation/register-difficulty5.mjs';
+import { expectedRuntime } from '../archive/tools/meta-foundation/compile-meta-foundation.mjs';
 
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const json = value => JSON.stringify(value, null, 2) + '\n';
@@ -59,7 +62,211 @@ function sourceQualityHoldFixture(write) {
   }));
 }
 
-function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, auditSourcePreservation = false, finalQaPreservation = false, basicPreservation = false, otherOwner = true, mutateRequest } = {}) {
+const GEOMETRY_VERSION_PACK = 'archive/data/meta-foundation/canonical/packs/geometry-equations';
+const GEOMETRY_VERSION_PROVIDER = '.archive-meta-register/inbox/zz-geometry-taxonomy-provider.json';
+const GEOMETRY_VERSION_KEY = { curriculum: '2015', standardCourse: '수학(상)', standardUnitKey: 'H15-SA-09',
+  subUnitKey: 'H15-SA-09-TRIANGLE_CENTROID_AREA', problemTypeKey: 'PT_COORD_CENTROID' };
+function geometryVersionFixture(t, { mutateProvider, mutateConsumer, mutatePack, mutateBindings, secondProvider = false, providerConsumes = false } = {}) {
+  const f = fixture(t, { partial: true, otherOwner: false, mutateRequest: request => {
+    request.approval.type = 'REVIEW2'; request.approval.reviewPassCount = 2;
+    request.items[0].after = { ...copy(GEOMETRY_VERSION_KEY), templateKey: 'TPL_EXISTING_CENTROID' };
+    mutateConsumer?.(request);
+  } });
+  const pack = { packId: 'GEOMETRY_EQUATIONS', packVersion: '1.0.2', canonicalStatus: 'ACTIVE' };
+  const bindings = { ownerPack: 'GEOMETRY_EQUATIONS', status: 'ACTIVE', bindings: [
+    { ...copy(GEOMETRY_VERSION_KEY), ownerPack: 'GEOMETRY_EQUATIONS', status: 'ACTIVE' },
+  ] };
+  mutatePack?.(pack); mutateBindings?.(bindings);
+  f.write(`${GEOMETRY_VERSION_PACK}/pack.json`, json(pack));
+  f.write(`${GEOMETRY_VERSION_PACK}/bindings.json`, json(bindings));
+  const provider = copy(f.request);
+  provider.requestId = 'zz-geometry-taxonomy-provider';
+  provider.items[0].questionUid = 'geometry-provider-uid'; provider.items[0].sourceOrdinal = 6;
+  provider.items[0].after = providerConsumes ? copy(GEOMETRY_VERSION_KEY) : copy(BINDING_KEY);
+  provider.registryChanges = [{ path: `${GEOMETRY_VERSION_PACK}/taxonomy.json`, collection: 'templates',
+    match: { templateKey: 'TPL_NEW_GEOMETRY_TEMPLATE' }, before: null,
+    after: { templateKey: 'TPL_NEW_GEOMETRY_TEMPLATE', parentProblemTypeKey: 'PT_COORD_CENTROID', status: 'ACTIVE' },
+    evidenceRefs: copy(provider.approval.evidenceRefs) }];
+  mutateProvider?.(provider); f.write(GEOMETRY_VERSION_PROVIDER, json(provider));
+  const secondPath = '.archive-meta-register/inbox/zy-second-geometry-provider.json';
+  if (secondProvider) {
+    const second = copy(provider); second.requestId = 'zy-second-geometry-provider';
+    second.items[0].questionUid = 'second-provider-uid'; second.items[0].sourceOrdinal = 7;
+    second.registryChanges[0].match.templateKey = second.registryChanges[0].after.templateKey = 'TPL_SECOND_GEOMETRY_TEMPLATE';
+    f.write(secondPath, json(second));
+  }
+  f.git('add', '.'); f.git('commit', '-qm', 'fixed geometry version dependency input');
+  const headSha = f.git('rev-parse', 'HEAD');
+  return { ...f, provider, pack, bindings, secondPath, headSha,
+    select: () => selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha }),
+    pending: () => selectPendingNativeRequests({ root: f.root, headSha }) };
+}
+
+test('geometry pack version dependency orders taxonomy-only provider before exact native consumers', t => {
+  const f = geometryVersionFixture(t), selected = f.select();
+  assert.deepEqual(selected.map(r => r.path), [GEOMETRY_VERSION_PROVIDER, REQUEST]);
+  assert.deepEqual(f.pending(), selected);
+  assert.deepEqual(orderNativeRequests([...selected].reverse()).map(r => r.path), [GEOMETRY_VERSION_PROVIDER, REQUEST]);
+  assert.equal(selected[0].registryDependency.provides.length, 0, 'no fabricated ACTIVE binding addition');
+  assert.equal(selected[0].geometryPackVersionDependency.provider, true);
+  assert.deepEqual(selected[1].geometryPackVersionDependency.consumers[0].key, GEOMETRY_VERSION_KEY);
+  assert.equal(selected[1].geometryPackVersionDependency.headSha, f.headSha);
+  assert.equal(selected[1].geometryPackVersionDependency.packRef.sha256, sha(json(f.pack)));
+  assert.equal(selected[1].geometryPackVersionDependency.bindingsRef.sha256, sha(json(f.bindings)));
+});
+
+test('geometry pack version dependency leaves provider-free selection without extra canonical reads', t => {
+  const f = fixture(t, { partial: true, otherOwner: false,
+    mutateRequest: r => { r.items[0].after = copy(GEOMETRY_VERSION_KEY); } });
+  const selected = selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha: f.headSha });
+  assert.deepEqual(selected.map(r => r.path), [REQUEST]);
+  assert.equal(selected[0].geometryPackVersionDependency, undefined);
+  assert.equal(fs.existsSync(path.join(f.root, `${GEOMETRY_VERSION_PACK}/pack.json`)), false);
+});
+
+for (const [name, change] of [
+  ['other pack', r => { r.registryChanges[0].path = 'archive/data/meta-foundation/canonical/packs/middle2/taxonomy.json'; }],
+  ['noncanonical path', r => { r.registryChanges[0].path = 'archive/data/meta-foundation/compiled/geometry-equations/taxonomy.json'; }],
+  ['unrecognized collection', r => { r.registryChanges[0].collection = 'other'; }],
+  ['no change', r => { r.registryChanges[0].before = copy(r.registryChanges[0].after); }],
+]) test(`geometry pack version dependency does not infer a provider from ${name}`, t => {
+  const f = geometryVersionFixture(t, { mutateProvider: change }), selected = f.select();
+  assert.deepEqual(selected.map(r => r.path), [REQUEST, GEOMETRY_VERSION_PROVIDER]);
+  assert.ok(selected.every(r => r.geometryPackVersionDependency === undefined));
+});
+
+for (const field of Object.keys(GEOMETRY_VERSION_KEY)) test(`geometry pack version dependency requires exact consumer ${field}`, t => {
+  const f = geometryVersionFixture(t, { mutateConsumer: r => { r.items[0].after[field] += '-other'; } });
+  const selected = f.select(); assert.deepEqual(selected.map(r => r.path), [REQUEST, GEOMETRY_VERSION_PROVIDER]);
+  assert.equal(selected[0].geometryPackVersionDependency, undefined);
+});
+
+test('geometry pack version dependency never infers a missing after key from before', t => {
+  const f = geometryVersionFixture(t, { mutateConsumer: r => {
+    r.items[0].before = copy(GEOMETRY_VERSION_KEY); delete r.items[0].after.subUnitKey;
+  } });
+  const selected = f.select(); assert.deepEqual(selected.map(r => r.path), [REQUEST, GEOMETRY_VERSION_PROVIDER]);
+  assert.equal(selected[0].geometryPackVersionDependency, undefined);
+});
+
+for (const [name, change, code] of [
+  ['ambiguous ACTIVE binding', bindings => { bindings.bindings.push(copy(bindings.bindings[0])); }, /REGISTRY_VERSION_AMBIGUOUS/],
+  ['wrong binding owner', bindings => { bindings.ownerPack = 'MIDDLE2'; }, /REGISTRY_VERSION_CONTEXT/],
+  ['inactive binding document', bindings => { bindings.status = 'REVIEW_REQUIRED'; }, /REGISTRY_VERSION_CONTEXT/],
+]) test(`geometry pack version dependency refuses ${name}`, t => {
+  const f = geometryVersionFixture(t, { mutateBindings: change }); assert.throws(f.select, code);
+});
+
+test('geometry pack version dependency does not consume inactive or differently owned binding rows', t => {
+  for (const mutateBindings of [b => { b.bindings[0].status = 'REVIEW_REQUIRED'; }, b => { b.bindings[0].ownerPack = 'MIDDLE2'; }]) {
+    const f = geometryVersionFixture(t, { mutateBindings });
+    assert.deepEqual(f.select().map(r => r.path), [REQUEST, GEOMETRY_VERSION_PROVIDER]);
+  }
+});
+
+test('geometry pack version dependency refuses a wrong or inactive canonical pack', t => {
+  for (const mutatePack of [p => { p.packId = 'MIDDLE2'; }, p => { p.canonicalStatus = 'REVIEW_REQUIRED'; }, p => { p.packVersion = 'current'; }]) {
+    const f = geometryVersionFixture(t, { mutatePack }); assert.throws(f.select, /REGISTRY_VERSION_CONTEXT/);
+  }
+});
+
+test('geometry pack version dependency uses immutable HEAD during postwrite reselection', t => {
+  const f = geometryVersionFixture(t), before = f.select();
+  f.write(`${GEOMETRY_VERSION_PACK}/pack.json`, json({ ...f.pack, packVersion: '1.0.3' }));
+  f.write(`${GEOMETRY_VERSION_PACK}/bindings.json`, json({ ...f.bindings, bindings: [] }));
+  assert.deepEqual(f.select(), before, 'selection is fixed; registrar still checks the actual worktree');
+});
+
+test('geometry pack version dependency waits for every selected provider', t => {
+  const f = geometryVersionFixture(t, { secondProvider: true }), selected = f.select();
+  assert.deepEqual(selected.map(r => r.path), [f.secondPath, GEOMETRY_VERSION_PROVIDER, REQUEST]);
+  assert.deepEqual(orderNativeRequests([...selected].reverse()).map(r => r.path), [GEOMETRY_VERSION_PROVIDER, f.secondPath, REQUEST]);
+});
+
+test('geometry pack version dependency allows self-provided pack and refuses mutual provider consumers', t => {
+  const f = geometryVersionFixture(t, { providerConsumes: true }), selected = f.select();
+  assert.deepEqual(selected.map(r => r.path), [GEOMETRY_VERSION_PROVIDER, REQUEST]);
+  assert.deepEqual(orderNativeRequests([selected[0]]).map(r => r.path), [GEOMETRY_VERSION_PROVIDER]);
+  const cycle = geometryVersionFixture(t, { providerConsumes: true, secondProvider: true });
+  assert.throws(cycle.select, /REGISTRY_DEPENDENCY_CYCLE/);
+});
+
+test('geometry pack version dependency preserves an existing binding cycle refusal', t => {
+  const f = geometryVersionFixture(t), selected = copy(f.select());
+  const provider = selected.find(r => r.path === GEOMETRY_VERSION_PROVIDER), consumer = selected.find(r => r.path === REQUEST);
+  const other = copy(BINDING_KEY);
+  consumer.registryDependency.provides = [{ path: 'archive/data/meta-foundation/canonical/packs/middle2/bindings.json', key: other }];
+  provider.registryDependency.requires.push({ questionUid: 'geometry-provider-uid', sourceOrdinal: 6, key: other });
+  assert.throws(() => orderNativeRequests(selected), /REGISTRY_DEPENDENCY_CYCLE/);
+});
+
+for (const [name, change, code] of [
+  ['missing descriptor', selected => { delete selected[0].geometryPackVersionDependency; }, /REGISTRY_VERSION_DESCRIPTOR/],
+  ['forged provider flag', selected => { selected[0].geometryPackVersionDependency.provider = false; }, /REGISTRY_VERSION_DESCRIPTOR/],
+  ['unknown descriptor key', selected => { selected[1].geometryPackVersionDependency.skip = true; }, /REGISTRY_VERSION_DESCRIPTOR/],
+  ['nonfixed context', selected => { selected[1].geometryPackVersionDependency.headSha = 'main'; }, /REGISTRY_VERSION_DESCRIPTOR/],
+  ['wrong pack path', selected => { selected[1].geometryPackVersionDependency.packRef.path = 'archive/other.json'; }, /REGISTRY_VERSION_DESCRIPTOR/],
+  ['different snapshot digest', selected => { selected[1].geometryPackVersionDependency.packRef.sha256 = 'f'.repeat(64); }, /REGISTRY_VERSION_CONTEXT/],
+  ['unselected consumer', selected => { selected[1].geometryPackVersionDependency.consumers[0].questionUid = 'outside'; }, /REGISTRY_VERSION_DESCRIPTOR/],
+  ['duplicate consumer', selected => { const d = selected[1].geometryPackVersionDependency; d.consumers.push(copy(d.consumers[0])); }, /REGISTRY_VERSION_DESCRIPTOR/],
+]) test(`geometry pack version dependency rejects ${name}`, t => {
+  const f = geometryVersionFixture(t), selected = copy(f.select()); change(selected);
+  assert.throws(() => orderNativeRequests(selected), code);
+});
+
+test('geometry pack version dependency rejects a removed provider and duplicate request path', t => {
+  const f = geometryVersionFixture(t), selected = f.select();
+  assert.throws(() => orderNativeRequests(selected.filter(r => r.path === REQUEST)), /REGISTRY_VERSION_PROVIDER_NOT_SELECTED/);
+  assert.throws(() => orderNativeRequests([...selected, selected[0]]), /DUPLICATE_REQUEST_PATH/);
+});
+
+test('geometry pack version dependency preserves the issued REVIEW2 row through the production compiler', t => {
+  const f = geometryVersionFixture(t), selected = f.select();
+  const runtimePath = 'archive/data/meta-foundation/runtime/geometry-equations-v1.json';
+  const receiptPath = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/synthetic.json';
+  const project = (version, row, receiptRow = row) => {
+    const runtime = { packVersion: version, runtimeVersion: `GEOMETRY_EQUATIONS@${version}/reviewed-exam-v2`, records: [copy(row)] };
+    const receipt = { schemaVersion: 'archive-reviewed-exam-meta-registration-v2', metadataRegistrationStatus: 'REGISTERED',
+      requestId: 'synthetic', sourceArchiveFile: receiptRow.sourceArchiveFile,
+      runtimeRecords: [copy(receiptRow)], appliedRecords: [copy(receiptRow)] };
+    const read = p => {
+      assert.ok(p === runtimePath || p === receiptPath, `unexpected compiler input: ${p}`);
+      return copy(p === runtimePath ? runtime : receipt);
+    };
+    const projected = expectedRuntime({ packs: [{ meta: { packId: 'GEOMETRY_EQUATIONS', packVersion: version } }] }, read);
+    assert.deepEqual(runtime.records, [row], 'projection must not mutate its input row');
+    assert.deepEqual(receipt.runtimeRecords, [receiptRow], 'projection must not mutate its issued receipt');
+    return JSON.parse(projected).records[0];
+  };
+  const execute = requests => {
+    let version = '1.0.2', issued;
+    for (const request of requests) {
+      if (request.path === GEOMETRY_VERSION_PROVIDER) version = '1.0.3';
+      else issued = { questionUid: 'fixture', metadataApprovalType: 'REVIEW2', approvalEvidence: [receiptPath],
+        sourceArchiveFile: 'original/synthetic-geometry-fixture.js', sourceOrdinal: 1, sourceFingerprint: 'synthetic-fingerprint',
+        metaFoundationPackId: 'GEOMETRY_EQUATIONS', metaFoundationPackVersion: version,
+        metadataRevision: `meta-foundation:GEOMETRY_EQUATIONS@${version}:exam-review2-v2:synthetic` };
+    }
+    return { issued, afterCompile: project(version, issued) };
+  };
+  const good = execute(selected); assert.deepEqual(good.afterCompile, good.issued);
+  assert.equal(good.issued.metadataRevision, 'meta-foundation:GEOMETRY_EQUATIONS@1.0.3:exam-review2-v2:synthetic');
+  assert.equal(good.issued.metaFoundationPackVersion, '1.0.3');
+  const inverse = execute([...selected].reverse());
+  // The current compiler preserves an exact issued row; ordering still decides
+  // the pack version at issuance and must not rely on a later compiler rewrite.
+  assert.deepEqual(inverse.afterCompile, inverse.issued);
+  assert.notDeepEqual(inverse.issued, good.issued);
+  assert.equal(inverse.afterCompile.metadataRevision, 'meta-foundation:GEOMETRY_EQUATIONS@1.0.2:exam-review2-v2:synthetic');
+  assert.equal(inverse.afterCompile.metaFoundationPackVersion, '1.0.2');
+  const forged = { ...good.afterCompile, approvalEvidence: ['different'] };
+  assert.notDeepEqual(forged, good.issued, 'whole-row evidence equality is not relaxed by ordering');
+  assert.throws(() => project('1.0.3', forged, good.issued), /does not match its issued Native receipt/);
+  assert.throws(() => project('1.0.3', { ...good.issued, sourceFingerprint: 'changed' }, good.issued),
+    /does not match its issued Native receipt/, 'unchanged evidence cannot authorize a changed runtime row');
+});
+
+function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, auditSourcePreservation = false, finalQaPreservation = false, basicPreservation = false, directType = false, decisionDoc = false, otherOwner = true, mutateRequest } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'native-preview-fixture-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const write = (file, text, target = root) => {
@@ -88,6 +295,7 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
   ].join('\n') + '\n');
   write(SOURCE, 'window.questions = '+JSON.stringify(Array.from({length:partial?24:1},(_,i)=>({id:i+1})))+';\n');
   write(EVIDENCE, json({ reviewed: 'fixture approval evidence, without student content' }));
+  if (decisionDoc) write(DECISION_DOCUMENT, '# metadata decision fixture\n\n' + DECISION_SECTION + '\n');
   sourceQualityHoldFixture(write);
   if (auditSourcePreservation) write(AUDIT_PRIOR_RECEIPT, json({
     schemaVersion: 'archive-reviewed-exam-meta-registration-v2', metadataRegistrationStatus: 'REGISTERED',
@@ -131,7 +339,8 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
     sourceArchiveFile: 'original/native.js', expectedSourceBlobSha1: git('rev-parse', `HEAD:${SOURCE}`),
     expectedQuestionCount: partial ? 24 : 1, ...(partial ? {scope:'PARTIAL_UIDS'} : {}),
     ...(identityOnly ? {registrationMode:'IDENTITY_FINGERPRINT_ONLY'} : {}),
-    approval: { type: 'FINAL_QA', evidenceRefs: [evidenceRef] },
+    approval: { type: directType ? 'DIRECT_JUDGMENT' : 'FINAL_QA', evidenceRefs: [evidenceRef] },
+    ...(directType ? { fieldScope: 'TYPE_ONLY' } : {}),
     registryChanges: [], items: [{ questionUid: 'fixture', sourceOrdinal: partial ? 5 : 1, evidenceRefs: [evidenceRef] }],
   };
   if (auditPreservation) {
@@ -173,7 +382,7 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
       const r = spawnSync(program, args, { cwd: target, encoding: 'utf8' });
       if (r.status !== 0) throw Error(`FIXTURE_GIT:${r.stderr}`); return r.stdout;
     }
-    if (args[0].endsWith('/register-reviewed-exam-meta-source.mjs')) {
+    if (args[0].replaceAll('\\','/').endsWith('/register-reviewed-exam-meta-source.mjs')) {
       const requestPath = args[args.indexOf('--request') + 1];
       assert.equal(requestPath, REQUEST, 'an unchanged other-owner inbox must not run');
       const req = JSON.parse(fs.readFileSync(path.join(target, requestPath), 'utf8'));
@@ -185,7 +394,9 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
       const basic=['archive-basic-scope-current-source-preservation-v1','archive-basic-native-source-hold-preservation-v1','archive-reviewed-native-basic-parent-v1']
         .includes(req.approval.sourceReview?.schemaVersion);
       const newBasic=req.approval.sourceReview?.schemaVersion==='archive-reviewed-native-basic-parent-v1';
+      const direct = req.approval?.type === 'DIRECT_JUDGMENT';
       const result = { status: 'PASS', requestId: req.requestId, totalQuestions: req.items.length, replay,
+        ...(direct ? { fieldScope: 'TYPE_ONLY', typeApprovals: req.items.length, newMetadataApprovals: 0 } : {}),
         ...(req.scope==='PARTIAL_UIDS'?{scope:req.scope,partialUidCount:req.items.length,expectedQuestionCount:req.expectedQuestionCount}:{}),
         ...(identityRepair?{registrationMode:req.registrationMode,metadataChanged:false,newMetadataApprovals:0,
           ...(phase==='projection'?{consumerLanes:{identityBindings:req.items.length,newMetadataApprovals:0}}:{})}:{}),
@@ -193,7 +404,7 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
         ...(basic?{newMetadataApprovals:newBasic?req.items.length:0,preservedMetadataApprovals:newBasic?0:req.items.length,advancedApprovals:0,metadataValuesChanged:false,expectedQuestionCount:req.expectedQuestionCount,
           ...(newBasic?{newBasicParentApprovals:req.items.length,newDifficultyJudgments:0,newBlindReviews:0,newReview2:0}:{})}:{}),
         plannedPaths: replay ? [] : identityRepair ? [IDENTITY, RECEIPT].sort() : basic ? [META,IDENTITY,BASIC_LINKS,RECEIPT].sort() : PLANNED,
-        consumerSearchStatus: phase === 'projection' ? identityRepair ? 'IDENTITY_BINDINGS_VERIFIED' : 'STATIC_VALUES_VERIFIED' : 'NOT_RUN' };
+        consumerSearchStatus: phase === 'projection' ? identityRepair ? 'IDENTITY_BINDINGS_VERIFIED' : direct ? 'TYPE_FIELDS_VERIFIED' : 'STATIC_VALUES_VERIFIED' : 'NOT_RUN' };
       if (phase === 'write' && !replay) {
         if(identityRepair)write(IDENTITY,json({records:[{questionUid:'fixture',sourceFingerprint:'current'}]}),target);
         else {
@@ -208,7 +419,7 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
       }
       return json(hook.result?.(phase, result, target) || result);
     }
-    if (args[0].endsWith('/register-difficulty5.mjs')) {
+    if (args[0].replaceAll('\\','/').endsWith('/register-difficulty5.mjs')) {
       const requestPath = args[args.indexOf('--request') + 1];
       assert.equal(requestPath, difficultyOnly ? REQUEST : DIFFICULTY_REQUEST);
       const req = JSON.parse(fs.readFileSync(path.join(target, requestPath), 'utf8'));
@@ -232,7 +443,7 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
       }
       return json(hook.difficultyResult?.(phase, result, target) || result);
     }
-    if (args[0].endsWith('/verify-changed-uid-consumer-approval.mjs')) {
+    if (args[0].replaceAll('\\','/').endsWith('/verify-changed-uid-consumer-approval.mjs')) {
       hook.consumer?.(target);
       const files=[REQUEST,...(pairedDifficulty?[DIFFICULTY_REQUEST]:[])];
       const exams=files.map(file=>{const req=JSON.parse(fs.readFileSync(path.join(target,file),'utf8'));
@@ -241,9 +452,11 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
         const count=(req.gemini?.items||req.items).length;
         const basic=Boolean(req.approval?.sourceReview);
         const newBasic=req.approval?.sourceReview?.schemaVersion==='archive-reviewed-native-basic-parent-v1';
-        return { file, kind: req.schemaVersion===DIFFICULTY_REQUEST_SCHEMA?'difficulty5-ratings':identityRepair?'identity-fingerprint-repair':newBasic?'basic-parent-registration':basic?'basic-approval-preservation':preservation?'native-approval-preservation':'reviewed-exam-v2',
+        const direct=req.approval?.type==='DIRECT_JUDGMENT';
+        return { file, kind: req.schemaVersion===DIFFICULTY_REQUEST_SCHEMA?'difficulty5-ratings':direct?'direct-type-judgment':identityRepair?'identity-fingerprint-repair':newBasic?'basic-parent-registration':basic?'basic-approval-preservation':preservation?'native-approval-preservation':'reviewed-exam-v2',
           exam:req.gemini?.requestId||req.examUid||req.sourceArchiveFile,
           sourceFile:'original/native.js',changed:count,checked:count,passed:count,skippedUnchanged:0,
+          ...(direct?{approvalCreated:false,newMetadataApprovals:0,directTypeApprovals:count,typeNotDisplayed:0,expectedQuestionCount:req.expectedQuestionCount}:{}),
           ...(identityRepair?{approvalCreated:false,newMetadataApprovals:0,identityBindings:1}:{}),
           ...(preservation?{approvalCreated:false,newMetadataApprovals:0,preservedMetadataApprovals:1,
             approvalType:req.approval.type,expectedQuestionCount:req.expectedQuestionCount}:{}),
@@ -552,7 +765,7 @@ test('inbox-only PR selects its fixed v2 request and leaves unchanged course inb
   assert.equal(f.validate(proof).reusable, true);
   assert.deepEqual(f.snapshot(), before, 'successful local reuse is read-only');
   f.assertShadowsRemoved();
-  const actualWrites = f.calls.filter(c => c.root === f.root && c.args.includes('--write') && c.args[0].endsWith('/register-reviewed-exam-meta-source.mjs'));
+  const actualWrites = f.calls.filter(c => c.root === f.root && c.args.includes('--write') && c.args[0].replaceAll('\\','/').endsWith('/register-reviewed-exam-meta-source.mjs'));
   assert.equal(actualWrites.length, 1, 'verify-local writes only its isolated shadow');
 });
 
@@ -817,6 +1030,22 @@ test('ordinary difficulty keeps the official CRLF binding but rejects any other 
   assert.throws(() => selectPendingNativeRequests({ root: f.root, headSha: f.git('rev-parse', 'HEAD') }), /SOURCE_NOT_FIXED/);
 });
 
+test('draft difficulty with a text fingerprint on every item does not bind the whole-file blob; any other request still does', t => {
+  const asDraft = (withFingerprint) => request => {
+    ordinaryDifficultyRequest(request);
+    request.approvalType = 'DRAFT_SINGLE_MODEL'; request.judge = 'draft-model';
+    request.gemini.items.forEach((item, i) => { if (withFingerprint || i) item.textBindingFingerprint = 'a'.repeat(64); });
+  };
+  const drift = (f, expectFixed) => {
+    f.write(SOURCE, fs.readFileSync(path.join(f.root, SOURCE), 'utf8').replace('id', 'changedField'));
+    f.git('add', '--', SOURCE); f.git('commit', '-qm', 'source change after the request');
+    const run = () => selectPendingNativeRequests({ root: f.root, headSha: f.git('rev-parse', 'HEAD') });
+    if (expectFixed) assert.equal(run().length, 1); else assert.throws(run, /SOURCE_NOT_FIXED/);
+  };
+  drift(fixture(t, { difficultyOnly: true, otherOwner: false, mutateRequest: asDraft(true) }), true);
+  drift(fixture(t, { difficultyOnly: true, otherOwner: false, mutateRequest: asDraft(false) }), false);
+});
+
 test('ordinary difficulty rejects partial registrar success, wrong modes and foreign output mutations', t => {
   for (const phase of ['dry-run', 'write', 'projection']) for (const mutate of [
     r => ({ ...r, mode: 'dry-run-reviewed-correction' }),
@@ -855,7 +1084,7 @@ function ordinaryOfficialFixture(t, mutate) {
   const headSha = f.git('rev-parse', 'HEAD'), officialResults = [];
   const run = (program, args, root = f.root) => {
     if (program === 'git') return f.run(program, args, root);
-    if (args[0].endsWith('/register-difficulty5.mjs')) {
+    if (args[0].replaceAll('\\','/').endsWith('/register-difficulty5.mjs')) {
       const request = JSON.parse(fs.readFileSync(path.join(root, args[args.indexOf('--request') + 1]), 'utf8'));
       const result = registerDifficulty5({ root, request, write: args.includes('--write'), verifyProjection: args.includes('--verify-projection') });
       officialResults.push(copy(result)); return json(result);
@@ -2389,4 +2618,252 @@ test('E032 subset preview refuses a registrar result promoting seven or granting
       replay: false, plannedPaths: [META, requests[0].receiptPath] });
     assert.throws(() => applyNativeRequests({ root: f.root, requests, run, guard: false }), /DRY_RUN_NOT_PASS/);
   }
+});
+
+import { hydrateFixedNativeServedInputs, rederiveNativePlans,
+  attachNativeRegistryVersionDependencies } from '../tools/ci/archive-pr-native-preview.mjs';
+
+// Synthetic Git history for the staging contract only. No Native/visual
+// approval is inferred from these fixture records or the stubbed registrar.
+const SHADOW_TECH = 'docs/operations/m2-problem21-continuity-20261116/student-ui-technical-v1.json';
+const SHADOW_WRAP = 'docs/operations/m2-family3-problem-continuity-20261116/binding-e015-v1.json';
+const SHADOW_SOURCE = 'archive/exams/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js';
+const SHADOW_UIDS = ['qid_v1_3c72535bb4d43798192918e723d32bd646b2415bde8c5e8ad872b445496b7bfd',
+  'qid_v1_76b2be613350f59166e128170c6f38b6150078c9ed44e727733d5de0bbf76942'];
+
+function servedShadowFixture(t, mutate = {}) {
+  const f = fixture(t, { partial: true });
+  const readonly = ['archive/engine.html', ...Array.from({ length: 90 }, (_, i) => `archive/shadow-fixture-${i}.js`), 'archive/shadow-fixture-style.css',
+    'archive/vendor/nanum-myeongjo/shadow-fixture.woff2', 'archive/data/svg-accessibility-index.js'];
+  const sources = [SHADOW_SOURCE, 'archive/exams/original/middle/m2/2mid/shadow-other-a.js',
+    'archive/exams/original/middle/m2/2mid/shadow-other-b.js'];
+  for (const file of readonly) f.write(file, `fixed synthetic renderer bytes ${file}\n`);
+  for (const file of sources) f.write(file, fs.readFileSync(path.join(f.root, SOURCE)));
+  f.write('archive/unrelated-not-served.js', '// must never be staged\n');
+  f.git('add', '--', ...readonly, ...sources, 'archive/unrelated-not-served.js'); f.git('commit', '-qm', 'synthetic capture checkout');
+  const captureCommit = f.git('rev-parse', 'HEAD');
+  const at = (commit, file) => {
+    const r = spawnSync('git', ['show', `${commit}:${file}`], { cwd: f.root });
+    assert.equal(r.status, 0, String(r.stderr));
+    return { commit, path: file, gitBlobSha1: f.git('rev-parse', `${commit}:${file}`), sha256: sha(r.stdout), bytes: r.stdout.length };
+  };
+  const font = at(captureCommit, readonly[92]);
+  const technical = { schemaVersion: 'archive-m2-problem24-student-ui-preview-v1',
+    status: 'TECHNICAL_PASS_VISUAL_REVIEW_PENDING', checkoutCommit: captureCommit,
+    items: Array.from({ length: 24 }, (_, i) => ({ sourceRef: at(captureCommit, sources[i % 3]) })),
+    servedFiles: [...readonly, META, ...sources].map(file => at(captureCommit, file)),
+    studentFontResources: Array.from({ length: 40 }, (_, i) => ({ ...font, resourceId: sha(`font resource ${i}`), status: 200, kind: 'FONT' })) };
+  mutate.technical?.(technical, f);
+  f.write(SHADOW_TECH, json(technical)); f.git('add', '--', SHADOW_TECH); f.git('commit', '-qm', 'synthetic fixed technical inventory');
+  const technicalCommit = f.git('rev-parse', 'HEAD');
+  const wrapper = { schemaVersion: 'archive-m2-family3-problem-continuity-binding-v1',
+    scope: 'EXACT_M2_E017_Q6_E015_Q7_Q8_PROBLEM_DISPLAY', sourceArchiveFile: SHADOW_SOURCE.slice('archive/exams/'.length),
+    selectedQuestionUids: [...SHADOW_UIDS], studentUiTechnicalRef: at(technicalCommit, SHADOW_TECH) };
+  mutate.wrapper?.(wrapper, f);
+  f.write(SHADOW_WRAP, json(wrapper)); f.git('add', '--', SHADOW_WRAP); f.git('commit', '-qm', 'synthetic fixed wrapper');
+  const reviewCommit = f.git('rev-parse', 'HEAD'), wrapperRef = { path: SHADOW_WRAP, sha256: sha(fs.readFileSync(path.join(f.root, SHADOW_WRAP))) };
+  const technicalRef = { path: SHADOW_TECH, sha256: sha(fs.readFileSync(path.join(f.root, SHADOW_TECH))) };
+  Object.assign(f.request, { sourceArchiveFile: SHADOW_SOURCE.slice('archive/exams/'.length), expectedSourceBlobSha1: at(captureCommit, SHADOW_SOURCE).gitBlobSha1 });
+  f.request.approval = { type: 'FINAL_QA', metadataReviewed: true, evidenceRefs: [wrapperRef, technicalRef] };
+  f.request.items = SHADOW_UIDS.map((questionUid, i) => ({ questionUid, sourceOrdinal: 7 + i,
+    evidenceRefs: [wrapperRef, technicalRef], sourceReview: { m2Family3ProblemContinuity: {
+      schemaVersion: 'archive-m2-family3-problem-continuity-v1', reviewCommit, reviewRef: wrapperRef } } }));
+  mutate.request?.(f.request, f);
+  f.write(REQUEST, json(f.request)); f.git('add', '--', REQUEST); f.git('commit', '-qm', 'synthetic selected family request');
+  const headSha = f.git('rev-parse', 'HEAD');
+  const selected = () => selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha });
+  const newShadow = () => {
+    const shadow = fs.mkdtempSync(path.join(os.tmpdir(), 'native-served-shadow-test-'));
+    t.after(() => fs.rmSync(shadow, { recursive: true, force: true })); return shadow;
+  };
+  const hydrate = (shadow = newShadow(), requests = selected(), head = headSha) =>
+    hydrateFixedNativeServedInputs({ root: f.root, shadow, headSha: head, requests });
+  const repo = 'owner/repository', options = { root: f.root, repo, expectedSha: headSha, runId: 41, runAttempt: 1, run: f.run,
+    event: { number: 17, repository: { id: 101, full_name: repo }, pull_request: {
+      base: { sha: f.baseSha, repo: { id: 101 } }, head: { sha: headSha, repo: { id: 101 } } } } };
+  f.hook.consumerResult = { status: 'PASS', counts: { changed: 2, checked: 2, passed: 2, skippedUnchanged: 0 },
+    exams: [{ file: REQUEST, kind: 'reviewed-exam-v2', exam: f.request.sourceArchiveFile,
+      sourceFile: f.request.sourceArchiveFile, changed: 2, checked: 2, passed: 2, skippedUnchanged: 0 }],
+    failures: [], unobservedFields: [], assignmentPending: [] };
+  return { ...f, readonly, sources, technical, wrapper, captureCommit, technicalCommit, reviewCommit, headSha,
+    at, selected, newShadow, hydrate, options };
+}
+
+test('served shadow restores 93 missing files and checks one existing file without sharing mutable inodes', t => {
+  const f = servedShadowFixture(t), shadow = f.newShadow(), before = f.snapshot();
+  const existing = 'archive/data/svg-accessibility-index.js';
+  f.write(existing, fs.readFileSync(path.join(f.root, existing)), shadow);
+  const inode = fs.statSync(path.join(shadow, existing)).ino;
+  const inputs = f.hydrate(shadow);
+  assert.equal(inputs.length, 94); assert.equal(fs.statSync(path.join(shadow, existing)).ino, inode);
+  for (const ref of inputs) {
+    const p = path.join(shadow, ref.path);
+    assert.equal(sha(fs.readFileSync(p)), ref.sha256);
+    assert.notEqual(fs.statSync(p).ino, fs.statSync(path.join(f.root, ref.path)).ino);
+  }
+  assert.equal(fs.existsSync(path.join(shadow, 'archive/unrelated-not-served.js')), false);
+  assert.deepEqual(f.snapshot(), before);
+});
+
+test('served shadow leaves dynamic source, metadata and identity post-state bytes untouched', t => {
+  const f = servedShadowFixture(t), shadow = f.newShadow();
+  for (const file of [META, IDENTITY, ...f.sources]) f.write(file, `post-state ${file}\n`, shadow);
+  const before = [META, IDENTITY, ...f.sources].map(file => [file, fs.readFileSync(path.join(shadow, file))]);
+  assert.equal(f.hydrate(shadow).length, 94);
+  for (const [file, bytes] of before) assert.deepEqual(fs.readFileSync(path.join(shadow, file)), bytes);
+});
+
+test('served shadow proof revalidation uses original registrar plan and retains strict live checks', t => {
+  const f = servedShadowFixture(t), seen = [];
+  for (const phase of ['dry-run', 'write', 'projection']) f.hook[phase] = target => {
+    for (const file of f.readonly) {
+      const expected = f.technical.servedFiles.find(ref => ref.path === file);
+      assert.equal(sha(fs.readFileSync(path.join(target, file))), expected.sha256, 'LIVE_SERVED_CODE_DRIFT');
+    }
+    seen.push({ phase, shadow: target !== f.root });
+  };
+  const proof = producePrRegistrationProof(f.options), before = f.snapshot();
+  assert.equal(proof.status, 'PASS');
+  assert.equal(validateLocalRegistrationProof({ ...f.options, proof }).reusable, true);
+  assert.ok(seen.some(row => row.shadow && row.phase === 'write'));
+  assert.ok(seen.some(row => !row.shadow && row.phase === 'projection'));
+  assert.deepEqual(f.snapshot(), before); f.assertShadowsRemoved();
+});
+
+for (const [name, mutation, error] of [
+  ['unknown technical schema', { technical: d => { d.schemaVersion = 'unbound-ui'; } }, /SHADOW_LIVE_INVENTORY/],
+  ['incomplete served inventory', { technical: d => { d.servedFiles.pop(); } }, /SHADOW_LIVE_INVENTORY/],
+  ['duplicate served path', { technical: d => { d.servedFiles[1] = d.servedFiles[0]; } }, /SHADOW_LIVE_INVENTORY/],
+  ['served raw digest forgery', { technical: d => { d.servedFiles[0].sha256 = '0'.repeat(64); } }, /SHADOW_LIVE_DIGEST/],
+  ['served Git blob forgery', { technical: d => { d.servedFiles[0].gitBlobSha1 = '0'.repeat(40); } }, /SHADOW_LIVE_DIGEST/],
+  ['served byte count forgery', { technical: d => { d.servedFiles[0].bytes++; } }, /SHADOW_LIVE_DIGEST/],
+  ['different served checkout', { technical: d => { d.servedFiles[0].commit = '0'.repeat(40); } }, /SHADOW_LIVE_CAPTURE_COMMIT/],
+  ['path traversal', { technical: d => { d.servedFiles[0].path = 'archive/../outside.js'; } }, /UNSAFE_PATH/],
+  ['absolute path', { technical: d => { d.servedFiles[0].path = '/tmp/outside.js'; } }, /UNSAFE_PATH/],
+  ['Git internals path', { technical: d => { d.servedFiles[0].path = '.git/config'; } }, /SHADOW_LIVE_PATH/],
+  ['arbitrary documentation path', { technical: d => { d.servedFiles[0].path = 'docs/private.json'; } }, /SHADOW_LIVE_PATH/],
+  ['writable identity input', { technical: d => { d.servedFiles[0].path = IDENTITY; } }, /SHADOW_LIVE_PATH/],
+  ['unbound font', { technical: d => { d.studentFontResources[0].sha256 = '0'.repeat(64); } }, /SHADOW_LIVE_FONT/],
+  ['duplicate font resource', { technical: d => { d.studentFontResources[1] = d.studentFontResources[0]; } }, /SHADOW_LIVE_FONT/],
+  ['foreign dynamic source', { technical: d => { d.items[0].sourceRef.path = 'archive/exams/original/high/h1/foreign.js'; } }, /SHADOW_LIVE_DYNAMIC_SCOPE/],
+  ['wrapper source mismatch', { wrapper: d => { d.sourceArchiveFile = 'original/foreign.js'; } }, /SHADOW_LIVE_REQUEST|SHADOW_LIVE_PROFILE/],
+  ['wrapper UID mismatch', { wrapper: d => { d.selectedQuestionUids = ['foreign-uid']; } }, /SHADOW_LIVE_PROFILE/],
+  ['technical path outside profile', { wrapper: d => { d.studentUiTechnicalRef.path = 'docs/operations/another.json'; } }, /SHADOW_LIVE_PROFILE/],
+  ['missing approval binding', { request: d => { d.approval.evidenceRefs = d.approval.evidenceRefs.slice(0, 1); } }, /SHADOW_LIVE_UNBOUND_INVENTORY/],
+  ['missing item binding', { request: d => { d.items[0].evidenceRefs = d.items[0].evidenceRefs.slice(0, 1); } }, /SHADOW_LIVE_UNBOUND_INVENTORY/],
+  ['outside selected UID', { request: d => { d.items[0].questionUid = 'foreign-uid'; } }, /SHADOW_LIVE_REQUEST/],
+  ['unknown marker schema', { request: d => { d.items[0].sourceReview.m2Family3ProblemContinuity.schemaVersion = 'unknown'; } }, /SHADOW_LIVE_PROFILE/],
+  ['missing marker in mixed request', { request: d => { delete d.items[0].sourceReview.m2Family3ProblemContinuity; } }, /SHADOW_LIVE_REQUEST/],
+  ['missing historical wrapper commit', { request: d => { d.items[0].sourceReview.m2Family3ProblemContinuity.reviewCommit = '0'.repeat(40); } }, /SHADOW_LIVE_REGULAR_BLOB/],
+]) test(`served shadow rejects ${name}`, t => {
+  const f = servedShadowFixture(t, mutation), shadow = f.newShadow();
+  assert.throws(() => f.hydrate(shadow), error);
+  assert.deepEqual(fs.readdirSync(shadow), [], 'invalid authority never stages partial input');
+});
+
+for (const file of ['archive/engine.html', 'archive/shadow-fixture-0.js', 'archive/shadow-fixture-style.css', 'archive/vendor/nanum-myeongjo/shadow-fixture.woff2'])
+  test(`served shadow rejects live byte drift in ${file}`, t => {
+    const f = servedShadowFixture(t), selected = f.selected(), shadow = f.newShadow();
+    f.write(file, 'modified current byte'); const before = f.snapshot();
+    assert.throws(() => f.hydrate(shadow, selected), /SHADOW_LIVE_WORKTREE_DRIFT/);
+    assert.deepEqual(f.snapshot(), before); assert.deepEqual(fs.readdirSync(shadow), []);
+  });
+
+test('served shadow refuses changed HEAD code even when worktree agrees with that changed HEAD', t => {
+  const f = servedShadowFixture(t); f.write('archive/engine.html', 'new unreviewed engine');
+  f.git('add', '--', 'archive/engine.html'); f.git('commit', '-qm', 'unreviewed engine');
+  const headSha = f.git('rev-parse', 'HEAD'), requests = selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha });
+  assert.throws(() => f.hydrate(f.newShadow(), requests, headSha), /SHADOW_LIVE_HEAD_DRIFT/);
+});
+
+test('served shadow refuses missing live input and a regular-file symlink substitution', t => {
+  const f = servedShadowFixture(t), selected = f.selected(), target = path.join(f.root, 'archive/engine.html');
+  fs.unlinkSync(target); assert.throws(() => f.hydrate(f.newShadow(), selected), /MISSING_FILE/);
+  fs.symlinkSync('shadow-fixture-0.js', target);
+  assert.throws(() => f.hydrate(f.newShadow(), selected), /SYMLINK/);
+});
+
+test('served shadow refuses a preexisting shadow mismatch without overwriting it', t => {
+  const f = servedShadowFixture(t), shadow = f.newShadow(), file = 'apmath/css/student-navigation.css';
+  const ref = f.technical.servedFiles.find(row => row.path === 'archive/engine.html');
+  f.write(ref.path, 'independent shadow drift', shadow);
+  assert.throws(() => f.hydrate(shadow), /SHADOW_LIVE_EXISTING_DRIFT/);
+  assert.equal(fs.readFileSync(path.join(shadow, ref.path), 'utf8'), 'independent shadow drift');
+});
+
+test('served shadow refuses forged selected descriptors and a different checkout HEAD', t => {
+  const f = servedShadowFixture(t), descriptors = f.selected(); descriptors[0].sha256 = '0'.repeat(64);
+  assert.throws(() => f.hydrate(f.newShadow(), descriptors), /SHADOW_LIVE_REQUEST/);
+  assert.throws(() => f.hydrate(f.newShadow(), f.selected(), f.captureCommit), /SHADOW_LIVE_HEAD/);
+});
+
+test('served shadow never expands an ordinary request with no explicit family marker', t => {
+  const f = fixture(t), shadow = fs.mkdtempSync(path.join(os.tmpdir(), 'native-served-ordinary-'));
+  t.after(() => fs.rmSync(shadow, { recursive: true, force: true }));
+  assert.deepEqual(hydrateFixedNativeServedInputs({ root: f.root, shadow, headSha: f.headSha, requests: f.selected() }), []);
+  assert.deepEqual(fs.readdirSync(shadow), []);
+  assert.deepEqual(attachNativeRegistryVersionDependencies({ root: '/not-a-checkout', headSha: 'invalid', requests: [] }), []);
+});
+
+test('type-only direct judgment is previewed as its own kind with the registrar and Consumer states it really returns',t=>{
+  const f=fixture(t,{partial:true,directType:true});
+  const selected=f.selected();
+  assert.equal(selected[0].kind,'direct-type-judgment');assert.equal(selected[0].questionCount,1);assert.equal(selected[0].sourceQuestionCount,24);
+  const proof=f.produce();assert.equal(proof.status,'PASS');
+  assert.equal(proof.nativePreview.requests[0].kind,'direct-type-judgment');
+  assert.equal(f.validate(proof).reusable,true);f.assertShadowsRemoved();
+});
+
+test('type-only direct judgment request passes the shadow re-verification because the shadow carries the head decision document',t=>{
+  assert.ok(SHADOW_RESTORE_PATHS.includes(DECISION_DOCUMENT), 'the restore list reads the registrar constant');
+  const f=fixture(t,{partial:true,directType:true,decisionDoc:true});
+  const proof=f.produce(),seen=[];
+  // The same check the real registrar makes on a first registration (register-type-judgment checkDecisionDocument).
+  const decision=target=>{const full=path.join(target,DECISION_DOCUMENT);
+    if(!fs.existsSync(full))throw Error('decision document missing: '+DECISION_DOCUMENT);
+    if(!fs.readFileSync(full,'utf8').includes(DECISION_SECTION))throw Error('decision section not found in '+DECISION_DOCUMENT);
+    seen.push(target!==f.root);};
+  f.hook['dry-run']=decision;f.hook.write=decision;
+  assert.equal(f.validate(proof).reusable,true);
+  assert.ok(seen.includes(true),'the check ran inside a shadow, not only in the live checkout');
+  f.assertShadowsRemoved();
+});
+
+test('type-only direct judgment request still fails the shadow re-verification when the head has no decision document',t=>{
+  const f=fixture(t,{partial:true,directType:true});
+  const proof=f.produce();
+  f.hook['dry-run']=target=>{if(!fs.existsSync(path.join(target,DECISION_DOCUMENT)))throw Error('decision document missing: '+DECISION_DOCUMENT);};
+  assert.throws(()=>f.validate(proof),/decision document missing/);
+  f.assertShadowsRemoved();
+});
+
+test('type-only direct judgment preview refuses a registrar result that is not a verified type-only replay',t=>{
+  const cases=[
+    r=>({...r,consumerSearchStatus:'STATIC_VALUES_VERIFIED'}),r=>({...r,consumerSearchStatus:'NOT_RUN'}),
+    r=>({...r,typeApprovals:2}),r=>({...r,newMetadataApprovals:1}),r=>({...r,fieldScope:undefined}),r=>({...r,replay:false}),
+  ];
+  for(const mutate of cases){
+    const f=fixture(t,{partial:true,directType:true});f.hook.result=(p,r)=>p==='projection'?mutate(r):r;
+    assert.throws(()=>f.produce(),/PROJECTION_NOT_VERIFIED/);
+  }
+});
+
+test('type-only direct judgment preview refuses a Consumer result of another kind or with unaccounted rows',t=>{
+  const mutations=[e=>({...e,kind:'reviewed-exam-v2'}),e=>({...e,directTypeApprovals:0}),e=>({...e,newMetadataApprovals:1}),e=>({...e,approvalCreated:true}),
+    e=>({...e,expectedQuestionCount:1}),e=>({...e,directTypeApprovals:2,typeNotDisplayed:-1}),e=>({...e,directTypeApprovals:1.5,typeNotDisplayed:-0.5}),e=>({...e,typeNotDisplayed:undefined}),
+    e=>({...e,directTypeApprovals:'1',typeNotDisplayed:0})];
+  for(const mutate of mutations){
+    const f=fixture(t,{partial:true,directType:true});
+    const base={changed:1,checked:1,passed:1,skippedUnchanged:0};
+    f.hook.consumerResult={status:'PASS',counts:base,exams:[mutate({file:REQUEST,kind:'direct-type-judgment',sourceFile:'original/native.js',...base,
+      approvalCreated:false,newMetadataApprovals:0,directTypeApprovals:1,typeNotDisplayed:0,expectedQuestionCount:24})],failures:[],unobservedFields:[],assignmentPending:[]};
+    assert.throws(()=>f.produce(),/CONSUMER_NOT_PASS/);
+  }
+  // a row the catalog does not display is still accounted for (typeNotDisplayed), not a failure
+  const f=fixture(t,{partial:true,directType:true}),base={changed:1,checked:1,passed:1,skippedUnchanged:0};
+  f.hook.consumerResult={status:'PASS',counts:base,exams:[{file:REQUEST,kind:'direct-type-judgment',sourceFile:'original/native.js',...base,
+    approvalCreated:false,newMetadataApprovals:0,directTypeApprovals:0,typeNotDisplayed:1,expectedQuestionCount:24}],failures:[],unobservedFields:[],assignmentPending:[]};
+  const out=f.produce();
+  assert.equal(out.status,'PASS');
+  assert.deepEqual(out.nativePreview.checks.find(c=>c.id==='native-consumer').directTypeJudgments,{requests:1,newMetadataApprovals:0,directTypeApprovals:0,typeNotDisplayed:1});
 });

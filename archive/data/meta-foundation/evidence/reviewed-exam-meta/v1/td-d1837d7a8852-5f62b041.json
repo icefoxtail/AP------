@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-d1837d7a8852-5f62b041",
+  "requestSha256": "60398772c9817b5dbf08aeb4dcd044e600046e1dc617a4ea053bce4f445b870b",
+  "examUid": "24_강남여고_1학기_중간_고2_확률과통계",
+  "sourceArchiveFile": "original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js",
+  "sourceBlobSha1": "f6476921705b72855df4534109ecb7fed26ddc3d",
+  "sourceRawSha256": "01b2fe9466d22067649039cdd6722d757f1f19ed3afb8fa9446f9cd84b30724f",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d1837d7a8852-5f62b041.type-ledger.json",
+        "sha256": "dc9c4ca9dfdadf9136389f54a0d4ae47188d0c139cb103f5c101a9e1d782c960"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_0a0217f9381b64980c103bd3544e35c2bab3ecc47cfd4e5134e12662e98c4155",
+      "sourceArchiveFile": "original/high/h2/1mid/24_강남여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 1,
+      "problemTypeKey": "PT_PROB_PERMUTATION_COMBINATION",
+      "templateKey": null,
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-d1837d7a8852-5f62b041",
+        "judge": "dots",
+        "rationale": "중복순열3Π4=3⁴=81과 중복조합5H3=7C3=35를 각각 계산하여116을 얻는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "11831c951d738fab50c832a3c675ec57114a883028c176dfa5340acb55bb4351",
+        "judgedContentFingerprint": "2186955fd8e8026c7bbc9e68315df7427887ae235bc64894132f03934f2382d7",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "60b952e9efdcb080fbdcfef4472e12d36963c298b15453428eaf746f0bc73eab",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d1837d7a8852-5f62b041.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}

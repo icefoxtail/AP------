@@ -3,7 +3,9 @@ import path from "node:path";
 import vm from "node:vm";
 import crypto from "node:crypto";
 
+import { refuseDirectMetadataWrite } from "../meta-foundation/question-metadata-format.mjs";
 const ROOT = process.cwd();
+refuseDirectMetadataWrite(ROOT, "apply-external-review-pinpoint-repairs");
 const SOURCE_ROOT = path.join(ROOT, "archive", "exams", "original", "high", "h1");
 const ASSET_ROOT = path.join(ROOT, "archive", "assets", "images");
 const ledger = [];

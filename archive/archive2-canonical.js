@@ -80,6 +80,17 @@
   // Shards omit the final projection version to avoid a digest cycle.
   const SOURCE_VERIFICATION_INDEX_PATH = "data/archive2-source-verification-index.json";
   const SOURCE_VERIFICATION_SHARD_PREFIX = "data/archive2-source-verification/v1/";
+  // Original-source verification reads a sharded file list instead of SOURCE_VERIFICATION_INDEX_PATH: the manifest
+  // commits to the small top index, the top index commits to SOURCE_VERIFICATION_INDEX_BUCKET_COUNT hash-prefix
+  // buckets of { sourceFile, sha256, qCount } rows, and a bucket row commits to the source shard. One check reads the
+  // manifest, the top index, one bucket and one shard, so the bytes no longer grow with the number of registered
+  // exams. SOURCE_VERIFICATION_INDEX_PATH (one flat file) is still built, only for Workers deployed before this
+  // layout and for the mixed lookup, which has not moved yet (see docs/agents/archive2-code.md).
+  const SOURCE_VERIFICATION_TOP_INDEX_PATH = "data/archive2-source-verification-index-v2.json";
+  const SOURCE_VERIFICATION_INDEX_BUCKET_PREFIX = "data/archive2-source-verification/index-v2/";
+  const SOURCE_VERIFICATION_INDEX_BUCKET_COUNT = 16;
+  const SOURCE_VERIFICATION_TOP_INDEX_SCHEMA = "archive2-source-verification-top-index-v2";
+  const SOURCE_VERIFICATION_INDEX_BUCKET_SCHEMA = "archive2-source-verification-index-bucket-v2";
   const MIXED_VERIFICATION_CONTEXT_PATH = "data/archive2-source-verification/mixed-v1/context.json";
   const MIXED_SOURCE_SHARD_PREFIX = "data/archive2-source-verification/mixed-v1/sources/";
   const MIXED_UID_BUCKET_PREFIX = "data/archive2-source-verification/mixed-v1/uid-buckets/";
@@ -492,6 +503,141 @@
     return "archive2-canonical-v1:" + await sha256(projectionManifestPayload(files, resolverVersion));
   }
 
+
+  const COMPACT_INPUT_MANIFEST_PATH = "data/archive2-canonical-input-manifest.compact.json";
+  const COMPACT_INPUT_MANIFEST_SCHEMA = "archive2-canonical-input-manifest-compact-v1";
+  const INPUT_MANIFEST_SCHEMA = "archive2-canonical-input-manifest-v1";
+  const INPUT_MANIFEST_KEYS = [
+    "schemaVersion", "resolverVersion", "generatedFromCatalogIndexVersion", "projectionVersion", "files",
+  ];
+  const COMPACT_INPUT_MANIFEST_KEYS = [
+    "schemaVersion", "manifestSchemaVersion", "resolverVersion", "generatedFromCatalogIndexVersion",
+    "projectionVersion", "directories", "files",
+  ];
+  function compactManifestInvalid(why) {
+    return makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical compact input manifest is invalid: " + why);
+  }
+  function exactManifestKeys(value, keys) {
+    return value !== null && typeof value === "object" && !Array.isArray(value) &&
+      Object.keys(value).length === keys.length &&
+      keys.every((key) => Object.prototype.hasOwnProperty.call(value, key));
+  }
+  function compactManifestHeaders(value, compact) {
+    const keys = compact ? COMPACT_INPUT_MANIFEST_KEYS : INPUT_MANIFEST_KEYS;
+    if (!exactManifestKeys(value, keys))
+      throw compactManifestInvalid("header shape");
+    if (
+      value.schemaVersion !== (compact ? COMPACT_INPUT_MANIFEST_SCHEMA : INPUT_MANIFEST_SCHEMA) ||
+      (compact && value.manifestSchemaVersion !== INPUT_MANIFEST_SCHEMA) ||
+      value.resolverVersion !== RESOLVER_VERSION
+    )
+      throw makeError("CANONICAL_RESOLVER_VERSION_MISMATCH", "canonical compact input manifest version mismatch");
+    if (
+      typeof value.generatedFromCatalogIndexVersion !== "string" ||
+      !/^[a-f0-9]{64}$/.test(value.generatedFromCatalogIndexVersion) ||
+      typeof value.projectionVersion !== "string" ||
+      !/^archive2-canonical-v1:[a-f0-9]{64}$/.test(value.projectionVersion) ||
+      !Array.isArray(value.files) || !value.files.length
+    )
+      throw compactManifestInvalid("header value");
+  }
+  function compactManifestPathParts(value) {
+    if (
+      typeof value !== "string" || !value || value !== value.trim() ||
+      value !== value.normalize("NFC") || value.startsWith("/") ||
+      /[\\\x00-\x1f\x7f?#%:]/.test(value)
+    )
+      throw compactManifestInvalid("path");
+    const parts = value.split("/");
+    // Existing authority manifests legitimately reference ../docs/. Preserve that
+    // exact namespace; no other parent traversal or URL interpretation is accepted.
+    const checked = parts[0] === ".." && parts[1] === "docs" ? parts.slice(1) : parts;
+    if (checked.some((part) => !part || part === "." || part === ".." || part !== part.trim()))
+      throw compactManifestInvalid("path segment");
+    if (value === COMPACT_INPUT_MANIFEST_PATH)
+      throw compactManifestInvalid("companion cannot be an input to itself");
+    const slash = value.lastIndexOf("/");
+    return { directory: slash < 0 ? "" : value.slice(0, slash + 1), basename: value.slice(slash + 1) };
+  }
+  function compactManifestHash(value) {
+    if (typeof value !== "string" || !/^[a-f0-9]{64}$/.test(value))
+      throw compactManifestInvalid("file hash");
+    return value;
+  }
+
+  // This companion is a transport view of the original manifest, not a new
+  // authority/projection format. File order, headers and every path/hash survive
+  // exactly; all existing manifest/index/shard checks run on the decoded object.
+  function encodeCompactInputManifest(manifest) {
+    compactManifestHeaders(manifest, false);
+    const directories = [], directoryIndices = new Map(), seenPaths = new Set();
+    const files = manifest.files.map((row) => {
+      if (!exactManifestKeys(row, ["path", "sha256"]))
+        throw compactManifestInvalid("original file shape");
+      const { directory, basename } = compactManifestPathParts(row.path);
+      if (seenPaths.has(row.path)) throw compactManifestInvalid("duplicate path");
+      seenPaths.add(row.path);
+      if (!directoryIndices.has(directory)) {
+        directoryIndices.set(directory, directories.length);
+        directories.push(directory);
+      }
+      return [directoryIndices.get(directory), basename, compactManifestHash(row.sha256)];
+    });
+    return {
+      schemaVersion: COMPACT_INPUT_MANIFEST_SCHEMA,
+      manifestSchemaVersion: manifest.schemaVersion,
+      resolverVersion: manifest.resolverVersion,
+      generatedFromCatalogIndexVersion: manifest.generatedFromCatalogIndexVersion,
+      projectionVersion: manifest.projectionVersion,
+      directories,
+      files,
+    };
+  }
+  function decodeCompactInputManifest(compact) {
+    compactManifestHeaders(compact, true);
+    if (!Array.isArray(compact.directories) || !compact.directories.length ||
+        compact.directories.length > compact.files.length)
+      throw compactManifestInvalid("directory table");
+    const seenDirectories = new Set();
+    for (const directory of compact.directories) {
+      if (typeof directory !== "string" || (directory && !directory.endsWith("/")) ||
+          seenDirectories.has(directory))
+        throw compactManifestInvalid("directory entry");
+      // Validate the prefix with a fixed safe basename without normalizing it.
+      if (compactManifestPathParts(directory + "__manifest_prefix_check__.json").directory !== directory)
+        throw compactManifestInvalid("directory prefix");
+      seenDirectories.add(directory);
+    }
+    const seenPaths = new Set(), usedDirectories = new Set();
+    const files = compact.files.map((tuple) => {
+      if (!Array.isArray(tuple) || tuple.length !== 3 ||
+          !Number.isInteger(tuple[0]) || Object.is(tuple[0], -0) ||
+          tuple[0] < 0 || tuple[0] >= compact.directories.length ||
+          typeof tuple[1] !== "string" || !tuple[1] || /[\/\\]/.test(tuple[1]))
+        throw compactManifestInvalid("file tuple");
+      if (!usedDirectories.has(tuple[0])) {
+        if (tuple[0] !== usedDirectories.size)
+          throw compactManifestInvalid("directory order");
+        usedDirectories.add(tuple[0]);
+      }
+      const directory = compact.directories[tuple[0]], path = directory + tuple[1];
+      const decoded = compactManifestPathParts(path);
+      if (decoded.directory !== directory || decoded.basename !== tuple[1] || seenPaths.has(path))
+        throw compactManifestInvalid("reconstructed path");
+      seenPaths.add(path);
+      return { path, sha256: compactManifestHash(tuple[2]) };
+    });
+    if (usedDirectories.size !== compact.directories.length)
+      throw compactManifestInvalid("unused directory");
+    return {
+      schemaVersion: compact.manifestSchemaVersion,
+      resolverVersion: compact.resolverVersion,
+      generatedFromCatalogIndexVersion: compact.generatedFromCatalogIndexVersion,
+      projectionVersion: compact.projectionVersion,
+      files,
+    };
+  }
+
   async function loadInputBundle(fetcher, baseUrl, expectedVersion = "") {
     if (typeof fetcher !== "function")
       throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical input loader is unavailable");
@@ -586,7 +732,7 @@
     if (!normalizedSource || normalizedSource.split("/").some((part) => part === ".." || part === "."))
       throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source path is invalid");
     const base = new URL(String(baseUrl));
-    const read = async (relativePath) => {
+    const read = async (relativePath, allow404 = false) => {
       let url;
       try { url = new URL(relativePath, base); }
       catch { throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source URL is invalid"); }
@@ -595,6 +741,7 @@
       let response;
       try { response = await fetcher(url.toString()); }
       catch { throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source request failed: " + relativePath); }
+      if (allow404 && response?.status === 404) return null;
       if (!response || !response.ok)
         throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source unavailable: " + relativePath);
       return response.text();
@@ -602,7 +749,10 @@
 
     let manifest;
     try {
-      manifest = JSON.parse(await read("data/archive2-canonical-input-manifest.json"));
+      const compactBody = await read(COMPACT_INPUT_MANIFEST_PATH, true);
+      manifest = compactBody === null
+        ? JSON.parse(await read("data/archive2-canonical-input-manifest.json"))
+        : decodeCompactInputManifest(JSON.parse(compactBody));
     } catch (error) {
       if (error.code) throw error;
       throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical input manifest is invalid");
@@ -621,55 +771,95 @@
       throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical input manifest digest mismatch");
     if (expectedVersion && expectedVersion !== projectionVersion)
       throw makeError("CANONICAL_PROJECTION_REFRESH_REQUIRED", "분류 기준이 갱신되었습니다. 문항 목록을 새로고침하세요.");
-    if (!listed.has(SOURCE_VERIFICATION_INDEX_PATH))
+    // A manifest without the top index predates the sharded file list and keeps the full resolver path.
+    if (!listed.has(SOURCE_VERIFICATION_TOP_INDEX_PATH))
       return { projectionVersion, sourceIndex: null, shard: null, legacyManifest: true };
 
-    const manifestFiles = Object.fromEntries(manifest.files.map((entry) => [
-      text(entry.path), { sha256: text(entry.sha256).toLowerCase() },
-    ]));
-    const indexEntry = manifestFiles[SOURCE_VERIFICATION_INDEX_PATH];
-    const baseProjectionVersion = await computeProjectionVersion(
-      manifest.files.filter((entry) => text(entry.path) !== SOURCE_VERIFICATION_INDEX_PATH),
+    const topEntry = manifest.files.find((entry) => text(entry.path) === SOURCE_VERIFICATION_TOP_INDEX_PATH);
+    // The top index cannot commit to a version that already contains its own digest, nor to the flat index that
+    // is built alongside it, so its base version leaves both out.
+    const topBaseProjectionVersion = await computeProjectionVersion(
+      manifest.files.filter((entry) => {
+        const entryPath = text(entry.path);
+        return entryPath !== SOURCE_VERIFICATION_INDEX_PATH && entryPath !== SOURCE_VERIFICATION_TOP_INDEX_PATH;
+      }),
       RESOLVER_VERSION,
     );
-    let indexBody;
-    try { indexBody = (await read(SOURCE_VERIFICATION_INDEX_PATH)).replace(/\r\n/g, "\n"); }
+    let topBody;
+    try { topBody = (await read(SOURCE_VERIFICATION_TOP_INDEX_PATH)).replace(/\r\n/g, "\n"); }
     catch (error) {
       if (error.code) throw error;
       throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source index unavailable");
     }
-    if (await sha256(indexBody) !== indexEntry.sha256)
+    if (await sha256(topBody) !== text(topEntry.sha256).toLowerCase())
       throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical source index digest mismatch");
-    let sourceIndex;
-    try { sourceIndex = JSON.parse(indexBody); }
+    let topIndex;
+    try { topIndex = JSON.parse(topBody); }
     catch { throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source index is invalid"); }
     if (
-      sourceIndex?.schemaVersion !== "archive2-source-verification-index-v1" ||
-      sourceIndex.resolverVersion !== RESOLVER_VERSION ||
-      sourceIndex.baseProjectionVersion !== baseProjectionVersion ||
-      sourceIndex.generatedFromCatalogIndexVersion !== manifest.generatedFromCatalogIndexVersion ||
-      !Array.isArray(sourceIndex.files)
+      topIndex?.schemaVersion !== SOURCE_VERIFICATION_TOP_INDEX_SCHEMA ||
+      topIndex.resolverVersion !== RESOLVER_VERSION ||
+      topIndex.baseProjectionVersion !== topBaseProjectionVersion ||
+      topIndex.generatedFromCatalogIndexVersion !== manifest.generatedFromCatalogIndexVersion ||
+      !Number.isInteger(Number(topIndex.fileCount)) || Number(topIndex.fileCount) < 1 ||
+      !Array.isArray(topIndex.buckets) || topIndex.buckets.length !== SOURCE_VERIFICATION_INDEX_BUCKET_COUNT
     )
       throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical source index does not match the current projection");
+    const bucketRows = new Map();
+    let bucketFileCount = 0;
+    for (const row of topIndex.buckets) {
+      const prefix = text(row?.prefix);
+      if (
+        !/^[0-9a-f]$/.test(prefix) || bucketRows.has(prefix) ||
+        !SHA256.test(text(row?.sha256)) ||
+        !Number.isInteger(Number(row?.byteLength)) || Number(row.byteLength) < 1 ||
+        !Number.isInteger(Number(row?.fileCount)) || Number(row.fileCount) < 0
+      )
+        throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source index bucket row is invalid");
+      bucketRows.set(prefix, row);
+      bucketFileCount += Number(row.fileCount);
+    }
+    if (bucketRows.size !== SOURCE_VERIFICATION_INDEX_BUCKET_COUNT || bucketFileCount !== Number(topIndex.fileCount))
+      throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical source index bucket coverage is incomplete");
 
+    const shardHash = await sha256(normalizedSource);
+    const bucketRow = bucketRows.get(shardHash.slice(0, 1));
+    let bucketBody;
+    try { bucketBody = (await read(SOURCE_VERIFICATION_INDEX_BUCKET_PREFIX + bucketRow.prefix + ".json")).replace(/\r\n/g, "\n"); }
+    catch (error) {
+      if (error.code) throw error;
+      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source index bucket unavailable");
+    }
+    if (
+      new TextEncoder().encode(bucketBody).byteLength !== Number(bucketRow.byteLength) ||
+      await sha256(bucketBody) !== text(bucketRow.sha256).toLowerCase()
+    )
+      throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical source index bucket digest mismatch");
+    let bucket;
+    try { bucket = JSON.parse(bucketBody); }
+    catch { throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source index bucket is invalid"); }
+    if (
+      bucket?.schemaVersion !== SOURCE_VERIFICATION_INDEX_BUCKET_SCHEMA ||
+      bucket.prefix !== bucketRow.prefix ||
+      !Array.isArray(bucket.files) || bucket.files.length !== Number(bucketRow.fileCount)
+    )
+      throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical source index bucket does not match the top index");
     const seenFiles = new Set();
-    for (const row of sourceIndex.files) {
+    for (const row of bucket.files) {
       const file = normalizeFile(row?.sourceFile);
       if (
         !file || seenFiles.has(file) || file !== text(row?.sourceFile) ||
-        !validOptionalShardPath(row) ||
         !SHA256.test(text(row?.sha256)) ||
-        !Number.isInteger(Number(row?.qCount)) || Number(row.qCount) < 1
+        !Number.isInteger(Number(row?.qCount)) || Number(row.qCount) < 1 ||
+        (await sha256(file)).slice(0, 1) !== bucketRow.prefix
       )
         throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source index row is invalid");
       seenFiles.add(file);
     }
-    const sourceEntry = sourceIndex.files.find((row) => normalizeFile(row.sourceFile) === normalizedSource);
+    const sourceEntry = bucket.files.find((row) => normalizeFile(row.sourceFile) === normalizedSource);
     if (!sourceEntry)
       throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source is not indexed");
-    const expectedShardPath = SOURCE_VERIFICATION_SHARD_PREFIX + await sha256(normalizedSource) + ".json";
-    if (sourceEntry.path !== undefined && sourceEntry.path !== expectedShardPath)
-      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source shard path is invalid");
+    const expectedShardPath = SOURCE_VERIFICATION_SHARD_PREFIX + shardHash + ".json";
     let shardBody;
     try { shardBody = (await read(expectedShardPath)).replace(/\r\n/g, "\n"); }
     catch (error) {
@@ -690,7 +880,7 @@
       !Array.isArray(shard.records) || shard.records.length !== Number(sourceEntry.qCount)
     )
       throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical source shard does not match the index");
-    return { projectionVersion, sourceIndex, shard };
+    return { projectionVersion, sourceIndex: topIndex, shard };
   }
 
   // Mixed verification resources come in two layouts that carry the same rows. Schema v1 stores every row as a
@@ -1394,7 +1584,10 @@
           !text(receipt.approval.approvedBy) || receipt.approval.type === "REVIEW2" && receipt.approval.reviewPassCount !== 2 ||
           !Array.isArray(receipt.appliedRecords) || receipt.totalQuestions !== receipt.appliedRecords.length ||
           new Set(receipt.appliedRecords.map(r => r.questionUid)).size !== receipt.totalQuestions ||
-          !SHA256.test(text(receipt.sourceRawSha256)) || text(receipt.sourceRawSha256) !== sourceRawShaByFile.get(normalizeFile(receipt.sourceArchiveFile))) continue;
+          !SHA256.test(text(receipt.sourceRawSha256))) continue;
+      // The receipt used to be tied to the WHOLE exam file (sourceRawSha256 == current file hash), so editing one choice, one explanation or one figure
+      // dropped the registered metadata of every question in the file. The binding is per row now: a row keeps its registration while the stem and choices
+      // it was registered for are still the current ones (see the row check below); a stem/choices edit needs a reviewed rebind (text-binding-rebinds ledger).
       for (const accepted of receipt.appliedRecords) {
         const uid = text(accepted.questionUid), source = sourceRecords.get(uid), meta = source?.metadataAssignmentEvidence;
         const overlays = (overlaysByUid.get(uid) || []).filter(row => normalizeFile(row.sourceArchiveFile) === normalizeFile(receipt.sourceArchiveFile) && Number(row.sourceOrdinal) === Number(accepted.sourceOrdinal));
@@ -1419,7 +1612,12 @@
           !Object.values(meta?.fieldStatus || {}).includes("manual_review_pending");
         if (!source || overlays.length !== 1 || normalizeFile(source.sourceFile) !== normalizeFile(receipt.sourceArchiveFile) ||
             Number(source.sourceOrdinal) !== Number(accepted.sourceOrdinal) || meta?.metadataRevision !== accepted.metadataRevision ||
-            meta?.sourceFingerprint !== accepted.sourceFingerprint || source.assignmentFingerprint !== accepted.contentFingerprint ||
+            meta?.sourceFingerprint !== accepted.sourceFingerprint ||
+            // Row binding: the current content fingerprint is the registered one, or the catalog builder confirmed (classifyMetaBinding "row": same
+            // stem+choices by content fingerprint or by a reviewed rebind) that the metadata row registered under this receipt still describes the
+            // current question (sourceStatus VERIFIED). Without either, the row is not accepted.
+            (source.assignmentFingerprint !== accepted.contentFingerprint &&
+              !(source.sourceStatus === "VERIFIED" && meta?.assignmentFingerprint === accepted.contentFingerprint)) ||
             (accepted.reviewStatus !== "reviewed_pass" && !auditedMetadataOnly) || !text(meta?.metadataStatus).startsWith("approved_") ||
             !approvedFieldStatus(meta?.fieldStatus?.standardUnit) || !approvedFieldStatus(meta?.fieldStatus?.subUnit) ||
             !(meta?.evidenceRefs || []).includes("archive/" + path)) continue;
@@ -1440,7 +1638,9 @@
           reviewEvidence: { status: "PASS", reference: path, sha256: receiptSha, approvalType: receipt.approval.type, reviewedSourceFingerprint: accepted.sourceFingerprint } };
         canonicalAuthority.assignmentsByUid[uid] = [assignment];
         canonicalAuthority.advancedAssignmentsByUid[uid] = [assignment];
+        // The issued parent-display scope stays bound to the exact whole-file bytes (a newly issued preservation receipt is needed after any file edit).
         if (ISSUED_PARENT_DISPLAY_SCOPE[uid] && receipt.approval.type === "FINAL_QA" &&
+            text(receipt.sourceRawSha256) === sourceRawShaByFile.get(normalizeFile(receipt.sourceArchiveFile)) &&
             overlay.metadataRevision === accepted.metadataRevision && overlay.metadataApprovalType === "FINAL_QA" &&
             overlay.metadataApprovalType === accepted.metadataApprovalType && overlay.metadataStatus === accepted.metadataStatus &&
             Array.isArray(accepted.approvalEvidence) && accepted.approvalEvidence.length > 0 &&
@@ -1684,7 +1884,15 @@
             "metaFoundationPackId", "metaFoundationPackVersion", "foundationTaxonomyStatus",
             "taxonomyStatus", "difficultyBucket", "difficultyConfidence",
             "difficultyBoundaryFlag", "legacyLevelCompatibility", "reviewStatus",
-          ]) if (matchingOverlay[field] !== undefined) record[field] = matchingOverlay[field];
+          ]) {
+            // The receipt's value wins when it has one. A receipt that records the field as empty/UNKNOWN (e.g. difficultyBucket: null) must not
+            // erase a value the question already shows; the existing value stays.
+            const fromReceipt = matchingOverlay[field];
+            if (fromReceipt === undefined) continue;
+            const blank = (value) => value === null || value === "" || value === "UNKNOWN" || (Array.isArray(value) && !value.length);
+            if (blank(fromReceipt) && !blank(record[field])) continue;
+            record[field] = fromReceipt;
+          }
           const registrationApprovalType = candidate.assignmentEvidence?.reviewEvidence?.approvalType;
           if (["FINAL_QA", "REVIEW2", "META_PIPELINE_AUDIT"].includes(registrationApprovalType)) {
             record.level = matchingOverlay.level || matchingOverlay.legacyLevel;
@@ -1775,6 +1983,11 @@
     CANONICAL_MASTER_PATH,
     SOURCE_VERIFICATION_INDEX_PATH,
     SOURCE_VERIFICATION_SHARD_PREFIX,
+    SOURCE_VERIFICATION_TOP_INDEX_PATH,
+    SOURCE_VERIFICATION_INDEX_BUCKET_PREFIX,
+    SOURCE_VERIFICATION_INDEX_BUCKET_COUNT,
+    SOURCE_VERIFICATION_TOP_INDEX_SCHEMA,
+    SOURCE_VERIFICATION_INDEX_BUCKET_SCHEMA,
     RESOLVER_VERSION,
     MANIFEST_REQUIRED_PATHS,
     REQUIRED_INPUT_PATHS,
@@ -1793,6 +2006,9 @@
     validateBasicAssignment,
     validateAdvancedAssignment,
     computeProjectionVersion,
+    COMPACT_INPUT_MANIFEST_PATH,
+    encodeCompactInputManifest,
+    decodeCompactInputManifest,
     loadInputBundle,
     loadSourceVerificationShard,
     loadMixedVerificationRecords,

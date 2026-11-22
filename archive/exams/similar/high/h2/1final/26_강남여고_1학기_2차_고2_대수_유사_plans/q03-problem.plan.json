@@ -1,0 +1,161 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aB",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "value": 150,
+        "label": "5pi/6",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "tAB",
+        "ownerSegment": "sAB",
+        "text": "6"
+      },
+      {
+        "id": "tBC",
+        "ownerSegment": "sBC",
+        "text": "8"
+      }
+    ]
+  },
+  "caption": "삼각형 ABC에서 AB=6, BC=8이고 각 B의 크기는 5π/6이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "삼각형 ABC, AB=6, BC=8, ∠ABC=5π/6",
+      "mappedTo": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "두 변의 길이 6, 8과 끼인각 5π/6"
+  ],
+  "sourceQuote": "다음 그림과 같은 삼각형 $ABC$의 넓이를 구하면",
+  "coordinateCanvas": {
+    "width": 520,
+    "height": 360
+  },
+  "assetPath": "assets/images/26_강남여고_1학기_2차_고2_대수_유사/q03.svg",
+  "engineEvidence": {
+    "resultPath": "archive/exams/similar/high/h2/1final/26_강남여고_1학기_2차_고2_대수_유사_plans/engine_evidence/q03-problem-result.json",
+    "statePath": "archive/exams/similar/high/h2/1final/26_강남여고_1학기_2차_고2_대수_유사_plans/engine_evidence/q03-problem-state.json",
+    "svgPath": "archive/exams/similar/high/h2/1final/26_강남여고_1학기_2차_고2_대수_유사_plans/engine_evidence/q03-problem.svg"
+  }
+}

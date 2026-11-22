@@ -404,7 +404,7 @@ window.questionBank = [
     "choices": ["-2", "-1", "0", "1", "2"],
     "tags": ["객관식", "함수"],
     "answer": "②",
-    "solution": "함수와 그 역함수의 그래프가 만나는 점에서는 두 좌표가 같아야 한다. 따라서 교점의 $x$좌표 $a$는 $f(a)=a$를 만족한다.\n\n$3a+2=a$에서 $2a=-2$, $a=-1$이다.\n\n실제로 역함수는 $f^{-1}(x)=\\dfrac{x-2}{3}$이고 두 식을 같게 놓아도 $3x+2=\\dfrac{x-2}{3}$에서 $x=-1$을 얻는다.\n\n따라서 정답은 ②이다.",
+    "solution": "y=3x+2에서 x=3y+2이므로\n\\[\nx=3y+2\\quad\\Longrightarrow\\quad x-2=3y\n\\quad\\Longrightarrow\\quad y=\\frac{x-2}{3}.\n\\]\n따라서 \\(f^{-1}(x)=\\frac{x-2}{3}\\)이다.\n두 그래프의 교점에서는 같은 \\(x\\)에 대한 두 \\(y\\)값이 같으므로\n\\[\nf(x)=f^{-1}(x)\n\\Longleftrightarrow 3x+2=\\frac{x-2}{3}\n\\Longleftrightarrow 3(3x+2)=x-2\n\\Longleftrightarrow 9x+6=x-2\n\\Longleftrightarrow 8x=-8\n\\Longleftrightarrow x=-1.\n\\]\n따라서 \\(a=-1\\), 정답 ②이다.",
     "solutionImage": "assets/images/20_효천고_2학기_중간_고1_기출/q10-solution-v2.svg",
     "questionUid": "qid_v1_678fc4d63c9403676dbc9e99c19092b89a956ae1f38be4f79cfdfa1d630678b2",
     "sourceQid": 10,

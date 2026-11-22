@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-6deebf74735a-82659d24",
+  "sourceArchiveFile": "original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_be894d7eb53dab99b1f83a90a82ca3490d93a39ee4673c52176f21cceefc4ee5",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+      "templateKey": "TPL_H22A_01_LOG_PROPERTIES_075",
+      "step": "로그 합·차와 계수를 진수의 곱·몫·거듭제곱으로 모은다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a624e783ab13f1f415153c68c070faaaddd69148557d59c6d7d42d7636d2a00c",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "step": "이동한 로그함수의 정의역·역함수·증감·점근선 진술을 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7f6e095f88bb75ae60777378646ff999750f484fda9078375822944d5f310c48",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_LOG_DEFINITION",
+      "templateKey": "TPL_H22A_01_LOG_DEFINITION_073",
+      "step": "상용로그 정의로 두 10의 거듭제곱 진수의 로그값을 계산해 소음도 비를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_40cde30482263548d25efe73781d88d483debdabae652898c1eb9b6dc266e1f5",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+      "step": "2^x+2^-x를 t로 치환하고 t≥2에서 이차식의 최솟값을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9d81fceec11f0ca5d5c1fa71d558ee8ed5bd4c4bc9158779d33b4dc4c3a2d998",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "step": "주기·최대최소·각변환·점근선 성질을 이용해 삼각함수 진술을 판정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_50765038b0a1afae1475e9a4b3cb9debf0bab3c790009e994ebc4591cafdf914",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "step": "내부 이차함수의 구간 범위를 구하고 외부 로그함수의 증감으로 최대·최소 끝값을 고른다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cabb0f4271915c7a6e36f6aa41cf417099dce17550a68b60bb63b1298dfa7511",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_DEFINITION",
+      "templateKey": "TPL_H22A_04_TRIG_DEFINITION_098",
+      "step": "직선과 원의 교점 좌표를 구해 원점거리로 나눈 사인·코사인값을 계산한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_43e9fe4e73c53a20f5acf7dcb60bebc606adafb4882b4ab3384fbe775c01990a",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_GRAPH_TRANSFORM",
+      "templateKey": "TPL_H22A_04_TRIG_GRAPH_TRANSFORM_105",
+      "step": "그래프에서 진폭·주기·최대점 위상을 읽어 a,b,c를 결정한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_83cea00d798f3828e1181b5482844b87ecccd63f03cdb671af308d5d694bbe67",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+      "templateKey": "TPL_H22A_04_ANGLE_RADIAN_095",
+      "step": "주어진 각에 2π를 더해 같은 동경의 일반각과 제1사분면을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9611a343c6405cadedc440584b300720dc229747a7810497588445d0b5db9658",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+      "templateKey": "TPL_H22A_04_TRIG_EQUATION_102",
+      "step": "이차식의 판별식이 음수인 조건을 사인 부등식으로 바꾸고 해구간에서 탄젠트 범위를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_09a72b80e658af9d48629b61f9073912993dfdab4d569bf74cee689e4fd338ee",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+      "templateKey": "TPL_H22A_01_ROOT_REAL_068",
+      "step": "피제곱수의 부호와 차수의 홀짝을 표로 나누어 실수근 개수를 더한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_88261c4d02f472ae08a3a29b8e3d8dc8efaf374ec11dd53f13336c8a9f66922a",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+      "step": "조각별 그래프와 수평선의 교점 수를 높이별로 나누어 교점수 합이 3인 순서쌍을 센다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

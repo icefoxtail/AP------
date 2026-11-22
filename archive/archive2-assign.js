@@ -18,12 +18,15 @@
    (index.html registerIndexClassExamAssignment)과 같은 본문(MIXED:<snapshotKey> + mixed_payload_json)을 헤더 없이 보낸다(unitBodyFor).
    이 경로는 받는 사람을 항상 반 전체로 기록하므로, 학생을 일부만 고른 반은 POST 성공 뒤 exclude-students로 고르지 않은 학생을 뺀다.
    제외가 실패하면 성공으로 표시하지 않는다(그동안 반 전체에게 보인다). 같은 (반, 출제일, MIXED:키)는 서버가 기존 건을 갱신하므로
-   재전송해도 새 건이 생기지 않는다. 문항은 open({unit:{load}})이 준다. */
+   재전송해도 새 건이 생기지 않는다. 문항은 open({unit:{load}})이 준다.
+   시험지 보관함(assessment-mvp.html, 2026-11-19)도 이 종류로 낸다. 평가팩 항목은 packId·packHash를 더 싣고, 본문에 pack_id·pack_hash가 붙는다.
+   open({jobActions(job) → [{action,label}]})는 결과 줄에 호출한 화면이 처리하는 단추(data-host-action)를 더 붙인다(출제가 안 된 반의 QR 없는 시험지 열기). */
 (function (root, factory) {
-  const api = factory();
+  const api = factory(typeof module === "object" && module.exports
+    ? require("./archive2-error-detail.js") : root.Archive2ErrorDetail);
   if (typeof module === "object" && module.exports) module.exports = api;
   else root.Archive2Assign = api;
-})(typeof globalThis !== "undefined" ? globalThis : this, function () {
+})(typeof globalThis !== "undefined" ? globalThis : this, function (errorDetail) {
   "use strict";
 
   const CONTRACT = "archive2-v1";
@@ -213,6 +216,15 @@
   const PDF_RETRY_MESSAGE = "PDF를 아직 준비하지 못했습니다. 잠시 뒤 PDF 다시 준비 버튼을 다시 눌러 주세요.";
   const GENERIC_FAILURE = "출제하지 못했습니다. 다시 시도하고, 계속되면 관리자에게 알려 주세요.";
   const warnRaw = (raw) => { try { if (raw) console.warn("[archive2-assign] server message:", raw); } catch { /* 콘솔이 없어도 된다 */ } };
+  // 실패한 건·준비 실패에 "어느 시험지(파일)가 왜"를 붙인다. 문구는 archive2-error-detail.js 한 곳에서 만든다.
+  // 화면 문구(message)는 그대로 두고, 접힌 상세(원문·파일·번호·코드)만 더한다.
+  const mark = (error, detail) => (errorDetail ? errorDetail.annotate(error, detail) : error);
+  const screenName = "출제 패널";
+  function describeFailure(error, detail, ctx = {}) {
+    if (!errorDetail || !error) return null;
+    const target = mark(typeof error === "object" ? error : new Error(text(error)), detail);
+    return errorDetail.describe(target, { screen: screenName, ...ctx });
+  }
   const KNOWN_MESSAGES = [
     [/고정 roster/, "이 반에 이미 보낸 출제와 학생 구성이 다릅니다. 출제 내역에서 먼저 확인해 주세요."],
     [/이미 배부된 시험/, "같은 날 이 반에 낸 시험지와 내용이 달라 출제할 수 없습니다. 출제 내역을 확인해 주세요."],
@@ -226,6 +238,12 @@
   ];
   // 원본 시험지 출제에서만 나오는 서버 문구(archive2.js·archive2-questions.js validateOriginalSnapshot). 저장본 문구와 겹치면 이쪽이 먼저다.
   const SOURCE_CHANGED_MESSAGE = "시험 자료가 새로 바뀌어 지금 화면과 맞지 않습니다. 페이지를 새로고침한 뒤 다시 출제해 주세요.";
+  // 서버가 브라우저의 문항 목록 기준(index_version)이 현재 배포와 다르다고 거절하는 문구. 다시 보내도 같은 기준을 보내므로 새로고침만 답이다.
+  const INDEX_STALE_PATTERN = /분류 기준이 갱신/;
+  const INDEX_STALE_MESSAGE = "문항 목록 기준이 새로 바뀌었습니다. 페이지를 새로고침한 뒤 다시 출제해 주세요.";
+  // 원본 출제만 자동 재전송한다(서버가 문항 내용을 새 기준으로 다시 검증하는 경로: archive2-questions.js validateOriginalSnapshot).
+  // 저장본·단원별은 서버가 index_version을 읽지 않아 이 거절이 나지 않는다.
+  const INDEX_RESEND_LABEL = "문항 목록 기준이 바뀌어 새 기준으로 다시 보내는 중…";
   const ORIGINAL_CANCELLED_MESSAGE = "이 반에 같은 날 낸 출제가 취소된 상태라 같은 날짜로는 다시 낼 수 없습니다. 출제일을 바꿔 주세요.";
   const ORIGINAL_MESSAGES = [
     [/취소된 Assignment/, ORIGINAL_CANCELLED_MESSAGE],
@@ -249,6 +267,7 @@
   const SOURCE_COUNT_MESSAGE = "시험지 원본의 문항 수가 목록과 달라 출제하지 않았습니다. 페이지를 새로고침한 뒤 다시 시도해 주세요.";
   function friendlyMessage(error, status, ctx = {}) {
     const raw = text(error?.data?.error || error?.message).replace(/^[A-Z][A-Z0-9_]{3,}:\s*/, "");
+    if (INDEX_STALE_PATTERN.test(raw)) return INDEX_STALE_MESSAGE;
     if (ctx.original) for (const [pattern, message] of ORIGINAL_MESSAGES) if (pattern.test(raw)) return message;
     if (ctx.unit) for (const [pattern, message] of UNIT_MESSAGES) if (pattern.test(raw)) return message;
     for (const [pattern, message] of KNOWN_MESSAGES) if (pattern.test(raw)) return message;
@@ -279,7 +298,8 @@
     }
     if (/취소된 Assignment/.test(text(error?.data?.error || error?.message)))
       return { kind: "cancelled", message: ctx.original || ctx.unit ? ORIGINAL_CANCELLED_MESSAGE : CANCELLED_MESSAGE };
-    return { kind: "failed", message: friendlyMessage(error, status, ctx) };
+    const stale = INDEX_STALE_PATTERN.test(text(error?.data?.error || error?.message));
+    return { kind: "failed", message: friendlyMessage(error, status, ctx), ...(stale ? { stale: true } : {}) };
   }
 
   // ---- 상태 기계 ------------------------------------------------------------------------------------
@@ -339,6 +359,9 @@
       count,
       partIndex: Number.isInteger(Number(row.partIndex)) ? Number(row.partIndex) : 0,
       partCount,
+      // 평가팩(시험지 보관함)만 둔다: 서버가 같은 반·같은 날 같은 팩을 같은 건으로 알아보고 학생 제출·분석을 팩에 묶는 pack_id/pack_hash.
+      ...(text(row.packId) ? { packId: text(row.packId) } : {}),
+      ...(text(row.packHash) ? { packHash: text(row.packHash) } : {}),
     };
   }
   // 최근 출제 목록(recent-summary)에서 원본 시험(saved_paper_id 없음, archive_file = exams/<파일>)과
@@ -529,7 +552,7 @@
             if (!Array.isArray(questions) || !questions.length) throw Object.assign(new Error("unit empty"), { unitEmpty: true });
             return { questions, meta: loaded.meta && typeof loaded.meta === "object" ? loaded.meta : {} };
           })
-          .catch((error) => { paper.loading = null; throw error; });
+          .catch((error) => { paper.loading = null; throw mark(error, { code: "UNIT_LOAD_FAILED" }); });
       }
       return paper.loading;
     }
@@ -539,11 +562,16 @@
         paper.loading = Promise.resolve()
           .then(() => originalCtx.loadQuestions(paper))
           .then((questions) => {
-            if (!Array.isArray(questions) || !questions.length) throw Object.assign(new Error("source empty"), { sourceLoad: true });
-            if (questions.length !== paper.count) throw Object.assign(new Error("source count mismatch"), { sourceCount: true });
+            if (!Array.isArray(questions) || !questions.length)
+              throw mark(Object.assign(new Error("source empty"), { sourceLoad: true }), { code: "SOURCE_BANK_MISSING" });
+            if (questions.length !== paper.count)
+              throw mark(Object.assign(new Error("source count mismatch"), { sourceCount: true }), {
+                code: "SOURCE_COUNT_MISMATCH",
+                reason: `원본 파일의 문항 수(${questions.length}개)가 목록의 문항 수(${paper.count}개)와 다릅니다.`,
+              });
             return questions;
           })
-          .catch((error) => { paper.loading = null; throw error; });
+          .catch((error) => { paper.loading = null; throw mark(error, { file: paper.file, title: paper.title }); });
       }
       return paper.loading;
     }
@@ -566,8 +594,9 @@
       } catch (error) {
         if (seq !== loadSeq) return false;
         const status = Number(error?.status) || 0;
-        state.phase = status === 401 || status === 403 ? "login" : "error";
-        state.error = state.phase === "login" ? "" : friendlyLoadError(error);
+        // 401만 로그인 안내다. 403은 권한 없음이라 다시 로그인해도 풀리지 않으므로 권한 문구를 낸다.
+        state.phase = status === 401 ? "login" : "error";
+        state.error = state.phase === "login" ? "" : status === 403 ? friendlyMessage(error, 403) : friendlyLoadError(error);
         emit();
         return false;
       }
@@ -810,6 +839,9 @@
         grade_label: cls.grade || paper.grade || "",
         assignment_batch_id: `batch_archive_${fileTag}_${gradeTag}_${stamp}`,
         target_scope: scope,
+        // 평가팩 항목만(시험지 보관함): 옛 보관함 모달이 보내던 pack_id·pack_hash. 없는 항목의 본문은 그대로다.
+        ...(paper.packId ? { pack_id: paper.packId } : {}),
+        ...(paper.packHash ? { pack_hash: paper.packHash } : {}),
       });
     }
     // 고르지 않은 학생 = 명단 − 선택. 반 전체를 골랐으면 비어 있고 제외 요청은 나가지 않는다.
@@ -829,7 +861,7 @@
         const batch = original || unit ? null : store.ensure(combo.paper.id, combo.cls.id, state.date);
         if (original || unit) store.touch(combo.paper.id, combo.cls.id, state.date);
         const job = {
-          key: combo.key, paperId: combo.paper.id, paperTitle: combo.paper.title, kind: original ? "original" : unit ? "unit" : "saved",
+          key: combo.key, paperId: combo.paper.id, paperTitle: combo.paper.title, paperFile: combo.paper.file || "", kind: original ? "original" : unit ? "unit" : "saved",
           classId: combo.cls.id, className: combo.cls.name, studentIds: combo.studentIds.slice(),
           date: state.date, batchId: batch ? batch.id : "", status: "queued", attempts: 0,
           assignmentId: "", message: "", pdfError: "", pdfBusy: false, already: false, auth: false, rebuild: false,
@@ -893,6 +925,9 @@
       job.noReissue = job.kind !== "saved";
       // 단원별: 같은 날 같은 이름의 확정 배부가 이미 있어 서버가 바꿀 수 없다고 하면 같은 본문을 다시 보내도 같은 409다.
       job.noRetry = job.kind === "unit" && info.kind === "failed" && /확정 배부는 원본을 변경할 수 없/.test(text(error?.data?.error || error?.message));
+      // 문항 목록 기준이 갱신됐다는 거절: 같은 요청을 다시 보내도 또 거절되므로 다시 시도에서 빼고 페이지 새로고침을 안내한다.
+      job.stale = info.kind === "failed" && Boolean(info.stale);
+      if (job.stale) job.noRetry = true;
       if (info.kind === "ok-pdf" && job.kind === "unit" && isCancelledAssignment(error?.data?.assignment)) {
         job.assignmentId = text(error.data.assignment.id);
         job.status = "cancelled";
@@ -914,7 +949,23 @@
       }
       job.status = info.kind;
       job.message = info.message;
+      // 서버가 보낸 원문·응답 상태를 시험지 이름과 함께 접힌 상세로 남긴다(화면 문구는 위 message 그대로).
+      job.detail = describeFailure(error, { file: job.paperFile, title: job.paperTitle });
       if (info.kind === "failed" || info.kind === "cancelled") store.mark(job.paperId, job.classId, job.date, "failed");
+    }
+    // 원본 출제가 문항 목록 기준 갱신(409)을 받았을 때만, 현재 배포된 기준으로 index_version만 바꾼 새 본문을 돌려준다(아니면 null).
+    // 서버가 원본 문항 하나하나의 해시·개수·순서·메타를 새 기준으로 다시 검증하므로(validateOriginalSnapshot) 문항은 그대로 보낸다:
+    // 원본이 바뀌었다면 서버가 "원본 내용 또는 문항 순서가 변경"으로 거절하고 교사는 새로고침 안내를 받는다.
+    async function staleResendBody(job, error) {
+      if (job.kind !== "original" || job.staleResent || typeof originalCtx.refreshIndexVersion !== "function") return null;
+      if (Number(error?.status) !== 409 || !INDEX_STALE_PATTERN.test(text(error?.data?.error || error?.message))) return null;
+      job.staleResent = true; // 다시 보낸 뒤에도 거절되면 새로고침 안내로 끝낸다(무한 반복 금지)
+      job.resending = true;
+      emit();
+      let version = "";
+      try { version = text(await originalCtx.refreshIndexVersion()); } catch (refreshError) { warnRaw(text(refreshError?.message)); }
+      if (!version || version === text(job.body.index_version)) { job.resending = false; return null; }
+      return Object.freeze({ ...job.body, index_version: version });
     }
     async function sendJob(job) {
       if (job.rebuild) {
@@ -936,15 +987,25 @@
       job.message = "";
       job.auth = false;
       job.noRetry = false;
+      job.stale = false;
       const startedAt = now();
       store.mark(job.paperId, job.classId, job.date, "sent");
       emit();
+      // 단원별 출제는 계약 헤더 없이 보낸다(서버의 헤더 경로는 단원별 문제지를 받지 못한다).
+      const post = () => request("/class-exam-assignments", job.kind === "unit"
+        ? { method: "POST", body: job.body, timeoutMs: WRITE_TIMEOUT_MS }
+        : { method: "POST", headers: { "X-Archive2-Contract": CONTRACT }, body: job.body, timeoutMs: WRITE_TIMEOUT_MS });
       let response;
       try {
-        // 단원별 출제는 계약 헤더 없이 보낸다(서버의 헤더 경로는 단원별 문제지를 받지 못한다).
-        response = await request("/class-exam-assignments", job.kind === "unit"
-          ? { method: "POST", body: job.body, timeoutMs: WRITE_TIMEOUT_MS }
-          : { method: "POST", headers: { "X-Archive2-Contract": CONTRACT }, body: job.body, timeoutMs: WRITE_TIMEOUT_MS });
+        try {
+          response = await post();
+        } catch (first) {
+          // 문항 목록 기준(index_version) 갱신 409: 서버는 저장 전에 거절하므로 만들어진 건이 없다. 새 기준을 받아 건당 한 번만 다시 보낸다.
+          const body = await staleResendBody(job, first);
+          if (!body) throw first;
+          job.body = body;
+          try { response = await post(); } finally { job.resending = false; }
+        }
       } catch (error) {
         applyFailure(job, error);
         emit();
@@ -1046,6 +1107,7 @@
       state.starting = true;
       state.working = true;
       state.startError = "";
+      state.startErrorDetail = null;
       const wantsUnit = current.combos.some((combo) => combo.paper.kind === "unit");
       const wantsOriginal = current.combos.some((combo) => combo.paper.kind === "original");
       if (!wantsUnit && !wantsOriginal) return Promise.resolve(run());
@@ -1061,6 +1123,7 @@
     async function prepareUnits(current) {
       const targets = papers.filter((paper) => paper.kind === "unit" && current.combos.some((combo) => combo.paper.id === paper.id));
       let message = "";
+      let messageDetail = null;
       for (const paper of targets) {
         try {
           if (typeof unitCtx.load !== "function") throw new Error("unit loader missing");
@@ -1073,7 +1136,9 @@
           paper.payloadCount = loaded.questions.length;
         } catch (error) {
           warnRaw(text(error?.message));
-          message = `「${paper.title}」 ${error?.unitEmpty ? UNIT_EMPTY_MESSAGE : UNIT_LOAD_MESSAGE}`;
+          // 어느 시험지 몇 번 문항이 막혔는지는 오류에 실려 온다(archive2-error-detail.js). 없으면 문제지 이름만 붙는다.
+          messageDetail = describeFailure(error, {}, { screen: `${screenName} · ${paper.title}`, headline: error?.unitEmpty ? UNIT_EMPTY_MESSAGE : UNIT_LOAD_MESSAGE });
+          message = `「${paper.title}」 ${messageDetail ? messageDetail.message : error?.unitEmpty ? UNIT_EMPTY_MESSAGE : UNIT_LOAD_MESSAGE}`;
           break;
         }
       }
@@ -1081,6 +1146,7 @@
       state.starting = false;
       state.working = false;
       state.startError = message;
+      state.startErrorDetail = messageDetail;
       emit();
       return false;
     }
@@ -1089,6 +1155,7 @@
     async function prepareOriginals() {
       const targets = papers.filter((paper) => paper.kind === "original");
       let message = "";
+      let messageDetail = null;
       if (!text(originalCtx.indexVersion) || typeof originalCtx.loadQuestions !== "function") message = SOURCE_CHANGED_MESSAGE;
       else {
         for (const paper of targets) {
@@ -1096,7 +1163,9 @@
             paper.questions = await loadOriginalQuestions(paper);
           } catch (error) {
             warnRaw(text(error?.message));
-            message = error?.sourceCount ? SOURCE_COUNT_MESSAGE : SOURCE_LOAD_MESSAGE;
+            const headline = error?.sourceCount ? SOURCE_COUNT_MESSAGE : SOURCE_LOAD_MESSAGE;
+            messageDetail = describeFailure(error, { file: paper.file, title: paper.title }, { screen: screenName, headline });
+            message = messageDetail ? messageDetail.message : headline;
             break;
           }
         }
@@ -1105,6 +1174,7 @@
       state.starting = false;
       state.working = false;
       state.startError = message;
+      state.startErrorDetail = messageDetail;
       emit();
       return false;
     }
@@ -1209,6 +1279,7 @@
       return {
         total: state.jobs.length, ok: count("ok"), okPdf: count("ok-pdf"), failed: count("failed"), cancelled: count("cancelled"),
         unknown: count("unknown"), queued: count("queued"), running: count("running"), excludeFailed: count("exclude-failed"),
+        stale: state.jobs.filter((job) => job.status === "failed" && job.stale).length,
         retryable: state.jobs.filter((job) => (job.status === "failed" && !job.noRetry) || job.status === "queued").length,
       };
     }
@@ -1377,7 +1448,8 @@
     const multi = model.state.papers.length > 1;
     const authStopped = model.state.authLost && job.status === "queued";
     const label = authStopped ? "보내지 않음" : job.status === "ok" && job.already ? "이미 출제됨 (같은 건)"
-      : job.status === "ok" && job.attempts > 1 ? "출제됨 (다시 확인해 같은 건으로 처리)" : STATUS_LABEL[job.status];
+      : job.status === "ok" && job.attempts > 1 ? "출제됨 (다시 확인해 같은 건으로 처리)"
+        : job.status === "running" && job.resending ? INDEX_RESEND_LABEL : STATUS_LABEL[job.status];
     const id = esc(job.assignmentId);
     const detail = job.status === "ok-pdf" ? job.pdfError : ["failed", "unknown", "cancelled", "exclude-failed"].includes(job.status) ? job.message : "";
     const actions = [];
@@ -1385,9 +1457,17 @@
     if (job.status === "exclude-failed") actions.push(`<button type="button" class="small" data-assign-action="exclude-retry" data-key="${esc(job.key)}" data-focus="exclude-${esc(job.key)}">다시 빼기</button>`);
     if (job.status === "cancelled" && !job.noReissue) actions.push(`<button type="button" class="small" data-assign-action="reissue" data-key="${esc(job.key)}" data-focus="reissue-${esc(job.key)}">새로 출제</button>`);
     if (job.status === "ok-pdf") actions.push(`<button type="button" class="small" data-assign-action="pdf" data-key="${esc(job.key)}" data-focus="pdf-${esc(job.key)}"${job.pdfBusy ? " disabled" : ""}>${job.pdfBusy ? "PDF 준비 중…" : "PDF 다시 준비"}</button>`);
+    // 호출한 화면이 결과 줄에 더 붙일 단추(open({jobActions})): 지금은 시험지 보관함의 '출제가 안 된 반의 시험지를 QR 없이 열기'뿐이다.
+    // 패널은 라벨·동작 이름만 받아 data-host-action으로 그리고, 눌림은 호출한 화면이 처리한다(패널은 읽지 않는다).
+    if (typeof model.state.jobActions === "function") {
+      let extra = [];
+      try { extra = model.state.jobActions(job) || []; } catch { extra = []; }
+      for (const item of extra) if (item && item.action && item.label) actions.push(`<button type="button" class="small" data-host-action="${esc(item.action)}" data-key="${esc(job.key)}">${esc(item.label)}</button>`);
+    }
     const outputs = (job.status === "ok" || job.status === "ok-pdf") && job.assignmentId && model.state.outputLinks !== false
       ? `<span class="assign-result-outputs" role="group" aria-label="출력">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, name]) => `<button type="button" class="small" data-action="assignment-output-direct" data-assignment="${id}" data-mode="${mode}">${name}</button>`).join("")}</span>` : "";
-    return `<li class="assign-result is-${job.status}" data-job="${esc(job.key)}"><div class="assign-result-head"><strong>${esc(job.className)}</strong>${multi ? `<span class="assign-result-paper">${esc(job.paperTitle)}</span>` : ""}<span class="assign-result-count">${job.studentIds.length}명</span></div><p class="assign-result-state">${esc(label)}</p>${detail ? `<p class="assign-result-detail">${esc(detail)}</p>` : ""}${actions.length || outputs ? `<div class="assign-result-actions">${actions.join("")}${outputs}</div>` : ""}</li>`;
+    const rawDetail = errorDetail && job.detail && ["failed", "unknown", "cancelled"].includes(job.status) ? errorDetail.markup(job.detail) : "";
+    return `<li class="assign-result is-${job.status}" data-job="${esc(job.key)}"><div class="assign-result-head"><strong>${esc(job.className)}</strong>${multi ? `<span class="assign-result-paper">${esc(job.paperTitle)}</span>` : ""}<span class="assign-result-count">${job.studentIds.length}명</span></div><p class="assign-result-state">${esc(label)}</p>${detail ? `<p class="assign-result-detail">${esc(detail)}</p>` : ""}${rawDetail}${actions.length || outputs ? `<div class="assign-result-actions">${actions.join("")}${outputs}</div>` : ""}</li>`;
   }
   function resultsMarkup(model) {
     const { authLost } = model.state;
@@ -1416,7 +1496,8 @@
     if (phase === "select") {
       const plan = model.plan();
       const ready = model.canSubmit();
-      const startError = model.state.startError ? `<p class="assign-auth" role="alert">${esc(model.state.startError)}</p>` : "";
+      const startError = model.state.startError
+        ? `<p class="assign-auth" role="alert">${esc(model.state.startError)}</p>${errorDetail && model.state.startErrorDetail ? errorDetail.markup(model.state.startErrorDetail) : ""}` : "";
       const waiting = model.state.papers.some((paper) => paper.kind === "unit") ? "문제지를 준비하는 중…" : "시험지 원본을 확인하는 중…";
       const summary = model.state.starting ? `<p class="assign-summary" role="status">${waiting}</p>` : summaryMarkup(model, plan);
       return `${startError}${summary}<button type="button" class="primary assign-submit" data-assign-action="submit" data-focus="submit"${ready ? "" : " disabled"}>출제하기</button><p class="assign-fine">출제하면 학생에게 바로 과제가 갑니다.</p>`;
@@ -1439,6 +1520,7 @@
       const buttons = [];
       if (r.excludeFailed) buttons.push(`<button type="button" class="${needRetry ? "" : "primary "}assign-submit" data-assign-action="exclude-retry-all" data-focus="exclude-all">다시 빼기</button>`);
       if (needRetry) buttons.push(`<button type="button" class="primary assign-submit" data-assign-action="retry" data-focus="retry">${r.queued && r.retryable === r.queued ? "남은 건 이어서 출제" : "실패한 건 다시 시도"}</button>`);
+      if (r.stale) buttons.push(`<button type="button" class="${buttons.length ? "" : "primary "}assign-submit" data-assign-action="refresh-page" data-focus="refresh-page">페이지 새로고침</button>`);
       if (r.unknown) buttons.push(`<button type="button" class="${needRetry ? "" : "primary "}assign-submit" data-assign-action="confirm-all" data-focus="confirm-all">${r.unknown > 1 ? "모두 확인하기" : "확인하기"}</button>`);
       buttons.push(`<button type="button" class="${buttons.length ? "" : "primary "}assign-submit" data-assign-action="close" data-focus="done-close">닫기</button>`);
       const closeWarn = model.state.closeWarn && r.excludeFailed
@@ -1484,6 +1566,7 @@
     });
     if (!model.state.papers.length) throw new Error(options.items ? "출제할 시험지를 확인할 수 없습니다. 목록으로 돌아가 다시 선택해 주세요." : "출제할 저장한 시험지를 확인할 수 없습니다. 목록으로 돌아가 다시 선택해 주세요.");
     model.state.outputLinks = options.outputLinks !== false;
+    model.state.jobActions = typeof options.jobActions === "function" ? options.jobActions : null;
     const opener = options.opener || doc.activeElement || null;
 
     const dialog = doc.createElement("dialog");
@@ -1590,6 +1673,7 @@
       if (action === "close") attemptClose();
       else if (action === "submit") { el.disabled = true; model.start().catch(() => {}); }
       else if (action === "reload") model.load().catch(() => {});
+      else if (action === "refresh-page") { try { win.location.reload(); } catch { /* 새로고침이 막히면 안내 문구대로 직접 누른다 */ } }
       else if (action === "roster-retry") model.retryRoster(classId);
       else if (action === "students-toggle") model.toggleStudentList(classId);
       else if (action === "students-all") model.selectAllStudents(classId);

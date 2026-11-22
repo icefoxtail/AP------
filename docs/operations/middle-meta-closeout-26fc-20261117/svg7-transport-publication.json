@@ -1,0 +1,156 @@
+{
+  "schemaVersion": "m2s1-svg7-current-ui-log-transport-publication-v1",
+  "owner": "/root/ci_m2s2",
+  "repository": "icefoxtail/AP------",
+  "status": "STATIC_ACCEPTED_REQUIRED_EXECUTION_NOT_RUN",
+  "baseCommit": "d40792bfd31aeab4d104bdde4b81dbbfbb088dd5",
+  "operations": [
+    {
+      "path": "tools/emit-protected9-ui-log-transport.cjs",
+      "localPath": null,
+      "bytes": 17220,
+      "sha256": "e6043571213b7cd67010968796b0b3a524ebea81595f9d54c92a1b57b90315f0",
+      "gitBlobSha1": "2ec7712541ee6977e6482fb94d474d21d85c97ae",
+      "expectedBeforeGitBlobSha1": null,
+      "transport": "GITHUB_IMMUTABLE_BLOB"
+    },
+    {
+      "path": "tests/protected9-ui-log-transport.test.cjs",
+      "localPath": null,
+      "bytes": 9083,
+      "sha256": "a05e20b42b6c4c9895c85a6f3c308f0c157edcf7cc6d32ec72be1322995766aa",
+      "gitBlobSha1": "50a0b085dd39133a0729302cf85657fd3fa818b5",
+      "expectedBeforeGitBlobSha1": null,
+      "transport": "GITHUB_IMMUTABLE_BLOB"
+    },
+    {
+      "path": ".github/workflows/m2s1-svg7-problem-chrome.yml",
+      "localPath": null,
+      "bytes": 4952,
+      "sha256": "1df54975f75607c6275f8df902db14abdfa006a8af51b1d546df95704ddd8bfc",
+      "gitBlobSha1": "8bd77d5d9b288efb5ba0042b6fd5971fed8d98ee",
+      "expectedBeforeGitBlobSha1": "818af190cf98c92c20a1fc50c6576eb311244ec5",
+      "transport": "GITHUB_IMMUTABLE_BLOB"
+    }
+  ],
+  "unchangedInputs": {
+    "checker": {
+      "path": "tools/check-m2s1-svg7-problem-browser.cjs",
+      "bytes": 39798,
+      "sha256": "9ffb9952d031ac774bc59326e74d7e39774950078ee32d45aaed2c4674eb9613",
+      "gitBlobSha1": "027e8da7549a2c8b63d5dd913d3023dfb14f7589"
+    },
+    "fixture": {
+      "path": "tests/fixtures/archive-m2s1-svg7-problem-ui.json",
+      "bytes": 11980,
+      "sha256": "2723900e7f2868a6cc034fd09b8faa449c7e04056732e713c7caccb9e433700f",
+      "gitBlobSha1": "7557df94d518fe36dde9426ec928eb880747c07e"
+    },
+    "captureHelper": {
+      "path": "tools/check-reviewed-problem-renderer-browser.cjs",
+      "bytes": 56735,
+      "sha256": "e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673",
+      "gitBlobSha1": "56c80b40d53fa88e8054a16f7b7267f968696f3f"
+    },
+    "originalGuardTest": {
+      "path": "tests/archive-m2s1-svg7-problem-browser.test.cjs",
+      "bytes": 67300,
+      "sha256": "de3661f967694c6fd76c9d9d247b8fff2caa36928aad66d76bdc00ab8a340a78",
+      "gitBlobSha1": "3f8a0ba7acf284c1d1f74061a35ccd649ffce7f4"
+    }
+  },
+  "scope": {
+    "closedProfile": "svg7",
+    "selectedUids": 7,
+    "logicalViews": 14,
+    "viewports": [
+      {
+        "name": "desktop",
+        "width": 1365,
+        "height": 1000
+      },
+      {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "sourceWrites": 0,
+    "registrationWrites": 0,
+    "productionAuthorityChanges": 0,
+    "newMathematicalReviews": 0,
+    "newApprovalAuthority": 0,
+    "captureCodeChanges": 0,
+    "sourceOrAssetChanges": 0,
+    "rawTechnicalJsonChanged": false,
+    "originalPngBytesChanged": false,
+    "partialCaptureFailure": "Status and uncompleted tile labels preserved; does not become capture or visual PASS",
+    "existingArtifactUpload": "UNCHANGED always()"
+  },
+  "workflowDelta": [
+    "Two exact trigger paths",
+    "Two exact sparse checkout paths",
+    "Add only transport unit test to the existing node --test step",
+    "Always emit verified bounded frames before unchanged artifact upload"
+  ],
+  "transport": {
+    "schemaVersion": "archive-protected9-original-ui-log-transport-v1",
+    "frameKinds": [
+      "bundle-begin",
+      "file-begin",
+      "file-chunk",
+      "file-end",
+      "bundle-end"
+    ],
+    "maxChunkBase64Characters": 4096,
+    "maxTechnicalBytes": 2097152,
+    "maxPngBytes": 2097152,
+    "maxBundleBytes": 10485760,
+    "maxTilesPerCase": 8,
+    "validation": [
+      "Current immutable checkout and producer refs",
+      "GitHub event/head/run/attempt/job identity",
+      "Closed7 UID/ordinal and14view tuple",
+      "Original H screenshot filename/tile association",
+      "Regular file and every path component without symlinks",
+      "Exact declared file inventory, raw SHA/size and PNG structure/dimensions",
+      "Explicit capture failure and unfinished tiles"
+    ],
+    "decodeContract": "Filter framed JSON lines by exact schema; require one consistent bundle, complete ordered file/chunk inventories; concatenate base64 by declared fileIndex/chunkIndex, decode and verify raw byte length/SHA256/Git blob hash before publishing or viewing. Keep original JSON and every PNG byte unchanged. The transport manifest binds original capture context and no approval.",
+    "newUnitTestsDefined": 20,
+    "unitExecution": "NOT_RUN",
+    "syntax": "NOT_RUN"
+  },
+  "requiredCommands": [
+    [
+      "node",
+      "--test",
+      "tests/protected9-ui-log-transport.test.cjs"
+    ],
+    [
+      "node",
+      "tools/emit-protected9-ui-log-transport.cjs",
+      "--root",
+      "$GITHUB_WORKSPACE",
+      "--output",
+      "$RUNNER_TEMP/m2s1-svg7-problem-ui",
+      "--profile",
+      "svg7",
+      "--expected-head",
+      "<EXACT_PR_HEAD>"
+    ]
+  ],
+  "followupScopes": {
+    "q5q16": "Separate four-view ops capture, not included in this primary publication",
+    "m1typed7": "Re-use actual primary capture if already running; separate fixed-artifact log recovery without recapture if needed",
+    "svg7PushProvenance": "Separate unpublished candidate; primary checker remains unchanged"
+  },
+  "newDynamicExecution": "NOT_RUN_ENVIRONMENT_UNAVAILABLE",
+  "currentDisplayAcceptance": "PENDING_ACTUAL_CURRENT_CAPTURE_AND_INDEPENDENT_VISUAL_REVIEW",
+  "rootSoleRefPrMainWriter": true,
+  "independentReview": {
+    "gitBlobSha1": "f44e460ca38f23196d144d807ee5c8bf73a33124",
+    "sha256": "87a400a0b3cb2ae4a8fb527379af09b8bdcdcbffdef9b79955f5770e7fa4dccf",
+    "bytes": 7074
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "archive-original-issued3330-observer-manifest-v2",
+  "taskId": "middle-meta-26fc-20261116",
+  "owner": "ci_m2s2",
+  "publicationOwner": "root",
+  "status": "FROZEN_NEW_READONLY_OBSERVER_INDEPENDENT_REVIEW_PENDING_ACTUAL_NOT_RUN",
+  "expectedExistingCodeSnapshot": "90ba4c2c3ce042b0bee4d68588ce83aa37e3f95f",
+  "beforePaths": "BOTH_404_VERIFIED_ON_90",
+  "operations": [
+    {
+      "path": "tools/ci/observe-original-middle-issued-3330.cjs",
+      "bytes": 47670,
+      "sha256": "244d7a03ddea33e2f99e1fa948a60d993ae01630beccac3ee0bf0a03965766db",
+      "gitBlobSha1": "2836ea9b8191533871749b78d596a881b6c6909a",
+      "expectedBeforeGitBlobSha1": null
+    },
+    {
+      "path": ".github/workflows/middle-original-issued-consumer-observe.yml",
+      "bytes": 2648,
+      "sha256": "0a2798b5913151eead11a81da6ea44463032dc172cc4a43d242b37ead74f03ff",
+      "gitBlobSha1": "4437bc53d2278a0106b4d66d3c15db6ff22ed57c",
+      "expectedBeforeGitBlobSha1": null
+    }
+  ],
+  "authorProof": {
+    "bytes": 7276,
+    "sha256": "ca217e609664e0480a836954d8734f66cc4aa7e4b002e0a2e783c006f634d391",
+    "gitBlobSha1": "b75645f6cd06c397d9e000aa45ba1743423d51e0"
+  },
+  "priorDesign": {
+    "bytes": 4802,
+    "sha256": "f025e11862729c07a4cc5e1939d037383305778f77562aee374216632078eb1c",
+    "gitBlobSha1": "f807fc109202f18d8fadfebecf105b5b3d75c1d8"
+  },
+  "branch": "ops/middle-original-issued-consumer-26fc-20261117",
+  "commands": {
+    "syntax": "node --check tools/ci/observe-original-middle-issued-3330.cjs",
+    "pureProtocol": "node tools/ci/observe-original-middle-issued-3330.cjs --self-test",
+    "actual": "node --max-old-space-size=6144 code/tools/ci/observe-original-middle-issued-3330.cjs --root \"$GITHUB_WORKSPACE/actual\" --code-root \"$GITHUB_WORKSPACE/code\" --output \"$RUNNER_TEMP/original-issued3330/observation.json\" --allow-git-object-hydration"
+  },
+  "limits": {
+    "newApprovals": 0,
+    "registrationOrReplay": 0,
+    "sourceOrMetadataEdits": 0,
+    "oldUnrecoveredConsumerReused": 0,
+    "actualSelected3330": "NOT_RUN",
+    "currentSemanticAndFourSlotApprovalNotClaimed": true
+  },
+  "reviewDelta": {
+    "bytes": 6611,
+    "sha256": "da5942a235af38245da5f72471805331c0904ee56dc771de11a5e82de4943c8b",
+    "gitBlobSha1": "4c8d071d578fdbbd6a2189bafe5f5fe16d250458"
+  },
+  "supersedes": {
+    "bytes": 2123,
+    "sha256": "90e8dcda84b549ed1a6cbb06f6a1b20b9238266f2ebacbfbb46c9ac34bdbddc3",
+    "gitBlobSha1": "fc664eb09876dda1bf5528b461beeee8d17ccc26"
+  },
+  "validation": {
+    "nodeSyntax": "PASS",
+    "pureProtocolChecks36": "PASS_IN_23_PLUS_5_PLUS_6_PLUS_2_SCOPED_EXECUTIONS",
+    "actual3330": "NOT_RUN"
+  }
+}

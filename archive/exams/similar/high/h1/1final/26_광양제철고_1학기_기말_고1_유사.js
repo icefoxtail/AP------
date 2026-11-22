@@ -144,14 +144,14 @@ window.questionBank = [
     "wide": false,
     "content": "이차 정사각행렬 $A,B$에 대하여 $A-2B=\\begin{pmatrix}1&4\\\\-5&-2\\end{pmatrix}$, $2A+B=\\begin{pmatrix}2&3\\\\0&1\\end{pmatrix}$이 성립할 때, 행렬 $AB$의 모든 성분의 합은? [4.5점]",
     "choices": [
-      "$-2$",
-      "$0$",
       "$2$",
       "$4$",
-      "$6$"
+      "$6$",
+      "$8$",
+      "$10$"
     ],
-    "answer": "⑤",
-    "solution": "$M=\\begin{pmatrix}1&4\\\\-5&-2\\end{pmatrix}$, $N=\\begin{pmatrix}2&3\\\\0&1\\end{pmatrix}$라 두면\n$A-2B=M$, $2A+B=N$이다.\n첫째 식에 둘째 식의 2배를 더하면\n$5A=M+2N$이다.\n따라서\n$A=\\dfrac{M+2N}{5}$\n$=\\dfrac{1}{5}\\left\\{\\begin{pmatrix}1&4\\\\-5&-2\\end{pmatrix}+2\\begin{pmatrix}2&3\\\\0&1\\end{pmatrix}\\right\\}$\n$=\\dfrac{1}{5}\\begin{pmatrix}5&10\\\\-5&0\\end{pmatrix}$\n$=\\begin{pmatrix}1&2\\\\-1&0\\end{pmatrix}$이다.\n둘째 식에서 첫째 식의 2배를 빼면\n$5B=N-2M$이다.\n따라서\n$B=\\dfrac{N-2M}{5}$\n$=\\dfrac{1}{5}\\left\\{\\begin{pmatrix}2&3\\\\0&1\\end{pmatrix}-2\\begin{pmatrix}1&4\\\\-5&-2\\end{pmatrix}\\right\\}$\n$=\\dfrac{1}{5}\\begin{pmatrix}0&-5\\\\10&5\\end{pmatrix}$\n$=\\begin{pmatrix}0&-1\\\\2&1\\end{pmatrix}$이다.\n그러므로\n$AB=\\begin{pmatrix}1&2\\\\-1&0\\end{pmatrix}\\begin{pmatrix}0&-1\\\\2&1\\end{pmatrix}$\n$=\\begin{pmatrix}4&1\\\\0&1\\end{pmatrix}$이다.\n모든 성분의 합은 $4+1+0+1=6$이다.\n따라서 정답은 ⑤이다.",
+    "answer": "③",
+    "solution": "$M=\\begin{pmatrix}1&4\\\\-5&-2\\end{pmatrix}$, $N=\\begin{pmatrix}2&3\\\\0&1\\end{pmatrix}$라 두면\n$A-2B=M$, $2A+B=N$이다.\n첫째 식에 둘째 식의 2배를 더하면\n$5A=M+2N$이다.\n따라서\n$A=\\dfrac{M+2N}{5}$\n$=\\dfrac{1}{5}\\left\\{\\begin{pmatrix}1&4\\\\-5&-2\\end{pmatrix}+2\\begin{pmatrix}2&3\\\\0&1\\end{pmatrix}\\right\\}$\n$=\\dfrac{1}{5}\\begin{pmatrix}5&10\\\\-5&0\\end{pmatrix}$\n$=\\begin{pmatrix}1&2\\\\-1&0\\end{pmatrix}$이다.\n둘째 식에서 첫째 식의 2배를 빼면\n$5B=N-2M$이다.\n따라서\n$B=\\dfrac{N-2M}{5}$\n$=\\dfrac{1}{5}\\left\\{\\begin{pmatrix}2&3\\\\0&1\\end{pmatrix}-2\\begin{pmatrix}1&4\\\\-5&-2\\end{pmatrix}\\right\\}$\n$=\\dfrac{1}{5}\\begin{pmatrix}0&-5\\\\10&5\\end{pmatrix}$\n$=\\begin{pmatrix}0&-1\\\\2&1\\end{pmatrix}$이다.\n그러므로\n$AB=\\begin{pmatrix}1&2\\\\-1&0\\end{pmatrix}\\begin{pmatrix}0&-1\\\\2&1\\end{pmatrix}$\n$=\\begin{pmatrix}4&1\\\\0&1\\end{pmatrix}$이다.\n모든 성분의 합은 $4+1+0+1=6$이다.\n따라서 정답은 ③이다.",
     "score": 4.5,
     "points": 4.5,
     "difficultyBucket": 2,
@@ -229,7 +229,11 @@ window.questionBank = [
     "sourceQid": 4,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q04-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q04-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q04-solution.plan.json",
+    "solutionImage": "assets/images/26_광양제철고_1학기_기말_고1_유사/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 세 점이 같은 간격으로 놓여 있고, 이웃한 두 점 사이의 간격이 각각 d로 표시되어 있다.",
+    "solutionImageCaption": "세 카드의 값을 작은 것부터 L, M, R로 두면 가운데 수가 양 끝의 평균이다. 같은 두 간격 d를 나타낸 대표 배치이며 특정 카드 숫자를 정한 그림은 아니다. 1부터 8 안에 놓이는 세 수를 센 뒤 배열 순서를 센다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -377,14 +381,14 @@ window.questionBank = [
     "wide": false,
     "content": "어느 학교의 학생들이 텐트에서 야영하려고 한다. 한 텐트에 6명씩 배정하면 8명이 남고, 8명씩 배정하면 텐트가 2개 남는다. 학생 수가 최소일 때와 최대일 때의 합은? [5점]",
     "choices": [
+      "$172$",
+      "$174$",
+      "$176$",
       "$178$",
-      "$180$",
-      "$182$",
-      "$184$",
-      "$186$"
+      "$180$"
     ],
-    "answer": "①",
-    "solution": "텐트 수를 $t$, 학생 수를 $N$이라 하자.\n6명씩 배정하고 8명이 남으므로\n$N=6t+8$이다.\n8명씩 배정할 때 남는 텐트가 2개이므로 사용하는 텐트는 $t-2$개이다. 마지막 사용 텐트에도 학생이 있어야 하므로 학생 수는 8명씩 $t-3$개 텐트에 배정한 수보다 많고, $t-2$개 텐트에 모두 8명씩 배정한 수 이하여야 한다.\n따라서\n$8(t-3)<N\\le8(t-2)$이다.\n$N=6t+8$을 대입하면\n$8t-24<6t+8\\le8t-16$이다.\n왼쪽 부등식에서\n$2t<32$이므로 정수 $t$는 $t\\le15$이다.\n오른쪽 부등식에서\n$24\\le2t$이므로 $t\\ge12$이다.\n따라서 $12\\le t\\le15$이다.\n$N=6t+8$은 $t$가 커질수록 커지므로 최소 학생 수는 $t=12$일 때 $6\\cdot12+8=80$이고, 최대 학생 수는 $t=15$일 때 $6\\cdot15+8=98$이다.\n구하는 합은 $80+98=178$이다.\n따라서 정답은 ①이다.",
+    "answer": "④",
+    "solution": "텐트 수를 $t$, 학생 수를 $N$이라 하자.\n6명씩 배정하고 8명이 남으므로\n$N=6t+8$이다.\n8명씩 배정할 때 남는 텐트가 2개이므로 사용하는 텐트는 $t-2$개이다. 마지막 사용 텐트에도 학생이 있어야 하므로 학생 수는 8명씩 $t-3$개 텐트에 배정한 수보다 많고, $t-2$개 텐트에 모두 8명씩 배정한 수 이하여야 한다.\n따라서\n$8(t-3)<N\\le8(t-2)$이다.\n$N=6t+8$을 대입하면\n$8t-24<6t+8\\le8t-16$이다.\n왼쪽 부등식에서\n$2t<32$이므로 정수 $t$는 $t\\le15$이다.\n오른쪽 부등식에서\n$24\\le2t$이므로 $t\\ge12$이다.\n따라서 $12\\le t\\le15$이다.\n$N=6t+8$은 $t$가 커질수록 커지므로 최소 학생 수는 $t=12$일 때 $6\\cdot12+8=80$이고, 최대 학생 수는 $t=15$일 때 $6\\cdot15+8=98$이다.\n구하는 합은 $80+98=178$이다.\n따라서 정답은 ④이다.",
     "score": 5,
     "points": 5,
     "difficultyBucket": 3,
@@ -406,7 +410,11 @@ window.questionBank = [
     "sourceQid": 7,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q07-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q07-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q07-solution.plan.json",
+    "solutionImage": "assets/images/26_광양제철고_1학기_기말_고1_유사/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 12는 채운 점, 16은 빈 원으로 하여 12 이상 16 미만의 범위가 표시되어 있고, 그 안의 정수 자리에 점이 찍혀 있다. 가로축의 문자는 t이다.",
+    "solutionImageCaption": "사용한 마지막 텐트에는 적어도 한 명이 있어야 한다. 8명씩 배정할 때의 엄격한 하한과 상한을 함께 적용하여 텐트 수의 정수 범위를 읽는다. 학생 수는 이 범위의 양 끝에서 따로 계산한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -756,7 +764,11 @@ window.questionBank = [
     "sourceQid": 13,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q13-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q13-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q13-solution.plan.json",
+    "solutionImage": "assets/images/26_광양제철고_1학기_기말_고1_유사/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 위의 두 줄은 각각 다섯 칸, 맨 아래 줄은 왼쪽 네 칸으로 이루어진 14개의 합동인 정사각형 도형이 그려져 있다.",
+    "solutionImageCaption": "위 두 줄은 각각 다섯 칸, 아래 줄은 왼쪽 네 칸이다. 높이 한 칸, 두 칸, 세 칸마다 가능한 두 세로선의 선택을 세고, 그중 가로와 세로 길이가 같은 경우를 제외한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -786,14 +798,14 @@ window.questionBank = [
     "wide": false,
     "content": "대각선의 길이가 $\\sqrt{170}$인 직사각형 $ABCD$가 있다. 이 직사각형의 가로 길이는 4만큼 줄어들고 세로 길이는 4만큼 늘어난 직사각형을 $A'B'C'D'$라 하자. $A'B'C'D'$의 넓이는 $ABCD$의 넓이보다 32만큼 작을 때, $A'B'C'D'$의 넓이는? [5.3점]",
     "choices": [
+      "$33$",
+      "$36$",
+      "$39$",
       "$42$",
-      "$45$",
-      "$48$",
-      "$51$",
-      "$54$"
+      "$45$"
     ],
-    "answer": "②",
-    "solution": "원래 직사각형의 가로와 세로의 길이를 $x$, $y$라 하자.\n대각선의 길이가 $\\sqrt{170}$이므로 피타고라스 정리에 의해\n$x^2+y^2=(\\sqrt{170})^2=170$이다.\n\n변경된 직사각형의 넓이는 원래보다 $32$ 작으므로\n$(x-4)(y+4)=xy-32$이다.\n왼쪽을 전개하면\n$xy+4x-4y-16=xy-32$\n$4x-4y=-16$\n$x-y=-4$,\n따라서 $y=x+4$이다.\n\n이를 대각선의 식에 대입하면\n$x^2+(x+4)^2=170$\n$2x^2+8x+16=170$\n$2x^2+8x-154=0$\n$x^2+4x-77=0$\n$(x-7)(x+11)=0$이다.\n\n$x=7$ 또는 $x=-11$이지만 가로의 길이는 양수이므로 $x=7$이다.\n따라서 $y=7+4=11$이다.\n새 직사각형의 가로와 세로는 각각\n$7-4=3$, $11+4=15$이므로\n넓이는 $3\\cdot15=45$이다.\n\n따라서 정답은 ②이다.",
+    "answer": "⑤",
+    "solution": "원래 직사각형의 가로와 세로의 길이를 $x$, $y$라 하자.\n대각선의 길이가 $\\sqrt{170}$이므로 피타고라스 정리에 의해\n$x^2+y^2=(\\sqrt{170})^2=170$이다.\n\n변경된 직사각형의 넓이는 원래보다 $32$ 작으므로\n$(x-4)(y+4)=xy-32$이다.\n왼쪽을 전개하면\n$xy+4x-4y-16=xy-32$\n$4x-4y=-16$\n$x-y=-4$,\n따라서 $y=x+4$이다.\n\n이를 대각선의 식에 대입하면\n$x^2+(x+4)^2=170$\n$2x^2+8x+16=170$\n$2x^2+8x-154=0$\n$x^2+4x-77=0$\n$(x-7)(x+11)=0$이다.\n\n$x=7$ 또는 $x=-11$이지만 가로의 길이는 양수이므로 $x=7$이다.\n따라서 $y=7+4=11$이다.\n새 직사각형의 가로와 세로는 각각\n$7-4=3$, $11+4=15$이므로\n넓이는 $3\\cdot15=45$이다.\n\n따라서 정답은 ⑤이다.",
     "score": 5.3,
     "points": 5.3,
     "difficultyBucket": 3,

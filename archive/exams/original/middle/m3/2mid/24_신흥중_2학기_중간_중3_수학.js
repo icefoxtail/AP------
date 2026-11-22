@@ -840,6 +840,7 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림에서 원 $O$는 사각형 $ABHD$의 네 변과 접하고, 네 점 $E$, $F$, $G$, $I$는 접점이다. 직사각형 $ABCD$에서 $\\overline{AB}=12\\,\\mathrm{cm}$, $\\overline{BC}=18\\,\\mathrm{cm}$일 때, $\\triangle CDH$의 둘레의 길이를 구하면? [4점]",
     "image": "assets/images/24_신흥중_2학기_중간_중3_수학/q18-readable-v3.svg",
+    "imageScale": 70,
     "imageSize": "tall",
     "choices": [
       "$30\\,\\mathrm{cm}$",

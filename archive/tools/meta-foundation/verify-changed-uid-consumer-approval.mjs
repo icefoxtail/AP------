@@ -41,9 +41,10 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { REVIEW2_SOURCE_OVERRIDE_FIELDS, loadResolvedConsumerCatalog, registerReviewedExamV2, verifyIdentityFingerprintConsumer } from "./reviewed-exam-registration-v2.mjs";
 import { isAuditPreservation } from "./native-audit-preservation.mjs";
+import { REVIEWED_META_VALUE_FIELDS } from "./reviewed-meta-value-fields.mjs";
 import { isPartialSubsetPreservation } from "./native-partial-subset-preservation.mjs";
 import { APPROVED_RENDERER_PRESERVATION } from "./native-approved-renderer-preservation.mjs";
-import { bindDifficulty5Source, registerDifficulty5 } from "./register-difficulty5.mjs";
+import { bindDifficulty5Source, isTextBoundDraft, registerDifficulty5 } from "./register-difficulty5.mjs";
 import { registerBasicScopeRebind } from "./register-basic-scope-rebind.mjs";
 import { BASIC_PRESERVATION_SCHEMA } from "./reviewed-basic-preservation.mjs";
 import { NATIVE_BASIC_HOLD_SCHEMA, NATIVE_BASIC_HOLD_REASON } from "./native-basic-hold-preservation.mjs";
@@ -52,6 +53,7 @@ import { BINDING_COURSE_CORRECTION_SCHEMA, BINDING_COURSE_CORRECTION_SCHEMA_V2, 
 
 import { isNativeAuthorityCorrection, registerNativeAuthorityCorrection, verifyNativeAuthorityCorrectionConsumer } from "./native-authority-correction.mjs";
 import { DIRECT_JUDGMENT, FIELD_SCOPE_TYPE_ONLY, TYPE_FIELD_STATUS } from "./register-type-judgment.mjs";
+import { TEXT_BOUND_REVIEW_TYPES, reviewedSourceTextUnchanged } from "./text-binding-lib.mjs";
 
 const require = createRequire(import.meta.url);
 const SCHEMA = {
@@ -88,6 +90,7 @@ const FIELD_ALIAS = { curriculum: "curriculumKey" };
 const nfc = value => typeof value === "string" ? value.normalize("NFC") : value;
 const same = (a, b) => isDeepStrictEqual(nfc(a) ?? null, nfc(b) ?? null);
 const own = (o, k) => Boolean(o) && typeof o === "object" && Object.hasOwn(o, k);
+const isInlinePlaceholder = value => value === null || value === undefined || value === "" || value === "UNKNOWN";
 const normalizeFile = value => String(value || "").normalize("NFC").replace(/\\/g, "/").replace(/^\.?\/?archive\/exams\//, "").replace(/^\.?\/?exams\//, "").replace(/^\/+/, "");
 
 class UnitError extends Error { constructor(reason, detail) { super(detail || reason); this.reason = reason; this.detail = detail || ""; } }
@@ -228,14 +231,17 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
     }
     const rows = doc.items.map(item => {
       if (!item?.after || typeof item.after !== "object") fail("INVALID_REQUEST", `item #${item?.sourceOrdinal} has no after`);
+      // The consumer is asked only about values the registrar stores and the page shows. A field outside the registrar's value contract is
+      // never stored (it is reported in the receipt), and rpmPrimaryRecordId is a crosswalk pointer the page does not expose (it reads null).
+      const claimed = Object.fromEntries(Object.entries(item.after).filter(([k]) => REVIEWED_META_VALUE_FIELDS.includes(k) && k !== "rpmPrimaryRecordId"));
       // A row whose after equals its before (and repairs no identity fingerprint) changes nothing: skipped, but counted.
-      const unchanged = Object.keys(item.after).every(k => same(item.before?.[k], item.after[k])) && item.identityBefore === undefined;
+      const unchanged = Object.keys(claimed).every(k => same(item.before?.[k], claimed[k])) && item.identityBefore === undefined;
       // REVIEW2 type-hold item: the consumer deliberately publishes no assignment, PT/TPL or value columns for it yet (they stay in the
       // registrar's own checks and, once grouped, in the output layer), so only the source binding is verified here. Any other item is unchanged.
       if (item.typeHold === true && doc.approval?.type === "REVIEW2")
         return { ordinal: item.sourceOrdinal, uid: item.questionUid, expect: {}, fingerprint: item.after.sourceFingerprint, unchanged, gated: false };
-      return { ordinal: item.sourceOrdinal, uid: item.questionUid, expect: item.after, fingerprint: item.after.sourceFingerprint, unchanged,
-        gated: touchesAssignment(changedKeys(item.before, item.after)) };
+      return { ordinal: item.sourceOrdinal, uid: item.questionUid, expect: claimed, fingerprint: item.after.sourceFingerprint, unchanged,
+        gated: touchesAssignment(changedKeys(item.before, claimed)) };
     });
     return { kind: schema === SCHEMA.V2 ? "reviewed-exam-v2" : "finalqa-pinpoint-v1", approvalType: doc.approval?.type || null, exam: doc.examUid || doc.sourceArchiveFile,
       sourceFile: doc.sourceArchiveFile, expectedBlob: doc.expectedSourceBlobSha1, rows };
@@ -326,6 +332,7 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
       exam: gemini.requestId || sourceFile,
       sourceFile,
       expectedBlob: gemini.latestBlobSha || doc.latestBlobSha,
+      textBoundDraft: isTextBoundDraft(doc),
       rows
     };
   }
@@ -386,7 +393,11 @@ function verifiedDifficultyRows(root, unit, consumer) {
   const proof = registerDifficulty5({ root, request: unit.request, write: false, verifyProjection: true });
   if (proof.status !== "PASS" || !["verify-projection", "verify-reviewed-correction"].includes(proof.mode) ||
       proof.requestId !== unit.request.gemini.requestId || proof.sourceArchiveFile !== unit.sourceFile ||
-      proof.sourceBlobSha !== unit.expectedBlob || proof.summary?.written !== false || proof.summary?.changedFields !== 0 ||
+      // A text-bound draft (every item carries the stem+choices fingerprint) is bound per question, so another question's edit changing the
+      // whole-file blob is not a mismatch; the registrar's own per-item fingerprint check already ran above. Anything else keeps the blob check.
+      // A text-bound draft (every item carries the stem+choices fingerprint) is bound per question, so another question's edit changing the
+      // whole-file blob is not a mismatch; the registrar's own per-item fingerprint check already ran above. Anything else keeps the blob check.
+      (proof.sourceBlobSha !== unit.expectedBlob && !unit.textBoundDraft) || proof.summary?.written !== false || proof.summary?.changedFields !== 0 ||
       proof.summary?.VERIFIED !== unit.rows.length || proof.summary?.total !== unit.rows.length ||
       proof.summary?.APPLY !== 0 || proof.summary?.CONFLICT !== 0 || proof.summary?.SKIP_INVALID !== 0 ||
       proof.ptTpl !== "UNTOUCHED_NOT_IN_SCOPE" || !Array.isArray(proof.items) || proof.items.length !== unit.rows.length ||
@@ -407,11 +418,13 @@ function verifiedDifficultyRows(root, unit, consumer) {
     const matches = consumer.difficultyMetadataByUid.get(row.uid) || [], meta = matches[0];
     if (!checked || checked.decision !== "VERIFIED" || matches.length !== 1 ||
         meta.sourceArchiveFile !== unit.sourceFile || meta.sourceOrdinal !== row.ordinal ||
-        !DIFFICULTY_FIELDS.every(field => own(checked.after, field) && same(meta[field], checked.after[field])))
+        // The registrar writes legacyLevelCompatibility only for a row that still has a legacy level; a request without a level
+        // carries three fields. Every field the registrar reports is compared; the three core fields are always required.
+        !DIFFICULTY_FIELDS.every(field => own(checked.after, field) ? same(meta[field], checked.after[field]) : field === "legacyLevelCompatibility"))
       throw Error(`official difficulty metadata/UID mismatch: ${row.uid}`);
     const source = bank[row.ordinal - 1];
     if (!source) throw Error(`difficulty source ordinal missing: ${row.uid}`);
-    const values = Object.fromEntries(DIFFICULTY_FIELDS.map(field => [field, checked.after[field] ?? null]));
+    const values = Object.fromEntries(DIFFICULTY_FIELDS.filter(field => own(checked.after, field)).map(field => [field, checked.after[field] ?? null]));
     const semanticPending = !meta.metadataApprovalType &&
       ["registration_only_pending_review", "registration_pending_semantic_review"].includes(meta.metadataStatus) &&
       // A direct type judgment (type fields only) is not a semantic review of the row: its other fields stay pending.
@@ -420,7 +433,7 @@ function verifiedDifficultyRows(root, unit, consumer) {
     return { ...row, difficultyProjection: { values, binding: checked.consumerBinding, semanticPending,
       ordinaryNormalization: proof.mode === "verify-projection" && !unit.request.reviewedCorrection,
       currentTags: { tagConfidence: meta.tagConfidence, tagStatus: meta.tagStatus },
-      sourceAnnotations: Object.fromEntries(["tagConfidence", "tagStatus", "legacyLevelCompatibility"].map(field => [field, source[field] ?? null])) } };
+      sourceAnnotations: Object.fromEntries(["tagConfidence", "tagStatus", ...DIFFICULTY_FIELDS].map(field => [field, source[field] ?? null])) } };
   });
 }
 
@@ -445,9 +458,12 @@ function checkRow(consumer, unit, row) {
     // Some auxiliary D5 fields are not exposed by the page. Their exact current
     // metadata equivalence is already proven above; any exposed canonical value
     // must agree too, while the bucket still takes the real page/query path below.
-    const mismatched = DIFFICULTY_FIELDS.filter(field => own(resolved, field) && !same(resolved[field], difficulty.values[field]));
+    const mismatched = DIFFICULTY_FIELDS.filter(field => own(difficulty.values, field) && own(resolved, field) && !same(resolved[field], difficulty.values[field]));
     if (mismatched.length) return { ...out, reason: "VALUE_MISMATCH", detail: "official difficulty tuple != canonical consumer: " + mismatched.join(",") };
   }
+  // The fields this request changes: what the difficulty registrar reported, or the two type fields of a type-only request.
+  // A typed (reviewed) correction keeps the strict rule: every conflict blocks.
+  const requestFields = difficulty?.ordinaryNormalization ? Object.keys(difficulty.values) : unit.kind === "direct-type-judgment" ? ["problemTypeKey", "templateKey"] : null;
   const blockingConflicts = (resolved.metadataConflicts || []).filter(field => {
     if (unit.approvalType === "REVIEW2" && (field === "reviewStatus" || REVIEW2_SOURCE_OVERRIDE_FIELDS.includes(field))) return false;
     let reason = null;
@@ -459,8 +475,16 @@ function checkRow(consumer, unit, row) {
         same(resolved[field], difficulty.values[field]) && difficulty.sourceAnnotations[field] !== null &&
         !same(difficulty.sourceAnnotations[field], difficulty.values[field]))
       reason = "OFFICIAL_D5_LEGACY_COMPATIBILITY_NORMALIZATION";
+    // A difficulty or direct type request blocks only on the fields it changes. An older disagreement between the exam file's own
+    // inline value and the registered value in a field this request does not touch was not made by this request and is not removed
+    // by refusing it: it stays visible as an advisory. Other request kinds keep refusing every conflict.
+    if (!reason && requestFields && field !== "foundationTaxonomy" && !requestFields.includes(field)) reason = "NOT_CHANGED_BY_THIS_REQUEST";
+    // In a field the difficulty request registers, an inline placeholder (empty, null or UNKNOWN) is not a value that disagrees.
+    // A real inline value (1..5 or a legacy word) that differs from the registered value is still refused.
+    if (!reason && difficulty?.ordinaryNormalization && DIFFICULTY_FIELDS.includes(field) && isInlinePlaceholder(difficulty.sourceAnnotations[field]))
+      reason = "INLINE_PLACEHOLDER_REPLACED";
     if (!reason) return true;
-    (out.metadataConflictAdvisories ||= []).push({ field, reason, sourceValue: difficulty.sourceAnnotations[field],
+    (out.metadataConflictAdvisories ||= []).push({ field, reason, sourceValue: difficulty?.sourceAnnotations?.[field] ?? null,
       canonicalValue: resolved[field], semanticApproval: false });
     return false;
   });
@@ -523,8 +547,9 @@ function checkRow(consumer, unit, row) {
 }
 
 // Direct type judgment: the official registrar replay proves the registered type fields; the consumer must then show them as
-// approved facets. A row whose stored fingerprints no longer match the current question text (binding "stale") has its type
-// recorded but is not displayed by the catalog by design; that is reported, not failed (the row needs its own fingerprint rebind).
+// approved facets. A row whose stored fingerprints no longer match the current question (binding "stale") is displayed only when its
+// stem and choices are provably unchanged ("text": rebind record, "type": this judgment's own text/content fingerprint, see
+// docs/agents/metadata.md "메타 결속 지문 범위"); otherwise its type is recorded but not displayed by design, reported, not failed.
 function checkTypeRow(consumer, unit, row) {
   const key = `${normalizeFile(unit.sourceFile)}#${Number(row.ordinal)}`;
   const resolved = consumer.resolvedBySource.get(key);
@@ -534,7 +559,7 @@ function checkTypeRow(consumer, unit, row) {
   const typeConflicts = (resolved.metadataConflicts || []).filter(field => ["problemTypeKey", "templateKey", "foundationTaxonomy"].includes(field));
   if (typeConflicts.length) return { ...out, reason: "METADATA_CONFLICT", detail: typeConflicts.join(",") };
   if (!consumer.pageByUid.get(resolved.questionUid)) return { ...out, reason: "NOT_IN_PROBLEM_BANK_INDEX" };
-  if (!["exact", "content"].includes(resolved.metaBinding)) return { ...out, typeNotDisplayed: resolved.metaBinding || "stale" };
+  if (!resolved.metaBinding) return { ...out, typeNotDisplayed: resolved.metaBinding || "stale" };
   const status = String(resolved.metaHintStatus || "");
   const mismatches = [];
   if (!same(resolved.metaHintPT, row.expect.problemTypeKey)) mismatches.push(`problemTypeKey: request ${JSON.stringify(row.expect.problemTypeKey)} != consumer ${JSON.stringify(resolved.metaHintPT ?? null)}`);
@@ -662,7 +687,15 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
         const blob = unit.kind === "difficulty5-ratings"
           ? bindDifficulty5Source(fs.readFileSync(path.join(root, sourcePath)), binding.expectedSourceBlobSha1).sha
           : gitBlobSha1(root, sourcePath);
-        if (binding.expectedSourceBlobSha1 !== blob) {
+        // A direct type judgment is verified per question by its replay below (stem + choices), not by the file blob.
+        // A draft difficulty request whose items all carry textBindingFingerprint is verified per question by the registrar, not by the file blob.
+        // A plain reviewed-exam-v2 REVIEW2/FINAL_QA request is bound to the stem + choices of its questions (same predicate as the registrar).
+        const textBoundReview = unit.kind === "reviewed-exam-v2" && TEXT_BOUND_REVIEW_TYPES.includes(unit.approvalType) &&
+          binding.expectedSourceBlobSha1 !== blob &&
+          reviewedSourceTextUnchanged({ root, expectedBlobSha1: binding.expectedSourceBlobSha1, currentBytes: fs.readFileSync(path.join(root, sourcePath)),
+            ordinals: unit.rows.map(r => r.ordinal).filter(Number.isInteger) }).ok;
+        // Scoped parent links are bound per record to the question body (sourceBodyFingerprint, checked by the rows below), not to the file blob.
+        if (binding.expectedSourceBlobSha1 !== blob && unit.kind !== "direct-type-judgment" && unit.kind !== "scoped-parent-links" && !unit.textBoundDraft && !textBoundReview) {
           sourceBound = false;
           result.failures.push({ exam: unit.exam, qid: "-", uid: "-", reason: "SOURCE_BLOB_MISMATCH", detail: `${unit.sourceSnapshots ? binding.sourceArchiveFile + ': ' : ''}request ${binding.expectedSourceBlobSha1 ?? null} != worktree ${blob}` });
         }
@@ -835,7 +868,7 @@ export function renderSummary(result) {
   for (const e of result.exams.filter(e => e.kind === "native-authority-withdrawal"))
     lines.push(`  Unsupported approvals withdrawn: ${e.withdrawnMetadataApprovals ?? 0}; explicit authority holds: ${e.authorityHolds ?? 0}; new approvals: 0.`);
   for (const e of result.exams.filter(e => e.kind === "direct-type-judgment"))
-    lines.push(`  Direct type judgments shown as approved facets: ${e.directTypeApprovals ?? 0}; recorded but not shown until the row fingerprint is rebound: ${e.typeNotDisplayed ?? 0}; unit/difficulty/other approvals: 0.`);
+    lines.push(`  Direct type judgments shown as approved facets: ${e.directTypeApprovals ?? 0}; recorded but not shown (stem or choices changed since the row was registered): ${e.typeNotDisplayed ?? 0}; unit/difficulty/other approvals: 0.`);
   if (result.assignmentPending?.length) {
     const byExam = new Map();
     for (const r of result.assignmentPending) byExam.set(r.exam, [...(byExam.get(r.exam) || []), `Q${r.qid}`]);

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-eea493f10101-eafd3bce",
+  "sourceArchiveFile": "original/high/h2/1mid/20_매산여고_1학기_중간_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_0e4abff72afe6b77a78a287bdd879e604eb912d521f3b0bf3f51a9be2a590878",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "step": "중복조합을 조합으로 변환하고 전개항을 지수 합의 음이 아닌 정수해로 대응시킨다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ef4e1b78161d986fc2e90ee1e21f9864a2ece3e3a5c2e186992a1f82ed9add03",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "step": "윗줄에 처음 진입하는 열별로 오른쪽·위쪽의 동일 이동 배열을 세어 합한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_74af50ab18ee4fc5f5479c4d1c4ae5d831d018b3faf5ca4df1a9f6e4482185ac",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "step": "파스칼 항등식·조합 정의·이항 전개 계수를 이용해 이항계수 진술을 검증한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_73e744a0012d1a5aea59b92a1d69ccbd59d055edf1b80edc692705d028641a9b",
+      "sourceOrdinal": 19,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_PROB_COUNTING",
+      "templateKey": null,
+      "step": "마지막 이동이 한 칸인지 두 칸인지 나누어 피보나치형 점화식으로 경로 수를 구한다.",
+      "note": "제시 후보에는 마지막 단계 분할에 따른 점화식 계수를 직접 담는 PT/TPL이 없음. 해당 과목 ACTIVE 정의 전체 대조 후 적합한 PT 없음. 필요한 유형: 마지막 이동이 한 칸인지 두 칸인지 나누어 피보나치형 점화식으로 경로 수를 구한다. 제안 유형명: 마지막 단계 분할에 의한 경로 점화식. 구별 단서: 마지막 한 칸·두 칸 이동을 나누어 앞 단계 계수를 재사용하며 고정 이동수 순열과 구별. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

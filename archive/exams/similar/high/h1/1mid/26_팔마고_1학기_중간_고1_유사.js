@@ -529,14 +529,14 @@ window.questionBank = [
     "wide": false,
     "content": "사차방정식 $(x^2-6x)(x^2-6x+13)+30=0$의 서로 다른 두 실근을 $\\alpha, \\beta$라 할 때, $\\alpha^2+\\beta^2$의 값은? [4.4점]",
     "choices": [
-      "$22$",
-      "$24$",
       "$26$",
       "$28$",
-      "$30$"
+      "$30$",
+      "$32$",
+      "$34$"
     ],
-    "answer": "⑤",
-    "solution": "반복되는 식 $x^2-6x$를 하나의 문자로 치환한다.\n$t=x^2-6x$라 하면 주어진 사차방정식은\n$t(t+13)+30=0$,\n즉 $t^2+13t+30=0$이다.\n\n$(t+10)(t+3)=0$에서\n$t=-10$ 또는 $t=-3$이다.\n\n① $t=-10$이면\n$x^2-6x=-10$, 즉 $x^2-6x+10=0$이다.\n판별식 $\\dfrac D4=9-10=-1<0$이므로 실근이 없다.\n\n② $t=-3$이면\n$x^2-6x=-3$, 즉 $x^2-6x+3=0$이다.\n판별식 $\\dfrac D4=9-3=6>0$이므로 서로 다른 두 실근 $\\alpha,\\beta$를 갖는다.\n\n근과 계수의 관계에 의하여\n$\\alpha+\\beta=6$,\n$\\alpha\\beta=3$이다.\n따라서\n$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta$\n$=36-6=30$이다.\n따라서 정답은 ⑤이다.",
+    "answer": "③",
+    "solution": "반복되는 식 $x^2-6x$를 하나의 문자로 치환한다.\n$t=x^2-6x$라 하면 주어진 사차방정식은\n$t(t+13)+30=0$,\n즉 $t^2+13t+30=0$이다.\n\n$(t+10)(t+3)=0$에서\n$t=-10$ 또는 $t=-3$이다.\n\n① $t=-10$이면\n$x^2-6x=-10$, 즉 $x^2-6x+10=0$이다.\n판별식 $\\dfrac D4=9-10=-1<0$이므로 실근이 없다.\n\n② $t=-3$이면\n$x^2-6x=-3$, 즉 $x^2-6x+3=0$이다.\n판별식 $\\dfrac D4=9-3=6>0$이므로 서로 다른 두 실근 $\\alpha,\\beta$를 갖는다.\n\n근과 계수의 관계에 의하여\n$\\alpha+\\beta=6$,\n$\\alpha\\beta=3$이다.\n따라서\n$\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta$\n$=36-6=30$이다.\n따라서 정답은 ③이다.",
     "points": 4.4,
     "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_유사/q10-solution.svg",
     "solutionImageAlt": "포물선 y=x^2-6x와 수평선 y=-3은 두 점에서 만나고 수평선 y=-10은 만나지 않는다.",
@@ -730,7 +730,11 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#q13",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/q13-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/q13-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/q13-solution.plan.json",
+    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_유사/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변이 11cm인 정사각형과 한 변이 7cm인 정사각형이 나란히 그려져 있고, 각각 a=11 cm, b=7 cm로 표시되어 있다.",
+    "solutionImageCaption": "4a+4b=72에서 a+b=18, a²+b²=170에서 ab=77이므로 (a−b)²=324−308=16, a−b=4이다. 넓이의 차는 (a+b)(a−b)=18×4=72이므로 답은 ④ 72이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -751,14 +755,14 @@ window.questionBank = [
     "wide": false,
     "content": "삼차방정식 $x^3=1$의 한 허근을 $\\omega$라 할 때,\n$\\omega+2\\omega^2+3\\omega^3+4\\omega^4+\\cdots+10\\omega^{10}=a+b\\omega$\n를 만족시키는 두 실수 $a, b$에 대하여 $a+b$의 값은? [4.7점]",
     "choices": [
-      "$7$",
-      "$10$",
-      "$13$",
+      "$22$",
+      "$19$",
       "$16$",
-      "$19$"
+      "$13$",
+      "$10$"
     ],
-    "answer": "②",
-    "solution": "$\\omega$는 $x^3=1$의 허근이므로\n$\\omega^3=1$이고 $\\omega\\ne1$이다.\n$x^3-1=(x-1)(x^2+x+1)$이므로\n$\\omega^2+\\omega+1=0$, 즉\n$\\omega^2=-\\omega-1$이다.\n\n또 $\\omega^3=1$에서\n$\\omega^4=\\omega$,\n$\\omega^5=\\omega^2$,\n$\\omega^6=1$이다.\n따라서 거듭제곱은 3개 항을 주기로 반복된다.\n\n주어진 합을 같은 거듭제곱별로 묶으면\n$\\omega+2\\omega^2+3\\omega^3+4\\omega^4+\\cdots+10\\omega^{10}$\n$=(1+4+7+10)\\omega+(2+5+8)\\omega^2+(3+6+9)$\n$=22\\omega+15\\omega^2+18$이다.\n\n$\\omega^2=-\\omega-1$을 대입하면\n$22\\omega+15(-\\omega-1)+18$\n$=3+7\\omega$이다.\n$\\omega$는 실수가 아니므로 $a=3$, $b=7$이고\n$a+b=10$이다.\n따라서 정답은 ②이다.",
+    "answer": "⑤",
+    "solution": "$\\omega$는 $x^3=1$의 허근이므로\n$\\omega^3=1$이고 $\\omega\\ne1$이다.\n$x^3-1=(x-1)(x^2+x+1)$이므로\n$\\omega^2+\\omega+1=0$, 즉\n$\\omega^2=-\\omega-1$이다.\n\n또 $\\omega^3=1$에서\n$\\omega^4=\\omega$,\n$\\omega^5=\\omega^2$,\n$\\omega^6=1$이다.\n따라서 거듭제곱은 3개 항을 주기로 반복된다.\n\n주어진 합을 같은 거듭제곱별로 묶으면\n$\\omega+2\\omega^2+3\\omega^3+4\\omega^4+\\cdots+10\\omega^{10}$\n$=(1+4+7+10)\\omega+(2+5+8)\\omega^2+(3+6+9)$\n$=22\\omega+15\\omega^2+18$이다.\n\n$\\omega^2=-\\omega-1$을 대입하면\n$22\\omega+15(-\\omega-1)+18$\n$=3+7\\omega$이다.\n$\\omega$는 실수가 아니므로 $a=3$, $b=7$이고\n$a+b=10$이다.\n따라서 정답은 ⑤이다.",
     "points": 4.7,
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -904,7 +908,11 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#q16",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/q16-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/q16-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/q16-solution.plan.json",
+    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_유사/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 복소평면의 단위원 위에 1, i, −1, −i와 (1+i)/√2, (1−i)/√2, (−1+i)/√2, (−1−i)/√2의 여덟 점이 표시되어 있고, 1과 i, −1과 −i를 잇는 점선이 그려져 있다.",
+    "solutionImageCaption": "ζ의 거듭제곱은 단위원의8점이고 i의 거듭제곱은 네 축점이다. 합±(1+i)를 만들려면 두 축방향1,i 또는−1,−i를 순서 교환한다. 잔여류 네 경우의 최대(m,n)는(74,80),(80,77),(78,78),(76,79),합154,157,156,155. 정답157.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -963,7 +971,11 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#q17",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/q17-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/q17-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/q17-solution.plan.json",
+    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_유사/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 y=x+4 위에 점 (0,4), (1,5), (2,6)이 표시되어 있고, 기울기가 반대인 점선 y=−x+6이 함께 그려져 있다.",
+    "solutionImageCaption": "P(x)=(x²−4x+5)(x−3)이고 Q(x)=ux+v라 하면 Q²=x²+(a−17)x+(41−a)이다. Q(0)>0과 Q(2)>Q(0)에서 Q(x)=x+4, a=25이므로 P(0)Q(1)÷a=(−15×5)÷25=−3이고, 따라서 답은 ② −3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -984,14 +996,14 @@ window.questionBank = [
     "wide": false,
     "content": "$x$에 대한 사차방정식 $x^4-(m^2+2)x^2+4m=0$이 서로 다른 네 실근 $a, b, c, d$를 갖고, $ad+bc=-11$의 관계가 성립할 때, 양수 $m$의 값은? (단, $a<b<c<d$이다.) [5점]",
     "choices": [
+      "$2$",
       "$3$",
       "$4$",
       "$5$",
-      "$6$",
-      "$7$"
+      "$6$"
     ],
-    "answer": "①",
-    "solution": "짝수 차수의 항만 있으므로 $t=x^2$로 치환한다.\n$t^2-(m^2+2)t+4m=0$이다.\n\n$x$에 관한 원래 방정식이 서로 다른 네 실근을 가지려면\n$t$방정식은 서로 다른 양의 두 근을 가져야 한다.\n그 근을 $u>v>0$이라 하면 네 실근의 순서는\n$a=-\\sqrt u,\\ b=-\\sqrt v,\\ c=\\sqrt v,\\ d=\\sqrt u$이다.\n\n따라서\n$ad+bc=(-\\sqrt u)(\\sqrt u)+(-\\sqrt v)(\\sqrt v)$\n$=-(u+v)$이다.\n근과 계수의 관계에서\n$u+v=m^2+2$이므로\n$-(m^2+2)=-11$,\n$m^2=9$이다.\n$m$이 양수이므로 $m=3$이다.\n\n실제로 $m=3$이면\n$t^2-11t+12=0$이고\n판별식 $D=121-48=73>0$,\n두 근의 합 $11>0$, 곱 $12>0$이므로\n서로 다른 두 양수 $t$를 갖는다.\n원래 방정식의 네 실근은\n$-\\sqrt u,-\\sqrt v,\\sqrt v,\\sqrt u$이고 $ad+bc=-(u+v)=-11$이다.\n따라서 정답은 ①이다.",
+    "answer": "②",
+    "solution": "짝수 차수의 항만 있으므로 $t=x^2$로 치환한다.\n$t^2-(m^2+2)t+4m=0$이다.\n\n$x$에 관한 원래 방정식이 서로 다른 네 실근을 가지려면\n$t$방정식은 서로 다른 양의 두 근을 가져야 한다.\n그 근을 $u>v>0$이라 하면 네 실근의 순서는\n$a=-\\sqrt u,\\ b=-\\sqrt v,\\ c=\\sqrt v,\\ d=\\sqrt u$이다.\n\n따라서\n$ad+bc=(-\\sqrt u)(\\sqrt u)+(-\\sqrt v)(\\sqrt v)$\n$=-(u+v)$이다.\n근과 계수의 관계에서\n$u+v=m^2+2$이므로\n$-(m^2+2)=-11$,\n$m^2=9$이다.\n$m$이 양수이므로 $m=3$이다.\n\n실제로 $m=3$이면\n$t^2-11t+12=0$이고\n판별식 $D=121-48=73>0$,\n두 근의 합 $11>0$, 곱 $12>0$이므로\n서로 다른 두 양수 $t$를 갖는다.\n원래 방정식의 네 실근은\n$-\\sqrt u,-\\sqrt v,\\sqrt v,\\sqrt u$이고 $ad+bc=-(u+v)=-11$이다.\n따라서 정답은 ②이다.",
     "points": 5,
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -1070,7 +1082,11 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#q19",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/q19-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/q19-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/q19-solution.plan.json",
+    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_유사/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 세 변에 a, b, c=b가 적혀 있고, 두 변 AB와 AC의 길이가 같게 그려져 있다.",
+    "solutionImageCaption": "인수분해하면(b−c)(ab+ac+bc)=0이고 모든 변이 양수여서 둘째 인수는 양수다. 따라서 b=c,즉 AB=AC. 그림 길이5,5,6은 한 대표 배치이며 원문 고정값이 아니다. 정답 A를 꼭지각으로 하는 이등변삼각형.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1169,7 +1185,11 @@ window.questionBank = [
     "variationType": "STRICT_VARIANT",
     "provenance": "SIMILAR_OF:archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#q21",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/q21-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/q21-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_팔마고_1학기_중간_고1_유사_plans/q21-solution.plan.json",
+    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_유사/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 x²+y²=25와 직선 x+3y=15가 두 점에서 만나고, 두 교점에 좌표가 표시되어 있다.",
+    "solutionImageCaption": "x=15−3y를 대입하면 10y²−90y+200=0, (y−4)(y−5)=0이므로 해는 (3,4)와 (0,5)이다. αβ는 각각 12와 0이므로 최댓값은 12이고, 따라서 답은 (1) (3,4), (0,5) (2) 12이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

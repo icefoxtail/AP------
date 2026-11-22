@@ -4,10 +4,12 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import {execFileSync} from 'node:child_process';
+import {execFileSync,spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import canonical from '../archive/archive2-canonical.js';
-import {planQuestion,nativeReviewReceipt,activeBindingContext,sourceFingerprint,contentFingerprint,loadBank,sourcePath,selectTargets} from '../archive/tools/meta-foundation/auto-register-merged-source.mjs';
+import {planQuestion,nativeReviewReceipt,activeBindingContext,sourceFingerprint,contentFingerprint,loadBank,sourcePath,selectTargets,registerMergedSource,backlogCounts} from '../archive/tools/meta-foundation/auto-register-merged-source.mjs';
+import {textFingerprint} from '../archive/tools/meta-foundation/text-binding-lib.mjs';
+import {explicitRegistrationMode,inferRegistrationMode} from '../archive/tools/meta-foundation/registration-mode.mjs';
 import {validateActiveMetaFields} from '../archive/tools/meta-foundation/active-registry.mjs';
 import {validateReviewedSourceReassessment,REASSESSED_STUDENT_FIELDS} from '../archive/tools/meta-foundation/reviewed-source-reassessment.mjs';
 import {nativeReviewedFigureRebind} from '../archive/tools/meta-foundation/native-reviewed-figure-reuse.mjs';
@@ -38,8 +40,46 @@ test('binding must match course, not merely an identical unit key',()=>{const f=
 test('ambiguous binding is refused',()=>{const f=fixture();f.registry.bindingRows.push({...f.registry.bindingRows[0]});assert.equal(planQuestion(f).status,'SUPPLEMENT_PENDING');});
 test('UID mismatch is refused',()=>{const f=fixture();f.identity.questionUid='other';assert.deepEqual(planQuestion(f).reasons,['UID_JOIN_MISMATCH']);});
 test('embedded source UID cannot impersonate identity',()=>{const f=fixture();f.question.questionUid='other';assert.deepEqual(planQuestion(f).reasons,['SOURCE_UID_CONFLICT']);});
-test('identity fingerprint drift is refused',()=>{const f=fixture();f.identity.sourceFingerprint='bad';assert.deepEqual(planQuestion(f).reasons,['IDENTITY_SOURCE_FINGERPRINT_MISMATCH']);});
-test('unrelated metadata fingerprint conflict is refused',()=>{const f=fixture();f.current.sourceFingerprint='bad';assert.deepEqual(planQuestion(f).reasons,['METADATA_SOURCE_FINGERPRINT_CONFLICT']);});
+test('identity fingerprint drift is refused when the row is not bound to the current stem and choices',()=>{const f=fixture();f.identity.sourceFingerprint='bad';f.current.contentFingerprint='bad';assert.deepEqual(planQuestion(f).reasons,['IDENTITY_SOURCE_FINGERPRINT_MISMATCH']);});
+test('unrelated metadata fingerprint conflict is refused when the row is not bound to the current stem and choices',()=>{const f=fixture();f.current.sourceFingerprint='bad';f.current.contentFingerprint='bad';assert.deepEqual(planQuestion(f).reasons,['METADATA_SOURCE_FINGERPRINT_CONFLICT']);});
+// 결속 지문 = 발문+보기(text-v1). 전체 지문(해설·정답·그림)은 감사용이라 그것만 어긋난 행은 막지 않는다.
+const rebindsFor=(uidValue,anchorFp,question)=>({present:true,entries:1,byUid:new Map([[uidValue,[{uid:uidValue,fp:anchorFp,text:textFingerprint(question)}]]])});
+test('solution-only and answer-only edits no longer block registration (stem and choices bound by the row content fingerprint)',()=>{
+  const f=fixture(),staleFp=f.identity.sourceFingerprint;
+  f.question.solution='edited solution';f.question.answer='b';
+  assert.notEqual(sourceFingerprint(f.question),staleFp);
+  const r=planQuestion(f);
+  assert.equal(r.status,'APPLY');
+  // identity는 이 등록기가 고치지 않으므로 행의 전체 지문도 identity와 같게 둔다(어긋남이 새로 생기면 FINAL_QA·난이도 길이 divergence로 거절한다).
+  assert.equal(r.final.sourceFingerprint,staleFp);assert.equal(r.final.contentFingerprint,contentFingerprint(f.question));
+  // 같은 요청을 다시 돌려도 지문 사유로 거절되지 않고 이미 등록으로 끝난다.
+  const again={...f,current:{...f.current,...r.final}};
+  assert.equal(planQuestion({...again,priorReceipt:{inputHash:r.inputHash,metadataRegistrationStatus:'REGISTERED'}}).status,'ALREADY_REGISTERED');
+});
+test('figure-only edit is accepted only through a frozen rebind record for the row anchor fingerprint',()=>{
+  const f=fixture(),anchor=f.current.contentFingerprint;
+  f.question.image='new-figure.png';
+  assert.notEqual(contentFingerprint(f.question),anchor);
+  assert.deepEqual(planQuestion(f).reasons,['IDENTITY_SOURCE_FINGERPRINT_MISMATCH']);
+  assert.equal(planQuestion({...f,textRebinds:rebindsFor(uid,anchor,f.question)}).status,'APPLY');
+  // 다른 문항·다른 지문에 대한 기록은 효력이 없다.
+  assert.deepEqual(planQuestion({...f,textRebinds:rebindsFor(uid,'f'.repeat(64),f.question)}).reasons,['IDENTITY_SOURCE_FINGERPRINT_MISMATCH']);
+});
+test('stem or choices edit is refused even with an older rebind record',()=>{
+  for(const edit of [q=>{q.content='changed stem';},q=>{q.choices=['a','c'];}]) {
+    const f=fixture(),anchor=f.current.contentFingerprint,old=structuredClone(f.question);
+    edit(f.question);
+    assert.deepEqual(planQuestion(f).reasons,['IDENTITY_SOURCE_FINGERPRINT_MISMATCH']);
+    assert.deepEqual(planQuestion({...f,textRebinds:rebindsFor(uid,anchor,old)}).reasons,['IDENTITY_SOURCE_FINGERPRINT_MISMATCH']);
+  }
+});
+test('a row with no binding evidence at all stays refused',()=>{const f=fixture();f.identity.sourceFingerprint='bad';delete f.current.contentFingerprint;assert.deepEqual(planQuestion({...f,textRebinds:{present:true,entries:0,byUid:new Map()}}).reasons,['IDENTITY_SOURCE_FINGERPRINT_MISMATCH']);});
+test('a row whose only binding is the type judgment stays refused',()=>{
+  const f=fixture();f.question.image='new-figure.png';
+  f.current.fieldStatus={problemType:'approved_direct_judgment'};
+  f.current.typeApproval={approvalType:'DIRECT_JUDGMENT',textBindingFingerprint:textFingerprint(f.question)};
+  assert.deepEqual(planQuestion(f).reasons,['IDENTITY_SOURCE_FINGERPRINT_MISMATCH']);
+});
 test('runtime owner is not silently moved',()=>{const f=fixture();f.runtimeOwner='OTHER';assert.deepEqual(planQuestion(f).reasons,['EXISTING_RUNTIME_OWNER_CONFLICT']);});
 test('missing semantic rationale is not synthesized',()=>{const f=fixture();delete f.question.decisiveStep;assert.deepEqual(planQuestion(f).reasons,['SOURCE_SEMANTIC_RATIONALE_MISSING']);});
 test('unknown difficulty is retained as debt',()=>{const f=fixture();f.question.difficultyBucket='UNKNOWN';assert.ok(planQuestion(f).reasons.includes('DIFFICULTY_INCOMPLETE'));});
@@ -1732,3 +1772,162 @@ test('main auto-meta verify CLI preserves missing registered UID rejection',t=>{
   assert.match(result.stderr,/REGISTERED_UID_MISSING:qid_v1_a{64}/);
   assert.doesNotMatch(result.stderr,/unsettled top-level await/);
 });
+
+// ---- registration modes: a merge run handles only what that merge changed; the backlog waits for a digest run ----
+test('registration mode: libraries read only the explicit variable; the writer alone infers merge from a push event',()=>{
+  // Library/tool reader: no explicit value means digest, whatever CI event the process runs in.
+  for(const env of [{},{GITHUB_EVENT_NAME:'push'},{GITHUB_EVENT_NAME:'schedule'},{GITHUB_EVENT_NAME:'pull_request'}])assert.equal(explicitRegistrationMode(env),'digest',JSON.stringify(env));
+  assert.equal(explicitRegistrationMode({ARCHIVE_REGISTRATION_MODE:'merge'}),'merge');
+  assert.equal(explicitRegistrationMode({GITHUB_EVENT_NAME:'push',ARCHIVE_REGISTRATION_MODE:'digest'}),'digest');
+  assert.throws(()=>explicitRegistrationMode({ARCHIVE_REGISTRATION_MODE:'fast'}),/REGISTRATION_MODE_INVALID/);
+  // Writer reader.
+  assert.equal(inferRegistrationMode({GITHUB_EVENT_NAME:'push'}),'merge');
+  for(const env of [{},{GITHUB_EVENT_NAME:'schedule'},{GITHUB_EVENT_NAME:'workflow_dispatch'},{GITHUB_EVENT_NAME:'pull_request'}])assert.equal(inferRegistrationMode(env),'digest');
+  assert.equal(inferRegistrationMode({GITHUB_EVENT_NAME:'push',ARCHIVE_REGISTRATION_MODE:'digest'}),'digest');
+  assert.equal(inferRegistrationMode({GITHUB_EVENT_NAME:'schedule',ARCHIVE_REGISTRATION_MODE:'merge'}),'merge');
+  assert.throws(()=>inferRegistrationMode({ARCHIVE_REGISTRATION_MODE:'fast'}),/REGISTRATION_MODE_INVALID/);
+  assert.throws(()=>selectTargets(root,{},{},'0'.repeat(40),undefined,'fast'),/REGISTRATION_MODE_INVALID/);
+});
+test('a push environment without an explicit mode never turns the registrar (function or CLI) into merge mode',()=>modeFixture(async f=>{
+  seedMode(f);const before=f.stateBytes();
+  process.env.GITHUB_EVENT_NAME='push';
+  const plan=await f.run('plan',{plan:true});
+  assert.equal(plan.mode,'digest');assert.equal(plan.targetCount,5,'backlog plus this merge, as in a digest run');
+  const out=path.join(f.reports,'cli-plan.json'),env={...process.env,GITHUB_EVENT_NAME:'push',GITHUB_ACTIONS:''};delete env.ARCHIVE_REGISTRATION_MODE;
+  const cli=spawnSync(process.execPath,[path.join(root,'archive/tools/meta-foundation/auto-register-merged-source.mjs'),'--root',f.dir,'--plan','--report',out],{encoding:'utf8',env});
+  assert.equal(cli.status,0,cli.stderr);
+  const cliPlan=JSON.parse(fs.readFileSync(out,'utf8'));assert.equal(cliPlan.mode,'digest');assert.equal(cliPlan.targetCount,5);
+  const explicit=spawnSync(process.execPath,[path.join(root,'archive/tools/meta-foundation/auto-register-merged-source.mjs'),'--root',f.dir,'--plan','--report',out],{encoding:'utf8',env:{...env,ARCHIVE_REGISTRATION_MODE:'merge'}});
+  assert.equal(explicit.status,0,explicit.stderr);assert.equal(JSON.parse(fs.readFileSync(out,'utf8')).targetCount,3,'only an explicit value selects merge');
+  assert.deepEqual(f.stateBytes(),before);
+}));
+const refusingContext=async()=>({registry:{registrySha:'sha256:'+'c'.repeat(64)},validate(){},refreshRuntime(){},metadata:{records:[]},metaByUid:new Map(),
+  identityMap:{records:[]},identityByJoin:new Map(),runtimes:new Map(),owners:new Map()});
+// Two exam files. fixture.js is the one a merge changes; other.js only carries queued backlog. Every attempted target is refused
+// by the empty context, which is enough to observe ordering, budget, markers and cursor without a registry.
+async function modeFixture(fn,{maxQuestionsPerRun=2}={}) {
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'auto-meta-mode-')),git=(...args)=>execFileSync('git',args,{cwd:dir,encoding:'utf8',stdio:['pipe','pipe','pipe']}).trim();
+  const savedActions=process.env.GITHUB_ACTIONS,savedMode=process.env.ARCHIVE_REGISTRATION_MODE,savedEvent=process.env.GITHUB_EVENT_NAME;
+  const reports=dir+'-reports';fs.mkdirSync(reports);
+  try {
+    delete process.env.GITHUB_ACTIONS;delete process.env.ARCHIVE_REGISTRATION_MODE;delete process.env.GITHUB_EVENT_NAME;
+    git('init','-q');git('config','user.email','test@example.invalid');git('config','user.name','fixture');
+    const other='original/middle/m3/1mid/other.js';
+    const put=(file,bank)=>{const full=path.join(dir,'archive/exams',file);fs.mkdirSync(path.dirname(full),{recursive:true});fs.writeFileSync(full,'window.questionBank='+JSON.stringify(bank)+';\n');};
+    const commit=()=>{git('add','.');git('commit','-qm','fixture');return git('rev-parse','HEAD');};
+    const auto=name=>path.join(dir,'.archive-meta-register/auto',name);
+    const setState=state=>{fs.mkdirSync(path.dirname(auto('x')),{recursive:true});fs.writeFileSync(auto('state.json'),JSON.stringify(state,null,2)+'\n');};
+    const setConfig=head=>{fs.mkdirSync(path.dirname(auto('x')),{recursive:true});fs.writeFileSync(auto('config.json'),JSON.stringify({schemaVersion:'archive-main-merge-meta-v1',enabled:true,bootstrapBase:head,maxQuestionsPerRun,pilotTargets:[]}));};
+    const state=()=>JSON.parse(fs.readFileSync(auto('state.json'),'utf8')),stateBytes=()=>fs.readFileSync(auto('state.json'));
+    const run=(name,options={})=>registerMergedSource({root:dir,contextLoader:refusingContext,reportPath:path.join(reports,name+'.json'),...options});
+    const report=name=>JSON.parse(fs.readFileSync(path.join(reports,name+'.json'),'utf8'));
+    await fn({dir,git,put,commit,other,setState,setConfig,state,stateBytes,run,report,reports});
+  } finally {
+    for(const [name,value] of [['GITHUB_ACTIONS',savedActions],['ARCHIVE_REGISTRATION_MODE',savedMode],['GITHUB_EVENT_NAME',savedEvent]]){if(value===undefined)delete process.env[name];else process.env[name]=value;}
+    fs.rmSync(dir,{recursive:true,force:true});fs.rmSync(reports,{recursive:true,force:true});
+  }
+}
+// base: both files exist; head: this merge rewrote every question of fixture.js. State: cursor at base, two queued questions of other.js.
+const seedMode=f=>{
+  const bank=(n,a=1)=>Array.from({length:n},(_,i)=>({id:i+1,a}));
+  f.put(source,bank(3));f.put(f.other,bank(2));const base=f.commit();
+  f.put(source,bank(3,2));const head=f.commit();
+  const pending={};for(const n of [1,2])pending[`${f.other}#${n}`]={sourceArchiveFile:f.other,sourceOrdinal:n,baseCommit:base};
+  f.setConfig(base);f.setState({schemaVersion:'archive-main-merge-meta-v1',lastProcessedCommit:base,pending,completedPilots:[],latestReceipts:{}});
+  return {base,head,pending};
+};
+test('merge mode selects only what changed since the cursor plus pilots, and never copies or edits the queued backlog',()=>modeFixture(f=>{
+  const {base,head,pending}=seedMode(f),state={lastProcessedCommit:base,pending,completedPilots:[]};
+  const before=JSON.stringify(state),stats={};
+  const merge=selectTargets(f.dir,state,{bootstrapBase:base},head,stats,'merge');
+  assert.deepEqual(merge.map(([k])=>k),[1,2,3].map(n=>`${source}#${n}`));
+  assert.equal(stats.pendingBefore,2,'the report still knows how much is queued');assert.equal(JSON.stringify(state),before);
+  const digest=selectTargets(f.dir,state,{bootstrapBase:base},head,{},'digest');
+  assert.deepEqual(digest.map(([k])=>k),[`${source}#1`,`${source}#2`,`${source}#3`,`${f.other}#1`,`${f.other}#2`],'digest keeps the previous behaviour: backlog plus this merge, one alphabetical line');
+  assert.deepEqual(selectTargets(f.dir,state,{bootstrapBase:base},head),digest,'the default is digest');
+}));
+test('merge mode starts from the durable cursor, so a skipped intermediate push loses nothing',()=>gitFixture(({dir,put,commit})=>{
+  put([{id:1,a:1},{id:2,a:1},{id:3,a:1}]);const base=commit();
+  put([{id:1,a:2},{id:2,a:1},{id:3,a:1}]);commit();            // push 1 (its own run was replaced in the concurrency queue)
+  put([{id:1,a:2},{id:2,a:1},{id:3,a:2}]);const head=commit();  // push 2
+  const keys=selectTargets(dir,{lastProcessedCommit:base,pending:{}},{bootstrapBase:base},head,undefined,'merge').map(([k])=>k);
+  assert.deepEqual(keys,[`${source}#1`,`${source}#3`]);
+}));
+test('a digest run tries merge leftovers first; entries without the new fields are plain backlog in unchanged order',()=>modeFixture(f=>{
+  const {base,head}=seedMode(f),mk=(file,n,extra={})=>[`${file}#${n}`,{sourceArchiveFile:file,sourceOrdinal:n,baseCommit:base,...extra}];
+  const pending=Object.fromEntries([mk(f.other,1),mk(f.other,2,{origin:'merge',mergeHead:head}),mk(source,3,{origin:'merge',mergeHead:head})]);
+  const keys=selectTargets(f.dir,{lastProcessedCommit:head,pending},{bootstrapBase:base},head,{},'digest').map(([k])=>k);
+  assert.deepEqual(keys,[`${source}#3`,`${f.other}#2`,`${f.other}#1`],'merge leftovers first, alphabetical inside each group');
+  const old={lastProcessedCommit:head,pending:Object.fromEntries([mk(f.other,2),mk(f.other,1)])};
+  assert.deepEqual(selectTargets(f.dir,old,{bootstrapBase:base},head,{},'digest').map(([k])=>k),[`${f.other}#1`,`${f.other}#2`],'no markers: plain alphabetical');
+  assert.deepEqual(backlogCounts(pending),{backlogRemaining:3,mergeBacklog:2});assert.deepEqual(backlogCounts(undefined),{backlogRemaining:0,mergeBacklog:0});
+}));
+test('merge mode with no changed exam question: plan reports zero targets, state.json is byte-identical, the backlog stays visible',()=>modeFixture(async f=>{
+  const {base}=seedMode(f);
+  fs.writeFileSync(path.join(f.dir,'derived.json'),'{}');f.commit();
+  f.setState({schemaVersion:'archive-main-merge-meta-v1',lastProcessedCommit:f.git('rev-parse','HEAD'),pending:{[`${f.other}#1`]:{sourceArchiveFile:f.other,sourceOrdinal:1,baseCommit:base}},completedPilots:[],latestReceipts:{}});
+  const before=f.stateBytes();
+  const plan=await f.run('plan',{mode:'merge',plan:true});
+  assert.equal(plan.status,'NO_CHANGE');assert.equal(plan.targetCount,0);assert.equal(plan.mode,'merge');
+  assert.equal(plan.backlogRemaining,1,'NO_TARGETS is not "nothing left"');assert.equal(plan.mergeBacklog,0);
+  assert.match(plan.note,/^NO_TARGETS/);assert.equal(plan.instrumentation.registration.backlogRemaining,1);
+  const written=await f.run('write',{mode:'merge',write:true});
+  assert.equal(written.status,'NO_CHANGE');assert.deepEqual(f.stateBytes(),before);
+  await assert.rejects(()=>f.run('bad',{mode:'merge',plan:true,write:true}),/AUTO_META_PLAN_READ_ONLY/);
+}));
+test('merge mode with a changed exam: plan lists only that merge, with no queued entry and no write',()=>modeFixture(async f=>{
+  seedMode(f);const before=f.stateBytes();
+  const plan=await f.run('plan',{mode:'merge',plan:true});
+  assert.equal(plan.status,'PLAN');assert.equal(plan.targetCount,3);assert.equal(plan.backlogRemaining,2);
+  assert.deepEqual(f.stateBytes(),before);
+  const digestPlan=await f.run('plan-digest',{mode:'digest',plan:true});
+  assert.equal(digestPlan.targetCount,5,'a digest run also owns the two queued questions');
+}));
+test('merge run over the limit marks its unreached questions, advances the cursor, leaves the backlog byte-identical; the next digest run takes them first and clears the mark',()=>modeFixture(async f=>{
+  const {base,head,pending}=seedMode(f);
+  const merge=await f.run('merge',{mode:'merge',write:true});
+  const after=f.state();
+  assert.equal(after.lastProcessedCommit,head,'cursor and queued marks are written together');
+  assert.deepEqual([after.pending[`${f.other}#1`],after.pending[`${f.other}#2`]],[pending[`${f.other}#1`],pending[`${f.other}#2`]],'queued backlog untouched');
+  assert.equal(merge.results.length,2,'the limit of 2 applies to this merge only');
+  for(const n of [1,2]){const e=after.pending[`${source}#${n}`];assert.ok(e.lastReasons?.length&&e.attemptSignature,'attempted and refused');assert.equal(e.origin,undefined);assert.equal(e.mergeHead,undefined);}
+  assert.deepEqual(after.pending[`${source}#3`],{sourceArchiveFile:source,sourceOrdinal:3,baseCommit:base,origin:'merge',mergeHead:head});
+  assert.equal(merge.mergeNotReached,1);assert.equal(merge.mergeBacklog,1);assert.equal(merge.backlogRemaining,5);assert.equal(merge.mode,'merge');
+  assert.deepEqual(merge.instrumentation.registration,{mode:'merge',backlogRemaining:5,mergeBacklog:1,mergeNotReached:1});
+  // The writer's replay of exactly this batch must stay idempotent with the new fields.
+  const replay=await f.run('replay',{mode:'digest',replayReportPath:path.join(f.reports,'merge.json')});
+  assert.equal(replay.replayVerified,true);assert.equal(replay.applied,0);assert.deepEqual(replay.plannedPaths,[]);
+  const digest=await f.run('digest',{mode:'digest',write:true});
+  const tried=digest.results.filter(r=>r.status!=='SUPPLEMENT_PENDING_UNCHANGED').map(r=>`${r.sourceArchiveFile}#${r.sourceOrdinal}`);
+  assert.equal(tried[0],`${source}#3`,'the merge leftover is attempted before any older backlog');
+  const done=f.state().pending[`${source}#3`];
+  assert.ok(done.lastReasons?.length);assert.equal(done.origin,undefined);assert.equal(done.mergeHead,undefined,'the mark disappears once it was attempted');
+  assert.equal(digest.mergeBacklog,0);assert.equal(digest.mode,'digest');
+}));
+test('digest run with markerless state behaves as before: whole backlog plus this merge, no marks written',()=>modeFixture(async f=>{
+  const {base}=seedMode(f);
+  const run=await f.run('digest',{mode:'digest',write:true});
+  assert.equal(run.results.length,2,'limit 2 of 5 targets');
+  const state=f.state();assert.equal(state.pending[`${source}#1`].lastReasons?.length>0,true);assert.equal(state.pending[`${f.other}#1`].lastReasons,undefined,'not reached, not touched');
+  assert.ok(Object.values(state.pending).every(e=>e.origin===undefined&&e.mergeHead===undefined),'digest never marks anything');
+  assert.equal(state.lastProcessedCommit,f.git('rev-parse','HEAD'));void base;
+}));
+test('merge run that fits in the limit handles exactly its own questions and leaves every queued entry untouched',()=>modeFixture(async f=>{
+  const {pending}=seedMode(f);
+  const run=await f.run('merge',{mode:'merge',write:true});
+  assert.equal(run.results.length,3,'exactly the three questions of this merge');
+  assert.equal(run.mergeNotReached,0);assert.equal(run.mergeBacklog,0);
+  for(const key of Object.keys(pending))assert.deepEqual(f.state().pending[key],pending[key]);
+},{maxQuestionsPerRun:100}));
+test('a merge mark left on an entry that was already attempted (kept by an older writer) is dropped when the entry is skipped as unchanged',()=>modeFixture(async f=>{
+  seedMode(f);
+  await f.run('first',{mode:'digest',write:true});
+  const state=f.state(),key=`${source}#1`;
+  assert.ok(state.pending[key].attemptSignature);
+  state.pending[key]={...state.pending[key],origin:'merge',mergeHead:'a'.repeat(40)};
+  fs.writeFileSync(path.join(f.dir,'.archive-meta-register/auto/state.json'),JSON.stringify(state,null,2)+'\n');
+  const run=await f.run('second',{mode:'digest',write:true});
+  assert.ok(run.results.some(r=>r.status==='SUPPLEMENT_PENDING_UNCHANGED'&&r.sourceOrdinal===1));
+  assert.equal(f.state().pending[key].origin,undefined);assert.equal(f.state().pending[key].mergeHead,undefined);
+  assert.equal(f.state().pending[key].attemptSignature,state.pending[key].attemptSignature,'nothing else about the entry changes');
+}));

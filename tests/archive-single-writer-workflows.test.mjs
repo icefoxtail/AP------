@@ -61,17 +61,25 @@ const git = (dir, ...args) => execFileSync('git', args, { cwd: dir, encoding: 'u
 
 test('only the serialized main registration job persists shared outputs, using one retryable transaction', () => {
   const register = job(writer, 'register');
-  assert.match(register, /if: github\.event_name != 'pull_request' && github\.ref == 'refs\/heads\/main'/);
+  assert.match(register, /needs: classify\n    if: \$\{\{ !cancelled\(\) && github\.event_name != 'pull_request' && github\.ref == 'refs\/heads\/main' && needs\.classify\.outputs\.skip_register != 'true' \}\}/);
   assert.match(register, /permissions:\n      contents: write\n      actions: write/);
   assert.match(register, /group: archive-reviewed-exam-meta-register-main\n      cancel-in-progress: false/);
-  assert.equal((register.match(/node tools\/ci\/git-push-derived-with-retry\.mjs/g) || []).length, 1);
+  assert.equal((register.match(/node tools\/ci\/git-push-derived-with-retry\.mjs/g) || []).length, 2, 'required-lane save, then the full save');
+  assert.match(step(register, /^        id: persist_required$/m), /--regenerate 'node tools\/ci\/archive-registration-writer\.mjs --required-only --work-dir "\$WRITER_WORK_DIR"'/);
+  assert.match(step(register, /^        id: prepare_required$/m), /archive-registration-writer\.mjs --required-only --work-dir/);
   assert.match(register, /--paths-file "\$WRITER_WORK_DIR\/commit\.paths"/);
   assert.match(register, /--regenerate 'node tools\/ci\/archive-registration-writer\.mjs --work-dir "\$WRITER_WORK_DIR"'/);
-  assert.match(register, /--remote origin --branch main --max-attempts 6/);
-  assert.equal((register.match(/--race-fetch-scope all-heads/g) || []).length, 1);
+  assert.equal((register.match(/--remote origin --branch main --max-attempts 4/g) || []).length, 2, 'both saves retry up to 4 times (a regeneration outlasts the merge interval on busy days)');
+  // RETRY_EXHAUSTED pushed nothing: queue one more run right away rather than waiting for the next push or the hourly cron.
+  const requeue = step(register, /^      - name: Queue another registration run when main kept moving$/m);
+  assert.match(requeue, /if: always\(\) && \(steps\.persist_required\.outputs\.result == 'RETRY_EXHAUSTED' \|\| steps\.persist\.outputs\.result == 'RETRY_EXHAUSTED'\)/);
+  assert.match(requeue, /gh workflow run archive-main-auto-meta\.yml --ref main/);
+  assert.equal((register.match(/--race-fetch-scope all-heads/g) || []).length, 2);
   assert.doesNotMatch(job(writer, 'test'), /--race-fetch-scope/);
-  assert.match(register.split('    steps:')[0], /timeout-minutes: 150/);
-  assert.match(step(register, /^        id: persist$/m), /timeout-minutes: 90/);
+  assert.match(register.split('    steps:')[0], /timeout-minutes: 345/);
+  assert.match(step(register, /^        id: persist$/m), /timeout-minutes: 170/);
+  // The reviewed inbox lane may run 120 minutes; its enclosing prepare step must outlast it.
+  assert.match(step(register, /^        id: prepare$/m), /timeout-minutes: 150/);
   assert.match(register, /--verify-command 'node tools\/check-git-growth\.mjs --base "\$DERIVED_BASE_SHA" --head "\$DERIVED_HEAD_SHA"'/);
   assert.match(register, /--reapply-check 'node tools\/ci\/archive-registration-writer\.mjs --unrelated-range "\$DERIVED_BASE_SHA" "\$COMPETITOR_HEAD_SHA"'/);
   assert.doesNotMatch(register, /--force|git\s+(?:commit|push)\b/);
@@ -118,7 +126,7 @@ test('the publication handoff consumes only the push helper registered SHA and h
   assert.match(dispatch, /if: steps\.registered\.outputs\.publishable == 'true'/);
   assert.match(dispatch, /steps\.persist\.outputs\.result == 'PUSHED' \|\| github\.event_name != 'schedule'/,
     'unchanged periodic registration does not dispatch the same package again');
-  assert.equal((register.match(/gh workflow run archive-pages-release\.yml/g) || []).length, 1);
+  assert.equal((register.match(/gh workflow run archive-pages-release\.yml/g) || []).length, 2, 'after each of the two saves');
   assert.doesNotMatch(compatibility, /gh workflow run archive-pages-release\.yml/);
 });
 
@@ -165,6 +173,45 @@ test('actual dispatch shell sends one exact SHA and refuses malformed refs befor
     const rejected = f.run(command, { REGISTERED_MAIN_SHA: invalid });
     assert.notEqual(rejected.status, 0, invalid || 'empty SHA');
     assert.equal(f.read('command-trace'), '', 'no unbound publication request was sent');
+  }
+});
+
+// An already registered push must not wait behind the register lock; any doubt leaves it to the register job.
+test('classify hands only a push that needs no registration straight to Pages, outside the lock', t => {
+  const classify = job(writer, 'classify');
+  assert.match(classify, /if: github\.event_name == 'push' && github\.ref == 'refs\/heads\/main'/);
+  assert.doesNotMatch(classify, /concurrency:|contents: write|git-push-derived-with-retry/);
+  const handoff = step(classify, /^        id: handoff$/m);
+  assert.match(handoff, /continue-on-error: true/);
+  const command = shell(handoff);
+  const sha = '4'.repeat(40);
+  const f = fixture(t);
+  const nodeStub = [
+    '#!/usr/bin/env bash',
+    'if [[ "$1" == tools/ci/archive-registration-writer.mjs ]]; then',
+    '  mkdir -p "$4"; printf \'{"needed":%s,"publishable":%s}\' "$NEEDED" "${PUBLISHABLE:-true}" > "$4/report.json"; [[ "${WRITER_FAIL:-}" != 1 ]]; exit',
+    'fi',
+    'exec "$REAL_NODE" "$@"', ''].join('\n');
+  const run = (needed, extra = {}) => {
+    f.put('bin/node', nodeStub, 0o755);
+    f.put('bin/gh', '#!/usr/bin/env bash\nprintf "%s\\n" "$@" >> "$COMMAND_TRACE"\n', 0o755);
+    f.put('command-trace', '');
+    f.put('output', '');
+    return f.run(command, { PUSH_SHA: sha, NEEDED: needed, REAL_NODE: process.execPath, RUNNER_TEMP: path.join(f.dir, 'tmp'), ...extra });
+  };
+  assert.equal(run('false').status, 0);
+  assert.deepEqual(f.read('command-trace').trim().split('\n'),
+    ['workflow', 'run', 'archive-pages-release.yml', '--ref', 'main', '-f', `registered_main_sha=${sha}`]);
+  assert.equal(f.read('output'), 'dispatched=true\n');
+  // Required lanes current but other work pending: publish now, and keep the register job.
+  run('true');
+  assert.deepEqual(f.read('command-trace').trim().split('\n'),
+    ['workflow', 'run', 'archive-pages-release.yml', '--ref', 'main', '-f', `registered_main_sha=${sha}`]);
+  assert.equal(f.read('output'), '', 'the register job is not skipped while other lanes are needed');
+  for (const [needed, extra] of [['true', { PUBLISHABLE: 'false' }], ['false', { WRITER_FAIL: '1' }], ['false', { PUSH_SHA: 'main' }]]) {
+    run(needed, extra);
+    assert.equal(f.read('command-trace'), '', 'nothing was dispatched');
+    assert.equal(f.read('output'), '', 'the register job is not skipped');
   }
 });
 

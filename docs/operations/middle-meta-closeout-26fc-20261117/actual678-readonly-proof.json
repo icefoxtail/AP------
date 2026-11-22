@@ -1,0 +1,2457 @@
+{
+  "schemaVersion": "archive-middle-actual-registered-observation-compact-v2",
+  "status": "ACTUAL_CONSUMER_AND_NUMBER_JOIN_VERIFIED_NINE_PROTECTION_FAILURES_PUBLIC_PENDING",
+  "execution": {
+    "snapshot": "678183260eba8a4296a65c98e0fdcfe1b495df4f",
+    "codeCommit": "9dad956f58ee2a6ba29bf9580fa5a9fd15be0f7f",
+    "observer": {
+      "commit": "9dad956f58ee2a6ba29bf9580fa5a9fd15be0f7f",
+      "path": "docs/operations/middle-meta-closeout-26fc-20261117/observe-registered-snapshot.mjs",
+      "gitBlobSha1": "3af65bd44923e37c318c022bb9d5ef144e5909fe",
+      "sha256": "aad112885ba2cd9a59d6683d2f50d5cd0b3e7664557183693da9cf1aab2bc1b4",
+      "bytes": 98820
+    },
+    "run": 44007448812,
+    "job": 133786099940,
+    "conclusion": "failure",
+    "observedAtUtc": "2026-11-17T03:03:47.693Z"
+  },
+  "provenance": {
+    "kind": "LOG_DERIVED_JSON_NOT_RAW_ARTIFACT",
+    "derivedReportGit": "4ed20081a50581bde6c041fa39413b80116651a4",
+    "derivedReportSha256": "4e7b3bfd7906ac5e611465fdd4e42ad40e5bd810a131f39d59732a18292211cc",
+    "derivedBytes": 3211245,
+    "timestampPrefixesRemoved": true,
+    "transportBomLinesRemoved": 2,
+    "artifactId": 14293874978,
+    "artifactZipBytes": 430030,
+    "artifactZipSha256FromJobAndApi": "f7a59be5af0bf76fd79bd421d844604092426f98af8478e1400afd1dd038be14",
+    "rawArtifactContentRead": false
+  },
+  "scope": {
+    "expectedTotal": 6389,
+    "denominators": {
+      "M1S1": 286,
+      "M1S2": 761,
+      "M2S1": 1780,
+      "M2S2": 1604,
+      "M3S2": 1958
+    },
+    "membershipSha256": "046b02108c3d7fcd162b4eeec194ce7da7c393a87b8dd367b22b54019c23ca97",
+    "membershipExact": true
+  },
+  "physical": {
+    "registered": 5449,
+    "remaining": 940,
+    "total": 6389,
+    "semesters": {
+      "M1S1": {
+        "total": 286,
+        "registered": 243,
+        "remaining": 43,
+        "notSubmitted": 43,
+        "pendingReasonMemberships": {
+          "NOT_SUBMITTED": 43
+        },
+        "reasonCountsMayOverlap": true
+      },
+      "M1S2": {
+        "total": 761,
+        "registered": 750,
+        "remaining": 11,
+        "notSubmitted": 0,
+        "pendingReasonMemberships": {
+          "M1S2_PROBLEM_CONTINUITY_GIT_PATH_BINDING": 7,
+          "STALE_STUDENT_PAYLOAD": 4
+        },
+        "reasonCountsMayOverlap": true
+      },
+      "M2S1": {
+        "total": 1780,
+        "registered": 1725,
+        "remaining": 55,
+        "notSubmitted": 0,
+        "pendingReasonMemberships": {
+          "STALE_STUDENT_PAYLOAD": 47,
+          "EXISTING_REGISTERED_VECTOR_LIVE_BYTES_CHANGED": 7,
+          "EXPLICIT_REVIEW_HOLD:ORIGINAL_SOURCE_CONTRADICTION_UNRESOLVED": 1
+        },
+        "reasonCountsMayOverlap": true
+      },
+      "M2S2": {
+        "total": 1604,
+        "registered": 1030,
+        "remaining": 574,
+        "notSubmitted": 0,
+        "pendingReasonMemberships": {
+          "STALE_STUDENT_PAYLOAD": 523,
+          "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED": 27,
+          "SOURCE_UID_CONFLICT": 24
+        },
+        "reasonCountsMayOverlap": true
+      },
+      "M3S2": {
+        "total": 1958,
+        "registered": 1701,
+        "remaining": 257,
+        "notSubmitted": 52,
+        "pendingReasonMemberships": {
+          "STALE_STUDENT_PAYLOAD": 203,
+          "NOT_SUBMITTED": 52,
+          "M3S2_LAYOUT_UI_CURRENT_RENDER_DEPENDENCY": 1,
+          "M3_Q5_VECTOR_ISSUED_PROOF_REJECTED:M3_Q5_VECTOR_ORIGINAL_NATIVE_GIVEN_UI_AND_ANCESTOR_REQUIRED": 1
+        },
+        "reasonCountsMayOverlap": true
+      }
+    },
+    "pendingUidCount": 940,
+    "pendingMappingComplete": [
+      {
+        "code": "PENDING_IDENTITY_JOINS_COMPLETE",
+        "pass": true,
+        "details": {
+          "unresolved": []
+        }
+      },
+      {
+        "code": "PENDING_IDENTITY_JOINS_COMPLETE",
+        "pass": true,
+        "details": {
+          "unresolved": []
+        }
+      }
+    ]
+  },
+  "officialReceipt": {
+    "verificationRef": {
+      "commit": "678183260eba8a4296a65c98e0fdcfe1b495df4f",
+      "path": ".archive-meta-register/auto/4slot/last-verification.json",
+      "gitBlobSha1": "a90fb70fac0412e170a5431faffeb264b3d7d290",
+      "sha256": "8171fdd244ea2ef9d1ea961ca982b4542c0fd5743273769db5199d5ddfd6dd8d",
+      "bytes": 623
+    },
+    "receiptRef": {
+      "commit": "678183260eba8a4296a65c98e0fdcfe1b495df4f",
+      "path": ".archive-meta-register/auto/4slot/receipts/3db65e68275f1d4db32722f57ac02c37cfa192ae4bd58aefe434e12f85c7c808.json",
+      "gitBlobSha1": "3715ea3a68911cd198aa7d61f2e333625ede28da",
+      "sha256": "01ace8f8925adb380a2be82f587b956478f2f093a6cd9e9ecd9d4a9b9e50d825",
+      "bytes": 685
+    },
+    "status": "PASS",
+    "reportedStatus": "PASS_WITH_SUPPLEMENTS",
+    "sourceCommit": "99a25fd91c471416a4923163c253377efd945ab5",
+    "sourceCommitIsAncestorOfSnapshot": true,
+    "indexSha256": "3db65e68275f1d4db32722f57ac02c37cfa192ae4bd58aefe434e12f85c7c808",
+    "inputDigest": "5e3bf5b71755966c919d99177fbed99666ec0cb62fb32aef21d8d323a86af47f",
+    "consumerVerified": 18367,
+    "counts": {
+      "files": 954,
+      "items": 21699,
+      "registered": 18367,
+      "pending": 3427,
+      "withCandidates": 754,
+      "identityFingerprintHistorical": 6309
+    },
+    "replayChanged": false,
+    "sourceMutation": 0,
+    "authored4SlotMutation": 0,
+    "semanticApprovalMutation": 0,
+    "independentReviewClaim": false,
+    "currentScopedConsumerExecutionIsSeparate": true
+  },
+  "consumer": {
+    "status": "PASS_STORED_FOUR_SLOT_CONSUMER_ONLY",
+    "codeRef": {
+      "commit": "678183260eba8a4296a65c98e0fdcfe1b495df4f",
+      "path": "archive/item-4slot.js",
+      "gitBlobSha1": "249e0af23b6a011d1247399ef487a635222e1e27",
+      "sha256": "0845bd881541a0b3f8faaf709b12274d09f29805bc36870bc245d12f4bfdab7d",
+      "bytes": 8639
+    },
+    "checkoutBytesExact": true,
+    "selectedIdentityCount": 6389,
+    "registered": 5449,
+    "wholeRecordGets": 5449,
+    "exactTermPostingQueries": 33841,
+    "pendingGetExclusions": 940,
+    "rawSourceEvaluation": 0,
+    "sourceFreshnessRevalidation": "NOT_PERFORMED",
+    "currentNativeValidation": "NOT_PERFORMED",
+    "newApproval": false
+  },
+  "closedNumbering": {
+    "baseline": "PASS_CLOSED_METADATA_NUMBER_PROJECTION",
+    "current": "PASS_CLOSED_METADATA_NUMBER_PROJECTION",
+    "sourceCount": 5,
+    "sourceEvaluation": 0,
+    "sourceBodyOutput": 0
+  },
+  "originalD5Holds36": {
+    "policy": "PRESERVE_BASELINE_D5_AUTHORITY_AND_VECTOR",
+    "authorityAxis": "D5",
+    "selected": 36,
+    "rows": [
+      {
+        "questionUid": "qid_v1_04c3d102a777b46c2697761d8705a9914d436b993e7dbd615255b5f5fec48afb",
+        "sourceArchiveFile": "original/middle/m2/2mid/20_풍덕중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 24,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "f33e52d3c07c22488de6cb296d46ed38701d3a22b79130f38afe4d4808e5799b",
+        "currentMetadataSha256": "f33e52d3c07c22488de6cb296d46ed38701d3a22b79130f38afe4d4808e5799b",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "b50f731b8c8e803bf8b7b199fc1b0e49a603ba91af7754d26aab3851df53b091",
+        "currentIdentitySha256": "b50f731b8c8e803bf8b7b199fc1b0e49a603ba91af7754d26aab3851df53b091",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 3,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_0d87a02b59f98a9f543e1be29489a0bc43e7febd4017d67d9bcba9b27fb62bf9",
+        "sourceArchiveFile": "original/middle/m2/2mid/21_향림중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 14,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "e27fe38c86a7235e5f91736908e7d4551f12379a6fdfdeb3660de074e6958262",
+        "currentMetadataSha256": "e27fe38c86a7235e5f91736908e7d4551f12379a6fdfdeb3660de074e6958262",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "9c95b4b2304a1a863abdcf7af4d6e6598db9471d5260092378ae66fc8fb71193",
+        "currentIdentitySha256": "9c95b4b2304a1a863abdcf7af4d6e6598db9471d5260092378ae66fc8fb71193",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 1,
+          "difficultyConfidence": {
+            "redactedValueSha256": "364bb7082249ee9fbc5247ee49735c4246f271b82c2745a35107ddda0d7cabcc"
+          },
+          "difficultyBoundaryFlag": {
+            "redactedValueSha256": "b829112d639c149fb90e12f650a4a007fc9dd4f50ef8cd2d8e29d7428c70a320"
+          },
+          "legacyLevelCompatibility": {
+            "redactedValueSha256": "0f15dc23249e5ae41849d7f070b24f8aea5d052fe3d20972b004e8b9e07349ba"
+          },
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_16d7f39f001c81db4788b40d7f16b55ff87a124b24e334570872b58338ab717f",
+        "sourceArchiveFile": "original/middle/m2/2mid/21_풍덕중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 17,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "d73419bbc57576e8043a098c5e4c405688c0e9888cfde5d735dd41fb64133b30",
+        "currentMetadataSha256": "d73419bbc57576e8043a098c5e4c405688c0e9888cfde5d735dd41fb64133b30",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "e82f802115cfde7c25e4f652d84869bda4f9824869fbf53da91dc63778e15e2e",
+        "currentIdentitySha256": "e82f802115cfde7c25e4f652d84869bda4f9824869fbf53da91dc63778e15e2e",
+        "pending": [
+          {
+            "reason": "STALE_STUDENT_PAYLOAD",
+            "basis": "INDEX_DISPLAY_NUMBER_TO_AUTHENTICATED_NUMBER_MAP"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 2,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_1ae6c0b27056dacf0e5048181adcccd478d8171f924d467e3600b7bd54dfdf7c",
+        "sourceArchiveFile": "original/middle/m2/2mid/20_금당중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 19,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "d83b62deced9a7762d1e8b5317783a44dd0a339c12532052e66f467f8cbd0e8b",
+        "currentMetadataSha256": "d83b62deced9a7762d1e8b5317783a44dd0a339c12532052e66f467f8cbd0e8b",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "61da3deacd5625a40210bd5e9f75031244611f8cb42dab55a1a656e62a81d0b6",
+        "currentIdentitySha256": "61da3deacd5625a40210bd5e9f75031244611f8cb42dab55a1a656e62a81d0b6",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 2,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_1bd38d319596bd53d3cf63517f7e0fcdcb3f943689c22e48a6a5155388c6e18c",
+        "sourceArchiveFile": "original/middle/m2/2mid/21_풍덕중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 19,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "9d2eb1d3eca70d4ca506c4ffc101d99730de81af876afd68cda1c7e13d6f0a21",
+        "currentMetadataSha256": "9d2eb1d3eca70d4ca506c4ffc101d99730de81af876afd68cda1c7e13d6f0a21",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "d2aaf15011a5e002b6492359c6504ca10b1f36b926654ab8ea0487f29cc8d8b0",
+        "currentIdentitySha256": "d2aaf15011a5e002b6492359c6504ca10b1f36b926654ab8ea0487f29cc8d8b0",
+        "pending": [
+          {
+            "reason": "STALE_STUDENT_PAYLOAD",
+            "basis": "INDEX_DISPLAY_NUMBER_TO_AUTHENTICATED_NUMBER_MAP"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 1,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_22a9ffd4f499d05ed3de7ed12f4de48231c166d790d8be65b445569cc62a9845",
+        "sourceArchiveFile": "original/middle/m2/2final/19_풍덕중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 16,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "4bd689aa1ceff9ebc3a34186e485ab0bcc78d7c605593a2b9b4ca843fb0795e0",
+        "currentMetadataSha256": "4bd689aa1ceff9ebc3a34186e485ab0bcc78d7c605593a2b9b4ca843fb0795e0",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "88b552a28f53a3982bd67c5da9f611ff62c62c45d41cf93399c3aaffe965dfe8",
+        "currentIdentitySha256": "88b552a28f53a3982bd67c5da9f611ff62c62c45d41cf93399c3aaffe965dfe8",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 2,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_2cc9c4780dca8975f92ba7ed5d3306628554a28088350e533f8fa1b58a7d7583",
+        "sourceArchiveFile": "original/middle/m2/2mid/20_금당중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 24,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "1da27eb18bf947bfd4a1d74fa36e9bd0b1cc9862d1c00d09ff7f872a7502c162",
+        "currentMetadataSha256": "1da27eb18bf947bfd4a1d74fa36e9bd0b1cc9862d1c00d09ff7f872a7502c162",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "e8d5dae49b30ddcc03893bc578f542934fd8dd6314f8b2b4666cb2f36016fa33",
+        "currentIdentitySha256": "e8d5dae49b30ddcc03893bc578f542934fd8dd6314f8b2b4666cb2f36016fa33",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 2,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_367e012776642d6e80755d48a5fb420cbc1af507280a4627110830e2dab502f4",
+        "sourceArchiveFile": "original/middle/m2/2mid/21_풍덕중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 11,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "fdd9c3425406dc1d6fbbdca081b82723cde59e3e0ea3b6119420598f4752f35a",
+        "currentMetadataSha256": "fdd9c3425406dc1d6fbbdca081b82723cde59e3e0ea3b6119420598f4752f35a",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "a823c6a7b3ef947aee4645070870b67c2566b83b6fc7e882390d4c9724cb29a4",
+        "currentIdentitySha256": "a823c6a7b3ef947aee4645070870b67c2566b83b6fc7e882390d4c9724cb29a4",
+        "pending": [
+          {
+            "reason": "STALE_STUDENT_PAYLOAD",
+            "basis": "INDEX_DISPLAY_NUMBER_TO_AUTHENTICATED_NUMBER_MAP"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 1,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_39d8117846b4f90aa0324a084694153a16a445097d2732572b3b5905ef778448",
+        "sourceArchiveFile": "original/middle/m2/2mid/21_풍덕중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 20,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "affdc8f732c7d1196fbfbaf9680eda71bcb919ac54e8ef3eddda2eb857d593db",
+        "currentMetadataSha256": "affdc8f732c7d1196fbfbaf9680eda71bcb919ac54e8ef3eddda2eb857d593db",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "63487d42687f2d156c681b04ad72619daa0776e34785f062d1c98a6a8e2309cf",
+        "currentIdentitySha256": "63487d42687f2d156c681b04ad72619daa0776e34785f062d1c98a6a8e2309cf",
+        "pending": [
+          {
+            "reason": "STALE_STUDENT_PAYLOAD",
+            "basis": "INDEX_DISPLAY_NUMBER_TO_AUTHENTICATED_NUMBER_MAP"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 2,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_3ace257ad3afd1bde0589c7d9c45a52309a789010770032226a28a7816be50ab",
+        "sourceArchiveFile": "original/middle/m2/2mid/21_풍덕중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 21,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "e99bea59b240aa2642aeb66df74fbc7f1e8418a9556b2ea2b807eb67beb4023d",
+        "currentMetadataSha256": "e99bea59b240aa2642aeb66df74fbc7f1e8418a9556b2ea2b807eb67beb4023d",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "cd2f6d999f9bdd404e6aaa28c98d8824832fbdbe66a2f435ce3a8e5a8a09fd0e",
+        "currentIdentitySha256": "cd2f6d999f9bdd404e6aaa28c98d8824832fbdbe66a2f435ce3a8e5a8a09fd0e",
+        "pending": [
+          {
+            "reason": "STALE_STUDENT_PAYLOAD",
+            "basis": "INDEX_DISPLAY_NUMBER_TO_AUTHENTICATED_NUMBER_MAP"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 3,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_3e2915ca0d650e815da2c14f7c485556b1de06fa1ccbe31f4a62be4ac9e3f50e",
+        "sourceArchiveFile": "original/middle/m2/2mid/18_동산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 13,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "2861e7dcb55f418ea449e2e81122eb0efd04ac2a03b5ca7f7f149be852fb82ed",
+        "currentMetadataSha256": "2861e7dcb55f418ea449e2e81122eb0efd04ac2a03b5ca7f7f149be852fb82ed",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "0dc1ca47b939758a35d02a31e80b66fb4c1cf0483ce1a2fef5fd4f57b3185fdf",
+        "currentIdentitySha256": "0dc1ca47b939758a35d02a31e80b66fb4c1cf0483ce1a2fef5fd4f57b3185fdf",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 2,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_4ceb0bdbddacfe4d9737f943b966a542e296123fa20cdae9498e7cfbc2accfac",
+        "sourceArchiveFile": "original/middle/m2/2mid/21_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 3,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "7382bf3332de54fb2118c34270bc37ee4d34e3e3cc29f1d332f3e3d1e3866f07",
+        "currentMetadataSha256": "7382bf3332de54fb2118c34270bc37ee4d34e3e3cc29f1d332f3e3d1e3866f07",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "c7cc529f33f45e17afa6170b37a2cb4045d06882c33cf8122e22af0331a7a6c7",
+        "currentIdentitySha256": "c7cc529f33f45e17afa6170b37a2cb4045d06882c33cf8122e22af0331a7a6c7",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 1,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_4daa03572ff93ccfa7b90ccfd12808e7004cca4b0ec93ec0e6d9ebe3617ffb91",
+        "sourceArchiveFile": "original/middle/m2/2mid/21_이수중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 7,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "787590d93d19b1327baa3847552cf6173bad15b5865ac05427aa8ccb0a956ebc",
+        "currentMetadataSha256": "787590d93d19b1327baa3847552cf6173bad15b5865ac05427aa8ccb0a956ebc",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "f956a44059c8ea1fbe45146f15c9d1e0f4b6e5b5c0cd2fbcad86db4f413ff5a0",
+        "currentIdentitySha256": "f956a44059c8ea1fbe45146f15c9d1e0f4b6e5b5c0cd2fbcad86db4f413ff5a0",
+        "pending": [
+          {
+            "reason": "STALE_STUDENT_PAYLOAD",
+            "basis": "INDEX_DISPLAY_NUMBER_TO_AUTHENTICATED_NUMBER_MAP"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 1,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_55fd6b255eeb5b4ce5e8c1d25ff545ab5f17252e219e17c55c2542fbe8d8e14f",
+        "sourceArchiveFile": "original/middle/m2/2final/20_신흥중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 5,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "5dcd903c229ff1d9a63f65cb959821b0364c6a9506569148d963e70b407931bc",
+        "currentMetadataSha256": "5dcd903c229ff1d9a63f65cb959821b0364c6a9506569148d963e70b407931bc",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "470775792411ce20593939cb921bad33127226db3cc291a0f0b0be079a03cb49",
+        "currentIdentitySha256": "470775792411ce20593939cb921bad33127226db3cc291a0f0b0be079a03cb49",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 3,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_5ea7778dbac6e3f48afc272885bbd1807cd92b8ddb2dbd79e4f55f6dc85f02ce",
+        "sourceArchiveFile": "original/middle/m2/2mid/20_금당중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 2,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "3cb65efdec484abb880544c800be024927d4214aa744fd6927d8f8ecd57289e1",
+        "currentMetadataSha256": "3cb65efdec484abb880544c800be024927d4214aa744fd6927d8f8ecd57289e1",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "b33276f35b7615acd4f8a09058efe63b1cf7e5ad1dc19783ec9f127dc7674165",
+        "currentIdentitySha256": "b33276f35b7615acd4f8a09058efe63b1cf7e5ad1dc19783ec9f127dc7674165",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 2,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_6083ec375d3b2a9f0e432de61c84a533c239a2b21aa5fe3f978d37416e3bc273",
+        "sourceArchiveFile": "original/middle/m2/2mid/20_왕의중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 24,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "d96f4a9269055cc89bc4718ae65fe3b5413ccf8580888ca7ca22c256149d3e9a",
+        "currentMetadataSha256": "d96f4a9269055cc89bc4718ae65fe3b5413ccf8580888ca7ca22c256149d3e9a",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "71b16ee62f231b577b4995612fc7ff8664f7665dce37028eee9e00b3158eb03d",
+        "currentIdentitySha256": "71b16ee62f231b577b4995612fc7ff8664f7665dce37028eee9e00b3158eb03d",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 4,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_6c59e9e4406e0d62ed5464d02180957b75ca763b877e459ba2076249cb7e9711",
+        "sourceArchiveFile": "original/middle/m2/2mid/21_팔마중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 18,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "409e08550e397a27e0e2fdc6613baa6bc8bb21b25ed52f4b49573ecb347e6fbe",
+        "currentMetadataSha256": "409e08550e397a27e0e2fdc6613baa6bc8bb21b25ed52f4b49573ecb347e6fbe",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "e31eaa0a5099acc402fea5931c86222525c2250303e3eb773ee10b29f86dd798",
+        "currentIdentitySha256": "e31eaa0a5099acc402fea5931c86222525c2250303e3eb773ee10b29f86dd798",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 2,
+          "difficultyConfidence": {
+            "redactedValueSha256": "364bb7082249ee9fbc5247ee49735c4246f271b82c2745a35107ddda0d7cabcc"
+          },
+          "difficultyBoundaryFlag": {
+            "redactedValueSha256": "f93df5c2a1d81a7176919afab30d44e04cce7efea614bb09bad9239129be2c06"
+          },
+          "legacyLevelCompatibility": {
+            "redactedValueSha256": "0f15dc23249e5ae41849d7f070b24f8aea5d052fe3d20972b004e8b9e07349ba"
+          },
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_6eeb88c697961f3b4f2f00395f4c4928483ef2107108f9a1267d4dbc6b94b3da",
+        "sourceArchiveFile": "original/middle/m2/2mid/21_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 5,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "158775aff1529f031aecf4950d549e91442bc597616be310c9678098b16708b0",
+        "currentMetadataSha256": "158775aff1529f031aecf4950d549e91442bc597616be310c9678098b16708b0",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "58ab05c669105261cc6213f6203c7e3199f21d002b12ac415f4dd41596dcf5a1",
+        "currentIdentitySha256": "58ab05c669105261cc6213f6203c7e3199f21d002b12ac415f4dd41596dcf5a1",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 2,
+          "difficultyConfidence": {
+            "redactedValueSha256": "364bb7082249ee9fbc5247ee49735c4246f271b82c2745a35107ddda0d7cabcc"
+          },
+          "difficultyBoundaryFlag": {
+            "redactedValueSha256": "f93df5c2a1d81a7176919afab30d44e04cce7efea614bb09bad9239129be2c06"
+          },
+          "legacyLevelCompatibility": {
+            "redactedValueSha256": "0f15dc23249e5ae41849d7f070b24f8aea5d052fe3d20972b004e8b9e07349ba"
+          },
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_7b6f35220efcfae2fddf05cff7c60ea79ef54b66e0de4d1c98d9d772da7e6835",
+        "sourceArchiveFile": "original/middle/m2/2mid/19_동산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 6,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "f9336ea93f4ef1ecd5fe82c416c68fcd5bba1545738866bfd5d2dbb2f75370b3",
+        "currentMetadataSha256": "f9336ea93f4ef1ecd5fe82c416c68fcd5bba1545738866bfd5d2dbb2f75370b3",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "6dbf589b3b6ed4831bdd07e88d8f631667202566e3328473b2fc903b5bb76866",
+        "currentIdentitySha256": "6dbf589b3b6ed4831bdd07e88d8f631667202566e3328473b2fc903b5bb76866",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 3,
+          "difficultyConfidence": {
+            "redactedValueSha256": "60d4c90eee5e731df8d3ef2891de541d2e755ff8ee9db358e26bdec49f6e0db9"
+          },
+          "difficultyBoundaryFlag": {
+            "redactedValueSha256": "2ee2e7af7a1c5a3fde776a2b12bb547f1111df760dfd3c97dc54d6734984671c"
+          },
+          "legacyLevelCompatibility": {
+            "redactedValueSha256": "0f15dc23249e5ae41849d7f070b24f8aea5d052fe3d20972b004e8b9e07349ba"
+          },
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_80e416719b9c305445c7ca0a408aa6b501a43c2cbb0c1d13dd9fb717b6e23111",
+        "sourceArchiveFile": "original/middle/m2/2final/19_연향중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 20,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "2dfb865679c2190e1a0962f59bb7958ebf9eac36cbe083adbe3a37895ba828fb",
+        "currentMetadataSha256": "2dfb865679c2190e1a0962f59bb7958ebf9eac36cbe083adbe3a37895ba828fb",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "c097531ab6ed115b220f1dea2ca225bde06e59b8de6856be7abd416a789662b0",
+        "currentIdentitySha256": "c097531ab6ed115b220f1dea2ca225bde06e59b8de6856be7abd416a789662b0",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 3,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_815dd58f2f0e0b1ff1d4917a740e6ba23e6d7c45310a862bcf3f5059f3c6fdb1",
+        "sourceArchiveFile": "original/middle/m2/2mid/20_금당중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 8,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "430ff25ccc3a9a52530a9f1a123e14291a1cf405f977a87d7e3e0f2925671262",
+        "currentMetadataSha256": "430ff25ccc3a9a52530a9f1a123e14291a1cf405f977a87d7e3e0f2925671262",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "d9d93dbdd83b9711c6e1791d7ed5d5723aa0638adcdb20960a87c8e7f643737d",
+        "currentIdentitySha256": "d9d93dbdd83b9711c6e1791d7ed5d5723aa0638adcdb20960a87c8e7f643737d",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 2,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_84b8f337f11de70b4e5f78556667435b68bc7c497c81341cf06b8cf84a5a40d6",
+        "sourceArchiveFile": "original/middle/m2/2mid/21_풍덕중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 16,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "e68fa9fd54a64050d229630d1a17869ec2a2bf983693391af454922bd0585e0e",
+        "currentMetadataSha256": "e68fa9fd54a64050d229630d1a17869ec2a2bf983693391af454922bd0585e0e",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "c3644e4e0102d24f76bcb82686b17259f4efcbdffc71c09ea8b8fc2f0fb977e4",
+        "currentIdentitySha256": "c3644e4e0102d24f76bcb82686b17259f4efcbdffc71c09ea8b8fc2f0fb977e4",
+        "pending": [
+          {
+            "reason": "STALE_STUDENT_PAYLOAD",
+            "basis": "INDEX_DISPLAY_NUMBER_TO_AUTHENTICATED_NUMBER_MAP"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 1,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_8a8022ea4db53d559711e09960cdae09bccae92129b0877d05c83e9bc986d945",
+        "sourceArchiveFile": "original/middle/m2/2mid/21_풍덕중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 18,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "4f4072724900829e908a3f5051d17e3fbf7d5782ff2541416b650dd1bacc8c1b",
+        "currentMetadataSha256": "4f4072724900829e908a3f5051d17e3fbf7d5782ff2541416b650dd1bacc8c1b",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "1333dc3fb5e1d392c80b3a80d704cb6b793b846ac1b448e60fc5c1adff856c42",
+        "currentIdentitySha256": "1333dc3fb5e1d392c80b3a80d704cb6b793b846ac1b448e60fc5c1adff856c42",
+        "pending": [
+          {
+            "reason": "STALE_STUDENT_PAYLOAD",
+            "basis": "INDEX_DISPLAY_NUMBER_TO_AUTHENTICATED_NUMBER_MAP"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 2,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_951164b70d75fc3e2b5f83343b70d96f4789fc3c16761ec67cf4c54857093182",
+        "sourceArchiveFile": "original/middle/m2/2mid/18_동산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 14,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "1532fb9d1846190b815e00addf175ab0228a2b4714fc0ee19bd2b494910238b5",
+        "currentMetadataSha256": "1532fb9d1846190b815e00addf175ab0228a2b4714fc0ee19bd2b494910238b5",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "a2712781d66cada1e7e4e20e0b9f41e0afdb1c3d6cc75563d2152a72f1bf107b",
+        "currentIdentitySha256": "a2712781d66cada1e7e4e20e0b9f41e0afdb1c3d6cc75563d2152a72f1bf107b",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 2,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_9e97e29e22c5ef6dfa1fe87a9145ec59a2cf6e8bee436ae79d194590ed8daa2b",
+        "sourceArchiveFile": "original/middle/m2/2mid/19_이수중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 14,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "16a0b37026356d4a9a364e1411f31a3a6e186b1ddaf645e2f41d7f001ecbc065",
+        "currentMetadataSha256": "16a0b37026356d4a9a364e1411f31a3a6e186b1ddaf645e2f41d7f001ecbc065",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "8f2bfb283b073ab4613e36431b7e514ffb63e8a95b63b18613bf02d22e11f0b6",
+        "currentIdentitySha256": "8f2bfb283b073ab4613e36431b7e514ffb63e8a95b63b18613bf02d22e11f0b6",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 1,
+          "difficultyConfidence": {
+            "redactedValueSha256": "b57c4299afe3cda154124bdb96ceaf618a9d8d9cd8d2c8f6580ff26faa5fe5ca"
+          },
+          "difficultyBoundaryFlag": {
+            "redactedValueSha256": "c44e6dd700593104019ffce7eeda189212379ba13862b09d70cab34c513210d9"
+          },
+          "legacyLevelCompatibility": {
+            "redactedValueSha256": "0f15dc23249e5ae41849d7f070b24f8aea5d052fe3d20972b004e8b9e07349ba"
+          },
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_b91045524e4a13e5c4465bd497aa69622ba0186ca58aab74fc4204dbdcb6c519",
+        "sourceArchiveFile": "original/middle/m2/2mid/18_동산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 10,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "3760379d0c578e842682507863232574b1b51cbdd137272c245bd8703e85f5b1",
+        "currentMetadataSha256": "3760379d0c578e842682507863232574b1b51cbdd137272c245bd8703e85f5b1",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "3fc1a87493a68cd5811fc83d958599fab5491425add0dcba89c7f2395c076f26",
+        "currentIdentitySha256": "3fc1a87493a68cd5811fc83d958599fab5491425add0dcba89c7f2395c076f26",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 2,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_bc40c0b577c15f8114402fd7fcd3e55180927bba6fc8ebc36b57098c68b15a75",
+        "sourceArchiveFile": "original/middle/m2/2mid/20_금당중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 10,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "fa44facbcab2c3b6e1ffbd7ae4a5b3151e4ded846b4faf8ce76cb5972333ce2f",
+        "currentMetadataSha256": "fa44facbcab2c3b6e1ffbd7ae4a5b3151e4ded846b4faf8ce76cb5972333ce2f",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "119bfa9e5d8c6a4179e1727d48fe2651bcb978f6a97fad6de4924303509766fc",
+        "currentIdentitySha256": "119bfa9e5d8c6a4179e1727d48fe2651bcb978f6a97fad6de4924303509766fc",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 2,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_be9cc27468f94662d3ca96dcfa280b43ff18b1ef239bd54f83c1b90306e65203",
+        "sourceArchiveFile": "original/middle/m2/2mid/19_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 16,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "913e5aea358ef7a59629f58888761effa7aa57cdb115d4f6226863ec6ef702a5",
+        "currentMetadataSha256": "913e5aea358ef7a59629f58888761effa7aa57cdb115d4f6226863ec6ef702a5",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "51a0c23ca5b53c384add899749611d191928e9d02f6a0b41d132e07c538d4ad7",
+        "currentIdentitySha256": "51a0c23ca5b53c384add899749611d191928e9d02f6a0b41d132e07c538d4ad7",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 2,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_cf74a1f77b263aedd61c770a11a203584da72439041b23a6316c682c16774665",
+        "sourceArchiveFile": "original/middle/m2/2mid/20_금당중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 14,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "861d446d422dfd9cffdaf3d3c9e7303237d862f9c05ae1975114f105b3353495",
+        "currentMetadataSha256": "861d446d422dfd9cffdaf3d3c9e7303237d862f9c05ae1975114f105b3353495",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "2cc3b51bdded795d48650a03400aef2833b347c8179495b474d89b2d3a4bc6fe",
+        "currentIdentitySha256": "2cc3b51bdded795d48650a03400aef2833b347c8179495b474d89b2d3a4bc6fe",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 2,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_d5a7d623d9a356650d37df03955161e82aea38b1ad8303c41e6c4c0921c93d3b",
+        "sourceArchiveFile": "original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 10,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "f81d269b6d6918591fa4b3f3d7438db298cea07d93c5d4d848ceb4aa9084c56b",
+        "currentMetadataSha256": "f81d269b6d6918591fa4b3f3d7438db298cea07d93c5d4d848ceb4aa9084c56b",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "c8d0ac94a6f9b9a5261976c431d3752e1fe44494a1eae84c0a5c12668bcc06e9",
+        "currentIdentitySha256": "c8d0ac94a6f9b9a5261976c431d3752e1fe44494a1eae84c0a5c12668bcc06e9",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 3,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_e00d7e23c46a1468b70b358ae7ccf2d1511974039c2571072d0f5ec79bf42af0",
+        "sourceArchiveFile": "original/middle/m2/2mid/20_왕의중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 20,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "65668f09d5fe26a571a9901c5d7ed97c0a34c2766b49bc8615890fc5dda31882",
+        "currentMetadataSha256": "65668f09d5fe26a571a9901c5d7ed97c0a34c2766b49bc8615890fc5dda31882",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "42b25c56d8c9aa551d914edc8b2cf3297e93164d0b0ccfe63ba8928dff1e76bd",
+        "currentIdentitySha256": "42b25c56d8c9aa551d914edc8b2cf3297e93164d0b0ccfe63ba8928dff1e76bd",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 2,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_f0d437ed043c09185f9beb639a6e6a92ad5703ea65f67f330e3acb4ca472dd80",
+        "sourceArchiveFile": "original/middle/m2/2mid/19_동산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 9,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "0b48057e24fe26863f50bf6781a6117686564893c5a3ce514a0ba487501d793c",
+        "currentMetadataSha256": "0b48057e24fe26863f50bf6781a6117686564893c5a3ce514a0ba487501d793c",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "cd89159efd808ab79fcbfc122e03bc412067b1a0a4768e2c051034f3b79aefa1",
+        "currentIdentitySha256": "cd89159efd808ab79fcbfc122e03bc412067b1a0a4768e2c051034f3b79aefa1",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 1,
+          "difficultyConfidence": {
+            "redactedValueSha256": "364bb7082249ee9fbc5247ee49735c4246f271b82c2745a35107ddda0d7cabcc"
+          },
+          "difficultyBoundaryFlag": {
+            "redactedValueSha256": "b829112d639c149fb90e12f650a4a007fc9dd4f50ef8cd2d8e29d7428c70a320"
+          },
+          "legacyLevelCompatibility": {
+            "redactedValueSha256": "0f15dc23249e5ae41849d7f070b24f8aea5d052fe3d20972b004e8b9e07349ba"
+          },
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_f25f0903341857fdfee45f1c3e5b0a0e2d1d3e335098a90bb7be676940701111",
+        "sourceArchiveFile": "original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 23,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "141259d1a6484450221758feab749e848f9eb639e061b9008bd8084b40e0027c",
+        "currentMetadataSha256": "141259d1a6484450221758feab749e848f9eb639e061b9008bd8084b40e0027c",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "84b2a476047f181301c1e25659a02041cd11228667f25f606bb8ff60fe0ebf3f",
+        "currentIdentitySha256": "84b2a476047f181301c1e25659a02041cd11228667f25f606bb8ff60fe0ebf3f",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 3,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_f738345d75348c9f769b8120c8aeb7b384dbea0fe8606a2e0e2c13c822bbc7d5",
+        "sourceArchiveFile": "original/middle/m2/2mid/21_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 7,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "b8737c0b0f81f337e3895d1cc40905c37c62b9f137d35590ab4d10e28d684543",
+        "currentMetadataSha256": "b8737c0b0f81f337e3895d1cc40905c37c62b9f137d35590ab4d10e28d684543",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "ae7b415530d4731c2cbb89f4f8a6595b0dbf4416958fbcc830821d05fa11deb8",
+        "currentIdentitySha256": "ae7b415530d4731c2cbb89f4f8a6595b0dbf4416958fbcc830821d05fa11deb8",
+        "pending": [
+          {
+            "reason": "STALE_STUDENT_PAYLOAD",
+            "basis": "INDEX_DISPLAY_NUMBER_TO_AUTHENTICATED_NUMBER_MAP"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 1,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_fd38acbc6175aaf889113ee736396df076128e008d2984a3ff169bc4d2831fcf",
+        "sourceArchiveFile": "original/middle/m2/2final/18_연향중_2학기_기말_중2_수학.js",
+        "sourceOrdinal": 13,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "5fc8c7072fb3487f16a13aa5cb22df3f65b52ab8c4de19f45e4beb9e7957ccbd",
+        "currentMetadataSha256": "5fc8c7072fb3487f16a13aa5cb22df3f65b52ab8c4de19f45e4beb9e7957ccbd",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "5cf09b77085e872404396015baa1263eaebb17098761b62c43d86a08ca457741",
+        "currentIdentitySha256": "5cf09b77085e872404396015baa1263eaebb17098761b62c43d86a08ca457741",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 2,
+          "difficultyConfidence": {
+            "redactedValueSha256": "60d4c90eee5e731df8d3ef2891de541d2e755ff8ee9db358e26bdec49f6e0db9"
+          },
+          "difficultyBoundaryFlag": {
+            "redactedValueSha256": "b829112d639c149fb90e12f650a4a007fc9dd4f50ef8cd2d8e29d7428c70a320"
+          },
+          "legacyLevelCompatibility": {
+            "redactedValueSha256": "0f15dc23249e5ae41849d7f070b24f8aea5d052fe3d20972b004e8b9e07349ba"
+          },
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      },
+      {
+        "questionUid": "qid_v1_ff5129c97cc92f71068cf6ad1c43c8a0613fc67b46bade77a17cc7033b522a0a",
+        "sourceArchiveFile": "original/middle/m2/2mid/20_금당중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 1,
+        "baselineRegistered": false,
+        "currentRegistered": false,
+        "baselineRecordSha256": null,
+        "currentRecordSha256": null,
+        "baselineVectorSha256": null,
+        "currentVectorSha256": null,
+        "existingVectorEqual": null,
+        "baselineMetadataSha256": "a9c0dd0a43ee4802abb1db71fe2a7da24743880ea18afaf22d8bfccbf5381c16",
+        "currentMetadataSha256": "a9c0dd0a43ee4802abb1db71fe2a7da24743880ea18afaf22d8bfccbf5381c16",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "c05a79d29db4c767f0e5d36811126c2933fa52e0e06bc1f48ff4039d4ef721b0",
+        "currentIdentitySha256": "c05a79d29db4c767f0e5d36811126c2933fa52e0e06bc1f48ff4039d4ef721b0",
+        "pending": [
+          {
+            "reason": "EXPLICIT_REVIEW_HOLD:SOURCE_EVIDENCE_UNRESOLVED",
+            "basis": "INDEX_EXPLICIT_UID"
+          }
+        ],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 1,
+          "difficultyConfidence": null,
+          "difficultyBoundaryFlag": null,
+          "legacyLevelCompatibility": null,
+          "defaultSelectable": null
+        },
+        "d5AuthorityFieldsEqual": true,
+        "baselinePhysicalVectorPreserved": true,
+        "physicalRegistrationIsD5Approval": false,
+        "wholeMetadataAuthorityPreserved": true
+      }
+    ]
+  },
+  "hyangrimQ5": {
+    "policy": "PRESERVE_BASELINE_REGISTERED_VECTOR",
+    "selected": 1,
+    "rows": [
+      {
+        "questionUid": "qid_v1_d3998bfef5cb06a7fa4f1c95a69a433064b76b872f2fd9da0690d9e5b97b12b8",
+        "sourceArchiveFile": "original/middle/m2/2final/20_향림중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 5,
+        "baselineRegistered": true,
+        "currentRegistered": true,
+        "baselineRecordSha256": "4d86cd73a4021f345c8c0d5c8f9d65b328d142ae30c314819604f009ae345dea",
+        "currentRecordSha256": "4d86cd73a4021f345c8c0d5c8f9d65b328d142ae30c314819604f009ae345dea",
+        "baselineVectorSha256": "594156feb2c51bb53d907f10d6070e5b1d86e63edee3da1f77d8adc8a8433c73",
+        "currentVectorSha256": "594156feb2c51bb53d907f10d6070e5b1d86e63edee3da1f77d8adc8a8433c73",
+        "existingVectorEqual": true,
+        "baselineMetadataSha256": "9e445dd5b4f4f448fc0975eaafc391ba0f7ceebe00f725b5e32d8f98dcde4cc5",
+        "currentMetadataSha256": "9e445dd5b4f4f448fc0975eaafc391ba0f7ceebe00f725b5e32d8f98dcde4cc5",
+        "metadataWholeEqual": true,
+        "metadataChangedFields": [],
+        "baselineIdentitySha256": "c56b2b4c633ebbc6d359b8424ac598f882c020a4bde2b701ce8bda2d109f8258",
+        "currentIdentitySha256": "c56b2b4c633ebbc6d359b8424ac598f882c020a4bde2b701ce8bda2d109f8258",
+        "pending": [],
+        "storedAxes": {
+          "metadataApprovalType": null,
+          "reviewStatus": "review_required",
+          "metadataStatus": {
+            "redactedValueSha256": "87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15"
+          },
+          "tagStatus": "review_required",
+          "difficultyBucket": 2,
+          "difficultyConfidence": {
+            "redactedValueSha256": "60d4c90eee5e731df8d3ef2891de541d2e755ff8ee9db358e26bdec49f6e0db9"
+          },
+          "difficultyBoundaryFlag": {
+            "redactedValueSha256": "c44e6dd700593104019ffce7eeda189212379ba13862b09d70cab34c513210d9"
+          },
+          "legacyLevelCompatibility": {
+            "redactedValueSha256": "5e7a1c4cc73d750e2db6584f9302151ef13ded93196d1041633b218a1c91d8b6"
+          },
+          "defaultSelectable": null
+        }
+      }
+    ]
+  },
+  "m3RemainingThree": {
+    "baselineCommit": "22f79c4ffd5ad5f811c2840a532422e0ecabd3e1",
+    "currentCommit": "678183260eba8a4296a65c98e0fdcfe1b495df4f",
+    "status": "PASS",
+    "meaning": "Stored MD, identity and runtime row equality only; no current Native/UI/whole-item approval is inferred.",
+    "rows": [
+      {
+        "questionUid": "qid_v1_1cf3d85ff4d544dc0a3e559c81a1fe06863b63152549eaa68eef1b06415ac34f",
+        "sourceArchiveFile": "original/middle/m3/2mid/26_왕운중_2학기_중간_중3_기출.js",
+        "sourceOrdinal": 16,
+        "metadata": {
+          "baselineSha256": "2bdfec6d2cfe437b257b59a6576b1f0a55bd016215bb3e2dde2aeec989e781a5",
+          "currentSha256": "2bdfec6d2cfe437b257b59a6576b1f0a55bd016215bb3e2dde2aeec989e781a5",
+          "equal": true
+        },
+        "identity": {
+          "baselineSha256": "79b7f96241faa55b11fa038bf37cd11bb2234e2abddfad288d5c8c78230a7f99",
+          "currentSha256": "79b7f96241faa55b11fa038bf37cd11bb2234e2abddfad288d5c8c78230a7f99",
+          "equal": true
+        },
+        "runtime": {
+          "baselineSha256": "63b80baade30fc3e36525f5120c18a8781b224b014460b4859dceec51e38798c",
+          "currentSha256": "63b80baade30fc3e36525f5120c18a8781b224b014460b4859dceec51e38798c",
+          "baselinePath": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "currentPath": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "baselinePackId": "MIDDLE_GEOMETRY",
+          "currentPackId": "MIDDLE_GEOMETRY",
+          "equal": true
+        }
+      },
+      {
+        "questionUid": "qid_v1_5500746079d438e07f5bfdada0a10468f60c1bd571d20536e7059d277697913b",
+        "sourceArchiveFile": "original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 9,
+        "metadata": {
+          "baselineSha256": "b3f9f65b1db4ac1a14ebb3e510ae5c3d12e2b1b5a92c70f75cde5ade664e8062",
+          "currentSha256": "b3f9f65b1db4ac1a14ebb3e510ae5c3d12e2b1b5a92c70f75cde5ade664e8062",
+          "equal": true
+        },
+        "identity": {
+          "baselineSha256": "283a92266fa44c2f5f83bd5133ed982eb4ef4f1fa5006994444f76d12980dd66",
+          "currentSha256": "283a92266fa44c2f5f83bd5133ed982eb4ef4f1fa5006994444f76d12980dd66",
+          "equal": true
+        },
+        "runtime": {
+          "baselineSha256": "9678b833dec0dcc2a9deac761cdd852aee7b0cebd29d7a56e72988089a2c2457",
+          "currentSha256": "9678b833dec0dcc2a9deac761cdd852aee7b0cebd29d7a56e72988089a2c2457",
+          "baselinePath": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "currentPath": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "baselinePackId": "MIDDLE_GEOMETRY",
+          "currentPackId": "MIDDLE_GEOMETRY",
+          "equal": true
+        }
+      },
+      {
+        "questionUid": "qid_v1_eb3225d943fd75e92d94862dc752a32c94bdaed14dcd5111028f8a89e0a7587b",
+        "sourceArchiveFile": "original/middle/m3/2final/21_팔마중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 6,
+        "metadata": {
+          "baselineSha256": "de2a73160e4e1e12debe9dcaff621391e8c72fa83d6e453c44e2456923cc401b",
+          "currentSha256": "de2a73160e4e1e12debe9dcaff621391e8c72fa83d6e453c44e2456923cc401b",
+          "equal": true
+        },
+        "identity": {
+          "baselineSha256": "7d1c23cc4537e094ff8fe96b414d58b44a351a211eb369d359fa9aa8afb767ef",
+          "currentSha256": "7d1c23cc4537e094ff8fe96b414d58b44a351a211eb369d359fa9aa8afb767ef",
+          "equal": true
+        },
+        "runtime": {
+          "baselineSha256": "9551129bc5c4910d5c077b18e7d90744b63898f0022e4afb4846c9b6131f0139",
+          "currentSha256": "9551129bc5c4910d5c077b18e7d90744b63898f0022e4afb4846c9b6131f0139",
+          "baselinePath": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "currentPath": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+          "baselinePackId": "MIDDLE_GEOMETRY",
+          "currentPackId": "MIDDLE_GEOMETRY",
+          "equal": true
+        }
+      }
+    ]
+  },
+  "exactNativeFailureDiagnostic": {
+    "schemaVersion": "archive-observer-exact-native-failure-metadata-v1",
+    "purpose": "EXACT_E017_Q11_RECEIPT_LOCATOR_AND_STORED_IDENTITY_DIAGNOSTIC_ONLY",
+    "questionUid": "qid_v1_061f56b801d84fca7fb2dccabc0f36cd424db51a71705aaf9907bbe01c0206a4",
+    "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+    "sourceOrdinal": 11,
+    "baselineCommit": "22f79c4ffd5ad5f811c2840a532422e0ecabd3e1",
+    "currentCommit": "678183260eba8a4296a65c98e0fdcfe1b495df4f",
+    "separateF9Read": "NOT_PERFORMED",
+    "baseline": {
+      "metadata": {
+        "present": true,
+        "wholeRowSha256": "6f8eaf6cb41d4a7ada29f41500af24979248bc1a04b4cf8e335e056fef71d592",
+        "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.11:exam-final_qa-v2:m2s2-image8-source-preservation-20261116-01-e017-finalqa2",
+        "metadataApprovalType": "FINAL_QA",
+        "reviewStatus": "reviewed_pass",
+        "metadataStatus": {
+          "redactedValueSha256": "7eae22724f31a0cd76551ce23328daec663c925b3bb20af6a06004a4499531cf"
+        },
+        "tagStatus": {
+          "redactedValueSha256": "fe5086ba5420ea4665855fadcb324d5bf52dfd51af2a7bd070c3bb2d4754aacb"
+        },
+        "defaultSelectable": true,
+        "metaFoundationPackVersion": "1.0.11",
+        "ownerFields": {
+          "ownerPack": null,
+          "metaFoundationPackId": "MIDDLE_GEOMETRY",
+          "metaFoundationPack": null,
+          "metaFoundationOwnerPack": null
+        },
+        "fingerprints": {
+          "sourceFingerprint": "f880135f6984ba992d9cc33779769e7b8fcb6e55ad9b95c45274c49127ca2075",
+          "contentFingerprint": "e97b2b4f1f88effe337cadfbdf63c65c7ed3f838e20ceef61752ce331e6d1db6",
+          "approvedSourceFingerprint": null,
+          "identityFingerprint": null
+        },
+        "approvalEvidence": {
+          "present": true,
+          "array": true,
+          "entryCount": 3,
+          "locators": [
+            "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-native78-current-r9-20261116-20-e017.json",
+            "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-image8-source-preservation-20261116-01-e017-finalqa2.json"
+          ],
+          "otherEntrySha256s": [
+            "84edb9a58905150854bb23d5932a34cb3960ab3ec0766964446a449e0022a1ff"
+          ]
+        }
+      },
+      "identity": {
+        "present": true,
+        "wholeRowSha256": "5125e68c4f70f0e10cfff92f9a7fecc5dd2590f14cb7acc9c9d25767dde0ae36",
+        "questionUid": "qid_v1_061f56b801d84fca7fb2dccabc0f36cd424db51a71705aaf9907bbe01c0206a4",
+        "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 11,
+        "sourceQuestionNo": "11",
+        "status": null,
+        "fingerprintVersion": null,
+        "fingerprints": {
+          "sourceFingerprint": "f880135f6984ba992d9cc33779769e7b8fcb6e55ad9b95c45274c49127ca2075",
+          "contentFingerprint": null,
+          "approvedSourceFingerprint": null,
+          "identityFingerprint": null
+        }
+      },
+      "runtime": {
+        "present": true,
+        "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "packId": "MIDDLE_GEOMETRY",
+        "wholeRowSha256": "ef236567b440b62872a8d05c0871f4eb0a58181855765cc0f3c1a9e8bdeacbff",
+        "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.11:exam-final_qa-v2:m2s2-image8-source-preservation-20261116-01-e017-finalqa2",
+        "metadataApprovalType": "FINAL_QA",
+        "reviewStatus": "reviewed_pass",
+        "metadataStatus": {
+          "redactedValueSha256": "7eae22724f31a0cd76551ce23328daec663c925b3bb20af6a06004a4499531cf"
+        },
+        "fingerprints": {
+          "sourceFingerprint": "f880135f6984ba992d9cc33779769e7b8fcb6e55ad9b95c45274c49127ca2075",
+          "contentFingerprint": "e97b2b4f1f88effe337cadfbdf63c65c7ed3f838e20ceef61752ce331e6d1db6",
+          "approvedSourceFingerprint": "f880135f6984ba992d9cc33779769e7b8fcb6e55ad9b95c45274c49127ca2075",
+          "identityFingerprint": null
+        },
+        "approvalEvidence": {
+          "present": true,
+          "array": true,
+          "entryCount": 3,
+          "locators": [
+            "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-native78-current-r9-20261116-20-e017.json",
+            "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-image8-source-preservation-20261116-01-e017-finalqa2.json"
+          ],
+          "otherEntrySha256s": [
+            "84edb9a58905150854bb23d5932a34cb3960ab3ec0766964446a449e0022a1ff"
+          ]
+        }
+      },
+      "registered": true,
+      "fourSlotWholeRowSha256": "5a3a7a1ec01caf45ee0ba65de826e3b51b868e094c77cd9d7184118d6cf6b077"
+    },
+    "current": {
+      "metadata": {
+        "present": true,
+        "wholeRowSha256": "6f8eaf6cb41d4a7ada29f41500af24979248bc1a04b4cf8e335e056fef71d592",
+        "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.11:exam-final_qa-v2:m2s2-image8-source-preservation-20261116-01-e017-finalqa2",
+        "metadataApprovalType": "FINAL_QA",
+        "reviewStatus": "reviewed_pass",
+        "metadataStatus": {
+          "redactedValueSha256": "7eae22724f31a0cd76551ce23328daec663c925b3bb20af6a06004a4499531cf"
+        },
+        "tagStatus": {
+          "redactedValueSha256": "fe5086ba5420ea4665855fadcb324d5bf52dfd51af2a7bd070c3bb2d4754aacb"
+        },
+        "defaultSelectable": true,
+        "metaFoundationPackVersion": "1.0.11",
+        "ownerFields": {
+          "ownerPack": null,
+          "metaFoundationPackId": "MIDDLE_GEOMETRY",
+          "metaFoundationPack": null,
+          "metaFoundationOwnerPack": null
+        },
+        "fingerprints": {
+          "sourceFingerprint": "f880135f6984ba992d9cc33779769e7b8fcb6e55ad9b95c45274c49127ca2075",
+          "contentFingerprint": "e97b2b4f1f88effe337cadfbdf63c65c7ed3f838e20ceef61752ce331e6d1db6",
+          "approvedSourceFingerprint": null,
+          "identityFingerprint": null
+        },
+        "approvalEvidence": {
+          "present": true,
+          "array": true,
+          "entryCount": 3,
+          "locators": [
+            "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-native78-current-r9-20261116-20-e017.json",
+            "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-image8-source-preservation-20261116-01-e017-finalqa2.json"
+          ],
+          "otherEntrySha256s": [
+            "84edb9a58905150854bb23d5932a34cb3960ab3ec0766964446a449e0022a1ff"
+          ]
+        }
+      },
+      "identity": {
+        "present": true,
+        "wholeRowSha256": "5125e68c4f70f0e10cfff92f9a7fecc5dd2590f14cb7acc9c9d25767dde0ae36",
+        "questionUid": "qid_v1_061f56b801d84fca7fb2dccabc0f36cd424db51a71705aaf9907bbe01c0206a4",
+        "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 11,
+        "sourceQuestionNo": "11",
+        "status": null,
+        "fingerprintVersion": null,
+        "fingerprints": {
+          "sourceFingerprint": "f880135f6984ba992d9cc33779769e7b8fcb6e55ad9b95c45274c49127ca2075",
+          "contentFingerprint": null,
+          "approvedSourceFingerprint": null,
+          "identityFingerprint": null
+        }
+      },
+      "runtime": {
+        "present": true,
+        "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "packId": "MIDDLE_GEOMETRY",
+        "wholeRowSha256": "ef236567b440b62872a8d05c0871f4eb0a58181855765cc0f3c1a9e8bdeacbff",
+        "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.11:exam-final_qa-v2:m2s2-image8-source-preservation-20261116-01-e017-finalqa2",
+        "metadataApprovalType": "FINAL_QA",
+        "reviewStatus": "reviewed_pass",
+        "metadataStatus": {
+          "redactedValueSha256": "7eae22724f31a0cd76551ce23328daec663c925b3bb20af6a06004a4499531cf"
+        },
+        "fingerprints": {
+          "sourceFingerprint": "f880135f6984ba992d9cc33779769e7b8fcb6e55ad9b95c45274c49127ca2075",
+          "contentFingerprint": "e97b2b4f1f88effe337cadfbdf63c65c7ed3f838e20ceef61752ce331e6d1db6",
+          "approvedSourceFingerprint": "f880135f6984ba992d9cc33779769e7b8fcb6e55ad9b95c45274c49127ca2075",
+          "identityFingerprint": null
+        },
+        "approvalEvidence": {
+          "present": true,
+          "array": true,
+          "entryCount": 3,
+          "locators": [
+            "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-native78-current-r9-20261116-20-e017.json",
+            "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m2s2-image8-source-preservation-20261116-01-e017-finalqa2.json"
+          ],
+          "otherEntrySha256s": [
+            "84edb9a58905150854bb23d5932a34cb3960ab3ec0766964446a449e0022a1ff"
+          ]
+        }
+      },
+      "registered": true,
+      "fourSlotWholeRowSha256": "5a3a7a1ec01caf45ee0ba65de826e3b51b868e094c77cd9d7184118d6cf6b077",
+      "pending": []
+    },
+    "wholeRowEquality": {
+      "metadata": true,
+      "identity": true,
+      "runtime": true,
+      "fourSlot": true
+    },
+    "existingLoadedRowsOnly": true,
+    "newSourceReadForDiagnostic": 0,
+    "currentNativeValidation": "NOT_RUN",
+    "newClassification": 0,
+    "newApprovalInferred": false
+  },
+  "baselineToCurrent": {
+    "baseline": "22f79c4ffd5ad5f811c2840a532422e0ecabd3e1",
+    "snapshot": "678183260eba8a4296a65c98e0fdcfe1b495df4f",
+    "changedUidCount": 204,
+    "changedFields": [
+      "fourSlotRecord"
+    ],
+    "wholeMetadataChangedUidCount": 0,
+    "wholeIdentityChangedUidCount": 0,
+    "wholeMetadataAndIdentityUnchanged": true,
+    "priorIssuedD5AndSemanticEvidenceReuse": "Reuse only previously verified same-row issuance evidence; this observer does not recount issued D5 or new/current semantic approval."
+  },
+  "protectedFailures": [
+    {
+      "code": "PROTECTED_REGISTERED_VECTOR_PRESERVED",
+      "pass": false,
+      "details": {
+        "group": "m2s1SvgSeven",
+        "questionUid": "qid_v1_0d8f5786d2c658ae440bf814c83c4315e77c0730191a8bd95b038590d7383de6"
+      }
+    },
+    {
+      "code": "PROTECTED_REGISTERED_VECTOR_PRESERVED",
+      "pass": false,
+      "details": {
+        "group": "m2s1SvgSeven",
+        "questionUid": "qid_v1_43e1fda6dcb1db1c657a86ab1e7669b0990593a621a6c7399d1281ef2055f569"
+      }
+    },
+    {
+      "code": "PROTECTED_REGISTERED_VECTOR_PRESERVED",
+      "pass": false,
+      "details": {
+        "group": "m2s1SvgSeven",
+        "questionUid": "qid_v1_44b23ef95477c89c7dba6fab78c6fb336ef51d834584a6bbefc925bcbca450ec"
+      }
+    },
+    {
+      "code": "PROTECTED_REGISTERED_VECTOR_PRESERVED",
+      "pass": false,
+      "details": {
+        "group": "m2s1SvgSeven",
+        "questionUid": "qid_v1_70a5f39bf8c0af03c8e6eafde27e07239e9108c4d00c0863c10b00e8c632c1ad"
+      }
+    },
+    {
+      "code": "PROTECTED_REGISTERED_VECTOR_PRESERVED",
+      "pass": false,
+      "details": {
+        "group": "m2s1SvgSeven",
+        "questionUid": "qid_v1_c46f4f225979a329fa4f253bbb57f8cd2406fd68c7d5d8c1f73b05305af4c637"
+      }
+    },
+    {
+      "code": "PROTECTED_REGISTERED_VECTOR_PRESERVED",
+      "pass": false,
+      "details": {
+        "group": "m2s1SvgSeven",
+        "questionUid": "qid_v1_c603060d464e3e703b01951f2c54483636632d20c77bf61478f727ea08d8ced5"
+      }
+    },
+    {
+      "code": "PROTECTED_REGISTERED_VECTOR_PRESERVED",
+      "pass": false,
+      "details": {
+        "group": "m2s1SvgSeven",
+        "questionUid": "qid_v1_cd19408eb02abc9397f6965a5ca108287df1438b377dd6e226da6fc09f0239fd"
+      }
+    },
+    {
+      "code": "PROTECTED_REGISTERED_VECTOR_PRESERVED",
+      "pass": false,
+      "details": {
+        "group": "m3Q5Q12",
+        "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1"
+      }
+    },
+    {
+      "code": "PROTECTED_REGISTERED_VECTOR_PRESERVED",
+      "pass": false,
+      "details": {
+        "group": "m3LayoutQ16",
+        "questionUid": "qid_v1_0ec5ac5da3b680c3a3e688406be0da91045d4ea581a83b6ec224927defe57bdf"
+      }
+    }
+  ],
+  "public": {
+    "status": "PENDING_PUBLIC",
+    "pathScope": "NINE_PREVIOUSLY_VERIFIED_PUBLIC20_METADATA_RUNTIME_AND_BASIC_PARENT_PATHS",
+    "totalPublicBudgetMs": 240000,
+    "elapsedPublicMs": 9328,
+    "sourceOrAnswerBodyOutput": 0,
+    "identityPublicPath": "NOT_IN_PRIOR_PUBLIC20_MAPPING; GIT_CAS_ONLY",
+    "publicFileBytes": "NOT_YET_EXACT",
+    "snapshotReleaseIdentity": "NOT_PROVEN; A_DIFFERENT_STABLE_MARKER_MAY_BE_VALID_FOR_A_NO_OP_RELEASE",
+    "markerBefore": {
+      "url": "https://icefoxtail.github.io/AP------/_archive-release.json",
+      "ok": true,
+      "httpStatus": 200,
+      "bytes": 538,
+      "sha256": "56c83c1eb0833bf76750177453322fa75fd93197a01c0cf5fe9f77f366474d58",
+      "status": "VALID_RELEASE_MARKER",
+      "schemaVersion": "ARCHIVE_PAGES_RELEASE_V1",
+      "registeredMainSHA": "f9e49a0e0c18f18c63f31d7547bd504f07a821c6",
+      "releaseGate": "RELEASE_GATE_PASS"
+    },
+    "markerAfter": {
+      "url": "https://icefoxtail.github.io/AP------/_archive-release.json",
+      "ok": true,
+      "httpStatus": 200,
+      "bytes": 538,
+      "sha256": "56c83c1eb0833bf76750177453322fa75fd93197a01c0cf5fe9f77f366474d58",
+      "status": "VALID_RELEASE_MARKER",
+      "schemaVersion": "ARCHIVE_PAGES_RELEASE_V1",
+      "registeredMainSHA": "f9e49a0e0c18f18c63f31d7547bd504f07a821c6",
+      "releaseGate": "RELEASE_GATE_PASS"
+    },
+    "markerStable": true,
+    "noOpReleaseEquivalence": "NOT_EVALUATED",
+    "files": [
+      {
+        "path": "archive/data/archive2-canonical-input-manifest.json",
+        "url": "https://icefoxtail.github.io/AP------/archive/data/archive2-canonical-input-manifest.json",
+        "expectedGitBlobSha1": "2ac148a5ec48eca6799557f7d606f9eab4ee1ecf",
+        "expectedSha256": "09e1f6a04eed7e3acfa6bd9c699f5324c0120ab5dc15c23d2c005682d8675853",
+        "expectedBytes": 96997,
+        "observedSha256": "41b6eb4b2c8e6ca84985d71558f87853a9e24a6adb48ce0b644af304ae6bc60e",
+        "observedBytes": 87722,
+        "transportStatus": "HTTP_200",
+        "exactBytes": false
+      },
+      {
+        "path": "archive/data/archive2-catalog.json",
+        "url": "https://icefoxtail.github.io/AP------/archive/data/archive2-catalog.json",
+        "expectedGitBlobSha1": "240b0ff092e0bc92b163c146d2c0298ea3cce238",
+        "expectedSha256": "40a87ca00f63f6541de8224dada0dfd46d17d58741a0432c39f545226af8aa10",
+        "expectedBytes": 71362232,
+        "observedSha256": "7b42dbc0df4a0e74a6567c301c69d82ab85d8ab6e5b633e0df62eeecac5167ca",
+        "observedBytes": 71226940,
+        "transportStatus": "HTTP_200",
+        "exactBytes": false
+      },
+      {
+        "path": "archive/data/archive2-source-verification-index.json",
+        "url": "https://icefoxtail.github.io/AP------/archive/data/archive2-source-verification-index.json",
+        "expectedGitBlobSha1": "0eebeb7677cb47aec6c1fb7612374d21261e4b80",
+        "expectedSha256": "f8cfea28e234a63dfd9934726067f081fa22510c984d0dab46366f484ee9c842",
+        "expectedBytes": 386244,
+        "observedSha256": "a5e585a89ced1e534ff60761f58fb756b49a0427f65f5c3a45524788722fe0e0",
+        "observedBytes": 386233,
+        "transportStatus": "HTTP_200",
+        "exactBytes": false
+      },
+      {
+        "path": "archive/data/item-4slot-index.json",
+        "url": "https://icefoxtail.github.io/AP------/archive/data/item-4slot-index.json",
+        "expectedGitBlobSha1": "9b85cbbdf972db248e10359ae90af4546611b160",
+        "expectedSha256": "3db65e68275f1d4db32722f57ac02c37cfa192ae4bd58aefe434e12f85c7c808",
+        "expectedBytes": 20319171,
+        "observedSha256": null,
+        "observedBytes": 20332544,
+        "transportStatus": "BODY_EXCEEDS_CLOSED_SIZE_LIMIT",
+        "exactBytes": false
+      },
+      {
+        "path": "archive/data/svg-accessibility-index.js",
+        "url": "https://icefoxtail.github.io/AP------/archive/data/svg-accessibility-index.js",
+        "expectedGitBlobSha1": "6cdfe2562ba3520d6cb5c55fdb8209e85a8afd4a",
+        "expectedSha256": "3d1ca0fb8b4e5b3381d42b4edad1b7dc5e8e0e8a2afa5eacec4fd3da4380710d",
+        "expectedBytes": 5687723,
+        "observedSha256": "dcea67e94dc4c6de5ae18a6a933ca16ea5eb0e26f2c061c633a13e40401bdee6",
+        "observedBytes": 5553969,
+        "transportStatus": "HTTP_200",
+        "exactBytes": false
+      },
+      {
+        "path": "archive/data/basic-scope-parent-links.json",
+        "url": "https://icefoxtail.github.io/AP------/archive/data/basic-scope-parent-links.json",
+        "expectedGitBlobSha1": "b079170e291043b84f3d779dfcc8b8b3bae9c170",
+        "expectedSha256": "f91c616b42df5f1c8ac4cb22623aca7ba2780bc9ccf9f849a0976d1d4ecc751c",
+        "expectedBytes": 1924789,
+        "observedSha256": null,
+        "observedBytes": 1932182,
+        "transportStatus": "BODY_EXCEEDS_CLOSED_SIZE_LIMIT",
+        "exactBytes": false
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "url": "https://icefoxtail.github.io/AP------/archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "expectedGitBlobSha1": "c42ff5c9189dc837eb5ec938cb6ae022671eaa24",
+        "expectedSha256": "1763c3bb136b131b9de1eadb4c95ea962df3343ef1c23dbef7fd1910bf3b1fd9",
+        "expectedBytes": 6976077,
+        "observedSha256": "1763c3bb136b131b9de1eadb4c95ea962df3343ef1c23dbef7fd1910bf3b1fd9",
+        "observedBytes": 6976077,
+        "transportStatus": "HTTP_200",
+        "exactBytes": true
+      },
+      {
+        "path": "archive/data/meta-foundation/runtime/middle1-v1.json",
+        "url": "https://icefoxtail.github.io/AP------/archive/data/meta-foundation/runtime/middle1-v1.json",
+        "expectedGitBlobSha1": "8a096d74050fd2b1f1da8244ddcd9744e1ae14da",
+        "expectedSha256": "7ac466ae29ead3287d67bbb9589a45ae21f1356d3027b40860e8c7811cab3827",
+        "expectedBytes": 1643163,
+        "observedSha256": "7ac466ae29ead3287d67bbb9589a45ae21f1356d3027b40860e8c7811cab3827",
+        "observedBytes": 1643163,
+        "transportStatus": "HTTP_200",
+        "exactBytes": true
+      },
+      {
+        "path": "archive/data/question_metadata.json",
+        "url": "https://icefoxtail.github.io/AP------/archive/data/question_metadata.json",
+        "expectedGitBlobSha1": "7cd8b7ef9e9c25d4bc2168b8f59ec3543aebb0fa",
+        "expectedSha256": "46bbcbe2467246560d96da60d17de92c50931065d0411b1421bf88cc4c7c5402",
+        "expectedBytes": 73644489,
+        "observedSha256": "64fa94fc38d540a7c908eb36e3b9f347462650a860a8a7e8da0759ce4366ff92",
+        "observedBytes": 73159963,
+        "transportStatus": "HTTP_200",
+        "exactBytes": false
+      }
+    ],
+    "globalDeploymentApprovalInferred": false
+  },
+  "storedMetadataAxes": {
+    "M1S1": {
+      "target": 286,
+      "metadataRowsPresent": 286,
+      "metadataRowsMissing": 0,
+      "storedFinalQa": 1,
+      "storedMainMerge": 0,
+      "storedReviewStatusCounts": {
+        "review_required": 193,
+        "REDACTED_9f7c9551c340e6a5c44084c2f701c9bddb63c6fb31b3faa71470a091b224b8ee": 92,
+        "reviewed_pass": 1
+      },
+      "storedMetadataStatusCounts": {
+        "REDACTED_87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15": 193,
+        "REDACTED_1d36ee12152ba91fa668c1ae423d74c69d6d013531889978b84e8ea922392295": 92,
+        "REDACTED_7eae22724f31a0cd76551ce23328daec663c925b3bb20af6a06004a4499531cf": 1
+      },
+      "storedDifficultyBucketCounts": {
+        "1": 94,
+        "2": 147,
+        "3": 41,
+        "4": 4
+      },
+      "storedDifficultyFieldPresence": {
+        "difficultyBucket": 286,
+        "difficultyConfidence": 286,
+        "difficultyBoundaryFlag": 286,
+        "legacyLevelCompatibility": 286
+      },
+      "issuedD5RequestCount": "NOT_EVALUATED",
+      "currentNativeOrSemanticApprovalCount": "NOT_EVALUATED"
+    },
+    "M1S2": {
+      "target": 761,
+      "metadataRowsPresent": 761,
+      "metadataRowsMissing": 0,
+      "storedFinalQa": 121,
+      "storedMainMerge": 6,
+      "storedReviewStatusCounts": {
+        "reviewed_pass": 447,
+        "REDACTED_9f7c9551c340e6a5c44084c2f701c9bddb63c6fb31b3faa71470a091b224b8ee": 160,
+        "review_required": 46,
+        "NULL_OR_MISSING": 104,
+        "REDACTED_2214dfd2d2c9ba44ab3f08b5af7d6b921013c795ac34a2919c984dd4016505cf": 4
+      },
+      "storedMetadataStatusCounts": {
+        "REDACTED_84b2f6c911691f4cb417adc83844ed450f7ac343a0bb7d9cbaa95f4dad9a3afe": 203,
+        "REDACTED_217ff69f3cd412490290e66a9fbf143e6f14e03fb9795eb4e9cdd9d61d0e7289": 124,
+        "REDACTED_7eae22724f31a0cd76551ce23328daec663c925b3bb20af6a06004a4499531cf": 143,
+        "REDACTED_87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15": 40,
+        "REDACTED_ba12de23ecf5e9f8003fb985172984502fecd050f23870f29a21f4b8dc3db4d6": 105,
+        "REDACTED_1d36ee12152ba91fa668c1ae423d74c69d6d013531889978b84e8ea922392295": 124,
+        "REDACTED_5db1dc3cdfc457c5d2cc4c374e0766c1a6fc07b62ed4102816ffa1296b42645e": 14,
+        "REDACTED_2214dfd2d2c9ba44ab3f08b5af7d6b921013c795ac34a2919c984dd4016505cf": 2,
+        "registered_merged_source": 6
+      },
+      "storedDifficultyBucketCounts": {
+        "1": 131,
+        "2": 335,
+        "3": 196,
+        "4": 81,
+        "5": 4,
+        "REDACTED_0f15dc23249e5ae41849d7f070b24f8aea5d052fe3d20972b004e8b9e07349ba": 14
+      },
+      "storedDifficultyFieldPresence": {
+        "difficultyBucket": 761,
+        "difficultyConfidence": 725,
+        "difficultyBoundaryFlag": 701,
+        "legacyLevelCompatibility": 701
+      },
+      "issuedD5RequestCount": "NOT_EVALUATED",
+      "currentNativeOrSemanticApprovalCount": "NOT_EVALUATED"
+    },
+    "M2S1": {
+      "target": 1780,
+      "metadataRowsPresent": 1780,
+      "metadataRowsMissing": 0,
+      "storedFinalQa": 9,
+      "storedMainMerge": 0,
+      "storedReviewStatusCounts": {
+        "NULL_OR_MISSING": 802,
+        "review_required": 901,
+        "REDACTED_dcb47b5c0ec1da53cdbeb694cf5a216fe032d0a1ebf62d1cd8310604f10894e9": 45,
+        "reviewed_pass": 12,
+        "pending": 20
+      },
+      "storedMetadataStatusCounts": {
+        "REDACTED_ba12de23ecf5e9f8003fb985172984502fecd050f23870f29a21f4b8dc3db4d6": 859,
+        "REDACTED_87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15": 852,
+        "REDACTED_7eae22724f31a0cd76551ce23328daec663c925b3bb20af6a06004a4499531cf": 69
+      },
+      "storedDifficultyBucketCounts": {
+        "1": 451,
+        "2": 1141,
+        "3": 174,
+        "4": 14
+      },
+      "storedDifficultyFieldPresence": {
+        "difficultyBucket": 1780,
+        "difficultyConfidence": 1768,
+        "difficultyBoundaryFlag": 1768,
+        "legacyLevelCompatibility": 1768
+      },
+      "issuedD5RequestCount": "NOT_EVALUATED",
+      "currentNativeOrSemanticApprovalCount": "NOT_EVALUATED"
+    },
+    "M2S2": {
+      "target": 1604,
+      "metadataRowsPresent": 1604,
+      "metadataRowsMissing": 0,
+      "storedFinalQa": 172,
+      "storedMainMerge": 0,
+      "storedReviewStatusCounts": {
+        "review_required": 855,
+        "reviewed_pass": 172,
+        "NULL_OR_MISSING": 577
+      },
+      "storedMetadataStatusCounts": {
+        "REDACTED_87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15": 855,
+        "REDACTED_7eae22724f31a0cd76551ce23328daec663c925b3bb20af6a06004a4499531cf": 190,
+        "REDACTED_ba12de23ecf5e9f8003fb985172984502fecd050f23870f29a21f4b8dc3db4d6": 559
+      },
+      "storedDifficultyBucketCounts": {
+        "1": 336,
+        "2": 856,
+        "3": 357,
+        "4": 55
+      },
+      "storedDifficultyFieldPresence": {
+        "difficultyBucket": 1604,
+        "difficultyConfidence": 1575,
+        "difficultyBoundaryFlag": 1575,
+        "legacyLevelCompatibility": 1575
+      },
+      "issuedD5RequestCount": "NOT_EVALUATED",
+      "currentNativeOrSemanticApprovalCount": "NOT_EVALUATED"
+    },
+    "M3S2": {
+      "target": 1958,
+      "metadataRowsPresent": 1958,
+      "metadataRowsMissing": 0,
+      "storedFinalQa": 895,
+      "storedMainMerge": 0,
+      "storedReviewStatusCounts": {
+        "review_required": 537,
+        "reviewed_pass": 1282,
+        "NULL_OR_MISSING": 136,
+        "REDACTED_547303a2186d762adfa695f4cdadd2740366cd6df6854a5841fc6a3c7fc01f8c": 2,
+        "REDACTED_d82791e477f7b6777f6379a5109065c732f59e6231f32caaf8fc654a85ad55ae": 1
+      },
+      "storedMetadataStatusCounts": {
+        "REDACTED_7eae22724f31a0cd76551ce23328daec663c925b3bb20af6a06004a4499531cf": 987,
+        "REDACTED_6d333350b332da07476b5d4bf16702532fabbcaa8720fd2d0fc2112b25f842a8": 135,
+        "REDACTED_77f1e3aff9c15c5cdc5921a9a09d834cf08b4e70def4ee4f50569b60437a8d15": 271,
+        "REDACTED_87ddfb05bf271001f53c039d90b509e46b04ea396d2881e38999c1026e6b2e15": 533,
+        "REDACTED_ba12de23ecf5e9f8003fb985172984502fecd050f23870f29a21f4b8dc3db4d6": 17,
+        "REDACTED_31746bf91ab837435ae37903e2a370360bae74c74e0e37a0dd505a785a952e95": 14,
+        "REDACTED_ba21457d9c54b1ac9fb9c95ce5e24d788934736ca280b0a8db8bb9e9a8e27041": 1
+      },
+      "storedDifficultyBucketCounts": {
+        "1": 326,
+        "2": 805,
+        "3": 613,
+        "4": 205,
+        "5": 9
+      },
+      "storedDifficultyFieldPresence": {
+        "difficultyBucket": 1958,
+        "difficultyConfidence": 1546,
+        "difficultyBoundaryFlag": 1543,
+        "legacyLevelCompatibility": 1543
+      },
+      "issuedD5RequestCount": "NOT_EVALUATED",
+      "currentNativeOrSemanticApprovalCount": "NOT_EVALUATED"
+    }
+  },
+  "boundaries": {
+    "physicalRegistrationIsSemanticApproval": false,
+    "storedFinalQaIsCurrentNativeValidation": false,
+    "literalDifficultyIsIssuedD5Request": false,
+    "currentNativeValidation": "NOT_EVALUATED",
+    "issuedSemanticReceiptStock": "NOT_RECOUNTED",
+    "wholeSemanticQuality": "NOT_EVALUATED",
+    "sourceQuestionEvaluation": 0,
+    "sourceTextOutput": 0,
+    "answersOrSolutionsOutput": 0,
+    "newMathReviews": 0,
+    "newVisualReviews": 0,
+    "builderRuns": 0,
+    "registrarRuns": 0,
+    "registrationWrites": 0,
+    "approvalWrites": 0,
+    "trackedRepositoryWrites": 0,
+    "remoteRefWrites": 0,
+    "gitObjectCacheHydration": "ALLOWED_READ_CACHE_ONLY_FROM_PUBLIC_ORIGIN",
+    "excludedSemesterClassification": 0
+  }
+}

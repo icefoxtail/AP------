@@ -1,6 +1,6 @@
 ## CURRENT 공통 메타 진입 (2026-10-30)
 
-- 신규 CREATE/R1/R2/R3는 [단일 메타 Resolver CURRENT](https://github.com/icefoxtail/AP------/blob/main/docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md)를 적용한다. Primary RPM·CrossConcept/Condition/Integration은 실제 교육과정 풀이로 판정, PT/TPL은 공식 Resolver만 투영한다. 기존 역할별 원본·블라인드·출고 권한/품질 계약을 유지한다.
+- 신규 CREATE/R1/R2/R3는 [단일 메타 Resolver CURRENT](https://github.com/icefoxtail/AP------/blob/main/docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md)를 적용한다. Primary RPM·CrossConcept/Condition/Integration은 실제 교육과정 풀이로 판정, PT/TPL은 문항·해설의 결정 단계를 읽은 직접 판정이 정본이다(Resolver 조회·새 키 신설도 가능, 2026-11-16). 기존 역할별 원본·블라인드·출고 권한/품질 계약을 유지한다.
 
 # JS Archive GPT 예약라인 공용 프롬프트 정본 — CURRENT
 
@@ -77,7 +77,7 @@
 ### 2.3 수학·학생 해설·정밀 메타 실제 작업
 
 - 모든 제작·검수 stage가 직접 해당 qid의 원본(발문·보기·문제 시각), 풀이, 학생 해설, 학년 교육과정, 필요 problem/solution SVG/PNG, 난이도를 검토하고 확인된 결함을 자기 locus에서 최소 수정한다. **작은칠판**: 조건과 목표 → 전략·공식 선택 이유 → 학생이 따라갈 중간 수식 → 부호·구간·경우·경계·보기/오답 → 단 하나의 정답과 자연스러운 결론. 답이 맞는 것만으로 해설 PASS 금지. 이미 충분하면 근거 있는 KEEP.
-- 신규/검수된 각 qid Meta는 원본과 실제 최종 풀이를 근거로 `standardUnitKey/subUnitKey`, RPM L1→L4 semantic(Primary, current scope+허용 lower-only prerequisite), grade crosswalk, GLOBAL ACTIVE PT/TPL taxonomy/aliases/ownerPack, exact curriculum binding, CrossConcept/Condition/Integration, `level=하|중|상` 및 독립 `difficultyBucket=1..5`를 확인한다. 실제 authority lookup 증거를 qid별 `META_LOOKUP_EVIDENCE`에 남기고 바로 고칠 수 있는 오류는 수정. 있는 ACTIVE key 대신 null 유지, 가짜 NONE/[]·임의 key 발명, 전체 qid 포괄 `CANONICAL_UNVERIFIED` 후 작업완료 주장은 금지.
+- 신규/검수된 각 qid Meta는 원본과 실제 최종 풀이를 근거로 `standardUnitKey/subUnitKey`, RPM L1→L4 semantic(Primary, current scope+허용 lower-only prerequisite), grade crosswalk, GLOBAL ACTIVE PT/TPL taxonomy/aliases/ownerPack, exact curriculum binding, CrossConcept/Condition/Integration, `difficultyBucket=1..5`를 확인한다(새 문항에 `level` 하|중|상은 쓰지 않음. [규칙](../../../agents/metadata.md#난이도는-정수-15만-2026-11-18-21시-kst부터-적용)). 실제 authority lookup 증거를 qid별 `META_LOOKUP_EVIDENCE`에 남기고 바로 고칠 수 있는 오류는 수정. 있는 ACTIVE key 대신 null 유지, 가짜 NONE/[]·임의 key 발명, 전체 qid 포괄 `CANONICAL_UNVERIFIED` 후 작업완료 주장은 금지.
 - Golden 2~3 + 관련 Negative(복성고1 false PASS 포함) 실제 sample/sha/관찰로 stage 품질 기준을 calibrate하고, 적용 가능한 공식 validator/Node·브라우저/렌더 검사를 실제 실행하거나 `NOT_RUN`, 실패·기술 executor 경계를 정확히 남긴다. baseline 판정에 필요한 preflight를 하지 않았다면 `STAGE_QUALITY_PASS=false`. 이전 실제 유효한 freeze·수정·검사 결과는 보존하고 동일 검증 반복 금지.
 
 ### 2.4 OWN_AND_FIX 원 소유자 책임과 비차단 상태

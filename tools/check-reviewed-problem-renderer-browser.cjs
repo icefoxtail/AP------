@@ -104,8 +104,10 @@ async function measureProblemCapture(image) {
     const css = getComputedStyle(element), r = element.getBoundingClientRect();
     return css.display !== 'none' && css.visibility !== 'hidden' && css.visibility !== 'collapse' && Number(css.opacity) !== 0 && r.width > 0 && r.height > 0;
   };
+  // 균등 칸 엔진은 문항 내용을 .ap-slot-content 하나로 감싼다(옛 갈래는 q-box의 직계 자식). 번호·본문·그림·보기는 그 안에서 센다.
+  const holder = box.querySelector(':scope > .ap-slot-content') || box;
   const children = [];
-  for (const child of box.childNodes) {
+  for (const child of holder.childNodes) {
     if (child.nodeType === Node.ELEMENT_NODE && visible(child)) children.push(rect(child));
     else if (child.nodeType === Node.TEXT_NODE && child.textContent.trim()) {
       const range = document.createRange(); range.selectNodeContents(child);
@@ -116,7 +118,7 @@ async function measureProblemCapture(image) {
     ['fixed', 'sticky'].includes(getComputedStyle(element).position) && visible(element)).map(rect)
     .filter(r => r.x < innerWidth && r.x + r.width > 0 && r.y < innerHeight && r.y + r.height > 0);
   const panel = document.getElementById('ap-archive-render-feedback');
-  const completeChildrenVisible = [...box.children].every(child =>
+  const completeChildrenVisible = [...holder.children].every(child =>
     (!child.textContent.trim() && !child.querySelector('img,svg,math,mjx-container')) || visible(child));
   const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(box.outerHTML));
   return { question: rect(box), children, image: rect(image), viewport: { width: innerWidth, height: innerHeight },
@@ -474,8 +476,24 @@ function createGitReader(root, expectedCommit = '') {
     const tab = row.indexOf('\t'), [mode, type, blob] = row.slice(0, tab).split(' ');
     return [row.slice(tab + 1), { mode, type, blob }];
   }));
+  // The student page fetches data/question_metadata.json. Git tracks that metadata as per-exam shards
+  // (archive/data/question-metadata/v1/); the one file is their assembly at this exact commit, built from
+  // git objects (never from the mutable working tree), so it is as immutable as any tracked file.
+  const METADATA_FILE = 'archive/data/question_metadata.json';
+  let assembledMetadata = null;
+  const readAssembledMetadata = () => {
+    if (!assembledMetadata) {
+      assembledMetadata = execFileSync(process.execPath, ['--input-type=module', '-e',
+        "import { pathToFileURL } from 'node:url'; import path from 'node:path';" +
+        "const { questionMetadataBytesAt } = await import(pathToFileURL(path.join(process.argv[1], 'archive/tools/meta-foundation/question-metadata-format.mjs')).href);" +
+        'process.stdout.write(questionMetadataBytesAt(process.argv[1], process.argv[2]));', root, commit],
+      { maxBuffer: 512 * 1024 * 1024, timeout: 120000 });
+    }
+    return assembledMetadata;
+  };
   const read = rel => {
     assert(relativePath(rel), 'UI_UNSAFE_PATH');
+    if (rel === METADATA_FILE && !tree.has(rel) && [...tree.keys()].some(file => file.startsWith('archive/data/question-metadata/v1/'))) return readAssembledMetadata();
     const entry = tree.get(rel);
     assert(entry && entry.type === 'blob' && ['100644', '100755'].includes(entry.mode), 'UI_TRACKED_FILE_REQUIRED');
     const full = path.join(root, rel);

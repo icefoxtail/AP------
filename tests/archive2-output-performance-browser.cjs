@@ -1,6 +1,8 @@
 'use strict';
 
-// Actual Chrome, serial before/after runs against the same real source bytes.
+// Actual Chrome runs of the current checkout (ARCHIVE_PERFORMANCE_PROFILE_ONLY=1, the CI mode).
+// A serial before/after comparison with an explicit baseline commit
+// (ARCHIVE_PERFORMANCE_BASE_SHA) remains available for manual investigation only.
 // Evidence contains only timing, identity, hashes and geometry, never source
 // questions/answers/solutions, screenshots, DOM dumps or browser log text.
 const fs = require('node:fs');
@@ -14,7 +16,7 @@ const { inspectPdf } = require('./archive2-output-pdf-evidence.cjs');
 const { loadQualificationFixtures } = require('./archive2-output-qualification-fixtures.cjs');
 
 const root = path.resolve(__dirname, '..');
-const baseSha = process.env.ARCHIVE_PERFORMANCE_BASE_SHA || require('./archive2-output-comparison-references.json').performanceReference;
+const baseSha = process.env.ARCHIVE_PERFORMANCE_BASE_SHA || null;
 const profileOnly = process.env.ARCHIVE_PERFORMANCE_PROFILE_ONLY === '1';
 const pdfOnly = process.env.ARCHIVE_PERFORMANCE_PDF_ONLY === '1';
 const skipPdf = process.env.ARCHIVE_PERFORMANCE_SKIP_PDF === '1';
@@ -994,7 +996,7 @@ function summarize() {
 }
 
 async function main() {
-  requireThat(/^[a-f0-9]{40}$/i.test(baseSha), 'EXACT_BASELINE_SHA_REQUIRED');
+  requireThat(profileOnly || /^[a-f0-9]{40}$/i.test(baseSha), 'EXACT_BASELINE_SHA_REQUIRED');
   requireThat(Number.isInteger(repeats) && repeats >= 1 && repeats <= 5, 'INVALID_REPEAT_COUNT');
   requireThat(!(pdfOnly && skipPdf), 'CONFLICTING_PDF_PHASE_FLAGS');
   requireThat(!(networkOnly && (pdfOnly || profileOnly)), 'NETWORK_COMPLETION_REQUIRES_PAIRED_NON_PDF_RUN');

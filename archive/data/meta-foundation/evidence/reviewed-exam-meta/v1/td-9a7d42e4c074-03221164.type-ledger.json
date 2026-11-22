@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-9a7d42e4c074-03221164",
+  "sourceArchiveFile": "original/middle/m2/2final/20_향림중_2학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_f505edd22579cb7240839df51da973833027781da8e3faf16bc3b3bcdacfdb3d",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+      "step": "두 정사각형 넓이289와225의 차64로 직각변8을 복원하고 다른 변15와 삼각형 넓이를 계산한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_de7c41c228ab675b0862239cdcfac8a6b86e685111af18ee3dfa4ef9ea111701",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_ELIMINATION",
+      "step": "C에서 AB에 수선을 내려 두 직각삼각형 제곱식을 빼 AH=11/2를 구하고 CH와DH의 제곱합으로 CD=6을 구한다.",
+      "note": " 새 TPL 제안: 피타고라스 정리·역 및 도형 활용의 직접 풀이. 정의: C에서 AB에 수선을 내려 두 직각삼각형 제곱식을 빼 AH=11/2를 구하고 CH와DH의 제곱합으로 CD=6을 구한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ef258ab2d03d1b5413cc79e0e96b42303633dcb6e0747dad5404fe53c0e8a3b9",
+      "sourceOrdinal": 18,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_COUNTING",
+      "templateKey": null,
+      "step": "20이하5의 배수4개와7의 배수2개가 겹치지 않으므로 합6을 구한다.",
+      "note": " 새 PT 제안: 배반인 선택의 합의 법칙. 서로 동시에 선택하지 않는 범주별 경우를 나누어 각 경우의 수를 더한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0195f0a7c4076f164503f61827844a995b8094286b16f652e90ecc40a5c94523",
+      "sourceOrdinal": 20,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_COUNTING",
+      "templateKey": null,
+      "step": "회장·부회장은 순서 있는5곱하기4이고 같은 대표2명은 중복2를 나누어20+10을 구한다.",
+      "note": " 새 PT 제안: 서로 다른 직책과 같은 직책의 대표 선출. 구분되는 직책은 순서를 구별하고 같은 직책의 복수 인원은 순서를 구별하지 않아 중복을 제거하며 선출 경우의 수를 센다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    }
+  ]
+}

@@ -1214,7 +1214,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "직사각형에 붙은 반원과 외접원의 넓이",
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "source_figure",
       "tags": [
         "기하",
         "직사각형에 붙은 반원과 외접원의 넓이"
@@ -1336,7 +1336,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "직각삼각형의 빗변과 높이",
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "source_figure",
       "tags": [
         "기하",
         "직각삼각형의 빗변과 높이"
@@ -1456,7 +1456,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "정육각형의 대각선",
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "source_figure",
       "tags": [
         "기하",
         "정육각형의 대각선"
@@ -1578,7 +1578,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "특수각을 포함한 두 직각삼각형",
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "source_figure",
       "tags": [
         "기하",
         "특수각을 포함한 두 직각삼각형"
@@ -1698,7 +1698,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "직사각형 접기와 반사",
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "source_figure",
       "tags": [
         "기하",
         "직사각형 접기와 반사"
@@ -1821,7 +1821,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "이등변삼각형과 수선 거리의 합",
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "source_figure",
       "tags": [
         "기하",
         "이등변삼각형과 수선 거리의 합"
@@ -2061,7 +2061,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "정육면체 꼭짓점과 평면 사이 거리",
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "source_figure",
       "tags": [
         "입체도형",
         "정육면체 꼭짓점과 평면 사이 거리"
@@ -2182,7 +2182,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "정사면체 표면의 최단거리",
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "source_figure",
       "tags": [
         "입체도형",
         "정사면체 표면의 최단거리"
@@ -2303,7 +2303,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "정사면체의 내부분할 삼각형 넓이",
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "source_figure",
       "tags": [
         "입체도형",
         "정사면체의 내부분할 삼각형 넓이"
@@ -2529,7 +2529,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "정팔면체의 부피",
       "questionType": "서술형",
-      "layoutTag": "fullwidth",
+      "layoutTag": "source_figure",
       "tags": [
         "입체도형",
         "정팔면체의 부피"
@@ -2645,7 +2645,7 @@ window.examData = {
       "subUnitKey": null,
       "subUnit": "직육면체 표면을 지나는 최단거리",
       "questionType": "서술형",
-      "layoutTag": "fullwidth",
+      "layoutTag": "source_figure",
       "tags": [
         "입체도형",
         "직육면체 표면을 지나는 최단거리"

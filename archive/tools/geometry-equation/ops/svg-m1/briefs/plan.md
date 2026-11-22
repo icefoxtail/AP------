@@ -13,7 +13,7 @@ AP Math SVG 엔진으로 기출 문항의 **해설 그림**을 만든다. 너는
 - 필드 이름·허용값이 헷갈리면 계약 전문을 **grep으로 필요한 줄만** 찾아본다: `/home/user/AP------/archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`의 "## plan 계약 전문" 절(파일 전체를 읽지 않는다).
 
 ## 문항마다 할 일 (`{RUN}/q<ord>/` 폴더에서)
-1. questionImage PNG를 Read로 보고, content·solution을 읽어 **그림이 보여 줄 관계·이름·값**을 먼저 정한다(문제 그림의 점 이름·배치를 따른다; 풀이가 쓰는 보조선·값만 더한다; 최종 정답 값을 그림에 새로 적지 않는다; 문제·풀이에 없는 점 이름·변수(t, u, β, r, h, a 등)를 지어 쓰지 않는다 — 이름 없는 각은 호 표식으로, 길이 라벨은 그 길이를 재는 선분·호에 붙인다).
+1. questionImage PNG를 Read로 보고, content·solution을 읽어 **그림이 보여 줄 관계·이름·값**을 먼저 정한다(문제 그림의 점 이름·배치를 따른다; 풀이가 쓰는 보조선·값만 더한다; 문제 그림은 최종 정답 값을 새로 적지 않고 해설 그림은 정답이 있어도 반려하지 않는다(2026-11-17); 문제·풀이에 없는 점 이름·변수(t, u, β, r, h, a 등)를 지어 쓰지 않는다 — 이름 없는 각은 호 표식으로, 길이 라벨은 그 길이를 재는 선분·호에 붙인다).
 2. `item.json` = `{"sourcePath":"{SOURCE}","ordinal":<ord>}` 과 `plan.json`(지침 7절 출력 형식: caption, sourceConditions, newVisualInformation 포함; 통계 capability는 3-43절의 다섯 키 규칙)을 쓴다.
 3. 렌더(저장소 루트에서, 한 번에 하나씩):
    `cd /home/user/AP------ && timeout 900 node archive/tools/geometry-equation/production/render-plan.mjs --item {RUN}/q<ord>/item.json --plan {RUN}/q<ord>/plan.json --out {RUN}/q<ord>/out > {RUN}/q<ord>/render.log 2>&1; tail -c 400 {RUN}/q<ord>/render.log`

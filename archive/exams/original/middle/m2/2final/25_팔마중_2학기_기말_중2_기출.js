@@ -13,7 +13,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -72,7 +72,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -131,7 +131,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -190,7 +190,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -249,7 +249,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -308,7 +308,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -367,7 +367,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -428,7 +428,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -489,7 +489,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -763,7 +763,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -995,7 +995,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -1015,10 +1015,10 @@ window.questionBank = [
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q18-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 수직선의 원점 0에서 앞면이 나와 오른쪽으로 2만큼 간 뒤 뒷면이 세 번 나와 왼쪽으로 1씩 세 번 움직여 -1에 도착하는 예시 화살표 네 개.",
-    "solutionImageCaption": "예: 앞면 1번(+2)과 뒷면 3번(-1, -1, -1)이면 0→2→1→0→-1로 -1에 도착한다. 앞면이 정확히 한 번 나오는 경우는 4가지이므로 4/16=1/4이다. 정답 ④",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q18-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 칸에 동전 네 번의 결과 HTTT, THTT, TTHT, TTTH가 세로로 놓이고, 오른쪽 칸의 최종 위치 −1로 네 화살표가 모인다.",
+    "solutionImageCaption": "앞면이 h번 나오면 최종 위치는 2h−(4−h)=3h−4이므로 3h−4=−1에서 h=1이고, 앞면이 한 번 나오는 네 가지가 조건을 만족한다. 전체 16가지 중 4가지이므로 확률은 4/16=1/4이고, 따라서 답은 ④ 1/4이다.",
+    "solutionImageSize": "full",
     "curriculum": "2015",
     "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
     "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
@@ -1167,7 +1167,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -1221,7 +1221,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -1268,7 +1268,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -1324,7 +1324,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"

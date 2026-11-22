@@ -108,36 +108,49 @@
         };
     </script>
     <script>window.__AP_MATHJAX_SOURCE__='local';window.__AP_MATHJAX_READY__=new Promise(resolve=>{window.__AP_MATHJAX_RESOLVE__=resolve;});window.__AP_LOAD_MATHJAX_CDN__=failed=>{window.__AP_MATHJAX_SOURCE__='cdn-fallback';const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-chtml.js';script.onload=()=>window.__AP_MATHJAX_RESOLVE__?.(true);script.onerror=()=>window.__AP_MATHJAX_RESOLVE__?.(false);failed?.remove();document.head.appendChild(script);};</script>
+    <script src="mathjax-atomic-inline.js?v=20261117-atomic-inline-1"></script>
     <script id="MathJax-script" defer src="vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js" onload="window.__AP_MATHJAX_RESOLVE__?.(true)" onerror="window.__AP_LOAD_MATHJAX_CDN__?.(this)"></script>
     <script src="vendor/qrious/qrious.min.js"></script><!-- QRious v4.0.2, vendored under GPL v3. -->
     <!-- 페이지 전체 평탄화 인쇄용 로컬 번들. 외부 CDN 지연이 인쇄 준비를 막지 않도록 로컬 보관. -->
     <script src="vendor/html2canvas/html2canvas.min.js?v=1.4.1"></script>
-    <script src="native_print.js?v=20260915.2"></script>
+    <script src="native_print.js?v=20261119.1"></script>
     <script src="archive-asset-base.js?v=20261110-teacher-copy-1"></script>
     <script src="exam-display-title.js?v=20261116-polish-1"></script>
     <script src="student-svg-refresh.js?v=1"></script>
     <script src="js/ap-table-engine.js?v=20261109-ap-table-1"></script>
+    <script src="render-text.js?v=20261121-question-spacing"></script>
     <script src="print_image_optimizer.js?v=20261030.1"></script>
     <script src="mathjax_render_loop.js?v=20261116-enclosed-latin"></script>
     <script src="concept_map.js" onerror="console.warn('[3B] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
-    <script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b" onerror="console.warn('[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행')"></script>
+    <!-- 2026-11-20 승인 메타 sidecar(question-meta.js → data/question_metadata.json, 압축 전 87.6MB·gzip 15MB)는 시험지를 그리는 데 쓰이지 않고
+         반 출제 등록(submitQr=1 / osqr=1)이 서버로 보내는 standardUnitKey 등만 채운다. 등록 주소가 아니면 불러오지 않는다(mixed_engine의
+         output-metadata-loader.js와 같은 규칙). 이유: 원본 시험지 하나를 열려고 15MB를 받고 87MB를 해석한 뒤에야 첫 문항이 그려졌다. -->
+    <script id="engine-metadata-gate">
+    (function () {
+        var params = new URLSearchParams(location.search);
+        if (params.get('submitQr') === '1' || params.get('osqr') === '1')
+            document.write('<script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b" onerror="console.warn(\'[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행\')"><\/script>');
+    })();
+    </script>
     <script src="print-contract.js?v=20261009.1" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
     <script src="data/svg-accessibility-index.js?v=20261014.1" onerror="console.warn('[svg-accessibility] 색인 로드 실패 — 그림 이름 한국어 기본값 사용')"></script>
     <script src="svg-accessibility.js?v=20261014.1"></script>
     <script src="render-authority.js?v=20261014-svg-alt-1" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
     <script src="layout-authority.js?v=20261009.1" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
-    <script src="layout-materializer.js?v=20261102.2"></script>
-    <script src="solution-render-executor.js?v=20261111-svg-k-2" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
+    <script src="layout-materializer.js?v=20261122-sol-fit-1"></script>
+    <script src="solution-render-executor.js?v=20261122-sol-fit-1" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="answer-render-executor.js?v=20261029-sections-1" onerror="console.warn('[answer-render-executor] shared answer renderer 로드 실패 — legacy renderer 유지')"></script>
-    <script src="equal-slot-engine.js?v=20261029-mjx-ext-1"></script>
-    <link rel="stylesheet" href="equal-slot-engine.css?v=20260915.1">
-    <script src="exam-render-executor.js?v=20261106-output-performance-1" onerror="console.warn('[exam-render-executor] shared exam renderer 로드 실패 — legacy renderer 유지')"></script>
-    <script src="render-state-normalizer.js?v=20261112-student-svg-1"></script>
+    <script src="equal-slot-engine.js?v=20261121-raster-page"></script>
+    <link rel="stylesheet" href="equal-slot-engine.css?v=20261118-auto-promote-2">
+    <link rel="stylesheet" href="figure-size.css?v=20261121-figure-ratio-2">
+    <script src="exam-render-executor.js?v=20261118-auto-promote-1" onerror="console.warn('[exam-render-executor] shared exam renderer 로드 실패 — legacy renderer 유지')"></script>
+    <script src="render-state-normalizer.js?v=20261118-auto-promote-1"></script>
     <script src="side-effect-ledger.js?v=20260911.5"></script>
     <script src="screen-runtime.js?v=20261106-output-performance-2"></script>
     <script src="snapshot-contract.js?v=20260923.1"></script>
     <script src="review-preview-bridge.js?v=20260915.2"></script>
     <script src="question-image-readiness.js?v=20261106-output-performance-1"></script>
+    <script src="figure-size.js?v=20261119-figchoice-1"></script>
     <script src="screen-runtime-adapter.js?v=20261116-polish-1"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <link rel="stylesheet" href="archive2-output-bar.css?v=20261116-polish-3">
@@ -286,6 +299,14 @@
         .q-box.sol-box.sol-fit-narrow[data-sol-fit="2"] .sol-exp { font-size: 7.5pt; }
         .q-box.sol-box.sol-fit-narrow[data-sol-fit="3"] .sol-exp { font-size: 7pt; }
         .q-box.sol-box.sol-fit-narrow[data-sol-fit="4"] .sol-exp { font-size: 6.5pt; }
+        /* 글자 단계로도 안 맞는 해설 하나만 줄여서 넣는다(해설지 전체를 실패시키지 않음). 늘임표(\overline 등)의 안 보이는 공백이 몇 px 삐져나온 것은
+           공백만 paint 안에 가둔다(mixed_engine.html의 [data-ap-mjx-clip]과 같은 규칙, 넘친 해설 상자에만 붙는다). */
+        .q-box.sol-box[data-sol-shrink="1"] { zoom: 0.92; }
+        .q-box.sol-box[data-sol-shrink="2"] { zoom: 0.85; }
+        .q-box.sol-box[data-sol-shrink="3"] { zoom: 0.78; }
+        .q-box.sol-box[data-sol-shrink="4"] { zoom: 0.7; }
+        .q-box.sol-box[data-sol-shrink="5"] { zoom: 0.6; }
+        [data-ap-mjx-clip] mjx-stretchy-h > mjx-ext { contain: paint; }
         .sol-sec-label { display: inline; margin: 0 3px 0 0; padding: 0; border-radius: 0; background: transparent; color: #111; font-weight: 700; font-size: inherit; }
         .sol-chunk { display: inline; }
         .sol-image-wrap { display: block; margin: 10px auto 2px; text-align: center; break-inside: avoid; page-break-inside: avoid; }
@@ -293,13 +314,17 @@
         .sol-image-wrap.image-small img { max-width: 48%; max-height: 105px; }
         .sol-image-wrap.image-medium img { max-width: 72%; max-height: 145px; }
         .sol-image-wrap.image-large img { max-width: 92%; max-height: 180px; }
-        .sol-image-wrap.image-full img { max-width: 100%; max-height: none; }
+        .sol-image-wrap.image-full img { max-width: 90%; max-height: 340px; }
         /* 2026-11-11 사용자 결정: 해설 SVG는 크기 등급(small/medium/large)과 무관하게 라벨이 읽히는 크기로 보인다.
            표시 폭 = 자연 폭 x 0.6(solution-render-executor.js가 쪽 나누기 전에 img 폭으로 지정), 칸 폭이 상한, 높이는 auto.
            아래 규칙은 그 스크립트가 못 돌아도 SVG가 105/145/180px 높이 상한에 눌리지 않게 하는 대비책이다(칸 폭까지, 높이 제한 없음).
            래스터(png/jpg)는 위의 기존 상한을 그대로 쓴다. layout-fullwidth(자체 640px 상한)는 건드리지 않는다.
            그림 엔진의 표시 크기 측정(data: SVG 포함)도 이 실제 CSS를 읽는다. */
-        .sol-image-wrap:is(.image-small, .image-medium, .image-large):not(.layout-fullwidth) img:is([src$=".svg" i], [src*=".svg?" i], [src*=".svg#" i], [src^="data:image/svg+xml" i]) { max-width: 100%; max-height: none; }
+        /* 2026-11-17 사용자 지시: 해설 그림이 너무 크다 -> SVG도 크기 등급과 무관하게 칸 폭 90%·높이 340px 이내, 가운데 정렬(높이 무제한 제거).
+           표시 폭은 위 스크립트가 자연 폭 x 0.6으로 정하고 이 상한이 누른다. 크기를 data가 solutionImageSizeOverride: "full"로 명시한 그림만 칸 폭 전체·높이 무제한. */
+        .sol-image-wrap:is(.image-small, .image-medium, .image-large, .image-full):not(.layout-fullwidth) img:is([src$=".svg" i], [src*=".svg?" i], [src*=".svg#" i], [src^="data:image/svg+xml" i]) { max-width: 90%; max-height: 340px; object-fit: contain; }
+        .sol-image-wrap.image-override-full:not(.layout-fullwidth) img:is([src$=".svg" i], [src*=".svg?" i], [src*=".svg#" i], [src^="data:image/svg+xml" i]),
+        .sol-image-wrap.image-override-full:not(.layout-fullwidth) img { max-width: 100%; max-height: none; }
         .sol-image-wrap.layout-fullwidth img { width: 100%; max-width: 100%; height: auto; max-height: 640px; }
         .sol-image-caption { margin-top: 4px; color: #666; font-size: 7.5pt; line-height: 1.35; }
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
@@ -314,9 +339,12 @@
         .q-image-wrap.image-small  img { width: 50%; max-width: 50%; max-height: 95px; object-fit: contain; }
         .q-image-wrap.image-half   img { width: 65%; max-width: 65%; max-height: 125px; object-fit: contain; }
         .q-image-wrap.image-medium img { width: 80%; max-width: 80%; max-height: 150px; object-fit: contain; }
-        .q-image-wrap.image-large  img { width: 94%; max-width: 94%; max-height: 190px; object-fit: contain; }
-        .q-image-wrap.image-full   img { width: 100%; max-width: 100%; max-height: 240px; object-fit: contain; }
-        .q-image-wrap.image-tall   img { width: 100%; max-width: 100%; max-height: 320px; object-fit: contain; }
+        /* 2026-11-17 사용자 지시: 문제 그림 기본 상한은 large와 full 사이(폭 90%·높이 240px, 가운데 정렬). large·full(자동 분류 포함)은 이 상한이고, 세로로 긴 tall만 높이 280px(2026-11-17 사용자 결정, 폭 90% 유지).
+           데이터가 imageSizeOverride: "full"/"tall"로 명시한 그림만 아래 override 상한으로 키운다. */
+        .q-image-wrap.image-large img, .q-image-wrap.image-full img { width: 90%; max-width: 90%; max-height: 240px; object-fit: contain; }
+        .q-image-wrap.image-tall img { width: 90%; max-width: 90%; max-height: 280px; object-fit: contain; }
+        .q-image-wrap.image-override-full img { width: 100%; max-width: 100%; max-height: 240px; object-fit: contain; }
+        .q-image-wrap.image-override-tall img { width: 100%; max-width: 100%; max-height: 320px; object-fit: contain; }
 
         .choices { margin-top: 10px; font-size: 9pt; }
         .choice-item { display: flex; align-items: flex-start; line-height: 1.5; }
@@ -351,8 +379,11 @@
         /* 조건/보기/자료 박스는 .box 또는 .question-note-box를 사용한다. question-table은 행/열이 있는 실제 표에만 사용한다. */
         .question-note-box,
         .note-box,
-        .box {
-            display: inline-block;
+        .box,
+        .box-region {
+            /* html2canvas (평탄화 인쇄)가 inline-block 안 블록 자식의 글자 노드를 그리지 못해 상자 안 한글이 빠졌다. 블록 상자를 내용 폭으로 줄여 같은 모양을 유지한다. */
+            display: block;
+            width: fit-content;
             max-width: 100%;
             box-sizing: border-box;
             margin: 5px 0 6px 0;
@@ -363,6 +394,16 @@
             line-height: 1.45;
             text-align: left;
             vertical-align: top;
+        }
+        /* normalizeViewBlocks가 .note-box 안의 ㄱ. ㄴ. 줄을 다시 .question-note-box로 감싸 상자 안에 상자가 생긴다. 안쪽 상자는 테두리 없이 안의 글로만 취급한다. */
+        :is(.question-note-box, .note-box, .box, .box-region) :is(.question-note-box, .note-box, .box, .box-region) {
+            display: block;
+            width: auto;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
         }
 
         .ans-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 20px; width: 100%; }
@@ -475,10 +516,10 @@
     </script>
     <link rel="stylesheet" href="css/js-archive-theme-override.css">
     <link rel="stylesheet" href="css/ap-table.css?v=20261109-ap-table-1">
-    <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261116-mobile-figure-1">
+    <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261117-figure-large-1">
     <link rel="stylesheet" href="archive2-reader-controls.css?v=20261116-output-bar-1">
-    <script src="render-feedback.js?v=20261116-output-bar-1"></script>
-    <script defer src="archive2-reader-controls.js?v=20261111-student-navigation-1"></script>
+    <script src="render-feedback.js?v=20261122-sol-fit-1"></script>
+    <script defer src="archive2-reader-controls.js?v=20261120-derive-ui-1"></script>
     <link rel="stylesheet" href="../apmath/css/student-navigation.css?v=2026.11.11.4">
     <script defer src="../apmath/js/student-navigation.js?v=2026.11.11.4" data-student-nav-active="exams" data-student-nav-context-only="true"></script>
 </head>
@@ -1088,26 +1129,13 @@ function saveApmathSession(data) {
     localStorage.setItem('APMATH_SESSION', JSON.stringify(sanitizeApmathSessionForStorage(data)));
 }
 
-function encodeBasicAuthUnicodeSafe(value) {
-    const str = String(value || '');
-    try {
-        return btoa(unescape(encodeURIComponent(str)));
-    } catch (e) {
-        return btoa(str);
-    }
-}
-
+// 인증은 토큰(Bearer)뿐이다. 토큰이 없는 세션은 null(호출한 쪽이 로그인 안내를 낸다): 비밀번호로 대신하지 않는다.
 function getAssignmentAuthHeader() {
     try {
         const session = getApmathSession();
         if (!session) return null;
         if (session.session_token) return { 'Authorization': 'Bearer ' + session.session_token };
-
-        const mem = window.__APMATH_AUTH_MEMORY || {};
-        const loginId = mem.login_id || session.login_id || session.loginId;
-        const rawPassword = mem.raw_password || session.raw_password;
-        if (!loginId || !rawPassword) return null;
-        return { 'Authorization': 'Basic ' + encodeBasicAuthUnicodeSafe(`${loginId}:${rawPassword}`) };
+        return null;
     } catch (e) {
         return null;
     }
@@ -1199,82 +1227,10 @@ async function registerClassExamAssignmentToOS(candidate = null) {
 }
 
 
-function wrapLatex(text) {
-    if (text == null) return '';
-    let s = String(text);
-    // AP Table Engine: pipe tables and legacy HTML tables become one canonical table before any text rewriting.
-    if (typeof globalThis !== 'undefined' && globalThis.ApTableEngine) s = globalThis.ApTableEngine.renderApTables(s);
-    // Table and structured question blocks must survive text/LaTex rewriting as
-    // complete HTML units. Protecting only individual tag boundaries loses the
-    // table tree when the intervening content is split around math segments.
-    const structuralBlocks = [];
-    const saveStructuralBlock = match => {
-        const token = `__WRAP_STRUCTURAL_BLOCK_${structuralBlocks.length}__`;
-        structuralBlocks.push(match);
-        return token;
-    };
-    s = s
-        .replace(/<div[^>]*class=["'][^"']*question-table-wrap[^"']*["'][^>]*>[\s\S]*?<\/div>/gi, saveStructuralBlock)
-        .replace(/<table[\s\S]*?<\/table>/gi, saveStructuralBlock);
-    s = s.replace(/\\\([\s\S]+?\\\)/g, m => '$' + m.slice(2, -2) + '$');
-    s = s.replace(/\\\[[\s\S]+?\\\]/g, m => '$$' + m.slice(2, -2) + '$$');
-    const combRepl = T => (m, a1, a2, b1, b2) => `$_{${a1||a2}}${T}_{${b1||b2}}$`;
-    const combPat = prefix => new RegExp(`(?<!\\$)(?:\\{\\}|\\[\\])_(?:\\{([^}]+)\\}|([a-zA-Z0-9+\\-]+))${prefix}_(?:\\{([^}]+)\\}|([a-zA-Z0-9+\\-]+))`, 'g');
-    const htmlTags = [];
-    // Split math before protecting HTML tags.  Otherwise an inequality such as
-    // `$5a<b<7a$` is mistaken for a malformed `<b...>` tag and leaks raw
-    // delimiters into the rendered solution.
-    // Valid display/inline math can contain a source line break. Treat the
-    // complete dollar-delimited segment as math and normalize only its line
-    // breaks to spaces before the final HTML <br> pass.
-    const mathSegmentRe = /(\$\$[\s\S]*?\$\$|\$(?!\$)[\s\S]*?(?<!\$)\$)/g;
-    s = s.split(mathSegmentRe).map((seg, idx) => {
-        if (idx % 2 === 1) return seg.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\r\n|\r|\n/g, ' ');
-        let t = seg;
-        t = t.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>|<br\s*\/?>|\n*<\/?p(?![a-zA-Z])[^>]*>\n*|<\/?(div|span|b|i|strong|em|u|sup|sub|table|thead|tbody|tr|th|td|colgroup|col)[^>]*>/gi, m => {
-            const token = `__HTMLTAG_${htmlTags.length}__`; htmlTags.push(m); return token;
-        });
-        t = t.replace(combPat('C'), combRepl('C')).replace(combPat('H'), combRepl('H')).replace(combPat('P'), combRepl('P'));
-        return t.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    }).join('');
-    // HTML tags are represented by restore tokens at this point.  They are
-    // ordinary non-math segments and must stay in the split stream until the
-    // final restore; including the tokens in the delimiter silently discards
-    // inline <img>/<br>/<div> markup before DOM construction.
-    s = s.split(mathSegmentRe).map((seg, idx) => {
-        if (idx % 2 === 1) return seg;
-        const trimmed = seg.trim(); if (!trimmed) return seg;
-        const hasKorean = /[가-힣]/.test(seg);
-        // Source strings may encode line breaks as a literal backslash-n before
-        // HTML blocks; exclude that token from TeX-macro detection.
-        const hasLatex = /\\[a-zA-Z]/.test(seg.replace(/\\n(?![a-zA-Z])/g, ''));
-        if (!hasKorean && /\\begin\{(cases|aligned|array|matrix|pmatrix|bmatrix|vmatrix|Vmatrix)\}/.test(seg)) return `$$${seg}$$`;
-        if (!hasKorean && hasLatex && /^[0-9a-zA-Z\s\+\-\*\/\=\^\{\}\(\)\[\]_\.,\\!;:]+$/.test(trimmed)) return `$${trimmed}$`;
-        if (hasKorean && hasLatex) return seg.replace(/(\\[a-zA-Z]+(?:\{[^}]*\})*(?:\{[^}]*\})*(?:_\{?[^}\s]+\}?)?(?:\^\{?[^}\s]+\}?)?)/g, '$$$1$$');
-        return seg;
-    }).join('');
-    s = s.split(mathSegmentRe).map((seg, idx) => {
-        if (idx % 2 === 1) return seg;
-        return seg.replace(/(\\\{(?:[^{}]|\{[^}]*\})*\\\})/g, '$$$1$$');
-    }).join('');
-    s = s.split(mathSegmentRe).map((seg, idx) => {
-        if (idx % 2 === 0) return seg;
-        return seg.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    }).join('');
-    s = s.replace(/\\n(?![a-zA-Z])/g, '<br>').replace(/\r\n|\r|\n/g, '<br>');
-    return s
-        .replace(/__HTMLTAG_(\d+)__/g, (_, i) => htmlTags[i] || '')
-        .replace(/__WRAP_STRUCTURAL_BLOCK_(\d+)__/g, (_, i) => structuralBlocks[i] || '');
-}
+// 문자열 처리 순수 함수는 render-text.js(APRenderText) 한 곳에 있다. 여기에는 같은 이름의 한 줄 위임만 둔다.
+function wrapLatex(text) { return APRenderText.wrapLatex(text); }
 
-function normalizeSolutionLineBreaks(text) {
-    // A student-supplement paragraph may legitimately begin with an ASCII variable
-    // (for example, "A,B,C"). Protect only the known section marker so that its
-    // escaped line break is not mistaken for a LaTeX command such as \\neq.
-    return String(text || '')
-        .replace(/(\[학생용 보강\])\\n/g, '$1\n')
-        .replace(/\\n(?![a-zA-Z])/g, '\n');
-}
+function normalizeSolutionLineBreaks(text) { return APRenderText.normalizeSolutionLineBreaks(text); }
 
 function decorateSolutionSections(html) {
     let s = String(html || '');
@@ -1624,7 +1580,7 @@ async function recordArchiveLayoutPromotionGate(area, ctx = null) {
         const ledgerBySource = new Map(ledger.entries.map(entry => [entry.sourceRef, entry]));
         const records = new Map(AppState.canonicalData.map(question => [
             `${question.sourceRef.sourceArchiveFile}#${question.sourceRef.sourceQuestionUid}`,
-            { sectionId, sourceRef: question.sourceRef, displayNo: question.displayNo, layoutTag: question.layoutTag, wide: question.wide,
+            { sectionId, sourceRef: question.sourceRef, displayNo: question.displayNo, layoutTag: window.APRenderStateNormalizer.renderLayoutTag(question.layoutTag), wide: false,
                 measurements: ledgerBySource.get(`${question.sourceRef.sourceArchiveFile}#${question.sourceRef.sourceQuestionUid}`) }
         ]));
         const observation = authority.observeLegacyDomLayout(area, {
@@ -1679,8 +1635,9 @@ async function recordArchiveSolutionLayoutPromotionGate(area, ctx = null) {
         const records = new Map(AppState.canonicalData.map(question => [
             `${question.sourceRef.sourceArchiveFile}#${question.sourceRef.sourceQuestionUid}`,
             { sectionId, sourceRef: question.sourceRef, displayNo: question.displayNo,
-                layoutTag: question.solutionImageLayout === 'fullwidth' ? 'fullwidth' : 'solution',
-                wide: question.solutionImageLayout === 'fullwidth' }
+                // 2026-11-18: 해설 그림을 쪽 전체 폭으로 놓지 않는다(해설도 2단 안에서만). solutionImageLayout은 배치에 영향을 주지 않는다.
+                layoutTag: 'solution',
+                wide: false }
         ]));
         const blockBySource = new Map(AppState.canonicalData.map((question, index) => [`${question.sourceRef.sourceArchiveFile}#${question.sourceRef.sourceQuestionUid}`, ledger.blocks[index]]));
         const resolveBlockId = (sourceRef, occurrence) => {
@@ -2008,66 +1965,13 @@ function raf() {
     });
 }
 
-function extractChoice(c) {
-    if (c === null || c === undefined) return '';
-    if (typeof c === 'object') return c.text || c.content || c.value || c.answer || Object.values(c)[0] || '';
-    return String(c);
-}
+function extractChoice(c) { return APRenderText.extractChoice(c); }
 
-function stripChoicePrefix(text) {
-    return String(text || '').replace(/^\s*(?:[①②③④⑤⑥⑦⑧⑨⑩]|(?:\(?\d+\)|\d+\.(?!\d)|\d+\))(?=\s))\s*/, '').trim();
-}
+function stripChoicePrefix(text) { return APRenderText.stripChoicePrefix(text); }
 
-function detectChoiceRenderMode(choices) {
-    if (!choices || choices.length === 0) return 'compact';
+function detectChoiceRenderMode(choices) { return APRenderText.detectChoiceRenderMode(choices); }
 
-    const texts = choices.map(c => stripChoicePrefix(extractChoice(c)).trim());
-    // LaTeX 수식 제거 후 길이 측정 (LaTeX 소스 길이로 오인식 방지)
-    const stripped = texts.map(t => t.replace(/\$\$[\s\S]*?\$\$/g, '~').replace(/\$[^$\n]*?\$/g, '~').trim());
-
-    const avgLen = stripped.reduce((s, t) => s + t.length, 0) / Math.max(stripped.length, 1);
-    const isVeryLong = stripped.some(t => t.length > 36);
-    const hasLineBreak = texts.some(t => /\\n|\n|<br/i.test(t));
-    const hasSentence = stripped.some(t => /[.?!。]|입니다|한다|된다|아니다|같다|옳다|옳지/.test(t) && t.length > 20);
-    // boxed: 선택지 자체에 ㄱ/ㄴ/㉠/㉡ 마커가 2개 이상 포함된 경우만 (보기형 선택지)
-    const hasMultiMarker = texts.some(t => (t.match(/[ㄱㄴㄷㄹㅁ]\.|㉠|㉡|㉢|㉣|㉤/g) || []).length >= 2);
-
-    if (hasMultiMarker) return 'boxed';
-    if (isVeryLong || hasLineBreak || hasSentence || avgLen > 28) return 'block';
-
-    const isLong = stripped.some(t => t.length > 20);
-    const hasBlockPrefix = texts.some(t => /^[가-힣ㄱ-ㅎa-zA-Z][\.\)]/.test(t));
-
-    return (isLong || hasBlockPrefix) ? 'block' : 'compact';
-}
-
-function renderChoicesHTML(q) {
-    if (q.choicesEmbeddedInImage === true || q.sourcePayload?.choicesEmbeddedInImage === true) return '';
-    const circled = ['①', '②', '③', '④', '⑤'];
-    const isSubjective = !Array.isArray(q.choices) || q.choices.length === 0 || q.choices[0] === '주관식' || q.choices.every(c => extractChoice(c).trim() === '');
-    if (isSubjective) return '<div class="answer-box"></div>';
-    const requestedColumns = Number.parseInt(q.choiceColumns, 10);
-    const hasCustomGrid = requestedColumns >= 1 && requestedColumns <= 5;
-    const mode = hasCustomGrid ? 'grid' : detectChoiceRenderMode(q.choices);
-    const itemsHTML = q.choices.map((c, ci) => {
-        const choiceText = extractChoice(c);
-        const text = wrapLatex(q.preserveChoicePrefixes ? choiceText : stripChoicePrefix(choiceText));
-        return `<div class="choice-item"><span class="choice-no">${circled[ci] || ''}</span><span class="choice-text">${text}</span></div>`;
-    }).join('');
-    const gridStyle = hasCustomGrid ? ` style="grid-template-columns:repeat(${requestedColumns}, minmax(0, 1fr))"` : '';
-    return `<div class="choices choices-${mode}"${gridStyle}>${itemsHTML}</div>`;
-}
-
-function applyQuestionContentBreaks(html) {
-    if (!html) return '';
-    let count = 0;
-    return html.replace(/([\.?\!]|\s|>)\s*(\(\d+\))/g, (match, p1, p2) => {
-        count++;
-        if (count === 1) return match;
-        if (p1.includes('br>') || p1.includes('\n')) return match;
-        return p1 + '<br>' + p2;
-    });
-}
+function renderChoicesHTML(q) { return APRenderText.renderChoicesHTML(q); }
 
 function splitSubjectiveHeadingSource(source) {
     const value = String(source || '');
@@ -2097,16 +2001,18 @@ function splitSubjectiveHeadingSource(source) {
 
 function formatQuestionContent(html, q) {
     if (!html) return '';
+    // 본문 앞에 박힌 원래 문항 번호("15. …")는 q-num과 겹치므로 렌더 사본에서만 뗀다(공용 규칙: render-text.js).
+    html = APRenderText.stripLeadingQuestionNumber(html, q);
     if (q?.__apExamSubjectiveSpacing === true) {
         const split = splitSubjectiveHeadingSource(html);
         if (split) {
-            const prefix = applyQuestionContentBreaks(wrapLatex(split.prefix));
-            const heading = applyQuestionContentBreaks(wrapLatex(split.heading));
-            const body = applyQuestionContentBreaks(wrapLatex(split.body));
+            const prefix = APRenderText.normalizeQuestionContentBreaks(wrapLatex(split.prefix));
+            const heading = APRenderText.normalizeQuestionContentBreaks(wrapLatex(split.heading));
+            const body = APRenderText.normalizeQuestionContentBreaks(wrapLatex(split.body), { subjective: true });
             return `${prefix}<div class="subjective-heading">${heading}</div><div class="subjective-prompt">${body}</div>`;
         }
     }
-    return applyQuestionContentBreaks(html);
+    return APRenderText.normalizeQuestionContentBreaks(html, { subjective: /서(?:술|논술)형/.test(q?.questionType || '') });
 }
 
 function normalizeQuestionTables(html) {
@@ -2129,295 +2035,11 @@ function normalizeQuestionNotes(html) {
     );
 }
 
-function normalizeHangulStatementBreaks(html) {
-    if (!html) return '';
 
-    const tokens = [];
-    const save = (kind, match) => {
-        const token = '__HANGUL_STATEMENT_' + kind + '_' + tokens.length + '__';
-        tokens.push(match);
-        return token;
-    };
-
-    // Keep the existing note/box wrappers available for normalization, while
-    // shielding structures whose text is not a question statement stream.
-    let protectedHtml = String(html)
-        .replace(
-            /<div[^>]*class=["'][^"']*(?:\bchoices\b|\bsol-meta\b|\bsol-exp\b|\bsolution\b)[^"']*["'][^>]*>[\s\S]*?<\/div>/gi,
-            match => save('BLOCK', match)
-        )
-        .replace(
-            /<table\b[\s\S]*?<\/table>|<svg\b[\s\S]*?<\/svg>|<script\b[\s\S]*?<\/script>|<style\b[\s\S]*?<\/style>/gi,
-            match => save('BLOCK', match)
-        )
-        .replace(
-            /\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]|\$\$[\s\S]*?\$\$|\$(?!\$)[\s\S]*?(?<!\$)\$/g,
-            match => save('MATH', match)
-        )
-        .replace(/<(?!br\b)\/?[A-Za-z][^>]*>|<!--[\s\S]*?-->/gi, match => save('TAG', match));
-
-    const rank = new Map([['ㄱ', 0], ['ㄴ', 1], ['ㄷ', 2], ['ㄹ', 3], ['ㅁ', 4]]);
-    const markers = [...protectedHtml.matchAll(/([ㄱㄴㄷㄹㅁ])\./g)];
-    const replacements = [];
-
-    for (let index = 1; index < markers.length; index += 1) {
-        const previous = markers[index - 1];
-        const current = markers[index];
-        if (rank.get(current[1]) <= rank.get(previous[1])) continue;
-
-        const between = protectedHtml.slice(previous.index + previous[0].length, current.index);
-        if (/__HANGUL_STATEMENT_BLOCK_\d+__/.test(between)) continue;
-
-        const separatorMatch = between.match(
-            /(?:\s|&(?:nbsp|ensp|emsp|thinsp);|<br\s*\/?>(?:\s*)?|__HANGUL_STATEMENT_TAG_\d+__)*$/i
-        );
-        const separator = separatorMatch ? separatorMatch[0] : '';
-        const breakMatches = [...separator.matchAll(/<br\s*\/?>/gi)];
-        const tagMatches = [...separator.matchAll(/__HANGUL_STATEMENT_TAG_\d+__/gi)];
-        const lastTag = tagMatches[tagMatches.length - 1];
-        const normalizedSeparator = breakMatches.length > 0
-            ? separator.slice(0, breakMatches[0].index)
-                + '<br>'
-                + separator.slice(breakMatches[0].index + breakMatches[0][0].length)
-                    .replace(/<br\s*\/?>/gi, '')
-                    .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
-                    .replace(/^\s+|\s+$/g, '')
-            : lastTag
-            ? separator.slice(0, lastTag.index + lastTag[0].length)
-                + separator.slice(lastTag.index + lastTag[0].length)
-                    .replace(/<br\s*\/?>/gi, '')
-                    .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
-                    .replace(/\s+/g, '')
-                + '<br>'
-            : separator
-                .replace(/<br\s*\/?>/gi, '')
-                .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
-                .replace(/\s+/g, '') + '<br>';
-
-        replacements.push({
-            start: current.index - separator.length,
-            end: current.index,
-            value: normalizedSeparator
-        });
-    }
-
-    for (let index = replacements.length - 1; index >= 0; index -= 1) {
-        const replacement = replacements[index];
-        protectedHtml = protectedHtml.slice(0, replacement.start)
-            + replacement.value
-            + protectedHtml.slice(replacement.end);
-    }
-
-    return protectedHtml.replace(
-        /__HANGUL_STATEMENT_(?:BLOCK|MATH|TAG)_(\d+)__/g,
-        (match, index) => tokens[Number(index)] ?? ''
-    );
-}
-
-function protectRenderSegments(html) {
-    const tokens = [];
-    const save = (match) => {
-        const token = `__PROTECTED_SEGMENT_${tokens.length}__`;
-        tokens.push(match);
-        return token;
-    };
-
-    // 블록 HTML을 먼저 보호한 뒤 인라인 수식을 보호한다.
-    // 기존 순서(수식 → table/div)는 table 안의 수식 토큰이 table 토큰 안에 다시 들어가면서
-    // __PROTECTED_SEGMENT_n__ 문자열이 한 번만 복원되고 화면에 그대로 남는 문제가 있었다.
-    let protectedHtml = String(html || '')
-        .replace(/<div[^>]*class=["'][^"']*(?:question-table-wrap|question-note-box|box)[^"']*["'][^>]*>[\s\S]*?<\/div>/gi, save)
-        .replace(/<table[\s\S]*?<\/table>/gi, save)
-        .replace(/\$\$[\s\S]*?\$\$/g, save)
-        .replace(/\$[^$\n]*?\$/g, save);
-
-    return {
-        html: protectedHtml,
-        restore(value) {
-            let restored = String(value || '');
-            // 과거 저장본/예외 케이스에 중첩 토큰이 남아도 끝까지 복원한다.
-            for (let pass = 0; pass < tokens.length + 2 && /__PROTECTED_SEGMENT_\d+__/.test(restored); pass++) {
-                restored = restored.replace(/__PROTECTED_SEGMENT_(\d+)__/g, (match, i) => {
-                    const idx = Number(i);
-                    if (tokens[idx] !== undefined) return tokens[idx];
-                    console.warn('[JS Archive] protected segment restore failed:', match);
-                    return '';
-                });
-            }
-            if (/__PROTECTED_SEGMENT_\d+__/.test(restored)) {
-                console.warn('[JS Archive] protected segment remained after restore:', restored);
-            }
-            return restored;
-        }
-    };
-}
+function protectRenderSegments(html) { return APRenderText.protectRenderSegments(html); }
 
 
-function normalizeConditionMarkerBreaks(html) {
-    if (!html) return '';
-
-    const tokens = [];
-    const conditionTokenRe = /__CONDITION_(?:BLOCK|MATH|TAG)_(\d+)__/g;
-    const conditionTagTokenRe = /__CONDITION_TAG_\d+__/g;
-    const conditionTagIndexRe = /^__CONDITION_TAG_(\d+)__$/;
-    const save = (kind, match) => {
-        const token = '__CONDITION_' + kind + '_' + tokens.length + '__';
-        tokens.push(match);
-        return token;
-    };
-    const tagTokenSource = token => {
-        const match = String(token || '').match(conditionTagIndexRe);
-        return match ? String(tokens[Number(match[1])] || '') : '';
-    };
-    const isOpeningTagToken = token => /^<[A-Za-z][^>]*>$/.test(tagTokenSource(token));
-    const findMarkerWrapperStart = separator => {
-        conditionTagTokenRe.lastIndex = 0;
-        const tagMatches = [...String(separator || '').matchAll(conditionTagTokenRe)];
-        let lastNonOpening = -1;
-        for (let index = 0; index < tagMatches.length; index += 1) {
-            if (!isOpeningTagToken(tagMatches[index][0])) lastNonOpening = index;
-        }
-        for (let index = lastNonOpening + 1; index < tagMatches.length; index += 1) {
-            if (isOpeningTagToken(tagMatches[index][0])) return tagMatches[index];
-        }
-        return null;
-    };
-    let protectedHtml = String(html)
-        .replace(
-            /<div[^>]*class=["'][^"']*(?:\bchoices\b|\bsol-meta\b|\bsol-exp\b|\bsolution\b)[^"']*["'][^>]*>[\s\S]*?<\/div>/gi,
-            match => save('BLOCK', match)
-        )
-        .replace(
-            /<table\b[\s\S]*?<\/table>|<svg\b[\s\S]*?<\/svg>|<script\b[\s\S]*?<\/script>|<style\b[\s\S]*?<\/style>|<img\b[^>]*>/gi,
-            match => save('BLOCK', match)
-        )
-        .replace(
-            /\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]|\$\$[\s\S]*?\$\$|\$(?!\$)[\s\S]*?(?<!\$)\$/g,
-            match => save('MATH', match)
-        )
-        .replace(
-            /<(?!br\b)\/?[A-Za-z][^>]*>|<!--[\s\S]*?-->/gi,
-            match => save('TAG', match)
-        );
-
-    const markers = [];
-    const addMarker = (match, index, label) => markers.push({ index, end: index + match.length, label });
-    for (const match of protectedHtml.matchAll(/[（(][가나다라마][）)]/g)) {
-        addMarker(match[0], match.index, match[0].replace(/[（()）]/g, ''));
-    }
-    for (const match of protectedHtml.matchAll(/(?:^|[\s>]|__CONDITION_TAG_\d+__)([가나다라마])\./g)) {
-        addMarker(match[0].slice(-2), match.index + match[0].length - 2, match[1]);
-    }
-    markers.sort((left, right) => left.index - right.index);
-
-    const rank = new Map([['가', 0], ['나', 1], ['다', 2], ['라', 3], ['마', 4]]);
-    const replacements = [];
-    for (let index = 1; index < markers.length; index += 1) {
-        const previous = markers[index - 1];
-        const current = markers[index];
-        if (rank.get(current.label) <= rank.get(previous.label)) continue;
-
-        const between = protectedHtml.slice(previous.end, current.index);
-        const separatorMatch = between.match(
-            /(?:\s|&(?:nbsp|ensp|emsp|thinsp);|<br\s*\/?>(?:\s*)?|__CONDITION_TAG_\d+__)*$/i
-        );
-        const separator = separatorMatch ? separatorMatch[0] : '';
-        const breakMatches = [...separator.matchAll(/<br\s*\/?>/gi)];
-        const markerOnlySeparator = between
-            .replace(/<br\s*\/?>/gi, '')
-            .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
-            .replace(conditionTagTokenRe, '')
-            .replace(/\s+/g, '');
-        if (!breakMatches.length && /^[,，、;；:：~〜～∼\-–—…·와]*$/.test(markerOnlySeparator)) continue;
-        const markerWrapperStart = findMarkerWrapperStart(separator);
-        let normalizedSeparator;
-        if (markerWrapperStart) {
-            const beforeWrapper = separator.slice(0, markerWrapperStart.index)
-                .replace(/<br\s*\/?>/gi, '')
-                .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
-                .replace(/\s+$/g, '');
-            const afterWrapper = separator.slice(markerWrapperStart.index)
-                .replace(/<br\s*\/?>/gi, '')
-                .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
-                .replace(/\s+/g, '');
-            normalizedSeparator = beforeWrapper + '<br>' + afterWrapper;
-        } else {
-            normalizedSeparator = breakMatches.length > 0
-                ? separator.slice(0, breakMatches[0].index)
-                    + '<br>'
-                    + separator.slice(breakMatches[0].index + breakMatches[0][0].length)
-                        .replace(/<br\s*\/?>/gi, '')
-                        .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
-                        .replace(/^\s+|\s+$/g, '')
-                : separator
-                    .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
-                    .replace(/\s+/g, '')
-                    + '<br>';
-        }
-
-        replacements.push({
-            start: current.index - separator.length,
-            end: current.index,
-            value: normalizedSeparator
-        });
-    }
-
-    for (let index = replacements.length - 1; index >= 0; index -= 1) {
-        const replacement = replacements[index];
-        protectedHtml = protectedHtml.slice(0, replacement.start)
-            + replacement.value
-            + protectedHtml.slice(replacement.end);
-    }
-
-    conditionTokenRe.lastIndex = 0;
-    return protectedHtml.replace(
-        conditionTokenRe,
-        (match, index) => tokens[Number(index)] ?? ''
-    );
-}
-
-function normalizeViewBlocks(html) {
-    if (!html) return '';
-    const normalizedHtml = normalizeConditionMarkerBreaks(normalizeHangulStatementBreaks(html));
-    const protectedState = protectRenderSegments(normalizedHtml);
-    let out = protectedState.html;
-
-    // 보기/조건/자료 라벨은 문자열 시작 또는 명시적 줄바꿈 뒤에서만 블록으로 승격한다.
-    // 발문 안의 "보기에서", "보기의", "보기 중" 같은 인라인 단어를 별도 박스로
-    // 오인하면 문장이 강제로 줄바꿈되고 뒤 내용 전체가 박스에 들어갈 수 있다.
-    out = out.replace(
-        /(^|(?:<br\s*\/?>\s*)+)(?:\[보기\]|&lt;보기&gt;|<보기>|보기\s*:|조건\s*:|자료\s*:)\s*([\s\S]*?)(?=(?:<br\s*\/?>\s*){2,}|$)/gi,
-        (match, boundary, body) => {
-            const plain = body.replace(/<[^>]+>/g, '').trim();
-            const markerCount = (plain.match(/[ㄱㄴㄷㄹㅁ]\.|㉠|㉡|㉢|㉣|㉤|①|②|③|④|⑤/g) || []).length;
-            if (plain.length < 60 && markerCount < 2) return match;
-            const label = /조건\s*:/.test(match) ? '조건' : (/자료\s*:/.test(match) ? '자료' : '보기');
-            return `${boundary}<div class="question-note-box"><b>${label}</b><br>${body.trim()}</div>`;
-        }
-    );
-
-    out = out.replace(
-        /((?:<br\s*\/?>\s*)*)((?:[ㄱㄴㄷㄹㅁ]\.\s*[\s\S]*?){2,})(?=(?:<br\s*\/?>\s*){2,}|$)/g,
-        (match, breaks, body) => {
-            const plain = body.replace(/<[^>]+>/g, '').trim();
-            const markerCount = (plain.match(/[ㄱㄴㄷㄹㅁ]\./g) || []).length;
-            if (plain.length < 60 || markerCount < 2) return match;
-            return `${breaks}<div class="question-note-box">${body.trim()}</div>`;
-        }
-    );
-
-    out = out.replace(
-        /((?:<br\s*\/?>\s*)*)((?:㉠\s*[\s\S]*?㉡\s*[\s\S]*?(?:㉢|㉣|㉤)[\s\S]*?))(?=(?:<br\s*\/?>\s*){2,}|$)/g,
-        (match, breaks, body) => {
-            const plain = body.replace(/<[^>]+>/g, '').trim();
-            const markerCount = (plain.match(/㉠|㉡|㉢|㉣|㉤/g) || []).length;
-            if (plain.length < 60 || markerCount < 3) return match;
-            return `${breaks}<div class="question-note-box">${body.trim()}</div>`;
-        }
-    );
-
-    return protectedState.restore(out);
-}
+function normalizeViewBlocks(html) { return APRenderText.normalizeViewBlocks(html); }
 
 function sanitizeProtectedSegments(html) {
     const value = String(html || '');
@@ -2438,12 +2060,16 @@ function renderQuestionImageHTML(q, renderState) {
     renderState = renderState || (typeof AppState !== 'undefined' ? AppState : {});
     if (!q.image) return '';
     const size = ['small','half','medium','large','full','tall'].includes(q.imageSize) ? q.imageSize : '';
-    const sizeClass = size ? ` image-${size}` : '';
+    const sizeOverride = ['full', 'tall'].includes(q.imageSizeOverride) ? q.imageSizeOverride : '';
+    const sizeClass = (size ? ` image-${size}` : '') + (sizeOverride ? ` image-override-${sizeOverride}` : '');
+    // 그림 크기 규칙(figure-size.css): 옛 등급 클래스는 휴대폰 읽기 배치에서만 쓰이고, A4 쪽 배치는 단 폭 비율 하나다. imageScale(30~100)은 그림 하나 덮어쓰기.
+    const figureScale = window.APFigureSize?.parseScale(q.imageScale);
+    const scaleAttr = figureScale == null ? '' : ` data-scale="${figureScale}"`;
     const alt = window.APSvgAccessibility?.selectAccessibleAlt(q.image, 'image', q, q.imageAlt || '', '문제 그림') || q.imageAlt || '문제 그림';
     const imageSrc = withArchiveAssetCacheBuster(q.image, renderState);
     // External (R2) exam images are requested in CORS mode (archive-asset-base.js): print code reads their pixels.
     const cors = typeof examImageCrossOriginAttr === 'function' ? examImageCrossOriginAttr(imageSrc) : '';
-    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeArchiveHtmlAttribute(imageSrc)}"${cors} alt="${escapeArchiveHtmlAttribute(alt)}"></div>`;
+    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeArchiveHtmlAttribute(imageSrc)}"${cors}${scaleAttr} alt="${escapeArchiveHtmlAttribute(alt)}"></div>`;
 }
 
 function withArchiveAssetCacheBuster(src, renderState) {
@@ -2474,14 +2100,17 @@ function renderSolutionImageHTML(q, renderState) {
     renderState = renderState || (typeof AppState !== 'undefined' ? AppState : {});
     if (!q || !q.solutionImage) return '';
     const size = ['small','medium','large','full'].includes(q.solutionImageSize) ? q.solutionImageSize : 'medium';
+    const solOverride = q.solutionImageSizeOverride === 'full' ? ' image-override-full' : '';
     const alt = window.APSvgAccessibility?.selectAccessibleAlt(q.solutionImage, 'solutionImage', q, q.solutionImageAlt || '', '해설 그림') || q.solutionImageAlt || '해설 그림';
     const caption = q.solutionImageCaption
         ? `<span class="sol-image-caption">${escapeArchiveHtmlAttribute(q.solutionImageCaption)}</span>`
         : '';
     const layout = q.solutionImageLayout === 'fullwidth' ? ' layout-fullwidth' : '';
+    const figureScale = window.APFigureSize?.parseScale(q.solutionImageScale);
+    const scaleAttr = figureScale == null ? '' : ` data-scale="${figureScale}"`;
     const imageSrc = withArchiveAssetCacheBuster(q.solutionImage, renderState);
     const cors = typeof examImageCrossOriginAttr === 'function' ? examImageCrossOriginAttr(imageSrc) : '';
-    return `<span class="sol-image-wrap image-${size}${layout}"><img src="${escapeArchiveHtmlAttribute(imageSrc)}"${cors} alt="${escapeArchiveHtmlAttribute(alt)}">${caption}</span>`;
+    return `<span class="sol-image-wrap image-${size}${solOverride}${layout}"><img src="${escapeArchiveHtmlAttribute(imageSrc)}"${cors}${scaleAttr} alt="${escapeArchiveHtmlAttribute(alt)}">${caption}</span>`;
 }
 
 const AUTO_IMAGE_SIZE_CLASSES = ['image-small', 'image-half', 'image-medium', 'image-large', 'image-full', 'image-tall'];
@@ -2555,6 +2184,8 @@ async function applyAutoImageSizeClasses(root, timeoutMs = 1200, signal) {
         }
         wrap.classList.add(autoImageSizeClassFor(img));
     }));
+    // 그림 크기 규칙: 그림이 모두 불러와진 지금, 배치 측정 전에 가로로 긴 그림·묶음 그림·배율 덮어쓰기를 한 번에 표시한다.
+    window.APFigureSize?.classify(root);
 }
 
 
@@ -2568,6 +2199,7 @@ async function renderExamLegacy(area, data, ctx = null) {
     let pNum = 1;
     const items = data.map((q, i) => {
         const box = document.createElement('div'); box.className = 'q-box'; box.dataset.sourceRef = getArchiveQuestionSourceRef(q, i);
+        if (window.APFigureSize?.choicesAreFigure(q)) box.dataset.apFigBundle = '1';
         const hasImageField = !!q.image;
         const rawContent = stripInlineImagesFromContent(q.content || q.question || '', hasImageField);
         const formattedContent = sanitizeProtectedSegments(
@@ -2830,7 +2462,7 @@ async function renderExam(area, data, ctx = null) {
     if (slotParams.get('equalSlots') === '1' && slotParams.get('slotEngine') !== 'legacy' && Number((ctx?.buildState || AppState).qpp) === 4 && (!window.APExamRenderExecutor?.render || !window.APEqualSlotEngine)) throw Object.assign(new Error('EQUAL_SLOT_ENGINE_UNAVAILABLE'), { code: 'EQUAL_SLOT_ENGINE_UNAVAILABLE' });
     const requestedAuthority = new URLSearchParams(ctx ? new URL(ctx.candidate.environment.url).search : window.location.search).get('examAuthority');
     const authority = requestedAuthority || 'shared';
-    data = data.map(question => question && typeof question === 'object' ? { ...question, __apExamSubjectiveSpacing: true } : question);
+    data = data.map(question => question && typeof question === 'object' ? { ...window.APRenderStateNormalizer.renderQuestionLayout(question), __apExamSubjectiveSpacing: true } : question);
     if (authority === 'legacy') return renderExamLegacy(area, data, ctx);
     if (authority !== 'shared') throw new Error(`UNKNOWN_EXAM_AUTHORITY:${authority}`);
     if (!window.APExamRenderExecutor?.render) return renderExamLegacy(area, data, ctx);
@@ -3140,18 +2772,7 @@ async function renderSol(area, data, ctx = null) {
     return window.APSolutionRenderExecutor.render({ area, data, deps: ctx?.deps || archiveSolutionDeps });
 }
 
-function formatGridAnswer(answer) {
-    const raw = String(answer ?? '–').replace(/\s+\/\s+(?=\(\d+\))/g, '<br>');
-    // Fraction highlighting is only for plain-text answer atoms.  Injecting
-    // HTML spans inside an existing $...$ segment prevents MathJax from
-    // recognizing the segment and leaks literal dollar signs into the answer
-    // table (notably for fractional coordinates and slope/intercept answers).
-    const value = raw.split(/(\$[^$]*\$)/g).map(part => {
-        if (part.startsWith('$') && part.endsWith('$')) return part;
-        return part.replace(/\b\d+\/\d+\b/g, match => `<span class="ans-atomic">${match}</span>`);
-    }).join('');
-    return wrapLatex(value);
-}
+function formatGridAnswer(answer) { return APRenderText.formatGridAnswer(answer); }
 
 function renderAnsLegacy(area, data, perPage = 40, ctx = null) {
     const AppState = ctx?.buildState || committedArchiveState;
@@ -3301,7 +2922,7 @@ async function renderBody(ctx = null) {
 
     injectQrToLastExamPage(area, ctx);
     injectSubmitQrToLastExamPage(area, ctx);
-    await window.APEqualSlotEngine?.finalize(area);
+    await window.APEqualSlotEngine?.finalize(area, { afterRelayout: () => { injectQrToLastExamPage(area, ctx); injectSubmitQrToLastExamPage(area, ctx); } });
     markArchiveReadiness('LAYOUT_READY', { pages: area.querySelectorAll('.page').length, mode: AppState.mode }, ctx);
     await recordArchiveLayoutPromotionGate(area, ctx);
     await recordArchiveSolutionLayoutPromotionGate(area, ctx);

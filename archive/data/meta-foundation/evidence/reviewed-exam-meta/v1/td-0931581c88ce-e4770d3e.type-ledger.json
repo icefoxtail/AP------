@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-0931581c88ce-e4770d3e",
+  "sourceArchiveFile": "original/high/h1/1final/19_순천고_1학기_기말_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_eddbc4eacffa463b7f543a33cd2dee6831a084dbba5a9af82096632969ec5d05",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_SECTION",
+      "templateKey": "TPL_SECTION_EXTERNAL",
+      "step": "외분 좌표는 (2·6−3·(−4))/(2−3)=−24.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결. 첨부 해설 SVG와 원문 그림을 source blob 렌더로 직접 교차 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4b57bcb596a526d711cc0b1b8ff2a155ab084562b4d9bb592b4deac7fc4424a1",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+      "step": "두 교점근의 합 4a와 차 2에서 9a²+b=2를 얻고 교점 높이차 −4a=11a²+b를 결합하면 a=−1,b=−7이므로 f(−3)−g(0)=9.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결. 첨부 해설 SVG와 원문 그림을 source blob 렌더로 직접 교차 확인.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    }
+  ]
+}

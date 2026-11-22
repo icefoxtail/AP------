@@ -146,7 +146,6 @@ window.questionBank = [
   },
   {
     "id": 10,
-    "layoutTag": "fullwidth",
     "questionNumber": 10,
     "questionType": "객관식",
     "content": "오른쪽 그림과 같이 직사각형 $\\text{ABCD}$의 이웃한 두 변을 각각 한 변으로 하는 정사각형을 그렸더니 그 넓이가 각각 $12\\,\\text{cm}^2$, $48\\,\\text{cm}^2$이었다. 이때 직사각형 $\\text{ABCD}$의 둘레의 길이를 구하면? [3점]\n<img src=\"assets/images/19_서울안천중_1학기_중간_중3_수학/q10-problem-v3.svg\" alt=\"직사각형 ABCD의 작은 변 AB 바깥에 초록 정사각형 12 cm²가 붙는다. 아래쪽 변 BC 바깥에는 파란 정사각형 48 cm²가 붙는다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
@@ -179,7 +178,6 @@ window.questionBank = [
   },
   {
     "id": 12,
-    "layoutTag": "fullwidth",
     "questionNumber": 12,
     "questionType": "객관식",
     "content": "한 변의 길이가 $4$인 정사각형 안에 각 변의 중점을 연결한 정사각형을 연속하여 $2$개 그렸을 때, 색칠한 부분의 둘레의 길이는? [3점]\n<img src=\"assets/images/19_서울안천중_1학기_중간_중3_수학/q12-problem-v3.svg\" alt=\"한 변이 4인 바깥 정사각형에서 중점을 이어 주황 정사각형을 만들었다. 안쪽 하얀 정사각형을 빼고 네 주황 부분이 색칠되어 있다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">",
@@ -356,7 +354,6 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "layoutTag": "fullwidth",
     "questionNumber": 23,
     "questionType": "서술형",
     "content": "<서술형 1>\n그림에서 모눈 한 칸은 한 변의 길이가 $1$인 정사각형이다. 수직선 위에 다음 수에 대응하는 점을 각각 나타내어라. [6점]\n<img src=\"assets/images/19_서울안천중_1학기_중간_중3_수학/q23-problem-v3.svg\" alt=\"수직선 위쪽에 1씩 간격이 같은 가로와 세로 모눈이 있다. 아래 수직선에는 −4부터 6까지 정수 눈금이 놓인다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">\n(1) $P(1-\\sqrt{2})$ [2점]\n(2) $Q(-1-\\sqrt{5})$ [2점]\n(3) $R(2+\\sqrt{10})$ [2점]",
@@ -367,7 +364,7 @@ window.questionBank = [
   },
   {
     "id": 24,
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "questionNumber": 24,
     "questionType": "서술형",
     "content": "<서술형 2>\n오른쪽 그림과 같이 한 변의 길이가 $4$인 정사각형의 칠교판이 있다. [6점]\n<img src=\"assets/images/19_서울안천중_1학기_중간_중3_수학/q24-1-problem-v3.svg\" alt=\"한 변이 4인 정사각형 안에 일곱 칠교 조각이 맞닿아 있다. 각 조각 안에 ①부터 ⑦까지 번호를 적었다.\" style=\"display: block; width: min(100%, 440px); height: auto; margin: 0 auto;\">\n(1) $7$개의 칠교 조각 중 서로 합동이 아니면서 둘레의 길이가 같은 것을 구하여 번호를 써라. [2점]\n(2) (1)에서 조각의 둘레의 길이를 구하여라. [2점]\n(3) 칠교를 사용하여 만든 오른쪽 모양의 둘레의 길이를 구하여라. [2점]\n<img src=\"assets/images/19_서울안천중_1학기_중간_중3_수학/q24-2-problem-v3.svg\" alt=\"왼쪽 위에서 오른쪽으로 내려오는 경사진 변이 있다. 일곱 조각 사이의 선을 표시하고 바깥 윤곽을 굵게 이었다.\" style=\"display: block; width: min(100%, 440px); height: auto; margin: 0 auto;\">",
@@ -388,7 +385,7 @@ window.questionBank = [
   },
   {
     "id": 26,
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "questionNumber": 26,
     "questionType": "서술형",
     "content": "<서술형 4>\n그림과 같은 정사각형 $3$개, 직사각형 $3$개를 모두 사용하여 하나의 큰 직사각형을 만들려고 한다. 물음에 답하여라. [6점]\n<img src=\"assets/images/19_서울안천중_1학기_중간_중3_수학/q26-problem-v3.svg\" alt=\"파란 정사각형 두 개의 한 변은 x이다. 초록 직사각형 세 개는 두 변이 1과 x이며 주황 정사각형은 한 변이 1이다.\" style=\"display: block; width: min(100%, 520px); height: auto; margin: 0 auto;\">\n(1) 만들어진 큰 직사각형의 넓이를 $x$에 관한 식으로 나타내어라. [2점]\n(2) (1)의 식을 인수분해하여라. [2점]\n(3) 만들어진 큰 직사각형의 둘레의 길이를 구하여라. [2점]",

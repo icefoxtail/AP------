@@ -1,0 +1,496 @@
+{
+ "meta": {
+  "sourcePath": "archive/exams/original/middle/m1/2mid/24_왕운중_2학기_중간_중1_기출.js",
+  "ordinal": 8,
+  "dir": "q08-problem",
+  "tag": "q08-problem"
+ },
+ "identity": {
+  "questionUid": "24_왕운중_2학기_중간_중1_기출|8",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:0d59391ccd730568d4ad5406cdce220a93d9765e5381be7a0e25a2535ac5c0f1",
+  "assetId": "va-f610f47c981b2d87b4f0a7b138ec0ad3d1878e8051a829bd6cc34d80fc672ed1"
+ },
+ "plan": {
+  "capability": "construction-spike-v1",
+  "caption": "두 직선 l, m과 한 직선 n이 만날 때 엇각 관계 다이어그램이다.",
+  "accessibilityDescription": "두 직선 l, m과 직선 n이 만나 이루는 엇각을 나타낸 그림.",
+  "sourceQuote": "두 직선 l과 m이 서로 평행하도록 하는",
+  "mathPlan": {
+   "schemaVersion": "construction-spike-v1",
+   "realization": {
+    "recipeId": "PLANE_FIGURE_v1",
+    "unit": "source-length",
+    "reflectionEquivalent": false
+   },
+   "nodes": [
+    {
+     "id": "L1",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "-6"
+       },
+       {
+        "kind": "integer",
+        "value": "3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "L2",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "6"
+       },
+       {
+        "kind": "integer",
+        "value": "3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "M1",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "-6"
+       },
+       {
+        "kind": "integer",
+        "value": "-3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "M2",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "6"
+       },
+       {
+        "kind": "integer",
+        "value": "-3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "N1",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "-3"
+       },
+       {
+        "kind": "integer",
+        "value": "5"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "DERIVED_INTERMEDIATE"
+    },
+    {
+     "id": "N2",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "3"
+       },
+       {
+        "kind": "integer",
+        "value": "-5"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "DERIVED_INTERMEDIATE"
+    }
+   ]
+  },
+  "displayPoints": [
+   "L1",
+   "L2",
+   "M1",
+   "M2",
+   "N1",
+   "N2"
+  ],
+  "displaySegments": [
+   {
+    "id": "sL",
+    "refs": [
+     "L1",
+     "L2"
+    ]
+   },
+   {
+    "id": "sM",
+    "refs": [
+     "M1",
+     "M2"
+    ]
+   },
+   {
+    "id": "sN",
+    "refs": [
+     "N1",
+     "N2"
+    ]
+   }
+  ],
+  "assetPath": "assets/images/24_왕운중_2학기_중간_중1_유사/q08.svg",
+  "hiddenPointNames": [
+   "L1",
+   "L2",
+   "M1",
+   "M2",
+   "N1",
+   "N2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+   "expressionLabels": [
+    {
+     "id": "el_L",
+     "ownerSegment": "sL",
+     "text": "l",
+     "labelKind": "TEXT"
+    },
+    {
+     "id": "el_M",
+     "ownerSegment": "sM",
+     "text": "m",
+     "labelKind": "TEXT"
+    }
+   ]
+  }
+ },
+ "model": {
+  "engine": "SymPy",
+  "version": "1.14.0",
+  "points": {
+   "L1": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "-6"
+     },
+     {
+      "kind": "integer",
+      "value": "3"
+     }
+    ],
+    "approximation": [
+     -6,
+     3
+    ],
+    "precisionDigits": 17
+   },
+   "L2": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "6"
+     },
+     {
+      "kind": "integer",
+      "value": "3"
+     }
+    ],
+    "approximation": [
+     6,
+     3
+    ],
+    "precisionDigits": 17
+   },
+   "M1": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "-6"
+     },
+     {
+      "kind": "integer",
+      "value": "-3"
+     }
+    ],
+    "approximation": [
+     -6,
+     -3
+    ],
+    "precisionDigits": 17
+   },
+   "M2": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "6"
+     },
+     {
+      "kind": "integer",
+      "value": "-3"
+     }
+    ],
+    "approximation": [
+     6,
+     -3
+    ],
+    "precisionDigits": 17
+   },
+   "N1": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "-3"
+     },
+     {
+      "kind": "integer",
+      "value": "5"
+     }
+    ],
+    "approximation": [
+     -3,
+     5
+    ],
+    "precisionDigits": 17
+   },
+   "N2": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "3"
+     },
+     {
+      "kind": "integer",
+      "value": "-5"
+     }
+    ],
+    "approximation": [
+     3,
+     -5
+    ],
+    "precisionDigits": 17
+   }
+  },
+  "scalars": {},
+  "lines": {},
+  "circles": {},
+  "pointSets": {},
+  "conditionAudits": [],
+  "transcript": [
+   {
+    "nodeId": "L1",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "L2",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "M1",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "M2",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "N1",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "N2",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   }
+  ],
+  "order": [
+   "L1",
+   "L2",
+   "M1",
+   "M2",
+   "N1",
+   "N2"
+  ],
+  "coordinateMode": "CONSTRUCTED_REALIZATION"
+ },
+ "composed": {
+  "schemaVersion": "construction-candidate-svg-v1",
+  "status": "COMPOSED",
+  "detail": null,
+  "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 384 320\" width=\"384\" height=\"320\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-labelledby=\"visual-title visual-desc\" data-engine-version=\"geometry-visual-v1\" data-geometry-style-version=\"AP_GEOMETRY_PRINT_V1_0_DRAFT\" data-geometry-preset=\"GEOMETRY_STANDARD\" data-graph-style-version=\"AP_GRAPH_PRINT_V1_1_DRAFT\" data-geometry-mode=\"COORDINATE_GEOMETRY_HYBRID\" data-axis-scale-mode=\"EQUAL_UNIT\" data-geometry-fact-hash=\"44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a\" data-visual-provenance=\"independent-facts-python\" style=\"max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round\" data-publication-profile=\"fragment-publication-spike-v1\" data-safe-margin=\"12\"><title id=\"visual-title\">두 직선 l, m과 한 직선 n이 만날 때 엇각 관계 다이어그램이다.</title><desc id=\"visual-desc\">두 직선 l, m과 직선 n이 만나 이루는 엇각을 나타낸 그림.</desc><rect width=\"384\" height=\"320\" fill=\"#fff\"/><g data-layer=\"30\"><line id=\"sL\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"57.734265734\" y1=\"92.867132867\" x2=\"326.265734266\" y2=\"92.867132867\"/></g><g data-layer=\"30\"><line id=\"sM\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"57.734265734\" y1=\"227.132867133\" x2=\"326.265734266\" y2=\"227.132867133\"/></g><g data-layer=\"30\"><line id=\"sN\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"124.867132867\" y1=\"48.111888112\" x2=\"259.132867133\" y2=\"271.888111888\"/></g><g data-layer=\"90\"><g id=\"el_L\" data-label-kind=\"EQUATION_LABEL\" data-priority=\"1\" data-font-px=\"22.8\" data-owner=\"sL\" data-fragment-sha=\"sha256:ff7609c1d07c2e493667ae3dfb628fa99b5bf6a345499a33a6fe304995949b98\" data-text=\"l\" transform=\"translate(189.1044 51.852732867)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"5.7912\" height=\"33.0144\" viewBox=\"0 0 5.7912 33.0144\" data-outline-width=\"5.7912\" data-outline-height=\"33.0144\" id=\"lb-dbfdc927d7e1c40fdae841685d2fd0f6aee5b379b687e910e5da3b8edf84b9aa\" data-owner=\"sL\" data-fact-role=\"GIVEN\"><path d=\"M3.62520 26.74440L3.62520 26.74440Q3.23760 26.74440 2.96400 26.57340Q2.69040 26.40240 2.54220 26.03760Q2.39400 25.67280 2.39400 25.10280L2.39400 25.10280L2.39400 8.34480L3.21480 8.34480L3.21480 25.23960Q3.21480 25.60440 3.35160 25.79820Q3.48840 25.99200 3.71640 25.99200L3.71640 25.99200Q3.78480 25.99200 3.87600 25.98060Q3.96720 25.96920 4.14960 25.94640L4.14960 25.94640L4.30920 26.65320Q4.14960 26.67600 4.01280 26.71020Q3.87600 26.74440 3.62520 26.74440Z\" fill=\"#111\"/></svg></g></g><g data-layer=\"90\"><g id=\"el_M\" data-label-kind=\"EQUATION_LABEL\" data-priority=\"1\" data-font-px=\"22.8\" data-owner=\"sM\" data-fragment-sha=\"sha256:a1032a03d25e6fa7f9ec6379156dc91ddd9380dce7724e761c7701c20a3cb112\" data-text=\"m\" transform=\"translate(163.7308 235.132867133)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20.2692\" height=\"33.0144\" viewBox=\"0 0 20.2692 33.0144\" data-outline-width=\"20.2692\" data-outline-height=\"33.0144\" id=\"lb-4bc3b82e6545eba320f6f594a93b2b63105fd96ba34b0024c8882181e1aba87c\" data-owner=\"sM\" data-fact-role=\"GIVEN\"><path d=\"M3.21480 26.44800L2.39400 26.44800L2.39400 14.43240L3.07800 14.43240L3.21480 16.34760L3.26040 16.34760Q4.08120 15.41280 5.08440 14.77440Q6.08760 14.13600 7.06800 14.13600L7.06800 14.13600Q8.55000 14.13600 9.31380 14.82000Q10.07760 15.50400 10.37400 16.64400L10.37400 16.64400Q11.44560 15.48120 12.46020 14.80860Q13.47480 14.13600 14.50080 14.13600L14.50080 14.13600Q16.25640 14.13600 17.15700 15.26460Q18.05760 16.39320 18.05760 18.71880L18.05760 18.71880L18.05760 26.44800L17.25960 26.44800L17.25960 18.83280Q17.25960 16.84920 16.56420 15.86880Q15.86880 14.88840 14.40960 14.88840L14.40960 14.88840Q13.52040 14.88840 12.60840 15.48120Q11.69640 16.07400 10.62480 17.25960L10.62480 17.25960L10.62480 26.44800L9.82680 26.44800L9.82680 18.83280Q9.82680 16.84920 9.14280 15.86880Q8.45880 14.88840 6.99960 14.88840L6.99960 14.88840Q6.13320 14.88840 5.18700 15.48120Q4.24080 16.07400 3.21480 17.25960L3.21480 17.25960L3.21480 26.44800Z\" fill=\"#111\"/></svg></g></g></svg>\n",
+  "lineage": {
+   "planSha256": "sha256:793f1ed9a6b00b7138fc9514e28c0c65b788f8670d6f208ffbfe04404e824289",
+   "modelSha256": "sha256:2772dac48709647614e980d988a650a08011712d9c77c3831deb43044392e74b",
+   "typographyPolicySha256": "sha256:824b66bd1d2434306b93764afc4c7c5ded7355fcef4706e03ecc994c4b6bf259",
+   "specSha256": "sha256:3d77a640fe3b1eb8467630b074568913b3b515965a05dc7deae4d6438a792d48",
+   "fragmentSha256s": {
+    "el_L": "sha256:ff7609c1d07c2e493667ae3dfb628fa99b5bf6a345499a33a6fe304995949b98",
+    "el_M": "sha256:a1032a03d25e6fa7f9ec6379156dc91ddd9380dce7724e761c7701c20a3cb112"
+   },
+   "measurementsSha256": "sha256:16a7ebaf9efced87877e58c75301a8e5d0ba5aa32595851f40429ad7636e1bc9",
+   "svgSha256": "sha256:55c55d7fb9ba8c28083a41e46c5d7bfaf4b197940b61fb98b74f8c11cb6bd94e",
+   "witnessSha256": "sha256:33db1a7c7932ef8d8ff442dd3b3e6eab4ea05e991fd3453936320090060a34de",
+   "staticAuditSha256": "sha256:32dbe177b1dc4e3b14b88d18176464bc53151d617b1da856b5c581912b0a71f0",
+   "renderedLayoutSha256": "sha256:7d427bd340b9fb2aaf391c1250759db0129bf5e7cfc484e049671bb693ed8da0"
+  },
+  "staticAudit": {
+   "status": "PASS",
+   "errors": [],
+   "planeMarks": {
+    "status": "PASS",
+    "errors": [],
+    "observations": [
+     {
+      "id": "el_L",
+      "type": "EXPRESSION_LABEL",
+      "ownerSegment": "sL",
+      "distancePx": 24.507199999999987,
+      "labelKind": "TEXT"
+     },
+     {
+      "id": "el_M",
+      "type": "EXPRESSION_LABEL",
+      "ownerSegment": "sM",
+      "distancePx": 24.507200000000008,
+      "labelKind": "TEXT"
+     }
+    ]
+   }
+  },
+  "renderedLayout": {
+   "status": "PASS",
+   "display": {
+    "width": 189.671875,
+    "height": 158.05989583333334
+   },
+   "errors": []
+  },
+  "layoutRepairs": [],
+  "typographyPolicyProvenance": "CALLER_SUPPLIED_UNVERIFIED",
+  "sizeSelection": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "independentVisualReview": "NOT_RUN",
+  "productionAuthorized": false,
+  "qualification": "NOT_RUN"
+ },
+ "capture": {
+  "schemaVersion": "construction-archive-capture-v1",
+  "status": "ARCHIVE_BOUND",
+  "detail": null,
+  "lineage": {
+   "l1SvgSha256": "sha256:55c55d7fb9ba8c28083a41e46c5d7bfaf4b197940b61fb98b74f8c11cb6bd94e",
+   "policySha256": "sha256:824b66bd1d2434306b93764afc4c7c5ded7355fcef4706e03ecc994c4b6bf259",
+   "candidateBankSha256": "sha256:c4727aace8bbe4b86e2d66a18f7b300420fe5a845f05b0b100626a5ed263cc8d",
+   "assetPath": ".tmp/archive/pilot-capture-949e5d65/24_왕운중_2학기_중간_중1_기출/assets/images/24_왕운중_2학기_중간_중1_기출/q08-solution.svg",
+   "assetResponseSha256": "sha256:55c55d7fb9ba8c28083a41e46c5d7bfaf4b197940b61fb98b74f8c11cb6bd94e",
+   "archiveRowSha256": "sha256:ad7451e2a97865890514f9f0517e1926d2089b21d1a981ece748af3d4e8ab231",
+   "screenshotSha256s": {
+    "image": "sha256:d8811c4b42f9fc37ec214565a604e7a7f264fdfc8ae31c94b78509b5f18f7e32",
+    "context": "sha256:8def58abf95cb1236a3f219bef25495ad0229be7194228591f5f0b9b244525dc",
+    "page": "sha256:f5c3e51a8da4bbf7a65f9221cb1f5fac23053d49ec3b1e1d34486b47a567c6da"
+   },
+   "matrixSha256": "sha256:7e628b2b6a3f8f5a8cd8f804551ea576c5b828c96ef443adeb6bcfac6293f1ef",
+   "engineSha256": "sha256:08744d4ea9046c1de0b4d815147e7f350d745a9aceb6eff8df3d19fd3e80aac8"
+  },
+  "paths": {
+   "runRoot": ".tmp/archive/pilot-capture-949e5d65",
+   "asset": ".tmp/archive/pilot-capture-949e5d65/24_왕운중_2학기_중간_중1_기출/assets/images/24_왕운중_2학기_중간_중1_기출/q08-solution.svg",
+   "candidateBank": ".tmp/archive/pilot-capture-949e5d65/24_왕운중_2학기_중간_중1_기출/candidates/24_왕운중_2학기_중간_중1_기출.js",
+   "matrix": ".tmp/archive/pilot-capture-949e5d65/24_왕운중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render-matrix.json",
+   "archiveRow": ".tmp/archive/pilot-capture-949e5d65/24_왕운중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-f610f47c981b2d87b4f0a7b138ec0ad3d1878e8051a829bd6cc34d80fc672ed1-sol-desktop.json",
+   "screenshots": {
+    "image": ".tmp/archive/pilot-capture-949e5d65/24_왕운중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-f610f47c981b2d87b4f0a7b138ec0ad3d1878e8051a829bd6cc34d80fc672ed1-sol-desktop-va-f610f47c981b2d87b4f0a7b138ec0ad3d1878e8051a829bd6cc34d80fc672ed1.png",
+    "context": ".tmp/archive/pilot-capture-949e5d65/24_왕운중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-f610f47c981b2d87b4f0a7b138ec0ad3d1878e8051a829bd6cc34d80fc672ed1-sol-desktop-va-f610f47c981b2d87b4f0a7b138ec0ad3d1878e8051a829bd6cc34d80fc672ed1-context.png",
+    "page": ".tmp/archive/pilot-capture-949e5d65/24_왕운중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-f610f47c981b2d87b4f0a7b138ec0ad3d1878e8051a829bd6cc34d80fc672ed1-sol-desktop.png"
+   }
+  },
+  "protectedParity": {
+   "status": "PASS",
+   "sourceRef": {
+    "path": "archive/exams/original/middle/m1/2mid/24_왕운중_2학기_중간_중1_기출.js",
+    "bytes": 56359,
+    "sha256": "sha256:02199f2746571cd29eaf1bfec5ea9d2d3bf7d63a01eeb8bc970ab6dc9d220254"
+   },
+   "originalQuestionSha256": "sha256:850de0ab7c9886b23d1f83f617afed4e3cccdc067b398ba5917fff423fa59010",
+   "questionCount": 23,
+   "protectedFields": [
+    "content",
+    "choices",
+    "answer",
+    "solution",
+    "image"
+   ],
+   "changedFields": [
+    "solutionImage",
+    "solutionImageSize",
+    "solutionImageAlt"
+   ],
+   "targetOrdinal": 8
+  },
+  "sizeClass": "full",
+  "observedDisplayScale": 0.4939371744791667,
+  "expectedDisplayScale": 0.4939371744791667,
+  "displayScaleDeltaCssPx": 0,
+  "layout": {
+   "source": "ARCHIVE_ROW_ISOLATED_REPLAY",
+   "status": "PASS",
+   "errors": []
+  },
+  "checks": {
+   "network": "PASS",
+   "assetResponse": "PASS",
+   "bankResponse": "PASS",
+   "naturalSize": "PASS",
+   "sizeClass": "PASS",
+   "displayScale": "PASS",
+   "layout": "PASS"
+  },
+  "fixtureClassification": "PILOT_AUTHOR_PLAN_CANDIDATE",
+  "evidenceIntegrity": "NO_CALLER_HOOK",
+  "uidAuthority": "STRUCTURAL_ONLY",
+  "independentInverseObservation": "NOT_RUN",
+  "qualification": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false
+ }
+}

@@ -908,6 +908,7 @@ window.questionBank=[
     "answer": "①",
     "solution": "$\\angle DHB=x$, $\\angle TBC=y$라 하자.\n사각형 $THBD$가 원에 내접하므로 같은 현 $DB$를 보는 $\\angle DTB=x$이다.\n$AD$가 작은 원의 점 $T$에서의 접선이므로 접현각의 성질로 $\\angle TCB=x$이다.\n$CB$가 지름이므로 $\\angle CTB=90^\\circ$, 따라서 $x+y=90^\\circ$이다.\n\n또 $A,T,D$가 한 직선이므로 $\\angle ATB=180^\\circ-x$이고, $A,C,B$가 한 직선이므로 $\\angle ABT=y$이다.\n$\\triangle ABT$에서 $26^\\circ+y+(180^\\circ-x)=180^\\circ$이므로 $x-y=26^\\circ$이다.\n두 식을 풀면 $x=58^\\circ$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/23_풍덕중_2학기_기말_중3_기출/q19.png",
+    "imageScale": 100,
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",

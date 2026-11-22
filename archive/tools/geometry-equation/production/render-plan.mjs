@@ -6,7 +6,8 @@
 //   node archive/tools/geometry-equation/production/render-plan.mjs --manifest <packetDir> --out <outDir> [--packet-dir <dir>]
 //     (<packetDir>.manifest.json lists items[{dir,sourcePath,ordinal,...}]; each plan is <packetDir>/<dir>/plan.json)
 import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';import {fileURLToPath,pathToFileURL} from 'node:url';
-import {pythonWorker} from './worker.mjs';
+import {pythonWorker,closeWorkers} from './worker.mjs';
+import {enableBrowserReuse,closeSharedBrowser} from '../visual-browser-runtime.mjs';
 import {assetIdentity} from './contracts.mjs';
 import {specFor} from './phase2.mjs';
 import {isPlaneFigure} from './plane-marks.mjs';
@@ -70,7 +71,7 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
   const write=(file,text)=>fs.writeFileSync(path.join(outDir,file),text);
   const finish=()=>{
     // code, detailFull, errors, hint and fix exist only on a failure (JSON leaves undefined out), so a successful result is byte-for-byte what it was.
-    const result={status:row.status,stage:row.stage,detail:row.detail,capability:row.capability,sizeClass:row.sizeClass,fallback:row.fallback,layoutRepairs:row.layoutRepairs,panels:row.panels,hiddenFormulaLabels:row.hiddenFormulaLabels,identity:row.identity,code:row.status==='FAILED'?row.code:undefined,detailFull:row.detailFull,errors:row.errors,hint:row.hint,fix:row.fix};
+    const result={status:row.status,stage:row.stage,detail:row.detail,capability:row.capability,sizeClass:row.sizeClass,solutionImageScale:row.solutionImageScale,fallback:row.fallback,layoutRepairs:row.layoutRepairs,panels:row.panels,hiddenFormulaLabels:row.hiddenFormulaLabels,identity:row.identity,code:row.status==='FAILED'?row.code:undefined,detailFull:row.detailFull,errors:row.errors,hint:row.hint,fix:row.fix};
     write(`${name}-result.json`,JSON.stringify(result,null,1)+'\n');
     log.final({status:row.status,stage:row.stage??stage,code:row.code,detail:row.detail,fallback:row.fallback?.map(f=>f.to),durationMs:Date.now()-startedAt,hint:row.hint,fix:row.fix});
     return result;
@@ -101,6 +102,8 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
     // Writes the shared success outputs (state, svg, optional observer packet).
     const bind=async({plan,model,composed,capture})=>{
       stage='packet';
+      // A figure too wide for the default 60% display is bound at solutionImageScale (% of the column): the publisher writes it to the question beside solutionImageSize.
+      if(capture?.solutionImageScale!==undefined)row.solutionImageScale=capture.solutionImageScale;
       let packet;
       if(packetDir)packet=await obs.prepareInverseObservationPacket({capture,packetDir:path.join(packetDir,`packet-${name}-${tag}`)});
       write(`${name}-state.json`,JSON.stringify({meta,identity,plan,model,composed,capture,packetDir:packet?.packetDir,packetSha256:packet?.packetSha256},null,1));
@@ -470,7 +473,12 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
 
 const line=(r,name)=>JSON.stringify({item:name,status:r.status,stage:r.stage,detail:typeof r.detail==='string'?r.detail.slice(0,160):r.detail,fallback:Array.isArray(r.fallback)?r.fallback.map(f=>f.to).join('>'):undefined,code:r.code,hint:r.hint?.[0]?r.hint[0].slice(0,160):undefined,fix:r.fix?.length?true:undefined});
 
+// One command run keeps one Chrome and one python host alive across its items (GEOMETRY_BROWSER_REUSE=0 / GEOMETRY_WORKER_REUSE=0 turn that off); both close when the run ends.
 async function main(argv){
+  enableBrowserReuse();
+  try{return await runMain(argv);}finally{await closeSharedBrowser();closeWorkers();}
+}
+async function runMain(argv){
   const args={};
   for(let i=0;i<argv.length;i++){if(argv[i].startsWith('--'))args[argv[i].slice(2)]=argv[++i];}
   if(!args.out||!(args.manifest||(args.item&&args.plan))){

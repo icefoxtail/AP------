@@ -71,7 +71,6 @@ window.examData = {
       "solutionImageCaption": "띠의 넓이는 π(2+x)²−4π이다. 12π와 같게 두면 (2+x)²=16이다. 반지름을 늘린 길이는 x=2 cm이므로 정답은 ①이다.",
       "solutionImageAlt": "두 원은 중심이 같다. 중심부터 안쪽 원까지가 2 cm, 안쪽 원에서 바깥 원까지 더 늘어난 길이가 x cm이다. 두 원 사이의 띠를 칠했다.",
       "solutionImage": "assets/images/17_풍덕중_1학기_기말_중3_수학/q5-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "반지름의 길이가 $2\\,\\text{cm}$인 원에서 반지름의 길이를 $x\\,\\text{cm}$만큼 늘였더니 색칠한 부분의 넓이가 처음 원의 넓이의 $3$배가 되었다. 이때 $x$의 값을 구하면? [4점]<br><br><img src=\"assets/images/17_풍덕중_1학기_기말_중3_수학/q5-problem-visual-v2.svg\" alt=\"두 원은 중심이 같다. 중심부터 안쪽 원까지가 2 cm, 안쪽 원에서 바깥 원까지 더 늘어난 길이가 x cm이다. 두 원 사이의 띠를 칠했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -132,7 +131,6 @@ window.examData = {
       "solutionImageCaption": "꼭짓점이 원점이므로 y=ax²이다. (2,−3)을 대입하면 4a=−3이므로 y=−3x²/4이다. 정답은 ②이다.",
       "solutionImageAlt": "아래로 열린 파란 포물선의 꼭짓점은 원점이다. 점선은 가로축의 −2, 2에서 높이 −3에 있는 두 곡선 위의 점으로 이어진다.",
       "solutionImage": "assets/images/17_풍덕중_1학기_기말_중3_수학/q9-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "다음 그림과 같이 원점을 꼭짓점으로 하고 점 $(2, -3)$을 지나는 포물선을 그래프로 하는 이차함수의 식은? [4점]<br><br><img src=\"assets/images/17_풍덕중_1학기_기말_중3_수학/q9-problem-visual-v2.svg\" alt=\"아래로 열린 파란 포물선의 꼭짓점은 원점이다. 점선은 가로축의 −2, 2에서 높이 −3에 있는 두 곡선 위의 점으로 이어진다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -193,7 +191,6 @@ window.examData = {
       "solutionImageCaption": "위로 열려 a>0이고 y절편이 음수여서 c<0이다. 축 −b/(2a)<0이므로 b>0이다. 따라서 b<0이라고 한 ②가 옳지 않다.",
       "solutionImageAlt": "파란 포물선은 위로 열린다. 꼭짓점은 세로축의 왼쪽에 있다. y축과 교차하는 높이는 x축보다 낮다.",
       "solutionImage": "assets/images/17_풍덕중_1학기_기말_중3_수학/q13-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 3.0,
       "question": "이차함수 $y=ax^2+bx+c$의 그래프가 아래 그림과 같을 때, 다음 중 옳지 않은 것은? (단, $a, b, c$는 상수) [3점]<br><br><img src=\"assets/images/17_풍덕중_1학기_기말_중3_수학/q13-problem-visual-v2.svg\" alt=\"파란 포물선은 위로 열린다. 꼭짓점은 세로축의 왼쪽에 있다. y축과 교차하는 높이는 x축보다 낮다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -254,7 +251,6 @@ window.examData = {
       "solutionImageCaption": "직선은 a=−2이고 b=2이다. 구하는 식은 y=x²−2x+2=(x−1)²+1이다. 꼭짓점이 (1,1)이고 위로 열린 모양은 ④이다.",
       "solutionImageAlt": "주황 점선 직선은 세로축의 2와 가로축의 1을 지난다. 파란 포물선의 꼭짓점은 (1,1)이며 두 가지가 위로 열린다.",
       "solutionImage": "assets/images/17_풍덕중_1학기_기말_중3_수학/q17-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 4.0,
       "question": "일차함수 $y=ax+b$의 그래프가 오른쪽 그래프와 같을 때, 이차함수 $y=x^2+ax+b$의 그래프는? [4점]<br><br><img src=\"assets/images/17_풍덕중_1학기_기말_중3_수학/q17-problem-visual-v2.svg\" alt=\"위 직선은 y축의 2와 x축의 1을 지난다. ①과 ②의 꼭짓점은 y축 왼쪽이고 위로 열린다. ③은 왼쪽의 꼭짓점에서 아래로 열린다. ④와 ⑤는 오른쪽의 꼭짓점에서 위로 열린다. 꼭짓점 높이는 원문의 1 또는 −1 눈금과 일치한다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -351,7 +347,6 @@ window.examData = {
       "solutionImageCaption": "꼭짓점이 (1,−4)이므로 y=a(x−1)²−4이다. (0,−3)을 넣으면 a=1이다. 따라서 y=(x−1)²−4=x²−2x−3이다.",
       "solutionImageAlt": "위로 열린 파란 포물선의 꼭짓점은 (1,−4)이다. 세로축과 만나는 점의 높이는 −3이다. 꼭짓점의 x좌표와 y좌표를 점선으로 표시했다.",
       "solutionImage": "assets/images/17_풍덕중_1학기_기말_중3_수학/q24-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 5.0,
       "question": "[서술형 2] 다음 그림과 같은 포물선을 그래프로 하는 이차함수의 식을 $y=ax^2+bx+c$의 꼴로 나타내시오. (단, $a, b, c$는 상수) [5점]<br><br><img src=\"assets/images/17_풍덕중_1학기_기말_중3_수학/q24-problem-visual-v2.svg\" alt=\"위로 열린 파란 포물선의 꼭짓점은 (1,−4)이다. 세로축과 만나는 점의 높이는 −3이다. 꼭짓점의 x좌표와 y좌표를 점선으로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><br><br>(1) $y=a(x-p)^2+q$ 꼴로 나타내기 [3점]<br>(2) $y=ax^2+bx+c$ 꼴로 나타내기 [2점]",
       "choices": [],
@@ -364,7 +359,6 @@ window.examData = {
       "solutionImageCaption": "완전제곱식 y=−(x+2)²+9에서 꼭짓점은 (−2,9)이다. A=(−5,0), B=(1,0), C=(0,5)이므로 AB=6이고 넓이는 6×5÷2=15이다.",
       "solutionImageAlt": "아래로 열린 곡선이 가로축을 A, B에서 지나고 세로축을 C에서 지난다. A, B, C를 이은 삼각형이 보인다.",
       "solutionImage": "assets/images/17_풍덕중_1학기_기말_중3_수학/q25-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 10.0,
       "question": "[서술형 3] 다음 그림과 같이 이차함수 $y=-x^2-4x+5$의 그래프와 $x$축의 교점을 각각 $\\mathrm{A, B}$라 하고, $y$축의 교점을 $\\mathrm{C}$라 할 때, 꼭짓점의 좌표와 $\\triangle\\mathrm{ABC}$의 넓이를 구하시오. [10점]<br><br><img src=\"assets/images/17_풍덕중_1학기_기말_중3_수학/q25-problem-visual-v2.svg\" alt=\"아래로 열린 곡선이 가로축을 A, B에서 지나고 세로축을 C에서 지난다. A, B, C를 이은 삼각형이 보인다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><br><br>(1) 꼭짓점의 좌표 구하기 [3점]<br>(2) 점 $\\mathrm{A, B, C}$ 좌표 및 $\\overline{\\mathrm{AB}}$ 길이 구하기 [5점]<br>(3) $\\triangle\\mathrm{ABC}$의 넓이 구하기 [2점]",
       "choices": [],

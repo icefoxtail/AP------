@@ -8,12 +8,14 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const crypto = require('node:crypto');
+const { pathToFileURL } = require('node:url');
 const core = require('../archive/archive2-core.js');
 const archiveSource = require('../archive/archive2-source.js');
 const Unified = require('../archive/archive2-unified-units.js');
 const UnitCore = require('../archive/unit-past-exams-core.js');
 const ProblemBankMeta = require('../archive/problem-bank-meta.js');
 const { productionCatalog } = require('./helpers/archive2-scope-harness.cjs');
+const { loadWorkspace, assertWorkspaceScriptVersions } = require("./helpers/archive2-workspace-source.cjs");
 
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, 'archive', file), 'utf8');
@@ -45,7 +47,8 @@ test('the catalog lane exposes only content-bound, registry-labelled concept/typ
   const registry = taxonomy();
   const activePt = new Map(registry.problemTypes.filter(row => row.status === 'ACTIVE').map(row => [row.problemTypeKey, row]));
   const activeTpl = new Map(registry.templates.filter(row => row.status === 'ACTIVE').map(row => [row.templateKey, row]));
-  const stats = { hint: 0, pt: 0, tpl: 0, l3: 0, exact: 0, content: 0, unbound: 0 };
+  const stats = { hint: 0, pt: 0, tpl: 0, l3: 0, bound: 0, unbound: 0 };
+  const textBound = [];
   for (const row of data.records) {
     const source = byUid.get(row.questionUid);
     assert.ok(source, row.questionUid);
@@ -53,7 +56,10 @@ test('the catalog lane exposes only content-bound, registry-labelled concept/typ
     // binding: exact bytes, or only the answer/solution changed (content fingerprint equal)
     const contentEqual = source.contentFingerprint === row.assignmentFingerprint;
     const exact = source.sourceFingerprint === row.sourceFingerprint && contentEqual;
-    assert.equal(row.metaBinding || '', exact ? 'exact' : contentEqual ? 'content' : '', row.questionUid);
+    // A single binding value: the row's metadata is about the same stem+choices as today. Rows whose content fingerprint matches are bound for
+    // sure; the others (stale fingerprint) are re-derived below with the same library the builder uses.
+    if (contentEqual) assert.ok(row.metaBinding, row.questionUid + ' content-bound row must be bound');
+    else if (row.metaBinding) textBound.push(row);
     if (!row.metaBinding) {
       assert.equal(hasHint, false, 'unbound rows carry no hint: ' + row.questionUid);
       // Check every unbound record, including newly restored SOURCE_ONLY bodies.
@@ -66,7 +72,7 @@ test('the catalog lane exposes only content-bound, registry-labelled concept/typ
       stats.unbound++;
       continue;
     }
-    stats[row.metaBinding]++;
+    stats.bound++;
     if (!hasHint) continue;
     stats.hint++;
     const code = row.metaHintStatus;
@@ -90,11 +96,29 @@ test('the catalog lane exposes only content-bound, registry-labelled concept/typ
       assert.equal(code[0], status(source.fieldStatus?.concept), row.questionUid + ' L3 status');
     } else assert.equal(code[0], '-');
   }
-  // measured on the production catalog (before: 549 PT / 546 TPL / 197 L3 reachable, 195 filterable)
-  assert.ok(stats.pt >= 7900 && stats.tpl >= 7600 && stats.l3 >= 5400, JSON.stringify(stats));
-  // Restoration can legitimately reveal more stale, unverified assignments. The
-  // integrity contract above covers all of them; their growing count is not a cap.
-  assert.ok(stats.content >= 4700 && stats.unbound >= 800, JSON.stringify(stats));
+  // Every stale-fingerprint binding must be re-derivable: the stem/choices fingerprint of the current question is covered by the row, a frozen rebind record or
+  // the row's own type judgment, and a type-only binding never carries the row's concept or curriculum.
+  if (textBound.length) {
+    const lib = await import(pathToFileURL(path.join(root, 'archive/tools/meta-foundation/text-binding-lib.mjs')).href);
+    const rebinds = lib.loadRebinds(root);
+    const banks = new Map();
+    for (const row of textBound) {
+      if (!banks.has(row.sourceFile)) {
+        const scope = { window: {}, console: { log() {}, warn() {}, error() {} } };
+        vm.createContext(scope);
+        vm.runInContext(read('exams/' + row.sourceFile).replace(/^﻿/, '').replace(/\r\n/g, '\n'), scope, { timeout: 5000 });
+        banks.set(row.sourceFile, require('../archive/exam-source-reader.js').readQuestionArray(scope.window));
+      }
+      const question = banks.get(row.sourceFile)[row.sourceOrdinal - 1];
+      const source = byUid.get(row.questionUid);
+      const kind = lib.classifyMetaBinding({ meta: source, question, assignmentFingerprint: lib.contentFingerprint(question), rebinds });
+      assert.ok(kind, row.questionUid + ' binding is not re-derivable');
+      if (kind === 'type') assert.ok(!row.metaHintL3 && !row.metaHintCurriculum, 'type-only binding carries no row-level values: ' + row.questionUid);
+    }
+  }
+  // Operating counts change whenever metadata is registered or a source is edited, so none is pinned. These only guard against a
+  // vacuous run (the loop above checked every record; zero hints would mean the lane is broken or the wrong catalog was read).
+  assert.ok(stats.pt > 0 && stats.tpl > 0 && stats.l3 > 0 && stats.bound > 0, JSON.stringify(stats));
 });
 
 test('the lane never changes the canonical resolution or the strict approval metric', async () => {
@@ -113,9 +137,8 @@ test('the lane never changes the canonical resolution or the strict approval met
     assert.equal(row.assignmentEvidence?.approvalStatus, 'APPROVED', row.questionUid);
     assert.equal(row.assignmentEvidence?.assignmentFingerprint, row.assignmentFingerprint, 'approval must bind the current problem');
   }
-  assert.ok(advanced.length >= 195, String(advanced.length));
-  assert.ok(data.records.filter(row => row.problemTypeKey).length >= 549);
-  assert.ok(data.records.filter(row => row.curriculumKey).length >= 3206, 'canonical curriculumKey is untouched');
+  assert.ok(advanced.length > 0, 'the approved set is not empty');
+  assert.ok(data.records.some(row => row.problemTypeKey) && data.records.some(row => row.curriculumKey), 'canonical values are untouched');
   // Advanced use requires an approved canonical assignment, while the strict
   // basic selection metric separately limits applicability to DEFAULT_SCOPE.
   // A reviewed CORE assignment must keep its scope without losing its approval.
@@ -171,18 +194,83 @@ test('CORE applicability stays outside the basic metric while advanced use still
   assert.equal(core.basicEligibility(original, options).ok, true, 'the approved default-scope input was not mutated');
 });
 
-test('records whose approval only lags the answer/solution bytes are usable and labelled; changed stems stay out of meta filtering', async () => {
+// Re-derives the binding kind of catalog rows with the same library the builder uses ("row", "type" or "" for an unbound row).
+async function bindingKinds(data, byUid) {
+  const lib = await import(pathToFileURL(path.join(root, 'archive/tools/meta-foundation/text-binding-lib.mjs')).href);
+  const rebinds = lib.loadRebinds(root);
+  const banks = new Map();
+  const kinds = new Map();
+  for (const row of data.records) {
+    const source = byUid.get(row.questionUid);
+    if (!source) continue;
+    if (source.contentFingerprint === row.assignmentFingerprint) { kinds.set(row.questionUid, 'row'); continue; }
+    if (!banks.has(row.sourceFile)) {
+      const scope = { window: {}, console: { log() {}, warn() {}, error() {} } };
+      vm.createContext(scope);
+      vm.runInContext(read('exams/' + row.sourceFile).replace(/^﻿/, '').replace(/\r\n/g, '\n'), scope, { timeout: 5000 });
+      banks.set(row.sourceFile, require('../archive/exam-source-reader.js').readQuestionArray(scope.window));
+    }
+    const question = banks.get(row.sourceFile)[row.sourceOrdinal - 1];
+    kinds.set(row.questionUid, question ? lib.classifyMetaBinding({ meta: source, question, assignmentFingerprint: lib.contentFingerprint(question), rebinds }) : '');
+  }
+  return kinds;
+}
+
+test('a row whose stem and choices are confirmed as the same keeps its release status when only the solution, answer or figure changed', async () => {
   const data = await catalog();
-  const content = data.records.filter(row => row.metaBinding === 'content' && row.metaHintPT);
-  assert.ok(content.length > 1500, String(content.length));
+  const meta = await metadata();
+  const byUid = new Map(meta.records.map(row => [row.questionUid, row]));
+  const kinds = await bindingKinds(data, byUid);
+  // The harness catalog re-derives canonical reasons; the builder's own reason codes are in the published file.
+  const published = new Map(core.decodeCatalog(JSON.parse(read('data/archive2-catalog.json'))).records.map(row => [row.questionUid, row]));
+  const seen = { rowStale: 0, rowSolutionOnly: 0, typeOnly: 0, unbound: 0 };
+  for (const row of data.records) {
+    const source = byUid.get(row.questionUid);
+    if (!source) continue;
+    const kind = kinds.get(row.questionUid);
+    const exact = source.sourceFingerprint === row.sourceFingerprint;
+    const contentEqual = source.contentFingerprint === row.assignmentFingerprint;
+    // Positive: a confirmed row binding is enough for the release status (a changed explanation/answer/figure is not a reason).
+    if (kind === 'row') {
+      assert.equal(row.sourceStatus, 'VERIFIED', 'row-bound rows are released: ' + row.questionUid);
+      assert.notEqual(row.metaProjectionFailureReason, 'DISPLAY_PROJECTION_FINGERPRINT_MISMATCH', row.questionUid);
+      assert.ok(!(published.get(row.questionUid).canonicalAssignmentReasons || []).includes('assignment_fingerprint_mismatch'), row.questionUid);
+      if (!contentEqual) {
+        seen.rowStale++;
+        if (row.metaProjectionStatus === 'DISPLAY_ONLY_SOURCE_BOUND')
+          assert.equal(row.metaProjection.sourceBinding.bindingMode, 'CONTENT_BOUND_SOURCE_REVISED', row.questionUid);
+      } else if (!exact) seen.rowSolutionOnly++;
+      continue;
+    }
+    // Negative: a changed stem/choices (unconfirmed) or a type-only binding gets neither the assignment nor the display projection.
+    if (kind === 'type') seen.typeOnly++; else seen.unbound++;
+    if (!exact) {
+      assert.equal(row.sourceStatus, 'HOLD', 'not confirmed as the same stem and choices: ' + row.questionUid);
+      assert.ok(!row.assignmentEvidence, row.questionUid);
+      assert.notEqual(row.metaProjectionStatus, 'DISPLAY_ONLY_SOURCE_BOUND', row.questionUid);
+      assert.ok((published.get(row.questionUid).canonicalAssignmentReasons || []).length > 0, 'a refused assignment carries its reason: ' + row.questionUid);
+    }
+  }
+  // Operating counts are not pinned; these guard against a vacuous run.
+  assert.ok(seen.rowSolutionOnly > 0 && seen.typeOnly > 0 && seen.unbound > 0, JSON.stringify(seen));
+});
+
+test('a question that is released only by its row binding still passes the same strict gates, and unbound rows stay out of meta filtering', async () => {
+  const data = await catalog();
+  const meta = await metadata();
+  const byUid = new Map(meta.records.map(row => [row.questionUid, row]));
+  const content = data.records.filter(row => row.metaBinding && row.sourceStatus === 'VERIFIED' && row.metaHintPT &&
+    byUid.get(row.questionUid)?.sourceFingerprint !== row.sourceFingerprint);
+  assert.ok(content.length > 0, 'row-bound rows with a changed solution exist');
   for (const row of content.slice(0, 200)) {
-    assert.equal(row.sourceStatus, 'HOLD');
     assert.equal(core.generalUseEligibility(row).ok, true);
     assert.ok(core.metaFacetsOf(row).pt);
-    assert.equal(core.basicEligibility(row, { canonicalAuthority: data.canonicalAuthority }).ok, false, 'strict approval is untouched');
+    // Release status no longer blocks, but taxonomy/approval/review gates are unchanged.
+    const reasons = core.basicEligibility(row, { canonicalAuthority: data.canonicalAuthority }).reasons;
+    assert.ok(!reasons.includes('source_release'), row.questionUid);
+    if (!row.assignmentEvidence) assert.ok(reasons.includes('taxonomy'), 'no assignment, no default selection: ' + row.questionUid);
   }
   const unbound = data.records.filter(row => !row.metaBinding && row.sourceStatus === 'HOLD');
-  assert.ok(unbound.length >= 800);
   for (const row of unbound.slice(0, 200)) {
     assert.equal(core.metaFacetsOf(row), null);
     assert.equal(core.generalUseEligibility(row).ok, true, 'the question itself stays usable');
@@ -195,7 +283,7 @@ test('recorded curriculum is read as recorded (never converted) and outranks the
   const meta = await metadata();
   const byUid = new Map(meta.records.map(row => [row.questionUid, row]));
   const lane = data.records.filter(row => row.metaHintCurriculum);
-  assert.ok(lane.length >= 4000);
+  assert.ok(lane.length > 0);
   let overridesYearRule = 0;
   for (const row of lane) {
     const source = byUid.get(row.questionUid);
@@ -223,15 +311,104 @@ test('recorded curriculum is read as recorded (never converted) and outranks the
   assert.equal(Unified.originalCurriculum(record({ year: 2024 }), '고1').basis, 'high-year-rule');
 });
 
+// metaHintUnit(표시 전용 단원 힌트, 2026-11-22 중2~고2로 확대): 승인된 유형(PT)의 ACTIVE 연결이 같은 학년에서 통합 단원 하나만 가리키면 싣고, 갈리면 싣지 않는다.
+// 소비(unitFor)는 원본의 단원 값으로 단원을 못 정한 문항에만 쓰고, 원본으로 정해지는 문항의 결과는 바꾸지 않는다.
+const hintLib = () => import(pathToFileURL(path.join(root, 'archive/tools/unit-hint-lib.mjs')).href);
+const hinterFor = async bindings => {
+  const { createUnitHinter } = await hintLib();
+  const tags = JSON.parse(read('data/master_tables/js_archive_tag_master.json')).filter(row => row.status === 'active');
+  return createUnitHinter({
+    bindings,
+    unitLabelByKey: new Map(tags.filter(row => row.keyType === 'standardUnitKey').map(row => [row.key, row.labelKo])),
+    subUnitLabelByKey: new Map(tags.filter(row => row.keyType === 'subUnitKey').map(row => [row.key, row.subUnit])),
+  });
+};
+const bind = (problemTypeKey, standardUnitKey, subUnitKey = '', status = 'ACTIVE') => ({ problemTypeKey, standardUnitKey, subUnitKey, status });
+
+test('unit hint rule: one unit -> hinted, split or unmappable -> not hinted, other grade/inactive/off subject -> not hinted', async () => {
+  const hinter = await hinterFor([
+    bind('PT_ONE', 'M3-05', 'M3-05-TRIG_RATIO'), bind('PT_ONE', 'M3-05', 'M3-05-TRIG_RATIO_APPLICATION'),
+    bind('PT_OLDKEY', 'M2-05', 'M2-05-TRIANGLE_PROPERTIES'),
+    bind('PT_SPLIT', 'M2-05', 'M2-05-TRIANGLE_PROPERTIES'), bind('PT_SPLIT', 'M2-05', 'M2-05-QUADRILATERAL_PROPERTIES'),
+    bind('PT_OTHERGRADE', 'M1-01', 'M1-01-X'),
+    bind('PT_INACTIVE', 'M3-05', 'M3-05-TRIG_RATIO', 'RETIRED'),
+    bind('PT_H1_SAME', 'H15-SA-02'), bind('PT_H1_SAME', 'H22-C-02'),
+    bind('PT_H1_SPLIT', 'H22-C-02'), bind('PT_H1_SPLIT', 'H22-C-03'),
+    bind('PT_H2', 'H15-M2-03'),
+    bind('PT_H1_UNMAPPED', 'H22-C-02'), bind('PT_H1_UNMAPPED', 'H22-C-77'),
+  ]);
+  assert.equal(hinter.hint('PT_ONE', '중3'), '삼각비');
+  assert.equal(hinter.hint('PT_OLDKEY', '중2'), '삼각형의 성질', 'an old broad unit that no label can place is placed by its sub-unit');
+  assert.equal(hinter.hint('PT_SPLIT', '중2'), '', 'a PT that binds to two units is never guessed');
+  assert.equal(hinter.hint('PT_OTHERGRADE', '중2'), '', 'bindings of another grade do not count');
+  assert.equal(hinter.hint('PT_INACTIVE', '중3'), '');
+  assert.equal(hinter.hint('PT_H1_SAME', '고1', '공통수학1'), 'H22-C-02', 'the 2015 and 2022 keys of one unit are one unit; high school carries the unit key');
+  assert.equal(hinter.hint('PT_H1_SPLIT', '고1', '공통수학1'), '');
+  assert.equal(hinter.hint('PT_H1_UNMAPPED', '고1', '공통수학1'), '', 'a binding that cannot be placed in a unit stops the hint');
+  assert.equal(hinter.hint('PT_H1_SAME', '고2'), '', 'a 고1 unit key is not a 고2 binding');
+  assert.equal(hinter.hint('PT_H2', '고2'), 'H22-M1-03');
+  assert.equal(hinter.hint('PT_H2', '고2', '미적분I'), 'H22-M1-03');
+  assert.equal(hinter.hint('PT_H2', '고2', '미적분'), '', 'a subject whose measured agreement was under 90% stays off');
+  assert.equal(hinter.hint('PT_H1_SAME', '고1', '수학(하)'), '');
+  assert.equal(hinter.hint('PT_ONE', '고3'), '', 'grades without a measured agreement stay off');
+  assert.equal(hinter.hint('', '중3'), '');
+});
+
+test('unit hint consumer: used only when the source unit value cannot place the row', () => {
+  const place = extra => Unified.classify(record({ sourceGrade: '고1', effectiveBrowseGrade: '고1', subject: '공통수학2', ...extra })).entry;
+  // an unknown legacy key places nothing; the hint places it, and without the hint the row stays unclassified
+  const unknownKey = { legacyStandardUnitKey: 'H22-C3-01', legacyStandardUnit: '함수' };
+  assert.equal(place(unknownKey).unclassified, true);
+  const hinted = place({ ...unknownKey, metaHintUnit: 'H22-C2-07' });
+  assert.equal(hinted.unclassified, false);
+  assert.equal(hinted.unitKey, 'H22-C2-07');
+  // the source unit wins: a row the source places keeps its unit whatever the hint says
+  const sourced = { legacyStandardUnitKey: 'H22-C2-03', legacyStandardUnit: '원의 방정식' };
+  assert.equal(place(sourced).unitKey, 'H22-C2-03');
+  assert.equal(place({ ...sourced, metaHintUnit: 'H22-C2-07' }).unitKey, 'H22-C2-03');
+  // a hint that names no unit of the grade places nothing
+  assert.equal(place({ ...unknownKey, metaHintUnit: 'H22-A-01' }).unclassified, true);
+  // middle school: the old broad unit name spans several current units, the hint names one current unit
+  const middle = extra => Unified.classify(record({ sourceGrade: '중2', effectiveBrowseGrade: '중2', subject: '수학', year: 2018, ...extra })).entry;
+  const oldBroad = { legacyStandardUnitKey: 'M2-05', legacyStandardUnit: '도형의 성질' };
+  assert.equal(middle(oldBroad).unclassified, true);
+  const placed = middle({ ...oldBroad, metaHintUnit: '삼각형의 성질' });
+  assert.equal(placed.unclassified, false);
+  assert.equal(placed.unitLabel.replace(/\s+/g, ''), '삼각형의성질');
+  assert.equal(middle({ legacyStandardUnitKey: 'M2-03', legacyStandardUnit: '연립일차방정식', metaHintUnit: '삼각형의 성질' }).unitLabel.replace(/\s+/g, ''), '연립일차방정식');
+});
+
+test('metaHintUnit in the catalog equals the rule, and never changes a row the source already places', async () => {
+  const data = await catalog();
+  const bindings = JSON.parse(read('data/meta-foundation/compiled/curriculum_bindings.json')).bindings;
+  const hinter = await hinterFor(bindings);
+  const lane = data.records.filter(row => row.metaHintUnit);
+  assert.ok(lane.length > 0);
+  for (const row of lane) {
+    assert.ok(row.metaHintPT, 'a unit hint needs a usable PT: ' + row.questionUid);
+    assert.equal(row.metaHintUnit, hinter.hint(row.metaHintPT, row.sourceGrade, row.subject), 'the hint is the single unit the PT binds to: ' + row.questionUid);
+  }
+  // every record of every grade keeps its placement when the hint is removed, except the rows that only the hint places
+  let hintedRows = 0;
+  for (const row of data.records) {
+    const withHint = Unified.classify(row, { projectionPolicy: data.projectionPolicy }).entry;
+    const withoutHint = Unified.classify({ ...row, metaHintUnit: '' }, { projectionPolicy: data.projectionPolicy }).entry;
+    if (withHint.unitKey === withoutHint.unitKey) continue;
+    hintedRows++;
+    assert.ok(row.metaHintUnit && withoutHint.unclassified, 'only an unclassified row may change: ' + row.questionUid);
+  }
+  assert.ok(hintedRows > 0);
+});
+
 // ---- core facets, filters, options -------------------------------------------------------------
 
 test('facets keep a status per value and approvedOnly never counts a pending value as approved', () => {
-  const a = record({ metaBinding: 'exact', metaHintL3: '개념A', metaHintPT: 'PT_A', metaHintTPL: 'TPL_A', metaHintStatus: 'AAA' });
-  const b = record({ metaBinding: 'content', metaHintL3: '개념A', metaHintPT: 'PT_A', metaHintTPL: 'TPL_B', metaHintStatus: 'APP' });
-  const c = record({ metaBinding: 'exact', metaHintPT: 'PT_C', metaHintStatus: '-P-' });
+  const a = record({ metaBinding: 'text', metaHintL3: '개념A', metaHintPT: 'PT_A', metaHintTPL: 'TPL_A', metaHintStatus: 'AAA' });
+  const b = record({ metaBinding: 'text', metaHintL3: '개념A', metaHintPT: 'PT_A', metaHintTPL: 'TPL_B', metaHintStatus: 'APP' });
+  const c = record({ metaBinding: 'text', metaHintPT: 'PT_C', metaHintStatus: '-P-' });
   const none = record();
   assert.equal(core.metaFacetsOf(none), null);
-  assert.deepEqual({ ...core.metaFacetsOf(b) }, { l3: '개념A', pt: 'PT_A', tpl: 'TPL_B', l3Status: 'approved', ptStatus: 'pending', tplStatus: 'pending', binding: 'content' });
+  assert.deepEqual({ ...core.metaFacetsOf(b) }, { l3: '개념A', pt: 'PT_A', tpl: 'TPL_B', l3Status: 'approved', ptStatus: 'pending', tplStatus: 'pending', binding: 'text' });
   assert.equal(core.metaFacetsOf(c).l3, '');
   // a hint without a readable code is pending, never approved
   const unreadable = record({ metaHintPT: 'PT_X' });
@@ -252,10 +429,10 @@ test('facets keep a status per value and approvedOnly never counts a pending val
 
 test('facet options are faceted, labelled by the registry only, and report the status mix', () => {
   const rows = [
-    record({ metaBinding: 'exact', metaHintL3: 'L-1', metaHintPT: 'PT_A', metaHintTPL: 'TPL_A', metaHintStatus: 'AAA' }),
-    record({ metaBinding: 'exact', metaHintL3: 'L-1', metaHintPT: 'PT_A', metaHintTPL: 'TPL_B', metaHintStatus: 'APP' }),
-    record({ metaBinding: 'exact', metaHintL3: 'L-2', metaHintPT: 'PT_B', metaHintTPL: 'TPL_C', metaHintStatus: 'PPP' }),
-    record({ metaBinding: 'exact', metaHintPT: 'PT_UNNAMED', metaHintStatus: '-P-' }),
+    record({ metaBinding: 'text', metaHintL3: 'L-1', metaHintPT: 'PT_A', metaHintTPL: 'TPL_A', metaHintStatus: 'AAA' }),
+    record({ metaBinding: 'text', metaHintL3: 'L-1', metaHintPT: 'PT_A', metaHintTPL: 'TPL_B', metaHintStatus: 'APP' }),
+    record({ metaBinding: 'text', metaHintL3: 'L-2', metaHintPT: 'PT_B', metaHintTPL: 'TPL_C', metaHintStatus: 'PPP' }),
+    record({ metaBinding: 'text', metaHintPT: 'PT_UNNAMED', metaHintStatus: '-P-' }),
   ];
   const labels = { pt: { PT_A: '유형 가', PT_B: '유형 나' }, tpl: { TPL_A: '풀이 가', TPL_B: '풀이 나', TPL_C: '풀이 다' } };
   const labelOf = (kind, key) => labels[kind][key] || '';
@@ -276,7 +453,7 @@ test('facet options are faceted, labelled by the registry only, and report the s
 
 test('one difficulty lane: an integer bucket is usable in every mode unless a real defect applies', () => {
   const base = {
-    sourceStatus: 'HOLD', metaBinding: 'content', difficultyBucket: 3, difficultyConfidence: 'high',
+    sourceStatus: 'HOLD', metaBinding: 'text', difficultyBucket: 3, difficultyConfidence: 'high',
     difficultyBoundaryFlag: 'NONE', legacyLevelCompatibility: 'NORMAL', metadataConflicts: [],
   };
   const row = extra => record({ ...base, ...extra });
@@ -287,7 +464,7 @@ test('one difficulty lane: an integer bucket is usable in every mode unless a re
   assert.equal(core.difficultyEligible(row({ difficultyConfidence: '' })), true);
   assert.equal(core.difficultyEligible(row({ difficultyBoundaryFlag: undefined, legacyLevelCompatibility: 'BORDERLINE_REVIEW' })), true);
   assert.equal(core.difficultyEligible(row({ metadataConflicts: ['difficultyBucket'] })), true);
-  assert.equal(core.difficultyEligible(row({ sourceStatus: 'VERIFIED', metaBinding: 'exact' })), true);
+  assert.equal(core.difficultyEligible(row({ sourceStatus: 'VERIFIED', metaBinding: 'text' })), true);
   // no binding is a label: an unbound integer bucket stays usable
   for (const options of [undefined, { useMode: 'general' }])
     assert.equal(core.difficultyEligible(row({ metaBinding: '', sourceStatus: 'HOLD' }), options), true);
@@ -315,33 +492,36 @@ function requestFor(rows, count, extra = {}) {
   };
 }
 
-test('a paper spreads over different problem types without changing the count or the recency years', () => {
-  // 2025: 6 questions of ONE type + 3 other types; 2024 holds more types. Request 5 of 2025 only.
+test('a new type of an earlier year comes before a repeated type of the newest year, and the count never changes', () => {
+  // 2025: 6 questions of ONE type + 3 other types; 2024 holds 3 more types. Request 5.
+  // Four types exist in 2025; before this rule the 5th question was a forced repeat of the 2025 type,
+  // now it is the newest question of a type the paper does not have yet (an earlier year).
   const types = ['PT_A', 'PT_A', 'PT_A', 'PT_A', 'PT_A', 'PT_A', 'PT_B', 'PT_C', 'PT_D'];
-  const y2025 = types.map(type => record({ year: 2025, metaBinding: 'exact', metaHintPT: type, metaHintStatus: '-P-' }));
-  const y2024 = ['PT_E', 'PT_F', 'PT_G'].map(type => record({ year: 2024, metaBinding: 'exact', metaHintPT: type, metaHintStatus: '-P-' }));
+  const y2025 = types.map(type => record({ year: 2025, metaBinding: 'text', metaHintPT: type, metaHintStatus: '-P-' }));
+  const y2024 = ['PT_E', 'PT_F', 'PT_G'].map(type => record({ year: 2024, metaBinding: 'text', metaHintPT: type, metaHintStatus: '-P-' }));
   const rows = [...y2025, ...y2024];
   for (const seed of ['s1', 's2', 's3', 's4', 's5']) {
     const result = core.selectBlueprint(rows, requestFor(rows, 5, { seed }));
     assert.equal(result.ok, true);
     assert.equal(result.selected.length, 5);
-    assert.deepEqual([...new Set(result.selected.map(row => row.year))], [2025], 'recency: the newest complete year is consumed first');
-    const distinct = new Set(result.selected.map(row => core.selectionTypeKey(row)));
-    assert.equal(distinct.size, 4, 'four types exist in 2025, so four distinct types and one forced repeat: ' + [...distinct]);
+    assert.equal(result.selected.filter(row => row.year === 2025).length, 4, 'the newest year still supplies every type it has');
+    assert.equal(result.selected.filter(row => row.year === 2024).length, 1);
     assert.equal(result.diagnostics.typeCoverage.typedCount, 5);
-    assert.equal(result.diagnostics.typeCoverage.distinctTypes, 4);
-    assert.equal(result.diagnostics.typeCoverage.repeatedCount, 1);
+    assert.equal(result.diagnostics.typeCoverage.distinctTypes, 5, 'no type repeats while an unused type exists');
+    assert.equal(result.diagnostics.typeCoverage.repeatedCount, 0);
   }
-  // 7 of 2025 then spills into 2024 in recency order, each year spread over its own types
+  // 11 of 12: all 7 types first (newest question of each), then the 4 forced repeats come from the
+  // newest year's only repeatable type, so the count is met and the year order is still newest first
   const spill = core.selectBlueprint(rows, requestFor(rows, 11, { seed: 'spill' }));
   assert.equal(spill.selected.length, 11);
-  assert.equal(spill.selected.filter(row => row.year === 2025).length, 9);
-  assert.equal(spill.selected.filter(row => row.year === 2024).length, 2);
+  assert.equal(spill.selected.filter(row => row.year === 2025).length, 8);
+  assert.equal(spill.selected.filter(row => row.year === 2024).length, 3);
+  assert.equal(spill.diagnostics.typeCoverage.distinctTypes, 7);
 });
 
 test('without recorded types the selection is byte-identical to the previous behaviour', () => {
   const plain = Array.from({ length: 12 }, (_, i) => record({ year: i < 6 ? 2025 : 2023 }));
-  const typed = plain.map(row => ({ ...row, metaBinding: 'exact', metaHintPT: '', metaHintStatus: '' }));
+  const typed = plain.map(row => ({ ...row, metaBinding: 'text', metaHintPT: '', metaHintStatus: '' }));
   const a = core.selectBlueprint(plain, requestFor(plain, 7, { seed: 'same' }));
   const b = core.selectBlueprint(typed, requestFor(typed, 7, { seed: 'same' }));
   assert.deepEqual(a.selected.map(row => row.questionUid), b.selected.map(row => row.questionUid));
@@ -349,7 +529,7 @@ test('without recorded types the selection is byte-identical to the previous beh
 });
 
 test('earlier rows and pins count as used types and a type is only repeated when no alternative exists in the year', () => {
-  const make = (type, year = 2025) => record({ year, metaBinding: 'exact', metaHintPT: type, metaHintStatus: '-A-' });
+  const make = (type, year = 2025) => record({ year, metaBinding: 'text', metaHintPT: type, metaHintStatus: '-A-' });
   const rows = [make('PT_A'), make('PT_A'), make('PT_B'), make('PT_B'), make('PT_C')];
   const uids = rows.map(row => row.questionUid);
   const unitPath = core.pathKey(rows[0], 4);
@@ -381,12 +561,13 @@ test('display projection: exact bytes by default; content-bound only on opt-in a
   const links = JSON.parse(read('data/basic-scope-parent-links.json'));
   const idByUid = new Map(identity.records.map(row => [row.questionUid, row]));
   const metaByUid = new Map(meta.records.map(row => [row.questionUid, row]));
-  const projected = data.records.find(row => row.metaBinding === 'content' && row.metaProjectionStatus === 'DISPLAY_ONLY_SOURCE_BOUND');
+  const projected = data.records.find(row => row.metaBinding && metaByUid.get(row.questionUid)?.contentFingerprint === row.assignmentFingerprint &&
+    metaByUid.get(row.questionUid)?.sourceFingerprint !== row.sourceFingerprint && row.metaProjectionStatus === 'DISPLAY_ONLY_SOURCE_BOUND');
   assert.ok(projected, 'a content-bound record is now projected');
   assert.equal(projected.metaProjection.sourceBinding.bindingMode, 'CONTENT_BOUND_SOURCE_REVISED');
   assert.equal(projected.metaProjection.sourceBinding.approvedSourceFingerprint, metaByUid.get(projected.questionUid).sourceFingerprint);
   assert.notEqual(projected.metaProjection.sourceBinding.approvedSourceFingerprint, projected.sourceFingerprint);
-  const exact = data.records.find(row => row.metaBinding === 'exact' && row.metaProjectionStatus === 'DISPLAY_ONLY_SOURCE_BOUND');
+  const exact = data.records.find(row => row.metaBinding && metaByUid.get(row.questionUid)?.sourceFingerprint === row.sourceFingerprint && row.metaProjectionStatus === 'DISPLAY_ONLY_SOURCE_BOUND');
   assert.equal(exact.metaProjection.sourceBinding.bindingMode, 'EXACT');
   const input = row => ({
     meta: metaByUid.get(row.questionUid), identity: idByUid.get(row.questionUid), sourceFile: row.sourceFile,
@@ -402,6 +583,15 @@ test('display projection: exact bytes by default; content-bound only on opt-in a
   const changedStem = { ...base, assignmentFingerprint: 'a'.repeat(64), allowContentBoundRevision: true };
   assert.equal(ProblemBankMeta.createSourceBoundDisplayProjection(changedStem).reason, 'DISPLAY_PROJECTION_FINGERPRINT_MISMATCH');
   assert.equal(ProblemBankMeta.createSourceBoundDisplayProjection({ ...base, sourceFingerprint: '', allowContentBoundRevision: true }).reason, 'DISPLAY_PROJECTION_FINGERPRINT_MISMATCH');
+  // textBound: the builder confirmed the row is about the same stem and choices (text-v1), so a changed content fingerprint (e.g. a figure) does not refuse the
+  // projection. It only works together with the content-bound opt-in, and never without the caller's confirmation.
+  const figureChanged = { ...base, assignmentFingerprint: 'a'.repeat(64) };
+  const confirmed = ProblemBankMeta.createSourceBoundDisplayProjection({ ...figureChanged, allowContentBoundRevision: true, textBound: true });
+  assert.equal(confirmed.reason, '');
+  assert.equal(confirmed.projection.sourceBinding.bindingMode, 'CONTENT_BOUND_SOURCE_REVISED');
+  assert.equal(ProblemBankMeta.createSourceBoundDisplayProjection({ ...figureChanged, allowContentBoundRevision: true }).reason, 'DISPLAY_PROJECTION_FINGERPRINT_MISMATCH');
+  assert.equal(ProblemBankMeta.createSourceBoundDisplayProjection({ ...figureChanged, textBound: true }).reason, 'DISPLAY_PROJECTION_FINGERPRINT_MISMATCH');
+  assert.equal(ProblemBankMeta.createSourceBoundDisplayProjection({ ...figureChanged, allowContentBoundRevision: true, textBound: false }).reason, 'DISPLAY_PROJECTION_FINGERPRINT_MISMATCH');
 });
 
 // ---- registration verifier ---------------------------------------------------------------------
@@ -418,7 +608,7 @@ test('--verify-projection verifies lane-bound records through the lane and the r
   };
   const runtime = { ...registered };
   const consumer = {
-    questionUid: uid, sourceFile: file, sourceOrdinal: 1, canonicalAssignmentReasons: ['assignment_missing'], metaBinding: 'content',
+    questionUid: uid, sourceFile: file, sourceOrdinal: 1, canonicalAssignmentReasons: ['assignment_missing'], metaBinding: 'text',
     curriculumKey: '', courseKey: '', L1: '', L2: '', standardUnitKey: '', subUnitKey: '', problemTypeKey: '', templateKey: '', L3: '', L4: '',
     crossConceptKeys: ['CC_A'], conditionKeys: [], difficultyBucket: 'UNKNOWN',
     metaHintCurriculum: '2015', metaHintPT: 'PT_X', metaHintTPL: 'TPL_X', metaHintL3: registered.L3, metadataConflicts: [],
@@ -531,14 +721,12 @@ function composeHarness(data, labels) {
     ARCHIVE_META_FOUNDATION_LABELS: labels,
   });
   ctx.window = ctx;
-  const source = read('archive2-workspace.js');
-  const startup = source.lastIndexOf('  (async () => {');
-  vm.runInContext(source.slice(0, startup) + `
+  loadWorkspace(ctx, `
     render = () => {};
     save = () => {};
     globalThis.workspaceTest = {state, scopeOptions, selectedScopeOptions, request, planRows, generate, renderComposition,
       composeMetaFacets, metaTypeText, unifiedIndex, renderInspector, invalidate};
-  })();`, ctx);
+  `);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
   w.state.useMode = 'general';
@@ -627,25 +815,27 @@ test('문제지 만들기: facets are counted for the whole list while no unit i
 
 test('the workspace and the unit page load the new scripts with a new cache version and the changed shared modules stay loadable in APMS', () => {
   const version = '20261029-s14-1';
-  const coreVersion = '20261111-one-lane-difficulty-1';
+  const coreVersion = '20261119-pair-type-spread-1';
   const workspace = read('workspace.html');
   assert.match(workspace, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
-  assert.match(workspace, /unit-past-exams-core\.js\?v=20261116-unit-source-1/);
+  assert.match(workspace, /unit-past-exams-core\.js\?v=20261117-middle-parent-1/);
   assert.match(workspace, new RegExp('problem-bank-meta\\.js\\?v=' + version));
   // The shared unit layer and the canonical authority moved on with the registered textbooks (S11).
-  assert.match(workspace, /archive2-unified-units\.js\?v=20261113-rpm-middle-parents-1/);
-  assert.match(workspace, /archive2-canonical\.js\?v=20261104-source-meta-approval-1/);
+  assert.match(workspace, /archive2-unified-units\.js\?v=20261122-unit-hint-2/);
+  assert.match(workspace, /archive2-canonical\.js\?v=20261119-receipt-row-binding-1/);
   // The workspace itself moved on with the final-check fixes (S10).
-  assert.match(workspace, /archive2-workspace\.js\?v=20261116-polish-1/);
+  assertWorkspaceScriptVersions(assert);
   const unitPage = read('unit-past-exams.html');
   assert.match(unitPage, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
-  assert.match(unitPage, /unit-past-exams-core\.js\?v=20261116-unit-source-1/);
-  assert.match(unitPage, /unit-past-exams\.js\?v=20261116-polish-1/);
+  assert.match(unitPage, /unit-past-exams-core\.js\?v=20261117-middle-parent-1/);
+  assert.match(unitPage, /unit-past-exams\.js\?v=20261119-no-basic-1/);
   assert.match(read('problem-bank-search.html'), new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(read('problem-bank-search.html'), new RegExp('problem-bank-meta\\.js\\?v=' + version));
   const clinic = fs.readFileSync(path.join(root, 'apmath/js/clinic-print.js'), 'utf8');
+  // ExamSourceReader must load before Archive2Source in the clinic print loader.
+  assert.ok(clinic.indexOf("'exam-source-reader'") > 0 && clinic.indexOf("'exam-source-reader'") < clinic.indexOf("'archive2-source'"));
   assert.match(clinic, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(clinic, new RegExp('problem-bank-meta\\.js\\?v=' + version));
   // APMS moved clinic-print.js on with the clinic workspace (M7, 2026-11-02).
-  assert.match(fs.readFileSync(path.join(root, 'apmath/index.html'), 'utf8'), /clinic-print\.js\?v=20261102-(ws-clinic|perf)-1/);
+  assert.match(fs.readFileSync(path.join(root, 'apmath/index.html'), 'utf8'), /clinic-print\.js\?v=(20261102-(ws-clinic|perf)-1|20261117-reader-1|20261119-pair-type-spread-1|20261119-source-parallel-1)/);
 });

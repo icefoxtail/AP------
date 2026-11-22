@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "m2-closed8-observation-digest-publication-v4",
+  "status": "FOCUSED_COVERAGE_PASS_ACTUAL_NATIVE_EIGHT_AND_SOURCE47_PENDING",
+  "baseActualRun": "44040163236",
+  "baseCurrentHelperCommit": "deb5606c7398c7f42a5acedfbdafdd02427e3474",
+  "files": [
+    {
+      "path": "archive/tools/meta-foundation/m2-problem21-current-ui-continuity.mjs",
+      "before": {
+        "gitBlobSha1": "a3ae3747c5381c58b5554875f599013085d3152e",
+        "sha256": "77745782e18a5ae63f64d0cfce54f0f8a19db890714e67b349fc2cbee33e49c3",
+        "bytes": 65233
+      },
+      "after": {
+        "gitBlobSha1": "0fcbb1be605cd1418bd71fa91b24acd3bda0fc87",
+        "sha256": "b9485fb7db68ea6f15b9e2b4d0f7c0567c9457faa5ab82dfceba903e1a5a6c0b",
+        "bytes": 65666
+      }
+    },
+    {
+      "path": "tests/archive-m2-problem21-current-ui-continuity.test.mjs",
+      "before": {
+        "gitBlobSha1": "669ffa1f7172d54c86ae787da0a317aae2f6c410",
+        "sha256": "73b658c2cefac10794babf0f634a3cc08d88d41629d367e6f5ab632cd3cf037a",
+        "bytes": 12627
+      },
+      "after": {
+        "gitBlobSha1": "47d418ff6b52b7d098721b76241124df5946d62a",
+        "sha256": "c029c80f97efa011f49a8107f797db7dec56dde23df1aa50855872628c87bf76",
+        "bytes": 15742
+      }
+    }
+  ],
+  "delta": {
+    "path": "delta-v4.patch",
+    "gitBlobSha1": "e5dd62e3acd10f5df7e1c28f4973e90078b0ea73",
+    "sha256": "e6e68a2a9915b2b5fc74ce4cee3928faa87611154e4164e2dce90e9c7d635cc0",
+    "bytes": 5550
+  },
+  "validation": {
+    "path": "repair-proof-v4.json",
+    "gitBlobSha1": "3722c42f5f7907f1983c3183521509494032138f",
+    "sha256": "a73030657add6cb54b3612a1a7a73b79d81c80cca25bcd73baea063c0e963e05",
+    "bytes": 20307
+  },
+  "candidateChanges": 2,
+  "source47Gate": {
+    "path": "tools/4slot/check-m2-closed8-current-ui-scoped.cjs",
+    "gitBlobSha1": "096bdd8b920f917b75821aad70cc2c453fac5f6b",
+    "unchanged": true
+  },
+  "priorGateReview": {
+    "gitBlobSha1": "87b4d18b635005a8c59879378709b442ab9278fe",
+    "unchanged": true
+  },
+  "noChangedSourceAssetProofSidecarOrAuthority": true,
+  "requiredCommand": "node --test tests/archive-m2-problem21-current-ui-continuity.test.mjs",
+  "actualGateRequired": "node tools/4slot/check-m2-closed8-current-ui-scoped.cjs --root <exact-candidate-checkout> --output <external-temp>",
+  "remoteRefPublisher": "ROOT_ONLY"
+}

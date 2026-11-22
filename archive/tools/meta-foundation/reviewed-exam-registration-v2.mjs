@@ -1,4 +1,5 @@
 import { requireProjectionPhase, projectionInput } from './reviewed-projection-phase.mjs';
+import { questionMetadataText, assertMetadataAssembledCurrent, syncMetadataShards } from './question-metadata-format.mjs';
 import originalSourceError from '../../../tools/4slot/original-source-error-hold.cjs';
 import fs from "node:fs";
 import path from "node:path";
@@ -23,9 +24,10 @@ import { REVIEWED_SOURCE_BINDING_OPT_INS, reviewedSourceBindingItems, reviewedSo
 import { restoreReviewedReplayCanonicalBefore } from "./reviewed-replay-registry-context.mjs";
 import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse } from "./native-reviewed-source-reuse.mjs";
 import { loadActiveMetaRegistry } from "./active-registry.mjs";
+import { TEXT_BOUND_REVIEW_TYPES, reviewedSourceTextUnchanged } from "./text-binding-lib.mjs";
 import { activeBindingContext, nativeReviewReceipt } from "./auto-register-merged-source.mjs";
 import { loadApprovedRendererPreservation, planApprovedRendererRecord, buildApprovedRendererBinding, verifyApprovedRendererReceipt } from "./native-approved-renderer-preservation.mjs";
-import { validateRpmPrimaryProvenance } from "./reviewed-rpm-provenance.mjs";
+import { validateRpmPrimaryProvenance, fillRpmFromRecordId } from "./reviewed-rpm-provenance.mjs";
 import { preparePrerequisiteExistingRpmAuthority } from "./reviewed-m2s1-prerequisite-existing-application.mjs";
 import { isPartialSubsetPreservation, validatePartialSubsetPreservation } from "./native-partial-subset-preservation.mjs";
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
@@ -275,22 +277,6 @@ const SOP_V12_REVIEWER_ROLES = new Set(["ROOT", "AUTHORIZED_REVIEWER"]);
 export function sopV12PackIncludes(primaryPack, rowPack) {
   return typeof primaryPack === "string" && typeof rowPack === "string" && primaryPack.split("_AND_").includes(rowPack);
 }
-const SOP_V12_LEVELS = new Set(["하", "중", "상"]);
-// Legacy display labels are independent from the reviewed five-step bucket.
-// Preserve only observed, explicit noncanonical values in an exact FINAL_QA
-// source; this does not synthesize a label or permit unknown difficulty.
-export function isPreservedHistoricalLevel({ approvalType, question, final }) {
-  return approvalType === "FINAL_QA" && Object.hasOwn(question, "level") &&
-    Object.hasOwn(final, "level") && (question.level === null || question.level === "중상") &&
-    question.level === final.level && Number.isInteger(final.difficultyBucket) &&
-    final.difficultyBucket >= 1 && final.difficultyBucket <= 5 &&
-    question.difficultyBucket === final.difficultyBucket &&
-    ["high", "medium", "low"].includes(final.difficultyConfidence) &&
-    question.difficultyConfidence === final.difficultyConfidence &&
-    ["NONE", "B12", "B23", "B34", "B45"].includes(final.difficultyBoundaryFlag) &&
-    question.difficultyBoundaryFlag === final.difficultyBoundaryFlag &&
-    question.legacyLevelCompatibility === "UNKNOWN" && final.legacyLevelCompatibility === "UNKNOWN";
-}
 // Runtime-only catalog identity provenance. These fields live on the runtime record (the metadata row does not carry them) and
 // record that the UID <-> sourceFile#ordinal join was verified/repaired once. Re-registering type/unit/difficulty values must not
 // forget that fact (the runtime tests count these flags), so the registrar carries them over from the record it replaces —
@@ -437,7 +423,6 @@ function normalizeSopV12Audit({ root, proof, rawAudit, manifest, review, bank, s
         !/^PT_[A-Z0-9_]+$/.test(row.verifiedPrimaryTaxonomy || "") ||
         !/^TPL_[A-Z0-9_]+$/.test(row.verifiedTemplatePattern || "") ||
         !textValue(unitKey) || !textValue(subUnitKey) ||
-        !SOP_V12_LEVELS.has(row.levelVerbatimPreserved) ||
         !Number.isInteger(row.difficultyRank) || row.difficultyRank < 1 || row.difficultyRank > 5 ||
         !textValue(row.difficultyReasonTrace) ||
         !Number.isInteger(row.solutionStepCountVerified) || row.solutionStepCountVerified < 1)
@@ -2124,7 +2109,28 @@ function registerIdentityFingerprintOnly({ root, req, metadata, identity, rows, 
     consumerSearchStatus: "NOT_RUN", browserStatus: "NOT_RUN" };
 }
 
-export function registerReviewedExamV2({ root, request: req, write = false, verifyProjection = false, projectionPhase = null }) {
+// A receipt's applied row is replayed against the current row byte for byte. A DIRECT_JUDGMENT (TYPE_ONLY) registration afterwards adds the type
+// fields and a typeApproval to a row whose receipt recorded NO type; those fields (and only those) are then left out of the comparison.
+// Anything else that differs, or a receipt that recorded a type of its own, still counts as drift.
+const TYPE_LANE_ROW_KEYS = ["problemTypeKey", "templateKey", "typeApproval"];
+const withoutTypeLane = row => {
+  const copy = structuredClone(row);
+  for (const key of TYPE_LANE_ROW_KEYS) delete copy[key];
+  if (copy.fieldStatus) { delete copy.fieldStatus.problemType; delete copy.fieldStatus.template; }
+  return copy;
+};
+export function receiptRecordMatchesRow(current, record) {
+  if (eq(current, record)) return true;
+  if (!current || !record || current.typeApproval?.approvalType !== DIRECT_JUDGMENT || record.typeApproval !== undefined) return false;
+  const blank = value => value === undefined || value === null || value === "";
+  const unapproved = status => !/^approved/i.test(String(status ?? ""));
+  if (!blank(record.problemTypeKey) || !blank(record.templateKey) || !unapproved(record.fieldStatus?.problemType) || !unapproved(record.fieldStatus?.template)) return false;
+  return eq(withoutTypeLane(current), withoutTypeLane(record));
+}
+
+// typeBatch (register-type-batch.mjs): lets a run of DIRECT_JUDGMENT requests in one process share the parsed metadata/identity map and
+// the registry tables and write question_metadata.json once. Ignored for every other request and for dry runs/verification.
+export function registerReviewedExamV2({ root, request: req, write = false, verifyProjection = false, projectionPhase = null, typeBatch = null }) {
   if (projectionPhase !== null) requireProjectionPhase(projectionPhase, { root, write, verifyProjection });
   if (req.schemaVersion !== "archive-reviewed-exam-meta-register-request-v2") fail("request schema mismatch");
   if (isNativeAuthorityCorrection(req)) {
@@ -2166,12 +2172,18 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const blob = fs.existsSync(path.join(root, ".git"))
     ? execFileSync("git", ["hash-object", "--path", `archive/exams/${source}`, "--stdin"], { cwd: root, input: bytes, encoding: "utf8", stdio: ["pipe", "pipe", "pipe"] }).trim()
     : crypto.createHash("sha1").update(`blob ${bytes.length}\0`).update(bytes).digest("hex");
-  if (req.expectedSourceBlobSha1 !== blob) fail("source Git blob drift");
+  // A direct type judgment is bound to each question's stem + choices (textBindingFingerprint, checked by its lane), not to the file blob.
+  // REVIEW2/FINAL_QA requests are bound to the stem + choices of the questions they cover (text-v1), not to the file blob: a changed blob
+  // is accepted below, once the bank is read, only when those texts equal the reviewed blob's. Other approval types keep the blob binding.
+  const blobDrift = req.expectedSourceBlobSha1 !== blob && req.approval.type !== DIRECT_JUDGMENT;
+  if (blobDrift && !TEXT_BOUND_REVIEW_TYPES.includes(req.approval.type)) fail("source Git blob drift");
   const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
   vm.createContext(ctx);
   vm.runInContext(bytes.toString("utf8"), ctx, { timeout: 5000 });
   const bank = ctx.window.questionBank || ctx.window.questions || ctx.questions || ctx.questionBank || ctx.window.examData?.questions;
   if (!Array.isArray(bank) || !Number.isInteger(req.expectedQuestionCount) || bank.length !== req.expectedQuestionCount || !bank.length) fail("source denominator mismatch");
+  if (blobDrift && !reviewedSourceTextUnchanged({ root, expectedBlobSha1: req.expectedSourceBlobSha1, currentBytes: bytes,
+    ordinals: req.items.map(item => item.sourceOrdinal).filter(Number.isInteger) }).ok) fail("source Git blob drift");
   const approvedRendererRequested = Object.hasOwn(req.approval, "rendererPreservation");
   const auditPreservationRequested = isAuditPreservation(req.approval);
   if ([AUDIT_PRESERVATION_SCHEMA, AUDIT_SOURCE_PRESERVATION_SCHEMA].includes(req.approval.sourceRebind?.schemaVersion) && !auditPreservationRequested)
@@ -2179,8 +2191,10 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const metaPipelineAudit = auditPreservationRequested ? null : validateMetaPipelineAudit({ root, approval: req.approval, source, sourceBytes: bytes, sourceBlobSha1: blob,
     bank, expectedQuestionCount: req.expectedQuestionCount, items: req.items, registryChanges: req.registryChanges || [],
     requestId: req.requestId, requestSha256: digest(stable(req)) });
+  const batch = typeBatch && write && !verifyProjection && req.approval.type === DIRECT_JUDGMENT && !req.registryChanges?.length ? typeBatch : null;
   const read = file => {
     const load = () => JSON.parse(fs.readFileSync(safePath(root, file), "utf8"));
+    if (batch && (file === META || file === IDENTITY)) return batch.input(file, load);
     return projectionPhase && file.startsWith("archive/data/") ? projectionInput(projectionPhase, root, "json:" + file, load) : load();
   };
   // Cache only current input definitions. Every request still executes its
@@ -2241,10 +2255,19 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (req.registrationMode === "IDENTITY_FINGERPRINT_ONLY") return registerIdentityFingerprintOnly({
     root, req, metadata, identity, rows, ids, bank, bytes, blob, receiptPath, requestSha256, previous, scopeFields, write, verifyProjection, read, projectionPhase });
   // Direct type judgment (type fields only): its own lane, replay and receipt; it shares only the registry planner and the checks above.
-  if (req.approval.type === DIRECT_JUDGMENT) return registerTypeJudgment({ root, req, write, verifyProjection, metadata, rows, ids, bank, bytes, blob, receiptPath, requestSha256, previous, scopeFields,
-    h: { fail, requireText, eq, safePath, json, digest, evidenceRefs, registryPlan, lookup, sourceFingerprints,
-      sourceUidMatches: (q, current, id, ordinal) => !q.questionUid || q.questionUid === current.questionUid || isLegacyPathFormulaUid(q.questionUid, source, ordinal) ||
-        isUnambiguousLegacySourceUidAlias({ question: q, sourceArchiveFile: source, sourceOrdinal: ordinal, identityRecord: id, identityMap: identity, bank }) } });
+  if (req.approval.type === DIRECT_JUDGMENT) {
+    // In a batch, a refused request must leave the shared rows as a fresh process would have found them.
+    const undo = batch ? batch.begin(metadata, req.items.map(item => rows[item.sourceOrdinal - 1])) : null;
+    try {
+      return registerTypeJudgment({ root, req, write, verifyProjection, metadata, rows, ids, bank, bytes, blob, receiptPath, requestSha256, previous, scopeFields, batch,
+        h: { fail, requireText, eq, safePath, json, digest, evidenceRefs, registryPlan, lookup, sourceFingerprints,
+          sourceUidMatches: (q, current, id, ordinal) => !q.questionUid || q.questionUid === current.questionUid || isLegacyPathFormulaUid(q.questionUid, source, ordinal) ||
+            isUnambiguousLegacySourceUidAlias({ question: q, sourceArchiveFile: source, sourceOrdinal: ordinal, identityRecord: id, identityMap: identity, bank }) } });
+    } catch (error) {
+      undo?.();
+      throw error;
+    }
+  }
   if (previous) {
     let preservedAudit = null;
     if (auditPreservationRequested) {
@@ -2280,7 +2303,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         previous.appliedRecords.some(record => !targetUids.has(record.questionUid)) ||
         [...(previous.appliedIdentityRecords || []), ...previous.runtimeRecords].some(record => !targetUids.has(record.questionUid))))
       fail("partial receipt UID scope mismatch");
-    for (const record of previous.appliedRecords) if (!eq(rows.find(r => r.questionUid === record.questionUid), record)) fail(`registered metadata drift: ${record.questionUid}`);
+    for (const record of previous.appliedRecords) if (!receiptRecordMatchesRow(rows.find(r => r.questionUid === record.questionUid), record)) fail(`registered metadata drift: ${record.questionUid}`);
     for (const record of previous.appliedIdentityRecords || []) if (!eq(ids.get(record.questionUid), record)) fail(`registered identity drift: ${record.questionUid}`);
     const currentTables = replayLookup();
     const replaySourceReviewCache = new Map(), replaySourceReviewContext = new Map();
@@ -2496,7 +2519,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     owners.set(r.questionUid, pack);
   }
   const sourceValueOverrides = [];
-  const touched = new Set(), applied = [], runtimeRecords = [], appliedIdentityRecords = [], fingerprintRepairs = [], rpmPrimaryBindings = [], nativeParentBindings = [];
+  const touched = new Set(), applied = [], runtimeRecords = [], appliedIdentityRecords = [], fingerprintRepairs = [], rpmPrimaryBindings = [], nativeParentBindings = [], reportTags = [];
   const extensionUsage = new Map(), priorBanks = new Map(), sourceReviewCache = new Map();
   let identityChanged = false;
   // Source-only rebind (2026-11-02): re-bind an already registered receipt to changed source bytes without
@@ -2516,7 +2539,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       return context.reason ? null : nativeReviewReceipt({ ...ancestor, registry: approvedRendererRegistry, ...context });
     } }) : null;
   for (let i = 0; i < bank.length; i++) {
-    const current = rows[i], patch = patches.get(current.questionUid);
+    const current = rows[i];
+    let patch = patches.get(current.questionUid);
     if (partial && !patch) continue;
     const q = JSON.parse(JSON.stringify(bank[i]));
     const id = ids.get(current.questionUid);
@@ -2627,9 +2651,15 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       Object.assign(current, finalPrior); applied.push(structuredClone(finalPrior)); runtimeRecords.push(rrPrior);
       continue;
     }
-    for (const [field, value] of Object.entries(patch.before)) if (!valueFields.has(field) || !eq(current[field] ?? null, value)) fail(`before mismatch: ${current.questionUid}.${field}`);
-    for (const [field, value] of Object.entries(patch.after)) {
-      if (!valueFields.has(field)) fail(`unapproved field: ${field}`);
+    // Fields outside the value contract are not rejected: they are not stored and the receipt/result names them.
+    const unstored = [...new Set([...Object.keys(patch.before), ...Object.keys(patch.after)].filter(field => !valueFields.has(field)))];
+    if (unstored.length) {
+      reportTags.push({ questionUid: current.questionUid, kind: "UNSTORED_FIELDS", fields: unstored });
+      const keep = values => Object.fromEntries(Object.entries(values).filter(([field]) => valueFields.has(field)));
+      patch = { ...patch, before: keep(patch.before), after: keep(patch.after) };
+    }
+    for (const [field, value] of Object.entries(patch.before)) if (!eq(current[field] ?? null, value)) fail(`before mismatch: ${current.questionUid}.${field}`);
+    for (const field of Object.keys(patch.after)) {
       if (!Object.hasOwn(patch.before, field)) fail(`before required: ${current.questionUid}.${field}`);
     }
     const final = { ...current, ...structuredClone(patch.after) };
@@ -2688,11 +2718,6 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     });
     if (checked.identityChanged) { Object.assign(id, checked.identityAfter); identityChanged = true; }
     appliedIdentityRecords.push(structuredClone(id));
-    // REVIEW2 only: a source that does not carry `level` at all may stay without one (nothing is invented); a carried value must still be valid.
-    const reviewTwoLevelAbsent = req.approval.type === "REVIEW2" && !Object.hasOwn(q, "level") && (final.level === undefined || final.level === null || final.level === "");
-    if (!reviewTwoLevelAbsent && !["하", "중", "상"].includes(final.level) &&
-        !isPreservedHistoricalLevel({ approvalType: req.approval.type, question: q, final }))
-      fail(`level invalid: ${current.questionUid}`);
     const debtRows = req.approval.type === "META_PIPELINE_AUDIT" ? (req.approval.metaPipelineAudit.unreviewedFields || []) : [];
     let difficultyEvidenceDebt = null;
     if (!Number.isInteger(final.difficultyBucket) || final.difficultyBucket < 1 || final.difficultyBucket > 5) {
@@ -2756,6 +2781,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       if (approved(current) && current[field] !== label && !Object.hasOwn(patch.before, field)) fail(`before required for derived label: ${current.questionUid}.${field}`);
       final[field] = label;
     }
+    fillRpmFromRecordId({ root, final, cache: sourceReviewCache, questionUid: current.questionUid, reportTags });
     const revision = `meta-foundation:${pack.meta.packId}@${pack.meta.packVersion}:exam-${req.approval.type.toLowerCase()}-v2:${req.requestId}`;
     const confidence = req.approval.type === "REVIEW2" ? "independent_review2" :
       req.approval.type === "META_PIPELINE_AUDIT" ? "meta_pipeline_audit" : "approved_final_qa";
@@ -2901,7 +2927,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (Object.hasOwn(metadata.counts, "explicitProblemTypeHolds")) metadata.counts.explicitProblemTypeHolds = metadata.records.filter(r => r.fieldStatus?.problemType === "manual_review_pending").length;
   if (Object.hasOwn(metadata.counts, "explicitTemplateHolds")) metadata.counts.explicitTemplateHolds = metadata.records.filter(r => r.fieldStatus?.template === "manual_review_pending").length;
   if (Object.hasOwn(metadata.counts, "explicitDifficultyHolds")) metadata.counts.explicitDifficultyHolds = metadata.records.filter(r => r.fieldStatus?.difficulty === "manual_review_pending").length;
-  plan.output.set(META, json(metadata));
+  plan.output.set(META, questionMetadataText(metadata));
   if (identityChanged) {
     // Retain UID, source ordinal, lookups and unrelated identity records.
     const stableIdentity = { ...identity }; delete stableIdentity.generatedAt; delete stableIdentity.identityDigest;
@@ -2947,6 +2973,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         solutionFingerprintRepairs: fingerprintRepairs.length, newMetadataApprovals: 0, preservedMetadataApprovals: applied.length } } : {}),
     ...(approvedRendererBinding ? { approvedRendererPreservation: approvedRendererBinding } : {}),
     ...(rpmPrimaryBindings.length ? { rpmPrimaryBindings } : {}),
+    ...(reportTags.length ? { reportTags } : {}),
     ...(nativeParentBindings.length ? { nativeParentBindings } : {}),
     ...(sourceValueOverrides.length ? { sourceValueOverrides } : {}),
     ...(metaPipelineAudit ? { metaPipelineAudit: { schemaVersion: metaPipelineAudit.inputAuditSchemaVersion || metaPipelineAudit.audit.schemaVersion,
@@ -3018,6 +3045,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   // All semantic and reference checks precede the first write; restore originals
   // if an I/O failure occurs. CLI dry-run never changes production data.
   if (write) {
+    assertMetadataAssembledCurrent(root);
     const backup = new Map();
     try {
       for (const [file, text] of changed) {
@@ -3025,6 +3053,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         backup.set(full, fs.existsSync(full) ? fs.readFileSync(full) : null);
         fs.mkdirSync(path.dirname(full), { recursive: true }); fs.writeFileSync(full, text, "utf8");
       }
+      syncMetadataShards(root);
     } catch (error) {
       for (const [full, bytes] of backup) { if (bytes === null) fs.rmSync(full, { force: true }); else fs.writeFileSync(full, bytes); }
       throw error;
@@ -3033,7 +3062,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   return { status: "PASS", write, requestId: req.requestId, approvalType: req.approval.type, totalQuestions: applied.length, ...scopeFields, ...preservationFields,
     registryChangeCount: req.registryChanges?.length || 0, runtimeMaterialized: runtimeRecords.length,
     fingerprintRepairCount: fingerprintRepairs.length,
-    consumerSearchStatus: "NOT_RUN", replay: false, plannedPaths: changed.map(([file]) => file) };
+    consumerSearchStatus: "NOT_RUN", replay: false, plannedPaths: changed.map(([file]) => file), ...(reportTags.length ? { reportTags } : {}) };
 }
 
 // Loads the digest-checked canonical input bundle exactly as the student Consumer
@@ -3103,7 +3132,7 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog, { a
     // is verified against that lane; every field the lane does not carry is verified against the
     // exact active runtime pack row. A canonical value that exists must still equal the request.
     const canonicalMissing = Array.isArray(c.canonicalAssignmentReasons) && c.canonicalAssignmentReasons.includes("assignment_missing");
-    const laneBound = canonicalMissing && ["exact", "content"].includes(c.metaBinding);
+    const laneBound = canonicalMissing && Boolean(c.metaBinding);
     const projection = c.metaProjection && c.metaProjection.projectionStatus === "DISPLAY_ONLY_SOURCE_BOUND" ? c.metaProjection : null;
     const lane = {
       curriculumKey: () => c.metaHintCurriculum,
@@ -3211,24 +3240,10 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog, { a
     if (!found) fail(`Search UID source missing: ${r.questionUid}`);
     for (const f of ["standardUnitKey", "subUnitKey", "level"]) {
       if (eq(found[f], r[f])) continue;
-      // The source-only search index serializes an explicit null legacy label as
-      // an empty string. Recheck the exact source and known D5 fields; no other
-      // absent, changed or unreviewed value receives this projection exception.
-      if (f === "level" && r.level === null && found.level === "" && r.metadataApprovalType === "FINAL_QA") {
-        const sourceFile = "archive/exams/" + r.sourceArchiveFile;
-        let bank = searchSourceCache.get(sourceFile);
-        if (!bank) {
-          const sourceContext = { window: {}, console: { log() {}, warn() {}, error() {} } };
-          vm.createContext(sourceContext);
-          vm.runInContext(fs.readFileSync(safePath(root, sourceFile), "utf8"), sourceContext, { timeout: 5000 });
-          bank = sourceContext.window.questionBank || sourceContext.window.questions || sourceContext.questions || sourceContext.questionBank || sourceContext.window.examData?.questions;
-          searchSourceCache.set(sourceFile, bank);
-        }
-        const question = bank?.[Number(r.sourceOrdinal) - 1];
-        if (question && isPreservedHistoricalLevel({ approvalType: r.metadataApprovalType, question, final: r })) continue;
-      }
-      if (r.metadataApprovalType === "REVIEW2" && ["standardUnitKey", "subUnitKey", "level"].includes(f) && reviewTwoSourceLacks(root, r, f, found[f], searchSourceCache)) continue;
-      if (r.metadataApprovalType === "META_PIPELINE_AUDIT" && ["standardUnitKey", "subUnitKey", "level"].includes(f)) {
+      // A question without a level (absent, null or empty) has nothing to compare; a level that is present must still match the search index.
+      if (f === "level" && (r.level === undefined || r.level === null || r.level === "")) continue;
+      if (r.metadataApprovalType === "REVIEW2" && ["standardUnitKey", "subUnitKey"].includes(f) && reviewTwoSourceLacks(root, r, f, found[f], searchSourceCache)) continue;
+      if (r.metadataApprovalType === "META_PIPELINE_AUDIT" && ["standardUnitKey", "subUnitKey"].includes(f)) {
         const sourceFile = "archive/exams/" + r.sourceArchiveFile;
         let bank = searchSourceCache.get(sourceFile);
         if (!bank) {

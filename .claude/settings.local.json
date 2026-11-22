@@ -1,32 +1,23 @@
 {
   "permissions": {
     "allow": [
-      "Bash(node --check ./apmath/js/ui.js)",
-      "Bash(node --check ./apmath/js/dashboard.js)",
-      "Bash(node --check ./apmath/worker-backup/worker/index.js)",
-      "Bash(node --check ./apmath/js/core.js)",
-      "Bash(node --check ./apmath/js/schedule.js)",
-      "Bash(node --check \"c:\\\\Users\\\\USER\\\\Desktop\\\\AP------\\\\apmath\\\\worker-backup\\\\worker\\\\index.js\")",
-      "Bash(node --check \"c:\\\\Users\\\\USER\\\\Desktop\\\\AP------\\\\apmath\\\\js\\\\core.js\")",
-      "Bash(node --check \"c:\\\\Users\\\\USER\\\\Desktop\\\\AP------\\\\apmath\\\\js\\\\report.js\")",
-      "Bash(node --check \"c:\\\\Users\\\\USER\\\\Desktop\\\\AP------\\\\apmath\\\\js\\\\student.js\")",
-      "Bash(node --check \"c:\\\\Users\\\\USER\\\\Desktop\\\\AP------\\\\apmath\\\\js\\\\schedule.js\")",
-      "Bash(node --check \"c:\\\\Users\\\\USER\\\\Desktop\\\\AP------\\\\apmath\\\\js\\\\ui.js\")",
+      "Bash(node --check *)",
       "Bash(node -e ' *)",
-      "Bash(node --check apmath/js/cumulative.js)",
-      "Bash(node --check apmath/js/ui.js)",
-      "Bash(node --check apmath/js/student.js)",
-      "Bash(node --check apmath/js/dashboard.js)",
-      "Bash(node --check apmath/js/classroom.js)",
-      "Bash(node --check apmath/worker-backup/worker/index.js)",
-      "Bash(node --check apmath/js/management.js)",
-      "Bash(node --check apmath/js/timetable.js)",
-      "Bash(node --check apmath/js/core.js)",
       "PowerShell(New-Item -ItemType Directory -Path C:\\\\Users\\\\USER\\\\Desktop\\\\AP------\\\\apmath-home -Force)",
       "PowerShell(git -C C:\\\\Users\\\\USER\\\\Desktop\\\\AP------ status --short --untracked-files=all)",
-      "Bash(node --check \"C:\\\\Users\\\\USER\\\\Desktop\\\\AP------\\\\archive\\\\internal-review-engine.js\")",
       "Bash(echo \"EXIT:$?\")",
-      "Bash(not exist *)"
+      "Read(//d/AI_WORKSPACES/APMS/archive2-unit-grid-fine-20261112/**)",
+      "Bash(gh pr *)",
+      "Bash(cd D:/AI_WORKSPACES/APMS/archive2-unit-grid-fine-20261112/archive && grep -n \"^function\\\\|^async function\\\\|^  function\\\\|^const [A-Za-z_]* = \\\\|^let \\\\|^var \" unit-past-exams.js | head -400)",
+      "Bash(cd D:/AI_WORKSPACES/APMS/archive2-unit-grid-fine-20261112 && cat .github/workflows/apms-worker-deploy.yml | head -60; ls docs/plans 2>/dev/null | grep -i archive | head; )",
+      "Bash(cd D:/AI_WORKSPACES/APMS/archive2-unit-grid-fine-20261112 && head -c 2500 archive/data/archive2-subunit-groups.json; echo; echo ----; grep -rn \"archive2-subunit-groups\\\\|subunit-groups\" --include=*.js --include=*.html --include=*.py --include=*.json --include=*.md --include=*.mjs --include=*.cjs . 2>/dev/null | grep -v node_modules | grep -v \"^./archive/data/archive2-subunit-groups.json\" | head -40; echo ----; grep -rln \"ARCHIVE_SUBUNIT_LABELS\" --include=*.js --include=*.html . | grep -v node_modules | head)",
+      "Bash(grep -v '^\\\\s*$')",
+      "Bash(grep -n -o '.\\\\{0,200\\\\}유사문제 먼저.\\\\{0,200\\\\}' archive/unit-past-exams.js)",
+      "Bash(grep -n -o -E \"ug-fine.{0,400}\" unit-past-exams.js)",
+      "Bash(grep -n -o -E '.{60}button\\\\\\(\"\\(targets|distribute|issue|assign\\)[^\\)]{0,80}\\\\\\).{0,40}' archive2-workspace.js)",
+      "Bash(grep -rn -E \"action=\\\\\\\\\\\\\\\\?\\\\\"targets\\\\\\\\\\\\\\\\?\\\\\"|'targets'\" archive2-workspace.js)",
+      "Bash(cd D:/AI_WORKSPACES/APMS/archive2-unit-grid-fine-20261112/tests && grep -n \"unit-past\\\\|readyShelf\\\\|unit-stepper\\\\|renderDetail\\\\|previewExistingPaper\\\\|blueprint\" archive2-interaction-browser-audit.cjs archive2-preview-responsive.test.cjs print-render-authority-mixer-ecosystem.test.js archive-asset-base.test.js archive2-meta-facets.test.js archive-unit-past-exams-browser-qa.mjs archive-unit-past-exams-browser-qa-contract.test.js archive2-navigation.test.cjs archive2-unit-envelope-handoff.test.cjs archive-unit-past-exams-general-use.test.js | cut -c1-230 | head -50; grep -n \"archive2-preview-responsive\\\\|interaction-browser-audit\\\\|browser-qa\" ../tools/run-tests.js ../package.json 2>/dev/null | head)",
+      "Bash(node --max-old-space-size=4096 -e ' *)"
     ]
   }
 }

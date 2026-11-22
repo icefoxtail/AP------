@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-f92c43fb2956-7bf282cb",
+  "requestSha256": "837055d5e178d2e83b4e9ac3ef73760b3fa5d3c2aae46ab69e09f416a17af272",
+  "examUid": "22_효천고_1학기_중간_고2_수학I",
+  "sourceArchiveFile": "original/high/h2/1mid/22_효천고_1학기_중간_고2_수학I.js",
+  "sourceBlobSha1": "b8d18e74b441c4f6c2755c54eec4bcc25c166de6",
+  "sourceRawSha256": "58ddf0dd3903ab543f6544207caa6cbcc4f751af50ffa0b9d7d922e31796890a",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f92c43fb2956-7bf282cb.type-ledger.json",
+        "sha256": "9fffc185d11ce63c926a4cb4e2cf3225c8ff16d44e0ecb14fb66e0ecaec2c66f"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_b69096dd2cb83048e7c0f61419ddbf9d24b1b91eab232e60b9e78a0833c1598d",
+      "sourceArchiveFile": "original/high/h2/1mid/22_효천고_1학기_중간_고2_수학I.js",
+      "sourceOrdinal": 19,
+      "problemTypeKey": "PT_LOG_APPLICATION",
+      "templateKey": "TPL_LOG_EXPONENTIAL_EQUATION_SYSTEM_SOLVE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f92c43fb2956-7bf282cb",
+        "judge": "dots",
+        "rationale": "밑변환으로 두 y절편이 p와p/2이므로 둘 다0임을 얻고 b loga=a logb에서 a^b=b^a=20으로 환원한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학I",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "dd3e9e9c653423d7f332fbc27296df81ab2eddf8220d69048ed2142afd02950f",
+        "judgedContentFingerprint": "322256990a839d862d9506cf2520c2c6cd5b9abeaa8cd02ba77d8ea695ab9073",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "2352fc719ee518b3a053f6cfdae69ace407452dfedac005c75c53e42e4355cee",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f92c43fb2956-7bf282cb.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 25
+}

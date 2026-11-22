@@ -1,0 +1,192 @@
+{
+  "schemaVersion": "archive-q16-q5-current-renderer-producer-independent-static-v1",
+  "status": "STATIC_ACCEPT_ACTUAL_EXECUTION_REQUIRED",
+  "reviewer": "/root/ci_m2s2",
+  "author": "/root/m3s2_release",
+  "date": "2026-11-17",
+  "manifest": {
+    "name": "manifest",
+    "bytes": 8921,
+    "sha256": "a881001b8f9bf4ff695f9739fc7d9367ca464ece47a2c349671aafedf1824bb4",
+    "gitBlobSha1": "cfa104792df089aa4d27e83c038f8d806a145daa"
+  },
+  "exactDelta": {
+    "name": "delta",
+    "bytes": 5761,
+    "sha256": "df7d7d3f865b6abb243d64a6d36d051e7f63b458067d3b2bd8907190e1c2e4c4",
+    "gitBlobSha1": "941cfba72dabb08c1b710e709adaf83880473bea"
+  },
+  "operations": [
+    {
+      "path": "tools/check-m3s2-q16-layout-browser.cjs",
+      "beforeGitBlobSha": "849de1ab8881bb3c8715f08dc87a57dd25351bcf",
+      "gitBlobSha": "f7426f61f7cd783b52cfe5c279fcee8cb8200ee7",
+      "rawSha256": "71f2cab9234d4a80ada7e79c7b03df288079fd39f8e806a6fce1255324951958",
+      "bytes": 26602,
+      "fullStringReadback": true,
+      "kind": "UPDATE",
+      "changes": [
+        "engine Git and SHA256 pins only",
+        "exact review-branch push provenance; preserve previous PR and local branches"
+      ]
+    },
+    {
+      "path": "tools/check-m3-e052-q5-problem-browser.cjs",
+      "beforeGitBlobSha": null,
+      "absence": "Actual a3ef GitHub contents API404",
+      "historicalOrigin": {
+        "commit": "c29e1cc63c1d55b9c049c254908e466dad23a086",
+        "gitBlobSha": "5937d98954764d79bf8efc2b528cd3a5b791c573",
+        "rawSha256": "0386a00334a011de691a2d298f1822f8d9894e60090d8020fc7e01a10e62762d",
+        "bytes": 59715
+      },
+      "gitBlobSha": "c59ca5c001e007e7fa123089f306a54bba8ee796",
+      "rawSha256": "43067702c2eb2ca062aa73c0551a5fb5d3ad9a35bcf409452778b41c01f0e6a7",
+      "bytes": 59715,
+      "fullStringReadback": true,
+      "kind": "RESTORE_HISTORICAL_PRODUCER_WITH_RENDERER_PINS_ONLY",
+      "changes": [
+        "engine and screen runtime Git/SHA256/size refs only; all other original bytes preserved"
+      ]
+    },
+    {
+      "path": "tests/fixtures/archive-m3-e052-q5-problem-ui.json",
+      "beforeGitBlobSha": null,
+      "absence": "Actual a3ef GitHub contents API404",
+      "gitBlobSha": "6a130b5af0bde204ede90211ae779b92ff74022f",
+      "rawSha256": "1ad5d743e74665f42ba8abc3213a81e7c768eb771a8575314c6e9404e851b9cb",
+      "bytes": 1807,
+      "fullStringReadback": true,
+      "kind": "RESTORE_EXACT_ORIGINAL_FIXTURE",
+      "changes": []
+    },
+    {
+      "path": "tests/archive-m3s2-q16-current-renderer-provenance.test.cjs",
+      "beforeGitBlobSha": null,
+      "gitBlobSha": "ca7bed52e0f8e5ef76a847f3aac6dd8e6a9d6cea",
+      "rawSha256": "0716ca8570649148dd8323507a3cacb0abf26cfd1d8132754733ae0b5cbca12b",
+      "bytes": 4788,
+      "syntheticDefined": 13,
+      "execution": "NOT_RUN",
+      "syntax": "NOT_RUN",
+      "kind": "ADD_SCOPED_SYNTHETIC_EVENT_CONTRACT_TEST"
+    }
+  ],
+  "inputPins": [
+    {
+      "name": "q16Before",
+      "bytes": 26123,
+      "sha256": "5550c4f271117e9fb1d207027cbaa07edc50c3cc85265bac21a27c75fcd9fe9e",
+      "gitBlobSha1": "849de1ab8881bb3c8715f08dc87a57dd25351bcf"
+    },
+    {
+      "name": "q16After",
+      "bytes": 26602,
+      "sha256": "71f2cab9234d4a80ada7e79c7b03df288079fd39f8e806a6fce1255324951958",
+      "gitBlobSha1": "f7426f61f7cd783b52cfe5c279fcee8cb8200ee7"
+    },
+    {
+      "name": "q5Before",
+      "bytes": 59715,
+      "sha256": "0386a00334a011de691a2d298f1822f8d9894e60090d8020fc7e01a10e62762d",
+      "gitBlobSha1": "5937d98954764d79bf8efc2b528cd3a5b791c573"
+    },
+    {
+      "name": "q5After",
+      "bytes": 59715,
+      "sha256": "43067702c2eb2ca062aa73c0551a5fb5d3ad9a35bcf409452778b41c01f0e6a7",
+      "gitBlobSha1": "c59ca5c001e007e7fa123089f306a54bba8ee796"
+    },
+    {
+      "name": "q5Fixture",
+      "bytes": 1807,
+      "sha256": "1ad5d743e74665f42ba8abc3213a81e7c768eb771a8575314c6e9404e851b9cb",
+      "gitBlobSha1": "6a130b5af0bde204ede90211ae779b92ff74022f"
+    },
+    {
+      "name": "q16Test",
+      "bytes": 4788,
+      "sha256": "0716ca8570649148dd8323507a3cacb0abf26cfd1d8132754733ae0b5cbca12b",
+      "gitBlobSha1": "ca7bed52e0f8e5ef76a847f3aac6dd8e6a9d6cea"
+    },
+    {
+      "name": "manifest",
+      "bytes": 8921,
+      "sha256": "a881001b8f9bf4ff695f9739fc7d9367ca464ece47a2c349671aafedf1824bb4",
+      "gitBlobSha1": "cfa104792df089aa4d27e83c038f8d806a145daa"
+    },
+    {
+      "name": "delta",
+      "bytes": 5761,
+      "sha256": "df7d7d3f865b6abb243d64a6d36d051e7f63b458067d3b2bd8907190e1c2e4c4",
+      "gitBlobSha1": "941cfba72dabb08c1b710e709adaf83880473bea"
+    }
+  ],
+  "review": {
+    "scope": "Q16 2 and Q5 2 logical views only; M1 14 is a separate producer; SVG7 primary14 excluded",
+    "q16WholeInverseExact": true,
+    "q5WholeInverseExact": true,
+    "q16Changes": [
+      "exact current engine Git/raw two tokens",
+      "only checkoutEvidence new exact ops push branch; old PR/local byte-preserved"
+    ],
+    "q5Changes": [
+      "exact engine/screen Git/raw/byte refs only; capture/geometry/source/asset/lifecycle gates byte-preserved"
+    ],
+    "fixture": "Q5 original 1807B fixture exact restored; Q16 fixture unchanged",
+    "opsRef": "refs/heads/ops/middle-protected9-current-renderer-26fc-20261117",
+    "q16PushContract": [
+      "expected=actual HEAD=GITHUB_SHA=event.after",
+      "fixed environment and event ref",
+      "same fixed repository",
+      "actual push event and actual head recorded",
+      "run/attempt/job required"
+    ],
+    "originalPrContract": "PR head remains actual checkout while event commit may remain merge SHA; PR head/repository authentication retained",
+    "q5WorkflowRequirement": "Producer retains original checkout object; workflow and transport must enforce exact ops push and expected=HEAD=GITHUB_SHA=event.after, with real run/job only in external transport",
+    "resultShape": "Q16/Q5 top mode/surface and row technical.mode/solutionNodes; no invented row mode/surface; original raw JSON unchanged",
+    "test": {
+      "path": "tests/archive-m3s2-q16-current-renderer-provenance.test.cjs",
+      "defined": 13,
+      "positives": [
+        "exact ops push",
+        "existing PR merge event differs from head",
+        "existing local provenance"
+      ],
+      "negatives": [
+        "environment ref",
+        "event ref",
+        "GitHub SHA",
+        "event.after",
+        "environment repository",
+        "payload repository",
+        "event type",
+        "expected SHA",
+        "missing run",
+        "old PR head/repository",
+        "local GitHub field contamination"
+      ],
+      "usesExportedProductionFunction": "checkoutEvidence",
+      "repositoryCodeExecuted": 0
+    },
+    "sourceMetadata": "M3 a3ef directory metadata pins recorded in manifest match unchanged fixture source2/PNG1; no source bodies or images inspected by reviewer",
+    "oldAuthority": "No Native helper, issued receipt, sidecar, source, asset, MD/ID/runtime or authority edits"
+  },
+  "limitations": [
+    "Node syntax not run",
+    "Synthetic tests not run",
+    "Chrome not run",
+    "Current source preflight not run",
+    "No new visual/math/metadata approval",
+    "Root exact-head integration and actual capture required before current proof use"
+  ],
+  "counters": {
+    "shellCalls": 0,
+    "nodeCalls": 0,
+    "repositoryEvaluation": 0,
+    "sourceBodiesRead": 0,
+    "imagesViewed": 0,
+    "approvalWrites": 0,
+    "refWrites": 0
+  }
+}

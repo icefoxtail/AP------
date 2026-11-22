@@ -1,0 +1,734 @@
+{
+  "schemaVersion": "archive-independent-m1s2-current-ui-rebinding-review-v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "reviewer": "GPT_M3S2_RELEASE_INDEPENDENT",
+  "decision": "STATIC_ACCEPT_EXACT_CURRENT_DISPLAY_REBINDING_OFFICIAL_GATES_PENDING",
+  "reviewedManifest": {
+    "tag": "manifest",
+    "gitBlobSha1": "0e642c02316bbf769febbc69dd4a710671d93ab5",
+    "sha256": "40579b863ad260acceff4a117e201a5d084335e25ecb162b8d2397e8c73e202b",
+    "bytes": 19913
+  },
+  "inputPins": [
+    {
+      "tag": "manifest",
+      "gitBlobSha1": "0e642c02316bbf769febbc69dd4a710671d93ab5",
+      "sha256": "40579b863ad260acceff4a117e201a5d084335e25ecb162b8d2397e8c73e202b",
+      "bytes": 19913
+    },
+    {
+      "tag": "delta",
+      "gitBlobSha1": "1ccf7586d36e50a8ebebfb900e860fbe78a3bb0b",
+      "sha256": "f9d6a8650cfe2f38d06d6e1fec33e50d8da61efc4f591d3bf055e0a98681574d",
+      "bytes": 64850
+    },
+    {
+      "tag": "reader-after",
+      "gitBlobSha1": "4321e8e5e1a10d158e4ab8ac87e0e17bc2c82836",
+      "sha256": "9839283ab1b0f1affa7919618d7bea9fd3e9f5b2d8f5123812fc840546039223",
+      "bytes": 32395
+    },
+    {
+      "tag": "reader-before",
+      "gitBlobSha1": "e6023949667d46a57880dab82e383c3a9dabf0e7",
+      "sha256": "5f107e3286a97ea73127f5a8211e73cc328da87814d213ebc568ded9e3f098fb",
+      "bytes": 20103
+    },
+    {
+      "tag": "test-after",
+      "gitBlobSha1": "6c64f558090dae1e9b58adee42904155fb5f22b4",
+      "sha256": "354b4d9cb518d82d10df42781daa8e87ae5d934ddd7347e21782b5491d2565de",
+      "bytes": 15066
+    },
+    {
+      "tag": "evidence-CURRENT_TECHNICAL_REF",
+      "gitBlobSha1": "82fe4a6929e1d7b800bbba4f3a2634ffea04cc77",
+      "sha256": "6d7281d12281f6ceb454d3cc79244a66a8a5013327120a4b5bfde98671d8fa42",
+      "bytes": 222310
+    },
+    {
+      "tag": "evidence-CURRENT_VISUAL_REF",
+      "gitBlobSha1": "e626233f7aeaddf7d7d81bab5daf59e7ed2996bc",
+      "sha256": "ca40535462ab65d42ddac642fe640dbcb49dee9ae03dd3f611813aab778d6807",
+      "bytes": 18296
+    },
+    {
+      "tag": "evidence-CURRENT_EQUIVALENCE_REF",
+      "gitBlobSha1": "7b299baaa116756e2527a77c5181ed03ec1ae91d",
+      "sha256": "873fabbec304705ea3e12ff4621849b040fdd4f7096006bfd8b00f07d2f55dec",
+      "bytes": 53093
+    },
+    {
+      "tag": "evidence-CURRENT_INDEPENDENT_REF",
+      "gitBlobSha1": "2cb1d70d666c5742ef57b0bce2b4dbf9231c5afe",
+      "sha256": "83bb6258be37609abfda71527f65165f1658b5caf5da572ee93fe1f60bc7f4ac",
+      "bytes": 16257
+    },
+    {
+      "tag": "evidence-CURRENT_REASSEMBLY_REF",
+      "gitBlobSha1": "f07ff335d4abab50048d700d5a526d3f9fa68790",
+      "sha256": "fa841847643c673948650c4d70a1ae00fc578e3ee627ccfc820d2b2fda081910",
+      "bytes": 7306
+    },
+    {
+      "tag": "evidence-PRIOR_TECHNICAL_REF",
+      "gitBlobSha1": "1dfbe22d89b9d8f229724796dc559fe3799483b8",
+      "sha256": "d379e5f05e1e59e74b635452e535fc676fec502542ff7a25c0d77cb63a898f9a",
+      "bytes": 222136
+    },
+    {
+      "tag": "evidence-PRIOR_VISUAL_REF",
+      "gitBlobSha1": "77f810ff113e15ee894d21c8bab591ab8132539b",
+      "sha256": "7f30419f07e71faf441418ed07b30366037413fb99f9448b39a7ba208bb646a9",
+      "bytes": 15105
+    },
+    {
+      "tag": "sidecar-0-before",
+      "gitBlobSha1": "62f472da789f277afe9f6603058e048509ffd8ec",
+      "sha256": "989b32edc73a830f22fbb1fa004d781a49bc21783f4eb31f189a74b861bf49dd",
+      "bytes": 6650
+    },
+    {
+      "tag": "sidecar-0-after",
+      "gitBlobSha1": "37ae75f016b1ea7ef950df4e90f6f57e1a1f0daf",
+      "sha256": "f61852df9d4ed2ccd9c06074b8ccc701fe10df7bff4f3dd3a8904b0494dd2e95",
+      "bytes": 6678
+    },
+    {
+      "tag": "sidecar-1-before",
+      "gitBlobSha1": "47d21b5867150454cf6f00fa6fc11c7f0d85bc3c",
+      "sha256": "890b4212a3d19b6ff6f69aae6586ac1a1b1b0e95a9ef67826de3628a89c2a18b",
+      "bytes": 6648
+    },
+    {
+      "tag": "sidecar-1-after",
+      "gitBlobSha1": "11c13b3f9994d8840c41e62cf63bf1e611686dbd",
+      "sha256": "b4051411a73e21e004684c6865e466ed5ac24ba83d5f611a07d8e303a7772f9c",
+      "bytes": 6676
+    },
+    {
+      "tag": "sidecar-2-before",
+      "gitBlobSha1": "e9c235775dd2b66cdbb91f75a03ebb6339fb5acf",
+      "sha256": "76fc45120d8ee6d116695cd3f0cc4a594494e10f772f217ecf6f5d49831fa09d",
+      "bytes": 6669
+    },
+    {
+      "tag": "sidecar-2-after",
+      "gitBlobSha1": "7677883751409a30eb7b9835423bcb1b724dd450",
+      "sha256": "7d8bbc1aaaccf40a47b6d2c2e574f5bf19f0f2f3f329ffd9ad39211a4e4974c0",
+      "bytes": 6697
+    },
+    {
+      "tag": "sidecar-3-before",
+      "gitBlobSha1": "acd6443f3c167a6274b8f7ff46a71f58e1c959ac",
+      "sha256": "6764fb54252e6133425c756bce69a03f2060c5516c078557a65828d648490e41",
+      "bytes": 6663
+    },
+    {
+      "tag": "sidecar-3-after",
+      "gitBlobSha1": "a4cfb2cb9ce6ed5ebbb92b5527d1e3a4448a622e",
+      "sha256": "85cdb1c5583d19ab9def4165b3b8e9aa3119d5ebd1b79fd19b342f2aad38eafb",
+      "bytes": 6691
+    },
+    {
+      "tag": "sidecar-4-before",
+      "gitBlobSha1": "9bed94ffd50cd9a6ee4a739a786472567e8a002e",
+      "sha256": "a5bc92b203b6d916ef5fbc2ed22691cc2a15d0562c6b8ebe88682bf570a2b037",
+      "bytes": 6669
+    },
+    {
+      "tag": "sidecar-4-after",
+      "gitBlobSha1": "aa0fd6b93e5a9022f565bc04ae794f0f8fb01ff3",
+      "sha256": "e0ced2ce4d5797544bce3b858d8b398b2d72ac96044342d3430582f6714f5c55",
+      "bytes": 6697
+    },
+    {
+      "tag": "sidecar-5-before",
+      "gitBlobSha1": "30f89918905b9a4fdbc77ad0d817e071a8bab690",
+      "sha256": "276aa21cb8c12580d45f80098ac10bd2ccc8c8506efb9fc89f476e2cc82c4a4b",
+      "bytes": 6664
+    },
+    {
+      "tag": "sidecar-5-after",
+      "gitBlobSha1": "662b480e1560d7ffa759e100005a5bed42022d79",
+      "sha256": "0443bd24448aa4462ecf179bc10ab6f0add2c8120f7d2e853d477e0f3a9c3264",
+      "bytes": 6692
+    },
+    {
+      "tag": "sidecar-6-before",
+      "gitBlobSha1": "779fc4f6766d8b900408c7b0881ffcfd33f55a06",
+      "sha256": "125ac3d9de600bd7de8380a0ec99af17a9cd7003f100ce8a8e7fff502deb7d9b",
+      "bytes": 6648
+    },
+    {
+      "tag": "sidecar-6-after",
+      "gitBlobSha1": "3a361820e3ac959c759aed8bb421c319df6b0ae7",
+      "sha256": "c060e456198a7fef9407723378b231b3f9cd52babcf483b7c6556d269f96ab82",
+      "bytes": 6676
+    }
+  ],
+  "scope": {
+    "productionReader": 1,
+    "newTest": 1,
+    "sidecars": 7,
+    "sourceWrites": 0,
+    "mathReview": 0,
+    "imageReopening": 0,
+    "newSemanticApproval": 0,
+    "newDifficultyApproval": 0,
+    "newFourSlotVector": 0,
+    "NodeSyntaxOrExecution": 0,
+    "registrarBuilderConsumerExecution": 0,
+    "remoteRefWrites": 0
+  },
+  "structuralFindings": [
+    "Six explicit reader edits reversed independently produce the exact e6023949 primary reader, including its existing generated-data currentData repair. The d26 main difference is inherited and is not falsely described as a new current-UI edit.",
+    "The new reuse path is requested by the exact current technical path, closed push owner or new visual schema; mismatched markers still enter strict validation and cannot fall through to legacy PR acceptance.",
+    "The new path requires exact current technical/visual five-field pins and actual public A/B/C ancestry, exact checkout48d and exact current-ui/run44015662986/closed ops branch execution with null PR metadata. No PR provenance is fabricated.",
+    "Original PR validation, source/asset/selected metadata and identity checks, SVG selected-record equality, capture coverage, full declared current runtime/font validation and real PNG reads remain in the shared path.",
+    "The immutable old visual reviewer and all fourteen visual records are copied exactly. Four continuing content/solution holds remain explicit; no mathematical, difficulty or four-slot authority is added.",
+    "All seven sidecar documents restore exactly to their previous whole objects after replacing only uiTechnicalRef and uiVisualRef. No other authority or vector field changes.",
+    "The raw current14 captures, geometry, surface topology, PNG declarations, question/source/asset hashes and source items match the prior observations; global38 font response records match except capture commit. Case-level font IDs may only be a subset and still pass unchanged font readiness and response-count validation.",
+    "Current raw14 PNG references match all prior visual-declared PNG Git/raw/size fields and the separately authenticated root binary reconstruction. This reviewer did not re-open images or repeat binary transport decoding.",
+    "The new53 authored test definitions cover exact push execution, nineteen malformed execution cases, immutable raw reuse, common capture coverage, disjoint dispatch, five ref mutations, nine sealed-evidence mutations, twelve policy mutations, missing/non-PNG/ancestry refusals and all-seven sidecar field preservation. They are not executed."
+  ],
+  "inverse": {
+    "edits": 6,
+    "wholeBeforeExact": true,
+    "git": "e6023949667d46a57880dab82e383c3a9dabf0e7"
+  },
+  "sidecars": [
+    {
+      "uid": "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+      "ordinal": 8,
+      "changedFields": [
+        "uiTechnicalRef",
+        "uiVisualRef"
+      ],
+      "otherWholeEqual": true
+    },
+    {
+      "uid": "qid_v1_04a3307fa2f22f54255d293e5f2159fec8ae31d99a2c3188c242dd96b710d6e6",
+      "ordinal": 6,
+      "changedFields": [
+        "uiTechnicalRef",
+        "uiVisualRef"
+      ],
+      "otherWholeEqual": true
+    },
+    {
+      "uid": "qid_v1_7f4235f2620956516dfafbb36f1947f7edfe47aef1292379105eb747ba511fe3",
+      "ordinal": 19,
+      "changedFields": [
+        "uiTechnicalRef",
+        "uiVisualRef"
+      ],
+      "otherWholeEqual": true
+    },
+    {
+      "uid": "qid_v1_a989f82a87d00dc1ec8c7d552fa21572235abfe58518c41fc7f95001ec9d689e",
+      "ordinal": 18,
+      "changedFields": [
+        "uiTechnicalRef",
+        "uiVisualRef"
+      ],
+      "otherWholeEqual": true
+    },
+    {
+      "uid": "qid_v1_b0046185c909143e8665ec134015703f04e8b0d17904e06717055b7771e63e15",
+      "ordinal": 17,
+      "changedFields": [
+        "uiTechnicalRef",
+        "uiVisualRef"
+      ],
+      "otherWholeEqual": true
+    },
+    {
+      "uid": "qid_v1_dda907fccf6844e209f2f909dacdb1ea30f2d76c258a72b76fd246c3655f4140",
+      "ordinal": 13,
+      "changedFields": [
+        "uiTechnicalRef",
+        "uiVisualRef"
+      ],
+      "otherWholeEqual": true
+    },
+    {
+      "uid": "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+      "ordinal": 6,
+      "changedFields": [
+        "uiTechnicalRef",
+        "uiVisualRef"
+      ],
+      "otherWholeEqual": true
+    }
+  ],
+  "independentMetadataChecks": {
+    "caseChecks": [
+      {
+        "uid": "qid_v1_dda907fccf6844e209f2f909dacdb1ea30f2d76c258a72b76fd246c3655f4140",
+        "viewport": "desktop",
+        "checks": {
+          "identity": true,
+          "viewport": true,
+          "capture": true,
+          "screenshots": true,
+          "geometry": true,
+          "surface": true,
+          "source": true,
+          "assets": true,
+          "questionHash": true,
+          "technicalExceptCaseFonts": true,
+          "caseFontSubset": true
+        },
+        "fontsBefore": 32,
+        "fontsAfter": 32
+      },
+      {
+        "uid": "qid_v1_b0046185c909143e8665ec134015703f04e8b0d17904e06717055b7771e63e15",
+        "viewport": "desktop",
+        "checks": {
+          "identity": true,
+          "viewport": true,
+          "capture": true,
+          "screenshots": true,
+          "geometry": true,
+          "surface": true,
+          "source": true,
+          "assets": true,
+          "questionHash": true,
+          "technicalExceptCaseFonts": true,
+          "caseFontSubset": true
+        },
+        "fontsBefore": 32,
+        "fontsAfter": 32
+      },
+      {
+        "uid": "qid_v1_a989f82a87d00dc1ec8c7d552fa21572235abfe58518c41fc7f95001ec9d689e",
+        "viewport": "desktop",
+        "checks": {
+          "identity": true,
+          "viewport": true,
+          "capture": true,
+          "screenshots": true,
+          "geometry": true,
+          "surface": true,
+          "source": true,
+          "assets": true,
+          "questionHash": true,
+          "technicalExceptCaseFonts": true,
+          "caseFontSubset": true
+        },
+        "fontsBefore": 34,
+        "fontsAfter": 34
+      },
+      {
+        "uid": "qid_v1_7f4235f2620956516dfafbb36f1947f7edfe47aef1292379105eb747ba511fe3",
+        "viewport": "desktop",
+        "checks": {
+          "identity": true,
+          "viewport": true,
+          "capture": true,
+          "screenshots": true,
+          "geometry": true,
+          "surface": true,
+          "source": true,
+          "assets": true,
+          "questionHash": true,
+          "technicalExceptCaseFonts": true,
+          "caseFontSubset": true
+        },
+        "fontsBefore": 34,
+        "fontsAfter": 34
+      },
+      {
+        "uid": "qid_v1_04a3307fa2f22f54255d293e5f2159fec8ae31d99a2c3188c242dd96b710d6e6",
+        "viewport": "desktop",
+        "checks": {
+          "identity": true,
+          "viewport": true,
+          "capture": true,
+          "screenshots": true,
+          "geometry": true,
+          "surface": true,
+          "source": true,
+          "assets": true,
+          "questionHash": true,
+          "technicalExceptCaseFonts": true,
+          "caseFontSubset": true
+        },
+        "fontsBefore": 29,
+        "fontsAfter": 29
+      },
+      {
+        "uid": "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+        "viewport": "desktop",
+        "checks": {
+          "identity": true,
+          "viewport": true,
+          "capture": true,
+          "screenshots": true,
+          "geometry": true,
+          "surface": true,
+          "source": true,
+          "assets": true,
+          "questionHash": true,
+          "technicalExceptCaseFonts": true,
+          "caseFontSubset": true
+        },
+        "fontsBefore": 31,
+        "fontsAfter": 31
+      },
+      {
+        "uid": "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+        "viewport": "desktop",
+        "checks": {
+          "identity": true,
+          "viewport": true,
+          "capture": true,
+          "screenshots": true,
+          "geometry": true,
+          "surface": true,
+          "source": true,
+          "assets": true,
+          "questionHash": true,
+          "technicalExceptCaseFonts": true,
+          "caseFontSubset": true
+        },
+        "fontsBefore": 31,
+        "fontsAfter": 31
+      },
+      {
+        "uid": "qid_v1_dda907fccf6844e209f2f909dacdb1ea30f2d76c258a72b76fd246c3655f4140",
+        "viewport": "mobile",
+        "checks": {
+          "identity": true,
+          "viewport": true,
+          "capture": true,
+          "screenshots": true,
+          "geometry": true,
+          "surface": true,
+          "source": true,
+          "assets": true,
+          "questionHash": true,
+          "technicalExceptCaseFonts": true,
+          "caseFontSubset": true
+        },
+        "fontsBefore": 34,
+        "fontsAfter": 32
+      },
+      {
+        "uid": "qid_v1_b0046185c909143e8665ec134015703f04e8b0d17904e06717055b7771e63e15",
+        "viewport": "mobile",
+        "checks": {
+          "identity": true,
+          "viewport": true,
+          "capture": true,
+          "screenshots": true,
+          "geometry": true,
+          "surface": true,
+          "source": true,
+          "assets": true,
+          "questionHash": true,
+          "technicalExceptCaseFonts": true,
+          "caseFontSubset": true
+        },
+        "fontsBefore": 34,
+        "fontsAfter": 32
+      },
+      {
+        "uid": "qid_v1_a989f82a87d00dc1ec8c7d552fa21572235abfe58518c41fc7f95001ec9d689e",
+        "viewport": "mobile",
+        "checks": {
+          "identity": true,
+          "viewport": true,
+          "capture": true,
+          "screenshots": true,
+          "geometry": true,
+          "surface": true,
+          "source": true,
+          "assets": true,
+          "questionHash": true,
+          "technicalExceptCaseFonts": true,
+          "caseFontSubset": true
+        },
+        "fontsBefore": 35,
+        "fontsAfter": 34
+      },
+      {
+        "uid": "qid_v1_7f4235f2620956516dfafbb36f1947f7edfe47aef1292379105eb747ba511fe3",
+        "viewport": "mobile",
+        "checks": {
+          "identity": true,
+          "viewport": true,
+          "capture": true,
+          "screenshots": true,
+          "geometry": true,
+          "surface": true,
+          "source": true,
+          "assets": true,
+          "questionHash": true,
+          "technicalExceptCaseFonts": true,
+          "caseFontSubset": true
+        },
+        "fontsBefore": 35,
+        "fontsAfter": 34
+      },
+      {
+        "uid": "qid_v1_04a3307fa2f22f54255d293e5f2159fec8ae31d99a2c3188c242dd96b710d6e6",
+        "viewport": "mobile",
+        "checks": {
+          "identity": true,
+          "viewport": true,
+          "capture": true,
+          "screenshots": true,
+          "geometry": true,
+          "surface": true,
+          "source": true,
+          "assets": true,
+          "questionHash": true,
+          "technicalExceptCaseFonts": true,
+          "caseFontSubset": true
+        },
+        "fontsBefore": 31,
+        "fontsAfter": 29
+      },
+      {
+        "uid": "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+        "viewport": "mobile",
+        "checks": {
+          "identity": true,
+          "viewport": true,
+          "capture": true,
+          "screenshots": true,
+          "geometry": true,
+          "surface": true,
+          "source": true,
+          "assets": true,
+          "questionHash": true,
+          "technicalExceptCaseFonts": true,
+          "caseFontSubset": true
+        },
+        "fontsBefore": 32,
+        "fontsAfter": 31
+      },
+      {
+        "uid": "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+        "viewport": "mobile",
+        "checks": {
+          "identity": true,
+          "viewport": true,
+          "capture": true,
+          "screenshots": true,
+          "geometry": true,
+          "surface": true,
+          "source": true,
+          "assets": true,
+          "questionHash": true,
+          "technicalExceptCaseFonts": true,
+          "caseFontSubset": true
+        },
+        "fontsBefore": 32,
+        "fontsAfter": 31
+      }
+    ],
+    "globalFonts": {
+      "before": 38,
+      "after": 38,
+      "allSameExceptCommit": true
+    },
+    "visualRecordsWholeExact": true,
+    "visualReviewerExact": true,
+    "artifacts": [
+      {
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/P04-desktop-tile-01.png",
+        "gitBlobSha1": "66febdc905bc7da6605dfe952ce93e625cabd067",
+        "sha256": "67b29f4e7934cbe81b2a2f3eb7653b30e14723290fd95fd8d3c2ac26b927e151",
+        "bytes": 28502,
+        "oldVisualDeclaredExact": true,
+        "rootBinaryReadbackExact": true
+      },
+      {
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/P04-mobile-tile-01.png",
+        "gitBlobSha1": "11dedbd3114347edd9cee0d51c3739b4bc36eb1b",
+        "sha256": "a0263e9d7422f95457f11b3e20aa55639e9819ea2dd0dac392e20ce7906640a7",
+        "bytes": 29382,
+        "oldVisualDeclaredExact": true,
+        "rootBinaryReadbackExact": true
+      },
+      {
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/P08-desktop-tile-01.png",
+        "gitBlobSha1": "90583edbaf9463fb0381a63e3fe904ddfc7bf9e9",
+        "sha256": "49a916b8e528a0ec7c3096f472c6fe5f2b3309bcf0c7f38ea1e4763edb87326d",
+        "bytes": 55807,
+        "oldVisualDeclaredExact": true,
+        "rootBinaryReadbackExact": true
+      },
+      {
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/P08-mobile-tile-01.png",
+        "gitBlobSha1": "085ae54e821a0e328e59b5b15ecd4c6218cbbcb5",
+        "sha256": "935bbee9a5008051a67efe44c2ad6b384c054eed52e870d093e9d190698d0baa",
+        "bytes": 58532,
+        "oldVisualDeclaredExact": true,
+        "rootBinaryReadbackExact": true
+      },
+      {
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/P10-desktop-tile-01.png",
+        "gitBlobSha1": "1b6316f33754f8b32c4d30ff06eae485749c430f",
+        "sha256": "e9b882c63438d8ae5f9849b9612715394e6a200e3b188e4574cd76c78938f6f0",
+        "bytes": 33551,
+        "oldVisualDeclaredExact": true,
+        "rootBinaryReadbackExact": true
+      },
+      {
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/P10-mobile-tile-01.png",
+        "gitBlobSha1": "8d8caf0c3dde5d58a48e6327f3ea4449a3d153d0",
+        "sha256": "51d39a4ab1517a918ef3a7551673c825d65ed304ff4df6458d710b8be095a267",
+        "bytes": 34243,
+        "oldVisualDeclaredExact": true,
+        "rootBinaryReadbackExact": true
+      },
+      {
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/P11-desktop-tile-01.png",
+        "gitBlobSha1": "b5a0360a7cc45e6ee4804a38e46cdb7bdf045bae",
+        "sha256": "043e94f7259883f9d9de4b576a6e784803122ee794dfb875dc8ed2c3869fbdf0",
+        "bytes": 58771,
+        "oldVisualDeclaredExact": true,
+        "rootBinaryReadbackExact": true
+      },
+      {
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/P11-mobile-tile-01.png",
+        "gitBlobSha1": "431ae362cfbff0f1bc84d3df3a83615d2c5a5997",
+        "sha256": "e1ef6c6b3c0eb2f3c6f3cc459d7dd17edad8159d82ab8e8d53134945ee411451",
+        "bytes": 60096,
+        "oldVisualDeclaredExact": true,
+        "rootBinaryReadbackExact": true
+      },
+      {
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/P12-desktop-tile-01.png",
+        "gitBlobSha1": "1e5f7096e484f44443ae7a83dda813458f68a321",
+        "sha256": "fb9b43951d25f7f77cd77a2f8fd098b1e7c28dd4b74bebe3249af30757dff494",
+        "bytes": 27252,
+        "oldVisualDeclaredExact": true,
+        "rootBinaryReadbackExact": true
+      },
+      {
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/P12-mobile-tile-01.png",
+        "gitBlobSha1": "360215fce4e54e5f73e2c6aea99303018eb69729",
+        "sha256": "27973d5dd8456fd114e6e0cc6af608ffcad7470f5a20311c30fd7ea50e121551",
+        "bytes": 27852,
+        "oldVisualDeclaredExact": true,
+        "rootBinaryReadbackExact": true
+      },
+      {
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/P13-desktop-tile-01.png",
+        "gitBlobSha1": "6316e23127f507a340f56a62ba9f32a2b21276e4",
+        "sha256": "b81d90677fbf3328d2f4896bec256401232ad8c087d58797d4d10588d076c7ed",
+        "bytes": 31211,
+        "oldVisualDeclaredExact": true,
+        "rootBinaryReadbackExact": true
+      },
+      {
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/P13-mobile-tile-01.png",
+        "gitBlobSha1": "bf478fde45cf4c01930d315bd395b3ab5a43b26a",
+        "sha256": "813d0f93ade8ece8c69cb2a53554b71b76da6fe19700f0bce8c02e7564128817",
+        "bytes": 32746,
+        "oldVisualDeclaredExact": true,
+        "rootBinaryReadbackExact": true
+      },
+      {
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/P14-desktop-tile-01.png",
+        "gitBlobSha1": "c517408b65d0fc5827960f5f440f98886890383b",
+        "sha256": "ec9b32e7691edb171ea5a22b745ecc2b79f13baaaa175ea3a4f7bfb9e60387e1",
+        "bytes": 22068,
+        "oldVisualDeclaredExact": true,
+        "rootBinaryReadbackExact": true
+      },
+      {
+        "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/P14-mobile-tile-01.png",
+        "gitBlobSha1": "59a271fbfa413348c17050daecdec47afbcd4872",
+        "sha256": "fdd7ae3b5340ced4b442da3421a5368134cd8a017eb83b39f001570fd26dc636",
+        "bytes": 22986,
+        "oldVisualDeclaredExact": true,
+        "rootBinaryReadbackExact": true
+      }
+    ],
+    "technicalInventoryWholeExact": true,
+    "mirroredAssetsWholeExceptCommit": true,
+    "sourceItemsExceptCommit": true,
+    "execution": {
+      "provider": "GITHUB_ACTIONS",
+      "eventName": "push",
+      "repository": "icefoxtail/AP------",
+      "workflow": "Middle Protected Current Renderer",
+      "job": "current-ui",
+      "runId": "44015662986",
+      "runAttempt": 1,
+      "pullRequest": null,
+      "headSha": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+      "baseSha": null,
+      "eventSha": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+      "runUrl": "https://github.com/icefoxtail/AP------/actions/runs/44015662986",
+      "ref": "refs/heads/ops/middle-protected9-current-renderer-26fc-20261117",
+      "capturedHead": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502"
+    },
+    "independent": {
+      "decision": "ACCEPT_REUSE_OF_IDENTICAL_EXISTING_DISPLAY_OBSERVATIONS_ONLY",
+      "currentEvidenceCommit": "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3"
+    },
+    "assemblyProfile": {
+      "profile": "m1",
+      "files": 15,
+      "png": 14,
+      "logical": 14,
+      "bytes": 745309,
+      "frames": 284,
+      "bundle": "d39ab37b93686b594eb919dba0a9e1fc7e3d4868604712a5a500839f1a8b0d13",
+      "technicalGit": "82fe4a6929e1d7b800bbba4f3a2634ffea04cc77",
+      "technicalRaw": "6d7281d12281f6ceb454d3cc79244a66a8a5013327120a4b5bfde98671d8fa42"
+    }
+  },
+  "cacheAndFinalReadBoundary": {
+    "basis": "Existing M1 authority helper and builder path are unchanged. All current rendered-code/font live reads continue through the original reader observer; M1 claims disable cache reuse and final observed inputs are rehashed before write. No new untracked current file read is introduced by the branch.",
+    "recursiveCacheExpansionClaimed": false,
+    "officialCurrentBuilderVerification": "NOT_RUN"
+  },
+  "requiredRuntimeDependencies": {
+    "producer": {
+      "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+      "path": "tools/check-m1s2-problem-seven-browser.cjs",
+      "gitBlobSha1": "b575897d190a512b48b04e03719bd3cc0cc02654",
+      "sha256": "130fcab0be811c537ddce05f5c1f17a26e18cf9862ea690dbefcea419bde73e9",
+      "bytes": 25233
+    },
+    "captureHelper": {
+      "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+      "path": "tools/check-reviewed-problem-renderer-browser.cjs",
+      "gitBlobSha1": "56c80b40d53fa88e8054a16f7b7267f968696f3f",
+      "sha256": "e4895b67b750fedddb60a310052ed99778c2576fe5723c936c1a69606bb04673",
+      "bytes": 56735
+    },
+    "surfaceHelper": {
+      "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+      "path": "tools/capture-m1s2-problem-surface.cjs",
+      "gitBlobSha1": "ffeb072d7b94df6491ab7eeacb73ed1750f598ca",
+      "sha256": "86b0e6761544480a688930928484e1f944e9e47e0ab2347aa22a35331891f5cf",
+      "bytes": 10218
+    },
+    "fixture": {
+      "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+      "path": "tests/fixtures/archive-m1s2-problem-seven-ui.json",
+      "gitBlobSha1": "15b517839daec65eff8fc401b1c5a7fd1be9c3f5",
+      "sha256": "a315e169b8b4666f54c81a68a2579ccab1fa85d4de8521b7002373e82f8802ef",
+      "bytes": 7830
+    },
+    "policy": "All four immutable capture refs and current live bytes must match. The b575 ops producer must be explicitly present in the integrated code tree; retaining evidence ancestry alone does not overlay it.",
+    "otherRuntimeAndFonts": "The exact current raw technical servedFiles and studentFontResources are validated by the unchanged common live-byte checks."
+  },
+  "limitations": [
+    "This is static code/metadata acceptance. Node syntax, the new53 tests, actual prior authority7, official scoped builder, replay and Consumer are NOT_RUN for these new bindings.",
+    "All four current capture implementation files including producer b575 must exist with exact bytes in the eventual integration tree. Evidence ancestry does not substitute for a missing current implementation file.",
+    "Prior visual decisions are reused for identical pixels. Changed shared renderer code is not declared equivalent; current full live dependency guards remain mandatory.",
+    "The unmodified parent M1 authority helper still decides whether the original registered source/vector/metadata contract is valid."
+  ],
+  "nextAction": "Root integrates only exact9 files plus required existing runtime dependency pins and public ancestry; supported CI must run the new53 definitions and relevant original guard tests, followed by exact seven-item authority/builder/Consumer verification before physical restoration is claimed."
+}

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-8a046871c79a-8b8550e3",
+  "sourceArchiveFile": "similar/high/h1/1final/26_효천고_1학기_기말_고1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_7979dcb9c001d56781c1da3bc9d582aef08d390583e826b6fab9bedf730c2da4",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_PERMUTATION_COMBINATION_CALCULATION",
+      "templateKey": "TPL_H1_PERMUTATION_COMBINATION_CALCULATION_IDENTITY",
+      "step": "순열·조합의 정의와 0개 선택의 한 가지 경우를 확인하여 잘못된 등식을 고른다.",
+      "note": "새 TPL 제안: 순열·조합의 정의와 0개 선택의 한 가지 경우를 확인하여 잘못된 등식을 고른다. 정의: 순열·조합의 정의와 0개 선택의 한 가지 경우를 확인하여 잘못된 등식을 고른다. check-ledger: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4bd5bd5b1c7e6bbfb3f38fcbd14125e743e9b7b5b2dc91799f2a3434f7c7c440",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "step": "y=0으로 놓은 교점 방정식을 인수분해해 두 x절편의 합을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f562c98c1bd2c8f7d0cb4efcf0dc5fbcf8588945cb8d2e45d6f9fba23f534172",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_GRAPH_PATH_COLOR",
+      "step": "마지막 이동이 한 칸인지 두 칸인지 분해해 경로수 점화 관계로 8칸 이동 수를 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bc1d03e26a9dad163e4dd874eb7f15202da4cec373d52809e7a3d361d38d1daa",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "step": "전체 배열에서 밴드와 댄스 네 팀의 상대 순서 중 밴드가 먼저인 비율을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_827cf2d3af7a41d163df82edd99f11a3b09864fac83eaac531bf1e7bdf99e744",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
+      "templateKey": null,
+      "step": "행렬곱의 비가환성과 소거법칙 실패 반례를 확인하고 결합법칙으로 마지막 명제를 증명한다.",
+      "note": "새 TPL 제안: 행렬곱의 비가환성과 소거법칙 실패 반례를 확인하고 결합법칙으로 마지막 명제를 증명한다. 정의: 행렬곱의 비가환성과 소거법칙 실패 반례를 확인하고 결합법칙으로 마지막 명제를 증명한다. check-ledger: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e74cd8f497979745175beba5c604008a315df2143009846a19b2a4863384b9a7",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_POWER_IDENTITY",
+      "templateKey": "TPL_H1_MATRIX_POWER_POLYNOMIAL",
+      "step": "A=B+E로 두 행렬의 교환성을 보이고 세제곱 차를 3AB+E로 환원한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8a282b72f3e80a81dafe77df16dfc91046d4dcfda44a6b10c6376e673f94c960",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+      "step": "이동구간의 공통 극값 0에서 두 꼭짓점 위치를 정하고 공통접선 판별식으로 계수를 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f4c9bc3e46c7ca70abb01a1671a3d8350607de687fb1a68a9be99cb39df52e23",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_OPERATION_AUDIT",
+      "step": "음수 제곱근을 i로 표현해 곱·몫을 한 근호로 합친 잘못된 부호 단계를 바로잡는다.",
+      "note": "새 TPL 제안: 음수 제곱근을 i로 표현해 곱·몫을 한 근호로 합친 잘못된 부호 단계를 바로잡는다. 정의: 음수 제곱근을 i로 표현해 곱·몫을 한 근호로 합친 잘못된 부호 단계를 바로잡는다. check-ledger: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d6932f5ca0ae5c3a3202c8ba3232fecee14dd58317dd3b340c1175d14123a845",
+      "sourceOrdinal": 25,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+      "templateKey": "TPL_H1_MATRIX_EQUATION_LINEAR",
+      "step": "행렬곱의 대응 성분을 연립하여 팩토리얼 항을 소거하고 x²=2n-1의 최소 홀수 n을 찾는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5bd9f6d3a08a44cefe594c076dccf0ca4a5ec2686cf66f93f0a86b13dbc15ee9",
+      "sourceOrdinal": 26,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "step": "어른의 기구별 분포를 먼저 나누고 남은 정원과 동반조건에 맞는 어린이 배치를 합산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    }
+  ]
+}

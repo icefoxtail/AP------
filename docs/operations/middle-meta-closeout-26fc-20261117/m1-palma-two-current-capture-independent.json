@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "archive-m1-palma-two-capture-independent-review-v1",
+  "status": "STATIC_ACCEPT_ACTUAL_CHROME_REQUIRED",
+  "reviewer": "/root/m1_release_closeout",
+  "author": "/root/m3s2_release",
+  "inputs": [
+    {
+      "gitBlobSha1": "2cff20eb24d580dc566279a3a33069c1b07a0e70",
+      "sha256": "c7e2515b81b77e255bad75236dab1b8e6e094e5123063f51f3a6e562f540d00d",
+      "bytes": 9377
+    },
+    {
+      "gitBlobSha1": "bbc5d6d191cb23088ea9cf2a4e5d7f60b13045d4",
+      "sha256": "20290598aa91213db2d874f917701d598b4eadc02aacd592d261bf17c2eb2a82",
+      "bytes": 10789
+    },
+    {
+      "gitBlobSha1": "c805b5fb65e66933a4c409fd7976b96ef7571916",
+      "sha256": "0be78ded64f0f75c5da5767aca742219d1187d242e1617fc0d211999042f3053",
+      "bytes": 23509
+    },
+    {
+      "gitBlobSha1": "1976f6c7e825e196082845f7230776f044be5579",
+      "sha256": "dc41bcdd392f3bb20b7962628cdc04839b5073f04a1da1a0b90e25a549167ba9",
+      "bytes": 2477
+    },
+    {
+      "gitBlobSha1": "62524e5b47805899e6a71ce4e77d9f35979864d1",
+      "sha256": "f2d455c0ffc5fc0dad7105f332966065026b0a0b9e120ae8d1048293020d0239",
+      "bytes": 5789
+    }
+  ],
+  "checks": {
+    "producerReverseReplacements": 11,
+    "producerWholeInverseExact": true,
+    "originalProducerGit": "b575897d190a512b48b04e03719bd3cc0cc02654",
+    "fixedSelectedTwo": [
+      {
+        "questionUid": "qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c",
+        "sourceOrdinal": 6,
+        "wholeExceptThreeSourcePinsExact": true,
+        "selectedWholeQuestionSha256": "9b88570a23ca79122aa8fa01ba087879d56ef79f8013f4a7163487b287abe330",
+        "currentSourceGit": "5ee9cbf10fa9af98a4e1cd13ca7adb3948482e72"
+      },
+      {
+        "questionUid": "qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246",
+        "sourceOrdinal": 8,
+        "wholeExceptThreeSourcePinsExact": true,
+        "selectedWholeQuestionSha256": "508c45c4727372bbbfbe7e21c6d6041f79bcd56f5bb45e91a40d07f41c2b16bf",
+        "currentSourceGit": "5ee9cbf10fa9af98a4e1cd13ca7adb3948482e72"
+      }
+    ],
+    "viewportsWholeExact": true,
+    "originalCaptureFontSurfaceLifecycleUnchanged": true,
+    "closedPush": {
+      "repository": "icefoxtail/AP------",
+      "ref": "refs/heads/ops/m1-palma-two-current-source-ui-26fc-20261117",
+      "requires": [
+        "GITHUB_ACTIONS=true",
+        "push",
+        "same repository/full_name/fork=false",
+        "env ref=payload ref=closed ref",
+        "deleted=false",
+        "expectedSHA=GITHUB_SHA=after=reader checkoutHEAD",
+        "positive runId/runAttempt",
+        "workflow/job"
+      ],
+      "actualProvenance": "push/capturedHead; null pullRequest/baseSha"
+    },
+    "workflow": {
+      "contents": "read",
+      "credentialsPersist": false,
+      "checkout": "github.sha",
+      "outputOutsideCheckout": true,
+      "temporaryDriverOnly": true,
+      "trackedAndUntrackedCleanCheck": true,
+      "artifactIncludesAllOriginalPngs": true,
+      "focusedPositiveDefinitions": 2,
+      "focusedNegativeDefinitions": 14,
+      "execution": "NOT_RUN"
+    },
+    "identity24": {
+      "proof": {
+        "gitBlobSha1": "114f3387cbbe2d608d93f9e70cc46a843ebe406b",
+        "sha256": "d7560a8447409d9feb638ba7fc49f5e00b1d149aa11f3fda1e01f9250c76b511",
+        "bytes": 8956
+      },
+      "readBoundary": "Root-authenticated prior/current whole24 comparison reused; no new ID hydration or identity guard change"
+    },
+    "preservation": {
+      "existingProducerAndFixtureUnchanged": true,
+      "existingOtherFiveBindingsUnchanged": true,
+      "sourceAssetMdIdRuntimeWrites": 0,
+      "semanticApprovals": 0,
+      "vectorApprovals": 0
+    }
+  },
+  "validationLimits": {
+    "independentNodeExecutions": 0,
+    "independentChromeExecutions": 0,
+    "sourceTextReads": 0,
+    "visualReviews": 0,
+    "mathReviews": 0,
+    "NativeBuilderConsumerPass": false
+  },
+  "nextAction": "Root verifies new paths absent/current exact inputs, publishes the closed ops branch, and obtains actual four-view raw evidence before current UI binding."
+}
