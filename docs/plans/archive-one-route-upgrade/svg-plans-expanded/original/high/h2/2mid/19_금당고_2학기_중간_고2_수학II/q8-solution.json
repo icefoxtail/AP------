@@ -1,0 +1,148 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "③ [x]"
+      },
+      "plan": {
+        "capability": "piecewise-discontinuous-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-discontinuous",
+          "pieces": [
+            {
+              "coefficients": [
+                "-2"
+              ],
+              "domain": [
+                -2,
+                -1
+              ],
+              "start": "CLOSED",
+              "end": "OPEN"
+            },
+            {
+              "coefficients": [
+                "-1"
+              ],
+              "domain": [
+                -1,
+                0
+              ],
+              "start": "CLOSED",
+              "end": "OPEN"
+            },
+            {
+              "coefficients": [
+                "0"
+              ],
+              "domain": [
+                0,
+                1
+              ],
+              "start": "CLOSED",
+              "end": "OPEN"
+            },
+            {
+              "coefficients": [
+                "1"
+              ],
+              "domain": [
+                1,
+                2
+              ],
+              "start": "CLOSED",
+              "end": "OPEN"
+            }
+          ],
+          "axisTickValues": {
+            "x": [],
+            "y": [
+              "-1"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "④ |x|"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "0",
+                "-1"
+              ]
+            },
+            {
+              "coefficients": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          "breakpoints": [
+            {
+              "x": "0",
+              "y": "0"
+            }
+          ],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "-2",
+              "2"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "requiredPoints": [
+            {
+              "id": "P",
+              "x": "0",
+              "y": "0"
+            }
+          ],
+          "exactCoordinates": {
+            "P": [
+              "0",
+              "0"
+            ]
+          },
+          "axisScale": {
+            "x": 2,
+            "y": 1
+          }
+        }
+      }
+    }
+  ],
+  "caption": "③ [x]는 x=0에서 왼쪽 높이 -1, 오른쪽 높이 0으로 끊어져 연속이 아니다. ④ |x|는 원점 P에서 끊김없이 이어지지만 좌미분계수 -1, 우미분계수 1이 달라 뾰족하게 꺾이므로 연속이지만 미분가능하지 않다. ①은 미분가능, ②는 x=0에서 정의되지 않고, ⑤ |x-1|은 꺾이는 점이 x=1이라 x=0에서는 미분가능하다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "두 패널이 나란히 있다. 첫째 패널에는 정수마다 한 칸씩 오르는 계단 그래프가, 둘째 패널에는 원점 P에서 V자로 꺾이는 그래프가 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)$ 중 $x=0$에서 연속이지만 미분가능하지 않은 것은? (단, $[x]$는 $x$보다 크지 않은 최대의 정수) [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: x=0에서 끊어지는 ③과 끊김없이 꺾이는 ④를 두 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "③이 x=0에서 끊어지고 ④가 점 P(0,0)에서 끊김없이 뾰족하게 꺾이는 차이를 보인다."
+  ]
+}

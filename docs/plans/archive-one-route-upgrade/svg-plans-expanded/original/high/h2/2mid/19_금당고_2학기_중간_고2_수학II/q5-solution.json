@@ -1,0 +1,77 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -0.2,
+      3.2,
+      0,
+      4.5
+    ],
+    "curves": [
+      {
+        "id": "lo",
+        "kind": "SQRT",
+        "radicand": [
+          "1",
+          "5"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "y=sqrt(5x+1)"
+      },
+      {
+        "id": "hi",
+        "kind": "SQRT",
+        "radicand": [
+          "3",
+          "5"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "y=sqrt(5x+3)"
+      },
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "2",
+          "5"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "color": "GREEN",
+        "label": "f"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "예: f(x)=√(5x+2)일 때를 그렸다. 곡선 y=√(5x+1)과 y=√(5x+3) 사이에 f가 놓인다. 제곱하면 5x+1<{f(x)}²<5x+3이고 2x+1로 나눈 양 끝 (5x+1)/(2x+1), (5x+3)/(2x+1)이 모두 5/2로 가까워지므로 샌드위치 정리에 의해 극한은 5/2이다. 따라서 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)$가 $x>0$에서 $\\sqrt{5x+1} < f(x) < \\sqrt{5x+3}$를 만족할 때, $\\lim_{x \\to \\infty} \\frac{\\{f(x)\\}^2}{2x+1}$의 값은? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f가 두 제곱근 곡선 사이에 끼는 예를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x>0에서 f가 위아래 두 제곱근 곡선 √(5x+1), √(5x+3) 사이에 끼는 예(f=√(5x+2))를 보인다."
+  ],
+  "accessibilityDescription": "위아래로 가까이 놓인 두 제곱근 곡선 사이에 가운데 제곱근 곡선이 끼어 있고 세 곡선이 오른쪽 위로 완만하게 오르는 그래프이다."
+}

@@ -34,6 +34,15 @@
           { "no": 2, "problemPng": "q02.png", "issue": "세 직선의 기울기와 중앙의 수평선이 원본과 불일치", "fix": "왼쪽 1-2x, 중앙 2x, 오른쪽 4-2x 및 f(1)=1로 수정" },
           { "no": 19, "problemPng": "q19.png", "issue": "여섯 원본 직선 조각을 잘못된 네 조각으로 축약", "fix": "[-3,3]의 여섯 직선과 -1,1,2의 별도 함숫값으로 복원" }
         ]
+      },
+      {
+        "exam": "19_금당고_2학기_중간_고2_수학II",
+        "planCount": 12,
+        "shallowPlanLint": "PASS_12_OF_12",
+        "corrected": [
+          { "no": 17, "problemPng": "q17.png", "issue": "기존 플랜의 왼쪽 곡선 및 x=4 이후 곡선 높이·방향이 원본과 다름", "fix": "표시된 점·기울기를 보존하는 2차 근사 조각으로 수정; 원본에 식이 없어 공식 렌더 재현성은 보류" }
+        ],
+        "holds": ["q17: 원본의 실제 곡선 방정식은 제공되지 않아 정성적 개형만 근사했으며, 공식 화면 결과와 원본 곡률 비교 필요"]
       }
     ],
     "reviewRequired": [
@@ -41,10 +50,10 @@
     ]
   },
   "gate": {
-    "firstExamShallowPlanLint": "PASS",
+    "reviewedExamsShallowPlanLint": "PASS_25_OF_25",
     "officialSvgGeneration": "NOT_RUN",
     "browserPcMobileA4VisualValidation": "NOT_RUN",
     "publication": "NOT_RUN"
   },
-  "nextInOrder": "2mid 나머지 2019년 6종의 기존 플랜 점검 후 2020→2026년 순서로 진행"
+  "nextInOrder": "2mid 나머지 2019년 5종의 기존 플랜 점검 후 2020→2026년 순서로 진행"
 }
