@@ -1,0 +1,70 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "0",
+   "3"
+  ],
+  "denominator": [
+   "-2",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -6,
+   9
+  ],
+  "viewport": [
+   -6,
+   9,
+   -5,
+   10
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "points": [
+    {
+     "id": "Z",
+     "x": "0",
+     "y": "0",
+     "coordinates": true
+    },
+    {
+     "id": "F",
+     "unnamed": true,
+     "curveX": "3"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cf",
+     "point": "F",
+     "text": "y=6/(x-2)+3",
+     "direction": "E",
+     "labelKind": "MATH"
+    }
+   ]
+  },
+  "hideLabels": [
+   "formula"
+  ],
+  "asymptoteLabelAt": "END",
+  "verticalAsymptoteLabelAt": "TOP_RIGHT"
+ },
+ "pointNames": {
+  "Z": "Z"
+ },
+ "caption": "x<0에서 6/(x-2)는 -3보다 크고 0보다 작으므로 y의 범위는 a-3<y<a이다. 제3사분면을 지나지 않으려면 a-3≥0이어야 하므로 a≥3이다. a=3이면 곡선이 원점을 지나며 제3사분면에 들어가지 않는다. 최솟값은 3이므로 답은 ④이다.",
+ "sourceConditions": [
+  "y=6/(x-2)+a, 경계 a=3"
+ ],
+ "newVisualInformation": [
+  "a=3일 때 곡선이 원점 (0,0)을 지나 제3사분면과 만나지 않음"
+ ]
+}

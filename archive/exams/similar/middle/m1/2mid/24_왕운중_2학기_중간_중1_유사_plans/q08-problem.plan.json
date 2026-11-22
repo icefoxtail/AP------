@@ -1,0 +1,192 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "두 직선 l, m과 한 직선 n이 만날 때 엇각 관계 다이어그램이다.",
+  "accessibilityDescription": "두 직선 l, m과 직선 n이 만나 이루는 엇각을 나타낸 그림.",
+  "sourceQuote": "다음 그림에서 두 직선 $l$, $m$이 서로 평행하도록 하는",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "L1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "L1",
+    "L2",
+    "M1",
+    "M2",
+    "N1",
+    "N2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sL",
+      "refs": [
+        "L1",
+        "L2"
+      ]
+    },
+    {
+      "id": "sM",
+      "refs": [
+        "M1",
+        "M2"
+      ]
+    },
+    {
+      "id": "sN",
+      "refs": [
+        "N1",
+        "N2"
+      ]
+    }
+  ],
+  "assetPath": "assets/images/24_왕운중_2학기_중간_중1_유사/q08.svg",
+  "hiddenPointNames": [
+    "L1",
+    "L2",
+    "M1",
+    "M2",
+    "N1",
+    "N2"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "el_L",
+        "ownerSegment": "sL",
+        "text": "l",
+        "labelKind": "TEXT"
+      },
+      {
+        "id": "el_M",
+        "ownerSegment": "sM",
+        "text": "m",
+        "labelKind": "TEXT"
+      }
+    ]
+  },
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/24_왕운중_2학기_중간_중1_유사/q08-problem-result.json",
+    "statePath": "archive/assets/images/24_왕운중_2학기_중간_중1_유사/q08-problem-state.json",
+    "svgPath": "archive/assets/images/24_왕운중_2학기_중간_중1_유사/q08-problem-solution.svg"
+  }
+}

@@ -12,7 +12,7 @@
 // 사용:
 //   node archive/tools/meta-foundation/build-text-binding-rebinds.mjs                 # 예행: 건수만 보고
 //   node archive/tools/meta-foundation/build-text-binding-rebinds.mjs --write         # 파일이 없을 때만 만든다
-//   node archive/tools/meta-foundation/build-text-binding-rebinds.mjs --check [--against origin/main] [--verify-history [--sample N]]
+//   node archive/tools/meta-foundation/build-text-binding-rebinds.mjs --check [--against origin/main [--merge-base]] [--verify-history [--sample N]]
 //   옵션: --root <repo>  --report-pending  --explain [N]
 //
 // 승인된 교정 재결속(revisions): 위 `entries`는 "발문·보기가 같다"만 담고 동결이다. 승인된 교정 커밋·PR이 발문·보기를 정식으로 고친 행은
@@ -21,6 +21,8 @@
 //   node archive/tools/meta-foundation/build-text-binding-rebinds.mjs --revisions <approved.tsv> [--write-revisions]
 //   approved.tsv(탭 구분, 머리글 없음): questionUid  edit(format|content|figure)  commits(쉼표, 교정 커밋 sha)  prs(쉼표, 선택)
 //   기록이 효력을 가지려면 옛 지문 fp == 행이 들고 있던 지문, text == 현재 발문·보기의 text-v1 이어야 한다(소비자가 확인).
+//   원문 복귀: 수정(revision)했던 발문·보기를 다시 등록 당시 지문으로 되돌린 문항은 edit=figure(옛 지문의 발문·보기와 같음, from == text)로 한 줄을 더 추가한다.
+//   같은 (uid, fp)는 마지막 항목만 효력이 있으므로 이 항목이 앞의 수정 항목을 대체한다. 장부의 마지막 효력 항목이 이미 현재 text이면 거절한다(ALREADY_CURRENT/ALREADY_RECORDED).
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -273,8 +275,11 @@ export function analyzeRevisions(root, approved, { existing } = {}) {
       const curText = textFingerprint(q);
       const fp = row.contentFingerprint;
       if (!curText || !HEX64.test(fp || "")) { rejected.push({ uid: a.uid, why: "NO_STEM_OR_FP" }); continue; }
-      if (fp === contentFingerprint(q)) { rejected.push({ uid: a.uid, why: "ALREADY_CURRENT" }); continue; }
-      if (latestText.get(a.uid + "|" + fp) === curText || batchSeen.has(a.uid + "|" + fp)) { rejected.push({ uid: a.uid, why: "ALREADY_RECORDED" }); continue; }
+      // 현재 지문이 행의 지문과 같아도, 장부의 마지막 효력 항목이 현재와 다른 text이면(수정했다가 원문으로 되돌린 경우) "복귀 항목"을 뒤에 추가한다.
+      // 그 항목 없이는 옛 revision이 마지막 항목으로 남아 검증이 실패하고 읽는 쪽도 결속을 잃는다. 마지막 효력 항목이 이미 현재 text이거나 장부에 항목이 없으면 그대로 거절한다.
+      const priorText = latestText.get(a.uid + "|" + fp);
+      if (fp === contentFingerprint(q) && (priorText === undefined || priorText === curText)) { rejected.push({ uid: a.uid, why: "ALREADY_CURRENT" }); continue; }
+      if (priorText === curText || batchSeen.has(a.uid + "|" + fp)) { rejected.push({ uid: a.uid, why: "ALREADY_RECORDED" }); continue; }
       versions ??= fileVersions(root, rel, { follow: false });
       let r = resolveAnchor(versions, row.sourceOrdinal, "B", fp, curText);
       if (r.status === "NO_HISTORY" && !followed) { followed = true; versions = fileVersions(root, rel, { follow: true }); r = resolveAnchor(versions, row.sourceOrdinal, "B", fp, curText); }
@@ -296,7 +301,7 @@ function writeRevisions(root, existing, added) {
 }
 
 // ---- 검증 ---------------------------------------------------------------------------------------------------------
-export function checkRebinds(root, { against, verifyHistory, sample } = {}) {
+export function checkRebinds(root, { against, mergeBase, verifyHistory, sample } = {}) {
   const errors = [];
   const doc = readExisting(root, REBINDS_PATH);
   if (!doc) return { errors: ["missing " + REBINDS_PATH], entries: 0 };
@@ -333,8 +338,15 @@ export function checkRebinds(root, { against, verifyHistory, sample } = {}) {
   }
   if (serialize(doc) !== fs.readFileSync(path.join(root, REBINDS_PATH), "utf8")) errors.push("file is not in canonical serialization");
   if (against) {
-    let base = null, baseResolves = true;
-    try { git(root, ["rev-parse", "--verify", "--quiet", against + "^{commit}"]); } catch { baseResolves = false; }
+    // mergeBase: 기준을 ref의 최신이 아니라 HEAD와 ref의 merge-base 시점 파일로 삼는다. 이유: ref가 이 PR 분기 이후 재결속 기록을 늘렸다고
+    // 그 전에 갈라진 PR이 "기존 항목이 다르다"로 빨개지면 안 된다. 이 PR이 고친 부분(기존 항목 수정·삭제·중간 삽입)만 아래 검사가 잡는다.
+    // merge-base를 못 구하면(얕은 체크아웃 등) 조용히 통과하지 않고 BASE_UNAVAILABLE로 표시한다. HEAD가 ref와 같으면(main) 자명하게 같다.
+    let mergeBaseFailed = false;
+    if (mergeBase) {
+      try { const found = git(root, ["merge-base", "HEAD", against]).trim(); if (/^[0-9a-f]{40}$/.test(found)) against = found; else mergeBaseFailed = true; } catch { mergeBaseFailed = true; }
+    }
+    let base = null, baseResolves = !mergeBaseFailed;
+    if (baseResolves) try { git(root, ["rev-parse", "--verify", "--quiet", against + "^{commit}"]); } catch { baseResolves = false; }
     // 기준 ref를 못 풀면(얕은 체크아웃 등) 통과로 치지 않고 따로 표시한다: 호출자는 이를 "건너뜀"과 "실패"로 구분해 보여 줘야 한다.
     if (!baseResolves) errors.push("BASE_UNAVAILABLE:" + against);
     else {
@@ -429,7 +441,7 @@ export async function main(argv) {
   const root = args.has("--root") ? path.resolve(args.get("--root")) : DEFAULT_ROOT;
   if (args.has("--check")) {
     const sample = args.has("--sample") ? Number(args.get("--sample")) : undefined;
-    const result = checkRebinds(root, { against: args.get("--against") || undefined, verifyHistory: args.has("--verify-history"), sample });
+    const result = checkRebinds(root, { against: args.get("--against") || undefined, mergeBase: args.has("--merge-base"), verifyHistory: args.has("--verify-history"), sample });
     console.log(JSON.stringify({ check: result.errors.length ? "FAIL" : "PASS", entries: result.entries, revisions: result.revisions, verifiedAgainstHistory: result.verified, supersededRevisions: result.superseded, errors: result.errors.slice(0, 20) }, null, 2));
     process.exitCode = result.errors.length ? 1 : 0;
     return;

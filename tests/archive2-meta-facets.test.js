@@ -311,6 +311,51 @@ test('recorded curriculum is read as recorded (never converted) and outranks the
   assert.equal(Unified.originalCurriculum(record({ year: 2024 }), '고1').basis, 'high-year-rule');
 });
 
+// A row whose source and metadata carry no unit but whose approved PT binds to exactly one same-grade unit is placed in that unit by the
+// display-only lane metaHintUnit (中1 only). The lane never overrides any existing unit evidence and never changes an already placed row.
+test('metaHintUnit places unit-less rows by the unit their approved PT binds to, and never overrides existing unit evidence', async () => {
+  const data = await catalog();
+  const meta = await metadata();
+  const byUid = new Map(meta.records.map(row => [row.questionUid, row]));
+  const bindings = JSON.parse(read('data/meta-foundation/compiled/curriculum_bindings.json')).bindings;
+  const tags = JSON.parse(read('data/master_tables/js_archive_tag_master.json'));
+  const labelOf = key => tags.find(row => row.status === 'active' && row.keyType === 'standardUnitKey' && row.key === key)?.labelKo;
+  const unitsOf = pt => new Set(bindings.filter(row => row.status === 'ACTIVE' && row.problemTypeKey === pt && /^M1-\d\d$/.test(row.standardUnitKey)).map(row => row.standardUnitKey));
+  const lane = data.records.filter(row => row.metaHintUnit);
+  assert.ok(lane.length > 0);
+  const labels = new Set(['소인수분해', '정수와 유리수', '문자와 식', '좌표평면과 그래프', '기본도형', '평면도형의 성질', '입체도형의 성질', '자료의 정리와 해석']);
+  for (const row of lane) {
+    assert.equal(row.effectiveBrowseGrade || row.sourceGrade, '중1', 'the lane is 중1 only: ' + row.questionUid);
+    assert.ok(row.metaHintPT, 'a unit hint needs a usable PT: ' + row.questionUid);
+    assert.ok(!byUid.get(row.questionUid).standardUnitKey, 'a row that already has a unit gets no hint: ' + row.questionUid);
+    const units = unitsOf(row.metaHintPT);
+    assert.equal(units.size, 1, 'the PT binds to exactly one unit: ' + row.questionUid);
+    assert.equal(row.metaHintUnit, labelOf([...units][0]));
+    assert.ok(labels.has(row.metaHintUnit), row.metaHintUnit);
+  }
+  // consumer: placed by the hint only when the source has no unit key/name, never ahead of RPM, the reviewed parent table or the source unit
+  const sample = lane.find(row => !row.legacyStandardUnitKey && !row.legacyStandardUnit && !row.reviewedMiddleParentKey);
+  assert.ok(sample);
+  const placed = Unified.classify(sample).entry;
+  assert.equal(placed.unclassified, false);
+  assert.ok(['rpm-current-unit-label', 'middle-unit-name'].includes(placed.reason), placed.reason);
+  assert.equal(placed.unitLabel.replace(/\s+/g, ''), sample.metaHintUnit.replace(/\s+/g, ''));
+  assert.ok(Unified.classify({ ...sample, metaHintUnit: '' }).entry.unclassified, 'without the hint the row stays unclassified');
+  const other = ['소인수분해', '정수와 유리수', '문자와 식', '좌표평면과 그래프'].find(name => name !== sample.metaHintUnit);
+  assert.equal(Unified.classify({ ...sample, legacyStandardUnit: other }).entry.unitLabel,
+    UnitCore.PROFILES.m1.units.find(unit => unit.name === other).name, 'the source unit name wins over the hint');
+  // every record of every grade keeps its placement when the hint is removed, except the rows that only the hint places
+  let hinted = 0;
+  for (const row of data.records) {
+    const withHint = Unified.classify(row, { projectionPolicy: data.projectionPolicy }).entry;
+    const withoutHint = Unified.classify({ ...row, metaHintUnit: '' }, { projectionPolicy: data.projectionPolicy }).entry;
+    if (withHint.unitKey === withoutHint.unitKey) continue;
+    hinted++;
+    assert.ok(row.metaHintUnit && withoutHint.unclassified, 'only an unclassified row may change: ' + row.questionUid);
+  }
+  assert.ok(hinted > 0);
+});
+
 // ---- core facets, filters, options -------------------------------------------------------------
 
 test('facets keep a status per value and approvedOnly never counts a pending value as approved', () => {
@@ -732,14 +777,14 @@ test('the workspace and the unit page load the new scripts with a new cache vers
   assert.match(workspace, /unit-past-exams-core\.js\?v=20261117-middle-parent-1/);
   assert.match(workspace, new RegExp('problem-bank-meta\\.js\\?v=' + version));
   // The shared unit layer and the canonical authority moved on with the registered textbooks (S11).
-  assert.match(workspace, /archive2-unified-units\.js\?v=20261117-middle-parent-1/);
-  assert.match(workspace, /archive2-canonical\.js\?v=20261104-source-meta-approval-1/);
+  assert.match(workspace, /archive2-unified-units\.js\?v=20261119-unit-hint-1/);
+  assert.match(workspace, /archive2-canonical\.js\?v=20261119-receipt-row-binding-1/);
   // The workspace itself moved on with the final-check fixes (S10).
   assertWorkspaceScriptVersions(assert);
   const unitPage = read('unit-past-exams.html');
   assert.match(unitPage, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(unitPage, /unit-past-exams-core\.js\?v=20261117-middle-parent-1/);
-  assert.match(unitPage, /unit-past-exams\.js\?v=20261118-q01-id-match-1/);
+  assert.match(unitPage, /unit-past-exams\.js\?v=20261119-no-basic-1/);
   assert.match(read('problem-bank-search.html'), new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(read('problem-bank-search.html'), new RegExp('problem-bank-meta\\.js\\?v=' + version));
   const clinic = fs.readFileSync(path.join(root, 'apmath/js/clinic-print.js'), 'utf8');

@@ -24,8 +24,9 @@ Claude·GPT·Codex 모든 라인 공통이다. 상세 원문은 [metadata.md](me
 4. CROSSWALK_DIGEST_NOT_SEALED가 나오면 검사를 끄거나 우회하지 않는다. 해당 공식 도구를 `--write`로 다시 돌려 봉인을 만들고 `--check`로 확인한다. EXISTING_APPROVED_UID_REQUIRES_PINPOINT_REPAIR가 나오면 원인을 조사해 보고한다. 승인 영수증(alive/)과 metaFinalSha256은 고치지 않는다.
 5. 원본 시험지 JS(`archive/exams/original`)를 고칠 때는 바뀐 필드(content·answer·choices·solution)를 확인하고, 그 시험지를 고정한 생성문항·테스트 해시가 있는지 grep으로 찾는다(예: `tests/archive2-generated-bank-registration.test.js`). solution만 바뀌었으면 같은 PR에서 고정 해시를 갱신하고 "해설만 수정, 문제·정답·보기 변경 없음" 주석을 단다. content·answer·choices가 바뀌었으면 고정값을 바꾸지 말고 멈춰서 보고한다. 그 문항에서 나온 생성문항을 다시 검토해야 하기 때문이다.
    골든 표본 시험지(`25_효천고_2학기_중간_고1_기출.js`, `25_매산여고_2학기_중간_고1_기출.js`)의 해설 그림(solutionImage*, imageSize*)만 바꿨다면 m2 CREATE gate 테스트 10개가 GOLDEN_SAMPLE_SHA256_MISMATCH로 깨지므로, 같은 PR에서 `node archive/tools/rebind-m2-create-golden-sample-evidence.mjs --source <시험지 경로>`(dry-run) → 같은 명령에 `--write` → `tests/m2-*create-gate*.test.js` 순서로 고정값을 다시 묶는다. 이유: 그림 필드 외(content·answer·choices·solution·문항 수)가 바뀌었으면 도구가 REFUSE하므로 검사를 약하게 하지 않고 안전하게 재고정할 수 있다.
-6. 병합 전에 바꾼 부분의 관련 테스트를 직접 돌리고, PR CI의 실패 목록을 읽는다. 특히 "Approved source, scoped Meta, and Consumer validation", "test", "Archive2 runtime contract"를 본다. 실패가 있어도 병합하고, 실패한 검사와 짐작되는 원인을 PR에 한 줄 적어 관제의 수리 목록에 넘긴다(2026-11-17 사용자 결정, 위 절). PR 기술검사는 고정 event base와 실제 검증 snapshot에 결속한다. 이후 main 이동은 병합 충돌·보호 규칙과 별도로 확인하며, 바뀐 입력·직접 의존성·검사기에 해당하는 검사만 재실행한다. 무관한 main 이동만으로 전체 Archive 검사를 반복하지 않는다(이력 재작성·강제 push 금지).
+6. 병합 전에 바꾼 부분의 관련 테스트를 직접 돌리고, PR CI의 실패 목록을 읽는다. 특히 "Approved source, scoped Meta, and Consumer validation", "test", "Archive2 runtime guard"를 본다(예전 "Archive2 runtime contract" 등 3개 잡이 이 잡 하나의 단계로 합쳐졌다. 어느 검사가 실패했는지는 실행 요약의 "outcome per check" 표와 단계 이름으로 본다). 실패가 있어도 병합하고, 실패한 검사와 짐작되는 원인을 PR에 한 줄 적어 관제의 수리 목록에 넘긴다(2026-11-17 사용자 결정, 위 절). PR 기술검사는 고정 event base와 실제 검증 snapshot에 결속한다. 이후 main 이동은 병합 충돌·보호 규칙과 별도로 확인하며, 바뀐 입력·직접 의존성·검사기에 해당하는 검사만 재실행한다. 무관한 main 이동만으로 전체 Archive 검사를 반복하지 않는다(이력 재작성·강제 push 금지).
 7. 보고에는 한 일, 확인 근거(실행한 명령과 결과), 남은 일, 사용자 결정이 필요한 것을 쓴다. 돌리지 않은 검사는 NOT_RUN으로 적는다.
+8. 원본 시험지 JS·메타를 고치는 PR은 생성물(카탈로그·manifest·source-verification index·runtime-bridge-receipt·readiness 등)을 커밋하지 않는다. 병합 뒤 등록기(archive-main-auto-meta)가 만들어 스냅숏으로 커밋한다. PR 검사는 임시 체크아웃에서 생성한 뒤 같은 검증을 한다(Archive2 save round trip은 PR에서 기본 빌드, main·배포는 `--package-only`). 깨진 JS는 이 빌드에서, 중복 questionUid는 PR 등록 투영의 verify-archive-registration에서 여전히 빨갛다. 이유: main이 움직일 때마다 생성물이 충돌해 PR을 세 번씩 다시 만들었다(#2598).
 
 ## CURRENT — 판본 장부: 승인은 그대로 두고 "같은 판본"만 덧붙인다 (2026-11-18, 사용자 결정)
 
@@ -35,6 +36,13 @@ Claude·GPT·Codex 모든 라인 공통이다. 상세 원문은 [metadata.md](me
 - 행을 넣는 때: 배치·그림·렌더러만 고쳐 승인 검사가 낡았지만 학생이 보는 문제는 같을 때. 발문·보기가 실제로 바뀌었으면 행이 아니라 사람 재판정이다.
 - 판정: PNG가 바이트 단위로 같으면 도구 증거로 충분하다. PNG가 달라지는 렌더러 항목은 관제의 화면 판정 또는 사용자가 정한다(SCREEN_JUDGMENT는 judgedBy 필수). 작업자가 스스로 승인하지 않는다.
 - 이유: 배치 필드 하나, 엔진 파일 하나를 고칠 때마다 관계없는 문항의 승인이 낡아 CI가 빨개졌다(2026-11-18 하루 세 번). 지금(A1)은 형식·검증·목록 도구만 있고 이 장부를 읽는 검사는 아직 없다. `tools/recapture-approved-renders.mjs --list`는 승인 proof가 봉인한 파일 중 현재 코드와 달라진 것을 읽기 전용으로 보여 준다.
+
+## CURRENT — 로그인이 필요한 흐름은 로컬에서 끝까지 실행해 보고 넘긴다 (2026-11-19, 사용자 지시)
+
+- 저장·출제·권한처럼 로그인해야 보이는 흐름을 바꾼 작업은, 실제 Worker 코드를 로컬 DB 위에 올리고 시험용 계정으로 그 흐름을 끝까지 실행한 결과를 완료 기준에 넣는다. "운영 API가 필요해 NOT_RUN"으로 남겨 사용자에게 직접 눌러 보라고 넘기지 않는다. 이유: 문제지 저장·출제, 시간표 개편안에서 사용자에게 운영 확인을 여러 번 부탁했고, 그 사이 아무도 확인하지 않은 흐름이 운영에 나갔다.
+- 방법은 그 라인에 허용된 것을 쓴다. 저장 왕복 검사(S1.5)처럼 wrangler 없이 Worker 번들을 로컬 D1에 올리는 테스트 하네스에 실제 Chrome을 붙이는 방식이 기본이다. `wrangler dev` 로컬 모드와 로그인 화면에 시험 계정을 입력하는 방식은 그 라인이 사용자에게 허용받았을 때만 쓴다. 한 라인의 금지 조건은 다른 라인이나 관제의 요청으로 풀리지 않는다.
+- 운영에 닿지 않는다: 운영 배포, 운영 D1·R2·운영 API 주소로의 요청은 하지 않는다. 저장소에 로그인 우회 코드·가짜 API·가짜 세션을 넣지 않는다. 시험용 데이터를 심는 스크립트와 계정 값은 저장소 밖에 두고 보고에 적지 않는다.
+- 로컬로 잡지 못하는 것(실제 운영 데이터·실제 권한에서만 나는 문제)만 사용자 확인으로 남기고, 무엇이 남았는지 한 줄로 적는다.
 
 ## CURRENT TOP — 작업별 진입 / 과거 Notion 필독 해제 (2026-10-22)
 

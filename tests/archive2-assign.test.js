@@ -445,6 +445,14 @@ test("반 목록: 401은 로그인 안내, 담당 반 없음, 불러오기 실�
   assert.match(Assign.renderBody(built.model), /data-assign-action="reload"/);
 });
 
+test("반 목록: 403은 로그인 안내가 아니라 권한 없음 문구(다시 로그인해도 풀리지 않는다)", async () => {
+  const built = await build({ api: makeApi({ classesError: httpError(403, { error: "Forbidden" }) }) });
+  assert.equal(built.model.state.phase, "error");
+  const body = Assign.renderBody(built.model);
+  assert.match(body, /권한이 없습니다/);
+  assert.doesNotMatch(body, /선생님 로그인/);
+});
+
 test("같은 날 이미 낸 반은 기본으로 체크되지 않고, 문제지가 여러 권이면 그 건만 빠진다", async () => {
   const history = { state: "ready", byPaper: new Map([
     [P1, [{ id: "x1", classId: "c1", className: "고1 A반", date: "2026-11-10", cancelled: false }, { id: "x2", classId: "c2", className: "고1 B반", date: "2026-11-07", cancelled: false }, { id: "x3", classId: "c3", className: "고2 A반", date: "2026-11-10", cancelled: true }]],
@@ -959,7 +967,7 @@ test("배포 꾸러미와 workspace.html에 새 파일이 같은 버전으로 �
   assert.ok(manifest.archiveRootFiles.includes("archive2-assign.css"));
   const html = read("archive", "workspace.html");
   assert.match(html, /archive2-assign\.css\?v=20261116-polish-1/);
-  assert.match(html, /archive2-assign\.js\?v=20261118-error-detail-1/);
+  assert.match(html, /archive2-assign\.js\?v=20261119-small-fixes-1/);
   assert.ok(html.indexOf("archive2-assign.js") < html.indexOf("archive2-library.js"), "패널은 보관함보다 먼저 올라온다");
   for (const file of ["archive2-assign.js", "archive2-assign.css"]) assert.ok(fs.existsSync(path.join(root, "archive", file)));
   const css = read("archive", "archive2-assign.css");

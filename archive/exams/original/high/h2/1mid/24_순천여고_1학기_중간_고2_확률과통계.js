@@ -168,7 +168,11 @@ window.questionBank = [
       "sourceOrdinal": 2,
       "sourcePage": 1,
       "scopedOriginalReview": null
-    }
+    },
+    "solutionImage": "assets/images/24_순천여고_1학기_중간_고2_확률과통계/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 다섯 자리가 오각형 꼭짓점으로 놓인 원탁 그림이며 이웃한 두 자리 A, B와 나머지 세 자리 C, D, E가 있다.",
+    "solutionImageCaption": "원탁의 5자리를 오각형 꼭짓점으로 나타낸 한 배치의 예이다. A와 B는 이웃해 앉은 두 학생이고 C, D, E는 함께 뽑힌 세 학생의 자리이다. A, B와 함께 앉을 3명을 뽑는 방법은 5C3=10가지이다. A, B를 한 묶음으로 보면 4개의 단위를 원탁에 앉히므로 (4−1)!=3!가지이고 묶음 안 순서는 2가지이다. 따라서 10×3!×2=120이므로 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -338,7 +342,11 @@ window.questionBank = [
       "sourceOrdinal": 4,
       "sourcePage": 1,
       "scopedOriginalReview": null
-    }
+    },
+    "solutionImage": "assets/images/24_순천여고_1학기_중간_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 줄로 이어진 일곱 개의 점이 번갈아 놓여 있고 홀수 번째 네 점이 빈자리, 짝수 번째 세 점이 문자의 자리인 그림이다.",
+    "solutionImageCaption": "b, b, c를 먼저 일렬로 나열하면 3!/2!=3가지이고, 이 세 문자는 B, D, F 자리이다. 양 끝과 문자 사이의 A, C, E, G 4곳이 a를 놓을 수 있는 자리이다. a 세 개가 이웃하지 않으려면 4곳 중 3곳에 한 개씩 놓으므로 4C3=4가지이다. 따라서 3×4=12이므로 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -991,7 +999,7 @@ window.questionBank = [
     "sourcePdfSha256": "BD5002EC7ABE21FEEDCEC9D05E25152ABA915F74DDA466C5A06686DD192013AD",
     "sourceIntakeEvidencePath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/intake-repair/source-intake-repair.evidence.json",
     "sourceIntakeEvidenceSha256": "4D536AE905F1AFDFF2DFB278CF99578F356D86841323E1B290889A18C3859EE3",
-    "solutionImage": "assets/images/24_순천여고_1학기_중간_고2_확률과통계/q12-solution.svg",
+    "solutionImage": "assets/images/24_순천여고_1학기_중간_고2_확률과통계/q12-solution-v2.svg",
     "rpmL1": "경우의 수",
     "rpmL2": "순열과 조합",
     "rpmL3": "순열",
@@ -1023,7 +1031,10 @@ window.questionBank = [
       "sourceOrdinal": 12,
       "sourcePage": 2,
       "scopedOriginalReview": null
-    }
+    },
+    "solutionImageAlt": "해설 그림: 여섯 자리가 육각형 꼭짓점으로 놓인 그림이며 이웃한 세 자리 D, F, E와 나머지 세 자리 A, B, C가 있다.",
+    "solutionImageCaption": "원형으로 놓인 6개의 의자를 육각형 꼭짓점으로 나타낸 한 배열의 예이다. 점 A부터 F는 의자 1부터 6이고, 4와 6과 5가 이웃한 덩어리를 D, F, E로 나타냈다. 전체 원형 배열은 5!=120가지이다. 합이 10 이상인 이웃 쌍은 4와 6 또는 5와 6이고 각각 한 묶음으로 보면 2×4!=48가지이다. 두 쌍이 모두 이웃하면 4, 6, 5가 한 덩어리가 되어 2×3!=12가지이다. 따라서 48+48−12=84이므로 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -1950,7 +1961,7 @@ window.questionBank = [
     "sourcePdfSha256": "BD5002EC7ABE21FEEDCEC9D05E25152ABA915F74DDA466C5A06686DD192013AD",
     "sourceIntakeEvidencePath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/intake-repair/source-intake-repair.evidence.json",
     "sourceIntakeEvidenceSha256": "4D536AE905F1AFDFF2DFB278CF99578F356D86841323E1B290889A18C3859EE3",
-    "solutionImage": "assets/images/24_순천여고_1학기_중간_고2_확률과통계/q23-solution.svg",
+    "solutionImage": "assets/images/24_순천여고_1학기_중간_고2_확률과통계/q23-solution-v2.svg",
     "rpmL1": "경우의 수",
     "rpmL2": "순열과 조합",
     "rpmL3": "순열",
@@ -1982,6 +1993,9 @@ window.questionBank = [
       "sourceOrdinal": 23,
       "sourcePage": 4,
       "scopedOriginalReview": null
-    }
+    },
+    "solutionImageAlt": "해설 그림: 정삼각형의 각 변 위에 세 자리씩, 모두 아홉 자리가 놓인 탁자 그림이다.",
+    "solutionImageCaption": "정삼각형 탁자의 세 변에 자리가 3개씩 있어 모두 9자리이다. 그림의 점 A부터 I가 9자리이고 한 변에 세 자리씩 놓여 있다. 남학생 5명이 앉을 자리를 고르는 방법은 9C5=126가지이다. 한 변이 비면 나머지 6자리에서 5자리를 고르므로 변마다 6가지이고 두 변이 동시에 비는 경우는 없으므로 126−3×6=108가지이다. 사람을 배치하는 방법은 5!×4!가지이고 삼각형의 회전 3가지를 같게 보아 3으로 나누면 108×5!×4!/3=103680=144×6!이다. 따라서 n=144이다.",
+    "solutionImageSize": "full"
   }
 ];

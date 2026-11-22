@@ -1,0 +1,103 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -3,
+   7,
+   -1,
+   12
+  ],
+  "axisScale": {
+   "x": 1,
+   "y": "1/2"
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "Y_OF_X",
+    "coefficients": [
+     "5",
+     "-4",
+     "1"
+    ],
+    "domain": [
+     "-1",
+     "6"
+    ],
+    "color": "BLUE",
+    "emphasis": [
+     {
+      "from": "5",
+      "to": "6",
+      "color": "WARM",
+      "fromState": "CLOSED"
+     }
+    ],
+    "hideLabel": true
+   },
+   {
+    "id": "l",
+    "kind": "LINE",
+    "coefficients": [
+     "0",
+     "2"
+    ],
+    "domain": [
+     "-1",
+     "7"
+    ],
+    "style": "DASHED",
+    "color": "GREEN",
+    "label": "y=2x"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "V",
+     "x": "2",
+     "y": "1",
+     "coordinates": true
+    },
+    {
+     "id": "K",
+     "x": "5",
+     "y": "10",
+     "coordinates": true
+    },
+    {
+     "id": "F0",
+     "x": "0",
+     "y": "5",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cf",
+     "point": "F0",
+     "text": "y=x^2-4x+5",
+     "labelKind": "MATH",
+     "direction": "NW"
+    }
+   ]
+  },
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  }
+ },
+ "caption": "f(x)=(x−2)²+1은 꼭짓점 V(2,1)의 포물선이고 x≥2에서 증가한다. 일대일대응이려면 정의역 x≥k가 증가하는 부분에만 있어야 하므로 k≥2이고, 치역 [f(k), ∞)가 공역 [2k, ∞)와 같아야 하므로 f(k)=2k이다. 초록 점선 y=2x와의 교점은 x=1, 5인데 k≥2인 것은 k=5이고 점 K(5,10)이다(주황 부분이 정의역 x≥5). 따라서 k=5이다.",
+ "sourceConditions": [
+  {
+   "id": "method",
+   "condition": "f(x)=x²−4x+5와 직선 y=2x의 교점으로 f(k)=2k를 만족하는 k=5를 보인다.",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "꼭짓점 V(2,1)과 정의역 x≥5인 부분을 강조하고 직선 y=2x와의 교점 K(5,10)을 보인다."
+ ],
+ "accessibilityDescription": "아래로 볼록한 포물선과 점선 직선이 그려져 있고 포물선의 꼭짓점 V와 두 그래프의 교점 K가 표시되어 있으며 K 오른쪽 포물선이 강조되어 있다."
+}

@@ -8,6 +8,7 @@ const flag=n=>flags.includes(n),opt=n=>{const i=flags.indexOf(n);return i>=0?fla
 const apply=flag('--apply'),limit=Number(opt('--exams')||1e9),only=opt('--only');
 const rows=JSON.parse(fs.readFileSync(rowsPath,'utf8'));
 const NEW_KEYS=['solutionImage','solutionImageAlt','solutionImageCaption','solutionImageSize'];
+const SCALE_KEY='solutionImageScale';// written only when the bound render carries one (the figure needed a larger A4 display than the default 60% of the column)
 
 // ---- a tiny scanner: positions of every object's braces, skipping strings --------------------------------------------------
 function scan(text){
@@ -77,7 +78,9 @@ for(const [rel,items] of exams){
     if(fs.existsSync(path.join(root,'archive',assetRel))){res.items.push({ord:it.ord,skip:'ASSET_ALREADY_EXISTS'});continue;}
     const pairs=scan(patched),obj=findQuestionObject(patched,pairs,it.ord);
     if(!obj){res.items.push({ord:it.ord,skip:'QUESTION_OBJECT_NOT_LOCATED'});continue;}
-    patched=insertFields(patched,obj,{solutionImage:assetRel,solutionImageAlt:caption,solutionImageCaption:caption,solutionImageSize:size});
+    const scale=st.capture?.solutionImageScale;
+    if(scale!==undefined&&!(typeof scale==='number'&&scale>=30&&scale<=100)){res.items.push({ord:it.ord,skip:'BAD_SOLUTION_IMAGE_SCALE'});continue;}
+    patched=insertFields(patched,obj,{solutionImage:assetRel,solutionImageAlt:caption,solutionImageCaption:caption,solutionImageSize:size,...(scale!==undefined?{[SCALE_KEY]:scale}:{})});
     if(process.env.DEBUG_EACH){try{bankOf(patched);}catch(e){const k=patched.indexOf('/q'+it.ord+'-solution.svg');console.log('BREAKS at q'+it.ord,JSON.stringify(patched.slice(Math.max(0,k-300),k+60)));}}assets.push({from:it.svg,to:path.join(root,'archive',assetRel)});res.items.push({ord:it.ord,ok:true,size});
   }
   if(assets.length){
@@ -85,7 +88,7 @@ for(const [rel,items] of exams){
     let after;try{after=bankOf(patched);}catch(e){res.status='PATCH_UNPARSEABLE:'+String(e.message).slice(0,80);{const k=patched.indexOf('"solutionImage"');if(process.env.DEBUG_SNIP)console.log(JSON.stringify(patched.slice(Math.max(0,k-120),k+260)));}report.push(res);continue;}
     const chosen=new Set(res.items.filter(i=>i.ok).map(i=>i.ord));let bad=null;
     if(after.length!==before.length)bad='LENGTH';
-    else before.forEach((q,i)=>{const a={...after[i]};if(chosen.has(q.id))for(const k of NEW_KEYS)delete a[k];if(JSON.stringify(a)!==JSON.stringify(q)){const ks=[...new Set([...Object.keys(a),...Object.keys(q)])].filter(k=>JSON.stringify(a[k])!==JSON.stringify(q[k]));bad=bad||('FIELDS_CHANGED_Q'+q.id+':'+ks.join(','));}});
+    else before.forEach((q,i)=>{const a={...after[i]};if(chosen.has(q.id))for(const k of [...NEW_KEYS,SCALE_KEY])delete a[k];if(JSON.stringify(a)!==JSON.stringify(q)){const ks=[...new Set([...Object.keys(a),...Object.keys(q)])].filter(k=>JSON.stringify(a[k])!==JSON.stringify(q[k]));bad=bad||('FIELDS_CHANGED_Q'+q.id+':'+ks.join(','));}});
     if(bad){res.status='VERIFY_FAIL:'+bad;report.push(res);continue;}
     if(apply){fs.writeFileSync(file,patched);for(const a of assets){fs.mkdirSync(path.dirname(a.to),{recursive:true});fs.copyFileSync(a.from,a.to);}}
   }else res.status='NOTHING';

@@ -505,7 +505,11 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "subUnit": "함수의 극한",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_강남여고_2학기_중간_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 정수마다 한 칸씩 올라가는 계단 모양의 그래프로, 각 수평선의 왼쪽 끝은 닫힌 점이고 오른쪽 끝은 열린 점이다.",
+    "solutionImageCaption": "f(x)=n (n≤x<n+1)의 그래프는 정수마다 한 칸씩 오르는 계단이고 각 칸의 왼쪽 끝은 닫힌 점, 오른쪽 끝은 열린 점이다. x→-1+이면 -1<x<0 칸의 높이 -1로 가므로 극한은 -1이고, x→3-이면 2≤x<3 칸의 높이 2로 가므로 극한은 2이다. 함숫값 f(-1)=-1, f(3)=3과 구별한다. 따라서 합은 1이고 답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -1152,7 +1156,11 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "subUnit": "함수의 연속",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_강남여고_2학기_중간_고2_수학II/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽의 오르는 직선이 x=-1에서 완만하게 내려가는 가운데 직선으로 이어지고, x=1에서 가운데 직선이 닫힌 점으로 끝난 뒤 위쪽 열린 점에서 내려가는 직선이 시작되는 그래프이다.",
+    "solutionImageCaption": "m=-1/2일 때의 y=f(x)이다. |x|>1에서 2-|x|이고 |x|≤1에서 -(x-1)/2이다. x=-1에서는 두 조각이 높이 1에서 이어지고, x=1에서는 닫힌 점 (1,0)과 열린 점 (1,1)로 끊어진다. 원 x²+y²=k는 k=1/5에서 직선 부분에 접하고(원점에서 직선까지 거리 1/√5), k=1에서 점 (1,0)과 (0,1) 근처에서 교점 수가 바뀌며, k=2에서 바깥 조각에 새 교점이 생긴다. g(k)h(k)가 연속이려면 h(1/5)=h(1)=h(2)=0이므로 h(k)=(k-1/5)(k-1)(k-2)이고 h(6)=116이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 26,
@@ -1269,7 +1277,11 @@ window.questionBank = [
     "standardUnitOrder": 6,
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_강남여고_2학기_중간_고2_수학II/q28-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 끝 점 A에서 내려가 꼭짓점 V에서 가장 낮고 오른쪽 끝 점 B로 올라가는 포물선과, A와 B를 잇는 수평선, V에서 접하는 수평선이 그려진 그래프이다.",
+    "solutionImageCaption": "롤의 정리가 성립하려면 양 끝 높이가 같아야 하므로 f(-1)=1+a와 f(3)=9-3a가 같아 a=2이다. 그림은 f(x)=x²-2x이고 양 끝점 A(-1,3), B(3,3)의 높이가 같아 AB가 수평이다. 구간 안의 꼭짓점 V(1,-1)에서 접선 t가 수평이므로 c=1이다. 따라서 a+c=3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 29,

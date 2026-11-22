@@ -20,6 +20,7 @@
 - `build-candidates` 는 이미 있는 `judgment/qNN.json` 을 덮어쓰지 않는다. **이미 채워진 판정 파일이 있으면 내용을 믿지 말고** `--force` 로 빈 틀을 다시 만들어 처음부터 쓴다. 틀의 `itemFingerprint` 가 현재 문항과 다르거나 예시 글이 그대로 남아 있으면 `STALE_OR_EXAMPLE` 로 걸린다.
 - 진행 단계는 `C:/AI_WS/tmp/similar-judgment/STATUS.tsv` 에 쌓인다: `CONVERTED → JUDGED(검사 통과) → REVIEWED(검수 완료) → READY(운영 병합 가능)` 또는 `HOLD`.
 - **1단계 변환이 실패하면** 저장소 도구·원천 드라이브 파일은 고치지 않는다. 작업폴더에 내려받은 마크다운 사본에서 **형식만** 기계적으로 고쳐 다시 돌린다: 코드 블록 줄 앞뒤의 여분 역슬래시, 깨진 코드 블록 경계, 정답 칸의 표기(`②,④` → `②, ④`), 문항 번호 줄(`## Q07`) 같은 것. 무엇을 고쳤는지 작업폴더 `SOURCE_FIXES.md` 에 한 줄씩 적는다. 발문·보기·정답 번호·해설의 수학 내용을 바꿔야만 통과한다면 고치지 말고 그 시험지를 건너뛰고 보고한다.
+- **보기·정답 번호 규칙:** 수로 된 보기는 크기순, 정답 번호는 시험지 안에서 규칙 없이 흩어지게(되풀이·쏠림 금지)이다. 규칙·결함 기준·절차는 [docs/agents/similar-choices.md](../../../docs/agents/similar-choices.md)가 정본이다. `check-judgment` 가 어긋난 수 보기(`CHOICE_ORDER`)·같은 값 보기(`CHOICE_DUPLICATE`)·정답 번호 분포(`ANSWER_DISTRIBUTION`)를 거절하고 생김새 누설은 경고로 띄운다. 이 검사는 새 반입에만 적용된다. 이유(2026-11-19 학생 신고): 혼자 어긋난 보기와 쏠린 정답 번호로 학생이 답을 맞혔다.
 - 수학 내용(발문·보기·정답·해설)은 고치지 않는다. 틀렸다고 생각하면 `answerMatches:false` 와 `answerIssue` 로 보고하고 시험지는 보류된다.
 
 ## 1. 작성자용
@@ -166,5 +167,7 @@
 | `ALL_SAME` | 한 시험지 전 문항이 같은 RPM 과 난이도 |
 | `CTRL_CHAR` | 탭·폼피드 등 깨진 글자 |
 | `REVIEW_ANSWER_MISMATCH` / `REVIEW_FIX_NOT_APPLIED` | 검수 기록이 서로 맞지 않음 |
+| `CHOICE_ORDER` / `CHOICE_DUPLICATE` | 수 보기가 크기순이 아님(혼자 어긋난 보기가 정답이거나 순서 어긋남) / 같은 값의 보기. 정본: docs/agents/similar-choices.md |
+| `ANSWER_DISTRIBUTION` (시험지) | 정답 번호가 쏠리거나 되풀이됨(객관식 10문항 이상). 정본: docs/agents/similar-choices.md |
 | `CANDIDATES_STALE` | 후보를 만든 뒤 시험지 JS가 바뀜 |
 | `STALE_OR_EXAMPLE` | 판정 틀이 이 문항의 것이 아니거나(문항 지문 불일치) 가이드 예시 글이 그대로 남음 |

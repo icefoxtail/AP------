@@ -1,0 +1,92 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -19.8,
+   25.8,
+   -21.8,
+   23.8
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "RATIONAL",
+    "numerator": [
+     "7",
+     "1"
+    ],
+    "denominator": [
+     "-3",
+     "1"
+    ],
+    "color": "BLUE",
+    "hideLabel": true
+   },
+   {
+    "id": "l1",
+    "kind": "LINE",
+    "coefficients": [
+     "4",
+     "-1"
+    ],
+    "domain": [
+     "-5",
+     "11"
+    ],
+    "color": "GREEN",
+    "label": "y=-x+4",
+    "style": "DASHED"
+   },
+   {
+    "id": "l2",
+    "kind": "LINE",
+    "coefficients": [
+     "-2",
+     "1"
+    ],
+    "domain": [
+     "-5",
+     "11"
+    ],
+    "color": "WARM",
+    "label": "y=x-2",
+    "style": "DASHED"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "C",
+     "x": "3",
+     "y": "1",
+     "coordinates": true
+    },
+    {
+     "id": "F",
+     "x": "7",
+     "y": "7/2",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cf",
+     "point": "F",
+     "text": "y=(x+7)/(x-3)",
+     "labelKind": "MATH",
+     "direction": "N"
+    }
+   ]
+  }
+ },
+ "caption": "두 대칭축 y=x−2와 y=−x+4의 교점 (3, 1)은 점근선의 교점과 같다. 유리함수를 y=a+(7−ab)/(x+b)로 바꾸면 점근선은 x=−b, y=a이므로 a=1, b=−3이다. 따라서 a−b=4이고 답은 ⑤이다.",
+ "newVisualInformation": [
+  "두 대칭축 y=x−2, y=−x+4의 교점 (3,1)이 점근선의 교점인 유리함수 그래프"
+ ],
+ "accessibilityDescription": "점근선 x=3, y=1을 가지는 파란색 유리함수 그래프이고 두 점근선의 교점을 기울기 −1, 1인 두 점선이 지난다."
+}

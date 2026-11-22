@@ -1,0 +1,110 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "25",
+   "80"
+  ],
+  "denominator": [
+   "1/2",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -1,
+   4
+  ],
+  "viewport": [
+   -1,
+   4,
+   0,
+   90
+  ],
+  "hideLabels": [
+   "formula",
+   "asymptotes"
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "x": "1/2",
+     "y": "65",
+     "coordinates": true,
+     "labelDirection": "SE"
+    },
+    {
+     "id": "B",
+     "x": "5/2",
+     "y": "75",
+     "coordinates": true,
+     "labelDirection": "SE"
+    },
+    {
+     "id": "F0",
+     "curveX": "3",
+     "unnamed": true
+    },
+    {
+     "id": "V0",
+     "x": "-1/2",
+     "y": "85",
+     "unnamed": true
+    },
+    {
+     "id": "H0",
+     "x": "7/2",
+     "y": "80",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cf",
+     "point": "F0",
+     "text": "y=(80x+25)/(x+1/2)",
+     "labelKind": "MATH",
+     "direction": "SE"
+    },
+    {
+     "id": "cv",
+     "point": "V0",
+     "text": "x=-1/2",
+     "labelKind": "MATH",
+     "direction": "NW"
+    },
+    {
+     "id": "ch",
+     "point": "H0",
+     "text": "y=80",
+     "labelKind": "MATH",
+     "direction": "N"
+    }
+   ]
+  }
+ },
+ "pointNames": {
+  "A": "A",
+  "B": "B"
+ },
+ "caption": "y=(80x+25)/(x+1/2)=80-15/(x+1/2)이고 x>0에서 증가한다. 따라서 0.5≤x≤2.5에서 최솟값은 x=0.5일 때 y=80-15=65, 최댓값은 x=2.5일 때 y=80-5=75이다. 그림의 점 A, B가 구간의 양 끝이다. (1) y=(80x+25)/(x+1/2) (2) 최댓값 75, 최솟값 65이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "x>0, 0.5≤x≤2.5에서의 평균 속력 y",
+   "mappedTo": [
+    "graphPlan"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "구간 양 끝점 A(0.5,65), B(2.5,75)"
+ ]
+}

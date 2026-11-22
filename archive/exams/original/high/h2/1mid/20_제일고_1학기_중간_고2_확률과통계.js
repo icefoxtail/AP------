@@ -199,7 +199,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "그림의 격자에서 $A$에서 $P$까지는 오른쪽으로 4번, 위로 2번 움직인다.\n따라서 그 순서를 정하는 방법은 $\\binom62=15$가지이다.\n$P$에서 $B$까지는 오른쪽으로 3번, 위로 2번 움직이므로 방법은 $\\binom52=10$가지이다.\n반드시 $P$를 거치는 경로의 수는 두 구간의 방법을 곱하여\n$15\\cdot10=150$이다.\n따라서 정답은 ④이다.",
     "content": "다음 그림과 같은 도로망이 있다. 지점 $A$에서 반드시 지점 $P$를 거쳐 지점 $B$까지 가는 최단 경로의 수를 구한 것으로 옳은 것은? [4.5점]\n\n<img src=\"assets/images/20_제일고_1학기_중간_고2_확률과통계/q05.png\" alt=\"그림\" class=\"exam-image\">",
-    "solutionImage": "assets/images/20_제일고_1학기_중간_고2_확률과통계/q05.png",
+    "solutionImage": "assets/images/20_제일고_1학기_중간_고2_확률과통계/q5-solution-v2.svg",
     "solutionReminderImagePolicy": "STRIP_INLINE",
     "category": "순열과 조합",
     "originalCategory": "순열과 조합",
@@ -230,7 +230,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "manual_review",
     "reviewStatus": "manual_review",
-    "sourceType": "past_exam"
+    "sourceType": "past_exam",
+    "solutionImageAlt": "해설 그림: 격자 모양의 길에서 출발점 A부터 각 교차점까지 가는 최단 경로의 수를 적은 그림이다.",
+    "solutionImageCaption": "A에서 P까지는 오른쪽 4칸, 위쪽 2칸이므로 6C2=15가지이다. P에서 B까지는 오른쪽 3칸, 위쪽 2칸이므로 5C2=10가지이다. P를 반드시 지나므로 곱의 법칙으로 15×10=150가지이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 6,
@@ -293,7 +297,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "정육각형의 꼭짓점 6개에서 두 점을 고르는 전체 방법은\n$\\binom62=15$가지이다.\n변을 잇는 6개의 선분은 길이가 1이고, 나머지 선분은 모두 두 꼭짓점 사이를 한 칸 이상 건너뛴 대각선이므로 길이가 1보다 크다.\n따라서 조건을 만족하는 선분은 $15-6=9$개이고, 확률은\n$\\dfrac9{15}=\\dfrac35$이다.\n그러므로 $p=5$, $q=3$이고 $p+q=8$이므로 정답은 ④이다.",
     "content": "오른쪽 그림과 같이 한 변의 길이가 1인 정육각형의 꼭짓점의 위치에 놓인 6개의 점 중에서 임의로 2개를 택하여 선분을 그을 때, 선분의 길이가 1보다 클 확률이 $\\frac{q}{p}$이다. $p+q$의 값을 구하면? (단, $a>0$, $p, q$는 서로소인 자연수) [4.6점]\n\n<img src=\"assets/images/20_제일고_1학기_중간_고2_확률과통계/q07.png\" alt=\"그림\" class=\"exam-image\">",
-    "solutionImage": "assets/images/20_제일고_1학기_중간_고2_확률과통계/q07-solution.svg",
+    "solutionImage": "assets/images/20_제일고_1학기_중간_고2_확률과통계/q7-solution-v2.svg",
     "solutionReminderImagePolicy": "STRIP_INLINE",
     "category": "확률",
     "originalCategory": "확률",
@@ -326,7 +330,10 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "manual_review",
     "reviewStatus": "manual_review",
-    "sourceType": "past_exam"
+    "sourceType": "past_exam",
+    "solutionImageAlt": "해설 그림: 정육각형의 여섯 꼭짓점 A, B, C, D, E, F가 있고 모든 꼭짓점 쌍이 선분으로 이어져 변 여섯 개와 대각선 아홉 개가 그려진 그림이다.",
+    "solutionImageCaption": "한 변의 길이가 1인 정육각형의 꼭짓점 6개에서 두 점을 골라 이은 선분을 모두 그린 그림이다. 두 점을 고르는 전체 경우는 6C2=15가지이다. 이웃한 두 꼭짓점을 잇는 변 6개는 길이가 1이고, 나머지 대각선 9개는 길이가 1보다 크다. 따라서 확률은 9/15=3/5이고 p=5, q=3이므로 p+q=8이며 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -658,7 +665,11 @@ window.questionBank = [
     "tagConfidence": "medium",
     "tagStatus": "manual_review",
     "reviewStatus": "manual_review",
-    "sourceType": "past_exam"
+    "sourceType": "past_exam",
+    "solutionImage": "assets/images/20_제일고_1학기_중간_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "표본공간 S={3, 4, 5, 6, 7, 11, 12}에서 A={3, 6}, B={4, 12}, C={3, 5, 7, 11}이다. 그림에서 A와 B는 겹치지 않고 B와 C도 겹치지 않아 ①, ③은 서로 배반이다. A와 C는 3에서 겹치므로(색칠한 부분) 배반이 아니다. A의 여사건과 C의 교집합은 {5, 7, 11}, B의 여사건과 C의 여사건의 교집합은 {6}이어서 ④, ⑤도 배반이 아니다. 따라서 답은 ①, ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,

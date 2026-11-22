@@ -1,0 +1,224 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "한 점에서 만나는 세 직선이 이루는 각의 관계를 나타낸 그림이다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "L",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "R",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "U",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "L",
+    "R",
+    "U",
+    "D",
+    "K1",
+    "K2"
+  ],
+  "displaySegments": [
+    {
+      "id": "sLR",
+      "refs": [
+        "L",
+        "R"
+      ]
+    },
+    {
+      "id": "sUD",
+      "refs": [
+        "U",
+        "D"
+      ]
+    },
+    {
+      "id": "sK",
+      "refs": [
+        "K1",
+        "K2"
+      ]
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "ra1",
+      "refs": [
+        "R",
+        "O",
+        "U"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a45",
+        "refs": [
+          "U",
+          "O",
+          "K1"
+        ],
+        "value": 45,
+        "label": "45",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aa",
+        "refs": [
+          "L",
+          "O",
+          "K2"
+        ],
+        "value": 135,
+        "label": "a",
+        "labelKind": "MATH",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "status": "ACTIVE",
+  "sourceQuote": "다음 그림에서 $\\angle a$의 크기는? (3점)",
+  "assetPath": "assets/images/23_금당중_2학기_중간_중1_유사/q10.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/23_금당중_2학기_중간_중1_유사/q10-problem-result.json",
+    "statePath": "archive/assets/images/23_금당중_2학기_중간_중1_유사/q10-problem-state.json",
+    "svgPath": "archive/assets/images/23_금당중_2학기_중간_중1_유사/q10-problem-solution.svg"
+  }
+}

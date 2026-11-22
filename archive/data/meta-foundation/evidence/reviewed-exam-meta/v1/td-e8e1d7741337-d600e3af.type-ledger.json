@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-e8e1d7741337-d600e3af",
+  "sourceArchiveFile": "original/middle/m2/2final/23_이수중_2학기_기말_중2_기출.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-r-20261120",
+    "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_e7924cf387c36055b9126fe4a82ac6e1f9a5951e4bd1e3e2f67879d5ab6e4bb0",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+      "templateKey": null,
+      "step": "20의 약수 1,2,4,5,10,20을 빠짐없이 나열해 6가지를 센다.",
+      "note": "Claude(Sonnet 5.5) 직접 판독 재판정 2026-11-20: 문항 발문·보기·해설을 읽고 문항의 실제 과정에서 쓰는 등록부 키로 판정",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5eb61fb6bd2b1d603fc0353ea27e725e79864e79db0d67e04d853d042e238427",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+      "templateKey": "TPL_M2_BASIC_COUNTING_CASE_SPLIT_SUM_PRODUCT",
+      "step": "A에서 B로 5가지, B에서 C로 4가지를 곱의 법칙으로 곱해 20가지를 얻는다.",
+      "note": "Claude(Sonnet 5.5) 직접 판독 재판정 2026-11-20: 문항 발문·보기·해설을 읽고 문항의 실제 과정에서 쓰는 등록부 키로 판정",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_555dd90fef7e28faeff2d711314e53ee78a07b991384562383d55d715e8d0c1c",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_COUNTING",
+      "templateKey": null,
+      "step": "7개 점에서 3개를 고르는 경우의 수에서 한 직선 위의 세 점을 고른 경우를 빼 삼각형 31개를 얻는다.",
+      "note": "Claude(Sonnet 5.5) 직접 판독 재판정 2026-11-20: 문항 발문·보기·해설을 읽고 문항의 실제 과정에서 쓰는 등록부 키로 판정",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    }
+  ]
+}

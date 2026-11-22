@@ -173,7 +173,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 두 선분 $OA$, $OB$가 서로 수직이면 두 기울기의 곱이 $-1$이다.\n\n점 $O(0,0)$과 $A(a,-5)$를 지나는 직선 $OA$의 기울기는\n$\\dfrac{-5}{a}$이다.\n점 $O(0,0)$과 $B(b,a)$를 지나는 직선 $OB$의 기울기는\n$\\dfrac{a}{b}$이다.\n두 직선이 서로 수직이므로\n$\\dfrac{-5}{a}\\cdot\\dfrac{a}{b}=-1$이다.\n$a\\ne0$이므로 약분하면\n$-\\dfrac5b=-1$이다.\n따라서 $b=5$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "$\\angle AOB=90^\\circ$이므로 원점에서 두 점으로 향하는 선분 $OA$, $OB$가 서로 수직이다.\n\n\\[\n\\overrightarrow{OA}=(a,-5),\\qquad\\overrightarrow{OB}=(b,a)\n\\]\n이고, 서로 수직인 두 벡터의 내적은 $0$이다.\n\\[\n\\begin{aligned}\n(a,-5)\\cdot(b,a)&=0\\\\\nab+(-5)\\cdot a&=0\\\\\nab-5a&=0\\\\\na(b-5)&=0.\n\\end{aligned}\n\\]\n문제에서 $a\\ne0$이므로\n\\[\n\\boxed{b=5}.\n\\]\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/22_제일고_1학기_기말_고1_기출/q5-solution-v2.svg",
     "solutionImageAlt": "해설 그림: 좌표평면 위에 원점 O, 점 A(a,-5), 점 B(b,a)를 꼭짓점으로 하는 삼각형이 있다. 선분 OA는 파랑, 선분 OB는 주황이며 O에서 직각 표시가 있다.",
     "solutionImageSize": "full",

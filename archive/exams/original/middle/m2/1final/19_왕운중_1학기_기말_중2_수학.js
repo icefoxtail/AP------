@@ -154,7 +154,11 @@ window.examData = {
         "2"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중2_수학/q11-solution.svg",
+      "solutionImageAlt": "해설 그림: 오른쪽 위로 향하는 평행한 두 직선이 있다. 점선은 y=(2/3)x+1로 점 (3,3)을 지나고 실선은 y=(2/3)x−1로 점 P(3,1)을 지난다.",
+      "solutionImageCaption": "y=(2/3)x+1에 x=3을 대입하면 y=3이므로 점 (3,3)을 지난다. 점 (3,1)을 지나려면 y의 값이 3에서 1이 되어야 하므로 y축의 방향으로 −2만큼 평행이동해야 한다. 이동한 직선은 y=(2/3)x−1이다. 따라서 답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 12,
@@ -196,7 +200,12 @@ window.examData = {
         "$3x+2y-4=0$"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중2_수학/q14-solution.svg",
+      "solutionImageAlt": "해설 그림: 오른쪽 아래로 향하는 평행한 두 직선이 있다. 점선은 y절편 2/3인 y=−(3/2)x+2/3이고 실선은 y절편 2인 3x+2y−4=0이며 실선이 점 A(2,−1)을 지난다.",
+      "solutionImageCaption": "평행한 직선은 기울기가 같으므로 기울기는 −3/2이다. 점 A(2,−1)을 지나므로 y+1=−(3/2)(x−2)이고 정리하면 y=−(3/2)x+2, 즉 3x+2y−4=0이다. 따라서 답은 ⑤이다.",
+      "solutionImageSize": "full",
+      "solutionImageScale": 80
     },
     {
       "id": 15,
@@ -290,7 +299,11 @@ window.examData = {
       "question": "<p>22. [서술형3] 세 직선 $4x-y=3$, $x-2y=-1$, $2x+3y=19$의 그래프로 둘러싸인 삼각형의 넓이를 구하여라. [7점]</p><p><img src=\"assets/images/19_왕운중_1학기_기말_중2_수학/q22.png\" /></p>",
       "choices": [],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중2_수학/q22-solution.svg",
+      "solutionImageAlt": "해설 그림: 세 직선이 서로 만나 삼각형을 이루고 세 꼭짓점 A(1,1), B(2,5), C(5,3)이 표시되어 있다.",
+      "solutionImageCaption": "세 직선의 교점을 구한다. 4x−y=3과 x−2y=−1에서 A(1,1), 4x−y=3과 2x+3y=19에서 B(2,5), x−2y=−1과 2x+3y=19에서 C(5,3)이다. 삼각형 ABC의 넓이는 (1/2)|1(5−3)+2(3−1)+5(1−5)|=(1/2)|2+4−20|=7이다.",
+      "solutionImageSize": "full"
     }
   ]
 };

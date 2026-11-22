@@ -1,0 +1,294 @@
+{
+  "capability": "construction-spike-v1",
+  "caption": "꼭짓점 V를 지나는 평행한 보조선을 그어 엇각의 합으로 각 x의 크기 75도를 구한다.",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "V",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "V",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "V",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "35"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "P"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "Q"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "V",
+    "X",
+    "P",
+    "Q",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "hiddenPointNames": [
+    "X"
+  ],
+  "unmarkedPointNames": [
+    "X"
+  ],
+  "displaySegments": [
+    {
+      "id": "sL1",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "sL2",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "sM1",
+      "refs": [
+        "C",
+        "Q"
+      ]
+    },
+    {
+      "id": "sM2",
+      "refs": [
+        "Q",
+        "D"
+      ]
+    },
+    {
+      "id": "sPV",
+      "refs": [
+        "P",
+        "V"
+      ]
+    },
+    {
+      "id": "sQV",
+      "refs": [
+        "Q",
+        "V"
+      ]
+    },
+    {
+      "id": "sVX",
+      "refs": [
+        "V",
+        "X"
+      ],
+      "dashed": true
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aP",
+        "refs": [
+          "A",
+          "P",
+          "V"
+        ],
+        "value": 40,
+        "label": "40",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aPVX",
+        "refs": [
+          "P",
+          "V",
+          "X"
+        ],
+        "value": 40,
+        "label": "40",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aXVQ",
+        "refs": [
+          "X",
+          "V",
+          "Q"
+        ],
+        "value": 35,
+        "label": "35",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aQ",
+        "refs": [
+          "C",
+          "Q",
+          "V"
+        ],
+        "value": 35,
+        "label": "35",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "status": "ACTIVE",
+  "sourceQuote": "꺾인 점을 지나고 두 직선 $l, m$에 평행한 보조선",
+  "assetPath": "assets/images/23_금당중_2학기_중간_중1_유사/q13-solution.svg",
+  "engineEvidence": {
+    "resultPath": "archive/assets/images/23_금당중_2학기_중간_중1_유사/q13-solution-result.json",
+    "statePath": "archive/assets/images/23_금당중_2학기_중간_중1_유사/q13-solution-state.json",
+    "svgPath": "archive/assets/images/23_금당중_2학기_중간_중1_유사/q13-solution-solution.svg"
+  }
+}

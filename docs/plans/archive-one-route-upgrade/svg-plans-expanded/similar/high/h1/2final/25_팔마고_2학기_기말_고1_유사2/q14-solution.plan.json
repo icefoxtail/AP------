@@ -1,0 +1,94 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "-3",
+   "2"
+  ],
+  "denominator": [
+   "-2",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -3,
+   7
+  ],
+  "viewport": [
+   -3,
+   7,
+   -3,
+   7
+  ],
+  "equalUnits": true,
+  "hideLabels": [
+   "formula"
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "lines": [
+    {
+     "id": "l1",
+     "slope": "1",
+     "intercept": "0",
+     "label": "y=x",
+     "style": "DASHED"
+    },
+    {
+     "id": "l2",
+     "slope": "-1",
+     "intercept": "4",
+     "label": "y=-x+4",
+     "style": "DASHED"
+    }
+   ],
+   "points": [
+    {
+     "id": "C",
+     "x": "2",
+     "y": "2",
+     "coordinates": true,
+     "labelDirection": "NE"
+    },
+    {
+     "id": "VA",
+     "x": "2",
+     "y": "6",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cVA",
+     "point": "VA",
+     "text": "x=2",
+     "labelKind": "MATH",
+     "direction": "E"
+    }
+   ]
+  },
+  "verticalAsymptoteLabelAt": "NONE"
+ },
+ "pointNames": {
+  "C": "C"
+ },
+ "caption": "f(x)=1/(x-2)+2의 점근선은 x=2, y=2이고 두 점근선의 교점은 C(2,2)이다. x<0이면 y>0이어서 제3사분면을 지나지 않으므로 ㄱ은 거짓이다. (f∘f)(x)=x이므로 그래프는 y=x에 대하여 대칭이고(ㄴ 참), 점근선의 교점을 지나는 기울기 -1인 직선 y=-x+4에 대해서도 대칭이다(ㄷ 참). 따라서 답은 ④이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "f(x)=1/(x-2)+2의 그래프",
+   "mappedTo": [
+    "graphPlan"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "대칭축 y=x, y=-x+4와 점근선의 교점 C(2,2)"
+ ]
+}

@@ -1,0 +1,76 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "functionName": "f",
+  "pieces": [
+   {
+    "coefficients": [
+     "-4",
+     "-2",
+     "2"
+    ]
+   }
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "requiredPoints": [
+   {
+    "id": "r1",
+    "x": -1,
+    "y": 0
+   },
+   {
+    "id": "r2",
+    "x": 2,
+    "y": 0
+   },
+   {
+    "id": "V",
+    "x": "1/2",
+    "y": "-9/2"
+   },
+   {
+    "id": "Y0",
+    "x": 0,
+    "y": -4
+   }
+  ],
+  "referenceLines": [
+   {
+    "id": "ha",
+    "y": "-1",
+    "intersectionX": [
+     "(1-sqrt(7))/2",
+     "(1+sqrt(7))/2"
+    ]
+   },
+   {
+    "id": "hb",
+    "y": "2",
+    "intersectionX": [
+     "(1-sqrt(13))/2",
+     "(1+sqrt(13))/2"
+    ]
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  }
+ },
+ "caption": "f(x)=2(x+1)(x-2)=2x²-2x-4이다. f(f(x))=0이면 f(x)=-1 또는 f(x)=2이므로 그래프에서 직선 y=-1, y=2와의 교점이 각각 두 개이다. 2x²-2x-3=0의 두 근의 곱은 -3/2, x²-x-3=0의 두 근의 곱은 -3이고 네 근이 서로 다르므로 곱은 9/2이다. 따라서 답은 ⑤이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "f(f(x))=0",
+   "mappedTo": [
+    "graphPlan"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "직선 y=-1, y=2와 그래프의 네 교점"
+ ]
+}

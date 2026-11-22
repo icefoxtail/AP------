@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-32e21164d0bd-8c0b2e99",
+  "requestSha256": "e0c9422954b44dcccb9734ea697ebefdc0ead2aa0b08732ed8b6c43bfa49ac9d",
+  "examUid": "22_매산중_2학기_중간_중3_수학",
+  "sourceArchiveFile": "original/middle/m3/2mid/22_매산중_2학기_중간_중3_수학.js",
+  "sourceBlobSha1": "503e3c93cf6522980fdb56e7515c14c095323baf",
+  "sourceRawSha256": "23ecd1ab43cd831ba6e17dab1d04a1fd59533719fb7327896cf468ab83136442",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-r-20261120",
+      "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-32e21164d0bd-8c0b2e99.type-ledger.json",
+        "sha256": "537a265ff82d5497a578a10c76afa2657279c42678dffdcb01886a64d7296573"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_01e86bb0ddb38ac2a4bcb1123eae379606984b96f86beff837cdfe5862fa8e39",
+      "sourceArchiveFile": "original/middle/m3/2mid/22_매산중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 5,
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_M3_QUADRATIC_PROPERTIES_REFLECTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-32e21164d0bd-8c0b2e99",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "x축 대칭은 함숫값의 부호를 바꾸는 것이므로 y=4x^2/5를 얻는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3-1",
+          "curriculumSource": "request",
+          "rowCourse": "중3 수학",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "057b1d0ff2be1f37572a4e3665054382aa4ac716f3419fa38e337a72dcfdd1b2",
+        "judgedContentFingerprint": "f78c5d538feff3d8c0da629f6a66cf02e74805a92a3124c5a317e41b112de357",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "63d012a88e6820ce590619e15f469c74e1e06a9e99bbead94abb755ae09b2dd9",
+        "resultSource": {
+          "branch": "data/type-judgment-r-20261120",
+          "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-32e21164d0bd-8c0b2e99.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+          "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION_REFLECTION",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}

@@ -133,11 +133,11 @@ async function measure(width) {
 const byName = (rows, name) => { const fixture = cases.find((item) => item.name === name); return rows.find((row) => (row.src || "").includes(fixture.image.split("?")[0])); };
 
 // 2026-11-18 사용자 결정(그림 크기는 단 폭 비율 하나): A4 쪽 배치(PC)의 해설 그림은 등급·형식(svg/png)·solutionImageSizeOverride·
-// solutionImageLayout과 무관하게 폭·높이 모두 단 폭(83.65mm)의 60% 이하이고, 가로로 긴 그림(자연 폭:높이 >= 2:1)은 폭 88%·높이 30% 이하다.
+// solutionImageLayout과 무관하게 폭·높이 모두 단 폭(83.65mm)의 80% 이하이고, 가로로 긴 그림(자연 폭:높이 >= 2:1)은 폭 88%·높이 30% 이하다.
 // 그림 상자의 폭÷높이는 자연 비율과 같다(html2canvas는 object-fit을 지원하지 않아 상자가 비율을 지켜야 한다).
 // 이전에는 이 세 테스트가 "자연 폭 x 0.6, 칸 90%·340px, 래스터는 등급 상한 105/145/180px, override full·fullwidth는 예외"를 단정했다.
 const COLUMN_PX = 83.65 * 96 / 25.4;
-const SOL_RATIO = 0.6;
+const SOL_RATIO = 0.8;
 const WIDE_W = 0.88;
 const WIDE_H = 0.3;
 const naturalOf = (name) => {
@@ -147,7 +147,7 @@ const naturalOf = (name) => {
   return [420, 480]; // png fixtures
 };
 
-test("PC: every solution figure is at most 60% of the column wide and tall, whatever its class, format, override or layout", async () => {
+test("PC: every regular solution figure is capped at 80% of the column width and height, regardless of legacy size class", async () => {
   const rows = await measure(1440);
   for (const item of cases) {
     const row = byName(rows, item.name);

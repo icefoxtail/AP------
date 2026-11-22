@@ -612,7 +612,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 올라가 x=3에서 꼭짓점을 이루고 x=6에서 내려오는 삼각형 모양의 확률밀도함수 그래프이며 x=3부터 9/2까지 아래쪽이 사다리꼴로 칠해져 있다.",
+    "solutionImageCaption": "전체 그래프는 밑변 6, 높이 f(3)=3k인 삼각형이므로 (1/2)×6×3k=9k=1에서 k=1/9이다. 그림은 이 값으로 그렸다. f(3)=1/3, f(9/2)=1/6이므로 색칠한 3≤x≤9/2는 높이 1/3과 1/6, 폭 3/2인 사다리꼴이고 넓이는 (1/3+1/6)/2×3/2=3/8이다. 따라서 k=1/9, P=3/8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

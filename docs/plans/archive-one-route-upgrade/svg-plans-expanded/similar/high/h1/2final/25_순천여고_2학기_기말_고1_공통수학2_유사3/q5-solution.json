@@ -1,0 +1,47 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "VENN",
+  "sets": [
+   {
+    "id": "P",
+    "name": "P"
+   },
+   {
+    "id": "R",
+    "name": "R"
+   }
+  ],
+  "disjoint": [
+   [
+    "P",
+    "R"
+   ]
+  ],
+  "elements": [
+   {
+    "text": "1",
+    "in": [
+     "P"
+    ]
+   },
+   {
+    "text": "3",
+    "in": [
+     "R"
+    ]
+   }
+  ]
+ },
+ "caption": "(가)에서 P⊂Q, (나)에서 Q⊂R의 여집합이므로 P⊂Q⊂R의 여집합이고, 따라서 P와 R는 공통 원소가 없다. 예: U={1,2,3,4}, P={1}, Q={1,2}, R={3}이면 P와 R는 서로 떨어져 있고 P는 R의 여집합에 포함되므로 p→∼r가 항상 참이다. 따라서 답은 ⑤이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "(가) P∪Q=Q, (나) Q∩R의 여집합=Q",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "P와 R가 공통 원소 없이 떨어져 있는 예시(P={1}, R={3})를 보여 준다."
+ ]
+}

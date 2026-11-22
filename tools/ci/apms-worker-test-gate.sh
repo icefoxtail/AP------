@@ -34,9 +34,7 @@ run "tests/apmath-omr-result-identity.test.mjs" node --test tests/apmath-omr-res
 run "tests/apms-result-clinic-uid-bridge.test.mjs" node --test tests/apms-result-clinic-uid-bridge.test.mjs
 
 # Worker unit tests (same selection as tools/run-tests.js).
-run "tests/archive2-worker-validation.test.mjs (Grade/browse contracts)" node --test \
-  --test-name-pattern 'grade-only canonical path filters pass mixed-question validation|Worker accepts an approved high2 source in the shared high3 semantic browse pool without rewriting its grade|shared browse grade cannot replace saved snapshot source grades at deployment|target-only grade validation accepts every supported class grade and preserves fail-closed fallbacks' \
-  tests/archive2-worker-validation.test.mjs
+run "tests/archive2-worker-validation.test.mjs (Grade/browse contracts)" node --test tests/archive2-worker-validation.test.mjs
 run "tests/archive2-saved-paper-namespace.test.mjs" node --test tests/archive2-saved-paper-namespace.test.mjs
 run "tests/archive2-saved-paper-d1-batching.test.mjs" node --test tests/archive2-saved-paper-d1-batching.test.mjs
 run "tests/archive2-original-source-verification-shard.test.mjs" node --test tests/archive2-original-source-verification-shard.test.mjs

@@ -1,0 +1,140 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "19/3",
+     "-2/3"
+    ]
+   }
+  ],
+  "breakpoints": [],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -1,
+   10
+  ],
+  "viewport": [
+   -1,
+   10,
+   -1,
+   8
+  ],
+  "requiredPoints": [
+   {
+    "id": "V",
+    "x": 5,
+    "y": 3
+   },
+   {
+    "id": "X",
+    "x": 9.5,
+    "y": 0
+   },
+   {
+    "id": "Y",
+    "x": 0,
+    "y": 6.333333333333333
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "lines": [
+    {
+     "id": "lx",
+     "x": "5",
+     "label": "x=5",
+     "color": "BLUE"
+    },
+    {
+     "id": "ly",
+     "slope": "0",
+     "intercept": "3",
+     "label": "y=3",
+     "color": "WARM"
+    }
+   ],
+   "points": [
+    {
+     "id": "v0",
+     "x": "5",
+     "y": "3",
+     "unnamed": true
+    },
+    {
+     "id": "a1",
+     "x": "-1",
+     "y": "3",
+     "unnamed": true
+    },
+    {
+     "id": "a2",
+     "x": "-1",
+     "y": "-1",
+     "unnamed": true
+    },
+    {
+     "id": "a3",
+     "x": "5",
+     "y": "-1",
+     "unnamed": true
+    },
+    {
+     "id": "cq",
+     "curveX": "8",
+     "unnamed": true
+    }
+   ],
+   "polygons": [
+    {
+     "id": "R",
+     "points": [
+      "v0",
+      "a1",
+      "a2",
+      "a3"
+     ],
+     "fill": "LIGHT"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cl",
+     "point": "cq",
+     "text": "2x+3y=19",
+     "labelKind": "MATH",
+     "direction": "NE"
+    }
+   ]
+  },
+  "exactCoordinates": {
+   "X": [
+    "19/2",
+    "0"
+   ],
+   "Y": [
+    "0",
+    "19/3"
+   ]
+  }
+ },
+ "pointNames": {
+  "V": "V",
+  "X": "X",
+  "Y": "Y"
+ },
+ "caption": "대우의 조건 x<a, y<3인 영역(색칠)의 점은 모두 직선 2x+3y=2a+9의 아래쪽에 있다. a=5이면 직선 2x+3y=19가 영역의 꼭짓점 (5,3)을 지나므로 2x+3y<19가 항상 성립하고, a>5이면 성립하지 않는다. 따라서 a의 최댓값은 5이고 답은 ⑤이다.",
+ "sourceConditions": [
+  "x<a이고 y<3이면 2x+3y<19"
+ ],
+ "newVisualInformation": [
+  "색칠한 영역 x<5, y<3과 직선 2x+3y=19가 꼭짓점 V(5,3)을 지남"
+ ]
+}

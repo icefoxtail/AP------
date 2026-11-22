@@ -126,7 +126,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-01-LIMIT",
     "subUnit": "함수의 극한",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선과 아래로 볼록한 포물선이 한 점 P에서 만나는 그래프이며 두 꼭짓점 V, W와 P의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "아래 경계는 h(x)=-x²+1, 위 경계는 g(x)=x²-4x+3이고 f(x)는 두 곡선 사이에 있다. 두 곡선은 점 P(1,0)에서만 만나(같은 기울기로 접하고) x→1이면 양쪽 경계가 모두 0으로 모이므로 f(x)도 0으로 수렴한다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 5,
@@ -158,7 +163,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 아래로 볼록한 포물선 조각, 오른쪽은 직선 조각이 점 P에서 이어진 그래프이며 포물선의 꼭짓점 V와 P의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "x=2에서 연속이려면 오른쪽 식으로 정해지는 f(2)=3·2+2=8과 왼쪽 식의 좌극한 2²+2+a=6+a가 같아야 하므로 a=2이다. 그림은 a=2일 때 포물선 조각과 직선 조각이 P(2,8)에서 이어지는 모습이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 6,
@@ -300,7 +310,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 계속 증가하는 삼차함수의 그래프이며 x=-1에서 x축 아래의 점 A, x=0에서 x축 위의 점 B가 표시되어 있다.",
+    "solutionImageCaption": "F(x)=x³-x²+9x+1에서 F′(x)=3x²-2x+9는 판별식이 -104<0이라 항상 양수이므로 F는 계속 증가한다. 그림의 점 A(-1,-10), B(0,1)에서 F(-1)<0<F(0)이므로 유일한 실근은 구간 (-1,0)에 있다. 열린구간 (-2,m)이 이 근을 포함하는 최소 정수 m은 0이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 10,
@@ -366,7 +381,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 구간 [1,4]에서 아래로 볼록한 포물선의 증가하는 부분과 양 끝점 A, B가 표시된 그래프이다.",
+    "solutionImageCaption": "그림은 y=f′(x)=3x²-2x-6의 구간 [1,4] 부분으로 증가하며 A(1,-5)에서 B(4,34)까지 움직인다. 평균값 정리에 의해 k=f′(c)(1<c<4)이므로 -5<k<34이다. 길이가 작은 구간의 평균변화율이 연속으로 변하므로 -4부터 33까지의 모든 정수가 실제로 나타난다. 정수의 개수는 33-(-4)+1=38이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 12,
@@ -399,7 +419,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-03-DERIVATIVE",
     "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선의 두 조각이 점 Q에서 수평하게 매끄럽게 이어진 함수의 그래프이며 극소점 P와 점 Q의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "x=3에서 좌미분계수 -f′(3)과 우미분계수 f′(3)이 같아야 하므로 f′(3)=0이고 a=9이다. 이때 f(3)=10이고 연속 조건 b-f(3)=f(3)에서 b=20이다. 그림은 a=9, b=20일 때의 g의 그래프로, x<3에서 20-f, x≥3에서 f이며 Q(3,10)에서 기울기 0으로 매끄럽게 이어진다. 2a+3b=78이므로 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 13,
@@ -420,9 +445,9 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "원점 $(0,0)$에서 삼차함수 $f(x)=x^3-6x^2+8x$에 그은 접선 중 기울기가 음수인 직선을 $l_1$이라 하자. $l_1$과 수직이면서 곡선 $y=f(x)$에 접하는 두 직선을 $l_2$, $l_3$이라 하자. 두 직선 $l_2$, $l_3$과 곡선 $y=f(x)$의 접점의 $x$좌표를 각각 $a,b$라 할 때, $ab$의 값은? [4.8점]",
-    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_수학II/q13-solution.svg",
-    "solutionImageAlt": "원점을 지나는 음의 기울기 접선과 그에 수직인 두 접선을 비교하는 해설 그래프",
-    "solutionImageCaption": "수직 접선의 접점은 3x²−12x+7=0의 두 근이고 곱은 7/3이다.",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_수학II/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선과 원점을 지나는 접선 l1, 그에 수직한 두 접선 l2, l3와 세 접점 T, A, B를 나타낸 그래프이다.",
+    "solutionImageCaption": "원점을 지나는 접선의 접점은 f(t)=tf′(t)에서 t=0 또는 3이고 기울기는 8, -1이므로 l1은 접점 T(3,-3)에서의 접선 y=-x이다. l1과 수직인 접선은 기울기가 1이므로 f′(x)=1, 즉 3x²-12x+7=0이고 그림의 l2, l3이 접점 A, B에서 접한다. 두 근 a, b의 곱은 7/3이다. 따라서 답은 ③이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "choices": [
@@ -437,7 +462,8 @@ window.questionBank = [
     "subUnitKey": "H15-M2-05-TANGENT",
     "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageScale": 80
   },
   {
     "id": 14,
@@ -650,6 +676,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: x=-3에서 꺾이는 두 포물선 조각으로 된 f의 그래프와 수평선 두 개를 나타낸 그림이며 꺾이는 점 P, 최저점 V, 원점 O가 표시되어 있다.",
+    "solutionImageCaption": "그림은 y=f(x)이고 수평선 y=-k와의 교점이 g의 영점이다(예: k=1). f는 x=-3인 점 P에서 꺾이고 오른쪽 포물선의 최솟값은 V(-3/2,-9/4)이다. 0<k<9/4이면 오른쪽 포물선과의 단순한 교점이 2개이므로 A=2이고 g가 꺾이는 점은 P를 포함해 3개라 B=3, AB=6이다. k<0일 때도 A=2, B=3이다. k=0이면 AB=4이고 k=9/4는 접점이라 A=0, k>9/4도 A=0이다. 최댓값 6이 되는 범위는 k<0 또는 0<k<9/4이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   }
 ];

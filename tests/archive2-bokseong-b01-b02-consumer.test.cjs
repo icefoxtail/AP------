@@ -5,6 +5,7 @@ const root=path.join(__dirname,'..');
 const dir='alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2026/26_복성고_SOURCE_PENDING/';
 const srcOriginal='archive/exams/original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js';
 const originalSha='8266fa476906e9134b94f23e803bd3b2fb26ece4';
+const currentSourceSha='e9bd252eb663bbe47ba8335b9ad31266dd9efc15';
 const index=JSON.parse(fs.readFileSync(path.join(root,'archive/data/generated-lite-consumer/v1/index.json'),'utf8'));
 const frozen=[...JSON.parse(fs.readFileSync(path.join(root,dir+'B01_A1_STUDENT_ONLY_INDEPENDENT_FREEZE_20261009.json'),'utf8')).items,...JSON.parse(fs.readFileSync(path.join(root,dir+'B02_A1_STUDENT_ONLY_INDEPENDENT_FREEZE_20261009.json'),'utf8')).items];
 const comparison=JSON.parse(fs.readFileSync(path.join(root,dir+'B01_B02_A2_INDEPENDENT_COMPARE_20261009.json'),'utf8'));
@@ -24,7 +25,8 @@ test('B01+B02 student-first A1 83 frozen, A2 83 exact; 83 registered with approv
  assert.equal(hold.filter(x=>index.excludedHoldUids.includes(x)).length,0);
  assert.ok(hold.every(x=>index.records.some(r=>r.uid===x)));
  assert.equal(new Set(index.records.map(r=>r.uid)).size,454);
- assert.equal(gitSha(fs.readFileSync(path.join(root,srcOriginal))),originalSha);
+ // 2026-11-22: 해설만 수정, 문제·정답·보기 변경 없음. Frozen provenance stays at originalSha.
+ assert.equal(gitSha(fs.readFileSync(path.join(root,srcOriginal))),currentSourceSha);
 });
 test('74 review-approved consumer rows bind SHA-exact source JS, metadata, 5-option independent solution and original question',()=>{
  const shards=new Map(),sources=new Map(),meta=new Map();

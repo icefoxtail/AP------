@@ -112,7 +112,12 @@ window.questionBank = [
     "difficultyReason": "좌우극한과 함수값을 구별하는 한 번의 경계 판정이다.",
     "levelReason": "좌우극한과 함수값을 구별하는 한 번의 경계 판정이다.",
     "sourceProvenance": "ORIGINAL_SOURCE_ONLY_MASTER_READY_CREATE",
-    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II"
+    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II",
+    "solutionImage": "assets/images/19_팔마고_2학기_중간_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: x=2에서 아래쪽 수평선이 열린 점으로 끝나고 위쪽의 닫힌 점에서 오르는 직선이 시작되는 끊어진 그래프이다.",
+    "solutionImageCaption": "③은 x<2에서 2, x≥2에서 x+3이다. x→2-에서 높이 2의 열린 점으로, x→2+에서 높이 5의 닫힌 점 f(2)=5로 갈라져 좌극한 2와 우극한·함숫값 5가 다르므로 x=2에서 불연속이다. 나머지 ①, ②, ④, ⑤는 x=2에서 끊기지 않고 이어진다. 따라서 답은 ③이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 80
   },
   {
     "id": 3,
@@ -226,7 +231,12 @@ window.questionBank = [
     "difficultyReason": "분자 소거 조건과 함수값 일치를 순서대로 적용한다.",
     "levelReason": "분자 소거 조건과 함수값 일치를 순서대로 적용한다.",
     "sourceProvenance": "ORIGINAL_SOURCE_ONLY_MASTER_READY_CREATE",
-    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II"
+    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II",
+    "solutionImage": "assets/images/19_팔마고_2학기_중간_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽 위로 오르는 곡선이 x=2에서 빈 점으로 끊겼다가, 같은 높이의 닫힌 점에서 이어지는 그래프이다.",
+    "solutionImageCaption": "분자가 x=2에서 0이어야 하므로 a=8이고, 그러면 x≠2에서 (x³-8)/(x-2)=x²+2x+4라 그래프는 이 곡선에서 x=2의 높이 12인 열린 점(구멍)이 빠진 모양이다. f(2)=b인 닫힌 점이 그 구멍과 같은 높이에 있어야 연속이므로 b=12이다. 따라서 a+b=20이고 답은 ③이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 80
   },
   {
     "id": 5,
@@ -403,7 +413,11 @@ window.questionBank = [
     "difficultyReason": "합성의 안쪽 접근방향과 바깥 조각함수의 분기를 각각 추적한다.",
     "levelReason": "합성의 안쪽 접근방향과 바깥 조각함수의 분기를 각각 추적한다.",
     "sourceProvenance": "ORIGINAL_SOURCE_ONLY_MASTER_READY_CREATE",
-    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II"
+    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II",
+    "solutionImage": "assets/images/19_팔마고_2학기_중간_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에서 내려오는 직선이 x=-2에서 이어지는 아래로 볼록한 포물선으로 바뀌고 x=2에서 열린 점으로 끝나며, 닫힌 점에서 내려가는 직선이 시작되는 그래프이다.",
+    "solutionImageCaption": "f는 |x|<2에서 x²-2, |x|≥2에서 -x이다. x=-2에서는 양쪽이 높이 2로 이어져 연속이지만, x=2에서는 왼쪽 곡선이 높이 2의 열린 점으로, 오른쪽 직선이 높이 -2의 닫힌 점 f(2)=-2에서 시작해 끊어진다(ㄱ 거짓). 안쪽 g(x)=2-2/(x+1)이 x→∞에서 2의 왼쪽에서 가까워지면 f(g(x))=g(x)²-2가 2로 가므로 ㄴ은 참이다. x→-2-에서 f(x)=-x가 2의 오른쪽에서 2로 가까워져 f(f(x))=-f(x)=x→-2이므로 ㄷ도 참이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -462,7 +476,12 @@ window.questionBank = [
     "difficultyReason": "부호변화가 보장하는 비중복 구간과 최소성의 달성 예시를 확인한다.",
     "levelReason": "부호변화가 보장하는 비중복 구간과 최소성의 달성 예시를 확인한다.",
     "sourceProvenance": "ORIGINAL_SOURCE_ONLY_MASTER_READY_CREATE",
-    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II"
+    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II",
+    "solutionImage": "assets/images/19_팔마고_2학기_중간_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 아래 점 A에서 올라 점 B와 점 C를 지나 꼭대기에 이르고 점 D로 내려갔다가 오른쪽 위의 점 E로 가파르게 올라가는 꺾은선 그래프이다.",
+    "solutionImageCaption": "예: 다섯 점 A(-2,-2), B(-1,1), C(0,2), D(1,-1), E(2,4)를 꺾은선으로 이은 연속함수이다. A에서 B로 갈 때 -에서 +로, C에서 D로 갈 때 +에서 -로, D에서 E로 갈 때 -에서 +로 부호가 바뀌어 구간 (-2,-1), (0,1), (1,2)에서 x축을 지난다. 세 구간이 겹치지 않으므로 근은 적어도 3개이고 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 9,
@@ -525,7 +544,11 @@ window.questionBank = [
     "difficultyReason": "교점 판별식의 부호 변화와 곱함수 연속 조건을 매개변수 두 지점에 결합한다.",
     "levelReason": "교점 판별식의 부호 변화와 곱함수 연속 조건을 매개변수 두 지점에 결합한다.",
     "sourceProvenance": "ORIGINAL_SOURCE_ONLY_MASTER_READY_CREATE",
-    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II"
+    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II",
+    "solutionImage": "assets/images/19_팔마고_2학기_중간_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 양쪽 바깥 구간에서 높이 2의 수평선이 있고 가운데 구간에서는 가로축 위의 수평선이 있으며 두 경계에 중간 높이의 닫힌 점이 하나씩 있는 계단 모양의 그래프이다.",
+    "solutionImageCaption": "가로축이 t, 세로축이 교점의 개수 g(t)이다. 판별식 D=4(t-2)(t-3)이므로 t<2 또는 t>3에서 2개, t=2, 3에서 접해서 1개(닫힌 점), 2<t<3에서 0개이다. g는 t=2, 3에서 끊어지고 g(t)h(t)가 연속이려면 h(2)=h(3)=0이다. 최고차항 계수가 1이므로 h(t)=(t-2)(t-3)이고 h(0)=6이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -639,7 +662,12 @@ window.questionBank = [
     "difficultyReason": "평균속도 계산과 순간속도 방정식을 연속적으로 사용한다.",
     "levelReason": "평균속도 계산과 순간속도 방정식을 연속적으로 사용한다.",
     "sourceProvenance": "ORIGINAL_SOURCE_ONLY_MASTER_READY_CREATE",
-    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II"
+    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II",
+    "solutionImage": "assets/images/19_팔마고_2학기_중간_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선 모양의 높이 곡선 위의 두 점 A, B를 잇는 오르는 직선 l과, 두 점 사이의 점 T에서 접하며 l과 평행한 직선 m이 나타난 그래프이다.",
+    "solutionImageCaption": "가로축이 시간 t, 세로축이 높이 s이다. t=5에서 t=20까지 두 점 A(5,100), B(20,160)을 잇는 할선 l의 기울기가 평균변화율 a=4이다. s′(t)=24-1.6t=4에서 b=12.5이고 접점 T(12.5,175)에서의 접선 m이 l과 평행하다. 따라서 ab=50이고 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 12,
@@ -930,7 +958,11 @@ window.questionBank = [
     "difficultyReason": "그래프의 점값·좌우극한·곱함수 미분가능성을 세 명제에서 별도로 검토한다.",
     "levelReason": "그래프의 점값·좌우극한·곱함수 미분가능성을 세 명제에서 별도로 검토한다.",
     "sourceProvenance": "ORIGINAL_SOURCE_ONLY_MASTER_READY_CREATE",
-    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II"
+    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II",
+    "solutionImage": "assets/images/19_팔마고_2학기_중간_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: x=-1에서 낮은 수평선이 오르는 선분으로 이어지되 가운데에 닫힌 점이 따로 있고, x=0에서 위로 점프해 내려가는 선분이 x=1에서 열린 점으로 끝나며 위쪽에 닫힌 점이 따로 있는 끊어진 그래프이다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다. x=-1에서 좌우극한이 모두 -1이고 f(-1)=0인 닫힌 점이 따로 있다. x=0에서 좌극한 0, 우극한 1로 끊어지고 x=1에서는 곡선이 높이 0의 열린 점으로 가까워지며 f(1)=1이다. x→-1에서 f(x)f(-x)→(-1)·0=0이라 ㄱ은 참이다. f(x)f(x-1)은 x=0에서 좌극한 0, 우극한 -1이라 ㄴ은 거짓이고, f(x)f(-x)는 x=-1에서 미분계수가 -1로 존재해 ㄷ도 거짓이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 17,
@@ -1046,7 +1078,11 @@ window.questionBank = [
     "difficultyReason": "접점을 매개변수화해 외부점을 지나는 두 접선을 연립한다.",
     "levelReason": "접점을 매개변수화해 외부점을 지나는 두 접선을 연립한다.",
     "sourceProvenance": "ORIGINAL_SOURCE_ONLY_MASTER_READY_CREATE",
-    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II"
+    "sourceExamUid": "19_팔마고_2학기_중간_고2_수학II",
+    "solutionImage": "assets/images/19_팔마고_2학기_중간_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 아래쪽의 점 K에서 좌우로 뻗은 두 직선이 포물선의 점 A와 점 B에서 각각 접하는 그래프이다.",
+    "solutionImageCaption": "접점의 x좌표 t가 점 K(0,1)을 지나는 조건 1=2-t²에서 t=1, -1이다. 접점 A(1,3)에서의 접선 l1은 기울기 2, 접점 B(-1,3)에서의 접선 l2는 기울기 -2이고 두 접선이 K에서 만난다. 두 기울기의 곱은 2·(-2)=-4이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

@@ -27,20 +27,9 @@ function stripSubjectivePrefix(content) {
   return { content: text.slice(m[0].length), removed: m[0].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim() };
 }
 
-// 그림 크기 기본값(단 폭 대비 %): 90, 그림 속 글자·눈금·라벨이 작은 단원(다각형 각도 라벨, 그래프, 표)은 100. 선정 목록 항목의 scale이 있으면 그 값.
-const DOMAIN_FIGURE_SCALE = { P: 100, C: 90, H: 90, S: 90, G: 100, R: 100 };
-const { stripScoreLabels, applyFigureScale } = require('./clean-stem.cjs');
-
-// PNG 가로 픽셀(IHDR). 큰 스캔 그림(800px 이상)은 글자가 많아 작게 보이므로 100으로 둔다. PNG가 아니면 0.
-function pngWidth(rel) {
-  try {
-    const fd = fs.openSync(path.join(ARCHIVE_ROOT, rel), 'r');
-    const buf = Buffer.alloc(24);
-    fs.readSync(fd, buf, 0, 24, 0);
-    fs.closeSync(fd);
-    return buf.slice(1, 4).toString() === 'PNG' ? buf.readUInt32BE(16) : 0;
-  } catch (e) { return 0; }
-}
+// 그림 크기는 덮어쓰지 않는다: 원본 시험지의 imageScale·data-scale을 그대로 쓰고, 없으면 공통 그림 크기 규칙(archive/figure-size.css)을 따른다.
+// 이유(사용자 2026-11-20): 모의고사만 단원별 90·100%로 임의 확대하던 것을 해제한다.
+const { stripScoreLabels } = require('./clean-stem.cjs');
 
 // 팩 사본에 남기는 원본 칸: 화면·출력·정답·해설에 필요한 칸과 단원·난이도·유형 표시용 칸만(기존 1학기 팩 문항의 칸 목록 기준).
 // 메타 증거·영수증·해시·경로 칸(resolver*Sha, difficultyEvidenceSha, rpm*, ...Disposition, primaryMethod 등)과 배점(score)은 복사하지 않는다.
@@ -81,9 +70,6 @@ function buildPacks() {
       const score = stripScoreLabels(clone.content);
       clone.content = score.content;
       if (score.removed.length) clone._sourceScoreLabels = score.removed.join(' ');
-      const wide = [clone.image, ...[...String(clone.content).matchAll(/<img[^>]+src="([^"]+)"/g)].map((x) => x[1])].filter(Boolean).some((rel) => pngWidth(rel) >= 800);
-      const figureScale = item.scale || (wide ? 100 : (DOMAIN_FIGURE_SCALE[item.domain] || 90));
-      applyFigureScale(clone, figureScale);
       const qKey = `${item.file}_${src.id}`;
       Object.assign(clone, {
         _sourceTitle: path.basename(item.file, '.js'),

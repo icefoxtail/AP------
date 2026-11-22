@@ -1,0 +1,97 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "MAPPING",
+  "columns": [
+   {
+    "id": "X",
+    "name": "X",
+    "elements": [
+     "1",
+     "2",
+     "3",
+     "4"
+    ]
+   },
+   {
+    "id": "Y",
+    "name": "Y",
+    "elements": [
+     "1",
+     "2",
+     "3",
+     "4"
+    ]
+   }
+  ],
+  "arrows": [
+   {
+    "from": {
+     "column": 0,
+     "element": 0
+    },
+    "to": {
+     "column": 1,
+     "element": 1
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 1
+    },
+    "to": {
+     "column": 1,
+     "element": 1
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 2
+    },
+    "to": {
+     "column": 1,
+     "element": 3
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 3
+    },
+    "to": {
+     "column": 1,
+     "element": 0
+    }
+   }
+  ],
+  "highlight": {
+   "elements": [
+    {
+     "column": 1,
+     "element": 0
+    },
+    {
+     "column": 1,
+     "element": 1
+    },
+    {
+     "column": 1,
+     "element": 3
+    }
+   ]
+  }
+ },
+ "caption": "대응도에서 f(1)=2, f(2)=2, f(3)=4, f(4)=1이다. 바탕을 칠한 1, 2, 4가 치역이고 3은 치역에 없다. f(1)=f(2)=2이므로 일대일함수가 아니어서 역함수가 없다. f(1)+f(3)=2+4=6이므로 답은 ④이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "함수 f:X→Y의 대응도 (1→2, 2→2, 3→4, 4→1)",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "치역 {1,2,4}에 바탕을 칠하고 공역의 3은 비워 둠"
+ ]
+}

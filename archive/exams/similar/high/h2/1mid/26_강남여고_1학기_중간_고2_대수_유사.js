@@ -183,11 +183,11 @@ window.questionBank = [
     "wide": false,
     "content": "다음 중 각을 나타내는 동경이 제3사분면에 존재하는 것은? [3점]",
     "choices": [
-      "$-\\dfrac{19\\pi}{12}$",
+      "$\\dfrac{14\\pi}{3}$",
       "$\\dfrac{43\\pi}{6}$",
-      "$\\dfrac{23\\pi}{4}$",
-      "$-\\dfrac{37\\pi}{15}$",
-      "$\\dfrac{14\\pi}{3}$"
+      "$\\dfrac{31\\pi}{4}$",
+      "$\\dfrac{25\\pi}{3}$",
+      "$\\dfrac{35\\pi}{4}$"
     ],
     "answer": "②",
     "solution": "각에 $2\\pi$의 정수배를 더하거나 빼어 $0\\le\\theta<2\\pi$로 나타낸다.\n① $-\\dfrac{19\\pi}{12}+2\\pi=\\dfrac{5\\pi}{12}$이므로 제1사분면이다.\n② $\\dfrac{43\\pi}{6}-6\\pi=\\dfrac{7\\pi}{6}$이고 $\\pi<\\dfrac{7\\pi}{6}<\\dfrac{3\\pi}{2}$이므로 제3사분면이다.\n③ $\\dfrac{23\\pi}{4}-4\\pi=\\dfrac{7\\pi}{4}$이므로 제4사분면이다.\n④ $-\\dfrac{37\\pi}{15}+4\\pi=\\dfrac{23\\pi}{15}$이고 $\\dfrac{3\\pi}{2}=\\dfrac{45\\pi}{30}<\\dfrac{46\\pi}{30}=\\dfrac{23\\pi}{15}<2\\pi$이므로 제4사분면이다.\n⑤ $\\dfrac{14\\pi}{3}-4\\pi=\\dfrac{2\\pi}{3}$이므로 제2사분면이다.\n따라서 제3사분면에 있는 것은 ②이다.",
@@ -237,11 +237,11 @@ window.questionBank = [
     "wide": false,
     "content": "원점 $O$와 점 $P(-8,-6)$을 지나는 동경 $OP$가 나타내는 각의 크기를 $\\theta$라고 할 때, $\\cos\\theta\\times(\\tan\\theta-\\sin\\theta)$의 값은? [3점]",
     "choices": [
-      "$\\dfrac{27}{25}$",
-      "$-\\dfrac{3}{25}$",
-      "$\\dfrac{3}{25}$",
+      "$-\\dfrac{9}{5}$",
+      "$-\\dfrac{39}{25}$",
+      "$-\\dfrac{33}{25}$",
       "$-\\dfrac{27}{25}$",
-      "$\\dfrac{12}{5}$"
+      "$-\\dfrac{21}{25}$"
     ],
     "answer": "④",
     "solution": "$OP=\\sqrt{(-8)^2+(-6)^2}=10$이고 $P$는 제3사분면에 있다.\n$\\sin\\theta=\\dfrac{-6}{10}=-\\dfrac35$, $\\cos\\theta=\\dfrac{-8}{10}=-\\dfrac45$, $\\tan\\theta=\\dfrac{-6}{-8}=\\dfrac34$이다.\n따라서\n$\\cos\\theta(\\tan\\theta-\\sin\\theta)=-\\dfrac45\\left(\\dfrac34+\\dfrac35\\right)$\n$=-\\dfrac45\\times\\dfrac{27}{20}=-\\dfrac{27}{25}$이다.\n정답은 ④이다.",

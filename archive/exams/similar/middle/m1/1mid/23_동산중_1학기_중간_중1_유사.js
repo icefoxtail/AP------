@@ -616,10 +616,10 @@ window.questionBank = [
     "wide": false,
     "content": "$(-6)\\times \\square \\div \\left(-\\dfrac{3}{2}\\right)^2 = 4$일 때, $\\square$ 안에 알맞은 수는?",
     "choices": [
+      "$-3$",
       "$-\\dfrac{8}{3}$",
       "$-\\dfrac{9}{4}$",
-      "$-\\dfrac{2}{3}$",
-      "$\\dfrac{3}{2}$",
+      "$-2$",
       "$-\\dfrac{3}{2}$"
     ],
     "answer": "⑤",

@@ -315,7 +315,11 @@ window.examData = {
       ],
       "answer": "③",
       "solution": "[원문 조건 및 구할 대상]\n일차부등식 $3x \\ge a+8$의 해가 수직선 그림에 나타난 $x \\ge 3$과 같을 때, 상수 $a$의 값을 구한다.\n\n[핵심 발상/공식]\n부등식을 정리하여 $x \\ge \\dfrac{a+8}{3}$ 꼴로 나타낸 후, 수직선의 경계값 3과 같다고 두고 $a$에 대한 일차방정식을 푼다.\n\n[연속 등식 및 중간 계산]\n1단계: 일차부등식 풀기\n$3x \\ge a + 8$\n양변을 양수 3으로 나눈다:\n$x \\ge \\dfrac{a + 8}{3}$\n2단계: 수직선 해 판독\n수직선 그림을 보면 3 위치에 채워진 동그라미가 있고 오른쪽으로 화살표가 그어져 있으므로 해는 $x \\ge 3$이다.\n3단계: 경계값 비교 방정식 수립 및 풀이\n$\\dfrac{a + 8}{3} = 3$\n양변에 3을 곱한다:\n$a + 8 = 9$\n$a = 9 - 8 = 1$\n\n[경우 나눔 및 선택지 검토]\n$a=1$을 대입하면 $3x \\ge 9 \\implies x \\ge 3$으로 완벽히 성립하며 선택지 ③번과 일치한다.\n\n[결론]\n따라서 정답은 ③이다.",
-      "question": "<p>10. $x$에 대한 일차부등식 $3x \\ge a+8$의 해가 다음 그림과 같을 때, 상수 $a$의 값은? [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q10.png\" alt=\"수직선 위의 해 x는 3 이상이다\" class=\"question-image\" /></p>"
+      "question": "<p>10. $x$에 대한 일차부등식 $3x \\ge a+8$의 해가 다음 그림과 같을 때, 상수 $a$의 값은? [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q10.png\" alt=\"수직선 위의 해 x는 3 이상이다\" class=\"question-image\" /></p>",
+      "solutionImage": "assets/images/20_풍덕중_1학기_기말_중2_수학/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 수직선에 3을 포함해 오른쪽으로 뻗는 해집합이 칠해져 있고 3은 닫힌 점이다.",
+      "solutionImageCaption": "3x≥a+8에서 x≥(a+8)/3이다. 수직선의 해가 x≥3이므로 경계를 같게 놓아 (a+8)/3=3이고 a+8=9에서 a=1이다. 따라서 답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 11,
@@ -379,7 +383,11 @@ window.examData = {
       ],
       "answer": "②",
       "solution": "그림에서 $\\overline{AB}=\\overline{CD}=5$, $\\overline{AD}=\\overline{BC}=7$이다. 두 쌍의 대변의 길이가 각각 같으므로 사각형 $ABCD$는 평행사변형이다.\n\n평행사변형의 이웃하는 두 내각의 합은 $180^\\circ$이다. 따라서\n$130^\\circ+x=180^\\circ$\n$x=50^\\circ$\n\n그러므로 정답은 ②이다.",
-      "question": "<p>12. 다음 $\\square\\mathrm{ABCD}$에서 $x$의 값은? [3점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q12.png\" alt=\"AB=CD=5, AD=BC=7, 각 A=130도, 각 B=x인 사각형 ABCD 그림\" class=\"question-image\" /></p>"
+      "question": "<p>12. 다음 $\\square\\mathrm{ABCD}$에서 $x$의 값은? [3점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q12.png\" alt=\"AB=CD=5, AD=BC=7, 각 A=130도, 각 B=x인 사각형 ABCD 그림\" class=\"question-image\" /></p>",
+      "solutionImage": "assets/images/20_풍덕중_1학기_기말_중2_수학/q12-solution.svg",
+      "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 꼭짓점 A의 각 130°, 꼭짓점 B의 각 x=50°가 표시되어 있고 변 AB 5, BC 7이 적혀 있으며 마주 보는 변에 같은 눈금이 있다.",
+      "solutionImageCaption": "두 쌍의 대변의 길이가 각각 같으므로(AB=CD=5, AD=BC=7) 사각형 ABCD는 평행사변형이다. 평행사변형에서 이웃하는 두 내각의 합은 180°이므로 130°+x=180°에서 x=50°이다. 따라서 답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 13,
@@ -415,7 +423,11 @@ window.examData = {
       "question": "<p>13. 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 $\\triangle\\mathrm{OCD}$의 둘레의 길이는? [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q13.png\" alt=\"평행사변형 대각선 교점 그림\" class=\"question-image\" /></p>",
       "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "B12",
-      "legacyLevelCompatibility": "UNKNOWN"
+      "legacyLevelCompatibility": "UNKNOWN",
+      "solutionImage": "assets/images/20_풍덕중_1학기_기말_중2_수학/q13-solution.svg",
+      "solutionImageAlt": "해설 그림: 평행사변형 ABCD의 두 대각선이 점 O에서 만나고 AB 4, AO 3, BO 4가 적혀 있으며 반대쪽의 OC 3, OD 4, CD 4도 적혀 있고 같은 길이의 선분에 같은 눈금이 있다.",
+      "solutionImageCaption": "평행사변형의 대변의 길이는 같으므로 CD=AB=4cm이다. 두 대각선은 서로를 이등분하므로 OC=(1/2)AC=3cm, OD=(1/2)BD=4cm이다. 따라서 △OCD의 둘레는 3+4+4=11cm이고 답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 14,
@@ -481,7 +493,11 @@ window.examData = {
       ],
       "answer": "③",
       "solution": "[원문 조건 및 구할 대상]\n둘레의 길이가 $42\\text{ cm}$이고 이웃하는 두 변의 길이의 비가 $3 : 4$인 평행사변형에서 변 $\\overline{\\mathrm{DC}}$의 길이를 구한다.\n\n[핵심 발상/공식]\n평행사변형의 대변의 길이는 같으므로 $\\overline{\\mathrm{DC}} = \\overline{\\mathrm{AB}}$이며, 둘레는 $2(\\overline{\\mathrm{AB}} + \\overline{\\mathrm{BC}}) = 42$이다.\n\n[연속 등식 및 중간 계산]\n1단계: 두 이웃하는 변의 합 구하기\n$2(\\overline{\\mathrm{AB}} + \\overline{\\mathrm{BC}}) = 42$\n$\\overline{\\mathrm{AB}} + \\overline{\\mathrm{BC}} = 21\\text{ cm}$\n2단계: 비례배분을 이용하여 $\\overline{\\mathrm{AB}}$ 구하기\n$\\overline{\\mathrm{AB}} : \\overline{\\mathrm{BC}} = 3 : 4$이므로:\n$\\overline{\\mathrm{AB}} = 21 \\times \\dfrac{3}{3 + 4} = 21 \\times \\dfrac{3}{7} = 9\\text{ cm}$\n3단계: $\\overline{\\mathrm{DC}}$의 길이 확정\n평행사변형에서 대변의 길이는 서로 같으므로:\n$\\overline{\\mathrm{DC}} = \\overline{\\mathrm{AB}} = 9\\text{ cm}$\n\n[경우 나눔 및 선택지 검토]\n$\\overline{\\mathrm{BC}} = 21 - 9 = 12\\text{ cm}$이고, 둘레 $= 2(9+12) = 42\\text{ cm}$로 검산 확인된다. 선택지 ③번과 일치한다.\n\n[결론]\n따라서 정답은 ③이다.",
-      "question": "<p>15. 다음 그림과 같은 평행사변형 $\\mathrm{ABCD}$의 둘레의 길이는 $42\\text{ cm}$이고 $\\overline{\\mathrm{AB}} : \\overline{\\mathrm{BC}} = 3 : 4$일 때, $\\overline{\\mathrm{DC}}$의 길이는? [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q15.png\" alt=\"평행사변형 ABCD 둘레 그림\" class=\"question-image\" /></p>"
+      "question": "<p>15. 다음 그림과 같은 평행사변형 $\\mathrm{ABCD}$의 둘레의 길이는 $42\\text{ cm}$이고 $\\overline{\\mathrm{AB}} : \\overline{\\mathrm{BC}} = 3 : 4$일 때, $\\overline{\\mathrm{DC}}$의 길이는? [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q15.png\" alt=\"평행사변형 ABCD 둘레 그림\" class=\"question-image\" /></p>",
+      "solutionImage": "assets/images/20_풍덕중_1학기_기말_중2_수학/q15-solution.svg",
+      "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 변 AB와 CD에 9, 변 BC와 DA에 12가 적혀 있고 마주 보는 변에 같은 눈금이 있다.",
+      "solutionImageCaption": "둘레가 42cm이므로 2(AB+BC)=42에서 AB+BC=21cm이다. AB:BC=3:4이므로 AB=21×3/7=9cm, BC=21×4/7=12cm이다. 평행사변형의 대변의 길이는 같으므로 DC=AB=9cm이다. 따라서 답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 16,
@@ -514,7 +530,11 @@ window.examData = {
       ],
       "answer": "①",
       "solution": "[원문 조건 및 구할 대상]\n전체 넓이가 $52\\text{ cm}^2$인 평행사변형 내부의 점 $\\mathrm{P}$에 대하여 $\\triangle\\mathrm{PAD} = 12\\text{ cm}^2$일 때, 마주 보는 삼각형 $\\triangle\\mathrm{PBC}$의 넓이를 구한다.\n\n[핵심 발상/공식]\n평행사변형 내부의 임의의 점 $\\mathrm{P}$에 대하여 위아래 마주 보는 두 삼각형의 넓이의 합은 평행사변형 전체 넓이의 $\\dfrac{1}{2}$이다:\n$\\triangle\\mathrm{PAD} + \\triangle\\mathrm{PBC} = \\dfrac{1}{2}\\square\\mathrm{ABCD}$\n\n[연속 등식 및 중간 계산]\n1단계: 마주 보는 삼각형 넓이의 합 계산\n$\\triangle\\mathrm{PAD} + \\triangle\\mathrm{PBC} = \\dfrac{1}{2} \\times 52 = 26\\text{ cm}^2$\n2단계: $\\triangle\\mathrm{PBC}$ 넓이 계산\n$\\triangle\\mathrm{PAD} = 12\\text{ cm}^2$이므로:\n$12 + \\triangle\\mathrm{PBC} = 26$\n$\\triangle\\mathrm{PBC} = 26 - 12 = 14\\text{ cm}^2$\n\n[경우 나눔 및 선택지 검토]\n$14\\text{ cm}^2$는 선택지 ①번에 해당한다.\n\n[결론]\n따라서 정답은 ①이다.",
-      "question": "<p>16. 평행사변형 $\\mathrm{ABCD}$의 넓이는 $52\\text{ cm}^2$이고, $\\triangle\\mathrm{PAD}$의 넓이가 $12\\text{ cm}^2$일 때, $\\triangle\\mathrm{PBC}$의 넓이는? [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q16.png\" alt=\"평행사변형 내부의 점 P 그림\" class=\"question-image\" /></p>"
+      "question": "<p>16. 평행사변형 $\\mathrm{ABCD}$의 넓이는 $52\\text{ cm}^2$이고, $\\triangle\\mathrm{PAD}$의 넓이가 $12\\text{ cm}^2$일 때, $\\triangle\\mathrm{PBC}$의 넓이는? [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q16.png\" alt=\"평행사변형 내부의 점 P 그림\" class=\"question-image\" /></p>",
+      "solutionImage": "assets/images/20_풍덕중_1학기_기말_중2_수학/q16-solution.svg",
+      "solutionImageAlt": "해설 그림: 평행사변형 ABCD 안의 점 P에서 네 꼭짓점으로 선분이 그어져 있고 위쪽 삼각형 PAD에 12, 아래쪽 삼각형 PBC에 14가 적혀 있으며 두 삼각형이 칠해져 있다.",
+      "solutionImageCaption": "평행사변형 내부의 점 P에서 마주 보는 두 삼각형 △PAD와 △PBC의 넓이의 합은 평행사변형 넓이의 절반이다. 따라서 △PAD+△PBC=52÷2=26cm²이다. △PAD=12cm²이므로 △PBC=26−12=14cm²이다. 답은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 17,
@@ -547,7 +567,11 @@ window.examData = {
       ],
       "answer": "②, ⑤",
       "solution": "[원문 조건 및 구할 대상]\n평행사변형이 마름모가 되기 위한 조건에 부합하지 않는 것을 고른다.\n\n[핵심 발상/공식]\n평행사변형이 마름모가 되는 조건은\n1) 이웃하는 두 변의 길이가 같다.\n2) 두 대각선이 서로 수직이다.\n3) 대각선이 내각을 이등분한다.\n두 대각선의 길이가 같거나 대각선 절반의 길이가 같은 것은 '직사각형'이 되는 조건이다.\n\n[연속 등식 및 중간 계산]\n1단계: ① $\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AD}}$ : 이웃하는 두 변의 길이가 같으므로 마름모가 되는 조건이다.\n2단계: ② $\\angle\\mathrm{OAD} = \\angle\\mathrm{ODA}$ : $\\triangle\\mathrm{OAD}$가 이등변삼각형이 되어 $\\overline{\\mathrm{OA}} = \\overline{\\mathrm{OD}}$가 되므로, 대각선의 길이가 같아져 직사각형이 되는 조건이다. 따라서 마름모 조건이 아니다 (정답 후보 1).\n3단계: ③ $\\overline{\\mathrm{BD}} \\perp \\overline{\\mathrm{AC}}$ : 두 대각선이 직교하므로 마름모가 되는 조건이다.\n4단계: ④ $\\angle\\mathrm{OBA} = \\angle\\mathrm{OBC}$ : 대각선이 내각을 이등분하므로 마름모가 되는 조건이다.\n5단계: ⑤ $\\overline{\\mathrm{AO}} = \\overline{\\mathrm{BO}}$ : 평행사변형에서 $\\overline{\\mathrm{AO}} = \\overline{\\mathrm{CO}}, \\overline{\\mathrm{BO}} = \\overline{\\mathrm{DO}}$이므로 $\\overline{\\mathrm{AC}} = \\overline{\\mathrm{BD}}$가 되어 대각선의 길이가 같은 직사각형이 되는 조건이다. 따라서 마름모 조건이 아니다 (정답 후보 2).\n\n[경우 나눔 및 선택지 검토]\n②번과 ⑤번은 평행사변형이 직사각형이 되는 조건이며, 마름모임을 보장하지 않는다. 따라서 조건에 해당하지 않는 것을 모두 고르면 ②, ⑤이다.\n\n[결론]\n따라서 정답은 ②, ⑤이다.",
-      "question": "<p>17. 평행사변형 $\\mathrm{ABCD}$가 마름모가 되는 조건이 아닌 것을 모두 고르시오. [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q17.png\" alt=\"평행사변형 ABCD 그림\" class=\"question-image\" /></p>"
+      "question": "<p>17. 평행사변형 $\\mathrm{ABCD}$가 마름모가 되는 조건이 아닌 것을 모두 고르시오. [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q17.png\" alt=\"평행사변형 ABCD 그림\" class=\"question-image\" /></p>",
+      "solutionImage": "assets/images/20_풍덕중_1학기_기말_중2_수학/q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 마름모 ABCD의 두 대각선이 점 O에서 직각으로 만나고 네 변에 같은 눈금이 있으며 꼭짓점 B에서 대각선 BD가 각을 이등분해 두 각에 같은 표시가 있다.",
+      "solutionImageCaption": "예: 마름모가 되는 경우의 평행사변형 그림이다. 평행사변형이 마름모가 되려면 이웃하는 두 변의 길이가 같거나(①), 두 대각선이 서로 수직이거나(③), 대각선이 내각을 이등분해야(④) 한다. 반면 ② ∠OAD=∠ODA는 OA=OD여서 두 대각선의 길이가 같다는 조건이고 ⑤도 직사각형이 되는 조건이다. 따라서 마름모가 되는 조건이 아닌 것은 ②, ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 18,
@@ -580,7 +604,11 @@ window.examData = {
       ],
       "answer": "④",
       "solution": "[원문 조건 및 구할 대상]\n직사각형 $\\mathrm{ABCD}$에서 $\\angle\\mathrm{OBC} = 40^\\circ$일 때 대각선의 중심각 $\\angle x$와 내각 부분각 $\\angle y$의 합 $\\angle x + \\angle y$를 구한다.\n\n[핵심 발상/공식]\n직사각형의 두 대각선은 길이가 같고 서로를 이등분하므로 $\\overline{\\mathrm{OA}} = \\overline{\\mathrm{OB}} = \\overline{\\mathrm{OC}} = \\overline{\\mathrm{OD}}$이다. 따라서 생기는 네 삼각형은 모두 이등변삼각형이다.\n\n[연속 등식 및 중간 계산]\n1단계: $\\angle x$ 구하기\n$\\triangle\\mathrm{OBC}$에서 $\\overline{\\mathrm{OB}} = \\overline{\\mathrm{OC}}$이므로 밑각의 크기가 같다:\n$\\angle\\mathrm{OCB} = \\angle\\mathrm{OBC} = 40^\\circ$\n삼각형의 세 내각의 합은 $180^\\circ$이므로:\n$\\angle x = 180^\\circ - (40^\\circ + 40^\\circ) = 180^\\circ - 80^\\circ = 100^\\circ$\n2단계: $\\angle y$ 구하기\n직사각형의 한 내각은 $90^\\circ$이므로:\n$\\angle\\mathrm{ABO} = 90^\\circ - \\angle\\mathrm{OBC} = 90^\\circ - 40^\\circ = 50^\\circ$\n$\\triangle\\mathrm{OAB}$에서 $\\overline{\\mathrm{OA}} = \\overline{\\mathrm{OB}}$이므로:\n$\\angle y = \\angle\\mathrm{OAB} = \\angle\\mathrm{ABO} = 50^\\circ$\n3단계: $\\angle x + \\angle y$ 계산\n$\\angle x + \\angle y = 100^\\circ + 50^\\circ = 150^\\circ$\n\n[경우 나눔 및 선택지 검토]\n계산된 $150^\\circ$는 선택지 ④번과 일치한다.\n\n[결론]\n따라서 정답은 ④이다.",
-      "question": "<p>18. 직사각형 $\\mathrm{ABCD}$에서 두 대각선의 교점을 $\\mathrm{O}$라고 할 때, $\\angle x + \\angle y$의 값은? [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q18.png\" alt=\"직사각형 대각선 교점 그림\" class=\"question-image\" /></p>"
+      "question": "<p>18. 직사각형 $\\mathrm{ABCD}$에서 두 대각선의 교점을 $\\mathrm{O}$라고 할 때, $\\angle x + \\angle y$의 값은? [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q18.png\" alt=\"직사각형 대각선 교점 그림\" class=\"question-image\" /></p>",
+      "solutionImage": "assets/images/20_풍덕중_1학기_기말_중2_수학/q18-solution.svg",
+      "solutionImageAlt": "해설 그림: 직사각형 ABCD의 두 대각선이 점 O에서 만나고 네 선분 OA, OB, OC, OD에 같은 눈금이 있다. 각 OBC와 각 OCB에 같은 크기 40°, 각 BOC에 x=100°, 각 ABO에 y=50°가 표시되어 있다.",
+      "solutionImageCaption": "직사각형의 두 대각선은 길이가 같고 서로를 이등분하므로 OB=OC이다. △OBC에서 ∠OCB=∠OBC=40°이므로 ∠x=∠BOC=180°−2×40°=100°이다. ∠ABC=90°이므로 ∠y=∠ABO=90°−40°=50°이다. 따라서 ∠x+∠y=100°+50°=150°이고 답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 19,
@@ -613,7 +641,11 @@ window.examData = {
       ],
       "answer": "②",
       "solution": "[원문 조건 및 구할 대상]\n대각선의 길이가 $8\\text{ cm}$인 정사각형 $\\square\\mathrm{ABCD}$의 넓이를 구한다.\n\n[핵심 발상/공식]\n정사각형은 두 대각선의 길이가 같고 서로 수직이등분하므로 마름모의 넓이 공식 $\\dfrac{1}{2} \\times (\\text{대각선}) \\times (\\text{대각선})$을 적용할 수 있다.\n\n[연속 등식 및 중간 계산]\n1단계: 대각선 성질 확인\n정사각형의 두 대각선은 길이가 같으므로 $\\overline{\\mathrm{BD}} = \\overline{\\mathrm{AC}} = 8\\text{ cm}$이고, 두 대각선은 서로 수직이다.\n2단계: 넓이 계산\n$\\text{넓이} = \\dfrac{1}{2} \\times \\overline{\\mathrm{AC}} \\times \\overline{\\mathrm{BD}}$\n$= \\dfrac{1}{2} \\times 8 \\times 8 = 32\\text{ cm}^2$\n\n[경우 나눔 및 선택지 검토]\n계산된 넓이는 $32\\text{ cm}^2$이며 선택지 ②번과 일치한다.\n\n[결론]\n따라서 정답은 ②이다.",
-      "question": "<p>19. 다음 그림과 같은 정사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AC}} = 8\\text{ cm}$일 때, $\\square\\mathrm{ABCD}$의 넓이는? [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q19.png\" alt=\"정사각형 대각선 그림\" class=\"question-image\" /></p>"
+      "question": "<p>19. 다음 그림과 같은 정사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AC}} = 8\\text{ cm}$일 때, $\\square\\mathrm{ABCD}$의 넓이는? [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q19.png\" alt=\"정사각형 대각선 그림\" class=\"question-image\" /></p>",
+      "solutionImage": "assets/images/20_풍덕중_1학기_기말_중2_수학/q19-solution.svg",
+      "solutionImageAlt": "해설 그림: 정사각형 ABCD의 두 대각선이 점 O에서 직각으로 만나고 네 선분 OA, OB, OC, OD에 4가 적혀 있으며 정사각형 안이 칠해져 넓이 32가 적혀 있다.",
+      "solutionImageCaption": "정사각형의 두 대각선은 길이가 같고 서로를 수직이등분하므로 BD=AC=8cm이다. 따라서 넓이는 대각선을 이용한 마름모의 넓이 공식으로 (1/2)×8×8=32cm²이다. 답은 ②이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 20,
@@ -646,7 +678,11 @@ window.examData = {
       ],
       "answer": "⑤",
       "solution": "[원문 조건 및 구할 대상]\n그림에서 $\\overline{\\mathrm{AC}} // \\overline{\\mathrm{DE}}$이고 사각형 $\\square\\mathrm{ABCD} = 36\\text{ cm}^2$이며 $\\overline{\\mathrm{BC}} : \\overline{\\mathrm{CE}} = 5 : 4$일 때, $\\triangle\\mathrm{ABC}$의 넓이를 구한다.\n\n[핵심 발상/공식]\n평행선 사이의 등적변형:\n$\\overline{\\mathrm{AC}} // \\overline{\\mathrm{DE}}$이므로 밑변 $\\overline{\\mathrm{AC}}$를 공유하는 $\\triangle\\mathrm{ACD}$와 $\\triangle\\mathrm{ACE}$의 넓이가 같다.\n따라서 $\\square\\mathrm{ABCD} = \\triangle\\mathrm{ABC} + \\triangle\\mathrm{ACD} = \\triangle\\mathrm{ABC} + \\triangle\\mathrm{ACE} = \\triangle\\mathrm{ABE}$이다.\n\n[연속 등식 및 중간 계산]\n1단계: 사각형을 큰 삼각형으로 등적변형\n$\\square\\mathrm{ABCD} = \\triangle\\mathrm{ABE} = 36\\text{ cm}^2$\n2단계: 밑변의 비를 이용한 넓이 비례배분\n$\\triangle\\mathrm{ABC}$와 $\\triangle\\mathrm{ACE}$는 꼭짓점 $\\mathrm{A}$를 공유하므로 높이가 같다.\n따라서 두 삼각형의 넓이의 비는 밑변의 길이의 비와 같다:\n$\\triangle\\mathrm{ABC} : \\triangle\\mathrm{ACE} = \\overline{\\mathrm{BC}} : \\overline{\\mathrm{CE}} = 5 : 4$\n3단계: $\\triangle\\mathrm{ABC}$의 넓이 계산\n$\\triangle\\mathrm{ABC} = \\triangle\\mathrm{ABE} \\times \\dfrac{5}{5 + 4} = 36 \\times \\dfrac{5}{9} = 20\\text{ cm}^2$\n\n[경우 나눔 및 선택지 검토]\n$\\triangle\\mathrm{ACE} = 36 \\times \\dfrac{4}{9} = 16\\text{ cm}^2$이고, 합은 $20 + 16 = 36\\text{ cm}^2$이다. $\\triangle\\mathrm{ABC}$의 넓이는 $20\\text{ cm}^2$로 선택지 ⑤번과 일치한다.\n\n[결론]\n따라서 정답은 ⑤이다.",
-      "question": "<p>20. $\\square\\mathrm{ABCD} = 36\\text{ cm}^2$이고 $\\overline{\\mathrm{BC}} : \\overline{\\mathrm{CE}} = 5 : 4$일 때, $\\triangle\\mathrm{ABC}$의 넓이는? [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q20.png\" alt=\"평행선과 삼각형의 넓이 그림\" class=\"question-image\" /></p>"
+      "question": "<p>20. $\\square\\mathrm{ABCD} = 36\\text{ cm}^2$이고 $\\overline{\\mathrm{BC}} : \\overline{\\mathrm{CE}} = 5 : 4$일 때, $\\triangle\\mathrm{ABC}$의 넓이는? [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q20.png\" alt=\"평행선과 삼각형의 넓이 그림\" class=\"question-image\" /></p>",
+      "solutionImage": "assets/images/20_풍덕중_1학기_기말_중2_수학/q20-solution.svg",
+      "solutionImageAlt": "해설 그림: 사각형 ABCD와 변 BC를 연장한 점 E가 있고 선분 AC와 DE가 평행하다. 삼각형 ABE가 칠해져 넓이 36이 적혀 있고 BC 5, CE 4가 적혀 있다.",
+      "solutionImageCaption": "예: BC:CE=5:4가 되도록 그린 그림이다. AC∥DE이므로 밑변 AC가 공통인 △ACD와 △ACE의 넓이가 같다. 따라서 □ABCD=△ABC+△ACD=△ABC+△ACE=△ABE=36cm²이다(칠한 부분). △ABC와 △ABE는 높이가 같고 밑변의 비가 BC:BE=5:9이므로 △ABC=36×5/9=20cm²이다. 답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 21,
@@ -791,7 +827,11 @@ window.examData = {
       "choices": [],
       "answer": "1) △ABC = △DBC (이유: 밑변 BC가 공통이고, AD // BC이므로 높이가 같다.) / 2) △AOB = △ABC - △OBC이고, △DOC = △DBC - △OBC이다. 1)에서 △ABC = △DBC이므로 양변에서 공통인 △OBC의 넓이를 빼면 △AOB = △DOC이다.",
       "solution": "[원문 조건 및 구할 대상]\n사다리꼴 $\\mathrm{ABCD}$ ($\\overline{\\mathrm{AD}} // \\overline{\\mathrm{BC}}$)에서 대각선의 교점이 $\\mathrm{O}$일 때,\n1) $\\triangle\\mathrm{ABC}$와 $\\triangle\\mathrm{DBC}$의 넓이 비교 및 이유 설명\n2) $\\triangle\\mathrm{AOB} = \\triangle\\mathrm{DOC}$인 이유 증명\n\n[핵심 발상/공식]\n평행선 사이의 삼각형의 넓이: 밑변이 같고 평행선 사이에 있으므로 높이가 같아 넓이가 같다.\n\n[연속 등식 및 중간 계산]\n1단계: 1) $\\triangle\\mathrm{ABC}$와 $\\triangle\\mathrm{DBC}$의 넓이 비교\n- 결론: $\\triangle\\mathrm{ABC} = \\triangle\\mathrm{DBC}$\n- 이유: 밑변 $\\overline{\\mathrm{BC}}$를 공통으로 하고, $\\overline{\\mathrm{AD}} // \\overline{\\mathrm{BC}}$이므로 두 삼각형의 높이가 서로 같다.\n2단계: 2) $\\triangle\\mathrm{AOB} = \\triangle\\mathrm{DOC}$인 이유 설명\n$\\triangle\\mathrm{AOB}$와 $\\triangle\\mathrm{DOC}$의 넓이는 각각 다음과 같이 표현할 수 있다:\n$\\triangle\\mathrm{AOB} = \\triangle\\mathrm{ABC} - \\triangle\\mathrm{OBC}$\n$\\triangle\\mathrm{DOC} = \\triangle\\mathrm{DBC} - \\triangle\\mathrm{OBC}$\n1)에 의해 $\\triangle\\mathrm{ABC} = \\triangle\\mathrm{DBC}$이므로, 양변에서 공통 부분인 $\\triangle\\mathrm{OBC}$의 넓이를 빼면:\n$\\triangle\\mathrm{ABC} - \\triangle\\mathrm{OBC} = \\triangle\\mathrm{DBC} - \\triangle\\mathrm{OBC}$\n따라서 $\\triangle\\mathrm{AOB} = \\triangle\\mathrm{DOC}$이다.\n\n[경우 나눔 및 선택지 검토]\n기하 증명의 논리 단계가 완벽히 구성되었음을 확인한다.\n\n[결론]\n1) $\\triangle\\mathrm{ABC} = \\triangle\\mathrm{DBC}$ (이유: 밑변 $\\overline{\\mathrm{BC}}$가 공통이고, $\\overline{\\mathrm{AD}} // \\overline{\\mathrm{BC}}$이므로 높이가 같다.)\n2) $\\triangle\\mathrm{AOB} = \\triangle\\mathrm{ABC} - \\triangle\\mathrm{OBC}$이고, $\\triangle\\mathrm{DOC} = \\triangle\\mathrm{DBC} - \\triangle\\mathrm{OBC}$이다. 1)에서 $\\triangle\\mathrm{ABC} = \\triangle\\mathrm{DBC}$이므로 양변에서 공통인 $\\triangle\\mathrm{OBC}$의 넓이를 빼면 $\\triangle\\mathrm{AOB} = \\triangle\\mathrm{DOC}$이다.",
-      "question": "<p>&lt;서술형 4&gt;</p><p>오른쪽 그림과 같이 $\\overline{\\mathrm{AD}} // \\overline{\\mathrm{BC}}$인 사다리꼴 $\\mathrm{ABCD}$에서 두 대각선의 교점을 $\\mathrm{O}$라고 할 때, $\\triangle\\mathrm{ABC}$와 $\\triangle\\mathrm{DBC}$의 넓이를 비교하고, $\\triangle\\mathrm{AOB} = \\triangle\\mathrm{DOC}$인 이유를 설명하시오. [5점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/s04.png\" alt=\"사다리꼴 대각선 교점 그림\" class=\"question-image\" /></p><p>1) $\\triangle\\mathrm{ABC}$와 $\\triangle\\mathrm{DBC}$의 넓이를 비교하고, 이유를 설명하시오. [2점]</p><p>2) $\\triangle\\mathrm{AOB} = \\triangle\\mathrm{DOC}$인 이유를 설명하시오. [3점]</p>"
+      "question": "<p>&lt;서술형 4&gt;</p><p>오른쪽 그림과 같이 $\\overline{\\mathrm{AD}} // \\overline{\\mathrm{BC}}$인 사다리꼴 $\\mathrm{ABCD}$에서 두 대각선의 교점을 $\\mathrm{O}$라고 할 때, $\\triangle\\mathrm{ABC}$와 $\\triangle\\mathrm{DBC}$의 넓이를 비교하고, $\\triangle\\mathrm{AOB} = \\triangle\\mathrm{DOC}$인 이유를 설명하시오. [5점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/s04.png\" alt=\"사다리꼴 대각선 교점 그림\" class=\"question-image\" /></p><p>1) $\\triangle\\mathrm{ABC}$와 $\\triangle\\mathrm{DBC}$의 넓이를 비교하고, 이유를 설명하시오. [2점]</p><p>2) $\\triangle\\mathrm{AOB} = \\triangle\\mathrm{DOC}$인 이유를 설명하시오. [3점]</p>",
+      "solutionImage": "assets/images/20_풍덕중_1학기_기말_중2_수학/q25-solution.svg",
+      "solutionImageAlt": "해설 그림: 사다리꼴 ABCD의 평행한 두 변 AD와 BC 사이에서 두 대각선이 점 O에서 만나고 양옆의 삼각형 AOB와 DOC가 같은 색으로 칠해져 있으며 같은 넓이 S가 적혀 있다.",
+      "solutionImageCaption": "AD∥BC이므로 밑변 BC가 공통이고 높이가 같아 △ABC=△DBC이다. △AOB=△ABC−△OBC이고 △DOC=△DBC−△OBC이다. △ABC=△DBC이므로 양변에서 같은 △OBC를 빼면 △AOB=△DOC이다. 그림에서 두 삼각형(같은 넓이 S)이 칠해져 있다.",
+      "solutionImageSize": "full"
     }
   ]
 };

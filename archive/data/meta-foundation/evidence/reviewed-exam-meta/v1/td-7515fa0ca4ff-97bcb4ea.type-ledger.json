@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-7515fa0ca4ff-97bcb4ea",
+  "sourceArchiveFile": "original/high/h2/1mid/21_금당고_1학기_중간_고2_확률과통계.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-r-20261120",
+    "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_7ebd727acf9c9d4782f21be78335957ba42733808b0ffee2e1e06542d6120399",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": null,
+      "step": "중복조합 2H10을 조합으로 바꾸고 중복순열 2^2를 더한다.",
+      "note": "Claude(Sonnet 5.5) 직접 판독 재판정 2026-11-20: 문항 발문·보기·해설을 읽고 문항의 실제 과정에서 쓰는 등록부 키로 판정",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_86523be2fe68b95d3e89dca3078d6d8ce1fe0987b311fb4066e9db31ddc9cc6e",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": null,
+      "step": "기명 투표는 3^5의 중복순열로, 무기명 투표는 득표수 분배로 세어 합한다.",
+      "note": "Claude(Sonnet 5.5) 직접 판독 재판정 2026-11-20: 문항 발문·보기·해설을 읽고 문항의 실제 과정에서 쓰는 등록부 키로 판정",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    }
+  ]
+}

@@ -424,7 +424,7 @@ window.questionBank = [
     "originalCategory": "확률과 통계",
     "tags": [],
     "image": "",
-    "solutionImage": "assets/images/19_제일고_2학기_중간_고2_확률과통계/q09-solution.svg",
+    "solutionImage": "assets/images/19_제일고_2학기_중간_고2_확률과통계/q9-solution-v2.svg",
     "level": "중",
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
@@ -451,8 +451,9 @@ window.questionBank = [
     "rpmL3": null,
     "rpmL4": null,
     "rpmSemanticStatus": "RPM_COVERAGE_GAP_META_ONLY",
-    "solutionImageAlt": "0부터 4까지 직선 확률밀도함수의 사다리꼴과 1부터 3까지 색칠한 구간 넓이",
-    "solutionImageCaption": "전체 넓이 16a=1, 색칠한 1~3 구간 넓이 8a=1/2."
+    "solutionImageAlt": "해설 그림: 오른쪽 위로 올라가는 선분 모양의 확률밀도함수 그래프이며 x=1부터 x=3까지 아래쪽이 사다리꼴로 칠해져 있다.",
+    "solutionImageCaption": "전체 넓이는 양 끝의 높이 2a, 6a와 폭 4인 사다리꼴이므로 (2a+6a)/2×4=16a=1에서 a=1/16이고, 그림은 이 값으로 그렸다. 색칠한 1≤x≤3은 높이 f(1)=3/16과 f(3)=5/16, 폭 2인 사다리꼴이다. 넓이는 (3/16+5/16)/2×2=1/2이다. q/p=1/2이므로 p+q=3이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -726,7 +727,7 @@ window.questionBank = [
     "originalCategory": "확률과 통계",
     "tags": [],
     "image": "",
-    "solutionImage": "",
+    "solutionImage": "assets/images/19_제일고_2학기_중간_고2_확률과통계/q15-solution.svg",
     "level": "중",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
@@ -752,7 +753,10 @@ window.questionBank = [
     "curriculum": "2015",
     "rpmL3": "확률의 성질",
     "rpmL4": "사건의 합",
-    "rpmSemanticStatus": "EXACT_ACTIVE"
+    "rpmSemanticStatus": "EXACT_ACTIVE",
+    "solutionImageAlt": "해설 그림: 겹침 1/6을 한 번만 세는 합집합 2/3이 보여 덧셈정리에서 교집합을 빼는 이유가 확인된다.",
+    "solutionImageCaption": "A를 주사위 눈이 3의 배수인 사건, B를 동전이 앞면인 사건으로 본다. P(A)=1/3, P(B)=1/2이고 독립이므로 P(A∩B)=1/6이다. 그림은 A만 1/6, 겹침 1/6, B만 1/3, 바깥 1/3이다. 색칠한 합집합은 겹침을 한 번만 세어 1/6+1/6+1/3=2/3이고 1/3+1/2−1/6=2/3과 같다. p=3, q=2이므로 p+q=5이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,

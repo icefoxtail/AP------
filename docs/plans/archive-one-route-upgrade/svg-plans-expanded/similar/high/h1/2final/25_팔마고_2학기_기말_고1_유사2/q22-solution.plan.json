@@ -1,0 +1,87 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -4,
+   8,
+   -4,
+   8
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "LINE",
+    "coefficients": [
+     "1",
+     "1/3"
+    ],
+    "domain": [
+     "-4",
+     "8"
+    ],
+    "color": "BLUE",
+    "label": "y=x/3+1"
+   },
+   {
+    "id": "g",
+    "inverseOf": "f",
+    "domain": [
+     "-1/3",
+     "11/3"
+    ],
+    "color": "WARM",
+    "label": "y=3x-3"
+   },
+   {
+    "id": "yx",
+    "kind": "LINE",
+    "coefficients": [
+     "0",
+     "1"
+    ],
+    "domain": [
+     "-4",
+     "8"
+    ],
+    "style": "DASHED",
+    "label": "y=x"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "x": "3",
+     "y": "2",
+     "coordinates": true,
+     "labelDirection": "SE"
+    },
+    {
+     "id": "B",
+     "x": "2",
+     "y": "3",
+     "coordinates": true,
+     "labelDirection": "NW"
+    }
+   ]
+  }
+ },
+ "caption": "(1) y=x/3+1에서 x와 y를 바꾸면 y=3x-3이므로 f⁻¹(x)=3x-3이다. 두 그래프는 직선 y=x에 대하여 대칭이다. (2) h(x)=ax+b라 하면 (h∘f⁻¹)(x)=3ax-3a+b이고 g(x)=6x-1과 같으므로 3a=6, -3a+b=-1에서 a=2, b=5이다. 따라서 h(x)=2x+5이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "f(x)=x/3+1과 그 역함수",
+   "mappedTo": [
+    "graphPlan"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "f의 그래프와 역함수 그래프, 대칭축 y=x"
+ ]
+}

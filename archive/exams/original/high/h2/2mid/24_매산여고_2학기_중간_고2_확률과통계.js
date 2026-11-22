@@ -351,7 +351,12 @@ window.questionBank=[
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_중간_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 주머니 A를 고를 확률 1/6, B를 고를 확률 5/6에서 갈라지는 수형도이다. A에서는 흰 공 3/5, 검은 공 2/5이고 B에서는 흰 공 2/5, 검은 공 3/5이다. 끝에 네 경우의 확률 1/10, 1/15, 1/3, 1/2이 곱셈식과 함께 적혀 있다.",
+    "solutionImageCaption": "주사위 눈이 6이면 주머니 A(가지 A, 확률 1/6), 6이 아니면 주머니 B(가지 B, 확률 5/6)에서 공을 꺼내는 수형도이다. 흰 공이 나오는 두 경로는 A 쪽 1/6×3/5=1/10과 B 쪽 5/6×2/5=1/3이고 합 13/30이 조건의 전체 확률이다. 이 중 A 쪽 경로의 비율이 (1/10)/(13/30)=3/13이므로 n=3, m=13이고 m+n=16이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 12,

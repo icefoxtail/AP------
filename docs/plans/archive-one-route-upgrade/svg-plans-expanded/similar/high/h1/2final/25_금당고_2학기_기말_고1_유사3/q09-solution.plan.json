@@ -1,0 +1,77 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "12",
+   "3"
+  ],
+  "denominator": [
+   "2",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -7,
+   5
+  ],
+  "viewport": [
+   -7,
+   5,
+   -3,
+   9
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "asymptoteLabelAt": "END",
+  "overlays": {
+   "points": [
+    {
+     "id": "C",
+     "x": "-2",
+     "y": "3",
+     "coordinates": true
+    },
+    {
+     "id": "P",
+     "x": "1",
+     "y": "5",
+     "coordinates": true
+    },
+    {
+     "id": "cr",
+     "curveX": "0",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cl",
+     "point": "cr",
+     "text": "y=6/(x+2)+3",
+     "labelKind": "MATH",
+     "direction": "E"
+    }
+   ]
+  },
+  "hideLabels": [
+   "formula"
+  ]
+ },
+ "pointNames": {
+  "C": "C",
+  "P": "P"
+ },
+ "caption": "y=k/x를 x축으로 -2, y축으로 3만큼 평행이동하면 y=k/(x+2)+3이다. 점 (1,5)를 지나므로 5=k/3+3에서 k=6이다. 점근선은 x=-2, y=3이므로 p=-2, q=3이고 k+p+q=7이므로 답은 ③이다.",
+ "sourceConditions": [
+  "y=k/x를 x축 방향 -2, y축 방향 3만큼 평행이동한 그래프가 점 (1,5)를 지난다"
+ ],
+ "newVisualInformation": [
+  "점근선 x=-2, y=3과 그 교점 C(-2,3)",
+  "점 (1,5)를 지나는 곡선"
+ ]
+}

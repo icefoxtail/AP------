@@ -2,6 +2,33 @@
   "permissions": {
     "allow": [
       "Bash(node -e ' *)"
+    ],
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/.env.local)",
+      "Read(**/.env.*.local)",
+      "Read(**/.env.production)",
+      "Read(**/.dev.vars)",
+      "Bash(git push*--force*)",
+      "Bash(git -C * push*--force*)",
+      "Bash(git push* -f)",
+      "Bash(git push* -f *)",
+      "Bash(git -C * push* -f)",
+      "Bash(git -C * push* -f *)",
+      "Bash(wrangler deploy*)",
+      "Bash(npx wrangler deploy*)",
+      "Bash(wrangler *--remote*)",
+      "Bash(npx wrangler *--remote*)",
+      "PowerShell(git push*--force*)",
+      "PowerShell(git -C * push*--force*)",
+      "PowerShell(git push* -f)",
+      "PowerShell(git push* -f *)",
+      "PowerShell(git -C * push* -f)",
+      "PowerShell(git -C * push* -f *)",
+      "PowerShell(wrangler deploy*)",
+      "PowerShell(npx wrangler deploy*)",
+      "PowerShell(wrangler *--remote*)",
+      "PowerShell(npx wrangler *--remote*)"
     ]
   },
   "subagentPromptCacheTtl": "1h",

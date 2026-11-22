@@ -613,7 +613,7 @@ window.questionBank = [
       "3"
     ],
     "answer": "②",
-    "solution": "(가)의 극한이 유한한 값 $4$이므로 분자는 $x=1$에서 $0$이어야 한다.\n$f(1)-g(1)+2=0$이고,\n$\\displaystyle\\lim_{x\\to1}\\frac{\\{f(x)-g(x)+2\\}-\\{f(1)-g(1)+2\\}}{x-1}$\n$=f'(1)-g'(1)=4$이다.\n\n(나)에서도 분자가 $x=1$에서 $0$이어야 하므로\n$f(1)+g(1)=0$이다.\n두 식을 풀면\n$f(1)=-1,\\qquad g(1)=1$이다.\n\n이제 (나)의 분자를\n$f(x^2)+x^2g(x^2)$\n$=\\{f(x^2)-f(1)\\}+x^2\\{g(x^2)-g(1)\\}+(x^2-1)$\n로 나눈다.\n이를 $x-1$로 나누어 $x\\to1$로 보내면\n첫째 항은 $2f'(1)$,\n둘째 항은 $2g'(1)$,\n셋째 항은 $2$로 수렴한다.\n따라서\n$2f'(1)+2g'(1)+2=3$\n이고\n$f'(1)+g'(1)=\\frac12$이다.\n여기에 $f'(1)-g'(1)=4$를 더하면\n$2f'(1)=\\frac92$\n이므로\n$f'(1)=\\frac94$이다.\n\n따라서 정답은 ②이다.",
+    "solution": "(가)의 극한이 유한하므로 분자가 $x=1$에서 $0$이다.\n$$\nf(1)-g(1)+2=0.\n$$\n따라서 미분계수의 정의에서\n$$\nf'(1)-g'(1)=4. \\qquad (1)\n$$\n(나) 역시 분모가 $0$으로 가므로\n$$\nf(1)+g(1)=0.\n$$\n두 등식을 풀면 $f(1)=-1$, $g(1)=1$이다.\n\n이제 (나)의 분자를 $x=1$에서의 함수값만큼 빼고 더한다.\n$$\n\\begin{aligned}\nf(x^2)+x^2g(x^2)\n&=[f(x^2)-f(1)]\\\\\n&\\quad+x^2[g(x^2)-g(1)]\\\\\n&\\quad+(x^2-1)g(1).\n\\end{aligned}\n$$\n따라서 $x\\ne1$에서\n$$\n\\begin{aligned}\n\\frac{f(x^2)+x^2g(x^2)}{x-1}\n&=\\frac{f(x^2)-f(1)}{x^2-1}(x+1)\\\\\n&\\quad+x^2\\frac{g(x^2)-g(1)}{x^2-1}(x+1)\\\\\n&\\quad+(x+1)g(1).\n\\end{aligned}\n$$\n$x\\to1$이면 $x^2\\to1$이고 $x+1\\to2$이므로\n$$\n\\begin{aligned}\n3&=2f'(1)+2g'(1)+2g(1)\\\\\n&=2f'(1)+2g'(1)+2,\\\\\nf'(1)+g'(1)&=\\frac12. \\qquad (2)\n\\end{aligned}\n$$\n(1), (2)를 더하면\n$$\n2f'(1)=4+\\frac12=\\frac92,\\qquad f'(1)=\\frac94.\n$$\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-M1-03-DERIVATIVE_DEFINITION",
     "subUnit": "미분계수의 정의와 계산",
     "subUnitConfidence": "candidate_evidence",

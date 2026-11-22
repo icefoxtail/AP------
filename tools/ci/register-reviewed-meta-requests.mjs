@@ -3,7 +3,13 @@
 //
 //   node tools/ci/register-reviewed-meta-requests.mjs --applied-file <f> --rejected-file <f> \
 //     [--root <repo>] [--registrar <script>] [--rejected-dir <dir>] [--guard-paths-file <f>] \
-//     [--summary-file <md>] -- <request.json>...
+//     [--summary-file <md>] [--type-batch] -- <request.json>...
+//
+// With --type-batch, plain direct type judgments (DIRECT_JUDGMENT without registryChanges, default registrar only) run in
+// THIS process through a TypeBatch (archive/tools/meta-foundation/register-type-batch.mjs): the 75 MB metadata, the identity map
+// and the registry tables are read once and question_metadata.json is written once, instead of once per request (about nine
+// seconds each). The files written, the receipts, the refusals and their messages are the same as with one process per request.
+// Any other request first gets the metadata flushed to disk and runs in its own registrar process as below.
 //
 // Every request is registered by its own registrar invocation. A request that the registrar
 // refuses (stale `before`, drifted evidence, ...) is fail-closed for THAT request only: the
@@ -80,6 +86,7 @@ function parseArgs(argv) {
   let i = 0;
   for (; i < argv.length && argv[i] !== "--"; i += 2) {
     if (argv[i] === "--reset-derived") { opt.resetDerived = true; i -= 1; continue; }
+    if (argv[i] === "--type-batch") { opt.typeBatch = true; i -= 1; continue; }
     const key = names[argv[i]];
     if (!key || argv[i + 1] === undefined) throw new Error(`unknown or valueless argument: ${argv[i]}`);
     opt[key] = argv[i + 1];
@@ -236,6 +243,32 @@ export function recordRejection(opt, requestAbs, { error, exitCode = null, stage
   if (process.env.GITHUB_ACTIONS) console.log(`::error title=Reviewed meta request rejected (${stage})::${name}: ${error.replace(/[\r\n%]/g, " ")}`);
 }
 
+// The parsed request when it is a plain direct type judgment (see isTypeBatchRequest), else null.
+function typeBatchDocument(runtime, requestAbs) {
+  try {
+    const doc = JSON.parse(fs.readFileSync(requestAbs, "utf8"));
+    return runtime.isTypeBatchRequest(doc) ? doc : null;
+  } catch (error) { if (error instanceof SyntaxError) return null; throw error; }
+}
+
+// Runs one request in this process and answers like the registrar process would: status 0, or status 1 with the error text
+// on stderr (summarizeFailure keeps the one `Error: <message>` line of it, as for a crashed registrar).
+function runTypeBatchRequest(runtime, batch, root, request) {
+  try {
+    runtime.registerReviewedExamV2({ root, request, write: true, typeBatch: batch });
+    return { status: 0, stderr: "", stdout: "" };
+  } catch (error) {
+    return { status: 1, stderr: String(error?.stack || error), stdout: "" };
+  }
+}
+
+// The registrar module is heavy, so it is only imported when --type-batch asks for it (registerRequests itself stays synchronous).
+export async function loadTypeBatchRuntime() {
+  const { registerReviewedExamV2 } = await import("../../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs");
+  const { createTypeBatch, isTypeBatchRequest } = await import("../../archive/tools/meta-foundation/register-type-batch.mjs");
+  return { registerReviewedExamV2, createTypeBatch, isTypeBatchRequest };
+}
+
 export function registerRequests(opt, { log = console.log } = {}) {
   const root = opt.root;
   const rejectedDirAbs = path.resolve(root, opt.rejectedDir);
@@ -256,6 +289,8 @@ export function registerRequests(opt, { log = console.log } = {}) {
 
   const applied = [], rejected = [], pendingSupplement = [];
   let dirtied = null;
+  // Only with the default registrar: a caller-chosen registrar script is always its own process.
+  const batch = opt.typeBatchRuntime && registrar === path.resolve(root, DEFAULT_REGISTRAR) ? opt.typeBatchRuntime.createTypeBatch(root) : null;
   const dependencyErrors=new Map(),registryContext={};
   const requestOrder=orderedRequestPathsForHead(opt,{onDependencyError:(rel,error)=>dependencyErrors.set(rel,error.message)},registryContext);
   // Keep the selected basic owners before a failed request is moved away.
@@ -271,9 +306,16 @@ export function registerRequests(opt, { log = console.log } = {}) {
   }
   attachMainRegistryVersionDependencies(opt,registryRequests,registryContext);
   const registryDependencies=nativeRegistryDependencies(registryRequests);
+  // The batch's metadata is written even when something in the loop throws: a request already applied has its receipt on disk, and a
+  // refused or crashed in-process request has already had its rows put back (register-type-batch.mjs begin()/undo), so what is flushed
+  // is exactly the applied requests - never a receipt without its metadata.
+  try {
   for (const requestArg of requestOrder) {
     const requestAbs = path.resolve(root, requestArg), rel = posix(path.relative(root, requestAbs)), name = path.basename(requestAbs);
     if (!fs.existsSync(requestAbs)) { rejected.push({ request: rel, name, error: "request file not found", exitCode: null }); continue; }
+    // Anything but a plain type judgment reads (or writes) the metadata on disk: bring it up to date before the fingerprint is taken.
+    const typeDoc = batch ? typeBatchDocument(opt.typeBatchRuntime, requestAbs) : null;
+    if (batch && !typeDoc) { batch.flush(); batch.drop(); }
     const before = fingerprint();
     let conflicts=[],dependencyError=dependencyErrors.has(rel)?'Error: '+dependencyErrors.get(rel):'';
     const metadataFile=path.join(root,'archive/data/question_metadata.json');
@@ -294,6 +336,7 @@ export function registerRequests(opt, { log = console.log } = {}) {
     } catch(error){if(!(error instanceof SyntaxError))throw error;}
     const run = dependencyError ? {status:1,stderr:dependencyError,stdout:''}
       : conflicts.length ? {status:1,stderr:'Error: PRESERVE_CURRENT_DIFFICULTY: '+conflicts.join(', '),stdout:''}
+      : typeDoc ? runTypeBatchRequest(opt.typeBatchRuntime, batch, root, typeDoc)
       : spawnSync(process.execPath, [registrar, "--request", rel, "--write"], { cwd: root, encoding: "utf8", maxBuffer: 1 << 28 });
     if (run.status === 0) {
       applied.push({ request: rel, name });
@@ -312,6 +355,7 @@ export function registerRequests(opt, { log = console.log } = {}) {
     recordRejection(opt, requestAbs, { error, exitCode: run.status }, { log });
     rejected.push({ request: rel, name, error, exitCode: run.status });
   }
+  } finally { batch?.flush(); }
   return { applied, rejected, pendingSupplement, dirtied };
 }
 
@@ -348,6 +392,9 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     process.exit(0);
   }
   if (!opt.appliedFile || !opt.rejectedFile) { console.error("usage error: --applied-file and --rejected-file are required"); process.exit(1); }
+  // Load the heavy registrar only when some request is a direct type judgment (the exact test is isTypeBatchRequest, per request).
+  const mentionsTypeJudgment = requestArg => { try { return JSON.parse(fs.readFileSync(path.resolve(opt.root, requestArg), "utf8")).approval?.type === "DIRECT_JUDGMENT"; } catch { return false; } };
+  if (opt.typeBatch && opt.requests.some(mentionsTypeJudgment)) opt.typeBatchRuntime = await loadTypeBatchRuntime();
   const result = registerRequests(opt);
   const list = items => items.map(i => i.request).join("\n") + (items.length ? "\n" : "");
   fs.writeFileSync(opt.appliedFile, list(result.applied));

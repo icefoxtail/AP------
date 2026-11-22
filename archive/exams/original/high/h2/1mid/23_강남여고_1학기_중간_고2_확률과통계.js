@@ -831,7 +831,11 @@ window.questionBank = [
     },
     "semanticSourceScope": "2015/HIGH/확률과통계",
     "semanticScopeRelation": "CURRENT_SCOPE",
-    "projectionStatus": "REUSE"
+    "projectionStatus": "REUSE",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 다섯 자리가 오각형 꼭짓점으로 놓인 원탁 그림이며 다섯 변과 다섯 대각선이 모두 그려져 있다.",
+    "solutionImageCaption": "원탁의 5자리를 오각형 꼭짓점으로 나타낸 그림이다. 변으로 이어진 두 자리는 이웃한 자리이고, 대각선으로 이어진 두 자리는 이웃하지 않는 자리이다. 5명이 앉는 원순열은 (5−1)!=24가지이다. 빵을 받은 두 학생이 앉는 자리 쌍은 전체 5C2=10쌍 중 이웃한 5쌍을 뺀 5쌍(대각선 5개)이다. 따라서 24×5=120이므로 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 14,
@@ -1309,7 +1313,7 @@ window.questionBank = [
     "solution": "곱이 홀수가 되는 경우는 양 끝의 두 수가 모두 홀수일 때뿐이다. 따라서 홀수는 서로 이웃하지 않게 놓여야 한다.\n\n6개의 원형 자리에서 서로 이웃하지 않는 홀수 자리의 수는 홀수 2개일 때 9가지, 홀수 3개일 때 2가지이다. 홀수 4개는 서로 이웃하지 않게 놓을 수 없다.\n\n홀수가 2개인 경우에는\n$9\\cdot{}_4\\mathrm{P}_2\\cdot{}_4\\mathrm{P}_4=9\\cdot12\\cdot24=2592$가지이다.\n홀수가 3개인 경우에는\n$2\\cdot{}_4\\mathrm{P}_3\\cdot{}_4\\mathrm{P}_3=2\\cdot24\\cdot24=1152$가지이다.\n\n각 배열은 서로 다른 6개의 수를 쓰므로 회전으로 고정되는 배열이 없다. 따라서 회전하여 같은 배열 6개를 한 묶음으로 나누면\n$\\dfrac{2592+1152}{6}=624$이다.\n\n그러므로 정답은 ②이다.",
     "score": 4.5,
     "decisiveStep": "원형 6자리에서 비이웃 홀수 자리 수를 2개 또는 3개로 나눈 뒤 서로 다른 수를 배치하고 6으로 나눈다.",
-    "solutionImage": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q21-solution.svg",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고2_확률과통계/q21-solution-v2.svg",
     "level": "상",
     "category": "순열과 조합",
     "originalCategory": "확률과 통계",
@@ -1357,7 +1361,10 @@ window.questionBank = [
     },
     "semanticSourceScope": "2015/HIGH/확률과통계",
     "semanticScopeRelation": "CURRENT_SCOPE",
-    "projectionStatus": "REUSE"
+    "projectionStatus": "REUSE",
+    "solutionImageAlt": "해설 그림: 여섯 꼭짓점 A부터 F가 육각형으로 이어진 그림이며 변으로 이웃한 꼭짓점들이 보인다.",
+    "solutionImageCaption": "정육각형의 꼭짓점 여섯 곳을 A부터 F로 나타낸 그림이다. 변으로 연결된 두 수의 곱이 짝수이려면 이웃한 두 수가 모두 홀수이면 안 된다. 따라서 홀수는 서로 이웃하지 않는 꼭짓점에 놓아야 하며, 예를 들어 A, C, E처럼 하나 건너 놓는다. 홀수가 2개이면 이웃하지 않는 자리 선택이 9가지, 3개이면 2가지이다. 수를 배열하면 9×12×24+2×24×24=3744이고 회전 6가지를 같게 보아 6으로 나누면 624이다. 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 22,

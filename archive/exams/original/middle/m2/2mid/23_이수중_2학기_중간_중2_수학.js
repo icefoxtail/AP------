@@ -45,7 +45,11 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 이등변삼각형 ABC의 변 CB를 B쪽으로 연장해 점 D를 잡은 그림이며 외각 ABD, 두 밑각, 꼭지각 x가 각각 표시되어 있고 변 AB와 AC에 같은 길이 눈금이 있다.",
+    "solutionImageCaption": "∠ABD=120°이므로 ∠ABC=180°−120°=60°이다. AB=AC인 이등변삼각형의 두 밑각이 같아 ∠ACB=60°이고, 삼각형의 세 각의 합에서 x=180°−60°−60°=60°이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -91,7 +95,11 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 꼭짓점 A의 각 80°, 꼭짓점 B와 C의 각 50°가 표시되어 있고 변 CA와 AB에 길이 6이 적혀 있다.",
+    "solutionImageCaption": "∠B=180°−80°−50°=50°이므로 ∠B=∠C이다. 두 각이 같으면 그 대변의 길이가 같으므로 AB=AC=6cm이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -110,13 +118,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 직각삼각형 중에서 다른 어느 삼각형과도 합동이 아닌 것은? [4점]",
-    "choices": [
-      "그림 ①",
-      "그림 ②",
-      "그림 ③",
-      "그림 ④",
-      "그림 ⑤"
-    ],
+    "choices": [],
     "answer": "③",
     "solution": "[키포인트] 직각삼각형의 합동 조건인 RHS와 RHA를 그림별로 확인한다.\n①과 ⑤는 빗변과 한 직각변의 길이가 각각 같으므로 RHS 합동이다. ④의 나머지 예각은 $90^\\circ-40^\\circ=50^\\circ$이므로 ②와 ④는 빗변과 한 예각이 각각 같아 RHA 합동이다. ③은 두 직각변의 길이가 $7$, $10$인 삼각형으로, 다른 그림과 같은 합동 조건을 갖지 않는다.\n따라서 정답은 ③이다.",
     "image": "assets/images/23_이수중_2학기_중간_중2_수학/q3.png",
@@ -175,7 +177,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 직각삼각형을 직각 꼭짓점 C에서 맞붙여 만든 이등변삼각형 ABE이며 C에 직각 표시가 두 개 있고 두 밑각에 같은 표시가, 변 AB와 EA에 같은 길이 눈금이 있다.",
+    "solutionImageCaption": "두 직각삼각형을 빗변 AB와 AE가 같게 맞붙이면 B, C, E가 한 직선 위에 놓여 ∠ACB+∠ACE=180°이다((가)). AB=AE이므로 삼각형 ABE는 이등변삼각형이고 ∠B=∠E이다((나)). 따라서 두 직각삼각형은 빗변과 한 예각이 각각 같아 RHA 합동이다((다)). 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -267,7 +273,11 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 안쪽에 외심 O가 있고 O에서 세 꼭짓점으로 선분이 그어져 있으며 길이가 같은 세 선분에 같은 눈금이 있다. 같은 크기의 각끼리 같은 호 표시가 있고 ∠OCA와 ∠OAC에는 x가 적혀 있다.",
+    "solutionImageCaption": "외심 O에서 세 꼭짓점까지의 거리가 같아 OA=OB=OC이므로 △OAB, △OBC, △OCA는 모두 이등변삼각형이다. ∠OBA=∠OAB=45°이므로 ∠ABC=45°+35°=80°이고, ∠OCB=∠OBC=35°이다. ∠OAC=∠OCA=x이므로 (45°+x)+80°+(35°+x)=180°에서 2x=20°, x=10°이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -354,7 +364,11 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD의 두 대각선이 점 O에서 만나고 AB, AO, BO에 길이 5, 4, 6이 적혀 있다. 반대쪽의 OC, OD, CD에도 같은 길이 4, 6, 5가 적혀 있고 같은 길이의 선분에 같은 눈금이 있다.",
+    "solutionImageCaption": "평행사변형의 두 대각선은 서로를 이등분하므로 OC=OA=4cm, OD=OB=6cm이다. 마주 보는 두 변의 길이가 같아 CD=AB=5cm이다. 따라서 △OCD의 둘레는 4+6+5=15cm이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -400,7 +414,11 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 꼭짓점 A의 각 115°, 꼭짓점 B의 각 x=65°가 표시되어 있고 변 DA에 5, 변 BC에 y=5가 적혀 있으며 마주 보는 변에 같은 눈금이 있다.",
+    "solutionImageCaption": "예: 해설의 값에 맞춘 평행사변형이다(AB의 길이는 모양만 나타낸다). 이웃한 두 각의 합이 180°이므로 x=180°−115°=65°이다. 마주 보는 두 변의 길이가 같아 y=BC=AD=5이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -419,13 +437,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 중 평행사변형이 아닌 것은? (단, 점 $O$는 두 대각선의 교점이다.) [4점]",
-    "choices": [
-      "그림 ①",
-      "그림 ②",
-      "그림 ③",
-      "그림 ④",
-      "그림 ⑤"
-    ],
+    "choices": [],
     "answer": "①",
     "solution": "[키포인트] 평행사변형이 되는 충분조건과 그렇지 않은 조건을 구분한다.\n②는 두 쌍의 대변의 길이가 각각 같고, ③은 두 쌍의 대변이 각각 평행하며, ④는 두 쌍의 대각의 크기가 각각 같고, ⑤는 두 대각선이 서로를 이등분하므로 모두 평행사변형이다. ①은 한 쌍의 대변이 평행하고 다른 한 쌍의 대변의 길이가 같다는 조건뿐이므로 등변사다리꼴도 가능하여 평행사변형이라고 단정할 수 없다.\n따라서 정답은 ①이다.",
     "image": "assets/images/23_이수중_2학기_중간_중2_수학/q10.png",
@@ -520,7 +532,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q12-solution.svg",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q12-solution-v2.svg",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
     "templateKey": "TPL_SPECIAL_QUADRILATERALS",
     "crossConceptKeys": [],
@@ -529,7 +541,10 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD의 두 대각선이 점 O에서 만나고 네 선분 OA, OB, OC, OD에 같은 길이 눈금이 있다. 꼭짓점 C의 직각 표시가 있고 ∠ACB와 ∠OBC에 같은 각 42°, ∠BDC에 x=48°가 표시되어 있다.",
+    "solutionImageCaption": "직사각형의 두 대각선은 길이가 같고 서로를 이등분하므로 OB=OC이고 △BOC는 이등변삼각형이다. 그래서 ∠OBC=∠BCO=42°이다. B, O, D가 한 직선 위에 있으므로 ∠DBC=42°이고, ∠BCD=90°이므로 △BCD에서 ∠BDC=180°−90°−42°=48°이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -562,7 +577,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q13-solution.svg",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q13-solution-v2.svg",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
     "templateKey": "TPL_SPECIAL_QUADRILATERALS",
     "crossConceptKeys": [],
@@ -571,7 +586,10 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageAlt": "해설 그림: 등변사다리꼴 ABCD의 두 대각선이 점 O에서 만나고 BO와 OC에 7, OD에 y=4가 적혀 있다. 교점에서 각 88°와 92°가 표시되어 있고 삼각형 BOC의 두 밑각에 같은 표시와 x=44°가 있다.",
+    "solutionImageCaption": "등변사다리꼴의 두 대각선은 길이가 같으므로 BD=AC=11이고 BO+OD=7+y=11에서 y=4이다. ∠BOC=180°−88°=92°이다. 대칭이므로 OB=OC=7이고 △BOC는 이등변삼각형이어서 x=(180°−92°)/2=44°이다. 따라서 x+y=44+4=48이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -617,7 +635,11 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 위에서 아래로 놓인 평행한 세 직선을 두 직선이 가로지르고 한 직선 위의 두 선분에 x와 10−x, 다른 직선 위의 두 선분에 5와 7이 적혀 있다.",
+    "solutionImageCaption": "세 평행선이 두 직선을 자르면 대응하는 선분의 길이의 비가 같으므로 x:(10−x)=5:7이다. 7x=5(10−x)에서 12x=50이므로 x=25/6이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -658,7 +680,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 크기가 다른 두 삼각형 ABC와 DEF가 나란히 있고 B와 E의 각이 60°이며 대응하는 각끼리 같은 표시가 있다. 변 CA에 6, 변 FD에 9가 적혀 있다.",
+    "solutionImageCaption": "△ABC∽△DEF이고 닮음비가 2:3이므로 대응각의 크기는 같아 ∠E=∠B=60°, ∠A=∠D, ∠C=∠F이고 대응변의 길이의 비는 BC:EF=2:3이다. AC=6cm이면 AC:DF=2:3에서 DF=9cm이다. 그러나 ∠C와 ∠F는 크기가 같아 ∠C:∠F=1:1이므로 ⑤가 옳지 않다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -789,7 +815,11 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 AB 위에 점 D, 변 AC 위에 점 E가 있고 선분 DE가 그어져 있으며 AD 6, DB 4, AE 5, EC 7, DE 7, BC 14가 적혀 있고 꼭짓점 A의 각에 α 표시가 있다.",
+    "solutionImageCaption": "AD:AE=6:5이고 AC:AB=12:10=6:5이다. ∠DAE=∠CAB는 공통이므로 두 변의 비와 끼인각이 같아 △ADE∽△ACB이다. 닮음비가 1:2이므로 DE:CB=1:2에서 CB=2×7=14cm이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -835,7 +865,11 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 두 변 AB, AC 위의 점 D, E를 이은 선분 DE가 밑변 BC와 평행하게 그어져 있고 AD 10, DB 5, DE 12, BC x=18이 적혀 있으며 같은 위치의 각에 같은 표시가 있다.",
+    "solutionImageCaption": "DE∥BC이므로 ∠ADE=∠ABC, ∠AED=∠ACB이다. 따라서 △ADE∽△ABC이다. AD:AB=10:15=2:3이므로 DE:BC=2:3이다. 12:x=2:3에서 x=18이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -876,7 +910,11 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 세 변의 중점 D, E, F와 세 중선이 만나는 무게중심 G가 표시되어 있고 중점으로 나뉜 변에 같은 눈금이 있으며 선분 GF에 k, CG에 2k가 적혀 있다.",
+    "solutionImageCaption": "무게중심 G는 세 중선 AD, BE, CF의 교점이다. E는 AC의 중점이므로 AE=CE이고, 중선 CF에서 CG:GF=2:1이므로 FG:GC=1:2이다. 세 중선은 삼각형을 넓이가 같은 6개로 나누므로 [GAB]=(1/3)[ABC], [GBD]=(1/6)[ABC]이다. 그러나 무게중심은 세 꼭짓점에서 같은 거리에 있는 점이 아니므로 AG=BG=CG는 일반적으로 성립하지 않아 옳지 않은 것은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -939,7 +977,7 @@ window.questionBank = [
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q22-solution.svg",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q22-solution-v2.svg",
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
     "templateKey": "TPL_SPECIAL_QUADRILATERALS",
     "crossConceptKeys": [],
@@ -948,7 +986,10 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD의 대각선 BD 위에 점 E가 있고 A와 C에서 E로 선분이 그어져 있다. 각 DAE와 각 DCE에 같은 크기 20°, 꼭짓점 D에서 이등분된 두 각에 45°, 외각 BEC에 65°가 표시되어 있다.",
+    "solutionImageCaption": "정사각형에서 AD=CD, DE는 공통, ∠ADE=∠CDE=45°이므로 △ADE≡△CDE(SAS 합동)이다. 대응각이므로 ∠DCE=∠DAE=20°이다. B, E, D가 한 직선 위에 있으므로 ∠BEC는 △CDE의 꼭짓점 E에서의 외각이고, 외각의 성질에 의해 ∠BEC=∠CDE+∠DCE=45°+20°=65°이다. 따라서 답은 65°이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1014,7 +1055,7 @@ window.questionBank = [
     "subUnit": "삼각형의 닮음 조건과 대응변의 길이",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q24-solution.svg",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q24-solution-v2.svg",
     "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
     "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
     "crossConceptKeys": [],
@@ -1028,6 +1069,9 @@ window.questionBank = [
     "courseKey": "M2-2",
     "reviewStatus": "reviewed_pass",
     "tagStatus": "reviewed_pass",
-    "tagConfidence": "approved_final_qa"
+    "tagConfidence": "approved_final_qa",
+    "solutionImageAlt": "해설 그림: 꼭짓점 A에서 직각인 직각삼각형 ABC의 빗변 BC에 수선 AD가 내려져 있고 AB 10, BD 8이 적혀 있으며 닮은 삼각형의 대응각에 같은 표시가 있다. DC 9/2, AD 6, CA 15/2도 표시되어 있다.",
+    "solutionImageCaption": "△ABD와 △CBA는 ∠B가 공통이고 ∠ADB=∠CAB=90°이므로 △ABD∽△CBA이다. 대응변의 비에서 AB:BC=BD:AB이므로 AB²=BD×BC, 10²=8×BC에서 BC=25/2이다. 그러므로 CD=BC−BD=25/2−8=9/2이다. 따라서 답은 9/2이다.",
+    "solutionImageSize": "full"
   }
 ];

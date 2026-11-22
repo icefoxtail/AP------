@@ -83,7 +83,6 @@ test("an altered expected L2 fails naming exam, QID, UID and reason (exit 1, sum
 test("bindings: body fingerprint, source blob and unsupported schemas fail; pinpoint rows with before==after are skipped", t => {
   const dir = tmp(t);
   const badBody = structuredClone(scoped); badBody.records[0].sourceBodyFingerprint = "0".repeat(64);
-  const badBlob = structuredClone(scoped); badBlob.expectedSourceBlobSha1 = "1".repeat(40);
   const unsupported = { schemaVersion: "archive-reviewed-exam-meta-register-request-v9", items: [] };
   const metadata = JSON.parse(fs.readFileSync(path.join(repo, "archive/data/question_metadata.json"), "utf8")).records;
   const row2 = metadata.find(r => r.sourceArchiveFile === scoped.sourceArchiveFile && r.sourceOrdinal === 2);
@@ -91,9 +90,11 @@ test("bindings: body fingerprint, source blob and unsupported schemas fail; pinp
     expectedSourceBlobSha1: scoped.expectedSourceBlobSha1, items: [
       { sourceOrdinal: 1, questionUid: uidAt(scoped.sourceArchiveFile, 1), before: { standardUnitKey: "X" }, after: { standardUnitKey: "X" } },
       { sourceOrdinal: 2, questionUid: row2.questionUid, before: { standardUnitKey: "OLD" }, after: { standardUnitKey: after } }] });
+  // A scoped-links file is bound per record to the question body, so only a request kept on the file blob (a pinpoint) fails on a wrong blob.
+  const badBlob = { ...pinpoint(row2.standardUnitKey), expectedSourceBlobSha1: "1".repeat(40) };
   const out = verifyChangedUidConsumerApproval({ root: repo, scopedPaths: [
-    write(dir, "bad-body.json", badBody), write(dir, "bad-blob.json", badBlob), write(dir, "unsupported.json", unsupported)],
-    requestPaths: [write(dir, "pin-ok.json", pinpoint(row2.standardUnitKey)), write(dir, "pin-bad.json", pinpoint("WRONG-UNIT"))] });
+    write(dir, "bad-body.json", badBody), write(dir, "unsupported.json", unsupported)],
+    requestPaths: [write(dir, "pin-ok.json", pinpoint(row2.standardUnitKey)), write(dir, "pin-bad.json", pinpoint("WRONG-UNIT")), write(dir, "bad-blob.json", badBlob)] });
   assert.equal(out.status, "FAIL");
   const reasons = out.failures.map(f => `${f.reason}${f.uid !== "-" ? ":" + f.qid : ""}`).sort();
   assert.deepEqual(reasons, ["BODY_FINGERPRINT_MISMATCH:" + badBody.records[0].sourceOrdinal, "SOURCE_BLOB_MISMATCH", "UNSUPPORTED_REQUEST_SCHEMA", "VALUE_MISMATCH:2"].sort());
@@ -720,4 +721,17 @@ test("not a text-bound draft (ordinary request or an item without the fingerprin
 test("a typed (reviewed) difficulty correction keeps refusing every conflict", t => {
   const f = difficultyRefusalFixture(t, 0); f.row.metadataConflicts = ["reviewStatus"]; f.refresh();
   const out = f.check(); assert.equal(out.status, "FAIL"); assert.equal(out.failures[0].reason, "METADATA_CONFLICT"); assert.equal(out.failures[0].detail, "reviewStatus");
+});
+
+test("scoped parent links are bound per record to the question body, not to the file blob", t => {
+  const dir = tmp(t);
+  const stale = structuredClone(scoped);
+  stale.expectedSourceBlobSha1 = "0".repeat(40);
+  const ok = cli(["--scoped", write(dir, "scoped-stale-blob.json", stale), "--summary-file", path.join(dir, "ok.md")]);
+  assert.equal(ok.status, 0, ok.stdout + ok.stderr);
+  assert.equal(JSON.parse(ok.stdout).failures.length, 0, "a different file blob alone is not a defect");
+  const changed = structuredClone(stale);
+  changed.records.find(r => r.sourceOrdinal === 5).sourceBodyFingerprint = "a".repeat(64);
+  const bad = cli(["--scoped", write(dir, "scoped-changed-body.json", changed), "--summary-file", path.join(dir, "bad.md")]);
+  assert.equal(bad.status, 1, "a changed question body still fails");
 });

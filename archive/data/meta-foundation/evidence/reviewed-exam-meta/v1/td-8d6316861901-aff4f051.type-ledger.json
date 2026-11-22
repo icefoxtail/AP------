@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-8d6316861901-aff4f051",
+  "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_2c3bc4d4afbc94396956593293b9ea2176bca0400e2827a29cc09652ec1795b6",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC",
+      "step": "8명 키를 정렬하여 가운데158,160의 평균159를 중앙값으로 구한다.",
+      "note": "cross_grade_key: 중1 짝수자료 중앙값 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2ea22413a1f502270448606c8aaf6df37e47c834024a2614822a88c6c75f2e3f",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION",
+      "step": "총합55/11의 평균5,정렬6번째 중앙값4,빈도최대 최빈값3을 구하여 a>b>c를 비교한다.",
+      "note": "cross_grade_key: 중1 세 대푯값 계산 결합 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_39cb0d1e17060301282f41e27e6aac0036301fc6df71ac49709da5c864b41250",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_AUDIT",
+      "step": "세 자료의 대푯값을 각각 계산하여 C의 가운데6,10의 평균8을9라고 한⑤를 배제한다.",
+      "note": "cross_grade_key: 중1 대푯값 정의; 필요 TPL: 여러 자료의 대푯값 수치 진술 검증 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-cead57dc3b5b-f03270e7",
+  "sourceArchiveFile": "types/middle/m3/이차함수_중3_유형_3월모의고사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m3.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_14d1907dbeae1c51b531ec08ea4e486037854e9f0bcd47c0ed19e3ea6e5f24cf",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_M3_GRAPH_GEOMETRY_AREA_CONDITION",
+      "step": "OB=2이므로 넓이=(1/2)·2·a=4에서 a=4. 그래프에 대입해 b=6,a+b=10.",
+      "note": "필요 TPL: 포물선의 일반점과 축절편을 잇는 삼각형 넓이로 점 좌표 결정. A가 꼭짓점인 기존 템플릿과 다름.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m3.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4b2643ff82b0a709a6bcc55b8b47bd7c39115103f8376c3275983b4b7046e37a",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_M3_QUADRATIC_PROPERTIES_AXIS",
+      "step": "A,B의 중점으로 축 x=9/2. CD는 수평이므로 b=4, 대칭성으로 a=9-6=3.",
+      "note": "필요 TPL: 수평현의 양끝 x좌표 합이 대칭축 좌표의 두 배임을 이용해 다른 현의 끝점 결정.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m3.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b012216c33372dbdc70b7704aa2eb77ea60aa9e8d995646bef1a2dbcd756f4d1",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_M3_GRAPH_GEOMETRY_AREA_CONDITION",
+      "step": "꼭짓점 A=(2,a+1),B=(-a,a²),절편 C=(0,5a+1). 넓이 (5a+1)(2+a)/2=7의 양근 a=4/5.",
+      "note": "필요 TPL: 두 포물선 꼭짓점과 축절편의 사각형을 삼각형 두 개로 분할해 계수 결정.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m3.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1374ff335f1e6662976402617d680e6215ecf6aceab1e5fb6eb73d9c1be7f449",
+      "sourceOrdinal": 4,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_QUADRATIC_ROOT",
+      "templateKey": null,
+      "step": "주어진 근 x=3을 대입해 9-6a+5a=0에서 a=9를 구한다.",
+      "note": "제안: 주어진 이차방정식의 근으로 계수 결정. 정의: 알려진 근을 대입하여 미정계수를 정한다. 기존 근 식값·분수식 정리와 다름.",
+      "figure": false,
+      "check": "NOT_RUN",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m3.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f19fd7e1d0f292c6cc6771e0e20338de60de772b91124489948a93b8d162e020",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
+      "templateKey": "TPL_M3_SOLVE_QUADRATIC_VIA_COMPLETED_SQUARE_ROOT",
+      "step": "x=a±3√3으로 풀어 작은 근이 양수인 a>√27에서 최소 자연수6을 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "NOT_RUN",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m3.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1ae4d0eab2eaaec215f8b437508a91e6708e94b0295a0d19c06df321c1b1aa83",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_M3_FIND_COEFFICIENT_FROM_TRIANGLE_AREA_WITH_VERTEX",
+      "step": "OCA 넓이로 A의 x=2. 두 넓이의 등식에 OAD를 더해 OAB=6에서 A의 y=-12/5. 원점 대입으로 f(x)=3(x-2)²/5-12/5, f(10)=36.",
+      "note": "",
+      "figure": true,
+      "check": "NOT_RUN",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m3.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7621376de60525ac1fedb4d9acd24f2b81c7a6e9a1044e59ad7d062e3ed9afc2",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "templateKey": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE",
+      "step": "x²-2x+6=(x-1)²+5에서 꼭짓점(1,5)의 좌표합6을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "NOT_RUN",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m3.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_05e0a4b23f0c7b387c4cb8e407cbfe8a6eadd8ea521562c9fd0ebecff059b812",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_M3_GRAPH_GEOMETRY_AREA_CONDITION",
+      "step": "넓이 8+6a=16에서 C=(3,4). CD의 y절편2를 g에 대입해 g=-2(x-3)²/9+4, f=(x+3)²/4-4. f(-1)g(-3)=12.",
+      "note": "필요 TPL: 두 포물선 꼭짓점 사각형 넓이와 선분 위 절편을 결합한 계수 결정.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m3.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dd29076be264036516518b632f344a54fa44d14102e91ddbf05b0a83d8c8b1a2",
+      "sourceOrdinal": 9,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_ROOT_FORMULA",
+      "templateKey": null,
+      "step": "근의 공식으로 (3±√13)/2를 얻고 양수인 (3+√13)/2를 택한다.",
+      "note": "제안: 이차방정식 근의 공식 직접 계산. 정의: 일반형의 계수로 두 근을 계산하고 부호조건에 맞는 근을 선택한다.",
+      "figure": false,
+      "check": "NOT_RUN",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m3.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cdc0d6c9a4110a4163300c6ad14ef58362358adebdd10300543a9e1aea0949c4",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION",
+      "step": "공통근 -c를 대입해 a=c+27/c,b=c-18/c. c가 27,18의 공약수이고 b>0인 조건에서 c=9,a=12,b=7을 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "NOT_RUN",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m3.jsonl"
+    }
+  ]
+}

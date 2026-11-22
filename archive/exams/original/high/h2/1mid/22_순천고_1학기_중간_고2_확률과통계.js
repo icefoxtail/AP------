@@ -395,7 +395,11 @@ window.questionBank = [
     "sourceChoiceEncoding": "Intake choices contain circled labels; option text and order are preserved exactly, with only renderer-supplied labels removed from runtime choices; full labeled values remain in sourceChoicesWithLabels.",
     "sourceQuestionTextExact": "오른쪽 그림과 같은 도로망이 있다. $\\mathrm{A}$에서 출발하여 $\\mathrm{P}$를 거쳐 $\\mathrm{B}$로 가는 최단 경로의 수는?<br><br><img src=\"archive/assets/images/22_순천고_1학기_중간_고2_확률과통계/q04.png\" alt=\"q04\">",
     "category": "최단 경로의 수",
-    "originalCategory": "최단 경로의 수"
+    "originalCategory": "최단 경로의 수",
+    "solutionImage": "assets/images/22_순천고_1학기_중간_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 격자 모양의 길에서 출발점 A부터 각 교차점까지 가는 최단 경로의 수를 적은 그림이다.",
+    "solutionImageCaption": "A에서 P까지는 오른쪽 4칸, 위쪽 2칸이므로 6C2=15가지이다. P에서 B까지는 오른쪽 2칸, 위쪽 2칸이므로 4C2=6가지이다. P를 반드시 지나므로 곱의 법칙으로 15×6=90가지이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -490,7 +494,11 @@ window.questionBank = [
     "sourceChoiceEncoding": "Intake choices contain circled labels; option text and order are preserved exactly, with only renderer-supplied labels removed from runtime choices; full labeled values remain in sourceChoicesWithLabels.",
     "sourceQuestionTextExact": "3쌍의 부부가 정삼각형 모양의 탁자에 둘러앉을 때, 부부끼리는 같은 변에 앉는 방법의 수는? (단, 회전하여 일치하는 것은 같은 것으로 본다.)<br><br><img src=\"archive/assets/images/22_순천고_1학기_중간_고2_확률과통계/q05.png\" alt=\"q05\">",
     "category": "원순열",
-    "originalCategory": "원순열"
+    "originalCategory": "원순열",
+    "solutionImage": "assets/images/22_순천고_1학기_중간_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형의 각 변 위에 자리가 두 개씩, 모두 여섯 자리가 놓인 탁자 그림이다.",
+    "solutionImageCaption": "정삼각형 탁자의 세 변에 자리가 두 개씩 있어 모두 6자리이다. 점 A와 B, C와 D, E와 F가 각각 한 변에 놓인 두 자리이고 부부는 같은 변에 앉는다. 세 부부를 세 변에 배치하는 방법은 3!=6가지이고, 각 부부 안에서 자리를 바꾸는 방법은 2가지씩 2³=8가지이다. 120° 회전한 세 배치는 같은 것으로 보므로 3!×2³÷3=16이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -1882,7 +1890,11 @@ window.questionBank = [
     "sourceChoiceEncoding": "Intake choices contain circled labels; option text and order are preserved exactly, with only renderer-supplied labels removed from runtime choices; full labeled values remain in sourceChoicesWithLabels.",
     "sourceQuestionTextExact": "[서술형 1]<br>(1) 일본인 4명과 중국인 2명이 원탁에 둘러앉는 방법의 수를 구하시오. (단, 회전하여 일치하는 것은 같은 것으로 본다.) [2점]<br><br>(2) 일본인 4명과 중국인 2명이 원탁에 둘러앉을 때, 중국인끼리 이웃하지 않게 앉는 방법의 수를 구하시오. (단, 회전하여 일치하는 것은 같은 것으로 본다.) [4점]",
     "category": "원순열과 이웃하지 않는 조건",
-    "originalCategory": "원순열과 이웃하지 않는 조건"
+    "originalCategory": "원순열과 이웃하지 않는 조건",
+    "solutionImage": "assets/images/22_순천고_1학기_중간_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 여덟 개의 점이 팔각형 꼭짓점으로 놓여 있고 일본인 자리 A, C, E, G와 그 사이의 틈 B, D, F, H가 번갈아 있다.",
+    "solutionImageCaption": "원탁의 8자리가 아니라 일본인 4명이 앉은 4자리 A, C, E, G와 그 사이의 틈 B, D, F, H를 팔각형 꼭짓점으로 나타낸 그림이다. (1) 6명의 원순열은 (6−1)!=120가지이다. (2) 중국인 2명이 서로 이웃하지 않으려면 일본인 4명을 원탁에 앉히는 (4−1)!=6가지 위에 생기는 네 틈 중 두 틈을 4C2=6가지로 고르고 두 사람을 2!가지로 앉히므로 6×6×2=72이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

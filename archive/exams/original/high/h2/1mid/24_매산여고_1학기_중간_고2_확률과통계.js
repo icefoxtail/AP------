@@ -212,10 +212,10 @@ window.questionBank = [
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
     "reviewStatus": "CREATE_PENDING",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q03-solution.svg",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "공 7개의 양 끝과 사이에 있는 흰 공 자리 8개",
-    "solutionImageCaption": "검은 공과 빨간 공 7개를 먼저 놓으면 흰 공을 놓을 자리는 8개"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q3-solution-v2.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "해설 그림: 한 줄로 이어진 열다섯 개의 점이 번갈아 놓여 있고 홀수 번째 여덟 점이 빈자리, 짝수 번째 일곱 점이 공의 자리인 그림이다.",
+    "solutionImageCaption": "검은 공 3개와 빨간 공 4개를 먼저 일렬로 나열하면 7!/(3!4!)=35가지이다. 이 7개의 공은 B, D, F, H, J, L, N 자리이고, 양 끝과 사이의 A, C, E, G, I, K, M, O 8곳이 흰 공을 놓을 수 있는 자리이다. 흰 공 2개가 이웃하지 않으려면 8곳 중 서로 다른 2곳을 고르면 되므로 8C2=28가지이다. 따라서 35×28=980이므로 답은 ①이다."
   },
   {
     "id": 4,
@@ -501,10 +501,10 @@ window.questionBank = [
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
     "reviewStatus": "CREATE_PENDING",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q07-solution.svg",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "A에서 도로 교차점까지 가는 최단 경로 수",
-    "solutionImageCaption": "각 교차점까지의 최단 경로 수"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q7-solution-v2.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "해설 그림: 격자 모양의 길에서 출발점 A부터 각 교차점까지 가는 최단 경로의 수를 적은 그림이다.",
+    "solutionImageCaption": "A에서 각 교차점까지 가는 최단 경로의 수를 적는다. 한 교차점의 수는 바로 왼쪽과 바로 아래 교차점의 수를 더한 값이고, 도로가 없는 방향은 더하지 않는다. 가운데 빈 곳과 끊어진 도로를 빼고 채우면 B에 78이 적힌다. 따라서 최단 경로의 수는 78이고 답은 ④이다."
   },
   {
     "id": 8,
@@ -648,10 +648,10 @@ window.questionBank = [
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
     "reviewStatus": "CREATE_PENDING",
-    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q09-solution.svg",
-    "solutionImageSize": "large",
-    "solutionImageAlt": "원탁에서 남학생 다섯 명 사이에 생기는 다섯 자리",
-    "solutionImageCaption": "남학생 5명과 그 사이의 5자리"
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고2_확률과통계/q9-solution-v2.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "해설 그림: 오각형 꼭짓점에 남학생 자리 다섯 곳이 있고 각 변 위에 남학생 사이의 빈자리를 나타내는 점이 하나씩 있는 그림이다.",
+    "solutionImageCaption": "원탁에 남학생 5명이 앉은 것을 오각형 꼭짓점 A, B, C, D, E로, 남학생 사이의 빈자리 5곳을 변 위의 점 F, G, H, I, J로 나타낸 그림이다. 여학생 3명이 이웃하게 앉는 경우는 여학생 덩어리와 남학생 5명을 원탁에 앉히고 덩어리 안을 배열하므로 a=(6−1)!×3!=720이다. 이웃하지 않는 경우는 남학생 5명을 앉힌 뒤 사이 5자리 중 3자리를 골라 여학생을 배열하므로 b=(5−1)!×5C3×3!=1440이다. 따라서 b/a=2이고 답은 ②이다."
   },
   {
     "id": 10,

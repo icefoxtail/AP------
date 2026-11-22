@@ -132,7 +132,11 @@ window.questionBank = [
       "2022Equivalent": "2022 미적분Ⅰ 대응 단원 존재",
       "mappingStatus": "NOT_ASSERTED_AS_CANONICAL_FOR_2021"
     },
-    "metaCanonicalBindingPass": true
+    "metaCanonicalBindingPass": true,
+    "solutionImage": "assets/images/21_금당고_2학기_중간_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: x=1에서 끊어지는 그래프이고, 왼쪽의 수평선은 높이 2의 열린 점에서 끝나며 오른쪽의 직선은 가로축 위의 닫힌 점 P에서 시작한다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다. x→2+이면 x-1→1+이므로 구하는 값은 f의 x=1에서의 우극한이다. x>1 쪽 곡선은 닫힌 점 P(1,0)에서 시작하므로 우극한은 0이다. 열린 점 (1,2)는 왼쪽에서 접근할 때의 값이라 구별해야 한다. 따라서 답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 3,
@@ -268,7 +272,12 @@ window.questionBank = [
       "2022Equivalent": "2022 미적분Ⅰ 대응 단원 존재",
       "mappingStatus": "NOT_ASSERTED_AS_CANONICAL_FOR_2021"
     },
-    "metaCanonicalBindingPass": true
+    "metaCanonicalBindingPass": true,
+    "solutionImage": "assets/images/21_금당고_2학기_중간_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 A에서 올라 점 B에 이르러 가로축 위로 오른 뒤 점 C까지 내려가 가로축을 지나고 점 D로 조금 올라가는 꺾은선 그래프이다.",
+    "solutionImageCaption": "예: 네 점 A(-2,-1), B(-1,1), C(0,-3), D(1,-2)를 꺾은선으로 이은 연속함수이다. (-2,-1)에서 부호가 -에서 +로, (-1,0)에서 +에서 -로 바뀌어 x축을 한 번씩 지난다. (0,1)에서는 양 끝값이 모두 음수라 근이 보장되지 않는다. 앞의 두 구간은 겹치지 않으므로 근은 적어도 2개이고 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 5,
@@ -530,7 +539,12 @@ window.questionBank = [
       "2022Equivalent": "2022 미적분Ⅰ 대응 단원 존재",
       "mappingStatus": "NOT_ASSERTED_AS_CANONICAL_FOR_2021"
     },
-    "metaCanonicalBindingPass": true
+    "metaCanonicalBindingPass": true,
+    "solutionImage": "assets/images/21_금당고_2학기_중간_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선 위의 두 점 A, B를 잇는 직선 l과 두 점 사이의 점 T에서 접하며 l과 평행한 직선 m을 나타낸 그래프이다.",
+    "solutionImageCaption": "구간 [1,2]의 양 끝점 A(1,0), B(2,-5)를 잇는 할선 l의 기울기는 -5이다. 평균값 정리의 c는 f′(c)=-4c+1=-5를 만족하므로 c=3/2이고, 접점 T(3/2,-2)에서의 접선 m이 할선 l과 평행하다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 9,
@@ -729,7 +743,11 @@ window.questionBank = [
       "2022Equivalent": "2022 미적분Ⅰ 대응 단원 존재",
       "mappingStatus": "NOT_ASSERTED_AS_CANONICAL_FOR_2021"
     },
-    "metaCanonicalBindingPass": true
+    "metaCanonicalBindingPass": true,
+    "solutionImage": "assets/images/21_금당고_2학기_중간_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선과 오른쪽 점 T에서 접하는 내려가는 직선 l이 있고, l이 x축과 y축에서 만나는 점 A, B가 표시된 그래프이다.",
+    "solutionImageCaption": "y′=-x/2이므로 접점 T(2,-1)에서의 기울기는 -1이고 접선 l은 y=-x+1이다. l의 x절편은 A(1,0), y절편은 B(0,1)이므로 두 좌표축과 l이 만드는 직각삼각형의 넓이는 (1/2)·1·1=1/2이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -865,7 +883,12 @@ window.questionBank = [
       "2022Equivalent": "2022 미적분Ⅰ 대응 단원 존재",
       "mappingStatus": "NOT_ASSERTED_AS_CANONICAL_FOR_2021"
     },
-    "metaCanonicalBindingPass": true
+    "metaCanonicalBindingPass": true,
+    "solutionImage": "assets/images/21_금당고_2학기_중간_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 정수마다 끊어지며 오른쪽으로 갈수록 올라가는 직선 조각들의 그래프이고, x=4에서는 열린 점과 닫힌 점이 같은 높이로 이어지며 x=3에서는 아래쪽 닫힌 점으로 떨어진다.",
+    "solutionImageCaption": "예: n=4일 때의 ([x]²+3x)/[x] 그래프이다. x→4-에서는 [x]=3이라 (9+3x)/3=x+3→7(열린 점), x→4+에서는 [x]=4라 (16+3x)/4→7(닫힌 점 P)로 양쪽이 같아 극한 k=7이다. 같은 방법으로 x=3에서는 좌극한 13/2, 우극한 6(닫힌 점 Q)으로 달라 극한이 없다. n=4, k=7이므로 k+n=11이고 답은 ①이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 80
   },
   {
     "id": 14,
@@ -1192,7 +1215,12 @@ window.questionBank = [
       "2022Equivalent": "2022 미적분Ⅰ 대응 단원 존재",
       "mappingStatus": "NOT_ASSERTED_AS_CANONICAL_FOR_2021"
     },
-    "metaCanonicalBindingPass": false
+    "metaCanonicalBindingPass": false,
+    "solutionImage": "assets/images/21_금당고_2학기_중간_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 개의 삼차곡선 조각이 점 P와 점 Q에서 수평으로 부드럽게 이어져 오른쪽 위로 계속 오르는 그래프이다.",
+    "solutionImageCaption": "f′(x)=3(x+3)(x-1)이므로 경계에서 좌우 미분계수가 같으려면 f′(a)=f′(b)=0이어서 a=-3, b=1이다. 값이 이어지는 조건에서 m=2f(-3)=54, n=m-2f(1)=64이다. 그림은 P(-3,27), Q(1,59)에서 g의 세 조각이 값과 기울기(둘 다 0)가 같게 이어지는 모습이다. a+b+n+m=-3+1+64+54=116이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 19,

@@ -31,6 +31,7 @@ export const FIELD_SCOPE_TYPE_ONLY = "TYPE_ONLY";
 export const TYPE_FIELD_STATUS = "approved_direct_judgment";
 export const TYPE_APPROVAL_SCHEMA = "archive-type-direct-judgment-approval-v1";
 export const DECISION_DOCUMENT = "docs/agents/metadata.md";
+const META_FILE = "archive/data/question_metadata.json";
 // Statuses of an unapproved type field. Anything else (approved_*, hold, adjudicated, debt) is never overwritten.
 const OVERWRITABLE_STATUS = new Set(["", "manual_review_pending", "projection_unmaterialized"]);
 const REQUEST_KEYS = new Set(["schemaVersion", "requestId", "examUid", "sourceArchiveFile", "expectedSourceBlobSha1", "expectedQuestionCount",
@@ -47,6 +48,11 @@ const ADDABLE_REGISTRY = [
   [/^archive\/data\/meta-foundation\/canonical\/packs\/[a-z0-9-]+\/bindings\.json$/, new Set(["bindings"])],
 ];
 
+// 유형 칸에 든 값이 등록부의 ACTIVE 키일 때만 "지킬 값"이다(2026-11-20, 값이 있으면 보인다). 등록부에 없는 옛 키로 채워진 칸은 값이 없는 칸과 같아
+// approved 상태여도 채울 수 있고, 옛 키와 옛 상태는 typeApproval.priorType에 그대로 남는다. 등록부의 ACTIVE 키가 든 approved 값은 그대로 보호한다.
+// registry는 { pt: Map, tpl: Map } (변환기의 ctx.registry, 등록기의 tables 모두 같은 모양). 변환기와 등록기가 이 함수 하나를 쓴다.
+export const typeFieldHoldsRegisteredValue = (registry, field, key) =>
+  !empty(key) && (field === "problemType" ? registry.pt : registry.tpl).get(key)?.status === "ACTIVE";
 export const isDirectJudgmentRequest = req => req?.approval?.type === DIRECT_JUDGMENT;
 // The judgment is bound to the stem and choices of each question (text-v1 fingerprint `textBindingFingerprint`), nothing else: the
 // exam file's blob, figures, solution and answer may change after the judge looked. The lane is atomic per request, so one question
@@ -143,6 +149,9 @@ const typeSlice = row => ({ questionUid: row.questionUid, sourceArchiveFile: row
 
 export function registerTypeJudgment(ctx) {
   const { root, req, write, verifyProjection, metadata, rows, ids, bank, bytes, blob, receiptPath, requestSha256, previous, scopeFields, h } = ctx;
+  // batch (register-type-batch.mjs) only for a request without registryChanges: it shares the registry tables between requests and
+  // leaves question_metadata.json for the batch to write once (the text is the same one writer, questionMetadataText).
+  const batch = ctx.batch || null;
   const { fail: failWith, eq, safePath, json, digest } = h;
   const aliases = loadCourseAliases(root);
   assertRequestShape(req, h);
@@ -177,8 +186,9 @@ export function registerTypeJudgment(ctx) {
   // Checked at first registration only: a later edit of the decision document must not invalidate an issued receipt's replay.
   checkDecisionDocument(root, req.approval.decisionRef, h);
 
+  if (batch && registryChanges.length) failWith("a batched direct judgment cannot carry registryChanges");
   const plan = registryChanges.length ? h.registryPlan(root, registryChanges, h.evidenceRefs) : null;
-  const tables = h.lookup(plan || h.registryPlan(root, [], h.evidenceRefs));
+  const tables = batch ? batch.tables(() => h.lookup(h.registryPlan(root, [], h.evidenceRefs))) : h.lookup(plan || h.registryPlan(root, [], h.evidenceRefs));
   const typeRecords = [], bindingCounts = { exact: 0, content: 0, stale: 0 };
   for (const patch of req.items.slice().sort((a, b) => a.sourceOrdinal - b.sourceOrdinal)) {
     const uid = patch.questionUid, i = patch.sourceOrdinal - 1;
@@ -204,13 +214,13 @@ export function registerTypeJudgment(ctx) {
     // A type that is already approved is final for this lane; an unapproved (draft/pending) value is replaced.
     // A field with no value has nothing to protect: its status is only a tag, so an empty field is filled whatever the tag says.
     for (const field of ["problemType", "template"]) {
-      if (empty(current[`${field}Key`])) continue;
+      if (!typeFieldHoldsRegisteredValue(tables, field, current[`${field}Key`])) continue;
       const status = String(current.fieldStatus?.[field] ?? "");
       if (/^approved/i.test(status)) failWith(`type already approved: ${uid}.${field}=${status}`);
       if (!OVERWRITABLE_STATUS.has(status)) failWith(`type field status is not overwritable: ${uid}.${field}=${status}`);
     }
-    // A held taxonomy row is not shown by the catalog, so a type registered on it could never be verified in the consumer.
-    if (current.foundationTaxonomyStatus === "HOLD") failWith(`row has a foundation taxonomy HOLD; its type cannot be displayed: ${uid}`);
+    // A row-level taxonomy HOLD is not a reason to refuse (2026-11-20, "값이 있으면 보인다"): the catalog shows a judged type on a held row too;
+    // the hold stays on the row's other fields (L4, difficulty, source issue) and this lane never touches them.
     // A receipt on the row's OTHER fields stays replayable: receiptRecordMatchesRow (reviewed-exam-registration-v2.mjs) leaves the type fields
     // out of that comparison when the receipt recorded no type. A row whose type is already approved was refused above.
     const scope = patch.scope;
@@ -232,12 +242,8 @@ export function registerTypeJudgment(ctx) {
     bindingCounts[rowBinding]++;
     const embedded = { problemTypeKey: q.problemTypeKey ?? null, templateKey: q.templateKey ?? null };
     const hasEmbedded = !empty(q.problemTypeKey) || !empty(q.templateKey);
-    // The catalog compares an exam-embedded type with the registered one only for meta-foundation scoped rows.
-    if (String(current.metadataRevision || "").startsWith("meta-foundation:"))
-      for (const key of TYPE_FIELDS) {
-        const value = key === "problemTypeKey" ? problemTypeKey : templateKey;
-        if (!empty(q[key]) && q[key] !== value) failWith(`exam-embedded ${key} differs from the judged value on a meta-foundation row: ${uid}`);
-      }
+    // 시험지 JS에 적힌 유형이 판정과 다른 것은 거절 사유가 아니다(2026-11-20): 등록된 판정이 우선이고 적힌 값은 아래 typeApproval.examEmbeddedType에 기록으로 남는다.
+    // 카탈로그도 유형 필드의 불일치를 충돌로 세지 않는다(build-archive2-catalog.mjs).
     const typeApproval = { schemaVersion: TYPE_APPROVAL_SCHEMA, approvalType: DIRECT_JUDGMENT, reviewPassCount: 1, requestId: req.requestId, judge, rationale,
       // curriculumSource: "row" = the row itself names the curriculum (cross-checked); "request" = only the judgment names it.
       scope: { curriculum: scope.curriculum, standardCourse: scope.standardCourse, curriculumSource: rowCurriculum ? "row" : "request",
@@ -277,8 +283,10 @@ export function registerTypeJudgment(ctx) {
       }
     }
   }
-  output.set("archive/data/question_metadata.json", questionMetadataText(metadata));
-  const outputDigests = [...output].filter(([file, text]) => file !== "archive/data/question_metadata.json" &&
+  // A first registration always edits rows (typeApproval carries this requestId), so the metadata file always changes; a batch builds
+  // and writes its text once at the end instead of once per request.
+  if (!batch) output.set(META_FILE, questionMetadataText(metadata));
+  const outputDigests = [...output].filter(([file, text]) => file !== META_FILE &&
     (!fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text))
     .map(([file, text]) => ({ path: file, sha256: digest(text) }));
   const receipt = { schemaVersion: "archive-reviewed-exam-meta-registration-v2", requestId: req.requestId, requestSha256, examUid: req.examUid,
@@ -291,7 +299,8 @@ export function registerTypeJudgment(ctx) {
   if (changed.some(([file]) => file.startsWith("archive/exams/"))) failWith("registration must not write exam source bytes");
   if (!eq(fs.readFileSync(safePath(root, `archive/exams/${source}`)), bytes)) failWith("exam source bytes changed during registration");
   if (write) {
-    assertMetadataAssembledCurrent(root);
+    // A batch leaves question_metadata.json and its shards to flush(), which checks and writes both once.
+    if (!batch) assertMetadataAssembledCurrent(root);
     const backup = new Map();
     try {
       for (const [file, text] of changed) {
@@ -299,14 +308,15 @@ export function registerTypeJudgment(ctx) {
         backup.set(full, fs.existsSync(full) ? fs.readFileSync(full) : null);
         fs.mkdirSync(path.dirname(full), { recursive: true }); fs.writeFileSync(full, text, "utf8");
       }
-      syncMetadataShards(root);
+      if (!batch) syncMetadataShards(root);
     } catch (error) {
       for (const [full, original] of backup) { if (original === null) fs.rmSync(full, { force: true }); else fs.writeFileSync(full, original); }
       throw error;
     }
+    if (batch) batch.markMetadataChanged();
   }
   return { status: "PASS", write, requestId: req.requestId, approvalType: DIRECT_JUDGMENT, totalQuestions: typeRecords.length, ...scopeFields,
     fieldScope: FIELD_SCOPE_TYPE_ONLY, registryChangeCount: registryChanges.length, typeApprovals: typeRecords.length, newMetadataApprovals: 0,
     rowBindingCounts: bindingCounts, runtimeMaterialized: 0, fingerprintRepairCount: 0, consumerSearchStatus: "NOT_RUN", replay: false,
-    plannedPaths: changed.map(([file]) => file) };
+    plannedPaths: [...(batch ? [META_FILE] : []), ...changed.map(([file]) => file)] };
 }

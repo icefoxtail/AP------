@@ -372,7 +372,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/20_풍덕중_1학기_중간_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 이등변삼각형 ABC에서 변 BC를 C쪽으로 연장한 점 D가 있고 외각 ACD 130°, 두 밑각 50°, 꼭지각 x=80°가 표시되어 있으며 변 AB와 CA에 같은 눈금이 있다.",
+    "solutionImageCaption": "변 BC를 C쪽으로 연장하면 평각에서 ∠C=180°−130°=50°이다. AB=AC이므로 두 밑각이 같아 ∠B=∠C=50°이다. 따라서 ∠x=∠A=180°−50°−50°=80°이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -407,7 +411,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/20_풍덕중_1학기_중간_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭지각 36°인 이등변삼각형 ABC에서 B의 이등분선이 변 AC와 점 D에서 만나고 각 36°, 108°, 72°가 표시되어 있으며 AD, BD, BC에 같은 눈금이 있다.",
+    "solutionImageCaption": "AB=AC이므로 ∠B=∠C=(180°−36°)/2=72°이다. BD가 ∠B의 이등분선이므로 ∠ABD=∠DBC=36°이다. △ABD에서 ∠ABD=∠BAD=36°이므로 이등변삼각형이고 AD=BD이며 ∠ADB=180°−36°−36°=108°이다. △BCD에서 ∠BDC=72°=∠C이므로 이등변삼각형이고 BD=BC이다. ∠ADB=112°라는 ③이 옳지 않다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -440,7 +448,11 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/20_풍덕중_1학기_중간_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 C에서 직각인 직각삼각형 ABC의 세 변 위에 정사각형이 하나씩 그려져 있고 넓이 36, 64, 100이 적혀 있다. 직각을 낀 변에 6과 8, 빗변에 x=10이 적혀 있다.",
+    "solutionImageCaption": "직각삼각형의 직각을 낀 두 변 6, 8 위에 정사각형을 그리면 넓이는 36, 64이다. 피타고라스 정리에 의해 빗변 x의 제곱은 x²=6²+8²=36+64=100이고 빗변 위의 정사각형 넓이가 100이다. x>0이므로 x=10이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -475,7 +487,11 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/20_풍덕중_1학기_중간_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 C에서 직각인 직각삼각형 ABC의 세 변 위에 정사각형이 하나씩 그려져 있고 빗변 위의 큰 정사각형에 46, 다른 두 정사각형에 25와 21이 적혀 있다.",
+    "solutionImageCaption": "직각삼각형 ABC의 세 변 위에 정사각형을 그리면 빗변 위의 정사각형 넓이는 나머지 두 정사각형 넓이의 합과 같다. 따라서 AFGB=ACDE+IBHC이고 46=ACDE+25에서 ACDE=21cm²이다. 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -543,7 +559,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/20_풍덕중_1학기_중간_중2_기출/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내부에 내심 I가 있고 I에서 B와 C로 선분이 그어져 있으며 꼭짓점 A의 각 40°, 각 BIC 110°, 꼭짓점 B와 C에서 이등분된 각이 같은 표시로 나타나 있다.",
+    "solutionImageCaption": "예: ∠A=40°, ∠B=60°, ∠C=80°인 삼각형으로 그렸다. 내심 I에서 BI, CI는 ∠B, ∠C의 이등분선이므로 ∠IBC=β, ∠ICB=γ이고 ∠BIC=90°+(1/2)∠A이다. 110°=90°+(1/2)∠A에서 (1/2)∠A=20°이므로 ∠A=40°이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -613,7 +633,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/20_풍덕중_1학기_중간_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 안쪽에 외심 O가 있고 O에서 세 꼭짓점으로 길이가 같은 선분이 그어져 있다. 이등변삼각형의 밑각 30°, 40°, x=20°가 같은 표시와 함께 표시되어 있다.",
+    "solutionImageCaption": "예: ∠OAB=30°, ∠OCA=40°인 삼각형으로 그렸다. 외심이므로 OA=OB=OC이고 △OAB, △OBC, △OCA는 모두 이등변삼각형이다. ∠OBA=∠OAB=30°, ∠OAC=∠OCA=40°이고 ∠OBC=∠OCB=x이다. 삼각형의 세 각의 합에서 2×(30°+40°+x)=180°이므로 x=20°이다. 따라서 ∠OBC=20°이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -798,6 +822,10 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/20_풍덕중_1학기_중간_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 세 변의 중점 D, E, F에서 각 변에 수직인 직선이 그어져 있고 세 직선이 한 점 O에서 만난다. 각 중점에 직각 표시가 있고 나뉜 변에 같은 눈금이 있다.",
+    "solutionImageCaption": "예: 세 나무를 꼭짓점 A, B, C로 하는 삼각형이다. 세 꼭짓점에서 같은 거리에 있는 점은 외심이고, 외심은 세 변의 수직이등분선의 교점이다. 각 변의 중점 D, E, F에서 수직인 직선을 그으면 세 직선이 한 점 O에서 만난다. 따라서 세 변의 수직이등분선을 그어 만나는 점 O가 보물이 묻힌 곳이다.",
+    "solutionImageSize": "full"
   }
 ];

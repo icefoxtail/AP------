@@ -59,7 +59,7 @@ window.questionBank = [
       "2"
     ],
     "answer": "①",
-    "solution": "$\\omega^3=1$이고 $\\omega\\ne1$이므로\n$1+\\omega+\\omega^2=0$이다.\n또한 $\\omega^4=\\omega$, $\\omega^5=\\omega^2$, $\\omega^6=1$, $\\omega^7=\\omega$이므로\n$\\omega^2+\\omega^3+\\omega^4+\\omega^5+\\omega^6+\\omega^7$\n$=\\omega^2+1+\\omega+\\omega^2+1+\\omega$\n$=2(1+\\omega+\\omega^2)=0$\n\n따라서 정답은 ①이다."
+    "solution": "방정식 \\(x^3=1\\)을 만족하는 허근 \\(\\omega\\)는 \\(1\\)이 아니다. 한편\n\\[\n\\begin{aligned}\n\\omega^3=1\n&\\iff \\omega^3-1=0\\\\\n&\\iff(\\omega-1)(\\omega^2+\\omega+1)=0.\n\\end{aligned}\n\\]\n\\(\\omega\\ne1\\)이므로 \\(\\omega-1\\ne0\\)이고,\n\\[\n\\boxed{\\omega^2+\\omega+1=0}\n\\]\n이다.\n\n또 \\(\\omega^3=1\\)에 각각 \\(\\omega,\\omega^2,\\omega^3,\\omega^4\\)를 곱하면\n\\[\n\\omega^4=\\omega,\\quad\n\\omega^5=\\omega^2,\\quad\n\\omega^6=1,\\quad\n\\omega^7=\\omega.\n\\]\n주어진 합을 세 항씩 두 묶음으로 나누면\n\\[\n\\begin{aligned}\n&\\omega^2+\\omega^3+\\omega^4+\\omega^5+\\omega^6+\\omega^7\\\\\n&=(\\omega^2+1+\\omega)+(\\omega^2+1+\\omega)\\\\\n&=2(\\omega^2+\\omega+1)\\\\\n&=2\\cdot0\\\\\n&=\\boxed0.\n\\end{aligned}\n\\]\n따라서 정답은 **①**이다."
   },
   {
     "id": 5,

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-e54cf01fce16-ea634c11",
+  "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_9d2ea50be186defdd6e2c422fe21d6a6636e45dcd161ac34f73d64f834cf02f1",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+      "step": "삼각형 C각50도와 내접원 접점 직각으로 EOF130도를 얻고 반지름 이등변삼각형 밑각25도의 여각65도를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4200efa4630909faeda7350f7983fbc00590f0c0b91c0b49f78595e89edf3126",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_SELECT",
+      "step": "③의40은 다른 자료1,2,4와 크게 떨어져 평균을 끌어올리므로 중앙값이 적합함을 판단한다.",
+      "note": "cross_grade_key: 중1 대푯값 해석 적용; 필요 TPL: 극단값에 따른 대푯값 선택 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9d0795b4b39b5cbd3bb0305b9704f978c1d02c7b118c57ba567870ac94312fc5",
+      "sourceOrdinal": 15,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "평균8,편차제곱합42,분산21/4,표준편차√21/2를 확인하며 평균보다 큰9,10,12는3개이므로②를 배제한다.",
+      "note": "새 PT 제안: 원자료의 분산·표준편차 직접 계산; 개별 변량의 평균을 구한 뒤 편차 제곱합을 자료 수로 나누고 제곱근을 취한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

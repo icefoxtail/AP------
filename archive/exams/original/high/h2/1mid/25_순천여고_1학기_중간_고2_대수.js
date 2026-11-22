@@ -92,9 +92,9 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q3-solution.svg",
-    "solutionImageAlt": "지수함수 y=2ˣ+1의 그래프와 이를 오른쪽 3, 위로 4만큼 평행이동한 y=2⁽ˣ⁻³⁾+5의 그래프를 함께 그린 그림. a=3, b=4이므로 ab=12임을 보여준다.",
-    "solutionImageCaption": "exp_shift",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 지수 곡선 f, g, h와 두 가로 점근선 y=1, y=5가 있다. f는 오른쪽으로 내려가고 g와 h는 오른쪽으로 올라가며, 점 P와 점 Q의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f는 f(x)=(1/2)ˣ+1, g는 g(x)=2ˣ+1, h는 h(x)=2ˣ⁻³+5의 그래프이다. f를 y축에 대하여 대칭이동하면 g가 되고, 점 P(0, 2)는 그대로 P(0, 2)에 남는다. g를 x축으로 a, y축으로 b만큼 평행이동한 그래프가 h이므로 점근선 y=1이 y=5로 옮겨져 b=4이고, P가 Q(3, 6)으로 옮겨져 a=3이다. 따라서 ab=12이고 답은 ⑤이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "content": "함수 $y=\\left(\\frac{1}{2}\\right)^x+1$의 그래프를 $y$축에 대하여 대칭이동 한 후 $x$축의 방향으로 $a$만큼, $y$축의 방향으로 $b$만큼 평행이동 하였더니 함수 $y=2^{x-3}+5$의 그래프와 일치하였다. 상수 $a, b$에 대하여 $ab$의 값은? [3.4점]",
@@ -110,7 +110,8 @@ window.questionBank = [
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
     "subUnit": "지수함수",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageScale": 80
   },
   {
     "id": 4,
@@ -274,9 +275,9 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q8-solution.svg",
-    "solutionImageAlt": "로그함수 y=log₂(x+1)+2의 증가 곡선과 y=x 대칭선(점선)을 그린 그림이다. 역함수에서 (a+4,a+2)와 (a+2,a+4)의 좌표가 서로 바뀌고 a=−1임을 나타낸다.",
-    "solutionImageCaption": "inverse_point",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 로그 곡선 f와 주황 지수 곡선 g가 점선 y=x를 사이에 두고 마주 보며, f 위의 점 P와 g 위의 점 Q의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f는 a=−1일 때 f(x)=log₂(x+1)+2의 그래프이고, g는 f의 역함수로 두 그래프는 직선 y=x에 대하여 대칭이다. g가 점 Q(3, 1)을 지나므로 f는 점 P(1, 3)을 지난다. 일반적으로 g가 점 (a+4, a+2)를 지나면 f는 점 (a+2, a+4)를 지나므로 f(a+2)=3에서 a+4=3이다. 따라서 a=−1이고 답은 ⑤이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "content": "함수 $f(x) = \\log_2 (x-a) + 2$의 역함수의 그래프가 점 $(a+4, a+2)$를 지날 때, $a$의 값은? (단, $a$는 상수이다.) [3.8점]",
@@ -479,7 +480,12 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: r가 0에서 10 사이일 때 위로 볼록한 포물선 S가 그려져 있고 꼭짓점 V의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "S는 반지름 r에 따른 부채꼴의 넓이이다. 둘레가 20이면 호의 길이는 20−2r이므로 S=(1/2)r(20−2r)=−(r−5)²+25이다. 그래프의 꼭짓점 V(5, 25)에서 최대이므로 a=25이고, 이때 호의 길이는 10이어서 중심각 b=10/5=2이다. 따라서 a+b=27이고 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 14,
@@ -558,7 +564,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "지수와 로그",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선이 그려져 있고 가로축과 만나는 두 점 A, B와 꼭짓점 V의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "t=log₂k로 두면 판별식은 D/4=t²−t−6이고 이 그래프가 D≥0이 되는 부분을 본다. 그래프는 t축과 A(−2, 0), B(3, 0)에서 만나므로 t≤−2 또는 t≥3일 때 D≥0이다. t=log₂k이므로 k≤1/4 또는 k≥8이고, 진수 조건 k>0과 합치면 0<k≤1/4 또는 k≥8이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -755,7 +765,12 @@ window.questionBank = [
     "subUnitKey": "H22-A-01-EXPONENTIAL_FUNCTION",
     "subUnit": "지수함수",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고2_대수/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 지수 곡선 p, q와 가로 점선 y=3, y=k가 있다. 네 교점 A, B, C, D를 이은 평행사변형이 색칠되어 있고 네 점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "p는 y=3ˣ⁺¹의 그래프이고 q는 a=√3일 때 y=aˣ⁺¹의 그래프이다. ADCB가 평행사변형이면 k=1/3이고 윗변 AB=logₐ3−1, 높이는 3−1/3=8/3이다. 넓이 8/3에서 AB=1이므로 logₐ3=2, a=√3이고 이때 A(0, 3), B(1, 3), C(−2, 1/3), D(−3, 1/3)이다. 따라서 ak=√3×1/3=1/√3이고 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 21,
