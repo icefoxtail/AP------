@@ -95,3 +95,20 @@ test('a product of two numbers keeps its dot, and the observer fails a label tha
   const joined=spliceLabel(drawn.svg,'nOB',text=>text.replace('data-c="22C5"','data-c="2E"'));
   assert.ok(codes(await observe(joined,product)).includes('LABEL_PRODUCT_SIGN_MISSING'));
 });
+
+test('a coefficient of 1 is left out of the drawn label, and the observer fails a label that lost any other digit',async()=>{
+  const withText=text=>{const copy=JSON.parse(JSON.stringify(marks));copy.expressionLabels=[{id:'nOB',ownerSegment:'sOB',text},{id:'nOC',ownerSegment:'sOC',text:'6',unit:'cm'},{id:'nAO',ownerSegment:'sAO',text:'x',unit:'cm'}];return copy;};
+  for(const [text,digits] of [['y=(-1)*x^2',['32']],['y=(1)*x+3',['33']],['y=1*x+3',['33']],['y=(2)*x+3',['32','33']]]){
+    const plan=withText(text),drawn=await composeConstructionCandidate({plan:planOf(plan),model,identity,typographyPolicy:policy,browser});
+    assert.equal(drawn.status,'COMPOSED',text+JSON.stringify(drawn.detail));
+    assert.deepEqual(glyphs(drawn.svg,'nOB').filter(code=>/^3[0-9]$/.test(code)),digits,text+': no 1x / -1x is drawn');
+    assert.deepEqual((await observe(drawn.svg,plan)).errors,[],text);
+  }
+  // 2x drawn as x (the 2 glyph gone) and a 1 dropped from 12x are both mismatches
+  const two=withText('y=(2)*x+3'),drawnTwo=await composeConstructionCandidate({plan:planOf(two),model,identity,typographyPolicy:policy,browser});
+  const lost=spliceLabel(drawnTwo.svg,'nOB',text=>text.replace('data-c="32"','data-c="2E"'));
+  assert.ok(codes(await observe(lost,two)).includes('LABEL_TEXT_MISMATCH'));
+  const twelve=withText('y=(12)*x'),drawnTwelve=await composeConstructionCandidate({plan:planOf(twelve),model,identity,typographyPolicy:policy,browser});
+  assert.deepEqual((await observe(drawnTwelve.svg,twelve)).errors,[]);
+  assert.ok(codes(await observe(spliceLabel(drawnTwelve.svg,'nOB',text=>text.replace('data-c="31"','data-c="2E"')),twelve)).includes('LABEL_TEXT_MISMATCH'));
+});

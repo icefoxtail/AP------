@@ -180,7 +180,7 @@ class LabelNotationTests(unittest.TestCase):
         self.assertEqual(evaluate(parse('6÷3×2')),4);self.assertEqual(evaluate(parse('2×3')),6);self.assertTrue(evaluate(parse('x≤3'),{'x':2}))
     def test_a_whole_number_coefficient_is_not_bracketed(self):
         # y=(6)x-1 from a bracketed integer slope reads y=6x-1; a negative one loses its brackets where a sign may lead; fractions, decimals and sums keep theirs.
-        cases={'y=(6)x-1':'y=6x-1','y=(-6)x-1':'y=-6x-1','y=(2)x+3':'y=2x+3','y=(-2)x':'y=-2x','(6)x':'6x','(-6)x':'-6x','(6)*x':'6x','(-6)*x':'-6x','y=(1)x':'y=1x','y=(-1)x':'y=-1x',
+        cases={'y=(6)x-1':'y=6x-1','y=(-6)x-1':'y=-6x-1','y=(2)x+3':'y=2x+3','y=(-2)x':'y=-2x','(6)x':'6x','(-6)x':'-6x','(6)*x':'6x','(-6)*x':'-6x','y=(1)x':'y=x','y=(-1)x':'y=-x',
                'y=(6)x^2+(3)x':'y=6x^{2}+3x','(2)sqrt(3)':r'2\sqrt{3}','y=2(6)x':'y=2(6)x'}
         for source,tex in cases.items():
             with self.subTest(source=source):self.assertEqual(serialize(parse(source),'tex'),tex)
@@ -191,6 +191,20 @@ class LabelNotationTests(unittest.TestCase):
         self.assertEqual(serialize(parse('a-(-2)x'),'plain'),'a−(−2)x')
         self.assertEqual(serialize(parse('(1/2)x'),'tex'),r'({\displaystyle\frac{1}{2}})x')   # a fraction keeps the notation it always had
         self.assertEqual(evaluate(parse('(6)x-1'),{'x':2}),11)   # the written label changes, not the value
+    def test_a_coefficient_of_one_is_left_out_not_written_as_1x(self):
+        # a textbook writes -x^2 and x+3, never -1x^2 or 1x+3
+        cases={'y=(-1)*x^2':'y=-x^{2}','y=(1)*x+3':'y=x+3','y=(-1)x':'y=-x','y=(-1)*x^(2)+2*x+3':'y=-x^{(2)}+2x+3','y=1*x':'y=x','y=-1*x':'y=-x','1*x':'x','a-(1)*x':'a-x',
+               'x=(-1,(1)*x)':'x=(-1,x)','y=(1)*x^2':'y=x^{2}'}
+        for source,tex in cases.items():
+            with self.subTest(source=source):self.assertEqual(serialize(parse(source),'tex'),tex)
+        # a number that merely starts with 1, a 1 beside a unit or a name, an exponent and a sum of brackets are not coefficients
+        for source in ('1cm','1 m','1a','10x','-11x','x^(1)','(1)+(2)','(1)(x)','2(1)x','3*1*x','a+(-1)*x'):
+            with self.subTest(kept=source):
+                before=serialize(parse(source),'plain')
+                self.assertEqual(before.count('1'),source.count('1'))   # no 1 was dropped
+        # a coefficient other than 1 is never dropped
+        for source,tex in {'y=(2)*x':'y=2x','y=(-2)*x':'y=-2x','y=(12)*x':'y=12x','y=(-11)*x':'y=-11x'}.items():
+            with self.subTest(source=source):self.assertEqual(serialize(parse(source),'tex'),tex)
     def test_a_label_is_never_half_unbracketed(self):
         # y=(3)+(2)x+(-1)x^2 keeps every bracket (taking them off the coefficients only would leave (3) and (-1) beside 2x); the plain forms lose all of them
         for source in ('y=(3)+(2)*x+(-1)*x^2','y=(0)*x+(0)','y=(6)x+(3)','y=(2)x+(-3)'):

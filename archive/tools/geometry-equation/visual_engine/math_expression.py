@@ -185,6 +185,15 @@ def _integer_in_brackets(node):
     if inner.kind=='unary' and inner.value=='-' and inner.args[0].kind=='number' and '.' not in inner.args[0].value:return inner
     return None
 
+def _unit_coefficient(node,explicit):
+    """'+' for a coefficient 1 and '-' for -1 that may be left out before a letter: (1), (-1) always, a bare 1 or -1 only when it was written as a product (1*x). A bare 1 in 1cm / 1a stays (it may be a unit or a name). None otherwise."""
+    def one(item):return item.kind=='number' and item.value=='1'
+    if node.kind=='group':return _unit_coefficient(node.args[0],True) if node.args[0].kind in {'number','unary'} else None
+    if not explicit:return None
+    if one(node):return '+'
+    if node.kind=='unary' and node.value=='-' and one(node.args[0]):return '-'
+    return None
+
 def _leading_letter(node):
     while node.kind in {'binary','subscript','prime'} and node.args:node=node.args[0]
     return node.kind in {'symbol','call','vec','constant'}
@@ -196,6 +205,10 @@ def _tidy(node,lead=True):
     if node.kind=='binary':
         op=node.value;left,right=node.args
         if op in {'*','implicit'} and _leading_letter(right):
+            sign=_unit_coefficient(left,op=='*')
+            if sign=='+' or (sign=='-' and lead):   # (1)x, 1*x -> x and (-1)x, -1*x -> -x: no textbook writes 1x or -1x
+                kept=_tidy(right,False)
+                return kept if sign=='+' else Expr('unary','-',(kept,))
             number=_integer_in_brackets(left)
             if number is not None and (number.kind=='number' or lead):left=number
         return Expr('binary',op,(_tidy(left,lead),_tidy(right,op in RELATIONS)))

@@ -587,6 +587,14 @@ def audit(p):
         # text counts the products, and the glyphs drawn must carry at least as many dot operators (MathJax code 22C5).
         written_products=len(re.findall(r'\d\s*\*\s*\d',str(text)))     # a product is written with *; digits only separated by a space are refused by the engine (NUMBER_JUXTAPOSITION_UNCLEAR), never read as a product
         if written_products and codes.count('22C5')<written_products:errors.append('LABEL_PRODUCT_SIGN_MISSING:'+label_id)
+        # (EXT-20261122) The digits drawn are the digits the plan wrote. The only digit a label may leave out is a coefficient 1 before a letter ((1)x, (-1)x, 1*x, -1*x draw x, -x): this observer's own
+        # reading finds those 1s in the plan text and accepts either the full digit run or the run without them, so a coefficient other than 1 that went missing (2x drawn as x) is a mismatch.
+        flat_text=re.sub(r'\s+','',str(text))
+        if not unit and codes and re.fullmatch(r"[0-9A-Za-z+\-*/^()=,.<>]+",flat_text):
+            drawn_digits=''.join(chr(int(code,16)) for code in codes if re.fullmatch(r'3[0-9]',code))
+            written_digits=''.join(re.findall(r'[0-9]',flat_text))
+            without_ones=''.join(re.findall(r'[0-9]',re.sub(r'\(-?1\)\*?(?=[A-Za-z])|(?<![0-9A-Za-z.)])1\*(?=[A-Za-z])',' ',flat_text)))
+            if drawn_digits not in (written_digits,without_ones):errors.append('LABEL_TEXT_MISMATCH:'+label_id)
         if not unit:return
         # (EXT-20261122) A unit is letters (cm), a ratio of letters (km/h) or letters with a power (cm^2): the glyphs drawn are the letters and the slash, then the power digit.
         unit_hit=re.fullmatch(r'([A-Za-z]+(?:/[A-Za-z]+)?)(?:\^([23]))?',unit)
