@@ -587,14 +587,37 @@ def audit(p):
         # text counts the products, and the glyphs drawn must carry at least as many dot operators (MathJax code 22C5).
         written_products=len(re.findall(r'\d\s*\*\s*\d',str(text)))     # a product is written with *; digits only separated by a space are refused by the engine (NUMBER_JUXTAPOSITION_UNCLEAR), never read as a product
         if written_products and codes.count('22C5')<written_products:errors.append('LABEL_PRODUCT_SIGN_MISSING:'+label_id)
-        # (EXT-20261122) The digits drawn are the digits the plan wrote. The only digit a label may leave out is a coefficient 1 before a letter ((1)x, (-1)x, 1*x, -1*x draw x, -x): this observer's own
-        # reading finds those 1s in the plan text and accepts either the full digit run or the run without them, so a coefficient other than 1 that went missing (2x drawn as x) is a mismatch.
+        # (EXT-20261122) The digits drawn are the digits the plan wrote, in the order it wrote them, with two readings of this observer's own that change the run:
+        # (1) a coefficient 1 before a letter is left out ((1)x, (-1)x, 1*x, -1*x draw x, -x) but never before a unit word (1cm stays 1cm: a length of 1);
+        # (2) a fraction times one letter or function, written (a/b)*f, is drawn stacked with f over b ((8/5)*sqrt(10) is 8 sqrt10 over 5, (1/2)*sqrt(3) is sqrt3 over 2), so the run reads
+        #     a (left out when it is 1), the digits of f, then b. Anything else (a digit lost, numerator and denominator swapped, a coefficient other than 1 gone) is a mismatch.
         flat_text=re.sub(r'\s+','',str(text))
         if not unit and codes and re.fullmatch(r"[0-9A-Za-z+\-*/^()=,.<>]+",flat_text):
+            unit_words={'mm','cm','m','km','mg','g','kg','mL','L','dL','s','min','h','ha'}
+            def one_left_out(hit):
+                word=re.match(r'[A-Za-z]+',flat_text[hit.end():])
+                return hit.group(0) if word and word.group(0) in unit_words else '\x00'
+            digits_of=lambda value:''.join(re.findall(r'[0-9]',value))
+            def stacked_run(source):
+                calls={'sqrt','sin','cos','tan','log','ln','exp','abs','f','g','h','p','q','logb'};out='';last=0
+                for hit in re.finditer(r'\((-?)([0-9.]+)/([0-9.]+)\)\*([A-Za-z]+)',source):
+                    before=source[:hit.start()]
+                    if before and (before[-1] in '0123456789.)*/^' or before[-1].isalpha()):continue          # the fraction is the right-hand factor of something else, not a left operand
+                    if before.endswith('-') and (len(before)==1 or before[-2] in '(=,<>+-*/^'):continue        # a leading minus belongs to the whole product, which then stays as written
+                    end=hit.end()
+                    if hit.group(4) in calls and source[end:end+1]=='(':
+                        depth=0
+                        for index in range(end,len(source)):
+                            depth+=(source[index]=='(')-(source[index]==')')
+                            if depth==0:break
+                        end=index+1
+                    if source[end:end+1] in ('^','_',"'"):continue                                           # x^2, x_1: the factor is not a bare letter or function
+                    out+=digits_of(source[last:hit.start()])+('' if hit.group(2)=='1' else digits_of(hit.group(2)))+digits_of(source[hit.end()-len(hit.group(4)):end])+digits_of(hit.group(3));last=end
+                return out+digits_of(source[last:])
             drawn_digits=''.join(chr(int(code,16)) for code in codes if re.fullmatch(r'3[0-9]',code))
-            written_digits=''.join(re.findall(r'[0-9]',flat_text))
-            without_ones=''.join(re.findall(r'[0-9]',re.sub(r'\(-?1\)\*?(?=[A-Za-z])|(?<![0-9A-Za-z.)])1\*(?=[A-Za-z])',' ',flat_text)))
-            if drawn_digits not in (written_digits,without_ones):errors.append('LABEL_TEXT_MISMATCH:'+label_id)
+            written_text=flat_text
+            ones_gone=re.sub(r'\(-?1\)\*?(?=[A-Za-z])|(?<![0-9A-Za-z.)])1\*(?=[A-Za-z])',one_left_out,flat_text)
+            if drawn_digits not in {digits_of(written_text),digits_of(ones_gone),stacked_run(written_text),stacked_run(ones_gone)}:errors.append('LABEL_TEXT_MISMATCH:'+label_id)
         if not unit:return
         # (EXT-20261122) A unit is letters (cm), a ratio of letters (km/h) or letters with a power (cm^2): the glyphs drawn are the letters and the slash, then the power digit.
         unit_hit=re.fullmatch(r'([A-Za-z]+(?:/[A-Za-z]+)?)(?:\^([23]))?',unit)

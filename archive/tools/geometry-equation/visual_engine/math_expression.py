@@ -194,6 +194,13 @@ def _unit_coefficient(node,explicit):
     if node.kind=='unary' and node.value=='-' and one(node.args[0]):return '-'
     return None
 
+# A 1 beside one of these is a length, a mass or a time (1cm), not a coefficient: it stays. m, s, g, h, L are also variable names; keeping the 1 (1m) is the safe side.
+UNIT_WORDS={'mm','cm','m','km','mg','g','kg','mL','L','dL','s','min','h','ha'}
+
+def _starts_with_unit_word(node):
+    while node.kind in {'binary','subscript','prime'} and node.args:node=node.args[0]
+    return node.kind=='symbol' and node.value in UNIT_WORDS
+
 def _leading_letter(node):
     while node.kind in {'binary','subscript','prime'} and node.args:node=node.args[0]
     return node.kind in {'symbol','call','vec','constant'}
@@ -205,7 +212,7 @@ def _tidy(node,lead=True):
     if node.kind=='binary':
         op=node.value;left,right=node.args
         if op in {'*','implicit'} and _leading_letter(right):
-            sign=_unit_coefficient(left,op=='*')
+            sign=None if _starts_with_unit_word(right) else _unit_coefficient(left,op=='*')
             if sign=='+' or (sign=='-' and lead):   # (1)x, 1*x -> x and (-1)x, -1*x -> -x: no textbook writes 1x or -1x
                 kept=_tidy(right,False)
                 return kept if sign=='+' else Expr('unary','-',(kept,))

@@ -112,3 +112,30 @@ test('a coefficient of 1 is left out of the drawn label, and the observer fails 
   assert.deepEqual((await observe(drawnTwelve.svg,twelve)).errors,[]);
   assert.ok(codes(await observe(spliceLabel(drawnTwelve.svg,'nOB',text=>text.replace('data-c="31"','data-c="2E"')),twelve)).includes('LABEL_TEXT_MISMATCH'));
 });
+
+test('a fraction times a letter or function is read by its stacked order, and the observer still fails swapped or lost digits',async()=>{
+  const withText=text=>{const copy=JSON.parse(JSON.stringify(marks));copy.expressionLabels=[{id:'nOB',ownerSegment:'sOB',text},{id:'nOC',ownerSegment:'sOC',text:'6',unit:'cm'},{id:'nAO',ownerSegment:'sAO',text:'x',unit:'cm'}];return copy;};
+  const draw=async text=>{const plan=withText(text),drawn=await composeConstructionCandidate({plan:planOf(plan),model,identity,typographyPolicy:policy,browser});assert.equal(drawn.status,'COMPOSED',text+JSON.stringify(drawn.detail));return {plan,drawn};};
+  const digitsOf=svg=>glyphs(svg,'nOB').filter(code=>/^3[0-9]$/.test(code)).map(code=>code[1]).join('');
+  // drawn digits: numerator (left out when 1), the digits of the factor, then the denominator
+  const forms={'(1/2)*sqrt(3)':'32','(8/5)*sqrt(10)':'8105','(-1/2)*x':'2','(3/4)*sqrt(2)':'324','(2/5)*sqrt(15)':'2155','(12/5)*sqrt(10)':'12105','y=(8/5)*sqrt(10)+1':'81051','x=(5/2)*sqrt(3)':'532',
+    '(1/3)*x+(2/3)':'323','(1/2)*a*b*sin(60)':'260','(1/2)*x^2':'122','-(1/2)*x':'12','(1/2)*x/3':'23'};
+  for(const [text,digits] of Object.entries(forms)){
+    const {plan,drawn}=await draw(text);
+    assert.equal(digitsOf(drawn.svg),digits,text);
+    assert.deepEqual((await observe(drawn.svg,plan)).errors,[],text);
+  }
+  // numerator and denominator swapped, and one digit lost
+  const {plan,drawn}=await draw('(8/5)*sqrt(10)');
+  const swapped=spliceLabel(drawn.svg,'nOB',text=>text.replace('data-c="38"','data-c="@"').replace('data-c="35"','data-c="38"').replace('data-c="@"','data-c="35"'));
+  assert.equal(digitsOf(swapped),'5108');assert.ok(codes(await observe(swapped,plan)).includes('LABEL_TEXT_MISMATCH'));
+  assert.ok(codes(await observe(spliceLabel(drawn.svg,'nOB',text=>text.replace('data-c="38"','data-c="2E"')),plan)).includes('LABEL_TEXT_MISMATCH'));
+  assert.ok(codes(await observe(spliceLabel(drawn.svg,'nOB',text=>text.replace('data-c="35"','data-c="2E"')),plan)).includes('LABEL_TEXT_MISMATCH'));
+  // a 1 beside a unit word is a length and is drawn; losing it fails
+  for(const text of ['(1)*cm','1*cm','(1)m']){
+    const one=await draw(text);
+    assert.equal(digitsOf(one.drawn.svg),'1',text);
+    assert.deepEqual((await observe(one.drawn.svg,one.plan)).errors,[],text);
+    assert.ok(codes(await observe(spliceLabel(one.drawn.svg,'nOB',body=>body.replace('data-c="31"','data-c="2E"')),one.plan)).includes('LABEL_TEXT_MISMATCH'),text);
+  }
+});

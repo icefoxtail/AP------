@@ -205,6 +205,14 @@ class LabelNotationTests(unittest.TestCase):
         # a coefficient other than 1 is never dropped
         for source,tex in {'y=(2)*x':'y=2x','y=(-2)*x':'y=-2x','y=(12)*x':'y=12x','y=(-11)*x':'y=-11x'}.items():
             with self.subTest(source=source):self.assertEqual(serialize(parse(source),'tex'),tex)
+    def test_a_one_before_a_unit_word_is_a_length_and_stays(self):
+        # (1)cm and 1*cm are one centimetre: dropping the 1 would leave a figure with no length. m, s, g, h, L double as variables, so the 1 stays there too (1m is the safe side).
+        for source in ('(1)cm','1*cm','(1)*cm','(1)mm','1*km','(1)kg','(1)g','(1)mL','(1)L','(1)m','1*s','(1)min','1*cm^2'):
+            with self.subTest(source=source):
+                for mode in ('tex','plain'):self.assertIn('1',serialize(parse(source),mode))
+        self.assertEqual(serialize(parse('y=1*m'),'plain'),'y=1m')
+        for source,tex in {'(1)x':'x','(1)*c':'c','(1)*cx':'cx','(1)*mx':'mx','1*sin(x)':r'\sin(x)'}.items():   # a name that only starts like a unit is a variable
+            with self.subTest(source=source):self.assertEqual(serialize(parse(source),'tex'),tex)
     def test_a_label_is_never_half_unbracketed(self):
         # y=(3)+(2)x+(-1)x^2 keeps every bracket (taking them off the coefficients only would leave (3) and (-1) beside 2x); the plain forms lose all of them
         for source in ('y=(3)+(2)*x+(-1)*x^2','y=(0)*x+(0)','y=(6)x+(3)','y=(2)x+(-3)'):
