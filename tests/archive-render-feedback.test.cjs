@@ -333,3 +333,37 @@ test('reader treats DISCARDED_STALE as cancellation rather than an error', async
     assert.equal(h.alerts.length, 0);
     h.preserved();
 });
+
+// 2026-11-22: 해설 한 문항이 칸을 넘어 줄여서 표시되면 출력은 성공하고, 같은 알림 자리에 한 줄만 더 보인다(새 화면 틀 없음).
+test('a notice raised during a render shows after success in the same panel and closes with 확인', async () => {
+    const h = fixture();
+    const work = deferred();
+    h.root.APArchiveRenderFeedback.track(work.promise, { mode: 'sol', questionCount: 2 });
+    h.root.APArchiveRenderFeedback.notice('10번 해설이 칸을 넘어 줄여서 표시했습니다.');
+    h.root.APArchiveRenderFeedback.notice('10번 해설이 칸을 넘어 줄여서 표시했습니다.');
+    assert.equal(h.message().textContent, '해설 2문항 준비 중…', 'the pending text stays until the render settles');
+    work.resolve({ ok: true, pages: 1 });
+    await tick();
+    assert.equal(h.panel().hidden, false);
+    assert.equal(h.panel().dataset.state, 'notice');
+    assert.equal(h.message().textContent, '10번 해설이 칸을 넘어 줄여서 표시했습니다.', 'the same notice is not repeated');
+    assert.equal(h.retry().textContent, '확인');
+    assert.equal(h.retry().hidden, false);
+    await h.retry().dispatch('click');
+    assert.equal(h.panel().hidden, true);
+    h.preserved();
+});
+
+test('a failed render shows only the failure, and a new render drops an old notice', async () => {
+    const h = fixture();
+    h.root.APArchiveRenderFeedback.track(Promise.resolve({ ok: false, code: 'RENDER_FAILED' }), { mode: 'sol', retry() { return Promise.resolve({ ok: true }); } });
+    h.root.APArchiveRenderFeedback.notice('3번 해설이 칸을 넘어 줄여서 표시했습니다.');
+    await tick();
+    assert.equal(h.panel().dataset.state, 'failed');
+    assert.equal(h.retry().textContent, '다시 시도');
+    const next = deferred();
+    h.root.APArchiveRenderFeedback.track(next.promise, { mode: 'sol', questionCount: 4 });
+    next.resolve({ ok: true, pages: 1 });
+    await tick();
+    assert.equal(h.panel().hidden, true, 'a render without notices hides the panel');
+});

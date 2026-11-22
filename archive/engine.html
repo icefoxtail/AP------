@@ -137,8 +137,8 @@
     <script src="svg-accessibility.js?v=20261014.1"></script>
     <script src="render-authority.js?v=20261014-svg-alt-1" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
     <script src="layout-authority.js?v=20261009.1" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
-    <script src="layout-materializer.js?v=20261118-auto-promote-1"></script>
-    <script src="solution-render-executor.js?v=20261118-figure-ratio-1" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
+    <script src="layout-materializer.js?v=20261122-sol-fit-1"></script>
+    <script src="solution-render-executor.js?v=20261122-sol-fit-1" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="answer-render-executor.js?v=20261029-sections-1" onerror="console.warn('[answer-render-executor] shared answer renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="equal-slot-engine.js?v=20261121-raster-page"></script>
     <link rel="stylesheet" href="equal-slot-engine.css?v=20261118-auto-promote-2">
@@ -299,6 +299,14 @@
         .q-box.sol-box.sol-fit-narrow[data-sol-fit="2"] .sol-exp { font-size: 7.5pt; }
         .q-box.sol-box.sol-fit-narrow[data-sol-fit="3"] .sol-exp { font-size: 7pt; }
         .q-box.sol-box.sol-fit-narrow[data-sol-fit="4"] .sol-exp { font-size: 6.5pt; }
+        /* 글자 단계로도 안 맞는 해설 하나만 줄여서 넣는다(해설지 전체를 실패시키지 않음). 늘임표(\overline 등)의 안 보이는 공백이 몇 px 삐져나온 것은
+           공백만 paint 안에 가둔다(mixed_engine.html의 [data-ap-mjx-clip]과 같은 규칙, 넘친 해설 상자에만 붙는다). */
+        .q-box.sol-box[data-sol-shrink="1"] { zoom: 0.92; }
+        .q-box.sol-box[data-sol-shrink="2"] { zoom: 0.85; }
+        .q-box.sol-box[data-sol-shrink="3"] { zoom: 0.78; }
+        .q-box.sol-box[data-sol-shrink="4"] { zoom: 0.7; }
+        .q-box.sol-box[data-sol-shrink="5"] { zoom: 0.6; }
+        [data-ap-mjx-clip] mjx-stretchy-h > mjx-ext { contain: paint; }
         .sol-sec-label { display: inline; margin: 0 3px 0 0; padding: 0; border-radius: 0; background: transparent; color: #111; font-weight: 700; font-size: inherit; }
         .sol-chunk { display: inline; }
         .sol-image-wrap { display: block; margin: 10px auto 2px; text-align: center; break-inside: avoid; page-break-inside: avoid; }
@@ -510,7 +518,7 @@
     <link rel="stylesheet" href="css/ap-table.css?v=20261109-ap-table-1">
     <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261117-figure-large-1">
     <link rel="stylesheet" href="archive2-reader-controls.css?v=20261116-output-bar-1">
-    <script src="render-feedback.js?v=20261116-output-bar-1"></script>
+    <script src="render-feedback.js?v=20261122-sol-fit-1"></script>
     <script defer src="archive2-reader-controls.js?v=20261120-derive-ui-1"></script>
     <link rel="stylesheet" href="../apmath/css/student-navigation.css?v=2026.11.11.4">
     <script defer src="../apmath/js/student-navigation.js?v=2026.11.11.4" data-student-nav-active="exams" data-student-nav-context-only="true"></script>

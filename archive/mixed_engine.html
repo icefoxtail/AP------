@@ -147,6 +147,28 @@
            overflow:hidden/clip element. Applied only to a question the exam executor found clipped (data-ap-mjx-clip), never
            globally: contain:paint on every bar changes Chrome's painted PDF pixels, so unflagged output stays as it was. */
         [data-ap-mjx-clip] mjx-stretchy-h > mjx-ext { contain: paint; }
+        /* 반폭 칸을 가로로 넘치는 해설 상자 하나가 해설지 전체를 막지 않도록, 그 상자만 칸 안에서 줄바꿈·글자 단계·축소로 맞춘다
+           (solution-render-executor.js fitSolutionBoxHorizontally, engine.html과 같은 규칙). 넘치지 않는 상자에는 붙지 않는다. 잘라 숨기지 않는다. */
+        .q-box.sol-box.sol-fit-narrow, .q-box.sol-box.sol-fit-narrow .sol-meta { max-width: 100%; min-width: 0; }
+        .q-box.sol-box.sol-fit-narrow .sol-exp,
+        .q-box.sol-box.sol-fit-narrow .sol-ans { max-width: 100%; white-space: normal; overflow-wrap: anywhere; word-break: break-word; }
+        .q-box.sol-box.sol-fit-narrow .sol-exp mjx-container { display: inline-block; max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+        .q-box.sol-box.sol-fit-narrow .sol-exp mjx-container mjx-math { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+        .q-box.sol-box.sol-fit-narrow :is(.sol-exp, [data-semantic-content="1"]) :is(img, video, canvas):not(.sol-image-wrap *) { max-width: 100% !important; width: auto !important; height: auto !important; box-sizing: border-box; }
+        .q-box.sol-box.sol-fit-narrow :is(.sol-exp, [data-semantic-content="1"]) svg:not(mjx-container svg):not(.sol-image-wrap *) { max-width: 100% !important; height: auto; }
+        .q-box.sol-box.sol-fit-narrow :is(.sol-exp, [data-semantic-content="1"]) table { max-width: 100% !important; table-layout: fixed; box-sizing: border-box; }
+        .q-box.sol-box.sol-fit-narrow :is(.sol-exp, [data-semantic-content="1"]) :is(td, th) { overflow-wrap: anywhere; word-break: break-word; }
+        .q-box.sol-box.sol-fit-narrow :is(.sol-exp, [data-semantic-content="1"]) :is(div, p, span, figure, pre)[style*="width"] { max-width: 100% !important; box-sizing: border-box; }
+        .q-box.sol-box.sol-fit-narrow [data-semantic-content="1"] { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+        .q-box.sol-box.sol-fit-narrow[data-sol-fit="1"] .sol-exp { font-size: 8pt; }
+        .q-box.sol-box.sol-fit-narrow[data-sol-fit="2"] .sol-exp { font-size: 7.5pt; }
+        .q-box.sol-box.sol-fit-narrow[data-sol-fit="3"] .sol-exp { font-size: 7pt; }
+        .q-box.sol-box.sol-fit-narrow[data-sol-fit="4"] .sol-exp { font-size: 6.5pt; }
+        .q-box.sol-box[data-sol-shrink="1"] { zoom: 0.92; }
+        .q-box.sol-box[data-sol-shrink="2"] { zoom: 0.85; }
+        .q-box.sol-box[data-sol-shrink="3"] { zoom: 0.78; }
+        .q-box.sol-box[data-sol-shrink="4"] { zoom: 0.7; }
+        .q-box.sol-box[data-sol-shrink="5"] { zoom: 0.6; }
         /* Optional section headings (meta.sections, e.g. difficulty step). Absent => no element, no change. */
         .q-section { display: flex; align-items: baseline; gap: 8px; margin: 0 0 5px; padding: 1px 7px; border-left: 3px solid #1d4ed8; background: #eef2ff; color: #1e3a8a; font-size: 9pt; font-weight: 800; line-height: 1.35; break-after: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         .q-section-sub { color: #475569; font-size: 8.5pt; font-weight: 600; }
@@ -416,10 +438,10 @@
     <link rel="stylesheet" href="equal-slot-engine.css?v=20261118-auto-promote-2">
     <link rel="stylesheet" href="figure-size.css?v=20261121-figure-ratio-2">
     <script src="exam-render-executor.js?v=20261118-auto-promote-1"></script>
-    <script src="solution-render-executor.js?v=20261118-figure-ratio-1"></script>
+    <script src="solution-render-executor.js?v=20261122-sol-fit-1"></script>
     <script src="answer-render-executor.js?v=20261029-sections-1"></script>
     <link rel="stylesheet" href="archive2-reader-controls.css?v=20261116-output-bar-1">
-    <script src="render-feedback.js?v=20261116-output-bar-1"></script>
+    <script src="render-feedback.js?v=20261122-sol-fit-1"></script>
     <script defer src="archive2-derive-entry.js?v=20261120-derive-ui-1"></script>
     <script defer src="archive2-reader-controls.js?v=20261120-derive-ui-1"></script>
     <link rel="stylesheet" href="../apmath/css/student-navigation.css?v=2026.11.11.4">
@@ -3423,7 +3445,13 @@ if (!buildContext) window.onload = () => {
         title.textContent = '시험지 출력을 준비하지 못했습니다';
         const detail = document.createElement('p');
         detail.setAttribute('role', 'alert');
-        detail.textContent = error?.message || '출력 렌더링이 완료되지 않았습니다.';
+        const rawMessage = String(error?.message || '');
+        // 선생님 화면에는 영어 오류 원문(예: "PDF readiness failed: ...")을 그대로 보이지 않는다. 원문은 console과 data-error-code에 남는다.
+        const modeLabel = { exam: '시험지', sol: '해설', ans: '정답표' }[new URLSearchParams(window.location.search).get('mode')] || '시험지';
+        detail.textContent = !rawMessage ? '출력 렌더링이 완료되지 않았습니다.'
+            : /[가-힣]/.test(rawMessage) ? rawMessage
+                : `${modeLabel} 준비를 마치지 못했습니다. 잠시 뒤 다시 시도해 주세요. 계속되면 저장한 시험지 목록에서 다시 열어 주세요.`;
+        if (rawMessage) detail.dataset.errorCode = rawMessage.slice(0, 200);
         const reopen = document.createElement('a');
         reopen.href = 'workspace.html?view=saved';
         reopen.textContent = '저장한 시험지 목록에서 다시 열기';
@@ -3436,7 +3464,7 @@ if (!buildContext) window.onload = () => {
             panel.append(retry);
         }
         host.append(panel);
-        window.__AP_OUTPUT_RENDER_ERROR__ = detail.textContent;
+        window.__AP_OUTPUT_RENDER_ERROR__ = rawMessage || detail.textContent;
     });
 };
 

@@ -41,6 +41,12 @@
         retryButton.textContent = '다시 시도';
         retryButton.hidden = true;
         retryButton.addEventListener('click', () => {
+            // 알림 상태에서는 같은 단추가 "확인"이고, 눌러서 알림을 닫는다.
+            if (panel.dataset.state === 'notice') {
+                const shown = current;
+                if (shown) { shown.notices = []; hide(shown); }
+                return;
+            }
             const failed = current;
             if (!failed || !failed.failed || failed.pending || typeof failed.options.retry !== 'function') return;
             // The retry may itself start a tracked engine request. That newer request owns the UI.
@@ -107,12 +113,42 @@
         });
     }
 
+    // 출력은 성공했지만 선생님께 알릴 것이 있을 때(예: 칸을 넘는 해설 하나를 줄여서 표시) 같은 알림 자리에 한 줄을 보인다. 새 화면 틀은 없다.
+    function showNotice(entry) {
+        paint(entry, ({ panel, message, retryButton }) => {
+            panel.hidden = false;
+            panel.dataset.state = 'notice';
+            delete panel.dataset.errorCode;
+            panel.setAttribute('role', 'status');
+            panel.setAttribute('aria-live', 'polite');
+            message.textContent = entry.notices.join(' ');
+            retryButton.textContent = '확인';
+            retryButton.hidden = false;
+            retryButton.disabled = false;
+        });
+    }
+
+    // 지금 진행 중인 출력(track)에 알림을 붙인다. 끝나기 전이면 끝날 때(성공 시) 보이고, 이미 끝났거나 추적 중인 출력이 없으면 바로 보인다.
+    function notice(text) {
+        const line = String(text || '').trim();
+        if (!line) return;
+        let entry = current;
+        if (!entry) {
+            entry = { options: {}, pending: false, failed: false, notices: [] };
+            current = entry;
+        }
+        if (!entry.notices) entry.notices = [];
+        if (!entry.notices.includes(line)) entry.notices.push(line);
+        if (!entry.pending && !entry.failed) showNotice(entry);
+    }
+
     function settle(entry, outcome, rejected) {
         if (current !== entry) return;
         entry.pending = false;
         entry.failed = false;
         if (!rejected && outcome?.ok !== false) {
-            hide(entry);
+            if (entry.notices?.length) showNotice(entry);
+            else hide(entry);
             return;
         }
         const error = rejected || outcome;
@@ -129,6 +165,7 @@
             panel.setAttribute('role', 'alert');
             panel.setAttribute('aria-live', 'assertive');
             message.textContent = failureText(code, entry.options.mode);
+            retryButton.textContent = '다시 시도';
             retryButton.hidden = typeof entry.options.retry !== 'function';
             retryButton.disabled = false;
         });
@@ -136,7 +173,7 @@
 
     // Returns a request-scoped progress handle; callers keep awaiting their original promise.
     function track(promise, options = {}) {
-        const entry = { options, pending: true, failed: false };
+        const entry = { options, pending: true, failed: false, notices: [] };
         current = entry;
         showPending(entry);
         Promise.resolve(promise).then(
@@ -150,5 +187,5 @@
         });
     }
 
-    root.APArchiveRenderFeedback = Object.freeze({ track });
+    root.APArchiveRenderFeedback = Object.freeze({ track, notice });
 })(typeof window === 'undefined' ? globalThis : window);
