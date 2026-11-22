@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-0b40eb67fe28-030ce4ba",
+  "examUid": "항등식과나머지정리_고1_유형",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "types/high/h1/항등식과나머지정리_고1_유형.js",
+  "expectedSourceBlobSha1": "89e56920f9a4708e5d5dd8a3284def8793b3fa75",
+  "expectedQuestionCount": 32,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-w-20261122",
+      "commit": "4111b9298564d9e7095216194d47737640427bfe",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-0b40eb67fe28-030ce4ba.type-ledger.json",
+        "sha256": "d0826e5ff007249ed342fad5bab560195e388f7ac0a4ff3d26921a6eedcc9629"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_4692b7ad2dab91469c1e1c6be95c11e46d536cec1dcc91e4bd8440b194f2f8cd",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION"
+      },
+      "rationale": "f(x²)을 x+2로 나눈 나머지에서 x=-2를 대입해 f(4)=-18을 얻고 f의 식을 결정",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "b0e6bc8a56fe9698e8cd3dfd16000bad9f741d40285d739e6c89788a803f0c38",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-0b40eb67fe28-030ce4ba.type-ledger.json",
+          "sha256": "d0826e5ff007249ed342fad5bab560195e388f7ac0a4ff3d26921a6eedcc9629"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2d65c60c6068a93c5d2f01b18389ec824964cb8ac2070c4de427f1115e0a0829",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_POLY_DIVISION"
+      },
+      "rationale": "f=(x²+1)(ax+b)+x+1로 몫·나머지 항등식을 세우고 f(0), f(1)=0으로 a,b 결정",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "7773326ab34f39eb59a7fcf22d9c6e0441bdadb7f6805cce8e010771fb2d58d2",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-0b40eb67fe28-030ce4ba.type-ledger.json",
+          "sha256": "d0826e5ff007249ed342fad5bab560195e388f7ac0a4ff3d26921a6eedcc9629"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6e7c31ebe1cb39c0b34c12055758c03835eaeeb3ac5a9ec11cdc21165d771cd3",
+      "sourceOrdinal": 28,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM"
+      },
+      "rationale": "각 나머지식에서 f(2), f(3)을 구한 뒤 (x-2)(x-3)으로 나눈 나머지 ax+b를 결정",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "05f1a66cbea259a758d29aa291a4454adbac5744d81004c241369c9418805c50",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-0b40eb67fe28-030ce4ba.type-ledger.json",
+          "sha256": "d0826e5ff007249ed342fad5bab560195e388f7ac0a4ff3d26921a6eedcc9629"
+        }
+      ]
+    }
+  ]
+}

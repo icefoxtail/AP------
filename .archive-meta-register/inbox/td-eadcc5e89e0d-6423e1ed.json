@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-eadcc5e89e0d-6423e1ed",
+  "examUid": "중1_1학기_정수와유리수의덧셈과뺄셈",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "types/middle/m1/중1_1학기_정수와유리수의덧셈과뺄셈.js",
+  "expectedSourceBlobSha1": "19d6ff6c924f7380b8915f14dfdd26cbbbb41bd4",
+  "expectedQuestionCount": 58,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-eadcc5e89e0d-6423e1ed.type-ledger.json",
+        "sha256": "4de5a4c153197450bc08fcd94cf167797fc8d73aca40a8c25293e7b41972c96c"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_cb5d2245dbd3334e7536a50d45d7be3a616ebaa1bf02324f9d5a33cd5085b938",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_MAGIC_SQUARE_ENTRY_RECOVERY"
+      },
+      "rationale": "완성된 대각선의 합을 기준 합으로 삼아 가로·세로 줄의 합이 같다는 식으로 빈칸을 역산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "1245a59be53e1d27e57734643bad8021a906df7316dde0ff28807a45683fdd04",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-eadcc5e89e0d-6423e1ed.type-ledger.json",
+          "sha256": "4de5a4c153197450bc08fcd94cf167797fc8d73aca40a8c25293e7b41972c96c"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5e96fab5689c378c8af1fa533c5623d708bd86a1ce97933fc0452e33b16c8ab1",
+      "sourceOrdinal": 34,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_RATIONAL_CLASS"
+      },
+      "rationale": "상수 첫항-1/2에서1/4 증가하려면 첫부호+,뒤 두 부호는 서로 반대이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "3ad147b0b6b48aa4d2b126d450e29fba86f415a6c65489042371d9bc865729f8",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-eadcc5e89e0d-6423e1ed.type-ledger.json",
+          "sha256": "4de5a4c153197450bc08fcd94cf167797fc8d73aca40a8c25293e7b41972c96c"
+        }
+      ]
+    }
+  ]
+}

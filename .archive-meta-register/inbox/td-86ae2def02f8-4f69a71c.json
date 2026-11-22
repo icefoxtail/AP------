@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-86ae2def02f8-4f69a71c",
+  "examUid": "24_매산중_2학기_중간_중1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m1/2mid/24_매산중_2학기_중간_중1_기출.js",
+  "expectedSourceBlobSha1": "b11b7fd46308fa679701869ad8a5072df8905b14",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-86ae2def02f8-4f69a71c.type-ledger.json",
+        "sha256": "fcfe261ed5967950da1e69d5c4ed9c1fdaf45cac4ae028e0e564399c71d97e3a"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_e7fc4f5276cb807f489fca5fb72010c91984aa7fe7527a737c8e231ac965883e",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+        "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY"
+      },
+      "rationale": "같은 반지름 원호 이동 후 원래 현 길이를 재고 옮긴 뒤 반직선을 그리는 순서를 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "02a2bc07bf3bc0fcaad1705223a92754d14cf868aed1b41a4e0b310660bcbb49",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-86ae2def02f8-4f69a71c.type-ledger.json",
+          "sha256": "fcfe261ed5967950da1e69d5c4ed9c1fdaf45cac4ae028e0e564399c71d97e3a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_02bdb9b9c1d6e3e3c616f3ae5a57f51a04c3bc92699c9ccfdde3f308ad0a67c3",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_CROSSING_POLYGON_ANGLE_SUM",
+        "templateKey": "TPL_M1_CROSSING_POLYGON_ANGLE_SUM_AUXILIARY_ANGLE_ELIMINATION"
+      },
+      "rationale": "교차점 보조각을 삼각형과 사각형 내각 합에서 소거하여 x+y=360-45-40-55-25=195를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "c63a6d7310d81304b06417f84b74d97d6263f3b4f24b80bfd1c291da1033543f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-86ae2def02f8-4f69a71c.type-ledger.json",
+          "sha256": "fcfe261ed5967950da1e69d5c4ed9c1fdaf45cac4ae028e0e564399c71d97e3a"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-57d594777f89-c21b9772",
+  "sourceArchiveFile": "original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_d353b1f366c77711379b1e4b45f92049a09089332cb6b37a617b53e4c228ecf1",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": null,
+      "step": "편차 제곱의 도수 가중합을 도수 총합으로 나누어 분산 계산",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 편차 제곱 평균으로 분산을 구하는 정의 그대로",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d039ee0f6e0429ef22c4300beac56b2c44631ab40d880f2080ce4b7626551849",
+      "sourceOrdinal": 13,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_REGULAR_POLYGON",
+      "templateKey": null,
+      "step": "정육각형 중심각60도의 정삼각형에서 외접반지름=변1이므로 마주본 대각선2이다.",
+      "note": "제안: 정육각형 중심 분할 대각선. 정의: 중심에서 나눈 정삼각형의 외접반지름과 지름으로 마주본 꼭짓점 거리를 구한다. 검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    }
+  ]
+}

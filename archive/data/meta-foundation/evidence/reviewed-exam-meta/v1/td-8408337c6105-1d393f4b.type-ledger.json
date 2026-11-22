@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-8408337c6105-1d393f4b",
+  "sourceArchiveFile": "types/middle/m2/RPM_중2_2-2_부록_대표문제다시풀기_중2.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-w-20261122",
+    "commit": "4111b9298564d9e7095216194d47737640427bfe",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_333cd5f2ed0489f2f59ff55a44b217ce859106ad51553ec10e4a2ff6720ea476",
+      "sourceOrdinal": 34,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+      "step": "물의 높이비 3/4로 닮음비를 잡아 부피비를 세제곱으로 구해 전체 부피에서 추가량을 구한다.",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 닮음비에서 부피비를 도출하는 TPL 정의와 일치한다.",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_10d8e3393dd6c92a80ec56e1ec2100ac11360e98b7faf8cbe4d305d56ce4d802",
+      "sourceOrdinal": 35,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "step": "한 각과 공통각으로 삼각형의 닮음을 세우고 대응변의 비로 AB를 구한다.",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 삼각형 닮음 성립 후 대응변 비로 길이를 구하는 활용 TPL과 일치한다.",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8387d210f40fa5e263ef8784441f42d7c438df1d285f285323af24fefd653825",
+      "sourceOrdinal": 45,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "step": "삼각형의 중점연결정리로 MN=BC/2를 써서 BC를 구한다.",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 삼각형 내부 평행선과 중점연결 구조의 선분비를 이용하는 TPL과 일치한다.",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f2884f1600bf86c6ab75a99cd16df0f51e25c2781327e38fcf59e417ec91083f",
+      "sourceOrdinal": 46,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": null,
+      "step": "분점 구조에서 선분의 길이비를 따져 BG:GF=3:1을 얻고 GF=5로부터 BG를 구한다.",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 삼각형 안의 분점·평행 관계로 선분비를 구하는 PT 정의에 해당하며 해설의 방식이 달라 TPL은 비웠다.",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_322b070e75a8f44887164cf15265e6b8bd960d7008d8c7935b58c92d50b81afc",
+      "sourceOrdinal": 53,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "step": "높이 AH를 낀 두 직각삼각형에 피타고라스 정리를 적용해 HC, BH, AB를 차례로 구한다.",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 직각삼각형의 두 변으로 나머지 변을 제곱 관계로 구하는 TPL과 일치한다.",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b2d9433e914e196912ee9c0bb97dcca618683d06d43a8d1ee5adb99d4f9e36d8",
+      "sourceOrdinal": 72,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PROBABILITY",
+      "templateKey": null,
+      "step": "독립인 두 사건의 여사건(둘 다 불합격) 확률의 곱을 1에서 빼서 적어도 한 명 합격할 확률을 구한다.",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 여사건과 단계별 곱으로 확률을 구하는 PT 정의에 해당한다.",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    }
+  ]
+}

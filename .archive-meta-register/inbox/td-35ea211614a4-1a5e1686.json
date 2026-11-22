@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-35ea211614a4-1a5e1686",
+  "examUid": "비상_확률과통계_경우의수_익힘책_고2",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/비상교육_확률과통계/비상_확률과통계_경우의수_익힘책_고2/비상_확률과통계_경우의수_익힘책_고2.js",
+  "expectedSourceBlobSha1": "aefbbad53676e5e375714b466076d4989b253f4d",
+  "expectedQuestionCount": 15,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-w-20261122",
+      "commit": "4111b9298564d9e7095216194d47737640427bfe",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-35ea211614a4-1a5e1686.type-ledger.json",
+        "sha256": "bda82a8afa67e8e1673deacfe9a0586027cbbf0118addb063ac8a879855f7319"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_7745412d859784bf174d40ee4556da02b6f750029b9c34e532a914f3bb55b037",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT"
+      },
+      "rationale": "서로 다른 공은 중복순열, 같은 공은 중복조합으로 상자에 넣는 방법의 수를 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "dbdeac17160d251ce3186a2c9177b766806f12feca5c6b63ebaccbb56d24da31",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-35ea211614a4-1a5e1686.type-ledger.json",
+          "sha256": "bda82a8afa67e8e1673deacfe9a0586027cbbf0118addb063ac8a879855f7319"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5dc750abe7ba29de2881388dc66517da6391a56030e6fe1ad5ab71fcec961b8f",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT"
+      },
+      "rationale": "기명 투표는 중복순열, 무기명 투표는 중복조합으로 경우의 수를 구해 곱한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "3dc9bc96a17947d58a4180edae2533a4823f1755f311613a5619ea4fce749784",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-35ea211614a4-1a5e1686.type-ledger.json",
+          "sha256": "bda82a8afa67e8e1673deacfe9a0586027cbbf0118addb063ac8a879855f7319"
+        }
+      ]
+    }
+  ]
+}

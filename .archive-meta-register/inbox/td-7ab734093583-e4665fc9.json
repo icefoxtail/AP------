@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-7ab734093583-e4665fc9",
+  "examUid": "비상_대수_지수로그함수_익힘책_고2_유형심화",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "types/high/h2/비상_대수_지수로그함수_익힘책_고2_유형심화.js",
+  "expectedSourceBlobSha1": "712d1957105ebd49688fd0e5d13323920a7f30ad",
+  "expectedQuestionCount": 14,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7ab734093583-e4665fc9.type-ledger.json",
+        "sha256": "3179364ee0c47ed47d63f0fab51625a1dd725489a3c9c5aead9d9c66094243e7"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_a70bdd1a1dcfe72c2fb8c252d0f95b3a8a10ddb4b3d1504c39bd13dd379ce908",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION_REFLECTION"
+      },
+      "rationale": "각 보기를 y=3^x의 평행이동·대칭이동으로 만들 수 있는지 확인하고 로그함수는 불가능함을 찾는다",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "대수"
+      },
+      "textBindingFingerprint": "781516310b1e7a4357a8c5d5fc7d8cfa851b9382895b749db7df572395bdee25",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7ab734093583-e4665fc9.type-ledger.json",
+          "sha256": "3179364ee0c47ed47d63f0fab51625a1dd725489a3c9c5aead9d9c66094243e7"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c930b3f540f32ee83ff9ce93d3fbfdc883a71c59a4d7e2db0a09d23cdbecdf06",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+        "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY"
+      },
+      "rationale": "두 로그그래프의 높이차 절댓값 |log3(3a)|가 일정하여3|log3(3a)|=12를 푼다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "09bb85fe50da7a4f653be5b4e83aa7ae4505795efeeb17fed5e28eeef0f9046e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7ab734093583-e4665fc9.type-ledger.json",
+          "sha256": "3179364ee0c47ed47d63f0fab51625a1dd725489a3c9c5aead9d9c66094243e7"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-6f02e19f8675-0123db1b",
+  "sourceArchiveFile": "types/middle/m1/중1_1단원_소인수분해.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-w-20261122",
+    "commit": "4111b9298564d9e7095216194d47737640427bfe",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_772d872f2da084fc4ad232379a625a8aef7af01d76a01e45740b1ecd2191e816",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
+      "templateKey": "TPL_M1_PRIME_COMPOSITE_JUDGMENT_NUMBER_CLAIM_AUDIT",
+      "step": "소수·합성수·서로소·거듭제곱에 관한 보기를 하나씩 검토해 옳지 않은 진술을 고른다",
+      "note": "HOLD 재판정 2026-11-22(원문 의심 문항의 풀이 유형만 판정): 소수·거듭제곱 진술을 각각 검토해 하나를 고르는 분기 정의와 일치",
+      "figure": false,
+      "check": "CLAUDE_DIRECT",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    }
+  ]
+}
