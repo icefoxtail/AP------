@@ -178,6 +178,20 @@ class PieceCutOffByStrokes(unittest.TestCase):
         self.assertTrue(label_layout.label_reads_as_side(beside_a_piece, exit_point, arc))
         self.assertFalse(label_layout.label_reads_as_side(beyond_the_end, arc[0][2], arc))
 
+    def test_of_a_drawn_circle_only_the_stretch_that_is_the_regions_arc_is_one_side(self):
+        # the whole circle is drawn (closed: no ends), the sector's arc is a part of it: a label beside the arc is refused, one beside the circle's other side is not
+        centre = (200.0, 200.0);r = 100.0
+        ring = [(centre[0] + r * math.cos(k * math.pi / 36), centre[1] - r * math.sin(k * math.pi / 36)) for k in range(73)]
+        sector = [[centre] + [(centre[0] + r * math.cos(math.radians(a)), centre[1] - r * math.sin(math.radians(a))) for a in range(20, 161, 2)]]
+        exit_point = (centre[0], centre[1] - r)                  # the middle of the arc, at the top
+        above_the_arc = Box(180.0, 60.0, 40.0, 18.0)
+        beside_the_circles_other_side = Box(180.0, 322.0, 40.0, 18.0)   # below the circle: 48 px from its bottom, far from the arc
+        self.assertTrue(label_layout.label_reads_as_side(above_the_arc, exit_point, [ring], sector))
+        self.assertFalse(label_layout.label_reads_as_side(beside_the_circles_other_side, exit_point, [ring], sector))
+        run = label_layout.boundary_run(ring, exit_point, sector)
+        self.assertLess(len(run), 40)
+        self.assertGreater(len(run), 20)
+
     def test_the_first_thirty_spots_and_their_order_do_not_change(self):
         spots = engine._region_inner_points(SQUARE, self.OCCUPIED)
         self.assertEqual(spots[:engine.REGION_INNER_FIRST], engine._region_inner_points(SQUARE, self.OCCUPIED, (), engine.REGION_INNER_FIRST))

@@ -81,7 +81,7 @@ test('a circular segment, a sector that overlaps a rectangle and a named sector:
   const second=await render('sector-rectangle',overlap);assert.equal(second.result.status,'ARCHIVE_BOUND',JSON.stringify(second.result).slice(0,500));
   checkLeaderOrInside(second.svg,'sec',['rect']);checkLeaderOrInside(second.svg,'rect',['sec']);
   const named=plan('두 부채꼴의 넓이.',[
-    {id:'s1',fill:'LIGHT',label:'8',labelPlacement:'LEADER',shapes:[{sector:{center:'O',from:'A',to:'B',side:'MINOR'}}]},
+    {id:'s1',fill:'LIGHT',label:'8',labelName:'부채꼴 AOB',unit:'cm^2',labelPlacement:'LEADER',shapes:[{sector:{center:'O',from:'A',to:'B',side:'MINOR'}}]},
     {id:'s2',fill:'LIGHT',label:'6',labelPlacement:'AUTO_LEADER',shapes:[{sector:{center:'O',from:'C',to:'D',side:'MINOR'}}]}]);
   const third=await render('two-sectors',named);assert.equal(third.result.status,'ARCHIVE_BOUND',JSON.stringify(third.result).slice(0,500));
   checkLeader(third.svg,'s1');

@@ -869,12 +869,39 @@ def stroke_position(points,p):
         run+=length
     return best[1]/total,best[0]
 
-def label_reads_as_side(box,exit_point,sides):
-    """True when the label stands right beside the drawn boundary its leader crosses: the WHOLE stroke (a straight side, an arc, a curve, a circle) counts as one side, and any part of the label's
-    box within 48 px of it and along its extent reads as that side's length (a sector's value right beside its arc reads as the arc's length), not as the value of the region."""
+REGION_BOUNDARY_RUN_TOLERANCE_PX=2.5    # a point of a drawn circle or curve lies on the region's boundary when it is this near it
+
+def boundary_run(points,exit_point,own):
+    """The stretch of a drawn circle / curve (a polyline) that is THIS region's boundary and holds the exit point: a sector's arc out of the whole circle drawn, never the circle's other side
+    (a closed circle has no ends, so measured whole, every place would lie within 5-95 % of it). A straight 2-point side is kept whole. Fewer than 2 points on the boundary: the two vertices nearest the exit."""
+    if len(points)<=2 or not own:return points
+    edges=[(poly[i],poly[(i+1)%len(poly)]) for poly in own for i in range(len(poly))]
+    closed=math.dist(points[0],points[-1])<1e-6
+    ring=points[:-1] if closed else list(points)
+    on=[min(point_segment_distance(p,a,b) for a,b in edges)<=REGION_BOUNDARY_RUN_TOLERANCE_PX for p in ring]
+    n=len(ring);near=min(range(n),key=lambda k:math.dist(ring[k],exit_point))
+    if not on[near]:
+        # the exit lies between vertices: take the nearest vertex that is on the boundary
+        candidates=[k for k in range(n) if on[k]]
+        if not candidates:return points
+        near=min(candidates,key=lambda k:math.dist(ring[k],exit_point))
+    start=end=near
+    while on[(start-1)%n] and (start-1)%n!=end and (closed or start-1>=0):start=(start-1)%n
+    while on[(end+1)%n] and (end+1)%n!=start and (closed or end+1<n):end=(end+1)%n
+    run=[ring[start]]
+    k=start
+    while k!=end:
+        k=(k+1)%n;run.append(ring[k])
+    return run if len(run)>=2 else [ring[near],ring[(near+1)%n] if closed or near+1<n else ring[near-1]]
+
+def label_reads_as_side(box,exit_point,sides,own=None):
+    """True when the label stands right beside the drawn boundary its leader crosses: that boundary counts as ONE side (a straight side, or, of a drawn circle or curve, the stretch that is this
+    region's boundary: a sector's arc), and any part of the label's box within 48 px of it and along 5-95 % of its length reads as that side's length (a sector's value right beside its arc
+    reads as the arc's length), not as the value of the region."""
     probes=[(box.x+box.width*i/4,box.y+box.height*j/2) for i in range(5) for j in range(3)]
     for points in sides:
         if stroke_position(points,exit_point)[1]>REGION_INNER_EXIT_TOLERANCE_PX:continue
+        points=boundary_run(points,exit_point,own)
         near=[stroke_position(points,q) for q in probes]
         close=[t for t,d in near if d<=REGION_SIDE_NEAR_PX]
         if close and max(close)>REGION_SIDE_SPAN[0] and min(close)<REGION_SIDE_SPAN[1]:return True
@@ -906,7 +933,7 @@ def region_inner_best(dots,own,all_regions,strokes,discs,boxes_taken,site,w,h,ac
                 for box in [Box(center[0]-w/2,center[1]-h/2,w,h)]:
                     if not acceptable(box,owner_check=False) or not box_outside_regions(box,all_regions):continue
                     end=owner_leader_endpoint(box,start,(box.x+box.width/2,box.y+box.height/2))
-                    if label_reads_as_side(box,exit_point,sides):continue
+                    if label_reads_as_side(box,exit_point,sides,own):continue
                     if region_inner_leader_ok(start,end,exit_point,u,own,all_regions,strokes,discs,boxes_taken):found=(box,end)
                 if found is not None:
                     box,end=found;length=math.dist(start,end)

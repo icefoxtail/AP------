@@ -214,6 +214,14 @@ class ObserverTests(unittest.TestCase):
         label=label_group('rABC-label',inside,'6')
         self.assertIn('REGION_VALUE_IN_INNER_CIRCLE',fx.codes(svg=bare.replace('</svg>',ring(o[0],o[1],25.0)+label+'</svg>')))
         self.assertNotIn('REGION_VALUE_IN_INNER_CIRCLE',fx.codes(svg=bare.replace('</svg>',ring(o[0]+90.0,o[1],25.0)+label+'</svg>')))
+    def test_the_observer_measures_only_the_regions_stretch_of_a_drawn_circle(self):
+        centre=(200.0,200.0);r=100.0
+        ring=[(centre[0]+r*math.cos(k*math.pi/36),centre[1]-r*math.sin(k*math.pi/36)) for k in range(73)]
+        sector=[[centre]+[(centre[0]+r*math.cos(math.radians(a)),centre[1]-r*math.sin(math.radians(a))) for a in range(20,161,2)]]
+        run=regions.region_stretch(ring,(centre[0],centre[1]-r),sector)
+        self.assertTrue(20<len(run)<40,len(run))
+        self.assertTrue(all(min(regions.point_segment_distance(p,a,b) for a,b in zip(sector[0],sector[0][1:]+sector[0][:1]))<=2.5 for p in run))
+        self.assertEqual(regions.region_stretch([(0.0,0.0),(10.0,0.0)],(5.0,0.0),sector),[(0.0,0.0),(10.0,0.0)])
     def test_a_leader_value_written_inside_its_region_is_not_missing_a_leader(self):
         # the engine writes a LEADER value inside its region when no place outside reads as the value; a label outside the region without a leader is still refused
         fx=self.fixture;svg=fx.svg0;tag=fx.leader().group(0);circle=re.search(r'<circle\s[^>]*data-role="leader-dot"[^>]*/>',svg).group(0)

@@ -262,6 +262,27 @@ def drawn_boundaries(root):
         except (TypeError,ValueError):continue
     return [(sid,pts) for sid,pts in found if len(pts)>=2]
 
+LEADER_STRETCH_TOLERANCE=2.5      # svg px: a point of a drawn circle or curve lies on the region's boundary when it is this near it
+
+def region_stretch(points,at,polygons):
+    """Of a drawn circle or curve, only the stretch that is THIS region's boundary and holds the point `at` (a sector's arc out of the whole circle): a closed circle has no ends, so measured whole,
+    every place beside it would lie within 5-95 % of it. A straight 2-point side stays whole."""
+    if len(points)<=2:return points
+    edges=[(poly[i],poly[(i+1)%len(poly)]) for poly in polygons for i in range(len(poly))]
+    if not edges:return points
+    closed=norm(sub(points[0],points[-1]))<1e-6
+    ring=points[:-1] if closed else list(points);n=len(ring)
+    on=[min(point_segment_distance(p,a,b) for a,b in edges)<=LEADER_STRETCH_TOLERANCE for p in ring]
+    if not any(on):return points
+    near=min((k for k in range(n) if on[k]),key=lambda k:norm(sub(ring[k],at)))
+    start=end=near
+    while on[(start-1)%n] and (start-1)%n!=end and (closed or start-1>=0):start=(start-1)%n
+    while on[(end+1)%n] and (end+1)%n!=start and (closed or end+1<n):end=(end+1)%n
+    run=[ring[start]];k=start
+    while k!=end:
+        k=(k+1)%n;run.append(ring[k])
+    return run if len(run)>=2 else [ring[near],ring[(near+1)%n] if closed or near+1<n else ring[near-1]]
+
 def boundary_position(points,p):
     """(fraction of the boundary's length at its point nearest to p, that distance)."""
     total=sum(norm(sub(b,a)) for a,b in zip(points,points[1:]))
@@ -446,6 +467,7 @@ def audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,obser
                     # each WHOLE drawn boundary (a straight side, an arc, a curve, a circle) is one side: its length is what a value beside it reads as
                     for sid,pts in drawn_boundaries(root):
                         if exit_at is None or boundary_position(pts,exit_at)[1]>LEADER_BOUNDARY_TOLERANCE+2.0:continue
+                        pts=region_stretch(pts,exit_at,record['polygons'])
                         close=[t for t,d in (boundary_position(pts,(box[0]+box[2]*i/4,box[1]+box[3]*j/2)) for i in range(5) for j in range(3)) if d<=LEADER_SIDE_NEAR]
                         if close and max(close)>LEADER_SIDE_SPAN[0] and min(close)<LEADER_SIDE_SPAN[1]:errors.append('REGION_LEADER_READS_AS_SIDE:'+oid+':'+str(sid))
                 if came_back:errors.append('REGION_LEADER_ENTERS_REGION:'+oid)
