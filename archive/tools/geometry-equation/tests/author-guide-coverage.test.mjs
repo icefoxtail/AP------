@@ -138,3 +138,35 @@ test('the piecewise-affine branch order in the guides is [slope, constant] like 
     assert.equal(at(left),at(right),'the example is captioned as a joined bend, so both branches must meet at breakX');
   }
 });
+
+// 종류의 SECTIONS가 자기 예제가 든 절을 포함해야 한다: 절만 있고 SECTIONS에서 빠지면 plan 작성자가 그 예제·문법을 못 본다.
+test('a kind\'s SECTIONS include the section that holds its own example',()=>{
+  for(const example of examples)for(const kind of kindsIn(example.plan)){
+    if(PROSE_EXAMPLE_KINDS.has(kind))continue; // 문단 속 예제를 쓰는 오래된 절의 종류와 composite 는 제외
+    assert.ok(sectionsOf(kind).includes(example.section),`${kind}: its ${example.mode} example is in "${example.section}" but SECTIONS for ${kind} is [${sectionsOf(kind).join(', ')}]`);
+  }
+});
+
+// 예제 caption이 뜻한 대표점을 안내가 적은 계수 순서로 계산해 확인한다. 계수 순서를 뒤집으면 곡선이 달라져 여기서 걸린다(plan-lint는 순서를 모른다).
+const num=text=>{const [n,d]=String(text).split('/');return Number(n)/(d===undefined?1:Number(d));};
+const baseOf=text=>text===undefined?Math.E:/^sqrt\((\d+)\)$/.test(text)?Math.sqrt(Number(/\d+/.exec(text)[0])):num(text);
+const expFn=row=>{const [a,k,c]=row.coefficients.map(num),base=baseOf(row.base),shift=num(row.shiftX??'0');return x=>a*base**(k*(x-shift))+c;};
+const logFn=row=>{const [a,k,b,c]=row.coefficients.map(num),base=baseOf(row.base);return x=>a*Math.log(k*x+b)/Math.log(base)+c;};
+const POINT_CHECKS={
+  'absolute-value-spike-v1':{fns:plan=>{const [b,a,k,c]=plan.graphPlan.coefficients.map(num);return [x=>k*Math.abs(a*x+b)+c];},points:[[0,2,-1],[0,0,3],[0,4,3]]},
+  'piecewise-affine-spike-v1':{fns:plan=>{const pw=plan.graphPlan.piecewise,[lm,lb]=pw.left.map(num),[rm,rb]=pw.right.map(num),bx=num(pw.breakX);return [x=>x<=bx?lm*x+lb:rm*x+rb];},points:[[0,1,1],[0,3,3],[0,5,1]]},
+  'exponential-affine-spike-v1':{fns:plan=>[expFn(plan.graphPlan)],points:[[0,0,3],[0,1,4],[0,2,6]]},
+  'logarithmic-affine-spike-v1':{fns:plan=>[logFn(plan.graphPlan)],points:[[0,1,0],[0,3,2]]},
+  'exp-log-pair-spike-v1':{fns:plan=>plan.graphPlan.curves.map(row=>row.family==='logarithmic-affine'?logFn(row):expFn(row)),points:[[0,3,2],[1,2,3]]}
+};
+test('each single-curve example passes through the points its caption names (coefficient order is checked)',()=>{
+  for(const [kind,check] of Object.entries(POINT_CHECKS)){
+    const example=examples.find(item=>item.plan.capability===kind);
+    assert.ok(example,`${kind}: no marked example`);
+    const fns=check.fns(example.plan);
+    for(const [index,x,y] of check.points){
+      assert.ok(Math.abs(fns[index](x)-y)<1e-9,`${kind}: the example does not pass through (${x}, ${y}) with the documented coefficient order (got ${fns[index](x)})`);
+      assert.ok(example.plan.caption.includes(`(${x}, ${y})`),`${kind}: the caption does not name the point (${x}, ${y}) that this test checks`);
+    }
+  }
+});
