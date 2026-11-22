@@ -1,0 +1,35 @@
+{
+  "family": "piecewise-linear-v1",
+  "caption": "x=-1과 x=1에서 불연속인 구간별 일차함수 y=f(x)의 그래프",
+  "sourceQuote": "함수 y=f(x)의 그래프가 다음 그림과 같을 때",
+  "pieces": [
+    {
+      "domain": "(-inf,-1)",
+      "expr": "-0.5*x+0.5",
+      "openEnd": true
+    },
+    {
+      "domain": "(-1,1]",
+      "expr": "-2",
+      "openStart": true,
+      "closedEnd": true
+    },
+    {
+      "domain": "(1,inf)",
+      "expr": "x-4",
+      "openStart": true
+    }
+  ],
+  "isolatedPoints": [
+    [
+      -1,
+      3
+    ]
+  ],
+  "viewport": [
+    -3.5,
+    4.5,
+    -4,
+    4
+  ]
+}

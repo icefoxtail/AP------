@@ -1,0 +1,57 @@
+{
+  "qid": 15,
+  "itemFingerprint": "44e946fcaf199001",
+  "solveSteps": [
+    "다항함수 $f(x)=x^2+5x-4$는 닫힌구간 $[a,3]$에서 연속이고 열린구간 $(a,3)$에서 미분가능하다.",
+    "$f'(x)=2x+5$이므로 평균값 정리에 의해\n\n$$\\begin{aligned} \\frac{f(3)-f(a)}{3-a} &= f'(-1) \\ \\frac{(9+15-4)-(a^2+5a-4)}{3-a} &= 2(-1)+5 \\ \\frac{24-a^2-5a}{3-a} &= 3 \\ \\frac{(3-a)(a+8)}{3-a} &= 3 \\end{aligned}$$\n\n$a<-1<3$이므로 $3-a\\ne0$이고 양변을 약분하면 $a+8=3$, 즉 $a=-5$이다.",
+    "정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-05",
+  "subUnitKey": "H22-M1-05-ROLLE_MEAN_VALUE",
+  "unitEvidence": "함수 $f(x)=x^2+5x-4$에 대하여 닫힌구간 $",
+  "rpmRecordId": "H2-M2-RPM-067",
+  "rpmReason": "문항15번(토큰:aligned) 대상 문항15의 도함수의 활용 단원 RPM H2-M2-RPM-067 분류 유형에 해당한다",
+  "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+  "templateKey": "TPL_TANGENCY_RELATION_GEOMETRY",
+  "typeReason": "문항15번(토큰:aligned) 대상 문항15의 도함수의 활용 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항15번(토큰:aligned) 대상 문항15의 도함수의 활용 단원 기본 개념과 풀이 과정을 적용하는 난이도 2 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": ", 실수 $a$의 값은? (단, $a<-1$)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "다항함수 $f(x)=x^2+5x-4$는 닫힌구",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항15번(토큰:aligned) 발문과 해설의 문항15 풀이 단계를 점검하여 최종 정답 ③를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

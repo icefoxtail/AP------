@@ -1,0 +1,63 @@
+{
+  "qid": 10,
+  "itemFingerprint": "8af490019f39bef5",
+  "solveSteps": [
+    "각 보기의 진위를 극한의 성질로 판정한다.",
+    "- ㄱ.",
+    "$g(x)=f(x)\\cdot\\frac{g(x)}{f(x)}$이고 두 극한이 각각 존재하므로 곱의 극한 $\\lim_{x\\to a}g(x)$도 존재한다.",
+    "(참)  \n- ㄴ.",
+    "$\\lim_{x\\to a}\\frac{1}{f(x)}=L$이 존재할 때, 만약 $\\lim_{x\\to a}f(x)=0$이면 $\\lim_{x\\to a}1=\\lim_{x\\to a}f(x)\\cdot\\frac{1}{f(x)}=0\\cdot L=0$이 되어 모순이다.",
+    "따라서 $\\lim_{x\\to a}f(x)\\ne 0$이다.",
+    "(참)  \n- ㄷ.",
+    "$\\lim_{x\\to a}g(x)=\\lim_{x\\to a}\\left(f(x)\\cdot\\frac{g(x)}{f(x)}\\right)=0\\cdot L=0$이다.",
+    "(참)\n\n따라서 옳은 것은 ㄱ, ㄴ, ㄷ이므로 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-01",
+  "subUnitKey": "H22-M1-01-LIMIT_VALUE_CALC",
+  "unitEvidence": "두 함수 $f(x), g(x)$에 대하여 다음 보기 중",
+  "rpmRecordId": "H2-M2-RPM-049",
+  "rpmReason": "문항10번(토큰:f) 대상 문항10의 함수의 극한 단원 RPM H2-M2-RPM-049 분류 유형에 해당한다",
+  "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+  "templateKey": "TPL_LIMIT_OPERATION_LAWS",
+  "typeReason": "문항10번(토큰:f) 대상 문항10의 함수의 극한 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항10번(토큰:f) 대상 문항10의 함수의 극한 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$\\lim_{x\\to a}g(x)=0$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "각 보기의 진위를 극한의 성질로 판정한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항10번(토큰:f) 발문과 해설의 문항10 풀이 단계를 점검하여 최종 정답 ⑤를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

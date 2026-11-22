@@ -1,0 +1,56 @@
+{
+  "qid": 21,
+  "itemFingerprint": "7aad859e94543fcf",
+  "solveSteps": [
+    "$F(x)=f(x+1)-f(x)$라 두면 $f$가 $[0,\\ 4]$에서 연속이므로 $F$는 $[0,\\ 3]$에서 연속이다.",
+    "$$\\begin{aligned} F(0) &= f(1)-f(0) = 4 > 0 \\ F(1) &= f(2)-f(1) = -5 < 0 \\ F(2) &= f(3)-f(2) = 3 > 0 \\ F(3) &= f(4)-f(3) = f(0)-f(3) = -(4-5+3) = -2 < 0 \\end{aligned}$$ 따라서 사잇값 정리에 의해 $(0,\\ 1)$, $(1,\\ 2)$, $(2,\\ 3)$에 $F(x)=0$인 실근이 각각 적어도 하나씩 존재하므로 열린구간 $(0,\\ 3)$에서 적어도 $3$개의 서로 다른 실근을 가진다."
+  ],
+  "solvedAnswer": "적어도 3개의 실근",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-02",
+  "subUnitKey": "H22-M1-02-INTERMEDIATE_VALUE",
+  "unitEvidence": "[서답형 4] (서술) 닫힌구간 $[0,\\ 4]$에서 ",
+  "rpmRecordId": "H2-M2-RPM-060",
+  "rpmReason": "문항21번(토큰:aligned) 대상 문항21의 사잇값 정리와 실근의 존재 단원 RPM H2-M2-RPM-060 분류 유형에 해당한다",
+  "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+  "templateKey": "TPL_IVT_VALUE_EXISTENCE_INTERVAL",
+  "typeReason": "문항21번(토큰:aligned) 대상 문항21의 사잇값 정리와 실근의 존재 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항21번(토큰:aligned) 대상 문항21의 사잇값 정리와 실근의 존재 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": ")-f(1)=-5$, $f(3)-f(2)=3$"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$F(x)=f(x+1)-f(x)$라 두면 $f",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항21번(토큰:aligned) 발문과 해설의 문항21 풀이 단계를 점검하여 최종 정답 적어도 3개의 실근를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

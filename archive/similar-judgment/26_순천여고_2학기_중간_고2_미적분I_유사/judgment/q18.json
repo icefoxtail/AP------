@@ -1,0 +1,56 @@
+{
+  "qid": 18,
+  "itemFingerprint": "12d3c339b8678c3b",
+  "solveSteps": [
+    "$x=y=0$을 대입하면 $f(0)=2f(0) \\implies f(0)=0$이다. (xy)",
+    "$$f'(x) = \\lim_{h\\to 0}\\frac{f(x+h)-f(x)}{h} = \\lim_{h\\to 0}\\frac{f(h)-6xh}{h} = f'(0)-6x = 12-6x$$ 따라서 $f'(1)=12-6=6$이다."
+  ],
+  "solvedAnswer": "6",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-04",
+  "subUnitKey": "H22-M1-04-DERIVATIVE_FUNCTION_DETERMINATION",
+  "unitEvidence": "[서답형 1] 미분가능한 함수 $f(x)$가 모든 실수",
+  "rpmRecordId": "H2-M2-RPM-099",
+  "rpmReason": "문항18번(토큰:xy) 대상 문항18의 도함수 조건을 이용한 함수 결정 단원 RPM H2-M2-RPM-099 분류 유형에 해당한다",
+  "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
+  "templateKey": "TPL_FUNCTIONAL_EQUATION_DIFFERENTIAL_INVARIANT",
+  "typeReason": "문항18번(토큰:xy) 대상 문항18의 도함수 조건을 이용한 함수 결정 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항18번(토큰:xy) 대상 문항18의 도함수 조건을 이용한 함수 결정 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "12$일 때, $f'(1)$의 값을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$x=y=0$을 대입하면 $f(0)=2f(0)",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항18번(토큰:xy) 발문과 해설의 문항18 풀이 단계를 점검하여 최종 정답 6를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

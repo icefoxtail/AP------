@@ -1,0 +1,60 @@
+{
+  "qid": 13,
+  "itemFingerprint": "1a3c13f1b1c1721d",
+  "solveSteps": [
+    "$x\\to2$일 때 분모 $x^2-4\\to0$이고 극한값이 $3$으로 존재하므로 분자도 $0$으로 수렴한다. (ax)",
+    "$$\\lim_{x\\to2}{f(x)-b}=f(2)-b=0 \\implies b=f(2)$$\n\n이를 극한식에 대입하고 미분계수의 정의를 적용한다.",
+    "$$\\begin{aligned} \\lim_{x\\to2}\\frac{f(x)-f(2)}{(x-2)(x+2)} &= \\lim_{x\\to2}\\frac{f(x)-f(2)}{x-2}\\cdot\\frac{1}{x+2} \\ &= f'(2)\\cdot\\frac{1}{4} = 3 \\end{aligned}$$\n\n따라서 $f'(2)=12$이다.",
+    "$f'(x)=3x^2-6x+a$에서 $f'(2)=12-12+a=a=12$이므로 $a=12$이다.",
+    "그러면 $b=f(2)=2^3-3\\cdot2^2+12\\cdot2=8-12+24=20$이므로 $a+b=12+20=32$이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-03",
+  "subUnitKey": "H22-M1-03-DERIVATIVE_DEFINITION",
+  "unitEvidence": "함수 $f(x)=x^3-3x^2+ax$에 대하여 $\\d",
+  "rpmRecordId": "H2-M2-RPM-061",
+  "rpmReason": "문항13번(토큰:ax) 대상 문항13의 미분계수 단원 RPM H2-M2-RPM-061 분류 유형에 해당한다",
+  "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+  "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+  "typeReason": "문항13번(토큰:ax) 대상 문항13의 미분계수 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항13번(토큰:ax) 대상 문항13의 미분계수 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "b$의 값은? (단, $a,b$는 상수이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$x\\to2$일 때 분모 $x^2-4\\to0$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항13번(토큰:ax) 발문과 해설의 문항13 풀이 단계를 점검하여 최종 정답 ②를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

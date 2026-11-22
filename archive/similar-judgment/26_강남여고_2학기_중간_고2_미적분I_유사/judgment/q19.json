@@ -1,0 +1,62 @@
+{
+  "qid": 19,
+  "itemFingerprint": "c949273250751530",
+  "solveSteps": [
+    "다항식 $P(x)=(x^2-1)(x^2+ax)-24$라 하면 몫을 $Q(x)$라 할 때\n\n$$P(x)=(x-3)^2 Q(x)+R(x)$$\n\n이고 $R(x)$는 일차 이하의 다항식이다.",
+    "$R(x)$가 $x-3$으로 나누어떨어지므로 $R(3)=0$, 즉 $R(x)=k(x-3)$ ($k$는 상수) 꼴이다.",
+    "$x=3$을 대입하면 $P(3)=R(3)=0$이므로\n\n$$(9-1)(9+3a)-24=0 \\implies 8(9+3a)=24 \\implies 9+3a=3 \\implies a=-2$$\n\n이다.",
+    "한편 항등식 $P(x)=(x-3)^2 Q(x)+k(x-3)$의 양변을 $x$에 대하여 미분하면\n\n$$P'(x)=2(x-3)Q(x)+(x-3)^2 Q'(x)+k$$\n\n이다.",
+    "$x=3$을 대입하면 $k=P'(3)$이다.",
+    "$P(x)=(x^2-1)(x^2-2x)-24$를 곱의 미분법으로 미분하면\n\n$$P'(x)=2x(x^2-2x)+(x^2-1)(2x-2)$$\n\n이므로 $k=P'(3)=6(9-6)+8(6-2)=18+32=50$이다.",
+    "따라서 $R(x)=50(x-3)$이고 $a=-2$이므로\n\n$$\\frac{R(a)}{a}=\\frac{R(-2)}{-2}=\\frac{50(-5)}{-2}=125$$\n\n이다.",
+    "정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-04",
+  "subUnitKey": "H22-M1-04-DERIVATIVE_CALCULATION",
+  "unitEvidence": "다항식 $(x^2-1)(x^2+ax)-24$를 $(x-",
+  "rpmRecordId": "H2-M2-RPM-063",
+  "rpmReason": "문항19번(토큰:ax) 대상 문항19의 도함수 단원 RPM H2-M2-RPM-063 분류 유형에 해당한다",
+  "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+  "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+  "typeReason": "문항19번(토큰:ax) 대상 문항19의 도함수 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항19번(토큰:ax) 대상 문항19의 도함수 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "{a}$의 값은? (단, $a$는 상수이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "다항식 $P(x)=(x^2-1)(x^2+ax)",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항19번(토큰:ax) 발문과 해설의 문항19 풀이 단계를 점검하여 최종 정답 ④를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "family": "piecewise-linear-v1",
+  "caption": "x=0에서 좌극한 -1, x=1에서 좌극한 2를 갖는 함수 y=f(x)의 그래프",
+  "sourceQuote": "함수 y=f(x)의 그래프가 그림과 같을 때",
+  "pieces": [
+    {
+      "domain": "(-inf,0)",
+      "expr": "-x-1",
+      "openEnd": true
+    },
+    {
+      "domain": "[0,1)",
+      "expr": "2*x",
+      "closedStart": true,
+      "openEnd": true
+    },
+    {
+      "domain": "[1,inf)",
+      "expr": "-x+2",
+      "closedStart": true
+    }
+  ],
+  "viewport": [
+    -2.5,
+    3.5,
+    -2.5,
+    3
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "qid": 15,
+  "itemFingerprint": "d9c1225d376c6947",
+  "solveSteps": [
+    "$f$가 $x=0$에서 연속이므로 $\\lim_{h\\to 0}f(h)=f(0)$이다.",
+    "ㄱ.",
+    "$\\lim_{h\\to 0}\\dfrac{hf(h)-0}{h}=\\lim_{h\\to 0}f(h)=f(0)$으로 존재한다(참).",
+    "ㄴ.",
+    "$\\lim_{h\\to 0}\\dfrac{h^3f(h)-0}{h}=\\lim_{h\\to 0}h^2f(h)=0$으로 존재한다(참).",
+    "ㄷ.",
+    "$g(x)=\\dfrac{1}{2+xf(x)}$라 하면 $g(0)=\\dfrac{1}{2}$이고, $$\\lim_{h\\to 0}\\frac{\\frac{1}{2+hf(h)}-\\frac{1}{2}}{h} = \\lim_{h\\to 0}\\frac{-hf(h)}{2h{2+hf(h)}} = -\\frac{f(0)}{4}$$ 이므로 존재한다(참).",
+    "따라서 ㄱ, ㄴ, ㄷ 모두 미분가능하다.",
+    "정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-03",
+  "subUnitKey": "H22-M1-03-DERIVATIVE_DEFINITION",
+  "unitEvidence": "함수 $f(x)$가 $x=0$에서 연속일 때, $x=0",
+  "rpmRecordId": "H2-M2-RPM-061",
+  "rpmReason": "문항15번(토큰:xf) 대상 문항15의 미분계수 단원 RPM H2-M2-RPM-061 분류 유형에 해당한다",
+  "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+  "templateKey": "TPL_DIFFERENTIABILITY_POINT_CONDITION",
+  "typeReason": "문항15번(토큰:xf) 대상 문항15의 미분계수 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항15번(토큰:xf) 대상 문항15의 미분계수 단원 기본 개념과 풀이 과정을 적용하는 난이도 4 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "ㄷ. $y=\\dfrac{1}{2+xf(x)}$"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$f$가 $x=0$에서 연속이므로 $\\lim_",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항15번(토큰:xf) 발문과 해설의 문항15 풀이 단계를 점검하여 최종 정답 ⑤를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

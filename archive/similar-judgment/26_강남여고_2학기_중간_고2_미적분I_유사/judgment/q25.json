@@ -1,0 +1,58 @@
+{
+  "qid": 25,
+  "itemFingerprint": "e48cb3de69706aac",
+  "solveSteps": [
+    "$y=f(x)=x^3-4x$라 하면 $f'(x)=3x^2-4$이다.",
+    "점 $A(1,-3)$에서의 접선 $l$의 기울기는 $f'(1)=3-4=-1$이므로 직선 $l$의 방정식은\n\n$$y-(-3)=-1(x-1) \\implies y=-x-2$$\n\n직선 $l$과 곡선 $y=x^3-4x$의 교점을 구하기 위해 연립하면\n\n$$x^3-4x=-x-2 \\implies x^3-3x+2=0 \\implies (x-1)^2(x+2)=0$$\n\n따라서 $A$가 아닌 교점 $B$의 좌표는 $B(-2, 0)$이다.",
+    "한편 직선 $l$과 평행한 접선의 기울기도 $-1$이므로 접점 $C$의 $x$좌표는\n\n$$3x^2-4=-1 \\implies x^2=1 \\implies x=1 \\text{ 또는 } x=-1$$\n\n$x\\ne1$이므로 $C(-1, f(-1))=C(-1, 3)$이다.",
+    "두 점 $B(-2,0)$, $C(-1,3)$ 사이의 거리의 제곱 $d^2$은\n\n$$d^2={(-1)-(-2)}^2+(3-0)^2=1^2+3^2=10$$\n\n이다."
+  ],
+  "solvedAnswer": "$10$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-05",
+  "subUnitKey": "H22-M1-05-ROLLE_MEAN_VALUE",
+  "unitEvidence": "[서술형 4] 곡선 $y=x^3-4x$ 위의 점 $A(",
+  "rpmRecordId": "H2-M2-RPM-067",
+  "rpmReason": "문항25번(토큰:10) 대상 문항25의 도함수의 활용 단원 RPM H2-M2-RPM-067 분류 유형에 해당한다",
+  "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+  "templateKey": "TPL_TANGENT_CONSTRUCTION",
+  "typeReason": "문항25번(토큰:10) 대상 문항25의 도함수의 활용 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항25번(토큰:10) 대상 문항25의 도함수의 활용 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "점 $C$의 $x$좌표는 $1$이 아니다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$y=f(x)=x^3-4x$라 하면 $f'(x",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항25번(토큰:10) 발문과 해설의 문항25 풀이 단계를 점검하여 최종 정답 $10$를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

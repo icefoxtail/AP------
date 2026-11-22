@@ -1,0 +1,60 @@
+{
+  "qid": 16,
+  "itemFingerprint": "4495a8618bb78488",
+  "solveSteps": [
+    "$f(x)=(x-c)^2+e$라 두면 분모는 $f(x+t)+f(x-t)=2{(x-c)^2+t^2+e}$이다.",
+    "조건에 의해 $0<|t|<2$일 때만 극한이 존재하지 않는 $a$가 생겨야 하므로 $e=-d^2$ ($d>0$)이고, $|t|>d$이면 분모가 항상 양수이므로 경계 $d=2$, 즉 $f(x)=(x-c)^2-4$이다.",
+    "$|t|=2$일 때 분모는 $2(x-c)^2$이고 분자의 $f(x\\pm 2)=(x-c)(x-c\\pm 4)$이다.",
+    "$x=c$에서 극한이 존재하려면 $x^2-9x+20=(x-4)(x-5)$가 $x=c$에서 $0$이어야 하므로 $c=4$ 또는 $c=5$이다.",
+    "(두 경우 모두 $0<|t|<2$에서 분모의 두 영점 $c\\pm\\sqrt{4-t^2}$가 동시에 $4, 5$가 될 수 없으므로 집합 조건을 정확히 만족한다.) 따라서 $f(0)=c^2-4$는 $12$ 또는 $21$이므로 최댓값은 $21$이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-01",
+  "subUnitKey": "H22-M1-01-LIMIT_VALUE_CALC",
+  "unitEvidence": "최고차항의 계수가 $1$인 이차함수 $f(x)$가 다음",
+  "rpmRecordId": "H2-M2-RPM-049",
+  "rpmReason": "문항16번(토큰:20) 대상 문항16의 함수의 극한 단원 RPM H2-M2-RPM-049 분류 유형에 해당한다",
+  "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+  "templateKey": "TPL_LIMIT_FINITE_CONDITION_PARAMETER",
+  "typeReason": "문항16번(토큰:20) 대상 문항16의 함수의 극한 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 5,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항16번(토큰:20) 대상 문항16의 함수의 극한 단원 기본 개념과 풀이 과정을 적용하는 난이도 5 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "\\mid |t|\\ge 2}\\cup{0}$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$f(x)=(x-c)^2+e$라 두면 분모는",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항16번(토큰:20) 발문과 해설의 문항16 풀이 단계를 점검하여 최종 정답 ②를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

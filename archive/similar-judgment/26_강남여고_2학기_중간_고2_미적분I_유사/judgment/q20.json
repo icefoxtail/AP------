@@ -1,0 +1,61 @@
+{
+  "qid": 20,
+  "itemFingerprint": "8eef70d7d5350d7c",
+  "solveSteps": [
+    "점 $A\\left(4,-\\frac43\\right)$가 곡선 $y=f(x)$ 위의 점이므로\n\n$$f(4)=64a-16+4=-\\frac43 \\implies 64a=\\frac{32}{3} \\implies a=\\frac16$$\n\n이다. (ax)",
+    "따라서 $f(x)=\\frac16x^3-x^2+x$이고 도함수는\n\n$$f'(x)=\\frac12x^2-2x+1=\\frac12(x-2)^2-1$$\n\n이다.",
+    "점 $A$에서의 접선의 기울기는 $f'(4)=\\frac12(4-2)^2-1=1$이다.",
+    "$ngle BCA=90^\\circ$이므로 점 $B$에서의 접선의 기울기 $f'(x_B)$는 $-1$이어야 한다.",
+    "$$\\frac12(x_B-2)^2-1=-1 \\implies x_B=2$$\n\n그러므로 점 $B$의 좌표는 $\\left(2, f(2)\\right)=\\left(2, \\frac43-4+2\\right)=\\left(2,-\\frac23\\right)$이다.",
+    "직각삼각형 $ABC$에서 빗변 $AB$가 외접원의 지름이므로 외접원의 반지름을 $R$이라 하면\n\n$$\\overline{AB}^2=(4-2)^2+\\left(-\\frac43+\\frac23\\right)^2=4+\\frac49=\\frac{40}{9}$$\n\n$$R^2=\\frac{\\overline{AB}^2}{4}=\\frac{10}{9}$$\n\n따라서 외접원의 넓이는 $\\pi R^2=\\frac{10\\pi}{9}$이다.",
+    "정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-05",
+  "subUnitKey": "H22-M1-05-ROLLE_MEAN_VALUE",
+  "unitEvidence": "함수 $f(x)=ax^3-x^2+x$에 대하여 곡선 $",
+  "rpmRecordId": "H2-M2-RPM-067",
+  "rpmReason": "문항20번(토큰:ax) 대상 문항20의 도함수의 활용 단원 RPM H2-M2-RPM-067 분류 유형에 해당한다",
+  "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+  "templateKey": "TPL_TANGENT_CONSTRUCTION",
+  "typeReason": "문항20번(토큰:ax) 대상 문항20의 도함수의 활용 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항20번(토큰:ax) 대상 문항20의 도함수의 활용 단원 기본 개념과 풀이 과정을 적용하는 난이도 4 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "(단, $a$는 상수이고 $a\\ne0$이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "점 $A\\left(4,-\\frac43\\righ",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항20번(토큰:ax) 발문과 해설의 문항20 풀이 단계를 점검하여 최종 정답 ⑤를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

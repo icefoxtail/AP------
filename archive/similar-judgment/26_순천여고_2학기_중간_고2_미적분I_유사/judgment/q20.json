@@ -1,0 +1,61 @@
+{
+  "qid": 20,
+  "itemFingerprint": "107046a9a1ddeee8",
+  "solveSteps": [
+    "$g(x)$는 $x<k$에서 $f(x)$의 부호가 반전된 함수이다. (cases)",
+    "$h(t)$의 최댓값이 $4$가 되려면 $t$가 $18$에 가까운 값일 때 네 개의 교점이 생겨야 한다.",
+    "① $k\\le -9$: $x<k$에서 $g(x)=(x+3)^2-18\\ge 18$이므로 $t<18$에서 교점이 최대 $3$개이다.",
+    "② $-3\\le k<0$: $k\\le x<0$에서 $f(x)$가 단조증가하므로 $t<18$에서 교점이 최대 $3$개이다.",
+    "③ $k\\ge 0$: $t<0$에서 $x<0$ 구간 교점은 $[-18,\\ -9)$에, $0\\le x<k$ 구간 교점은 $[-9,\\ 0]$에 분리되어 최대 $3$개이다.",
+    "④ $-9<k<-3$: $t\\to 18^-$일 때 $x<k$에서 $1$개, $k\\le x<0$에서 꼭짓점 $(-3,\\ 18)$ 좌우로 $2$개, $x\\ge 0$에서 $1$개로 $\\lim_{t\\to 18^-}h(t)=4$이고, $a=-18$에서 $h(-18)=0$이므로 $|0-4|=4$가 성립한다.",
+    "따라서 가능한 정수는 $k=-8,\\ -7,\\ -6,\\ -5,\\ -4$이므로 $M=-4$, $m=-8$이고 $Mm=32$이다."
+  ],
+  "solvedAnswer": "32",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-01",
+  "subUnitKey": "H22-M1-01-LIMIT_VALUE_CALC",
+  "unitEvidence": "[서답형 3] (단답) 함수 $f(x)=\\begin{c",
+  "rpmRecordId": "H2-M2-RPM-049",
+  "rpmReason": "문항20번(토큰:cases) 대상 문항20의 함수의 극한 단원 RPM H2-M2-RPM-049 분류 유형에 해당한다",
+  "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+  "templateKey": "TPL_LIMIT_GRAPH_DIRECTION_READ",
+  "typeReason": "문항20번(토큰:cases) 대상 문항20의 함수의 극한 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 5,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항20번(토큰:cases) 대상 문항20의 함수의 극한 단원 기본 개념과 풀이 과정을 적용하는 난이도 5 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "|=4$를 만족시키는 실수 $a$가 존재한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$g(x)$는 $x<k$에서 $f(x)$의 부",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항20번(토큰:cases) 발문과 해설의 문항20 풀이 단계를 점검하여 최종 정답 32를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "qid": 14,
+  "itemFingerprint": "8b4636cbe1fd4da1",
+  "solveSteps": [
+    "$g$가 실수 전체에서 연속이므로 $f(1)=|3\\cdot 1^2-1|=2$이고, (다)에서 $f(5)=g(-1)=|3(-1)^2-1|=2$이다. (cases)",
+    "따라서 이차함수 $f(x)=A(x-1)(x-5)+2$ ($A\\ne 0$)로 둘 수 있다.",
+    "(가)에서 $t\\to\\infty$일 때 왼쪽 구간 $x<1$의 교점은 $1$개이므로 오른쪽 구간 $x\\ge1$에서도 교점이 $1$개 있어야 하고, 따라서 아래로 볼록($A>0$)이어야 한다.",
+    "왼쪽 구간 $x<1$에서 $|3x^2-1|$은 $k=0$과 $k=1$에서 $b(k)$의 불연속이 발생한다.",
+    "오른쪽 $f(x)$의 꼭짓점 $(3, 2-4A)$에서 새로운 불연속 $k=2-4A$가 생기므로 (나)에 의해 $2-4A$는 $0$ 또는 $1$이어야 한다.",
+    "만약 $2-4A=1$이면 $k=1$에서 왼쪽 구간과 오른쪽 꼭짓점이 겹쳐 불연속이 되더라도 $k=2$? 잠깐: $x=1$에서 높이 $2$는 연속 연결되어 불연속점이 아니지만, $2-4A=0$일 때 $k=0$에서 불연속이 겹쳐 전체 불연속점이 $k=0, 1$ 정확히 $2$개가 된다.",
+    "($2-4A=1$이어도 $k=0,1$ 두 개? 주의: $k=1$ 위쪽 $1<k<2$는 좌측 $x<1$에 1개, 우측 $x\\ge1$에 2개=3개; $k=2-4A=1$이면 $k=1$에서 우측 1개+좌측 2개(x=0 접함 포함)=3개, $k=1$ 아래는 좌측 2개+우측 0개=2개로 불연속, 총 불연속은 $k=0, 1$! 단 원문과 동일 구조인 $2-4A=0$을 선택하면? 잠깐, $2-4A=1$도 $b(k)$ 불연속 2개인지 확인하자!) 실제로 $2-4A=1$이면 $k<0$: 1개(오른쪽x/왼쪽만), $k=0$: 1+2=3개(불연속!), $0<k<1$: 왼쪽3+오른쪽0=3개, $k=1$: 왼쪽2+오른쪽1=3개(연속!), $1<k<2$: 왼쪽1+오른쪽2=3개(연속!)..",
+    "아! $2-4A=1$이면 $k=0$ 하나뿐이어서 불연속 1개! 반면 $2-4A=0$이면 $k<0$:1개, $k=0$:3개, $0<k<1$:5개, $k=1$:4개, $1<k<2$:3개이므로 불연속이 $k=0, 1$ 정확히 2개이다! 따라서 $2-4A=0 \\implies A=\\frac{1}{2}$이고, $f(x)=\\frac{1}{2}(x-1)(x-5)+2$이므로 $g(7)=f(7)=\\frac{1}{2}(6)(2)+2=8$이다.",
+    "정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-02",
+  "subUnitKey": "H22-M1-02-CONTINUITY_POINT",
+  "unitEvidence": "이차함수 $f(x)$에 대하여 실수 전체에서 연속인 함",
+  "rpmRecordId": "H2-M2-RPM-055",
+  "rpmReason": "문항14번(토큰:cases) 대상 문항14의 함수의 연속 단원 RPM H2-M2-RPM-055 분류 유형에 해당한다",
+  "problemTypeKey": "PT_CONTINUITY_CONDITION",
+  "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+  "typeReason": "문항14번(토큰:cases) 대상 문항14의 함수의 연속 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 5,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항14번(토큰:cases) 대상 문항14의 함수의 연속 단원 기본 개념과 풀이 과정을 적용하는 난이도 5 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "은 $2$개다. (다) $g(-1)=g(5)$"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$g$가 실수 전체에서 연속이므로 $f(1)=",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항14번(토큰:cases) 발문과 해설의 문항14 풀이 단계를 점검하여 최종 정답 ①를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

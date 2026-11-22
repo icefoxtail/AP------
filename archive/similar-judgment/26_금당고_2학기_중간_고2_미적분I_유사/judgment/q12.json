@@ -1,0 +1,57 @@
+{
+  "qid": 12,
+  "itemFingerprint": "154f1cc9581df4ec",
+  "solveSteps": [
+    "$x\\to-2$일 때 양쪽 부등식의 극한은 각각\n\n$$\\lim_{x\\to-2}(-4x)=8, \\qquad \\lim_{x\\to-2}(x^2+2x+8)=4-4+8=8$$\n\n이므로 함수의 극한의 대소 관계(조임 정리)에 의해 $\\lim_{x\\to-2}f(x)=8$이다. (16)",
+    "따라서 구하는 극한값은\n\n$$\\lim_{x\\to-2}|(x-1)f(x)| = |(-2-1)\\cdot 8| = |-24| = 24$$\n\n이다.",
+    "정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-01",
+  "subUnitKey": "H22-M1-01-LIMIT_VALUE_CALC",
+  "unitEvidence": "함수 $f(x)$가 모든 실수 $x$에 대하여 $-4x",
+  "rpmRecordId": "H2-M2-RPM-049",
+  "rpmReason": "문항12번(토큰:16) 대상 문항12의 함수의 극한 단원 RPM H2-M2-RPM-049 분류 유형에 해당한다",
+  "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+  "templateKey": "TPL_LIMIT_SQUEEZE",
+  "typeReason": "문항12번(토큰:16) 대상 문항12의 함수의 극한 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항12번(토큰:16) 대상 문항12의 함수의 극한 단원 기본 개념과 풀이 과정을 적용하는 난이도 2 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "{x\\to-2}|(x-1)f(x)|$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$x\\to-2$일 때 양쪽 부등식의 극한은 각",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항12번(토큰:16) 발문과 해설의 문항12 풀이 단계를 점검하여 최종 정답 ⑤를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

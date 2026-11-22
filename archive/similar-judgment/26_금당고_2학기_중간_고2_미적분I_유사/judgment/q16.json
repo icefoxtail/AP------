@@ -1,0 +1,60 @@
+{
+  "qid": 16,
+  "itemFingerprint": "d2572b1823cacbf7",
+  "solveSteps": [
+    "직선 $OP$의 기울기가 $\\frac{4/t}{t}=\\frac{4}{t^2}$이므로 수직인 직선 $l$의 기울기는 $-\\frac{t^2}{4}$이다.",
+    "점 $P\\left(t,\\frac{4}{t}\\right)$를 지나는 직선 $l$의 방정식은\n\n$$y-\\frac{4}{t}=-\\frac{t^2}{4}(x-t)$$\n\n이다.",
+    "$y=0$을 대입하면 $x_Q=t+\\frac{16}{t^3}$이고, $x=0$을 대입하면 $y_R=\\frac{t^3}{4}+\\frac{4}{t}$이다.",
+    "따라서 $t>0$일 때 두 삼각형의 넓이는\n\n$$S_1(t)=\\frac{1}{2}\\cdot x_Q\\cdot\\frac{4}{t}=2+\\frac{32}{t^4}, \\qquad S_2(t)=\\frac{1}{2}\\cdot t\\cdot y_R=\\frac{t^4}{8}+2$$\n\n이다.",
+    "그러므로\n\n$$\\begin{aligned} \\lim_{t\\to2}\\frac{S_2(t)-S_1(t)}{t-2} &= \\lim_{t\\to2}\\frac{t^8-256}{8t^4(t-2)} \\ &= \\lim_{t\\to2}\\frac{(t+2)(t^2+4)(t^4+16)}{8t^4} \\ &= \\frac{4\\cdot 8\\cdot 32}{8\\cdot 16} = 8 \\end{aligned}$$\n\n이다.",
+    "정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-01",
+  "subUnitKey": "H22-M1-01-LIMIT_VALUE_CALC",
+  "unitEvidence": "그림과 같이 곡선 $y=\\dfrac{4}{x}$ ($x",
+  "rpmRecordId": "H2-M2-RPM-049",
+  "rpmReason": "문항16번(토큰:OP) 대상 문항16의 함수의 극한 단원 RPM H2-M2-RPM-049 분류 유형에 해당한다",
+  "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+  "templateKey": "TPL_LIMIT_INFINITY_LEADING_TERM",
+  "typeReason": "문항16번(토큰:OP) 대상 문항16의 함수의 극한 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항16번(토큰:OP) 대상 문항16의 함수의 극한 단원 기본 개념과 풀이 과정을 적용하는 난이도 4 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "-2}$의 값은? (단, $O$는 원점이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "직선 $OP$의 기울기가 $\\frac{4/t}",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항16번(토큰:OP) 발문과 해설의 문항16 풀이 단계를 점검하여 최종 정답 ①를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "qid": 13,
+  "itemFingerprint": "adf5ee998b2a8039",
+  "solveSteps": [
+    "$g(x)$가 실수 전체에서 미분가능하므로 $x=2, 5$에서 연속이다. (cases)",
+    "$g(2)=4-4+4=4$, $g(5)=-25+60-25=10$이다.",
+    "$[2,5]$에서 $g'(x)\\le 2$이므로 $h(x)=g(x)-2x$라 하면 $h'(x)\\le 0$이어서 $h(x)$는 감소하지 않는가 아니라 증가하지 않는다(단조감소).",
+    "그런데 $h(2)=4-4=0$이고 $h(5)=10-10=0$이므로 $[2,5]$에서 $h(x)=0$, 즉 $g(x)=2x$이다.",
+    "이제 $1\\le x\\le 6$에서 $g(x)>2$이므로 구하는 도형의 넓이는 $g(x)-2$의 $[1,6]$ 위에서의 넓이다.",
+    "- $[1,2]$에서 $g(x)-2=(x-1)^2+1$ ($x=1+u$, $0\\le u\\le 1$이면 $1+u^2$)  \n- $[5,6]$에서 $g(x)-2=9-(x-6)^2$ ($x=6-u$, $0\\le u\\le 1$이면 $9-u^2$) 두 구간의 같은 $u$에 대한 높이 합은 $(1+u^2)+(9-u^2)=10$이므로 양쪽 곡선 부분의 넓이 합은 밑변 $1$, 높이 $10$인 직사각형 넓이 $10$과 같다.",
+    "가운데 $[2,5]$에서는 $g(x)-2=2x-2$로 윗변 $2$, 아랫변 $8$, 높이 $3$인 사다리꼴이므로 넓이는 $\\frac{(2+8)\\times 3}{2}=15$이다.",
+    "따라서 전체 넓이는 $10+15=25$이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-05",
+  "subUnitKey": "H22-M1-05-ROLLE_MEAN_VALUE",
+  "unitEvidence": "다항함수 $f(x)$에 대하여 실수 전체의 집합에서 미",
+  "rpmRecordId": "H2-M2-RPM-067",
+  "rpmReason": "문항13번(토큰:cases) 대상 문항13의 도함수의 활용 단원 RPM H2-M2-RPM-067 분류 유형에 해당한다",
+  "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+  "templateKey": "TPL_TANGENCY_RELATION_GEOMETRY",
+  "typeReason": "문항13번(토큰:cases) 대상 문항13의 도함수의 활용 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항13번(토큰:cases) 대상 문항13의 도함수의 활용 단원 기본 개념과 풀이 과정을 적용하는 난이도 4 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "선 $y=g(x)$로 둘러싸인 도형의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$g(x)$가 실수 전체에서 미분가능하므로 $",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항13번(토큰:cases) 발문과 해설의 문항13 풀이 단계를 점검하여 최종 정답 ②를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

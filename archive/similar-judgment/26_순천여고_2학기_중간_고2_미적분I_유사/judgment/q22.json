@@ -1,0 +1,57 @@
+{
+  "qid": 22,
+  "itemFingerprint": "89edae3e04afa7be",
+  "solveSteps": [
+    "$A(2,\\ 8)$이고 접점 $B$의 좌표를 $(u,\\ u^3)$ ($u\\ne 2$)이라 하면 $f'(x)=3x^2$이므로 접선의 방정식은 다음과 같다.",
+    "$$y - u^3 = 3u^2(x-u) \\implies y = 3u^2x - 2u^3$$ 이 직선이 $A(2,\\ 8)$을 지나므로 $$8 = 6u^2 - 2u^3 \\implies u^3 - 3u^2 + 4 = (u-2)^2(u+1) = 0$$ $u\\ne 2$이므로 $u=-1$, 즉 $B(-1,\\ -1)$이다.",
+    "따라서 선분 $AB$의 길이는 $\\sqrt{(2-(-1))^2+(8-(-1))^2}=\\sqrt{9+81}=\\sqrt{90}=3\\sqrt{10}$이다."
+  ],
+  "solvedAnswer": "$B(-1,\\ -1)$, $3\\sqrt{10}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-05",
+  "subUnitKey": "H22-M1-05-ROLLE_MEAN_VALUE",
+  "unitEvidence": "[서답형 5] (서술) 그림과 같이 함수 $f(x)=x",
+  "rpmRecordId": "H2-M2-RPM-067",
+  "rpmReason": "문항22번(토큰:AB) 대상 문항22의 도함수의 활용 단원 RPM H2-M2-RPM-067 분류 유형에 해당한다",
+  "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+  "templateKey": "TPL_TANGENT_CONSTRUCTION",
+  "typeReason": "문항22번(토큰:AB) 대상 문항22의 도함수의 활용 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항22번(토큰:AB) 대상 문항22의 도함수의 활용 단원 기본 개념과 풀이 과정을 적용하는 난이도 4 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "의 길이를 구하는 풀이과정과 답을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$A(2,\\ 8)$이고 접점 $B$의 좌표를",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항22번(토큰:AB) 발문과 해설의 문항22 풀이 단계를 점검하여 최종 정답 $B(-1,\\ -1)$, $3\\sqrt{10}$를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,1005 @@
+{
+  "qid": 12,
+  "questionType": "객관식",
+  "course": [
+    "H22_CALCULUS1"
+  ],
+  "curriculum": "2022",
+  "problem": {
+    "content": "모든 항의 계수가 정수인 이차함수 $f(x)$에 대하여 $\\displaystyle\\lim_{x\\to-\\infty}\\bigl(\\sqrt{f(x)}+2x\\bigr)=3$이고, 함수 $\\dfrac{1}{f(x)}$이 실수 전체에서 연속이다. 이때, $f(0)$의 최솟값은?",
+    "choices": [
+      "$6$",
+      "$7$",
+      "$8$",
+      "$9$",
+      "$10$"
+    ],
+    "points": 4.8
+  },
+  "reference": {
+    "answer": "⑤",
+    "solution": "$x\\to-\\infty$일 때 $2x\\to-\\infty$이므로 $\\sqrt{f(x)}+2x$가 수렴하려면 $f(x)=4x^2+bx+c$ 꼴이어야 한다. $x=-t$ ($t\\to\\infty$)로 치환하면\n\n$$\\lim_{t\\to\\infty}\\left(\\sqrt{4t^2-bt+c}-2t\\right) = \\lim_{t\\to\\infty}\\frac{-bt+c}{\\sqrt{4t^2-bt+c}+2t} = \\frac{-b}{4}=3 \\implies b=-12$$\n\n이다. 따라서 $f(x)=4x^2-12x+c$이다. 함수 $\\frac{1}{f(x)}$가 실수 전체에서 연속이려면 $f(x)=0$이 실근을 갖지 않아야 하므로 판별식\n\n$$\\frac{D}{4} = (-6)^2 - 4c = 36-4c < 0 \\implies c > 9$$\n\n이다. 모든 항의 계수가 정수이므로 정수 $c$의 최솟값은 $10$, 즉 $f(0)=c$의 최솟값은 $10$이다. 정답은 ⑤이다.",
+    "sourcePrimaryMethod": "x->-∞ 무리식 극한으로 f(x)=4x^2-12x+c 결정 후 1/f(x) 전구간 연속(D<0)으로 c>9 도출",
+    "sourceDecisiveStep": "x=-t 치환 유리화로 b=-12를 구하고 판별식 36-4c<0에서 최소 정수 c=10 결정"
+  },
+  "source": {
+    "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
+    "standardUnitKey": "H22-M1-01",
+    "subUnitKey": "",
+    "rpmPath": {
+      "majorUnit": "함수의 극한과 연속",
+      "midUnit": "함수의 극한",
+      "l3": "극한의 성질",
+      "l4": "미정계수"
+    },
+    "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+    "templateKey": "TPL_LIMIT_FINITE_CONDITION_PARAMETER",
+    "difficultyBucket": 4,
+    "newKeyProposal": null,
+    "item4slot": {
+      "given": [
+        "이차함수",
+        "극한",
+        "연속"
+      ],
+      "goal": [
+        "최솟값"
+      ],
+      "method": [
+        "유리화",
+        "판별식",
+        "연속"
+      ],
+      "condition": [
+        "정수",
+        "연속"
+      ]
+    },
+    "boundary": "NONE"
+  },
+  "units": [
+    {
+      "standardUnitKey": "H22-M1-01",
+      "label": "함수의 극한",
+      "order": 1,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-M1-01-LIMIT_VALUE_CALC",
+          "label": "극한값 계산"
+        },
+        {
+          "subUnitKey": "H22-M1-01-LIMIT_PROPERTIES",
+          "label": "극한의 성질"
+        },
+        {
+          "subUnitKey": "H22-M1-01-LIMIT_INFINITY",
+          "label": "무한대에서의 극한"
+        },
+        {
+          "subUnitKey": "H22-M1-01-LIMIT_PARAMETER",
+          "label": "극한 조건을 이용한 함수 결정"
+        },
+        {
+          "subUnitKey": "H22-M1-01-LIMIT_GEOMETRY",
+          "label": "도형과 함수의 극한"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-M2-RPM-049",
+          "path": "함수의 극한과 연속 > 함수의 극한 > 함수의 극한 > 좌극한·우극한",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-050",
+          "path": "함수의 극한과 연속 > 함수의 극한 > 함수의 극한 > 극한값 계산",
+          "subUnitKey": "",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-051",
+          "path": "함수의 극한과 연속 > 함수의 극한 > 극한의 성질 > 대수적 계산",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-052",
+          "path": "함수의 극한과 연속 > 함수의 극한 > 극한의 성질 > 미정계수",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-053",
+          "path": "함수의 극한과 연속 > 함수의 극한 > 무한대에서의 극한 > 다항·유리함수",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-054",
+          "path": "함수의 극한과 연속 > 함수의 극한 > 무한대에서의 극한 > 그래프 해석",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-098",
+          "path": "함수의 극한과 연속 > 함수의 극한 > 극한의 성질 > 함수의 극한의 대소 관계",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_LIMIT_EXISTENCE",
+          "label": "극한의 존재 판정",
+          "templates": [
+            {
+              "templateKey": "TPL_LIMIT_EXISTENCE_TEST",
+              "label": "좌우극한으로 존재 판정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+          "label": "함수의 극한값 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_LIMIT_INFINITY_LEADING_TERM",
+              "label": "지배항을 이용한 무한대 극한 계산"
+            },
+            {
+              "templateKey": "TPL_LIMIT_RATIONALIZATION",
+              "label": "유리화로 극한 계산"
+            },
+            {
+              "templateKey": "TPL_LIMIT_DIRECTIONAL_APPROACH",
+              "label": "접근 방향을 고려한 극한"
+            },
+            {
+              "templateKey": "TPL_LIMIT_DIRECT_SUBSTITUTION",
+              "label": "직접 대입으로 극한값 구하기"
+            },
+            {
+              "templateKey": "TPL_LIMIT_MULTI_METHOD_CHECK",
+              "label": "여러 극한식의 옳고 그름 판정"
+            },
+            {
+              "templateKey": "TPL_LIMIT_FACTOR_CANCEL",
+              "label": "인수분해와 약분으로 극한 계산"
+            },
+            {
+              "templateKey": "TPL_LIMIT_GRAPH_DIRECTION_READ",
+              "label": "그래프에서 좌극한·우극한 구하기"
+            },
+            {
+              "templateKey": "TPL_LIMIT_SQUEEZE",
+              "label": "함수의 대소 관계를 이용한 극한값 계산"
+            },
+            {
+              "templateKey": "TPL_LIMIT_ASYMPTOTIC_RELATION",
+              "label": "두 함수의 관계를 이용한 무한대 극한"
+            },
+            {
+              "templateKey": "TPL_LIMIT_OPERATION_LAWS",
+              "label": "극한의 사칙연산"
+            },
+            {
+              "templateKey": "TPL_LIMIT_GEOMETRY_PARAMETERIZATION",
+              "label": "도형의 조건을 식으로 나타내어 극한 구하기"
+            },
+            {
+              "templateKey": "TPL_LIMIT_VALUE_CALC_CONVERGENCE",
+              "label": "역수식 수렴과 발산"
+            },
+            {
+              "templateKey": "TPL_LIMIT_VALUE_CALC_MULTI",
+              "label": "극한 종합 계산"
+            },
+            {
+              "templateKey": "TPL_LIMIT_VALUE_CALC_DOMINANCE",
+              "label": "지배항"
+            },
+            {
+              "templateKey": "TPL_LIMIT_VALUE_CALC_STANDARD",
+              "label": "기본 극한"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+          "label": "극한 조건으로 함수·계수 결정",
+          "templates": [
+            {
+              "templateKey": "TPL_LIMIT_POLYNOMIAL_RECONSTRUCTION",
+              "label": "극한 조건으로 다항함수 구하기"
+            },
+            {
+              "templateKey": "TPL_LIMIT_FINITE_CONDITION_PARAMETER",
+              "label": "유한 극한 조건으로 계수 결정"
+            },
+            {
+              "templateKey": "TPL_LIMIT_ZERO_MULTIPLICITY",
+              "label": "극한이 존재하기 위한 인수 조건"
+            },
+            {
+              "templateKey": "TPL_LIMIT_PARAMETER_DETERMINATION_ONE_SIDED",
+              "label": "좌우 극한 일치"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H22-M1-02",
+      "label": "함수의 연속",
+      "order": 2,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-M1-02-CONTINUITY_POINT",
+          "label": "한 점에서의 연속"
+        },
+        {
+          "subUnitKey": "H22-M1-02-CONTINUITY_GRAPH",
+          "label": "그래프와 함수의 연속"
+        },
+        {
+          "subUnitKey": "H22-M1-02-CONTINUITY_CONDITION",
+          "label": "연속 조건과 미정계수"
+        },
+        {
+          "subUnitKey": "H22-M1-02-INTERMEDIATE_VALUE",
+          "label": "사잇값 정리와 실근의 존재"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-M2-RPM-055",
+          "path": "함수의 극한과 연속 > 함수의 연속 > 연속의 뜻 > 한 점에서의 연속",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-056",
+          "path": "함수의 극한과 연속 > 함수의 연속 > 연속의 뜻 > 구간에서의 연속",
+          "subUnitKey": "",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-057",
+          "path": "함수의 극한과 연속 > 함수의 연속 > 연속 조건 > 미정계수",
+          "subUnitKey": "",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-058",
+          "path": "함수의 극한과 연속 > 함수의 연속 > 연속 조건 > 구간별 함수",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-059",
+          "path": "함수의 극한과 연속 > 함수의 연속 > 연속함수의 성질 > 최대·최소 정리",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-060",
+          "path": "함수의 극한과 연속 > 함수의 연속 > 연속함수의 성질 > 사잇값 정리",
+          "subUnitKey": "H22-M1-02-INTERMEDIATE_VALUE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+          "label": "사잇값 정리의 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_IVT_VALUE_EXISTENCE_INTERVAL",
+              "label": "사잇값 정리로 특정 값·실근의 존재 확인"
+            },
+            {
+              "templateKey": "TPL_IVT_MINIMUM_ROOT_COUNT",
+              "label": "사잇값 정리로 최소 실근 개수 구하기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_CONTINUITY_CONDITION",
+          "label": "함수의 연속 조건",
+          "templates": [
+            {
+              "templateKey": "TPL_CONTINUITY_FACTOR_CONDITION",
+              "label": "인수 조건을 이용한 연속성 확보"
+            },
+            {
+              "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+              "label": "구간별로 정의된 함수의 연속 조건"
+            },
+            {
+              "templateKey": "TPL_CONTINUITY_PRODUCT_ZERO_CANCELLATION",
+              "label": "곱함수가 연속이 되기 위한 조건"
+            },
+            {
+              "templateKey": "TPL_CONTINUITY_DENOMINATOR_NONZERO",
+              "label": "분모가 0이 되지 않는 조건"
+            },
+            {
+              "templateKey": "TPL_CONTINUITY_COMPOSITION_CONDITION",
+              "label": "합성함수가 연속이 되기 위한 조건"
+            },
+            {
+              "templateKey": "TPL_CONTINUITY_FUNCTION_BRANCH_SELECTION",
+              "label": "연속인 함수의 식 결정"
+            },
+            {
+              "templateKey": "TPL_CONTINUITY_CONDITION_COMPOSITION",
+              "label": "합성함수 연속 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+          "label": "연속과 불연속의 판정",
+          "templates": [
+            {
+              "templateKey": "TPL_CONTINUITY_POINT_JUDGMENT",
+              "label": "연속·불연속 판정"
+            },
+            {
+              "templateKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+              "label": "함수의 연산과 합성함수의 연속성"
+            },
+            {
+              "templateKey": "TPL_CONTINUITY_ABSOLUTE_SQUARE_TRANSFORM",
+              "label": "절댓값·제곱한 함수의 연속성"
+            },
+            {
+              "templateKey": "TPL_COUNT_FUNCTION_DISCONTINUITY_FIND",
+              "label": "실근·교점의 개수가 바뀌는 점 찾기"
+            },
+            {
+              "templateKey": "TPL_CONT_DIFF_DEFINITION_PROOF",
+              "label": "정의에 따른 연속성과 미분가능성 판정"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H22-M1-03",
+      "label": "미분계수",
+      "order": 3,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-M1-03-DERIVATIVE_DEFINITION",
+          "label": "미분계수의 정의와 계산"
+        },
+        {
+          "subUnitKey": "H22-M1-03-DIFFERENTIABILITY_CONDITION",
+          "label": "미분가능 조건"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-M2-RPM-061",
+          "path": "미분 > 미분계수와 도함수 > 미분계수 > 평균변화율·순간변화율",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-062",
+          "path": "미분 > 미분계수와 도함수 > 미분계수 > 정의로 미분계수",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-065",
+          "path": "미분 > 미분계수와 도함수 > 미분가능성과 연속 > 미분가능 조건",
+          "subUnitKey": "H22-M1-03-DIFFERENTIABILITY_CONDITION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+          "label": "미분가능 조건",
+          "templates": [
+            {
+              "templateKey": "TPL_DIFFERENTIABILITY_POINT_CONDITION",
+              "label": "한 점의 미분가능 조건"
+            },
+            {
+              "templateKey": "TPL_NONDIFFERENTIABILITY_STRUCTURE",
+              "label": "미분불가능 구조 판정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+          "label": "미분계수의 정의와 극한",
+          "templates": [
+            {
+              "templateKey": "TPL_DERIVATIVE_LIMIT_INFORMATION_SYSTEM",
+              "label": "극한에서 함수값·미분정보 추출"
+            },
+            {
+              "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+              "label": "차분극한의 미분계수 환원"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H22-M1-04",
+      "label": "도함수",
+      "order": 4,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-M1-04-DERIVATIVE_CALCULATION",
+          "label": "도함수 계산"
+        },
+        {
+          "subUnitKey": "H22-M1-04-DERIVATIVE_EQUATION",
+          "label": "도함수의 방정식"
+        },
+        {
+          "subUnitKey": "H22-M1-04-DERIVATIVE_FUNCTION_DETERMINATION",
+          "label": "도함수 조건을 이용한 함수 결정"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-M2-RPM-063",
+          "path": "미분 > 미분계수와 도함수 > 도함수 > 미분법",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-064",
+          "path": "미분 > 미분계수와 도함수 > 도함수 > 도함수 계산",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-066",
+          "path": "미분 > 미분계수와 도함수 > 미분가능성과 연속 > 그래프에서 판정",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-099",
+          "path": "미분 > 미분계수와 도함수 > 도함수 > 함수방정식의 미분과 불변식",
+          "subUnitKey": "H22-M1-04-DERIVATIVE_FUNCTION_DETERMINATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
+          "label": "함수방정식",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+              "label": "가법형 함수방정식"
+            },
+            {
+              "templateKey": "TPL_FUNCTIONAL_EQUATION_MULTIPLICATIVE",
+              "label": "곱셈형 함수방정식"
+            },
+            {
+              "templateKey": "TPL_FUNCTIONAL_EQUATION_SYMMETRY",
+              "label": "대입으로 대칭·배수 관계 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTIONAL_EQUATION_DIFFERENTIAL_INVARIANT",
+              "label": "함수방정식 미분으로 불변식 구성"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+          "label": "도함수 조건을 이용한 함수 결정",
+          "templates": [
+            {
+              "templateKey": "TPL_DERIVATIVE_RELATION_FUNCTION_DETERMINE",
+              "label": "함수·도함수 관계식으로 함수 결정"
+            },
+            {
+              "templateKey": "TPL_GLOBAL_PROPERTY_FUNCTION_DETERMINE",
+              "label": "전역 성질로 함수 결정"
+            },
+            {
+              "templateKey": "TPL_LOCAL_DERIVATIVE_CONSTRAINT_FUNCTION_DETERMINE",
+              "label": "국소 값·미분 조건으로 함수 결정"
+            },
+            {
+              "templateKey": "TPL_STRUCTURAL_FUNCTION_DETERMINE",
+              "label": "근·대칭·인수 구조로 함수 결정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+          "label": "도함수 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+              "label": "도함수 계산과 값 평가"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H22-M1-05",
+      "label": "도함수의 활용",
+      "order": 5,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-M1-05-ROLLE_MEAN_VALUE",
+          "label": "롤의 정리와 평균값 정리"
+        },
+        {
+          "subUnitKey": "H22-M1-05-TANGENT_LINE",
+          "label": "접선의 방정식"
+        },
+        {
+          "subUnitKey": "H22-M1-05-INCREASE_DECREASE",
+          "label": "함수의 증가와 감소"
+        },
+        {
+          "subUnitKey": "H22-M1-05-EXTREMA_MAXIMUM_MINIMUM",
+          "label": "극값과 최대·최소"
+        },
+        {
+          "subUnitKey": "H22-M1-05-ROOT_COUNT",
+          "label": "방정식의 근의 개수와 그래프"
+        },
+        {
+          "subUnitKey": "H22-M1-05-GEOMETRIC_APPLICATION",
+          "label": "도함수와 그래프의 도형 활용"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-M2-RPM-067",
+          "path": "미분 > 도함수의 활용 > 접선 > 접선의 방정식",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-068",
+          "path": "미분 > 도함수의 활용 > 접선 > 두 곡선의 접선",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-069",
+          "path": "미분 > 도함수의 활용 > 증가·감소와 극값 > 증감표",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-070",
+          "path": "미분 > 도함수의 활용 > 증가·감소와 극값 > 극대·극소",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-071",
+          "path": "미분 > 도함수의 활용 > 최대·최소 > 구간 최대·최소",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-072",
+          "path": "미분 > 도함수의 활용 > 최대·최소 > 활용",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-073",
+          "path": "미분 > 도함수의 활용 > 방정식·부등식 > 근의 개수",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-074",
+          "path": "미분 > 도함수의 활용 > 방정식·부등식 > 함수 비교",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-075",
+          "path": "미분 > 도함수의 활용 > 속도와 가속도 > 위치·속도",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-076",
+          "path": "미분 > 도함수의 활용 > 속도와 가속도 > 변화율",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-077",
+          "path": "미분 > 도함수의 활용 > 롤의 정리와 평균값 정리 > 롤의 정리",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-078",
+          "path": "미분 > 도함수의 활용 > 롤의 정리와 평균값 정리 > 평균값 정리의 조건과 적용",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-079",
+          "path": "미분 > 도함수의 활용 > 롤의 정리와 평균값 정리 > 평균값 정리를 이용한 함수의 성질",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+          "label": "접선과 미분",
+          "templates": [
+            {
+              "templateKey": "TPL_TANGENCY_RELATION_GEOMETRY",
+              "label": "접선 관계와 기하 활용"
+            },
+            {
+              "templateKey": "TPL_TANGENT_CONSTRUCTION",
+              "label": "접선·법선 구성"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+          "label": "극대·극소",
+          "templates": [
+            {
+              "templateKey": "TPL_EXTREMA_STRUCTURE_COUNT",
+              "label": "극값 구조와 개수 판정"
+            },
+            {
+              "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+              "label": "극값·극점 조건으로 값 결정"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H22-M1-06",
+      "label": "부정적분",
+      "order": 6,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-M1-06-ANTIDERIVATIVE_CONCEPT",
+          "label": "부정적분의 뜻"
+        },
+        {
+          "subUnitKey": "H22-M1-06-POLYNOMIAL_INTEGRATION",
+          "label": "다항함수의 부정적분"
+        },
+        {
+          "subUnitKey": "H22-M1-06-INITIAL_CONDITION",
+          "label": "적분상수와 초기조건"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-M2-RPM-080",
+          "path": "적분 > 부정적분 > 부정적분의 뜻 > 원시함수",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-081",
+          "path": "적분 > 부정적분 > 부정적분의 뜻 > 적분상수",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-082",
+          "path": "적분 > 부정적분 > 부정적분 계산 > 다항함수",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-083",
+          "path": "적분 > 부정적분 > 부정적분 계산 > 상수배·합차",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-084",
+          "path": "적분 > 부정적분 > 조건을 이용한 함수 결정 > 초기조건",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-085",
+          "path": "적분 > 부정적분 > 조건을 이용한 함수 결정 > 도함수에서 원함수",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      ],
+      "problemTypes": []
+    },
+    {
+      "standardUnitKey": "H22-M1-07",
+      "label": "정적분",
+      "order": 7,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-M1-07-DEFINITE_INTEGRAL_CALCULATION",
+          "label": "정적분의 계산"
+        },
+        {
+          "subUnitKey": "H22-M1-07-DEFINITE_INTEGRAL_PROPERTIES",
+          "label": "정적분의 성질"
+        },
+        {
+          "subUnitKey": "H22-M1-07-VARIABLE_LIMIT_INTEGRAL",
+          "label": "정적분과 함수의 관계"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-M2-RPM-086",
+          "path": "적분 > 정적분 > 정적분의 뜻 > 정적분 계산",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-087",
+          "path": "적분 > 정적분 > 정적분의 뜻 > 구간 분할",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-088",
+          "path": "적분 > 정적분 > 정적분의 성질 > 상하한 교환",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-089",
+          "path": "적분 > 정적분 > 정적분의 성질 > 대칭성",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-090",
+          "path": "적분 > 정적분 > 정적분과 함수 > 상한이 변수인 적분",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-091",
+          "path": "적분 > 정적분 > 정적분과 함수 > 미분과 적분 관계",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      ],
+      "problemTypes": []
+    },
+    {
+      "standardUnitKey": "H22-M1-08",
+      "label": "정적분의 활용",
+      "order": 8,
+      "subUnits": [
+        {
+          "subUnitKey": "H22-M1-08-AREA",
+          "label": "정적분을 이용한 넓이"
+        },
+        {
+          "subUnitKey": "H22-M1-08-DISTANCE",
+          "label": "속도와 거리"
+        },
+        {
+          "subUnitKey": "H22-M1-08-GEOMETRIC_APPLICATION",
+          "label": "정적분의 도형 활용"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-M2-RPM-092",
+          "path": "적분 > 정적분의 활용 > 넓이 > 곡선과 x축",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-093",
+          "path": "적분 > 정적분의 활용 > 넓이 > 두 곡선 사이",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-094",
+          "path": "적분 > 정적분의 활용 > 속도와 거리 > 속도에서 이동거리",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-095",
+          "path": "적분 > 정적분의 활용 > 속도와 거리 > 위치 변화",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-096",
+          "path": "적분 > 정적분의 활용 > 도형 활용 > 매개변수 넓이",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M2-RPM-097",
+          "path": "적분 > 정적분의 활용 > 도형 활용 > 최대·최소",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      ],
+      "problemTypes": []
+    }
+  ],
+  "termCandidates": [
+    {
+      "term": "이차함수",
+      "matchedAs": "이차함수",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "계수가 정수인 이차함수 $f(x)$에"
+    },
+    {
+      "term": "최솟값",
+      "matchedAs": "최솟값",
+      "kind": "행위",
+      "src": "stem",
+      "quote": "$f(0)$의 최솟값은?"
+    },
+    {
+      "term": "계수",
+      "matchedAs": "계수",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "모든 항의 계수가 정수인 이차"
+    },
+    {
+      "term": "실수",
+      "matchedAs": "실수",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "f(x)}$이 실수 전체에서 연속"
+    },
+    {
+      "term": "양화",
+      "matchedAs": "모든",
+      "kind": "조건",
+      "src": "stem",
+      "quote": "모든 항의 계수가"
+    },
+    {
+      "term": "연속",
+      "matchedAs": "연속",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "실수 전체에서 연속이다. 이때,"
+    },
+    {
+      "term": "정수",
+      "matchedAs": "정수",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "항의 계수가 정수인 이차함수 $"
+    },
+    {
+      "term": "함수",
+      "matchedAs": "함수",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "가 정수인 이차함수 $f(x)$에"
+    },
+    {
+      "term": "최솟값",
+      "matchedAs": "최솟값",
+      "kind": "행위",
+      "src": "solution",
+      "quote": "정수 $c$의 최솟값은 $10$,"
+    },
+    {
+      "term": "판별식",
+      "matchedAs": "판별식",
+      "kind": "방법",
+      "src": "solution",
+      "quote": "않아야 하므로 판별식 $$\\fra"
+    },
+    {
+      "term": "계수",
+      "matchedAs": "계수",
+      "kind": "대상",
+      "src": "solution",
+      "quote": ". 모든 항의 계수가 정수이므로"
+    },
+    {
+      "term": "수렴",
+      "matchedAs": "수렴",
+      "kind": "조건",
+      "src": "solution",
+      "quote": ")}+2x$가 수렴하려면 $f(x"
+    },
+    {
+      "term": "실근",
+      "matchedAs": "실근",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "(x)=0$이 실근을 갖지 않아야"
+    },
+    {
+      "term": "실수",
+      "matchedAs": "실수",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "f(x)}$가 실수 전체에서 연속"
+    },
+    {
+      "term": "양화",
+      "matchedAs": "모든",
+      "kind": "조건",
+      "src": "solution",
+      "quote": "$$ 이다. 모든 항의 계수가"
+    },
+    {
+      "term": "연속",
+      "matchedAs": "연속",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "실수 전체에서 연속이려면 $f(x"
+    },
+    {
+      "term": "정수",
+      "matchedAs": "정수",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "항의 계수가 정수이므로 정수 $"
+    },
+    {
+      "term": "치환",
+      "matchedAs": "치환",
+      "kind": "방법",
+      "src": "solution",
+      "quote": "nfty$)로 치환하면 $$\\l"
+    },
+    {
+      "term": "판정",
+      "matchedAs": "판별",
+      "kind": "행위",
+      "src": "solution",
+      "quote": "않아야 하므로 판별식 $$\\fr"
+    },
+    {
+      "term": "함수",
+      "matchedAs": "함수",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "x+c$이다. 함수 $\\frac{"
+    }
+  ],
+  "figure": {
+    "cueWords": [],
+    "hasPlan": false,
+    "problemPlanRef": null,
+    "hasImage": false,
+    "sourcePlan": {
+      "exempt": "NONE"
+    },
+    "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
+  },
+  "sourceExamHint": null,
+  "guide": "JUDGMENT_GUIDE.md 를 먼저 읽는다. 후보 밖 키는 쓸 수 없다. 모든 이유 문장에는 이 문항의 숫자·식을 넣는다."
+}

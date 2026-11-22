@@ -1,0 +1,58 @@
+{
+  "qid": 24,
+  "itemFingerprint": "bb85514f463a7003",
+  "solveSteps": [
+    "조건 (가)에서 곡선 $y=xg(x)$가 점 $(3,6)$을 지나므로 $3g(3)=6$, 즉 $g(3)=2$이다.",
+    "또한 $y=xg(x)$의 도함수는 $y'=g(x)+xg'(x)$이므로 $x=3$에서의 접선의 기울기는\n\n$$g(3)+3g'(3)=2+3g'(3)=-1 \\implies g'(3)=-1$$\n\n이다.",
+    "조건 (나)에서 $(f(x)g(x))'|_{x=3}=2$이다.",
+    "구하고자 하는 함수 $y=(f(x)+x^2)g(x)=f(x)g(x)+x^2g(x)$를 미분하여 $x=3$을 대입하면\n\n$$\\begin{aligned} y'|*{x=3} &= (f(x)g(x))'|*{x=3} + (x^2g(x))'|_{x=3} \\ &= 2 + {2(3)g(3) + 3^2g'(3)} \\ &= 2 + (6\\cdot 2 + 9\\cdot(-1)) \\ &= 2 + 3 = 5 \\end{aligned}$$\n\n이다."
+  ],
+  "solvedAnswer": "$5$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-04",
+  "subUnitKey": "H22-M1-04-DERIVATIVE_CALCULATION",
+  "unitEvidence": "[서술형 3] 두 다항함수 $f(x)$, $g(x)$가",
+  "rpmRecordId": "H2-M2-RPM-063",
+  "rpmReason": "문항24번(토큰:xg) 대상 문항24의 도함수 단원 RPM H2-M2-RPM-063 분류 유형에 해당한다",
+  "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+  "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+  "typeReason": "문항24번(토큰:xg) 대상 문항24의 도함수 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항24번(토큰:xg) 대상 문항24의 도함수 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "x)$의 $x=3$에서의 미분계수를 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "조건 (가)에서 곡선 $y=xg(x)$가 점",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항24번(토큰:xg) 발문과 해설의 문항24 풀이 단계를 점검하여 최종 정답 $5$를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

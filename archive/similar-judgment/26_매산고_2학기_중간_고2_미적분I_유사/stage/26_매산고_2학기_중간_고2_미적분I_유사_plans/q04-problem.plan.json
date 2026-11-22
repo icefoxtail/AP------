@@ -1,0 +1,49 @@
+{
+  "family": "piecewise-linear-v1",
+  "caption": "x=0(점 -2), x=1(점 0), x=2(빈 원 2, 점 1)를 갖는 구간별 함수 y=f(x)의 그래프",
+  "sourceQuote": "함수 y=f(x)의 그래프가 아래 그림과 같을 때",
+  "pieces": [
+    {
+      "domain": "(-inf,0)",
+      "expr": "1",
+      "openEnd": true
+    },
+    {
+      "domain": "(0,1)",
+      "expr": "1-x",
+      "openStart": true,
+      "openEnd": true
+    },
+    {
+      "domain": "(1,2)",
+      "expr": "x",
+      "openStart": true,
+      "openEnd": true
+    },
+    {
+      "domain": "(2,inf)",
+      "expr": "4-x",
+      "openStart": true
+    }
+  ],
+  "isolatedPoints": [
+    [
+      0,
+      -2
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      1
+    ]
+  ],
+  "viewport": [
+    -1.5,
+    4.5,
+    -3,
+    3.5
+  ]
+}

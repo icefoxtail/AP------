@@ -1,0 +1,61 @@
+{
+  "qid": 20,
+  "itemFingerprint": "85e0fb1d51dbdb4b",
+  "solveSteps": [
+    "삼차함수 $f(x)$가 역함수를 가지려면 실수 전체에서 증가해야 하므로 $f'(x)=3x^2+2ax+1\\ge 0$이어야 한다.",
+    "판별식 $\\frac{D}{4}=a^2-3\\le 0$에서 정수 $a$의 후보는 $-1, 0, 1$이다.",
+    "증가함수 $y=f(x)$와 역함수 $y=g(x)$의 교점은 직선 $y=x$ 위에 있으므로 $f(x)-x=x^3+ax^2+2a+2=0$이 서로 다른 실근을 $2$개 가져야 한다.",
+    "- $a=-1$: $x^3-x^2=x^2(x-1)=0$ (서로 다른 실근 $0, 1$로 $2$개)  \n- $a=0$: $x^3+2=0$ ($1$개)  \n- $a=1$: $x^3+x^2+4=(x+2)(x^2-x+2)=0$ ($1$개) 따라서 $a=-1$이고 $f(x)=x^3-x^2+x$이다.",
+    "접점을 $(t, f(t))$라 하면 접선 $y=(3t^2-2t+1)(x-t)+(t^3-t^2+t)$가 점 $P(4,4)$를 지나므로\n\n$$4 = (3t^2-2t+1)(4-t)+(t^3-t^2+t) \\implies 2t^3-13t^2+9t=0 \\implies t(2t^2-13t+9)=0$$\n\n이다.",
+    "판별식 $169-72=97>0$이고 $t=0$은 중근이 아니므로 서로 다른 세 실근을 갖는다.",
+    "따라서 세 접점의 $x$좌표의 합은 근과 계수의 관계에 의해 $0+\\frac{13}{2}=\\frac{13}{2}$이다."
+  ],
+  "solvedAnswer": "$\\frac{13}{2}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-05",
+  "subUnitKey": "H22-M1-05-ROLLE_MEAN_VALUE",
+  "unitEvidence": "[서술형 2번] 어떤 정수 $a$에 대하여 함수 $f(",
+  "rpmRecordId": "H2-M2-RPM-067",
+  "rpmReason": "문항20번(토큰:ax) 대상 문항20의 도함수의 활용 단원 RPM H2-M2-RPM-067 분류 유형에 해당한다",
+  "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+  "templateKey": "TPL_TANGENT_CONSTRUCTION",
+  "typeReason": "문항20번(토큰:ax) 대상 문항20의 도함수의 활용 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항20번(토큰:ax) 대상 문항20의 도함수의 활용 단원 기본 개념과 풀이 과정을 적용하는 난이도 4 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$좌표의 합을 구하고, 그 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "삼차함수 $f(x)$가 역함수를 가지려면 실수",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항20번(토큰:ax) 발문과 해설의 문항20 풀이 단계를 점검하여 최종 정답 $\\frac{13}{2}$를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

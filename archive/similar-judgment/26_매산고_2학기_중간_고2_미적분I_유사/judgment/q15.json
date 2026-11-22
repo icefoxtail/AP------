@@ -1,0 +1,59 @@
+{
+  "qid": 15,
+  "itemFingerprint": "e31535c737b6acff",
+  "solveSteps": [
+    "두 선분 $\\overline{PA}, \\overline{PB}$의 길이를 $t$로 나타내면\n\n$$\\begin{aligned} \\overline{PA} &= \\sqrt{(t+3)^2+(9-t^2)^2} = (3+t)\\sqrt{1+(3-t)^2} \\ \\overline{PB} &= \\sqrt{(3-t)^2+(9-t^2)^2} = (3-t)\\sqrt{1+(3+t)^2} \\end{aligned}$$\n\n이다. (APB)",
+    "각의 이등분선 정리에 의해 $\\overline{AQ}:\\overline{QB}=\\overline{PA}:\\overline{PB}$이므로 점 $Q$의 $x$좌표는\n\n$$\\overline{OQ} = \\frac{3\\overline{PA}-3\\overline{PB}}{\\overline{PA}+\\overline{PB}}$$\n\n이다.",
+    "$t\\to0^+$일 때 $\\overline{PA}+\\overline{PB}\\to 6\\sqrt{10}$이고, $\\overline{PA}-\\overline{PB}$의 극한은\n\n$$\\begin{aligned} \\lim_{t\\to0^+}\\frac{\\overline{PA}-\\overline{PB}}{t} &= \\lim_{t\\to0^+}\\frac{(3+t)^2(10-6t+t^2)-(3-t)^2(10+6t+t^2)}{t{\\overline{PA}+\\overline{PB}}} \\ &= \\lim_{t\\to0^+}\\frac{(9+6t+t^2)(10-6t+t^2)-(9-6t+t^2)(10+6t+t^2)}{t{\\overline{PA}+\\overline{PB}}} \\ &= \\frac{2(60-54)}{6\\sqrt{10}} = \\frac{12}{6\\sqrt{10}} = \\frac{2}{\\sqrt{10}} \\end{aligned}$$\n\n이다.",
+    "따라서\n\n$$\\lim_{t\\to0^+}\\frac{\\overline{OQ}}{t} = \\frac{3}{6\\sqrt{10}}\\cdot\\frac{2}{\\sqrt{10}} = \\frac{1}{10}$$\n\n이다.",
+    "정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-01",
+  "subUnitKey": "H22-M1-01-LIMIT_VALUE_CALC",
+  "unitEvidence": "곡선 $y=9-x^2$이 $x$축과 만나는 두 점을 각",
+  "rpmRecordId": "H2-M2-RPM-049",
+  "rpmReason": "문항15번(토큰:APB) 대상 문항15의 함수의 극한 단원 RPM H2-M2-RPM-049 분류 유형에 해당한다",
+  "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+  "templateKey": "TPL_LIMIT_INFINITY_LEADING_TERM",
+  "typeReason": "문항15번(토큰:APB) 대상 문항15의 함수의 극한 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항15번(토큰:APB) 대상 문항15의 함수의 극한 단원 기본 개념과 풀이 과정을 적용하는 난이도 4 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "{t}$의 값은? (단, $O$는 원점이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "두 선분 $\\overline{PA}, \\ove",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항15번(토큰:APB) 발문과 해설의 문항15 풀이 단계를 점검하여 최종 정답 ④를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

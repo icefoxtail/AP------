@@ -1,0 +1,58 @@
+{
+  "qid": 14,
+  "itemFingerprint": "a8dbeac714587355",
+  "solveSteps": [
+    "원 $x^2+y^2=4$와 직선 $y=t(x+2)$를 연립하면 $$x^2 + t^2(x+2)^2 = 4 \\implies (1+t^2)x^2 + 4t^2x + 4(t^2-1) = 0$$ $x=-2$가 한 근이므로 근과 계수의 관계에 의해 $-2x_B=\\dfrac{4(t^2-1)}{1+t^2}$, 즉 $x_B=\\dfrac{2(1-t^2)}{1+t^2}$이다.",
+    "$y_B = t(x_B+2) = \\dfrac{4t}{1+t^2}>0$이므로 삼각형 $ABC$의 넓이는 $S(t)=\\dfrac{1}{2}\\cdot 4\\cdot\\dfrac{4t}{1+t^2}=\\dfrac{8t}{1+t^2}$이다.",
+    "따라서 $\\lim_{t\\to\\infty}tS(t)=\\lim_{t\\to\\infty}\\dfrac{8t^2}{1+t^2}=8$이다.",
+    "정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-01",
+  "subUnitKey": "H22-M1-01-LIMIT_VALUE_CALC",
+  "unitEvidence": "그림과 같이 원점 $O$를 중심으로 하는 반지름의 길이",
+  "rpmRecordId": "H2-M2-RPM-049",
+  "rpmReason": "문항14번(토큰:ABC) 대상 문항14의 함수의 극한 단원 RPM H2-M2-RPM-049 분류 유형에 해당한다",
+  "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+  "templateKey": "TPL_LIMIT_INFINITY_LEADING_TERM",
+  "typeReason": "문항14번(토큰:ABC) 대상 문항14의 함수의 극한 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항14번(토큰:ABC) 대상 문항14의 함수의 극한 단원 기본 개념과 풀이 과정을 적용하는 난이도 4 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "m_{t\\to\\infty}tS(t)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "원 $x^2+y^2=4$와 직선 $y=t(x+",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항14번(토큰:ABC) 발문과 해설의 문항14 풀이 단계를 점검하여 최종 정답 ③를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

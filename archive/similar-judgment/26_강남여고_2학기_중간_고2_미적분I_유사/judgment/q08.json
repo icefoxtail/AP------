@@ -1,0 +1,59 @@
+{
+  "qid": 8,
+  "itemFingerprint": "d63ec68d721ea284",
+  "solveSteps": [
+    "유리함수 $f(x)$를 변형하면\n\n$$f(x)=\\frac{-2(x+1)+3}{x+1}=-2+\\frac{3}{x+1}$$\n\n이므로 점근선이 $x=-1$, $y=-2$이고 $x\\ne -1$에서 항상 감소한다.",
+    "- ①, ② 닫힌구간 $[-3,0]$은 불연속점 $x=-1$을 포함하며 $\\lim_{x\\to-1^-}f(x)=-\\infty$, $\\lim_{x\\to-1^+}f(x)=+\\infty$이므로 최댓값과 최솟값을 모두 갖지 않는다.",
+    "(거짓)  \n- ③, ⑤ 닫힌구간 $[0,2]$에서는 연속이므로 최대·최소 정리에 의해 최댓값 $f(0)=1$과 최솟값 $f(2)=-1$을 모두 갖는다.",
+    "(거짓)  \n- ④ 구간 $[-1,2]$에서 $x=-1$에서 정의되지 않고 $\\lim_{x\\to-1^+}f(x)=+\\infty$이므로 최댓값을 갖지 않는다.",
+    "(참)\n\n따라서 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-02",
+  "subUnitKey": "H22-M1-02-CONTINUITY_POINT",
+  "unitEvidence": "함수 $\\displaystyle f(x)=\\frac{1",
+  "rpmRecordId": "H2-M2-RPM-055",
+  "rpmReason": "문항8번(토큰:f) 대상 문항8의 함수의 연속 단원 RPM H2-M2-RPM-055 분류 유형에 해당한다",
+  "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+  "templateKey": "TPL_IVT_VALUE_EXISTENCE_INTERVAL",
+  "typeReason": "문항8번(토큰:f) 대상 문항8의 함수의 연속 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항8번(토큰:f) 대상 문항8의 함수의 연속 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "x}{x+1}$에 대하여 다음 중 옳은 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "유리함수 $f(x)$를 변형하면\n\n$$f(x)",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항8번(토큰:f) 발문과 해설의 문항8 풀이 단계를 점검하여 최종 정답 ④를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

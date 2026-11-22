@@ -1,0 +1,58 @@
+{
+  "qid": 9,
+  "itemFingerprint": "7b737e008654a21d",
+  "solveSteps": [
+    "$f(x)=x^3-3x^2+5x+1$이라 하면 $f'(x)=3x^2-6x+5$이다. (10)",
+    "접선의 기울기가 $5$이므로\n\n$$3x^2-6x+5=5 \\implies 3x(x-2)=0 \\implies x=0 \\text{ 또는 } x=2$$\n\n이다.",
+    "- $x=0$일 때 접점은 $(0,1)$이고 접선은 $y=5x+1$ ($y$절편 $1>0$)  \n- $x=2$일 때 접점은 $(2,7)$이고 접선은 $y=5(x-2)+7=5x-3$ ($y$절편 $-3<0$)\n\n조건에 맞는 접선은 $y=5x-3$이므로 점 $(3,k)$를 대입하면 $k=5\\cdot 3-3=12$이다.",
+    "정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-05",
+  "subUnitKey": "H22-M1-05-ROLLE_MEAN_VALUE",
+  "unitEvidence": "기울기가 $5$이고 $y$절편이 음수인 직선이 곡선 $",
+  "rpmRecordId": "H2-M2-RPM-067",
+  "rpmReason": "문항9번(토큰:10) 대상 문항9의 도함수의 활용 단원 RPM H2-M2-RPM-067 분류 유형에 해당한다",
+  "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+  "templateKey": "TPL_TANGENT_CONSTRUCTION",
+  "typeReason": "문항9번(토큰:10) 대상 문항9의 도함수의 활용 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항9번(토큰:10) 대상 문항9의 도함수의 활용 단원 기본 개념과 풀이 과정을 적용하는 난이도 2 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "점 $(3,k)$를 지난다. $k$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "$f(x)=x^3-3x^2+5x+1$이라 하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항9번(토큰:10) 발문과 해설의 문항9 풀이 단계를 점검하여 최종 정답 ③를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

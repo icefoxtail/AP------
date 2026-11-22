@@ -1,0 +1,59 @@
+{
+  "qid": 14,
+  "itemFingerprint": "bf9773c5a5857161",
+  "solveSteps": [
+    "두 곡선이 점 $(1,5)$를 지나므로 $f(1)=5$, $g(1)=5$이다. (ax)",
+    "$$\\begin{aligned} g(1) &= c+2=5 \\implies c=3 \\ f(1) &= 1+a+b=5 \\implies a+b=4 \\end{aligned}$$\n\n또한 $x=1$에서 공통인 접선을 가지므로 $f'(1)=g'(1)$이다.",
+    "$f'(x)=3x^2+a$, $g'(x)=2cx$이므로\n\n$$\\begin{aligned} f'(1) &= 3+a \\ g'(1) &= 2c = 6 \\end{aligned}$$\n\n따라서 $3+a=6$에서 $a=3$이고, $a+b=4$에서 $b=1$이다.",
+    "그러므로 $a+b+c=3+1+3=7$이다.",
+    "정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-M1-05",
+  "subUnitKey": "H22-M1-05-ROLLE_MEAN_VALUE",
+  "unitEvidence": "두 곡선 $f(x)=x^3+ax+b$, $g(x)=cx",
+  "rpmRecordId": "H2-M2-RPM-067",
+  "rpmReason": "문항14번(토큰:ax) 대상 문항14의 도함수의 활용 단원 RPM H2-M2-RPM-067 분류 유형에 해당한다",
+  "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+  "templateKey": "TPL_TANGENCY_RELATION_GEOMETRY",
+  "typeReason": "문항14번(토큰:ax) 대상 문항14의 도함수의 활용 단원 핵심 학습 요소를 평가하는 유형이다",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "문항14번(토큰:ax) 대상 문항14의 도함수의 활용 단원 기본 개념과 풀이 과정을 적용하는 난이도 3 문항이다",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "가질 때, 실수 $a+b+c$의 값을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "두 곡선이 점 $(1,5)$를 지나므로 $f(",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "문항14번(토큰:ax) 발문과 해설의 문항14 풀이 단계를 점검하여 최종 정답 ⑤를 도출하였다",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
