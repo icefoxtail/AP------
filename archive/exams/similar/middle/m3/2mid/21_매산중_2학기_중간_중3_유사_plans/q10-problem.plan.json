@@ -1,0 +1,33 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "type": "perpendicular",
+      "from": "A",
+      "to": "BC",
+      "foot": "H"
+    },
+    {
+      "type": "angle",
+      "at": "B",
+      "arms": [
+        "A",
+        "H"
+      ],
+      "text": "30°"
+    },
+    {
+      "type": "label",
+      "target": "AB",
+      "text": "14 cm"
+    }
+  ]
+}

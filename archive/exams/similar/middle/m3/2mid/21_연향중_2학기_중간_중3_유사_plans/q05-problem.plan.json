@@ -1,0 +1,39 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "quarterCircle",
+      "center": "A",
+      "radius": 1
+    },
+    {
+      "type": "point",
+      "id": "C",
+      "on": "arc"
+    },
+    {
+      "type": "perpendicular",
+      "from": "C",
+      "to": "AD",
+      "foot": "B"
+    },
+    {
+      "type": "angle",
+      "at": "A",
+      "arms": [
+        "C",
+        "B"
+      ],
+      "text": "x"
+    },
+    {
+      "type": "angle",
+      "at": "C",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "text": "y"
+    }
+  ]
+}

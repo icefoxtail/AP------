@@ -1,0 +1,47 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "semicircle",
+      "center": "O",
+      "diameter": "DB_or_ray"
+    },
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "C",
+        "B"
+      ],
+      "rightAngle": "C"
+    },
+    {
+      "type": "point",
+      "id": "O",
+      "on": "CB"
+    },
+    {
+      "type": "label",
+      "target": "AC",
+      "text": "3"
+    },
+    {
+      "type": "angle",
+      "at": "O",
+      "arms": [
+        "A",
+        "C"
+      ],
+      "text": "30°"
+    },
+    {
+      "type": "angle",
+      "at": "B",
+      "arms": [
+        "A",
+        "C"
+      ],
+      "text": "x"
+    }
+  ]
+}

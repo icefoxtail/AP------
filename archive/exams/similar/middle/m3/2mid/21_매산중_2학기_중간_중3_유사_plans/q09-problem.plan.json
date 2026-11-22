@@ -1,0 +1,29 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "tetrahedron",
+      "apex": "A",
+      "base": [
+        "B",
+        "C",
+        "D"
+      ],
+      "edge": "6"
+    },
+    {
+      "type": "midpoint",
+      "of": "BC",
+      "id": "E"
+    },
+    {
+      "type": "angle",
+      "at": "D",
+      "arms": [
+        "E",
+        "A"
+      ],
+      "text": "x°"
+    }
+  ]
+}

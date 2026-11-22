@@ -1,0 +1,54 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ],
+      "rightAngle": "C"
+    },
+    {
+      "type": "perpendicular",
+      "from": "C",
+      "to": "AB",
+      "foot": "D"
+    },
+    {
+      "type": "perpendicular",
+      "from": "D",
+      "to": "BC",
+      "foot": "E"
+    },
+    {
+      "type": "label",
+      "target": "BE",
+      "text": "3"
+    },
+    {
+      "type": "label",
+      "target": "EC",
+      "text": "12"
+    },
+    {
+      "type": "angle",
+      "at": "C",
+      "arms": [
+        "A",
+        "D"
+      ],
+      "text": "x°"
+    },
+    {
+      "type": "angle",
+      "at": "C",
+      "arms": [
+        "D",
+        "E"
+      ],
+      "text": "y°"
+    }
+  ]
+}

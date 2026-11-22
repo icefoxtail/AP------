@@ -1,0 +1,38 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "type": "angleBisector",
+      "from": "A",
+      "to": "BC",
+      "foot": "D"
+    },
+    {
+      "type": "label",
+      "target": "AB",
+      "text": "10"
+    },
+    {
+      "type": "label",
+      "target": "AC",
+      "text": "15"
+    },
+    {
+      "type": "angle",
+      "at": "A",
+      "arms": [
+        "B",
+        "C"
+      ],
+      "text": "60°"
+    }
+  ]
+}
