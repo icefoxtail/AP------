@@ -128,6 +128,30 @@ test('G5b: a vertical overlay line through the tick belongs to the tick and may 
   const beside=make();beside.geometry.push({id:'overlay-line-k',kind:'line',role:'line',points:[[112,20],[112,300]],client:{x:112,y:20,width:1,height:280},strokeWidthPx:1,paintOrder:1});
   assert.ok(analyzeRenderedLayout(beside).errors.includes('TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL:tick-x--3-label'));
 });
+test('a trigonometric curve (f-branch-N) through the tick belongs to the tick like a piecewise curve; a curve beside it may not be touched',()=>{
+  const make=()=>{
+    const c=tickCapture({id:'tick-x--3',value:-6,point:[100,160],box:{x:121,y:132,width:14,height:12}}),label=c.labels[0];
+    label.tickCalloutSchema='TICK_LABEL_OWNER_LEADER_v1';label.value='−6';label.paintOrder=3;
+    const leader={id:label.id+'-owner-leader',kind:'leader',role:'leader',ownerLabelId:label.id,tickOwner:'tick-x--3',tickAxis:'x',tickValue:'-6',points:[[100,160],[121,144]],client:{x:100,y:144,width:21,height:16},strokeWidthPx:.8,strokeColor:'rgb(102, 102, 102)',markerStart:'',markerEnd:'',paintOrder:2,visibilityEvidence:visibleGeometryMeasurement(label.id+'-owner-leader',{x:100,y:144,width:21,height:16})};
+    c.geometry.push(leader);return c;
+  };
+  const through=make();through.geometry.push({id:'f-branch-0',kind:'curve',role:'curve',points:[[70,190],[100,160],[100.2,159.8],[108,152]],client:{x:70,y:152,width:38,height:38},strokeWidthPx:1,paintOrder:1});
+  const ok=analyzeRenderedLayout(through);assert.equal(ok.status,'PASS',JSON.stringify(ok.errors));
+  const beside=make();beside.geometry.push({id:'f-branch-0',kind:'curve',role:'curve',points:[[112,190],[112,100]],client:{x:112,y:100,width:1,height:90},strokeWidthPx:1,paintOrder:1});
+  assert.ok(analyzeRenderedLayout(beside).errors.includes('TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL:tick-x--3-label'));
+});
+test('a key dot (a small circle) drawn on the tick is part of the tick; a large circle centred on it is not',()=>{
+  const make=()=>{
+    const c=tickCapture({id:'tick-x--3',value:-6,point:[100,160],box:{x:121,y:132,width:14,height:12}}),label=c.labels[0];
+    label.tickCalloutSchema='TICK_LABEL_OWNER_LEADER_v1';label.value='−6';label.paintOrder=3;
+    const leader={id:label.id+'-owner-leader',kind:'leader',role:'leader',ownerLabelId:label.id,tickOwner:'tick-x--3',tickAxis:'x',tickValue:'-6',points:[[100,160],[121,144]],client:{x:100,y:144,width:21,height:16},strokeWidthPx:.8,strokeColor:'rgb(102, 102, 102)',markerStart:'',markerEnd:'',paintOrder:2,visibilityEvidence:visibleGeometryMeasurement(label.id+'-owner-leader',{x:100,y:144,width:21,height:16})};
+    c.geometry.push(leader);return c;
+  };
+  const dot=make();dot.geometry.push({id:'trig-key--1',kind:'circle',role:'point',at:[100,160],radius:3.2,client:{x:96.8,y:156.8,width:6.4,height:6.4},strokeWidthPx:0,paintOrder:1});
+  const ok=analyzeRenderedLayout(dot);assert.equal(ok.status,'PASS',JSON.stringify(ok.errors));
+  const big=make();big.geometry.push({id:'source-circle',kind:'circle',role:'line',at:[100,160],radius:30,client:{x:70,y:130,width:60,height:60},strokeWidthPx:1,paintOrder:1});
+  assert.ok(analyzeRenderedLayout(big).errors.includes('TICK_LABEL_OWNER_LEADER_CLEARANCE_FAIL:tick-x--3-label'));
+});
 test('a tick leader may leave its exact circle-axis intersection but may not enter or brush a near circle',()=>{
   const inspect=(center,radius)=>{
     const c=tickCapture({id:'tick-x-6',value:6,point:[100,160],box:{x:121,y:132,width:14,height:12}});
@@ -240,5 +264,76 @@ test('Playwright rejects invalid or blank tick numeric attributes and accepts ne
     const missingBoundValue=await analyze(renderedTickSvg(),{id:'tick-x--2-label',attr:'data-tick-value',remove:true});assert.ok(missingBoundValue.errors.includes('TICK_LABEL_VALUE_INVALID:tick-x--2-label'));
     for(const value of ['NaN','Infinity','-Infinity','','   ']){const result=await analyze(renderedTickSvg(),{id:'tick-x--2-label',attr:'data-tick-display-value',value});assert.ok(result.errors.includes('TICK_LABEL_DISPLAY_VALUE_INVALID:tick-x--2-label'),JSON.stringify({value,errors:result.errors}));}
     const missingDisplayValue=await analyze(renderedTickSvg(),{id:'tick-x--2-label',attr:'data-tick-display-value',remove:true});assert.ok(missingDisplayValue.errors.includes('TICK_LABEL_DISPLAY_VALUE_INVALID:tick-x--2-label'));
+  }finally{await browser.close();}
+});
+
+// (AXV) a label that names a value on the x axis (an interval end: -π, 9π, -4π/3) is bound to its own x on the axis.
+function axisValueCapture({box={x:93,y:172,width:14,height:12},source=[100,160],strokes=[],axis='x'}={}) {
+  const c=capture();
+  c.labels=[{id:'interval-end-label',kind:'GRAPH_ANNOTATION',priority:0,value:'9π',client:box,bbox:{width:box.width,height:box.height},missingGlyphCount:0,axisValue:axis,axisSource:source,axisSourceClient:source}];
+  c.geometry=[axis==='x'?{id:'x-axis',kind:'axis',role:'axis',points:[[0,160],[300,160]],client:{x:0,y:160,width:300,height:0}}:{id:'y-axis',kind:'axis',role:'axis',points:[[100,0],[100,300]],client:{x:100,y:0,width:0,height:300}},...strokes];
+  return c;
+}
+const axisValueErrors=c=>analyzeRenderedLayout(c).errors.filter(v=>v.startsWith('AXIS_VALUE_LABEL'));
+test('an axis value label centred on its own x, one line below or above the axis, passes',()=>{
+  assert.deepEqual(axisValueErrors(axisValueCapture()),[]);
+  assert.deepEqual(axisValueErrors(axisValueCapture({box:{x:93,y:136,width:14,height:12}})),[]);
+});
+test('an axis value label far below the axis (the -π and 9π of the maesan trig q10 figure) is refused',()=>{
+  const far=axisValueCapture({box:{x:93,y:212,width:14,height:12}});
+  assert.deepEqual(axisValueErrors(far),['AXIS_VALUE_LABEL_NOT_ADJACENT:interval-end-label']);
+});
+test('an axis value label beside its x (it would read as a y value or another tick) is refused',()=>{
+  const aside=axisValueCapture({box:{x:63,y:172,width:14,height:12}});
+  assert.deepEqual(axisValueErrors(aside),['AXIS_VALUE_LABEL_NOT_ADJACENT:interval-end-label']);
+});
+test('an axis value label with another line between it and the axis (the -4π/3 under the line y=-1/2) is refused',()=>{
+  const line={id:'line-1',kind:'line',role:'line',points:[[0,166],[300,166]],client:{x:0,y:166,width:300,height:0},strokeWidthPx:.8,paintOrder:1};
+  assert.deepEqual(axisValueErrors(axisValueCapture({box:{x:93,y:172,width:14,height:12},strokes:[line]})),['AXIS_VALUE_LABEL_BEHIND_STROKE:interval-end-label']);
+});
+test('an axis value label with a missing or invalid binding fails closed',()=>{
+  const c=axisValueCapture();c.labels[0].axisSourceClient=null;
+  assert.deepEqual(axisValueErrors(c),['AXIS_VALUE_LABEL_BINDING_INVALID:interval-end-label']);
+  const d=axisValueCapture();d.geometry=[];
+  assert.deepEqual(axisValueErrors(d),['AXIS_VALUE_LABEL_BINDING_INVALID:interval-end-label']);
+});
+test('the y axis follows the same rule: beside its own y it passes, far to the side or behind another line it is refused',()=>{
+  assert.deepEqual(axisValueErrors(axisValueCapture({axis:'y',box:{x:78,y:154,width:14,height:12}})),[]);
+  assert.deepEqual(axisValueErrors(axisValueCapture({axis:'y',box:{x:30,y:154,width:14,height:12}})),['AXIS_VALUE_LABEL_NOT_ADJACENT:interval-end-label']);
+  assert.deepEqual(axisValueErrors(axisValueCapture({axis:'y',box:{x:78,y:130,width:14,height:12}})),['AXIS_VALUE_LABEL_NOT_ADJACENT:interval-end-label']);
+  const line={id:'line-1',kind:'line',role:'line',points:[[94,0],[94,300]],client:{x:94,y:0,width:0,height:300},strokeWidthPx:.8,paintOrder:1};
+  assert.deepEqual(axisValueErrors(axisValueCapture({axis:'y',box:{x:78,y:154,width:12,height:12},strokes:[line]})),['AXIS_VALUE_LABEL_BEHIND_STROKE:interval-end-label']);
+});
+
+// (AXV) through the real capture path (collectRenderedLayout reads data-axis-value / data-axis-source-x/y from the final SVG), x and y axes.
+const axisValueSvg=({axis='y',lx,ly,extra=''})=>{
+  const sx=axis==='y'?150:300,sy=axis==='y'?250:200;   // the value's point on its axis
+  const axisLine=axis==='y'?'<line id="y-axis" data-role="axis" data-axis="y" stroke="#111" stroke-width="1" x1="150" y1="40" x2="150" y2="460"/>':'<line id="x-axis" data-role="axis" data-axis="x" stroke="#111" stroke-width="1" x1="40" y1="200" x2="580" y2="200"/>';
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 500" width="620" height="500">'+axisLine+extra+
+    '<text id="interval-end-label" data-label-kind="GRAPH_ANNOTATION" data-priority="0" data-axis-value="'+axis+'" data-axis-source-x="'+sx+'" data-axis-source-y="'+sy+'" x="'+lx+'" y="'+ly+'" font-family="serif" font-size="14" text-anchor="middle" dominant-baseline="central">3</text></svg>';
+};
+test('a y axis value label is collected with its binding and judged by the same rule: beside its own y passes, four variations are refused',async()=>{
+  const browser=await launchBrowser();try{const page=await browser.newPage({viewport:{width:620,height:500}});
+    const judge=async svg=>analyzeRenderedLayout(await captureAtDisplaySize(page,svg,{width:620,height:500})).errors.filter(v=>v.startsWith('AXIS_VALUE_LABEL')||v.startsWith('LEADER_CROSSING'));
+    assert.deepEqual(await judge(axisValueSvg({lx:134,ly:250})),[]);                                   // beside its own y, left of the y axis
+    assert.deepEqual(await judge(axisValueSvg({lx:166,ly:250})),[]);                                   // the other side
+    assert.deepEqual(await judge(axisValueSvg({lx:60,ly:250})),['AXIS_VALUE_LABEL_NOT_ADJACENT:interval-end-label']);    // far from the y axis
+    assert.deepEqual(await judge(axisValueSvg({lx:134,ly:330})),['AXIS_VALUE_LABEL_NOT_ADJACENT:interval-end-label']);   // beside the axis but at another y
+    assert.deepEqual(await judge(axisValueSvg({lx:134,ly:250,extra:'<line id="line-9" stroke="#111" stroke-width="1" x1="143" y1="200" x2="143" y2="300"/>'})),['AXIS_VALUE_LABEL_BEHIND_STROKE:interval-end-label']);   // another line between it and the axis
+    assert.deepEqual(await judge(axisValueSvg({axis:'x',lx:300,ly:216})),[]);                          // x, collected the same way
+    assert.deepEqual(await judge(axisValueSvg({axis:'x',lx:300,ly:290})),['AXIS_VALUE_LABEL_NOT_ADJACENT:interval-end-label']);
+  }finally{await browser.close();}
+});
+test('a last-resort leader (data-leader-crossing) may cross at most two thin strokes: three are LEADER_CROSSING',async()=>{
+  const browser=await launchBrowser();try{const page=await browser.newPage({viewport:{width:620,height:500}});
+    const leaderSvg=count=>'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 500" width="620" height="500"><line id="lead" data-role="leader" data-leader-crossing="1" stroke="#555" stroke-width="1" x1="100" y1="100" x2="100" y2="360"/>'+
+      Array.from({length:count},(_,i)=>'<line id="seg-'+i+'" data-role="line" stroke="#111" stroke-width="1" x1="60" y1="'+(140+i*40)+'" x2="140" y2="'+(140+i*40)+'"/>').join('')+'</svg>';
+    const judge=async count=>analyzeRenderedLayout(await captureAtDisplaySize(page,leaderSvg(count),{width:620,height:500})).errors.filter(v=>v.startsWith('LEADER_CROSSING'));
+    assert.deepEqual(await judge(1),[]);
+    assert.deepEqual(await judge(2),[]);
+    assert.deepEqual((await judge(3)).sort(),['LEADER_CROSSING:lead:seg-0','LEADER_CROSSING:lead:seg-1','LEADER_CROSSING:lead:seg-2']);
+    assert.equal((await judge(5)).length,5);
+    const plain=leaderSvg(1).replace(' data-leader-crossing="1"','');
+    assert.deepEqual(analyzeRenderedLayout(await captureAtDisplaySize(page,plain,{width:620,height:500})).errors.filter(v=>v.startsWith('LEADER_CROSSING')),['LEADER_CROSSING:lead:seg-0'],'an unflagged leader still crosses nothing');
   }finally{await browser.close();}
 });

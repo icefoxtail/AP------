@@ -170,3 +170,18 @@ test('text helpers: a point id is named only as a name, never inside words, numb
   assert.equal(textNamesPoint('T1 선','T1'),true);assert.equal(textNamesPoint('abc','a'),false);assert.equal(textNamesPoint('a선','a'),true);
   assert.deepEqual(planNameTexts({caption:{text:'가',math:'x'},planeMarks:{angles:[{label:'40'}],arcs:[{label:'a'}],regions:[{label:'(가)'}],expressionLabels:[{text:'3'}]},scalarLabels:[{prefix:'AB',unit:'cm'}]}),['가','x','40','a','(가)','3','AB','cm']);
 });
+
+test('observer: a hidden framing point standing exactly at a displayed point is not flagged for that point\'s own dot, but a stray dot there still is',async()=>{
+  const dotted=await compose(planOf());assert.equal(dotted.status,'COMPOSED');
+  const prepared=await pythonWorker({action:'prepare',spec:specFor(planOf(),model,identity.assetId)});assert.equal(prepared.status,'OK');
+  const peer=reconstruct(graph).points;
+  const audit=async(svg,unmarkedPoints)=>{const response=await pythonWorker({action:'staticAudit',svg,points:{...peer,Z:peer.T},lines:null,circles:null,segments:planOf().displaySegments,rightAngles:[],transform:prepared.result.coordinateModel,fragments:{},coordinateMode:'SOURCE_COORDINATES',unmarkedPoints},{script:OBSERVER});assert.equal(response.status,'OK',JSON.stringify(response.result));return response.result;};
+  const atPoint=report=>report.errors.filter(error=>error.startsWith('HIDDEN_POINT_MARKER_AT_POINT'));
+  // Z is a hidden framing point at the place of the displayed point T: the only dot there is T's own
+  assert.deepEqual(atPoint(await audit(dotted.svg,['Z'])),[],'T\'s own dot at the framing point is not a marker of Z');
+  // a dot with another id (or one owned by a point that is NOT at that place) at Z is still a marker at the hidden point
+  const T=/<circle id="T"[^>]* cx="([^"]+)" cy="([^"]+)"/u.exec(dotted.svg),end=dotted.svg.lastIndexOf('</svg>');
+  const stray=dotted.svg.slice(0,end)+`<circle id="junk" data-role="point" stroke="#111" stroke-width="0.8" fill="#111" cx="${T[1]}" cy="${T[2]}" r="3.2"/>`+dotted.svg.slice(end);
+  assert.deepEqual(atPoint(await audit(stray,['Z'])),['HIDDEN_POINT_MARKER_AT_POINT:Z']);
+
+});

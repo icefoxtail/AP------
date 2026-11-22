@@ -201,12 +201,17 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     if(![unresolved,suppressed,repairs].every(Array.isArray))throw new Stop('WORKER_ERROR',{stage:'build',code:'BUILD_WITNESS_LAYOUT_INVALID'});
     // Opt-in diagnostic: keep the incomplete candidate beside the failure so a person can see what the layout could not place (never read by any gate).
     if(process.env.APMS_DRAFT_DIR&&(unresolved.length||suppressed.length))(await import('node:fs')).writeFileSync((process.env.APMS_DRAFT_DIR)+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-'+Date.now()+'.svg',svg);
+    // Opt-in diagnostic: the inputs of the build call (spec, measurements, fragments) beside the draft, so the label layout can be re-run offline without the browser stages.
+    if(process.env.APMS_DRAFT_DIR&&(unresolved.length||suppressed.length))(await import('node:fs')).writeFileSync((process.env.APMS_DRAFT_DIR)+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-'+Date.now()+'.build.json',JSON.stringify({spec:bridged.spec,measurements,fragments,lastResort:lastResort===true,unresolved,suppressed,trace:witness.layout?.trace}));
     // (G11) a path total-length label (pathLabels[].id) found no place even in the second round (or leader:NEVER forbids it): its own code with the label's id
     const pathRowIds=new Set((Array.isArray(plan?.planeMarks?.pathLabels)?plan.planeMarks.pathLabels:[]).map(row=>row?.id));
     const stuckIds=[...unresolved,...suppressed].map(id=>String(id?.id??id)),stuckPath=stuckIds.length&&stuckIds.every(id=>id.endsWith('-label')&&pathRowIds.has(id.slice(0,-'-label'.length)))?stuckIds[0]:null;
     if(stuckPath)throw new Stop('PATH_LABEL_NO_ROOM',{id:stuckPath.slice(0,-'-label'.length),unresolved,suppressed});
     // (G11) the label of a callout's angle dimension (kX__angDim-label) found no room, not even on a leader: its own code, so the author moves it (radiusFactor, radius, at) instead of retrying elsewhere
     if([...unresolved,...suppressed].some(id=>/__angDim-label$/.test(String(id?.id??id))))throw new Stop('CALLOUT_ANGLE_DIMENSION_NO_ROOM',{unresolved,suppressed});
+    // (AXV) a label that names a value on an axis (an interval end such as -4π/3) found no place that reads as that axis's tick of its own value: its own code. It is never moved far from the axis or onto a leader (it would read as a y value or as another line's label); the plan (viewport, the other labels or lines near that x) has to change.
+    const axisValueIds=new Set((bridged.spec.objects??[]).filter(row=>row?.axisValue).map(row=>row.id)),axisStuck=[...unresolved,...suppressed].map(id=>String(id?.id??id)).filter(id=>axisValueIds.has(id));
+    if(axisStuck.length)throw new Stop('AXIS_VALUE_LABEL_NO_PLACE',{labelIds:axisStuck,unresolved,suppressed});
     if(unresolved.length||suppressed.length)throw new Stop('LAYOUT_INVENTORY_INCOMPLETE',{unresolved,suppressed});
     // Binding a repair needs Archive profile/policy refs: without repairContext never accept one silently.
     if(repairs.length&&!repairContext)throw new Stop('LAYOUT_REPAIR_NOT_BOUND',{repairs});
