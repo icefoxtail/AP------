@@ -356,3 +356,11 @@
 - **VISUAL_HOLD 5문항:** Q05 보기 그래프 5개 PNG, Q09 도함수 그래프, Q10 속도 그래프, Q11 면적 그림, Q13 접기 도형. 원본 이미지 판독은 사용자 요청대로 **별도 작업**; 기존 해설 SVG Q08/Q18/Q19/Q20 렌더 **NOT_RUN**. Golden/Negative calibration, 자동 preflight receipt, 학생 화면·운영 QA, JS·SVG 수정, main 병합 **NOT_RUN/NOT_PERFORMED**.
 - **1학기 기출 텍스트 MD**: 중간 **4/4**, 기말 **2/2**, 합 **6/6 전수 기록 완료**. 원본 기출 전체(1학기+2학기) **74/74장**, 총 **1,650문항** = KEEP **1,552** + UPGRADE **34** + HOLD **64** + UNREAD **0**.
 - 다음 cursor: 기출 문항 초안 미작성 `NONE`. 후속 자료 유사→유형→교과서→문제집은 별도 대상이며 이 장부로 완료 선언하지 않음. 모든 HOLD 해소와 운영 출고 QA 전에는 **RELEASE PASS 아님**.
+
+
+## 2026-11-22 lane10 — 2025 제일고 2학기 기말 유사 재개 완료
+
+- `25_제일고_2학기_기말_고2_수학II_유사_DEEP_AUDIT.md`: 기존 Q01–Q12 `IN_PROGRESS`에서 Q13–Q23 11문항 원문/보기/정답/기존 해설 직접 대조 및 독립 검산을 기록하여 **AUDIT_DRAFT_COMPLETE**로 전환.
+- 원본 `archive/exams/similar/high/h2/2final/25_제일고_2학기_기말_고2_수학II_유사.js`, main blob `c03b99b795666eba2f52686142e1ce2ee94b4599`, 23문항. **KEEP 18 / UPGRADE 0 / HOLD 5 / UNREAD 0**. HOLD Q07,Q09,Q12,Q14,Q23은 SVG XML 확인과 별개로 실제 렌더 시각 검수 미완료.
+- MD 커밋 `a5fd7f80a8da326d203dcbc8150d4d60b0113ab4`, GitHub 원격 본문 readback 일치. 이번 실행 완료 1/5, 다음은 같은 `similar/high/h2/2final`에서 미감사 대상 확인 후 순차 처리. 후보로 2025 매산여고·순천고·강남여고·매산고 등이 검색되었으나 **후보는 감사 완료로 세지 않음**.
+- Golden/Negative, 전체 core, preflight, SVG/학생 화면 렌더, 운영 출고 QA NOT_RUN. JS/SVG/main 불변. 공유 claims 사용자 지시로 생략.
