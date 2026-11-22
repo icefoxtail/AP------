@@ -46,12 +46,14 @@ test('publish tool patches a string-id question and names the figure after the i
   const dir=fs.mkdtempSync(path.join(os.tmpdir(),'string-id-publish-'));
   try{
     const dst=path.join(dir,SOURCE);fs.mkdirSync(path.dirname(dst),{recursive:true});fs.copyFileSync(path.join(root,SOURCE),dst);
+    // the published exam may already carry figures (the tool then skips with HAS_EXISTING_SOLUTION_IMAGE_FIELDS): the scratch copy starts without any
+    const scratch=fs.readFileSync(dst,'utf8').replaceAll('"solutionImage','"scratchImage');fs.writeFileSync(dst,scratch);
     const svg=path.join(dir,'figure.svg');fs.writeFileSync(svg,'<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"/>');
     const rows=path.join(dir,'rows.json');
     fs.writeFileSync(rows,JSON.stringify([{src:SOURCE,ord:'s01',svg,key:'m3-s01',fam:'M3',size:'medium',alt:'해설 그림: 테스트',caption:'테스트'},{src:SOURCE,ord:'q01',svg,key:'m3-q01',fam:'M3',size:'medium',alt:'해설 그림: 테스트',caption:'테스트'}]));
     const run=args=>JSON.parse(execFileSync('node',[path.join(root,'archive/tools/geometry-equation/ops/svg-m1/publish.mjs'),rows,dir,...args],{env:{...process.env,PUBLISH_REPORT:path.join(dir,'report.json')},encoding:'utf8'}));
     const dry=run([]);assert.equal(dry.figures,2);assert.deepEqual(dry.problems,[]);assert.deepEqual(dry.skips,[]);
-    assert.equal(fs.readFileSync(dst,'utf8'),fs.readFileSync(path.join(root,SOURCE),'utf8'));
+    assert.equal(fs.readFileSync(dst,'utf8'),scratch);
     const done=run(['--apply']);assert.equal(done.figures,2);
     const bank=(code=>{const w={};new Function('window',code)(w);return w.questionBank;})(fs.readFileSync(dst,'utf8'));
     assert.equal(bank.find(q=>q.id==='s01').solutionImage,`assets/images/${EXAM}/s01-solution.svg`);
