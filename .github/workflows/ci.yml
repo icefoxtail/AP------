@@ -44,7 +44,7 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
         run: node tools/ci/ci-tip-plan.mjs
 
-  # The single verdict named `test`. The full test scope runs as the `test-shards` matrix below (three
+  # The single verdict named `test`. The full test scope runs as the `test-shards` matrix below (five
   # deterministic shares of the same registry, tools/ci/test-shard.cjs); this job is the only one that keeps
   # the old check name, and it fails when any shard failed, was cancelled/skipped or left no result.
   test:
@@ -78,11 +78,11 @@ jobs:
   test-shards:
     needs: plan
     if: needs.plan.outputs.run == 'true'
-    name: test (shard ${{ matrix.shard }}/3)
+    name: test (shard ${{ matrix.shard }}/5)
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2, 3]
+        shard: [1, 2, 3, 4, 5]
     runs-on: ubuntu-latest
     # Source PRs generate and verify their temporary projection, including one
     # bounded builder recovery, before running the unchanged full test scope.
