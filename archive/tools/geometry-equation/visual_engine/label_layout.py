@@ -845,34 +845,36 @@ def region_inner_leader_placement(label,w,h,occupied,acceptable):
             if pad.x<=at[0]<=pad.right and pad.y<=at[1]<=pad.bottom:return True
         return False
     usable=lambda rows:[row for row in rows if not any(point_in_even_odd(tuple(row['at']),polygons) for polygons in others) and not under_label(row['at'])]
-    best=None
-    for tier,dots in enumerate((usable(site.get('inner',[])),usable(site.get('innerMore',[])))):
-        if best is not None:break
-        best=region_inner_best(dots,own,all_regions,strokes,discs,boxes_taken,site,w,h,acceptable,sides=sides if tier else None)
+    best=region_inner_best(usable(site.get('inner',[])+site.get('innerMore',[])),own,all_regions,strokes,discs,boxes_taken,site,w,h,acceptable,sides)
     if best is None:return None
     _,box,start,end=best
     theta=math.degrees(math.atan2(end[1]-start[1],end[0]-start[0]))%360
     return box,start,end,('E','SE','S','SW','W','NW','N','NE')[int(((theta+22.5)%360)//45)]
 
-REGION_SIDE_ZONE=(0.2,0.8)             # the middle of a drawn side, where a label beside it reads as that side's length
+REGION_SIDE_SPAN=(0.05,0.95)           # the stretch of a drawn side (as a fraction of it) beside which a label reads as that side's length; past its ends a label does not
 REGION_SIDE_NEAR_PX=48.0                # 'beside': the label's box within this of the side
 
 def label_reads_as_side(box,exit_point,sides):
-    """True when the label stands right beside the middle of the drawn side its leader crosses (it would read as that side's length, not as the value of the region)."""
-    centre=(box.x+box.width/2,box.y+box.height/2)
+    """True when the label stands right beside the drawn side its leader crosses (any part of its box within the side's extent) (it would read as that side's length, not as the value of the region)."""
+    corners=[(box.x,box.y),(box.x+box.width,box.y),(box.x+box.width,box.y+box.height),(box.x,box.y+box.height)]
     for a,b in sides:
         if point_segment_distance(exit_point,a,b)>REGION_INNER_EXIT_TOLERANCE_PX:continue
         dx,dy=b[0]-a[0],b[1]-a[1];l2=dx*dx+dy*dy
         if l2<1e-9:continue
-        t=((centre[0]-a[0])*dx+(centre[1]-a[1])*dy)/l2
-        if REGION_SIDE_ZONE[0]<=t<=REGION_SIDE_ZONE[1] and box_segment_distance(box,a,b)<=REGION_SIDE_NEAR_PX:return True
+        ts=[((c[0]-a[0])*dx+(c[1]-a[1])*dy)/l2 for c in corners]
+        if max(ts)>REGION_SIDE_SPAN[0] and min(ts)<REGION_SIDE_SPAN[1] and box_segment_distance(box,a,b)<=REGION_SIDE_NEAR_PX:return True
     return False
 
-def region_inner_best(dots,own,all_regions,strokes,discs,boxes_taken,site,w,h,acceptable,sides=None):
-    """The best (score, box, start, end). With sides (the further spots, tried when the roomiest ones fail) the deepest dot wins, then the shortest leader, and a label that would stand
-    beside the middle of the side its leader crosses is refused: such a place reads as the length of that side, and no place at all is better than that."""
+REGION_INNER_DEPTH_BUCKET_PX=4.0        # dots whose room differs by less than this count as equally deep: then the shortest leader wins
+
+def region_inner_best(dots,own,all_regions,strokes,discs,boxes_taken,site,w,h,acceptable,sides):
+    """The best (score, box, start, end). The dots come roomiest first: the deepest dot that lets a leader out wins (a dot deep in its region reads as that region's value; one hugging a side reads
+    as the side's length), then the shortest leader. A label that would stand beside the side its leader crosses is refused: it reads as the length of that side, and no place at
+    all is better than that (the caller then writes the value inside the region or refuses the figure)."""
     best=None
     for row in dots:
+        depth=int(row['clear']//REGION_INNER_DEPTH_BUCKET_PX)
+        if best is not None and -depth>best[0][0]:break
         start=tuple(row['at'])
         for step in range(16):
             angle=math.radians(step*22.5);u=(math.cos(angle),math.sin(angle))
@@ -889,11 +891,11 @@ def region_inner_best(dots,own,all_regions,strokes,discs,boxes_taken,site,w,h,ac
                 for box in [Box(center[0]-w/2,center[1]-h/2,w,h)]:
                     if not acceptable(box,owner_check=False) or not box_outside_regions(box,all_regions):continue
                     end=owner_leader_endpoint(box,start,(box.x+box.width/2,box.y+box.height/2))
-                    if sides is not None and label_reads_as_side(box,exit_point,sides):continue
+                    if label_reads_as_side(box,exit_point,sides):continue
                     if region_inner_leader_ok(start,end,exit_point,u,own,all_regions,strokes,discs,boxes_taken):found=(box,end)
                 if found is not None:
                     box,end=found;length=math.dist(start,end)
-                    score=(round(length,1),-row['clear']) if sides is None else (-round(row['clear'],1),round(length,1))
+                    score=(-depth,round(length,1))
                     if best is None or score<best[0]:best=(score,box,start,end)
                     break
     return best
@@ -1395,6 +1397,13 @@ def layout_pass(labels,obstacles,safe_area,panel=None,measurements=None,require_
                 if found is not None:
                     box,start,end,direction=found
                     label={**label,'at':list(start)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction
+                elif label['regionLeader'].get('insideCentres'):
+                    # no place outside reads as the region's value (each stands beside the middle of a side, as that side's length): the value is written inside the region
+                    from .publication import box_owned
+                    site=label['regionLeader'];others=[row['polygons'] for row in site.get('regions',[]) if row.get('id')!=label.get('target')]
+                    for x,y in site['insideCentres']:
+                        box=Box(x-w/2,y-h/2,w,h)
+                        if acceptable(box) and box_owned(label,box) and box_outside_regions(box,others):chosen=box;method='OWNER_BOUND_RELOCATION';break
             if chosen is None and leader_fallbacks and label.get('leaderRequiresClearPath'):
                 start=label['leaderFrom'];owner_ids=set(label.get('leaderOwnerIds',()))
                 max_length=label.get('leaderMaxLength',label.get('font',13.25)*6)

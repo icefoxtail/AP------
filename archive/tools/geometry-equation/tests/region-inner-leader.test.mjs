@@ -45,6 +45,16 @@ function regionPolygon(svg,id){
 }
 const insidePolygon=(point,polygon)=>{let inside=false;for(let i=0,j=polygon.length-1;i<polygon.length;j=i++){const [ax,ay]=polygon[i],[bx,by]=polygon[j];if((ay>point[1])!==(by>point[1])&&point[0]<(bx-ax)*(point[1]-ay)/(by-ay)+ax)inside=!inside;}return inside;};
 
+// a LEADER value the engine could not put anywhere outside that reads as the region's value (every place stands beside a side) is written inside its region instead: no leader, the label wholly inside
+function checkLeaderOrInside(svg,regionId,others=[]){
+  if(tagOf(svg,'<line\\s[^>]*data-role="leader"[^>]*data-owner-label="'+regionId+'-label"[^>]*/>'))return checkLeader(svg,regionId,others);
+  const group=tagOf(svg,'<g\\s[^>]*id="'+regionId+'-label"[^>]*>');assert.ok(group,regionId+': the value is drawn');
+  const [x,y]=/translate\(([-\d.]+)[ ,]+([-\d.]+)\)/.exec(attr(group,'transform')).slice(1).map(Number);
+  const size=new RegExp('id="'+regionId+'-label"[^>]*>\\s*<svg[^>]*\\swidth="([\\d.]+)"[^>]*\\sheight="([\\d.]+)"').exec(svg);assert.ok(size,regionId+': the label has a size');
+  const polygon=regionPolygon(svg,regionId),corners=[[x,y],[x+Number(size[1]),y],[x+Number(size[1]),y+Number(size[2])],[x,y+Number(size[2])]];
+  assert.ok(corners.every(c=>insidePolygon(c,polygon)),regionId+': with no leader the value stands wholly inside its region');
+  for(const other of others)assert.ok(!corners.some(c=>insidePolygon(c,regionPolygon(svg,other))),regionId+': and in no other region ('+other+')');
+}
 function checkLeader(svg,regionId,others=[]){
   const label=regionId+'-label';
   const leader=tagOf(svg,'<line\\s[^>]*data-role="leader"[^>]*data-owner-label="'+label+'"[^>]*/>');assert.ok(leader,regionId+': a leader ties the value to its region');
@@ -69,7 +79,7 @@ test('a circular segment, a sector that overlaps a rectangle and a named sector:
     {id:'rect',fill:'MEDIUM',label:'48',labelPlacement:'LEADER',shapes:[{polygon:['A','B','C','D']}]}],
     [segment('sAB','A','B'),segment('sBC','B','C'),segment('sCD','C','D'),segment('sDA','D','A'),segment('sOA','O','A'),segment('sOB','O','B')]);
   const second=await render('sector-rectangle',overlap);assert.equal(second.result.status,'ARCHIVE_BOUND',JSON.stringify(second.result).slice(0,500));
-  checkLeader(second.svg,'sec',['rect']);checkLeader(second.svg,'rect',['sec']);
+  checkLeaderOrInside(second.svg,'sec',['rect']);checkLeaderOrInside(second.svg,'rect',['sec']);
   const named=plan('두 부채꼴의 넓이.',[
     {id:'s1',fill:'LIGHT',label:'8',labelName:'부채꼴 AOB',unit:'cm^2',labelPlacement:'LEADER',shapes:[{sector:{center:'O',from:'A',to:'B',side:'MINOR'}}]},
     {id:'s2',fill:'LIGHT',label:'6',labelPlacement:'AUTO_LEADER',shapes:[{sector:{center:'O',from:'C',to:'D',side:'MINOR'}}]}]);
@@ -89,7 +99,7 @@ test('a region wholly inside another has no spot of its own: refused with REGION
 // The trapezoid ABCE of a drawing with a height AG and a diagonal AD (the roomiest dots lie in the big closed piece, whose leader would cross strokes): the dot comes from the further spots.
 // Its value 12 must not read as the length of the side AE (the first answer put it right above the middle of AE with the dot 10 px inside): the dot stands deep in its piece and the label
 // is not beside the middle of the side the leader crosses.
-test('a region cut by strokes: the value 12 reads as the region (a long leader from a deep dot), never as the length of the side it stands beside',{timeout:900000},async()=>{
+test('a region cut by strokes: the value 12 reads as the region (a long leader from a deep dot), never as the length of the side it stands beside (and the dot deep in its piece)',{timeout:900000},async()=>{
   const nodes=[node('B','SOURCE_POINT',[],'POINT',{coordinates:[int(0),int(0)]},'GIVEN'),
     ...[['C',4,0],['D',6,0],['A',1,4],['E',3,4],['G',1,0]].map(([id,dx,dy])=>node(id,'TRANSLATE_POINT',['B'],'POINT',{dx:int(dx),dy:int(dy)},'DERIVED_INTERMEDIATE')),
     node('lAD','LINE_THROUGH',['A','D'],'LINE',{},'DERIVED_INTERMEDIATE'),node('lEC','LINE_THROUGH',['E','C'],'LINE',{},'DERIVED_INTERMEDIATE'),node('F','LINE_INTERSECTION',['lAD','lEC'],'POINT',{},'DERIVED_INTERMEDIATE')];
@@ -108,6 +118,7 @@ test('a region cut by strokes: the value 12 reads as the region (a long leader f
   const edges=polygon.map((p,i)=>[p,polygon[(i+1)%polygon.length]]);
   const [a,b]=edges.reduce((best,edge)=>distance(exit,...edge)<distance(exit,...best)?edge:best);
   const dx=b[0]-a[0],dy=b[1]-a[1],t=((end[0]-a[0])*dx+(end[1]-a[1])*dy)/(dx*dx+dy*dy);
-  const beside=t>=0.2&&t<=0.8&&distance(end,a,b)<=48;
-  assert.ok(!(beside&&distance(start,a,b)<=14),'the label stands beside the middle of the side its leader crosses, tied to a dot that hugs it: it reads as that side\'s length (t='+t.toFixed(2)+')');
+  const beside=t>=0.05&&t<=0.95&&distance(end,a,b)<=48;
+  assert.ok(distance(start,a,b)>14,'the dot hugs the side it leaves through ('+distance(start,a,b).toFixed(1)+' px)');
+  assert.ok(!beside,'the label stands beside the side its leader crosses (within 48 px, along its extent): it reads as the length of that side (t='+t.toFixed(2)+')');
 });

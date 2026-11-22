@@ -153,5 +153,33 @@ class ObserverTests(unittest.TestCase):
     def test_tamper_dot_removed(self):
         svg=self.fixture.svg();dot=re.search(r'<circle\s[^>]*data-role="leader-dot"[^>]*/>',svg).group(0)
         self.assertIn('REGION_LEADER_DOT_MISSING',self.fixture.codes(svg=svg.replace(dot,'')))
+    def test_tamper_value_right_above_the_middle_of_a_side(self):
+        # the first answer for the trapezoid with a height and a diagonal: the dot 10 px inside the middle of the side AE, the value right above that side's middle, a short leader:
+        # the student reads it as the length of the side. The observer refuses it on its own (not on any mark of the producer).
+        fx=self.fixture;svg=fx.svg0;box=fx.row['box'];tag=fx.leader().group(0)
+        forward=lambda q:(fx.transform['originX']+q[0]*fx.transform['sx'],fx.transform['originY']-q[1]*fx.transform['sy'])
+        poly=[forward(POINTS[name]) for name in POLYGON]
+        a,b=poly[0],poly[1];mid=((a[0]+b[0])/2,(a[1]+b[1])/2);d=math.dist(a,b);normal=((b[1]-a[1])/d,-(b[0]-a[0])/d)
+        if regions.area_state((mid[0]+normal[0]*10,mid[1]+normal[1]*10),[poly])!=1:normal=(-normal[0],-normal[1])
+        dot=(mid[0]+normal[0]*10,mid[1]+normal[1]*10);out=(-normal[0],-normal[1]);w,h=box['width'],box['height']
+        reach=20+abs(out[0])*w/2+abs(out[1])*h/2;centre=(mid[0]+out[0]*reach,mid[1]+out[1]*reach)
+        moved_box={'x':centre[0]-w/2,'y':centre[1]-h/2,'width':w,'height':h}
+        end=(mid[0]+out[0]*20,mid[1]+out[1]*20)
+        line=re.sub(r'\sx1="[^"]+"',' x1="%.3f"'%dot[0],tag);line=re.sub(r'\sy1="[^"]+"',' y1="%.3f"'%dot[1],line);line=re.sub(r'\sx2="[^"]+"',' x2="%.3f"'%end[0],line);line=re.sub(r'\sy2="[^"]+"',' y2="%.3f"'%end[1],line)
+        circle=re.search(r'<circle\s[^>]*data-role="leader-dot"[^>]*/>',svg).group(0)
+        moved_circle=re.sub(r'\scy="[^"]+"',' cy="%.3f"'%dot[1],re.sub(r'\scx="[^"]+"',' cx="%.3f"'%dot[0],circle))
+        moved=svg.replace(tag,line).replace(circle,moved_circle)
+        moved=re.sub(r'<text\s[^>]*id="rABC-label"[^>]*>.*?</text>','',moved,flags=re.S).replace('</svg>',label_group('rABC-label',moved_box,TEXT)+'</svg>')
+        self.assertIn('REGION_LEADER_READS_AS_SIDE',fx.codes(svg=moved))
+        self.assertNotIn('REGION_LEADER_READS_AS_SIDE',fx.codes())
+    def test_a_leader_value_written_inside_its_region_is_not_missing_a_leader(self):
+        # the engine writes a LEADER value inside its region when no place outside reads as the value; a label outside the region without a leader is still refused
+        fx=self.fixture;svg=fx.svg0;tag=fx.leader().group(0);circle=re.search(r'<circle\s[^>]*data-role="leader-dot"[^>]*/>',svg).group(0)
+        forward=lambda q:(fx.transform['originX']+q[0]*fx.transform['sx'],fx.transform['originY']-q[1]*fx.transform['sy'])
+        o=forward((-1.2,0.2));box=fx.row['box']
+        inside={'x':o[0]-15,'y':o[1]-9,'width':30.0,'height':18.0}
+        bare=re.sub(r'<text\s[^>]*id="rABC-label"[^>]*>.*?</text>','',svg.replace(tag,'').replace(circle,''),flags=re.S)
+        self.assertNotIn('REGION_LABEL_LEADER_MISSING',fx.codes(svg=bare.replace('</svg>',label_group('rABC-label',inside,'6')+'</svg>')))
+        self.assertIn('REGION_LABEL_LEADER_MISSING',fx.codes(svg=bare.replace('</svg>',label_group('rABC-label',box,TEXT)+'</svg>')))
 
 if __name__=='__main__':unittest.main()

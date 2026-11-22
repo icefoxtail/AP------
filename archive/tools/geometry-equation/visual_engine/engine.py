@@ -1063,6 +1063,9 @@ def prepare(spec):
                     # the other regions (filled in after the last object)
                     corners=[vp.screen(geometry[name]) for name in owners]
                     label['regionLeader']={'anchors':[],'inner':[],'gaps':list(REGION_LEADER_GAPS),'polygons':polygons,'near':list(place) if place else None,'only':placement=='LEADER'}
+                    # LEADER asks for no search inside; but when no place outside the region reads as its value (every one stands beside the middle of a side it would read as the length of),
+                    # the value is written inside the region (AUTO_LEADER has already tried the inside first)
+                    if placement=='LEADER':label['regionLeader']['insideCentres']=_region_label_centres(polygons,obstacles,near=(place[0],place[1],REGION_LABEL_AT_RADIUS_PX) if place else None)
                     region_labels.append(label)
                 labels.append(label)
         elif kind=='GRAPH_REGION':
