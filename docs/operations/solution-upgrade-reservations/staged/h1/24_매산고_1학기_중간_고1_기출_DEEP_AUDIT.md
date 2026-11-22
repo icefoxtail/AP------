@@ -1,6 +1,6 @@
 # 24_매산고 고1 1학기 중간 — 문항별 심층 감사
 
-원본 `archive/exams/original/high/h1/1mid/24_매산고_1학기_중간_고1_기출.js` SHA `b2dedbbcef82c2748ae78586dd5d800f8ea7d757`, standardCourse=수학(상), 20문항. KEEP 17, HOLD 3, UPGRADE 0, UNREAD 0. EXAM_AUDIT_COMPLETE=true(문항별 1차, q14 정답 유일성 재검증 필요), EXAM_DRAFT_COMPLETE=false(HOLD 잔여). 시각·Golden·Negative·렌더 NOT_RUN, 출고 PASS 아님.
+원본 `archive/exams/original/high/h1/1mid/24_매산고_1학기_중간_고1_기출.js` SHA `b2dedbbcef82c2748ae78586dd5d800f8ea7d757`, standardCourse=수학(상), 20문항. KEEP 17, HOLD 3, UPGRADE 0, UNREAD 0. EXAM_AUDIT_COMPLETE=true(문항별 1차, q14 정답 유일성 재검증 필요), EXAM_DRAFT_COMPLETE=true(UPGRADE 0건; q14·q15·q20 HOLD는 검증 대기 및 출고 보류). 시각·Golden·Negative·렌더 NOT_RUN, 출고 PASS 아님.
 
 ## q1 — KEEP
 
@@ -655,3 +655,9 @@ $-\dfrac92+\sqrt{14}<n\le-\dfrac13$
 - q20 경계 재검산: `F(x)=x²-(13/2+n)x+(9+n)`에서 `F(2)=-n`, `F(4)=-1-3n`; 축 `13/4+n/2`, 판별식 `(n+9/2)²-14`. `-9/2+√14<n≤-1/3`에서 축은 (2,4), 양끝값은 음수가 아니고 판별식 양수이므로 서로 다른 두 근이 구간 내에 있다. 하한 등호는 중근이라 제외, 상한 등호는 x=4 교점 허용. 기존 풀이의 수학적 경계는 일치하지만 기존 solutionImage의 실제 시각·렌더 검증은 NOT_RUN으로 HOLD 유지.
 - 문서 증거: 공통 하네스 브랜치 `work/solution-upgrade-reservation-harness-20261121`에서 HARNESS_CURRENT.md(blob fa258f6ab998c7fd0e2b398956309a43ce967e82), GLOBAL_QUEUE_CURRENT.md(259bf732ac9932f832077a506c587cb1401a4f7f), DEEP_QUESTION_AUDIT_TEMPLATE_CURRENT.md(eb02a8ed22515b70b0d897949945e40b013eaab6), docs-manifest.json(649d90226c8dc8a936f1d41a07e4c51e09acc4e5) 및 core 경로 16개를 조회하였다. core 전문 전체 검토·Golden 2~3/Negative 판독·preflight/렌더 실행은 **NOT_RUN/EVIDENCE_DEBT**로 유지하며 PASS 주장 금지.
 - 후속: q14 원본 정오표 또는 정답 유일성 수정 권한 확보 → q15 문제 그림 실제 판독 → q20 기존 해설 그림 대조 → 필독/Golden·Negative 게이트 완료 후에만 이 시험지 종료 재판정. 다른 시험지로 폴백하지 않음.
+
+## 2026-11-22 감사 상태 재판정 — 결함 HOLD와 초안 게이트 분리
+
+- q1~q20 원본 문제·보기·answer·solution의 문항별 판정/인용/원본 SHA를 기록하여 `EXAM_AUDIT_COMPLETE=true`.
+- 개선 대상 UPGRADE는 0개로 전체 학생용 수정 초안이 요구되지 않으므로 `EXAM_DRAFT_COMPLETE=true`. q14 원본 정답 유일성 재검증, q15 원본 문제그림, q20 관련 그림의 기존 HOLD는 해소하지 않았고 명시적으로 남긴다.
+- 이전 본문에 기술한 EVIDENCE_DEBT/필독·calibration·Golden·Negative·Render·Release의 NOT_RUN은 그대로 유효. `AUDIT_DRAFT_COMPLETE`는 수학적 감사 MD의 완료만 뜻한다. 출고·시각 PASS 아님. SVG/JS/main 무변경.
