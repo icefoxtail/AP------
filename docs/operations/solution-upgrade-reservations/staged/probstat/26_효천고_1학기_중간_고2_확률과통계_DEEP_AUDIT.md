@@ -10,7 +10,7 @@
 - KEEP 23 / UPGRADE 0 / HOLD 1 / UNREAD 0; 학생용 대체 해설 작성 0건(기존 충분), 원본 결함 Q21 확인 필요
 - 원본 JS·정답·이미지 수정 금지; Golden/Negative/학생 화면 렌더/배포: NOT_RUN
 - 읽은 지침: 하네스·심층감사 템플릿·학생용 판서 예시·AGENTS/RULEBOOK·학생용 해설 기준. preflight/정본 전 문서 해시 영수증: NOT_RUN. 원본 PDF의 실제 전체 페이지 대조: NOT_RUN.
-- 이미지 검증: `q10.png`(거리 30·40·40·50·70), `q11.png`(함수값 곱=6), `q17.png`(P=0 수직선) 실물 판독. `q14-solution.svg` 원본 파일 접근 성공, 실제 SVG 렌더: NOT_RUN.
+- 이미지 검증: `q10.png`(거리 30·40·40·50·70), `q11.png`(함수값 곱=6), `q17.png`(P=0 수직선) 실물 판독. `q14-solution.svg` 원본 파일 접근 성공, Inkscape 렌더 및 도형 판독: 완료(후속 재점검). 학생 화면 렌더: NOT_RUN.
 
 ## 전 문항 판정
 
