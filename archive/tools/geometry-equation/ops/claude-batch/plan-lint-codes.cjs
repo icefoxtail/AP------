@@ -87,8 +87,8 @@ rule(/^PLAN_(JSON_INVALID|NOT_OBJECT)$/, c => ({ reason: c.base === 'PLAN_JSON_I
 rule(/^MULTI_CURVE_COUNT_INVALID$/, c => { // graph_framing.py:4810-4811
   const n = (graphPlansOf(c.plan).find(g => Array.isArray(g.curves)) || {}).curves;
   const kinds = (n || []).map(x => x && (x.kind || (x.inverseOf ? '역함수' : '?'))).join(',');
-  return { reason: `multi-curve-figure-v1 은 곡선이 2~6개일 때만 쓴다. 이 plan 의 곡선은 ${n ? n.length : '?'}개(${kinds})다.`,
-    fix: '곡선이 하나면 multi-curve 를 쓰지 않는다: 직선·다항은 piecewise-polynomial-spike-v1, 지수는 exponential-affine-spike-v1, 로그는 logarithmic-affine-spike-v1(본보기 참조). 한 곡선의 일부 구간 강조(emphasis)·abs:true·regions 가 필요한 그림만 곡선 1개가 허용된다.' };
+  return { reason: `multi-curve-figure-v1 은 곡선이 1~6개일 때만 쓴다. 이 plan 의 곡선은 ${n ? n.length : '?'}개(${kinds})다.`,
+    fix: 'curves 를 1~6개로 맞춘다(곡선 0개이거나 6개를 넘으면 거절된다). 곡선 하나면 직선·지수·로그 단일 capability 도 쓸 수 있다.' };
 });
 rule(/^MULTI_CURVE_LABEL_INVALID$/, c => { // graph_framing.py:4539(패턴) 4584-4592 4618
   const cv = curveOf(c.plan, c.arg), label = cv && cv.label;

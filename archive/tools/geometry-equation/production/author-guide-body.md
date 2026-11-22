@@ -944,9 +944,9 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
 
 **경유점(옵트인).** `lattice.viaPoints:["P"]`는 이름 있는 점 1~3개를 순서대로 반드시 거친다. 기존 `via`는 도로 선분이며 이 필드와 혼용하지 않는다. 시작·경유·도착점은 서로 달라야 하며 전체 최단 이동 방향에서 되돌아가면 거절한다. `counts:true`/목록은 전체 시작점 기준 누적 경로 수를 유지한다. `counts:"segments"`는 각 경유점에서 다시 세는 **구간별** 누적수다. 공통 경유점에는 이전 구간의 도착 수를 한 번만 쓴다. 마지막 점에는 마지막 구간 수(전체 곱 아님)가 나온다. caption에 "P에서 새로 세기"처럼 수의 의미를 반드시 설명한다. 예: 4×3 도로망 A(0,0), P(2,2), B(4,3)은 P에6, B에3이며 전체18은 그림 밖 caption에만 둔다. `hideTargetCount:true`는 이 모드에서도 마지막 점의 수를 숨긴다. 관측기는 전체 경로를 독립 열거하고 경유점을 지난 경로만 남겨 구간별 prefix를 중복 제거해 다시 센다. 거절: `LATTICE_VIA_POINTS_INVALID`, `LATTICE_VIA_POINTS_ORDER_INVALID`, `LATTICE_VIA_POINTS_ROAD_MIX_UNSUPPORTED`, `LATTICE_WAYPOINT_HIGHLIGHT_INVALID`. 골든: `item117codexwaypoint`.
 
-### 3-40. 서로 다른 곡선 2~6개를 한 그림에: `multi-curve-figure-v1`
+### 3-40. 곡선 1~6개를 한 그림에: `multi-curve-figure-v1`
 
-한 문항의 그림이 **서로 다른 곡선 2~6개**(이차곡선, 직선, 유리함수, 무리함수, 지수함수, 역함수 쌍)로 이루어지거나 둘러싸일 때 쓴다. 한 곡선의 조각(가지)에는 `piecewise-*`를 쓴다. 22 효천고 2학기 기말 고2 수학II q10의 `y=2-x^2`, `x=2-y^2`, `y=x^2-2`, `x=y^2-2` 네 포물선과 26 삼산중 1학기 기말 중3 Q9의 위아래 포물선 쌍이 이 기능을 쓴다.
+한 문항의 그림이 **곡선 1~6개**(이차곡선, 직선, 유리함수, 무리함수, 지수함수, 역함수 쌍)로 이루어지거나 둘러싸일 때 쓴다. 한 곡선의 조각(가지)에는 `piecewise-*`를 쓴다. 22 효천고 2학기 기말 고2 수학II q10의 `y=2-x^2`, `x=2-y^2`, `y=x^2-2`, `x=y^2-2` 네 포물선과 26 삼산중 1학기 기말 중3 Q9의 위아래 포물선 쌍이 이 기능을 쓴다.
 
 ```json
 {"capability":"multi-curve-figure-v1","graphPlan":{"family":"multi-curve","curves":[
@@ -959,13 +959,13 @@ construction candidate 경로의 plan 최상위 선택 필드 `accessibilityDesc
  "caption":"위쪽 y=2-x^2, 오른쪽 x=2-y^2, 아래쪽 y=x^2-2, 왼쪽 x=y^2-2의 네 포물선으로 둘러싸인 영역이다."}
 ```
 
-- `curves`는 2~6개다. 각 곡선은 `id`(영문 시작, 16자 이내), `kind`, `coefficients`(`[c0,c1,c2]`, x² 또는 y² 계수 `c2`는 0이 아님), `domain`(닫힌 구간의 두 끝)을 쓴다. 계수·끝은 정확한 정수·분수 문자열(또는 한 근호 `p+q*sqrt(r)`)이고 소수를 쓰지 않는다.
+- `curves`는 1~6개다(곡선 하나만 있어도 된다: 직선·지수·로그에 점·식·축 이름만 더한 그림). 각 곡선은 `id`(영문 시작, 16자 이내), `kind`, `coefficients`(`[c0,c1,c2]`, x² 또는 y² 계수 `c2`는 0이 아님), `domain`(닫힌 구간의 두 끝)을 쓴다. 계수·끝은 정확한 정수·분수 문자열(또는 한 근호 `p+q*sqrt(r)`)이고 소수를 쓰지 않는다.
 - `label`(선택)은 그 곡선 옆에 그릴 정확한 ASCII 수식 문자열이다(`y=2-x^2`, `x=2-y^2`). 기존 수식 라벨 장치로 그려지며, 쓸 수 없는 글자·TeX는 `MULTI_CURVE_LABEL_INVALID:<id>`로 거절된다. 원문 그림이 곡선의 식을 보여 주면 그 식을 그대로 쓴다.
 - `kind:"Y_OF_X"`는 `y=c0+c1*x+c2*x^2`를 x 구간 위에 그린다. `kind:"X_OF_Y"`는 `x=c0+c1*y+c2*y^2`를 y 구간 위에 그리며, `branch`로 꼭짓점 위쪽(`POSITIVE`)·아래쪽(`NEGATIVE`)·둘 다(`BOTH`, 기본)를 고른다. 엔진은 이 가지들을 `y(x)` 식으로 정확히 바꿔 그리므로 옆으로 열린 포물선도 학생 화면에는 같은 곡선으로 보인다.
 - 가로·세로 배율은 같고, 세로가 너무 길면 최대 1/2까지 줄인다. **좁고 긴 그림(2026-11-12)**: 곡선이 48 px보다 좁게 나오면 `MULTI_CURVE_TOO_NARROW`로 거절하기 전에 엔진이 그림판 높이를 640에서 최대 1000(캔버스 1064)까지 키워 같은 배율로 다시 잡는다(가로 폭은 그대로 448). 예: `y=30x²`·`y=20x²`를 x 0~1에 그리면 이전에는 거절됐고 지금은 높이 약 1000으로 그려진다. 그래도 곡선이 48 px보다 좁으면(예: 같은 식에서 계수가 200) 거절하니, 그때는 구간을 줄이거나 `axisScale`을 쓴다. 쌓은 패널의 한도(`plotHeightLimit`)는 늘리지 않는다. 이 그림은 크기 등급 full로 요청된다. 좌표축과 눈금은 엔진이 그리며, `axisTickValues`로 눈금을 직접 정할 수 있다. 점 이름·곡선 식 라벨·눈금 라벨이 하나도 없으면 출판 글자 게이트가 막히므로, 다른 라벨이 없을 때는 정확한 눈금 값을 하나 이상 준다.
 - `overlays`(선택)는 다른 그래프 계열과 같은 보조 요소 층이다. `lines`(직선 `y=slope*x+intercept`, 세로선 `x=a`), `points`, `segments`, `guides`, `polygons`를 쓸 수 있고, 모든 좌표는 계산된 그림 안에 있어야 한다(엔진이 화면을 몰래 넓히지 않는다). 원문 그림에 그려진 대칭선·보조선은 `overlays.lines`로 그대로 살린다.
 - 엔진은 각 곡선·가지를 정확한 구간과 식으로 고정하고, 독립 관측기는 같은 계수에서 모든 가지를 다시 계산해 최종 SVG의 각 polyline(태그 `CURVE_<id>`, `CURVE_<id>_POS`/`_NEG`)이 그 곡선 위에 있는지, 자기 구간·가지를 벗어나지 않는지, 양 끝과 중간 호가 맞는지 확인한다. 하나라도 어긋나면 FAIL이다.
-- 오류 코드: `MULTI_CURVE_COUNT_INVALID`(2개 미만·6개 초과), `MULTI_CURVE_FIELD_UNKNOWN:<field>`, `MULTI_CURVE_CURVE_INVALID:<id>`, `MULTI_CURVE_ID_INVALID`, `MULTI_CURVE_KIND_INVALID:<id>`, `MULTI_CURVE_COEFFICIENT_INVALID:<id>`, `MULTI_CURVE_NOT_QUADRATIC:<id>`, `MULTI_CURVE_DOMAIN_INVALID:<id>`, `MULTI_CURVE_BRANCH_INVALID:<id>`, `MULTI_CURVE_BRANCH_EMPTY:<id>`, `MULTI_CURVE_LABEL_INVALID:<id>`, `MULTI_CURVE_FRAME_DEGENERATE`, `MULTI_CURVE_TOO_NARROW`.
+- 오류 코드: `MULTI_CURVE_COUNT_INVALID`(곡선 0개 또는 6개 초과), `MULTI_CURVE_FIELD_UNKNOWN:<field>`, `MULTI_CURVE_CURVE_INVALID:<id>`, `MULTI_CURVE_ID_INVALID`, `MULTI_CURVE_KIND_INVALID:<id>`, `MULTI_CURVE_COEFFICIENT_INVALID:<id>`, `MULTI_CURVE_NOT_QUADRATIC:<id>`, `MULTI_CURVE_DOMAIN_INVALID:<id>`, `MULTI_CURVE_BRANCH_INVALID:<id>`, `MULTI_CURVE_BRANCH_EMPTY:<id>`, `MULTI_CURVE_LABEL_INVALID:<id>`, `MULTI_CURVE_FRAME_DEGENERATE`, `MULTI_CURVE_TOO_NARROW`.
 
 
 **유리·무리·직선 섞기, 곡선별 모양, 역함수 쌍 (G18a).** 위 이차곡선 말고도 `kind`는 다음을 쓸 수 있다. 숫자는 모두 정확한 정수·분수 문자열이다.

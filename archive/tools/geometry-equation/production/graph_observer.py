@@ -3681,6 +3681,8 @@ def _ov_final_window(viewport,plan=None):
     if plan is not None and isinstance(plan.get('axisFold'),dict):return list(viewport)   # a folded figure does not hold the origin: the window is the plan's own
     unit_points=((0.0,0.0),(1.0,0.0),(0.0,1.0))
     if plan is not None and 'axisScale' in plan:unit_points=((0.0,0.0),)   # (G18c) a declared axisScale frame is never widened for the unit points
+    # A squeezed frame (the plan records axisRatio other than 1: a tall figure drawn at a smaller y scale) is not widened either: widening each axis by its own span would break the recorded ratio.
+    if plan is not None and isinstance(plan.get('axisRatio'),(int,float)) and not isinstance(plan.get('axisRatio'),bool) and plan['axisRatio']!=1:unit_points=((0.0,0.0),)
     if all(xmin<x<xmax and ymin<y<ymax for x,y in unit_points):return list(viewport)
     xs=[xmin,xmax]+[x for x,_ in unit_points];ys=[ymin,ymax]+[y for _,y in unit_points]
     lo_x,hi_x,lo_y,hi_y=min(xs),max(xs),min(ys),max(ys);dx=(hi_x-lo_x)*.08;dy=(hi_y-lo_y)*.08
@@ -5543,7 +5545,7 @@ def multi_curve_audit(plan,svg,transform,model=False):
     errors=[];unsupported=[]
     try:
         raw=plan.get('curves')
-        minimum=1 if isinstance(raw,list) and (any(isinstance(entry,dict) and (entry.get('emphasis') or entry.get('abs') is True) for entry in raw) or (isinstance(plan.get('regions'),list) and plan['regions'])) else 2
+        minimum=1   # the observer's own reading of the rule: one to six curves (not shared with the framer's constant)
         if not isinstance(raw,list) or not minimum<=len(raw)<=6:raise ValueError('MULTI_CURVE_COUNT_INVALID')
         normalized=[]
         for entry in raw:
