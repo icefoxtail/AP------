@@ -1543,7 +1543,7 @@ const NORM_XL=44,NORM_XR=490,NORM_TIP=512,NORM_XR_NARROW=482,NORM_TIP_NARROW=500
 // A labelled tail beyond about 3 sd is under 2 px high at the usual bell height: no value label or leader dot fits in it (the observer asks the dot for 1 px of room). Such a figure (and only such a figure)
 // draws its tallest curve NORM_PEAK_TALL high instead of NORM_PEAK, so the tail is high enough to point into. The choice depends on the model alone, so the measured size and the drawing agree.
 const STD_NORMAL_NAME=/^(?:[Zz](?:\(0,1\))?|N\(0,1\))$/;   // the ways a curve is named as the standard normal variable (spaces removed)
-const NORM_THIN_TAIL=1.7,NORM_TICK_APART=8;   // tick numbers nearer than this (px) to each other stand in two rows
+const NORM_THIN_TAIL=1.7,NORM_TICK_APART=0;   // tick numbers whose boxes would overlap (gap below this, px) stand in two rows; a figure whose numbers already fit in one row stays as it was drawn
 function normalPeakOf(m){
   const sdOf=c=>m.framed?(c.sdScale===undefined?1:N(c.sdScale)):N(c.sd),meanOf=c=>m.framed?0:N(c.mean),sdMin=Math.min(...m.curves.map(sdOf)),byId=new Map(m.curves.map(c=>[c.id,c]));
   for(const s of m.shades){
