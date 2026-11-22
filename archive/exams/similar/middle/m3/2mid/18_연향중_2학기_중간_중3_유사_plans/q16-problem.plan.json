@@ -1,0 +1,32 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ],
+      "rightAngle": "B",
+      "isosceles": true
+    },
+    {
+      "type": "fold",
+      "from": "A",
+      "to": "D",
+      "on": "BC",
+      "creasePointOnAB": "E"
+    },
+    {
+      "type": "label",
+      "target": "AB",
+      "text": "9 cm"
+    },
+    {
+      "type": "label",
+      "target": "BC",
+      "text": "9 cm"
+    }
+  ]
+}

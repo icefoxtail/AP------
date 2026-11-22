@@ -1,0 +1,37 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "cube",
+      "vertices": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H"
+      ],
+      "edge": "12 cm"
+    },
+    {
+      "type": "midpoint",
+      "point": "M",
+      "of": "CG"
+    },
+    {
+      "type": "midpoint",
+      "point": "N",
+      "of": "CD"
+    },
+    {
+      "type": "triangle",
+      "vertices": [
+        "B",
+        "M",
+        "N"
+      ]
+    }
+  ]
+}

@@ -85,9 +85,16 @@ export function readBank(jsPath) {
   const ctx = { window: {} };
   vm.createContext(ctx);
   new vm.Script(text, { filename: jsPath }).runInContext(ctx);
-  const bank = ctx.window.questionBank;
+  let bank = ctx.window.questionBank;
+  if (!Array.isArray(bank) && ctx.window.examData && Array.isArray(ctx.window.examData.questions)) {
+    bank = ctx.window.examData.questions.map(q => ({
+      ...q,
+      id: typeof q.id === 'string' && q.id.startsWith('q') ? parseInt(q.id.slice(1), 10) : (q.number || q.id),
+      content: q.question || q.content,
+    }));
+  }
   if (!Array.isArray(bank)) throw new Error(`BANK_NOT_ARRAY: ${jsPath}`);
-  return { bank, examTitle: ctx.window.examTitle, examDisplayTitle: ctx.window.examDisplayTitle, text };
+  return { bank, examTitle: ctx.window.examTitle || ctx.window.examData?.title, examDisplayTitle: ctx.window.examDisplayTitle, text };
 }
 
 export const ITEM_KEY_ORDER = [
