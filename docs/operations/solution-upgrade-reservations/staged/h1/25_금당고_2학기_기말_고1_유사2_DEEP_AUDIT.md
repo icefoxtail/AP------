@@ -1,5 +1,8 @@
 # 고1 2학기 기말 유사시험지 심층 수학 감사 — 25_금당고_2학기_기말_고1_유사2
 
+> **2026-11-22 후속 시각 QA: VISUAL_QA_FINDINGS** — 이미지 16개 렌더·육안 검수, 결함 1개. 상세 결과는 문서 끝의 ‘후속 시각 검수’ 및 [통합 계획](./H1_2FINAL_SIMILAR_VISUAL_QA_20261122.md) 참조.
+
+
 - 기준일: 2026-11-22 (KST)
 - 원본: `archive/exams/similar/high/h1/2final/25_금당고_2학기_기말_고1_유사2.js`
 - 원본 blob SHA: `846a0eb87e4a6f97aac5edbc114c6fbed37989ea`
@@ -1076,3 +1079,36 @@ $k\ge 3$
 - **수학 검산 결과**: 본 문서의 정답 변경 권고는 없다. 효천고 18번만 ‘모든 실수 a’의 충분성 증명 보강을 제안한다.
 - **시각 QA는 수행하지 않음**: 원문이 그래프나 화살표 판독에 의존하는 경우, 이 문서는 해설에 적힌 도형 정보를 전제로 계산을 검산한 것이며 이미지 원본의 정확성을 확정하지 않는다.
 - **원격 재조회**: 커밋 후 동일 브랜치 파일을 재조회하여 전문 일치 여부를 별도 검증한다.
+
+
+---
+
+## 후속 시각 검수 — 2026-11-22 (최신 판정)
+
+- 결과: **VISUAL_QA_FINDINGS**. 연결 그림 16개, 그림 포함 14문항, 결함 후보 1건.
+- 절차: 실제 `archive/assets/images/25_금당고_2학기_기말_고1_유사2/` 자산 존재 확인 → SVG/PNG 렌더 → 접촉 시트 육안 검사 → 본문·해설의 그래프, 좌표, 집합, 대응도 비교.
+- [수학·시각 통합 마감 계획 및 전체 276건 보고서](./H1_2FINAL_SIMILAR_VISUAL_QA_20261122.md) 참조.
+- 이전 본문에 기재된 `VISUAL_QA_PENDING` 또는 `NOT_RUN`은 **초기 수학 감사 당시 상태**이며, 후속 시각 검수 판정은 아래 표가 우선한다.
+
+| 문항 | 검사한 이미지(원본 `archive/assets/images/25_금당고_2학기_기말_고1_유사2/`) | 최신 판정 |
+|---:|---|---|
+| 5번 | `해설: q05-solution.svg` | VISUAL_QA_PASS |
+| 6번 | `문제: q06-problem.svg`, `해설: q06-solution.svg` | VISUAL_QA_PASS |
+| 9번 | `해설: q09-solution.svg` | VISUAL_QA_PASS |
+| 10번 | `해설: q10-solution.svg` | VISUAL_QA_PASS |
+| 11번 | `해설: q11-solution.svg` | VISUAL_QA_FINDING (P2) |
+| 12번 | `해설: q12-solution.svg` | VISUAL_QA_PASS |
+| 14번 | `해설: q14-solution.svg` | VISUAL_QA_PASS |
+| 15번 | `해설: q15-solution.svg` | VISUAL_QA_PASS |
+| 16번 | `문제: q16-problem.svg`, `해설: q16-solution.svg` | VISUAL_QA_PASS |
+| 18번 | `해설: q18-solution.svg` | VISUAL_QA_PASS |
+| 19번 | `해설: q19-solution.svg` | VISUAL_QA_PASS |
+| 20번 | `해설: q20-solution.svg` | VISUAL_QA_PASS |
+| 21번 | `해설: q21-solution.svg` | VISUAL_QA_PASS |
+| 22번 | `해설: q22-solution.svg` | VISUAL_QA_PASS |
+
+### 확인된 시각 결함·재검수 필요
+
+- **P2 · 11번 · q11-solution.svg**: A_{24}, A_n, A_6이어야 할 집합명이 A24, An, A6으로 같은 베이스라인에 표시됨. 첨자 수식 벡터로 재생성 필요.
+
+원본 JS·SVG·PNG는 수정하지 않았다. 결함 수정 후 해당 자산을 다시 렌더하고 문제·해설을 대조해야 최종 출고 판정이 가능하다.
