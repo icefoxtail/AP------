@@ -1,0 +1,44 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "square",
+      "vertices": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "side": "6"
+    },
+    {
+      "type": "point",
+      "id": "E",
+      "on": "AD",
+      "ratio": "1:1"
+    },
+    {
+      "type": "point",
+      "id": "F",
+      "on": "CD",
+      "ratio": "2:1"
+    },
+    {
+      "type": "triangle",
+      "vertices": [
+        "E",
+        "B",
+        "F"
+      ]
+    },
+    {
+      "type": "angle",
+      "at": "B",
+      "arms": [
+        "E",
+        "F"
+      ],
+      "text": "x"
+    }
+  ]
+}

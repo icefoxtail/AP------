@@ -1,0 +1,30 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "quarterCircle",
+      "center": "O",
+      "radius": 1
+    },
+    {
+      "type": "point",
+      "id": "P",
+      "on": "arc"
+    },
+    {
+      "type": "perpendicular",
+      "from": "P",
+      "to": "baseRadius",
+      "foot": "H"
+    },
+    {
+      "type": "angle",
+      "at": "O",
+      "arms": [
+        "P",
+        "H"
+      ],
+      "text": "x"
+    }
+  ]
+}

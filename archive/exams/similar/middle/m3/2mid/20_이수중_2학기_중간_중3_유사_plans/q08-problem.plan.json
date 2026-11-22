@@ -1,0 +1,46 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ],
+      "rightAngle": "B"
+    },
+    {
+      "type": "triangle",
+      "vertices": [
+        "B",
+        "C",
+        "D"
+      ],
+      "rightAngle": "C"
+    },
+    {
+      "type": "label",
+      "target": "AB",
+      "text": "2√3"
+    },
+    {
+      "type": "angle",
+      "at": "A",
+      "arms": [
+        "B",
+        "C"
+      ],
+      "text": "60°"
+    },
+    {
+      "type": "angle",
+      "at": "D",
+      "arms": [
+        "B",
+        "C"
+      ],
+      "text": "45°"
+    }
+  ]
+}

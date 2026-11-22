@@ -1,0 +1,48 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ],
+      "rightAngle": "C"
+    },
+    {
+      "type": "midpoint",
+      "id": "D",
+      "of": "AC"
+    },
+    {
+      "type": "segment",
+      "from": "B",
+      "to": "D"
+    },
+    {
+      "type": "label",
+      "target": "AD",
+      "text": "2 cm"
+    },
+    {
+      "type": "label",
+      "target": "DC",
+      "text": "2 cm"
+    },
+    {
+      "type": "label",
+      "target": "BC",
+      "text": "2 cm"
+    },
+    {
+      "type": "angle",
+      "at": "B",
+      "arms": [
+        "A",
+        "D"
+      ],
+      "text": "x°"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "type": "perpendicular",
+      "from": "A",
+      "to": "BC",
+      "foot": "H"
+    },
+    {
+      "type": "label",
+      "target": "BC",
+      "text": "12 cm"
+    },
+    {
+      "type": "angle",
+      "at": "A",
+      "arms": [
+        "B",
+        "C"
+      ],
+      "text": "105°"
+    },
+    {
+      "type": "angle",
+      "at": "C",
+      "arms": [
+        "A",
+        "B"
+      ],
+      "text": "45°"
+    }
+  ]
+}

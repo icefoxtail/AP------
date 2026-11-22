@@ -1,0 +1,35 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "circle",
+      "center": "O"
+    },
+    {
+      "type": "chord",
+      "from": "A",
+      "to": "B",
+      "foot": "M"
+    },
+    {
+      "type": "radius",
+      "from": "O",
+      "to": "C",
+      "perpendicularTo": "AB"
+    },
+    {
+      "type": "angle",
+      "at": "A",
+      "arms": [
+        "O",
+        "M"
+      ],
+      "text": "45°"
+    },
+    {
+      "type": "label",
+      "target": "CM",
+      "text": "5 cm"
+    }
+  ]
+}

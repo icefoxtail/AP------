@@ -1,0 +1,12 @@
+{
+  "target": "수직선 [2, 3] 위의 정사각형 ABCD와 두 대각선 AC, BD를 회전시켜 얻은 점 P, Q",
+  "type": "svg",
+  "width": 380,
+  "height": 170,
+  "elements": [
+    "수직선 y=130, 눈금 1, 2, 3, 4",
+    "정사각형 ABCD (A=(2,0), B=(3,0), C=(3,1), D=(2,1), 변 길이 60px)",
+    "대각선 AC->Q(2+sqrt(2)), 대각선 BD->P(3-sqrt(2)) 원호"
+  ],
+  "svgCode": "<svg viewBox=\"0 0 380 170\" xmlns=\"http://www.w3.org/2000/svg\">\n  <defs>\n    <marker id=\"arr9m\" viewBox=\"0 0 10 10\" refX=\"8\" refY=\"5\" markerWidth=\"6\" markerHeight=\"6\" orient=\"auto-start-reverse\">\n      <path d=\"M 0 1 L 10 5 L 0 9 z\" fill=\"#222\"/>\n    </marker>\n  </defs>\n  <line x1=\"20\" y1=\"130\" x2=\"360\" y2=\"130\" stroke=\"#222\" stroke-width=\"1.6\" marker-end=\"url(#arr9m)\"/>\n  <rect x=\"150\" y=\"70\" width=\"60\" height=\"60\" fill=\"#e8f1fb\" stroke=\"#1a5fb4\" stroke-width=\"1.6\"/>\n  <line x1=\"150\" y1=\"130\" x2=\"210\" y2=\"70\" stroke=\"#15803d\" stroke-width=\"1.4\" stroke-dasharray=\"3,2\"/>\n  <line x1=\"210\" y1=\"130\" x2=\"150\" y2=\"70\" stroke=\"#c01c28\" stroke-width=\"1.4\" stroke-dasharray=\"3,2\"/>\n  <path d=\"M 210 70 A 84.9 84.9 0 0 1 234.9 130\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"1.3\" stroke-dasharray=\"4,3\"/>\n  <path d=\"M 125.1 130 A 84.9 84.9 0 0 1 150 70\" fill=\"none\" stroke=\"#c01c28\" stroke-width=\"1.3\" stroke-dasharray=\"4,3\"/>\n  <circle cx=\"125.1\" cy=\"130\" r=\"3.2\" fill=\"#c01c28\"/>\n  <circle cx=\"234.9\" cy=\"130\" r=\"3.2\" fill=\"#15803d\"/>\n  <text x=\"90\" y=\"148\" text-anchor=\"middle\" font-size=\"12\">1</text>\n  <text x=\"150\" y=\"148\" text-anchor=\"middle\" font-size=\"12\">2</text>\n  <text x=\"210\" y=\"148\" text-anchor=\"middle\" font-size=\"12\">3</text>\n  <text x=\"270\" y=\"148\" text-anchor=\"middle\" font-size=\"12\">4</text>\n  <text x=\"142\" y=\"122\" font-size=\"12\" font-weight=\"bold\">A</text>\n  <text x=\"214\" y=\"122\" font-size=\"12\" font-weight=\"bold\">B</text>\n  <text x=\"214\" y=\"66\" font-size=\"12\" font-weight=\"bold\">C</text>\n  <text x=\"142\" y=\"66\" font-size=\"12\" font-weight=\"bold\">D</text>\n  <text x=\"122\" y=\"152\" text-anchor=\"middle\" font-size=\"12\" fill=\"#c01c28\" font-weight=\"bold\">P</text>\n  <text x=\"238\" y=\"152\" text-anchor=\"middle\" font-size=\"12\" fill=\"#15803d\" font-weight=\"bold\">Q</text>\n</svg>"
+}

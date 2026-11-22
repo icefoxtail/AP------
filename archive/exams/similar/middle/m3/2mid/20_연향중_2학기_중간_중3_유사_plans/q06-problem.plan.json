@@ -1,0 +1,47 @@
+{
+  "kind": "geometry",
+  "elements": [
+    {
+      "type": "triangle",
+      "vertices": [
+        "E",
+        "B",
+        "C"
+      ],
+      "rightAngle": "C"
+    },
+    {
+      "type": "point",
+      "id": "D",
+      "on": "BC"
+    },
+    {
+      "type": "segment",
+      "from": "E",
+      "to": "D"
+    },
+    {
+      "type": "label",
+      "target": "CE",
+      "text": "3"
+    },
+    {
+      "type": "angle",
+      "at": "B",
+      "arms": [
+        "E",
+        "D"
+      ],
+      "text": "15°"
+    },
+    {
+      "type": "angle",
+      "at": "D",
+      "arms": [
+        "E",
+        "C"
+      ],
+      "text": "30°"
+    }
+  ]
+}
