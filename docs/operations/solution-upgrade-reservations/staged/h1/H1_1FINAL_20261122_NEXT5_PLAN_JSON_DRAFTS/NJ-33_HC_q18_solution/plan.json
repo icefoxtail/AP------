@@ -1,0 +1,88 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-1/2",
+          "-1",
+          "-1/2"
+        ],
+        "domain": [
+          "-6",
+          "7"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "-1",
+          "1/8"
+        ],
+        "domain": [
+          "-6",
+          "7"
+        ],
+        "label": "y=g(x)",
+        "color": "GREEN"
+      },
+      {
+        "id": "t",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-2"
+        ],
+        "domain": [
+          "-6",
+          "7"
+        ],
+        "label": "y=-2x",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -7,
+      8,
+      -20,
+      17
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T1",
+          "x": "1",
+          "y": "-2"
+        },
+        {
+          "id": "T2",
+          "x": "-4",
+          "y": "8"
+        }
+      ]
+    }
+  },
+  "sourceQuote": "$f(x)\\le0$",
+  "caption": "f=−(x+1)²/2, g=(x−4)²/8이 y=−2x에 각각 (1,−2), (−4,8)에서 접한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f≤0≤g이고 두 꼭짓점 −1,4가 같은 길이 10인 구간에 들어간다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "두 접점과 f(2)+g(2)=−4의 관계를 같은 축에 표시한다."
+  ]
+}

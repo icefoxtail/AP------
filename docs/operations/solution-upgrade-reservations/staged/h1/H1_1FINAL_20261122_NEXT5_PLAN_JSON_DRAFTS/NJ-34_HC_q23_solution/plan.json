@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "7",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "9",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "실수 a",
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "7<a≤9"
+  },
+  "sourceQuote": "$3x-2<4x-5$",
+  "caption": "정수해 4,5,6 세 개를 정확히 갖는 조건은 7<a≤9이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "3<x<(a+5)/2에서 정수해가 3개다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "7은 OPEN이고 9는 CLOSED임을 명시한다."
+  ]
+}

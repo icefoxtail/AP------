@@ -1,0 +1,58 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "7",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": "-2",
+        "y": "-8"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "2"
+      ],
+      "y": [
+        "-8",
+        "20"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "t",
+        "slope": "3",
+        "intercept": "-2",
+        "intersectionX": [
+          "-2"
+        ]
+      }
+    ]
+  },
+  "sourceQuote": "$x^2+ax+2=3x-2$",
+  "caption": "a=7일 때 y=x²+7x+2와 y=3x−2는 (−2,−8)에서 접하고 f(2)=20이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "접선의 판별식 0과 f(−1)<0에 따라 a=7이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "접점 및 요구 x=2에서의 함수값을 구별한다."
+  ]
+}

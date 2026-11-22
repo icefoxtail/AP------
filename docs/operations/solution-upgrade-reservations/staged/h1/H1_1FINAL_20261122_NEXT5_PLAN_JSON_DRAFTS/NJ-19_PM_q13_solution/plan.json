@@ -1,0 +1,52 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "18",
+      "3"
+    ],
+    "domain": [
+      1,
+      3
+    ],
+    "viewport": [
+      0,
+      4,
+      0,
+      90
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "1",
+        "y": "21"
+      },
+      {
+        "id": "R",
+        "x": "3",
+        "y": "81"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "$f(x)=x^2-2(a+3)x+a^2+6a$",
+  "caption": "삼각형 넓이 S(a)=3a²+18a는 a=1에서 21, a=3에서 81이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "AB=6, C의 높이는 a²+6a이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "M+m=81+21=102를 양 끝 그래프로 설명한다."
+  ]
+}

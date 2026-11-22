@@ -1,0 +1,55 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "label": "선택값",
+        "points": [
+          {
+            "id": "N1",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "N5",
+            "value": "5",
+            "hideName": true
+          },
+          {
+            "id": "N6",
+            "value": "6",
+            "hideName": true
+          },
+          {
+            "id": "N7",
+            "value": "7",
+            "hideName": true
+          },
+          {
+            "id": "N8",
+            "value": "8",
+            "hideName": true
+          }
+        ]
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "가능한 n=1,5,6,7,8"
+  },
+  "sourceQuote": "$(x-n)(x-3)<0$",
+  "caption": "가능한 n별 (m,n) 개수는 순서대로 5,4,1,2,1이며 총 13.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "m∈{−4,…,−1,1,…,4}, 1≤n≤8",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "해의 개수가 1인 n 다섯 값을 점으로 놓고 실제 m 개수는 캡션과 연결한다."
+  ]
+}

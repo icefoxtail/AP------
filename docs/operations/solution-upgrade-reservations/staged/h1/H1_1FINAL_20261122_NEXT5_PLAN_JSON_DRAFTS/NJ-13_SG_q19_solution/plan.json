@@ -1,0 +1,47 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "2",
+      "6",
+      "1/2"
+    ],
+    "domain": [
+      0,
+      5
+    ],
+    "viewport": [
+      -1,
+      6,
+      -1,
+      49
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "0",
+        "y": "2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "$\\Delta=(m+2)^2-4\\left(\\dfrac14m^2-m+1\\right)$",
+  "caption": "m≥0에서 α²+β²=m²/2+6m+2는 m=0에서 최소 2.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 실근 조건은 판별식 D=8m≥0이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "허용 영역 m≥0의 왼쪽 끝에서 최솟값 2가 성립한다."
+  ]
+}

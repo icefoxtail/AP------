@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "x범위",
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "0<x≤1, 최소는 x=1"
+  },
+  "sourceQuote": "$B=(0,0)$",
+  "caption": "x=AH∈(0,1]일 때 S=√3/2(3x²−12x+18)은 x=1에서 최소 9√3/2.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원문 t∈[2√3−1,2√3), x=2√3−t다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "허용 x의 오른쪽 끝에서만 최솟값이 달성됨을 표시한다."
+  ]
+}

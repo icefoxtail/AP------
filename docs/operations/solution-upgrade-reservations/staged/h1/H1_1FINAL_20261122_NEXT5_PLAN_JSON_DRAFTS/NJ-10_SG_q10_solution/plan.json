@@ -1,0 +1,57 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-3",
+      "-4",
+      "1"
+    ],
+    "domain": [
+      -1,
+      3
+    ],
+    "viewport": [
+      -2,
+      4,
+      -9,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "-7"
+      },
+      {
+        "id": "L",
+        "x": "-1",
+        "y": "2"
+      },
+      {
+        "id": "R",
+        "x": "3",
+        "y": "-6"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "$t=x^2-2x=(x-1)^2-1$",
+  "caption": "t=x²−2x∈[−1,3], y=(t−2)²−7, 최대 2·최소 −7.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x∈[0,3]에서 t∈[−1,3]이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "양 끝값과 꼭짓점이 실제 치환구간 안에 있다."
+  ]
+}

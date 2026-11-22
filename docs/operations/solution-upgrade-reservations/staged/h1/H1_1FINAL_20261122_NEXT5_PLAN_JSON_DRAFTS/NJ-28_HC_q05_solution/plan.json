@@ -1,0 +1,41 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "정수해",
+        "integerPoints": true,
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "−4<x<1, 정수 4개"
+  },
+  "sourceQuote": "$f(x)<g(x)$",
+  "caption": "f<g인 구간 (−4,1)에 있는 정수는 −3,−2,−1,0의 네 개.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "기존 문제 SVG에서 두 이차함수 교점의 x좌표는 −4,1이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "두 경계를 열린 점으로 표시해 문제 그래프와 연결한다."
+  ]
+}

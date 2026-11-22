@@ -1,0 +1,282 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "T0",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T4",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T5",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T6",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T7",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T8",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "16"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "T0",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "T6",
+    "T7",
+    "T8"
+  ],
+  "displaySegments": [
+    {
+      "id": "sT0T1",
+      "refs": [
+        "T0",
+        "T1"
+      ]
+    },
+    {
+      "id": "sT1T2",
+      "refs": [
+        "T1",
+        "T2"
+      ]
+    },
+    {
+      "id": "sT2T3",
+      "refs": [
+        "T2",
+        "T3"
+      ]
+    },
+    {
+      "id": "sT3T4",
+      "refs": [
+        "T3",
+        "T4"
+      ]
+    },
+    {
+      "id": "sT4T5",
+      "refs": [
+        "T4",
+        "T5"
+      ]
+    },
+    {
+      "id": "sT5T6",
+      "refs": [
+        "T5",
+        "T6"
+      ]
+    },
+    {
+      "id": "sT6T7",
+      "refs": [
+        "T6",
+        "T7"
+      ]
+    },
+    {
+      "id": "sT7T8",
+      "refs": [
+        "T7",
+        "T8"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "hiddenPointNames": [
+    "T0",
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "T6",
+    "T7",
+    "T8"
+  ],
+  "hiddenPointStyle": "NONE",
+  "planeMarks": {
+    "textLabels": []
+  },
+  "sourceQuote": "출발 지점과 도착 지점 사이에 7개의 돌이 일직선으로 같은 간격으로 놓여 있는 징검다리가 있다. 출발 지점에서 첫째 돌까지, 이웃한 두 돌 사이, 마지막 돌에서 도착 지점까지의 간격은 모두 한 칸이다. 한 번에 한 칸 또는 두 칸을 건널 수 있다고 할 때, 출발 지점에",
+  "caption": "시작·일곱 돌·도착 사이에 총 8칸이 있고 1~2칸 이동 가능.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "7개 돌과 양 끝은 등간격이다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "8칸 연속 구간을 표시하되 경로 수 34는 문제 그림에 쓰지 않는다."
+  ]
+}

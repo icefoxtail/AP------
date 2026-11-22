@@ -1,0 +1,57 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-8",
+      "-18",
+      "6"
+    ],
+    "domain": [
+      -1,
+      6
+    ],
+    "viewport": [
+      -2,
+      7,
+      -35,
+      115
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "-1",
+        "y": "16"
+      },
+      {
+        "id": "R",
+        "x": "6",
+        "y": "100"
+      },
+      {
+        "id": "T",
+        "x": "5",
+        "y": "52"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "$f(x)=ax(x-4)+ax-8=ax^2-3ax-8$",
+  "caption": "f(x)=6x²−18x−8에서 f(6)=100이 구간 최댓값, f(5)=52.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "교점 x=0,4와 최고차항 계수 a=6이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "구간 양끝값 16과 100, 요구값 f(5)=52를 비교한다."
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "0",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "5",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "실수 a",
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "−5<a<0 또는 0<a<5"
+  },
+  "sourceQuote": "$x^3+(10-a)x^2+(a^2-10a)x-a^3$",
+  "caption": "−5<a<5에서 a=0을 제외해야 세 근이 서로 다르다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "이차식 판별식 >0이고 일차근과 중복하지 않는다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "−5,0,5 모두 OPEN으로 표시한다."
+  ]
+}

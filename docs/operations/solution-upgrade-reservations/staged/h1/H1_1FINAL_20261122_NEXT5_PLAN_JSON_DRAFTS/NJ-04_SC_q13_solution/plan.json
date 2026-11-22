@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "0",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "실수 a",
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "−2≤a≤0"
+  },
+  "sourceQuote": "$2<x<6$",
+  "caption": "해집합 (2,6)이 유지되는 매개변수의 범위는 −2≤a≤0이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "교집합이 정확히 2<x<6이어야 한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "M=0, m=−2로 경계를 닫아 표시한다."
+  ]
+}

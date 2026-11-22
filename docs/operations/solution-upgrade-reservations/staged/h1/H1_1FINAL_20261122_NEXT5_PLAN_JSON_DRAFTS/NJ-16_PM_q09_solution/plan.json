@@ -1,0 +1,41 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "8",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "10",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "장미 수",
+        "integerPoints": true,
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "8≤장미≤10"
+  },
+  "sourceQuote": "$x>14-x$",
+  "caption": "장미를 튤립보다 많이 사며 34000원 이하이면 8≤x≤10.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x>7, x≤10, x 정수다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "최댓값 10을 닫힌 끝으로 표시한다."
+  ]
+}

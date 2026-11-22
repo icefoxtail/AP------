@@ -1,0 +1,37 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "label": "실수 a",
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "a≥2에서 공통해 없음"
+  },
+  "sourceQuote": "$x^2-(a-2)x-2a=(x+2)(x-a)$",
+  "caption": "두 이차부등식의 열린 해집합이 만나지 않는 양수 a의 최솟값은 2.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫 해 (−2,a), 둘째 해는 음수 구간이며 a≥2이면 접하지 않는다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "a=2는 포함하는 오른쪽 반직선으로 나타낸다."
+  ]
+}

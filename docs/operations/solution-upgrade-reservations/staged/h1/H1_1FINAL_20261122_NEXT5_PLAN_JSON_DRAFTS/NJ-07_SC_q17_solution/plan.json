@@ -1,0 +1,41 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "6",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "정수해",
+        "integerPoints": true,
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "−5≤x≤6, 정수 12개"
+  },
+  "sourceQuote": "$x=-2,3$",
+  "caption": "절댓값 부등식은 −5≤x≤6이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "|x+2|+|x−3|≤11",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "닫힌 두 경계와 양 끝을 포함한 정수 12점을 일치시킨다."
+  ]
+}

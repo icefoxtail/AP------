@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "label": "선택값",
+        "points": [
+          {
+            "id": "K2",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "K5",
+            "value": "5",
+            "hideName": true
+          }
+        ]
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "|p|=2인 k=2,5"
+  },
+  "sourceQuote": "$(x+3)(x-2)\\le0$",
+  "caption": "조건 |p|=2인 정수 k는 2 또는 5이며 합은 7.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "−3≤x≤2 정수와 |x−k|<4 교집합을 검사한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "허용 매개변수 2·5를 구분한다."
+  ]
+}

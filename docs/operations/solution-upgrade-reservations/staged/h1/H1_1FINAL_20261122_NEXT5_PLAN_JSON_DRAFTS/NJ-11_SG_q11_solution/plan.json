@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "실수 a",
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "−2≤a≤4"
+  },
+  "sourceQuote": "$f(x)=x^2-2ax+2a+4=(x-a)^2-a^2+2a+4$",
+  "caption": "모든 x∈[0,2]에서 이차식이 0 이상인 a의 범위는 [−2,4].",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "꼭짓점이 구간 내부/왼쪽/오른쪽인 세 경우를 나눈다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "최솟값 a=−2를 포함하고 우측 끝 4도 포함한다."
+  ]
+}

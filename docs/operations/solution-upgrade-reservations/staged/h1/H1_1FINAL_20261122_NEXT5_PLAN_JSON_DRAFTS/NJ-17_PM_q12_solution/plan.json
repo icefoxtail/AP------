@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "label": "선택값",
+        "points": [
+          {
+            "id": "Z",
+            "value": "0",
+            "hideName": true
+          },
+          {
+            "id": "E",
+            "value": "8",
+            "hideName": true
+          }
+        ]
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "정수 a=0 또는 8"
+  },
+  "sourceQuote": "$|x-5|\\le4$",
+  "caption": "해가 두 정수뿐인 a는 0과 8, 합은 8.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x∈[1,9]와 x∈[a,4a+2]를 대조한다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "두 불연속 허용값을 별도 점으로 분리한다."
+  ]
+}

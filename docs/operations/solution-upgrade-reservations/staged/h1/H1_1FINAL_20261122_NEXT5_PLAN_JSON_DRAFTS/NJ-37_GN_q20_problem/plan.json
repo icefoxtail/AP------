@@ -1,0 +1,67 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "6",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ],
+        "label": "y=f(x)",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ],
+        "label": "y=2x",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -2,
+      8,
+      -3,
+      14
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "tv",
+          "x": "1"
+        }
+      ]
+    }
+  },
+  "sourceQuote": "$f(x)=-x^2+6x$",
+  "caption": "예: 0<t<α에서 t=1로 세운 수직선과 포물선·직선이 만나는 점 P,Q의 구조.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "f(x)=−x²+6x와 y=2x, α는 0이 아닌 교점의 x좌표다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "t=1은 질문의 일반 t를 나타내는 예일 뿐, 최대점은 표시하지 않는다."
+  ]
+}

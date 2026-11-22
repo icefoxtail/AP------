@@ -1,0 +1,85 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "7",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "기본 x",
+        "integerPoints": true,
+        "color": "BLUE"
+      },
+      {
+        "kind": "POINTS",
+        "band": false,
+        "label": "n=6",
+        "points": [
+          {
+            "id": "a",
+            "value": "2",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "b",
+            "value": "3",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "c",
+            "value": "4",
+            "hideName": true,
+            "style": "CROSS"
+          },
+          {
+            "id": "d",
+            "value": "5",
+            "hideName": true,
+            "style": "CROSS"
+          },
+          {
+            "id": "e",
+            "value": "6",
+            "hideName": true,
+            "style": "FILLED"
+          },
+          {
+            "id": "f",
+            "value": "7",
+            "hideName": true,
+            "style": "FILLED"
+          }
+        ]
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "n=6 예: 2,3,6,7이 남는다"
+  },
+  "sourceQuote": "$x^2-9x+14\\le0$",
+  "caption": "첫째 정수 2~7 중 n=6에서 4,5는 제외되어 실제 허용해는 {2,3,6,7}이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫째 부등식 2≤x≤7, 둘째 부등식 x≤n−3 또는 x≥n이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "기존의 연속 구간 3~6 그림은 실제 해집합이 아니므로 삭제한다.",
+    "n=6의 제외 숫자 4·5를 ×로, 포함 숫자 2·3·6·7을 ●로 나타낸다."
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "4",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "정수해",
+        "integerPoints": true,
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "−2<x≤4"
+  },
+  "sourceQuote": "$x^2+8x+12=(x+6)(x+2)$",
+  "caption": "두 이차부등식의 교집합은 −2<x≤4, 정수 합은 9.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫째 해 x<−6 또는 x>−2, 둘째 −5≤x≤4",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "열린 −2와 닫힌 4의 정수 −1,0,1,2,3,4를 표시한다."
+  ]
+}

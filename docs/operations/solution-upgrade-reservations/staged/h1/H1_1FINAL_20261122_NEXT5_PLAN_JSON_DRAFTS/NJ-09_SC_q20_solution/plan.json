@@ -1,0 +1,47 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "400",
+      "30",
+      "-1"
+    ],
+    "domain": [
+      0,
+      40
+    ],
+    "viewport": [
+      -2,
+      42,
+      -20,
+      670
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "15",
+        "y": "625"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "$900+30x-600=300+30x$",
+  "caption": "하루 이익을 300으로 나누면 (10+x)(40−x)=−(x−15)²+625이고 x=15에서 최대.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "원가 600원, 가격 900+30x원, 판매량 400−10x개다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "보조 y/300 그래프임을 명시하고 최대 판매가격은 1350원이다."
+  ]
+}

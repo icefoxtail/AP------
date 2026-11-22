@@ -1,0 +1,52 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-2",
+      "5",
+      "-1"
+    ],
+    "domain": [
+      2,
+      4
+    ],
+    "viewport": [
+      1,
+      5,
+      0,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "5/2",
+        "y": "17/4"
+      },
+      {
+        "id": "L",
+        "x": "2",
+        "y": "4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "$0\\le x\\le2$",
+  "caption": "p≥2에서 p+q=−(p−5/2)²+17/4, 최댓값 17/4.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "p≥2에서 q=2−(p−2)²다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "p=5/2가 허용 범위에 있어 등호를 달성한다."
+  ]
+}

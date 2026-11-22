@@ -1,0 +1,57 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "5",
+      "-6",
+      "1"
+    ],
+    "domain": [
+      0,
+      7
+    ],
+    "viewport": [
+      -1,
+      8,
+      -5,
+      13
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "3",
+        "y": "-4"
+      },
+      {
+        "id": "L",
+        "x": "0",
+        "y": "5"
+      },
+      {
+        "id": "R",
+        "x": "6",
+        "y": "5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "$y=x^2-6x+5=(x-3)^2-4$",
+  "caption": "f=(x−3)²−4, f(0)=f(6)=5. a=1 또는 3+√13에서 최댓값+최솟값=5.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "0≤x≤a, a>0, 구간 끝점은 움직인다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "이 그림은 고정된 함수의 지형이며 모든 a의 구간을 표시한 그림이 아니다."
+  ]
+}

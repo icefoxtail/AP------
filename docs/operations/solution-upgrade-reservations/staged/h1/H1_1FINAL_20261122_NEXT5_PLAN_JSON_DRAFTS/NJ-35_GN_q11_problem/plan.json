@@ -1,0 +1,175 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sAC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "eAB",
+        "ownerSegment": "sAB",
+        "text": "3"
+      },
+      {
+        "id": "eAC",
+        "ownerSegment": "sAC",
+        "text": "2"
+      },
+      {
+        "id": "eBD",
+        "ownerSegment": "sBD",
+        "text": "4"
+      },
+      {
+        "id": "eCD",
+        "ownerSegment": "sCD",
+        "text": "3"
+      },
+      {
+        "id": "eBC",
+        "ownerSegment": "sBC",
+        "text": "x"
+      }
+    ]
+  },
+  "sourceQuote": "A, B, C, D 네 지점을 연결하는 도로망이 있다. A지점에서 B지점으로 가는 도로는 3개, A지점에서 C지점으로 가는 도로는 2개, B지점에서 D지점으로 가는 도로는 4개, C지점에서 D지점으로 가는 도로는 3개이다. B지점과 C지점을 연결하는 도로를 $x$개 추",
+  "caption": "A–B 3개, A–C 2개, B–D 4개, C–D 3개 도로에 B–C x개를 추가한 길 수 모식도.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "한 지점을 다시 방문하지 않고 A에서 B/C를 거쳐 D로 간다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "문제 역할이므로 x의 정답값은 그림에 적지 않는다."
+  ]
+}

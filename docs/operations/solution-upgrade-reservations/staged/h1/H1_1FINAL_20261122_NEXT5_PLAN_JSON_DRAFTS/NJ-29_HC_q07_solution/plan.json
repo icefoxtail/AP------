@@ -1,0 +1,42 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "label": "a후보",
+        "points": [
+          {
+            "id": "bad",
+            "value": "-6",
+            "hideName": true,
+            "style": "CROSS"
+          },
+          {
+            "id": "good",
+            "value": "5",
+            "hideName": true,
+            "style": "FILLED"
+          }
+        ]
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "a=−6은 제외, a=5만 가능"
+  },
+  "sourceQuote": "$D=0$",
+  "caption": "첫 이차방정식 중근 후보 a=−6,5 중 두 번째 허근 조건 a>4인 5만 가능.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "첫 판별식 0, 둘째 판별식 16−4a<0이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "두 후보 중 하나를 배제하는 과정을 한 수직선에 표시한다."
+  ]
+}

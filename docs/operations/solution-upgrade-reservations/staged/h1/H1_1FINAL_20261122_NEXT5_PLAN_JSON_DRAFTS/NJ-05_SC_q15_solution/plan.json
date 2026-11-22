@@ -1,0 +1,55 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "band": false,
+        "label": "선택값",
+        "points": [
+          {
+            "id": "N1",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "N2",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "N6",
+            "value": "6",
+            "hideName": true
+          },
+          {
+            "id": "N7",
+            "value": "7",
+            "hideName": true
+          },
+          {
+            "id": "N8",
+            "value": "8",
+            "hideName": true
+          }
+        ]
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "허용 n=1,2,6,7,8"
+  },
+  "sourceQuote": "$-1$",
+  "caption": "자연수 해가 1~3개인 n은 1,2,6,7,8이고 합은 24다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "(x−4)(x−n)<0에서 x 자연수 해의 개수다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "n=3,4,5는 제외하고 허용 다섯 값을 점으로 보인다."
+  ]
+}

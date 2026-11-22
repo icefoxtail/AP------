@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "50",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "75",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "무게 x",
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "50≤A 식품 무게≤75"
+  },
+  "sourceQuote": "$\\dfrac{160x+80(400-x)}{100}\\le380$",
+  "caption": "열량은 x≤75, 단백질은 x≥50이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A의 무게는 50g 이상 75g 이하이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "최솟값 50g을 닫힌 경계로 읽는다."
+  ]
+}

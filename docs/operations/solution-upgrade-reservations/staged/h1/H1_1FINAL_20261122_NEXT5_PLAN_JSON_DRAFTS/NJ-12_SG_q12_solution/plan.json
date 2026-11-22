@@ -1,0 +1,52 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "-6",
+      "3"
+    ],
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      -1,
+      5,
+      -5,
+      27
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "-3"
+      },
+      {
+        "id": "R",
+        "x": "4",
+        "y": "24"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "sourceQuote": "$t=|x|$",
+  "caption": "t=|x|∈[0,4], y=3(t−1)²−3의 최대 24와 최소 −3.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x∈[−4,2]에서 t=|x|다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "최댓값+최솟값=21을 시각적으로 확인한다."
+  ]
+}

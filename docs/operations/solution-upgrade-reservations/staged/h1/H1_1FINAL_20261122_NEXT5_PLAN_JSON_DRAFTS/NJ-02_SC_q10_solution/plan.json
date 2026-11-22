@@ -1,0 +1,41 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-16",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "-13",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "정수 a",
+        "integerPoints": true,
+        "color": "BLUE"
+      }
+    ],
+    "axisVariable": false
+  },
+  "numberLineCaption": {
+    "text": "−16≤a≤−13"
+  },
+  "sourceQuote": "$-4$",
+  "caption": "합이 −4인 정수해를 주는 a의 최댓값은 −13이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a는 정수이며 −16≤a≤−13이다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "양끝 포함 네 정수와 최댓값 −13을 제시한다."
+  ]
+}

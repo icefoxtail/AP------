@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-400",
+          "9",
+          "-1/50"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "L",
+        "x": "150",
+        "y": "500"
+      },
+      {
+        "id": "V",
+        "x": "225",
+        "y": "1225/2"
+      },
+      {
+        "id": "R",
+        "x": "300",
+        "y": "500"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "150",
+        "225",
+        "300"
+      ],
+      "y": [
+        "500"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "500",
+        "intersectionX": [
+          "150",
+          "300"
+        ]
+      }
+    ]
+  },
+  "sourceQuote": "$x(12-0.02x)$",
+  "caption": "이익 f(x)=−x²/50+9x−400은 500 이상이려면 150≤x≤300이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "판매 단가 12−0.02x만 원, 비용 400+3x만 원이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "y=500 수평선 두 교점과 이익이 충분한 구간을 보여준다."
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "6"
+        ],
+        "label": "y=x^2-2x",
+        "color": "BLUE"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "6"
+        ],
+        "label": "y=x+4",
+        "color": "WARM"
+      }
+    ],
+    "viewport": [
+      -4,
+      7,
+      -3,
+      21
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-1",
+          "y": "3"
+        },
+        {
+          "id": "B",
+          "x": "4",
+          "y": "8"
+        },
+        {
+          "id": "C",
+          "x": "3",
+          "y": "3"
+        },
+        {
+          "id": "D",
+          "x": "-2",
+          "y": "8"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "id": "BD",
+          "from": "B",
+          "to": "D"
+        }
+      ]
+    }
+  },
+  "sourceQuote": "$y=x^2-2x$",
+  "caption": "교점 A,B와 같은 높이의 다른 포물선 교점 C,D를 두 수평 선분으로 표시한다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A/B는 y=x+4와 y=x²−2x의 교점, C/D는 해당 수평선의 다른 교점이다.",
+      "mappedTo": "graphPlan"
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 넓이 비 3:2나 정답값은 문제 그림에 쓰지 않는다."
+  ]
+}
