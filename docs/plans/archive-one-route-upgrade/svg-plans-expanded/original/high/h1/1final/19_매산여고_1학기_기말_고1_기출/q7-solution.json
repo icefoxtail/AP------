@@ -1,0 +1,92 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "UnitX",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {"length": {"kind": "integer", "value": "1"}},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {"kind": "integer", "value": "-3"},
+            {"kind": "integer", "value": "2"}
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "xAxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {"kind": "integer", "value": "0"},
+          "b": {"kind": "integer", "value": "1"},
+          "c": {"kind": "integer", "value": "0"}
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": ["C", "xAxis"],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": ["C"],
+        "args": {"radius": {"kind": "integer", "value": "2"}},
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": ["O", "C", "H"],
+  "displaySegments": [{"id": "radiusCH", "refs": ["C", "H"]}],
+  "displayCircles": ["c"],
+  "coordinateCanvas": {"width": 640, "height": 420},
+  "coordinateLabels": ["C", "H"],
+  "planeMarks": {
+    "expressionLabels": [
+      {"id": "lengthCH", "ownerSegment": "radiusCH", "text": "2", "factRole": "GIVEN"}
+    ]
+  },
+  "caption": "원본 그림에서 중심 C는 (−3,2)이고 x축에 접하는 점 H는 (−3,0)이다. 반지름 CH=2이므로 원의 중심이 (a,b), 반지름이 r일 때의 식 (x−a)²+(y−b)²=r²에 대입하면 (x+3)²+(y−2)²=4이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "좌표평면의 제2사분면에 중심 C(−3,2), 반지름 2인 원이 있고 원은 x축의 H(−3,0)에서 접한다. 선분 CH가 반지름으로 표시되어 있다.",
+  "newVisualInformation": [
+    "원본 그림의 중심 C(−3,2), x축 접점 H(−3,0), 반지름 CH=2를 좌표와 선분으로 직접 연결"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 원의 방정식을 구하면? (단, 점 $C$는 원의 중심) (3.7점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

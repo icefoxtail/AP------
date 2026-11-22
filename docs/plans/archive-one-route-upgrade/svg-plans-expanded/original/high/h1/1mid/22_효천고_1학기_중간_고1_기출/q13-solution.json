@@ -1,0 +1,35 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "n",
+        "elements": ["2", "4", "6", "8"]
+      },
+      {
+        "id": "Y",
+        "name": "f",
+        "elements": ["-2", "0", "2"]
+      }
+    ],
+    "arrows": [
+      {"from": {"column": 0, "element": 0}, "to": {"column": 1, "element": 1}, "style": "SOLID"},
+      {"from": {"column": 0, "element": 1}, "to": {"column": 1, "element": 0}, "style": "SOLID"},
+      {"from": {"column": 0, "element": 2}, "to": {"column": 1, "element": 1}, "style": "SOLID"},
+      {"from": {"column": 0, "element": 3}, "to": {"column": 1, "element": 2}, "style": "SOLID"}
+    ]
+  },
+  "caption": "복소수 u=(1+i)/√2, v=(1−i)/√2라 두면 u²=i, v²=−i이고 f(n)=uⁿ+vⁿ이다. 대응도는 한 주기의 짝수 입력 n=2, 4, 6, 8에서 함수값이 차례로 0, −2, 0, 2임을 보여 준다. 네 값의 합은 0이고 120까지 이 묶음이 15번 반복되므로 전체 합은 0이다. 따라서 답은 ①이다.",
+  "newVisualInformation": [
+    "짝수 입력 2, 4, 6, 8이 0, −2, 0, 2로 대응하고 네 항의 합이 0인 8주기 구조"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "자연수 $n$에 대하여 $f(n)=\\left(\\dfrac{1+i}{\\sqrt{2}}\\right)^n+\\left(\\dfrac{1-i}{\\sqrt{2}}\\right)^n$이라 할 때, $f(2)+f(4)+f(6)+\\cdots+f(120)$의 값은? [4.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
