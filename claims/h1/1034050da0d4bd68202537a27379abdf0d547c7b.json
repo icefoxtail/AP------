@@ -1,7 +1,7 @@
 {
   "ownerLane": "lane40",
   "workerBranch": "work/solution-upgrade-lane-40-20261121",
-  "status": "IN_PROGRESS",
+  "status": "AUDIT_DRAFT_COMPLETE",
   "sourcePath": "archive/exams/original/high/h1/2mid/19_팔마고_2학기_중간_고1_기출.js",
   "sourceBlobSha": "1034050da0d4bd68202537a27379abdf0d547c7b",
   "courseKey": "h1",
@@ -10,20 +10,21 @@
   "sourceKey": "2019_palma_2mid",
   "totalQuestionCount": 21,
   "auditPath": "docs/operations/solution-upgrade-reservations/staged/h1/2019_palma_2mid_DEEP_AUDIT.md",
-  "nextQid": 1,
-  "readQuestionCount": 0,
+  "nextQid": null,
+  "readQuestionCount": 21,
   "decisionCounts": {
-    "KEEP": 0,
+    "KEEP": 20,
     "UPGRADE": 0,
-    "HOLD": 0,
-    "UNREAD": 21
+    "HOLD": 1,
+    "UNREAD": 0
   },
   "remainingWork": [
-    "q1~q21 direct-read and audit"
+    "q19 ANSWER_FORMAT_HOLD: source answer is malformed '$5'; source-owner review required before release"
   ],
   "completedUpgradeQids": [],
-  "auditStatus": "IN_PROGRESS",
-  "draftStatus": "IN_PROGRESS",
+  "auditStatus": "EXAM_AUDIT_COMPLETE",
+  "draftStatus": "EXAM_DRAFT_COMPLETE",
   "visualStatus": "VISUAL_HOLD",
-  "goldenNegativeStatus": "NOT_RUN"
+  "goldenNegativeStatus": "NOT_RUN",
+  "auditCommitSha": "75428847029de3ddad179609b56ccf8f9fb002e2"
 }
