@@ -1,5 +1,8 @@
 # 확통 1학기 중간 기출 심층 감사 — 26_효천고_1학기_중간_고2_확률과통계.js
 
+> **2026-11-22 HOLD66 재검증 — 최신 판정 우선**: 이 시험지의 기존 HOLD 1건 중 **0건 KEEP 전환**, **1건 HOLD 유지**. 원본 main JS blob `8e7c7cca523487809b215d96fbbc8cafe243cd40` 재검독; 인쇄 원본 `2026_hyocheon_1mid.pdf` 대조 완료. 현재 코드 자산의 앱 상대경로 `assets/images/...`는 저장소 `archive/assets/images/...`에 실제 존재하며 66개 전체 렌더 완료. 이전 문서 본문의 이미지 404/미존재/미렌더 근거는 **2026-11-22 철회된 과거 기록**이고 아래 개별 Q 재판정이 우선한다. 학생 화면·채점기·Gold 회귀는 **NOT_RUN**, 원본 JS·이미지 미변경.
+
+
 - lane: lane20; courseKey: probstat; 학년: 고2; 유형: original; 1학기 중간; 연도: 2026
 - sourcePath: `archive/exams/original/high/h2/1mid/26_효천고_1학기_중간_고2_확률과통계.js`
 - sourceRef: `main`; sourceBlobSha: `8e7c7cca523487809b215d96fbbc8cafe243cd40`
@@ -235,6 +238,8 @@
 - 후속 QA: 학생 화면 sol/ans 렌더·Golden·Negative: NOT_RUN
 
 ### Q21 — HOLD
+
+- **2026-11-22 인쇄본·독립검산 재확인: HOLD 유지**. 원본 5/5쪽의 서술형2는 'A 6회, B 4회 주사위 던져 짝수 횟수 합이 8' 문제. JS Q21은 서술형1 (2a−b+c)^5 전개 항 수 문제를 Q20에서 복제해 원문과 불일치. JS Q22에는 원본 서술형2가 별도 기록돼 있어 중복/번호 정리 필요. 
 
 - identity: id=`21`, sourceQuestionNo=`21`, blob=`8e7c7cca523487809b215d96fbbc8cafe243cd40`; 표기 분야: 조건부확률; original answer: `21`
 - 핵심 원문 조건: 다항식 $(2a-b+c)^5$의 전개식에서 서로 다른 항의 개수를 구하고 그 과정을 서술하시오. [4점]
