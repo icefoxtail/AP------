@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-16ad3f61d738-ed05d483",
+  "requestSha256": "f9c78718ce1a55487d0d7762de4bc5c660b3ee58604232534b581417ec6f6d96",
+  "examUid": "비상_기하_공간도형과공간좌표_익힘책_고2",
+  "sourceArchiveFile": "textbooks/비상교육_기하/비상_기하_공간도형과공간좌표_익힘책_고2/비상_기하_공간도형과공간좌표_익힘책_고2.js",
+  "sourceBlobSha1": "d78942826bc619896c0bd24c8877d20be6705086",
+  "sourceRawSha256": "97becce1d98b11a9c2c695908d23592a23a670970d2c8ead65e8a5ea1daf324d",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-w-20261122",
+      "commit": "4111b9298564d9e7095216194d47737640427bfe",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-16ad3f61d738-ed05d483.type-ledger.json",
+        "sha256": "5de63ad76e60a90e912aa61b7b490a7a9f5e5a57b905a06b9bcea82f6e3daf9c"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_90eec290ecea466287ce30ba08491fe709cdb6865aa8d377a3d44c44d248cd6e",
+      "sourceArchiveFile": "textbooks/비상교육_기하/비상_기하_공간도형과공간좌표_익힘책_고2/비상_기하_공간도형과공간좌표_익힘책_고2.js",
+      "sourceOrdinal": 11,
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-16ad3f61d738-ed05d483",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "모선이 평면과 평행일 때 밑면과 평면이 이루는 각의 코사인을 구해 정사영 넓이=넓이×cosθ 적용",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "기하",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "883d9574de437e8c82e6615c0fed18713afbe7d6a9c42d3349808c3d5dfc3a24",
+        "judgedContentFingerprint": "95d95758ca6f9c4e0541fff213875737c12a56b6f344132069c4834e47b4014f",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "124e90aa430ee3b8549294ece167fc8193fc45c91bc3f7d50cb58c01c005bd38",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-16ad3f61d738-ed05d483.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 25
+}

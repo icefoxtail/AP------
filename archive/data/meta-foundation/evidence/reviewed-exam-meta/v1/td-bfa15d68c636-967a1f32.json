@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-bfa15d68c636-967a1f32",
+  "requestSha256": "e7f56f17b2cda54ec45d1cade3daa3e3f7f490df65fd19a9dcdd26df6e28e399",
+  "examUid": "비상_대수_삼각함수_익힘책_고2_유형심화",
+  "sourceArchiveFile": "types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js",
+  "sourceBlobSha1": "7036c68c509da73eaa33bee3c375cc0ed836c712",
+  "sourceRawSha256": "eedd539c3d78a9e56de3400a4b7201dbfe0fabb7e81155260af388eefa7f5f8f",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-w-20261122",
+      "commit": "4111b9298564d9e7095216194d47737640427bfe",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-bfa15d68c636-967a1f32.type-ledger.json",
+        "sha256": "dae9c6348200e1431ca1c180e580e7d9c4b35b450bbcb56a97503f14dfd98264"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_987378cf7ee98887a1dd1d5ca871261e6a41feb8c313dc5d4c719d04d8d98a95",
+      "sourceArchiveFile": "types/high/h2/비상_대수_삼각함수_익힘책_고2_유형심화.js",
+      "sourceOrdinal": 12,
+      "problemTypeKey": "PT_TRIGONOMETRIC_RELATION",
+      "templateKey": "TPL_TRIGONOMETRIC_SYMMETRIC_EXPRESSION_EVALUATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-bfa15d68c636-967a1f32",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "sin(π-θ)=sinθ 대칭으로 항을 짝지어 합치고 sin²θ 값들을 대입해 제곱합을 계산한다",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학I",
+          "curriculumSource": "request",
+          "rowCourse": "대수",
+          "courseRelation": "successor"
+        },
+        "judgedSourceFingerprint": "40a85fe28428eed0aac835f1762f0dff479d646e14935718c5a96c1315480659",
+        "judgedContentFingerprint": "543e9ba5287c083065f3f5c9073fbcb57bcd19bde9bdbcda8146053036e344c2",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "e1dda2cecc86b9066d1c12d3ec8963b0166244a5b13e3602b6a10119f67c6eca",
+        "resultSource": {
+          "branch": "data/type-judgment-w-20261122",
+          "commit": "4111b9298564d9e7095216194d47737640427bfe",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-w/wide-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-bfa15d68c636-967a1f32.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 14
+}

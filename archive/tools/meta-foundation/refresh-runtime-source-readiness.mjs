@@ -4,6 +4,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import core from "../../archive2-core.js";
+import catalogEvidence from "../archive2-catalog-evidence.cjs";
 
 const mode = process.argv.slice(2).find((arg) => arg === "--check" || arg === "--write");
 if (!mode || process.argv.slice(2).filter((arg) => arg === "--check" || arg === "--write").length !== 1)
@@ -44,11 +45,18 @@ const projectionVersion = `archive2-canonical-v1:${sha256(JSON.stringify({
 if (projectionVersion !== manifest.projectionVersion)
   throw new Error("Archive2 canonical manifest projection version mismatch");
 const catalog = core.Canonical.resolveCatalog({
-  versionBundle: { manifest, projectionVersion, files, resources },
+  versionBundle: { manifest, projectionVersion, files, resources: withCompleteCatalog(resources) },
 });
 if (!catalog.canonicalAuthority || !catalog.indexVersion)
   throw new Error("Archive2 canonical source authority is incomplete");
-const packedCatalog = core.decodeCatalog(resources["data/archive2-catalog.json"]);
+const packedCatalog = core.decodeCatalog(withCompleteCatalog(resources)["data/archive2-catalog.json"]);
+// The held-record receipt below copies approvedSourceFingerprint, which the downloaded catalog no longer carries (it is in the evidence
+// file), so this tool resolves over the complete catalog. The digests above were checked on the downloaded files.
+function withCompleteCatalog(inputs) {
+  withCompleteCatalog.result ||= { ...inputs, "data/archive2-catalog.json": catalogEvidence.completeCatalogResource(inputs["data/archive2-catalog.json"],
+    (relative) => fs.readFileSync(path.join(archiveRoot, relative), "utf8")) };
+  return withCompleteCatalog.result;
+}
 
 const packs = [
   { id: "DERIVATIVE", file: "derivative-v1.json", receiptPrefix: "derivative" },

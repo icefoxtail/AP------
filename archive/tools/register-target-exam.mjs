@@ -58,6 +58,8 @@ try {
   const metadataBase=JSON.parse(backup.get('archive/data/question_metadata.json'));
   const indexBase={};vm.runInNewContext(backup.get('archive/question-index.js').toString('utf8'),{window:indexBase});
   const packedBase=JSON.parse(backup.get('archive/data/archive2-catalog.json'));
+  // The catalog is split in two files (archive2-catalog-evidence.cjs); this one-off tool patches the packed catalog by hand and cannot write the evidence file.
+  if(packedBase.catalogEvidence)throw Error('CATALOG_EVIDENCE_SPLIT_UNSUPPORTED: register through the registration writer (build-archive2-catalog.mjs), not this manual tool');
   const catalogBase=core.decodeCatalog(packedBase);
   const runtimeBaseWindow={};vm.runInNewContext(backup.get('archive/question-identity.js').toString('utf8'),{window:runtimeBaseWindow});
   const runtimeBase=runtimeBaseWindow.questionIdentity;

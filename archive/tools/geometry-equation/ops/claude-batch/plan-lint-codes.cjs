@@ -180,8 +180,8 @@ rule(/^NUMBER_LINE_POINTS_INVALID$/, c => {
   const pr = rows.filter(r => r && r.kind === 'POINTS');
   const ids = pr.flatMap(r => (r.points || []).map(p => p && p.id));
   const n = pr.map(r => (r.points || []).length);
-  return { reason: `POINTS 행은 점 2~4개이고 점 id 는 영문 대문자 한 글자(또는 지정한 기호) 여야 한다. 이 plan: 점 개수 ${n.join('/')}, id ${ids.map(q).join(' ')}.`,
-    fix: 'id 를 A·B·C 처럼 대문자 한 글자로 바꾸고(P0·소문자 불가), 점이 4개를 넘으면 행을 나누거나 핵심 점만 둔다. 점 이름을 안 보이게 하려면 hideName 을 쓴다.' };
+  return { reason: `POINTS 행은 점 2~12개이고 점 id 는 영문 대문자 한 글자(또는 지정한 기호) 여야 한다. 이 plan: 점 개수 ${n.join('/')}, id ${ids.map(q).join(' ')}.`,
+    fix: 'id 를 A·B·C 처럼 대문자 한 글자로 바꾸고(P0·소문자 불가), 점이 12개를 넘으면 행을 나누거나 핵심 점만 둔다. 점 이름을 안 보이게 하려면 hideName 을 쓴다.' };
 });
 rule(/^NUMBER_LINE_(ROWS_INVALID|PIECE_INVALID)$/, c => hintOnly(c, `수직선 rows 형식 오류(${c.base}).`));
 rule(/^SOLID_MARK_RAY_NOT_DRAWN$/, c => ({ reason: `입체 marks ${c.arg} 가 가리키는 각의 두 변이 그려진 모서리·segments 가 아니다.`, fix: '직각·각 표시의 두 변을 입체의 모서리(edge)로 두거나 segments 에 그 선분을 추가한다.' })); // solid-figure-v1.mjs:1539,1596

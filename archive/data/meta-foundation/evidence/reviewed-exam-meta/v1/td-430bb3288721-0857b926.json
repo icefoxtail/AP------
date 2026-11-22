@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-430bb3288721-0857b926",
+  "requestSha256": "72a1e7dee071c2966a213fd1269a7b0acce05e3d2c80eb8542ee4d9658fc699a",
+  "examUid": "25_왕운중_2학기_중간_중3_유사",
+  "sourceArchiveFile": "similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사.js",
+  "sourceBlobSha1": "aedb6f235368825f52a828eae0e6f7c9c8dd94e8",
+  "sourceRawSha256": "ab97c54ca0c790ecb50bc63e398c4ab499cd33db38b1215fa5a41ba70f38c902",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다. 사용자 결정 2026-11-22(학원 원장): 판정한 문항은 화면에서 쓸 수 있게 등록한다(같은 형태의 기존 키는 그 학년 연결을 더하고, 발문·보기가 판정 뒤 바뀌어도 유형은 그대로 쓰며, 보류 문항은 풀이 유형을 다시 판정한다) (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-430bb3288721-0857b926.type-ledger.json",
+        "sha256": "38500c5ec7feb4dfeeaa6e15a8491409296bb364b36fb3af3c65d8b02e75743d"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 2,
+  "registryChanges": [],
+  "typeApprovals": 2,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 2
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_c0b45cb05ec4751d70dfb2767836def325950d4b837be25a75abdcc9ec69be08",
+      "sourceArchiveFile": "similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사.js",
+      "sourceOrdinal": 14,
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-430bb3288721-0857b926",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "반지름 OA=OB와 공통변 OM으로 두 직각삼각형의 합동조건이 RHS임을 확인한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "request",
+          "rowCourse": "중3 수학",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "d3458180bef44cb02fa07f86a35a15daee2b1e29a22f08bd6ccab602de84e4c3",
+        "judgedContentFingerprint": "4057a7bdb02148058dbeca36ad49cda8ef4b1e62881c43a3c660cc2c7f85e759",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "185f13b5bcf6bfb24168c6d01109da467f2a3c7674d29d6247ba08b0a1ac76ec",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-430bb3288721-0857b926.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_4f41e2467ff62758236b0fafe6c7920c8d080422c334ef760dd449d81d539d93",
+      "sourceArchiveFile": "similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사.js",
+      "sourceOrdinal": 18,
+      "problemTypeKey": "PT_M3_CIRCLE_TANGENT",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-430bb3288721-0857b926",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "외부점에서 원에 그은 두 접선 길이가 같음을 t로 놓고 이어 가며 AD+AF를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "0b7abe1b5773770db8baff1da96be609d442f2830b9880309fe4f461146b03fe",
+        "judgedContentFingerprint": "38d78e21fa6a59aab26eb2f49754b370d8395280194a9831c800d48249c165a1",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "15d7a8a732e95e71aa3c14f2b4198bdd4c3a8ef988e4605e9434358185f6b671",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-430bb3288721-0857b926.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_CIRCLE_TANGENT",
+          "templateKey": "TM_TANGENT_LENGTH",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 2,
+  "expectedQuestionCount": 24
+}
