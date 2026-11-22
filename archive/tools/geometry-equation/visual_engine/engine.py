@@ -302,6 +302,7 @@ REGION_INNER_POINT_PX=8.0       # least distance from the dot's edge to a drawn 
 REGION_INNER_GRID_PX=4.0
 REGION_INNER_SPACING_PX=12.0
 REGION_INNER_FIRST=30            # the roomiest spots tried first
+NEAR_POINT_STRETCH_PX=14.0     # a value label f(a)=b keeps to the stretch of its curve within this many px of the point (a,f(a))
 REGION_INNER_MORE=300            # further spots (same order, still 12 px apart) tried only when none of the first ones lets the leader out: a piece of a region cut by strokes has no spot among the roomiest
 
 REGION_CIRCLE_TOUCH_PX=1.5      # a circle touching the region's boundary (an incircle) still lies inside it; a region whose boundary follows the circle all round IS that circle
@@ -1522,6 +1523,15 @@ def prepare(spec):
                 own=[thin(row['points']) for row in curve_rows if owns(row['id'],ident)]
                 if not own:raise ValueError('NEAR_CURVE_NOT_DRAWN:'+label['id'])
                 others=[thin(row['points']) for row in curve_rows if not owns(row['id'],ident) and not emphasis(row['id'])]
+                if 'nearPoint' in label:
+                    # a value label f(a)=b belongs to the point (a,f(a)) of its curve, not to the whole curve: its own stroke is the short stretch of the curve around that point
+                    anchor=vp.screen(tuple(label.pop('nearPoint')))
+                    stretch=[]
+                    for pts in own:
+                        near_pts=[point for point in pts if math.dist(point,anchor)<=NEAR_POINT_STRETCH_PX]
+                        if len(near_pts)>=2:stretch.append(near_pts)
+                    if not stretch:stretch=[sorted(min(own,key=lambda pts:min(math.dist(point,anchor) for point in pts)),key=lambda point:math.dist(point,anchor))[:2]]
+                    own=stretch
                 label['nearCurve']={'own':own,'others':others,'end':label.get('nearEnd')=='END','id':ident}
             else:
                 ident=label['nearLine']

@@ -196,6 +196,29 @@ class CurveLabelOwner(unittest.TestCase):
         swapped=svg.replace('formula-f','formula-X').replace('formula-g','formula-f').replace('formula-X','formula-g')
         self.assertEqual(graph_observer.curve_label_owner_audit(plan,swapped,{})['status'],'FAIL')
 
+    # value label f(a)=b: it belongs to the point (a,f(a)) (the reference marker), not to the curve as a whole
+    def value_audit(self,label,dots,plan=None):
+        circles=''.join('<circle id="%s" data-role="%s" cx="%s" cy="%s" r="3.5"/>'%row for row in dots)
+        svg=('<svg xmlns="http://www.w3.org/2000/svg"><polyline id="f-branch-0" data-role="curve" points="0,100 200,0"/>'+circles+label+'</svg>')
+        return graph_observer.curve_label_owner_audit(plan or {'family':'exponential-affine'},svg,{})
+
+    REF=('exponential-reference-point','exponential-reference',100,50)
+    OTHER=('B','point',160,20)
+    FAR_OTHER=('B','point',190,90)
+
+    def test_a_value_label_beside_its_own_point_passes(self):
+        label=self.label('reference-value',104,20,w=50)         # box (104,20)-(154,34): 16 px above the reference dot
+        self.assertEqual(self.value_audit(label,[self.REF,self.FAR_OTHER])['errors'],[])
+
+    def test_a_value_label_beside_another_point_is_refused(self):
+        # the old defect: f(0)=1 stood by the point (2,4) and read as its value
+        label=self.label('reference-value',166,8,w=40)          # beside B (160,20), 66 px from the reference dot
+        self.assertEqual(self.value_audit(label,[self.REF,self.OTHER])['errors'],['LABEL_NEAREST_CURVE_MISMATCH:reference-value'])
+
+    def test_a_value_label_with_no_room_keeps_its_ordinary_place(self):
+        label=self.label('reference-value',166,8,w=40,room='NONE')
+        self.assertEqual(self.value_audit(label,[self.REF,self.OTHER])['errors'],[])
+
     def test_other_families_are_not_judged(self):
         self.assertIsNone(graph_observer.curve_label_owner_audit({'family':'polynomial'},'<svg data-label-kind="x"/>',{}))
 

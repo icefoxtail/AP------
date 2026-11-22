@@ -6847,6 +6847,17 @@ def curve_label_owner_audit(plan,svg,transform):
             if group is None:continue
             box=_region_label_box(groups,label_id)
             if box is None:errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id);continue
+            if label_id=='reference-value' and family in ('exponential-affine','logarithmic-affine') and not leaders.get(label_id):
+                # a value label f(a)=b belongs to the point (a,f(a)) (the reference marker the family audit checks), not to the curve as a whole: within reach of that dot, and no other dot nearer
+                # (a label the engine marked data-near-room=NONE had no free place beside the dot and keeps its ordinary place)
+                if group.get('data-near-room')=='NONE':continue
+                dots={node.get('id'):(float(node.get('cx')),float(node.get('cy'))) for node in root.iter() if node.tag.split('}')[-1]=='circle' and node.get('data-role') in ('exponential-reference','logarithmic-reference','point') and node.get('cx') and node.get('cy')}
+                mine=[point for ident_,point in dots.items() if ident_ in ('exponential-reference-point','logarithmic-reference-point')]
+                if not mine:errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id);continue
+                near_dot=min(_ov_box_segment_distance(box,mine[0],mine[0]),math.inf)
+                others_d=[_ov_box_segment_distance(box,point,point) for ident_,point in dots.items() if ident_ not in ('exponential-reference-point','logarithmic-reference-point') and math.dist(point,mine[0])>1.0]
+                if near_dot>OV_CL_OWN_MAX_PX or any(other<near_dot+OV_CL_OTHER_MARGIN_PX for other in others_d):errors.append('LABEL_NEAREST_CURVE_MISMATCH:'+label_id)
+                continue
             own=[seg for sid,segs in strokes.items() if sid.startswith(prefixes) for seg in segs]
             others=[seg for sid,segs in strokes.items() if not sid.startswith(prefixes) for seg in segs]
             attached=leaders.get(label_id)

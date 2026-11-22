@@ -95,3 +95,17 @@ test('an exp-log pair writes each formula beside its own curve',{skip:!hasBrowse
   const {result}=await renderFigure('g-bundle-pair-owner',plan);
   assert.equal(result.status,'ARCHIVE_BOUND',JSON.stringify(result.detail));
 });
+
+// 2c: a value label f(a)=b stands at its own point (a,f(a)), not at another point of the curve.
+test('an exponential value label f(0)=1 stands at its own point, not beside the point (2,4)',{skip:!hasBrowser,timeout:240000},async()=>{
+  const plan=wrap('exponential-affine-spike-v1',{family:'exponential-affine',base:'2',coefficients:['1','1','0'],shiftX:'0',sourceDomain:{kind:'ALL_REALS'},domain:[-2,2],viewport:[-3,3,-1,5],
+    overlays:{points:[{id:'A',curveX:'-2',coordinates:true},{id:'B',curveX:'2',coordinates:true}]}});
+  const {result,svg}=await renderFigure('g-bundle-value-label',plan);
+  assert.equal(result.status,'ARCHIVE_BOUND',JSON.stringify(result.detail));
+  const dot=svg.match(/<circle id="exponential-reference-point"[^>]*cx="([0-9.]+)" cy="([0-9.]+)"/);
+  const label=svg.match(/<g id="reference-value"[^>]*transform="translate\(([0-9.]+) ([0-9.]+)\)"[^>]*>\s*<svg[^>]*width="([0-9.]+)" height="([0-9.]+)"/);
+  assert.ok(dot&&label,'reference dot and value label are drawn');
+  const [cx,cy]=[Number(dot[1]),Number(dot[2])],[x,y,w,h]=label.slice(1).map(Number);
+  const gap=Math.hypot(Math.max(x-cx,0,cx-(x+w)),Math.max(y-cy,0,cy-(y+h)));
+  assert.ok(gap<=40,'the label stands within 40 px of the point (0,1), measured '+gap);
+});
