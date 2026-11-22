@@ -8,7 +8,7 @@
 | 유리 (일차/일차, 반비례) | `rational-spike-v1` / `rational` | `numerator`, `denominator` 각각 [상수항, x계수], `sourceDomain` ALL_REALS. 점근선·구멍은 엔진이 표시. 분자를 `["k","0"]`(k≠0 상수)으로 주면 반비례 `y=k/(d0+d1x)`(아래 3-2 반비례 문단) |
 | 무리 √(일차), 일반형 y=s·k√(a(x−p))+q | `sqrt-affine-spike-v1` / `sqrt-affine` | `radicand` [상수항, x계수(0 불가, 음수면 왼쪽으로 열림)], 선택 `amplitude`(k>0, 기본 1)·`sign`(1 또는 −1)·`offset`(q, 기본 0), `sourceDomain:{"kind":"NATURAL_SQRT_AFFINE"}` 또는 `{"kind":"CLOSED_INTERVAL","range":[a,b]}` |
 | 절댓값 k·\|ax+b\|+c | `absolute-value-spike-v1` / `absolute-value` | `coefficients` [b,a,k,c], ALL_REALS |
-| 두 조각 일차 (구간 닫힘) | `piecewise-affine-spike-v1` / `piecewise-affine` | `sourceDomain:{"kind":"CLOSED_INTERVAL","range":[lo,hi]}`, `piecewise:{breakX,owner:"LEFT"\|"RIGHT",left:[b,m],right:[b,m]}` |
+| 두 조각 일차 (구간 닫힘) | `piecewise-affine-spike-v1` / `piecewise-affine` | `sourceDomain:{"kind":"CLOSED_INTERVAL","range":[lo,hi]}`, `piecewise:{breakX,owner:"LEFT"\|"RIGHT",left:[m,b],right:[m,b]}` |
 | 지수 A·e^(kx)+C (자연밑) | `exponential-affine-spike-v1` / `exponential-affine` | `coefficients` [A,k,C], ALL_REALS |
 | 지수 A·a^(k(x−p))+C (정수·분수·근호 밑) | `exponential-affine-spike-v1` / `exponential-affine` | `coefficients` [A,k,C], `base`(예: "2", "1/2", "sqrt(3)"), 선택 `shiftX`(p), ALL_REALS |
 | 로그 A·ln(kx+b)+C (자연밑) | `logarithmic-affine-spike-v1` / `logarithmic-affine` | `coefficients` [A,k,b,C], `sourceDomain:{"kind":"NATURAL_LOG_AFFINE"}` |
