@@ -1543,7 +1543,7 @@ const NORM_XL=44,NORM_XR=490,NORM_TIP=512,NORM_XR_NARROW=482,NORM_TIP_NARROW=500
 // A labelled tail beyond about 3 sd is under 2 px high at the usual bell height: no value label or leader dot fits in it (the observer asks the dot for 1 px of room). Such a figure (and only such a figure)
 // draws its tallest curve NORM_PEAK_TALL high instead of NORM_PEAK, so the tail is high enough to point into. The choice depends on the model alone, so the measured size and the drawing agree.
 const STD_NORMAL_NAME=/^(?:[Zz](?:\(0,1\))?|N\(0,1\))$/;   // the ways a curve is named as the standard normal variable (spaces removed)
-const NORM_THIN_TAIL=1.7,NORM_TICK_APART=0;   // tick numbers whose boxes would overlap (gap below this, px) stand in two rows; a figure whose numbers already fit in one row stays as it was drawn
+const NORM_THIN_TAIL=1.7,NORM_TICK_APART=5;   // tick numbers nearer than this (px) to each other stand in two rows: nearer than that they read as one number (65 and 67.6 as 6567.6); further apart they stay in one row as they always were
 function normalPeakOf(m){
   const sdOf=c=>m.framed?(c.sdScale===undefined?1:N(c.sdScale)):N(c.sd),meanOf=c=>m.framed?0:N(c.mean),sdMin=Math.min(...m.curves.map(sdOf)),byId=new Map(m.curves.map(c=>[c.id,c]));
   for(const s of m.shades){
@@ -1608,8 +1608,10 @@ function normalSpec(m,ctx){
   // stands one row lower under its own tick. Only a figure whose labels are nearer than NORM_TICK_APART in one row does this, and the decision follows the font, like the size.
   const rowH=Math.ceil(fontPx*NORM_Z_ROW);
   const byPos=m.ticks.map(t=>{const size=labelSize({kind:'MATH',tex:t.tex},fontPx);return {t,x:px(N(t.pos)),w:size.width,h:size.height};}).sort((a,b)=>a.x-b.x);
-  const stagger=byPos.some((a,i)=>i>0&&a.x-byPos[i-1].x-(a.w+byPos[i-1].w)/2<NORM_TICK_APART);
-  const lowerRow=new Set(stagger?byPos.filter((_,i)=>i%2===1).map(e=>e.t.index):[]);
+  // a number stands in the first row when it is NORM_TICK_APART or more clear of the last number of that row, otherwise one row lower (so a narrow number between two wide ones, 0 between -0.3 and 0.3, does not leave its neighbours touching)
+  const lowerRow=new Set();let right0=-Infinity;
+  for(const e of byPos){const left=e.x-e.w/2,right=e.x+e.w/2;if(left-right0>=NORM_TICK_APART){right0=right;}else{lowerRow.add(e.t.index);}}
+  const stagger=lowerRow.size>0;
   const lowerStep=Math.ceil(Math.max(...byPos.map(e=>e.h)))+6,zy=BASE+TICK+4+(stagger?lowerStep:0)+rowH;
   for(const t of m.ticks){
     const x=px(N(t.pos));

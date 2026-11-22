@@ -2130,6 +2130,11 @@ def audit_normal(chart, doc):
         if cx is not None:
             if abs(bx + bw / 2 - cx) > LABEL_TOL: doc.err('SC_NORMAL_LABEL_NOT_CENTRED:' + lid)
             if lid.startswith('x-tick') and by < base + NORM_TICK: doc.err('SC_NORMAL_TICK_LABEL_ABOVE_AXIS:' + lid)
+    # the numbers under the axis must be told apart: two of them standing in one row (their boxes share some height) are at least 5 px apart, or they read as one number
+    tick_boxes = sorted((box_of(l) for lid_, l in got.items() if lid_.startswith('x-tick-')), key=lambda b: b[0])
+    for ia, a_box in enumerate(tick_boxes):
+      for b_box in tick_boxes[ia + 1:]:
+        if min(a_box[1] + a_box[3], b_box[1] + b_box[3]) > max(a_box[1], b_box[1]) and b_box[0] - (a_box[0] + a_box[2]) < 5.0: doc.err('SC_NORMAL_TICK_NUMBERS_CLOSE')
     for i, t in enumerate(ticks):
         xlab, zlab = got.get('x-tick-%d-label' % i), got.get('z-tick-%d-label' % i)
         if xlab is not None and zlab is not None and box_of(zlab)[1] < box_of(xlab)[1] + box_of(xlab)[3]: doc.err('SC_NORMAL_Z_ROW_OVERLAP:%d' % i)
