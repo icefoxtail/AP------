@@ -246,6 +246,36 @@ def audit_equal_areas(root,marks,peer_point,by_mark,errors,observations):
         for other,index in member_of.items():
             if other!=oid and drawn.get(other)==fill and member_of.get(oid)!=index:errors.append('REGION_COLOR_GROUP_AMBIGUOUS:'+oid+'&'+other)
 
+def drawn_boundaries(root):
+    """[(id, points)] every drawn boundary of the final SVG as ONE polyline: a straight line, an arc or curve (their polyline), a circle (its ring)."""
+    found=[]
+    for n in root.iter():
+        role=n.get('data-role');t=tag(n)
+        try:
+            if t=='line' and role=='line':found.append((n.get('id'),[(float(n.get('x1')),float(n.get('y1'))),(float(n.get('x2')),float(n.get('y2')))]))
+            elif t=='polyline' and role in {'circularArc','curve'}:
+                raw=[float(v) for part in n.get('points','').split() for v in part.split(',')]
+                found.append((n.get('id'),[(raw[k],raw[k+1]) for k in range(0,len(raw)-1,2)]))
+            elif t=='circle' and role=='circle':
+                cx,cy,r=float(n.get('cx')),float(n.get('cy')),float(n.get('r'))
+                found.append((n.get('id'),[(cx+r*math.cos(k*math.pi/36),cy+r*math.sin(k*math.pi/36)) for k in range(73)]))
+        except (TypeError,ValueError):continue
+    return [(sid,pts) for sid,pts in found if len(pts)>=2]
+
+def boundary_position(points,p):
+    """(fraction of the boundary's length at its point nearest to p, that distance)."""
+    total=sum(norm(sub(b,a)) for a,b in zip(points,points[1:]))
+    if total<1e-9:return 0.0,norm(sub(p,points[0]))
+    best=(float('inf'),0.0);run=0.0
+    for a,b in zip(points,points[1:]):
+        length=norm(sub(b,a))
+        if length>1e-12:
+            u=max(0.0,min(1.0,((p[0]-a[0])*(b[0]-a[0])+(p[1]-a[1])*(b[1]-a[1]))/(length*length)))
+            d=norm((p[0]-a[0]-u*(b[0]-a[0]),p[1]-a[1]-u*(b[1]-a[1])))
+            if d<best[0]:best=(d,run+u*length)
+        run+=length
+    return best[1]/total,best[0]
+
 LEADER_CIRCLE_TOUCH=1.5          # svg px: a circle touching the region's boundary (an incircle) still lies inside it; a region whose boundary follows the circle all round is that circle
 
 def circles_inside(root,polygons):
@@ -413,14 +443,11 @@ def audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,obser
                 else:
                     # where the leader leaves the region: the drawn side it crosses there must not be the one the label stands beside (middle zone)
                     exit_at=next((p for p in ((a[0]+unit[0]*length*k/steps,a[1]+unit[1]*length*k/steps) for k in range(steps+1)) if area_state(p,record['polygons'])==-1),None)
-                    for sid,pts in [row for row in (strokes or []) if len(row[1])==2]:   # straight drawn sides only (a circle or curve is a polyline of many tiny pieces)
-                        for q0,q1 in zip(pts,pts[1:]):
-                            if exit_at is None or point_segment_distance(exit_at,q0,q1)>LEADER_BOUNDARY_TOLERANCE+2.0:continue
-                            dx,dy=q1[0]-q0[0],q1[1]-q0[1];l2=dx*dx+dy*dy
-                            if l2<1e-9:continue
-                            ts=[((cx-q0[0])*dx+(cy-q0[1])*dy)/l2 for cx,cy in corners]
-                            beside=min(point_segment_distance((box[0]+box[2]*i/8,box[1]+box[3]*j/4),q0,q1) for i in range(9) for j in range(5))
-                            if max(ts)>LEADER_SIDE_SPAN[0] and min(ts)<LEADER_SIDE_SPAN[1] and beside<=LEADER_SIDE_NEAR:errors.append('REGION_LEADER_READS_AS_SIDE:'+oid+':'+str(sid))
+                    # each WHOLE drawn boundary (a straight side, an arc, a curve, a circle) is one side: its length is what a value beside it reads as
+                    for sid,pts in drawn_boundaries(root):
+                        if exit_at is None or boundary_position(pts,exit_at)[1]>LEADER_BOUNDARY_TOLERANCE+2.0:continue
+                        close=[t for t,d in (boundary_position(pts,(box[0]+box[2]*i/4,box[1]+box[3]*j/2)) for i in range(5) for j in range(3)) if d<=LEADER_SIDE_NEAR]
+                        if close and max(close)>LEADER_SIDE_SPAN[0] and min(close)<LEADER_SIDE_SPAN[1]:errors.append('REGION_LEADER_READS_AS_SIDE:'+oid+':'+str(sid))
                 if came_back:errors.append('REGION_LEADER_ENTERS_REGION:'+oid)
                 for sid,pts in (strokes or []):
                     for q0,q1 in zip(pts,pts[1:]):

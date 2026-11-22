@@ -837,7 +837,8 @@ def region_inner_leader_placement(label,w,h,occupied,acceptable):
             cx,cy,r=g[:3];ring=[(cx+r*math.cos(k*math.pi/36),cy+r*math.sin(k*math.pi/36)) for k in range(73)];strokes+=list(zip(ring,ring[1:]))
     discs=[tuple(o['geometry']) for o in occupied if o.get('kind')=='point' and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=3]
     boxes_taken=[o['geometry'] if isinstance(o.get('geometry'),Box) else Box(**o['geometry']) for o in occupied if o.get('kind') in {'label','conditionBox','rectangle'} and (isinstance(o.get('geometry'),Box) or (isinstance(o.get('geometry'),dict) and {'x','y','width','height'}<=set(o['geometry'])))]
-    sides=[pair for o in occupied if o.get('kind') in {'line','axis','auxiliary'} and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2 for pair in zip(o['geometry'],o['geometry'][1:])]
+    sides=[[tuple(q) for q in o['geometry']] for o in occupied if o.get('kind') in {'line','axis','auxiliary','curve'} and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2]
+    sides+=[[(o['geometry'][0]+o['geometry'][2]*math.cos(k*math.pi/36),o['geometry'][1]+o['geometry'][2]*math.sin(k*math.pi/36)) for k in range(73)] for o in occupied if o.get('kind')=='circle' and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=3]
     near=site.get('near')
     def under_label(at):
         for box in boxes_taken:
@@ -854,15 +855,29 @@ def region_inner_leader_placement(label,w,h,occupied,acceptable):
 REGION_SIDE_SPAN=(0.05,0.95)           # the stretch of a drawn side (as a fraction of it) beside which a label reads as that side's length; past its ends a label does not
 REGION_SIDE_NEAR_PX=48.0                # 'beside': the label's box within this of the side
 
+def stroke_position(points,p):
+    """(fraction of the stroke's length at the point of the stroke nearest to p, that distance) for a stroke given as a polyline (a straight side, an arc, a curve, a circle's ring)."""
+    total=sum(math.dist(a,b) for a,b in zip(points,points[1:]))
+    if total<1e-9:return 0.0,math.dist(points[0],p)
+    best=(float('inf'),0.0);run=0.0
+    for a,b in zip(points,points[1:]):
+        length=math.dist(a,b)
+        if length>1e-12:
+            u=max(0.0,min(1.0,((p[0]-a[0])*(b[0]-a[0])+(p[1]-a[1])*(b[1]-a[1]))/(length*length)))
+            d=math.hypot(p[0]-a[0]-u*(b[0]-a[0]),p[1]-a[1]-u*(b[1]-a[1]))
+            if d<best[0]:best=(d,run+u*length)
+        run+=length
+    return best[1]/total,best[0]
+
 def label_reads_as_side(box,exit_point,sides):
-    """True when the label stands right beside the drawn side its leader crosses (any part of its box within the side's extent) (it would read as that side's length, not as the value of the region)."""
-    corners=[(box.x,box.y),(box.x+box.width,box.y),(box.x+box.width,box.y+box.height),(box.x,box.y+box.height)]
-    for a,b in sides:
-        if point_segment_distance(exit_point,a,b)>REGION_INNER_EXIT_TOLERANCE_PX:continue
-        dx,dy=b[0]-a[0],b[1]-a[1];l2=dx*dx+dy*dy
-        if l2<1e-9:continue
-        ts=[((c[0]-a[0])*dx+(c[1]-a[1])*dy)/l2 for c in corners]
-        if max(ts)>REGION_SIDE_SPAN[0] and min(ts)<REGION_SIDE_SPAN[1] and box_segment_distance(box,a,b)<=REGION_SIDE_NEAR_PX:return True
+    """True when the label stands right beside the drawn boundary its leader crosses: the WHOLE stroke (a straight side, an arc, a curve, a circle) counts as one side, and any part of the label's
+    box within 48 px of it and along its extent reads as that side's length (a sector's value right beside its arc reads as the arc's length), not as the value of the region."""
+    probes=[(box.x+box.width*i/4,box.y+box.height*j/2) for i in range(5) for j in range(3)]
+    for points in sides:
+        if stroke_position(points,exit_point)[1]>REGION_INNER_EXIT_TOLERANCE_PX:continue
+        near=[stroke_position(points,q) for q in probes]
+        close=[t for t,d in near if d<=REGION_SIDE_NEAR_PX]
+        if close and max(close)>REGION_SIDE_SPAN[0] and min(close)<REGION_SIDE_SPAN[1]:return True
     return False
 
 REGION_INNER_DEPTH_BUCKET_PX=4.0        # dots whose room differs by less than this count as equally deep: then the shortest leader wins

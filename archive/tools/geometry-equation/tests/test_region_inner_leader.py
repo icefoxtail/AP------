@@ -168,6 +168,16 @@ class PieceCutOffByStrokes(unittest.TestCase):
         self.assertFalse(label_layout.label_reads_as_side(beyond_the_end, (255.0, 100.0), side))
         self.assertFalse(label_layout.label_reads_as_side(far_away, exit_point, side))
 
+    def test_an_arc_is_one_side_however_many_pieces_it_is_drawn_in(self):
+        arc = [[(200.0 + 100.0 * math.cos(math.radians(a)), 200.0 - 100.0 * math.sin(math.radians(a))) for a in range(20, 161, 2)]]   # a sector's arc, 71 points
+        exit_point = arc[0][35]
+        beside_the_middle = Box(180.0, 70.0, 40.0, 18.0)   # right above the arc's middle: reads as the arc's length
+        beside_a_piece = Box(262.0, 75.0, 40.0, 18.0)      # beside one of the small pieces, but along the whole arc's extent
+        beyond_the_end = Box(318.0, 178.0, 40.0, 18.0)     # past the arc's end
+        self.assertTrue(label_layout.label_reads_as_side(beside_the_middle, exit_point, arc))
+        self.assertTrue(label_layout.label_reads_as_side(beside_a_piece, exit_point, arc))
+        self.assertFalse(label_layout.label_reads_as_side(beyond_the_end, arc[0][2], arc))
+
     def test_the_first_thirty_spots_and_their_order_do_not_change(self):
         spots = engine._region_inner_points(SQUARE, self.OCCUPIED)
         self.assertEqual(spots[:engine.REGION_INNER_FIRST], engine._region_inner_points(SQUARE, self.OCCUPIED, (), engine.REGION_INNER_FIRST))
