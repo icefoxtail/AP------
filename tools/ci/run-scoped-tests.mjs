@@ -3,7 +3,7 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { createRequire } from 'node:module';
 import { spawnSync } from 'node:child_process';
-import { readScope } from './archive-ci-scope.mjs';
+import { readScope, isScreenFile } from './archive-ci-scope.mjs';
 
 export const playgroundTests = [
   'catalog', 'hub-no-legacy', 'alg-sequence-plus', 'polyhedra-names',
@@ -112,25 +112,61 @@ export function packageShardsReady(root) {
   return { ready: true, fileCount: rows.length, indexSha256: sha256(indexBytes) };
 }
 
-export function selectTechnicalCommands(scope, availableCommands) {
+// 화면·문서 파일이 바뀐 PR: 그 파일(또는 문서면 같은 폴더) 이름을 직접 적었거나, 적은 도우미(tests/helpers 등)를 가져다 쓰는 테스트만 고른다.
+// 간접 의존으로 놓친 것은 main push의 전체 실행이 잡는다(PR 범위 축소는 PR 전용).
+export function screenReferencedCommands(root, changedFiles, availableCommands) {
+  const needles = new Set();
+  for (const file of changedFiles) {
+    if (!isScreenFile(file)) continue;
+    needles.add(file);
+    needles.add(path.posix.basename(file));
+    if (file.startsWith('docs/')) needles.add(path.posix.dirname(file) + '/');
+  }
+  const cache = new Map();
+  const text = file => {
+    if (!cache.has(file)) {
+      let value = '';
+      try { value = fs.readFileSync(path.join(root, file), 'utf8'); } catch { /* missing selected files fail later */ }
+      cache.set(file, value);
+    }
+    return cache.get(file);
+  };
+  const mentions = body => [...needles].some(needle => body.includes(needle));
+  return availableCommands.filter(command => filesInCommand(command.args).some(file => {
+    const body = text(file);
+    if (mentions(body)) return true;
+    const dir = path.posix.dirname(file);
+    // 한 단계 도우미: require/import 한 상대 경로 파일 본문에도 이름이 있으면 간접 참조로 본다.
+    return [...body.matchAll(/(?:require\(|from\s*|import\(\s*)['"](\.{1,2}\/[^'"]+)['"]/g)].some(match => {
+      const base = path.posix.normalize(path.posix.join(dir, match[1]));
+      return [base, base + '.js', base + '.cjs', base + '.mjs'].some(candidate => mentions(text(candidate)));
+    });
+  }));
+}
+
+export function selectTechnicalCommands(scope, availableCommands, root = process.cwd()) {
   if (!Array.isArray(availableCommands) || !availableCommands.length) throw new Error('technical scope requires the existing test command registry');
   const groups = scope.groups;
-  if (!Array.isArray(groups) || !groups.length || groups.some(group => !['metadata', 'output', 'registration'].includes(group))) {
+  if (!Array.isArray(groups) || !groups.length || groups.some(group => !['metadata', 'output', 'registration', 'screen'].includes(group))) {
     throw new Error('unknown technical test group');
   }
+  if (groups.length === 1 && groups[0] === 'screen') return screenReferencedCommands(root, scope.changedFiles || [], availableCommands);
   const patterns = [...metadataConsumers];
   if (groups.includes('output')) patterns.push(...outputConsumers);
   if (groups.includes('registration')) patterns.push(...registrationContracts);
   const selected = availableCommands.filter(command => filesInCommand(command.args).some(file => patterns.some(re => re.test(file))));
+  if (groups.includes('screen')) {
+    for (const command of screenReferencedCommands(root, scope.changedFiles || [], availableCommands)) if (!selected.includes(command)) selected.push(command);
+  }
   if (!selected.length) throw new Error('technical scope selected no registered tests');
   return selected;
 }
 
-export function commandsForScope(scope, availableCommands) {
+export function commandsForScope(scope, availableCommands, root = process.cwd()) {
   if (scope.mode === 'full') return null;
   if (scope.mode === 'archive-content') return [['archive/tools/verify-archive-content-scope.mjs', '--scope']];
-  if (['archive-metadata', 'archive-output', 'archive-registration', 'archive-technical'].includes(scope.mode)) {
-    const selected = selectTechnicalCommands(scope, availableCommands);
+  if (['archive-metadata', 'archive-output', 'archive-registration', 'archive-technical', 'archive-screen'].includes(scope.mode)) {
+    const selected = selectTechnicalCommands(scope, availableCommands, root);
     // Run changed source syntax, including a changed producer/validator itself.
     // JSON is parsed before execution below; shell/producer behavior is covered
     // by the selected native orchestration fixtures and workflow syntax checks.
@@ -138,7 +174,7 @@ export function commandsForScope(scope, availableCommands) {
     // Fresh checkouts omit ignored mixed-verification shards. Reconstruct only
     // those package files from the current catalog; do not repeat its shared
     // registration build or rewrite the catalog after the CI preparation step.
-    return [...syntax, packageCommand,
+    return [...syntax, ...(selected.length ? [packageCommand] : []),
       ...selected.map(command => command.args)];
   }
   if (scope.mode !== 'playground') throw new Error('unknown test scope');
@@ -173,7 +209,7 @@ export function shardScopedCommands(commands, shard, durations) {
 
 export function runScopedTests({ root, scopeFile, availableCommands, run = spawnSync, shard = null, onResult = () => {} }) {
   const scope = readScope(scopeFile, root);
-  let commands = commandsForScope(scope, availableCommands);
+  let commands = commandsForScope(scope, availableCommands, root);
   console.log(`CI scope: ${scope.mode}; ${scope.reason}. Excluded suites are NOT_APPLICABLE, not verified PASS.`);
   if (commands === null) return false;
   // Node's --test can silently ignore a missing path when other tests exist.

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-82d50544bedf-d957cc0f",
+  "sourceArchiveFile": "original/high/h2/1mid/23_중앙여고_1학기_중간_고2_대수.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_ef8e292c3527d0cf2ce26109d244a6cff120c92413c01a4f7fa92f8a34a5820e",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_CALCULATION",
+      "templateKey": "TPL_EXPONENT_RATIONAL_POWER_OPERATION",
+      "step": "양쪽 중첩근을 a^(2/3),a^((3+m)/6)로 고쳐 지수 비교로 m=1을 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요. a≠1이 원문에서 a\\n eq 1로 깨져 있으나 조건 의도와 해설로 의미 명확.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl",
+      "stemChangedSinceJudgment": true
+    }
+  ]
+}

@@ -6,7 +6,13 @@ const { test } = require('node:test');
 
 const root = path.resolve(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'archive', 'engine.html'), 'utf8');
-const META_SRC = 'question-meta.js?v=archive-metadata-v1-phase1b-20260826b';
+const { versionOf } = require('./helpers/html-asset-refs.cjs');
+// The address engine.html's gate writes must be the one mixer.html and unit-past-exams.html load (same ?v=, one cached copy).
+// The value itself is not pinned: it changes whenever question-meta.js does.
+const readArchive = (file) => fs.readFileSync(path.join(root, 'archive', file), 'utf8');
+const metaQuery = versionOf(readArchive('mixer.html'), 'question-meta.js', 'mixer.html');
+assert.strictEqual(versionOf(readArchive('unit-past-exams.html'), 'question-meta.js', 'unit-past-exams.html'), metaQuery, 'mixer.html and unit-past-exams.html load question-meta.js with the same ?v=');
+const META_SRC = 'question-meta.js' + (metaQuery ? '?' + metaQuery : '');
 
 // 2026-11-20: opening an original exam (시험지·해설·정답) downloaded and parsed the whole approved-metadata sidecar
 // (data/question_metadata.json, 87.6MB raw / 15.3MB gzip) before the first question was drawn. Drawing never reads it:

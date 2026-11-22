@@ -551,7 +551,7 @@ window.questionBank = [
     "sourceQid": 12,
     "sourceProvenance": "ORIGINAL",
     "sourceOnlySha256": "8b55a55700d6ac8803823880f88d9e826eb471a53dae87927d258938137f63dc",
-    "solutionImage": "assets/solutions/20_매산고_2학기_중간_고2_확률과통계/q12-grid-distance.svg"
+    "solutionImage": "assets/images/20_매산고_2학기_중간_고2_확률과통계/q12-grid-distance.svg"
   },
   {
     "id": 13,
@@ -646,7 +646,7 @@ window.questionBank = [
     "sourceQid": 14,
     "sourceProvenance": "AUDITED_REPAIR",
     "sourceOnlySha256": "8b55a55700d6ac8803823880f88d9e826eb471a53dae87927d258938137f63dc",
-    "solutionImage": "assets/solutions/20_매산고_2학기_중간_고2_확률과통계/q14-density-tail.svg"
+    "solutionImage": "assets/images/20_매산고_2학기_중간_고2_확률과통계/q14-density-tail.svg"
   },
   {
     "id": 15,

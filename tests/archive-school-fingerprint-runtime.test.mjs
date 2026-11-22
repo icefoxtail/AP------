@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
 import runtime from '../archive/mixer-school-fingerprint-runtime.js';
+import refs from './helpers/html-asset-refs.cjs';
+const { assertLoads } = refs;
 
 const payload = JSON.parse(fs.readFileSync('archive/data/school-fingerprints.json', 'utf8'));
 
@@ -27,6 +29,6 @@ test('Mixer fingerprint runtime loads validated JSON through injected fetch', as
 
 test('Mixer includes the hidden fingerprint runtime contract', () => {
   const html = fs.readFileSync('archive/mixer.html', 'utf8');
-  assert.match(html, /mixer-school-fingerprint-runtime\.js\?v=20260825\.1/);
+  assertLoads(html, 'mixer-school-fingerprint-runtime.js', 'html');
   assert.doesNotMatch(html, /school-fingerprint-(?:select|preset)\b/i);
 });

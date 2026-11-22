@@ -866,7 +866,7 @@ window.questionBank = [
     "sourceType": "ORIGINAL",
     "curriculum": "H15",
     "sourceJsSha256": "742e7baed20f424916a5520803fd9b7670c5bc479fded429489c0bc0aa1cb1c8",
-    "solutionImage": "assets/q18_solution.svg"
+    "solutionImage": "assets/images/20_제일고_1학기_기말_고2_확률과통계/q18_solution.svg"
   },
   {
     "id": 19,

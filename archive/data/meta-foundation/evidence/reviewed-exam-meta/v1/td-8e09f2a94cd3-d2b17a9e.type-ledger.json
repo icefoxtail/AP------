@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-8e09f2a94cd3-d2b17a9e",
+  "sourceArchiveFile": "original/high/h2/1mid/22_매산고_1학기_중간_고2_기하와벡터_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_54074b5be346944e20268f528358bd9d468f823c0a8c68a67955c3bb0b2eb21e",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_PARABOLA",
+      "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+      "step": "준선거리 5와 높이4를 좌표식에 넣어 u+4/u=5를 풀고 그림의 P가 F 왼쪽이라는 조건으로 u=1을 골라 초점 x=-1을 얻는다.",
+      "note": "문항·해설 직접 판독. 필수 원본 그림 Git blob 추출 후 시각 확인. 원문 보기 ①·③ 중복(−5/6)이 있으나 정답 −1과 판정에는 영향 없음.",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl",
+      "stemChangedSinceJudgment": true
+    },
+    {
+      "questionUid": "qid_v1_6f5f6352ad1f9439a3991b45301d7e89635285d1700adf3a618d50e6a0f08dc7",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+      "step": "두 초점 위치벡터 합0으로 PF+PF′=2PO를 얻고 타원 긴 반축6에서 최대 크기12를 정한다.",
+      "note": "문항·해설 직접 판독. 발문·해설 텍스트로 충분하며 보조 해설 그림은 판정에 불필요.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

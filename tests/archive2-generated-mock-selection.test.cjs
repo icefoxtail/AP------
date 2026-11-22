@@ -1,6 +1,7 @@
 'use strict';
 
 const test = require('node:test');
+const timeBudget = require('./helpers/time-budget.cjs');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -269,7 +270,7 @@ test('the actual Palma pool satisfies a five-level mixed quota within the intera
   assert.equal(result.items.length, 5);
   assert.deepEqual(result.difficultyCounts, { 1: 1, 2: 1, 3: 1, 4: 1, 5: 1 });
   assert.equal(new Set(result.items.map(item => item.row.sourceQid)).size, 5);
-  assert.ok(elapsedMs < 500, `selection took ${elapsedMs}ms for the real indexed Palma pool`);
+  assert.ok(elapsedMs < timeBudget(500), `selection took ${elapsedMs}ms for the real indexed Palma pool`);
 });
 
 // S9: the builder's source exams come from the index, never from drafts.
