@@ -3,13 +3,15 @@
 - branch: `work/solution-upgrade-lane-30-20261121`
 - source: `archive/exams/original/high/h2/1final/*.js`; 직접 참조 `archive/assets/images/**` PNG/SVG
 - 대상: 일반 대수/수학Ⅰ 32개 원본 JS, **723문항·고유 이미지 328개(PNG 128/SVG 200)**. `25_제일고_..._대수c.js` 및 `25_효천고_..._대수c.js` **2개·46문항·25이미지**는 일반 32개와 구별하여 **별도 보충 묶음으로 실물 검수 완료**, 대상 누락 방지.
-- **현재 상태: 3차까지 21/32개 시험지, 이미지 216/328개 실물 시각 검수 완료**; 일반 대상 미검수 **11개 시험지·112개 이미지**, 보충 `대수c` **2개 시험지·25/25개 이미지 별도 실물 검수 완료**.
+- **현재 상태: 4차까지 일반 기말 27/32개 시험지·606/723문항, 이미지 280/328개 실물 시각 검수 완료(PNG 104/SVG 176)**; 일반 미검수 **5개 시험지·48개 이미지**. 보충 `대수c` **2개 시험지·25/25이미지 별도 실물 검수 완료**.
 - 1차 실물 증거: 원본 GitHub blob 85개 각각 SHA 확보. PNG 30개 중 29개 파일 원본 디코딩·표시, **1개(2026 순천고 Q18, 1.01MB)**는 GitHub 파일 Contents 응답 본문이 비어 별도 GitHub 웹 페이지의 실물 이미지를 직접 화면 확인(도형·점·수선·60도·길이 5/8 판독). SVG 55개 모두 XML 원본 수신→Inkscape PNG 렌더 성공→7매 연락시트 및 의심 원본 개별 확인. **실물 미확인 0/85, SVG 렌더 실패 0/55**.
 - 1차 판정: `OBSERVED_NO_FLAG` **83**, `VISUAL_UPGRADE` **1**, `VISUAL_HOLD_READABILITY` **1**.
 - **2차 실물 증거: 신규 원본 GitHub blob 87개(각 SHA) 수신, PNG 34개 디코딩·확대 관찰, SVG 53개 XML 수신·렌더·시각 확인. 8매 연락시트와 의심 원본 단독 확대 확인. 미확인 0/87, SVG 렌더 실패 0/53.**
 - **2차 판정: `OBSERVED_NO_FLAG` 82, `VISUAL_UPGRADE` 2, `VISUAL_HOLD_READABILITY` 3.**
 - **3차 실물 증거: 2022년 팔마고·제일고·순천고·매산고·금당고 5개 JS에서 추출한 고유 참조 44개(PNG 17/SVG 27) 모두 원본 Git blob SHA 확인. PNG 원본과 Inkscape로 래스터화한 SVG를 5개 연락시트에서 직접 관찰하고, 의심 자산은 원본 크기로 확대해 JS 발문·해설과 대조. 미확인 0/44, SVG 렌더 실패 0/27.**
 - **3차 판정: `OBSERVED_NO_FLAG` 42, `VISUAL_UPGRADE` 2, `VISUAL_HOLD_READABILITY` 0. 누적 일반 기말: `OBSERVED_NO_FLAG` **207**, `VISUAL_UPGRADE` **5**, `VISUAL_HOLD_READABILITY` **4** (총 216).** `OBSERVED_NO_FLAG`는 관찰 범위에서 주요 이상을 발견하지 못했다는 뜻이지 학생 UI/운영 출고 PASS가 아니다.
+- **4차 실물 증거: 2021년 강남여고·금당고·매산고·매산여고·순천여고·제일고 6개 JS의 신규 64개 참조(PNG 23/SVG 41) 모두 원본 Git blob SHA 확보·실물 시각 검수. PNG 원본 디코드 및 SVG Inkscape 렌더 성공, 6매 연락시트·개별 확대 확인; 실물 미확인 0/64, SVG 렌더 실패 0/41.**
+- **4차 판정: `OBSERVED_NO_FLAG` 57, `VISUAL_UPGRADE` 5, `VISUAL_HOLD_READABILITY` 2. 기말 일반 누적 `OBSERVED_NO_FLAG` 264, `VISUAL_UPGRADE` 10, `VISUAL_HOLD_READABILITY` 6 (280개).**
 - **보충 `대수c` 2개 시험지·46문항·25이미지(PNG 11/SVG 14) 실물 검수 완료. 판정: `OBSERVED_NO_FLAG` 23, `VISUAL_UPGRADE` 2, 가독성 HOLD 0.** 일반 기말 32개·328이미지와 별도 관리하며 통합 시 중복 합산하지 않음.
 - **원본 JS·PNG·SVG·정답·`main` 변경 없음**. 이미지 결함은 문서로 예약하고 원본 교체는 엔진에 인계. 학생 실제 UI 렌더, 전체 preflight, Golden/Negative, 배포/출고 QA는 `NOT_RUN`.
 
@@ -349,6 +351,133 @@
 | 215 | `22_금당고_1학기_기말_고2_수학I` | 17 | `archive/assets/images/22_금당고_1학기_기말_고2_수학I/q17-solution.svg` | `8ea74d22d75de357eda0029b4c022c87d9c2f2cc` | `OBSERVED_NO_FLAG` |
 | 216 | `22_금당고_1학기_기말_고2_수학I` | 19 | `archive/assets/images/22_금당고_1학기_기말_고2_수학I/q19-solution.svg` | `1ab3c5a685cbfcec60c1cd960da6dbd590458210` | `OBSERVED_NO_FLAG` |
 
+## 4차 시험지별 실물 검수 결과 (2021년 추가 6개 · 64이미지)
+
+| 시험지 | 문항 | 이미지 | PNG | SVG | 시각 결함 예약 |
+|---|---:|---:|---:|---:|---|
+| `21_강남여고_1학기_기말_고2_수학I` | 30 | 12 | 6 | 6 | Q08·Q20 선분 그림·Q21 개선 3 / Q20 눈송이 단계 HOLD 1 |
+| `21_금당고_1학기_기말_고2_수학I` | 22 | 10 | 2 | 8 | 새 문제 미발견 |
+| `21_매산고_1학기_기말_고2_수학I` | 20 | 9 | 2 | 7 | 새 문제 미발견 |
+| `21_매산여고_1학기_기말_고2_수학I` | 23 | 9 | 3 | 6 | Q19 가독성 HOLD 1 |
+| `21_순천여고_1학기_기말_고2_수학I` | 23 | 10 | 5 | 5 | 새 문제 미발견 |
+| `21_제일고_1학기_기말_고2_수학I` | 24 | 14 | 5 | 9 | Q04·Q15 개선 2 |
+| **4차 합계** | **142** | **64** | **23** | **41** | **개선 5 · 가독성 HOLD 2** |
+| **기말 1~4차 누적** | **606** | **280** | **104** | **176** | **개선 10 · 가독성 HOLD 6** |
+
+- 여섯 원본 JS의 문제·해설 본문/이미지 필드에서 직접 참조한 고유 이미지 64개를 수집했으며, 경로별 원본 Git blob SHA를 모두 확보했다. **PNG 23개 전부 원본 디코딩**, **SVG 41개 전부 XML 수신·Inkscape PNG 렌더**, 시험지별 6매 연락시트와 결함 의심 PNG 개별 원본 크기 표시로 도형·숫자·색칠·잘림을 확인했다. **실물 미확인 0/64, SVG 렌더 실패 0/41**.
+- 4차 판정: `OBSERVED_NO_FLAG` **57**, `VISUAL_UPGRADE` **5**, `VISUAL_HOLD_READABILITY` **2**. 일반 기말 누적: `OBSERVED_NO_FLAG` **264**, `VISUAL_UPGRADE` **10**, `VISUAL_HOLD_READABILITY` **6**. 한 문항의 이미지가 둘 이상이면 **자산별 개별 판정**하며, 이 통계는 정답 검증·엔진 교정·학생 UI 출고 PASS가 아니다.
+
+### 2021 강남여고 Q08 — `VISUAL_UPGRADE`
+
+- 문제 원본: `archive/assets/images/21_강남여고_1학기_기말_고2_수학I/q08.png`, blob `4e8aab526598398c7708a4e55c3c3c68c38a86bf`.
+- 관찰: 삼각형 `ABC`의 오른쪽 변 `AC` 옆의 길이 `3`, 밑변 `BC` 부근의 `2√2`가 원본 스캔에서 매우 연해 숫자와 배경의 구분이 어렵다. 각 `45°`와 삼각형 윤곽은 확인할 수 있으며 JS 문제 문장에 `a=2√2`, `b=3`, `C=45°`가 별도 명시되어 있어 값 자체를 복원 불능으로 판단하지 않았다.
+- 엔진 인계: 출제 원본과 삼각형의 점·길이 배치를 대조한 뒤 길이 라벨 및 선을 선명하게 재제작. 문항 텍스트와 해설을 그림 내용의 독립적 출처로 간주하지 않고 출제 원본을 근거로 검증.
+
+### 2021 강남여고 Q20 선분 변환 그림 — `VISUAL_UPGRADE`
+
+- 문제 원본: `archive/assets/images/21_강남여고_1학기_기말_고2_수학I/q20_1.png`, blob `43b986f895b62fe02904510bcb6469aed3dcfc4a`.
+- 관찰: `q20_1.png`의 상단에는 이전 인쇄 문장 일부가 이미지 경계에서 잘린 채 붙어 있다. 아래의 직선과 가운데 정삼각형 돌출 변환 자체는 읽히지만, 학생 화면에서는 JS가 이미 `<원리>` 문장을 제공하므로 잘린 본문 잔해가 중복·혼동을 일으킬 수 있다.
+- 엔진 인계: 선분 3등분과 가운데 선분을 정삼각형 두 변으로 바꾸는 두 도형만 원본 근거로 정리·재크롭. 인접한 설명문 및 잔획을 그림 일부로 재현하지 말 것.
+
+### 2021 강남여고 Q20 눈송이 단계도 — `VISUAL_HOLD_READABILITY`
+
+- 문제 원본: `archive/assets/images/21_강남여고_1학기_기말_고2_수학I/q20_2.png`, blob `fd1c05533ebeddb5ba742b3aed9e9aa8e9e57752`.
+- 관찰: `q20_2.png`에서 두 번째 이후 눈송이의 세부 윤곽선이 거의 백색으로 날아가고 일부 변이 점·얼룩만 남아 단계별 도형을 시각적으로 확인하기 어렵다. 오른쪽에도 원래 인쇄본의 글자/도형 일부가 경계에서 잘려 붙어 있다. Q20은 ‘4번째 만들어지는 도형’의 둘레를 묻기에 단계가 정확히 읽혀야 한다.
+- 엔진 인계: 고해상도 출제 원본에서 정삼각형→코흐 눈송이의 단계 순서·반복 회수·각 단계 선분 분할을 확인하고 문제 그림을 재구성. 해설의 둘레 수치 `64/9`를 이용해 원본 단계를 거꾸로 확정하거나 임의 생성하지 말 것. 복구 전 학생 표시/출고 판독 HOLD.
+
+### 2021 강남여고 Q21 색칠 영역 — `VISUAL_UPGRADE`
+
+- 문제 원본: `archive/assets/images/21_강남여고_1학기_기말_고2_수학I/q21.png`, blob `6287ec7d52629b4538672500638560684f7c90d1`.
+- 관찰: 원에 내접한 정삼각형 두 개의 원본 그림 전반에 회색 스캔 점·오염이 넓게 퍼져 있어, 색칠한 원 내부 영역과 비색칠 중심 정육각형의 경계가 축소 화면에서 흐릿하다. 전체 큰 외곽의 음영 방향은 확인할 수 있으므로 완전 판독 불가로 단정하지 않는다.
+- 엔진 인계: `EF ∥ BC`, 원 반지름 `2`, 정삼각형 `ABC/DEF`의 배치 및 색칠 영역의 포함/제외 경계를 원본과 대조해 명료한 문제 그림으로 복원. 보충 해설 SVG를 출제 원본의 유일한 근거로 대체하지 말 것.
+
+### 2021 매산여고 Q19 정육각형 — `VISUAL_HOLD_READABILITY`
+
+- 문제 원본: `archive/assets/images/21_매산여고_1학기_기말_고2_수학I/q19.png`, blob `3cc14b923098d3456ca19e574657b4673d9892cc`.
+- 관찰: 정육각형 `ABCDEF`의 하단 `C–D`, 오른쪽 하단 `D–E` 윤곽선과 꼭짓점 `M`에서 `D`로 향하는 일부 선분이 원본 스캔에서 끊어져 사실상 공백처럼 보인다. `B–M–C`의 중점 표시와 `θ`는 보이나, Q19은 `∠DME`를 묻는 문제여서 이 연결선 소실을 단순 배경 잡음으로 무시하기 어렵다. 글로 주어진 ‘정육각형·중점·각도’ 조건은 남아 있다.
+- 엔진 인계: 원본 출제지 기준으로 정육각형 여섯 변과 `MD`, `ME`, 점 `M`, 각 `θ`, 변 길이 `2√7`를 정확히 재검증해 누락된 선분을 복원. 해설 SVG/산출값만으로 그림을 임의 확정하지 말고 복구 전 도형 가독성 HOLD.
+
+### 2021 제일고 Q04 강 건너편 다리 측량 — `VISUAL_UPGRADE`
+
+- 문제 원본: `archive/assets/images/21_제일고_1학기_기말_고2_수학I/q04.png`, blob `02081a377902cdaaa67fb2903e0e8d50f7a26037`.
+- 관찰: 강·도로 배경과 삼각형 `A,B,P` 위에 회색 오염·스캔 점이 조밀하게 중첩돼 `20m`, `60°`, `75°` 라벨과 대각선이 크게 흐려 보인다. 동일 수치는 JS 지문에도 `AB=20m`, `∠PAB=75°`, `∠PBA=60°`로 명시돼 있어 원본 값 소실 판정은 보류한다.
+- 엔진 인계: 출제지에서 강 건너 `P`의 위치와 삼각형 `ABP`, 세 수치·각도 방향을 확인하여 무관한 배경 잡음을 제거한 문제 도형으로 개선. 값·방향은 선명한 원본과 대조하며 재산정으로 만들지 말 것.
+
+### 2021 제일고 Q15 정육면체 — `VISUAL_UPGRADE`
+
+- 문제 원본: `archive/assets/images/21_제일고_1학기_기말_고2_수학I/q15.png`, blob `01bf9c1b2e676b134c329c8f851fce73ba3c993f`.
+- 관찰: 정육면체 `ABCD–EFGH`의 내부 대각선과 면의 명암에 고밀도 스캔 점·회색 얼룩이 겹쳐 선분 `AI`, `IG` 및 일부 꼭짓점 라벨이 축소 상태에서 쉽게 합쳐진다. 원본을 확대하면 정육면체·중점 `I`의 개략적 위치는 식별 가능하고 지문도 `I`를 `EF`의 중점으로 정의하므로 확정적인 값/관계 소실 HOLD는 아니다.
+- 엔진 인계: 원본에서 꼭짓점 이름의 앞/뒤 위치, 중점 `I`, 그린 세 선분을 확인한 뒤 음영과 보조선의 명암을 분리해 선명한 입체도형으로 개선. 해설 계산에서 모서리·공간대각선의 위치를 역추론해 새로 구성하지 말 것.
+
+### 이미지 원본 실물 증거 대장 (4차 추가 64/64; 통합 #217–#280)
+
+| # | 원본 JS 시험지 | Q | 이미지 원본 경로 | Git blob SHA | 검수 판정 |
+|---:|---|---:|---|---|---|
+| 217 | `21_강남여고_1학기_기말_고2_수학I` | 08 | `archive/assets/images/21_강남여고_1학기_기말_고2_수학I/q08.png` | `4e8aab526598398c7708a4e55c3c3c68c38a86bf` | `VISUAL_UPGRADE` |
+| 218 | `21_강남여고_1학기_기말_고2_수학I` | 16 | `archive/assets/images/21_강남여고_1학기_기말_고2_수학I/q16-solution.svg` | `abfe537e94e679eb2f2f57b48288f4c4df35312b` | `OBSERVED_NO_FLAG` |
+| 219 | `21_강남여고_1학기_기말_고2_수학I` | 20 | `archive/assets/images/21_강남여고_1학기_기말_고2_수학I/q20_1.png` | `43b986f895b62fe02904510bcb6469aed3dcfc4a` | `VISUAL_UPGRADE` |
+| 220 | `21_강남여고_1학기_기말_고2_수학I` | 20 | `archive/assets/images/21_강남여고_1학기_기말_고2_수학I/q20_2.png` | `fd1c05533ebeddb5ba742b3aed9e9aa8e9e57752` | `VISUAL_HOLD_READABILITY` |
+| 221 | `21_강남여고_1학기_기말_고2_수학I` | 21 | `archive/assets/images/21_강남여고_1학기_기말_고2_수학I/q21.png` | `6287ec7d52629b4538672500638560684f7c90d1` | `VISUAL_UPGRADE` |
+| 222 | `21_강남여고_1학기_기말_고2_수학I` | 21 | `archive/assets/images/21_강남여고_1학기_기말_고2_수학I/q21-solution.svg` | `de748595e570bf42e7d3e3cac64d0b3760c4d8d7` | `OBSERVED_NO_FLAG` |
+| 223 | `21_강남여고_1학기_기말_고2_수학I` | 22 | `archive/assets/images/21_강남여고_1학기_기말_고2_수학I/q22-solution.svg` | `ca7e2b4c4092488c93892d210e25cd9479bc1962` | `OBSERVED_NO_FLAG` |
+| 224 | `21_강남여고_1학기_기말_고2_수학I` | 23 | `archive/assets/images/21_강남여고_1학기_기말_고2_수학I/q23.png` | `ef7a84290926fe5175fa943f6f1885fb6b093af8` | `OBSERVED_NO_FLAG` |
+| 225 | `21_강남여고_1학기_기말_고2_수학I` | 23 | `archive/assets/images/21_강남여고_1학기_기말_고2_수학I/q23-solution.svg` | `4f729936ebafe3eae5aacdeaef34ff979e1defe5` | `OBSERVED_NO_FLAG` |
+| 226 | `21_강남여고_1학기_기말_고2_수학I` | 26 | `archive/assets/images/21_강남여고_1학기_기말_고2_수학I/q26-solution.svg` | `40c706f1e2f5a24b1b845ee2d78d6f6631aacaa4` | `OBSERVED_NO_FLAG` |
+| 227 | `21_강남여고_1학기_기말_고2_수학I` | 28 | `archive/assets/images/21_강남여고_1학기_기말_고2_수학I/q28.png` | `3bd1d18b140566a11e6067b317fdc5e61fca2e53` | `OBSERVED_NO_FLAG` |
+| 228 | `21_강남여고_1학기_기말_고2_수학I` | 28 | `archive/assets/images/21_강남여고_1학기_기말_고2_수학I/q28-solution.svg` | `6290d4681f706783e7a489f1fc944ffe3b37d083` | `OBSERVED_NO_FLAG` |
+| 229 | `21_금당고_1학기_기말_고2_수학I` | 01 | `archive/assets/images/21_금당고_1학기_기말_고2_수학I/q1-solution.svg` | `fd65bedf42789568a72716e856b2989a0598bb66` | `OBSERVED_NO_FLAG` |
+| 230 | `21_금당고_1학기_기말_고2_수학I` | 13 | `archive/assets/images/21_금당고_1학기_기말_고2_수학I/q13-solution.svg` | `dd3788ef7ae97b603a94d6e7977e4741302dbe7f` | `OBSERVED_NO_FLAG` |
+| 231 | `21_금당고_1학기_기말_고2_수학I` | 14 | `archive/assets/images/21_금당고_1학기_기말_고2_수학I/q14-solution.svg` | `fdfe2db7a63a961272fee8b54b6ef407bc812ddd` | `OBSERVED_NO_FLAG` |
+| 232 | `21_금당고_1학기_기말_고2_수학I` | 16 | `archive/assets/images/21_금당고_1학기_기말_고2_수학I/q16-solution.svg` | `a531d7d5e61a3347bd578d98eefd45898593ecda` | `OBSERVED_NO_FLAG` |
+| 233 | `21_금당고_1학기_기말_고2_수학I` | 17 | `archive/assets/images/21_금당고_1학기_기말_고2_수학I/q17.png` | `7976c0589a8e305fcbcb81e799b03cc7fde18be9` | `OBSERVED_NO_FLAG` |
+| 234 | `21_금당고_1학기_기말_고2_수학I` | 17 | `archive/assets/images/21_금당고_1학기_기말_고2_수학I/q17-solution.svg` | `f661912804de7ecbfac6b22cdf24538ae133e048` | `OBSERVED_NO_FLAG` |
+| 235 | `21_금당고_1학기_기말_고2_수학I` | 19 | `archive/assets/images/21_금당고_1학기_기말_고2_수학I/q19-solution.svg` | `e768059224f22b879419efaf3f89a38d0fb4a1a1` | `OBSERVED_NO_FLAG` |
+| 236 | `21_금당고_1학기_기말_고2_수학I` | 20 | `archive/assets/images/21_금당고_1학기_기말_고2_수학I/q20.png` | `71ff4ab9b9e6a74748a9b5d7d62a4d2ce4e65ba5` | `OBSERVED_NO_FLAG` |
+| 237 | `21_금당고_1학기_기말_고2_수학I` | 20 | `archive/assets/images/21_금당고_1학기_기말_고2_수학I/q20-solution.svg` | `3f870c7f6fb04a024f2ea969b956827090195e9f` | `OBSERVED_NO_FLAG` |
+| 238 | `21_금당고_1학기_기말_고2_수학I` | 22 | `archive/assets/images/21_금당고_1학기_기말_고2_수학I/q22-solution.svg` | `8781730b6d6fadbf2c68f855b861b2d3b426d66c` | `OBSERVED_NO_FLAG` |
+| 239 | `21_매산고_1학기_기말_고2_수학I` | 07 | `archive/assets/images/21_매산고_1학기_기말_고2_수학I/q7-solution.svg` | `822180e639d5c9868fa29fa1817f73f772385d10` | `OBSERVED_NO_FLAG` |
+| 240 | `21_매산고_1학기_기말_고2_수학I` | 10 | `archive/assets/images/21_매산고_1학기_기말_고2_수학I/q10-solution.svg` | `189e97c99c2768847a0b70cf2fb6243a0a2af02d` | `OBSERVED_NO_FLAG` |
+| 241 | `21_매산고_1학기_기말_고2_수학I` | 11 | `archive/assets/images/21_매산고_1학기_기말_고2_수학I/q11-solution.svg` | `f71b4ce92d0e42da5e818c7f81e80dde24d1c43e` | `OBSERVED_NO_FLAG` |
+| 242 | `21_매산고_1학기_기말_고2_수학I` | 14 | `archive/assets/images/21_매산고_1학기_기말_고2_수학I/q14.png` | `a12724801ffc6179f6ab159ada14cebbaa12a974` | `OBSERVED_NO_FLAG` |
+| 243 | `21_매산고_1학기_기말_고2_수학I` | 14 | `archive/assets/images/21_매산고_1학기_기말_고2_수학I/q14-solution.svg` | `46738920553a20dd24bab6edc84c1a9064ec1878` | `OBSERVED_NO_FLAG` |
+| 244 | `21_매산고_1학기_기말_고2_수학I` | 15 | `archive/assets/images/21_매산고_1학기_기말_고2_수학I/q15-solution-v2.svg` | `29a9e066d51a49d414772c79009081d10b8630db` | `OBSERVED_NO_FLAG` |
+| 245 | `21_매산고_1학기_기말_고2_수학I` | 16 | `archive/assets/images/21_매산고_1학기_기말_고2_수학I/q16.png` | `a78e9764cf63834acff42184822f2bdcaa2a45ae` | `OBSERVED_NO_FLAG` |
+| 246 | `21_매산고_1학기_기말_고2_수학I` | 17 | `archive/assets/images/21_매산고_1학기_기말_고2_수학I/q17-solution.svg` | `9bd11ee7c44c3997bef53e59e2d11794184a4faa` | `OBSERVED_NO_FLAG` |
+| 247 | `21_매산고_1학기_기말_고2_수학I` | 19 | `archive/assets/images/21_매산고_1학기_기말_고2_수학I/q19-solution.svg` | `5ed3e6b620d0404748f241fe34f6f80dd690843c` | `OBSERVED_NO_FLAG` |
+| 248 | `21_매산여고_1학기_기말_고2_수학I` | 05 | `archive/assets/images/21_매산여고_1학기_기말_고2_수학I/q05.png` | `779d6dcf74632067dff4e3f9fd045c80b834ba4d` | `OBSERVED_NO_FLAG` |
+| 249 | `21_매산여고_1학기_기말_고2_수학I` | 06 | `archive/assets/images/21_매산여고_1학기_기말_고2_수학I/q6-solution.svg` | `effe69ca3f49991ba5c93e34dd096351f4023270` | `OBSERVED_NO_FLAG` |
+| 250 | `21_매산여고_1학기_기말_고2_수학I` | 13 | `archive/assets/images/21_매산여고_1학기_기말_고2_수학I/q13.png` | `f6bc8ddca146591b64365359f0c2ef84195413e0` | `OBSERVED_NO_FLAG` |
+| 251 | `21_매산여고_1학기_기말_고2_수학I` | 13 | `archive/assets/images/21_매산여고_1학기_기말_고2_수학I/q13-solution.svg` | `05fa0062e15212bee3930c1828a2810a1c50e42c` | `OBSERVED_NO_FLAG` |
+| 252 | `21_매산여고_1학기_기말_고2_수학I` | 18 | `archive/assets/images/21_매산여고_1학기_기말_고2_수학I/q18-content-correction.svg` | `f2436b6a6ff61b021cdc0cbfc4712e2da0b589c6` | `OBSERVED_NO_FLAG` |
+| 253 | `21_매산여고_1학기_기말_고2_수학I` | 19 | `archive/assets/images/21_매산여고_1학기_기말_고2_수학I/q19.png` | `3cc14b923098d3456ca19e574657b4673d9892cc` | `VISUAL_HOLD_READABILITY` |
+| 254 | `21_매산여고_1학기_기말_고2_수학I` | 19 | `archive/assets/images/21_매산여고_1학기_기말_고2_수학I/q19-solution-v2.svg` | `2f87b5ec6dcce9e6cac66c1537186b12f7f9309a` | `OBSERVED_NO_FLAG` |
+| 255 | `21_매산여고_1학기_기말_고2_수학I` | 21 | `archive/assets/images/21_매산여고_1학기_기말_고2_수학I/q21-problem-v2.svg` | `3b52f4f04e5983923c3b17dc8fe0aaffae2fbd91` | `OBSERVED_NO_FLAG` |
+| 256 | `21_매산여고_1학기_기말_고2_수학I` | 21 | `archive/assets/images/21_매산여고_1학기_기말_고2_수학I/q21-solution-v2.svg` | `280ce934c543f2bb981de2ce6c783574a193b995` | `OBSERVED_NO_FLAG` |
+| 257 | `21_순천여고_1학기_기말_고2_수학I` | 01 | `archive/assets/images/21_순천여고_1학기_기말_고2_수학I/q01-problem-full-c-v1.svg` | `134807adc116bdc75fc73175a8bd2b090b728591` | `OBSERVED_NO_FLAG` |
+| 258 | `21_순천여고_1학기_기말_고2_수학I` | 01 | `archive/assets/images/21_순천여고_1학기_기말_고2_수학I/q01.png` | `4164f23bf5868b0517091ab4df1f0a7ddea0927c` | `OBSERVED_NO_FLAG` |
+| 259 | `21_순천여고_1학기_기말_고2_수학I` | 01 | `archive/assets/images/21_순천여고_1학기_기말_고2_수학I/q1-solution.svg` | `79070bf8b16fb0a52b4b54218a148a6142d63599` | `OBSERVED_NO_FLAG` |
+| 260 | `21_순천여고_1학기_기말_고2_수학I` | 11 | `archive/assets/images/21_순천여고_1학기_기말_고2_수학I/q11.png` | `a56a31f3b41c3e2ddcac5eb721464319ad71ee6c` | `OBSERVED_NO_FLAG` |
+| 261 | `21_순천여고_1학기_기말_고2_수학I` | 11 | `archive/assets/images/21_순천여고_1학기_기말_고2_수학I/q11-solution.svg` | `14e778b85b5f03a40ad40ab90e8a6f7307f95dc9` | `OBSERVED_NO_FLAG` |
+| 262 | `21_순천여고_1학기_기말_고2_수학I` | 18 | `archive/assets/images/21_순천여고_1학기_기말_고2_수학I/q18.png` | `5578b49f0d82610c2357c6f02f67527101d01727` | `OBSERVED_NO_FLAG` |
+| 263 | `21_순천여고_1학기_기말_고2_수학I` | 19 | `archive/assets/images/21_순천여고_1학기_기말_고2_수학I/q19.png` | `563453cb4e3ecdf6f80091a3fcec1995bb414f7d` | `OBSERVED_NO_FLAG` |
+| 264 | `21_순천여고_1학기_기말_고2_수학I` | 19 | `archive/assets/images/21_순천여고_1학기_기말_고2_수학I/q19-solution-v2.svg` | `8c7a074e3840147ca918f0876f99ed3c2a31fe10` | `OBSERVED_NO_FLAG` |
+| 265 | `21_순천여고_1학기_기말_고2_수학I` | 23 | `archive/assets/images/21_순천여고_1학기_기말_고2_수학I/q23.png` | `70564a39d236a2e387caf483b8eaee51323a04af` | `OBSERVED_NO_FLAG` |
+| 266 | `21_순천여고_1학기_기말_고2_수학I` | 23 | `archive/assets/images/21_순천여고_1학기_기말_고2_수학I/q23-solution-v2.svg` | `41914d11eb7665279d2cc4ab111b80a68e9cb09b` | `OBSERVED_NO_FLAG` |
+| 267 | `21_제일고_1학기_기말_고2_수학I` | 04 | `archive/assets/images/21_제일고_1학기_기말_고2_수학I/q04.png` | `02081a377902cdaaa67fb2903e0e8d50f7a26037` | `VISUAL_UPGRADE` |
+| 268 | `21_제일고_1학기_기말_고2_수학I` | 04 | `archive/assets/images/21_제일고_1학기_기말_고2_수학I/q4-solution.svg` | `091ae89f09ff0e5c7e9d12d202467f549a17b6ab` | `OBSERVED_NO_FLAG` |
+| 269 | `21_제일고_1학기_기말_고2_수학I` | 05 | `archive/assets/images/21_제일고_1학기_기말_고2_수학I/q5-solution.svg` | `985ff083f6a804a55f100ebbc2aa92512bb1d8b4` | `OBSERVED_NO_FLAG` |
+| 270 | `21_제일고_1학기_기말_고2_수학I` | 15 | `archive/assets/images/21_제일고_1학기_기말_고2_수학I/q15.png` | `01bf9c1b2e676b134c329c8f851fce73ba3c993f` | `VISUAL_UPGRADE` |
+| 271 | `21_제일고_1학기_기말_고2_수학I` | 15 | `archive/assets/images/21_제일고_1학기_기말_고2_수학I/q15-solution.svg` | `8445695db4745d21a436eacb2881401c172cf14c` | `OBSERVED_NO_FLAG` |
+| 272 | `21_제일고_1학기_기말_고2_수학I` | 17 | `archive/assets/images/21_제일고_1학기_기말_고2_수학I/q17_question-v2.svg` | `bb7b1de10dc712297371261c85ba58db266ac7a6` | `OBSERVED_NO_FLAG` |
+| 273 | `21_제일고_1학기_기말_고2_수학I` | 17 | `archive/assets/images/21_제일고_1학기_기말_고2_수학I/q17.png` | `be333647e5c6bb5d3fcb07d182fb32b0b1217601` | `OBSERVED_NO_FLAG` |
+| 274 | `21_제일고_1학기_기말_고2_수학I` | 17 | `archive/assets/images/21_제일고_1학기_기말_고2_수학I/q17-solution.svg` | `9a6291fb60d152d29c681331458ad5d3525945de` | `OBSERVED_NO_FLAG` |
+| 275 | `21_제일고_1학기_기말_고2_수학I` | 19 | `archive/assets/images/21_제일고_1학기_기말_고2_수학I/q19.png` | `980bfd4676c6937e6a28f9f38431ca57efcc5586` | `OBSERVED_NO_FLAG` |
+| 276 | `21_제일고_1학기_기말_고2_수학I` | 19 | `archive/assets/images/21_제일고_1학기_기말_고2_수학I/q19-solution.svg` | `7a90eb78bc2526adc1aa71ce5002d07bc9c9a993` | `OBSERVED_NO_FLAG` |
+| 277 | `21_제일고_1학기_기말_고2_수학I` | 22 | `archive/assets/images/21_제일고_1학기_기말_고2_수학I/q22_question-v2.svg` | `d9f453958cf43d0bd94c8bceddd123eefba16d73` | `OBSERVED_NO_FLAG` |
+| 278 | `21_제일고_1학기_기말_고2_수학I` | 22 | `archive/assets/images/21_제일고_1학기_기말_고2_수학I/q22.png` | `9ab015841ae8e54593c29eddb776b512d63266e7` | `OBSERVED_NO_FLAG` |
+| 279 | `21_제일고_1학기_기말_고2_수학I` | 22 | `archive/assets/images/21_제일고_1학기_기말_고2_수학I/q22-solution.svg` | `f763258ca571ab47c51c50356fcc9dad1ac18869` | `OBSERVED_NO_FLAG` |
+| 280 | `21_제일고_1학기_기말_고2_수학I` | 23 | `archive/assets/images/21_제일고_1학기_기말_고2_수학I/q23-solution.svg` | `28851c54898ce808141dbeed9ea6c35c2982c318` | `OBSERVED_NO_FLAG` |
+
 ## 보충 묶음 `대수c` 2개 시험지 전수 이미지 검수 (별도 25/25)
 
 | 시험지 | 문항 | 이미지 | PNG | SVG | 시각 결함 예약 |
@@ -411,9 +540,9 @@
 
 ## 이어지는 작업 및 누적 경계
 
-- 4차 예정: 일반 기말 미검수 11개 중 다음 5~8개 시험지를 원본 참조 목록과 대조해 전수 시각 검수·MD 기록만 수행. 2021년 강남여고·금당고·매산고·매산여고·순천여고·제일고를 우선, 다음은 2020~2019년 남은 5개. 정확한 이미지 수는 착수 시 재확인.
-- 별도 보충 대상 `대수c` **2개·46문항·25이미지 모두 실물 검수 완료**, 후속 엔진 개선 예약 2건. 일반 32개 대상·328이미지에는 포함하지 않음.
-- 전 단계 1학기 중간: **51개 시험지·370개 참조 이미지 실물 판독 기록 완료, 시각/정합성 예약 7건**(`1MID_IMAGE_VISUAL_AUDIT_20261122.md`). 기말 1~3차의 이미지 예약 **9건**은 중간 7건과 별개이며 중복 집계하지 않음.
-- 대수 1학기 중간+기말 일반 전체: **고유 이미지 698개(370+328)**, 현재 **586개 검수(370+216, 약 84.0%)**, 남은 일반 기말 이미지 **112개**. 중간 예약 7건+기말 예약 9건=**서로 다른 이미지 기준 16건**(기말 개선 5/가독성 HOLD 4). `대수c` 보충 25개는 일반 분모에서 제외하고 별도 **25/25개 완료**로 집계.
-- 대수 중간 + 기말 일반 + `대수c` 전체 확대 분모: **698+25=723이미지**, 누적 **586+25=611개 검수(약 84.5%)**, 미검수 **112개**(일반 기말에만 잔여). 개선·HOLD 예약은 중간 7+기말 일반 9+`대수c` 2=**총 18건**. 내부 시험지 제목이 `대수c` 파일명과 다른 2건은 이미지 결함 통계에 합산하지 않고 메타 참고사항으로 별도 기록.
-- 최종 작업 범위: 본 MD는 시각 감사 예약 문서일 뿐, 엔진 교정·운영 병합의 증거 또는 출고 승인서가 아님.
+- 다음 5차 예정: 일반 기말 미검수 **5개 시험지·48개 이미지(2020~2019년)** 원본 JS 참조 목록을 확정하고, PNG/SVG 실물 확대 판독 후 MD 증거 대장에만 추가. 필요하면 결함별 엔진 처리 예약을 분리하며 원본은 변경하지 않는다.
+- 별도 보충 대상 `대수c` **2개 시험지·46문항·25이미지 25/25 실물 검수 완료**, 후속 엔진 개선 예약 **2건**. 일반 32개 시험지·328이미지 대상에는 포함하지 않음.
+- 전 단계 1학기 중간: **51개 시험지·370개 참조 이미지 실물 판독 기록 완료, 시각/정합성 예약 7건**(`1MID_IMAGE_VISUAL_AUDIT_20261122.md`). 기말 일반 1~4차 예약 **16건**(개선 10 / 가독성 HOLD 6)은 중간 7건과 별개이며 중복 집계하지 않음.
+- 대수 1학기 중간+기말 일반 전체: **이미지 698개(370+328)**, 현재 **650개 실물 검수(370+280, 약 93.1%)**, 잔여 **48개**. 예약은 중간 7+기말 일반 16=**서로 다른 이미지 기준 23건**.
+- `대수c`를 별도 포함한 전체 확대 분모: **723개 이미지(698+25)** 중 **675개 검수(약 93.4%)**, 미검수 **48개**. 이미지 개선·HOLD 예약 총 **25건**(중간 7+일반 기말 16+`대수c` 2). `대수c` 내부 제목 메타 2건은 이미지 결함 통계에 합산하지 않음.
+- 최종 작업 범위: 본 MD는 이미지 시각 감사·엔진 인계 예약 문서이며 원본 JS·PNG·SVG·정답·`main`은 수정하지 않았다. 엔진 교정·학생 UI 렌더·전체 preflight·Golden/Negative·운영 병합·출고 승인은 모두 `NOT_RUN`.
